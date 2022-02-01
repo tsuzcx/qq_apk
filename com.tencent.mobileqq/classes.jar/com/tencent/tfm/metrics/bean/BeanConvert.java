@@ -78,52 +78,58 @@ public class BeanConvert
   
   public static boolean mergeLogItem(LogItem paramLogItem1, LogItem paramLogItem2)
   {
-    if ((paramLogItem1 == null) || (paramLogItem2 == null)) {}
-    int i;
-    StatValue localStatValue1;
-    StatValue localStatValue2;
-    do
+    if (paramLogItem1 != null)
     {
-      do
-      {
+      if (paramLogItem2 == null) {
         return false;
-      } while ((!paramLogItem1.name.equals(paramLogItem2.name)) || (paramLogItem2.values.length != paramLogItem1.values.length));
-      i = 0;
-      if (i >= paramLogItem1.values.length) {
-        break;
       }
-      localStatValue1 = paramLogItem1.values[i];
-      localStatValue2 = paramLogItem2.values[i];
-    } while (localStatValue1.policy != localStatValue2.policy);
-    switch (BeanConvert.1.$SwitchMap$com$tencent$tfm$metrics$api$StatPolicy[localStatValue1.policy.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      int j = localStatValue1.count;
-      localStatValue2.count += j;
-      i += 1;
-      break;
-      localStatValue1.value += localStatValue2.value;
-      continue;
-      if (localStatValue1.value < localStatValue2.value)
+      if (paramLogItem1.name.equals(paramLogItem2.name))
       {
-        localStatValue1.value = localStatValue2.value;
-        continue;
-        if (localStatValue1.value > localStatValue2.value)
-        {
-          localStatValue1.value = localStatValue2.value;
-          continue;
-          localStatValue1.value = localStatValue2.value;
+        if (paramLogItem2.values.length != paramLogItem1.values.length) {
+          return false;
         }
+        int i = 0;
+        while (i < paramLogItem1.values.length)
+        {
+          StatValue localStatValue1 = paramLogItem1.values[i];
+          StatValue localStatValue2 = paramLogItem2.values[i];
+          if (localStatValue1.policy != localStatValue2.policy) {
+            return false;
+          }
+          int j = BeanConvert.1.$SwitchMap$com$tencent$tfm$metrics$api$StatPolicy[localStatValue1.policy.ordinal()];
+          if ((j != 1) && (j != 2))
+          {
+            if (j != 3)
+            {
+              if (j != 4)
+              {
+                if (j == 5) {
+                  localStatValue1.value = localStatValue2.value;
+                }
+              }
+              else if (localStatValue1.value > localStatValue2.value) {
+                localStatValue1.value = localStatValue2.value;
+              }
+            }
+            else if (localStatValue1.value < localStatValue2.value) {
+              localStatValue1.value = localStatValue2.value;
+            }
+          }
+          else {
+            localStatValue1.value += localStatValue2.value;
+          }
+          localStatValue1.count += localStatValue2.count;
+          i += 1;
+        }
+        return true;
       }
     }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.bean.BeanConvert
  * JD-Core Version:    0.7.0.1
  */

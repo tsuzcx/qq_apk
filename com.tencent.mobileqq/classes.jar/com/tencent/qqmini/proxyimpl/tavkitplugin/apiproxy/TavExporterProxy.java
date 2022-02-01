@@ -104,7 +104,11 @@ class TavExporterProxy
     Object localObject = paramSendMsgTavEvent.a();
     if (!(localObject instanceof TavExporter))
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("get exporter obj filed, eventBean = " + paramSendMsgTavEvent);
+      localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get exporter obj filed, eventBean = ");
+      localStringBuilder.append(paramSendMsgTavEvent);
+      ((RequestEvent)localObject).fail(localStringBuilder.toString());
       return;
     }
     a(paramSendMsgTavEvent, (TavExporter)localObject);
@@ -112,7 +116,7 @@ class TavExporterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavExporterProxy
  * JD-Core Version:    0.7.0.1
  */

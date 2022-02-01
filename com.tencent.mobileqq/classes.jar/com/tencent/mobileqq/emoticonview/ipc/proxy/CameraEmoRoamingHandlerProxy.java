@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.emoticonview.ipc.proxy;
 
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.CameraEmoRoamingHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 
@@ -11,17 +10,21 @@ public class CameraEmoRoamingHandlerProxy
 {
   private static final String TAG = "CameraEmoRoamingHandlerProxy";
   
-  public CameraEmoRoamingHandlerProxy(QQAppInterface paramQQAppInterface)
+  public CameraEmoRoamingHandlerProxy(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    super(paramQQAppInterface, BusinessHandlerFactory.CAMERA_EMOTICON_HANDLER);
+    super(paramBaseQQAppInterface, CameraEmoRoamingHandler.a);
   }
   
   public final void notifyUI(int paramInt, boolean paramBoolean, Serializable paramSerializable)
   {
     if (this.businessHandler != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraEmoRoamingHandlerProxy", 4, "notifyUI suc：" + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("notifyUI suc：");
+        localStringBuilder.append(paramBoolean);
+        QLog.d("CameraEmoRoamingHandlerProxy", 4, localStringBuilder.toString());
       }
       ((CameraEmoRoamingHandler)this.businessHandler).notifyUI(paramInt, paramBoolean, paramSerializable);
     }
@@ -29,7 +32,7 @@ public class CameraEmoRoamingHandlerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingHandlerProxy
  * JD-Core Version:    0.7.0.1
  */

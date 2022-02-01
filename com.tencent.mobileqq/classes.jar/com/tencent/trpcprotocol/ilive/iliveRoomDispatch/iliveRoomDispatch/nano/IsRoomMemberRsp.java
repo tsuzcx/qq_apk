@@ -27,40 +27,45 @@ public final class IsRoomMemberRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
+      if (i == 0) {
+        break;
       }
-      this.a = paramCodedInputByteBufferNano.readBool();
+      if (i != 8)
+      {
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+          return this;
+        }
+      }
+      else {
+        this.a = paramCodedInputByteBufferNano.readBool();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    boolean bool = this.a;
     int i = j;
-    if (this.a) {
-      i = j + CodedOutputByteBufferNano.computeBoolSize(1, this.a);
+    if (bool) {
+      i = j + CodedOutputByteBufferNano.computeBoolSize(1, bool);
     }
     return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.a) {
-      paramCodedOutputByteBufferNano.writeBool(1, this.a);
+    boolean bool = this.a;
+    if (bool) {
+      paramCodedOutputByteBufferNano.writeBool(1, bool);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.IsRoomMemberRsp
  * JD-Core Version:    0.7.0.1
  */

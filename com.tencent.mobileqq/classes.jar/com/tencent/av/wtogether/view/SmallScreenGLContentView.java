@@ -52,8 +52,9 @@ public class SmallScreenGLContentView
         this.jdField_b_of_type_Int -= 1;
       }
       this.jdField_b_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback != null) {
-        this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback.onDrawFrame(paramGL10);
+      WatchTogetherSurfaceLifeCallback localWatchTogetherSurfaceLifeCallback = this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback;
+      if (localWatchTogetherSurfaceLifeCallback != null) {
+        localWatchTogetherSurfaceLifeCallback.onDrawFrame(paramGL10);
       }
       this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
       return;
@@ -69,15 +70,17 @@ public class SmallScreenGLContentView
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback != null) {
-      this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
+    WatchTogetherSurfaceLifeCallback localWatchTogetherSurfaceLifeCallback = this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback;
+    if (localWatchTogetherSurfaceLifeCallback != null) {
+      localWatchTogetherSurfaceLifeCallback.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
     }
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback != null) {
-      this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback.onSurfaceCreated(paramGL10, paramEGLConfig);
+    WatchTogetherSurfaceLifeCallback localWatchTogetherSurfaceLifeCallback = this.jdField_a_of_type_ComTencentAvWtogetherCallbackWatchTogetherSurfaceLifeCallback;
+    if (localWatchTogetherSurfaceLifeCallback != null) {
+      localWatchTogetherSurfaceLifeCallback.onSurfaceCreated(paramGL10, paramEGLConfig);
     }
     setRenderMode(0);
   }
@@ -89,18 +92,17 @@ public class SmallScreenGLContentView
     }
     this.jdField_b_of_type_Boolean = true;
     long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
-    if ((l > 0L) && (l < this.jdField_a_of_type_Int))
-    {
+    if ((l > 0L) && (l < this.jdField_a_of_type_Int)) {
       try
       {
         if (this.jdField_b_of_type_Int >= 2) {
           return;
         }
+        this.jdField_b_of_type_Int += 1;
+        super.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int - l);
+        return;
       }
       finally {}
-      this.jdField_b_of_type_Int += 1;
-      super.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int - l);
-      return;
     }
     ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
   }
@@ -119,7 +121,7 @@ public class SmallScreenGLContentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.SmallScreenGLContentView
  * JD-Core Version:    0.7.0.1
  */

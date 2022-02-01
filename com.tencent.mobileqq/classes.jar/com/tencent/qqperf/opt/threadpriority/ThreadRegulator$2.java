@@ -7,19 +7,16 @@ class ThreadRegulator$2
   
   public void run()
   {
-    if (ThreadRegulator.a(this.this$0) == null) {}
-    ThreadRegulator.CpuBusyness localCpuBusyness;
-    do
-    {
+    if (ThreadRegulator.a(this.this$0) == null) {
       return;
-      localCpuBusyness = ThreadRegulator.a(this.this$0);
-      ThreadRegulator.a(this.this$0, null);
-    } while (localCpuBusyness == null);
+    }
+    ThreadRegulator.a(this.this$0);
+    ThreadRegulator.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.threadpriority.ThreadRegulator.2
  * JD-Core Version:    0.7.0.1
  */

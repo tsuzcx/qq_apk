@@ -14,12 +14,24 @@ public class DevOptUtil
   
   public static String getLiteSdkFilePath(Context paramContext)
   {
-    return getSignFileRootPath(paramContext) + "/" + "dev_opts" + "/" + "lite_sdk";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSignFileRootPath(paramContext));
+    localStringBuilder.append("/");
+    localStringBuilder.append("dev_opts");
+    localStringBuilder.append("/");
+    localStringBuilder.append("lite_sdk");
+    return localStringBuilder.toString();
   }
   
   public static String getPlayerFilePath(Context paramContext)
   {
-    return getSignFileRootPath(paramContext) + "/" + "dev_opts" + "/" + "player";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSignFileRootPath(paramContext));
+    localStringBuilder.append("/");
+    localStringBuilder.append("dev_opts");
+    localStringBuilder.append("/");
+    localStringBuilder.append("player");
+    return localStringBuilder.toString();
   }
   
   private static String getSignFileRootPath(Context paramContext)
@@ -42,7 +54,13 @@ public class DevOptUtil
   
   public static String getTestEnvFilePath(Context paramContext)
   {
-    return getSignFileRootPath(paramContext) + "/" + "dev_opts" + "/" + "test_env";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSignFileRootPath(paramContext));
+    localStringBuilder.append("/");
+    localStringBuilder.append("dev_opts");
+    localStringBuilder.append("/");
+    localStringBuilder.append("test_env");
+    return localStringBuilder.toString();
   }
   
   public static boolean isLiteSDK(Context paramContext)
@@ -63,7 +81,7 @@ public class DevOptUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.DevOptUtil
  * JD-Core Version:    0.7.0.1
  */

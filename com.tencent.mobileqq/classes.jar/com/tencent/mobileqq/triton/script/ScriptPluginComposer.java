@@ -26,28 +26,25 @@ public final class ScriptPluginComposer
     this.nonComposablePlugins = ((List)new ArrayList());
     paramList = new HashMap();
     Iterator localIterator1 = ((Iterable)this.composedScriptPlugins).iterator();
-    if (localIterator1.hasNext())
+    while (localIterator1.hasNext())
     {
       ScriptPlugin localScriptPlugin = (ScriptPlugin)localIterator1.next();
-      if ((localScriptPlugin instanceof ScriptPluginComposer)) {
+      if ((localScriptPlugin instanceof ScriptPluginComposer))
+      {
         paramList.putAll(((ScriptPluginComposer)localScriptPlugin).map);
       }
-      for (;;)
+      else if ((localScriptPlugin instanceof ComposableScriptPlugin))
       {
-        break;
-        if ((localScriptPlugin instanceof ComposableScriptPlugin))
+        Iterator localIterator2 = ((Iterable)((ComposableScriptPlugin)localScriptPlugin).getSupportedEvents()).iterator();
+        while (localIterator2.hasNext())
         {
-          Iterator localIterator2 = ((Iterable)((ComposableScriptPlugin)localScriptPlugin).getSupportedEvents()).iterator();
-          while (localIterator2.hasNext())
-          {
-            String str = (String)localIterator2.next();
-            ((Map)paramList).put(str, localScriptPlugin);
-          }
+          String str = (String)localIterator2.next();
+          ((Map)paramList).put(str, localScriptPlugin);
         }
-        else
-        {
-          this.nonComposablePlugins.add(localScriptPlugin);
-        }
+      }
+      else
+      {
+        this.nonComposablePlugins.add(localScriptPlugin);
       }
     }
     this.map = ((Map)paramList);
@@ -65,23 +62,22 @@ public final class ScriptPluginComposer
     Intrinsics.checkParameterIsNotNull(paramString, "eventName");
     Intrinsics.checkParameterIsNotNull(paramArgument, "arguments");
     Object localObject = (ScriptPlugin)this.map.get(paramString);
-    if (localObject != null) {}
-    for (localObject = ((ScriptPlugin)localObject).onCall(paramString, paramArgument); localObject != null; localObject = null) {
+    if (localObject != null) {
+      localObject = ((ScriptPlugin)localObject).onCall(paramString, paramArgument);
+    } else {
+      localObject = null;
+    }
+    if (localObject != null) {
       return localObject;
     }
-    Iterator localIterator = ((Iterable)this.nonComposablePlugins).iterator();
-    for (;;)
+    localObject = ((Iterable)this.nonComposablePlugins).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break label104;
-      }
-      String str = ((ScriptPlugin)localIterator.next()).onCall(paramString, paramArgument);
-      localObject = str;
+      String str = ((ScriptPlugin)((Iterator)localObject).next()).onCall(paramString, paramArgument);
       if (str != null) {
-        break;
+        return str;
       }
     }
-    label104:
     return null;
   }
   
@@ -137,7 +133,7 @@ public final class ScriptPluginComposer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.script.ScriptPluginComposer
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,15 @@ final class LoopingMediaSource$LoopingTimeline
   
   public LoopingMediaSource$LoopingTimeline(Timeline paramTimeline, int paramInt)
   {
-    super(false, new ShuffleOrder.UnshuffledShuffleOrder(paramInt));
+    super(false, localUnshuffledShuffleOrder);
     this.childTimeline = paramTimeline;
     this.childPeriodCount = paramTimeline.getPeriodCount();
     this.childWindowCount = paramTimeline.getWindowCount();
     this.loopCount = paramInt;
-    if (this.childPeriodCount > 0)
+    int i = this.childPeriodCount;
+    if (i > 0)
     {
-      if (paramInt <= 2147483647 / this.childPeriodCount) {
+      if (paramInt <= 2147483647 / i) {
         bool = true;
       }
       Assertions.checkState(bool, "LoopingMediaSource contains too many periods");
@@ -52,12 +53,12 @@ final class LoopingMediaSource$LoopingTimeline
   
   protected int getFirstPeriodIndexByChildIndex(int paramInt)
   {
-    return this.childPeriodCount * paramInt;
+    return paramInt * this.childPeriodCount;
   }
   
   protected int getFirstWindowIndexByChildIndex(int paramInt)
   {
-    return this.childWindowCount * paramInt;
+    return paramInt * this.childWindowCount;
   }
   
   public int getPeriodCount()
@@ -77,7 +78,7 @@ final class LoopingMediaSource$LoopingTimeline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.LoopingMediaSource.LoopingTimeline
  * JD-Core Version:    0.7.0.1
  */

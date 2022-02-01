@@ -18,14 +18,15 @@ public final class oidb_0x791$DTNearbyEntranceExtendConfig
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "bool_has_waterMarkURLStr", "str_waterMarkURLStr", "bool_has_hintWord", "str_hintWord" }, new Object[] { Boolean.valueOf(false), localByteStringMicro1, Boolean.valueOf(false), localByteStringMicro2 }, DTNearbyEntranceExtendConfig.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "bool_has_waterMarkURLStr", "str_waterMarkURLStr", "bool_has_hintWord", "str_hintWord" }, new Object[] { localBoolean, localByteStringMicro1, localBoolean, localByteStringMicro2 }, DTNearbyEntranceExtendConfig.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x791.oidb_0x791.DTNearbyEntranceExtendConfig
  * JD-Core Version:    0.7.0.1
  */

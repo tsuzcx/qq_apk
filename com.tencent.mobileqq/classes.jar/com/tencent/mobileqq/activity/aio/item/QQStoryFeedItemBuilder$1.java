@@ -13,30 +13,32 @@ class QQStoryFeedItemBuilder$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    case 2: 
-    default: 
-      return true;
-    case 0: 
-      QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
-      return true;
-    case 3: 
+      if (i != 1)
+      {
+        if (i != 3) {
+          return true;
+        }
+        QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+        return true;
+      }
       QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
+      paramView.performClick();
+      QQStoryFeedItemBuilder.a(this.a, paramView);
       return true;
     }
-    QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
-    paramView.performClick();
-    QQStoryFeedItemBuilder.a(this.a, paramView);
+    QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    QQStoryFeedItemBuilder.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryFeedItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

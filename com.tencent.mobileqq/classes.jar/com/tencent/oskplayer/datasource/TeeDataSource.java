@@ -35,32 +35,39 @@ public final class TeeDataSource
       this.upstream.close();
       try
       {
-        if (this.isCacheSinkOpen) {
+        if (this.isCacheSinkOpen)
+        {
           this.dataSink.close();
+          return;
         }
-        return;
       }
       catch (CacheDataSink.CacheDataSinkException localCacheDataSinkException1)
       {
-        PlayerUtils.log(5, getLogTag(), "error close datasink " + localCacheDataSinkException1.toString(), localCacheDataSinkException1);
-        return;
+        String str = getLogTag();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("error close datasink ");
+        ((StringBuilder)localObject2).append(localCacheDataSinkException1.toString());
+        PlayerUtils.log(5, str, ((StringBuilder)localObject2).toString(), localCacheDataSinkException1);
       }
+      return;
+    }
+    finally
+    {
       try
       {
         if (this.isCacheSinkOpen) {
           this.dataSink.close();
         }
-        throw localObject;
       }
       catch (CacheDataSink.CacheDataSinkException localCacheDataSinkException2)
       {
-        for (;;)
-        {
-          PlayerUtils.log(5, getLogTag(), "error close datasink " + localCacheDataSinkException2.toString(), localCacheDataSinkException2);
-        }
+        Object localObject2 = getLogTag();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("error close datasink ");
+        localStringBuilder.append(localCacheDataSinkException2.toString());
+        PlayerUtils.log(5, (String)localObject2, localStringBuilder.toString(), localCacheDataSinkException2);
       }
     }
-    finally {}
   }
   
   public FileType getFileType()
@@ -70,7 +77,10 @@ public final class TeeDataSource
   
   public String getLogTag()
   {
-    return this.extraLogTag + "TeeDataSource";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.extraLogTag);
+    localStringBuilder.append("TeeDataSource");
+    return localStringBuilder.toString();
   }
   
   public long getTotalLength()
@@ -81,51 +91,52 @@ public final class TeeDataSource
   public long open(DataSpec paramDataSpec)
   {
     long l2 = this.upstream.open(paramDataSpec);
-    FileType localFileType = FileType.UNKNOWN;
+    Object localObject1 = FileType.UNKNOWN;
+    Object localObject2 = this.upstream;
     long l1;
-    if ((this.upstream instanceof HttpDataSource))
+    if ((localObject2 instanceof HttpDataSource))
     {
-      l1 = ((HttpDataSource)this.upstream).getTotalLength();
-      localFileType = FileType.getFileType((String)((List)((HttpDataSource)this.upstream).getResponseHeaders().get("Content-Type")).get(0));
+      l1 = ((HttpDataSource)localObject2).getTotalLength();
+      localObject1 = FileType.getFileType((String)((List)((HttpDataSource)this.upstream).getResponseHeaders().get("Content-Type")).get(0));
     }
-    for (;;)
+    else
     {
-      DataSpec localDataSpec = paramDataSpec;
-      if (paramDataSpec.length == -1L)
-      {
-        localDataSpec = paramDataSpec;
-        if (l2 != -1L) {
-          localDataSpec = new DataSpec(paramDataSpec.uri, paramDataSpec.absoluteStreamPosition, paramDataSpec.position, l2, paramDataSpec.key, paramDataSpec.flags, paramDataSpec.uuid, paramDataSpec.priority);
-        }
-      }
-      this.ignoreCacheSink = false;
-      if (l1 != -1L) {
-        try
-        {
-          this.dataSink.open(localDataSpec, l1, localFileType);
-          this.isCacheSinkOpen = true;
-          return l2;
-        }
-        catch (CacheDataSink.CacheDataSinkException paramDataSpec)
-        {
-          this.ignoreCacheSink = true;
-          PlayerUtils.log(5, getLogTag(), "error open datasink " + paramDataSpec.toString(), paramDataSpec);
-          return l2;
-        }
-      }
-      this.ignoreCacheSink = true;
-      return l2;
       l1 = -1L;
     }
+    if ((paramDataSpec.length == -1L) && (l2 != -1L)) {
+      paramDataSpec = new DataSpec(paramDataSpec.uri, paramDataSpec.absoluteStreamPosition, paramDataSpec.position, l2, paramDataSpec.key, paramDataSpec.flags, paramDataSpec.uuid, paramDataSpec.priority);
+    }
+    this.ignoreCacheSink = false;
+    if (l1 != -1L) {
+      try
+      {
+        this.dataSink.open(paramDataSpec, l1, (FileType)localObject1);
+        this.isCacheSinkOpen = true;
+        return l2;
+      }
+      catch (CacheDataSink.CacheDataSinkException paramDataSpec)
+      {
+        this.ignoreCacheSink = true;
+        localObject1 = getLogTag();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("error open datasink ");
+        ((StringBuilder)localObject2).append(paramDataSpec.toString());
+        PlayerUtils.log(5, (String)localObject1, ((StringBuilder)localObject2).toString(), paramDataSpec);
+        return l2;
+      }
+    }
+    this.ignoreCacheSink = true;
+    return l2;
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     paramInt2 = this.upstream.read(paramArrayOfByte, paramInt1, paramInt2);
-    if ((paramInt2 <= 0) || (this.ignoreCacheSink)) {}
-    for (;;)
+    if (paramInt2 > 0)
     {
-      return paramInt2;
+      if (this.ignoreCacheSink) {
+        return paramInt2;
+      }
       try
       {
         if (this.isCacheSinkOpen)
@@ -137,7 +148,11 @@ public final class TeeDataSource
       catch (CacheDataSink.CacheDataSinkException paramArrayOfByte)
       {
         this.ignoreCacheSink = true;
-        PlayerUtils.log(5, getLogTag(), "error write datasink " + paramArrayOfByte.toString(), paramArrayOfByte);
+        String str = getLogTag();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("error write datasink ");
+        localStringBuilder.append(paramArrayOfByte.toString());
+        PlayerUtils.log(5, str, localStringBuilder.toString(), paramArrayOfByte);
       }
     }
     return paramInt2;
@@ -150,7 +165,7 @@ public final class TeeDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.datasource.TeeDataSource
  * JD-Core Version:    0.7.0.1
  */

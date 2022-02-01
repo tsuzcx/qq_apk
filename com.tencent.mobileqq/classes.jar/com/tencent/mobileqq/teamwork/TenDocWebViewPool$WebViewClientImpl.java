@@ -14,13 +14,19 @@ class TenDocWebViewPool$WebViewClientImpl
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageFinished = " + paramString);
+    paramWebView = new StringBuilder();
+    paramWebView.append("tendocpreload onPageFinished = ");
+    paramWebView.append(paramString);
+    QLog.i("TenDocWebViewPool", 1, paramWebView.toString());
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     JsInjector.getInstance().onPageStarted(paramWebView);
-    QLog.i("TenDocWebViewPool", 1, "tendocpreload onPageStarted = " + paramString);
+    paramWebView = new StringBuilder();
+    paramWebView.append("tendocpreload onPageStarted = ");
+    paramWebView.append(paramString);
+    QLog.i("TenDocWebViewPool", 1, paramWebView.toString());
   }
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
@@ -30,7 +36,7 @@ class TenDocWebViewPool$WebViewClientImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocWebViewPool.WebViewClientImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -18,32 +18,36 @@ class a$4$1
   
   public void onClick(View paramView)
   {
-    String str = null;
     a.a(this.uY.uU, true);
     try
     {
-      fm.a locala = fm.dL().dO();
-      if (locala != null) {
-        str = locala.qu;
+      localObject1 = fm.dL().dO();
+      if (localObject1 == null) {
+        break label107;
       }
-      if (hl.i("com.tencent.wifimanager", str) == 1)
-      {
-        hv.fD().a(null);
-        WifiSDKUIApi.showToast(a.l(this.uY.uU), a.l(this.uY.uU).getString(RProxy.string.tmsdk_wifi_download_wifi_manager_tip), 0);
-      }
-      hv.fD().a(a.l(this.uY.uU), 5);
+      localObject1 = ((fm.a)localObject1).qu;
     }
     catch (Exception localException)
     {
-      label94:
-      break label94;
+      for (;;)
+      {
+        Object localObject1;
+        continue;
+        Object localObject2 = null;
+      }
     }
+    if (hl.i("com.tencent.wifimanager", (String)localObject1) == 1)
+    {
+      hv.fD().a(null);
+      WifiSDKUIApi.showToast(a.l(this.uY.uU), a.l(this.uY.uU).getString(RProxy.string.tmsdk_wifi_download_wifi_manager_tip), 0);
+    }
+    hv.fD().a(a.l(this.uY.uU), 5);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.wifisdk.ui.view.a.4.1
  * JD-Core Version:    0.7.0.1
  */

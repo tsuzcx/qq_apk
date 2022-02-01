@@ -2,12 +2,8 @@ package com.tencent.mobileqq.config.business.tendoc;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 final class TencentDocUrl2DocConfigBean
 {
@@ -16,62 +12,7 @@ final class TencentDocUrl2DocConfigBean
   
   public static TencentDocUrl2DocConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0))
-    {
-      QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error, confFiles is no-valid.");
-      return null;
-    }
-    TencentDocUrl2DocConfigBean localTencentDocUrl2DocConfigBean = new TencentDocUrl2DocConfigBean();
-    int k = paramArrayOfQConfItem.length;
-    int i = 0;
-    while (i < k)
-    {
-      Object localObject1 = paramArrayOfQConfItem[i];
-      try
-      {
-        localObject1 = new JSONObject(((QConfItem)localObject1).a);
-        if ((localObject1 != null) && (((JSONObject)localObject1).has("url_2_doc_enable")))
-        {
-          if (((JSONObject)localObject1).optBoolean("url_2_doc_enable"))
-          {
-            j = 1;
-            localTencentDocUrl2DocConfigBean.jdField_a_of_type_Int = j;
-          }
-        }
-        else
-        {
-          if ((localObject1 == null) || (!((JSONObject)localObject1).has("support_host"))) {
-            break label189;
-          }
-          localObject1 = ((JSONObject)localObject1).optJSONArray("support_host");
-          if (localObject1 == null) {
-            break label189;
-          }
-          j = 0;
-          while (j < ((JSONArray)localObject1).length())
-          {
-            String str = ((JSONArray)localObject1).optString(j);
-            if (!TextUtils.isEmpty(str)) {
-              localTencentDocUrl2DocConfigBean.jdField_a_of_type_JavaUtilList.add(str);
-            }
-            j += 1;
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e("TencentDocUrl2DocConfigBean", 1, "parse error", localJSONException);
-          Object localObject2 = null;
-          continue;
-          int j = 0;
-        }
-        label189:
-        i += 1;
-      }
-    }
-    return localTencentDocUrl2DocConfigBean;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean a()
@@ -86,7 +27,7 @@ final class TencentDocUrl2DocConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocUrl2DocConfigBean
  * JD-Core Version:    0.7.0.1
  */

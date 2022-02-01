@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class CertifiedAccountMeta$StLiveGoods
   extends MessageMicro<StLiveGoods>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 56, 66 }, new String[] { "goodsId", "imgUrl", "name", "desc", "curPrice", "orgPrice", "inventory", "saleTip" }, new Object[] { "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, StLiveGoods.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field curPrice = PBField.initInt32(0);
   public final PBStringField desc = PBField.initString("");
   public final PBStringField goodsId = PBField.initString("");
@@ -18,10 +18,16 @@ public final class CertifiedAccountMeta$StLiveGoods
   public final PBStringField name = PBField.initString("");
   public final PBInt32Field orgPrice = PBField.initInt32(0);
   public final PBStringField saleTip = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48, 56, 66 }, new String[] { "goodsId", "imgUrl", "name", "desc", "curPrice", "orgPrice", "inventory", "saleTip" }, new Object[] { "", "", "", "", localInteger, localInteger, localInteger, "" }, StLiveGoods.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLiveGoods
  * JD-Core Version:    0.7.0.1
  */

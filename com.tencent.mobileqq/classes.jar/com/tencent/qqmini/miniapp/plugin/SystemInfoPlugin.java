@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.qqmini.miniapp.util.logmonitor.LogBeanUtil;
 import com.tencent.qqmini.sdk.action.PageAction;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
@@ -54,175 +55,139 @@ public class SystemInfoPlugin
   
   private String getNavBarSytle(String paramString)
   {
-    String str = "default";
     if (!TextUtils.isEmpty(paramString)) {
-      str = this.mApkgInfo.getAppConfigInfo().getPageInfo(paramString).windowInfo.navigationBarInfo.style;
+      return this.mApkgInfo.getAppConfigInfo().getPageInfo(paramString).windowInfo.navigationBarInfo.style;
     }
-    return str;
+    return "default";
   }
   
   private String getPageUrl()
   {
-    String str1 = PageAction.obtain(this.mMiniAppContext).getPageUrl();
-    if (!StringUtil.isEmpty(str1)) {}
-    String str2;
-    do
-    {
-      return str1;
-      str2 = this.mMiniAppInfo.launchParam.entryPath;
-      str1 = this.mApkgInfo.mAppConfigInfo.entryPagePath;
-    } while (!this.mApkgInfo.isUrlFileExist(str2));
-    return str2;
+    Object localObject = PageAction.obtain(this.mMiniAppContext).getPageUrl();
+    if (!StringUtil.isEmpty((String)localObject)) {
+      return localObject;
+    }
+    String str1 = this.mMiniAppInfo.launchParam.entryPath;
+    String str2 = this.mApkgInfo.mAppConfigInfo.entryPagePath;
+    localObject = str1;
+    if (!this.mApkgInfo.isUrlFileExist(str1)) {
+      localObject = str2;
+    }
+    return localObject;
   }
   
   private int getRelHeight(DisplayMetrics paramDisplayMetrics, Activity paramActivity)
   {
-    boolean bool2 = false;
     boolean bool1;
-    if ((DisplayUtil.checkNavigationBarShow(this.mContext)) || (DisplayUtil.isFlymeOS7NavBarShow()))
-    {
+    if ((!DisplayUtil.checkNavigationBarShow(this.mContext)) && (!DisplayUtil.isFlymeOS7NavBarShow())) {
+      bool1 = false;
+    } else {
       bool1 = true;
-      if ((paramActivity == null) || (paramActivity.isFinishing()) || (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI"))) {
-        break label156;
-      }
-      if ((!DisplayUtil.hasNavBar(paramActivity)) || (!DisplayUtil.isNavigationBarExist(paramActivity)))
-      {
-        bool1 = bool2;
-        if (!DisplayUtil.isFlymeOS7NavBarShow()) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
     }
-    label156:
-    for (;;)
+    boolean bool2 = bool1;
+    if (paramActivity != null)
     {
-      QMLog.d("SystemInfoPlugin", " hasNavBar : " + bool1 + "; " + Build.BRAND);
-      int i = (int)(Math.round(paramDisplayMetrics.heightPixels / paramDisplayMetrics.density) + 0.5F);
-      if (bool1)
+      bool2 = bool1;
+      if (!paramActivity.isFinishing())
       {
-        return i - (int)(DisplayUtil.getNavigationBarHeight(this.mContext) / paramDisplayMetrics.density);
-        bool1 = false;
-        break;
+        bool2 = bool1;
+        if (!Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) {
+          if (((DisplayUtil.hasNavBar(paramActivity)) && (DisplayUtil.isNavigationBarExist(paramActivity))) || (DisplayUtil.isFlymeOS7NavBarShow())) {
+            bool2 = true;
+          } else {
+            bool2 = false;
+          }
+        }
       }
-      return i;
     }
+    paramActivity = new StringBuilder();
+    paramActivity.append(" hasNavBar : ");
+    paramActivity.append(bool2);
+    paramActivity.append("; ");
+    paramActivity.append(Build.BRAND);
+    QMLog.d("SystemInfoPlugin", paramActivity.toString());
+    int j = (int)(Math.round(paramDisplayMetrics.heightPixels / paramDisplayMetrics.density) + 0.5F);
+    int i = j;
+    if (bool2) {
+      i = j - (int)(DisplayUtil.getNavigationBarHeight(this.mContext) / paramDisplayMetrics.density);
+    }
+    return i;
   }
   
   private int getRelWindowHeight(double paramDouble, int paramInt1, int paramInt2)
   {
-    int k = 0;
-    int m = (int)(DisplayUtil.dip2px(this.mContext, 44.0F) / paramDouble + 0.5D);
-    int j = (int)(DisplayUtil.dip2px(this.mContext, 54.0F) / paramDouble + 0.5D);
+    double d = DisplayUtil.dip2px(this.mContext, 44.0F);
+    Double.isNaN(d);
+    int k = (int)(d / paramDouble + 0.5D);
+    d = DisplayUtil.dip2px(this.mContext, 54.0F);
+    Double.isNaN(d);
+    int j = (int)(d / paramDouble + 0.5D);
     String str1 = getPageUrl();
     String str2 = getNavBarSytle(str1);
-    int i;
-    if ((this.mApkgInfo != null) && (this.mApkgInfo.getAppConfigInfo() != null)) {
-      if ((this.mApkgInfo.getAppConfigInfo().tabBarInfo != null) && (this.mApkgInfo.isTabBarPage(str1)) && (this.mApkgInfo.getAppConfigInfo().tabBarInfo.isShow())) {
-        i = 1;
-      }
+    if ((this.mApkgInfo != null) && (this.mApkgInfo.getAppConfigInfo() != null) && (this.mApkgInfo.getAppConfigInfo().tabBarInfo != null) && (this.mApkgInfo.isTabBarPage(str1)) && (this.mApkgInfo.getAppConfigInfo().tabBarInfo.isShow())) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    for (;;)
+    if ("default".equals(str2))
     {
-      if ("default".equals(str2))
+      paramInt2 = paramInt2 - paramInt1 - k;
+      paramInt1 = paramInt2;
+      if (i != 0)
       {
-        if (i != 0) {
-          k = j;
-        }
-        return paramInt2 - paramInt1 - m - k;
-        i = 0;
-      }
-      else
-      {
-        if (i != 0) {}
-        for (;;)
-        {
-          return paramInt2 - j;
-          j = 0;
-        }
-        i = 0;
+        i = j;
+        paramInt1 = paramInt2;
+        break label197;
       }
     }
+    else
+    {
+      paramInt1 = paramInt2;
+      if (i != 0)
+      {
+        i = j;
+        paramInt1 = paramInt2;
+        break label197;
+      }
+    }
+    int i = 0;
+    label197:
+    return paramInt1 - i;
   }
   
-  /* Error */
   @JsEvent({"detectAbnormalLog"})
   public void detectAbnormalLog(RequestEvent paramRequestEvent)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: getfield 41	com/tencent/qqmini/miniapp/plugin/SystemInfoPlugin:mContext	Landroid/content/Context;
-    //   7: ifnonnull +20 -> 27
-    //   10: ldc 9
-    //   12: ldc_w 273
-    //   15: invokestatic 276	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   18: aload_1
-    //   19: ldc_w 273
-    //   22: invokevirtual 281	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	(Ljava/lang/String;)Ljava/lang/String;
-    //   25: pop
-    //   26: return
-    //   27: new 283	org/json/JSONObject
-    //   30: dup
-    //   31: aload_1
-    //   32: getfield 286	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:jsonParams	Ljava/lang/String;
-    //   35: invokespecial 289	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   38: astore_3
-    //   39: aload_3
-    //   40: ldc_w 291
-    //   43: aconst_null
-    //   44: invokevirtual 295	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   47: astore_2
-    //   48: aload_3
-    //   49: ldc_w 297
-    //   52: aconst_null
-    //   53: invokevirtual 295	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   56: astore_3
-    //   57: aload_2
-    //   58: ifnonnull +30 -> 88
-    //   61: aload_1
-    //   62: ldc_w 299
-    //   65: invokevirtual 281	com/tencent/qqmini/sdk/launcher/core/model/RequestEvent:fail	(Ljava/lang/String;)Ljava/lang/String;
-    //   68: pop
-    //   69: return
-    //   70: astore_3
-    //   71: aconst_null
-    //   72: astore_2
-    //   73: ldc 9
-    //   75: ldc_w 301
-    //   78: aload_3
-    //   79: invokestatic 304	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   82: aload 4
-    //   84: astore_3
-    //   85: goto -28 -> 57
-    //   88: aload_2
-    //   89: ldc_w 306
-    //   92: aload_3
-    //   93: new 308	com/tencent/qqmini/miniapp/plugin/SystemInfoPlugin$1
-    //   96: dup
-    //   97: aload_0
-    //   98: aload_1
-    //   99: invokespecial 311	com/tencent/qqmini/miniapp/plugin/SystemInfoPlugin$1:<init>	(Lcom/tencent/qqmini/miniapp/plugin/SystemInfoPlugin;Lcom/tencent/qqmini/sdk/launcher/core/model/RequestEvent;)V
-    //   102: invokestatic 317	com/tencent/qqmini/miniapp/util/logmonitor/LogBeanUtil:loadLogBeanList	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/qqmini/miniapp/util/logmonitor/ILoadLogListener;)V
-    //   105: return
-    //   106: astore_3
-    //   107: goto -34 -> 73
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	110	0	this	SystemInfoPlugin
-    //   0	110	1	paramRequestEvent	RequestEvent
-    //   47	42	2	str	String
-    //   38	19	3	localObject1	Object
-    //   70	9	3	localJSONException1	JSONException
-    //   84	9	3	localObject2	Object
-    //   106	1	3	localJSONException2	JSONException
-    //   1	82	4	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   27	48	70	org/json/JSONException
-    //   48	57	106	org/json/JSONException
+    if (this.mContext == null)
+    {
+      QMLog.e("SystemInfoPlugin", "detectAbnormalLog error, context is NULL");
+      paramRequestEvent.fail("detectAbnormalLog error, context is NULL");
+      return;
+    }
+    Object localObject3 = null;
+    String str;
+    try
+    {
+      Object localObject1 = new JSONObject(paramRequestEvent.jsonParams);
+      str = ((JSONObject)localObject1).optString("logTab", null);
+      try
+      {
+        localObject1 = ((JSONObject)localObject1).optString("keyErr", null);
+      }
+      catch (JSONException localJSONException1) {}
+      QMLog.e("SystemInfoPlugin", "detectAbnormalLog get a JSONException:", localJSONException2);
+    }
+    catch (JSONException localJSONException2)
+    {
+      str = null;
+    }
+    Object localObject2 = localObject3;
+    if (str == null)
+    {
+      paramRequestEvent.fail("logTab is null");
+      return;
+    }
+    LogBeanUtil.loadLogBeanList(str, "E", localObject2, new SystemInfoPlugin.1(this, paramRequestEvent));
   }
   
   @JsEvent({"getSystemInfo", "getSystemInfoSync"})
@@ -234,12 +199,18 @@ public class SystemInfoPlugin
       return paramRequestEvent.fail();
     }
     Object localObject1 = this.mMiniAppContext.getAttachedActivity();
-    Object localObject2 = getDisplayMetrics();
-    double d = ((DisplayMetrics)localObject2).density;
-    int j = (int)(Math.round(DisplayUtil.getStatusBarHeight(this.mContext)) / d);
-    int m = (int)((float)Math.round(((DisplayMetrics)localObject2).widthPixels / d) + 0.5F);
-    int n = getRelHeight((DisplayMetrics)localObject2, (Activity)localObject1);
-    int i1 = getRelWindowHeight(d, j, n);
+    DisplayMetrics localDisplayMetrics = getDisplayMetrics();
+    double d1 = localDisplayMetrics.density;
+    double d2 = Math.round(DisplayUtil.getStatusBarHeight(this.mContext));
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    int j = (int)(d2 / d1);
+    d2 = localDisplayMetrics.widthPixels;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    int m = (int)((float)Math.round(d2 / d1) + 0.5F);
+    int n = getRelHeight(localDisplayMetrics, (Activity)localObject1);
+    int i1 = getRelWindowHeight(d1, j, n);
     int k = ImmersiveUtils.getNotchHeight(this.mMiniAppContext.getContext(), (Activity)localObject1);
     int i = k;
     if (k == 0) {
@@ -252,56 +223,62 @@ public class SystemInfoPlugin
       ((JSONObject)localObject1).put("top", i);
       ((JSONObject)localObject1).put("right", m);
       ((JSONObject)localObject1).put("bottom", n);
-      ((JSONObject)localObject1).put("width", m - 0);
+      ((JSONObject)localObject1).put("width", m + 0);
       ((JSONObject)localObject1).put("height", n - i);
-      try
-      {
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("brand", Build.BRAND);
-        ((JSONObject)localObject2).put("model", Build.MODEL);
-        ((JSONObject)localObject2).put("pixelRatio", d);
-        ((JSONObject)localObject2).put("screenWidth", m);
-        ((JSONObject)localObject2).put("screenHeight", n);
-        ((JSONObject)localObject2).put("windowWidth", m);
-        ((JSONObject)localObject2).put("windowHeight", i1);
-        ((JSONObject)localObject2).put("statusBarHeight", j);
-        ((JSONObject)localObject2).put("language", "zh_CN");
-        ((JSONObject)localObject2).put("version", this.mMiniAppProxy.getAppVersion());
-        ((JSONObject)localObject2).put("system", "Android " + Build.VERSION.RELEASE);
-        ((JSONObject)localObject2).put("platform", "android");
-        ((JSONObject)localObject2).put("fontSizeSetting", 16);
-        ((JSONObject)localObject2).put("SDKVersion", this.mMiniAppContext.getBaseLibVersion());
-        ((JSONObject)localObject2).put("AppPlatform", this.mMiniAppProxy.getAppName());
-        ((JSONObject)localObject2).put("safeArea", localObject1);
-        ((JSONObject)localObject2).put("runtimeVersion", "1.12.1.0");
-        if (this.mApkgInfo.getAppConfigInfo().darkmode) {
-          ((JSONObject)localObject2).put("theme", ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserTheme());
-        }
-        localObject1 = ApiUtil.wrapCallbackOk(paramRequestEvent.event, (JSONObject)localObject2).toString();
-        if ("getSystemInfo".equals(paramRequestEvent.event)) {
-          paramRequestEvent.evaluateCallbackJs((String)localObject1);
-        }
-        QMLog.i("SystemInfoPlugin", "getSystemInfo ： " + (String)localObject1);
-        return localObject1;
-      }
-      catch (Exception localException)
-      {
-        QMLog.e("SystemInfoPlugin", "getSystemInfo exception: " + new Throwable(localException));
-        return paramRequestEvent.fail();
-      }
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QMLog.e("SystemInfoPlugin", "getSafeArea", localJSONException);
-      }
+      QMLog.e("SystemInfoPlugin", "getSafeArea", localJSONException);
     }
+    try
+    {
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("brand", Build.BRAND);
+      ((JSONObject)localObject2).put("model", Build.MODEL);
+      ((JSONObject)localObject2).put("pixelRatio", d1);
+      ((JSONObject)localObject2).put("screenWidth", m);
+      ((JSONObject)localObject2).put("screenHeight", n);
+      ((JSONObject)localObject2).put("windowWidth", m);
+      ((JSONObject)localObject2).put("windowHeight", i1);
+      ((JSONObject)localObject2).put("statusBarHeight", j);
+      ((JSONObject)localObject2).put("language", "zh_CN");
+      ((JSONObject)localObject2).put("version", this.mMiniAppProxy.getAppVersion());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Android ");
+      localStringBuilder.append(Build.VERSION.RELEASE);
+      ((JSONObject)localObject2).put("system", localStringBuilder.toString());
+      ((JSONObject)localObject2).put("platform", "android");
+      ((JSONObject)localObject2).put("fontSizeSetting", 16);
+      ((JSONObject)localObject2).put("SDKVersion", this.mMiniAppContext.getBaseLibVersion());
+      ((JSONObject)localObject2).put("AppPlatform", this.mMiniAppProxy.getAppName());
+      ((JSONObject)localObject2).put("safeArea", localObject1);
+      ((JSONObject)localObject2).put("runtimeVersion", "1.15.0.0");
+      if (this.mApkgInfo.getAppConfigInfo().darkmode) {
+        ((JSONObject)localObject2).put("theme", ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserTheme());
+      }
+      localObject1 = ApiUtil.wrapCallbackOk(paramRequestEvent.event, (JSONObject)localObject2).toString();
+      if ("getSystemInfo".equals(paramRequestEvent.event)) {
+        paramRequestEvent.evaluateCallbackJs((String)localObject1);
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getSystemInfo ： ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QMLog.i("SystemInfoPlugin", ((StringBuilder)localObject2).toString());
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getSystemInfo exception: ");
+      ((StringBuilder)localObject2).append(new Throwable(localException));
+      QMLog.e("SystemInfoPlugin", ((StringBuilder)localObject2).toString());
+    }
+    return paramRequestEvent.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.SystemInfoPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -19,27 +19,31 @@ class EnterpriseQQManager$1
     }
     synchronized (EnterpriseQQManager.a())
     {
-      if ((EnterpriseQQManager.a(this.this$0) == null) || (EnterpriseQQManager.a(this.this$0).size() <= 0)) {
-        break label154;
-      }
-      Iterator localIterator = EnterpriseQQManager.a(this.this$0).iterator();
-      while (localIterator.hasNext())
+      if ((EnterpriseQQManager.a(this.this$0) != null) && (EnterpriseQQManager.a(this.this$0).size() > 0))
       {
-        EnterpriseQQManager.EventRequest localEventRequest = (EnterpriseQQManager.EventRequest)localIterator.next();
-        if (localEventRequest != null) {
-          this.this$0.a(EnterpriseQQManager.a(this.this$0), EnterpriseQQManager.a(this.this$0), localEventRequest.a, localEventRequest.b, false, 0.0D, 0.0D);
+        Iterator localIterator = EnterpriseQQManager.a(this.this$0).iterator();
+        while (localIterator.hasNext())
+        {
+          EnterpriseQQManager.EventRequest localEventRequest = (EnterpriseQQManager.EventRequest)localIterator.next();
+          if (localEventRequest != null) {
+            this.this$0.a(EnterpriseQQManager.a(this.this$0), EnterpriseQQManager.a(this.this$0), localEventRequest.a, localEventRequest.b, false, 0.0D, 0.0D);
+          }
         }
+        EnterpriseQQManager.a(this.this$0).clear();
       }
+      EnterpriseQQManager.a(this.this$0, null);
+      EnterpriseQQManager.a(this.this$0, null);
+      return;
     }
-    EnterpriseQQManager.a(this.this$0).clear();
-    label154:
-    EnterpriseQQManager.a(this.this$0, null);
-    EnterpriseQQManager.a(this.this$0, null);
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager.1
  * JD-Core Version:    0.7.0.1
  */

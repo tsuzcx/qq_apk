@@ -8,10 +8,10 @@ import tencent.av.chatroom.chatroom_sso.Msg;
 
 public class ChatRoomMsg
 {
-  public static int a;
-  public static int b;
-  public static int c;
-  public static int d;
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public static int d = 4;
   private static long e;
   public final long a;
   public ChatRoomInfo a;
@@ -21,15 +21,6 @@ public class ChatRoomMsg
   public long d;
   public int e;
   private int f;
-  
-  static
-  {
-    jdField_e_of_type_Long = 0L;
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_c_of_type_Int = 3;
-    jdField_d_of_type_Int = 4;
-  }
   
   public ChatRoomMsg(ChatRoomInfo paramChatRoomInfo, long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt)
   {
@@ -68,17 +59,13 @@ public class ChatRoomMsg
       localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
       localChatRoomInfo.jdField_d_of_type_Int += 1;
     }
-    for (;;)
+    else if (paramInt == jdField_b_of_type_Int)
     {
-      if ((this.jdField_d_of_type_Long == -9223372036854775808L) || (this.jdField_e_of_type_Int != jdField_d_of_type_Int)) {
-        this.jdField_e_of_type_Int = paramInt;
-      }
-      return;
-      if (paramInt == jdField_b_of_type_Int)
-      {
-        localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-        localChatRoomInfo.jdField_c_of_type_Int += 1;
-      }
+      localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
+      localChatRoomInfo.jdField_c_of_type_Int += 1;
+    }
+    if ((this.jdField_d_of_type_Long == -9223372036854775808L) || (this.jdField_e_of_type_Int != jdField_d_of_type_Int)) {
+      this.jdField_e_of_type_Int = paramInt;
     }
   }
   
@@ -89,11 +76,23 @@ public class ChatRoomMsg
   
   public boolean a(chatroom_sso.Msg paramMsg)
   {
-    if (paramMsg == null) {}
-    while ((this.jdField_d_of_type_Long != paramMsg.msg_id.get()) || (this.jdField_a_of_type_Long != paramMsg.uin.get()) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramMsg.msg.get()))) {
+    boolean bool2 = false;
+    if (paramMsg == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (this.jdField_d_of_type_Long == paramMsg.msg_id.get())
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Long == paramMsg.uin.get())
+      {
+        bool1 = bool2;
+        if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramMsg.msg.get())) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public boolean b()
@@ -104,13 +103,21 @@ public class ChatRoomMsg
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(60);
-    localStringBuilder.append("ChatRoomMsg{senderUin: ").append(this.jdField_a_of_type_Long).append(", serverSeq: ").append(this.jdField_d_of_type_Long).append(", localSeq: ").append(this.jdField_b_of_type_Long).append(", state: ").append(this.jdField_e_of_type_Int).append("}");
+    localStringBuilder.append("ChatRoomMsg{senderUin: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", serverSeq: ");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(", localSeq: ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", state: ");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.chatroom.ChatRoomMsg
  * JD-Core Version:    0.7.0.1
  */

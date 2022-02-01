@@ -9,36 +9,39 @@ class PhoneStatusMonitor$QQPhoneStateListener
   
   public void onCallStateChanged(int paramInt, String paramString)
   {
-    switch (paramInt)
+    PhoneStatusMonitor localPhoneStatusMonitor;
+    if (paramInt != 0)
     {
+      if ((paramInt == 1) || (paramInt == 2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PhoneStatusMonitor", 0, "onCallStateChanged CALL_STATE_RINGING or CALL_STATE_OFFHOOK");
+        }
+        if (!this.this$0.mIsCalling)
+        {
+          localPhoneStatusMonitor = this.this$0;
+          localPhoneStatusMonitor.mIsCalling = true;
+          if (localPhoneStatusMonitor.mPhoneStatusListener != null) {
+            this.this$0.mPhoneStatusListener.onCallStateChanged(true);
+          }
+        }
+      }
     }
-    for (;;)
+    else
     {
-      super.onCallStateChanged(paramInt, paramString);
-      return;
       if (QLog.isColorLevel()) {
         QLog.d("PhoneStatusMonitor", 0, "onCallStateChanged CALL_STATE_IDLE");
       }
       if ((this.this$0.mIsCalling) && (!PhoneStatusTools.isCalling(this.this$0.mContext)))
       {
-        this.this$0.mIsCalling = false;
-        if (this.this$0.mPhoneStatusListener != null)
-        {
+        localPhoneStatusMonitor = this.this$0;
+        localPhoneStatusMonitor.mIsCalling = false;
+        if (localPhoneStatusMonitor.mPhoneStatusListener != null) {
           this.this$0.mPhoneStatusListener.onCallStateChanged(false);
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("PhoneStatusMonitor", 0, "onCallStateChanged CALL_STATE_RINGING or CALL_STATE_OFFHOOK");
-          }
-          if (!this.this$0.mIsCalling)
-          {
-            this.this$0.mIsCalling = true;
-            if (this.this$0.mPhoneStatusListener != null) {
-              this.this$0.mPhoneStatusListener.onCallStateChanged(true);
-            }
-          }
         }
       }
     }
+    super.onCallStateChanged(paramInt, paramString);
   }
 }
 

@@ -23,7 +23,10 @@ class ThreadCenter$ThreadImpl$2
       {
         ((ThreadCenter.CoreHandler)localEntry.getValue()).quitThread();
         localIterator.remove();
-        Log.e("threadimpl_log", "remove handler thread: " + (String)localEntry.getKey());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("remove handler thread: ");
+        localStringBuilder.append((String)localEntry.getKey());
+        Log.e("threadimpl_log", localStringBuilder.toString());
       }
     }
     ThreadCenter.ThreadImpl.access$300(this.this$0).postDelayed(this, 300000L);
@@ -31,7 +34,7 @@ class ThreadCenter$ThreadImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.ThreadCenter.ThreadImpl.2
  * JD-Core Version:    0.7.0.1
  */

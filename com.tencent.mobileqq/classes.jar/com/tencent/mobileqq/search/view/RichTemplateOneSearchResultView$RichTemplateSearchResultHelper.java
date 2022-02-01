@@ -64,16 +64,25 @@ class RichTemplateOneSearchResultView$RichTemplateSearchResultHelper
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("RichTemplateOneSearchResultView", 2, "setImageUrl " + paramString);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setImageUrl ");
+        localStringBuilder.append(paramString);
+        QLog.e("RichTemplateOneSearchResultView", 2, localStringBuilder.toString());
       }
       paramImageView.setImageDrawable(URLDrawable.getDrawable(new URL(paramString), 0, 0, new ColorDrawable(-1315339), new ColorDrawable(-1315339), true));
       return;
     }
     catch (MalformedURLException paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("RichTemplateOneSearchResultView", 2, "setImageUrl error " + paramString.toString());
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setImageUrl error ");
+        localStringBuilder.append(paramString.toString());
+        QLog.e("RichTemplateOneSearchResultView", 2, localStringBuilder.toString());
       }
       paramImageView.setImageDrawable(new ColorDrawable(-1315339));
     }
@@ -113,24 +122,26 @@ class RichTemplateOneSearchResultView$RichTemplateSearchResultHelper
   {
     if (paramView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368607));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363575));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372120));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365707));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370991));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)paramView.findViewById(2131364233));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)paramView.findViewById(2131364234));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)paramView.findViewById(2131364235));
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363576);
-      this.jdField_a_of_type_ArrayOfAndroidViewView[0] = paramView.findViewById(2131363763);
-      this.jdField_a_of_type_ArrayOfAndroidViewView[1] = paramView.findViewById(2131363765);
-      this.jdField_a_of_type_ArrayOfAndroidViewView[2] = paramView.findViewById(2131363764);
-      this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364240);
-      if ((this.jdField_a_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-        ((ThemeImageView)this.jdField_a_of_type_AndroidWidgetImageView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368346));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363498));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371702));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365544));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370625));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)paramView.findViewById(2131364150));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)paramView.findViewById(2131364151));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)paramView.findViewById(2131364152));
+      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363499);
+      this.jdField_a_of_type_ArrayOfAndroidViewView[0] = paramView.findViewById(2131363692);
+      this.jdField_a_of_type_ArrayOfAndroidViewView[1] = paramView.findViewById(2131363694);
+      this.jdField_a_of_type_ArrayOfAndroidViewView[2] = paramView.findViewById(2131363693);
+      this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364157);
+      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      if ((localImageView instanceof ThemeImageView)) {
+        ((ThemeImageView)localImageView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
       }
-      if ((this.jdField_b_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-        ((ThemeImageView)this.jdField_b_of_type_AndroidWidgetImageView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
+      localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+      if ((localImageView instanceof ThemeImageView)) {
+        ((ThemeImageView)localImageView).setMaskShape(ThemeImageWrapper.MODE_OTHER);
       }
       this.jdField_b_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new RichTemplateOneSearchResultView.RichTemplateSearchResultHelper.1(this));
       paramView.setOnClickListener(new RichTemplateOneSearchResultView.RichTemplateSearchResultHelper.2(this));
@@ -141,230 +152,221 @@ class RichTemplateOneSearchResultView$RichTemplateSearchResultHelper
   {
     for (;;)
     {
-      JSONObject localJSONObject1;
       int i;
       try
       {
-        localJSONObject1 = new JSONObject(paramString).optJSONObject("data");
-        if (localJSONObject1 != null)
+        localObject = new JSONObject(paramString).optJSONObject("data");
+        if (localObject != null)
         {
-          paramString = localJSONObject1.get("serverdata");
-          if (paramString != null) {
-            if ((paramString instanceof String))
-            {
+          paramString = ((JSONObject)localObject).get("serverdata");
+          if (paramString != null)
+          {
+            if ((paramString instanceof String)) {
               paramString = new JSONObject((String)paramString);
-              this.jdField_b_of_type_Int = paramString.optInt("appid");
-              this.jdField_a_of_type_JavaLangString = paramString.optString("thumbnail");
-              this.jdField_b_of_type_JavaLangString = paramString.optString("title");
-              this.jdField_c_of_type_JavaLangString = paramString.optString("sub_title");
-              this.jdField_d_of_type_JavaLangString = paramString.optString("bg_pic_url");
-              this.e = paramString.optString("bg_main_btn_text");
-              this.f = paramString.optString("bg_main_btn_url");
-              paramString = paramString.optJSONArray("bottom_btn_list");
-              if (paramString != null)
-              {
-                int j = paramString.length();
-                i = 0;
-                if (i < j)
-                {
-                  JSONObject localJSONObject2 = paramString.optJSONObject(i);
-                  if ((localJSONObject2 == null) || (i >= 3)) {
-                    break label314;
-                  }
-                  this.jdField_a_of_type_ArrayOfJavaLangString[i] = localJSONObject2.optString("bottom_btn_text");
-                  this.jdField_b_of_type_ArrayOfJavaLangString[i] = localJSONObject2.optString("bottom_btn_url");
-                  break label314;
-                }
-              }
-            }
-            else
-            {
-              if ((paramString instanceof JSONObject))
-              {
-                paramString = (JSONObject)paramString;
-                continue;
-              }
+            } else if ((paramString instanceof JSONObject)) {
+              paramString = (JSONObject)paramString;
+            } else {
               paramString = new JSONObject();
-              continue;
+            }
+            this.jdField_b_of_type_Int = paramString.optInt("appid");
+            this.jdField_a_of_type_JavaLangString = paramString.optString("thumbnail");
+            this.jdField_b_of_type_JavaLangString = paramString.optString("title");
+            this.jdField_c_of_type_JavaLangString = paramString.optString("sub_title");
+            this.jdField_d_of_type_JavaLangString = paramString.optString("bg_pic_url");
+            this.e = paramString.optString("bg_main_btn_text");
+            this.f = paramString.optString("bg_main_btn_url");
+            paramString = paramString.optJSONArray("bottom_btn_list");
+            if (paramString != null)
+            {
+              int j = paramString.length();
+              i = 0;
+              if (i < j)
+              {
+                JSONObject localJSONObject = paramString.optJSONObject(i);
+                if ((localJSONObject == null) || (i >= 3)) {
+                  break label324;
+                }
+                this.jdField_a_of_type_ArrayOfJavaLangString[i] = localJSONObject.optString("bottom_btn_text");
+                this.jdField_b_of_type_ArrayOfJavaLangString[i] = localJSONObject.optString("bottom_btn_url");
+                break label324;
+              }
             }
           }
-        }
-        else
-        {
-          return;
+          paramString = ((JSONObject)localObject).getJSONObject("extradata");
+          if (paramString != null)
+          {
+            this.jdField_c_of_type_Int = paramString.getInt("entry");
+            this.jdField_d_of_type_Int = paramString.getInt("match");
+            this.g = paramString.getString("keyword");
+            this.jdField_a_of_type_Int = paramString.optInt("nightmode", 0);
+            return;
+          }
         }
       }
       catch (JSONException paramString)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("RichTemplateOneSearchResultView", 2, "initData error " + paramString.toString());
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("initData error ");
+          ((StringBuilder)localObject).append(paramString.toString());
+          QLog.e("RichTemplateOneSearchResultView", 2, ((StringBuilder)localObject).toString());
         }
       }
-      do
-      {
-        paramString = localJSONObject1.getJSONObject("extradata");
-      } while (paramString == null);
-      this.jdField_c_of_type_Int = paramString.getInt("entry");
-      this.jdField_d_of_type_Int = paramString.getInt("match");
-      this.g = paramString.getString("keyword");
-      this.jdField_a_of_type_Int = paramString.optInt("nightmode", 0);
       return;
-      label314:
+      label324:
       i += 1;
     }
   }
   
   void b()
   {
-    label36:
-    label58:
-    String str;
-    label92:
-    label117:
-    int i;
-    if (this.jdField_b_of_type_JavaLangString != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-      if (this.jdField_c_of_type_JavaLangString == null) {
-        break label260;
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label273;
-      }
+    String str2 = this.jdField_b_of_type_JavaLangString;
+    String str1 = "";
+    if (str2 != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
+    } else {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    }
+    str2 = this.jdField_c_of_type_JavaLangString;
+    if (str2 != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(str2);
+    } else {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText("");
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidWidgetImageView);
-      if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-        break label292;
-      }
+    } else {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    }
+    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
+    {
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
       View localView = this.jdField_a_of_type_AndroidViewView;
-      if (this.e != null) {
-        break label284;
+      str2 = this.e;
+      if (str2 != null) {
+        str1 = str2;
       }
-      str = "";
-      localView.setContentDescription(str);
+      localView.setContentDescription(str1);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       a(this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_AndroidWidgetImageView);
-      if (TextUtils.isEmpty(this.e)) {
-        break label312;
-      }
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.e);
-      label146:
-      i = 0;
-      label148:
-      if (i >= 3) {
-        break label363;
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ArrayOfJavaLangString[i])) {
-        break label324;
-      }
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(0);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setOnClickListener(this);
-      this.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(0);
-      label210:
-      if (this.jdField_a_of_type_Int != 1) {
-        break label349;
-      }
-      this.jdField_a_of_type_ArrayOfAndroidViewView[i].setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166966));
     }
-    for (;;)
+    else
     {
-      i += 1;
-      break label148;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      break;
-      label260:
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      break label36;
-      label273:
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      break label58;
-      label284:
-      str = this.e;
-      break label92;
-      label292:
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      break label117;
-      label312:
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label146;
-      label324:
-      this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(8);
-      this.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(8);
-      break label210;
-      label349:
-      this.jdField_a_of_type_ArrayOfAndroidViewView[i].setBackgroundColor(-1315339);
     }
-    label363:
+    if (!TextUtils.isEmpty(this.e))
+    {
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.e);
+    }
+    else
+    {
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    int i = 0;
+    while (i < 3)
+    {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ArrayOfJavaLangString[i]))
+      {
+        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(0);
+        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
+        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setOnClickListener(this);
+        this.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(0);
+      }
+      else
+      {
+        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(8);
+        this.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(8);
+      }
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_ArrayOfAndroidViewView[i].setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166985));
+      } else {
+        this.jdField_a_of_type_ArrayOfAndroidViewView[i].setBackgroundColor(-1315339);
+      }
+      i += 1;
+    }
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(new RichTemplateOneSearchResultView.RichTemplateSearchResultHelper.3(this));
   }
   
   public void onClick(View paramView)
   {
+    int i = paramView.getId();
     String str;
-    int i;
-    switch (paramView.getId())
+    if (i != 2131363499)
     {
-    default: 
-      str = null;
-      i = 0;
-      if (this.jdField_d_of_type_Int == 1)
+      switch (i)
       {
-        UniteSearchReportController.a(null, this.jdField_c_of_type_Int, 0, "0X8009D2D", this.jdField_b_of_type_Int, i, this.g);
-        label81:
-        if (str != null)
+      default: 
+        str = null;
+        i = 0;
+        break;
+      case 2131364152: 
+        str = this.jdField_b_of_type_ArrayOfJavaLangString[2];
+        i = 3;
+        break;
+      case 2131364151: 
+        str = this.jdField_b_of_type_ArrayOfJavaLangString[1];
+        i = 2;
+        break;
+      case 2131364150: 
+        str = this.jdField_b_of_type_ArrayOfJavaLangString[0];
+        i = 1;
+        break;
+      }
+    }
+    else
+    {
+      str = this.f;
+      i = 4;
+    }
+    if (this.jdField_d_of_type_Int == 1) {
+      UniteSearchReportController.a(null, this.jdField_c_of_type_Int, 0, "0X8009D2D", this.jdField_b_of_type_Int, i, this.g);
+    } else {
+      UniteSearchReportController.a(null, this.jdField_c_of_type_Int, 0, "0X8009D41", this.jdField_b_of_type_Int, i, this.g);
+    }
+    if (str != null)
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onClick ");
+        ((StringBuilder)localObject).append(str);
+        QLog.e("RichTemplateOneSearchResultView", 2, ((StringBuilder)localObject).toString());
+      }
+      if (str.startsWith("http"))
+      {
+        b(str);
+      }
+      else
+      {
+        localObject = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, str);
+        if (localObject != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("RichTemplateOneSearchResultView", 2, "onClick " + str);
-          }
-          if (!str.startsWith("http")) {
-            break label210;
+          ((JumpAction)localObject).a();
+        }
+        else
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("wrong url ");
+            ((StringBuilder)localObject).append(str);
+            QLog.e("RichTemplateOneSearchResultView", 2, ((StringBuilder)localObject).toString());
           }
           b(str);
         }
       }
-      break;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      str = this.f;
-      i = 4;
-      break;
-      str = this.jdField_b_of_type_ArrayOfJavaLangString[0];
-      i = 1;
-      break;
-      str = this.jdField_b_of_type_ArrayOfJavaLangString[1];
-      i = 2;
-      break;
-      str = this.jdField_b_of_type_ArrayOfJavaLangString[2];
-      i = 3;
-      break;
-      UniteSearchReportController.a(null, this.jdField_c_of_type_Int, 0, "0X8009D41", this.jdField_b_of_type_Int, i, this.g);
-      break label81;
-      label210:
-      JumpAction localJumpAction = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, str);
-      if (localJumpAction != null)
-      {
-        localJumpAction.a();
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("RichTemplateOneSearchResultView", 2, "wrong url " + str);
-        }
-        b(str);
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.RichTemplateOneSearchResultView.RichTemplateSearchResultHelper
  * JD-Core Version:    0.7.0.1
  */

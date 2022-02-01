@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RespHYCommonCard
   extends JceStruct
@@ -80,21 +81,23 @@ public final class RespHYCommonCard
     paramJceOutputStream.write(this.strReMark, 2);
     paramJceOutputStream.write(this.bWeiboInfo, 3);
     paramJceOutputStream.write(this.bQzoneInfo, 4);
-    if (this.vFaceInfo != null) {
-      paramJceOutputStream.write(this.vFaceInfo, 5);
+    Object localObject = this.vFaceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
     paramJceOutputStream.write(this.bVoted, 6);
     paramJceOutputStream.write(this.bFavorited, 7);
     paramJceOutputStream.write(this.bShareLBS, 8);
-    if (this.vQQFaceID != null) {
-      paramJceOutputStream.write(this.vQQFaceID, 9);
+    localObject = this.vQQFaceID;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 9);
     }
     paramJceOutputStream.write(this.cSqqLevel, 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespHYCommonCard
  * JD-Core Version:    0.7.0.1
  */

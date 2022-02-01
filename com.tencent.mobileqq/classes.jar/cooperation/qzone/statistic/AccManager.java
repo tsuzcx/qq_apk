@@ -42,41 +42,41 @@ public class AccManager
   
   private static void createStatistic(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, int paramInt4, String paramString3)
   {
-    long l = 0L;
-    if (MobileQQ.sMobileQQ == null) {}
-    StatisticCollector localStatisticCollector;
-    do
-    {
+    if (MobileQQ.sMobileQQ == null) {
       return;
-      if (((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin() != 0L) {
-        l = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin();
-      }
-      localStatisticCollector = StatisticCollector.getInstance();
-      Statistic localStatistic = localStatisticCollector.getStatistic();
-      localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
-      localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
-      localStatistic.setValue(WnsKeys.CommandId, paramString1);
-      localStatistic.setValue(WnsKeys.APN, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAPN());
-      localStatistic.setValue(WnsKeys.Sequence, Integer.valueOf(getNextSeq()));
-      localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
-      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l));
-      localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-      localStatistic.setValue(WnsKeys.Build, "5105");
-      localStatistic.setValue(WnsKeys.TimeCost, Integer.valueOf(paramInt2));
-      if (paramString2 != null) {
-        localStatistic.setValue(WnsKeys.Detail, paramString2);
-      }
-      if (paramInt3 > 0) {
-        localStatistic.setValue(WnsKeys.Frequency, Integer.valueOf(paramInt3));
-      }
-      if (paramInt4 > 0)
-      {
-        localStatistic.setValue(WnsKeys.DType, Integer.valueOf(paramInt4));
-        localStatistic.setValue(WnsKeys.ODetails, paramString3);
-      }
-      localStatisticCollector.put(localStatistic);
-    } while (paramInt3 != 1);
-    localStatisticCollector.forceReport();
+    }
+    long l2 = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin();
+    long l1 = 0L;
+    if (l2 != 0L) {
+      l1 = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin();
+    }
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance();
+    Statistic localStatistic = localStatisticCollector.getStatistic();
+    localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
+    localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
+    localStatistic.setValue(WnsKeys.CommandId, paramString1);
+    localStatistic.setValue(WnsKeys.APN, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAPN());
+    localStatistic.setValue(WnsKeys.Sequence, Integer.valueOf(getNextSeq()));
+    localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
+    localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
+    localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    localStatistic.setValue(WnsKeys.Build, "5295");
+    localStatistic.setValue(WnsKeys.TimeCost, Integer.valueOf(paramInt2));
+    if (paramString2 != null) {
+      localStatistic.setValue(WnsKeys.Detail, paramString2);
+    }
+    if (paramInt3 > 0) {
+      localStatistic.setValue(WnsKeys.Frequency, Integer.valueOf(paramInt3));
+    }
+    if (paramInt4 > 0)
+    {
+      localStatistic.setValue(WnsKeys.DType, Integer.valueOf(paramInt4));
+      localStatistic.setValue(WnsKeys.ODetails, paramString3);
+    }
+    localStatisticCollector.put(localStatistic);
+    if (paramInt3 == 1) {
+      localStatisticCollector.forceReport();
+    }
   }
   
   public static void createStatistic(String paramString1, int paramInt1, String paramString2, int paramInt2)
@@ -86,40 +86,40 @@ public class AccManager
   
   private static void createStatistic(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3)
   {
-    long l = 0L;
-    if (MobileQQ.sMobileQQ == null) {}
-    StatisticCollector localStatisticCollector;
-    do
-    {
+    if (MobileQQ.sMobileQQ == null) {
       return;
-      if (((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin() != 0L) {
-        l = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin();
-      }
-      localStatisticCollector = StatisticCollector.getInstance();
-      Statistic localStatistic = localStatisticCollector.getStatistic();
-      localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
-      localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
-      localStatistic.setValue(WnsKeys.CommandId, paramString1);
-      localStatistic.setValue(WnsKeys.APN, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAPN());
-      localStatistic.setValue(WnsKeys.Sequence, Integer.valueOf(getNextSeq()));
-      localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
-      localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l));
-      localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-      localStatistic.setValue(WnsKeys.Build, "5105");
-      if (paramString2 != null) {
-        localStatistic.setValue(WnsKeys.Detail, paramString2);
-      }
-      if (paramInt2 > 0) {
-        localStatistic.setValue(WnsKeys.Frequency, Integer.valueOf(paramInt2));
-      }
-      if (paramInt3 > 0)
-      {
-        localStatistic.setValue(WnsKeys.DType, Integer.valueOf(paramInt3));
-        localStatistic.setValue(WnsKeys.ODetails, paramString3);
-      }
-      localStatisticCollector.put(localStatistic);
-    } while (paramInt2 != 1);
-    localStatisticCollector.forceReport();
+    }
+    long l2 = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin();
+    long l1 = 0L;
+    if (l2 != 0L) {
+      l1 = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin();
+    }
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance();
+    Statistic localStatistic = localStatisticCollector.getStatistic();
+    localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
+    localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
+    localStatistic.setValue(WnsKeys.CommandId, paramString1);
+    localStatistic.setValue(WnsKeys.APN, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAPN());
+    localStatistic.setValue(WnsKeys.Sequence, Integer.valueOf(getNextSeq()));
+    localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt1));
+    localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(l1));
+    localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    localStatistic.setValue(WnsKeys.Build, "5295");
+    if (paramString2 != null) {
+      localStatistic.setValue(WnsKeys.Detail, paramString2);
+    }
+    if (paramInt2 > 0) {
+      localStatistic.setValue(WnsKeys.Frequency, Integer.valueOf(paramInt2));
+    }
+    if (paramInt3 > 0)
+    {
+      localStatistic.setValue(WnsKeys.DType, Integer.valueOf(paramInt3));
+      localStatistic.setValue(WnsKeys.ODetails, paramString3);
+    }
+    localStatisticCollector.put(localStatistic);
+    if (paramInt2 == 1) {
+      localStatisticCollector.forceReport();
+    }
   }
   
   public static int getNextSeq()
@@ -142,8 +142,11 @@ public class AccManager
   
   public static void reportActivitySwitch(String paramString, int paramInt)
   {
-    int i = QZoneConfigHelper.getActivitySwitchAccReportSamples();
-    createStatistic("QZoneAPPInQQ.activiySwitch." + paramString, 0, paramInt, null, i, 0, null);
+    int i = QZoneConfigHelper.b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QZoneAPPInQQ.activiySwitch.");
+    localStringBuilder.append(paramString);
+    createStatistic(localStringBuilder.toString(), 0, paramInt, null, i, 0, null);
   }
   
   public static void reportCallMusic(String paramString)
@@ -173,7 +176,7 @@ public class AccManager
   
   public static void reportImagePredownCacheHitRate(float paramFloat, String paramString)
   {
-    createStatistic("QzoneNewService.hit_feedimage", (int)(100.0F * paramFloat), paramString, 1);
+    createStatistic("QzoneNewService.hit_feedimage", (int)(paramFloat * 100.0F), paramString, 1);
     QZLog.i("QZLog[reportImagePredownCacheHitRate]", 1, paramString);
   }
   
@@ -182,9 +185,14 @@ public class AccManager
     if (paramInt2 == 0) {
       return;
     }
-    int i = (int)(1.0F * paramInt1 / paramInt2 * 100.0F);
+    int i = (int)(paramInt1 * 1.0F / paramInt2 * 100.0F);
     Object localObject = new StringBuilder("successRate=");
-    ((StringBuilder)localObject).append(i).append("(").append(paramInt1).append("/").append(paramInt2).append(")");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("(");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(")");
     localObject = ((StringBuilder)localObject).toString();
     createStatistic("QzoneNewService.suspend_predownload", i, (String)localObject, 1);
     QZLog.i("QZLog[FeedsImagePreDownloader]", 1, (String)localObject);
@@ -202,7 +210,7 @@ public class AccManager
   
   public static void reportOpenQZoneVipResult(int paramInt, String paramString)
   {
-    createStatistic("qzonenewservice.openvip", 1300000 + paramInt, paramString, 1);
+    createStatistic("qzonenewservice.openvip", paramInt + 1300000, paramString, 1);
   }
   
   public static void reportOutboxResult(int paramInt1, int paramInt2, String paramString1, String paramString2)
@@ -210,54 +218,37 @@ public class AccManager
     Object localObject = "";
     if (paramInt1 == 0)
     {
-      localObject = new StringBuilder().append("errorCode = ").append(paramInt2).append(", msg = ");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("errorCode = ");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(", msg = ");
       if (paramString1 == null) {
-        break label61;
+        paramString1 = "";
       }
+      ((StringBuilder)localObject).append(paramString1);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    for (;;)
-    {
-      localObject = paramString1;
-      createStatistic("qzonenewservice.opBox", paramInt1, (String)localObject, 0, 5, paramString2);
-      return;
-      label61:
-      paramString1 = "";
-    }
+    createStatistic("qzonenewservice.opBox", paramInt1, (String)localObject, 0, 5, paramString2);
   }
   
   public static void reportTimeWithRefresh(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      createStatistic("qzonenewservice.refresh", 0, null, i, 1, paramString);
-      return;
-    }
+    createStatistic("qzonenewservice.refresh", 0, null, paramBoolean ^ true, 1, paramString);
   }
   
   public static void reportTimeWithRefreshMore(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      createStatistic("qzonenewservice.refresh.more", 0, null, i, 1, paramString);
-      return;
-    }
+    createStatistic("qzonenewservice.refresh.more", 0, null, paramBoolean ^ true, 1, paramString);
   }
   
   public static void reportTimeWithStep(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      createStatistic("qzonenewservice.launchtime", 0, null, i, 1, paramString);
-      return;
-    }
+    createStatistic("qzonenewservice.launchtime", 0, null, paramBoolean ^ true, 1, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.AccManager
  * JD-Core Version:    0.7.0.1
  */

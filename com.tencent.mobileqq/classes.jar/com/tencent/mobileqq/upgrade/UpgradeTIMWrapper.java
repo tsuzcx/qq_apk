@@ -66,139 +66,141 @@ public class UpgradeTIMWrapper
   
   public static UpgradeTIMWrapper a(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("upgrade_tim_banner_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    UpgradeTIMWrapper localUpgradeTIMWrapper = new UpgradeTIMWrapper();
-    localUpgradeTIMWrapper.jdField_a_of_type_Int = paramQQAppInterface.getInt("upgrade_tim_banner_switch", 0);
-    localUpgradeTIMWrapper.f = paramQQAppInterface.getString("upgrade_tim_banner_title", "");
-    localUpgradeTIMWrapper.g = paramQQAppInterface.getString("upgrade_tim_banner_url", "");
-    return localUpgradeTIMWrapper;
+    Object localObject = paramQQAppInterface.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("upgrade_tim_banner_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    paramQQAppInterface = ((MobileQQ)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+    localObject = new UpgradeTIMWrapper();
+    ((UpgradeTIMWrapper)localObject).jdField_a_of_type_Int = paramQQAppInterface.getInt("upgrade_tim_banner_switch", 0);
+    ((UpgradeTIMWrapper)localObject).f = paramQQAppInterface.getString("upgrade_tim_banner_title", "");
+    ((UpgradeTIMWrapper)localObject).g = paramQQAppInterface.getString("upgrade_tim_banner_url", "");
+    return localObject;
   }
   
   public static UpgradeTIMWrapper a(String paramString)
   {
-    UpgradeTIMWrapper localUpgradeTIMWrapper = new UpgradeTIMWrapper();
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    for (;;)
+    localUpgradeTIMWrapper = new UpgradeTIMWrapper();
+    Object localObject = Xml.newPullParser();
+    try
     {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        int i = localXmlPullParser.getEventType();
-        if (i != 1)
+      ((XmlPullParser)localObject).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      for (int i = ((XmlPullParser)localObject).getEventType(); i != 1; i = ((XmlPullParser)localObject).next()) {
+        if (i == 2)
         {
-          if (i == 2)
+          paramString = ((XmlPullParser)localObject).getName();
+          if (paramString.equalsIgnoreCase("title"))
           {
-            paramString = localXmlPullParser.getName();
-            if (paramString.equalsIgnoreCase("title")) {
-              localUpgradeTIMWrapper.jdField_a_of_type_JavaLangString = localXmlPullParser.nextText();
+            localUpgradeTIMWrapper.jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject).nextText();
+          }
+          else if (paramString.equalsIgnoreCase("content"))
+          {
+            localUpgradeTIMWrapper.b = ((XmlPullParser)localObject).nextText();
+          }
+          else if (paramString.equalsIgnoreCase("downloadPageUrlAndroid"))
+          {
+            localUpgradeTIMWrapper.c = ((XmlPullParser)localObject).nextText();
+          }
+          else if (paramString.equalsIgnoreCase("lBtnText"))
+          {
+            localUpgradeTIMWrapper.d = ((XmlPullParser)localObject).nextText();
+          }
+          else if (paramString.equalsIgnoreCase("rBtnText"))
+          {
+            localUpgradeTIMWrapper.e = ((XmlPullParser)localObject).nextText();
+          }
+          else if (paramString.equalsIgnoreCase("tipOn"))
+          {
+            paramString = ((XmlPullParser)localObject).nextText();
+            try
+            {
+              localUpgradeTIMWrapper.jdField_a_of_type_Int = Integer.valueOf(paramString).intValue();
+            }
+            catch (NumberFormatException paramString)
+            {
+              paramString.printStackTrace();
+              QLog.w("UpgradeTIMWrapper", 2, paramString.getMessage());
             }
           }
-          else
+          else if (paramString.equalsIgnoreCase("tipTitle"))
           {
-            i = localXmlPullParser.next();
-            continue;
+            localUpgradeTIMWrapper.f = ((XmlPullParser)localObject).nextText();
           }
-          if (paramString.equalsIgnoreCase("content"))
+          else if (paramString.equalsIgnoreCase("androidTipURL"))
           {
-            localUpgradeTIMWrapper.b = localXmlPullParser.nextText();
-            continue;
+            localUpgradeTIMWrapper.g = ((XmlPullParser)localObject).nextText();
           }
         }
-        else
-        {
-          return localUpgradeTIMWrapper;
-        }
       }
-      catch (Exception paramString)
+      return localUpgradeTIMWrapper;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isDevelopLevel())
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("UpgradeTIMWrapper", 4, "parseConfig UpgradeTIMWrapper : " + paramString.getMessage());
-        }
-        paramString.printStackTrace();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseConfig UpgradeTIMWrapper : ");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        QLog.d("UpgradeTIMWrapper", 4, ((StringBuilder)localObject).toString());
       }
-      if (paramString.equalsIgnoreCase("downloadPageUrlAndroid"))
-      {
-        localUpgradeTIMWrapper.c = localXmlPullParser.nextText();
-      }
-      else if (paramString.equalsIgnoreCase("lBtnText"))
-      {
-        localUpgradeTIMWrapper.d = localXmlPullParser.nextText();
-      }
-      else if (paramString.equalsIgnoreCase("rBtnText"))
-      {
-        localUpgradeTIMWrapper.e = localXmlPullParser.nextText();
-      }
-      else if (paramString.equalsIgnoreCase("tipOn"))
-      {
-        paramString = localXmlPullParser.nextText();
-        try
-        {
-          localUpgradeTIMWrapper.jdField_a_of_type_Int = Integer.valueOf(paramString).intValue();
-        }
-        catch (NumberFormatException paramString)
-        {
-          paramString.printStackTrace();
-          QLog.w("UpgradeTIMWrapper", 2, paramString.getMessage());
-        }
-      }
-      else if (paramString.equalsIgnoreCase("tipTitle"))
-      {
-        localUpgradeTIMWrapper.f = localXmlPullParser.nextText();
-      }
-      else if (paramString.equalsIgnoreCase("androidTipURL"))
-      {
-        localUpgradeTIMWrapper.g = localXmlPullParser.nextText();
-      }
+      paramString.printStackTrace();
     }
   }
   
   public static String a()
   {
-    Object localObject4;
+    Object localObject3 = null;
+    Object localObject5 = null;
     Object localObject2;
     try
     {
       Object localObject1 = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config_tim").getAbsolutePath();
-      localObject1 = FileUtils.a(new File((String)localObject1 + "upgrade_config_tim_info"));
-      if ((localObject1 == null) || (localObject1.length <= 0))
-      {
-        localObject4 = null;
-        return localObject4;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("upgrade_config_tim_info");
+      localObject1 = FileUtils.fileToBytes(new File(localStringBuilder.toString()));
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localException.printStackTrace();
-        }
-        localObject2 = null;
+      if (QLog.isColorLevel()) {
+        localException.printStackTrace();
       }
+      localObject2 = null;
     }
-    if (Build.VERSION.SDK_INT <= 8) {
-      localObject2 = new String((byte[])localObject2);
-    }
-    for (;;)
+    Object localObject4;
+    if (localObject2 != null)
     {
-      localObject4 = localObject2;
-      if (!QLog.isColorLevel()) {
-        break;
+      if (localObject2.length <= 0) {
+        return null;
       }
-      QLog.i("UpgradeTIMWrapper", 2, "UpgradeTIMWrapper load local content:" + (String)localObject2);
-      return localObject2;
-      try
-      {
-        localObject2 = new String((byte[])localObject2, "UTF-8");
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        if (QLog.isDevelopLevel()) {
-          localUnsupportedEncodingException.printStackTrace();
+      if (Build.VERSION.SDK_INT <= 8) {
+        localObject2 = new String((byte[])localObject2);
+      } else {
+        try
+        {
+          localObject2 = new String((byte[])localObject2, "UTF-8");
         }
-        Object localObject3 = null;
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          localObject2 = localObject5;
+          if (QLog.isDevelopLevel())
+          {
+            localUnsupportedEncodingException.printStackTrace();
+            localObject2 = localObject5;
+          }
+        }
+      }
+      localObject4 = localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("UpgradeTIMWrapper load local content:");
+        ((StringBuilder)localObject4).append((String)localObject2);
+        QLog.i("UpgradeTIMWrapper", 2, ((StringBuilder)localObject4).toString());
+        localObject4 = localObject2;
       }
     }
+    return localObject4;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, UpgradeTIMWrapper paramUpgradeTIMWrapper)
@@ -206,7 +208,11 @@ public class UpgradeTIMWrapper
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeTIMWrapper", 2, new Object[] { "save tim tip configs, banner on: ", Integer.valueOf(paramUpgradeTIMWrapper.jdField_a_of_type_Int) });
     }
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("upgrade_tim_banner_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit();
+    MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("upgrade_tim_banner_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    paramQQAppInterface = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).edit();
     try
     {
       paramQQAppInterface.putInt("upgrade_tim_banner_switch", paramUpgradeTIMWrapper.jdField_a_of_type_Int);
@@ -223,13 +229,16 @@ public class UpgradeTIMWrapper
   
   public static void a(String paramString)
   {
-    if ((TextUtils.isEmpty("upgrade_config_tim_info")) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if (!TextUtils.isEmpty("upgrade_config_tim_info"))
     {
-      return;
-      FileUtils.a(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config_tim").getAbsolutePath(), "upgrade_config_tim_info", paramString);
-    } while (!QLog.isColorLevel());
-    QLog.i("UpgradeTIMWrapper", 2, "UpgradeTIMWrapper save upgrade_config_tim to file finish.");
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      FileUtils.writeFile(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config_tim").getAbsolutePath(), "upgrade_config_tim_info", paramString);
+      if (QLog.isColorLevel()) {
+        QLog.i("UpgradeTIMWrapper", 2, "UpgradeTIMWrapper save upgrade_config_tim to file finish.");
+      }
+    }
   }
   
   public static void b()
@@ -242,9 +251,17 @@ public class UpgradeTIMWrapper
       if (b())
       {
         String str = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config_tim").getAbsolutePath();
-        FileUtils.e(str + "upgrade_config_tim_info");
-        if (QLog.isColorLevel()) {
-          QLog.i("UpgradeTIMWrapper", 2, "UpgradeTIMWrapper delUpgradeConfig : " + str + "upgrade_config_tim_info");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("upgrade_config_tim_info");
+        FileUtils.deleteFile(localStringBuilder.toString());
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("UpgradeTIMWrapper delUpgradeConfig : ");
+          localStringBuilder.append(str);
+          localStringBuilder.append("upgrade_config_tim_info");
+          QLog.i("UpgradeTIMWrapper", 2, localStringBuilder.toString());
         }
       }
       return;
@@ -258,7 +275,10 @@ public class UpgradeTIMWrapper
       return false;
     }
     String str = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config_tim").getAbsolutePath();
-    return FileUtils.a(str + "upgrade_config_tim_info");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("upgrade_config_tim_info");
+    return FileUtils.fileExists(localStringBuilder.toString());
   }
   
   public void a()
@@ -290,7 +310,7 @@ public class UpgradeTIMWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeTIMWrapper
  * JD-Core Version:    0.7.0.1
  */

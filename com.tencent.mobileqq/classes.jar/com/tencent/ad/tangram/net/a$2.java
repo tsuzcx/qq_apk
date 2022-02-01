@@ -11,13 +11,14 @@ class a$2
   public void run()
   {
     a locala = this.this$0;
-    a.b localb = a.access$200(this.this$0);
-    if (this.val$appContext != null) {}
-    for (Context localContext = (Context)this.val$appContext.get();; localContext = null)
-    {
-      a.access$002(locala, localb.getCacheByIPC(localContext));
-      return;
+    a.b localb = a.access$200(locala);
+    Object localObject = this.val$appContext;
+    if (localObject != null) {
+      localObject = (Context)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
     }
+    a.access$002(locala, localb.getCacheByIPC((Context)localObject));
   }
 }
 

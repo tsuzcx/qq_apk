@@ -11,6 +11,7 @@ import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.recreate.IFModel;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -29,53 +30,53 @@ class ChatHistoryFileView$4
     if (5 != localFileManagerEntity.cloudType) {
       FileManagerUtil.b(localFileManagerEntity);
     }
-    switch (localHistoryFileItemHolder.jdField_a_of_type_Int)
+    int i = localHistoryFileItemHolder.jdField_a_of_type_Int;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryFileAdapter.notifyDataSetChanged();
-      for (;;)
+      if (i != 1)
       {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (!NetworkUtil.d(BaseApplication.getContext()))
+        if (i != 2)
         {
-          FMToastUtil.a(2131692602);
+          if (i == 3)
+          {
+            if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+            {
+              FMToastUtil.a(2131692554);
+              break label272;
+            }
+            boolean bool = localFileManagerEntity.isSend();
+            FileModel.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new ChatHistoryFileView.4.2(this, localFileManagerEntity));
+          }
         }
-        else
-        {
-          FileModel.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new ChatHistoryFileView.4.1(this, localFileManagerEntity));
-          break;
-          this.a.a(localFileManagerEntity);
-          break;
-          if (localFileManagerEntity.getCloudType() == 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(localFileManagerEntity.nSessionId);
-            break;
-          }
-          if (localFileManagerEntity.getCloudType() == 6)
-          {
-            ((DataLineHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(0, localFileManagerEntity.uniseq, false);
-            break;
-          }
+        else if (localFileManagerEntity.getCloudType() == 0) {
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(localFileManagerEntity.nSessionId);
+        } else if (localFileManagerEntity.getCloudType() == 6) {
+          ((DataLineHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(0, localFileManagerEntity.uniseq, false);
+        } else {
           this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity.nSessionId);
-          break;
-          if (NetworkUtil.d(BaseApplication.getContext())) {
-            break label247;
-          }
-          FMToastUtil.a(2131692602);
         }
       }
-      label247:
-      boolean bool = localFileManagerEntity.isSend();
-      FileModel.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new ChatHistoryFileView.4.2(this, localFileManagerEntity));
+      else
+      {
+        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+        {
+          FMToastUtil.a(2131692554);
+          break label272;
+        }
+        FileModel.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new ChatHistoryFileView.4.1(this, localFileManagerEntity));
+      }
     }
+    else {
+      this.a.a(localFileManagerEntity);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryFileAdapter.notifyDataSetChanged();
+    label272:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileView.4
  * JD-Core Version:    0.7.0.1
  */

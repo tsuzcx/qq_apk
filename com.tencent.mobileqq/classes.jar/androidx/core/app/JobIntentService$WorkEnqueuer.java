@@ -22,11 +22,17 @@ abstract class JobIntentService$WorkEnqueuer
     {
       this.mHasJobId = true;
       this.mJobId = paramInt;
-    }
-    while (this.mJobId == paramInt) {
       return;
     }
-    throw new IllegalArgumentException("Given job ID " + paramInt + " is different than previous " + this.mJobId);
+    if (this.mJobId == paramInt) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Given job ID ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" is different than previous ");
+    localStringBuilder.append(this.mJobId);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void serviceProcessingFinished() {}
@@ -37,7 +43,7 @@ abstract class JobIntentService$WorkEnqueuer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.JobIntentService.WorkEnqueuer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
@@ -18,40 +17,45 @@ class SubscriptFeedsActivity$3
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
       DropFrameMonitor.a().a("list_subscript");
-    }
-    for (;;)
-    {
       return;
-      DropFrameMonitor.a().a("list_subscript", false);
-      paramInt = 0;
-      while (paramInt <= paramAbsListView.getChildCount())
+    }
+    Object localObject1 = DropFrameMonitor.a();
+    paramInt = 0;
+    ((DropFrameMonitor)localObject1).a("list_subscript", false);
+    while (paramInt <= paramAbsListView.getChildCount())
+    {
+      localObject1 = paramAbsListView.getChildAt(paramInt);
+      if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof SubscriptFeedsAdapter.FeedItemCellHolder)))
       {
-        Object localObject = paramAbsListView.getChildAt(paramInt);
-        if ((localObject != null) && ((((View)localObject).getTag() instanceof SubscriptFeedsAdapter.FeedItemCellHolder)))
+        localObject1 = (SubscriptFeedsAdapter.FeedItemCellHolder)((View)localObject1).getTag();
+        Object localObject2 = ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject1).b.getDrawable();
+        if ((localObject2 != null) && ((localObject2 instanceof URLDrawable)))
         {
-          localObject = (SubscriptFeedsAdapter.FeedItemCellHolder)((View)localObject).getTag();
-          Drawable localDrawable = ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject).b.getDrawable();
-          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
+          localObject2 = (URLDrawable)localObject2;
+          if (!((URLDrawable)localObject2).isDownloadStarted())
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject).a);
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("list child view start download pic!  uin : ");
+              localStringBuilder.append(((SubscriptFeedsAdapter.FeedItemCellHolder)localObject1).a);
+              QLog.d("SubscriptFeedsActivity", 2, localStringBuilder.toString());
             }
-            ((URLDrawable)localDrawable).startDownload();
-            ((URLDrawable)localDrawable).setAutoDownload(true);
+            ((URLDrawable)localObject2).startDownload();
+            ((URLDrawable)localObject2).setAutoDownload(true);
           }
         }
-        paramInt += 1;
       }
+      paramInt += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.3
  * JD-Core Version:    0.7.0.1
  */

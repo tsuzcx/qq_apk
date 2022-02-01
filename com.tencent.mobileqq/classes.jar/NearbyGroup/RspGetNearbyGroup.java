@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RspGetNearbyGroup
   extends JceStruct
@@ -121,47 +122,57 @@ public final class RspGetNearbyGroup
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.eReplyCode, 0);
-    if (this.vContext != null) {
-      paramJceOutputStream.write(this.vContext, 1);
+    Object localObject = this.vContext;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
     paramJceOutputStream.write(this.iCompletedFlag, 2);
     paramJceOutputStream.write(this.iRadius, 3);
-    if (this.vGroupInfo != null) {
-      paramJceOutputStream.write(this.vGroupInfo, 4);
+    localObject = this.vGroupInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.vXiaoQuInfo != null) {
-      paramJceOutputStream.write(this.vXiaoQuInfo, 5);
+    localObject = this.vXiaoQuInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.vActivity != null) {
-      paramJceOutputStream.write(this.vActivity, 6);
+    localObject = this.vActivity;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
-    if (this.vGroupArea != null) {
-      paramJceOutputStream.write(this.vGroupArea, 7);
+    localObject = this.vGroupArea;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
     paramJceOutputStream.write(this.shSortType, 8);
     paramJceOutputStream.write(this.iLat, 9);
     paramJceOutputStream.write(this.iLon, 10);
-    if (this.stRspHotGrp != null) {
-      paramJceOutputStream.write(this.stRspHotGrp, 11);
+    localObject = this.stRspHotGrp;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
-    if (this.stRspAct != null) {
-      paramJceOutputStream.write(this.stRspAct, 12);
+    localObject = this.stRspAct;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.stRspTopic != null) {
-      paramJceOutputStream.write(this.stRspTopic, 13);
+    localObject = this.stRspTopic;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.strCity != null) {
-      paramJceOutputStream.write(this.strCity, 14);
+    localObject = this.strCity;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.strCityCode != null) {
-      paramJceOutputStream.write(this.strCityCode, 15);
+    localObject = this.strCityCode;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.dwFlag, 16);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.RspGetNearbyGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -18,51 +18,20 @@ public class ComponentRegistry
     return (IFComponentHolder)sTypeComponentMap.get(paramString);
   }
   
-  /* Error */
   public static boolean registerComponent(String paramString, IFComponentHolder paramIFComponentHolder, Map<String, Object> paramMap)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_1
-    //   4: ifnull +12 -> 16
-    //   7: aload_0
-    //   8: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   11: istore_3
-    //   12: iload_3
-    //   13: ifeq +10 -> 23
-    //   16: iconst_0
-    //   17: istore_3
-    //   18: ldc 2
-    //   20: monitorexit
-    //   21: iload_3
-    //   22: ireturn
-    //   23: invokestatic 68	com/tencent/viola/bridge/ViolaBridgeManager:getInstance	()Lcom/tencent/viola/bridge/ViolaBridgeManager;
-    //   26: new 70	com/tencent/viola/ui/baseComponent/ComponentRegistry$1
-    //   29: dup
-    //   30: aload_2
-    //   31: aload_0
-    //   32: aload_1
-    //   33: invokespecial 73	com/tencent/viola/ui/baseComponent/ComponentRegistry$1:<init>	(Ljava/util/Map;Ljava/lang/String;Lcom/tencent/viola/ui/baseComponent/IFComponentHolder;)V
-    //   36: invokevirtual 77	com/tencent/viola/bridge/ViolaBridgeManager:post	(Ljava/lang/Runnable;)V
-    //   39: iconst_1
-    //   40: istore_3
-    //   41: goto -23 -> 18
-    //   44: astore_0
-    //   45: ldc 2
-    //   47: monitorexit
-    //   48: aload_0
-    //   49: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	50	0	paramString	String
-    //   0	50	1	paramIFComponentHolder	IFComponentHolder
-    //   0	50	2	paramMap	Map<String, Object>
-    //   11	30	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   7	12	44	finally
-    //   23	39	44	finally
+    if (paramIFComponentHolder != null) {
+      try
+      {
+        if (!TextUtils.isEmpty(paramString))
+        {
+          ViolaBridgeManager.getInstance().post(new ComponentRegistry.1(paramMap, paramString, paramIFComponentHolder));
+          return true;
+        }
+      }
+      finally {}
+    }
+    return false;
   }
   
   private static boolean registerJSComponent(Map<String, Object> paramMap)
@@ -78,24 +47,22 @@ public class ComponentRegistry
     try
     {
       sTypeComponentMap.put(paramString, paramIFComponentHolder);
-      return true;
     }
     catch (ArrayStoreException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+    return true;
   }
   
   public static boolean registerOnlyNativeComponent(String paramString, IFComponentHolder paramIFComponentHolder)
   {
-    if ((paramIFComponentHolder == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
+    if ((paramIFComponentHolder != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      ViolaBridgeManager.getInstance().post(new ComponentRegistry.3(paramString, paramIFComponentHolder));
+      return true;
     }
-    ViolaBridgeManager.getInstance().post(new ComponentRegistry.3(paramString, paramIFComponentHolder));
-    return true;
+    return false;
   }
   
   public static void reload()
@@ -105,7 +72,7 @@ public class ComponentRegistry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.ComponentRegistry
  * JD-Core Version:    0.7.0.1
  */

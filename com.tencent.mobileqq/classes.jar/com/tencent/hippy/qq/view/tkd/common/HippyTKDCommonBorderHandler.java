@@ -6,66 +6,71 @@ public class HippyTKDCommonBorderHandler
 {
   public static void handleCommonBorderColor(HippyTKDCommonBorderHandler.HippyQBCommonBorder paramHippyQBCommonBorder, String paramString, Object paramObject)
   {
-    if ("backgroundColors".equals(paramString)) {
-      if ((paramObject instanceof HippyArray))
-      {
+    boolean bool = "backgroundColors".equals(paramString);
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject4 = null;
+    Object localObject5 = null;
+    Object localObject6 = null;
+    Object localObject1 = null;
+    if (bool)
+    {
+      paramString = localObject1;
+      if ((paramObject instanceof HippyArray)) {
         paramString = (HippyArray)paramObject;
-        paramHippyQBCommonBorder.setBackgroundColors(paramString);
       }
+      paramHippyQBCommonBorder.setBackgroundColors(paramString);
+      return;
     }
-    do
+    if ("borderColors".equals(paramString))
     {
+      paramString = localObject2;
+      if ((paramObject instanceof HippyArray)) {
+        paramString = (HippyArray)paramObject;
+      }
+      paramHippyQBCommonBorder.setBorderColors(paramString);
       return;
-      paramString = null;
-      break;
-      if ("borderColors".equals(paramString))
-      {
-        if ((paramObject instanceof HippyArray)) {}
-        for (paramString = (HippyArray)paramObject;; paramString = null)
-        {
-          paramHippyQBCommonBorder.setBorderColors(paramString);
-          return;
-        }
-      }
-      if ("borderLeftColors".equals(paramString))
-      {
-        if ((paramObject instanceof HippyArray)) {}
-        for (paramString = (HippyArray)paramObject;; paramString = null)
-        {
-          paramHippyQBCommonBorder.setBorderLeftColors(paramString);
-          return;
-        }
-      }
-      if ("borderRightColors".equals(paramString))
-      {
-        if ((paramObject instanceof HippyArray)) {}
-        for (paramString = (HippyArray)paramObject;; paramString = null)
-        {
-          paramHippyQBCommonBorder.setBorderRightColors(paramString);
-          return;
-        }
-      }
-      if ("borderTopColors".equals(paramString))
-      {
-        if ((paramObject instanceof HippyArray)) {}
-        for (paramString = (HippyArray)paramObject;; paramString = null)
-        {
-          paramHippyQBCommonBorder.setBorderTopColors(paramString);
-          return;
-        }
-      }
-    } while (!"borderBottomColors".equals(paramString));
-    if ((paramObject instanceof HippyArray)) {}
-    for (paramString = (HippyArray)paramObject;; paramString = null)
+    }
+    if ("borderLeftColors".equals(paramString))
     {
+      paramString = localObject3;
+      if ((paramObject instanceof HippyArray)) {
+        paramString = (HippyArray)paramObject;
+      }
+      paramHippyQBCommonBorder.setBorderLeftColors(paramString);
+      return;
+    }
+    if ("borderRightColors".equals(paramString))
+    {
+      paramString = localObject4;
+      if ((paramObject instanceof HippyArray)) {
+        paramString = (HippyArray)paramObject;
+      }
+      paramHippyQBCommonBorder.setBorderRightColors(paramString);
+      return;
+    }
+    if ("borderTopColors".equals(paramString))
+    {
+      paramString = localObject5;
+      if ((paramObject instanceof HippyArray)) {
+        paramString = (HippyArray)paramObject;
+      }
+      paramHippyQBCommonBorder.setBorderTopColors(paramString);
+      return;
+    }
+    if ("borderBottomColors".equals(paramString))
+    {
+      paramString = localObject6;
+      if ((paramObject instanceof HippyArray)) {
+        paramString = (HippyArray)paramObject;
+      }
       paramHippyQBCommonBorder.setBorderBottomColors(paramString);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.common.HippyTKDCommonBorderHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.media.MediaMetadataRetriever;
 import com.tencent.biz.qqstory.utils.BitmapUtils;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandUnit;
+import com.tencent.mobileqq.videocodec.ffmpeg.FFmpeg;
+import com.tencent.mobileqq.videocodec.ffmpeg.FFmpegCommandAlreadyRunningException;
+import com.tencent.mobileqq.videocodec.ffmpeg.FFmpegCommandUnit;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -39,77 +39,87 @@ class VideoCombineHelper$CombineTask
   
   public File a(File paramFile, String paramString, VideoCombineHelper.Callback paramCallback)
   {
-    Object localObject = new MediaMetadataRetriever();
-    ((MediaMetadataRetriever)localObject).setDataSource(paramFile.getAbsolutePath());
-    String str1 = ((MediaMetadataRetriever)localObject).extractMetadata(18);
-    String str2 = ((MediaMetadataRetriever)localObject).extractMetadata(19);
-    ((MediaMetadataRetriever)localObject).release();
-    localObject = paramFile.getParent() + File.separator + "wording.png";
-    String str3 = paramFile.getParent() + File.separator + "vmw.mp4";
+    Object localObject1 = new MediaMetadataRetriever();
+    ((MediaMetadataRetriever)localObject1).setDataSource(paramFile.getAbsolutePath());
+    String str1 = ((MediaMetadataRetriever)localObject1).extractMetadata(18);
+    String str2 = ((MediaMetadataRetriever)localObject1).extractMetadata(19);
+    ((MediaMetadataRetriever)localObject1).release();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramFile.getParent());
+    ((StringBuilder)localObject1).append(File.separator);
+    ((StringBuilder)localObject1).append("wording.png");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramFile.getParent());
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append("vmw.mp4");
+    localObject2 = ((StringBuilder)localObject2).toString();
     try
     {
       int i = Integer.parseInt(str1);
       int j = Integer.parseInt(str2);
       long l = System.currentTimeMillis();
-      a(i, j, paramString, (String)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.trace_video_combine", 2, "createWatermarkPng time = " + (System.currentTimeMillis() - l));
+      a(i, j, paramString, (String)localObject1);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("createWatermarkPng time = ");
+        paramString.append(System.currentTimeMillis() - l);
+        QLog.d(".troop.trace_video_combine", 2, paramString.toString());
       }
-      a().c.add(new File((String)localObject));
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.watermark((String)localObject, paramFile.getAbsolutePath(), str3, i, j, new VideoCombineHelper.CombineTask.6(this, paramCallback, str3));
+      a().c.add(new File((String)localObject1));
+      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.watermark((String)localObject1, paramFile.getAbsolutePath(), (String)localObject2, i, j, new VideoCombineHelper.CombineTask.6(this, paramCallback, (String)localObject2));
     }
     catch (Exception paramFile)
     {
-      for (;;)
-      {
-        QLog.e(".troop.VideoCombineHelper", 2, "combineWording failed!", paramFile);
-      }
+      QLog.e(".troop.VideoCombineHelper", 2, "combineWording failed!", paramFile);
     }
     return null;
   }
   
   public void a()
   {
-    String str;
-    VideoCombineHelper.CombineParams localCombineParams;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      str = a() + File.separator + "v.ts";
-      localCombineParams = a();
-      if (localCombineParams.b) {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append("v.ts");
+      localObject = ((StringBuilder)localObject).toString();
+      VideoCombineHelper.CombineParams localCombineParams = a();
+      if (localCombineParams.b)
+      {
         this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this);
+        return;
       }
+      a(this.jdField_a_of_type_JavaUtilList, (String)localObject, new VideoCombineHelper.CombineTask.1(this, localCombineParams));
     }
-    else
-    {
-      return;
-    }
-    a(this.jdField_a_of_type_JavaUtilList, str, new VideoCombineHelper.CombineTask.1(this, localCombineParams));
   }
   
   public void a(List<String> paramList, String paramString, VideoCombineHelper.Callback paramCallback)
   {
-    if ((paramList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    if ((paramList != null) && (this.jdField_a_of_type_JavaUtilList.size() != 0))
     {
-      paramCallback.a("", false, "videoFiles empty!");
-      return;
+      if (paramList.size() == 1)
+      {
+        paramCallback.a((String)this.jdField_a_of_type_JavaUtilList.get(0), true, "combineVideos Success size = 1");
+        return;
+      }
+      try
+      {
+        long l = System.currentTimeMillis();
+        paramList = new File(paramString);
+        a(this.jdField_a_of_type_JavaUtilList, paramList.getAbsolutePath(), new VideoCombineHelper.CombineTask.2(this, l, paramCallback, paramList));
+        return;
+      }
+      catch (Exception paramList)
+      {
+        QLog.e(".troop.VideoCombineHelper", 2, "combineVideos failed", paramList);
+        return;
+      }
     }
-    if (paramList.size() == 1)
-    {
-      paramCallback.a((String)this.jdField_a_of_type_JavaUtilList.get(0), true, "combineVideos Success size = 1");
-      return;
-    }
-    try
-    {
-      long l = System.currentTimeMillis();
-      paramList = new File(paramString);
-      a(this.jdField_a_of_type_JavaUtilList, paramList.getAbsolutePath(), new VideoCombineHelper.CombineTask.2(this, l, paramCallback, paramList));
-      return;
-    }
-    catch (Exception paramList)
-    {
-      QLog.e(".troop.VideoCombineHelper", 2, "combineVideos failed", paramList);
-    }
+    paramCallback.a("", false, "videoFiles empty!");
   }
   
   public void a(List<String> paramList, String paramString, VideoCombineHelper.FFmpegCallback paramFFmpegCallback)
@@ -124,22 +134,24 @@ class VideoCombineHelper$CombineTask
     this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_Long = System.currentTimeMillis();
     StringBuffer localStringBuffer = new StringBuffer("concat:");
     int i = 0;
-    if (i < paramList.size())
+    while (i < paramList.size())
     {
       localObject2 = (String)paramList.get(i);
       Object localObject3 = new File((String)localObject2);
       Object localObject4 = ((File)localObject3).getName().split("\\.");
-      localObject3 = ((File)localObject3).getAbsoluteFile().getParent() + File.separator + localObject4[0] + ".ts";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((File)localObject3).getAbsoluteFile().getParent());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(localObject4[0]);
+      localStringBuilder.append(".ts");
+      localObject3 = localStringBuilder.toString();
       localStringBuffer.append((String)localObject3);
       if (i != paramList.size() - 1) {
         localStringBuffer.append("|");
       }
       localObject4 = new File((String)localObject3);
-      if ((((File)localObject4).exists()) && (((File)localObject4).length() > 0L)) {}
-      for (;;)
+      if ((!((File)localObject4).exists()) || (((File)localObject4).length() <= 0L))
       {
-        i += 1;
-        break;
         if (!((File)localObject4).getParentFile().exists()) {
           ((File)localObject4).getParentFile().mkdirs();
         }
@@ -149,12 +161,18 @@ class VideoCombineHelper$CombineTask
         ((FFmpegCommandUnit)localObject4).callback = new VideoCombineHelper.CombineTask.4(this, paramFFmpegCallback);
         ((ArrayList)localObject1).add(localObject4);
       }
+      i += 1;
     }
     paramList = new File(paramString);
     paramString = paramList.getName().split("\\.");
-    paramList = paramList.getParent() + File.separator + paramString[0] + ".ts";
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramList.getParent());
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append(paramString[0]);
+    ((StringBuilder)localObject2).append(".ts");
+    paramList = ((StringBuilder)localObject2).toString();
     paramString = new FFmpegCommandUnit();
-    Object localObject2 = new ArrayList();
+    localObject2 = new ArrayList();
     ((ArrayList)localObject2).add("-y");
     ((ArrayList)localObject2).add("-i");
     ((ArrayList)localObject2).add(localStringBuffer.toString());
@@ -164,15 +182,10 @@ class VideoCombineHelper$CombineTask
     paramString.cmd = ((String[])((ArrayList)localObject2).toArray(new String[0]));
     paramString.callback = paramFFmpegCallback;
     ((ArrayList)localObject1).add(paramString);
-    if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.isFFmpegCommandRunning()) {
+    if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.isFFmpegCommandRunning()) {
       try
       {
-        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.insertFFmpegQueue((ArrayList)localObject1);
-        return;
-      }
-      catch (FFmpegCommandAlreadyRunningException paramList)
-      {
-        paramList.printStackTrace();
+        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.insertFFmpegQueue((ArrayList)localObject1);
         return;
       }
       catch (IOException paramList)
@@ -180,18 +193,23 @@ class VideoCombineHelper$CombineTask
         paramList.printStackTrace();
         return;
       }
+      catch (FFmpegCommandAlreadyRunningException paramList)
+      {
+        paramList.printStackTrace();
+        return;
+      }
     }
     try
     {
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.cmdFFmpegQueue((ArrayList)localObject1);
+      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.cmdFFmpegQueue((ArrayList)localObject1);
       return;
     }
-    catch (FFmpegCommandAlreadyRunningException paramList)
+    catch (IOException paramList)
     {
       paramList.printStackTrace();
       return;
     }
-    catch (IOException paramList)
+    catch (FFmpegCommandAlreadyRunningException paramList)
     {
       paramList.printStackTrace();
     }
@@ -199,7 +217,6 @@ class VideoCombineHelper$CombineTask
   
   public boolean a(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    boolean bool = false;
     try
     {
       Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
@@ -221,20 +238,20 @@ class VideoCombineHelper$CombineTask
       localCanvas.drawText(paramString1, paramInt1 / 2, paramInt2 - 15 - localRect.height() / 2, localPaint1);
       BitmapUtils.a(localBitmap, Bitmap.CompressFormat.PNG, 100, paramString2);
       BitmapUtils.a(localBitmap);
-      bool = true;
+      return true;
     }
     catch (Throwable paramString1)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(".troop.VideoCombineHelper", 2, "createWatermarkByWording", paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.e(".troop.VideoCombineHelper", 2, "createWatermarkByWording", paramString1);
+      }
     }
-    return bool;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask
  * JD-Core Version:    0.7.0.1
  */

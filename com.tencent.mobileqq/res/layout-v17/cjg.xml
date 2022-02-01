@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:paddingTop="14.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/n61" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginTop="42.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/gou" android:scaleType="fitXY" android:layout_marginStart="10.0dip" android:layout_marginEnd="10.0dip" />
+    <ImageView android:id="@id/n65" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginTop="42.0dip" android:layout_marginBottom="10.0dip" android:scaleType="fitXY" android:layout_marginStart="10.0dip" android:layout_marginEnd="10.0dip" />
+    <ImageView android:id="@id/n68" android:layout_width="225.0dip" android:layout_height="75.0dip" android:src="@drawable/gox" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/n66" android:layout_width="75.0dip" android:layout_height="123.0dip" android:layout_marginTop="50.0dip" android:src="@drawable/gow" android:scaleType="fitCenter" android:layout_alignParentStart="true" />
+    <ImageView android:id="@id/n67" android:layout_width="75.0dip" android:layout_height="123.0dip" android:layout_marginTop="50.0dip" android:src="@drawable/got" android:scaleType="fitCenter" android:layout_alignParentEnd="true" />
+    <RelativeLayout android:id="@id/n60" android:background="@drawable/gp0" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginTop="70.0dip" android:layout_marginStart="50.0dip" android:layout_marginEnd="50.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="#ff0a9bb0" android:gravity="center" android:id="@id/n69" android:background="@drawable/gp2" android:visibility="visible" android:layout_width="36.0dip" android:layout_height="24.0dip" android:text="" android:layout_alignParentLeft="true" />
+        <RelativeLayout android:gravity="center" android:id="@id/n64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/n69">
+            <ImageView android:id="@id/n62" android:background="@drawable/eg8" android:padding="1.0dip" android:visibility="visible" android:layout_width="24.0dip" android:layout_height="25.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/eu1" android:scaleType="fitCenter" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+            <com.tencent.mobileqq.activity.springfestival.HBMarqueeTextView android:textSize="14.0sp" android:textColor="#ffe9feff" android:ellipsize="marquee" android:gravity="center" android:id="@id/n63" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:scrollHorizontally="true" android:singleLine="true" android:layout_centerVertical="true" android:marqueeRepeatLimit="marquee_forever" android:layout_toEndOf="@id/n62" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

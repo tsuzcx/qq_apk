@@ -16,11 +16,17 @@ class BeautySeekView$3
     if (BeautySeekView.a(this.a) != paramInt)
     {
       BeautySeekView.a(this.a, paramInt);
-      if ((paramBoolean) && (BeautySeekView.a(this.a) != null)) {
-        BeautySeekView.a(this.a).setContentDescription(paramInt + "%");
+      if ((paramBoolean) && (BeautySeekView.a(this.a) != null))
+      {
+        paramSeekBar = BeautySeekView.a(this.a);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("%");
+        paramSeekBar.setContentDescription(localStringBuilder.toString());
       }
       BeautySeekView.a(this.a, paramInt);
-      BeautySeekView.b(this.a, BeautySeekView.a(this.a));
+      paramSeekBar = this.a;
+      BeautySeekView.b(paramSeekBar, BeautySeekView.a(paramSeekBar));
     }
     if (BeautySeekView.a(this.a) != null) {
       BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 2, paramInt);
@@ -47,7 +53,7 @@ class BeautySeekView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.beauty.BeautySeekView.3
  * JD-Core Version:    0.7.0.1
  */

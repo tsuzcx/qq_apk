@@ -52,15 +52,17 @@ public final class StatisticsManagerImpl
   
   public StatisticsManagerImpl(@NotNull LifeCycleOwner paramLifeCycleOwner, @NotNull Lock paramLock)
   {
-    this.accumulatedDrawCallsHolder = new ValueHolder(Long.valueOf(0L), paramLifeCycleOwner, paramLock);
-    this.currentDrawCallsHolder = new ValueHolder(Long.valueOf(0L), paramLifeCycleOwner, paramLock);
-    this.accumulatedFramesHolder = new ValueHolder(Long.valueOf(0L), paramLifeCycleOwner, paramLock);
-    this.currentFPSHolder = new ValueHolder(Float.valueOf(0.0F), paramLifeCycleOwner, paramLock);
-    this.targetFPSHolder = new ValueHolder(Float.valueOf(0.0F), paramLifeCycleOwner, paramLock);
+    Long localLong = Long.valueOf(0L);
+    this.accumulatedDrawCallsHolder = new ValueHolder(localLong, paramLifeCycleOwner, paramLock);
+    this.currentDrawCallsHolder = new ValueHolder(localLong, paramLifeCycleOwner, paramLock);
+    this.accumulatedFramesHolder = new ValueHolder(localLong, paramLifeCycleOwner, paramLock);
+    Float localFloat = Float.valueOf(0.0F);
+    this.currentFPSHolder = new ValueHolder(localFloat, paramLifeCycleOwner, paramLock);
+    this.targetFPSHolder = new ValueHolder(localFloat, paramLifeCycleOwner, paramLock);
     this.jankTraceLevelHolder = new ValueHolder(JankTraceLevel.NONE, paramLifeCycleOwner, paramLock);
     this.jankTraceLevel$delegate = this.jankTraceLevelHolder;
     this.traceInfoCallbackHolder = new ValueHolder(null, paramLifeCycleOwner, paramLock);
-    this.lastBlackScreenTimeMillisHolder = new ValueHolder(Long.valueOf(0L), paramLifeCycleOwner, paramLock);
+    this.lastBlackScreenTimeMillisHolder = new ValueHolder(localLong, paramLifeCycleOwner, paramLock);
     this.lastClicksHolder = new ValueHolder(null, paramLifeCycleOwner, paramLock);
     this.lastClickInfoHolder = new ValueHolder(null, paramLifeCycleOwner, paramLock);
     this.frameCallbackHolder = new ValueHolder(null, paramLifeCycleOwner, paramLock);
@@ -230,7 +232,7 @@ public final class StatisticsManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.engine.StatisticsManagerImpl
  * JD-Core Version:    0.7.0.1
  */

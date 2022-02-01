@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild.basechatitemlayout;
 
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtenderViewBasicAbility;
-import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberNewLevelView;
-import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberRankItem;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.BaseChatItemLayoutViewBasicAbility;
+import com.tencent.mobileqq.troop.troopmemberlevel.TroopMemberRankItem;
+import com.tencent.mobileqq.troop.widget.troopmemberlevel.TroopMemberNewLevelView;
 
 class TroopMemberNewLevelExtender$1
-  extends NickNameExtenderViewBasicAbility
+  extends BaseChatItemLayoutViewBasicAbility
 {
   TroopMemberNewLevelExtender$1(TroopMemberNewLevelExtender paramTroopMemberNewLevelExtender, View paramView)
   {
@@ -15,16 +15,17 @@ class TroopMemberNewLevelExtender$1
   
   public void setData(Object... paramVarArgs)
   {
-    if (!checkViewNonNull()) {}
-    while ((paramVarArgs == null) || (paramVarArgs.length != 1)) {
+    if (!checkViewNonNull()) {
       return;
     }
-    ((TroopMemberNewLevelView)this.mView).setTroopMemberNewLevel((TroopMemberRankItem)paramVarArgs[0]);
+    if ((paramVarArgs != null) && (paramVarArgs.length == 1)) {
+      ((TroopMemberNewLevelView)this.mView).setTroopMemberNewLevel((TroopMemberRankItem)paramVarArgs[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basechatitemlayout.TroopMemberNewLevelExtender.1
  * JD-Core Version:    0.7.0.1
  */

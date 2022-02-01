@@ -16,36 +16,47 @@ class DesktopDataManager$18
   public void run()
   {
     Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
+    if (localObject == null)
+    {
       QLog.e("DesktopDataManager", 1, "deleteEntity, app is null.");
-    }
-    DeskTopAppEntity localDeskTopAppEntity;
-    do
-    {
       return;
-      localDeskTopAppEntity = new DeskTopAppEntity(this.val$entity);
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localObject == null);
-    try
-    {
-      localDeskTopAppEntity.setStatus(1001);
-      if (((EntityManager)localObject).remove(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId }))
+    }
+    DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(this.val$entity);
+    localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    if (localObject != null) {
+      try
       {
-        QLog.d("DesktopDataManager", 2, "deleteEntity, delete " + localDeskTopAppEntity.name + " success from db");
+        localDeskTopAppEntity.setStatus(1001);
+        boolean bool = ((EntityManager)localObject).remove(localDeskTopAppEntity, "uniqueId=?", new String[] { localDeskTopAppEntity.uniqueId });
+        if (bool)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("deleteEntity, delete ");
+          ((StringBuilder)localObject).append(localDeskTopAppEntity.name);
+          ((StringBuilder)localObject).append(" success from db");
+          QLog.d("DesktopDataManager", 2, ((StringBuilder)localObject).toString());
+          return;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("deleteEntity, delete ");
+        ((StringBuilder)localObject).append(localDeskTopAppEntity.name);
+        ((StringBuilder)localObject).append(" fail from db");
+        QLog.d("DesktopDataManager", 2, ((StringBuilder)localObject).toString());
         return;
       }
+      catch (Throwable localThrowable)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("deleteEntity, Exception: ");
+        ((StringBuilder)localObject).append(Log.getStackTraceString(localThrowable));
+        QLog.e("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
+      }
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("DesktopDataManager", 1, "deleteEntity, Exception: " + Log.getStackTraceString(localThrowable));
-      return;
-    }
-    QLog.d("DesktopDataManager", 2, "deleteEntity, delete " + localThrowable.name + " fail from db");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.18
  * JD-Core Version:    0.7.0.1
  */

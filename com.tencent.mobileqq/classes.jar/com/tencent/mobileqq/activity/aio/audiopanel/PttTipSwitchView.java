@@ -3,6 +3,7 @@ package com.tencent.mobileqq.activity.aio.audiopanel;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.ViewSwitcher;
@@ -51,18 +52,22 @@ public class PttTipSwitchView
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_AndroidViewAnimationAnimationSet) {
-      setInAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
+    Animation localAnimation = getInAnimation();
+    AnimationSet localAnimationSet = this.jdField_a_of_type_AndroidViewAnimationAnimationSet;
+    if (localAnimation != localAnimationSet) {
+      setInAnimation(localAnimationSet);
     }
-    if (getOutAnimation() != this.b) {
-      setOutAnimation(this.b);
+    localAnimation = getOutAnimation();
+    localAnimationSet = this.b;
+    if (localAnimation != localAnimationSet) {
+      setOutAnimation(localAnimationSet);
     }
     showNext();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PttTipSwitchView
  * JD-Core Version:    0.7.0.1
  */

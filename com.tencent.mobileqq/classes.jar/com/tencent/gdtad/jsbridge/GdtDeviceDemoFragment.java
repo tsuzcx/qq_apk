@@ -22,7 +22,7 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
 import com.tencent.mobileqq.soso.location.data.SosoLocation;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public final class GdtDeviceDemoFragment
   extends PublicBaseFragment
@@ -77,22 +77,22 @@ public final class GdtDeviceDemoFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    GdtManager.a().a(getActivity(), null);
-    this.a = new TextView(getActivity());
-    a(String.format("processName:%s", new Object[] { AdProcessManager.INSTANCE.getCurrentProcessName(getActivity()) }));
-    paramViewGroup = new Button(getActivity());
+    GdtManager.a().a(getBaseActivity(), null);
+    this.a = new TextView(getBaseActivity());
+    a(String.format("processName:%s", new Object[] { AdProcessManager.INSTANCE.getCurrentProcessName(getBaseActivity()) }));
+    paramViewGroup = new Button(getBaseActivity());
     paramViewGroup.setText("getDeviceInfo");
     paramViewGroup.setOnClickListener(new GdtDeviceDemoFragment.1(this));
-    paramBundle = new Button(getActivity());
+    paramBundle = new Button(getBaseActivity());
     paramBundle.setText("AdLocationManager.getLocationCache");
     paramBundle.setOnClickListener(new GdtDeviceDemoFragment.2(this));
-    Button localButton1 = new Button(getActivity());
+    Button localButton1 = new Button(getBaseActivity());
     localButton1.setText("LbsManagerService.getCachedLbsInfo");
     localButton1.setOnClickListener(new GdtDeviceDemoFragment.3(this));
-    Button localButton2 = new Button(getActivity());
+    Button localButton2 = new Button(getBaseActivity());
     localButton2.setText("LbsManagerService.startLocation");
     localButton2.setOnClickListener(new GdtDeviceDemoFragment.4(this));
-    paramLayoutInflater = new LinearLayout(getActivity());
+    paramLayoutInflater = new LinearLayout(getBaseActivity());
     paramLayoutInflater.setBackgroundColor(Color.parseColor("#DBDBDB"));
     paramLayoutInflater.setOrientation(1);
     paramLayoutInflater.addView(paramViewGroup);
@@ -100,15 +100,15 @@ public final class GdtDeviceDemoFragment
     paramLayoutInflater.addView(localButton1);
     paramLayoutInflater.addView(localButton2);
     paramLayoutInflater.addView(this.a);
-    paramViewGroup = new ScrollView(getActivity());
+    paramViewGroup = new ScrollView(getBaseActivity());
     paramViewGroup.addView(paramLayoutInflater);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramViewGroup);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramViewGroup);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtDeviceDemoFragment
  * JD-Core Version:    0.7.0.1
  */

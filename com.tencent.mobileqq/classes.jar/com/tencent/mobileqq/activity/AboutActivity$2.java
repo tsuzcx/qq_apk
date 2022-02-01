@@ -12,13 +12,14 @@ class AboutActivity$2
   
   public void onClick(View paramView)
   {
-    this.a.startActivity(ShareAppLogActivity.buildIntent(this.a));
+    AboutActivity localAboutActivity = this.a;
+    localAboutActivity.startActivity(ShareAppLogActivity.buildIntent(localAboutActivity));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AboutActivity.2
  * JD-Core Version:    0.7.0.1
  */

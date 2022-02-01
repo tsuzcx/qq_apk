@@ -14,35 +14,39 @@ class ChatHistoryTroopMemberFragment$21$1
 {
   ChatHistoryTroopMemberFragment$21$1(ChatHistoryTroopMemberFragment.21 param21) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    do
-    {
-      for (;;)
-      {
+    if (paramInt == 0) {
+      if (paramArrayOfByte == null) {
         return;
-        try
-        {
-          paramBundle = new oidb_cmd0x74f.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
-          {
-            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.range.get());
-            ChatHistoryTroopMemberFragment.c(this.a.this$0);
-            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
-            return;
-          }
-        }
-        catch (Exception paramArrayOfByte) {}
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.history.BaseFragment", 2, "initListView, get0x74f：failed");
+    }
+    try
+    {
+      paramBundle = new oidb_cmd0x74f.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if ((paramBundle.uint32_ret_code.get() != 0) || (!paramBundle.bool_display_entrance.get())) {
+        break label104;
+      }
+      ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.range.get());
+      ChatHistoryTroopMemberFragment.c(this.a.this$0);
+      ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      label90:
+      label104:
+      break label90;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.BaseFragment", 2, "initListView, get0x74f：failed");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.21.1
  * JD-Core Version:    0.7.0.1
  */

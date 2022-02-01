@@ -31,12 +31,12 @@ public final class n
     this.e = paramb;
     this.f = paramg;
     this.h = new h[4];
-    if (paramBoolean)
+    if (paramBoolean) {}
+    for (paramb = new p(new Handler(Looper.getMainLooper()));; paramb = new p(this.k))
     {
-      this.g = new p(new Handler(Looper.getMainLooper()));
+      this.g = paramb;
       return;
     }
-    this.g = new p(this.k);
   }
   
   public n(b paramb, g paramg, boolean paramBoolean)
@@ -54,22 +54,27 @@ public final class n
       paramm.a("add-to-queue");
       if (!paramm.l())
       {
-        this.d.add(paramm);
+        ??? = this.d;
+        ((PriorityBlockingQueue)???).add(paramm);
         return paramm;
       }
+      ??? = this.c;
     }
-    this.c.add(paramm);
-    return paramm;
+    for (;;)
+    {
+      throw paramm;
+    }
   }
   
   public final void a()
   {
-    int n = 0;
-    if (this.i != null) {
-      this.i.a();
+    Object localObject1 = this.i;
+    if (localObject1 != null) {
+      ((c)localObject1).a();
     }
-    Object localObject1 = this.h;
+    localObject1 = this.h;
     int i1 = localObject1.length;
+    int n = 0;
     int m = 0;
     while (m < i1)
     {
@@ -99,16 +104,21 @@ public final class n
       synchronized (this.j)
       {
         ??? = this.j.iterator();
-        if (((Iterator)???).hasNext()) {
+        while (((Iterator)???).hasNext()) {
           ((Iterator)???).next();
         }
+        return;
       }
+    }
+    for (;;)
+    {
+      throw ???;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.n
  * JD-Core Version:    0.7.0.1
  */

@@ -18,22 +18,22 @@ class NearbyProcess$2
   
   public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
   {
-    if (paramBasicTypeDataParcel == null) {}
-    Object[] arrayOfObject;
-    do
-    {
+    if (paramBasicTypeDataParcel == null) {
       return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
-      }
-      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
-    } while (arrayOfObject == null);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
+    }
+    Object[] arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    if (arrayOfObject == null) {
+      return null;
+    }
     return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.NearbyProcess.2
  * JD-Core Version:    0.7.0.1
  */

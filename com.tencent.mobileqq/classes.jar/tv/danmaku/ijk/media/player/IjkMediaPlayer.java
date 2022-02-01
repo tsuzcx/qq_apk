@@ -18,6 +18,8 @@ import com.tencent.oskplayer.miscellaneous.MediaFormatProxy;
 import com.tencent.oskplayer.support.loader.DefaultNativeLibLoader;
 import com.tencent.oskplayer.support.loader.NativeLibLoader;
 import com.tencent.oskplayer.support.loader.NativeLibLoader.State;
+import com.tencent.oskplayer.support.log.ILogger;
+import com.tencent.oskplayer.support.log.Logger;
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -99,7 +101,7 @@ public final class IjkMediaPlayer
   public static final int SDL_FCC_RV16 = 909203026;
   public static final int SDL_FCC_RV32 = 842225234;
   public static final int SDL_FCC_YV12 = 842094169;
-  private static final String TAG = IjkMediaPlayer.class.getName();
+  private static final String TAG = "tv.danmaku.ijk.media.player.IjkMediaPlayer";
   private static volatile boolean mIsNativeInitialized = false;
   public static volatile boolean sIsLibLoadSuccess;
   private static Object sIsNativeLibReady;
@@ -224,13 +226,12 @@ public final class IjkMediaPlayer
     }
     initNativeOnce();
     paramNativeLibLoader = Looper.myLooper();
-    if (paramNativeLibLoader != null) {
+    if (paramNativeLibLoader != null)
+    {
       this.mEventHandler = new IjkMediaPlayer.EventHandler(this, paramNativeLibLoader);
     }
-    for (;;)
+    else
     {
-      native_setup(new WeakReference(this));
-      return;
       paramNativeLibLoader = Looper.getMainLooper();
       if (paramNativeLibLoader != null) {
         this.mEventHandler = new IjkMediaPlayer.EventHandler(this, paramNativeLibLoader);
@@ -238,123 +239,87 @@ public final class IjkMediaPlayer
         this.mEventHandler = null;
       }
     }
+    native_setup(new WeakReference(this));
   }
   
   public static boolean isNativeLibReady(NativeLibLoader paramNativeLibLoader)
   {
-    boolean bool2 = false;
     NativeLibLoader localNativeLibLoader = paramNativeLibLoader;
     if (paramNativeLibLoader == null) {}
     try
     {
       localNativeLibLoader = sLocalLibLoader;
+      boolean bool1;
       if (sIsNativeLibReady != null)
       {
         bool1 = ((Boolean)sIsNativeLibReady).booleanValue();
         return bool1;
       }
-      if (localNativeLibLoader == null) {
-        break label171;
-      }
-      if ((localNativeLibLoader.isLibReadyToLoad("ijkffmpeg") == NativeLibLoader.State.WAIT) || (localNativeLibLoader.isLibReadyToLoad("ijksdl") == NativeLibLoader.State.WAIT) || (localNativeLibLoader.isLibReadyToLoad("ijkplayer") == NativeLibLoader.State.WAIT)) {
+      boolean bool2 = false;
+      if (localNativeLibLoader != null)
+      {
+        if ((localNativeLibLoader.isLibReadyToLoad("ijkffmpeg") != NativeLibLoader.State.WAIT) && (localNativeLibLoader.isLibReadyToLoad("ijksdl") != NativeLibLoader.State.WAIT) && (localNativeLibLoader.isLibReadyToLoad("ijkplayer") != NativeLibLoader.State.WAIT))
+        {
+          bool1 = bool2;
+          if (localNativeLibLoader.isLibReadyToLoad("ijkffmpeg") == NativeLibLoader.State.TRUE)
+          {
+            bool1 = bool2;
+            if (localNativeLibLoader.isLibReadyToLoad("ijksdl") == NativeLibLoader.State.TRUE)
+            {
+              bool1 = bool2;
+              if (localNativeLibLoader.isLibReadyToLoad("ijkplayer") == NativeLibLoader.State.TRUE) {
+                bool1 = true;
+              }
+            }
+          }
+          sIsNativeLibReady = Boolean.valueOf(bool1);
+          bool1 = ((Boolean)sIsNativeLibReady).booleanValue();
+          return bool1;
+        }
         return false;
       }
+      return false;
     }
     finally {}
-    boolean bool1 = bool2;
-    if (localNativeLibLoader.isLibReadyToLoad("ijkffmpeg") == NativeLibLoader.State.TRUE)
-    {
-      bool1 = bool2;
-      if (localNativeLibLoader.isLibReadyToLoad("ijksdl") == NativeLibLoader.State.TRUE)
-      {
-        bool1 = bool2;
-        if (localNativeLibLoader.isLibReadyToLoad("ijkplayer") == NativeLibLoader.State.TRUE) {
-          bool1 = true;
-        }
-      }
-    }
-    sIsNativeLibReady = Boolean.valueOf(bool1);
-    bool1 = ((Boolean)sIsNativeLibReady).booleanValue();
-    return bool1;
-    label171:
-    return false;
   }
   
-  /* Error */
   public static void loadLibrariesOnce(NativeLibLoader paramNativeLibLoader)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 165	tv/danmaku/ijk/media/player/IjkMediaPlayer:sIsLibLoadSuccess	Z
-    //   6: ifne +78 -> 84
-    //   9: aload_0
-    //   10: astore_1
-    //   11: aload_0
-    //   12: ifnonnull +7 -> 19
-    //   15: getstatic 163	tv/danmaku/ijk/media/player/IjkMediaPlayer:sLocalLibLoader	Lcom/tencent/oskplayer/support/loader/NativeLibLoader;
-    //   18: astore_1
-    //   19: aload_1
-    //   20: ldc_w 300
-    //   23: invokeinterface 329 2 0
-    //   28: aload_1
-    //   29: ldc_w 314
-    //   32: invokeinterface 329 2 0
-    //   37: aload_1
-    //   38: ldc_w 316
-    //   41: invokeinterface 329 2 0
-    //   46: iconst_1
-    //   47: putstatic 165	tv/danmaku/ijk/media/player/IjkMediaPlayer:sIsLibLoadSuccess	Z
-    //   50: invokestatic 335	com/tencent/oskplayer/support/log/Logger:g	()Lcom/tencent/oskplayer/support/log/ILogger;
-    //   53: getstatic 156	tv/danmaku/ijk/media/player/IjkMediaPlayer:TAG	Ljava/lang/String;
-    //   56: new 337	java/lang/StringBuilder
-    //   59: dup
-    //   60: invokespecial 338	java/lang/StringBuilder:<init>	()V
-    //   63: ldc_w 340
-    //   66: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: getstatic 165	tv/danmaku/ijk/media/player/IjkMediaPlayer:sIsLibLoadSuccess	Z
-    //   72: invokevirtual 347	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 350	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokeinterface 356 3 0
-    //   83: pop
-    //   84: ldc 2
-    //   86: monitorexit
-    //   87: return
-    //   88: astore_0
-    //   89: invokestatic 335	com/tencent/oskplayer/support/log/Logger:g	()Lcom/tencent/oskplayer/support/log/ILogger;
-    //   92: getstatic 156	tv/danmaku/ijk/media/player/IjkMediaPlayer:TAG	Ljava/lang/String;
-    //   95: new 337	java/lang/StringBuilder
-    //   98: dup
-    //   99: invokespecial 338	java/lang/StringBuilder:<init>	()V
-    //   102: ldc_w 358
-    //   105: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: getstatic 165	tv/danmaku/ijk/media/player/IjkMediaPlayer:sIsLibLoadSuccess	Z
-    //   111: invokevirtual 347	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   114: invokevirtual 350	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: invokeinterface 361 3 0
-    //   122: pop
-    //   123: aload_0
-    //   124: invokevirtual 364	java/lang/Throwable:printStackTrace	()V
-    //   127: goto -77 -> 50
-    //   130: astore_0
-    //   131: ldc 2
-    //   133: monitorexit
-    //   134: aload_0
-    //   135: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	136	0	paramNativeLibLoader	NativeLibLoader
-    //   10	28	1	localNativeLibLoader	NativeLibLoader
-    // Exception table:
-    //   from	to	target	type
-    //   19	50	88	java/lang/Throwable
-    //   3	9	130	finally
-    //   15	19	130	finally
-    //   19	50	130	finally
-    //   50	84	130	finally
-    //   84	87	130	finally
-    //   89	127	130	finally
-    //   131	134	130	finally
+    try
+    {
+      if (!sIsLibLoadSuccess)
+      {
+        Object localObject1 = paramNativeLibLoader;
+        if (paramNativeLibLoader == null) {
+          localObject1 = sLocalLibLoader;
+        }
+        try
+        {
+          ((NativeLibLoader)localObject1).loadLibrary("ijkffmpeg");
+          ((NativeLibLoader)localObject1).loadLibrary("ijksdl");
+          ((NativeLibLoader)localObject1).loadLibrary("ijkplayer");
+          sIsLibLoadSuccess = true;
+        }
+        catch (Throwable paramNativeLibLoader)
+        {
+          localObject1 = Logger.g();
+          localObject2 = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("failed to load library mIsLibLoaded=");
+          localStringBuilder.append(sIsLibLoadSuccess);
+          ((ILogger)localObject1).w((String)localObject2, localStringBuilder.toString());
+          paramNativeLibLoader.printStackTrace();
+        }
+        paramNativeLibLoader = Logger.g();
+        localObject1 = TAG;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("library loaded result ");
+        ((StringBuilder)localObject2).append(sIsLibLoadSuccess);
+        paramNativeLibLoader.i((String)localObject1, ((StringBuilder)localObject2).toString());
+      }
+      return;
+    }
+    finally {}
   }
   
   private native void native_finalize();
@@ -375,73 +340,81 @@ public final class IjkMediaPlayer
   private static boolean onNativeInvoke(Object paramObject, int paramInt, Bundle paramBundle)
   {
     DebugLog.ifmt(TAG, "onNativeInvoke %d", new Object[] { Integer.valueOf(paramInt) });
-    if ((paramObject == null) || (!(paramObject instanceof WeakReference))) {
-      throw new IllegalStateException("<null weakThiz>.onNativeInvoke()");
-    }
-    paramObject = (IjkMediaPlayer)((WeakReference)paramObject).get();
-    if (paramObject == null) {
+    if ((paramObject != null) && ((paramObject instanceof WeakReference)))
+    {
+      paramObject = (IjkMediaPlayer)((WeakReference)paramObject).get();
+      if (paramObject != null)
+      {
+        IjkMediaPlayer.OnNativeInvokeListener localOnNativeInvokeListener = paramObject.mOnNativeInvokeListener;
+        if ((localOnNativeInvokeListener != null) && (localOnNativeInvokeListener.onNativeInvoke(paramInt, paramBundle))) {
+          return true;
+        }
+        if (paramInt != 131079) {
+          return false;
+        }
+        paramObject = paramObject.mOnControlMessageListener;
+        if (paramObject == null) {
+          return false;
+        }
+        paramInt = paramBundle.getInt("segment_index", -1);
+        if (paramInt >= 0)
+        {
+          paramObject = paramObject.onControlResolveSegmentUrl(paramInt);
+          if (paramObject != null)
+          {
+            paramBundle.putString("url", paramObject);
+            return true;
+          }
+          throw new RuntimeException(new IOException("onNativeInvoke() = <NULL newUrl>"));
+        }
+        throw new InvalidParameterException("onNativeInvoke(invalid segment index)");
+      }
       throw new IllegalStateException("<null weakPlayer>.onNativeInvoke()");
     }
-    IjkMediaPlayer.OnNativeInvokeListener localOnNativeInvokeListener = paramObject.mOnNativeInvokeListener;
-    if ((localOnNativeInvokeListener != null) && (localOnNativeInvokeListener.onNativeInvoke(paramInt, paramBundle))) {
-      return true;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    paramObject = paramObject.mOnControlMessageListener;
-    if (paramObject == null) {
-      return false;
-    }
-    paramInt = paramBundle.getInt("segment_index", -1);
-    if (paramInt < 0) {
-      throw new InvalidParameterException("onNativeInvoke(invalid segment index)");
-    }
-    paramObject = paramObject.onControlResolveSegmentUrl(paramInt);
-    if (paramObject == null) {
-      throw new RuntimeException(new IOException("onNativeInvoke() = <NULL newUrl>"));
-    }
-    paramBundle.putString("url", paramObject);
-    return true;
+    throw new IllegalStateException("<null weakThiz>.onNativeInvoke()");
   }
   
   @CalledByNative
   private static String onSelectCodec(Object paramObject, String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramObject == null) || (!(paramObject instanceof WeakReference))) {
-      return null;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof WeakReference)) {
+        return null;
+      }
+      IjkMediaPlayer localIjkMediaPlayer = (IjkMediaPlayer)((WeakReference)paramObject).get();
+      if (localIjkMediaPlayer == null) {
+        return null;
+      }
+      IjkMediaPlayer.OnMediaCodecSelectListener localOnMediaCodecSelectListener = localIjkMediaPlayer.mOnMediaCodecSelectListener;
+      paramObject = localOnMediaCodecSelectListener;
+      if (localOnMediaCodecSelectListener == null) {
+        paramObject = IjkMediaPlayer.DefaultMediaCodecSelector.sInstance;
+      }
+      return paramObject.onMediaCodecSelect(localIjkMediaPlayer, paramString, paramInt1, paramInt2);
     }
-    IjkMediaPlayer localIjkMediaPlayer = (IjkMediaPlayer)((WeakReference)paramObject).get();
-    if (localIjkMediaPlayer == null) {
-      return null;
-    }
-    IjkMediaPlayer.OnMediaCodecSelectListener localOnMediaCodecSelectListener = localIjkMediaPlayer.mOnMediaCodecSelectListener;
-    paramObject = localOnMediaCodecSelectListener;
-    if (localOnMediaCodecSelectListener == null) {
-      paramObject = IjkMediaPlayer.DefaultMediaCodecSelector.sInstance;
-    }
-    return paramObject.onMediaCodecSelect(localIjkMediaPlayer, paramString, paramInt1, paramInt2);
+    return null;
   }
   
   @CalledByNative
   private static void postEventFromNative(Object paramObject1, int paramInt1, int paramInt2, int paramInt3, Object paramObject2)
   {
-    if (paramObject1 == null) {}
-    do
+    if (paramObject1 == null) {
+      return;
+    }
+    paramObject1 = (IjkMediaPlayer)((WeakReference)paramObject1).get();
+    if (paramObject1 == null) {
+      return;
+    }
+    if ((paramInt1 == 200) && (paramInt2 == 2)) {
+      paramObject1.start();
+    }
+    IjkMediaPlayer.EventHandler localEventHandler = paramObject1.mEventHandler;
+    if (localEventHandler != null)
     {
-      do
-      {
-        return;
-        paramObject1 = (IjkMediaPlayer)((WeakReference)paramObject1).get();
-      } while (paramObject1 == null);
-      if ((paramInt1 == 200) && (paramInt2 == 2)) {
-        paramObject1.start();
-      }
-    } while (paramObject1.mEventHandler == null);
-    paramObject2 = paramObject1.mEventHandler.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject2);
-    paramObject1.mEventHandler.sendMessage(paramObject2);
+      paramObject2 = localEventHandler.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject2);
+      paramObject1.mEventHandler.sendMessage(paramObject2);
+    }
   }
   
   private void setDataSource(FileDescriptor paramFileDescriptor, long paramLong1, long paramLong2)
@@ -452,40 +425,30 @@ public final class IjkMediaPlayer
   @SuppressLint({"Wakelock"})
   private void stayAwake(boolean paramBoolean)
   {
-    if (this.mWakeLock != null)
-    {
-      if ((!paramBoolean) || (this.mWakeLock.isHeld())) {
-        break label38;
-      }
-      this.mWakeLock.acquire();
-    }
-    for (;;)
-    {
-      this.mStayAwake = paramBoolean;
-      updateSurfaceScreenOn();
-      return;
-      label38:
-      if ((!paramBoolean) && (this.mWakeLock.isHeld())) {
+    PowerManager.WakeLock localWakeLock = this.mWakeLock;
+    if (localWakeLock != null) {
+      if ((paramBoolean) && (!localWakeLock.isHeld())) {
+        this.mWakeLock.acquire();
+      } else if ((!paramBoolean) && (this.mWakeLock.isHeld())) {
         this.mWakeLock.release();
       }
     }
+    this.mStayAwake = paramBoolean;
+    updateSurfaceScreenOn();
   }
   
   private void updateSurfaceScreenOn()
   {
-    SurfaceHolder localSurfaceHolder;
-    if (this.mSurfaceHolder != null)
+    SurfaceHolder localSurfaceHolder = this.mSurfaceHolder;
+    if (localSurfaceHolder != null)
     {
-      localSurfaceHolder = this.mSurfaceHolder;
-      if ((!this.mScreenOnWhilePlaying) || (!this.mStayAwake)) {
-        break label36;
+      boolean bool;
+      if ((this.mScreenOnWhilePlaying) && (this.mStayAwake)) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label36:
-    for (boolean bool = true;; bool = false)
-    {
       localSurfaceHolder.setKeepScreenOn(bool);
-      return;
     }
   }
   
@@ -591,43 +554,35 @@ public final class IjkMediaPlayer
         localMediaInfo.mVideoDecoder = localObject[0];
         localMediaInfo.mVideoDecoderImpl = localObject[1];
       }
-    }
-    else
-    {
-      localObject = _getAudioCodecInfo();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      else if (localObject.length >= 1)
       {
-        localObject = ((String)localObject).split(",");
-        if (localObject.length < 2) {
-          break label131;
-        }
+        localMediaInfo.mVideoDecoder = localObject[0];
+        localMediaInfo.mVideoDecoderImpl = "";
+      }
+    }
+    localObject = _getAudioCodecInfo();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split(",");
+      if (localObject.length >= 2)
+      {
         localMediaInfo.mAudioDecoder = localObject[0];
         localMediaInfo.mAudioDecoderImpl = localObject[1];
       }
-    }
-    for (;;)
-    {
-      try
-      {
-        localMediaInfo.mMeta = IjkMediaMeta.parse(_getMediaMeta());
-        return localMediaInfo;
-      }
-      catch (Throwable localThrowable)
-      {
-        label131:
-        localThrowable.printStackTrace();
-      }
-      if (localObject.length < 1) {
-        break;
-      }
-      localMediaInfo.mVideoDecoder = localObject[0];
-      localMediaInfo.mVideoDecoderImpl = "";
-      break;
-      if (localObject.length >= 1)
+      else if (localObject.length >= 1)
       {
         localMediaInfo.mAudioDecoder = localObject[0];
         localMediaInfo.mAudioDecoderImpl = "";
       }
+    }
+    try
+    {
+      localMediaInfo.mMeta = IjkMediaMeta.parse(_getMediaMeta());
+      return localMediaInfo;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
     return localMediaInfo;
   }
@@ -640,113 +595,131 @@ public final class IjkMediaPlayer
   public int getScore()
   {
     int j = super.getScore();
-    if ((j <= 5) || (j >= 26)) {
-      return j;
-    }
-    int k = Runtime.getRuntime().availableProcessors();
-    ArrayList localArrayList = new ArrayList(k);
-    long l = System.currentTimeMillis();
-    int i = 0;
-    Thread localThread;
-    while (i < k)
+    int i = j;
+    if (j > 5)
     {
-      localThread = new Thread(new IjkMediaPlayer.1(this));
-      localArrayList.add(localThread);
-      localThread.start();
-      i += 1;
-    }
-    i = 0;
-    for (;;)
-    {
-      if (i < k)
+      if (j >= 26) {
+        return j;
+      }
+      int n = Runtime.getRuntime().availableProcessors();
+      Object localObject = new ArrayList(n);
+      long l = System.currentTimeMillis();
+      int m = 0;
+      i = 0;
+      int k;
+      Thread localThread;
+      for (;;)
       {
-        localThread = (Thread)localArrayList.get(i);
+        k = m;
+        if (i >= n) {
+          break;
+        }
+        localThread = new Thread(new IjkMediaPlayer.1(this));
+        ((List)localObject).add(localThread);
+        localThread.start();
+        i += 1;
+      }
+      while (k < n)
+      {
+        localThread = (Thread)((List)localObject).get(k);
         try
         {
           localThread.join();
-          i += 1;
         }
         catch (InterruptedException localInterruptedException)
         {
-          for (;;)
+          localInterruptedException.printStackTrace();
+        }
+        k += 1;
+      }
+      l = System.currentTimeMillis() - l;
+      if (j == 11)
+      {
+        if (l < 250L)
+        {
+          i = 15;
+        }
+        else if ((l >= 250L) && (l < 400L))
+        {
+          i = 14;
+        }
+        else if ((l >= 400L) && (l < 600L))
+        {
+          i = 13;
+        }
+        else
+        {
+          i = j;
+          if (l >= 600L)
           {
-            localInterruptedException.printStackTrace();
+            i = j;
+            if (l < 800L) {
+              i = 12;
+            }
           }
         }
       }
-    }
-    l = System.currentTimeMillis() - l;
-    if (j == 11) {
-      if (l < 250L) {
-        i = 15;
-      }
-    }
-    for (;;)
-    {
-      DebugLog.w("IjkMediaPlayer", "getFPCalculation score total " + Long.toString(l));
-      return i;
-      if ((l >= 250L) && (l < 400L))
+      else if (j == 16)
       {
-        i = 14;
-      }
-      else if ((l >= 400L) && (l < 600L))
-      {
-        i = 13;
-      }
-      else
-      {
-        if ((l >= 600L) && (l < 800L))
+        if (l < 250L)
         {
-          i = 12;
-          continue;
-          if (j == 16)
+          i = 20;
+        }
+        else if ((l >= 250L) && (l < 350L))
+        {
+          i = 19;
+        }
+        else if ((l >= 350L) && (l < 500L))
+        {
+          i = 18;
+        }
+        else
+        {
+          i = j;
+          if (l >= 500L)
           {
-            if (l < 250L)
-            {
-              i = 20;
-              continue;
-            }
-            if ((l >= 250L) && (l < 350L))
-            {
-              i = 19;
-              continue;
-            }
-            if ((l >= 350L) && (l < 500L))
-            {
-              i = 18;
-              continue;
-            }
-            if ((l >= 500L) && (l < 650L)) {
+            i = j;
+            if (l < 650L) {
               i = 17;
             }
           }
-          else if (j == 21)
+        }
+      }
+      else
+      {
+        i = j;
+        if (j == 21) {
+          if (l < 200L)
           {
-            if (l < 200L)
+            i = 25;
+          }
+          else if ((l >= 200L) && (l < 300L))
+          {
+            i = 24;
+          }
+          else if ((l >= 300L) && (l < 450L))
+          {
+            i = 23;
+          }
+          else
+          {
+            i = j;
+            if (l >= 450L)
             {
-              i = 25;
-              continue;
-            }
-            if ((l >= 200L) && (l < 300L))
-            {
-              i = 24;
-              continue;
-            }
-            if ((l >= 300L) && (l < 450L))
-            {
-              i = 23;
-              continue;
-            }
-            if ((l >= 450L) && (l < 600L))
-            {
-              i = 22;
-              continue;
+              i = j;
+              if (l < 600L) {
+                i = 22;
+              }
             }
           }
         }
-        i = j;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getFPCalculation score total ");
+      ((StringBuilder)localObject).append(Long.toString(l));
+      DebugLog.w("IjkMediaPlayer", ((StringBuilder)localObject).toString());
     }
+    return i;
   }
   
   public long getSeekLoadDuration()
@@ -756,16 +729,23 @@ public final class IjkMediaPlayer
   
   public int getSelectedTrack(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return -1;
-    case 1: 
-      return (int)_getPropertyLong(20001, -1L);
-    case 2: 
-      return (int)_getPropertyLong(20002, -1L);
+    long l;
+    if (paramInt != 1) {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return -1;
+        }
+        l = _getPropertyLong(20011, -1L);
+      }
     }
-    return (int)_getPropertyLong(20011, -1L);
+    for (;;)
+    {
+      return (int)l;
+      l = _getPropertyLong(20002, -1L);
+      continue;
+      l = _getPropertyLong(20001, -1L);
+    }
   }
   
   public float getSpeed(float paramFloat)
@@ -780,37 +760,37 @@ public final class IjkMediaPlayer
   
   public IjkTrackInfo[] getTrackInfo()
   {
-    if (this.mIsReleased) {}
-    do
+    if (this.mIsReleased) {
+      return null;
+    }
+    Object localObject1 = getMediaMeta();
+    if (localObject1 == null) {
+      return null;
+    }
+    Object localObject2 = IjkMediaMeta.parse((Bundle)localObject1);
+    if (localObject2 != null)
     {
-      do
-      {
+      if (((IjkMediaMeta)localObject2).mStreams == null) {
         return null;
-        localObject1 = getMediaMeta();
-      } while (localObject1 == null);
-      localObject2 = IjkMediaMeta.parse((Bundle)localObject1);
-    } while ((localObject2 == null) || (((IjkMediaMeta)localObject2).mStreams == null));
-    Object localObject1 = new ArrayList();
-    Object localObject2 = ((IjkMediaMeta)localObject2).mStreams.iterator();
-    if (((Iterator)localObject2).hasNext())
-    {
-      IjkMediaMeta.IjkStreamMeta localIjkStreamMeta = (IjkMediaMeta.IjkStreamMeta)((Iterator)localObject2).next();
-      IjkTrackInfo localIjkTrackInfo = new IjkTrackInfo(localIjkStreamMeta);
-      if (localIjkStreamMeta.mType.equalsIgnoreCase("video")) {
-        localIjkTrackInfo.setTrackType(1);
       }
-      for (;;)
+      localObject1 = new ArrayList();
+      localObject2 = ((IjkMediaMeta)localObject2).mStreams.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        ((ArrayList)localObject1).add(localIjkTrackInfo);
-        break;
-        if (localIjkStreamMeta.mType.equalsIgnoreCase("audio")) {
+        IjkMediaMeta.IjkStreamMeta localIjkStreamMeta = (IjkMediaMeta.IjkStreamMeta)((Iterator)localObject2).next();
+        IjkTrackInfo localIjkTrackInfo = new IjkTrackInfo(localIjkStreamMeta);
+        if (localIjkStreamMeta.mType.equalsIgnoreCase("video")) {
+          localIjkTrackInfo.setTrackType(1);
+        } else if (localIjkStreamMeta.mType.equalsIgnoreCase("audio")) {
           localIjkTrackInfo.setTrackType(2);
         } else if (localIjkStreamMeta.mType.equalsIgnoreCase("timedtext")) {
           localIjkTrackInfo.setTrackType(3);
         }
+        ((ArrayList)localObject1).add(localIjkTrackInfo);
       }
+      return (IjkTrackInfo[])((ArrayList)localObject1).toArray(new IjkTrackInfo[((ArrayList)localObject1).size()]);
     }
-    return (IjkTrackInfo[])((ArrayList)localObject1).toArray(new IjkTrackInfo[((ArrayList)localObject1).size()]);
+    return null;
   }
   
   public long getTrafficStatisticByteCount()
@@ -950,145 +930,156 @@ public final class IjkMediaPlayer
   {
     // Byte code:
     //   0: aload_2
-    //   1: invokevirtual 795	android/net/Uri:getScheme	()Ljava/lang/String;
-    //   4: astore 5
-    //   6: ldc_w 797
-    //   9: aload 5
-    //   11: invokevirtual 800	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1: invokevirtual 793	android/net/Uri:getScheme	()Ljava/lang/String;
+    //   4: astore 4
+    //   6: ldc_w 795
+    //   9: aload 4
+    //   11: invokevirtual 798	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   14: ifeq +12 -> 26
     //   17: aload_0
     //   18: aload_2
-    //   19: invokevirtual 803	android/net/Uri:getPath	()Ljava/lang/String;
-    //   22: invokevirtual 805	tv/danmaku/ijk/media/player/IjkMediaPlayer:setDataSource	(Ljava/lang/String;)V
+    //   19: invokevirtual 801	android/net/Uri:getPath	()Ljava/lang/String;
+    //   22: invokevirtual 803	tv/danmaku/ijk/media/player/IjkMediaPlayer:setDataSource	(Ljava/lang/String;)V
     //   25: return
     //   26: aload_2
-    //   27: astore 4
-    //   29: ldc_w 807
-    //   32: aload 5
-    //   34: invokevirtual 800	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   37: ifeq +46 -> 83
+    //   27: astore 5
+    //   29: ldc_w 805
+    //   32: aload 4
+    //   34: invokevirtual 798	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   37: ifeq +48 -> 85
     //   40: aload_2
-    //   41: astore 4
-    //   43: ldc_w 809
+    //   41: astore 5
+    //   43: ldc_w 807
     //   46: aload_2
-    //   47: invokevirtual 812	android/net/Uri:getAuthority	()Ljava/lang/String;
-    //   50: invokevirtual 800	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   53: ifeq +30 -> 83
+    //   47: invokevirtual 810	android/net/Uri:getAuthority	()Ljava/lang/String;
+    //   50: invokevirtual 798	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   53: ifeq +32 -> 85
     //   56: aload_1
     //   57: aload_2
-    //   58: invokestatic 818	android/media/RingtoneManager:getDefaultType	(Landroid/net/Uri;)I
-    //   61: invokestatic 822	android/media/RingtoneManager:getActualDefaultRingtoneUri	(Landroid/content/Context;I)Landroid/net/Uri;
-    //   64: astore_2
-    //   65: aload_2
-    //   66: astore 4
-    //   68: aload_2
-    //   69: ifnonnull +14 -> 83
-    //   72: new 824	java/io/FileNotFoundException
-    //   75: dup
-    //   76: ldc_w 826
-    //   79: invokespecial 827	java/io/FileNotFoundException:<init>	(Ljava/lang/String;)V
-    //   82: athrow
-    //   83: aconst_null
-    //   84: astore_2
-    //   85: aload_1
-    //   86: invokevirtual 833	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   89: aload 4
-    //   91: ldc_w 835
-    //   94: invokevirtual 841	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
-    //   97: astore_1
-    //   98: aload_1
-    //   99: ifnonnull +12 -> 111
-    //   102: aload_1
-    //   103: ifnull -78 -> 25
+    //   58: invokestatic 816	android/media/RingtoneManager:getDefaultType	(Landroid/net/Uri;)I
+    //   61: invokestatic 820	android/media/RingtoneManager:getActualDefaultRingtoneUri	(Landroid/content/Context;I)Landroid/net/Uri;
+    //   64: astore 5
+    //   66: aload 5
+    //   68: ifnull +6 -> 74
+    //   71: goto +14 -> 85
+    //   74: new 822	java/io/FileNotFoundException
+    //   77: dup
+    //   78: ldc_w 824
+    //   81: invokespecial 825	java/io/FileNotFoundException:<init>	(Ljava/lang/String;)V
+    //   84: athrow
+    //   85: aconst_null
+    //   86: astore_2
+    //   87: aconst_null
+    //   88: astore 4
+    //   90: aconst_null
+    //   91: astore 6
+    //   93: aload_1
+    //   94: invokevirtual 831	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   97: aload 5
+    //   99: ldc_w 833
+    //   102: invokevirtual 839	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   105: astore_1
     //   106: aload_1
-    //   107: invokevirtual 846	android/content/res/AssetFileDescriptor:close	()V
-    //   110: return
-    //   111: aload_1
-    //   112: invokevirtual 849	android/content/res/AssetFileDescriptor:getDeclaredLength	()J
-    //   115: lconst_0
-    //   116: lcmp
-    //   117: ifge +20 -> 137
-    //   120: aload_0
-    //   121: aload_1
-    //   122: invokevirtual 853	android/content/res/AssetFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   125: invokevirtual 477	tv/danmaku/ijk/media/player/IjkMediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   128: aload_1
-    //   129: ifnull -104 -> 25
-    //   132: aload_1
-    //   133: invokevirtual 846	android/content/res/AssetFileDescriptor:close	()V
-    //   136: return
-    //   137: aload_0
-    //   138: aload_1
-    //   139: invokevirtual 853	android/content/res/AssetFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   142: aload_1
-    //   143: invokevirtual 856	android/content/res/AssetFileDescriptor:getStartOffset	()J
-    //   146: aload_1
-    //   147: invokevirtual 849	android/content/res/AssetFileDescriptor:getDeclaredLength	()J
-    //   150: invokespecial 858	tv/danmaku/ijk/media/player/IjkMediaPlayer:setDataSource	(Ljava/io/FileDescriptor;JJ)V
-    //   153: goto -25 -> 128
-    //   156: astore_2
-    //   157: aload_1
-    //   158: ifnull +7 -> 165
-    //   161: aload_1
-    //   162: invokevirtual 846	android/content/res/AssetFileDescriptor:close	()V
-    //   165: getstatic 156	tv/danmaku/ijk/media/player/IjkMediaPlayer:TAG	Ljava/lang/String;
-    //   168: ldc_w 860
-    //   171: invokestatic 865	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   174: pop
-    //   175: aload_0
-    //   176: aload 4
-    //   178: invokevirtual 866	android/net/Uri:toString	()Ljava/lang/String;
-    //   181: aload_3
-    //   182: invokevirtual 869	tv/danmaku/ijk/media/player/IjkMediaPlayer:setDataSource	(Ljava/lang/String;Ljava/util/Map;)V
-    //   185: return
-    //   186: astore_1
-    //   187: aconst_null
+    //   107: ifnonnull +12 -> 119
+    //   110: aload_1
+    //   111: ifnull +7 -> 118
+    //   114: aload_1
+    //   115: invokevirtual 844	android/content/res/AssetFileDescriptor:close	()V
+    //   118: return
+    //   119: aload_1
+    //   120: astore 6
+    //   122: aload_1
+    //   123: astore_2
+    //   124: aload_1
+    //   125: astore 4
+    //   127: aload_1
+    //   128: invokevirtual 847	android/content/res/AssetFileDescriptor:getDeclaredLength	()J
+    //   131: lconst_0
+    //   132: lcmp
+    //   133: ifge +22 -> 155
+    //   136: aload_1
+    //   137: astore 6
+    //   139: aload_1
+    //   140: astore_2
+    //   141: aload_1
+    //   142: astore 4
+    //   144: aload_0
+    //   145: aload_1
+    //   146: invokevirtual 851	android/content/res/AssetFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   149: invokevirtual 475	tv/danmaku/ijk/media/player/IjkMediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   152: goto +27 -> 179
+    //   155: aload_1
+    //   156: astore 6
+    //   158: aload_1
+    //   159: astore_2
+    //   160: aload_1
+    //   161: astore 4
+    //   163: aload_0
+    //   164: aload_1
+    //   165: invokevirtual 851	android/content/res/AssetFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   168: aload_1
+    //   169: invokevirtual 854	android/content/res/AssetFileDescriptor:getStartOffset	()J
+    //   172: aload_1
+    //   173: invokevirtual 847	android/content/res/AssetFileDescriptor:getDeclaredLength	()J
+    //   176: invokespecial 856	tv/danmaku/ijk/media/player/IjkMediaPlayer:setDataSource	(Ljava/io/FileDescriptor;JJ)V
+    //   179: aload_1
+    //   180: ifnull +7 -> 187
+    //   183: aload_1
+    //   184: invokevirtual 844	android/content/res/AssetFileDescriptor:close	()V
+    //   187: return
     //   188: astore_1
-    //   189: aload_1
-    //   190: ifnull -25 -> 165
-    //   193: aload_1
-    //   194: invokevirtual 846	android/content/res/AssetFileDescriptor:close	()V
-    //   197: goto -32 -> 165
-    //   200: astore_1
-    //   201: aconst_null
-    //   202: astore_3
-    //   203: aload_1
-    //   204: astore_2
-    //   205: aload_3
-    //   206: ifnull +7 -> 213
-    //   209: aload_3
-    //   210: invokevirtual 846	android/content/res/AssetFileDescriptor:close	()V
-    //   213: aload_2
-    //   214: athrow
-    //   215: astore_2
-    //   216: aload_1
-    //   217: astore_3
-    //   218: goto -13 -> 205
-    //   221: astore_2
-    //   222: goto -33 -> 189
-    //   225: astore_1
-    //   226: aload_2
-    //   227: astore_1
-    //   228: goto -71 -> 157
+    //   189: aload 6
+    //   191: ifnull +8 -> 199
+    //   194: aload 6
+    //   196: invokevirtual 844	android/content/res/AssetFileDescriptor:close	()V
+    //   199: aload_1
+    //   200: athrow
+    //   201: aload 4
+    //   203: ifnull +17 -> 220
+    //   206: aload 4
+    //   208: astore_2
+    //   209: goto +7 -> 216
+    //   212: aload_2
+    //   213: ifnull +7 -> 220
+    //   216: aload_2
+    //   217: invokevirtual 844	android/content/res/AssetFileDescriptor:close	()V
+    //   220: getstatic 221	tv/danmaku/ijk/media/player/IjkMediaPlayer:TAG	Ljava/lang/String;
+    //   223: ldc_w 858
+    //   226: invokestatic 863	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   229: pop
+    //   230: aload_0
+    //   231: aload 5
+    //   233: invokevirtual 864	android/net/Uri:toString	()Ljava/lang/String;
+    //   236: aload_3
+    //   237: invokevirtual 867	tv/danmaku/ijk/media/player/IjkMediaPlayer:setDataSource	(Ljava/lang/String;Ljava/util/Map;)V
+    //   240: return
+    //   241: astore_1
+    //   242: goto -30 -> 212
+    //   245: astore_1
+    //   246: goto -45 -> 201
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	231	0	this	IjkMediaPlayer
-    //   0	231	1	paramContext	Context
-    //   0	231	2	paramUri	Uri
-    //   0	231	3	paramMap	Map<String, String>
-    //   27	150	4	localUri	Uri
-    //   4	29	5	str	String
+    //   0	249	0	this	IjkMediaPlayer
+    //   0	249	1	paramContext	Context
+    //   0	249	2	paramUri	Uri
+    //   0	249	3	paramMap	Map<String, String>
+    //   4	203	4	localObject	Object
+    //   27	205	5	localUri	Uri
+    //   91	104	6	localContext	Context
     // Exception table:
     //   from	to	target	type
-    //   111	128	156	java/lang/SecurityException
-    //   137	153	156	java/lang/SecurityException
-    //   85	98	186	java/io/IOException
-    //   85	98	200	finally
-    //   111	128	215	finally
-    //   137	153	215	finally
-    //   111	128	221	java/io/IOException
-    //   137	153	221	java/io/IOException
-    //   85	98	225	java/lang/SecurityException
+    //   93	106	188	finally
+    //   127	136	188	finally
+    //   144	152	188	finally
+    //   163	179	188	finally
+    //   93	106	241	java/lang/SecurityException
+    //   127	136	241	java/lang/SecurityException
+    //   144	152	241	java/lang/SecurityException
+    //   163	179	241	java/lang/SecurityException
+    //   93	106	245	java/io/IOException
+    //   127	136	245	java/io/IOException
+    //   144	152	245	java/io/IOException
+    //   163	179	245	java/io/IOException
   }
   
   @TargetApi(13)
@@ -1103,11 +1094,11 @@ public final class IjkMediaPlayer
         _setDataSourceFd(i);
         return;
       }
-      catch (NoSuchFieldException paramFileDescriptor)
+      catch (IllegalAccessException paramFileDescriptor)
       {
         throw new RuntimeException(paramFileDescriptor);
       }
-      catch (IllegalAccessException paramFileDescriptor)
+      catch (NoSuchFieldException paramFileDescriptor)
       {
         throw new RuntimeException(paramFileDescriptor);
       }
@@ -1160,13 +1151,13 @@ public final class IjkMediaPlayer
   public void setDisplay(SurfaceHolder paramSurfaceHolder)
   {
     this.mSurfaceHolder = paramSurfaceHolder;
-    if (paramSurfaceHolder != null) {}
-    for (paramSurfaceHolder = paramSurfaceHolder.getSurface();; paramSurfaceHolder = null)
-    {
-      _setVideoSurface(paramSurfaceHolder);
-      updateSurfaceScreenOn();
-      return;
+    if (paramSurfaceHolder != null) {
+      paramSurfaceHolder = paramSurfaceHolder.getSurface();
+    } else {
+      paramSurfaceHolder = null;
     }
+    _setVideoSurface(paramSurfaceHolder);
+    updateSurfaceScreenOn();
   }
   
   public void setKeepInBackground(boolean paramBoolean) {}
@@ -1175,13 +1166,9 @@ public final class IjkMediaPlayer
   
   public void setLooping(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      setOption(4, "loop", i);
-      _setLoopCount(i);
-      return;
-    }
+    int i = paramBoolean ^ true;
+    setOption(4, "loop", i);
+    _setLoopCount(i);
   }
   
   public void setNextMediaPlayer(IMediaPlayer paramIMediaPlayer)
@@ -1233,21 +1220,7 @@ public final class IjkMediaPlayer
   
   public void setSeekParameters(SeekParameters paramSeekParameters)
   {
-    if (paramSeekParameters == null)
-    {
-      DebugLog.w("IjkMediaPlayer", "no SeekParameter set");
-      return;
-    }
-    if ((paramSeekParameters.equals(SeekParameters.EXACT)) || (paramSeekParameters.equals(SeekParameters.DEFAULT)))
-    {
-      if (paramSeekParameters.equals(SeekParameters.EXACT)) {}
-      for (int i = 1;; i = 0)
-      {
-        setOption(4, "enable-accurate-seek", i);
-        return;
-      }
-    }
-    DebugLog.w("IjkMediaPlayer", "unsupported seekParameter ignored!");
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:539)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setSpeed(float paramFloat)
@@ -1270,26 +1243,29 @@ public final class IjkMediaPlayer
   @SuppressLint({"Wakelock"})
   public void setWakeMode(Context paramContext, int paramInt)
   {
+    PowerManager.WakeLock localWakeLock = this.mWakeLock;
     int i;
-    if (this.mWakeLock != null) {
-      if (this.mWakeLock.isHeld())
+    if (localWakeLock != null)
+    {
+      if (localWakeLock.isHeld())
       {
         i = 1;
         this.mWakeLock.release();
-        this.mWakeLock = null;
       }
+      else
+      {
+        i = 0;
+      }
+      this.mWakeLock = null;
     }
-    for (;;)
+    else
     {
-      this.mWakeLock = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(0x20000000 | paramInt, IjkMediaPlayer.class.getName());
-      this.mWakeLock.setReferenceCounted(false);
-      if (i != 0) {
-        this.mWakeLock.acquire();
-      }
-      return;
       i = 0;
-      break;
-      i = 0;
+    }
+    this.mWakeLock = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(paramInt | 0x20000000, IjkMediaPlayer.class.getName());
+    this.mWakeLock.setReferenceCounted(false);
+    if (i != 0) {
+      this.mWakeLock.acquire();
     }
   }
   
@@ -1307,7 +1283,7 @@ public final class IjkMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.IjkMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

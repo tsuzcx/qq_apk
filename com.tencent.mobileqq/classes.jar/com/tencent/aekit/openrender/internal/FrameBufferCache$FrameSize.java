@@ -13,15 +13,17 @@ class FrameBufferCache$FrameSize
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (FrameSize)paramObject;
-    } while ((this.width == paramObject.width) && (this.height == paramObject.height));
+      return (this.width == paramObject.width) && (this.height == paramObject.height);
+    }
     return false;
   }
   

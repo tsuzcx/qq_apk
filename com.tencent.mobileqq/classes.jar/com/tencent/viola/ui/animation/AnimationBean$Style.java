@@ -73,13 +73,19 @@ public class AnimationBean$Style
     toAndroidMap.put("scaleX", Collections.singletonList(View.SCALE_X));
     toAndroidMap.put("scaleY", Collections.singletonList(View.SCALE_Y));
     toAndroidMap = Collections.unmodifiableMap(toAndroidMap);
-    defaultMap.put(View.TRANSLATION_X, Float.valueOf(0.0F));
-    defaultMap.put(View.TRANSLATION_Y, Float.valueOf(0.0F));
-    defaultMap.put(View.SCALE_X, Float.valueOf(1.0F));
-    defaultMap.put(View.SCALE_Y, Float.valueOf(1.0F));
-    defaultMap.put(View.ROTATION, Float.valueOf(0.0F));
-    defaultMap.put(View.ROTATION_X, Float.valueOf(0.0F));
-    defaultMap.put(View.ROTATION_Y, Float.valueOf(0.0F));
+    Map localMap = defaultMap;
+    Property localProperty = View.TRANSLATION_X;
+    Float localFloat1 = Float.valueOf(0.0F);
+    localMap.put(localProperty, localFloat1);
+    defaultMap.put(View.TRANSLATION_Y, localFloat1);
+    localMap = defaultMap;
+    localProperty = View.SCALE_X;
+    Float localFloat2 = Float.valueOf(1.0F);
+    localMap.put(localProperty, localFloat2);
+    defaultMap.put(View.SCALE_Y, localFloat2);
+    defaultMap.put(View.ROTATION, localFloat1);
+    defaultMap.put(View.ROTATION_X, localFloat1);
+    defaultMap.put(View.ROTATION_Y, localFloat1);
   }
   
   AnimationBean$Style(JSONObject paramJSONObject)
@@ -148,19 +154,15 @@ public class AnimationBean$Style
       if (j != -1)
       {
         int i = j;
-        for (;;)
-        {
-          if ((i >= paramString.length()) || (paramString.charAt(i) != ' '))
-          {
-            if ((i >= paramString.length()) || (paramString.charAt(i) == ' ')) {
-              break;
-            }
-            ArrayList localArrayList = new ArrayList(2);
-            localArrayList.add(paramString.substring(0, j).trim());
-            localArrayList.add(paramString.substring(i, paramString.length()).trim());
-            return parsePivot(localArrayList, paramInt1, paramInt2, paramInt3);
-          }
+        while ((i < paramString.length()) && (paramString.charAt(i) == ' ')) {
           i += 1;
+        }
+        if ((i < paramString.length()) && (paramString.charAt(i) != ' '))
+        {
+          ArrayList localArrayList = new ArrayList(2);
+          localArrayList.add(paramString.substring(0, j).trim());
+          localArrayList.add(paramString.substring(i, paramString.length()).trim());
+          return parsePivot(localArrayList, paramInt1, paramInt2, paramInt3);
         }
       }
     }
@@ -175,47 +177,43 @@ public class AnimationBean$Style
   private static float parsePivotX(String paramString, int paramInt1, int paramInt2)
   {
     String str;
-    if ("left".equals(paramString)) {
+    if ("left".equals(paramString))
+    {
       str = "0%";
     }
-    for (;;)
+    else if ("right".equals(paramString))
     {
-      return parsePercentOrPx(str, paramInt1, paramInt2);
-      if ("right".equals(paramString))
-      {
-        str = "100%";
-      }
-      else
-      {
-        str = paramString;
-        if ("center".equals(paramString)) {
-          str = "50%";
-        }
+      str = "100%";
+    }
+    else
+    {
+      str = paramString;
+      if ("center".equals(paramString)) {
+        str = "50%";
       }
     }
+    return parsePercentOrPx(str, paramInt1, paramInt2);
   }
   
   private static float parsePivotY(String paramString, int paramInt1, int paramInt2)
   {
     String str;
-    if ("top".equals(paramString)) {
+    if ("top".equals(paramString))
+    {
       str = "0%";
     }
-    for (;;)
+    else if ("bottom".equals(paramString))
     {
-      return parsePercentOrPx(str, paramInt1, paramInt2);
-      if ("bottom".equals(paramString))
-      {
-        str = "100%";
-      }
-      else
-      {
-        str = paramString;
-        if ("center".equals(paramString)) {
-          str = "50%";
-        }
+      str = "100%";
+    }
+    else
+    {
+      str = paramString;
+      if ("center".equals(paramString)) {
+        str = "50%";
       }
     }
+    return parsePercentOrPx(str, paramInt1, paramInt2);
   }
   
   public static Map<Property<View, Float>, Float> parseTransForm(@Nullable String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -274,7 +272,7 @@ public class AnimationBean$Style
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.animation.AnimationBean.Style
  * JD-Core Version:    0.7.0.1
  */

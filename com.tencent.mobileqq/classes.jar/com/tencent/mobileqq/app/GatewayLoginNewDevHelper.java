@@ -4,14 +4,8 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GatewayLoginNewDevHelper
 {
-  protected static boolean a;
+  protected static boolean a = false;
   protected static byte[] a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfByte = null;
-    jdField_a_of_type_Boolean = false;
-  }
   
   public static void a()
   {
@@ -22,18 +16,27 @@ public class GatewayLoginNewDevHelper
   public static void a(int paramInt)
   {
     jdField_a_of_type_Boolean = false;
-    QLog.i("gateway_login_new_dev", 1, "cleanGateWayFlow from = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cleanGateWayFlow from = ");
+    localStringBuilder.append(paramInt);
+    QLog.i("gateway_login_new_dev", 1, localStringBuilder.toString());
   }
   
   public static void a(byte[] paramArrayOfByte)
   {
     jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    QLog.i("gateway_login_new_dev", 1, "stashGatewayLoginReq phoneToken=" + paramArrayOfByte.length);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stashGatewayLoginReq phoneToken=");
+    localStringBuilder.append(paramArrayOfByte.length);
+    QLog.i("gateway_login_new_dev", 1, localStringBuilder.toString());
   }
   
   public static boolean a()
   {
-    QLog.i("gateway_login_new_dev", 1, "isGateWayFlow = " + jdField_a_of_type_Boolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isGateWayFlow = ");
+    localStringBuilder.append(jdField_a_of_type_Boolean);
+    QLog.i("gateway_login_new_dev", 1, localStringBuilder.toString());
     return jdField_a_of_type_Boolean;
   }
   
@@ -44,7 +47,7 @@ public class GatewayLoginNewDevHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.GatewayLoginNewDevHelper
  * JD-Core Version:    0.7.0.1
  */

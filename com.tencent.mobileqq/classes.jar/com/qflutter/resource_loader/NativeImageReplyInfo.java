@@ -34,58 +34,69 @@ public class NativeImageReplyInfo
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("type", Integer.valueOf(this.type));
-    if (this.type == 3)
+    int i = this.type;
+    String str;
+    if (i == 3)
     {
       localHashMap.put("pixelsDataAddress", Long.valueOf(this.pixelsDataAddress));
       localHashMap.put("pixelsDataWidth", Integer.valueOf(this.pixelsDataWidth));
       localHashMap.put("pixelsDataHeight", Integer.valueOf(this.pixelsDataHeight));
-      localHashMap.put("pixelsDataFormat", this.pixelsDataFormat);
+      localObject = this.pixelsDataFormat;
+      str = "pixelsDataFormat";
     }
     for (;;)
     {
-      if (this.ninePatchInfo != null)
-      {
-        localHashMap.put("ninePatchCenterSlice", new int[] { this.ninePatchInfo.centerSlice.left, this.ninePatchInfo.centerSlice.top, this.ninePatchInfo.centerSlice.right, this.ninePatchInfo.centerSlice.bottom });
-        if ((this.ninePatchInfo.mDivX != null) && (this.ninePatchInfo.mDivY != null))
-        {
-          localHashMap.put("ninePatchDivX", this.ninePatchInfo.mDivX);
-          localHashMap.put("ninePatchDivY", this.ninePatchInfo.mDivY);
-        }
-      }
-      if (this.scale > 0.01D) {
-        localHashMap.put("scale", Double.valueOf(this.scale));
-      }
-      return localHashMap;
-      if (this.type == 4)
+      localHashMap.put(str, localObject);
+      break label271;
+      if (i == 4)
       {
         localHashMap.put("rawDataAddress", Long.valueOf(this.rawDataAddress));
-        localHashMap.put("rawDataLength", Integer.valueOf(this.rawDataLength));
+        localObject = Integer.valueOf(this.rawDataLength);
+        str = "rawDataLength";
       }
-      else if (this.type == 1)
+      else if (i == 1)
       {
-        localHashMap.put("path", this.path);
-      }
-      else if (this.type == 2)
-      {
-        localHashMap.put("url", this.url);
-      }
-      else if (this.type == 6)
-      {
-        localHashMap.put("color", Integer.valueOf(this.color));
-        if (this.borderRadius != null) {
-          localHashMap.put("borderRadius", new int[] { this.borderRadius.left, this.borderRadius.top, this.borderRadius.right, this.borderRadius.bottom });
-        }
+        localObject = this.path;
+        str = "path";
       }
       else
       {
-        int i = this.type;
+        if (i != 2) {
+          break;
+        }
+        localObject = this.url;
+        str = "url";
       }
     }
+    if (i == 6)
+    {
+      localHashMap.put("color", Integer.valueOf(this.color));
+      localObject = this.borderRadius;
+      if (localObject != null) {
+        localHashMap.put("borderRadius", new int[] { ((Rect)localObject).left, this.borderRadius.top, this.borderRadius.right, this.borderRadius.bottom });
+      }
+    }
+    label271:
+    Object localObject = this.ninePatchInfo;
+    if (localObject != null)
+    {
+      localHashMap.put("ninePatchCenterSlice", new int[] { ((NinePatchInfo)localObject).centerSlice.left, this.ninePatchInfo.centerSlice.top, this.ninePatchInfo.centerSlice.right, this.ninePatchInfo.centerSlice.bottom });
+      if ((this.ninePatchInfo.mDivX != null) && (this.ninePatchInfo.mDivY != null))
+      {
+        localHashMap.put("ninePatchDivX", this.ninePatchInfo.mDivX);
+        localHashMap.put("ninePatchDivY", this.ninePatchInfo.mDivY);
+      }
+    }
+    double d = this.scale;
+    if (d > 0.01D) {
+      localHashMap.put("scale", Double.valueOf(d));
+    }
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.resource_loader.NativeImageReplyInfo
  * JD-Core Version:    0.7.0.1
  */

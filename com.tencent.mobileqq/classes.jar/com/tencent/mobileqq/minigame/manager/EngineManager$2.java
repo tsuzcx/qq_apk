@@ -10,13 +10,18 @@ class EngineManager$2
   
   public void run()
   {
-    QLog.i("EngineManager", 1, "[MiniEng] installBaseLibForChannel " + this.val$engineLibInfo + "," + this.val$remote);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng] installBaseLibForChannel ");
+    localStringBuilder.append(this.val$engineLibInfo);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.val$remote);
+    QLog.i("EngineManager", 1, localStringBuilder.toString());
     this.this$0.installBaseLib(this.val$engineLibInfo, new EngineManager.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.EngineManager.2
  * JD-Core Version:    0.7.0.1
  */

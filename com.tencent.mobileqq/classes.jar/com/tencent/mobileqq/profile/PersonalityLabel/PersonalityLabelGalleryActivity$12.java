@@ -10,14 +10,21 @@ class PersonalityLabelGalleryActivity$12
 {
   PersonalityLabelGalleryActivity$12(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateFriendInfo refresh UI uin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" suc:");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("PersonalityLabelGalleryActivity", 2, localStringBuilder.toString());
     }
     if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
     {
-      PersonalityLabelGalleryActivity.a(this.a, ContactUtils.a(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
+      paramString = this.a;
+      PersonalityLabelGalleryActivity.a(paramString, ContactUtils.a(paramString.app, PersonalityLabelGalleryActivity.a(this.a)));
       if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
         PersonalityLabelGalleryActivity.d(this.a);
       }
@@ -26,7 +33,7 @@ class PersonalityLabelGalleryActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.12
  * JD-Core Version:    0.7.0.1
  */

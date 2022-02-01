@@ -63,39 +63,38 @@ public final class Format
     this.frameRate = paramParcel.readFloat();
     this.rotationDegrees = paramParcel.readInt();
     this.pixelWidthHeightRatio = paramParcel.readFloat();
-    int i;
-    if (paramParcel.readInt() != 0)
-    {
+    int i = paramParcel.readInt();
+    int j = 0;
+    if (i != 0) {
       i = 1;
-      if (i == 0) {
-        break label263;
-      }
+    } else {
+      i = 0;
     }
-    label263:
-    for (byte[] arrayOfByte = paramParcel.createByteArray();; arrayOfByte = null)
+    byte[] arrayOfByte;
+    if (i != 0) {
+      arrayOfByte = paramParcel.createByteArray();
+    } else {
+      arrayOfByte = null;
+    }
+    this.projectionData = arrayOfByte;
+    this.stereoMode = paramParcel.readInt();
+    this.colorInfo = ((ColorInfo)paramParcel.readParcelable(ColorInfo.class.getClassLoader()));
+    this.channelCount = paramParcel.readInt();
+    this.sampleRate = paramParcel.readInt();
+    this.pcmEncoding = paramParcel.readInt();
+    this.encoderDelay = paramParcel.readInt();
+    this.encoderPadding = paramParcel.readInt();
+    this.selectionFlags = paramParcel.readInt();
+    this.language = paramParcel.readString();
+    this.accessibilityChannel = paramParcel.readInt();
+    this.subsampleOffsetUs = paramParcel.readLong();
+    int k = paramParcel.readInt();
+    this.initializationData = new ArrayList(k);
+    i = j;
+    while (i < k)
     {
-      this.projectionData = arrayOfByte;
-      this.stereoMode = paramParcel.readInt();
-      this.colorInfo = ((ColorInfo)paramParcel.readParcelable(ColorInfo.class.getClassLoader()));
-      this.channelCount = paramParcel.readInt();
-      this.sampleRate = paramParcel.readInt();
-      this.pcmEncoding = paramParcel.readInt();
-      this.encoderDelay = paramParcel.readInt();
-      this.encoderPadding = paramParcel.readInt();
-      this.selectionFlags = paramParcel.readInt();
-      this.language = paramParcel.readString();
-      this.accessibilityChannel = paramParcel.readInt();
-      this.subsampleOffsetUs = paramParcel.readLong();
-      int j = paramParcel.readInt();
-      this.initializationData = new ArrayList(j);
-      i = 0;
-      while (i < j)
-      {
-        this.initializationData.add(paramParcel.createByteArray());
-        i += 1;
-      }
-      i = 0;
-      break;
+      this.initializationData.add(paramParcel.createByteArray());
+      i += 1;
     }
     this.drmInitData = ((DrmInitData)paramParcel.readParcelable(DrmInitData.class.getClassLoader()));
     this.metadata = ((Metadata)paramParcel.readParcelable(Metadata.class.getClassLoader()));
@@ -126,11 +125,10 @@ public final class Format
     this.language = paramString5;
     this.accessibilityChannel = paramInt13;
     this.subsampleOffsetUs = paramLong;
-    paramString1 = paramList;
     if (paramList == null) {
-      paramString1 = Collections.emptyList();
+      paramList = Collections.emptyList();
     }
-    this.initializationData = paramString1;
+    this.initializationData = paramList;
     this.drmInitData = paramDrmInitData;
     this.metadata = paramMetadata;
   }
@@ -280,24 +278,41 @@ public final class Format
       return "null";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id=").append(paramFormat.id).append(", mimeType=").append(paramFormat.sampleMimeType);
-    if (paramFormat.bitrate != -1) {
-      localStringBuilder.append(", bitrate=").append(paramFormat.bitrate);
+    localStringBuilder.append("id=");
+    localStringBuilder.append(paramFormat.id);
+    localStringBuilder.append(", mimeType=");
+    localStringBuilder.append(paramFormat.sampleMimeType);
+    if (paramFormat.bitrate != -1)
+    {
+      localStringBuilder.append(", bitrate=");
+      localStringBuilder.append(paramFormat.bitrate);
     }
-    if ((paramFormat.width != -1) && (paramFormat.height != -1)) {
-      localStringBuilder.append(", res=").append(paramFormat.width).append("x").append(paramFormat.height);
+    if ((paramFormat.width != -1) && (paramFormat.height != -1))
+    {
+      localStringBuilder.append(", res=");
+      localStringBuilder.append(paramFormat.width);
+      localStringBuilder.append("x");
+      localStringBuilder.append(paramFormat.height);
     }
-    if (paramFormat.frameRate != -1.0F) {
-      localStringBuilder.append(", fps=").append(paramFormat.frameRate);
+    if (paramFormat.frameRate != -1.0F)
+    {
+      localStringBuilder.append(", fps=");
+      localStringBuilder.append(paramFormat.frameRate);
     }
-    if (paramFormat.channelCount != -1) {
-      localStringBuilder.append(", channels=").append(paramFormat.channelCount);
+    if (paramFormat.channelCount != -1)
+    {
+      localStringBuilder.append(", channels=");
+      localStringBuilder.append(paramFormat.channelCount);
     }
-    if (paramFormat.sampleRate != -1) {
-      localStringBuilder.append(", sample_rate=").append(paramFormat.sampleRate);
+    if (paramFormat.sampleRate != -1)
+    {
+      localStringBuilder.append(", sample_rate=");
+      localStringBuilder.append(paramFormat.sampleRate);
     }
-    if (paramFormat.language != null) {
-      localStringBuilder.append(", language=").append(paramFormat.language);
+    if (paramFormat.language != null)
+    {
+      localStringBuilder.append(", language=");
+      localStringBuilder.append(paramFormat.language);
     }
     return localStringBuilder.toString();
   }
@@ -322,45 +337,31 @@ public final class Format
     if (this == paramFormat) {
       return this;
     }
-    String str3 = paramFormat.id;
-    String str1;
-    int i;
-    label39:
-    float f;
-    label54:
-    int j;
-    int k;
-    if (this.codecs == null)
-    {
-      str1 = paramFormat.codecs;
-      if (this.bitrate != -1) {
-        break label198;
-      }
+    String str2 = paramFormat.id;
+    Object localObject2 = this.codecs;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = paramFormat.codecs;
+    }
+    int j = this.bitrate;
+    int i = j;
+    if (j == -1) {
       i = paramFormat.bitrate;
-      if (this.frameRate != -1.0F) {
-        break label206;
-      }
-      f = paramFormat.frameRate;
-      j = this.selectionFlags;
-      k = paramFormat.selectionFlags;
-      if (this.language != null) {
-        break label214;
-      }
     }
-    label198:
-    label206:
-    label214:
-    for (String str2 = paramFormat.language;; str2 = this.language)
-    {
-      paramFormat = DrmInitData.createSessionCreationData(paramFormat.drmInitData, this.drmInitData);
-      return new Format(str3, this.containerMimeType, this.sampleMimeType, str1, i, this.maxInputSize, this.width, this.height, f, this.rotationDegrees, this.pixelWidthHeightRatio, this.projectionData, this.stereoMode, this.colorInfo, this.channelCount, this.sampleRate, this.pcmEncoding, this.encoderDelay, this.encoderPadding, j | k, str2, this.accessibilityChannel, this.subsampleOffsetUs, this.initializationData, paramFormat, this.metadata);
-      str1 = this.codecs;
-      break;
-      i = this.bitrate;
-      break label39;
-      f = this.frameRate;
-      break label54;
+    float f2 = this.frameRate;
+    float f1 = f2;
+    if (f2 == -1.0F) {
+      f1 = paramFormat.frameRate;
     }
+    j = this.selectionFlags;
+    int k = paramFormat.selectionFlags;
+    String str1 = this.language;
+    localObject2 = str1;
+    if (str1 == null) {
+      localObject2 = paramFormat.language;
+    }
+    paramFormat = DrmInitData.createSessionCreationData(paramFormat.drmInitData, this.drmInitData);
+    return new Format(str2, this.containerMimeType, this.sampleMimeType, (String)localObject1, i, this.maxInputSize, this.width, this.height, f1, this.rotationDegrees, this.pixelWidthHeightRatio, this.projectionData, this.stereoMode, this.colorInfo, this.channelCount, this.sampleRate, this.pcmEncoding, this.encoderDelay, this.encoderPadding, j | k, (String)localObject2, this.accessibilityChannel, this.subsampleOffsetUs, this.initializationData, paramFormat, this.metadata);
   }
   
   public Format copyWithMaxInputSize(int paramInt)
@@ -390,139 +391,32 @@ public final class Format
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (Format)paramObject;
+      if ((this.bitrate == paramObject.bitrate) && (this.maxInputSize == paramObject.maxInputSize) && (this.width == paramObject.width) && (this.height == paramObject.height) && (this.frameRate == paramObject.frameRate) && (this.rotationDegrees == paramObject.rotationDegrees) && (this.pixelWidthHeightRatio == paramObject.pixelWidthHeightRatio) && (this.stereoMode == paramObject.stereoMode) && (this.channelCount == paramObject.channelCount) && (this.sampleRate == paramObject.sampleRate) && (this.pcmEncoding == paramObject.pcmEncoding) && (this.encoderDelay == paramObject.encoderDelay) && (this.encoderPadding == paramObject.encoderPadding) && (this.subsampleOffsetUs == paramObject.subsampleOffsetUs) && (this.selectionFlags == paramObject.selectionFlags) && (Util.areEqual(this.id, paramObject.id)) && (Util.areEqual(this.language, paramObject.language)) && (this.accessibilityChannel == paramObject.accessibilityChannel) && (Util.areEqual(this.containerMimeType, paramObject.containerMimeType)) && (Util.areEqual(this.sampleMimeType, paramObject.sampleMimeType)) && (Util.areEqual(this.codecs, paramObject.codecs)) && (Util.areEqual(this.drmInitData, paramObject.drmInitData)) && (Util.areEqual(this.metadata, paramObject.metadata)) && (Util.areEqual(this.colorInfo, paramObject.colorInfo)) && (Arrays.equals(this.projectionData, paramObject.projectionData)))
       {
-        do
+        if (this.initializationData.size() != paramObject.initializationData.size()) {
+          return false;
+        }
+        int i = 0;
+        while (i < this.initializationData.size())
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                do
-                                {
-                                  do
-                                  {
-                                    do
-                                    {
-                                      do
-                                      {
-                                        do
-                                        {
-                                          do
-                                          {
-                                            do
-                                            {
-                                              do
-                                              {
-                                                do
-                                                {
-                                                  do
-                                                  {
-                                                    do
-                                                    {
-                                                      do
-                                                      {
-                                                        do
-                                                        {
-                                                          do
-                                                          {
-                                                            return bool1;
-                                                            bool1 = bool2;
-                                                          } while (paramObject == null);
-                                                          bool1 = bool2;
-                                                        } while (getClass() != paramObject.getClass());
-                                                        paramObject = (Format)paramObject;
-                                                        bool1 = bool2;
-                                                      } while (this.bitrate != paramObject.bitrate);
-                                                      bool1 = bool2;
-                                                    } while (this.maxInputSize != paramObject.maxInputSize);
-                                                    bool1 = bool2;
-                                                  } while (this.width != paramObject.width);
-                                                  bool1 = bool2;
-                                                } while (this.height != paramObject.height);
-                                                bool1 = bool2;
-                                              } while (this.frameRate != paramObject.frameRate);
-                                              bool1 = bool2;
-                                            } while (this.rotationDegrees != paramObject.rotationDegrees);
-                                            bool1 = bool2;
-                                          } while (this.pixelWidthHeightRatio != paramObject.pixelWidthHeightRatio);
-                                          bool1 = bool2;
-                                        } while (this.stereoMode != paramObject.stereoMode);
-                                        bool1 = bool2;
-                                      } while (this.channelCount != paramObject.channelCount);
-                                      bool1 = bool2;
-                                    } while (this.sampleRate != paramObject.sampleRate);
-                                    bool1 = bool2;
-                                  } while (this.pcmEncoding != paramObject.pcmEncoding);
-                                  bool1 = bool2;
-                                } while (this.encoderDelay != paramObject.encoderDelay);
-                                bool1 = bool2;
-                              } while (this.encoderPadding != paramObject.encoderPadding);
-                              bool1 = bool2;
-                            } while (this.subsampleOffsetUs != paramObject.subsampleOffsetUs);
-                            bool1 = bool2;
-                          } while (this.selectionFlags != paramObject.selectionFlags);
-                          bool1 = bool2;
-                        } while (!Util.areEqual(this.id, paramObject.id));
-                        bool1 = bool2;
-                      } while (!Util.areEqual(this.language, paramObject.language));
-                      bool1 = bool2;
-                    } while (this.accessibilityChannel != paramObject.accessibilityChannel);
-                    bool1 = bool2;
-                  } while (!Util.areEqual(this.containerMimeType, paramObject.containerMimeType));
-                  bool1 = bool2;
-                } while (!Util.areEqual(this.sampleMimeType, paramObject.sampleMimeType));
-                bool1 = bool2;
-              } while (!Util.areEqual(this.codecs, paramObject.codecs));
-              bool1 = bool2;
-            } while (!Util.areEqual(this.drmInitData, paramObject.drmInitData));
-            bool1 = bool2;
-          } while (!Util.areEqual(this.metadata, paramObject.metadata));
-          bool1 = bool2;
-        } while (!Util.areEqual(this.colorInfo, paramObject.colorInfo));
-        bool1 = bool2;
-      } while (!Arrays.equals(this.projectionData, paramObject.projectionData));
-      bool1 = bool2;
-    } while (this.initializationData.size() != paramObject.initializationData.size());
-    int i = 0;
-    for (;;)
-    {
-      if (i >= this.initializationData.size()) {
-        break label499;
+          if (!Arrays.equals((byte[])this.initializationData.get(i), (byte[])paramObject.initializationData.get(i))) {
+            return false;
+          }
+          i += 1;
+        }
+        return true;
       }
-      bool1 = bool2;
-      if (!Arrays.equals((byte[])this.initializationData.get(i), (byte[])paramObject.initializationData.get(i))) {
-        break;
-      }
-      i += 1;
     }
-    label499:
-    return true;
+    return false;
   }
   
   @SuppressLint({"InlinedApi"})
@@ -542,7 +436,10 @@ public final class Format
     int i = 0;
     while (i < this.initializationData.size())
     {
-      localMediaFormat.setByteBuffer("csd-" + i, ByteBuffer.wrap((byte[])this.initializationData.get(i)));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("csd-");
+      localStringBuilder.append(i);
+      localMediaFormat.setByteBuffer(localStringBuilder.toString(), ByteBuffer.wrap((byte[])this.initializationData.get(i)));
       i += 1;
     }
     maybeSetColorInfoV24(localMediaFormat, this.colorInfo);
@@ -551,98 +448,106 @@ public final class Format
   
   public int getPixelCount()
   {
-    if ((this.width == -1) || (this.height == -1)) {
-      return -1;
+    int j = this.width;
+    int i = -1;
+    if (j != -1)
+    {
+      i = this.height;
+      if (i == -1) {
+        return -1;
+      }
+      i = j * i;
     }
-    return this.width * this.height;
+    return i;
   }
   
   public int hashCode()
   {
-    int i2 = 0;
-    int i;
-    int j;
-    label28:
-    int k;
-    label37:
-    int m;
-    label47:
-    int i3;
-    int i4;
-    int i5;
-    int i6;
-    int i7;
-    int n;
-    label87:
-    int i8;
-    int i1;
     if (this.hashCode == 0)
     {
-      if (this.id != null) {
-        break label194;
+      Object localObject = this.id;
+      int i2 = 0;
+      int i;
+      if (localObject == null) {
+        i = 0;
+      } else {
+        i = ((String)localObject).hashCode();
       }
-      i = 0;
-      if (this.containerMimeType != null) {
-        break label205;
+      localObject = this.containerMimeType;
+      int j;
+      if (localObject == null) {
+        j = 0;
+      } else {
+        j = ((String)localObject).hashCode();
       }
-      j = 0;
-      if (this.sampleMimeType != null) {
-        break label216;
+      localObject = this.sampleMimeType;
+      int k;
+      if (localObject == null) {
+        k = 0;
+      } else {
+        k = ((String)localObject).hashCode();
       }
-      k = 0;
-      if (this.codecs != null) {
-        break label227;
+      localObject = this.codecs;
+      int m;
+      if (localObject == null) {
+        m = 0;
+      } else {
+        m = ((String)localObject).hashCode();
       }
-      m = 0;
-      i3 = this.bitrate;
-      i4 = this.width;
-      i5 = this.height;
-      i6 = this.channelCount;
-      i7 = this.sampleRate;
-      if (this.language != null) {
-        break label239;
+      int i3 = this.bitrate;
+      int i4 = this.width;
+      int i5 = this.height;
+      int i6 = this.channelCount;
+      int i7 = this.sampleRate;
+      localObject = this.language;
+      int n;
+      if (localObject == null) {
+        n = 0;
+      } else {
+        n = ((String)localObject).hashCode();
       }
-      n = 0;
-      i8 = this.accessibilityChannel;
-      if (this.drmInitData != null) {
-        break label251;
+      int i8 = this.accessibilityChannel;
+      localObject = this.drmInitData;
+      int i1;
+      if (localObject == null) {
+        i1 = 0;
+      } else {
+        i1 = ((DrmInitData)localObject).hashCode();
       }
-      i1 = 0;
-      label103:
-      if (this.metadata != null) {
-        break label263;
+      localObject = this.metadata;
+      if (localObject != null) {
+        i2 = ((Metadata)localObject).hashCode();
       }
+      this.hashCode = (((((((((((((527 + i) * 31 + j) * 31 + k) * 31 + m) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + n) * 31 + i8) * 31 + i1) * 31 + i2);
     }
-    for (;;)
-    {
-      this.hashCode = ((i1 + ((n + ((((((m + (k + (j + (i + 527) * 31) * 31) * 31) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31) * 31 + i8) * 31) * 31 + i2);
-      return this.hashCode;
-      label194:
-      i = this.id.hashCode();
-      break;
-      label205:
-      j = this.containerMimeType.hashCode();
-      break label28;
-      label216:
-      k = this.sampleMimeType.hashCode();
-      break label37;
-      label227:
-      m = this.codecs.hashCode();
-      break label47;
-      label239:
-      n = this.language.hashCode();
-      break label87;
-      label251:
-      i1 = this.drmInitData.hashCode();
-      break label103;
-      label263:
-      i2 = this.metadata.hashCode();
-    }
+    return this.hashCode;
   }
   
   public String toString()
   {
-    return "Format(" + this.id + ", " + this.containerMimeType + ", " + this.sampleMimeType + ", " + this.bitrate + ", " + this.language + ", [" + this.width + ", " + this.height + ", " + this.frameRate + "], [" + this.channelCount + ", " + this.sampleRate + "])";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Format(");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.containerMimeType);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.sampleMimeType);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.bitrate);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.language);
+    localStringBuilder.append(", [");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.frameRate);
+    localStringBuilder.append("], [");
+    localStringBuilder.append(this.channelCount);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.sampleRate);
+    localStringBuilder.append("])");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -658,32 +563,34 @@ public final class Format
     paramParcel.writeFloat(this.frameRate);
     paramParcel.writeInt(this.rotationDegrees);
     paramParcel.writeFloat(this.pixelWidthHeightRatio);
-    if (this.projectionData != null) {}
-    for (int i = 1;; i = 0)
+    if (this.projectionData != null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    paramParcel.writeInt(i);
+    byte[] arrayOfByte = this.projectionData;
+    if (arrayOfByte != null) {
+      paramParcel.writeByteArray(arrayOfByte);
+    }
+    paramParcel.writeInt(this.stereoMode);
+    paramParcel.writeParcelable(this.colorInfo, paramInt);
+    paramParcel.writeInt(this.channelCount);
+    paramParcel.writeInt(this.sampleRate);
+    paramParcel.writeInt(this.pcmEncoding);
+    paramParcel.writeInt(this.encoderDelay);
+    paramParcel.writeInt(this.encoderPadding);
+    paramParcel.writeInt(this.selectionFlags);
+    paramParcel.writeString(this.language);
+    paramParcel.writeInt(this.accessibilityChannel);
+    paramParcel.writeLong(this.subsampleOffsetUs);
+    int i = this.initializationData.size();
+    paramParcel.writeInt(i);
+    paramInt = 0;
+    while (paramInt < i)
     {
-      paramParcel.writeInt(i);
-      if (this.projectionData != null) {
-        paramParcel.writeByteArray(this.projectionData);
-      }
-      paramParcel.writeInt(this.stereoMode);
-      paramParcel.writeParcelable(this.colorInfo, paramInt);
-      paramParcel.writeInt(this.channelCount);
-      paramParcel.writeInt(this.sampleRate);
-      paramParcel.writeInt(this.pcmEncoding);
-      paramParcel.writeInt(this.encoderDelay);
-      paramParcel.writeInt(this.encoderPadding);
-      paramParcel.writeInt(this.selectionFlags);
-      paramParcel.writeString(this.language);
-      paramParcel.writeInt(this.accessibilityChannel);
-      paramParcel.writeLong(this.subsampleOffsetUs);
-      i = this.initializationData.size();
-      paramParcel.writeInt(i);
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramParcel.writeByteArray((byte[])this.initializationData.get(paramInt));
-        paramInt += 1;
-      }
+      paramParcel.writeByteArray((byte[])this.initializationData.get(paramInt));
+      paramInt += 1;
     }
     paramParcel.writeParcelable(this.drmInitData, 0);
     paramParcel.writeParcelable(this.metadata, 0);
@@ -691,7 +598,7 @@ public final class Format
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.Format
  * JD-Core Version:    0.7.0.1
  */

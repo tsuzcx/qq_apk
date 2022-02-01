@@ -22,23 +22,25 @@ public class IntimateInfoChatDrawer
   
   protected View a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView = new IntimateInfoChatDrawer.1(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.a() == null) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView = new IntimateInfoChatDrawer.1(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.a();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.a(1);
     return this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.a();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.a(paramInt1, paramInt2, paramIntent);
+    IntimateInfoView localIntimateInfoView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView;
+    if (localIntimateInfoView != null) {
+      localIntimateInfoView.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.a();
+    IntimateInfoView localIntimateInfoView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView;
+    if (localIntimateInfoView != null) {
+      localIntimateInfoView.a();
     }
   }
   
@@ -48,10 +50,11 @@ public class IntimateInfoChatDrawer
     if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, String.format("onDrawerOpened, needReqIntimateInfo: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView != null)
+    IntimateInfoView localIntimateInfoView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView;
+    if (localIntimateInfoView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.b();
+      localIntimateInfoView.jdField_a_of_type_Boolean = true;
+      localIntimateInfoView.b();
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = false;
@@ -66,20 +69,22 @@ public class IntimateInfoChatDrawer
   public void h()
   {
     super.h();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView != null)
+    IntimateInfoView localIntimateInfoView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView;
+    if (localIntimateInfoView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.b = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.f();
+      localIntimateInfoView.b = true;
+      localIntimateInfoView.f();
     }
   }
   
   public void i()
   {
     super.i();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView != null)
+    IntimateInfoView localIntimateInfoView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView;
+    if (localIntimateInfoView != null)
     {
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.e();
+      localIntimateInfoView.e();
     }
   }
   
@@ -98,21 +103,23 @@ public class IntimateInfoChatDrawer
   
   public void k()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.i();
+    IntimateInfoView localIntimateInfoView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView;
+    if (localIntimateInfoView != null) {
+      localIntimateInfoView.i();
     }
   }
   
   public void l()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView.g();
+    IntimateInfoView localIntimateInfoView = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView;
+    if (localIntimateInfoView != null) {
+      localIntimateInfoView.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.IntimateInfoChatDrawer
  * JD-Core Version:    0.7.0.1
  */

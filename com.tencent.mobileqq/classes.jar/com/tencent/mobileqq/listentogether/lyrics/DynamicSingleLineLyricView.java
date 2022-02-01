@@ -71,6 +71,7 @@ public class DynamicSingleLineLyricView
   
   private int a(Sentence paramSentence, int paramInt)
   {
+    int i = 0;
     this.jdField_b_of_type_Boolean = false;
     long l1 = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
     long l2 = paramSentence.jdField_a_of_type_Long;
@@ -82,41 +83,28 @@ public class DynamicSingleLineLyricView
     }
     int j = ((SentenceUI)paramSentence.a().get(0)).jdField_b_of_type_Int;
     int k = getMeasuredWidth() - getPaddingRight() - getPaddingLeft();
-    int m;
-    int i;
     if (j > k)
     {
       this.jdField_b_of_type_Boolean = true;
-      m = (int)((float)(l1 - l2) / (float)l3 * j) - (int)(paramInt + 0.5F * k);
-      i = paramInt + m;
-      if (m < 0)
-      {
-        paramInt = i;
-        if (i < 0) {
-          paramInt = 0;
+      i = (int)((float)(l1 - l2) / (float)l3 * j) - (int)(paramInt + k * 0.5F);
+      paramInt += i;
+      if (i < 0) {
+        if (paramInt < 0) {
+          return 0;
         }
       }
-    }
-    for (;;)
-    {
-      return paramInt;
-      if (m > 0)
+      do
       {
-        paramInt = j - k;
-        if (i <= paramInt) {
-          break label164;
+        return paramInt;
+        if (i <= 0) {
+          break;
         }
-      }
-      for (;;)
-      {
-        break;
-        paramInt = this.g;
-        break;
-        label164:
-        paramInt = i;
-      }
-      paramInt = 0;
+        i = j - k;
+      } while (paramInt <= i);
+      return i;
+      i = this.g;
     }
+    return i;
   }
   
   private int a(SentenceUI paramSentenceUI)
@@ -125,29 +113,37 @@ public class DynamicSingleLineLyricView
     int j = getPaddingLeft();
     int k = getPaddingRight();
     i = paramSentenceUI.jdField_b_of_type_Int - (i - j - k);
-    if ((i >= 0) || (this.jdField_a_of_type_AndroidGraphicsPaint$Align == Paint.Align.LEFT)) {
-      return 0;
+    if (i < 0)
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsPaint$Align == Paint.Align.LEFT) {
+        return 0;
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsPaint$Align == Paint.Align.RIGHT) {
+        return -i;
+      }
+      return -(int)(i * 0.5F);
     }
-    if (this.jdField_a_of_type_AndroidGraphicsPaint$Align == Paint.Align.RIGHT) {
-      return -i;
-    }
-    return -(int)(0.5F * i);
+    return 0;
   }
   
   private String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return HardCodeUtil.a(2131703610);
-    case 1: 
-      return HardCodeUtil.a(2131703611);
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return HardCodeUtil.a(2131703741);
+          }
+          return HardCodeUtil.a(2131703743);
+        }
+        return HardCodeUtil.a(2131703740);
+      }
       return "";
-    case 3: 
-      return HardCodeUtil.a(2131703609);
     }
-    return HardCodeUtil.a(2131703612);
+    return HardCodeUtil.a(2131703742);
   }
   
   private void a(Lyric paramLyric, int paramInt)
@@ -184,7 +180,8 @@ public class DynamicSingleLineLyricView
   
   private boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) || (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a == null) || (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.isEmpty()) || (this.c != 2);
+    Lyric localLyric = this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric;
+    return (localLyric == null) || (localLyric.a == null) || (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a.isEmpty()) || (this.c != 2);
   }
   
   private void d()
@@ -192,7 +189,7 @@ public class DynamicSingleLineLyricView
     if (QLog.isColorLevel()) {
       QLog.i("QQMusicPlay.Lyric", 2, String.format("=======>init", new Object[0]));
     }
-    this.d = AIOUtils.a(1.0F, getResources());
+    this.d = AIOUtils.b(1.0F, getResources());
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   }
@@ -230,7 +227,7 @@ public class DynamicSingleLineLyricView
   
   public boolean a()
   {
-    return !this.jdField_a_of_type_Boolean;
+    return this.jdField_a_of_type_Boolean ^ true;
   }
   
   public void b()
@@ -263,68 +260,36 @@ public class DynamicSingleLineLyricView
     }
   }
   
-  public int getSuggestedMinimumWidth()
+  protected int getSuggestedMinimumWidth()
   {
     if (b()) {
       return b((SentenceUI)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.c));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI != null) {
-      return b(this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI);
+    SentenceUI localSentenceUI = this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI;
+    if (localSentenceUI != null) {
+      return b(localSentenceUI);
     }
     return 0;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = 1;
+    int i = paramMessage.what;
+    Object localObject = null;
     int m = 1;
-    boolean bool = true;
-    Object localObject;
-    switch (paramMessage.what)
+    int j = 1;
+    switch (i)
     {
     default: 
-    case 2: 
-    case 3: 
-    case 4: 
-      for (;;)
-      {
-        bool = false;
-        do
-        {
-          do
-          {
-            return bool;
-            i = getMeasuredWidth();
-          } while (this.jdField_b_of_type_Int == i);
-          if (QLog.isColorLevel()) {
-            QLog.i("QQMusicPlay.Lyric", 2, String.format("MSG_SIZE_CHANGE %d", new Object[] { Integer.valueOf(getMeasuredWidth()) }));
-          }
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-          if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-          for (paramMessage = null;; paramMessage = (OnSizeChangeListener)this.jdField_a_of_type_JavaLangRefWeakReference.get())
-          {
-            if (paramMessage != null) {
-              paramMessage.b(getMeasuredWidth(), getMeasuredHeight());
-            }
-            this.jdField_b_of_type_Int = i;
-            break;
-          }
-          localObject = (Lyric)paramMessage.obj;
-          i = paramMessage.arg1;
-        } while (localObject == null);
-        paramMessage = new Lyric(2, 0, null);
-        paramMessage.a((Lyric)localObject);
-        paramMessage.a(getPaint(), getPaint(), 2147483647, true, false);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(4, i, 0, paramMessage);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramMessage);
-        continue;
-        this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = ((Lyric)paramMessage.obj);
-        this.c = paramMessage.arg1;
-        this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI = null;
-        this.g = 0;
-        b(5);
-      }
+      return false;
+    case 7: 
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(7);
+      invalidate();
+      return false;
+    case 6: 
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
+      requestLayout();
+      return false;
     case 5: 
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(5);
       this.jdField_b_of_type_Boolean = false;
@@ -332,50 +297,27 @@ public class DynamicSingleLineLyricView
       if (b())
       {
         paramMessage = (SentenceUI)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.c);
-        j = i;
-        if (this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI != null) {
-          if (this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI == paramMessage) {
-            break label702;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI;
+        i = j;
+        if (localObject != null) {
+          if (localObject != paramMessage) {
+            i = j;
+          } else {
+            i = 0;
           }
         }
+        this.g = 0;
+        j = i;
+        i = 0;
       }
-      break;
-    }
-    label394:
-    label688:
-    label695:
-    label702:
-    for (int j = i;; j = 0)
-    {
-      this.g = 0;
-      i = 0;
-      for (;;)
+      else
       {
-        label348:
-        this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI = paramMessage;
-        label363:
-        long l;
-        int k;
-        if (j != 0)
+        if (!this.jdField_a_of_type_Boolean)
         {
-          b(6);
-          if ((this.jdField_a_of_type_Boolean) || (b())) {
-            break;
-          }
-          paramMessage = this.jdField_a_of_type_AndroidOsHandler;
-          if (!this.jdField_b_of_type_Boolean) {
-            break label637;
-          }
-          l = 100L;
-          paramMessage.sendEmptyMessageDelayed(5, l);
-          break;
-          if (this.jdField_a_of_type_Boolean) {
-            break label695;
-          }
           i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
           j = this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a(i);
           localObject = this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a;
-          k = ((ArrayList)localObject).size();
+          int k = ((ArrayList)localObject).size();
           i = j;
           if (j < 0) {
             i = 0;
@@ -385,69 +327,106 @@ public class DynamicSingleLineLyricView
             j = k - 1;
           }
           localObject = (Sentence)((ArrayList)localObject).get(j);
-          if (((Sentence)localObject).a().isEmpty()) {
-            break label695;
-          }
-          paramMessage = (SentenceUI)((Sentence)localObject).a().get(0);
-          k = this.g;
-          if ((this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI != null) && ((this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI == paramMessage) || (b(this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI) == b(paramMessage)))) {
-            break label688;
-          }
-          this.g = 0;
-          i = 1;
-        }
-        for (j = 1;; j = 0)
-        {
-          if (j == 0)
+          if (!((Sentence)localObject).a().isEmpty())
           {
-            this.g = a((Sentence)localObject, this.g);
-            if (this.g != k)
+            paramMessage = (SentenceUI)((Sentence)localObject).a().get(0);
+            k = this.g;
+            SentenceUI localSentenceUI = this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI;
+            if ((localSentenceUI != null) && ((localSentenceUI == paramMessage) || (b(localSentenceUI) == b(paramMessage))))
             {
-              k = 1;
-              label579:
-              if (b(this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI) == b(paramMessage)) {
-                break label618;
+              i = 0;
+              j = 0;
+            }
+            else
+            {
+              this.g = 0;
+              i = 1;
+              j = 1;
+            }
+            if (i == 0)
+            {
+              this.g = a((Sentence)localObject, this.g);
+              if (this.g != k) {
+                k = 1;
+              } else {
+                k = 0;
               }
+              if (b(this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI) == b(paramMessage)) {
+                m = 0;
+              }
+              i = k | i | m;
+              break label392;
             }
-            for (;;)
-            {
-              k = k | j | m;
-              j = i;
-              i = k;
-              break;
-              k = 0;
-              break label579;
-              label618:
-              m = 0;
-            }
-            if (i == 0) {
-              break label363;
-            }
-            b(7);
-            break label363;
-            label637:
-            l = 300L;
-            break label394;
-            this.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
-            requestLayout();
-            break;
-            this.jdField_a_of_type_AndroidOsHandler.removeMessages(7);
-            invalidate();
-            break;
+            break label392;
           }
-          k = i;
-          i = j;
-          j = k;
-          break label348;
-          i = 0;
         }
-        j = 0;
         i = 0;
+        j = 0;
       }
+      this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI = paramMessage;
+      if (j != 0) {
+        b(6);
+      } else if (i != 0) {
+        b(7);
+      }
+      if ((!this.jdField_a_of_type_Boolean) && (!b()))
+      {
+        paramMessage = this.jdField_a_of_type_AndroidOsHandler;
+        long l;
+        if (this.jdField_b_of_type_Boolean) {
+          l = 100L;
+        } else {
+          l = 300L;
+        }
+        paramMessage.sendEmptyMessageDelayed(5, l);
+        return false;
+      }
+      break;
+    case 4: 
+      this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = ((Lyric)paramMessage.obj);
+      this.c = paramMessage.arg1;
+      this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI = null;
+      this.g = 0;
+      b(5);
+      return false;
+    case 3: 
+      localObject = (Lyric)paramMessage.obj;
+      i = paramMessage.arg1;
+      if (localObject == null) {
+        return true;
+      }
+      paramMessage = new Lyric(2, 0, null);
+      paramMessage.a((Lyric)localObject);
+      paramMessage.a(getPaint(), getPaint(), 2147483647, true, false);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
+      paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(4, i, 0, paramMessage);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramMessage);
+      return false;
+    case 2: 
+      label392:
+      i = getMeasuredWidth();
+      if (this.jdField_b_of_type_Int == i) {
+        return true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QQMusicPlay.Lyric", 2, String.format("MSG_SIZE_CHANGE %d", new Object[] { Integer.valueOf(getMeasuredWidth()) }));
+      }
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      paramMessage = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (paramMessage == null) {
+        paramMessage = (Message)localObject;
+      } else {
+        paramMessage = (OnSizeChangeListener)paramMessage.get();
+      }
+      if (paramMessage != null) {
+        paramMessage.b(getMeasuredWidth(), getMeasuredHeight());
+      }
+      this.jdField_b_of_type_Int = i;
     }
+    return false;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     SentenceUI localSentenceUI = this.jdField_a_of_type_ComTencentMobileqqLyricDataSentenceUI;
     if (localSentenceUI != null)
@@ -457,22 +436,28 @@ public class DynamicSingleLineLyricView
       }
       paramCanvas.save();
       paramCanvas.clipRect(new Rect(getPaddingLeft(), getPaddingTop(), getPaddingLeft() + (getMeasuredWidth() - getPaddingLeft() - getPaddingRight()), getPaddingTop() + (getMeasuredHeight() - getPaddingTop() - getPaddingBottom())));
-      int i = getPaddingLeft() - this.g + a(localSentenceUI);
-      int j = this.f + getPaddingTop();
+      int i = getPaddingLeft();
+      int j = this.g;
+      int k = a(localSentenceUI);
+      int m = this.f;
+      int n = getPaddingTop();
       TextPaint localTextPaint = getPaint();
       localTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
       localTextPaint.setStrokeWidth(this.d);
-      int k = getCurrentTextColor();
+      int i1 = getCurrentTextColor();
       localTextPaint.setColor(this.e);
-      paramCanvas.drawText(localSentenceUI.jdField_a_of_type_JavaLangString, i, j, localTextPaint);
-      localTextPaint.setColor(k);
+      String str = localSentenceUI.jdField_a_of_type_JavaLangString;
+      float f1 = i - j + k;
+      float f2 = m + n;
+      paramCanvas.drawText(str, f1, f2, localTextPaint);
+      localTextPaint.setColor(i1);
       localTextPaint.setStyle(Paint.Style.FILL);
-      paramCanvas.drawText(localSentenceUI.jdField_a_of_type_JavaLangString, i, j, localTextPaint);
+      paramCanvas.drawText(localSentenceUI.jdField_a_of_type_JavaLangString, f1, f2, localTextPaint);
       paramCanvas.restore();
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.jdField_a_of_type_Int != getMeasuredWidth())
@@ -484,7 +469,7 @@ public class DynamicSingleLineLyricView
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(getSuggestedMinimumWidth(), View.getDefaultSize(getSuggestedMinimumHeight(), paramInt2));
   }
@@ -552,7 +537,9 @@ public class DynamicSingleLineLyricView
     while (paramInt <= 4)
     {
       Object localObject = a(paramInt);
-      int i = (int)(localTextPaint.measureText((String)localObject) + 0.5D);
+      double d1 = localTextPaint.measureText((String)localObject);
+      Double.isNaN(d1);
+      int i = (int)(d1 + 0.5D);
       localObject = new SentenceUI((String)localObject, 0, 0, i, i, null);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
       paramInt += 1;
@@ -563,7 +550,7 @@ public class DynamicSingleLineLyricView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.DynamicSingleLineLyricView
  * JD-Core Version:    0.7.0.1
  */

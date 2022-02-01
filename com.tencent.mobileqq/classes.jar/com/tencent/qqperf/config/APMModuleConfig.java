@@ -30,12 +30,25 @@ public class APMModuleConfig
   
   public String toString()
   {
-    return "threshold=" + this.threshold + ", maxReport=" + this.maxReport + ", userRatio=" + this.userRatio + ", evenRatio=" + this.evenRatio + ", stackDepth=" + this.stackDepth + ", strategy='" + this.strategy;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("threshold=");
+    localStringBuilder.append(this.threshold);
+    localStringBuilder.append(", maxReport=");
+    localStringBuilder.append(this.maxReport);
+    localStringBuilder.append(", userRatio=");
+    localStringBuilder.append(this.userRatio);
+    localStringBuilder.append(", evenRatio=");
+    localStringBuilder.append(this.evenRatio);
+    localStringBuilder.append(", stackDepth=");
+    localStringBuilder.append(this.stackDepth);
+    localStringBuilder.append(", strategy='");
+    localStringBuilder.append(this.strategy);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.config.APMModuleConfig
  * JD-Core Version:    0.7.0.1
  */

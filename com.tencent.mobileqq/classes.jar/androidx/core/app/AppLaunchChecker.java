@@ -20,18 +20,21 @@ public class AppLaunchChecker
   public static void onActivityCreate(@NonNull Activity paramActivity)
   {
     SharedPreferences localSharedPreferences = paramActivity.getSharedPreferences("android.support.AppLaunchChecker", 0);
-    if (localSharedPreferences.getBoolean("startedFromLauncher", false)) {}
-    do
-    {
+    if (localSharedPreferences.getBoolean("startedFromLauncher", false)) {
       return;
-      paramActivity = paramActivity.getIntent();
-    } while ((paramActivity == null) || (!"android.intent.action.MAIN".equals(paramActivity.getAction())) || ((!paramActivity.hasCategory("android.intent.category.LAUNCHER")) && (!paramActivity.hasCategory("android.intent.category.LEANBACK_LAUNCHER"))));
-    localSharedPreferences.edit().putBoolean("startedFromLauncher", true).apply();
+    }
+    paramActivity = paramActivity.getIntent();
+    if (paramActivity == null) {
+      return;
+    }
+    if (("android.intent.action.MAIN".equals(paramActivity.getAction())) && ((paramActivity.hasCategory("android.intent.category.LAUNCHER")) || (paramActivity.hasCategory("android.intent.category.LEANBACK_LAUNCHER")))) {
+      localSharedPreferences.edit().putBoolean("startedFromLauncher", true).apply();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.AppLaunchChecker
  * JD-Core Version:    0.7.0.1
  */

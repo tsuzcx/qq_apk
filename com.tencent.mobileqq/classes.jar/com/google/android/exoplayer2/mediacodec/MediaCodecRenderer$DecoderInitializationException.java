@@ -18,7 +18,7 @@ public class MediaCodecRenderer$DecoderInitializationException
   
   public MediaCodecRenderer$DecoderInitializationException(Format paramFormat, Throwable paramThrowable, boolean paramBoolean, int paramInt)
   {
-    super("Decoder init failed: [" + paramInt + "], " + paramFormat, paramThrowable);
+    super(localStringBuilder.toString(), paramThrowable);
     this.mimeType = paramFormat.sampleMimeType;
     this.secureDecoderRequired = paramBoolean;
     this.decoderName = null;
@@ -27,24 +27,31 @@ public class MediaCodecRenderer$DecoderInitializationException
   
   public MediaCodecRenderer$DecoderInitializationException(Format paramFormat, Throwable paramThrowable, boolean paramBoolean, String paramString)
   {
-    super("Decoder init failed: " + paramString + ", " + paramFormat, paramThrowable);
+    super(localStringBuilder.toString(), paramThrowable);
     this.mimeType = paramFormat.sampleMimeType;
     this.secureDecoderRequired = paramBoolean;
     this.decoderName = paramString;
-    if (Util.SDK_INT >= 21) {}
-    for (paramFormat = getDiagnosticInfoV21(paramThrowable);; paramFormat = null)
-    {
-      this.diagnosticInfo = paramFormat;
-      return;
+    if (Util.SDK_INT >= 21) {
+      paramFormat = getDiagnosticInfoV21(paramThrowable);
+    } else {
+      paramFormat = null;
     }
+    this.diagnosticInfo = paramFormat;
   }
   
   private static String buildCustomDiagnosticInfo(int paramInt)
   {
-    if (paramInt < 0) {}
-    for (String str = "neg_";; str = "") {
-      return "com.google.android.exoplayer.MediaCodecTrackRenderer_" + str + Math.abs(paramInt);
+    String str;
+    if (paramInt < 0) {
+      str = "neg_";
+    } else {
+      str = "";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("com.google.android.exoplayer.MediaCodecTrackRenderer_");
+    localStringBuilder.append(str);
+    localStringBuilder.append(Math.abs(paramInt));
+    return localStringBuilder.toString();
   }
   
   @TargetApi(21)
@@ -58,7 +65,7 @@ public class MediaCodecRenderer$DecoderInitializationException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.mediacodec.MediaCodecRenderer.DecoderInitializationException
  * JD-Core Version:    0.7.0.1
  */

@@ -33,34 +33,31 @@ public class SmartDevicePluginProxyActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     if (getIntent().getIntExtra("KEY_OPENAV_ROOM_ID", 0) != 0) {
       getIntent().putExtra("fling_action_key", 0);
     }
     super.onCreate(paramBundle);
-    if (!TextUtils.isEmpty(this.mCreateErrorInfo)) {
-      if (paramBundle == null) {
-        break label95;
-      }
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(this.mCreateErrorInfo))
     {
+      if (paramBundle == null) {
+        paramBundle = getIntent().getExtras();
+      }
       paramBundle = paramBundle.getString("pluginsdk_launchActivity");
       StringBuffer localStringBuffer = new StringBuffer("[插件Activity启动] ");
-      localStringBuffer.append(paramBundle).append(" ").append(this.mCreateErrorInfo);
+      localStringBuffer.append(paramBundle);
+      localStringBuffer.append(" ");
+      localStringBuffer.append(this.mCreateErrorInfo);
       if (QLog.isColorLevel()) {
         QLog.d("SmartDevicePluginProxyActivity", 2, localStringBuffer.toString());
       }
-      return;
-      label95:
-      paramBundle = getIntent().getExtras();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.smartdevice.SmartDevicePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

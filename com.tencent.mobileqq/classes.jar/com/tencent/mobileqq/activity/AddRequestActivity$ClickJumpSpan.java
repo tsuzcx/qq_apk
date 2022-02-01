@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 
 class AddRequestActivity$ClickJumpSpan
@@ -24,19 +26,37 @@ class AddRequestActivity$ClickJumpSpan
   
   public void onClick(View paramView)
   {
-    if (paramView != null) {}
-    for (paramView = paramView.getContext(); paramView == null; paramView = null) {
+    if (paramView != null) {
+      paramView = paramView.getContext();
+    } else {
+      paramView = null;
+    }
+    if (paramView == null) {
       return;
     }
-    Object localObject;
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      TroopUtils.a(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
-      return;
-    case 2: 
+      Object localObject;
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        try
+        {
+          localObject = new AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
+          ((AllInOne)localObject).profileEntryType = 109;
+          ((AllInOne)localObject).chatAbility = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
+          ProfileUtils.openProfileCard(paramView, (AllInOne)localObject);
+          return;
+        }
+        catch (Exception paramView)
+        {
+          paramView.printStackTrace();
+          return;
+        }
+      }
       try
       {
         localObject = new Intent(paramView, DiscussionInfoCardActivity.class);
@@ -50,18 +70,7 @@ class AddRequestActivity$ClickJumpSpan
         return;
       }
     }
-    try
-    {
-      localObject = new ProfileActivity.AllInOne(this.jdField_a_of_type_AndroidOsBundle.getString("key_profile_uin"), this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_pa", 25));
-      ((ProfileActivity.AllInOne)localObject).h = 109;
-      ((ProfileActivity.AllInOne)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("key_profile_chatability");
-      ProfileActivity.b(paramView, (ProfileActivity.AllInOne)localObject);
-      return;
-    }
-    catch (Exception paramView)
-    {
-      paramView.printStackTrace();
-    }
+    TroopUtils.a(paramView, this.jdField_a_of_type_AndroidOsBundle, 2);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -71,7 +80,7 @@ class AddRequestActivity$ClickJumpSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.ClickJumpSpan
  * JD-Core Version:    0.7.0.1
  */

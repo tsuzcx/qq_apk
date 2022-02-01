@@ -30,20 +30,22 @@ class StructingMsgItemBuilder$CacheMap
   
   public void remove(StructingMsgItemBuilder.ViewWrapper paramViewWrapper)
   {
-    if ((paramViewWrapper == null) || (paramViewWrapper.a == null)) {}
-    ArrayList localArrayList;
-    do
+    if (paramViewWrapper != null)
     {
-      return;
-      localArrayList = get(paramViewWrapper.a);
+      if (paramViewWrapper.a == null) {
+        return;
+      }
+      ArrayList localArrayList = get(paramViewWrapper.a);
       localArrayList.remove(paramViewWrapper);
-    } while (!localArrayList.isEmpty());
-    remove(paramViewWrapper.a);
+      if (localArrayList.isEmpty()) {
+        remove(paramViewWrapper.a);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.CacheMap
  * JD-Core Version:    0.7.0.1
  */

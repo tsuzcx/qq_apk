@@ -16,48 +16,46 @@ class QQMapActivity$MapRuntime$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int j = 1;
     paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return;
-      int i;
-      if (paramContext.equals("com.tencent.process.exit"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("mqq", 2, "receive kill map process broadcast");
-        }
-        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
-        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!CommonUtil.a(paramContext, MobileQQ.getContext()))) {
-          break label144;
-        }
-        i = j;
+    }
+    int j = 0;
+    if (paramContext.equals("com.tencent.process.exit"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("mqq", 2, "receive kill map process broadcast");
       }
-      while (i != 0)
-      {
-        Process.killProcess(Process.myPid());
-        return;
-        i = j;
-        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
-        {
-          i = j;
-          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
-          {
-            i = j;
-            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
-              label144:
-              i = 0;
-            }
-          }
-        }
+      paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+      i = j;
+      if (!QQMapActivity.isLegalBroadcast(paramIntent.getExtras().getString("verify"), paramContext)) {
+        break label141;
       }
+      i = j;
+      if (!CommonUtil.a(paramContext, MobileQQ.getContext())) {
+        break label141;
+      }
+    }
+    else if ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.LOGOUT")))
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("mqq.intent.action.EXIT_");
+      paramIntent.append(MobileQQ.getMobileQQ().getPackageName());
+      i = j;
+      if (!paramContext.equals(paramIntent.toString())) {
+        break label141;
+      }
+    }
+    int i = 1;
+    label141:
+    if (i != 0) {
+      Process.killProcess(Process.myPid());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.MapRuntime.1
  * JD-Core Version:    0.7.0.1
  */

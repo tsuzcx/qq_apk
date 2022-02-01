@@ -86,12 +86,20 @@ public class PreloadStaticApi
   
   public static String a(AppRuntime paramAppRuntime)
   {
-    return ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletInternalPath() + paramAppRuntime.getAccount() + "/" + ".preloaduni" + "/";
+    StringBuilder localStringBuilder = new StringBuilder(((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletInternalPath());
+    localStringBuilder.append(paramAppRuntime.getAccount());
+    localStringBuilder.append("/");
+    localStringBuilder.append(".preloaduni");
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
   }
   
   public static String a(AppRuntime paramAppRuntime, String paramString)
   {
-    return a(paramAppRuntime) + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramAppRuntime));
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static void a(String paramString, boolean paramBoolean, int paramInt)
@@ -130,7 +138,10 @@ public class PreloadStaticApi
   
   public static String b()
   {
-    return ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletInternalPath() + ".preloaduni" + "/";
+    StringBuilder localStringBuilder = new StringBuilder(((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletInternalPath());
+    localStringBuilder.append(".preloaduni");
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
   }
   
   public static String b(String paramString)
@@ -144,7 +155,10 @@ public class PreloadStaticApi
       return "";
     }
     paramString = MD5.toMD5(paramString);
-    return a(paramInt) + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramInt));
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static boolean b(String paramString)
@@ -154,14 +168,18 @@ public class PreloadStaticApi
   
   public static String c()
   {
-    String str1 = null;
+    Object localObject = null;
     try
     {
-      String str2 = QWalletValues.a;
-      if (!TextUtils.isEmpty(str2)) {
-        str1 = str2 + ".preloaduni" + "/";
+      String str = QWalletValues.a;
+      if (!TextUtils.isEmpty(str))
+      {
+        localObject = new StringBuilder(str);
+        ((StringBuilder)localObject).append(".preloaduni");
+        ((StringBuilder)localObject).append("/");
+        localObject = ((StringBuilder)localObject).toString();
       }
-      return str1;
+      return localObject;
     }
     catch (Throwable localThrowable) {}
     return null;
@@ -179,7 +197,7 @@ public class PreloadStaticApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.PreloadStaticApi
  * JD-Core Version:    0.7.0.1
  */

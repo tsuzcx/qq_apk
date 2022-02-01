@@ -1,10 +1,10 @@
 package com.tencent.biz.qcircleshadow.lib;
 
 import com.tencent.biz.qcircleshadow.lib.listener.QCircleTrueTypeResult;
-import com.tencent.qzonehub.api.ITrueTypeResult;
+import cooperation.qzone.font.FontInterface.TrueTypeResult;
 
 final class QCirclrHostFontHelper$2
-  implements ITrueTypeResult
+  implements FontInterface.TrueTypeResult
 {
   QCirclrHostFontHelper$2(QCircleTrueTypeResult paramQCircleTrueTypeResult) {}
   
@@ -15,7 +15,7 @@ final class QCirclrHostFontHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCirclrHostFontHelper.2
  * JD-Core Version:    0.7.0.1
  */

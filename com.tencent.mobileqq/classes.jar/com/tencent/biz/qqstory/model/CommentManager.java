@@ -48,17 +48,19 @@ public class CommentManager
   
   public List<CommentEntry> a(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 4;; i = 3)
-    {
-      List localList = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "feedId=? and type=?", new String[] { paramString, String.valueOf(i) });
-      Object localObject = localList;
-      if (localList == null) {
-        localObject = new ArrayList();
-      }
-      SLog.a("Q.qqstory:CommentManager", "query comment feeds id %s, %d", paramString, Integer.valueOf(((List)localObject).size()));
-      return localObject;
+    int i;
+    if (paramBoolean) {
+      i = 4;
+    } else {
+      i = 3;
     }
+    List localList = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "feedId=? and type=?", new String[] { paramString, String.valueOf(i) });
+    Object localObject = localList;
+    if (localList == null) {
+      localObject = new ArrayList();
+    }
+    SLog.a("Q.qqstory:CommentManager", "query comment feeds id %s, %d", paramString, Integer.valueOf(((List)localObject).size()));
+    return localObject;
   }
   
   public void a()
@@ -69,17 +71,15 @@ public class CommentManager
   public void a(int paramInt)
   {
     Object localObject = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "commentId=?", new String[] { String.valueOf(paramInt) });
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CommentEntry localCommentEntry = (CommentEntry)((Iterator)localObject).next();
-        localCommentEntry.setStatus(1001);
-        this.a.remove(localCommentEntry);
-      }
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      CommentEntry localCommentEntry = (CommentEntry)((Iterator)localObject).next();
+      localCommentEntry.setStatus(1001);
+      this.a.remove(localCommentEntry);
     }
   }
   
@@ -91,66 +91,47 @@ public class CommentManager
   
   public void a(String paramString, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramInt <= 0))
+    if ((!TextUtils.isEmpty(paramString)) && (paramInt > 0))
     {
-      SLog.d("Q.qqstory:CommentManager", "push info invalidate feedId:%s, commentId:%d", new Object[] { paramString, Integer.valueOf(paramInt) });
-      return;
-    }
-    Object localObject1 = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "feedId=? and commentId=?", new String[] { paramString, String.valueOf(paramInt) });
-    int j;
-    int i;
-    Object localObject2;
-    label123:
-    int k;
-    if (localObject1 != null)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      j = 0;
-      i = 0;
-      if (((Iterator)localObject1).hasNext())
+      Object localObject1 = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "feedId=? and commentId=?", new String[] { paramString, String.valueOf(paramInt) });
+      if (localObject1 != null)
       {
-        localObject2 = (CommentEntry)((Iterator)localObject1).next();
-        if (((CommentEntry)localObject2).type == 3)
-        {
-          i = j;
-          j = 1;
-        }
+        localObject1 = ((List)localObject1).iterator();
+        int j = 0;
+        i = 0;
         for (;;)
         {
-          k = j;
-          j = i;
-          i = k;
-          break;
-          if (((CommentEntry)localObject2).type != 4) {
-            break label366;
+          m = j;
+          k = i;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
           }
-          k = 1;
-          j = i;
-          i = k;
+          localObject2 = (CommentEntry)((Iterator)localObject1).next();
+          if (((CommentEntry)localObject2).type == 3) {
+            j = 1;
+          } else if (((CommentEntry)localObject2).type == 4) {
+            i = 1;
+          }
         }
       }
-      k = j;
-      j = i;
-      i = k;
-    }
-    for (;;)
-    {
-      k = this.a.delete(CommentEntry.class.getSimpleName(), "commentId=? and feedId=? and type in (?,?)", new String[] { String.valueOf(paramInt), paramString, String.valueOf(4), String.valueOf(3) });
+      int m = 0;
+      int k = 0;
+      int i = this.a.delete(CommentEntry.class.getSimpleName(), "commentId=? and feedId=? and type in (?,?)", new String[] { String.valueOf(paramInt), paramString, String.valueOf(4), String.valueOf(3) });
       localObject1 = (FeedManager)SuperManager.a(11);
-      localObject2 = (CommentLikeFeedItem)((FeedManager)localObject1).a(paramString);
+      Object localObject2 = (CommentLikeFeedItem)((FeedManager)localObject1).a(paramString);
       if (localObject2 == null) {
-        break;
+        return;
       }
-      if (k > 0)
+      if (i > 0)
       {
-        if (j != 0)
+        if (m != 0)
         {
           ((CommentLikeFeedItem)localObject2).mFriendCommentCount -= 1;
           if (((CommentLikeFeedItem)localObject2).mFriendCommentCount < 0) {
             ((CommentLikeFeedItem)localObject2).mFriendCommentCount = 0;
           }
         }
-        if (i != 0)
+        if (k != 0)
         {
           ((CommentLikeFeedItem)localObject2).mFanCommentCount -= 1;
           if (((CommentLikeFeedItem)localObject2).mFanCommentCount < 0) {
@@ -167,14 +148,8 @@ public class CommentManager
       paramString.c = paramInt;
       StoryDispatcher.a().dispatch(paramString);
       return;
-      label366:
-      k = i;
-      i = j;
-      j = k;
-      break label123;
-      i = 0;
-      j = 0;
     }
+    SLog.d("Q.qqstory:CommentManager", "push info invalidate feedId:%s, commentId:%d", new Object[] { paramString, Integer.valueOf(paramInt) });
   }
   
   public void a(@NonNull List<CommentEntry> paramList, String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -182,23 +157,18 @@ public class CommentManager
     int i;
     if (paramBoolean1) {
       i = 4;
+    } else {
+      i = 3;
     }
-    EntityManager localEntityManager;
-    Object localObject2;
-    for (;;)
+    EntityManager localEntityManager = a().a().createEntityManager();
+    localEntityManager.getTransaction().begin();
+    if (paramBoolean2) {}
+    try
     {
-      localEntityManager = a().a().createEntityManager();
-      localEntityManager.getTransaction().begin();
-      if (!paramBoolean2) {
-        break;
-      }
-      try
+      Object localObject1 = a(paramString, paramBoolean1);
+      SLog.a("Q.qqstory:CommentManager", "delete comment feeds id %s, %d", paramString, Integer.valueOf(((List)localObject1).size()));
+      if (localObject1 != null)
       {
-        localObject1 = a(paramString, paramBoolean1);
-        SLog.a("Q.qqstory:CommentManager", "delete comment feeds id %s, %d", paramString, Integer.valueOf(((List)localObject1).size()));
-        if (localObject1 == null) {
-          break;
-        }
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
@@ -208,17 +178,14 @@ public class CommentManager
             localEntityManager.remove((Entity)localObject2);
           }
         }
-        i = 3;
       }
-      finally
-      {
-        localEntityManager.getTransaction().end();
+      localObject1 = this.a;
+      Object localObject2 = CommentEntry.class.getSimpleName();
+      int j = 0;
+      localObject1 = a((EntityManager)localObject1, CommentEntry.class, (String)localObject2, "feedId=? and type=? and status<>? ", new String[] { paramString, String.valueOf(i), String.valueOf(0) });
+      if (localObject1 != null) {
+        j = ((List)localObject1).size();
       }
-    }
-    Object localObject1 = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "feedId=? and type=? and status<>? ", new String[] { paramString, String.valueOf(i), String.valueOf(0) });
-    if (localObject1 != null) {}
-    for (int j = ((List)localObject1).size();; j = 0)
-    {
       SLog.a("Q.qqstory:CommentManager", "fail comment size:%d for feedId:%s", Integer.valueOf(j), paramString);
       localObject2 = new ArrayList(j);
       Iterator localIterator = paramList.iterator();
@@ -245,6 +212,14 @@ public class CommentManager
       localEntityManager.getTransaction().commit();
       localEntityManager.getTransaction().end();
       return;
+    }
+    finally
+    {
+      localEntityManager.getTransaction().end();
+    }
+    for (;;)
+    {
+      throw paramList;
     }
   }
   
@@ -296,43 +271,57 @@ public class CommentManager
   
   public void c(@NonNull CommentEntry paramCommentEntry)
   {
-    EntityManager localEntityManager = a().a().createEntityManager();
+    localEntityManager = a().a().createEntityManager();
     localEntityManager.getTransaction().begin();
-    for (;;)
+    try
     {
-      int i;
-      try
-      {
-        List localList = a(this.a, CommentEntry.class, CommentEntry.class.getSimpleName(), "commentId=? and feedId=?", new String[] { String.valueOf(paramCommentEntry.commentId), paramCommentEntry.feedId });
-        if (localList == null) {
-          return;
-        }
-        i = 0;
-        if (i < localList.size())
-        {
-          CommentEntry localCommentEntry = (CommentEntry)localList.get(i);
-          if (localCommentEntry.type == 3)
-          {
-            localCommentEntry.copy(paramCommentEntry);
-            localCommentEntry.type = 3;
-            localEntityManager.update(localCommentEntry);
-          }
-          else if (localCommentEntry.type == 4)
-          {
-            localCommentEntry.copy(paramCommentEntry);
-            localCommentEntry.type = 4;
-            localEntityManager.update(localCommentEntry);
-          }
-        }
-      }
-      finally
+      localObject1 = this.a;
+      localObject2 = CommentEntry.class.getSimpleName();
+      int j = paramCommentEntry.commentId;
+      i = 0;
+      localObject1 = a((EntityManager)localObject1, CommentEntry.class, (String)localObject2, "commentId=? and feedId=?", new String[] { String.valueOf(j), paramCommentEntry.feedId });
+      if (localObject1 == null)
       {
         localEntityManager.getTransaction().end();
+        return;
       }
+    }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject1;
+        Object localObject2;
+        int i;
+        localEntityManager.getTransaction().end();
+        for (;;)
+        {
+          throw paramCommentEntry;
+        }
+        i += 1;
+      }
+    }
+    if (i < ((List)localObject1).size())
+    {
+      localObject2 = (CommentEntry)((List)localObject1).get(i);
+      if (((CommentEntry)localObject2).type == 3)
+      {
+        ((CommentEntry)localObject2).copy(paramCommentEntry);
+        ((CommentEntry)localObject2).type = 3;
+        localEntityManager.update((Entity)localObject2);
+      }
+      else if (((CommentEntry)localObject2).type == 4)
+      {
+        ((CommentEntry)localObject2).copy(paramCommentEntry);
+        ((CommentEntry)localObject2).type = 4;
+        localEntityManager.update((Entity)localObject2);
+      }
+    }
+    else
+    {
       localEntityManager.getTransaction().commit();
       localEntityManager.getTransaction().end();
       return;
-      i += 1;
     }
   }
   
@@ -344,7 +333,7 @@ public class CommentManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.CommentManager
  * JD-Core Version:    0.7.0.1
  */

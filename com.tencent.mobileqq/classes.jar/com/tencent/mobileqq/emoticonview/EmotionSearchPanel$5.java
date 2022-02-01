@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class EmotionSearchPanel$5
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   EmotionSearchPanel$5(EmotionSearchPanel paramEmotionSearchPanel) {}
   
@@ -21,7 +21,7 @@ class EmotionSearchPanel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionSearchPanel.5
  * JD-Core Version:    0.7.0.1
  */

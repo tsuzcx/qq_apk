@@ -14,31 +14,31 @@ class SubscribePermissionSettingFragment$8
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    long l = -1L;
+    long l;
     if (paramJSONObject != null)
     {
-      QMLog.e("SubscribePermissionSettingFragment", "onCheckedChanged, setting.appMsgSubscribed_setAuthorize:" + paramBoolean + ",ret" + paramJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCheckedChanged, setting.appMsgSubscribed_setAuthorize:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(",ret");
+      localStringBuilder.append(paramJSONObject.toString());
+      QMLog.e("SubscribePermissionSettingFragment", localStringBuilder.toString());
       l = paramJSONObject.optLong("retCode");
+    }
+    else
+    {
+      l = -1L;
     }
     if ((!paramBoolean) || (l == -101510007L))
     {
       this.this$0.getActivity().runOnUiThread(new SubscribePermissionSettingFragment.8.1(this, l));
-      paramJSONObject = this.this$0.authState;
-      if (this.val$isChecked) {
-        break label107;
-      }
-    }
-    label107:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramJSONObject.setAuthState("setting.appMsgSubscribed", paramBoolean);
-      return;
+      this.this$0.authState.setAuthState("setting.appMsgSubscribed", this.val$isChecked ^ true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubscribePermissionSettingFragment.8
  * JD-Core Version:    0.7.0.1
  */

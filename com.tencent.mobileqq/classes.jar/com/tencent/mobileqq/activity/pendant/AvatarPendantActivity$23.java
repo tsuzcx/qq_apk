@@ -1,28 +1,21 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import com.tencent.mobileqq.vas.updatesystem.callback.CallBacker;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class AvatarPendantActivity$23
-  extends CallBacker
+  implements DialogInterface.OnClickListener
 {
-  AvatarPendantActivity$23(AvatarPendantActivity paramAvatarPendantActivity) {}
+  AvatarPendantActivity$23(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramLong == 1000L) && (paramString1.equals("pendant_market_json.android.v2"))) {
-      if (paramInt1 == 0) {
-        this.a.e();
-      }
-    }
-    while ((paramLong != 23L) || (!paramString1.equals("avatarInPendant_json")) || (paramInt1 != 0)) {
-      return;
-    }
-    this.a.f();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.23
  * JD-Core Version:    0.7.0.1
  */

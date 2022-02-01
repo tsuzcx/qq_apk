@@ -16,21 +16,34 @@ public class QzoneHomePageJsPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals(PKG_NAME)) || (!METHOD_NAME.equals(paramString3))) {
-      return false;
+    if (paramString2.equals(PKG_NAME))
+    {
+      if (!METHOD_NAME.equals(paramString3)) {
+        return false;
+      }
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("navigation url:");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append(" pkgName:");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append(" method:");
+      paramJsBridgeListener.append(paramString3);
+      paramJsBridgeListener.append(" jsonString:");
+      paramJsBridgeListener.append(paramVarArgs[0]);
+      QZLog.i("QzoneHomePageJsPlugin", 4, paramJsBridgeListener.toString());
+      paramJsBridgeListener = new Intent("JsCallReflushNavigationBar");
+      paramJsBridgeListener.putExtra("navigationBar", paramVarArgs[0]);
+      if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null)) {
+        this.parentPlugin.mRuntime.a().sendBroadcast(paramJsBridgeListener);
+      }
+      return true;
     }
-    QZLog.i("QzoneHomePageJsPlugin", 4, "navigation url:" + paramString1 + " pkgName:" + paramString2 + " method:" + paramString3 + " jsonString:" + paramVarArgs[0]);
-    paramJsBridgeListener = new Intent("JsCallReflushNavigationBar");
-    paramJsBridgeListener.putExtra("navigationBar", paramVarArgs[0]);
-    if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null)) {
-      this.parentPlugin.mRuntime.a().sendBroadcast(paramJsBridgeListener);
-    }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.famous.QzoneHomePageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

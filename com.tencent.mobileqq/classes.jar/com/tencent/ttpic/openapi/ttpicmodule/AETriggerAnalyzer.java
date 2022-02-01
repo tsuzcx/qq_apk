@@ -30,38 +30,36 @@ public class AETriggerAnalyzer
   
   public boolean isTriggered(String paramString, AIAttr paramAIAttr)
   {
-    boolean bool2 = true;
-    boolean bool1 = false;
     paramString = paramString.split("-");
+    int i = paramString.length;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     String str;
-    if (paramString.length == 2) {
+    if (i == 2) {
       str = paramString[0];
     }
-    for (;;)
+    try
     {
-      try
+      i = Integer.parseInt(paramString[1]);
+      paramString = getInstance().getClassifier(str);
+      bool1 = bool2;
+      if (paramString != null)
       {
-        int i = Integer.parseInt(paramString[1]);
-        paramString = getInstance().getClassifier(str);
-        if (paramString != null)
+        int j = paramString.classifyData2Type(paramAIAttr);
+        boolean bool3 = paramString.getClassifierTypeMap().containsValue(Integer.valueOf(j));
+        bool1 = bool2;
+        if (bool3)
         {
-          int j = paramString.classifyData2Type(paramAIAttr);
-          bool1 = paramString.getClassifierTypeMap().containsValue(Integer.valueOf(j));
-          if ((bool1) && (i == j))
-          {
-            bool1 = bool2;
-            return bool1;
+          bool1 = bool2;
+          if (i == j) {
+            bool1 = true;
           }
-          bool1 = false;
-          continue;
         }
-        bool1 = false;
       }
-      catch (NumberFormatException paramString)
-      {
-        return false;
-      }
+      return bool1;
     }
+    catch (NumberFormatException paramString) {}
+    return false;
   }
   
   public void removeClassifier(IAIDataClassifier paramIAIDataClassifier)
@@ -72,7 +70,7 @@ public class AETriggerAnalyzer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.ttpicmodule.AETriggerAnalyzer
  * JD-Core Version:    0.7.0.1
  */

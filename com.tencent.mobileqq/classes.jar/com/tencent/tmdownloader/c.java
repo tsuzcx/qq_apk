@@ -15,25 +15,34 @@ class c
     {
       if ((this.a.mServiceInterface != null) && (this.a.mServiceCallback != null))
       {
-        aa.a(this.a.mServiceName + "BaseIPCClient registerServiceCallback");
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append(this.a.mServiceName);
+        localStringBuilder1.append("BaseIPCClient registerServiceCallback");
+        aa.a(localStringBuilder1.toString());
         this.a.registerServiceCallback();
+        return;
       }
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("<onServiceConnected> service wrong, e = ");
+      localStringBuilder2.append(localException.getMessage());
+      ab.e("BaseIPCClient", localStringBuilder2.toString());
+      return;
+      this.a.onDownloadSDKServiceInvalid();
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      this.a.onDownloadSDKServiceInvalid();
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.e("BaseIPCClient", "<onServiceConnected> service wrong, e = " + localException.getMessage());
+      label97:
+      break label97;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.c
  * JD-Core Version:    0.7.0.1
  */

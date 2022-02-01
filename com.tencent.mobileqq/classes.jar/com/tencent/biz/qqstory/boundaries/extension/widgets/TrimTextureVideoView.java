@@ -9,7 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.View.MeasureSpec;
 import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
+import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
 
 public class TrimTextureVideoView
   extends com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView
@@ -43,216 +43,198 @@ public class TrimTextureVideoView
   private Matrix a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     Matrix localMatrix = new Matrix();
-    float f1 = paramInt1 / paramInt3;
-    float f2 = paramInt2 / paramInt4;
+    float f1 = paramInt1;
+    float f2 = paramInt3;
+    float f3 = f1 / f2;
+    float f4 = paramInt2;
+    float f5 = paramInt4;
+    float f6 = f4 / f5;
     localMatrix.preTranslate((paramInt1 - paramInt3) / 2.0F, (paramInt2 - paramInt4) / 2.0F);
-    localMatrix.preScale(paramInt3 / paramInt1, paramInt4 / paramInt2);
-    if (f1 >= f2)
+    localMatrix.preScale(f2 / f1, f5 / f4);
+    if (f3 >= f6)
     {
-      localMatrix.postScale(f2, f2, paramInt1 / 2, paramInt2 / 2);
+      localMatrix.postScale(f6, f6, paramInt1 / 2, paramInt2 / 2);
       return localMatrix;
     }
-    localMatrix.postScale(f1, f1, paramInt1 / 2, paramInt2 / 2);
+    localMatrix.postScale(f3, f3, paramInt1 / 2, paramInt2 / 2);
     return localMatrix;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   @TargetApi(14)
   public boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.k) && (MediaPlayer.b())) {}
-    for (int i = 0 + paramInt1;; i = 0)
+    int i;
+    if ((this.k) && (MediaPlayer.b())) {
+      i = paramInt1 + 0;
+    } else {
+      i = 0;
+    }
+    int j = paramInt1 % 180;
+    float f;
+    if ((j > 0) && (paramInt2 < paramInt3))
     {
-      float f;
-      if ((paramInt1 % 180 > 0) && (paramInt2 < paramInt3))
-      {
-        setRotation(i + 90);
-        f = a(paramInt2, paramInt3);
-        setScaleX(f);
-        setScaleY(f);
-        SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
-        return true;
+      setRotation(i + 90);
+      f = a(paramInt2, paramInt3);
+      setScaleX(f);
+      setScaleY(f);
+      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      return true;
+    }
+    Object localObject;
+    if ((j == 0) && (paramInt2 > paramInt3))
+    {
+      localObject = getResources().getDisplayMetrics();
+      i = ((DisplayMetrics)localObject).widthPixels;
+      j = ((DisplayMetrics)localObject).heightPixels;
+      localObject = this.jdField_a_of_type_AndroidGraphicsMatrix;
+      if (localObject == null) {
+        this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+      } else {
+        ((Matrix)localObject).reset();
       }
-      DisplayMetrics localDisplayMetrics;
-      int j;
-      if ((paramInt1 % 180 == 0) && (paramInt2 > paramInt3))
-      {
-        localDisplayMetrics = getResources().getDisplayMetrics();
-        i = localDisplayMetrics.widthPixels;
-        j = localDisplayMetrics.heightPixels;
-        if (this.jdField_a_of_type_AndroidGraphicsMatrix == null) {
-          this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_a_of_type_AndroidGraphicsMatrix = a(i, j, paramInt2, paramInt3);
-          setTransform(this.jdField_a_of_type_AndroidGraphicsMatrix);
-          SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
-          return false;
-          this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-        }
-      }
-      if (i != 0)
-      {
-        setRotation(i);
-        f = a(paramInt2, paramInt3);
-        setScaleX(f);
-        setScaleY(f);
-        SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
-        return false;
-      }
-      if (paramInt2 == paramInt3)
-      {
-        localDisplayMetrics = getResources().getDisplayMetrics();
-        i = localDisplayMetrics.widthPixels;
-        j = localDisplayMetrics.heightPixels;
-        if (this.jdField_a_of_type_AndroidGraphicsMatrix == null) {
-          this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_a_of_type_AndroidGraphicsMatrix = a(i, j, paramInt2, paramInt3);
-          setTransform(this.jdField_a_of_type_AndroidGraphicsMatrix);
-          SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
-          return false;
-          this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-        }
-      }
-      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidGraphicsMatrix = a(i, j, paramInt2, paramInt3);
+      setTransform(this.jdField_a_of_type_AndroidGraphicsMatrix);
+      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return false;
     }
+    if (i != 0)
+    {
+      setRotation(i);
+      f = a(paramInt2, paramInt3);
+      setScaleX(f);
+      setScaleY(f);
+      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      return false;
+    }
+    if (paramInt2 == paramInt3)
+    {
+      localObject = getResources().getDisplayMetrics();
+      i = ((DisplayMetrics)localObject).widthPixels;
+      j = ((DisplayMetrics)localObject).heightPixels;
+      localObject = this.jdField_a_of_type_AndroidGraphicsMatrix;
+      if (localObject == null) {
+        this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+      } else {
+        ((Matrix)localObject).reset();
+      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidGraphicsMatrix = a(i, j, paramInt2, paramInt3);
+      setTransform(this.jdField_a_of_type_AndroidGraphicsMatrix);
+      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate but need scale!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      return false;
+    }
+    SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+    return false;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int k = com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.getDefaultSize(this.d, paramInt1);
-    int m = com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.getDefaultSize(this.e, paramInt2);
-    int j = m;
-    int i = k;
-    int n;
-    if (this.d > 0)
+    int i = com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.getDefaultSize(this.d, paramInt1);
+    int j = com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.getDefaultSize(this.e, paramInt2);
+    if ((this.d > 0) && (this.e > 0))
     {
-      j = m;
-      i = k;
-      if (this.e > 0)
+      int m = View.MeasureSpec.getMode(paramInt1);
+      int k = View.MeasureSpec.getSize(paramInt1);
+      int n = View.MeasureSpec.getMode(paramInt2);
+      i = View.MeasureSpec.getSize(paramInt2);
+      if ((m == 1073741824) && (n == 1073741824))
       {
-        m = View.MeasureSpec.getMode(paramInt1);
-        paramInt1 = View.MeasureSpec.getSize(paramInt1);
-        n = View.MeasureSpec.getMode(paramInt2);
-        paramInt2 = View.MeasureSpec.getSize(paramInt2);
-        if ((m != 1073741824) || (n != 1073741824)) {
-          break label239;
+        if (this.d * i < this.e * k) {
+          if (!this.g) {}
         }
-        if (this.d * paramInt2 >= this.e * paramInt1) {
-          break label153;
-        }
-        if (!this.g) {
-          break label135;
-        }
-        i = this.d * paramInt2 / this.e;
-        j = paramInt2;
-      }
-    }
-    for (;;)
-    {
-      super.setMeasuredDimension(i, j);
-      return;
-      label135:
-      j = this.e * paramInt1 / this.d;
-      i = paramInt1;
-      continue;
-      label153:
-      if ((this.d * paramInt2 > this.e * paramInt1) && (this.jdField_a_of_type_Boolean))
-      {
-        if (this.g)
+        for (paramInt1 = this.d * i / this.e;; paramInt1 = this.d * i / this.e)
         {
-          j = this.e * paramInt1 / this.d;
-          i = paramInt1;
-        }
-        else
-        {
-          i = this.d * paramInt2 / this.e;
-          j = paramInt2;
-        }
-      }
-      else if (!this.jdField_a_of_type_Boolean)
-      {
-        super.setMeasuredDimension(paramInt1, paramInt2);
-        j = paramInt2;
-        i = paramInt1;
-        continue;
-        label239:
-        if (m == 1073741824)
-        {
-          j = this.e * paramInt1 / this.d;
-          if ((n == -2147483648) && (j > paramInt2))
-          {
-            j = paramInt2;
-            i = paramInt1;
-          }
-        }
-        else
-        {
-          if (n == 1073741824)
-          {
-            k = this.d * paramInt2 / this.e;
-            j = paramInt2;
-            i = k;
-            if (m != -2147483648) {
-              continue;
-            }
-            j = paramInt2;
-            i = k;
-            if (k <= paramInt1) {
-              continue;
-            }
-            j = paramInt2;
-            i = paramInt1;
-            continue;
-          }
-          k = this.d;
-          i = this.e;
-          if ((n == -2147483648) && (i > paramInt2)) {
-            k = this.d * paramInt2 / this.e;
-          }
-          for (;;)
-          {
-            j = paramInt2;
-            i = k;
-            if (m != -2147483648) {
-              break;
-            }
-            j = paramInt2;
-            i = k;
-            if (k <= paramInt1) {
-              break;
-            }
-            j = this.e * paramInt1 / this.d;
-            i = paramInt1;
+          paramInt2 = i;
+          break label418;
+          paramInt1 = this.e * k / this.d;
+          i = k;
+          break label414;
+          if ((this.d * i <= this.e * k) || (!this.jdField_a_of_type_Boolean)) {
             break;
-            paramInt2 = i;
+          }
+          if (this.g)
+          {
+            paramInt1 = this.e * k / this.d;
+            i = k;
+            break label414;
           }
         }
-        i = paramInt1;
+        paramInt1 = k;
+        paramInt2 = i;
+        if (this.jdField_a_of_type_Boolean) {
+          break label418;
+        }
+        super.setMeasuredDimension(k, i);
+        paramInt1 = k;
+        paramInt2 = i;
+        break label418;
       }
-      else
+      if (m == 1073741824)
       {
-        j = paramInt2;
-        i = paramInt1;
+        paramInt2 = this.e * k / this.d;
+        if ((n == -2147483648) && (paramInt2 > i))
+        {
+          paramInt1 = k;
+          paramInt2 = i;
+          break label418;
+        }
+        paramInt1 = k;
+        break label418;
       }
+      if (n == 1073741824)
+      {
+        j = this.d * i / this.e;
+        paramInt1 = j;
+        paramInt2 = i;
+        if (m == -2147483648)
+        {
+          paramInt1 = j;
+          paramInt2 = i;
+          if (j > k)
+          {
+            paramInt1 = k;
+            paramInt2 = i;
+            break label418;
+          }
+        }
+      }
+      do
+      {
+        do
+        {
+          break;
+          j = this.d;
+          paramInt1 = this.e;
+          if ((n == -2147483648) && (paramInt1 > i)) {
+            j = this.d * i / this.e;
+          } else {
+            i = paramInt1;
+          }
+          paramInt1 = j;
+          paramInt2 = i;
+        } while (m != -2147483648);
+        paramInt1 = j;
+        paramInt2 = i;
+      } while (j <= k);
+      paramInt1 = this.e * k / this.d;
+      i = k;
     }
+    else
+    {
+      paramInt1 = j;
+    }
+    label414:
+    paramInt2 = paramInt1;
+    paramInt1 = i;
+    label418:
+    super.setMeasuredDimension(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView
  * JD-Core Version:    0.7.0.1
  */

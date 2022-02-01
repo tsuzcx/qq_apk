@@ -25,15 +25,17 @@ public final class oidb_cmd0xd68$ForwardOfflineFileReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58, 66, 72 }, new String[] { "uint32_src_svcid", "bytes_src_parent_folder", "bytes_src_uuid", "bytes_file_md5", "uint64_dst_uin", "uint64_file_size", "str_file_name", "cid", "uint32_client_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), Long.valueOf(0L), "", "", Integer.valueOf(0) }, ForwardOfflineFileReqBody.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58, 66, 72 }, new String[] { "uint32_src_svcid", "bytes_src_parent_folder", "bytes_src_uuid", "bytes_file_md5", "uint64_dst_uin", "uint64_file_size", "str_file_name", "cid", "uint32_client_type" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localLong, localLong, "", "", localInteger }, ForwardOfflineFileReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xd68.oidb_cmd0xd68.ForwardOfflineFileReqBody
  * JD-Core Version:    0.7.0.1
  */

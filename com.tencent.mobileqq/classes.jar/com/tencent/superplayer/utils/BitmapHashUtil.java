@@ -9,12 +9,15 @@ public class BitmapHashUtil
   private static double[][] coefficient(int paramInt)
   {
     double[][] arrayOfDouble = (double[][])Array.newInstance(Double.TYPE, new int[] { paramInt, paramInt });
-    double d1 = Math.sqrt(1.0D / paramInt);
-    double d2 = Math.sqrt(2.0D / paramInt);
+    double d1 = paramInt;
+    Double.isNaN(d1);
+    double d3 = Math.sqrt(1.0D / d1);
+    Double.isNaN(d1);
+    double d2 = Math.sqrt(2.0D / d1);
     int i = 0;
     while (i < paramInt)
     {
-      arrayOfDouble[0][i] = d1;
+      arrayOfDouble[0][i] = d3;
       i += 1;
     }
     i = 1;
@@ -23,7 +26,13 @@ public class BitmapHashUtil
       int j = 0;
       while (j < paramInt)
       {
-        arrayOfDouble[i][j] = (Math.cos(i * 3.141592653589793D * (j + 0.5D) / paramInt) * d2);
+        double[] arrayOfDouble1 = arrayOfDouble[i];
+        d3 = i;
+        Double.isNaN(d3);
+        double d4 = j;
+        Double.isNaN(d4);
+        Double.isNaN(d1);
+        arrayOfDouble1[j] = (Math.cos(d3 * 3.141592653589793D * (d4 + 0.5D) / d1) * d2);
         j += 1;
       }
       i += 1;
@@ -38,23 +47,26 @@ public class BitmapHashUtil
   
   private static long computeHash(double[] paramArrayOfDouble)
   {
-    double d = 0.0D;
-    int j = paramArrayOfDouble.length;
+    int k = paramArrayOfDouble.length;
+    int j = 0;
+    double d1 = 0.0D;
     int i = 0;
-    while (i < j)
+    while (i < k)
     {
-      d += paramArrayOfDouble[i];
+      d1 += paramArrayOfDouble[i];
       i += 1;
     }
-    d /= paramArrayOfDouble.length;
+    double d2 = paramArrayOfDouble.length;
+    Double.isNaN(d2);
+    d1 /= d2;
     long l1 = 1L;
-    j = paramArrayOfDouble.length;
     long l2 = 0L;
-    i = 0;
-    while (i < j)
+    k = paramArrayOfDouble.length;
+    i = j;
+    while (i < k)
     {
       long l3 = l2;
-      if (paramArrayOfDouble[i] > d) {
+      if (paramArrayOfDouble[i] > d1) {
         l3 = l2 | l1;
       }
       l1 <<= 1;
@@ -66,14 +78,13 @@ public class BitmapHashUtil
   
   private static int[] createGrayImage(Bitmap paramBitmap, int paramInt)
   {
-    int i = 0;
     int[] arrayOfInt = new int[paramInt * paramInt];
     paramBitmap.getPixels(arrayOfInt, 0, paramInt, 0, 0, paramInt, paramInt);
     paramBitmap.recycle();
-    paramInt = i;
+    paramInt = 0;
     while (paramInt < arrayOfInt.length)
     {
-      i = computeGray(arrayOfInt[paramInt]);
+      int i = computeGray(arrayOfInt[paramInt]);
       arrayOfInt[paramInt] = Color.rgb(i, i, i);
       paramInt += 1;
     }
@@ -121,8 +132,8 @@ public class BitmapHashUtil
   {
     paramLong1 ^= paramLong2;
     paramLong1 -= (paramLong1 >> 1 & 0x55555555);
-    paramLong1 = (paramLong1 >> 2 & 0x33333333) + (paramLong1 & 0x33333333);
-    return (int)((paramLong1 + (paramLong1 >> 4) & 0xF0F0F0F) * 72340172838076673L >> 56);
+    paramLong1 = (paramLong1 & 0x33333333) + (paramLong1 >> 2 & 0x33333333);
+    return (int)((0xF0F0F0F & paramLong1 + (paramLong1 >> 4)) * 72340172838076673L >> 56);
   }
   
   private static double[][] matrixMultiply(double[][] paramArrayOfDouble1, double[][] paramArrayOfDouble2, int paramInt)
@@ -168,7 +179,7 @@ public class BitmapHashUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.utils.BitmapHashUtil
  * JD-Core Version:    0.7.0.1
  */

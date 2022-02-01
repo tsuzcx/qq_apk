@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.XEditTextEx;
 
 public class TroopEggLottieAnimHelper
@@ -18,20 +18,21 @@ public class TroopEggLottieAnimHelper
   
   private void a()
   {
-    if (this.a == null) {}
-    String str;
-    do
-    {
+    Object localObject = this.a;
+    if (localObject == null) {
       return;
-      str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("chat_inputBarContent");
-    } while ((str == null) || (str.isEmpty()));
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(str);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSystemService("input_method");
-    if (localInputMethodManager != null) {
-      localInputMethodManager.showSoftInput(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, 1);
     }
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.post(new TroopEggLottieAnimHelper.1(this, str));
+    localObject = ((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("chat_inputBarContent");
+    if ((localObject != null) && (!((String)localObject).isEmpty()))
+    {
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText((CharSequence)localObject);
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
+      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("input_method");
+      if (localInputMethodManager != null) {
+        localInputMethodManager.showSoftInput(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, 1);
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.post(new TroopEggLottieAnimHelper.1(this, (String)localObject));
+    }
   }
   
   public String getTag()
@@ -41,14 +42,12 @@ public class TroopEggLottieAnimHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 7 };
+    return new int[] { 8 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 8) {
       return;
     }
     a();
@@ -56,7 +55,7 @@ public class TroopEggLottieAnimHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopEggLottieAnimHelper
  * JD-Core Version:    0.7.0.1
  */

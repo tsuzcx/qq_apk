@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SvcResponseGetMsgV2
   extends JceStruct
@@ -103,22 +104,25 @@ public final class SvcResponseGetMsgV2
     paramJceOutputStream.write(this.shSumMsg, 5);
     paramJceOutputStream.write(this.vMsgInfos, 6);
     paramJceOutputStream.write(this.vAccostMsg, 7);
-    if (this.vCookies != null) {
-      paramJceOutputStream.write(this.vCookies, 8);
+    Object localObject = this.vCookies;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 8);
     }
     paramJceOutputStream.write(this.iAccostTotalUnread, 9);
-    if (this.vSyncCookie != null) {
-      paramJceOutputStream.write(this.vSyncCookie, 10);
+    localObject = this.vSyncCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
     paramJceOutputStream.write(this.cSyncFlag, 11);
-    if (this.vUinPairMsg != null) {
-      paramJceOutputStream.write(this.vUinPairMsg, 12);
+    localObject = this.vUinPairMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MessageSvcPack.SvcResponseGetMsgV2
  * JD-Core Version:    0.7.0.1
  */

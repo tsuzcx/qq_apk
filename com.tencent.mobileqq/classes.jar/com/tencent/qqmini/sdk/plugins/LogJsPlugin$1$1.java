@@ -16,13 +16,17 @@ class LogJsPlugin$1$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StorageUtil.getPreference().edit().putBoolean(LogJsPlugin.access$100(this.this$1.this$0).getMiniAppInfo().appId + "_debug", this.this$1.val$enableDebug).commit();
+    paramDialogInterface = StorageUtil.getPreference().edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LogJsPlugin.access$100(this.this$1.this$0).getMiniAppInfo().appId);
+    localStringBuilder.append("_debug");
+    paramDialogInterface.putBoolean(localStringBuilder.toString(), this.this$1.val$enableDebug).commit();
     ProcessUtil.exitProcess(LogJsPlugin.access$200(this.this$1.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.LogJsPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

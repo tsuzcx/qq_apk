@@ -10,20 +10,25 @@ class SlideTabWidget$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      SlideTabWidget.a(this.a, 0.0F);
-      SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return;
+        }
+        SlideTabWidget.a(this.a, 1.0F);
+        paramMessage = this.a;
+        SlideTabWidget.a(paramMessage, SlideTabWidget.a(paramMessage));
+        return;
+      }
       if (SlideTabWidget.a(this.a) < 1.0F)
       {
-        SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
+        paramMessage = this.a;
+        d = SlideTabWidget.a(paramMessage);
+        Double.isNaN(d);
+        SlideTabWidget.a(paramMessage, (float)(d + 0.1D));
         if (SlideTabWidget.a(this.a) >= 1.0F) {
           SlideTabWidget.a(this.a, false);
         }
@@ -34,13 +39,18 @@ class SlideTabWidget$1
       sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(2), 10L);
       return;
     }
-    SlideTabWidget.a(this.a, 1.0F);
-    SlideTabWidget.a(this.a, SlideTabWidget.a(this.a));
+    SlideTabWidget.a(this.a, 0.0F);
+    paramMessage = this.a;
+    double d = SlideTabWidget.a(paramMessage);
+    Double.isNaN(d);
+    SlideTabWidget.a(paramMessage, (float)(d + 0.1D));
+    this.a.invalidate();
+    sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideTabWidget.1
  * JD-Core Version:    0.7.0.1
  */

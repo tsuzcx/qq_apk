@@ -10,8 +10,9 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.core.SystemEmotionPanelManager;
 import com.tencent.mobileqq.emoticonview.api.IPanelDependListener;
+import com.tencent.mobileqq.emoticonview.api.IPanelPopupApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class EmoticonLinearLayout
   private EmoticonLinearLayout.CheckForLongPress mPendingCheckForLongPress;
   View mPointView;
   EmoticonLinearLayout.DataObserver observer = new EmoticonLinearLayout.1(this);
+  private IPanelDependListener panelDependListener;
   public int panelViewType = 6;
   List<RelativeLayout> viewCache = new ArrayList();
   
@@ -36,10 +38,11 @@ public class EmoticonLinearLayout
   {
     super(paramContext, paramAttributeSet);
     this.context = paramContext;
-    this.emoticonTextColor = super.getResources().getColor(2131167232);
+    this.emoticonTextColor = super.getResources().getColor(2131167263);
     setOrientation(1);
     super.setClickable(true);
     super.setLongClickable(true);
+    this.panelDependListener = ((IPanelPopupApi)QRoute.api(IPanelPopupApi.class)).createPanelDependListener();
   }
   
   private View findPointChild(float paramFloat1, float paramFloat2)
@@ -108,8 +111,9 @@ public class EmoticonLinearLayout
   
   public void hidePopupWindow()
   {
-    if (SystemEmotionPanelManager.a().a() != null) {
-      SystemEmotionPanelManager.a().a().hidePopupWindow(getContext(), this.callback);
+    IPanelDependListener localIPanelDependListener = this.panelDependListener;
+    if (localIPanelDependListener != null) {
+      localIPanelDependListener.hidePopupWindow(getContext(), this.callback);
     }
   }
   
@@ -120,22 +124,77 @@ public class EmoticonLinearLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return true;
+          }
+          setPressed(false);
+          paramMotionEvent = this.mPendingCheckForLongPress;
+          if (paramMotionEvent != null) {
+            removeCallbacks(paramMotionEvent);
+          }
+          removeCallbacks(this.mDelete);
+          hidePopupWindow();
+          this.mPointView = null;
+          return true;
+        }
+        if ((this.mHasPerformedLongPress) && ((!getChildRect(this.mPointView, tmp)) || (!tmp.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))))
+        {
+          this.mPointView = findPointChild(paramMotionEvent.getX(), paramMotionEvent.getY());
+          paramMotionEvent = this.mPointView;
+          if ((paramMotionEvent != null) && (paramMotionEvent.getTag() != null))
+          {
+            paramMotionEvent = (EmoticonInfo)this.mPointView.getTag();
+            if ((paramMotionEvent != null) && (!"delete".equals(paramMotionEvent.action)) && (!"add".equals(paramMotionEvent.action)) && (!"setting".equals(paramMotionEvent.action)))
+            {
+              paramMotionEvent = this.mPointView;
+              showPopupEmo(paramMotionEvent, (EmoticonInfo)paramMotionEvent.getTag());
+              return true;
+            }
+          }
+          else
+          {
+            hidePopupWindow();
+            return true;
+          }
+        }
+        else if (!this.mHasPerformedLongPress)
+        {
+          View localView = this.mPointView;
+          if ((localView != null) && ((!getChildRect(localView, tmp)) || (!tmp.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))))
+          {
+            this.mPointView = null;
+            return true;
+          }
+        }
+      }
+      else
+      {
+        if (!this.mHasPerformedLongPress)
+        {
+          paramMotionEvent = this.mPendingCheckForLongPress;
+          if (paramMotionEvent != null) {
+            removeCallbacks(paramMotionEvent);
+          }
+        }
+        paramMotionEvent = this.mPointView;
+        if ((paramMotionEvent != null) && (!this.mHasPerformedLongPress)) {
+          performClick(paramMotionEvent);
+        }
+        hidePopupWindow();
+        this.mPointView = null;
+        super.removeCallbacks(this.mDelete);
+        return true;
+      }
     }
-    for (;;)
+    else
     {
-      return true;
-      if ((!this.mHasPerformedLongPress) && (this.mPendingCheckForLongPress != null)) {
-        removeCallbacks(this.mPendingCheckForLongPress);
-      }
-      if ((this.mPointView != null) && (!this.mHasPerformedLongPress)) {
-        performClick(this.mPointView);
-      }
-      hidePopupWindow();
-      this.mPointView = null;
-      super.removeCallbacks(this.mDelete);
-      continue;
       this.mHasPerformedLongPress = false;
       this.mPointView = findPointChild(paramMotionEvent.getX(), paramMotionEvent.getY());
       if (this.mPointView != null)
@@ -146,40 +205,12 @@ public class EmoticonLinearLayout
         this.mPendingCheckForLongPress.rememberWindowAttachCount();
         postDelayed(this.mPendingCheckForLongPress, ViewConfiguration.getLongPressTimeout());
         paramMotionEvent = (EmoticonInfo)this.mPointView.getTag();
-        if ((paramMotionEvent != null) && (this.callback != null) && ("delete".equals(paramMotionEvent.action)))
-        {
+        if ((paramMotionEvent != null) && (this.callback != null) && ("delete".equals(paramMotionEvent.action))) {
           this.callback.delete();
-          continue;
-          setPressed(false);
-          if (this.mPendingCheckForLongPress != null) {
-            removeCallbacks(this.mPendingCheckForLongPress);
-          }
-          removeCallbacks(this.mDelete);
-          hidePopupWindow();
-          this.mPointView = null;
-          continue;
-          if ((this.mHasPerformedLongPress) && ((!getChildRect(this.mPointView, tmp)) || (!tmp.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))))
-          {
-            this.mPointView = findPointChild(paramMotionEvent.getX(), paramMotionEvent.getY());
-            if ((this.mPointView != null) && (this.mPointView.getTag() != null))
-            {
-              paramMotionEvent = (EmoticonInfo)this.mPointView.getTag();
-              if ((paramMotionEvent != null) && (!"delete".equals(paramMotionEvent.action)) && (!"add".equals(paramMotionEvent.action)) && (!"setting".equals(paramMotionEvent.action))) {
-                showPopupEmo(this.mPointView, (EmoticonInfo)this.mPointView.getTag());
-              }
-            }
-            else
-            {
-              hidePopupWindow();
-            }
-          }
-          else if ((!this.mHasPerformedLongPress) && (this.mPointView != null) && ((!getChildRect(this.mPointView, tmp)) || (!tmp.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))))
-          {
-            this.mPointView = null;
-          }
         }
       }
     }
+    return true;
   }
   
   public void setAdapter(EmoticonLinearLayout.EmoticonAdapter paramEmoticonAdapter)
@@ -200,14 +231,15 @@ public class EmoticonLinearLayout
   
   void showPopupEmo(View paramView, EmoticonInfo paramEmoticonInfo)
   {
-    if (SystemEmotionPanelManager.a().a() != null) {
-      SystemEmotionPanelManager.a().a().showPopupEmo(paramView, paramEmoticonInfo, tmp, getContext(), this.callback);
+    IPanelDependListener localIPanelDependListener = this.panelDependListener;
+    if (localIPanelDependListener != null) {
+      localIPanelDependListener.showPopupEmo(paramView, paramEmoticonInfo, tmp, getContext(), this.callback);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonLinearLayout
  * JD-Core Version:    0.7.0.1
  */

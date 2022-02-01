@@ -20,12 +20,12 @@ import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.haoliyou.IATHandler;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.ProcessUtil;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -65,239 +65,250 @@ public class ThirdAppReportImpl
       return;
     }
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    String str3 = BaseApplicationImpl.processName;
-    String str4 = paramIntent.getAction();
-    String str1 = paramString2;
+    String str4 = BaseApplicationImpl.processName;
+    String str5 = paramIntent.getAction();
+    String str3 = "";
+    String str1;
     if (paramString2 == null) {
       str1 = "";
+    } else {
+      str1 = paramString2;
     }
-    String str2 = paramString3;
+    String str2;
     if (paramString3 == null) {
       str2 = "";
+    } else {
+      str2 = paramString3;
     }
     paramString2 = paramIntent.getType();
-    boolean bool1 = false;
-    if (("android.intent.action.VIEW".equals(str4)) && ("application/vnd.android.package-archive".equalsIgnoreCase(paramString2)))
+    boolean bool1;
+    boolean bool2;
+    Object localObject1;
+    if (("android.intent.action.VIEW".equals(str5)) && ("application/vnd.android.package-archive".equalsIgnoreCase(paramString2)))
     {
       paramIntent = paramIntent.getData();
-      paramString2 = FileProvider7Helper.getRealPathFromContentURI(localBaseApplication, paramIntent);
-      bool1 = new File(paramString2).exists();
-      if (QLog.isDevelopLevel()) {
-        QLog.d("ThirdAppReport", 4, "install data-uri " + paramIntent.toString() + " real filePath = " + paramString2 + "isFileExists = " + bool1);
-      }
-      if (!bool1) {
-        break label826;
-      }
-      paramIntent = localBaseApplication.getPackageManager().getPackageArchiveInfo(paramString2, 0);
-      if (paramIntent != null) {
-        paramIntent = paramIntent.packageName;
-      }
-    }
-    for (bool1 = true;; bool1 = false)
-    {
-      paramString3 = "";
-      boolean bool2 = true;
-      Object localObject2 = "";
-      Object localObject1 = paramIntent;
-      paramIntent = paramString2;
-      paramString2 = (String)localObject2;
-      for (;;)
+      str3 = FileProvider7Helper.getRealPathFromContentURI(localBaseApplication, paramIntent);
+      bool1 = new File(str3).exists();
+      if (QLog.isDevelopLevel())
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("ThirdAppReport", 4, String.format("params:sProcessName = %s,sComponentName = %s,dPkgName = %s,dAction = %s,dComponentName = %s,dScheme = %s,isInstall = %b,sInstallFilePath = = %s,fromType = %d,isValid = %b,sOriginalUrl = %s,sCurrentUrl = %s", new Object[] { str3, paramString1, localObject1, str4, paramString3, paramString2, Boolean.valueOf(bool2), paramIntent, Integer.valueOf(paramInt), Boolean.valueOf(bool1), str1, str2 }));
-        }
-        if ((!bool1) || (TextUtils.isEmpty((CharSequence)localObject1)) || (localBaseApplication.getPackageName().equalsIgnoreCase((String)localObject1))) {
-          break;
-        }
-        localObject2 = new HashMap();
-        ((HashMap)localObject2).put("sComponentName", paramString1);
-        ((HashMap)localObject2).put("sProcessName", str3);
-        ((HashMap)localObject2).put("sFrom", String.valueOf(paramInt));
-        ((HashMap)localObject2).put("dPkgName", localObject1);
-        if (bool2)
-        {
-          ((HashMap)localObject2).put("installFilePath", paramIntent);
-          label382:
-          ((HashMap)localObject2).put("sOriginalUrl", str1);
-          ((HashMap)localObject2).put("sCurrentUrl", str2);
-          if (!bool2) {
-            break label800;
-          }
-        }
-        label654:
-        label800:
-        for (paramIntent = "ThirdAppInstall";; paramIntent = "ThirdAppOpen")
-        {
-          paramString1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-          if (QLog.isColorLevel()) {
-            QLog.d("ThirdAppReport", 2, "report real... ");
-          }
-          StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramIntent, true, 0L, 0L, (HashMap)localObject2, null);
-          return;
+        paramString2 = new StringBuilder();
+        paramString2.append("install data-uri ");
+        paramString2.append(paramIntent.toString());
+        paramString2.append(" real filePath = ");
+        paramString2.append(str3);
+        paramString2.append("isFileExists = ");
+        paramString2.append(bool1);
+        QLog.d("ThirdAppReport", 4, paramString2.toString());
+      }
+      if (bool1)
+      {
+        paramIntent = localBaseApplication.getPackageManager().getPackageArchiveInfo(str3, 0);
+        if (paramIntent != null) {
+          paramIntent = paramIntent.packageName;
+        } else {
           paramIntent = "";
-          break;
-          localObject1 = paramIntent.getPackage();
-          if (paramIntent.getComponent() != null)
-          {
-            paramString2 = paramIntent.getComponent().getClassName();
-            label479:
-            paramString3 = paramIntent.getDataString();
-            paramIntent = localBaseApplication.getPackageManager().queryIntentActivities(paramIntent, 65536);
-            QLog.d("ThirdAppReport", 4, "dPkgName = " + (String)localObject1 + " dInfoList = " + paramIntent);
-            if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-              break label654;
-            }
-            if ((paramIntent == null) || (paramIntent.size() <= 0)) {
-              break label807;
-            }
-            localObject1 = (ResolveInfo)paramIntent.get(0);
-            paramIntent = ((ResolveInfo)localObject1).activityInfo;
-            if (paramIntent == null) {
-              break label618;
-            }
-            paramString2 = paramIntent.name;
-            paramIntent = paramIntent.packageName;
+        }
+        bool1 = true;
+        paramString2 = paramIntent;
+      }
+      else
+      {
+        paramString2 = "";
+        bool1 = false;
+      }
+      bool2 = bool1;
+      bool1 = true;
+      paramIntent = "";
+      localObject1 = paramIntent;
+      paramString3 = paramString2;
+    }
+    else
+    {
+      paramString3 = paramIntent.getPackage();
+      if (paramIntent.getComponent() != null) {
+        paramString2 = paramIntent.getComponent().getClassName();
+      } else {
+        paramString2 = "";
+      }
+      localObject1 = paramIntent.getDataString();
+      paramIntent = localBaseApplication.getPackageManager().queryIntentActivities(paramIntent, 65536);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("dPkgName = ");
+      ((StringBuilder)localObject2).append(paramString3);
+      ((StringBuilder)localObject2).append(" dInfoList = ");
+      ((StringBuilder)localObject2).append(paramIntent);
+      QLog.d("ThirdAppReport", 4, ((StringBuilder)localObject2).toString());
+      if (TextUtils.isEmpty(paramString3))
+      {
+        if ((paramIntent != null) && (paramIntent.size() > 0))
+        {
+          paramIntent = (ResolveInfo)paramIntent.get(0);
+          paramString3 = paramIntent.activityInfo;
+          if (paramString3 != null) {
+            paramIntent = paramString3.name;
           }
-          for (;;)
+          for (paramString2 = paramString3.packageName;; paramString2 = paramString3)
           {
-            bool1 = true;
-            localObject1 = paramIntent;
-            paramIntent = "";
-            bool2 = false;
-            localObject2 = paramString2;
-            paramString2 = paramString3;
-            paramString3 = (String)localObject2;
             break;
-            paramString2 = "";
-            break label479;
-            label618:
-            if (((ResolveInfo)localObject1).serviceInfo != null)
+            if (paramIntent.serviceInfo != null)
             {
-              paramIntent = ((ResolveInfo)localObject1).serviceInfo;
-              paramString2 = paramIntent.name;
-              paramIntent = paramIntent.packageName;
-            }
-            else
-            {
-              paramIntent = ((ResolveInfo)localObject1).resolvePackageName;
-            }
-          }
-          if ((paramIntent == null) || (paramIntent.size() <= 0)) {
-            break label807;
-          }
-          localObject2 = paramIntent.iterator();
-          do
-          {
-            if (!((Iterator)localObject2).hasNext()) {
+              paramString2 = paramIntent.serviceInfo;
+              paramIntent = paramString2.name;
+              paramString2 = paramString2.packageName;
               break;
             }
-            paramIntent = (ResolveInfo)((Iterator)localObject2).next();
-          } while (!((String)localObject1).equalsIgnoreCase(paramIntent.resolvePackageName));
-          localObject2 = paramIntent.activityInfo;
-          if (localObject2 != null) {
-            paramString2 = ((ActivityInfo)localObject2).name;
+            paramString3 = paramIntent.resolvePackageName;
+            paramIntent = paramString2;
           }
-          for (;;)
-          {
-            bool1 = true;
-            paramIntent = "";
-            bool2 = false;
-            localObject2 = paramString2;
-            paramString2 = paramString3;
-            paramString3 = (String)localObject2;
+        }
+      }
+      else {
+        for (;;)
+        {
+          bool1 = false;
+          bool2 = true;
+          paramString3 = paramString2;
+          break label556;
+          if ((paramIntent == null) || (paramIntent.size() <= 0)) {
             break;
-            if (paramIntent.serviceInfo != null) {
-              paramString2 = paramIntent.serviceInfo.name;
+          }
+          paramIntent = paramIntent.iterator();
+          do
+          {
+            if (!paramIntent.hasNext()) {
+              break;
+            }
+            localObject2 = (ResolveInfo)paramIntent.next();
+          } while (!paramString3.equalsIgnoreCase(((ResolveInfo)localObject2).resolvePackageName));
+          paramIntent = ((ResolveInfo)localObject2).activityInfo;
+          if (paramIntent != null)
+          {
+            paramIntent = paramIntent.name;
+            paramString2 = paramString3;
+          }
+          else
+          {
+            paramIntent = paramString2;
+            paramString2 = paramString3;
+            if (((ResolveInfo)localObject2).serviceInfo != null)
+            {
+              paramIntent = ((ResolveInfo)localObject2).serviceInfo.name;
+              paramString2 = paramString3;
             }
           }
-          ((HashMap)localObject2).put("dActionName", str4);
-          ((HashMap)localObject2).put("dCompomentName", paramString3);
-          ((HashMap)localObject2).put("dSchema", paramString2);
-          break label382;
         }
-        label807:
-        paramIntent = "";
-        bool2 = false;
-        localObject2 = paramString2;
-        paramString2 = paramString3;
-        paramString3 = (String)localObject2;
       }
-      label826:
-      paramIntent = "";
+      bool1 = false;
+      bool2 = false;
+      paramIntent = paramString2;
+    }
+    label556:
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ThirdAppReport", 4, String.format("params:sProcessName = %s,sComponentName = %s,dPkgName = %s,dAction = %s,dComponentName = %s,dScheme = %s,isInstall = %b,sInstallFilePath = = %s,fromType = %d,isValid = %b,sOriginalUrl = %s,sCurrentUrl = %s", new Object[] { str4, paramString1, paramString3, str5, paramIntent, localObject1, Boolean.valueOf(bool1), str3, Integer.valueOf(paramInt), Boolean.valueOf(bool2), str1, str2 }));
+    }
+    if ((bool2) && (!TextUtils.isEmpty(paramString3)))
+    {
+      if (localBaseApplication.getPackageName().equalsIgnoreCase(paramString3)) {
+        return;
+      }
+      paramString2 = new HashMap();
+      paramString2.put("sComponentName", paramString1);
+      paramString2.put("sProcessName", str4);
+      paramString2.put("sFrom", String.valueOf(paramInt));
+      paramString2.put("dPkgName", paramString3);
+      if (bool1)
+      {
+        paramString2.put("installFilePath", str3);
+      }
+      else
+      {
+        paramString2.put("dActionName", str5);
+        paramString2.put("dCompomentName", paramIntent);
+        paramString2.put("dSchema", localObject1);
+      }
+      paramString2.put("sOriginalUrl", str1);
+      paramString2.put("sCurrentUrl", str2);
+      if (bool1) {
+        paramIntent = "ThirdAppInstall";
+      } else {
+        paramIntent = "ThirdAppOpen";
+      }
+      paramString1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      if (QLog.isColorLevel()) {
+        QLog.d("ThirdAppReport", 2, "report real... ");
+      }
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramIntent, true, 0L, 0L, paramString2, null);
     }
   }
   
   public void report(Context paramContext, Intent paramIntent, int paramInt)
   {
-    if ((paramContext == null) || (paramIntent == null)) {}
-    for (;;)
+    if (paramContext != null)
     {
-      return;
+      if (paramIntent == null) {
+        return;
+      }
+      int i = 0;
       try
       {
         if (Build.VERSION.SDK_INT >= 21) {
           a();
         }
-        Object localObject1 = paramIntent.getComponent();
-        if (localObject1 != null)
-        {
-          localObject1 = ((ComponentName)localObject1).getPackageName();
-          if (paramContext.getPackageName().equalsIgnoreCase((String)localObject1))
-          {
-            i = 0;
-            if (i == 0) {
-              continue;
-            }
-            if ((paramContext instanceof BaseActivity))
-            {
-              localObject1 = ((BaseActivity)paramContext).getCIOPageName();
-              if (!(paramContext instanceof IBrowserThirdAppReport)) {
-                break label175;
-              }
-              localObject2 = (IBrowserThirdAppReport)paramContext;
-              paramContext = ((IBrowserThirdAppReport)localObject2).getOriginalUrl();
-              localObject2 = ((IBrowserThirdAppReport)localObject2).getCurrentUrl();
-              ThreadManager.excute(new ThirdAppReportImpl.1(this, paramIntent, (String)localObject1, paramInt, paramContext, (String)localObject2), 64, null, true);
-            }
-          }
-        }
       }
       catch (Throwable localThrowable)
       {
+        QLog.e("ThirdAppReport", 1, localThrowable, new Object[0]);
+      }
+      Object localObject1 = paramIntent.getComponent();
+      if (localObject1 != null)
+      {
+        localObject1 = ((ComponentName)localObject1).getPackageName();
+        if (paramContext.getPackageName().equalsIgnoreCase((String)localObject1)) {}
+      }
+      else
+      {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        if ((paramContext instanceof BaseActivity)) {
+          localObject1 = ((BaseActivity)paramContext).getCIOPageName();
+        }
         for (;;)
         {
-          int i;
-          Object localObject2;
-          QLog.e("ThirdAppReport", 1, localThrowable, new Object[0]);
-          continue;
-          String str;
-          if ((paramContext instanceof PluginProxyActivity))
-          {
-            str = ((PluginProxyActivity)paramContext).getPluginActivity();
-          }
-          else
-          {
-            str = paramContext.getClass().getName();
-            continue;
-            label175:
-            localObject2 = null;
-            paramContext = null;
-            continue;
-            i = 1;
+          break;
+          if ((paramContext instanceof PluginProxyActivity)) {
+            localObject1 = ((PluginProxyActivity)paramContext).getPluginActivity();
+          } else {
+            localObject1 = paramContext.getClass().getName();
           }
         }
+        Object localObject2;
+        if ((paramContext instanceof IBrowserThirdAppReport))
+        {
+          localObject2 = (IBrowserThirdAppReport)paramContext;
+          paramContext = ((IBrowserThirdAppReport)localObject2).getOriginalUrl();
+          localObject2 = ((IBrowserThirdAppReport)localObject2).getCurrentUrl();
+        }
+        else
+        {
+          paramContext = null;
+          localObject2 = paramContext;
+        }
+        ThreadManager.excute(new ThirdAppReportImpl.1(this, paramIntent, (String)localObject1, paramInt, paramContext, (String)localObject2), 64, null, true);
       }
     }
   }
   
   public void startActivityForResult(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    int i = 0;
     if (paramInt >= 0) {
-      i = 0 + paramInt;
+      i = paramInt + 0;
+    } else {
+      i = 0;
     }
     int j = i + 1 - 1;
-    i = j;
+    int i = j;
     if (paramBundle != null) {
       i = j | 0x1;
     }
@@ -326,8 +337,12 @@ public class ThirdAppReportImpl
     if (paramIntent != null) {
       i = j + 1;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ThirdAppReport", 4, i + "");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i);
+      localStringBuilder.append("");
+      QLog.i("ThirdAppReport", 4, localStringBuilder.toString());
     }
     if (paramIntent == null)
     {
@@ -339,7 +354,7 @@ public class ThirdAppReportImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.ThirdAppReportImpl
  * JD-Core Version:    0.7.0.1
  */

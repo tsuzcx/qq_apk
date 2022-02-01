@@ -9,10 +9,11 @@ import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.RouterHandler;
+import com.tencent.mobileqq.filemanager.api.IFMDataCacheApi;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.app.IQQFavProxy;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.qroute.QRoute;
 import cooperation.troop.TroopFileProxyActivity;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,82 +31,67 @@ class QFileSendBarManager$5$1
     int i = QFileSendBarManager.a(this.a.this$0);
     if (i == 5)
     {
-      TroopFileProxyActivity.a.addAll(FMDataCache.a());
+      TroopFileProxyActivity.a.addAll(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles());
       return null;
     }
-    label115:
     Object localObject2;
     if (paramVarArgs.equals(AppConstants.DATALINE_PC_UIN))
     {
       localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(FMDataCache.a());
+      ((ArrayList)localObject1).addAll(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles());
       paramVarArgs = (DataLineHandler)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       paramVarArgs.a((ArrayList)localObject1);
-      localObject1 = FMDataCache.b().iterator();
-      i = 0;
-      if (((Iterator)localObject1).hasNext())
+      localObject1 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getRecentFiles().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
-        if (((FileManagerEntity)localObject2).nFileType == 13)
-        {
-          int j = i;
-          if (paramVarArgs.a((FileManagerEntity)localObject2) == 0L) {
-            j = i | 0x1;
-          }
-          i = j;
+        if (((FileManagerEntity)localObject2).nFileType == 13) {
+          paramVarArgs.a((FileManagerEntity)localObject2);
+        } else if ((((FileManagerEntity)localObject2).getCloudType() == 2) && (((FileManagerEntity)localObject2).WeiYunFileId != null)) {
+          paramVarArgs.a((FileManagerEntity)localObject2);
+        } else {
+          paramVarArgs.a().a((FileManagerEntity)localObject2);
         }
       }
+      if (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getFavFiles().size() > 0)
+      {
+        this.a.this$0.a.getFileManagerEngine().a().sendFavFiles(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getFavFiles(), AppConstants.DATALINE_PC_UIN, 6000, null);
+        return null;
+      }
     }
-    for (;;)
+    else
     {
-      break label115;
-      if ((((FileManagerEntity)localObject2).getCloudType() == 2) && (((FileManagerEntity)localObject2).WeiYunFileId != null))
+      if (i == 6002)
       {
-        paramVarArgs.a((FileManagerEntity)localObject2);
-      }
-      else if (!paramVarArgs.a().a((FileManagerEntity)localObject2))
-      {
-        i |= 0x4;
-        continue;
-        if (FMDataCache.e().size() > 0) {
-          this.a.this$0.a.getFileManagerEngine().a().sendFavFiles(FMDataCache.e(), AppConstants.DATALINE_PC_UIN, 6000, null);
-        }
-        if ((i & 0x2) == 0) {
-          break;
-        }
-        return null;
-        if (i == 6002)
-        {
-          localObject1 = new ArrayList();
-          ((ArrayList)localObject1).addAll(FMDataCache.a());
-          ((RouterHandler)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.ROUTER_HANDLER)).a((ArrayList)localObject1, null, null, Long.parseLong(paramVarArgs));
-          return null;
-        }
-        if (i == 9501)
-        {
-          localObject1 = (DeviceMsgHandle)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
-          localObject2 = new ArrayList();
-          ((ArrayList)localObject2).addAll(FMDataCache.a());
-          ((DeviceMsgHandle)localObject1).a().a(paramVarArgs, (List)localObject2);
-          return null;
-        }
-        this.a.this$0.a.getFileManagerEngine().a(false, (String)localObject1, paramVarArgs, i);
+        localObject1 = new ArrayList();
+        ((ArrayList)localObject1).addAll(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles());
+        ((RouterHandler)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.ROUTER_HANDLER)).a((ArrayList)localObject1, null, null, Long.parseLong(paramVarArgs));
         return null;
       }
+      if (i == 9501)
+      {
+        localObject1 = (DeviceMsgHandle)this.a.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+        localObject2 = new ArrayList();
+        ((ArrayList)localObject2).addAll(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getLocalFiles());
+        ((DeviceMsgHandle)localObject1).a().a(paramVarArgs, (List)localObject2);
+        return null;
+      }
+      this.a.this$0.a.getFileManagerEngine().a(false, (String)localObject1, paramVarArgs, i);
     }
+    return null;
   }
   
   protected void a(Void paramVoid)
   {
     super.onPostExecute(paramVoid);
     QFileSendBarManager.c(this.a.this$0);
-    FMDataCache.b();
+    ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).clearSelected();
     this.a.this$0.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileSendBarManager.5.1
  * JD-Core Version:    0.7.0.1
  */

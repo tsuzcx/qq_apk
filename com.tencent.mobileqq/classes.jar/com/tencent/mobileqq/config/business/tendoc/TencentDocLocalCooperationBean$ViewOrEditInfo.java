@@ -34,35 +34,27 @@ public class TencentDocLocalCooperationBean$ViewOrEditInfo
   
   public boolean a(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (paramString != null))
     {
-      bool1 = bool2;
-      if (paramString != null) {
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      int i = 0;
+      for (;;)
       {
-        if (paramString.equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) {
-          bool1 = true;
+        String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        if (i >= arrayOfString.length) {
+          break;
         }
+        if (paramString.equals(arrayOfString[i])) {
+          return true;
+        }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocLocalCooperationBean.ViewOrEditInfo
  * JD-Core Version:    0.7.0.1
  */

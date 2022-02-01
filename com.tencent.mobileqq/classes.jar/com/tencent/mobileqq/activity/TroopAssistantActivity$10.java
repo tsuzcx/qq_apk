@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.utils.RoamSettingController;
+import com.tencent.mobileqq.troop.roamsetting.RoamSettingObserver;
+import com.tencent.mobileqq.troop.roamsetting.api.IRoamSettingService;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.Iterator;
 import java.util.List;
@@ -14,109 +13,72 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
 
 class TroopAssistantActivity$10
-  extends FriendListObserver
+  extends RoamSettingObserver
 {
   TroopAssistantActivity$10(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  void a(String paramString)
+  protected void a(boolean paramBoolean, String paramString, Map<String, Integer> paramMap)
   {
-    if (!paramString.equals(this.a.app.getAccount())) {
-      return;
-    }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1).sendToTarget();
-    this.a.runOnUiThread(new TroopAssistantActivity.10.1(this));
-  }
-  
-  public void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
-    }
-  }
-  
-  public void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    if ((paramMap == null) || (paramMap.size() == 0)) {}
-    label129:
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
-      int i;
-      if (("batch_setting".equals(this.a.b)) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0) && (this.a.jdField_a_of_type_ComTencentMobileqqUtilsRoamSettingController != null))
-      {
-        i = 0;
-        for (;;)
-        {
-          if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-            break label129;
-          }
-          paramMap = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
-          if (((Boolean)this.a.jdField_a_of_type_ComTencentMobileqqUtilsRoamSettingController.c.get(paramMap)).booleanValue()) {
-            break;
-          }
-          i += 1;
-        }
-        QQToast.a(this.a.app.getApp(), 2, HardCodeUtil.a(2131715063), 0).b(this.a.getTitleBarHeight());
-        TroopAssistantActivity.a(this.a);
+      if (!paramString.startsWith("message.group.policy.")) {
         return;
       }
-      paramMap = paramMap.entrySet().iterator();
-      if (paramMap.hasNext())
+      if (paramMap != null)
       {
-        String str = (String)((Map.Entry)paramMap.next()).getKey();
-        i = this.a.app.getTroopMask(str);
-        if ((i == 1) || (i == 4)) {
-          TroopAssistantManager.a().c(str, this.a.app);
+        if (paramMap.size() == 0) {
+          return;
         }
-        for (;;)
+        int i;
+        if (("batch_setting".equals(this.a.b)) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingApiIRoamSettingService != null))
         {
-          this.a.c();
-          break;
-          if (i == 3) {
-            TroopAssistantManager.a().b(str, this.a.app);
+          i = 0;
+          while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+          {
+            paramString = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
+            if (((Boolean)this.a.jdField_a_of_type_ComTencentMobileqqTroopRoamsettingApiIRoamSettingService.getMapRequest().get(paramString)).booleanValue()) {
+              return;
+            }
+            i += 1;
           }
+          QQToast.a(this.a.app.getApp(), 2, HardCodeUtil.a(2131714986), 0).b(this.a.getTitleBarHeight());
+          TroopAssistantActivity.a(this.a);
+          return;
+        }
+        paramString = paramMap.entrySet().iterator();
+        while (paramString.hasNext())
+        {
+          paramMap = (String)((Map.Entry)paramString.next()).getKey();
+          i = this.a.app.getTroopMask(paramMap);
+          if ((i != 1) && (i != 4))
+          {
+            if (i == 3) {
+              TroopAssistantManager.a().b(paramMap, this.a.app);
+            }
+          }
+          else {
+            TroopAssistantManager.a().c(paramMap, this.a.app);
+          }
+          this.a.c();
+        }
+        if (this.a.isResume())
+        {
+          if (paramBoolean)
+          {
+            QQToast.a(this.a.app.getApp(), 2, this.a.getString(2131719976), 0).b(this.a.getTitleBarHeight());
+            return;
+          }
+          QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131719975), 0).b(this.a.getTitleBarHeight());
         }
       }
-    } while (!this.a.isResume());
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.app.getApp(), 2, this.a.getString(2131720243), 0).b(this.a.getTitleBarHeight());
-      return;
     }
-    QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131720242), 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      return;
-    }
-    if ((this.a.app.getCurrentAccountUin() != null) && (this.a.app.getCurrentAccountUin().equals(paramString)))
-    {
-      ThreadManager.post(new TroopAssistantActivity.10.2(this, paramString), 8, null, true);
-      return;
-    }
-    this.a.c();
-  }
-  
-  public void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if (paramBoolean) {
-      ThreadManager.post(new TroopAssistantActivity.10.3(this), 5, null, true);
-    }
-  }
-  
-  public void onUpdateRecentList()
-  {
-    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.10
  * JD-Core Version:    0.7.0.1
  */

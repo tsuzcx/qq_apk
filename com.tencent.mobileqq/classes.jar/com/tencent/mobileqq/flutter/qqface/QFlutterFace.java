@@ -42,8 +42,14 @@ public class QFlutterFace
   public String getLibPath()
   {
     String str = QFlutterInstaller.a("libqflutter-resource-loader.so");
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutterFace", 2, "getLibPath: " + str + ", isExist: " + FileUtil.a(str));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLibPath: ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(", isExist: ");
+      localStringBuilder.append(FileUtil.b(str));
+      QLog.d("QFlutterFace", 2, localStringBuilder.toString());
     }
     return str;
   }
@@ -55,7 +61,7 @@ public class QFlutterFace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFace
  * JD-Core Version:    0.7.0.1
  */

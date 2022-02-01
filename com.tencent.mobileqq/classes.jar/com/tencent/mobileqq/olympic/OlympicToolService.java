@@ -28,19 +28,19 @@ public class OlympicToolService
     return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
   }
   
-  public Map<String, String[]> getCompatibleCmd2HandlerMap()
+  protected Map<String, String[]> getCompatibleCmd2HandlerMap()
   {
     return Cmd2HandlerMap.a();
   }
   
-  public Class<? extends MSFServlet> getServlet()
+  protected Class<? extends MSFServlet> getServlet()
   {
     return OlympicToolServlet.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlympicToolService
  * JD-Core Version:    0.7.0.1
  */

@@ -10,19 +10,20 @@ class AlbumGalleryAdapterHolder$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt != 1) {
+        return;
+      }
+      if (AlbumGalleryAdapterHolder.a(this.a) != null) {
+        AlbumGalleryAdapterHolder.a(this.a).a(AlbumGalleryAdapterHolder.a(this.a));
+      }
     }
-    do
-    {
-      return;
-    } while (AlbumGalleryAdapterHolder.a(this.a) == null);
-    AlbumGalleryAdapterHolder.a(this.a).b(AlbumGalleryAdapterHolder.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.AlbumGalleryAdapterHolder.2
  * JD-Core Version:    0.7.0.1
  */

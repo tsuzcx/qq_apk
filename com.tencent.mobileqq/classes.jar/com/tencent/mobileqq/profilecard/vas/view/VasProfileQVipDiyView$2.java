@@ -2,7 +2,7 @@ package com.tencent.mobileqq.profilecard.vas.view;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.QVipUtils;
@@ -15,26 +15,29 @@ class VasProfileQVipDiyView$2
   
   public void onClick(View paramView)
   {
+    VasProfileQVipDiyView localVasProfileQVipDiyView;
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      VasProfileQVipDiyView.access$1200(this.this$0, VasProfileQVipDiyView.access$1100(this.this$0));
-      QVipUtils.a(VasProfileQVipDiyView.access$1300(this.this$0).a, VasProfileQVipDiyView.access$1400(this.this$0), VasProfileQVipDiyView.access$1500(this.this$0));
+    default: 
+      break;
+    case 2131374931: 
+      localVasProfileQVipDiyView = this.this$0;
+      VasProfileQVipDiyView.access$1200(localVasProfileQVipDiyView, VasProfileQVipDiyView.access$1100(localVasProfileQVipDiyView));
+      QVipUtils.a(VasProfileQVipDiyView.access$1300(this.this$0).card, VasProfileQVipDiyView.access$1400(this.this$0), VasProfileQVipDiyView.access$1500(this.this$0));
       ReportController.b(VasProfileQVipDiyView.access$1600(this.this$0), "dc00898", "", "", "qvip", "0X8009E7B", 0, 0, "", "", "", "");
-      continue;
-      VasProfileQVipDiyView.access$1200(this.this$0, VasProfileQVipDiyView.access$1100(this.this$0));
-      ProfileCardUtil.b(VasProfileQVipDiyView.access$1700(this.this$0));
+      break;
+    case 2131374930: 
+      localVasProfileQVipDiyView = this.this$0;
+      VasProfileQVipDiyView.access$1200(localVasProfileQVipDiyView, VasProfileQVipDiyView.access$1100(localVasProfileQVipDiyView));
+      ProfileCardUtil.a(VasProfileQVipDiyView.access$1700(this.this$0));
       ReportController.b(VasProfileQVipDiyView.access$1800(this.this$0), "dc00898", "", "", "qvip", "0X8009E7C", 0, 0, "", "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView.2
  * JD-Core Version:    0.7.0.1
  */

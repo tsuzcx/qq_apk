@@ -10,34 +10,36 @@ class SubAccountBindActivity$6
 {
   SubAccountBindActivity$6(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
+    if (paramBoolean)
     {
-      return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
+      if (paramString == null) {
+        return;
       }
-      while (j < SubAccountBindActivity.a(this.a).size())
+      LinearLayout localLinearLayout = SubAccountBindActivity.access$100(this.a);
+      int j = 0;
+      int i;
+      if (localLinearLayout != null) {
+        i = SubAccountBindActivity.access$100(this.a).getChildCount();
+      } else {
+        i = 0;
+      }
+      while (j < SubAccountBindActivity.access$000(this.a).size())
       {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
+        if ((i > j) && (SubAccountBindActivity.access$000(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.access$000(this.a).get(j)).getUin())))
         {
-          this.a.a(paramString, j);
+          this.a.updateFace(paramString, j);
           return;
         }
         j += 1;
-        continue;
-        i = 0;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity.6
  * JD-Core Version:    0.7.0.1
  */

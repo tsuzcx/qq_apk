@@ -11,17 +11,31 @@ class UpdateSecureFileStrategy$1
   
   public boolean accept(File paramFile)
   {
-    if ((paramFile.isDirectory()) && (paramFile.getName().startsWith("NoRename#")))
+    boolean bool3 = paramFile.isDirectory();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
     {
-      paramFile = paramFile.getName().replaceAll("NoRename#", "");
-      return (paramFile.length() == 9) && (paramFile.charAt(0) == SecurityFileFrameworkManagerImpl.generateVerifyChar(paramFile.substring(1)));
+      bool1 = bool2;
+      if (paramFile.getName().startsWith("NoRename#"))
+      {
+        paramFile = paramFile.getName().replaceAll("NoRename#", "");
+        bool1 = bool2;
+        if (paramFile.length() == 9)
+        {
+          bool1 = bool2;
+          if (paramFile.charAt(0) == SecurityFileFrameworkManagerImpl.generateVerifyChar(paramFile.substring(1))) {
+            bool1 = true;
+          }
+        }
+      }
     }
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.UpdateSecureFileStrategy.1
  * JD-Core Version:    0.7.0.1
  */

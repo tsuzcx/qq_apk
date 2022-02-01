@@ -22,13 +22,15 @@ public final class oidb_cmd0xe7e$TextCardInfo
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48 }, new String[] { "enum_indexing_type", "uint32_location", "bool_locate_forwards", "bool_insert_forwards", "bytes_card_json", "uint32_disable_scene" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(false), localByteStringMicro, Integer.valueOf(0) }, TextCardInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48 }, new String[] { "enum_indexing_type", "uint32_location", "bool_locate_forwards", "bool_insert_forwards", "bytes_card_json", "uint32_disable_scene" }, new Object[] { localInteger, localInteger, localBoolean, localBoolean, localByteStringMicro, localInteger }, TextCardInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe7e.oidb_cmd0xe7e.TextCardInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -22,21 +22,22 @@ class DatalineMessageManager$3
   
   public void run()
   {
-    boolean bool = false;
-    Object localObject1;
-    int i;
     if (this.this$0.a().a(this.a) > 0)
     {
-      localObject1 = UinTypeUtil.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
-      if (!this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.containsKey(localObject1)) {
-        break label408;
+      Object localObject1 = UinTypeUtil.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+      boolean bool2 = this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.containsKey(localObject1);
+      boolean bool1 = false;
+      int i;
+      if (bool2)
+      {
+        bool1 = ((Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.get(localObject1)).hasReply;
+        i = ((Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.get(localObject1)).counter;
+        this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.remove(localObject1);
       }
-      bool = ((Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.get(localObject1)).hasReply;
-      i = ((Message)this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.get(localObject1)).counter;
-      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.remove(localObject1);
-    }
-    for (;;)
-    {
+      else
+      {
+        i = 0;
+      }
       long l = this.this$0.a().a().size();
       if (l > 0L)
       {
@@ -62,7 +63,7 @@ class DatalineMessageManager$3
           MessageRecord.copyMessageRecordBaseField((MessageRecord)localObject2, (MessageRecord)localObject1);
           ((Message)localObject2).emoRecentMsg = null;
           ((Message)localObject2).counter = i;
-          ((Message)localObject2).hasReply = bool;
+          ((Message)localObject2).hasReply = bool1;
           this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a((Message)localObject2);
           this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.put(UinTypeUtil.a(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int), localObject2);
         }
@@ -74,15 +75,12 @@ class DatalineMessageManager$3
       if (localObject2 != null) {
         this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localObject2);
       }
-      return;
-      label408:
-      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.DatalineMessageManager.3
  * JD-Core Version:    0.7.0.1
  */

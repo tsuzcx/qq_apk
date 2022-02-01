@@ -13,18 +13,13 @@ class HomeWorkTroopSelectorFragment$HwTroopAdapter$2
   public void onClick(View paramView)
   {
     CheckBox localCheckBox = this.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localCheckBox.setChecked(bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    localCheckBox.setChecked(localCheckBox.isChecked() ^ true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment.HwTroopAdapter.2
  * JD-Core Version:    0.7.0.1
  */

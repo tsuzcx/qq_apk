@@ -102,18 +102,18 @@ public final class TaskExecutionStatics
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof TaskExecutionStatics))
       {
         paramObject = (TaskExecutionStatics)paramObject;
-        if ((!Intrinsics.areEqual(this.name, paramObject.name)) || (this.runDurationMs != paramObject.runDurationMs) || (this.totalRunDurationMs != paramObject.totalRunDurationMs) || (!Intrinsics.areEqual(this.status, paramObject.status)) || (!Intrinsics.areEqual(this.message, paramObject.message)) || (!Intrinsics.areEqual(this.subSteps, paramObject.subSteps))) {}
+        if ((Intrinsics.areEqual(this.name, paramObject.name)) && (this.runDurationMs == paramObject.runDurationMs) && (this.totalRunDurationMs == paramObject.totalRunDurationMs) && (Intrinsics.areEqual(this.status, paramObject.status)) && (Intrinsics.areEqual(this.message, paramObject.message)) && (Intrinsics.areEqual(this.subSteps, paramObject.subSteps))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -152,55 +152,62 @@ public final class TaskExecutionStatics
   
   public int hashCode()
   {
-    int m = 0;
     Object localObject = this.name;
+    int m = 0;
     int i;
-    int n;
-    int i1;
-    int j;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      long l = this.runDurationMs;
-      n = (int)(l ^ l >>> 32);
-      l = this.totalRunDurationMs;
-      i1 = (int)(l ^ l >>> 32);
-      localObject = this.status;
-      if (localObject == null) {
-        break label141;
-      }
-      j = localObject.hashCode();
-      label71:
-      localObject = this.message;
-      if (localObject == null) {
-        break label146;
-      }
-    }
-    label141:
-    label146:
-    for (int k = localObject.hashCode();; k = 0)
-    {
-      localObject = this.subSteps;
-      if (localObject != null) {
-        m = localObject.hashCode();
-      }
-      return (k + (j + ((i * 31 + n) * 31 + i1) * 31) * 31) * 31 + m;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label71;
     }
+    long l = this.runDurationMs;
+    int n = (int)(l ^ l >>> 32);
+    l = this.totalRunDurationMs;
+    int i1 = (int)(l ^ l >>> 32);
+    localObject = this.status;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.message;
+    int k;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    } else {
+      k = 0;
+    }
+    localObject = this.subSteps;
+    if (localObject != null) {
+      m = localObject.hashCode();
+    }
+    return ((((i * 31 + n) * 31 + i1) * 31 + j) * 31 + k) * 31 + m;
   }
   
   @NotNull
   public String toString()
   {
-    return "TaskExecutionStatics(name=" + this.name + ", runDurationMs=" + this.runDurationMs + ", totalRunDurationMs=" + this.totalRunDurationMs + ", status=" + this.status + ", message=" + this.message + ", subSteps=" + this.subSteps + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TaskExecutionStatics(name=");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", runDurationMs=");
+    localStringBuilder.append(this.runDurationMs);
+    localStringBuilder.append(", totalRunDurationMs=");
+    localStringBuilder.append(this.totalRunDurationMs);
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.status);
+    localStringBuilder.append(", message=");
+    localStringBuilder.append(this.message);
+    localStringBuilder.append(", subSteps=");
+    localStringBuilder.append(this.subSteps);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskExecutionStatics
  * JD-Core Version:    0.7.0.1
  */

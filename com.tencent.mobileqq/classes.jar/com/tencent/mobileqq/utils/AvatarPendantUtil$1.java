@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionHandler;
+import com.tencent.mobileqq.apollo.handler.IApolloExtensionHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -14,29 +14,34 @@ final class AvatarPendantUtil$1
   public void run()
   {
     AvatarPendantUtil.jdField_a_of_type_Boolean = false;
-    do
+    synchronized (AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList)
     {
-      synchronized (AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList)
-      {
-        String[] arrayOfString1 = new String[AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.size()];
-        AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.toArray(arrayOfString1);
-        AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.clear();
-        if (arrayOfString1.length == 0) {
-          return;
-        }
+      String[] arrayOfString = new String[AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.size()];
+      AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.toArray(arrayOfString);
+      AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.clear();
+      if (arrayOfString.length == 0) {
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("AvatarPendantUtil", 2, "bulkGetStrangerPendantId, getStrangerInfo, size=" + arrayOfString2.length);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("bulkGetStrangerPendantId, getStrangerInfo, size=");
+        ((StringBuilder)???).append(arrayOfString.length);
+        QLog.i("AvatarPendantUtil", 2, ((StringBuilder)???).toString());
       }
       ??? = (IApolloExtensionHandler)this.a.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
-    } while (??? == null);
-    ((IApolloExtensionHandler)???).a(arrayOfString2, new int[] { 40530, 27025, 27201, 27235, 27238, 27254 });
-    AvatarPendantUtil.a(System.currentTimeMillis());
+      if (??? != null)
+      {
+        ((IApolloExtensionHandler)???).a(arrayOfString, new int[] { 40530, 27025, 27201, 27235, 27238, 27254 });
+        AvatarPendantUtil.a(System.currentTimeMillis());
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AvatarPendantUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -35,54 +35,67 @@ public class QQLevelACCServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    bool = paramFromServiceMsg.isSuccess();
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "onReceive:--success=" + bool);
+    boolean bool = paramFromServiceMsg.isSuccess();
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onReceive:--success=");
+      ((StringBuilder)localObject2).append(bool);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    Bundle localBundle = new Bundle();
+    Object localObject1 = new Bundle();
+    int k = 0;
+    int m = 0;
+    int i;
     try
     {
       paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
       paramFromServiceMsg.clear();
-      byte[] arrayOfByte = new byte[paramFromServiceMsg.getInt() - 4];
-      paramFromServiceMsg.get(arrayOfByte);
-      paramFromServiceMsg = ByteBuffer.wrap(((oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom(arrayOfByte)).bytes_bodybuffer.get().toByteArray());
-      if (paramFromServiceMsg.get() != 0) {
-        break label237;
-      }
-      paramFromServiceMsg.getInt();
-      int j = paramFromServiceMsg.getShort();
-      i = 0;
-      for (;;)
+      localObject2 = new byte[paramFromServiceMsg.getInt() - 4];
+      paramFromServiceMsg.get((byte[])localObject2);
+      paramFromServiceMsg = ByteBuffer.wrap(((oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject2)).bytes_bodybuffer.get().toByteArray());
+      i = m;
+      if (paramFromServiceMsg.get() == 0)
       {
-        if (i >= j) {
-          break label237;
+        paramFromServiceMsg.getInt();
+        int n = paramFromServiceMsg.getShort();
+        int j = 0;
+        for (;;)
+        {
+          i = m;
+          if (j >= n) {
+            break label203;
+          }
+          if (paramFromServiceMsg.getShort() == 5) {
+            break;
+          }
+          i = paramFromServiceMsg.getShort();
+          paramFromServiceMsg.position(paramFromServiceMsg.position() + i);
+          j += 1;
         }
-        if (paramFromServiceMsg.getShort() == 5) {
-          break;
-        }
-        paramFromServiceMsg.position(paramFromServiceMsg.getShort() + paramFromServiceMsg.position());
-        i += 1;
+        paramFromServiceMsg.getShort();
+        i = paramFromServiceMsg.getShort();
       }
-      paramFromServiceMsg.getShort();
-      i = paramFromServiceMsg.getShort();
     }
     catch (Exception paramFromServiceMsg)
     {
-      for (;;)
-      {
-        paramFromServiceMsg.printStackTrace();
-        int i = 0;
-        bool = false;
-        continue;
-        i = 0;
-      }
+      label203:
+      paramFromServiceMsg.printStackTrace();
+      bool = false;
+      i = k;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "onReceive:--speed=" + i);
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onReceive:--speed=");
+      ((StringBuilder)localObject2).append(i);
+      QLog.d(paramFromServiceMsg, 2, ((StringBuilder)localObject2).toString());
     }
-    localBundle.putInt("key_qqlevelacc", i);
-    notifyObserver(paramIntent, 1, bool, localBundle, QQLevelACCObserver.class);
+    ((Bundle)localObject1).putInt("key_qqlevelacc", i);
+    notifyObserver(paramIntent, 1, bool, (Bundle)localObject1, QQLevelACCObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -96,7 +109,7 @@ public class QQLevelACCServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QQLevelACCServlet
  * JD-Core Version:    0.7.0.1
  */

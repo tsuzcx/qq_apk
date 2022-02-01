@@ -20,32 +20,27 @@ public class HomeFeedPresenter$OnTagListUpdateRec
   
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull TagManager.FeedTagListUpdateEvent paramFeedTagListUpdateEvent)
   {
-    Object localObject = HomeFeedPresenter.a(paramHomeFeedPresenter);
+    Object localObject1 = HomeFeedPresenter.a(paramHomeFeedPresenter);
     paramFeedTagListUpdateEvent = paramFeedTagListUpdateEvent.a;
     TagManager localTagManager = (TagManager)SuperManager.a(27);
-    localObject = ((ArrayList)localObject).iterator();
+    localObject1 = ((ArrayList)localObject1).iterator();
     int i = 0;
-    while (((Iterator)localObject).hasNext())
+    while (((Iterator)localObject1).hasNext())
     {
-      StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)((Iterator)localObject).next();
-      if ((localStoryHomeFeed instanceof VideoListHomeFeed))
+      Object localObject2 = (StoryHomeFeed)((Iterator)localObject1).next();
+      if ((localObject2 instanceof VideoListHomeFeed))
       {
-        GetFeedTagInfoListRequest.FeedTagInfoList localFeedTagInfoList = (GetFeedTagInfoListRequest.FeedTagInfoList)paramFeedTagListUpdateEvent.get(localStoryHomeFeed.a().feedId);
-        if (localFeedTagInfoList == null) {
-          break label129;
+        GetFeedTagInfoListRequest.FeedTagInfoList localFeedTagInfoList = (GetFeedTagInfoListRequest.FeedTagInfoList)paramFeedTagListUpdateEvent.get(((StoryHomeFeed)localObject2).a().feedId);
+        if (localFeedTagInfoList != null)
+        {
+          localObject2 = (VideoListHomeFeed)localObject2;
+          ((VideoListHomeFeed)localObject2).d = localTagManager.a(((VideoListHomeFeed)localObject2).a(), localFeedTagInfoList.a);
+          i = 1;
         }
-        ((VideoListHomeFeed)localStoryHomeFeed).d = localTagManager.a(((VideoListHomeFeed)localStoryHomeFeed).a(), localFeedTagInfoList.a);
-        i = 1;
       }
     }
-    label129:
-    for (;;)
-    {
-      break;
-      if (i != 0) {
-        HomeFeedPresenter.a(paramHomeFeedPresenter).f();
-      }
-      return;
+    if (i != 0) {
+      HomeFeedPresenter.a(paramHomeFeedPresenter).f();
     }
   }
   
@@ -58,7 +53,7 @@ public class HomeFeedPresenter$OnTagListUpdateRec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.OnTagListUpdateRec
  * JD-Core Version:    0.7.0.1
  */

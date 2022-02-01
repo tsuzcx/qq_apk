@@ -58,27 +58,33 @@ public class SuspendThreadManager
   
   private int a(Thread paramThread, int paramInt)
   {
-    if (!jdField_b_of_type_Boolean) {}
-    for (paramInt = resumeThreadArt(b(paramThread), paramInt);; paramInt = resumeThreadDalvik(b(paramThread)))
-    {
-      if (-1 == paramInt) {
-        QLog.i("TSManager", 1, "resumeThread Fail,thread = " + paramThread);
-      }
-      return paramInt;
+    if (!jdField_b_of_type_Boolean) {
+      paramInt = resumeThreadArt(b(paramThread), paramInt);
+    } else {
+      paramInt = resumeThreadDalvik(b(paramThread));
     }
+    if (-1 == paramInt)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resumeThread Fail,thread = ");
+      localStringBuilder.append(paramThread);
+      QLog.i("TSManager", 1, localStringBuilder.toString());
+    }
+    return paramInt;
   }
   
   public static SuspendThreadManager a()
   {
-    if (jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager == null) {
-        jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager = new SuspendThreadManager("SuspendGuardThread");
+    if (jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager == null) {
+          jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager = new SuspendThreadManager("SuspendGuardThread");
+        }
       }
-      return jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager;
   }
   
   private static Object a(Object paramObject, String paramString)
@@ -102,16 +108,20 @@ public class SuspendThreadManager
     if (paramThread != null)
     {
       paramThread = paramThread.getStackTrace();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("reason:" + paramString + "\n");
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("reason:");
+      localStringBuilder2.append(paramString);
+      localStringBuilder2.append("\n");
+      localStringBuilder1.append(localStringBuilder2.toString());
       int i = 0;
       while ((i < paramThread.length) && (i < 30))
       {
-        localStringBuilder.append(paramThread[i].toString());
-        localStringBuilder.append("\n");
+        localStringBuilder1.append(paramThread[i].toString());
+        localStringBuilder1.append("\n");
         i += 1;
       }
-      return localStringBuilder.toString();
+      return localStringBuilder1.toString();
     }
     return "";
   }
@@ -121,49 +131,56 @@ public class SuspendThreadManager
     jdField_d_of_type_Boolean = false;
     synchronized (jdField_d_of_type_JavaUtilArrayList)
     {
-      if (jdField_d_of_type_JavaUtilArrayList.isEmpty()) {
-        break label71;
-      }
-      Iterator localIterator = jdField_d_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (a((Thread)localIterator.next(), paramInt) == 2) {
-          jdField_d_of_type_Boolean = true;
+      if (!jdField_d_of_type_JavaUtilArrayList.isEmpty())
+      {
+        Iterator localIterator = jdField_d_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext()) {
+          if (a((Thread)localIterator.next(), paramInt) == 2) {
+            jdField_d_of_type_Boolean = true;
+          }
         }
+        jdField_d_of_type_JavaUtilArrayList.clear();
       }
+      return;
     }
-    jdField_d_of_type_JavaUtilArrayList.clear();
-    label71:
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void a(Thread paramThread)
   {
-    int j;
+    int i;
     if (!jdField_b_of_type_Boolean)
     {
-      j = suspendThreadArt(b(paramThread), jdField_b_of_type_Int);
+      int j = suspendThreadArt(b(paramThread), jdField_b_of_type_Int);
       i = j;
-      if (j != 0) {
+      if (j != 0)
+      {
         jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(j), paramThread);
+        i = j;
       }
     }
-    for (int i = j;; i = suspendThreadDalvik(b(paramThread)))
+    else
     {
-      if (-1 == i) {
-        QLog.i("TSManager", 1, "suspendThread Fail,thread = " + paramThread);
-      }
-      return;
+      i = suspendThreadDalvik(b(paramThread));
+    }
+    if (-1 == i)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("suspendThread Fail,thread = ");
+      localStringBuilder.append(paramThread);
+      QLog.i("TSManager", 1, localStringBuilder.toString());
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    int j;
-    int i;
-    Object localObject3;
     try
     {
       if (!jdField_d_of_type_JavaUtilArrayList.isEmpty()) {
-        break label205;
+        break label264;
       }
       Thread[] arrayOfThread = a();
       j = arrayOfThread.length;
@@ -171,9 +188,23 @@ public class SuspendThreadManager
     }
     catch (Throwable localThrowable)
     {
-      a(jdField_b_of_type_Int);
+      for (;;)
+      {
+        int j;
+        int i;
+        Object localObject3;
+        label264:
+        continue;
+        label270:
+        if (i < j)
+        {
+          localObject3 = localThrowable[i];
+          if (localObject3 != null) {}
+        }
+      }
     }
-    if ((!jdField_b_of_type_JavaUtilArrayList.contains(localObject3.getName())) && (!jdField_c_of_type_JavaUtilArrayList.contains(localObject3)) && (!localObject3.getName().contains("Binder")) && (!localObject3.getName().contains("RenderThread")) && (!localObject3.getName().contains("Automator")) && (!localObject3.getName().contains("thread_sp")) && (!localObject3.getName().contains("logWriteThread")) && (!localObject3.getName().contains("Bugly"))) {
+    if ((!jdField_b_of_type_JavaUtilArrayList.contains(localObject3.getName())) && (!jdField_c_of_type_JavaUtilArrayList.contains(localObject3)) && (!localObject3.getName().contains("Binder")) && (!localObject3.getName().contains("RenderThread")) && (!localObject3.getName().contains("Automator")) && (!localObject3.getName().contains("thread_sp")) && (!localObject3.getName().contains("logWriteThread")) && (!localObject3.getName().contains("Bugly")))
+    {
       if ((localObject3.isAlive()) && (paramBoolean) && (jdField_a_of_type_JavaUtilArrayList.contains(localObject3.getName())))
       {
         a().a(localObject3);
@@ -182,12 +213,6 @@ public class SuspendThreadManager
           jdField_d_of_type_JavaUtilArrayList.add(localObject3);
         }
       }
-    }
-    label278:
-    for (;;)
-    {
-      label205:
-      return;
       if ((!paramBoolean) && (localObject3.isAlive()))
       {
         a().a(localObject3);
@@ -196,18 +221,10 @@ public class SuspendThreadManager
           jdField_d_of_type_JavaUtilArrayList.add(localObject3);
         }
       }
-      for (;;)
-      {
-        if (i >= j) {
-          break label278;
-        }
-        localObject3 = localObject2[i];
-        if (localObject3 != null) {
-          break;
-        }
-        i += 1;
-      }
     }
+    i += 1;
+    break label270;
+    a(jdField_b_of_type_Int);
   }
   
   private static Thread[] a()
@@ -228,13 +245,13 @@ public class SuspendThreadManager
   
   private static int b(Thread paramThread)
   {
-    int i;
     try
     {
-      localObject = (Integer)jdField_b_of_type_JavaUtilMap.get(paramThread);
+      Object localObject = (Integer)jdField_b_of_type_JavaUtilMap.get(paramThread);
       if ((localObject != null) && (((Integer)localObject).intValue() != 0)) {
         return ((Integer)localObject).intValue();
       }
+      int i;
       if (!jdField_b_of_type_Boolean)
       {
         localObject = (Long)a(paramThread, "nativePeer");
@@ -245,26 +262,27 @@ public class SuspendThreadManager
           return i;
         }
       }
+      else if (jdField_b_of_type_Boolean)
+      {
+        localObject = a(paramThread, "vmThread");
+        if (localObject != null)
+        {
+          localObject = (Integer)b(localObject, "vmData");
+          if (localObject != null)
+          {
+            i = ((Integer)localObject).intValue();
+            jdField_b_of_type_JavaUtilMap.put(paramThread, Integer.valueOf(i));
+            return i;
+          }
+        }
+        return 0;
+      }
     }
     catch (Throwable paramThread)
     {
       QLog.e("TSManager", 1, "getNativeThreadAddr", paramThread);
     }
-    while (!jdField_b_of_type_Boolean) {
-      return -1;
-    }
-    Object localObject = a(paramThread, "vmThread");
-    if (localObject != null)
-    {
-      localObject = (Integer)b(localObject, "vmData");
-      if (localObject != null)
-      {
-        i = ((Integer)localObject).intValue();
-        jdField_b_of_type_JavaUtilMap.put(paramThread, Integer.valueOf(i));
-        return i;
-      }
-    }
-    return 0;
+    return -1;
   }
   
   private static Object b(Object paramObject, String paramString)
@@ -294,21 +312,20 @@ public class SuspendThreadManager
     if (localObject != null)
     {
       localObject = (Integer)b(localObject, "vmData");
-      if (localObject == null) {
-        break label86;
+      int i;
+      if (localObject != null) {
+        i = ((Integer)localObject).intValue();
+      } else {
+        i = 0;
       }
-    }
-    label86:
-    for (int i = ((Integer)localObject).intValue();; i = 0)
-    {
       if (i != 0)
       {
         QLog.i("TSManager", 1, "Dalvik Mode");
         return true;
       }
-      QLog.i("TSManager", 1, "default ART Mode");
-      return false;
     }
+    QLog.i("TSManager", 1, "default ART Mode");
+    return false;
   }
   
   private native int getContentThreadIdArt(int paramInt);
@@ -325,10 +342,14 @@ public class SuspendThreadManager
   
   public void a()
   {
-    if ((!this.jdField_c_of_type_Boolean) && (jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$GuardThreadHandler != null) && (jdField_a_of_type_AndroidOsHandlerThread != null))
+    if (!this.jdField_c_of_type_Boolean)
     {
-      jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$GuardThreadHandler.obtainMessage(1).sendToTarget();
-      this.jdField_c_of_type_Boolean = true;
+      SuspendThreadManager.GuardThreadHandler localGuardThreadHandler = jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$GuardThreadHandler;
+      if ((localGuardThreadHandler != null) && (jdField_a_of_type_AndroidOsHandlerThread != null))
+      {
+        localGuardThreadHandler.obtainMessage(1).sendToTarget();
+        this.jdField_c_of_type_Boolean = true;
+      }
     }
   }
   
@@ -343,7 +364,11 @@ public class SuspendThreadManager
     int i = ((SharedPreferences)localObject).getInt("suspendCrashCount", 0);
     localObject = ((SharedPreferences)localObject).edit();
     i += 1;
-    QLog.d("TSManager", 1, "SuspendThreadManager has crashed " + i + " times");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SuspendThreadManager has crashed ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" times");
+    QLog.d("TSManager", 1, localStringBuilder.toString());
     ((SharedPreferences.Editor)localObject).putInt("suspendCrashCount", i);
     ((SharedPreferences.Editor)localObject).commit();
   }
@@ -374,7 +399,7 @@ public class SuspendThreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.suspendthread.SuspendThreadManager
  * JD-Core Version:    0.7.0.1
  */

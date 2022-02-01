@@ -8,10 +8,11 @@ import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 class DiscussionInfoCardActivity$3
   implements CompoundButton.OnCheckedChangeListener
@@ -22,66 +23,60 @@ class DiscussionInfoCardActivity$3
   {
     if (AppSetting.d)
     {
-      localObject = this.a.getString(2131691869);
-      DiscussionInfoCardActivity.a(this.a).setContentDescription((CharSequence)localObject);
+      localObject1 = this.a.getString(2131691791);
+      DiscussionInfoCardActivity.a(this.a).setContentDescription((CharSequence)localObject1);
     }
-    Object localObject = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a), this.a.app.getCurrentAccountUin());
-    label187:
-    QQAppInterface localQQAppInterface;
-    if (localObject != null)
+    Object localObject1 = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a), this.a.app.getCurrentAccountUin());
+    if (localObject1 != null)
     {
-      int i = ((DiscussionMemberInfo)localObject).flag;
-      if (!paramBoolean) {
-        break label355;
+      int i = ((DiscussionMemberInfo)localObject1).flag;
+      if (paramBoolean) {
+        ((DiscussionMemberInfo)localObject1).flag = ((byte)(((DiscussionMemberInfo)localObject1).flag | 0x1));
+      } else {
+        ((DiscussionMemberInfo)localObject1).flag = ((byte)(((DiscussionMemberInfo)localObject1).flag & 0xFFFFFFFE));
       }
-      ((DiscussionMemberInfo)localObject).flag = ((byte)(((DiscussionMemberInfo)localObject).flag | 0x1));
-      if (i != ((DiscussionMemberInfo)localObject).flag)
+      if (i != ((DiscussionMemberInfo)localObject1).flag)
       {
-        byte b = (byte)(((DiscussionMemberInfo)localObject).flag & 0x1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("DiscussionInfoCardActivity", 4, "DiscussionMemberInfo.flag changed save now:" + ((DiscussionMemberInfo)localObject).flag + " flag:" + b);
+        byte b = (byte)(((DiscussionMemberInfo)localObject1).flag & 0x1);
+        if (QLog.isDevelopLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("DiscussionMemberInfo.flag changed save now:");
+          ((StringBuilder)localObject2).append(((DiscussionMemberInfo)localObject1).flag);
+          ((StringBuilder)localObject2).append(" flag:");
+          ((StringBuilder)localObject2).append(b);
+          QLog.d("DiscussionInfoCardActivity", 4, ((StringBuilder)localObject2).toString());
         }
-        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b, ((DiscussionMemberInfo)localObject).flag);
-        if (!paramBoolean) {
-          break label372;
+        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b, ((DiscussionMemberInfo)localObject1).flag);
+        if (paramBoolean) {
+          localObject1 = "msg_open";
+        } else {
+          localObject1 = "msg_close";
         }
-        localObject = "msg_open";
-        TroopReportor.a("Grp_Dis_set", "Dis_info", (String)localObject, 0, 0, new String[] { DiscussionInfoCardActivity.a(this.a), TroopReportor.a(this.a.app, this.a.a) });
+        TroopReportor.a("Grp_Dis_set", "Dis_info", (String)localObject1, 0, 0, new String[] { DiscussionInfoCardActivity.a(this.a), DiscussionInfoCardActivity.a(this.a.app, this.a.a) });
       }
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label379;
+      Object localObject2 = this.a.app;
+      if (paramBoolean) {
+        localObject1 = "1";
+      } else {
+        localObject1 = "0";
       }
-      localObject = "1";
-      label249:
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X800629B", "0X800629B", 0, 0, (String)localObject, "", "", "");
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label386;
+      ReportController.b((AppRuntime)localObject2, "CliOper", "", "", "0X800629B", "0X800629B", 0, 0, (String)localObject1, "", "", "");
+      localObject2 = this.a.app;
+      if (paramBoolean) {
+        localObject1 = "1";
+      } else {
+        localObject1 = "0";
       }
-    }
-    label386:
-    for (localObject = "1";; localObject = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8006679", "0X8006679", 0, 0, (String)localObject, "", "", "");
+      ReportController.b((AppRuntime)localObject2, "CliOper", "", "", "0X8006679", "0X8006679", 0, 0, (String)localObject1, "", "", "");
       ReportController.b(this.a.app, "CliOper", "", "", "0X8006668", "0X8006668", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      label355:
-      ((DiscussionMemberInfo)localObject).flag = ((byte)(((DiscussionMemberInfo)localObject).flag & 0xFFFFFFFE));
-      break;
-      label372:
-      localObject = "msg_close";
-      break label187;
-      label379:
-      localObject = "0";
-      break label249;
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.3
  * JD-Core Version:    0.7.0.1
  */

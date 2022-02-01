@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.qg.sdk.QGRenderer;
 import com.tencent.qg.sdk.log.GLog;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,70 +34,95 @@ public class MediaPlayerPool
   
   public static MediaPlayerPool getInstance(AudioPlayer paramAudioPlayer)
   {
-    sInstance.mAudioPlayer = paramAudioPlayer;
-    return sInstance;
+    MediaPlayerPool localMediaPlayerPool = sInstance;
+    localMediaPlayerPool.mAudioPlayer = paramAudioPlayer;
+    return localMediaPlayerPool;
   }
   
   @Nullable
   public MediaPlayer applyMediaPlayer(String paramString, MediaPlayer.OnPreparedListener paramOnPreparedListener, MediaPlayer.OnErrorListener paramOnErrorListener, MediaPlayer.OnCompletionListener paramOnCompletionListener)
   {
-    MediaPlayer localMediaPlayer;
-    if (!this.mIdleList.isEmpty()) {
-      localMediaPlayer = (MediaPlayer)this.mIdleList.remove(0);
-    }
-    for (;;)
+    Object localObject2;
+    if (!this.mIdleList.isEmpty())
     {
-      Object localObject2 = "";
-      Object localObject1 = localObject2;
-      if (!TextUtils.isEmpty(QGRenderer.dataBundle))
-      {
-        localObject1 = localObject2;
-        if (isFileExists(QGRenderer.dataBundle + "/" + paramString)) {
-          localObject1 = QGRenderer.dataBundle + "/" + paramString;
-        }
+      localObject2 = (MediaPlayer)this.mIdleList.remove(0);
+    }
+    else
+    {
+      if (this.mRunningList.size() >= 10) {
+        break label398;
       }
-      localObject2 = localObject1;
-      if (!TextUtils.isEmpty(QGRenderer.extResPath))
+      localObject2 = new ReportMediaPlayer();
+    }
+    if (!TextUtils.isEmpty(QGRenderer.dataBundle))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(QGRenderer.dataBundle);
+      ((StringBuilder)localObject1).append("/");
+      ((StringBuilder)localObject1).append(paramString);
+      if (isFileExists(((StringBuilder)localObject1).toString()))
       {
-        localObject2 = localObject1;
-        if (isFileExists(QGRenderer.extResPath + "/" + paramString)) {
-          localObject2 = QGRenderer.extResPath + "/" + paramString;
-        }
-      }
-      try
-      {
-        localMediaPlayer.reset();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          localMediaPlayer.setDataSource((String)localObject2);
-        }
-        for (;;)
-        {
-          localMediaPlayer.setOnPreparedListener(paramOnPreparedListener);
-          localMediaPlayer.setOnErrorListener(paramOnErrorListener);
-          localMediaPlayer.setOnCompletionListener(paramOnCompletionListener);
-          localMediaPlayer.prepare();
-          this.mRunningList.add(localMediaPlayer);
-          return localMediaPlayer;
-          if (this.mRunningList.size() < 10)
-          {
-            localMediaPlayer = new MediaPlayer();
-            break;
-          }
-          Log.e("MediaPlayerPool", "all player are playing.");
-          return null;
-          paramString = QGRenderer.assetManager.openFd("www/" + paramString);
-          localMediaPlayer.setDataSource(paramString.getFileDescriptor(), paramString.getStartOffset(), paramString.getLength());
-        }
-        return null;
-      }
-      catch (Exception paramString)
-      {
-        Log.e("MediaPlayerPool", paramString.toString());
-        if (localMediaPlayer != null) {
-          localMediaPlayer.release();
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(QGRenderer.dataBundle);
+        ((StringBuilder)localObject1).append("/");
+        ((StringBuilder)localObject1).append(paramString);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        break label154;
       }
     }
+    Object localObject1 = "";
+    label154:
+    Object localObject3 = localObject1;
+    if (!TextUtils.isEmpty(QGRenderer.extResPath))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(QGRenderer.extResPath);
+      localStringBuilder.append("/");
+      localStringBuilder.append(paramString);
+      localObject3 = localObject1;
+      if (isFileExists(localStringBuilder.toString()))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(QGRenderer.extResPath);
+        ((StringBuilder)localObject1).append("/");
+        ((StringBuilder)localObject1).append(paramString);
+        localObject3 = ((StringBuilder)localObject1).toString();
+      }
+    }
+    try
+    {
+      ((MediaPlayer)localObject2).reset();
+      if (!TextUtils.isEmpty((CharSequence)localObject3))
+      {
+        ((MediaPlayer)localObject2).setDataSource((String)localObject3);
+      }
+      else
+      {
+        localObject1 = QGRenderer.assetManager;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("www/");
+        ((StringBuilder)localObject3).append(paramString);
+        paramString = ((AssetManager)localObject1).openFd(((StringBuilder)localObject3).toString());
+        ((MediaPlayer)localObject2).setDataSource(paramString.getFileDescriptor(), paramString.getStartOffset(), paramString.getLength());
+      }
+      ((MediaPlayer)localObject2).setOnPreparedListener(paramOnPreparedListener);
+      ((MediaPlayer)localObject2).setOnErrorListener(paramOnErrorListener);
+      ((MediaPlayer)localObject2).setOnCompletionListener(paramOnCompletionListener);
+      ((MediaPlayer)localObject2).prepare();
+      this.mRunningList.add(localObject2);
+      return localObject2;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MediaPlayerPool", paramString.toString());
+      if (localObject2 != null) {
+        ((MediaPlayer)localObject2).release();
+      }
+      return null;
+    }
+    label398:
+    Log.e("MediaPlayerPool", "all player are playing.");
+    return null;
   }
   
   public boolean isFileExists(String paramString)
@@ -123,10 +149,7 @@ public class MediaPlayerPool
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        GLog.e("MediaPlayerPool", "recycleMediaPlayer, Exception:%s", localException);
-      }
+      GLog.e("MediaPlayerPool", "recycleMediaPlayer, Exception:%s", localException);
     }
     this.mRunningList.remove(paramMediaPlayer);
     this.mIdleList.add(paramMediaPlayer);
@@ -134,71 +157,54 @@ public class MediaPlayerPool
   
   public void releaseAll()
   {
+    Object localObject = this.mRunningList.toArray();
+    int k = localObject.length;
     int j = 0;
-    Object[] arrayOfObject = this.mRunningList.toArray();
-    int k = arrayOfObject.length;
     int i = 0;
-    for (;;)
+    while (i < k)
     {
-      if (i < k)
+      MediaPlayer localMediaPlayer1 = (MediaPlayer)localObject[i];
+      try
       {
-        MediaPlayer localMediaPlayer1 = (MediaPlayer)arrayOfObject[i];
-        try
-        {
-          localMediaPlayer1.stop();
-          localMediaPlayer1.release();
-          i += 1;
-        }
-        catch (IllegalStateException localIllegalStateException1)
-        {
-          for (;;)
-          {
-            GLog.e("MediaPlayerPool", "releaseAll, runningList IllegalStateException:%s", localIllegalStateException1);
-          }
-        }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            GLog.e("MediaPlayerPool", "releaseAll, runningList Exception:%s", localException1);
-          }
-        }
+        localMediaPlayer1.stop();
+        localMediaPlayer1.release();
       }
+      catch (Exception localException1)
+      {
+        GLog.e("MediaPlayerPool", "releaseAll, runningList Exception:%s", localException1);
+      }
+      catch (IllegalStateException localIllegalStateException1)
+      {
+        GLog.e("MediaPlayerPool", "releaseAll, runningList IllegalStateException:%s", localIllegalStateException1);
+      }
+      i += 1;
     }
     this.mRunningList.clear();
-    arrayOfObject = this.mIdleList.toArray();
-    k = arrayOfObject.length;
+    localObject = this.mIdleList.toArray();
+    k = localObject.length;
     i = j;
-    for (;;)
+    while (i < k)
     {
-      if (i < k)
+      MediaPlayer localMediaPlayer2 = (MediaPlayer)localObject[i];
+      try
       {
-        MediaPlayer localMediaPlayer2 = (MediaPlayer)arrayOfObject[i];
-        try
-        {
-          localMediaPlayer2.release();
-          i += 1;
-        }
-        catch (IllegalStateException localIllegalStateException2)
-        {
-          for (;;)
-          {
-            GLog.e("MediaPlayerPool", "releaseAll, idleList IllegalStateException:%s", localIllegalStateException2);
-          }
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            GLog.e("MediaPlayerPool", "releaseAll, idleList Exception:%s", localException2);
-          }
-        }
+        localMediaPlayer2.release();
       }
+      catch (Exception localException2)
+      {
+        GLog.e("MediaPlayerPool", "releaseAll, idleList Exception:%s", localException2);
+      }
+      catch (IllegalStateException localIllegalStateException2)
+      {
+        GLog.e("MediaPlayerPool", "releaseAll, idleList IllegalStateException:%s", localIllegalStateException2);
+      }
+      i += 1;
     }
     this.mIdleList.clear();
-    if (this.mAudioPlayer != null)
+    localObject = this.mAudioPlayer;
+    if (localObject != null)
     {
-      this.mAudioPlayer.releaseThread();
+      ((AudioPlayer)localObject).releaseThread();
       this.mAudioPlayer = null;
     }
   }
@@ -235,7 +241,7 @@ public class MediaPlayerPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.audio.MediaPlayerPool
  * JD-Core Version:    0.7.0.1
  */

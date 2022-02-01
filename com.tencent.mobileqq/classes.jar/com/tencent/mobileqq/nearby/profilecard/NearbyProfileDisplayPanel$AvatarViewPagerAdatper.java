@@ -21,7 +21,8 @@ public class NearbyProfileDisplayPanel$AvatarViewPagerAdatper
   
   public View a(int paramInt, GridView paramGridView)
   {
-    return NearbyProfileDisplayPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel, NearbyProfileDisplayPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel), paramInt);
+    paramGridView = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel;
+    return NearbyProfileDisplayPanel.a(paramGridView, NearbyProfileDisplayPanel.a(paramGridView), paramInt);
   }
   
   public View a(boolean paramBoolean, int paramInt)
@@ -50,7 +51,7 @@ public class NearbyProfileDisplayPanel$AvatarViewPagerAdatper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.AvatarViewPagerAdatper
  * JD-Core Version:    0.7.0.1
  */

@@ -216,19 +216,17 @@ public final class OriginContentInfo
   
   public boolean equals(@Nullable Object paramObject)
   {
+    boolean bool = paramObject instanceof OriginContentInfo;
     Object localObject = null;
-    if (!(paramObject instanceof OriginContentInfo)) {
+    if (!bool) {
       paramObject = null;
     }
-    for (;;)
-    {
-      OriginContentInfo localOriginContentInfo = (OriginContentInfo)paramObject;
-      paramObject = localObject;
-      if (localOriginContentInfo != null) {
-        paramObject = localOriginContentInfo.originContentKey;
-      }
-      return Intrinsics.areEqual(paramObject, this.originContentKey);
+    OriginContentInfo localOriginContentInfo = (OriginContentInfo)paramObject;
+    paramObject = localObject;
+    if (localOriginContentInfo != null) {
+      paramObject = localOriginContentInfo.originContentKey;
     }
+    return Intrinsics.areEqual(paramObject, this.originContentKey);
   }
   
   @NotNull
@@ -449,7 +447,45 @@ public final class OriginContentInfo
   @NotNull
   public String toString()
   {
-    return "OriginContentInfo(type=" + this.type + ", imageUrlArray=" + this.imageUrlArray + ", duration=" + this.duration + ", durationString=" + this.durationString + ", repostLevel=" + this.repostLevel + ", userName=" + this.userName + ", userId=" + this.userId + ", jumpUrl=" + this.jumpUrl + ", avatarUrl=" + this.avatarUrl + ", defaultImageUrl=" + this.defaultImageUrl + ", title=" + this.title + ", defaultTitle=" + this.defaultTitle + ", summary=" + this.summary + ", defaultSummary=" + this.defaultSummary + ", contentInfo=" + this.contentInfo + ", originContentKey=" + this.originContentKey + ", repostContentKey=" + this.repostContentKey + ", originJumpUrl=" + this.originJumpUrl + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OriginContentInfo(type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", imageUrlArray=");
+    localStringBuilder.append(this.imageUrlArray);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.duration);
+    localStringBuilder.append(", durationString=");
+    localStringBuilder.append(this.durationString);
+    localStringBuilder.append(", repostLevel=");
+    localStringBuilder.append(this.repostLevel);
+    localStringBuilder.append(", userName=");
+    localStringBuilder.append(this.userName);
+    localStringBuilder.append(", userId=");
+    localStringBuilder.append(this.userId);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append(", avatarUrl=");
+    localStringBuilder.append(this.avatarUrl);
+    localStringBuilder.append(", defaultImageUrl=");
+    localStringBuilder.append(this.defaultImageUrl);
+    localStringBuilder.append(", title=");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append(", defaultTitle=");
+    localStringBuilder.append(this.defaultTitle);
+    localStringBuilder.append(", summary=");
+    localStringBuilder.append(this.summary);
+    localStringBuilder.append(", defaultSummary=");
+    localStringBuilder.append(this.defaultSummary);
+    localStringBuilder.append(", contentInfo=");
+    localStringBuilder.append(this.contentInfo);
+    localStringBuilder.append(", originContentKey=");
+    localStringBuilder.append(this.originContentKey);
+    localStringBuilder.append(", repostContentKey=");
+    localStringBuilder.append(this.repostContentKey);
+    localStringBuilder.append(", originJumpUrl=");
+    localStringBuilder.append(this.originJumpUrl);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
@@ -477,7 +513,7 @@ public final class OriginContentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.OriginContentInfo
  * JD-Core Version:    0.7.0.1
  */

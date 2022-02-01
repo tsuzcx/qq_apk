@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.albumlogicImp.AlbumListCustomizationQzone;
+import com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationQzone;
+import com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationQzone;
 import com.tencent.mobileqq.pluginsdk.PluginActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.AlbumUtil;
@@ -56,18 +59,18 @@ public class ZebraPluginProxy
   
   public static int getConstInt(String paramString)
   {
-    if (!sConstIntMap.containsKey(paramString)) {
-      throw new RuntimeException("key not found");
+    if (sConstIntMap.containsKey(paramString)) {
+      return ((Integer)sConstIntMap.get(paramString)).intValue();
     }
-    return ((Integer)sConstIntMap.get(paramString)).intValue();
+    throw new RuntimeException("key not found");
   }
   
   public static String getConstString(String paramString)
   {
-    if (!sConstStringMap.containsKey(paramString)) {
-      throw new RuntimeException("key not found");
+    if (sConstStringMap.containsKey(paramString)) {
+      return (String)sConstStringMap.get(paramString);
     }
-    return (String)sConstStringMap.get(paramString);
+    throw new RuntimeException("key not found");
   }
   
   public static String md5_toMD5(String paramString)
@@ -101,6 +104,9 @@ public class ZebraPluginProxy
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("enter_from", 7);
+      localIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationQzone.a);
+      localIntent.putExtra("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationQzone.a);
+      localIntent.putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationQzone.a);
       localIntent.setClassName("com.tencent.mobileqq", NewPhotoListActivity.class.getName());
       if (paramBundle != null) {
         localIntent.putExtras(paramBundle);
@@ -122,7 +128,7 @@ public class ZebraPluginProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.zebra.ZebraPluginProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -35,14 +35,15 @@ public final class VideoSummary
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.num, 0);
-    if (this.cover != null) {
-      paramJceOutputStream.write(this.cover, 1);
+    Map localMap = this.cover;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.VideoSummary
  * JD-Core Version:    0.7.0.1
  */

@@ -28,10 +28,11 @@ public class AbsVideoPlayerSuperImpl
   
   public int captureImageInTime(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
       try
       {
-        paramInt1 = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.captureImageInTime(-1L, paramInt1, paramInt2);
+        paramInt1 = localISuperPlayer.captureImageInTime(-1L, paramInt1, paramInt2);
         return paramInt1;
       }
       catch (IllegalAccessException localIllegalAccessException)
@@ -49,59 +50,71 @@ public class AbsVideoPlayerSuperImpl
       QLog.e("MiniAppVideoPlayer_SuperPlayer", 1, "createVideoView: superPlayer sdk is ready");
       this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView = SuperPlayerFactory.createPlayerVideoView(BaseApplicationImpl.getContext());
       this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 102, this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView);
-      if ((paramOnVideoViewInitListener != null) && ((this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView instanceof View))) {
-        paramOnVideoViewInitListener.onVideoViewInit((View)this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView);
+      if (paramOnVideoViewInitListener != null)
+      {
+        paramContext = this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView;
+        if ((paramContext instanceof View)) {
+          paramOnVideoViewInitListener.onVideoViewInit((View)paramContext);
+        }
       }
-      return;
     }
-    QLog.e("MiniAppVideoPlayer_SuperPlayer", 1, "superPlayer sdk no ready when doing createVideoView");
-    QQVideoPlaySDKManager.a(BaseApplicationImpl.getApplication(), new AbsVideoPlayerSuperImpl.1(this, paramOnVideoViewInitListener));
+    else
+    {
+      QLog.e("MiniAppVideoPlayer_SuperPlayer", 1, "superPlayer sdk no ready when doing createVideoView");
+      QQVideoPlaySDKManager.a(BaseApplicationImpl.getApplication(), new AbsVideoPlayerSuperImpl.1(this, paramOnVideoViewInitListener));
+    }
   }
   
   public long getCurrentPostion()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getCurrentPositionMs();
     }
     return 0L;
   }
   
   public long getDuration()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getDurationMs();
     }
     return 0L;
   }
   
   public boolean getOutputMute()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isOutputMute();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.isOutputMute();
     }
     return false;
   }
   
   public int getVideoHeight()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoHeight();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getVideoHeight();
     }
     return 0;
   }
   
   public int getVideoWidth()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoWidth();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getVideoWidth();
     }
     return 0;
   }
   
   public boolean isPlaying()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.isPlaying();
     }
     return false;
   }
@@ -120,43 +133,49 @@ public class AbsVideoPlayerSuperImpl
   
   public void pause()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.pause();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.pause();
     }
   }
   
   public void release()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.release();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.release();
     }
   }
   
   public void seekTo(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.seekTo(paramInt);
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.seekTo(paramInt);
     }
   }
   
   public void setLoopback(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setLoopback(paramBoolean);
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setLoopback(paramBoolean);
     }
   }
   
   public void setOnCaptureImageListener(AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCaptureImageListener(new AbsVideoPlayerSuperImpl.7(this, paramOnCaptureImageListener));
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setOnCaptureImageListener(new AbsVideoPlayerSuperImpl.7(this, paramOnCaptureImageListener));
     }
   }
   
   public void setOnCompletionListener(AbsVideoPlayer.OnCompletionListener paramOnCompletionListener)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCompletionListener(new AbsVideoPlayerSuperImpl.3(this, paramOnCompletionListener));
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setOnCompletionListener(new AbsVideoPlayerSuperImpl.3(this, paramOnCompletionListener));
     }
   }
   
@@ -164,37 +183,42 @@ public class AbsVideoPlayerSuperImpl
   
   public void setOnErrorListener(AbsVideoPlayer.OnErrorListener paramOnErrorListener)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(new AbsVideoPlayerSuperImpl.4(this, paramOnErrorListener));
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setOnErrorListener(new AbsVideoPlayerSuperImpl.4(this, paramOnErrorListener));
     }
   }
   
   public void setOnInfoListener(AbsVideoPlayer.OnInfoListener paramOnInfoListener)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(new AbsVideoPlayerSuperImpl.5(this, paramOnInfoListener));
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setOnInfoListener(new AbsVideoPlayerSuperImpl.5(this, paramOnInfoListener));
     }
   }
   
   public void setOnSeekCompleteListener(AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnSeekCompleteListener(new AbsVideoPlayerSuperImpl.6(this, paramOnSeekCompleteListener));
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setOnSeekCompleteListener(new AbsVideoPlayerSuperImpl.6(this, paramOnSeekCompleteListener));
     }
   }
   
   public void setOnVideoPreparedListener(AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(new AbsVideoPlayerSuperImpl.2(this, paramOnVideoPreparedListener));
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setOnVideoPreparedListener(new AbsVideoPlayerSuperImpl.2(this, paramOnVideoPreparedListener));
     }
   }
   
   public boolean setOutputMute(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null)
     {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOutputMute(paramBoolean);
+      localISuperPlayer.setOutputMute(paramBoolean);
       return true;
     }
     return false;
@@ -202,38 +226,41 @@ public class AbsVideoPlayerSuperImpl
   
   public void setXYaxis(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setXYaxis(paramInt);
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setXYaxis(paramInt);
     }
   }
   
   public void start()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.start();
     }
   }
   
   public void startPlayDanmu()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {}
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
   }
   
   public void stop()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.stop();
     }
   }
   
   public void stopPlayDanmu()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {}
+    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AbsVideoPlayerSuperImpl
  * JD-Core Version:    0.7.0.1
  */

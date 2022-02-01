@@ -14,18 +14,23 @@ class DataJsPlugin$13
     try
     {
       paramBoolean = DataJsPlugin.access$500(this.this$0, paramBoolean, paramJSONObject, this.val$req, this.val$constAdType);
-      if (paramBoolean) {}
+      if (!paramBoolean) {
+        break label31;
+      }
       return;
     }
     catch (Exception paramJSONObject)
     {
-      this.val$req.fail();
+      label23:
+      label31:
+      break label23;
     }
+    this.val$req.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin.13
  * JD-Core Version:    0.7.0.1
  */

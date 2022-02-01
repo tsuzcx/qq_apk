@@ -24,19 +24,21 @@ public class i
     {
       try
       {
-        if (Build.VERSION.SDK_INT < 17) {
-          break label58;
-        }
-        String str1 = "android.view.WindowManagerGlobal";
-        a = Class.forName(str1);
         if (Build.VERSION.SDK_INT >= 17)
         {
-          b = "sDefaultWindowManager";
-          return;
-        }
-        if (Build.VERSION.SDK_INT >= 13)
-        {
-          b = "sWindowManager";
+          String str1 = "android.view.WindowManagerGlobal";
+          a = Class.forName(str1);
+          if (Build.VERSION.SDK_INT >= 17)
+          {
+            b = "sDefaultWindowManager";
+            return;
+          }
+          if (Build.VERSION.SDK_INT >= 13)
+          {
+            b = "sWindowManager";
+            return;
+          }
+          b = "mWindowManager";
           return;
         }
       }
@@ -45,9 +47,6 @@ public class i
         localThrowable.printStackTrace();
         return;
       }
-      b = "mWindowManager";
-      return;
-      label58:
       String str2 = "android.view.WindowManagerImpl";
     }
   }
@@ -59,14 +58,18 @@ public class i
       paramView = paramView.getResources().getResourceName(paramView.getId());
       return paramView;
     }
-    catch (Throwable paramView) {}
+    catch (Throwable paramView)
+    {
+      label14:
+      break label14;
+    }
     return "";
   }
   
   public static ArrayList<View> a()
   {
-    Object localObject = b();
-    ArrayList localArrayList = new ArrayList();
+    localObject = b();
+    localArrayList = new ArrayList();
     View[] arrayOfView = a((View[])localObject);
     if ((localObject != null) && (localObject.length > 0))
     {
@@ -78,37 +81,35 @@ public class i
     try
     {
       a(localArrayList, (ViewGroup)localObject);
-      label49:
-      int i;
-      if (arrayOfView != null) {
-        i = 0;
-      }
-      for (;;)
+    }
+    catch (Throwable localThrowable1)
+    {
+      try
       {
-        if (i < arrayOfView.length)
+        for (;;)
         {
-          localObject = arrayOfView[i];
-          if (localObject != null) {
-            localArrayList.add(localObject);
-          }
-        }
-        try
-        {
+          int i;
           a(localArrayList, (ViewGroup)localObject);
-          label83:
           i += 1;
-          continue;
-          return localArrayList;
         }
-        catch (Throwable localThrowable1)
-        {
-          break label83;
-        }
+        return localArrayList;
+        localThrowable1 = localThrowable1;
+      }
+      catch (Throwable localThrowable2)
+      {
+        break label86;
       }
     }
-    catch (Throwable localThrowable2)
+    if (arrayOfView != null)
     {
-      break label49;
+      i = 0;
+      if (i < arrayOfView.length)
+      {
+        localObject = arrayOfView[i];
+        if (localObject != null) {
+          localArrayList.add(localObject);
+        }
+      }
     }
   }
   
@@ -133,34 +134,38 @@ public class i
   
   private static View[] a(View[] paramArrayOfView)
   {
-    int i = 0;
     if (paramArrayOfView != null)
     {
       View[] arrayOfView = new View[paramArrayOfView.length];
+      int i = 0;
       int k;
-      for (int j = 0; i < paramArrayOfView.length; j = k)
+      for (int j = 0;; j = k)
       {
-        View localView = paramArrayOfView[i];
+        localObject = arrayOfView;
+        if (i >= paramArrayOfView.length) {
+          break;
+        }
+        localObject = paramArrayOfView[i];
         k = j;
-        if (!g(localView))
+        if (!g((View)localObject))
         {
-          arrayOfView[j] = localView;
+          arrayOfView[j] = localObject;
           k = j + 1;
         }
         i += 1;
       }
-      return arrayOfView;
     }
-    return null;
+    Object localObject = null;
+    return localObject;
   }
   
   private static View b(View[] paramArrayOfView)
   {
-    int i = 0;
     if (paramArrayOfView == null) {
       return null;
     }
     View[] arrayOfView = new View[paramArrayOfView.length];
+    int i = 0;
     int k;
     for (int j = 0; i < paramArrayOfView.length; j = k)
     {
@@ -183,7 +188,11 @@ public class i
       paramView = paramView.getContentDescription().toString();
       return paramView;
     }
-    catch (Throwable paramView) {}
+    catch (Throwable paramView)
+    {
+      label12:
+      break label12;
+    }
     return "";
   }
   
@@ -211,31 +220,46 @@ public class i
   
   private static View c(View[] paramArrayOfView)
   {
+    Object localObject1 = null;
+    long l1 = 0L;
     int i = 0;
-    Object localObject = null;
-    long l = 0L;
-    if (i < paramArrayOfView.length)
+    while (i < paramArrayOfView.length)
     {
       View localView = paramArrayOfView[i];
-      if ((localView == null) || (!localView.isShown()) || (!localView.hasWindowFocus()) || (localView.getDrawingTime() <= l)) {
-        break label69;
+      Object localObject2 = localObject1;
+      long l2 = l1;
+      if (localView != null)
+      {
+        localObject2 = localObject1;
+        l2 = l1;
+        if (localView.isShown())
+        {
+          localObject2 = localObject1;
+          l2 = l1;
+          if (localView.hasWindowFocus())
+          {
+            localObject2 = localObject1;
+            l2 = l1;
+            if (localView.getDrawingTime() > l1)
+            {
+              l2 = localView.getDrawingTime();
+              localObject2 = localView;
+            }
+          }
+        }
       }
-      l = localView.getDrawingTime();
-      localObject = localView;
-    }
-    label69:
-    for (;;)
-    {
       i += 1;
-      break;
-      return localObject;
+      localObject1 = localObject2;
+      l1 = l2;
     }
+    return localObject1;
   }
   
   public static String c(View paramView)
   {
+    boolean bool = paramView instanceof TextView;
     String str = "";
-    if ((paramView instanceof TextView)) {}
+    if (bool) {}
     try
     {
       str = ((TextView)paramView).getText().toString();
@@ -247,7 +271,6 @@ public class i
   
   public static String d(View paramView)
   {
-    int i = -1;
     if (paramView != null) {}
     for (;;)
     {
@@ -255,12 +278,13 @@ public class i
       {
         localObject = paramView.getParent();
         if (!(localObject instanceof ViewGroup)) {
-          break label121;
+          continue;
         }
         localObject = (ViewGroup)localObject;
-        if (((ViewGroup)localObject).getChildCount() < 10) {
-          i = ((ViewGroup)localObject).indexOfChild(paramView);
+        if (((ViewGroup)localObject).getChildCount() >= 10) {
+          break label128;
         }
+        i = ((ViewGroup)localObject).indexOfChild(paramView);
         paramView = new JSONObject();
         paramView.put("view_type", localObject.getClass().getName());
         paramView.put("view_tag", a((View)localObject));
@@ -272,20 +296,24 @@ public class i
       }
       catch (Throwable paramView)
       {
-        Object localObject;
-        paramView.printStackTrace();
-        return "unknown";
+        continue;
       }
-      localObject = null;
+      paramView.printStackTrace();
+      return "unknown";
+      Object localObject = null;
       continue;
-      label121:
-      paramView = "unknown";
+      label128:
+      int i = -1;
     }
   }
   
   public static String e(View paramView)
   {
-    return paramView.getWidth() + "×" + paramView.getHeight();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramView.getWidth());
+    localStringBuilder.append("×");
+    localStringBuilder.append(paramView.getHeight());
+    return localStringBuilder.toString();
   }
   
   public static String f(View paramView)
@@ -296,40 +324,51 @@ public class i
     int j = paramView.getWidth();
     int k = arrayOfInt[1];
     int m = paramView.getHeight();
-    return arrayOfInt[0] + "," + arrayOfInt[1] + "," + (i + j) + "," + (k + m);
+    paramView = new StringBuilder();
+    paramView.append(arrayOfInt[0]);
+    paramView.append(",");
+    paramView.append(arrayOfInt[1]);
+    paramView.append(",");
+    paramView.append(i + j);
+    paramView.append(",");
+    paramView.append(k + m);
+    return paramView.toString();
   }
   
   public static boolean g(View paramView)
   {
-    if (paramView == null) {}
-    do
-    {
+    boolean bool = false;
+    if (paramView == null) {
       return false;
-      paramView = paramView.getClass().getName();
-    } while ((!paramView.equals("com.android.internal.policy.impl.PhoneWindow$DecorView")) && (!paramView.equals("com.android.internal.policy.impl.MultiPhoneWindow$MultiPhoneDecorView")) && (!paramView.equals("com.android.internal.policy.PhoneWindow$DecorView")) && (!paramView.equals("com.android.internal.policy.DecorView")));
-    return true;
+    }
+    paramView = paramView.getClass().getName();
+    if ((paramView.equals("com.android.internal.policy.impl.PhoneWindow$DecorView")) || (paramView.equals("com.android.internal.policy.impl.MultiPhoneWindow$MultiPhoneDecorView")) || (paramView.equals("com.android.internal.policy.PhoneWindow$DecorView")) || (paramView.equals("com.android.internal.policy.DecorView"))) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean h(View paramView)
   {
     int[] arrayOfInt1 = new int[2];
     int[] arrayOfInt2 = new int[2];
-    if (paramView == null) {}
-    for (;;)
-    {
+    if (paramView == null) {
       return false;
-      float f = paramView.getHeight();
-      View localView = i(paramView);
-      paramView.getLocationOnScreen(arrayOfInt1);
-      if (localView == null) {
-        arrayOfInt2[1] = 0;
-      }
-      while ((arrayOfInt1[1] + f / 2.0F <= j(paramView)) && (arrayOfInt1[1] + f / 2.0F >= arrayOfInt2[1]))
-      {
-        return true;
-        localView.getLocationOnScreen(arrayOfInt2);
-      }
     }
+    float f2 = paramView.getHeight();
+    View localView = i(paramView);
+    paramView.getLocationOnScreen(arrayOfInt1);
+    if (localView == null) {
+      arrayOfInt2[1] = 0;
+    } else {
+      localView.getLocationOnScreen(arrayOfInt2);
+    }
+    float f1 = arrayOfInt1[1];
+    f2 /= 2.0F;
+    if (f1 + f2 > j(paramView)) {
+      return false;
+    }
+    return arrayOfInt1[1] + f2 >= arrayOfInt2[1];
   }
   
   private static View i(View paramView)
@@ -346,11 +385,16 @@ public class i
     }
     try
     {
-      localView = i((View)paramView.getParent());
-      return localView;
+      paramView = i((View)paramView.getParent());
+      return paramView;
     }
-    catch (Throwable paramView) {}
-    return null;
+    catch (Throwable paramView)
+    {
+      label40:
+      break label40;
+    }
+    localView = null;
+    return localView;
   }
   
   private static float j(View paramView)
@@ -366,7 +410,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.g.i
  * JD-Core Version:    0.7.0.1
  */

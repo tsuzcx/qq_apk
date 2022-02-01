@@ -24,14 +24,15 @@ public final class CommentUgcDeco
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stBubble != null) {
-      paramJceOutputStream.write(this.stBubble, 0);
+    CommentBubble localCommentBubble = this.stBubble;
+    if (localCommentBubble != null) {
+      paramJceOutputStream.write(localCommentBubble, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.CommentUgcDeco
  * JD-Core Version:    0.7.0.1
  */

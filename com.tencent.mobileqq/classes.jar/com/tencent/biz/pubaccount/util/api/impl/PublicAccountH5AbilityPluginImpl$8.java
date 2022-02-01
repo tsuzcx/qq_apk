@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
-import com.tencent.biz.pubaccount.readinjoy.video.VideoWebPreDownload.CallbackListener;
+import com.tencent.mobileqq.kandian.biz.video.api.IVideoWebPreDownload.CallbackListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PublicAccountH5AbilityPluginImpl$8
-  implements VideoWebPreDownload.CallbackListener
+  implements IVideoWebPreDownload.CallbackListener
 {
   PublicAccountH5AbilityPluginImpl$8(PublicAccountH5AbilityPluginImpl paramPublicAccountH5AbilityPluginImpl) {}
   
@@ -16,21 +16,17 @@ class PublicAccountH5AbilityPluginImpl$8
     {
       localJSONObject.put("video_vid", paramString1);
       localJSONObject.put("retCode", paramInt);
-      this.a.callJs(paramString2, new String[] { localJSONObject.toString() });
-      return;
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
+      paramString1.printStackTrace();
     }
+    this.a.callJs(paramString2, new String[] { localJSONObject.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.8
  * JD-Core Version:    0.7.0.1
  */

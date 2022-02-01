@@ -35,20 +35,21 @@ public final class c
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
-    if (this.a) {}
-    for (int i = 0;; i = 1)
-    {
-      localStringBuilder1.append(i).append(",");
-      localStringBuilder1.append(this.b).append(",");
-      localStringBuilder1.append(this.c).append(",");
-      localStringBuilder1.append(this.d).append(";");
-      return localStringBuilder1.toString();
-    }
+    localStringBuilder2.append(this.a ^ true);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder1.append(this.b);
+    localStringBuilder1.append(",");
+    localStringBuilder1.append(this.c);
+    localStringBuilder1.append(",");
+    localStringBuilder1.append(this.d);
+    localStringBuilder1.append(";");
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.c.c
  * JD-Core Version:    0.7.0.1
  */

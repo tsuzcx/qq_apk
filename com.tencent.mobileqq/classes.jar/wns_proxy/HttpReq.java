@@ -16,16 +16,6 @@ public final class HttpReq
   public String header = "";
   public int method;
   
-  static
-  {
-    if (!HttpReq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public HttpReq() {}
   
   public HttpReq(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -38,18 +28,17 @@ public final class HttpReq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -72,13 +61,28 @@ public final class HttpReq
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (HttpReq)paramObject;
-    } while ((!JceUtil.equals(this.method, paramObject.method)) || (!JceUtil.equals(this.header, paramObject.header)) || (!JceUtil.equals(this.body, paramObject.body)) || (!JceUtil.equals(this.domain, paramObject.domain)));
-    return true;
+    }
+    paramObject = (HttpReq)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.method, paramObject.method))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.header, paramObject.header))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.body, paramObject.body))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.domain, paramObject.domain)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -105,20 +109,23 @@ public final class HttpReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.method, 0);
-    if (this.header != null) {
-      paramJceOutputStream.write(this.header, 1);
+    String str = this.header;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.body != null) {
-      paramJceOutputStream.write(this.body, 2);
+    str = this.body;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.domain != null) {
-      paramJceOutputStream.write(this.domain, 3);
+    str = this.domain;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wns_proxy.HttpReq
  * JD-Core Version:    0.7.0.1
  */

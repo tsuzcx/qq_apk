@@ -62,10 +62,11 @@ public class GLES11Canvas
     this.mGL = paramGL11;
     this.mGLState = new GLES11Canvas.GLState(paramGL11);
     FloatBuffer localFloatBuffer = allocateDirectNativeOrderBuffer(BOX_COORDINATES.length * 32 / 8).asFloatBuffer();
-    localFloatBuffer.put(BOX_COORDINATES, 0, BOX_COORDINATES.length).position(0);
-    int[] arrayOfInt = new int[1];
-    mGLId.glGenBuffers(1, arrayOfInt, 0);
-    this.mBoxCoords = arrayOfInt[0];
+    Object localObject = BOX_COORDINATES;
+    localFloatBuffer.put((float[])localObject, 0, localObject.length).position(0);
+    localObject = new int[1];
+    mGLId.glGenBuffers(1, (int[])localObject, 0);
+    this.mBoxCoords = localObject[0];
     paramGL11.glBindBuffer(34962, this.mBoxCoords);
     paramGL11.glBufferData(34962, localFloatBuffer.capacity() * 4, localFloatBuffer, 35044);
     paramGL11.glVertexPointer(2, 5126, 0, 0);
@@ -96,10 +97,14 @@ public class GLES11Canvas
   {
     int i = paramBasicTexture.getTextureWidth();
     int j = paramBasicTexture.getTextureHeight();
-    paramRectF1.left /= i;
-    paramRectF1.right /= i;
-    paramRectF1.top /= j;
-    paramRectF1.bottom /= j;
+    float f1 = paramRectF1.left;
+    float f2 = i;
+    paramRectF1.left = (f1 / f2);
+    paramRectF1.right /= f2;
+    f1 = paramRectF1.top;
+    f2 = j;
+    paramRectF1.top = (f1 / f2);
+    paramRectF1.bottom /= f2;
   }
   
   private void drawBoundTexture(BasicTexture paramBasicTexture, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -108,18 +113,18 @@ public class GLES11Canvas
     {
       setTextureCoords(0.0F, 0.0F, paramBasicTexture.getSourceWidth() / paramBasicTexture.getTextureWidth(), paramBasicTexture.getSourceHeight() / paramBasicTexture.getTextureHeight());
       textureRect(paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-    do
-    {
       return;
-      paramBasicTexture = mapPoints(this.mMatrixValues, paramInt1, paramInt2 + paramInt4, paramInt1 + paramInt3, paramInt2);
-      paramInt1 = (int)(paramBasicTexture[0] + 0.5F);
-      paramInt2 = (int)(paramBasicTexture[1] + 0.5F);
-      paramInt3 = (int)(paramBasicTexture[2] + 0.5F) - paramInt1;
-      paramInt4 = (int)(paramBasicTexture[3] + 0.5F) - paramInt2;
-    } while ((paramInt3 <= 0) || (paramInt4 <= 0));
-    ((GL11Ext)this.mGL).glDrawTexiOES(paramInt1, paramInt2, 0, paramInt3, paramInt4);
-    this.mCountTextureOES += 1;
+    }
+    paramBasicTexture = mapPoints(this.mMatrixValues, paramInt1, paramInt2 + paramInt4, paramInt1 + paramInt3, paramInt2);
+    paramInt1 = (int)(paramBasicTexture[0] + 0.5F);
+    paramInt2 = (int)(paramBasicTexture[1] + 0.5F);
+    paramInt3 = (int)(paramBasicTexture[2] + 0.5F) - paramInt1;
+    paramInt4 = (int)(paramBasicTexture[3] + 0.5F) - paramInt2;
+    if ((paramInt3 > 0) && (paramInt4 > 0))
+    {
+      ((GL11Ext)this.mGL).glDrawTexiOES(paramInt1, paramInt2, 0, paramInt3, paramInt4);
+      this.mCountTextureOES += 1;
+    }
   }
   
   private void drawMixed(BasicTexture paramBasicTexture, int paramInt1, float paramFloat1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat2)
@@ -135,37 +140,42 @@ public class GLES11Canvas
       return;
     }
     GLES11Canvas.GLState localGLState = this.mGLState;
-    if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (!Utils.isOpaque(paramInt1)) || (paramFloat2 < 0.95F))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localGLState.setBlendEnabled(bool);
-      if (!bindTexture(paramBasicTexture)) {
-        break;
-      }
-      this.mGLState.setTexEnvMode(34160);
-      setMixedColor(paramInt1, paramFloat1, paramFloat2);
-      drawBoundTexture(paramBasicTexture, paramInt2, paramInt3, paramInt4, paramInt5);
-      this.mGLState.setTexEnvMode(7681);
+    boolean bool;
+    if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (!Utils.isOpaque(paramInt1)) || (paramFloat2 < 0.95F))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localGLState.setBlendEnabled(bool);
+    if (!bindTexture(paramBasicTexture)) {
       return;
     }
+    this.mGLState.setTexEnvMode(34160);
+    setMixedColor(paramInt1, paramFloat1, paramFloat2);
+    drawBoundTexture(paramBasicTexture, paramInt2, paramInt3, paramInt4, paramInt5);
+    this.mGLState.setTexEnvMode(7681);
   }
   
   private void drawTexture(BasicTexture paramBasicTexture, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
   {
-    if ((paramInt3 <= 0) || (paramInt4 <= 0)) {
-      return;
-    }
-    GLES11Canvas.GLState localGLState = this.mGLState;
-    if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (paramFloat < 0.95F))) {}
-    for (boolean bool = true;; bool = false)
+    if (paramInt3 > 0)
     {
+      if (paramInt4 <= 0) {
+        return;
+      }
+      GLES11Canvas.GLState localGLState = this.mGLState;
+      boolean bool;
+      if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (paramFloat < 0.95F))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       localGLState.setBlendEnabled(bool);
       if (!bindTexture(paramBasicTexture)) {
-        break;
+        return;
       }
       this.mGLState.setTextureAlpha(paramFloat);
       drawBoundTexture(paramBasicTexture, paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
     }
   }
   
@@ -177,8 +187,9 @@ public class GLES11Canvas
   
   private static boolean isMatrixRotatedOrFlipped(float[] paramArrayOfFloat)
   {
+    float f = Math.abs(paramArrayOfFloat[4]);
     boolean bool = false;
-    if ((Math.abs(paramArrayOfFloat[4]) > 1.0E-005F) || (Math.abs(paramArrayOfFloat[1]) > 1.0E-005F) || (paramArrayOfFloat[0] < -1.0E-005F) || (paramArrayOfFloat[5] > 1.0E-005F)) {
+    if ((f > 1.0E-005F) || (Math.abs(paramArrayOfFloat[1]) > 1.0E-005F) || (paramArrayOfFloat[0] < -1.0E-005F) || (paramArrayOfFloat[5] > 1.0E-005F)) {
       bool = true;
     }
     return bool;
@@ -193,34 +204,30 @@ public class GLES11Canvas
     float f4 = paramInt2;
     float f5 = paramArrayOfFloat[12];
     float f6 = paramArrayOfFloat[1];
-    float f7 = paramInt1;
-    float f8 = paramArrayOfFloat[5];
-    float f9 = paramInt2;
-    float f10 = paramArrayOfFloat[13];
-    float f11 = paramArrayOfFloat[3] * paramInt1 + paramArrayOfFloat[7] * paramInt2 + paramArrayOfFloat[15];
-    arrayOfFloat[0] = ((f1 * f2 + f3 * f4 + f5) / f11);
-    arrayOfFloat[1] = ((f6 * f7 + f8 * f9 + f10) / f11);
+    float f7 = paramArrayOfFloat[5];
+    float f8 = paramArrayOfFloat[13];
+    float f9 = paramArrayOfFloat[3] * f2 + paramArrayOfFloat[7] * f4 + paramArrayOfFloat[15];
+    arrayOfFloat[0] = ((f1 * f2 + f3 * f4 + f5) / f9);
+    arrayOfFloat[1] = ((f6 * f2 + f7 * f4 + f8) / f9);
     f1 = paramArrayOfFloat[0];
     f2 = paramInt3;
     f3 = paramArrayOfFloat[4];
     f4 = paramInt4;
     f5 = paramArrayOfFloat[12];
     f6 = paramArrayOfFloat[1];
-    f7 = paramInt3;
-    f8 = paramArrayOfFloat[5];
-    f9 = paramInt4;
-    f10 = paramArrayOfFloat[13];
-    f11 = paramArrayOfFloat[3] * paramInt3 + paramArrayOfFloat[7] * paramInt4 + paramArrayOfFloat[15];
-    arrayOfFloat[2] = ((f1 * f2 + f3 * f4 + f5) / f11);
-    arrayOfFloat[3] = ((f6 * f7 + f8 * f9 + f10) / f11);
+    f7 = paramArrayOfFloat[5];
+    f8 = paramArrayOfFloat[13];
+    f9 = paramArrayOfFloat[3] * f2 + paramArrayOfFloat[7] * f4 + paramArrayOfFloat[15];
+    arrayOfFloat[2] = ((f1 * f2 + f3 * f4 + f5) / f9);
+    arrayOfFloat[3] = ((f6 * f2 + f7 * f4 + f8) / f9);
     return arrayOfFloat;
   }
   
   private GLES11Canvas.ConfigState obtainRestoreConfig()
   {
-    if (this.mRecycledRestoreAction != null)
+    GLES11Canvas.ConfigState localConfigState = this.mRecycledRestoreAction;
+    if (localConfigState != null)
     {
-      GLES11Canvas.ConfigState localConfigState = this.mRecycledRestoreAction;
       this.mRecycledRestoreAction = localConfigState.mNextFree;
       return localConfigState;
     }
@@ -241,7 +248,7 @@ public class GLES11Canvas
   {
     float f = (1.0F - paramFloat1) * paramFloat2;
     paramFloat1 = paramFloat2 * paramFloat1 / (1.0F - f) * (paramInt >>> 24) / 65025.0F;
-    setTextureColor((paramInt >>> 16 & 0xFF) * paramFloat1, (paramInt >>> 8 & 0xFF) * paramFloat1, paramFloat1 * (paramInt & 0xFF), f);
+    setTextureColor((paramInt >>> 16 & 0xFF) * paramFloat1, (paramInt >>> 8 & 0xFF) * paramFloat1, (paramInt & 0xFF) * paramFloat1, f);
     GL11 localGL11 = this.mGL;
     localGL11.glTexEnvfv(8960, 8705, this.mTextureColor, 0);
     localGL11.glTexEnvf(8960, 34161, 34165.0F);
@@ -268,13 +275,14 @@ public class GLES11Canvas
   private void setTextureCoords(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     this.mGL.glMatrixMode(5890);
-    this.mTextureMatrixValues[0] = (paramFloat3 - paramFloat1);
-    this.mTextureMatrixValues[5] = (paramFloat4 - paramFloat2);
-    this.mTextureMatrixValues[10] = 1.0F;
-    this.mTextureMatrixValues[12] = paramFloat1;
-    this.mTextureMatrixValues[13] = paramFloat2;
-    this.mTextureMatrixValues[15] = 1.0F;
-    this.mGL.glLoadMatrixf(this.mTextureMatrixValues, 0);
+    float[] arrayOfFloat = this.mTextureMatrixValues;
+    arrayOfFloat[0] = (paramFloat3 - paramFloat1);
+    arrayOfFloat[5] = (paramFloat4 - paramFloat2);
+    arrayOfFloat[10] = 1.0F;
+    arrayOfFloat[12] = paramFloat1;
+    arrayOfFloat[13] = paramFloat2;
+    arrayOfFloat[15] = 1.0F;
+    this.mGL.glLoadMatrixf(arrayOfFloat, 0);
     this.mGL.glMatrixMode(5888);
   }
   
@@ -374,28 +382,29 @@ public class GLES11Canvas
       return;
     }
     GLES11Canvas.GLState localGLState = this.mGLState;
-    if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (f < 0.95F))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localGLState.setBlendEnabled(bool);
-      this.mGLState.setTextureAlpha(f);
-      setTextureCoords(0.0F, 0.0F, 1.0F, 1.0F);
-      saveTransform();
-      translate(paramInt1, paramInt2);
-      this.mGL.glLoadMatrixf(this.mMatrixValues, 0);
-      this.mGL.glBindBuffer(34962, paramInt3);
-      this.mGL.glVertexPointer(2, 5126, 0, 0);
-      this.mGL.glBindBuffer(34962, paramInt4);
-      this.mGL.glTexCoordPointer(2, 5126, 0, 0);
-      this.mGL.glBindBuffer(34963, paramInt5);
-      this.mGL.glDrawElements(5, paramInt6, 5121, 0);
-      this.mGL.glBindBuffer(34962, this.mBoxCoords);
-      this.mGL.glVertexPointer(2, 5126, 0, 0);
-      this.mGL.glTexCoordPointer(2, 5126, 0, 0);
-      restoreTransform();
-      this.mCountDrawMesh += 1;
-      return;
+    boolean bool;
+    if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (f < 0.95F))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localGLState.setBlendEnabled(bool);
+    this.mGLState.setTextureAlpha(f);
+    setTextureCoords(0.0F, 0.0F, 1.0F, 1.0F);
+    saveTransform();
+    translate(paramInt1, paramInt2);
+    this.mGL.glLoadMatrixf(this.mMatrixValues, 0);
+    this.mGL.glBindBuffer(34962, paramInt3);
+    this.mGL.glVertexPointer(2, 5126, 0, 0);
+    this.mGL.glBindBuffer(34962, paramInt4);
+    this.mGL.glTexCoordPointer(2, 5126, 0, 0);
+    this.mGL.glBindBuffer(34963, paramInt5);
+    this.mGL.glDrawElements(5, paramInt6, 5121, 0);
+    this.mGL.glBindBuffer(34962, this.mBoxCoords);
+    this.mGL.glVertexPointer(2, 5126, 0, 0);
+    this.mGL.glTexCoordPointer(2, 5126, 0, 0);
+    restoreTransform();
+    this.mCountDrawMesh += 1;
   }
   
   public void drawMixed(BasicTexture paramBasicTexture, int paramInt1, float paramFloat, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -405,31 +414,36 @@ public class GLES11Canvas
   
   public void drawMixed(BasicTexture paramBasicTexture, int paramInt, float paramFloat, RectF paramRectF1, RectF paramRectF2)
   {
-    if ((paramRectF2.width() <= 0.0F) || (paramRectF2.height() <= 0.0F)) {
-      return;
-    }
-    if (paramFloat <= 0.01F)
+    if (paramRectF2.width() > 0.0F)
     {
-      drawTexture(paramBasicTexture, paramRectF1, paramRectF2);
-      return;
-    }
-    if (paramFloat >= 1.0F)
-    {
-      fillRect(paramRectF2.left, paramRectF2.top, paramRectF2.width(), paramRectF2.height(), paramInt);
-      return;
-    }
-    float f = this.mAlpha;
-    this.mDrawTextureSourceRect.set(paramRectF1);
-    this.mDrawTextureTargetRect.set(paramRectF2);
-    paramRectF1 = this.mDrawTextureSourceRect;
-    paramRectF2 = this.mDrawTextureTargetRect;
-    GLES11Canvas.GLState localGLState = this.mGLState;
-    if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (!Utils.isOpaque(paramInt)) || (f < 0.95F))) {}
-    for (boolean bool = true;; bool = false)
-    {
+      if (paramRectF2.height() <= 0.0F) {
+        return;
+      }
+      if (paramFloat <= 0.01F)
+      {
+        drawTexture(paramBasicTexture, paramRectF1, paramRectF2);
+        return;
+      }
+      if (paramFloat >= 1.0F)
+      {
+        fillRect(paramRectF2.left, paramRectF2.top, paramRectF2.width(), paramRectF2.height(), paramInt);
+        return;
+      }
+      float f = this.mAlpha;
+      this.mDrawTextureSourceRect.set(paramRectF1);
+      this.mDrawTextureTargetRect.set(paramRectF2);
+      paramRectF1 = this.mDrawTextureSourceRect;
+      paramRectF2 = this.mDrawTextureTargetRect;
+      GLES11Canvas.GLState localGLState = this.mGLState;
+      boolean bool;
+      if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (!Utils.isOpaque(paramInt)) || (f < 0.95F))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       localGLState.setBlendEnabled(bool);
       if (!bindTexture(paramBasicTexture)) {
-        break;
+        return;
       }
       this.mGLState.setTexEnvMode(34160);
       setMixedColor(paramInt, paramFloat, f);
@@ -437,7 +451,6 @@ public class GLES11Canvas
       setTextureCoords(paramRectF1);
       textureRect(paramRectF2.left, paramRectF2.top, paramRectF2.width(), paramRectF2.height());
       this.mGLState.setTexEnvMode(7681);
-      return;
     }
   }
   
@@ -462,39 +475,44 @@ public class GLES11Canvas
   
   public void drawTexture(BasicTexture paramBasicTexture, RectF paramRectF1, RectF paramRectF2)
   {
-    if ((paramRectF2.width() <= 0.0F) || (paramRectF2.height() <= 0.0F)) {
-      return;
-    }
-    this.mDrawTextureSourceRect.set(paramRectF1);
-    this.mDrawTextureTargetRect.set(paramRectF2);
-    paramRectF1 = this.mDrawTextureSourceRect;
-    paramRectF2 = this.mDrawTextureTargetRect;
-    GLES11Canvas.GLState localGLState = this.mGLState;
-    if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (this.mAlpha < 0.95F))) {}
-    for (boolean bool = true;; bool = false)
+    if (paramRectF2.width() > 0.0F)
     {
+      if (paramRectF2.height() <= 0.0F) {
+        return;
+      }
+      this.mDrawTextureSourceRect.set(paramRectF1);
+      this.mDrawTextureTargetRect.set(paramRectF2);
+      paramRectF1 = this.mDrawTextureSourceRect;
+      paramRectF2 = this.mDrawTextureTargetRect;
+      GLES11Canvas.GLState localGLState = this.mGLState;
+      boolean bool;
+      if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (this.mAlpha < 0.95F))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       localGLState.setBlendEnabled(bool);
       if (!bindTexture(paramBasicTexture)) {
-        break;
+        return;
       }
       convertCoordinate(paramRectF1, paramRectF2, paramBasicTexture);
       setTextureCoords(paramRectF1);
       this.mGLState.setTextureAlpha(this.mAlpha);
       textureRect(paramRectF2.left, paramRectF2.top, paramRectF2.width(), paramRectF2.height());
-      return;
     }
   }
   
   public void drawTexture(BasicTexture paramBasicTexture, float[] paramArrayOfFloat, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     GLES11Canvas.GLState localGLState = this.mGLState;
-    if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (this.mAlpha < 0.95F))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localGLState.setBlendEnabled(bool);
-      if (bindTexture(paramBasicTexture)) {
-        break;
-      }
+    boolean bool;
+    if ((this.mBlendEnabled) && ((!paramBasicTexture.isOpaque()) || (this.mAlpha < 0.95F))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localGLState.setBlendEnabled(bool);
+    if (!bindTexture(paramBasicTexture)) {
       return;
     }
     setTextureCoords(paramArrayOfFloat);
@@ -556,13 +574,14 @@ public class GLES11Canvas
   
   public void multiplyAlpha(float paramFloat)
   {
-    if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      this.mAlpha *= paramFloat;
-      return;
+    boolean bool;
+    if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assert.assertTrue(bool);
+    this.mAlpha *= paramFloat;
   }
   
   public void multiplyMatrix(float[] paramArrayOfFloat, int paramInt)
@@ -576,12 +595,15 @@ public class GLES11Canvas
   
   public void restore()
   {
-    if (this.mRestoreStack.isEmpty()) {
-      throw new IllegalStateException();
+    if (!this.mRestoreStack.isEmpty())
+    {
+      Object localObject = this.mRestoreStack;
+      localObject = (GLES11Canvas.ConfigState)((ArrayList)localObject).remove(((ArrayList)localObject).size() - 1);
+      ((GLES11Canvas.ConfigState)localObject).restore(this);
+      freeRestoreConfig((GLES11Canvas.ConfigState)localObject);
+      return;
     }
-    GLES11Canvas.ConfigState localConfigState = (GLES11Canvas.ConfigState)this.mRestoreStack.remove(this.mRestoreStack.size() - 1);
-    localConfigState.restore(this);
-    freeRestoreConfig(localConfigState);
+    throw new IllegalStateException();
   }
   
   public void rotate(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -603,23 +625,17 @@ public class GLES11Canvas
   public void save(int paramInt)
   {
     GLES11Canvas.ConfigState localConfigState = obtainRestoreConfig();
-    if ((paramInt & 0x1) != 0)
-    {
+    if ((paramInt & 0x1) != 0) {
       localConfigState.mAlpha = this.mAlpha;
-      if ((paramInt & 0x2) == 0) {
-        break label60;
-      }
-      System.arraycopy(this.mMatrixValues, 0, localConfigState.mMatrix, 0, 16);
-    }
-    for (;;)
-    {
-      this.mRestoreStack.add(localConfigState);
-      return;
+    } else {
       localConfigState.mAlpha = -1.0F;
-      break;
-      label60:
+    }
+    if ((paramInt & 0x2) != 0) {
+      System.arraycopy(this.mMatrixValues, 0, localConfigState.mMatrix, 0, 16);
+    } else {
       localConfigState.mMatrix[0] = (1.0F / -1.0F);
     }
+    this.mRestoreStack.add(localConfigState);
   }
   
   public void scale(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -629,45 +645,50 @@ public class GLES11Canvas
   
   public void setAlpha(float paramFloat)
   {
-    if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      this.mAlpha = paramFloat;
-      return;
+    boolean bool;
+    if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assert.assertTrue(bool);
+    this.mAlpha = paramFloat;
   }
   
   public void setSize(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 >= 0) && (paramInt2 >= 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      this.mAlpha = 1.0F;
-      Object localObject = this.mGL;
-      ((GL11)localObject).glViewport(0, 0, paramInt1, paramInt2);
-      ((GL11)localObject).glMatrixMode(5889);
-      ((GL11)localObject).glLoadIdentity();
-      GLU.gluOrtho2D((GL10)localObject, 0.0F, paramInt1, 0.0F, paramInt2);
-      ((GL11)localObject).glMatrixMode(5888);
-      ((GL11)localObject).glLoadIdentity();
-      localObject = this.mMatrixValues;
-      Matrix.setIdentityM((float[])localObject, 0);
-      Matrix.translateM((float[])localObject, 0, 0.0F, paramInt2, 0.0F);
-      Matrix.scaleM((float[])localObject, 0, 1.0F, -1.0F, 1.0F);
-      return;
+    boolean bool;
+    if ((paramInt1 >= 0) && (paramInt2 >= 0)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assert.assertTrue(bool);
+    this.mAlpha = 1.0F;
+    Object localObject = this.mGL;
+    ((GL11)localObject).glViewport(0, 0, paramInt1, paramInt2);
+    ((GL11)localObject).glMatrixMode(5889);
+    ((GL11)localObject).glLoadIdentity();
+    float f1 = paramInt1;
+    float f2 = paramInt2;
+    GLU.gluOrtho2D((GL10)localObject, 0.0F, f1, 0.0F, f2);
+    ((GL11)localObject).glMatrixMode(5888);
+    ((GL11)localObject).glLoadIdentity();
+    localObject = this.mMatrixValues;
+    Matrix.setIdentityM((float[])localObject, 0);
+    Matrix.translateM((float[])localObject, 0, 0.0F, f2, 0.0F);
+    Matrix.scaleM((float[])localObject, 0, 1.0F, -1.0F, 1.0F);
   }
   
   public void setTextureParameters(BasicTexture paramBasicTexture)
   {
     int i = paramBasicTexture.getSourceWidth();
     int j = paramBasicTexture.getSourceHeight();
-    sCropRect[0] = 0.0F;
-    sCropRect[1] = j;
-    sCropRect[2] = i;
-    sCropRect[3] = (-j);
+    float[] arrayOfFloat = sCropRect;
+    arrayOfFloat[0] = 0.0F;
+    arrayOfFloat[1] = j;
+    arrayOfFloat[2] = i;
+    arrayOfFloat[3] = (-j);
     i = paramBasicTexture.getTarget();
     this.mGL.glBindTexture(i, paramBasicTexture.getId()[0]);
     this.mGL.glTexParameterfv(i, 35741, sCropRect, 0);

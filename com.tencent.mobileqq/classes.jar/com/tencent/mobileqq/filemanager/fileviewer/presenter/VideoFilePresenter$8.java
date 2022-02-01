@@ -14,55 +14,58 @@ class VideoFilePresenter$8
 {
   public void run()
   {
-    if ((this.jdField_a_of_type_Int != -6101) && (this.jdField_a_of_type_Int != -7003) && (this.jdField_a_of_type_Int != 201)) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692791));
-    }
-    label301:
-    for (;;)
+    int i = this.jdField_a_of_type_Int;
+    if ((i != -6101) && (i != -7003) && (i != 201))
     {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692749));
       return;
-      Object localObject;
-      if ((this.jdField_a_of_type_Int == -6101) || (this.jdField_a_of_type_Int == -7003))
+    }
+    i = this.jdField_a_of_type_Int;
+    Object localObject;
+    if ((i != -6101) && (i != -7003))
+    {
+      if (i == 201)
       {
-        localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692760);
-        this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        if (!this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.g()) {
+          localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692750);
+        } else {
+          this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692749));
+        }
       }
-      for (;;)
+      else
       {
-        if (BaseActivity.sTopActivity == null) {
-          break label301;
-        }
-        localObject = DialogUtil.a(BaseActivity.sTopActivity, 230, "", (CharSequence)localObject, null, HardCodeUtil.a(2131716093), new VideoFilePresenter.8.1(this), null);
-        if (((QQCustomDialog)localObject).isShowing()) {
-          break;
-        }
-        ((QQCustomDialog)localObject).show();
-        return;
-        if (this.jdField_a_of_type_Int == 201)
+        String str = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692749);
+        localObject = str;
+        if (QLog.isColorLevel())
         {
-          if (!this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.g()) {
-            localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692792);
-          } else {
-            this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d(), this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692791));
-          }
-        }
-        else
-        {
-          String str = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692791);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("can not handle video error. rc=[");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append("]  msg=[");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append("]");
+          QLog.i("FileBrowserPresenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
           localObject = str;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("FileBrowserPresenter<FileAssistant>", 2, "can not handle video error. rc=[" + this.jdField_a_of_type_Int + "]  msg=[" + this.jdField_a_of_type_JavaLangString + "]");
-            localObject = str;
-          }
         }
+      }
+    }
+    else
+    {
+      localObject = this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131692717);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    }
+    if (BaseActivity.sTopActivity != null)
+    {
+      localObject = DialogUtil.a(BaseActivity.sTopActivity, 230, "", (CharSequence)localObject, null, HardCodeUtil.a(2131716016), new VideoFilePresenter.8.1(this), null);
+      if (!((QQCustomDialog)localObject).isShowing()) {
+        ((QQCustomDialog)localObject).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8
  * JD-Core Version:    0.7.0.1
  */

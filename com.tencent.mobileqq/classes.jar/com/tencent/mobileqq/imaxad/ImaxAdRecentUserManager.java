@@ -54,15 +54,19 @@ public class ImaxAdRecentUserManager
   
   private void a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, int paramInt, AdvertisementItem paramAdvertisementItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ImaxAdvertisement", 2, "jumpToImaxDisplayActivity item :" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("jumpToImaxDisplayActivity item :");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("ImaxAdvertisement", 2, ((StringBuilder)localObject).toString());
     }
-    Intent localIntent = new Intent(paramContext, PublicAccountAdvertisementActivity.class);
-    localIntent.putExtra("arg_ad_json", paramAdvertisementItem.a());
-    localIntent.putExtra("USR_CLICK_TIME", SystemClock.uptimeMillis());
-    localIntent.putExtra("is_first_open_imax_ad", RecentUtil.c);
+    Object localObject = new Intent(paramContext, PublicAccountAdvertisementActivity.class);
+    ((Intent)localObject).putExtra("arg_ad_json", paramAdvertisementItem.a());
+    ((Intent)localObject).putExtra("USR_CLICK_TIME", SystemClock.uptimeMillis());
+    ((Intent)localObject).putExtra("is_first_open_imax_ad", RecentUtil.c);
     RecentUtil.c = false;
-    paramContext.startActivity(localIntent);
+    paramContext.startActivity((Intent)localObject);
     ThreadManager.post(new ImaxAdRecentUserManager.2(this, paramQQAppInterface, paramString, paramInt, paramAdvertisementItem), 5, null, false);
     AdvertisementRecentUserManager.a().a(paramQQAppInterface, 2, paramAdvertisementItem);
   }
@@ -77,27 +81,37 @@ public class ImaxAdRecentUserManager
   
   public List<AdvertisementItem> a(String paramString)
   {
-    ArrayList localArrayList1 = new ArrayList(2);
+    ArrayList localArrayList = new ArrayList(2);
     if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values() != null))
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
       while (localIterator.hasNext())
       {
         AdvertisementItem localAdvertisementItem = (AdvertisementItem)localIterator.next();
-        ArrayList localArrayList2 = localAdvertisementItem.jdField_a_of_type_JavaUtilArrayList;
-        if ((localArrayList2 != null) && (localArrayList2.size() > 0) && (paramString.equals(((VideoCoverItem)localArrayList2.get(0)).b)) && (localAdvertisementItem.jdField_a_of_type_Int == 0))
+        Object localObject = localAdvertisementItem.jdField_a_of_type_JavaUtilArrayList;
+        if ((localObject != null) && (((ArrayList)localObject).size() > 0) && (paramString.equals(((VideoCoverItem)((ArrayList)localObject).get(0)).b)) && (localAdvertisementItem.jdField_a_of_type_Int == 0))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("ImaxAdvertisement", 2, "getAdvertisementItembyVid:" + paramString + " item:" + localAdvertisementItem.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("getAdvertisementItembyVid:");
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append(" item:");
+            ((StringBuilder)localObject).append(localAdvertisementItem.jdField_a_of_type_JavaLangString);
+            QLog.d("ImaxAdvertisement", 2, ((StringBuilder)localObject).toString());
           }
-          localArrayList1.add(localAdvertisementItem);
+          localArrayList.add(localAdvertisementItem);
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ImaxAdvertisement", 2, "getAdvertisementItem disPlayitemList:" + localArrayList1.size());
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("getAdvertisementItem disPlayitemList:");
+      paramString.append(localArrayList.size());
+      QLog.d("ImaxAdvertisement", 2, paramString.toString());
     }
-    return localArrayList1;
+    return localArrayList;
   }
   
   public void a()
@@ -112,69 +126,66 @@ public class ImaxAdRecentUserManager
   
   public void a(QQAppInterface paramQQAppInterface, RecentAdapter paramRecentAdapter, AbsListView paramAbsListView)
   {
-    int i;
     if ((paramAbsListView != null) && (paramRecentAdapter != null) && (paramQQAppInterface != null))
     {
-      i = paramAbsListView.getFirstVisiblePosition();
-      if (i <= 0) {
-        break label370;
+      int j = paramAbsListView.getFirstVisiblePosition();
+      int i = j;
+      if (j > 0) {
+        i = j - 1;
       }
-      i -= 1;
-    }
-    label240:
-    label370:
-    for (;;)
-    {
       int k = paramAbsListView.getLastVisiblePosition();
-      int j = i;
-      for (;;)
+      j = i;
+      while (j < k + 1)
       {
-        Object localObject1;
-        if (j < k + 1)
+        Object localObject1 = paramRecentAdapter.getItem(j);
+        if ((localObject1 != null) && ((localObject1 instanceof RecentItemImaxADData)))
         {
-          localObject1 = paramRecentAdapter.getItem(j);
-          if ((localObject1 == null) || (!(localObject1 instanceof RecentItemImaxADData))) {
-            break label361;
-          }
           localObject1 = (RecentItemImaxADData)localObject1;
-          localObject2 = paramQQAppInterface.getConversationFacade().a(((RecentItemImaxADData)localObject1).mUser.uin, ((RecentItemImaxADData)localObject1).mUser.getType());
+          Object localObject2 = paramQQAppInterface.getConversationFacade().a(((RecentItemImaxADData)localObject1).mUser.uin, ((RecentItemImaxADData)localObject1).mUser.getType());
           if (localObject2 != null) {
             ((ConversationInfo)localObject2).isImax = true;
           }
-          if (!ImaxAdUtil.a(paramAbsListView.getChildAt(j - i))) {
-            break label361;
-          }
-          localObject3 = ((RecentItemImaxADData)localObject1).mUser.uin;
-          localObject2 = b((String)localObject3);
-          localObject1 = localObject2;
-          if (localObject2 != null) {
-            break label246;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ImaxAdvertisement", 2, "isShowImaxAdItem item recreated " + (String)localObject3);
-          }
-          localObject1 = AdvertisementItem.a(ImaxAdUtil.b(paramQQAppInterface.getCurrentUin(), (String)localObject3));
-          if (localObject1 != null) {
-            break label240;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ImaxAdvertisement", 2, "isShowImaxAdItem item false " + (String)localObject3);
+          if (ImaxAdUtil.a(paramAbsListView.getChildAt(j - i)))
+          {
+            Object localObject3 = ((RecentItemImaxADData)localObject1).mUser.uin;
+            localObject2 = b((String)localObject3);
+            localObject1 = localObject2;
+            if (localObject2 == null)
+            {
+              if (QLog.isColorLevel())
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("isShowImaxAdItem item recreated ");
+                ((StringBuilder)localObject1).append((String)localObject3);
+                QLog.d("ImaxAdvertisement", 2, ((StringBuilder)localObject1).toString());
+              }
+              localObject1 = AdvertisementItem.a(ImaxAdUtil.b(paramQQAppInterface.getCurrentUin(), (String)localObject3));
+              if (localObject1 == null)
+              {
+                if (QLog.isColorLevel())
+                {
+                  paramQQAppInterface = new StringBuilder();
+                  paramQQAppInterface.append("isShowImaxAdItem item false ");
+                  paramQQAppInterface.append((String)localObject3);
+                  QLog.d("ImaxAdvertisement", 2, paramQQAppInterface.toString());
+                }
+                return;
+              }
+              a((AdvertisementItem)localObject1);
+            }
+            localObject2 = Message.obtain();
+            localObject3 = new HashMap();
+            ((HashMap)localObject3).put("key_app", new WeakReference(paramQQAppInterface));
+            ((HashMap)localObject3).put("key_adapter", new WeakReference(paramRecentAdapter));
+            ((HashMap)localObject3).put("key_listview", new WeakReference(paramAbsListView));
+            ((Message)localObject2).obj = localObject3;
+            localObject3 = new Bundle();
+            ((Bundle)localObject3).putString("key_ad_id", ((AdvertisementItem)localObject1).c);
+            ((Message)localObject2).setData((Bundle)localObject3);
+            ((Message)localObject2).what = 2;
+            ImaxAdPresenter.a().a((Message)localObject2);
           }
         }
-        return;
-        a((AdvertisementItem)localObject1);
-        label246:
-        Object localObject2 = Message.obtain();
-        Object localObject3 = new HashMap();
-        ((HashMap)localObject3).put("key_app", new WeakReference(paramQQAppInterface));
-        ((HashMap)localObject3).put("key_adapter", new WeakReference(paramRecentAdapter));
-        ((HashMap)localObject3).put("key_listview", new WeakReference(paramAbsListView));
-        ((Message)localObject2).obj = localObject3;
-        localObject3 = new Bundle();
-        ((Bundle)localObject3).putString("key_ad_id", ((AdvertisementItem)localObject1).c);
-        ((Message)localObject2).setData((Bundle)localObject3);
-        ((Message)localObject2).what = 2;
-        ImaxAdPresenter.a().a((Message)localObject2);
         j += 1;
       }
     }
@@ -182,37 +193,42 @@ public class ImaxAdRecentUserManager
   
   public void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
   {
-    AdvertisementItem localAdvertisementItem;
     if ((paramRecentUser != null) && (paramRecentUser.uin != null))
     {
-      localAdvertisementItem = b(paramRecentUser.uin);
+      AdvertisementItem localAdvertisementItem = b(paramRecentUser.uin);
       if ((localAdvertisementItem != null) && (NetConnInfoCenter.getServerTimeMillis() >= localAdvertisementItem.b))
       {
-        localObject = (ProxyManager)paramQQAppInterface.getManager(QQManagerFactory.PROXY_MANAGER);
-        if (localObject != null) {
-          break label139;
+        Object localObject = (ProxyManager)paramQQAppInterface.getManager(QQManagerFactory.PROXY_MANAGER);
+        if (localObject == null) {
+          localObject = null;
+        } else {
+          localObject = ((ProxyManager)localObject).a();
         }
+        if (localObject != null)
+        {
+          RecentDataListManager localRecentDataListManager = RecentDataListManager.a();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramRecentUser.uin);
+          localStringBuilder.append("-");
+          localStringBuilder.append(paramRecentUser.getType());
+          localRecentDataListManager.a(localStringBuilder.toString());
+          ((RecentUserProxy)localObject).a(paramRecentUser);
+          RecentUtil.b(paramQQAppInterface, localAdvertisementItem.jdField_a_of_type_JavaLangString, 10005);
+          paramQQAppInterface.getMessageFacade().a(localAdvertisementItem.jdField_a_of_type_JavaLangString, 10005);
+        }
+        a(paramQQAppInterface, paramRecentUser, localAdvertisementItem, false);
       }
-    }
-    label139:
-    for (Object localObject = null;; localObject = ((ProxyManager)localObject).a())
-    {
-      if (localObject != null)
-      {
-        RecentDataListManager.a().a(paramRecentUser.uin + "-" + paramRecentUser.getType());
-        ((RecentUserProxy)localObject).a(paramRecentUser);
-        RecentUtil.b(paramQQAppInterface, localAdvertisementItem.jdField_a_of_type_JavaLangString, 10005);
-        paramQQAppInterface.getMessageFacade().c(localAdvertisementItem.jdField_a_of_type_JavaLangString, 10005);
-      }
-      a(paramQQAppInterface, paramRecentUser, localAdvertisementItem, false);
-      return;
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser, AdvertisementItem paramAdvertisementItem, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ImaxAdvertisement", 2, "dodelete ExpireItem uin:" + paramRecentUser.uin);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dodelete ExpireItem uin:");
+      localStringBuilder.append(paramRecentUser.uin);
+      QLog.d("ImaxAdvertisement", 2, localStringBuilder.toString());
     }
     ThreadManager.executeOnFileThread(new ImaxAdRecentUserManager.1(this, paramBoolean, paramQQAppInterface, paramAdvertisementItem, paramRecentUser));
     a(paramRecentUser.uin);
@@ -220,55 +236,51 @@ public class ImaxAdRecentUserManager
   
   public boolean a(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramContext != null)
-    {
-      if (paramQQAppInterface != null) {
-        break label55;
-      }
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdvertisement", 2, "openImaxAdvertisement result " + bool1);
-      }
-      return bool1;
-      label55:
+    boolean bool = true;
+    if ((paramContext != null) && (paramQQAppInterface != null)) {
       if (TextUtils.isEmpty(paramString))
       {
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
+        if (QLog.isColorLevel()) {
           QLog.d("ImaxAdvertisement", 2, "openImaxAdvertisement empty uin!");
-          bool1 = bool2;
         }
       }
       else
       {
-        AdvertisementItem localAdvertisementItem = b(paramString);
-        if (localAdvertisementItem == null)
+        Object localObject = b(paramString);
+        if (localObject == null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("ImaxAdvertisement", 2, "openAdvertisement item recreated :" + paramString);
-          }
-          localAdvertisementItem = AdvertisementItem.a(ImaxAdUtil.b(paramQQAppInterface.getCurrentUin(), paramString));
-          bool1 = bool2;
-          if (localAdvertisementItem != null)
+          if (QLog.isColorLevel())
           {
-            a(localAdvertisementItem);
-            a(paramContext, paramQQAppInterface, paramString, paramInt, localAdvertisementItem);
-            bool1 = true;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("openAdvertisement item recreated :");
+            ((StringBuilder)localObject).append(paramString);
+            QLog.d("ImaxAdvertisement", 2, ((StringBuilder)localObject).toString());
+          }
+          localObject = AdvertisementItem.a(ImaxAdUtil.b(paramQQAppInterface.getCurrentUin(), paramString));
+          if (localObject != null)
+          {
+            a((AdvertisementItem)localObject);
+            a(paramContext, paramQQAppInterface, paramString, paramInt, (AdvertisementItem)localObject);
+            break label151;
           }
         }
         else
         {
-          a(paramContext, paramQQAppInterface, paramString, paramInt, localAdvertisementItem);
-          bool1 = true;
+          a(paramContext, paramQQAppInterface, paramString, paramInt, (AdvertisementItem)localObject);
+          break label151;
         }
       }
     }
+    bool = false;
+    label151:
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("openImaxAdvertisement result ");
+      paramContext.append(bool);
+      QLog.d("ImaxAdvertisement", 2, paramContext.toString());
+    }
+    return bool;
   }
   
   public AdvertisementItem b(String paramString)
@@ -292,7 +304,7 @@ public class ImaxAdRecentUserManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdRecentUserManager
  * JD-Core Version:    0.7.0.1
  */

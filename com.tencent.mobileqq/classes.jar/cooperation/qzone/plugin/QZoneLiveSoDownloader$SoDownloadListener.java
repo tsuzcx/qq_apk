@@ -29,37 +29,37 @@ class QZoneLiveSoDownloader$SoDownloadListener
     paramString = Message.obtain(this.this$0.handler, 3);
     paramString.obj = this.downloadRecord;
     paramString.arg1 = -9999;
-    if ((paramDownloadResult != null) && (paramDownloadResult.getReport() != null)) {}
-    for (;;)
-    {
+    if ((paramDownloadResult != null) && (paramDownloadResult.getReport() != null)) {
       try
       {
         paramDownloadResult = new ImageDownloadReporter().obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
-        if (paramDownloadResult != null)
-        {
-          paramString.arg1 = paramDownloadResult.retCode;
-          QLog.w("QZoneLiveSoDownloader", 1, "So download failed, code=" + paramDownloadResult.retCode);
-          this.downloadRecord.errorCode = paramDownloadResult.retCode;
+        if (paramDownloadResult == null) {
+          break label141;
         }
+        paramString.arg1 = paramDownloadResult.retCode;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("So download failed, code=");
+        localStringBuilder.append(paramDownloadResult.retCode);
+        QLog.w("QZoneLiveSoDownloader", 1, localStringBuilder.toString());
+        this.downloadRecord.errorCode = paramDownloadResult.retCode;
       }
       catch (Exception paramDownloadResult)
       {
         QLog.w("QZoneLiveSoDownloader", 1, "", paramDownloadResult);
-        continue;
       }
-      paramString.sendToTarget();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneLiveSoDownloader", 2, "So download failed downloadResult:null");
-      }
+    } else if (QLog.isColorLevel()) {
+      QLog.d("QZoneLiveSoDownloader", 2, "So download failed downloadResult:null");
     }
+    label141:
+    paramString.sendToTarget();
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
-    int i = (int)(100.0F * paramFloat);
-    if (this.downloadRecord != null) {
-      this.downloadRecord.progress = i;
+    int i = (int)(paramFloat * 100.0F);
+    paramString = this.downloadRecord;
+    if (paramString != null) {
+      paramString.progress = i;
     }
     paramString = Message.obtain(this.this$0.handler, 5);
     paramString.obj = this.downloadRecord;
@@ -68,8 +68,12 @@ class QZoneLiveSoDownloader$SoDownloadListener
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneLiveSoDownloader", 2, "onDownloadSucceed path:" + paramDownloadResult.getPath());
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("onDownloadSucceed path:");
+      paramString.append(paramDownloadResult.getPath());
+      QLog.d("QZoneLiveSoDownloader", 2, paramString.toString());
     }
     paramString = Message.obtain(this.this$0.handler, 4);
     paramString.obj = this.downloadRecord;
@@ -78,7 +82,7 @@ class QZoneLiveSoDownloader$SoDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.plugin.QZoneLiveSoDownloader.SoDownloadListener
  * JD-Core Version:    0.7.0.1
  */

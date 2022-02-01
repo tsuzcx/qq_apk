@@ -31,78 +31,65 @@ public class AbsWVModule$WebViewRuntimeCompat
   
   public CustomWebView a()
   {
-    WebViewFragment localWebViewFragment;
     if (this.a == null)
     {
-      localWebViewFragment = a();
-      if (localWebViewFragment == null) {
-        break label42;
+      WebViewFragment localWebViewFragment = a();
+      if (localWebViewFragment != null) {
+        this.a = new WeakReference(localWebViewFragment.getWebView());
+      } else {
+        this.a = new WeakReference(null);
       }
     }
-    label42:
-    for (this.a = new WeakReference(localWebViewFragment.getWebView());; this.a = new WeakReference(null)) {
-      return (CustomWebView)this.a.get();
-    }
+    return (CustomWebView)this.a.get();
   }
   
   public AppInterface a()
   {
-    AppRuntime localAppRuntime;
     if (this.b == null)
     {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localAppRuntime instanceof ToolAppRuntime)) {
-        break label52;
-      }
-      this.b = new WeakReference((AppInterface)localAppRuntime.getAppRuntime("modular_web"));
-    }
-    for (;;)
-    {
-      return (AppInterface)this.b.get();
-      label52:
-      if ((localAppRuntime instanceof AppInterface)) {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof ToolAppRuntime)) {
+        this.b = new WeakReference((AppInterface)localAppRuntime.getAppRuntime("modular_web"));
+      } else if ((localAppRuntime instanceof AppInterface)) {
         this.b = new WeakReference((AppInterface)localAppRuntime);
       } else {
         this.b = new WeakReference(null);
       }
     }
+    return (AppInterface)this.b.get();
   }
   
   public WebUiBaseInterface a()
   {
-    Activity localActivity;
     if (this.d == null)
     {
-      localActivity = a();
-      if (!(localActivity instanceof WebUiBaseInterface)) {
-        break label45;
+      Activity localActivity = a();
+      if ((localActivity instanceof WebUiBaseInterface)) {
+        this.d = new WeakReference((WebUiBaseInterface)localActivity);
+      } else {
+        this.d = new WeakReference(a());
       }
     }
-    label45:
-    for (this.d = new WeakReference((WebUiBaseInterface)localActivity);; this.d = new WeakReference(a())) {
-      return (WebUiBaseInterface)this.d.get();
-    }
+    return (WebUiBaseInterface)this.d.get();
   }
   
   public WebViewFragment a()
   {
-    Activity localActivity;
     if (this.e == null)
     {
-      localActivity = a();
-      if (!(localActivity instanceof SwiftWebViewFragmentSupporter)) {
-        break label50;
+      Activity localActivity = a();
+      if ((localActivity instanceof SwiftWebViewFragmentSupporter)) {
+        this.e = new WeakReference(((SwiftWebViewFragmentSupporter)localActivity).getCurrentWebViewFragment());
+      } else {
+        this.e = new WeakReference(null);
       }
     }
-    label50:
-    for (this.e = new WeakReference(((SwiftWebViewFragmentSupporter)localActivity).getCurrentWebViewFragment());; this.e = new WeakReference(null)) {
-      return (WebViewFragment)this.e.get();
-    }
+    return (WebViewFragment)this.e.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.webviewModule.AbsWVModule.WebViewRuntimeCompat
  * JD-Core Version:    0.7.0.1
  */

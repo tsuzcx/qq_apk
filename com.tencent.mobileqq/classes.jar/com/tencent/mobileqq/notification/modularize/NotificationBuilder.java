@@ -27,7 +27,7 @@ public final class NotificationBuilder
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
     NotificationCompat.BigTextStyle localBigTextStyle = new NotificationCompat.BigTextStyle();
     localBigTextStyle.bigText((CharSequence)paramPushComponent.c);
-    paramPendingIntent = new NotificationCompat.Builder((Context)BaseApplication.context).setSmallIcon(2130841588).setAutoCancel(true).setContentText((CharSequence)paramPushComponent.c).setWhen(System.currentTimeMillis()).setTicker((CharSequence)paramPushComponent.c).setContentIntent(paramPendingIntent).setPriority(2).setStyle((NotificationCompat.Style)localBigTextStyle);
+    paramPendingIntent = new NotificationCompat.Builder((Context)BaseApplication.context).setSmallIcon(2130841471).setAutoCancel(true).setContentText((CharSequence)paramPushComponent.c).setWhen(System.currentTimeMillis()).setTicker((CharSequence)paramPushComponent.c).setContentIntent(paramPendingIntent).setPriority(2).setStyle((NotificationCompat.Style)localBigTextStyle);
     if (!TextUtils.isEmpty((CharSequence)paramPushComponent.a)) {
       paramPendingIntent.setContentTitle((CharSequence)paramPushComponent.a);
     }
@@ -45,7 +45,7 @@ public final class NotificationBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.NotificationBuilder
  * JD-Core Version:    0.7.0.1
  */

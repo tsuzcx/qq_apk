@@ -19,8 +19,15 @@ public class Utils
     if (Build.VERSION.SDK_INT >= 8) {
       return paramContext.getExternalCacheDir();
     }
-    paramContext = "/Android/data/" + paramContext.getPackageName() + "/cache/";
-    return new File(Environment.getExternalStorageDirectory().getPath() + paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/Android/data/");
+    localStringBuilder.append(paramContext.getPackageName());
+    localStringBuilder.append("/cache/");
+    paramContext = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+    localStringBuilder.append(paramContext);
+    return new File(localStringBuilder.toString());
   }
   
   public static String a(String paramString)
@@ -34,47 +41,64 @@ public class Utils
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      throw new AssertionError();
+      break label42;
     }
     catch (UnsupportedEncodingException paramString)
     {
-      throw new AssertionError();
+      break label34;
     }
     catch (Throwable paramString)
     {
-      throw new AssertionError();
+      label26:
+      label34:
+      label42:
+      break label26;
     }
+    throw new AssertionError();
+    throw new AssertionError();
+    throw new AssertionError();
   }
   
   public static String a(String paramString1, String paramString2)
   {
-    return paramString1 + "{@}" + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("{@}");
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   public static String a(String paramString1, String paramString2, long paramLong)
   {
-    return paramString1 + "[@]" + paramString2 + "[id:]" + paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("[@]");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("[id:]");
+    localStringBuilder.append(paramLong);
+    return localStringBuilder.toString();
   }
   
   static String a(byte[] paramArrayOfByte)
   {
-    int i = 0;
     if (paramArrayOfByte == null) {
       return null;
     }
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
+    char[] arrayOfChar1 = new char[paramArrayOfByte.length * 2];
     int k = paramArrayOfByte.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
       int m = paramArrayOfByte[i];
       int n = j + 1;
-      arrayOfChar[j] = a[(m >>> 4 & 0xF)];
+      char[] arrayOfChar2 = a;
+      arrayOfChar1[j] = arrayOfChar2[(m >>> 4 & 0xF)];
       j = n + 1;
-      arrayOfChar[n] = a[(m & 0xF)];
+      arrayOfChar1[n] = arrayOfChar2[(m & 0xF)];
       i += 1;
     }
-    return new String(arrayOfChar);
+    return new String(arrayOfChar1);
   }
   
   @TargetApi(9)

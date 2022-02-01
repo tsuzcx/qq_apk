@@ -32,12 +32,14 @@ public class ContentWrapView
   private void a()
   {
     ContentWrapView.TransformationInfo localTransformationInfo = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo;
-    if (localTransformationInfo == null) {}
-    while (!localTransformationInfo.jdField_a_of_type_Boolean) {
+    if (localTransformationInfo == null) {
       return;
     }
-    ContentWrapView.TransformationInfo.a(localTransformationInfo).setTranslate(localTransformationInfo.jdField_a_of_type_Float, localTransformationInfo.b);
-    localTransformationInfo.jdField_a_of_type_Boolean = false;
+    if (localTransformationInfo.jdField_a_of_type_Boolean)
+    {
+      ContentWrapView.TransformationInfo.a(localTransformationInfo).setTranslate(localTransformationInfo.jdField_a_of_type_Float, localTransformationInfo.b);
+      localTransformationInfo.jdField_a_of_type_Boolean = false;
+    }
   }
   
   private void a(Context paramContext)
@@ -65,16 +67,18 @@ public class ContentWrapView
   
   public float getTransX()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo.jdField_a_of_type_Float;
+    ContentWrapView.TransformationInfo localTransformationInfo = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo;
+    if (localTransformationInfo != null) {
+      return localTransformationInfo.jdField_a_of_type_Float;
     }
     return 0.0F;
   }
   
   public float getTransY()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo.b;
+    ContentWrapView.TransformationInfo localTransformationInfo = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView$TransformationInfo;
+    if (localTransformationInfo != null) {
+      return localTransformationInfo.b;
     }
     return 0.0F;
   }
@@ -94,7 +98,7 @@ public class ContentWrapView
   public void transXBy(float paramFloat)
   {
     if (paramFloat != 0.0F) {
-      transX(getTransX() + paramFloat);
+      transX(paramFloat + getTransX());
     }
   }
   
@@ -113,13 +117,13 @@ public class ContentWrapView
   public void transYBy(float paramFloat)
   {
     if (paramFloat != 0.0F) {
-      transX(getTransX() + paramFloat);
+      transX(paramFloat + getTransX());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.ContentWrapView
  * JD-Core Version:    0.7.0.1
  */

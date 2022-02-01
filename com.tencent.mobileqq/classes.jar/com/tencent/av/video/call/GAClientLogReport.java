@@ -17,14 +17,14 @@ public class GAClientLogReport
     return instance;
   }
   
-  public int sendLog(long paramLong, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
+  public int sendLog(long paramLong, String paramString, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    return ClientLogReport.instance().sendLog(paramLong, paramInt, paramArrayOfByte, paramBoolean);
+    return ClientLogReport.instance().sendLog(paramLong, paramString, paramArrayOfByte, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.call.GAClientLogReport
  * JD-Core Version:    0.7.0.1
  */

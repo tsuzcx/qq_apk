@@ -66,27 +66,33 @@ public class ChannelStateManager
   
   public int c()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()))
-    {
-      int i;
+    ??? = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    if ((??? != null) && (!((CopyOnWriteArrayList)???).isEmpty())) {
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        i = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0)).intValue();
-        if (!QLog.isColorLevel()) {
-          break label160;
-        }
-        StringBuilder localStringBuilder = new StringBuilder();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-        if (localIterator.hasNext())
+        int i = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0)).intValue();
+        if (QLog.isColorLevel())
         {
-          int j = ((Integer)localIterator.next()).intValue();
-          localStringBuilder.append(j + ",");
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          Object localObject3 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            int j = ((Integer)((Iterator)localObject3).next()).intValue();
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append(j);
+            localStringBuilder2.append(",");
+            localStringBuilder1.append(localStringBuilder2.toString());
+          }
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("getRecentTopEvent lastevent = ");
+          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append("， eventlist = ");
+          ((StringBuilder)localObject3).append(localStringBuilder1.toString());
+          QLog.d("PeakAudioTransHandler ChannelStateManager", 2, ((StringBuilder)localObject3).toString());
         }
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+        return i;
       }
-      QLog.d("PeakAudioTransHandler ChannelStateManager", 2, "getRecentTopEvent lastevent = " + i + "， eventlist = " + localObject2.toString());
-      label160:
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      return i;
     }
     return -1;
   }
@@ -118,67 +124,70 @@ public class ChannelStateManager
   
   public boolean g()
   {
-    boolean bool3 = true;
-    boolean bool1 = true;
-    boolean bool2 = false;
     int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
     int j = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    switch (i)
+    boolean bool2 = false;
+    boolean bool1;
+    if (i != 0) {
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            bool1 = bool2;
+            break label203;
+          }
+          bool1 = bool2;
+        }
+      }
+    }
+    switch (j)
     {
     default: 
       bool1 = bool2;
-    }
-    for (;;)
-    {
-      if ((!bool1) && (QLog.isColorLevel())) {
-        QLog.e("PeakAudioTransHandler ChannelStateManager", 2, "isLegalState , currentSessionState = " + i + " currentTCPState = " + j);
-      }
-      return bool1;
+      break;
       switch (j)
       {
-      }
-      for (bool1 = false;; bool1 = false) {
+      default: 
+        bool1 = bool2;
+        break label203;
+        bool1 = bool2;
+        switch (j)
+        {
+        default: 
+          bool1 = bool2;
+        }
         break;
       }
+      break;
+    case 10: 
+      bool1 = true;
+      break;
       bool1 = bool2;
       switch (j)
       {
-      case 11: 
-      case 12: 
-      case 13: 
+      case 10: 
       default: 
         bool1 = bool2;
-        break;
-      case 10: 
-        bool1 = true;
-        continue;
-        bool1 = bool3;
-        switch (j)
-        {
-        default: 
-          bool1 = false;
-        }
-        continue;
-        bool1 = bool2;
-        switch (j)
-        {
-        case 11: 
-        case 12: 
-        case 13: 
-        default: 
-          bool1 = bool2;
-          break;
-        case 10: 
-          bool1 = true;
-        }
-        break;
       }
+      break;
     }
+    label203:
+    if ((!bool1) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isLegalState , currentSessionState = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" currentTCPState = ");
+      localStringBuilder.append(j);
+      QLog.e("PeakAudioTransHandler ChannelStateManager", 2, localStringBuilder.toString());
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.server.ChannelStateManager
  * JD-Core Version:    0.7.0.1
  */

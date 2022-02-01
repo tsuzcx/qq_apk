@@ -16,32 +16,33 @@ class SocialFriendChooser$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 10001)
     {
-    default: 
-      return;
-    case 10001: 
-      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-      paramMessage.putString("agentversion", CommonDataAdapter.a().e());
-      paramMessage.putString("facetype", "mqqface");
-      String str = ServerSetting.a().a("https://fusion.qq.com/cgi-bin/appstage/get_image_update");
-      OpenSdkFriendService.a().a(str, paramMessage, new SocialFriendChooser.1.1(this));
+      if (i != 10002) {
+        return;
+      }
+      if ((this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask != null) && (!this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.isCancelled())) {
+        this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.cancel(true);
+      }
+      this.a.l();
+      paramMessage = new Intent();
+      paramMessage.putExtra("key_error_code", -7);
+      paramMessage.putExtra("key_error_msg", Constants.e);
+      this.a.setResult(-1, paramMessage);
+      this.a.finish();
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask != null) && (!this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.isCancelled())) {
-      this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.cancel(true);
-    }
-    this.a.l();
-    paramMessage = new Intent();
-    paramMessage.putExtra("key_error_code", -7);
-    paramMessage.putExtra("key_error_msg", Constants.e);
-    this.a.setResult(-1, paramMessage);
-    this.a.finish();
+    paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
+    paramMessage.putString("agentversion", CommonDataAdapter.a().e());
+    paramMessage.putString("facetype", "mqqface");
+    String str = ServerSetting.a().a("https://fusion.qq.com/cgi-bin/appstage/get_image_update");
+    OpenSdkFriendService.a().a(str, paramMessage, new SocialFriendChooser.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.SocialFriendChooser.1
  * JD-Core Version:    0.7.0.1
  */

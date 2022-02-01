@@ -10,38 +10,46 @@ class PublicAccountChatPie$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    case 5: 
-    case 7: 
-    case 8: 
-    default: 
-      return;
-    case 1: 
-      PublicAccountChatPie.a(this.a);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 6)
+            {
+              if (i != 9)
+              {
+                if (i != 10) {
+                  return;
+                }
+                PublicAccountChatPie.e(this.a);
+                return;
+              }
+              PublicAccountChatPie.b(this.a, paramMessage);
+              return;
+            }
+            PublicAccountChatPie.a(this.a, paramMessage);
+            return;
+          }
+          PublicAccountChatPie.d(this.a);
+          return;
+        }
+        PublicAccountChatPie.c(this.a);
+        return;
+      }
       PublicAccountChatPie.b(this.a);
       return;
-    case 3: 
-      PublicAccountChatPie.c(this.a);
-      return;
-    case 4: 
-      PublicAccountChatPie.d(this.a);
-      return;
-    case 6: 
-      PublicAccountChatPie.a(this.a, paramMessage);
-      return;
-    case 9: 
-      PublicAccountChatPie.b(this.a, paramMessage);
-      return;
     }
-    PublicAccountChatPie.e(this.a);
+    PublicAccountChatPie.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.1
  * JD-Core Version:    0.7.0.1
  */

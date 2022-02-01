@@ -52,22 +52,21 @@ public class CursorLoader
   
   public void deliverResult(Cursor paramCursor)
   {
-    if (isReset()) {
+    if (isReset())
+    {
       if (paramCursor != null) {
         paramCursor.close();
       }
-    }
-    Cursor localCursor;
-    do
-    {
       return;
-      localCursor = this.mCursor;
-      this.mCursor = paramCursor;
-      if (isStarted()) {
-        super.deliverResult(paramCursor);
-      }
-    } while ((localCursor == null) || (localCursor == paramCursor) || (localCursor.isClosed()));
-    localCursor.close();
+    }
+    Cursor localCursor = this.mCursor;
+    this.mCursor = paramCursor;
+    if (isStarted()) {
+      super.deliverResult(paramCursor);
+    }
+    if ((localCursor != null) && (localCursor != paramCursor) && (!localCursor.isClosed())) {
+      localCursor.close();
+    }
   }
   
   @Deprecated
@@ -135,105 +134,106 @@ public class CursorLoader
     //   1: monitorenter
     //   2: aload_0
     //   3: invokevirtual 141	androidx/loader/content/CursorLoader:isLoadInBackgroundCanceled	()Z
-    //   6: ifeq +16 -> 22
-    //   9: new 143	androidx/core/os/OperationCanceledException
-    //   12: dup
-    //   13: invokespecial 145	androidx/core/os/OperationCanceledException:<init>	()V
-    //   16: athrow
-    //   17: astore_1
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: aload_1
-    //   21: athrow
+    //   6: ifne +117 -> 123
+    //   9: aload_0
+    //   10: new 54	androidx/core/os/CancellationSignal
+    //   13: dup
+    //   14: invokespecial 143	androidx/core/os/CancellationSignal:<init>	()V
+    //   17: putfield 52	androidx/loader/content/CursorLoader:mCancellationSignal	Landroidx/core/os/CancellationSignal;
+    //   20: aload_0
+    //   21: monitorexit
     //   22: aload_0
-    //   23: new 54	androidx/core/os/CancellationSignal
-    //   26: dup
-    //   27: invokespecial 146	androidx/core/os/CancellationSignal:<init>	()V
-    //   30: putfield 52	androidx/loader/content/CursorLoader:mCancellationSignal	Landroidx/core/os/CancellationSignal;
+    //   23: invokevirtual 147	androidx/loader/content/CursorLoader:getContext	()Landroid/content/Context;
+    //   26: invokevirtual 153	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   29: aload_0
+    //   30: getfield 38	androidx/loader/content/CursorLoader:mUri	Landroid/net/Uri;
     //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_0
-    //   36: invokevirtual 150	androidx/loader/content/CursorLoader:getContext	()Landroid/content/Context;
-    //   39: invokevirtual 156	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   42: aload_0
-    //   43: getfield 38	androidx/loader/content/CursorLoader:mUri	Landroid/net/Uri;
-    //   46: aload_0
-    //   47: getfield 40	androidx/loader/content/CursorLoader:mProjection	[Ljava/lang/String;
-    //   50: aload_0
-    //   51: getfield 42	androidx/loader/content/CursorLoader:mSelection	Ljava/lang/String;
-    //   54: aload_0
-    //   55: getfield 44	androidx/loader/content/CursorLoader:mSelectionArgs	[Ljava/lang/String;
-    //   58: aload_0
-    //   59: getfield 46	androidx/loader/content/CursorLoader:mSortOrder	Ljava/lang/String;
-    //   62: aload_0
-    //   63: getfield 52	androidx/loader/content/CursorLoader:mCancellationSignal	Landroidx/core/os/CancellationSignal;
-    //   66: invokestatic 162	androidx/core/content/ContentResolverCompat:query	(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroidx/core/os/CancellationSignal;)Landroid/database/Cursor;
-    //   69: astore_1
-    //   70: aload_1
-    //   71: ifnull +20 -> 91
-    //   74: aload_1
-    //   75: invokeinterface 166 1 0
-    //   80: pop
-    //   81: aload_1
-    //   82: aload_0
-    //   83: getfield 32	androidx/loader/content/CursorLoader:mObserver	Landroidx/loader/content/Loader$ForceLoadContentObserver;
-    //   86: invokeinterface 170 2 0
-    //   91: aload_0
-    //   92: monitorenter
-    //   93: aload_0
-    //   94: aconst_null
-    //   95: putfield 52	androidx/loader/content/CursorLoader:mCancellationSignal	Landroidx/core/os/CancellationSignal;
-    //   98: aload_0
-    //   99: monitorexit
-    //   100: aload_1
-    //   101: areturn
-    //   102: astore_2
-    //   103: aload_1
-    //   104: invokeinterface 68 1 0
-    //   109: aload_2
-    //   110: athrow
-    //   111: astore_1
-    //   112: aload_0
-    //   113: monitorenter
+    //   34: getfield 40	androidx/loader/content/CursorLoader:mProjection	[Ljava/lang/String;
+    //   37: aload_0
+    //   38: getfield 42	androidx/loader/content/CursorLoader:mSelection	Ljava/lang/String;
+    //   41: aload_0
+    //   42: getfield 44	androidx/loader/content/CursorLoader:mSelectionArgs	[Ljava/lang/String;
+    //   45: aload_0
+    //   46: getfield 46	androidx/loader/content/CursorLoader:mSortOrder	Ljava/lang/String;
+    //   49: aload_0
+    //   50: getfield 52	androidx/loader/content/CursorLoader:mCancellationSignal	Landroidx/core/os/CancellationSignal;
+    //   53: invokestatic 159	androidx/core/content/ContentResolverCompat:query	(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroidx/core/os/CancellationSignal;)Landroid/database/Cursor;
+    //   56: astore_1
+    //   57: aload_1
+    //   58: ifnull +32 -> 90
+    //   61: aload_1
+    //   62: invokeinterface 163 1 0
+    //   67: pop
+    //   68: aload_1
+    //   69: aload_0
+    //   70: getfield 32	androidx/loader/content/CursorLoader:mObserver	Landroidx/loader/content/Loader$ForceLoadContentObserver;
+    //   73: invokeinterface 167 2 0
+    //   78: goto +12 -> 90
+    //   81: astore_2
+    //   82: aload_1
+    //   83: invokeinterface 68 1 0
+    //   88: aload_2
+    //   89: athrow
+    //   90: aload_0
+    //   91: monitorenter
+    //   92: aload_0
+    //   93: aconst_null
+    //   94: putfield 52	androidx/loader/content/CursorLoader:mCancellationSignal	Landroidx/core/os/CancellationSignal;
+    //   97: aload_0
+    //   98: monitorexit
+    //   99: aload_1
+    //   100: areturn
+    //   101: astore_1
+    //   102: aload_0
+    //   103: monitorexit
+    //   104: aload_1
+    //   105: athrow
+    //   106: astore_1
+    //   107: aload_0
+    //   108: monitorenter
+    //   109: aload_0
+    //   110: aconst_null
+    //   111: putfield 52	androidx/loader/content/CursorLoader:mCancellationSignal	Landroidx/core/os/CancellationSignal;
     //   114: aload_0
-    //   115: aconst_null
-    //   116: putfield 52	androidx/loader/content/CursorLoader:mCancellationSignal	Landroidx/core/os/CancellationSignal;
+    //   115: monitorexit
+    //   116: aload_1
+    //   117: athrow
+    //   118: astore_1
     //   119: aload_0
     //   120: monitorexit
     //   121: aload_1
     //   122: athrow
-    //   123: astore_1
-    //   124: aload_0
-    //   125: monitorexit
-    //   126: aload_1
-    //   127: athrow
-    //   128: astore_1
-    //   129: aload_0
-    //   130: monitorexit
-    //   131: aload_1
-    //   132: athrow
+    //   123: new 169	androidx/core/os/OperationCanceledException
+    //   126: dup
+    //   127: invokespecial 170	androidx/core/os/OperationCanceledException:<init>	()V
+    //   130: athrow
+    //   131: astore_1
+    //   132: aload_0
+    //   133: monitorexit
+    //   134: aload_1
+    //   135: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	133	0	this	CursorLoader
-    //   17	4	1	localObject1	Object
-    //   69	35	1	localCursor	Cursor
-    //   111	11	1	localObject2	Object
-    //   123	4	1	localObject3	Object
-    //   128	4	1	localObject4	Object
-    //   102	8	2	localRuntimeException	java.lang.RuntimeException
+    //   0	136	0	this	CursorLoader
+    //   56	44	1	localCursor	Cursor
+    //   101	4	1	localObject1	Object
+    //   106	11	1	localObject2	Object
+    //   118	4	1	localObject3	Object
+    //   131	4	1	localObject4	Object
+    //   81	8	2	localRuntimeException	java.lang.RuntimeException
     // Exception table:
     //   from	to	target	type
-    //   2	17	17	finally
-    //   18	20	17	finally
-    //   22	35	17	finally
-    //   74	91	102	java/lang/RuntimeException
-    //   35	70	111	finally
-    //   74	91	111	finally
-    //   103	111	111	finally
-    //   93	100	123	finally
-    //   124	126	123	finally
-    //   114	121	128	finally
-    //   129	131	128	finally
+    //   61	78	81	java/lang/RuntimeException
+    //   92	99	101	finally
+    //   102	104	101	finally
+    //   22	57	106	finally
+    //   61	78	106	finally
+    //   82	90	106	finally
+    //   109	116	118	finally
+    //   119	121	118	finally
+    //   2	22	131	finally
+    //   123	131	131	finally
+    //   132	134	131	finally
   }
   
   public void onCanceled(Cursor paramCursor)
@@ -247,7 +247,8 @@ public class CursorLoader
   {
     super.onReset();
     onStopLoading();
-    if ((this.mCursor != null) && (!this.mCursor.isClosed())) {
+    Cursor localCursor = this.mCursor;
+    if ((localCursor != null) && (!localCursor.isClosed())) {
       this.mCursor.close();
     }
     this.mCursor = null;
@@ -255,8 +256,9 @@ public class CursorLoader
   
   protected void onStartLoading()
   {
-    if (this.mCursor != null) {
-      deliverResult(this.mCursor);
+    Cursor localCursor = this.mCursor;
+    if (localCursor != null) {
+      deliverResult(localCursor);
     }
     if ((takeContentChanged()) || (this.mCursor == null)) {
       forceLoad();
@@ -295,7 +297,7 @@ public class CursorLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.loader.content.CursorLoader
  * JD-Core Version:    0.7.0.1
  */

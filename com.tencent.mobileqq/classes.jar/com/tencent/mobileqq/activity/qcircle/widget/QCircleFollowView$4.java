@@ -4,7 +4,6 @@ import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
 import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.qcircle.api.IQCircleFollowApi;
 import com.tencent.mobileqq.qcircle.api.event.QCircleFollowUpdateEvent;
@@ -21,7 +20,15 @@ final class QCircleFollowView$4
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
   {
-    QLog.d("QCircleFollowView", 1, "doFollow: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
+    paramBaseRequest = new StringBuilder();
+    paramBaseRequest.append("doFollow: isSuccess");
+    paramBaseRequest.append(paramBoolean);
+    paramBaseRequest.append("retCode:");
+    paramBaseRequest.append(paramLong);
+    paramBaseRequest.append("    errMsg:");
+    paramBaseRequest.append(paramString);
+    QLog.d("QCircleFollowView", 1, paramBaseRequest.toString());
+    boolean bool = false;
     if ((paramBoolean) && (paramLong == 0L))
     {
       if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser != null)
@@ -29,24 +36,32 @@ final class QCircleFollowView$4
         SimpleEventBus.getInstance().dispatchEvent(new QCircleFollowUpdateEvent(this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get()));
         QCircleFollowView.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get(), this.jdField_a_of_type_Int);
         ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).setUinFollowed(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get(), this.jdField_a_of_type_Int);
-        if (paramStDoFollowRsp != null) {
-          ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).updateFollowUser(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.nick.get(), paramStDoFollowRsp.isDoubly.get());
+        if (paramStDoFollowRsp != null)
+        {
+          paramBoolean = bool;
+          if (this.jdField_a_of_type_Int == 1) {
+            paramBoolean = true;
+          }
+          ((IQCircleFollowApi)QRoute.api(IQCircleFollowApi.class)).updateFollowUser(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser.nick.get(), paramBoolean);
         }
       }
-      return;
     }
-    paramBaseRequest = BaseApplicationImpl.getContext();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2131697900;; i = 2131698032)
+    else
     {
+      paramBaseRequest = BaseApplicationImpl.getContext();
+      int i;
+      if (this.jdField_a_of_type_Boolean) {
+        i = 2131697906;
+      } else {
+        i = 2131698039;
+      }
       QQToast.a(paramBaseRequest, 1, i, 0).a();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.widget.QCircleFollowView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public class FastImagePreviewLayout
   extends LinearLayout
 {
   public static final long SHOW_TIMEOUT = 2000L;
-  static String TAG = FastImagePreviewLayout.class.getSimpleName();
+  static String TAG = "FastImagePreviewLayout";
   final String CACHE_IMAGE = "/tencent/zebra/cache/";
   Context context;
   float density;
@@ -65,12 +65,17 @@ public class FastImagePreviewLayout
   
   public void showFastImage()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TAG, 2, "showFastImage called, path = " + PlusPanelUtils.b);
+    if (QLog.isColorLevel())
+    {
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showFastImage called, path = ");
+      localStringBuilder.append(PlusPanelUtils.b);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     removeAllViews();
-    Object localObject = inflate(this.context, 2131558642, null);
-    ((ImageView)((View)localObject).findViewById(2131366610)).setImageDrawable(this.fastImgDrawable);
+    Object localObject = inflate(this.context, 2131558543, null);
+    ((ImageView)((View)localObject).findViewById(2131366479)).setImageDrawable(this.fastImgDrawable);
     addView((View)localObject);
     setVisibility(0);
     localObject = new AlphaAnimation(0.0F, 1.0F);
@@ -82,7 +87,7 @@ public class FastImagePreviewLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FastImagePreviewLayout
  * JD-Core Version:    0.7.0.1
  */

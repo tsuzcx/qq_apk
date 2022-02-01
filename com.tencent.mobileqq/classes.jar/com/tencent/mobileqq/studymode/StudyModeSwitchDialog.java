@@ -37,7 +37,7 @@ public final class StudyModeSwitchDialog
   
   public StudyModeSwitchDialog(@NotNull BaseActivity paramBaseActivity)
   {
-    super((Context)paramBaseActivity, 2131755176);
+    super((Context)paramBaseActivity, 2131755340);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new StudyModeSwitchDialog.ivClose.2(this));
     this.b = LazyKt.lazy((Function0)new StudyModeSwitchDialog.btnSwitchOn.2(this));
@@ -50,7 +50,7 @@ public final class StudyModeSwitchDialog
       }
       ImmersiveUtils.clearCoverForStatus(paramBaseActivity, true);
     }
-    setContentView(2131559014);
+    setContentView(2131558908);
     a();
     a().a((ModeSwitchManager.OnModeChangeResultCallback)this);
     ReportController.b((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800ADD4", "0X800ADD4", 0, 0, "", "", "", "");
@@ -82,12 +82,12 @@ public final class StudyModeSwitchDialog
   {
     if (a().a())
     {
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131719137, 0).a();
+      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131718855, 0).a();
       return;
     }
     if (ModeConstantsKt.a() == 2)
     {
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131719549, 0).a();
+      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131719268, 0).a();
       dismiss();
       return;
     }
@@ -95,7 +95,7 @@ public final class StudyModeSwitchDialog
     ModeSwitchManager.SwitchingStatus localSwitchingStatus = a().a((Activity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, i, true);
     if ((!localSwitchingStatus.a()) && (localSwitchingStatus.a() == localSwitchingStatus.b()))
     {
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131719549, 0).a();
+      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131719268, 0).a();
       dismiss();
     }
     ReportController.b((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800ADD5", "0X800ADD5", 0, 0, "", "", "", "");
@@ -104,25 +104,22 @@ public final class StudyModeSwitchDialog
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "message");
-    Context localContext;
-    if (!TextUtils.isEmpty((CharSequence)paramString))
+    paramString = (CharSequence)paramString;
+    if (!TextUtils.isEmpty(paramString))
     {
-      localContext = (Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      if (!paramBoolean) {
-        break label70;
+      Context localContext = (Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      if (paramBoolean) {
+        paramInt1 = 2;
+      } else {
+        paramInt1 = 1;
       }
+      QQToast.a(localContext, paramInt1, paramString, 0).a();
     }
-    label70:
-    for (paramInt1 = 2;; paramInt1 = 1)
-    {
-      QQToast.a(localContext, paramInt1, (CharSequence)paramString, 0).a();
-      paramString = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-      if (paramString != null) {
-        paramString.dismiss();
-      }
-      dismiss();
-      return;
+    paramString = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if (paramString != null) {
+      paramString.dismiss();
     }
+    dismiss();
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
@@ -167,12 +164,12 @@ public final class StudyModeSwitchDialog
   
   public void d(int paramInt1, int paramInt2)
   {
-    QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131719137, 0).a();
+    QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131718855, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialog
  * JD-Core Version:    0.7.0.1
  */

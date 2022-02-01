@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.specialcare;
 
+import android.content.Context;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.mobileqq.app.CardHandler;
@@ -18,11 +19,16 @@ class SpecailCareListActivity$5
   {
     if (paramCompoundButton == SpecailCareListActivity.a(this.a).a())
     {
-      SettingCloneUtil.writeValue(this.a, SpecailCareListActivity.a(this.a), this.a.getString(2131717233), "qqsetting_special_care_bar", paramBoolean);
+      Object localObject = this.a;
+      SettingCloneUtil.writeValue((Context)localObject, SpecailCareListActivity.a((SpecailCareListActivity)localObject), this.a.getString(2131716892), "qqsetting_special_care_bar", paramBoolean);
       SpecailCareListActivity.a(this.a).c(paramBoolean);
       NotifyIdManager.a(paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.i("SpecailCareListActivity", 2, "onCheckedChanged: invoked. care bar  isChecked: " + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onCheckedChanged: invoked. care bar  isChecked: ");
+        ((StringBuilder)localObject).append(paramBoolean);
+        QLog.i("SpecailCareListActivity", 2, ((StringBuilder)localObject).toString());
       }
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -30,7 +36,7 @@ class SpecailCareListActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.5
  * JD-Core Version:    0.7.0.1
  */

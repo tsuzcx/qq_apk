@@ -50,28 +50,28 @@ public class CommodityItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public int a()
+  protected int a()
   {
-    return 2131558839;
+    return 2131558737;
   }
   
-  public View.OnClickListener a()
+  protected View.OnClickListener a()
   {
     return new CommodityItemView.2(this);
   }
   
-  public View a()
+  protected View a()
   {
     return this;
   }
   
-  public void a(Context paramContext, View paramView)
+  protected void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369624));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380276));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380277));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380238);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369635);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131369330));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379589));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379590));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379555);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369336);
     this.c = (ImmersiveUtils.getScreenWidth() * 5 / 6);
     if (getLayoutParams() == null) {
       setLayoutParams(new FrameLayout.LayoutParams(this.c, ImmersiveUtils.dpToPx(132.0F)));
@@ -79,26 +79,33 @@ public class CommodityItemView
     this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(ImmersiveUtils.getScreenWidth() / 750 * 24);
   }
   
-  public void a(Object paramObject)
+  protected void a(Object paramObject)
   {
+    Object localObject;
     long l;
     if ((paramObject instanceof CommodityBean))
     {
-      localObject = ((CommodityBean)paramObject).mTitle;
-      l = ((CommodityBean)paramObject).mPrice;
-      paramObject = ((CommodityBean)paramObject).mImg;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      if (l % 100L != 0L) {
-        break label228;
-      }
+      paramObject = (CommodityBean)paramObject;
+      localObject = paramObject.mTitle;
+      l = paramObject.mPrice;
+      paramObject = paramObject.mImg;
     }
-    label228:
-    for (Object localObject = String.format("%d", new Object[] { Long.valueOf(l / 100L) });; localObject = String.format("%.2f", new Object[] { Float.valueOf((float)l / 100.0F) }))
+    else
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-        break label261;
-      }
+      paramObject = (CertifiedAccountMeta.StYouZanGood)paramObject;
+      localObject = paramObject.title.get();
+      l = paramObject.price.get();
+      paramObject = paramObject.img.get();
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    if (l % 100L == 0L) {
+      localObject = String.format("%d", new Object[] { Long.valueOf(l / 100L) });
+    } else {
+      localObject = String.format("%.2f", new Object[] { Float.valueOf((float)l / 100.0F) });
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+    {
       try
       {
         localObject = URLDrawable.URLDrawableOptions.obtain();
@@ -111,22 +118,22 @@ public class CommodityItemView
       }
       catch (Exception paramObject)
       {
-        for (;;)
-        {
-          paramObject.printStackTrace();
-        }
+        paramObject.printStackTrace();
       }
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-        VSReporter.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + SubscribeShareHelper.a(a()), "exp_goods", 0, 0, new String[0]);
+      paramObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+      if (paramObject != null)
+      {
+        paramObject = paramObject.poster.id.get();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("auth_");
+        ((StringBuilder)localObject).append(SubscribeShareHelper.a(a()));
+        VSReporter.a(paramObject, ((StringBuilder)localObject).toString(), "exp_goods", 0, 0, new String[0]);
       }
-      return;
-      localObject = ((CertifiedAccountMeta.StYouZanGood)paramObject).title.get();
-      l = ((CertifiedAccountMeta.StYouZanGood)paramObject).price.get();
-      paramObject = ((CertifiedAccountMeta.StYouZanGood)paramObject).img.get();
-      break;
     }
-    label261:
-    ImageLoader.getInstance().loadImageAsync(paramObject, new CommodityItemView.1(this));
+    else
+    {
+      ImageLoader.getInstance().loadImageAsync(paramObject, new CommodityItemView.1(this));
+    }
   }
   
   public View b()
@@ -142,20 +149,20 @@ public class CommodityItemView
   public void setIsPublishUI(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    if (!paramBoolean) {}
-    do
-    {
+    if (!paramBoolean) {
       return;
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-    } while (this.jdField_b_of_type_AndroidViewView.getVisibility() != 8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    }
+    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    if (this.jdField_b_of_type_AndroidViewView.getVisibility() == 8) {
+      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityItemView
  * JD-Core Version:    0.7.0.1
  */

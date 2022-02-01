@@ -18,13 +18,16 @@ class ConfessPlugin$3
     catch (Exception localException)
     {
       localException.printStackTrace();
-      QLog.d("ConfessPlugin", 1, "showQQToast error: " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showQQToast error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.d("ConfessPlugin", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.3
  * JD-Core Version:    0.7.0.1
  */

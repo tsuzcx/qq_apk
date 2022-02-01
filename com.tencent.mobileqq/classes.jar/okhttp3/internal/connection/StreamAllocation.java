@@ -34,16 +34,6 @@ public final class StreamAllocation
   private RouteSelector.Selection routeSelection;
   private final RouteSelector routeSelector;
   
-  static
-  {
-    if (!StreamAllocation.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public StreamAllocation(ConnectionPool paramConnectionPool, Address paramAddress, Call paramCall, EventListener paramEventListener, Object paramObject)
   {
     this.connectionPool = paramConnectionPool;
@@ -56,188 +46,184 @@ public final class StreamAllocation
   
   private Socket deallocate(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    Object localObject2 = null;
-    assert (Thread.holdsLock(this.connectionPool));
     if (paramBoolean3) {
       this.codec = null;
     }
     if (paramBoolean2) {
       this.released = true;
     }
-    Object localObject1 = localObject2;
-    if (this.connection != null)
+    Object localObject = this.connection;
+    if (localObject != null)
     {
       if (paramBoolean1) {
-        this.connection.noNewStreams = true;
+        ((RealConnection)localObject).noNewStreams = true;
       }
-      localObject1 = localObject2;
-      if (this.codec == null) {
-        if (!this.released)
+      if ((this.codec == null) && ((this.released) || (this.connection.noNewStreams)))
+      {
+        release(this.connection);
+        if (this.connection.allocations.isEmpty())
         {
-          localObject1 = localObject2;
-          if (!this.connection.noNewStreams) {}
-        }
-        else
-        {
-          release(this.connection);
-          if (!this.connection.allocations.isEmpty()) {
-            break label167;
-          }
           this.connection.idleAtNanos = System.nanoTime();
-          if (!Internal.instance.connectionBecameIdle(this.connectionPool, this.connection)) {
-            break label167;
+          if (Internal.instance.connectionBecameIdle(this.connectionPool, this.connection))
+          {
+            localObject = this.connection.socket();
+            break label128;
           }
         }
+        localObject = null;
+        label128:
+        this.connection = null;
+        return localObject;
       }
     }
-    label167:
-    for (localObject1 = this.connection.socket();; localObject1 = null)
-    {
-      this.connection = null;
-      return localObject1;
-    }
+    return null;
   }
   
   private RealConnection findConnection(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    int j = 0;
-    Object localObject6 = null;
-    Route localRoute = null;
+    Object localObject6;
+    int i;
+    Object localObject7;
+    int k;
+    label242:
+    Object localObject5;
+    label645:
+    label648:
+    label662:
     synchronized (this.connectionPool)
     {
-      if (this.released) {
+      if (!this.released)
+      {
+        if (this.codec == null)
+        {
+          if (!this.canceled)
+          {
+            localObject6 = this.connection;
+            Object localObject11 = releaseIfNoNewStreams();
+            Object localObject1 = this.connection;
+            Object localObject9 = null;
+            if (localObject1 != null)
+            {
+              localObject1 = this.connection;
+              localObject6 = null;
+              ??? = localObject6;
+              if (!this.reportedAcquired) {
+                ??? = null;
+              }
+              if (localObject1 != null) {
+                break label645;
+              }
+              Internal.instance.get(this.connectionPool, this.address, this, null);
+              if (this.connection != null)
+              {
+                localObject6 = this.connection;
+                localObject1 = null;
+                i = 1;
+              }
+              else
+              {
+                localObject7 = this.route;
+                break label648;
+              }
+              Util.closeQuietly((Socket)localObject11);
+              if (??? != null) {
+                this.eventListener.connectionReleased(this.call, (Connection)???);
+              }
+              if (i != 0) {
+                this.eventListener.connectionAcquired(this.call, (Connection)localObject6);
+              }
+              if (localObject6 != null)
+              {
+                this.route = this.connection.route();
+                return localObject6;
+              }
+              if (localObject1 == null)
+              {
+                localObject7 = this.routeSelection;
+                if ((localObject7 == null) || (!((RouteSelector.Selection)localObject7).hasNext()))
+                {
+                  this.routeSelection = this.routeSelector.next();
+                  k = 1;
+                  break label242;
+                }
+              }
+              k = 0;
+              synchronized (this.connectionPool)
+              {
+                if (!this.canceled)
+                {
+                  int j = i;
+                  localObject7 = localObject6;
+                  if (k != 0)
+                  {
+                    ??? = this.routeSelection.getAll();
+                    int m = ((List)???).size();
+                    k = 0;
+                    j = i;
+                    localObject7 = localObject6;
+                    if (k < m)
+                    {
+                      localObject11 = (Route)((List)???).get(k);
+                      Internal.instance.get(this.connectionPool, this.address, this, (Route)localObject11);
+                      if (this.connection == null) {
+                        break label662;
+                      }
+                      localObject7 = this.connection;
+                      this.route = ((Route)localObject11);
+                      j = 1;
+                    }
+                  }
+                  localObject6 = localObject7;
+                  if (j == 0)
+                  {
+                    localObject6 = localObject1;
+                    if (localObject1 == null) {
+                      localObject6 = this.routeSelection.next();
+                    }
+                    this.route = ((Route)localObject6);
+                    this.refusedStreamCount = 0;
+                    localObject6 = new RealConnection(this.connectionPool, (Route)localObject6);
+                    acquire((RealConnection)localObject6, false);
+                  }
+                  if (j != 0)
+                  {
+                    this.eventListener.connectionAcquired(this.call, (Connection)localObject6);
+                    return localObject6;
+                  }
+                  ((RealConnection)localObject6).connect(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, this.call, this.eventListener);
+                  routeDatabase().connected(((RealConnection)localObject6).route());
+                  synchronized (this.connectionPool)
+                  {
+                    this.reportedAcquired = true;
+                    Internal.instance.put(this.connectionPool, (RealConnection)localObject6);
+                    localObject7 = localObject9;
+                    localObject1 = localObject6;
+                    if (((RealConnection)localObject6).isMultiplexed())
+                    {
+                      localObject7 = Internal.instance.deduplicate(this.connectionPool, this.address, this);
+                      localObject1 = this.connection;
+                    }
+                    Util.closeQuietly((Socket)localObject7);
+                    this.eventListener.connectionAcquired(this.call, (Connection)localObject1);
+                    return localObject1;
+                  }
+                }
+                throw new IOException("Canceled");
+              }
+            }
+          }
+          else
+          {
+            throw new IOException("Canceled");
+          }
+        }
+        else {
+          throw new IllegalStateException("codec != null");
+        }
+      }
+      else {
         throw new IllegalStateException("released");
       }
-    }
-    if (this.codec != null) {
-      throw new IllegalStateException("codec != null");
-    }
-    if (this.canceled) {
-      throw new IOException("Canceled");
-    }
-    Object localObject2 = this.connection;
-    Socket localSocket = releaseIfNoNewStreams();
-    if (this.connection != null)
-    {
-      localObject6 = this.connection;
-      localObject2 = null;
-    }
-    ??? = localObject2;
-    if (!this.reportedAcquired) {
-      ??? = null;
-    }
-    Object localObject7 = localObject6;
-    localObject2 = localRoute;
-    int i = j;
-    if (localObject6 == null)
-    {
-      Internal.instance.get(this.connectionPool, this.address, this, null);
-      if (this.connection == null) {
-        break label236;
-      }
-      i = 1;
-      localObject7 = this.connection;
-      localObject2 = localRoute;
-    }
-    for (;;)
-    {
-      Util.closeQuietly(localSocket);
-      if (??? != null) {
-        this.eventListener.connectionReleased(this.call, (Connection)???);
-      }
-      if (i != 0) {
-        this.eventListener.connectionAcquired(this.call, (Connection)localObject7);
-      }
-      if (localObject7 == null) {
-        break;
-      }
-      this.route = this.connection.route();
-      return localObject7;
-      label236:
-      localObject2 = this.route;
-      localObject7 = localObject6;
-      i = j;
-    }
-    int k = 0;
-    j = k;
-    if (localObject2 == null) {
-      if (this.routeSelection != null)
-      {
-        j = k;
-        if (this.routeSelection.hasNext()) {}
-      }
-      else
-      {
-        j = 1;
-        this.routeSelection = this.routeSelector.next();
-      }
-    }
-    synchronized (this.connectionPool)
-    {
-      if (this.canceled) {
-        throw new IOException("Canceled");
-      }
-    }
-    if (j != 0)
-    {
-      localObject6 = this.routeSelection.getAll();
-      k = ((List)localObject6).size();
-      j = 0;
-      if (j < k)
-      {
-        localRoute = (Route)((List)localObject6).get(j);
-        Internal.instance.get(this.connectionPool, this.address, this, localRoute);
-        if (this.connection != null)
-        {
-          i = 1;
-          localObject6 = this.connection;
-          this.route = localRoute;
-        }
-      }
-    }
-    for (;;)
-    {
-      Object localObject4;
-      if (i == 0)
-      {
-        if (localObject3 != null) {
-          break label634;
-        }
-        localObject4 = this.routeSelection.next();
-      }
-      label634:
-      for (;;)
-      {
-        this.route = ((Route)localObject4);
-        this.refusedStreamCount = 0;
-        localObject6 = new RealConnection(this.connectionPool, (Route)localObject4);
-        acquire((RealConnection)localObject6, false);
-        if (i != 0)
-        {
-          this.eventListener.connectionAcquired(this.call, (Connection)localObject6);
-          return localObject6;
-          j += 1;
-          break;
-        }
-        ((RealConnection)localObject6).connect(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, this.call, this.eventListener);
-        routeDatabase().connected(((RealConnection)localObject6).route());
-        localObject7 = null;
-        synchronized (this.connectionPool)
-        {
-          this.reportedAcquired = true;
-          Internal.instance.put(this.connectionPool, (RealConnection)localObject6);
-          localObject4 = localObject6;
-          if (((RealConnection)localObject6).isMultiplexed())
-          {
-            localObject7 = Internal.instance.deduplicate(this.connectionPool, this.address, this);
-            localObject4 = this.connection;
-          }
-          Util.closeQuietly((Socket)localObject7);
-          this.eventListener.connectionAcquired(this.call, (Connection)localObject4);
-          return localObject4;
-        }
-      }
-      localObject6 = localObject7;
     }
   }
   
@@ -245,18 +231,23 @@ public final class StreamAllocation
   {
     for (;;)
     {
-      RealConnection localRealConnection1 = findConnection(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1);
+      RealConnection localRealConnection = findConnection(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1);
       synchronized (this.connectionPool)
       {
-        if ((localRealConnection1.successCount == 0) && (!localRealConnection1.isMultiplexed())) {
-          return localRealConnection1;
+        if ((localRealConnection.successCount == 0) && (!localRealConnection.isMultiplexed())) {
+          return localRealConnection;
         }
-        if (!localRealConnection1.isHealthy(paramBoolean2)) {
+        if (!localRealConnection.isHealthy(paramBoolean2)) {
           noNewStreams();
+        } else {
+          return localRealConnection;
         }
       }
     }
-    return localRealConnection2;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void release(RealConnection paramRealConnection)
@@ -272,12 +263,15 @@ public final class StreamAllocation
       }
       i += 1;
     }
-    throw new IllegalStateException();
+    paramRealConnection = new IllegalStateException();
+    for (;;)
+    {
+      throw paramRealConnection;
+    }
   }
   
   private Socket releaseIfNoNewStreams()
   {
-    assert (Thread.holdsLock(this.connectionPool));
     RealConnection localRealConnection = this.connection;
     if ((localRealConnection != null) && (localRealConnection.noNewStreams)) {
       return deallocate(false, false, true);
@@ -292,33 +286,33 @@ public final class StreamAllocation
   
   public void acquire(RealConnection paramRealConnection, boolean paramBoolean)
   {
-    assert (Thread.holdsLock(this.connectionPool));
-    if (this.connection != null) {
-      throw new IllegalStateException();
+    if (this.connection == null)
+    {
+      this.connection = paramRealConnection;
+      this.reportedAcquired = paramBoolean;
+      paramRealConnection.allocations.add(new StreamAllocation.StreamAllocationReference(this, this.callStackTrace));
+      return;
     }
-    this.connection = paramRealConnection;
-    this.reportedAcquired = paramBoolean;
-    paramRealConnection.allocations.add(new StreamAllocation.StreamAllocationReference(this, this.callStackTrace));
+    throw new IllegalStateException();
   }
   
   public void cancel()
   {
-    RealConnection localRealConnection;
-    do
+    synchronized (this.connectionPool)
     {
-      synchronized (this.connectionPool)
+      this.canceled = true;
+      HttpCodec localHttpCodec = this.codec;
+      RealConnection localRealConnection = this.connection;
+      if (localHttpCodec != null)
       {
-        this.canceled = true;
-        HttpCodec localHttpCodec = this.codec;
-        localRealConnection = this.connection;
-        if (localHttpCodec != null)
-        {
-          localHttpCodec.cancel();
-          return;
-        }
+        localHttpCodec.cancel();
+        return;
       }
-    } while (localRealConnection == null);
-    localRealConnection.cancel();
+      if (localRealConnection != null) {
+        localRealConnection.cancel();
+      }
+      return;
+    }
   }
   
   public HttpCodec codec()
@@ -346,7 +340,14 @@ public final class StreamAllocation
   
   public boolean hasMoreRoutes()
   {
-    return (this.route != null) || ((this.routeSelection != null) && (this.routeSelection.hasNext())) || (this.routeSelector.hasNext());
+    if (this.route == null)
+    {
+      RouteSelector.Selection localSelection = this.routeSelection;
+      if (((localSelection == null) || (!localSelection.hasNext())) && (!this.routeSelector.hasNext())) {
+        return false;
+      }
+    }
+    return true;
   }
   
   /* Error */
@@ -354,19 +355,19 @@ public final class StreamAllocation
   {
     // Byte code:
     //   0: aload_2
-    //   1: invokeinterface 280 1 0
+    //   1: invokeinterface 266 1 0
     //   6: istore 4
     //   8: aload_2
-    //   9: invokeinterface 283 1 0
+    //   9: invokeinterface 269 1 0
     //   14: istore 5
     //   16: aload_2
-    //   17: invokeinterface 286 1 0
+    //   17: invokeinterface 272 1 0
     //   22: istore 6
     //   24: aload_1
-    //   25: invokevirtual 291	okhttp3/OkHttpClient:pingIntervalMillis	()I
+    //   25: invokevirtual 277	okhttp3/OkHttpClient:pingIntervalMillis	()I
     //   28: istore 7
     //   30: aload_1
-    //   31: invokevirtual 294	okhttp3/OkHttpClient:retryOnConnectionFailure	()Z
+    //   31: invokevirtual 280	okhttp3/OkHttpClient:retryOnConnectionFailure	()Z
     //   34: istore 8
     //   36: aload_0
     //   37: iload 4
@@ -375,20 +376,20 @@ public final class StreamAllocation
     //   43: iload 7
     //   45: iload 8
     //   47: iload_3
-    //   48: invokespecial 296	okhttp3/internal/connection/StreamAllocation:findHealthyConnection	(IIIIZZ)Lokhttp3/internal/connection/RealConnection;
+    //   48: invokespecial 282	okhttp3/internal/connection/StreamAllocation:findHealthyConnection	(IIIIZZ)Lokhttp3/internal/connection/RealConnection;
     //   51: aload_1
     //   52: aload_2
     //   53: aload_0
-    //   54: invokevirtual 300	okhttp3/internal/connection/RealConnection:newCodec	(Lokhttp3/OkHttpClient;Lokhttp3/Interceptor$Chain;Lokhttp3/internal/connection/StreamAllocation;)Lokhttp3/internal/http/HttpCodec;
+    //   54: invokevirtual 286	okhttp3/internal/connection/RealConnection:newCodec	(Lokhttp3/OkHttpClient;Lokhttp3/Interceptor$Chain;Lokhttp3/internal/connection/StreamAllocation;)Lokhttp3/internal/http/HttpCodec;
     //   57: astore_2
     //   58: aload_0
-    //   59: getfield 48	okhttp3/internal/connection/StreamAllocation:connectionPool	Lokhttp3/ConnectionPool;
+    //   59: getfield 41	okhttp3/internal/connection/StreamAllocation:connectionPool	Lokhttp3/ConnectionPool;
     //   62: astore_1
     //   63: aload_1
     //   64: monitorenter
     //   65: aload_0
     //   66: aload_2
-    //   67: putfield 80	okhttp3/internal/connection/StreamAllocation:codec	Lokhttp3/internal/http/HttpCodec;
+    //   67: putfield 64	okhttp3/internal/connection/StreamAllocation:codec	Lokhttp3/internal/http/HttpCodec;
     //   70: aload_1
     //   71: monitorexit
     //   72: aload_2
@@ -399,10 +400,10 @@ public final class StreamAllocation
     //   77: aload_2
     //   78: athrow
     //   79: astore_1
-    //   80: new 302	okhttp3/internal/connection/RouteException
+    //   80: new 288	okhttp3/internal/connection/RouteException
     //   83: dup
     //   84: aload_1
-    //   85: invokespecial 305	okhttp3/internal/connection/RouteException:<init>	(Ljava/io/IOException;)V
+    //   85: invokespecial 291	okhttp3/internal/connection/RouteException:<init>	(Ljava/io/IOException;)V
     //   88: athrow
     // Local variable table:
     //   start	length	slot	name	signature
@@ -461,15 +462,15 @@ public final class StreamAllocation
   
   public Socket releaseAndAcquire(RealConnection paramRealConnection)
   {
-    assert (Thread.holdsLock(this.connectionPool));
-    if ((this.codec != null) || (this.connection.allocations.size() != 1)) {
-      throw new IllegalStateException();
+    if ((this.codec == null) && (this.connection.allocations.size() == 1))
+    {
+      Reference localReference = (Reference)this.connection.allocations.get(0);
+      Socket localSocket = deallocate(true, false, false);
+      this.connection = paramRealConnection;
+      paramRealConnection.allocations.add(localReference);
+      return localSocket;
     }
-    Reference localReference = (Reference)this.connection.allocations.get(0);
-    Socket localSocket = deallocate(true, false, false);
-    this.connection = paramRealConnection;
-    paramRealConnection.allocations.add(localReference);
-    return localSocket;
+    throw new IllegalStateException();
   }
   
   public Route route()
@@ -479,8 +480,6 @@ public final class StreamAllocation
   
   public void streamFailed(IOException paramIOException)
   {
-    boolean bool2 = false;
-    boolean bool1 = true;
     for (;;)
     {
       synchronized (this.connectionPool)
@@ -492,14 +491,34 @@ public final class StreamAllocation
           {
             this.refusedStreamCount += 1;
             if (this.refusedStreamCount <= 1) {
-              break label209;
+              break label200;
             }
             this.route = null;
-            break label211;
+          }
+          else
+          {
+            if (paramIOException == ErrorCode.CANCEL) {
+              break label200;
+            }
+            this.route = null;
+          }
+        }
+        else
+        {
+          if ((this.connection == null) || ((this.connection.isMultiplexed()) && (!(paramIOException instanceof ConnectionShutdownException)))) {
+            break label200;
+          }
+          if (this.connection.successCount == 0)
+          {
+            if ((this.route != null) && (paramIOException != null)) {
+              this.routeSelector.connectFailed(this.route, paramIOException);
+            }
+            this.route = null;
+            break label195;
             paramIOException = this.connection;
-            Socket localSocket = deallocate(bool1, false, true);
+            Socket localSocket = deallocate(bool, false, true);
             if ((this.connection != null) || (!this.reportedAcquired)) {
-              break label214;
+              break label205;
             }
             Util.closeQuietly(localSocket);
             if (paramIOException != null) {
@@ -507,171 +526,64 @@ public final class StreamAllocation
             }
             return;
           }
-          if (paramIOException == ErrorCode.CANCEL) {
-            break label209;
-          }
-          this.route = null;
         }
       }
-      bool1 = bool2;
-      if (this.connection != null) {
-        if (this.connection.isMultiplexed())
-        {
-          bool1 = bool2;
-          if (!(paramIOException instanceof ConnectionShutdownException)) {}
-        }
-        else
-        {
-          if (this.connection.successCount == 0)
-          {
-            if ((this.route != null) && (paramIOException != null)) {
-              this.routeSelector.connectFailed(this.route, paramIOException);
-            }
-            this.route = null;
-          }
-          bool1 = true;
-          continue;
-          label209:
-          bool1 = false;
-          label211:
-          continue;
-          label214:
-          paramIOException = null;
-        }
-      }
+      label195:
+      boolean bool = true;
+      continue;
+      label200:
+      bool = false;
+      continue;
+      label205:
+      paramIOException = null;
     }
   }
   
-  /* Error */
   public void streamFinished(boolean paramBoolean, HttpCodec paramHttpCodec, long paramLong, IOException paramIOException)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 54	okhttp3/internal/connection/StreamAllocation:eventListener	Lokhttp3/EventListener;
-    //   4: aload_0
-    //   5: getfield 52	okhttp3/internal/connection/StreamAllocation:call	Lokhttp3/Call;
-    //   8: lload_3
-    //   9: invokevirtual 342	okhttp3/EventListener:responseBodyEnd	(Lokhttp3/Call;J)V
-    //   12: aload_0
-    //   13: getfield 48	okhttp3/internal/connection/StreamAllocation:connectionPool	Lokhttp3/ConnectionPool;
-    //   16: astore 6
-    //   18: aload 6
-    //   20: monitorenter
-    //   21: aload_2
-    //   22: ifnull +11 -> 33
-    //   25: aload_2
-    //   26: aload_0
-    //   27: getfield 80	okhttp3/internal/connection/StreamAllocation:codec	Lokhttp3/internal/http/HttpCodec;
-    //   30: if_acmpeq +50 -> 80
-    //   33: new 130	java/lang/IllegalStateException
-    //   36: dup
-    //   37: new 344	java/lang/StringBuilder
-    //   40: dup
-    //   41: invokespecial 345	java/lang/StringBuilder:<init>	()V
-    //   44: ldc_w 347
-    //   47: invokevirtual 351	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: aload_0
-    //   51: getfield 80	okhttp3/internal/connection/StreamAllocation:codec	Lokhttp3/internal/http/HttpCodec;
-    //   54: invokevirtual 354	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   57: ldc_w 356
-    //   60: invokevirtual 351	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: aload_2
-    //   64: invokevirtual 354	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 360	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: invokespecial 134	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-    //   73: athrow
-    //   74: astore_2
-    //   75: aload 6
-    //   77: monitorexit
-    //   78: aload_2
-    //   79: athrow
-    //   80: iload_1
-    //   81: ifne +18 -> 99
-    //   84: aload_0
-    //   85: getfield 84	okhttp3/internal/connection/StreamAllocation:connection	Lokhttp3/internal/connection/RealConnection;
-    //   88: astore_2
-    //   89: aload_2
-    //   90: aload_2
-    //   91: getfield 235	okhttp3/internal/connection/RealConnection:successCount	I
-    //   94: iconst_1
-    //   95: iadd
-    //   96: putfield 235	okhttp3/internal/connection/RealConnection:successCount	I
-    //   99: aload_0
-    //   100: getfield 84	okhttp3/internal/connection/StreamAllocation:connection	Lokhttp3/internal/connection/RealConnection;
-    //   103: astore_2
-    //   104: aload_0
-    //   105: iload_1
-    //   106: iconst_0
-    //   107: iconst_1
-    //   108: invokespecial 252	okhttp3/internal/connection/StreamAllocation:deallocate	(ZZZ)Ljava/net/Socket;
-    //   111: astore 7
-    //   113: aload_0
-    //   114: getfield 84	okhttp3/internal/connection/StreamAllocation:connection	Lokhttp3/internal/connection/RealConnection;
-    //   117: ifnull +5 -> 122
-    //   120: aconst_null
-    //   121: astore_2
-    //   122: aload_0
-    //   123: getfield 82	okhttp3/internal/connection/StreamAllocation:released	Z
-    //   126: istore_1
-    //   127: aload 6
-    //   129: monitorexit
-    //   130: aload 7
-    //   132: invokestatic 158	okhttp3/internal/Util:closeQuietly	(Ljava/net/Socket;)V
-    //   135: aload_2
-    //   136: ifnull +15 -> 151
-    //   139: aload_0
-    //   140: getfield 54	okhttp3/internal/connection/StreamAllocation:eventListener	Lokhttp3/EventListener;
-    //   143: aload_0
-    //   144: getfield 52	okhttp3/internal/connection/StreamAllocation:call	Lokhttp3/Call;
-    //   147: aload_2
-    //   148: invokevirtual 164	okhttp3/EventListener:connectionReleased	(Lokhttp3/Call;Lokhttp3/Connection;)V
-    //   151: aload 5
-    //   153: ifnull +29 -> 182
-    //   156: getstatic 118	okhttp3/internal/Internal:instance	Lokhttp3/internal/Internal;
-    //   159: aload_0
-    //   160: getfield 52	okhttp3/internal/connection/StreamAllocation:call	Lokhttp3/Call;
-    //   163: aload 5
-    //   165: invokevirtual 309	okhttp3/internal/Internal:timeoutExit	(Lokhttp3/Call;Ljava/io/IOException;)Ljava/io/IOException;
-    //   168: astore_2
-    //   169: aload_0
-    //   170: getfield 54	okhttp3/internal/connection/StreamAllocation:eventListener	Lokhttp3/EventListener;
-    //   173: aload_0
-    //   174: getfield 52	okhttp3/internal/connection/StreamAllocation:call	Lokhttp3/Call;
-    //   177: aload_2
-    //   178: invokevirtual 364	okhttp3/EventListener:callFailed	(Lokhttp3/Call;Ljava/io/IOException;)V
-    //   181: return
-    //   182: iload_1
-    //   183: ifeq -2 -> 181
-    //   186: getstatic 118	okhttp3/internal/Internal:instance	Lokhttp3/internal/Internal;
-    //   189: aload_0
-    //   190: getfield 52	okhttp3/internal/connection/StreamAllocation:call	Lokhttp3/Call;
-    //   193: aconst_null
-    //   194: invokevirtual 309	okhttp3/internal/Internal:timeoutExit	(Lokhttp3/Call;Ljava/io/IOException;)Ljava/io/IOException;
-    //   197: pop
-    //   198: aload_0
-    //   199: getfield 54	okhttp3/internal/connection/StreamAllocation:eventListener	Lokhttp3/EventListener;
-    //   202: aload_0
-    //   203: getfield 52	okhttp3/internal/connection/StreamAllocation:call	Lokhttp3/Call;
-    //   206: invokevirtual 313	okhttp3/EventListener:callEnd	(Lokhttp3/Call;)V
-    //   209: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	210	0	this	StreamAllocation
-    //   0	210	1	paramBoolean	boolean
-    //   0	210	2	paramHttpCodec	HttpCodec
-    //   0	210	3	paramLong	long
-    //   0	210	5	paramIOException	IOException
-    //   16	112	6	localConnectionPool	ConnectionPool
-    //   111	20	7	localSocket	Socket
-    // Exception table:
-    //   from	to	target	type
-    //   25	33	74	finally
-    //   33	74	74	finally
-    //   75	78	74	finally
-    //   84	99	74	finally
-    //   99	113	74	finally
-    //   113	120	74	finally
-    //   122	130	74	finally
+    this.eventListener.responseBodyEnd(this.call, paramLong);
+    ConnectionPool localConnectionPool = this.connectionPool;
+    if (paramHttpCodec != null) {}
+    try
+    {
+      if (paramHttpCodec == this.codec)
+      {
+        if (!paramBoolean)
+        {
+          paramHttpCodec = this.connection;
+          paramHttpCodec.successCount += 1;
+        }
+        paramHttpCodec = this.connection;
+        Socket localSocket = deallocate(paramBoolean, false, true);
+        if (this.connection != null) {
+          paramHttpCodec = null;
+        }
+        paramBoolean = this.released;
+        Util.closeQuietly(localSocket);
+        if (paramHttpCodec != null) {
+          this.eventListener.connectionReleased(this.call, paramHttpCodec);
+        }
+        if (paramIOException != null)
+        {
+          paramHttpCodec = Internal.instance.timeoutExit(this.call, paramIOException);
+          this.eventListener.callFailed(this.call, paramHttpCodec);
+          return;
+        }
+        if (paramBoolean)
+        {
+          Internal.instance.timeoutExit(this.call, null);
+          this.eventListener.callEnd(this.call);
+        }
+        return;
+      }
+      paramIOException = new StringBuilder();
+      paramIOException.append("expected ");
+      paramIOException.append(this.codec);
+      paramIOException.append(" but was ");
+      paramIOException.append(paramHttpCodec);
+      throw new IllegalStateException(paramIOException.toString());
+    }
+    finally {}
   }
   
   public String toString()
@@ -685,7 +597,7 @@ public final class StreamAllocation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.connection.StreamAllocation
  * JD-Core Version:    0.7.0.1
  */

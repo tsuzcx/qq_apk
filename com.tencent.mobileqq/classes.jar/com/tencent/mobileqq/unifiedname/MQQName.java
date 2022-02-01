@@ -31,26 +31,19 @@ public class MQQName
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if ((paramObject instanceof MQQName))
     {
       paramObject = (MQQName)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
-      {
-        bool1 = bool2;
-        if (Utils.a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
-          bool1 = true;
-        }
+      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (Utils.a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString))) {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedname.MQQName
  * JD-Core Version:    0.7.0.1
  */

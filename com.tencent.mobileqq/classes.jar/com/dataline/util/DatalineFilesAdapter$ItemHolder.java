@@ -31,23 +31,25 @@ public class DatalineFilesAdapter$ItemHolder
   {
     try
     {
-      localObject = super.clone();
+      Object localObject = super.clone();
       return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        Object localObject = this;
-      } while (!QLog.isColorLevel());
-      QLog.d("DatalineFilesAdapter", 2, "ItemHolder clone failed." + localCloneNotSupportedException.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ItemHolder clone failed.");
+        localStringBuilder.append(localCloneNotSupportedException.toString());
+        QLog.d("DatalineFilesAdapter", 2, localStringBuilder.toString());
+      }
     }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.DatalineFilesAdapter.ItemHolder
  * JD-Core Version:    0.7.0.1
  */

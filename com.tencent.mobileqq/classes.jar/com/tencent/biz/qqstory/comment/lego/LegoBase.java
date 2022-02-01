@@ -10,7 +10,7 @@ import java.util.Set;
 
 public abstract class LegoBase<T>
 {
-  private static int jdField_a_of_type_Int = 0;
+  private static int jdField_a_of_type_Int;
   public Context a;
   private LegoBase jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoBase;
   protected LegoDataProvider a;
@@ -88,28 +88,31 @@ public abstract class LegoBase<T>
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    if (this.b != null) {
-      this.b.setVisibility(0);
+    View localView = this.b;
+    if (localView != null) {
+      localView.setVisibility(0);
     }
     this.jdField_a_of_type_JavaUtilList = paramList;
     a(paramList);
   }
   
-  public void k()
+  public void j()
   {
-    if (this.b != null) {
-      this.b.setVisibility(8);
+    View localView = this.b;
+    if (localView != null) {
+      localView.setVisibility(8);
     }
   }
   
-  public void l()
+  public void k()
   {
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    if (this.b != null) {
-      this.b.setVisibility(0);
+    Object localObject = this.b;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler == null) {
       this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler = a();
@@ -119,29 +122,31 @@ public abstract class LegoBase<T>
     }
     a(this.jdField_a_of_type_AndroidContentContext, this.b);
     b();
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      a(this.jdField_a_of_type_JavaUtilList);
-    }
-    for (;;)
+    localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        ((LegoBase)this.jdField_a_of_type_JavaUtilHashMap.get(str)).l();
-      }
-      break;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoDataProvider != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoDataProvider.a();
+      a((List)localObject);
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoDataProvider;
+      if (localObject != null) {
+        ((LegoDataProvider)localObject).a();
       } else {
         a(null);
       }
+    }
+    localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      String str = (String)((Iterator)localObject).next();
+      ((LegoBase)this.jdField_a_of_type_JavaUtilHashMap.get(str)).k();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.lego.LegoBase
  * JD-Core Version:    0.7.0.1
  */

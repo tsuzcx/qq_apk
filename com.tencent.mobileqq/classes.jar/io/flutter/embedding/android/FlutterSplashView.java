@@ -54,9 +54,10 @@ final class FlutterSplashView
   
   private boolean hasSplashCompleted()
   {
-    if (this.flutterView != null)
+    FlutterView localFlutterView = this.flutterView;
+    if (localFlutterView != null)
     {
-      if (this.flutterView.isAttachedToFlutterEngine()) {
+      if (localFlutterView.isAttachedToFlutterEngine()) {
         return (this.flutterView.getAttachedFlutterEngine().getDartExecutor().getIsolateServiceId() != null) && (this.flutterView.getAttachedFlutterEngine().getDartExecutor().getIsolateServiceId().equals(this.previousCompletedSplashIsolate));
       }
       throw new IllegalStateException("Cannot determine if splash has completed when no FlutterEngine is attached to our FlutterView. This question depends on an isolate ID to differentiate Flutter experiences.");
@@ -66,12 +67,21 @@ final class FlutterSplashView
   
   private boolean isSplashScreenNeededNow()
   {
-    return (this.flutterView != null) && (this.flutterView.isAttachedToFlutterEngine()) && (!this.flutterView.hasRenderedFirstFrame()) && (!hasSplashCompleted());
+    FlutterView localFlutterView = this.flutterView;
+    return (localFlutterView != null) && (localFlutterView.isAttachedToFlutterEngine()) && (!this.flutterView.hasRenderedFirstFrame()) && (!hasSplashCompleted());
   }
   
   private boolean isSplashScreenTransitionNeededNow()
   {
-    return (this.flutterView != null) && (this.flutterView.isAttachedToFlutterEngine()) && (this.splashScreen != null) && (this.splashScreen.doesSplashViewRememberItsTransition()) && (wasPreviousSplashTransitionInterrupted());
+    Object localObject = this.flutterView;
+    if ((localObject != null) && (((FlutterView)localObject).isAttachedToFlutterEngine()))
+    {
+      localObject = this.splashScreen;
+      if ((localObject != null) && (((SplashScreen)localObject).doesSplashViewRememberItsTransition()) && (wasPreviousSplashTransitionInterrupted())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   private void transitionToFlutter()
@@ -87,9 +97,10 @@ final class FlutterSplashView
   
   private boolean wasPreviousSplashTransitionInterrupted()
   {
-    if (this.flutterView != null)
+    FlutterView localFlutterView = this.flutterView;
+    if (localFlutterView != null)
     {
-      if (this.flutterView.isAttachedToFlutterEngine()) {
+      if (localFlutterView.isAttachedToFlutterEngine()) {
         return (this.flutterView.hasRenderedFirstFrame()) && (!hasSplashCompleted());
       }
       throw new IllegalStateException("Cannot determine if previous splash transition was interrupted when no FlutterEngine is attached to our FlutterView. This question depends on an isolate ID to differentiate Flutter experiences.");
@@ -99,31 +110,29 @@ final class FlutterSplashView
   
   public void displayFlutterViewWithSplash(@NonNull FlutterView paramFlutterView, @Nullable SplashScreen paramSplashScreen)
   {
-    if (this.flutterView != null)
+    Object localObject = this.flutterView;
+    if (localObject != null)
     {
-      this.flutterView.removeOnFirstFrameRenderedListener(this.flutterUiDisplayListener);
+      ((FlutterView)localObject).removeOnFirstFrameRenderedListener(this.flutterUiDisplayListener);
       removeView(this.flutterView);
     }
-    if (this.splashScreenView != null) {
-      removeView(this.splashScreenView);
+    localObject = this.splashScreenView;
+    if (localObject != null) {
+      removeView((View)localObject);
     }
     this.flutterView = paramFlutterView;
     addView(paramFlutterView);
     this.splashScreen = paramSplashScreen;
     if (paramSplashScreen != null)
     {
-      if (!isSplashScreenNeededNow()) {
-        break label110;
+      if (isSplashScreenNeededNow())
+      {
+        Log.v(TAG, "Showing splash screen UI.");
+        this.splashScreenView = paramSplashScreen.createSplashView(getContext(), this.splashScreenState);
+        addView(this.splashScreenView);
+        paramFlutterView.addOnFirstFrameRenderedListener(this.flutterUiDisplayListener);
+        return;
       }
-      Log.v(TAG, "Showing splash screen UI.");
-      this.splashScreenView = paramSplashScreen.createSplashView(getContext(), this.splashScreenState);
-      addView(this.splashScreenView);
-      paramFlutterView.addOnFirstFrameRenderedListener(this.flutterUiDisplayListener);
-    }
-    label110:
-    do
-    {
-      return;
       if (isSplashScreenTransitionNeededNow())
       {
         Log.v(TAG, "Showing an immediate splash transition to Flutter due to previously interrupted transition.");
@@ -132,12 +141,15 @@ final class FlutterSplashView
         transitionToFlutter();
         return;
       }
-    } while (paramFlutterView.isAttachedToFlutterEngine());
-    Log.v(TAG, "FlutterView is not yet attached to a FlutterEngine. Showing nothing until a FlutterEngine is attached.");
-    paramFlutterView.addFlutterEngineAttachmentListener(this.flutterEngineAttachmentListener);
+      if (!paramFlutterView.isAttachedToFlutterEngine())
+      {
+        Log.v(TAG, "FlutterView is not yet attached to a FlutterEngine. Showing nothing until a FlutterEngine is attached.");
+        paramFlutterView.addFlutterEngineAttachmentListener(this.flutterEngineAttachmentListener);
+      }
+    }
   }
   
-  public void onRestoreInstanceState(Parcelable paramParcelable)
+  protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
     paramParcelable = (FlutterSplashView.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
@@ -146,21 +158,23 @@ final class FlutterSplashView
   }
   
   @Nullable
-  public Parcelable onSaveInstanceState()
+  protected Parcelable onSaveInstanceState()
   {
     FlutterSplashView.SavedState localSavedState = new FlutterSplashView.SavedState(super.onSaveInstanceState());
     FlutterSplashView.SavedState.access$602(localSavedState, this.previousCompletedSplashIsolate);
-    if (this.splashScreen != null) {}
-    for (Bundle localBundle = this.splashScreen.saveSplashScreenState();; localBundle = null)
-    {
-      FlutterSplashView.SavedState.access$702(localSavedState, localBundle);
-      return localSavedState;
+    Object localObject = this.splashScreen;
+    if (localObject != null) {
+      localObject = ((SplashScreen)localObject).saveSplashScreenState();
+    } else {
+      localObject = null;
     }
+    FlutterSplashView.SavedState.access$702(localSavedState, (Bundle)localObject);
+    return localSavedState;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterSplashView
  * JD-Core Version:    0.7.0.1
  */

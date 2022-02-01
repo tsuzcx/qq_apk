@@ -50,8 +50,12 @@ public final class ValueHolder<T>
   {
     Intrinsics.checkParameterIsNotNull(paramFunction1, "observer");
     Object localObject = this.lifeCycleOwner;
-    if (localObject != null) {}
-    for (localObject = ((LifeCycleOwner)localObject).getEngineState(); localObject == EngineState.DESTROYED; localObject = null) {
+    if (localObject != null) {
+      localObject = ((LifeCycleOwner)localObject).getEngineState();
+    } else {
+      localObject = null;
+    }
+    if (localObject == EngineState.DESTROYED) {
       return;
     }
     this.observers.addIfAbsent(paramFunction1);
@@ -98,7 +102,7 @@ public final class ValueHolder<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.lifecycle.ValueHolder
  * JD-Core Version:    0.7.0.1
  */

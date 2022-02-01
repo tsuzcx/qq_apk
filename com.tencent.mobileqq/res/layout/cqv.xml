@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/k57" android:layout_width="220.0dip" android:layout_height="178.0dip"
+<LinearLayout android:orientation="horizontal" android:id="@id/gf_" android:background="@drawable/a28" android:paddingLeft="3.0dip" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/ns_" android:paddingTop="15.0dip" android:paddingRight="15.0dip" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <RelativeLayout android:id="@id/k0k" android:layout_width="fill_parent" android:layout_height="2.0dip" />
-    <LinearLayout android:orientation="vertical" android:id="@id/k6p" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:id="@id/nxd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/h29" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="44.0dip" android:text="1.假如你是计都，还会和司 凤在一起吗？" android:maxLines="2" />
-            <TextView android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/lrw" android:background="@drawable/e8o" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="196.0dip" android:layout_height="28.0dip" android:layout_marginTop="10.0dip" android:text="当然是专心搞事业" />
-            <TextView android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/lrz" android:background="@drawable/e8o" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="196.0dip" android:layout_height="28.0dip" android:layout_marginTop="10.0dip" android:text="当然是专心搞事业" />
-            <TextView android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/lva" android:background="@drawable/e8o" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="196.0dip" android:layout_height="28.0dip" android:layout_marginTop="10.0dip" android:text="当然是专心搞事业" />
-        </LinearLayout>
-        <RelativeLayout android:id="@id/o0d" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="44.0dip" android:text="答完题了，还差最后一步可解锁结果" android:maxLines="2" />
-            <RelativeLayout android:id="@id/no0" android:layout_width="196.0dip" android:layout_height="33.0dip" android:layout_marginBottom="50.0dip" android:layout_alignParentBottom="true">
-                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-                    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/nsa" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="4.0dip" />
-                    <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="看视频解锁结果" />
-                </LinearLayout>
-            </RelativeLayout>
-        </RelativeLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/itl" android:layout_width="22.0dip" android:layout_height="22.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/itm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:maxLines="1" android:layout_weight="1.0" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/o8x" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="18.0dip" android:layout_height="fill_parent" android:src="@drawable/cip" />
+</LinearLayout>

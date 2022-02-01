@@ -25,18 +25,18 @@ class VSDispatchObserver$7
         ((VSDispatchObserver.onVSRspCallBack)localConcurrentHashMap.get(Integer.valueOf(i))).onReceive(this.val$request, true, 0L, "_VSNetworkHelperCache", this.val$finalRsp);
         return;
       }
+      RFLog.d("VSNetworkHelper| Protocol Cache", RFLog.USR, "VSDispatchObserver: onReceive: current context callbacks has all removed");
+      return;
     }
     catch (Exception localException)
     {
       RFLog.w("VSNetworkHelper| Protocol Cache", RFLog.USR, localException.toString());
-      return;
     }
-    RFLog.d("VSNetworkHelper| Protocol Cache", RFLog.USR, "VSDispatchObserver: onReceive: current context callbacks has all removed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.observer.VSDispatchObserver.7
  * JD-Core Version:    0.7.0.1
  */

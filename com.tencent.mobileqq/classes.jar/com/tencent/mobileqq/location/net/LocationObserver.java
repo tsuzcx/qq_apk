@@ -2,6 +2,13 @@ package com.tencent.mobileqq.location.net;
 
 import android.annotation.SuppressLint;
 import com.tencent.mobileqq.location.api.impl.C2CLocationPushDecoder;
+import com.tencent.mobileqq.location.bean.C2COptPushRespBean;
+import com.tencent.mobileqq.location.bean.KickOffRespBean;
+import com.tencent.mobileqq.location.bean.OptRoomRespBean;
+import com.tencent.mobileqq.location.bean.QueryRoomRespBean;
+import com.tencent.mobileqq.location.bean.RoomClosePushRespBean;
+import com.tencent.mobileqq.location.bean.TroopOptPushRespBean;
+import com.tencent.mobileqq.location.bean.VenueOptRespBean;
 import com.tencent.mobileqq.location.data.LocationItem;
 import com.tencent.mobileqq.location.data.LocationRoom;
 import com.tencent.mobileqq.location.data.LocationRoom.RoomKey;
@@ -29,299 +36,231 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x125.submsgtype0x125.MsgBody;
 public final class LocationObserver
   extends LocationObserverBase
 {
-  private LocationHandler a;
-  
-  public LocationObserver(LocationHandler paramLocationHandler)
+  private LocationRoom.Venue a(qq_lbs_share.AssemblyPointData paramAssemblyPointData)
   {
-    this.a = paramLocationHandler;
+    if (paramAssemblyPointData != null)
+    {
+      int i = paramAssemblyPointData.operation.get();
+      if (((i == 1) || (i == 2)) && (paramAssemblyPointData.operator.get() > 0L))
+      {
+        LocationRoom.Venue localVenue = new LocationRoom.Venue();
+        localVenue.jdField_a_of_type_JavaLangString = String.valueOf(paramAssemblyPointData.operator.get());
+        localVenue.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = new LatLng(paramAssemblyPointData.lat.get(), paramAssemblyPointData.lon.get());
+        boolean bool = paramAssemblyPointData.poi_name.has();
+        String str2 = "";
+        if (bool) {
+          str1 = paramAssemblyPointData.poi_name.get().toStringUtf8();
+        } else {
+          str1 = "";
+        }
+        localVenue.b = str1;
+        String str1 = str2;
+        if (paramAssemblyPointData.poi_address.has()) {
+          str1 = paramAssemblyPointData.poi_address.get().toStringUtf8();
+        }
+        localVenue.c = str1;
+        return localVenue;
+      }
+    }
+    return null;
+  }
+  
+  protected void a(C2COptPushRespBean paramC2COptPushRespBean)
+  {
+    int i = paramC2COptPushRespBean.a().uint32_msg_type.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationObserver", 2, new Object[] { "decodeMsg: invoked. ", " optType: ", Integer.valueOf(i) });
+    }
+    if ((i != 1) && (i != 2) && (i != 3))
+    {
+      switch (i)
+      {
+      default: 
+        return;
+      }
+      C2CLocationPushDecoder.a(paramC2COptPushRespBean.a(), i);
+      return;
+    }
+    C2CLocationPushDecoder.a(paramC2COptPushRespBean.a());
+  }
+  
+  protected void a(KickOffRespBean paramKickOffRespBean)
+  {
+    LocationRoom.RoomKey localRoomKey = new LocationRoom.RoomKey(paramKickOffRespBean.a(), paramKickOffRespBean.a());
+    LocationHandler.a().a(localRoomKey, paramKickOffRespBean.b());
+  }
+  
+  protected void a(OptRoomRespBean paramOptRoomRespBean)
+  {
+    boolean bool = paramOptRoomRespBean.a();
+    int i = 3;
+    if (bool)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationObserver", 2, new Object[] { "onOperateRoom: invoked. ", " uin: ", paramOptRoomRespBean.a(), " uinType: ", Integer.valueOf(paramOptRoomRespBean.c()), " optType: ", Integer.valueOf(paramOptRoomRespBean.b()) });
+      }
+      LocationShareRoomManager.a().a.a(paramOptRoomRespBean.c(), paramOptRoomRespBean.a());
+      LocationShareRoomManager.a().a.b(paramOptRoomRespBean.c(), paramOptRoomRespBean.a());
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationObserver", 2, new Object[] { "onOperateRoom: invoked. real report invoked. ", " optType: ", Integer.valueOf(paramOptRoomRespBean.b()) });
+      }
+      if (paramOptRoomRespBean.b() == 1)
+      {
+        LocationShareLocationManager.a().a(paramOptRoomRespBean.c(), paramOptRoomRespBean.a());
+        ReportController.b(null, "CliOper", "", "", "0X800A764", "0X800A764", 0, 0, "", "0", "0", "");
+      }
+      else if (paramOptRoomRespBean.b() == 2)
+      {
+        LocationShareLocationManager.a().a(paramOptRoomRespBean.c(), paramOptRoomRespBean.a());
+        if (LocationShareRoomManager.a().a()) {
+          ReportController.b(null, "CliOper", "", "", "0X800A76B", "0X800A76B", LocationHandler.a(LocationHandler.a().a()), 0, "", "0", "0", "");
+        }
+      }
+      LocationShareRoomManager.a().a(false);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationObserver", 2, new Object[] { "onOperateRoom: invoked. ", " errorCode: ", Integer.valueOf(paramOptRoomRespBean.a()) });
+    }
+    LocationRoom.RoomKey localRoomKey = new LocationRoom.RoomKey(paramOptRoomRespBean.c(), paramOptRoomRespBean.a());
+    LocationShareLocationManager.a().a(localRoomKey, true);
+    LocationHandler.a().a(localRoomKey, paramOptRoomRespBean.a(), paramOptRoomRespBean.b());
+    if (paramOptRoomRespBean.a() != 10101) {
+      if ((paramOptRoomRespBean.a() != 10001) && (paramOptRoomRespBean.a() != 10003) && (paramOptRoomRespBean.a() != 10004) && (paramOptRoomRespBean.a() != 10100)) {
+        i = 0;
+      } else {
+        i = 2;
+      }
+    }
+    LocationShareRoomManager.a().a(paramOptRoomRespBean.c(), paramOptRoomRespBean.a(), LocationHandler.a().a(), i);
   }
   
   @SuppressLint({"SimpleDateFormat"})
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected void a(QueryRoomRespBean paramQueryRoomRespBean)
   {
-    super.a(paramBoolean, paramObject);
-    if (!paramBoolean) {
-      return;
-    }
-    paramObject = (Object[])paramObject;
-    Object localObject2 = (RoomOperate.RspRoomQuery)paramObject[0];
-    int i = ((Integer)paramObject[1]).intValue();
-    Object localObject3 = (String)paramObject[2];
-    paramObject = new LocationRoom.Venue();
-    Object localObject4 = (qq_lbs_share.AssemblyPointData)((RoomOperate.RspRoomQuery)localObject2).assembly_Point.get();
-    if (localObject4 != null) {
-      switch (((qq_lbs_share.AssemblyPointData)localObject4).operation.get())
-      {
-      }
-    }
-    Object localObject1;
-    int j;
-    for (;;)
+    LocationRoom.Venue localVenue = a((qq_lbs_share.AssemblyPointData)paramQueryRoomRespBean.a().assembly_Point.get());
+    Object localObject1 = paramQueryRoomRespBean.a().user_list.get();
+    int i = paramQueryRoomRespBean.a().room_state.get();
+    if (((List)localObject1).size() <= 0)
     {
-      localObject1 = ((RoomOperate.RspRoomQuery)localObject2).user_list.get();
-      j = ((RoomOperate.RspRoomQuery)localObject2).room_state.get();
-      if (((List)localObject1).size() > 0) {
-        break;
-      }
-      QLog.e("LocationObserver", 1, "[queryLocationRoom][error] onQueryRoom: invoked. sessionUin: " + (String)localObject3 + " roomState: " + j + " userDataList: " + ((List)localObject1).size() + " venue: " + paramObject);
+      QLog.e("LocationObserver", 1, new Object[] { "[queryLocationRoom][error] onQueryRoom: invoked. sessionUin: ", paramQueryRoomRespBean.a(), " roomState: ", Integer.valueOf(i), " userDataList: ", Integer.valueOf(((List)localObject1).size()), " venue: ", localVenue });
       return;
-      if (((qq_lbs_share.AssemblyPointData)localObject4).operator.get() <= 0L)
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationObserver", 2, new Object[] { "[queryLocationRoom] onQueryRoom: invoked. sessionUin: ", paramQueryRoomRespBean.a(), " userDataList: ", Integer.valueOf(((List)localObject1).size()), " venue: ", localVenue });
+    }
+    LocationRoom.RoomKey localRoomKey = new LocationRoom.RoomKey(paramQueryRoomRespBean.a(), paramQueryRoomRespBean.a());
+    LocationRoom localLocationRoom = LocationHandler.a().a(localRoomKey);
+    ArrayList localArrayList = new ArrayList(20);
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      RoomOperate.UserData localUserData = (RoomOperate.UserData)((Iterator)localObject1).next();
+      String str = String.valueOf(localUserData.uin.get());
+      LocationItem localLocationItem = new LocationItem(str, new LatLng(localUserData.lat.get(), localUserData.lon.get()), localUserData.direction.get());
+      if ((localLocationItem.a().latitude == 0.0D) && (localLocationItem.a().longitude == 0.0D))
       {
-        paramObject = null;
+        paramQueryRoomRespBean = localLocationRoom.a(str);
+        if (paramQueryRoomRespBean != null)
+        {
+          localLocationItem.a(paramQueryRoomRespBean.a(), Double.valueOf(paramQueryRoomRespBean.a()));
+          localArrayList.add(localLocationItem);
+          paramQueryRoomRespBean = "[filter]";
+        }
+        else
+        {
+          paramQueryRoomRespBean = "[killed]";
+        }
       }
       else
       {
-        paramObject.jdField_a_of_type_JavaLangString = String.valueOf(((qq_lbs_share.AssemblyPointData)localObject4).operator.get());
-        paramObject.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = new LatLng(((qq_lbs_share.AssemblyPointData)localObject4).lat.get(), ((qq_lbs_share.AssemblyPointData)localObject4).lon.get());
-        if (((qq_lbs_share.AssemblyPointData)localObject4).poi_name.has())
-        {
-          localObject1 = ((qq_lbs_share.AssemblyPointData)localObject4).poi_name.get().toStringUtf8();
-          label279:
-          paramObject.b = ((String)localObject1);
-          if (!((qq_lbs_share.AssemblyPointData)localObject4).poi_address.has()) {
-            break label325;
-          }
-        }
-        label325:
-        for (localObject1 = ((qq_lbs_share.AssemblyPointData)localObject4).poi_address.get().toStringUtf8();; localObject1 = "")
-        {
-          paramObject.c = ((String)localObject1);
-          break;
-          localObject1 = "";
-          break label279;
-        }
-        paramObject = null;
-        continue;
-        paramObject = null;
+        localArrayList.add(localLocationItem);
+        paramQueryRoomRespBean = "[data]";
       }
+      if (QLog.isColorLevel())
+      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[queryLocationRoom]");
+        ((StringBuilder)localObject2).append(paramQueryRoomRespBean);
+        ((StringBuilder)localObject2).append(" onQueryRoom invoked  roomState == open: ");
+        paramQueryRoomRespBean = ((StringBuilder)localObject2).toString();
+        boolean bool;
+        if (i == 1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(localUserData.join_time.get() * 1000L));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" update: ");
+        localStringBuilder.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(localUserData.lbs_update_ts.get() * 1000L)));
+        QLog.d("LocationObserver", 2, new Object[] { paramQueryRoomRespBean, Boolean.valueOf(bool), " uin: ", str, " locationItem: ", localLocationItem, " join: ", localObject2, localStringBuilder.toString() });
+      }
+    }
+    LocationHandler.a().a(localRoomKey, localVenue, localArrayList);
+  }
+  
+  protected void a(RoomClosePushRespBean paramRoomClosePushRespBean)
+  {
+    paramRoomClosePushRespBean = new LocationRoom.RoomKey(paramRoomClosePushRespBean.a(), paramRoomClosePushRespBean.a());
+    LocationHandler.a().b(paramRoomClosePushRespBean, -1);
+  }
+  
+  protected void a(TroopOptPushRespBean paramTroopOptPushRespBean)
+  {
+    int i = paramTroopOptPushRespBean.a().a;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationObserver", 2, new Object[] { "onTroopOptPush: invoked. ", " msgType: ", Integer.valueOf(i) });
+    }
+    if (i == 1)
+    {
+      TroopLocationPushDecoder.a(paramTroopOptPushRespBean.a());
+      return;
+    }
+    if (i == 2)
+    {
+      TroopLocationPushDecoder.a(paramTroopOptPushRespBean.a());
+      return;
+    }
+    if (i == 3)
+    {
+      TroopLocationPushDecoder.a(paramTroopOptPushRespBean.a());
+      return;
+    }
+    if (i == 101)
+    {
+      TroopLocationPushDecoder.a(paramTroopOptPushRespBean.a(), i);
+      return;
+    }
+    if (i == 102)
+    {
+      TroopLocationPushDecoder.a(paramTroopOptPushRespBean.a(), i);
+      return;
+    }
+    if (i == 103) {
+      TroopLocationPushDecoder.a(paramTroopOptPushRespBean.a(), i);
+    }
+  }
+  
+  protected void a(VenueOptRespBean paramVenueOptRespBean)
+  {
+    LocationShareVenueManager.a().a(new LocationRoom.RoomKey(paramVenueOptRespBean.c(), paramVenueOptRespBean.a()), paramVenueOptRespBean.a(), paramVenueOptRespBean.b(), paramVenueOptRespBean.a(), paramVenueOptRespBean.a());
+    if (!paramVenueOptRespBean.a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationObserver", 2, new Object[] { "[venue] onVenueOpt: invoked. failed ", " errorCode: ", Integer.valueOf(paramVenueOptRespBean.a()) });
+      }
+      return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("LocationObserver", 2, "[queryLocationRoom] onQueryRoom: invoked. sessionUin: " + (String)localObject3 + " userDataList: " + ((List)localObject1).size() + " venue: " + paramObject);
+      QLog.d("LocationObserver", 2, new Object[] { "[venue] onVenueOpt: invoked. success ", " uin: ", paramVenueOptRespBean.a(), " uinType: ", Integer.valueOf(paramVenueOptRespBean.c()), " optType: ", Integer.valueOf(paramVenueOptRespBean.b()) });
     }
-    localObject2 = new LocationRoom.RoomKey(i, (String)localObject3);
-    localObject3 = this.a.a((LocationRoom.RoomKey)localObject2);
-    localObject4 = new ArrayList(20);
-    Iterator localIterator = ((List)localObject1).iterator();
-    if (localIterator.hasNext())
-    {
-      RoomOperate.UserData localUserData = (RoomOperate.UserData)localIterator.next();
-      String str = String.valueOf(localUserData.uin.get());
-      LocationItem localLocationItem1 = new LocationItem(str, new LatLng(localUserData.lat.get(), localUserData.lon.get()), localUserData.direction.get());
-      if ((localLocationItem1.a().latitude == 0.0D) && (localLocationItem1.a().longitude == 0.0D))
-      {
-        LocationItem localLocationItem2 = ((LocationRoom)localObject3).a(str);
-        if (localLocationItem2 != null)
-        {
-          localObject1 = "[filter]";
-          localLocationItem1.a(localLocationItem2.a(), Double.valueOf(localLocationItem2.a()));
-          ((List)localObject4).add(localLocationItem1);
-          label590:
-          if (!QLog.isColorLevel()) {
-            break label793;
-          }
-          localObject1 = "[queryLocationRoom]" + (String)localObject1 + " onQueryRoom invoked  roomState == open: ";
-          if (j != 1) {
-            break label795;
-          }
-        }
-      }
-      label793:
-      label795:
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        QLog.d("LocationObserver", 2, new Object[] { localObject1, Boolean.valueOf(paramBoolean), " uin: ", str, " locationItem: ", localLocationItem1, " join: ", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(localUserData.join_time.get() * 1000L)), " update: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(localUserData.lbs_update_ts.get() * 1000L)) });
-        break;
-        localObject1 = "[killed]";
-        break label590;
-        localObject1 = "[data]";
-        ((List)localObject4).add(localLocationItem1);
-        break label590;
-        break;
-      }
-    }
-    this.a.a((LocationRoom.RoomKey)localObject2, paramObject, (List)localObject4);
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    super.b(paramBoolean, paramObject);
-    Object localObject = (Object[])paramObject;
-    if ((localObject == null) || (localObject.length == 0)) {}
-    int i;
-    do
-    {
-      return;
-      i = ((Integer)localObject[0]).intValue();
-      paramObject = (Integer)localObject[1];
-      Integer localInteger = (Integer)localObject[2];
-      String str = (String)localObject[3];
-      localObject = (LocationRoom.Venue)localObject[4];
-      this.a.a(new LocationRoom.RoomKey(localInteger.intValue(), str), (LocationRoom.Venue)localObject, paramObject.intValue(), paramBoolean, i);
-      if (paramBoolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LocationObserver", 2, new Object[] { "[venue] onVenueOpt: invoked. success ", " uin: ", str, " uinType: ", localInteger, " optType: ", paramObject });
-        }
-        this.a.a.a(localInteger.intValue(), str);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LocationObserver", 2, new Object[] { "[venue] onVenueOpt: invoked. failed ", " errorCode: ", Integer.valueOf(i) });
-  }
-  
-  protected void c(boolean paramBoolean, Object paramObject)
-  {
-    super.c(paramBoolean, paramObject);
-    Object localObject = (Object[])paramObject;
-    paramObject = (Integer)localObject[0];
-    String str = String.valueOf(localObject[1]);
-    localObject = (Integer)localObject[2];
-    paramObject = new LocationRoom.RoomKey(paramObject.intValue(), str);
-    this.a.a(paramObject, ((Integer)localObject).intValue());
-  }
-  
-  protected void d(boolean paramBoolean, Object paramObject)
-  {
-    super.d(paramBoolean, paramObject);
-    Object localObject = (Object[])paramObject;
-    paramObject = (Integer)localObject[0];
-    localObject = String.valueOf(localObject[1]);
-    paramObject = new LocationRoom.RoomKey(paramObject.intValue(), (String)localObject);
-    this.a.b(paramObject, -1);
-  }
-  
-  protected void e(boolean paramBoolean, Object paramObject)
-  {
-    super.e(paramBoolean, paramObject);
-    int i;
-    if (paramBoolean)
-    {
-      paramObject = (submsgtype0x125.MsgBody)((Object[])(Object[])paramObject)[0];
-      i = paramObject.uint32_msg_type.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationObserver", 2, new Object[] { "decodeMsg: invoked. ", " optType: ", Integer.valueOf(i) });
-      }
-    }
-    switch (i)
-    {
-    case 4: 
-    default: 
-      return;
-    case 1: 
-    case 2: 
-    case 3: 
-      C2CLocationPushDecoder.a(paramObject);
-      return;
-    }
-    C2CLocationPushDecoder.a(paramObject, i);
-  }
-  
-  protected void f(boolean paramBoolean, Object paramObject)
-  {
-    super.f(paramBoolean, paramObject);
-    int i;
-    if (paramBoolean)
-    {
-      paramObject = (TroopLbsSharePushInfo)((Object[])(Object[])paramObject)[0];
-      i = paramObject.a;
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationObserver", 2, new Object[] { "onTroopOptPush: invoked. ", " msgType: ", Integer.valueOf(i) });
-      }
-      if (i != 1) {
-        break label73;
-      }
-      TroopLocationPushDecoder.a(paramObject);
-    }
-    label73:
-    do
-    {
-      do
-      {
-        return;
-        if (i == 2)
-        {
-          TroopLocationPushDecoder.a(paramObject);
-          return;
-        }
-        if (i == 3)
-        {
-          TroopLocationPushDecoder.a(paramObject);
-          return;
-        }
-      } while (i == 4);
-      if (i == 101)
-      {
-        TroopLocationPushDecoder.a(paramObject, i);
-        return;
-      }
-      if (i == 102)
-      {
-        TroopLocationPushDecoder.a(paramObject, i);
-        return;
-      }
-    } while (i != 103);
-    TroopLocationPushDecoder.a(paramObject, i);
-  }
-  
-  protected void g(boolean paramBoolean, Object paramObject)
-  {
-    super.g(paramBoolean, paramObject);
-    Object localObject = (Object[])paramObject;
-    if ((localObject == null) || (localObject.length == 0)) {
-      return;
-    }
-    int j = ((Integer)localObject[0]).intValue();
-    paramObject = (Integer)localObject[1];
-    Integer localInteger = (Integer)localObject[2];
-    localObject = (String)localObject[3];
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationObserver", 2, new Object[] { "onOperateRoom: invoked. ", " uin: ", localObject, " uinType: ", localInteger, " optType: ", paramObject });
-      }
-      this.a.a.a(localInteger.intValue(), (String)localObject);
-      this.a.a.b(localInteger.intValue(), (String)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationObserver", 2, new Object[] { "onOperateRoom: invoked. real report invoked. ", " optType: ", paramObject });
-      }
-      if (paramObject.intValue() == 1)
-      {
-        this.a.b(localInteger.intValue(), (String)localObject);
-        ReportController.b(null, "CliOper", "", "", "0X800A764", "0X800A764", 0, 0, "", "0", "0", "");
-      }
-      for (;;)
-      {
-        this.a.b(false);
-        return;
-        if (paramObject.intValue() == 2)
-        {
-          this.a.b(localInteger.intValue(), (String)localObject);
-          if (this.a.a()) {
-            ReportController.b(null, "CliOper", "", "", "0X800A76B", "0X800A76B", LocationHandler.a(this.a.a()), 0, "", "0", "0", "");
-          }
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationObserver", 2, new Object[] { "onOperateRoom: invoked. ", " errorCode: ", Integer.valueOf(j) });
-    }
-    LocationRoom.RoomKey localRoomKey = new LocationRoom.RoomKey(localInteger.intValue(), (String)localObject);
-    this.a.a(localRoomKey, true);
-    this.a.a(localRoomKey, j, paramObject.intValue());
-    int i = 0;
-    if (j == 10101) {}
-    for (i = 3;; i = 2) {
-      do
-      {
-        this.a.a(localInteger.intValue(), (String)localObject, this.a.a(), i);
-        return;
-      } while ((j != 10001) && (j != 10003) && (j != 10004) && (j != 10100));
-    }
+    LocationShareRoomManager.a().a.a(paramVenueOptRespBean.c(), paramVenueOptRespBean.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationObserver
  * JD-Core Version:    0.7.0.1
  */

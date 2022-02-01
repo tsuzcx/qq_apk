@@ -8,71 +8,82 @@ public class FileDownloadTask$Input
   
   public FileDownloadTask$Input(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
+    if ((paramString1 != null) && (paramString2 != null))
+    {
+      this.a = paramString1;
+      this.b = paramString2;
+      this.c = paramString3;
+      return;
     }
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
   }
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
+    boolean bool = true;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool3;
-          } while (paramObject == null);
-          bool1 = bool3;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (Input)paramObject;
-        bool1 = bool3;
-      } while (!this.a.equals(paramObject.a));
-      bool1 = bool3;
-    } while (!this.b.equals(paramObject.b));
-    if (this.c != null)
-    {
-      bool1 = bool2;
-      if (this.c.equals(paramObject.c)) {}
-    }
-    for (boolean bool1 = false;; bool1 = bool2)
-    {
-      return bool1;
-      if (paramObject.c != null) {
-        break;
+      if (getClass() != paramObject.getClass()) {
+        return false;
       }
+      paramObject = (Input)paramObject;
+      if (!this.a.equals(paramObject.a)) {
+        return false;
+      }
+      if (!this.b.equals(paramObject.b)) {
+        return false;
+      }
+      String str = this.c;
+      if (str != null) {
+        if (str.equals(paramObject.c)) {
+          break label97;
+        }
+      } else if (paramObject.c == null) {
+        return true;
+      }
+      bool = false;
+      label97:
+      return bool;
     }
+    return false;
   }
   
   public int hashCode()
   {
     int j = this.a.hashCode();
     int k = this.b.hashCode();
-    if (this.c != null) {}
-    for (int i = this.c.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
+    String str = this.c;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    return (j * 31 + k) * 31 + i;
   }
   
   public String toString()
   {
-    return "Input{downloadUrl='" + this.a + '\'' + ", downloadLocalPath='" + this.b + '\'' + ", downloadFileMd5='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Input{downloadUrl='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", downloadLocalPath='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", downloadFileMd5='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Input
  * JD-Core Version:    0.7.0.1
  */

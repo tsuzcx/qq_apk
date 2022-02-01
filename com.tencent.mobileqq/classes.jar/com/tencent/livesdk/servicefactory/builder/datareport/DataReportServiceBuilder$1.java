@@ -55,17 +55,19 @@ class DataReportServiceBuilder$1
   
   public String getAppKey()
   {
+    Object localObject = this.this$0.mHostProxyInterface.getReportInterface();
     boolean bool = false;
-    if ((this.this$0.mHostProxyInterface.getReportInterface() != null) && (this.this$0.mHostProxyInterface.getReportInterface().isBeaconRealTimeDebug())) {}
-    for (int i = 1;; i = 0)
-    {
-      AppGeneralInfoService localAppGeneralInfoService = (AppGeneralInfoService)this.val$serviceManager.getService(AppGeneralInfoService.class);
-      if (localAppGeneralInfoService != null) {
-        bool = localAppGeneralInfoService.isLiteSdk();
-      }
-      if (i == 0) {
-        break;
-      }
+    int i;
+    if ((localObject != null) && (this.this$0.mHostProxyInterface.getReportInterface().isBeaconRealTimeDebug())) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    localObject = (AppGeneralInfoService)this.val$serviceManager.getService(AppGeneralInfoService.class);
+    if (localObject != null) {
+      bool = ((AppGeneralInfoService)localObject).isLiteSdk();
+    }
+    if (i != 0) {
       return "LOGDEBUGKEY00001";
     }
     if (bool) {
@@ -175,13 +177,14 @@ class DataReportServiceBuilder$1
   public boolean isUserHostBeacon()
   {
     String str = ((HostProxyInterface)this.val$serviceManager.getService(HostProxyInterface.class)).isUserHostBeacon();
-    if (TextUtils.isEmpty(str)) {
-      throw new RuntimeException("isUserHostBeacon should not be null");
+    if (!TextUtils.isEmpty(str))
+    {
+      if ((!str.equals("1")) && (!str.equals("0"))) {
+        throw new RuntimeException("isUserHostBeacon should be in 0 and 1");
+      }
+      return str.equals("1");
     }
-    if ((!str.equals("1")) && (!str.equals("0"))) {
-      throw new RuntimeException("isUserHostBeacon should be in 0 and 1");
-    }
-    return str.equals("1");
+    throw new RuntimeException("isUserHostBeacon should not be null");
   }
   
   public void onGetBeaconImei(String paramString)
@@ -194,7 +197,7 @@ class DataReportServiceBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.datareport.DataReportServiceBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,50 +18,49 @@ public class PublishConfigResponse
   public PublishConfigResponse(qqstory_service.RspGetPublishConfig paramRspGetPublishConfig)
   {
     super(paramRspGetPublishConfig.result);
-    if (paramRspGetPublishConfig.show_now_entry.get() == 1)
-    {
+    int i = paramRspGetPublishConfig.show_now_entry.get();
+    boolean bool2 = false;
+    if (i == 1) {
       bool1 = true;
-      this.a = bool1;
-      if (paramRspGetPublishConfig.can_take_picture.get() != 1) {
-        break label88;
-      }
-      bool1 = true;
-      label41:
-      this.b = bool1;
-      if (paramRspGetPublishConfig.is_firsttime_show_take_pic.get() != 1) {
-        break label93;
-      }
-      bool1 = true;
-      label59:
-      this.c = bool1;
-      if (paramRspGetPublishConfig.video_use_bdh.get() != 1) {
-        break label98;
-      }
+    } else {
+      bool1 = false;
     }
-    label88:
-    label93:
-    label98:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.d = bool1;
-      return;
+    this.a = bool1;
+    if (paramRspGetPublishConfig.can_take_picture.get() == 1) {
+      bool1 = true;
+    } else {
       bool1 = false;
-      break;
-      bool1 = false;
-      break label41;
-      bool1 = false;
-      break label59;
     }
+    this.b = bool1;
+    if (paramRspGetPublishConfig.is_firsttime_show_take_pic.get() == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.c = bool1;
+    boolean bool1 = bool2;
+    if (paramRspGetPublishConfig.video_use_bdh.get() == 1) {
+      bool1 = true;
+    }
+    this.d = bool1;
   }
   
   public String toString()
   {
-    return "PublishConfigResponse{firstTimePic=" + this.c + ", nowEntry=" + this.a + ", takePic=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PublishConfigResponse{firstTimePic=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", nowEntry=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", takePic=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.PublishConfigResponse
  * JD-Core Version:    0.7.0.1
  */

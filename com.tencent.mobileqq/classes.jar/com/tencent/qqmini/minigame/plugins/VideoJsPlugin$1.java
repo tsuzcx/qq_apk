@@ -10,7 +10,8 @@ class VideoJsPlugin$1
   
   public void run()
   {
-    if (VideoJsPlugin.access$100(this.this$0, VideoJsPlugin.access$000(this.this$0), this.val$req.jsService, this.val$videoPlayerId, this.val$jsonObject))
+    VideoJsPlugin localVideoJsPlugin = this.this$0;
+    if (VideoJsPlugin.access$100(localVideoJsPlugin, VideoJsPlugin.access$000(localVideoJsPlugin), this.val$req.jsService, this.val$videoPlayerId, this.val$jsonObject))
     {
       this.val$req.ok(this.val$result);
       return;
@@ -20,7 +21,7 @@ class VideoJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.VideoJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,13 +27,14 @@ class SensorAPIJavaScript$10
       this.this$0.a.sendMessage((Message)localObject);
       return;
     }
-    this.this$0.c = false;
-    this.this$0.callJs(this.d, new String[] { Util.a(Integer.toString(1)) });
+    localObject = this.this$0;
+    ((SensorAPIJavaScript)localObject).c = false;
+    ((SensorAPIJavaScript)localObject).callJs(this.d, new String[] { Util.a(Integer.toString(1)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.10
  * JD-Core Version:    0.7.0.1
  */

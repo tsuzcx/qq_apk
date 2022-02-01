@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.troop.data.TroopInfoData;
 
 class ShareChat$SharePanel$1
   implements Runnable
@@ -17,7 +17,7 @@ class ShareChat$SharePanel$1
     {
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceBitmap(this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, (byte)3, false, false);
+        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceBitmap(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, (byte)3, false, false);
         this.jdField_a_of_type_AndroidContentIntent.putExtra("face", localBitmap);
       }
       this.jdField_a_of_type_AndroidContentContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);
@@ -25,13 +25,15 @@ class ShareChat$SharePanel$1
     }
     catch (Exception localException)
     {
-      this.this$0.a(5, this.jdField_a_of_type_Int, 3);
+      label48:
+      break label48;
     }
+    this.this$0.a(5, this.jdField_a_of_type_Int, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.1
  * JD-Core Version:    0.7.0.1
  */

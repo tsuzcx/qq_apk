@@ -12,7 +12,7 @@ class ShopWebViewFragment$1
   public void onClick(View paramView)
   {
     if (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.b(this.a.getActivity(), this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.b(this.a.getQBaseActivity(), this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
     }
     try
     {
@@ -29,7 +29,7 @@ class ShopWebViewFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment.1
  * JD-Core Version:    0.7.0.1
  */

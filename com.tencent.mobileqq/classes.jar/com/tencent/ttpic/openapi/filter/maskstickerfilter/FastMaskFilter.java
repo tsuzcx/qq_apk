@@ -50,166 +50,173 @@ public class FastMaskFilter
   
   private void mergeRenderParam(RenderParam paramRenderParam, List<RenderParam> paramList)
   {
+    Object localObject = "mergeRenderParam";
     BenchUtil.benchStart("mergeRenderParam");
-    if (paramRenderParam != null) {}
-    float[] arrayOfFloat1;
-    float[] arrayOfFloat2;
-    float[] arrayOfFloat3;
-    float[] arrayOfFloat4;
-    float[] arrayOfFloat5;
-    float[] arrayOfFloat6;
-    for (int j = 1;; j = 0)
+    int j;
+    if (paramRenderParam != null) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    float[] arrayOfFloat1 = new float[(paramList.size() + j) * GlUtil.EMPTY_POSITIONS_TRIANGLES.length];
+    float[] arrayOfFloat2 = new float[(paramList.size() + j) * GlUtil.ORIGIN_TEX_COORDS_TRIANGLES.length];
+    float[] arrayOfFloat3 = new float[(paramList.size() + j) * 6];
+    float[] arrayOfFloat4 = new float[(paramList.size() + j) * 6 * 2];
+    float[] arrayOfFloat5 = new float[(paramList.size() + j) * 6 * 1];
+    float[] arrayOfFloat6 = new float[(paramList.size() + j) * 6 * 3];
+    int i;
+    if (paramRenderParam != null)
     {
-      arrayOfFloat1 = new float[(paramList.size() + j) * GlUtil.EMPTY_POSITIONS_TRIANGLES.length];
-      arrayOfFloat2 = new float[(paramList.size() + j) * GlUtil.ORIGIN_TEX_COORDS_TRIANGLES.length];
-      arrayOfFloat3 = new float[(paramList.size() + j) * 6];
-      arrayOfFloat4 = new float[(paramList.size() + j) * 6 * 2];
-      arrayOfFloat5 = new float[(paramList.size() + j) * 6 * 1];
-      arrayOfFloat6 = new float[(paramList.size() + j) * 6 * 3];
-      if (paramRenderParam == null) {
-        break label1024;
-      }
       i = 0;
       while (i < paramRenderParam.position.length)
       {
         arrayOfFloat1[i] = paramRenderParam.position[i];
         i += 1;
       }
-    }
-    int i = 0;
-    while (i < GlUtil.ORIGIN_TEX_COORDS_TRIANGLES.length)
-    {
-      arrayOfFloat2[i] = GlUtil.ORIGIN_TEX_COORDS_TRIANGLES[i];
-      i += 1;
-    }
-    i = 0;
-    while (i < 6)
-    {
-      arrayOfFloat3[i] = 0.5F;
-      i += 1;
-    }
-    i = 0;
-    while (i < 12)
-    {
-      arrayOfFloat4[i] = paramRenderParam.texAnchor[(i % 2)];
-      i += 1;
-    }
-    i = 0;
-    while (i < 6)
-    {
-      arrayOfFloat5[i] = paramRenderParam.texScale;
-      i += 1;
-    }
-    i = 0;
-    while (i < 18)
-    {
-      arrayOfFloat6[i] = paramRenderParam.texRotate[(i % 3)];
-      i += 1;
-    }
-    addParam(new UniformParam.TextureParam("inputImageTexture0", paramRenderParam.texture, 33985));
-    label1024:
-    for (i = 1;; i = 0)
-    {
-      if (!paramList.isEmpty())
+      i = 0;
+      while (i < GlUtil.ORIGIN_TEX_COORDS_TRIANGLES.length)
       {
-        paramRenderParam = new HashMap();
-        int k = 0;
-        int m = i;
-        int n;
-        while (k < paramList.size())
+        arrayOfFloat2[i] = GlUtil.ORIGIN_TEX_COORDS_TRIANGLES[i];
+        i += 1;
+      }
+      i = 0;
+      while (i < 6)
+      {
+        arrayOfFloat3[i] = 0.5F;
+        i += 1;
+      }
+      i = 0;
+      while (i < 12)
+      {
+        arrayOfFloat4[i] = paramRenderParam.texAnchor[(i % 2)];
+        i += 1;
+      }
+      i = 0;
+      while (i < 6)
+      {
+        arrayOfFloat5[i] = paramRenderParam.texScale;
+        i += 1;
+      }
+      i = 0;
+      while (i < 18)
+      {
+        arrayOfFloat6[i] = paramRenderParam.texRotate[(i % 3)];
+        i += 1;
+      }
+      addParam(new UniformParam.TextureParam("inputImageTexture0", paramRenderParam.texture, 33985));
+      i = 1;
+    }
+    else
+    {
+      i = 0;
+    }
+    if (!paramList.isEmpty())
+    {
+      HashMap localHashMap = new HashMap();
+      int m = i;
+      int k = 0;
+      paramRenderParam = (RenderParam)localObject;
+      int n;
+      while (k < paramList.size())
+      {
+        localObject = (RenderParam)paramList.get(k);
+        if (!localHashMap.containsKey(((RenderParam)localObject).id))
         {
-          RenderParam localRenderParam = (RenderParam)paramList.get(k);
-          if (!paramRenderParam.containsKey(localRenderParam.id))
-          {
-            paramRenderParam.put(localRenderParam.id, Integer.valueOf(m));
-            addParam(new UniformParam.TextureParam("inputImageTexture" + m, ((RenderParam)paramList.get(k)).texture, 33985 + m));
-          }
-          n = 0;
-          while (n < 6)
-          {
-            arrayOfFloat3[(m * 6 + n)] = (((Integer)paramRenderParam.get(((RenderParam)paramList.get(k)).id)).intValue() + 0.5F);
-            n += 1;
-          }
-          m += 1;
-          k += 1;
+          localHashMap.put(((RenderParam)localObject).id, Integer.valueOf(m));
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("inputImageTexture");
+          ((StringBuilder)localObject).append(m);
+          addParam(new UniformParam.TextureParam(((StringBuilder)localObject).toString(), ((RenderParam)paramList.get(k)).texture, m + 33985));
         }
-        k = 0;
-        m = i;
-        while (k < paramList.size())
+        n = 0;
+        while (n < 6)
         {
-          n = 0;
-          while (n < ((RenderParam)paramList.get(k)).position.length)
-          {
-            arrayOfFloat1[(((RenderParam)paramList.get(k)).position.length * m + n)] = ((RenderParam)paramList.get(k)).position[n];
-            n += 1;
-          }
-          m += 1;
-          k += 1;
+          arrayOfFloat3[(m * 6 + n)] = (((Integer)localHashMap.get(((RenderParam)paramList.get(k)).id)).intValue() + 0.5F);
+          n += 1;
         }
-        k = 0;
-        m = i;
-        while (k < paramList.size())
+        m += 1;
+        k += 1;
+      }
+      m = i;
+      k = 0;
+      while (k < paramList.size())
+      {
+        n = 0;
+        while (n < ((RenderParam)paramList.get(k)).position.length)
         {
-          n = 0;
-          while (n < GlUtil.ORIGIN_TEX_COORDS_TRIANGLES.length)
-          {
-            arrayOfFloat2[(GlUtil.ORIGIN_TEX_COORDS_TRIANGLES.length * m + n)] = GlUtil.ORIGIN_TEX_COORDS_TRIANGLES[n];
-            n += 1;
-          }
-          m += 1;
-          k += 1;
+          arrayOfFloat1[(((RenderParam)paramList.get(k)).position.length * m + n)] = ((RenderParam)paramList.get(k)).position[n];
+          n += 1;
         }
-        k = 0;
-        m = i;
-        while (k < paramList.size())
+        m += 1;
+        k += 1;
+      }
+      m = i;
+      k = 0;
+      while (k < paramList.size())
+      {
+        n = 0;
+        while (n < GlUtil.ORIGIN_TEX_COORDS_TRIANGLES.length)
         {
-          n = 0;
-          while (n < 12)
-          {
-            arrayOfFloat4[(m * 6 * 2 + n)] = ((RenderParam)paramList.get(k)).texAnchor[(n % 2)];
-            n += 1;
-          }
-          m += 1;
-          k += 1;
+          arrayOfFloat2[(GlUtil.ORIGIN_TEX_COORDS_TRIANGLES.length * m + n)] = GlUtil.ORIGIN_TEX_COORDS_TRIANGLES[n];
+          n += 1;
         }
-        k = 0;
-        m = i;
-        while (k < paramList.size())
+        m += 1;
+        k += 1;
+      }
+      m = i;
+      k = 0;
+      while (k < paramList.size())
+      {
+        n = 0;
+        while (n < 12)
         {
-          n = 0;
-          while (n < 6)
-          {
-            arrayOfFloat5[(m * 6 + n)] = ((RenderParam)paramList.get(k)).texScale;
-            n += 1;
-          }
-          m += 1;
-          k += 1;
+          arrayOfFloat4[(m * 6 * 2 + n)] = ((RenderParam)paramList.get(k)).texAnchor[(n % 2)];
+          n += 1;
+        }
+        m += 1;
+        k += 1;
+      }
+      m = i;
+      k = 0;
+      while (k < paramList.size())
+      {
+        n = 0;
+        while (n < 6)
+        {
+          arrayOfFloat5[(m * 6 + n)] = ((RenderParam)paramList.get(k)).texScale;
+          n += 1;
+        }
+        m += 1;
+        k += 1;
+      }
+      m = 0;
+      k = i;
+      i = m;
+      for (;;)
+      {
+        localObject = paramRenderParam;
+        if (i >= paramList.size()) {
+          break;
         }
         m = 0;
-        k = i;
-        i = m;
-        while (i < paramList.size())
+        while (m < 18)
         {
-          m = 0;
-          while (m < 18)
-          {
-            arrayOfFloat6[(k * 6 * 3 + m)] = ((RenderParam)paramList.get(i)).texRotate[(m % 3)];
-            m += 1;
-          }
-          k += 1;
-          i += 1;
+          arrayOfFloat6[(k * 6 * 3 + m)] = ((RenderParam)paramList.get(i)).texRotate[(m % 3)];
+          m += 1;
         }
+        k += 1;
+        i += 1;
       }
-      setPositions(arrayOfFloat1);
-      setTexCords(arrayOfFloat2);
-      setCoordNum((paramList.size() + j) * 6);
-      addAttribParam(new AttributeParam("a_stickerIndex", arrayOfFloat3, 1));
-      addAttribParam(new AttributeParam("texAnchor", arrayOfFloat4, 2));
-      addAttribParam(new AttributeParam("texScale", arrayOfFloat5, 1));
-      addAttribParam(new AttributeParam("texRotate", arrayOfFloat6, 3));
-      BenchUtil.benchEnd("mergeRenderParam");
-      return;
     }
+    localObject = "mergeRenderParam";
+    setPositions(arrayOfFloat1);
+    setTexCords(arrayOfFloat2);
+    setCoordNum((paramList.size() + j) * 6);
+    addAttribParam(new AttributeParam("a_stickerIndex", arrayOfFloat3, 1));
+    addAttribParam(new AttributeParam("texAnchor", arrayOfFloat4, 2));
+    addAttribParam(new AttributeParam("texScale", arrayOfFloat5, 1));
+    addAttribParam(new AttributeParam("texRotate", arrayOfFloat6, 3));
+    BenchUtil.benchEnd((String)localObject);
   }
   
   public void ApplyGLSLFilter()
@@ -226,32 +233,36 @@ public class FastMaskFilter
     if (paramInt > 0)
     {
       this.srcRenderParam = new RenderParam();
-      this.srcRenderParam.texture = paramInt;
-      this.srcRenderParam.position = AlgoUtils.calPositionsTriangles(0.0F, this.height, this.width, 0.0F, this.width, this.height);
+      RenderParam localRenderParam = this.srcRenderParam;
+      localRenderParam.texture = paramInt;
+      localRenderParam.position = AlgoUtils.calPositionsTriangles(0.0F, this.height, this.width, 0.0F, this.width, this.height);
       this.srcRenderParam.texScale = 1.0F;
     }
   }
   
   public void addSticker(StickerItem paramStickerItem, String paramString)
   {
-    if ((paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.STATIC.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type)) {
+    if ((paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.STATIC.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.RELATIVE.type))
+    {
+      if ((paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.GESTURE.type) || (paramStickerItem.type == VideoFilterFactory.POSITION_TYPE.BODY.type)) {
+        this.stickerList.add(new FastDynamicSticker(paramStickerItem, paramString));
+      }
+    }
+    else {
       this.stickerList.add(new FastStaticSticker(paramStickerItem, paramString));
     }
-    while ((paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.DYNAMIC.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.GESTURE.type) && (paramStickerItem.type != VideoFilterFactory.POSITION_TYPE.BODY.type)) {
-      return;
-    }
-    this.stickerList.add(new FastDynamicSticker(paramStickerItem, paramString));
   }
   
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    Iterator localIterator = this.stickerList.iterator();
-    while (localIterator.hasNext()) {
-      ((FastSticker)localIterator.next()).destroy();
+    Object localObject = this.stickerList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((FastSticker)((Iterator)localObject).next()).destroy();
     }
-    if (this.mCopyFrame != null) {
-      this.mCopyFrame.clear();
+    localObject = this.mCopyFrame;
+    if (localObject != null) {
+      ((Frame)localObject).clear();
     }
   }
   
@@ -293,26 +304,31 @@ public class FastMaskFilter
     int i = 0;
     while (i <= 7)
     {
-      addParam(new UniformParam.TextureParam("inputImageTexture" + i, 0, 33986));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("inputImageTexture");
+      localStringBuilder.append(i);
+      addParam(new UniformParam.TextureParam(localStringBuilder.toString(), 0, 33986));
       i += 1;
     }
   }
   
   public Frame render(Frame paramFrame)
   {
-    if (((!this.renderParams.isEmpty()) && (this.faceCount > 0)) || (this.srcRenderParam != null)) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        mergeRenderParam(this.srcRenderParam, this.renderParams);
-        FrameUtil.clearFrame(this.mCopyFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame.width, paramFrame.height);
-        RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mCopyFrame);
-      }
-      this.renderParams.clear();
-      this.srcRenderParam = null;
-      return this.mCopyFrame;
+    int i;
+    if (((!this.renderParams.isEmpty()) && (this.faceCount > 0)) || (this.srcRenderParam != null)) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0)
+    {
+      mergeRenderParam(this.srcRenderParam, this.renderParams);
+      FrameUtil.clearFrame(this.mCopyFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame.width, paramFrame.height);
+      RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mCopyFrame);
+    }
+    this.renderParams.clear();
+    this.srcRenderParam = null;
+    return this.mCopyFrame;
   }
   
   public void reset()
@@ -368,17 +384,15 @@ public class FastMaskFilter
   
   public void setRenderParams(PersonParam paramPersonParam)
   {
-    if (paramPersonParam == null) {}
-    for (;;)
-    {
+    if (paramPersonParam == null) {
       return;
-      Iterator localIterator = this.stickerList.iterator();
-      while (localIterator.hasNext())
-      {
-        FastSticker localFastSticker = (FastSticker)localIterator.next();
-        if ((localFastSticker.needRender(paramPersonParam.getPersonID())) && (localFastSticker.isMatchGender(paramPersonParam))) {
-          this.renderParams.add(localFastSticker.getRenderParam().copy());
-        }
+    }
+    Iterator localIterator = this.stickerList.iterator();
+    while (localIterator.hasNext())
+    {
+      FastSticker localFastSticker = (FastSticker)localIterator.next();
+      if ((localFastSticker.needRender(paramPersonParam.getPersonID())) && (localFastSticker.isMatchGender(paramPersonParam))) {
+        this.renderParams.add(localFastSticker.getRenderParam().copy());
       }
     }
   }
@@ -410,7 +424,7 @@ public class FastMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.maskstickerfilter.FastMaskFilter
  * JD-Core Version:    0.7.0.1
  */

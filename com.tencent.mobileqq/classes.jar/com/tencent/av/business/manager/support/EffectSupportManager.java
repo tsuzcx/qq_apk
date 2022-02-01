@@ -9,7 +9,7 @@ public class EffectSupportManager
 {
   private SupportDefault jdField_a_of_type_ComTencentAvBusinessManagerSupportSupportDefault;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private SupportBase[] jdField_a_of_type_ArrayOfComTencentAvBusinessManagerSupportSupportBase = new SupportBase[17];
+  private SupportBase[] jdField_a_of_type_ArrayOfComTencentAvBusinessManagerSupportSupportBase = new SupportBase[18];
   
   public EffectSupportManager(VideoAppInterface paramVideoAppInterface)
   {
@@ -44,45 +44,49 @@ public class EffectSupportManager
   private SupportBase a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
     long l1 = System.currentTimeMillis();
-    Object localObject = null;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerSupportSupportDefault;
-    }
-    for (;;)
-    {
-      if (localObject != null) {
-        ((SupportBase)localObject).a();
+      if (paramInt != 1) {
+        if (paramInt != 2) {
+          if (paramInt == 3) {}
+        }
       }
-      long l2 = System.currentTimeMillis();
-      AVLog.printColorLog("EffectSupportManager", "create Manager,cost time:" + (l2 - l1));
-      return localObject;
-      localObject = new SupportZimu(paramVideoAppInterface);
-      continue;
-      localObject = new SupportFace(paramVideoAppInterface);
-      continue;
-      localObject = new SupportPendant(paramVideoAppInterface);
+      for (paramVideoAppInterface = this.jdField_a_of_type_ComTencentAvBusinessManagerSupportSupportDefault;; paramVideoAppInterface = null)
+      {
+        break;
+        paramVideoAppInterface = new SupportFace(paramVideoAppInterface);
+        break;
+        paramVideoAppInterface = new SupportPendant(paramVideoAppInterface);
+        break;
+      }
     }
+    paramVideoAppInterface = new SupportZimu(paramVideoAppInterface);
+    if (paramVideoAppInterface != null) {
+      paramVideoAppInterface.a();
+    }
+    long l2 = System.currentTimeMillis();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("create Manager,cost time:");
+    localStringBuilder.append(l2 - l1);
+    AVLog.printColorLog("EffectSupportManager", localStringBuilder.toString());
+    return paramVideoAppInterface;
   }
   
   public int a(int paramInt, String paramString)
   {
-    int i = 1;
     SupportBase localSupportBase = a(paramInt);
-    paramInt = i;
     if (localSupportBase != null) {
-      paramInt = localSupportBase.a(paramString);
+      return localSupportBase.a(paramString);
     }
-    return paramInt;
+    return 1;
   }
   
-  public void a() {}
+  protected void a() {}
   
   public void a(int paramInt)
   {
     int i = 0;
-    while (i < 17)
+    while (i < 18)
     {
       if ((paramInt == 255) || (paramInt == i))
       {
@@ -95,19 +99,21 @@ public class EffectSupportManager
     }
   }
   
-  public void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    AVLog.printColorLog("EffectSupportManager", "EffectFaceSupportManager onSessionStatusChanged " + paramInt);
-    switch (paramInt)
+    paramString1 = new StringBuilder();
+    paramString1.append("EffectFaceSupportManager onSessionStatusChanged ");
+    paramString1.append(paramInt);
+    AVLog.printColorLog("EffectSupportManager", paramString1.toString());
+    if (paramInt != 1)
     {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      a(255);
+      if (paramInt != 3) {
+        return;
+      }
+      b();
       return;
     }
-    b();
+    a(255);
   }
   
   public boolean a(int paramInt1, int paramInt2, String paramString)
@@ -121,15 +127,14 @@ public class EffectSupportManager
   
   public boolean a(int paramInt, String paramString)
   {
-    boolean bool = true;
     SupportBase localSupportBase = a(paramInt);
     if (localSupportBase != null) {
-      bool = localSupportBase.a(paramString);
+      return localSupportBase.a(paramString);
     }
-    return bool;
+    return true;
   }
   
-  public boolean a(String paramString)
+  protected boolean a(String paramString)
   {
     return true;
   }
@@ -137,7 +142,7 @@ public class EffectSupportManager
   public void b()
   {
     int i = 0;
-    while (i < 17)
+    while (i < 18)
     {
       SupportBase localSupportBase = a(i);
       if (localSupportBase != null) {
@@ -149,7 +154,7 @@ public class EffectSupportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.support.EffectSupportManager
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,26 @@ class FileTransferHandler$9
   
   public void run()
   {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "] Handle upload failed notify. retCode =" + this.jdField_a_of_type_Int + "(1:cancel upload) reason=" + this.jdField_a_of_type_JavaLangString);
-    if (1 == this.jdField_a_of_type_Int)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OLfilesession[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("] Handle upload failed notify. retCode =");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("(1:cancel upload) reason=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
+    int i = this.jdField_a_of_type_Int;
+    if (1 == i)
     {
       this.this$0.a.getOnlineFileSessionCenter().a(this.b, this.jdField_a_of_type_Long);
       return;
     }
-    if (2 == this.jdField_a_of_type_Int)
+    if (2 == i)
     {
       this.this$0.a.getOnlineFileSessionCenter().a(this.b, this.jdField_a_of_type_Long);
       return;
     }
-    if (3 == this.jdField_a_of_type_Int)
+    if (3 == i)
     {
       this.this$0.a.getOnlineFileSessionCenter().c(this.b, this.jdField_a_of_type_Long);
       return;
@@ -32,7 +40,7 @@ class FileTransferHandler$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.9
  * JD-Core Version:    0.7.0.1
  */

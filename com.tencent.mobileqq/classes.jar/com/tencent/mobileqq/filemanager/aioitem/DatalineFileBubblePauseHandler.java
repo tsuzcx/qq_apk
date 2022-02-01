@@ -28,16 +28,16 @@ public class DatalineFileBubblePauseHandler
   
   private DataLineMsgRecord a(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    long l;
-    do
-    {
+    if (paramChatMessage == null) {
       return null;
-      paramChatMessage = (MessageForDLFile)paramChatMessage;
-      int i = paramChatMessage.deviceType;
-      l = paramChatMessage.associatedId;
-      paramChatMessage = this.a.getMessageFacade().a(i);
-    } while (paramChatMessage == null);
+    }
+    paramChatMessage = (MessageForDLFile)paramChatMessage;
+    int i = paramChatMessage.deviceType;
+    long l = paramChatMessage.associatedId;
+    paramChatMessage = this.a.getMessageFacade().a(i);
+    if (paramChatMessage == null) {
+      return null;
+    }
     return paramChatMessage.a(l);
   }
   
@@ -58,7 +58,7 @@ public class DatalineFileBubblePauseHandler
       return;
     }
     i = DataLineMsgRecord.getDevTypeBySeId(l);
-    if (FileUtils.a(paramDataLineMsgRecord.path)) {
+    if (FileUtils.fileExists(paramDataLineMsgRecord.path)) {
       localDataLineHandler.a(paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, 0, l, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex, true);
     }
     if (paramDataLineMsgRecord.nOpType == 35)
@@ -71,47 +71,59 @@ public class DatalineFileBubblePauseHandler
   
   protected ImageView a(BaseBubbleBuilder.ViewHolder paramViewHolder)
   {
-    if (paramViewHolder == null) {}
-    while (!(paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+    if (paramViewHolder == null) {
       return null;
     }
-    return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+    if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+    }
+    return null;
   }
   
   protected void a(View paramView, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage, int paramInt)
   {
-    if ((paramChatMessage == null) || (paramChatMessage.isMultiMsg)) {}
-    do
+    if (paramChatMessage != null)
     {
-      do
-      {
+      if (paramChatMessage.isMultiMsg) {
         return;
-        QLog.i("QFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-        paramView = a(paramChatMessage);
-      } while (paramView == null);
+      }
+      paramView = new StringBuilder();
+      paramView.append("handlePauseClick: type[");
+      paramView.append(paramInt);
+      paramView.append("]");
+      QLog.i("QFileBubblePauseHandler", 1, paramView.toString());
+      paramView = a(paramChatMessage);
+      if (paramView == null) {
+        return;
+      }
       paramViewHolder = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
       if (paramInt == 0)
       {
         paramViewHolder.a(paramView.groupId, paramView.sessionid, false);
         return;
       }
-    } while (paramInt != 1);
-    a(paramView);
+      if (paramInt == 1) {
+        a(paramView);
+      }
+    }
   }
   
   protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, ImageView paramImageView)
   {
-    if (paramViewHolder == null) {}
-    while (!(paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+    if (paramViewHolder == null) {
       return;
     }
-    ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramImageView;
+    if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramImageView;
+    }
   }
   
   protected boolean a(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    while (paramChatMessage.isMultiMsg) {
+    if (paramChatMessage == null) {
+      return false;
+    }
+    if (paramChatMessage.isMultiMsg) {
       return false;
     }
     return super.a(paramChatMessage);
@@ -119,8 +131,10 @@ public class DatalineFileBubblePauseHandler
   
   protected boolean b(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    while (paramChatMessage.isMultiMsg) {
+    if (paramChatMessage == null) {
+      return false;
+    }
+    if (paramChatMessage.isMultiMsg) {
       return false;
     }
     return super.b(paramChatMessage);
@@ -128,7 +142,7 @@ public class DatalineFileBubblePauseHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.DatalineFileBubblePauseHandler
  * JD-Core Version:    0.7.0.1
  */

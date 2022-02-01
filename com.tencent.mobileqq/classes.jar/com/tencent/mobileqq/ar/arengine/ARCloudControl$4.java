@@ -10,19 +10,18 @@ class ARCloudControl$4
   
   public void a(int paramInt, ARCloudReqFileInfo paramARCloudReqFileInfo, long paramLong)
   {
-    if (ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl)) {}
-    do
+    if (ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl)) {
+      return;
+    }
+    if (paramInt == ARCloudPretreatmentManager.jdField_a_of_type_Int)
     {
-      do
-      {
-        return;
-      } while (paramInt != ARCloudPretreatmentManager.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.h = paramLong;
-      ARCloudControl localARCloudControl = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
-      localARCloudControl.i += this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.h;
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl;
+      ((ARCloudControl)localObject).h = paramLong;
+      ((ARCloudControl)localObject).i += this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.h;
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a();
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo = paramARCloudReqFileInfo;
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.d;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo;
+      ((ARCloudReqInfo)localObject).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo = paramARCloudReqFileInfo;
+      ((ARCloudReqInfo)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.d;
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.e;
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.jdField_a_of_type_Long;
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.f;
@@ -30,8 +29,10 @@ class ARCloudControl$4
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_b_of_type_Long = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
       this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_c_of_type_Long = System.currentTimeMillis();
       ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo);
-    } while (ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl) == null);
-    ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl).c();
+      if (ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl) != null) {
+        ARCloudControl.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl).c();
+      }
+    }
   }
   
   public void a(ARCloudRecogReqFaceInfo paramARCloudRecogReqFaceInfo)
@@ -66,7 +67,7 @@ class ARCloudControl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.4
  * JD-Core Version:    0.7.0.1
  */

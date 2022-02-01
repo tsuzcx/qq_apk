@@ -23,27 +23,38 @@ class NearbyCardHandler$4
       {
         if (paramBundle.result.get() == 0)
         {
-          if (!QLog.isColorLevel()) {
-            return;
+          if (QLog.isColorLevel()) {
+            QLog.i("NearbyCardHandler", 2, "sendPoBingMsg. success");
           }
-          QLog.i("NearbyCardHandler", 2, "sendPoBingMsg. success");
-          return;
         }
-        QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. result=" + paramBundle.result.get() + " errorMsg=" + paramBundle.err_msg.get());
+        else
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("sendPoBingMsg. result=");
+          paramArrayOfByte.append(paramBundle.result.get());
+          paramArrayOfByte.append(" errorMsg=");
+          paramArrayOfByte.append(paramBundle.err_msg.get());
+          QLog.e("NearbyCardHandler", 1, paramArrayOfByte.toString());
+        }
+      }
+      else
+      {
+        QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. no result");
         return;
       }
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. error=" + QLog.getStackTraceString(paramArrayOfByte));
-      return;
+      paramBundle = new StringBuilder();
+      paramBundle.append("sendPoBingMsg. error=");
+      paramBundle.append(QLog.getStackTraceString(paramArrayOfByte));
+      QLog.e("NearbyCardHandler", 1, paramBundle.toString());
     }
-    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. no result");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.business.NearbyCardHandler.4
  * JD-Core Version:    0.7.0.1
  */

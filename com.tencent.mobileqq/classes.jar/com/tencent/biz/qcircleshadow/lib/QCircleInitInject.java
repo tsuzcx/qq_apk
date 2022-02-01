@@ -1,7 +1,6 @@
 package com.tencent.biz.qcircleshadow.lib;
 
 import com.tencent.biz.qcircleshadow.lib.delegate.IApplicationDelegate;
-import com.tencent.biz.qcircleshadow.lib.delegate.IDaTongReportDelegate;
 import com.tencent.biz.qcircleshadow.lib.delegate.ILoadPluginDelegate;
 import com.tencent.biz.qcircleshadow.lib.delegate.ILogDelegate;
 import com.tencent.biz.qcircleshadow.lib.delegate.IPluginInfoDelegate;
@@ -17,7 +16,6 @@ public class QCircleInitInject
   private static QCircleInitInject mInstance;
   private IApplicationDelegate mApp;
   private final HashMap<String, Class> mDelegateClassSet = new HashMap();
-  private IDaTongReportDelegate mIDaTongReportDelegate;
   private IToastDelegate mIToastDelegate;
   private List<WeakReference<ILoadPluginDelegate>> mList = new ArrayList();
   private ILogDelegate mLogDelegate;
@@ -40,11 +38,6 @@ public class QCircleInitInject
   public IApplicationDelegate getApp()
   {
     return this.mApp;
-  }
-  
-  public IDaTongReportDelegate getDaTongReportDelegate()
-  {
-    return this.mIDaTongReportDelegate;
   }
   
   public ILogDelegate getLogDelegate()
@@ -70,12 +63,6 @@ public class QCircleInitInject
   public QCircleInitInject injectApp(IApplicationDelegate paramIApplicationDelegate)
   {
     this.mApp = paramIApplicationDelegate;
-    return this;
-  }
-  
-  public QCircleInitInject injectDaTongReportDelegate(IDaTongReportDelegate paramIDaTongReportDelegate)
-  {
-    this.mIDaTongReportDelegate = paramIDaTongReportDelegate;
     return this;
   }
   
@@ -107,7 +94,7 @@ public class QCircleInitInject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleInitInject
  * JD-Core Version:    0.7.0.1
  */

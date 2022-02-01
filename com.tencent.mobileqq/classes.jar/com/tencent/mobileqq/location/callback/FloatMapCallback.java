@@ -9,8 +9,8 @@ import com.tencent.mobileqq.location.api.IFloatMapService;
 import com.tencent.mobileqq.location.data.LocationRoom.RoomKey;
 import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams;
 import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams.FloatingBuilder;
+import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenReporter;
 import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindow;
-import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenReporter;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
@@ -23,7 +23,7 @@ import mqq.app.MobileQQ;
 public class FloatMapCallback
   implements IFloatMapCallback
 {
-  public static long a = 0L;
+  public static long a;
   
   public static void a(QBaseActivity paramQBaseActivity)
   {
@@ -31,7 +31,7 @@ public class FloatMapCallback
       return;
     }
     FloatingScreenReporter.b();
-    paramQBaseActivity = DialogUtil.a(paramQBaseActivity, 230, null, "位置共享将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramQBaseActivity.getString(2131690800), paramQBaseActivity.getString(2131694615), new FloatMapCallback.2(paramQBaseActivity), null);
+    paramQBaseActivity = DialogUtil.a(paramQBaseActivity, 230, null, "位置共享将收起为小窗进行展示，请开启QQ悬浮窗权限以正常使用功能。", paramQBaseActivity.getString(2131690728), paramQBaseActivity.getString(2131694583), new FloatMapCallback.2(paramQBaseActivity), null);
     paramQBaseActivity.setCancelable(false);
     try
     {
@@ -95,7 +95,7 @@ public class FloatMapCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.callback.FloatMapCallback
  * JD-Core Version:    0.7.0.1
  */

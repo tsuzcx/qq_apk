@@ -15,12 +15,20 @@ public class FileDownloadTask$Progress
   
   public String toString()
   {
-    return "Progress{intput=" + this.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Progress{intput=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input);
+    localStringBuilder.append(", downloadBytes=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", totalBytes=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Progress
  * JD-Core Version:    0.7.0.1
  */

@@ -19,42 +19,63 @@ class AudioDecoderTrack$DecoderThread
   
   protected void doAction()
   {
-    CMSampleBuffer localCMSampleBuffer = null;
-    synchronized (this.nextFrameDecoderLock)
+    for (;;)
     {
-      if (this.pcmFrame != null)
+      synchronized (this.nextFrameDecoderLock)
       {
-        if (AudioDecoderTrack.access$1700(this.this$0).getTime() != CMTime.CMTimeInvalid) {
-          break label239;
-        }
-        Logger.v(AudioDecoderTrack.access$700(), "doAction: CMTime.CMTimeZero");
-        localCMSampleBuffer = AudioDecoderTrack.access$1800(this.this$0, CMTime.CMTimeZero);
-      }
-      label239:
-      while (AudioDecoderTrack.access$1700(this.this$0).getTime().smallThan(CMTime.CMTimeZero))
-      {
-        if (localCMSampleBuffer != null)
+        if (this.pcmFrame != null)
         {
-          if (localCMSampleBuffer.getSampleByteBuffer() != null)
+          CMSampleBuffer localCMSampleBuffer;
+          if (AudioDecoderTrack.access$1700(this.this$0).getTime() == CMTime.CMTimeInvalid)
           {
-            Logger.v(AudioDecoderTrack.access$700(), "doAction: processFrame [volume " + AudioDecoderTrack.access$2000(this.this$0) + "] [_speed " + AudioDecoderTrack.access$2100(this.this$0) + "]");
-            localCMSampleBuffer.setSampleByteBuffer(this.this$0.processFrame(localCMSampleBuffer.getSampleByteBuffer(), 1.0F, AudioDecoderTrack.access$2100(this.this$0), this.this$0.getAudioInfo()));
-            Logger.v(AudioDecoderTrack.access$700(), "doAction: processFrame finish [volume " + AudioDecoderTrack.access$2000(this.this$0) + "] [_speed " + AudioDecoderTrack.access$2100(this.this$0) + "]");
+            Logger.v(AudioDecoderTrack.access$700(), "doAction: CMTime.CMTimeZero");
+            localCMSampleBuffer = AudioDecoderTrack.access$1800(this.this$0, CMTime.CMTimeZero);
           }
-          this.pcmFrame = new AudioDecoderTrack.CacheBuffer(null);
-          AudioDecoderTrack.CacheBuffer.access$2302(this.pcmFrame, AudioDecoderTrack.access$1700(this.this$0).getTime());
-          AudioDecoderTrack.CacheBuffer.access$302(this.pcmFrame, localCMSampleBuffer.getTime());
+          else
+          {
+            if (AudioDecoderTrack.access$1700(this.this$0).getTime().smallThan(CMTime.CMTimeZero)) {
+              break label345;
+            }
+            Logger.v(AudioDecoderTrack.access$700(), "doAction: lastSampleTime.add(frameDuration)");
+            localCMSampleBuffer = AudioDecoderTrack.access$1800(this.this$0, AudioDecoderTrack.access$1700(this.this$0).getTime().add(AudioDecoderTrack.access$1900(this.this$0)));
+          }
+          if (localCMSampleBuffer != null)
+          {
+            if (localCMSampleBuffer.getSampleByteBuffer() != null)
+            {
+              String str = AudioDecoderTrack.access$700();
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("doAction: processFrame [volume ");
+              localStringBuilder.append(AudioDecoderTrack.access$2000(this.this$0));
+              localStringBuilder.append("] [_speed ");
+              localStringBuilder.append(AudioDecoderTrack.access$2100(this.this$0));
+              localStringBuilder.append("]");
+              Logger.v(str, localStringBuilder.toString());
+              localCMSampleBuffer.setSampleByteBuffer(this.this$0.processFrame(localCMSampleBuffer.getSampleByteBuffer(), 1.0F, AudioDecoderTrack.access$2100(this.this$0), this.this$0.getAudioInfo()));
+              str = AudioDecoderTrack.access$700();
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("doAction: processFrame finish [volume ");
+              localStringBuilder.append(AudioDecoderTrack.access$2000(this.this$0));
+              localStringBuilder.append("] [_speed ");
+              localStringBuilder.append(AudioDecoderTrack.access$2100(this.this$0));
+              localStringBuilder.append("]");
+              Logger.v(str, localStringBuilder.toString());
+            }
+            this.pcmFrame = new AudioDecoderTrack.CacheBuffer(null);
+            AudioDecoderTrack.CacheBuffer.access$2302(this.pcmFrame, AudioDecoderTrack.access$1700(this.this$0).getTime());
+            AudioDecoderTrack.CacheBuffer.access$302(this.pcmFrame, localCMSampleBuffer.getTime());
+          }
         }
         return;
       }
-      Logger.v(AudioDecoderTrack.access$700(), "doAction: lastSampleTime.add(frameDuration)");
-      localCMSampleBuffer = AudioDecoderTrack.access$1800(this.this$0, AudioDecoderTrack.access$1700(this.this$0).getTime().add(AudioDecoderTrack.access$1900(this.this$0)));
+      label345:
+      Object localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.AudioDecoderTrack.DecoderThread
  * JD-Core Version:    0.7.0.1
  */

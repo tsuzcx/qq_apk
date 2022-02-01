@@ -41,7 +41,7 @@ public class GalleryPageView
     localLayoutParams.bottomMargin = ((int)TypedValue.applyDimension(1, this.jdField_a_of_type_Int, paramActivity.getResources().getDisplayMetrics()) + paramInt);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#e6e9e9e9"));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 15.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367684);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367438);
     localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
@@ -55,7 +55,12 @@ public class GalleryPageView
   {
     if (paramAdapterView.getCount() > 1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + "/" + paramAdapterView.getCount());
+      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt + 1);
+      localStringBuilder.append("/");
+      localStringBuilder.append(paramAdapterView.getCount());
+      localTextView.setText(localStringBuilder.toString());
       if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 4)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -79,7 +84,7 @@ public class GalleryPageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.GalleryPageView
  * JD-Core Version:    0.7.0.1
  */

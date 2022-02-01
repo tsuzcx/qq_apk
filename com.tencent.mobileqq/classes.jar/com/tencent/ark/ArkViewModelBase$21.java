@@ -7,8 +7,9 @@ class ArkViewModelBase$21
   
   public void run()
   {
-    if (this.val$viewImpl != null) {
-      this.val$viewImpl.onFirstPaint();
+    ArkViewImplement localArkViewImplement = this.val$viewImpl;
+    if (localArkViewImplement != null) {
+      localArkViewImplement.onFirstPaint();
     }
   }
 }

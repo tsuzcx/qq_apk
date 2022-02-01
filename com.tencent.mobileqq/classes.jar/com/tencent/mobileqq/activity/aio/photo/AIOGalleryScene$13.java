@@ -11,33 +11,44 @@ class AIOGalleryScene$13
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (this.jdField_a_of_type_Int)
+    paramInt = this.jdField_a_of_type_Int;
+    if (paramInt != 1)
     {
-    case 2: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryScene", 2, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
-      }
-      break;
-    }
-    do
-    {
-      do
+      if (paramInt != 3)
       {
-        return;
-      } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOImageData));
-      AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, (AIOImageData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.u();
-      return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOShortVideoData));
-    AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, (AIOShortVideoData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.a.a = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.u();
+        if (QLog.isColorLevel())
+        {
+          paramDialogInterface = new StringBuilder();
+          paramDialogInterface.append("showSaveFileTips type = ");
+          paramDialogInterface.append(this.jdField_a_of_type_Int);
+          QLog.d("AIOGalleryScene", 2, paramDialogInterface.toString());
+        }
+      }
+      else
+      {
+        paramDialogInterface = this.jdField_a_of_type_JavaLangObject;
+        if ((paramDialogInterface instanceof AIOShortVideoData))
+        {
+          AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, (AIOShortVideoData)paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.a.a = true;
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.u();
+        }
+      }
+    }
+    else
+    {
+      paramDialogInterface = this.jdField_a_of_type_JavaLangObject;
+      if ((paramDialogInterface instanceof AIOImageData))
+      {
+        AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, (AIOImageData)paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.u();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.13
  * JD-Core Version:    0.7.0.1
  */

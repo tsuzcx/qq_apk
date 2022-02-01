@@ -37,8 +37,10 @@ public class GifHeaderParser
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Int = 1;
+      label14:
+      break label14;
     }
+    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Int = 1;
     return 0;
   }
   
@@ -53,52 +55,70 @@ public class GifHeaderParser
   private void a(int paramInt)
   {
     int i = 0;
-    while ((i == 0) && (!a()) && (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_b_of_type_Int <= paramInt)) {
-      switch (a())
+    while ((i == 0) && (!a()) && (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_b_of_type_Int <= paramInt))
+    {
+      int j = a();
+      if (j != 33)
       {
-      default: 
-        this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Int = 1;
-        break;
-      case 44: 
-        if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame == null) {
-          this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame = new GifFrame();
-        }
-        d();
-        break;
-      case 33: 
-        switch (a())
+        if (j != 44)
         {
-        default: 
-          i();
-          break;
-        case 249: 
-          this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame = new GifFrame();
-          c();
-          break;
-        case 255: 
-          j();
-          StringBuilder localStringBuilder = new StringBuilder();
-          int j = 0;
-          while (j < 11)
-          {
-            localStringBuilder.append((char)this.jdField_a_of_type_ArrayOfByte[j]);
-            j += 1;
-          }
-          if (localStringBuilder.toString().equals("NETSCAPE2.0")) {
-            e();
+          if (j != 59) {
+            this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Int = 1;
           } else {
-            i();
+            i = 1;
           }
-          break;
-        case 254: 
-          i();
-          break;
-        case 1: 
+        }
+        else
+        {
+          if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame == null) {
+            this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame = new GifFrame();
+          }
+          d();
+        }
+      }
+      else
+      {
+        j = a();
+        if (j != 1)
+        {
+          if (j != 249)
+          {
+            if (j != 254)
+            {
+              if (j != 255)
+              {
+                i();
+              }
+              else
+              {
+                j();
+                StringBuilder localStringBuilder = new StringBuilder();
+                j = 0;
+                while (j < 11)
+                {
+                  localStringBuilder.append((char)this.jdField_a_of_type_ArrayOfByte[j]);
+                  j += 1;
+                }
+                if (localStringBuilder.toString().equals("NETSCAPE2.0")) {
+                  e();
+                } else {
+                  i();
+                }
+              }
+            }
+            else {
+              i();
+            }
+          }
+          else
+          {
+            this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame = new GifFrame();
+            c();
+          }
+        }
+        else {
           i();
         }
-        break;
-      case 59: 
-        i = 1;
       }
     }
   }
@@ -111,33 +131,31 @@ public class GifHeaderParser
   @Nullable
   private int[] a(int paramInt)
   {
-    int i = 0;
     byte[] arrayOfByte = new byte[paramInt * 3];
+    localObject = null;
     try
     {
       this.jdField_a_of_type_JavaNioByteBuffer.get(arrayOfByte);
-      int[] arrayOfInt2 = new int[256];
+      int[] arrayOfInt = new int[256];
+      int i = 0;
       int j = 0;
-      int[] arrayOfInt1;
       for (;;)
       {
-        arrayOfInt1 = arrayOfInt2;
+        localObject = arrayOfInt;
         if (i >= paramInt) {
           break;
         }
-        int n = j + 1;
-        int k = arrayOfByte[j];
-        int m = n + 1;
-        n = arrayOfByte[n];
+        int k = j + 1;
+        j = arrayOfByte[j];
+        int m = k + 1;
+        arrayOfInt[i] = ((j & 0xFF) << 16 | 0xFF000000 | (arrayOfByte[k] & 0xFF) << 8 | arrayOfByte[m] & 0xFF);
         j = m + 1;
-        arrayOfInt2[i] = ((k & 0xFF) << 16 | 0xFF000000 | (n & 0xFF) << 8 | arrayOfByte[m] & 0xFF);
         i += 1;
       }
-      return arrayOfInt1;
+      return localObject;
     }
     catch (BufferUnderflowException localBufferUnderflowException)
     {
-      arrayOfInt1 = null;
       if (Log.isLoggable("GifHeaderParser", 3)) {
         Log.d("GifHeaderParser", "Format Error Reading Color Table", localBufferUnderflowException);
       }
@@ -157,72 +175,60 @@ public class GifHeaderParser
   
   private void c()
   {
-    boolean bool = true;
     a();
     int i = a();
     this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.e = ((jdField_a_of_type_Int & i) >> 2);
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.e == 0) {
+    int j = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.e;
+    boolean bool = true;
+    if (j == 0) {
       this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.e = 1;
     }
     GifFrame localGifFrame = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame;
-    if ((i & jdField_b_of_type_Int) != 0) {}
-    for (;;)
-    {
-      localGifFrame.jdField_b_of_type_Boolean = bool;
-      int j = b();
-      i = j;
-      if (j < 2) {
-        i = 10;
-      }
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.g = (i * 10);
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.f = a();
-      a();
-      return;
+    if ((i & jdField_b_of_type_Int) == 0) {
       bool = false;
     }
+    localGifFrame.jdField_b_of_type_Boolean = bool;
+    j = b();
+    i = j;
+    if (j < 2) {
+      i = 10;
+    }
+    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.g = (i * 10);
+    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.f = a();
+    a();
   }
   
   private void d()
   {
-    boolean bool = true;
     this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.jdField_a_of_type_Int = b();
     this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.jdField_b_of_type_Int = b();
     this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.c = b();
     this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.d = b();
     int j = a();
-    int i;
-    int k;
-    if ((c & j) != 0)
-    {
+    int i = c;
+    boolean bool = false;
+    if ((i & j) != 0) {
       i = 1;
-      k = (int)Math.pow(2.0D, (e & j) + 1);
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame;
-      if ((j & d) == 0) {
-        break label167;
-      }
-      label107:
-      ((GifFrame)localObject).jdField_a_of_type_Boolean = bool;
-      if (i == 0) {
-        break label173;
-      }
-    }
-    label167:
-    label173:
-    for (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.jdField_a_of_type_ArrayOfInt = a(k);; this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.jdField_a_of_type_ArrayOfInt = null)
-    {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.h = this.jdField_a_of_type_JavaNioByteBuffer.position();
-      h();
-      if (!a()) {
-        break label187;
-      }
-      return;
+    } else {
       i = 0;
-      break;
-      bool = false;
-      break label107;
     }
-    label187:
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader;
+    int k = (int)Math.pow(2.0D, (e & j) + 1);
+    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame;
+    if ((j & d) != 0) {
+      bool = true;
+    }
+    ((GifFrame)localObject).jdField_a_of_type_Boolean = bool;
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.jdField_a_of_type_ArrayOfInt = a(k);
+    } else {
+      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.jdField_a_of_type_ArrayOfInt = null;
+    }
+    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame.h = this.jdField_a_of_type_JavaNioByteBuffer.position();
+    h();
+    if (a()) {
+      return;
+    }
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader;
     ((GifHeader)localObject).jdField_b_of_type_Int += 1;
     this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifFrame);
   }
@@ -232,34 +238,38 @@ public class GifHeaderParser
     do
     {
       j();
-      if (this.jdField_a_of_type_ArrayOfByte[0] == 1)
+      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+      if (arrayOfByte[0] == 1)
       {
-        int i = this.jdField_a_of_type_ArrayOfByte[1];
-        int j = this.jdField_a_of_type_ArrayOfByte[2];
-        this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.i = (i & 0xFF | (j & 0xFF) << 8);
+        int i = arrayOfByte[1];
+        int j = arrayOfByte[2];
+        this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.i = ((j & 0xFF) << 8 | i & 0xFF);
       }
     } while ((this.h > 0) && (!a()));
   }
   
   private void f()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject = new StringBuilder();
     int i = 0;
     while (i < 6)
     {
-      localStringBuilder.append((char)a());
+      ((StringBuilder)localObject).append((char)a());
       i += 1;
     }
-    if (!localStringBuilder.toString().startsWith("GIF")) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Int = 1;
-    }
-    do
+    if (!((StringBuilder)localObject).toString().startsWith("GIF"))
     {
+      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Int = 1;
       return;
-      g();
-    } while ((!this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Boolean) || (a()));
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ArrayOfInt = a(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.e);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.h = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.f];
+    }
+    g();
+    if ((this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Boolean) && (!a()))
+    {
+      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader;
+      ((GifHeader)localObject).jdField_a_of_type_ArrayOfInt = a(((GifHeader)localObject).e);
+      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader;
+      ((GifHeader)localObject).h = localObject.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.f];
+    }
   }
   
   private void g()
@@ -268,15 +278,16 @@ public class GifHeaderParser
     this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.d = b();
     int i = a();
     GifHeader localGifHeader = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader;
-    if ((f & i) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localGifHeader.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.e = ((int)Math.pow(2.0D, (i & g) + 1));
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.f = a();
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.g = a();
-      return;
+    boolean bool;
+    if ((f & i) != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localGifHeader.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.e = ((int)Math.pow(2.0D, (i & g) + 1));
+    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.f = a();
+    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.g = a();
   }
   
   private void h()
@@ -298,11 +309,11 @@ public class GifHeaderParser
   
   private void j()
   {
-    int i = 0;
     this.h = a();
     if (this.h > 0)
     {
       int j = 0;
+      int i = 0;
       for (;;)
       {
         int k = i;
@@ -319,8 +330,16 @@ public class GifHeaderParser
         }
         catch (Exception localException)
         {
-          if (Log.isLoggable("GifHeaderParser", 3)) {
-            Log.d("GifHeaderParser", "Error Reading Block n: " + j + " count: " + k + " blockSize: " + this.h, localException);
+          if (Log.isLoggable("GifHeaderParser", 3))
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Error Reading Block n: ");
+            localStringBuilder.append(j);
+            localStringBuilder.append(" count: ");
+            localStringBuilder.append(k);
+            localStringBuilder.append(" blockSize: ");
+            localStringBuilder.append(this.h);
+            Log.d("GifHeaderParser", localStringBuilder.toString(), localException);
           }
           this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Int = 1;
         }
@@ -331,21 +350,22 @@ public class GifHeaderParser
   @NotNull
   public GifHeader a()
   {
-    if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
-      throw new IllegalStateException("You must call setData() before parseHeader()");
-    }
-    if (a()) {
+    if (this.jdField_a_of_type_JavaNioByteBuffer != null)
+    {
+      if (a()) {
+        return this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader;
+      }
+      f();
+      if (!a())
+      {
+        b();
+        if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_b_of_type_Int < 0) {
+          this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Int = 1;
+        }
+      }
       return this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader;
     }
-    f();
-    if (!a())
-    {
-      b();
-      if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_b_of_type_Int < 0) {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader.jdField_a_of_type_Int = 1;
-      }
-    }
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeGifHeader;
+    throw new IllegalStateException("You must call setData() before parseHeader()");
   }
   
   public GifHeaderParser a(@NotNull ByteBuffer paramByteBuffer)
@@ -371,7 +391,7 @@ public class GifHeaderParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.GifHeaderParser
  * JD-Core Version:    0.7.0.1
  */

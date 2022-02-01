@@ -67,27 +67,47 @@ public class DeviceCapabilityExamination$ReportData
   
   public String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("|");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append("|");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append("|");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString).append("|");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString).append("|");
-    localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append(this.jdField_a_of_type_Long).append("|");
-    localStringBuilder.append(this.jdField_b_of_type_Int).append("|");
-    localStringBuilder.append(this.jdField_g_of_type_JavaLangString).append("|");
-    localStringBuilder.append(this.jdField_h_of_type_JavaLangString).append("|");
-    localStringBuilder.append(this.jdField_c_of_type_Int).append("|");
-    localStringBuilder.append(this.jdField_d_of_type_Int).append("|");
-    localStringBuilder.append(this.jdField_e_of_type_Int).append("|");
-    localStringBuilder.append(this.jdField_f_of_type_Int).append("|");
-    localStringBuilder.append(this.jdField_g_of_type_Int).append("|");
-    localStringBuilder.append(this.jdField_h_of_type_Int).append("|");
-    localStringBuilder.append(this.jdField_i_of_type_Int).append("|");
-    localStringBuilder.append(this.j).append("|");
-    localStringBuilder.append(this.jdField_i_of_type_JavaLangString).append("|");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_a_of_type_Long);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_b_of_type_Int);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_c_of_type_Int);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_d_of_type_Int);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_e_of_type_Int);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_f_of_type_Int);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_g_of_type_Int);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_h_of_type_Int);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_i_of_type_Int);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.j);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_i_of_type_JavaLangString);
+    localStringBuilder1.append("|");
     this.k = VcSystemInfo.getNumCores();
     this.jdField_b_of_type_Long = (VcSystemInfo.getMaxCpuFreq() / 1024L);
     this.jdField_c_of_type_Long = (VcSystemInfo.getMemoryTotal() / 1024L);
@@ -98,23 +118,36 @@ public class DeviceCapabilityExamination$ReportData
     this.p = AndroidCodecUtil.jdField_d_of_type_Int;
     this.q = AndroidCodecUtil.jdField_e_of_type_Int;
     this.r = AndroidCodecUtil.jdField_f_of_type_Int;
-    localStringBuilder.append(this.k).append("|");
-    localStringBuilder.append(this.jdField_b_of_type_Long).append("|");
-    localStringBuilder.append(this.jdField_c_of_type_Long).append("|");
-    localStringBuilder.append(this.l).append("|");
-    localStringBuilder.append(this.m).append("|");
-    localStringBuilder.append(this.n).append("|");
-    localStringBuilder.append(this.o).append("|");
-    localStringBuilder.append(this.p).append("|");
-    localStringBuilder.append(this.q).append("|");
-    localStringBuilder.append(this.r).append("|");
-    QLog.i("DeviceCapabilityExamination", 1, "ReportData:" + localStringBuilder.toString());
-    return localStringBuilder.toString();
+    localStringBuilder1.append(this.k);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_b_of_type_Long);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.jdField_c_of_type_Long);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.l);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.m);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.n);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.o);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.p);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.q);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.r);
+    localStringBuilder1.append("|");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("ReportData:");
+    localStringBuilder2.append(localStringBuilder1.toString());
+    QLog.i("DeviceCapabilityExamination", 1, localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.DeviceCapabilityExamination.ReportData
  * JD-Core Version:    0.7.0.1
  */

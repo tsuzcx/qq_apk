@@ -66,10 +66,10 @@ public class Categories$CategoryFilter
   
   public static CategoryFilter exclude(boolean paramBoolean, Class<?>... paramVarArgs)
   {
-    if (hasNull(paramVarArgs)) {
-      throw new NullPointerException("has null category");
+    if (!hasNull(paramVarArgs)) {
+      return categoryFilter(true, null, paramBoolean, Categories.access$000(paramVarArgs));
     }
-    return categoryFilter(true, null, paramBoolean, Categories.access$000(paramVarArgs));
+    throw new NullPointerException("has null category");
   }
   
   public static CategoryFilter exclude(Class<?>... paramVarArgs)
@@ -79,28 +79,23 @@ public class Categories$CategoryFilter
   
   private boolean hasCorrectCategoryAnnotation(Description paramDescription)
   {
-    boolean bool = false;
     paramDescription = categories(paramDescription);
     if (paramDescription.isEmpty()) {
-      bool = this.included.isEmpty();
+      return this.included.isEmpty();
     }
-    do
-    {
-      return bool;
-      if (this.excluded.isEmpty()) {
-        break;
+    if (!this.excluded.isEmpty()) {
+      if (this.excludedAny)
+      {
+        if (matchesAnyParentCategories(paramDescription, this.excluded)) {
+          return false;
+        }
       }
-      if (!this.excludedAny) {
-        break label73;
-      }
-    } while (matchesAnyParentCategories(paramDescription, this.excluded));
-    while (this.included.isEmpty())
-    {
-      return true;
-      label73:
-      if (matchesAllParentCategories(paramDescription, this.excluded)) {
+      else if (matchesAllParentCategories(paramDescription, this.excluded)) {
         return false;
       }
+    }
+    if (this.included.isEmpty()) {
+      return true;
     }
     if (this.includedAny) {
       return matchesAnyParentCategories(paramDescription, this.included);
@@ -110,20 +105,19 @@ public class Categories$CategoryFilter
   
   private static boolean hasNull(Class<?>... paramVarArgs)
   {
-    if (paramVarArgs == null) {}
-    for (;;)
-    {
+    if (paramVarArgs == null) {
       return false;
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (paramVarArgs[i] == null) {
-          return true;
-        }
-        i += 1;
-      }
     }
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (paramVarArgs[i] == null) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   public static CategoryFilter include(Class<?> paramClass)
@@ -133,10 +127,10 @@ public class Categories$CategoryFilter
   
   public static CategoryFilter include(boolean paramBoolean, Class<?>... paramVarArgs)
   {
-    if (hasNull(paramVarArgs)) {
-      throw new NullPointerException("has null category");
+    if (!hasNull(paramVarArgs)) {
+      return categoryFilter(paramBoolean, Categories.access$000(paramVarArgs), true, null);
     }
-    return categoryFilter(paramBoolean, Categories.access$000(paramVarArgs), true, null);
+    throw new NullPointerException("has null category");
   }
   
   public static CategoryFilter include(Class<?>... paramVarArgs)
@@ -197,20 +191,24 @@ public class Categories$CategoryFilter
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("categories ");
-    if (this.included.isEmpty()) {}
-    for (Object localObject = "[all]";; localObject = this.included)
-    {
-      localObject = localStringBuilder.append(localObject);
-      if (!this.excluded.isEmpty()) {
-        ((StringBuilder)localObject).append(" - ").append(this.excluded);
-      }
-      return ((StringBuilder)localObject).toString();
+    Object localObject;
+    if (this.included.isEmpty()) {
+      localObject = "[all]";
+    } else {
+      localObject = this.included;
     }
+    localStringBuilder.append(localObject);
+    if (!this.excluded.isEmpty())
+    {
+      localStringBuilder.append(" - ");
+      localStringBuilder.append(this.excluded);
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.experimental.categories.Categories.CategoryFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -32,38 +32,44 @@ final class Segment
   
   public final void compact()
   {
-    if (this.prev == this) {
-      throw new IllegalStateException();
-    }
-    if (!this.prev.owner) {}
-    for (;;)
+    Segment localSegment = this.prev;
+    if (localSegment != this)
     {
-      return;
-      int j = this.limit - this.pos;
-      int k = this.prev.limit;
-      if (this.prev.shared) {}
-      for (int i = 0; j <= i + (8192 - k); i = this.prev.pos)
-      {
-        writeTo(this.prev, j);
-        pop();
-        SegmentPool.recycle(this);
+      if (!localSegment.owner) {
         return;
       }
+      int j = this.limit - this.pos;
+      int k = localSegment.limit;
+      int i;
+      if (localSegment.shared) {
+        i = 0;
+      } else {
+        i = localSegment.pos;
+      }
+      if (j > 8192 - k + i) {
+        return;
+      }
+      writeTo(this.prev, j);
+      pop();
+      SegmentPool.recycle(this);
+      return;
     }
+    throw new IllegalStateException();
   }
   
   @Nullable
   public final Segment pop()
   {
-    if (this.next != this) {}
-    for (Segment localSegment = this.next;; localSegment = null)
-    {
-      this.prev.next = this.next;
-      this.next.prev = this.prev;
-      this.next = null;
-      this.prev = null;
-      return localSegment;
+    Segment localSegment1 = this.next;
+    if (localSegment1 == this) {
+      localSegment1 = null;
     }
+    Segment localSegment2 = this.prev;
+    localSegment2.next = this.next;
+    this.next.prev = localSegment2;
+    this.next = null;
+    this.prev = null;
+    return localSegment1;
   }
   
   public final Segment push(Segment paramSegment)
@@ -83,22 +89,24 @@ final class Segment
   
   public final Segment split(int paramInt)
   {
-    if ((paramInt <= 0) || (paramInt > this.limit - this.pos)) {
-      throw new IllegalArgumentException();
-    }
-    Segment localSegment;
-    if (paramInt >= 1024) {
-      localSegment = sharedCopy();
-    }
-    for (;;)
+    if ((paramInt > 0) && (paramInt <= this.limit - this.pos))
     {
+      Segment localSegment;
+      if (paramInt >= 1024)
+      {
+        localSegment = sharedCopy();
+      }
+      else
+      {
+        localSegment = SegmentPool.take();
+        System.arraycopy(this.data, this.pos, localSegment.data, 0, paramInt);
+      }
       localSegment.limit = (localSegment.pos + paramInt);
       this.pos += paramInt;
       this.prev.push(localSegment);
       return localSegment;
-      localSegment = SegmentPool.take();
-      System.arraycopy(this.data, this.pos, localSegment.data, 0, paramInt);
     }
+    throw new IllegalArgumentException();
   }
   
   final Segment unsharedCopy()
@@ -108,29 +116,41 @@ final class Segment
   
   public final void writeTo(Segment paramSegment, int paramInt)
   {
-    if (!paramSegment.owner) {
-      throw new IllegalArgumentException();
-    }
-    if (paramSegment.limit + paramInt > 8192)
+    if (paramSegment.owner)
     {
-      if (paramSegment.shared) {
-        throw new IllegalArgumentException();
+      int i = paramSegment.limit;
+      if (i + paramInt > 8192) {
+        if (!paramSegment.shared)
+        {
+          int j = paramSegment.pos;
+          if (i + paramInt - j <= 8192)
+          {
+            byte[] arrayOfByte = paramSegment.data;
+            System.arraycopy(arrayOfByte, j, arrayOfByte, 0, i - j);
+            paramSegment.limit -= paramSegment.pos;
+            paramSegment.pos = 0;
+          }
+          else
+          {
+            throw new IllegalArgumentException();
+          }
+        }
+        else
+        {
+          throw new IllegalArgumentException();
+        }
       }
-      if (paramSegment.limit + paramInt - paramSegment.pos > 8192) {
-        throw new IllegalArgumentException();
-      }
-      System.arraycopy(paramSegment.data, paramSegment.pos, paramSegment.data, 0, paramSegment.limit - paramSegment.pos);
-      paramSegment.limit -= paramSegment.pos;
-      paramSegment.pos = 0;
+      System.arraycopy(this.data, this.pos, paramSegment.data, paramSegment.limit, paramInt);
+      paramSegment.limit += paramInt;
+      this.pos += paramInt;
+      return;
     }
-    System.arraycopy(this.data, this.pos, paramSegment.data, paramSegment.limit, paramInt);
-    paramSegment.limit += paramInt;
-    this.pos += paramInt;
+    throw new IllegalArgumentException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.Segment
  * JD-Core Version:    0.7.0.1
  */

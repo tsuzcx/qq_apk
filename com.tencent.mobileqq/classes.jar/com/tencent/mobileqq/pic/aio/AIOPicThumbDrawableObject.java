@@ -18,6 +18,9 @@ import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.ThumbWidthHeightDP;
 import com.tencent.mobileqq.drawable.BitmapDrawableWithMargin;
+import com.tencent.mobileqq.pic.api.IPicAIO;
+import com.tencent.mobileqq.pic.api.IPicUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.ImageUtil;
@@ -25,7 +28,6 @@ import com.tencent.mobileqq.widget.PhotoProgressDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import cooperation.peak.PeakUtils;
 import java.io.File;
 import java.net.URL;
 
@@ -51,153 +53,174 @@ public class AIOPicThumbDrawableObject
     float f1 = i2 / 160.0F;
     URL localURL = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL.jdField_a_of_type_JavaNetURL;
     boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL.jdField_a_of_type_Boolean;
-    boolean bool2 = PeakUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType);
-    if (bool1) {}
-    label453:
-    label710:
-    for (;;)
-    {
-      int m;
-      int n;
-      int i1;
+    boolean bool2 = ((IPicUtil)QRoute.api(IPicUtil.class)).isDynamicImg(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType);
+    if (bool1) {
       try
       {
         Rect localRect = NativeGifImage.getImageSize(paramFile, false);
-        if (localRect == null) {
-          break label453;
-        }
-        j = localRect.width();
-        i = localRect.height();
-        k = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.getThumbWidthHeightDP(bool2).mMinWidth;
-        m = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.getThumbWidthHeightDP(bool2).mMinHeight;
-        n = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.getThumbWidthHeightDP(bool2).mMaxWidth;
-        i1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.getThumbWidthHeightDP(bool2).mMaxHeight;
-        f1 *= 12.0F;
-        if ((j >= k) && (i >= m)) {
-          break label607;
-        }
-        if (j >= i) {
-          break label554;
-        }
-        f2 = k / j;
-        j = (int)(i * f2 + 0.5F);
-        i = j;
-        if (j > i1) {
-          i = i1;
-        }
-        j = k;
-        f1 = f2 * f1;
-        j = (j * i2 + 80) / 160;
-        i = (i * i2 + 80) / 160;
-        if (localRect == null) {
-          break label779;
-        }
-        if (localRect.width() >= j) {
-          break label710;
-        }
-        f1 *= localRect.width() / j;
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOPicDrawableObject", 2, "getThumbDrawable,roundCornor:" + f1 + "  w:" + j + " h:" + i);
-        }
-        if (this.jdField_a_of_type_ArrayOfInt != null)
-        {
-          this.jdField_a_of_type_ArrayOfInt[0] = j;
-          this.jdField_a_of_type_ArrayOfInt[1] = i;
-        }
-        paramFile = URLDrawableHelper.getLoadingDrawable();
-        if (!(URLDrawableHelper.getLoadingDrawable() instanceof SkinnableBitmapDrawable)) {
-          break label736;
-        }
-        paramFile = new BitmapDrawableWithMargin(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), j, i, -921103);
-        paramFile = URLDrawableHelper.getDrawable(localURL, j, i, paramFile, URLDrawableHelper.getFailedDrawable(), true, f1);
-        paramFile.setProgressDrawable(new PhotoProgressDrawable(URLDrawableHelper.getCommonProgressBitmap(), 0, false));
-        paramFile.setIgnorePause(true);
-        paramFile.setFadeInImage(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView.jdField_a_of_type_Boolean = true;
-        }
-        return paramFile;
       }
       catch (Throwable localThrowable1)
       {
         localThrowable1.printStackTrace();
       }
-      Object localObject = null;
-      continue;
+    }
+    ChatThumbView localChatThumbView = null;
+    if (localChatThumbView != null)
+    {
+      j = localChatThumbView.width();
+      i = localChatThumbView.height();
+    }
+    else
+    {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
       try
       {
         ImageUtil.a(paramFile.getAbsolutePath(), localOptions);
-        j = localOptions.outWidth;
-        i = localOptions.outHeight;
-        k = URLDrawableHelper.getExifRotation(paramFile.getAbsolutePath());
-        if ((k != 90) && (k != 270)) {
-          continue;
-        }
-        j = localOptions.outHeight;
-        i = localOptions.outWidth;
       }
       catch (Throwable localThrowable2)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("AIOPicDrawableObject", 2, "getThumbDrawable", localThrowable2);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("AIOPicDrawableObject", 2, "getThumbDrawable", localThrowable2);
         }
       }
-      float f2 = m / i;
-      int j = (int)(j * f2 + 0.5F);
-      int i = j;
-      if (j > n) {
-        i = n;
+      j = localOptions.outWidth;
+      i = localOptions.outHeight;
+      k = URLDrawableHelper.getExifRotation(paramFile.getAbsolutePath());
+      if ((k != 90) && (k != 270)) {
+        break label219;
       }
-      j = m;
-      int k = i;
-      i = j;
-      j = k;
-      continue;
-      label607:
-      if ((j >= n) || (i >= i1))
+      j = localOptions.outHeight;
+      i = localOptions.outWidth;
+    }
+    label219:
+    paramFile = ((IPicAIO)QRoute.api(IPicAIO.class)).getThumbWidthHeightDP(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, bool2);
+    int m = paramFile.mMinWidth;
+    int k = paramFile.mMinHeight;
+    int i1 = paramFile.mMaxWidth;
+    int n = paramFile.mMaxHeight;
+    float f3 = f1 * 12.0F;
+    if ((j >= m) && (i >= k))
+    {
+      if ((j < i1) && (i < n))
+      {
+        f1 = f3;
+        k = i;
+      }
+      else
       {
         if (j > i)
         {
-          f2 = n / j;
-          label639:
-          if (j <= i) {
-            break label698;
-          }
+          f1 = i1;
+          f2 = j;
         }
-        for (float f3 = m / i;; f3 = k / j)
+        else
         {
-          f2 = Math.max(f2, f3);
-          j = (int)(j * f2 + 0.5F);
-          i = (int)(i * f2 + 0.5F);
-          break;
-          f2 = i1 / i;
-          break label639;
+          f1 = n;
+          f2 = i;
         }
-        if (localObject.height() < i)
+        float f4 = f1 / f2;
+        if (j > i)
         {
-          f1 *= localObject.height() / i;
-          continue;
-          label736:
-          if ((URLDrawableHelper.getLoadingDrawable() instanceof BitmapDrawable)) {
-            paramFile = new BitmapDrawableWithMargin(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), j, i, -921103);
-          } else {}
+          f1 = k;
+          f2 = i;
         }
+        else
+        {
+          f1 = m;
+          f2 = j;
+        }
+        f1 = Math.max(f4, f1 / f2);
+        j = (int)(j * f1 + 0.5F);
+        k = (int)(i * f1 + 0.5F);
+        f1 = f3;
       }
     }
+    else
+    {
+      if (j < i)
+      {
+        f1 = m / j;
+        j = (int)(i * f1 + 0.5F);
+        i = j;
+        if (j > n) {
+          i = n;
+        }
+        k = i;
+        i = m;
+      }
+      else
+      {
+        f1 = k / i;
+        i = (int)(j * f1 + 0.5F);
+        if (i > i1) {
+          i = i1;
+        }
+      }
+      f1 = f3 * f1;
+      j = i;
+    }
+    int i = (j * i2 + 80) / 160;
+    int j = (k * i2 + 80) / 160;
+    float f2 = f1;
+    if (localChatThumbView != null)
+    {
+      if (localChatThumbView.width() < i) {
+        f2 = localChatThumbView.width();
+      }
+      for (f3 = i;; f3 = j)
+      {
+        f2 = f1 * (f2 / f3);
+        break;
+        f2 = f1;
+        if (localChatThumbView.height() >= j) {
+          break;
+        }
+        f2 = localChatThumbView.height();
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramFile = new StringBuilder();
+      paramFile.append("getThumbDrawable,roundCornor:");
+      paramFile.append(f2);
+      paramFile.append("  w:");
+      paramFile.append(i);
+      paramFile.append(" h:");
+      paramFile.append(j);
+      QLog.d("AIOPicDrawableObject", 2, paramFile.toString());
+    }
+    paramFile = this.jdField_a_of_type_ArrayOfInt;
+    if (paramFile != null)
+    {
+      paramFile[0] = i;
+      paramFile[1] = j;
+    }
+    paramFile = URLDrawableHelper.getLoadingDrawable();
+    if ((URLDrawableHelper.getLoadingDrawable() instanceof SkinnableBitmapDrawable)) {
+      paramFile = new BitmapDrawableWithMargin(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
+    } else if ((URLDrawableHelper.getLoadingDrawable() instanceof BitmapDrawable)) {
+      paramFile = new BitmapDrawableWithMargin(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
+    }
+    paramFile = URLDrawableHelper.getDrawable(localURL, i, j, paramFile, URLDrawableHelper.getFailedDrawable(), true, f2);
+    paramFile.setProgressDrawable(new PhotoProgressDrawable(URLDrawableHelper.getCommonProgressBitmap(), 0, false));
+    paramFile.setIgnorePause(true);
+    paramFile.setFadeInImage(true);
+    localChatThumbView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView;
+    if (localChatThumbView != null) {
+      localChatThumbView.jdField_a_of_type_Boolean = true;
+    }
+    return paramFile;
   }
   
   private URLDrawable b()
   {
     float f = BaseApplication.getContext().getResources().getDisplayMetrics().densityDpi / 160.0F;
-    URLDrawable localURLDrawable = URLDrawableHelper.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL.jdField_a_of_type_JavaNetURL, 0, 0, null, null, true, 12.0F * f);
-    if (this.jdField_a_of_type_ArrayOfInt != null)
+    URLDrawable localURLDrawable = URLDrawableHelper.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL.jdField_a_of_type_JavaNetURL, 0, 0, null, null, true, f * 12.0F);
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    if (arrayOfInt != null)
     {
-      this.jdField_a_of_type_ArrayOfInt[0] = localURLDrawable.getIntrinsicWidth();
+      arrayOfInt[0] = localURLDrawable.getIntrinsicWidth();
       this.jdField_a_of_type_ArrayOfInt[1] = localURLDrawable.getIntrinsicHeight();
     }
     return localURLDrawable;
@@ -209,102 +232,117 @@ public class AIOPicThumbDrawableObject
     int i2 = localResources.getDisplayMetrics().densityDpi;
     URL localURL = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL.jdField_a_of_type_JavaNetURL;
     boolean bool1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL.jdField_a_of_type_Boolean;
-    boolean bool2 = PeakUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType);
-    int j = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.getThumbWidthHeightDP(bool2).mMinWidth;
-    int k = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.getThumbWidthHeightDP(bool2).mMinHeight;
-    int m = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.getThumbWidthHeightDP(bool2).mMaxWidth;
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.getThumbWidthHeightDP(bool2).mMaxHeight;
-    int n = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbWidth;
-    int i1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbHeight;
-    float f1;
-    Object localObject;
-    URLDrawable.URLDrawableOptions localURLDrawableOptions;
-    if ((n > 0) && (i1 > 0)) {
-      if ((n < j) || (i1 < k)) {
-        if (n < i1)
+    boolean bool2 = ((IPicUtil)QRoute.api(IPicUtil.class)).isDynamicImg(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType);
+    Object localObject = ((IPicAIO)QRoute.api(IPicAIO.class)).getThumbWidthHeightDP(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, bool2);
+    int k = ((ThumbWidthHeightDP)localObject).mMinWidth;
+    int j = ((ThumbWidthHeightDP)localObject).mMinHeight;
+    int i = ((ThumbWidthHeightDP)localObject).mMaxWidth;
+    int m = ((ThumbWidthHeightDP)localObject).mMaxHeight;
+    int i1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbWidth;
+    int n = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbHeight;
+    if ((i1 > 0) && (n > 0))
+    {
+      if ((i1 >= k) && (n >= j))
+      {
+        if ((i1 < i) && (n < m))
         {
-          k = (int)(j / n * i1 + 0.5F);
-          if (k > i)
+          i = i1;
+          j = n;
+        }
+        else
+        {
+          float f2;
+          if (i1 > n)
           {
-            f1 = i2 / 160.0F;
-            j = (int)(j * f1 + 0.5F);
-            i = (int)(i * f1 + 0.5F);
-            localObject = null;
-            localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-            localURLDrawableOptions.mRequestWidth = j;
-            localURLDrawableOptions.mRequestHeight = i;
-            localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.getLoadingDrawable();
-            localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.getFailedDrawable();
-            localURLDrawableOptions.mPlayGifImage = bool1;
-            localURLDrawableOptions.mGifRoundCorner = 12.0F;
-            localURLDrawableOptions.mImgType = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType;
-            if (this.jdField_a_of_type_ArrayOfInt != null)
-            {
-              this.jdField_a_of_type_ArrayOfInt[0] = j;
-              this.jdField_a_of_type_ArrayOfInt[1] = i;
-            }
-            if (!(URLDrawableHelper.getLoadingDrawable() instanceof SkinnableBitmapDrawable)) {
-              break label574;
-            }
-            localObject = new BitmapDrawableWithMargin(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), j, i, -921103);
+            f1 = i;
+            f2 = i1;
           }
+          else
+          {
+            f1 = m;
+            f2 = n;
+          }
+          float f3 = f1 / f2;
+          if (i1 > n)
+          {
+            f1 = j;
+            f2 = n;
+          }
+          else
+          {
+            f1 = k;
+            f2 = i1;
+          }
+          f1 = Math.max(f3, f1 / f2);
+          i = (int)(i1 * f1 + 0.5F);
+          j = (int)(n * f1 + 0.5F);
+        }
+      }
+      else if (i1 < n)
+      {
+        f1 = k / i1;
+        n = (int)(n * f1 + 0.5F);
+        i = k;
+        j = n;
+        if (n > m)
+        {
+          j = m;
+          i = k;
+        }
+      }
+      else
+      {
+        f1 = j / n;
+        k = (int)(i1 * f1 + 0.5F);
+        if (k <= i) {
+          i = k;
         }
       }
     }
-    for (;;)
+    else
     {
-      if (localObject != null) {
-        localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      }
-      localObject = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
-      ((URLDrawable)localObject).setAutoDownload(true);
-      ((URLDrawable)localObject).setProgressDrawable(new PhotoProgressDrawable(URLDrawableHelper.getCommonProgressBitmap(), 0, false));
-      return localObject;
-      i = k;
-      break;
-      j = (int)(k / i1 * n + 0.5F);
-      i = j;
-      if (j > m) {
-        i = m;
-      }
-      j = i;
-      i = k;
-      break;
-      if ((n < m) && (i1 < i))
+      if (QLog.isColorLevel())
       {
-        i = i1;
-        j = n;
-        break;
-      }
-      if (n > i1)
-      {
-        f1 = m / n;
-        label454:
-        if (n <= i1) {
-          break label509;
-        }
-      }
-      label509:
-      for (float f2 = k / i1;; f2 = j / n)
-      {
-        f1 = Math.max(f1, f2);
-        j = (int)(n * f1 + 0.5F);
-        i = (int)(f1 * i1 + 0.5F);
-        break;
-        f1 = i / i1;
-        break label454;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOPicDrawableObject", 2, "MessageForPic without width/height of thumb, width = " + n + ", height = " + i1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("MessageForPic without width/height of thumb, width = ");
+        ((StringBuilder)localObject).append(i1);
+        ((StringBuilder)localObject).append(", height = ");
+        ((StringBuilder)localObject).append(n);
+        QLog.d("AIOPicDrawableObject", 2, ((StringBuilder)localObject).toString());
       }
       i = 99;
       j = 99;
-      break;
-      label574:
-      if ((URLDrawableHelper.getLoadingDrawable() instanceof BitmapDrawable)) {
-        localObject = new BitmapDrawableWithMargin(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), j, i, -921103);
-      }
     }
+    float f1 = i2 / 160.0F;
+    i = (int)(i * f1 + 0.5F);
+    j = (int)(j * f1 + 0.5F);
+    localObject = null;
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = i;
+    localURLDrawableOptions.mRequestHeight = j;
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.getLoadingDrawable();
+    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.getFailedDrawable();
+    localURLDrawableOptions.mPlayGifImage = bool1;
+    localURLDrawableOptions.mGifRoundCorner = 12.0F;
+    localURLDrawableOptions.mImgType = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    if (arrayOfInt != null)
+    {
+      arrayOfInt[0] = i;
+      arrayOfInt[1] = j;
+    }
+    if ((URLDrawableHelper.getLoadingDrawable() instanceof SkinnableBitmapDrawable)) {
+      localObject = new BitmapDrawableWithMargin(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
+    } else if ((URLDrawableHelper.getLoadingDrawable() instanceof BitmapDrawable)) {
+      localObject = new BitmapDrawableWithMargin(localResources, ((BitmapDrawable)URLDrawableHelper.getLoadingDrawable()).getBitmap(), i, j, -921103);
+    }
+    if (localObject != null) {
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+    }
+    localObject = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
+    ((URLDrawable)localObject).setAutoDownload(true);
+    ((URLDrawable)localObject).setProgressDrawable(new PhotoProgressDrawable(URLDrawableHelper.getCommonProgressBitmap(), 0, false));
+    return localObject;
   }
   
   public URLDrawable a()
@@ -313,19 +351,16 @@ public class AIOPicThumbDrawableObject
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL = new BasePicItemBuilder.DrawURL(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL.jdField_a_of_type_JavaNetURL.toString();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView.jdField_a_of_type_Boolean = false;
+    ChatThumbView localChatThumbView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemChatThumbView;
+    if (localChatThumbView != null) {
+      localChatThumbView.jdField_a_of_type_Boolean = false;
     }
-    if (GlobalImageCache.a.get(localObject) != null) {
+    if (GlobalImageCache.a.get(localObject) != null)
+    {
       localObject = b();
     }
-    for (;;)
+    else
     {
-      ((URLDrawable)localObject).setTag(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-      if ((((URLDrawable)localObject).getCurrDrawable() instanceof GifDrawable)) {
-        ((URLDrawable)localObject).getCurrDrawable().mutate();
-      }
-      return localObject;
       localObject = AbsDownloader.getFile((String)localObject);
       if (localObject != null) {
         localObject = a((File)localObject);
@@ -333,11 +368,16 @@ public class AIOPicThumbDrawableObject
         localObject = c();
       }
     }
+    ((URLDrawable)localObject).setTag(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    if ((((URLDrawable)localObject).getCurrDrawable() instanceof GifDrawable)) {
+      ((URLDrawable)localObject).getCurrDrawable().mutate();
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.aio.AIOPicThumbDrawableObject
  * JD-Core Version:    0.7.0.1
  */

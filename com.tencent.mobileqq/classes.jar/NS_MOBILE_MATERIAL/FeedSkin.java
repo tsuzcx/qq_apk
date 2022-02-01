@@ -49,30 +49,36 @@ public final class FeedSkin
   {
     paramJceOutputStream.write(this.iItemId, 0);
     paramJceOutputStream.write(this.iType, 1);
-    if (this.strBgColor != null) {
-      paramJceOutputStream.write(this.strBgColor, 2);
+    String str = this.strBgColor;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strGradientColorBegin != null) {
-      paramJceOutputStream.write(this.strGradientColorBegin, 3);
+    str = this.strGradientColorBegin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strGradientColorEnd != null) {
-      paramJceOutputStream.write(this.strGradientColorEnd, 4);
+    str = this.strGradientColorEnd;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.strAndBgUrl != null) {
-      paramJceOutputStream.write(this.strAndBgUrl, 5);
+    str = this.strAndBgUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.strIosBgUrl != null) {
-      paramJceOutputStream.write(this.strIosBgUrl, 6);
+    str = this.strIosBgUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.strFrameZip != null) {
-      paramJceOutputStream.write(this.strFrameZip, 7);
+    str = this.strFrameZip;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.iFrameRate, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.FeedSkin
  * JD-Core Version:    0.7.0.1
  */

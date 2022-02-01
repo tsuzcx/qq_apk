@@ -32,14 +32,15 @@ public final class tGetMusicInfoRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mapMusic != null) {
-      paramJceOutputStream.write(this.mapMusic, 0);
+    Map localMap = this.mapMusic;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_BG_MUSIC.tGetMusicInfoRsp
  * JD-Core Version:    0.7.0.1
  */

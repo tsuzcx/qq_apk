@@ -6,32 +6,33 @@ public class DiyDoutuHelper
 {
   public static String a(String paramString)
   {
-    String str2 = "";
-    String str1 = str2;
     int i;
     if (!TextUtils.isEmpty(paramString))
     {
       i = paramString.lastIndexOf("diydoutu@");
-      str1 = str2;
-      if (i >= 0) {
-        str1 = paramString.substring(i, paramString.length());
+      if (i >= 0)
+      {
+        paramString = paramString.substring(i, paramString.length());
+        break label34;
       }
     }
-    paramString = str1;
-    if (!TextUtils.isEmpty(str1))
+    paramString = "";
+    label34:
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
     {
-      i = str1.lastIndexOf(".");
-      paramString = str1;
+      i = paramString.lastIndexOf(".");
+      str = paramString;
       if (i >= 0) {
-        paramString = str1.substring(0, i);
+        str = paramString.substring(0, i);
       }
     }
-    return paramString;
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.DiyDoutuHelper
  * JD-Core Version:    0.7.0.1
  */

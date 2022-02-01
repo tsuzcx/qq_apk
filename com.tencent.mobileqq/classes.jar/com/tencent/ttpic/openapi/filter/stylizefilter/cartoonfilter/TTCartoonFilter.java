@@ -24,17 +24,18 @@ public class TTCartoonFilter
   
   public void setUseHSVQuantization(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (float f = 1.0F;; f = 0.0F)
-    {
-      addParam(new UniformParam.FloatParam("useHSVQuantization", f));
-      return;
+    float f;
+    if (paramBoolean) {
+      f = 1.0F;
+    } else {
+      f = 0.0F;
     }
+    addParam(new UniformParam.FloatParam("useHSVQuantization", f));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.stylizefilter.cartoonfilter.TTCartoonFilter
  * JD-Core Version:    0.7.0.1
  */

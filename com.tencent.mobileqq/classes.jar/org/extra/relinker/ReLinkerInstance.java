@@ -23,14 +23,17 @@ public class ReLinkerInstance
   
   protected ReLinkerInstance(ReLinker.LibraryLoader paramLibraryLoader, ReLinker.LibraryInstaller paramLibraryInstaller)
   {
-    if (paramLibraryLoader == null) {
-      throw new IllegalArgumentException("Cannot pass null library loader");
-    }
-    if (paramLibraryInstaller == null) {
+    if (paramLibraryLoader != null)
+    {
+      if (paramLibraryInstaller != null)
+      {
+        this.libraryLoader = paramLibraryLoader;
+        this.libraryInstaller = paramLibraryInstaller;
+        return;
+      }
       throw new IllegalArgumentException("Cannot pass null library installer");
     }
-    this.libraryLoader = paramLibraryLoader;
-    this.libraryInstaller = paramLibraryInstaller;
+    throw new IllegalArgumentException("Cannot pass null library loader");
   }
   
   /* Error */
@@ -56,7 +59,7 @@ public class ReLinkerInstance
     //   31: invokevirtual 76	org/extra/relinker/ReLinkerInstance:log	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   34: return
     //   35: aload_0
-    //   36: getfield 50	org/extra/relinker/ReLinkerInstance:libraryLoader	Lorg/extra/relinker/ReLinker$LibraryLoader;
+    //   36: getfield 41	org/extra/relinker/ReLinkerInstance:libraryLoader	Lorg/extra/relinker/ReLinker$LibraryLoader;
     //   39: aload_2
     //   40: invokeinterface 81 2 0
     //   45: aload_0
@@ -107,8 +110,8 @@ public class ReLinkerInstance
     //   115: aload_2
     //   116: aload_3
     //   117: invokevirtual 100	org/extra/relinker/ReLinkerInstance:getWorkaroundLibFile	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
-    //   120: astore 6
-    //   122: aload 6
+    //   120: astore 7
+    //   122: aload 7
     //   124: invokevirtual 106	java/io/File:exists	()Z
     //   127: ifeq +10 -> 137
     //   130: aload_0
@@ -136,105 +139,115 @@ public class ReLinkerInstance
     //   165: aload_3
     //   166: invokevirtual 111	org/extra/relinker/ReLinkerInstance:cleanupOldLibFiles	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
     //   169: aload_0
-    //   170: getfield 52	org/extra/relinker/ReLinkerInstance:libraryInstaller	Lorg/extra/relinker/ReLinker$LibraryInstaller;
+    //   170: getfield 43	org/extra/relinker/ReLinkerInstance:libraryInstaller	Lorg/extra/relinker/ReLinker$LibraryInstaller;
     //   173: aload_1
     //   174: aload_0
-    //   175: getfield 50	org/extra/relinker/ReLinkerInstance:libraryLoader	Lorg/extra/relinker/ReLinker$LibraryLoader;
+    //   175: getfield 41	org/extra/relinker/ReLinkerInstance:libraryLoader	Lorg/extra/relinker/ReLinker$LibraryLoader;
     //   178: invokeinterface 115 1 0
     //   183: aload_0
-    //   184: getfield 50	org/extra/relinker/ReLinkerInstance:libraryLoader	Lorg/extra/relinker/ReLinker$LibraryLoader;
+    //   184: getfield 41	org/extra/relinker/ReLinkerInstance:libraryLoader	Lorg/extra/relinker/ReLinker$LibraryLoader;
     //   187: aload_2
     //   188: invokeinterface 119 2 0
-    //   193: aload 6
+    //   193: aload 7
     //   195: aload_0
     //   196: invokeinterface 125 6 0
     //   201: aload_0
     //   202: getfield 127	org/extra/relinker/ReLinkerInstance:recursive	Z
     //   205: istore 4
     //   207: iload 4
-    //   209: ifeq +77 -> 286
-    //   212: new 129	org/extra/relinker/elf/ElfParser
-    //   215: dup
-    //   216: aload 6
-    //   218: invokespecial 132	org/extra/relinker/elf/ElfParser:<init>	(Ljava/io/File;)V
-    //   221: astore 5
-    //   223: aload 5
-    //   225: invokevirtual 136	org/extra/relinker/elf/ElfParser:parseNeededDependencies	()Ljava/util/List;
-    //   228: astore 7
-    //   230: aload 5
-    //   232: invokevirtual 139	org/extra/relinker/elf/ElfParser:close	()V
-    //   235: aload 7
-    //   237: invokeinterface 145 1 0
-    //   242: astore 5
-    //   244: aload 5
-    //   246: invokeinterface 150 1 0
-    //   251: ifeq +35 -> 286
-    //   254: aload 5
-    //   256: invokeinterface 154 1 0
-    //   261: checkcast 156	java/lang/String
-    //   264: astore 7
-    //   266: aload_0
-    //   267: aload_1
-    //   268: aload_0
-    //   269: getfield 50	org/extra/relinker/ReLinkerInstance:libraryLoader	Lorg/extra/relinker/ReLinker$LibraryLoader;
-    //   272: aload 7
-    //   274: invokeinterface 159 2 0
-    //   279: invokevirtual 162	org/extra/relinker/ReLinkerInstance:loadLibrary	(Landroid/content/Context;Ljava/lang/String;)V
-    //   282: goto -38 -> 244
-    //   285: astore_1
-    //   286: aload_0
-    //   287: getfield 50	org/extra/relinker/ReLinkerInstance:libraryLoader	Lorg/extra/relinker/ReLinker$LibraryLoader;
-    //   290: aload 6
-    //   292: invokevirtual 166	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   295: invokeinterface 169 2 0
-    //   300: aload_0
-    //   301: getfield 39	org/extra/relinker/ReLinkerInstance:loadedLibraries	Ljava/util/Set;
-    //   304: aload_2
-    //   305: invokeinterface 84 2 0
-    //   310: pop
-    //   311: aload_0
-    //   312: ldc 171
-    //   314: iconst_2
-    //   315: anewarray 4	java/lang/Object
-    //   318: dup
-    //   319: iconst_0
-    //   320: aload_2
-    //   321: aastore
-    //   322: dup
-    //   323: iconst_1
-    //   324: aload_3
-    //   325: aastore
-    //   326: invokevirtual 76	org/extra/relinker/ReLinkerInstance:log	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   329: return
-    //   330: astore_1
-    //   331: aconst_null
-    //   332: astore 5
-    //   334: aload 5
-    //   336: invokevirtual 139	org/extra/relinker/elf/ElfParser:close	()V
-    //   339: aload_1
-    //   340: athrow
-    //   341: astore_1
-    //   342: goto -8 -> 334
+    //   209: ifeq +86 -> 295
+    //   212: aconst_null
+    //   213: astore 6
+    //   215: new 129	org/extra/relinker/elf/ElfParser
+    //   218: dup
+    //   219: aload 7
+    //   221: invokespecial 132	org/extra/relinker/elf/ElfParser:<init>	(Ljava/io/File;)V
+    //   224: astore 5
+    //   226: aload 5
+    //   228: invokevirtual 136	org/extra/relinker/elf/ElfParser:parseNeededDependencies	()Ljava/util/List;
+    //   231: astore 6
+    //   233: aload 5
+    //   235: invokevirtual 139	org/extra/relinker/elf/ElfParser:close	()V
+    //   238: aload 6
+    //   240: invokeinterface 145 1 0
+    //   245: astore 5
+    //   247: aload 5
+    //   249: invokeinterface 150 1 0
+    //   254: ifeq +41 -> 295
+    //   257: aload 5
+    //   259: invokeinterface 154 1 0
+    //   264: checkcast 156	java/lang/String
+    //   267: astore 6
+    //   269: aload_0
+    //   270: aload_1
+    //   271: aload_0
+    //   272: getfield 41	org/extra/relinker/ReLinkerInstance:libraryLoader	Lorg/extra/relinker/ReLinker$LibraryLoader;
+    //   275: aload 6
+    //   277: invokeinterface 159 2 0
+    //   282: invokevirtual 162	org/extra/relinker/ReLinkerInstance:loadLibrary	(Landroid/content/Context;Ljava/lang/String;)V
+    //   285: goto -38 -> 247
+    //   288: aload_1
+    //   289: invokevirtual 139	org/extra/relinker/elf/ElfParser:close	()V
+    //   292: aload 5
+    //   294: athrow
+    //   295: aload_0
+    //   296: getfield 41	org/extra/relinker/ReLinkerInstance:libraryLoader	Lorg/extra/relinker/ReLinker$LibraryLoader;
+    //   299: aload 7
+    //   301: invokevirtual 166	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   304: invokeinterface 169 2 0
+    //   309: aload_0
+    //   310: getfield 39	org/extra/relinker/ReLinkerInstance:loadedLibraries	Ljava/util/Set;
+    //   313: aload_2
+    //   314: invokeinterface 84 2 0
+    //   319: pop
+    //   320: aload_0
+    //   321: ldc 171
+    //   323: iconst_2
+    //   324: anewarray 4	java/lang/Object
+    //   327: dup
+    //   328: iconst_0
+    //   329: aload_2
+    //   330: aastore
+    //   331: dup
+    //   332: iconst_1
+    //   333: aload_3
+    //   334: aastore
+    //   335: invokevirtual 76	org/extra/relinker/ReLinkerInstance:log	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   338: return
+    //   339: astore_1
+    //   340: goto -45 -> 295
+    //   343: astore 6
+    //   345: aload 5
+    //   347: astore_1
+    //   348: aload 6
+    //   350: astore 5
+    //   352: goto -64 -> 288
+    //   355: astore 5
+    //   357: aload 6
+    //   359: astore_1
+    //   360: goto -72 -> 288
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	345	0	this	ReLinkerInstance
-    //   0	345	1	paramContext	Context
-    //   0	345	2	paramString1	String
-    //   0	345	3	paramString2	String
+    //   0	363	0	this	ReLinkerInstance
+    //   0	363	1	paramContext	Context
+    //   0	363	2	paramString1	String
+    //   0	363	3	paramString2	String
     //   205	3	4	bool	boolean
     //   75	12	5	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
-    //   221	114	5	localObject1	Object
-    //   120	171	6	localFile	File
-    //   228	45	7	localObject2	Object
+    //   224	127	5	localObject1	Object
+    //   355	1	5	localObject2	Object
+    //   213	63	6	localObject3	Object
+    //   343	15	6	localObject4	Object
+    //   120	180	7	localFile	File
     // Exception table:
     //   from	to	target	type
     //   35	74	75	java/lang/UnsatisfiedLinkError
-    //   201	207	285	java/io/IOException
-    //   230	244	285	java/io/IOException
-    //   244	282	285	java/io/IOException
-    //   334	341	285	java/io/IOException
-    //   212	223	330	finally
-    //   223	230	341	finally
+    //   201	207	339	java/io/IOException
+    //   233	247	339	java/io/IOException
+    //   247	285	339	java/io/IOException
+    //   288	295	339	java/io/IOException
+    //   226	233	343	finally
+    //   215	226	355	finally
   }
   
   protected void cleanupOldLibFiles(Context paramContext, String paramString1, String paramString2)
@@ -250,19 +263,17 @@ public class ReLinkerInstance
     while (i < j)
     {
       paramString2 = paramString1[i];
-      if ((this.force) || (!paramString2.getAbsolutePath().equals(paramContext.getAbsolutePath()))) {}
-      try
-      {
-        paramString2.delete();
-        i += 1;
-      }
-      catch (SecurityException paramString2)
-      {
-        for (;;)
+      if ((this.force) || (!paramString2.getAbsolutePath().equals(paramContext.getAbsolutePath()))) {
+        try
+        {
+          paramString2.delete();
+        }
+        catch (SecurityException paramString2)
         {
           paramString2.printStackTrace();
         }
       }
+      i += 1;
     }
   }
   
@@ -283,7 +294,12 @@ public class ReLinkerInstance
     if (TextUtils.isEmpty(paramString2)) {
       return new File(getWorkaroundLibDir(paramContext), paramString1);
     }
-    return new File(getWorkaroundLibDir(paramContext), paramString1 + "." + paramString2);
+    paramContext = getWorkaroundLibDir(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramString2);
+    return new File(paramContext, localStringBuilder.toString());
   }
   
   public void loadLibrary(Context paramContext, String paramString)
@@ -298,19 +314,22 @@ public class ReLinkerInstance
   
   public void loadLibrary(Context paramContext, String paramString1, String paramString2, ReLinker.LoadListener paramLoadListener)
   {
-    if (paramContext == null) {
-      throw new IllegalArgumentException("Given context is null");
-    }
-    if (TextUtils.isEmpty(paramString1)) {
+    if (paramContext != null)
+    {
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        log("Beginning load of %s...", new Object[] { paramString1 });
+        if (paramLoadListener == null)
+        {
+          loadLibraryInternal(paramContext, paramString1, paramString2);
+          return;
+        }
+        new Thread(new ReLinkerInstance.1(this, paramContext, paramString1, paramString2, paramLoadListener)).start();
+        return;
+      }
       throw new IllegalArgumentException("Given library is either null or empty");
     }
-    log("Beginning load of %s...", new Object[] { paramString1 });
-    if (paramLoadListener == null)
-    {
-      loadLibraryInternal(paramContext, paramString1, paramString2);
-      return;
-    }
-    new Thread(new ReLinkerInstance.1(this, paramContext, paramString1, paramString2, paramLoadListener)).start();
+    throw new IllegalArgumentException("Given context is null");
   }
   
   public void loadLibrary(Context paramContext, String paramString, ReLinker.LoadListener paramLoadListener)
@@ -326,8 +345,9 @@ public class ReLinkerInstance
   
   public void log(String paramString)
   {
-    if (this.logger != null) {
-      this.logger.log(paramString);
+    ReLinker.Logger localLogger = this.logger;
+    if (localLogger != null) {
+      localLogger.log(paramString);
     }
   }
   
@@ -344,7 +364,7 @@ public class ReLinkerInstance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.extra.relinker.ReLinkerInstance
  * JD-Core Version:    0.7.0.1
  */

@@ -22,21 +22,26 @@ public class FramePosition
   
   private float insertData(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return (paramFloat3 - paramFloat2) * paramFloat1 + paramFloat2;
+    return paramFloat2 + (paramFloat3 - paramFloat2) * paramFloat1;
   }
   
   private int[] updateArr(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if ((paramArrayOfInt2 != null) && (paramArrayOfInt2.length > 0)) {
-      return paramArrayOfInt2;
+    int[] arrayOfInt = paramArrayOfInt1;
+    if (paramArrayOfInt2 != null)
+    {
+      arrayOfInt = paramArrayOfInt1;
+      if (paramArrayOfInt2.length > 0) {
+        arrayOfInt = paramArrayOfInt2;
+      }
     }
-    return paramArrayOfInt1;
+    return arrayOfInt;
   }
   
   private int updateInter(int paramInt1, int paramInt2)
   {
     if (paramInt2 > 0) {
-      return paramInt2;
+      paramInt1 = paramInt2;
     }
     return paramInt1;
   }
@@ -52,23 +57,30 @@ public class FramePosition
     this.dx = paramFramePosition.dx;
     this.dy = paramFramePosition.dy;
     this.scaleFactor = paramFramePosition.scaleFactor;
-    if ((paramFramePosition.position != null) && (paramFramePosition.position.length > 0))
+    Object localObject = paramFramePosition.position;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      this.position = new double[paramFramePosition.position.length];
-      System.arraycopy(paramFramePosition.position, 0, this.position, 0, paramFramePosition.position.length);
+      this.position = new double[localObject.length];
+      localObject = paramFramePosition.position;
+      System.arraycopy(localObject, 0, this.position, 0, localObject.length);
     }
-    if ((paramFramePosition.alignFacePoints != null) && (paramFramePosition.alignFacePoints.length > 0))
+    localObject = paramFramePosition.alignFacePoints;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      this.alignFacePoints = new int[paramFramePosition.alignFacePoints.length];
-      System.arraycopy(paramFramePosition.alignFacePoints, 0, this.alignFacePoints, 0, paramFramePosition.alignFacePoints.length);
-      if ((paramFramePosition.anchorPoint != null) && (paramFramePosition.anchorPoint.length > 0))
+      this.alignFacePoints = new int[localObject.length];
+      localObject = paramFramePosition.alignFacePoints;
+      System.arraycopy(localObject, 0, this.alignFacePoints, 0, localObject.length);
+      localObject = paramFramePosition.anchorPoint;
+      if ((localObject != null) && (localObject.length > 0))
       {
-        this.anchorPoint = new int[paramFramePosition.anchorPoint.length];
-        System.arraycopy(paramFramePosition.anchorPoint, 0, this.anchorPoint, 0, paramFramePosition.anchorPoint.length);
+        this.anchorPoint = new int[localObject.length];
+        localObject = paramFramePosition.anchorPoint;
+        System.arraycopy(localObject, 0, this.anchorPoint, 0, localObject.length);
       }
     }
-    if ((paramFramePosition.scalePivots != null) && (paramFramePosition.scalePivots.length > 0)) {
-      System.arraycopy(paramFramePosition.scalePivots, 0, this.scalePivots, 0, paramFramePosition.scalePivots.length);
+    paramFramePosition = paramFramePosition.scalePivots;
+    if ((paramFramePosition != null) && (paramFramePosition.length > 0)) {
+      System.arraycopy(paramFramePosition, 0, this.scalePivots, 0, paramFramePosition.length);
     }
   }
   
@@ -86,94 +98,107 @@ public class FramePosition
     paramStickerItem.height = updateInter(paramStickerItem.height, this.height);
     paramStickerItem.maxScaledWidth = updateInter(paramStickerItem.maxScaledWidth, this.maxScaledWidth);
     paramStickerItem.minScaledWidth = updateInter(paramStickerItem.minScaledWidth, this.minScaledWidth);
-    float f;
-    if (this.scale + 1.0F > 99999.0F)
-    {
-      f = paramStickerItem.scale;
-      paramStickerItem.scale = f;
-      if (this.angle + 1.0F <= 99999.0F) {
-        break label251;
-      }
-      f = paramStickerItem.angle;
-      label108:
-      paramStickerItem.angle = f;
-      if (this.dx + 1 <= 99999) {
-        break label259;
-      }
+    float f2 = this.scale;
+    float f1 = f2;
+    if (f2 + 1.0F > 99999.0F) {
+      f1 = paramStickerItem.scale;
+    }
+    paramStickerItem.scale = f1;
+    f2 = this.angle;
+    f1 = f2;
+    if (1.0F + f2 > 99999.0F) {
+      f1 = paramStickerItem.angle;
+    }
+    paramStickerItem.angle = f1;
+    int j = this.dx;
+    int i = j;
+    if (j + 1 > 99999) {
       i = paramStickerItem.dx;
-      label129:
-      paramStickerItem.dx = i;
-      if (this.dy + 1 <= 99999) {
-        break label267;
-      }
     }
-    label259:
-    label267:
-    for (int i = paramStickerItem.dy;; i = this.dy)
-    {
-      paramStickerItem.dy = i;
-      paramStickerItem.scaleFactor = updateInter(paramStickerItem.scaleFactor, this.scaleFactor);
-      if ((this.position != null) && (this.position.length > 0)) {
-        paramStickerItem.position = this.position;
-      }
-      paramStickerItem.anchorPoint = updateArr(paramStickerItem.anchorPoint, this.anchorPoint);
-      paramStickerItem.alignFacePoints = updateArr(paramStickerItem.alignFacePoints, this.alignFacePoints);
-      paramStickerItem.scalePivots = updateArr(paramStickerItem.scalePivots, this.scalePivots);
-      return;
-      f = this.scale;
-      break;
-      label251:
-      f = this.angle;
-      break label108;
-      i = this.dx;
-      break label129;
+    paramStickerItem.dx = i;
+    j = this.dy;
+    i = j;
+    if (j + 1 > 99999) {
+      i = paramStickerItem.dy;
     }
+    paramStickerItem.dy = i;
+    paramStickerItem.scaleFactor = updateInter(paramStickerItem.scaleFactor, this.scaleFactor);
+    double[] arrayOfDouble = this.position;
+    if ((arrayOfDouble != null) && (arrayOfDouble.length > 0)) {
+      paramStickerItem.position = arrayOfDouble;
+    }
+    paramStickerItem.anchorPoint = updateArr(paramStickerItem.anchorPoint, this.anchorPoint);
+    paramStickerItem.alignFacePoints = updateArr(paramStickerItem.alignFacePoints, this.alignFacePoints);
+    paramStickerItem.scalePivots = updateArr(paramStickerItem.scalePivots, this.scalePivots);
   }
   
   public void updateValue(FramePosition paramFramePosition1, FramePosition paramFramePosition2)
   {
-    int i = paramFramePosition2.index - paramFramePosition1.index;
-    if (i == 0) {}
-    do
-    {
+    int j = paramFramePosition2.index;
+    int i = paramFramePosition1.index;
+    j -= i;
+    if (j == 0) {
       return;
-      float f = (this.index - paramFramePosition1.index) * 1.0F / i;
-      this.width = insertData(f, paramFramePosition1.width, paramFramePosition2.width);
-      this.height = insertData(f, paramFramePosition1.height, paramFramePosition2.height);
-      this.maxScaledWidth = insertData(f, paramFramePosition1.maxScaledWidth, paramFramePosition2.maxScaledWidth);
-      this.minScaledWidth = insertData(f, paramFramePosition1.minScaledWidth, paramFramePosition2.minScaledWidth);
-      this.scale = insertData(f, paramFramePosition1.scale, paramFramePosition2.scale);
-      this.angle = insertData(f, paramFramePosition1.angle, paramFramePosition2.angle);
-      this.dx = insertData(f, paramFramePosition1.dx, paramFramePosition2.dx);
-      this.dy = insertData(f, paramFramePosition1.dy, paramFramePosition2.dy);
-      this.scaleFactor = insertData(f, paramFramePosition1.scaleFactor, paramFramePosition2.scaleFactor);
-      if ((paramFramePosition1.position != null) && (paramFramePosition1.position.length > 0) && (paramFramePosition2.position != null) && (paramFramePosition2.position.length > 0) && (paramFramePosition1.position.length == paramFramePosition2.position.length))
+    }
+    float f = (this.index - i) * 1.0F / j;
+    this.width = insertData(f, paramFramePosition1.width, paramFramePosition2.width);
+    this.height = insertData(f, paramFramePosition1.height, paramFramePosition2.height);
+    this.maxScaledWidth = insertData(f, paramFramePosition1.maxScaledWidth, paramFramePosition2.maxScaledWidth);
+    this.minScaledWidth = insertData(f, paramFramePosition1.minScaledWidth, paramFramePosition2.minScaledWidth);
+    this.scale = insertData(f, paramFramePosition1.scale, paramFramePosition2.scale);
+    this.angle = insertData(f, paramFramePosition1.angle, paramFramePosition2.angle);
+    this.dx = insertData(f, paramFramePosition1.dx, paramFramePosition2.dx);
+    this.dy = insertData(f, paramFramePosition1.dy, paramFramePosition2.dy);
+    this.scaleFactor = insertData(f, paramFramePosition1.scaleFactor, paramFramePosition2.scaleFactor);
+    double[] arrayOfDouble1 = paramFramePosition1.position;
+    if ((arrayOfDouble1 != null) && (arrayOfDouble1.length > 0))
+    {
+      double[] arrayOfDouble2 = paramFramePosition2.position;
+      if ((arrayOfDouble2 != null) && (arrayOfDouble2.length > 0) && (arrayOfDouble1.length == arrayOfDouble2.length))
       {
-        this.position = new double[paramFramePosition2.position.length];
+        this.position = new double[arrayOfDouble2.length];
         i = 0;
-        while (i < paramFramePosition2.position.length)
+        for (;;)
         {
-          paramFramePosition1.position[i] += (paramFramePosition2.position[i] - paramFramePosition1.position[i]) * f;
+          arrayOfDouble1 = paramFramePosition2.position;
+          if (i >= arrayOfDouble1.length) {
+            break;
+          }
+          arrayOfDouble2 = this.position;
+          double[] arrayOfDouble3 = paramFramePosition1.position;
+          double d1 = arrayOfDouble3[i];
+          double d2 = arrayOfDouble1[i];
+          double d3 = arrayOfDouble3[i];
+          double d4 = f;
+          Double.isNaN(d4);
+          arrayOfDouble2[i] = (d1 + (d2 - d3) * d4);
           i += 1;
         }
       }
-      if ((paramFramePosition1.alignFacePoints != null) && (paramFramePosition1.alignFacePoints.length > 0))
+    }
+    paramFramePosition2 = paramFramePosition1.alignFacePoints;
+    if ((paramFramePosition2 != null) && (paramFramePosition2.length > 0))
+    {
+      this.alignFacePoints = new int[paramFramePosition2.length];
+      paramFramePosition2 = paramFramePosition1.alignFacePoints;
+      System.arraycopy(paramFramePosition2, 0, this.alignFacePoints, 0, paramFramePosition2.length);
+      paramFramePosition2 = paramFramePosition1.anchorPoint;
+      if ((paramFramePosition2 != null) && (paramFramePosition2.length > 0))
       {
-        this.alignFacePoints = new int[paramFramePosition1.alignFacePoints.length];
-        System.arraycopy(paramFramePosition1.alignFacePoints, 0, this.alignFacePoints, 0, paramFramePosition1.alignFacePoints.length);
-        if ((paramFramePosition1.anchorPoint != null) && (paramFramePosition1.anchorPoint.length > 0))
-        {
-          this.anchorPoint = new int[paramFramePosition1.anchorPoint.length];
-          System.arraycopy(paramFramePosition1.anchorPoint, 0, this.anchorPoint, 0, paramFramePosition1.anchorPoint.length);
-        }
+        this.anchorPoint = new int[paramFramePosition2.length];
+        paramFramePosition2 = paramFramePosition1.anchorPoint;
+        System.arraycopy(paramFramePosition2, 0, this.anchorPoint, 0, paramFramePosition2.length);
       }
-    } while ((paramFramePosition1.scalePivots == null) || (paramFramePosition1.scalePivots.length <= 0));
-    System.arraycopy(paramFramePosition1.scalePivots, 0, this.scalePivots, 0, paramFramePosition1.scalePivots.length);
+    }
+    paramFramePosition1 = paramFramePosition1.scalePivots;
+    if ((paramFramePosition1 != null) && (paramFramePosition1.length > 0)) {
+      System.arraycopy(paramFramePosition1, 0, this.scalePivots, 0, paramFramePosition1.length);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.FramePosition
  * JD-Core Version:    0.7.0.1
  */

@@ -18,48 +18,62 @@ public class Base64Util
   
   public static String encode(byte[] paramArrayOfByte)
   {
+    double d = paramArrayOfByte.length;
+    Double.isNaN(d);
+    StringBuilder localStringBuilder = new StringBuilder((int)(d * 1.34D) + 3);
     int k = 0;
-    StringBuilder localStringBuilder = new StringBuilder((int)(paramArrayOfByte.length * 1.34D) + 3);
-    int i = 0;
     int j = 0;
+    int i = 0;
     while (k < paramArrayOfByte.length)
     {
       j %= 8;
-      int m = i;
-      if (j < 8)
+      while (j < 8)
       {
-        i = m;
-        switch (j)
+        if (j != 0)
         {
-        default: 
-          i = m;
-        }
-        for (;;)
-        {
-          localStringBuilder.append(encodeTable[i]);
-          j += 6;
-          m = i;
-          break;
-          i = (char)((char)(paramArrayOfByte[k] & lead6byte) >>> '\002');
-          continue;
-          i = (char)(paramArrayOfByte[k] & last6byte);
-          continue;
-          m = (char)((char)(paramArrayOfByte[k] & last4byte) << '\002');
-          i = m;
-          if (k + 1 < paramArrayOfByte.length)
+          if (j != 2)
           {
-            i = (char)(m | (paramArrayOfByte[(k + 1)] & lead2byte) >>> 6);
-            continue;
-            m = (char)((char)(paramArrayOfByte[k] & last2byte) << '\004');
-            i = m;
-            if (k + 1 < paramArrayOfByte.length) {
-              i = (char)(m | (paramArrayOfByte[(k + 1)] & lead4byte) >>> 4);
+            int m;
+            int n;
+            if (j != 4)
+            {
+              if (j != 6) {
+                break label203;
+              }
+              m = (char)((char)(paramArrayOfByte[k] & last2byte) << '\004');
+              n = k + 1;
+              i = m;
+              if (n >= paramArrayOfByte.length) {
+                break label203;
+              }
+              i = (paramArrayOfByte[n] & lead4byte) >>> 4;
             }
+            else
+            {
+              m = (char)((char)(paramArrayOfByte[k] & last4byte) << '\002');
+              n = k + 1;
+              i = m;
+              if (n >= paramArrayOfByte.length) {
+                break label203;
+              }
+              i = (paramArrayOfByte[n] & lead2byte) >>> 6;
+            }
+            i = m | i;
+          }
+          else
+          {
+            i = paramArrayOfByte[k] & last6byte;
           }
         }
+        else {
+          i = (char)(paramArrayOfByte[k] & lead6byte) >>> '\002';
+        }
+        i = (char)i;
+        label203:
+        localStringBuilder.append(encodeTable[i]);
+        j += 6;
       }
       k += 1;
-      i = m;
     }
     if (localStringBuilder.length() % 4 != 0)
     {
@@ -75,7 +89,7 @@ public class Base64Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.update.sign.Base64Util
  * JD-Core Version:    0.7.0.1
  */

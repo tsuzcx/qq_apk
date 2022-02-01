@@ -22,16 +22,6 @@ public final class RespGetDiscussInfo
   public String Name = "";
   public long OwnerUin = 0L;
   
-  static
-  {
-    if (!RespGetDiscussInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public RespGetDiscussInfo() {}
   
   public RespGetDiscussInfo(long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString, ArrayList<DiscussMemberInfo> paramArrayList, long paramLong5, long paramLong6, long paramLong7, long paramLong8)
@@ -55,18 +45,17 @@ public final class RespGetDiscussInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -101,13 +90,52 @@ public final class RespGetDiscussInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (RespGetDiscussInfo)paramObject;
-    } while ((!JceUtil.equals(this.DiscussUin, paramObject.DiscussUin)) || (!JceUtil.equals(this.OwnerUin, paramObject.OwnerUin)) || (!JceUtil.equals(this.InfoSeq, paramObject.InfoSeq)) || (!JceUtil.equals(this.DiscussFlag, paramObject.DiscussFlag)) || (!JceUtil.equals(this.Name, paramObject.Name)) || (!JceUtil.equals(this.Members, paramObject.Members)) || (!JceUtil.equals(this.CreateTime, paramObject.CreateTime)) || (!JceUtil.equals(this.InteRemarkTimeStamp, paramObject.InteRemarkTimeStamp)) || (!JceUtil.equals(this.GroupCode, paramObject.GroupCode)) || (!JceUtil.equals(this.GroupUin, paramObject.GroupUin)));
-    return true;
+    }
+    paramObject = (RespGetDiscussInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.DiscussUin, paramObject.DiscussUin))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.OwnerUin, paramObject.OwnerUin))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.InfoSeq, paramObject.InfoSeq))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.DiscussFlag, paramObject.DiscussFlag))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.Name, paramObject.Name))
+            {
+              bool1 = bool2;
+              if (JceUtil.equals(this.Members, paramObject.Members))
+              {
+                bool1 = bool2;
+                if (JceUtil.equals(this.CreateTime, paramObject.CreateTime))
+                {
+                  bool1 = bool2;
+                  if (JceUtil.equals(this.InteRemarkTimeStamp, paramObject.InteRemarkTimeStamp))
+                  {
+                    bool1 = bool2;
+                    if (JceUtil.equals(this.GroupCode, paramObject.GroupCode))
+                    {
+                      bool1 = bool2;
+                      if (JceUtil.equals(this.GroupUin, paramObject.GroupUin)) {
+                        bool1 = true;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -189,7 +217,7 @@ public final class RespGetDiscussInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespGetDiscussInfo
  * JD-Core Version:    0.7.0.1
  */

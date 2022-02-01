@@ -10,8 +10,9 @@ public class DistrictChildrenParam
   public fn buildParameters()
   {
     fn localfn = new fn();
-    if (this.a > 0) {
-      localfn.b("id", String.valueOf(this.a));
+    int i = this.a;
+    if (i > 0) {
+      localfn.b("id", String.valueOf(i));
     }
     return localfn;
   }
@@ -29,7 +30,7 @@ public class DistrictChildrenParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.DistrictChildrenParam
  * JD-Core Version:    0.7.0.1
  */

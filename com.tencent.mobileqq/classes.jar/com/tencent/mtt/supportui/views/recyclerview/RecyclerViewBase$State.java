@@ -33,10 +33,11 @@ public class RecyclerViewBase$State
   
   public <T> T get(int paramInt)
   {
-    if (this.mData == null) {
+    SparseArray localSparseArray = this.mData;
+    if (localSparseArray == null) {
       return null;
     }
-    return this.mData.get(paramInt);
+    return localSparseArray.get(paramInt);
   }
   
   public int getItemCount()
@@ -72,17 +73,19 @@ public class RecyclerViewBase$State
   
   public void remove(int paramInt)
   {
-    if (this.mData == null) {
+    SparseArray localSparseArray = this.mData;
+    if (localSparseArray == null) {
       return;
     }
-    this.mData.remove(paramInt);
+    localSparseArray.remove(paramInt);
   }
   
   State reset()
   {
     this.mTargetPosition = -2147483648;
-    if (this.mData != null) {
-      this.mData.clear();
+    SparseArray localSparseArray = this.mData;
+    if (localSparseArray != null) {
+      localSparseArray.clear();
     }
     this.mItemCount = 0;
     this.mHeaderCount = 0;
@@ -93,7 +96,7 @@ public class RecyclerViewBase$State
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.State
  * JD-Core Version:    0.7.0.1
  */

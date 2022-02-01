@@ -24,18 +24,22 @@ public class ResolutionDelegate
   private void a()
   {
     Activity localActivity = b();
-    if ((localActivity == null) || (localActivity.isFinishing())) {
-      return;
+    if (localActivity != null)
+    {
+      if (localActivity.isFinishing()) {
+        return;
+      }
+      localActivity.finish();
     }
-    localActivity.finish();
   }
   
   private Activity b()
   {
-    if (this.a == null) {
+    WeakReference localWeakReference = this.a;
+    if (localWeakReference == null) {
       return null;
     }
-    return (Activity)this.a.get();
+    return (Activity)localWeakReference.get();
   }
   
   public int getRequestCode()
@@ -67,13 +71,11 @@ public class ResolutionDelegate
     paramInt1 = HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(localActivity, 30000000);
     if ((paramInt2 == -1) && (paramInt1 == 0)) {
       HMSLog.i("ResolutionDelegate", "Make service available success.");
-    }
-    for (;;)
-    {
-      a();
-      return true;
+    } else {
       paramIntent.innerError((Activity)this.a.get(), paramInt2, "Make service available failed.");
     }
+    a();
+    return true;
   }
   
   public void onBridgeConfigurationChanged() {}
@@ -82,7 +84,7 @@ public class ResolutionDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.ResolutionDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,47 @@
 package com.tencent.mobileqq.search.model;
 
+import addcontacts.AccountSearchPb.record;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.troop.utils.TroopInfoUIUtil;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class GroupNetSearchModelTroopItem
   extends ISearchResultPositionModel
 {
-  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
+  private AccountSearchPb.record jdField_a_of_type_AddcontactsAccountSearchPb$record;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
   
   public GroupNetSearchModelTroopItem(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
+    this.jdField_a_of_type_AddcontactsAccountSearchPb$record = paramrecord;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
   
+  public int a()
+  {
+    return 4;
+  }
+  
   public CharSequence a()
   {
-    return this.jdField_a_of_type_JavaLangCharSequence;
+    return HardCodeUtil.a(2131705441);
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.code.get());
   }
   
   public void a(View paramView)
   {
-    Bundle localBundle = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get()), 2);
+    Bundle localBundle = TroopInfoUIUtil.a(String.valueOf(this.jdField_a_of_type_AddcontactsAccountSearchPb$record.code.get()), 2);
     localBundle.putInt("exposureSource", 3);
     TroopUtils.a((Activity)paramView.getContext(), localBundle, 2);
     SearchUtils.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
@@ -50,22 +55,17 @@ public class GroupNetSearchModelTroopItem
   
   public CharSequence b()
   {
-    return null;
+    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
   public String b()
   {
-    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
-  }
-  
-  public int c()
-  {
-    return 4;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public CharSequence c()
   {
-    return HardCodeUtil.a(2131705367);
+    return null;
   }
   
   public CharSequence d()
@@ -75,7 +75,7 @@ public class GroupNetSearchModelTroopItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupNetSearchModelTroopItem
  * JD-Core Version:    0.7.0.1
  */

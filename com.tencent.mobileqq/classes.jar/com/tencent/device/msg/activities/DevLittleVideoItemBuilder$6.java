@@ -21,32 +21,36 @@ class DevLittleVideoItemBuilder$6
   {
     SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     DeviceMsgHandle localDeviceMsgHandle = (DeviceMsgHandle)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+    ConcurrentHashMap localConcurrentHashMap = localDeviceMsgHandle.b;
+    int j = 0;
+    try
+    {
+      Iterator localIterator = localDeviceMsgHandle.b.entrySet().iterator();
+      do
+      {
+        i = j;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      } while (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.a.uniseq);
+      int i = 1;
+      if ((i == 0) && (!TextUtils.isEmpty(this.a.videoFileKey)))
+      {
+        long l = localSmartDeviceProxyMgr.a(this.a.videoFileKey, this.a.fileKey2, 2201);
+        localDeviceMsgHandle.b.put(Long.valueOf(l), this.a);
+      }
+      return;
+    }
+    finally {}
     for (;;)
     {
-      synchronized (localDeviceMsgHandle.b)
-      {
-        Iterator localIterator = localDeviceMsgHandle.b.entrySet().iterator();
-        if (localIterator.hasNext())
-        {
-          if (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.a.uniseq) {
-            continue;
-          }
-          i = 1;
-          if ((i == 0) && (!TextUtils.isEmpty(this.a.videoFileKey)))
-          {
-            long l = localSmartDeviceProxyMgr.a(this.a.videoFileKey, this.a.fileKey2, 2201);
-            localDeviceMsgHandle.b.put(Long.valueOf(l), this.a);
-          }
-          return;
-        }
-      }
-      int i = 0;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevLittleVideoItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

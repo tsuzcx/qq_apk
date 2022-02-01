@@ -17,17 +17,23 @@ public final class BubbleDiyComu$Bubble_Rsp
   public static final int PACKET_SEQ_FIELD_NUMBER = 4;
   public static final int RET_FIELD_NUMBER = 1;
   public static final int RSPCMD_0X01_FIELD_NUMBER = 6;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50 }, new String[] { "ret", "errmsg", "cmd", "packet_seq", "comm", "rspcmd_0x01" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(0), Long.valueOf(0L), null, null }, Bubble_Rsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field cmd = PBField.initUInt32(0);
   public BubbleDiyComu.Bubble_Rsp_Comm comm = new BubbleDiyComu.Bubble_Rsp_Comm();
   public final PBStringField errmsg = PBField.initString("");
   public final PBUInt64Field packet_seq = PBField.initUInt64(0L);
   public final PBInt64Field ret = PBField.initInt64(0L);
   public BubbleDiyComu.Bubble_GetDiyText_Rsp rspcmd_0x01 = new BubbleDiyComu.Bubble_GetDiyText_Rsp();
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50 }, new String[] { "ret", "errmsg", "cmd", "packet_seq", "comm", "rspcmd_0x01" }, new Object[] { localLong, "", Integer.valueOf(0), localLong, null, null }, Bubble_Rsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Rsp
  * JD-Core Version:    0.7.0.1
  */

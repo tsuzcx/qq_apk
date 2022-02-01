@@ -11,17 +11,21 @@ class f
   
   public void run()
   {
-    QLog.d(d.l(), 1, "onReceive " + this.a.getAction());
+    Object localObject = d.l();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceive ");
+    localStringBuilder.append(this.a.getAction());
+    QLog.d((String)localObject, 1, localStringBuilder.toString());
     if ("com.tencent.mobileqq.msf.bd.netchange".equals(this.a.getAction()))
     {
-      NetworkInfo localNetworkInfo = (NetworkInfo)this.a.getParcelableExtra("networkInfo");
-      this.b.a.a(localNetworkInfo, false);
+      localObject = (NetworkInfo)this.a.getParcelableExtra("networkInfo");
+      this.b.a.a((NetworkInfo)localObject, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.f
  * JD-Core Version:    0.7.0.1
  */

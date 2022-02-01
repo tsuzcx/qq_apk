@@ -19,13 +19,14 @@ public final class Submsgtype0x3e$MsgBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40 }, new String[] { "uint32_subcmd", "uint32_random", "uint32_result", "bytes_device", "uint32_sid" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, MsgBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40 }, new String[] { "uint32_subcmd", "uint32_random", "uint32_result", "bytes_device", "uint32_sid" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro, localInteger }, MsgBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x3e.Submsgtype0x3e.MsgBody
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,18 @@ class AddContactsView$10$1
     if (str2.endsWith("、")) {
       str1 = str2.substring(0, str2.length() - 1);
     }
-    if ((this.a.this$0.a == null) || (!str1.equals(AddContactsView.a()))) {
-      return;
+    if (this.a.this$0.a != null)
+    {
+      if (!str1.equals(AddContactsView.a())) {
+        return;
+      }
+      this.a.this$0.a.setSecondLineVisible(false);
     }
-    this.a.this$0.a.setSecondLineVisible(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.10.1
  * JD-Core Version:    0.7.0.1
  */

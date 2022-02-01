@@ -38,7 +38,7 @@ public final class PreviewImageAdapter
   public View a(@NotNull Context paramContext, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.q, paramViewGroup, false);
+    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.p, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…review, viewGroup, false)");
     return paramContext;
   }
@@ -48,7 +48,7 @@ public final class PreviewImageAdapter
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramView, "itemView");
-    paramContext = (ImageView)paramView.findViewById(R.id.ap);
+    paramContext = (ImageView)paramView.findViewById(R.id.aa);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "imageView");
     paramView = paramContext.getLayoutParams();
     paramView.width = a();
@@ -69,7 +69,7 @@ public final class PreviewImageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.PreviewImageAdapter
  * JD-Core Version:    0.7.0.1
  */

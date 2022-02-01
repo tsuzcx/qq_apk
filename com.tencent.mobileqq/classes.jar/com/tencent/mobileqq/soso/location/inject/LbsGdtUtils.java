@@ -21,8 +21,12 @@ public class LbsGdtUtils
     try
     {
       Object localObject = (ILbsGdtUtilsProcessor)((Class)sILbsGdtUtilsProcessorClassList.get(0)).newInstance();
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LbsGdtUtils", 2, "lbsGdtUtilsProcessor.getOaid() = " + ((ILbsGdtUtilsProcessor)localObject).getOaid());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("lbsGdtUtilsProcessor.getOaid() = ");
+        localStringBuilder.append(((ILbsGdtUtilsProcessor)localObject).getOaid());
+        QLog.i("SOSO.LbsGdtUtils", 2, localStringBuilder.toString());
       }
       localObject = ((ILbsGdtUtilsProcessor)localObject).getOaid();
       return localObject;
@@ -36,7 +40,7 @@ public class LbsGdtUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.inject.LbsGdtUtils
  * JD-Core Version:    0.7.0.1
  */

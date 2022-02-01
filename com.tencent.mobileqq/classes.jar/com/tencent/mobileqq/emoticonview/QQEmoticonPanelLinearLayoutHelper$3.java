@@ -13,33 +13,27 @@ class QQEmoticonPanelLinearLayoutHelper$3
   
   public void run()
   {
-    int[] arrayOfInt;
-    int j;
-    int k;
     if (((this.this$0.getContext() instanceof Activity)) && (!((Activity)this.this$0.getContext()).isFinishing()))
     {
-      arrayOfInt = new int[2];
+      int[] arrayOfInt = new int[2];
       this.val$view.getLocationInWindow(arrayOfInt);
-      j = QQEmoticonPanelLinearLayoutHelper.access$400(this.this$0, this.val$view);
-      k = this.val$view.getMeasuredWidth();
-      i = 0;
+      int j = QQEmoticonPanelLinearLayoutHelper.access$300(this.this$0, this.val$view);
+      int k = this.val$view.getMeasuredWidth();
+      int i = 0;
       if (j >= 0) {
-        if (j > 1) {
-          break label125;
+        if (j <= 1) {
+          i = -(int)((1 - j) * k + k / 2.0F + ViewUtils.a(3.0F));
+        } else {
+          i = (int)((j - 2) * k + k / 2.0F - ViewUtils.a(1.0F));
         }
       }
-    }
-    label125:
-    for (int i = -(int)((1 - j) * k + k / 2.0F + ViewUtils.a(3.0F));; i = (int)((j - 2) * k + k / 2.0F - ViewUtils.a(1.0F)))
-    {
-      QQEmoticonPanelLinearLayoutHelper.access$500(this.this$0).showAtLocation(this.val$view, 48, i, arrayOfInt[1] - this.val$linearLayout.getMeasuredHeight());
-      return;
+      QQEmoticonPanelLinearLayoutHelper.access$400(this.this$0).showAtLocation(this.val$view, 48, i, arrayOfInt[1] - this.val$linearLayout.getMeasuredHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.QQEmoticonPanelLinearLayoutHelper.3
  * JD-Core Version:    0.7.0.1
  */

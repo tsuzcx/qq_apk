@@ -29,18 +29,20 @@ public final class SetUserTailReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strIdentifySqua != null) {
-      paramJceOutputStream.write(this.strIdentifySqua, 0);
+    String str = this.strIdentifySqua;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strDiyMemo != null) {
-      paramJceOutputStream.write(this.strDiyMemo, 1);
+    str = this.strDiyMemo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.iDiyTag, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.SetUserTailReq
  * JD-Core Version:    0.7.0.1
  */

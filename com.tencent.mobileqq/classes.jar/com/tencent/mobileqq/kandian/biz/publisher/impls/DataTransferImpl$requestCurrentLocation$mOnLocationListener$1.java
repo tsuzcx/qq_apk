@@ -20,31 +20,39 @@ public final class DataTransferImpl$requestCurrentLocation$mOnLocationListener$1
   
   public void onLocationFinish(int paramInt, @Nullable SosoLbsInfo paramSosoLbsInfo)
   {
-    if ((paramSosoLbsInfo == null) || (this.a == null)) {}
-    do
+    if (paramSosoLbsInfo != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TKP.DataTransferImpl", 2, "onLocationFinish() errCode=" + paramInt);
+      if (this.a == null) {
+        return;
       }
-    } while ((paramInt != 0) || (paramSosoLbsInfo.mLocation == null));
-    try
-    {
-      LocationInfo localLocationInfo = this.a;
-      localLocationInfo.setLatitude((paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D));
-      localLocationInfo.setLongitude((paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
-      localLocationInfo.setUserSelect(0);
-      return;
-    }
-    catch (JSONException paramSosoLbsInfo)
-    {
-      paramSosoLbsInfo.printStackTrace();
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onLocationFinish() errCode=");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("TKP.DataTransferImpl", 2, ((StringBuilder)localObject).toString());
+      }
+      if ((paramInt == 0) && (paramSosoLbsInfo.mLocation != null)) {
+        try
+        {
+          localObject = this.a;
+          ((LocationInfo)localObject).setLatitude((paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D));
+          ((LocationInfo)localObject).setLongitude((paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
+          ((LocationInfo)localObject).setUserSelect(0);
+          return;
+        }
+        catch (JSONException paramSosoLbsInfo)
+        {
+          paramSosoLbsInfo.printStackTrace();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.DataTransferImpl.requestCurrentLocation.mOnLocationListener.1
  * JD-Core Version:    0.7.0.1
  */

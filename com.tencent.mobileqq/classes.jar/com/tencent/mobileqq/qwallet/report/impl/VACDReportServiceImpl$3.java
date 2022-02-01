@@ -22,260 +22,293 @@ class VACDReportServiceImpl$3
   
   public void handleMessage(Message arg1)
   {
-    Object localObject4 = (Object[])???.obj;
-    if (QLog.isColorLevel()) {
-      QLog.i("VACDReport", 2, "reportThread. handleMessage msg.arg1=" + ???.arg1);
-    }
-    Object localObject5;
-    ReportInfo localReportInfo;
-    long l;
-    switch (???.arg1)
+    Object localObject1 = (Object[])???.obj;
+    if (QLog.isColorLevel())
     {
-    default: 
-      return;
-    case 1: 
-      synchronized (VACDReportServiceImpl.access$000())
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("reportThread. handleMessage msg.arg1=");
+      ((StringBuilder)???).append(???.arg1);
+      QLog.i("VACDReport", 2, ((StringBuilder)???).toString());
+    }
+    int i = ???.arg1;
+    long l;
+    label359:
+    Object localObject6;
+    ReportInfo localReportInfo;
+    Object localObject3;
+    if (i != 1) {
+      if (i != 2)
       {
-        ReportHeader localReportHeader = (ReportHeader)localObject4[1];
-        if ((ReportInfo)VACDReportServiceImpl.access$100(this.a).get(Long.valueOf(localReportHeader.seqno)) != null)
+        if (i != 3)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("VACDReport", 2, "start report. seqno=" + localReportHeader.seqno + " is exist ignore...");
+          if (i != 4)
+          {
+            if (i != 5) {
+              return;
+            }
+            synchronized (VACDReportServiceImpl.access$000())
+            {
+              l = ((Long)localObject1[0]).longValue();
+              ??? = (ReportItem)localObject1[1];
+              localObject1 = (ReportInfo)VACDReportServiceImpl.access$100(this.a).get(Long.valueOf(l));
+              if (localObject1 == null)
+              {
+                if (QLog.isColorLevel())
+                {
+                  localObject1 = new StringBuilder();
+                  ((StringBuilder)localObject1).append("send report. seqno=");
+                  ((StringBuilder)localObject1).append(l);
+                  ((StringBuilder)localObject1).append(" is illegal, step:");
+                  if (??? == null) {
+                    break label1693;
+                  }
+                  ??? = ???.step;
+                  ((StringBuilder)localObject1).append(???);
+                  QLog.d("VACDReport", 2, ((StringBuilder)localObject1).toString());
+                }
+                return;
+              }
+              if ((((ReportInfo)localObject1).header != null) && (((ReportInfo)localObject1).body != null))
+              {
+                if (((ReportInfo)localObject1).body.reportItems == null) {
+                  ((ReportInfo)localObject1).body.reportItems = new ArrayList();
+                }
+                ((ReportInfo)localObject1).header.totalTime = Math.abs(???.createTime - ((ReportInfo)localObject1).header.createTime);
+                ((ReportInfo)localObject1).body.totalTime = ((ReportInfo)localObject1).header.totalTime;
+                VACDReportServiceImpl.access$300(this.a, 0);
+                return;
+              }
+              if (QLog.isColorLevel())
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("send report. seqno=");
+                ((StringBuilder)localObject1).append(l);
+                ((StringBuilder)localObject1).append(" is illegal, step:");
+                if (??? == null) {
+                  break label1699;
+                }
+                ??? = ???.step;
+                ((StringBuilder)localObject1).append(???);
+                QLog.d("VACDReport", 2, ((StringBuilder)localObject1).toString());
+              }
+              return;
+            }
           }
-          return;
+          synchronized (VACDReportServiceImpl.access$000())
+          {
+            ??? = (ReportHeader)localObject1[1];
+            if ((ReportInfo)VACDReportServiceImpl.access$100(this.a).get(Long.valueOf(((ReportHeader)???).seqno)) != null)
+            {
+              if (QLog.isColorLevel())
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("single report seqno=");
+                ((StringBuilder)localObject1).append(((ReportHeader)???).seqno);
+                ((StringBuilder)localObject1).append(" is exist ignore...");
+                QLog.d("VACDReport", 2, ((StringBuilder)localObject1).toString());
+              }
+              return;
+            }
+            localObject6 = (ReportItem)localObject1[2];
+            localObject1 = (String)localObject1[0];
+            localReportInfo = new ReportInfo();
+            localReportInfo.header = ((ReportHeader)???);
+            localReportInfo.header.sKey = ((String)localObject1);
+            localReportInfo.header.totalTime = 0L;
+            localReportInfo.body = new ReportBody();
+            localReportInfo.body.reportItems = new ArrayList(16);
+            localReportInfo.body.sKey = ((String)localObject1);
+            localReportInfo.body.startTime = ((ReportHeader)???).startTime;
+            localReportInfo.body.totalTime = localReportInfo.header.totalTime;
+            ((ReportItem)localObject6).seqno = localReportInfo.header.seqno;
+            ((ReportItem)localObject6).isNormalEnd = true;
+            localReportInfo.body.reportItems.add(localObject6);
+            VACDReportServiceImpl.access$100(this.a).put(Long.valueOf(((ReportHeader)???).seqno), localReportInfo);
+            VACDReportServiceImpl.access$700(this.a).add(???);
+            VACDReportServiceImpl.access$600(this.a).add(localObject6);
+            VACDReportServiceImpl.access$300(this.a, 1);
+            return;
+          }
         }
-      }
-      localObject5 = (ReportItem)localObject4[2];
-      localObject4 = (String)localObject4[0];
-      localReportInfo = new ReportInfo();
-      localReportInfo.header = localObject1;
-      localReportInfo.body = new ReportBody();
-      if (!TextUtils.isEmpty((CharSequence)localObject4))
-      {
-        localReportInfo.header.sKey = ((String)localObject4);
-        localReportInfo.body.sKey = ((String)localObject4);
-      }
-      localReportInfo.body.reportItems = new ArrayList(16);
-      localReportInfo.body.startTime = localObject1.startTime;
-      if (localObject5 != null)
-      {
-        localReportInfo.body.reportItems.add(localObject5);
-        ((ReportItem)localObject5).seqno = localObject1.seqno;
-        VACDReportServiceImpl.access$600(this.a).add(localObject5);
-      }
-      VACDReportServiceImpl.access$100(this.a).put(Long.valueOf(localObject1.seqno), localReportInfo);
-      VACDReportServiceImpl.access$700(this.a).add(localObject1);
-      VACDReportServiceImpl.access$000().notifyAll();
-      return;
-    case 2: 
-      for (;;)
-      {
         synchronized (VACDReportServiceImpl.access$000())
         {
-          l = ((Long)localObject4[0]).longValue();
-          ??? = (ReportItem)localObject4[2];
-          localObject5 = (ReportInfo)VACDReportServiceImpl.access$100(this.a).get(Long.valueOf(l));
-          if (localObject5 != null) {
-            break;
-          }
-          if (QLog.isColorLevel())
+          l = ((Long)localObject2[0]).longValue();
+          ??? = (ReportItem)localObject2[1];
+          localObject3 = (ReportInfo)VACDReportServiceImpl.access$100(this.a).get(Long.valueOf(l));
+          if (localObject3 == null)
           {
-            localObject4 = new StringBuilder().append("addReportItem. seqno=").append(l).append(" is illegal, step:");
-            if (??? != null)
+            if (QLog.isColorLevel())
             {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("end report. seqno=");
+              ((StringBuilder)localObject3).append(l);
+              ((StringBuilder)localObject3).append(" is illegal, step:");
+              if (??? == null) {
+                break label1705;
+              }
               ??? = ???.step;
-              QLog.d("VACDReport", 2, ???);
+              label808:
+              ((StringBuilder)localObject3).append(???);
+              QLog.d("VACDReport", 2, ((StringBuilder)localObject3).toString());
             }
           }
           else
           {
+            if ((((ReportInfo)localObject3).header != null) && (((ReportInfo)localObject3).body != null))
+            {
+              if (((ReportInfo)localObject3).body.reportItems == null) {
+                ((ReportInfo)localObject3).body.reportItems = new ArrayList();
+              }
+              ((ReportInfo)localObject3).body.reportItems.add(???);
+              ???.seqno = ((ReportInfo)localObject3).header.seqno;
+              ???.isNormalEnd = true;
+              VACDReportServiceImpl.access$600(this.a).add(???);
+              VACDReportServiceImpl.access$800(this.a, 5);
+              localObject3 = VACDReportServiceImpl.access$900(this.a).obtainMessage();
+              if (localObject3 != null)
+              {
+                ((Message)localObject3).arg1 = 5;
+                ((Message)localObject3).obj = new Object[] { Long.valueOf(l), ??? };
+                VACDReportServiceImpl.access$900(this.a).sendMessageDelayed((Message)localObject3, 10000L);
+              }
+              return;
+            }
+            if (QLog.isColorLevel())
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("end report. seqno=");
+              ((StringBuilder)localObject3).append(l);
+              ((StringBuilder)localObject3).append(" is illegal, step:");
+              if (??? == null) {
+                break label1711;
+              }
+              ??? = ???.step;
+              label1038:
+              ((StringBuilder)localObject3).append(???);
+              QLog.d("VACDReport", 2, ((StringBuilder)localObject3).toString());
+            }
             return;
           }
         }
-        ??? = ".";
       }
-      if ((((ReportInfo)localObject5).header == null) || (((ReportInfo)localObject5).body == null))
+    }
+    for (;;)
+    {
+      synchronized (VACDReportServiceImpl.access$000())
       {
+        l = ((Long)localObject3[0]).longValue();
+        ??? = (ReportItem)localObject3[2];
+        localObject6 = (ReportInfo)VACDReportServiceImpl.access$100(this.a).get(Long.valueOf(l));
+        if (localObject6 == null)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("addReportItem. seqno=");
+            ((StringBuilder)localObject3).append(l);
+            ((StringBuilder)localObject3).append(" is illegal, step:");
+            if (??? == null) {
+              break label1717;
+            }
+            ??? = ???.step;
+            ((StringBuilder)localObject3).append(???);
+            QLog.d("VACDReport", 2, ((StringBuilder)localObject3).toString());
+          }
+          return;
+        }
+        if ((((ReportInfo)localObject6).header != null) && (((ReportInfo)localObject6).body != null))
+        {
+          if (((ReportInfo)localObject6).body.reportItems == null) {
+            ((ReportInfo)localObject6).body.reportItems = new ArrayList();
+          }
+          ((ReportInfo)localObject6).body.reportItems.add(???);
+          localObject3 = (String)localObject3[1];
+          if (!TextUtils.isEmpty((CharSequence)localObject3))
+          {
+            ((ReportInfo)localObject6).header.sKey = ((String)localObject3);
+            ((ReportInfo)localObject6).body.sKey = ((String)localObject3);
+          }
+          ???.seqno = ((ReportInfo)localObject6).header.seqno;
+          VACDReportServiceImpl.access$600(this.a).add(???);
+          VACDReportServiceImpl.access$000().notifyAll();
+          return;
+        }
         if (QLog.isColorLevel())
         {
-          localObject4 = new StringBuilder().append("addReportItem. seqno=").append(l).append(" is illegal, step:");
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("addReportItem. seqno=");
+          ((StringBuilder)localObject3).append(l);
+          ((StringBuilder)localObject3).append(" is illegal, step:");
           if (??? == null) {
-            break label1584;
+            break label1723;
           }
           ??? = ???.step;
-          QLog.d("VACDReport", 2, ???);
+          ((StringBuilder)localObject3).append(???);
+          QLog.d("VACDReport", 2, ((StringBuilder)localObject3).toString());
         }
+        return;
       }
-      else
+      synchronized (VACDReportServiceImpl.access$000())
       {
-        if (((ReportInfo)localObject5).body.reportItems == null) {
-          ((ReportInfo)localObject5).body.reportItems = new ArrayList();
-        }
-        ((ReportInfo)localObject5).body.reportItems.add(???);
-        localObject4 = (String)localObject4[1];
-        if (!TextUtils.isEmpty((CharSequence)localObject4))
+        ??? = (ReportHeader)localObject3[1];
+        if ((ReportInfo)VACDReportServiceImpl.access$100(this.a).get(Long.valueOf(((ReportHeader)???).seqno)) != null)
         {
-          ((ReportInfo)localObject5).header.sKey = ((String)localObject4);
-          ((ReportInfo)localObject5).body.sKey = ((String)localObject4);
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("start report. seqno=");
+            ((StringBuilder)localObject3).append(((ReportHeader)???).seqno);
+            ((StringBuilder)localObject3).append(" is exist ignore...");
+            QLog.d("VACDReport", 2, ((StringBuilder)localObject3).toString());
+          }
+          return;
         }
-        ???.seqno = ((ReportInfo)localObject5).header.seqno;
-        VACDReportServiceImpl.access$600(this.a).add(???);
+        localObject6 = (ReportItem)localObject3[2];
+        localObject3 = (String)localObject3[0];
+        localReportInfo = new ReportInfo();
+        localReportInfo.header = ((ReportHeader)???);
+        localReportInfo.body = new ReportBody();
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
+        {
+          localReportInfo.header.sKey = ((String)localObject3);
+          localReportInfo.body.sKey = ((String)localObject3);
+        }
+        localReportInfo.body.reportItems = new ArrayList(16);
+        localReportInfo.body.startTime = ((ReportHeader)???).startTime;
+        if (localObject6 != null)
+        {
+          localReportInfo.body.reportItems.add(localObject6);
+          ((ReportItem)localObject6).seqno = ((ReportHeader)???).seqno;
+          VACDReportServiceImpl.access$600(this.a).add(localObject6);
+        }
+        VACDReportServiceImpl.access$100(this.a).put(Long.valueOf(((ReportHeader)???).seqno), localReportInfo);
+        VACDReportServiceImpl.access$700(this.a).add(???);
         VACDReportServiceImpl.access$000().notifyAll();
         return;
       }
-      break;
-    case 3: 
-      for (;;)
-      {
-        synchronized (VACDReportServiceImpl.access$000())
-        {
-          l = ((Long)localObject4[0]).longValue();
-          ??? = (ReportItem)localObject4[1];
-          localObject4 = (ReportInfo)VACDReportServiceImpl.access$100(this.a).get(Long.valueOf(l));
-          if (localObject4 != null) {
-            break;
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject4 = new StringBuilder().append("end report. seqno=").append(l).append(" is illegal, step:");
-            if (??? != null)
-            {
-              ??? = ???.step;
-              QLog.d("VACDReport", 2, ???);
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        ??? = ".";
-      }
-      if ((((ReportInfo)localObject4).header == null) || (((ReportInfo)localObject4).body == null))
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject4 = new StringBuilder().append("end report. seqno=").append(l).append(" is illegal, step:");
-          if (??? == null) {
-            break label1590;
-          }
-          ??? = ???.step;
-          QLog.d("VACDReport", 2, ???);
-        }
-      }
-      else
-      {
-        if (((ReportInfo)localObject4).body.reportItems == null) {
-          ((ReportInfo)localObject4).body.reportItems = new ArrayList();
-        }
-        ((ReportInfo)localObject4).body.reportItems.add(???);
-        ???.seqno = ((ReportInfo)localObject4).header.seqno;
-        ???.isNormalEnd = true;
-        VACDReportServiceImpl.access$600(this.a).add(???);
-        VACDReportServiceImpl.access$800(this.a, 5);
-        localObject4 = VACDReportServiceImpl.access$900(this.a).obtainMessage();
-        if (localObject4 != null)
-        {
-          ((Message)localObject4).arg1 = 5;
-          ((Message)localObject4).obj = new Object[] { Long.valueOf(l), ??? };
-          VACDReportServiceImpl.access$900(this.a).sendMessageDelayed((Message)localObject4, 10000L);
-        }
-        return;
-      }
-      break;
-    case 5: 
-      for (;;)
-      {
-        label848:
-        synchronized (VACDReportServiceImpl.access$000())
-        {
-          l = ((Long)localObject4[0]).longValue();
-          ??? = (ReportItem)localObject4[1];
-          localObject4 = (ReportInfo)VACDReportServiceImpl.access$100(this.a).get(Long.valueOf(l));
-          if (localObject4 != null) {
-            break;
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject4 = new StringBuilder().append("send report. seqno=").append(l).append(" is illegal, step:");
-            if (??? != null)
-            {
-              ??? = ???.step;
-              QLog.d("VACDReport", 2, ???);
-            }
-          }
-          else
-          {
-            return;
-          }
-        }
-        ??? = ".";
-      }
-      if ((((ReportInfo)localObject4).header == null) || (((ReportInfo)localObject4).body == null)) {
-        if (QLog.isColorLevel())
-        {
-          localObject4 = new StringBuilder().append("send report. seqno=").append(l).append(" is illegal, step:");
-          if (??? == null) {
-            break label1596;
-          }
-        }
-      }
-      break;
-    }
-    label1584:
-    label1590:
-    label1596:
-    for (??? = ???.step;; ??? = ".")
-    {
-      QLog.d("VACDReport", 2, ???);
-      return;
-      if (((ReportInfo)localObject4).body.reportItems == null) {
-        ((ReportInfo)localObject4).body.reportItems = new ArrayList();
-      }
-      ((ReportInfo)localObject4).header.totalTime = Math.abs(???.createTime - ((ReportInfo)localObject4).header.createTime);
-      ((ReportInfo)localObject4).body.totalTime = ((ReportInfo)localObject4).header.totalTime;
-      VACDReportServiceImpl.access$300(this.a, 0);
-      return;
-      synchronized (VACDReportServiceImpl.access$000())
-      {
-        ??? = (ReportHeader)localObject4[1];
-        if ((ReportInfo)VACDReportServiceImpl.access$100(this.a).get(Long.valueOf(((ReportHeader)???).seqno)) != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VACDReport", 2, "single report seqno=" + ((ReportHeader)???).seqno + " is exist ignore...");
-          }
-          return;
-        }
-      }
-      localObject5 = (ReportItem)localObject4[2];
-      localObject4 = (String)localObject4[0];
-      localReportInfo = new ReportInfo();
-      localReportInfo.header = localObject3;
-      localReportInfo.header.sKey = ((String)localObject4);
-      localReportInfo.header.totalTime = 0L;
-      localReportInfo.body = new ReportBody();
-      localReportInfo.body.reportItems = new ArrayList(16);
-      localReportInfo.body.sKey = ((String)localObject4);
-      localReportInfo.body.startTime = localObject3.startTime;
-      localReportInfo.body.totalTime = localReportInfo.header.totalTime;
-      ((ReportItem)localObject5).seqno = localReportInfo.header.seqno;
-      ((ReportItem)localObject5).isNormalEnd = true;
-      localReportInfo.body.reportItems.add(localObject5);
-      VACDReportServiceImpl.access$100(this.a).put(Long.valueOf(localObject3.seqno), localReportInfo);
-      VACDReportServiceImpl.access$700(this.a).add(localObject3);
-      VACDReportServiceImpl.access$600(this.a).add(localObject5);
-      VACDReportServiceImpl.access$300(this.a, 1);
-      return;
+      label1693:
       ??? = ".";
       break;
+      label1699:
       ??? = ".";
-      break label848;
+      break label359;
+      label1705:
+      ??? = ".";
+      break label808;
+      label1711:
+      ??? = ".";
+      break label1038;
+      label1717:
+      ??? = ".";
+      continue;
+      label1723:
+      ??? = ".";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.report.impl.VACDReportServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

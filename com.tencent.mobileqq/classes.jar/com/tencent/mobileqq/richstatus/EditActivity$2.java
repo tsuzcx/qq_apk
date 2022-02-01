@@ -22,17 +22,33 @@ class EditActivity$2
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    QLog.d("EditActivity", 2, "beforeTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt2 + ", after = " + paramInt3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("beforeTextChanged CharSequence = ");
+    localStringBuilder.append(paramCharSequence);
+    localStringBuilder.append(", start = ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", count = ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", after = ");
+    localStringBuilder.append(paramInt3);
+    QLog.d("EditActivity", 2, localStringBuilder.toString());
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    QLog.d("EditActivity", 2, "onTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onTextChanged CharSequence = ");
+    localStringBuilder.append(paramCharSequence);
+    localStringBuilder.append(", start = ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", count = ");
+    localStringBuilder.append(paramInt3);
+    QLog.d("EditActivity", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.EditActivity.2
  * JD-Core Version:    0.7.0.1
  */

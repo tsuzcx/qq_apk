@@ -35,13 +35,16 @@ public class AppBrandBaseWebSocket
   
   public void sendStringMessage(String paramString)
   {
-    QMLog.d("AppBrandRemoteService", "---> send Message" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("---> send Message");
+    localStringBuilder.append(paramString);
+    QMLog.d("AppBrandRemoteService", localStringBuilder.toString());
     this.wsProxy.send(this.mTaskId, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppBrandBaseWebSocket
  * JD-Core Version:    0.7.0.1
  */

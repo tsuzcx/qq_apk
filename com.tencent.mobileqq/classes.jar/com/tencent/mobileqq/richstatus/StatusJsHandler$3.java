@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.richstatus;
 
 import android.os.Bundle;
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
 import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.observer.BusinessObserver;
@@ -18,51 +19,61 @@ class StatusJsHandler$3
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.a(2131695222);
-    }
-    for (;;)
+    Object localObject;
+    if (localBaseActivity != null)
     {
-      this.a.a(this.a.c, "false");
-      return;
-      try
+      if (localBaseActivity.isFinishing()) {
+        return;
+      }
+      if (QLog.isColorLevel())
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("success:");
+        ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
+        QLog.d("Q.richstatus.", 2, ((StringBuilder)localObject).toString());
+      }
+      if (!paramBoolean) {
+        this.a.a(2131695217);
+      }
+    }
+    try
+    {
+      localObject = paramBundle.getByteArray("data");
+      if (localObject != null)
+      {
+        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+        paramBundle.mergeFrom((byte[])localObject);
+        if ((paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0))
         {
-          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
+          if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail != null))
           {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null))
-            {
-              paramBundle = new AccountDetail(localGetPublicAccountDetailInfoResponse);
-              this.a.a(localBaseActivity, paramBundle);
-              StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-            }
-          }
-          else {
-            this.a.a(2131695222);
+            localObject = (IPublicAccountDetail)QRoute.api(IPublicAccountDetail.class);
+            ((IPublicAccountDetail)localObject).init(paramBundle);
+            this.a.a(localBaseActivity, (IPublicAccountDetail)localObject);
+            StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail.getUin());
           }
         }
-        else
-        {
-          this.a.a(2131695222);
+        else {
+          this.a.a(2131695217);
         }
       }
-      catch (Exception paramBundle) {}
+      else
+      {
+        this.a.a(2131695217);
+      }
     }
+    catch (Exception paramBundle)
+    {
+      label258:
+      break label258;
+    }
+    paramBundle = this.a;
+    paramBundle.a(paramBundle.c, "false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusJsHandler.3
  * JD-Core Version:    0.7.0.1
  */

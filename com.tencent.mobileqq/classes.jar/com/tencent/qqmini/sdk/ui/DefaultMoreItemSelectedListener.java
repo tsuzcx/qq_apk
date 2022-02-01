@@ -1,6 +1,7 @@
 package com.tencent.qqmini.sdk.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -53,14 +54,15 @@ public class DefaultMoreItemSelectedListener
   
   private String onFavoriteSelect(MiniAppInfo paramMiniAppInfo)
   {
-    if (paramMiniAppInfo.topType == 0) {}
-    for (int i = 1;; i = 0)
-    {
-      paramMiniAppInfo.topType = i;
-      sChannelProxy.setUserAppTop(paramMiniAppInfo, null);
-      if (paramMiniAppInfo.topType != 1) {
-        break;
-      }
+    int i;
+    if (paramMiniAppInfo.topType == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    paramMiniAppInfo.topType = i;
+    sChannelProxy.setUserAppTop(paramMiniAppInfo, null);
+    if (paramMiniAppInfo.topType == 1) {
       return "settop_on";
     }
     return "settop_off";
@@ -85,30 +87,39 @@ public class DefaultMoreItemSelectedListener
   
   private void startComplaintPage(Activity paramActivity, String paramString)
   {
-    if ((paramActivity != null) && (paramString != null)) {
-      localObject = "";
-    }
-    try
+    if ((paramActivity != null) && (paramString != null))
     {
-      String str = URLEncoder.encode("https://support.qq.com/data/1368/2018/0927/5e6c84b68d1f3ad390e7beeb6c2f83b0.jpeg", "UTF-8");
-      localObject = str;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
+      Object localObject = "";
+      try
       {
-        QMLog.e("DefaultMoreItemSelectedListener", "startComplainAndCallback, url = " + "");
+        String str = URLEncoder.encode("https://support.qq.com/data/1368/2018/0927/5e6c84b68d1f3ad390e7beeb6c2f83b0.jpeg", "UTF-8");
+        localObject = str;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("startComplainAndCallback, url = ");
+        localStringBuilder2.append("");
+        QMLog.e("DefaultMoreItemSelectedListener", localStringBuilder2.toString());
         localUnsupportedEncodingException.printStackTrace();
       }
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("https://tucao.qq.com/qq_miniprogram/tucao?appid=");
+      localStringBuilder1.append(paramString);
+      localStringBuilder1.append("&openid=");
+      localStringBuilder1.append(LoginManager.getInstance().getAccount());
+      localStringBuilder1.append("&avatar=");
+      localStringBuilder1.append((String)localObject);
+      localStringBuilder1.append("&nickname=游客");
+      localObject = localStringBuilder1.toString();
+      paramString = new Intent();
+      paramString.putExtra("url", (String)localObject);
+      paramString.putExtra("title", "投诉与反馈");
+      localObject = new Bundle();
+      ((Bundle)localObject).putBoolean("hide_more_button", true);
+      paramString.putExtras((Bundle)localObject);
+      sMiniAppProxy.startBrowserActivity(paramActivity, paramString);
     }
-    Object localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + paramString + "&openid=" + LoginManager.getInstance().getAccount() + "&avatar=" + (String)localObject + "&nickname=游客";
-    paramString = new Intent();
-    paramString.putExtra("url", (String)localObject);
-    paramString.putExtra("title", "投诉与反馈");
-    localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("hide_more_button", true);
-    paramString.putExtras((Bundle)localObject);
-    sMiniAppProxy.startBrowserActivity(paramActivity, paramString);
   }
   
   public void onMoreItemSelected(IMiniAppContext paramIMiniAppContext, int paramInt)
@@ -116,64 +127,80 @@ public class DefaultMoreItemSelectedListener
     if (paramIMiniAppContext == null) {
       return;
     }
-    Object localObject = "";
     if ((paramInt >= 100) && (paramInt <= 200))
     {
       localObject = new Bundle();
       ((Bundle)localObject).putInt("key_share_item_id", paramInt);
       paramIMiniAppContext.performAction(ShareAction.obtain(7, (Bundle)localObject));
-      reportClick(paramIMiniAppContext, "share_" + paramInt);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("share_");
+      ((StringBuilder)localObject).append(paramInt);
+      reportClick(paramIMiniAppContext, ((StringBuilder)localObject).toString());
       return;
     }
-    Activity localActivity = paramIMiniAppContext.getAttachedActivity();
+    Object localObject = paramIMiniAppContext.getAttachedActivity();
     MiniAppInfo localMiniAppInfo = paramIMiniAppContext.getMiniAppInfo();
     switch (paramInt)
     {
-    }
-    for (;;)
-    {
-      reportClick(paramIMiniAppContext, (String)localObject);
-      return;
-      paramIMiniAppContext.performAction(ShareAction.obtain(1));
-      localObject = "share_QQ";
-      continue;
-      paramIMiniAppContext.performAction(ShareAction.obtain(2));
-      localObject = "share_QZ";
-      continue;
-      paramIMiniAppContext.performAction(ShareAction.obtain(3));
-      localObject = "share_WX";
-      continue;
-      paramIMiniAppContext.performAction(ShareAction.obtain(4));
-      localObject = "share_Moments";
-      continue;
-      localObject = onAboutSelect(paramIMiniAppContext, localActivity, localMiniAppInfo);
-      continue;
-      localObject = onComplaintSelect(localActivity, localMiniAppInfo);
-      continue;
-      UpdateUIAction.toggleDebugPanel(paramIMiniAppContext);
-      MiniToast.makeText(localActivity, "调试面板需重启生效", 1).show();
-      continue;
-      UpdateUIAction.toggleMonitorPanel(paramIMiniAppContext);
-      continue;
-      RestartAction.restart(paramIMiniAppContext);
-      continue;
-      localObject = onFavoriteSelect(localMiniAppInfo);
-      continue;
-      sMiniAppProxy.addShortcut(localActivity, localMiniAppInfo, null);
-      localObject = "add_desktop";
-      continue;
-      localObject = "cancel";
-      continue;
-      localObject = "cancel_system";
-      continue;
+    default: 
+      break;
+    case 12: 
       paramIMiniAppContext.performAction(FavoritesAction.obtain(1));
       localObject = "qq_favorites";
+      break;
+    case 11: 
+      sMiniAppProxy.addShortcut((Context)localObject, localMiniAppInfo, null);
+      localObject = "add_desktop";
+      break;
+    case 10: 
+      localObject = onFavoriteSelect(localMiniAppInfo);
+      break;
+    case 9: 
+      RestartAction.restart(paramIMiniAppContext);
+      break;
+    case 8: 
+      UpdateUIAction.toggleMonitorPanel(paramIMiniAppContext);
+      break;
+    case 7: 
+      UpdateUIAction.toggleDebugPanel(paramIMiniAppContext);
+      MiniToast.makeText((Context)localObject, "调试面板需重启生效", 1).show();
+      break;
+    case 6: 
+      localObject = onComplaintSelect((Activity)localObject, localMiniAppInfo);
+      break;
+    case 5: 
+      localObject = onAboutSelect(paramIMiniAppContext, (Activity)localObject, localMiniAppInfo);
+      break;
+    case 4: 
+      paramIMiniAppContext.performAction(ShareAction.obtain(4));
+      localObject = "share_Moments";
+      break;
+    case 3: 
+      paramIMiniAppContext.performAction(ShareAction.obtain(3));
+      localObject = "share_WX";
+      break;
+    case 2: 
+      paramIMiniAppContext.performAction(ShareAction.obtain(2));
+      localObject = "share_QZ";
+      break;
+    case 1: 
+      paramIMiniAppContext.performAction(ShareAction.obtain(1));
+      localObject = "share_QQ";
+      break;
+    case 0: 
+      localObject = "cancel_system";
+      break;
+    case -1: 
+      localObject = "cancel";
+      break;
     }
+    localObject = "";
+    reportClick(paramIMiniAppContext, (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.DefaultMoreItemSelectedListener
  * JD-Core Version:    0.7.0.1
  */

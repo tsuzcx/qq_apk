@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cl9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/gmc" android:layout_alignWithParentIfMissing="true"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a32" />
-</RelativeLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/m6h" android:background="@color/g9" android:layout_width="fill_parent" android:layout_height="@dimen/bbj" android:layout_alignParentBottom="true">
+        <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.DoodleColorAndModeView android:id="@id/nfj" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_marginTop="@dimen/bbi" app:needHeader="false" app:needMosaic="false" app:useCase="o7o" />
+    </RelativeLayout>
+    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.AEDoodlePenWidthSeekBar android:id="@id/ilm" android:layout_width="15.5dip" android:layout_height="270.0dip" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/odf" android:background="@drawable/bjg" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bfq" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <FrameLayout android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="1.0dip" android:layout_centerHorizontal="true">
+            <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fi2" />
+        </FrameLayout>
+    </RelativeLayout>
+</merge>

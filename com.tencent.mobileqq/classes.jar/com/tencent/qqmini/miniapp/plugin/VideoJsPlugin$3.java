@@ -10,8 +10,12 @@ class VideoJsPlugin$3
   
   public void run()
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("VideoJsPlugin", "hideToastView toastView=" + VideoJsPlugin.access$100(this.this$0));
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hideToastView toastView=");
+      localStringBuilder.append(VideoJsPlugin.access$100(this.this$0));
+      QMLog.d("VideoJsPlugin", localStringBuilder.toString());
     }
     if (VideoJsPlugin.access$100(this.this$0) != null)
     {
@@ -22,7 +26,7 @@ class VideoJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.VideoJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

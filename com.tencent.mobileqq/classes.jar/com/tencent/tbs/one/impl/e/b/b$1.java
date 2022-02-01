@@ -17,18 +17,14 @@ final class b$1
   
   public final void run()
   {
-    localb = this.a;
-    Object localObject2 = this.a.b;
+    b localb = this.a;
+    Object localObject2 = localb.b;
     String str = this.a.c;
     Object localObject1 = this.a.d;
     localObject2 = f.a((Context)localObject2);
     try
     {
       c.a(f.c((File)localObject2, str), (File)localObject1);
-      return;
-    }
-    catch (IOException localIOException)
-    {
       try
       {
         localObject1 = d.a((File)localObject1);
@@ -38,16 +34,24 @@ final class b$1
       catch (TBSOneException localTBSOneException)
       {
         localb.a(localTBSOneException.getErrorCode(), localTBSOneException.getMessage(), localTBSOneException.getCause());
+        return;
       }
-      localIOException = localIOException;
-      localb.a(302, "Failed to copy builtin DEPS from " + ((File)localObject2).getAbsolutePath() + " to " + ((File)localObject1).getAbsolutePath(), localIOException);
+      StringBuilder localStringBuilder;
       return;
+    }
+    catch (IOException localIOException)
+    {
+      localStringBuilder = new StringBuilder("Failed to copy builtin DEPS from ");
+      localStringBuilder.append(((File)localObject2).getAbsolutePath());
+      localStringBuilder.append(" to ");
+      localStringBuilder.append(localTBSOneException.getAbsolutePath());
+      localb.a(302, localStringBuilder.toString(), localIOException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.b.b.1
  * JD-Core Version:    0.7.0.1
  */

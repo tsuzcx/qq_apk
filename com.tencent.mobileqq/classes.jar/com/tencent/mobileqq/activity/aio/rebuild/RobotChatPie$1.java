@@ -1,35 +1,27 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper;
-import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase.GetListDataCallback;
+import com.tencent.mobileqq.troop.utils.RobotUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class RobotChatPie$1
-  implements RobotPanelLayoutBase.GetListDataCallback
+  implements View.OnClickListener
 {
   RobotChatPie$1(RobotChatPie paramRobotChatPie) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.a.a)) && (this.a.a.a.equals(paramString)))
-    {
-      paramString = (TroopRobotHelper)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
+    if (!this.a.B) {
+      RobotUtils.a(this.a.jdField_a_of_type_AndroidContentContext, null, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
     }
-    do
-    {
-      return;
-      paramString = (TroopRobotHelper)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.RobotChatPie.1
  * JD-Core Version:    0.7.0.1
  */

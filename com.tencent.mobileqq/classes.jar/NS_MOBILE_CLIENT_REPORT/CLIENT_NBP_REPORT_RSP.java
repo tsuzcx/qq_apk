@@ -35,14 +35,15 @@ public final class CLIENT_NBP_REPORT_RSP
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.code, 0);
-    if (this.extra_info != null) {
-      paramJceOutputStream.write(this.extra_info, 1);
+    Map localMap = this.extra_info;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CLIENT_REPORT.CLIENT_NBP_REPORT_RSP
  * JD-Core Version:    0.7.0.1
  */

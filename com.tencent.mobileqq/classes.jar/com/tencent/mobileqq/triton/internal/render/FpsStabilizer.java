@@ -12,48 +12,58 @@ public final class FpsStabilizer
   
   public final void setTargetFps(float paramFloat)
   {
-    if (paramFloat <= 0) {}
-    for (double d = 0.0D;; d = TimeUnit.SECONDS.toNanos(1L) / paramFloat)
+    double d1;
+    if (paramFloat <= 0)
     {
-      this.fpsIntervalNanos = d;
-      this.accumulateStartTimeNanos = 0L;
-      return;
+      d1 = 0.0D;
     }
+    else
+    {
+      d1 = TimeUnit.SECONDS.toNanos(1L);
+      double d2 = paramFloat;
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      d1 /= d2;
+    }
+    this.fpsIntervalNanos = d1;
+    this.accumulateStartTimeNanos = 0L;
   }
   
   public final boolean shouldDoFrame(long paramLong)
   {
-    boolean bool3 = true;
+    double d1 = this.fpsIntervalNanos;
+    boolean bool2 = true;
     boolean bool1 = true;
-    boolean bool2 = bool1;
-    if (this.fpsIntervalNanos != 0.0D)
+    if (d1 != 0.0D)
     {
       if (paramLong <= 0L) {
+        return true;
+      }
+      long l = paramLong - this.accumulateStartTimeNanos;
+      d1 = l;
+      double d2 = this.fpsIntervalNanos;
+      Double.isNaN(d1);
+      d1 /= d2;
+      int i = this.accumulatedFrames;
+      if (d1 >= i) {
+        this.accumulatedFrames = (i + 1);
+      } else {
+        bool1 = false;
+      }
+      bool2 = bool1;
+      if (l > TimeUnit.SECONDS.toNanos(1L))
+      {
+        this.accumulateStartTimeNanos = paramLong;
+        this.accumulatedFrames = 0;
         bool2 = bool1;
       }
     }
-    else {
-      return bool2;
-    }
-    long l = paramLong - this.accumulateStartTimeNanos;
-    if (l / this.fpsIntervalNanos >= this.accumulatedFrames) {
-      this.accumulatedFrames += 1;
-    }
-    for (bool1 = bool3;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (l <= TimeUnit.SECONDS.toNanos(1L)) {
-        break;
-      }
-      this.accumulateStartTimeNanos = paramLong;
-      this.accumulatedFrames = 0;
-      return bool1;
-    }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.render.FpsStabilizer
  * JD-Core Version:    0.7.0.1
  */

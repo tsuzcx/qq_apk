@@ -14,19 +14,16 @@ final class MiniCacheFreeManager$1
   
   public void run()
   {
-    if ((this.val$activity == null) || (this.val$activity.isFinishing())) {
-      QLog.e("MiniCacheFreeManager", 1, "freeCacheDialog activity is null");
-    }
-    for (;;)
+    Object localObject = this.val$activity;
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      return;
       try
       {
-        QQCustomDialog localQQCustomDialog = DialogUtil.a(this.val$activity, 230, null, this.val$dialogContext, HardCodeUtil.a(2131710194), HardCodeUtil.a(2131710195), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
-        localQQCustomDialog.setCanceledOnTouchOutside(false);
+        localObject = DialogUtil.a(this.val$activity, 230, null, this.val$dialogContext, HardCodeUtil.a(2131710175), HardCodeUtil.a(2131710176), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
+        ((QQCustomDialog)localObject).setCanceledOnTouchOutside(false);
         if ((this.val$activity != null) && (!this.val$activity.isFinishing()))
         {
-          localQQCustomDialog.show();
+          ((QQCustomDialog)localObject).show();
           return;
         }
       }
@@ -34,12 +31,14 @@ final class MiniCacheFreeManager$1
       {
         QLog.e("MiniCacheFreeManager", 1, "freeCacheDialog exception ", localException);
       }
+      return;
     }
+    QLog.e("MiniCacheFreeManager", 1, "freeCacheDialog activity is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.cache.MiniCacheFreeManager.1
  * JD-Core Version:    0.7.0.1
  */

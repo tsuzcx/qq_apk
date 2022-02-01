@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profilecard.bussiness.personalitysign;
 
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.richstatus.IIconListener;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
@@ -25,11 +25,11 @@ class ProfileContentSignComponent$RichStatusIconListener
     if (paramBitmap != null)
     {
       paramBitmap = (ProfileContentSignComponent)this.mRef.get();
-      if ((paramBitmap != null) && (ProfileContentSignComponent.access$3000(paramBitmap) != null))
+      if (paramBitmap != null)
       {
-        RichStatus localRichStatus = ((ProfileCardInfo)ProfileContentSignComponent.access$3100(paramBitmap)).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
+        RichStatus localRichStatus = ProfileContentSignComponent.access$1000(paramBitmap);
         if ((localRichStatus != null) && (localRichStatus.actionId == paramInt1)) {
-          ProfileContentSignComponent.access$1200(paramBitmap, ((ProfileCardInfo)ProfileContentSignComponent.access$3200(paramBitmap)).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+          ProfileContentSignComponent.access$1200(paramBitmap, ((ProfileCardInfo)ProfileContentSignComponent.access$3000(paramBitmap)).card, false);
         }
       }
     }
@@ -37,7 +37,7 @@ class ProfileContentSignComponent$RichStatusIconListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitysign.ProfileContentSignComponent.RichStatusIconListener
  * JD-Core Version:    0.7.0.1
  */

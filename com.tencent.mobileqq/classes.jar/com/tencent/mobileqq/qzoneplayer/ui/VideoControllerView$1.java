@@ -31,7 +31,10 @@ class VideoControllerView$1
         this.startTimestamp = System.currentTimeMillis();
       }
       this.currentDownCount += 1;
-      PlayerUtils.log(2, "hahax", "count" + this.currentDownCount);
+      paramView = new StringBuilder();
+      paramView.append("count");
+      paramView.append(this.currentDownCount);
+      PlayerUtils.log(2, "hahax", paramView.toString());
       if (this.currentDownCount >= this.maxDownCount)
       {
         paramView = new PopupMenu(this.this$0.getContext(), VideoControllerView.access$000(this.this$0));
@@ -51,7 +54,7 @@ class VideoControllerView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzoneplayer.ui.VideoControllerView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ import java.io.File;
 
 public class hl
 {
-  public static final String TAG = hl.class.getSimpleName();
-  private static Drawable ti = null;
+  public static final String TAG = "hl";
+  private static Drawable ti;
   private static int tj = -1;
   
   public static void H(Context paramContext)
@@ -41,12 +41,18 @@ public class hl
   {
     try
     {
-      String str = paramContext.getPackageName();
+      Object localObject = paramContext.getPackageName();
       Intent localIntent = new Intent();
       localIntent.setClassName("com.tencent.wifimanager", "com.tencent.server.fore.QuickLoadActivity");
       localIntent.setAction("android.intent.action.VIEW");
-      localIntent.putExtra("platform_id", str);
-      localIntent.putExtra("launch_param", "{'dest_view':" + paramString + ",'show_id':'0','show_channel':'" + "102769" + "'}");
+      localIntent.putExtra("platform_id", (String)localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("{'dest_view':");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",'show_id':'0','show_channel':'");
+      ((StringBuilder)localObject).append("102769");
+      ((StringBuilder)localObject).append("'}");
+      localIntent.putExtra("launch_param", ((StringBuilder)localObject).toString());
       localIntent.putExtra("id", paramInt);
       localIntent.setFlags(402653184);
       localIntent.putExtra("big_brother_source_key", "biz_src_wifi");
@@ -58,65 +64,64 @@ public class hl
   
   public static void a(Context paramContext, String paramString1, int paramInt, String paramString2)
   {
-    for (;;)
+    try
     {
-      try
+      localObject1 = fq.cr().getPackageManager();
+      String str1 = fq.cr().getPackageName();
+      String str2 = (String)((PackageManager)localObject1).getApplicationLabel(((PackageManager)localObject1).getApplicationInfo(str1, 0));
+      Object localObject2 = paramContext.getPackageName();
+      localObject1 = new Intent();
+      ((Intent)localObject1).setClassName("com.tencent.wifimanager", "com.tencent.server.fore.QuickLoadActivity");
+      ((Intent)localObject1).setAction("android.intent.action.VIEW");
+      ((Intent)localObject1).putExtra("platform_id", (String)localObject2);
+      ((Intent)localObject1).putExtra("launch_param", "{'dest_view':11993147,'show_id':'1','show_channel':'102769'}");
+      ((Intent)localObject1).putExtra("auto_connect_wifi", false);
+      ((Intent)localObject1).putExtra("enter_main_page_src_key", 47);
+      ((Intent)localObject1).putExtra("connection_affair_src", 47);
+      ((Intent)localObject1).putExtra("page_transition_style", 1);
+      if (TextUtils.isEmpty(paramString2))
       {
-        localObject1 = fq.cr().getPackageManager();
-        String str1 = fq.cr().getPackageName();
-        String str2 = (String)((PackageManager)localObject1).getApplicationLabel(((PackageManager)localObject1).getApplicationInfo(str1, 0));
-        localObject2 = paramContext.getPackageName();
-        localObject1 = new Intent();
-        ((Intent)localObject1).setClassName("com.tencent.wifimanager", "com.tencent.server.fore.QuickLoadActivity");
-        ((Intent)localObject1).setAction("android.intent.action.VIEW");
-        ((Intent)localObject1).putExtra("platform_id", (String)localObject2);
-        ((Intent)localObject1).putExtra("launch_param", "{'dest_view':11993147,'show_id':'1','show_channel':'102769'}");
-        ((Intent)localObject1).putExtra("auto_connect_wifi", false);
-        ((Intent)localObject1).putExtra("enter_main_page_src_key", 47);
-        ((Intent)localObject1).putExtra("connection_affair_src", 47);
-        ((Intent)localObject1).putExtra("page_transition_style", 1);
-        if (TextUtils.isEmpty(paramString2))
-        {
-          ((Intent)localObject1).putExtra("key_session_name", paramString1);
-          ((Intent)localObject1).putExtra("key_security", paramInt);
-          ((Intent)localObject1).putExtra("hidesplash", true);
-          ((Intent)localObject1).putExtra("package_name", str1);
-          ((Intent)localObject1).putExtra("game_name", str2);
-          paramString1 = ti;
-          if (paramString1 == null) {}
-        }
+        ((Intent)localObject1).putExtra("key_session_name", paramString1);
       }
-      catch (Throwable paramContext)
+      else
       {
-        Object localObject1;
-        Object localObject2;
-        paramContext.printStackTrace();
-        return;
+        localObject2 = new WifiConfig();
+        ((WifiConfig)localObject2).ey = paramString1;
+        ((WifiConfig)localObject2).eC = true;
+        ((WifiConfig)localObject2).ez = paramInt;
+        ((WifiConfig)localObject2).eE = 0;
+        ((WifiConfig)localObject2).a(paramString2, false, 0, 0);
+        ((Intent)localObject1).putExtra("wifi_config", (Parcelable)localObject2);
       }
-      try
-      {
-        paramString1 = hj.a(ti);
-        if (paramString1 != null) {
-          ((Intent)localObject1).putExtra("icon_img", hj.a(paramString1));
-        }
-      }
-      catch (Exception paramString1)
-      {
-        continue;
-      }
-      ((Intent)localObject1).putExtra("value_ui_style_color", tj);
-      ((Intent)localObject1).setFlags(402653184);
-      ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_wifi");
-      paramContext.startActivity((Intent)localObject1);
-      return;
-      localObject2 = new WifiConfig();
-      ((WifiConfig)localObject2).ey = paramString1;
-      ((WifiConfig)localObject2).eC = true;
-      ((WifiConfig)localObject2).ez = paramInt;
-      ((WifiConfig)localObject2).eE = 0;
-      ((WifiConfig)localObject2).a(paramString2, false, 0, 0);
-      ((Intent)localObject1).putExtra("wifi_config", (Parcelable)localObject2);
+      ((Intent)localObject1).putExtra("key_security", paramInt);
+      ((Intent)localObject1).putExtra("hidesplash", true);
+      ((Intent)localObject1).putExtra("package_name", str1);
+      ((Intent)localObject1).putExtra("game_name", str2);
+      paramString1 = ti;
+      if (paramString1 == null) {}
     }
+    catch (Throwable paramContext)
+    {
+      Object localObject1;
+      label266:
+      paramContext.printStackTrace();
+      return;
+    }
+    try
+    {
+      paramString1 = hj.a(ti);
+      if (paramString1 != null) {
+        ((Intent)localObject1).putExtra("icon_img", hj.a(paramString1));
+      }
+    }
+    catch (Exception paramString1)
+    {
+      break label266;
+    }
+    ((Intent)localObject1).putExtra("value_ui_style_color", tj);
+    ((Intent)localObject1).setFlags(402653184);
+    ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_wifi");
+    paramContext.startActivity((Intent)localObject1);
   }
   
   public static void a(Drawable paramDrawable, int paramInt)
@@ -127,48 +132,43 @@ public class hl
   
   public static int ab(String paramString)
   {
-    int j = 0;
-    int i = j;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      i = j;
-      if (new File(paramString).exists()) {
-        i = 1;
-      }
+    if ((!TextUtils.isEmpty(paramString)) && (new File(paramString).exists())) {
+      return 1;
     }
-    return i;
+    return 0;
   }
   
   private static int ac(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    boolean bool = TextUtils.isEmpty(paramString);
+    int i = -1;
+    if (bool) {
       return -1;
-      paramString = paramString.split("\\.");
-    } while (paramString.length < 3);
-    return Integer.parseInt(paramString[0]) * 100 + Integer.parseInt(paramString[1]) * 10 + Integer.parseInt(paramString[2]);
+    }
+    paramString = paramString.split("\\.");
+    if (paramString.length >= 3) {
+      i = Integer.parseInt(paramString[0]) * 100 + Integer.parseInt(paramString[1]) * 10 + Integer.parseInt(paramString[2]);
+    }
+    return i;
   }
   
   public static boolean ad(String paramString)
   {
     boolean bool = false;
-    Object localObject = null;
     try
     {
       paramString = gv.dE().getPackageManager().getPackageInfo(paramString, 0);
-      if (paramString != null) {
-        bool = true;
-      }
-      return bool;
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramString = localObject;
-      }
+      label17:
+      break label17;
     }
+    paramString = null;
+    if (paramString != null) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static void b(Context paramContext, int paramInt, String paramString)
@@ -186,8 +186,8 @@ public class hl
         paramContext = fm.dL();
         paramContext.f(System.currentTimeMillis());
         paramContext.aq(paramInt);
-        return;
       }
+      return;
     }
     catch (Throwable paramContext) {}
   }
@@ -199,55 +199,61 @@ public class hl
   
   public static boolean fp()
   {
-    Object localObject = null;
+    boolean bool2 = false;
     try
     {
-      PackageInfo localPackageInfo = gv.dE().getPackageManager().getPackageInfo("com.tencent.wifimanager", 0);
-      localObject = localPackageInfo;
+      localObject = gv.dE().getPackageManager().getPackageInfo("com.tencent.wifimanager", 0);
     }
     catch (Exception localException)
     {
-      label17:
+      Object localObject;
+      label19:
       int i;
       int j;
-      break label17;
+      boolean bool1;
+      break label19;
     }
-    if (localObject == null) {}
-    do
+    localObject = null;
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((PackageInfo)localObject).versionName;
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return false;
+    }
+    i = ac((String)localObject);
+    j = ac("3.3.1");
+    bool1 = bool2;
+    if (i != -1)
     {
-      do
-      {
+      if (j == -1) {
         return false;
-        localObject = ((PackageInfo)localObject).versionName;
-      } while (TextUtils.isEmpty((CharSequence)localObject));
-      i = ac((String)localObject);
-      j = ac("3.3.1");
-    } while ((i == -1) || (j == -1) || (i < j));
-    return true;
+      }
+      bool1 = bool2;
+      if (i >= j) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static int i(String paramString1, String paramString2)
   {
-    int j = 1;
-    int i;
     if (ad(paramString1)) {
-      i = 3;
+      return 3;
     }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (TextUtils.isEmpty(paramString2));
-      i = j;
-    } while (ab(paramString2) == 0);
-    return 2;
+    if (TextUtils.isEmpty(paramString2)) {
+      return 1;
+    }
+    if (ab(paramString2) != 0) {
+      return 2;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.hl
  * JD-Core Version:    0.7.0.1
  */

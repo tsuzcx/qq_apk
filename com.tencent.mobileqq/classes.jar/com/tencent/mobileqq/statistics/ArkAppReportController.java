@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.statistics;
 
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class ArkAppReportController
 {
@@ -11,7 +11,7 @@ public class ArkAppReportController
     return paramReportData.a();
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
+  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
   {
     ArkAppReportController.ReportData localReportData = new ArkAppReportController.ReportData();
     localReportData.jdField_a_of_type_JavaLangString = paramString1;
@@ -25,25 +25,33 @@ public class ArkAppReportController
     localReportData.jdField_d_of_type_JavaLangString = paramString4;
     localReportData.e = paramString5;
     localReportData.jdField_c_of_type_Long = 1L;
-    if (paramQQAppInterface == null)
+    if (paramAppRuntime == null)
     {
-      paramQQAppInterface = a(localReportData);
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkAppReportController", 1, "POST getReportingDetail=" + paramQQAppInterface);
+      paramAppRuntime = a(localReportData);
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("POST getReportingDetail=");
+        paramString1.append(paramAppRuntime);
+        QLog.i("ArkAppReportController", 1, paramString1.toString());
       }
-      ThreadManager.executeOnSubThread(new ArkAppReportController.1(paramQQAppInterface));
+      ThreadManager.executeOnSubThread(new ArkAppReportController.1(paramAppRuntime));
       return;
     }
     paramString1 = a(localReportData);
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkAppReportController", 1, "getReportingDetail=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("getReportingDetail=");
+      paramString2.append(paramString1);
+      QLog.i("ArkAppReportController", 1, paramString2.toString());
     }
-    ReportController.b(paramQQAppInterface, "dc01616", paramString1, 1);
+    ReportController.b(paramAppRuntime, "dc01616", paramString1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ArkAppReportController
  * JD-Core Version:    0.7.0.1
  */

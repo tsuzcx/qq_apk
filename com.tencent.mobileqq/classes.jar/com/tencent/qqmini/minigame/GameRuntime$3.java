@@ -11,19 +11,29 @@ class GameRuntime$3
   
   public void onCheckResult(boolean paramBoolean)
   {
-    QMLog.i("GameRuntime", "UpdateManager checkResult hasUpdate:" + paramBoolean + ", currentAppInfo:" + GameRuntime.access$400(this.this$0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UpdateManager checkResult hasUpdate:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", currentAppInfo:");
+    localStringBuilder.append(GameRuntime.access$400(this.this$0));
+    QMLog.i("GameRuntime", localStringBuilder.toString());
     AppStateEvent.obtain(2054, Boolean.valueOf(paramBoolean)).notifyRuntime(this.this$0);
   }
   
   public void onDownloadResult(boolean paramBoolean)
   {
-    QMLog.i("GameRuntime", "UpdateManager downloadResult success:" + paramBoolean + ", currentAppInfo:" + GameRuntime.access$400(this.this$0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UpdateManager downloadResult success:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", currentAppInfo:");
+    localStringBuilder.append(GameRuntime.access$400(this.this$0));
+    QMLog.i("GameRuntime", localStringBuilder.toString());
     AppStateEvent.obtain(2055, Boolean.valueOf(paramBoolean)).notifyRuntime(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameRuntime.3
  * JD-Core Version:    0.7.0.1
  */

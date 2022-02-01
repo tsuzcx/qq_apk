@@ -33,20 +33,22 @@ class StickerController$1$1
   
   public void onEditClick(@NotNull TAVSticker paramTAVSticker, @Nullable List<TAVStickerLayerItem> paramList)
   {
-    if ("sticker_lyric".equals(this.val$extraType)) {}
-    while ((StickerController.access$300(this.this$1.this$0) == null) || (paramTAVSticker.getStickerTextItems() == null) || (paramTAVSticker.getStickerTextItems().isEmpty())) {
+    if ("sticker_lyric".equals(this.val$extraType)) {
       return;
     }
-    StickerController.access$300(this.this$1.this$0).onTextEditButtonClick(StickerUtil.stickerModel2EditorData(paramTAVSticker));
+    if ((StickerController.access$300(this.this$1.this$0) != null) && (paramTAVSticker.getStickerTextItems() != null) && (!paramTAVSticker.getStickerTextItems().isEmpty())) {
+      StickerController.access$300(this.this$1.this$0).onTextEditButtonClick(StickerUtil.stickerModel2EditorData(paramTAVSticker));
+    }
   }
   
   public void onStickerClick(@NotNull TAVSticker paramTAVSticker)
   {
-    if ("sticker_lyric".equals(this.val$extraType)) {}
-    while ((StickerController.access$300(this.this$1.this$0) == null) || (paramTAVSticker.getStickerTextItems() == null) || (paramTAVSticker.getStickerTextItems().isEmpty())) {
+    if ("sticker_lyric".equals(this.val$extraType)) {
       return;
     }
-    StickerController.access$300(this.this$1.this$0).onStickerClick(StickerUtil.stickerModel2EditorData(paramTAVSticker));
+    if ((StickerController.access$300(this.this$1.this$0) != null) && (paramTAVSticker.getStickerTextItems() != null)) {
+      StickerController.access$300(this.this$1.this$0).onStickerClick(StickerUtil.stickerModel2EditorData(paramTAVSticker));
+    }
   }
   
   public void onStickerSelected(TAVSticker paramTAVSticker)
@@ -56,16 +58,16 @@ class StickerController$1$1
       paramTAVSticker = StickerUtil.stickerModel2EditorData(paramTAVSticker);
       paramTAVSticker.setStickerType("sticker_lyric");
       StickerController.access$300(this.this$1.this$0).onStickerSelect(paramTAVSticker);
-    }
-    while ((StickerController.access$300(this.this$1.this$0) == null) || (paramTAVSticker.getStickerTextItems() == null) || (paramTAVSticker.getStickerTextItems().isEmpty())) {
       return;
     }
-    StickerController.access$300(this.this$1.this$0).onStickerSelect(StickerUtil.stickerModel2EditorData(paramTAVSticker));
+    if (StickerController.access$300(this.this$1.this$0) != null) {
+      StickerController.access$300(this.this$1.this$0).onStickerSelect(StickerUtil.stickerModel2EditorData(paramTAVSticker));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.StickerController.1.1
  * JD-Core Version:    0.7.0.1
  */

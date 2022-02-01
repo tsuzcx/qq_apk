@@ -105,120 +105,131 @@ public class Leba
   
   private void b(boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_MqqAppAppRuntime == null) {
       return;
-      int i = LebaReportUtils.a(paramBoolean, paramRedTypeInfo);
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "trends_tab", "click_trends_tab", 0, 0, "", "", String.valueOf(i), "");
-      o();
-    } while (!paramBoolean);
-    ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).reportLevelZeroRedInfo(0, 31);
+    }
+    int i = LebaReportUtils.a(paramBoolean, paramRedTypeInfo);
+    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "trends_tab", "click_trends_tab", 0, 0, "", "", String.valueOf(i), "");
+    n();
+    if (paramBoolean) {
+      ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).reportLevelZeroRedInfo(0, 31);
+    }
   }
   
-  private void p()
+  private void o()
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)a(2131379533));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)a(2131378881));
     QIphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131379451));
-    QIphoneTitleBarActivity.setLayerType((ViewGroup)a(2131377159));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131370254));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369534));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719721);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131369501));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131378803));
+    QIphoneTitleBarActivity.setLayerType((ViewGroup)a(2131376636));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131369922));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131369249));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719445);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131369216));
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     m();
     this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch(a(), this.jdField_b_of_type_AndroidWidgetImageView).b(53).a();
-    v();
-    if (ThemeUtil.a(false))
+    u();
+    if (ThemeUtil.isDefaultOrDIYTheme(false))
     {
       a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, true);
       a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, true);
       a(this.jdField_b_of_type_AndroidWidgetRelativeLayout, true);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     }
-    for (;;)
+    else
     {
-      SimpleUIUtil.a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, a().getWindow());
-      return;
       a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, false);
       a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850507);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131167030));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850433);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131167053));
     }
+    SimpleUIUtil.a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, a().getWindow());
   }
   
-  private void q()
+  private void p()
   {
     if (this.jdField_a_of_type_MqqAppAppRuntime != null)
     {
       ((ILebaHelperService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ILebaHelperService.class, "multi")).removeLebaListener(this.jdField_a_of_type_ComTencentMobileqqLebaObserverResourcePluginListener);
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy == null) {
-        break label72;
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+      if (localObject != null) {
+        ((LebaMainBizProxy)localObject).h();
+      } else {
+        LebaUtil.a("LebaFrame", "removeObservers", "ThirdParts");
       }
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.h();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager;
+      if (localObject != null)
+      {
+        StudyModeChangeListener localStudyModeChangeListener = this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener;
+        if (localStudyModeChangeListener != null)
+        {
+          ((IStudyModeManager)localObject).unregisterStudyModeChangeListener(localStudyModeChangeListener);
+          return;
+        }
+      }
+      LebaUtil.a("LebaFrame", "removeObservers", "StudyModeManager");
     }
-    while ((this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager != null) && (this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener != null))
+  }
+  
+  private void r()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager.unregisterStudyModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener);
-      return;
-      label72:
-      LebaUtil.a("LebaFrame", "removeObservers", "ThirdParts");
+      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView = ((FPSXListView)a(2131369924));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369914));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView;
+      if (localObject != null)
+      {
+        ((FPSXListView)localObject).setActTAG("actFPSLeba");
+        this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.setReportType(2);
+        this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.setNeedCheckSpringback(true);
+        this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.setOverscrollHeader(a().getDrawable(2130850581));
+        this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.setOnScrollListener(this);
+        if (a() == null) {
+          localObject = null;
+        } else {
+          localObject = a().findViewById(16908307);
+        }
+        if (localObject != null) {
+          this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.setPadding(0, 0, 0, ((View)localObject).getHeight());
+        }
+      }
+      else
+      {
+        return;
+      }
     }
-    LebaUtil.a("LebaFrame", "removeObservers", "StudyModeManager");
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(a()).inflate(2131561141, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView, false);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+      if (localObject != null) {
+        ((LebaMainBizProxy)localObject).a(this.jdField_a_of_type_AndroidViewView);
+      } else {
+        LebaUtil.a("LebaFrame", "initView", "ThirdParts");
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController != null)
+    {
+      localObject = new InitViewParam();
+      ((InitViewParam)localObject).jdField_a_of_type_MqqAppAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+      ((InitViewParam)localObject).jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+      ((InitViewParam)localObject).jdField_a_of_type_AndroidContentContext = a();
+      ((InitViewParam)localObject).jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView = this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView;
+      ((InitViewParam)localObject).jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView;
+      ((InitViewParam)localObject).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaItemListener = this;
+      this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController.a((InitViewParam)localObject);
+    }
+    k();
   }
   
   private void s()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView = ((FPSXListView)a(2131370256));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131370246));
-      if (this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.setActTAG("actFPSLeba");
-        this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.setReportType(2);
-        this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.setNeedCheckSpringback(true);
-        this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.setOverscrollHeader(a().getDrawable(2130850655));
-        this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.setOnScrollListener(this);
-      }
-    }
-    else
-    {
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_AndroidViewView == null)
-      {
-        this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(a()).inflate(2131561298, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView, false);
-        if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy == null) {
-          break label231;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.a(this.jdField_a_of_type_AndroidViewView);
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController != null)
-      {
-        InitViewParam localInitViewParam = new InitViewParam();
-        localInitViewParam.jdField_a_of_type_MqqAppAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
-        localInitViewParam.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-        localInitViewParam.jdField_a_of_type_AndroidContentContext = a();
-        localInitViewParam.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView = this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView;
-        localInitViewParam.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView;
-        localInitViewParam.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaItemListener = this;
-        this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController.a(localInitViewParam);
-      }
-      i();
-      return;
-      label231:
-      LebaUtil.a("LebaFrame", "initView", "ThirdParts");
-    }
-  }
-  
-  private void t()
   {
     ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "trends_tab", "click_tt_right", 0, 0, "", "", "", "");
     ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick("150000");
@@ -226,52 +237,73 @@ public class Leba
     LebaUtil.a(a(), this.jdField_a_of_type_MqqAppAppRuntime);
   }
   
-  private void u()
+  private void t()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.b();
-    }
-    for (;;)
-    {
-      v();
-      return;
+    LebaMainBizProxy localLebaMainBizProxy = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localLebaMainBizProxy != null) {
+      localLebaMainBizProxy.b();
+    } else {
       LebaUtil.a("LebaFrame", "updateRedFlag", "ThirdParts");
     }
+    u();
   }
   
-  private void v()
+  private void u()
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime == null) {
-      QLog.i("LebaFrame", 1, "updateIconEntryRedTouch app == null");
-    }
-    IRedTouchManager localIRedTouchManager;
-    BusinessInfoCheckUpdate.AppInfo localAppInfo;
-    do
+    if (this.jdField_a_of_type_MqqAppAppRuntime == null)
     {
-      do
-      {
-        return;
-      } while (QQTheme.e());
-      localIRedTouchManager = (IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "");
-      localAppInfo = localIRedTouchManager.getAppInfoByPath("150000");
-    } while (this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch == null);
-    this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.b(53).a().a(localAppInfo);
+      QLog.i("LebaFrame", 1, "updateIconEntryRedTouch app == null");
+      return;
+    }
+    if (QQTheme.f()) {
+      return;
+    }
+    IRedTouchManager localIRedTouchManager = (IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "");
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = localIRedTouchManager.getAppInfoByPath("150000");
+    RedTouch localRedTouch = this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
+    if (localRedTouch == null) {
+      return;
+    }
+    localRedTouch.b(53).a().a(localAppInfo);
     localIRedTouchManager.onReportRedPointExposure(localAppInfo);
   }
   
-  public void E()
+  protected void D()
   {
-    super.E();
+    super.D();
   }
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559431, null);
+    this.jdField_b_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559306, null);
     this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController = new LebaController();
     return this.jdField_b_of_type_AndroidViewView;
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  protected String a()
+  {
+    return HardCodeUtil.a(2131719445);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    i();
+    Leba.RealLebaProxy localRealLebaProxy = new Leba.RealLebaProxy();
+    localRealLebaProxy.a = this;
+    LebaMainBizProxy localLebaMainBizProxy = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localLebaMainBizProxy != null) {
+      localLebaMainBizProxy.a(localRealLebaProxy);
+    } else {
+      LebaUtil.a("LebaFrame", "onCreate", "ThirdParts");
+    }
+    o();
+    ((ViewStub)a(2131378001)).setOnInflateListener(this);
+    ((CommonLoadingView)a(2131365016)).setOnFirstDrawListener(this);
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+  }
+  
+  protected void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.a(paramInt1, paramInt2, paramIntent);
   }
@@ -281,9 +313,10 @@ public class Leba
     if (!c()) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null)
+    LebaMainBizProxy localLebaMainBizProxy = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localLebaMainBizProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.a(paramView, paramLebaViewItem, paramLebaClickReportInfo);
+      localLebaMainBizProxy.a(paramView, paramLebaViewItem, paramLebaClickReportInfo);
       return;
     }
     LebaUtil.a("LebaFrame", "onPluginClick", "ThirdParts");
@@ -305,19 +338,20 @@ public class Leba
       localDC03309ReportItem.d = String.valueOf(paramLebaClickReportInfo.b);
       localDC03309ReportItem.e = String.valueOf(paramLebaClickReportInfo.c);
       localDC03309ReportItem.f = String.valueOf(paramLebaClickReportInfo.d);
-      localDC03309ReportItem.g = ThemeUtil.a();
-      if (d()) {}
-      for (paramLebaClickReportInfo = "1";; paramLebaClickReportInfo = "2")
-      {
-        localDC03309ReportItem.h = paramLebaClickReportInfo;
-        EXReportController.a(this.jdField_a_of_type_MqqAppAppRuntime, localDC03309ReportItem);
-        return;
+      localDC03309ReportItem.g = ThemeUtil.getCurrentThemeId();
+      if (d()) {
+        paramLebaClickReportInfo = "1";
+      } else {
+        paramLebaClickReportInfo = "2";
       }
+      localDC03309ReportItem.h = paramLebaClickReportInfo;
+      EXReportController.a(this.jdField_a_of_type_MqqAppAppRuntime, localDC03309ReportItem);
+      return;
     }
     ReportController.a(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "trends_tab", "Clk_plug_in", 0, 0, String.valueOf(paramLebaClickReportInfo.jdField_a_of_type_Long), String.valueOf(paramLebaClickReportInfo.jdField_a_of_type_Int), String.valueOf(paramLebaClickReportInfo.b), "");
   }
   
-  public void a(Constants.LogoutReason paramLogoutReason)
+  protected void a(Constants.LogoutReason paramLogoutReason)
   {
     super.a(paramLogoutReason);
     if (QLog.isColorLevel()) {
@@ -325,43 +359,254 @@ public class Leba
     }
   }
   
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("leba.java onResume");
+      ((StringBuilder)localObject).append(LebaShowListManager.jdField_a_of_type_Int);
+      QLog.i("LebaFrame", 2, ((StringBuilder)localObject).toString());
+    }
+    LebaWebPreloadHelper.a(true);
+    AbstractGifImage.resumeAll();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localObject != null) {
+      ((LebaMainBizProxy)localObject).a(paramBoolean);
+    } else {
+      LebaUtil.a("LebaFrame", "onResume", "ThirdParts");
+    }
+    ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).residenceReport(System.currentTimeMillis());
+    if ((this.jdField_a_of_type_Boolean) && ((LebaShowListManager.jdField_a_of_type_Int & 0x4) == 0))
+    {
+      if (LebaShowListManager.jdField_a_of_type_Int > 0)
+      {
+        localObject = new ArrayList();
+        LebaUtil.a((List)localObject, LebaShowListManager.a().a(this.jdField_a_of_type_MqqAppAppRuntime));
+        List localList = this.jdField_a_of_type_JavaUtilList;
+        if (localList != null)
+        {
+          localList.clear();
+          this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+          localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController;
+          if (localObject != null)
+          {
+            ((LebaController)localObject).b();
+            t();
+          }
+        }
+        LebaShowListManager.jdField_a_of_type_Int = 0;
+      }
+    }
+    else {
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(11340002, 200L);
+    }
+    u();
+    m();
+    if (AppSetting.d)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(true);
+      this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(a(2131691126));
+      localObject = a(2131693876);
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription((CharSequence)localObject);
+      a().setTitle(a(2131693876));
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController;
+    if (localObject != null) {
+      ((LebaController)localObject).a();
+    }
+    ((IVasService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IVasService.class, "")).getTianshuWebManager().setTraceInfoOfLastClick("{}");
+    ApngImage.playByTag(4);
+    ((ILebaHelperService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ILebaHelperService.class, "multi")).checkModleAndRefesh();
+  }
+  
   public void a(boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.b(paramBoolean);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new Leba.3(this, paramBoolean, paramRedTypeInfo), 150L);
-      return;
+    LebaMainBizProxy localLebaMainBizProxy = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localLebaMainBizProxy != null) {
+      localLebaMainBizProxy.b(paramBoolean);
+    } else {
       LebaUtil.a("LebaFrame", "onSwitchToLeba", "ThirdParts");
     }
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new Leba.3(this, paramBoolean, paramRedTypeInfo), 150L);
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (this.w)
+    Object localObject;
+    if (this.u)
     {
-      ArrayList localArrayList = new ArrayList();
-      LebaUtil.a(localArrayList, LebaShowListManager.a().a(this.jdField_a_of_type_MqqAppAppRuntime));
-      b(new Leba.8(this, localArrayList));
+      localObject = new ArrayList();
+      LebaUtil.a((List)localObject, LebaShowListManager.a().a(this.jdField_a_of_type_MqqAppAppRuntime));
+      b(new Leba.8(this, (List)localObject));
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("LebaFrame", 2, "onGameCenterMsgReceive, " + this.w);
-      }
-      return;
       LebaShowListManager.jdField_a_of_type_Int |= 0x2;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGameCenterMsgReceive, ");
+      ((StringBuilder)localObject).append(this.u);
+      QLog.i("LebaFrame", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
-  public String a_()
+  public void ab_()
   {
-    return HardCodeUtil.a(2131719721);
+    ApngImage.pauseByTag(4);
+    super.ab_();
+    LebaWebPreloadHelper.a(false);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView;
+    if (localObject1 != null) {
+      ((FPSXListView)localObject1).b();
+    }
+    localObject1 = new LeabOnPauseInfo();
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localObject2 != null)
+    {
+      ((LebaMainBizProxy)localObject2).d();
+      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.a((LeabOnPauseInfo)localObject1);
+    }
+    else
+    {
+      LebaUtil.a("LebaFrame", "onPause", "ThirdParts");
+    }
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController;
+    if (localObject2 != null) {
+      ((LebaController)localObject2).a(this.jdField_a_of_type_MqqAppAppRuntime, ((LeabOnPauseInfo)localObject1).jdField_a_of_type_Int, ((LeabOnPauseInfo)localObject1).jdField_a_of_type_Boolean, ((LeabOnPauseInfo)localObject1).b);
+    }
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new Leba.2(this), 500L);
+    if (QLog.isColorLevel()) {
+      QLog.i("LebaFrame", 2, "leba.java onPause");
+    }
   }
   
-  public void b()
+  public void b(boolean paramBoolean)
+  {
+    try
+    {
+      r();
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("leba fillData->initLebaView exception:");
+      localStringBuilder.append(localException);
+      QLog.e("LebaFrame", 1, localStringBuilder.toString(), localException);
+    }
+    Object localObject = (ILebaHelperService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ILebaHelperService.class, "multi");
+    ((ILebaHelperService)localObject).initLebaHelper();
+    ((ILebaHelperService)localObject).addLebaListener(this.jdField_a_of_type_ComTencentMobileqqLebaObserverResourcePluginListener);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localObject != null)
+    {
+      ((LebaMainBizProxy)localObject).i();
+      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.c(paramBoolean);
+    }
+    else
+    {
+      LebaUtil.a("LebaFrame", "fillData", "ThirdParts");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager != null)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener == null) {
+        this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener = new Leba.MyStudyModeChangeListener(this);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager.registerStudyModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener);
+      return;
+    }
+    LebaUtil.a("LebaFrame", "fillData", "StudyModeManager");
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (QLog.isColorLevel()) {
+      QLog.i("LebaFrame", 2, "onStop");
+    }
+  }
+  
+  public boolean c()
+  {
+    FPSXListView localFPSXListView = this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView;
+    if (localFPSXListView == null) {
+      return true;
+    }
+    boolean bool = this.d;
+    if (bool)
+    {
+      this.d = false;
+      localFPSXListView.postDelayed(new Leba.7(this), 1000L);
+      return bool;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LebaFrame", 2, "clickAction is dismiss,click too frequently.");
+    }
+    return bool;
+  }
+  
+  protected void d()
+  {
+    p();
+    LebaMainBizProxy localLebaMainBizProxy = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localLebaMainBizProxy != null) {
+      localLebaMainBizProxy.j();
+    } else {
+      LebaUtil.a("LebaFrame", "onDestroy", "ThirdParts");
+    }
+    super.d();
+  }
+  
+  public boolean d()
+  {
+    LebaController localLebaController = this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController;
+    return (localLebaController != null) && (localLebaController.a() == 1);
+  }
+  
+  protected void f()
+  {
+    super.f();
+    m();
+    if (QLog.isColorLevel()) {
+      QLog.i("LebaFrame", 2, "onAccountChanged");
+    }
+    LebaMainBizProxy localLebaMainBizProxy = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localLebaMainBizProxy != null) {
+      localLebaMainBizProxy.k();
+    } else {
+      LebaUtil.a("LebaFrame", "onAccountChanged", "ThirdParts");
+    }
+    LebaShowListManager.a().a();
+    t();
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.post(new Leba.1(this));
+  }
+  
+  protected void h()
+  {
+    super.h();
+    p();
+    LebaMainBizProxy localLebaMainBizProxy = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localLebaMainBizProxy != null)
+    {
+      localLebaMainBizProxy.c();
+      return;
+    }
+    LebaUtil.a("LebaFrame", "onBeforeAccountChanged", "ThirdParts");
+  }
+  
+  public void i()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaRichApi == null) {
       this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaRichApi = ((ILebaRichApi)QRoute.api(ILebaRichApi.class));
@@ -371,369 +616,142 @@ public class Leba
     }
   }
   
-  public void b(boolean paramBoolean)
-  {
-    super.b(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaFrame", 2, "leba.java onResume" + LebaShowListManager.jdField_a_of_type_Int);
-    }
-    LebaWebPreloadHelper.a(true);
-    AbstractGifImage.resumeAll();
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.a(paramBoolean);
-      ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).residenceReport(System.currentTimeMillis());
-      if ((this.jdField_a_of_type_Boolean) && ((LebaShowListManager.jdField_a_of_type_Int & 0x4) == 0)) {
-        break label263;
-      }
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(11340002, 200L);
-    }
-    for (;;)
-    {
-      v();
-      m();
-      Object localObject;
-      if (AppSetting.d)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(true);
-        this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(a(2131691205));
-        localObject = a(2131693920);
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription((CharSequence)localObject);
-        a().setTitle(a(2131693920));
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController.a();
-      }
-      ((IVasService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IVasService.class, "")).getTianshuWebManager().a("{}");
-      ApngImage.playByTag(4);
-      ((ILebaHelperService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ILebaHelperService.class, "multi")).checkModleAndRefesh();
-      return;
-      LebaUtil.a("LebaFrame", "onResume", "ThirdParts");
-      break;
-      label263:
-      if (LebaShowListManager.jdField_a_of_type_Int > 0)
-      {
-        localObject = new ArrayList();
-        LebaUtil.a((List)localObject, LebaShowListManager.a().a(this.jdField_a_of_type_MqqAppAppRuntime));
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          this.jdField_a_of_type_JavaUtilList.clear();
-          this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
-          if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController != null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController.b();
-            u();
-          }
-        }
-        LebaShowListManager.jdField_a_of_type_Int = 0;
-      }
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.post(new Leba.1(this));
-  }
-  
-  public boolean c()
-  {
-    boolean bool1;
-    if (this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView == null) {
-      bool1 = true;
-    }
-    boolean bool2;
-    do
-    {
-      return bool1;
-      bool2 = this.d;
-      if (this.d)
-      {
-        this.d = false;
-        this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.postDelayed(new Leba.7(this), 1000L);
-        return bool2;
-      }
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("LebaFrame", 2, "clickAction is dismiss,click too frequently.");
-    return bool2;
-  }
-  
-  public void d()
-  {
-    super.d();
-    q();
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.c();
-      return;
-    }
-    LebaUtil.a("LebaFrame", "onBeforeAccountChanged", "ThirdParts");
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController != null) && (this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController.a() == 1);
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    try
-    {
-      s();
-      ILebaHelperService localILebaHelperService = (ILebaHelperService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ILebaHelperService.class, "multi");
-      localILebaHelperService.initLebaHelper();
-      localILebaHelperService.addLebaListener(this.jdField_a_of_type_ComTencentMobileqqLebaObserverResourcePluginListener);
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.i();
-        this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.c(paramBoolean);
-        if (this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager == null) {
-          break label144;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener == null) {
-          this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener = new Leba.MyStudyModeChangeListener(this);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager.registerStudyModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("LebaFrame", 1, "leba fillData->initLebaView exception:" + localException, localException);
-        continue;
-        LebaUtil.a("LebaFrame", "fillData", "ThirdParts");
-      }
-      label144:
-      LebaUtil.a("LebaFrame", "fillData", "StudyModeManager");
-    }
-  }
-  
-  public boolean e_()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void f()
-  {
-    super.f();
-    b();
-    Leba.RealLebaProxy localRealLebaProxy = new Leba.RealLebaProxy();
-    localRealLebaProxy.a = this;
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.a(localRealLebaProxy);
-    }
-    for (;;)
-    {
-      p();
-      ((ViewStub)a(2131378609)).setOnInflateListener(this);
-      ((CommonLoadingView)a(2131365136)).setOnFirstDrawListener(this);
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      return;
-      LebaUtil.a("LebaFrame", "onCreate", "ThirdParts");
-    }
-  }
-  
-  void g()
+  void j()
   {
     if (QLog.isColorLevel()) {
       QLog.i("LebaFrame", 2, "refreshLebaConfig. begin.");
     }
     ThreadManager.post(new Leba.4(this), 10, null, false);
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null)
+    LebaMainBizProxy localLebaMainBizProxy = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localLebaMainBizProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.g();
+      localLebaMainBizProxy.g();
       return;
     }
     LebaUtil.a("LebaFrame", "refreshLebaConfig", "ThirdParts");
   }
   
-  public void h()
+  void k()
   {
-    super.h();
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaFrame", 2, "onStop");
-    }
-  }
-  
-  void i()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaRichApi == null) {
+    ILebaRichApi localILebaRichApi = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaRichApi;
+    if (localILebaRichApi == null)
+    {
       LebaUtil.a("LebaFrame", "setThemeDiyBgLeba", "RichApi");
-    }
-    do
-    {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaRichApi.applyThemeBg(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidWidgetImageView, 2130838980, "-leba-");
-    } while (!ThemeUtil.c());
-    this.c = true;
-  }
-  
-  public void j()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaFrame", 2, "onPostThemeChanged");
     }
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(null);
-    }
-    i();
-    if (ThemeUtil.a(false))
-    {
-      a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, true);
-      a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, true);
-      a(this.jdField_b_of_type_AndroidWidgetRelativeLayout, true);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      SimpleUIUtil.a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, a().getWindow());
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(11340002, 0L);
-      m();
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController.c();
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy == null) {
-        break label196;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.e();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        TextHook.updateFont(this.jdField_a_of_type_AndroidViewView);
-      }
-      return;
-      a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, false);
-      a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850507);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131167030));
-      break;
-      label196:
-      LebaUtil.a("LebaFrame", "onPostThemeChanged", "ThirdParts");
-    }
-  }
-  
-  public void k()
-  {
-    q();
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.j();
-    }
-    for (;;)
-    {
-      super.k();
-      return;
-      LebaUtil.a("LebaFrame", "onDestroy", "ThirdParts");
+    localILebaRichApi.applyThemeBg(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidWidgetImageView, 2130838740, "-leba-");
+    if (ThemeUtil.isNowThemeIsAnimate()) {
+      this.c = true;
     }
   }
   
   public void l()
   {
-    super.l();
-    m();
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaFrame", 2, "onAccountChanged");
+    QLog.i("LebaFrame", 1, "onPostThemeChanged");
+    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localObject != null) {
+      ((ImageView)localObject).setTag(null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.k();
-    }
-    for (;;)
+    k();
+    if (ThemeUtil.isDefaultOrDIYTheme(false))
     {
-      LebaShowListManager.a().a();
-      u();
-      return;
-      LebaUtil.a("LebaFrame", "onAccountChanged", "ThirdParts");
+      a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, true);
+      a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, true);
+      a(this.jdField_b_of_type_AndroidWidgetRelativeLayout, true);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+    }
+    else
+    {
+      a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, false);
+      a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850433);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131167053));
+    }
+    SimpleUIUtil.a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, a().getWindow());
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(11340002, 0L);
+    m();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController;
+    if (localObject != null) {
+      ((LebaController)localObject).c();
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localObject != null) {
+      ((LebaMainBizProxy)localObject).e();
+    } else {
+      LebaUtil.a("LebaFrame", "onPostThemeChanged", "ThirdParts");
+    }
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {
+      TextHook.updateFont((View)localObject);
     }
   }
   
   public void m()
   {
-    boolean bool2;
     if (this.jdField_b_of_type_AndroidWidgetImageView != null)
     {
-      bool2 = QQTheme.e();
-      if ((this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager.getStudyModeSwitch())) {
-        break label86;
+      boolean bool2 = QQTheme.f();
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqStudymodeApiIStudyModeManager;
+      boolean bool1;
+      if ((localObject != null) && (((IStudyModeManager)localObject).getStudyModeSwitch())) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-    }
-    label86:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      QLog.i("leba_study", 1, "refreshMgrBtn isSimpleUI=" + bool2 + ",isStudyMode=" + bool1);
-      if ((!bool2) && (!bool1)) {
-        break;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("refreshMgrBtn isSimpleUI=");
+      ((StringBuilder)localObject).append(bool2);
+      ((StringBuilder)localObject).append(",isStudyMode=");
+      ((StringBuilder)localObject).append(bool1);
+      QLog.i("leba_study", 1, ((StringBuilder)localObject).toString());
+      if ((!bool2) && (!bool1))
+      {
+        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        return;
       }
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-      return;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
   public void n()
-  {
-    ApngImage.pauseByTag(4);
-    super.n();
-    LebaWebPreloadHelper.a(false);
-    if (this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView.b();
-    }
-    LeabOnPauseInfo localLeabOnPauseInfo = new LeabOnPauseInfo();
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.d();
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.a(localLeabOnPauseInfo);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController.a(this.jdField_a_of_type_MqqAppAppRuntime, localLeabOnPauseInfo.jdField_a_of_type_Int, localLeabOnPauseInfo.jdField_a_of_type_Boolean, localLeabOnPauseInfo.b);
-      }
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new Leba.2(this), 500L);
-      if (QLog.isColorLevel()) {
-        QLog.i("LebaFrame", 2, "leba.java onPause");
-      }
-      return;
-      LebaUtil.a("LebaFrame", "onPause", "ThirdParts");
-    }
-  }
-  
-  public void o()
   {
     QLog.d("Leba", 1, "onLebaTabChange");
     LebaWebPreloadHelper.a(true);
     if (this.jdField_a_of_type_MqqAppAppRuntime != null)
     {
-      LebaHelper localLebaHelper = (LebaHelper)((ILebaHelperService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ILebaHelperService.class, "multi")).getLebaHelper();
-      if (localLebaHelper == null) {
-        break label71;
+      localObject = (LebaHelper)((ILebaHelperService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ILebaHelperService.class, "multi")).getLebaHelper();
+      if (localObject != null)
+      {
+        ((LebaHelper)localObject).c();
+        ((LebaHelper)localObject).f();
       }
-      localLebaHelper.c();
-      localLebaHelper.f();
+      else
+      {
+        QLog.i("LebaFrame", 1, "onLebaTabChange lebaHelper == null");
+      }
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaMainBizProxy.f();
+      ((LebaMainBizProxy)localObject).f();
       return;
-      label71:
-      QLog.i("LebaFrame", 1, "onLebaTabChange lebaHelper == null");
     }
     LebaUtil.a("LebaFrame", "onLebaTabChange", "ThirdParts");
   }
   
   public void onClick(View paramView)
   {
-    if (!c()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      t();
+    if (c()) {
+      s();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onInflate(ViewStub paramViewStub, View paramView)
   {
-    e(false);
+    b(false);
     if (!this.jdField_a_of_type_Boolean) {
-      b(true);
+      a(true);
     }
     this.jdField_a_of_type_Boolean = true;
   }
@@ -742,34 +760,35 @@ public class Leba
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramAbsListView == null) {}
-    do
-    {
+    if (paramAbsListView == null) {
       return;
-      if (this.c)
+    }
+    if (this.c)
+    {
+      if (paramInt != 0)
       {
-        if (paramInt != 0)
-        {
-          ApngImage.pauseByTag(4);
-          if (QLog.isColorLevel()) {
-            QLog.e("LebaFrame", 2, "onScrollStateChanged not SCROLL_STATE_IDLE");
-          }
-        }
-        if (paramInt == 0)
-        {
-          ApngImage.playByTag(4);
-          if (QLog.isColorLevel()) {
-            QLog.e("LebaFrame", 2, "onScrollStateChanged SCROLL_STATE_IDLE");
-          }
+        ApngImage.pauseByTag(4);
+        if (QLog.isColorLevel()) {
+          QLog.e("LebaFrame", 2, "onScrollStateChanged not SCROLL_STATE_IDLE");
         }
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController == null);
-    this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController.a(paramAbsListView, paramInt);
+      if (paramInt == 0)
+      {
+        ApngImage.playByTag(4);
+        if (QLog.isColorLevel()) {
+          QLog.e("LebaFrame", 2, "onScrollStateChanged SCROLL_STATE_IDLE");
+        }
+      }
+    }
+    LebaController localLebaController = this.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController;
+    if (localLebaController != null) {
+      localLebaController.a(paramAbsListView, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.Leba
  * JD-Core Version:    0.7.0.1
  */

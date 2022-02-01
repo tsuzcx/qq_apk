@@ -72,19 +72,24 @@ public class OverScrollRecyclerView$OverScrollStateManager
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-      return false;
-    case 2: 
-      return this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$IDecoratorState.a(paramMotionEvent);
+    int i = paramMotionEvent.getAction();
+    if (i != 1) {
+      if (i != 2)
+      {
+        if (i != 3) {
+          return false;
+        }
+      }
+      else {
+        return this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$IDecoratorState.a(paramMotionEvent);
+      }
     }
     return this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView$IDecoratorState.b(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OverScrollRecyclerView.OverScrollStateManager
  * JD-Core Version:    0.7.0.1
  */

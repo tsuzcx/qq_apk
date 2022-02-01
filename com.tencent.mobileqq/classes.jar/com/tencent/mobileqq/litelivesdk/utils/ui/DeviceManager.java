@@ -13,36 +13,32 @@ import android.view.Window;
 
 public final class DeviceManager
 {
-  private static float a = 0.0F;
+  private static float a;
   
   public static int a(@NonNull Activity paramActivity)
   {
-    int k = 0;
     ViewGroup localViewGroup = (ViewGroup)paramActivity.getWindow().getDecorView();
-    int j = k;
-    int i;
-    if (localViewGroup != null) {
-      i = 0;
-    }
-    for (;;)
+    if (localViewGroup != null)
     {
-      j = k;
-      if (i < localViewGroup.getChildCount())
+      int i = 0;
+      while (i < localViewGroup.getChildCount())
       {
         if ((localViewGroup.getChildAt(i).getId() != -1) && ("navigationBarBackground".equals(paramActivity.getResources().getResourceEntryName(localViewGroup.getChildAt(i).getId()))) && (localViewGroup.getChildAt(i).getVisibility() == 0)) {
-          j = localViewGroup.getChildAt(i).getLayoutParams().height;
+          return localViewGroup.getChildAt(i).getLayoutParams().height;
         }
+        i += 1;
       }
-      else {
-        return j;
-      }
-      i += 1;
     }
+    return 0;
   }
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5D);
+    double d1 = paramContext.getResources().getDisplayMetrics().density;
+    double d2 = paramFloat;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    return (int)(d2 * d1 + 0.5D);
   }
   
   public static int a(Context paramContext, int paramInt)
@@ -64,7 +60,7 @@ public final class DeviceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.ui.DeviceManager
  * JD-Core Version:    0.7.0.1
  */

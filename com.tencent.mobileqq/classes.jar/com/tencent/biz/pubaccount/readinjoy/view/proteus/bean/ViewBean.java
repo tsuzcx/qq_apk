@@ -19,10 +19,11 @@ public class ViewBean
   
   private static void addExtraData(JSONObject paramJSONObject, Map<String, Object> paramMap, String paramString)
   {
-    if ((paramJSONObject == null) || (paramMap == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
+    if ((paramJSONObject != null) && (paramMap != null))
     {
-      return;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
       Iterator localIterator = paramJSONObject.keys();
       while (localIterator.hasNext())
       {
@@ -38,25 +39,19 @@ public class ViewBean
   {
     Object localObject1 = paramJSONObject1.keys();
     bool1 = false;
-    for (;;)
+    while (((Iterator)localObject1).hasNext())
     {
-      if (((Iterator)localObject1).hasNext())
+      String str = (String)((Iterator)localObject1).next();
+      try
       {
-        String str = (String)((Iterator)localObject1).next();
-        try
-        {
-          boolean bool2 = this.valueBean.putTrueDynamicValue(str, paramJSONObject1.get(str), false);
-          if (bool2) {
-            bool1 = true;
-          }
+        boolean bool2 = this.valueBean.putTrueDynamicValue(str, paramJSONObject1.get(str), false);
+        if (bool2) {
+          bool1 = true;
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
-        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
     if (paramJSONObject2 != null) {
@@ -110,45 +105,39 @@ public class ViewBean
       }
     }
     bindValueWithoutId(paramJSONObject1, paramJSONObject2);
-    boolean bool2;
-    int i;
-    boolean bool1;
-    ViewBean localViewBean;
     if (this.children != null)
     {
-      bool2 = this.valueBean.isVisibleDependeOnChilds();
+      boolean bool2 = this.valueBean.isVisibleDependeOnChilds();
       ViewBean[] arrayOfViewBean = this.children;
       int j = arrayOfViewBean.length;
-      i = 0;
+      int i = 0;
       localObject1 = null;
-      bool1 = false;
-      if (i < j)
+      boolean bool1 = false;
+      while (i < j)
       {
-        localViewBean = arrayOfViewBean[i];
-        if (localViewBean.valueBean.isVisibleDependeOnChilds()) {
-          break label437;
+        ViewBean localViewBean = arrayOfViewBean[i];
+        String str;
+        if (!localViewBean.valueBean.isVisibleDependeOnChilds()) {
+          str = localViewBean.valueBean.getVisibleDependeOnBrotherViewId();
+        } else {
+          str = null;
         }
-      }
-    }
-    label437:
-    for (String str = localViewBean.valueBean.getVisibleDependeOnBrotherViewId();; str = null)
-    {
-      localObject2 = localObject1;
-      if (str != null)
-      {
         localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = new HashMap();
+        if (str != null)
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new HashMap();
+          }
+          ((Map)localObject2).put(str, localViewBean);
         }
-        ((Map)localObject2).put(str, localViewBean);
+        localViewBean.bindData(paramJSONObject1, paramJSONObject2, paramMap);
+        if (localViewBean.valueBean.isVisible()) {
+          bool1 = true;
+        }
+        i += 1;
+        localObject1 = localObject2;
       }
-      localViewBean.bindData(paramJSONObject1, paramJSONObject2, paramMap);
-      if (localViewBean.valueBean.isVisible()) {
-        bool1 = true;
-      }
-      i += 1;
-      localObject1 = localObject2;
-      break;
       if (bool2) {
         setVisible(bool1);
       }
@@ -171,14 +160,13 @@ public class ViewBean
           }
         }
       }
-      if (this.valueBean.isVisible())
-      {
-        paramMap.put(this.viewId, this);
-        return;
-      }
-      paramMap.remove(this.viewId);
+    }
+    if (this.valueBean.isVisible())
+    {
+      paramMap.put(this.viewId, this);
       return;
     }
+    paramMap.remove(this.viewId);
   }
   
   public ViewBean clone()
@@ -186,16 +174,22 @@ public class ViewBean
     ViewBean localViewBean = new ViewBean();
     localViewBean.viewId = this.viewId;
     localViewBean.viewType = this.viewType;
-    if (this.valueBean != null) {
-      localViewBean.valueBean = this.valueBean.clone();
+    Object localObject = this.valueBean;
+    if (localObject != null) {
+      localViewBean.valueBean = ((ValueBean)localObject).clone();
     }
-    if (this.children != null)
+    localObject = this.children;
+    if (localObject != null)
     {
-      localViewBean.children = new ViewBean[this.children.length];
+      localViewBean.children = new ViewBean[localObject.length];
       int i = 0;
-      while (i < this.children.length)
+      for (;;)
       {
-        localViewBean.children[i] = this.children[i].clone();
+        localObject = this.children;
+        if (i >= localObject.length) {
+          break;
+        }
+        localViewBean.children[i] = localObject[i].clone();
         i += 1;
       }
     }
@@ -212,9 +206,9 @@ public class ViewBean
   
   public ViewBean findViewFromChild(String paramString)
   {
-    if (this.children != null)
+    ViewBean[] arrayOfViewBean = this.children;
+    if (arrayOfViewBean != null)
     {
-      ViewBean[] arrayOfViewBean = this.children;
       int j = arrayOfViewBean.length;
       int i = 0;
       while (i < j)
@@ -266,7 +260,7 @@ public class ViewBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean
  * JD-Core Version:    0.7.0.1
  */

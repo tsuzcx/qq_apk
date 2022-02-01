@@ -1,11 +1,11 @@
 package com.tencent.biz.webviewbase;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class WebAIOController$3
-  extends Client.OnRemoteRespObserver
+  extends OnRemoteRespObserver
 {
   WebAIOController$3(WebAIOController paramWebAIOController) {}
   
@@ -39,7 +39,7 @@ class WebAIOController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewbase.WebAIOController.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,11 @@
 package com.tencent.hippy.qq.update;
 
+import com.tencent.hippy.qq.api.PackageUpdateListener;
+
 class HippyQQUpdateManager$2
   implements Runnable
 {
-  HippyQQUpdateManager$2(HippyQQUpdateManager paramHippyQQUpdateManager, String paramString1, String paramString2, HippyQQUpdateManager.PackageUpdateListener paramPackageUpdateListener) {}
+  HippyQQUpdateManager$2(HippyQQUpdateManager paramHippyQQUpdateManager, String paramString1, String paramString2, PackageUpdateListener paramPackageUpdateListener) {}
   
   public void run()
   {
@@ -12,7 +14,7 @@ class HippyQQUpdateManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyQQUpdateManager.2
  * JD-Core Version:    0.7.0.1
  */

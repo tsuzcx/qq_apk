@@ -18,7 +18,7 @@ final class DownloadJSApi$2
     Object localObject = new DownloadJSApi.2.1(this);
     DownloadJSApi.2.2 local2 = new DownloadJSApi.2.2(this);
     LogUtility.b("DownloadJSApi", "dialog create and show");
-    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131691388)).setPositiveButton(2131691386, local2).setNegativeButton(2131691387, (DialogInterface.OnClickListener)localObject).create();
+    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131691310)).setPositiveButton(2131691308, local2).setNegativeButton(2131691309, (DialogInterface.OnClickListener)localObject).create();
     ((Dialog)localObject).setCanceledOnTouchOutside(false);
     if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
       ((Dialog)localObject).show();
@@ -27,7 +27,7 @@ final class DownloadJSApi$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.js.DownloadJSApi.2
  * JD-Core Version:    0.7.0.1
  */

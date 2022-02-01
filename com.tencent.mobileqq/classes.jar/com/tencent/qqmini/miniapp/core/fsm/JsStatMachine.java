@@ -10,7 +10,7 @@ public abstract class JsStatMachine
   public static final Integer EVENT_JS_EVALUATE_FAIL = Integer.valueOf(2);
   public static final Integer EVENT_JS_EVALUATE_SUCC = Integer.valueOf(1);
   protected JsStatMachine.JsStateListener mJsStateListener;
-  public Handler mMainHandler = new Handler(Looper.getMainLooper());
+  protected Handler mMainHandler = new Handler(Looper.getMainLooper());
   
   public abstract void evaluateJs(String paramString1, ValueCallback paramValueCallback, String paramString2);
   
@@ -20,16 +20,17 @@ public abstract class JsStatMachine
     if ((localObject instanceof JsStatMachine.JsState))
     {
       localObject = (JsStatMachine.JsState)localObject;
-      if ((JsStatMachine.JsState.access$000((JsStatMachine.JsState)localObject) != null) && (EVENT_JS_EVALUATE_SUCC == paramInteger)) {
+      if ((JsStatMachine.JsState.access$000((JsStatMachine.JsState)localObject) != null) && (EVENT_JS_EVALUATE_SUCC == paramInteger))
+      {
         setCurrState(JsStatMachine.JsState.access$000((JsStatMachine.JsState)localObject));
+        i = 1;
+        break label46;
       }
     }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        super.sendEvent(paramInteger);
-      }
-      return;
+    int i = 0;
+    label46:
+    if (i == 0) {
+      super.sendEvent(paramInteger);
     }
   }
   
@@ -40,7 +41,7 @@ public abstract class JsStatMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.fsm.JsStatMachine
  * JD-Core Version:    0.7.0.1
  */

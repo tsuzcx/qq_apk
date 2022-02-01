@@ -15,22 +15,28 @@ class ConditionSearchManager$2
     try
     {
       ConditionSearchManager.a(this.this$0, AddressHelper.a(ConditionSearchManager.a(this.this$0), this.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("ConditionSearch.Manager", 2, "updateLocal | doParse cost " + (float)(System.currentTimeMillis() - l) / 1000.0F + " seconds");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateLocal | doParse cost ");
+        localStringBuilder.append((float)(System.currentTimeMillis() - l) / 1000.0F);
+        localStringBuilder.append(" seconds");
+        QLog.d("ConditionSearch.Manager", 2, localStringBuilder.toString());
       }
       ConditionSearchManager.a(this.this$0).runOnUiThread(new ConditionSearchManager.2.1(this));
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ConditionSearch.Manager", 2, "", localOutOfMemoryError);
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearch.Manager", 2, "", localOutOfMemoryError);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -28,13 +28,18 @@ final class ListPresenter$loadFirstPage$1
       ListPresenter.a(this.this$0, paramBoolean2, paramInt1, paramList);
       return;
     }
-    TLog.a("ListPresenter", "loadFirstPage error, errorCode=" + paramInt2 + ", errorMsg= " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadFirstPage error, errorCode=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", errorMsg= ");
+    localStringBuilder.append(paramString);
+    TLog.a("ListPresenter", localStringBuilder.toString());
     ListPresenter.a(this.this$0, paramBoolean2, paramList, paramInt2, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mvp.ListPresenter.loadFirstPage.1
  * JD-Core Version:    0.7.0.1
  */

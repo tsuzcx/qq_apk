@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.profilecard.base.view;
 
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
 
 class AbsProfileHeaderView$2
   implements Runnable
 {
-  AbsProfileHeaderView$2(AbsProfileHeaderView paramAbsProfileHeaderView, int paramInt, ProfileActivity.AllInOne paramAllInOne, String paramString) {}
+  AbsProfileHeaderView$2(AbsProfileHeaderView paramAbsProfileHeaderView, int paramInt, AllInOne paramAllInOne, String paramString) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class AbsProfileHeaderView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView.2
  * JD-Core Version:    0.7.0.1
  */

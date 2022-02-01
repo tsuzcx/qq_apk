@@ -21,9 +21,7 @@ class InputJsPlugin$7
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5) && (paramInt != 6)) {
       return false;
     }
     try
@@ -43,17 +41,14 @@ class InputJsPlugin$7
     }
     catch (JSONException paramTextView)
     {
-      for (;;)
-      {
-        QMLog.e("InputJsPlugin", "onEditorAction callback exception", paramTextView);
-      }
+      QMLog.e("InputJsPlugin", "onEditorAction callback exception", paramTextView);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InputJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

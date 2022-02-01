@@ -26,9 +26,10 @@ public abstract class TroopCreateBaseActivity
   
   void a()
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null)
+    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+    if (localDialog != null)
     {
-      if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+      if (localDialog.isShowing()) {
         this.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
       this.jdField_a_of_type_AndroidAppDialog = null;
@@ -53,15 +54,24 @@ public abstract class TroopCreateBaseActivity
   
   protected void a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null)) {
-      return;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null) {
+        return;
+      }
+      String str = paramString2;
+      if (!TextUtils.isEmpty(paramString2)) {
+        str = paramString2.replace("\"", "\\\"");
+      }
+      paramString2 = new StringBuilder();
+      paramString2.append("javascript:");
+      paramString2.append(paramString1);
+      paramString2.append("(\"");
+      paramString2.append(str);
+      paramString2.append("\")");
+      paramString1 = paramString2.toString();
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString1);
     }
-    String str = paramString2;
-    if (!TextUtils.isEmpty(paramString2)) {
-      str = paramString2.replace("\"", "\\\"");
-    }
-    paramString1 = "javascript:" + paramString1 + "(\"" + str + "\")";
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString1);
   }
   
   protected void b()
@@ -87,11 +97,11 @@ public abstract class TroopCreateBaseActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = getWebView((ViewGroup)null);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setId(2131381863);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setId(2131381075);
     setContentView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView);
     paramBundle = getIntent().getStringExtra("url");
     if (TextUtils.isEmpty(paramBundle)) {
@@ -106,19 +116,18 @@ public abstract class TroopCreateBaseActivity
     try
     {
       this.mRulesFromUrl = Long.parseLong((String)localObject, 10);
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
-      this.leftView.setOnClickListener(new TroopCreateBaseActivity.TopBarBtnClickListener(this, 0, null));
-      return true;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("TroopCreateBaseActivity", 4, "_wv param not found");
-        }
-      }
+      label90:
+      break label90;
     }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TroopCreateBaseActivity", 4, "_wv param not found");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
+    this.leftView.setOnClickListener(new TroopCreateBaseActivity.TopBarBtnClickListener(this, 0, null));
+    return true;
   }
   
   public boolean isWrapContent()
@@ -126,11 +135,12 @@ public abstract class TroopCreateBaseActivity
     return false;
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity$TopBarBtnClickListener != null)
+    TroopCreateBaseActivity.TopBarBtnClickListener localTopBarBtnClickListener = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity$TopBarBtnClickListener;
+    if (localTopBarBtnClickListener != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity$TopBarBtnClickListener.onClick(this.leftView);
+      localTopBarBtnClickListener.onClick(this.leftView);
       return true;
     }
     return false;
@@ -143,14 +153,14 @@ public abstract class TroopCreateBaseActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onReceivedTitle(WebView paramWebView, String paramString)
+  protected void onReceivedTitle(WebView paramWebView, String paramString)
   {
     setTitle(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity
  * JD-Core Version:    0.7.0.1
  */

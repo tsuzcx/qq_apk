@@ -53,11 +53,12 @@ public class SquareRoundImageUtils$SquareRoundColorDrawable
   
   public int getOpacity()
   {
-    switch (this.jdField_a_of_type_Int >>> 24)
+    int i = this.jdField_a_of_type_Int >>> 24;
+    if (i != 0)
     {
-    default: 
-      return -3;
-    case 255: 
+      if (i != 255) {
+        return -3;
+      }
       return -1;
     }
     return -2;
@@ -69,7 +70,7 @@ public class SquareRoundImageUtils$SquareRoundColorDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.SquareRoundImageUtils.SquareRoundColorDrawable
  * JD-Core Version:    0.7.0.1
  */

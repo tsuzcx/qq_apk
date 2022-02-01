@@ -14,18 +14,17 @@ public class ActivateFriendsObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
+    if (paramInt != 110)
     {
-    case 111: 
-    case 112: 
-    case 114: 
-    default: 
-      return;
-    case 113: 
+      if (paramInt != 113)
+      {
+        if (paramInt != 115) {
+          return;
+        }
+        a();
+        return;
+      }
       a(paramBundle.getInt("key_rt_type"));
-      return;
-    case 115: 
-      a();
       return;
     }
     b();
@@ -33,7 +32,7 @@ public class ActivateFriendsObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver
  * JD-Core Version:    0.7.0.1
  */

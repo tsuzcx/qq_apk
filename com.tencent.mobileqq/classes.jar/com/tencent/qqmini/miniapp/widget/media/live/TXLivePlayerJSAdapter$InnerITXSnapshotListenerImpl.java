@@ -15,7 +15,10 @@ public class TXLivePlayerJSAdapter$InnerITXSnapshotListenerImpl
   
   public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    QMLog.e("TXLivePlayerJSAdapter", "InnerITXSnapshotListenerImpl invoke:" + paramMethod.getName());
+    paramObject = new StringBuilder();
+    paramObject.append("InnerITXSnapshotListenerImpl invoke:");
+    paramObject.append(paramMethod.getName());
+    QMLog.e("TXLivePlayerJSAdapter", paramObject.toString());
     if (Object.class.equals(paramMethod.getDeclaringClass())) {
       try
       {
@@ -33,30 +36,26 @@ public class TXLivePlayerJSAdapter$InnerITXSnapshotListenerImpl
       paramObject = (Bitmap)paramArrayOfObject[0];
       if (TXLivePlayerJSAdapter.access$200(this.this$0) != null)
       {
-        if (!this.mNeedCompress) {
-          break label181;
+        if (this.mNeedCompress)
+        {
+          if (paramObject != null)
+          {
+            int i = paramObject.getWidth();
+            int j = paramObject.getHeight();
+            paramMethod = new Matrix();
+            paramMethod.setScale(0.5F, 0.5F);
+            paramMethod = Bitmap.createBitmap(paramObject, 0, 0, i, j, paramMethod, false);
+            TXLivePlayerJSAdapter.access$200(this.this$0).onSnapshot(paramMethod);
+            TXLivePlayerJSAdapter.access$300(this.this$0, paramObject);
+            return null;
+          }
+          TXLivePlayerJSAdapter.access$200(this.this$0).onSnapshot(paramObject);
+          return null;
         }
-        if (paramObject == null) {
-          break label165;
-        }
-        int i = paramObject.getWidth();
-        int j = paramObject.getHeight();
-        paramMethod = new Matrix();
-        paramMethod.setScale(0.5F, 0.5F);
-        paramMethod = Bitmap.createBitmap(paramObject, 0, 0, i, j, paramMethod, false);
-        TXLivePlayerJSAdapter.access$200(this.this$0).onSnapshot(paramMethod);
-        TXLivePlayerJSAdapter.access$300(this.this$0, paramObject);
+        TXLivePlayerJSAdapter.access$200(this.this$0).onSnapshot(paramObject);
       }
     }
-    for (;;)
-    {
-      return null;
-      label165:
-      TXLivePlayerJSAdapter.access$200(this.this$0).onSnapshot(paramObject);
-      continue;
-      label181:
-      TXLivePlayerJSAdapter.access$200(this.this$0).onSnapshot(paramObject);
-    }
+    return null;
   }
   
   public void setNeedCompress(boolean paramBoolean)
@@ -66,7 +65,7 @@ public class TXLivePlayerJSAdapter$InnerITXSnapshotListenerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.live.TXLivePlayerJSAdapter.InnerITXSnapshotListenerImpl
  * JD-Core Version:    0.7.0.1
  */

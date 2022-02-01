@@ -58,40 +58,41 @@ public class ProfileShoppingPhotoInfo
     if (QLog.isColorLevel()) {
       QLog.d("ProfileShoppingPhotoInfo", 2, "func getPhotoInfo begins");
     }
-    for (;;)
+    synchronized (mLock)
     {
-      synchronized (mLock)
+      ProfileShoppingPhotoInfo localProfileShoppingPhotoInfo = (ProfileShoppingPhotoInfo)photoWinCache.get(paramString);
+      if (localProfileShoppingPhotoInfo != null)
       {
-        localProfileShoppingPhotoInfo = (ProfileShoppingPhotoInfo)photoWinCache.get(paramString);
-        if (localProfileShoppingPhotoInfo != null)
+        if (QLog.isColorLevel())
         {
-          paramQQAppInterface = localProfileShoppingPhotoInfo;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ProfileShoppingPhotoInfo", 2, "func getPhotoInfo ends, in cache." + localProfileShoppingPhotoInfo.getPrintInfo());
-            paramQQAppInterface = localProfileShoppingPhotoInfo;
-          }
-          return paramQQAppInterface;
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("func getPhotoInfo ends, in cache.");
+          paramQQAppInterface.append(localProfileShoppingPhotoInfo.getPrintInfo());
+          QLog.d("ProfileShoppingPhotoInfo", 2, paramQQAppInterface.toString());
         }
+        return localProfileShoppingPhotoInfo;
       }
       paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      ProfileShoppingPhotoInfo localProfileShoppingPhotoInfo = (ProfileShoppingPhotoInfo)paramQQAppInterface.find(ProfileShoppingPhotoInfo.class, paramString);
+      ??? = (ProfileShoppingPhotoInfo)paramQQAppInterface.find(ProfileShoppingPhotoInfo.class, paramString);
       paramQQAppInterface.close();
       paramQQAppInterface = mLock;
-      if ((localProfileShoppingPhotoInfo != null) && (paramString != null)) {}
+      if ((??? != null) && (paramString != null)) {}
       try
       {
-        photoWinCache.put(paramString, localProfileShoppingPhotoInfo);
-        paramQQAppInterface = localProfileShoppingPhotoInfo;
-        if (!QLog.isColorLevel()) {
-          continue;
+        photoWinCache.put(paramString, ???);
+        if (QLog.isColorLevel())
+        {
+          if (??? != null) {
+            paramQQAppInterface = ((ProfileShoppingPhotoInfo)???).getPrintInfo();
+          } else {
+            paramQQAppInterface = "";
+          }
+          paramString = new StringBuilder();
+          paramString.append("func getPhotoInfo ends, read from db.");
+          paramString.append(paramQQAppInterface);
+          QLog.d("ProfileShoppingPhotoInfo", 2, paramString.toString());
         }
-        paramQQAppInterface = "";
-        if (localProfileShoppingPhotoInfo != null) {
-          paramQQAppInterface = localProfileShoppingPhotoInfo.getPrintInfo();
-        }
-        QLog.d("ProfileShoppingPhotoInfo", 2, "func getPhotoInfo ends, read from db." + paramQQAppInterface);
-        return localProfileShoppingPhotoInfo;
+        return ???;
       }
       finally {}
     }
@@ -100,80 +101,94 @@ public class ProfileShoppingPhotoInfo
   public static List<ShoppingPhotoItemInfo> parseShoppingPhotoJson(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return localArrayList;
-      try
+    }
+    try
+    {
+      paramString = new JSONObject(paramString).getJSONArray("config_arr");
+      if (paramString != null)
       {
-        paramString = new JSONObject(paramString).getJSONArray("config_arr");
-        if ((paramString != null) && (paramString.length() != 0))
+        if (paramString.length() == 0) {
+          return localArrayList;
+        }
+        int k = paramString.length();
+        int i = 0;
+        while (i < k)
         {
-          int k = paramString.length();
-          int i = 0;
-          while (i < k)
+          localObject = paramString.getJSONObject(i);
+          if (1 == ((JSONObject)localObject).getInt("type"))
           {
-            Object localObject = paramString.getJSONObject(i);
-            if (1 == ((JSONObject)localObject).getInt("type"))
+            localObject = ((JSONObject)localObject).getJSONArray("config");
+            if ((localObject != null) && (((JSONArray)localObject).length() > 0))
             {
-              localObject = ((JSONObject)localObject).getJSONArray("config");
-              if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+              int m = ((JSONArray)localObject).length();
+              int j = 0;
+              while (j < m)
               {
-                int m = ((JSONArray)localObject).length();
-                int j = 0;
-                while (j < m)
-                {
-                  ShoppingPhotoItemInfo localShoppingPhotoItemInfo = new ShoppingPhotoItemInfo();
-                  localShoppingPhotoItemInfo.b = ((JSONArray)localObject).getJSONObject(j).getString("url");
-                  localShoppingPhotoItemInfo.a = ((JSONArray)localObject).getJSONObject(j).getJSONArray("pic_url").getString(0);
-                  localArrayList.add(localShoppingPhotoItemInfo);
-                  j += 1;
-                }
+                ShoppingPhotoItemInfo localShoppingPhotoItemInfo = new ShoppingPhotoItemInfo();
+                localShoppingPhotoItemInfo.b = ((JSONArray)localObject).getJSONObject(j).getString("url");
+                localShoppingPhotoItemInfo.a = ((JSONArray)localObject).getJSONObject(j).getJSONArray("pic_url").getString(0);
+                localArrayList.add(localShoppingPhotoItemInfo);
+                j += 1;
               }
             }
-            i += 1;
           }
-          if (!QLog.isColorLevel()) {}
+          i += 1;
         }
       }
-      catch (Exception paramString) {}
+      return localArrayList;
     }
-    QLog.w("ProfileShoppingPhotoInfo", 2, "parse json err:" + paramString.getMessage());
+    catch (Exception paramString)
+    {
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parse json err:");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        QLog.w("ProfileShoppingPhotoInfo", 2, ((StringBuilder)localObject).toString());
+      }
+    }
     return localArrayList;
   }
   
   public static void savePhotoInfo2DB(ProfileShoppingPhotoInfo paramProfileShoppingPhotoInfo, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileShoppingPhotoInfo", 2, "func savePhotoInfo2DB begins, photoInfo:" + paramProfileShoppingPhotoInfo);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("func savePhotoInfo2DB begins, photoInfo:");
+      ((StringBuilder)localObject).append(paramProfileShoppingPhotoInfo);
+      QLog.d("ProfileShoppingPhotoInfo", 2, ((StringBuilder)localObject).toString());
     }
     if (paramProfileShoppingPhotoInfo == null) {
       return;
     }
     Object localObject = mLock;
     if (paramProfileShoppingPhotoInfo != null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        if (paramProfileShoppingPhotoInfo.uin != null) {
-          photoWinCache.put(paramProfileShoppingPhotoInfo.uin, paramProfileShoppingPhotoInfo);
-        }
-        paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-        if (paramProfileShoppingPhotoInfo.getStatus() == 1000)
-        {
-          paramQQAppInterface.persist(paramProfileShoppingPhotoInfo);
-          paramQQAppInterface.close();
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("ProfileShoppingPhotoInfo", 2, "func savePhotoInfo2DB ends." + paramProfileShoppingPhotoInfo.getPrintInfo());
-          return;
-        }
+      if (paramProfileShoppingPhotoInfo.uin != null) {
+        photoWinCache.put(paramProfileShoppingPhotoInfo.uin, paramProfileShoppingPhotoInfo);
       }
-      finally {}
-      paramQQAppInterface.update(paramProfileShoppingPhotoInfo);
+      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+      if (paramProfileShoppingPhotoInfo.getStatus() == 1000) {
+        paramQQAppInterface.persist(paramProfileShoppingPhotoInfo);
+      } else {
+        paramQQAppInterface.update(paramProfileShoppingPhotoInfo);
+      }
+      paramQQAppInterface.close();
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("func savePhotoInfo2DB ends.");
+        paramQQAppInterface.append(paramProfileShoppingPhotoInfo.getPrintInfo());
+        QLog.d("ProfileShoppingPhotoInfo", 2, paramQQAppInterface.toString());
+      }
+      return;
     }
+    finally {}
   }
   
   /* Error */
@@ -183,15 +198,15 @@ public class ProfileShoppingPhotoInfo
     //   0: new 54	java/util/ArrayList
     //   3: dup
     //   4: invokespecial 55	java/util/ArrayList:<init>	()V
-    //   7: astore_3
+    //   7: astore_2
     //   8: aload_0
     //   9: getfield 255	com/tencent/mobileqq/profile/ProfileShoppingPhotoInfo:picByteData	[B
     //   12: ifnonnull +5 -> 17
-    //   15: aload_3
+    //   15: aload_2
     //   16: areturn
     //   17: invokestatic 87	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   20: astore_2
-    //   21: aload_2
+    //   20: astore_1
+    //   21: aload_1
     //   22: aload_0
     //   23: getfield 255	com/tencent/mobileqq/profile/ProfileShoppingPhotoInfo:picByteData	[B
     //   26: iconst_0
@@ -199,97 +214,101 @@ public class ProfileShoppingPhotoInfo
     //   28: getfield 255	com/tencent/mobileqq/profile/ProfileShoppingPhotoInfo:picByteData	[B
     //   31: arraylength
     //   32: invokevirtual 259	android/os/Parcel:unmarshall	([BII)V
-    //   35: aload_2
+    //   35: aload_1
     //   36: iconst_0
     //   37: invokevirtual 90	android/os/Parcel:setDataPosition	(I)V
-    //   40: aload_2
+    //   40: aload_1
     //   41: aload_0
     //   42: invokevirtual 263	java/lang/Object:getClass	()Ljava/lang/Class;
     //   45: invokevirtual 269	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
     //   48: invokevirtual 273	android/os/Parcel:readArrayList	(Ljava/lang/ClassLoader;)Ljava/util/ArrayList;
-    //   51: astore 4
-    //   53: aload 4
-    //   55: ifnull +15 -> 70
-    //   58: aload 4
-    //   60: invokeinterface 276 1 0
-    //   65: istore_1
-    //   66: iload_1
-    //   67: ifne +9 -> 76
-    //   70: aload_2
-    //   71: invokevirtual 101	android/os/Parcel:recycle	()V
-    //   74: aload_3
-    //   75: areturn
-    //   76: aload 4
-    //   78: invokeinterface 61 1 0
-    //   83: astore 4
-    //   85: aload 4
-    //   87: invokeinterface 67 1 0
-    //   92: ifeq +87 -> 179
-    //   95: aload 4
-    //   97: invokeinterface 71 1 0
-    //   102: checkcast 278	java/lang/String
-    //   105: astore 5
-    //   107: new 73	com/tencent/mobileqq/profile/ShoppingPhotoItemInfo
-    //   110: dup
-    //   111: invokespecial 204	com/tencent/mobileqq/profile/ShoppingPhotoItemInfo:<init>	()V
-    //   114: astore 6
-    //   116: aload 6
-    //   118: aload 5
-    //   120: invokevirtual 280	com/tencent/mobileqq/profile/ShoppingPhotoItemInfo:a	(Ljava/lang/String;)V
-    //   123: aload_3
-    //   124: aload 6
-    //   126: invokeinterface 81 2 0
-    //   131: pop
-    //   132: goto -47 -> 85
-    //   135: astore 4
-    //   137: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   140: ifeq +33 -> 173
-    //   143: ldc 15
-    //   145: iconst_2
-    //   146: new 122	java/lang/StringBuilder
-    //   149: dup
-    //   150: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   153: ldc_w 282
-    //   156: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: aload 4
+    //   51: astore_3
+    //   52: aload_3
+    //   53: ifnull +70 -> 123
+    //   56: aload_3
+    //   57: invokeinterface 276 1 0
+    //   62: ifne +6 -> 68
+    //   65: goto +58 -> 123
+    //   68: aload_3
+    //   69: invokeinterface 61 1 0
+    //   74: astore_3
+    //   75: aload_3
+    //   76: invokeinterface 67 1 0
+    //   81: ifeq +98 -> 179
+    //   84: aload_3
+    //   85: invokeinterface 71 1 0
+    //   90: checkcast 278	java/lang/String
+    //   93: astore 4
+    //   95: new 73	com/tencent/mobileqq/profile/ShoppingPhotoItemInfo
+    //   98: dup
+    //   99: invokespecial 204	com/tencent/mobileqq/profile/ShoppingPhotoItemInfo:<init>	()V
+    //   102: astore 5
+    //   104: aload 5
+    //   106: aload 4
+    //   108: invokevirtual 280	com/tencent/mobileqq/profile/ShoppingPhotoItemInfo:a	(Ljava/lang/String;)V
+    //   111: aload_2
+    //   112: aload 5
+    //   114: invokeinterface 81 2 0
+    //   119: pop
+    //   120: goto -45 -> 75
+    //   123: aload_1
+    //   124: invokevirtual 101	android/os/Parcel:recycle	()V
+    //   127: aload_2
+    //   128: areturn
+    //   129: astore_2
+    //   130: goto +55 -> 185
+    //   133: astore_3
+    //   134: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   137: ifeq +42 -> 179
+    //   140: new 122	java/lang/StringBuilder
+    //   143: dup
+    //   144: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   147: astore 4
+    //   149: aload 4
+    //   151: ldc_w 282
+    //   154: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: pop
+    //   158: aload 4
+    //   160: aload_3
     //   161: invokevirtual 225	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   164: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   170: invokestatic 228	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   173: aload_2
-    //   174: invokevirtual 101	android/os/Parcel:recycle	()V
-    //   177: aload_3
-    //   178: areturn
-    //   179: aload_2
+    //   167: pop
+    //   168: ldc 15
+    //   170: iconst_2
+    //   171: aload 4
+    //   173: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   176: invokestatic 228	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   179: aload_1
     //   180: invokevirtual 101	android/os/Parcel:recycle	()V
-    //   183: goto -6 -> 177
-    //   186: astore_3
-    //   187: aload_2
-    //   188: invokevirtual 101	android/os/Parcel:recycle	()V
-    //   191: aload_3
-    //   192: athrow
+    //   183: aload_2
+    //   184: areturn
+    //   185: aload_1
+    //   186: invokevirtual 101	android/os/Parcel:recycle	()V
+    //   189: goto +5 -> 194
+    //   192: aload_2
+    //   193: athrow
+    //   194: goto -2 -> 192
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	193	0	this	ProfileShoppingPhotoInfo
-    //   65	2	1	i	int
-    //   20	168	2	localParcel	Parcel
-    //   7	171	3	localArrayList	ArrayList
-    //   186	6	3	localObject1	Object
-    //   51	45	4	localObject2	Object
-    //   135	25	4	localException	Exception
-    //   105	14	5	str	String
-    //   114	11	6	localShoppingPhotoItemInfo	ShoppingPhotoItemInfo
+    //   0	197	0	this	ProfileShoppingPhotoInfo
+    //   20	166	1	localParcel	Parcel
+    //   7	121	2	localArrayList	ArrayList
+    //   129	64	2	localList	List<ShoppingPhotoItemInfo>
+    //   51	34	3	localObject1	Object
+    //   133	28	3	localException	Exception
+    //   93	79	4	localObject2	Object
+    //   102	11	5	localShoppingPhotoItemInfo	ShoppingPhotoItemInfo
     // Exception table:
     //   from	to	target	type
-    //   21	53	135	java/lang/Exception
-    //   58	66	135	java/lang/Exception
-    //   76	85	135	java/lang/Exception
-    //   85	132	135	java/lang/Exception
-    //   21	53	186	finally
-    //   58	66	186	finally
-    //   76	85	186	finally
-    //   85	132	186	finally
-    //   137	173	186	finally
+    //   21	52	129	finally
+    //   56	65	129	finally
+    //   68	75	129	finally
+    //   75	120	129	finally
+    //   134	179	129	finally
+    //   21	52	133	java/lang/Exception
+    //   56	65	133	java/lang/Exception
+    //   68	75	133	java/lang/Exception
+    //   75	120	133	java/lang/Exception
   }
   
   public String getPrintInfo()
@@ -312,7 +331,7 @@ public class ProfileShoppingPhotoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo
  * JD-Core Version:    0.7.0.1
  */

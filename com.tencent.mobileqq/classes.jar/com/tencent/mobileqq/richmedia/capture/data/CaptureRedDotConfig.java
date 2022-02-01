@@ -62,278 +62,370 @@ public class CaptureRedDotConfig
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 114	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 111	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aconst_null
     //   8: areturn
-    //   9: new 116	java/io/File
+    //   9: new 113	java/io/File
     //   12: dup
     //   13: aload_0
     //   14: ldc 10
-    //   16: invokespecial 119	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   19: astore 4
-    //   21: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   24: ifeq +62 -> 86
-    //   27: new 127	java/lang/StringBuilder
-    //   30: dup
-    //   31: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   34: ldc 52
-    //   36: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: aload_1
-    //   40: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: iconst_2
-    //   47: new 127	java/lang/StringBuilder
-    //   50: dup
-    //   51: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   54: ldc 138
-    //   56: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: aload 4
-    //   61: invokevirtual 141	java/io/File:getPath	()Ljava/lang/String;
-    //   64: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: ldc 143
-    //   69: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: aload 4
-    //   74: invokevirtual 146	java/io/File:exists	()Z
-    //   77: invokevirtual 149	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   80: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   86: aload 4
-    //   88: invokevirtual 146	java/io/File:exists	()Z
-    //   91: ifeq -84 -> 7
-    //   94: new 155	java/io/ObjectInputStream
-    //   97: dup
-    //   98: new 157	java/io/BufferedInputStream
-    //   101: dup
-    //   102: new 159	java/io/FileInputStream
-    //   105: dup
-    //   106: aload 4
-    //   108: invokespecial 162	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   111: invokespecial 165	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   114: invokespecial 166	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   117: astore_2
-    //   118: aload_2
-    //   119: astore_0
-    //   120: aload_2
-    //   121: invokevirtual 170	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   124: checkcast 2	com/tencent/mobileqq/richmedia/capture/data/CaptureRedDotConfig
-    //   127: astore_3
-    //   128: aload_2
-    //   129: astore_0
-    //   130: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   133: ifeq +47 -> 180
-    //   136: aload_2
-    //   137: astore_0
-    //   138: new 127	java/lang/StringBuilder
-    //   141: dup
-    //   142: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   145: ldc 52
-    //   147: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: aload_1
-    //   151: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   154: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   157: iconst_2
-    //   158: new 127	java/lang/StringBuilder
-    //   161: dup
-    //   162: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   165: ldc 172
-    //   167: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: aload_3
-    //   171: invokevirtual 175	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   174: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   177: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   180: aload_3
-    //   181: astore_0
+    //   16: invokespecial 116	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: astore_3
+    //   20: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   23: ifeq +78 -> 101
+    //   26: new 124	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   33: astore_0
+    //   34: aload_0
+    //   35: ldc 52
+    //   37: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: pop
+    //   41: aload_0
+    //   42: aload_1
+    //   43: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: pop
+    //   47: aload_0
+    //   48: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: astore_0
+    //   52: new 124	java/lang/StringBuilder
+    //   55: dup
+    //   56: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   59: astore_2
+    //   60: aload_2
+    //   61: ldc 135
+    //   63: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: pop
+    //   67: aload_2
+    //   68: aload_3
+    //   69: invokevirtual 138	java/io/File:getPath	()Ljava/lang/String;
+    //   72: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: pop
+    //   76: aload_2
+    //   77: ldc 140
+    //   79: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: pop
+    //   83: aload_2
+    //   84: aload_3
+    //   85: invokevirtual 143	java/io/File:exists	()Z
+    //   88: invokevirtual 146	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   91: pop
+    //   92: aload_0
+    //   93: iconst_2
+    //   94: aload_2
+    //   95: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   101: aload_3
+    //   102: invokevirtual 143	java/io/File:exists	()Z
+    //   105: ifne +5 -> 110
+    //   108: aconst_null
+    //   109: areturn
+    //   110: new 152	java/io/ObjectInputStream
+    //   113: dup
+    //   114: new 154	java/io/BufferedInputStream
+    //   117: dup
+    //   118: new 156	java/io/FileInputStream
+    //   121: dup
+    //   122: aload_3
+    //   123: invokespecial 159	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   126: invokespecial 162	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   129: invokespecial 163	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   132: astore_2
+    //   133: aload_2
+    //   134: astore_0
+    //   135: aload_2
+    //   136: invokevirtual 167	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   139: checkcast 2	com/tencent/mobileqq/richmedia/capture/data/CaptureRedDotConfig
+    //   142: astore 4
+    //   144: aload_2
+    //   145: astore_0
+    //   146: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   149: ifeq +84 -> 233
+    //   152: aload_2
+    //   153: astore_0
+    //   154: new 124	java/lang/StringBuilder
+    //   157: dup
+    //   158: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   161: astore 5
+    //   163: aload_2
+    //   164: astore_0
+    //   165: aload 5
+    //   167: ldc 52
+    //   169: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: pop
+    //   173: aload_2
+    //   174: astore_0
+    //   175: aload 5
+    //   177: aload_1
+    //   178: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: pop
     //   182: aload_2
-    //   183: ifnull +9 -> 192
-    //   186: aload_2
-    //   187: invokevirtual 178	java/io/ObjectInputStream:close	()V
-    //   190: aload_3
+    //   183: astore_0
+    //   184: aload 5
+    //   186: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   189: astore_1
+    //   190: aload_2
     //   191: astore_0
-    //   192: aload_0
-    //   193: areturn
-    //   194: astore_3
-    //   195: aconst_null
-    //   196: astore_1
-    //   197: aload_1
-    //   198: astore_0
-    //   199: aload 4
-    //   201: invokevirtual 181	java/io/File:delete	()Z
-    //   204: pop
-    //   205: aload_1
-    //   206: astore_0
-    //   207: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   210: ifeq +33 -> 243
-    //   213: aload_1
-    //   214: astore_0
-    //   215: ldc 52
-    //   217: iconst_2
-    //   218: new 127	java/lang/StringBuilder
-    //   221: dup
-    //   222: invokespecial 128	java/lang/StringBuilder:<init>	()V
-    //   225: ldc 183
-    //   227: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: aload_3
-    //   231: invokevirtual 186	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   234: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   243: aload_1
-    //   244: ifnull +51 -> 295
-    //   247: aload_1
-    //   248: invokevirtual 178	java/io/ObjectInputStream:close	()V
-    //   251: aconst_null
-    //   252: astore_0
-    //   253: goto -61 -> 192
-    //   256: astore_0
-    //   257: aconst_null
+    //   192: new 124	java/lang/StringBuilder
+    //   195: dup
+    //   196: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   199: astore 5
+    //   201: aload_2
+    //   202: astore_0
+    //   203: aload 5
+    //   205: ldc 169
+    //   207: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   210: pop
+    //   211: aload_2
+    //   212: astore_0
+    //   213: aload 5
+    //   215: aload 4
+    //   217: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   220: pop
+    //   221: aload_2
+    //   222: astore_0
+    //   223: aload_1
+    //   224: iconst_2
+    //   225: aload 5
+    //   227: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   230: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   233: aload_2
+    //   234: invokevirtual 175	java/io/ObjectInputStream:close	()V
+    //   237: aload 4
+    //   239: areturn
+    //   240: astore_0
+    //   241: aload_2
+    //   242: astore_1
+    //   243: aload_0
+    //   244: astore_2
+    //   245: goto +12 -> 257
+    //   248: astore_1
+    //   249: aconst_null
+    //   250: astore_0
+    //   251: goto +74 -> 325
+    //   254: astore_2
+    //   255: aconst_null
+    //   256: astore_1
+    //   257: aload_1
     //   258: astore_0
-    //   259: goto -67 -> 192
-    //   262: astore_1
-    //   263: aconst_null
-    //   264: astore_0
-    //   265: aload_0
-    //   266: ifnull +7 -> 273
-    //   269: aload_0
-    //   270: invokevirtual 178	java/io/ObjectInputStream:close	()V
-    //   273: aload_1
-    //   274: athrow
-    //   275: astore_0
-    //   276: aload_3
-    //   277: astore_0
-    //   278: goto -86 -> 192
-    //   281: astore_0
-    //   282: goto -9 -> 273
-    //   285: astore_1
-    //   286: goto -21 -> 265
-    //   289: astore_3
-    //   290: aload_2
-    //   291: astore_1
-    //   292: goto -95 -> 197
-    //   295: aconst_null
-    //   296: astore_0
-    //   297: goto -105 -> 192
+    //   259: aload_3
+    //   260: invokevirtual 178	java/io/File:delete	()Z
+    //   263: pop
+    //   264: aload_1
+    //   265: astore_0
+    //   266: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   269: ifeq +45 -> 314
+    //   272: aload_1
+    //   273: astore_0
+    //   274: new 124	java/lang/StringBuilder
+    //   277: dup
+    //   278: invokespecial 125	java/lang/StringBuilder:<init>	()V
+    //   281: astore_3
+    //   282: aload_1
+    //   283: astore_0
+    //   284: aload_3
+    //   285: ldc 180
+    //   287: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: pop
+    //   291: aload_1
+    //   292: astore_0
+    //   293: aload_3
+    //   294: aload_2
+    //   295: invokevirtual 183	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   298: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   301: pop
+    //   302: aload_1
+    //   303: astore_0
+    //   304: ldc 52
+    //   306: iconst_2
+    //   307: aload_3
+    //   308: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   311: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   314: aload_1
+    //   315: ifnull +7 -> 322
+    //   318: aload_1
+    //   319: invokevirtual 175	java/io/ObjectInputStream:close	()V
+    //   322: aconst_null
+    //   323: areturn
+    //   324: astore_1
+    //   325: aload_0
+    //   326: ifnull +7 -> 333
+    //   329: aload_0
+    //   330: invokevirtual 175	java/io/ObjectInputStream:close	()V
+    //   333: aload_1
+    //   334: athrow
+    //   335: astore_0
+    //   336: goto -99 -> 237
+    //   339: astore_0
+    //   340: aconst_null
+    //   341: areturn
+    //   342: astore_0
+    //   343: goto -10 -> 333
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	300	0	paramString1	String
-    //   0	300	1	paramString2	String
-    //   117	174	2	localObjectInputStream	java.io.ObjectInputStream
-    //   127	64	3	localCaptureRedDotConfig	CaptureRedDotConfig
-    //   194	83	3	localException1	java.lang.Exception
-    //   289	1	3	localException2	java.lang.Exception
-    //   19	181	4	localFile	java.io.File
+    //   0	346	0	paramString1	String
+    //   0	346	1	paramString2	String
+    //   59	186	2	localObject1	Object
+    //   254	41	2	localException	java.lang.Exception
+    //   19	289	3	localObject2	Object
+    //   142	96	4	localCaptureRedDotConfig	CaptureRedDotConfig
+    //   161	65	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   94	118	194	java/lang/Exception
-    //   247	251	256	java/io/IOException
-    //   94	118	262	finally
-    //   186	190	275	java/io/IOException
-    //   269	273	281	java/io/IOException
-    //   120	128	285	finally
-    //   130	136	285	finally
-    //   138	180	285	finally
-    //   199	205	285	finally
-    //   207	213	285	finally
-    //   215	243	285	finally
-    //   120	128	289	java/lang/Exception
-    //   130	136	289	java/lang/Exception
-    //   138	180	289	java/lang/Exception
+    //   135	144	240	java/lang/Exception
+    //   146	152	240	java/lang/Exception
+    //   154	163	240	java/lang/Exception
+    //   165	173	240	java/lang/Exception
+    //   175	182	240	java/lang/Exception
+    //   184	190	240	java/lang/Exception
+    //   192	201	240	java/lang/Exception
+    //   203	211	240	java/lang/Exception
+    //   213	221	240	java/lang/Exception
+    //   223	233	240	java/lang/Exception
+    //   110	133	248	finally
+    //   110	133	254	java/lang/Exception
+    //   135	144	324	finally
+    //   146	152	324	finally
+    //   154	163	324	finally
+    //   165	173	324	finally
+    //   175	182	324	finally
+    //   184	190	324	finally
+    //   192	201	324	finally
+    //   203	211	324	finally
+    //   213	221	324	finally
+    //   223	233	324	finally
+    //   259	264	324	finally
+    //   266	272	324	finally
+    //   274	282	324	finally
+    //   284	291	324	finally
+    //   293	302	324	finally
+    //   304	314	324	finally
+    //   233	237	335	java/io/IOException
+    //   318	322	339	java/io/IOException
+    //   329	333	342	java/io/IOException
   }
   
   public static void saveRedDotConfig(CaptureRedDotConfig paramCaptureRedDotConfig, String paramString1, String paramString2)
   {
-    if ((paramCaptureRedDotConfig == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
+    if (paramCaptureRedDotConfig != null)
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("QIMRedDotConfig");
+        ((StringBuilder)localObject).append(paramString2);
+        localObject = ((StringBuilder)localObject).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveRedDotConfig|config= ");
+        localStringBuilder.append(paramCaptureRedDotConfig);
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+      }
+      ThreadManager.getFileThreadHandler().post(new CaptureRedDotConfig.1(paramString1, paramCaptureRedDotConfig, paramString2));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMRedDotConfig" + paramString2, 2, "saveRedDotConfig|config= " + paramCaptureRedDotConfig);
-    }
-    ThreadManager.getFileThreadHandler().post(new CaptureRedDotConfig.1(paramString1, paramCaptureRedDotConfig, paramString2));
   }
   
   public boolean needShowRedDot(int paramInt1, int paramInt2, String paramString)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return false;
-    case 1: 
-      return showIconRedDot();
-    case 2: 
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 3) {
+          return false;
+        }
+        return showRedDot(paramInt2, paramString);
+      }
       return showCategoryRedDot(paramInt2);
     }
-    return showRedDot(paramInt2, paramString);
+    return showIconRedDot();
   }
   
   public boolean showCategoryRedDot(int paramInt)
   {
-    CaptureRedDotConfig.CategoryRedConfig localCategoryRedConfig;
     if (this.categories.size() > 0)
     {
-      localCategoryRedConfig = (CaptureRedDotConfig.CategoryRedConfig)this.categories.get(Integer.valueOf(paramInt));
+      CaptureRedDotConfig.CategoryRedConfig localCategoryRedConfig = (CaptureRedDotConfig.CategoryRedConfig)this.categories.get(Integer.valueOf(paramInt));
       if ((localCategoryRedConfig != null) && (localCategoryRedConfig.showRedDot))
       {
-        if (localCategoryRedConfig.hasShow) {
-          break label141;
-        }
-        if (localCategoryRedConfig.firstShowTime <= 0L) {
-          break label122;
-        }
-        if (System.currentTimeMillis() - localCategoryRedConfig.firstShowTime < this.showTime)
+        StringBuilder localStringBuilder;
+        if (!localCategoryRedConfig.hasShow)
         {
-          localCategoryRedConfig.isShowing = true;
-          return true;
+          if (localCategoryRedConfig.firstShowTime > 0L)
+          {
+            if (System.currentTimeMillis() - localCategoryRedConfig.firstShowTime < this.showTime)
+            {
+              localCategoryRedConfig.isShowing = true;
+              return true;
+            }
+            this.update = true;
+            localCategoryRedConfig.hasShow = true;
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("showCategoryRedDot out of time | id=");
+              localStringBuilder.append(localCategoryRedConfig.categoryId);
+              QLog.d("QIMRedDotConfig", 2, localStringBuilder.toString());
+            }
+          }
+          else
+          {
+            this.update = true;
+            localCategoryRedConfig.firstShowTime = System.currentTimeMillis();
+            localCategoryRedConfig.isShowing = true;
+            return true;
+          }
         }
-        this.update = true;
-        localCategoryRedConfig.hasShow = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("QIMRedDotConfig", 2, "showCategoryRedDot out of time | id=" + localCategoryRedConfig.categoryId);
+        else if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("showCategoryRedDot hasShow | id=");
+          localStringBuilder.append(localCategoryRedConfig.categoryId);
+          QLog.d("QIMRedDotConfig", 2, localStringBuilder.toString());
         }
       }
     }
-    for (;;)
-    {
-      return false;
-      label122:
-      this.update = true;
-      localCategoryRedConfig.firstShowTime = System.currentTimeMillis();
-      localCategoryRedConfig.isShowing = true;
-      return true;
-      label141:
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMRedDotConfig", 2, "showCategoryRedDot hasShow | id=" + localCategoryRedConfig.categoryId);
-      }
-    }
+    return false;
   }
   
   public boolean showIconRedDot()
   {
-    if (!this.showRedDot) {}
-    do
-    {
-      do
-      {
-        return false;
-        if (!this.hasShow) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QIMRedDotConfig", 2, "showIconRedDot hasShow | type=" + this.type);
+    if (!this.showRedDot) {
       return false;
-      if (this.firstShowTime <= 0L) {
-        break label133;
+    }
+    StringBuilder localStringBuilder;
+    if (this.hasShow)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showIconRedDot hasShow | type=");
+        localStringBuilder.append(this.type);
+        QLog.d("QIMRedDotConfig", 2, localStringBuilder.toString());
       }
-      if (System.currentTimeMillis() - this.firstShowTime < this.showTime) {
-        break;
+      return false;
+    }
+    if (this.firstShowTime > 0L)
+    {
+      if (System.currentTimeMillis() - this.firstShowTime >= this.showTime)
+      {
+        this.hasShow = true;
+        this.update = true;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("showIconRedDot out of time | type=");
+          localStringBuilder.append(this.type);
+          QLog.d("QIMRedDotConfig", 2, localStringBuilder.toString());
+        }
+        return false;
       }
-      this.hasShow = true;
-      this.update = true;
-    } while (!QLog.isColorLevel());
-    QLog.d("QIMRedDotConfig", 2, "showIconRedDot out of time | type=" + this.type);
-    return false;
-    this.isShowing = true;
-    return true;
-    label133:
+      this.isShowing = true;
+      return true;
+    }
     this.firstShowTime = System.currentTimeMillis();
     this.isShowing = true;
     this.update = true;
@@ -342,137 +434,214 @@ public class CaptureRedDotConfig
   
   public boolean showRedDot(int paramInt, String paramString)
   {
-    if ((this.redDotItems.isEmpty()) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    if (paramString.equals(this.defaultUseId)) {
-      return false;
-    }
-    paramString = (CaptureRedDotConfig.RedDotItemConfig)this.redDotItems.get(paramString);
-    if (paramString != null)
+    if (!this.redDotItems.isEmpty())
     {
-      if (paramString.hasShow) {
-        break label154;
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
       }
-      if (paramString.firstShowTime <= 0L) {
-        break label135;
+      if (paramString.equals(this.defaultUseId)) {
+        return false;
       }
-      if (System.currentTimeMillis() - paramString.firstShowTime < this.showTime)
+      paramString = (CaptureRedDotConfig.RedDotItemConfig)this.redDotItems.get(paramString);
+      if (paramString != null)
       {
-        paramString.isShowing = true;
-        return true;
-      }
-      this.update = true;
-      paramString.hasShow = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMRedDotConfig", 2, "showRedDot out of time | id=" + paramString.filterId);
+        StringBuilder localStringBuilder;
+        if (!paramString.hasShow)
+        {
+          if (paramString.firstShowTime > 0L)
+          {
+            if (System.currentTimeMillis() - paramString.firstShowTime < this.showTime)
+            {
+              paramString.isShowing = true;
+              return true;
+            }
+            this.update = true;
+            paramString.hasShow = true;
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("showRedDot out of time | id=");
+              localStringBuilder.append(paramString.filterId);
+              QLog.d("QIMRedDotConfig", 2, localStringBuilder.toString());
+              return false;
+            }
+          }
+          else
+          {
+            this.update = true;
+            paramString.firstShowTime = System.currentTimeMillis();
+            paramString.isShowing = true;
+            return true;
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("showRedDot hasShow | id=");
+          localStringBuilder.append(paramString.filterId);
+          QLog.d("QIMRedDotConfig", 2, localStringBuilder.toString());
+        }
       }
     }
-    for (;;)
-    {
-      return false;
-      label135:
-      this.update = true;
-      paramString.firstShowTime = System.currentTimeMillis();
-      paramString.isShowing = true;
-      return true;
-      label154:
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMRedDotConfig", 2, "showRedDot hasShow | id=" + paramString.filterId);
-      }
-    }
+    return false;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("QIMRedDotConfig{");
-    localStringBuilder.append("type=").append(this.type);
-    localStringBuilder.append(", iconVersion=").append(this.iconVersion);
-    localStringBuilder.append(", showRedDot=").append(this.showRedDot);
-    localStringBuilder.append(", hasShow=").append(this.hasShow);
-    localStringBuilder.append(", firstShowTime=").append(this.firstShowTime);
-    localStringBuilder.append(", defaultUseVer=").append(this.defaultUseVer);
-    localStringBuilder.append(", defaultUseId='").append(this.defaultUseId).append('\'');
-    localStringBuilder.append(", hasUse=").append(this.hasUse);
-    localStringBuilder.append(", defaultCategoryVer=").append(this.defaultCategoryVer);
-    localStringBuilder.append(", defaultCategoryId=").append(this.defaultCategoryId);
-    localStringBuilder.append(", hasChoose=").append(this.hasChoose);
-    localStringBuilder.append(", redDotVersion=").append(this.redDotVersion);
-    localStringBuilder.append(", redDotItems=").append(this.redDotItems);
-    localStringBuilder.append(", showTime=").append(this.showTime);
+    StringBuilder localStringBuilder1 = new StringBuilder("QIMRedDotConfig{");
+    localStringBuilder1.append("type=");
+    localStringBuilder1.append(this.type);
+    localStringBuilder1.append(", iconVersion=");
+    localStringBuilder1.append(this.iconVersion);
+    localStringBuilder1.append(", showRedDot=");
+    localStringBuilder1.append(this.showRedDot);
+    localStringBuilder1.append(", hasShow=");
+    localStringBuilder1.append(this.hasShow);
+    localStringBuilder1.append(", firstShowTime=");
+    localStringBuilder1.append(this.firstShowTime);
+    localStringBuilder1.append(", defaultUseVer=");
+    localStringBuilder1.append(this.defaultUseVer);
+    localStringBuilder1.append(", defaultUseId='");
+    localStringBuilder1.append(this.defaultUseId);
+    localStringBuilder1.append('\'');
+    localStringBuilder1.append(", hasUse=");
+    localStringBuilder1.append(this.hasUse);
+    localStringBuilder1.append(", defaultCategoryVer=");
+    localStringBuilder1.append(this.defaultCategoryVer);
+    localStringBuilder1.append(", defaultCategoryId=");
+    localStringBuilder1.append(this.defaultCategoryId);
+    localStringBuilder1.append(", hasChoose=");
+    localStringBuilder1.append(this.hasChoose);
+    localStringBuilder1.append(", redDotVersion=");
+    localStringBuilder1.append(this.redDotVersion);
+    localStringBuilder1.append(", redDotItems=");
+    localStringBuilder1.append(this.redDotItems);
+    localStringBuilder1.append(", showTime=");
+    localStringBuilder1.append(this.showTime);
     Iterator localIterator = this.categories.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      localStringBuilder.append(localEntry.getValue() + "\n");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(localEntry.getValue());
+      localStringBuilder2.append("\n");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    localStringBuilder1.append('}');
+    return localStringBuilder1.toString();
   }
   
   public boolean updateRedDotInfo(int paramInt1, int paramInt2, String paramString)
   {
-    boolean bool;
-    switch (paramInt1)
+    boolean bool2 = false;
+    if (paramInt1 != 1)
     {
-    default: 
-      bool = false;
-    }
-    for (;;)
-    {
-      if (bool) {
-        this.update = true;
-      }
-      return bool;
-      if ((!this.isShowing) || (this.hasShow)) {
-        break;
-      }
-      this.hasShow = true;
-      this.firstShowTime = 0L;
-      this.isShowing = false;
-      bool = true;
-      continue;
-      paramString = (CaptureRedDotConfig.CategoryRedConfig)this.categories.get(Integer.valueOf(paramInt2));
-      if ((paramString == null) || (!paramString.isShowing) || (paramString.hasShow)) {
-        break;
-      }
-      paramString.hasShow = true;
-      paramString.firstShowTime = 0L;
-      paramString.isShowing = false;
-      if (QLog.isColorLevel())
+      if (paramInt1 != 2)
       {
-        QLog.d("QIMRedDotConfig", 2, "更新has show = " + paramString.hasShow);
-        bool = true;
-        continue;
-        paramString = (CaptureRedDotConfig.RedDotItemConfig)this.redDotItems.get(paramString);
-        if ((paramString == null) || (!paramString.isShowing) || (paramString.hasShow)) {
-          break;
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4)
+          {
+            if (paramInt1 != 5)
+            {
+              bool1 = bool2;
+              break label307;
+            }
+            bool1 = bool2;
+            if (this.defaultCategoryId == -1) {
+              break label307;
+            }
+            bool1 = bool2;
+            if (this.hasChoose) {
+              break label307;
+            }
+            this.hasChoose = true;
+          }
+          else
+          {
+            bool1 = bool2;
+            if (TextUtils.isEmpty(this.defaultUseId)) {
+              break label307;
+            }
+            bool1 = bool2;
+            if (this.hasUse) {
+              break label307;
+            }
+            this.hasUse = true;
+          }
+        }
+        else
+        {
+          paramString = (CaptureRedDotConfig.RedDotItemConfig)this.redDotItems.get(paramString);
+          bool1 = bool2;
+          if (paramString == null) {
+            break label307;
+          }
+          bool1 = bool2;
+          if (!paramString.isShowing) {
+            break label307;
+          }
+          bool1 = bool2;
+          if (paramString.hasShow) {
+            break label307;
+          }
+          paramString.hasShow = true;
+          paramString.firstShowTime = 0L;
+          paramString.isShowing = false;
+        }
+      }
+      else
+      {
+        paramString = (CaptureRedDotConfig.CategoryRedConfig)this.categories.get(Integer.valueOf(paramInt2));
+        bool1 = bool2;
+        if (paramString == null) {
+          break label307;
+        }
+        bool1 = bool2;
+        if (!paramString.isShowing) {
+          break label307;
+        }
+        bool1 = bool2;
+        if (paramString.hasShow) {
+          break label307;
         }
         paramString.hasShow = true;
         paramString.firstShowTime = 0L;
         paramString.isShowing = false;
-        bool = true;
-        continue;
-        if ((TextUtils.isEmpty(this.defaultUseId)) || (this.hasUse)) {
-          break;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("更新has show = ");
+          localStringBuilder.append(paramString.hasShow);
+          QLog.d("QIMRedDotConfig", 2, localStringBuilder.toString());
         }
-        this.hasUse = true;
-        bool = true;
-        continue;
-        if ((this.defaultCategoryId == -1) || (this.hasChoose)) {
-          break;
-        }
-        this.hasChoose = true;
-        bool = true;
-        continue;
       }
-      bool = true;
     }
+    else
+    {
+      bool1 = bool2;
+      if (!this.isShowing) {
+        break label307;
+      }
+      bool1 = bool2;
+      if (this.hasShow) {
+        break label307;
+      }
+      this.hasShow = true;
+      this.firstShowTime = 0L;
+      this.isShowing = false;
+    }
+    boolean bool1 = true;
+    label307:
+    if (bool1) {
+      this.update = true;
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CaptureRedDotConfig
  * JD-Core Version:    0.7.0.1
  */

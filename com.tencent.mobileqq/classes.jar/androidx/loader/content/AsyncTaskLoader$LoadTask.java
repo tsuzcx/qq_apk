@@ -21,11 +21,11 @@ final class AsyncTaskLoader$LoadTask
     }
     catch (OperationCanceledException paramVarArgs)
     {
-      if (!isCancelled()) {
-        throw paramVarArgs;
+      if (isCancelled()) {
+        return null;
       }
+      throw paramVarArgs;
     }
-    return null;
   }
   
   protected void onCancelled(D paramD)
@@ -72,7 +72,7 @@ final class AsyncTaskLoader$LoadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.loader.content.AsyncTaskLoader.LoadTask
  * JD-Core Version:    0.7.0.1
  */

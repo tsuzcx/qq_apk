@@ -66,7 +66,13 @@ public class ProfileCardHandler
     {
       localObject = paramBundle.getStringArray("location");
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localObject[0]).append("-").append(localObject[1]).append("-").append(localObject[2]).append("-").append(localObject[3]);
+      localStringBuilder.append(localObject[0]);
+      localStringBuilder.append("-");
+      localStringBuilder.append(localObject[1]);
+      localStringBuilder.append("-");
+      localStringBuilder.append(localObject[2]);
+      localStringBuilder.append("-");
+      localStringBuilder.append(localObject[3]);
       paramCard.strLocationCodes = localStringBuilder.toString();
       paramCard.strLocationDesc = paramBundle.getString("location_desc");
       localObject = paramBundle.getStringArray("location_name");
@@ -81,7 +87,13 @@ public class ProfileCardHandler
     {
       localObject = paramBundle.getStringArray("hometown");
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localObject[0]).append("-").append(localObject[1]).append("-").append(localObject[2]).append("-").append(localObject[3]);
+      localStringBuilder.append(localObject[0]);
+      localStringBuilder.append("-");
+      localStringBuilder.append(localObject[1]);
+      localStringBuilder.append("-");
+      localStringBuilder.append(localObject[2]);
+      localStringBuilder.append("-");
+      localStringBuilder.append(localObject[3]);
       paramCard.strHometownCodes = localStringBuilder.toString();
       paramCard.strHometownDesc = paramBundle.getString("hometown_desc");
     }
@@ -256,71 +268,76 @@ public class ProfileCardHandler
   protected void handlerSetProfileDetail(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i = paramFromServiceMsg.getResultCode();
-    boolean bool = paramFromServiceMsg.isSuccess();
-    if (bool) {}
+    boolean bool2 = paramFromServiceMsg.isSuccess();
+    IProfileDataService localIProfileDataService = null;
+    Object localObject = null;
+    int j = i;
+    paramFromServiceMsg = localIProfileDataService;
+    boolean bool1 = bool2;
+    if (bool2)
+    {
+      j = i;
+      paramFromServiceMsg = localObject;
+    }
     for (;;)
     {
       try
       {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
-        if (paramFromServiceMsg.uint32_result.has())
-        {
-          int j = paramFromServiceMsg.uint32_result.get();
-          i = j;
-          if (i == 0)
-          {
-            bool = true;
-            if (!bool) {
-              continue;
-            }
-          }
+        paramObject = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+        j = i;
+        paramFromServiceMsg = localObject;
+        if (!paramObject.uint32_result.has()) {
+          break label300;
         }
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        paramToServiceMsg = null;
-        QLog.e("ProfileCardHandler", 1, "handlerSetProfileDetail fail.", paramFromServiceMsg);
-        bool = false;
-        continue;
-        paramToServiceMsg = null;
-        continue;
-      }
-      try
-      {
-        paramObject = (IProfileDataService)this.appRuntime.getRuntimeService(IProfileDataService.class, "all");
-        paramFromServiceMsg = paramObject.getProfileCard(this.appRuntime.getCurrentUin(), true);
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        paramToServiceMsg = null;
-        continue;
-      }
-      try
-      {
-        handlerSetProfileDetailInner(paramToServiceMsg.extraData, paramFromServiceMsg);
-        paramObject.saveProfileCard(paramFromServiceMsg);
-        paramToServiceMsg = paramFromServiceMsg;
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileCardHandler", 2, String.format("handlerSetProfileDetail success=%s resultCode=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) }));
+        j = i;
+        paramFromServiceMsg = localObject;
+        i = paramObject.uint32_result.get();
+        if (i != 0) {
+          break label290;
         }
-        notifyUI(1003, bool, new Object[] { Integer.valueOf(i), paramToServiceMsg });
-        return;
+        bool1 = true;
       }
-      catch (Exception paramObject)
+      catch (Exception paramToServiceMsg)
       {
-        paramToServiceMsg = paramFromServiceMsg;
+        QLog.e("ProfileCardHandler", 1, "handlerSetProfileDetail fail.", paramToServiceMsg);
+        bool1 = false;
+      }
+      j = i;
+      paramFromServiceMsg = localIProfileDataService;
+      bool1 = bool2;
+      if (bool2)
+      {
+        j = i;
+        paramFromServiceMsg = localObject;
+        localIProfileDataService = (IProfileDataService)this.appRuntime.getRuntimeService(IProfileDataService.class, "all");
+        j = i;
+        paramFromServiceMsg = localObject;
+        paramObject = localIProfileDataService.getProfileCard(this.appRuntime.getCurrentUin(), true);
+        j = i;
         paramFromServiceMsg = paramObject;
-        continue;
+        handlerSetProfileDetailInner(paramToServiceMsg.extraData, paramObject);
+        j = i;
+        paramFromServiceMsg = paramObject;
+        localIProfileDataService.saveProfileCard(paramObject);
+        j = i;
+        paramFromServiceMsg = paramObject;
+        bool1 = bool2;
       }
-      bool = false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileCardHandler", 2, String.format("handlerSetProfileDetail success=%s resultCode=%s", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(j) }));
+      }
+      notifyUI(1003, bool1, new Object[] { Integer.valueOf(j), paramFromServiceMsg });
+      return;
+      label290:
+      bool1 = false;
+      bool2 = bool1;
       continue;
-      bool = false;
-      continue;
-      paramToServiceMsg = null;
+      label300:
+      bool2 = false;
     }
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return ProfileCardObserver.class;
   }
@@ -328,17 +345,17 @@ public class ProfileCardHandler
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    if (msgCmdFilter(str)) {}
-    do
-    {
+    if (msgCmdFilter(str)) {
       return;
-      if ("OidbSvc.0x4ff_9_IMCore".equals(str))
-      {
-        handlerSetProfileDetail(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.0x480_9_IMCore".equals(str));
-    handlerGetProfileDetail(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    if ("OidbSvc.0x4ff_9_IMCore".equals(str))
+    {
+      handlerSetProfileDetail(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0x480_9_IMCore".equals(str)) {
+      handlerGetProfileDetail(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
   
   public void setProfileDetail(Bundle paramBundle)
@@ -372,7 +389,7 @@ public class ProfileCardHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.handler.ProfileCardHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -21,28 +21,29 @@ public class AddPollViewJob
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+    if (localObject == null)
     {
       SLog.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
       b(false);
       return;
     }
-    StoryVideoItem.PollLayout localPollLayout = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
-    if (localPollLayout != null)
+    localObject = ((StoryVideoItem)localObject).getPollLayout();
+    if (localObject != null)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader = new ShareGroupIconManager.UrlBitmapDownloaderImp();
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new AddPollViewJob.1(this, localPollLayout));
+      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new AddPollViewJob.1(this, (StoryVideoItem.PollLayout)localObject));
       return;
     }
     a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
     b(true);
   }
   
-  public void a(Map<String, Object> paramMap) {}
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.AddPollViewJob
  * JD-Core Version:    0.7.0.1
  */

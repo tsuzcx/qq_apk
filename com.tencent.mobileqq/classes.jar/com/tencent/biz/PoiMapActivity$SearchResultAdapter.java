@@ -45,49 +45,48 @@ public class PoiMapActivity$SearchResultAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
+    PoiMapActivity.PoiItemViewHolder localPoiItemViewHolder;
     if (paramView == null)
     {
-      paramView = new PoiMapActivity.PoiItemViewHolder(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131560089, null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372127));
-      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362229));
-      paramView.c = localView.findViewById(2131377721);
-      paramView.c.setVisibility(4);
-      paramView.d = localView.findViewById(2131371874);
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365723);
-      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131377935);
-      localView.setTag(paramView);
-      paramView.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      if (paramInt != this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size()) {
-        break label195;
-      }
-      paramView.d.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      localPoiItemViewHolder = new PoiMapActivity.PoiItemViewHolder(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559960, null);
+      localPoiItemViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371709));
+      localPoiItemViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362252));
+      localPoiItemViewHolder.c = paramView.findViewById(2131377149);
+      localPoiItemViewHolder.c.setVisibility(4);
+      localPoiItemViewHolder.d = paramView.findViewById(2131371496);
+      localPoiItemViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365560);
+      localPoiItemViewHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377358);
+      paramView.setTag(localPoiItemViewHolder);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      Object localObject = (PoiMapActivity.PoiItemViewHolder)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label195:
-      paramView.d.setVisibility(8);
-      paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      localObject = (PoiMapActivity.POI)getItem(paramInt);
-      if (localObject != null)
+      localPoiItemViewHolder = (PoiMapActivity.PoiItemViewHolder)paramView.getTag();
+    }
+    localPoiItemViewHolder.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    if (paramInt == this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size())
+    {
+      localPoiItemViewHolder.d.setVisibility(0);
+      localPoiItemViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    else
+    {
+      localPoiItemViewHolder.d.setVisibility(8);
+      localPoiItemViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      PoiMapActivity.POI localPOI = (PoiMapActivity.POI)getItem(paramInt);
+      if (localPOI != null)
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PoiMapActivity.POI)localObject).a);
-        paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((PoiMapActivity.POI)localObject).b);
+        localPoiItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localPOI.a);
+        localPoiItemViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(localPOI.b);
       }
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.SearchResultAdapter
  * JD-Core Version:    0.7.0.1
  */

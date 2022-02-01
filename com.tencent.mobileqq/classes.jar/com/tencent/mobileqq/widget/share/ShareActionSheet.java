@@ -25,6 +25,8 @@ public abstract interface ShareActionSheet
   
   public abstract int getActionSheetPanelViewHeight();
   
+  public abstract Bundle getExtras();
+  
   public abstract int getIconWidth();
   
   public abstract String getOpenSource();
@@ -87,7 +89,7 @@ public abstract interface ShareActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheet
  * JD-Core Version:    0.7.0.1
  */

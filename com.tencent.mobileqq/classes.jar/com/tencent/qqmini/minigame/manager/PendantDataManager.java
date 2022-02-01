@@ -63,18 +63,13 @@ public class PendantDataManager
   public static int RESULT = 0;
   public static final int SHOW_GIF_ANIMATION = 0;
   public static final int SHOW_STATIC = 1;
-  private static String SP_NAME;
+  private static String SP_NAME = "pendantDataManager";
   public static final int SUCCESS = 0;
   public static final String TAG = "PendantDataManager";
   public static boolean TIME_EXTENSION_ENABLE = false;
-  public static int entranceStrategy = 0;
-  public static int numTianshuRequest = 0;
+  public static int entranceStrategy;
+  public static int numTianshuRequest;
   private static Map<String, String> param = new HashMap();
-  
-  static
-  {
-    SP_NAME = "pendantDataManager";
-  }
   
   private static void addMoreTimeForReward(int paramInt, IMiniAppContext paramIMiniAppContext, Date paramDate1, Date paramDate2)
   {
@@ -86,12 +81,13 @@ public class PendantDataManager
   {
     Handler localHandler = PendantManager.AUTO_WEBVIEW_DELAY_HANDLER;
     paramPendantAdInfo = new PendantDataManager.5(paramPendantAdInfo, paramMiniAppProxy, paramContext, paramIMiniAppContext);
-    if (paramInt > 0) {}
-    for (long l = paramInt * 1000;; l = 0L)
-    {
-      localHandler.postDelayed(paramPendantAdInfo, l);
-      return;
+    long l;
+    if (paramInt > 0) {
+      l = paramInt * 1000;
+    } else {
+      l = 0L;
     }
+    localHandler.postDelayed(paramPendantAdInfo, l);
   }
   
   @NotNull
@@ -110,31 +106,28 @@ public class PendantDataManager
     try
     {
       paramJSONObject = (TianShuAccess.GetAdsRsp)paramJSONObject.get("response");
-      if (isAdResponseValid(paramJSONObject))
-      {
-        QMLog.e("PendantDataManager", "handleTianShuResponse mapAds is empty");
-        return null;
-      }
     }
     catch (JSONException paramJSONObject)
     {
-      for (;;)
-      {
-        QMLog.e("PendantDataManager", "parse Ad Data Exception ", paramJSONObject);
-        paramJSONObject = null;
-      }
-      paramJSONObject = (TianShuAccess.RspEntry)paramJSONObject.mapAds.get(0);
-      if (isRspEntryValid(paramJSONObject))
-      {
-        QMLog.e("PendantDataManager", "handleTianShuResponse rspEntry is empty");
-        return null;
-      }
-      paramJSONObject = (TianShuAccess.AdItem)paramJSONObject.value.lst.get(0);
-      if (isAdItemValid(paramJSONObject))
-      {
-        QMLog.e("PendantDataManager", "handleTianShuResponse adItem is empty");
-        return null;
-      }
+      QMLog.e("PendantDataManager", "parse Ad Data Exception ", paramJSONObject);
+      paramJSONObject = null;
+    }
+    if (isAdResponseValid(paramJSONObject))
+    {
+      QMLog.e("PendantDataManager", "handleTianShuResponse mapAds is empty");
+      return null;
+    }
+    paramJSONObject = (TianShuAccess.RspEntry)paramJSONObject.mapAds.get(0);
+    if (isRspEntryValid(paramJSONObject))
+    {
+      QMLog.e("PendantDataManager", "handleTianShuResponse rspEntry is empty");
+      return null;
+    }
+    paramJSONObject = (TianShuAccess.AdItem)paramJSONObject.value.lst.get(0);
+    if (isAdItemValid(paramJSONObject))
+    {
+      QMLog.e("PendantDataManager", "handleTianShuResponse adItem is empty");
+      return null;
     }
     return paramJSONObject;
   }
@@ -163,41 +156,68 @@ public class PendantDataManager
     if (paramJSONObject == null) {
       return null;
     }
-    Object localObject1 = new HashMap();
-    ((HashMap)localObject1).put("type", "");
-    ((HashMap)localObject1).put("url", "");
-    ((HashMap)localObject1).put("pic", "");
-    ((HashMap)localObject1).put("pendant", "");
-    ((HashMap)localObject1).put("staticPendant", "");
-    ((HashMap)localObject1).put("autoPopup_webview", "");
-    ((HashMap)localObject1).put("absTime_webview_popup", "");
-    ((HashMap)localObject1).put("autoWebviewDelay", "");
-    ((HashMap)localObject1).put("should_pendant_show", "");
-    ((HashMap)localObject1).put("absTime_pendant_show", "");
-    ((HashMap)localObject1).put("pendant_duration_hr", "");
-    ((HashMap)localObject1).put("max_consumption", "");
-    ((HashMap)localObject1).put("active_id", "");
-    Object localObject2 = paramJSONObject.argList.get().iterator();
-    while (((Iterator)localObject2).hasNext())
+    Object localObject2 = new HashMap();
+    ((HashMap)localObject2).put("type", "");
+    ((HashMap)localObject2).put("url", "");
+    ((HashMap)localObject2).put("pic", "");
+    ((HashMap)localObject2).put("pendant", "");
+    ((HashMap)localObject2).put("staticPendant", "");
+    ((HashMap)localObject2).put("autoPopup_webview", "");
+    ((HashMap)localObject2).put("absTime_webview_popup", "");
+    ((HashMap)localObject2).put("autoWebviewDelay", "");
+    ((HashMap)localObject2).put("should_pendant_show", "");
+    ((HashMap)localObject2).put("absTime_pendant_show", "");
+    ((HashMap)localObject2).put("pendant_duration_hr", "");
+    ((HashMap)localObject2).put("max_consumption", "");
+    ((HashMap)localObject2).put("active_id", "");
+    Object localObject1 = paramJSONObject.argList.get().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      localObject3 = (TianShuAccess.MapEntry)((Iterator)localObject2).next();
-      ((HashMap)localObject1).put(((TianShuAccess.MapEntry)localObject3).key.get(), ((TianShuAccess.MapEntry)localObject3).value.get());
+      localObject3 = (TianShuAccess.MapEntry)((Iterator)localObject1).next();
+      ((HashMap)localObject2).put(((TianShuAccess.MapEntry)localObject3).key.get(), ((TianShuAccess.MapEntry)localObject3).value.get());
     }
-    localObject2 = (String)((HashMap)localObject1).get("type");
-    Object localObject3 = (String)((HashMap)localObject1).get("pic");
-    String str1 = (String)((HashMap)localObject1).get("pendant");
-    String str2 = (String)((HashMap)localObject1).get("staticPendant");
-    String str3 = (String)((HashMap)localObject1).get("autoPopup_webview");
-    String str4 = (String)((HashMap)localObject1).get("absTime_webview_popup");
-    String str5 = (String)((HashMap)localObject1).get("autoWebviewDelay");
-    String str6 = (String)((HashMap)localObject1).get("should_pendant_show");
-    String str7 = (String)((HashMap)localObject1).get("absTime_pendant_show");
-    String str8 = (String)((HashMap)localObject1).get("pendant_duration_hr");
-    String str9 = (String)((HashMap)localObject1).get("max_consumption");
-    String str10 = (String)((HashMap)localObject1).get("active_id");
-    localObject1 = processUrlFromTianShu((String)((HashMap)localObject1).get("url"), paramString, paramJSONObject);
-    QMLog.i("PendantDataManager", "handleTianShuResponse type:" + (String)localObject2 + ", jumpUrl:" + (String)localObject1 + ", pictureUrl:" + (String)localObject3 + ", pendantUrl:" + str1 + ", staticPendantUrl:" + str2 + ", autoWebview:" + str3 + ", absTimeWebview:" + str4 + "autoWebviewDelay:" + str5 + ", shouldShowPendant:" + str6 + ", absTimeShowPendant:" + str7 + ", absTimeRemovePendant:" + str8 + ", numMaxConsumption:" + str9 + ", activeId:" + str10);
-    return new PendantAdInfo.Builder().adItem(paramJSONObject).type((String)localObject2).pictureUrl((String)localObject3).pendantUrl(str1).staticPendantUrl(str2).jumpUrl((String)localObject1).appId(paramString).scene(paramInt).autoPopUpWebview(str3).popUpTime(str4).autoWebviewDelay(str5).showPendant(str6).absTimeShowPendant(str7).absTimeRemovePendant(str8).numMaxConsumption(str9).activeId(str10).build();
+    localObject1 = (String)((HashMap)localObject2).get("type");
+    Object localObject3 = (String)((HashMap)localObject2).get("pic");
+    String str1 = (String)((HashMap)localObject2).get("pendant");
+    String str2 = (String)((HashMap)localObject2).get("staticPendant");
+    String str3 = (String)((HashMap)localObject2).get("autoPopup_webview");
+    String str4 = (String)((HashMap)localObject2).get("absTime_webview_popup");
+    String str5 = (String)((HashMap)localObject2).get("autoWebviewDelay");
+    String str6 = (String)((HashMap)localObject2).get("should_pendant_show");
+    String str7 = (String)((HashMap)localObject2).get("absTime_pendant_show");
+    String str8 = (String)((HashMap)localObject2).get("pendant_duration_hr");
+    String str9 = (String)((HashMap)localObject2).get("max_consumption");
+    String str10 = (String)((HashMap)localObject2).get("active_id");
+    localObject2 = processUrlFromTianShu((String)((HashMap)localObject2).get("url"), paramString, paramJSONObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleTianShuResponse type:");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(", jumpUrl:");
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append(", pictureUrl:");
+    localStringBuilder.append((String)localObject3);
+    localStringBuilder.append(", pendantUrl:");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(", staticPendantUrl:");
+    localStringBuilder.append(str2);
+    localStringBuilder.append(", autoWebview:");
+    localStringBuilder.append(str3);
+    localStringBuilder.append(", absTimeWebview:");
+    localStringBuilder.append(str4);
+    localStringBuilder.append("autoWebviewDelay:");
+    localStringBuilder.append(str5);
+    localStringBuilder.append(", shouldShowPendant:");
+    localStringBuilder.append(str6);
+    localStringBuilder.append(", absTimeShowPendant:");
+    localStringBuilder.append(str7);
+    localStringBuilder.append(", absTimeRemovePendant:");
+    localStringBuilder.append(str8);
+    localStringBuilder.append(", numMaxConsumption:");
+    localStringBuilder.append(str9);
+    localStringBuilder.append(", activeId:");
+    localStringBuilder.append(str10);
+    QMLog.i("PendantDataManager", localStringBuilder.toString());
+    return new PendantAdInfo.Builder().adItem(paramJSONObject).type((String)localObject1).pictureUrl((String)localObject3).pendantUrl(str1).staticPendantUrl(str2).jumpUrl((String)localObject2).appId(paramString).scene(paramInt).autoPopUpWebview(str3).popUpTime(str4).autoWebviewDelay(str5).showPendant(str6).absTimeShowPendant(str7).absTimeRemovePendant(str8).numMaxConsumption(str9).activeId(str10).build();
   }
   
   public static ArrayList<Date> handleTianshuDateParsing(Date paramDate, PendantAdInfo paramPendantAdInfo)
@@ -209,7 +229,16 @@ public class PendantDataManager
       Date localDate1 = ((SimpleDateFormat)localObject).parse(paramPendantAdInfo.getPopUpTime());
       Date localDate2 = ((SimpleDateFormat)localObject).parse(paramPendantAdInfo.getAbsTimeShowPendant());
       paramPendantAdInfo = ((SimpleDateFormat)localObject).parse(paramPendantAdInfo.getAbsTimeRemovePendant());
-      QMLog.d("PendantDataManager", "getPopUpTime:" + localDate1 + ", getAbsTimeShowPendant:" + localDate2 + ", getAbsTimeRemovePendant" + paramPendantAdInfo + ", curTime:" + paramDate);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getPopUpTime:");
+      ((StringBuilder)localObject).append(localDate1);
+      ((StringBuilder)localObject).append(", getAbsTimeShowPendant:");
+      ((StringBuilder)localObject).append(localDate2);
+      ((StringBuilder)localObject).append(", getAbsTimeRemovePendant");
+      ((StringBuilder)localObject).append(paramPendantAdInfo);
+      ((StringBuilder)localObject).append(", curTime:");
+      ((StringBuilder)localObject).append(paramDate);
+      QMLog.d("PendantDataManager", ((StringBuilder)localObject).toString());
       localObject = new ArrayList();
       ((ArrayList)localObject).add(paramDate);
       ((ArrayList)localObject).add(localDate1);
@@ -247,18 +276,20 @@ public class PendantDataManager
   
   private static void pendantStateChange(PendantAdInfo paramPendantAdInfo, Date paramDate1, Date paramDate2, Date paramDate3, Date paramDate4, IMiniAppContext paramIMiniAppContext, MiniAppProxy paramMiniAppProxy, Context paramContext, String paramString, int paramInt)
   {
-    QMLog.d("PendantDataManager", "entranceStrategy=" + entranceStrategy);
-    if (entranceStrategy == 0) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("entranceStrategy=");
+    localStringBuilder.append(entranceStrategy);
+    QMLog.d("PendantDataManager", localStringBuilder.toString());
+    int i = entranceStrategy;
+    if (i == 0)
+    {
       if (shouldLaunchWebviewImmediately(paramPendantAdInfo, paramDate1, paramDate2, paramDate4))
       {
         QMLog.d("PendantDataManager", "已到活动投放时间， 直接打开webview");
         entranceStrategy = 2;
         delayForWebviewPopup(paramPendantAdInfo, paramIMiniAppContext, Integer.parseInt(paramPendantAdInfo.getAutoWebviewDelay()), paramMiniAppProxy, paramContext);
+        return;
       }
-    }
-    do
-    {
-      return;
       if (shouldWaitForPendantShowUp(paramPendantAdInfo, paramDate1, paramDate3, paramDate4))
       {
         QMLog.d("PendantDataManager", "时间没到活动时间，倒计时等待红包挂件出现");
@@ -270,15 +301,18 @@ public class PendantDataManager
       getSp().edit().putString("numMaxConsumption", Integer.toString(Integer.parseInt(paramPendantAdInfo.getNumMaxConsumption()) - 1)).commit();
       requestAd((Activity)paramContext, paramIMiniAppContext, paramString, paramInt);
       return;
-      if (entranceStrategy == 1)
-      {
-        QMLog.d("PendantDataManager", "红包翻倍，静态红包挂件出现");
-        OperatePendantAd.obtain(paramIMiniAppContext).show(paramPendantAdInfo);
-        return;
-      }
-    } while (entranceStrategy != 2);
-    QMLog.d("PendantDataManager", "红包挂件消失");
-    OperatePendantAd.obtain(paramIMiniAppContext).remove();
+    }
+    if (i == 1)
+    {
+      QMLog.d("PendantDataManager", "红包翻倍，静态红包挂件出现");
+      OperatePendantAd.obtain(paramIMiniAppContext).show(paramPendantAdInfo);
+      return;
+    }
+    if (i == 2)
+    {
+      QMLog.d("PendantDataManager", "红包挂件消失");
+      OperatePendantAd.obtain(paramIMiniAppContext).remove();
+    }
   }
   
   private static boolean performReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
@@ -304,7 +338,12 @@ public class PendantDataManager
     try
     {
       paramJSONObject = (TianShuAccess.GetAdsRsp)paramJSONObject.get("response");
-      QMLog.e("PendantDataManager", "err code: " + String.valueOf(paramJSONObject.code.get()) + ", err msg: " + String.valueOf(paramJSONObject.errmsg.get()));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("err code: ");
+      localStringBuilder.append(String.valueOf(paramJSONObject.code.get()));
+      localStringBuilder.append(", err msg: ");
+      localStringBuilder.append(String.valueOf(paramJSONObject.errmsg.get()));
+      QMLog.e("PendantDataManager", localStringBuilder.toString());
       return;
     }
     catch (JSONException paramJSONObject)
@@ -315,34 +354,48 @@ public class PendantDataManager
   
   private static String processUrlFromTianShu(String paramString1, String paramString2, TianShuAccess.AdItem paramAdItem)
   {
-    QMLog.w("PendantDataManager", "url from tianshu : " + paramString1);
-    String str3 = "";
-    String str4 = "";
-    if (paramString2 != null) {}
-    for (;;)
-    {
-      String str2 = str4;
-      String str1 = str3;
-      if (paramAdItem != null)
-      {
-        str2 = str4;
-        str1 = str3;
-        if (paramAdItem.iAdId != null)
-        {
-          str1 = String.valueOf(paramAdItem.iAdId.get());
-          str2 = String.valueOf(paramAdItem.traceinfo);
-          QMLog.d("PendantDataManager", "广告id:" + str1);
-        }
-      }
-      paramAdItem = paramString1;
-      if (paramString1 != null)
-      {
-        paramAdItem = paramString1 + "&appid=" + paramString2 + "&item_id=" + str1 + "&trigger_info=" + str2;
-        QMLog.w("PendantDataManager", "url with data : " + paramAdItem);
-      }
-      return paramAdItem;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("url from tianshu : ");
+    ((StringBuilder)localObject1).append(paramString1);
+    QMLog.w("PendantDataManager", ((StringBuilder)localObject1).toString());
+    Object localObject2 = "";
+    if (paramString2 == null) {
       paramString2 = "";
     }
+    if ((paramAdItem != null) && (paramAdItem.iAdId != null))
+    {
+      localObject1 = String.valueOf(paramAdItem.iAdId.get());
+      localObject2 = String.valueOf(paramAdItem.traceinfo);
+      paramAdItem = new StringBuilder();
+      paramAdItem.append("广告id:");
+      paramAdItem.append((String)localObject1);
+      QMLog.d("PendantDataManager", paramAdItem.toString());
+      paramAdItem = (TianShuAccess.AdItem)localObject1;
+      localObject1 = localObject2;
+    }
+    else
+    {
+      localObject1 = "";
+      paramAdItem = (TianShuAccess.AdItem)localObject2;
+    }
+    localObject2 = paramString1;
+    if (paramString1 != null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append("&appid=");
+      ((StringBuilder)localObject2).append(paramString2);
+      ((StringBuilder)localObject2).append("&item_id=");
+      ((StringBuilder)localObject2).append(paramAdItem);
+      ((StringBuilder)localObject2).append("&trigger_info=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      paramString1 = new StringBuilder();
+      paramString1.append("url with data : ");
+      paramString1.append((String)localObject2);
+      QMLog.w("PendantDataManager", paramString1.toString());
+    }
+    return localObject2;
   }
   
   public static void reportClick(String paramString)
@@ -362,15 +415,19 @@ public class PendantDataManager
   
   private static void requestTianShu(Context paramContext, IMiniAppContext paramIMiniAppContext, String paramString, int paramInt)
   {
-    if (paramString == null) {}
-    ChannelProxy localChannelProxy;
-    do
-    {
+    if (paramString == null) {
       return;
-      QMLog.i("PendantDataManager", "requestTianShu with appId=" + paramString + " scene=" + paramInt);
-      localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-    } while (localChannelProxy.tianshuRequestAdv(paramContext, paramString, paramInt, 637, 1, getCallback(paramContext, paramIMiniAppContext, paramString, paramInt, localChannelProxy, (MiniAppProxy)ProxyManager.get(MiniAppProxy.class))));
-    QMLog.e("PendantDataManager", "requestTianShu isImpl=false");
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("requestTianShu with appId=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" scene=");
+    ((StringBuilder)localObject).append(paramInt);
+    QMLog.i("PendantDataManager", ((StringBuilder)localObject).toString());
+    localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    if (!((ChannelProxy)localObject).tianshuRequestAdv(paramContext, paramString, paramInt, 637, 1, getCallback(paramContext, paramIMiniAppContext, paramString, paramInt, (ChannelProxy)localObject, (MiniAppProxy)ProxyManager.get(MiniAppProxy.class)))) {
+      QMLog.e("PendantDataManager", "requestTianShu isImpl=false");
+    }
   }
   
   public static void requestTianshuAgain(PendantAdInfo paramPendantAdInfo, Context paramContext, IMiniAppContext paramIMiniAppContext, String paramString, int paramInt)
@@ -391,24 +448,27 @@ public class PendantDataManager
       QMLog.i("PendantDataManager", "no record from disk");
       return false;
     }
-    if ((getSp().getString("numMaxConsumption", "0").equals("0")) || (!getSp().getString("curDay", "").equals(localObject)))
+    if ((!getSp().getString("numMaxConsumption", "0").equals("0")) && (getSp().getString("curDay", "").equals(localObject)))
     {
-      QMLog.i("PendantDataManager", "outdated pendant ad, cleaning");
-      return false;
+      if (!getSp().getString("appid", "").equals(paramString))
+      {
+        QMLog.i("PendantDataManager", "not in the same app");
+        return false;
+      }
+      if (entranceStrategy == 2) {
+        entranceStrategy = 0;
+      }
+      localObject = new PendantAdInfo.Builder().adItem(null).type(getSp().getString("type", "1")).pictureUrl(getSp().getString("pictureUrl", "")).pendantUrl(getSp().getString("pendantUrl", "")).staticPendantUrl(getSp().getString("staticPendantUrl", "")).jumpUrl(getSp().getString("jumpUrl", "")).appId(getSp().getString("appid", "0")).scene(paramInt).autoPopUpWebview(getSp().getString("autoPopUpWebview", "1")).popUpTime(getSp().getString("popUpTime", "0")).autoWebviewDelay(getSp().getString("autoWebviewDelay", "0")).showPendant(getSp().getString("showPendant", "1")).absTimeShowPendant(getSp().getString("absTimeShowPendant", "0")).absTimeRemovePendant(getSp().getString("absTimeRemovePendant", "0")).numMaxConsumption(getSp().getString("numMaxConsumption", "0")).activeId(getSp().getString("activeId", "0")).build();
+      QMLog.i("PendantDataManager", "从sp中恢复天枢");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("jumpURL = ");
+      localStringBuilder.append(((PendantAdInfo)localObject).getJumpUrl());
+      QMLog.i("PendantDataManager", localStringBuilder.toString());
+      handleCorrectTianshuOperation(paramContext, paramIMiniAppContext, paramString, paramInt, paramChannelProxy, paramMiniAppProxy, (PendantAdInfo)localObject);
+      return true;
     }
-    if (!getSp().getString("appid", "").equals(paramString))
-    {
-      QMLog.i("PendantDataManager", "not in the same app");
-      return false;
-    }
-    if (entranceStrategy == 2) {
-      entranceStrategy = 0;
-    }
-    localObject = new PendantAdInfo.Builder().adItem(null).type(getSp().getString("type", "1")).pictureUrl(getSp().getString("pictureUrl", "")).pendantUrl(getSp().getString("pendantUrl", "")).staticPendantUrl(getSp().getString("staticPendantUrl", "")).jumpUrl(getSp().getString("jumpUrl", "")).appId(getSp().getString("appid", "0")).scene(paramInt).autoPopUpWebview(getSp().getString("autoPopUpWebview", "1")).popUpTime(getSp().getString("popUpTime", "0")).autoWebviewDelay(getSp().getString("autoWebviewDelay", "0")).showPendant(getSp().getString("showPendant", "1")).absTimeShowPendant(getSp().getString("absTimeShowPendant", "0")).absTimeRemovePendant(getSp().getString("absTimeRemovePendant", "0")).numMaxConsumption(getSp().getString("numMaxConsumption", "0")).activeId(getSp().getString("activeId", "0")).build();
-    QMLog.i("PendantDataManager", "从sp中恢复天枢");
-    QMLog.i("PendantDataManager", "jumpURL = " + ((PendantAdInfo)localObject).getJumpUrl());
-    handleCorrectTianshuOperation(paramContext, paramIMiniAppContext, paramString, paramInt, paramChannelProxy, paramMiniAppProxy, (PendantAdInfo)localObject);
-    return true;
+    QMLog.i("PendantDataManager", "outdated pendant ad, cleaning");
+    return false;
   }
   
   private static boolean shouldLaunchWebviewImmediately(PendantAdInfo paramPendantAdInfo, Date paramDate1, Date paramDate2, Date paramDate3)
@@ -429,47 +489,46 @@ public class PendantDataManager
   public static void wirteTianshuCache(PendantAdInfo paramPendantAdInfo)
   {
     String str = new SimpleDateFormat("yyyy_MM_dd").format(new Date(System.currentTimeMillis()));
-    if ((getSp().contains("curDay")) && (!getSp().getString("curDay", "").equals(str))) {
+    if ((getSp().contains("curDay")) && (!getSp().getString("curDay", "").equals(str)))
+    {
       getSp().edit().clear().putString("curDay", str).commit();
     }
-    for (;;)
+    else if (!getSp().contains("curDay"))
     {
-      getSp().edit().putString("AdId", String.valueOf(paramPendantAdInfo.getAdItem().iAdId.get())).commit();
-      getSp().edit().putString("type", paramPendantAdInfo.getType()).commit();
-      getSp().edit().putString("pictureUrl", paramPendantAdInfo.getPictureUrl()).commit();
-      getSp().edit().putString("pendantUrl", paramPendantAdInfo.getPendantUrl()).commit();
-      getSp().edit().putString("staticPendantUrl", paramPendantAdInfo.getStaticPendantUrl()).commit();
-      getSp().edit().putString("jumpUrl", paramPendantAdInfo.getJumpUrl()).commit();
-      getSp().edit().putString("appid", paramPendantAdInfo.getAppId()).commit();
-      getSp().edit().putInt("scene", paramPendantAdInfo.getScene()).commit();
-      getSp().edit().putString("autoPopUpWebview", paramPendantAdInfo.getAutoPopUpWebview()).commit();
-      getSp().edit().putString("popUpTime", paramPendantAdInfo.getPopUpTime()).commit();
-      getSp().edit().putString("autoWebviewDelay", paramPendantAdInfo.getAutoWebviewDelay()).commit();
-      getSp().edit().putString("showPendant", paramPendantAdInfo.getShowPendant()).commit();
-      getSp().edit().putString("absTimeShowPendant", paramPendantAdInfo.getAbsTimeShowPendant()).commit();
-      getSp().edit().putString("absTimeRemovePendant", paramPendantAdInfo.getAbsTimeRemovePendant()).commit();
-      getSp().edit().putString("numMaxConsumption", paramPendantAdInfo.getNumMaxConsumption()).commit();
-      getSp().edit().putString("activeId", paramPendantAdInfo.getActiveId()).commit();
-      return;
-      if (!getSp().contains("curDay"))
-      {
-        QMLog.i("PendantDataManager", "creating a new record...");
-        getSp().edit().putString("curDay", str).commit();
-      }
-      else
-      {
-        if (Integer.parseInt(paramPendantAdInfo.getNumMaxConsumption()) <= 0) {
-          break;
-        }
-        QMLog.i("PendantDataManager", "updating an existing record...");
-      }
+      QMLog.i("PendantDataManager", "creating a new record...");
+      getSp().edit().putString("curDay", str).commit();
     }
+    else
+    {
+      if (Integer.parseInt(paramPendantAdInfo.getNumMaxConsumption()) <= 0) {
+        break label580;
+      }
+      QMLog.i("PendantDataManager", "updating an existing record...");
+    }
+    getSp().edit().putString("AdId", String.valueOf(paramPendantAdInfo.getAdItem().iAdId.get())).commit();
+    getSp().edit().putString("type", paramPendantAdInfo.getType()).commit();
+    getSp().edit().putString("pictureUrl", paramPendantAdInfo.getPictureUrl()).commit();
+    getSp().edit().putString("pendantUrl", paramPendantAdInfo.getPendantUrl()).commit();
+    getSp().edit().putString("staticPendantUrl", paramPendantAdInfo.getStaticPendantUrl()).commit();
+    getSp().edit().putString("jumpUrl", paramPendantAdInfo.getJumpUrl()).commit();
+    getSp().edit().putString("appid", paramPendantAdInfo.getAppId()).commit();
+    getSp().edit().putInt("scene", paramPendantAdInfo.getScene()).commit();
+    getSp().edit().putString("autoPopUpWebview", paramPendantAdInfo.getAutoPopUpWebview()).commit();
+    getSp().edit().putString("popUpTime", paramPendantAdInfo.getPopUpTime()).commit();
+    getSp().edit().putString("autoWebviewDelay", paramPendantAdInfo.getAutoWebviewDelay()).commit();
+    getSp().edit().putString("showPendant", paramPendantAdInfo.getShowPendant()).commit();
+    getSp().edit().putString("absTimeShowPendant", paramPendantAdInfo.getAbsTimeShowPendant()).commit();
+    getSp().edit().putString("absTimeRemovePendant", paramPendantAdInfo.getAbsTimeRemovePendant()).commit();
+    getSp().edit().putString("numMaxConsumption", paramPendantAdInfo.getNumMaxConsumption()).commit();
+    getSp().edit().putString("activeId", paramPendantAdInfo.getActiveId()).commit();
+    return;
+    label580:
     getSp().edit().clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.PendantDataManager
  * JD-Core Version:    0.7.0.1
  */

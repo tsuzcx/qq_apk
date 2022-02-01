@@ -30,6 +30,7 @@ public class HttpUtil
 {
   public static int a(Throwable paramThrowable, int paramInt)
   {
+    int i = paramInt;
     if (paramThrowable != null)
     {
       if ((paramThrowable instanceof SSLPeerUnverifiedException)) {
@@ -78,22 +79,24 @@ public class HttpUtil
       if ((paramThrowable instanceof Exception)) {
         return 4;
       }
+      i = paramInt;
       if ((paramThrowable instanceof OutOfMemoryError)) {
-        return 3;
+        i = 3;
       }
     }
-    return paramInt;
+    return i;
   }
   
   private static String a(String paramString)
   {
-    if ((paramString.endsWith(".jpg")) || (paramString.endsWith(".jpeg"))) {
-      return "image/jpg";
+    if ((!paramString.endsWith(".jpg")) && (!paramString.endsWith(".jpeg")))
+    {
+      if (paramString.endsWith(".png")) {
+        return "image/png";
+      }
+      return "application/octet-stream";
     }
-    if (paramString.endsWith(".png")) {
-      return "image/png";
-    }
-    return "application/octet-stream";
+    return "image/jpg";
   }
   
   public static Request a(String paramString1, Map<String, String> paramMap, String paramString2, MediaType paramMediaType, byte[] paramArrayOfByte)
@@ -109,12 +112,12 @@ public class HttpUtil
       }
     }
     localBuilder.url(paramString1);
-    if ("GET".equals(paramString2)) {
+    if ("GET".equals(paramString2))
+    {
       localBuilder.get();
     }
-    for (;;)
+    else
     {
-      return localBuilder.build();
       paramString1 = null;
       if (HttpMethod.requiresRequestBody(paramString2))
       {
@@ -126,6 +129,7 @@ public class HttpUtil
       }
       localBuilder.method(paramString2, paramString1);
     }
+    return localBuilder.build();
   }
   
   public static RequestBody a(String paramString1, Map<String, String> paramMap, String paramString2, String paramString3, UploaderProxy.UploadListener paramUploadListener)
@@ -152,27 +156,31 @@ public class HttpUtil
   
   public static JSONObject a(Map<String, String> paramMap)
   {
+    JSONObject localJSONObject;
     if ((paramMap != null) && (paramMap.size() > 0))
     {
-      JSONObject localJSONObject = new JSONObject();
+      localJSONObject = new JSONObject();
       paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        try
-        {
-          localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
-        }
-        catch (JSONException localJSONException) {}
-      }
-      return localJSONObject;
     }
-    return null;
+    for (;;)
+    {
+      Map.Entry localEntry;
+      if (paramMap.hasNext()) {
+        localEntry = (Map.Entry)paramMap.next();
+      }
+      try
+      {
+        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+      }
+      catch (JSONException localJSONException) {}
+      return localJSONObject;
+      return null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.HttpUtil
  * JD-Core Version:    0.7.0.1
  */

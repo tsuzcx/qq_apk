@@ -11,21 +11,18 @@ class WebSoPlugin$WebSo3Helper
   
   private void a(WebSoPlugin paramWebSoPlugin, String paramString, WebSoService.WebSoState.WebSo3 paramWebSo3)
   {
-    if ((paramWebSo3 != null) && (!TextUtils.isEmpty(paramString))) {
+    if ((paramWebSo3 != null) && (!TextUtils.isEmpty(paramString)))
+    {
       WebSoUtils.a("callJs");
-    }
-    try
-    {
-      paramWebSoPlugin.callJs(paramString, new String[] { this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a() });
-      this.jdField_a_of_type_JavaLangString = null;
-      return;
-    }
-    catch (Exception paramWebSoPlugin)
-    {
-      for (;;)
+      try
+      {
+        paramWebSoPlugin.callJs(paramString, new String[] { this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a() });
+      }
+      catch (Exception paramWebSoPlugin)
       {
         paramWebSoPlugin.printStackTrace();
       }
+      this.jdField_a_of_type_JavaLangString = null;
     }
   }
   
@@ -57,7 +54,7 @@ class WebSoPlugin$WebSo3Helper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.WebSoPlugin.WebSo3Helper
  * JD-Core Version:    0.7.0.1
  */

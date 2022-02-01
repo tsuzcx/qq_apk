@@ -12,14 +12,15 @@ class OperatorDelay$1$1
   {
     if (!this.this$1.done)
     {
-      this.this$1.done = true;
-      this.this$1.val$child.onCompleted();
+      OperatorDelay.1 local1 = this.this$1;
+      local1.done = true;
+      local1.val$child.onCompleted();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorDelay.1.1
  * JD-Core Version:    0.7.0.1
  */

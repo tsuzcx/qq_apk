@@ -11,14 +11,18 @@ class TroopFileTransferManager$6
 {
   TroopFileTransferManager$6(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  public void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
     if ((paramBoolean) && (paramFileInfo != null))
     {
       String str = paramFileInfo.str_file_id.get();
       Object localObject = str;
-      if (!str.startsWith("/")) {
-        localObject = "/" + str;
+      if (!str.startsWith("/"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("/");
+        ((StringBuilder)localObject).append(str);
+        localObject = ((StringBuilder)localObject).toString();
       }
       localObject = this.a.a().a((String)localObject);
       if (localObject != null)
@@ -32,7 +36,7 @@ class TroopFileTransferManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.6
  * JD-Core Version:    0.7.0.1
  */

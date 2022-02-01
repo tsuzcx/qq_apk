@@ -10,23 +10,19 @@ public class EditorUtil
   public static CharSequence clip(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
     int m = paramCharSequence.length();
-    int j = 0;
     int i = paramInt1;
-    for (;;)
+    int j = 0;
+    while (i < m)
     {
-      CharSequence localCharSequence = paramCharSequence;
-      if (i < m) {
-        if (paramCharSequence.charAt(i) >= '') {
-          break label91;
-        }
+      int k;
+      if (paramCharSequence.charAt(i) < '') {
+        k = 1;
+      } else {
+        k = 2;
       }
-      label91:
-      for (int k = 1;; k = 2)
+      j += k;
+      if (j > paramInt2)
       {
-        j = k + j;
-        if (j <= paramInt2) {
-          break;
-        }
         paramInt2 = i;
         if (i > 0)
         {
@@ -35,117 +31,109 @@ public class EditorUtil
             paramInt2 = i - 1;
           }
         }
-        localCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
-        return localCharSequence;
+        return paramCharSequence.subSequence(paramInt1, paramInt2);
       }
       i += 1;
     }
+    return paramCharSequence;
   }
   
   public static boolean containLetter(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (!Pattern.compile("[a-zA-z]").matcher(paramString).find()) {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    return true;
+    return Pattern.compile("[a-zA-z]").matcher(paramString).find();
   }
   
   public static CharSequence filterEnter(CharSequence paramCharSequence)
   {
     int j = TextUtils.indexOf(paramCharSequence, '\n');
     int k = TextUtils.indexOf(paramCharSequence, '\r');
-    int i;
-    Object localObject;
-    if (j == -1)
+    if (j != -1)
     {
-      i = k;
-      localObject = paramCharSequence;
-      if (i != -1)
+      i = j;
+      if (k == -1) {
+        break label41;
+      }
+      if (j < k)
       {
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add(paramCharSequence.subSequence(0, i));
-        i += 1;
+        i = j;
+        break label41;
       }
     }
-    for (;;)
+    int i = k;
+    label41:
+    if (i != -1)
     {
-      k = TextUtils.indexOf(paramCharSequence, '\n', i);
-      int m = TextUtils.indexOf(paramCharSequence, '\r', i);
-      if (k == -1) {
-        j = m;
-      }
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramCharSequence.subSequence(0, i));
+      i += 1;
       for (;;)
       {
-        if (j != -1) {
-          break label166;
-        }
-        ((ArrayList)localObject).add(paramCharSequence.subSequence(i, paramCharSequence.length()));
-        localObject = TextUtils.concat((CharSequence[])((ArrayList)localObject).toArray(new CharSequence[((ArrayList)localObject).size()]));
-        return localObject;
+        k = TextUtils.indexOf(paramCharSequence, '\n', i);
+        int m = TextUtils.indexOf(paramCharSequence, '\r', i);
         if (k != -1)
         {
-          i = k;
-          if (j >= k) {
-            break;
+          j = k;
+          if (m == -1) {
+            break label120;
+          }
+          if (k < m)
+          {
+            j = k;
+            break label120;
           }
         }
-        i = j;
-        break;
-        if (m != -1)
+        j = m;
+        label120:
+        if (j == -1)
         {
-          j = m;
-          if (k >= m) {}
+          localArrayList.add(paramCharSequence.subSequence(i, paramCharSequence.length()));
+          return TextUtils.concat((CharSequence[])localArrayList.toArray(new CharSequence[localArrayList.size()]));
         }
-        else
-        {
-          j = k;
-        }
+        localArrayList.add(paramCharSequence.subSequence(i, j));
+        i = j + 1;
       }
-      label166:
-      ((ArrayList)localObject).add(paramCharSequence.subSequence(i, j));
-      i = j + 1;
     }
+    return paramCharSequence;
   }
   
   public static int getLength(CharSequence paramCharSequence)
   {
     int i = 0;
-    int k = 0;
     if (paramCharSequence == null) {
-      return k;
+      return 0;
     }
-    int m = paramCharSequence.length();
+    int k = paramCharSequence.length();
     int j = 0;
-    for (;;)
+    while (i < k)
     {
-      k = i;
-      if (j >= m) {
-        break;
-      }
-      paramCharSequence.charAt(j);
+      paramCharSequence.charAt(i);
       j += 1;
       i += 1;
     }
+    return j;
   }
   
   public static int getLengthChEn(CharSequence paramCharSequence)
   {
+    int i = 0;
     if (paramCharSequence == null) {
       return 0;
     }
     int m = paramCharSequence.length();
-    int i = 0;
     int j = 0;
-    if (i < m)
+    while (i < m)
     {
-      if (paramCharSequence.charAt(i) < '') {}
-      for (int k = 1;; k = 2)
-      {
-        j += k;
-        i += 1;
-        break;
+      int k;
+      if (paramCharSequence.charAt(i) < '') {
+        k = 1;
+      } else {
+        k = 2;
       }
+      j += k;
+      i += 1;
     }
     return j;
   }
@@ -156,45 +144,35 @@ public class EditorUtil
     {
       int i = 0;
       int k = paramCharSequence.length() - 1;
-      int j = k;
-      label45:
-      Object localObject;
-      if (i <= k)
+      int j;
+      for (;;)
       {
+        j = k;
+        if (i > k) {
+          break;
+        }
         j = paramCharSequence.charAt(i);
-        if ((j != 32) && (j != 12288)) {
-          j = k;
-        }
-      }
-      else
-      {
-        if (i < j)
+        if ((j != 32) && (j != 12288))
         {
-          k = paramCharSequence.charAt(j);
-          if ((k == 32) || (k == 12288)) {
-            break label90;
-          }
+          j = k;
+          break;
         }
-        if (i <= j) {
-          break label97;
-        }
-        localObject = "";
-      }
-      label90:
-      label97:
-      do
-      {
-        return localObject;
         i += 1;
-        break;
-        j -= 1;
-        break label45;
-        if (i != 0) {
-          break label116;
+      }
+      while (i < j)
+      {
+        k = paramCharSequence.charAt(j);
+        if ((k != 32) && (k != 12288)) {
+          break;
         }
-        localObject = paramCharSequence;
-      } while (j == paramCharSequence.length() - 1);
-      label116:
+        j -= 1;
+      }
+      if (i > j) {
+        return "";
+      }
+      if ((i == 0) && (j == paramCharSequence.length() - 1)) {
+        return paramCharSequence;
+      }
       return paramCharSequence.subSequence(i, j + 1);
     }
     return null;
@@ -202,7 +180,7 @@ public class EditorUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.EditorUtil
  * JD-Core Version:    0.7.0.1
  */

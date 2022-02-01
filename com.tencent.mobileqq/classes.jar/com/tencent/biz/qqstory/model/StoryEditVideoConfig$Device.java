@@ -19,61 +19,78 @@ public class StoryEditVideoConfig$Device
     jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device = new Device();
     jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.jdField_a_of_type_JavaLangString = Build.MANUFACTURER;
     jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.jdField_b_of_type_JavaLangString = Build.MODEL;
-    jdField_a_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.jdField_a_of_type_JavaLangString = "all";
-    jdField_a_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.jdField_b_of_type_JavaLangString = "all";
+    Device localDevice = jdField_a_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device;
+    localDevice.jdField_a_of_type_JavaLangString = "all";
+    localDevice.jdField_b_of_type_JavaLangString = "all";
   }
   
   public boolean a()
   {
-    if (jdField_a_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.equals(this)) {}
-    while ((jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.equals(this)) || ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.jdField_b_of_type_JavaLangString)))) {
+    boolean bool2 = jdField_a_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.equals(this);
+    boolean bool1 = true;
+    if (bool2) {
       return true;
     }
-    return false;
+    if (!jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.equals(this))
+    {
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.jdField_b_of_type_JavaLangString))) {
+        return true;
+      }
+      bool1 = false;
+    }
+    return bool1;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (Device)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null)
+      String str = this.jdField_a_of_type_JavaLangString;
+      if (str != null)
       {
-        if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {}
-      }
-      else {
-        while (paramObject.jdField_a_of_type_JavaLangString != null) {
+        if (!str.equals(paramObject.jdField_a_of_type_JavaLangString)) {
           return false;
         }
       }
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        return this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString);
+      else if (paramObject.jdField_a_of_type_JavaLangString != null) {
+        return false;
       }
-    } while (paramObject.jdField_b_of_type_JavaLangString == null);
+      str = this.jdField_b_of_type_JavaLangString;
+      if (str != null) {
+        return str.equals(paramObject.jdField_b_of_type_JavaLangString);
+      }
+      return paramObject.jdField_b_of_type_JavaLangString == null;
+    }
     return false;
   }
   
   public int hashCode()
   {
+    String str = this.jdField_a_of_type_JavaLangString;
     int j = 0;
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0)
-    {
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        j = this.jdField_b_of_type_JavaLangString.hashCode();
-      }
-      return i * 31 + j;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    str = this.jdField_b_of_type_JavaLangString;
+    if (str != null) {
+      j = str.hashCode();
+    }
+    return i * 31 + j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryEditVideoConfig.Device
  * JD-Core Version:    0.7.0.1
  */

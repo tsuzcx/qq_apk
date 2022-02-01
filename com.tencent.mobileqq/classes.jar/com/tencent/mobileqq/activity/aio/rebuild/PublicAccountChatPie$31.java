@@ -1,23 +1,26 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 
 class PublicAccountChatPie$31
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   PublicAccountChatPie$31(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    PublicAccountChatPie.d(this.a).post(new PublicAccountChatPie.31.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.31
  * JD-Core Version:    0.7.0.1
  */

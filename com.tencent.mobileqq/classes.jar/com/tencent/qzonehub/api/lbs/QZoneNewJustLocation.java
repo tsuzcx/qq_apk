@@ -53,14 +53,15 @@ public class QZoneNewJustLocation
   public LbsDataV2.GpsInfo a()
   {
     SosoLbsInfo localSosoLbsInfo = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo(this.jdField_a_of_type_JavaLangString);
-    if (localSosoLbsInfo != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QzoneLbsReporter.reportLocationCacheResult(bool, this.jdField_a_of_type_JavaLangString);
-      QLog.i("QZoneNewJustLocation.NewLbsInterface", 1, "[QZ_LBS_MODULE]----getCurrGps");
-      if (localSosoLbsInfo == null) {
-        break;
-      }
+    boolean bool;
+    if (localSosoLbsInfo != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    QzoneLbsReporter.reportLocationCacheResult(bool, this.jdField_a_of_type_JavaLangString);
+    QLog.i("QZoneNewJustLocation.NewLbsInterface", 1, "[QZ_LBS_MODULE]----getCurrGps");
+    if (localSosoLbsInfo != null) {
       return ((ISosoUtils)QRoute.api(ISosoUtils.class)).convertFromSoso(localSosoLbsInfo.mLocation);
     }
     return null;
@@ -71,16 +72,22 @@ public class QZoneNewJustLocation
     try
     {
       long l = System.currentTimeMillis();
-      if ((this.jdField_a_of_type_Boolean) || (l - this.jdField_a_of_type_Long < this.b))
+      if ((!this.jdField_a_of_type_Boolean) && (l - this.jdField_a_of_type_Long >= this.b))
       {
-        QLog.i("QZoneNewJustLocation", 1, "[QZ_LBS_MODULE] mIsGettingLocation = " + this.jdField_a_of_type_Boolean + ", (now - mLastGetLocationTime) ) = " + (l - this.jdField_a_of_type_Long) / 1000L + ", so return");
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_Boolean = true;
+        QLog.i("QZoneNewJustLocation", 1, "[QZ_LBS_MODULE] startLocation");
+        this.c = System.currentTimeMillis();
+        ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(this);
         return;
       }
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Boolean = true;
-      QLog.i("QZoneNewJustLocation", 1, "[QZ_LBS_MODULE] startLocation");
-      this.c = System.currentTimeMillis();
-      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(this);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[QZ_LBS_MODULE] mIsGettingLocation = ");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(", (now - mLastGetLocationTime) ) = ");
+      localStringBuilder.append((l - this.jdField_a_of_type_Long) / 1000L);
+      localStringBuilder.append(", so return");
+      QLog.i("QZoneNewJustLocation", 1, localStringBuilder.toString());
       return;
     }
     catch (Exception localException)
@@ -95,31 +102,37 @@ public class QZoneNewJustLocation
     {
       this.b = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneLocateInterval", 60000L);
       this.jdField_a_of_type_CooperationQzoneLbsDataV2$GpsInfo = ((ISosoUtils)QRoute.api(ISosoUtils.class)).convertFromSoso(paramSosoLbsInfo.mLocation);
-      if (this.jdField_a_of_type_ComTencentQzonehubApiLbsQZoneNewJustLocation$OnLocationChangeListener != null) {
-        this.jdField_a_of_type_ComTencentQzonehubApiLbsQZoneNewJustLocation$OnLocationChangeListener.a(this.jdField_a_of_type_CooperationQzoneLbsDataV2$GpsInfo);
+      paramSosoLbsInfo = this.jdField_a_of_type_ComTencentQzonehubApiLbsQZoneNewJustLocation$OnLocationChangeListener;
+      if (paramSosoLbsInfo != null) {
+        paramSosoLbsInfo.a(this.jdField_a_of_type_CooperationQzoneLbsDataV2$GpsInfo);
       }
-      QLog.i("QZoneNewJustLocation.NewLbsInterface", 1, "[QZ_LBS_MODULE]#onGetDeviceData succeed! just location--->gps=" + this.jdField_a_of_type_CooperationQzoneLbsDataV2$GpsInfo);
-      this.jdField_a_of_type_Boolean = false;
-      long l1 = System.currentTimeMillis();
-      long l2 = this.c;
-      QzoneLbsReporter.reportLocationResult(paramInt, this.jdField_a_of_type_JavaLangString, l1 - l2);
-      return;
+      paramSosoLbsInfo = new StringBuilder();
+      paramSosoLbsInfo.append("[QZ_LBS_MODULE]#onGetDeviceData succeed! just location--->gps=");
+      paramSosoLbsInfo.append(this.jdField_a_of_type_CooperationQzoneLbsDataV2$GpsInfo);
+      QLog.i("QZoneNewJustLocation.NewLbsInterface", 1, paramSosoLbsInfo.toString());
     }
-    if (paramInt == 2) {}
-    for (this.b *= 10L;; this.b *= 2L)
+    else
     {
-      QLog.e("QZoneNewJustLocation.NewLbsInterface", 1, "[QZ_LBS_MODULE]location failed: error in force gps info update..");
-      if (this.jdField_a_of_type_ComTencentQzonehubApiLbsQZoneNewJustLocation$OnLocationChangeListener == null) {
-        break;
+      if (paramInt == 2) {
+        this.b *= 10L;
+      } else {
+        this.b *= 2L;
       }
-      this.jdField_a_of_type_ComTencentQzonehubApiLbsQZoneNewJustLocation$OnLocationChangeListener.a();
-      break;
+      QLog.e("QZoneNewJustLocation.NewLbsInterface", 1, "[QZ_LBS_MODULE]location failed: error in force gps info update..");
+      paramSosoLbsInfo = this.jdField_a_of_type_ComTencentQzonehubApiLbsQZoneNewJustLocation$OnLocationChangeListener;
+      if (paramSosoLbsInfo != null) {
+        paramSosoLbsInfo.a();
+      }
     }
+    this.jdField_a_of_type_Boolean = false;
+    long l1 = System.currentTimeMillis();
+    long l2 = this.c;
+    QzoneLbsReporter.reportLocationResult(paramInt, this.jdField_a_of_type_JavaLangString, l1 - l2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qzonehub.api.lbs.QZoneNewJustLocation
  * JD-Core Version:    0.7.0.1
  */

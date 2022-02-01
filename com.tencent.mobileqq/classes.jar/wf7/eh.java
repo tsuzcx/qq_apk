@@ -8,7 +8,7 @@ import android.text.TextUtils;
 public class eh
   implements ei.a
 {
-  private static eh mg = null;
+  private static eh mg;
   private int hG = -6;
   private Handler mHandler = null;
   private long mh = 0L;
@@ -26,7 +26,10 @@ public class eh
   
   public static String ag(int paramInt)
   {
-    return "" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public static eh cE()
@@ -44,68 +47,71 @@ public class eh
   
   private boolean cG()
   {
-    Object localObject = null;
     try
     {
-      NetworkInfo localNetworkInfo = fi.getActiveNetworkInfo();
-      localObject = localNetworkInfo;
+      localNetworkInfo = fi.getActiveNetworkInfo();
     }
     catch (NullPointerException localNullPointerException)
     {
-      label8:
-      break label8;
+      NetworkInfo localNetworkInfo;
+      label7:
+      break label7;
     }
-    return (localObject == null) || (!localObject.isConnected());
+    localNetworkInfo = null;
+    return (localNetworkInfo == null) || (!localNetworkInfo.isConnected());
   }
   
   private boolean cH()
   {
     this.mi = true;
-    Object localObject = null;
     try
     {
-      String str = fj.a(new eh.1(this));
-      localObject = str;
+      str = fj.a(new eh.1(this));
     }
     catch (ex localex)
     {
-      for (;;)
-      {
-        this.hG = -3;
-      }
+      String str;
+      label20:
+      break label20;
     }
+    this.hG = -3;
+    str = null;
     this.mi = false;
     this.mj = System.currentTimeMillis();
-    return !TextUtils.isEmpty(localObject);
+    return true ^ TextUtils.isEmpty(str);
   }
   
   public int b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (cG()) {
+    if (cG())
+    {
       this.hG = -1;
     }
-    for (;;)
+    else
     {
-      return this.hG;
-      if ((this.mj > 0L) && (Math.abs(System.currentTimeMillis() - this.mj) <= 300000L)) {}
-      for (int i = 1;; i = 0)
+      int i;
+      if ((this.mj > 0L) && (Math.abs(System.currentTimeMillis() - this.mj) <= 300000L)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (paramBoolean1)
       {
-        if (!paramBoolean1) {
-          break label63;
-        }
         cH();
-        break;
       }
-      label63:
-      if ((paramBoolean2) && (i == 0) && (Math.abs(System.currentTimeMillis() - this.mj) > 60000L))
+      else
       {
-        this.mHandler.removeMessages(1);
-        this.mHandler.sendEmptyMessage(1);
-      }
-      if ((this.hG == 0) && (i == 0)) {
-        this.hG = -5;
+        if ((paramBoolean2) && (i == 0) && (Math.abs(System.currentTimeMillis() - this.mj) > 60000L))
+        {
+          this.mHandler.removeMessages(1);
+          this.mHandler.sendEmptyMessage(1);
+        }
+        if ((this.hG == 0) && (i == 0)) {
+          this.hG = -5;
+        }
       }
     }
+    return this.hG;
   }
   
   public void cF()
@@ -117,15 +123,20 @@ public class eh
   public void onConnected()
   {
     cF();
-    if ((this.mj > 0L) && (Math.abs(System.currentTimeMillis() - this.mj) < 60000L)) {}
-    for (int i = 1; (i != 0) || (this.mi); i = 0)
+    int i;
+    if ((this.mj > 0L) && (Math.abs(System.currentTimeMillis() - this.mj) < 60000L)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i == 0) && (!this.mi))
     {
       this.mHandler.removeMessages(1);
-      this.mHandler.sendEmptyMessageDelayed(1, 60000L);
+      this.mHandler.sendEmptyMessageDelayed(1, 5000L);
       return;
     }
     this.mHandler.removeMessages(1);
-    this.mHandler.sendEmptyMessageDelayed(1, 5000L);
+    this.mHandler.sendEmptyMessageDelayed(1, 60000L);
   }
   
   public void onDisconnected()
@@ -137,7 +148,7 @@ public class eh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.eh
  * JD-Core Version:    0.7.0.1
  */

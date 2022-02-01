@@ -17,21 +17,17 @@ class UriParserPathHelper$1
     try
     {
       this.jdField_a_of_type_JavaIoInputStream.close();
-      UriParserPathHelper.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper).finish();
-      return;
     }
     catch (IOException paramDialogInterface)
     {
-      for (;;)
-      {
-        QLog.e("UriParserPathHelper", 1, "system share.exception.e=", paramDialogInterface);
-      }
+      QLog.e("UriParserPathHelper", 1, "system share.exception.e=", paramDialogInterface);
     }
+    UriParserPathHelper.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.UriParserPathHelper.1
  * JD-Core Version:    0.7.0.1
  */

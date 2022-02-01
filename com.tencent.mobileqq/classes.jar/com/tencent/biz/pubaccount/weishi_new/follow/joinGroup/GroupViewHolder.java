@@ -15,14 +15,14 @@ public class GroupViewHolder
   GroupViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)paramView.findViewById(2131363196));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372115));
-    this.b = ((TextView)paramView.findViewById(2131369891));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)paramView.findViewById(2131363135));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371697));
+    this.b = ((TextView)paramView.findViewById(2131369576));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.GroupViewHolder
  * JD-Core Version:    0.7.0.1
  */

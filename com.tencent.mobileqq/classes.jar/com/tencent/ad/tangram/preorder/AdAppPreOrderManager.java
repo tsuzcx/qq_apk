@@ -22,8 +22,8 @@ import com.tencent.ad.tangram.protocol.msg_content;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.settings.AdSettingsManager;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.ad.tangram.util.AdLifecycleManager;
 import com.tencent.ad.tangram.util.AdLifecycleManager.a;
@@ -92,148 +92,137 @@ public enum AdAppPreOrderManager
       if ((this.status != 1) && (this.status != 2)) {
         return false;
       }
+      if (this.status == 2)
+      {
+        this.status = 3;
+        return false;
+      }
+      this.status = 2;
+      return true;
     }
     finally {}
-    if (this.status == 2)
-    {
-      this.status = 3;
-      return false;
-    }
-    this.status = 2;
-    return true;
   }
   
   private AdAppPreOrderTask getTaskById(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.cache == null)) {
-      return null;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      a locala = this.cache;
+      if (locala != null) {
+        return locala.getTaskById(paramString);
+      }
     }
-    return this.cache.getTaskById(paramString);
+    return null;
   }
   
   private List<AdAppPreOrderTask> getTasksByUrl(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.cache == null)) {
-      return null;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      a locala = this.cache;
+      if (locala != null) {
+        return locala.getTasksByUrl(paramString);
+      }
     }
-    return this.cache.getTasksByUrl(paramString);
+    return null;
   }
   
   private boolean isReady()
   {
     Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
-    if ((localBoolean == null) || (!localBoolean.booleanValue()))
+    if ((localBoolean != null) && (localBoolean.booleanValue()))
     {
-      AdLog.e("AdAppPreOrderManager", "not in main process");
-      return false;
+      if (this.status == 0)
+      {
+        AdLog.e("AdAppPreOrderManager", "appendTask failed manager not ready!");
+        return false;
+      }
+      return true;
     }
-    if (this.status == 0)
-    {
-      AdLog.e("AdAppPreOrderManager", "appendTask failed manager not ready!");
-      return false;
-    }
-    return true;
+    AdLog.e("AdAppPreOrderManager", "not in main process");
+    return false;
   }
   
   private void onTaskStageChanged(String paramString)
   {
-    int k = -2147483648;
     AdAppPreOrderTask localAdAppPreOrderTask = getTaskById(paramString);
-    int j;
-    label33:
-    label99:
-    Context localContext;
-    if (localAdAppPreOrderTask != null)
-    {
+    int i;
+    if (localAdAppPreOrderTask != null) {
       i = localAdAppPreOrderTask.status;
-      if (localAdAppPreOrderTask == null) {
-        break label169;
-      }
-      j = localAdAppPreOrderTask.reportStage;
-      AdLog.i("AdAppPreOrderManager", String.format("onTaskStageChanged taskId:%s status:%d reportStage:%d", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j) }));
-      if ((localAdAppPreOrderTask == null) || (localAdAppPreOrderTask.content == null)) {
-        break label175;
-      }
-      paramString = String.valueOf(localAdAppPreOrderTask.content.ad_info.report_info.trace_info.aid);
-      localContext = getContext();
-      if (localAdAppPreOrderTask == null) {
-        break label180;
-      }
-    }
-    label169:
-    label175:
-    label180:
-    for (int i = localAdAppPreOrderTask.status;; i = -2147483648)
-    {
-      j = k;
-      if (localAdAppPreOrderTask != null) {
-        j = localAdAppPreOrderTask.reportStage;
-      }
-      AdReporterForAnalysis.reportForAppPreOrderTaskReportStageStatusChanged(localContext, i, j, this.messagesSynced, this.messagesSynced30SecondsDelay, this.onBackgroundAtFirstTime20SecondsDelay, AdScreenStatusManager.getInstance().isScreenOn(), AdLifecycleManager.INSTANCE.isOnForeground(), paramString);
-      return;
+    } else {
       i = -2147483648;
-      break;
-      j = -2147483648;
-      break label33;
-      paramString = null;
-      break label99;
     }
+    int j;
+    if (localAdAppPreOrderTask != null) {
+      j = localAdAppPreOrderTask.reportStage;
+    } else {
+      j = -2147483648;
+    }
+    AdLog.i("AdAppPreOrderManager", String.format("onTaskStageChanged taskId:%s status:%d reportStage:%d", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j) }));
+    if ((localAdAppPreOrderTask != null) && (localAdAppPreOrderTask.content != null)) {
+      paramString = String.valueOf(localAdAppPreOrderTask.content.ad_info.report_info.trace_info.aid);
+    } else {
+      paramString = null;
+    }
+    Context localContext = getContext();
+    if (localAdAppPreOrderTask != null) {
+      i = localAdAppPreOrderTask.status;
+    } else {
+      i = -2147483648;
+    }
+    if (localAdAppPreOrderTask != null) {
+      j = localAdAppPreOrderTask.reportStage;
+    } else {
+      j = -2147483648;
+    }
+    AdAnalysisHelperForUtil.reportForAppPreOrderTaskReportStageStatusChanged(localContext, i, j, this.messagesSynced, this.messagesSynced30SecondsDelay, this.onBackgroundAtFirstTime20SecondsDelay, AdScreenStatusManager.getInstance().isScreenOn(), AdLifecycleManager.INSTANCE.isOnForeground(), paramString);
   }
   
   private void onTaskStatusChanged(String paramString, int paramInt)
   {
-    int k = -2147483648;
     runTasks();
     AdAppPreOrderTask localAdAppPreOrderTask = getTaskById(paramString);
-    int j;
-    label38:
-    label113:
-    Context localContext;
-    if (localAdAppPreOrderTask != null)
-    {
+    int i;
+    if (localAdAppPreOrderTask != null) {
       i = localAdAppPreOrderTask.status;
-      if (localAdAppPreOrderTask == null) {
-        break label187;
-      }
-      j = localAdAppPreOrderTask.reportStage;
-      AdLog.i("AdAppPreOrderManager", String.format("onTaskStatusChanged taskId:%s status:%d reportStage:%d errorCode:%d", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt) }));
-      if ((localAdAppPreOrderTask == null) || (localAdAppPreOrderTask.content == null)) {
-        break label194;
-      }
-      paramString = String.valueOf(localAdAppPreOrderTask.content.ad_info.report_info.trace_info.aid);
-      localContext = getContext();
-      if (localAdAppPreOrderTask == null) {
-        break label199;
-      }
-    }
-    label187:
-    label194:
-    label199:
-    for (int i = localAdAppPreOrderTask.status;; i = -2147483648)
-    {
-      j = k;
-      if (localAdAppPreOrderTask != null) {
-        j = localAdAppPreOrderTask.reportStage;
-      }
-      AdReporterForAnalysis.reportForAppPreOrderTaskStatusChanged(localContext, i, j, this.messagesSynced, this.messagesSynced30SecondsDelay, this.onBackgroundAtFirstTime20SecondsDelay, AdScreenStatusManager.getInstance().isScreenOn(), AdLifecycleManager.INSTANCE.isOnForeground(), paramString, paramInt);
-      return;
+    } else {
       i = -2147483648;
-      break;
-      j = -2147483648;
-      break label38;
-      paramString = null;
-      break label113;
     }
+    int j;
+    if (localAdAppPreOrderTask != null) {
+      j = localAdAppPreOrderTask.reportStage;
+    } else {
+      j = -2147483648;
+    }
+    AdLog.i("AdAppPreOrderManager", String.format("onTaskStatusChanged taskId:%s status:%d reportStage:%d errorCode:%d", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt) }));
+    if ((localAdAppPreOrderTask != null) && (localAdAppPreOrderTask.content != null)) {
+      paramString = String.valueOf(localAdAppPreOrderTask.content.ad_info.report_info.trace_info.aid);
+    } else {
+      paramString = null;
+    }
+    Context localContext = getContext();
+    if (localAdAppPreOrderTask != null) {
+      i = localAdAppPreOrderTask.status;
+    } else {
+      i = -2147483648;
+    }
+    if (localAdAppPreOrderTask != null) {
+      j = localAdAppPreOrderTask.reportStage;
+    } else {
+      j = -2147483648;
+    }
+    AdAnalysisHelperForUtil.reportForAppPreOrderTaskStatusChanged(localContext, i, j, this.messagesSynced, this.messagesSynced30SecondsDelay, this.onBackgroundAtFirstTime20SecondsDelay, AdScreenStatusManager.getInstance().isScreenOn(), AdLifecycleManager.INSTANCE.isOnForeground(), paramString, paramInt);
   }
   
   private void pauseActiveDownloadTasks()
   {
-    if ((this.cache != null) && (!this.cache.getQueue().isEmpty()))
+    Object localObject = this.cache;
+    if ((localObject != null) && (!((a)localObject).getQueue().isEmpty()))
     {
-      Iterator localIterator = this.cache.getQueue().iterator();
-      while (localIterator.hasNext())
+      localObject = this.cache.getQueue().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AdAppPreOrderTask localAdAppPreOrderTask = (AdAppPreOrderTask)localIterator.next();
+        AdAppPreOrderTask localAdAppPreOrderTask = (AdAppPreOrderTask)((Iterator)localObject).next();
         if ((localAdAppPreOrderTask.status >= 7) && (localAdAppPreOrderTask.status <= 10)) {
           b.pauseDownload(localAdAppPreOrderTask);
         }
@@ -247,35 +236,41 @@ public enum AdAppPreOrderManager
     AdConnectivityManager.getInstance().registerListener(this.connectivityListener);
     AdLifecycleManager.INSTANCE.registerListener(this.lifecycleListener);
     IAdDownloader localIAdDownloader = AdDownloader.getDownloader();
-    if ((localIAdDownloader != null) && (this.downloadCallback != null)) {
-      localIAdDownloader.registerListener(this.downloadCallback);
+    if (localIAdDownloader != null)
+    {
+      IAdDownloader.Callback localCallback = this.downloadCallback;
+      if (localCallback != null) {
+        localIAdDownloader.registerListener(localCallback);
+      }
     }
     AdScreenStatusManager.getInstance().registerListener(this.screenListener);
   }
   
   private void runTaskOnFileThread(AdAppPreOrderTask paramAdAppPreOrderTask)
   {
-    if (paramAdAppPreOrderTask == null) {}
-    do
-    {
+    if (paramAdAppPreOrderTask == null) {
       return;
-      if (!paramAdAppPreOrderTask.isValid(getContext()))
+    }
+    if (!paramAdAppPreOrderTask.isValid(getContext()))
+    {
+      setTaskFinishedAndCommit(paramAdAppPreOrderTask.taskId, 13);
+      return;
+    }
+    AdLog.i("AdAppPreOrderManager", String.format("runTaskOnFileThread taskId:%s status%d ", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
+    if ((paramAdAppPreOrderTask.status != 2) && (paramAdAppPreOrderTask.status != 5) && (paramAdAppPreOrderTask.status != 6) && (paramAdAppPreOrderTask.status != 4) && (paramAdAppPreOrderTask.status != 7) && (paramAdAppPreOrderTask.status != 8) && (paramAdAppPreOrderTask.status != 9) && (paramAdAppPreOrderTask.status != 11))
+    {
+      if ((paramAdAppPreOrderTask.status != 10) && ((paramAdAppPreOrderTask.status < 12) || (paramAdAppPreOrderTask.status > AdAppPreOrderTask.Status.QQREMINDER_END)))
       {
-        setTaskFinishedAndCommit(paramAdAppPreOrderTask.taskId, 13);
+        if (paramAdAppPreOrderTask.status == 33) {
+          return;
+        }
+        int i = paramAdAppPreOrderTask.status;
         return;
       }
-      AdLog.i("AdAppPreOrderManager", String.format("runTaskOnFileThread taskId:%s status%d ", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
-      if ((paramAdAppPreOrderTask.status == 2) || (paramAdAppPreOrderTask.status == 5) || (paramAdAppPreOrderTask.status == 6) || (paramAdAppPreOrderTask.status == 4) || (paramAdAppPreOrderTask.status == 7) || (paramAdAppPreOrderTask.status == 8) || (paramAdAppPreOrderTask.status == 9) || (paramAdAppPreOrderTask.status == 11))
-      {
-        b.runTask(getContext(), paramAdAppPreOrderTask, this.netWorkStatusChanged);
-        return;
-      }
-      if ((paramAdAppPreOrderTask.status == 10) || ((paramAdAppPreOrderTask.status >= 12) && (paramAdAppPreOrderTask.status <= AdAppPreOrderTask.Status.QQREMINDER_END)))
-      {
-        c.runTask(getContext(), paramAdAppPreOrderTask, this.reminderStatusChanged, this.netWorkStatusChanged);
-        return;
-      }
-    } while ((paramAdAppPreOrderTask.status == 33) || (paramAdAppPreOrderTask.status != -1));
+      c.runTask(getContext(), paramAdAppPreOrderTask, this.reminderStatusChanged, this.netWorkStatusChanged);
+      return;
+    }
+    b.runTask(getContext(), paramAdAppPreOrderTask, this.netWorkStatusChanged);
   }
   
   private void unRegisterListeners()
@@ -284,8 +279,12 @@ public enum AdAppPreOrderManager
     AdConnectivityManager.getInstance().unRegisterListener(this.connectivityListener);
     AdLifecycleManager.INSTANCE.unRegisterListener(this.lifecycleListener);
     IAdDownloader localIAdDownloader = AdDownloader.getDownloader();
-    if ((localIAdDownloader != null) && (this.downloadCallback != null)) {
-      localIAdDownloader.unregisterListener(this.downloadCallback);
+    if (localIAdDownloader != null)
+    {
+      IAdDownloader.Callback localCallback = this.downloadCallback;
+      if (localCallback != null) {
+        localIAdDownloader.unregisterListener(localCallback);
+      }
     }
     AdScreenStatusManager.getInstance().unRegisterListener(this.screenListener);
   }
@@ -298,17 +297,14 @@ public enum AdAppPreOrderManager
   boolean canStartDownload(String paramString)
   {
     paramString = getTaskById(paramString);
-    if (paramString != null) {}
-    for (paramString = String.valueOf(paramString.content.ad_info.report_info.trace_info.aid);; paramString = null)
-    {
-      boolean bool = AdLifecycleManager.INSTANCE.isOnForeground();
-      AdReporterForAnalysis.reportForAppPreOrderCanStartDownload(getContext(), this.messagesSynced30SecondsDelay, this.onBackgroundAtFirstTime20SecondsDelay, this.downloadingTaskCount, bool, paramString);
-      if ((!this.messagesSynced30SecondsDelay) || (!this.onBackgroundAtFirstTime20SecondsDelay) || (AdNet.getType(getContext()) != 1) || (this.downloadingTaskCount >= 1) || (bool)) {
-        break;
-      }
-      return true;
+    if (paramString != null) {
+      paramString = String.valueOf(paramString.content.ad_info.report_info.trace_info.aid);
+    } else {
+      paramString = null;
     }
-    return false;
+    boolean bool = AdLifecycleManager.INSTANCE.isOnForeground();
+    AdAnalysisHelperForUtil.reportForAppPreOrderCanStartDownload(getContext(), this.messagesSynced30SecondsDelay, this.onBackgroundAtFirstTime20SecondsDelay, this.downloadingTaskCount, bool, paramString);
+    return (this.messagesSynced30SecondsDelay) && (this.onBackgroundAtFirstTime20SecondsDelay) && (AdNet.getType(getContext()) == 1) && (this.downloadingTaskCount < 1) && (!bool);
   }
   
   Context getContext()
@@ -322,25 +318,30 @@ public enum AdAppPreOrderManager
   public void init(Context paramContext, String paramString)
   {
     AdLog.i("AdAppPreOrderManager", String.format("init status:%d", new Object[] { Integer.valueOf(this.status) }));
-    if (TextUtils.isEmpty(paramString)) {
-      AdLog.e("AdAppPreOrderManager", "uin is null");
-    }
-    Context localContext;
-    Boolean localBoolean;
-    do
+    if (TextUtils.isEmpty(paramString))
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((this.status != 0) || (paramContext == null));
-        localContext = paramContext.getApplicationContext();
-      } while (localContext == null);
-      localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
-    } while ((localBoolean == null) || (!localBoolean.booleanValue()));
-    this.context = new WeakReference(localContext);
-    AdThreadManager.INSTANCE.post(new AdAppPreOrderManager.11(this, paramContext, paramString), 5);
+      AdLog.e("AdAppPreOrderManager", "uin is null");
+      return;
+    }
+    if (this.status != 0) {
+      return;
+    }
+    if (paramContext == null) {
+      return;
+    }
+    Context localContext = paramContext.getApplicationContext();
+    if (localContext == null) {
+      return;
+    }
+    Boolean localBoolean = AdProcessManager.INSTANCE.isOnMainProcess();
+    if (localBoolean != null)
+    {
+      if (!localBoolean.booleanValue()) {
+        return;
+      }
+      this.context = new WeakReference(localContext);
+      AdThreadManager.INSTANCE.post(new AdAppPreOrderManager.11(this, paramContext, paramString), 5);
+    }
   }
   
   public boolean isAppPreOrderDownloadLaunched()
@@ -352,10 +353,13 @@ public enum AdAppPreOrderManager
   {
     boolean bool = isReady();
     AdLog.i("AdAppPreOrderManager", String.format("onDownloadProgressUpdate ready:%b", new Object[] { Boolean.valueOf(bool) }));
-    if ((paramList == null) || (paramList1 == null) || (paramList.isEmpty()) || (paramList1.isEmpty()) || (!bool)) {
-      return;
+    if ((paramList != null) && (paramList1 != null) && (!paramList.isEmpty()) && (!paramList1.isEmpty()))
+    {
+      if (!bool) {
+        return;
+      }
+      AdThreadManager.INSTANCE.post(new AdAppPreOrderManager.3(this, paramList1), 5);
     }
-    AdThreadManager.INSTANCE.post(new AdAppPreOrderManager.3(this, paramList1), 5);
   }
   
   public void onDownloadStatusChanged(int paramInt1, String paramString, int paramInt2)
@@ -400,47 +404,53 @@ public enum AdAppPreOrderManager
   
   public void processPublishMessage(String paramString1, String paramString2, long paramLong)
   {
-    int i = 0;
-    AdReporterForAnalysis.reportForAppPreOrderTaskStatusChanged(getContext(), 1, 1, this.messagesSynced, this.messagesSynced30SecondsDelay, this.onBackgroundAtFirstTime20SecondsDelay, AdScreenStatusManager.getInstance().isScreenOn(), AdLifecycleManager.INSTANCE.isOnForeground(), null, 0);
+    AdAnalysisHelperForUtil.reportForAppPreOrderTaskStatusChanged(getContext(), 1, 1, this.messagesSynced, this.messagesSynced30SecondsDelay, this.onBackgroundAtFirstTime20SecondsDelay, AdScreenStatusManager.getInstance().isScreenOn(), AdLifecycleManager.INSTANCE.isOnForeground(), null, 0);
     paramString2 = AdProcessManager.INSTANCE.isOnMainProcess();
-    int j;
-    if ((paramString2 == null) || (!paramString2.booleanValue()))
+    int i;
+    if ((paramString2 != null) && (paramString2.booleanValue()))
+    {
+      if (TextUtils.isEmpty(paramString1))
+      {
+        AdLog.e("AdAppPreOrderManager", "processPublishMessage error, taskId is null");
+        i = 4;
+      }
+      else
+      {
+        i = 0;
+      }
+    }
+    else
     {
       AdLog.e("AdAppPreOrderManager", "processPublishMessage error, not in main process");
       i = 20;
-      AdThreadManager.INSTANCE.post(new AdAppPreOrderManager.15(this, paramString1, paramLong), 5);
-      paramString1 = getContext();
-      if (i != 0) {
-        break label164;
-      }
+    }
+    AdThreadManager.INSTANCE.post(new AdAppPreOrderManager.15(this, paramString1, paramLong), 5);
+    paramString1 = getContext();
+    int j;
+    if (i == 0) {
       j = 2;
-      label99:
-      if (i != 0) {
-        break label170;
-      }
-    }
-    label164:
-    label170:
-    for (int k = 2;; k = -2147483648)
-    {
-      AdReporterForAnalysis.reportForAppPreOrderTaskStatusChanged(paramString1, j, k, this.messagesSynced, this.messagesSynced30SecondsDelay, this.onBackgroundAtFirstTime20SecondsDelay, AdScreenStatusManager.getInstance().isScreenOn(), AdLifecycleManager.INSTANCE.isOnForeground(), null, i);
-      return;
-      if (!TextUtils.isEmpty(paramString1)) {
-        break;
-      }
-      AdLog.e("AdAppPreOrderManager", "processPublishMessage error, taskId is null");
-      i = 4;
-      break;
+    } else {
       j = 3;
-      break label99;
     }
+    int k;
+    if (i == 0) {
+      k = 2;
+    } else {
+      k = -2147483648;
+    }
+    AdAnalysisHelperForUtil.reportForAppPreOrderTaskStatusChanged(paramString1, j, k, this.messagesSynced, this.messagesSynced30SecondsDelay, this.onBackgroundAtFirstTime20SecondsDelay, AdScreenStatusManager.getInstance().isScreenOn(), AdLifecycleManager.INSTANCE.isOnForeground(), null, i);
   }
   
   public void runTasks()
   {
-    gdt_settings.Settings localSettings = AdSettingsUtil.INSTANCE.getSettingsCache(getContext());
-    if (localSettings != null) {}
-    for (long l = localSettings.settingsForAppPreOrder.intervalMillisOfRunningTasks; !beforeRunTasks(); l = 1000L) {
+    gdt_settings.Settings localSettings = AdSettingsManager.INSTANCE.getCache();
+    long l;
+    if (localSettings != null) {
+      l = localSettings.settingsForAppPreOrder.intervalMillisOfRunningTasks;
+    } else {
+      l = 1000L;
+    }
+    if (!beforeRunTasks()) {
       return;
     }
     AdThreadManager.INSTANCE.postDelayed(new AdAppPreOrderManager.13(this), 5, l);

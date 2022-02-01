@@ -22,7 +22,7 @@ import java.util.Set;
 public class FaceOffByImageFilter
   extends VideoFilterBase
 {
-  private static final String TAG = FaceOffByImageFilter.class.getSimpleName();
+  private static final String TAG = "FaceOffByImageFilter";
   private int faceImageHeight;
   private int faceImageWidth;
   private float[] faceVertices = new float[1380];
@@ -56,27 +56,30 @@ public class FaceOffByImageFilter
   {
     Bitmap localBitmap1 = FaceOffUtil.getFaceBitmap(this.item.faceExchangeImage);
     Bitmap localBitmap2 = FaceOffUtil.getGrayBitmap(this.item.featureType);
-    if ((!BitmapUtils.isLegal(localBitmap1)) || (!BitmapUtils.isLegal(localBitmap2))) {
-      return;
-    }
-    this.faceImageWidth = localBitmap1.getWidth();
-    this.faceImageHeight = localBitmap1.getHeight();
-    this.grayImageWidth = localBitmap2.getWidth();
-    this.grayImageHeight = localBitmap2.getHeight();
-    addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", localBitmap1, 33986, true));
-    addParam(new UniformParam.TextureBitmapParam("inputImageTexture3", localBitmap2, 33987, true));
-    addParam(new UniformParam.IntParam("enableFaceOff", 1));
-    addParam(new UniformParam.FloatParam("alpha", this.item.blendAlpha));
-    addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
-    addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
-    addParam(new UniformParam.FloatParam("enableAlphaFromGray", this.item.grayScale));
-    addParam(new UniformParam.FloatParam("filterSkin", 0.0F));
-    if (this.item.grayScale > 0)
+    if (BitmapUtils.isLegal(localBitmap1))
     {
-      addParam(new UniformParam.FloatParam("enableAlphaFromGrayNew", 1.0F));
-      return;
+      if (!BitmapUtils.isLegal(localBitmap2)) {
+        return;
+      }
+      this.faceImageWidth = localBitmap1.getWidth();
+      this.faceImageHeight = localBitmap1.getHeight();
+      this.grayImageWidth = localBitmap2.getWidth();
+      this.grayImageHeight = localBitmap2.getHeight();
+      addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", localBitmap1, 33986, true));
+      addParam(new UniformParam.TextureBitmapParam("inputImageTexture3", localBitmap2, 33987, true));
+      addParam(new UniformParam.IntParam("enableFaceOff", 1));
+      addParam(new UniformParam.FloatParam("alpha", this.item.blendAlpha));
+      addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
+      addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
+      addParam(new UniformParam.FloatParam("enableAlphaFromGray", this.item.grayScale));
+      addParam(new UniformParam.FloatParam("filterSkin", 0.0F));
+      if (this.item.grayScale > 0)
+      {
+        addParam(new UniformParam.FloatParam("enableAlphaFromGrayNew", 1.0F));
+        return;
+      }
+      addParam(new UniformParam.FloatParam("enableAlphaFromGrayNew", 0.0F));
     }
-    addParam(new UniformParam.FloatParam("enableAlphaFromGrayNew", 0.0F));
   }
   
   public void updatePreview(Object paramObject)
@@ -88,17 +91,24 @@ public class FaceOffByImageFilter
       {
         setPositions(GlUtil.EMPTY_POSITIONS);
         setCoordNum(4);
+        return;
       }
+      List localList = FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramObject.facePoints), 2.0F);
+      double d1 = this.height;
+      double d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      VideoMaterial.flipYPoints(localList, (int)(d1 * d2));
+      d1 = this.width;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      int i = (int)(d1 * d2);
+      d1 = this.height;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      setPositions(FaceOffUtil.initFacePositions(localList, i, (int)(d1 * d2), this.faceVertices));
+      setCoordNum(690);
+      addParam(new UniformParam.FloatParam("positionRotate", -paramObject.phoneAngle));
     }
-    else
-    {
-      return;
-    }
-    List localList = FaceOffUtil.getFullCoords(VideoMaterial.copyList(paramObject.facePoints), 2.0F);
-    VideoMaterial.flipYPoints(localList, (int)(this.height * this.mFaceDetScale));
-    setPositions(FaceOffUtil.initFacePositions(localList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
-    setCoordNum(690);
-    addParam(new UniformParam.FloatParam("positionRotate", -paramObject.phoneAngle));
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
@@ -109,7 +119,7 @@ public class FaceOffByImageFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.FaceOffByImageFilter
  * JD-Core Version:    0.7.0.1
  */

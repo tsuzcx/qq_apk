@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RespGetEncounterV2
   extends JceStruct
@@ -142,66 +143,82 @@ public final class RespGetEncounterV2
   {
     paramJceOutputStream.write(this.RespTime, 0);
     paramJceOutputStream.write(this.stUserData, 1);
-    if (this.vEncounterInfos != null) {
-      paramJceOutputStream.write(this.vEncounterInfos, 2);
+    Object localObject = this.vEncounterInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.stUDLinfo != null) {
-      paramJceOutputStream.write(this.stUDLinfo, 3);
+    localObject = this.stUDLinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.stPYInfo != null) {
-      paramJceOutputStream.write(this.stPYInfo, 4);
+    localObject = this.stPYInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.stEctFmt != null) {
-      paramJceOutputStream.write(this.stEctFmt, 5);
+    localObject = this.stEctFmt;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.iSessionTotalNumber, 6);
     paramJceOutputStream.write(this.iEncounterNumber, 7);
-    if (this.nearbyGroupResp != null) {
-      paramJceOutputStream.write(this.nearbyGroupResp, 8);
+    localObject = this.nearbyGroupResp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 8);
     }
-    if (this.nearbyPublicAcctResp != null) {
-      paramJceOutputStream.write(this.nearbyPublicAcctResp, 9);
+    localObject = this.nearbyPublicAcctResp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 9);
     }
-    if (this.strSecurityTips != null) {
-      paramJceOutputStream.write(this.strSecurityTips, 10);
+    localObject = this.strSecurityTips;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.strSecurityDetailUrl != null) {
-      paramJceOutputStream.write(this.strSecurityDetailUrl, 11);
+    localObject = this.strSecurityDetailUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.entrance_list != null) {
-      paramJceOutputStream.write(this.entrance_list, 12);
+    localObject = this.entrance_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 12);
     }
-    if (this.neighbor_banners != null) {
-      paramJceOutputStream.write(this.neighbor_banners, 13);
+    localObject = this.neighbor_banners;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 13);
     }
     paramJceOutputStream.write(this.system_pic, 14);
     paramJceOutputStream.write(this.watch_color, 15);
     paramJceOutputStream.write(this.useInterestTag, 16);
-    if (this.ad_list != null) {
-      paramJceOutputStream.write(this.ad_list, 17);
+    localObject = this.ad_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 17);
     }
-    if (this.self_info != null) {
-      paramJceOutputStream.write(this.self_info, 18);
+    localObject = this.self_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 18);
     }
-    if (this.NearRankingsResp != null) {
-      paramJceOutputStream.write(this.NearRankingsResp, 19);
+    localObject = this.NearRankingsResp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 19);
     }
-    if (this.NewUserAreaResp != null) {
-      paramJceOutputStream.write(this.NewUserAreaResp, 20);
+    localObject = this.NewUserAreaResp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 20);
     }
-    if (this.alumnus_conf != null) {
-      paramJceOutputStream.write(this.alumnus_conf, 21);
+    localObject = this.alumnus_conf;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 21);
     }
     paramJceOutputStream.write(this.can_add_sub_interest, 22);
-    if (this.RecommEncounters != null) {
-      paramJceOutputStream.write(this.RecommEncounters, 23);
+    localObject = this.RecommEncounters;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 23);
     }
     paramJceOutputStream.write(this.RankingFlag, 24);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.RespGetEncounterV2
  * JD-Core Version:    0.7.0.1
  */

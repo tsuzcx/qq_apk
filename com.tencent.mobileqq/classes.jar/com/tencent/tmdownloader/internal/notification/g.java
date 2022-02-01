@@ -14,17 +14,14 @@ public class g
       return 0;
     }
     int i = 0;
-    if (j < paramString.length())
+    while (j < paramString.length())
     {
       if (a(paramString.charAt(j))) {
         i += 2;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
+      } else {
         i += 1;
       }
+      j += 1;
     }
     return i;
   }
@@ -40,28 +37,31 @@ public class g
     int j = 0;
     int i = paramInt;
     paramInt = j;
-    if (paramInt < k)
+    while (paramInt < k)
     {
       if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
       {
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
-        paramInt += 2;
+        j = paramInt + 2;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
       }
-      for (;;)
+      else
       {
-        j = a(paramString);
-        if (i < j) {
-          break label139;
-        }
+        j = paramInt + 1;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
+      }
+      j = a(paramString);
+      if (i >= j)
+      {
         i -= j;
         localStringBuilder.append(paramString);
-        break;
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
-        paramInt += 1;
       }
-      label139:
-      localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
-      localStringBuilder.append("…");
+      else
+      {
+        localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
+        localStringBuilder.append("…");
+      }
     }
     return localStringBuilder.toString();
   }
@@ -80,27 +80,30 @@ public class g
     int j = 0;
     int i = paramInt;
     paramInt = j;
-    if (paramInt < k)
+    while (paramInt < k)
     {
       if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
       {
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
-        paramInt += 2;
+        j = paramInt + 2;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
       }
-      for (;;)
+      else
       {
-        j = a(paramString);
-        if (i < j) {
-          break label154;
-        }
+        j = paramInt + 1;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
+      }
+      j = a(paramString);
+      if (i >= j)
+      {
         i -= j;
         localStringBuilder.append(paramString);
-        break;
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
-        paramInt += 1;
       }
-      label154:
-      localStringBuilder.append("…");
+      else
+      {
+        localStringBuilder.append("…");
+      }
     }
     return localStringBuilder.toString();
   }
@@ -116,40 +119,37 @@ public class g
     int j = 0;
     int i = paramInt;
     paramInt = j;
-    if (paramInt < k)
+    while (paramInt < k)
     {
       if (Character.isHighSurrogate(localCharBuffer.charAt(paramInt)))
       {
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 2).toString();
-        paramInt += 2;
+        j = paramInt + 2;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
       }
-      for (;;)
+      else
       {
-        j = a(paramString);
-        if (i < j) {
-          break label148;
-        }
+        j = paramInt + 1;
+        paramString = localCharBuffer.subSequence(paramInt, j).toString();
+        paramInt = j;
+      }
+      j = a(paramString);
+      if (i >= j)
+      {
         i -= j;
         localStringBuilder.append(paramString);
-        break;
-        paramString = localCharBuffer.subSequence(paramInt, paramInt + 1).toString();
-        paramInt += 1;
       }
-      label148:
-      if ((!paramBoolean1) || (paramBoolean2)) {
-        break label188;
+      else if ((paramBoolean1) && (!paramBoolean2))
+      {
+        localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
+        localStringBuilder.append("…");
       }
-      localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
-      localStringBuilder.append("…");
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      label188:
-      if ((paramBoolean1) && (paramBoolean2)) {
+      else if ((paramBoolean1) && (paramBoolean2))
+      {
         localStringBuilder.append("…");
       }
     }
+    return localStringBuilder.toString();
   }
   
   public static String a(List<String> paramList)
@@ -169,7 +169,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.notification.g
  * JD-Core Version:    0.7.0.1
  */

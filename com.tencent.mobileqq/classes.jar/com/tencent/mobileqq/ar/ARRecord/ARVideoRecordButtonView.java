@@ -55,18 +55,15 @@ public class ARVideoRecordButtonView
       Bitmap localBitmap = BitmapFactory.decodeResource(getResources(), paramInt);
       return localBitmap;
     }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
       localOutOfMemoryError.printStackTrace();
-      return null;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    return null;
   }
   
   private void a()
@@ -81,8 +78,8 @@ public class ARVideoRecordButtonView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838759);
-    this.c = a(2130838760);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838604);
+    this.c = a(2130838605);
   }
   
   private void a(float paramFloat1, float paramFloat2)
@@ -108,44 +105,57 @@ public class ARVideoRecordButtonView
     super.draw(paramCanvas);
     int i = getWidth();
     int j = getHeight();
-    switch (this.jdField_a_of_type_Int)
+    int k = this.jdField_a_of_type_Int;
+    Object localObject;
+    if (k != 1)
     {
-    default: 
-    case 1: 
-    case 2: 
-      do
+      if (k != 2)
       {
-        do
-        {
+        if (k != 3) {
           return;
-        } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+        }
+        localObject = this.c;
+        if (localObject != null)
+        {
+          this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), this.c.getHeight());
+          this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
+          paramCanvas.drawBitmap(this.c, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+        }
+        float f2 = i;
+        float f1 = 0.08571429F * f2;
+        f2 = Math.min(i, j) / 2 - f1 - f2 * 0.002857143F;
+        localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+        float f3 = i / 2;
+        float f4 = j / 2;
+        ((RectF)localObject).set(f3 - f2, f4 - f2, f3 + f2, f4 + f2);
+        this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(f1);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f1);
+        paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F, false, this.jdField_b_of_type_AndroidGraphicsPaint);
+        f1 = this.jdField_a_of_type_Float;
+        paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F - (1.0F - f1) * 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+        return;
+      }
+      localObject = this.jdField_b_of_type_AndroidGraphicsBitmap;
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
+        this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
+        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
         this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
         paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-        return;
-      } while (this.jdField_b_of_type_AndroidGraphicsBitmap == null);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
-      paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
+      }
     }
-    if (this.c != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.c.getWidth(), this.c.getHeight());
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i, j);
-      paramCanvas.drawBitmap(this.c, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    float f1 = 0.08571429F * i;
-    float f2 = Math.min(i, j) / 2 - f1 - 0.002857143F * i;
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(i / 2 - f2, j / 2 - f2, i / 2 + f2, j / 2 + f2);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(f1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f1);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F, false, this.jdField_b_of_type_AndroidGraphicsPaint);
-    f1 = this.jdField_a_of_type_Float;
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F - (1.0F - f1) * 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void drawableStateChanged()
+  protected void drawableStateChanged()
   {
     super.drawableStateChanged();
   }
@@ -161,26 +171,31 @@ public class ARVideoRecordButtonView
   public void setShowState(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    switch (this.jdField_a_of_type_Int)
+    paramInt = this.jdField_a_of_type_Int;
+    if (paramInt != 1)
     {
+      if (paramInt != 2)
+      {
+        if (paramInt == 3) {
+          this.jdField_a_of_type_Float = 0.0F;
+        }
+      }
+      else
+      {
+        this.jdField_b_of_type_Float = 0.0F;
+        this.jdField_a_of_type_Float = 0.0F;
+        ThreadManager.getUIHandler().post(new ARVideoRecordButtonView.2(this));
+      }
     }
-    for (;;)
-    {
-      b();
-      return;
+    else {
       super.setAlpha(1.0F);
-      continue;
-      this.jdField_b_of_type_Float = 0.0F;
-      this.jdField_a_of_type_Float = 0.0F;
-      ThreadManager.getUIHandler().post(new ARVideoRecordButtonView.2(this));
-      continue;
-      this.jdField_a_of_type_Float = 0.0F;
     }
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView
  * JD-Core Version:    0.7.0.1
  */

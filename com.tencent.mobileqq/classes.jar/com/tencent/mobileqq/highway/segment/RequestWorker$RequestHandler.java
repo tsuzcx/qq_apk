@@ -24,34 +24,34 @@ public class RequestWorker$RequestHandler
   public void handleMessage(Message paramMessage)
   {
     int i = paramMessage.what;
-    if (i == 1) {
-      RequestWorker.access$600(this.this$0);
-    }
-    do
+    if (i == 1)
     {
+      RequestWorker.access$600(this.this$0);
       return;
-      if (i == 3)
-      {
-        RequestWorker.access$700(this.this$0, (Transaction)paramMessage.obj);
-        return;
-      }
-      if (i == 2)
-      {
-        RequestWorker.access$800(this.this$0);
-        return;
-      }
-      if (i == 4)
-      {
-        this.this$0.engine.mConnManager.wakeupConnectionToWrite(this.this$0.mCurrentRequests, false);
-        return;
-      }
-    } while (i != 5);
-    this.this$0.engine.mConnManager.wakeupConnectionToWrite(this.this$0.mCurrentRequests, true);
+    }
+    if (i == 3)
+    {
+      RequestWorker.access$700(this.this$0, (Transaction)paramMessage.obj);
+      return;
+    }
+    if (i == 2)
+    {
+      RequestWorker.access$800(this.this$0);
+      return;
+    }
+    if (i == 4)
+    {
+      this.this$0.engine.mConnManager.wakeupConnectionToWrite(this.this$0.mCurrentRequests, false);
+      return;
+    }
+    if (i == 5) {
+      this.this$0.engine.mConnManager.wakeupConnectionToWrite(this.this$0.mCurrentRequests, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.RequestWorker.RequestHandler
  * JD-Core Version:    0.7.0.1
  */

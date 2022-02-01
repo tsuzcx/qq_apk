@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import com.tencent.widget.ActionSheet;
+import android.view.View;
 
 class TroopAvatarWallPreviewActivity$7$1
   implements Runnable
@@ -9,13 +9,15 @@ class TroopAvatarWallPreviewActivity$7$1
   
   public void run()
   {
-    this.a.a.addButton(2131693306);
-    this.a.a.updateAllButton();
+    if (this.a.a.mBottomBar == null) {
+      return;
+    }
+    this.a.a.mBottomBar.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

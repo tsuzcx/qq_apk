@@ -10,14 +10,15 @@ class ReportMediaPlayer$2
   
   public void onAudioPlayComplete(IAudioPlayer paramIAudioPlayer)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onCompletion(this.this$0);
+    paramIAudioPlayer = this.val$listener;
+    if (paramIAudioPlayer != null) {
+      paramIAudioPlayer.onCompletion(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer.2
  * JD-Core Version:    0.7.0.1
  */

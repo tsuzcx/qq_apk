@@ -53,7 +53,8 @@ public class CoverPreviewBar
   
   private float calculateProgress(int paramInt)
   {
-    return (paramInt - this.mLeftEdge) * 1.0F / (this.mRightEdge - this.mLeftEdge);
+    int i = this.mLeftEdge;
+    return (paramInt - i) * 1.0F / (this.mRightEdge - i);
   }
   
   private void extractBitmapFromPlayer(MoviePlayer paramMoviePlayer)
@@ -72,7 +73,7 @@ public class CoverPreviewBar
         setImageBitmap(paramMoviePlayer);
         return;
       }
-      int i = (int)(f * localBitmap.getWidth());
+      int i = (int)(localBitmap.getWidth() * f);
       int j = localBitmap.getWidth();
       paramMoviePlayer = Bitmap.createBitmap(localBitmap, 0, (localBitmap.getHeight() - i) / 2, j, i);
       this.currCover = paramMoviePlayer;
@@ -99,24 +100,30 @@ public class CoverPreviewBar
   
   private void updateSliderPosition(int paramInt)
   {
-    Log.d("CoverPreviewBar", "updateSliderPosition: leftEdge = " + this.mLeftEdge + " | rightEdge = " + this.mRightEdge);
-    int i;
-    if (paramInt < this.mLeftEdge) {
-      i = this.mLeftEdge;
-    }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateSliderPosition: leftEdge = ");
+    ((StringBuilder)localObject).append(this.mLeftEdge);
+    ((StringBuilder)localObject).append(" | rightEdge = ");
+    ((StringBuilder)localObject).append(this.mRightEdge);
+    Log.d("CoverPreviewBar", ((StringBuilder)localObject).toString());
+    int i = this.mLeftEdge;
+    if (paramInt < i)
     {
-      this.mProgress = (calculateProgress(i) * 100.0F);
-      if (this.mOnSliderSlideListener != null) {
-        this.mOnSliderSlideListener.onProgressChanged(this, this.mProgress, i);
-      }
-      setTranslationX(i);
-      return;
-      i = paramInt;
-      if (paramInt > this.mRightEdge) {
-        i = this.mRightEdge;
+      paramInt = i;
+    }
+    else
+    {
+      i = this.mRightEdge;
+      if (paramInt > i) {
+        paramInt = i;
       }
     }
+    this.mProgress = (calculateProgress(paramInt) * 100.0F);
+    localObject = this.mOnSliderSlideListener;
+    if (localObject != null) {
+      ((CoverPreviewBar.OnPreviewBarSlideListener)localObject).onProgressChanged(this, this.mProgress, paramInt);
+    }
+    setTranslationX(paramInt);
   }
   
   public void bindPlayer(MoviePlayer paramMoviePlayer)
@@ -127,7 +134,10 @@ public class CoverPreviewBar
   
   public int calculateTransXByProgress(float paramFloat)
   {
-    return (int)(paramFloat / 100.0F * (this.mRightEdge - this.mLeftEdge) + this.mLeftEdge);
+    paramFloat /= 100.0F;
+    int i = this.mRightEdge;
+    int j = this.mLeftEdge;
+    return (int)(paramFloat * (i - j) + j);
   }
   
   public Bitmap getCurrCover()
@@ -151,38 +161,54 @@ public class CoverPreviewBar
   public void moveSliderToPosition(int paramInt)
   {
     updateSliderPosition(paramInt);
-    if (this.mOnSliderSlideListener != null) {
-      this.mOnSliderSlideListener.onStopTouchSlide(this);
+    CoverPreviewBar.OnPreviewBarSlideListener localOnPreviewBarSlideListener = this.mOnSliderSlideListener;
+    if (localOnPreviewBarSlideListener != null) {
+      localOnPreviewBarSlideListener.onStopTouchSlide(this);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    CoverPreviewBar.OnPreviewBarSlideListener localOnPreviewBarSlideListener;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      this.mTouchDownX = ((int)paramMotionEvent.getRawX());
-      return true;
-      this.mTouchDownX = ((int)paramMotionEvent.getRawX());
-      if (this.mOnSliderSlideListener != null)
-      {
-        this.mOnSliderSlideListener.onStartTouchSlide(this);
-        continue;
-        updateSliderPosition((int)((int)(paramMotionEvent.getRawX() - this.mTouchDownX) + getTranslationX()));
-        continue;
-        if (this.mOnSliderSlideListener != null) {
-          this.mOnSliderSlideListener.onStopTouchSlide(this);
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3) {
+            break label96;
+          }
+        }
+        else
+        {
+          updateSliderPosition((int)((int)(paramMotionEvent.getRawX() - this.mTouchDownX) + getTranslationX()));
+          break label96;
         }
       }
+      localOnPreviewBarSlideListener = this.mOnSliderSlideListener;
+      if (localOnPreviewBarSlideListener != null) {
+        localOnPreviewBarSlideListener.onStopTouchSlide(this);
+      }
     }
+    else
+    {
+      this.mTouchDownX = ((int)paramMotionEvent.getRawX());
+      localOnPreviewBarSlideListener = this.mOnSliderSlideListener;
+      if (localOnPreviewBarSlideListener != null) {
+        localOnPreviewBarSlideListener.onStartTouchSlide(this);
+      }
+    }
+    label96:
+    this.mTouchDownX = ((int)paramMotionEvent.getRawX());
+    return true;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    if (this.ivCover != null) {
-      this.ivCover.setImageBitmap(paramBitmap);
+    ImageView localImageView = this.ivCover;
+    if (localImageView != null) {
+      localImageView.setImageBitmap(paramBitmap);
     }
   }
   
@@ -200,8 +226,9 @@ public class CoverPreviewBar
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
   {
-    if (this.ivCover != null) {
-      this.ivCover.setScaleType(paramScaleType);
+    ImageView localImageView = this.ivCover;
+    if (localImageView != null) {
+      localImageView.setScaleType(paramScaleType);
     }
   }
   
@@ -213,7 +240,7 @@ public class CoverPreviewBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.CoverPreviewBar
  * JD-Core Version:    0.7.0.1
  */

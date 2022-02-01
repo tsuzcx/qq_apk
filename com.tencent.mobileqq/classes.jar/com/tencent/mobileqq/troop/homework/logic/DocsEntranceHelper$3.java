@@ -21,18 +21,15 @@ class DocsEntranceHelper$3
     localObject = ((SharedPreferences)localObject).edit();
     if (this.jdField_a_of_type_Boolean) {
       ((SharedPreferences.Editor)localObject).putInt(DocsEntranceHelper.a(this.this$0), i + this.jdField_a_of_type_Int).commit();
-    }
-    for (;;)
-    {
-      ((SharedPreferences.Editor)localObject).apply();
-      return;
+    } else {
       ((SharedPreferences.Editor)localObject).putInt(DocsEntranceHelper.a(this.this$0), this.jdField_a_of_type_Int).commit();
     }
+    ((SharedPreferences.Editor)localObject).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.logic.DocsEntranceHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,13 @@
 package com.tencent.weseevideo.composition;
 
 import android.support.annotation.NonNull;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 import com.tencent.autotemplate.TAVAutomaticRenderContext;
 import com.tencent.autotemplate.TAVAutomaticTemplate;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tavcut.aekit.AEKitModel;
+import com.tencent.tavcut.aekit.PreSegModel;
 import com.tencent.tavkit.component.effectchain.VideoEffectProxy;
 import com.tencent.tavkit.component.effectchain.VideoMixEffectProxy;
 import com.tencent.tavkit.composition.TAVClip;
@@ -17,7 +19,10 @@ import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.weishi.module.publisher.WSAudioEngine;
 import com.tencent.weseevideo.composition.effectnode.AEKitNode;
 import com.tencent.weseevideo.composition.effectnode.CropEffectNode;
+import com.tencent.weseevideo.composition.effectnode.GestureNode;
 import com.tencent.weseevideo.composition.effectnode.LightVideoRenderNote;
+import com.tencent.weseevideo.composition.effectnode.PreSegNode;
+import com.tencent.weseevideo.composition.effectnode.PreSegNode.PicSaveDelegate;
 import com.tencent.weseevideo.composition.effectnode.VideoEffectNodeFactory;
 import com.tencent.weseevideo.composition.effectnode.WSLutEffectNode;
 import com.tencent.weseevideo.composition.effectnode.WSOverlayStickerMergedEffectNode;
@@ -25,6 +30,7 @@ import com.tencent.weseevideo.composition.effectnode.WSPagChainStickerMergedEffe
 import com.tencent.weseevideo.composition.interfaces.OnNodeRenderListener;
 import com.tencent.weseevideo.editor.sticker.WsStickerRenderContext;
 import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.ModelExtKt;
 import com.tencent.weseevideo.model.effect.CropModel;
 import com.tencent.weseevideo.model.effect.LutModel;
 import com.tencent.weseevideo.model.effect.MediaEffectModel;
@@ -34,9 +40,9 @@ import com.tencent.weseevideo.model.effect.SubtitleModel;
 import com.tencent.weseevideo.model.effect.VideoBeginModel;
 import com.tencent.weseevideo.model.effect.VideoEndModel;
 import com.tencent.weseevideo.model.effect.VideoFenWeiModel;
-import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.MediaResourceModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import com.tencent.weseevideo.model.template.MediaTemplateModel;
+import com.tencent.weseevideo.model.template.auto.AEFrameModel;
+import com.tencent.weseevideo.model.template.auto.AutomaticMediaTemplateModel;
 import com.tencent.weseevideo.model.template.light.LightTemplate;
 import com.tencent.weseevideo.model.utils.AudioUtils;
 import java.util.ArrayList;
@@ -48,8 +54,8 @@ import org.light.LightEngine;
 
 public class VideoRenderChainManager
 {
-  public static final String TAG = VideoRenderChainManager.class.getSimpleName();
-  private OnNodeRenderListener lightNodeRenderListener = new VideoRenderChainManager.2(this);
+  public static final String TAG = "VideoRenderChainManager";
+  private OnNodeRenderListener lightNodeRenderListener = new VideoRenderChainManager.4(this);
   private AEKitNode mAEKitNode;
   private VideoEffectProxy mAfterVideoEffectProxy = new VideoEffectProxy();
   private CopyOnWriteArrayList<TAVVideoEffect> mAfterVideoEffects = new CopyOnWriteArrayList();
@@ -61,18 +67,21 @@ public class VideoRenderChainManager
   private VideoRenderChainConfigure mConfigure;
   private CropEffectNode mCropEffectNode;
   private VideoRenderChainManager.IEffectNodeInterface mEffectNodeInterface;
+  private GestureNode mGestureNode;
   private LightTemplate mLightTemplate;
   private LightVideoRenderNote mLightVideoRenderNote;
   private WSLutEffectNode mLutEffectNode;
   private MediaModel mMediaModel;
   private TAVVideoMixEffect mPagChainMergedEffect;
-  private TAVVideoEffect mPagOverlayMergedEffect;
+  private WSOverlayStickerMergedEffectNode mPagOverlayMergedEffect;
+  private PreSegNode mPreSegNode;
   private VideoRenderChainManager.IStickerContextInterface mRenderContextCreator;
   private TAVStickerRenderContext mSharePagChainRenderContext;
   private TAVStickerRenderContext mSharePagOverlayStickerContext;
   private VideoMixEffectProxy mVideoMixEffectProxy = new VideoMixEffectProxy();
   private CopyOnWriteArrayList<TAVVideoMixEffect> mVideoMixEffects = new CopyOnWriteArrayList();
   private WSAudioEngine mWsAudioEngine;
+  private VideoRenderChainManager.ShouldRenderStickerAdapter shouldRenderStickerAdapter;
   
   public VideoRenderChainManager(int paramInt, @NonNull TAVComposition paramTAVComposition, MediaModel paramMediaModel, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface)
   {
@@ -106,7 +115,15 @@ public class VideoRenderChainManager
   {
     if (this.mPagOverlayMergedEffect == null)
     {
-      this.mPagOverlayMergedEffect = VideoEffectNodeFactory.createPagOverlayEffect(this.mSharePagOverlayStickerContext, this.mRenderContextCreator);
+      TAVStickerRenderContext localTAVStickerRenderContext = this.mSharePagOverlayStickerContext;
+      VideoRenderChainManager.IStickerContextInterface localIStickerContextInterface = this.mRenderContextCreator;
+      boolean bool;
+      if (this.mConfigure.mApplyType != 101) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.mPagOverlayMergedEffect = VideoEffectNodeFactory.createPagOverlayEffect(localTAVStickerRenderContext, localIStickerContextInterface, bool);
       this.mAfterVideoEffects.add(this.mPagOverlayMergedEffect);
     }
     return this.mPagOverlayMergedEffect instanceof WSOverlayStickerMergedEffectNode;
@@ -124,62 +141,52 @@ public class VideoRenderChainManager
   
   private void initOverlayStickerContext()
   {
-    if (this.mRenderContextCreator != null) {
-      this.mSharePagOverlayStickerContext = this.mRenderContextCreator.createStickerContext();
+    VideoRenderChainManager.IStickerContextInterface localIStickerContextInterface = this.mRenderContextCreator;
+    if (localIStickerContextInterface != null) {
+      this.mSharePagOverlayStickerContext = localIStickerContextInterface.createStickerContext(this.mConfigure.isImageMode());
     }
     if (this.mSharePagOverlayStickerContext == null)
     {
-      if (needBlur()) {
+      if (needBlur())
+      {
         this.mSharePagOverlayStickerContext = new WsStickerRenderContext();
+        return;
       }
+      this.mSharePagOverlayStickerContext = new TAVStickerRenderContext();
     }
-    else {
-      return;
-    }
-    this.mSharePagOverlayStickerContext = new TAVStickerRenderContext();
   }
   
   private void initPagChainStickerContext(MediaModel paramMediaModel)
   {
-    if (this.mSharePagChainRenderContext == null) {
-      if (this.mConfigure.getSceneType() != 1) {
-        break label53;
-      }
-    }
-    label53:
-    for (this.mSharePagChainRenderContext = new TAVStickerRenderContext();; this.mSharePagChainRenderContext = new TAVAutomaticRenderContext())
+    if (this.mSharePagChainRenderContext == null)
     {
-      if (isImageMediaModel(paramMediaModel)) {
-        this.mSharePagChainRenderContext.setTavRenderContextDataSource(new VideoRenderChainManager.1(this));
-      }
-      return;
-    }
-  }
-  
-  private boolean isImageMediaModel(MediaModel paramMediaModel)
-  {
-    if (paramMediaModel == null) {}
-    do
-    {
-      do
+      int j = this.mConfigure.getSceneType();
+      int i = 1;
+      if (j == 1)
       {
-        do
-        {
-          do
-          {
-            return false;
-            paramMediaModel = paramMediaModel.getMediaResourceModel();
-          } while (paramMediaModel == null);
-          paramMediaModel = paramMediaModel.getVideos();
-        } while ((paramMediaModel == null) || (paramMediaModel.size() <= 0));
-        paramMediaModel = (MediaClipModel)paramMediaModel.get(0);
-      } while (paramMediaModel == null);
-      paramMediaModel = paramMediaModel.getResource();
-    } while (paramMediaModel == null);
-    int i = paramMediaModel.getType();
-    if ((i == 2) || (i == 4)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+        this.mSharePagChainRenderContext = new TAVStickerRenderContext();
+      }
+      else if ((ModelExtKt.isImageMode(paramMediaModel)) && (this.mConfigure.isImageMode()))
+      {
+        this.mSharePagChainRenderContext = new TAVAutomaticTransRenderContext(paramMediaModel);
+        AEFrameModel localAEFrameModel = paramMediaModel.getMediaTemplateModel().getAutomaticMediaTemplateModel().getAEFrameModel();
+        if (localAEFrameModel != null) {
+          i = localAEFrameModel.getPagFillMode();
+        }
+        ((TAVAutomaticTransRenderContext)this.mSharePagChainRenderContext).a(i);
+        ((TAVAutomaticTransRenderContext)this.mSharePagChainRenderContext).a(this.mConfigure.getScreenSize());
+      }
+      else
+      {
+        this.mSharePagChainRenderContext = new TAVAutomaticRenderContext();
+      }
+    }
+    if (ModelExtKt.isImageMode(paramMediaModel))
+    {
+      this.mSharePagChainRenderContext.setTavRenderContextDataSource(new VideoRenderChainManager.1(this));
+      if (this.mApplyType == 101) {
+        this.mSharePagOverlayStickerContext.setTavRenderContextDataSource(new VideoRenderChainManager.2(this));
+      }
     }
   }
   
@@ -208,128 +215,156 @@ public class VideoRenderChainManager
   {
     if (paramCropModel == null)
     {
-      if (this.mCropEffectNode != null)
+      paramCropModel = this.mCropEffectNode;
+      if (paramCropModel != null)
       {
-        this.mBeforeVideoEffects.remove(this.mCropEffectNode);
+        this.mBeforeVideoEffects.remove(paramCropModel);
         this.mCropEffectNode = null;
       }
-      return;
     }
-    if (this.mCropEffectNode == null)
+    else
     {
-      this.mCropEffectNode = VideoEffectNodeFactory.createCropEffectNode(paramCropModel);
-      this.mBeforeVideoEffects.add(this.mCropEffectNode);
-      return;
+      CropEffectNode localCropEffectNode = this.mCropEffectNode;
+      if (localCropEffectNode == null)
+      {
+        this.mCropEffectNode = VideoEffectNodeFactory.createCropEffectNode(paramCropModel);
+        this.mBeforeVideoEffects.add(this.mCropEffectNode);
+        return;
+      }
+      localCropEffectNode.setCropModel(paramCropModel);
     }
-    this.mCropEffectNode.setCropModel(paramCropModel);
   }
   
   private void updateLutEffect(LutModel paramLutModel)
   {
-    if ((this.mConfigure != null) && (!this.mConfigure.isOpenLutEffect())) {}
-    do
-    {
-      return;
-      if (paramLutModel != null) {
-        break;
-      }
-    } while (this.mLutEffectNode == null);
-    this.mBeforeVideoEffects.remove(this.mLutEffectNode);
-    this.mLutEffectNode = null;
-    return;
-    if (this.mLutEffectNode == null)
-    {
-      this.mLutEffectNode = VideoEffectNodeFactory.createLutEffectNode(paramLutModel);
-      this.mBeforeVideoEffects.add(this.mLutEffectNode);
+    Object localObject = this.mConfigure;
+    if ((localObject != null) && (!((VideoRenderChainConfigure)localObject).isOpenLutEffect())) {
       return;
     }
-    this.mLutEffectNode.setLutMode(paramLutModel);
+    if (paramLutModel == null)
+    {
+      paramLutModel = this.mLutEffectNode;
+      if (paramLutModel != null)
+      {
+        this.mBeforeVideoEffects.remove(paramLutModel);
+        this.mLutEffectNode = null;
+      }
+    }
+    else
+    {
+      localObject = this.mLutEffectNode;
+      if (localObject == null)
+      {
+        this.mLutEffectNode = VideoEffectNodeFactory.createLutEffectNode(paramLutModel);
+        this.mBeforeVideoEffects.add(this.mLutEffectNode);
+        return;
+      }
+      ((WSLutEffectNode)localObject).setLutMode(paramLutModel);
+    }
+  }
+  
+  private void updatePreSeg(PreSegModel paramPreSegModel, CropModel paramCropModel)
+  {
+    if (this.mPreSegNode == null)
+    {
+      this.mPreSegNode = new PreSegNode();
+      this.mBeforeVideoEffects.add(this.mPreSegNode);
+    }
+    this.mPreSegNode.a(paramPreSegModel);
+    this.mPreSegNode.a(paramCropModel);
   }
   
   private void updateStickerEffect(List<StickerModel> paramList)
   {
-    if ((this.mConfigure != null) && (!this.mConfigure.isOpenStickerEffect())) {}
-    while (!checkOverlayMergedEffect()) {
+    VideoRenderChainConfigure localVideoRenderChainConfigure = this.mConfigure;
+    if ((localVideoRenderChainConfigure != null) && (!localVideoRenderChainConfigure.isOpenStickerEffect())) {
       return;
     }
-    ((WSOverlayStickerMergedEffectNode)this.mPagOverlayMergedEffect).setStickerModels(paramList, this.mComposition.getRenderSize());
+    if (checkOverlayMergedEffect()) {
+      this.mPagOverlayMergedEffect.setStickerModels(paramList, this.mComposition.getRenderSize());
+    }
   }
   
   private void updateStickerForTimeLineChanged()
   {
-    if ((this.mRenderContextCreator != null) && (this.mComposition != null)) {
-      this.mRenderContextCreator.alignStickers(this.mComposition.getDuration().getTimeUs());
+    VideoRenderChainManager.IStickerContextInterface localIStickerContextInterface = this.mRenderContextCreator;
+    if (localIStickerContextInterface != null)
+    {
+      TAVComposition localTAVComposition = this.mComposition;
+      if (localTAVComposition != null) {
+        localIStickerContextInterface.alignStickers(localTAVComposition.getDuration().getTimeUs());
+      }
     }
   }
   
   private void updateSubtitleEffect(SubtitleModel paramSubtitleModel)
   {
-    if ((this.mConfigure != null) && (!this.mConfigure.isOpenSubtitleEffect())) {}
-    while (!checkOverlayMergedEffect()) {
+    VideoRenderChainConfigure localVideoRenderChainConfigure = this.mConfigure;
+    if ((localVideoRenderChainConfigure != null) && (!localVideoRenderChainConfigure.isOpenSubtitleEffect())) {
       return;
     }
-    ((WSOverlayStickerMergedEffectNode)this.mPagOverlayMergedEffect).setSubtitleModel(paramSubtitleModel, this.mComposition.getRenderSize());
+    if (checkOverlayMergedEffect()) {
+      this.mPagOverlayMergedEffect.setSubtitleModel(paramSubtitleModel, this.mComposition.getRenderSize());
+    }
   }
   
   private void updateVideoBeginEffect(VideoBeginModel paramVideoBeginModel)
   {
-    if ((this.mConfigure != null) && (!this.mConfigure.isOpenVideoBeginEffect())) {}
-    TAVVideoMixEffect localTAVVideoMixEffect;
-    do
-    {
+    Object localObject = this.mConfigure;
+    if ((localObject != null) && (!((VideoRenderChainConfigure)localObject).isOpenVideoBeginEffect())) {
       return;
-      localTAVVideoMixEffect = checkPagChainMergedEffect();
-    } while (!(localTAVVideoMixEffect instanceof WSPagChainStickerMergedEffectNode));
-    ((WSPagChainStickerMergedEffectNode)localTAVVideoMixEffect).setVideoBeginModel(paramVideoBeginModel);
+    }
+    localObject = checkPagChainMergedEffect();
+    if ((localObject instanceof WSPagChainStickerMergedEffectNode)) {
+      ((WSPagChainStickerMergedEffectNode)localObject).setVideoBeginModel(paramVideoBeginModel);
+    }
   }
   
   private void updateVideoEndEffect(VideoEndModel paramVideoEndModel)
   {
-    if ((this.mConfigure != null) && (!this.mConfigure.isOpenVideoEndEffect())) {}
-    TAVVideoMixEffect localTAVVideoMixEffect;
-    do
-    {
+    Object localObject = this.mConfigure;
+    if ((localObject != null) && (!((VideoRenderChainConfigure)localObject).isOpenVideoEndEffect())) {
       return;
-      localTAVVideoMixEffect = checkPagChainMergedEffect();
-    } while (!(localTAVVideoMixEffect instanceof WSPagChainStickerMergedEffectNode));
-    if ((this.mComposition != null) && (paramVideoEndModel != null)) {
-      paramVideoEndModel.setCompositionDuration((float)(this.mComposition.getDuration().getTimeUs() / 1000L));
     }
-    ((WSPagChainStickerMergedEffectNode)localTAVVideoMixEffect).setVideoEndModel(paramVideoEndModel);
+    localObject = checkPagChainMergedEffect();
+    if ((localObject instanceof WSPagChainStickerMergedEffectNode))
+    {
+      TAVComposition localTAVComposition = this.mComposition;
+      if ((localTAVComposition != null) && (paramVideoEndModel != null)) {
+        paramVideoEndModel.setCompositionDuration((float)(localTAVComposition.getDuration().getTimeUs() / 1000L));
+      }
+      ((WSPagChainStickerMergedEffectNode)localObject).setVideoEndModel(paramVideoEndModel);
+    }
   }
   
   private void updateVideoFenWeiEffect(VideoFenWeiModel paramVideoFenWeiModel)
   {
-    if ((this.mConfigure != null) && (!this.mConfigure.isOpenVideoFenWeiEffect())) {}
-    TAVVideoMixEffect localTAVVideoMixEffect;
-    do
-    {
+    Object localObject = this.mConfigure;
+    if ((localObject != null) && (!((VideoRenderChainConfigure)localObject).isOpenVideoFenWeiEffect())) {
       return;
-      localTAVVideoMixEffect = checkPagChainMergedEffect();
-    } while (!(localTAVVideoMixEffect instanceof WSPagChainStickerMergedEffectNode));
-    ((WSPagChainStickerMergedEffectNode)localTAVVideoMixEffect).setVideoFenWeiModel(paramVideoFenWeiModel);
+    }
+    localObject = checkPagChainMergedEffect();
+    if ((localObject instanceof WSPagChainStickerMergedEffectNode)) {
+      ((WSPagChainStickerMergedEffectNode)localObject).setVideoFenWeiModel(paramVideoFenWeiModel);
+    }
   }
   
   public void addBgmEffect(@NonNull TAVClip paramTAVClip)
   {
-    if (this.mComposition == null)
+    Object localObject = this.mComposition;
+    if (localObject == null)
     {
       Logger.e(TAG, "this mComposition is null.");
       return;
     }
-    List localList = this.mComposition.getAudios();
-    Object localObject = localList;
+    List localList = ((TAVComposition)localObject).getAudios();
+    localObject = localList;
     if (localList == null)
     {
       localObject = new ArrayList();
       this.mComposition.setAudios((List)localObject);
     }
     ((List)localObject).add(paramTAVClip);
-  }
-  
-  public TAVAutomaticTemplate getAutomaticTemplate()
-  {
-    return this.mAutomaticTemplate;
   }
   
   public TAVComposition getComposition()
@@ -357,24 +392,57 @@ public class VideoRenderChainManager
   
   public void release()
   {
-    if (this.mSharePagChainRenderContext != null)
+    Object localObject = this.mSharePagChainRenderContext;
+    if (localObject != null)
     {
-      this.mSharePagChainRenderContext.release();
+      ((TAVStickerRenderContext)localObject).release();
       this.mSharePagChainRenderContext = null;
     }
-    if (this.mRenderContextCreator != null) {
-      this.mRenderContextCreator.releaseStickerContext();
+    localObject = this.mRenderContextCreator;
+    if (localObject != null) {
+      ((VideoRenderChainManager.IStickerContextInterface)localObject).releaseStickerContext();
     }
-    if ((this.mRenderContextCreator == null) && (this.mSharePagOverlayStickerContext != null))
+    if (this.mRenderContextCreator == null)
     {
-      this.mSharePagOverlayStickerContext.release();
-      this.mSharePagOverlayStickerContext = null;
+      localObject = this.mSharePagOverlayStickerContext;
+      if (localObject != null)
+      {
+        ((TAVStickerRenderContext)localObject).release();
+        this.mSharePagOverlayStickerContext = null;
+      }
     }
   }
   
-  public void setAutomaticTemplate(TAVAutomaticTemplate paramTAVAutomaticTemplate)
+  public void releaseAndKeepStickerContext()
   {
-    this.mAutomaticTemplate = paramTAVAutomaticTemplate;
+    TAVStickerRenderContext localTAVStickerRenderContext = this.mSharePagChainRenderContext;
+    if (localTAVStickerRenderContext != null)
+    {
+      localTAVStickerRenderContext.release();
+      this.mSharePagChainRenderContext = null;
+    }
+    if (this.mRenderContextCreator == null)
+    {
+      localTAVStickerRenderContext = this.mSharePagOverlayStickerContext;
+      if (localTAVStickerRenderContext != null)
+      {
+        localTAVStickerRenderContext.release();
+        this.mSharePagOverlayStickerContext = null;
+      }
+    }
+  }
+  
+  public void setBasePicActive(boolean paramBoolean)
+  {
+    AEKitNode localAEKitNode = this.mAEKitNode;
+    if (localAEKitNode != null) {
+      localAEKitNode.setBasePicActive(paramBoolean);
+    }
+  }
+  
+  public void setCachePicDelegate(PreSegNode.PicSaveDelegate paramPicSaveDelegate)
+  {
+    this.mPreSegNode.a(paramPicSaveDelegate);
   }
   
   public void setComposition(TAVComposition paramTAVComposition)
@@ -382,10 +450,34 @@ public class VideoRenderChainManager
     this.mComposition = paramTAVComposition;
   }
   
+  public void setFilterManager(AEFilterManager paramAEFilterManager)
+  {
+    Object localObject = this.mAEKitNode;
+    if (localObject != null) {
+      ((AEKitNode)localObject).setFilterManager(paramAEFilterManager);
+    }
+    localObject = this.mPreSegNode;
+    if (localObject != null) {
+      ((PreSegNode)localObject).a(paramAEFilterManager);
+    }
+  }
+  
+  public void setNeedRenderOverlayStickerMergedEffectNode(boolean paramBoolean)
+  {
+    this.mPagOverlayMergedEffect.setNeedRender(paramBoolean);
+    this.mSharePagOverlayStickerContext.setTavRenderContextDataSource(new VideoRenderChainManager.3(this));
+  }
+  
+  public void setShouldRenderStickerAdapter(VideoRenderChainManager.ShouldRenderStickerAdapter paramShouldRenderStickerAdapter)
+  {
+    this.shouldRenderStickerAdapter = paramShouldRenderStickerAdapter;
+  }
+  
   public void updateBgmVolume(float paramFloat)
   {
-    if (this.mWsAudioEngine != null) {
-      this.mWsAudioEngine.updateBgmVolume(paramFloat);
+    WSAudioEngine localWSAudioEngine = this.mWsAudioEngine;
+    if (localWSAudioEngine != null) {
+      localWSAudioEngine.updateBgmVolume(paramFloat);
     }
   }
   
@@ -400,24 +492,26 @@ public class VideoRenderChainManager
   
   public void updateLightVideoRender(@NotNull LightTemplate paramLightTemplate, MediaModel paramMediaModel)
   {
-    if ((paramMediaModel == null) || (paramLightTemplate.getLightAsset() == null) || (paramLightTemplate.getLightEngine() == null))
+    if ((paramMediaModel != null) && (paramLightTemplate.getLightAsset() != null) && (paramLightTemplate.getLightEngine() != null))
     {
-      Logger.e(TAG, "updateLightVideoRender error!! some variable is NULL!");
+      this.mLightTemplate = paramLightTemplate;
+      paramMediaModel = this.mLightVideoRenderNote;
+      if (paramMediaModel != null) {
+        this.mBeforeVideoEffects.remove(paramMediaModel);
+      }
+      this.mLightVideoRenderNote = new LightVideoRenderNote(paramLightTemplate.getLightEngine());
+      this.mLightVideoRenderNote.a(paramLightTemplate.getLightAsset());
+      this.mLightVideoRenderNote.a(this.lightNodeRenderListener);
+      this.mBeforeVideoEffects.add(this.mLightVideoRenderNote);
       return;
     }
-    this.mLightTemplate = paramLightTemplate;
-    if (this.mLightVideoRenderNote != null) {
-      this.mBeforeVideoEffects.remove(this.mLightVideoRenderNote);
-    }
-    this.mLightVideoRenderNote = new LightVideoRenderNote(paramLightTemplate.getLightEngine());
-    this.mLightVideoRenderNote.a(paramLightTemplate.getLightAsset());
-    this.mLightVideoRenderNote.a(this.lightNodeRenderListener);
-    this.mBeforeVideoEffects.add(this.mLightVideoRenderNote);
+    Logger.e(TAG, "updateLightVideoRender error!! some variable is NULL!");
   }
   
   public void updateMovieTemplateEffect(TAVSticker paramTAVSticker)
   {
-    if ((this.mConfigure != null) && (!this.mConfigure.isOpenMovieTemplateEffect())) {
+    VideoRenderChainConfigure localVideoRenderChainConfigure = this.mConfigure;
+    if ((localVideoRenderChainConfigure != null) && (!localVideoRenderChainConfigure.isOpenMovieTemplateEffect())) {
       return;
     }
     this.mSharePagChainRenderContext.loadSticker(paramTAVSticker, false);
@@ -425,18 +519,32 @@ public class VideoRenderChainManager
   
   public TAVComposition updateRenderChain(@NonNull MediaEffectModel paramMediaEffectModel)
   {
+    boolean bool;
+    if (this.mApplyType != 101) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    return updateRenderChain(paramMediaEffectModel, bool);
+  }
+  
+  public TAVComposition updateRenderChain(@NonNull MediaEffectModel paramMediaEffectModel, boolean paramBoolean)
+  {
     if (paramMediaEffectModel == null)
     {
       Logger.e(TAG, "updateVideoRenderChain---this mMediaEffectModel is null.");
       return this.mComposition;
     }
     updateCropEffect(paramMediaEffectModel.getCropModel());
+    updatePreSeg(paramMediaEffectModel.getPreSegModel(), paramMediaEffectModel.getCropModel());
     updateVideoBeginEffect(paramMediaEffectModel.getVideoBeginModel());
     updateVideoFenWeiEffect(paramMediaEffectModel.getVideoFenWeiModel());
     updateVideoEndEffect(paramMediaEffectModel.getVideoEndModel());
     updateLutEffect(paramMediaEffectModel.getLutModel());
     updateAEKit(paramMediaEffectModel.getAeKitModel());
-    updateStickerEffect(paramMediaEffectModel.getStickerModelList());
+    if (paramBoolean) {
+      updateStickerEffect(paramMediaEffectModel.getStickerModelList());
+    }
     updateSubtitleEffect(paramMediaEffectModel.getSubtitleModel());
     this.mComposition.attachVideoEffectChain(new VideoRenderChainManager.WSVideoEffectContext(this, null));
     return this.mComposition;
@@ -449,28 +557,31 @@ public class VideoRenderChainManager
       Logger.e(TAG, "updateVideoRenderChain---this mComposition is null.");
       return null;
     }
-    if (this.mEffectNodeInterface != null) {
-      this.mEffectNodeInterface.insertEffectNode(this, this.mMediaModel.getMediaEffectModel());
+    Object localObject = this.mEffectNodeInterface;
+    if (localObject != null) {
+      ((VideoRenderChainManager.IEffectNodeInterface)localObject).insertEffectNode(this, this.mMediaModel.getMediaEffectModel());
     }
-    if ((this.mMediaModel == null) || (this.mMediaModel.getMediaEffectModel() == null))
+    localObject = this.mMediaModel;
+    if ((localObject != null) && (((MediaModel)localObject).getMediaEffectModel() != null))
     {
-      Logger.e(TAG, "updateVideoRenderChain---this mMediaEffectModel is null.");
-      return this.mComposition;
+      updateStickerForTimeLineChanged();
+      return updateRenderChain(this.mMediaModel.getMediaEffectModel());
     }
-    updateStickerForTimeLineChanged();
-    return updateRenderChain(this.mMediaModel.getMediaEffectModel());
+    Logger.e(TAG, "updateVideoRenderChain---this mMediaEffectModel is null.");
+    return this.mComposition;
   }
   
   public void updateVideoVolume(float paramFloat)
   {
-    if (this.mWsAudioEngine != null) {
-      this.mWsAudioEngine.updateVideoVolume(paramFloat);
+    WSAudioEngine localWSAudioEngine = this.mWsAudioEngine;
+    if (localWSAudioEngine != null) {
+      localWSAudioEngine.updateVideoVolume(paramFloat);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.VideoRenderChainManager
  * JD-Core Version:    0.7.0.1
  */

@@ -29,14 +29,16 @@ public final class GameView$Companion$from$1$1
   public void surfaceCreated(@NotNull SurfaceHolder paramSurfaceHolder)
   {
     Intrinsics.checkParameterIsNotNull(paramSurfaceHolder, "holder");
-    GameView.Companion.from.1.access$set_width$p(this.this$0, this.this$0.$surfaceView.getWidth());
-    GameView.Companion.from.1.access$set_height$p(this.this$0, this.this$0.$surfaceView.getHeight());
-    GameView.SurfaceCallback localSurfaceCallback = GameView.Companion.from.1.access$getSurfaceCallback$p(this.this$0);
-    if (localSurfaceCallback != null)
+    Object localObject = this.this$0;
+    GameView.Companion.from.1.access$set_width$p((GameView.Companion.from.1)localObject, ((GameView.Companion.from.1)localObject).$surfaceView.getWidth());
+    localObject = this.this$0;
+    GameView.Companion.from.1.access$set_height$p((GameView.Companion.from.1)localObject, ((GameView.Companion.from.1)localObject).$surfaceView.getHeight());
+    localObject = GameView.Companion.from.1.access$getSurfaceCallback$p(this.this$0);
+    if (localObject != null)
     {
       paramSurfaceHolder = paramSurfaceHolder.getSurface();
       Intrinsics.checkExpressionValueIsNotNull(paramSurfaceHolder, "holder.surface");
-      localSurfaceCallback.onSurfaceCreated(paramSurfaceHolder);
+      ((GameView.SurfaceCallback)localObject).onSurfaceCreated(paramSurfaceHolder);
     }
   }
   
@@ -51,7 +53,7 @@ public final class GameView$Companion$from$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.view.GameView.Companion.from.1.1
  * JD-Core Version:    0.7.0.1
  */

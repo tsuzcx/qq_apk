@@ -23,9 +23,15 @@ final class BasicCollector$5
     }
     catch (NumberFormatException paramObject)
     {
-      return Template.NO_FETCHER_FOUND;
+      break label46;
     }
-    catch (NoSuchElementException paramObject) {}
+    catch (NoSuchElementException paramObject)
+    {
+      label42:
+      label46:
+      break label42;
+    }
+    return Template.NO_FETCHER_FOUND;
     return Template.NO_FETCHER_FOUND;
   }
   

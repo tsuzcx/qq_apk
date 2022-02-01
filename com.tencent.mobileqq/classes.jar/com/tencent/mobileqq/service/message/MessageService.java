@@ -2,9 +2,9 @@ package com.tencent.mobileqq.service.message;
 
 import com.qq.jce.wup.UniPacket;
 import com.tencent.common.app.BaseProtocolCoder;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
 public class MessageService
@@ -16,8 +16,8 @@ public class MessageService
   
   public MessageService()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender.a(localQQAppInterface);
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender.a(localAppRuntime);
   }
   
   public String[] cmdHeaderPrefix()
@@ -43,7 +43,7 @@ public class MessageService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageService
  * JD-Core Version:    0.7.0.1
  */

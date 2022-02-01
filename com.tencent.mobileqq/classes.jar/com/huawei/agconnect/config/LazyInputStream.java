@@ -1,7 +1,7 @@
 package com.huawei.agconnect.config;
 
 import android.content.Context;
-import com.huawei.agconnect.config.a.h;
+import com.huawei.agconnect.config.a.j;
 import java.io.InputStream;
 
 public abstract class LazyInputStream
@@ -16,7 +16,7 @@ public abstract class LazyInputStream
   
   public final void close()
   {
-    h.a(this.mInput);
+    j.a(this.mInput);
   }
   
   public abstract InputStream get(Context paramContext);

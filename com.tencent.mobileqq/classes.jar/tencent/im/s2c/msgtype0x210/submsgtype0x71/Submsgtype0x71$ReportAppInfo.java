@@ -30,7 +30,7 @@ public final class Submsgtype0x71$ReportAppInfo
   public static final int UINT32_IOS_APP_ID_FIELD_NUMBER = 16;
   public static final int UINT32_PUSH_RED_TS_FIELD_NUMBER = 6;
   public static final int UINT32_TYPE_FIELD_NUMBER = 3;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 64, 72, 82, 88, 96, 104, 114, 120, 128, 138, 146, 152, 162 }, new String[] { "uint32_app_id", "int32_new_flag", "uint32_type", "str_buffer", "str_path", "uint32_push_red_ts", "str_mission", "int32_appset", "int32_num", "str_icon_url", "int32_icon_flag", "int32_icon_type", "uint32_duration", "msg_version_info", "uint32_android_app_id", "uint32_ios_app_id", "str_android_path", "str_ios_path", "int32_mission_level", "msg_display_desc" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), null }, ReportAppInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field int32_appset = PBField.initInt32(0);
   public final PBInt32Field int32_icon_flag = PBField.initInt32(0);
   public final PBInt32Field int32_icon_type = PBField.initInt32(0);
@@ -51,10 +51,16 @@ public final class Submsgtype0x71$ReportAppInfo
   public final PBUInt32Field uint32_ios_app_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_push_red_ts = PBField.initUInt32(0);
   public final PBUInt32Field uint32_type = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 58, 64, 72, 82, 88, 96, 104, 114, 120, 128, 138, 146, 152, 162 }, new String[] { "uint32_app_id", "int32_new_flag", "uint32_type", "str_buffer", "str_path", "uint32_push_red_ts", "str_mission", "int32_appset", "int32_num", "str_icon_url", "int32_icon_flag", "int32_icon_type", "uint32_duration", "msg_version_info", "uint32_android_app_id", "uint32_ios_app_id", "str_android_path", "str_ios_path", "int32_mission_level", "msg_display_desc" }, new Object[] { localInteger, localInteger, localInteger, "", "", localInteger, "", localInteger, localInteger, "", localInteger, localInteger, localInteger, null, localInteger, localInteger, "", "", localInteger, null }, ReportAppInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x71.Submsgtype0x71.ReportAppInfo
  * JD-Core Version:    0.7.0.1
  */

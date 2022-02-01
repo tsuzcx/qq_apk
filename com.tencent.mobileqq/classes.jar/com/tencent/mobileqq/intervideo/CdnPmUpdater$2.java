@@ -16,40 +16,58 @@ class CdnPmUpdater$2
   public void a()
   {
     QLog.d("shadow::CdnPmUpdater", 1, " download cdn success");
-    if (!CdnPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater).renameTo(this.jdField_a_of_type_JavaIoFile)) {
-      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(HardCodeUtil.a(2131701541) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-    }
-    if (CdnPmUpdater.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater)) {}
-    for (String str = "33669797";; str = "33669802")
+    Object localObject;
+    if (!CdnPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater).renameTo(this.jdField_a_of_type_JavaIoFile))
     {
-      Monitor.b(str);
-      CdnPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
+      localObject = this.jdField_a_of_type_ArrayOfJavaLangException;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131701681));
+      localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      localObject[0] = new RuntimeException(localStringBuilder.toString());
     }
+    if (CdnPmUpdater.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater)) {
+      localObject = "33669797";
+    } else {
+      localObject = "33669802";
+    }
+    Monitor.b((String)localObject);
+    CdnPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("shadow::CdnPmUpdater", 2, " onDownloadFailed retCode =  " + paramInt1);
-    }
-    if (CdnPmUpdater.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater)) {}
-    for (paramString = "33669798";; paramString = "33669803")
+    Exception[] arrayOfException = this.jdField_a_of_type_ArrayOfJavaLangException;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("下载失败 retcode:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" httpCode:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" err:");
+    localStringBuilder.append(paramString);
+    arrayOfException[0] = new Exception(localStringBuilder.toString());
+    if (QLog.isColorLevel())
     {
-      Monitor.b(paramString);
-      CdnPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
+      paramString = new StringBuilder();
+      paramString.append(" onDownloadFailed retCode =  ");
+      paramString.append(paramInt1);
+      QLog.d("shadow::CdnPmUpdater", 2, paramString.toString());
     }
+    if (CdnPmUpdater.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater)) {
+      paramString = "33669798";
+    } else {
+      paramString = "33669803";
+    }
+    Monitor.b(paramString);
+    CdnPmUpdater.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoCdnPmUpdater).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.CdnPmUpdater.2
  * JD-Core Version:    0.7.0.1
  */

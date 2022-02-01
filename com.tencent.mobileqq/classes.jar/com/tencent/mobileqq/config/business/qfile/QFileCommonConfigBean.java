@@ -35,128 +35,188 @@ public class QFileCommonConfigBean
   
   private void a(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {
-      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no troop");
-    }
-    do
+    if (paramJSONObject == null)
     {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no troop");
       return;
-      try
+    }
+    try
+    {
+      paramJSONObject = paramJSONObject.getJSONObject("videopreview");
+      if (paramJSONObject == null)
       {
-        paramJSONObject = paramJSONObject.getJSONObject("videopreview");
-        if (paramJSONObject == null)
-        {
-          QLog.e("QFileCommonConfigBean", 1, "parse Troop Json |type: 396no videoPreview");
-          return;
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
+        QLog.e("QFileCommonConfigBean", 1, "parse Troop Json |type: 396no videoPreview");
         return;
       }
       this.m = paramJSONObject.getBoolean("switch");
-      if (QLog.isColorLevel()) {
-        QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview = " + this.m);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("troopVideoPriview = ");
+        localStringBuilder.append(this.m);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
       }
       this.n = paramJSONObject.getBoolean("svip");
-      if (QLog.isColorLevel()) {
-        QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview for SVIP = " + this.n);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("troopVideoPriview for SVIP = ");
+        localStringBuilder.append(this.n);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
       }
       this.o = paramJSONObject.getBoolean("yearsvip");
-    } while (!QLog.isColorLevel());
-    QLog.d("QFileCommonConfigBean", 2, "troopVideoPriview for YearSVIP = " + this.n);
+      if (QLog.isColorLevel())
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("troopVideoPriview for YearSVIP = ");
+        paramJSONObject.append(this.n);
+        QLog.d("QFileCommonConfigBean", 2, paramJSONObject.toString());
+        return;
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
+    }
   }
   
   private void b(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {
-      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no httpsJson");
-    }
-    for (;;)
+    if (paramJSONObject == null)
     {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no httpsJson");
       return;
-      try
+    }
+    try
+    {
+      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("c2c_up");
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("c2c_up");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_c2c_up = " + this.jdField_a_of_type_Boolean);
-        }
-        this.b = paramJSONObject.getBoolean("c2c_down");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_c2c_down = " + this.b);
-        }
-        this.c = paramJSONObject.getBoolean("c2czip_down");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_c2czip_down = " + this.c);
-        }
-        this.d = paramJSONObject.getBoolean("c2c_thumb");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_c2c_thumb = " + this.d);
-        }
-        this.e = paramJSONObject.getBoolean("disc_up");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_disc_up = " + this.e);
-        }
-        this.f = paramJSONObject.getBoolean("disc_down");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_disc_down = " + this.f);
-        }
-        this.g = paramJSONObject.getBoolean("disczip_down");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_disczip_down = " + this.g);
-        }
-        this.h = paramJSONObject.getBoolean("disc_thumb");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_disc_thumb = " + this.h);
-        }
-        this.i = paramJSONObject.getBoolean("troop_up");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_troop_up = " + this.i);
-        }
-        this.j = paramJSONObject.getBoolean("troop_down");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_troop_down = " + this.j);
-        }
-        this.k = paramJSONObject.getBoolean("troopzip_down");
-        if (QLog.isColorLevel()) {
-          QLog.d("QFileCommonConfigBean", 2, "https_troopzip_down = " + this.k);
-        }
-        this.l = paramJSONObject.getBoolean("troop_thumb");
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QFileCommonConfigBean", 2, "https_troop_thumb = " + this.l);
-          return;
-        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_c2c_up = ");
+        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
       }
-      catch (JSONException paramJSONObject)
+      this.b = paramJSONObject.getBoolean("c2c_down");
+      if (QLog.isColorLevel())
       {
-        QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_c2c_down = ");
+        localStringBuilder.append(this.b);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
       }
+      this.c = paramJSONObject.getBoolean("c2czip_down");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_c2czip_down = ");
+        localStringBuilder.append(this.c);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
+      }
+      this.d = paramJSONObject.getBoolean("c2c_thumb");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_c2c_thumb = ");
+        localStringBuilder.append(this.d);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
+      }
+      this.e = paramJSONObject.getBoolean("disc_up");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_disc_up = ");
+        localStringBuilder.append(this.e);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
+      }
+      this.f = paramJSONObject.getBoolean("disc_down");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_disc_down = ");
+        localStringBuilder.append(this.f);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
+      }
+      this.g = paramJSONObject.getBoolean("disczip_down");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_disczip_down = ");
+        localStringBuilder.append(this.g);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
+      }
+      this.h = paramJSONObject.getBoolean("disc_thumb");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_disc_thumb = ");
+        localStringBuilder.append(this.h);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
+      }
+      this.i = paramJSONObject.getBoolean("troop_up");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_troop_up = ");
+        localStringBuilder.append(this.i);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
+      }
+      this.j = paramJSONObject.getBoolean("troop_down");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_troop_down = ");
+        localStringBuilder.append(this.j);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
+      }
+      this.k = paramJSONObject.getBoolean("troopzip_down");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("https_troopzip_down = ");
+        localStringBuilder.append(this.k);
+        QLog.d("QFileCommonConfigBean", 2, localStringBuilder.toString());
+      }
+      this.l = paramJSONObject.getBoolean("troop_thumb");
+      if (QLog.isColorLevel())
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("https_troop_thumb = ");
+        paramJSONObject.append(this.l);
+        QLog.d("QFileCommonConfigBean", 2, paramJSONObject.toString());
+        return;
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
     }
   }
   
   private void c(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {
-      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no mediaPlatformJson");
-    }
-    for (;;)
+    if (paramJSONObject == null)
     {
+      QLog.e("QFileCommonConfigBean", 1, "receiveAllConfigs|type: 396no mediaPlatformJson");
       return;
-      try
+    }
+    try
+    {
+      this.p = paramJSONObject.getBoolean("EnableAQQ");
+      if (QLog.isColorLevel())
       {
-        this.p = paramJSONObject.getBoolean("EnableAQQ");
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QFileCommonConfigBean", 2, "enableFileMediaPlatform = " + this.p);
-          return;
-        }
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("enableFileMediaPlatform = ");
+        paramJSONObject.append(this.p);
+        QLog.d("QFileCommonConfigBean", 2, paramJSONObject.toString());
+        return;
       }
-      catch (JSONException paramJSONObject)
-      {
-        QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
-      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("QFileCommonConfigBean", 1, paramJSONObject, new Object[0]);
     }
   }
   
@@ -184,7 +244,7 @@ public class QFileCommonConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileCommonConfigBean
  * JD-Core Version:    0.7.0.1
  */

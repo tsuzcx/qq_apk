@@ -35,13 +35,19 @@ public class QQLogo
   {
     boolean bool = false;
     this.a = false;
-    int i = getResources().getDimensionPixelSize(2131298032);
+    int i = getResources().getDimensionPixelSize(2131298026);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
-    StringBuilder localStringBuilder = new StringBuilder().append("dispearLogo_internal:");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dispearLogo_internal:");
     if (localLayoutParams.bottomMargin != i) {
       bool = true;
     }
-    AVLog.printColorLog("QQLogo", bool + "|" + localLayoutParams.bottomMargin + "|" + i);
+    localStringBuilder.append(bool);
+    localStringBuilder.append("|");
+    localStringBuilder.append(localLayoutParams.bottomMargin);
+    localStringBuilder.append("|");
+    localStringBuilder.append(i);
+    AVLog.printColorLog("QQLogo", localStringBuilder.toString());
     if (localLayoutParams.bottomMargin != i)
     {
       setVisibility(8);
@@ -52,14 +58,22 @@ public class QQLogo
   
   private void a(boolean paramBoolean)
   {
-    AVLog.printColorLog("QQLogo", "QQLogo:" + this.a + "|" + paramBoolean + "|" + getVisibility());
-    if ((getVisibility() == 8) && (!this.a) && (paramBoolean)) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QQLogo:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("|");
+    localStringBuilder.append(getVisibility());
+    AVLog.printColorLog("QQLogo", localStringBuilder.toString());
+    if ((getVisibility() == 8) && (!this.a) && (paramBoolean))
+    {
       b();
-    }
-    while ((getVisibility() != 0) || (!this.a) || (paramBoolean)) {
       return;
     }
-    a();
+    if ((getVisibility() == 0) && (this.a) && (!paramBoolean)) {
+      a();
+    }
   }
   
   private void b()
@@ -100,23 +114,25 @@ public class QQLogo
   
   public void setQQLogo(boolean paramBoolean, int paramInt)
   {
-    if (this.b) {}
-    do
-    {
+    if (this.b) {
       return;
-      if ((paramInt == 2) || (paramInt == 4))
+    }
+    if ((paramInt != 2) && (paramInt != 4))
+    {
+      if (getVisibility() == 0)
       {
-        a(paramBoolean);
-        return;
+        AVLog.printColorLog("QQLogo", "setOffset audio hide qq logo");
+        setVisibility(8);
       }
-    } while (getVisibility() != 0);
-    AVLog.printColorLog("QQLogo", "setOffset audio hide qq logo");
-    setVisibility(8);
+    }
+    else {
+      a(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QQLogo
  * JD-Core Version:    0.7.0.1
  */

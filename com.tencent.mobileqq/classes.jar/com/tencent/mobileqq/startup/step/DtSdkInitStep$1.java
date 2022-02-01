@@ -10,13 +10,16 @@ final class DtSdkInitStep$1
 {
   public boolean ignoreAppEvent(Activity paramActivity)
   {
-    QLog.d("DtSdkInitStep", 1, "848QQDT [ignoreAppEvent] activity: " + paramActivity.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("848QQDT [ignoreAppEvent] activity: ");
+    localStringBuilder.append(paramActivity.toString());
+    QLog.d("DtSdkInitStep", 1, localStringBuilder.toString());
     return paramActivity instanceof QQLSActivity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.DtSdkInitStep.1
  * JD-Core Version:    0.7.0.1
  */

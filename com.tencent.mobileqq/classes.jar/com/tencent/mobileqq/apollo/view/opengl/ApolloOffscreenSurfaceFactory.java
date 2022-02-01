@@ -27,7 +27,7 @@ public class ApolloOffscreenSurfaceFactory
     }
     catch (Throwable paramEGL10)
     {
-      QLog.e("ApolloOffscreenSurfaceFactory", 2, "eglCreatePbufferSurface", paramEGL10);
+      QLog.e("[cmshow]ApolloOffscreenSurfaceFactory", 2, "eglCreatePbufferSurface", paramEGL10);
     }
     return null;
   }
@@ -39,7 +39,7 @@ public class ApolloOffscreenSurfaceFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.ApolloOffscreenSurfaceFactory
  * JD-Core Version:    0.7.0.1
  */

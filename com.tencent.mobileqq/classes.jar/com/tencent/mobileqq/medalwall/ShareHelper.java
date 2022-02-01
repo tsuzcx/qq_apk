@@ -13,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
@@ -35,7 +36,7 @@ import java.util.List;
 
 public class ShareHelper
 {
-  public static final String g = HardCodeUtil.a(2131713890);
+  public static final String g = HardCodeUtil.a(2131713818);
   Context jdField_a_of_type_AndroidContentContext;
   public Bitmap a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -55,51 +56,44 @@ public class ShareHelper
   
   public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    Object localObject3;
-    if (paramDrawable == null)
-    {
-      localObject3 = null;
-      return localObject3;
+    Canvas localCanvas = null;
+    if (paramDrawable == null) {
+      return null;
     }
-    Object localObject1;
+    Object localObject;
     if ((paramDrawable instanceof BitmapDrawable))
     {
-      localObject1 = (BitmapDrawable)paramDrawable;
-      if (((BitmapDrawable)localObject1).getBitmap() != null) {
-        return ((BitmapDrawable)localObject1).getBitmap();
+      localObject = (BitmapDrawable)paramDrawable;
+      if (((BitmapDrawable)localObject).getBitmap() != null) {
+        return ((BitmapDrawable)localObject).getBitmap();
       }
     }
-    for (;;)
+    try
     {
-      try
-      {
-        if ((paramDrawable.getIntrinsicWidth() > 0) && (paramDrawable.getIntrinsicHeight() > 0)) {
-          continue;
-        }
-        localObject1 = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
+      if ((paramDrawable.getIntrinsicWidth() > 0) && (paramDrawable.getIntrinsicHeight() > 0)) {
+        localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      } else {
+        localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        Rect localRect;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("ShareHelper", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
-        Object localObject2 = null;
-        continue;
-      }
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject3 = new Canvas((Bitmap)localObject1);
-      localRect = paramDrawable.copyBounds();
-      paramDrawable.setBounds(0, 0, ((Canvas)localObject3).getWidth(), ((Canvas)localObject3).getHeight());
-      paramDrawable.draw((Canvas)localObject3);
-      paramDrawable.setBounds(localRect);
-      return localObject1;
-      localObject1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localObject = localCanvas;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("ShareHelper", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
+        localObject = localCanvas;
+      }
+    }
+    if (localObject != null)
+    {
+      localCanvas = new Canvas((Bitmap)localObject);
+      Rect localRect = paramDrawable.copyBounds();
+      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+      paramDrawable.draw(localCanvas);
+      paramDrawable.setBounds(localRect);
+    }
+    return localObject;
   }
   
   public static String a(Long paramLong)
@@ -115,14 +109,20 @@ public class ShareHelper
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    StringBuilder localStringBuilder = new StringBuilder(Base64.encodeToString(paramString.getBytes(), 3).replace("=", ""));
-    char c1 = localStringBuilder.charAt(0);
-    localStringBuilder.deleteCharAt(0);
-    localStringBuilder.append(c1);
-    if (QLog.isColorLevel()) {
-      QLog.i("ShareHelper", 4, "encodeOne src:" + Base64.encodeToString(paramString.getBytes(), 0) + " dst:" + localStringBuilder.toString());
+    StringBuilder localStringBuilder1 = new StringBuilder(Base64.encodeToString(paramString.getBytes(), 3).replace("=", ""));
+    char c1 = localStringBuilder1.charAt(0);
+    localStringBuilder1.deleteCharAt(0);
+    localStringBuilder1.append(c1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("encodeOne src:");
+      localStringBuilder2.append(Base64.encodeToString(paramString.getBytes(), 0));
+      localStringBuilder2.append(" dst:");
+      localStringBuilder2.append(localStringBuilder1.toString());
+      QLog.i("ShareHelper", 4, localStringBuilder2.toString());
     }
-    return localStringBuilder.toString();
+    return localStringBuilder1.toString();
   }
   
   public static String a(String[] paramArrayOfString)
@@ -161,28 +161,28 @@ public class ShareHelper
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696380);
-    localActionSheetItem.icon = 2130839214;
+    localActionSheetItem.label = paramContext.getString(2131696399);
+    localActionSheetItem.icon = 2130839067;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696394);
-    localActionSheetItem.icon = 2130839215;
+    localActionSheetItem.label = paramContext.getString(2131696413);
+    localActionSheetItem.icon = 2130839068;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696401);
-    localActionSheetItem.icon = 2130839218;
+    localActionSheetItem.label = paramContext.getString(2131696420);
+    localActionSheetItem.icon = 2130839071;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696383);
-    localActionSheetItem.icon = 2130839212;
+    localActionSheetItem.label = paramContext.getString(2131696402);
+    localActionSheetItem.icon = 2130839065;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
@@ -248,36 +248,40 @@ public class ShareHelper
   
   public void a(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    if (!a()) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131713891), 0).a();
-    }
-    do
+    if (!a())
     {
-      for (;;)
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131713819), 0).a();
+      return;
+    }
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
+    {
+      localObject = new ShareHelper.1(this);
+      paramOnDismissListener = new ShareHelper.2(this, paramOnDismissListener);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder((Activity)this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131719029));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(this.jdField_a_of_type_AndroidContentContext));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener((AdapterView.OnItemClickListener)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(paramOnDismissListener);
+    }
+    try
+    {
+      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing())
       {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
         return;
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
-        {
-          ShareHelper.1 local1 = new ShareHelper.1(this);
-          paramOnDismissListener = new ShareHelper.2(this, paramOnDismissListener);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder((Activity)this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131719311));
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(this.jdField_a_of_type_AndroidContentContext));
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(local1);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(paramOnDismissListener);
-        }
-        try
-        {
-          if (!this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing())
-          {
-            this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
-            return;
-          }
-        }
-        catch (Exception paramOnDismissListener) {}
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ShareActionSheet", 2, "actionSheet.show exception=" + paramOnDismissListener);
+    }
+    catch (Exception paramOnDismissListener)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("actionSheet.show exception=");
+        ((StringBuilder)localObject).append(paramOnDismissListener);
+        QLog.d("ShareActionSheet", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Bitmap paramBitmap)
@@ -292,7 +296,7 @@ public class ShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.ShareHelper
  * JD-Core Version:    0.7.0.1
  */

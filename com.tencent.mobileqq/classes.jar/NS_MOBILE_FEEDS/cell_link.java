@@ -29,20 +29,23 @@ public final class cell_link
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 0);
+    String str = this.data;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 1);
+    str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.post != null) {
-      paramJceOutputStream.write(this.post, 2);
+    str = this.post;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_link
  * JD-Core Version:    0.7.0.1
  */

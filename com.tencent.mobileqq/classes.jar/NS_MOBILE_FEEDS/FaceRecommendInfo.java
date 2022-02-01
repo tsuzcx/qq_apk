@@ -30,17 +30,19 @@ public final class FaceRecommendInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 1);
+    String str = this.nick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.groupid != null) {
-      paramJceOutputStream.write(this.groupid, 2);
+    str = this.groupid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.FaceRecommendInfo
  * JD-Core Version:    0.7.0.1
  */

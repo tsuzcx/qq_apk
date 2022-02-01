@@ -27,15 +27,16 @@ public final class register_proxy$SvcRegisterProxyMsgResp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 58, 66, 74, 82, 90, 96 }, new String[] { "result", "err_msg", "flag", "seq", "msg_info", "group_list", "discuss_list", "gourp_msg", "discuss_msg", "c2c_msg", "pub_account_msg", "discuss_list_flag" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), null, null, null, null, null, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0) }, SvcRegisterProxyMsgResp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 58, 66, 74, 82, 90, 96 }, new String[] { "result", "err_msg", "flag", "seq", "msg_info", "group_list", "discuss_list", "gourp_msg", "discuss_msg", "c2c_msg", "pub_account_msg", "discuss_list_flag" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localInteger, null, null, null, null, null, localByteStringMicro2, localByteStringMicro3, localInteger }, SvcRegisterProxyMsgResp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msf.registerproxy.register_proxy.SvcRegisterProxyMsgResp
  * JD-Core Version:    0.7.0.1
  */

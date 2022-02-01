@@ -11,32 +11,34 @@ class PhoneStatusMonitor$PhoneStatusReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL")) {
+    if (paramIntent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL"))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("PhoneStatusMonitor", 0, "onReceive NEW_OUTGOING_CALL");
       }
     }
-    do
+    else
     {
-      do
+      if (QLog.isColorLevel()) {
+        QLog.d("PhoneStatusMonitor", 0, "onReceive PHONE_STATE");
+      }
+      if ((this.this$0.mIsCalling) && (!PhoneStatusTools.isCalling(this.this$0.mContext)))
       {
-        do
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("PhoneStatusMonitor", 0, "onReceive PHONE_STATE");
-          }
-          if ((!this.this$0.mIsCalling) || (PhoneStatusTools.isCalling(this.this$0.mContext))) {
-            break;
-          }
-          this.this$0.mIsCalling = false;
-        } while (this.this$0.mPhoneStatusListener == null);
-        this.this$0.mPhoneStatusListener.onCallStateChanged(false);
-        return;
-      } while ((this.this$0.mIsCalling) || (!PhoneStatusTools.isCalling(this.this$0.mContext)));
-      this.this$0.mIsCalling = true;
-    } while (this.this$0.mPhoneStatusListener == null);
-    this.this$0.mPhoneStatusListener.onCallStateChanged(true);
+        paramContext = this.this$0;
+        paramContext.mIsCalling = false;
+        if (paramContext.mPhoneStatusListener != null) {
+          this.this$0.mPhoneStatusListener.onCallStateChanged(false);
+        }
+      }
+      else if ((!this.this$0.mIsCalling) && (PhoneStatusTools.isCalling(this.this$0.mContext)))
+      {
+        paramContext = this.this$0;
+        paramContext.mIsCalling = true;
+        if (paramContext.mPhoneStatusListener != null) {
+          this.this$0.mPhoneStatusListener.onCallStateChanged(true);
+        }
+      }
+    }
   }
 }
 

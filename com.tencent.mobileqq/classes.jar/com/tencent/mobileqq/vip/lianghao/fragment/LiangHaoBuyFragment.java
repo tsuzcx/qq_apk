@@ -5,12 +5,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.QFragmentActivity;
 import android.text.TextUtils;
 import android.view.Window;
 import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.fragment.QPublicBaseFragment;
 import com.tencent.mobileqq.loginregister.LoginUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -48,36 +48,44 @@ public class LiangHaoBuyFragment
       return -1;
     }
     paramIntent = paramIntent.getExtras();
-    if (paramIntent != null) {}
-    for (paramIntent = paramIntent.getString("result");; paramIntent = "{}")
+    if (paramIntent != null) {
+      paramIntent = paramIntent.getString("result");
+    } else {
+      paramIntent = "{}";
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("LiangHaoBuyFragment", 2, "onActivityResult data=" + paramIntent);
-      }
-      try
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityResult data=");
+      localStringBuilder.append(paramIntent);
+      QLog.i("LiangHaoBuyFragment", 2, localStringBuilder.toString());
+    }
+    try
+    {
+      int i = new JSONObject(paramIntent).optInt("resultCode", -1);
+      return i;
+    }
+    catch (JSONException paramIntent)
+    {
+      if (QLog.isColorLevel())
       {
-        int i = new JSONObject(paramIntent).optInt("resultCode", -1);
-        return i;
-      }
-      catch (JSONException paramIntent)
-      {
-        if (!QLog.isColorLevel()) {
-          break label122;
-        }
-        QLog.e("LiangHaoBuyFragment", 2, "getPayResultCode " + paramIntent);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getPayResultCode ");
+        localStringBuilder.append(paramIntent);
+        QLog.e("LiangHaoBuyFragment", 2, localStringBuilder.toString());
       }
     }
-    label122:
     return -1;
   }
   
   private void a()
   {
-    QFragmentActivity localQFragmentActivity = getActivity();
-    if (localQFragmentActivity == null) {
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    if (localQBaseActivity == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidAppDialog = new LiangHaoDialog().a(localQFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData, new LiangHaoBuyFragment.1(this));
+    this.jdField_a_of_type_AndroidAppDialog = new LiangHaoDialog().a(localQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData, new LiangHaoBuyFragment.1(this));
     this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new LiangHaoBuyFragment.2(this));
     this.jdField_a_of_type_AndroidAppDialog.show();
   }
@@ -99,82 +107,83 @@ public class LiangHaoBuyFragment
       QQToast.a(BaseApplication.getContext(), 1, paramString, 0).a();
       return;
     }
-    if (!NetworkUtil.g(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplication.getContext(), 1, 2131693656, 0).a();
+      QQToast.a(BaseApplication.getContext(), 1, 2131693609, 0).a();
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 1, 2131693648, 0).a();
+    QQToast.a(BaseApplication.getContext(), 1, 2131693601, 0).a();
   }
   
   private void a(String paramString, byte[] paramArrayOfByte)
   {
-    QFragmentActivity localQFragmentActivity = getActivity();
-    if (localQFragmentActivity == null) {
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    if (localQBaseActivity == null) {
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+    Object localObject = this.jdField_a_of_type_AndroidAppDialog;
+    if ((localObject != null) && (((Dialog)localObject).isShowing())) {
       this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    String str;
-    if (this.jdField_b_of_type_Int != 2)
-    {
-      str = "mvip.p.a.lianghao_tj";
-      if (paramArrayOfByte == null) {
-        break label300;
-      }
+    if (this.jdField_b_of_type_Int != 2) {
+      localObject = "mvip.p.a.lianghao_tj";
+    } else {
+      localObject = "mvip.p.a.lianghao_gd";
     }
-    label300:
-    for (paramArrayOfByte = SecUtil.toHexString(paramArrayOfByte);; paramArrayOfByte = "")
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte = SecUtil.toHexString(paramArrayOfByte);
+    } else {
+      paramArrayOfByte = "";
+    }
+    try
     {
-      try
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unit", HardCodeUtil.a(2131706104));
+      localJSONObject.put("userId", paramString);
+      localJSONObject.put("openMonth", "1");
+      localJSONObject.put("offerId", "1450000833");
+      localJSONObject.put("aid", localObject);
+      localJSONObject.put("ticketValue", paramArrayOfByte);
+      localJSONObject.put("ticketName", "vask_27");
+      localJSONObject.put("isCanChange", false);
+      localJSONObject.put("serviceCode", "CJCLUBT");
+      localJSONObject.put("serviceName", "QQ超级会员");
+      if (QLog.isDevelopLevel())
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("unit", HardCodeUtil.a(2131706053));
-        localJSONObject.put("userId", paramString);
-        localJSONObject.put("openMonth", "1");
-        localJSONObject.put("offerId", "1450000833");
-        localJSONObject.put("aid", str);
-        localJSONObject.put("ticketValue", paramArrayOfByte);
-        localJSONObject.put("ticketName", "vask_27");
-        localJSONObject.put("isCanChange", false);
-        localJSONObject.put("serviceCode", "CJCLUBT");
-        localJSONObject.put("serviceName", "QQ超级会员");
-        if (QLog.isDevelopLevel()) {
-          QLog.i("LiangHaoBuyFragment", 4, "jumpToPay " + localJSONObject.toString());
-        }
-        paramString = new Intent();
-        paramArrayOfByte = new Bundle();
-        paramArrayOfByte.putString("json", localJSONObject.toString());
-        paramArrayOfByte.putString("callbackSn", "lhPaySn");
-        paramString.putExtras(paramArrayOfByte);
-        paramString.putExtra("payparmas_from_is_login_state", false);
-        paramString.putExtra("pay_requestcode", 4);
-        LoginUtils.a(localQFragmentActivity, paramString, "/base/payBridge", this.jdField_b_of_type_Int);
-        return;
+        paramString = new StringBuilder();
+        paramString.append("jumpToPay ");
+        paramString.append(localJSONObject.toString());
+        QLog.i("LiangHaoBuyFragment", 4, paramString.toString());
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        j();
-        return;
-      }
-      str = "mvip.p.a.lianghao_gd";
-      break;
+      paramString = new Intent();
+      paramArrayOfByte = new Bundle();
+      paramArrayOfByte.putString("json", localJSONObject.toString());
+      paramArrayOfByte.putString("callbackSn", "lhPaySn");
+      paramString.putExtras(paramArrayOfByte);
+      paramString.putExtra("payparmas_from_is_login_state", false);
+      paramString.putExtra("pay_requestcode", 4);
+      LoginUtils.a(localQBaseActivity, paramString, "/base/payBridge", this.jdField_b_of_type_Int);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      e();
     }
   }
   
   private void b()
   {
-    if (getActivity() == null) {
+    if (getQBaseActivity() == null) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), getActivity().getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131694694);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getQBaseActivity(), getQBaseActivity().getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131694668);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
   
@@ -190,115 +199,117 @@ public class LiangHaoBuyFragment
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if (localQQProgressDialog != null) {
+      localQQProgressDialog.dismiss();
     }
   }
   
   private void d()
   {
-    QFragmentActivity localQFragmentActivity = getActivity();
-    if (localQFragmentActivity == null) {
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    if (localQBaseActivity == null) {
       return;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("LiangHaoBuyFragment", 4, "lockLiangHao uin=" + this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("lockLiangHao uin=");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a);
+      QLog.i("LiangHaoBuyFragment", 4, localStringBuilder.toString());
     }
     b();
-    new LHLoginMng(localQFragmentActivity.getAppRuntime()).a(localQFragmentActivity.getIntent(), this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, new LiangHaoBuyFragment.3(this));
+    new LHLoginMng(localQBaseActivity.getAppRuntime()).a(localQBaseActivity.getIntent(), this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, new LiangHaoBuyFragment.3(this));
   }
   
-  private void j()
+  private void e()
   {
-    if (this.jdField_b_of_type_Boolean) {}
-    QFragmentActivity localQFragmentActivity;
-    do
-    {
+    if (this.jdField_b_of_type_Boolean) {
       return;
-      this.jdField_b_of_type_Boolean = true;
-      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      localQFragmentActivity = getActivity();
-    } while (localQFragmentActivity == null);
-    if (this.jdField_b_of_type_Int == 2) {}
-    Intent localIntent1;
-    switch (this.jdField_a_of_type_Int)
+    }
+    this.jdField_b_of_type_Boolean = true;
+    Object localObject = this.jdField_a_of_type_AndroidAppDialog;
+    if ((localObject != null) && (((Dialog)localObject).isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    if (localQBaseActivity == null) {
+      return;
+    }
+    if (this.jdField_b_of_type_Int == 2)
     {
-    default: 
-      Intent localIntent2 = this.jdField_a_of_type_AndroidContentIntent;
-      localIntent1 = localIntent2;
-      if (localIntent2 == null) {
-        localIntent1 = localQFragmentActivity.getIntent();
+      i = this.jdField_a_of_type_Int;
+      if ((i == 2) || (i == 3)) {
+        localQBaseActivity.setResult(4660);
       }
-      switch (this.jdField_a_of_type_Int)
+    }
+    Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+    localObject = localIntent;
+    if (localIntent == null) {
+      localObject = localQBaseActivity.getIntent();
+    }
+    int i = this.jdField_a_of_type_Int;
+    if (i != 1) {
+      if (i != 2)
       {
+        if (i == 3) {
+          RegisterLHAssistant.a(localQBaseActivity, false, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.b, (Intent)localObject);
+        }
       }
-      break;
+      else {
+        RegisterLHAssistant.a(localQBaseActivity, true, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.b, (Intent)localObject);
+      }
     }
-    for (;;)
-    {
-      localQFragmentActivity.finish();
-      return;
-      localQFragmentActivity.setResult(4660);
-      break;
-      RegisterLHAssistant.a(localQFragmentActivity, true, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.b, localIntent1);
-      continue;
-      RegisterLHAssistant.a(localQFragmentActivity, false, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.b, localIntent1);
-    }
+    localQBaseActivity.finish();
   }
   
-  public void a(Activity paramActivity)
+  public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    super.a(paramActivity);
+    super.initWindowStyleAndAnimation(paramActivity);
     paramActivity.requestWindowFeature(1);
     paramActivity.getWindow().addFlags(1024);
     paramActivity.overridePendingTransition(0, 0);
   }
   
-  public boolean d()
+  public boolean needImmersive()
   {
     return false;
   }
   
-  public boolean d_()
+  public boolean needStatusTrans()
   {
     return false;
-  }
-  
-  public void i()
-  {
-    super.i();
-    QFragmentActivity localQFragmentActivity = getActivity();
-    if (localQFragmentActivity == null) {
-      return;
-    }
-    localQFragmentActivity.overridePendingTransition(0, 0);
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    paramBundle = getActivity();
+    paramBundle = getQBaseActivity();
     if (paramBundle == null) {
       return;
     }
     paramBundle = paramBundle.getIntent();
     this.jdField_b_of_type_Int = paramBundle.getIntExtra("lh_request_code", 1);
     this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData = new LiangHaoUinData(paramBundle.getStringExtra("lh_uin"), paramBundle.getStringExtra("lh_light"));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("LiangHaoBuyFragment", 4, "onActivityCreated from=" + this.jdField_b_of_type_Int + ",lh=" + this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.toString());
-    }
-    switch (this.jdField_b_of_type_Int)
+    if (QLog.isDevelopLevel())
     {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityCreated from=");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(",lh=");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.toString());
+      QLog.i("LiangHaoBuyFragment", 4, localStringBuilder.toString());
+    }
+    int i = this.jdField_b_of_type_Int;
+    if ((i != 1) && (i != 2))
+    {
+      if (i != 3) {
+        return;
+      }
+      a(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, paramBundle.getByteArrayExtra("key_register_lhsig"));
       return;
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData.a, paramBundle.getByteArrayExtra("key_register_lhsig"));
+    a();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -306,20 +317,30 @@ public class LiangHaoBuyFragment
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (this.jdField_b_of_type_Int != paramInt1)
     {
-      j();
+      e();
       return;
     }
-    if (a(paramIntent) == 0) {}
-    for (this.jdField_a_of_type_Int = 2;; this.jdField_a_of_type_Int = 3)
-    {
-      j();
+    if (a(paramIntent) == 0) {
+      this.jdField_a_of_type_Int = 2;
+    } else {
+      this.jdField_a_of_type_Int = 3;
+    }
+    e();
+  }
+  
+  public void onFinish()
+  {
+    super.onFinish();
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    if (localQBaseActivity == null) {
       return;
     }
+    localQBaseActivity.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment
  * JD-Core Version:    0.7.0.1
  */

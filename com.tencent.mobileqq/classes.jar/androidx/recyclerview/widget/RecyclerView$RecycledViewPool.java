@@ -139,18 +139,18 @@ public class RecyclerView$RecycledViewPool
   boolean willBindInTime(int paramInt, long paramLong1, long paramLong2)
   {
     long l = getScrapDataForType(paramInt).mBindRunningAverageNs;
-    return (l == 0L) || (l + paramLong1 < paramLong2);
+    return (l == 0L) || (paramLong1 + l < paramLong2);
   }
   
   boolean willCreateInTime(int paramInt, long paramLong1, long paramLong2)
   {
     long l = getScrapDataForType(paramInt).mCreateRunningAverageNs;
-    return (l == 0L) || (l + paramLong1 < paramLong2);
+    return (l == 0L) || (paramLong1 + l < paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.RecycledViewPool
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class ParticleSystem
 {
-  private static final String TAG = ParticleSystem.class.getSimpleName();
+  private static final String TAG = "ParticleSystem";
   private long mAdvanceIndex = 0L;
   private List<ParticleCloud> mClouds = new ArrayList();
   private final Context mContext;
@@ -49,9 +49,9 @@ public class ParticleSystem
       localObject = new Particle();
       ((Particle)localObject).paramOffset = (i * 11);
       ((Particle)localObject).next = this.mPool.next;
-      this.mPool.next = ((Particle)localObject);
-      localObject = this.mPool;
-      ((Particle)localObject).total += 1;
+      Particle localParticle = this.mPool;
+      localParticle.next = ((Particle)localObject);
+      localParticle.total += 1;
       i += 1;
     }
     Object localObject = this.mClouds.iterator();
@@ -63,35 +63,32 @@ public class ParticleSystem
   private void loadFinish()
   {
     Iterator localIterator = this.mClouds.iterator();
-    ParticleCloud localParticleCloud;
-    double d;
-    for (int i = 0; localIterator.hasNext(); i = (int)(((Attribute)localParticleCloud.mAttrs.get("particleCountMax")).value() + d))
+    double d1;
+    double d2;
+    for (int i = 0; localIterator.hasNext(); i = (int)(d1 + d2))
     {
-      localParticleCloud = (ParticleCloud)localIterator.next();
-      d = i;
+      ParticleCloud localParticleCloud = (ParticleCloud)localIterator.next();
+      d1 = i;
+      d2 = ((Attribute)localParticleCloud.mAttrs.get("particleCountMax")).value();
+      Double.isNaN(d1);
     }
     createCache(i);
   }
   
   private void loadParticle(String paramString)
   {
-    Object localObject = null;
     try
     {
       paramString = GsonUtils.json2JsonObject(paramString);
-      paramString = ParticleCloud.fromJson(this, paramString);
-      this.mClouds.add(paramString);
-      this.mSpriteMap.put(paramString.mSprite, paramString);
-      return;
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        LogUtils.e(TAG, paramString.getMessage());
-        paramString = localObject;
-      }
+      LogUtils.e(TAG, paramString.getMessage());
+      paramString = null;
     }
+    paramString = ParticleCloud.fromJson(this, paramString);
+    this.mClouds.add(paramString);
+    this.mSpriteMap.put(paramString.mSprite, paramString);
   }
   
   public static native double[] nativeAdvance(long[] paramArrayOfLong, double[] paramArrayOfDouble, int[] paramArrayOfInt, int paramInt);
@@ -111,9 +108,9 @@ public class ParticleSystem
       {
         localParticle1 = new Particle();
         localParticle1.next = this.mPool.next;
-        this.mPool.next = localParticle1;
-        localParticle1 = this.mPool;
-        localParticle1.total += 1;
+        localParticle2 = this.mPool;
+        localParticle2.next = localParticle1;
+        localParticle2.total += 1;
         i -= 1;
       }
     }
@@ -133,8 +130,11 @@ public class ParticleSystem
   public ArrayList<Particle> advance()
   {
     ArrayList localArrayList = new ArrayList();
-    double d = System.currentTimeMillis() / 1000.0D;
+    double d = System.currentTimeMillis();
+    Double.isNaN(d);
+    d /= 1000.0D;
     Iterator localIterator = this.mClouds.iterator();
+    Object localObject1 = this;
     ParticleCloud localParticleCloud;
     if (localIterator.hasNext()) {
       localParticleCloud = (ParticleCloud)localIterator.next();
@@ -142,10 +142,10 @@ public class ParticleSystem
     for (;;)
     {
       int i;
-      synchronized (this.mPool)
+      synchronized (((ParticleSystem)localObject1).mPool)
       {
         Pair localPair = localParticleCloud.getAdvanceExpression(d);
-        nativeAdvanceEx(((ParticleExpressionBundle)localPair.second).expressions, this.mParamsPool, ((ParticleExpressionBundle)localPair.second).paramOffsets, ((ParticleExpressionBundle)localPair.second).paramLine, localParticleCloud.mResultBuffer);
+        nativeAdvanceEx(((ParticleExpressionBundle)localPair.second).expressions, ((ParticleSystem)localObject1).mParamsPool, ((ParticleExpressionBundle)localPair.second).paramOffsets, ((ParticleExpressionBundle)localPair.second).paramLine, localParticleCloud.mResultBuffer);
         localParticleCloud.mResultBuffer.rewind();
         localParticleCloud.mResultBuffer.get(localParticleCloud.mResultArray);
         int k = localParticleCloud.mVarAttributes.length;
@@ -154,20 +154,20 @@ public class ParticleSystem
         {
           Attribute localAttribute = localParticleCloud.mVarAttributes[i];
           int m = ((Particle)localPair.first).total;
-          Particle localParticle1 = ((Particle)localPair.first).next;
+          localObject1 = ((Particle)localPair.first).next;
           int j = 0;
-          if (localParticle1 == null) {
-            break label263;
+          if (localObject1 == null) {
+            break label275;
           }
-          localParticle1.a[localAttribute.mVarIndex] = localParticleCloud.mResultArray[(i * m + j)];
-          localParticle1 = localParticle1.next;
+          ((Particle)localObject1).a[localAttribute.mVarIndex] = localParticleCloud.mResultArray[(i * m + j)];
+          localObject1 = ((Particle)localObject1).next;
           j += 1;
           continue;
         }
         localArrayList.add(localPair.first);
       }
       return localArrayList;
-      label263:
+      label275:
       i += 1;
     }
   }
@@ -194,6 +194,10 @@ public class ParticleSystem
       }
       return this.mCopiedParticles;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   Particle advanceObtainUnlocked()
@@ -211,24 +215,18 @@ public class ParticleSystem
   public void emitImmediately(double paramDouble1, double paramDouble2, double paramDouble3)
   {
     Iterator localIterator = this.mClouds.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      ParticleCloud localParticleCloud;
-      if (localIterator.hasNext())
+      ParticleCloud localParticleCloud = (ParticleCloud)localIterator.next();
+      if (localParticleCloud.mEmitRate == 0L)
       {
-        localParticleCloud = (ParticleCloud)localIterator.next();
-        if (localParticleCloud.mEmitRate != 0L) {
-          continue;
-        }
-        if (localParticleCloud.mParticles.total >= localParticleCloud.mMaxCount) {
+        if (localParticleCloud.mParticles.total >= localParticleCloud.mMaxCount)
+        {
           LogUtils.e(TAG, String.format("max: %d, now %d, can't emit any more", new Object[] { Long.valueOf(localParticleCloud.mMaxCount), Integer.valueOf(localParticleCloud.mParticles.total) }));
+          return;
         }
+        localParticleCloud.emitImmediately(paramDouble1, paramDouble2, paramDouble3);
       }
-      else
-      {
-        return;
-      }
-      localParticleCloud.emitImmediately(paramDouble1, paramDouble2, paramDouble3);
     }
   }
   
@@ -257,48 +255,46 @@ public class ParticleSystem
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    for (;;)
+    try
     {
-      StringBuilder localStringBuilder;
-      try
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
+        Object localObject1 = (String)paramList.next();
+        Object localObject2;
+        if (((String)localObject1).startsWith("/"))
         {
-          localObject1 = (String)paramList.next();
-          if (!((String)localObject1).startsWith("/")) {
-            break label149;
-          }
           localObject1 = new InputStreamReader(new FileInputStream((String)localObject1));
           localObject2 = new BufferedReader((Reader)localObject1, 1024);
-          localStringBuilder = new StringBuilder();
-          String str = ((BufferedReader)localObject2).readLine();
-          if (str == null) {
-            break label130;
+          StringBuilder localStringBuilder = new StringBuilder();
+          for (;;)
+          {
+            String str = ((BufferedReader)localObject2).readLine();
+            if (str == null) {
+              break;
+            }
+            localStringBuilder.append(str);
           }
-          localStringBuilder.append(str);
-          continue;
+          localArrayList.add(localStringBuilder.toString());
+          ((InputStreamReader)localObject1).close();
         }
-        if (localArrayList.isEmpty()) {
-          break;
+        else
+        {
+          localObject1 = this.mContext.getAssets().open((String)localObject1);
+          localObject2 = new byte[((InputStream)localObject1).available()];
+          ((InputStream)localObject1).read((byte[])localObject2);
+          localArrayList.add(new String((byte[])localObject2));
+          ((InputStream)localObject1).close();
         }
       }
-      catch (Exception paramList)
-      {
-        paramList.printStackTrace();
-      }
-      loadParticles(localArrayList);
       return;
-      label130:
-      localArrayList.add(localStringBuilder.toString());
-      ((InputStreamReader)localObject1).close();
-      continue;
-      label149:
-      Object localObject1 = this.mContext.getAssets().open((String)localObject1);
-      Object localObject2 = new byte[((InputStream)localObject1).available()];
-      ((InputStream)localObject1).read((byte[])localObject2);
-      localArrayList.add(new String((byte[])localObject2));
-      ((InputStream)localObject1).close();
+    }
+    catch (Exception paramList)
+    {
+      paramList.printStackTrace();
+      if (!localArrayList.isEmpty()) {
+        loadParticles(localArrayList);
+      }
     }
   }
   
@@ -314,14 +310,14 @@ public class ParticleSystem
   void putUnlocked(Particle paramParticle)
   {
     paramParticle.next = this.mPool.next;
-    this.mPool.next = paramParticle;
-    paramParticle = this.mPool;
-    paramParticle.total += 1;
+    Particle localParticle = this.mPool;
+    localParticle.next = paramParticle;
+    localParticle.total += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.ParticleSystem
  * JD-Core Version:    0.7.0.1
  */

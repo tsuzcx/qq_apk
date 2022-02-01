@@ -23,71 +23,67 @@ public class ConfessItemBuilder
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
   {
     paramOnClickListener = paramContext.getResources();
-    if (paramView == null)
-    {
+    if (paramView == null) {
       paramRecentFaceDecoder = null;
-      if ((paramView == null) || (!(paramView.getTag() instanceof ConfessItemBuilder.ViewHolder))) {
-        break label179;
-      }
-      paramRecentFaceDecoder = (ConfessItemBuilder.ViewHolder)paramRecentFaceDecoder;
-      label35:
-      paramInt = paramViewGroup.getMeasuredHeight() - this.a;
-      if (paramInt >= 0) {
-        break label348;
-      }
-      paramInt = (int)(this.a * 1.5F);
+    } else {
+      paramRecentFaceDecoder = paramView.getTag();
     }
-    label81:
-    label348:
-    for (;;)
+    if ((paramView != null) && ((paramView.getTag() instanceof ConfessItemBuilder.ViewHolder)))
     {
-      if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams))
-      {
-        paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
-        paramViewGroup.width = -1;
-        paramViewGroup.height = paramInt;
-        paramView.setLayoutParams(paramViewGroup);
-        if ((paramObject instanceof Integer))
-        {
-          paramInt = ((Integer)paramObject).intValue();
-          if (paramInt != 16) {
-            break label294;
-          }
-          paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839549);
-          if ((paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-            ((Animatable)paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
-          }
-          paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131698639);
-        }
-      }
-      while (paramInt != 17)
-      {
-        return paramView;
-        paramRecentFaceDecoder = paramView.getTag();
-        break;
-        paramView = LayoutInflater.from(paramContext).inflate(2131561157, null);
-        paramRecentFaceDecoder = new ConfessItemBuilder.ViewHolder();
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131370057));
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368603));
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380726));
-        paramView.setTag(paramRecentFaceDecoder);
-        this.a = (paramOnClickListener.getDimensionPixelSize(2131298220) + paramOnClickListener.getDimensionPixelSize(2131298222) + paramOnClickListener.getDimensionPixelSize(2131298221) * 2);
-        break label35;
-        paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
-        break label81;
-      }
-      if ((paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-        ((Animatable)paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
-      }
-      paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131698638);
-      return paramView;
+      paramRecentFaceDecoder = (ConfessItemBuilder.ViewHolder)paramRecentFaceDecoder;
     }
+    else
+    {
+      paramView = LayoutInflater.from(paramContext).inflate(2131561020, null);
+      paramRecentFaceDecoder = new ConfessItemBuilder.ViewHolder();
+      paramRecentFaceDecoder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369736));
+      paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
+      paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379994));
+      paramView.setTag(paramRecentFaceDecoder);
+      this.a = (paramOnClickListener.getDimensionPixelSize(2131298215) + paramOnClickListener.getDimensionPixelSize(2131298217) + paramOnClickListener.getDimensionPixelSize(2131298216) * 2);
+    }
+    paramInt = paramViewGroup.getMeasuredHeight();
+    int j = this.a;
+    int i = paramInt - j;
+    paramInt = i;
+    if (i < 0) {
+      paramInt = (int)(j * 1.5F);
+    }
+    if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams)) {
+      paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
+    } else {
+      paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
+    }
+    paramViewGroup.width = -1;
+    paramViewGroup.height = paramInt;
+    paramView.setLayoutParams(paramViewGroup);
+    if ((paramObject instanceof Integer))
+    {
+      paramInt = ((Integer)paramObject).intValue();
+      if (paramInt == 16)
+      {
+        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839406);
+        if ((paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+          ((Animatable)paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+        }
+        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131698705);
+        return paramView;
+      }
+      if (paramInt == 17)
+      {
+        if ((paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
+          ((Animatable)paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
+        }
+        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131698704);
+      }
+    }
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessItemBuilder
  * JD-Core Version:    0.7.0.1
  */

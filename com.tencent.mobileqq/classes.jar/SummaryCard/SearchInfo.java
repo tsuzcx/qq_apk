@@ -44,11 +44,13 @@ public final class SearchInfo
   {
     paramJceOutputStream.write(this.lUIN, 0);
     paramJceOutputStream.write(this.eSource, 1);
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 2);
+    String str = this.strNick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strMobile != null) {
-      paramJceOutputStream.write(this.strMobile, 3);
+    str = this.strMobile;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.bIsFriend, 4);
     paramJceOutputStream.write(this.bInContact, 5);

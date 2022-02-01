@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/aa_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="fragment" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <View android:id="@id/n5i" android:background="@drawable/bks" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="125.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ogn" android:background="@color/ajr" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <com.tencent.avgame.gameroom.stage.guesstext.GuessAutoLineTextView android:textSize="25.0dip" android:textStyle="bold" android:textColor="@color/al3" android:gravity="left" android:id="@id/ogm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="37.0dip" android:layout_marginRight="37.0dip" android:text="@string/wl_" android:shadowColor="#3d000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="4.0" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/ogo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="135.0dip" android:layout_marginLeft="37.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="37.0dip" android:src="@color/ajr" android:scaleType="centerInside" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/jp7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="32.0dip">
+        <com.tencent.avgame.gameroom.stage.util.CountDownClockNumLottieView android:id="@id/och" android:visibility="invisible" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="29.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/joq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="#3d000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_centerInParent="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/ocj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:shadowColor="#3d000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.avgame.gameroom.stage.util.CountDownClockView android:id="@id/mt9" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="20.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <com.tencent.avgame.gameroom.stage.util.CountDownClockNumLottieView android:id="@id/mzx" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="21.0dip" android:layout_marginBottom="23.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/ngm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginBottom="20.5dip" android:layout_toRightOf="@id/mt9" android:layout_alignParentBottom="true">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/nfd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+                <com.tencent.avgame.ui.AVGameText android:id="@id/ofe" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/nfd">
+                <com.tencent.avgame.ui.AVGameText android:id="@id/ofg" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/nh3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="25.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/oig" android:paddingLeft="3.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:text="@string/wkm" android:layout_weight="0.27" />
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/oie" android:paddingLeft="16.0dip" android:paddingRight="19.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:maxLines="2" android:layout_weight="0.73" />
+    </LinearLayout>
+</merge>

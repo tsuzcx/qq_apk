@@ -25,6 +25,8 @@ import com.tencent.qqmini.proxyimpl.UploaderProxyImpl;
 import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl;
 import com.tencent.qqmini.proxyimpl.VideoPlayerProviderProxyImpl;
 import com.tencent.qqmini.proxyimpl.VoIPProxyImpl;
+import com.tencent.qqmini.proxyimpl.WXLivePlayerApiProxy;
+import com.tencent.qqmini.proxyimpl.WXLivePusherApiProxy;
 import com.tencent.qqmini.proxyimpl.WebSocketProxyImpl;
 import com.tencent.qqmini.proxyimpl.WnsConfigProxyImpl;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy;
@@ -34,6 +36,8 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.ExternalElementProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.FavoritesProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.IMiniAppNotifyProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.IMiniReportProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IWXLivePlayerProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.IWXLivePusherProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.KingCardProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.LogProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MediaChooseJsProxy;
@@ -90,11 +94,13 @@ public final class ExtProxyServiceScope
     PROXY_SERVICES.put(IMiniAppNotifyProxy.class, MiniAppNotifyProxyImpl.class);
     PROXY_SERVICES.put(MiniAppCacheProxy.class, MiniAppCacheProxyImpl.class);
     PROXY_SERVICES.put(IMiniReportProxy.class, MiniReportProxyImpl.class);
+    PROXY_SERVICES.put(IWXLivePusherProxy.class, WXLivePusherApiProxy.class);
+    PROXY_SERVICES.put(IWXLivePlayerProxy.class, WXLivePlayerApiProxy.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.ExtProxyServiceScope
  * JD-Core Version:    0.7.0.1
  */

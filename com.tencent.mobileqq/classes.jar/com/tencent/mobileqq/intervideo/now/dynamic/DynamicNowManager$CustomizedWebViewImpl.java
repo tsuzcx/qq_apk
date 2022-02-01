@@ -9,12 +9,12 @@ class DynamicNowManager$CustomizedWebViewImpl
 {
   public void onJumpWeb(String paramString, Bundle paramBundle, WebCallHandler paramWebCallHandler)
   {
-    PluginManagerInterfaceImpl.a().a(paramBundle);
+    PluginManagerInterfaceImpl.a().b(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.CustomizedWebViewImpl
  * JD-Core Version:    0.7.0.1
  */

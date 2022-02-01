@@ -18,15 +18,16 @@ public class OskVideoKeyGenerator
   
   public String generate(String paramString)
   {
-    if (this.mCacheKeyGenerator != null) {
-      return this.mCacheKeyGenerator.generate(paramString);
+    CacheKeyGenerator localCacheKeyGenerator = this.mCacheKeyGenerator;
+    if (localCacheKeyGenerator != null) {
+      return localCacheKeyGenerator.generate(paramString);
     }
     return this.mDefaultCacheKeyGenerator.generate(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.util.OskVideoKeyGenerator
  * JD-Core Version:    0.7.0.1
  */

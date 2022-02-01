@@ -27,7 +27,11 @@ public class JsBridge$JsBridgeListener
     if (localWebView == null) {
       return;
     }
-    localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':1,'result':'no such method'})");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("javascript:window.JsBridge&&JsBridge.callback(");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",{'r':1,'result':'no such method'})");
+    localWebView.loadUrl(localStringBuilder.toString());
   }
   
   public void a(Object paramObject)
@@ -38,22 +42,43 @@ public class JsBridge$JsBridgeListener
     }
     if (paramObject == null)
     {
-      localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':0});");
+      paramObject = new StringBuilder();
+      paramObject.append("javascript:window.JsBridge&&JsBridge.callback(");
+      paramObject.append(this.jdField_a_of_type_Long);
+      paramObject.append(",{'r':0});");
+      localWebView.loadUrl(paramObject.toString());
       return;
     }
-    if (((paramObject instanceof Number)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof JSONObject))) {}
-    for (paramObject = paramObject.toString();; paramObject = "'" + paramObject.toString().replace("\\", "\\\\").replace("'", "\\'") + "'")
+    if ((!(paramObject instanceof Number)) && (!(paramObject instanceof Boolean)) && (!(paramObject instanceof JSONObject)))
     {
-      localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':0,'result':" + paramObject + "});");
-      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("'");
+      localStringBuilder.append(paramObject.toString().replace("\\", "\\\\").replace("'", "\\'"));
+      localStringBuilder.append("'");
+      paramObject = localStringBuilder.toString();
     }
+    else
+    {
+      paramObject = paramObject.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("javascript:window.JsBridge&&JsBridge.callback(");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",{'r':0,'result':");
+    localStringBuilder.append(paramObject);
+    localStringBuilder.append("});");
+    localWebView.loadUrl(localStringBuilder.toString());
   }
   
   public void a(String paramString)
   {
     WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localWebView != null) {
-      localWebView.loadUrl("javascript:" + paramString);
+    if (localWebView != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("javascript:");
+      localStringBuilder.append(paramString);
+      localWebView.loadUrl(localStringBuilder.toString());
     }
   }
   
@@ -63,14 +88,19 @@ public class JsBridge$JsBridgeListener
       QLog.d("JB", 4, "onPermissionDenied");
     }
     WebView localWebView = (WebView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localWebView != null) {
-      localWebView.loadUrl("javascript:window.JsBridge&&JsBridge.callback(" + this.jdField_a_of_type_Long + ",{'r':2,'result':'Permission denied'})");
+    if (localWebView != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("javascript:window.JsBridge&&JsBridge.callback(");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(",{'r':2,'result':'Permission denied'})");
+      localWebView.loadUrl(localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsbridge.JsBridge.JsBridgeListener
  * JD-Core Version:    0.7.0.1
  */

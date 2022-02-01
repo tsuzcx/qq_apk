@@ -48,8 +48,12 @@ public class StringTexture
   
   public void a(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StringTexture", 2, "setTextSize textSize: " + paramFloat);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setTextSize textSize: ");
+      localStringBuilder.append(paramFloat);
+      QLog.d("StringTexture", 2, localStringBuilder.toString());
     }
     this.b = paramFloat;
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.b);
@@ -65,34 +69,43 @@ public class StringTexture
   
   public void a(GLCanvas paramGLCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_Float < 0.99F) && (Build.VERSION.SDK_INT >= 16)) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if ((this.jdField_a_of_type_Float < 0.99F) && (Build.VERSION.SDK_INT >= 16)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      if (i != 0)
-      {
-        paramGLCanvas.a(3);
-        paramGLCanvas.a(this.jdField_a_of_type_Float);
-      }
-      paramGLCanvas.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
-      if (i != 0) {
-        paramGLCanvas.c();
-      }
-      return;
+      paramGLCanvas.a(3);
+      paramGLCanvas.a(this.jdField_a_of_type_Float);
+    }
+    paramGLCanvas.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (i != 0) {
+      paramGLCanvas.c();
     }
   }
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StringTexture", 2, "setText text: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setText text: ");
+      localStringBuilder.append(paramString);
+      QLog.d("StringTexture", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void c(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StringTexture", 2, "setTextColor textColor: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setTextColor textColor: ");
+      localStringBuilder.append(paramInt);
+      QLog.d("StringTexture", 2, localStringBuilder.toString());
     }
     this.k = paramInt;
     this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.k);
@@ -100,59 +113,85 @@ public class StringTexture
   
   public void d(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StringTexture", 2, "setMaxLength maxLength: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setMaxLength maxLength: ");
+      localStringBuilder.append(paramInt);
+      QLog.d("StringTexture", 2, localStringBuilder.toString());
     }
     this.n = paramInt;
   }
   
   public void e()
   {
+    boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
     int i = 1;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    int i1 = 1;
+    int j;
+    StringBuilder localStringBuilder;
+    if (!bool)
     {
-      j = CharacterUtil.a(this.jdField_a_of_type_JavaLangString);
-      i = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString));
-      if ((j <= this.n) && (i <= this.l)) {
-        break label302;
-      }
-    }
-    label302:
-    for (int j = 1;; j = 0)
-    {
-      if (j != 0)
-      {
-        i = Math.min(Math.max((this.l - (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText("..."))) / (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText("M")), 1), this.n);
-        this.jdField_a_of_type_JavaLangString = (CharacterUtil.a(this.jdField_a_of_type_JavaLangString, 0, i) + "...");
-        i = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString));
-      }
-      j = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.bottom - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.top;
-      if (i <= 0) {
+      i = CharacterUtil.a(this.jdField_a_of_type_JavaLangString);
+      j = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString));
+      if ((i <= this.n) && (j <= this.l)) {
+        i = 0;
+      } else {
         i = 1;
       }
-      for (;;)
+      if (i != 0)
       {
-        if (j <= 0) {
-          j = 1;
-        }
-        for (;;)
-        {
-          b(i, j);
-          a(i, j);
-          if (QLog.isColorLevel()) {
-            QLog.d("StringTexture", 2, "refreshText width: " + this.e + ", height: " + this.f + ", maxLength: " + this.n + ", textSize: " + this.b + ", text: " + this.jdField_a_of_type_JavaLangString + ";mMetrics:=" + this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.toString());
-          }
-          return;
-          j = 1;
-        }
+        i = Math.min(Math.max((this.l - (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText("..."))) / (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText("M")), 1), this.n);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(CharacterUtil.a(this.jdField_a_of_type_JavaLangString, 0, i));
+        localStringBuilder.append("...");
+        this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+        j = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString));
       }
+      int i2 = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.bottom - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.top;
+      i = j;
+      if (j <= 0) {
+        i = 1;
+      }
+      if (i2 <= 0) {
+        j = i1;
+      } else {
+        j = i2;
+      }
+    }
+    else
+    {
+      j = 1;
+    }
+    b(i, j);
+    a(i, j);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshText width: ");
+      localStringBuilder.append(this.e);
+      localStringBuilder.append(", height: ");
+      localStringBuilder.append(this.f);
+      localStringBuilder.append(", maxLength: ");
+      localStringBuilder.append(this.n);
+      localStringBuilder.append(", textSize: ");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(", text: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(";mMetrics:=");
+      localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.toString());
+      QLog.d("StringTexture", 2, localStringBuilder.toString());
     }
   }
   
   public void e(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StringTexture", 2, "setWidth width: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setWidth width: ");
+      localStringBuilder.append(paramInt);
+      QLog.d("StringTexture", 2, localStringBuilder.toString());
     }
     if (paramInt > 0) {
       this.l = paramInt;
@@ -171,7 +210,7 @@ public class StringTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.texture.StringTexture
  * JD-Core Version:    0.7.0.1
  */

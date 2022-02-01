@@ -38,17 +38,16 @@ public class GetUserGroupUnionIDHandler
       paramGetUserGroupUnionIDRequest.a = paramGetUserGroupUnionIDResponse.a;
       b();
     }
-    for (;;)
+    else
     {
-      StoryDispatcher.a().dispatch(paramGetUserGroupUnionIDRequest);
-      return;
       c();
     }
+    StoryDispatcher.a().dispatch(paramGetUserGroupUnionIDRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserGroupUnionIDHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,6 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FlashPicHelper;
 import com.tencent.mobileqq.app.HotChatHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -26,11 +25,13 @@ import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.recreate.IFModel;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter;
 import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.pic.api.IPicFlash;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
@@ -42,6 +43,7 @@ import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.mobileqq.troop.utils.TroopFileUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.weiyun.api.IWeiyunResponseHandler;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.wifi.FreeWifiHelper;
 import java.util.ArrayList;
@@ -69,28 +71,23 @@ public class WeiyunAIOUtils
     ArrayList localArrayList5 = new ArrayList();
     ArrayList localArrayList6 = new ArrayList();
     ChatMessage localChatMessage = (ChatMessage)paramList.get(0);
-    ResponseHandler.a(localChatMessage.frienduin, localChatMessage.senderuin, localChatMessage.istroop);
+    ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).setRequestData(localChatMessage.frienduin, localChatMessage.senderuin, localChatMessage.istroop);
     int i = 0;
-    if (i < paramList.size())
+    while (i < paramList.size())
     {
       localChatMessage = (ChatMessage)paramList.get(i);
       if ((localChatMessage instanceof MessageForTroopFile)) {
         localArrayList1.add(localChatMessage);
+      } else if ((localChatMessage instanceof MessageForFile)) {
+        localArrayList2.add((MessageForFile)localChatMessage);
+      } else if ((localChatMessage instanceof MessageForDLFile)) {
+        localArrayList3.add((MessageForDLFile)localChatMessage);
+      } else if ((localChatMessage instanceof MessageForPic)) {
+        localArrayList4.add((MessageForPic)localChatMessage);
+      } else if (MultiMsgProxy.b(localChatMessage)) {
+        localArrayList6.add((StructMsgForImageShare)((MessageForStructing)localChatMessage).structingMsg);
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((localChatMessage instanceof MessageForFile)) {
-          localArrayList2.add((MessageForFile)localChatMessage);
-        } else if ((localChatMessage instanceof MessageForDLFile)) {
-          localArrayList3.add((MessageForDLFile)localChatMessage);
-        } else if ((localChatMessage instanceof MessageForPic)) {
-          localArrayList4.add((MessageForPic)localChatMessage);
-        } else if (MultiMsgProxy.b(localChatMessage)) {
-          localArrayList6.add((StructMsgForImageShare)((MessageForStructing)localChatMessage).structingMsg);
-        }
-      }
+      i += 1;
     }
     if (localArrayList1.size() > 0)
     {
@@ -99,33 +96,45 @@ public class WeiyunAIOUtils
         return false;
       }
       paramList = TroopFileUtils.a(paramQQAppInterface, (MessageForTroopFile)paramList);
-      if ((paramList == null) || (paramList.e == null)) {
+      if (paramList != null)
+      {
+        if (paramList.e == null) {
+          return false;
+        }
+        TroopFileUtils.a(paramActivity, paramQQAppInterface, localArrayList1);
+      }
+      else
+      {
         return false;
       }
-      TroopFileUtils.a(paramActivity, paramQQAppInterface, localArrayList1);
     }
-    if ((localArrayList2.size() > 0) || (localArrayList3.size() > 0)) {}
-    for (boolean bool = a(paramQQAppInterface, localArrayList2, localArrayList3, localArrayList4, localArrayList5, localArrayList6, paramMqqHandler, paramInt); bool; bool = a(paramQQAppInterface, localArrayList4, localArrayList5, localArrayList6, paramMqqHandler, paramInt))
+    boolean bool;
+    if ((localArrayList2.size() <= 0) && (localArrayList3.size() <= 0)) {
+      bool = a(paramQQAppInterface, localArrayList4, localArrayList5, localArrayList6, paramMqqHandler, paramInt);
+    } else {
+      bool = a(paramQQAppInterface, localArrayList2, localArrayList3, localArrayList4, localArrayList5, localArrayList6, paramMqqHandler, paramInt);
+    }
+    if (bool)
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131692733, 0).b(paramInt);
+      QQToast.a(paramQQAppInterface.getApp(), 2131692690, 0).b(paramInt);
       return true;
     }
-    QQToast.a(paramQQAppInterface.getApp(), 2131692785, 0).b(paramInt);
+    QQToast.a(paramQQAppInterface.getApp(), 2131692743, 0).b(paramInt);
     return false;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, MqqHandler paramMqqHandler)
   {
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80067F8", "0X80067F8", 0, 0, "", "", "", "");
-    if (!NetworkUtil.d(paramActivity))
+    if (!NetworkUtil.isNetSupport(paramActivity))
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131692257, 0).b(paramInt);
+      QQToast.a(paramQQAppInterface.getApp(), 2131692183, 0).b(paramInt);
       return false;
     }
     List localList = MultiMsgManager.a().a();
     if (localList.size() == 0)
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131698457, 0).b(paramInt);
+      QQToast.a(paramQQAppInterface.getApp(), 2131698523, 0).b(paramInt);
       return false;
     }
     if (localList.size() == 1) {
@@ -197,7 +206,7 @@ public class WeiyunAIOUtils
     label20:
     Object localObject1;
     Object localObject2;
-    for (long l1 = 0L; localIterator.hasNext(); l1 = ((FileManagerEntity)localObject2).fileSize + l1)
+    for (long l1 = 0L; localIterator.hasNext(); l1 += ((FileManagerEntity)localObject2).fileSize)
     {
       localObject1 = (MessageForFile)localIterator.next();
       localObject2 = FileManagerUtil.a(paramQQAppInterface, (MessageForFile)localObject1);
@@ -213,7 +222,7 @@ public class WeiyunAIOUtils
       int i = ((MessageForDLFile)localObject1).deviceType;
       long l2 = ((MessageForDLFile)localObject1).associatedId;
       localObject2 = paramQQAppInterface.getMessageFacade().a(i).a(l2);
-      if (FileUtils.b(((DataLineMsgRecord)localObject2).path))
+      if (FileUtils.fileExistsAndNotEmpty(((DataLineMsgRecord)localObject2).path))
       {
         l1 += ((DataLineMsgRecord)localObject2).filesize;
         localArrayList.add(localObject1);
@@ -221,12 +230,12 @@ public class WeiyunAIOUtils
     }
     if ((paramList.size() + paramList1.size() > 0) && (localArrayList.size() == 0))
     {
-      FMToastUtil.a(2131692605);
+      FMToastUtil.a(2131692557);
       return false;
     }
     if ((FileManagerUtil.a()) && (l1 > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
     {
-      FMDialogUtil.a(BaseActivity.sTopActivity, 2131692609, 2131692614, new WeiyunAIOUtils.4(paramQQAppInterface, paramList, paramList1, paramArrayList, paramArrayList1, paramArrayList2, paramMqqHandler, paramInt));
+      FMDialogUtil.a(BaseActivity.sTopActivity, 2131692561, 2131692566, new WeiyunAIOUtils.4(paramQQAppInterface, paramList, paramList1, paramArrayList, paramArrayList1, paramArrayList2, paramMqqHandler, paramInt));
       return false;
     }
     return b(paramQQAppInterface, paramList, paramList1, paramArrayList, paramArrayList1, paramArrayList2, paramMqqHandler, paramInt);
@@ -234,7 +243,7 @@ public class WeiyunAIOUtils
   
   private static boolean a(ChatMessage paramChatMessage)
   {
-    return (HotChatHelper.a(paramChatMessage)) || (FlashPicHelper.a(paramChatMessage));
+    return (HotChatHelper.a(paramChatMessage)) || (((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg(paramChatMessage));
   }
   
   private static void b(QQAppInterface paramQQAppInterface, Activity paramActivity, DataLineMsgRecord paramDataLineMsgRecord)
@@ -242,180 +251,199 @@ public class WeiyunAIOUtils
     if ((FileManagerUtil.a()) && (paramDataLineMsgRecord.filesize > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
     {
       if (FreeWifiHelper.a(paramActivity, 5, new WeiyunAIOUtils.5(paramQQAppInterface, paramActivity, paramDataLineMsgRecord))) {
-        FMDialogUtil.a(paramActivity, 2131692609, 2131692612, new WeiyunAIOUtils.6(paramQQAppInterface, paramActivity, paramDataLineMsgRecord));
+        FMDialogUtil.a(paramActivity, 2131692561, 2131692564, new WeiyunAIOUtils.6(paramQQAppInterface, paramActivity, paramDataLineMsgRecord));
       }
-      return;
     }
-    c(paramQQAppInterface, paramActivity, paramDataLineMsgRecord);
+    else {
+      c(paramQQAppInterface, paramActivity, paramDataLineMsgRecord);
+    }
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, List<ChatMessage> paramList, MqqHandler paramMqqHandler)
   {
     paramList = (ChatMessage)paramList.get(0);
-    ResponseHandler.a(paramList.frienduin, paramList.senderuin, paramList.istroop);
-    if ((paramList instanceof MessageForTroopFile)) {
+    ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).setRequestData(paramList.frienduin, paramList.senderuin, paramList.istroop);
+    if ((paramList instanceof MessageForTroopFile))
+    {
       TroopFileUtils.b(paramActivity, paramQQAppInterface, paramList);
     }
-    for (;;)
+    else if ((paramList instanceof MessageForFile))
     {
-      return true;
-      if ((paramList instanceof MessageForFile))
+      paramActivity = (MessageForFile)paramList;
+      paramMqqHandler = FileManagerUtil.a(paramQQAppInterface, paramActivity);
+      if (paramMqqHandler.cloudType == 0)
       {
-        paramActivity = FileManagerUtil.a(paramQQAppInterface, (MessageForFile)paramList);
-        if (paramActivity.cloudType == 0)
-        {
-          FMToastUtil.a(2131692605);
-          return false;
-        }
-        if (paramActivity.status == 16)
-        {
-          FMToastUtil.a(2131692760);
-          return false;
-        }
-        if (FileModel.a((MessageForFile)paramList).a(false))
-        {
-          if (FreeWifiHelper.a(BaseActivity.sTopActivity, 5, new WeiyunAIOUtils.1(paramQQAppInterface, paramList))) {
-            FMDialogUtil.a(BaseActivity.sTopActivity, 2131692609, 2131692612, new WeiyunAIOUtils.2(paramQQAppInterface, paramList));
-          }
-        }
-        else {
-          FileManagerUtil.a(paramQQAppInterface, paramList, BaseActivity.sTopActivity);
+        FMToastUtil.a(2131692557);
+        return false;
+      }
+      if (paramMqqHandler.status == 16)
+      {
+        FMToastUtil.a(2131692717);
+        return false;
+      }
+      if (FileModel.a(paramActivity).a(false))
+      {
+        if (FreeWifiHelper.a(BaseActivity.sTopActivity, 5, new WeiyunAIOUtils.1(paramQQAppInterface, paramList))) {
+          FMDialogUtil.a(BaseActivity.sTopActivity, 2131692561, 2131692564, new WeiyunAIOUtils.2(paramQQAppInterface, paramList));
         }
       }
-      else if (((paramList instanceof MessageForPic)) || ((paramList instanceof MessageForShortVideo)))
+      else {
+        FileManagerUtil.a(paramQQAppInterface, paramList, BaseActivity.sTopActivity);
+      }
+    }
+    else
+    {
+      boolean bool = paramList instanceof MessageForPic;
+      if ((!bool) && (!(paramList instanceof MessageForShortVideo)))
+      {
+        if ((paramList instanceof MessageForDLFile))
+        {
+          paramList = (MessageForDLFile)paramList;
+          paramInt = paramList.deviceType;
+          long l = paramList.associatedId;
+          paramList = paramQQAppInterface.getMessageFacade().a(paramInt).a(l);
+          if (paramList != null)
+          {
+            if (!FileUtils.fileExistsAndNotEmpty(paramList.path))
+            {
+              FMToastUtil.a(2131692557);
+              return false;
+            }
+            b(paramQQAppInterface, paramActivity, paramList);
+          }
+        }
+        else if (MultiMsgProxy.b(paramList))
+        {
+          paramList = (StructMsgForImageShare)((MessageForStructing)paramList).structingMsg;
+          paramActivity = new ArrayList();
+          paramList = paramList.mStructMsgItemLists.iterator();
+          while (paramList.hasNext())
+          {
+            Object localObject1 = (AbsStructMsgElement)paramList.next();
+            if (AbsStructMsgItem.class.isInstance(localObject1))
+            {
+              localObject1 = ((AbsStructMsgItem)localObject1).a.iterator();
+              while (((Iterator)localObject1).hasNext())
+              {
+                Object localObject2 = (AbsStructMsgElement)((Iterator)localObject1).next();
+                if (StructMsgItemImage.class.isInstance(localObject2))
+                {
+                  localObject2 = (StructMsgItemImage)localObject2;
+                  if (!a(((StructMsgItemImage)localObject2).a)) {
+                    paramActivity.add(((StructMsgItemImage)localObject2).a);
+                  }
+                }
+              }
+            }
+          }
+          if (paramActivity.size() > 0)
+          {
+            a(paramQQAppInterface, paramActivity, null, null, paramMqqHandler, paramInt);
+            QQToast.a(paramQQAppInterface.getApp(), 2131692690, 0).b(paramInt);
+          }
+          else
+          {
+            QQToast.a(paramQQAppInterface.getApp(), 2131692743, 0).b(paramInt);
+          }
+        }
+        else
+        {
+          QQToast.a(paramQQAppInterface.getApp(), 2131692743, 0).b(paramInt);
+          return false;
+        }
+      }
+      else
       {
         if (a(paramList))
         {
-          FMToastUtil.a(2131692605);
+          FMToastUtil.a(2131692557);
           return false;
         }
-        if (((paramList instanceof MessageForPic)) && (ZhituManager.a((MessageForPic)paramList)))
+        if ((bool) && (ZhituManager.a((MessageForPic)paramList)))
         {
-          FMToastUtil.a(2131692605);
+          FMToastUtil.a(2131692557);
           return false;
         }
         paramQQAppInterface.getFileManagerEngine().a().a(paramList, new WeiyunAIOUtils.WeiyunCallbackImpl(paramMqqHandler, paramActivity, paramQQAppInterface, paramInt));
         if (Looper.myLooper() != Looper.getMainLooper()) {
           ThreadManager.getUIHandler().post(new WeiyunAIOUtils.3(paramQQAppInterface, paramInt));
         } else {
-          QQToast.a(paramQQAppInterface.getApp(), 2131692733, 0).b(paramInt);
-        }
-      }
-      else if ((paramList instanceof MessageForDLFile))
-      {
-        paramInt = ((MessageForDLFile)paramList).deviceType;
-        long l = ((MessageForDLFile)paramList).associatedId;
-        paramList = paramQQAppInterface.getMessageFacade().a(paramInt).a(l);
-        if (paramList != null)
-        {
-          if (!FileUtils.b(paramList.path))
-          {
-            FMToastUtil.a(2131692605);
-            return false;
-          }
-          b(paramQQAppInterface, paramActivity, paramList);
-        }
-      }
-      else
-      {
-        if (!MultiMsgProxy.b(paramList)) {
-          break;
-        }
-        paramList = (StructMsgForImageShare)((MessageForStructing)paramList).structingMsg;
-        paramActivity = new ArrayList();
-        paramList = paramList.mStructMsgItemLists.iterator();
-        while (paramList.hasNext())
-        {
-          Object localObject1 = (AbsStructMsgElement)paramList.next();
-          if (AbsStructMsgItem.class.isInstance(localObject1))
-          {
-            localObject1 = ((AbsStructMsgItem)localObject1).a.iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              Object localObject2 = (AbsStructMsgElement)((Iterator)localObject1).next();
-              if (StructMsgItemImage.class.isInstance(localObject2))
-              {
-                localObject2 = (StructMsgItemImage)localObject2;
-                if (!a(((StructMsgItemImage)localObject2).a)) {
-                  paramActivity.add(((StructMsgItemImage)localObject2).a);
-                }
-              }
-            }
-          }
-        }
-        if (paramActivity.size() > 0)
-        {
-          a(paramQQAppInterface, paramActivity, null, null, paramMqqHandler, paramInt);
-          QQToast.a(paramQQAppInterface.getApp(), 2131692733, 0).b(paramInt);
-        }
-        else
-        {
-          QQToast.a(paramQQAppInterface.getApp(), 2131692785, 0).b(paramInt);
+          QQToast.a(paramQQAppInterface.getApp(), 2131692690, 0).b(paramInt);
         }
       }
     }
-    QQToast.a(paramQQAppInterface.getApp(), 2131692785, 0).b(paramInt);
-    return false;
+    return true;
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface, List<MessageForFile> paramList, List<MessageForDLFile> paramList1, ArrayList<MessageForPic> paramArrayList, ArrayList<MessageForShortVideo> paramArrayList1, ArrayList<StructMsgForImageShare> paramArrayList2, MqqHandler paramMqqHandler, int paramInt)
   {
     paramList = paramList.iterator();
-    for (boolean bool1 = false; paramList.hasNext(); bool1 = FileManagerUtil.a(paramQQAppInterface, (MessageForFile)paramList.next(), BaseActivity.sTopActivity, true) | bool1) {}
+    boolean bool2 = false;
+    boolean bool1 = false;
+    while (paramList.hasNext()) {
+      bool1 |= FileManagerUtil.a(paramQQAppInterface, (MessageForFile)paramList.next(), BaseActivity.sTopActivity, true);
+    }
     paramList1 = paramList1.iterator();
-    if (paramList1.hasNext())
+    while (paramList1.hasNext())
     {
       paramList = (MessageForDLFile)paramList1.next();
       int i = paramList.deviceType;
       long l = paramList.associatedId;
       DataLineMsgRecord localDataLineMsgRecord = paramQQAppInterface.getMessageFacade().a(i).a(l);
-      bool2 = FileUtils.b(localDataLineMsgRecord.path);
-      if (bool2)
+      bool3 = FileUtils.fileExistsAndNotEmpty(localDataLineMsgRecord.path);
+      if (bool3)
       {
         paramList = null;
         if (localDataLineMsgRecord.nWeiyunSessionId != 0L) {
           paramList = paramQQAppInterface.getFileManagerDataCenter().a(localDataLineMsgRecord.nWeiyunSessionId);
         }
-        if (paramList != null) {
-          break label196;
+        if (paramList == null)
+        {
+          localDataLineMsgRecord.nWeiyunSessionId = paramQQAppInterface.getFileManagerEngine().a(localDataLineMsgRecord.path, null, paramQQAppInterface.getAccount(), 0, false).nSessionId;
+          paramQQAppInterface.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
         }
-        localDataLineMsgRecord.nWeiyunSessionId = paramQQAppInterface.getFileManagerEngine().a(localDataLineMsgRecord.path, null, paramQQAppInterface.getAccount(), 0, false).nSessionId;
-        paramQQAppInterface.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
+        else
+        {
+          paramQQAppInterface.getFileManagerEngine().a(localDataLineMsgRecord.nWeiyunSessionId);
+        }
       }
-      for (;;)
-      {
-        bool1 |= bool2;
-        break;
-        label196:
-        paramQQAppInterface.getFileManagerEngine().a(localDataLineMsgRecord.nWeiyunSessionId);
-      }
+      bool1 |= bool3;
     }
-    boolean bool2 = a(paramQQAppInterface, paramArrayList, paramArrayList1, paramArrayList2, paramMqqHandler, paramInt);
-    return (bool1) || (bool2);
+    boolean bool3 = a(paramQQAppInterface, paramArrayList, paramArrayList1, paramArrayList2, paramMqqHandler, paramInt);
+    if ((bool1) || (bool3)) {
+      bool2 = true;
+    }
+    return bool2;
   }
   
   private static void c(QQAppInterface paramQQAppInterface, Activity paramActivity, DataLineMsgRecord paramDataLineMsgRecord)
   {
-    if (paramDataLineMsgRecord.nWeiyunSessionId != 0L) {}
-    for (FileManagerEntity localFileManagerEntity = paramQQAppInterface.getFileManagerDataCenter().a(paramDataLineMsgRecord.nWeiyunSessionId);; localFileManagerEntity = null)
+    if (paramDataLineMsgRecord.nWeiyunSessionId != 0L) {
+      localObject = paramQQAppInterface.getFileManagerDataCenter().a(paramDataLineMsgRecord.nWeiyunSessionId);
+    } else {
+      localObject = null;
+    }
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramDataLineMsgRecord.sessionid);
+    if (localObject == null)
     {
-      int i = DataLineMsgRecord.getDevTypeBySeId(paramDataLineMsgRecord.sessionid);
-      if (localFileManagerEntity == null)
-      {
-        FMToastUtil.b(FileManagerUtil.d(paramDataLineMsgRecord.filename) + paramActivity.getString(2131692731));
-        paramDataLineMsgRecord.nWeiyunSessionId = paramQQAppInterface.getFileManagerEngine().a(paramDataLineMsgRecord.path, null, paramQQAppInterface.getAccount(), 0, false).nSessionId;
-        paramQQAppInterface.getMessageFacade().a(i).d(paramDataLineMsgRecord.msgId);
-        return;
-      }
-      FMToastUtil.b(FileManagerUtil.d(paramDataLineMsgRecord.filename) + paramActivity.getString(2131692731));
-      paramQQAppInterface.getFileManagerEngine().a(paramDataLineMsgRecord.nWeiyunSessionId);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(FileManagerUtil.c(paramDataLineMsgRecord.filename));
+      ((StringBuilder)localObject).append(paramActivity.getString(2131692688));
+      FMToastUtil.b(((StringBuilder)localObject).toString());
+      paramDataLineMsgRecord.nWeiyunSessionId = paramQQAppInterface.getFileManagerEngine().a(paramDataLineMsgRecord.path, null, paramQQAppInterface.getAccount(), 0, false).nSessionId;
+      paramQQAppInterface.getMessageFacade().a(i).d(paramDataLineMsgRecord.msgId);
       return;
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(FileManagerUtil.c(paramDataLineMsgRecord.filename));
+    ((StringBuilder)localObject).append(paramActivity.getString(2131692688));
+    FMToastUtil.b(((StringBuilder)localObject).toString());
+    paramQQAppInterface.getFileManagerEngine().a(paramDataLineMsgRecord.nWeiyunSessionId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.weiyun.WeiyunAIOUtils
  * JD-Core Version:    0.7.0.1
  */

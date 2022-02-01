@@ -1,19 +1,27 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.AddCustomEmotionsCallback;
+import com.tencent.mobileqq.emosm.api.IFavroamingManagerService.AddCustomEmotionsCallback;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.os.MqqHandler;
 
 class SDKEmotionSettingManager$18
-  implements FavroamingManager.AddCustomEmotionsCallback
+  implements IFavroamingManagerService.AddCustomEmotionsCallback
 {
   SDKEmotionSettingManager$18(SDKEmotionSettingManager paramSDKEmotionSettingManager, int paramInt) {}
   
   public void a(float paramFloat, List<Integer> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "upLoadEmotions progress=" + paramFloat + ", addEmotionsResults=" + paramList + ", isTimeOut=" + SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("upLoadEmotions progress=");
+      localStringBuilder.append(paramFloat);
+      localStringBuilder.append(", addEmotionsResults=");
+      localStringBuilder.append(paramList);
+      localStringBuilder.append(", isTimeOut=");
+      localStringBuilder.append(SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager));
+      QLog.d("SDKEmotionSettingManager", 2, localStringBuilder.toString());
     }
     if (!SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager))
     {
@@ -24,8 +32,14 @@ class SDKEmotionSettingManager$18
   
   public void a(List<Integer> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKEmotionSettingManager", 2, "onUploadFinish , addEmotionsResults=" + paramList + ", isTimeOut=" + SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUploadFinish , addEmotionsResults=");
+      localStringBuilder.append(paramList);
+      localStringBuilder.append(", isTimeOut=");
+      localStringBuilder.append(SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager));
+      QLog.d("SDKEmotionSettingManager", 2, localStringBuilder.toString());
     }
     if (!SDKEmotionSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager))
     {
@@ -36,7 +50,7 @@ class SDKEmotionSettingManager$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.18
  * JD-Core Version:    0.7.0.1
  */

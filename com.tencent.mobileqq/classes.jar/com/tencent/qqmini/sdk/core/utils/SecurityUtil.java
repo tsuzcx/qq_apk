@@ -22,74 +22,76 @@ public class SecurityUtil
   private static String getHash(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: new 49	java/io/BufferedInputStream
-    //   3: dup
-    //   4: new 51	java/io/FileInputStream
-    //   7: dup
-    //   8: aload_0
-    //   9: invokespecial 54	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   12: invokespecial 57	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   15: astore_0
-    //   16: sipush 4096
-    //   19: newarray byte
-    //   21: astore_3
-    //   22: aload_1
-    //   23: invokestatic 63	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   26: astore_1
-    //   27: aload_0
-    //   28: aload_3
-    //   29: invokevirtual 69	java/io/InputStream:read	([B)I
-    //   32: istore_2
-    //   33: iload_2
-    //   34: ifle +28 -> 62
-    //   37: aload_1
-    //   38: aload_3
-    //   39: iconst_0
-    //   40: iload_2
-    //   41: invokevirtual 73	java/security/MessageDigest:update	([BII)V
-    //   44: goto -17 -> 27
-    //   47: astore_3
-    //   48: aload_0
-    //   49: astore_1
-    //   50: aload_3
-    //   51: astore_0
-    //   52: aload_1
-    //   53: ifnull +7 -> 60
-    //   56: aload_1
-    //   57: invokevirtual 76	java/io/InputStream:close	()V
-    //   60: aload_0
-    //   61: athrow
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: new 49	java/io/BufferedInputStream
+    //   5: dup
+    //   6: new 51	java/io/FileInputStream
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 54	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 57	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   17: astore_0
+    //   18: sipush 4096
+    //   21: newarray byte
+    //   23: astore_3
+    //   24: aload_1
+    //   25: invokestatic 63	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   28: astore_1
+    //   29: aload_0
+    //   30: aload_3
+    //   31: invokevirtual 69	java/io/InputStream:read	([B)I
+    //   34: istore_2
+    //   35: iload_2
+    //   36: ifle +13 -> 49
+    //   39: aload_1
+    //   40: aload_3
+    //   41: iconst_0
+    //   42: iload_2
+    //   43: invokevirtual 73	java/security/MessageDigest:update	([BII)V
+    //   46: goto -17 -> 29
+    //   49: aload_0
+    //   50: invokevirtual 76	java/io/InputStream:close	()V
+    //   53: aload_1
+    //   54: invokevirtual 80	java/security/MessageDigest:digest	()[B
+    //   57: invokestatic 84	com/tencent/qqmini/sdk/core/utils/SecurityUtil:toHexString	([B)Ljava/lang/String;
+    //   60: areturn
+    //   61: astore_3
     //   62: aload_0
-    //   63: ifnull +7 -> 70
-    //   66: aload_0
-    //   67: invokevirtual 76	java/io/InputStream:close	()V
-    //   70: aload_1
-    //   71: invokevirtual 80	java/security/MessageDigest:digest	()[B
-    //   74: invokestatic 84	com/tencent/qqmini/sdk/core/utils/SecurityUtil:toHexString	([B)Ljava/lang/String;
-    //   77: areturn
-    //   78: astore_0
-    //   79: goto -9 -> 70
-    //   82: astore_1
-    //   83: goto -23 -> 60
-    //   86: astore_0
-    //   87: aconst_null
-    //   88: astore_1
-    //   89: goto -37 -> 52
+    //   63: astore_1
+    //   64: aload_3
+    //   65: astore_0
+    //   66: goto +6 -> 72
+    //   69: astore_0
+    //   70: aload_3
+    //   71: astore_1
+    //   72: aload_1
+    //   73: ifnull +7 -> 80
+    //   76: aload_1
+    //   77: invokevirtual 76	java/io/InputStream:close	()V
+    //   80: goto +5 -> 85
+    //   83: aload_0
+    //   84: athrow
+    //   85: goto -2 -> 83
+    //   88: astore_0
+    //   89: goto -36 -> 53
+    //   92: astore_1
+    //   93: goto -13 -> 80
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	92	0	paramString1	String
-    //   0	92	1	paramString2	String
-    //   32	9	2	i	int
-    //   21	18	3	arrayOfByte	byte[]
-    //   47	4	3	localObject	Object
+    //   0	96	0	paramString1	String
+    //   0	96	1	paramString2	String
+    //   34	9	2	i	int
+    //   1	40	3	arrayOfByte	byte[]
+    //   61	10	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   16	27	47	finally
-    //   27	33	47	finally
-    //   37	44	47	finally
-    //   66	70	78	java/io/IOException
-    //   56	60	82	java/io/IOException
-    //   0	16	86	finally
+    //   18	29	61	finally
+    //   29	35	61	finally
+    //   39	46	61	finally
+    //   2	18	69	finally
+    //   49	53	88	java/io/IOException
+    //   76	80	92	java/io/IOException
   }
   
   public static String toHexString(byte[] paramArrayOfByte)
@@ -107,7 +109,7 @@ public class SecurityUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.SecurityUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -14,35 +14,35 @@ class VideoSprite$2
     {
       this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
       this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-    }
-    try
-    {
-      this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(this.jdField_a_of_type_JavaLangString);
-      this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
-      this.this$0.n = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
-      this.this$0.o = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
-      this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new VideoSprite.2.1(this));
-      this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.jdField_a_of_type_Int);
-      this.this$0.b = this.jdField_a_of_type_JavaLangString;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("VideoSprite", 2, "playVideo Exception: " + QLog.getStackTraceString(localException));
+        this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(this.jdField_a_of_type_JavaLangString);
+        this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
+        this.this$0.n = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
+        this.this$0.o = this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
+        this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new VideoSprite.2.1(this));
+        this.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.jdField_a_of_type_Int);
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("playVideo Exception: ");
+          localStringBuilder.append(QLog.getStackTraceString(localException));
+          QLog.e("VideoSprite", 2, localStringBuilder.toString());
         }
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
           this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
         }
       }
     }
+    this.this$0.b = this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.2
  * JD-Core Version:    0.7.0.1
  */

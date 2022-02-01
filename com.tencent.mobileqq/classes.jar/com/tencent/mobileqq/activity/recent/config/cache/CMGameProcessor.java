@@ -12,11 +12,10 @@ public class CMGameProcessor
   @Nullable
   public RecentUser a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
   {
-    paramBaseQQAppInterface = paramRecentUser;
     if (paramRecentUser.getType() == 1036) {
-      paramBaseQQAppInterface = null;
+      return null;
     }
-    return paramBaseQQAppInterface;
+    return paramRecentUser;
   }
   
   @NonNull
@@ -27,7 +26,7 @@ public class CMGameProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.CMGameProcessor
  * JD-Core Version:    0.7.0.1
  */

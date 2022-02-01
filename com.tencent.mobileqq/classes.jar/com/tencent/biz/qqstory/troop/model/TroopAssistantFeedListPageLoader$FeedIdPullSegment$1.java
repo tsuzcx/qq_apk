@@ -24,21 +24,21 @@ class TroopAssistantFeedListPageLoader$FeedIdPullSegment$1
       SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramGetTroopAssistantFeedIdListResponse == null))
+    if ((!paramErrorMessage.isFail()) && (paramGetTroopAssistantFeedIdListResponse != null))
     {
-      SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-      TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment, paramErrorMessage);
+      TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_Boolean);
+      ((FeedManager)SuperManager.a(11)).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList);
+      paramGetTroopAssistantFeedIdListRequest = TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+      TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment, paramGetTroopAssistantFeedIdListRequest);
       return;
     }
-    TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_Boolean);
-    ((FeedManager)SuperManager.a(11)).a(paramGetTroopAssistantFeedIdListResponse.jdField_a_of_type_JavaUtilList);
-    paramGetTroopAssistantFeedIdListRequest = TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment, paramGetTroopAssistantFeedIdListRequest);
+    SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+    TroopAssistantFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopAssistantFeedListPageLoader$FeedIdPullSegment, paramErrorMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.model.TroopAssistantFeedListPageLoader.FeedIdPullSegment.1
  * JD-Core Version:    0.7.0.1
  */

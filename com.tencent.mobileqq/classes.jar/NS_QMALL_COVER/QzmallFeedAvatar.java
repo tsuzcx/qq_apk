@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class QzmallFeedAvatar
   extends JceStruct
 {
-  static int cache_eAvatarType = 0;
+  static int cache_eAvatarType;
   public int eAvatarType = 1;
   public int iItemId = -1;
   public String strAvatarJumpUrl = "";
@@ -34,18 +34,20 @@ public final class QzmallFeedAvatar
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strAvatarUrl != null) {
-      paramJceOutputStream.write(this.strAvatarUrl, 1);
+    String str = this.strAvatarUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strAvatarJumpUrl != null) {
-      paramJceOutputStream.write(this.strAvatarJumpUrl, 2);
+    str = this.strAvatarJumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.eAvatarType, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallFeedAvatar
  * JD-Core Version:    0.7.0.1
  */

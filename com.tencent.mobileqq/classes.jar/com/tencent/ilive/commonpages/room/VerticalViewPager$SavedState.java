@@ -33,7 +33,13 @@ public class VerticalViewPager$SavedState
   
   public String toString()
   {
-    return "FragmentPager.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " position=" + this.position + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FragmentPager.SavedState{");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    localStringBuilder.append(" position=");
+    localStringBuilder.append(this.position);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -45,7 +51,7 @@ public class VerticalViewPager$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.commonpages.room.VerticalViewPager.SavedState
  * JD-Core Version:    0.7.0.1
  */

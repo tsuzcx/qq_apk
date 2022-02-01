@@ -5,12 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.av.mediacodec.config.CodecConfigUtil;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,185 +34,232 @@ public class AVTestforEncDecConfig
   {
     Object localObject = (AVTestforEncDecConfig.Item)QConfigManager.a().a(431);
     if (((AVTestforEncDecConfig.Item)localObject).jdField_a_of_type_JavaUtilHashMap == null) {
-      localObject = null;
+      return null;
     }
-    AVTestforEncDecConfig.TestInfo localTestInfo;
-    do
+    AVTestforEncDecConfig.TestInfo localTestInfo = (AVTestforEncDecConfig.TestInfo)((AVTestforEncDecConfig.Item)localObject).jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (QLog.isDevelopLevel())
     {
-      return localObject;
-      localTestInfo = (AVTestforEncDecConfig.TestInfo)((AVTestforEncDecConfig.Item)localObject).jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-      localObject = localTestInfo;
-    } while (!QLog.isDevelopLevel());
-    StringBuilder localStringBuilder = new StringBuilder().append("loadTestInfo, content[");
-    if (localTestInfo != null) {}
-    for (localObject = localTestInfo.toString();; localObject = "")
-    {
-      QLog.w("QAVConfig_431", 1, (String)localObject + "]");
-      return localTestInfo;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadTestInfo, content[");
+      if (localTestInfo != null) {
+        localObject = localTestInfo.toString();
+      } else {
+        localObject = "";
+      }
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("]");
+      QLog.w("QAVConfig_431", 1, localStringBuilder.toString());
     }
+    return localTestInfo;
   }
   
   static AVTestforEncDecConfig.TestInfo a(CodecTestInfo.TestInfos paramTestInfos)
   {
     int j = paramTestInfos.jdField_a_of_type_Int;
+    int i = 4;
     if ((j != 1) && (j != 2) && (j != 4) && (j != 8)) {
       return null;
     }
     int k = paramTestInfos.jdField_b_of_type_Int;
     if (k <= 0)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w("QAVConfig_431", 1, "min_sdk不合法, codec[" + j + "], min_sdk[" + k + "]");
+      if (QLog.isDevelopLevel())
+      {
+        paramTestInfos = new StringBuilder();
+        paramTestInfos.append("min_sdk不合法, codec[");
+        paramTestInfos.append(j);
+        paramTestInfos.append("], min_sdk[");
+        paramTestInfos.append(k);
+        paramTestInfos.append("]");
+        QLog.w("QAVConfig_431", 1, paramTestInfos.toString());
       }
       return null;
     }
     int m = paramTestInfos.c;
     if (m < 0)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w("QAVConfig_431", 1, "async_min_sdk不合法, codec[" + j + "], async_min_sdk[" + m + "]");
+      if (QLog.isDevelopLevel())
+      {
+        paramTestInfos = new StringBuilder();
+        paramTestInfos.append("async_min_sdk不合法, codec[");
+        paramTestInfos.append(j);
+        paramTestInfos.append("], async_min_sdk[");
+        paramTestInfos.append(m);
+        paramTestInfos.append("]");
+        QLog.w("QAVConfig_431", 1, paramTestInfos.toString());
       }
       return null;
     }
     String str = paramTestInfos.jdField_a_of_type_JavaLangString;
     if (TextUtils.isEmpty(str))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w("QAVConfig_431", 1, "min_version不合法, codec[" + j + "], min_version[" + str + "]");
+      if (QLog.isDevelopLevel())
+      {
+        paramTestInfos = new StringBuilder();
+        paramTestInfos.append("min_version不合法, codec[");
+        paramTestInfos.append(j);
+        paramTestInfos.append("], min_version[");
+        paramTestInfos.append(str);
+        paramTestInfos.append("]");
+        QLog.w("QAVConfig_431", 1, paramTestInfos.toString());
       }
       return null;
     }
     int n = paramTestInfos.d;
     if (n <= 0)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w("QAVConfig_431", 1, "test_ver不合法, codec[" + j + "], test_ver[" + n + "]");
+      if (QLog.isDevelopLevel())
+      {
+        paramTestInfos = new StringBuilder();
+        paramTestInfos.append("test_ver不合法, codec[");
+        paramTestInfos.append(j);
+        paramTestInfos.append("], test_ver[");
+        paramTestInfos.append(n);
+        paramTestInfos.append("]");
+        QLog.w("QAVConfig_431", 1, paramTestInfos.toString());
       }
       return null;
     }
-    if ((paramTestInfos.jdField_b_of_type_JavaUtilList == null) || (paramTestInfos.jdField_b_of_type_JavaUtilList.size() == 0))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.w("QAVConfig_431", 1, "没有样本, codec[" + j + "]");
-      }
-      return null;
-    }
-    long l;
-    HashMap localHashMap;
-    label591:
-    AVTestforEncDecConfig.Sample localSample;
-    label675:
-    Object localObject2;
+    if ((paramTestInfos.jdField_b_of_type_JavaUtilList != null) && (paramTestInfos.jdField_b_of_type_JavaUtilList.size() != 0)) {}
     try
     {
-      Object localObject1 = paramTestInfos.jdField_b_of_type_JavaLangString;
-      localObject3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-      ((SimpleDateFormat)localObject3).setTimeZone(TimeZone.getTimeZone("GMT+8"));
-      l = ((SimpleDateFormat)localObject3).parse((String)localObject1).getTime();
-      localHashMap = new HashMap();
-      localObject1 = paramTestInfos.jdField_b_of_type_JavaUtilList.iterator();
-      for (;;)
-      {
-        if (!((Iterator)localObject1).hasNext()) {
-          break label675;
-        }
-        localObject3 = (CodecTestInfo.TestInfos.Samples)((Iterator)localObject1).next();
-        if ((!TextUtils.isEmpty(((CodecTestInfo.TestInfos.Samples)localObject3).c)) && (!TextUtils.isEmpty(((CodecTestInfo.TestInfos.Samples)localObject3).jdField_b_of_type_JavaLangString)))
-        {
-          if ((j != 1) && (j != 4)) {
-            break;
-          }
-          if (!TextUtils.isEmpty(((CodecTestInfo.TestInfos.Samples)localObject3).jdField_a_of_type_JavaLangString)) {
-            break label591;
-          }
-          QLog.w("QAVConfig_431", 1, "exp 为空, codec[" + j + "]");
-        }
-      }
+      localObject1 = paramTestInfos.jdField_b_of_type_JavaLangString;
+      localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+      ((SimpleDateFormat)localObject2).setTimeZone(TimeZone.getTimeZone("GMT+8"));
+      l = ((SimpleDateFormat)localObject2).parse((String)localObject1).getTime();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.w("QAVConfig_431", 1, "没有过期时间, codec[" + j + "], expdate[" + paramTestInfos.jdField_b_of_type_JavaLangString + "]");
-        l = 0L;
-        continue;
-        if (((j == 2) || (j == 8)) && ((((CodecTestInfo.TestInfos.Samples)localObject3).jdField_a_of_type_Int == 0) || (((CodecTestInfo.TestInfos.Samples)localObject3).jdField_b_of_type_Int == 0)))
+      Object localObject1;
+      Object localObject2;
+      long l;
+      label381:
+      HashMap localHashMap;
+      break label381;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("没有过期时间, codec[");
+    ((StringBuilder)localObject1).append(j);
+    ((StringBuilder)localObject1).append("], expdate[");
+    ((StringBuilder)localObject1).append(paramTestInfos.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append("]");
+    QLog.w("QAVConfig_431", 1, ((StringBuilder)localObject1).toString());
+    l = 0L;
+    localHashMap = new HashMap();
+    localObject1 = paramTestInfos.jdField_b_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (CodecTestInfo.TestInfos.Samples)((Iterator)localObject1).next();
+      if (!TextUtils.isEmpty(((CodecTestInfo.TestInfos.Samples)localObject2).c)) {
+        for (;;)
         {
-          QLog.w("QAVConfig_431", 1, "w/h 为空, codec[" + j + "]");
+          if (!TextUtils.isEmpty(((CodecTestInfo.TestInfos.Samples)localObject2).jdField_b_of_type_JavaLangString))
+          {
+            if ((j != 1) && (j != i))
+            {
+              if (((j != 2) && (j != 8)) || ((((CodecTestInfo.TestInfos.Samples)localObject2).jdField_a_of_type_Int != 0) && (((CodecTestInfo.TestInfos.Samples)localObject2).jdField_b_of_type_Int != 0))) {
+                break label660;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("w/h 为空, codec[");
+              ((StringBuilder)localObject2).append(j);
+              ((StringBuilder)localObject2).append("]");
+              QLog.w("QAVConfig_431", 1, ((StringBuilder)localObject2).toString());
+            }
+            else
+            {
+              if (!TextUtils.isEmpty(((CodecTestInfo.TestInfos.Samples)localObject2).jdField_a_of_type_JavaLangString)) {
+                break label660;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("exp 为空, codec[");
+              ((StringBuilder)localObject2).append(j);
+              ((StringBuilder)localObject2).append("]");
+              QLog.w("QAVConfig_431", 1, ((StringBuilder)localObject2).toString());
+            }
+            i = 4;
+            break;
+            label660:
+            AVTestforEncDecConfig.Sample localSample = new AVTestforEncDecConfig.Sample();
+            localSample.jdField_b_of_type_JavaLangString = ((CodecTestInfo.TestInfos.Samples)localObject2).jdField_b_of_type_JavaLangString;
+            localSample.c = ((CodecTestInfo.TestInfos.Samples)localObject2).jdField_a_of_type_JavaLangString;
+            localSample.jdField_a_of_type_JavaLangString = ((CodecTestInfo.TestInfos.Samples)localObject2).c;
+            localSample.jdField_a_of_type_Int = ((CodecTestInfo.TestInfos.Samples)localObject2).jdField_a_of_type_Int;
+            localSample.jdField_b_of_type_Int = ((CodecTestInfo.TestInfos.Samples)localObject2).jdField_b_of_type_Int;
+            localSample.jdField_a_of_type_Boolean = paramTestInfos.jdField_a_of_type_Boolean;
+            localHashMap.put(((CodecTestInfo.TestInfos.Samples)localObject2).c, localSample);
+            i = 4;
+          }
         }
-        else
-        {
-          localSample = new AVTestforEncDecConfig.Sample();
-          localSample.jdField_b_of_type_JavaLangString = ((CodecTestInfo.TestInfos.Samples)localObject3).jdField_b_of_type_JavaLangString;
-          localSample.c = ((CodecTestInfo.TestInfos.Samples)localObject3).jdField_a_of_type_JavaLangString;
-          localSample.jdField_a_of_type_JavaLangString = ((CodecTestInfo.TestInfos.Samples)localObject3).c;
-          localSample.jdField_a_of_type_Int = ((CodecTestInfo.TestInfos.Samples)localObject3).jdField_a_of_type_Int;
-          localSample.jdField_b_of_type_Int = ((CodecTestInfo.TestInfos.Samples)localObject3).jdField_b_of_type_Int;
-          localSample.jdField_a_of_type_Boolean = paramTestInfos.jdField_a_of_type_Boolean;
-          localHashMap.put(((CodecTestInfo.TestInfos.Samples)localObject3).c, localSample);
-        }
-      }
-      if (localHashMap.size() == 0)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.w("QAVConfig_431", 1, "样本不够, codec[" + j + "]");
-        }
-        return null;
-      }
-      localSample = null;
-      localObject2 = null;
-      localObject3 = localSample;
-      if (paramTestInfos.jdField_a_of_type_JavaUtilList == null) {
-        break label831;
       }
     }
-    Object localObject3 = localSample;
-    int i1;
-    if (paramTestInfos.jdField_a_of_type_JavaUtilList.size() > 0)
+    if (localHashMap.size() == 0)
     {
-      int i = 0;
-      for (;;)
+      if (QLog.isDevelopLevel())
       {
-        localObject3 = localObject2;
-        if (i >= paramTestInfos.jdField_a_of_type_JavaUtilList.size()) {
-          break label831;
-        }
-        i1 = ((Integer)paramTestInfos.jdField_a_of_type_JavaUtilList.get(i)).intValue();
-        if (i1 > 0) {
-          break;
+        paramTestInfos = new StringBuilder();
+        paramTestInfos.append("样本不够, codec[");
+        paramTestInfos.append(j);
+        paramTestInfos.append("]");
+        QLog.w("QAVConfig_431", 1, paramTestInfos.toString());
+      }
+      return null;
+    }
+    if ((paramTestInfos.jdField_a_of_type_JavaUtilList != null) && (paramTestInfos.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      i = 0;
+      localObject1 = null;
+      while (i < paramTestInfos.jdField_a_of_type_JavaUtilList.size())
+      {
+        int i1 = ((Integer)paramTestInfos.jdField_a_of_type_JavaUtilList.get(i)).intValue();
+        if (i1 > 0)
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new ArrayList();
+          }
+          ((ArrayList)localObject2).add(Integer.valueOf(i1));
+          localObject1 = localObject2;
         }
         i += 1;
       }
-      if (localObject2 != null) {
-        break label906;
-      }
-      localObject2 = new ArrayList();
     }
-    label906:
-    for (;;)
+    else
     {
-      ((ArrayList)localObject2).add(Integer.valueOf(i1));
-      break;
-      label831:
-      localObject2 = new AVTestforEncDecConfig.TestInfo();
-      ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_a_of_type_JavaUtilHashMap = localHashMap;
-      ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject3);
-      ((AVTestforEncDecConfig.TestInfo)localObject2).c = k;
-      ((AVTestforEncDecConfig.TestInfo)localObject2).d = m;
-      ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_b_of_type_Int = j;
-      ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_a_of_type_JavaLangString = str;
-      ((AVTestforEncDecConfig.TestInfo)localObject2).e = n;
-      ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_a_of_type_Boolean = paramTestInfos.jdField_a_of_type_Boolean;
-      ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_a_of_type_Long = l;
-      return localObject2;
+      localObject1 = null;
     }
+    localObject2 = new AVTestforEncDecConfig.TestInfo();
+    ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_a_of_type_JavaUtilHashMap = localHashMap;
+    ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
+    ((AVTestforEncDecConfig.TestInfo)localObject2).c = k;
+    ((AVTestforEncDecConfig.TestInfo)localObject2).d = m;
+    ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_b_of_type_Int = j;
+    ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_a_of_type_JavaLangString = str;
+    ((AVTestforEncDecConfig.TestInfo)localObject2).e = n;
+    ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_a_of_type_Boolean = paramTestInfos.jdField_a_of_type_Boolean;
+    ((AVTestforEncDecConfig.TestInfo)localObject2).jdField_a_of_type_Long = l;
+    return localObject2;
+    if (QLog.isDevelopLevel())
+    {
+      paramTestInfos = new StringBuilder();
+      paramTestInfos.append("没有样本, codec[");
+      paramTestInfos.append(j);
+      paramTestInfos.append("]");
+      QLog.w("QAVConfig_431", 1, paramTestInfos.toString());
+    }
+    return null;
   }
   
   @NonNull
   public AVTestforEncDecConfig.Item a(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("QAVConfig_431", 1, "migrateOldOrDefaultContent, type[" + paramInt + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("migrateOldOrDefaultContent, type[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.w("QAVConfig_431", 1, localStringBuilder.toString());
     }
     return new AVTestforEncDecConfig.Item();
   }
@@ -226,51 +273,66 @@ public class AVTestforEncDecConfig
     while (i < j)
     {
       QConfItem localQConfItem = paramArrayOfQConfItem[i];
-      Object localObject = CodecTestInfo.a(localQConfItem.jdField_a_of_type_JavaLangString);
+      Object localObject1 = CodecTestInfo.a(localQConfItem.jdField_a_of_type_JavaLangString);
       boolean bool;
-      if ((localObject != null) && (((CodecTestInfo)localObject).jdField_a_of_type_JavaUtilList != null))
-      {
+      if ((localObject1 != null) && (((CodecTestInfo)localObject1).jdField_a_of_type_JavaUtilList != null)) {
         bool = true;
-        if (AudioHelper.e()) {
-          QLog.w("QAVConfig_431", 1, "parsed, taskId[" + localQConfItem.jdField_a_of_type_Int + "], suc[" + bool + "], oldVersion[" + a() + "], content[" + localQConfItem.jdField_a_of_type_JavaLangString + "]");
-        }
-        if (bool) {
-          localObject = ((CodecTestInfo)localObject).jdField_a_of_type_JavaUtilList.iterator();
-        }
+      } else {
+        bool = false;
       }
-      else
+      Object localObject2;
+      if (AudioHelper.b())
       {
-        for (;;)
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("parsed, taskId[");
+        ((StringBuilder)localObject2).append(localQConfItem.jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append("], suc[");
+        ((StringBuilder)localObject2).append(bool);
+        ((StringBuilder)localObject2).append("], oldVersion[");
+        ((StringBuilder)localObject2).append(a());
+        ((StringBuilder)localObject2).append("], content[");
+        ((StringBuilder)localObject2).append(localQConfItem.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append("]");
+        QLog.w("QAVConfig_431", 1, ((StringBuilder)localObject2).toString());
+      }
+      if (bool)
+      {
+        localObject1 = ((CodecTestInfo)localObject1).jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          if (!((Iterator)localObject).hasNext()) {
-            break label379;
-          }
-          CodecTestInfo.TestInfos localTestInfos = (CodecTestInfo.TestInfos)((Iterator)localObject).next();
-          AVTestforEncDecConfig.TestInfo localTestInfo1 = a(localTestInfos);
+          localObject2 = (CodecTestInfo.TestInfos)((Iterator)localObject1).next();
+          AVTestforEncDecConfig.TestInfo localTestInfo1 = a((CodecTestInfo.TestInfos)localObject2);
           if (localTestInfo1 == null)
           {
-            if (!AudioHelper.e()) {
-              continue;
+            if (AudioHelper.b()) {
+              QLog.w("QAVConfig_431", 1, "parsed, 数据不合法");
             }
-            QLog.w("QAVConfig_431", 1, "parsed, 数据不合法");
-            continue;
-            bool = false;
-            break;
           }
-          if (localItem.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(localTestInfos.jdField_a_of_type_Int)))
+          else if (localItem.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(((CodecTestInfo.TestInfos)localObject2).jdField_a_of_type_Int)))
           {
-            AVTestforEncDecConfig.TestInfo localTestInfo2 = (AVTestforEncDecConfig.TestInfo)localItem.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(localTestInfos.jdField_a_of_type_Int));
-            QLog.w("QAVConfig_431", 1, "parsed, 数据已存在, codec[" + localTestInfos.jdField_a_of_type_Int + "], _taskId[" + localTestInfo2.jdField_a_of_type_Int + "], _test_ver[" + localTestInfo2.e + "], taskId[" + localQConfItem.jdField_a_of_type_Int + "], test_ver[" + localTestInfo1.e + "]");
+            AVTestforEncDecConfig.TestInfo localTestInfo2 = (AVTestforEncDecConfig.TestInfo)localItem.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(((CodecTestInfo.TestInfos)localObject2).jdField_a_of_type_Int));
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("parsed, 数据已存在, codec[");
+            localStringBuilder.append(((CodecTestInfo.TestInfos)localObject2).jdField_a_of_type_Int);
+            localStringBuilder.append("], _taskId[");
+            localStringBuilder.append(localTestInfo2.jdField_a_of_type_Int);
+            localStringBuilder.append("], _test_ver[");
+            localStringBuilder.append(localTestInfo2.e);
+            localStringBuilder.append("], taskId[");
+            localStringBuilder.append(localQConfItem.jdField_a_of_type_Int);
+            localStringBuilder.append("], test_ver[");
+            localStringBuilder.append(localTestInfo1.e);
+            localStringBuilder.append("]");
+            QLog.w("QAVConfig_431", 1, localStringBuilder.toString());
             if (localTestInfo1.e <= localTestInfo2.e) {}
           }
           else
           {
             localTestInfo1.jdField_a_of_type_Int = localQConfItem.jdField_a_of_type_Int;
-            localItem.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localTestInfos.jdField_a_of_type_Int), localTestInfo1);
+            localItem.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((CodecTestInfo.TestInfos)localObject2).jdField_a_of_type_Int), localTestInfo1);
           }
         }
       }
-      label379:
       i += 1;
     }
     return localItem;
@@ -286,30 +348,52 @@ public class AVTestforEncDecConfig
       Object localObject2 = (QQAppInterface)localObject1;
       localObject1 = new HashMap();
       ((HashMap)localObject1).put("uin", ((QQAppInterface)localObject2).getCurrentAccountUin());
-      ((HashMap)localObject1).put("ver", i + "");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append("");
+      ((HashMap)localObject1).put("ver", ((StringBuilder)localObject2).toString());
       ((HashMap)localObject1).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
       localObject2 = new int[4];
-      Object tmp113_111 = localObject2;
-      tmp113_111[0] = 1;
-      Object tmp117_113 = tmp113_111;
-      tmp117_113[1] = 2;
-      Object tmp121_117 = tmp117_113;
-      tmp121_117[2] = 4;
-      Object tmp125_121 = tmp121_117;
-      tmp125_121[3] = 8;
-      tmp125_121;
+      Object tmp123_121 = localObject2;
+      tmp123_121[0] = 1;
+      Object tmp127_123 = tmp123_121;
+      tmp127_123[1] = 2;
+      Object tmp131_127 = tmp127_123;
+      tmp131_127[2] = 4;
+      Object tmp135_131 = tmp131_127;
+      tmp135_131[3] = 8;
+      tmp135_131;
       int j = localObject2.length;
       i = 0;
       while (i < j)
       {
         int k = localObject2[i];
-        AVTestforEncDecConfig.TestInfo localTestInfo = (AVTestforEncDecConfig.TestInfo)paramItem.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(k));
-        if (localTestInfo != null)
+        Object localObject3 = (AVTestforEncDecConfig.TestInfo)paramItem.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(k));
+        if (localObject3 != null)
         {
-          int m = CodecConfigUtil.a(localTestInfo);
-          ((HashMap)localObject1).put("test" + k, "1");
-          ((HashMap)localObject1).put("test" + k + "_ver", localTestInfo.e + "");
-          ((HashMap)localObject1).put("test" + k + "_flag", m + "");
+          int m = CodecConfigUtil.a((AVTestforEncDecConfig.TestInfo)localObject3);
+          Object localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("test");
+          ((StringBuilder)localObject4).append(k);
+          ((HashMap)localObject1).put(((StringBuilder)localObject4).toString(), "1");
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("test");
+          ((StringBuilder)localObject4).append(k);
+          ((StringBuilder)localObject4).append("_ver");
+          localObject4 = ((StringBuilder)localObject4).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(((AVTestforEncDecConfig.TestInfo)localObject3).e);
+          localStringBuilder.append("");
+          ((HashMap)localObject1).put(localObject4, localStringBuilder.toString());
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("test");
+          ((StringBuilder)localObject3).append(k);
+          ((StringBuilder)localObject3).append("_flag");
+          localObject3 = ((StringBuilder)localObject3).toString();
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(m);
+          ((StringBuilder)localObject4).append("");
+          ((HashMap)localObject1).put(localObject3, ((StringBuilder)localObject4).toString());
         }
         i += 1;
       }

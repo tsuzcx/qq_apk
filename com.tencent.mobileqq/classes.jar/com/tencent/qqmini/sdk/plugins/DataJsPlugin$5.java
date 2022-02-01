@@ -19,13 +19,18 @@ class DataJsPlugin$5
     }
     long l = paramJSONObject.optLong("retCode");
     String str = paramJSONObject.optString("errMsg");
-    QMLog.e("DataJsPlugin", "getTcbTicket fail, retCode: " + l + "; errMsg : " + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getTcbTicket fail, retCode: ");
+    localStringBuilder.append(l);
+    localStringBuilder.append("; errMsg : ");
+    localStringBuilder.append(str);
+    QMLog.e("DataJsPlugin", localStringBuilder.toString());
     this.val$req.fail(paramJSONObject, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

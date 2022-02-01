@@ -36,102 +36,118 @@ public class SonicSessionConnection$SessionConnectionDefaultImpl
     if (TextUtils.isEmpty((CharSequence)localObject3)) {
       return null;
     }
-    try
+    for (;;)
     {
-      localURL = new URL((String)localObject3);
-      localObject1 = this.intent.getStringExtra("dns-prefetch-address");
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      Object localObject2;
+      try
       {
-        localObject2 = localURL.getHost();
-        localURL = new URL(((String)localObject3).replace((CharSequence)localObject2, (CharSequence)localObject1));
-        SonicUtils.log("SonicSdk_SonicSessionConnection", 4, "create UrlConnection with DNS-Prefetch(" + (String)localObject2 + " -> " + (String)localObject1 + ").");
-        localObject1 = localURL.openConnection();
-        localObject3 = localObject1;
-        if (localObject1 == null) {}
-      }
-    }
-    catch (Throwable localThrowable1)
-    {
-      for (;;)
-      {
+        URL localURL = new URL((String)localObject3);
+        localObject2 = this.intent.getStringExtra("dns-prefetch-address");
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label301;
+        }
+        localObject1 = localURL.getHost();
+        localURL = new URL(((String)localObject3).replace((CharSequence)localObject1, (CharSequence)localObject2));
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("create UrlConnection with DNS-Prefetch(");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append(" -> ");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append(").");
+        SonicUtils.log("SonicSdk_SonicSessionConnection", 4, ((StringBuilder)localObject3).toString());
+        localObject2 = localURL.openConnection();
+        localObject3 = localObject2;
+        if (localObject2 == null) {
+          break label298;
+        }
         try
         {
-          URL localURL;
-          if ((localObject1 instanceof HttpURLConnection)) {
-            ((HttpURLConnection)localObject1).setInstanceFollowRedirects(false);
+          if ((localObject2 instanceof HttpURLConnection)) {
+            ((HttpURLConnection)localObject2).setInstanceFollowRedirects(false);
           }
-          localObject3 = localObject1;
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            ((URLConnection)localObject1).setRequestProperty("Host", (String)localObject2);
-            ((URLConnection)localObject1).setRequestProperty("sonic-dns-prefetch", localURL.getHost());
-            localObject3 = localObject1;
-            if ((localObject1 instanceof HttpsURLConnection))
-            {
-              localObject3 = (HttpsURLConnection)localObject1;
-              ((HttpsURLConnection)localObject3).setSSLSocketFactory(new SonicSniSSLSocketFactory(SonicEngine.getInstance().getRuntime().getContext(), (String)localObject2));
-              ((HttpsURLConnection)localObject3).setHostnameVerifier(new SonicSessionConnection.SessionConnectionDefaultImpl.1(this, localURL, (String)localObject2));
-              localObject3 = localObject1;
-            }
+          localObject3 = localObject2;
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label298;
           }
-          return localObject3;
+          ((URLConnection)localObject2).setRequestProperty("Host", (String)localObject1);
+          ((URLConnection)localObject2).setRequestProperty("sonic-dns-prefetch", localURL.getHost());
+          localObject3 = localObject2;
+          if (!(localObject2 instanceof HttpsURLConnection)) {
+            break label298;
+          }
+          localObject3 = (HttpsURLConnection)localObject2;
+          ((HttpsURLConnection)localObject3).setSSLSocketFactory(new SonicSniSSLSocketFactory(SonicEngine.getInstance().getRuntime().getContext(), (String)localObject1));
+          ((HttpsURLConnection)localObject3).setHostnameVerifier(new SonicSessionConnection.SessionConnectionDefaultImpl.1(this, localURL, (String)localObject1));
+          return localObject2;
         }
-        catch (Throwable localThrowable2)
+        catch (Throwable localThrowable1)
         {
-          Object localObject1;
-          continue;
+          localObject1 = localObject2;
         }
-        localThrowable1 = localThrowable1;
+        localObject2 = localObject1;
+      }
+      catch (Throwable localThrowable2)
+      {
         localObject1 = null;
-        Object localObject2 = localObject1;
-        if (localObject1 != null) {
-          localObject2 = null;
-        }
-        SonicUtils.log("SonicSdk_SonicSessionConnection", 6, "create UrlConnection fail, error:" + localThrowable1.getMessage() + ".");
-        localObject3 = localObject2;
-        continue;
+      }
+      if (localObject1 != null) {
         localObject2 = null;
       }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("create UrlConnection fail, error:");
+      ((StringBuilder)localObject1).append(localThrowable2.getMessage());
+      ((StringBuilder)localObject1).append(".");
+      SonicUtils.log("SonicSdk_SonicSessionConnection", 6, ((StringBuilder)localObject1).toString());
+      localObject3 = localObject2;
+      label298:
+      return localObject3;
+      label301:
+      localObject1 = null;
     }
   }
   
   public void disconnect()
   {
-    HttpURLConnection localHttpURLConnection;
-    if ((this.connectionImpl instanceof HttpURLConnection))
+    Object localObject = this.connectionImpl;
+    if ((localObject instanceof HttpURLConnection))
     {
-      localHttpURLConnection = (HttpURLConnection)this.connectionImpl;
-      if (Looper.myLooper() == Looper.getMainLooper()) {
-        SonicEngine.getInstance().getRuntime().postTaskToThread(new SonicSessionConnection.SessionConnectionDefaultImpl.2(this, localHttpURLConnection), 0L);
+      localObject = (HttpURLConnection)localObject;
+      if (Looper.myLooper() == Looper.getMainLooper())
+      {
+        SonicEngine.getInstance().getRuntime().postTaskToThread(new SonicSessionConnection.SessionConnectionDefaultImpl.2(this, (HttpURLConnection)localObject), 0L);
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    try
-    {
-      localHttpURLConnection.disconnect();
-      return;
-    }
-    catch (Exception localException)
-    {
-      SonicUtils.log("SonicSdk_SonicSessionConnection", 6, "disconnect error:" + localException.getMessage());
+      try
+      {
+        ((HttpURLConnection)localObject).disconnect();
+        return;
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("disconnect error:");
+        localStringBuilder.append(localException.getMessage());
+        SonicUtils.log("SonicSdk_SonicSessionConnection", 6, localStringBuilder.toString());
+      }
     }
   }
   
   public int getResponseCode()
   {
-    if ((this.connectionImpl instanceof HttpURLConnection)) {
+    URLConnection localURLConnection = this.connectionImpl;
+    if ((localURLConnection instanceof HttpURLConnection)) {
       try
       {
-        int i = ((HttpURLConnection)this.connectionImpl).getResponseCode();
+        int i = ((HttpURLConnection)localURLConnection).getResponseCode();
         return i;
       }
       catch (Throwable localThrowable)
       {
         String str = localThrowable.getMessage();
-        SonicUtils.log("SonicSdk_SonicSessionConnection", 6, "getResponseCode error:" + str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getResponseCode error:");
+        localStringBuilder.append(str);
+        SonicUtils.log("SonicSdk_SonicSessionConnection", 6, localStringBuilder.toString());
         if ((localThrowable instanceof IOException))
         {
           if ((localThrowable instanceof SocketTimeoutException)) {
@@ -175,17 +191,21 @@ public class SonicSessionConnection$SessionConnectionDefaultImpl
   
   public Map<String, List<String>> getResponseHeaderFields()
   {
-    if (this.connectionImpl == null) {
+    Object localObject = this.connectionImpl;
+    if (localObject == null) {
       return null;
     }
     try
     {
-      Map localMap = this.connectionImpl.getHeaderFields();
-      return localMap;
+      localObject = ((URLConnection)localObject).getHeaderFields();
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
-      SonicUtils.log("SonicSdk_SonicSessionConnection", 6, "getHeaderFields error:" + localThrowable.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getHeaderFields error:");
+      localStringBuilder.append(localThrowable.getMessage());
+      SonicUtils.log("SonicSdk_SonicSessionConnection", 6, localStringBuilder.toString());
     }
     return new HashMap();
   }
@@ -197,32 +217,33 @@ public class SonicSessionConnection$SessionConnectionDefaultImpl
       SonicSessionConfig localSonicSessionConfig = this.session.config;
       paramURLConnection.setConnectTimeout(localSonicSessionConfig.CONNECT_TIMEOUT_MILLIS);
       paramURLConnection.setReadTimeout(localSonicSessionConfig.READ_TIMEOUT_MILLIS);
-      if (localSonicSessionConfig.ACCEPT_DIFF_DATA) {}
-      for (Object localObject1 = "true";; localObject1 = "false")
+      if (localSonicSessionConfig.ACCEPT_DIFF_DATA) {
+        localObject1 = "true";
+      } else {
+        localObject1 = "false";
+      }
+      paramURLConnection.setRequestProperty("accept-diff", (String)localObject1);
+      Object localObject2 = this.intent.getStringExtra("eTag");
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramURLConnection.setRequestProperty("If-None-Match", (String)localObject1);
+      localObject2 = this.intent.getStringExtra("template-tag");
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      paramURLConnection.setRequestProperty("template-tag", (String)localObject1);
+      paramURLConnection.setRequestProperty("method", "GET");
+      paramURLConnection.setRequestProperty("Accept-Encoding", "gzip");
+      paramURLConnection.setRequestProperty("Accept-Language", "zh-CN,zh;");
+      paramURLConnection.setRequestProperty("sonic-sdk-version", "Sonic/3.0.2");
+      if (this.intent.hasExtra("X-sonic-chunk")) {
+        paramURLConnection.setRequestProperty("X-sonic-chunk", this.intent.getStringExtra("X-sonic-chunk"));
+      }
+      if ((localSonicSessionConfig.customRequestHeaders != null) && (localSonicSessionConfig.customRequestHeaders.size() != 0))
       {
-        paramURLConnection.setRequestProperty("accept-diff", (String)localObject1);
-        Object localObject2 = this.intent.getStringExtra("eTag");
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
-        }
-        paramURLConnection.setRequestProperty("If-None-Match", (String)localObject1);
-        localObject2 = this.intent.getStringExtra("template-tag");
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
-        }
-        paramURLConnection.setRequestProperty("template-tag", (String)localObject1);
-        paramURLConnection.setRequestProperty("method", "GET");
-        paramURLConnection.setRequestProperty("Accept-Encoding", "gzip");
-        paramURLConnection.setRequestProperty("Accept-Language", "zh-CN,zh;");
-        paramURLConnection.setRequestProperty("sonic-sdk-version", "Sonic/3.0.2");
-        if (this.intent.hasExtra("X-sonic-chunk")) {
-          paramURLConnection.setRequestProperty("X-sonic-chunk", this.intent.getStringExtra("X-sonic-chunk"));
-        }
-        if ((localSonicSessionConfig.customRequestHeaders == null) || (localSonicSessionConfig.customRequestHeaders.size() == 0)) {
-          break;
-        }
         localObject1 = localSonicSessionConfig.customRequestHeaders.entrySet().iterator();
         while (((Iterator)localObject1).hasNext())
         {
@@ -233,92 +254,91 @@ public class SonicSessionConnection$SessionConnectionDefaultImpl
       localObject1 = this.intent.getStringExtra("Cookie");
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         paramURLConnection.setRequestProperty("Cookie", (String)localObject1);
-      }
-      for (;;)
-      {
-        paramURLConnection.setRequestProperty("User-Agent", this.intent.getStringExtra("User-Agent"));
-        return true;
+      } else {
         SonicUtils.log("SonicSdk_SonicSessionConnection", 6, "create UrlConnection cookie is empty");
       }
+      paramURLConnection.setRequestProperty("User-Agent", this.intent.getStringExtra("User-Agent"));
+      return true;
     }
     return false;
   }
   
   protected int internalConnect()
   {
-    label137:
-    for (;;)
+    try
     {
-      try
+      if ((this.connectionImpl instanceof HttpURLConnection))
       {
-        if ((this.connectionImpl instanceof HttpURLConnection))
+        HttpURLConnection localHttpURLConnection = (HttpURLConnection)this.connectionImpl;
+        try
         {
-          HttpURLConnection localHttpURLConnection = (HttpURLConnection)this.connectionImpl;
-          try
-          {
-            localHttpURLConnection.connect();
-            i = 0;
-          }
-          catch (Throwable localThrowable)
-          {
-            String str = localThrowable.getMessage();
-            SonicUtils.log("SonicSdk_SonicSessionConnection", 6, "connect error:" + str);
-            if (!(localThrowable instanceof IOException)) {
-              continue;
-            }
-            if (!(localThrowable instanceof SocketTimeoutException)) {
-              continue;
-            }
-            i = -902;
-            continue;
-            if ((TextUtils.isEmpty(str)) || (!str.contains("timeoutexception"))) {
-              break label137;
-            }
-            i = -902;
-            continue;
-            boolean bool = localThrowable instanceof NullPointerException;
-            if (!bool) {
-              continue;
-            }
-            i = -903;
-            continue;
-          }
-          return i;
+          localHttpURLConnection.connect();
+          return 0;
         }
-        else
+        catch (Throwable localThrowable)
         {
-          i = -1;
-          continue;
+          String str = localThrowable.getMessage();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("connect error:");
+          localStringBuilder.append(str);
+          SonicUtils.log("SonicSdk_SonicSessionConnection", 6, localStringBuilder.toString());
+          if ((localThrowable instanceof IOException))
+          {
+            bool = localThrowable instanceof SocketTimeoutException;
+            if (bool) {
+              return -902;
+            }
+            if (!TextUtils.isEmpty(str))
+            {
+              bool = str.contains("timeoutexception");
+              if (bool) {
+                return -902;
+              }
+            }
+            return -901;
+          }
+          boolean bool = localThrowable instanceof NullPointerException;
+          if (bool) {
+            return -903;
+          }
         }
-        int i = -901;
       }
-      finally {}
+      return -1;
     }
+    finally {}
   }
   
   protected BufferedInputStream internalGetResponseStream()
   {
-    if ((this.responseStream == null) && (this.connectionImpl != null)) {}
-    try
+    if (this.responseStream == null)
     {
-      InputStream localInputStream = this.connectionImpl.getInputStream();
-      if ("gzip".equalsIgnoreCase(this.connectionImpl.getContentEncoding())) {}
-      for (this.responseStream = new BufferedInputStream(new GZIPInputStream(localInputStream));; this.responseStream = new BufferedInputStream(localInputStream)) {
-        return this.responseStream;
+      Object localObject = this.connectionImpl;
+      if (localObject != null) {
+        try
+        {
+          localObject = ((URLConnection)localObject).getInputStream();
+          if ("gzip".equalsIgnoreCase(this.connectionImpl.getContentEncoding())) {
+            this.responseStream = new BufferedInputStream(new GZIPInputStream((InputStream)localObject));
+          } else {
+            this.responseStream = new BufferedInputStream((InputStream)localObject);
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getResponseStream error:");
+          localStringBuilder.append(localThrowable.getMessage());
+          localStringBuilder.append(".");
+          SonicUtils.log("SonicSdk_SonicSessionConnection", 6, localStringBuilder.toString());
+        }
       }
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        SonicUtils.log("SonicSdk_SonicSessionConnection", 6, "getResponseStream error:" + localThrowable.getMessage() + ".");
-      }
-    }
+    return this.responseStream;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSessionConnection.SessionConnectionDefaultImpl
  * JD-Core Version:    0.7.0.1
  */

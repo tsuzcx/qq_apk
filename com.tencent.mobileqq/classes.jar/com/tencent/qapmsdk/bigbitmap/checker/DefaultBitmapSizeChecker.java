@@ -10,25 +10,29 @@ public class DefaultBitmapSizeChecker
   
   public Boolean check(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt1 > paramInt3 * getThreshold()) || (paramInt2 > paramInt4 * getThreshold())) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    boolean bool;
+    if ((paramInt1 <= paramInt3 * getThreshold()) && (paramInt2 <= paramInt4 * getThreshold())) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    return Boolean.valueOf(bool);
   }
   
   public float getThreshold()
   {
     float f2 = PluginCombination.bigBitmapPlugin.threshold / 100.0F;
+    float f3 = DEFAULT_MIN_EXCEED_FACTOR;
     float f1 = f2;
-    if (f2 < DEFAULT_MIN_EXCEED_FACTOR) {
-      f1 = DEFAULT_MIN_EXCEED_FACTOR;
+    if (f2 < f3) {
+      f1 = f3;
     }
     return f1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.bigbitmap.checker.DefaultBitmapSizeChecker
  * JD-Core Version:    0.7.0.1
  */

@@ -12,31 +12,36 @@ class PushDialogDbUtil$3
   
   public void run()
   {
-    synchronized (PushDialogDbUtil.a(this.this$0))
+    try
     {
-      try
+      synchronized (PushDialogDbUtil.a(this.this$0))
       {
         this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persist(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate);
-        if (QLog.isColorLevel()) {
-          QLog.d("PushDialogDbUtil", 3, "PushDialogTemplate insert: " + new Date(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.time) + "," + this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.mUin + "," + this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.c2c_type);
-        }
-        return;
       }
-      catch (SQLiteException localSQLiteException)
+    }
+    catch (SQLiteException localSQLiteException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PushDialogDbUtil", 0, localSQLiteException.getMessage());
+      }
+      if (QLog.isColorLevel())
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("PushDialogDbUtil", 0, localSQLiteException.getMessage());
-          }
-        }
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("PushDialogTemplate insert: ");
+        ((StringBuilder)???).append(new Date(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.time));
+        ((StringBuilder)???).append(",");
+        ((StringBuilder)???).append(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.mUin);
+        ((StringBuilder)???).append(",");
+        ((StringBuilder)???).append(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.c2c_type);
+        QLog.d("PushDialogDbUtil", 3, ((StringBuilder)???).toString());
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogDbUtil.3
  * JD-Core Version:    0.7.0.1
  */

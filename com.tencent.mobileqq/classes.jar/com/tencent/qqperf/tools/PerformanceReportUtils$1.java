@@ -25,13 +25,11 @@ final class PerformanceReportUtils$1
     {
       try
       {
-        HashMap localHashMap = new HashMap();
-        Object localObject;
-        long l1;
+        localHashMap = new HashMap();
         if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3000) || (this.jdField_a_of_type_Int == 10))
         {
           if (!PerformanceReportUtils.jdField_a_of_type_Boolean) {
-            break label831;
+            break label836;
           }
           i = 0;
           localHashMap.put("actloginTypt", String.valueOf(i));
@@ -49,109 +47,138 @@ final class PerformanceReportUtils$1
           localHashMap.put("suspend_thread_switch", String.valueOf(SuspendThreadManager.jdField_a_of_type_Int));
           if (DeviceOptSwitch.j)
           {
-            localObject = "-1";
-            String str2 = "-1";
-            String str3 = "-1";
-            String str4 = "-1";
             l1 = System.currentTimeMillis();
-            if (DeviceOptSwitch.e != -1L) {
-              continue;
+            l2 = DeviceOptSwitch.e;
+            String str3 = "-1";
+            if (l2 == -1L) {
+              str1 = "-1";
+            } else {
+              str1 = String.valueOf(l1 - DeviceOptSwitch.e);
             }
-            str1 = "-1";
-            if (DeviceOptSwitch.b != 0L) {
-              localObject = String.valueOf(l1 - DeviceOptSwitch.b);
+            if (DeviceOptSwitch.b == 0L) {
+              break label841;
             }
-            if (DeviceOptSwitch.jdField_a_of_type_Long != 0L) {
-              str2 = String.valueOf(l1 - DeviceOptSwitch.jdField_a_of_type_Long);
+            localObject2 = String.valueOf(l1 - DeviceOptSwitch.b);
+            if (DeviceOptSwitch.jdField_a_of_type_Long == 0L) {
+              break label848;
             }
-            if (DeviceOptSwitch.d != 0L) {
-              str3 = String.valueOf(l1 - DeviceOptSwitch.d);
+            localObject3 = String.valueOf(l1 - DeviceOptSwitch.jdField_a_of_type_Long);
+            if (DeviceOptSwitch.d == 0L) {
+              break label855;
             }
+            str2 = String.valueOf(l1 - DeviceOptSwitch.d);
             if (DeviceOptSwitch.c != 0L) {
-              str4 = String.valueOf(l1 - DeviceOptSwitch.c);
+              str3 = String.valueOf(l1 - DeviceOptSwitch.c);
             }
             localHashMap.put("perfConfigReportValue", String.valueOf(DeviceOptSwitch.jdField_a_of_type_Int));
             localHashMap.put("automatorFinishtime", str1);
-            localHashMap.put("qZoneInterval", localObject);
-            localHashMap.put("miniInterval", str2);
-            localHashMap.put("troopListInterval", str3);
-            localHashMap.put("preDownloadInterval", str4);
+            localHashMap.put("qZoneInterval", localObject2);
+            localHashMap.put("miniInterval", localObject3);
+            localHashMap.put("troopListInterval", str2);
+            localHashMap.put("preDownloadInterval", str3);
           }
         }
-        String str1 = null;
-        switch (this.jdField_a_of_type_Int)
-        {
-        case 0: 
-          localObject = PerformanceReportUtils.a();
-          if ((str1 != null) && (this.jdField_a_of_type_Long > 0L))
-          {
-            l1 = ((SharedPreferences)localObject).getLong(str1, 0L);
-            long l2 = PerformanceReportUtils.a();
-            if (QLog.isDevelopLevel()) {
-              QLog.d("PerformanceReportUtils", 4, "reportUISwitch report_time ：" + l2 + ",lastRp" + l1 + ",aioBusiness=" + String.valueOf(BusinessRecoderForPerf.a()));
-            }
-            if ((l1 == 0L) || (SystemClock.uptimeMillis() < l1) || (SystemClock.uptimeMillis() - l1 >= l2))
-            {
-              if (QLog.isDevelopLevel()) {
-                QLog.d("PerformanceReportUtils", 4, "reportUISwitch timeConsumed ：" + this.jdField_a_of_type_Long + ",aioBusiness=" + String.valueOf(BusinessRecoderForPerf.a()));
-              }
-              localHashMap.put("aioBusiness", String.valueOf(BusinessRecoderForPerf.a()));
-              StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(this.jdField_a_of_type_JavaLangString, str1, true, this.jdField_a_of_type_Long, 0L, localHashMap, PerformanceReportUtils.l());
-              ((SharedPreferences)localObject).edit().putLong(str1, SystemClock.uptimeMillis()).commit();
-              return;
-              str1 = String.valueOf(l1 - DeviceOptSwitch.e);
-              continue;
-              str1 = PerformanceReportUtils.a();
-            }
+        i = this.jdField_a_of_type_Int;
+        if (i != 0) {
+          if (i != 1) {
+            if (i == 3000) {}
           }
-          break;
-        case 1: 
-          str1 = PerformanceReportUtils.b();
-          break;
-        case 3000: 
-          str1 = PerformanceReportUtils.c();
-          break;
-        case 3: 
-          str1 = PerformanceReportUtils.d();
-          break;
-        case 4: 
-          str1 = PerformanceReportUtils.e();
-          break;
-        case 5: 
-          str1 = PerformanceReportUtils.f();
-          break;
-        case 6: 
-          str1 = PerformanceReportUtils.g();
-          break;
-        case 7: 
-          str1 = PerformanceReportUtils.h();
-          break;
-        case 8: 
-          str1 = PerformanceReportUtils.i();
+        }
+        switch (i)
+        {
+        case 10: 
+          str1 = PerformanceReportUtils.k();
           break;
         case 9: 
           str1 = PerformanceReportUtils.j();
           break;
-        case 10: 
-          str1 = PerformanceReportUtils.k();
+        case 8: 
+          str1 = PerformanceReportUtils.i();
           break;
-        default: 
-          continue;
+        case 7: 
+          str1 = PerformanceReportUtils.h();
+          break;
+        case 6: 
+          str1 = PerformanceReportUtils.g();
+          break;
+        case 5: 
+          str1 = PerformanceReportUtils.f();
+          break;
+        case 4: 
+          str1 = PerformanceReportUtils.e();
+          break;
+        case 3: 
+          str1 = PerformanceReportUtils.d();
+          break;
+          str1 = PerformanceReportUtils.c();
+          break;
+          str1 = PerformanceReportUtils.b();
+          break;
+          str1 = PerformanceReportUtils.a();
         }
       }
       catch (Exception localException)
       {
+        HashMap localHashMap;
+        long l1;
+        long l2;
+        String str1;
+        boolean bool;
         return;
       }
+      Object localObject2 = PerformanceReportUtils.a();
+      if ((str1 != null) && (this.jdField_a_of_type_Long > 0L))
+      {
+        l1 = ((SharedPreferences)localObject2).getLong(str1, 0L);
+        l2 = PerformanceReportUtils.a();
+        bool = QLog.isDevelopLevel();
+        if (bool)
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("reportUISwitch report_time ：");
+          ((StringBuilder)localObject3).append(l2);
+          ((StringBuilder)localObject3).append(",lastRp");
+          ((StringBuilder)localObject3).append(l1);
+          ((StringBuilder)localObject3).append(",aioBusiness=");
+          ((StringBuilder)localObject3).append(String.valueOf(BusinessRecoderForPerf.a()));
+          QLog.d("PerformanceReportUtils", 4, ((StringBuilder)localObject3).toString());
+        }
+        if ((l1 == 0L) || (SystemClock.uptimeMillis() < l1) || (SystemClock.uptimeMillis() - l1 >= l2))
+        {
+          if (QLog.isDevelopLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("reportUISwitch timeConsumed ：");
+            ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
+            ((StringBuilder)localObject3).append(",aioBusiness=");
+            ((StringBuilder)localObject3).append(String.valueOf(BusinessRecoderForPerf.a()));
+            QLog.d("PerformanceReportUtils", 4, ((StringBuilder)localObject3).toString());
+          }
+          localHashMap.put("aioBusiness", String.valueOf(BusinessRecoderForPerf.a()));
+          StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(this.jdField_a_of_type_JavaLangString, str1, true, this.jdField_a_of_type_Long, 0L, localHashMap, PerformanceReportUtils.l());
+          ((SharedPreferences)localObject2).edit().putLong(str1, SystemClock.uptimeMillis()).commit();
+        }
+      }
       return;
-      label831:
+      label836:
       int i = 1;
+      continue;
+      label841:
+      localObject2 = "-1";
+      continue;
+      label848:
+      Object localObject3 = "-1";
+      continue;
+      label855:
+      String str2 = "-1";
+      continue;
+      Object localObject1 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.tools.PerformanceReportUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,28 +12,37 @@ public class RelatedFileInfo
   
   public static RelatedFileInfo create(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    String str;
-    do
-    {
+    Object localObject = null;
+    if (paramJSONObject == null) {
       return null;
-      str = paramJSONObject.optString("url");
-      paramJSONObject = paramJSONObject.optString("md5");
-    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramJSONObject)));
-    RelatedFileInfo localRelatedFileInfo = new RelatedFileInfo();
-    localRelatedFileInfo.url = str;
-    localRelatedFileInfo.md5 = paramJSONObject;
-    return localRelatedFileInfo;
+    }
+    String str1 = paramJSONObject.optString("url");
+    String str2 = paramJSONObject.optString("md5");
+    paramJSONObject = localObject;
+    if (!TextUtils.isEmpty(str1))
+    {
+      if (TextUtils.isEmpty(str2)) {
+        return null;
+      }
+      paramJSONObject = new RelatedFileInfo();
+      paramJSONObject.url = str1;
+      paramJSONObject.md5 = str2;
+    }
+    return paramJSONObject;
   }
   
   public String toString()
   {
-    return "ri{u='" + this.url + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ri{u='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.biz.entity.RelatedFileInfo
  * JD-Core Version:    0.7.0.1
  */

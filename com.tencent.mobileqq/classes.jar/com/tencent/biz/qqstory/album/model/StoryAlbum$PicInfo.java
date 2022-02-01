@@ -42,12 +42,12 @@ public class StoryAlbum$PicInfo
     
     if (paramContext == null)
     {
-      AssertUtils.a("Need the context to get thumbnail!", new Object[0]);
+      AssertUtils.fail("Need the context to get thumbnail!", new Object[0]);
       return null;
     }
     if ((paramInt != 1) && (paramInt != 3))
     {
-      AssertUtils.a("kind is illegal", new Object[0]);
+      AssertUtils.fail("kind is illegal", new Object[0]);
       return null;
     }
     return MediaStore.Images.Thumbnails.getThumbnail(paramContext.getContentResolver(), this.jdField_a_of_type_Long, paramInt, paramOptions);
@@ -58,34 +58,34 @@ public class StoryAlbum$PicInfo
     SerializationPB.PicInfo localPicInfo = new SerializationPB.PicInfo();
     localPicInfo.id.set(this.jdField_a_of_type_Long);
     PBStringField localPBStringField = localPicInfo.path;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      str = "";
-      localPBStringField.set(str);
-      localPBStringField = localPicInfo.thumb;
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        break label196;
-      }
+    boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    String str2 = "";
+    String str1;
+    if (bool) {
+      str1 = "";
+    } else {
+      str1 = this.jdField_a_of_type_JavaLangString;
     }
-    label196:
-    for (String str = "";; str = this.jdField_b_of_type_JavaLangString)
-    {
-      localPBStringField.set(str);
-      localPicInfo.width.set(this.jdField_a_of_type_Int);
-      localPicInfo.height.set(this.jdField_b_of_type_Int);
-      localPicInfo.orientation.set(this.jdField_c_of_type_Int);
-      localPicInfo.create_time.set(this.jdField_b_of_type_Long);
-      localPicInfo.lat.set(this.jdField_a_of_type_Double);
-      localPicInfo.lng.set(this.jdField_b_of_type_Double);
-      localPicInfo.geo_hash.set(this.jdField_c_of_type_JavaLangString);
-      localPicInfo.state.set(this.jdField_d_of_type_Int);
-      localPicInfo.mime.set(this.jdField_d_of_type_JavaLangString);
-      localPicInfo.size.set(this.e);
-      localPicInfo.db_create_time.set(this.jdField_d_of_type_Long);
-      return localPicInfo;
-      str = this.jdField_a_of_type_JavaLangString;
-      break;
+    localPBStringField.set(str1);
+    localPBStringField = localPicInfo.thumb;
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      str1 = str2;
+    } else {
+      str1 = this.jdField_b_of_type_JavaLangString;
     }
+    localPBStringField.set(str1);
+    localPicInfo.width.set(this.jdField_a_of_type_Int);
+    localPicInfo.height.set(this.jdField_b_of_type_Int);
+    localPicInfo.orientation.set(this.jdField_c_of_type_Int);
+    localPicInfo.create_time.set(this.jdField_b_of_type_Long);
+    localPicInfo.lat.set(this.jdField_a_of_type_Double);
+    localPicInfo.lng.set(this.jdField_b_of_type_Double);
+    localPicInfo.geo_hash.set(this.jdField_c_of_type_JavaLangString);
+    localPicInfo.state.set(this.jdField_d_of_type_Int);
+    localPicInfo.mime.set(this.jdField_d_of_type_JavaLangString);
+    localPicInfo.size.set(this.e);
+    localPicInfo.db_create_time.set(this.jdField_d_of_type_Long);
+    return localPicInfo;
   }
   
   public StoryAlbumPicEntry a()
@@ -111,18 +111,17 @@ public class StoryAlbum$PicInfo
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo._id = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.orientation = this.jdField_c_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mMimeType = this.jdField_d_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.fileSize = this.e;
-      LocalMediaInfo localLocalMediaInfo1 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
-      LocalMediaInfo localLocalMediaInfo2 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      localLocalMediaInfo._id = this.jdField_a_of_type_Long;
+      localLocalMediaInfo.path = this.jdField_a_of_type_JavaLangString;
+      localLocalMediaInfo.orientation = this.jdField_c_of_type_Int;
+      localLocalMediaInfo.mediaWidth = this.jdField_a_of_type_Int;
+      localLocalMediaInfo.mediaHeight = this.jdField_b_of_type_Int;
+      localLocalMediaInfo.mMimeType = this.jdField_d_of_type_JavaLangString;
+      localLocalMediaInfo.fileSize = this.e;
       int i = AlbumThumbDownloader.THUMB_WIDHT;
-      localLocalMediaInfo2.thumbHeight = i;
-      localLocalMediaInfo1.thumbWidth = i;
+      localLocalMediaInfo.thumbHeight = i;
+      localLocalMediaInfo.thumbWidth = i;
     }
     return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
   }
@@ -147,12 +146,7 @@ public class StoryAlbum$PicInfo
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_d_of_type_Int = i;
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean a()
@@ -171,25 +165,37 @@ public class StoryAlbum$PicInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("PicInfo=[");
-    localStringBuilder.append(" mId:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" mPath:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" mThumbPath:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" width:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" height:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(" orientation:").append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(" mCreateTime:").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(" mDBCreateTime:").append(this.jdField_d_of_type_Long);
-    localStringBuilder.append(" mGpsLat:").append(this.jdField_a_of_type_Double);
-    localStringBuilder.append(" mGpsLng:").append(this.jdField_b_of_type_Double);
-    localStringBuilder.append(" mGeohashString:").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(" mState:").append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(" mId:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" mPath:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mThumbPath:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" width:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" height:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" orientation:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(" mCreateTime:");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" mDBCreateTime:");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(" mGpsLat:");
+    localStringBuilder.append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(" mGpsLng:");
+    localStringBuilder.append(this.jdField_b_of_type_Double);
+    localStringBuilder.append(" mGeohashString:");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" mState:");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.model.StoryAlbum.PicInfo
  * JD-Core Version:    0.7.0.1
  */

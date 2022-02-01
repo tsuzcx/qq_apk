@@ -22,21 +22,13 @@ class LottieTask$LottieFutureTask
       LottieTask.access$300(this.this$0, (LottieResult)get());
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      LottieTask.access$300(this.this$0, new LottieResult(localInterruptedException));
-      return;
-    }
-    catch (ExecutionException localExecutionException)
-    {
-      label24:
-      break label24;
-    }
+    catch (ExecutionException localExecutionException) {}catch (InterruptedException localInterruptedException) {}
+    LottieTask.access$300(this.this$0, new LottieResult(localInterruptedException));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieTask.LottieFutureTask
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,14 @@ public final class qqstory_service$ReqAddComment
   static
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42 }, new String[] { "vid", "reply_uid", "content", "fake_id", "video_info" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, Long.valueOf(0L), null }, ReqAddComment.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42 }, new String[] { "vid", "reply_uid", "content", "fake_id", "video_info" }, new Object[] { localByteStringMicro1, localLong, localByteStringMicro2, localLong, null }, ReqAddComment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqAddComment
  * JD-Core Version:    0.7.0.1
  */

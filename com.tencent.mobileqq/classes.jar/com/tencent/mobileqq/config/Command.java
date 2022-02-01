@@ -11,11 +11,16 @@ public class Command
   
   public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof Command))) {}
-    while (!toString().equals(paramObject.toString())) {
-      return false;
+    if (paramObject != null)
+    {
+      if (!(paramObject instanceof Command)) {
+        return false;
+      }
+      if (toString().equals(paramObject.toString())) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   public String toString()
@@ -25,7 +30,7 @@ public class Command
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.Command
  * JD-Core Version:    0.7.0.1
  */

@@ -63,10 +63,11 @@ public class ScanIconAnimateView
   {
     try
     {
-      paramContext = BitmapFactory.decodeResource(getResources(), 2130843516);
-      Bitmap localBitmap = BitmapFactory.decodeResource(getResources(), 2130843518);
-      int i = AIOUtils.a(32.0F, getResources());
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramContext, i * 2, i * 2, true);
+      paramContext = BitmapFactory.decodeResource(getResources(), 2130843430);
+      Bitmap localBitmap = BitmapFactory.decodeResource(getResources(), 2130843432);
+      int i = AIOUtils.b(32.0F, getResources());
+      int j = i * 2;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramContext, j, j, true);
       this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(localBitmap, i, i, true);
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -123,8 +124,12 @@ public class ScanIconAnimateView
   public boolean a()
   {
     boolean bool = this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning();
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanIconAnimateView", 2, "isPendulumRunning = " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isPendulumRunning = ");
+      localStringBuilder.append(bool);
+      QLog.d("ScanIconAnimateView", 2, localStringBuilder.toString());
     }
     return bool;
   }
@@ -158,21 +163,23 @@ public class ScanIconAnimateView
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.save();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_e_of_type_Float * 255.0F));
-    paramCanvas.scale(this.jdField_f_of_type_Float, this.jdField_f_of_type_Float, AIOUtils.a(16.0F, getResources()), AIOUtils.a(16.0F, getResources()));
+    float f1 = this.jdField_f_of_type_Float;
+    paramCanvas.scale(f1, f1, AIOUtils.b(16.0F, getResources()), AIOUtils.b(16.0F, getResources()));
     paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_b_of_type_AndroidGraphicsPaint);
     paramCanvas.restore();
     paramCanvas.save();
     paramCanvas.translate(0.0F, this.jdField_d_of_type_Float);
-    paramCanvas.scale(this.jdField_b_of_type_Float, this.jdField_b_of_type_Float, AIOUtils.a(16.0F, getResources()), AIOUtils.a(23.0F, getResources()));
-    paramCanvas.rotate(this.jdField_a_of_type_Float, AIOUtils.a(16.0F, getResources()), AIOUtils.a(23.0F, getResources()));
+    f1 = this.jdField_b_of_type_Float;
+    paramCanvas.scale(f1, f1, AIOUtils.b(16.0F, getResources()), AIOUtils.b(23.0F, getResources()));
+    paramCanvas.rotate(this.jdField_a_of_type_Float, AIOUtils.b(16.0F, getResources()), AIOUtils.b(23.0F, getResources()));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_c_of_type_Float * 255.0F));
     paramCanvas.setDrawFilter(this.jdField_a_of_type_AndroidGraphicsDrawFilter);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, AIOUtils.a(-16.0F, getResources()), AIOUtils.a(-23.0F, getResources()), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, AIOUtils.b(-16.0F, getResources()), AIOUtils.b(-23.0F, getResources()), this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.restore();
   }
   
@@ -183,7 +190,7 @@ public class ScanIconAnimateView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.view.ScanIconAnimateView
  * JD-Core Version:    0.7.0.1
  */

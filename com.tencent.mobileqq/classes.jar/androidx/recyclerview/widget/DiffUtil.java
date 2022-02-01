@@ -25,9 +25,10 @@ public class DiffUtil
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     localArrayList2.add(new DiffUtil.Range(0, i, 0, j));
-    i = i + j + Math.abs(i - j);
-    int[] arrayOfInt1 = new int[i * 2];
-    int[] arrayOfInt2 = new int[i * 2];
+    i = Math.abs(i - j) + (i + j);
+    j = i * 2;
+    int[] arrayOfInt1 = new int[j];
+    int[] arrayOfInt2 = new int[j];
     ArrayList localArrayList3 = new ArrayList();
     while (!localArrayList2.isEmpty())
     {
@@ -41,54 +42,53 @@ public class DiffUtil
         localSnake.x += localRange2.oldListStart;
         localSnake.y += localRange2.newListStart;
         DiffUtil.Range localRange1;
-        if (localArrayList3.isEmpty())
-        {
+        if (localArrayList3.isEmpty()) {
           localRange1 = new DiffUtil.Range();
-          label217:
-          localRange1.oldListStart = localRange2.oldListStart;
-          localRange1.newListStart = localRange2.newListStart;
-          if (!localSnake.reverse) {
-            break label362;
-          }
+        } else {
+          localRange1 = (DiffUtil.Range)localArrayList3.remove(localArrayList3.size() - 1);
+        }
+        localRange1.oldListStart = localRange2.oldListStart;
+        localRange1.newListStart = localRange2.newListStart;
+        if (localSnake.reverse)
+        {
           localRange1.oldListEnd = localSnake.x;
           localRange1.newListEnd = localSnake.y;
-          label265:
-          localArrayList2.add(localRange1);
-          if (!localSnake.reverse) {
-            break label457;
-          }
-          if (!localSnake.removal) {
-            break label420;
-          }
-          localRange2.oldListStart = (localSnake.x + localSnake.size + 1);
-          localRange2.newListStart = (localSnake.y + localSnake.size);
         }
-        for (;;)
+        else if (localSnake.removal)
         {
-          localArrayList2.add(localRange2);
-          break;
-          localRange1 = (DiffUtil.Range)localArrayList3.remove(localArrayList3.size() - 1);
-          break label217;
-          label362:
-          if (localSnake.removal)
-          {
-            localRange1.oldListEnd = (localSnake.x - 1);
-            localRange1.newListEnd = localSnake.y;
-            break label265;
-          }
+          localRange1.oldListEnd = (localSnake.x - 1);
+          localRange1.newListEnd = localSnake.y;
+        }
+        else
+        {
           localRange1.oldListEnd = localSnake.x;
           localRange1.newListEnd = (localSnake.y - 1);
-          break label265;
-          label420:
-          localRange2.oldListStart = (localSnake.x + localSnake.size);
-          localRange2.newListStart = (localSnake.y + localSnake.size + 1);
-          continue;
-          label457:
+        }
+        localArrayList2.add(localRange1);
+        if (localSnake.reverse)
+        {
+          if (localSnake.removal)
+          {
+            localRange2.oldListStart = (localSnake.x + localSnake.size + 1);
+            localRange2.newListStart = (localSnake.y + localSnake.size);
+          }
+          else
+          {
+            localRange2.oldListStart = (localSnake.x + localSnake.size);
+            localRange2.newListStart = (localSnake.y + localSnake.size + 1);
+          }
+        }
+        else
+        {
           localRange2.oldListStart = (localSnake.x + localSnake.size);
           localRange2.newListStart = (localSnake.y + localSnake.size);
         }
+        localArrayList2.add(localRange2);
       }
-      localArrayList3.add(localRange2);
+      else
+      {
+        localArrayList3.add(localRange2);
+      }
     }
     Collections.sort(localArrayList1, SNAKE_COMPARATOR);
     return new DiffUtil.DiffResult(paramCallback, localArrayList1, arrayOfInt1, arrayOfInt2, paramBoolean);
@@ -96,104 +96,116 @@ public class DiffUtil
   
   private static DiffUtil.Snake diffPartial(DiffUtil.Callback paramCallback, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt5)
   {
-    int m = paramInt2 - paramInt1;
-    int n = paramInt4 - paramInt3;
-    if ((paramInt2 - paramInt1 < 1) || (paramInt4 - paramInt3 < 1)) {
-      return null;
-    }
-    int i1 = m - n;
-    int i2 = (m + n + 1) / 2;
-    Arrays.fill(paramArrayOfInt1, paramInt5 - i2 - 1, paramInt5 + i2 + 1, 0);
-    Arrays.fill(paramArrayOfInt2, paramInt5 - i2 - 1 + i1, paramInt5 + i2 + 1 + i1, m);
-    int i;
-    if (i1 % 2 != 0)
+    paramInt2 -= paramInt1;
+    int i1 = paramInt4 - paramInt3;
+    if ((paramInt2 >= 1) && (i1 >= 1))
     {
-      paramInt4 = 1;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i > i2) {
-        break label664;
+      int i2 = paramInt2 - i1;
+      int i3 = (paramInt2 + i1 + 1) / 2;
+      paramInt4 = paramInt5 - i3 - 1;
+      int i = paramInt5 + i3 + 1;
+      Arrays.fill(paramArrayOfInt1, paramInt4, i, 0);
+      Arrays.fill(paramArrayOfInt2, paramInt4 + i2, i + i2, paramInt2);
+      if (i2 % 2 != 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      int j = -i;
-      boolean bool;
-      int k;
-      for (;;)
+      int j = 0;
+      while (j <= i3)
       {
-        if (j > i) {
-          break label382;
-        }
-        if ((j == -i) || ((j != i) && (paramArrayOfInt1[(paramInt5 + j - 1)] < paramArrayOfInt1[(paramInt5 + j + 1)]))) {
-          paramInt2 = paramArrayOfInt1[(paramInt5 + j + 1)];
-        }
-        for (bool = false;; bool = true)
+        int k = -j;
+        int m = k;
+        boolean bool;
+        label202:
+        int n;
+        while (m <= j)
         {
-          k = paramInt2;
-          paramInt2 -= j;
-          while ((k < m) && (paramInt2 < n) && (paramCallback.areItemsTheSame(paramInt1 + k, paramInt3 + paramInt2)))
-          {
-            k += 1;
-            paramInt2 += 1;
+          if (m != k) {
+            if (m != j)
+            {
+              paramInt4 = paramInt5 + m;
+              if (paramArrayOfInt1[(paramInt4 - 1)] < paramArrayOfInt1[(paramInt4 + 1)]) {}
+            }
+            else
+            {
+              paramInt4 = paramArrayOfInt1[(paramInt5 + m - 1)] + 1;
+              bool = true;
+              break label202;
+            }
           }
-          paramInt4 = 0;
-          break;
-          paramInt2 = paramArrayOfInt1[(paramInt5 + j - 1)] + 1;
-        }
-        paramArrayOfInt1[(paramInt5 + j)] = k;
-        if ((paramInt4 != 0) && (j >= i1 - i + 1) && (j <= i1 + i - 1) && (paramArrayOfInt1[(paramInt5 + j)] >= paramArrayOfInt2[(paramInt5 + j)]))
-        {
-          paramCallback = new DiffUtil.Snake();
-          paramCallback.x = paramArrayOfInt2[(paramInt5 + j)];
-          paramCallback.y = (paramCallback.x - j);
-          paramCallback.size = (paramArrayOfInt1[(paramInt5 + j)] - paramArrayOfInt2[(paramInt5 + j)]);
-          paramCallback.removal = bool;
-          paramCallback.reverse = false;
-          return paramCallback;
-        }
-        j += 2;
-      }
-      label382:
-      j = -i;
-      while (j <= i)
-      {
-        int i3 = j + i1;
-        if ((i3 == i + i1) || ((i3 != -i + i1) && (paramArrayOfInt2[(paramInt5 + i3 - 1)] < paramArrayOfInt2[(paramInt5 + i3 + 1)]))) {
-          paramInt2 = paramArrayOfInt2[(paramInt5 + i3 - 1)];
-        }
-        for (bool = false;; bool = true)
-        {
-          k = paramInt2;
-          paramInt2 -= i3;
-          while ((k > 0) && (paramInt2 > 0) && (paramCallback.areItemsTheSame(paramInt1 + k - 1, paramInt3 + paramInt2 - 1)))
+          paramInt4 = paramArrayOfInt1[(paramInt5 + m + 1)];
+          bool = false;
+          n = paramInt4 - m;
+          while ((paramInt4 < paramInt2) && (n < i1) && (paramCallback.areItemsTheSame(paramInt1 + paramInt4, paramInt3 + n)))
           {
-            k -= 1;
-            paramInt2 -= 1;
+            paramInt4 += 1;
+            n += 1;
           }
-          paramInt2 = paramArrayOfInt2[(paramInt5 + i3 + 1)] - 1;
+          n = paramInt5 + m;
+          paramArrayOfInt1[n] = paramInt4;
+          if ((i != 0) && (m >= i2 - j + 1) && (m <= i2 + j - 1) && (paramArrayOfInt1[n] >= paramArrayOfInt2[n]))
+          {
+            paramCallback = new DiffUtil.Snake();
+            paramCallback.x = paramArrayOfInt2[n];
+            paramCallback.y = (paramCallback.x - m);
+            paramCallback.size = (paramArrayOfInt1[n] - paramArrayOfInt2[n]);
+            paramCallback.removal = bool;
+            paramCallback.reverse = false;
+            return paramCallback;
+          }
+          m += 2;
         }
-        paramArrayOfInt2[(paramInt5 + i3)] = k;
-        if ((paramInt4 == 0) && (j + i1 >= -i) && (j + i1 <= i) && (paramArrayOfInt1[(paramInt5 + i3)] >= paramArrayOfInt2[(paramInt5 + i3)]))
+        m = k;
+        while (m <= j)
         {
-          paramCallback = new DiffUtil.Snake();
-          paramCallback.x = paramArrayOfInt2[(paramInt5 + i3)];
-          paramCallback.y = (paramCallback.x - i3);
-          paramCallback.size = (paramArrayOfInt1[(paramInt5 + i3)] - paramArrayOfInt2[(paramInt5 + i3)]);
-          paramCallback.removal = bool;
-          paramCallback.reverse = true;
-          return paramCallback;
+          int i4 = m + i2;
+          if (i4 != j + i2) {
+            if (i4 != k + i2)
+            {
+              paramInt4 = paramInt5 + i4;
+              if (paramArrayOfInt2[(paramInt4 - 1)] < paramArrayOfInt2[(paramInt4 + 1)]) {}
+            }
+            else
+            {
+              paramInt4 = paramArrayOfInt2[(paramInt5 + i4 + 1)] - 1;
+              bool = true;
+              break label473;
+            }
+          }
+          paramInt4 = paramArrayOfInt2[(paramInt5 + i4 - 1)];
+          bool = false;
+          label473:
+          n = paramInt4 - i4;
+          while ((paramInt4 > 0) && (n > 0) && (paramCallback.areItemsTheSame(paramInt1 + paramInt4 - 1, paramInt3 + n - 1)))
+          {
+            paramInt4 -= 1;
+            n -= 1;
+          }
+          n = paramInt5 + i4;
+          paramArrayOfInt2[n] = paramInt4;
+          if ((i == 0) && (i4 >= k) && (i4 <= j) && (paramArrayOfInt1[n] >= paramArrayOfInt2[n]))
+          {
+            paramCallback = new DiffUtil.Snake();
+            paramCallback.x = paramArrayOfInt2[n];
+            paramCallback.y = (paramCallback.x - i4);
+            paramCallback.size = (paramArrayOfInt1[n] - paramArrayOfInt2[n]);
+            paramCallback.removal = bool;
+            paramCallback.reverse = true;
+            return paramCallback;
+          }
+          m += 2;
         }
-        j += 2;
+        j += 1;
       }
-      i += 1;
+      throw new IllegalStateException("DiffUtil hit an unexpected case while trying to calculate the optimal path. Please make sure your data is not changing during the diff calculation.");
     }
-    label664:
-    throw new IllegalStateException("DiffUtil hit an unexpected case while trying to calculate the optimal path. Please make sure your data is not changing during the diff calculation.");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.DiffUtil
  * JD-Core Version:    0.7.0.1
  */

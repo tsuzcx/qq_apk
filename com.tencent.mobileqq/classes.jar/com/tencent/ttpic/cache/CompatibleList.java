@@ -8,36 +8,44 @@ public class CompatibleList
 {
   private static boolean isFoundProduct(String paramString1, String paramString2)
   {
-    if (paramString2 == null) {}
-    for (;;)
-    {
+    if (paramString2 == null) {
       return false;
-      paramString2 = paramString2.split("\\|");
-      if (paramString2 != null)
-      {
-        int j = paramString2.length;
-        int i = 0;
-        while (i < j)
-        {
-          if (paramString2[i].equalsIgnoreCase(paramString1)) {
-            return true;
-          }
-          i += 1;
-        }
-      }
     }
+    paramString2 = paramString2.split("\\|");
+    if (paramString2 == null) {
+      return false;
+    }
+    int j = paramString2.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (paramString2[i].equalsIgnoreCase(paramString1)) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   public static boolean isFoundProductFeature(String paramString)
   {
-    String str = Build.MANUFACTURER + ";" + Build.MODEL + ";" + Build.VERSION.SDK_INT;
-    LogUtils.i("CompatibleList", "feature:" + str);
-    return isFoundProduct(str, paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append(";");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    ((StringBuilder)localObject).append(";");
+    ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("feature:");
+    localStringBuilder.append((String)localObject);
+    LogUtils.i("CompatibleList", localStringBuilder.toString());
+    return isFoundProduct((String)localObject, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.cache.CompatibleList
  * JD-Core Version:    0.7.0.1
  */

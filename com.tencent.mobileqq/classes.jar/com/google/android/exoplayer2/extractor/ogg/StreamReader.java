@@ -29,8 +29,8 @@ abstract class StreamReader
   
   private int readHeaders(ExtractorInput paramExtractorInput)
   {
-    int j = 1;
-    while (j != 0)
+    int i = 1;
+    while (i != 0)
     {
       if (!this.oggPacket.populate(paramExtractorInput))
       {
@@ -39,11 +39,11 @@ abstract class StreamReader
       }
       this.lengthOfReadPacket = (paramExtractorInput.getPosition() - this.payloadStartPosition);
       boolean bool = readHeaders(this.oggPacket.getPayload(), this.payloadStartPosition, this.setupData);
-      j = bool;
+      i = bool;
       if (bool)
       {
         this.payloadStartPosition = paramExtractorInput.getPosition();
-        j = bool;
+        i = bool;
       }
     }
     this.sampleRate = this.setupData.format.sampleRate;
@@ -52,28 +52,23 @@ abstract class StreamReader
       this.trackOutput.format(this.setupData.format);
       this.formatSet = true;
     }
-    if (this.setupData.oggSeeker != null) {
+    if (this.setupData.oggSeeker != null)
+    {
       this.oggSeeker = this.setupData.oggSeeker;
     }
-    for (;;)
+    else if (paramExtractorInput.getLength() == -1L)
     {
-      this.setupData = null;
-      this.state = 2;
-      this.oggPacket.trimPayload();
-      return 0;
-      if (paramExtractorInput.getLength() == -1L)
-      {
-        this.oggSeeker = new StreamReader.UnseekableOggSeeker(null);
-      }
-      else
-      {
-        OggPageHeader localOggPageHeader = this.oggPacket.getPageHeader();
-        long l1 = this.payloadStartPosition;
-        long l2 = paramExtractorInput.getLength();
-        int i = localOggPageHeader.headerSize;
-        this.oggSeeker = new DefaultOggSeeker(l1, l2, this, localOggPageHeader.bodySize + i, localOggPageHeader.granulePosition);
-      }
+      this.oggSeeker = new StreamReader.UnseekableOggSeeker(null);
     }
+    else
+    {
+      OggPageHeader localOggPageHeader = this.oggPacket.getPageHeader();
+      this.oggSeeker = new DefaultOggSeeker(this.payloadStartPosition, paramExtractorInput.getLength(), this, localOggPageHeader.headerSize + localOggPageHeader.bodySize, localOggPageHeader.granulePosition);
+    }
+    this.setupData = null;
+    this.state = 2;
+    this.oggPacket.trimPayload();
+    return 0;
   }
   
   private int readPayload(ExtractorInput paramExtractorInput, PositionHolder paramPositionHolder)
@@ -93,28 +88,32 @@ abstract class StreamReader
       this.extractorOutput.seekMap(paramPositionHolder);
       this.seekMapSet = true;
     }
-    if ((this.lengthOfReadPacket > 0L) || (this.oggPacket.populate(paramExtractorInput)))
+    if ((this.lengthOfReadPacket <= 0L) && (!this.oggPacket.populate(paramExtractorInput)))
     {
-      this.lengthOfReadPacket = 0L;
-      paramExtractorInput = this.oggPacket.getPayload();
-      l1 = preparePayload(paramExtractorInput);
-      if ((l1 >= 0L) && (this.currentGranule + l1 >= this.targetGranule))
+      this.state = 3;
+      return -1;
+    }
+    this.lengthOfReadPacket = 0L;
+    paramExtractorInput = this.oggPacket.getPayload();
+    l1 = preparePayload(paramExtractorInput);
+    if (l1 >= 0L)
+    {
+      long l2 = this.currentGranule;
+      if (l2 + l1 >= this.targetGranule)
       {
-        long l2 = convertGranuleToTime(this.currentGranule);
+        l2 = convertGranuleToTime(l2);
         this.trackOutput.sampleData(paramExtractorInput, paramExtractorInput.limit());
         this.trackOutput.sampleMetadata(l2, 1, paramExtractorInput.limit(), 0, null);
         this.targetGranule = -1L;
       }
-      this.currentGranule += l1;
-      return 0;
     }
-    this.state = 3;
-    return -1;
+    this.currentGranule += l1;
+    return 0;
   }
   
   protected long convertGranuleToTime(long paramLong)
   {
-    return 1000000L * paramLong / this.sampleRate;
+    return paramLong * 1000000L / this.sampleRate;
   }
   
   protected long convertTimeToGranule(long paramLong)
@@ -138,18 +137,21 @@ abstract class StreamReader
   
   final int read(ExtractorInput paramExtractorInput, PositionHolder paramPositionHolder)
   {
-    switch (this.state)
+    int i = this.state;
+    if (i != 0)
     {
-    default: 
-      throw new IllegalStateException();
-    case 0: 
-      return readHeaders(paramExtractorInput);
-    case 1: 
+      if (i != 1)
+      {
+        if (i == 2) {
+          return readPayload(paramExtractorInput, paramPositionHolder);
+        }
+        throw new IllegalStateException();
+      }
       paramExtractorInput.skipFully((int)this.payloadStartPosition);
       this.state = 2;
       return 0;
     }
-    return readPayload(paramExtractorInput, paramPositionHolder);
+    return readHeaders(paramExtractorInput);
   }
   
   protected abstract boolean readHeaders(ParsableByteArray paramParsableByteArray, long paramLong, StreamReader.SetupData paramSetupData);
@@ -160,39 +162,34 @@ abstract class StreamReader
     {
       this.setupData = new StreamReader.SetupData();
       this.payloadStartPosition = 0L;
+      this.state = 0;
     }
-    for (this.state = 0;; this.state = 1)
+    else
     {
-      this.targetGranule = -1L;
-      this.currentGranule = 0L;
-      return;
+      this.state = 1;
     }
+    this.targetGranule = -1L;
+    this.currentGranule = 0L;
   }
   
   final void seek(long paramLong1, long paramLong2)
   {
     this.oggPacket.reset();
-    if (paramLong1 == 0L) {
-      if (!this.seekMapSet)
-      {
-        bool = true;
-        reset(bool);
-      }
+    if (paramLong1 == 0L)
+    {
+      reset(this.seekMapSet ^ true);
+      return;
     }
-    while (this.state == 0) {
-      for (;;)
-      {
-        return;
-        boolean bool = false;
-      }
+    if (this.state != 0)
+    {
+      this.targetGranule = this.oggSeeker.startSeek(paramLong2);
+      this.state = 2;
     }
-    this.targetGranule = this.oggSeeker.startSeek(paramLong2);
-    this.state = 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.StreamReader
  * JD-Core Version:    0.7.0.1
  */

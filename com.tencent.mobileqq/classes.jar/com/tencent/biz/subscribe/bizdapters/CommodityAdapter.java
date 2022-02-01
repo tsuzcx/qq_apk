@@ -86,30 +86,29 @@ public class CommodityAdapter
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    Object localObject2 = paramStFeed.poster;
+    Object localObject1 = paramStFeed.poster;
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
-    LinearLayout localLinearLayout;
-    CommodityAdapter.1 local1;
-    Object localObject1;
-    if ((((CertifiedAccountMeta.StUser)localObject2).youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)((CertifiedAccountMeta.StUser)localObject2).youZhan.get(0)).goodNum.get() > 0))
+    if ((((CertifiedAccountMeta.StUser)localObject1).youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)((CertifiedAccountMeta.StUser)localObject1).youZhan.get(0)).goodNum.get() > 0))
     {
       paramStFeed = new FrameLayout.LayoutParams(-2, -2);
       paramStFeed.gravity = 21;
       paramStFeed.rightMargin = ImmersiveUtils.dpToPx(14.0F);
-      localLinearLayout = new LinearLayout(a());
+      LinearLayout localLinearLayout = new LinearLayout(a());
       localLinearLayout.setOrientation(0);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localLinearLayout, paramStFeed);
-      local1 = new CommodityAdapter.1(this, (CertifiedAccountMeta.StUser)localObject2);
-      VSReporter.a(((CertifiedAccountMeta.StUser)localObject2).id.get(), "auth_" + SubscribeShareHelper.a(a()), "exp_shop", 0, 0, new String[0]);
-      localObject1 = a();
-      if (!SubscribeUtils.a(((CertifiedAccountMeta.StUser)localObject2).attr.get())) {
-        break label337;
+      CommodityAdapter.1 local1 = new CommodityAdapter.1(this, (CertifiedAccountMeta.StUser)localObject1);
+      paramStFeed = ((CertifiedAccountMeta.StUser)localObject1).id.get();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("auth_");
+      ((StringBuilder)localObject2).append(SubscribeShareHelper.a(a()));
+      VSReporter.a(paramStFeed, ((StringBuilder)localObject2).toString(), "exp_shop", 0, 0, new String[0]);
+      localObject2 = a();
+      if (SubscribeUtils.a(((CertifiedAccountMeta.StUser)localObject1).attr.get())) {
+        paramStFeed = HardCodeUtil.a(2131702405);
+      } else {
+        paramStFeed = ((CertifiedAccountMeta.StUser)localObject1).nick.get();
       }
-    }
-    label337:
-    for (paramStFeed = HardCodeUtil.a(2131702273);; paramStFeed = ((CertifiedAccountMeta.StUser)localObject2).nick.get())
-    {
-      paramStFeed = ViewUtils.a((Context)localObject1, 13.5F, "#878B99", String.format("%s", new Object[] { paramStFeed }));
+      paramStFeed = ViewUtils.a((Context)localObject2, 13.5F, "#878B99", String.format("%s", new Object[] { paramStFeed }));
       paramStFeed.setMaxLines(1);
       paramStFeed.setMaxWidth(ImmersiveUtils.dpToPx(150.0F));
       paramStFeed.setGravity(5);
@@ -119,18 +118,17 @@ public class CommodityAdapter
       paramStFeed = ViewUtils.a(a(), 13.5F, "#878B99", "的小店");
       localObject1 = new LinearLayout.LayoutParams(-2, -2);
       paramStFeed.setCompoundDrawablePadding(ImmersiveUtils.dpToPx(2.0F));
-      localObject2 = a().getResources().getDrawable(2130839414);
+      localObject2 = a().getResources().getDrawable(2130839270);
       ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getMinimumWidth(), ((Drawable)localObject2).getMinimumHeight());
       paramStFeed.setCompoundDrawables(null, null, (Drawable)localObject2, null);
       paramStFeed.setOnClickListener(local1);
       localLinearLayout.addView(paramStFeed, (ViewGroup.LayoutParams)localObject1);
-      return;
     }
   }
   
   public void a(Bundle paramBundle)
   {
-    paramBundle = ViewUtils.a(a(), 16.0F, "#222222", HardCodeUtil.a(2131701559));
+    paramBundle = ViewUtils.a(a(), 16.0F, "#222222", HardCodeUtil.a(2131701699));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 3;
     localLayoutParams.leftMargin = ImmersiveUtils.dpToPx(14.0F);
@@ -183,14 +181,14 @@ public class CommodityAdapter
   
   public int getItemViewType(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return 100001;
-    case 0: 
-      return 100000;
+      if (paramInt != 1) {
+        return 100001;
+      }
+      return 100002;
     }
-    return 100002;
+    return 100000;
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -199,15 +197,15 @@ public class CommodityAdapter
     {
     default: 
       return super.onCreateViewHolder(paramViewGroup, paramInt);
-    case 100000: 
-      return new BaseListViewAdapter.BaseVH(this, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    case 100001: 
+      return new BaseListViewAdapter.BaseVH(this, a());
     }
-    return new BaseListViewAdapter.BaseVH(this, a());
+    return new BaseListViewAdapter.BaseVH(this, this.jdField_a_of_type_AndroidWidgetFrameLayout);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.CommodityAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -41,7 +41,34 @@ public class IPSiteModel$Comic
   
   public String toString()
   {
-    return "Comic{comicType=" + this.comicType + ", cover='" + this.cover + '\'' + ", desc='" + this.desc + '\'' + ", id='" + this.id + '\'' + ", jumpUrl='" + this.jumpUrl + '\'' + ", name='" + this.name + '\'' + ", recommDesc='" + this.recommDesc + '\'' + ", typeName='" + this.typeName + '\'' + ", comicRiches=" + this.comicRiches + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Comic{comicType=");
+    localStringBuilder.append(this.comicType);
+    localStringBuilder.append(", cover='");
+    localStringBuilder.append(this.cover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", recommDesc='");
+    localStringBuilder.append(this.recommDesc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", typeName='");
+    localStringBuilder.append(this.typeName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", comicRiches=");
+    localStringBuilder.append(this.comicRiches);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -59,7 +86,7 @@ public class IPSiteModel$Comic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Comic
  * JD-Core Version:    0.7.0.1
  */

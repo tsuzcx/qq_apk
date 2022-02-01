@@ -25,111 +25,87 @@ public class cz
     if (paramArrayList.size() > 0)
     {
       ArrayList localArrayList = new ArrayList();
-      paramArrayList = paramArrayList.iterator();
-      int i = 0;
-      d locald;
-      if (paramArrayList.hasNext())
-      {
-        locald = (d)paramArrayList.next();
-        if (!ck.L(locald.v)) {
-          locald.v = 0;
-        }
-      }
-      label152:
-      label410:
-      label411:
+      Iterator localIterator = paramArrayList.iterator();
       for (;;)
       {
-        label61:
-        h localh = a(locald.u, locald.ssid, locald.C, paramList);
-        if (localh == null) {
+        paramArrayList = localArrayList;
+        if (!localIterator.hasNext()) {
           break;
         }
-        int j = cb.E(localh.C);
-        Object localObject = localh.ssid;
-        localObject = c(localh);
-        if (localObject == null) {
-          break;
+        paramArrayList = (d)localIterator.next();
+        if (!ck.L(paramArrayList.v)) {
+          paramArrayList.v = 0;
+        } else if ((!paramBoolean) && (ck.Q(paramArrayList.v)) && (cj.aS().K(paramArrayList.S) == null)) {
+          paramArrayList.v = 0;
         }
-        ((ct)localObject).d(localh.u);
-        ((ct)localObject).ik = System.currentTimeMillis();
-        if (paramBoolean)
+        h localh = a(paramArrayList.u, paramArrayList.ssid, paramArrayList.C, paramList);
+        if (localh != null)
         {
-          ((bl)((ct)localObject).getData()).b(true);
-          a(((ct)localObject).R(), locald);
-          if (!ck.f(locald.v, j)) {
-            break label292;
-          }
-          ((ct)localObject).a(locald);
-          ((ct)localObject).o(locald.V);
-          label193:
-          if (locald.v != 5) {
-            break label320;
-          }
-          locald.v = 4;
-          label208:
-          localArrayList.add(localObject);
-          if (!((bl)((ct)localObject).getData()).S()) {
-            break label410;
-          }
-          i += 1;
-        }
-        for (;;)
-        {
-          break;
-          if ((paramBoolean) || (!ck.Q(locald.v)) || (cj.aS().K(locald.S) != null)) {
-            break label411;
-          }
-          locald.v = 0;
-          break label61;
-          ((bl)((ct)localObject).getData()).a(true);
-          break label152;
-          label292:
-          if (((ct)localObject).R() != null) {
-            break label193;
-          }
-          ((ct)localObject).a(locald);
-          ((ct)localObject).o(locald.V);
-          break label193;
-          label320:
-          if (locald.v == 15)
+          int i = cb.E(localh.C);
+          Object localObject = localh.ssid;
+          localObject = c(localh);
+          if (localObject != null)
           {
-            locald.x = 1;
-            locald = ((ct)localObject).R();
-            if (locald != null)
-            {
-              locald.x = 1;
-              ((ct)localObject).a(locald);
+            ((ct)localObject).d(localh.u);
+            ((ct)localObject).ik = System.currentTimeMillis();
+            if (paramBoolean) {
+              ((bl)((ct)localObject).getData()).b(true);
+            } else {
+              ((bl)((ct)localObject).getData()).a(true);
             }
-            ((ct)localObject).bd();
-            break label208;
+            a(((ct)localObject).R(), paramArrayList);
+            if (ck.f(paramArrayList.v, i))
+            {
+              ((ct)localObject).a(paramArrayList);
+              ((ct)localObject).o(paramArrayList.V);
+            }
+            else if (((ct)localObject).R() == null)
+            {
+              ((ct)localObject).a(paramArrayList);
+              ((ct)localObject).o(paramArrayList.V);
+            }
+            if (paramArrayList.v == 5)
+            {
+              paramArrayList.v = 4;
+            }
+            else if (paramArrayList.v == 15)
+            {
+              paramArrayList.x = 1;
+              paramArrayList = ((ct)localObject).R();
+              if (paramArrayList != null)
+              {
+                paramArrayList.x = 1;
+                ((ct)localObject).a(paramArrayList);
+              }
+              ((ct)localObject).bd();
+            }
+            else if (paramArrayList.v == 2)
+            {
+              paramArrayList.A = null;
+            }
+            else if (paramArrayList.v == 19)
+            {
+              b((ct)localObject);
+            }
+            localArrayList.add(localObject);
+            ((bl)((ct)localObject).getData()).S();
           }
-          if (locald.v == 2)
-          {
-            locald.A = null;
-            break label208;
-          }
-          if (locald.v != 19) {
-            break label208;
-          }
-          b((ct)localObject);
-          break label208;
-          return localArrayList;
         }
       }
     }
-    return null;
+    paramArrayList = null;
+    return paramArrayList;
   }
   
   private cz.b a(List<h> paramList, f paramf)
   {
     cz.b localb = new cz.b(this, null);
-    Object localObject1;
-    Object localObject2;
     if ((paramf != null) && (paramf.ak != null))
     {
       k(paramf.ak);
       localb.jG = a(paramList, paramf.ak, false);
+      Object localObject1;
+      Object localObject2;
       if (paramf.am != null)
       {
         localObject1 = paramf.am.iterator();
@@ -139,74 +115,73 @@ public class cz
       }
       localb.jI = d(localb.jG);
       paramList = paramList.iterator();
-    }
-    label402:
-    label405:
-    for (;;)
-    {
-      Object localObject3;
-      if (paramList.hasNext())
+      while (paramList.hasNext())
       {
         localObject1 = (h)paramList.next();
-        if (localb.jG == null) {
-          break label402;
-        }
-        localObject2 = localb.jG.iterator();
-        while (((Iterator)localObject2).hasNext())
+        Object localObject3;
+        if (localb.jG != null)
         {
-          localObject3 = (ct)((Iterator)localObject2).next();
-          if (((ct)localObject3).a((h)localObject1)) {
-            ((ct)localObject3).d(((h)localObject1).u);
-          }
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label405;
-        }
-        localObject2 = c((h)localObject1);
-        if (localObject2 == null) {
-          break;
-        }
-        ((ct)localObject2).d(((h)localObject1).u);
-        ((bl)((ct)localObject2).getData()).a(true);
-        ((ct)localObject2).ik = System.currentTimeMillis();
-        if ((paramf.am != null) && (paramf.am.size() > 0))
-        {
-          localObject3 = paramf.am.iterator();
-          while (((Iterator)localObject3).hasNext())
+          localObject2 = localb.jG.iterator();
+          while (((Iterator)localObject2).hasNext())
           {
-            d locald = (d)((Iterator)localObject3).next();
-            if ((!TextUtils.isEmpty(locald.ssid)) && (!TextUtils.isEmpty(((h)localObject1).ssid)) && (cb.c(locald.ssid, ((h)localObject1).ssid)) && (locald.C == ((h)localObject1).C))
+            localObject3 = (ct)((Iterator)localObject2).next();
+            if (((ct)localObject3).a((h)localObject1))
             {
-              a(((ct)localObject2).R(), locald);
-              ((ct)localObject2).a(locald);
+              ((ct)localObject3).d(((h)localObject1).u);
+              i = 1;
+              break label194;
             }
           }
         }
-        if (localb.jG == null) {
-          localb.jG = new ArrayList();
+        int i = 0;
+        label194:
+        if (i == 0)
+        {
+          localObject2 = c((h)localObject1);
+          if (localObject2 != null)
+          {
+            ((ct)localObject2).d(((h)localObject1).u);
+            ((bl)((ct)localObject2).getData()).a(true);
+            ((ct)localObject2).ik = System.currentTimeMillis();
+            if ((paramf.am != null) && (paramf.am.size() > 0))
+            {
+              localObject3 = paramf.am.iterator();
+              while (((Iterator)localObject3).hasNext())
+              {
+                d locald = (d)((Iterator)localObject3).next();
+                if ((!TextUtils.isEmpty(locald.ssid)) && (!TextUtils.isEmpty(((h)localObject1).ssid)) && (cb.c(locald.ssid, ((h)localObject1).ssid)) && (locald.C == ((h)localObject1).C))
+                {
+                  a(((ct)localObject2).R(), locald);
+                  ((ct)localObject2).a(locald);
+                }
+              }
+            }
+            if (localb.jG == null) {
+              localb.jG = new ArrayList();
+            }
+            localb.jG.add(localObject2);
+          }
         }
-        localb.jG.add(localObject2);
-        break;
-        localb.jH = paramf.al;
-        return localb;
       }
+      localb.jH = paramf.al;
     }
+    return localb;
   }
   
   private h a(byte[] paramArrayOfByte, String paramString, int paramInt, List<h> paramList)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte == null) || (paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayOfByte != null) && (paramList != null))
     {
-      h localh = (h)paramList.next();
-      if ((localh != null) && (Arrays.equals(localh.u, paramArrayOfByte)) && (paramString.equals(localh.ssid)) && (paramInt == localh.C)) {
-        return localh;
+      if (paramList.isEmpty()) {
+        return null;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        h localh = (h)paramList.next();
+        if ((localh != null) && (Arrays.equals(localh.u, paramArrayOfByte)) && (paramString.equals(localh.ssid)) && (paramInt == localh.C)) {
+          return localh;
+        }
       }
     }
     return null;
@@ -223,13 +198,18 @@ public class cz
   
   private void b(ct paramct)
   {
-    if (paramct == null) {}
-    d locald;
-    do
-    {
+    if (paramct == null) {
       return;
-      locald = paramct.R();
-    } while ((locald == null) || (locald.A == null) || (locald.A.length <= 0));
+    }
+    d locald = paramct.R();
+    Object localObject;
+    if ((locald != null) && (locald.A != null))
+    {
+      if (locald.A.length <= 0) {
+        return;
+      }
+      localObject = null;
+    }
     try
     {
       c localc = new c();
@@ -238,16 +218,14 @@ public class cz
       localc.readFrom(localJceInputStream);
       locald.A = null;
       paramct.a(locald);
-      paramct.a(localc);
-      return;
+      localObject = localc;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject = null;
-      }
+      label86:
+      break label86;
     }
+    paramct.a(localObject);
   }
   
   private boolean b(h paramh)
@@ -257,7 +235,6 @@ public class cz
       paramh = c(paramh);
       return (paramh == null) || ((!((bl)paramh.getData()).Q()) && (!((bl)paramh.getData()).S()));
     }
-    if (paramh != null) {}
     return false;
   }
   
@@ -303,7 +280,6 @@ public class cz
       paramh = c(paramh);
       return (paramh == null) || ((!((bl)paramh.getData()).Q()) && (!((bl)paramh.getData()).S()));
     }
-    if (paramh != null) {}
     return false;
   }
   
@@ -314,62 +290,55 @@ public class cz
       paramh = c(paramh);
       return (paramh == null) || ((!((bl)paramh.getData()).Q()) && (!((bl)paramh.getData()).S()));
     }
-    if (paramh != null) {}
     return false;
   }
   
   private void k(List<d> paramList)
   {
-    if (paramList == null) {}
-    while (!ch.aP().getBoolean("local_cache_offline_wifi_enable", true)) {
+    if (paramList == null) {
       return;
     }
-    paramList = paramList.iterator();
-    label25:
-    d locald;
-    Object localObject;
-    while (paramList.hasNext())
+    if (ch.aP().getBoolean("local_cache_offline_wifi_enable", true))
     {
-      locald = (d)paramList.next();
-      switch (locald.aa)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-      case 2: 
-      default: 
-        break;
-      case 1: 
-        if ((locald.C == 1) && (locald.w != null) && (locald.w.size() > 0))
+        d locald = (d)paramList.next();
+        int i = locald.aa;
+        Object localObject;
+        if (i != 1)
         {
-          localObject = cw.f(locald.ssid, cb.E(locald.C));
-          if ((localObject == null) || (((ct)localObject).R() == null) || (!ck.h(((ct)localObject).R().v, ((ct)localObject).af().ab()))) {
-            break label302;
-          }
-          localObject = ((ct)localObject).R().w;
-          if ((localObject == null) || (((ArrayList)localObject).isEmpty()) || (!((e)((ArrayList)localObject).get(0)).ah.equals(((e)locald.w.get(0)).ah))) {
-            break label302;
+          if (i == 3)
+          {
+            localObject = cw.bo().bs();
+            if (localObject != null) {
+              ((bj)localObject).c(locald.ssid, cb.c(locald.u), 9);
+            }
           }
         }
-        break;
+        else if ((locald.C == 1) && (locald.w != null) && (locald.w.size() > 0))
+        {
+          localObject = cw.f(locald.ssid, cb.E(locald.C));
+          if ((localObject != null) && (((ct)localObject).R() != null) && (ck.h(((ct)localObject).R().v, ((ct)localObject).af().ab())))
+          {
+            localObject = ((ct)localObject).R().w;
+            if ((localObject != null) && (!((ArrayList)localObject).isEmpty()) && (((e)((ArrayList)localObject).get(0)).ah.equals(((e)locald.w.get(0)).ah)))
+            {
+              i = 1;
+              break label237;
+            }
+          }
+          i = 0;
+          label237:
+          if (i == 0)
+          {
+            localObject = cw.bo().bs();
+            if (localObject != null) {
+              ((bj)localObject).a(locald.ssid, cb.c(locald.u), ((e)locald.w.get(0)).ah);
+            }
+          }
+        }
       }
-    }
-    label302:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        break label25;
-      }
-      localObject = cw.bo().bs();
-      if (localObject == null) {
-        break label25;
-      }
-      ((bj)localObject).a(locald.ssid, cb.c(locald.u), ((e)locald.w.get(0)).ah);
-      break label25;
-      localObject = cw.bo().bs();
-      if (localObject == null) {
-        break label25;
-      }
-      ((bj)localObject).c(locald.ssid, cb.c(locald.u), 9);
-      break label25;
-      break;
     }
   }
   
@@ -385,230 +354,225 @@ public class cz
       cm.q(7, 1);
       by.d(501104, 1);
     }
-    ArrayList localArrayList = new ArrayList();
-    int i1;
-    Iterator localIterator;
-    int i;
-    int k;
-    int j;
-    label84:
-    h localh;
-    int i3;
-    int i4;
-    int m;
-    int n;
+    Object localObject4 = new ArrayList();
+    boolean bool1 = TextUtils.isEmpty(ch.aP().aR());
+    Object localObject5 = paramList.iterator();
+    int j = 0;
+    int i1 = 0;
+    int i = 0;
+    Object localObject3;
     Object localObject1;
-    Object localObject2;
-    if (!TextUtils.isEmpty(ch.aP().aR()))
+    int m;
+    for (int n = 0;; n = m)
     {
-      i1 = 1;
-      localIterator = paramList.iterator();
-      i = 0;
-      k = 0;
-      j = 0;
-      i2 = 0;
-      if (!localIterator.hasNext()) {
-        break label521;
+      boolean bool2 = ((Iterator)localObject5).hasNext();
+      localObject3 = null;
+      localObject2 = null;
+      if (!bool2) {
+        break;
       }
-      localh = (h)localIterator.next();
-      i3 = 0;
-      i4 = 0;
-      m = i;
-      n = i3;
-      if (!b(localh)) {
-        break label942;
-      }
-      localObject1 = null;
-      localObject2 = cw.bo().bs();
-      if (localObject2 != null)
+      localObject3 = (h)((Iterator)localObject5).next();
+      if (b((h)localObject3))
       {
-        localObject1 = ((bj)localObject2).a(cb.c(localh.u), localh.ssid, cb.E(localh.C));
-        i = 1;
-      }
-      m = i;
-      n = i3;
-      if (localObject1 == null) {
-        break label942;
-      }
-      localArrayList.add(localObject1);
-      n = 1;
-      m = i;
-      if (((d)localObject1).v != 22) {
-        break label942;
-      }
-      n = 1;
-    }
-    for (int i2 = 1;; i2 = i3)
-    {
-      m = k;
-      i3 = i4;
-      if (i2 == 0)
-      {
-        m = k;
-        i3 = i4;
-        if (d(localh))
-        {
-          localObject1 = null;
-          localObject2 = cw.bo().bs();
-          if (localObject2 != null)
-          {
-            localObject1 = ((bj)localObject2).b(cb.c(localh.u), localh.ssid, cb.E(localh.C));
-            k = 1;
-          }
-          m = k;
-          i3 = i4;
-          if (localObject1 != null)
-          {
-            i3 = 1;
-            localArrayList.add(localObject1);
-            m = k;
-          }
-        }
-      }
-      if ((i3 == 0) && (i2 == 0) && (e(localh)))
-      {
-        localObject1 = localh.ssid;
-        localObject2 = cb.c(localh.u);
-        j = cb.E(localh.C);
-        localObject1 = cj.aS().d((String)localObject1, (String)localObject2, j);
+        localObject1 = cw.bo().bs();
         if (localObject1 != null)
         {
-          localObject2 = new d();
-          ((d)localObject2).u = localh.u;
-          ((d)localObject2).ssid = localh.ssid;
-          ((d)localObject2).C = localh.C;
-          ((d)localObject2).B = ("离线识别-专属WiFi " + ((ci)localObject1).hj);
-          ((d)localObject2).v = 27;
-          ((d)localObject2).S = ((ci)localObject1).hi;
-          ((d)localObject2).score = 4;
-          if (((ci)localObject1).hi == 2) {
-            ((d)localObject2).W = 2;
-          }
-          localArrayList.add(localObject2);
+          localObject1 = ((bj)localObject1).a(cb.c(((h)localObject3).u), ((h)localObject3).ssid, cb.E(((h)localObject3).C));
+          j = 1;
         }
-        j = 1;
-      }
-      for (;;)
-      {
-        i2 = n;
-        k = m;
-        break label84;
-        i1 = 0;
-        break;
-        label521:
-        if (i != 0)
-        {
-          by.r(387321);
-          if (i1 != 0) {
-            by.r(387664);
-          }
-          if (i2 != 0) {
-            by.r(387665);
-          }
-          if (cm.R(2) != 1)
-          {
-            cm.q(2, 1);
-            by.d(501099, 1);
-          }
-          if (cm.R(8) != 1)
-          {
-            cm.q(8, 1);
-            by.d(501105, 1);
-          }
-          if (localArrayList.size() <= 0) {
-            break label848;
-          }
-          if (cm.R(3) != 1)
-          {
-            cm.q(3, 1);
-            by.d(501100, 1);
-          }
-          if (cm.R(9) != 1)
-          {
-            cm.q(9, 1);
-            by.d(501106, 1);
-          }
-        }
-        localArrayList = a(paramList, localArrayList, true);
-        if ((i != 0) || (k != 0) || (j != 0))
+        else
         {
           localObject1 = null;
-          localIterator = paramList.iterator();
-          paramList = (List<h>)localObject1;
         }
-        label934:
-        label937:
-        for (;;)
+        k = j;
+        if (localObject1 != null)
         {
-          label682:
-          if (localIterator.hasNext())
+          ((ArrayList)localObject4).add(localObject1);
+          if (((d)localObject1).v == 22)
           {
-            localh = (h)localIterator.next();
-            if (localArrayList == null) {
-              break label934;
-            }
-            localObject1 = localArrayList.iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (ct)((Iterator)localObject1).next();
-              if (((ct)localObject2).a(localh)) {
-                ((ct)localObject2).d(localh.u);
-              }
-            }
+            k = 1;
+            i1 = 1;
+            break label226;
           }
-          for (i = 1;; i = 0)
+          k = 1;
+          break label226;
+        }
+      }
+      else
+      {
+        k = j;
+      }
+      m = 0;
+      j = k;
+      int k = m;
+      label226:
+      m = i;
+      if (k == 0)
+      {
+        m = i;
+        if (d((h)localObject3))
+        {
+          bj localbj = cw.bo().bs();
+          localObject1 = localObject2;
+          if (localbj != null)
           {
-            if ((i != 0) || ((!b(localh)) && (!d(localh)) && (!e(localh)))) {
-              break label937;
-            }
-            localObject1 = c(localh);
-            if (localObject1 == null) {
-              break label682;
-            }
-            ((ct)localObject1).d(localh.u);
-            ((bl)((ct)localObject1).getData()).b(true);
-            if (paramList == null) {
-              paramList = new ArrayList();
-            }
-            for (;;)
-            {
-              paramList.add(localObject1);
-              break label682;
-              label848:
-              if (cm.R(3) == 3)
-              {
-                cm.q(3, 2);
-                by.d(501100, -1);
-              }
-              if (cm.R(9) != 3) {
-                break;
-              }
-              cm.q(9, 2);
-              by.d(501106, -1);
-              break;
-              if ((paramList != null) && (localArrayList != null))
-              {
-                localArrayList.addAll(paramList);
-                localObject1 = localArrayList;
-              }
-              do
-              {
-                return localObject1;
-                if (localArrayList != null) {
-                  break;
-                }
-                localObject1 = paramList;
-              } while (paramList != null);
-              return localArrayList;
-            }
+            localObject1 = localbj.b(cb.c(((h)localObject3).u), ((h)localObject3).ssid, cb.E(((h)localObject3).C));
+            i = 1;
+          }
+          m = i;
+          if (localObject1 != null)
+          {
+            ((ArrayList)localObject4).add(localObject1);
+            i2 = 1;
+            break label323;
           }
         }
       }
-      label942:
-      i3 = n;
-      n = i2;
       i = m;
+      int i2 = 0;
+      label323:
+      m = n;
+      if (i2 == 0)
+      {
+        m = n;
+        if (k == 0)
+        {
+          m = n;
+          if (e((h)localObject3))
+          {
+            localObject1 = ((h)localObject3).ssid;
+            localObject2 = cb.c(((h)localObject3).u);
+            k = cb.E(((h)localObject3).C);
+            localObject1 = cj.aS().d((String)localObject1, (String)localObject2, k);
+            if (localObject1 != null)
+            {
+              localObject2 = new d();
+              ((d)localObject2).u = ((h)localObject3).u;
+              ((d)localObject2).ssid = ((h)localObject3).ssid;
+              ((d)localObject2).C = ((h)localObject3).C;
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("离线识别-专属WiFi ");
+              ((StringBuilder)localObject3).append(((ci)localObject1).hj);
+              ((d)localObject2).B = ((StringBuilder)localObject3).toString();
+              ((d)localObject2).v = 27;
+              ((d)localObject2).S = ((ci)localObject1).hi;
+              ((d)localObject2).score = 4;
+              if (((ci)localObject1).hi == 2) {
+                ((d)localObject2).W = 2;
+              }
+              ((ArrayList)localObject4).add(localObject2);
+            }
+            m = 1;
+          }
+        }
+      }
     }
+    if (j != 0)
+    {
+      by.r(387321);
+      if ((bool1 ^ true)) {
+        by.r(387664);
+      }
+      if (i1 != 0) {
+        by.r(387665);
+      }
+      if (cm.R(2) != 1)
+      {
+        cm.q(2, 1);
+        by.d(501099, 1);
+      }
+      if (cm.R(8) != 1)
+      {
+        cm.q(8, 1);
+        by.d(501105, 1);
+      }
+      if (((ArrayList)localObject4).size() > 0)
+      {
+        if (cm.R(3) != 1)
+        {
+          cm.q(3, 1);
+          by.d(501100, 1);
+        }
+        if (cm.R(9) != 1)
+        {
+          cm.q(9, 1);
+          by.d(501106, 1);
+        }
+      }
+      else
+      {
+        if (cm.R(3) == 3)
+        {
+          cm.q(3, 2);
+          by.d(501100, -1);
+        }
+        if (cm.R(9) == 3)
+        {
+          cm.q(9, 2);
+          by.d(501106, -1);
+        }
+      }
+    }
+    Object localObject2 = a(paramList, (ArrayList)localObject4, true);
+    if ((j == 0) && (i == 0))
+    {
+      localObject1 = localObject2;
+      if (n == 0) {}
+    }
+    else
+    {
+      localObject4 = paramList.iterator();
+      paramList = (List<h>)localObject3;
+      while (((Iterator)localObject4).hasNext())
+      {
+        localObject1 = (h)((Iterator)localObject4).next();
+        if (localObject2 != null)
+        {
+          localObject3 = ((ArrayList)localObject2).iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            localObject5 = (ct)((Iterator)localObject3).next();
+            if (((ct)localObject5).a((h)localObject1))
+            {
+              ((ct)localObject5).d(((h)localObject1).u);
+              i = 1;
+              break label826;
+            }
+          }
+        }
+        i = 0;
+        label826:
+        if ((i == 0) && ((b((h)localObject1)) || (d((h)localObject1)) || (e((h)localObject1))))
+        {
+          localObject3 = c((h)localObject1);
+          if (localObject3 != null)
+          {
+            ((ct)localObject3).d(((h)localObject1).u);
+            ((bl)((ct)localObject3).getData()).b(true);
+            localObject1 = paramList;
+            if (paramList == null) {
+              localObject1 = new ArrayList();
+            }
+            ((ArrayList)localObject1).add(localObject3);
+            paramList = (List<h>)localObject1;
+          }
+        }
+      }
+      if ((paramList != null) && (localObject2 != null))
+      {
+        ((ArrayList)localObject2).addAll(paramList);
+        return localObject2;
+      }
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = localObject2;
+        if (paramList != null) {
+          localObject1 = paramList;
+        }
+      }
+    }
+    return localObject1;
   }
   
   private void m(List<h> paramList)
@@ -631,50 +595,51 @@ public class cz
   
   public void a(long paramLong1, cz.a parama, List<h> paramList, long paramLong2, int paramInt)
   {
-    if (paramInt != 0) {}
-    a locala;
-    for (boolean bool = true;; bool = false)
-    {
-      locala = new a();
-      locala.e = bool;
-      localObject = bz.av().u().y();
-      if (localObject != null) {
-        locala.d = ((at)localObject).C();
-      }
-      locala.f = cw.bo().bp().W();
-      locala.g = 4;
-      locala.j = paramInt;
-      if ((localObject != null) && (((at)localObject).D())) {
-        locala.i |= 1L;
-      }
-      if (!cw.bo().bp().T()) {
-        locala.i |= 0x2;
-      }
-      if (cw.bo().bp().U()) {
-        locala.i |= 0x4;
-      }
-      if (cw.bo().bp().V()) {
-        locala.i |= 0x8;
-      }
-      locala.a = new ArrayList();
-      locala.a.addAll(paramList);
-      locala.k = new ArrayList();
-      localObject = cw.bo().V(5).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        bn localbn = (bn)((Iterator)localObject).next();
-        h localh = new h();
-        localh.ssid = localbn.Z();
-        localh.u = cb.m(localbn.aa());
-        localh.C = cb.F(localbn.ab());
-        br localbr = localbn.ac().al();
-        if (localbr != null) {
-          localh.frequency = localbr.h(localbn.aa());
-        }
-        locala.k.add(localh);
-      }
+    boolean bool;
+    if (paramInt != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    Object localObject = this.jC.w();
+    a locala = new a();
+    locala.e = bool;
+    Object localObject = bz.av().u().y();
+    if (localObject != null) {
+      locala.d = ((at)localObject).C();
+    }
+    locala.f = cw.bo().bp().W();
+    locala.g = 4;
+    locala.j = paramInt;
+    if ((localObject != null) && (((at)localObject).D())) {
+      locala.i |= 1L;
+    }
+    if (!cw.bo().bp().T()) {
+      locala.i |= 0x2;
+    }
+    if (cw.bo().bp().U()) {
+      locala.i |= 0x4;
+    }
+    if (cw.bo().bp().V()) {
+      locala.i |= 0x8;
+    }
+    locala.a = new ArrayList();
+    locala.a.addAll(paramList);
+    locala.k = new ArrayList();
+    localObject = cw.bo().V(5).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      bn localbn = (bn)((Iterator)localObject).next();
+      h localh = new h();
+      localh.ssid = localbn.Z();
+      localh.u = cb.m(localbn.aa());
+      localh.C = cb.F(localbn.ab());
+      br localbr = localbn.ac().al();
+      if (localbr != null) {
+        localh.frequency = localbr.h(localbn.aa());
+      }
+      locala.k.add(localh);
+    }
+    localObject = this.jC.w();
     if (bool) {
       by.r(260783);
     }
@@ -697,7 +662,7 @@ public class cz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cz
  * JD-Core Version:    0.7.0.1
  */

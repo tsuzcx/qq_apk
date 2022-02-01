@@ -27,12 +27,15 @@ public class GdtDrawableLoader
       {
         this.jdField_a_of_type_JavaNetURL = new URL(paramString);
         this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+        return;
       }
-      return;
     }
     catch (MalformedURLException paramWeakReference)
     {
-      GdtLog.d("GdtDrawableLoader", "GdtDrawableLoader error " + paramString, paramWeakReference);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GdtDrawableLoader error ");
+      localStringBuilder.append(paramString);
+      GdtLog.d("GdtDrawableLoader", localStringBuilder.toString(), paramWeakReference);
     }
   }
   
@@ -43,7 +46,8 @@ public class GdtDrawableLoader
   
   private String a()
   {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getURL() != null)) {
+    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localURLDrawable != null) && (localURLDrawable.getURL() != null)) {
       return this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
     }
     if (b()) {
@@ -54,88 +58,126 @@ public class GdtDrawableLoader
   
   private void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return;
-    }
-    GdtLog.b("GdtDrawableLoader", "notify " + paramBoolean + " " + a());
-    this.jdField_a_of_type_Boolean = true;
-    if (paramBoolean)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      ((GdtDrawableLoader.Listener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      return;
+      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
+      {
+        if (((WeakReference)localObject).get() == null) {
+          return;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("notify ");
+        ((StringBuilder)localObject).append(paramBoolean);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(a());
+        GdtLog.b("GdtDrawableLoader", ((StringBuilder)localObject).toString());
+        this.jdField_a_of_type_Boolean = true;
+        if (paramBoolean)
+        {
+          ((GdtDrawableLoader.Listener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+          return;
+        }
+        ((GdtDrawableLoader.Listener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      }
     }
-    ((GdtDrawableLoader.Listener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
   private boolean a()
   {
-    if ((!b()) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null) || (this.jdField_a_of_type_Int >= 3)) {
-      return false;
+    if ((b()) && (this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_Int < 3))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("retry ");
+      localStringBuilder.append(a());
+      GdtLog.b("GdtDrawableLoader", localStringBuilder.toString());
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+      return true;
     }
-    GdtLog.b("GdtDrawableLoader", "retry " + a());
-    this.jdField_a_of_type_Int += 1;
-    this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
-    return true;
+    return false;
   }
   
   private void b()
   {
-    int j = 1;
-    if ((!b()) || (this.jdField_a_of_type_ComTencentImageURLDrawable == null)) {
-      GdtLog.b("GdtDrawableLoader", "update error " + a());
-    }
-    for (;;)
+    if (b())
     {
-      return;
-      int i;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 0)
+      localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+      if (localObject != null)
       {
-        GdtLog.b("GdtDrawableLoader", "drawable status is loading " + a());
-        i = j;
-        if (!this.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted())
+        int j = ((URLDrawable)localObject).getStatus();
+        int i = 0;
+        if (j == 0)
         {
-          this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload(true);
-          i = j;
-        }
-      }
-      while ((i != 0) && (!this.jdField_a_of_type_Boolean))
-      {
-        new Handler(Looper.getMainLooper()).postDelayed(new GdtDrawableLoader.2(this), 100L);
-        return;
-        if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 4)
-        {
-          GdtLog.b("GdtDrawableLoader", "drawable status is file downloaded " + a());
-          i = j;
-        }
-        else if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
-        {
-          GdtLog.b("GdtDrawableLoader", "drawable status is successed " + a());
-          a(true);
-          i = 0;
-        }
-        else if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2)
-        {
-          GdtLog.d("GdtDrawableLoader", "drawable status is failed " + a());
-          i = j;
-          if (!a())
-          {
-            a(false);
-            i = 0;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("drawable status is loading ");
+          ((StringBuilder)localObject).append(a());
+          GdtLog.b("GdtDrawableLoader", ((StringBuilder)localObject).toString());
+          if (!this.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted()) {
+            this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload(true);
           }
         }
-        else if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 3)
+        do
         {
-          GdtLog.d("GdtDrawableLoader", "drawable status is cancled " + a());
+          for (;;)
+          {
+            i = 1;
+            break label351;
+            if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 4) {
+              break;
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("drawable status is file downloaded ");
+            ((StringBuilder)localObject).append(a());
+            GdtLog.b("GdtDrawableLoader", ((StringBuilder)localObject).toString());
+          }
+          if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("drawable status is successed ");
+            ((StringBuilder)localObject).append(a());
+            GdtLog.b("GdtDrawableLoader", ((StringBuilder)localObject).toString());
+            a(true);
+            break label351;
+          }
+          if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 2) {
+            break;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("drawable status is failed ");
+          ((StringBuilder)localObject).append(a());
+          GdtLog.d("GdtDrawableLoader", ((StringBuilder)localObject).toString());
+        } while (a());
+        a(false);
+        break label351;
+        if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 3)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("drawable status is cancled ");
+          ((StringBuilder)localObject).append(a());
+          GdtLog.d("GdtDrawableLoader", ((StringBuilder)localObject).toString());
           a(false);
-          i = 0;
         }
         else
         {
-          GdtLog.d("GdtDrawableLoader", "drawable status is " + this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() + " " + a());
-          i = 0;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("drawable status is ");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus());
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(a());
+          GdtLog.d("GdtDrawableLoader", ((StringBuilder)localObject).toString());
         }
+        label351:
+        if ((i != 0) && (!this.jdField_a_of_type_Boolean)) {
+          new Handler(Looper.getMainLooper()).postDelayed(new GdtDrawableLoader.2(this), 100L);
+        }
+        return;
       }
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("update error ");
+    ((StringBuilder)localObject).append(a());
+    GdtLog.b("GdtDrawableLoader", ((StringBuilder)localObject).toString());
   }
   
   private boolean b()
@@ -155,23 +197,30 @@ public class GdtDrawableLoader
       GdtLog.d("GdtDrawableLoader", "load error");
       return;
     }
-    GdtLog.b("GdtDrawableLoader", "load " + a());
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mPlayGifImage = true;
-    localURLDrawableOptions.mUseMemoryCache = true;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaNetURL, localURLDrawableOptions);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable == null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("load ");
+    ((StringBuilder)localObject).append(a());
+    GdtLog.b("GdtDrawableLoader", ((StringBuilder)localObject).toString());
+    localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+    ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = true;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaNetURL, (URLDrawable.URLDrawableOptions)localObject);
+    localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    if (localObject == null)
     {
-      GdtLog.d("GdtDrawableLoader", "load error " + a());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("load error ");
+      ((StringBuilder)localObject).append(a());
+      GdtLog.d("GdtDrawableLoader", ((StringBuilder)localObject).toString());
       return;
     }
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(a());
+    ((URLDrawable)localObject).setURLDrawableListener(a());
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.image.GdtDrawableLoader
  * JD-Core Version:    0.7.0.1
  */

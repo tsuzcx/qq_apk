@@ -8,10 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.home.NearbyTabInfo;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
+import com.tencent.mobileqq.nearby.home.INearbyTabInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class NearbyMsgFragment
   extends NearbyBaseFragment
@@ -19,9 +18,9 @@ public class NearbyMsgFragment
 {
   public NearbyActivity a;
   
-  public void aE_()
+  public void aR_()
   {
-    super.aE_();
+    super.aR_();
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     if (QLog.isColorLevel()) {
       QLog.i("nearby.NearbyMsgFragment", 2, "onPageSelected， startMsgBoxListActivity");
@@ -58,23 +57,25 @@ public class NearbyMsgFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyMsgFragment", 2, "onCreateView: lastIdx=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a);
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561353, paramViewGroup, false);
-      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a == this.jdField_a_of_type_ComTencentMobileqqNearbyHomeNearbyTabInfo.tabIndex))
+      paramBundle = new StringBuilder();
+      paramBundle.append("onCreateView: lastIdx=");
+      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getmLastTabIndex());
+      QLog.i("nearby.NearbyMsgFragment", 2, paramBundle.toString());
+    }
+    if (this.f == null)
+    {
+      this.f = paramLayoutInflater.inflate(2131561192, paramViewGroup, false);
+      if ((this.jdField_a_of_type_ComTencentMobileqqNearbyHomeINearbyTabInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getmLastTabIndex() == this.jdField_a_of_type_ComTencentMobileqqNearbyHomeINearbyTabInfo.getTabIndex()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(false);
+        this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.startMsgBoxListActivity(false);
         if (QLog.isColorLevel()) {
           QLog.i("nearby.NearbyMsgFragment", 2, "onCreateView, startMsgBoxListActivity");
         }
       }
     }
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-    return paramLayoutInflater;
+    return this.f;
   }
   
   public void onDestroy()
@@ -96,8 +97,12 @@ public class NearbyMsgFragment
   public void onHiddenChanged(boolean paramBoolean)
   {
     super.onHiddenChanged(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.i("nearby.NearbyMsgFragment", 2, "onHiddenChanged, hidden=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onHiddenChanged, hidden=");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("nearby.NearbyMsgFragment", 2, localStringBuilder.toString());
     }
   }
   
@@ -119,7 +124,7 @@ public class NearbyMsgFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyMsgFragment
  * JD-Core Version:    0.7.0.1
  */

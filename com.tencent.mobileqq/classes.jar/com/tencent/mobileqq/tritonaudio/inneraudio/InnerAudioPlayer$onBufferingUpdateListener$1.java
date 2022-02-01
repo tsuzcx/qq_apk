@@ -13,12 +13,17 @@ final class InnerAudioPlayer$onBufferingUpdateListener$1
   public final void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
     int i = this.this$0.getDuration();
-    InnerAudioPlayer.access$setMBufferedTime$p(this.this$0, i * paramInt);
+    paramMediaPlayer = this.this$0;
+    double d1 = i;
+    double d2 = paramInt;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    InnerAudioPlayer.access$setMBufferedTime$p(paramMediaPlayer, d1 * d2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.inneraudio.InnerAudioPlayer.onBufferingUpdateListener.1
  * JD-Core Version:    0.7.0.1
  */

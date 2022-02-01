@@ -26,9 +26,10 @@ import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.dpc.DPCObserver;
 import com.tencent.mobileqq.dpc.api.IDPCApi;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
+import com.tencent.mobileqq.nearby.NearbyManagerHelper;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
+import com.tencent.mobileqq.nearby.api.INearbyProxy;
+import com.tencent.mobileqq.nearby.ipc.INearbyProcManager;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -57,7 +58,7 @@ import tencent.im.oidb.cmd0x74b.oidb_0x74b.RspBody;
 public class DynamicAvatarManager
   implements Manager
 {
-  public static int a;
+  public static int a = 8;
   public long a;
   private Resources jdField_a_of_type_AndroidContentResResources;
   public SparseArray<ArrayList<String>> a;
@@ -79,11 +80,6 @@ public class DynamicAvatarManager
   public ArrayList<WeakReference<DynamicFaceDrawable>> c;
   public ArrayList<WeakReference<DynamicFaceDrawable>> d;
   
-  static
-  {
-    jdField_a_of_type_Int = 8;
-  }
-  
   public DynamicAvatarManager(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
@@ -91,6 +87,7 @@ public class DynamicAvatarManager
     this.jdField_a_of_type_Long = 0L;
     this.jdField_b_of_type_JavaLangRunnable = new DynamicAvatarManager.1(this);
     this.jdField_a_of_type_JavaLangRunnable = new DynamicAvatarManager.8(this);
+    int i = 2;
     if (paramAppInterface == null)
     {
       if (QLog.isColorLevel()) {
@@ -111,88 +108,86 @@ public class DynamicAvatarManager
     a();
     jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.jdField_a_of_type_Int;
     ((IDPCApi)QRoute.api(IDPCApi.class)).addObserver(this.jdField_a_of_type_ComTencentMobileqqDpcDPCObserver);
-    if (ShortVideoUtils.isVideoSoLibLoaded()) {}
-    for (int i = 2;; i = 0)
-    {
-      this.jdField_b_of_type_Int = i;
-      return;
+    if (!ShortVideoUtils.isVideoSoLibLoaded()) {
+      i = 0;
     }
+    this.jdField_b_of_type_Int = i;
   }
   
   private Setting a(int paramInt, String paramString)
   {
-    Object localObject2 = null;
+    Setting localSetting = null;
     if (paramInt == 18)
     {
-      paramString = "stranger_" + Integer.toString(paramInt) + "_" + paramString;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof NearbyAppInterface)) {
-        localObject1 = ((IQQAvatarManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQAvatarManagerService.class, "nearby")).getFaceSetting(paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("stranger_");
+      ((StringBuilder)localObject).append(Integer.toString(paramInt));
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString);
+      paramString = ((StringBuilder)localObject).toString();
+      localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      if ((localObject instanceof INearbyAppInterface)) {}
+      for (paramString = ((IQQAvatarManagerService)((AppInterface)localObject).getRuntimeService(IQQAvatarManagerService.class, "nearby")).getFaceSetting(paramString);; paramString = ((IPCFaceHelper)NearbyManagerHelper.a((QQAppInterface)localObject).a(true)).a(paramString))
+      {
+        return paramString;
+        if (!(localObject instanceof QQAppInterface)) {
+          break;
+        }
       }
     }
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if ((localObject instanceof INearbyAppInterface)) {
+      return null;
+    }
+    if ((localObject instanceof QQAppInterface))
     {
-      do
-      {
-        do
-        {
-          return localObject1;
-          localObject1 = localObject2;
-        } while (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface));
-        return ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getNearbyProxy().a(true).a(paramString);
-        localObject1 = localObject2;
-      } while ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof NearbyAppInterface));
-      localObject1 = localObject2;
-    } while (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface));
-    Object localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-    paramString = (Setting)((EntityManager)localObject1).find(Setting.class, paramString);
-    ((EntityManager)localObject1).close();
-    return paramString;
+      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+      localSetting = (Setting)((EntityManager)localObject).find(Setting.class, paramString);
+      ((EntityManager)localObject).close();
+    }
+    return localSetting;
   }
   
   public static String a(int paramInt1, int paramInt2, DynamicAvatar paramDynamicAvatar)
   {
-    Object localObject;
     if (paramDynamicAvatar == null) {
-      localObject = null;
+      return null;
     }
-    do
+    if (paramInt1 == 17)
     {
-      String str;
-      do
-      {
-        do
-        {
-          return localObject;
-          str = "";
-          if (paramInt1 != 17) {
-            break;
-          }
-          if (paramInt2 == 100) {
-            return paramDynamicAvatar.basicSmallUrl;
-          }
-          if (paramInt2 == 200) {
-            return paramDynamicAvatar.basicMiddleUrl;
-          }
-          localObject = str;
-        } while (paramInt2 != 640);
+      if (paramInt2 == 100) {
+        return paramDynamicAvatar.basicSmallUrl;
+      }
+      if (paramInt2 == 200) {
+        return paramDynamicAvatar.basicMiddleUrl;
+      }
+      if (paramInt2 == 640) {
         return paramDynamicAvatar.basicBigUrl;
-        localObject = str;
-      } while (paramInt1 != 18);
+      }
+    }
+    else if (paramInt1 == 18)
+    {
       if (paramInt2 == 100) {
         return paramDynamicAvatar.nearbySmallUrl;
       }
       if (paramInt2 == 200) {
         return paramDynamicAvatar.nearbyMiddleUrl;
       }
-      localObject = str;
-    } while (paramInt2 != 640);
-    return paramDynamicAvatar.nearbyBigUrl;
+      if (paramInt2 == 640) {
+        return paramDynamicAvatar.nearbyBigUrl;
+      }
+    }
+    return "";
   }
   
   public static String a(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt1).append("_").append(paramInt2).append("_").append(paramString);
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
     return localStringBuilder.toString();
   }
   
@@ -202,125 +197,150 @@ public class DynamicAvatarManager
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramDynamicFaceDrawable.jdField_b_of_type_Int).append("_").append(paramDynamicFaceDrawable.jdField_c_of_type_Int).append("_").append(paramDynamicFaceDrawable.jdField_a_of_type_JavaLangString);
-    if ((paramBoolean) || ((paramDynamicFaceDrawable.jdField_e_of_type_Boolean) && (!TextUtils.isEmpty(paramDynamicFaceDrawable.jdField_b_of_type_JavaLangString)))) {
-      localStringBuilder.append("_").append(paramDynamicFaceDrawable.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(paramDynamicFaceDrawable.jdField_b_of_type_Int);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramDynamicFaceDrawable.jdField_c_of_type_Int);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramDynamicFaceDrawable.jdField_a_of_type_JavaLangString);
+    if ((paramBoolean) || ((paramDynamicFaceDrawable.jdField_e_of_type_Boolean) && (!TextUtils.isEmpty(paramDynamicFaceDrawable.jdField_b_of_type_JavaLangString))))
+    {
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramDynamicFaceDrawable.jdField_b_of_type_JavaLangString);
     }
     return localStringBuilder.toString();
   }
   
   private void a(String paramString1, String paramString2, String paramString3)
   {
-    int i = 0;
+    int i;
     int j;
+    int k;
+    label245:
     synchronized (this.c)
     {
-      j = this.c.size() - 1;
-      if (j >= 0)
+      i = this.c.size() - 1;
+      j = 0;
+      if (i >= 0)
       {
-        WeakReference localWeakReference = (WeakReference)this.c.get(j);
+        WeakReference localWeakReference = (WeakReference)this.c.get(i);
         if (localWeakReference == null)
         {
-          this.c.remove(j);
+          this.c.remove(i);
+          k = j;
+          break label245;
         }
-        else
+        DynamicFaceDrawable localDynamicFaceDrawable = (DynamicFaceDrawable)localWeakReference.get();
+        if (localDynamicFaceDrawable == null)
         {
-          DynamicFaceDrawable localDynamicFaceDrawable = (DynamicFaceDrawable)localWeakReference.get();
-          if (localDynamicFaceDrawable == null) {
-            this.c.remove(j);
-          } else if (paramString1.equals(localDynamicFaceDrawable.jdField_d_of_type_JavaLangString)) {
-            if (TextUtils.isEmpty(paramString2))
-            {
-              localDynamicFaceDrawable.jdField_a_of_type_ComTencentImageURLDrawable = null;
-              localDynamicFaceDrawable.a();
-              this.c.remove(j);
-            }
-            else
-            {
-              localDynamicFaceDrawable.jdField_b_of_type_JavaLangString = paramString2;
-              localDynamicFaceDrawable.jdField_c_of_type_JavaLangString = paramString3;
-              if ((localDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference == null) || (localDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (!paramString2.equals(((DynamicAvatarView)localDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_JavaLangString))) {
-                break label225;
-              }
-              this.c.remove(localWeakReference);
-            }
-          }
+          this.c.remove(i);
+          k = j;
+          break label245;
+        }
+        k = j;
+        if (!paramString1.equals(localDynamicFaceDrawable.jdField_d_of_type_JavaLangString)) {
+          break label245;
+        }
+        if (TextUtils.isEmpty(paramString2))
+        {
+          localDynamicFaceDrawable.jdField_a_of_type_ComTencentImageURLDrawable = null;
+          localDynamicFaceDrawable.a();
+          this.c.remove(i);
+          k = j;
+          break label245;
+        }
+        localDynamicFaceDrawable.jdField_b_of_type_JavaLangString = paramString2;
+        localDynamicFaceDrawable.jdField_c_of_type_JavaLangString = paramString3;
+        if ((localDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference != null) && (localDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference.get() != null) && (paramString2.equals(((DynamicAvatarView)localDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_JavaLangString)))
+        {
+          this.c.remove(localWeakReference);
+          k = j;
+          break label245;
         }
       }
       else
       {
-        if (i != 0) {
+        if (j != 0) {
           b(paramString2);
         }
         return;
       }
     }
-    for (;;)
-    {
-      j -= 1;
-      break;
-      label225:
-      i = 1;
-    }
   }
   
   private boolean a(DynamicAvatar paramDynamicAvatar, Setting paramSetting, int paramInt)
   {
-    if ((paramDynamicAvatar == null) || (paramSetting == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.dynamicAvatar", 2, "isNeed2GetDynamicAvatarInfo dynamicAvatrInfo or setting info is null.");
-      }
-    }
-    do
+    if ((paramDynamicAvatar != null) && (paramSetting != null))
     {
-      do
+      long l = System.currentTimeMillis() / 1000L;
+      if ((l - paramDynamicAvatar.getTimeStamp >= 0L) && (l - paramDynamicAvatar.getTimeStamp < 86400L))
       {
-        do
+        StringBuilder localStringBuilder;
+        if (paramInt == 17)
         {
-          return true;
-          long l = System.currentTimeMillis() / 1000L;
-          if ((l - paramDynamicAvatar.getTimeStamp >= 0L) && (l - paramDynamicAvatar.getTimeStamp < 86400L)) {
-            break;
+          if ((paramDynamicAvatar.getTimeStamp + 5 < paramSetting.headImgTimestamp) && ((paramDynamicAvatar.basicSetTimeStamp + 5) * 1000 < paramSetting.updateTimestamp))
+          {
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("isNeed2GetDynamicAvatarInfo: ");
+              localStringBuilder.append(paramDynamicAvatar.getTimeStamp);
+              localStringBuilder.append(" ");
+              localStringBuilder.append(paramSetting.headImgTimestamp);
+              localStringBuilder.append(" ");
+              localStringBuilder.append(paramDynamicAvatar.basicSetTimeStamp);
+              localStringBuilder.append(" ");
+              localStringBuilder.append(paramSetting.updateTimestamp);
+              QLog.i("Q.dynamicAvatar", 2, localStringBuilder.toString());
+            }
+            return true;
           }
-        } while (!QLog.isColorLevel());
-        QLog.i("Q.dynamicAvatar", 2, "isNeed2GetDynamicAvatarInfo beyond 24h, stamp: " + paramDynamicAvatar.getTimeStamp);
-        return true;
-        if (paramInt != 17) {
-          break;
         }
-        if ((paramDynamicAvatar.getTimeStamp + 5 >= paramSetting.headImgTimestamp) || ((paramDynamicAvatar.basicSetTimeStamp + 5) * 1000 >= paramSetting.updateTimestamp)) {
-          break label331;
+        else if ((paramInt == 18) && (paramDynamicAvatar.getTimeStamp + 5 < paramSetting.headImgTimestamp) && ((paramDynamicAvatar.nearbySetTimeStamp + 5) * 1000 < paramSetting.updateTimestamp))
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("isNeed2GetDynamicAvatarInfo: ");
+            localStringBuilder.append(paramDynamicAvatar.getTimeStamp);
+            localStringBuilder.append(" ");
+            localStringBuilder.append(paramSetting.headImgTimestamp);
+            localStringBuilder.append(" ");
+            localStringBuilder.append(paramDynamicAvatar.basicSetTimeStamp);
+            localStringBuilder.append(" ");
+            localStringBuilder.append(paramSetting.updateTimestamp);
+            QLog.i("Q.dynamicAvatar", 2, localStringBuilder.toString());
+          }
+          return true;
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.dynamicAvatar", 2, "isNeed2GetDynamicAvatarInfo: " + paramDynamicAvatar.getTimeStamp + " " + paramSetting.headImgTimestamp + " " + paramDynamicAvatar.basicSetTimeStamp + " " + paramSetting.updateTimestamp);
-      return true;
-      if ((paramInt != 18) || (paramDynamicAvatar.getTimeStamp + 5 >= paramSetting.headImgTimestamp) || ((paramDynamicAvatar.nearbySetTimeStamp + 5) * 1000 >= paramSetting.updateTimestamp)) {
-        break;
+        return false;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.dynamicAvatar", 2, "isNeed2GetDynamicAvatarInfo: " + paramDynamicAvatar.getTimeStamp + " " + paramSetting.headImgTimestamp + " " + paramDynamicAvatar.basicSetTimeStamp + " " + paramSetting.updateTimestamp);
+      if (QLog.isColorLevel())
+      {
+        paramSetting = new StringBuilder();
+        paramSetting.append("isNeed2GetDynamicAvatarInfo beyond 24h, stamp: ");
+        paramSetting.append(paramDynamicAvatar.getTimeStamp);
+        QLog.i("Q.dynamicAvatar", 2, paramSetting.toString());
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dynamicAvatar", 2, "isNeed2GetDynamicAvatarInfo dynamicAvatrInfo or setting info is null.");
+    }
     return true;
-    label331:
-    return false;
   }
   
   public static String b(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    int i = 18;
-    if (paramInt2 == 200)
-    {
+    int i = 17;
+    if (paramInt2 == 200) {
       paramInt2 = 17;
-      if (paramInt1 != 32) {
-        break label37;
-      }
-    }
-    label37:
-    for (paramInt1 = i;; paramInt1 = 17)
-    {
-      return a(paramInt1, paramInt2, paramString, paramInt3);
+    } else {
       paramInt2 = 18;
-      break;
     }
+    if (paramInt1 == 32) {
+      i = 18;
+    }
+    return a(i, paramInt2, paramString, paramInt3);
   }
   
   private void e()
@@ -340,8 +360,12 @@ public class DynamicAvatarManager
     if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig == null) {
       a();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.dynamicAvatar", 2, "getConfig DynamicAvatarConfig|" + this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getConfig DynamicAvatarConfig|");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig);
+      QLog.d("Q.dynamicAvatar", 2, localStringBuilder.toString());
     }
     return this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig;
   }
@@ -353,11 +377,12 @@ public class DynamicAvatarManager
   
   public DynamicAvatar a(int paramInt, String paramString)
   {
+    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    boolean bool1 = localAppInterface instanceof QQAppInterface;
     boolean bool2 = true;
     Object localObject1 = null;
     Object localObject2 = null;
-    boolean bool1;
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
+    if (bool1)
     {
       if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
       {
@@ -365,12 +390,15 @@ public class DynamicAvatarManager
         localObject2 = localObject1;
         if (QLog.isColorLevel())
         {
-          localObject2 = new StringBuilder().append("getDynamicAvatarInfo cache is null: ");
-          if (localObject1 != null) {
-            break label184;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getDynamicAvatarInfo cache is null: ");
+          if (localObject1 == null) {
+            bool1 = true;
+          } else {
+            bool1 = false;
           }
-          bool1 = true;
-          QLog.i("Q.dynamicAvatar", 2, bool1);
+          ((StringBuilder)localObject2).append(bool1);
+          QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)localObject2).toString());
           localObject2 = localObject1;
         }
       }
@@ -379,71 +407,68 @@ public class DynamicAvatarManager
       {
         localObject1 = b(paramInt, paramString);
         localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-        if (localObject1 == null) {}
+        if (localObject1 != null) {}
+        try
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
+        }
+        finally {}
       }
     }
-    for (;;)
+    else if ((localAppInterface instanceof INearbyAppInterface))
     {
-      label184:
-      try
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject1);
-        if (QLog.isColorLevel())
-        {
-          paramString = new StringBuilder().append("db find dynamic avatarInfo is null: ");
-          if (localObject1 != null) {
-            break label225;
-          }
-          bool1 = bool2;
-          QLog.i("Q.dynamicAvatar", 2, bool1);
-        }
-        return localObject1;
-      }
-      finally {}
-      bool1 = false;
-      break;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof NearbyAppInterface))
-      {
-        localObject1 = ((NearbyAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).a().a(paramInt, paramString);
-        continue;
-        label225:
+      localObject1 = (DynamicAvatar)((INearbyAppInterface)localAppInterface).getNearbyProcManager().a(paramInt, paramString);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("db find dynamic avatarInfo is null: ");
+      if (localObject1 == null) {
+        bool1 = bool2;
+      } else {
         bool1 = false;
       }
+      paramString.append(bool1);
+      QLog.i("Q.dynamicAvatar", 2, paramString.toString());
     }
+    return localObject1;
   }
   
   public DynamicAvatar a(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
-    {
-      localObject1 = localObject2;
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-        localObject1 = (DynamicAvatar)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      }
+    if (((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {
+      paramString = (DynamicAvatar)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    } else {
+      paramString = null;
     }
     if (QLog.isColorLevel())
     {
-      paramString = new StringBuilder().append("getDynamicAvatarInfoFromCache: ");
-      if (localObject1 != null) {
-        break label84;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDynamicAvatarInfoFromCache: ");
+      boolean bool;
+      if (paramString == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localStringBuilder.append(bool);
+      QLog.i("Q.dynamicAvatar", 2, localStringBuilder.toString());
     }
-    label84:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("Q.dynamicAvatar", 2, bool);
-      return localObject1;
-    }
+    return paramString;
   }
   
   public void a()
   {
     long l = System.currentTimeMillis();
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig = new DynamicAvatarConfig();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.dynamicAvatar", 2, "DynamicAvatarConfig|init config:" + this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig + ",costTime:" + (System.currentTimeMillis() - l));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DynamicAvatarConfig|init config:");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig);
+      localStringBuilder.append(",costTime:");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      QLog.d("Q.dynamicAvatar", 2, localStringBuilder.toString());
     }
   }
   
@@ -455,18 +480,16 @@ public class DynamicAvatarManager
     synchronized (this.d)
     {
       this.d.remove(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
-      this.jdField_b_of_type_JavaUtilArrayList.remove(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
-      synchronized (this.c)
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
       {
-        this.c.remove(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
-        return;
+        this.jdField_a_of_type_JavaUtilArrayList.remove(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
+        this.jdField_b_of_type_JavaUtilArrayList.remove(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
+        synchronized (this.c)
+        {
+          this.c.remove(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
+          return;
+        }
       }
-      paramDynamicFaceDrawable = finally;
-      throw paramDynamicFaceDrawable;
     }
   }
   
@@ -499,249 +522,278 @@ public class DynamicAvatarManager
   
   public void a(DynamicFaceDrawable paramDynamicFaceDrawable, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.c.size() < jdField_a_of_type_Int) || (paramBoolean1))
-    {
-      ??? = paramDynamicFaceDrawable.jdField_d_of_type_JavaLangString;
-      synchronized (this.c)
+    if ((this.c.size() >= jdField_a_of_type_Int) && (!paramBoolean1)) {
+      synchronized (this.d)
       {
-        this.c.add(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
-        if (paramBoolean1) {}
+        this.d.add(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
+        return;
       }
-      for (;;)
-      {
-        long l1;
+    }
+    ??? = paramDynamicFaceDrawable.jdField_d_of_type_JavaLangString;
+    synchronized (this.c)
+    {
+      this.c.add(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
+      if (!paramBoolean1) {
         synchronized (this.d)
         {
           this.d.remove(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
-          ??? = new DynamicAvatarManager.3(this, paramDynamicFaceDrawable, (String)???);
-          if (!paramBoolean2)
-          {
-            l1 = 0L;
-            long l2 = l1;
-            if (DeviceInfoUtil.b() <= 2) {
-              l2 = l1 * 2L;
-            }
-            ThreadManager.getSubThreadHandler().postDelayed(new DynamicAvatarManager.4(this, (Runnable)???), l2);
-            return;
-            paramDynamicFaceDrawable = finally;
-            throw paramDynamicFaceDrawable;
-          }
-        }
-        if (paramDynamicFaceDrawable.jdField_e_of_type_Int == 0) {
-          l1 = 1500L;
-        } else {
-          l1 = 400L;
         }
       }
-    }
-    synchronized (this.d)
-    {
-      this.d.add(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
+      ??? = new DynamicAvatarManager.3(this, paramDynamicFaceDrawable, (String)???);
+      long l1;
+      if (!paramBoolean2) {
+        l1 = 0L;
+      } else if (paramDynamicFaceDrawable.jdField_e_of_type_Int == 0) {
+        l1 = 1500L;
+      } else {
+        l1 = 400L;
+      }
+      long l2 = l1;
+      if (DeviceInfoUtil.b() <= 2) {
+        l2 = l1 * 2L;
+      }
+      ThreadManager.getSubThreadHandler().postDelayed(new DynamicAvatarManager.4(this, (Runnable)???), l2);
       return;
     }
   }
   
   public void a(DynamicAvatarInfo paramDynamicAvatarInfo)
   {
-    if (paramDynamicAvatarInfo == null) {}
-    while (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+    if (paramDynamicAvatarInfo == null) {
       return;
     }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-    localEntityManager.getTransaction().begin();
-    for (;;)
+    Object localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if ((localObject1 instanceof QQAppInterface))
     {
+      EntityManager localEntityManager = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+      localEntityManager.getTransaction().begin();
+      localObject1 = null;
       try
       {
-        localCursor = localEntityManager.query(false, DynamicAvatar.class.getSimpleName(), null, null, null, null, null, null, null);
-        if (localCursor != null) {}
-        try
+        Cursor localCursor = localEntityManager.query(false, DynamicAvatar.class.getSimpleName(), null, null, null, null, null, null, null);
+        int i;
+        Object localObject2;
+        if (localCursor != null)
         {
-          int i = localCursor.getCount();
+          localObject1 = localCursor;
+          i = localCursor.getCount();
+          localObject1 = localCursor;
           localCursor.moveToFirst();
           if (i >= 1000)
           {
-            if (i > 333)
+            while (i > 333)
             {
+              localObject1 = localCursor;
               localCursor.moveToNext();
               i -= 1;
-              continue;
             }
+            localObject1 = localCursor;
             i = localCursor.getInt(localCursor.getColumnIndex("_id"));
-            localObject1 = new StringBuilder();
-            ((StringBuilder)localObject1).append("delete from ");
-            ((StringBuilder)localObject1).append(DynamicAvatar.class.getSimpleName());
-            ((StringBuilder)localObject1).append(" where ");
-            ((StringBuilder)localObject1).append("_id");
-            ((StringBuilder)localObject1).append(" < ");
-            ((StringBuilder)localObject1).append(i);
-            ((StringBuilder)localObject1).append(";");
-            localEntityManager.execSQL(((StringBuilder)localObject1).toString());
+            localObject1 = localCursor;
+            localObject2 = new StringBuilder();
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append("delete from ");
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append(DynamicAvatar.class.getSimpleName());
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append(" where ");
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append("_id");
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append(" < ");
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append(i);
+            localObject1 = localCursor;
+            ((StringBuilder)localObject2).append(";");
+            localObject1 = localCursor;
+            localEntityManager.execSQL(((StringBuilder)localObject2).toString());
           }
-          if ((paramDynamicAvatarInfo == null) || (paramDynamicAvatarInfo.jdField_a_of_type_JavaUtilArrayList == null) || (paramDynamicAvatarInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-            continue;
-          }
-          paramDynamicAvatarInfo = paramDynamicAvatarInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
-          if (!paramDynamicAvatarInfo.hasNext()) {
-            continue;
-          }
-          localObject1 = DynamicAvatar.convertFrom((DynamicAvatarInfo.OneUinHeadInfo)paramDynamicAvatarInfo.next());
-          if (localObject1 == null) {
-            continue;
-          }
-          ??? = (DynamicAvatar)localEntityManager.find(DynamicAvatar.class, "uin=?", new String[] { String.valueOf(((DynamicAvatar)localObject1).uin) });
-          if (??? != null)
+        }
+        if (paramDynamicAvatarInfo != null)
+        {
+          localObject1 = localCursor;
+          if (paramDynamicAvatarInfo.jdField_a_of_type_JavaUtilArrayList != null)
           {
-            ((DynamicAvatar)localObject1).setStatus(((DynamicAvatar)???).getStatus());
-            ((DynamicAvatar)localObject1).setId(((DynamicAvatar)???).getId());
-          }
-          if (((DynamicAvatar)localObject1).getStatus() != 1000) {
-            continue;
-          }
-          localEntityManager.persistOrReplace((Entity)localObject1);
-          synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-          {
-            if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 200)
+            localObject1 = localCursor;
+            if (!paramDynamicAvatarInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty())
             {
-              Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-              i = 0;
-              if (localIterator.hasNext())
+              localObject1 = localCursor;
+              paramDynamicAvatarInfo = paramDynamicAvatarInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+              for (;;)
               {
-                localIterator.remove();
-                int j = i + 1;
-                i = j;
-                if (j < 100) {
-                  continue;
+                localObject1 = localCursor;
+                if (paramDynamicAvatarInfo.hasNext())
+                {
+                  localObject1 = localCursor;
+                  localObject2 = DynamicAvatar.convertFrom((DynamicAvatarInfo.OneUinHeadInfo)paramDynamicAvatarInfo.next());
+                  if (localObject2 == null) {
+                    continue;
+                  }
+                  localObject1 = localCursor;
+                  long l = ((DynamicAvatar)localObject2).uin;
+                  i = 0;
+                  localObject1 = localCursor;
+                  Object localObject3 = (DynamicAvatar)localEntityManager.find(DynamicAvatar.class, "uin=?", new String[] { String.valueOf(l) });
+                  if (localObject3 != null)
+                  {
+                    localObject1 = localCursor;
+                    ((DynamicAvatar)localObject2).setStatus(((DynamicAvatar)localObject3).getStatus());
+                    localObject1 = localCursor;
+                    ((DynamicAvatar)localObject2).setId(((DynamicAvatar)localObject3).getId());
+                  }
+                  localObject1 = localCursor;
+                  if (((DynamicAvatar)localObject2).getStatus() == 1000)
+                  {
+                    localObject1 = localCursor;
+                    localEntityManager.persistOrReplace((Entity)localObject2);
+                  }
+                  else
+                  {
+                    localObject1 = localCursor;
+                    localEntityManager.update((Entity)localObject2);
+                  }
+                  localObject1 = localCursor;
+                  localObject3 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+                  localObject1 = localCursor;
+                  try
+                  {
+                    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 200)
+                    {
+                      localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+                      int j;
+                      do
+                      {
+                        if (!((Iterator)localObject1).hasNext()) {
+                          break;
+                        }
+                        ((Iterator)localObject1).remove();
+                        j = i + 1;
+                        i = j;
+                      } while (j < 100);
+                    }
+                    if (((DynamicAvatar)localObject2).uin > 0L) {
+                      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(((DynamicAvatar)localObject2).uin), localObject2);
+                    }
+                    if (((DynamicAvatar)localObject2).tinyId > 0L) {
+                      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(((DynamicAvatar)localObject2).tinyId), localObject2);
+                    }
+                  }
+                  finally
+                  {
+                    localObject1 = localCursor;
+                  }
                 }
               }
             }
-            if (((DynamicAvatar)localObject1).uin > 0L) {
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(((DynamicAvatar)localObject1).uin), localObject1);
-            }
-            if (((DynamicAvatar)localObject1).tinyId > 0L) {
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(((DynamicAvatar)localObject1).tinyId), localObject1);
-            }
-          }
-          if (localCursor == null) {
-            continue;
           }
         }
-        finally {}
+        localObject1 = localCursor;
+        localEntityManager.getTransaction().commit();
+        if (localCursor != null) {
+          localCursor.close();
+        }
+        localEntityManager.getTransaction().end();
+        localEntityManager.close();
+        return;
       }
       finally
       {
-        Object localObject1;
-        Cursor localCursor = null;
-        continue;
+        if (localObject1 != null) {
+          ((Cursor)localObject1).close();
+        }
+        localEntityManager.getTransaction().end();
+        localEntityManager.close();
       }
-      localCursor.close();
-      localEntityManager.getTransaction().end();
-      localEntityManager.close();
-      throw paramDynamicAvatarInfo;
-      localEntityManager.update((Entity)localObject1);
     }
-    localEntityManager.getTransaction().commit();
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    localEntityManager.getTransaction().end();
-    localEntityManager.close();
   }
   
   public void a(DynamicAvatar paramDynamicAvatar)
   {
-    EntityManager localEntityManager;
-    DynamicAvatar localDynamicAvatar;
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
+    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if ((localObject instanceof QQAppInterface))
     {
-      localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-      localDynamicAvatar = (DynamicAvatar)localEntityManager.find(DynamicAvatar.class, "uin=?", new String[] { String.valueOf(paramDynamicAvatar.uin) });
-      if (localDynamicAvatar != null)
+      EntityManager localEntityManager = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+      localObject = (DynamicAvatar)localEntityManager.find(DynamicAvatar.class, "uin=?", new String[] { String.valueOf(paramDynamicAvatar.uin) });
+      if (localObject != null)
       {
-        paramDynamicAvatar.setStatus(localDynamicAvatar.getStatus());
-        paramDynamicAvatar.setId(localDynamicAvatar.getId());
+        paramDynamicAvatar.setStatus(((DynamicAvatar)localObject).getStatus());
+        paramDynamicAvatar.setId(((DynamicAvatar)localObject).getId());
       }
-      if (paramDynamicAvatar.getStatus() != 1000) {
-        break label120;
+      if (paramDynamicAvatar.getStatus() == 1000) {
+        localEntityManager.persistOrReplace(paramDynamicAvatar);
+      } else {
+        localEntityManager.update(paramDynamicAvatar);
       }
-      localEntityManager.persistOrReplace(paramDynamicAvatar);
-    }
-    for (;;)
-    {
       localEntityManager.close();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.dynamicAvatar", 2, "updateDynamicAvatarInfo: avatarInfo is : " + localDynamicAvatar);
+      if (QLog.isColorLevel())
+      {
+        paramDynamicAvatar = new StringBuilder();
+        paramDynamicAvatar.append("updateDynamicAvatarInfo: avatarInfo is : ");
+        paramDynamicAvatar.append(localObject);
+        QLog.d("Q.dynamicAvatar", 2, paramDynamicAvatar.toString());
       }
-      return;
-      label120:
-      localEntityManager.update(paramDynamicAvatar);
     }
   }
   
   public void a(String paramString)
   {
     paramString = a(paramString);
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return;
-      Object localObject;
-      if (!TextUtils.isEmpty(paramString.basicSmallUrl)) {
-        localObject = DynamicAvatarDownloadManager.a(paramString.basicSmallUrl);
-      }
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions2;
+    if (!TextUtils.isEmpty(paramString.basicSmallUrl))
+    {
+      Object localObject1 = DynamicAvatarDownloadManager.a(paramString.basicSmallUrl);
       try
       {
-        localObject = ((File)localObject).toURI().toURL().toString();
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = 100;
-        localURLDrawableOptions.mRequestHeight = 100;
-        URLDrawable.removeMemoryCacheByUrl((String)localObject, localURLDrawableOptions);
-        if (!TextUtils.isEmpty(paramString.basicMiddleUrl)) {
-          localObject = DynamicAvatarDownloadManager.a(paramString.basicMiddleUrl);
-        }
+        localObject1 = ((File)localObject1).toURI().toURL().toString();
+        localURLDrawableOptions2 = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions2.mRequestWidth = 100;
+        localURLDrawableOptions2.mRequestHeight = 100;
+        URLDrawable.removeMemoryCacheByUrl((String)localObject1, localURLDrawableOptions2);
       }
       catch (Exception localException1)
       {
-        try
-        {
-          do
-          {
-            localObject = ((File)localObject).toURI().toURL().toString();
-            URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-            localURLDrawableOptions.mRequestWidth = 200;
-            localURLDrawableOptions.mRequestHeight = 200;
-            URLDrawable.removeMemoryCacheByUrl((String)localObject, localURLDrawableOptions);
-            if (TextUtils.isEmpty(paramString.basicBigUrl)) {
-              break;
-            }
-            paramString = DynamicAvatarDownloadManager.a(paramString.basicBigUrl);
-            try
-            {
-              paramString = paramString.toURI().toURL().toString();
-              localObject = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = 640;
-              ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = 640;
-              URLDrawable.removeMemoryCacheByUrl(paramString, (URLDrawable.URLDrawableOptions)localObject);
-              return;
-            }
-            catch (Exception paramString) {}
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("Q.dynamicAvatar", 2, QLog.getStackTraceString(paramString));
-            return;
-            localException1 = localException1;
-          } while (!QLog.isColorLevel());
+        if (QLog.isColorLevel()) {
           QLog.i("Q.dynamicAvatar", 2, QLog.getStackTraceString(localException1));
         }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.dynamicAvatar", 2, QLog.getStackTraceString(localException2));
-            }
-          }
+      }
+    }
+    if (!TextUtils.isEmpty(paramString.basicMiddleUrl))
+    {
+      Object localObject2 = DynamicAvatarDownloadManager.a(paramString.basicMiddleUrl);
+      try
+      {
+        localObject2 = ((File)localObject2).toURI().toURL().toString();
+        localURLDrawableOptions2 = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions2.mRequestWidth = 200;
+        localURLDrawableOptions2.mRequestHeight = 200;
+        URLDrawable.removeMemoryCacheByUrl((String)localObject2, localURLDrawableOptions2);
+      }
+      catch (Exception localException2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.dynamicAvatar", 2, QLog.getStackTraceString(localException2));
+        }
+      }
+    }
+    if (!TextUtils.isEmpty(paramString.basicBigUrl))
+    {
+      paramString = DynamicAvatarDownloadManager.a(paramString.basicBigUrl);
+      try
+      {
+        paramString = paramString.toURI().toURL().toString();
+        URLDrawable.URLDrawableOptions localURLDrawableOptions1 = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions1.mRequestWidth = 640;
+        localURLDrawableOptions1.mRequestHeight = 640;
+        URLDrawable.removeMemoryCacheByUrl(paramString, localURLDrawableOptions1);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.dynamicAvatar", 2, QLog.getStackTraceString(paramString));
         }
       }
     }
@@ -749,231 +801,281 @@ public class DynamicAvatarManager
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig != null) && (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.jdField_a_of_type_Boolean)) {}
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.dynamicAvatar", 2, "---onDpcPullFinished---|mDynamicAvatarConfig:" + this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig);
+      ??? = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig;
+      if ((??? != null) && (((DynamicAvatarConfig)???).jdField_a_of_type_Boolean)) {
+        synchronized (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.a();
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("---onDpcPullFinished---|mDynamicAvatarConfig:");
+            localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig);
+            QLog.d("Q.dynamicAvatar", 2, localStringBuilder.toString());
+          }
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.dynamicAvatar", 2, "---onDpcPullFinished---|isSuccess:" + paramBoolean);
-      }
-      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("---onDpcPullFinished---|isSuccess:");
+      ((StringBuilder)???).append(paramBoolean);
+      QLog.d("Q.dynamicAvatar", 2, ((StringBuilder)???).toString());
     }
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {}
-    do
+    if (paramArrayOfByte != null)
     {
-      do
-      {
+      if (paramArrayOfByte.length <= 0) {
         return;
-        if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-          break;
-        }
-        oidb_0x74b.RspBody localRspBody = new oidb_0x74b.RspBody();
+      }
+      Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = new oidb_0x74b.RspBody();
         try
         {
-          localRspBody.mergeFrom(paramArrayOfByte);
-          a(DynamicAvatarInfo.a(localRspBody));
+          ((oidb_0x74b.RspBody)localObject).mergeFrom(paramArrayOfByte);
+          a(DynamicAvatarInfo.a((oidb_0x74b.RspBody)localObject));
           return;
         }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-      } while (!QLog.isDevelopLevel());
-      paramArrayOfByte.printStackTrace();
-      return;
-    } while (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof NearbyAppInterface));
-    ((NearbyAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).a().a(paramArrayOfByte);
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          if (!QLog.isDevelopLevel()) {
+            return;
+          }
+        }
+        paramArrayOfByte.printStackTrace();
+      }
+      else if ((localObject instanceof INearbyAppInterface))
+      {
+        ((INearbyAppInterface)localObject).getNearbyProcManager().a(paramArrayOfByte);
+      }
+    }
   }
   
   public boolean a()
   {
     if (NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long < 60000L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.dynamicAvatar", 2, "isSupportDynamicAvatar: use old value, isSupportDynamicAvatar is " + this.jdField_a_of_type_Boolean);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isSupportDynamicAvatar: use old value, isSupportDynamicAvatar is ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+        QLog.d("Q.dynamicAvatar", 2, ((StringBuilder)localObject).toString());
       }
       return this.jdField_a_of_type_Boolean;
     }
     this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    DynamicAvatarConfBean.DynamicAvatarConfig localDynamicAvatarConfig = DynamicAvatarConfProcessor.a.a().a();
-    if (localDynamicAvatarConfig == null)
+    Object localObject = DynamicAvatarConfProcessor.a.a().a();
+    if (localObject == null)
     {
       QLog.e("Q.dynamicAvatar", 2, "isSupportDynamicAvatar config is null");
       this.jdField_a_of_type_Boolean = true;
       return this.jdField_a_of_type_Boolean;
     }
-    this.jdField_a_of_type_Boolean = localDynamicAvatarConfig.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.dynamicAvatar", 2, "isSupportDynamicAvatar: use new value, isSupportDynamicAvatar is " + this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = ((DynamicAvatarConfBean.DynamicAvatarConfig)localObject).a();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isSupportDynamicAvatar: use new value, isSupportDynamicAvatar is ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      QLog.d("Q.dynamicAvatar", 2, ((StringBuilder)localObject).toString());
     }
     return this.jdField_a_of_type_Boolean;
   }
   
   public boolean a(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig != null) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig;
+    if (localObject != null) {
       switch (paramInt)
       {
       default: 
-        bool1 = bool2;
+        break;
+      case 7: 
+        bool = ((DynamicAvatarConfig)localObject).f;
+        break;
+      case 6: 
+      case 8: 
+        bool = true;
+        break;
+      case 5: 
+        bool = ((DynamicAvatarConfig)localObject).h;
+        break;
+      case 4: 
+        bool = ((DynamicAvatarConfig)localObject).g;
+        break;
+      case 3: 
+        bool = ((DynamicAvatarConfig)localObject).f;
+        break;
+      case 2: 
+        bool = ((DynamicAvatarConfig)localObject).jdField_e_of_type_Boolean;
+        break;
+      case 1: 
+        bool = ((DynamicAvatarConfig)localObject).d;
+        break;
+      case 0: 
+        bool = ((DynamicAvatarConfig)localObject).jdField_c_of_type_Boolean;
+        break;
       }
     }
-    for (;;)
+    boolean bool = false;
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.dynamicAvatar", 2, "isPlayDynamicAvatar|source:" + paramInt + ",isPlay:" + bool1 + "\n" + this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig);
-      }
-      return bool1;
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.jdField_c_of_type_Boolean;
-      continue;
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.d;
-      continue;
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.f;
-      continue;
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.g;
-      continue;
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.jdField_e_of_type_Boolean;
-      continue;
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.h;
-      continue;
-      bool1 = true;
-      continue;
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.f;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isPlayDynamicAvatar|source:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",isPlay:");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append("\n");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig);
+      QLog.d("Q.dynamicAvatar", 2, ((StringBuilder)localObject).toString());
     }
+    return bool;
   }
   
   @TargetApi(11)
   public boolean a(DynamicFaceDrawable paramDynamicFaceDrawable)
   {
-    int i = 640;
-    Object localObject1;
-    Object localObject2;
-    boolean bool1;
     if (!paramDynamicFaceDrawable.f)
     {
       localObject1 = a(paramDynamicFaceDrawable, false);
       localObject2 = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramDynamicFaceDrawable.jdField_e_of_type_Int);
-      if ((localObject2 != null) && (((ArrayList)localObject2).contains(localObject1)))
-      {
-        bool1 = false;
-        return bool1;
+      if ((localObject2 != null) && (((ArrayList)localObject2).contains(localObject1))) {
+        return false;
       }
     }
     File localFile = DynamicAvatarDownloadManager.a(paramDynamicFaceDrawable.jdField_b_of_type_JavaLangString);
-    if (paramDynamicFaceDrawable.jdField_d_of_type_Int == 640) {}
-    for (;;)
+    int j = paramDynamicFaceDrawable.jdField_d_of_type_Int;
+    int i = 200;
+    if (j == 640) {
+      i = 640;
+    } else if (paramDynamicFaceDrawable.jdField_d_of_type_Int != 200) {
+      i = 100;
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = i;
+    localURLDrawableOptions.mRequestHeight = i;
+    Object localObject2 = paramDynamicFaceDrawable.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Object localObject1 = localObject2;
+    if ((localObject2 instanceof FaceDrawable)) {
+      localObject1 = ((FaceDrawable)localObject2).getCurrDrawable();
+    }
+    localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
+    localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
+    localObject1 = new VideoDrawable.VideoDrawableParams();
+    ((VideoDrawable.VideoDrawableParams)localObject1).mPlayVideoFrame = true;
+    ((VideoDrawable.VideoDrawableParams)localObject1).mRequestedFPS = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.jdField_c_of_type_Int;
+    j = i;
+    if (SimpleUIUtil.a()) {
+      j = ImageUtil.a(i);
+    }
+    ((VideoDrawable.VideoDrawableParams)localObject1).mVideoRoundCorner = j;
+    ((VideoDrawable.VideoDrawableParams)localObject1).mEnableAntiAlias = true;
+    ((VideoDrawable.VideoDrawableParams)localObject1).mEnableFilter = true;
+    localURLDrawableOptions.mExtraInfo = localObject1;
+    boolean bool = paramDynamicFaceDrawable.a(URLDrawable.getDrawable(localFile, localURLDrawableOptions));
+    if ((bool) && (paramDynamicFaceDrawable.jdField_e_of_type_Int >= 0) && (DynamicFaceDrawable.jdField_a_of_type_ArrayOfInt.length > paramDynamicFaceDrawable.jdField_e_of_type_Int))
     {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = i;
-      localURLDrawableOptions.mRequestHeight = i;
-      localObject2 = paramDynamicFaceDrawable.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localObject1 = localObject2;
-      if ((localObject2 instanceof FaceDrawable)) {
-        localObject1 = ((FaceDrawable)localObject2).getCurrDrawable();
-      }
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
-      localObject1 = new VideoDrawable.VideoDrawableParams();
-      ((VideoDrawable.VideoDrawableParams)localObject1).mPlayVideoFrame = true;
-      ((VideoDrawable.VideoDrawableParams)localObject1).mRequestedFPS = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig.jdField_c_of_type_Int;
-      int j = i;
-      if (SimpleUIUtil.a()) {
-        j = ImageUtil.a(i);
-      }
-      ((VideoDrawable.VideoDrawableParams)localObject1).mVideoRoundCorner = j;
-      ((VideoDrawable.VideoDrawableParams)localObject1).mEnableAntiAlias = true;
-      ((VideoDrawable.VideoDrawableParams)localObject1).mEnableFilter = true;
-      localURLDrawableOptions.mExtraInfo = localObject1;
-      boolean bool2 = paramDynamicFaceDrawable.a(URLDrawable.getDrawable(localFile, localURLDrawableOptions));
-      bool1 = bool2;
-      if (!bool2) {
-        break;
-      }
-      bool1 = bool2;
-      if (paramDynamicFaceDrawable.jdField_e_of_type_Int < 0) {
-        break;
-      }
-      bool1 = bool2;
-      if (DynamicFaceDrawable.jdField_a_of_type_ArrayOfInt.length <= paramDynamicFaceDrawable.jdField_e_of_type_Int) {
-        break;
-      }
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
-        break;
-      }
-      DynamicUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "0X800711C", DynamicFaceDrawable.jdField_a_of_type_ArrayOfInt[paramDynamicFaceDrawable.jdField_e_of_type_Int]);
-      return bool2;
-      if (paramDynamicFaceDrawable.jdField_d_of_type_Int == 200) {
-        i = 200;
-      } else {
-        i = 100;
+      localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      if (localObject1 != null) {
+        DynamicUtils.a((AppInterface)localObject1, "0X800711C", DynamicFaceDrawable.jdField_a_of_type_ArrayOfInt[paramDynamicFaceDrawable.jdField_e_of_type_Int]);
       }
     }
+    return bool;
   }
   
   public boolean a(FaceInfo paramFaceInfo, Setting paramSetting, int paramInt)
   {
-    if (paramFaceInfo == null) {}
-    do
+    if (paramFaceInfo == null) {
+      return false;
+    }
+    paramFaceInfo = a(paramFaceInfo.jdField_b_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString);
+    if (paramFaceInfo != null)
     {
-      do
+      if (paramSetting == null) {
+        return true;
+      }
+      StringBuilder localStringBuilder;
+      if (paramInt == 17)
       {
-        return false;
-        paramFaceInfo = a(paramFaceInfo.jdField_b_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString);
-        if ((paramFaceInfo == null) || (paramSetting == null)) {
+        if ((paramFaceInfo.getTimeStamp - 5 > paramSetting.headImgTimestamp) && ((paramFaceInfo.basicSetTimeStamp - 5) * 1000 > paramSetting.updateTimestamp))
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("isNeed2UpdateSettingInfo basic: ");
+            localStringBuilder.append(paramFaceInfo.getTimeStamp);
+            localStringBuilder.append(" ");
+            localStringBuilder.append(paramSetting.headImgTimestamp);
+            localStringBuilder.append(" ");
+            localStringBuilder.append(paramFaceInfo.basicSetTimeStamp);
+            localStringBuilder.append(" ");
+            localStringBuilder.append(paramSetting.updateTimestamp);
+            QLog.i("Q.dynamicAvatar", 2, localStringBuilder.toString());
+          }
           return true;
         }
-        if (paramInt != 17) {
-          break;
-        }
-      } while ((paramFaceInfo.getTimeStamp - 5 <= paramSetting.headImgTimestamp) || ((paramFaceInfo.basicSetTimeStamp - 5) * 1000 <= paramSetting.updateTimestamp));
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.dynamicAvatar", 2, "isNeed2UpdateSettingInfo basic: " + paramFaceInfo.getTimeStamp + " " + paramSetting.headImgTimestamp + " " + paramFaceInfo.basicSetTimeStamp + " " + paramSetting.updateTimestamp);
       }
-      return true;
-    } while ((paramInt != 18) || (paramFaceInfo.getTimeStamp - 5 <= paramSetting.headImgTimestamp) || ((paramFaceInfo.nearbySetTimeStamp - 5) * 1000 <= paramSetting.updateTimestamp));
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.dynamicAvatar", 2, "isNeed2UpdateSettingInfo nearby: " + paramFaceInfo.getTimeStamp + " " + paramSetting.headImgTimestamp + " " + paramFaceInfo.basicSetTimeStamp + " " + paramSetting.updateTimestamp);
+      else if ((paramInt == 18) && (paramFaceInfo.getTimeStamp - 5 > paramSetting.headImgTimestamp) && ((paramFaceInfo.nearbySetTimeStamp - 5) * 1000 > paramSetting.updateTimestamp))
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isNeed2UpdateSettingInfo nearby: ");
+          localStringBuilder.append(paramFaceInfo.getTimeStamp);
+          localStringBuilder.append(" ");
+          localStringBuilder.append(paramSetting.headImgTimestamp);
+          localStringBuilder.append(" ");
+          localStringBuilder.append(paramFaceInfo.basicSetTimeStamp);
+          localStringBuilder.append(" ");
+          localStringBuilder.append(paramSetting.updateTimestamp);
+          QLog.i("Q.dynamicAvatar", 2, localStringBuilder.toString());
+        }
+        return true;
+      }
+      return false;
     }
     return true;
   }
   
   public DynamicAvatar b(int paramInt, String paramString)
   {
+    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
     boolean bool = true;
-    Object localObject = null;
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    if (localObject != null)
     {
-      EntityManager localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-      if (paramInt == 18)
-      {
+      EntityManager localEntityManager = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+      if (paramInt == 18) {
         localObject = "tinyId=?";
-        localObject = (DynamicAvatar)localEntityManager.find(DynamicAvatar.class, (String)localObject, new String[] { paramString });
-        localEntityManager.close();
+      } else {
+        localObject = "uin=?";
       }
+      paramString = (DynamicAvatar)localEntityManager.find(DynamicAvatar.class, (String)localObject, new String[] { paramString });
+      localEntityManager.close();
     }
-    else if (QLog.isColorLevel())
+    else
     {
-      paramString = new StringBuilder().append("getAvatarInfoFromDb: avatarInfo is null: ");
-      if (localObject != null) {
-        break label112;
+      paramString = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getAvatarInfoFromDb: avatarInfo is null: ");
+      if (paramString != null) {
+        bool = false;
       }
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("Q.dynamicAvatar", 2, ((StringBuilder)localObject).toString());
     }
-    for (;;)
-    {
-      QLog.d("Q.dynamicAvatar", 2, bool);
-      return localObject;
-      localObject = "uin=?";
-      break;
-      label112:
-      bool = false;
-    }
+    return paramString;
   }
   
   public void b()
@@ -989,25 +1091,25 @@ public class DynamicAvatarManager
   
   public void b(DynamicFaceDrawable paramDynamicFaceDrawable)
   {
-    if (paramDynamicFaceDrawable == null) {}
-    ArrayList localArrayList;
-    do
-    {
+    if (paramDynamicFaceDrawable == null) {
       return;
-      if (this.jdField_b_of_type_Int != 2)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.dynamicAvatar", 2, "getDynamicAvatar isVideoSoLibLoaded false.");
-        }
-        e();
+    }
+    if (this.jdField_b_of_type_Int != 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.dynamicAvatar", 2, "getDynamicAvatar isVideoSoLibLoaded false.");
+      }
+      e();
+      return;
+    }
+    if (!paramDynamicFaceDrawable.f)
+    {
+      ??? = a(paramDynamicFaceDrawable, false);
+      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramDynamicFaceDrawable.jdField_e_of_type_Int);
+      if ((localArrayList != null) && (localArrayList.contains(???))) {
         return;
       }
-      if (paramDynamicFaceDrawable.f) {
-        break;
-      }
-      ??? = a(paramDynamicFaceDrawable, false);
-      localArrayList = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramDynamicFaceDrawable.jdField_e_of_type_Int);
-    } while ((localArrayList != null) && (localArrayList.contains(???)));
+    }
     if (DynamicFaceDrawable.jdField_b_of_type_Boolean) {
       synchronized (this.d)
       {
@@ -1020,92 +1122,93 @@ public class DynamicAvatarManager
   
   public void b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager == null) {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager.a(paramString);
+    DynamicAvatarDownloadManager localDynamicAvatarDownloadManager = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager;
+    if (localDynamicAvatarDownloadManager != null) {
+      localDynamicAvatarDownloadManager.a(paramString);
+    }
   }
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("Q.dynamicAvatar", 2, "resumeAll pausedSize: " + this.d.size() + " loadinging size: " + this.c.size() + " playing size" + this.jdField_a_of_type_JavaUtilArrayList.size() + " waiting play size: " + this.jdField_b_of_type_JavaUtilArrayList.size());
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("resumeAll pausedSize: ");
+      ((StringBuilder)???).append(this.d.size());
+      ((StringBuilder)???).append(" loadinging size: ");
+      ((StringBuilder)???).append(this.c.size());
+      ((StringBuilder)???).append(" playing size");
+      ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      ((StringBuilder)???).append(" waiting play size: ");
+      ((StringBuilder)???).append(this.jdField_b_of_type_JavaUtilArrayList.size());
+      QLog.w("Q.dynamicAvatar", 2, ((StringBuilder)???).toString());
     }
     if (DynamicFaceDrawable.jdField_b_of_type_Boolean) {
       return;
     }
     int i;
+    int j;
     synchronized (this.d)
     {
       i = this.d.size() - 1;
+      Object localObject2;
       if (i >= 0)
       {
-        WeakReference localWeakReference1 = (WeakReference)this.d.get(i);
-        if ((localWeakReference1 != null) && (localWeakReference1.get() != null)) {
-          ((DynamicFaceDrawable)localWeakReference1.get()).a();
+        localObject2 = (WeakReference)this.d.get(i);
+        if ((localObject2 != null) && (((WeakReference)localObject2).get() != null)) {
+          ((DynamicFaceDrawable)((WeakReference)localObject2).get()).a();
         } else {
           this.d.remove(i);
         }
       }
-    }
-    int m = Math.min(jdField_a_of_type_Int, this.d.size());
-    for (;;)
-    {
-      Object localObject2;
-      int j;
-      synchronized (this.c)
+      else
       {
-        int k = this.c.size();
-        if (m >= jdField_a_of_type_Int)
+        int m = Math.min(jdField_a_of_type_Int, this.d.size());
+        synchronized (this.c)
         {
-          i = k;
+          int k = this.c.size();
+          if (m >= jdField_a_of_type_Int) {
+            i = k;
+          } else {
+            i = k - (jdField_a_of_type_Int - m);
+          }
           localObject2 = new ArrayList();
           j = k - 1;
           if (j >= k - i)
           {
-            WeakReference localWeakReference2 = (WeakReference)this.c.remove(j);
-            if ((localWeakReference2 == null) || (localWeakReference2.get() == null)) {
-              break label434;
+            WeakReference localWeakReference = (WeakReference)this.c.remove(j);
+            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+              ((ArrayList)localObject2).add(((DynamicFaceDrawable)localWeakReference.get()).jdField_b_of_type_JavaLangString);
             }
-            ((ArrayList)localObject2).add(((DynamicFaceDrawable)localWeakReference2.get()).jdField_b_of_type_JavaLangString);
-            break label434;
-          }
-        }
-        else
-        {
-          i = k - (jdField_a_of_type_Int - m);
-          continue;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager.a((ArrayList)localObject2);
-        }
-      }
-      synchronized (this.d)
-      {
-        i = Math.min(this.d.size() - 1, m - 1);
-        while (i >= 0)
-        {
-          localObject2 = (WeakReference)this.d.get(i);
-          if ((localObject2 != null) && (((WeakReference)localObject2).get() != null))
-          {
-            a((DynamicFaceDrawable)((WeakReference)localObject2).get(), false, false);
-            i -= 1;
-            continue;
-            localObject3 = finally;
-            throw localObject3;
           }
           else
           {
-            this.d.remove(i);
+            if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager != null) {
+              this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager.a((ArrayList)localObject2);
+            }
+            synchronized (this.d)
+            {
+              i = Math.min(this.d.size() - 1, m - 1);
+              if (i >= 0)
+              {
+                localObject2 = (WeakReference)this.d.get(i);
+                if ((localObject2 != null) && (((WeakReference)localObject2).get() != null)) {
+                  a((DynamicFaceDrawable)((WeakReference)localObject2).get(), false, false);
+                } else {
+                  this.d.remove(i);
+                }
+              }
+              else
+              {
+                return;
+              }
+            }
           }
         }
       }
-      return;
-      i -= 1;
-      break;
-      label434:
-      j -= 1;
     }
   }
   
@@ -1124,7 +1227,7 @@ public class DynamicAvatarManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager
  * JD-Core Version:    0.7.0.1
  */

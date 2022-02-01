@@ -11,13 +11,14 @@ class EmojiUiPlugin$4
   
   public void run()
   {
-    this.this$0.progressDialog = new QQProgressDialog(this.this$0.mRuntime.a(), ((QQBrowserActivity)this.this$0.mRuntime.a()).getTitleBarHeight());
+    EmojiUiPlugin localEmojiUiPlugin = this.this$0;
+    localEmojiUiPlugin.progressDialog = new QQProgressDialog(localEmojiUiPlugin.mRuntime.a(), ((QQBrowserActivity)this.this$0.mRuntime.a()).getTitleBarHeight());
     this.this$0.progressDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin.4
  * JD-Core Version:    0.7.0.1
  */

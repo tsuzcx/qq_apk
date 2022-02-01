@@ -25,16 +25,18 @@ public class FileChooserHelper
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkValueCallback != null)
+    ValueCallback localValueCallback = this.jdField_a_of_type_ComTencentSmttSdkValueCallback;
+    if (localValueCallback != null)
     {
-      this.jdField_a_of_type_ComTencentSmttSdkValueCallback.onReceiveValue(Uri.EMPTY);
+      localValueCallback.onReceiveValue(Uri.EMPTY);
       this.jdField_a_of_type_Int = -2147483648;
       this.jdField_a_of_type_ComTencentSmttSdkValueCallback = null;
       this.jdField_a_of_type_AndroidNetUri = null;
     }
-    if (this.b != null)
+    localValueCallback = this.b;
+    if (localValueCallback != null)
     {
-      this.b.onReceiveValue(null);
+      localValueCallback.onReceiveValue(null);
       this.b = null;
       this.jdField_a_of_type_AndroidNetUri = null;
       this.jdField_a_of_type_Int = -2147483648;
@@ -43,41 +45,50 @@ public class FileChooserHelper
   
   private void a(Activity paramActivity)
   {
-    File localFile = new File(AppConstants.SDCARD_PATH + "photo/");
-    if ((!localFile.exists()) && (!localFile.mkdirs()))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
+    ((StringBuilder)localObject).append("photo/");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
     {
       a();
-      QQToast.a(paramActivity, 1, paramActivity.getString(2131690810), 0).a();
+      QQToast.a(paramActivity, 1, paramActivity.getString(2131690738), 0).a();
       return;
     }
     Intent localIntent = new Intent();
-    this.jdField_a_of_type_AndroidNetUri = FileProvider7Helper.setSystemCapture(paramActivity, new File(localFile, "IMG_" + System.currentTimeMillis() + ".jpg"), localIntent);
-    a(paramActivity, localIntent, 2131690795);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IMG_");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append(".jpg");
+    this.jdField_a_of_type_AndroidNetUri = FileProvider7Helper.setSystemCapture(paramActivity, new File((File)localObject, localStringBuilder.toString()), localIntent);
+    a(paramActivity, localIntent, 2131690723);
   }
   
   private void a(Activity paramActivity, Intent paramIntent, int paramInt)
   {
     if ((paramActivity != null) && (paramIntent != null) && (paramInt > 0))
     {
-      List localList = paramActivity.getPackageManager().queryIntentActivities(paramIntent, 0);
-      if ((localList == null) || (localList.isEmpty())) {}
-    }
-    else
-    {
-      try
-      {
-        paramActivity.startActivityForResult(paramIntent, this.jdField_a_of_type_Int);
-        return;
-      }
-      catch (Exception paramIntent)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("FileChooserHelper", 2, "Caution: activity for intent was queried but can't started because " + paramIntent.getMessage());
+      Object localObject = paramActivity.getPackageManager().queryIntentActivities(paramIntent, 0);
+      if ((localObject != null) && (!((List)localObject).isEmpty())) {
+        try
+        {
+          paramActivity.startActivityForResult(paramIntent, this.jdField_a_of_type_Int);
+          return;
+        }
+        catch (Exception paramIntent)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("Caution: activity for intent was queried but can't started because ");
+            ((StringBuilder)localObject).append(paramIntent.getMessage());
+            QLog.w("FileChooserHelper", 2, ((StringBuilder)localObject).toString());
+          }
         }
       }
+      a();
+      QQToast.a(paramActivity, 1, paramInt, 0).a();
     }
-    a();
-    QQToast.a(paramActivity, 1, paramInt, 0).a();
   }
   
   private void a(Activity paramActivity, String paramString)
@@ -89,76 +100,88 @@ public class FileChooserHelper
       str = "*/*";
     }
     localIntent.setType(str);
-    a(paramActivity, localIntent, 2131690811);
+    a(paramActivity, localIntent, 2131690739);
   }
   
   private void b(Activity paramActivity)
   {
-    Object localObject = new File(AppConstants.SDCARD_PATH + "photo/");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
+    ((StringBuilder)localObject).append("photo/");
+    localObject = new File(((StringBuilder)localObject).toString());
     if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
     {
       a();
-      QQToast.a(paramActivity, 1, paramActivity.getString(2131690810), 0).a();
+      QQToast.a(paramActivity, 1, paramActivity.getString(2131690738), 0).a();
       return;
     }
-    this.jdField_a_of_type_AndroidNetUri = Uri.fromFile(new File((File)localObject, "VID_" + System.currentTimeMillis() + ".mp4"));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VID_");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append(".mp4");
+    this.jdField_a_of_type_AndroidNetUri = Uri.fromFile(new File((File)localObject, localStringBuilder.toString()));
     localObject = new Intent("android.media.action.VIDEO_CAPTURE");
     ((Intent)localObject).putExtra("output", this.jdField_a_of_type_AndroidNetUri);
     ((Intent)localObject).putExtra("android.intent.extra.videoQuality", 1);
-    a(paramActivity, (Intent)localObject, 2131690795);
+    a(paramActivity, (Intent)localObject, 2131690723);
   }
   
   private void c(Activity paramActivity)
   {
-    a(paramActivity, new Intent("android.provider.MediaStore.RECORD_SOUND"), 2131690812);
+    a(paramActivity, new Intent("android.provider.MediaStore.RECORD_SOUND"), 2131690740);
   }
   
   public void a(Activity paramActivity, int paramInt, ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
-    if ((paramActivity == null) || ((paramValueCallback == null) && (this.b == null))) {
-      return;
-    }
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentSmttSdkValueCallback != null)) {
-      QLog.w("FileChooserHelper", 2, "Caution: mFilePathCallback not null, Plz call doOnActivityResult in the onActivityResult method of caller");
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentSmttSdkValueCallback = paramValueCallback;
-    this.jdField_a_of_type_AndroidNetUri = null;
-    if (paramString1 != null)
+    if (paramActivity != null)
     {
-      paramString1 = paramString1.toLowerCase();
-      if (paramString2 == null) {
-        break label97;
+      if ((paramValueCallback == null) && (this.b == null)) {
+        return;
       }
-    }
-    label97:
-    for (paramValueCallback = paramString2.toLowerCase();; paramValueCallback = "")
-    {
-      if (!TextUtils.isEmpty(paramValueCallback)) {
-        break label103;
+      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentSmttSdkValueCallback != null)) {
+        QLog.w("FileChooserHelper", 2, "Caution: mFilePathCallback not null, Plz call doOnActivityResult in the onActivityResult method of caller");
       }
-      a(paramActivity, paramString1);
-      return;
-      paramString1 = "";
-      break;
-    }
-    label103:
-    if (("camera".equals(paramValueCallback)) || ("camcorder".equals(paramValueCallback)) || ("microphone".equals(paramValueCallback)))
-    {
-      paramInt = 1;
-      if (paramInt != 0) {
-        break label409;
+      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_ComTencentSmttSdkValueCallback = paramValueCallback;
+      this.jdField_a_of_type_AndroidNetUri = null;
+      paramValueCallback = "";
+      if (paramString1 != null) {
+        paramString1 = paramString1.toLowerCase();
+      } else {
+        paramString1 = "";
       }
-      if (!paramString1.contains("image/")) {
-        break label251;
+      if (paramString2 != null) {
+        paramValueCallback = paramString2.toLowerCase();
       }
-      paramValueCallback = "camera";
-      paramInt = 1;
-    }
-    label151:
-    label409:
-    for (;;)
-    {
+      if (TextUtils.isEmpty(paramValueCallback))
+      {
+        a(paramActivity, paramString1);
+        return;
+      }
+      boolean bool = "camera".equals(paramValueCallback);
+      int i = 1;
+      if ((!bool) && (!"camcorder".equals(paramValueCallback)) && (!"microphone".equals(paramValueCallback))) {
+        paramInt = 0;
+      } else {
+        paramInt = 1;
+      }
+      if (paramInt == 0) {
+        if (paramString1.contains("image/"))
+        {
+          paramValueCallback = "camera";
+          paramInt = i;
+        }
+        else if (paramString1.contains("video/"))
+        {
+          paramValueCallback = "camcorder";
+          paramInt = i;
+        }
+        else if (paramString1.contains("audio/"))
+        {
+          paramValueCallback = "microphone";
+          paramInt = i;
+        }
+      }
       if (paramInt != 0)
       {
         paramString2 = ActionSheet.create(paramActivity);
@@ -166,158 +189,122 @@ public class FileChooserHelper
         paramString2.setOnCancelListener(new FileChooserHelper.2(this));
         if (paramValueCallback.equals("camera"))
         {
-          paramString2.addButton(paramActivity.getString(2131719731), 0);
-          paramString2.addButton(paramActivity.getString(2131692455), 0);
+          paramString2.addButton(paramActivity.getString(2131719455), 0);
+          paramString2.addButton(paramActivity.getString(2131692392), 0);
           paramString2.setOnButtonClickListener(new FileChooserHelper.3(this, paramActivity, paramString1, paramString2));
         }
-        for (;;)
+        else if (paramValueCallback.equals("camcorder"))
         {
-          paramString2.show();
-          return;
-          paramInt = 0;
-          break;
-          label251:
-          if (paramString1.contains("video/"))
-          {
-            paramValueCallback = "camcorder";
-            paramInt = 1;
-            break label151;
-          }
-          if (!paramString1.contains("audio/")) {
-            break label409;
-          }
-          paramValueCallback = "microphone";
-          paramInt = 1;
-          break label151;
-          if (paramValueCallback.equals("camcorder"))
-          {
-            paramString2.addButton(paramActivity.getString(2131719047), 0);
-            paramString2.addButton(paramActivity.getString(2131692455), 0);
-            paramString2.setOnButtonClickListener(new FileChooserHelper.4(this, paramActivity, paramString1, paramString2));
-          }
-          else if (paramValueCallback.equals("microphone"))
-          {
-            paramString2.addButton(paramActivity.getString(2131718490), 0);
-            paramString2.addButton(paramActivity.getString(2131692455), 0);
-            paramString2.setOnButtonClickListener(new FileChooserHelper.5(this, paramActivity, paramString1, paramString2));
-          }
+          paramString2.addButton(paramActivity.getString(2131718763), 0);
+          paramString2.addButton(paramActivity.getString(2131692392), 0);
+          paramString2.setOnButtonClickListener(new FileChooserHelper.4(this, paramActivity, paramString1, paramString2));
         }
+        else if (paramValueCallback.equals("microphone"))
+        {
+          paramString2.addButton(paramActivity.getString(2131718155), 0);
+          paramString2.addButton(paramActivity.getString(2131692392), 0);
+          paramString2.setOnButtonClickListener(new FileChooserHelper.5(this, paramActivity, paramString1, paramString2));
+        }
+        paramString2.show();
+        return;
       }
       a(paramActivity, paramString1);
-      return;
     }
   }
   
   public boolean a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Object localObject2;
-    Object localObject1;
-    if (this.jdField_a_of_type_Int == paramInt1) {
+    if (this.jdField_a_of_type_Int == paramInt1)
+    {
+      Object localObject2;
+      Object localObject1;
       if (this.jdField_a_of_type_ComTencentSmttSdkValueCallback != null)
       {
-        if (-1 != paramInt2) {
-          break label193;
-        }
-        localObject2 = this.jdField_a_of_type_AndroidNetUri;
-        localObject1 = localObject2;
-        if (localObject2 == null)
+        if (-1 == paramInt2)
         {
-          if (paramIntent == null) {
-            break label79;
+          localObject2 = this.jdField_a_of_type_AndroidNetUri;
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            if (paramIntent != null) {
+              localObject1 = paramIntent.getData();
+            } else {
+              localObject1 = Uri.EMPTY;
+            }
           }
-          localObject1 = paramIntent.getData();
         }
+        else
+        {
+          localObject1 = null;
+        }
+        this.jdField_a_of_type_ComTencentSmttSdkValueCallback.onReceiveValue(localObject1);
       }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkValueCallback.onReceiveValue(localObject1);
+      else if (this.b != null)
+      {
+        if (-1 == paramInt2)
+        {
+          localObject2 = this.jdField_a_of_type_AndroidNetUri;
+          localObject1 = localObject2;
+          if (localObject2 != null) {
+            break label116;
+          }
+          if (paramIntent != null)
+          {
+            localObject1 = paramIntent.getData();
+            break label116;
+          }
+        }
+        localObject1 = null;
+        label116:
+        localObject2 = this.b;
+        if (localObject1 != null)
+        {
+          paramIntent = new Uri[1];
+          paramIntent[0] = localObject1;
+        }
+        else
+        {
+          paramIntent = null;
+        }
+        ((ValueCallback)localObject2).onReceiveValue(paramIntent);
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.w("FileChooserHelper", 2, "Caution: mFilePathCallback should not be null!");
+      }
       this.jdField_a_of_type_Int = -2147483648;
       this.jdField_a_of_type_ComTencentSmttSdkValueCallback = null;
       this.jdField_a_of_type_AndroidNetUri = null;
       this.b = null;
       return true;
-      label79:
-      localObject1 = Uri.EMPTY;
-      continue;
-      if (this.b != null)
-      {
-        if (-1 != paramInt2) {
-          break label187;
-        }
-        localObject2 = this.jdField_a_of_type_AndroidNetUri;
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          if (paramIntent == null) {
-            break label156;
-          }
-          localObject1 = paramIntent.getData();
-        }
-      }
-      for (;;)
-      {
-        label124:
-        localObject2 = this.b;
-        if (localObject1 != null) {}
-        for (paramIntent = new Uri[] { localObject1 };; paramIntent = null)
-        {
-          ((ValueCallback)localObject2).onReceiveValue(paramIntent);
-          break;
-          label156:
-          localObject1 = null;
-          break label124;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.w("FileChooserHelper", 2, "Caution: mFilePathCallback should not be null!");
-        break;
-        return false;
-        label187:
-        localObject1 = null;
-      }
-      label193:
-      localObject1 = null;
     }
+    return false;
   }
   
   @TargetApi(21)
   public boolean a(Activity paramActivity, int paramInt, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramActivity != null)
+    if ((paramActivity != null) && (paramValueCallback != null))
     {
-      bool1 = bool2;
-      if (paramValueCallback != null)
-      {
-        this.b = paramValueCallback;
-        paramValueCallback = paramFileChooserParams.getAcceptTypes();
-        if (paramValueCallback == null) {
-          break label67;
-        }
+      this.b = paramValueCallback;
+      paramValueCallback = paramFileChooserParams.getAcceptTypes();
+      String str = "";
+      if (paramValueCallback != null) {
         paramValueCallback = paramValueCallback[0];
-        if (!paramFileChooserParams.isCaptureEnabled()) {
-          break label73;
-        }
+      } else {
+        paramValueCallback = "";
       }
+      if (paramFileChooserParams.isCaptureEnabled()) {
+        str = "*";
+      }
+      a(paramActivity, paramInt, null, paramValueCallback, str);
+      return true;
     }
-    label67:
-    label73:
-    for (paramFileChooserParams = "*";; paramFileChooserParams = "")
-    {
-      a(paramActivity, paramInt, null, paramValueCallback, paramFileChooserParams);
-      bool1 = true;
-      return bool1;
-      paramValueCallback = "";
-      break;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.util.FileChooserHelper
  * JD-Core Version:    0.7.0.1
  */

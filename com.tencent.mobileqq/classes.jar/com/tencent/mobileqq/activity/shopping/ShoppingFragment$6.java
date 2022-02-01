@@ -20,32 +20,41 @@ class ShoppingFragment$6
   
   public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d(ShoppingFragment.a, 2, "loadMore:" + paramBoolean + " " + paramLong + " " + paramString);
-    }
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFeedListRsp == null))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        QQToast.a(ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment), 1, paramString, 0).a();
+      paramBaseRequest = ShoppingFragment.a;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("loadMore:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d(paramBaseRequest, 2, ((StringBuilder)localObject).toString());
+    }
+    boolean bool = false;
+    if ((paramBoolean) && (paramLong == 0L) && (paramStGetFeedListRsp != null))
+    {
+      this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.a().b(paramStGetFeedListRsp.livePageInfo.get());
+      paramBaseRequest = paramStGetFeedListRsp.hotLive.get();
+      paramString = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
+      localObject = paramStGetFeedListRsp.extInfo;
+      paramBoolean = bool;
+      if (paramStGetFeedListRsp.isFinish.get() == 1) {
+        paramBoolean = true;
       }
+      paramString.b(paramBaseRequest, (COMM.StCommonExt)localObject, paramBoolean);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.a().b(paramStGetFeedListRsp.livePageInfo.get());
-    paramBaseRequest = paramStGetFeedListRsp.hotLive.get();
-    paramString = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
-    COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
-    if (paramStGetFeedListRsp.isFinish.get() == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramString.b(paramBaseRequest, localStCommonExt, paramBoolean);
-      return;
+    if (!TextUtils.isEmpty(paramString)) {
+      QQToast.a(ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment), 1, paramString, 0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shopping.ShoppingFragment.6
  * JD-Core Version:    0.7.0.1
  */

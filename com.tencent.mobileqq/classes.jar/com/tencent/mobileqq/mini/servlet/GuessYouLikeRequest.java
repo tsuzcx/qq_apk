@@ -23,15 +23,18 @@ public class GuessYouLikeRequest
   
   public static STORE_APP_CLIENT.StGetGuessYouLikeRsp onResponse(byte[] paramArrayOfByte)
   {
-    STORE_APP_CLIENT.StGetGuessYouLikeRsp localStGetGuessYouLikeRsp = new STORE_APP_CLIENT.StGetGuessYouLikeRsp();
+    Object localObject = new STORE_APP_CLIENT.StGetGuessYouLikeRsp();
     try
     {
-      localStGetGuessYouLikeRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetGuessYouLikeRsp;
+      ((STORE_APP_CLIENT.StGetGuessYouLikeRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QLog.e("GuessYouLikeRequest", 2, "onResponse fail." + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse fail.");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      QLog.e("GuessYouLikeRequest", 2, ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -43,7 +46,7 @@ public class GuessYouLikeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GuessYouLikeRequest
  * JD-Core Version:    0.7.0.1
  */

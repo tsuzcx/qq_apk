@@ -43,48 +43,67 @@ public class MiniAppLauncher
     if (paramHashMap == null) {
       return false;
     }
-    String[] arrayOfString;
-    try
+    for (;;)
     {
-      arrayOfString = paramString.split("\\?");
-      if ((arrayOfString.length < 2) || (arrayOfString[0].length() == 0))
+      int i;
+      try
       {
-        QLog.e("MiniAppLauncher", 1, "startMiniApp parameter error:" + paramString);
-        return false;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("MiniAppLauncher", 1, "launchMiniApp SchemeV1 parameter error:", paramString);
-      return false;
-    }
-    paramString = paramString.substring(arrayOfString[0].length() + 1).split("&");
-    if (paramString != null)
-    {
-      int i = 0;
-      while (i < paramString.length)
-      {
-        arrayOfString = paramString[i].split("=");
-        if ((arrayOfString != null) && (arrayOfString.length == 2))
+        String[] arrayOfString = paramString.split("\\?");
+        if ((arrayOfString.length >= 2) && (arrayOfString[0].length() != 0))
         {
-          paramHashMap.put(arrayOfString[0], arrayOfString[1]);
-          if (QLog.isColorLevel()) {
-            QLog.d("MiniAppLauncher", 2, "startMiniApp open microapp key=" + arrayOfString[0] + ", value=" + arrayOfString[1]);
+          paramString = paramString.substring(arrayOfString[0].length() + 1).split("&");
+          if (paramString == null) {
+            break;
+          }
+          i = 0;
+          if (i >= paramString.length) {
+            break;
+          }
+          arrayOfString = paramString[i].split("=");
+          if ((arrayOfString != null) && (arrayOfString.length == 2))
+          {
+            paramHashMap.put(arrayOfString[0], arrayOfString[1]);
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("startMiniApp open microapp key=");
+              localStringBuilder.append(arrayOfString[0]);
+              localStringBuilder.append(", value=");
+              localStringBuilder.append(arrayOfString[1]);
+              QLog.d("MiniAppLauncher", 2, localStringBuilder.toString());
+            }
           }
         }
-        i += 1;
+        else
+        {
+          paramHashMap = new StringBuilder();
+          paramHashMap.append("startMiniApp parameter error:");
+          paramHashMap.append(paramString);
+          QLog.e("MiniAppLauncher", 1, paramHashMap.toString());
+          return false;
+        }
       }
+      catch (Throwable paramString)
+      {
+        QLog.e("MiniAppLauncher", 1, "launchMiniApp SchemeV1 parameter error:", paramString);
+        return false;
+      }
+      i += 1;
     }
     return true;
   }
   
   public static boolean isFakeUrl(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("https://m.q.qq.com/a/")) && (!paramString.startsWith("https://m.q.qq.com/a/"))) {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if ((paramString.startsWith("https://m.q.qq.com/a/")) || (paramString.startsWith("https://m.q.qq.com/a/"))) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private static boolean isMiniAppADSchemeV3(String paramString)
@@ -126,11 +145,15 @@ public class MiniAppLauncher
   
   public static boolean isMiniAppUrl(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!isFakeUrl(paramString)) && (!isMiniAppScheme(paramString))) {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if ((isFakeUrl(paramString)) || (isMiniAppScheme(paramString))) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private static void jumpToDetailPage(String paramString)
@@ -182,120 +205,152 @@ public class MiniAppLauncher
   
   public static boolean launchMiniAppByScheme(Context paramContext, HashMap<String, String> paramHashMap, int paramInt, EntryModel paramEntryModel, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    if ((paramHashMap == null) || (paramContext == null)) {
-      return false;
-    }
-    LaunchParam localLaunchParam = new LaunchParam();
-    localLaunchParam.scene = paramInt;
-    if (paramEntryModel != null)
+    if (paramHashMap != null)
     {
-      localLaunchParam.entryModel = paramEntryModel;
-      localLaunchParam.reportData = paramEntryModel.reportData;
-    }
-    if (!TextUtils.isEmpty((CharSequence)paramHashMap.get("url"))) {
-      paramEntryModel = (String)paramHashMap.get("url");
-    }
-    for (;;)
-    {
-      String str1;
-      try
-      {
-        localLaunchParam.fakeUrl = URLDecoder.decode(paramEntryModel, "UTF-8");
-        str1 = (String)paramHashMap.get("appid");
-        paramEntryModel = str1;
-        if (TextUtils.isEmpty(str1)) {
-          paramEntryModel = (String)paramHashMap.get("mini_appid");
-        }
-        QLog.i("MiniAppLauncher", 1, "launchMiniAppByScheme appid:" + paramEntryModel + ", param:" + localLaunchParam);
-        if (verifyAppid_Scence_Fakeurl_Model(paramEntryModel, localLaunchParam.scene, localLaunchParam.fakeUrl)) {
-          break label513;
-        }
-        QLog.e("MiniAppLauncher", 1, "Appid is： " + paramEntryModel + ",scence:" + localLaunchParam.scene + ",fakeurl:" + localLaunchParam.fakeUrl + " is forbidden!!!");
-        AppBrandTask.runTaskOnUiThread(new MiniAppLauncher.4());
+      if (paramContext == null) {
         return false;
       }
-      catch (Exception paramEntryModel)
+      LaunchParam localLaunchParam = new LaunchParam();
+      localLaunchParam.scene = paramInt;
+      if (paramEntryModel != null)
       {
-        QLog.e("MiniAppLauncher", 1, "launchMiniAppByScheme, " + Log.getStackTraceString(paramEntryModel));
-        continue;
+        localLaunchParam.entryModel = paramEntryModel;
+        localLaunchParam.reportData = paramEntryModel.reportData;
       }
-      if (!TextUtils.isEmpty((CharSequence)paramHashMap.get("fakeUrl")))
+      Object localObject1;
+      if (!TextUtils.isEmpty((CharSequence)paramHashMap.get("url")))
+      {
+        paramEntryModel = (String)paramHashMap.get("url");
+        try
+        {
+          localLaunchParam.fakeUrl = URLDecoder.decode(paramEntryModel, "UTF-8");
+        }
+        catch (Exception paramEntryModel)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("launchMiniAppByScheme, ");
+          ((StringBuilder)localObject1).append(Log.getStackTraceString(paramEntryModel));
+          QLog.e("MiniAppLauncher", 1, ((StringBuilder)localObject1).toString());
+        }
+      }
+      else if (!TextUtils.isEmpty((CharSequence)paramHashMap.get("fakeUrl")))
       {
         localLaunchParam.fakeUrl = ((String)paramHashMap.get("fakeUrl"));
       }
       else if (!TextUtils.isEmpty((CharSequence)paramHashMap.get("appid")))
       {
         localLaunchParam.miniAppId = ((String)paramHashMap.get("appid"));
-        str1 = (String)paramHashMap.get("path");
-        String str2 = (String)paramHashMap.get("extraData");
-        String str3 = (String)paramHashMap.get("envVersion");
+        localObject1 = (String)paramHashMap.get("path");
+        Object localObject2 = (String)paramHashMap.get("extraData");
+        String str2 = (String)paramHashMap.get("envVersion");
         paramEntryModel = localLaunchParam.miniAppId;
         try
         {
-          if (!TextUtils.isEmpty(str1)) {
-            localLaunchParam.entryPath = URLDecoder.decode(str1, "UTF-8");
+          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+            localLaunchParam.entryPath = URLDecoder.decode((String)localObject1, "UTF-8");
+          }
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            localLaunchParam.extendData = URLDecoder.decode((String)localObject2, "UTF-8");
           }
           if (!TextUtils.isEmpty(str2)) {
-            localLaunchParam.extendData = URLDecoder.decode(str2, "UTF-8");
-          }
-          if (!TextUtils.isEmpty(str3)) {
-            localLaunchParam.envVersion = URLDecoder.decode(str3, "UTF-8");
+            localLaunchParam.envVersion = URLDecoder.decode(str2, "UTF-8");
           }
         }
         catch (UnsupportedEncodingException localUnsupportedEncodingException)
         {
-          for (;;)
-          {
-            QLog.e("MiniAppLauncher", 1, "launchMiniAppByScheme, " + Log.getStackTraceString(localUnsupportedEncodingException));
-          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("launchMiniAppByScheme, ");
+          ((StringBuilder)localObject2).append(Log.getStackTraceString(localUnsupportedEncodingException));
+          QLog.e("MiniAppLauncher", 1, ((StringBuilder)localObject2).toString());
         }
         if (!verifyAppid(paramEntryModel))
         {
-          QLog.e("MiniAppLauncher", 1, "Appid is forbidden： " + paramEntryModel);
+          paramContext = new StringBuilder();
+          paramContext.append("Appid is forbidden： ");
+          paramContext.append(paramEntryModel);
+          QLog.e("MiniAppLauncher", 1, paramContext.toString());
           AppBrandTask.runTaskOnUiThread(new MiniAppLauncher.3(paramEntryModel));
           return false;
         }
       }
+      String str1 = (String)paramHashMap.get("appid");
+      paramEntryModel = str1;
+      if (TextUtils.isEmpty(str1)) {
+        paramEntryModel = (String)paramHashMap.get("mini_appid");
+      }
+      paramHashMap = new StringBuilder();
+      paramHashMap.append("launchMiniAppByScheme appid:");
+      paramHashMap.append(paramEntryModel);
+      paramHashMap.append(", param:");
+      paramHashMap.append(localLaunchParam);
+      QLog.i("MiniAppLauncher", 1, paramHashMap.toString());
+      if (!verifyAppid_Scence_Fakeurl_Model(paramEntryModel, localLaunchParam.scene, localLaunchParam.fakeUrl))
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("Appid is： ");
+        paramContext.append(paramEntryModel);
+        paramContext.append(",scence:");
+        paramContext.append(localLaunchParam.scene);
+        paramContext.append(",fakeurl:");
+        paramContext.append(localLaunchParam.fakeUrl);
+        paramContext.append(" is forbidden!!!");
+        QLog.e("MiniAppLauncher", 1, paramContext.toString());
+        AppBrandTask.runTaskOnUiThread(new MiniAppLauncher.4());
+        return false;
+      }
+      return openMiniApp(paramContext, localLaunchParam, paramMiniAppLaunchListener);
     }
-    label513:
-    return openMiniApp(paramContext, localLaunchParam, paramMiniAppLaunchListener);
+    return false;
   }
   
   private static boolean openMiniApp(Context paramContext, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("launchMiniApp openMiniApp :");
+    localStringBuilder.append(paramLaunchParam);
+    QLog.i("MiniAppLauncher", 2, localStringBuilder.toString());
+    long l1 = System.currentTimeMillis();
+    long l2 = mLastGameTime;
     int i = 0;
-    QLog.i("MiniAppLauncher", 2, "launchMiniApp openMiniApp :" + paramLaunchParam);
-    long l = System.currentTimeMillis();
-    if (l - mLastGameTime <= 1000L) {
+    if (l1 - l2 <= 1000L) {
       return false;
     }
-    mLastGameTime = l;
+    mLastGameTime = l1;
     paramLaunchParam.standardize();
     if ((paramLaunchParam.scene == 1047) || (paramLaunchParam.scene == 1048) || (paramLaunchParam.scene == 1049)) {
       i = 1;
     }
-    if (i != 0) {
-      launchAppByMiniCode(paramContext, paramLaunchParam.fakeUrl, paramLaunchParam, paramMiniAppLaunchListener);
-    }
-    for (;;)
+    if (i != 0)
     {
+      launchAppByMiniCode(paramContext, paramLaunchParam.fakeUrl, paramLaunchParam, paramMiniAppLaunchListener);
       return true;
-      if (!TextUtils.isEmpty(paramLaunchParam.fakeUrl)) {
-        launchAppByFakeLink(paramContext, paramLaunchParam.fakeUrl, paramLaunchParam, paramMiniAppLaunchListener);
-      } else {
-        MiniAppController.startAppByAppid(paramContext, paramLaunchParam.miniAppId, paramLaunchParam.entryPath, paramLaunchParam.envVersion, paramLaunchParam, paramMiniAppLaunchListener);
-      }
     }
+    if (!TextUtils.isEmpty(paramLaunchParam.fakeUrl))
+    {
+      launchAppByFakeLink(paramContext, paramLaunchParam.fakeUrl, paramLaunchParam, paramMiniAppLaunchListener);
+      return true;
+    }
+    MiniAppController.startAppByAppid(paramContext, paramLaunchParam.miniAppId, paramLaunchParam.entryPath, paramLaunchParam.envVersion, paramLaunchParam, paramMiniAppLaunchListener);
+    return true;
   }
   
   public static boolean startMiniApp(Context paramContext, String paramString, int paramInt, EntryModel paramEntryModel, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    int i = 2054;
-    QLog.i("MiniAppLauncher", 1, "startMiniApp scene:" + paramInt + " url:" + paramString);
-    if (BaseActivity.sTopActivity != null) {
-      QLog.d("MiniAppLauncher", 1, "cur Activity:" + BaseActivity.sTopActivity.getActivityName() + "  class :" + BaseActivity.sTopActivity.getLocalClassName());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startMiniApp scene:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" url:");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("MiniAppLauncher", 1, ((StringBuilder)localObject).toString());
+    if (BaseActivity.sTopActivity != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cur Activity:");
+      ((StringBuilder)localObject).append(BaseActivity.sTopActivity.getActivityName());
+      ((StringBuilder)localObject).append("  class :");
+      ((StringBuilder)localObject).append(BaseActivity.sTopActivity.getLocalClassName());
+      QLog.d("MiniAppLauncher", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject;
     if (isFakeUrl(paramString))
     {
       if (isMiniAppDetailUrl(paramString))
@@ -322,106 +377,113 @@ public class MiniAppLauncher
       }
       return launchMiniAppByScheme(paramContext, (HashMap)localObject, paramInt, paramEntryModel, paramMiniAppLaunchListener);
     }
+    LaunchParam localLaunchParam2;
+    HashMap localHashMap;
     if (isMiniAppSchemeV2(paramString))
     {
-      LaunchParam localLaunchParam = new LaunchParam();
-      localLaunchParam.scene = paramInt;
-      localLaunchParam.fakeUrl = paramString;
+      localLaunchParam2 = new LaunchParam();
+      localLaunchParam2.scene = paramInt;
+      localLaunchParam2.fakeUrl = paramString;
       if (paramEntryModel != null)
       {
-        localLaunchParam.entryModel = paramEntryModel;
-        localLaunchParam.reportData = paramEntryModel.reportData;
+        localLaunchParam2.entryModel = paramEntryModel;
+        localLaunchParam2.reportData = paramEntryModel.reportData;
       }
-      HashMap localHashMap = new HashMap();
-      try
+      localHashMap = new HashMap();
+    }
+    try
+    {
+      if (decodeScheme(paramString, localHashMap))
       {
-        if (decodeScheme(paramString, localHashMap))
+        paramEntryModel = null;
+        if (!TextUtils.isEmpty((CharSequence)localHashMap.get("url"))) {
+          paramEntryModel = URLDecoder.decode(paramString, "UTF-8");
+        } else if (!TextUtils.isEmpty((CharSequence)localHashMap.get("fakeUrl"))) {
+          paramEntryModel = (String)localHashMap.get("fakeUrl");
+        }
+        String str = (String)localHashMap.get("appid");
+        if (TextUtils.isEmpty(str))
         {
-          paramEntryModel = null;
-          String str;
-          if (!TextUtils.isEmpty((CharSequence)localHashMap.get("url")))
-          {
-            paramEntryModel = URLDecoder.decode(paramString, "UTF-8");
-            str = (String)localHashMap.get("appid");
-            if (!TextUtils.isEmpty(str)) {
-              break label437;
-            }
-            localObject = (String)localHashMap.get("mini_appid");
-          }
-          for (;;)
-          {
-            if (verifyAppid_Scence_Fakeurl_Model((String)localObject, paramInt, paramEntryModel)) {
-              break label466;
-            }
-            QLog.e("MiniAppLauncher", 1, "Appid is： " + (String)localObject + ",scence:" + localLaunchParam.scene + ",fakeurl:" + localLaunchParam.fakeUrl + " is forbidden!!!");
-            AppBrandTask.runTaskOnUiThread(new MiniAppLauncher.2());
-            return false;
-            if (TextUtils.isEmpty((CharSequence)localHashMap.get("fakeUrl"))) {
-              break;
-            }
-            paramEntryModel = (String)localHashMap.get("fakeUrl");
-            break;
-            label437:
-            localObject = str;
-            if (TextUtils.isEmpty(str)) {
-              localObject = (String)localHashMap.get("_mappid");
-            }
+          localObject = (String)localHashMap.get("mini_appid");
+        }
+        else
+        {
+          localObject = str;
+          if (TextUtils.isEmpty(str)) {
+            localObject = (String)localHashMap.get("_mappid");
           }
         }
-        label466:
-        if (!isMiniAppADSchemeV3(paramString)) {}
-      }
-      catch (Throwable paramEntryModel)
-      {
-        LaunchMiniAppBySchemeRequest(paramContext, paramString, localLaunchParam, paramMiniAppLaunchListener);
-        return true;
+        if (!verifyAppid_Scence_Fakeurl_Model((String)localObject, paramInt, paramEntryModel))
+        {
+          paramEntryModel = new StringBuilder();
+          paramEntryModel.append("Appid is： ");
+          paramEntryModel.append((String)localObject);
+          paramEntryModel.append(",scence:");
+          paramEntryModel.append(localLaunchParam2.scene);
+          paramEntryModel.append(",fakeurl:");
+          paramEntryModel.append(localLaunchParam2.fakeUrl);
+          paramEntryModel.append(" is forbidden!!!");
+          QLog.e("MiniAppLauncher", 1, paramEntryModel.toString());
+          AppBrandTask.runTaskOnUiThread(new MiniAppLauncher.2());
+          return false;
+        }
       }
     }
-    for (;;)
+    catch (Throwable paramEntryModel)
     {
+      label509:
+      int i;
+      LaunchParam localLaunchParam1;
+      break label509;
+    }
+    LaunchMiniAppBySchemeRequest(paramContext, paramString, localLaunchParam2, paramMiniAppLaunchListener);
+    return true;
+    if (isMiniAppADSchemeV3(paramString))
+    {
+      i = 2054;
       try
       {
         localObject = Pattern.compile("mqqapi://miniapp/adopen(/[0-9]+)?\\?").matcher(paramString);
-        if (!((Matcher)localObject).find()) {
-          break label670;
+        if (((Matcher)localObject).find())
+        {
+          localObject = ((Matcher)localObject).group();
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = Pattern.compile("(\\d+)").matcher((CharSequence)localObject);
+            if (((Matcher)localObject).find())
+            {
+              paramInt = Integer.parseInt(((Matcher)localObject).group());
+              break label603;
+            }
+          }
         }
-        localObject = ((Matcher)localObject).group();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label670;
+        paramInt = 2054;
+        label603:
+        if (paramInt <= 0) {
+          paramInt = i;
         }
-        localObject = Pattern.compile("(\\d+)").matcher((CharSequence)localObject);
-        if (!((Matcher)localObject).find()) {
-          break label670;
-        }
-        paramInt = Integer.parseInt(((Matcher)localObject).group());
-        if (paramInt > 0) {
-          break label667;
-        }
-        paramInt = i;
       }
       catch (Throwable localThrowable)
       {
         QLog.e("MiniAppLauncher", 1, new Object[] { "launchMiniApp decode ad scheme scene error url:", paramString, localThrowable });
         paramInt = i;
-        continue;
       }
-      localObject = new LaunchParam();
-      ((LaunchParam)localObject).scene = paramInt;
-      ((LaunchParam)localObject).fakeUrl = paramString;
+      localLaunchParam1 = new LaunchParam();
+      localLaunchParam1.scene = paramInt;
+      localLaunchParam1.fakeUrl = paramString;
       if (paramEntryModel != null)
       {
-        ((LaunchParam)localObject).entryModel = paramEntryModel;
-        ((LaunchParam)localObject).reportData = paramEntryModel.reportData;
+        localLaunchParam1.entryModel = paramEntryModel;
+        localLaunchParam1.reportData = paramEntryModel.reportData;
       }
-      LaunchMiniAppBySchemeRequest(paramContext, paramString, (LaunchParam)localObject, paramMiniAppLaunchListener);
+      LaunchMiniAppBySchemeRequest(paramContext, paramString, localLaunchParam1, paramMiniAppLaunchListener);
       return true;
-      QLog.e("MiniAppLauncher", 1, "launchMiniApp parameter error: dc04239" + paramString);
-      return false;
-      label667:
-      continue;
-      label670:
-      paramInt = 2054;
     }
+    paramContext = new StringBuilder();
+    paramContext.append("launchMiniApp parameter error: dc04239");
+    paramContext.append(paramString);
+    QLog.e("MiniAppLauncher", 1, paramContext.toString());
+    return false;
   }
   
   public static boolean startMiniApp(Context paramContext, String paramString, int paramInt, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
@@ -449,58 +511,67 @@ public class MiniAppLauncher
     }
     catch (Exception paramString)
     {
-      QLog.e("MiniAppLauncher", 1, "verify Appid failed: " + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("verify Appid failed: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("MiniAppLauncher", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   private static boolean verifyAppid_Scence_Fakeurl_Model(String paramString1, int paramInt, String paramString2)
   {
     String str1 = MiniAppConfProcessor.a("mini_app_outsite_black_list", "");
-    QLog.i("MiniAppLauncher", 1, "verifyAppid_Scence_Fakeurl_Model appid:" + paramString1 + ", scene:" + paramInt + ", fakeUrl:" + paramString2 + ", blackList:" + str1);
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("verifyAppid_Scence_Fakeurl_Model appid:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", scene:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", fakeUrl:");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(", blackList:");
+    ((StringBuilder)localObject).append(str1);
+    QLog.i("MiniAppLauncher", 1, ((StringBuilder)localObject).toString());
+    try
     {
-      int i;
-      try
+      localObject = Build.BRAND;
+      localObject = str1.split(",");
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        Object localObject = Build.BRAND;
-        localObject = str1.split(",");
-        int j = localObject.length;
-        i = 0;
-        if (i < j)
+        String[] arrayOfString = localObject[i].split("\\|");
+        if (arrayOfString.length >= 3)
         {
-          String[] arrayOfString = localObject[i].split("\\|");
-          if (arrayOfString.length < 3) {
-            break label244;
-          }
           String str2 = arrayOfString[0];
           String str3 = arrayOfString[1];
           str1 = null;
           if (arrayOfString.length > 3) {
             str1 = arrayOfString[3];
           }
-          if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (!str2.equals(paramString1)) || (Integer.valueOf(arrayOfString[1]).intValue() != paramInt)) {
-            break label244;
-          }
-          if (!TextUtils.isEmpty(str1))
-          {
-            if (TextUtils.isEmpty(str1)) {
-              break label244;
+          if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)) && (str2.equals(paramString1)) && (Integer.valueOf(arrayOfString[1]).intValue() == paramInt)) {
+            if (!TextUtils.isEmpty(str1))
+            {
+              if (!TextUtils.isEmpty(str1))
+              {
+                boolean bool = str1.equals(paramString2);
+                if (!bool) {}
+              }
             }
-            boolean bool = str1.equals(paramString2);
-            if (!bool) {
-              break label244;
+            else {
+              return false;
             }
           }
-          return false;
         }
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("MiniAppLauncher", 1, "verify appidWhiteList failed: " + paramString1);
+        i += 1;
       }
       return true;
-      label244:
-      i += 1;
+    }
+    catch (Exception paramString1)
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("verify appidWhiteList failed: ");
+      paramString2.append(paramString1);
+      QLog.e("MiniAppLauncher", 1, paramString2.toString());
     }
   }
   
@@ -541,7 +612,7 @@ public class MiniAppLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

@@ -27,33 +27,35 @@ public final class Palette
   
   private float a(Palette.Swatch paramSwatch, Target paramTarget)
   {
-    float f3 = 0.0F;
     float[] arrayOfFloat = paramSwatch.a();
+    Palette.Swatch localSwatch = this.jdField_a_of_type_ComTencentMobileqqUtilsPalettePalette$Swatch;
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsPalettePalette$Swatch != null)
+    if (localSwatch != null) {
+      i = localSwatch.b();
+    } else {
+      i = 1;
+    }
+    float f1 = paramTarget.g();
+    float f3 = 0.0F;
+    if (f1 > 0.0F)
     {
-      i = this.jdField_a_of_type_ComTencentMobileqqUtilsPalettePalette$Swatch.b();
-      if (paramTarget.g() <= 0.0F) {
-        break label135;
-      }
       f1 = paramTarget.g();
+      f1 = (1.0F - Math.abs(arrayOfFloat[1] - paramTarget.b())) * f1;
     }
-    label135:
-    for (float f1 = (1.0F - Math.abs(arrayOfFloat[1] - paramTarget.b())) * f1;; f1 = 0.0F)
+    else
     {
-      if (paramTarget.h() > 0.0F) {
-        f2 = paramTarget.h();
-      }
-      for (float f2 = (1.0F - Math.abs(arrayOfFloat[2] - paramTarget.e())) * f2;; f2 = 0.0F)
-      {
-        if (paramTarget.i() > 0.0F) {
-          f3 = paramTarget.i() * (paramSwatch.b() / i);
-        }
-        return f1 + f2 + f3;
-        i = 1;
-        break;
-      }
+      f1 = 0.0F;
     }
+    float f2;
+    if (paramTarget.h() > 0.0F) {
+      f2 = paramTarget.h() * (1.0F - Math.abs(arrayOfFloat[2] - paramTarget.e()));
+    } else {
+      f2 = 0.0F;
+    }
+    if (paramTarget.i() > 0.0F) {
+      f3 = paramTarget.i() * (paramSwatch.b() / i);
+    }
+    return f1 + f2 + f3;
   }
   
   @NonNull
@@ -81,55 +83,57 @@ public final class Palette
   @Nullable
   private Palette.Swatch b()
   {
-    int i = -2147483648;
+    int m = this.jdField_a_of_type_JavaUtilList.size();
+    int j = -2147483648;
     Object localObject = null;
-    int k = this.jdField_a_of_type_JavaUtilList.size();
-    int j = 0;
-    if (j < k)
+    int i = 0;
+    while (i < m)
     {
-      Palette.Swatch localSwatch = (Palette.Swatch)this.jdField_a_of_type_JavaUtilList.get(j);
-      if (localSwatch.b() <= i) {
-        break label67;
+      Palette.Swatch localSwatch = (Palette.Swatch)this.jdField_a_of_type_JavaUtilList.get(i);
+      int k = j;
+      if (localSwatch.b() > j)
+      {
+        k = localSwatch.b();
+        localObject = localSwatch;
       }
-      i = localSwatch.b();
-      localObject = localSwatch;
+      i += 1;
+      j = k;
     }
-    label67:
-    for (;;)
-    {
-      j += 1;
-      break;
-      return localObject;
-    }
+    return localObject;
   }
   
   @Nullable
   private Palette.Swatch b(Target paramTarget)
   {
-    float f1 = 0.0F;
-    Object localObject = null;
     int j = this.jdField_a_of_type_JavaUtilList.size();
+    float f1 = 0.0F;
+    Object localObject1 = null;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Palette.Swatch localSwatch = (Palette.Swatch)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (!a(localSwatch, paramTarget)) {
-        break label89;
+      float f2 = f1;
+      Object localObject2 = localObject1;
+      if (a(localSwatch, paramTarget))
+      {
+        float f3 = a(localSwatch, paramTarget);
+        if (localObject1 != null)
+        {
+          f2 = f1;
+          localObject2 = localObject1;
+          if (f3 <= f1) {}
+        }
+        else
+        {
+          localObject2 = localSwatch;
+          f2 = f3;
+        }
       }
-      float f2 = a(localSwatch, paramTarget);
-      if ((localObject != null) && (f2 <= f1)) {
-        break label89;
-      }
-      f1 = f2;
-      localObject = localSwatch;
-    }
-    label89:
-    for (;;)
-    {
       i += 1;
-      break;
-      return localObject;
+      f1 = f2;
+      localObject1 = localObject2;
     }
+    return localObject1;
   }
   
   @Nullable
@@ -154,7 +158,7 @@ public final class Palette
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.Palette
  * JD-Core Version:    0.7.0.1
  */

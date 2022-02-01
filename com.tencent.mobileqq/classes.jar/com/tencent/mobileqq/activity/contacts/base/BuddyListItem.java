@@ -69,30 +69,26 @@ public abstract class BuddyListItem
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     }
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-        if (!bool) {
-          continue;
-        }
-        i = 2130845077;
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(i);
-        this.jdField_a_of_type_Boolean = bool;
+      localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+      if (!bool) {
+        break label72;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        int i;
-        continue;
-      }
-      catch (Exception localException)
-      {
-        continue;
-      }
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      i = 2130845076;
+      i = 2130844954;
     }
+    catch (Exception|OutOfMemoryError localException)
+    {
+      for (;;)
+      {
+        Resources localResources;
+        continue;
+        int i = 2130844953;
+      }
+    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(i);
+    this.jdField_a_of_type_Boolean = bool;
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
   public abstract View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener);
@@ -112,20 +108,22 @@ public abstract class BuddyListItem
   
   public void a(View paramView, int paramInt, BuddyListItem.ViewTag paramViewTag, View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder != null) {}
-    for (int i = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity, paramViewTag, paramOnClickListener);; i = 0)
+    SwipRightMenuBuilder localSwipRightMenuBuilder = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder;
+    int i;
+    if (localSwipRightMenuBuilder != null) {
+      i = localSwipRightMenuBuilder.updateRightMenuView(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity, paramViewTag, paramOnClickListener);
+    } else {
+      i = 0;
+    }
+    paramViewTag = this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter;
+    if ((paramViewTag != null) && (paramViewTag.jdField_a_of_type_Int != -1))
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter.jdField_a_of_type_Int != -1))
+      if (paramInt != this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter.jdField_a_of_type_Int)
       {
-        if (paramInt != this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter.jdField_a_of_type_Int) {
-          paramView.scrollTo(0, 0);
-        }
-      }
-      else {
+        paramView.scrollTo(0, 0);
         return;
       }
       paramView.scrollTo(i, 0);
-      return;
     }
   }
   
@@ -161,7 +159,7 @@ public abstract class BuddyListItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.BuddyListItem
  * JD-Core Version:    0.7.0.1
  */

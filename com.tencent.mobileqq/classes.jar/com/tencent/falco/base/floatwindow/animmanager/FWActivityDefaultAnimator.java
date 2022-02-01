@@ -29,61 +29,74 @@ public class FWActivityDefaultAnimator
     FWActivityDefaultAnimator.AnimParams localAnimParams = new FWActivityDefaultAnimator.AnimParams();
     switch (paramInt)
     {
-    }
-    while (localAnimParams.animType.compareTo("translationX") == 0)
-    {
-      localAnimParams.endValue = paramView.getTranslationX();
-      return localAnimParams;
-      localAnimParams.animType = "translationX";
-      localAnimParams.startValue = getLeftValue(paramView);
-      continue;
-      localAnimParams.animType = "translationX";
-      localAnimParams.startValue = getRightValue(paramView);
-      continue;
-      localAnimParams.animType = "translationY";
-      localAnimParams.startValue = getTopValue(paramView);
-      continue;
-      localAnimParams.animType = "translationY";
-      localAnimParams.startValue = getRightValue(paramView);
-      continue;
-      localAnimParams.animType = "translationX";
-      if (this.leftDistance < this.rightDistance)
+    case 6: 
+    default: 
+      break;
+    case 8: 
+    case 15: 
+      if (this.minX <= this.minY)
       {
-        localAnimParams.startValue = getLeftValue(paramView);
+        localAnimParams.animType = "translationX";
+        if (this.leftDistance < this.rightDistance) {
+          getLeftValue(paramView);
+        } else {
+          getRightValue(paramView);
+        }
       }
       else
       {
-        localAnimParams.startValue = getRightValue(paramView);
-        continue;
         localAnimParams.animType = "translationY";
-        if (this.topDistance < this.bottomDistance)
-        {
-          localAnimParams.startValue = getTopValue(paramView);
-        }
-        else
-        {
-          localAnimParams.startValue = getBottomValue(paramView);
-          continue;
-          if (this.minX <= this.minY)
-          {
-            localAnimParams.animType = "translationX";
-            if (this.leftDistance < this.rightDistance) {
-              getLeftValue(paramView);
-            } else {
-              getRightValue(paramView);
-            }
-          }
-          else
-          {
-            localAnimParams.animType = "translationY";
-            if (this.topDistance < this.bottomDistance) {
-              getTopValue(paramView);
-            } else {
-              getBottomValue(paramView);
-            }
-          }
+        if (this.topDistance < this.bottomDistance) {
+          getTopValue(paramView);
+        } else {
+          getBottomValue(paramView);
         }
       }
+      break;
+    case 7: 
+    case 14: 
+      localAnimParams.animType = "translationY";
+      if (this.topDistance < this.bottomDistance) {
+        localAnimParams.startValue = getTopValue(paramView);
+      } else {
+        localAnimParams.startValue = getBottomValue(paramView);
+      }
+      break;
+    case 4: 
+    case 12: 
+      localAnimParams.animType = "translationY";
+      localAnimParams.startValue = getRightValue(paramView);
+      break;
+    case 3: 
+    case 11: 
+      localAnimParams.animType = "translationY";
+      localAnimParams.startValue = getTopValue(paramView);
+      break;
+    case 2: 
+    case 10: 
+      localAnimParams.animType = "translationX";
+      localAnimParams.startValue = getRightValue(paramView);
+      break;
+    case 1: 
+    case 9: 
+      localAnimParams.animType = "translationX";
+      localAnimParams.startValue = getLeftValue(paramView);
+      break;
+    case 0: 
+    case 5: 
+    case 13: 
+      localAnimParams.animType = "translationX";
+      if (this.leftDistance < this.rightDistance) {
+        localAnimParams.startValue = getLeftValue(paramView);
+      } else {
+        localAnimParams.startValue = getRightValue(paramView);
+      }
+      break;
+    }
+    if (localAnimParams.animType.compareTo("translationX") == 0)
+    {
+      localAnimParams.endValue = paramView.getTranslationX();
+      return localAnimParams;
     }
     localAnimParams.endValue = paramView.getTranslationY();
     return localAnimParams;
@@ -139,7 +152,7 @@ public class FWActivityDefaultAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.animmanager.FWActivityDefaultAnimator
  * JD-Core Version:    0.7.0.1
  */

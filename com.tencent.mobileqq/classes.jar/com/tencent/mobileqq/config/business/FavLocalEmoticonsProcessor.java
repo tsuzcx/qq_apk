@@ -25,28 +25,40 @@ public class FavLocalEmoticonsProcessor
   @Nullable
   public FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0)) {
-      return new FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig();
+    Object localObject1;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
+    {
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onParsed, content:");
+        ((StringBuilder)localObject1).append(paramArrayOfQConfItem);
+        QLog.d("FavLocalEmoticonsProcessor", 2, ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = new FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig();
     }
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onParsed, content:" + paramArrayOfQConfItem);
-    }
-    FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig localFavLocalEmoticonsConfig = new FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig();
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem);
-      localFavLocalEmoticonsConfig.a = Integer.valueOf(localJSONObject.getString("maxPicSize")).intValue();
-      localFavLocalEmoticonsConfig.b = Integer.valueOf(localJSONObject.getString("maxLongSideLen")).intValue();
-      return localFavLocalEmoticonsConfig;
+      localObject2 = new JSONObject(paramArrayOfQConfItem);
+      ((FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig)localObject1).a = Integer.valueOf(((JSONObject)localObject2).getString("maxPicSize")).intValue();
+      ((FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig)localObject1).b = Integer.valueOf(((JSONObject)localObject2).getString("maxLongSideLen")).intValue();
+      return localObject1;
     }
     catch (Exception localException)
     {
-      QLog.d("FavLocalEmoticonsProcessor", 1, "onParsed error, content:" + paramArrayOfQConfItem);
-      localFavLocalEmoticonsConfig.a = a;
-      localFavLocalEmoticonsConfig.b = b;
+      Object localObject2;
+      label107:
+      break label107;
     }
-    return localFavLocalEmoticonsConfig;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("onParsed error, content:");
+    ((StringBuilder)localObject2).append(paramArrayOfQConfItem);
+    QLog.d("FavLocalEmoticonsProcessor", 1, ((StringBuilder)localObject2).toString());
+    ((FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig)localObject1).a = a;
+    ((FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig)localObject1).b = b;
+    return localObject1;
+    return new FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig();
   }
   
   public void a(FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig paramFavLocalEmoticonsConfig)
@@ -90,7 +102,7 @@ public class FavLocalEmoticonsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.FavLocalEmoticonsProcessor
  * JD-Core Version:    0.7.0.1
  */

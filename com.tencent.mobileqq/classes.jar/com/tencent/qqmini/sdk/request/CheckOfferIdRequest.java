@@ -47,27 +47,25 @@ public class CheckOfferIdRequest
     try
     {
       localStMiniCheckOfferIdRsp.mergeFrom(paramArrayOfByte);
-      if (localStMiniCheckOfferIdRsp != null)
-      {
-        paramJSONObject.put("result", localStMiniCheckOfferIdRsp.result.get());
-        paramJSONObject.put("ext", localStMiniCheckOfferIdRsp.extInfo);
-        paramJSONObject.put("firstRefer", localStMiniCheckOfferIdRsp.firstRefer);
-        paramJSONObject.put("firstVia", localStMiniCheckOfferIdRsp.firstVia);
-        return paramJSONObject;
-      }
+      paramJSONObject.put("result", localStMiniCheckOfferIdRsp.result.get());
+      paramJSONObject.put("ext", localStMiniCheckOfferIdRsp.extInfo);
+      paramJSONObject.put("firstRefer", localStMiniCheckOfferIdRsp.firstRefer);
+      paramJSONObject.put("firstVia", localStMiniCheckOfferIdRsp.firstVia);
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("CheckOfferIdRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("CheckOfferIdRequest", paramJSONObject.toString());
     }
-    QMLog.d("CheckOfferIdRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.CheckOfferIdRequest
  * JD-Core Version:    0.7.0.1
  */

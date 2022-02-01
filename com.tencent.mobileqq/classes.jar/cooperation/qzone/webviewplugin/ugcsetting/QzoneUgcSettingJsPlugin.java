@@ -24,96 +24,124 @@ public class QzoneUgcSettingJsPlugin
   private void getLiveUgcSetting(String paramString1, String paramString2)
   {
     paramString1 = this.parentPlugin.mRuntime.a();
-    if ((paramString1 == null) || (paramString1.isFinishing()) || (TextUtils.isEmpty(paramString2))) {}
-    do
+    if ((paramString1 != null) && (!paramString1.isFinishing()))
     {
-      do
-      {
+      if (TextUtils.isEmpty(paramString2)) {
         return;
-        paramString1 = paramString1.getIntent();
-      } while (paramString1 == null);
+      }
+      paramString1 = paramString1.getIntent();
+      if (paramString1 == null) {
+        return;
+      }
       paramString1 = paramString1.getExtras();
-    } while (paramString1 == null);
-    paramString1 = UgcSettingUtil.liveUgcSettingToJson(paramString1);
-    this.parentPlugin.callJs(paramString2, new String[] { paramString1 });
+      if (paramString1 == null) {
+        return;
+      }
+      paramString1 = UgcSettingUtil.liveUgcSettingToJson(paramString1);
+      this.parentPlugin.callJs(paramString2, new String[] { paramString1 });
+    }
   }
   
   private void getUgcSetting(String paramString)
   {
     Object localObject = this.parentPlugin.mRuntime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing()) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      do
-      {
+      if (TextUtils.isEmpty(paramString)) {
         return;
-        localObject = ((Activity)localObject).getIntent();
-      } while (localObject == null);
+      }
+      localObject = ((Activity)localObject).getIntent();
+      if (localObject == null) {
+        return;
+      }
       localObject = ((Intent)localObject).getExtras();
-    } while (localObject == null);
-    localObject = UgcSettingUtil.ugcSettingToJson((Bundle)localObject);
-    this.parentPlugin.callJs(paramString, new String[] { localObject });
+      if (localObject == null) {
+        return;
+      }
+      localObject = UgcSettingUtil.ugcSettingToJson((Bundle)localObject);
+      this.parentPlugin.callJs(paramString, new String[] { localObject });
+    }
   }
   
   private void handleCancellationStatus(WebViewPlugin.PluginRuntime paramPluginRuntime, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      if (new JSONObject(paramString).getInt("result") == 1)
       {
-        if (new JSONObject(paramString).getInt("result") == 1)
-        {
-          QZoneUnreadServletLogic.a(0, paramPluginRuntime.a().getLongAccountUin());
-          return;
-        }
+        QZoneUnreadServletLogic.a(0, paramPluginRuntime.a().getLongAccountUin());
+        return;
       }
-      catch (Throwable paramPluginRuntime)
-      {
-        QLog.e(this.TAG, 1, "handleCancellationStatus... e:", paramPluginRuntime);
-      }
+    }
+    catch (Throwable paramPluginRuntime)
+    {
+      QLog.e(this.TAG, 1, "handleCancellationStatus... e:", paramPluginRuntime);
     }
   }
   
   private void setLiveUgcSetting(String paramString1, String paramString2)
   {
     Object localObject = this.parentPlugin.mRuntime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {}
-    Intent localIntent;
-    do
+    if (localObject != null)
     {
-      return;
-      localIntent = new Intent();
+      if (((Activity)localObject).isFinishing()) {
+        return;
+      }
+      Intent localIntent = new Intent();
       localIntent.putExtras(UgcSettingUtil.parseLiveJson(localIntent.getExtras(), paramString1));
       ((Activity)localObject).setResult(-1, localIntent);
-    } while (TextUtils.isEmpty(paramString2));
-    localObject = localIntent.getStringExtra("key_parse_json_status");
-    paramString1 = "{\"ret\":0, \"msg\":\"sucess\"}";
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      paramString1 = "{\"ret\":-1, \"msg\":\"" + (String)localObject + "\"}";
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        paramString1 = localIntent.getStringExtra("key_parse_json_status");
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("{\"ret\":-1, \"msg\":\"");
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append("\"}");
+          paramString1 = ((StringBuilder)localObject).toString();
+        }
+        else
+        {
+          paramString1 = "{\"ret\":0, \"msg\":\"sucess\"}";
+        }
+        this.parentPlugin.callJs(paramString2, new String[] { paramString1 });
+      }
     }
-    this.parentPlugin.callJs(paramString2, new String[] { paramString1 });
   }
   
   private void setUgcSetting(String paramString1, String paramString2)
   {
     Object localObject = this.parentPlugin.mRuntime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {}
-    Intent localIntent;
-    do
+    if (localObject != null)
     {
-      return;
-      localIntent = new Intent();
+      if (((Activity)localObject).isFinishing()) {
+        return;
+      }
+      Intent localIntent = new Intent();
       localIntent.putExtras(UgcSettingUtil.parseJson(localIntent.getExtras(), paramString1));
       ((Activity)localObject).setResult(-1, localIntent);
-    } while (TextUtils.isEmpty(paramString2));
-    localObject = localIntent.getStringExtra("key_parse_json_status");
-    paramString1 = "{\"ret\":0, \"msg\":\"sucess\"}";
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      paramString1 = "{\"ret\":-1, \"msg\":\"" + (String)localObject + "\"}";
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        paramString1 = localIntent.getStringExtra("key_parse_json_status");
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("{\"ret\":-1, \"msg\":\"");
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append("\"}");
+          paramString1 = ((StringBuilder)localObject).toString();
+        }
+        else
+        {
+          paramString1 = "{\"ret\":0, \"msg\":\"sucess\"}";
+        }
+        this.parentPlugin.callJs(paramString2, new String[] { paramString1 });
+      }
     }
-    this.parentPlugin.callJs(paramString2, new String[] { paramString1 });
   }
   
   private void updateFriendSetting(String paramString)
@@ -139,76 +167,79 @@ public class QzoneUgcSettingJsPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals("Qzone")) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {
-      return false;
-    }
-    if ((paramString3.equals("getUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-      try
-      {
-        getUgcSetting(new JSONObject(paramVarArgs[0]).optString("callback"));
-        return true;
-      }
-      catch (Exception paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        return true;
-      }
-    }
-    if ((paramString3.equals("setUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        setUgcSetting(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
-        return true;
-      }
-      catch (Exception paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        return true;
-      }
-    }
-    if ((paramString3.equals("getLiveUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        getLiveUgcSetting(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
-        return true;
-      }
-      catch (Exception paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        return true;
-      }
-    }
-    if ((paramString3.equals("setLiveUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        setLiveUgcSetting(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
-        return true;
-      }
-      catch (Exception paramJsBridgeListener)
-      {
-        paramJsBridgeListener.printStackTrace();
-        return true;
-      }
-    }
-    if ((paramString3.equals("UpdateFriendSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+    if ((paramString2.equals("Qzone")) && (this.parentPlugin != null))
     {
-      updateFriendSetting(paramVarArgs[0]);
-      return true;
-    }
-    if ((paramString3.equals("reopenQzone")) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
-    {
-      handleCancellationStatus(this.parentPlugin.mRuntime, paramVarArgs[0]);
-      return true;
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if ((paramString3.equals("getUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+        try
+        {
+          getUgcSetting(new JSONObject(paramVarArgs[0]).optString("callback"));
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return true;
+        }
+      }
+      if ((paramString3.equals("setUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          setUgcSetting(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return true;
+        }
+      }
+      if ((paramString3.equals("getLiveUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          getLiveUgcSetting(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return true;
+        }
+      }
+      if ((paramString3.equals("setLiveUgcSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          setLiveUgcSetting(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          paramJsBridgeListener.printStackTrace();
+          return true;
+        }
+      }
+      if ((paramString3.equals("UpdateFriendSetting")) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+      {
+        updateFriendSetting(paramVarArgs[0]);
+        return true;
+      }
+      if ((paramString3.equals("reopenQzone")) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+      {
+        handleCancellationStatus(this.parentPlugin.mRuntime, paramVarArgs[0]);
+        return true;
+      }
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.ugcsetting.QzoneUgcSettingJsPlugin
  * JD-Core Version:    0.7.0.1
  */

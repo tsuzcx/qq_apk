@@ -16,22 +16,24 @@ class PersonalityLabelShareActivity$2$1
     if (this.jdField_a_of_type_Boolean)
     {
       Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file://");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localIntent.setData(Uri.parse(localStringBuilder.toString()));
       this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.getString(2131717054, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.getTitleBarHeight());
+      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.getString(2131716707, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.getTitleBarHeight());
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.b = true;
-      return;
-      QRUtils.a(1, 2131717053);
+      QRUtils.a(1, 2131716706);
     }
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

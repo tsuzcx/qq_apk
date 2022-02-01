@@ -39,23 +39,23 @@ public class SigTopicConfBean$SigTopicConfig
       {
         JSONObject localJSONObject = new JSONObject(paramString);
         paramString = localJSONObject.optJSONArray(this.c);
-        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, HardCodeUtil.a(2131714104));
+        this.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.b, HardCodeUtil.a(2131714033));
         if (paramString == null) {
-          break;
+          break label192;
         }
         i = 0;
         if (i >= paramString.length()) {
-          break;
+          break label192;
         }
         localJSONObject = paramString.getJSONObject(i);
         localTopicInfo = new SigTopicConfBean.TopicInfo();
         localTopicInfo.jdField_a_of_type_Int = localJSONObject.optInt(this.d);
         localTopicInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString(this.e);
         if (!TextUtils.isEmpty(localTopicInfo.jdField_a_of_type_JavaLangString)) {
-          break label193;
+          break label198;
         }
         if (!QLog.isColorLevel()) {
-          break label198;
+          break label193;
         }
         QLog.e("SigTopicConfig", 2, new Object[] { "SigTopic config parse has invalid item,index=", Integer.valueOf(i) });
       }
@@ -64,32 +64,39 @@ public class SigTopicConfBean$SigTopicConfig
         int i;
         SigTopicConfBean.TopicInfo localTopicInfo;
         QLog.e("SigTopicConfig", 1, "SigTopic config parse exception", paramString);
-        return;
       }
       if (j != 0) {
         this.jdField_a_of_type_JavaUtilArrayList.add(localTopicInfo);
       }
       i += 1;
       continue;
+      label192:
+      return;
       label193:
-      int j = 1;
+      int j = 0;
       continue;
       label198:
-      j = 0;
+      j = 1;
     }
   }
   
   public String toString()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return "recommend title is " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_JavaUtilArrayList.toString();
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recommend title is ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.toString());
+      return localStringBuilder.toString();
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.sigtopic.SigTopicConfBean.SigTopicConfig
  * JD-Core Version:    0.7.0.1
  */

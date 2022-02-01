@@ -36,20 +36,22 @@ public final class qqstory_struct$StoryVideoBasicInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 66, 72, 82, 88, 130, 138, 144, 154, 160, 170, 176, 194, 202 }, new String[] { "vid", "video_url", "video_cover", "title", "doodle_url", "create_time", "label", "video_total_time", "address", "has_related_videos", "video_attr", "owner_union_id", "ban_type", "group_list", "video_source", "video_tag", "video_index", "poll_text", "poll_options" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, Long.valueOf(0L), null, Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8, Integer.valueOf(0), null, Integer.valueOf(0), null, Long.valueOf(0L), "", "" }, StoryVideoBasicInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 66, 72, 82, 88, 130, 138, 144, 154, 160, 170, 176, 194, 202 }, new String[] { "vid", "video_url", "video_cover", "title", "doodle_url", "create_time", "label", "video_total_time", "address", "has_related_videos", "video_attr", "owner_union_id", "ban_type", "group_list", "video_source", "video_tag", "video_index", "poll_text", "poll_options" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localLong, localByteStringMicro6, localLong, null, localInteger, localByteStringMicro7, localByteStringMicro8, localInteger, null, localInteger, null, localLong, "", "" }, StoryVideoBasicInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoBasicInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.SparseArray;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.NearbyHandler;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -14,14 +15,15 @@ import com.tencent.mobileqq.avatar.api.IQQAvatarManagerService;
 import com.tencent.mobileqq.config.NearbyDataManager;
 import com.tencent.mobileqq.config.PicIPManager;
 import com.tencent.mobileqq.data.DynamicAvatar;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.mobileqq.nearby.NearbyConstants;
 import com.tencent.mobileqq.nearby.NearbyReportManager;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
 import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
 import com.tencent.mobileqq.nearby.redtouch.NearbyRedNum;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper;
+import com.tencent.mobileqq.nearpeople.api.INearbyMineHelper;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -35,43 +37,35 @@ import tencent.im.oidb.cmd0x9c7.cmd0x9c7.RspBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
 
 public class NearbyProcManager
-  implements Manager
+  implements INearbyProcManager, Manager
 {
   protected static SparseArray<Integer> a;
-  private NearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface;
+  private INearbyAppInterface jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface;
   private NearbyProcess jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcess;
-  private final List<NearbyProcObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<INearbyProcObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private int[] jdField_a_of_type_ArrayOfInt = null;
   private boolean[] jdField_a_of_type_ArrayOfBoolean = null;
-  private final List<NearbyProcObserver> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private final List<INearbyProcObserver> jdField_b_of_type_JavaUtilList = new ArrayList();
   private MqqHandler jdField_b_of_type_MqqOsMqqHandler;
   
-  public NearbyProcManager(NearbyAppInterface paramNearbyAppInterface)
+  public NearbyProcManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface = paramNearbyAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcess = new NearbyProcess(paramNearbyAppInterface, this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface = ((INearbyAppInterface)paramAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcess = new NearbyProcess(paramAppInterface, this);
     this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getUIHandler();
     this.jdField_b_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
   }
   
   private void a(SubMsgType0x27.AppointmentNotify paramAppointmentNotify)
   {
-    if (paramAppointmentNotify == null) {}
-    long l;
-    do
-    {
-      do
-      {
-        return;
-        l = paramAppointmentNotify.uint32_notifytype.get();
-        if ((l != 2L) && (l != 4L)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.nearby", 2, "hasOnLinePush|shield dating notify");
+    if (paramAppointmentNotify == null) {
       return;
-    } while (l != 5L);
+    }
+    long l = paramAppointmentNotify.uint32_notifytype.get();
+    if (((l == 2L) || (l == 4L)) && (QLog.isColorLevel())) {
+      QLog.i("Q.nearby", 2, "hasOnLinePush|shield dating notify");
+    }
   }
   
   private Object[] a(int paramInt)
@@ -92,18 +86,21 @@ public class NearbyProcManager
   public int a()
   {
     Object[] arrayOfObject = this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcess.a(4156);
-    if ((arrayOfObject == null) || (arrayOfObject.length < 1)) {
-      return -1;
-    }
-    try
+    if (arrayOfObject != null)
     {
-      int i = ((Integer)arrayOfObject[0]).intValue();
-      return i;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("getMyAccGender", 2, localException.toString());
+      if (arrayOfObject.length < 1) {
+        return -1;
+      }
+      try
+      {
+        int i = ((Integer)arrayOfObject[0]).intValue();
+        return i;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("getMyAccGender", 2, localException.toString());
+        }
       }
     }
     return -1;
@@ -120,40 +117,47 @@ public class NearbyProcManager
     ((Message)localObject).setData(localBundle);
     paramString = b((Message)localObject);
     if (paramString == null) {
-      paramString = null;
+      return null;
     }
-    do
+    paramString = paramString.getData();
+    paramString.setClassLoader(Bitmap.class.getClassLoader());
+    paramString = (Bitmap)paramString.getParcelable("faceBmp");
+    if (QLog.isColorLevel())
     {
-      return paramString;
-      paramString = paramString.getData();
-      paramString.setClassLoader(Bitmap.class.getClassLoader());
-      localObject = (Bitmap)paramString.getParcelable("faceBmp");
-      paramString = (String)localObject;
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.dynamicAvatar", 2, "ipc getFaceBitmap : " + localObject);
-    return localObject;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ipc getFaceBitmap : ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)localObject).toString());
+    }
+    return paramString;
   }
   
   public Message a(Message paramMessage)
   {
     Object localObject = paramMessage.getData();
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 4118)
     {
-    }
-    do
-    {
-      do
-      {
+      if (i != 4139) {
         return null;
-      } while (localObject == null);
-      a(4118, new Object[] { ((Bundle)localObject).getStringArrayList("keys"), ((Bundle)localObject).getStringArrayList("paths") });
-      return null;
+      }
       paramMessage = paramMessage.getData();
-    } while (paramMessage == null);
-    int i = paramMessage.getInt("headType");
-    localObject = paramMessage.getString("id");
-    int j = paramMessage.getInt("idType");
-    ((IQQAvatarManagerService)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getRuntimeService(IQQAvatarManagerService.class, "nearby")).removeFaceFromCache(FaceInfo.a(i, (String)localObject, j, 3, 0));
+      if (paramMessage != null)
+      {
+        i = paramMessage.getInt("headType");
+        localObject = paramMessage.getString("id");
+        int j = paramMessage.getInt("idType");
+        ((IQQAvatarManagerService)this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getRuntimeService(IQQAvatarManagerService.class, "nearby")).removeFaceFromCache(FaceInfo.a(i, (String)localObject, j, 3, 0));
+        return null;
+      }
+    }
+    else
+    {
+      if (localObject == null) {
+        return null;
+      }
+      a(4118, new Object[] { ((Bundle)localObject).getStringArrayList("keys"), ((Bundle)localObject).getStringArrayList("paths") });
+    }
     return null;
   }
   
@@ -167,65 +171,62 @@ public class NearbyProcManager
     ((Message)localObject).setData(localBundle);
     paramString = b((Message)localObject);
     if (paramString == null) {
-      paramString = null;
+      return null;
     }
-    do
+    paramString = paramString.getData();
+    paramString.setClassLoader(DynamicAvatar.class.getClassLoader());
+    paramString = (DynamicAvatar)paramString.getParcelable("avatarInfo");
+    if (QLog.isColorLevel())
     {
-      return paramString;
-      paramString = paramString.getData();
-      paramString.setClassLoader(DynamicAvatar.class.getClassLoader());
-      localObject = (DynamicAvatar)paramString.getParcelable("avatarInfo");
-      paramString = (String)localObject;
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.dynamicAvatar", 2, "ipc getDynamicAvatarInfo : " + localObject);
-    return localObject;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ipc getDynamicAvatarInfo : ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)localObject).toString());
+    }
+    return paramString;
   }
   
   public NearbyRedNum a()
   {
     NearbyRedNum localNearbyRedNum = new NearbyRedNum();
     Object[] arrayOfObject = b(4165, new Object[] { Integer.valueOf(0) });
-    if (arrayOfObject != null) {}
-    try
-    {
-      localNearbyRedNum.jdField_a_of_type_Int = ((Integer)arrayOfObject[0]).intValue();
-      localNearbyRedNum.b = ((Integer)arrayOfObject[1]).intValue();
-      localNearbyRedNum.c = ((Integer)arrayOfObject[2]).intValue();
-      localNearbyRedNum.d = ((Integer)arrayOfObject[3]).intValue();
-      return localNearbyRedNum;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isDevelopLevel()) {}
-      localException.printStackTrace();
+    if (arrayOfObject != null) {
+      try
+      {
+        localNearbyRedNum.jdField_a_of_type_Int = ((Integer)arrayOfObject[0]).intValue();
+        localNearbyRedNum.b = ((Integer)arrayOfObject[1]).intValue();
+        localNearbyRedNum.c = ((Integer)arrayOfObject[2]).intValue();
+        localNearbyRedNum.d = ((Integer)arrayOfObject[3]).intValue();
+        return localNearbyRedNum;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isDevelopLevel()) {
+          localException.printStackTrace();
+        }
+      }
     }
     return localNearbyRedNum;
   }
   
   public BusinessInfoCheckUpdate.RedTypeInfo a(int paramInt)
   {
-    Object localObject = null;
     Object[] arrayOfObject = b(4157, new Object[] { Integer.valueOf(paramInt) });
-    if (arrayOfObject != null) {}
-    for (;;)
-    {
+    if (arrayOfObject != null) {
       try
       {
         BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
         localRedTypeInfo.mergeFrom((byte[])arrayOfObject[0]);
-        localObject = localRedTypeInfo;
+        return localRedTypeInfo;
       }
       catch (Exception localException)
       {
-        if (!QLog.isDevelopLevel()) {
-          continue;
+        if (QLog.isDevelopLevel()) {
+          localException.printStackTrace();
         }
-        localException.printStackTrace();
-        return null;
       }
-      return localObject;
-      localObject = null;
     }
+    return null;
   }
   
   public void a()
@@ -243,140 +244,89 @@ public class NearbyProcManager
     b(4158, new Object[] { Integer.valueOf(paramInt) });
   }
   
-  /* Error */
   public void a(int paramInt, Object... paramVarArgs)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: aload_0
-    //   4: getfield 29	com/tencent/mobileqq/nearby/ipc/NearbyProcManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   7: astore 5
-    //   9: aload 5
-    //   11: monitorenter
-    //   12: iconst_0
-    //   13: istore_3
-    //   14: iload_3
-    //   15: aload_0
-    //   16: getfield 29	com/tencent/mobileqq/nearby/ipc/NearbyProcManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   19: invokeinterface 287 1 0
-    //   24: if_icmpge +45 -> 69
-    //   27: aload_0
-    //   28: getfield 29	com/tencent/mobileqq/nearby/ipc/NearbyProcManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   31: iload_3
-    //   32: invokeinterface 290 2 0
-    //   37: checkcast 292	com/tencent/mobileqq/nearby/ipc/NearbyProcObserver
-    //   40: astore 6
-    //   42: aload_0
-    //   43: getfield 50	com/tencent/mobileqq/nearby/ipc/NearbyProcManager:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   46: new 294	com/tencent/mobileqq/nearby/ipc/NearbyProcManager$1
-    //   49: dup
-    //   50: aload_0
-    //   51: aload 6
-    //   53: iload_1
-    //   54: aload_2
-    //   55: invokespecial 297	com/tencent/mobileqq/nearby/ipc/NearbyProcManager$1:<init>	(Lcom/tencent/mobileqq/nearby/ipc/NearbyProcManager;Lcom/tencent/mobileqq/nearby/ipc/NearbyProcObserver;I[Ljava/lang/Object;)V
-    //   58: invokevirtual 303	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   61: pop
-    //   62: iload_3
-    //   63: iconst_1
-    //   64: iadd
-    //   65: istore_3
-    //   66: goto -52 -> 14
-    //   69: aload 5
-    //   71: monitorexit
-    //   72: aload_0
-    //   73: getfield 27	com/tencent/mobileqq/nearby/ipc/NearbyProcManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   76: astore 5
-    //   78: aload 5
-    //   80: monitorenter
-    //   81: iload 4
-    //   83: istore_3
-    //   84: iload_3
-    //   85: aload_0
-    //   86: getfield 27	com/tencent/mobileqq/nearby/ipc/NearbyProcManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   89: invokeinterface 287 1 0
-    //   94: if_icmpge +51 -> 145
-    //   97: aload_0
-    //   98: getfield 27	com/tencent/mobileqq/nearby/ipc/NearbyProcManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   101: iload_3
-    //   102: invokeinterface 290 2 0
-    //   107: checkcast 292	com/tencent/mobileqq/nearby/ipc/NearbyProcObserver
-    //   110: astore 6
-    //   112: aload_0
-    //   113: getfield 55	com/tencent/mobileqq/nearby/ipc/NearbyProcManager:jdField_b_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   116: new 305	com/tencent/mobileqq/nearby/ipc/NearbyProcManager$2
-    //   119: dup
-    //   120: aload_0
-    //   121: aload 6
-    //   123: iload_1
-    //   124: aload_2
-    //   125: invokespecial 306	com/tencent/mobileqq/nearby/ipc/NearbyProcManager$2:<init>	(Lcom/tencent/mobileqq/nearby/ipc/NearbyProcManager;Lcom/tencent/mobileqq/nearby/ipc/NearbyProcObserver;I[Ljava/lang/Object;)V
-    //   128: invokevirtual 303	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   131: pop
-    //   132: iload_3
-    //   133: iconst_1
-    //   134: iadd
-    //   135: istore_3
-    //   136: goto -52 -> 84
-    //   139: astore_2
-    //   140: aload 5
-    //   142: monitorexit
-    //   143: aload_2
-    //   144: athrow
-    //   145: aload 5
-    //   147: monitorexit
-    //   148: return
-    //   149: astore_2
-    //   150: aload 5
-    //   152: monitorexit
-    //   153: aload_2
-    //   154: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	155	0	this	NearbyProcManager
-    //   0	155	1	paramInt	int
-    //   0	155	2	paramVarArgs	Object[]
-    //   13	123	3	i	int
-    //   1	81	4	j	int
-    //   7	144	5	localList	List
-    //   40	82	6	localNearbyProcObserver	NearbyProcObserver
-    // Exception table:
-    //   from	to	target	type
-    //   14	62	139	finally
-    //   69	72	139	finally
-    //   140	143	139	finally
-    //   84	132	149	finally
-    //   145	148	149	finally
-    //   150	153	149	finally
+    List localList = this.jdField_b_of_type_JavaUtilList;
+    int j = 0;
+    int i = 0;
+    try
+    {
+      INearbyProcObserver localINearbyProcObserver;
+      while (i < this.jdField_b_of_type_JavaUtilList.size())
+      {
+        localINearbyProcObserver = (INearbyProcObserver)this.jdField_b_of_type_JavaUtilList.get(i);
+        this.jdField_a_of_type_MqqOsMqqHandler.post(new NearbyProcManager.1(this, localINearbyProcObserver, paramInt, paramVarArgs));
+        i += 1;
+      }
+      localList = this.jdField_a_of_type_JavaUtilList;
+      i = j;
+      try
+      {
+        while (i < this.jdField_a_of_type_JavaUtilList.size())
+        {
+          localINearbyProcObserver = (INearbyProcObserver)this.jdField_a_of_type_JavaUtilList.get(i);
+          this.jdField_b_of_type_MqqOsMqqHandler.post(new NearbyProcManager.2(this, localINearbyProcObserver, paramInt, paramVarArgs));
+          i += 1;
+        }
+        return;
+      }
+      finally {}
+      throw paramVarArgs;
+    }
+    finally {}
+    for (;;) {}
   }
   
-  public void a(NearbyProcObserver paramNearbyProcObserver)
+  public void a(INearbyProcObserver paramINearbyProcObserver)
   {
-    a(paramNearbyProcObserver, false);
+    a(paramINearbyProcObserver, false);
   }
   
-  public void a(NearbyProcObserver paramNearbyProcObserver, boolean paramBoolean)
+  public void a(INearbyProcObserver paramINearbyProcObserver, boolean paramBoolean)
   {
-    if (paramNearbyProcObserver == null) {
+    if (paramINearbyProcObserver == null) {
       return;
     }
     if (paramBoolean) {
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        if (!this.jdField_a_of_type_JavaUtilList.contains(paramNearbyProcObserver)) {
-          this.jdField_a_of_type_JavaUtilList.add(paramNearbyProcObserver);
+        if (!this.jdField_a_of_type_JavaUtilList.contains(paramINearbyProcObserver)) {
+          this.jdField_a_of_type_JavaUtilList.add(paramINearbyProcObserver);
         }
         return;
       }
     }
     synchronized (this.jdField_b_of_type_JavaUtilList)
     {
-      if (!this.jdField_b_of_type_JavaUtilList.contains(paramNearbyProcObserver)) {
-        this.jdField_b_of_type_JavaUtilList.add(paramNearbyProcObserver);
+      if (!this.jdField_b_of_type_JavaUtilList.contains(paramINearbyProcObserver)) {
+        this.jdField_b_of_type_JavaUtilList.add(paramINearbyProcObserver);
       }
       return;
     }
+  }
+  
+  public void a(Object paramObject)
+  {
+    oidb_0x8dd.SelfInfo localSelfInfo = (oidb_0x8dd.SelfInfo)paramObject;
+    Object localObject = null;
+    try
+    {
+      paramObject = localSelfInfo.toByteArray();
+    }
+    catch (Exception paramObject)
+    {
+      paramObject.printStackTrace();
+      paramObject = null;
+    }
+    if (paramObject != null) {
+      b(4109, new Object[] { paramObject });
+    }
+    if (paramObject == null) {
+      paramObject = localObject;
+    } else {
+      paramObject = Integer.valueOf(paramObject.length);
+    }
+    NearbyUtils.a("Q.nearby", "updateSelfCard", new Object[] { localSelfInfo, paramObject });
   }
   
   public void a(String paramString)
@@ -392,62 +342,25 @@ public class NearbyProcManager
     localBundle.putStringArrayList("key", paramArrayList);
     localMessage.setData(localBundle);
     paramArrayList = b(localMessage);
-    if (paramArrayList != null) {}
-    for (paramArrayList = paramArrayList.getData();; paramArrayList = null)
-    {
-      if (paramArrayList != null) {
-        a(4118, new Object[] { paramArrayList.getStringArrayList("key"), paramArrayList.getStringArrayList("path") });
-      }
-      return;
+    if (paramArrayList != null) {
+      paramArrayList = paramArrayList.getData();
+    } else {
+      paramArrayList = null;
     }
-  }
-  
-  public void a(oidb_0x8dd.SelfInfo paramSelfInfo)
-  {
-    Object localObject2 = null;
-    try
-    {
-      Object localObject1 = paramSelfInfo.toByteArray();
-      if (localObject1 != null) {
-        b(4109, new Object[] { localObject1 });
-      }
-      if (localObject1 == null)
-      {
-        localObject1 = localObject2;
-        NearbyUtils.a("Q.nearby", "updateSelfCard", new Object[] { paramSelfInfo, localObject1 });
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Integer localInteger = null;
-        continue;
-        localInteger = Integer.valueOf(localInteger.length);
-      }
-    }
-  }
-  
-  public void a(cmd0x9c7.RspBody paramRspBody)
-  {
-    if (paramRspBody == null) {}
-    for (paramRspBody = null;; paramRspBody = paramRspBody.toByteArray())
-    {
-      b(4123, new Object[] { paramRspBody });
-      return;
+    if (paramArrayList != null) {
+      a(4118, new Object[] { paramArrayList.getStringArrayList("key"), paramArrayList.getStringArrayList("path") });
     }
   }
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    if (paramBoolean) {}
-    for (int i = 4099;; i = 4098)
-    {
-      b(i, new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString6, paramString7, paramString8, paramString9 });
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 4099;
+    } else {
+      i = 4098;
     }
+    b(i, new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString6, paramString7, paramString8, paramString9 });
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -465,248 +378,335 @@ public class NearbyProcManager
   
   public boolean a(int paramInt, boolean paramBoolean)
   {
-    boolean bool1 = false;
-    Object localObject = null;
-    SharedPreferences localSharedPreferences = NearbySPUtil.a("nearby_event_file", this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getAccount(), 4);
+    Object localObject2 = ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getSharedPreferences("nearby_event_file", this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getAccount(), 4);
     if (this.jdField_a_of_type_ArrayOfBoolean == null)
     {
       this.jdField_a_of_type_ArrayOfBoolean = new boolean[2];
+      localObject1 = null;
       int i = 0;
-      if (i < this.jdField_a_of_type_ArrayOfBoolean.length)
+      while (i < this.jdField_a_of_type_ArrayOfBoolean.length)
       {
-        switch (i)
+        if (i != 0)
         {
+          if (i == 1) {
+            localObject1 = "config_show_rank";
+          }
         }
-        for (;;)
-        {
-          this.jdField_a_of_type_ArrayOfBoolean[i] = localSharedPreferences.getBoolean((String)localObject, false);
-          i += 1;
-          break;
-          localObject = "config_show_date";
-          continue;
-          localObject = "config_show_rank";
+        else {
+          localObject1 = "config_show_date";
         }
+        this.jdField_a_of_type_ArrayOfBoolean[i] = ((SharedPreferences)localObject2).getBoolean((String)localObject1, false);
+        i += 1;
       }
     }
-    localObject = localSharedPreferences.edit();
-    if (this.jdField_a_of_type_ArrayOfBoolean[paramInt] != paramBoolean)
+    Object localObject1 = ((SharedPreferences)localObject2).edit();
+    localObject2 = this.jdField_a_of_type_ArrayOfBoolean;
+    label219:
+    boolean bool1;
+    if (localObject2[paramInt] != paramBoolean)
     {
-      this.jdField_a_of_type_ArrayOfBoolean[paramInt] = paramBoolean;
-      switch (paramInt)
+      localObject2[paramInt] = paramBoolean;
+      if ((paramInt == 0) || (paramInt == 1))
       {
+        try
+        {
+          ((SharedPreferences.Editor)localObject1).putBoolean("config_show_rank", paramBoolean);
+        }
+        catch (Exception localException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label219;
+          }
+          localException.printStackTrace();
+          NearbyUtils.a("onGetMyTabConfig", new Object[] { "save config", Integer.valueOf(paramInt), localException.toString() });
+        }
+        ((SharedPreferences.Editor)localObject1).putBoolean("config_show_date", paramBoolean);
       }
-    }
-    for (;;)
-    {
       bool1 = true;
-      for (;;)
+    }
+    else
+    {
+      bool1 = false;
+    }
+    try
+    {
+      boolean bool2 = ((SharedPreferences.Editor)localObject1).commit();
+      if (QLog.isColorLevel())
       {
-        for (;;)
-        {
-          try
-          {
-            boolean bool2 = ((SharedPreferences.Editor)localObject).commit();
-            if (QLog.isColorLevel()) {
-              NearbyUtils.a("onGetMyTabConfig", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-            }
-            return bool1;
-          }
-          catch (Throwable localThrowable)
-          {
-            localThrowable.printStackTrace();
-          }
-          try
-          {
-            ((SharedPreferences.Editor)localObject).putBoolean("config_show_date", paramBoolean);
-          }
-          catch (Exception localException)
-          {
-            if (QLog.isColorLevel())
-            {
-              localException.printStackTrace();
-              NearbyUtils.a("onGetMyTabConfig", new Object[] { "save config", Integer.valueOf(paramInt), localException.toString() });
-            }
-            bool1 = true;
-          }
-        }
+        NearbyUtils.a("onGetMyTabConfig", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+        return bool1;
       }
-      ((SharedPreferences.Editor)localObject).putBoolean("config_show_rank", paramBoolean);
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
     return bool1;
   }
   
   public Object[] a(int paramInt, Object... paramVarArgs)
   {
-    switch (paramInt)
+    if (paramInt != 4100)
     {
-    default: 
-    case 4100: 
-    case 4101: 
-    case 4113: 
-    case 4114: 
-    case 4115: 
-    case 4116: 
-    case 4117: 
-    case 4122: 
-    case 4126: 
-    case 4131: 
-    case 4140: 
-    case 4142: 
-    case 4144: 
-    case 4146: 
-      do
+      Object localObject;
+      if (paramInt != 4101)
       {
-        do
+        if (paramInt != 4122)
         {
-          do
+          if (paramInt != 4126)
           {
-            do
+            if (paramInt != 4131)
             {
-              for (;;)
+              if (paramInt != 4140)
               {
-                return null;
-                if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof Integer)))
+                int i;
+                if (paramInt != 4142)
                 {
-                  paramInt = ((Integer)paramVarArgs[0]).intValue();
-                  if (QLog.isColorLevel())
+                  if (paramInt != 4144)
                   {
-                    NearbyUtils.a("MSG_NOTIFY_HAS_UNREAD_MSG", new Object[] { Integer.valueOf(paramInt) });
-                    return null;
-                    if ((paramVarArgs != null) && (paramVarArgs.length == 1))
+                    if (paramInt != 4146)
                     {
-                      paramVarArgs = (byte[])paramVarArgs[0];
-                      try
+                      if (paramInt != 4159)
                       {
-                        SubMsgType0x27.AppointmentNotify localAppointmentNotify = new SubMsgType0x27.AppointmentNotify();
-                        localAppointmentNotify.mergeFrom(paramVarArgs);
-                        a(localAppointmentNotify);
-                        return null;
-                      }
-                      catch (Exception paramVarArgs)
-                      {
-                        paramVarArgs.printStackTrace();
-                        return null;
-                      }
-                      if ((paramVarArgs != null) && (paramVarArgs.length == 2))
-                      {
-                        a(4113, new Object[] { paramVarArgs[0], paramVarArgs[1] });
-                        return null;
-                        if ((paramVarArgs != null) && (paramVarArgs.length == 2))
+                        if (paramInt != 4164)
                         {
-                          a(4114, new Object[] { paramVarArgs[0], paramVarArgs[1] });
-                          return null;
-                          if ((paramVarArgs != null) && (paramVarArgs.length == 1))
+                          if (paramInt != 4161)
                           {
-                            a(4115, paramVarArgs);
-                            return null;
-                            if ((paramVarArgs != null) && (paramVarArgs.length == 1))
+                            if (paramInt != 4162)
                             {
-                              a(4116, paramVarArgs);
-                              return null;
-                              NearbyMineHelper.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, 0, true);
-                              return null;
-                              if ((paramVarArgs != null) && (paramVarArgs.length >= 3)) {
-                                try
+                              switch (paramInt)
+                              {
+                              default: 
+                                return null;
+                              case 4117: 
+                                ((INearbyMineHelper)QRoute.api(INearbyMineHelper.class)).updateNearbyMyTabCard(this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface, 0, true);
+                                return null;
+                              case 4116: 
+                                if (paramVarArgs != null)
                                 {
-                                  paramInt = ((Integer)paramVarArgs[0]).intValue();
-                                  QLog.i("updateCharmConfigIPC", 1, "Charm=" + paramInt);
-                                  if (paramVarArgs[1] != null) {
-                                    new Oidb_0x686.NearbyRankConfig().mergeFrom((byte[])paramVarArgs[1]);
-                                  }
-                                  if (paramVarArgs[2] != null)
-                                  {
-                                    new Oidb_0x686.NearbyFeedConfig().mergeFrom((byte[])paramVarArgs[2]);
+                                  if (paramVarArgs.length != 1) {
                                     return null;
                                   }
+                                  a(4116, paramVarArgs);
+                                  return null;
                                 }
-                                catch (Exception paramVarArgs) {}
+                                return null;
+                              case 4115: 
+                                if (paramVarArgs != null)
+                                {
+                                  if (paramVarArgs.length != 1) {
+                                    return null;
+                                  }
+                                  a(4115, paramVarArgs);
+                                  return null;
+                                }
+                                return null;
+                              case 4114: 
+                                if (paramVarArgs != null)
+                                {
+                                  if (paramVarArgs.length != 2) {
+                                    return null;
+                                  }
+                                  a(4114, new Object[] { paramVarArgs[0], paramVarArgs[1] });
+                                  return null;
+                                }
+                                return null;
                               }
+                              if (paramVarArgs != null)
+                              {
+                                if (paramVarArgs.length != 2) {
+                                  return null;
+                                }
+                                a(4113, new Object[] { paramVarArgs[0], paramVarArgs[1] });
+                                return null;
+                              }
+                              return null;
+                            }
+                            try
+                            {
+                              a(4162, new Object[] { (Integer)paramVarArgs[0], (String)paramVarArgs[1] });
+                              return null;
+                            }
+                            catch (Exception paramVarArgs)
+                            {
+                              paramVarArgs.printStackTrace();
+                              return null;
                             }
                           }
+                          try
+                          {
+                            a(4161, new Object[] { (Integer)paramVarArgs[0], (String)paramVarArgs[1], (Bitmap)paramVarArgs[2] });
+                            return null;
+                          }
+                          catch (Exception paramVarArgs)
+                          {
+                            paramVarArgs.printStackTrace();
+                            return null;
+                          }
+                        }
+                        try
+                        {
+                          a(4164, new Object[] { (Integer)paramVarArgs[0] });
+                          return null;
+                        }
+                        catch (Exception paramVarArgs)
+                        {
+                          paramVarArgs.printStackTrace();
+                          return null;
                         }
                       }
+                      a(4159, new Object[0]);
+                      return null;
+                    }
+                    if ((paramVarArgs != null) && (paramVarArgs.length == 2))
+                    {
+                      paramInt = ((Integer)paramVarArgs[0]).intValue();
+                      i = ((Integer)paramVarArgs[1]).intValue();
+                      ((NearbyHandler)this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getBusinessHandler(NearbyConstants.jdField_a_of_type_JavaLangString)).a(paramInt, i);
+                      return null;
                     }
                   }
+                  else
+                  {
+                    this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.clearMyTabCardVisitorInfo();
+                    return null;
+                  }
+                }
+                else
+                {
+                  if (paramVarArgs != null)
+                  {
+                    if (paramVarArgs.length != 4) {
+                      return null;
+                    }
+                    try
+                    {
+                      long l = ((Long)paramVarArgs[0]).longValue();
+                      paramInt = ((Integer)paramVarArgs[1]).intValue();
+                      i = ((Integer)paramVarArgs[2]).intValue();
+                      int j = ((Integer)paramVarArgs[3]).intValue();
+                      ((NearbyReportManager)this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getManager(NearbyConstants.h)).a(l, paramInt, i, j);
+                      return null;
+                    }
+                    catch (Exception paramVarArgs)
+                    {
+                      paramVarArgs.printStackTrace();
+                      return null;
+                    }
+                  }
+                  return null;
                 }
               }
-            } while (!QLog.isColorLevel());
-            QLog.d("NearbyProcManager", 2, "MSG_GET_CHARM_EVENT catch exception:", paramVarArgs);
+              else
+              {
+                PicIPManager.a();
+                return null;
+              }
+            }
+            else
+            {
+              if (paramVarArgs != null)
+              {
+                if (paramVarArgs.length != 2) {
+                  return null;
+                }
+                a(4131, new Object[] { Integer.valueOf(((Integer)paramVarArgs[0]).intValue()), Boolean.valueOf(((Boolean)paramVarArgs[1]).booleanValue()) });
+                return null;
+              }
+              return null;
+            }
+          }
+          else
+          {
+            ((NearbyDataManager)this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getManager(NearbyConstants.b)).a();
             return null;
-            ((NearbyDataManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(NearbyConstants.b)).a();
-            return null;
-          } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
-          a(4131, new Object[] { Integer.valueOf(((Integer)paramVarArgs[0]).intValue()), Boolean.valueOf(((Boolean)paramVarArgs[1]).booleanValue()) });
-          return null;
-          PicIPManager.a();
-          return null;
-        } while ((paramVarArgs == null) || (paramVarArgs.length != 4));
-        try
+          }
+        }
+        else if (paramVarArgs != null)
         {
-          long l = ((Long)paramVarArgs[0]).longValue();
-          paramInt = ((Integer)paramVarArgs[1]).intValue();
-          i = ((Integer)paramVarArgs[2]).intValue();
-          int j = ((Integer)paramVarArgs[3]).intValue();
-          ((NearbyReportManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(NearbyConstants.h)).a(l, paramInt, i, j);
+          if (paramVarArgs.length < 3) {
+            return null;
+          }
+          try
+          {
+            paramInt = ((Integer)paramVarArgs[0]).intValue();
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("Charm=");
+            ((StringBuilder)localObject).append(paramInt);
+            QLog.i("updateCharmConfigIPC", 1, ((StringBuilder)localObject).toString());
+            if (paramVarArgs[1] != null) {
+              new Oidb_0x686.NearbyRankConfig().mergeFrom((byte[])paramVarArgs[1]);
+            }
+            if (paramVarArgs[2] == null) {
+              break label884;
+            }
+            new Oidb_0x686.NearbyFeedConfig().mergeFrom((byte[])paramVarArgs[2]);
+            return null;
+          }
+          catch (Exception paramVarArgs)
+          {
+            if (!QLog.isColorLevel()) {
+              break label884;
+            }
+          }
+          QLog.d("NearbyProcManager", 2, "MSG_GET_CHARM_EVENT catch exception:", paramVarArgs);
           return null;
         }
-        catch (Exception paramVarArgs)
+        else
         {
-          paramVarArgs.printStackTrace();
           return null;
         }
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a();
+      }
+      else
+      {
+        if (paramVarArgs != null)
+        {
+          if (paramVarArgs.length != 1) {
+            return null;
+          }
+          paramVarArgs = (byte[])paramVarArgs[0];
+          try
+          {
+            localObject = new SubMsgType0x27.AppointmentNotify();
+            ((SubMsgType0x27.AppointmentNotify)localObject).mergeFrom(paramVarArgs);
+            a((SubMsgType0x27.AppointmentNotify)localObject);
+            return null;
+          }
+          catch (Exception paramVarArgs)
+          {
+            paramVarArgs.printStackTrace();
+            return null;
+          }
+        }
         return null;
-      } while ((paramVarArgs == null) || (paramVarArgs.length != 2));
+      }
+    }
+    else if ((paramVarArgs != null) && (paramVarArgs.length == 1))
+    {
+      if (!(paramVarArgs[0] instanceof Integer)) {
+        return null;
+      }
       paramInt = ((Integer)paramVarArgs[0]).intValue();
-      int i = ((Integer)paramVarArgs[1]).intValue();
-      ((NearbyHandler)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getBusinessHandler(NearbyConstants.jdField_a_of_type_JavaLangString)).a(paramInt, i);
-      return null;
-    case 4159: 
-      a(4159, new Object[0]);
-      return null;
-    case 4161: 
-      try
-      {
-        a(4161, new Object[] { (Integer)paramVarArgs[0], (String)paramVarArgs[1], (Bitmap)paramVarArgs[2] });
-        return null;
-      }
-      catch (Exception paramVarArgs)
-      {
-        paramVarArgs.printStackTrace();
-        return null;
-      }
-    case 4162: 
-      try
-      {
-        a(4162, new Object[] { (Integer)paramVarArgs[0], (String)paramVarArgs[1] });
-        return null;
-      }
-      catch (Exception paramVarArgs)
-      {
-        paramVarArgs.printStackTrace();
-        return null;
+      if (QLog.isColorLevel()) {
+        NearbyUtils.a("MSG_NOTIFY_HAS_UNREAD_MSG", new Object[] { Integer.valueOf(paramInt) });
       }
     }
-    try
-    {
-      a(4164, new Object[] { (Integer)paramVarArgs[0] });
-      return null;
-    }
-    catch (Exception paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
-    }
+    label884:
     return null;
   }
   
   public int b()
   {
-    Object[] arrayOfObject = b(4163, new Object[] { AppConstants.NEARBY_LBS_HELLO_UIN });
+    Object localObject = b(4163, new Object[] { AppConstants.NEARBY_LBS_HELLO_UIN });
     try
     {
-      int i = ((Integer)arrayOfObject[0]).intValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.msgbox.tab", 2, "getNearbyMsgBoxUnreadNum toolProcess,num=" + i);
+      int i = ((Integer)localObject[0]).intValue();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getNearbyMsgBoxUnreadNum toolProcess,num=");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("nearby.msgbox.tab", 2, ((StringBuilder)localObject).toString());
       }
       return i;
     }
@@ -723,20 +723,22 @@ public class NearbyProcManager
   {
     NearbyRedNum localNearbyRedNum = new NearbyRedNum();
     Object[] arrayOfObject = b(4166, new Object[] { Integer.valueOf(0) });
-    if (arrayOfObject != null) {}
-    try
-    {
-      localNearbyRedNum.jdField_a_of_type_Int = ((Integer)arrayOfObject[0]).intValue();
-      localNearbyRedNum.b = ((Integer)arrayOfObject[1]).intValue();
-      localNearbyRedNum.c = ((Integer)arrayOfObject[2]).intValue();
-      localNearbyRedNum.d = ((Integer)arrayOfObject[3]).intValue();
-      localNearbyRedNum.jdField_a_of_type_JavaLangString = ((String)arrayOfObject[4]);
-      return localNearbyRedNum;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isDevelopLevel()) {}
-      localException.printStackTrace();
+    if (arrayOfObject != null) {
+      try
+      {
+        localNearbyRedNum.jdField_a_of_type_Int = ((Integer)arrayOfObject[0]).intValue();
+        localNearbyRedNum.b = ((Integer)arrayOfObject[1]).intValue();
+        localNearbyRedNum.c = ((Integer)arrayOfObject[2]).intValue();
+        localNearbyRedNum.d = ((Integer)arrayOfObject[3]).intValue();
+        localNearbyRedNum.jdField_a_of_type_JavaLangString = ((String)arrayOfObject[4]);
+        return localNearbyRedNum;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isDevelopLevel()) {
+          localException.printStackTrace();
+        }
+      }
     }
     return localNearbyRedNum;
   }
@@ -757,39 +759,43 @@ public class NearbyProcManager
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcess.b();
+    a(4147);
   }
   
-  public void b(NearbyProcObserver paramNearbyProcObserver)
+  public void b(INearbyProcObserver paramINearbyProcObserver)
   {
     synchronized (this.jdField_b_of_type_JavaUtilList)
     {
-      if (this.jdField_b_of_type_JavaUtilList.contains(paramNearbyProcObserver)) {
-        this.jdField_b_of_type_JavaUtilList.remove(paramNearbyProcObserver);
+      if (this.jdField_b_of_type_JavaUtilList.contains(paramINearbyProcObserver)) {
+        this.jdField_b_of_type_JavaUtilList.remove(paramINearbyProcObserver);
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        if (this.jdField_a_of_type_JavaUtilList.contains(paramINearbyProcObserver)) {
+          this.jdField_a_of_type_JavaUtilList.remove(paramINearbyProcObserver);
+        }
+        return;
       }
     }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramNearbyProcObserver)) {
-        this.jdField_a_of_type_JavaUtilList.remove(paramNearbyProcObserver);
-      }
-      return;
-      paramNearbyProcObserver = finally;
-      throw paramNearbyProcObserver;
+  }
+  
+  public void b(Object paramObject)
+  {
+    paramObject = (cmd0x9c7.RspBody)paramObject;
+    if (paramObject == null) {
+      paramObject = null;
+    } else {
+      paramObject = paramObject.toByteArray();
     }
+    b(4123, new Object[] { paramObject });
   }
   
   public void c()
   {
-    a(4147);
-  }
-  
-  public void d()
-  {
     a(4148);
   }
   
-  public void e()
+  public void d()
   {
     if (QLog.isColorLevel()) {
       QLog.d("NearbyProcManager", 2, "clearNearbyMatchMakerRedNum");
@@ -797,26 +803,29 @@ public class NearbyProcManager
     a(4167);
   }
   
+  public void e()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcess.b();
+  }
+  
   public void onDestroy()
   {
-    b();
+    e();
     this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcess = null;
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilList)
-    {
-      this.jdField_b_of_type_JavaUtilList.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
+      synchronized (this.jdField_b_of_type_JavaUtilList)
+      {
+        this.jdField_b_of_type_JavaUtilList.clear();
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.NearbyProcManager
  * JD-Core Version:    0.7.0.1
  */

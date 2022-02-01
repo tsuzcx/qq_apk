@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class TroopHWFileDownloadManager
 {
-  public static final String a;
+  public static final String a = "cooperation.troop_homework.jsp.TroopHWFileDownloadManager";
   private ITMAssistantDownloadClientListener jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new TroopHWFileDownloadManager.5(this);
   private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient;
   private TMAssistantDownloadSettingClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadSettingClient;
@@ -20,15 +20,15 @@ public class TroopHWFileDownloadManager
   private String jdField_b_of_type_JavaLangString;
   private HashMap<String, TroopHWFileDownloadManager.OnDownloadStateListener> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = TroopHWFileDownloadManager.class.getName();
-  }
-  
   public TroopHWFileDownloadManager(Context paramContext)
   {
     TMAssistantDownloadManager localTMAssistantDownloadManager = TMAssistantDownloadManager.getInstance(paramContext.getApplicationContext());
-    this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_JavaLangString + Process.myPid() + "_" + System.currentTimeMillis());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append("_");
+    localStringBuilder.append(System.currentTimeMillis());
+    this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = localTMAssistantDownloadManager.getDownloadSDKClient(this.jdField_b_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadSettingClient = TMAssistantDownloadManager.getInstance(paramContext).getDownloadSDKSettingClient();
     this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener);
@@ -68,7 +68,7 @@ public class TroopHWFileDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWFileDownloadManager
  * JD-Core Version:    0.7.0.1
  */

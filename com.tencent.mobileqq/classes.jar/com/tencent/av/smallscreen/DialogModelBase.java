@@ -21,35 +21,42 @@ public abstract class DialogModelBase
   
   void a(String paramString, QQCustomDialog paramQQCustomDialog)
   {
-    boolean bool = true;
-    if ((paramQQCustomDialog == null) || (this.a.isFinishing())) {}
-    for (;;)
+    if (paramQQCustomDialog != null)
     {
-      return;
+      if (this.a.isFinishing()) {
+        return;
+      }
+      boolean bool = false;
       try
       {
         paramQQCustomDialog.show();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("DialogModelBase", 2, "showDialog, from[" + paramString + "], isShowSuc[" + bool + "]");
-        return;
-      }
-      catch (WindowManager.BadTokenException paramQQCustomDialog)
-      {
-        for (;;)
-        {
-          QLog.w("DialogModelBase", 1, "showDialog BadTokenException, from[" + paramString + "]", paramQQCustomDialog);
-          bool = false;
-        }
+        bool = true;
       }
       catch (Throwable paramQQCustomDialog)
       {
-        for (;;)
-        {
-          QLog.w("DialogModelBase", 1, "showDialog BadTokenException, from[" + paramString + "]", paramQQCustomDialog);
-          bool = false;
-        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showDialog BadTokenException, from[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        QLog.w("DialogModelBase", 1, localStringBuilder.toString(), paramQQCustomDialog);
+      }
+      catch (WindowManager.BadTokenException paramQQCustomDialog)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showDialog BadTokenException, from[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        QLog.w("DialogModelBase", 1, localStringBuilder.toString(), paramQQCustomDialog);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramQQCustomDialog = new StringBuilder();
+        paramQQCustomDialog.append("showDialog, from[");
+        paramQQCustomDialog.append(paramString);
+        paramQQCustomDialog.append("], isShowSuc[");
+        paramQQCustomDialog.append(bool);
+        paramQQCustomDialog.append("]");
+        QLog.w("DialogModelBase", 2, paramQQCustomDialog.toString());
       }
     }
   }
@@ -62,7 +69,7 @@ public abstract class DialogModelBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.smallscreen.DialogModelBase
  * JD-Core Version:    0.7.0.1
  */

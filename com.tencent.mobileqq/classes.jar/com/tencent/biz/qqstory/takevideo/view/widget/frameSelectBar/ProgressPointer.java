@@ -75,40 +75,41 @@ public class ProgressPointer
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 1)
     {
-    }
-    for (;;)
-    {
-      return false;
       long l1 = System.currentTimeMillis();
       long l2 = this.jdField_a_of_type_Long;
       this.jdField_a_of_type_Long = l1;
-      this.jdField_a_of_type_Float = ((float)(l1 - l2) * 100.0F / this.c + this.jdField_a_of_type_Float);
+      float f1 = (float)(l1 - l2) * 100.0F / this.c;
+      this.jdField_a_of_type_Float += f1;
       if (this.jdField_a_of_type_Float > 100.0F) {
         this.jdField_a_of_type_Float = 100.0F;
       }
       invalidate();
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 50L);
     }
+    return false;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Float >= 0.0F)
+    float f1 = this.jdField_a_of_type_Float;
+    if (f1 >= 0.0F)
     {
-      float f1 = (this.b - this.jdField_a_of_type_Int) * this.jdField_a_of_type_Float / 100.0F + this.jdField_a_of_type_Int;
-      paramCanvas.drawRect(f1 - 2.0F, 0.0F, 2.0F + f1, this.f, this.jdField_a_of_type_AndroidGraphicsPaint);
+      int i = this.b;
+      int j = this.jdField_a_of_type_Int;
+      f1 = (i - j) * f1 / 100.0F + j;
+      paramCanvas.drawRect(f1 - 2.0F, 0.0F, f1 + 2.0F, this.f, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     this.e = View.MeasureSpec.getSize(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
@@ -130,7 +131,7 @@ public class ProgressPointer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ProgressPointer
  * JD-Core Version:    0.7.0.1
  */

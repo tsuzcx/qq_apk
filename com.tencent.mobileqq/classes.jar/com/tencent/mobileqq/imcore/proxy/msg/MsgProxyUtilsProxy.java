@@ -6,8 +6,9 @@ public class MsgProxyUtilsProxy
   
   public static boolean isSaveConversation(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (proxy != null) {
-      return proxy.isSaveConversation(paramString1, paramString2, paramInt1, paramInt2);
+    MsgProxyUtilsProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      return localProxy.isSaveConversation(paramString1, paramString2, paramInt1, paramInt2);
     }
     return true;
   }
@@ -19,7 +20,7 @@ public class MsgProxyUtilsProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.msg.MsgProxyUtilsProxy
  * JD-Core Version:    0.7.0.1
  */

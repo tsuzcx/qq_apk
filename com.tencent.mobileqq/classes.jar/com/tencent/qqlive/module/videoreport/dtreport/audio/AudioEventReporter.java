@@ -26,10 +26,11 @@ public class AudioEventReporter
   
   private static void addAudioPublicParams(AudioEntity paramAudioEntity, Map<String, Object> paramMap)
   {
-    if ((paramAudioEntity == null) || (paramMap == null)) {}
-    for (;;)
+    if (paramAudioEntity != null)
     {
-      return;
+      if (paramMap == null) {
+        return;
+      }
       paramMap.put("dt_audio_contentid", paramAudioEntity.getContentId());
       paramAudioEntity = paramAudioEntity.getAudioCustomParams();
       if (paramAudioEntity != null)
@@ -61,65 +62,77 @@ public class AudioEventReporter
   private static Map<String, Object> prepareAudioEndReportData(Object paramObject, AudioSession paramAudioSession)
   {
     HashMap localHashMap = new HashMap();
-    if ((paramObject == null) || (paramAudioSession == null)) {
-      return localHashMap;
+    if (paramObject != null)
+    {
+      if (paramAudioSession == null) {
+        return localHashMap;
+      }
+      localHashMap.put("dt_audio_stoptime", Long.valueOf(System.currentTimeMillis()));
+      localHashMap.put("dt_audio_sessionid", paramAudioSession.getAudioSessionId());
+      localHashMap.put("dt_audio_duration_foreground", Long.valueOf(paramAudioSession.getForegroundDuration()));
+      localHashMap.put("dt_audio_duration_background", Long.valueOf(paramAudioSession.getBackgroundDuration()));
+      addAudioPublicParams(paramAudioSession.getAudioEntity(), localHashMap);
     }
-    localHashMap.put("dt_audio_stoptime", Long.valueOf(System.currentTimeMillis()));
-    localHashMap.put("dt_audio_sessionid", paramAudioSession.getAudioSessionId());
-    localHashMap.put("dt_audio_duration_foreground", Long.valueOf(paramAudioSession.getForegroundDuration()));
-    localHashMap.put("dt_audio_duration_background", Long.valueOf(paramAudioSession.getBackgroundDuration()));
-    addAudioPublicParams(paramAudioSession.getAudioEntity(), localHashMap);
     return localHashMap;
   }
   
   private static Map<String, Object> prepareAudioHeartBeatReportData(Object paramObject, String paramString, AudioSession paramAudioSession, long paramLong1, long paramLong2)
   {
     HashMap localHashMap = new HashMap();
-    if ((paramObject == null) || (paramAudioSession == null)) {
-      return localHashMap;
+    if (paramObject != null)
+    {
+      if (paramAudioSession == null) {
+        return localHashMap;
+      }
+      localHashMap.put("dt_audio_heartbeat_interval", Long.valueOf(paramAudioSession.getHeartBeatInterval() / 1000L));
+      localHashMap.put("dt_audio_sessionid", paramString);
+      localHashMap.put("dt_audio_duration_foreground", Long.valueOf(paramLong1));
+      localHashMap.put("dt_audio_duration_background", Long.valueOf(paramLong2));
+      addAudioPublicParams(paramAudioSession.getAudioEntity(), localHashMap);
     }
-    localHashMap.put("dt_audio_heartbeat_interval", Long.valueOf(paramAudioSession.getHeartBeatInterval() / 1000L));
-    localHashMap.put("dt_audio_sessionid", paramString);
-    localHashMap.put("dt_audio_duration_foreground", Long.valueOf(paramLong1));
-    localHashMap.put("dt_audio_duration_background", Long.valueOf(paramLong2));
-    addAudioPublicParams(paramAudioSession.getAudioEntity(), localHashMap);
     return localHashMap;
   }
   
   private static Map<String, Object> prepareAudioStartReportData(Object paramObject, AudioSession paramAudioSession)
   {
     HashMap localHashMap = new HashMap();
-    if ((paramObject == null) || (paramAudioSession == null)) {
-      return localHashMap;
+    if (paramObject != null)
+    {
+      if (paramAudioSession == null) {
+        return localHashMap;
+      }
+      localHashMap.put("dt_audio_starttime", Long.valueOf(System.currentTimeMillis()));
+      localHashMap.put("dt_audio_sessionid", paramAudioSession.getAudioSessionId());
+      localHashMap.put("dt_audio_heartbeat_interval", Long.valueOf(paramAudioSession.getHeartBeatInterval() / 1000L));
+      localHashMap.put("dt_audio_file_interval", Long.valueOf(paramAudioSession.getTimePinInterval() / 1000L));
+      AudioEntity localAudioEntity = paramAudioSession.getAudioEntity();
+      if (localAudioEntity != null) {
+        localHashMap.put("dt_play_type", localAudioEntity.getPlayType());
+      }
+      if ((paramObject instanceof IAudioPlayer)) {
+        localHashMap.put("dt_audio_player_type", Integer.valueOf(((IAudioPlayer)paramObject).getPlayerType__()));
+      }
+      addAudioPublicParams(paramAudioSession.getAudioEntity(), localHashMap);
     }
-    localHashMap.put("dt_audio_starttime", Long.valueOf(System.currentTimeMillis()));
-    localHashMap.put("dt_audio_sessionid", paramAudioSession.getAudioSessionId());
-    localHashMap.put("dt_audio_heartbeat_interval", Long.valueOf(paramAudioSession.getHeartBeatInterval() / 1000L));
-    localHashMap.put("dt_audio_file_interval", Long.valueOf(paramAudioSession.getTimePinInterval() / 1000L));
-    AudioEntity localAudioEntity = paramAudioSession.getAudioEntity();
-    if (localAudioEntity != null) {
-      localHashMap.put("dt_play_type", localAudioEntity.getPlayType());
-    }
-    if ((paramObject instanceof IAudioPlayer)) {
-      localHashMap.put("dt_audio_player_type", Integer.valueOf(((IAudioPlayer)paramObject).getPlayerType__()));
-    }
-    addAudioPublicParams(paramAudioSession.getAudioEntity(), localHashMap);
     return localHashMap;
   }
   
   public static void reportAudioEnd(Object paramObject, AudioSession paramAudioSession)
   {
-    if ((paramObject == null) || (paramAudioSession == null)) {
-      return;
+    if (paramObject != null)
+    {
+      if (paramAudioSession == null) {
+        return;
+      }
+      FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
+      localFinalData.setEventKey("dt_audio_end");
+      localFinalData.putAll(prepareAudioEndReportData(paramObject, paramAudioSession));
+      paramAudioSession = VideoReportInner.getInstance().getEventDynamicParams();
+      if (paramAudioSession != null) {
+        paramAudioSession.setEventDynamicParams("dt_audio_end", localFinalData.getEventParams());
+      }
+      FinalDataTarget.handle(paramObject, localFinalData);
     }
-    FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
-    localFinalData.setEventKey("dt_audio_end");
-    localFinalData.putAll(prepareAudioEndReportData(paramObject, paramAudioSession));
-    paramAudioSession = VideoReportInner.getInstance().getEventDynamicParams();
-    if (paramAudioSession != null) {
-      paramAudioSession.setEventDynamicParams("dt_audio_end", localFinalData.getEventParams());
-    }
-    FinalDataTarget.handle(paramObject, localFinalData);
   }
   
   public static void reportAudioHeartBeat(Object paramObject, String paramString, AudioSession paramAudioSession, long paramLong1, long paramLong2)
@@ -129,17 +142,20 @@ public class AudioEventReporter
   
   public static void reportAudioStart(Object paramObject, AudioSession paramAudioSession)
   {
-    if ((paramObject == null) || (paramAudioSession == null)) {
-      return;
+    if (paramObject != null)
+    {
+      if (paramAudioSession == null) {
+        return;
+      }
+      FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
+      localFinalData.setEventKey("dt_audio_start");
+      localFinalData.putAll(prepareAudioStartReportData(paramObject, paramAudioSession));
+      paramAudioSession = VideoReportInner.getInstance().getEventDynamicParams();
+      if (paramAudioSession != null) {
+        paramAudioSession.setEventDynamicParams("dt_audio_start", localFinalData.getEventParams());
+      }
+      FinalDataTarget.handle(paramObject, localFinalData);
     }
-    FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
-    localFinalData.setEventKey("dt_audio_start");
-    localFinalData.putAll(prepareAudioStartReportData(paramObject, paramAudioSession));
-    paramAudioSession = VideoReportInner.getInstance().getEventDynamicParams();
-    if (paramAudioSession != null) {
-      paramAudioSession.setEventDynamicParams("dt_audio_start", localFinalData.getEventParams());
-    }
-    FinalDataTarget.handle(paramObject, localFinalData);
   }
   
   public static void reportLastAudioHeartBeat()
@@ -149,15 +165,18 @@ public class AudioEventReporter
   
   public static void saveLastAudioHeartBeat(Object paramObject, String paramString, AudioSession paramAudioSession, long paramLong1, long paramLong2)
   {
-    if ((paramObject == null) || (paramAudioSession == null)) {
-      return;
+    if (paramObject != null)
+    {
+      if (paramAudioSession == null) {
+        return;
+      }
+      paramObject = prepareAudioHeartBeatReportData(paramObject, paramString, paramAudioSession, paramLong1, paramLong2);
+      paramAudioSession = VideoReportInner.getInstance().getEventDynamicParams();
+      if (paramAudioSession != null) {
+        paramAudioSession.setEventDynamicParams("dt_audio_heartbeat", paramObject);
+      }
+      ThreadUtils.execTask(new AudioEventReporter.3(paramObject, paramString));
     }
-    paramObject = prepareAudioHeartBeatReportData(paramObject, paramString, paramAudioSession, paramLong1, paramLong2);
-    paramAudioSession = VideoReportInner.getInstance().getEventDynamicParams();
-    if (paramAudioSession != null) {
-      paramAudioSession.setEventDynamicParams("dt_audio_heartbeat", paramObject);
-    }
-    ThreadUtils.execTask(new AudioEventReporter.3(paramObject, paramString));
   }
   
   public void onActivityResume(Activity paramActivity)
@@ -171,7 +190,7 @@ public class AudioEventReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.audio.AudioEventReporter
  * JD-Core Version:    0.7.0.1
  */

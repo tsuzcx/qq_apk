@@ -14,22 +14,23 @@ class DragRecyclerView$2
   
   public void onItemLongPress(RecyclerView.ViewHolder paramViewHolder)
   {
-    if (paramViewHolder == null) {}
-    for (;;)
-    {
+    if (paramViewHolder == null) {
       return;
-      if (DragRecyclerView.access$000(this.this$0) != null) {}
-      for (boolean bool = DragRecyclerView.access$000(this.this$0).isItemDragable(paramViewHolder.getAdapterPosition()); bool; bool = false)
-      {
-        DragRecyclerView.access$100(this.this$0, paramViewHolder);
-        return;
-      }
+    }
+    boolean bool;
+    if (DragRecyclerView.access$000(this.this$0) != null) {
+      bool = DragRecyclerView.access$000(this.this$0).isItemDragable(paramViewHolder.getAdapterPosition());
+    } else {
+      bool = false;
+    }
+    if (bool) {
+      DragRecyclerView.access$100(this.this$0, paramViewHolder);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView.2
  * JD-Core Version:    0.7.0.1
  */

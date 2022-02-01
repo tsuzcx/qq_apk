@@ -14,16 +14,20 @@ public class Messages$VolumeMessage
     if (localObject == null)
     {
       localObject = null;
-      localVolumeMessage.textureId = ((Long)localObject);
-      localVolumeMessage.volume = ((Double)paramHashMap.get("volume"));
-      return localVolumeMessage;
     }
-    if ((localObject instanceof Integer)) {}
-    for (long l = ((Integer)localObject).intValue();; l = ((Long)localObject).longValue())
+    else
     {
+      long l;
+      if ((localObject instanceof Integer)) {
+        l = ((Integer)localObject).intValue();
+      } else {
+        l = ((Long)localObject).longValue();
+      }
       localObject = Long.valueOf(l);
-      break;
     }
+    localVolumeMessage.textureId = ((Long)localObject);
+    localVolumeMessage.volume = ((Double)paramHashMap.get("volume"));
+    return localVolumeMessage;
   }
   
   public Long getTextureId()
@@ -56,7 +60,7 @@ public class Messages$VolumeMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqcircle.video.Messages.VolumeMessage
  * JD-Core Version:    0.7.0.1
  */

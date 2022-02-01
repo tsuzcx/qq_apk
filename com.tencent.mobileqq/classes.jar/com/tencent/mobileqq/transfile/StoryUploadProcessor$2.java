@@ -10,16 +10,17 @@ final class StoryUploadProcessor$2
 {
   public void run()
   {
-    byte[] arrayOfByte2 = null;
     String str = QQStoryContext.a().a();
     for (;;)
     {
       try
       {
-        if (SessionInfo.getInstance(str).getHttpconn_sig_session() != null)
+        byte[] arrayOfByte1 = SessionInfo.getInstance(str).getHttpconn_sig_session();
+        byte[] arrayOfByte2 = null;
+        if (arrayOfByte1 != null)
         {
           int i = SessionInfo.getInstance(str).getHttpconn_sig_session().length;
-          byte[] arrayOfByte1 = new byte[i];
+          arrayOfByte1 = new byte[i];
           System.arraycopy(SessionInfo.getInstance(str).getHttpconn_sig_session(), 0, arrayOfByte1, 0, i);
           if (SessionInfo.getInstance(str).getSessionKey() != null)
           {
@@ -43,7 +44,7 @@ final class StoryUploadProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StoryUploadProcessor.2
  * JD-Core Version:    0.7.0.1
  */

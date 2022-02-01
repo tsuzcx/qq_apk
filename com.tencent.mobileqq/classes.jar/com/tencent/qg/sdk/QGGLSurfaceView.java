@@ -55,8 +55,10 @@ public class QGGLSurfaceView
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      Log.e("QGGLSurfaceView", "旧版so找不到子版本号");
+      label6:
+      break label6;
     }
+    Log.e("QGGLSurfaceView", "旧版so找不到子版本号");
     return 0;
   }
   
@@ -69,29 +71,31 @@ public class QGGLSurfaceView
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      Log.e("QGGLSurfaceView", "旧版so找不到版本号");
+      label6:
+      break label6;
     }
+    Log.e("QGGLSurfaceView", "旧版so找不到版本号");
     return 0;
   }
   
   public void addJavaScriptFile(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0))
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      Log.w("QG Warning", "addJavaScriptFile filename is empty");
+      this.mRenderer.nativeAddJavaScriptFile(paramString);
       return;
     }
-    this.mRenderer.nativeAddJavaScriptFile(paramString);
+    Log.w("QG Warning", "addJavaScriptFile filename is empty");
   }
   
   public void addJavaScriptFileFromSDCard(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0))
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      Log.w("QG Warning", "addJavaScriptFileFromSDCard filename is empty");
+      this.mRenderer.nativeAddJavaScriptFileFromSDCard(paramString);
       return;
     }
-    this.mRenderer.nativeAddJavaScriptFileFromSDCard(paramString);
+    Log.w("QG Warning", "addJavaScriptFileFromSDCard filename is empty");
   }
   
   public void clearCached()
@@ -134,64 +138,73 @@ public class QGGLSurfaceView
   
   public void loadJavaScriptFile(String paramString)
   {
-    if (Thread.currentThread().getId() != this.mGLThread.getId()) {
-      throw new RuntimeException("It is not allowed to call loadJS in non-GLThread");
-    }
-    if ((paramString == null) || (paramString.length() == 0))
+    if (Thread.currentThread().getId() == this.mGLThread.getId())
     {
+      if ((paramString != null) && (paramString.length() != 0))
+      {
+        this.mRenderer.nativeLoadJavaScriptFile(paramString);
+        return;
+      }
       Log.w("QG Warning", "loadJavaScriptFile filename is empty");
       return;
     }
-    this.mRenderer.nativeLoadJavaScriptFile(paramString);
+    throw new RuntimeException("It is not allowed to call loadJS in non-GLThread");
   }
   
   public void loadJavaScriptFileFromSDCard(String paramString)
   {
-    if (Thread.currentThread().getId() != this.mGLThread.getId()) {
-      throw new RuntimeException("It is not allowed to call loadJS in non-GLThread");
-    }
-    if ((paramString == null) || (paramString.length() == 0))
+    if (Thread.currentThread().getId() == this.mGLThread.getId())
     {
+      if ((paramString != null) && (paramString.length() != 0))
+      {
+        this.mRenderer.nativeLoadJavaScriptFileFromSDCard(paramString);
+        return;
+      }
       Log.w("QG Warning", "loadJavaScriptFile filename is empty");
       return;
     }
-    this.mRenderer.nativeLoadJavaScriptFileFromSDCard(paramString);
+    throw new RuntimeException("It is not allowed to call loadJS in non-GLThread");
   }
   
   public void loadOpenDataScriptFile(String paramString)
   {
-    if (Thread.currentThread().getId() != this.mGLThread.getId()) {
-      throw new RuntimeException("It is not allowed to call loadJS in non-GLThread");
-    }
-    if ((paramString == null) || (paramString.length() == 0))
+    if (Thread.currentThread().getId() == this.mGLThread.getId())
     {
+      if ((paramString != null) && (paramString.length() != 0))
+      {
+        this.mRenderer.nativeLoadOpenDataJavaScriptFile(paramString);
+        return;
+      }
       Log.w("QG Warning", "loadOpenDataScriptFile filename is empty");
       return;
     }
-    this.mRenderer.nativeLoadOpenDataJavaScriptFile(paramString);
+    throw new RuntimeException("It is not allowed to call loadJS in non-GLThread");
   }
   
   public void loadOpenDataScriptFileFromExternal(String paramString)
   {
-    if (Thread.currentThread().getId() != this.mGLThread.getId()) {
-      throw new RuntimeException("It is not allowed to call loadJS in non-GLThread");
-    }
-    if ((paramString == null) || (paramString.length() == 0)) {
+    if (Thread.currentThread().getId() == this.mGLThread.getId())
+    {
+      if ((paramString != null) && (paramString.length() != 0)) {
+        return;
+      }
       Log.w("QG Warning", "loadOpenDataScriptFileFromExternal filename is empty");
+      return;
     }
+    throw new RuntimeException("It is not allowed to call loadJS in non-GLThread");
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
   }
   
-  public void onConfigurationChanged(Configuration paramConfiguration)
+  protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
   }
@@ -220,7 +233,7 @@ public class QGGLSurfaceView
     super.onResume();
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -228,8 +241,9 @@ public class QGGLSurfaceView
   public void reset()
   {
     this.mRenderer.reset();
-    if (this.mQGBridge != null) {
-      this.mQGBridge.clearRegisteredEvents();
+    QGJNIBridge localQGJNIBridge = this.mQGBridge;
+    if (localQGJNIBridge != null) {
+      localQGJNIBridge.clearRegisteredEvents();
     }
     if (QGBitmapLoader.etc1TextureHashMap != null) {
       QGBitmapLoader.etc1TextureHashMap.clear();
@@ -240,7 +254,7 @@ public class QGGLSurfaceView
   {
     QGRenderer localQGRenderer = this.mRenderer;
     QGRenderer.extResPath = paramString;
-    this.mRenderer.setExtResPath(paramString);
+    localQGRenderer.setExtResPath(paramString);
   }
   
   public void setLimitFrame(int paramInt)
@@ -272,14 +286,15 @@ public class QGGLSurfaceView
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
     super.surfaceDestroyed(paramSurfaceHolder);
-    if (this.mQGBridge != null) {
-      this.mQGBridge.destroy();
+    paramSurfaceHolder = this.mQGBridge;
+    if (paramSurfaceHolder != null) {
+      paramSurfaceHolder.destroy();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.QGGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

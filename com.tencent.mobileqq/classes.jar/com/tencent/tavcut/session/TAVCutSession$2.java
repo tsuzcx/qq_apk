@@ -10,14 +10,15 @@ class TAVCutSession$2
   
   public void run()
   {
-    this.this$0.context = this.val$context;
-    this.this$0.stickerEventListener = new TAVCutSession.2.1(this);
+    TAVCutSession localTAVCutSession = this.this$0;
+    localTAVCutSession.context = this.val$context;
+    localTAVCutSession.stickerEventListener = new TAVCutSession.2.1(this);
     StickerEventDispatcher.getInstance().addStickerEventListener(this.this$0.stickerEventListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutSession.2
  * JD-Core Version:    0.7.0.1
  */

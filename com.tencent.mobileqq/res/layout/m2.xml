@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:id="@id/e6w" android:background="@drawable/jm" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/jg" android:minHeight="@dimen/jg"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.ThemeImageView android:id="@id/letsIcon" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="20.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/letsIcon" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="20.0dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     <RelativeLayout android:id="@id/ibo" android:layout_width="28.0dip" android:layout_height="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
         <ImageView android:id="@id/yx" android:duplicateParentState="true" android:layout_width="7.0dip" android:layout_height="11.5dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
     </RelativeLayout>

@@ -29,18 +29,16 @@ public class PermissionManager
     int j = paramVarArgs.length;
     int i = 0;
     Object localObject;
-    if (i < j)
+    while (i < j)
     {
       localObject = paramVarArgs[i];
-      if (!((PermissionParser)localObject).parse()) {}
-      for (;;)
+      if (((PermissionParser)localObject).parse())
       {
-        i += 1;
-        break;
         this.mScopePermissions.putAll(((PermissionParser)localObject).getScopePermissionMap());
         this.mSystemPermissions.putAll(((PermissionParser)localObject).getSystemPermissionMap());
         this.mAllEvents.putAll(((PermissionParser)localObject).getEventsMap());
       }
+      i += 1;
     }
     paramVarArgs = this.mAllEvents.values().iterator();
     while (paramVarArgs.hasNext())
@@ -58,8 +56,9 @@ public class PermissionManager
       }
     }
     this.mParsed = Boolean.valueOf(true);
-    if (this.mParseStateListener != null) {
-      this.mParseStateListener.onParsed();
+    paramVarArgs = this.mParseStateListener;
+    if (paramVarArgs != null) {
+      paramVarArgs.onParsed();
     }
   }
   
@@ -151,7 +150,7 @@ public class PermissionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.PermissionManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.PAStartupTracker;
 import com.tencent.mobileqq.utils.StartupTracker;
 import com.tencent.mobileqq.utils.StartupTrackerForAio;
@@ -31,7 +31,7 @@ public class ChatFragment$MyDispatchDrawListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatFragment.MyDispatchDrawListener
  * JD-Core Version:    0.7.0.1
  */

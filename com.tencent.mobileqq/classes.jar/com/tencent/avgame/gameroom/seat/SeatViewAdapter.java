@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.business.handler.HandlerFactory;
 import com.tencent.avgame.business.handler.UserInfoHandler;
-import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.IGameEngine;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class SeatViewAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter = paramISeatPresenter;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = ((UserInfoHandler)GameEngine.a().a().getBusinessHandler(HandlerFactory.b));
+    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = ((UserInfoHandler)((AppInterface)IGameEngine.a()).getBusinessHandler(HandlerFactory.b));
   }
   
   private View a(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -45,7 +45,7 @@ public class SeatViewAdapter
     }
     else
     {
-      paramViewGroup = (AddMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558807, null);
+      paramViewGroup = (AddMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558707, null);
       paramViewGroup.setOnClickListener(this);
       paramViewGroup.a();
     }
@@ -56,44 +56,46 @@ public class SeatViewAdapter
   {
     paramViewGroup = this.jdField_a_of_type_JavaUtilArrayList;
     if (paramInt >= 0) {}
-    for (;;)
+    try
     {
-      try
+      if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          return paramView;
-        }
         SeatMemberInfo localSeatMemberInfo = (SeatMemberInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        if ((paramView == null) || (!(paramView instanceof MemberItemView)))
+        View localView;
+        if ((paramView != null) && ((paramView instanceof MemberItemView)))
         {
-          paramView = (MemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558809, null);
+          paramViewGroup = (MemberItemView)paramView;
+          localView = paramView;
+        }
+        else
+        {
+          paramView = (MemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558709, null);
           paramView.a();
           paramView.setOnClickListener(this);
           localView = paramView;
           paramViewGroup = paramView;
-          paramViewGroup.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localSeatMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter);
-          return localView;
         }
+        paramViewGroup.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, localSeatMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter);
+        return localView;
       }
-      finally {}
-      paramViewGroup = (MemberItemView)paramView;
-      View localView = paramView;
+      return paramView;
     }
+    finally {}
   }
   
   private View c(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (!(paramView instanceof EmptyMemberItemView))
     {
-      paramView = (EmptyMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558808, null);
+      paramView = (EmptyMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558708, null);
       paramView.a();
     }
-    for (;;)
+    else
     {
-      paramView.a(false);
-      return paramView;
       paramView = (EmptyMemberItemView)paramView;
     }
+    paramView.a(false);
+    return paramView;
   }
   
   public void a(SeatViewAdapter.OnItemClickListener paramOnItemClickListener)
@@ -136,9 +138,9 @@ public class SeatViewAdapter
         localObject1 = new Object();
         return localObject1;
       }
+      return null;
     }
     finally {}
-    return null;
   }
   
   public long getItemId(int paramInt)
@@ -158,9 +160,9 @@ public class SeatViewAdapter
       if ((paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()) && (this.jdField_a_of_type_Boolean)) {
         return 0;
       }
+      return 2;
     }
     finally {}
-    return 2;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -169,17 +171,13 @@ public class SeatViewAdapter
     View localView;
     if (i == 1) {
       localView = b(paramInt, paramView, paramViewGroup);
+    } else if (i == 0) {
+      localView = a(paramInt, paramView, paramViewGroup);
+    } else {
+      localView = c(paramInt, paramView, paramViewGroup);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      if (i == 0) {
-        localView = a(paramInt, paramView, paramViewGroup);
-      } else {
-        localView = c(paramInt, paramView, paramViewGroup);
-      }
-    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public int getViewTypeCount()
@@ -194,26 +192,28 @@ public class SeatViewAdapter
   
   public void onClick(View paramView)
   {
+    Object localObject;
     if ((paramView instanceof MemberItemView))
     {
-      MemberItemView localMemberItemView = (MemberItemView)paramView;
-      if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatViewAdapter$OnItemClickListener != null) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatViewAdapter$OnItemClickListener.a(localMemberItemView.a);
+      localObject = (MemberItemView)paramView;
+      SeatViewAdapter.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatViewAdapter$OnItemClickListener;
+      if (localOnItemClickListener != null) {
+        localOnItemClickListener.a(((MemberItemView)localObject).a);
       }
     }
-    for (;;)
+    else if ((paramView instanceof AddMemberItemView))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (((paramView instanceof AddMemberItemView)) && (this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatViewAdapter$OnItemClickListener != null)) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatViewAdapter$OnItemClickListener.a();
+      localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatViewAdapter$OnItemClickListener;
+      if (localObject != null) {
+        ((SeatViewAdapter.OnItemClickListener)localObject).a();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.SeatViewAdapter
  * JD-Core Version:    0.7.0.1
  */

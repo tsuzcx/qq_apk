@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.qwallet.preload.impl;
 
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 import com.tencent.qphone.base.util.QLog;
 
 class PreloadConfig$1
@@ -15,8 +15,12 @@ class PreloadConfig$1
       if (this.this$0.isModulesChange(this.this$0.mLastModules))
       {
         QWalletTools.a(this.this$0, this.this$0.mSavePath);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadService", 2, "really save:" + this.this$0);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("really save:");
+          localStringBuilder.append(this.this$0);
+          QLog.d("PreloadService", 2, localStringBuilder.toString());
         }
         this.this$0.mLastModules = this.this$0.getCloneModules();
       }
@@ -26,7 +30,7 @@ class PreloadConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadConfig.1
  * JD-Core Version:    0.7.0.1
  */

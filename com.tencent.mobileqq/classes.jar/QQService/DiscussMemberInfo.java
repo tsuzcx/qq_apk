@@ -47,17 +47,19 @@ public final class DiscussMemberInfo
   {
     paramJceOutputStream.write(this.Uin, 0);
     paramJceOutputStream.write(this.Flag, 1);
-    if (this.Attr != null) {
-      paramJceOutputStream.write(this.Attr, 2);
+    Object localObject = this.Attr;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.StInteRemark != null) {
-      paramJceOutputStream.write(this.StInteRemark, 3);
+    localObject = this.StInteRemark;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.DiscussMemberInfo
  * JD-Core Version:    0.7.0.1
  */

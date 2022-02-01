@@ -33,13 +33,11 @@ public class ev$a
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (a)paramObject;
-    } while ((!paramObject.pl.equals(this.pl)) || (paramObject.pk != this.pk));
-    return true;
+    }
+    paramObject = (a)paramObject;
+    return (paramObject.pl.equals(this.pl)) && (paramObject.pk == this.pk);
   }
   
   public int hashCode()
@@ -49,15 +47,20 @@ public class ev$a
   
   public String toString()
   {
-    if (this.pk >= 0) {
-      return this.pl + ":" + this.pk;
+    if (this.pk >= 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.pl);
+      localStringBuilder.append(":");
+      localStringBuilder.append(this.pk);
+      return localStringBuilder.toString();
     }
     return this.pl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ev.a
  * JD-Core Version:    0.7.0.1
  */

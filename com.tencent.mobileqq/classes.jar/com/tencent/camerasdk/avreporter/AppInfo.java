@@ -56,53 +56,55 @@ public class AppInfo
   public static String getApkCertificate(Context paramContext)
   {
     Object localObject = getPackageName(paramContext);
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return null;
-      paramContext = paramContext.getPackageManager();
-      if (paramContext != null) {
-        try
-        {
-          paramContext = paramContext.getPackageInfo((String)localObject, 64);
-          if (paramContext != null)
-          {
-            localObject = paramContext.signatures;
-            if ((localObject != null) && (localObject.length != 0)) {
-              return getSignature(paramContext.signatures[0].toByteArray());
-            }
-          }
-        }
-        catch (PackageManager.NameNotFoundException paramContext) {}
-      }
     }
+    paramContext = paramContext.getPackageManager();
+    if (paramContext == null) {
+      return null;
+    }
+    try
+    {
+      paramContext = paramContext.getPackageInfo((String)localObject, 64);
+      if (paramContext == null) {
+        return null;
+      }
+      localObject = paramContext.signatures;
+      if (localObject != null)
+      {
+        if (localObject.length == 0) {
+          return null;
+        }
+        return getSignature(paramContext.signatures[0].toByteArray());
+      }
+      return null;
+    }
+    catch (PackageManager.NameNotFoundException paramContext) {}
     return null;
   }
   
   public static String getAppName(Context paramContext)
   {
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return null;
-      try
+    }
+    try
+    {
+      PackageManager localPackageManager = paramContext.getPackageManager();
+      paramContext = paramContext.getApplicationInfo();
+      if ((localPackageManager != null) && (paramContext != null))
       {
-        PackageManager localPackageManager = paramContext.getPackageManager();
-        paramContext = paramContext.getApplicationInfo();
-        if ((localPackageManager != null) && (paramContext != null))
+        paramContext = localPackageManager.getApplicationLabel(paramContext);
+        if (paramContext != null)
         {
-          paramContext = localPackageManager.getApplicationLabel(paramContext);
-          if (paramContext != null)
-          {
-            paramContext = paramContext.toString();
-            return paramContext;
-          }
+          paramContext = paramContext.toString();
+          return paramContext;
         }
       }
-      catch (Throwable paramContext)
-      {
-        LogUtils.e("MobileBase-AppInfo", "getAppName error", paramContext);
-      }
+    }
+    catch (Throwable paramContext)
+    {
+      LogUtils.e("MobileBase-AppInfo", "getAppName error", paramContext);
     }
     return null;
   }
@@ -113,28 +115,26 @@ public class AppInfo
     {
       int i = Process.myPid();
       paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      if (paramContext != null) {
+      if (paramContext != null)
+      {
         try
         {
           paramContext = paramContext.getRunningAppProcesses();
-          if (paramContext != null)
-          {
-            paramContext = paramContext.iterator();
-            while (paramContext.hasNext())
-            {
-              ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-              if ((localRunningAppProcessInfo != null) && (localRunningAppProcessInfo.pid == i)) {
-                return localRunningAppProcessInfo.processName;
-              }
-            }
-          }
         }
         catch (Throwable paramContext)
         {
-          for (;;)
+          LogUtils.e("MobileBase-AppInfo", "Exception occurred when getting process name.", paramContext);
+          paramContext = null;
+        }
+        if (paramContext != null)
+        {
+          paramContext = paramContext.iterator();
+          while (paramContext.hasNext())
           {
-            LogUtils.e("MobileBase-AppInfo", "Exception occurred when getting process name.", paramContext);
-            paramContext = null;
+            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+            if ((localRunningAppProcessInfo != null) && (localRunningAppProcessInfo.pid == i)) {
+              return localRunningAppProcessInfo.processName;
+            }
           }
         }
       }
@@ -144,36 +144,34 @@ public class AppInfo
   
   public static Map<String, String> getManifestMetadata(Context paramContext, Set<String> paramSet)
   {
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return null;
-      localHashMap = new HashMap();
-      try
+    }
+    localHashMap = new HashMap();
+    try
+    {
+      Object localObject1 = paramContext.getPackageManager();
+      if (localObject1 == null) {
+        return null;
+      }
+      paramContext = ((PackageManager)localObject1).getApplicationInfo(paramContext.getPackageName(), 128);
+      if (paramContext.metaData != null)
       {
-        Object localObject1 = paramContext.getPackageManager();
-        if (localObject1 == null) {
-          continue;
-        }
-        paramContext = ((PackageManager)localObject1).getApplicationInfo(paramContext.getPackageName(), 128);
-        if (paramContext.metaData != null)
+        paramSet = paramSet.iterator();
+        while (paramSet.hasNext())
         {
-          paramSet = paramSet.iterator();
-          while (paramSet.hasNext())
-          {
-            localObject1 = (String)paramSet.next();
-            Object localObject2 = paramContext.metaData.get((String)localObject1);
-            if (localObject2 != null) {
-              localHashMap.put(localObject1, localObject2.toString());
-            }
+          localObject1 = (String)paramSet.next();
+          Object localObject2 = paramContext.metaData.get((String)localObject1);
+          if (localObject2 != null) {
+            localHashMap.put(localObject1, localObject2.toString());
           }
         }
-        return localHashMap;
       }
-      catch (Throwable paramContext)
-      {
-        LogUtils.e("MobileBase-AppInfo", "getManifestMetaDatas error", paramContext);
-      }
+      return localHashMap;
+    }
+    catch (Throwable paramContext)
+    {
+      LogUtils.e("MobileBase-AppInfo", "getManifestMetaDatas error", paramContext);
     }
   }
   
@@ -217,148 +215,170 @@ public class AppInfo
   public static String getProcessName(Context paramContext, int paramInt)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: new 199	java/io/FileReader
-    //   5: dup
-    //   6: new 24	java/lang/StringBuilder
-    //   9: dup
-    //   10: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   13: ldc 201
-    //   15: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   18: iload_1
-    //   19: invokevirtual 204	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   22: ldc 206
-    //   24: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokespecial 209	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   33: astore_3
-    //   34: aload_3
-    //   35: astore_0
-    //   36: sipush 512
-    //   39: newarray char
-    //   41: astore 4
-    //   43: aload_3
-    //   44: astore_0
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_3
+    //   5: aload_3
+    //   6: astore_0
+    //   7: new 24	java/lang/StringBuilder
+    //   10: dup
+    //   11: invokespecial 25	java/lang/StringBuilder:<init>	()V
+    //   14: astore 5
+    //   16: aload_3
+    //   17: astore_0
+    //   18: aload 5
+    //   20: ldc 199
+    //   22: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: pop
+    //   26: aload_3
+    //   27: astore_0
+    //   28: aload 5
+    //   30: iload_1
+    //   31: invokevirtual 202	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   34: pop
+    //   35: aload_3
+    //   36: astore_0
+    //   37: aload 5
+    //   39: ldc 204
+    //   41: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: pop
     //   45: aload_3
-    //   46: aload 4
-    //   48: invokevirtual 213	java/io/FileReader:read	([C)I
-    //   51: pop
-    //   52: aload_3
-    //   53: astore_0
-    //   54: iload_2
-    //   55: aload 4
-    //   57: arraylength
-    //   58: if_icmpge +10 -> 68
-    //   61: aload 4
-    //   63: iload_2
-    //   64: caload
-    //   65: ifne +37 -> 102
-    //   68: aload_3
-    //   69: astore_0
-    //   70: new 33	java/lang/String
-    //   73: dup
-    //   74: aload 4
-    //   76: invokespecial 216	java/lang/String:<init>	([C)V
-    //   79: iconst_0
-    //   80: iload_2
-    //   81: invokevirtual 220	java/lang/String:substring	(II)Ljava/lang/String;
-    //   84: astore 4
-    //   86: aload 4
-    //   88: astore_0
-    //   89: aload_3
-    //   90: ifnull +10 -> 100
-    //   93: aload_3
-    //   94: invokevirtual 223	java/io/FileReader:close	()V
-    //   97: aload 4
-    //   99: astore_0
-    //   100: aload_0
-    //   101: areturn
-    //   102: iload_2
-    //   103: iconst_1
-    //   104: iadd
-    //   105: istore_2
-    //   106: goto -54 -> 52
-    //   109: astore 4
-    //   111: aconst_null
-    //   112: astore_3
-    //   113: aload_3
-    //   114: astore_0
-    //   115: ldc 8
-    //   117: ldc 225
-    //   119: aload 4
-    //   121: invokestatic 110	com/tencent/camerasdk/avreporter/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   124: iload_1
-    //   125: invokestatic 228	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   128: astore 4
-    //   130: aload 4
-    //   132: astore_0
-    //   133: aload_3
-    //   134: ifnull -34 -> 100
-    //   137: aload_3
-    //   138: invokevirtual 223	java/io/FileReader:close	()V
+    //   46: astore_0
+    //   47: new 206	java/io/FileReader
+    //   50: dup
+    //   51: aload 5
+    //   53: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokespecial 209	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   59: astore_3
+    //   60: sipush 512
+    //   63: newarray char
+    //   65: astore_0
+    //   66: aload_3
+    //   67: aload_0
+    //   68: invokevirtual 213	java/io/FileReader:read	([C)I
+    //   71: pop
+    //   72: iconst_0
+    //   73: istore_2
+    //   74: iload_2
+    //   75: aload_0
+    //   76: arraylength
+    //   77: if_icmpge +12 -> 89
+    //   80: aload_0
+    //   81: iload_2
+    //   82: caload
+    //   83: ifne +109 -> 192
+    //   86: goto +3 -> 89
+    //   89: new 33	java/lang/String
+    //   92: dup
+    //   93: aload_0
+    //   94: invokespecial 216	java/lang/String:<init>	([C)V
+    //   97: iconst_0
+    //   98: iload_2
+    //   99: invokevirtual 220	java/lang/String:substring	(II)Ljava/lang/String;
+    //   102: astore_0
+    //   103: aload_3
+    //   104: invokevirtual 223	java/io/FileReader:close	()V
+    //   107: aload_0
+    //   108: areturn
+    //   109: astore_0
+    //   110: goto +55 -> 165
+    //   113: astore 4
+    //   115: goto +20 -> 135
+    //   118: astore 4
+    //   120: aload_0
+    //   121: astore_3
+    //   122: aload 4
+    //   124: astore_0
+    //   125: goto +40 -> 165
+    //   128: astore_0
+    //   129: aload 4
+    //   131: astore_3
+    //   132: aload_0
+    //   133: astore 4
+    //   135: aload_3
+    //   136: astore_0
+    //   137: ldc 8
+    //   139: ldc 225
     //   141: aload 4
-    //   143: areturn
-    //   144: astore_0
-    //   145: aload 4
-    //   147: areturn
-    //   148: astore_3
-    //   149: aconst_null
-    //   150: astore_0
-    //   151: aload_0
-    //   152: ifnull +7 -> 159
-    //   155: aload_0
-    //   156: invokevirtual 223	java/io/FileReader:close	()V
-    //   159: aload_3
-    //   160: athrow
-    //   161: astore_0
+    //   143: invokestatic 110	com/tencent/camerasdk/avreporter/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   146: aload_3
+    //   147: astore_0
+    //   148: iload_1
+    //   149: invokestatic 228	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   152: astore 4
+    //   154: aload_3
+    //   155: ifnull +7 -> 162
+    //   158: aload_3
+    //   159: invokevirtual 223	java/io/FileReader:close	()V
     //   162: aload 4
     //   164: areturn
-    //   165: astore_0
-    //   166: goto -7 -> 159
-    //   169: astore_3
-    //   170: goto -19 -> 151
-    //   173: astore 4
-    //   175: goto -62 -> 113
+    //   165: aload_3
+    //   166: ifnull +7 -> 173
+    //   169: aload_3
+    //   170: invokevirtual 223	java/io/FileReader:close	()V
+    //   173: goto +5 -> 178
+    //   176: aload_0
+    //   177: athrow
+    //   178: goto -2 -> 176
+    //   181: astore_3
+    //   182: aload_0
+    //   183: areturn
+    //   184: astore_0
+    //   185: aload 4
+    //   187: areturn
+    //   188: astore_3
+    //   189: goto -16 -> 173
+    //   192: iload_2
+    //   193: iconst_1
+    //   194: iadd
+    //   195: istore_2
+    //   196: goto -122 -> 74
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	178	0	paramContext	Context
-    //   0	178	1	paramInt	int
-    //   1	105	2	i	int
-    //   33	105	3	localFileReader	java.io.FileReader
-    //   148	12	3	localObject1	Object
-    //   169	1	3	localObject2	Object
-    //   41	57	4	localObject3	Object
-    //   109	11	4	localThrowable1	Throwable
-    //   128	35	4	str	String
-    //   173	1	4	localThrowable2	Throwable
+    //   0	199	0	paramContext	Context
+    //   0	199	1	paramInt	int
+    //   73	123	2	i	int
+    //   4	166	3	localObject1	Object
+    //   181	1	3	localThrowable1	Throwable
+    //   188	1	3	localThrowable2	Throwable
+    //   1	1	4	localObject2	Object
+    //   113	1	4	localThrowable3	Throwable
+    //   118	12	4	localObject3	Object
+    //   133	53	4	localObject4	Object
+    //   14	38	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   2	34	109	java/lang/Throwable
-    //   137	141	144	java/lang/Throwable
-    //   2	34	148	finally
-    //   93	97	161	java/lang/Throwable
-    //   155	159	165	java/lang/Throwable
-    //   36	43	169	finally
-    //   45	52	169	finally
-    //   54	61	169	finally
-    //   70	86	169	finally
-    //   115	124	169	finally
-    //   36	43	173	java/lang/Throwable
-    //   45	52	173	java/lang/Throwable
-    //   54	61	173	java/lang/Throwable
-    //   70	86	173	java/lang/Throwable
+    //   60	72	109	finally
+    //   74	80	109	finally
+    //   89	103	109	finally
+    //   60	72	113	java/lang/Throwable
+    //   74	80	113	java/lang/Throwable
+    //   89	103	113	java/lang/Throwable
+    //   7	16	118	finally
+    //   18	26	118	finally
+    //   28	35	118	finally
+    //   37	45	118	finally
+    //   47	60	118	finally
+    //   137	146	118	finally
+    //   148	154	118	finally
+    //   7	16	128	java/lang/Throwable
+    //   18	26	128	java/lang/Throwable
+    //   28	35	128	java/lang/Throwable
+    //   37	45	128	java/lang/Throwable
+    //   47	60	128	java/lang/Throwable
+    //   103	107	181	java/lang/Throwable
+    //   158	162	184	java/lang/Throwable
+    //   169	173	188	java/lang/Throwable
   }
   
   public static String getSignature(byte[] paramArrayOfByte)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
-    for (;;)
-    {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
       try
       {
-        localObject1 = CertificateFactory.getInstance("X.509");
+        Object localObject1 = CertificateFactory.getInstance("X.509");
         if (localObject1 == null) {
           return null;
         }
@@ -368,75 +388,64 @@ public class AppInfo
         }
         localStringBuilder.append("Issuer|");
         localObject1 = paramArrayOfByte.getIssuerDN();
-        if (localObject1 == null) {
-          continue;
+        if (localObject1 != null) {
+          localStringBuilder.append(((Principal)localObject1).toString());
+        } else {
+          localStringBuilder.append("unknown");
         }
-        localStringBuilder.append(((Principal)localObject1).toString());
         localStringBuilder.append("\n");
         localStringBuilder.append("SerialNumber|");
-        localObject2 = paramArrayOfByte.getSerialNumber();
-        if (localObject1 == null) {
-          continue;
+        Object localObject2 = paramArrayOfByte.getSerialNumber();
+        if (localObject1 != null) {
+          localStringBuilder.append(((BigInteger)localObject2).toString(16));
+        } else {
+          localStringBuilder.append("unknown");
         }
-        localStringBuilder.append(((BigInteger)localObject2).toString(16));
-      }
-      catch (CertificateException paramArrayOfByte)
-      {
-        Object localObject1;
-        Object localObject2;
-        LogUtils.e("MobileBase-AppInfo", "getSignature CertificateException error", paramArrayOfByte);
-        continue;
-        localStringBuilder.append("unknown");
-        continue;
+        localStringBuilder.append("\n");
+        localStringBuilder.append("NotBefore|");
+        localObject2 = paramArrayOfByte.getNotBefore();
+        if (localObject1 != null) {
+          localStringBuilder.append(((Date)localObject2).toString());
+        } else {
+          localStringBuilder.append("unknown");
+        }
+        localStringBuilder.append("\n");
+        localStringBuilder.append("NotAfter|");
+        localObject2 = paramArrayOfByte.getNotAfter();
+        if (localObject1 != null) {
+          localStringBuilder.append(((Date)localObject2).toString());
+        } else {
+          localStringBuilder.append("unknown");
+        }
+        localStringBuilder.append("\n");
+        localStringBuilder.append("SHA1|");
+        localObject1 = byte2Hex(MessageDigest.getInstance("SHA1").digest(paramArrayOfByte.getEncoded()));
+        if (((String)localObject1).length() > 0) {
+          localStringBuilder.append((String)localObject1);
+        } else {
+          localStringBuilder.append("unknown");
+        }
+        localStringBuilder.append("\n");
+        localStringBuilder.append("MD5|");
+        paramArrayOfByte = byte2Hex(MessageDigest.getInstance("MD5").digest(paramArrayOfByte.getEncoded()));
+        if (paramArrayOfByte.length() > 0) {
+          localStringBuilder.append(paramArrayOfByte);
+        } else {
+          localStringBuilder.append("unknown");
+        }
       }
       catch (Throwable paramArrayOfByte)
       {
         LogUtils.e("MobileBase-AppInfo", "getSignature error", paramArrayOfByte);
-        continue;
-        localStringBuilder.append("unknown");
-        continue;
-        localStringBuilder.append("unknown");
-        continue;
-        localStringBuilder.append("unknown");
-        continue;
-        localStringBuilder.append("unknown");
-        continue;
       }
-      localStringBuilder.append("\n");
-      localStringBuilder.append("NotBefore|");
-      localObject2 = paramArrayOfByte.getNotBefore();
-      if (localObject1 == null) {
-        continue;
+      catch (CertificateException paramArrayOfByte)
+      {
+        LogUtils.e("MobileBase-AppInfo", "getSignature CertificateException error", paramArrayOfByte);
       }
-      localStringBuilder.append(((Date)localObject2).toString());
-      localStringBuilder.append("\n");
-      localStringBuilder.append("NotAfter|");
-      localObject2 = paramArrayOfByte.getNotAfter();
-      if (localObject1 == null) {
-        continue;
-      }
-      localStringBuilder.append(((Date)localObject2).toString());
-      localStringBuilder.append("\n");
-      localStringBuilder.append("SHA1|");
-      localObject1 = byte2Hex(MessageDigest.getInstance("SHA1").digest(paramArrayOfByte.getEncoded()));
-      if (((String)localObject1).length() <= 0) {
-        continue;
-      }
-      localStringBuilder.append((String)localObject1);
-      localStringBuilder.append("\n");
-      localStringBuilder.append("MD5|");
-      paramArrayOfByte = byte2Hex(MessageDigest.getInstance("MD5").digest(paramArrayOfByte.getEncoded()));
-      if (paramArrayOfByte.length() <= 0) {
-        continue;
-      }
-      localStringBuilder.append(paramArrayOfByte);
-      if (localStringBuilder.length() != 0) {
-        break label370;
-      }
-      return "unknown";
-      localStringBuilder.append("unknown");
     }
-    label370:
+    if (localStringBuilder.length() == 0) {
+      return "unknown";
+    }
     return localStringBuilder.toString();
   }
   
@@ -460,29 +469,30 @@ public class AppInfo
   
   public static boolean isContainPermission(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (paramString == null) || (paramString.trim().length() <= 0)) {}
-    for (;;)
+    if ((paramContext != null) && (paramString != null))
     {
-      return false;
+      if (paramString.trim().length() <= 0) {
+        return false;
+      }
       try
       {
         PackageManager localPackageManager = paramContext.getPackageManager();
         if (localPackageManager == null) {
-          continue;
+          return false;
         }
         paramContext = localPackageManager.getPackageInfo(paramContext.getPackageName(), 4096).requestedPermissions;
-        if (paramContext == null) {
-          continue;
-        }
-        int j = paramContext.length;
-        int i = 0;
-        while (i < j)
+        if (paramContext != null)
         {
-          boolean bool = paramString.equals(paramContext[i]);
-          if (bool) {
-            return true;
+          int j = paramContext.length;
+          int i = 0;
+          while (i < j)
+          {
+            boolean bool = paramString.equals(paramContext[i]);
+            if (bool) {
+              return true;
+            }
+            i += 1;
           }
-          i += 1;
         }
         return false;
       }
@@ -518,7 +528,7 @@ public class AppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.camerasdk.avreporter.AppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -47,19 +47,19 @@ public final class MediaSelectorPanel$ListPhotoViewHolder
   
   public MediaSelectorPanel$ListPhotoViewHolder(View paramView)
   {
-    Object localObject2 = ((View)localObject1).findViewById(R.id.aD);
+    Object localObject2 = ((View)localObject1).findViewById(R.id.aj);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.markView)");
     this.jdField_a_of_type_AndroidViewView = ((View)localObject2);
-    localObject2 = ((View)localObject1).findViewById(R.id.bh);
+    localObject2 = ((View)localObject1).findViewById(R.id.aG);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.selectedLayout)");
     this.jdField_b_of_type_AndroidViewView = ((View)localObject2);
-    localObject2 = ((View)localObject1).findViewById(R.id.bi);
+    localObject2 = ((View)localObject1).findViewById(R.id.aH);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.selectedView)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-    localObject2 = ((View)localObject1).findViewById(R.id.bn);
+    localObject2 = ((View)localObject1).findViewById(R.id.aL);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.tag_view)");
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-    Object localObject1 = ((View)localObject1).findViewById(R.id.ah);
+    Object localObject1 = ((View)localObject1).findViewById(R.id.R);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "itemView.findViewById(R.id.imageLayout)");
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject1);
     localObject1 = paramView.getContext();
@@ -75,14 +75,15 @@ public final class MediaSelectorPanel$ListPhotoViewHolder
     localObject1 = ((ImageLoader)localObject1).a(i, ((DisplayUtils)localObject2).a(200.0F, localContext));
     localObject2 = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "context");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader = ((ImageLoader)localObject1).a((Drawable)new ColorDrawable(((Context)localObject2).getResources().getColor(R.color.d))).a(this.jdField_a_of_type_AndroidWidgetImageView);
-    if (paramView.a() > 1) {
+    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader = ((ImageLoader)localObject1).a((Drawable)new ColorDrawable(((Context)localObject2).getResources().getColor(R.color.i))).a(this.jdField_a_of_type_AndroidWidgetImageView);
+    if (paramView.a() > 1)
+    {
       this.jdField_b_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)new MediaSelectorPanel.ListPhotoViewHolder.1(this));
-    }
-    while (paramView.a() != 1) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener((View.OnClickListener)new MediaSelectorPanel.ListPhotoViewHolder.2(this));
+    if (paramView.a() == 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener((View.OnClickListener)new MediaSelectorPanel.ListPhotoViewHolder.2(this));
+    }
   }
   
   private final void a()
@@ -90,27 +91,28 @@ public final class MediaSelectorPanel$ListPhotoViewHolder
     Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanMedia;
     if (localObject != null)
     {
-      if (!this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().contains(localObject)) {
-        if (this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().size() < this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a()) {
+      if (!this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().contains(localObject))
+      {
+        if (this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().size() < this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a())
+        {
           b((Media)localObject);
         }
-      }
-      for (;;)
-      {
-        localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
-        if (localObject != null) {
-          localObject = (Unit)((Function1)localObject).invoke(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c());
-        }
-        MediaSelectorPanel.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel).notifyDataSetChanged();
-        return;
-        localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
-        if (localObject != null)
+        else
         {
-          localObject = (Unit)((Function0)localObject).invoke();
-          continue;
-          this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().remove(localObject);
+          localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
+          if (localObject != null) {
+            localObject = (Unit)((Function0)localObject).invoke();
+          }
         }
       }
+      else {
+        this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().remove(localObject);
+      }
+      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
+      if (localObject != null) {
+        localObject = (Unit)((Function1)localObject).invoke(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c());
+      }
+      MediaSelectorPanel.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel).notifyDataSetChanged();
     }
   }
   
@@ -119,42 +121,42 @@ public final class MediaSelectorPanel$ListPhotoViewHolder
     Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkBeanMedia;
     if (localObject != null)
     {
-      if (!this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().contains(localObject)) {
-        if (this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().size() < this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a()) {
+      if (!this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().contains(localObject))
+      {
+        if (this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().size() < this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a())
+        {
           c((Media)localObject);
         }
-      }
-      for (;;)
-      {
-        localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
-        if (localObject != null) {
-          localObject = (Unit)((Function1)localObject).invoke(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c());
-        }
-        MediaSelectorPanel.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel).notifyDataSetChanged();
-        return;
-        localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
-        if (localObject != null)
+        else
         {
-          localObject = (Unit)((Function0)localObject).invoke();
-          continue;
-          this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().remove(localObject);
+          localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
+          if (localObject != null) {
+            localObject = (Unit)((Function0)localObject).invoke();
+          }
         }
       }
+      else {
+        this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().remove(localObject);
+      }
+      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a();
+      if (localObject != null) {
+        localObject = (Unit)((Function1)localObject).invoke(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c());
+      }
+      MediaSelectorPanel.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel).notifyDataSetChanged();
     }
   }
   
   private final void b(Media paramMedia)
   {
-    if (paramMedia.getSize() < this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a()) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().add(paramMedia);
-    }
-    Function1 localFunction1;
-    do
+    if (paramMedia.getSize() < this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.a())
     {
+      this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c().add(paramMedia);
       return;
-      localFunction1 = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c();
-    } while (localFunction1 == null);
-    paramMedia = (Unit)localFunction1.invoke(paramMedia);
+    }
+    Function1 localFunction1 = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c();
+    if (localFunction1 != null) {
+      paramMedia = (Unit)localFunction1.invoke(paramMedia);
+    }
   }
   
   private final void c(Media paramMedia)
@@ -166,13 +168,13 @@ public final class MediaSelectorPanel$ListPhotoViewHolder
         paramMedia = (Unit)paramMedia.invoke(Integer.valueOf(this.jdField_a_of_type_Int));
       }
     }
-    Function1 localFunction1;
-    do
+    else
     {
-      return;
-      localFunction1 = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c();
-    } while (localFunction1 == null);
-    paramMedia = (Unit)localFunction1.invoke(paramMedia);
+      Function1 localFunction1 = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaSelectorPanel.c();
+      if (localFunction1 != null) {
+        paramMedia = (Unit)localFunction1.invoke(paramMedia);
+      }
+    }
   }
   
   public final int a()
@@ -216,7 +218,7 @@ public final class MediaSelectorPanel$ListPhotoViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel.ListPhotoViewHolder
  * JD-Core Version:    0.7.0.1
  */

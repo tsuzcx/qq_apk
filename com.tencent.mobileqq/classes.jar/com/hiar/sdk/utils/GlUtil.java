@@ -10,19 +10,29 @@ public class GlUtil
 {
   public static int a(int paramInt, String paramString)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    a("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
+    int j = GLES20.glCreateShader(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glCreateShader type=");
+    localStringBuilder.append(paramInt);
+    a(localStringBuilder.toString());
+    GLES20.glShaderSource(j, paramString);
+    GLES20.glCompileShader(j);
     paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    GLES20.glGetShaderiv(j, 35713, paramString, 0);
+    int i = j;
     if (paramString[0] == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GlUtil", 2, "Could not compile shader " + paramInt + ":" + GLES20.glGetShaderInfoLog(i));
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("Could not compile shader ");
+        paramString.append(paramInt);
+        paramString.append(":");
+        paramString.append(GLES20.glGetShaderInfoLog(j));
+        QLog.e("GlUtil", 2, paramString.toString());
       }
-      GLES20.glDeleteShader(i);
-      return 0;
+      GLES20.glDeleteShader(j);
+      i = 0;
     }
     return i;
   }
@@ -30,13 +40,13 @@ public class GlUtil
   public static int a(String paramString1, String paramString2)
   {
     int i = a(35633, paramString1);
-    if (i == 0) {}
-    int j;
-    do
-    {
+    if (i == 0) {
       return 0;
-      j = a(35632, paramString2);
-    } while (j == 0);
+    }
+    int j = a(35632, paramString2);
+    if (j == 0) {
+      return 0;
+    }
     int k = GLES20.glCreateProgram();
     a("glCreateProgram");
     if ((k == 0) && (QLog.isColorLevel())) {
@@ -51,8 +61,12 @@ public class GlUtil
     GLES20.glGetProgramiv(k, 35714, paramString1, 0);
     if (paramString1[0] != 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GlUtil", 2, "Could not link program:" + GLES20.glGetProgramInfoLog(k));
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("Could not link program:");
+        paramString1.append(GLES20.glGetProgramInfoLog(k));
+        QLog.e("GlUtil", 2, paramString1.toString());
       }
       GLES20.glDeleteProgram(k);
       return 0;
@@ -75,7 +89,11 @@ public class GlUtil
     int i = GLES20.glGetError();
     if (i != 0)
     {
-      paramString = paramString + ": glError 0x" + Integer.toHexString(i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError 0x");
+      localStringBuilder.append(Integer.toHexString(i));
+      paramString = localStringBuilder.toString();
       if (QLog.isColorLevel()) {
         QLog.e("GlUtil", 2, paramString);
       }
@@ -85,7 +103,7 @@ public class GlUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.hiar.sdk.utils.GlUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -16,32 +16,44 @@ class GuessVideoGameRecordCtrl$2
   
   public void run()
   {
-    if (this.a != null) {}
-    try
-    {
-      Bitmap localBitmap = Bitmap.createBitmap(GuessVideoGameRecordCtrl.a(this.this$0), GuessVideoGameRecordCtrl.b(this.this$0), Bitmap.Config.ARGB_8888);
-      localBitmap.copyPixelsFromBuffer(IntBuffer.wrap(this.a));
-      Matrix localMatrix = new Matrix();
-      localMatrix.setScale(1.0F, -1.0F);
-      boolean bool = FileUtil.a(Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), localMatrix, true), GuessVideoGameRecordCtrl.a(this.this$0));
-      if (!bool) {
-        GuessVideoGameRecordCtrl.a(this.this$0, null);
+    if (this.a != null) {
+      try
+      {
+        Object localObject1 = Bitmap.createBitmap(GuessVideoGameRecordCtrl.a(this.this$0), GuessVideoGameRecordCtrl.b(this.this$0), Bitmap.Config.ARGB_8888);
+        ((Bitmap)localObject1).copyPixelsFromBuffer(IntBuffer.wrap(this.a));
+        localObject2 = new Matrix();
+        ((Matrix)localObject2).setScale(1.0F, -1.0F);
+        boolean bool = FileUtil.a(Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject2, true), GuessVideoGameRecordCtrl.a(this.this$0));
+        if (!bool) {
+          GuessVideoGameRecordCtrl.a(this.this$0, null);
+        }
+        localObject1 = this.this$0.a;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("save photo ");
+        ((StringBuilder)localObject2).append(bool);
+        ((StringBuilder)localObject2).append(" ");
+        ((StringBuilder)localObject2).append(GuessVideoGameRecordCtrl.a(this.this$0));
+        AVLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
+        if (!this.this$0.b())
+        {
+          GameEngine.a().a().a(GuessVideoGameRecordCtrl.b(this.this$0), GuessVideoGameRecordCtrl.a(this.this$0), GuessVideoGameRecordCtrl.a(this.this$0));
+          return;
+        }
       }
-      AVLog.a(this.this$0.a, "save photo " + bool + " " + GuessVideoGameRecordCtrl.a(this.this$0));
-      if (!this.this$0.b()) {
-        GameEngine.a().a().a(GuessVideoGameRecordCtrl.b(this.this$0), GuessVideoGameRecordCtrl.a(this.this$0), GuessVideoGameRecordCtrl.a(this.this$0));
+      catch (Throwable localThrowable)
+      {
+        Object localObject2 = this.this$0.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("save photo ");
+        localStringBuilder.append(localThrowable);
+        AVLog.a((String)localObject2, localStringBuilder.toString());
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      AVLog.a(this.this$0.a, "save photo " + localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.videorecord.GuessVideoGameRecordCtrl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopAppShortcutUtils;
@@ -24,9 +24,9 @@ public class AppsSearchViewBuilder
   extends AppsBaseBuilder
   implements View.OnClickListener, View.OnTouchListener
 {
-  AppsSearchViewBuilder(Context paramContext, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Bundle paramBundle)
+  AppsSearchViewBuilder(Context paramContext, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, Bundle paramBundle)
   {
-    super(paramContext, paramQQAppInterface, paramFragmentActivity, null, paramBundle);
+    super(paramContext, paramQQAppInterface, paramBaseActivity, null, paramBundle);
   }
   
   private void a(View paramView)
@@ -35,7 +35,7 @@ public class AppsSearchViewBuilder
     if (!TroopAppShortcutUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long)) {
       return;
     }
-    TroopAppShortcutUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    TroopAppShortcutUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
   }
   
   public int a()
@@ -45,45 +45,45 @@ public class AppsSearchViewBuilder
   
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
     if (paramView == null)
     {
       paramView = new AppsSearchViewBuilder.ItemViewHolder();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559987, paramViewGroup, false);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370312));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377599));
+      View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559858, paramViewGroup, false);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369980));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377043));
       localView.setTag(paramView);
       paramViewGroup = paramView;
-      if (!this.jdField_b_of_type_Boolean) {
-        break label180;
-      }
+      paramView = localView;
+    }
+    else
+    {
+      paramViewGroup = (AppsSearchViewBuilder.ItemViewHolder)paramView.getTag();
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      label95:
-      if (AppSetting.d) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131720042));
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label192;
-      }
+    }
+    else
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    if (AppSetting.d) {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131719774));
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ffffff"));
-      localView.setBackgroundColor(-16777216);
+      paramView.setBackgroundColor(-16777216);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
     }
-    for (;;)
+    else
     {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
-      return localView;
-      paramViewGroup = (AppsSearchViewBuilder.ItemViewHolder)paramView.getTag();
-      localView = paramView;
-      break;
-      label180:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      break label95;
-      label192:
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
     }
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
+    return paramView;
   }
   
   public Object a()
@@ -95,39 +95,30 @@ public class AppsSearchViewBuilder
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (paramView.getId() == 2131377043) {
       a(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
+      if (((i == 1) || (i == 3)) && (Build.VERSION.SDK_INT >= 11)) {
+        paramView.setAlpha(1.0F);
       }
     }
+    else if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setAlpha(0.5F);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.AppsSearchViewBuilder
  * JD-Core Version:    0.7.0.1
  */

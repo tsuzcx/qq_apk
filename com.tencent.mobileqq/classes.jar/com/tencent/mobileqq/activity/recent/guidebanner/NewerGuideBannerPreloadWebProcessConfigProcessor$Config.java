@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/recent/guidebanner/NewerGuideBannerPreloadWebProcessConfigProcessor$Config;", "", "()V", "preloadWebProcess", "", "getPreloadWebProcess", "()Z", "setPreloadWebProcess", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/recent/guidebanner/NewerGuideBannerPreloadWebProcessConfigProcessor$Config;", "", "()V", "preloadWebProcess", "", "getPreloadWebProcess", "()Z", "setPreloadWebProcess", "(Z)V", "parse", "", "configText", "", "qq-newer-guide_release"}, k=1, mv={1, 1, 16})
 public final class NewerGuideBannerPreloadWebProcessConfigProcessor$Config
 {
   private boolean a = true;
@@ -19,19 +19,24 @@ public final class NewerGuideBannerPreloadWebProcessConfigProcessor$Config
       QLog.d("NewerBannerGuidePreloadWebProcessConfigProcessor", 2, paramString);
     }
     if (!TextUtils.isEmpty((CharSequence)paramString)) {}
-    try
+    for (;;)
     {
-      if (new JSONObject(paramString).optInt("ConfigEnablePreloadWebProcess", 1) == 1) {}
-      for (boolean bool = true;; bool = false)
+      try
       {
+        if (new JSONObject(paramString).optInt("ConfigEnablePreloadWebProcess", 1) != 1) {
+          break label71;
+        }
+        bool = true;
         this.a = bool;
         return;
       }
+      catch (Throwable paramString)
+      {
+        QLog.e("NewerBannerGuidePreloadWebProcessConfigProcessor", 1, paramString, new Object[0]);
+      }
       return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("NewerBannerGuidePreloadWebProcessConfigProcessor", 1, paramString, new Object[0]);
+      label71:
+      boolean bool = false;
     }
   }
   
@@ -42,7 +47,7 @@ public final class NewerGuideBannerPreloadWebProcessConfigProcessor$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerPreloadWebProcessConfigProcessor.Config
  * JD-Core Version:    0.7.0.1
  */

@@ -31,27 +31,28 @@ public class MiniSwipeRefreshLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = false;
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    float f1;
-    float f2;
-    do
-    {
-      bool = super.onInterceptTouchEvent(paramMotionEvent);
-      do
+      if (i == 2)
       {
-        return bool;
-        this.mInitialDownX = paramMotionEvent.getX();
-        this.mInitialDownY = paramMotionEvent.getY();
-        this.ismove = false;
-        break;
-        f1 = Math.abs(paramMotionEvent.getX() - this.mInitialDownX);
-        f2 = Math.abs(paramMotionEvent.getY() - this.mInitialDownY);
-      } while (f2 < this.mTouchSlop);
-    } while (f1 <= f2);
-    return false;
+        float f1 = Math.abs(paramMotionEvent.getX() - this.mInitialDownX);
+        float f2 = Math.abs(paramMotionEvent.getY() - this.mInitialDownY);
+        if (f2 < this.mTouchSlop) {
+          return false;
+        }
+        if (f1 > f2) {
+          return false;
+        }
+      }
+    }
+    else
+    {
+      this.mInitialDownX = paramMotionEvent.getX();
+      this.mInitialDownY = paramMotionEvent.getY();
+      this.ismove = false;
+    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public void setTouchSlop(int paramInt)
@@ -61,7 +62,7 @@ public class MiniSwipeRefreshLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.widget.MiniSwipeRefreshLayout
  * JD-Core Version:    0.7.0.1
  */

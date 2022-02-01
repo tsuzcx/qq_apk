@@ -20,7 +20,7 @@ public class EmoView
   extends LinearLayout
   implements KeyClickListener, WorkSpaceView.OnScreenChangeListener
 {
-  private int jdField_a_of_type_Int = 2130839206;
+  private int jdField_a_of_type_Int = 2130839059;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
@@ -77,35 +77,39 @@ public class EmoView
       paramEditText.setSelection(str.length());
       return;
     }
-    paramEditText.setSelection(paramString.length() + paramInt);
+    paramEditText.setSelection(paramInt + paramString.length());
   }
   
   public static void a(EditText paramEditText, String paramString)
   {
     int i = paramEditText.getSelectionStart();
-    if (i >= paramEditText.length()) {
-      try
-      {
-        paramEditText.append(paramString);
-        return;
-      }
-      catch (Exception localException)
-      {
-        a(paramEditText, i, paramString);
-        return;
-      }
+    if (i >= paramEditText.length()) {}
+    try
+    {
+      paramEditText.append(paramString);
+      return;
     }
+    catch (Exception localException)
+    {
+      label19:
+      break label19;
+    }
+    a(paramEditText, i, paramString);
+    return;
     a(paramEditText, i, paramString);
   }
   
   private void b(int paramInt)
   {
-    int i = 27;
-    int j = (int)Math.ceil(107.0D / (27 * 1.0D));
-    GridView localGridView = (GridView)LayoutInflater.from(getContext()).inflate(2131558878, null);
+    double d1 = 27;
+    Double.isNaN(d1);
+    int i = (int)Math.ceil(107.0D / (d1 * 1.0D));
+    GridView localGridView = (GridView)LayoutInflater.from(getContext()).inflate(2131558776, null);
     localGridView.setNumColumns(7);
-    if (paramInt == j) {
+    if (paramInt == i) {
       i = 26;
+    } else {
+      i = 27;
     }
     EmoWindowAdapter localEmoWindowAdapter = new EmoWindowAdapter(getContext(), paramInt, i, 28, paramInt, this);
     localGridView.setAdapter(localEmoWindowAdapter);
@@ -135,40 +139,39 @@ public class EmoView
   {
     this.d = (paramInt + 1);
     c(paramInt);
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView$OnScreenChangeListener != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView$OnScreenChangeListener.a(paramInt);
+    WorkSpaceView.OnScreenChangeListener localOnScreenChangeListener = this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView$OnScreenChangeListener;
+    if (localOnScreenChangeListener != null) {
+      localOnScreenChangeListener.a(paramInt);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (paramInt1 == 27) {
-      this.jdField_b_of_type_ComTencentBizSubscribeCommentEmoView$EmoClickListener.a();
-    }
-    do
+    if (paramInt1 == 27)
     {
+      this.jdField_b_of_type_ComTencentBizSubscribeCommentEmoView$EmoClickListener.a();
       return;
-      paramInt1 = (paramInt2 - 1) * 27 + paramInt1;
-    } while (paramInt1 >= 107);
-    String str = Patterns.b[EmoWindowAdapter.b[paramInt1]];
-    this.jdField_b_of_type_ComTencentBizSubscribeCommentEmoView$EmoClickListener.a(str);
+    }
+    paramInt1 = (paramInt2 - 1) * 27 + paramInt1;
+    if (paramInt1 < 107)
+    {
+      String str = Patterns.b[EmoWindowAdapter.b[paramInt1]];
+      this.jdField_b_of_type_ComTencentBizSubscribeCommentEmoView$EmoClickListener.a(str);
+    }
   }
   
   public void setNavgationVisible(boolean paramBoolean)
   {
-    LinearLayout localLinearLayout;
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localLinearLayout != null)
     {
-      localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-      if (!paramBoolean) {
-        break label24;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localLinearLayout.setVisibility(i);
-      return;
     }
   }
   
@@ -179,7 +182,7 @@ public class EmoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.EmoView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,150 +1,156 @@
 package com.tencent.mobileqq.activity.troop.config;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.data.troop.TroopMemberCard;
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.troop.api.config.AbsTroopHandlerProcessor;
-import com.tencent.mobileqq.troop.api.config.IGetTroopMemberInfoObserver;
-import com.tencent.mobileqq.troop.api.config.IParseTroopMemberInfoObserver;
-import com.tencent.mobileqq.troop.honor.util.TroopHonorUtils;
-import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberLevelUtils;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.api.config.AbsTroopMemberInfoHandlerProcessor;
+import com.tencent.mobileqq.util.MessageRecordUtil;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.vas.ColorNickManager;
-import com.tencent.mobileqq.vas.ColorNickManager.ColorNickNameData;
-import friendlist.stTroopMemberInfo;
-import friendlist.stTroopRemarkInfo;
-import java.util.ArrayList;
-import tencent.im.group.group_member_info.MemberInfo;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import tencent.im.oidb.cmd0x787.oidb_0x787.MemberLevelInfo;
 
 public class TroopMemberInfoProcessor
-  extends AbsTroopHandlerProcessor
-  implements IGetTroopMemberInfoObserver, IParseTroopMemberInfoObserver
+  extends AbsTroopMemberInfoHandlerProcessor
 {
-  @NonNull
-  public String a()
+  private void a(@NonNull AppInterface paramAppInterface, ToServiceMsg paramToServiceMsg, Map<String, String> paramMap, oidb_0x787.MemberLevelInfo paramMemberLevelInfo)
   {
-    return "TroopMemberInfoProcessor";
-  }
-  
-  public void a(@NonNull AppInterface paramAppInterface, String paramString, long paramLong)
-  {
-    if (((QQAppInterface)paramAppInterface).getWritableDatabase() != null) {
-      ((QQAppInterface)paramAppInterface).getWritableDatabase().delete(new TroopMemberInfo().getTableName(), "troopuin=? and memberuin<>? and memberuin<>? and datetime<?", new String[] { paramString, "1000000", "10000", String.valueOf(paramLong) });
-    }
-  }
-  
-  public void a(@NonNull TroopInfo paramTroopInfo, stTroopMemberInfo paramstTroopMemberInfo)
-  {
-    if (paramstTroopMemberInfo == null) {
-      return;
-    }
-    paramTroopInfo.myHonorList = TroopHonorUtils.a(paramstTroopMemberInfo.vecGroupHonor);
-    paramTroopInfo.myHonorRichFlag = paramstTroopMemberInfo.cRichFlag;
-  }
-  
-  public void a(@NonNull TroopMemberCard paramTroopMemberCard, group_member_info.MemberInfo paramMemberInfo)
-  {
-    if (paramTroopMemberCard == null) {
-      return;
-    }
-    paramTroopMemberCard.honorList = TroopHonorUtils.a(paramMemberInfo.bytes_group_honor.get().toByteArray());
-  }
-  
-  public void a(@NonNull TroopMemberInfo paramTroopMemberInfo, stTroopMemberInfo paramstTroopMemberInfo)
-  {
-    if (paramstTroopMemberInfo == null) {
-      return;
-    }
-    paramTroopMemberInfo.honorList = TroopHonorUtils.a(paramstTroopMemberInfo.vecGroupHonor);
-  }
-  
-  public void a(stTroopMemberInfo paramstTroopMemberInfo, TroopMemberInfo paramTroopMemberInfo)
-  {
-    paramstTroopMemberInfo = ColorNickManager.a(paramstTroopMemberInfo.vecName);
-    if (TextUtils.isEmpty(paramstTroopMemberInfo))
+    StringBuffer localStringBuffer = new StringBuffer();
+    long l1 = Long.valueOf(paramToServiceMsg.extraData.getString("troopUin")).longValue();
+    Object localObject = (FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    TroopManager localTroopManager = (TroopManager)paramAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    String str3 = String.valueOf(paramMemberLevelInfo.uint64_uin.get());
+    if (QLog.isColorLevel())
     {
-      paramTroopMemberInfo.pyFirst_troopnick = "";
-      paramTroopMemberInfo.pyAll_troopnick = "";
+      localStringBuffer.append(" uin=");
+      localStringBuffer.append(str3.substring(0, 4));
     }
-    do
+    String str1 = ColorNickManager.a(paramMemberLevelInfo.str_name.get());
+    String str2 = "";
+    if ((str1 != null) && (str1.length() > 0))
     {
-      return;
-      if (!paramstTroopMemberInfo.equals(paramTroopMemberInfo.troopnick))
+      int i = paramToServiceMsg.extraData.getInt(ContactUtils.jdField_a_of_type_JavaLangString, ContactUtils.jdField_a_of_type_Int);
+      long l2 = paramToServiceMsg.extraData.getLong(ContactUtils.jdField_b_of_type_JavaLangString, 0L);
+      if (i == ContactUtils.jdField_b_of_type_Int)
       {
-        paramTroopMemberInfo.pyFirst_troopnick = ChnToSpell.a(paramstTroopMemberInfo, 2);
-        paramTroopMemberInfo.pyAll_troopnick = ChnToSpell.a(paramstTroopMemberInfo, 1);
-        return;
+        paramToServiceMsg = ((QQAppInterface)paramAppInterface).getMessageFacade();
+        paramMemberLevelInfo = new StringBuilder();
+        paramMemberLevelInfo.append(l1);
+        paramMemberLevelInfo.append("");
+        paramToServiceMsg = paramToServiceMsg.a(paramMemberLevelInfo.toString(), 1, l2);
+        if ((paramToServiceMsg != null) && ((paramToServiceMsg instanceof MessageForUniteGrayTip))) {
+          ((MessageForUniteGrayTip)paramToServiceMsg).updateUniteGrayTipMsg(paramAppInterface, "".concat(BaseApplicationImpl.getApplication().getString(2131694325)));
+        }
       }
-      if (TextUtils.isEmpty(paramTroopMemberInfo.pyFirst_troopnick)) {
-        paramTroopMemberInfo.pyFirst_troopnick = ChnToSpell.a(paramstTroopMemberInfo, 2);
+      paramMemberLevelInfo = ColorNickManager.b(str1);
+      paramAppInterface = paramMemberLevelInfo;
+      paramToServiceMsg = str2;
+      if (QLog.isColorLevel())
+      {
+        localStringBuffer.append(" troopCard=");
+        localStringBuffer.append(MessageRecordUtil.a(paramMemberLevelInfo));
+        localStringBuffer.append(".troop.revoked_msg_get_troop_mem_card");
+        localStringBuffer.append("|extraUpdateTarget:");
+        localStringBuffer.append(i);
+        localStringBuffer.append("|uniseq:");
+        localStringBuffer.append(l2);
+        paramAppInterface = paramMemberLevelInfo;
+        paramToServiceMsg = str2;
       }
-    } while (!TextUtils.isEmpty(paramTroopMemberInfo.pyAll_troopnick));
-    paramTroopMemberInfo.pyAll_troopnick = ChnToSpell.a(paramstTroopMemberInfo, 1);
-  }
-  
-  public Object[] a(@NonNull AppInterface paramAppInterface, String paramString, ArrayList<stTroopRemarkInfo> paramArrayList)
-  {
-    return DBUtils.a().a((QQAppInterface)paramAppInterface, paramString, paramArrayList);
-  }
-  
-  public void b(@NonNull TroopMemberInfo paramTroopMemberInfo, stTroopMemberInfo paramstTroopMemberInfo)
-  {
-    if (paramstTroopMemberInfo == null) {
-      return;
     }
-    paramTroopMemberInfo.realLevel = ((int)paramstTroopMemberInfo.dwMemberLevel);
-    paramTroopMemberInfo.newRealLevel = TroopMemberLevelUtils.a(paramstTroopMemberInfo.vecGroupHonor);
-    paramTroopMemberInfo.level = ((int)paramstTroopMemberInfo.dwTitleId);
-  }
-  
-  public void b(stTroopMemberInfo paramstTroopMemberInfo, TroopMemberInfo paramTroopMemberInfo)
-  {
-    switch (paramstTroopMemberInfo.cRichCardNameVer)
+    else
     {
-    default: 
-      paramTroopMemberInfo.troopColorNick = ColorNickManager.a(paramstTroopMemberInfo.vecName);
-      paramTroopMemberInfo.troopnick = ColorNickManager.b(paramTroopMemberInfo.troopColorNick);
-      return;
+      boolean bool = paramToServiceMsg.extraData.getBoolean("needRemark", false);
+      if ((TextUtils.isEmpty("")) && (bool) && (localObject != null) && (((FriendsManager)localObject).b(str3)))
+      {
+        paramAppInterface = ((FriendsManager)localObject).e(str3);
+        if (paramAppInterface != null)
+        {
+          localObject = paramAppInterface.getFriendNickWithoutUin();
+          break label386;
+        }
+      }
+      localObject = "";
+      label386:
+      paramMemberLevelInfo = paramMemberLevelInfo.bytes_nick_name.get().toByteArray();
+      paramAppInterface = (AppInterface)localObject;
+      paramToServiceMsg = str2;
+      if (paramMemberLevelInfo != null)
+      {
+        paramAppInterface = (AppInterface)localObject;
+        paramToServiceMsg = str2;
+        if (paramMemberLevelInfo.length > 0)
+        {
+          paramAppInterface = (AppInterface)localObject;
+          paramToServiceMsg = str2;
+          if (TextUtils.isEmpty((CharSequence)localObject))
+          {
+            paramToServiceMsg = new String(paramMemberLevelInfo);
+            if (QLog.isColorLevel())
+            {
+              localStringBuffer.append(" nick=");
+              localStringBuffer.append(MessageRecordUtil.a(paramToServiceMsg));
+            }
+            paramAppInterface = paramToServiceMsg;
+          }
+        }
+      }
     }
-    ColorNickManager.ColorNickNameData localColorNickNameData = ColorNickManager.a(paramstTroopMemberInfo.vecName);
-    if (localColorNickNameData.jdField_a_of_type_JavaLangString == null) {}
-    for (paramstTroopMemberInfo = "";; paramstTroopMemberInfo = localColorNickNameData.jdField_a_of_type_JavaLangString)
+    paramMemberLevelInfo = paramAppInterface;
+    if (TextUtils.isEmpty(paramAppInterface))
     {
-      paramTroopMemberInfo.troopColorNick = paramstTroopMemberInfo;
-      paramTroopMemberInfo.troopColorNickId = localColorNickNameData.jdField_a_of_type_Int;
-      paramTroopMemberInfo.troopnick = ColorNickManager.b(paramTroopMemberInfo.troopColorNick);
-      return;
+      if (QLog.isColorLevel()) {
+        localStringBuffer.append(" empty here");
+      }
+      paramMemberLevelInfo = "  ";
+    }
+    paramMap.put(str3, paramMemberLevelInfo);
+    if (localTroopManager != null)
+    {
+      paramAppInterface = str1;
+      if (TextUtils.isEmpty(str1)) {
+        paramAppInterface = null;
+      }
+      if (TextUtils.isEmpty(paramToServiceMsg)) {
+        paramToServiceMsg = null;
+      }
+      localTroopManager.a(String.valueOf(l1), str3, paramAppInterface, -100, paramToServiceMsg, null, -100, -100, -100, -100L, (byte)-100, -100L, -100.0D);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberInfoProcessor", 2, localStringBuffer.toString());
     }
   }
   
-  public void c(@NonNull TroopMemberInfo paramTroopMemberInfo, stTroopMemberInfo paramstTroopMemberInfo)
+  public void a(@NonNull AppInterface paramAppInterface, @NonNull ToServiceMsg paramToServiceMsg, @NonNull Map<String, String> paramMap, List<oidb_0x787.MemberLevelInfo> paramList)
   {
-    if (paramstTroopMemberInfo == null) {
+    if (paramList == null) {
       return;
     }
-    paramTroopMemberInfo.mVipType = ((int)paramstTroopMemberInfo.dwVipType);
-    paramTroopMemberInfo.mVipLevel = VipUtils.c((int)paramstTroopMemberInfo.dwVipLevel);
-    paramTroopMemberInfo.mVipTemplateId = ((int)paramstTroopMemberInfo.dwNameplate);
-    paramTroopMemberInfo.mBigClubVipType = ((int)paramstTroopMemberInfo.dwBigClubFlag);
-    paramTroopMemberInfo.mBigClubVipLevel = ((int)paramstTroopMemberInfo.dwBigClubLevel);
-    paramTroopMemberInfo.mBigClubTemplateId = ((int)paramstTroopMemberInfo.dwNameplate);
-    paramTroopMemberInfo.qqVipInfo = 0;
-    paramTroopMemberInfo.superQqInfo = 0;
-    paramTroopMemberInfo.superVipInfo = 0;
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a(paramAppInterface, paramToServiceMsg, paramMap, (oidb_0x787.MemberLevelInfo)paramList.next());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopMemberInfoProcessor
  * JD-Core Version:    0.7.0.1
  */

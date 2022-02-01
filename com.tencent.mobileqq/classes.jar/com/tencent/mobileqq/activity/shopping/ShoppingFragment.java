@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,13 +21,14 @@ import com.tencent.biz.subscribe.part.block.BlockContainer;
 import com.tencent.biz.subscribe.part.block.base.LoadInfo;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.vip.PbProtocol;
 import com.tencent.util.MqqWeakReferenceHandler;
 import common.config.service.QzoneConfig;
@@ -44,7 +44,7 @@ public class ShoppingFragment
   extends IphoneTitleBarFragment
   implements Handler.Callback
 {
-  public static String a;
+  public static String a = "ShoppingFragment";
   private Activity jdField_a_of_type_AndroidAppActivity;
   protected View a;
   private RelativeFeedsAdapter jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
@@ -54,57 +54,55 @@ public class ShoppingFragment
   private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
   private boolean jdField_a_of_type_Boolean;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "ShoppingFragment";
-  }
-  
   private void a(int paramInt1, int paramInt2)
   {
     String str = QzoneConfig.getInstance().getConfig("K_QQ_VAS", "SK_QQ_VAS_LiveDrawerShoppingOrderJumpUrl");
-    if (TextUtils.isEmpty(str)) {}
-    for (str = String.format("https://h5.qzone.qq.com/v2/vip/live/order?flag=%d&_wv=2&state=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });; str = str.replace("{flag}", String.valueOf(paramInt1)).replace("{state}", String.valueOf(paramInt2)))
-    {
-      VasWebviewUtil.openQQBrowserActivity(getActivity(), str, 256L, null, false, -1);
-      return;
+    if (TextUtils.isEmpty(str)) {
+      str = String.format("https://h5.qzone.qq.com/v2/vip/live/order?flag=%d&_wv=2&state=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    } else {
+      str = str.replace("{flag}", String.valueOf(paramInt1)).replace("{state}", String.valueOf(paramInt2));
     }
+    VasWebviewUtil.a(getBaseActivity(), str, 256L, null, false, -1);
   }
   
   private void a(VacAdvGetAccess.VacMemberGetOrderCntRsp paramVacMemberGetOrderCntRsp)
   {
-    if (paramVacMemberGetOrderCntRsp == null) {}
-    for (;;)
-    {
+    if (paramVacMemberGetOrderCntRsp == null) {
       return;
-      if (!paramVacMemberGetOrderCntRsp.order_states.has())
+    }
+    if (!paramVacMemberGetOrderCntRsp.order_states.has())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.a();
+      return;
+    }
+    paramVacMemberGetOrderCntRsp = paramVacMemberGetOrderCntRsp.order_states.get().iterator();
+    while (paramVacMemberGetOrderCntRsp.hasNext())
+    {
+      VacAdvGetAccess.OrderStateInfo localOrderStateInfo = (VacAdvGetAccess.OrderStateInfo)paramVacMemberGetOrderCntRsp.next();
+      if ((localOrderStateInfo.state.has()) && (localOrderStateInfo.state.has()) && (localOrderStateInfo.total_num.has()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.a();
-        return;
-      }
-      paramVacMemberGetOrderCntRsp = paramVacMemberGetOrderCntRsp.order_states.get().iterator();
-      while (paramVacMemberGetOrderCntRsp.hasNext())
-      {
-        VacAdvGetAccess.OrderStateInfo localOrderStateInfo = (VacAdvGetAccess.OrderStateInfo)paramVacMemberGetOrderCntRsp.next();
-        if ((localOrderStateInfo.state.has()) && (localOrderStateInfo.state.has()) && (localOrderStateInfo.total_num.has()))
+        int i = localOrderStateInfo.total_num.get();
+        int j = localOrderStateInfo.state.get();
+        if (j != 0)
         {
-          int i = localOrderStateInfo.total_num.get();
-          switch (localOrderStateInfo.state.get())
+          if (j != 1)
           {
-          case 3: 
-          default: 
-            break;
-          case 0: 
-            this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setToPayViewCount(i);
-            break;
-          case 1: 
-            this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setToSendViewCount(i);
-            break;
-          case 2: 
-            this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setAfterSendViewCount(i);
-            break;
-          case 4: 
-            this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setAfterSaleViewCount(i);
+            if (j != 2)
+            {
+              if (j == 4) {
+                this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setAfterSaleViewCount(i);
+              }
+            }
+            else {
+              this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setAfterSendViewCount(i);
+            }
           }
+          else {
+            this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setToSendViewCount(i);
+          }
+        }
+        else {
+          this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView.setToPayViewCount(i);
         }
       }
     }
@@ -130,22 +128,17 @@ public class ShoppingFragment
   
   private void b()
   {
-    String str = getString(2131693843);
-    Object localObject2 = "";
-    FragmentActivity localFragmentActivity = getActivity();
-    Object localObject1 = localObject2;
-    if (localFragmentActivity != null)
-    {
-      localObject1 = localObject2;
-      if (localFragmentActivity.getIntent() != null) {
-        localObject1 = localFragmentActivity.getIntent().getStringExtra("KEY_TITLE_NAME");
-      }
+    String str = getString(2131693796);
+    Object localObject = getBaseActivity();
+    if ((localObject != null) && (((Activity)localObject).getIntent() != null)) {
+      localObject = ((Activity)localObject).getIntent().getStringExtra("KEY_TITLE_NAME");
+    } else {
+      localObject = "";
     }
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = str;
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      localObject = str;
     }
-    setTitle((CharSequence)localObject2);
+    setTitle((CharSequence)localObject);
   }
   
   private void b(RelativeFeedsAdapter paramRelativeFeedsAdapter)
@@ -187,11 +180,11 @@ public class ShoppingFragment
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer = ((BlockContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131370540));
+    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer = ((BlockContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131370199));
     this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setParentFragment(this);
     this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setLayoutManagerType(3, 2);
     this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setEnableLoadMore(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView = new ShoppingHeadView(getActivity());
+    this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingHeadView = new ShoppingHeadView(getBaseActivity());
     this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter = new RelativeFeedsAdapter(null);
     this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.b(2);
     this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.c(this.jdField_a_of_type_Boolean);
@@ -206,20 +199,21 @@ public class ShoppingFragment
   protected void a()
   {
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getActivity()).inflate(2131559437, null, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getBaseActivity()).inflate(2131559311, null, false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setHandler(ShoppingFragment.class, this.jdField_a_of_type_MqqOsMqqHandler);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getBaseActivity().app;
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.setHandler(ShoppingFragment.class, this.jdField_a_of_type_MqqOsMqqHandler);
     }
-    this.jdField_a_of_type_AndroidAppActivity = getActivity();
+    this.jdField_a_of_type_AndroidAppActivity = getBaseActivity();
     f();
     d();
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131559437;
+    return 2131559311;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -233,11 +227,13 @@ public class ShoppingFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.b();
+    Object localObject = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer;
+    if (localObject != null) {
+      ((BlockContainer)localObject).b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeHandler(ShoppingFragment.class);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject != null) {
+      ((QQAppInterface)localObject).removeHandler(ShoppingFragment.class);
     }
   }
   
@@ -247,21 +243,18 @@ public class ShoppingFragment
     this.jdField_a_of_type_Boolean = SubscribeUtils.a();
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-    }
-    for (;;)
-    {
-      b();
-      a();
-      c();
-      IlivePreloadHelper.a(getActivity(), 3);
-      return;
+    } else {
       this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-657670);
     }
+    b();
+    a();
+    c();
+    IlivePreloadHelper.a(getBaseActivity(), 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shopping.ShoppingFragment
  * JD-Core Version:    0.7.0.1
  */

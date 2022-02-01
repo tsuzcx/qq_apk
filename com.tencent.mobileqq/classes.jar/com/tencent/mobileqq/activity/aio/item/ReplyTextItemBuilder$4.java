@@ -18,70 +18,56 @@ final class ReplyTextItemBuilder$4
   
   public void run()
   {
-    Object localObject4 = null;
-    Object localObject2;
-    Object localObject1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof HasSourceMessage))
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    boolean bool = localObject1 instanceof HasSourceMessage;
+    Object localObject3 = null;
+    if (bool)
     {
-      localObject2 = (HasSourceMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localObject2 = (HasSourceMessage)localObject1;
       localObject1 = ((HasSourceMessage)localObject2).getSourceMsgInfo();
       ((HasSourceMessage)localObject2).getHasPulledSourceMsg();
     }
-    for (;;)
+    else
     {
-      if (localObject1 == null) {
-        return;
-      }
-      if (0 == 0) {}
-      for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ((MessageForReplyText.SourceMsgInfo)localObject1).mSourceMsgSeq);; localObject1 = null)
-      {
-        localObject2 = localObject1;
-        Object localObject3 = localObject4;
-        MessageRecord localMessageRecord;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop != 0) {
-          if (!(localObject1 instanceof MessageForText))
-          {
-            localObject2 = localObject1;
-            localObject3 = localObject4;
-            if (!(localObject1 instanceof MessageForMixedMsg)) {}
-          }
-          else
-          {
-            localObject2 = localObject1;
-            localObject3 = localObject4;
-            if (((MessageRecord)localObject1).isLongMsg())
-            {
-              StringBuilder localStringBuilder = new StringBuilder();
-              localMessageRecord = ReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, localStringBuilder);
-              localObject2 = localObject1;
-              localObject3 = localObject4;
-              if (localMessageRecord != null)
-              {
-                if (localStringBuilder == null) {
-                  break label189;
-                }
-                localObject3 = localStringBuilder.toString();
-                localObject2 = localMessageRecord;
-              }
-            }
-          }
-        }
-        for (;;)
-        {
-          ThreadManager.getUIHandler().post(new ReplyTextItemBuilder.4.1(this, (MessageRecord)localObject2, (String)localObject3));
-          return;
-          label189:
-          localObject2 = localMessageRecord;
-          localObject3 = localObject4;
-        }
-      }
       localObject1 = null;
     }
+    if (localObject1 == null) {
+      return;
+    }
+    MessageRecord localMessageRecord2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ((MessageForReplyText.SourceMsgInfo)localObject1).mSourceMsgSeq);
+    Object localObject2 = localMessageRecord2;
+    localObject1 = localObject3;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop != 0) {
+      if (!(localMessageRecord2 instanceof MessageForText))
+      {
+        localObject2 = localMessageRecord2;
+        localObject1 = localObject3;
+        if (!(localMessageRecord2 instanceof MessageForMixedMsg)) {}
+      }
+      else
+      {
+        localObject2 = localMessageRecord2;
+        localObject1 = localObject3;
+        if (localMessageRecord2.isLongMsg())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          MessageRecord localMessageRecord1 = ReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localMessageRecord2, localStringBuilder);
+          localObject2 = localMessageRecord2;
+          localObject1 = localObject3;
+          if (localMessageRecord1 != null)
+          {
+            localObject1 = localStringBuilder.toString();
+            localObject2 = localMessageRecord1;
+          }
+        }
+      }
+    }
+    ThreadManager.getUIHandler().post(new ReplyTextItemBuilder.4.1(this, (MessageRecord)localObject2, (String)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

@@ -23,8 +23,7 @@ public class NavConstants
     a(21, 21);
     a(22, 22);
     a(24, 23);
-    a(25, 24);
-    a(27, 26);
+    a(26, 26);
     a(4, 5);
     a(3, 4);
     a(2, 3);
@@ -32,7 +31,7 @@ public class NavConstants
     a(6, 7);
     a(20, 20);
     a(16, 100);
-    a(31, 102);
+    a(30, 102);
     a(11, 102);
     a(23, 101);
   }
@@ -52,8 +51,14 @@ public class NavConstants
   
   private static void a(int paramInt1, int paramInt2)
   {
-    if ((a.containsKey(Integer.valueOf(paramInt1))) && (QLog.isColorLevel())) {
-      QLog.d("Navigate.Constants", 2, "NavConstants.put the repeat key!, key = " + paramInt1 + ", val = " + paramInt2);
+    if ((a.containsKey(Integer.valueOf(paramInt1))) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("NavConstants.put the repeat key!, key = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", val = ");
+      localStringBuilder.append(paramInt2);
+      QLog.d("Navigate.Constants", 2, localStringBuilder.toString());
     }
     a.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
   }
@@ -69,7 +74,7 @@ public class NavConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.NavConstants
  * JD-Core Version:    0.7.0.1
  */

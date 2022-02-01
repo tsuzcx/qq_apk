@@ -1,38 +1,36 @@
 package com.tencent.av.smallscreen;
 
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.ScreenRecordHelper;
+import com.tencent.av.smallscreen.api.ISmallScreenActivityPluginHelperApi;
+import com.tencent.av.utils.AudioHelper;
+import com.tencent.common.app.business.BaseVideoAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 public class SmallScreenActivityPlugin
 {
-  private static volatile SmallScreenActivityPlugin jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin = null;
-  VideoController jdField_a_of_type_ComTencentAvVideoController;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private static volatile SmallScreenActivityPlugin jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin;
+  BaseVideoAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface;
   boolean jdField_a_of_type_Boolean = false;
   boolean b = true;
   
-  private SmallScreenActivityPlugin(VideoAppInterface paramVideoAppInterface)
+  private SmallScreenActivityPlugin(BaseVideoAppInterface paramBaseVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface = paramBaseVideoAppInterface;
   }
   
-  public static SmallScreenActivityPlugin a(VideoAppInterface paramVideoAppInterface)
+  public static SmallScreenActivityPlugin a(BaseVideoAppInterface paramBaseVideoAppInterface)
   {
-    if (jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin == null) {
-        jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin = new SmallScreenActivityPlugin(paramVideoAppInterface);
+    if (jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin == null) {
+          jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin = new SmallScreenActivityPlugin(paramBaseVideoAppInterface);
+        }
       }
-      return jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvSmallscreenSmallScreenActivityPlugin;
   }
   
   public void a()
@@ -44,35 +42,7 @@ public class SmallScreenActivityPlugin
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    boolean bool1 = true;
-    boolean bool2 = VideoController.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp());
-    if ((QLog.isColorLevel()) || (!bool2) || (paramBoolean)) {
-      QLog.w("SmallScreenActivityPlugin", 1, "onPauseRender, isQuit[" + paramBoolean + "], isScreenOn[" + bool2 + "], seq[" + paramLong + "]");
-    }
-    SessionInfo localSessionInfo;
-    if (!paramBoolean)
-    {
-      if (!SmallScreenUtils.f()) {
-        break label170;
-      }
-      localSessionInfo = this.jdField_a_of_type_ComTencentAvVideoController.a();
-      int i = localSessionInfo.d;
-      paramBoolean = bool1;
-      if (i != 2) {
-        if (i != 4) {
-          break label165;
-        }
-      }
-    }
-    label165:
-    for (paramBoolean = bool1;; paramBoolean = false)
-    {
-      ThreadManager.excute(new SmallScreenActivityPlugin.2(this, paramLong, bool2, this.jdField_a_of_type_ComTencentAvVideoController.a().c(), paramBoolean), 16, null, false);
-      SmallScreenUtils.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp(), localSessionInfo);
-      return;
-    }
-    label170:
-    SmallScreenUtils.a(paramLong, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2);
+    ((ISmallScreenActivityPluginHelperApi)QRoute.api(ISmallScreenActivityPluginHelperApi.class)).onPauseRender(paramLong, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface, this.b, paramBoolean);
   }
   
   public void a(boolean paramBoolean)
@@ -92,8 +62,13 @@ public class SmallScreenActivityPlugin
   public void b()
   {
     long l = AudioHelper.b();
-    if (QLog.isColorLevel()) {
-      QLog.w("SmallScreenActivityPlugin", 1, "onResume, seq[" + l + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume, seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.w("SmallScreenActivityPlugin", 1, localStringBuilder.toString());
     }
     if (SmallScreenUtils.f())
     {
@@ -101,7 +76,7 @@ public class SmallScreenActivityPlugin
       this.b = true;
       ThreadManager.excute(new SmallScreenActivityPlugin.1(this, l), 16, null, false);
     }
-    SmallScreenUtils.a(l, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 0);
+    SmallScreenUtils.a(l, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface, 0);
   }
   
   public void c()
@@ -111,7 +86,7 @@ public class SmallScreenActivityPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenActivityPlugin
  * JD-Core Version:    0.7.0.1
  */

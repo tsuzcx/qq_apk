@@ -19,39 +19,61 @@ class CustomHttpService$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog().i("HttpComponent", "url = " + this.jdField_a_of_type_JavaLangString + ", onFailure e = " + paramIOException, new Object[0]);
+    paramCall = CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("url = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onFailure e = ");
+    localStringBuilder.append(paramIOException);
+    paramCall.i("HttpComponent", localStringBuilder.toString(), new Object[0]);
     ThreadCenter.postDefaultUITask(new CustomHttpService.1.1(this, paramIOException));
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
-    CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog().i("HttpComponent", "url = " + this.jdField_a_of_type_JavaLangString + ", onResponse code = " + paramResponse.code(), new Object[0]);
-    paramCall = "";
+    paramCall = CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("url = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(", onResponse code = ");
+    ((StringBuilder)localObject).append(paramResponse.code());
+    paramCall.i("HttpComponent", ((StringBuilder)localObject).toString(), new Object[0]);
     if (paramResponse.body() != null)
     {
       paramCall = paramResponse.body().string();
-      CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog().i("HttpComponent", "onResponse result = " + paramCall, new Object[0]);
+      paramResponse = CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse result = ");
+      ((StringBuilder)localObject).append(paramCall);
+      paramResponse.i("HttpComponent", ((StringBuilder)localObject).toString(), new Object[0]);
     }
-    if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpResponse != null) {}
-    try
+    else
     {
-      paramCall = new JSONObject(paramCall);
-      ThreadCenter.postDefaultUITask(new CustomHttpService.1.2(this, paramCall));
-      return;
+      paramCall = "";
     }
-    catch (JSONException paramCall)
+    if (this.jdField_a_of_type_ComTencentFalcoBaseLibapiHttpHttpResponse != null)
     {
-      for (;;)
+      paramResponse = null;
+      try
       {
-        CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog().i("HttpComponent", "onResponse JSONException e = " + paramCall, new Object[0]);
-        paramCall = null;
+        paramCall = new JSONObject(paramCall);
       }
+      catch (JSONException paramCall)
+      {
+        localObject = CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).getLog();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onResponse JSONException e = ");
+        localStringBuilder.append(paramCall);
+        ((LogInterface)localObject).i("HttpComponent", localStringBuilder.toString(), new Object[0]);
+        paramCall = paramResponse;
+      }
+      ThreadCenter.postDefaultUITask(new CustomHttpService.1.2(this, paramCall));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CustomHttpService.1
  * JD-Core Version:    0.7.0.1
  */

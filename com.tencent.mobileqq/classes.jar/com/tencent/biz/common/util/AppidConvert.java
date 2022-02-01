@@ -13,19 +13,20 @@ public class AppidConvert
   {
     int i = paramInt;
     long l = 0L;
-    if (a[i] != 0L)
+    for (;;)
     {
-      if (a[i] == paramLong) {
-        if (paramInt != 0) {
-          break label45;
-        }
-      }
-      label45:
-      for (l = a[(i + 1)];; l = a[(i - 1)] & Long.parseLong("FFFFFFFF", 16))
-      {
-        i += 2;
+      long[] arrayOfLong = a;
+      if (arrayOfLong[i] == 0L) {
         break;
       }
+      if (arrayOfLong[i] == paramLong) {
+        if (paramInt == 0) {
+          l = arrayOfLong[(i + 1)];
+        } else {
+          l = arrayOfLong[(i - 1)] & Long.parseLong("FFFFFFFF", 16);
+        }
+      }
+      i += 2;
     }
     return l;
   }
@@ -37,7 +38,7 @@ public class AppidConvert
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.util.AppidConvert
  * JD-Core Version:    0.7.0.1
  */

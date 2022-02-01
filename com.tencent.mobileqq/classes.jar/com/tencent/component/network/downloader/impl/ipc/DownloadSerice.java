@@ -17,53 +17,71 @@ public class DownloadSerice
   
   private void cancel(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)
   {
-    if ((paramSimpleRequest == null) || (paramMessenger == null)) {
-      return;
-    }
-    Log.i("DownloadSerice", "cancel request from DownloadClient:" + paramSimpleRequest.toString());
-    paramSimpleRequest = Const.obtainDownloadCanceledMsg(paramSimpleRequest.url);
-    try
+    if (paramSimpleRequest != null)
     {
-      paramMessenger.send(paramSimpleRequest);
-      return;
-    }
-    catch (RemoteException paramSimpleRequest)
-    {
-      paramSimpleRequest.printStackTrace();
+      if (paramMessenger == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cancel request from DownloadClient:");
+      localStringBuilder.append(paramSimpleRequest.toString());
+      Log.i("DownloadSerice", localStringBuilder.toString());
+      paramSimpleRequest = Const.obtainDownloadCanceledMsg(paramSimpleRequest.url);
+      try
+      {
+        paramMessenger.send(paramSimpleRequest);
+        return;
+      }
+      catch (RemoteException paramSimpleRequest)
+      {
+        paramSimpleRequest.printStackTrace();
+      }
     }
   }
   
   private void cleanCache(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)
   {
-    if ((paramSimpleRequest == null) || (paramMessenger == null)) {
-      return;
-    }
-    Log.i("DownloadSerice", "clean cache." + paramSimpleRequest.toString());
-    int i = paramSimpleRequest.content_type;
-    paramMessenger = DownloaderFactory.getInstance(this).getImageDownloader();
-    if (i == 2) {
-      paramMessenger = DownloaderFactory.getInstance(this).getCommonDownloader();
-    }
-    if ("".equals(paramSimpleRequest.url))
+    if (paramSimpleRequest != null)
     {
-      paramMessenger.cleanCache();
-      return;
+      if (paramMessenger == null) {
+        return;
+      }
+      paramMessenger = new StringBuilder();
+      paramMessenger.append("clean cache.");
+      paramMessenger.append(paramSimpleRequest.toString());
+      Log.i("DownloadSerice", paramMessenger.toString());
+      int i = paramSimpleRequest.content_type;
+      paramMessenger = DownloaderFactory.getInstance(this).getImageDownloader();
+      if (i == 2) {
+        paramMessenger = DownloaderFactory.getInstance(this).getCommonDownloader();
+      }
+      if ("".equals(paramSimpleRequest.url))
+      {
+        paramMessenger.cleanCache();
+        return;
+      }
+      paramMessenger.cleanCache(paramSimpleRequest.url);
     }
-    paramMessenger.cleanCache(paramSimpleRequest.url);
   }
   
   private void download(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)
   {
-    if ((paramSimpleRequest == null) || (paramMessenger == null)) {
-      return;
+    if (paramSimpleRequest != null)
+    {
+      if (paramMessenger == null) {
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("download request from DownloadClient:");
+      ((StringBuilder)localObject).append(paramSimpleRequest.toString());
+      Log.i("DownloadSerice", ((StringBuilder)localObject).toString());
+      int i = paramSimpleRequest.content_type;
+      localObject = DownloaderFactory.getInstance(this).getImageDownloader();
+      if (i == 2) {
+        localObject = DownloaderFactory.getInstance(this).getCommonDownloader();
+      }
+      ((Downloader)localObject).download(paramSimpleRequest.url, paramSimpleRequest.getPaths(), true, new DownloadSerice.1(this, paramMessenger));
     }
-    Log.i("DownloadSerice", "download request from DownloadClient:" + paramSimpleRequest.toString());
-    int i = paramSimpleRequest.content_type;
-    Downloader localDownloader = DownloaderFactory.getInstance(this).getImageDownloader();
-    if (i == 2) {
-      localDownloader = DownloaderFactory.getInstance(this).getCommonDownloader();
-    }
-    localDownloader.download(paramSimpleRequest.url, paramSimpleRequest.getPaths(), true, new DownloadSerice.1(this, paramMessenger));
   }
   
   public IBinder onBind(Intent paramIntent)
@@ -98,7 +116,7 @@ public class DownloadSerice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.ipc.DownloadSerice
  * JD-Core Version:    0.7.0.1
  */

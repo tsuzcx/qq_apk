@@ -17,17 +17,18 @@ public class TagEntry
   {
     if ((paramObject instanceof TagEntry))
     {
-      this.feedId = ((TagEntry)paramObject).feedId;
-      this.id = ((TagEntry)paramObject).id;
-      this.name = ((TagEntry)paramObject).name;
-      this.desc = ((TagEntry)paramObject).desc;
-      this.type = ((TagEntry)paramObject).type;
+      paramObject = (TagEntry)paramObject;
+      this.feedId = paramObject.feedId;
+      this.id = paramObject.id;
+      this.name = paramObject.name;
+      this.desc = paramObject.desc;
+      this.type = paramObject.type;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.TagEntry
  * JD-Core Version:    0.7.0.1
  */

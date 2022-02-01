@@ -12,21 +12,29 @@ class TroopShareUtility$8
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopShareUtility", 2, "shareToMobileQQ uploadNewTroopHeader result = " + paramBoolean + ",url = " + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shareToMobileQQ uploadNewTroopHeader result = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(",url = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("TroopShareUtility", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBoolean)
     {
-      this.a.d = paramString;
-      TroopShareUtility.e(this.a);
+      localObject = this.a;
+      ((TroopShareUtility)localObject).d = paramString;
+      TroopShareUtility.e((TroopShareUtility)localObject);
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131715642), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131715566), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopshare.TroopShareUtility.8
  * JD-Core Version:    0.7.0.1
  */

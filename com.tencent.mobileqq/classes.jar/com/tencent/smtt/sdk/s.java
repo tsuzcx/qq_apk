@@ -10,7 +10,7 @@ import com.tencent.tbs.video.interfaces.a;
 
 class s
 {
-  private static s e = null;
+  private static s e;
   u a = null;
   Context b;
   a c;
@@ -37,8 +37,9 @@ class s
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.c != null) {
-      this.c.a(paramInt1, paramInt2, paramIntent);
+    a locala = this.c;
+    if (locala != null) {
+      locala.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
@@ -73,22 +74,23 @@ class s
       this.c.a(this.d);
       localBundle.putInt("callMode", 3);
     }
-    for (;;)
+    else
     {
-      paramBundle = this.a;
-      paramString = this;
-      if (parama == null) {
-        paramString = null;
-      }
-      paramBundle.a(localBundle, paramString);
-      return true;
       localBundle.putInt("callMode", 1);
     }
+    paramBundle = this.a;
+    if (parama == null) {
+      paramString = null;
+    } else {
+      paramString = this;
+    }
+    paramBundle.a(localBundle, paramString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.s
  * JD-Core Version:    0.7.0.1
  */

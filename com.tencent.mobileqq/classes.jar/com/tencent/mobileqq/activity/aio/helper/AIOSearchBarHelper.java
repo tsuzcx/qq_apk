@@ -40,35 +40,38 @@ public class AIOSearchBarHelper
   AIOSearchBarHelper(BaseChatPie paramBaseChatPie)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    if (((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof FriendChatPie)) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof TroopChatPie))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    paramBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    boolean bool;
+    if ((!(paramBaseChatPie instanceof FriendChatPie)) && (!(paramBaseChatPie instanceof TroopChatPie))) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    this.jdField_a_of_type_Boolean = bool;
   }
   
   private void a()
   {
-    Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getIntent().getExtras();
-    if (localBundle == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getIntent().getExtras();
+    if (localObject == null) {
       return;
     }
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = localBundle.getString("uin");
-    localSessionInfo.jdField_a_of_type_Int = localBundle.getInt("uintype");
-    localSessionInfo.jdField_b_of_type_JavaLangString = localBundle.getString("troop_uin");
+    localSessionInfo.jdField_a_of_type_JavaLangString = ((Bundle)localObject).getString("uin");
+    localSessionInfo.jdField_a_of_type_Int = ((Bundle)localObject).getInt("uintype");
+    localSessionInfo.jdField_b_of_type_JavaLangString = ((Bundle)localObject).getString("troop_uin");
     localSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground = new ChatBackground();
     localSessionInfo.jdField_b_of_type_Int = ChatTextSizeSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof FriendChatPie))
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if ((localObject instanceof FriendChatPie))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog = new C2CMessageSearchDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.l());
+      this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog = new C2CMessageSearchDialog(((BaseChatPie)localObject).a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.l());
       this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.show();
       this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.a.setOnItemLongClickListener(null);
       this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.a.setOnItemClickListener(new AIOSearchBarHelper.2(this));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog = new TroopAllMessageSearchDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.l());
+    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog = new TroopAllMessageSearchDialog(((BaseChatPie)localObject).a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.l());
     this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog.show();
     this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog.a.setOnItemLongClickListener(null);
     this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog.a.setOnItemClickListener(new AIOSearchBarHelper.3(this));
@@ -91,11 +94,7 @@ public class AIOSearchBarHelper
     if (i == 1) {
       l1 = l2;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(l1);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(l1);
   }
   
   public String getTag()
@@ -105,12 +104,12 @@ public class AIOSearchBarHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 8, 14 };
+    return new int[] { 4, 9, 15 };
   }
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131369516) && (this.jdField_a_of_type_Boolean))
+    if ((paramView.getId() == 2131369231) && (this.jdField_a_of_type_Boolean))
     {
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A416", "0X800A416", 0, 0, "", "", "", "");
       a();
@@ -120,40 +119,53 @@ public class AIOSearchBarHelper
   
   public void onMoveToState(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
+    if (this.jdField_a_of_type_Boolean)
+    {
+      Object localObject;
+      if (paramInt != 4)
       {
+        if (paramInt != 9)
+        {
+          if (paramInt != 15) {
+            return;
+          }
+          localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager;
+          if (localObject != null) {
+            ((MessageRoamManager)localObject).a(hashCode());
+          }
+          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog;
+          if ((localObject != null) && (((TroopAllMessageSearchDialog)localObject).isShowing()))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog.dismiss();
+            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog = null;
+          }
+          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog;
+          if ((localObject != null) && (((C2CMessageSearchDialog)localObject).isShowing()))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.dismiss();
+            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog = null;
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
+        }
+      }
+      else
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getIntent().getExtras();
+        if (localObject == null) {
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager = ((MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER));
+        ThreadManager.getFileThreadHandler().post(new AIOSearchBarHelper.1(this, (Bundle)localObject));
       }
     }
-    do
-    {
-      Bundle localBundle;
-      do
-      {
-        return;
-        localBundle = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getIntent().getExtras();
-      } while (localBundle == null);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager = ((MessageRoamManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER));
-      ThreadManager.getFileThreadHandler().post(new AIOSearchBarHelper.1(this, localBundle));
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(hashCode());
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog.isShowing()))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog.dismiss();
-        this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTroopAllMessageSearchDialog = null;
-      }
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.isShowing()));
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOSearchBarHelper
  * JD-Core Version:    0.7.0.1
  */

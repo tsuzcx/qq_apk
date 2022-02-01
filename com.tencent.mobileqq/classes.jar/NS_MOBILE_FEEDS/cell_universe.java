@@ -48,24 +48,28 @@ public final class cell_universe
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strTraceId != null) {
-      paramJceOutputStream.write(this.strTraceId, 0);
+    Object localObject = this.strTraceId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.strUIJson != null) {
-      paramJceOutputStream.write(this.strUIJson, 1);
+    localObject = this.strUIJson;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.BgReqData != null) {
-      paramJceOutputStream.write(this.BgReqData, 2);
+    localObject = this.BgReqData;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
     paramJceOutputStream.write(this.iUniverseType, 3);
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 4);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_universe
  * JD-Core Version:    0.7.0.1
  */

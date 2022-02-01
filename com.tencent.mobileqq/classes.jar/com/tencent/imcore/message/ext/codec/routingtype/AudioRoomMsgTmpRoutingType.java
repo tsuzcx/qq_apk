@@ -1,5 +1,6 @@
 package com.tencent.imcore.message.ext.codec.routingtype;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.core.codec.RoutingType;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -14,7 +15,7 @@ import msf.msgsvc.msg_svc.CommTmp;
 import msf.msgsvc.msg_svc.RoutingHead;
 
 public class AudioRoomMsgTmpRoutingType
-  implements RoutingType
+  implements RoutingType<AppInterface>
 {
   public int a()
   {
@@ -26,17 +27,23 @@ public class AudioRoomMsgTmpRoutingType
     return true;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
     localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
     localCommTmp.c2c_type.set(1);
     localCommTmp.svr_type.set(167);
-    paramMessageRecord = paramQQAppInterface.getMsgCache().k(paramMessageRecord.frienduin);
+    paramMessageRecord = ((QQAppInterface)paramAppInterface).getMsgCache().k(paramMessageRecord.frienduin);
     if (paramMessageRecord != null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("fight_accost", 4, "发送语音房临时会消息 有key------>" + HexUtil.bytes2HexStr(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      if (QLog.isDevelopLevel())
+      {
+        paramAppInterface = new StringBuilder();
+        paramAppInterface.append("发送语音房临时会消息 有key------>");
+        paramAppInterface.append(HexUtil.bytes2HexStr(paramMessageRecord));
+        paramAppInterface.append(",length:");
+        paramAppInterface.append(paramMessageRecord.length);
+        QLog.d("fight_accost", 4, paramAppInterface.toString());
       }
       localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
@@ -51,7 +58,7 @@ public class AudioRoomMsgTmpRoutingType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.AudioRoomMsgTmpRoutingType
  * JD-Core Version:    0.7.0.1
  */

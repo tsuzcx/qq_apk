@@ -7,12 +7,15 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.activity.specialcare.api.IQvipSpecialSoundManager;
 import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import com.tencent.mobileqq.utils.MediaPlayerHelper;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
+import com.tencent.mobileqq.vas.api.IVasService;
+import com.tencent.mobileqq.vas.ipc.QuickUpdateIPCModule;
 import com.tencent.mobileqq.vas.quickupdate.RingUpdateCallback;
+import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -28,7 +31,7 @@ import org.json.JSONObject;
 public class VipSpecialSoundWebViewPlugin
   extends VasWebviewJsPlugin
 {
-  private QvipSpecialSoundManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager = null;
+  private IQvipSpecialSoundManager jdField_a_of_type_ComTencentMobileqqActivitySpecialcareApiIQvipSpecialSoundManager = null;
   private MediaPlayerHelper jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper = MediaPlayerHelper.a();
   
   public VipSpecialSoundWebViewPlugin()
@@ -38,40 +41,55 @@ public class VipSpecialSoundWebViewPlugin
   
   private String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -3)
     {
-    default: 
-      return "UNKNOWN ERROR";
-    case -1: 
-      return "ERR_NO_NETWORK";
-    case -2: 
+      if (paramInt != -2)
+      {
+        if (paramInt != -1)
+        {
+          if (paramInt != 0)
+          {
+            if (paramInt != 10010)
+            {
+              if (paramInt != 11001)
+              {
+                switch (paramInt)
+                {
+                default: 
+                  switch (paramInt)
+                  {
+                  default: 
+                    return "UNKNOWN ERROR";
+                  case 20004: 
+                    return "E_OIDB_PB_UNPACK_ERR";
+                  case 20003: 
+                    return "E_OIDB_PB_PACK_ERR";
+                  case 20002: 
+                    return "ERR_OIDB_PB_SR_ERR";
+                  }
+                  return "ERR_OIDB_INIT_ERR";
+                case 10005: 
+                  return "ERR_GET_CLUBINFO_ERROR";
+                case 10004: 
+                  return "ERR_CLEAR_REMIND_ERROR";
+                case 10003: 
+                  return "ERR_SET_REMIND_ERROR";
+                case 10002: 
+                  return "ERR_INVALID_ARGUMENT";
+                }
+                return "ERR_METHOD_NOT_SUPPORT";
+              }
+              return "ERR_PROTO_SERIAL_ERR";
+            }
+            return "ERR_SET_QUOTA_LIMIT";
+          }
+          return "SUCC";
+        }
+        return "ERR_NO_NETWORK";
+      }
       return "ERR_REQUEST_TIMEOUT";
-    case -3: 
-      return "ERR_ANDROID_ERROR";
-    case 0: 
-      return "SUCC";
-    case 10001: 
-      return "ERR_METHOD_NOT_SUPPORT";
-    case 10002: 
-      return "ERR_INVALID_ARGUMENT";
-    case 10003: 
-      return "ERR_SET_REMIND_ERROR";
-    case 10004: 
-      return "ERR_CLEAR_REMIND_ERROR";
-    case 10005: 
-      return "ERR_GET_CLUBINFO_ERROR";
-    case 10010: 
-      return "ERR_SET_QUOTA_LIMIT";
-    case 11001: 
-      return "ERR_PROTO_SERIAL_ERR";
-    case 20001: 
-      return "ERR_OIDB_INIT_ERR";
-    case 20002: 
-      return "ERR_OIDB_PB_SR_ERR";
-    case 20003: 
-      return "E_OIDB_PB_PACK_ERR";
     }
-    return "E_OIDB_PB_UNPACK_ERR";
+    return "ERR_ANDROID_ERROR";
   }
   
   /* Error */
@@ -80,64 +98,67 @@ public class VipSpecialSoundWebViewPlugin
     // Byte code:
     //   0: aload_2
     //   1: invokestatic 78	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifne +26 -> 30
+    //   4: ifne +54 -> 58
     //   7: aconst_null
-    //   8: astore_3
-    //   9: new 80	java/io/FileOutputStream
-    //   12: dup
-    //   13: aload_1
-    //   14: invokespecial 83	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   17: astore_1
-    //   18: aload_1
-    //   19: aload_2
-    //   20: invokevirtual 89	java/lang/String:getBytes	()[B
-    //   23: invokevirtual 93	java/io/FileOutputStream:write	([B)V
-    //   26: aload_1
-    //   27: invokevirtual 96	java/io/FileOutputStream:close	()V
-    //   30: return
-    //   31: astore_1
-    //   32: aconst_null
-    //   33: astore_1
-    //   34: aload_1
-    //   35: invokevirtual 96	java/io/FileOutputStream:close	()V
-    //   38: return
-    //   39: astore_1
-    //   40: return
-    //   41: astore_1
-    //   42: aload_3
-    //   43: astore_2
-    //   44: aload_2
-    //   45: invokevirtual 96	java/io/FileOutputStream:close	()V
-    //   48: aload_1
-    //   49: athrow
-    //   50: astore_1
-    //   51: return
-    //   52: astore_2
-    //   53: goto -5 -> 48
-    //   56: astore_3
-    //   57: aload_1
-    //   58: astore_2
-    //   59: aload_3
-    //   60: astore_1
-    //   61: goto -17 -> 44
-    //   64: astore_2
-    //   65: goto -31 -> 34
+    //   8: astore 4
+    //   10: aconst_null
+    //   11: astore_3
+    //   12: new 80	java/io/FileOutputStream
+    //   15: dup
+    //   16: aload_1
+    //   17: invokespecial 83	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   20: astore_1
+    //   21: aload_1
+    //   22: aload_2
+    //   23: invokevirtual 89	java/lang/String:getBytes	()[B
+    //   26: invokevirtual 93	java/io/FileOutputStream:write	([B)V
+    //   29: aload_1
+    //   30: invokevirtual 96	java/io/FileOutputStream:close	()V
+    //   33: return
+    //   34: astore_3
+    //   35: aload_1
+    //   36: astore_2
+    //   37: aload_3
+    //   38: astore_1
+    //   39: goto +9 -> 48
+    //   42: goto +12 -> 54
+    //   45: astore_1
+    //   46: aload_3
+    //   47: astore_2
+    //   48: aload_2
+    //   49: invokevirtual 96	java/io/FileOutputStream:close	()V
+    //   52: aload_1
+    //   53: athrow
+    //   54: aload_1
+    //   55: invokevirtual 96	java/io/FileOutputStream:close	()V
+    //   58: return
+    //   59: astore_1
+    //   60: aload 4
+    //   62: astore_1
+    //   63: goto -9 -> 54
+    //   66: astore_2
+    //   67: goto -25 -> 42
+    //   70: astore_1
+    //   71: return
+    //   72: astore_2
+    //   73: goto -21 -> 52
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	68	0	this	VipSpecialSoundWebViewPlugin
-    //   0	68	1	paramFile	File
-    //   0	68	2	paramString	String
-    //   8	35	3	localObject1	Object
-    //   56	4	3	localObject2	Object
+    //   0	76	0	this	VipSpecialSoundWebViewPlugin
+    //   0	76	1	paramFile	File
+    //   0	76	2	paramString	String
+    //   11	1	3	localObject1	Object
+    //   34	13	3	localObject2	Object
+    //   8	53	4	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   9	18	31	java/io/IOException
-    //   34	38	39	java/io/IOException
-    //   9	18	41	finally
-    //   26	30	50	java/io/IOException
-    //   44	48	52	java/io/IOException
-    //   18	26	56	finally
-    //   18	26	64	java/io/IOException
+    //   21	29	34	finally
+    //   12	21	45	finally
+    //   12	21	59	java/io/IOException
+    //   21	29	66	java/io/IOException
+    //   29	33	70	java/io/IOException
+    //   54	58	70	java/io/IOException
+    //   48	52	72	java/io/IOException
   }
   
   private void a(String paramString)
@@ -162,104 +183,120 @@ public class VipSpecialSoundWebViewPlugin
     paramBundle = new JSONObject();
     if (i != 0)
     {
-      a("-->set ring failed, error:" + a(i));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->set ring failed, error:");
+      localStringBuilder.append(a(i));
+      a(localStringBuilder.toString());
       paramBundle.put("code", i);
       paramBundle.put("errorMessage", a(i));
     }
-    for (;;)
+    else
     {
-      callJs(paramString, new String[] { paramBundle.toString() });
-      return;
       a("-->set ring ok!");
       paramBundle.put("code", 0);
     }
+    callJs(paramString, new String[] { paramBundle.toString() });
   }
   
   private void a(String paramString, List<QvipSpecialSoundConfig.SpecialSound> paramList)
   {
-    a("-->responseRingsList,callback:" + paramString + ",list:" + paramList);
-    JSONObject localJSONObject1;
-    JSONObject localJSONObject2;
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->responseRingsList,callback:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(",list:");
+    ((StringBuilder)localObject).append(paramList);
+    a(((StringBuilder)localObject).toString());
+    try
     {
-      try
+      localObject = new JSONObject();
+      if ((paramList != null) && (paramList.size() > 0))
       {
-        localJSONObject1 = new JSONObject();
-        if ((paramList == null) || (paramList.size() <= 0))
-        {
-          a("-->responseRingsList:list is empety");
-          localJSONObject1.put("code", -1);
-          localJSONObject1.put("errorMessage", "rings not found");
-          callJs(paramString, new String[] { localJSONObject1.toString() });
-          return;
-        }
-        localJSONObject2 = new JSONObject();
+        JSONObject localJSONObject1 = new JSONObject();
         paramList = paramList.iterator();
-        if (!paramList.hasNext()) {
-          break;
-        }
-        QvipSpecialSoundConfig.SpecialSound localSpecialSound = (QvipSpecialSoundConfig.SpecialSound)paramList.next();
-        JSONObject localJSONObject3 = new JSONObject();
-        localJSONObject3.put("id", localSpecialSound.jdField_a_of_type_Int);
-        localJSONObject3.put("soundName", localSpecialSound.jdField_a_of_type_JavaLangString);
-        localJSONObject3.put("type", localSpecialSound.jdField_b_of_type_Int);
-        localJSONObject3.put("soundVersion", localSpecialSound.jdField_b_of_type_JavaLangString);
-        localJSONObject3.put("soundUrl", localSpecialSound.jdField_c_of_type_JavaLangString);
-        localJSONObject3.put("whiteList", localSpecialSound.jdField_d_of_type_JavaLangString);
-        localJSONObject3.put("isShow", localSpecialSound.jdField_c_of_type_Int);
-        localJSONObject3.put("backgroundUrl", localSpecialSound.jdField_e_of_type_JavaLangString);
-        localJSONObject3.put("access", localSpecialSound.f);
-        localJSONObject3.put("useNum", localSpecialSound.jdField_d_of_type_Int);
-        localJSONObject3.put("classify", localSpecialSound.jdField_e_of_type_Int);
-        localJSONObject3.put("classifyName", localSpecialSound.g);
-        localJSONObject3.put("limitFreeStart", localSpecialSound.h);
-        localJSONObject3.put("limitFreeEnd", localSpecialSound.i);
-        if ((localSpecialSound.jdField_c_of_type_JavaLangString != null) && (!TextUtils.isEmpty(localSpecialSound.jdField_c_of_type_JavaLangString)) && (f(localSpecialSound.jdField_c_of_type_JavaLangString)))
+        while (paramList.hasNext())
         {
-          localJSONObject3.put("isDownload", true);
-          localJSONObject2.put(String.valueOf(localSpecialSound.jdField_a_of_type_Int), localJSONObject3);
+          QvipSpecialSoundConfig.SpecialSound localSpecialSound = (QvipSpecialSoundConfig.SpecialSound)paramList.next();
+          JSONObject localJSONObject2 = new JSONObject();
+          localJSONObject2.put("id", localSpecialSound.jdField_a_of_type_Int);
+          localJSONObject2.put("soundName", localSpecialSound.jdField_a_of_type_JavaLangString);
+          localJSONObject2.put("type", localSpecialSound.jdField_b_of_type_Int);
+          localJSONObject2.put("soundVersion", localSpecialSound.jdField_b_of_type_JavaLangString);
+          localJSONObject2.put("soundUrl", localSpecialSound.jdField_c_of_type_JavaLangString);
+          localJSONObject2.put("whiteList", localSpecialSound.jdField_d_of_type_JavaLangString);
+          localJSONObject2.put("isShow", localSpecialSound.jdField_c_of_type_Int);
+          localJSONObject2.put("backgroundUrl", localSpecialSound.jdField_e_of_type_JavaLangString);
+          localJSONObject2.put("access", localSpecialSound.f);
+          localJSONObject2.put("useNum", localSpecialSound.jdField_d_of_type_Int);
+          localJSONObject2.put("classify", localSpecialSound.jdField_e_of_type_Int);
+          localJSONObject2.put("classifyName", localSpecialSound.g);
+          localJSONObject2.put("limitFreeStart", localSpecialSound.h);
+          localJSONObject2.put("limitFreeEnd", localSpecialSound.i);
+          String str = localSpecialSound.jdField_c_of_type_JavaLangString;
+          if ((str != null) && (!TextUtils.isEmpty(localSpecialSound.jdField_c_of_type_JavaLangString)) && (f(localSpecialSound.jdField_c_of_type_JavaLangString))) {
+            localJSONObject2.put("isDownload", true);
+          } else {
+            localJSONObject2.put("isDownload", false);
+          }
+          localJSONObject1.put(String.valueOf(localSpecialSound.jdField_a_of_type_Int), localJSONObject2);
         }
-        else
-        {
-          localJSONObject3.put("isDownload", false);
-        }
-      }
-      catch (JSONException paramList)
-      {
-        a("-->json exception:" + paramList.toString() + ".Reload json...");
-        b(paramString);
+        paramList = new JSONObject();
+        paramList.put("rings", localJSONObject1);
+        ((JSONObject)localObject).put("code", 0);
+        ((JSONObject)localObject).put("data", paramList);
+        callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
         return;
       }
+      a("-->responseRingsList:list is empety");
+      ((JSONObject)localObject).put("code", -1);
+      ((JSONObject)localObject).put("errorMessage", "rings not found");
+      callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
+      return;
     }
-    paramList = new JSONObject();
-    paramList.put("rings", localJSONObject2);
-    localJSONObject1.put("code", 0);
-    localJSONObject1.put("data", paramList);
-    callJs(paramString, new String[] { localJSONObject1.toString() });
+    catch (JSONException paramList)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("-->json exception:");
+      ((StringBuilder)localObject).append(paramList.toString());
+      ((StringBuilder)localObject).append(".Reload json...");
+      a(((StringBuilder)localObject).toString());
+      b(paramString);
+    }
   }
   
   private boolean a(int paramInt, String paramString)
   {
-    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "handleDownloadRing: " + paramInt);
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleDownloadRing: ");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, ((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
     if (RingUpdateCallback.isRingExists(this.mRuntime.a(), paramInt))
     {
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "handleDownloadRing: " + paramInt + " exists");
-      localJSONObject.put("code", 2);
-      localJSONObject.put("errorCode", 0);
-      callJs(paramString, new String[] { localJSONObject.toString() });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleDownloadRing: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" exists");
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, localStringBuilder.toString());
+      ((JSONObject)localObject).put("code", 2);
+      ((JSONObject)localObject).put("errorCode", 0);
+      callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
       return true;
     }
-    localJSONObject.put("code", 0);
-    callJs(paramString, new String[] { localJSONObject.toString() });
-    QuickUpdateIPCModule.a(37L, RingUpdateCallback.sInstance.getScid(paramInt), new VipSpecialSoundWebViewPlugin.3(this, paramString));
+    ((JSONObject)localObject).put("code", 0);
+    callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
+    QuickUpdateIPCModule.download(37L, RingUpdateCallback.sInstance.getScid(paramInt), new VipSpecialSoundWebViewPlugin.3(this, paramString));
     return true;
   }
   
   private boolean a(int paramInt, String paramString1, String paramString2)
   {
-    a("-->handleSetRing,id=" + paramInt + ",uin=" + paramString1);
-    if (!NetworkUtil.d(this.mRuntime.a().getApplicationContext()))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->handleSetRing,id=");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(",uin=");
+    ((StringBuilder)localObject).append(paramString1);
+    a(((StringBuilder)localObject).toString());
+    if (!NetworkUtil.isNetSupport(this.mRuntime.a().getApplicationContext()))
     {
       a("-->no network");
       paramString1 = new JSONObject();
@@ -268,25 +305,34 @@ public class VipSpecialSoundWebViewPlugin
       callJs(paramString2, new String[] { paramString1.toString() });
       return true;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("id", paramInt);
-    localBundle.putString("uin", paramString1);
-    sendRemoteReq(DataFactory.a("sepcial_care_delete_ring", paramString2, this.mOnRemoteResp.key, localBundle), false, false);
+    localObject = new Bundle();
+    ((Bundle)localObject).putInt("id", paramInt);
+    ((Bundle)localObject).putString("uin", paramString1);
+    sendRemoteReq(DataFactory.a("sepcial_care_delete_ring", paramString2, this.mOnRemoteResp.key, (Bundle)localObject), false, false);
     return true;
   }
   
   private boolean a(int paramInt, String paramString1, boolean paramBoolean, String paramString2)
   {
-    a("-->handleSetRing,id=" + paramInt + ",uin=" + paramString1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->handleSetRing,id=");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(",uin=");
+    ((StringBuilder)localObject).append(paramString1);
+    a(((StringBuilder)localObject).toString());
     if (paramBoolean)
     {
-      this.mRuntime.a().getApplicationContext().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit().putInt("special_care_id_cache" + paramString1, paramInt).commit();
+      localObject = this.mRuntime.a().getApplicationContext().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("special_care_id_cache");
+      localStringBuilder.append(paramString1);
+      ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), paramInt).commit();
       paramString1 = new JSONObject();
       paramString1.put("code", 0);
       callJs(paramString2, new String[] { paramString1.toString() });
       return true;
     }
-    if (!NetworkUtil.d(this.mRuntime.a().getApplicationContext()))
+    if (!NetworkUtil.isNetSupport(this.mRuntime.a().getApplicationContext()))
     {
       a("-->no network");
       paramString1 = new JSONObject();
@@ -295,30 +341,42 @@ public class VipSpecialSoundWebViewPlugin
       callJs(paramString2, new String[] { paramString1.toString() });
       return true;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("id", paramInt);
-    localBundle.putString("uin", paramString1);
-    sendRemoteReq(DataFactory.a("special_care_set_ring", paramString2, this.mOnRemoteResp.key, localBundle), false, false);
+    localObject = new Bundle();
+    ((Bundle)localObject).putInt("id", paramInt);
+    ((Bundle)localObject).putString("uin", paramString1);
+    sendRemoteReq(DataFactory.a("special_care_set_ring", paramString2, this.mOnRemoteResp.key, (Bundle)localObject), false, false);
     return true;
   }
   
   private boolean a(String paramString)
   {
-    a("-->handleGetRingsInfo,callback=" + paramString);
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new VipSpecialSoundWebViewPlugin.1(this, paramString));
-    }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->handleGetRingsInfo,callback=");
+    ((StringBuilder)localObject).append(paramString);
+    a(((StringBuilder)localObject).toString());
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareApiIQvipSpecialSoundManager.isCacheData())
     {
-      return true;
-      String str = "key_special_sound_list" + this.mRuntime.a().getCurrentAccountUin();
-      a(paramString, (List)QvipSpecialSoundManager.a.get(str));
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareApiIQvipSpecialSoundManager.loadSpecialSoundConfig(new VipSpecialSoundWebViewPlugin.1(this, paramString));
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("key_special_sound_list");
+      ((StringBuilder)localObject).append(this.mRuntime.a().getCurrentAccountUin());
+      localObject = ((StringBuilder)localObject).toString();
+      a(paramString, (List)QvipSpecialConstants.a.get(localObject));
+    }
+    return true;
   }
   
   private boolean a(String paramString1, String paramString2)
   {
-    a("-->handleCancelDownload,url:" + paramString1 + ",callback:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("-->handleCancelDownload,url:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",callback:");
+    localStringBuilder.append(paramString2);
+    a(localStringBuilder.toString());
     paramString1 = new JSONObject();
     paramString1.put("code", 0);
     callJs(paramString2, new String[] { paramString1.toString() });
@@ -327,10 +385,19 @@ public class VipSpecialSoundWebViewPlugin
   
   private boolean a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    a("-->handleGetRing, uin=" + paramString1 + ",callback=" + paramString2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->handleGetRing, uin=");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(",callback=");
+    ((StringBuilder)localObject).append(paramString2);
+    a(((StringBuilder)localObject).toString());
     if (paramBoolean)
     {
-      int i = this.mRuntime.a().getApplicationContext().getSharedPreferences("com.tencent.mobileqq_preferences", 4).getInt("special_care_id_cache" + paramString1, 1);
+      localObject = this.mRuntime.a().getApplicationContext().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("special_care_id_cache");
+      localStringBuilder.append(paramString1);
+      int i = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 1);
       paramString1 = new JSONObject();
       paramString1.put("id", i);
       localObject = new JSONObject();
@@ -339,7 +406,7 @@ public class VipSpecialSoundWebViewPlugin
       callJs(paramString2, new String[] { ((JSONObject)localObject).toString() });
       return true;
     }
-    Object localObject = new Bundle();
+    localObject = new Bundle();
     ((Bundle)localObject).putString("uin", paramString1);
     sendRemoteReq(DataFactory.a("special_care_get_ring", paramString2, this.mOnRemoteResp.key, (Bundle)localObject), false, false);
     return true;
@@ -355,31 +422,31 @@ public class VipSpecialSoundWebViewPlugin
       localJSONObject.put("code", -1);
       localJSONObject.put("errorMessage", "Config file already exists at local.");
     }
-    for (;;)
+    try
     {
-      callJs(paramString, new String[] { localJSONObject.toString() });
-      return true;
-      try
-      {
-        bool = localFile.createNewFile();
-        if (!bool)
-        {
-          a("-->Could not create config file!");
-          localJSONObject.put("code", -1);
-          localJSONObject.put("errorMessage", "Could not create file!");
-        }
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          boolean bool = false;
-        }
-        a("-->Write config to file.");
-        a(localFile, paramJSONObject.toString());
-        localJSONObject.put("code", 0);
-      }
+      bool = localFile.createNewFile();
     }
+    catch (IOException localIOException)
+    {
+      boolean bool;
+      label81:
+      break label81;
+    }
+    bool = false;
+    if (!bool)
+    {
+      a("-->Could not create config file!");
+      localJSONObject.put("code", -1);
+      localJSONObject.put("errorMessage", "Could not create file!");
+    }
+    else
+    {
+      a("-->Write config to file.");
+      a(localFile, paramJSONObject.toString());
+      localJSONObject.put("code", 0);
+    }
+    callJs(paramString, new String[] { localJSONObject.toString() });
+    return true;
   }
   
   private void b(String paramString)
@@ -388,12 +455,17 @@ public class VipSpecialSoundWebViewPlugin
     if ((localFile.exists()) && (!localFile.delete())) {
       a("-->can't delete file!");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager.a(new VipSpecialSoundWebViewPlugin.2(this, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareApiIQvipSpecialSoundManager.loadSpecialSoundConfig(new VipSpecialSoundWebViewPlugin.2(this, paramString));
   }
   
   private void b(String paramString, Bundle paramBundle)
   {
-    a("-->handleGetRingResponse, callback=" + paramString + ",bundle=" + paramBundle);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->handleGetRingResponse, callback=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(",bundle=");
+    ((StringBuilder)localObject).append(paramBundle);
+    a(((StringBuilder)localObject).toString());
     if (paramBundle == null)
     {
       paramBundle = new JSONObject();
@@ -405,94 +477,111 @@ public class VipSpecialSoundWebViewPlugin
     int i = paramBundle.getInt("id");
     paramBundle = new JSONObject();
     paramBundle.put("id", i);
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("code", 0);
-    localJSONObject.put("data", paramBundle);
-    callJs(paramString, new String[] { localJSONObject.toString() });
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("code", 0);
+    ((JSONObject)localObject).put("data", paramBundle);
+    callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
   }
   
   private boolean b(int paramInt, String paramString)
   {
-    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "handlePlayRing: " + paramInt);
-    JSONObject localJSONObject = new JSONObject();
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.d()) {}
-    for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.b();; bool = true)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handlePlayRing: ");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, ((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.d()) {
+      bool = this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.b();
+    } else {
+      bool = true;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.a(new VipSpecialSoundWebViewPlugin.4(this, paramInt, paramString));
+    String str = RingUpdateCallback.getWavPath(this.mRuntime.a(), paramInt);
+    if (!new File(str).exists())
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.a(new VipSpecialSoundWebViewPlugin.4(this, paramInt, paramString));
-      String str = RingUpdateCallback.getWavPath(this.mRuntime.a(), paramInt);
-      if (!new File(str).exists())
-      {
-        localJSONObject.put("code", 2);
-        localJSONObject.put("errorMessage", "audio is missing");
-        callJs(paramString, new String[] { localJSONObject.toString() });
-        return true;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.a(this.mRuntime.a().getApplicationContext(), str, new VipSpecialSoundWebViewPlugin.PreparedListener(this, localJSONObject, paramString, bool));
+      ((JSONObject)localObject).put("code", 2);
+      ((JSONObject)localObject).put("errorMessage", "audio is missing");
+      callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
       return true;
     }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.a(this.mRuntime.a().getApplicationContext(), str, new VipSpecialSoundWebViewPlugin.PreparedListener(this, (JSONObject)localObject, paramString, bool));
+    return true;
   }
   
   private boolean b(String paramString)
   {
-    a("-->handleGetFriendCount,callback=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("-->handleGetFriendCount,callback=");
+    localStringBuilder.append(paramString);
+    a(localStringBuilder.toString());
     sendRemoteReq(DataFactory.a("special_care_get_friend_count", paramString, this.mOnRemoteResp.key, null), false, false);
     return true;
   }
   
   private boolean b(String paramString1, String paramString2)
   {
-    a("-->handleIsSpecialCareFriend,friendUin:" + paramString1 + ",callback:" + paramString2);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("friendUin", paramString1);
-    sendRemoteReq(DataFactory.a("is_special_friend", paramString2, this.mOnRemoteResp.key, localBundle), false, false);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->handleIsSpecialCareFriend,friendUin:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(",callback:");
+    ((StringBuilder)localObject).append(paramString2);
+    a(((StringBuilder)localObject).toString());
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("friendUin", paramString1);
+    sendRemoteReq(DataFactory.a("is_special_friend", paramString2, this.mOnRemoteResp.key, (Bundle)localObject), false, false);
     return true;
   }
   
   private void c(String paramString, Bundle paramBundle)
   {
-    a("-->handleGetFriendCountResponse,callback=" + paramString + ",bundle=" + paramBundle);
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->handleGetFriendCountResponse,callback=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(",bundle=");
+    ((StringBuilder)localObject).append(paramBundle);
+    a(((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
     if (paramBundle == null)
     {
-      localJSONObject.put("code", -1);
-      localJSONObject.put("errorMessage", "id error");
+      ((JSONObject)localObject).put("code", -1);
+      ((JSONObject)localObject).put("errorMessage", "id error");
     }
-    for (;;)
+    else
     {
-      callJs(paramString, new String[] { localJSONObject.toString() });
-      return;
       int i = paramBundle.getInt("count");
-      localJSONObject.put("code", 0);
+      ((JSONObject)localObject).put("code", 0);
       paramBundle = new JSONObject();
       paramBundle.put("nums", i);
-      localJSONObject.put("data", paramBundle);
+      ((JSONObject)localObject).put("data", paramBundle);
     }
+    callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
   }
   
   private boolean c(String paramString)
   {
     boolean bool;
-    JSONObject localJSONObject;
-    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.d())
-    {
+    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.d()) {
       bool = true;
-      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "handleStopRing " + bool);
-      localJSONObject = new JSONObject();
-      if (bool) {
-        break label97;
-      }
-      localJSONObject.put("code", -1);
-      localJSONObject.put("errorMessage", "stop error");
-    }
-    for (;;)
-    {
-      callJs(paramString, new String[] { localJSONObject.toString() });
-      return true;
+    } else {
       bool = this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.b();
-      break;
-      label97:
-      localJSONObject.put("code", 0);
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleStopRing ");
+    ((StringBuilder)localObject).append(bool);
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, ((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
+    if (!bool)
+    {
+      ((JSONObject)localObject).put("code", -1);
+      ((JSONObject)localObject).put("errorMessage", "stop error");
+    }
+    else
+    {
+      ((JSONObject)localObject).put("code", 0);
+    }
+    callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
+    return true;
   }
   
   private void d(String paramString, Bundle paramBundle)
@@ -514,25 +603,30 @@ public class VipSpecialSoundWebViewPlugin
       paramBundle.put("code", i);
       paramBundle.put("errorMessage", a(i));
     }
-    for (;;)
+    else
     {
-      callJs(paramString, new String[] { paramBundle.toString() });
-      return;
       a("-->delete ring ok!");
       paramBundle.put("code", 0);
     }
+    callJs(paramString, new String[] { paramBundle.toString() });
   }
   
   private boolean d(String paramString)
   {
-    a("-->handleGetSpecialSoundSwitchState,callback:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("-->handleGetSpecialSoundSwitchState,callback:");
+    localStringBuilder.append(paramString);
+    a(localStringBuilder.toString());
     sendRemoteReq(DataFactory.a("special_care_get_switch_state", paramString, this.mOnRemoteResp.key, null), false, false);
     return true;
   }
   
   private void e(String paramString, Bundle paramBundle)
   {
-    a("-->onSpecialSoundSwitchState,callback=" + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->onSpecialSoundSwitchState,callback=");
+    ((StringBuilder)localObject).append(paramString);
+    a(((StringBuilder)localObject).toString());
     if (paramBundle == null)
     {
       paramBundle = new JSONObject();
@@ -544,31 +638,32 @@ public class VipSpecialSoundWebViewPlugin
     int i = paramBundle.getInt("state");
     paramBundle = new JSONObject();
     paramBundle.put("code", 0);
-    JSONObject localJSONObject = new JSONObject();
-    if (i == 1) {}
-    for (i = 1;; i = 0)
-    {
-      localJSONObject.put("canPlay", i);
-      paramBundle.put("data", localJSONObject);
-      callJs(paramString, new String[] { paramBundle.toString() });
-      return;
+    localObject = new JSONObject();
+    if (i == 1) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    ((JSONObject)localObject).put("canPlay", i);
+    paramBundle.put("data", localObject);
+    callJs(paramString, new String[] { paramBundle.toString() });
   }
   
   private boolean e(String paramString)
   {
     File localFile = new File(this.mRuntime.a().getApplicationContext().getFilesDir(), "pddata/vas/special_remind/new_config.json");
     JSONObject localJSONObject = new JSONObject();
-    if (localFile.exists()) {
+    if (localFile.exists())
+    {
       localJSONObject.put("code", 0);
     }
-    for (;;)
+    else
     {
-      callJs(paramString, new String[] { localJSONObject.toString() });
-      return true;
       localJSONObject.put("code", 1);
       localJSONObject.put("errorMessage", "config file does not exists at local!");
     }
+    callJs(paramString, new String[] { localJSONObject.toString() });
+    return true;
   }
   
   private void f(String paramString, Bundle paramBundle)
@@ -593,215 +688,257 @@ public class VipSpecialSoundWebViewPlugin
   
   private boolean f(String paramString)
   {
-    paramString = new File(this.mRuntime.a().getApplicationContext().getFilesDir(), paramString);
-    if (paramString != null) {
-      return paramString.exists();
-    }
-    return false;
+    return new File(this.mRuntime.a().getApplicationContext().getFilesDir(), paramString).exists();
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("specialRing"))) {
-      a("-->handleJsRequest returned, pkgName=" + paramString2);
-    }
-    for (;;)
+    if ((paramString2 != null) && (paramString2.equalsIgnoreCase("specialRing")))
     {
-      return false;
+      paramString1 = null;
       try
       {
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        if (paramString1 == null) {
-          continue;
-        }
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
       }
       catch (JSONException paramJsBridgeListener)
       {
+        paramString2 = new StringBuilder();
+        paramString2.append("-->failed to parse json str,json=");
+        paramString2.append(null);
+        a(paramString2.toString());
+        paramJsBridgeListener.printStackTrace();
+        paramJsBridgeListener = null;
+      }
+      if (paramJsBridgeListener == null) {
+        return false;
+      }
+      try
+      {
+        paramString2 = paramJsBridgeListener.getString("callback");
+        paramString1 = paramString2;
+        paramVarArgs = new StringBuilder();
+        paramString1 = paramString2;
+        paramVarArgs.append("-->handleJsRequest:method:");
+        paramString1 = paramString2;
+        paramVarArgs.append(paramString3);
+        paramString1 = paramString2;
+        paramVarArgs.append(",callback");
+        paramString1 = paramString2;
+        paramVarArgs.append(paramString2);
+        paramString1 = paramString2;
+        paramVarArgs.append(", json:");
+        paramString1 = paramString2;
+        paramVarArgs.append(paramJsBridgeListener.toString());
+        paramString1 = paramString2;
+        a(paramVarArgs.toString());
+        paramString1 = paramString2;
+        if (paramString3.equals("getRingsInfo"))
+        {
+          paramString1 = paramString2;
+          return a(paramString2);
+        }
+        paramString1 = paramString2;
+        if (paramString3.equals("cancelDownload"))
+        {
+          paramString1 = paramString2;
+          a(paramJsBridgeListener.getString("url"), paramString2);
+          return true;
+        }
+        paramString1 = paramString2;
+        bool = paramString3.equals("downloadRing");
+        if (bool)
+        {
+          paramString1 = paramString2;
+          return a(paramJsBridgeListener.optInt("id"), paramString2);
+        }
+        paramString1 = paramString2;
+        bool = paramString3.equals("setDefaultRing");
+        if (!bool) {}
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        boolean bool;
+        label281:
+        label336:
+        paramString2 = new StringBuilder();
+        paramString2.append("-->handleJsRequest exception:");
+        paramString2.append(paramJsBridgeListener.toString());
+        a(paramString2.toString());
         try
         {
-          paramJsBridgeListener = paramString1.getString("callback");
+          paramJsBridgeListener = new JSONObject();
+          paramJsBridgeListener.put("code", -1);
+          paramJsBridgeListener.put("errorMessage", "exception");
+          callJs(paramString1, new String[] { paramJsBridgeListener.toString() });
+          return true;
         }
         catch (Exception paramJsBridgeListener)
         {
-          try
-          {
-            for (;;)
-            {
-              a("-->handleJsRequest:method:" + paramString3 + ",callback" + paramJsBridgeListener + ", json:" + paramString1.toString());
-              if (!paramString3.equals("getRingsInfo")) {
-                break;
-              }
-              bool1 = a(paramJsBridgeListener);
-              return bool1;
-              paramJsBridgeListener = paramJsBridgeListener;
-              a("-->failed to parse json str,json=" + null);
-              paramJsBridgeListener.printStackTrace();
-              paramString1 = null;
-            }
-            if (paramString3.equals("cancelDownload"))
-            {
-              a(paramString1.getString("url"), paramJsBridgeListener);
-            }
-            else
-            {
-              if (paramString3.equals("downloadRing")) {
-                return a(paramString1.optInt("id"), paramJsBridgeListener);
-              }
-              boolean bool3 = paramString3.equals("setDefaultRing");
-              if (!bool3) {}
-            }
-            label295:
-            return true;
-          }
-          catch (Exception paramString1)
-          {
-            try
-            {
-              bool1 = paramString1.getBoolean("lazy");
-              return a(paramString1.getInt("id"), paramString1.getString("uin"), bool1, paramJsBridgeListener);
-              bool2 = paramString3.equals("getDefaultRing");
-              if (bool2) {}
-              try
-              {
-                bool2 = paramString1.getBoolean("lazy");
-                bool1 = bool2;
-              }
-              catch (Exception paramString2)
-              {
-                break label295;
-              }
-              return a(paramString1.getString("uin"), paramJsBridgeListener, bool1);
-              if (paramString3.equals("play")) {
-                return b(paramString1.optInt("id"), paramJsBridgeListener);
-              }
-              if (paramString3.equals("stop")) {
-                return c(paramJsBridgeListener);
-              }
-              if (paramString3.equals("getSpecialFriendsNum")) {
-                return b(paramJsBridgeListener);
-              }
-              if (paramString3.equals("deleteSpecialSound")) {
-                return a(paramString1.getInt("id"), paramString1.getString("uin"), paramJsBridgeListener);
-              }
-              if (paramString3.equals("canPlaySpecialSound")) {
-                return d(paramJsBridgeListener);
-              }
-              if (paramString3.equals("isSpecialCareFriend")) {
-                return b(paramString1.getString("friendUin"), paramJsBridgeListener);
-              }
-              if (paramString3.equals("queryRingDataStatus")) {
-                return e(paramJsBridgeListener);
-              }
-              if (paramString3.equals("pushRingData"))
-              {
-                bool1 = a(paramJsBridgeListener, paramString1.getJSONObject("data"));
-                return bool1;
-                paramString1 = paramString1;
-                paramJsBridgeListener = null;
-                for (;;)
-                {
-                  a("-->handleJsRequest exception:" + paramString1.toString());
-                  try
-                  {
-                    paramString1 = new JSONObject();
-                    paramString1.put("code", -1);
-                    paramString1.put("errorMessage", "exception");
-                    callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-                  }
-                  catch (Exception paramJsBridgeListener)
-                  {
-                    paramJsBridgeListener.printStackTrace();
-                  }
-                  paramString1 = paramString1;
-                }
-              }
-            }
-            catch (Exception paramString2)
-            {
-              for (;;)
-              {
-                bool1 = bool2;
-              }
-            }
-          }
+          paramJsBridgeListener.printStackTrace();
         }
       }
     }
+    try
+    {
+      bool = paramJsBridgeListener.getBoolean("lazy");
+    }
+    catch (Exception paramString1)
+    {
+      break label281;
+    }
+    bool = false;
+    paramString1 = paramString2;
+    return a(paramJsBridgeListener.getInt("id"), paramJsBridgeListener.getString("uin"), bool, paramString2);
+    paramString1 = paramString2;
+    bool = paramString3.equals("getDefaultRing");
+    if (bool) {}
+    try
+    {
+      bool = paramJsBridgeListener.getBoolean("lazy");
+    }
+    catch (Exception paramString1)
+    {
+      break label336;
+    }
+    bool = false;
+    paramString1 = paramString2;
+    return a(paramJsBridgeListener.getString("uin"), paramString2, bool);
+    paramString1 = paramString2;
+    if (paramString3.equals("play"))
+    {
+      paramString1 = paramString2;
+      return b(paramJsBridgeListener.optInt("id"), paramString2);
+    }
+    paramString1 = paramString2;
+    if (paramString3.equals("stop"))
+    {
+      paramString1 = paramString2;
+      return c(paramString2);
+    }
+    paramString1 = paramString2;
+    if (paramString3.equals("getSpecialFriendsNum"))
+    {
+      paramString1 = paramString2;
+      return b(paramString2);
+    }
+    paramString1 = paramString2;
+    if (paramString3.equals("deleteSpecialSound"))
+    {
+      paramString1 = paramString2;
+      return a(paramJsBridgeListener.getInt("id"), paramJsBridgeListener.getString("uin"), paramString2);
+    }
+    paramString1 = paramString2;
+    if (paramString3.equals("canPlaySpecialSound"))
+    {
+      paramString1 = paramString2;
+      return d(paramString2);
+    }
+    paramString1 = paramString2;
+    if (paramString3.equals("isSpecialCareFriend"))
+    {
+      paramString1 = paramString2;
+      return b(paramJsBridgeListener.getString("friendUin"), paramString2);
+    }
+    paramString1 = paramString2;
+    if (paramString3.equals("queryRingDataStatus"))
+    {
+      paramString1 = paramString2;
+      return e(paramString2);
+    }
+    paramString1 = paramString2;
+    if (paramString3.equals("pushRingData"))
+    {
+      paramString1 = paramString2;
+      bool = a(paramString2, paramJsBridgeListener.getJSONObject("data"));
+      return bool;
+    }
+    return true;
+    paramJsBridgeListener = new StringBuilder();
+    paramJsBridgeListener.append("-->handleJsRequest returned, pkgName=");
+    paramJsBridgeListener.append(paramString2);
+    a(paramJsBridgeListener.toString());
+    return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQvipSpecialSoundManager = new QvipSpecialSoundManager(this.mRuntime.a().getApplicationContext(), this.mRuntime.a());
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareApiIQvipSpecialSoundManager = VasUtil.a().getSpecialSoundManager();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     this.jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper.a();
   }
   
-  public void onResponse(Bundle paramBundle)
+  protected void onResponse(Bundle paramBundle)
   {
-    if (paramBundle != null)
-    {
-      String str1;
-      String str2;
+    if (paramBundle != null) {
       try
       {
-        if (paramBundle.getInt("respkey", 0) != this.mOnRemoteResp.key) {
-          return;
-        }
-        str1 = paramBundle.getString("cmd");
-        str2 = paramBundle.getString("callbackid");
-        paramBundle = paramBundle.getBundle("response");
-        a("-->onResponse,callback=" + str2 + ",cmd=" + str1 + ",respbundle=" + paramBundle);
-        if (str1 == null) {
-          return;
-        }
-        if ("special_care_get_ring".equals(str1))
+        if (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key)
         {
-          b(str2, paramBundle);
-          return;
-        }
-        if ("special_care_get_friend_count".equals(str1))
-        {
-          c(str2, paramBundle);
-          return;
+          localObject = paramBundle.getString("cmd");
+          String str = paramBundle.getString("callbackid");
+          paramBundle = paramBundle.getBundle("response");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("-->onResponse,callback=");
+          localStringBuilder.append(str);
+          localStringBuilder.append(",cmd=");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(",respbundle=");
+          localStringBuilder.append(paramBundle);
+          a(localStringBuilder.toString());
+          if (localObject != null)
+          {
+            if ("special_care_get_ring".equals(localObject))
+            {
+              b(str, paramBundle);
+              return;
+            }
+            if ("special_care_get_friend_count".equals(localObject))
+            {
+              c(str, paramBundle);
+              return;
+            }
+            if ("special_care_set_ring".equals(localObject))
+            {
+              a(str, paramBundle);
+              return;
+            }
+            if ("sepcial_care_delete_ring".equals(localObject))
+            {
+              d(str, paramBundle);
+              return;
+            }
+            if ("special_care_get_switch_state".equals(localObject))
+            {
+              e(str, paramBundle);
+              return;
+            }
+            if ("is_special_friend".equals(localObject))
+            {
+              f(str, paramBundle);
+              return;
+            }
+          }
         }
       }
       catch (Exception paramBundle)
       {
-        a("-->exception in onResponse," + paramBundle.toString());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("-->exception in onResponse,");
+        ((StringBuilder)localObject).append(paramBundle.toString());
+        a(((StringBuilder)localObject).toString());
         paramBundle.printStackTrace();
-        return;
-      }
-      if ("special_care_set_ring".equals(str1))
-      {
-        a(str2, paramBundle);
-        return;
-      }
-      if ("sepcial_care_delete_ring".equals(str1))
-      {
-        d(str2, paramBundle);
-        return;
-      }
-      if ("special_care_get_switch_state".equals(str1))
-      {
-        e(str2, paramBundle);
-        return;
-      }
-      if ("is_special_friend".equals(str1)) {
-        f(str2, paramBundle);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

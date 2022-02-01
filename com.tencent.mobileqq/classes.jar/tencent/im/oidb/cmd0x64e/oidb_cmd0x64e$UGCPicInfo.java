@@ -18,14 +18,15 @@ public final class oidb_cmd0x64e$UGCPicInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uint32_pic_width", "uint32_pic_height", "bytes_pic_md5", "bytes_pic_url" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2 }, UGCPicInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uint32_pic_width", "uint32_pic_height", "bytes_pic_md5", "bytes_pic_url" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localByteStringMicro2 }, UGCPicInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.UGCPicInfo
  * JD-Core Version:    0.7.0.1
  */

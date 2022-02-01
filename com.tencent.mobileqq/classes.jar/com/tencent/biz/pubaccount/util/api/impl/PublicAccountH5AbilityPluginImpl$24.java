@@ -1,88 +1,93 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PublicAccountH5AbilityPluginImpl$24
-  implements TroopMemberApiClient.Callback
+  implements ITroopMemberApiClientApi.Callback
 {
   PublicAccountH5AbilityPluginImpl$24(PublicAccountH5AbilityPluginImpl paramPublicAccountH5AbilityPluginImpl, boolean paramBoolean, String paramString1, String paramString2) {}
   
   public void callback(Bundle paramBundle)
   {
-    String str2;
-    JSONObject localJSONObject;
     if (paramBundle != null)
     {
       if (this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.activity != null) {
         this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.cancleProgressDailog();
       }
-      str2 = paramBundle.getString("pic_local_id");
-      localJSONObject = new JSONObject();
-    }
-    for (;;)
-    {
+      String str = paramBundle.getString("pic_local_id");
+      JSONObject localJSONObject = new JSONObject();
       try
       {
-        if (!"-1".equals(str2)) {
-          continue;
+        boolean bool = "-1".equals(str);
+        Object localObject;
+        if (bool)
+        {
+          localJSONObject.put("retCode", -1);
+          localJSONObject.put("msg", "fail");
+          if (this.jdField_a_of_type_Boolean)
+          {
+            ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+            localObject = str;
+          }
+          else
+          {
+            ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+            localObject = str;
+          }
         }
-        localJSONObject.put("retCode", -1);
-        localJSONObject.put("msg", "fail");
-        if (!this.jdField_a_of_type_Boolean) {
-          continue;
+        else
+        {
+          localObject = str;
+          if (this.jdField_a_of_type_Boolean)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("mqqpa://resourceid/");
+            ((StringBuilder)localObject).append(str);
+            localObject = ((StringBuilder)localObject).toString();
+          }
+          paramBundle = paramBundle.getString("pic_local_path");
+          PublicAccountH5AbilityPluginImpl.localIdMap.put(localObject, paramBundle);
+          localJSONObject.put("retCode", 0);
+          paramBundle = new StringBuilder();
+          paramBundle.append(HardCodeUtil.a(2131708760));
+          paramBundle.append((String)localObject);
+          localJSONObject.put("msg", paramBundle.toString());
+          if (QLog.isColorLevel())
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("下载成功，localld为  ");
+            paramBundle.append((String)localObject);
+            QLog.i("PublicAccountH5AbilityPlugin", 2, paramBundle.toString());
+          }
+          if (this.jdField_a_of_type_Boolean) {
+            ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
+          } else {
+            ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
+          }
         }
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
-        paramBundle = str2;
-        localJSONObject.put("localId", paramBundle);
+        localJSONObject.put("localId", localObject);
       }
       catch (JSONException paramBundle)
       {
-        String str1;
         paramBundle.printStackTrace();
-        continue;
       }
       this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
       if (this.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.startNextDownloadTask(this.b);
-      }
-      return;
-      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
-      paramBundle = str2;
-      continue;
-      str1 = str2;
-      if (this.jdField_a_of_type_Boolean) {
-        str1 = "mqqpa://resourceid/" + str2;
-      }
-      paramBundle = paramBundle.getString("pic_local_path");
-      PublicAccountH5AbilityPluginImpl.localIdMap.put(str1, paramBundle);
-      localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", HardCodeUtil.a(2131708754) + str1);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountH5AbilityPlugin", 2, "下载成功，localld为  " + str1);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, 0, "1", "", "", "");
-        paramBundle = str1;
-      }
-      else
-      {
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, 0, "1", "", "", "");
-        paramBundle = str1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.24
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import com.tencent.mobileqq.editor.composite.CodecParam;
 import com.tencent.mobileqq.shortvideo.mediadevice.Lock;
 import com.tencent.qphone.base.util.QLog;
 
@@ -31,46 +31,50 @@ public class TCTimer
   
   private boolean a(Message paramMessage)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
     if (Lock.a)
     {
       paramMessage = RMVideoStateMgr.a();
-      if (!paramMessage.b) {
-        break label179;
-      }
-      paramMessage.jdField_a_of_type_Double = (System.currentTimeMillis() - paramMessage.jdField_a_of_type_Long);
-      if (paramMessage.jdField_a_of_type_Double >= CodecParam.RECORD_MAX_TIME) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-      if (QLog.isColorLevel())
+      boolean bool3 = paramMessage.b;
+      boolean bool2 = false;
+      boolean bool1 = false;
+      if (bool3)
       {
+        paramMessage.jdField_a_of_type_Double = (System.currentTimeMillis() - paramMessage.jdField_a_of_type_Long);
+        if (paramMessage.jdField_a_of_type_Double >= CodecParam.RECORD_MAX_TIME) {
+          bool1 = true;
+        }
         bool2 = bool1;
-        if (bool1)
+        if (QLog.isColorLevel())
         {
-          QLog.d("TCTimer", 2, "handleLooperEvent startTime=" + paramMessage.jdField_a_of_type_Long + " total=" + paramMessage.jdField_a_of_type_Double);
           bool2 = bool1;
+          if (bool1)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleLooperEvent startTime=");
+            localStringBuilder.append(paramMessage.jdField_a_of_type_Long);
+            localStringBuilder.append(" total=");
+            localStringBuilder.append(paramMessage.jdField_a_of_type_Double);
+            QLog.d("TCTimer", 2, localStringBuilder.toString());
+            bool2 = bool1;
+          }
         }
       }
-    }
-    for (;;)
-    {
+      else if (this.c >= this.b)
+      {
+        bool2 = true;
+      }
       if (bool2) {
         this.c = this.b;
       }
       int i = this.c;
       int j = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonTCTimer$TCTimerCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonTCTimer$TCTimerCallback.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonTCTimer$TCTimerCallback, bool2, i * j, this.c);
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonTCTimer$TCTimerCallback;
+      if (paramMessage != null) {
+        paramMessage.a(paramMessage, bool2, j * i, i);
       }
       this.c += 1;
-      return true;
-      label179:
-      if (this.c >= this.b) {
-        bool2 = true;
-      }
     }
+    return true;
   }
   
   public int a()
@@ -99,11 +103,6 @@ public class TCTimer
     this.jdField_a_of_type_AndroidOsHandlerThread.quit();
   }
   
-  public void b(int paramInt)
-  {
-    this.c = (paramInt / this.jdField_a_of_type_Int);
-  }
-  
   public void c()
   {
     this.c = 0;
@@ -111,22 +110,21 @@ public class TCTimer
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1398036036) {
       return false;
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null)
     {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
+      localObject = ((Handler)localObject).obtainMessage(1398036036);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, this.jdField_a_of_type_Int);
     }
     return a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.common.TCTimer
  * JD-Core Version:    0.7.0.1
  */

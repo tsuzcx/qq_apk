@@ -17,22 +17,28 @@ public class ExtractorUtils
       return;
     }
     Matrix localMatrix = new Matrix();
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 == 3)
+        {
+          localMatrix.postScale(-1.0F, -1.0F);
+          localMatrix.postTranslate(paramInt2, paramInt3);
+        }
+      }
+      else
+      {
+        localMatrix.postScale(1.0F, -1.0F);
+        localMatrix.postTranslate(0.0F, paramInt3);
+      }
     }
-    for (;;)
+    else
     {
-      paramMatrix.postConcat(localMatrix);
-      return;
       localMatrix.postScale(-1.0F, 1.0F);
       localMatrix.postTranslate(paramInt2, 0.0F);
-      continue;
-      localMatrix.postScale(1.0F, -1.0F);
-      localMatrix.postTranslate(0.0F, paramInt3);
-      continue;
-      localMatrix.postScale(-1.0F, -1.0F);
-      localMatrix.postTranslate(paramInt2, paramInt3);
     }
+    paramMatrix.postConcat(localMatrix);
   }
   
   public static int getFrameRate(MediaFormat paramMediaFormat)
@@ -46,15 +52,12 @@ public class ExtractorUtils
         return i;
       }
     }
-    catch (Exception paramMediaFormat)
+    catch (Exception|Error paramMediaFormat)
     {
-      return 0;
+      label22:
+      break label22;
     }
-    catch (Error paramMediaFormat)
-    {
-      label23:
-      break label23;
-    }
+    return 0;
   }
   
   public static int getPreferRotation(AssetExtractor paramAssetExtractor)
@@ -68,15 +71,12 @@ public class ExtractorUtils
         return i;
       }
     }
-    catch (Exception paramAssetExtractor)
+    catch (Exception|Error paramAssetExtractor)
     {
-      return 0;
+      label32:
+      break label32;
     }
-    catch (Error paramAssetExtractor)
-    {
-      label33:
-      break label33;
-    }
+    return 0;
   }
   
   public static CGSize getVideoSize(AssetExtractor paramAssetExtractor)
@@ -87,40 +87,42 @@ public class ExtractorUtils
       CGSize localCGSize = new CGSize();
       if (paramAssetExtractor != null)
       {
-        if (paramAssetExtractor.containsKey("display-width")) {}
-        for (localCGSize.width = paramAssetExtractor.getInteger("display-width"); paramAssetExtractor.containsKey("display-height"); localCGSize.width = paramAssetExtractor.getInteger("width"))
+        if (paramAssetExtractor.containsKey("display-width")) {
+          localCGSize.width = paramAssetExtractor.getInteger("display-width");
+        } else {
+          localCGSize.width = paramAssetExtractor.getInteger("width");
+        }
+        if (paramAssetExtractor.containsKey("display-height"))
         {
           localCGSize.height = paramAssetExtractor.getInteger("display-height");
           return localCGSize;
         }
+        localCGSize.height = paramAssetExtractor.getInteger("height");
       }
-      label76:
       return localCGSize;
     }
-    catch (Exception paramAssetExtractor)
+    catch (Exception|Error paramAssetExtractor)
     {
-      return new CGSize();
-      localCGSize.height = paramAssetExtractor.getInteger("height");
-      return localCGSize;
+      label88:
+      break label88;
     }
-    catch (Error paramAssetExtractor)
-    {
-      break label76;
-    }
+    return new CGSize();
   }
   
   public static boolean isSameExtractor(DecoderAssetTrack paramDecoderAssetTrack1, DecoderAssetTrack paramDecoderAssetTrack2)
   {
-    if ((paramDecoderAssetTrack1 != null) && (paramDecoderAssetTrack2 != null)) {}
-    for (int i = 1; (i != 0) && (paramDecoderAssetTrack1.assetPath != null) && (paramDecoderAssetTrack1.assetPath.equals(paramDecoderAssetTrack2.assetPath)); i = 0) {
-      return true;
+    int i;
+    if ((paramDecoderAssetTrack1 != null) && (paramDecoderAssetTrack2 != null)) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return (i != 0) && (paramDecoderAssetTrack1.assetPath != null) && (paramDecoderAssetTrack1.assetPath.equals(paramDecoderAssetTrack2.assetPath));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.extractor.ExtractorUtils
  * JD-Core Version:    0.7.0.1
  */

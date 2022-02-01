@@ -20,56 +20,65 @@ public class TbsReaderCore
   
   public void closeFile()
   {
-    if (this.mReaderCore != null) {
-      this.mReaderCore.closeFile();
+    ITbsReader.IReaderCore localIReaderCore = this.mReaderCore;
+    if (localIReaderCore != null) {
+      localIReaderCore.closeFile();
     }
   }
   
   public void destroy()
   {
     closeFile();
-    if (this.mReaderCore != null) {
-      this.mReaderCore.destroy();
+    ITbsReader.IReaderCore localIReaderCore = this.mReaderCore;
+    if (localIReaderCore != null) {
+      localIReaderCore.destroy();
     }
     this.mReaderCore = null;
   }
   
   public boolean init(Context paramContext)
   {
-    if (this.mReaderCore != null) {
-      return this.mReaderCore.init(paramContext);
+    ITbsReader.IReaderCore localIReaderCore = this.mReaderCore;
+    if (localIReaderCore != null) {
+      return localIReaderCore.init(paramContext);
     }
     return false;
   }
   
   public void onSizeChanged(Integer paramInteger1, Integer paramInteger2)
   {
-    if (this.mReaderCore != null) {
-      this.mReaderCore.onSizeChanged(paramInteger1, paramInteger2);
+    ITbsReader.IReaderCore localIReaderCore = this.mReaderCore;
+    if (localIReaderCore != null) {
+      localIReaderCore.onSizeChanged(paramInteger1, paramInteger2);
     }
   }
   
   public int openFile(Context paramContext, Bundle paramBundle, FrameLayout paramFrameLayout, View paramView)
   {
-    if ((this.mReaderCore == null) || (paramBundle == null))
+    ITbsReader.IReaderCore localIReaderCore = this.mReaderCore;
+    if ((localIReaderCore != null) && (paramBundle != null))
     {
-      Log.e("TbsReaderCore", "init failed!");
-      return -1;
+      int j = localIReaderCore.openFile(paramContext, paramBundle, paramFrameLayout, paramView);
+      int i = 1100;
+      if (j != 0)
+      {
+        Log.e("TbsReaderCore", "OpenFile failed!");
+        i = 1101;
+      }
+      paramContext = ReaderEngine.getInstance();
+      paramBundle = new StringBuilder();
+      paramBundle.append("ViewOpenFile:");
+      paramBundle.append(j);
+      paramContext.report(i, paramBundle.toString(), null);
+      return j;
     }
-    int j = this.mReaderCore.openFile(paramContext, paramBundle, paramFrameLayout, paramView);
-    int i = 1100;
-    if (j != 0)
-    {
-      Log.e("TbsReaderCore", "OpenFile failed!");
-      i = 1101;
-    }
-    ReaderEngine.getInstance().report(i, "ViewOpenFile:" + j, null);
-    return j;
+    Log.e("TbsReaderCore", "init failed!");
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.reader.TbsReaderCore
  * JD-Core Version:    0.7.0.1
  */

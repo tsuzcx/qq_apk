@@ -29,10 +29,10 @@ public abstract class RunnerBuilder
   
   Class<?> addParent(Class<?> paramClass)
   {
-    if (!this.parents.add(paramClass)) {
-      throw new InitializationError(String.format("class '%s' (possibly indirectly) contains itself as a SuiteClass", new Object[] { paramClass.getName() }));
+    if (this.parents.add(paramClass)) {
+      return paramClass;
     }
-    return paramClass;
+    throw new InitializationError(String.format("class '%s' (possibly indirectly) contains itself as a SuiteClass", new Object[] { paramClass.getName() }));
   }
   
   void removeParent(Class<?> paramClass)
@@ -76,7 +76,7 @@ public abstract class RunnerBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.runners.model.RunnerBuilder
  * JD-Core Version:    0.7.0.1
  */

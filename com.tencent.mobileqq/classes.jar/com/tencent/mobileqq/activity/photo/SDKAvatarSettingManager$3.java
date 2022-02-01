@@ -10,26 +10,30 @@ class SDKAvatarSettingManager$3
 {
   SDKAvatarSettingManager$3(SDKAvatarSettingManager paramSDKAvatarSettingManager) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((SDKAvatarSettingManager.a(this.a).isFinishing()) || (this.a.a)) {
-      return;
-    }
-    this.a.d();
-    if (SDKAvatarSettingManager.a(this.a) != null) {
-      SDKAvatarSettingManager.a(this.a).removeCallbacks(SDKAvatarSettingManager.b(this.a));
-    }
-    if (paramInt == 16)
+    if (!SDKAvatarSettingManager.a(this.a).isFinishing())
     {
-      this.a.e();
-      return;
+      if (this.a.a) {
+        return;
+      }
+      this.a.d();
+      if (SDKAvatarSettingManager.a(this.a) != null) {
+        SDKAvatarSettingManager.a(this.a).removeCallbacks(SDKAvatarSettingManager.b(this.a));
+      }
+      if (paramInt == 16)
+      {
+        this.a.e();
+        return;
+      }
+      paramArrayOfByte = this.a;
+      SDKAvatarSettingManager.a(paramArrayOfByte, SDKAvatarSettingManager.a(paramArrayOfByte));
     }
-    SDKAvatarSettingManager.a(this.a, SDKAvatarSettingManager.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.3
  * JD-Core Version:    0.7.0.1
  */

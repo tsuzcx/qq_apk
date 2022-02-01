@@ -3,11 +3,10 @@ package com.tencent.avgame.gamelogic.data;
 import android.content.Context;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
+import com.tencent.avgame.data.FontStyleConfig;
 import com.tencent.avgame.gamelogic.GameUtil;
 import com.tencent.avgame.gamelogic.ITopic;
 import com.tencent.avgame.gamelogic.Indexable;
-import com.tencent.avgame.gameroom.stage.util.FontStyleConfig;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import org.jetbrains.annotations.NotNull;
+import mqq.app.MobileQQ;
 
 public class EngineData
   implements Cloneable
@@ -24,23 +23,19 @@ public class EngineData
   public volatile byte a;
   public volatile int a;
   public volatile long a;
-  @NotNull
+  public volatile FontStyleConfig a;
   private Game jdField_a_of_type_ComTencentAvgameGamelogicDataGame = new Game();
   public volatile PkCJOperationData a;
-  @NotNull
   private RoomInfo jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo = new RoomInfo();
   public volatile SurvivalPkResultInfo a;
-  public volatile FontStyleConfig a;
   public String a;
   public List<ITopic> a;
-  @NotNull
   public CopyOnWriteArrayList<GameItem> a;
   public volatile boolean a;
   public volatile int b;
   public volatile long b;
   public String b;
   public volatile List<Long> b;
-  @NotNull
   private CopyOnWriteArrayList<QuestionClassInfo> b;
   public volatile boolean b;
   public volatile int c;
@@ -70,7 +65,7 @@ public class EngineData
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData = new PkCJOperationData();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageUtilFontStyleConfig = new FontStyleConfig();
+    this.jdField_a_of_type_ComTencentAvgameDataFontStyleConfig = new FontStyleConfig();
     this.jdField_e_of_type_Boolean = true;
     a();
   }
@@ -120,147 +115,147 @@ public class EngineData
     //   1: monitorenter
     //   2: new 2	com/tencent/avgame/gamelogic/data/EngineData
     //   5: dup
-    //   6: invokespecial 120	com/tencent/avgame/gamelogic/data/EngineData:<init>	()V
+    //   6: invokespecial 119	com/tencent/avgame/gamelogic/data/EngineData:<init>	()V
     //   9: astore_1
     //   10: aload_1
-    //   11: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
+    //   11: getfield 82	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
     //   14: aload_0
-    //   15: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
-    //   18: invokevirtual 124	com/tencent/avgame/gamelogic/data/RoomInfo:copyFrom	(Lcom/tencent/avgame/gamelogic/data/RoomInfo;)V
+    //   15: getfield 82	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
+    //   18: invokevirtual 123	com/tencent/avgame/gamelogic/data/RoomInfo:copyFrom	(Lcom/tencent/avgame/gamelogic/data/RoomInfo;)V
     //   21: aload_1
-    //   22: getfield 88	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataGame	Lcom/tencent/avgame/gamelogic/data/Game;
+    //   22: getfield 87	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataGame	Lcom/tencent/avgame/gamelogic/data/Game;
     //   25: aload_0
-    //   26: getfield 88	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataGame	Lcom/tencent/avgame/gamelogic/data/Game;
-    //   29: invokevirtual 127	com/tencent/avgame/gamelogic/data/Game:a	(Lcom/tencent/avgame/gamelogic/data/Game;)V
+    //   26: getfield 87	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataGame	Lcom/tencent/avgame/gamelogic/data/Game;
+    //   29: invokevirtual 126	com/tencent/avgame/gamelogic/data/Game:a	(Lcom/tencent/avgame/gamelogic/data/Game;)V
     //   32: aload_1
-    //   33: getfield 42	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   33: getfield 41	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   36: aload_0
-    //   37: getfield 42	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   40: invokevirtual 131	java/util/concurrent/CopyOnWriteArrayList:addAll	(Ljava/util/Collection;)Z
+    //   37: getfield 41	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   40: invokevirtual 130	java/util/concurrent/CopyOnWriteArrayList:addAll	(Ljava/util/Collection;)Z
     //   43: pop
     //   44: aload_1
     //   45: aload_0
-    //   46: getfield 133	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Int	I
-    //   49: putfield 133	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Int	I
+    //   46: getfield 132	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Int	I
+    //   49: putfield 132	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Int	I
     //   52: aload_1
-    //   53: getfield 47	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   53: getfield 46	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   56: aload_0
-    //   57: getfield 47	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   60: invokeinterface 136 2 0
+    //   57: getfield 46	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   60: invokeinterface 135 2 0
     //   65: pop
     //   66: aload_1
-    //   67: getfield 49	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   67: getfield 48	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   70: aload_0
-    //   71: getfield 49	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   74: invokevirtual 131	java/util/concurrent/CopyOnWriteArrayList:addAll	(Ljava/util/Collection;)Z
+    //   71: getfield 48	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   74: invokevirtual 130	java/util/concurrent/CopyOnWriteArrayList:addAll	(Ljava/util/Collection;)Z
     //   77: pop
     //   78: aload_1
     //   79: aload_0
-    //   80: getfield 138	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   83: putfield 138	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   80: getfield 137	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   83: putfield 137	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   86: aload_1
     //   87: aload_0
-    //   88: getfield 140	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   91: putfield 140	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   88: getfield 139	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   91: putfield 139	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   94: aload_1
     //   95: aload_0
-    //   96: getfield 142	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Boolean	Z
-    //   99: putfield 142	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Boolean	Z
+    //   96: getfield 141	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Boolean	Z
+    //   99: putfield 141	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Boolean	Z
     //   102: aload_1
     //   103: aload_0
-    //   104: getfield 66	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_Boolean	Z
-    //   107: putfield 66	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_Boolean	Z
+    //   104: getfield 65	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_Boolean	Z
+    //   107: putfield 65	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_Boolean	Z
     //   110: aload_1
     //   111: aload_0
-    //   112: getfield 64	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_Boolean	Z
-    //   115: putfield 64	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_Boolean	Z
+    //   112: getfield 63	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_Boolean	Z
+    //   115: putfield 63	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_Boolean	Z
     //   118: aload_1
     //   119: aload_0
-    //   120: getfield 144	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Int	I
-    //   123: putfield 144	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Int	I
+    //   120: getfield 143	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Int	I
+    //   123: putfield 143	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Int	I
     //   126: aload_1
     //   127: aload_0
-    //   128: getfield 146	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_Int	I
-    //   131: putfield 146	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_Int	I
+    //   128: getfield 145	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_Int	I
+    //   131: putfield 145	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_Int	I
     //   134: aload_1
     //   135: aload_0
-    //   136: getfield 51	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_Int	I
-    //   139: putfield 51	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_Int	I
+    //   136: getfield 50	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_Int	I
+    //   139: putfield 50	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_Int	I
     //   142: aload_1
     //   143: aload_0
-    //   144: getfield 148	com/tencent/avgame/gamelogic/data/EngineData:jdField_e_of_type_Int	I
-    //   147: putfield 148	com/tencent/avgame/gamelogic/data/EngineData:jdField_e_of_type_Int	I
+    //   144: getfield 147	com/tencent/avgame/gamelogic/data/EngineData:jdField_e_of_type_Int	I
+    //   147: putfield 147	com/tencent/avgame/gamelogic/data/EngineData:jdField_e_of_type_Int	I
     //   150: aload_1
     //   151: aload_0
-    //   152: getfield 150	com/tencent/avgame/gamelogic/data/EngineData:f	I
-    //   155: putfield 150	com/tencent/avgame/gamelogic/data/EngineData:f	I
+    //   152: getfield 149	com/tencent/avgame/gamelogic/data/EngineData:f	I
+    //   155: putfield 149	com/tencent/avgame/gamelogic/data/EngineData:f	I
     //   158: aload_1
     //   159: aload_0
-    //   160: getfield 152	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Long	J
-    //   163: putfield 152	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Long	J
+    //   160: getfield 151	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Long	J
+    //   163: putfield 151	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Long	J
     //   166: aload_1
     //   167: aload_0
-    //   168: getfield 154	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Long	J
-    //   171: putfield 154	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Long	J
+    //   168: getfield 153	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Long	J
+    //   171: putfield 153	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Long	J
     //   174: aload_1
     //   175: aload_0
-    //   176: getfield 156	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Byte	B
-    //   179: putfield 156	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Byte	B
+    //   176: getfield 155	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Byte	B
+    //   179: putfield 155	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Byte	B
     //   182: aload_1
     //   183: aload_0
-    //   184: getfield 158	com/tencent/avgame/gamelogic/data/EngineData:h	I
-    //   187: putfield 158	com/tencent/avgame/gamelogic/data/EngineData:h	I
+    //   184: getfield 157	com/tencent/avgame/gamelogic/data/EngineData:h	I
+    //   187: putfield 157	com/tencent/avgame/gamelogic/data/EngineData:h	I
     //   190: aload_1
     //   191: aload_0
-    //   192: getfield 160	com/tencent/avgame/gamelogic/data/EngineData:i	I
-    //   195: putfield 160	com/tencent/avgame/gamelogic/data/EngineData:i	I
+    //   192: getfield 159	com/tencent/avgame/gamelogic/data/EngineData:i	I
+    //   195: putfield 159	com/tencent/avgame/gamelogic/data/EngineData:i	I
     //   198: aload_1
     //   199: aload_0
-    //   200: getfield 162	com/tencent/avgame/gamelogic/data/EngineData:g	I
-    //   203: putfield 162	com/tencent/avgame/gamelogic/data/EngineData:g	I
+    //   200: getfield 161	com/tencent/avgame/gamelogic/data/EngineData:g	I
+    //   203: putfield 161	com/tencent/avgame/gamelogic/data/EngineData:g	I
     //   206: aload_1
     //   207: aload_0
-    //   208: getfield 164	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Boolean	Z
-    //   211: putfield 164	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Boolean	Z
+    //   208: getfield 163	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Boolean	Z
+    //   211: putfield 163	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_Boolean	Z
     //   214: aload_1
-    //   215: getfield 53	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   215: getfield 52	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   218: aload_0
-    //   219: getfield 53	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   222: invokeinterface 136 2 0
+    //   219: getfield 52	com/tencent/avgame/gamelogic/data/EngineData:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   222: invokeinterface 135 2 0
     //   227: pop
     //   228: aload_1
-    //   229: getfield 55	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_JavaUtilList	Ljava/util/List;
+    //   229: getfield 54	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_JavaUtilList	Ljava/util/List;
     //   232: aload_0
-    //   233: getfield 55	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_JavaUtilList	Ljava/util/List;
-    //   236: invokeinterface 136 2 0
+    //   233: getfield 54	com/tencent/avgame/gamelogic/data/EngineData:jdField_c_of_type_JavaUtilList	Ljava/util/List;
+    //   236: invokeinterface 135 2 0
     //   241: pop
     //   242: aload_1
-    //   243: getfield 57	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_JavaUtilList	Ljava/util/List;
+    //   243: getfield 56	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_JavaUtilList	Ljava/util/List;
     //   246: aload_0
-    //   247: getfield 57	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_JavaUtilList	Ljava/util/List;
-    //   250: invokeinterface 136 2 0
+    //   247: getfield 56	com/tencent/avgame/gamelogic/data/EngineData:jdField_d_of_type_JavaUtilList	Ljava/util/List;
+    //   250: invokeinterface 135 2 0
     //   255: pop
     //   256: aload_1
-    //   257: getfield 62	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo	Lcom/tencent/avgame/gamelogic/data/SurvivalPkResultInfo;
+    //   257: getfield 61	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo	Lcom/tencent/avgame/gamelogic/data/SurvivalPkResultInfo;
     //   260: aload_0
-    //   261: getfield 62	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo	Lcom/tencent/avgame/gamelogic/data/SurvivalPkResultInfo;
-    //   264: invokevirtual 167	com/tencent/avgame/gamelogic/data/SurvivalPkResultInfo:copyFrom	(Lcom/tencent/avgame/gamelogic/data/SurvivalPkResultInfo;)V
+    //   261: getfield 61	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo	Lcom/tencent/avgame/gamelogic/data/SurvivalPkResultInfo;
+    //   264: invokevirtual 166	com/tencent/avgame/gamelogic/data/SurvivalPkResultInfo:copyFrom	(Lcom/tencent/avgame/gamelogic/data/SurvivalPkResultInfo;)V
     //   267: aload_1
     //   268: aload_0
-    //   269: getfield 71	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData	Lcom/tencent/avgame/gamelogic/data/PkCJOperationData;
-    //   272: putfield 71	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData	Lcom/tencent/avgame/gamelogic/data/PkCJOperationData;
+    //   269: getfield 70	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData	Lcom/tencent/avgame/gamelogic/data/PkCJOperationData;
+    //   272: putfield 70	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData	Lcom/tencent/avgame/gamelogic/data/PkCJOperationData;
     //   275: aload_1
     //   276: aload_0
-    //   277: getfield 76	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGameroomStageUtilFontStyleConfig	Lcom/tencent/avgame/gameroom/stage/util/FontStyleConfig;
-    //   280: putfield 76	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGameroomStageUtilFontStyleConfig	Lcom/tencent/avgame/gameroom/stage/util/FontStyleConfig;
+    //   277: getfield 75	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameDataFontStyleConfig	Lcom/tencent/avgame/data/FontStyleConfig;
+    //   280: putfield 75	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameDataFontStyleConfig	Lcom/tencent/avgame/data/FontStyleConfig;
     //   283: aload_1
     //   284: aload_0
-    //   285: getfield 169	com/tencent/avgame/gamelogic/data/EngineData:j	I
-    //   288: putfield 169	com/tencent/avgame/gamelogic/data/EngineData:j	I
+    //   285: getfield 168	com/tencent/avgame/gamelogic/data/EngineData:j	I
+    //   288: putfield 168	com/tencent/avgame/gamelogic/data/EngineData:j	I
     //   291: aload_1
     //   292: aload_0
-    //   293: getfield 78	com/tencent/avgame/gamelogic/data/EngineData:jdField_e_of_type_Boolean	Z
-    //   296: putfield 78	com/tencent/avgame/gamelogic/data/EngineData:jdField_e_of_type_Boolean	Z
+    //   293: getfield 77	com/tencent/avgame/gamelogic/data/EngineData:jdField_e_of_type_Boolean	Z
+    //   296: putfield 77	com/tencent/avgame/gamelogic/data/EngineData:jdField_e_of_type_Boolean	Z
     //   299: aload_0
     //   300: monitorexit
     //   301: aload_1
@@ -285,7 +280,6 @@ public class EngineData
     //   10	299	308	java/lang/Exception
   }
   
-  @NotNull
   public Game a()
   {
     return this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame;
@@ -308,7 +302,8 @@ public class EngineData
   
   public GameItem a()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > this.jdField_a_of_type_Int)) {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.size() > this.jdField_a_of_type_Int)) {
       return (GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(this.jdField_a_of_type_Int);
     }
     return null;
@@ -329,33 +324,36 @@ public class EngineData
   
   public Player a()
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
     return this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.getPlayer(str);
   }
   
   public QuestionClassInfo a(int paramInt)
   {
+    Object localObject3 = null;
+    try
+    {
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Object localObject1;
+      int k;
+      do
+      {
+        localObject1 = localObject3;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (QuestionClassInfo)localIterator.next();
+        k = ((QuestionClassInfo)localObject1).jdField_a_of_type_Int;
+      } while (k != paramInt);
+      return localObject1;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-        if (localIterator.hasNext())
-        {
-          QuestionClassInfo localQuestionClassInfo = (QuestionClassInfo)localIterator.next();
-          int k = localQuestionClassInfo.jdField_a_of_type_Int;
-          if (k != paramInt) {
-            continue;
-          }
-          return localQuestionClassInfo;
-        }
-      }
-      finally {}
-      Object localObject2 = null;
+      throw localObject2;
     }
   }
   
-  @NotNull
   public RoomInfo a()
   {
     return this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo;
@@ -385,7 +383,7 @@ public class EngineData
   public String a()
   {
     if (c() == 3) {
-      return BaseApplicationImpl.getApplication().getApplicationContext().getString(2131690586);
+      return MobileQQ.sMobileQQ.getApplicationContext().getString(2131690514);
     }
     int k = d();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
@@ -440,40 +438,52 @@ public class EngineData
     this.jdField_d_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_ComTencentAvgameGamelogicDataSurvivalPkResultInfo = new SurvivalPkResultInfo();
     this.jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData = new PkCJOperationData();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageUtilFontStyleConfig = new FontStyleConfig();
+    this.jdField_a_of_type_ComTencentAvgameDataFontStyleConfig = new FontStyleConfig();
     this.j = 0;
     this.jdField_e_of_type_Boolean = true;
   }
   
   public void a(int paramInt)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        int m = this.jdField_a_of_type_Int;
-        int k = 0;
-        if (k < this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())
-        {
-          if (paramInt == ((GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k)).jdField_a_of_type_Int)
-          {
-            this.jdField_a_of_type_Int = k;
-            return;
-          }
-          k += 1;
-        }
-        else
-        {
-          k = m;
-        }
-      }
-      finally {}
+      n = this.jdField_a_of_type_Int;
+      k = 0;
     }
+    finally
+    {
+      for (;;)
+      {
+        int n;
+        int k;
+        int m;
+        for (;;)
+        {
+          throw localObject;
+        }
+        label68:
+        k += 1;
+      }
+    }
+    m = n;
+    if (k < this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())
+    {
+      if (paramInt != ((GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k)).jdField_a_of_type_Int) {
+        break label68;
+      }
+      m = k;
+    }
+    this.jdField_a_of_type_Int = m;
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    QLog.d("EngineData", 2, "initForSurvivalPk " + paramInt + " " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initForSurvivalPk ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("EngineData", 2, localStringBuilder.toString());
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_c_of_type_Boolean = paramBoolean;
@@ -502,10 +512,11 @@ public class EngineData
   
   public void a(Player paramPlayer)
   {
-    if ((paramPlayer == null) || (TextUtils.isEmpty(paramPlayer.uin))) {}
-    for (;;)
+    if (paramPlayer != null)
     {
-      return;
+      if (TextUtils.isEmpty(paramPlayer.uin)) {
+        return;
+      }
       Iterator localIterator = this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.players.iterator();
       while (localIterator.hasNext())
       {
@@ -556,66 +567,59 @@ public class EngineData
     this.jdField_b_of_type_JavaUtilList.clear();
     this.jdField_b_of_type_JavaUtilList.addAll(paramList);
     Iterator localIterator1 = this.jdField_d_of_type_JavaUtilList.iterator();
-    Long localLong;
-    if (localIterator1.hasNext())
+    while (localIterator1.hasNext())
     {
-      localLong = (Long)localIterator1.next();
+      int m = 0;
+      Long localLong = (Long)localIterator1.next();
       Iterator localIterator2 = paramList.iterator();
       do
       {
+        k = m;
         if (!localIterator2.hasNext()) {
           break;
         }
       } while (!localLong.equals((Long)localIterator2.next()));
-    }
-    for (int k = 1;; k = 0)
-    {
-      if (k == 0)
-      {
+      int k = 1;
+      if (k == 0) {
         this.jdField_c_of_type_JavaUtilList.add(localLong);
-        break;
+      } else {
+        this.jdField_b_of_type_JavaUtilList.remove(localLong);
       }
-      this.jdField_b_of_type_JavaUtilList.remove(localLong);
-      break;
-      this.jdField_d_of_type_JavaUtilList.clear();
-      this.jdField_d_of_type_JavaUtilList.addAll(paramList);
-      return;
     }
+    this.jdField_d_of_type_JavaUtilList.clear();
+    this.jdField_d_of_type_JavaUtilList.addAll(paramList);
   }
   
   public void a(List<GameItem> paramList, int paramInt)
   {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+      if (paramList == null) {
+        return;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        GameItem localGameItem = (GameItem)paramList.next();
+        if (GameUtil.d(GameUtil.a(localGameItem.jdField_a_of_type_Int))) {
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localGameItem);
+        }
+      }
+      e();
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-        if (paramList == null) {
-          return;
-        }
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
-        {
-          GameItem localGameItem = (GameItem)paramList.next();
-          if (!GameUtil.d(GameUtil.a(localGameItem.jdField_a_of_type_Int))) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localGameItem);
-          continue;
-        }
-        e();
-      }
-      finally {}
-      this.jdField_a_of_type_Int = paramInt;
+      throw paramList;
     }
   }
   
   public void a(List<QuestionClassInfo> paramList, String paramString1, String paramString2)
   {
-    if ((paramList == null) || (paramString1 == null) || (paramString2 == null)) {}
-    for (;;)
-    {
-      return;
+    if ((paramList != null) && (paramString1 != null) && (paramString2 != null)) {
       try
       {
         this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
@@ -626,19 +630,23 @@ public class EngineData
           this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localQuestionClassInfo);
         }
         this.jdField_a_of_type_JavaLangString = paramString1;
+        this.jdField_b_of_type_JavaLangString = paramString2;
+        return;
       }
       finally {}
-      this.jdField_b_of_type_JavaLangString = paramString2;
     }
   }
   
   public void a(Map<String, String> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() <= 0)) {
-      return;
+    if (paramMap != null)
+    {
+      if (paramMap.size() <= 0) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.updateNicks(paramMap);
+      f();
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.updateNicks(paramMap);
-    f();
   }
   
   public void a(boolean paramBoolean)
@@ -722,82 +730,39 @@ public class EngineData
     }
   }
   
-  /* Error */
   public boolean a(Game paramGame)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 88	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataGame	Lcom/tencent/avgame/gamelogic/data/Game;
-    //   6: aload_1
-    //   7: invokevirtual 127	com/tencent/avgame/gamelogic/data/Game:a	(Lcom/tencent/avgame/gamelogic/data/Game;)V
-    //   10: aload_0
-    //   11: getfield 88	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataGame	Lcom/tencent/avgame/gamelogic/data/Game;
-    //   14: invokevirtual 388	com/tencent/avgame/gamelogic/data/Game:b	()V
-    //   17: aload_0
-    //   18: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
-    //   21: invokevirtual 391	com/tencent/avgame/gamelogic/data/RoomInfo:onGameStart	()V
-    //   24: aload_0
-    //   25: getfield 47	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   28: invokeinterface 239 1 0
-    //   33: aload_0
-    //   34: invokespecial 364	com/tencent/avgame/gamelogic/data/EngineData:f	()V
-    //   37: aload_0
-    //   38: getfield 142	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Boolean	Z
-    //   41: ifeq +61 -> 102
-    //   44: aload_0
-    //   45: iconst_3
-    //   46: invokevirtual 393	com/tencent/avgame/gamelogic/data/EngineData:f	(I)V
-    //   49: aload_1
-    //   50: ifnull +52 -> 102
-    //   53: aload_0
-    //   54: getfield 42	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   57: ifnull +45 -> 102
-    //   60: iconst_0
-    //   61: istore_2
-    //   62: iload_2
-    //   63: aload_0
-    //   64: getfield 42	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   67: invokevirtual 178	java/util/concurrent/CopyOnWriteArrayList:size	()I
-    //   70: if_icmpge +32 -> 102
-    //   73: aload_0
-    //   74: getfield 42	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   77: iload_2
-    //   78: invokevirtual 182	java/util/concurrent/CopyOnWriteArrayList:get	(I)Ljava/lang/Object;
-    //   81: checkcast 184	com/tencent/avgame/gamelogic/data/GameItem
-    //   84: getfield 254	com/tencent/avgame/gamelogic/data/GameItem:jdField_a_of_type_Int	I
-    //   87: aload_1
-    //   88: getfield 396	com/tencent/avgame/gamelogic/data/Game:jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo	Lcom/tencent/avgame/gamelogic/data/GameInfo;
-    //   91: getfield 399	com/tencent/avgame/gamelogic/data/GameInfo:jdField_a_of_type_Int	I
-    //   94: if_icmpne +12 -> 106
-    //   97: aload_0
-    //   98: iload_2
-    //   99: putfield 133	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_Int	I
-    //   102: aload_0
-    //   103: monitorexit
-    //   104: iconst_1
-    //   105: ireturn
-    //   106: iload_2
-    //   107: iconst_1
-    //   108: iadd
-    //   109: istore_2
-    //   110: goto -48 -> 62
-    //   113: astore_1
-    //   114: aload_0
-    //   115: monitorexit
-    //   116: aload_1
-    //   117: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	118	0	this	EngineData
-    //   0	118	1	paramGame	Game
-    //   61	49	2	k	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	49	113	finally
-    //   53	60	113	finally
-    //   62	102	113	finally
+    try
+    {
+      this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.a(paramGame);
+      this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.b();
+      this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.onGameStart();
+      this.jdField_a_of_type_JavaUtilList.clear();
+      f();
+      if (this.jdField_a_of_type_Boolean)
+      {
+        f(3);
+        if ((paramGame != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null))
+        {
+          int k = 0;
+          while (k < this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())
+          {
+            if (((GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k)).jdField_a_of_type_Int == paramGame.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.jdField_a_of_type_Int)
+            {
+              this.jdField_a_of_type_Int = k;
+              break;
+            }
+            k += 1;
+          }
+        }
+      }
+      return true;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramGame;
+    }
   }
   
   public boolean a(Player paramPlayer)
@@ -828,68 +793,33 @@ public class EngineData
   
   public boolean a(String paramString)
   {
-    if ((!d()) || (TextUtils.isEmpty(paramString))) {}
-    while ((this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null) || (!paramString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin))) {
-      return false;
+    if (d())
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      if ((this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer != null) && (paramString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin))) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
-  /* Error */
   public boolean a(String paramString, int paramInt)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_1
-    //   5: invokestatic 309	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8: istore 4
-    //   10: iload 4
-    //   12: ifeq +9 -> 21
-    //   15: iconst_0
-    //   16: istore_3
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_3
-    //   20: ireturn
-    //   21: aload_1
-    //   22: invokestatic 201	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   25: invokevirtual 205	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   28: invokevirtual 211	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   31: invokevirtual 412	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   34: ifeq +15 -> 49
-    //   37: iload_2
-    //   38: iconst_1
-    //   39: if_icmpne +10 -> 49
-    //   42: aload_0
-    //   43: getfield 88	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataGame	Lcom/tencent/avgame/gamelogic/data/Game;
-    //   46: invokevirtual 415	com/tencent/avgame/gamelogic/data/Game:c	()V
-    //   49: aload_0
-    //   50: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
-    //   53: aload_1
-    //   54: iload_2
-    //   55: invokevirtual 419	com/tencent/avgame/gamelogic/data/RoomInfo:onChangeUserStatus	(Ljava/lang/String;I)V
-    //   58: goto -41 -> 17
-    //   61: astore_1
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_1
-    //   65: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	66	0	this	EngineData
-    //   0	66	1	paramString	String
-    //   0	66	2	paramInt	int
-    //   1	19	3	bool1	boolean
-    //   8	3	4	bool2	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	61	finally
-    //   21	37	61	finally
-    //   42	49	61	finally
-    //   49	58	61	finally
+    try
+    {
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (bool) {
+        return false;
+      }
+      if ((paramString.equalsIgnoreCase(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount())) && (paramInt == 1)) {
+        this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.c();
+      }
+      this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.onChangeUserStatus(paramString, paramInt);
+      return true;
+    }
+    finally {}
   }
   
   public boolean a(List<UserScore> paramList)
@@ -906,103 +836,55 @@ public class EngineData
     }
   }
   
-  /* Error */
   public boolean a(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: iload_3
-    //   5: istore_2
-    //   6: aload_0
-    //   7: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
-    //   10: ifnull +47 -> 57
-    //   13: iload_1
-    //   14: ifeq +47 -> 61
-    //   17: iload_3
-    //   18: istore_2
-    //   19: aload_0
-    //   20: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
-    //   23: invokevirtual 427	com/tencent/avgame/gamelogic/data/RoomInfo:isRoomMatching	()Z
-    //   26: ifeq +31 -> 57
-    //   29: aload_0
-    //   30: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
-    //   33: getfield 430	com/tencent/avgame/gamelogic/data/RoomInfo:matchShareId	I
-    //   36: ifgt +19 -> 55
-    //   39: aload_0
-    //   40: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
-    //   43: getfield 371	com/tencent/avgame/gamelogic/data/RoomInfo:matchV2Extra	[B
-    //   46: astore 4
-    //   48: iload_3
-    //   49: istore_2
-    //   50: aload 4
-    //   52: ifnull +5 -> 57
-    //   55: iconst_1
-    //   56: istore_2
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: iload_2
-    //   60: ireturn
-    //   61: aload_0
-    //   62: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
-    //   65: invokevirtual 427	com/tencent/avgame/gamelogic/data/RoomInfo:isRoomMatching	()Z
-    //   68: istore_2
-    //   69: goto -12 -> 57
-    //   72: astore 4
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload 4
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	EngineData
-    //   0	79	1	paramBoolean	boolean
-    //   5	64	2	bool1	boolean
-    //   1	48	3	bool2	boolean
-    //   46	5	4	arrayOfByte	byte[]
-    //   72	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   6	13	72	finally
-    //   19	48	72	finally
-    //   61	69	72	finally
+    try
+    {
+      Object localObject1 = this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo;
+      boolean bool = false;
+      if (localObject1 != null)
+      {
+        if (paramBoolean)
+        {
+          paramBoolean = bool;
+          if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.isRoomMatching()) {
+            if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.matchShareId <= 0)
+            {
+              localObject1 = this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.matchV2Extra;
+              paramBoolean = bool;
+              if (localObject1 == null) {}
+            }
+            else
+            {
+              paramBoolean = true;
+            }
+          }
+          return paramBoolean;
+        }
+        paramBoolean = this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.isRoomMatching();
+        return paramBoolean;
+      }
+      return false;
+    }
+    finally {}
   }
   
-  /* Error */
   public byte[] a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 83	com/tencent/avgame/gamelogic/data/EngineData:jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo	Lcom/tencent/avgame/gamelogic/data/RoomInfo;
-    //   13: getfield 371	com/tencent/avgame/gamelogic/data/RoomInfo:matchV2Extra	[B
-    //   16: astore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: aload_1
-    //   20: areturn
-    //   21: aconst_null
-    //   22: astore_1
-    //   23: goto -6 -> 17
-    //   26: astore_1
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_1
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	EngineData
-    //   16	7	1	arrayOfByte	byte[]
-    //   26	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	26	finally
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo != null)
+      {
+        byte[] arrayOfByte = this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.matchV2Extra;
+        return arrayOfByte;
+      }
+      return null;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public int b()
@@ -1018,30 +900,22 @@ public class EngineData
   {
     long l1 = 9223372036854775807L;
     int k = 0;
-    for (;;)
+    while (k < this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())
     {
+      GameItem localGameItem = (GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k);
       long l2 = l1;
-      if (k < this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())
+      if (GameUtil.b((GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k)))
       {
-        GameItem localGameItem = (GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k);
-        l2 = l1;
-        if (!GameUtil.b((GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k))) {
-          break label85;
-        }
         l2 = localGameItem.jdField_b_of_type_Long - NetConnInfoCenter.getServerTime();
         if (l2 < 0L) {
-          l2 = 0L;
+          return 0L;
         }
+        l2 = Math.min(l1, l2);
       }
-      else
-      {
-        return l2;
-      }
-      l2 = Math.min(l1, l2);
-      label85:
       k += 1;
       l1 = l2;
     }
+    return l1;
   }
   
   public Player b()
@@ -1087,7 +961,10 @@ public class EngineData
   
   public void b(int paramInt)
   {
-    QLog.d("EngineData", 2, "updateSurvivalPoolId " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSurvivalPoolId ");
+    localStringBuilder.append(paramInt);
+    QLog.d("EngineData", 2, localStringBuilder.toString());
     this.jdField_b_of_type_Int = paramInt;
   }
   
@@ -1111,13 +988,14 @@ public class EngineData
   {
     this.jdField_c_of_type_JavaUtilList.clear();
     this.jdField_b_of_type_JavaUtilList.clear();
-    if (paramInt == 1) {
+    if (paramInt == 1)
+    {
       this.jdField_b_of_type_JavaUtilList.addAll(paramList);
-    }
-    while (paramInt != 2) {
       return;
     }
-    this.jdField_c_of_type_JavaUtilList.addAll(paramList);
+    if (paramInt == 2) {
+      this.jdField_c_of_type_JavaUtilList.addAll(paramList);
+    }
   }
   
   public void b(boolean paramBoolean)
@@ -1132,30 +1010,29 @@ public class EngineData
   
   public boolean b(ITopic paramITopic)
   {
-    boolean bool;
     if (paramITopic == null) {
-      bool = false;
+      return false;
     }
-    for (;;)
+    try
     {
-      return bool;
-      try
-      {
-        paramITopic = paramITopic.a();
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll(paramITopic);
-        bool = true;
-      }
-      finally {}
+      paramITopic = paramITopic.a();
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramITopic);
+      return true;
+    }
+    finally
+    {
+      paramITopic = finally;
+      throw paramITopic;
     }
   }
   
   public boolean b(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.c() == 0) || (this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.c() == 10)) {
-      return false;
+    if ((this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.c() != 0) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.c() != 10)) {
+      return a(paramString);
     }
-    return a(paramString);
+    return false;
   }
   
   public int c()
@@ -1167,30 +1044,22 @@ public class EngineData
   {
     long l1 = 9223372036854775807L;
     int k = 0;
-    for (;;)
+    while (k < this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())
     {
+      GameItem localGameItem = (GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k);
       long l2 = l1;
-      if (k < this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())
+      if (GameUtil.a((GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k)))
       {
-        GameItem localGameItem = (GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k);
-        l2 = l1;
-        if (!GameUtil.a((GameItem)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(k))) {
-          break label85;
-        }
         l2 = localGameItem.c - NetConnInfoCenter.getServerTime();
         if (l2 < 0L) {
-          l2 = 0L;
+          return 0L;
         }
+        l2 = Math.min(l1, l2);
       }
-      else
-      {
-        return l2;
-      }
-      l2 = Math.min(l1, l2);
-      label85:
       k += 1;
       l1 = l2;
     }
+    return l1;
   }
   
   public String c()
@@ -1205,17 +1074,18 @@ public class EngineData
     else
     {
       localObject = a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.b());
-      if ((localObject == null) || (((QuestionClassInfo)localObject).jdField_a_of_type_JavaUtilArrayList == null) || (((QuestionClassInfo)localObject).jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-        break label78;
+      int k;
+      if ((localObject != null) && (((QuestionClassInfo)localObject).jdField_a_of_type_JavaUtilArrayList != null) && (((QuestionClassInfo)localObject).jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+        k = 1;
+      } else {
+        k = 0;
       }
+      if (k != 0) {
+        return MobileQQ.sMobileQQ.getApplicationContext().getString(2131690435);
+      }
+      localObject = null;
     }
-    label78:
-    for (int k = 1; k != 0; k = 0)
-    {
-      localObject = BaseApplicationImpl.getApplication().getApplicationContext().getString(2131690510);
-      return localObject;
-    }
-    return null;
+    return localObject;
   }
   
   public List<Long> c()
@@ -1286,14 +1156,25 @@ public class EngineData
   
   public boolean c(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.c() == 0) || (this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.c() == 10)) {}
-    String str;
-    do
+    int k = this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.c();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (k != 0)
     {
-      return false;
-      str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    } while ((c() != 3) || (!TextUtils.equals(paramString, str)));
-    return true;
+      if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.c() == 10) {
+        return false;
+      }
+      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+      bool1 = bool2;
+      if (c() == 3)
+      {
+        bool1 = bool2;
+        if (TextUtils.equals(paramString, str)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public int d()
@@ -1309,29 +1190,33 @@ public class EngineData
   public String d()
   {
     String str = c();
-    if ((str == null) || (str.length() == 0)) {
-      return null;
-    }
-    Object localObject = a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.b());
-    if (localObject != null)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (str != null)
     {
-      Iterator localIterator = ((QuestionClassInfo)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (QuestionClassInfoItem)localIterator.next();
-      } while ((((QuestionClassInfoItem)localObject).jdField_a_of_type_JavaLangString == null) || (!((QuestionClassInfoItem)localObject).jdField_a_of_type_JavaLangString.equals(str)));
-    }
-    for (;;)
-    {
-      if (localObject != null) {
-        return ((QuestionClassInfoItem)localObject).c;
+      if (str.length() == 0) {
+        return null;
       }
-      return null;
-      localObject = null;
+      localObject1 = a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame.b());
+      if (localObject1 != null)
+      {
+        localObject1 = ((QuestionClassInfo)localObject1).jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localQuestionClassInfoItem = (QuestionClassInfoItem)((Iterator)localObject1).next();
+          if ((localQuestionClassInfoItem.jdField_a_of_type_JavaLangString != null) && (localQuestionClassInfoItem.jdField_a_of_type_JavaLangString.equals(str))) {
+            break label92;
+          }
+        }
+      }
+      QuestionClassInfoItem localQuestionClassInfoItem = null;
+      label92:
+      localObject1 = localObject2;
+      if (localQuestionClassInfoItem != null) {
+        localObject1 = localQuestionClassInfoItem.c;
+      }
     }
+    return localObject1;
   }
   
   public List<Long> d()
@@ -1353,7 +1238,10 @@ public class EngineData
   {
     try
     {
-      QLog.d("EngineData", 2, "setFromMatchV2 " + paramBoolean);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setFromMatchV2 ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("EngineData", 2, localStringBuilder.toString());
       this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.fromMatchB2 = paramBoolean;
       return;
     }
@@ -1404,12 +1292,13 @@ public class EngineData
   
   public void e()
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    if ((localObject != null) && (((CopyOnWriteArrayList)localObject).size() > 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        GameItem localGameItem = (GameItem)localIterator.next();
+        GameItem localGameItem = (GameItem)((Iterator)localObject).next();
         if (GameUtil.a(localGameItem))
         {
           if ((localGameItem.jdField_b_of_type_Int == 1) && (localGameItem.jdField_b_of_type_Long <= NetConnInfoCenter.getServerTime())) {
@@ -1430,7 +1319,10 @@ public class EngineData
   
   public void e(int paramInt)
   {
-    QLog.d("EngineData", 2, "updateSurvivalPkState " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSurvivalPkState ");
+    localStringBuilder.append(paramInt);
+    QLog.d("EngineData", 2, localStringBuilder.toString());
     this.f = paramInt;
   }
   
@@ -1438,7 +1330,10 @@ public class EngineData
   {
     try
     {
-      QLog.d("EngineData", 2, "setMatchingB2Quick " + paramBoolean);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setMatchingB2Quick ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("EngineData", 2, localStringBuilder.toString());
       this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.startMatching2Quick = paramBoolean;
       return;
     }
@@ -1451,11 +1346,12 @@ public class EngineData
   
   public boolean e()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     try
     {
-      if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo != null)
+      RoomInfo localRoomInfo = this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo;
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (localRoomInfo != null)
       {
         int k = this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.getPlayers().size();
         bool1 = bool2;
@@ -1465,11 +1361,7 @@ public class EngineData
       }
       return bool1;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public boolean e(String paramString)
@@ -1489,7 +1381,10 @@ public class EngineData
   
   public void f(int paramInt)
   {
-    QLog.d("EngineData", 2, "updateSurvivalGameStatus " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSurvivalGameStatus ");
+    localStringBuilder.append(paramInt);
+    QLog.d("EngineData", 2, localStringBuilder.toString());
     this.jdField_e_of_type_Int = paramInt;
   }
   
@@ -1518,12 +1413,15 @@ public class EngineData
   
   public String g()
   {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData.biaAdWording;
+    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData.biaAdTip;
   }
   
   public void g(int paramInt)
   {
-    QLog.d("EngineData", 2, "updateSurvivalCurRound " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSurvivalCurRound ");
+    localStringBuilder.append(paramInt);
+    QLog.d("EngineData", 2, localStringBuilder.toString());
     this.jdField_d_of_type_Int = paramInt;
   }
   
@@ -1534,15 +1432,16 @@ public class EngineData
   
   public int h()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo == null) {
+    RoomInfo localRoomInfo = this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo;
+    if (localRoomInfo == null) {
       return 0;
     }
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo.getUins().size();
+    return localRoomInfo.getUins().size();
   }
   
   public String h()
   {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData.biaAdTip;
+    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData.waitingBgUrl;
   }
   
   public void h(int paramInt)
@@ -1635,11 +1534,6 @@ public class EngineData
     return this.i;
   }
   
-  public boolean m()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataPkCJOperationData.closeRealtimeReport;
-  }
-  
   public int n()
   {
     return this.f;
@@ -1679,17 +1573,32 @@ public class EngineData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\n").append("roomInfo").append("=").append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo);
-    localStringBuilder.append("\n").append("game").append("=").append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame);
-    localStringBuilder.append("\n").append("curGameIndex").append("=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n").append("gameListSize").append("=").append(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
-    localStringBuilder.append("\n").append("topicCount").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append("\n");
+    localStringBuilder.append("roomInfo");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("game");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataGame);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("curGameIndex");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("gameListSize");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+    localStringBuilder.append("\n");
+    localStringBuilder.append("topicCount");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.EngineData
  * JD-Core Version:    0.7.0.1
  */

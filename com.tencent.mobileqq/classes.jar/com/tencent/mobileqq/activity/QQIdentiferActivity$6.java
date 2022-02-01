@@ -9,18 +9,19 @@ class QQIdentiferActivity$6
   
   public void run()
   {
-    if (QQIdentiferActivity.a(this.this$0))
+    if (QQIdentiferActivity.access$500(this.this$0))
     {
-      this.this$0.d();
-      QQIdentiferActivity.a(this.this$0).sendEmptyMessageDelayed(3, QQIdentiferActivity.a(this.this$0));
+      this.this$0.showSuccessResult();
+      QQIdentiferActivity.access$700(this.this$0).sendEmptyMessageDelayed(3, QQIdentiferActivity.access$600(this.this$0));
       return;
     }
-    this.this$0.b(QQIdentiferActivity.a(this.this$0));
+    QQIdentiferActivity localQQIdentiferActivity = this.this$0;
+    localQQIdentiferActivity.showFailedResult(QQIdentiferActivity.access$800(localQQIdentiferActivity));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.6
  * JD-Core Version:    0.7.0.1
  */

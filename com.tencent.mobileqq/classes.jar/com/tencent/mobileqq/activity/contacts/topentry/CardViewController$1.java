@@ -11,118 +11,111 @@ class CardViewController$1
 {
   CardViewController$1(CardViewController paramCardViewController) {}
   
-  public void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
     super.onCancelMayKnowRecommend(paramBoolean, paramString);
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("delete mayKnowData ");
-      if (!paramBoolean) {
-        break label65;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("delete mayKnowData ");
+      String str;
+      if (paramBoolean) {
+        str = "success";
+      } else {
+        str = "false";
       }
+      localStringBuilder.append(str);
+      localStringBuilder.append(", delete uin is ");
+      localStringBuilder.append(paramString);
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
     }
-    label65:
-    for (String str = "success";; str = "false")
-    {
-      QLog.d("CardViewController", 2, str + ", delete uin is " + paramString);
-      this.a.b();
-      return;
-    }
+    this.a.b();
   }
   
-  public void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
     super.onMayKnowEntryStateChanged(paramBoolean, paramBundle);
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("do network checkUpdate, rsp ");
-      if (paramBoolean)
-      {
-        paramBundle = "success";
-        QLog.d("CardViewController", 2, paramBundle + ". msg: \"send network respond done\"");
-      }
-    }
-    else
-    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("do network checkUpdate, rsp ");
       if (paramBoolean) {
-        break label82;
+        paramBundle = "success";
+      } else {
+        paramBundle = "false";
       }
-      CardViewController.a(this.a, System.currentTimeMillis());
+      localStringBuilder.append(paramBundle);
+      localStringBuilder.append(". msg: \"send network respond done\"");
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
     }
-    for (;;)
-    {
-      CardViewController.a(this.a, true, paramBoolean);
-      return;
-      paramBundle = "false";
-      break;
-      label82:
+    if (!paramBoolean) {
+      CardViewController.a(this.a, System.currentTimeMillis());
+    } else {
       CardViewController.a(this.a);
     }
+    CardViewController.a(this.a, true, paramBoolean);
   }
   
-  public void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
   {
     super.onMayKnowListPushAdd(paramBoolean, paramList);
-    Object localObject;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("recv mayKnowData push add ");
-      if (!paramBoolean) {
-        break label108;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recv mayKnowData push add ");
+      String str;
+      if (paramBoolean) {
+        str = "success";
+      } else {
+        str = "false";
       }
-      localObject = "success";
-      localObject = localStringBuilder.append((String)localObject).append(", push uin size is ");
-      if (paramList == null) {
-        break label115;
+      localStringBuilder.append(str);
+      localStringBuilder.append(", push uin size is ");
+      int i;
+      if (paramList != null) {
+        i = paramList.size();
+      } else {
+        i = 0;
       }
+      localStringBuilder.append(i);
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
     }
-    label108:
-    label115:
-    for (int i = paramList.size();; i = 0)
-    {
-      QLog.d("CardViewController", 2, i);
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        CardViewController.a(this.a, paramList.size());
-      }
-      this.a.b();
-      return;
-      localObject = "false";
-      break;
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      CardViewController.a(this.a, paramList.size());
     }
+    this.a.b();
   }
   
-  public void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
   {
     super.onMayKnowListPushDel(paramBoolean, paramList);
-    Object localObject;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("recv mayKnowData push del ");
-      if (!paramBoolean) {
-        break label82;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recv mayKnowData push del ");
+      String str;
+      if (paramBoolean) {
+        str = "success";
+      } else {
+        str = "false";
       }
-      localObject = "success";
-      localObject = localStringBuilder.append((String)localObject).append(", push uin size is ");
-      if (paramList == null) {
-        break label89;
+      localStringBuilder.append(str);
+      localStringBuilder.append(", push uin size is ");
+      int i;
+      if (paramList != null) {
+        i = paramList.size();
+      } else {
+        i = 0;
       }
+      localStringBuilder.append(i);
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
     }
-    label82:
-    label89:
-    for (int i = paramList.size();; i = 0)
-    {
-      QLog.d("CardViewController", 2, i);
-      this.a.b();
-      return;
-      localObject = "false";
-      break;
-    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CardViewController.1
  * JD-Core Version:    0.7.0.1
  */

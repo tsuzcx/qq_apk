@@ -32,41 +32,46 @@ public class MiniECommerceExposeDataReportHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 6, 14, 20, 13 };
+    return new int[] { 4, 7, 15, 20, 14 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    default: 
-    case 4: 
-    case 6: 
-    case 20: 
-      do
+      if (paramInt != 7)
       {
-        do
+        if (paramInt != 15)
         {
-          return;
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic = new AIOMessageRecordExposeLogic();
-          return;
-        } while (this.b);
+          if (paramInt != 20) {
+            return;
+          }
+          if (this.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic.b(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_Boolean = false;
+          this.b = false;
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic = null;
+          ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        }
+      }
+      else if (!this.b)
+      {
         this.b = true;
         ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 800L);
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic.b(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
-      return;
+      }
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic = null;
-    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    else {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageexposeAIOMessageRecordExposeLogic = new AIOMessageRecordExposeLogic();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniECommerceExposeDataReportHelper
  * JD-Core Version:    0.7.0.1
  */

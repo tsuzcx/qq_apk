@@ -66,309 +66,249 @@ public class Utils
   
   static
   {
+    int i = Build.VERSION.SDK_INT;
     boolean bool2 = true;
-    if (Build.VERSION.SDK_INT >= 16)
-    {
+    if (i >= 16) {
       bool1 = true;
-      AT_LEAST_16 = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label703;
-      }
-      bool1 = true;
-      label26:
-      USE_888_PIXEL_FORMAT = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        break label708;
-      }
-      bool1 = true;
-      label40:
-      ENABLE_PHOTO_EDITOR = bool1;
-      HAS_VIEW_SYSTEM_UI_FLAG_LAYOUT_STABLE = hasField(View.class, "SYSTEM_UI_FLAG_LAYOUT_STABLE");
-      HAS_VIEW_SYSTEM_UI_FLAG_HIDE_NAVIGATION = hasField(View.class, "SYSTEM_UI_FLAG_HIDE_NAVIGATION");
-      HAS_MEDIA_COLUMNS_WIDTH_AND_HEIGHT = hasField(MediaStore.MediaColumns.class, "WIDTH");
-      if (Build.VERSION.SDK_INT < 16) {
-        break label713;
-      }
-      bool1 = true;
-      label84:
-      HAS_REUSING_BITMAP_IN_BITMAP_REGION_DECODER = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        break label718;
-      }
-      bool1 = true;
-      label98:
-      HAS_REUSING_BITMAP_IN_BITMAP_FACTORY = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label723;
-      }
-      bool1 = true;
-      label112:
-      HAS_SET_BEAM_PUSH_URIS = bool1;
-      HAS_SET_DEFALT_BUFFER_SIZE = hasMethod("android.graphics.SurfaceTexture", "setDefaultBufferSize", new Class[] { Integer.TYPE, Integer.TYPE });
-      HAS_RELEASE_SURFACE_TEXTURE = hasMethod("android.graphics.SurfaceTexture", "release", new Class[0]);
-      if (Build.VERSION.SDK_INT < 11) {
-        break label728;
-      }
-      bool1 = true;
-      label166:
-      HAS_SURFACE_TEXTURE = bool1;
-      if (Build.VERSION.SDK_INT < 12) {
-        break label733;
-      }
-      bool1 = true;
-      label180:
-      HAS_MTP = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label738;
-      }
-      bool1 = true;
-      label194:
-      HAS_AUTO_FOCUS_MOVE_CALLBACK = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        break label743;
-      }
-      bool1 = true;
-      label208:
-      HAS_REMOTE_VIEWS_SERVICE = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        break label748;
-      }
-      bool1 = true;
-      label222:
-      HAS_INTENT_EXTRA_LOCAL_ONLY = bool1;
-      HAS_SET_SYSTEM_UI_VISIBILITY = hasMethod(View.class, "setSystemUiVisibility", new Class[] { Integer.TYPE });
+    } else {
+      bool1 = false;
     }
-    for (;;)
+    AT_LEAST_16 = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    USE_888_PIXEL_FORMAT = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ENABLE_PHOTO_EDITOR = bool1;
+    HAS_VIEW_SYSTEM_UI_FLAG_LAYOUT_STABLE = hasField(View.class, "SYSTEM_UI_FLAG_LAYOUT_STABLE");
+    HAS_VIEW_SYSTEM_UI_FLAG_HIDE_NAVIGATION = hasField(View.class, "SYSTEM_UI_FLAG_HIDE_NAVIGATION");
+    HAS_MEDIA_COLUMNS_WIDTH_AND_HEIGHT = hasField(MediaStore.MediaColumns.class, "WIDTH");
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_REUSING_BITMAP_IN_BITMAP_REGION_DECODER = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_REUSING_BITMAP_IN_BITMAP_FACTORY = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_SET_BEAM_PUSH_URIS = bool1;
+    HAS_SET_DEFALT_BUFFER_SIZE = hasMethod("android.graphics.SurfaceTexture", "setDefaultBufferSize", new Class[] { Integer.TYPE, Integer.TYPE });
+    HAS_RELEASE_SURFACE_TEXTURE = hasMethod("android.graphics.SurfaceTexture", "release", new Class[0]);
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_SURFACE_TEXTURE = bool1;
+    if (Build.VERSION.SDK_INT >= 12) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_MTP = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_AUTO_FOCUS_MOVE_CALLBACK = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_REMOTE_VIEWS_SERVICE = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_INTENT_EXTRA_LOCAL_ONLY = bool1;
+    HAS_SET_SYSTEM_UI_VISIBILITY = hasMethod(View.class, "setSystemUiVisibility", new Class[] { Integer.TYPE });
+    try
     {
-      try
+      if ((hasMethod(Camera.class, "setFaceDetectionListener", new Class[] { Class.forName("android.hardware.Camera$FaceDetectionListener") })) && (hasMethod(Camera.class, "startFaceDetection", new Class[0])) && (hasMethod(Camera.class, "stopFaceDetection", new Class[0])))
       {
-        if ((!hasMethod(Camera.class, "setFaceDetectionListener", new Class[] { Class.forName("android.hardware.Camera$FaceDetectionListener") })) || (!hasMethod(Camera.class, "startFaceDetection", new Class[0])) || (!hasMethod(Camera.class, "stopFaceDetection", new Class[0]))) {
-          continue;
-        }
         bool1 = hasMethod(Camera.Parameters.class, "getMaxNumDetectedFaces", new Class[0]);
-        if (!bool1) {
-          continue;
+        if (bool1) {
+          bool1 = true;
         }
-        bool1 = true;
       }
-      catch (Throwable localThrowable)
-      {
-        label703:
-        label708:
-        label713:
-        label718:
-        label723:
-        label728:
-        label733:
-        label738:
-        label743:
-        label748:
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-      }
-      HAS_FACE_DETECTION = bool1;
-      HAS_GET_CAMERA_DISABLED = hasMethod(DevicePolicyManager.class, "getCameraDisabled", new Class[] { ComponentName.class });
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      label374:
+      break label374;
+    }
+    boolean bool1 = false;
+    HAS_FACE_DETECTION = bool1;
+    HAS_GET_CAMERA_DISABLED = hasMethod(DevicePolicyManager.class, "getCameraDisabled", new Class[] { ComponentName.class });
+    if (Build.VERSION.SDK_INT >= 16) {
       bool1 = true;
-      HAS_MEDIA_ACTION_SOUND = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      HAS_TIME_LAPSE_RECORDING = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      HAS_ZOOM_WHEN_RECORDING = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      HAS_CAMERA_FOCUS_AREA = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      HAS_CAMERA_METERING_AREA = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      HAS_MOTION_EVENT_TRANSFORM = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        continue;
-      }
-      bool1 = true;
-      HAS_EFFECTS_RECORDING_CONTEXT_INPUT = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      HAS_GET_SUPPORTED_VIDEO_SIZE = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      HAS_SET_ICON_ATTRIBUTE = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      HAS_MEDIA_PROVIDER_FILES_TABLE = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      HAS_SURFACE_TEXTURE_RECORDING = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      HAS_ACTION_BAR = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      HAS_VIEW_TRANSFORM_PROPERTIES = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        continue;
-      }
-      bool1 = true;
-      HAS_CAMERA_HDR = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      HAS_OPTIONS_IN_MUTABLE = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      CAN_START_PREVIEW_IN_JPEG_CALLBACK = bool1;
-      if (Build.VERSION.SDK_INT < 12) {
-        continue;
-      }
-      bool1 = true;
-      HAS_VIEW_PROPERTY_ANIMATOR = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      HAS_POST_ON_ANIMATION = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      HAS_ANNOUNCE_FOR_ACCESSIBILITY = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      HAS_OBJECT_ANIMATION = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      HAS_GLES20_REQUIRED = bool1;
-      HAS_ROTATION_ANIMATION = hasField(WindowManager.LayoutParams.class, "rotationAnimation");
-      if (Build.VERSION.SDK_INT < 18) {
-        continue;
-      }
-      bool1 = true;
-      HAS_ORIENTATION_LOCK = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      HAS_CANCELLATION_SIGNAL = bool1;
-      if (Build.VERSION.SDK_INT < 18) {
-        continue;
-      }
-      bool1 = true;
-      HAS_MEDIA_MUXER = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        continue;
-      }
-      bool1 = bool2;
-      HAS_DISPLAY_LISTENER = bool1;
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label26;
-      bool1 = false;
-      break label40;
-      bool1 = false;
-      break label84;
-      bool1 = false;
-      break label98;
-      bool1 = false;
-      break label112;
-      bool1 = false;
-      break label166;
-      bool1 = false;
-      break label180;
-      bool1 = false;
-      break label194;
-      bool1 = false;
-      break label208;
-      bool1 = false;
-      break label222;
+    } else {
       bool1 = false;
     }
+    HAS_MEDIA_ACTION_SOUND = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_TIME_LAPSE_RECORDING = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_ZOOM_WHEN_RECORDING = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_CAMERA_FOCUS_AREA = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_CAMERA_METERING_AREA = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_MOTION_EVENT_TRANSFORM = bool1;
+    if (Build.VERSION.SDK_INT >= 17) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_EFFECTS_RECORDING_CONTEXT_INPUT = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_GET_SUPPORTED_VIDEO_SIZE = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_SET_ICON_ATTRIBUTE = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_MEDIA_PROVIDER_FILES_TABLE = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_SURFACE_TEXTURE_RECORDING = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_ACTION_BAR = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_VIEW_TRANSFORM_PROPERTIES = bool1;
+    if (Build.VERSION.SDK_INT >= 17) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_CAMERA_HDR = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_OPTIONS_IN_MUTABLE = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    CAN_START_PREVIEW_IN_JPEG_CALLBACK = bool1;
+    if (Build.VERSION.SDK_INT >= 12) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_VIEW_PROPERTY_ANIMATOR = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_POST_ON_ANIMATION = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_ANNOUNCE_FOR_ACCESSIBILITY = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_OBJECT_ANIMATION = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_GLES20_REQUIRED = bool1;
+    HAS_ROTATION_ANIMATION = hasField(WindowManager.LayoutParams.class, "rotationAnimation");
+    if (Build.VERSION.SDK_INT >= 18) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_ORIENTATION_LOCK = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_CANCELLATION_SIGNAL = bool1;
+    if (Build.VERSION.SDK_INT >= 18) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    HAS_MEDIA_MUXER = bool1;
+    if (Build.VERSION.SDK_INT >= 17) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    HAS_DISPLAY_LISTENER = bool1;
   }
   
   public static float clamp(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -406,19 +346,14 @@ public class Utils
   
   public static boolean equals(Object paramObject1, Object paramObject2)
   {
-    if (paramObject1 != paramObject2)
-    {
-      if (paramObject1 == null) {}
-      while (!paramObject1.equals(paramObject2)) {
-        return false;
-      }
-    }
-    return true;
+    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
   }
   
   public static int getGLVersion(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT < 9) {
+    int j = Build.VERSION.SDK_INT;
+    int i = 1;
+    if (j < 9) {
       return 1;
     }
     if (paramContext == null)
@@ -432,10 +367,10 @@ public class Utils
       paramContext = paramContext.getDeviceConfigurationInfo();
       if (paramContext != null)
       {
-        if (paramContext.reqGlEsVersion >= 131072) {}
-        for (int i = 2;; i = 1) {
-          return i;
+        if (paramContext.reqGlEsVersion >= 131072) {
+          i = 2;
         }
+        return i;
       }
       Log.d("SDKJni", "getDeviceConfigurationInfo Error");
     }
@@ -461,7 +396,11 @@ public class Utils
       paramClass.getDeclaredField(paramString);
       return true;
     }
-    catch (NoSuchFieldException paramClass) {}
+    catch (NoSuchFieldException paramClass)
+    {
+      label8:
+      break label8;
+    }
     return false;
   }
   
@@ -472,7 +411,11 @@ public class Utils
       paramClass.getDeclaredMethod(paramString, paramVarArgs);
       return true;
     }
-    catch (NoSuchMethodException paramClass) {}
+    catch (NoSuchMethodException paramClass)
+    {
+      label9:
+      break label9;
+    }
     return false;
   }
   
@@ -483,7 +426,11 @@ public class Utils
       Class.forName(paramString1).getDeclaredMethod(paramString2, paramVarArgs);
       return true;
     }
-    catch (Throwable paramString1) {}
+    catch (Throwable paramString1)
+    {
+      label12:
+      break label12;
+    }
     return false;
   }
   
@@ -494,23 +441,27 @@ public class Utils
   
   public static int nextPowerOf2(int paramInt)
   {
-    if ((paramInt <= 0) || (paramInt > 1073741824)) {
-      throw new IllegalArgumentException("n is invalid: " + paramInt);
+    if ((paramInt > 0) && (paramInt <= 1073741824))
+    {
+      paramInt -= 1;
+      paramInt |= paramInt >> 16;
+      paramInt |= paramInt >> 8;
+      paramInt |= paramInt >> 4;
+      paramInt |= paramInt >> 2;
+      return (paramInt | paramInt >> 1) + 1;
     }
-    paramInt -= 1;
-    paramInt |= paramInt >> 16;
-    paramInt |= paramInt >> 8;
-    paramInt |= paramInt >> 4;
-    paramInt |= paramInt >> 2;
-    return (paramInt | paramInt >> 1) + 1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("n is invalid: ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public static int prevPowerOf2(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException();
+    if (paramInt > 0) {
+      return Integer.highestOneBit(paramInt);
     }
-    return Integer.highestOneBit(paramInt);
+    throw new IllegalArgumentException();
   }
 }
 

@@ -10,9 +10,7 @@ public class WebPushObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 11) {
       return;
     }
     a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
@@ -20,7 +18,7 @@ public class WebPushObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.WebPushObserver
  * JD-Core Version:    0.7.0.1
  */

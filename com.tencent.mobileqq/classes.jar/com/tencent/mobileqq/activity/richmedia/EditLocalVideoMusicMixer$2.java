@@ -14,8 +14,12 @@ class EditLocalVideoMusicMixer$2
   
   public QQStoryMusicInfo a()
   {
-    if (EditLocalVideoMusicMixer.a(this.a) != null) {
-      QZLog.d("EditLocalVideoMusicMixe", 2, "getCurFragmentMusic: " + EditLocalVideoMusicMixer.a(this.a).a());
+    if (EditLocalVideoMusicMixer.a(this.a) != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCurFragmentMusic: ");
+      localStringBuilder.append(EditLocalVideoMusicMixer.a(this.a).a());
+      QZLog.d("EditLocalVideoMusicMixe", 2, localStringBuilder.toString());
     }
     return EditLocalVideoMusicMixer.a(this.a);
   }
@@ -23,60 +27,72 @@ class EditLocalVideoMusicMixer$2
   public void a()
   {
     QZLog.d("EditLocalVideoMusicMixe", 2, "onPauseCurFragmentMusic: ");
-    if (EditLocalVideoMusicMixer.a(this.a) != null) {
-      EditLocalVideoMusicMixer.a(this.a, EditLocalVideoMusicMixer.a(this.a).c());
+    if (EditLocalVideoMusicMixer.a(this.a) != null)
+    {
+      EditLocalVideoMusicMixer localEditLocalVideoMusicMixer = this.a;
+      EditLocalVideoMusicMixer.a(localEditLocalVideoMusicMixer, EditLocalVideoMusicMixer.a(localEditLocalVideoMusicMixer).b());
     }
     EditLocalVideoMusicMixer.a(this.a, true);
   }
   
   public void a(int paramInt)
   {
-    QZLog.d("EditLocalVideoMusicMixe", 2, "onChangeMusicBtnType: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onChangeMusicBtnType: ");
+    localStringBuilder.append(paramInt);
+    QZLog.d("EditLocalVideoMusicMixe", 2, localStringBuilder.toString());
     if (EditLocalVideoMusicMixer.a(this.a) != null)
     {
-      if (paramInt == 0) {
-        EditLocalVideoMusicMixer.a(this.a).setImageResource(2130847013);
+      if (paramInt == 0)
+      {
+        EditLocalVideoMusicMixer.a(this.a).setImageResource(2130846891);
+        return;
       }
+      if (paramInt == 3)
+      {
+        EditLocalVideoMusicMixer.a(this.a).setImageResource(2130846890);
+        return;
+      }
+      EditLocalVideoMusicMixer.a(this.a).setImageResource(2130846884);
     }
-    else {
-      return;
-    }
-    if (paramInt == 3)
-    {
-      EditLocalVideoMusicMixer.a(this.a).setImageResource(2130847012);
-      return;
-    }
-    EditLocalVideoMusicMixer.a(this.a).setImageResource(2130847006);
   }
   
   public void a(QQStoryMusicInfo paramQQStoryMusicInfo)
   {
     if (paramQQStoryMusicInfo != null)
     {
-      QZLog.d("EditLocalVideoMusicMixe", 2, "onChangeCurFragmentMusic: " + paramQQStoryMusicInfo.a() + " " + paramQQStoryMusicInfo.d + " to " + paramQQStoryMusicInfo.e);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onChangeCurFragmentMusic: ");
+      localStringBuilder.append(paramQQStoryMusicInfo.a());
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramQQStoryMusicInfo.d);
+      localStringBuilder.append(" to ");
+      localStringBuilder.append(paramQQStoryMusicInfo.e);
+      QZLog.d("EditLocalVideoMusicMixe", 2, localStringBuilder.toString());
       if (paramQQStoryMusicInfo.b == 0)
       {
         EditLocalVideoMusicMixer.a(this.a, false);
         EditLocalVideoMusicMixer.b(this.a, true);
       }
-    }
-    for (;;)
-    {
-      EditLocalVideoMusicMixer.a(this.a, paramQQStoryMusicInfo);
-      return;
-      if (paramQQStoryMusicInfo.b == 1)
+      else if (paramQQStoryMusicInfo.b == 1)
       {
         EditLocalVideoMusicMixer.a(this.a, false);
         EditLocalVideoMusicMixer.b(this.a, false);
-        continue;
-        EditLocalVideoMusicMixer.a(this.a, false);
       }
     }
+    else
+    {
+      EditLocalVideoMusicMixer.a(this.a, false);
+    }
+    EditLocalVideoMusicMixer.a(this.a, paramQQStoryMusicInfo);
   }
   
   public void a(String paramString)
   {
-    QZLog.d("EditLocalVideoMusicMixe", 2, "onGetCurFragmentMusicPath: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetCurFragmentMusicPath: ");
+    localStringBuilder.append(paramString);
+    QZLog.d("EditLocalVideoMusicMixe", 2, localStringBuilder.toString());
     if (EditLocalVideoMusicMixer.a(this.a) != null) {
       EditLocalVideoMusicMixer.a(this.a).g = paramString;
     }
@@ -117,7 +133,7 @@ class EditLocalVideoMusicMixer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoMusicMixer.2
  * JD-Core Version:    0.7.0.1
  */

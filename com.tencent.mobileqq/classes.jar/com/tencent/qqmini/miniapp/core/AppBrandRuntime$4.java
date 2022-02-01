@@ -13,21 +13,22 @@ class AppBrandRuntime$4
   
   public void onShotReady(Bitmap paramBitmap)
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      if (this.val$callback != null)
-      {
-        AppBrandRuntime.access$100(this.this$0, this.val$callback, this.val$contentLayout);
-        this.this$0.isGettingScreenShot = false;
-      }
+      ThreadManager.executeOnDiskIOThreadPool(new AppBrandRuntime.4.1(this, paramBitmap));
       return;
     }
-    ThreadManager.executeOnDiskIOThreadPool(new AppBrandRuntime.4.1(this, paramBitmap));
+    paramBitmap = this.val$callback;
+    if (paramBitmap != null)
+    {
+      AppBrandRuntime.access$100(this.this$0, paramBitmap, this.val$contentLayout);
+      this.this$0.isGettingScreenShot = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.AppBrandRuntime.4
  * JD-Core Version:    0.7.0.1
  */

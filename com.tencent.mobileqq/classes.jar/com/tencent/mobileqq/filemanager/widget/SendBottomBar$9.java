@@ -1,22 +1,23 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import com.tencent.mobileqq.wifi.FreeWifiDialogListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SendBottomBar$9
-  implements FreeWifiDialogListener
+  implements View.OnClickListener
 {
   SendBottomBar$9(SendBottomBar paramSendBottomBar) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.a.c();
-    }
+    this.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.9
  * JD-Core Version:    0.7.0.1
  */

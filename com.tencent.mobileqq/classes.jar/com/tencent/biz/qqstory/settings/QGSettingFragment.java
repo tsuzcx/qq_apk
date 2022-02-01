@@ -14,20 +14,13 @@ import com.tencent.mobileqq.widget.FormSwitchItem;
 public class QGSettingFragment
   extends IphoneTitleBarFragment
 {
-  private static boolean a;
-  private static boolean b;
-  private static boolean c;
+  private static boolean a = false;
+  private static boolean b = false;
+  private static boolean c = false;
   private static boolean d = false;
   protected FormSwitchItem a;
   protected FormSwitchItem b;
   protected FormSwitchItem c;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    jdField_c_of_type_Boolean = false;
-  }
   
   public static void a(boolean paramBoolean)
   {
@@ -68,12 +61,12 @@ public class QGSettingFragment
     return false;
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131377571));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131370343));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369893));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131377014));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131370010));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131369578));
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(b());
     this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new QGSettingFragment.1(this));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(a());
@@ -82,12 +75,12 @@ public class QGSettingFragment
     this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new QGSettingFragment.3(this));
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131561908;
+    return 2131561755;
   }
   
-  public View onCreateCenterView()
+  protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
     setTitle("QG设置");
@@ -96,7 +89,7 @@ public class QGSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QGSettingFragment
  * JD-Core Version:    0.7.0.1
  */

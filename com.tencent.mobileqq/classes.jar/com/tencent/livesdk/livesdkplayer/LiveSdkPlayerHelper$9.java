@@ -10,17 +10,18 @@ class LiveSdkPlayerHelper$9
   
   public void onVideoFrameOut(ITPPlayer paramITPPlayer, TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
-    if (LiveSdkPlayerHelper.access$300(this.this$0) == null) {}
-    for (long l = 0L;; l = LiveSdkPlayerHelper.access$300(this.this$0).d())
-    {
-      LiveSdkPlayerHelper.access$300(this.this$0).d(l + 1L);
-      return;
+    long l;
+    if (LiveSdkPlayerHelper.access$300(this.this$0) == null) {
+      l = 0L;
+    } else {
+      l = LiveSdkPlayerHelper.access$300(this.this$0).d();
     }
+    LiveSdkPlayerHelper.access$300(this.this$0).d(l + 1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.LiveSdkPlayerHelper.9
  * JD-Core Version:    0.7.0.1
  */

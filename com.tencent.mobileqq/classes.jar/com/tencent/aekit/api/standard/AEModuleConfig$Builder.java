@@ -6,6 +6,7 @@ import com.tencent.ttpic.filter.aifilter.NetworkRequest;
 public class AEModuleConfig$Builder
 {
   private int authMode;
+  private boolean cacheBeautyBitmaps = true;
   private boolean debugMode;
   private boolean enableDataReport = true;
   private boolean enableDefaultBasic3 = true;
@@ -33,6 +34,12 @@ public class AEModuleConfig$Builder
   public Builder setAuthMode(int paramInt)
   {
     this.authMode = paramInt;
+    return this;
+  }
+  
+  public Builder setCacheBeautyBitmaps(boolean paramBoolean)
+  {
+    this.cacheBeautyBitmaps = paramBoolean;
     return this;
   }
   

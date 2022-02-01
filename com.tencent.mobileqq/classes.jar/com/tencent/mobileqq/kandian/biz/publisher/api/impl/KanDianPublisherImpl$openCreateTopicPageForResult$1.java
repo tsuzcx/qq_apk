@@ -2,8 +2,8 @@ package com.tencent.mobileqq.kandian.biz.publisher.api.impl;
 
 import android.app.Activity;
 import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.ugc.RIJUgcUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper;
+import com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils;
+import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tkd.topicsdk.TopicSDK;
 import com.tencent.tkd.topicsdk.TopicSDK.Companion;
@@ -23,47 +23,45 @@ public final class KanDianPublisherImpl$openCreateTopicPageForResult$1
   
   public void a(int paramInt, @Nullable TopicInfo paramTopicInfo)
   {
-    Object localObject;
     if ((paramInt == 0) && (paramTopicInfo != null))
     {
-      localObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (localObject == null) {
-        break label107;
-      }
-      localObject = ((JSONObject)localObject).optString("scene");
-      if (localObject == null) {
-        break label107;
-      }
-    }
-    try
-    {
-      for (;;)
+      Object localObject = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (localObject != null)
       {
-        paramInt = new JSONObject((String)localObject).optInt("key_from");
-        if ((paramInt == 1) && (RIJUgcUtils.i() == 2))
-        {
-          paramTopicInfo = RIJUgcUtils.a() + paramTopicInfo.getTopicId();
-          ViolaAccessHelper.a((Context)this.jdField_a_of_type_AndroidAppActivity, "", paramTopicInfo, null, false);
-        }
-        TopicSDK.a.a().b((Function2)this);
-        return;
-        label107:
+        localObject = ((JSONObject)localObject).optString("scene");
+        if (localObject != null) {}
+      }
+      else
+      {
         localObject = "";
       }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      try
       {
-        QLog.e("KanDianPublisherImpl", 1, "openCreateTopicPage e: " + localJSONException);
+        paramInt = new JSONObject((String)localObject).optInt("key_from");
+      }
+      catch (JSONException localJSONException)
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("openCreateTopicPage e: ");
+        localStringBuilder2.append(localJSONException);
+        QLog.e("KanDianPublisherImpl", 1, localStringBuilder2.toString());
         paramInt = 0;
       }
+      if ((paramInt == 1) && (RIJUgcUtils.h() == 2))
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append(RIJUgcUtils.a());
+        localStringBuilder1.append(paramTopicInfo.getTopicId());
+        paramTopicInfo = localStringBuilder1.toString();
+        ViolaAccessHelper.a((Context)this.jdField_a_of_type_AndroidAppActivity, "", paramTopicInfo, null, false);
+      }
     }
+    TopicSDK.a.a().b((Function2)this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.api.impl.KanDianPublisherImpl.openCreateTopicPageForResult.1
  * JD-Core Version:    0.7.0.1
  */

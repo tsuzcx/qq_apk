@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 public @interface ParcelAnnotation$ParcelObject {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.parcelUtils.annotation.ParcelAnnotation.ParcelObject
  * JD-Core Version:    0.7.0.1
  */

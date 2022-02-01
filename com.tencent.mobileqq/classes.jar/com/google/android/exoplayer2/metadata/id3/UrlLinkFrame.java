@@ -27,30 +27,36 @@ public final class UrlLinkFrame
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (UrlLinkFrame)paramObject;
-    } while ((this.id.equals(paramObject.id)) && (Util.areEqual(this.description, paramObject.description)) && (Util.areEqual(this.url, paramObject.url)));
+      return (this.id.equals(paramObject.id)) && (Util.areEqual(this.description, paramObject.description)) && (Util.areEqual(this.url, paramObject.url));
+    }
     return false;
   }
   
   public int hashCode()
   {
-    int j = 0;
     int k = this.id.hashCode();
-    if (this.description != null) {}
-    for (int i = this.description.hashCode();; i = 0)
-    {
-      if (this.url != null) {
-        j = this.url.hashCode();
-      }
-      return (i + (k + 527) * 31) * 31 + j;
+    String str = this.description;
+    int j = 0;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    str = this.url;
+    if (str != null) {
+      j = str.hashCode();
+    }
+    return ((527 + k) * 31 + i) * 31 + j;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -62,7 +68,7 @@ public final class UrlLinkFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.UrlLinkFrame
  * JD-Core Version:    0.7.0.1
  */

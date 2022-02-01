@@ -62,56 +62,50 @@ public class CommonProgressStyle
     paramJSONObject.jdField_a_of_type_Int = paramInt;
     paramJSONObject.jdField_c_of_type_Int = ParseUtil.a(localJSONObject.optString("width"), 50);
     paramJSONObject.jdField_d_of_type_Int = ParseUtil.a(localJSONObject.optString("minWidth"), 50);
-    if (paramJSONObject.jdField_c_of_type_Int < paramJSONObject.jdField_d_of_type_Int)
-    {
-      paramJSONObject.jdField_c_of_type_Int = paramJSONObject.jdField_d_of_type_Int;
-      paramJSONObject.jdField_e_of_type_Int = ParseUtil.a(localJSONObject.optString("height"), 20);
-      paramJSONObject.jdField_f_of_type_Int = ParseUtil.a(localJSONObject.optString("maxHeight"), 22);
-      if (paramJSONObject.jdField_e_of_type_Int >= 18) {
-        break label275;
-      }
-      paramJSONObject.jdField_e_of_type_Int = 18;
-      label122:
-      paramJSONObject.jdField_a_of_type_Float = ParseUtil.a(localJSONObject.optString("corner"), 2.0F);
-      if (paramJSONObject.jdField_a_of_type_Float >= 2.0F) {
-        break label297;
-      }
-      paramJSONObject.jdField_a_of_type_Float = 2.0F;
-    }
-    for (;;)
-    {
-      paramJSONObject.jdField_b_of_type_JavaLangString = ParseUtil.a(localJSONObject, "progressBg", "#F2F2F2");
-      paramJSONObject.jdField_c_of_type_JavaLangString = ParseUtil.a(localJSONObject, "secondaryProgressBg", "#F2F2F2");
-      paramJSONObject.jdField_a_of_type_JavaLangString = ParseUtil.a(localJSONObject, "progressColor", "#12B7F5");
-      paramJSONObject.jdField_d_of_type_JavaLangString = ParseUtil.a(localJSONObject, "textColor", "#ffffff");
-      paramJSONObject.g = localJSONObject.optInt("textSize", 12);
-      paramJSONObject.h = 10;
-      paramJSONObject.i = 16;
-      paramJSONObject.jdField_e_of_type_JavaLangString = ParseUtil.a(localJSONObject, "buttonBorderColor", "#12B7F5");
-      paramJSONObject.jdField_b_of_type_Float = ParseUtil.a(localJSONObject.optString("buttonBorderSize", "0"), 0.0F);
-      paramJSONObject.j = 2;
-      return paramJSONObject;
-      if (paramJSONObject.jdField_c_of_type_Int <= 100) {
-        break;
-      }
+    paramInt = paramJSONObject.jdField_c_of_type_Int;
+    int m = paramJSONObject.jdField_d_of_type_Int;
+    if (paramInt < m) {
+      paramJSONObject.jdField_c_of_type_Int = m;
+    } else if (paramInt > 100) {
       paramJSONObject.jdField_c_of_type_Int = 100;
-      break;
-      label275:
-      if (paramJSONObject.jdField_e_of_type_Int <= paramJSONObject.jdField_f_of_type_Int) {
-        break label122;
-      }
-      paramJSONObject.jdField_e_of_type_Int = paramJSONObject.jdField_f_of_type_Int;
-      break label122;
-      label297:
-      if (paramJSONObject.jdField_a_of_type_Float > 20.0F) {
-        paramJSONObject.jdField_a_of_type_Float = 20.0F;
+    }
+    paramJSONObject.jdField_e_of_type_Int = ParseUtil.a(localJSONObject.optString("height"), 20);
+    paramJSONObject.jdField_f_of_type_Int = ParseUtil.a(localJSONObject.optString("maxHeight"), 22);
+    paramInt = paramJSONObject.jdField_e_of_type_Int;
+    if (paramInt < 18)
+    {
+      paramJSONObject.jdField_e_of_type_Int = 18;
+    }
+    else
+    {
+      m = paramJSONObject.jdField_f_of_type_Int;
+      if (paramInt > m) {
+        paramJSONObject.jdField_e_of_type_Int = m;
       }
     }
+    paramJSONObject.jdField_a_of_type_Float = ParseUtil.a(localJSONObject.optString("corner"), 2.0F);
+    float f1 = paramJSONObject.jdField_a_of_type_Float;
+    if (f1 < 2.0F) {
+      paramJSONObject.jdField_a_of_type_Float = 2.0F;
+    } else if (f1 > 20.0F) {
+      paramJSONObject.jdField_a_of_type_Float = 20.0F;
+    }
+    paramJSONObject.jdField_b_of_type_JavaLangString = ParseUtil.a(localJSONObject, "progressBg", "#F2F2F2");
+    paramJSONObject.jdField_c_of_type_JavaLangString = ParseUtil.a(localJSONObject, "secondaryProgressBg", "#F2F2F2");
+    paramJSONObject.jdField_a_of_type_JavaLangString = ParseUtil.a(localJSONObject, "progressColor", "#12B7F5");
+    paramJSONObject.jdField_d_of_type_JavaLangString = ParseUtil.a(localJSONObject, "textColor", "#ffffff");
+    paramJSONObject.g = localJSONObject.optInt("textSize", 12);
+    paramJSONObject.h = 10;
+    paramJSONObject.i = 16;
+    paramJSONObject.jdField_e_of_type_JavaLangString = ParseUtil.a(localJSONObject, "buttonBorderColor", "#12B7F5");
+    paramJSONObject.jdField_b_of_type_Float = ParseUtil.a(localJSONObject.optString("buttonBorderSize", "0"), 0.0F);
+    paramJSONObject.j = 2;
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.CommonProgressStyle
  * JD-Core Version:    0.7.0.1
  */

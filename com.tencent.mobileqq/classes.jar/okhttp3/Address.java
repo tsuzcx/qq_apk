@@ -30,40 +30,48 @@ public final class Address
   public Address(String paramString, int paramInt, Dns paramDns, SocketFactory paramSocketFactory, @Nullable SSLSocketFactory paramSSLSocketFactory, @Nullable HostnameVerifier paramHostnameVerifier, @Nullable CertificatePinner paramCertificatePinner, Authenticator paramAuthenticator, @Nullable Proxy paramProxy, List<Protocol> paramList, List<ConnectionSpec> paramList1, ProxySelector paramProxySelector)
   {
     HttpUrl.Builder localBuilder = new HttpUrl.Builder();
-    if (paramSSLSocketFactory != null) {}
-    for (String str = "https";; str = "http")
-    {
-      this.url = localBuilder.scheme(str).host(paramString).port(paramInt).build();
-      if (paramDns != null) {
-        break;
-      }
-      throw new NullPointerException("dns == null");
+    String str;
+    if (paramSSLSocketFactory != null) {
+      str = "https";
+    } else {
+      str = "http";
     }
-    this.dns = paramDns;
-    if (paramSocketFactory == null) {
+    this.url = localBuilder.scheme(str).host(paramString).port(paramInt).build();
+    if (paramDns != null)
+    {
+      this.dns = paramDns;
+      if (paramSocketFactory != null)
+      {
+        this.socketFactory = paramSocketFactory;
+        if (paramAuthenticator != null)
+        {
+          this.proxyAuthenticator = paramAuthenticator;
+          if (paramList != null)
+          {
+            this.protocols = Util.immutableList(paramList);
+            if (paramList1 != null)
+            {
+              this.connectionSpecs = Util.immutableList(paramList1);
+              if (paramProxySelector != null)
+              {
+                this.proxySelector = paramProxySelector;
+                this.proxy = paramProxy;
+                this.sslSocketFactory = paramSSLSocketFactory;
+                this.hostnameVerifier = paramHostnameVerifier;
+                this.certificatePinner = paramCertificatePinner;
+                return;
+              }
+              throw new NullPointerException("proxySelector == null");
+            }
+            throw new NullPointerException("connectionSpecs == null");
+          }
+          throw new NullPointerException("protocols == null");
+        }
+        throw new NullPointerException("proxyAuthenticator == null");
+      }
       throw new NullPointerException("socketFactory == null");
     }
-    this.socketFactory = paramSocketFactory;
-    if (paramAuthenticator == null) {
-      throw new NullPointerException("proxyAuthenticator == null");
-    }
-    this.proxyAuthenticator = paramAuthenticator;
-    if (paramList == null) {
-      throw new NullPointerException("protocols == null");
-    }
-    this.protocols = Util.immutableList(paramList);
-    if (paramList1 == null) {
-      throw new NullPointerException("connectionSpecs == null");
-    }
-    this.connectionSpecs = Util.immutableList(paramList1);
-    if (paramProxySelector == null) {
-      throw new NullPointerException("proxySelector == null");
-    }
-    this.proxySelector = paramProxySelector;
-    this.proxy = paramProxy;
-    this.sslSocketFactory = paramSSLSocketFactory;
-    this.hostnameVerifier = paramHostnameVerifier;
-    this.certificatePinner = paramCertificatePinner;
+    throw new NullPointerException("dns == null");
   }
   
   @Nullable
@@ -84,7 +92,15 @@ public final class Address
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof Address)) && (this.url.equals(((Address)paramObject).url)) && (equalsNonHost((Address)paramObject));
+    if ((paramObject instanceof Address))
+    {
+      HttpUrl localHttpUrl = this.url;
+      paramObject = (Address)paramObject;
+      if ((localHttpUrl.equals(paramObject.url)) && (equalsNonHost(paramObject))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   boolean equalsNonHost(Address paramAddress)
@@ -94,40 +110,39 @@ public final class Address
   
   public int hashCode()
   {
-    int m = 0;
     int n = this.url.hashCode();
     int i1 = this.dns.hashCode();
     int i2 = this.proxyAuthenticator.hashCode();
     int i3 = this.protocols.hashCode();
     int i4 = this.connectionSpecs.hashCode();
     int i5 = this.proxySelector.hashCode();
+    Object localObject = this.proxy;
+    int m = 0;
     int i;
-    int j;
-    if (this.proxy != null)
-    {
-      i = this.proxy.hashCode();
-      if (this.sslSocketFactory == null) {
-        break label185;
-      }
-      j = this.sslSocketFactory.hashCode();
-      label91:
-      if (this.hostnameVerifier == null) {
-        break label190;
-      }
-    }
-    label185:
-    label190:
-    for (int k = this.hostnameVerifier.hashCode();; k = 0)
-    {
-      if (this.certificatePinner != null) {
-        m = this.certificatePinner.hashCode();
-      }
-      return (k + (j + (i + ((((((n + 527) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31) * 31) * 31) * 31 + m;
+    if (localObject != null) {
+      i = ((Proxy)localObject).hashCode();
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label91;
     }
+    localObject = this.sslSocketFactory;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.hostnameVerifier;
+    int k;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    } else {
+      k = 0;
+    }
+    localObject = this.certificatePinner;
+    if (localObject != null) {
+      m = ((CertificatePinner)localObject).hashCode();
+    }
+    return (((((((((527 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i) * 31 + j) * 31 + k) * 31 + m;
   }
   
   @Nullable
@@ -170,16 +185,23 @@ public final class Address
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Address{").append(this.url.host()).append(":").append(this.url.port());
-    if (this.proxy != null) {
-      localStringBuilder.append(", proxy=").append(this.proxy);
-    }
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Address{");
+    localStringBuilder.append(this.url.host());
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.url.port());
+    if (this.proxy != null)
     {
-      localStringBuilder.append("}");
-      return localStringBuilder.toString();
-      localStringBuilder.append(", proxySelector=").append(this.proxySelector);
+      localStringBuilder.append(", proxy=");
+      localStringBuilder.append(this.proxy);
     }
+    else
+    {
+      localStringBuilder.append(", proxySelector=");
+      localStringBuilder.append(this.proxySelector);
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public HttpUrl url()
@@ -189,7 +211,7 @@ public final class Address
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.Address
  * JD-Core Version:    0.7.0.1
  */

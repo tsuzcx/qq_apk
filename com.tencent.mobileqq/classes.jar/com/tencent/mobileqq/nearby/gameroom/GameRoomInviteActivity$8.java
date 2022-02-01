@@ -20,19 +20,21 @@ class GameRoomInviteActivity$8
     if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
       GameRoomInviteActivity localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-      if ((!paramRspBody.uint64_leader_uin.has()) || (paramRspBody.uint64_leader_uin.get() == this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, HardCodeUtil.a(2131705132));
-        return;
+      boolean bool;
+      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
+        bool = false;
+      } else {
+        bool = true;
       }
+      localGameRoomInviteActivity.showMyInviteDialog(bool, paramRspBody.string_invite_id.get().toStringUtf8(), null, HardCodeUtil.a(2131705209));
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.b, new GameRoomInviteActivity.8.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.mRoomNum, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.mZoneId, new GameRoomInviteActivity.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.8
  * JD-Core Version:    0.7.0.1
  */

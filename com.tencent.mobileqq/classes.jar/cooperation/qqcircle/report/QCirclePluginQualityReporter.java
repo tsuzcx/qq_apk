@@ -2,12 +2,11 @@ package cooperation.qqcircle.report;
 
 import android.os.Build;
 import android.os.Handler;
+import cooperation.qqcircle.utils.QCircleHostStubUtil;
 import feedcloud.FeedCloudCommon.Entry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 public class QCirclePluginQualityReporter
 {
@@ -16,6 +15,7 @@ public class QCirclePluginQualityReporter
   public static final String EVENT_PLUGIN_CMD_RSP = "qcircle_plugin_cmd_rsp";
   public static final String EVENT_PLUGIN_DOWNLOAD = "qcircle_plugin_download";
   public static final String EVENT_PLUGIN_EXCEPTION = "qcircle_plugin_exception_msg";
+  public static final String EVENT_PLUGIN_FLUTTER_GET = "qcircle_plugin_flutter_get";
   public static final String EVENT_PLUGIN_GET = "qcircle_plugin_get";
   public static final String EVENT_PLUGIN_LOAD = "qcircle_plugin_load_result";
   public static final String EVENT_PLUGIN_LOAD_START = "qcircle_plugin_load_start";
@@ -41,7 +41,7 @@ public class QCirclePluginQualityReporter
   
   private static Collection<FeedCloudCommon.Entry> createEntries(QCirclePluginQualityReporter.ReportData paramReportData)
   {
-    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("uin", String.valueOf(MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin())), QCircleReportHelper.newEntry("qua", paramReportData.getQua()), QCircleReportHelper.newEntry("network_type", paramReportData.getNetWorkTyp()), QCircleReportHelper.newEntry("event_id", paramReportData.getEvent_id()), QCircleReportHelper.newEntry("retcode", String.valueOf(paramReportData.getRetCode())), QCircleReportHelper.newEntry("pluginVersion", String.valueOf(paramReportData.getPluginVersion())), QCircleReportHelper.newEntry("plugintype", paramReportData.getPluginType()), QCircleReportHelper.newEntry("ext1", paramReportData.getExt1()), QCircleReportHelper.newEntry("ext2", paramReportData.getExt2()), QCircleReportHelper.newEntry("timecost", paramReportData.getTimeCost()), QCircleReportHelper.newEntry("device_info", Build.DEVICE) }));
+    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("uin", QCircleHostStubUtil.getCurrentAccount()), QCircleReportHelper.newEntry("qua", paramReportData.getQua()), QCircleReportHelper.newEntry("network_type", paramReportData.getNetWorkTyp()), QCircleReportHelper.newEntry("event_id", paramReportData.getEvent_id()), QCircleReportHelper.newEntry("retcode", String.valueOf(paramReportData.getRetCode())), QCircleReportHelper.newEntry("pluginVersion", String.valueOf(paramReportData.getPluginVersion())), QCircleReportHelper.newEntry("plugintype", paramReportData.getPluginType()), QCircleReportHelper.newEntry("ext1", paramReportData.getExt1()), QCircleReportHelper.newEntry("ext2", paramReportData.getExt2()), QCircleReportHelper.newEntry("timecost", paramReportData.getTimeCost()), QCircleReportHelper.newEntry("device_info", Build.DEVICE) }));
   }
   
   public static void report(QCirclePluginQualityReporter.ReportData paramReportData)
@@ -53,7 +53,7 @@ public class QCirclePluginQualityReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCirclePluginQualityReporter
  * JD-Core Version:    0.7.0.1
  */

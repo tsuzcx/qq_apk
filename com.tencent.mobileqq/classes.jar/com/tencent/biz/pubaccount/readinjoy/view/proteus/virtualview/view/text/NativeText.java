@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text;
 
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CommonLinkMovementMethod;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
 
 public class NativeText
@@ -48,9 +48,10 @@ public class NativeText
   
   public void onParseValueFinished()
   {
-    int k = 1;
     super.onParseValueFinished();
-    this.mNative.setIncludeFontPadding(false);
+    NativeTextImp localNativeTextImp = this.mNative;
+    int k = 0;
+    localNativeTextImp.setIncludeFontPadding(false);
     this.mNative.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
     this.mNative.setTextSize(0, this.mTextSize);
     this.mNative.setBorderColor(this.mBorderColor);
@@ -61,89 +62,81 @@ public class NativeText
     this.mNative.setBorderBottomRightRadius(this.mBorderBottomRightRadius);
     this.mNative.setBackgroundColor(this.mBackground);
     this.mNative.setTextColor(this.mTextColor);
-    if ((this.mTextStyle & 0x1) != 0) {}
-    for (int i = 33;; i = 1)
+    int i;
+    if ((this.mTextStyle & 0x1) != 0) {
+      i = 33;
+    } else {
+      i = 1;
+    }
+    int j = i;
+    if ((this.mTextStyle & 0x8) != 0) {
+      j = i | 0x10;
+    }
+    this.mNative.setPaintFlags(j);
+    if ((this.mTextStyle & 0x2) != 0) {
+      this.mNative.setTypeface(null, 3);
+    }
+    if (this.mLines > 0) {
+      this.mNative.setLines(this.mLines);
+    }
+    if (this.mMaxLines > 0) {
+      this.mNative.setMaxLines(this.mMaxLines);
+    }
+    if (this.mEllipsize >= 0) {
+      this.mNative.setEllipsize(android.text.TextUtils.TruncateAt.values()[this.mEllipsize]);
+    }
+    if (this.mTypeface != null) {
+      this.mNative.setTypeface(this.mTypeface);
+    }
+    if ((this.mGravity & 0x4) != 0)
     {
-      int j = i;
-      if ((this.mTextStyle & 0x8) != 0) {
-        j = i | 0x10;
-      }
-      this.mNative.setPaintFlags(j);
-      if ((this.mTextStyle & 0x2) != 0) {
-        this.mNative.setTypeface(null, 3);
-      }
-      if (this.mLines > 0) {
-        this.mNative.setLines(this.mLines);
-      }
-      if (this.mMaxLines > 0) {
-        this.mNative.setMaxLines(this.mMaxLines);
-      }
-      if (this.mEllipsize >= 0) {
-        this.mNative.setEllipsize(android.text.TextUtils.TruncateAt.values()[this.mEllipsize]);
-      }
-      if (this.mTypeface != null) {
-        this.mNative.setTypeface(this.mTypeface);
-      }
-      if ((this.mGravity & 0x4) != 0) {
-        i = k;
-      }
-      for (;;)
-      {
-        if ((this.mGravity & 0x20) != 0)
-        {
-          j = i | 0x10;
-          label295:
-          this.mNative.setGravity(j);
-          this.mNative.setLineSpacing(this.mLineSpaceExtra, this.mLineSpaceMultipiler);
-          if (this.mMaxWidth > 0) {
-            this.mNative.setMaxWidth(this.mMaxWidth);
-          }
-          if (this.mEnableMarquee != null) {
-            this.mNative.setEnableMarquee(this.mEnableMarquee.booleanValue());
-          }
-          if ((this.mEnableClickSpan == null) || (!this.mEnableClickSpan.booleanValue())) {
-            break label469;
-          }
-          this.mNative.setMovementMethod(LinkMovementMethod.getInstance());
-        }
-        for (;;)
-        {
-          if (TextUtils.isEmpty(this.mText)) {
-            break label480;
-          }
-          setRealText(this.mText);
-          return;
-          if ((this.mGravity & 0x1) != 0)
-          {
-            i = 3;
-            break;
-          }
-          if ((this.mGravity & 0x2) == 0) {
-            break label487;
-          }
-          i = 5;
-          break;
-          if ((this.mGravity & 0x8) != 0)
-          {
-            j = i | 0x30;
-            break label295;
-          }
-          j = i;
-          if ((this.mGravity & 0x10) == 0) {
-            break label295;
-          }
-          j = i | 0x50;
-          break label295;
-          label469:
-          this.mNative.setMovementMethod(null);
-        }
-        label480:
-        setRealText("");
-        return;
-        label487:
-        i = 0;
+      i = 1;
+    }
+    else if ((this.mGravity & 0x1) != 0)
+    {
+      i = 3;
+    }
+    else
+    {
+      i = k;
+      if ((this.mGravity & 0x2) != 0) {
+        i = 5;
       }
     }
+    if ((this.mGravity & 0x20) != 0)
+    {
+      j = i | 0x10;
+    }
+    else if ((this.mGravity & 0x8) != 0)
+    {
+      j = i | 0x30;
+    }
+    else
+    {
+      j = i;
+      if ((this.mGravity & 0x10) != 0) {
+        j = i | 0x50;
+      }
+    }
+    this.mNative.setGravity(j);
+    this.mNative.setLineSpacing(this.mLineSpaceExtra, this.mLineSpaceMultipiler);
+    if (this.mMaxWidth > 0) {
+      this.mNative.setMaxWidth(this.mMaxWidth);
+    }
+    if (this.mEnableMarquee != null) {
+      this.mNative.setEnableMarquee(this.mEnableMarquee.booleanValue());
+    }
+    if ((this.mEnableClickSpan != null) && (this.mEnableClickSpan.booleanValue())) {
+      this.mNative.setMovementMethod(CommonLinkMovementMethod.a());
+    } else {
+      this.mNative.setMovementMethod(null);
+    }
+    if (!TextUtils.isEmpty(this.mText))
+    {
+      setRealText(this.mText);
+      return;
+    }
+    setRealText("");
   }
   
   public void reset()
@@ -157,8 +150,10 @@ public class NativeText
   
   protected void setDrawableLeft(String paramString)
   {
-    if (this.drawableLeftPath != null) {
-      this.mNative.setCompoundDrawablesWithIntrinsicBounds(DrawableUtil.getDrawable(this.mNative.getContext(), this.drawableLeftPath, null, null), null, null, null);
+    if (this.drawableLeftPath != null)
+    {
+      paramString = this.mNative;
+      paramString.setCompoundDrawablesWithIntrinsicBounds(DrawableUtil.getDrawable(paramString.getContext(), this.drawableLeftPath, null, null), null, null, null);
     }
   }
   
@@ -192,7 +187,7 @@ public class NativeText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText
  * JD-Core Version:    0.7.0.1
  */

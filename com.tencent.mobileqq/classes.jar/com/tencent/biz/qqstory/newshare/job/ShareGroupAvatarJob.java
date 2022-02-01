@@ -49,7 +49,7 @@ public class ShareGroupAvatarJob
     b(false);
   }
   
-  public void a(Map<String, Object> paramMap)
+  protected void a(Map<String, Object> paramMap)
   {
     if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarJob_sgi"))) {
       this.a = ((String)a("ShareGroupAvatarJob_sgi"));
@@ -58,7 +58,7 @@ public class ShareGroupAvatarJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarJob
  * JD-Core Version:    0.7.0.1
  */

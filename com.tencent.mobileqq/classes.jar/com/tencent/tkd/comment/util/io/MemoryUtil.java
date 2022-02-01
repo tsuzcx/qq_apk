@@ -26,8 +26,8 @@ public class MemoryUtil
   
   public static int roundUpToPowerOfTwoLog(int paramInt)
   {
-    int i = 0;
     int j = 1;
+    int i = 0;
     while (j < paramInt)
     {
       j <<= 1;
@@ -38,7 +38,7 @@ public class MemoryUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.util.io.MemoryUtil
  * JD-Core Version:    0.7.0.1
  */

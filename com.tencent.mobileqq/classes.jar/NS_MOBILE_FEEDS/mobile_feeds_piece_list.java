@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class mobile_feeds_piece_list
   extends JceStruct
@@ -37,18 +38,20 @@ public final class mobile_feeds_piece_list
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.all_feeds_data != null) {
-      paramJceOutputStream.write(this.all_feeds_data, 0);
+    Object localObject = this.all_feeds_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.offset, 1);
-    if (this.tlv_attach_info != null) {
-      paramJceOutputStream.write(this.tlv_attach_info, 2);
+    localObject = this.tlv_attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_feeds_piece_list
  * JD-Core Version:    0.7.0.1
  */

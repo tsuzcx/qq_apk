@@ -13,7 +13,8 @@ class BaseWidgetView$1
   {
     if ((this.a.a() != null) && (!this.a.a(paramView)))
     {
-      this.a.a(this.a.a());
+      BaseWidgetView localBaseWidgetView = this.a;
+      localBaseWidgetView.a(localBaseWidgetView.a());
       this.a.a().onClick(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +22,7 @@ class BaseWidgetView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.baseUI.BaseWidgetView.1
  * JD-Core Version:    0.7.0.1
  */

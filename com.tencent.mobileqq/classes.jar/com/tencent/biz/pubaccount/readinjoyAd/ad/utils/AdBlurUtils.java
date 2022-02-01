@@ -15,7 +15,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdBlurUtils;", "", "()V", "TAG", "", "cropBitmap", "Landroid/graphics/Bitmap;", "bitmap", "cropWidth", "", "cropHeight", "getBitmapFromURL", "imageUrl", "getLargeImgAdBlurBitmap", "context", "Landroid/content/Context;", "originWidth", "originHeight", "blurWidth", "blurHeight", "scale", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdBlurUtils;", "", "()V", "TAG", "", "cropBitmap", "Landroid/graphics/Bitmap;", "bitmap", "cropWidth", "", "cropHeight", "getBitmapFromURL", "imageUrl", "getLargeImgAdBlurBitmap", "context", "Landroid/content/Context;", "originWidth", "originHeight", "blurWidth", "blurHeight", "scale", "", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class AdBlurUtils
 {
   public static final AdBlurUtils a;
@@ -43,27 +43,53 @@ public final class AdBlurUtils
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     if (paramBitmap != null)
     {
-      ReadInJoyAdLog.a(jdField_a_of_type_JavaLangString, "1:originWidth = " + paramInt1 + "  originHeight = " + paramInt2 + "  blurWidth = " + paramInt3 + "  blurHeight = " + paramInt4);
-      paramBitmap = BitmapUtils.a(paramBitmap, paramInt1, paramInt2, true);
       Object localObject1 = jdField_a_of_type_JavaLangString;
-      Object localObject2 = new StringBuilder().append("2:originBPWidth = ");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("1:originWidth = ");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append("  originHeight = ");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append("  blurWidth = ");
+      ((StringBuilder)localObject2).append(paramInt3);
+      ((StringBuilder)localObject2).append("  blurHeight = ");
+      ((StringBuilder)localObject2).append(paramInt4);
+      ReadInJoyAdLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
+      paramBitmap = BitmapUtils.a(paramBitmap, paramInt1, paramInt2, true);
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("2:originBPWidth = ");
       Intrinsics.checkExpressionValueIsNotNull(paramBitmap, "originBP");
-      ReadInJoyAdLog.a((String)localObject1, paramBitmap.getWidth() + "  originBPHeight = " + paramBitmap.getHeight());
+      ((StringBuilder)localObject2).append(paramBitmap.getWidth());
+      ((StringBuilder)localObject2).append("  originBPHeight = ");
+      ((StringBuilder)localObject2).append(paramBitmap.getHeight());
+      ReadInJoyAdLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
       paramContext = ImageUtil.a(paramContext, paramBitmap, paramInt3 / paramInt1, 20.0F);
       localObject1 = jdField_a_of_type_JavaLangString;
-      localObject2 = new StringBuilder().append("3:blurBitmapWidth = ");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("3:blurBitmapWidth = ");
       Intrinsics.checkExpressionValueIsNotNull(paramContext, "blurBitmap");
-      ReadInJoyAdLog.a((String)localObject1, paramContext.getWidth() + "  blurBitmapHeight = " + paramContext.getHeight());
+      ((StringBuilder)localObject2).append(paramContext.getWidth());
+      ((StringBuilder)localObject2).append("  blurBitmapHeight = ");
+      ((StringBuilder)localObject2).append(paramContext.getHeight());
+      ReadInJoyAdLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
       paramContext = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdUtilsAdBlurUtils.a(paramContext, paramInt3, paramInt4);
       localObject1 = jdField_a_of_type_JavaLangString;
-      localObject2 = new StringBuilder().append("4:blurBitmapWidth = ");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("4:blurBitmapWidth = ");
       Intrinsics.checkExpressionValueIsNotNull(paramContext, "blurBitmap");
-      ReadInJoyAdLog.a((String)localObject1, paramContext.getWidth() + "  blurBitmapHeight = " + paramContext.getHeight());
+      ((StringBuilder)localObject2).append(paramContext.getWidth());
+      ((StringBuilder)localObject2).append("  blurBitmapHeight = ");
+      ((StringBuilder)localObject2).append(paramContext.getHeight());
+      ReadInJoyAdLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
       localObject1 = BitmapUtil.a(paramContext, paramBitmap, (paramInt3 - paramInt1) / 2, 0, 1);
       localObject2 = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder().append("5:mergeBitmapWidth = ");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("5:mergeBitmapWidth = ");
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "mergeBitmap");
-      ReadInJoyAdLog.a((String)localObject2, ((Bitmap)localObject1).getWidth() + "  mergeBitmapHeight = " + ((Bitmap)localObject1).getHeight());
+      localStringBuilder.append(((Bitmap)localObject1).getWidth());
+      localStringBuilder.append("  mergeBitmapHeight = ");
+      localStringBuilder.append(((Bitmap)localObject1).getHeight());
+      ReadInJoyAdLog.a((String)localObject2, localStringBuilder.toString());
       paramBitmap.recycle();
       paramContext.recycle();
       return localObject1;
@@ -77,27 +103,53 @@ public final class AdBlurUtils
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     if (paramBitmap != null)
     {
-      ReadInJoyAdLog.a(jdField_a_of_type_JavaLangString, "1:originWidth = " + paramInt1 + "  originHeight = " + paramInt2 + "  blurWidth = " + paramInt3 + "  blurHeight = " + paramInt4);
-      paramBitmap = BitmapUtils.a(paramBitmap, paramInt1, paramInt2, true);
       Object localObject1 = jdField_a_of_type_JavaLangString;
-      Object localObject2 = new StringBuilder().append("2:originBPWidth = ");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("1:originWidth = ");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append("  originHeight = ");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append("  blurWidth = ");
+      ((StringBuilder)localObject2).append(paramInt3);
+      ((StringBuilder)localObject2).append("  blurHeight = ");
+      ((StringBuilder)localObject2).append(paramInt4);
+      ReadInJoyAdLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
+      paramBitmap = BitmapUtils.a(paramBitmap, paramInt1, paramInt2, true);
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("2:originBPWidth = ");
       Intrinsics.checkExpressionValueIsNotNull(paramBitmap, "originBP");
-      ReadInJoyAdLog.a((String)localObject1, paramBitmap.getWidth() + "  originBPHeight = " + paramBitmap.getHeight());
+      ((StringBuilder)localObject2).append(paramBitmap.getWidth());
+      ((StringBuilder)localObject2).append("  originBPHeight = ");
+      ((StringBuilder)localObject2).append(paramBitmap.getHeight());
+      ReadInJoyAdLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
       paramContext = ImageUtil.a(paramContext, paramBitmap, paramFloat, 20.0F);
       localObject1 = jdField_a_of_type_JavaLangString;
-      localObject2 = new StringBuilder().append("3:blurBitmapWidth = ");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("3:blurBitmapWidth = ");
       Intrinsics.checkExpressionValueIsNotNull(paramContext, "blurBitmap");
-      ReadInJoyAdLog.a((String)localObject1, paramContext.getWidth() + "  blurBitmapHeight = " + paramContext.getHeight());
+      ((StringBuilder)localObject2).append(paramContext.getWidth());
+      ((StringBuilder)localObject2).append("  blurBitmapHeight = ");
+      ((StringBuilder)localObject2).append(paramContext.getHeight());
+      ReadInJoyAdLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
       paramContext = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdUtilsAdBlurUtils.a(paramContext, paramInt3, paramInt4);
       localObject1 = jdField_a_of_type_JavaLangString;
-      localObject2 = new StringBuilder().append("4:blurBitmapWidth = ");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("4:blurBitmapWidth = ");
       Intrinsics.checkExpressionValueIsNotNull(paramContext, "blurBitmap");
-      ReadInJoyAdLog.a((String)localObject1, paramContext.getWidth() + "  blurBitmapHeight = " + paramContext.getHeight());
+      ((StringBuilder)localObject2).append(paramContext.getWidth());
+      ((StringBuilder)localObject2).append("  blurBitmapHeight = ");
+      ((StringBuilder)localObject2).append(paramContext.getHeight());
+      ReadInJoyAdLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
       localObject1 = BitmapUtil.a(paramContext, paramBitmap, (paramInt3 - paramInt1) / 2, (paramInt4 - paramInt2) / 2, 1);
       localObject2 = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder().append("5:mergeBitmapWidth = ");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("5:mergeBitmapWidth = ");
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "mergeBitmap");
-      ReadInJoyAdLog.a((String)localObject2, ((Bitmap)localObject1).getWidth() + "  mergeBitmapHeight = " + ((Bitmap)localObject1).getHeight());
+      localStringBuilder.append(((Bitmap)localObject1).getWidth());
+      localStringBuilder.append("  mergeBitmapHeight = ");
+      localStringBuilder.append(((Bitmap)localObject1).getHeight());
+      ReadInJoyAdLog.a((String)localObject2, localStringBuilder.toString());
       paramBitmap.recycle();
       paramContext.recycle();
       return localObject1;
@@ -111,21 +163,21 @@ public final class AdBlurUtils
     try
     {
       paramString = new URL(paramString).openConnection();
-      if (paramString == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.net.HttpURLConnection");
+      if (paramString != null)
+      {
+        paramString = (HttpURLConnection)paramString;
+        paramString.setDoInput(true);
+        paramString.connect();
+        return BitmapFactory.decodeStream(paramString.getInputStream());
       }
+      throw new TypeCastException("null cannot be cast to non-null type java.net.HttpURLConnection");
     }
-    catch (IOException paramString)
+    catch (OutOfMemoryError paramString)
     {
       paramString.printStackTrace();
       return null;
-      paramString = (HttpURLConnection)paramString;
-      paramString.setDoInput(true);
-      paramString.connect();
-      paramString = BitmapFactory.decodeStream(paramString.getInputStream());
-      return paramString;
     }
-    catch (OutOfMemoryError paramString)
+    catch (IOException paramString)
     {
       paramString.printStackTrace();
     }
@@ -134,7 +186,7 @@ public final class AdBlurUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdBlurUtils
  * JD-Core Version:    0.7.0.1
  */

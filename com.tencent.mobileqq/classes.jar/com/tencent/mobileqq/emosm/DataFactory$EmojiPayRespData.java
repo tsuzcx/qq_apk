@@ -25,27 +25,30 @@ public class DataFactory$EmojiPayRespData
   
   public static EmojiPayRespData a(Bundle paramBundle)
   {
-    int j = 0;
-    int n = -1;
-    String str = "";
-    int i;
-    int k;
     int m;
+    int n;
+    int j;
+    int k;
+    int i;
     if (paramBundle != null)
     {
-      i = paramBundle.getInt("result", -1);
-      j = paramBundle.getInt("realSaveNum", 0);
-      k = paramBundle.getInt("payChannel", -1);
-      m = paramBundle.getInt("payState", -1);
-      n = paramBundle.getInt("provideState", -1);
+      m = paramBundle.getInt("result", -1);
+      n = paramBundle.getInt("realSaveNum", 0);
+      j = paramBundle.getInt("payChannel", -1);
+      k = paramBundle.getInt("payState", -1);
+      i = paramBundle.getInt("provideState", -1);
+      paramBundle = paramBundle.getString("message");
     }
-    for (paramBundle = paramBundle.getString("message");; paramBundle = str)
+    else
     {
-      return new EmojiPayRespData(i, j, k, m, n, paramBundle);
+      paramBundle = "";
       m = -1;
+      n = 0;
+      j = -1;
       k = -1;
       i = -1;
     }
+    return new EmojiPayRespData(m, n, j, k, i, paramBundle);
   }
   
   public Bundle a()
@@ -62,7 +65,7 @@ public class DataFactory$EmojiPayRespData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.DataFactory.EmojiPayRespData
  * JD-Core Version:    0.7.0.1
  */

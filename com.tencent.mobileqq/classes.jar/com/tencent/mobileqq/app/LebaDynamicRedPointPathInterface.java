@@ -14,8 +14,13 @@ public class LebaDynamicRedPointPathInterface
     if ((paramAppRuntime instanceof QQAppInterface))
     {
       ILebaHelperService localILebaHelperService = (ILebaHelperService)paramAppRuntime.getRuntimeService(ILebaHelperService.class, "multi");
-      if ((localILebaHelperService != null) && (localILebaHelperService.isTableModel(paramAppRuntime))) {}
-      for (int i = 1; i != 0; i = 0)
+      int i;
+      if ((localILebaHelperService != null) && (localILebaHelperService.isTableModel(paramAppRuntime))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
       {
         paramAppRuntime = new ArrayList();
         paramAppRuntime.add("100000");
@@ -27,7 +32,7 @@ public class LebaDynamicRedPointPathInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.LebaDynamicRedPointPathInterface
  * JD-Core Version:    0.7.0.1
  */

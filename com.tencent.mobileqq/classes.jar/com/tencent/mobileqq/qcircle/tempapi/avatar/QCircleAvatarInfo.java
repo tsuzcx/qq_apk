@@ -57,12 +57,23 @@ public class QCircleAvatarInfo
   
   public String toString()
   {
-    return "QCircleAvatarInfo{mUin='" + this.mUin + '\'' + ", mTimestamp='" + this.mTimestamp + '\'' + ", mDownLoadUrl='" + this.mDownLoadUrl + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QCircleAvatarInfo{mUin='");
+    localStringBuilder.append(this.mUin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mTimestamp='");
+    localStringBuilder.append(this.mTimestamp);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mDownLoadUrl='");
+    localStringBuilder.append(this.mDownLoadUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.tempapi.avatar.QCircleAvatarInfo
  * JD-Core Version:    0.7.0.1
  */

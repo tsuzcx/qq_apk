@@ -1,14 +1,10 @@
 package rx.internal.operators;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import rx.Observable;
 import rx.Subscriber;
-import rx.Subscription;
 import rx.exceptions.Exceptions;
-import rx.functions.Func1;
 import rx.subscriptions.CompositeSubscription;
 
 final class OperatorBufferWithStartEndObservable$BufferingSubscriber
@@ -30,107 +26,66 @@ final class OperatorBufferWithStartEndObservable$BufferingSubscriber
   
   void endBuffer(List<T> paramList)
   {
-    for (;;)
+    try
+    {
+      if (this.done) {
+        return;
+      }
+      Iterator localIterator = this.chunks.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      } while ((List)localIterator.next() != paramList);
+      i = 1;
+      localIterator.remove();
+    }
+    finally
+    {
+      for (;;)
+      {
+        for (;;)
+        {
+          throw paramList;
+        }
+        int i = 0;
+      }
+    }
+    if (i != 0) {
+      this.child.onNext(paramList);
+    }
+  }
+  
+  public void onCompleted()
+  {
+    try
     {
       try
       {
         if (this.done) {
           return;
         }
-        Iterator localIterator = this.chunks.iterator();
-        if (localIterator.hasNext())
+        this.done = true;
+        Object localObject1 = new LinkedList(this.chunks);
+        this.chunks.clear();
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          if ((List)localIterator.next() != paramList) {
-            continue;
-          }
-          i = 1;
-          localIterator.remove();
-          if (i == 0) {
-            break;
-          }
-          this.child.onNext(paramList);
-          return;
+          List localList = (List)((Iterator)localObject1).next();
+          this.child.onNext(localList);
         }
+        this.child.onCompleted();
+        unsubscribe();
+        return;
       }
       finally {}
-      int i = 0;
+      return;
     }
-  }
-  
-  /* Error */
-  public void onCompleted()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 47	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:done	Z
-    //   6: ifeq +6 -> 12
-    //   9: aload_0
-    //   10: monitorexit
-    //   11: return
-    //   12: aload_0
-    //   13: iconst_1
-    //   14: putfield 47	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:done	Z
-    //   17: new 28	java/util/LinkedList
-    //   20: dup
-    //   21: aload_0
-    //   22: getfield 31	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:chunks	Ljava/util/List;
-    //   25: invokespecial 77	java/util/LinkedList:<init>	(Ljava/util/Collection;)V
-    //   28: astore_1
-    //   29: aload_0
-    //   30: getfield 31	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:chunks	Ljava/util/List;
-    //   33: invokeinterface 80 1 0
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: aload_1
-    //   41: invokeinterface 53 1 0
-    //   46: astore_1
-    //   47: aload_1
-    //   48: invokeinterface 59 1 0
-    //   53: ifeq +39 -> 92
-    //   56: aload_1
-    //   57: invokeinterface 63 1 0
-    //   62: checkcast 49	java/util/List
-    //   65: astore_2
-    //   66: aload_0
-    //   67: getfield 26	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:child	Lrx/Subscriber;
-    //   70: aload_2
-    //   71: invokevirtual 70	rx/Subscriber:onNext	(Ljava/lang/Object;)V
-    //   74: goto -27 -> 47
-    //   77: astore_1
-    //   78: aload_1
-    //   79: aload_0
-    //   80: getfield 26	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:child	Lrx/Subscriber;
-    //   83: invokestatic 86	rx/exceptions/Exceptions:throwOrReport	(Ljava/lang/Throwable;Lrx/Observer;)V
-    //   86: return
-    //   87: astore_1
-    //   88: aload_0
-    //   89: monitorexit
-    //   90: aload_1
-    //   91: athrow
-    //   92: aload_0
-    //   93: getfield 26	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:child	Lrx/Subscriber;
-    //   96: invokevirtual 88	rx/Subscriber:onCompleted	()V
-    //   99: aload_0
-    //   100: invokevirtual 91	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:unsubscribe	()V
-    //   103: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	104	0	this	BufferingSubscriber
-    //   28	29	1	localObject1	Object
-    //   77	2	1	localThrowable	Throwable
-    //   87	4	1	localObject2	Object
-    //   65	6	2	localList	List
-    // Exception table:
-    //   from	to	target	type
-    //   0	2	77	java/lang/Throwable
-    //   40	47	77	java/lang/Throwable
-    //   47	74	77	java/lang/Throwable
-    //   90	92	77	java/lang/Throwable
-    //   2	11	87	finally
-    //   12	40	87	finally
-    //   88	90	87	finally
+    catch (Throwable localThrowable)
+    {
+      Exceptions.throwOrReport(localThrowable, this.child);
+    }
   }
   
   public void onError(Throwable paramThrowable)
@@ -157,42 +112,86 @@ final class OperatorBufferWithStartEndObservable$BufferingSubscriber
       while (localIterator.hasNext()) {
         ((List)localIterator.next()).add(paramT);
       }
-    }
-    finally {}
-  }
-  
-  void startBuffer(TOpening paramTOpening)
-  {
-    Object localObject = new ArrayList();
-    try
-    {
-      if (this.done) {
-        return;
-      }
-      this.chunks.add(localObject);
       return;
     }
-    finally
+    finally {}
+    for (;;)
     {
-      try
-      {
-        paramTOpening = (Observable)this.this$0.bufferClosing.call(paramTOpening);
-        localObject = new OperatorBufferWithStartEndObservable.BufferingSubscriber.1(this, (List)localObject);
-        this.closingSubscriptions.add((Subscription)localObject);
-        paramTOpening.unsafeSubscribe((Subscriber)localObject);
-        return;
-      }
-      catch (Throwable paramTOpening)
-      {
-        Exceptions.throwOrReport(paramTOpening, this);
-      }
-      paramTOpening = finally;
+      throw paramT;
     }
+  }
+  
+  /* Error */
+  void startBuffer(TOpening paramTOpening)
+  {
+    // Byte code:
+    //   0: new 102	java/util/ArrayList
+    //   3: dup
+    //   4: invokespecial 103	java/util/ArrayList:<init>	()V
+    //   7: astore_2
+    //   8: aload_0
+    //   9: monitorenter
+    //   10: aload_0
+    //   11: getfield 47	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:done	Z
+    //   14: ifeq +6 -> 20
+    //   17: aload_0
+    //   18: monitorexit
+    //   19: return
+    //   20: aload_0
+    //   21: getfield 31	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:chunks	Ljava/util/List;
+    //   24: aload_2
+    //   25: invokeinterface 98 2 0
+    //   30: pop
+    //   31: aload_0
+    //   32: monitorexit
+    //   33: aload_0
+    //   34: getfield 21	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:this$0	Lrx/internal/operators/OperatorBufferWithStartEndObservable;
+    //   37: getfield 109	rx/internal/operators/OperatorBufferWithStartEndObservable:bufferClosing	Lrx/functions/Func1;
+    //   40: aload_1
+    //   41: invokeinterface 115 2 0
+    //   46: checkcast 117	rx/Observable
+    //   49: astore_1
+    //   50: new 119	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber$1
+    //   53: dup
+    //   54: aload_0
+    //   55: aload_2
+    //   56: invokespecial 122	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber$1:<init>	(Lrx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber;Ljava/util/List;)V
+    //   59: astore_2
+    //   60: aload_0
+    //   61: getfield 36	rx/internal/operators/OperatorBufferWithStartEndObservable$BufferingSubscriber:closingSubscriptions	Lrx/subscriptions/CompositeSubscription;
+    //   64: aload_2
+    //   65: invokevirtual 123	rx/subscriptions/CompositeSubscription:add	(Lrx/Subscription;)V
+    //   68: aload_1
+    //   69: aload_2
+    //   70: invokevirtual 127	rx/Observable:unsafeSubscribe	(Lrx/Subscriber;)Lrx/Subscription;
+    //   73: pop
+    //   74: return
+    //   75: astore_1
+    //   76: aload_1
+    //   77: aload_0
+    //   78: invokestatic 91	rx/exceptions/Exceptions:throwOrReport	(Ljava/lang/Throwable;Lrx/Observer;)V
+    //   81: return
+    //   82: astore_1
+    //   83: aload_0
+    //   84: monitorexit
+    //   85: aload_1
+    //   86: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	87	0	this	BufferingSubscriber
+    //   0	87	1	paramTOpening	TOpening
+    //   7	63	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   33	50	75	java/lang/Throwable
+    //   10	19	82	finally
+    //   20	33	82	finally
+    //   83	85	82	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorBufferWithStartEndObservable.BufferingSubscriber
  * JD-Core Version:    0.7.0.1
  */

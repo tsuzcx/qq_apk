@@ -14,25 +14,30 @@ public class MTV1TopLayerRender
   public void onSurfaceChanged(int paramInt1, int paramInt2)
   {
     super.onSurfaceChanged(paramInt1, paramInt2);
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return;
-    }
-    if (this.mFilter != null)
+    if (paramInt1 != 0)
     {
-      this.mFilter.onOutputSizeChanged(paramInt1, paramInt2);
-      return;
+      if (paramInt2 == 0) {
+        return;
+      }
+      HorizontialGlitchFilter localHorizontialGlitchFilter = this.mFilter;
+      if (localHorizontialGlitchFilter != null)
+      {
+        localHorizontialGlitchFilter.onOutputSizeChanged(paramInt1, paramInt2);
+        return;
+      }
+      this.mFilter = new HorizontialGlitchFilter();
+      this.mFilter.init();
+      this.mFilter.onOutputSizeChanged(getWidth(), getHeight());
     }
-    this.mFilter = new HorizontialGlitchFilter();
-    this.mFilter.init();
-    this.mFilter.onOutputSizeChanged(getWidth(), getHeight());
   }
   
   public void onSurfaceDestroy()
   {
     super.onSurfaceDestroy();
-    if (this.mFilter != null)
+    HorizontialGlitchFilter localHorizontialGlitchFilter = this.mFilter;
+    if (localHorizontialGlitchFilter != null)
     {
-      this.mFilter.destroy();
+      localHorizontialGlitchFilter.destroy();
       this.mFilter = null;
     }
   }
@@ -40,39 +45,30 @@ public class MTV1TopLayerRender
   public int process(RenderBuffer paramRenderBuffer, int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     paramRenderBuffer.bind();
-    if ((this.mDovParam != null) && (this.mDovParam.mShow)) {
-      if (!this.mFilter.process(this.mDovParam.mGlitchID, getMaterialTextureID(), getMaterialArea(0), this.mDovParam.mRect, this.mDovParam.mChangeColor, this.mDovParam.mColor, paramArrayOfFloat1, paramArrayOfFloat2)) {
-        paramInt = 0;
-      }
-    }
-    for (;;)
-    {
-      int i = paramInt;
-      if (this.mTodayParam != null)
-      {
-        i = paramInt;
-        if (this.mTodayParam.mShow) {
-          if ((!this.mFilter.process(this.mTodayParam.mGlitchID, getMaterialTextureID(), getMaterialArea(1), this.mTodayParam.mRect, this.mTodayParam.mChangeColor, this.mTodayParam.mColor, paramArrayOfFloat1, paramArrayOfFloat2)) && (paramInt == 0)) {
-            break label174;
-          }
-        }
-      }
-      label174:
-      for (paramInt = 1;; paramInt = 0)
-      {
-        i = paramInt;
-        paramRenderBuffer.unbind();
-        if (i == 0) {
-          break label179;
-        }
-        return paramRenderBuffer.getTexId();
-        paramInt = 1;
-        break;
-      }
-      label179:
-      return -1;
+    MTVBaseFilter.TextParam localTextParam = this.mDovParam;
+    if ((localTextParam != null) && (localTextParam.mShow) && (this.mFilter.process(this.mDovParam.mGlitchID, getMaterialTextureID(), getMaterialArea(0), this.mDovParam.mRect, this.mDovParam.mChangeColor, this.mDovParam.mColor, paramArrayOfFloat1, paramArrayOfFloat2))) {
+      paramInt = 1;
+    } else {
       paramInt = 0;
     }
+    localTextParam = this.mTodayParam;
+    int i = paramInt;
+    if (localTextParam != null)
+    {
+      i = paramInt;
+      if (localTextParam.mShow) {
+        if ((!this.mFilter.process(this.mTodayParam.mGlitchID, getMaterialTextureID(), getMaterialArea(1), this.mTodayParam.mRect, this.mTodayParam.mChangeColor, this.mTodayParam.mColor, paramArrayOfFloat1, paramArrayOfFloat2)) && (paramInt == 0)) {
+          i = 0;
+        } else {
+          i = 1;
+        }
+      }
+    }
+    paramRenderBuffer.unbind();
+    if (i != 0) {
+      return paramRenderBuffer.getTexId();
+    }
+    return -1;
   }
   
   public void updateData(MTVBaseFilter.TextParam paramTextParam1, MTVBaseFilter.TextParam paramTextParam2)
@@ -83,7 +79,7 @@ public class MTV1TopLayerRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.MTV1TopLayerRender
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,7 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Process;
+import android.util.Log;
 import android.util.TypedValue;
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
@@ -28,10 +29,10 @@ public class ContextCompat
   
   public static int checkSelfPermission(@NonNull Context paramContext, @NonNull String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("permission is null");
+    if (paramString != null) {
+      return paramContext.checkPermission(paramString, Process.myPid(), Process.myUid());
     }
-    return paramContext.checkPermission(paramString, Process.myPid(), Process.myUid());
+    throw new IllegalArgumentException("permission is null");
   }
   
   @Nullable
@@ -43,63 +44,25 @@ public class ContextCompat
     return null;
   }
   
-  /* Error */
   private static File createFilesDir(File paramFile)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: astore_2
-    //   5: aload_0
-    //   6: invokevirtual 67	java/io/File:exists	()Z
-    //   9: ifne +23 -> 32
-    //   12: aload_0
-    //   13: astore_2
-    //   14: aload_0
-    //   15: invokevirtual 70	java/io/File:mkdirs	()Z
-    //   18: ifne +14 -> 32
-    //   21: aload_0
-    //   22: invokevirtual 67	java/io/File:exists	()Z
-    //   25: istore_1
-    //   26: iload_1
-    //   27: ifeq +10 -> 37
-    //   30: aload_0
-    //   31: astore_2
-    //   32: ldc 2
-    //   34: monitorexit
-    //   35: aload_2
-    //   36: areturn
-    //   37: ldc 8
-    //   39: new 72	java/lang/StringBuilder
-    //   42: dup
-    //   43: invokespecial 73	java/lang/StringBuilder:<init>	()V
-    //   46: ldc 75
-    //   48: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: aload_0
-    //   52: invokevirtual 83	java/io/File:getPath	()Ljava/lang/String;
-    //   55: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokestatic 92	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   64: pop
-    //   65: aconst_null
-    //   66: astore_2
-    //   67: goto -35 -> 32
-    //   70: astore_0
-    //   71: ldc 2
-    //   73: monitorexit
-    //   74: aload_0
-    //   75: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	76	0	paramFile	File
-    //   25	2	1	bool	boolean
-    //   4	63	2	localFile	File
-    // Exception table:
-    //   from	to	target	type
-    //   5	12	70	finally
-    //   14	26	70	finally
-    //   37	65	70	finally
+    try
+    {
+      if ((!paramFile.exists()) && (!paramFile.mkdirs()))
+      {
+        boolean bool = paramFile.exists();
+        if (bool) {
+          return paramFile;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unable to create files subdir ");
+        localStringBuilder.append(paramFile.getPath());
+        Log.w("ContextCompat", localStringBuilder.toString());
+        return null;
+      }
+      return paramFile;
+    }
+    finally {}
   }
   
   public static File getCodeCacheDir(@NonNull Context paramContext)
@@ -244,12 +207,10 @@ public class ContextCompat
   {
     if (Build.VERSION.SDK_INT >= 16) {
       paramContext.startActivities(paramArrayOfIntent, paramBundle);
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       paramContext.startActivities(paramArrayOfIntent);
     }
+    return true;
   }
   
   public static void startActivity(@NonNull Context paramContext, @NonNull Intent paramIntent, @Nullable Bundle paramBundle)
@@ -274,7 +235,7 @@ public class ContextCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.content.ContextCompat
  * JD-Core Version:    0.7.0.1
  */

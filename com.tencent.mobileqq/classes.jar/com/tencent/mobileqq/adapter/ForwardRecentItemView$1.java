@@ -22,22 +22,24 @@ class ForwardRecentItemView$1
     if (AppSetting.d)
     {
       paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.getResources();
-      if (!this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label124;
+      int i;
+      if (this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        i = 2131690858;
+      } else {
+        i = 2131720100;
       }
-    }
-    label124:
-    for (int i = 2131690930;; i = 2131720361)
-    {
       paramValueAnimator = paramValueAnimator.getString(i);
-      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString + paramValueAnimator);
-      return;
+      ForwardRecentItemView localForwardRecentItemView = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramValueAnimator);
+      localForwardRecentItemView.setContentDescription(localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ForwardRecentItemView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,21 +15,22 @@ final class ReadInJoyAdReportUtils$2
   {
     Bundle localBundle = new Bundle();
     HttpUtil.addCookie(localBundle);
-    if (!TextUtils.isEmpty(this.a)) {}
-    try
-    {
-      HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), this.a, "GET", null, localBundle);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
+    if (!TextUtils.isEmpty(this.a)) {
+      try
+      {
+        HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), this.a, "GET", null, localBundle);
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.report_action.ReadInJoyAdReportUtils.2
  * JD-Core Version:    0.7.0.1
  */

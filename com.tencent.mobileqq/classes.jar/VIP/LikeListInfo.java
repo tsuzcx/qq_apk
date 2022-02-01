@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class LikeListInfo
   extends JceStruct
@@ -35,17 +36,19 @@ public final class LikeListInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vLikeList != null) {
-      paramJceOutputStream.write(this.vLikeList, 0);
+    Object localObject = this.vLikeList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.stRedInfo != null) {
-      paramJceOutputStream.write(this.stRedInfo, 1);
+    localObject = this.stRedInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.LikeListInfo
  * JD-Core Version:    0.7.0.1
  */

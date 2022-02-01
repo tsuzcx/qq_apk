@@ -87,26 +87,21 @@ public class MsfHttpResp
   {
     this.headers = paramArrayOfHeader;
     int i = paramArrayOfHeader.length - 1;
-    if (i >= 0)
+    while (i >= 0)
     {
       Header localHeader = paramArrayOfHeader[i];
       if (localHeader.getName().equalsIgnoreCase("Transfer-Encoding")) {
         this.transferEncoding = localHeader.getValue();
+      } else if (localHeader.getName().equalsIgnoreCase("Content-Length")) {
+        this.contentLen = Integer.parseInt(localHeader.getValue());
+      } else if (localHeader.getName().equalsIgnoreCase("Connection")) {
+        this.connDirective = localHeader.getValue();
+      } else if (localHeader.getName().equalsIgnoreCase("Content-Encoding")) {
+        this.contentEncoding = localHeader.getValue();
+      } else if (localHeader.getName().equalsIgnoreCase("Content-Type")) {
+        this.contentType = localHeader.getValue();
       }
-      for (;;)
-      {
-        i -= 1;
-        break;
-        if (localHeader.getName().equalsIgnoreCase("Content-Length")) {
-          this.contentLen = Integer.parseInt(localHeader.getValue());
-        } else if (localHeader.getName().equalsIgnoreCase("Connection")) {
-          this.connDirective = localHeader.getValue();
-        } else if (localHeader.getName().equalsIgnoreCase("Content-Encoding")) {
-          this.contentEncoding = localHeader.getValue();
-        } else if (localHeader.getName().equalsIgnoreCase("Content-Type")) {
-          this.contentType = localHeader.getValue();
-        }
-      }
+      i -= 1;
     }
   }
   
@@ -117,12 +112,18 @@ public class MsfHttpResp
   
   public String toString()
   {
-    return getStatusLine() + " contentLen:" + getContentLen() + " transfer:" + this.transferEncoding;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getStatusLine());
+    localStringBuilder.append(" contentLen:");
+    localStringBuilder.append(getContentLen());
+    localStringBuilder.append(" transfer:");
+    localStringBuilder.append(this.transferEncoding);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.MsfHttpResp
  * JD-Core Version:    0.7.0.1
  */

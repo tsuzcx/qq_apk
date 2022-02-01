@@ -30,12 +30,30 @@ public class DownloadParam
   
   public String toString()
   {
-    return "DownloadParam{url='" + this.url + '\'' + ", md5='" + this.md5 + '\'' + ", md5Time=" + this.md5Time + ", isForceUnzip=" + this.isForceUnzip + ", headers=" + this.headers + ", md5ForChecked=" + this.md5ForChecked + ", filePos=" + this.filePos + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DownloadParam{url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", md5='");
+    localStringBuilder.append(this.md5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", md5Time=");
+    localStringBuilder.append(this.md5Time);
+    localStringBuilder.append(", isForceUnzip=");
+    localStringBuilder.append(this.isForceUnzip);
+    localStringBuilder.append(", headers=");
+    localStringBuilder.append(this.headers);
+    localStringBuilder.append(", md5ForChecked=");
+    localStringBuilder.append(this.md5ForChecked);
+    localStringBuilder.append(", filePos=");
+    localStringBuilder.append(this.filePos);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.DownloadParam
  * JD-Core Version:    0.7.0.1
  */

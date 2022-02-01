@@ -24,13 +24,14 @@ public final class ProtocolVideoState$GetRoomVideoInfoReq
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "Uin", "RoomID", "Sig", "RootRoomID", "DstRoomID" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L) }, GetRoomVideoInfoReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "Uin", "RoomID", "Sig", "RootRoomID", "DstRoomID" }, new Object[] { localLong, localLong, localByteStringMicro, localLong, localLong }, GetRoomVideoInfoReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.ProtocolVideoState.GetRoomVideoInfoReq
  * JD-Core Version:    0.7.0.1
  */

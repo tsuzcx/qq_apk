@@ -44,29 +44,33 @@ public class LpReportInfo_dc02216
   
   public String getSimpleInfo()
   {
-    return "dc02216:" + "actiontype:" + this.actiontype + " subactiontype:" + this.subactiontype;
+    StringBuilder localStringBuilder = new StringBuilder("dc02216:");
+    localStringBuilder.append("actiontype:");
+    localStringBuilder.append(this.actiontype);
+    localStringBuilder.append(" subactiontype:");
+    localStringBuilder.append(this.subactiontype);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    if (this.uin != 0L) {
-      localHashMap.put("uin", String.valueOf(this.uin));
-    }
-    for (;;)
-    {
-      localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-      LpReportUtils.safePut(localHashMap, "platform", this.platform);
-      localHashMap.put("actiontype", String.valueOf(this.actiontype));
-      localHashMap.put("subactiontype", String.valueOf(this.subactiontype));
-      return localHashMap;
+    long l = this.uin;
+    if (l != 0L) {
+      localHashMap.put("uin", String.valueOf(l));
+    } else {
       localHashMap.put("uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
     }
+    localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    LpReportUtils.safePut(localHashMap, "platform", this.platform);
+    localHashMap.put("actiontype", String.valueOf(this.actiontype));
+    localHashMap.put("subactiontype", String.valueOf(this.subactiontype));
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc02216
  * JD-Core Version:    0.7.0.1
  */

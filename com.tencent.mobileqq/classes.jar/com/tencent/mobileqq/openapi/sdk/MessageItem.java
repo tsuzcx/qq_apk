@@ -24,12 +24,12 @@ public class MessageItem
   
   static
   {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131706647);
-    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131706646);
-    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131706645);
-    d = HardCodeUtil.a(2131706649);
-    e = HardCodeUtil.a(2131706648);
-    f = HardCodeUtil.a(2131706650);
+    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131706669);
+    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131706668);
+    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131706667);
+    d = HardCodeUtil.a(2131706671);
+    e = HardCodeUtil.a(2131706670);
+    f = HardCodeUtil.a(2131706672);
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "uin", "uin_type", "senderUin", "msg_type", "msgid", "msgTime", "is_send", "msgContent", "media_path", "mediaStatus" };
   }
   
@@ -57,21 +57,30 @@ public class MessageItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(200);
-    localStringBuilder.append(this.g).append("; ");
-    localStringBuilder.append(this.jdField_b_of_type_Int).append("; ");
-    localStringBuilder.append(this.h).append("; ");
-    localStringBuilder.append(this.i).append("; ");
-    localStringBuilder.append(this.jdField_a_of_type_Long).append(";");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean).append("; ");
-    localStringBuilder.append(this.j).append("; ");
-    localStringBuilder.append(this.k).append("; ");
-    localStringBuilder.append(this.jdField_c_of_type_Int).append(". ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(";");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(". ");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.openapi.sdk.MessageItem
  * JD-Core Version:    0.7.0.1
  */

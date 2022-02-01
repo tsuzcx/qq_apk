@@ -23,31 +23,35 @@ final class BottomSelectorLayout$onAttachedToWindow$2
   public final void invoke(@NotNull PanelType paramPanelType)
   {
     Intrinsics.checkParameterIsNotNull(paramPanelType, "panelType");
-    if (paramPanelType == PanelType.EMOJI) {
-      BottomSelectorLayout.a(this.this$0, this.this$0.getTranslationY(), BottomSelectorLayout.a(this.this$0, paramPanelType), false, 4, null);
-    }
-    for (;;)
+    if (paramPanelType == PanelType.EMOJI)
     {
-      paramPanelType = InputMethodUtils.a;
-      Context localContext = this.this$0.getContext();
-      Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      IBinder localIBinder = this.this$0.getWindowToken();
-      Intrinsics.checkExpressionValueIsNotNull(localIBinder, "windowToken");
-      paramPanelType.a(localContext, localIBinder);
-      return;
-      if ((paramPanelType == PanelType.PHOTO) || (paramPanelType == PanelType.VIDEO)) {
-        if (this.this$0.getTranslationY() >= BottomSelectorLayout.a(this.this$0) - this.this$0.a()) {
-          BottomSelectorLayout.a(this.this$0, this.this$0.getTranslationY(), BottomSelectorLayout.a(this.this$0, paramPanelType), false, 4, null);
-        } else {
-          BottomSelectorLayout.a(this.this$0, this.this$0.getTranslationY(), 0.0F, false, 4, null);
-        }
+      localObject = this.this$0;
+      BottomSelectorLayout.a((BottomSelectorLayout)localObject, ((BottomSelectorLayout)localObject).getTranslationY(), BottomSelectorLayout.a(this.this$0, paramPanelType), false, 4, null);
+    }
+    else if ((paramPanelType == PanelType.PHOTO) || (paramPanelType == PanelType.VIDEO))
+    {
+      if (this.this$0.getTranslationY() >= BottomSelectorLayout.a(this.this$0) - this.this$0.a())
+      {
+        localObject = this.this$0;
+        BottomSelectorLayout.a((BottomSelectorLayout)localObject, ((BottomSelectorLayout)localObject).getTranslationY(), BottomSelectorLayout.a(this.this$0, paramPanelType), false, 4, null);
+      }
+      else
+      {
+        paramPanelType = this.this$0;
+        BottomSelectorLayout.a(paramPanelType, paramPanelType.getTranslationY(), 0.0F, false, 4, null);
       }
     }
+    paramPanelType = InputMethodUtils.a;
+    Object localObject = this.this$0.getContext();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
+    IBinder localIBinder = this.this$0.getWindowToken();
+    Intrinsics.checkExpressionValueIsNotNull(localIBinder, "windowToken");
+    paramPanelType.a((Context)localObject, localIBinder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.onAttachedToWindow.2
  * JD-Core Version:    0.7.0.1
  */

@@ -20,57 +20,68 @@ class ZhituManager$DownloadListener
   
   public void onResp(NetResp paramNetResp)
   {
-    Object localObject = this.a.obtainMessage(8);
-    ((Message)localObject).obj = paramNetResp.mReq;
-    this.a.sendMessage((Message)localObject);
+    Object localObject1 = this.a.obtainMessage(8);
+    ((Message)localObject1).obj = paramNetResp.mReq;
+    this.a.sendMessage((Message)localObject1);
     Bundle localBundle = (Bundle)paramNetResp.mReq.getUserData();
-    localObject = localBundle.getString("ReqUniqueKey");
+    localObject1 = localBundle.getString("ReqUniqueKey");
     int i = localBundle.getInt("IdxInRes");
+    Object localObject2;
     if (QLog.isColorLevel())
     {
       long l = localBundle.getLong("StartTs");
-      QLog.d("ZhituManager", 2, ZhituManager.a((String)localObject, "onResp", i, " zhitu img download onResp result fileSize = " + paramNetResp.mTotalFileLen + " file.path = " + paramNetResp.mReq.mOutPath + " resp.result = " + paramNetResp.mResult + " take time: " + Long.toString(System.currentTimeMillis() - l)));
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" zhitu img download onResp result fileSize = ");
+      ((StringBuilder)localObject2).append(paramNetResp.mTotalFileLen);
+      ((StringBuilder)localObject2).append(" file.path = ");
+      ((StringBuilder)localObject2).append(paramNetResp.mReq.mOutPath);
+      ((StringBuilder)localObject2).append(" resp.result = ");
+      ((StringBuilder)localObject2).append(paramNetResp.mResult);
+      ((StringBuilder)localObject2).append(" take time: ");
+      ((StringBuilder)localObject2).append(Long.toString(System.currentTimeMillis() - l));
+      QLog.d("ZhituManager", 2, ZhituManager.a((String)localObject1, "onResp", i, ((StringBuilder)localObject2).toString()));
     }
     if (paramNetResp.mResult == 3)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, ZhituManager.a((String)localObject, "OnResp", i, "result downloading, "));
+        QLog.d("ZhituManager", 2, ZhituManager.a((String)localObject1, "OnResp", i, "result downloading, "));
       }
       return;
     }
     if (paramNetResp.mResult == 0)
     {
-      ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
+      localObject2 = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
       ZhituManager.a(paramNetResp.mReq.mOutPath);
-      if (localZhituImgResponse != null)
+      if (localObject2 != null)
       {
         paramNetResp = this.a.obtainMessage(3);
         paramNetResp.obj = localBundle;
-        this.a.sendMessage(paramNetResp);
-        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, ZhituManager.a((String)localObject, "onResp", "download succ but md5 is mismatched"));
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ZhituManager", 2, ZhituManager.a((String)localObject1, "onResp", "download succ but md5 is mismatched"));
+        }
+        paramNetResp = this.a.obtainMessage(4);
+        localBundle.putInt("ErrorCode", 99999);
+        paramNetResp.obj = localBundle;
       }
-      paramNetResp = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", 99999);
-      paramNetResp.obj = localBundle;
     }
-    for (;;)
+    else
     {
-      break;
-      localObject = this.a.obtainMessage(4);
+      localObject1 = this.a.obtainMessage(4);
       localBundle.putInt("ErrorCode", paramNetResp.mErrCode);
-      ((Message)localObject).obj = localBundle;
-      paramNetResp = (NetResp)localObject;
+      ((Message)localObject1).obj = localBundle;
+      paramNetResp = (NetResp)localObject1;
     }
+    this.a.sendMessage(paramNetResp);
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager.DownloadListener
  * JD-Core Version:    0.7.0.1
  */

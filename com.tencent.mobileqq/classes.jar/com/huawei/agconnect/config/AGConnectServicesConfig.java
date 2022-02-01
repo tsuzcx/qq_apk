@@ -1,7 +1,7 @@
 package com.huawei.agconnect.config;
 
 import android.content.Context;
-import com.huawei.agconnect.config.a.a;
+import com.huawei.agconnect.config.a.c;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,12 +14,10 @@ public abstract class AGConnectServicesConfig
   public static AGConnectServicesConfig fromContext(Context paramContext)
   {
     Context localContext = paramContext.getApplicationContext();
-    if (localContext == null) {}
-    for (;;)
-    {
-      return fromContext(paramContext, paramContext.getPackageName());
+    if (localContext != null) {
       paramContext = localContext;
     }
+    return fromContext(paramContext, paramContext.getPackageName());
   }
   
   public static AGConnectServicesConfig fromContext(Context paramContext, String paramString)
@@ -30,7 +28,7 @@ public abstract class AGConnectServicesConfig
       Object localObject1 = localAGConnectServicesConfig;
       if (localAGConnectServicesConfig == null)
       {
-        localObject1 = new a(paramContext, paramString);
+        localObject1 = new c(paramContext, paramString);
         INSTANCES.put(paramString, localObject1);
       }
       return localObject1;
@@ -52,6 +50,8 @@ public abstract class AGConnectServicesConfig
   public abstract void overlayWith(LazyInputStream paramLazyInputStream);
   
   public abstract void overlayWith(InputStream paramInputStream);
+  
+  public abstract void setParam(String paramString1, String paramString2);
 }
 
 

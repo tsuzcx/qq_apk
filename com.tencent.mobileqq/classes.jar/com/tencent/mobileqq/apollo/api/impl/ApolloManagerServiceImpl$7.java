@@ -1,57 +1,56 @@
 package com.tencent.mobileqq.apollo.api.impl;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloListenerManager;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.aio.api.impl.CmShowAioMatcherImpl;
+import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
+import com.tencent.mobileqq.apollo.handler.ApolloRequest;
+import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.qphone.base.util.QLog;
 
 class ApolloManagerServiceImpl$7
-  extends DownloadListener
+  implements Runnable
 {
-  ApolloManagerServiceImpl$7(ApolloManagerServiceImpl paramApolloManagerServiceImpl) {}
+  ApolloManagerServiceImpl$7(ApolloManagerServiceImpl paramApolloManagerServiceImpl, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, "download panel json done httpCode: " + paramDownloadTask.f + ", status: " + paramDownloadTask.a());
-    }
-  }
-  
-  public void onDoneFile(DownloadTask paramDownloadTask)
-  {
-    if (paramDownloadTask == null) {}
-    Bundle localBundle;
-    do
-    {
-      return;
-      localBundle = paramDownloadTask.a();
-    } while (localBundle == null);
-    int i = localBundle.getInt(paramDownloadTask.c);
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, "[onDoneFile], taskType:" + i + ",httpCode: " + paramDownloadTask.f + ", status: " + paramDownloadTask.a() + ",task.currUrl:" + paramDownloadTask.c);
-    }
-    if (1 == i) {}
     try
     {
-      super.onDone(paramDownloadTask);
-      if (paramDownloadTask.a() != 3) {
-        this.a.mListenerManager.a(Boolean.valueOf(false));
+      AppInterface localAppInterface = ApolloManagerServiceImpl.access$200(this.this$0);
+      if (localAppInterface == null) {
+        return;
       }
-      this.a.parseActionPanelJSon();
-      VipUtils.a(ApolloManagerServiceImpl.access$300(this.a), "cmshow", "Apollo", "json_download_success", 0, 0, new String[0]);
+      if (CmShowAioMatcherImpl.judgeSupported(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1))
+      {
+        this.this$0.checkUserDress(localAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "C2CAIO");
+        if ((CmShowWnsUtils.j()) && (!StudyModeManager.a())) {
+          ApolloRequest.a(localAppInterface, 4021);
+        }
+      }
+      else if (CmShowAioMatcherImpl.judgeSupported(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 2))
+      {
+        this.this$0.bulkUpdateUserDress();
+        if ((CmShowWnsUtils.k()) && (!StudyModeManager.a())) {
+          ApolloRequest.a(localAppInterface, 4022);
+        }
+      }
+      ApolloMsgPlayController.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       return;
     }
-    catch (Exception paramDownloadTask)
+    catch (Exception localException)
     {
-      QLog.e("ApolloManager", 1, "read apollo panel json content fail", paramDownloadTask);
+      if (QLog.isColorLevel()) {
+        QLog.e("[cmshow]ApolloManager", 2, "doAfterOpenAIO error", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl.7
  * JD-Core Version:    0.7.0.1
  */

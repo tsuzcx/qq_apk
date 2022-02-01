@@ -33,16 +33,19 @@ public class QikuRomUtils
   
   private static boolean isIntentAvailable(Intent paramIntent, Context paramContext)
   {
-    if (paramIntent == null) {}
-    while (paramContext.getPackageManager().queryIntentActivities(paramIntent, 65536).size() <= 0) {
+    boolean bool = false;
+    if (paramIntent == null) {
       return false;
     }
-    return true;
+    if (paramContext.getPackageManager().queryIntentActivities(paramIntent, 65536).size() > 0) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.permission.romutils.QikuRomUtils
  * JD-Core Version:    0.7.0.1
  */

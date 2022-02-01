@@ -11,12 +11,14 @@ public class fd<T>
   protected fd()
   {
     Type localType = getClass().getGenericSuperclass();
-    if ((localType instanceof Class)) {
-      throw new RuntimeException("Missing type parameter.");
+    if (!(localType instanceof Class))
+    {
+      this.b = eh.a(((java.lang.reflect.ParameterizedType)localType).getActualTypeArguments()[0]);
+      this.a = eh.b(this.b);
+      this.c = this.b.hashCode();
+      return;
     }
-    this.b = eh.a(((java.lang.reflect.ParameterizedType)localType).getActualTypeArguments()[0]);
-    this.a = eh.b(this.b);
-    this.c = this.b.hashCode();
+    throw new RuntimeException("Missing type parameter.");
   }
   
   private fd(Type paramType)
@@ -53,7 +55,7 @@ public class fd<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.fd
  * JD-Core Version:    0.7.0.1
  */

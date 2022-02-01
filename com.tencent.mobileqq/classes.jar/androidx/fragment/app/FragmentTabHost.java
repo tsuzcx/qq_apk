@@ -58,26 +58,25 @@ public class FragmentTabHost
       if (paramFragmentTransaction == null) {
         paramString = this.mFragmentManager.beginTransaction();
       }
-      if ((this.mLastTab != null) && (this.mLastTab.fragment != null)) {
+      paramFragmentTransaction = this.mLastTab;
+      if ((paramFragmentTransaction != null) && (paramFragmentTransaction.fragment != null)) {
         paramString.detach(this.mLastTab.fragment);
       }
-      if (localTabInfo != null)
-      {
-        if (localTabInfo.fragment != null) {
-          break label133;
+      if (localTabInfo != null) {
+        if (localTabInfo.fragment == null)
+        {
+          localTabInfo.fragment = this.mFragmentManager.getFragmentFactory().instantiate(this.mContext.getClassLoader(), localTabInfo.clss.getName());
+          localTabInfo.fragment.setArguments(localTabInfo.args);
+          paramString.add(this.mContainerId, localTabInfo.fragment, localTabInfo.tag);
         }
-        localTabInfo.fragment = this.mFragmentManager.getFragmentFactory().instantiate(this.mContext.getClassLoader(), localTabInfo.clss.getName());
-        localTabInfo.fragment.setArguments(localTabInfo.args);
-        paramString.add(this.mContainerId, localTabInfo.fragment, localTabInfo.tag);
+        else
+        {
+          paramString.attach(localTabInfo.fragment);
+        }
       }
-    }
-    for (;;)
-    {
       this.mLastTab = localTabInfo;
-      return paramString;
-      label133:
-      paramString.attach(localTabInfo.fragment);
     }
+    return paramString;
   }
   
   private void ensureContent()
@@ -85,9 +84,13 @@ public class FragmentTabHost
     if (this.mRealTabContent == null)
     {
       this.mRealTabContent = ((FrameLayout)findViewById(this.mContainerId));
-      if (this.mRealTabContent == null) {
-        throw new IllegalStateException("No tab content FrameLayout found for id " + this.mContainerId);
+      if (this.mRealTabContent != null) {
+        return;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("No tab content FrameLayout found for id ");
+      localStringBuilder.append(this.mContainerId);
+      throw new IllegalStateException(localStringBuilder.toString());
     }
   }
   
@@ -157,14 +160,14 @@ public class FragmentTabHost
   }
   
   @Deprecated
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     String str = getCurrentTabTag();
-    Object localObject1 = null;
     int j = this.mTabs.size();
+    Object localObject1 = null;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       FragmentTabHost.TabInfo localTabInfo = (FragmentTabHost.TabInfo)this.mTabs.get(i);
       localTabInfo.fragment = this.mFragmentManager.findFragmentByTag(localTabInfo.tag);
@@ -172,27 +175,24 @@ public class FragmentTabHost
       if (localTabInfo.fragment != null)
       {
         localObject2 = localObject1;
-        if (!localTabInfo.fragment.isDetached())
-        {
-          if (!localTabInfo.tag.equals(str)) {
-            break label114;
+        if (!localTabInfo.fragment.isDetached()) {
+          if (localTabInfo.tag.equals(str))
+          {
+            this.mLastTab = localTabInfo;
+            localObject2 = localObject1;
           }
-          this.mLastTab = localTabInfo;
-          localObject2 = localObject1;
+          else
+          {
+            localObject2 = localObject1;
+            if (localObject1 == null) {
+              localObject2 = this.mFragmentManager.beginTransaction();
+            }
+            ((FragmentTransaction)localObject2).detach(localTabInfo.fragment);
+          }
         }
       }
-      for (;;)
-      {
-        i += 1;
-        localObject1 = localObject2;
-        break;
-        label114:
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = this.mFragmentManager.beginTransaction();
-        }
-        ((FragmentTransaction)localObject2).detach(localTabInfo.fragment);
-      }
+      i += 1;
+      localObject1 = localObject2;
     }
     this.mAttached = true;
     localObject1 = doTabChanged(str, (FragmentTransaction)localObject1);
@@ -204,14 +204,14 @@ public class FragmentTabHost
   }
   
   @Deprecated
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.mAttached = false;
   }
   
   @Deprecated
-  public void onRestoreInstanceState(@SuppressLint({"UnknownNullness"}) Parcelable paramParcelable)
+  protected void onRestoreInstanceState(@SuppressLint({"UnknownNullness"}) Parcelable paramParcelable)
   {
     if (!(paramParcelable instanceof FragmentTabHost.SavedState))
     {
@@ -225,7 +225,7 @@ public class FragmentTabHost
   
   @Deprecated
   @NonNull
-  public Parcelable onSaveInstanceState()
+  protected Parcelable onSaveInstanceState()
   {
     FragmentTabHost.SavedState localSavedState = new FragmentTabHost.SavedState(super.onSaveInstanceState());
     localSavedState.curTab = getCurrentTabTag();
@@ -237,13 +237,14 @@ public class FragmentTabHost
   {
     if (this.mAttached)
     {
-      FragmentTransaction localFragmentTransaction = doTabChanged(paramString, null);
-      if (localFragmentTransaction != null) {
-        localFragmentTransaction.commit();
+      localObject = doTabChanged(paramString, null);
+      if (localObject != null) {
+        ((FragmentTransaction)localObject).commit();
       }
     }
-    if (this.mOnTabChangeListener != null) {
-      this.mOnTabChangeListener.onTabChanged(paramString);
+    Object localObject = this.mOnTabChangeListener;
+    if (localObject != null) {
+      ((TabHost.OnTabChangeListener)localObject).onTabChanged(paramString);
     }
   }
   
@@ -286,7 +287,7 @@ public class FragmentTabHost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentTabHost
  * JD-Core Version:    0.7.0.1
  */

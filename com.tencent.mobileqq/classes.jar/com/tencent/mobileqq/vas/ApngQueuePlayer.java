@@ -36,11 +36,10 @@ public class ApngQueuePlayer
     Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
     if (localDrawable != null)
     {
-      localObject = localDrawable;
       if ((localDrawable instanceof URLDrawable)) {
-        localObject = ((URLDrawable)localDrawable).getCurrDrawable();
+        return ((URLDrawable)localDrawable).getCurrDrawable();
       }
-      return localObject;
+      localObject = localDrawable;
     }
     return localObject;
   }
@@ -48,22 +47,22 @@ public class ApngQueuePlayer
   private void b()
   {
     Object localObject = (ApngQueuePlayer.DrawableBuilder)this.jdField_a_of_type_JavaUtilArrayDeque.poll();
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    do
+    if (localObject == null)
     {
+      this.jdField_a_of_type_Boolean = true;
       return;
-      this.jdField_a_of_type_Boolean = false;
-      localObject = ((ApngQueuePlayer.DrawableBuilder)localObject).a(a());
-      if (((URLDrawable)localObject).getStatus() == 1)
-      {
-        b();
-        return;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    } while ((this.jdField_a_of_type_AndroidWidgetImageView instanceof URLImageView));
-    ((URLDrawable)localObject).setURLDrawableListener(this);
+    }
+    this.jdField_a_of_type_Boolean = false;
+    localObject = ((ApngQueuePlayer.DrawableBuilder)localObject).a(a());
+    if (((URLDrawable)localObject).getStatus() == 1)
+    {
+      b();
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    if (!(this.jdField_a_of_type_AndroidWidgetImageView instanceof URLImageView)) {
+      ((URLDrawable)localObject).setURLDrawableListener(this);
+    }
   }
   
   public void a()
@@ -113,7 +112,7 @@ public class ApngQueuePlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ApngQueuePlayer
  * JD-Core Version:    0.7.0.1
  */

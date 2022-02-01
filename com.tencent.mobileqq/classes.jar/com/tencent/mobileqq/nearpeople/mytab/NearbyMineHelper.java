@@ -4,16 +4,16 @@ import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.NearbyHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.mobileqq.nearby.NearbyConstants;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
 import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.api.IRedTouchServer;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedDisplayInfo;
@@ -27,6 +27,7 @@ public class NearbyMineHelper
 {
   private static Object a;
   public static final HashMap a;
+  public static boolean a = false;
   public static final String[] a;
   
   static
@@ -71,26 +72,18 @@ public class NearbyMineHelper
       return 0;
     }
     int i;
-    switch (paramInt)
+    int j;
+    if (paramInt != 100511)
     {
-    default: 
-      i = 0;
-    case 100511: 
-    case 100519: 
-      for (;;)
+      if (paramInt != 100517)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("NewNearbyMyTab", 2, "getUnCountByPathID|pathId=" + paramInt + " unreadCount=" + i);
-        }
-        return i;
-        j = NearbySPUtil.a(paramQQAppInterface.getAccount(), "unread_count_date");
-        i = j;
-        if (QLog.isColorLevel())
+        if (paramInt != 100519)
         {
-          NearbyUtils.a(2, "NearbyMineHelper", "getUnCountByPathIDMain", new Object[] { "dating", Integer.valueOf(j) });
-          i = j;
-          continue;
-          j = NearbySPUtil.a(paramQQAppInterface.getAccount(), "unread_count_freshnews");
+          i = 0;
+        }
+        else
+        {
+          j = ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getUnreadCount(paramQQAppInterface.getAccount(), "unread_count_freshnews");
           i = j;
           if (QLog.isColorLevel())
           {
@@ -99,59 +92,88 @@ public class NearbyMineHelper
           }
         }
       }
-    }
-    if (NearbySPUtil.a(paramQQAppInterface.getAccount(), "unread_count_rank") > 0) {}
-    for (int j = 1;; j = 0)
-    {
-      i = j;
-      if (!QLog.isColorLevel()) {
-        break;
+      else
+      {
+        if (((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getUnreadCount(paramQQAppInterface.getAccount(), "unread_count_rank") > 0) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          NearbyUtils.a(2, "NearbyMineHelper", "getUnCountByPathIDMain", new Object[] { "ranking", Integer.valueOf(j) });
+          i = j;
+        }
       }
-      NearbyUtils.a(2, "NearbyMineHelper", "getUnCountByPathIDMain", new Object[] { "ranking", Integer.valueOf(j) });
-      i = j;
-      break;
     }
+    else
+    {
+      j = ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getUnreadCount(paramQQAppInterface.getAccount(), "unread_count_date");
+      i = j;
+      if (QLog.isColorLevel())
+      {
+        NearbyUtils.a(2, "NearbyMineHelper", "getUnCountByPathIDMain", new Object[] { "dating", Integer.valueOf(j) });
+        i = j;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("getUnCountByPathID|pathId=");
+      paramQQAppInterface.append(paramInt);
+      paramQQAppInterface.append(" unreadCount=");
+      paramQQAppInterface.append(i);
+      QLog.i("NewNearbyMyTab", 2, paramQQAppInterface.toString());
+    }
+    return i;
   }
   
   public static NearbyMyTabCard a(AppInterface paramAppInterface)
   {
+    Object localObject1 = null;
     if (paramAppInterface == null) {
       return null;
     }
     Class[] arrayOfClass = new Class[1];
     arrayOfClass[0] = Object.class;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(paramAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject3).append("NewNearbyMyTab.nbr");
+      localObject3 = FileUtils.readObjectList(((StringBuilder)localObject3).toString(), arrayOfClass);
+      paramAppInterface = localObject1;
+      if (localObject3 != null)
+      {
+        paramAppInterface = localObject1;
+        if (localObject3.length == arrayOfClass.length) {
+          paramAppInterface = (NearbyMyTabCard)localObject3[0];
+        }
+      }
+      if ((paramAppInterface != null) && (paramAppInterface.configList != null))
+      {
+        int i = 0;
+        while (i < paramAppInterface.configList.size())
+        {
+          if (((NearbyMyTabCard.NearbyMyTabConfig)paramAppInterface.configList.get(i)).configId == 10001)
+          {
+            paramAppInterface.configList.remove(i);
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("Q.nearby", 2, "handleGetNearbyMyTab|shield date entrance");
+            break;
+          }
+          i += 1;
+        }
+      }
+      NearbyUtils.a("Q.nearby", "readNearbyMyTabCardFromLocal", new Object[] { paramAppInterface });
+      return paramAppInterface;
+    }
     for (;;)
     {
-      int i;
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        paramAppInterface = FileUtils.a(paramAppInterface.getCurrentAccountUin() + "NewNearbyMyTab.nbr", arrayOfClass);
-        if ((paramAppInterface == null) || (paramAppInterface.length != arrayOfClass.length)) {
-          break label171;
-        }
-        paramAppInterface = (NearbyMyTabCard)paramAppInterface[0];
-        if ((paramAppInterface != null) && (paramAppInterface.configList != null))
-        {
-          i = 0;
-          if (i < paramAppInterface.configList.size())
-          {
-            if (((NearbyMyTabCard.NearbyMyTabConfig)paramAppInterface.configList.get(i)).configId != 10001) {
-              break label164;
-            }
-            paramAppInterface.configList.remove(i);
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.nearby", 2, "handleGetNearbyMyTab|shield date entrance");
-            }
-          }
-        }
-        NearbyUtils.a("Q.nearby", "readNearbyMyTabCardFromLocal", new Object[] { paramAppInterface });
-        return paramAppInterface;
-      }
-      label164:
-      i += 1;
-      continue;
-      label171:
-      paramAppInterface = null;
+      throw paramAppInterface;
     }
   }
   
@@ -202,9 +224,9 @@ public class NearbyMineHelper
     paramString1 = a(paramInt1, paramInt2, paramString1, paramString2);
     if ((paramBoolean) && ((paramAppInterface instanceof QQAppInterface)))
     {
-      paramAppInterface = (RedTouchManager)paramAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
+      paramAppInterface = (IRedTouchManager)paramAppInterface.getRuntimeService(IRedTouchManager.class, "");
       if (paramAppInterface != null) {
-        paramAppInterface.a(paramString1, true);
+        paramAppInterface.updateAppInfo(paramString1, true);
       }
     }
     return paramString1;
@@ -215,225 +237,290 @@ public class NearbyMineHelper
     if (QLog.isColorLevel()) {
       QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo main. start");
     }
-    RedTouchManager localRedTouchManager = (RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
-    if ((!localRedTouchManager.a) || (!localRedTouchManager.b(100510)))
+    IRedTouchManager localIRedTouchManager = (IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+    if ((jdField_a_of_type_Boolean) && (localIRedTouchManager.isNumRedTouchEnable(100510)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo main. return");
+      int i;
+      if (((Boolean)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramQQAppInterface.getAccount(), "nearby_event_file", 4, "config_show_date", Boolean.valueOf(false))).booleanValue()) {
+        i = a(paramQQAppInterface, 100511) + 0;
+      } else {
+        i = 0;
       }
-      return null;
-    }
-    if (((Boolean)NearbySPUtil.a(paramQQAppInterface.getAccount(), "nearby_event_file", 4, "config_show_date", Boolean.valueOf(false))).booleanValue()) {}
-    for (int i = a(paramQQAppInterface, 100511) + 0;; i = 0)
-    {
       int j = i;
-      if (((Boolean)NearbySPUtil.a(paramQQAppInterface.getAccount(), "nearby_event_file", 4, "config_show_rank", Boolean.valueOf(false))).booleanValue()) {
+      if (((Boolean)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramQQAppInterface.getAccount(), "nearby_event_file", 4, "config_show_rank", Boolean.valueOf(false))).booleanValue()) {
         j = i + a(paramQQAppInterface, 100517);
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo main. count:" + j);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("updateNearbyNumAppinfo main. count:");
+        localStringBuilder1.append(j);
+        QLog.i("NewNearbyMyTab", 2, localStringBuilder1.toString());
       }
       if (j > 0)
       {
-        paramQQAppInterface = localRedTouchManager.a(String.valueOf(100510));
-        if ((paramQQAppInterface != null) && (paramQQAppInterface.red_display_info != null) && (paramQQAppInterface.red_display_info.red_type_info != null) && (paramQQAppInterface.red_display_info.red_type_info.size() == 2) && (paramQQAppInterface.red_display_info.red_type_info.get(1) != null)) {}
-        for (;;)
-        {
+        paramQQAppInterface = localIRedTouchManager.getAppInfoByPath(String.valueOf(100510));
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.red_display_info != null) && (paramQQAppInterface.red_display_info.red_type_info != null) && (paramQQAppInterface.red_display_info.red_type_info.size() == 2) && (paramQQAppInterface.red_display_info.red_type_info.get(1) != null)) {
           try
           {
             i = Integer.parseInt(((BusinessInfoCheckUpdate.RedTypeInfo)paramQQAppInterface.red_display_info.red_type_info.get(1)).red_content.get());
-            if (i == j) {
-              break;
-            }
-            return localRedTouchManager.a(0, 100510, String.valueOf(100510), j);
           }
           catch (Exception localException)
           {
             localException.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.d("NewNearbyMyTab", 2, "get cache redpoint failed, e = " + localException);
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder2 = new StringBuilder();
+              localStringBuilder2.append("get cache redpoint failed, e = ");
+              localStringBuilder2.append(localException);
+              QLog.d("NewNearbyMyTab", 2, localStringBuilder2.toString());
             }
           }
+        } else {
           i = 0;
         }
-        return paramQQAppInterface;
+        if (i != j) {
+          return localIRedTouchManager.createNumAppInfo(0, 100510, String.valueOf(100510), j);
+        }
       }
-      BusinessInfoCheckUpdate.AppInfo localAppInfo = localRedTouchManager.a("100510");
-      if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1) && (localAppInfo.type.get() == 5))
+      else
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo Main, old is num, clear.");
+        BusinessInfoCheckUpdate.AppInfo localAppInfo = localIRedTouchManager.getAppInfoByPath("100510");
+        if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1) && (localAppInfo.type.get() == 5))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo Main, old is num, clear.");
+          }
+          localIRedTouchManager.onRedTouchItemClick(String.valueOf(100510));
+          if (paramBoolean) {
+            ((IRedTouchServer)paramQQAppInterface.getRuntimeService(IRedTouchServer.class, "")).notifyRedTouchUpdate(paramQQAppInterface);
+          }
         }
-        localRedTouchManager.b(String.valueOf(100510));
-        if (paramBoolean) {
-          ((IRedTouchServer)paramQQAppInterface.getRuntimeService(IRedTouchServer.class, "")).notifyRedTouchUpdate(paramQQAppInterface);
-        }
+        paramQQAppInterface = localAppInfo;
       }
-      return localAppInfo;
+      return paramQQAppInterface;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo main. return");
+    }
+    return null;
   }
   
   public static BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, Object[] paramArrayOfObject)
   {
-    if ((paramQQAppInterface == null) || (paramArrayOfObject == null) || (paramArrayOfObject.length != 2)) {
-      paramQQAppInterface = null;
-    }
-    int i1;
-    String str;
-    int i;
-    do
+    if ((paramQQAppInterface != null) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
     {
-      return paramQQAppInterface;
-      i1 = ((Integer)paramArrayOfObject[0]).intValue();
-      str = (String)paramArrayOfObject[1];
-      localObject3 = (RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
+      int i1 = ((Integer)paramArrayOfObject[0]).intValue();
+      String str = (String)paramArrayOfObject[1];
+      IRedTouchManager localIRedTouchManager = (IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+      Object localObject1 = "";
       int m = 0;
-      paramArrayOfObject = "";
-      i = 0;
+      int j = 0;
       int k = 0;
-      if (k < jdField_a_of_type_ArrayOfJavaLangString.length)
+      for (;;)
       {
-        int i2 = Integer.parseInt(jdField_a_of_type_ArrayOfJavaLangString[k].substring(jdField_a_of_type_ArrayOfJavaLangString[k].lastIndexOf(".") + 1));
-        Object localObject1 = ((RedTouchManager)localObject3).a(jdField_a_of_type_ArrayOfJavaLangString[k]);
-        int n = 0;
-        int j = n;
-        if (((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info != null)
+        paramArrayOfObject = jdField_a_of_type_ArrayOfJavaLangString;
+        if (j >= paramArrayOfObject.length) {
+          break;
+        }
+        int i2 = Integer.parseInt(paramArrayOfObject[j].substring(paramArrayOfObject[j].lastIndexOf(".") + 1));
+        Object localObject2 = localIRedTouchManager.getAppInfoByPath(jdField_a_of_type_ArrayOfJavaLangString[j]);
+        if ((((BusinessInfoCheckUpdate.AppInfo)localObject2).red_display_info != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject2).red_display_info.red_type_info != null))
         {
-          j = n;
-          if (((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info != null)
+          paramArrayOfObject = ((BusinessInfoCheckUpdate.AppInfo)localObject2).red_display_info.red_type_info.get();
+          if ((paramArrayOfObject != null) && (paramArrayOfObject.size() >= 2))
           {
-            List localList = ((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.get();
-            j = n;
-            if (localList != null)
-            {
-              j = n;
-              if (localList.size() >= 2) {
-                j = ((BusinessInfoCheckUpdate.RedTypeInfo)localList.get(1)).red_type.get();
-              }
-            }
+            i = ((BusinessInfoCheckUpdate.RedTypeInfo)paramArrayOfObject.get(1)).red_type.get();
+            break label177;
           }
         }
-        n = j;
+        int i = 0;
+        label177:
+        int n = i;
         if (i2 == 100524)
         {
-          n = j;
-          if (j == 4) {
+          n = i;
+          if (i == 4) {
             n = 0;
           }
         }
-        if ((n == 4) && (((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.get() != 0)) {
-          m = 1;
-        }
-        for (;;)
+        if ((n == 4) && (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() != 0))
         {
-          for (;;)
+          try
           {
-            try
+            localObject2 = ((BusinessInfoCheckUpdate.RedTypeInfo)((BusinessInfoCheckUpdate.AppInfo)localObject2).red_display_info.red_type_info.get(1)).red_content.get();
+            localObject1 = localObject2;
+            paramArrayOfObject = (Object[])localObject2;
+            if (QLog.isColorLevel())
             {
-              localObject1 = ((BusinessInfoCheckUpdate.RedTypeInfo)((BusinessInfoCheckUpdate.AppInfo)localObject1).red_display_info.red_type_info.get(1)).red_content.get();
+              localObject1 = localObject2;
+              paramArrayOfObject = new StringBuilder();
+              localObject1 = localObject2;
+              paramArrayOfObject.append("buildRedTouchAppInfo| pathId=");
+              localObject1 = localObject2;
+              paramArrayOfObject.append(i2);
+              localObject1 = localObject2;
+              paramArrayOfObject.append(" redTouchType=RED_TOUCH_TEXT text=");
+              localObject1 = localObject2;
+              paramArrayOfObject.append((String)localObject2);
+              localObject1 = localObject2;
+              QLog.d("NewNearbyMyTab", 2, paramArrayOfObject.toString());
+              paramArrayOfObject = (Object[])localObject2;
+            }
+          }
+          catch (Exception localException)
+          {
+            paramArrayOfObject = (Object[])localObject1;
+            if (QLog.isColorLevel())
+            {
+              paramArrayOfObject = new StringBuilder();
+              paramArrayOfObject.append("buildRedTouchAppInfo| exception=");
+              paramArrayOfObject.append(localException.getMessage());
+              QLog.d("NewNearbyMyTab", 2, paramArrayOfObject.toString());
               paramArrayOfObject = (Object[])localObject1;
             }
-            catch (Exception localException2)
+          }
+          i = 1;
+          n = k;
+        }
+        else
+        {
+          if ((n == 0) && (localException.iNewFlag.get() != 0)) {
+            if (QLog.isColorLevel())
             {
-              Object localObject2;
-              continue;
-              continue;
+              paramArrayOfObject = new StringBuilder();
+              paramArrayOfObject.append("buildRedTouchAppInfo| pathId=");
+              paramArrayOfObject.append(i2);
+              paramArrayOfObject.append(" redTouchType=RED_TOUCH_RED_POINT text=");
+              paramArrayOfObject.append((String)localObject1);
+              QLog.d("NewNearbyMyTab", 2, paramArrayOfObject.toString());
             }
-            try
+          }
+          for (;;)
+          {
+            n = 1;
+            i = m;
+            paramArrayOfObject = (Object[])localObject1;
+            break;
+            i = m;
+            n = k;
+            paramArrayOfObject = (Object[])localObject1;
+            if (i2 != 100523) {
+              break;
+            }
+            i = m;
+            n = k;
+            paramArrayOfObject = (Object[])localObject1;
+            if (localException.iNewFlag.get() == 0) {
+              break;
+            }
+            if (QLog.isColorLevel())
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("NewNearbyMyTab", 2, "buildRedTouchAppInfo| pathId=" + i2 + " redTouchType=RED_TOUCH_TEXT text=" + paramArrayOfObject);
-              }
-              k += 1;
+              paramArrayOfObject = new StringBuilder();
+              paramArrayOfObject.append("buildRedTouchAppInfo| pathId=");
+              paramArrayOfObject.append(i2);
+              paramArrayOfObject.append(", UIAPPID_NEARBY_VISITOR RED_TOUCH");
+              QLog.d("NewNearbyMyTab", 2, paramArrayOfObject.toString());
             }
-            catch (Exception localException1) {}
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("NewNearbyMyTab", 2, "buildRedTouchAppInfo| exception=" + localException1.getMessage());
-          }
-          continue;
-          if ((n == 0) && (localException1.iNewFlag.get() != 0))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("NewNearbyMyTab", 2, "buildRedTouchAppInfo| pathId=" + i2 + " redTouchType=RED_TOUCH_RED_POINT text=" + paramArrayOfObject);
-            }
-            i = 1;
-          }
-          else
-          {
-            if ((i2 != 100523) || (localException1.iNewFlag.get() == 0)) {
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("NewNearbyMyTab", 2, "buildRedTouchAppInfo| pathId=" + i2 + ", UIAPPID_NEARBY_VISITOR RED_TOUCH");
-            }
-            i = 1;
           }
         }
+        j += 1;
+        m = i;
+        k = n;
+        localObject1 = paramArrayOfObject;
       }
-      if (m == 0) {
-        break;
-      }
-      localObject2 = a(paramQQAppInterface, 4, i1, str, paramArrayOfObject + "", true);
-      paramQQAppInterface = (QQAppInterface)localObject2;
-    } while (!QLog.isColorLevel());
-    Object localObject3 = new StringBuilder().append("buildRedTouchAppInfo| path=").append(str).append(" redTouchType=");
-    if (localObject2 != null) {}
-    for (paramQQAppInterface = ((BusinessInfoCheckUpdate.AppInfo)localObject2).type.get() + "";; paramQQAppInterface = "-1")
-    {
-      QLog.d("NewNearbyMyTab", 2, paramQQAppInterface + " count=" + 0 + " text=" + paramArrayOfObject);
-      return localObject2;
-      if (i != 0)
+      Object localObject3;
+      if (m != 0)
       {
-        localObject2 = a(paramQQAppInterface, 0, i1, str, "", true);
-        break;
+        paramArrayOfObject = new StringBuilder();
+        paramArrayOfObject.append((String)localObject1);
+        paramArrayOfObject.append("");
+        paramArrayOfObject = a(paramQQAppInterface, 4, i1, str, paramArrayOfObject.toString(), true);
       }
-      localObject3 = ((RedTouchManager)localObject3).a(str);
-      if (localObject3 != null)
+      else if (k != 0)
       {
-        localObject2 = localObject3;
-        if (((BusinessInfoCheckUpdate.AppInfo)localObject3).type.get() == -1) {
-          break;
+        paramArrayOfObject = a(paramQQAppInterface, 0, i1, str, "", true);
+      }
+      else
+      {
+        localObject3 = localIRedTouchManager.getAppInfoByPath(str);
+        if (localObject3 != null)
+        {
+          paramArrayOfObject = (Object[])localObject3;
+          if (((BusinessInfoCheckUpdate.AppInfo)localObject3).type.get() == -1) {}
+        }
+        else
+        {
+          paramArrayOfObject = a(paramQQAppInterface, -1, i1, str, "", true);
         }
       }
-      localObject2 = a(paramQQAppInterface, -1, i1, str, "", true);
-      break;
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("buildRedTouchAppInfo| path=");
+        ((StringBuilder)localObject3).append(str);
+        ((StringBuilder)localObject3).append(" redTouchType=");
+        if (paramArrayOfObject != null)
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append(paramArrayOfObject.type.get());
+          paramQQAppInterface.append("");
+          paramQQAppInterface = paramQQAppInterface.toString();
+        }
+        else
+        {
+          paramQQAppInterface = "-1";
+        }
+        ((StringBuilder)localObject3).append(paramQQAppInterface);
+        ((StringBuilder)localObject3).append(" count=");
+        ((StringBuilder)localObject3).append(0);
+        ((StringBuilder)localObject3).append(" text=");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        QLog.d("NewNearbyMyTab", 2, ((StringBuilder)localObject3).toString());
+      }
+      return paramArrayOfObject;
     }
+    return null;
   }
   
   public static void a(AppInterface paramAppInterface, NearbyMyTabCard paramNearbyMyTabCard)
   {
-    if ((paramAppInterface == null) || (paramNearbyMyTabCard == null)) {
-      return;
-    }
-    NearbyUtils.a("Q.nearby", "storeNearbyMyTabCard", new Object[] { paramNearbyMyTabCard });
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if (paramAppInterface != null)
     {
-      FileUtils.a(paramAppInterface.getCurrentAccountUin() + "NewNearbyMyTab.nbr", new Object[] { paramNearbyMyTabCard });
-      return;
+      if (paramNearbyMyTabCard == null) {
+        return;
+      }
+      NearbyUtils.a("Q.nearby", "storeNearbyMyTabCard", new Object[] { paramNearbyMyTabCard });
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+        localStringBuilder.append("NewNearbyMyTab.nbr");
+        FileUtils.writeObjectList(localStringBuilder.toString(), new Object[] { paramNearbyMyTabCard });
+        return;
+      }
     }
   }
   
-  public static void a(NearbyAppInterface paramNearbyAppInterface, int paramInt, boolean paramBoolean)
+  public static void a(INearbyAppInterface paramINearbyAppInterface, int paramInt, boolean paramBoolean)
   {
-    if (paramNearbyAppInterface == null) {}
-    NearbyMyTabCard localNearbyMyTabCard;
-    do
-    {
+    if (paramINearbyAppInterface == null) {
       return;
-      localNearbyMyTabCard = paramNearbyAppInterface.b();
-      if (localNearbyMyTabCard != null)
-      {
-        localNearbyMyTabCard.newLikeNum = paramInt;
-        a(paramNearbyAppInterface, localNearbyMyTabCard);
-      }
-    } while (!paramBoolean);
-    ((NearbyHandler)paramNearbyAppInterface.getBusinessHandler(NearbyConstants.a)).a(localNearbyMyTabCard);
+    }
+    NearbyMyTabCard localNearbyMyTabCard = paramINearbyAppInterface.getMyTabCard();
+    if (localNearbyMyTabCard != null)
+    {
+      localNearbyMyTabCard.newLikeNum = paramInt;
+      a((AppInterface)paramINearbyAppInterface, localNearbyMyTabCard);
+    }
+    if (paramBoolean) {
+      ((NearbyHandler)paramINearbyAppInterface.getBusinessHandler(NearbyConstants.a)).a(localNearbyMyTabCard);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper
  * JD-Core Version:    0.7.0.1
  */

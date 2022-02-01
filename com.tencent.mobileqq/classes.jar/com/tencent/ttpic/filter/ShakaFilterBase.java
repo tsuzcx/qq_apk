@@ -209,35 +209,24 @@ public abstract class ShakaFilterBase
     GLES20.glTexParameterf(3553, 10242, 33071.0F);
     GLES20.glTexParameterf(3553, 10243, 33071.0F);
     GLES20.glUniform1i(this.mSTextureHandle, 0);
-    if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP)
-    {
+    if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP) {
       GLES20.glDrawArrays(5, 0, this.mCoordNum);
-      if (this.mRenderMode != 0) {
-        break label162;
-      }
-      GLES20.glFinish();
-    }
-    label162:
-    while (this.mRenderMode != 1)
-    {
-      return true;
-      if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLES)
-      {
-        GLES20.glDrawArrays(4, 0, this.mCoordNum);
-        break;
-      }
-      if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLE_FAN)
-      {
-        GLES20.glDrawArrays(6, 0, this.mCoordNum);
-        break;
-      }
-      if (this.mDrawMode != AEOpenRenderConfig.DRAW_MODE.LINES) {
-        break;
-      }
+    } else if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLES) {
+      GLES20.glDrawArrays(4, 0, this.mCoordNum);
+    } else if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.TRIANGLE_FAN) {
+      GLES20.glDrawArrays(6, 0, this.mCoordNum);
+    } else if (this.mDrawMode == AEOpenRenderConfig.DRAW_MODE.LINES) {
       GLES20.glDrawArrays(1, 0, this.mCoordNum);
-      break;
     }
-    GLES20.glFlush();
+    paramInt1 = this.mRenderMode;
+    if (paramInt1 == 0)
+    {
+      GLES20.glFinish();
+      return true;
+    }
+    if (paramInt1 == 1) {
+      GLES20.glFlush();
+    }
     return true;
   }
   
@@ -303,7 +292,7 @@ public abstract class ShakaFilterBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.ShakaFilterBase
  * JD-Core Version:    0.7.0.1
  */

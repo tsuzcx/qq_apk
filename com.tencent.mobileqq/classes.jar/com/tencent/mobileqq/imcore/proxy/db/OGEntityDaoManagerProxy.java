@@ -8,8 +8,9 @@ public class OGEntityDaoManagerProxy
   
   public static OGAbstractDao getEntityDao(Class paramClass)
   {
-    if (proxy != null) {
-      return proxy.getEntityDao(paramClass);
+    OGEntityDaoManagerProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      return localProxy.getEntityDao(paramClass);
     }
     return null;
   }
@@ -21,7 +22,7 @@ public class OGEntityDaoManagerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.db.OGEntityDaoManagerProxy
  * JD-Core Version:    0.7.0.1
  */

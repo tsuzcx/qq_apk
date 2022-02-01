@@ -15,18 +15,23 @@ public class PhotoCropAction
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
+      localObject = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
       int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      for (;;)
       {
-        localActionSheet.addButton(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
+        String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        if (i >= arrayOfString.length) {
+          break;
+        }
+        ((ActionSheet)localObject).addButton(arrayOfString[i], 1);
         i += 1;
       }
-      localActionSheet.addCancelButton(2131690800);
-      localActionSheet.setOnButtonClickListener(new PhotoCropAction.1(this, localActionSheet));
-      localActionSheet.show();
+      ((ActionSheet)localObject).addCancelButton(2131690728);
+      ((ActionSheet)localObject).setOnButtonClickListener(new PhotoCropAction.1(this, (ActionSheet)localObject));
+      ((ActionSheet)localObject).show();
     }
   }
   
@@ -39,7 +44,7 @@ public class PhotoCropAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PhotoCropAction
  * JD-Core Version:    0.7.0.1
  */

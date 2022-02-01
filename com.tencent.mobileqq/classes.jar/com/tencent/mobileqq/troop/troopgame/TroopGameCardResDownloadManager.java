@@ -21,45 +21,65 @@ public class TroopGameCardResDownloadManager
   
   public TroopGameCardResDownloadManager(AppInterface paramAppInterface)
   {
-    if ((paramAppInterface instanceof QQAppInterface)) {}
-    for (this.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager = ((ResDownloadManager)paramAppInterface.getManager(QQManagerFactory.ARMAP_RES_DOWNLOAD));; this.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager = new ResDownloadManager(paramAppInterface))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this);
-      return;
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      this.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager = ((ResDownloadManager)paramAppInterface.getManager(QQManagerFactory.ARMAP_RES_DOWNLOAD));
+    } else {
+      this.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager = new ResDownloadManager(paramAppInterface);
     }
+    this.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this);
   }
   
   public static String a()
   {
-    String str = null;
     if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
       jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getSharedPreferences("troop_game_card_sp", 4).getString("resPath", jdField_a_of_type_JavaLangString);
     }
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      if (!jdField_a_of_type_JavaLangString.endsWith(File.separator)) {
-        break label86;
-      }
-    }
-    label86:
-    for (str = jdField_a_of_type_JavaLangString;; str = jdField_a_of_type_JavaLangString + File.separator)
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
-      str = str + "Gameicon" + File.separator;
-      return str;
+      Object localObject;
+      if (jdField_a_of_type_JavaLangString.endsWith(File.separator))
+      {
+        localObject = jdField_a_of_type_JavaLangString;
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(File.separator);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("Gameicon");
+      localStringBuilder.append(File.separator);
+      return localStringBuilder.toString();
     }
+    return null;
   }
   
   private void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener != null)
+    TroopGameCardResDownloadManager.IStatusListener localIStatusListener = this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener;
+    if (localIStatusListener != null)
     {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener.a(paramString);
+      if (paramInt == 0)
+      {
+        localIStatusListener.a(paramString);
+        return;
       }
+      localIStatusListener.b(paramInt);
     }
-    else {
-      return;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopGameCardResDownloadManager", 2, "onDownloadStart()");
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener.b(paramInt);
+    TroopGameCardResDownloadManager.IStatusListener localIStatusListener = this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener;
+    if (localIStatusListener != null) {
+      localIStatusListener.a();
+    }
   }
   
   public void a(TroopGameCardResDownloadManager.ResInfo paramResInfo)
@@ -69,7 +89,7 @@ public class TroopGameCardResDownloadManager
       if (QLog.isColorLevel()) {
         QLog.d("TroopGameCardResDownloadManager", 2, "startDownload res...");
       }
-      this.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(paramResInfo.jdField_a_of_type_JavaLangString, paramResInfo.b, ".zip", true, 7);
+      this.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(paramResInfo.jdField_a_of_type_JavaLangString, paramResInfo.b, ".zip", true, 6);
       return;
     }
     finally {}
@@ -77,77 +97,87 @@ public class TroopGameCardResDownloadManager
   
   public void a(TroopGameCardResDownloadManager.ResInfo paramResInfo, TroopGameCardResDownloadManager.IStatusListener paramIStatusListener)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("checkResDownloadReady resUrl is ");
-      if (paramResInfo != null) {
-        break label129;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkResDownloadReady resUrl is ");
+      String str;
+      if (paramResInfo == null) {
+        str = "emptyUrl";
+      } else {
+        str = paramResInfo.jdField_a_of_type_JavaLangString;
       }
-      str = "emptyUrl";
-      localStringBuilder = localStringBuilder.append(str).append(" resMd5 is ");
-      if (paramResInfo != null) {
-        break label137;
+      localStringBuilder.append(str);
+      localStringBuilder.append(" resMd5 is ");
+      if (paramResInfo == null) {
+        str = "emptyMd5";
+      } else {
+        str = paramResInfo.b;
       }
+      localStringBuilder.append(str);
+      QLog.d("TroopGameCardResDownloadManager", 2, localStringBuilder.toString());
     }
-    label129:
-    label137:
-    for (String str = "emptyMd5";; str = paramResInfo.b)
+    this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener = paramIStatusListener;
+    if ((paramResInfo != null) && (!TextUtils.isEmpty(paramResInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramResInfo.b)))
     {
-      QLog.d("TroopGameCardResDownloadManager", 2, str);
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener = paramIStatusListener;
-      if ((paramResInfo != null) && (!TextUtils.isEmpty(paramResInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramResInfo.b))) {
-        break label145;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopGameCardResDownloadManager", 2, "need pull config");
-      }
-      ((TroopGameCardConfigProcessor)QConfigManager.a().a(695)).a(new TroopGameCardResDownloadManager.1(this));
+      a(paramResInfo);
       return;
-      str = paramResInfo.jdField_a_of_type_JavaLangString;
-      break;
     }
-    label145:
-    a(paramResInfo);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopGameCardResDownloadManager", 2, "need pull config");
+    }
+    ((TroopGameCardConfigProcessor)QConfigManager.a().a(695)).a(new TroopGameCardResDownloadManager.1(this));
   }
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGameCardResDownloadManager", 2, "onDownloadUpdate,url =   " + paramString1 + ",md5 = " + paramString2 + ",percent = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadUpdate,url =   ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",md5 = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",percent = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("TroopGameCardResDownloadManager", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener.a(paramInt);
+    paramString1 = this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener;
+    if (paramString1 != null) {
+      paramString1.a(paramInt);
     }
   }
   
   public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGameCardResDownloadManager", 2, "onDownloadFinish,url =   " + paramString1 + ",md5 = " + paramString2 + ",errCode = " + paramInt + ",path = " + paramString3 + ",userData = " + paramObject);
-    }
-    if (paramString3.endsWith("/")) {}
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      a(paramInt, paramString3);
-      return;
-      paramString3 = paramString3 + File.separator;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadFinish,url =   ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",md5 = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",errCode = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",path = ");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append(",userData = ");
+      localStringBuilder.append(paramObject);
+      QLog.d("TroopGameCardResDownloadManager", 2, localStringBuilder.toString());
     }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGameCardResDownloadManager", 2, "onDownloadStart()");
+    if (!paramString3.endsWith("/"))
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append(paramString3);
+      paramString1.append(File.separator);
+      paramString3 = paramString1.toString();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopTroopgameTroopGameCardResDownloadManager$IStatusListener.a();
-    }
+    a(paramInt, paramString3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardResDownloadManager
  * JD-Core Version:    0.7.0.1
  */

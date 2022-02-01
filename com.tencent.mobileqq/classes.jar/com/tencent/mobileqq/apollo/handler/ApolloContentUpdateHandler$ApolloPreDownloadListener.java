@@ -15,133 +15,220 @@ public class ApolloContentUpdateHandler$ApolloPreDownloadListener
     //   5: iconst_3
     //   6: aload_1
     //   7: invokevirtual 23	com/tencent/mobileqq/vip/DownloadTask:a	()I
-    //   10: if_icmpne +103 -> 113
-    //   13: aload_1
-    //   14: getfield 26	com/tencent/mobileqq/vip/DownloadTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   17: invokeinterface 31 1 0
-    //   22: iconst_1
-    //   23: if_icmpne +90 -> 113
-    //   26: aload_1
-    //   27: getfield 34	com/tencent/mobileqq/vip/DownloadTask:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   30: aload_1
-    //   31: getfield 37	com/tencent/mobileqq/vip/DownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   34: invokeinterface 43 2 0
-    //   39: checkcast 45	java/io/File
-    //   42: astore 4
+    //   10: if_icmpeq +4 -> 14
+    //   13: return
+    //   14: aload_1
+    //   15: getfield 26	com/tencent/mobileqq/vip/DownloadTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   18: invokeinterface 31 1 0
+    //   23: iconst_1
+    //   24: if_icmpeq +47 -> 71
+    //   27: new 33	java/lang/StringBuilder
+    //   30: dup
+    //   31: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   34: astore 4
+    //   36: aload 4
+    //   38: ldc 36
+    //   40: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: pop
     //   44: aload 4
-    //   46: invokevirtual 49	java/io/File:exists	()Z
-    //   49: ifeq +64 -> 113
-    //   52: aload 4
-    //   54: new 51	java/lang/StringBuilder
-    //   57: dup
-    //   58: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   61: aload 4
-    //   63: invokevirtual 56	java/io/File:getParent	()Ljava/lang/String;
-    //   66: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: getstatic 63	java/io/File:separator	Ljava/lang/String;
-    //   72: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokestatic 72	com/tencent/biz/common/util/ZipUtils:unZipFile	(Ljava/io/File;Ljava/lang/String;)V
-    //   81: aload_1
-    //   82: invokevirtual 75	com/tencent/mobileqq/vip/DownloadTask:a	()Landroid/os/Bundle;
-    //   85: astore_1
-    //   86: aload_1
-    //   87: ifnull +20 -> 107
-    //   90: aload_1
-    //   91: ldc 77
-    //   93: invokevirtual 83	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   96: lstore_2
-    //   97: lconst_0
-    //   98: lload_2
-    //   99: lcmp
-    //   100: ifeq +7 -> 107
-    //   103: lload_2
-    //   104: invokestatic 88	com/tencent/mobileqq/apollo/handler/ApolloContentUpdateHandler:a	(J)V
-    //   107: aload 4
-    //   109: invokevirtual 91	java/io/File:delete	()Z
-    //   112: pop
-    //   113: return
-    //   114: astore_1
-    //   115: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   118: ifeq +31 -> 149
-    //   121: ldc 98
-    //   123: iconst_2
-    //   124: new 51	java/lang/StringBuilder
-    //   127: dup
-    //   128: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   131: ldc 100
-    //   133: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   136: aload_1
-    //   137: invokevirtual 103	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   140: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   146: invokestatic 107	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   149: aload 4
-    //   151: invokevirtual 91	java/io/File:delete	()Z
-    //   154: pop
-    //   155: return
-    //   156: astore_1
-    //   157: return
-    //   158: astore_1
-    //   159: invokestatic 96	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   162: ifeq +31 -> 193
-    //   165: ldc 98
-    //   167: iconst_2
-    //   168: new 51	java/lang/StringBuilder
-    //   171: dup
-    //   172: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   175: ldc 109
-    //   177: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: aload_1
+    //   47: getfield 26	com/tencent/mobileqq/vip/DownloadTask:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   50: invokeinterface 31 1 0
+    //   55: invokevirtual 43	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   58: pop
+    //   59: ldc 45
+    //   61: iconst_1
+    //   62: aload 4
+    //   64: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokestatic 55	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   70: return
+    //   71: aload_1
+    //   72: getfield 58	com/tencent/mobileqq/vip/DownloadTask:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   75: aload_1
+    //   76: getfield 61	com/tencent/mobileqq/vip/DownloadTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   79: invokeinterface 67 2 0
+    //   84: checkcast 69	java/io/File
+    //   87: astore 4
+    //   89: aload 4
+    //   91: invokevirtual 73	java/io/File:exists	()Z
+    //   94: ifne +4 -> 98
+    //   97: return
+    //   98: new 33	java/lang/StringBuilder
+    //   101: dup
+    //   102: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   105: astore 5
+    //   107: aload 5
+    //   109: aload 4
+    //   111: invokevirtual 76	java/io/File:getParent	()Ljava/lang/String;
+    //   114: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: pop
+    //   118: aload 5
+    //   120: getstatic 79	java/io/File:separator	Ljava/lang/String;
+    //   123: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: pop
+    //   127: aload 4
+    //   129: aload 5
+    //   131: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokestatic 85	com/tencent/biz/common/util/ZipUtils:unZipFile	(Ljava/io/File;Ljava/lang/String;)V
+    //   137: aload_1
+    //   138: invokevirtual 88	com/tencent/mobileqq/vip/DownloadTask:a	()Landroid/os/Bundle;
+    //   141: astore_1
+    //   142: aload_1
+    //   143: ifnull +20 -> 163
+    //   146: aload_1
+    //   147: ldc 90
+    //   149: invokevirtual 96	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   152: lstore_2
+    //   153: lconst_0
+    //   154: lload_2
+    //   155: lcmp
+    //   156: ifeq +7 -> 163
+    //   159: lload_2
+    //   160: invokestatic 101	com/tencent/mobileqq/apollo/handler/ApolloContentUpdateHandler:a	(J)V
+    //   163: aload 4
+    //   165: invokevirtual 104	java/io/File:delete	()Z
+    //   168: pop
+    //   169: return
+    //   170: astore 4
+    //   172: new 33	java/lang/StringBuilder
+    //   175: dup
+    //   176: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   179: astore_1
     //   180: aload_1
-    //   181: invokevirtual 110	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   184: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   190: invokestatic 107	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   193: aload 4
-    //   195: invokevirtual 91	java/io/File:delete	()Z
-    //   198: pop
-    //   199: return
-    //   200: astore_1
-    //   201: return
-    //   202: astore_1
-    //   203: aload 4
-    //   205: invokevirtual 91	java/io/File:delete	()Z
-    //   208: pop
-    //   209: aload_1
-    //   210: athrow
-    //   211: astore_1
-    //   212: return
-    //   213: astore 4
-    //   215: goto -6 -> 209
+    //   181: ldc 106
+    //   183: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: pop
+    //   187: aload_1
+    //   188: aload 4
+    //   190: invokevirtual 109	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   193: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: pop
+    //   197: ldc 45
+    //   199: iconst_1
+    //   200: aload_1
+    //   201: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   204: invokestatic 55	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   207: return
+    //   208: astore_1
+    //   209: goto +121 -> 330
+    //   212: astore_1
+    //   213: new 33	java/lang/StringBuilder
+    //   216: dup
+    //   217: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   220: astore 5
+    //   222: aload 5
+    //   224: ldc 111
+    //   226: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: pop
+    //   230: aload 5
+    //   232: aload_1
+    //   233: invokevirtual 112	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   236: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: ldc 45
+    //   242: iconst_1
+    //   243: aload 5
+    //   245: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   248: invokestatic 55	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   251: aload 4
+    //   253: invokevirtual 104	java/io/File:delete	()Z
+    //   256: pop
+    //   257: return
+    //   258: astore 4
+    //   260: new 33	java/lang/StringBuilder
+    //   263: dup
+    //   264: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   267: astore_1
+    //   268: goto -88 -> 180
+    //   271: astore_1
+    //   272: new 33	java/lang/StringBuilder
+    //   275: dup
+    //   276: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   279: astore 5
+    //   281: aload 5
+    //   283: ldc 114
+    //   285: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   288: pop
+    //   289: aload 5
+    //   291: aload_1
+    //   292: invokevirtual 109	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   295: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   298: pop
+    //   299: ldc 45
+    //   301: iconst_1
+    //   302: aload 5
+    //   304: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   307: invokestatic 55	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   310: aload 4
+    //   312: invokevirtual 104	java/io/File:delete	()Z
+    //   315: pop
+    //   316: return
+    //   317: astore 4
+    //   319: new 33	java/lang/StringBuilder
+    //   322: dup
+    //   323: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   326: astore_1
+    //   327: goto -147 -> 180
+    //   330: aload 4
+    //   332: invokevirtual 104	java/io/File:delete	()Z
+    //   335: pop
+    //   336: goto +44 -> 380
+    //   339: astore 4
+    //   341: new 33	java/lang/StringBuilder
+    //   344: dup
+    //   345: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   348: astore 5
+    //   350: aload 5
+    //   352: ldc 106
+    //   354: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   357: pop
+    //   358: aload 5
+    //   360: aload 4
+    //   362: invokevirtual 109	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   365: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   368: pop
+    //   369: ldc 45
+    //   371: iconst_1
+    //   372: aload 5
+    //   374: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   377: invokestatic 55	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   380: goto +5 -> 385
+    //   383: aload_1
+    //   384: athrow
+    //   385: goto -2 -> 383
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	218	0	this	ApolloPreDownloadListener
-    //   0	218	1	paramDownloadTask	com.tencent.mobileqq.vip.DownloadTask
-    //   96	8	2	l	long
-    //   42	162	4	localFile	java.io.File
-    //   213	1	4	localException	java.lang.Exception
+    //   0	388	0	this	ApolloPreDownloadListener
+    //   0	388	1	paramDownloadTask	com.tencent.mobileqq.vip.DownloadTask
+    //   152	8	2	l	long
+    //   34	130	4	localObject	java.lang.Object
+    //   170	82	4	localException1	java.lang.Exception
+    //   258	53	4	localException2	java.lang.Exception
+    //   317	14	4	localException3	java.lang.Exception
+    //   339	22	4	localException4	java.lang.Exception
+    //   105	268	5	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   52	86	114	java/lang/Exception
-    //   90	97	114	java/lang/Exception
-    //   103	107	114	java/lang/Exception
-    //   149	155	156	java/lang/Exception
-    //   52	86	158	java/lang/OutOfMemoryError
-    //   90	97	158	java/lang/OutOfMemoryError
-    //   103	107	158	java/lang/OutOfMemoryError
-    //   193	199	200	java/lang/Exception
-    //   52	86	202	finally
-    //   90	97	202	finally
-    //   103	107	202	finally
-    //   115	149	202	finally
-    //   159	193	202	finally
-    //   107	113	211	java/lang/Exception
-    //   203	209	213	java/lang/Exception
+    //   163	169	170	java/lang/Exception
+    //   98	142	208	finally
+    //   146	153	208	finally
+    //   159	163	208	finally
+    //   213	251	208	finally
+    //   272	310	208	finally
+    //   98	142	212	java/lang/OutOfMemoryError
+    //   146	153	212	java/lang/OutOfMemoryError
+    //   159	163	212	java/lang/OutOfMemoryError
+    //   251	257	258	java/lang/Exception
+    //   98	142	271	java/lang/Exception
+    //   146	153	271	java/lang/Exception
+    //   159	163	271	java/lang/Exception
+    //   310	316	317	java/lang/Exception
+    //   330	336	339	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.handler.ApolloContentUpdateHandler.ApolloPreDownloadListener
  * JD-Core Version:    0.7.0.1
  */

@@ -16,14 +16,14 @@ import com.tencent.qphone.base.util.QLog;
 
 public class WTDataReportUtil
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long = 0L;
-  private static String jdField_a_of_type_JavaLangString = null;
-  private static long b = 0L;
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static String jdField_a_of_type_JavaLangString;
+  private static long b;
   
   public static String a()
   {
-    Object localObject = (WTogetherMng)VideoController.a().a().a(15);
+    Object localObject = (WTogetherMng)VideoController.a().a().a(16);
     if (localObject != null)
     {
       localObject = ((WTogetherMng)localObject).b(VideoController.a().a());
@@ -36,27 +36,33 @@ public class WTDataReportUtil
   
   public static String a(WTogetherPlayInfo paramWTogetherPlayInfo)
   {
-    if ((paramWTogetherPlayInfo == null) || (paramWTogetherPlayInfo.a == null)) {
-      return null;
+    if ((paramWTogetherPlayInfo != null) && (paramWTogetherPlayInfo.a != null)) {
+      return paramWTogetherPlayInfo.a.c();
     }
-    return paramWTogetherPlayInfo.a.c();
+    return null;
   }
   
   public static void a()
   {
     jdField_a_of_type_Long = SystemClock.elapsedRealtime();
     b = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.i("WTDataReportUtil", 2, "onEnterWTRoom, start[" + jdField_a_of_type_Long + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEnterWTRoom, start[");
+      localStringBuilder.append(jdField_a_of_type_Long);
+      localStringBuilder.append("]");
+      QLog.i("WTDataReportUtil", 2, localStringBuilder.toString());
     }
   }
   
   public static void a(WTogetherPlayInfo paramWTogetherPlayInfo, long paramLong)
   {
-    if ((paramWTogetherPlayInfo == null) || (paramWTogetherPlayInfo.a == null)) {}
-    for (;;)
+    if (paramWTogetherPlayInfo != null)
     {
-      return;
+      if (paramWTogetherPlayInfo.a == null) {
+        return;
+      }
       if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
         a(paramWTogetherPlayInfo, "onPlayStart");
       }
@@ -70,14 +76,26 @@ public class WTDataReportUtil
       AVUtil.a("0X800B62E", i, 0, str1, str2, str3, str4);
       if (paramWTogetherPlayInfo.a.jdField_a_of_type_Int == 4) {
         AVUtil.a("0X800B8DF", 1, 0, paramWTogetherPlayInfo.a.h, "", paramWTogetherPlayInfo.a.j, paramWTogetherPlayInfo.a.f);
+      } else if (paramWTogetherPlayInfo.a.jdField_a_of_type_Int == 3) {
+        AVUtil.a("0X800B8DF", 1, 0, paramWTogetherPlayInfo.a.h, "", paramWTogetherPlayInfo.a.g, paramWTogetherPlayInfo.a.f);
       }
-      while (QLog.isColorLevel())
+      if (QLog.isColorLevel())
       {
-        QLog.i("WTDataReportUtil", 2, "onPlayStart, key[" + jdField_a_of_type_JavaLangString + "], from[" + i + "], r2[" + str1 + "], r3[" + str2 + "], r4[" + str3 + "], r5[" + str4 + "]");
-        return;
-        if (paramWTogetherPlayInfo.a.jdField_a_of_type_Int == 3) {
-          AVUtil.a("0X800B8DF", 1, 0, paramWTogetherPlayInfo.a.h, "", paramWTogetherPlayInfo.a.g, paramWTogetherPlayInfo.a.f);
-        }
+        paramWTogetherPlayInfo = new StringBuilder();
+        paramWTogetherPlayInfo.append("onPlayStart, key[");
+        paramWTogetherPlayInfo.append(jdField_a_of_type_JavaLangString);
+        paramWTogetherPlayInfo.append("], from[");
+        paramWTogetherPlayInfo.append(i);
+        paramWTogetherPlayInfo.append("], r2[");
+        paramWTogetherPlayInfo.append(str1);
+        paramWTogetherPlayInfo.append("], r3[");
+        paramWTogetherPlayInfo.append(str2);
+        paramWTogetherPlayInfo.append("], r4[");
+        paramWTogetherPlayInfo.append(str3);
+        paramWTogetherPlayInfo.append("], r5[");
+        paramWTogetherPlayInfo.append(str4);
+        paramWTogetherPlayInfo.append("]");
+        QLog.i("WTDataReportUtil", 2, paramWTogetherPlayInfo.toString());
       }
     }
   }
@@ -85,96 +103,120 @@ public class WTDataReportUtil
   public static void a(WTogetherPlayInfo paramWTogetherPlayInfo, String paramString)
   {
     String str1 = a(paramWTogetherPlayInfo);
-    if ((str1 == null) || (!TextUtils.equals(str1, jdField_a_of_type_JavaLangString)))
+    if ((str1 != null) && (TextUtils.equals(str1, jdField_a_of_type_JavaLangString)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WTDataReportUtil", 2, "onPlayEnd, from[" + paramString + "], report before.");
+      Object localObject1 = VideoController.a().a();
+      if (localObject1 == null) {
+        localObject1 = null;
+      } else {
+        localObject1 = ((WatchTogetherMediaPlayCtrl)localObject1).a();
+      }
+      if (localObject1 == null) {
+        localObject2 = null;
+      } else {
+        localObject2 = ((WatchTogetherDataReportHelper)localObject1).a(str1);
+      }
+      long l1 = 0L;
+      long l2;
+      if (localObject2 != null)
+      {
+        l1 = ((WatchTogetherDataReportHelper.WTFilePlayInfo)localObject2).jdField_a_of_type_Int;
+        l2 = ((WatchTogetherDataReportHelper.WTFilePlayInfo)localObject2).b;
+      }
+      else
+      {
+        l2 = 0L;
+      }
+      int i = 0;
+      Object localObject2 = String.valueOf(l1 / 1000L);
+      String str2 = String.valueOf(l2 / 1000L);
+      if (paramWTogetherPlayInfo.a != null)
+      {
+        int j = paramWTogetherPlayInfo.a.a();
+        if (paramWTogetherPlayInfo.a.jdField_a_of_type_Int == 4)
+        {
+          AVUtil.a("0X800B8E0", 1, 0, paramWTogetherPlayInfo.a.h, str2, paramWTogetherPlayInfo.a.j, paramWTogetherPlayInfo.a.f);
+          i = j;
+        }
+        else
+        {
+          i = j;
+          if (paramWTogetherPlayInfo.a.jdField_a_of_type_Int == 3)
+          {
+            AVUtil.a("0X800B8E0", 1, 0, paramWTogetherPlayInfo.a.h, str2, paramWTogetherPlayInfo.a.g, paramWTogetherPlayInfo.a.f);
+            i = j;
+          }
+        }
+      }
+      AVUtil.a("0X800B639", i, 0, (String)localObject2, str2, a(), "");
+      b += l2;
+      jdField_a_of_type_JavaLangString = null;
+      if (localObject1 != null) {
+        ((WatchTogetherDataReportHelper)localObject1).a(str1);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramWTogetherPlayInfo = new StringBuilder();
+        paramWTogetherPlayInfo.append("onPlayEnd, from[");
+        paramWTogetherPlayInfo.append(paramString);
+        paramWTogetherPlayInfo.append("], key[");
+        paramWTogetherPlayInfo.append(str1);
+        paramWTogetherPlayInfo.append("], fromType[");
+        paramWTogetherPlayInfo.append(i);
+        paramWTogetherPlayInfo.append("], r2[");
+        paramWTogetherPlayInfo.append((String)localObject2);
+        paramWTogetherPlayInfo.append("], r3[");
+        paramWTogetherPlayInfo.append(str2);
+        paramWTogetherPlayInfo.append("]");
+        QLog.i("WTDataReportUtil", 2, paramWTogetherPlayInfo.toString());
       }
       return;
     }
-    Object localObject1 = VideoController.a().a();
-    label75:
-    Object localObject2;
-    label83:
-    long l1;
-    long l2;
-    if (localObject1 == null)
+    if (QLog.isColorLevel())
     {
-      localObject1 = null;
-      if (localObject1 != null) {
-        break label307;
-      }
-      localObject2 = null;
-      if (localObject2 == null) {
-        break label368;
-      }
-      l1 = ((WatchTogetherDataReportHelper.WTFilePlayInfo)localObject2).jdField_a_of_type_Int;
-      l2 = ((WatchTogetherDataReportHelper.WTFilePlayInfo)localObject2).b;
-    }
-    for (;;)
-    {
-      localObject2 = String.valueOf(l1 / 1000L);
-      String str2 = String.valueOf(l2 / 1000L);
-      int i;
-      if (paramWTogetherPlayInfo.a != null)
-      {
-        i = paramWTogetherPlayInfo.a.a();
-        if (paramWTogetherPlayInfo.a.jdField_a_of_type_Int == 4) {
-          AVUtil.a("0X800B8E0", 1, 0, paramWTogetherPlayInfo.a.h, str2, paramWTogetherPlayInfo.a.j, paramWTogetherPlayInfo.a.f);
-        }
-      }
-      for (;;)
-      {
-        AVUtil.a("0X800B639", i, 0, (String)localObject2, str2, a(), "");
-        b += l2;
-        jdField_a_of_type_JavaLangString = null;
-        if (localObject1 != null) {
-          ((WatchTogetherDataReportHelper)localObject1).a(str1);
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("WTDataReportUtil", 2, "onPlayEnd, from[" + paramString + "], key[" + str1 + "], fromType[" + i + "], r2[" + (String)localObject2 + "], r3[" + str2 + "]");
-        return;
-        localObject1 = ((WatchTogetherMediaPlayCtrl)localObject1).a();
-        break label75;
-        label307:
-        localObject2 = ((WatchTogetherDataReportHelper)localObject1).a(str1);
-        break label83;
-        if (paramWTogetherPlayInfo.a.jdField_a_of_type_Int == 3) {
-          AVUtil.a("0X800B8E0", 1, 0, paramWTogetherPlayInfo.a.h, str2, paramWTogetherPlayInfo.a.g, paramWTogetherPlayInfo.a.f);
-        }
-        continue;
-        i = 0;
-      }
-      label368:
-      l2 = 0L;
-      l1 = 0L;
+      paramWTogetherPlayInfo = new StringBuilder();
+      paramWTogetherPlayInfo.append("onPlayEnd, from[");
+      paramWTogetherPlayInfo.append(paramString);
+      paramWTogetherPlayInfo.append("], report before.");
+      QLog.i("WTDataReportUtil", 2, paramWTogetherPlayInfo.toString());
     }
   }
   
   public static void b()
   {
-    if (jdField_a_of_type_Long != 0L) {}
-    for (long l = Math.abs(SystemClock.elapsedRealtime() - jdField_a_of_type_Long);; l = 0L)
-    {
-      int i = jdField_a_of_type_Int;
-      String str1 = String.valueOf(l / 1000L);
-      String str2 = String.valueOf(b / 1000L);
-      AVUtil.a("0X800B6C0", 0, 0, str1, str2, i + "", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("WTDataReportUtil", 2, "onExitWTRoom, r2[" + str1 + "], r3[" + str2 + "], count[" + i + "]");
-      }
-      b = 0L;
-      jdField_a_of_type_Long = 0L;
-      jdField_a_of_type_Int = 0;
-      return;
+    long l;
+    if (jdField_a_of_type_Long != 0L) {
+      l = Math.abs(SystemClock.elapsedRealtime() - jdField_a_of_type_Long);
+    } else {
+      l = 0L;
     }
+    int i = jdField_a_of_type_Int;
+    String str1 = String.valueOf(l / 1000L);
+    String str2 = String.valueOf(b / 1000L);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i);
+    localStringBuilder.append("");
+    AVUtil.a("0X800B6C0", 0, 0, str1, str2, localStringBuilder.toString(), "");
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onExitWTRoom, r2[");
+      localStringBuilder.append(str1);
+      localStringBuilder.append("], r3[");
+      localStringBuilder.append(str2);
+      localStringBuilder.append("], count[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("]");
+      QLog.i("WTDataReportUtil", 2, localStringBuilder.toString());
+    }
+    b = 0L;
+    jdField_a_of_type_Long = 0L;
+    jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.WTDataReportUtil
  * JD-Core Version:    0.7.0.1
  */

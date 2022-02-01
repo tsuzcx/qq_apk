@@ -13,7 +13,6 @@ import android.content.pm.ResolveInfo;
 import android.os.Build.VERSION;
 import android.os.Process;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -21,84 +20,104 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class ProcessUtils
 {
   private static final String LOG_TAG = "ProcessUtils";
   private static List<String> homePackages;
   public static WeakReference<Activity> qzoneTopActivity;
-  public static int qzoneTopActivityHashCode;
+  public static int qzoneTopActivityHashCode = 0;
   public static String qzoneTopActivityName = "";
   
   private static String getActivePackage()
   {
-    Object localObject3 = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ProcessUtils", 4, "processInfos.size()=" + ((List)localObject3).size());
-    }
-    for (;;)
+    Object localObject3 = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getRunningAppProcesses();
+    Object localObject1;
+    if (QLog.isDevelopLevel())
     {
-      try
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("processInfos.size()=");
+      ((StringBuilder)localObject1).append(((List)localObject3).size());
+      QLog.d("ProcessUtils", 4, ((StringBuilder)localObject1).toString());
+    }
+    try
+    {
+      localObject1 = ActivityManager.RunningAppProcessInfo.class.getDeclaredField("processState");
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      QLog.w("ProcessUtils", 1, "NoSuchFieldException: processState", localNoSuchFieldException);
+      localObject2 = null;
+    }
+    if (localObject2 != null)
+    {
+      Iterator localIterator = ((List)localObject3).iterator();
+      while (localIterator.hasNext())
       {
-        Object localObject1 = ActivityManager.RunningAppProcessInfo.class.getDeclaredField("processState");
-        if (localObject1 != null)
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+        if (QLog.isDevelopLevel())
         {
-          Iterator localIterator = ((List)localObject3).iterator();
-          if (localIterator.hasNext())
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("processInfo: processName=");
+          ((StringBuilder)localObject3).append(localRunningAppProcessInfo.processName);
+          ((StringBuilder)localObject3).append(" importance=");
+          ((StringBuilder)localObject3).append(localRunningAppProcessInfo.importance);
+          ((StringBuilder)localObject3).append(" importanceReasonCode=");
+          ((StringBuilder)localObject3).append(localRunningAppProcessInfo.importanceReasonCode);
+          QLog.d("ProcessUtils", 4, ((StringBuilder)localObject3).toString());
+        }
+        if ((localRunningAppProcessInfo.importance == 100) && (localRunningAppProcessInfo.importanceReasonCode == 0))
+        {
+          Object localObject4;
+          try
           {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ProcessUtils", 4, "processInfo: processName=" + localRunningAppProcessInfo.processName + " importance=" + localRunningAppProcessInfo.importance + " importanceReasonCode=" + localRunningAppProcessInfo.importanceReasonCode);
-            }
-            if ((localRunningAppProcessInfo.importance != 100) || (localRunningAppProcessInfo.importanceReasonCode != 0)) {
-              continue;
-            }
-            try
-            {
-              int i = ((Field)localObject1).getInt(localRunningAppProcessInfo);
-              localObject3 = Integer.valueOf(i);
-            }
-            catch (IllegalAccessException localIllegalAccessException)
-            {
-              QLog.w("ProcessUtils", 1, "IllegalAccessException", localIllegalAccessException);
-              Object localObject4 = null;
-              continue;
-            }
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ProcessUtils", 4, "processInfo: state=" + localObject3);
-            }
-            if ((localObject3 == null) || (((Integer)localObject3).intValue() != 2)) {
-              continue;
-            }
-            localObject1 = localRunningAppProcessInfo;
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ProcessUtils", 4, "===============");
-            }
-            if (localObject1 == null) {
-              return null;
-            }
+            localObject3 = Integer.valueOf(localObject2.getInt(localRunningAppProcessInfo));
+          }
+          catch (IllegalAccessException localIllegalAccessException)
+          {
+            QLog.w("ProcessUtils", 1, "IllegalAccessException", localIllegalAccessException);
+            localObject4 = null;
+          }
+          if (QLog.isDevelopLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("processInfo: state=");
+            localStringBuilder.append(localObject4);
+            QLog.d("ProcessUtils", 4, localStringBuilder.toString());
+          }
+          if ((localObject4 != null) && (localObject4.intValue() == 2))
+          {
+            localObject2 = localRunningAppProcessInfo;
+            break label282;
           }
         }
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        QLog.w("ProcessUtils", 1, "NoSuchFieldException: processState", localNoSuchFieldException);
-        localObject2 = null;
-        continue;
-        return localObject2.processName;
-      }
-      Object localObject2 = null;
     }
+    Object localObject2 = null;
+    label282:
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ProcessUtils", 4, "===============");
+    }
+    if (localObject2 == null) {
+      return null;
+    }
+    return localObject2.processName;
   }
   
   public static String getActivePackageCompat()
   {
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningTasks(1);
-    if ((localObject == null) || (((List)localObject).get(0) == null) || (((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity == null)) {
-      return null;
+    Object localObject = ((ActivityManager)MobileQQ.getContext().getSystemService("activity")).getRunningTasks(1);
+    if ((localObject != null) && (((List)localObject).get(0) != null) && (((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity != null))
+    {
+      localObject = ((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((ComponentName)localObject).getPackageName());
+      localStringBuilder.append("/");
+      localStringBuilder.append(((ComponentName)localObject).getClassName());
+      return localStringBuilder.toString();
     }
-    localObject = ((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity;
-    return ((ComponentName)localObject).getPackageName() + "/" + ((ComponentName)localObject).getClassName();
+    return null;
   }
   
   public static String getCurProcessName(Context paramContext)
@@ -123,19 +142,20 @@ public class ProcessUtils
   
   private static List<String> getHomes()
   {
-    if (homePackages != null) {
-      return homePackages;
+    Object localObject1 = homePackages;
+    if (localObject1 != null) {
+      return localObject1;
     }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = BaseApplicationImpl.getContext().getPackageManager();
+    localObject1 = new ArrayList();
+    Object localObject2 = MobileQQ.getContext().getPackageManager();
     Intent localIntent = new Intent("android.intent.action.MAIN");
     localIntent.addCategory("android.intent.category.HOME");
-    localObject = ((PackageManager)localObject).queryIntentActivities(localIntent, 65536).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(((ResolveInfo)((Iterator)localObject).next()).activityInfo.packageName);
+    localObject2 = ((PackageManager)localObject2).queryIntentActivities(localIntent, 65536).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((List)localObject1).add(((ResolveInfo)((Iterator)localObject2).next()).activityInfo.packageName);
     }
-    homePackages = localArrayList;
-    return localArrayList;
+    homePackages = (List)localObject1;
+    return localObject1;
   }
   
   public static String getRunningProcessPackageName()
@@ -168,17 +188,17 @@ public class ProcessUtils
   
   public static boolean isHome(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    List localList;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      localList = getHomes();
-      if (localList.contains(paramString)) {
-        return true;
-      }
-      paramString = paramString.split("/");
-    } while (paramString.length < 2);
+    }
+    List localList = getHomes();
+    if (localList.contains(paramString)) {
+      return true;
+    }
+    paramString = paramString.split("/");
+    if (paramString.length < 2) {
+      return false;
+    }
     return localList.contains(paramString[0]);
   }
   
@@ -194,37 +214,57 @@ public class ProcessUtils
   
   public static boolean isQQ(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      if ("com.tencent.mobileqq".equals(paramString)) {
-        return true;
-      }
-      paramString = paramString.split("/");
-    } while ((paramString.length < 2) || (!"com.tencent.mobileqq".equals(paramString[0])) || (TextUtils.isEmpty(paramString[1])));
-    return true;
+    }
+    if ("com.tencent.mobileqq".equals(paramString)) {
+      return true;
+    }
+    paramString = paramString.split("/");
+    if (paramString.length < 2) {
+      return false;
+    }
+    if ("com.tencent.mobileqq".equals(paramString[0])) {
+      return !TextUtils.isEmpty(paramString[1]);
+    }
+    return false;
   }
   
   public static boolean isQzone(String paramString)
   {
-    boolean bool = true;
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    boolean bool1 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    if (bool1) {
       return false;
-      if ("com.tencent.mobileqq:qzone".equals(paramString)) {
-        return true;
-      }
-      paramString = paramString.split("/");
-    } while ((paramString.length < 2) || (!"com.tencent.mobileqq".equals(paramString[0])) || (TextUtils.isEmpty(paramString[1])));
-    paramString = paramString[1].toLowerCase().split("\\.");
-    if ((paramString.length > 0) && (paramString[(paramString.length - 1)].startsWith("qzone")) && (paramString[(paramString.length - 1)].endsWith("proxyactivity"))) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
     }
+    if ("com.tencent.mobileqq:qzone".equals(paramString)) {
+      return true;
+    }
+    paramString = paramString.split("/");
+    if (paramString.length < 2) {
+      return false;
+    }
+    bool1 = bool2;
+    if ("com.tencent.mobileqq".equals(paramString[0]))
+    {
+      if (TextUtils.isEmpty(paramString[1])) {
+        return false;
+      }
+      paramString = paramString[1].toLowerCase().split("\\.");
+      bool1 = bool2;
+      if (paramString.length > 0)
+      {
+        bool1 = bool2;
+        if (paramString[(paramString.length - 1)].startsWith("qzone"))
+        {
+          bool1 = bool2;
+          if (paramString[(paramString.length - 1)].endsWith("proxyactivity")) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public static boolean isQzoneLive(String paramString)
@@ -241,7 +281,7 @@ public class ProcessUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.ProcessUtils
  * JD-Core Version:    0.7.0.1
  */

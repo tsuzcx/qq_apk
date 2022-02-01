@@ -1,20 +1,19 @@
 package cooperation.qwallet.plugin.impl;
 
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qwallet.plugin.QWalletPayBridge;
 import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-final class QWalletHelperImpl$1
+class QWalletHelperImpl$1
   implements Runnable
 {
-  QWalletHelperImpl$1(WeakReference paramWeakReference, String paramString1, String paramString2, String paramString3) {}
+  QWalletHelperImpl$1(QWalletHelperImpl paramQWalletHelperImpl, WeakReference paramWeakReference, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    AppInterface localAppInterface = (AppInterface)this.val$weakRefApp.get();
-    if (localAppInterface == null) {
+    if ((AppRuntime)this.val$weakRefApp.get() == null) {
       return;
     }
     Bundle localBundle = new Bundle();
@@ -23,12 +22,12 @@ final class QWalletHelperImpl$1
     localBundle.putString("skey_type", "2");
     localBundle.putString("preload_from", this.val$from);
     localBundle.putInt("PayInvokerId", 21);
-    QWalletPayBridge.launchBackground(BaseApplicationImpl.sApplication, localAppInterface, localBundle);
+    QWalletPayBridge.launchBackground(MobileQQ.getContext(), localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qwallet.plugin.impl.QWalletHelperImpl.1
  * JD-Core Version:    0.7.0.1
  */

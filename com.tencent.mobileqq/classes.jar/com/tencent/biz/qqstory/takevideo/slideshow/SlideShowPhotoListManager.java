@@ -8,11 +8,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.album.model.StoryAlbum;
-import com.tencent.biz.qqstory.album.model.StoryAlbum.PicInfo;
+import com.tencent.aelight.camera.qqstory.api.IAELaunchEditPic;
+import com.tencent.aelight.camera.qqstory.api.IAELaunchMusicConfigManager;
+import com.tencent.aelight.camera.qqstory.api.IQQStoryFlowManager;
+import com.tencent.aelight.camera.qqstory.api.IQimMusicPlayer;
+import com.tencent.aelight.camera.struct.editor.MusicDownloadListener;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.biz.qqstory.takevideo.slideshow.core.SlideShowProcessor;
 import com.tencent.biz.qqstory.takevideo.slideshow.core.SlideShowProcessor.SlideShowProcessListener;
 import com.tencent.biz.qqstory.takevideo.slideshow.core.VideoMerger.VideoMergeListener;
@@ -25,16 +27,9 @@ import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.EditState;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.music.MusicDownloadListener;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import dov.com.qq.im.capture.music.QimMusicPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
-import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,26 +43,20 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class SlideShowPhotoListManager
   implements SlideShowProcessor.SlideShowProcessListener, VideoMerger.VideoMergeListener
 {
-  public static final int a;
   private static SlideShowPhotoListManager jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager;
+  private int jdField_a_of_type_Int = 20999;
   long jdField_a_of_type_Long;
   protected Handler a;
+  MusicDownloadListener jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener = new SlideShowPhotoListManager.1(this);
   protected SlideShowPhotoListManager.AblumListener a;
   private SlideShowViewController jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController;
   protected SlideShowProcessor a;
-  MusicDownloadListener jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener = new SlideShowPhotoListManager.1(this);
   protected List<WeakReference<Activity>> a;
-  private int jdField_b_of_type_Int = 20999;
+  private int jdField_b_of_type_Int;
   private List<SlideItemInfo> jdField_b_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private int jdField_c_of_type_Int;
+  private int jdField_c_of_type_Int = 21;
   private List<LocalMediaInfo> jdField_c_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private int jdField_d_of_type_Int = 21;
-  private List<SlideItemInfo> jdField_d_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  
-  static
-  {
-    jdField_a_of_type_Int = DisplayUtil.b(BaseApplicationImpl.getApplication(), 62.0F);
-  }
+  private List<SlideItemInfo> d = new CopyOnWriteArrayList();
   
   public SlideShowPhotoListManager()
   {
@@ -94,39 +83,40 @@ public class SlideShowPhotoListManager
     if (paramList.jdField_b_of_type_Int == 0)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$AblumListener = paramAblumListener;
-      if (((this.jdField_c_of_type_Int == 13) || (this.jdField_c_of_type_Int == 11) || (this.jdField_c_of_type_Int == 12) || (this.jdField_d_of_type_Int == 22)) && (((paramActivity instanceof NewPhotoListActivity)) || ((paramActivity instanceof NewPhotoPreviewActivity)))) {
+      int i = this.jdField_b_of_type_Int;
+      if (((i == 13) || (i == 11) || (i == 12) || (this.jdField_c_of_type_Int == 22)) && (((paramActivity instanceof NewPhotoListActivity)) || ((paramActivity instanceof NewPhotoPreviewActivity)))) {
         a();
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController.c();
+      paramList = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController;
+      if (paramList != null) {
+        paramList.c();
       }
-      int j = -1;
-      paramAblumListener = "";
-      int i = j;
-      paramList = paramAblumListener;
       if (this.jdField_b_of_type_JavaUtilList.size() > 0)
       {
-        SlideItemInfo localSlideItemInfo = (SlideItemInfo)this.jdField_b_of_type_JavaUtilList.get(0);
-        i = j;
-        paramList = paramAblumListener;
-        if (localSlideItemInfo != null)
+        paramList = (SlideItemInfo)this.jdField_b_of_type_JavaUtilList.get(0);
+        if (paramList != null)
         {
-          i = localSlideItemInfo.jdField_a_of_type_Int;
-          paramList = localSlideItemInfo.jdField_a_of_type_JavaLangString;
+          i = paramList.jdField_a_of_type_Int;
+          paramList = paramList.jdField_a_of_type_JavaLangString;
+          break label143;
         }
       }
+      paramList = "";
+      i = -1;
+      label143:
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.a(this.jdField_b_of_type_JavaUtilList, this, paramActivity, this.jdField_a_of_type_AndroidOsHandler, paramInt, i, paramList);
       return;
     }
-    QQStoryFlowCallback.a(paramActivity, paramList.jdField_b_of_type_JavaLangString, paramList.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, (int)paramList.jdField_b_of_type_Long, (int)paramList.jdField_c_of_type_Long, 120, 10023, 0, "", "", false, 11, 14, null);
+    ((IQQStoryFlowManager)QRoute.api(IQQStoryFlowManager.class)).startEditVideoActivity(paramActivity, paramList.jdField_b_of_type_JavaLangString, paramList.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, (int)paramList.jdField_b_of_type_Long, (int)paramList.jdField_c_of_type_Long, 120, 10023, 0, "", "", false, 11, 14, null);
   }
   
   private void a(Context paramContext, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new SlideShowPhotoListManager.2(this, paramContext, paramString));
+    localHandler.post(new SlideShowPhotoListManager.2(this, paramContext, paramString));
   }
   
   private void a(Context paramContext, List<SlideItemInfo> paramList)
@@ -136,16 +126,16 @@ public class SlideShowPhotoListManager
       paramContext = SlideShowConfigManager.a(paramContext).a(((SlideItemInfo)paramList.get(0)).jdField_e_of_type_JavaLangString);
       if ((paramContext != null) && (paramContext.size() > 0))
       {
-        paramContext = ((QIMMusicConfigManager)QIMManager.a(2)).a(((SlideShowConfigManager.Music)paramContext.get(0)).jdField_a_of_type_Int, ((SlideShowConfigManager.Music)paramContext.get(0)).jdField_b_of_type_Int);
-        if (paramContext != null)
+        paramContext = ((IAELaunchMusicConfigManager)QRoute.api(IAELaunchMusicConfigManager.class)).getMusicItemById(((SlideShowConfigManager.Music)paramContext.get(0)).jdField_a_of_type_Int, ((SlideShowConfigManager.Music)paramContext.get(0)).jdField_b_of_type_Int);
+        if ((paramContext != null) && (!((IQimMusicPlayer)QRoute.api(IQimMusicPlayer.class)).checkMusicCanPlay(paramContext)))
         {
-          paramList = (QimMusicPlayer)QIMManager.a().c(8);
-          if ((paramList != null) && (!paramList.b(paramContext)))
+          ((IQimMusicPlayer)QRoute.api(IQimMusicPlayer.class)).requestDownLoadMusicInfo(paramContext, this.jdField_a_of_type_ComTencentAelightCameraStructEditorMusicDownloadListener);
+          if (QLog.isColorLevel())
           {
-            paramList.a(paramContext, this.jdField_a_of_type_DovComQqImCaptureMusicMusicDownloadListener);
-            if (QLog.isColorLevel()) {
-              QLog.d("SlideShowPhotoListManager", 2, "SlideShowPhotoListManager preloadMusic mItemId=" + paramContext.mItemId);
-            }
+            paramList = new StringBuilder();
+            paramList.append("SlideShowPhotoListManager preloadMusic mItemId=");
+            paramList.append(paramContext.mItemId);
+            QLog.d("SlideShowPhotoListManager", 2, paramList.toString());
           }
         }
       }
@@ -175,24 +165,27 @@ public class SlideShowPhotoListManager
     if (paramList1 == paramList2) {
       return false;
     }
-    if ((paramList1 == null) || (paramList2 == null)) {
-      return false;
-    }
-    if (paramList1.size() != paramList2.size()) {
-      return true;
-    }
-    HashSet localHashSet = new HashSet();
-    paramList1 = paramList1.iterator();
-    while (paramList1.hasNext()) {
-      localHashSet.add(((SlideItemInfo)paramList1.next()).jdField_b_of_type_JavaLangString);
-    }
-    if (localHashSet.size() != paramList2.size()) {
-      return true;
-    }
-    paramList1 = paramList2.iterator();
-    while (paramList1.hasNext()) {
-      if (!localHashSet.contains(((SlideItemInfo)paramList1.next()).jdField_b_of_type_JavaLangString)) {
+    if (paramList1 != null)
+    {
+      if (paramList2 == null) {
+        return false;
+      }
+      if (paramList1.size() != paramList2.size()) {
         return true;
+      }
+      HashSet localHashSet = new HashSet();
+      paramList1 = paramList1.iterator();
+      while (paramList1.hasNext()) {
+        localHashSet.add(((SlideItemInfo)paramList1.next()).jdField_b_of_type_JavaLangString);
+      }
+      if (localHashSet.size() != paramList2.size()) {
+        return true;
+      }
+      paramList1 = paramList2.iterator();
+      while (paramList1.hasNext()) {
+        if (!localHashSet.contains(((SlideItemInfo)paramList1.next()).jdField_b_of_type_JavaLangString)) {
+          return true;
+        }
       }
     }
     return false;
@@ -200,127 +193,55 @@ public class SlideShowPhotoListManager
   
   private void c(List<SlideItemInfo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowPhotoListManager", 2, "convertToVideoBatch size : " + paramList.size());
-    }
-    if (paramList == null)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SlideShowPhotoListManager", 2, "combine video newInfoList is null");
-      }
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("convertToVideo size : ");
+      ((StringBuilder)localObject).append(paramList.size());
+      QLog.d("SlideShowPhotoListManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject1 = paramList.iterator();
-    long l = 0L;
-    label67:
-    Object localObject2;
-    if (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (SlideItemInfo)((Iterator)localObject1).next();
-      if (localObject2 == null) {
-        break label361;
-      }
-      l = ((SlideItemInfo)localObject2).a() + l;
-    }
-    label350:
-    label361:
-    for (;;)
-    {
-      break label67;
-      if (l > this.jdField_b_of_type_Int)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("SlideShowPhotoListManager", 2, "Duration too max: convertToVideo totalDuration=" + l);
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor == null)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("SlideShowPhotoListManager", 2, "combine video mConvertProcessor is null");
-        return;
-      }
-      localObject1 = (TransitionHandler)QQStoryContext.a().getBusinessHandler(PeakAppInterface.jdField_b_of_type_JavaLangString);
-      localObject2 = new ArrayList();
-      paramList = paramList.iterator();
-      for (;;)
-      {
-        if (!paramList.hasNext()) {
-          break label350;
-        }
-        SlideItemInfo localSlideItemInfo = (SlideItemInfo)paramList.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("SlideShowPhotoListManager", 2, "info : " + localSlideItemInfo + "  info.mSrcPath : " + localSlideItemInfo.jdField_b_of_type_JavaLangString);
-        }
-        if ((localSlideItemInfo != null) && (!TextUtils.isEmpty(localSlideItemInfo.jdField_b_of_type_JavaLangString)))
-        {
-          if (localSlideItemInfo.jdField_b_of_type_Int == 1)
-          {
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("SlideShowPhotoListManager", 2, "convertToVideoBatch mediaType is video, error");
-            return;
-          }
-          if ((!((TransitionHandler)localObject1).a(localSlideItemInfo.jdField_b_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.a(localSlideItemInfo.jdField_b_of_type_JavaLangString))) {
-            ((List)localObject2).add(localSlideItemInfo);
-          }
-        }
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.a((List)localObject2, this);
-      return;
-    }
-  }
-  
-  private void d(List<SlideItemInfo> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowPhotoListManager", 2, "convertToVideo size : " + paramList.size());
-    }
-    long l2;
+    long l1 = 0L;
+    long l2 = l1;
     if (paramList != null)
     {
-      Iterator localIterator = paramList.iterator();
-      long l1 = 0L;
-      l2 = l1;
-      if (!localIterator.hasNext()) {
-        break label95;
-      }
-      SlideItemInfo localSlideItemInfo = (SlideItemInfo)localIterator.next();
-      if (localSlideItemInfo == null) {
-        break label177;
-      }
-      l1 = localSlideItemInfo.a() + l1;
-    }
-    label177:
-    for (;;)
-    {
-      break;
-      l2 = 0L;
-      label95:
-      if ((l2 <= this.jdField_b_of_type_Int) || (QzoneSlideShowPhotoListManager.a().b() == 22)) {
-        if (paramList != null) {
-          e(paramList);
+      localObject = paramList.iterator();
+      for (;;)
+      {
+        l2 = l1;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        SlideItemInfo localSlideItemInfo = (SlideItemInfo)((Iterator)localObject).next();
+        if (localSlideItemInfo != null) {
+          l1 += localSlideItemInfo.a();
         }
       }
-      while (!QLog.isColorLevel())
+    }
+    if ((l2 > this.jdField_a_of_type_Int) && (QzoneSlideShowPhotoListManager.a().b() != 22))
+    {
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          return;
-        } while (!QLog.isColorLevel());
-        QLog.d("SlideShowPhotoListManager", 2, "newInfoList is null");
+        paramList = new StringBuilder();
+        paramList.append("Duration too max: convertToVideo totalDuration=");
+        paramList.append(l2);
+        QLog.d("SlideShowPhotoListManager", 2, paramList.toString());
+      }
+    }
+    else
+    {
+      if (paramList != null)
+      {
+        d(paramList);
         return;
       }
-      QLog.d("SlideShowPhotoListManager", 2, "Duration too max: convertToVideo totalDuration=" + l2);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("SlideShowPhotoListManager", 2, "newInfoList is null");
+      }
     }
   }
   
-  private void e(@NonNull List<SlideItemInfo> paramList)
+  private void d(@NonNull List<SlideItemInfo> paramList)
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor != null)
     {
@@ -331,14 +252,23 @@ public class SlideShowPhotoListManager
         SlideItemInfo localSlideItemInfo = (SlideItemInfo)paramList.next();
         if ((localSlideItemInfo != null) && (!TextUtils.isEmpty(localSlideItemInfo.jdField_b_of_type_JavaLangString)))
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("SlideShowPhotoListManager", 2, "convertToVideo path = " + localSlideItemInfo.jdField_b_of_type_JavaLangString);
+          Object localObject;
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("convertToVideo path = ");
+            ((StringBuilder)localObject).append(localSlideItemInfo.jdField_b_of_type_JavaLangString);
+            QLog.i("SlideShowPhotoListManager", 2, ((StringBuilder)localObject).toString());
           }
           long l = localSlideItemInfo.a();
-          if (l > this.jdField_b_of_type_Int - 2000)
+          if (l > this.jdField_a_of_type_Int - 2000)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("SlideShowPhotoListManager", 2, "Duration too max: convertToVideoInternal durationValid=" + l);
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("Duration too max: convertToVideoInternal durationValid=");
+              ((StringBuilder)localObject).append(l);
+              QLog.d("SlideShowPhotoListManager", 2, ((StringBuilder)localObject).toString());
             }
             localSlideItemInfo.jdField_b_of_type_Boolean = false;
           }
@@ -346,7 +276,6 @@ public class SlideShowPhotoListManager
           {
             boolean bool = localSlideItemInfo.jdField_b_of_type_Boolean;
             localSlideItemInfo.jdField_b_of_type_Boolean = false;
-            LocalMediaInfo localLocalMediaInfo;
             if (!localTransitionHandler.a(localSlideItemInfo.jdField_b_of_type_JavaLangString))
             {
               if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.a(localSlideItemInfo.jdField_b_of_type_JavaLangString))
@@ -355,16 +284,20 @@ public class SlideShowPhotoListManager
               }
               else
               {
-                if (QLog.isColorLevel()) {
-                  QLog.i("SlideShowPhotoListManager", 2, "[hasAlreadyRunning=true]convertToVideo path = " + localSlideItemInfo.jdField_b_of_type_JavaLangString);
+                if (QLog.isColorLevel())
+                {
+                  localObject = new StringBuilder();
+                  ((StringBuilder)localObject).append("[hasAlreadyRunning=true]convertToVideo path = ");
+                  ((StringBuilder)localObject).append(localSlideItemInfo.jdField_b_of_type_JavaLangString);
+                  QLog.i("SlideShowPhotoListManager", 2, ((StringBuilder)localObject).toString());
                 }
                 if ((bool) && (localSlideItemInfo.jdField_b_of_type_Int == 1))
                 {
                   this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.a(localSlideItemInfo.jdField_b_of_type_JavaLangString);
-                  localLocalMediaInfo = localTransitionHandler.a(localSlideItemInfo.jdField_b_of_type_JavaLangString);
-                  if (localLocalMediaInfo != null)
+                  localObject = localTransitionHandler.a(localSlideItemInfo.jdField_b_of_type_JavaLangString);
+                  if (localObject != null)
                   {
-                    FileUtil.c(localLocalMediaInfo.path);
+                    FileUtil.c(((LocalMediaInfo)localObject).path);
                     localTransitionHandler.a(localSlideItemInfo.jdField_b_of_type_JavaLangString);
                   }
                   this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.a(localSlideItemInfo, this);
@@ -373,14 +306,18 @@ public class SlideShowPhotoListManager
             }
             else
             {
-              if (QLog.isColorLevel()) {
-                QLog.i("SlideShowPhotoListManager", 2, "[hasCachedMediaInfo=true]convertToVideo path = " + localSlideItemInfo.jdField_b_of_type_JavaLangString);
+              if (QLog.isColorLevel())
+              {
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("[hasCachedMediaInfo=true]convertToVideo path = ");
+                ((StringBuilder)localObject).append(localSlideItemInfo.jdField_b_of_type_JavaLangString);
+                QLog.i("SlideShowPhotoListManager", 2, ((StringBuilder)localObject).toString());
               }
               if ((bool) && (localSlideItemInfo.jdField_b_of_type_Int == 1))
               {
-                localLocalMediaInfo = localTransitionHandler.a(localSlideItemInfo.jdField_b_of_type_JavaLangString);
-                if (localLocalMediaInfo != null) {
-                  FileUtil.c(localLocalMediaInfo.path);
+                localObject = localTransitionHandler.a(localSlideItemInfo.jdField_b_of_type_JavaLangString);
+                if (localObject != null) {
+                  FileUtil.c(((LocalMediaInfo)localObject).path);
                 }
                 localTransitionHandler.a(localSlideItemInfo.jdField_b_of_type_JavaLangString);
                 this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.a(localSlideItemInfo, this);
@@ -401,7 +338,7 @@ public class SlideShowPhotoListManager
   
   public int a()
   {
-    return this.jdField_c_of_type_Int;
+    return this.jdField_b_of_type_Int;
   }
   
   public List<SlideItemInfo> a()
@@ -415,7 +352,7 @@ public class SlideShowPhotoListManager
     while (localIterator.hasNext())
     {
       Activity localActivity = (Activity)((WeakReference)localIterator.next()).get();
-      if ((localActivity != null) && ((localActivity instanceof EditVideoActivity)))
+      if ((localActivity != null) && (localActivity.getClass().getName().contains("EditVideoActivity")))
       {
         localActivity.finish();
         this.jdField_a_of_type_JavaUtilList.remove(localActivity);
@@ -425,7 +362,7 @@ public class SlideShowPhotoListManager
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void a(Activity paramActivity)
@@ -436,300 +373,304 @@ public class SlideShowPhotoListManager
   public void a(Activity paramActivity, SlideShowPhotoListManager.AblumListener paramAblumListener, int paramInt)
   {
     Object localObject1 = SlideShowUtils.a(a());
-    if ((paramActivity == null) || (localObject1 == null) || (((List)localObject1).isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SlideShowPhotoListManager", 2, "activity == null || imgPathList == null");
-      }
-    }
-    boolean bool;
-    SlideItemInfo localSlideItemInfo;
-    do
+    if ((paramActivity != null) && (localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
-      return;
-      bool = paramActivity instanceof NewPhotoListActivity;
+      boolean bool = paramActivity instanceof NewPhotoListActivity;
       if (a(paramActivity))
       {
         a(paramActivity, (List)localObject1, paramAblumListener, paramInt);
         return;
       }
-      if ((((List)localObject1).size() != 1) || (this.jdField_d_of_type_Int == 22)) {
-        break;
-      }
-      localSlideItemInfo = (SlideItemInfo)a().get(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.a(localSlideItemInfo.jdField_b_of_type_JavaLangString);
-      paramInt = 99;
-      if (paramActivity.getIntent() != null) {
-        paramInt = paramActivity.getIntent().getIntExtra("entrance_type", 99);
-      }
-      if (localSlideItemInfo.jdField_b_of_type_Int == 0)
+      Object localObject3;
+      int i;
+      Object localObject2;
+      int j;
+      if ((((List)localObject1).size() == 1) && (this.jdField_c_of_type_Int != 22))
       {
-        paramAblumListener = EditPicActivity.a(paramActivity, localSlideItemInfo.jdField_b_of_type_JavaLangString, true, true, true, true, true, false, false, false, 2, paramInt, 0, false, null);
-        paramAblumListener.putExtra("media_info", localSlideItemInfo.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
-        paramAblumListener.putExtra("extra_edit_video_from", 2);
-        paramActivity.startActivityForResult(paramAblumListener, 10002);
-        paramActivity = new StringBuilder();
-        if (bool) {}
-        for (paramInt = 0;; paramInt = 1)
+        localObject3 = (SlideItemInfo)a().get(0);
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.a(((SlideItemInfo)localObject3).jdField_b_of_type_JavaLangString);
+        if (paramActivity.getIntent() != null) {
+          paramInt = paramActivity.getIntent().getIntExtra("entrance_type", 99);
+        } else {
+          paramInt = 99;
+        }
+        if (((SlideItemInfo)localObject3).jdField_b_of_type_Int == 0)
         {
-          StoryReportor.a("video_edit", "edit_local", 0, 0, new String[] { paramInt + "" });
+          paramAblumListener = (IAELaunchEditPic)QRoute.api(IAELaunchEditPic.class);
+          localObject1 = ((SlideItemInfo)localObject3).jdField_b_of_type_JavaLangString;
+          i = 1;
+          paramAblumListener = paramAblumListener.startEditPic(paramActivity, (String)localObject1, true, true, true, true, true, false, false, false, 2, paramInt, 0, false, null);
+          paramAblumListener.putExtra("media_info", ((SlideItemInfo)localObject3).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+          paramAblumListener.putExtra("extra_edit_video_from", 2);
+          paramActivity.startActivityForResult(paramAblumListener, 10002);
+          paramActivity = new StringBuilder();
+          paramInt = i;
+          if (bool) {
+            paramInt = 0;
+          }
+          paramActivity.append(paramInt);
+          paramActivity.append("");
+          StoryReportor.a("video_edit", "edit_local", 0, 0, new String[] { paramActivity.toString() });
           return;
         }
-      }
-    } while (localSlideItemInfo.jdField_b_of_type_Int != 1);
-    paramAblumListener = new StringBuilder();
-    if (bool) {}
-    Object localObject2;
-    int j;
-    for (int i = 0;; i = 1)
-    {
-      StoryReportor.a("video_edit", "edit_local", 0, 1, new String[] { i + "" });
-      i = 0;
-      paramAblumListener = null;
-      localObject1 = null;
-      bool = false;
-      localObject2 = null;
-      Intent localIntent = paramActivity.getIntent();
-      if (localIntent != null)
-      {
-        i = localIntent.getIntExtra("shareGroupType", 0);
-        paramAblumListener = localIntent.getStringExtra("shareGroupId");
-        localObject1 = localIntent.getStringExtra("shareGroupName");
-        bool = localIntent.getBooleanExtra("ignorePersonalPublish", false);
-        localIntent.putExtra("extra_edit_video_from", 3);
-        localObject2 = EditState.a(localIntent);
-      }
-      j = 10002;
-      if (a().b() == 22) {
-        j = 10001;
-      }
-      QQStoryFlowCallback.a(paramActivity, localSlideItemInfo.jdField_b_of_type_JavaLangString, localSlideItemInfo.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, (int)localSlideItemInfo.jdField_b_of_type_Long, (int)localSlideItemInfo.jdField_c_of_type_Long, paramInt, j, i, paramAblumListener, (String)localObject1, bool, 3, 2, (Bundle)localObject2);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$AblumListener = paramAblumListener;
-    if (((this.jdField_c_of_type_Int == 13) || (this.jdField_c_of_type_Int == 11) || (this.jdField_c_of_type_Int == 12) || (this.jdField_d_of_type_Int == 22)) && (((paramActivity instanceof NewPhotoListActivity)) || ((paramActivity instanceof NewPhotoPreviewActivity)))) {
-      a();
-    }
-    paramAblumListener = this.jdField_b_of_type_JavaUtilList.iterator();
-    i = 0;
-    if (paramAblumListener.hasNext())
-    {
-      localObject1 = (SlideItemInfo)paramAblumListener.next();
-      if ((localObject1 == null) || (((SlideItemInfo)localObject1).jdField_b_of_type_Int != 1)) {
-        break label856;
-      }
-      i += 1;
-    }
-    label837:
-    label843:
-    label849:
-    label856:
-    for (;;)
-    {
-      break;
-      int m = this.jdField_b_of_type_JavaUtilList.size();
-      int k;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController.c();
-        if (!(paramActivity instanceof NewPhotoListActivity)) {
-          break label837;
-        }
-        j = 1;
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        if (this.jdField_c_of_type_Int != 11) {
-          break label843;
-        }
-        k = 0;
-        label628:
-        if (j == 0) {
-          break label849;
-        }
-      }
-      for (paramAblumListener = "0";; paramAblumListener = "1")
-      {
-        StoryReportor.a("pic_choose_slides", "clk_create", k, 0, new String[] { paramAblumListener, this.jdField_b_of_type_JavaUtilList.size() + "", m - i + "", i + "" });
-        a(paramActivity, this.jdField_b_of_type_JavaUtilList);
-        g();
-        j = -1;
-        localObject1 = "";
-        i = j;
-        paramAblumListener = (SlideShowPhotoListManager.AblumListener)localObject1;
-        if (this.jdField_b_of_type_JavaUtilList.size() > 0)
+        if (((SlideItemInfo)localObject3).jdField_b_of_type_Int == 1)
         {
-          localObject2 = (SlideItemInfo)this.jdField_b_of_type_JavaUtilList.get(0);
-          i = j;
-          paramAblumListener = (SlideShowPhotoListManager.AblumListener)localObject1;
+          paramAblumListener = new StringBuilder();
+          if (bool) {
+            i = 0;
+          } else {
+            i = 1;
+          }
+          paramAblumListener.append(i);
+          paramAblumListener.append("");
+          StoryReportor.a("video_edit", "edit_local", 0, 1, new String[] { paramAblumListener.toString() });
+          localObject2 = paramActivity.getIntent();
           if (localObject2 != null)
           {
-            i = ((SlideItemInfo)localObject2).jdField_a_of_type_Int;
-            paramAblumListener = ((SlideItemInfo)localObject2).jdField_a_of_type_JavaLangString;
+            i = ((Intent)localObject2).getIntExtra("shareGroupType", 0);
+            localObject1 = ((Intent)localObject2).getStringExtra("shareGroupId");
+            paramAblumListener = ((Intent)localObject2).getStringExtra("shareGroupName");
+            bool = ((Intent)localObject2).getBooleanExtra("ignorePersonalPublish", false);
+            ((Intent)localObject2).putExtra("extra_edit_video_from", 3);
+            localObject2 = ((Intent)localObject2).getBundleExtra("state");
+          }
+          else
+          {
+            localObject1 = null;
+            paramAblumListener = (SlideShowPhotoListManager.AblumListener)localObject1;
+            localObject2 = paramAblumListener;
+            i = 0;
+            bool = false;
+          }
+          if (a().b() == 22) {
+            j = 10001;
+          } else {
+            j = 10002;
+          }
+          ((IQQStoryFlowManager)QRoute.api(IQQStoryFlowManager.class)).startEditVideoActivity(paramActivity, ((SlideItemInfo)localObject3).jdField_b_of_type_JavaLangString, ((SlideItemInfo)localObject3).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, (int)((SlideItemInfo)localObject3).jdField_b_of_type_Long, (int)((SlideItemInfo)localObject3).jdField_c_of_type_Long, paramInt, j, i, (String)localObject1, paramAblumListener, bool, 3, 2, (Bundle)localObject2);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$AblumListener = paramAblumListener;
+        i = this.jdField_b_of_type_Int;
+        if (((i == 13) || (i == 11) || (i == 12) || (this.jdField_c_of_type_Int == 22)) && ((bool) || ((paramActivity instanceof NewPhotoPreviewActivity)))) {
+          a();
+        }
+        paramAblumListener = this.jdField_b_of_type_JavaUtilList.iterator();
+        i = 0;
+        while (paramAblumListener.hasNext())
+        {
+          localObject1 = (SlideItemInfo)paramAblumListener.next();
+          if ((localObject1 != null) && (((SlideItemInfo)localObject1).jdField_b_of_type_Int == 1)) {
+            i += 1;
           }
         }
+        int m = this.jdField_b_of_type_JavaUtilList.size();
+        paramAblumListener = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController;
+        if (paramAblumListener != null)
+        {
+          paramAblumListener.c();
+          if (bool) {
+            j = 1;
+          } else {
+            j = 0;
+          }
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          int k;
+          if (this.jdField_b_of_type_Int == 11) {
+            k = 0;
+          } else {
+            k = 1;
+          }
+          if (j != 0) {
+            paramAblumListener = "0";
+          } else {
+            paramAblumListener = "1";
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaUtilList.size());
+          ((StringBuilder)localObject1).append("");
+          localObject1 = ((StringBuilder)localObject1).toString();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(m - i);
+          ((StringBuilder)localObject2).append("");
+          localObject2 = ((StringBuilder)localObject2).toString();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append("");
+          StoryReportor.a("pic_choose_slides", "clk_create", k, 0, new String[] { paramAblumListener, localObject1, localObject2, ((StringBuilder)localObject3).toString() });
+        }
+        a(paramActivity, this.jdField_b_of_type_JavaUtilList);
+        e();
+        if (this.jdField_b_of_type_JavaUtilList.size() > 0)
+        {
+          paramAblumListener = (SlideItemInfo)this.jdField_b_of_type_JavaUtilList.get(0);
+          if (paramAblumListener != null)
+          {
+            i = paramAblumListener.jdField_a_of_type_Int;
+            paramAblumListener = paramAblumListener.jdField_a_of_type_JavaLangString;
+            break label887;
+          }
+        }
+        paramAblumListener = "";
+        i = -1;
+        label887:
         this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.a(this.jdField_b_of_type_JavaUtilList, this, paramActivity, this.jdField_a_of_type_AndroidOsHandler, paramInt, i, paramAblumListener);
-        return;
-        j = 0;
-        break;
-        k = 1;
-        break label628;
       }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowPhotoListManager", 2, "activity == null || imgPathList == null");
     }
   }
   
   public void a(Intent paramIntent, Map<String, LocalMediaInfo> paramMap)
   {
-    int j = 1;
-    if ((paramIntent == null) || (paramMap == null)) {
-      return;
-    }
-    int i = paramIntent.getIntExtra("video_index", 0);
-    int n = paramIntent.getIntExtra("start_index", 0);
-    int i1 = paramIntent.getIntExtra("end_index", 0);
-    int i2 = paramIntent.getIntExtra("scroll_x", 0);
-    int k = paramIntent.getIntExtra("start_time", 0);
-    int m = paramIntent.getIntExtra("end_time", 0);
-    paramIntent = (SlideItemInfo)this.jdField_b_of_type_JavaUtilList.get(i);
-    paramIntent.jdField_e_of_type_Int = n;
-    paramIntent.f = i1;
-    paramIntent.jdField_d_of_type_Int = i2;
-    if (Math.abs(k - paramIntent.jdField_b_of_type_Long) >= 50L)
+    if (paramIntent != null)
     {
-      i = 1;
-      label123:
-      if (Math.abs(m - paramIntent.jdField_c_of_type_Long) < 50L) {
-        break label261;
+      if (paramMap == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      boolean bool = i | 0x0 | j;
-      if (QLog.isColorLevel()) {
-        QLog.d("SlideShowPhotoListManager", 2, "isOperateClip : " + bool + "  startTime : " + k + "  slideInfo.startTime : " + paramIntent.jdField_b_of_type_Long + " endTime : " + m + "  slideInfo.endTime : " + paramIntent.jdField_c_of_type_Long);
+      int j = 0;
+      int i = paramIntent.getIntExtra("video_index", 0);
+      int n = paramIntent.getIntExtra("start_index", 0);
+      int i1 = paramIntent.getIntExtra("end_index", 0);
+      int i2 = paramIntent.getIntExtra("scroll_x", 0);
+      int k = paramIntent.getIntExtra("start_time", 0);
+      int m = paramIntent.getIntExtra("end_time", 0);
+      paramIntent = (SlideItemInfo)this.jdField_b_of_type_JavaUtilList.get(i);
+      paramIntent.jdField_e_of_type_Int = n;
+      paramIntent.f = i1;
+      paramIntent.d = i2;
+      long l1 = k;
+      if (Math.abs(l1 - paramIntent.jdField_b_of_type_Long) >= 50L) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      if (!bool) {
-        break;
+      long l2 = m;
+      if (Math.abs(l2 - paramIntent.jdField_c_of_type_Long) >= 50L) {
+        j = 1;
       }
-      paramIntent.jdField_b_of_type_Boolean = bool;
-      paramIntent.jdField_b_of_type_Long = k;
-      paramIntent.jdField_c_of_type_Long = m;
-      return;
-      i = 0;
-      break label123;
-      label261:
-      j = 0;
-    }
-  }
-  
-  public void a(@NonNull StoryAlbum paramStoryAlbum)
-  {
-    if (paramStoryAlbum == null) {}
-    for (;;)
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("SlideShowPhotoListManager", 2, "setData StoryAlbum AlbumId : " + paramStoryAlbum.a() + " mTransId=" + paramStoryAlbum.jdField_a_of_type_JavaLangString);
-      }
-      Object localObject = new ArrayList();
-      HashMap localHashMap = new HashMap();
-      this.jdField_c_of_type_JavaUtilList.clear();
-      Iterator localIterator = paramStoryAlbum.a().iterator();
-      while (localIterator.hasNext())
+      boolean bool = j | i | 0x0;
+      if (QLog.isColorLevel())
       {
-        StoryAlbum.PicInfo localPicInfo = (StoryAlbum.PicInfo)localIterator.next();
-        LocalMediaInfo localLocalMediaInfo = localPicInfo.a();
-        localHashMap.put(localPicInfo.jdField_a_of_type_JavaLangString, localLocalMediaInfo);
-        if (localPicInfo.a())
-        {
-          ((List)localObject).add(localPicInfo.jdField_a_of_type_JavaLangString);
-          localLocalMediaInfo.selectStatus = 1;
-        }
-        localLocalMediaInfo.mAlbumName = paramStoryAlbum.jdField_b_of_type_JavaLangString;
-        localLocalMediaInfo.mTransId = paramStoryAlbum.jdField_a_of_type_JavaLangString;
-        localLocalMediaInfo.mTextId = paramStoryAlbum.jdField_b_of_type_Int;
-        localLocalMediaInfo.mTextStr = paramStoryAlbum.jdField_b_of_type_JavaLangString;
-        this.jdField_c_of_type_JavaUtilList.add(localLocalMediaInfo);
+        paramMap = new StringBuilder();
+        paramMap.append("isOperateClip : ");
+        paramMap.append(bool);
+        paramMap.append("  startTime : ");
+        paramMap.append(k);
+        paramMap.append("  slideInfo.startTime : ");
+        paramMap.append(paramIntent.jdField_b_of_type_Long);
+        paramMap.append(" endTime : ");
+        paramMap.append(m);
+        paramMap.append("  slideInfo.endTime : ");
+        paramMap.append(paramIntent.jdField_c_of_type_Long);
+        QLog.d("SlideShowPhotoListManager", 2, paramMap.toString());
       }
-      a((List)localObject, localHashMap);
-      localObject = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((SlideItemInfo)((Iterator)localObject).next()).jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum = paramStoryAlbum;
+      if (bool)
+      {
+        paramIntent.jdField_b_of_type_Boolean = bool;
+        paramIntent.jdField_b_of_type_Long = l1;
+        paramIntent.jdField_c_of_type_Long = l2;
       }
     }
   }
   
   public void a(ResultInfo paramResultInfo)
   {
-    Object localObject = QQStoryContext.a();
-    String str;
-    LocalMediaInfo localLocalMediaInfo;
-    MediaScanner localMediaScanner;
+    Object localObject1 = QQStoryContext.a();
+    Object localObject2;
     if (paramResultInfo.jdField_a_of_type_Int == 0)
     {
-      str = paramResultInfo.jdField_a_of_type_JavaLangString;
-      localLocalMediaInfo = new LocalMediaInfo();
-      localLocalMediaInfo.path = paramResultInfo.jdField_b_of_type_JavaLangString;
-      localLocalMediaInfo.mMimeType = "video";
-      localLocalMediaInfo.mAudioPath = paramResultInfo.c;
-      localLocalMediaInfo.mHasAudioTrack = paramResultInfo.jdField_a_of_type_Boolean;
-      localLocalMediaInfo.mSampleRate = paramResultInfo.jdField_b_of_type_Int;
-      localMediaScanner = MediaScanner.getInstance(BaseApplicationImpl.getContext());
-    }
-    for (;;)
-    {
+      String str = paramResultInfo.jdField_a_of_type_JavaLangString;
+      localObject2 = new LocalMediaInfo();
+      ((LocalMediaInfo)localObject2).path = paramResultInfo.jdField_b_of_type_JavaLangString;
+      ((LocalMediaInfo)localObject2).mMimeType = "video";
+      ((LocalMediaInfo)localObject2).mAudioPath = paramResultInfo.c;
+      ((LocalMediaInfo)localObject2).mHasAudioTrack = paramResultInfo.jdField_a_of_type_Boolean;
+      ((LocalMediaInfo)localObject2).mSampleRate = paramResultInfo.jdField_b_of_type_Int;
+      MediaScanner localMediaScanner = MediaScanner.getInstance(BaseApplicationImpl.getContext());
       try
       {
-        localMediaScanner.buildAndUpdateVideo(localLocalMediaInfo);
-        localObject = (TransitionHandler)((AppInterface)localObject).getBusinessHandler(PeakAppInterface.jdField_b_of_type_JavaLangString);
-        ((TransitionHandler)localObject).a(str, localLocalMediaInfo);
-        if (((TransitionHandler)localObject).a() == null) {
-          ((TransitionHandler)localObject).a(paramResultInfo.jdField_a_of_type_AndroidMediaMediaFormat);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("SlideShowPhotoListManager", 2, "onImage2VideoResult RESULT_SUCC  hasAudioTrack:" + localLocalMediaInfo.mHasAudioTrack);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("SlideShowPhotoListManager", 2, "onImage2VideoResult " + paramResultInfo);
-        }
-        return;
+        localMediaScanner.buildAndUpdateVideo((LocalMediaInfo)localObject2);
       }
       catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
         QLog.e("SlideShowPhotoListManager", 1, "pic2video err", localThrowable);
-        continue;
       }
-      if (paramResultInfo.jdField_a_of_type_Int == 2)
+      localObject1 = (TransitionHandler)((AppInterface)localObject1).getBusinessHandler(PeakAppInterface.jdField_b_of_type_JavaLangString);
+      ((TransitionHandler)localObject1).a(str, (LocalMediaInfo)localObject2);
+      if (((TransitionHandler)localObject1).a() == null) {
+        ((TransitionHandler)localObject1).a(paramResultInfo.jdField_a_of_type_AndroidMediaMediaFormat);
+      }
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("SlideShowPhotoListManager", 2, "onImage2VideoResult cancel" + paramResultInfo);
-        }
-        StoryReportor.a("actAlbumResult", new String[] { paramResultInfo.jdField_a_of_type_Int + "" });
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onImage2VideoResult RESULT_SUCC  hasAudioTrack:");
+        ((StringBuilder)localObject1).append(((LocalMediaInfo)localObject2).mHasAudioTrack);
+        QLog.e("SlideShowPhotoListManager", 2, ((StringBuilder)localObject1).toString());
       }
-      else if (paramResultInfo.jdField_a_of_type_Int == 5)
+    }
+    else if (paramResultInfo.jdField_a_of_type_Int == 2)
+    {
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("SlideShowPhotoListManager", 2, "onImage2VideoResult fail load");
-        }
-        StoryReportor.a("actAlbumResult", new String[] { paramResultInfo.jdField_a_of_type_Int + "" });
-        a(((AppInterface)localObject).getApp(), HardCodeUtil.a(2131714139));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onImage2VideoResult cancel");
+        ((StringBuilder)localObject1).append(paramResultInfo);
+        QLog.i("SlideShowPhotoListManager", 2, ((StringBuilder)localObject1).toString());
       }
-      else if (paramResultInfo.jdField_a_of_type_Int == 8)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SlideShowPhotoListManager", 2, "result audio fail");
-        }
-        StoryReportor.a("actAlbumResult", new String[] { paramResultInfo.jdField_a_of_type_Int + "" });
-        a(((AppInterface)localObject).getApp(), HardCodeUtil.a(2131714138));
-        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.b();
-        }
-        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController.e();
-        }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramResultInfo.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append("");
+      StoryReportor.a("actAlbumResult", new String[] { ((StringBuilder)localObject1).toString() });
+    }
+    else if (paramResultInfo.jdField_a_of_type_Int == 5)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SlideShowPhotoListManager", 2, "onImage2VideoResult fail load");
       }
-      else
-      {
-        StoryReportor.a("actAlbumResult", new String[] { paramResultInfo.jdField_a_of_type_Int + "" });
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramResultInfo.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append("");
+      StoryReportor.a("actAlbumResult", new String[] { ((StringBuilder)localObject2).toString() });
+      a(((AppInterface)localObject1).getApp(), HardCodeUtil.a(2131714068));
+    }
+    else if (paramResultInfo.jdField_a_of_type_Int == 8)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SlideShowPhotoListManager", 2, "result audio fail");
       }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramResultInfo.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append("");
+      StoryReportor.a("actAlbumResult", new String[] { ((StringBuilder)localObject2).toString() });
+      a(((AppInterface)localObject1).getApp(), HardCodeUtil.a(2131714067));
+      localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor;
+      if (localObject1 != null) {
+        ((SlideShowProcessor)localObject1).b();
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController;
+      if (localObject1 != null) {
+        ((SlideShowViewController)localObject1).e();
+      }
+    }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramResultInfo.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append("");
+      StoryReportor.a("actAlbumResult", new String[] { ((StringBuilder)localObject1).toString() });
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onImage2VideoResult ");
+      ((StringBuilder)localObject1).append(paramResultInfo);
+      QLog.e("SlideShowPhotoListManager", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
@@ -746,70 +687,54 @@ public class SlideShowPhotoListManager
   
   public void a(List<String> paramList, HashMap<String, LocalMediaInfo> paramHashMap)
   {
-    if (QLog.isColorLevel())
-    {
-      if ((paramList == null) || (paramHashMap == null)) {
-        break label113;
-      }
-      QLog.e("SlideShowPhotoListManager", 2, "setData selectedPhotoList = " + paramList.size() + " mediaMap=" + paramHashMap.size());
-    }
-    for (;;)
-    {
-      if ((paramList != null) && (paramHashMap != null))
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.addAll(this.jdField_b_of_type_JavaUtilList);
-        paramList = SlideShowUtils.a(paramList, paramHashMap, localArrayList);
-        this.jdField_b_of_type_JavaUtilList.clear();
-        this.jdField_b_of_type_JavaUtilList.addAll(paramList);
-      }
-      return;
-      label113:
-      QLog.e("SlideShowPhotoListManager", 2, "setData selectedPhotoList = " + paramList + " mediaMap=" + paramHashMap);
-    }
+    a(paramList, paramHashMap, true);
   }
   
   public void a(List<String> paramList, HashMap<String, LocalMediaInfo> paramHashMap, boolean paramBoolean)
   {
     Object localObject;
-    label77:
-    LocalMediaInfo localLocalMediaInfo;
-    if (QLog.isColorLevel())
-    {
-      if ((paramList != null) && (paramHashMap != null)) {
-        QLog.e("SlideShowPhotoListManager", 2, "onItemsSelectChanged selectedPhotoList = " + paramList.size() + " mediaMap=" + paramHashMap.size());
+    if (QLog.isColorLevel()) {
+      if ((paramList != null) && (paramHashMap != null))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onItemsSelectChanged selectedPhotoList = ");
+        ((StringBuilder)localObject).append(paramList.size());
+        ((StringBuilder)localObject).append(" mediaMap=");
+        ((StringBuilder)localObject).append(paramHashMap.size());
+        QLog.e("SlideShowPhotoListManager", 2, ((StringBuilder)localObject).toString());
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onItemsSelectChanged selectedPhotoList = ");
+        ((StringBuilder)localObject).append(paramList);
+        ((StringBuilder)localObject).append(" mediaMap=");
+        ((StringBuilder)localObject).append(paramHashMap);
+        QLog.e("SlideShowPhotoListManager", 2, ((StringBuilder)localObject).toString());
       }
     }
-    else
+    if ((paramList != null) && (paramHashMap != null))
     {
-      if ((paramList == null) || (paramHashMap == null)) {
-        break label292;
-      }
       localObject = this.jdField_c_of_type_JavaUtilList.iterator();
-      if (!((Iterator)localObject).hasNext()) {
-        break label203;
-      }
-      localLocalMediaInfo = (LocalMediaInfo)((Iterator)localObject).next();
-      Iterator localIterator = paramList.iterator();
-      do
+      while (((Iterator)localObject).hasNext())
       {
-        if (!localIterator.hasNext()) {
-          break;
+        LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)((Iterator)localObject).next();
+        int j = 0;
+        Iterator localIterator = paramList.iterator();
+        do
+        {
+          i = j;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+        } while (!((String)localIterator.next()).equals(localLocalMediaInfo.path));
+        int i = 1;
+        if (i != 0) {
+          localLocalMediaInfo.selectStatus = 1;
+        } else {
+          localLocalMediaInfo.selectStatus = 2;
         }
-      } while (!((String)localIterator.next()).equals(localLocalMediaInfo.path));
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        localLocalMediaInfo.selectStatus = 1;
-        break label77;
-        QLog.e("SlideShowPhotoListManager", 2, "onItemsSelectChanged selectedPhotoList = " + paramList + " mediaMap=" + paramHashMap);
-        break;
       }
-      localLocalMediaInfo.selectStatus = 2;
-      break label77;
-      label203:
       localObject = new ArrayList();
       ((List)localObject).addAll(this.jdField_b_of_type_JavaUtilList);
       this.jdField_b_of_type_JavaUtilList.clear();
@@ -819,32 +744,32 @@ public class SlideShowPhotoListManager
         this.jdField_b_of_type_JavaUtilList.addAll(paramList);
       }
       ((List)localObject).clear();
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController.a();
+      paramList = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController;
+      if (paramList != null) {
+        paramList.a();
       }
       if (paramBoolean) {
-        d(this.jdField_b_of_type_JavaUtilList);
+        c(this.jdField_b_of_type_JavaUtilList);
       }
-      label292:
-      return;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController.d();
+    SlideShowViewController localSlideShowViewController = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController;
+    if (localSlideShowViewController != null) {
+      localSlideShowViewController.d();
     }
   }
   
   public boolean a()
   {
-    return a(this.jdField_d_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
+    return a(this.d, this.jdField_b_of_type_JavaUtilList);
   }
   
   public int b()
   {
-    return this.jdField_d_of_type_Int;
+    return this.jdField_c_of_type_Int;
   }
   
   public List<LocalMediaInfo> b()
@@ -854,60 +779,30 @@ public class SlideShowPhotoListManager
   
   public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Activity localActivity = (Activity)((WeakReference)localIterator.next()).get();
-      if ((localActivity != null) && (((localActivity instanceof NewPhotoListActivity)) || ((localActivity instanceof NewPhotoPreviewActivity))))
-      {
-        localActivity.finish();
-        this.jdField_a_of_type_JavaUtilList.remove(localActivity);
-      }
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void b(List<SlideItemInfo> paramList)
-  {
-    this.jdField_d_of_type_JavaUtilList.clear();
-    this.jdField_d_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void b(List<String> paramList, HashMap<String, LocalMediaInfo> paramHashMap)
-  {
-    a(paramList, paramHashMap, true);
-  }
-  
-  public List<SlideItemInfo> c()
-  {
-    return this.jdField_d_of_type_JavaUtilList;
-  }
-  
-  public void c()
-  {
     if (QLog.isColorLevel()) {
       QLog.i("SlideShowPhotoListManager", 2, "onResume");
     }
   }
   
-  public void c(int paramInt)
+  public void b(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void d()
+  public void b(List<SlideItemInfo> paramList)
   {
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_c_of_type_JavaUtilList.clear();
+    this.d.clear();
+    this.d.addAll(paramList);
   }
   
-  public void e()
+  public List<SlideItemInfo> c()
   {
-    f();
+    return this.d;
+  }
+  
+  public void c()
+  {
+    d();
     TransitionHandler localTransitionHandler = (TransitionHandler)QQStoryContext.a().getBusinessHandler(PeakAppInterface.jdField_b_of_type_JavaLangString);
     if (localTransitionHandler != null) {
       localTransitionHandler.a();
@@ -917,173 +812,234 @@ public class SlideShowPhotoListManager
     SlideShowProcessor.c();
   }
   
+  public void c(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void d()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor;
+    if (localObject != null) {
+      ((SlideShowProcessor)localObject).b();
+    }
+    localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController;
+    if (localObject != null) {
+      ((SlideShowViewController)localObject).e();
+    }
+  }
+  
+  protected void e()
+  {
+    Object localObject = (TransitionHandler)QQStoryContext.a().getBusinessHandler(PeakAppInterface.jdField_b_of_type_JavaLangString);
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      SlideItemInfo localSlideItemInfo = (SlideItemInfo)localIterator.next();
+      if (((TransitionHandler)localObject).a(localSlideItemInfo.jdField_b_of_type_JavaLangString) == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("checkIsNeedRetrySendConvert allFinish=false picInfo.mPath =");
+          ((StringBuilder)localObject).append(localSlideItemInfo.jdField_b_of_type_JavaLangString);
+          QLog.d("SlideShowPhotoListManager", 2, ((StringBuilder)localObject).toString());
+        }
+        i = 0;
+        break label104;
+      }
+    }
+    int i = 1;
+    label104:
+    if (i == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SlideShowPhotoListManager", 2, "checkIsNeedRetrySendConvert allFinish=false send convert request...");
+      }
+      c(this.jdField_b_of_type_JavaUtilList);
+    }
+  }
+  
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor.b();
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController.e();
-    }
-  }
-  
-  protected void g()
-  {
-    TransitionHandler localTransitionHandler = (TransitionHandler)QQStoryContext.a().getBusinessHandler(PeakAppInterface.jdField_b_of_type_JavaLangString);
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        SlideItemInfo localSlideItemInfo = (SlideItemInfo)localIterator.next();
-        if (localTransitionHandler.a(localSlideItemInfo.jdField_b_of_type_JavaLangString) == null) {
-          if (QLog.isColorLevel()) {
-            QLog.d("SlideShowPhotoListManager", 2, "checkIsNeedRetrySendConvert allFinish=false picInfo.mPath =" + localSlideItemInfo.jdField_b_of_type_JavaLangString);
-          }
-        }
-      }
-    }
-    for (int i = 0;; i = 1)
-    {
-      if (i == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SlideShowPhotoListManager", 2, "checkIsNeedRetrySendConvert allFinish=false send convert request...");
-        }
-        d(this.jdField_b_of_type_JavaUtilList);
-      }
-      return;
-    }
-  }
-  
-  public void h()
-  {
-    f();
-    c(this.jdField_b_of_type_JavaUtilList);
-  }
-  
-  public void i()
-  {
     List localList = a().a();
-    if (QLog.isColorLevel())
+    boolean bool = QLog.isColorLevel();
+    String str1 = "\n";
+    String str2 = " isOperateClip : ";
+    Object localObject5 = " mDuration : ";
+    Object localObject6 = " endTime : ";
+    Object localObject3 = "SlideShowPhotoListManager";
+    if (bool)
     {
       localObject1 = "before : \n";
       i = 0;
       while (i < localList.size())
       {
-        localObject1 = (String)localObject1 + " path : " + ((SlideItemInfo)localList.get(i)).jdField_b_of_type_JavaLangString + " startTime : " + ((SlideItemInfo)localList.get(i)).jdField_b_of_type_Long + " endTime : " + ((SlideItemInfo)localList.get(i)).jdField_c_of_type_Long + " mDuration : " + ((SlideItemInfo)localList.get(i)).jdField_a_of_type_Long + " isOperateClip : " + ((SlideItemInfo)localList.get(i)).jdField_b_of_type_Boolean + "\n";
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" path : ");
+        ((StringBuilder)localObject2).append(((SlideItemInfo)localList.get(i)).jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(" startTime : ");
+        ((StringBuilder)localObject2).append(((SlideItemInfo)localList.get(i)).jdField_b_of_type_Long);
+        ((StringBuilder)localObject2).append(" endTime : ");
+        ((StringBuilder)localObject2).append(((SlideItemInfo)localList.get(i)).jdField_c_of_type_Long);
+        ((StringBuilder)localObject2).append(" mDuration : ");
+        ((StringBuilder)localObject2).append(((SlideItemInfo)localList.get(i)).jdField_a_of_type_Long);
+        ((StringBuilder)localObject2).append(" isOperateClip : ");
+        ((StringBuilder)localObject2).append(((SlideItemInfo)localList.get(i)).jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject2).append("\n");
+        localObject1 = ((StringBuilder)localObject2).toString();
         i += 1;
       }
       QLog.d("SlideShowPhotoListManager", 2, (String)localObject1);
     }
     Object localObject1 = localList.iterator();
-    long l;
-    for (int i = 0; ((Iterator)localObject1).hasNext(); i = (int)(((SlideItemInfo)localObject2).jdField_a_of_type_Long + l))
-    {
+    for (int i = 0; ((Iterator)localObject1).hasNext(); i = (int)(i + ((SlideItemInfo)localObject2).jdField_a_of_type_Long)) {
       localObject2 = (SlideItemInfo)((Iterator)localObject1).next();
-      l = i;
     }
-    if (i <= this.jdField_b_of_type_Int - 500) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SlideShowPhotoListManager", 2, "totalDuration : " + i);
-      }
-    }
-    SlideItemInfo localSlideItemInfo;
-    do
+    if (i <= this.jdField_a_of_type_Int - 500)
     {
-      return;
-      localObject1 = new ArrayList();
-      localObject2 = localList.iterator();
-      while (((Iterator)localObject2).hasNext())
+      if (QLog.isColorLevel())
       {
-        localSlideItemInfo = (SlideItemInfo)((Iterator)localObject2).next();
-        if (localSlideItemInfo.jdField_b_of_type_Int == 1)
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("totalDuration : ");
+        ((StringBuilder)localObject1).append(i);
+        QLog.d("SlideShowPhotoListManager", 2, ((StringBuilder)localObject1).toString());
+      }
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2 = localList.iterator();
+    localObject1 = localObject3;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject7 = (SlideItemInfo)((Iterator)localObject2).next();
+      if (((SlideItemInfo)localObject7).jdField_b_of_type_Int == 1)
+      {
+        i = 0;
+        while (i < localArrayList.size())
         {
-          i = 0;
-          for (;;)
+          if (((SlideItemInfo)localObject7).jdField_a_of_type_Long < ((SlideItemInfo)localArrayList.get(i)).jdField_a_of_type_Long)
           {
-            if (i < ((List)localObject1).size())
-            {
-              if (localSlideItemInfo.jdField_a_of_type_Long < ((SlideItemInfo)((List)localObject1).get(i)).jdField_a_of_type_Long) {
-                ((List)localObject1).add(i, localSlideItemInfo);
-              }
-            }
-            else
-            {
-              if (i != ((List)localObject1).size()) {
-                break;
-              }
-              ((List)localObject1).add(localSlideItemInfo);
-              break;
-            }
-            i += 1;
+            localArrayList.add(i, localObject7);
+            break;
           }
+          i += 1;
+        }
+        localObject3 = localObject1;
+        localObject4 = localObject2;
+        localObject2 = localObject4;
+        localObject1 = localObject3;
+        if (i == localArrayList.size())
+        {
+          localArrayList.add(localObject7);
+          localObject2 = localObject4;
+          localObject1 = localObject3;
         }
       }
-    } while (((List)localObject1).size() == 0);
+    }
+    if (localArrayList.size() == 0) {
+      return;
+    }
     i = localList.size();
-    int j = ((List)localObject1).size();
-    int k = this.jdField_b_of_type_Int - 500 - (i - j) * 2000 - ((List)localObject1).size() * 2000;
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowPhotoListManager", 2, "leftTime : " + k + "   videoCount : " + ((List)localObject1).size());
-    }
-    Object localObject2 = ((List)localObject1).iterator();
-    for (i = 0; ((Iterator)localObject2).hasNext(); i = (int)(localSlideItemInfo.jdField_a_of_type_Long + l))
+    int j = localArrayList.size();
+    int k = this.jdField_a_of_type_Int - 500 - (i - j) * 2000 - localArrayList.size() * 2000;
+    if (QLog.isColorLevel())
     {
-      localSlideItemInfo = (SlideItemInfo)((Iterator)localObject2).next();
-      l = i;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("leftTime : ");
+      ((StringBuilder)localObject2).append(k);
+      ((StringBuilder)localObject2).append("   videoCount : ");
+      ((StringBuilder)localObject2).append(localArrayList.size());
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    int m = ((List)localObject1).size();
+    Object localObject7 = localObject1;
+    localObject3 = localArrayList.iterator();
+    i = 0;
+    localObject1 = str2;
+    localObject2 = str1;
+    while (((Iterator)localObject3).hasNext())
+    {
+      localObject4 = (SlideItemInfo)((Iterator)localObject3).next();
+      i = (int)(i + ((SlideItemInfo)localObject4).jdField_a_of_type_Long);
+    }
+    int m = localArrayList.size();
     j = 0;
-    while (j < ((List)localObject1).size())
+    localObject3 = localObject6;
+    Object localObject4 = localObject5;
+    while (j < localArrayList.size())
     {
-      localObject2 = (SlideItemInfo)((List)localObject1).get(j);
-      int n = (int)(((float)((SlideItemInfo)localObject2).jdField_a_of_type_Long - 2000.0F) / (i - m * 2000) * k) + 2000;
-      if ((Math.abs(n - ((SlideItemInfo)localObject2).jdField_c_of_type_Long) > 50L) || (Math.abs(((SlideItemInfo)localObject2).jdField_b_of_type_Long) > 50L))
-      {
-        ((SlideItemInfo)localObject2).jdField_b_of_type_Boolean = true;
-        ((SlideItemInfo)localObject2).jdField_c_of_type_Boolean = true;
+      localObject5 = (SlideItemInfo)localArrayList.get(j);
+      long l = (int)(((float)((SlideItemInfo)localObject5).jdField_a_of_type_Long - 2000.0F) / (i - m * 2000) * k) + 2000;
+      if ((Math.abs(l - ((SlideItemInfo)localObject5).jdField_c_of_type_Long) <= 50L) && (Math.abs(((SlideItemInfo)localObject5).jdField_b_of_type_Long) <= 50L)) {
+        break label820;
       }
-      ((SlideItemInfo)localObject2).jdField_c_of_type_Long = n;
-      ((SlideItemInfo)localObject2).jdField_b_of_type_Long = 0L;
-      ((SlideItemInfo)localObject2).jdField_e_of_type_Int = 0;
-      ((SlideItemInfo)localObject2).f = 0;
-      ((SlideItemInfo)localObject2).jdField_d_of_type_Int = 0;
-      if (QLog.isColorLevel()) {
-        QLog.d("SlideShowPhotoListManager", 2, "eachTime <= info.mDuration, i : " + j + "  leftTime : " + k + "  mDuration : " + ((SlideItemInfo)localObject2).jdField_a_of_type_Long);
+      ((SlideItemInfo)localObject5).jdField_b_of_type_Boolean = true;
+      ((SlideItemInfo)localObject5).jdField_c_of_type_Boolean = true;
+      label820:
+      ((SlideItemInfo)localObject5).jdField_c_of_type_Long = l;
+      ((SlideItemInfo)localObject5).jdField_b_of_type_Long = 0L;
+      ((SlideItemInfo)localObject5).jdField_e_of_type_Int = 0;
+      ((SlideItemInfo)localObject5).f = 0;
+      ((SlideItemInfo)localObject5).d = 0;
+      if (QLog.isColorLevel())
+      {
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append("eachTime <= info.mDuration, i : ");
+        ((StringBuilder)localObject6).append(j);
+        ((StringBuilder)localObject6).append("  leftTime : ");
+        ((StringBuilder)localObject6).append(k);
+        ((StringBuilder)localObject6).append("  mDuration : ");
+        ((StringBuilder)localObject6).append(((SlideItemInfo)localObject5).jdField_a_of_type_Long);
+        QLog.d((String)localObject7, 2, ((StringBuilder)localObject6).toString());
       }
       j += 1;
     }
     if (QLog.isColorLevel())
     {
-      localObject1 = "after : \n";
+      localObject5 = "after : \n";
       i = 0;
       while (i < localList.size())
       {
-        localObject1 = (String)localObject1 + " path : " + ((SlideItemInfo)localList.get(i)).jdField_b_of_type_JavaLangString + " startTime : " + ((SlideItemInfo)localList.get(i)).jdField_b_of_type_Long + " endTime : " + ((SlideItemInfo)localList.get(i)).jdField_c_of_type_Long + " mDuration : " + ((SlideItemInfo)localList.get(i)).jdField_a_of_type_Long + " isOperateClip : " + ((SlideItemInfo)localList.get(i)).jdField_b_of_type_Boolean + "\n";
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append((String)localObject5);
+        ((StringBuilder)localObject6).append(" path : ");
+        ((StringBuilder)localObject6).append(((SlideItemInfo)localList.get(i)).jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject6).append(" startTime : ");
+        ((StringBuilder)localObject6).append(((SlideItemInfo)localList.get(i)).jdField_b_of_type_Long);
+        ((StringBuilder)localObject6).append((String)localObject3);
+        ((StringBuilder)localObject6).append(((SlideItemInfo)localList.get(i)).jdField_c_of_type_Long);
+        ((StringBuilder)localObject6).append((String)localObject4);
+        ((StringBuilder)localObject6).append(((SlideItemInfo)localList.get(i)).jdField_a_of_type_Long);
+        ((StringBuilder)localObject6).append((String)localObject1);
+        ((StringBuilder)localObject6).append(((SlideItemInfo)localList.get(i)).jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject6).append((String)localObject2);
+        localObject5 = ((StringBuilder)localObject6).toString();
         i += 1;
       }
-      QLog.d("SlideShowPhotoListManager", 2, (String)localObject1);
+      QLog.d((String)localObject7, 2, (String)localObject5);
     }
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController.a();
-    f();
-    d(localList);
+    d();
+    c(localList);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController.b();
   }
   
-  public void j()
+  public void g()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController.e();
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowViewController;
+    if (localObject != null) {
+      ((SlideShowViewController)localObject).e();
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$AblumListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$AblumListener.a();
+    localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$AblumListener;
+    if (localObject != null) {
+      ((SlideShowPhotoListManager.AblumListener)localObject).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager
  * JD-Core Version:    0.7.0.1
  */

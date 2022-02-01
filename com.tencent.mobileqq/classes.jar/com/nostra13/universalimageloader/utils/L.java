@@ -53,23 +53,19 @@ public final class L
     if (!writeLogs) {
       return;
     }
+    String str = paramString;
     if (paramVarArgs.length > 0) {
-      paramString = String.format(paramString, paramVarArgs);
+      str = String.format(paramString, paramVarArgs);
     }
-    for (;;)
+    if (paramThrowable != null)
     {
-      if (paramThrowable == null) {}
-      for (;;)
-      {
-        Log.println(paramInt, ImageLoader.TAG, paramString);
-        return;
-        paramVarArgs = paramString;
-        if (paramString == null) {
-          paramVarArgs = paramThrowable.getMessage();
-        }
-        paramString = String.format("%1$s\n%2$s", new Object[] { paramVarArgs, Log.getStackTraceString(paramThrowable) });
+      paramString = str;
+      if (str == null) {
+        paramString = paramThrowable.getMessage();
       }
+      str = String.format("%1$s\n%2$s", new Object[] { paramString, Log.getStackTraceString(paramThrowable) });
     }
+    Log.println(paramInt, ImageLoader.TAG, str);
   }
   
   public static void w(String paramString, Object... paramVarArgs)
@@ -89,7 +85,7 @@ public final class L
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.utils.L
  * JD-Core Version:    0.7.0.1
  */

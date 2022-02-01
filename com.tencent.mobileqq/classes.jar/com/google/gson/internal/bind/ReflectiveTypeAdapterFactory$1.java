@@ -26,26 +26,30 @@ class ReflectiveTypeAdapterFactory$1
   void write(JsonWriter paramJsonWriter, Object paramObject)
   {
     Object localObject = this.val$field.get(paramObject);
-    if (this.val$jsonAdapterPresent) {}
-    for (paramObject = this.val$typeAdapter;; paramObject = new TypeAdapterRuntimeTypeWrapper(this.val$context, this.val$typeAdapter, this.val$fieldType.getType()))
-    {
-      paramObject.write(paramJsonWriter, localObject);
-      return;
+    if (this.val$jsonAdapterPresent) {
+      paramObject = this.val$typeAdapter;
+    } else {
+      paramObject = new TypeAdapterRuntimeTypeWrapper(this.val$context, this.val$typeAdapter, this.val$fieldType.getType());
     }
+    paramObject.write(paramJsonWriter, localObject);
   }
   
   public boolean writeField(Object paramObject)
   {
-    if (!this.serialized) {}
-    while (this.val$field.get(paramObject) == paramObject) {
+    boolean bool2 = this.serialized;
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
     }
-    return true;
+    if (this.val$field.get(paramObject) != paramObject) {
+      bool1 = true;
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.ReflectiveTypeAdapterFactory.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,18 +20,33 @@ public class FileResultWatchForObserver
   
   private boolean a(FileManagerEntity paramFileManagerEntity)
   {
-    if (paramFileManagerEntity == null) {
-      QLog.e("FileResultWatchForObserver<FileAssistant>NDL", 1, "entity is null!");
-    }
-    do
+    if (paramFileManagerEntity == null)
     {
+      QLog.e("FileResultWatchForObserver<FileAssistant>NDL", 1, "entity is null!");
       return false;
-      QLog.e("FileResultWatchForObserver<FileAssistant>NDL", 1, "entity:" + paramFileManagerEntity.nSessionId + ", opType:" + paramFileManagerEntity.nOpType);
-      if ((paramFileManagerEntity.nOpType == 0) || (paramFileManagerEntity.nOpType == 3) || (paramFileManagerEntity.nOpType == 7) || (paramFileManagerEntity.nOpType == 21) || (paramFileManagerEntity.nOpType == 24) || (paramFileManagerEntity.nOpType == 37)) {
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("entity:");
+    localStringBuilder.append(paramFileManagerEntity.nSessionId);
+    localStringBuilder.append(", opType:");
+    localStringBuilder.append(paramFileManagerEntity.nOpType);
+    QLog.e("FileResultWatchForObserver<FileAssistant>NDL", 1, localStringBuilder.toString());
+    if ((paramFileManagerEntity.nOpType != 0) && (paramFileManagerEntity.nOpType != 3) && (paramFileManagerEntity.nOpType != 7) && (paramFileManagerEntity.nOpType != 21) && (paramFileManagerEntity.nOpType != 24))
+    {
+      if (paramFileManagerEntity.nOpType == 37) {
         return true;
       }
-    } while ((paramFileManagerEntity.nOpType != 51) || (TextUtils.isEmpty(paramFileManagerEntity.Uuid)));
-    QLog.e("FileResultWatchForObserver<FileAssistant>NDL", 1, "entity:" + paramFileManagerEntity.nSessionId + ", has uuid, Send to old dataline!");
+      if ((paramFileManagerEntity.nOpType == 51) && (!TextUtils.isEmpty(paramFileManagerEntity.Uuid)))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("entity:");
+        localStringBuilder.append(paramFileManagerEntity.nSessionId);
+        localStringBuilder.append(", has uuid, Send to old dataline!");
+        QLog.e("FileResultWatchForObserver<FileAssistant>NDL", 1, localStringBuilder.toString());
+        return true;
+      }
+      return false;
+    }
     return true;
   }
   
@@ -70,16 +85,17 @@ public class FileResultWatchForObserver
       paramQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver != null)
+    MessageObserver localMessageObserver = this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver;
+    if (localMessageObserver != null)
     {
-      paramQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+      paramQQAppInterface.removeObserver(localMessageObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.FileResultWatchForObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -11,26 +11,29 @@ class NotificationActivity$36
   
   public void run()
   {
-    int i = NotificationActivity.access$1400(this.this$0).c();
-    QLog.e("LhHelper", 1, "handleLhExpire userStatus = " + i);
-    if (i == 1) {
-      NotificationActivity.access$1500(this.this$0).sendEmptyMessage(1);
-    }
-    do
+    int i = NotificationActivity.access$1500(this.this$0).c();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleLhExpire userStatus = ");
+    localStringBuilder.append(i);
+    QLog.e("LhHelper", 1, localStringBuilder.toString());
+    if (i == 1)
     {
+      NotificationActivity.access$1600(this.this$0).sendEmptyMessage(1);
       return;
-      if (i == 2)
-      {
-        NotificationActivity.access$1500(this.this$0).sendEmptyMessage(2);
-        return;
-      }
-    } while (i != 3);
-    NotificationActivity.access$1500(this.this$0).sendEmptyMessage(3);
+    }
+    if (i == 2)
+    {
+      NotificationActivity.access$1600(this.this$0).sendEmptyMessage(2);
+      return;
+    }
+    if (i == 3) {
+      NotificationActivity.access$1600(this.this$0).sendEmptyMessage(3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.36
  * JD-Core Version:    0.7.0.1
  */

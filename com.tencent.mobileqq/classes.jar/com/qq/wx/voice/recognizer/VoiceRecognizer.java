@@ -6,7 +6,7 @@ import com.qq.wx.voice.vad.TRSilkEncoder;
 
 public class VoiceRecognizer
 {
-  private static VoiceRecognizer a = null;
+  private static VoiceRecognizer a;
   private b b = new b();
   
   public static VoiceRecognizer shareInstance()

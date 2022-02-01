@@ -23,13 +23,21 @@ class DragSortListView$DropAnimator
     View localView = this.this$0.getChildAt(this.jdField_a_of_type_Int - i);
     if (localView != null)
     {
-      if (this.jdField_a_of_type_Int == this.jdField_b_of_type_Int) {
+      i = this.jdField_a_of_type_Int;
+      int k = this.jdField_b_of_type_Int;
+      if (i == k) {
         return localView.getTop();
       }
-      if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int) {
-        return localView.getTop() - j;
+      if (i < k)
+      {
+        i = localView.getTop();
       }
-      return localView.getBottom() + j - this.this$0.i;
+      else
+      {
+        i = localView.getBottom() + j;
+        j = this.this$0.i;
+      }
+      return i - j;
     }
     d();
     return -1;
@@ -39,8 +47,9 @@ class DragSortListView$DropAnimator
   {
     this.jdField_a_of_type_Int = this.this$0.jdField_b_of_type_Int;
     this.jdField_b_of_type_Int = this.this$0.e;
-    this.this$0.g = 2;
-    this.jdField_a_of_type_Float = (this.this$0.a.y - a());
+    DragSortListView localDragSortListView = this.this$0;
+    localDragSortListView.g = 2;
+    this.jdField_a_of_type_Float = (localDragSortListView.a.y - a());
     this.jdField_b_of_type_Float = (this.this$0.a.x - this.this$0.getPaddingLeft());
   }
   
@@ -66,7 +75,7 @@ class DragSortListView$DropAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView.DropAnimator
  * JD-Core Version:    0.7.0.1
  */

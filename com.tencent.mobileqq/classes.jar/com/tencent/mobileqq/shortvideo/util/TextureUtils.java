@@ -1,19 +1,23 @@
 package com.tencent.mobileqq.shortvideo.util;
 
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Bitmap.Config;
 import android.opengl.GLES20;
 import android.os.Environment;
 import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.mobileqq.activity.richmedia.FileUtils;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 
 public class TextureUtils
 {
-  public static String fileFolder = Environment.getExternalStorageDirectory() + "/testBitmap/";
+  public static String fileFolder;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append("/testBitmap/");
+    fileFolder = localStringBuilder.toString();
+  }
   
   public static Bitmap convertFrameToBitmap(Frame paramFrame)
   {
@@ -44,42 +48,90 @@ public class TextureUtils
     return localByteBuffer;
   }
   
+  /* Error */
   public static boolean saveFrameToFile(Frame paramFrame, String paramString)
   {
-    if (!FileUtils.fileExists(fileFolder)) {}
-    for (;;)
-    {
-      return false;
-      paramFrame = convertTexToBitmap(paramFrame.getTextureId(), paramFrame.width, paramFrame.height);
-      paramString = new File(fileFolder, paramString);
-      if (paramString.exists()) {
-        paramString.delete();
-      }
-      try
-      {
-        paramString = new FileOutputStream(paramString);
-        paramFrame.compress(Bitmap.CompressFormat.JPEG, 20, paramString);
-        paramString.flush();
-        paramString.close();
-        return true;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return false;
-      }
-      finally
-      {
-        if (!paramFrame.isRecycled()) {
-          paramFrame.recycle();
-        }
-      }
-    }
+    // Byte code:
+    //   0: getstatic 34	com/tencent/mobileqq/shortvideo/util/TextureUtils:fileFolder	Ljava/lang/String;
+    //   3: invokestatic 121	com/tencent/mobileqq/activity/richmedia/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   6: ifne +5 -> 11
+    //   9: iconst_0
+    //   10: ireturn
+    //   11: aload_0
+    //   12: invokevirtual 44	com/tencent/aekit/openrender/internal/Frame:getTextureId	()I
+    //   15: aload_0
+    //   16: getfield 48	com/tencent/aekit/openrender/internal/Frame:width	I
+    //   19: aload_0
+    //   20: getfield 51	com/tencent/aekit/openrender/internal/Frame:height	I
+    //   23: invokestatic 55	com/tencent/mobileqq/shortvideo/util/TextureUtils:convertTexToBitmap	(III)Landroid/graphics/Bitmap;
+    //   26: astore_0
+    //   27: new 123	java/io/File
+    //   30: dup
+    //   31: getstatic 34	com/tencent/mobileqq/shortvideo/util/TextureUtils:fileFolder	Ljava/lang/String;
+    //   34: aload_1
+    //   35: invokespecial 126	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   38: astore_1
+    //   39: aload_1
+    //   40: invokevirtual 130	java/io/File:exists	()Z
+    //   43: ifeq +8 -> 51
+    //   46: aload_1
+    //   47: invokevirtual 133	java/io/File:delete	()Z
+    //   50: pop
+    //   51: new 135	java/io/FileOutputStream
+    //   54: dup
+    //   55: aload_1
+    //   56: invokespecial 138	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   59: astore_1
+    //   60: aload_0
+    //   61: getstatic 144	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   64: bipush 20
+    //   66: aload_1
+    //   67: invokevirtual 148	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   70: pop
+    //   71: aload_1
+    //   72: invokevirtual 151	java/io/FileOutputStream:flush	()V
+    //   75: aload_1
+    //   76: invokevirtual 154	java/io/FileOutputStream:close	()V
+    //   79: aload_0
+    //   80: invokevirtual 157	android/graphics/Bitmap:isRecycled	()Z
+    //   83: ifne +7 -> 90
+    //   86: aload_0
+    //   87: invokevirtual 160	android/graphics/Bitmap:recycle	()V
+    //   90: iconst_1
+    //   91: ireturn
+    //   92: astore_1
+    //   93: goto +21 -> 114
+    //   96: astore_1
+    //   97: aload_1
+    //   98: invokevirtual 163	java/lang/Exception:printStackTrace	()V
+    //   101: aload_0
+    //   102: invokevirtual 157	android/graphics/Bitmap:isRecycled	()Z
+    //   105: ifne +7 -> 112
+    //   108: aload_0
+    //   109: invokevirtual 160	android/graphics/Bitmap:recycle	()V
+    //   112: iconst_0
+    //   113: ireturn
+    //   114: aload_0
+    //   115: invokevirtual 157	android/graphics/Bitmap:isRecycled	()Z
+    //   118: ifne +7 -> 125
+    //   121: aload_0
+    //   122: invokevirtual 160	android/graphics/Bitmap:recycle	()V
+    //   125: aload_1
+    //   126: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	127	0	paramFrame	Frame
+    //   0	127	1	paramString	String
+    // Exception table:
+    //   from	to	target	type
+    //   51	79	92	finally
+    //   97	101	92	finally
+    //   51	79	96	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.TextureUtils
  * JD-Core Version:    0.7.0.1
  */

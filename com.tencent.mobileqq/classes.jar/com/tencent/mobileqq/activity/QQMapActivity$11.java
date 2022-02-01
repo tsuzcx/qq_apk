@@ -13,7 +13,8 @@ class QQMapActivity$11
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.runOnUiThread(new QQMapActivity.11.1(this));
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+    if ((localDialog != null) && (localDialog.isShowing())) {
       this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +22,7 @@ class QQMapActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.11
  * JD-Core Version:    0.7.0.1
  */

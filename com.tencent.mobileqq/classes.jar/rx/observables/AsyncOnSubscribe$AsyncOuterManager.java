@@ -86,104 +86,123 @@ final class AsyncOnSubscribe$AsyncOuterManager<S, T>
   
   public void onCompleted()
   {
-    if (this.hasTerminated) {
-      throw new IllegalStateException("Terminal event already emitted.");
+    if (!this.hasTerminated)
+    {
+      this.hasTerminated = true;
+      this.merger.onCompleted();
+      return;
     }
-    this.hasTerminated = true;
-    this.merger.onCompleted();
+    throw new IllegalStateException("Terminal event already emitted.");
   }
   
   public void onError(Throwable paramThrowable)
   {
-    if (this.hasTerminated) {
-      throw new IllegalStateException("Terminal event already emitted.");
+    if (!this.hasTerminated)
+    {
+      this.hasTerminated = true;
+      this.merger.onError(paramThrowable);
+      return;
     }
-    this.hasTerminated = true;
-    this.merger.onError(paramThrowable);
+    throw new IllegalStateException("Terminal event already emitted.");
   }
   
   public void onNext(Observable<? extends T> paramObservable)
   {
-    if (this.onNextCalled) {
-      throw new IllegalStateException("onNext called multiple times!");
-    }
-    this.onNextCalled = true;
-    if (this.hasTerminated) {
+    if (!this.onNextCalled)
+    {
+      this.onNextCalled = true;
+      if (this.hasTerminated) {
+        return;
+      }
+      subscribeBufferToObservable(paramObservable);
       return;
     }
-    subscribeBufferToObservable(paramObservable);
+    throw new IllegalStateException("onNext called multiple times!");
   }
   
   public void request(long paramLong)
   {
-    int i = 1;
     if (paramLong == 0L) {
       return;
     }
-    if (paramLong < 0L) {
-      throw new IllegalStateException("Request can't be negative! " + paramLong);
-    }
-    label93:
-    Iterator localIterator;
-    label162:
-    do
-    {
-      while (!localIterator.hasNext())
+    if (paramLong >= 0L) {
+      try
       {
-        try
+        boolean bool = this.emitting;
+        int i = 1;
+        Object localObject1;
+        if (bool)
         {
-          if (this.emitting)
+          List localList = this.requests;
+          localObject1 = localList;
+          if (localList == null)
           {
-            List localList = this.requests;
-            Object localObject1 = localList;
-            if (localList == null)
+            localObject1 = new ArrayList();
+            this.requests = ((List)localObject1);
+          }
+          ((List)localObject1).add(Long.valueOf(paramLong));
+        }
+        else
+        {
+          this.emitting = true;
+          i = 0;
+        }
+        this.concatProducer.request(paramLong);
+        if (i != 0) {
+          return;
+        }
+        if (tryEmit(paramLong)) {
+          return;
+        }
+        for (;;)
+        {
+          try
+          {
+            localObject1 = this.requests;
+            if (localObject1 == null)
             {
-              localObject1 = new ArrayList();
-              this.requests = ((List)localObject1);
-            }
-            ((List)localObject1).add(Long.valueOf(paramLong));
-            this.concatProducer.request(paramLong);
-            if ((i != 0) || (tryEmit(paramLong))) {
-              break;
-            }
-            try
-            {
-              localObject1 = this.requests;
-              if (localObject1 != null) {
-                break label162;
-              }
               this.emitting = false;
               return;
             }
-            finally {}
+            this.requests = null;
+            localObject1 = ((List)localObject1).iterator();
+            do
+            {
+              if (!((Iterator)localObject1).hasNext()) {
+                break;
+              }
+            } while (!tryEmit(((Long)((Iterator)localObject1).next()).longValue()));
+            return;
           }
-          this.emitting = true;
-          i = 0;
-          break label93;
-          this.requests = null;
+          finally {}
         }
-        finally {}
-        localIterator = localObject3.iterator();
+        localObject4 = new StringBuilder();
       }
-    } while (!tryEmit(((Long)localIterator.next()).longValue()));
+      finally {}
+    }
+    ((StringBuilder)localObject4).append("Request can't be negative! ");
+    ((StringBuilder)localObject4).append(paramLong);
+    Object localObject4 = new IllegalStateException(((StringBuilder)localObject4).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject4);
+    }
   }
   
   public void requestRemaining(long paramLong)
   {
-    if (paramLong == 0L) {}
-    do
-    {
+    if (paramLong == 0L) {
       return;
-      if (paramLong < 0L) {
-        throw new IllegalStateException("Request can't be negative! " + paramLong);
-      }
+    }
+    if (paramLong >= 0L) {
       try
       {
+        Object localObject1;
         if (this.emitting)
         {
-          List localList2 = this.requests;
-          Object localObject1 = localList2;
-          if (localList2 == null)
+          List localList = this.requests;
+          localObject1 = localList;
+          if (localList == null)
           {
             localObject1 = new ArrayList();
             this.requests = ((List)localObject1);
@@ -191,37 +210,53 @@ final class AsyncOnSubscribe$AsyncOuterManager<S, T>
           ((List)localObject1).add(Long.valueOf(paramLong));
           return;
         }
-      }
-      finally {}
-      this.emitting = true;
-    } while (tryEmit(paramLong));
-    Iterator localIterator;
-    do
-    {
-      while (!localIterator.hasNext())
-      {
-        try
+        this.emitting = true;
+        if (tryEmit(paramLong)) {
+          return;
+        }
+        for (;;)
         {
-          List localList1 = this.requests;
-          if (localList1 == null)
+          try
           {
-            this.emitting = false;
+            localObject1 = this.requests;
+            if (localObject1 == null)
+            {
+              this.emitting = false;
+              return;
+            }
+            this.requests = null;
+            localObject1 = ((List)localObject1).iterator();
+            do
+            {
+              if (!((Iterator)localObject1).hasNext()) {
+                break;
+              }
+            } while (!tryEmit(((Long)((Iterator)localObject1).next()).longValue()));
             return;
           }
+          finally {}
         }
-        finally {}
-        this.requests = null;
-        localIterator = localObject3.iterator();
+        localObject4 = new StringBuilder();
       }
-    } while (!tryEmit(((Long)localIterator.next()).longValue()));
+      finally {}
+    }
+    ((StringBuilder)localObject4).append("Request can't be negative! ");
+    ((StringBuilder)localObject4).append(paramLong);
+    Object localObject4 = new IllegalStateException(((StringBuilder)localObject4).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject4);
+    }
   }
   
   void setConcatProducer(Producer paramProducer)
   {
-    if (this.concatProducer != null) {
-      throw new IllegalStateException("setConcatProducer may be called at most once!");
+    if (this.concatProducer == null)
+    {
+      this.concatProducer = paramProducer;
+      return;
     }
-    this.concatProducer = paramProducer;
+    throw new IllegalStateException("setConcatProducer may be called at most once!");
   }
   
   boolean tryEmit(long paramLong)
@@ -236,7 +271,15 @@ final class AsyncOnSubscribe$AsyncOuterManager<S, T>
       this.onNextCalled = false;
       this.expectedDelivery = paramLong;
       nextIteration(paramLong);
-      if ((this.hasTerminated) || (isUnsubscribed()))
+      if ((!this.hasTerminated) && (!isUnsubscribed()))
+      {
+        if (!this.onNextCalled)
+        {
+          handleThrownError(new IllegalStateException("No events emitted!"));
+          return true;
+        }
+      }
+      else
       {
         cleanup();
         return true;
@@ -245,11 +288,6 @@ final class AsyncOnSubscribe$AsyncOuterManager<S, T>
     catch (Throwable localThrowable)
     {
       handleThrownError(localThrowable);
-      return true;
-    }
-    if (!this.onNextCalled)
-    {
-      handleThrownError(new IllegalStateException("No events emitted!"));
       return true;
     }
     return false;
@@ -276,7 +314,7 @@ final class AsyncOnSubscribe$AsyncOuterManager<S, T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.observables.AsyncOnSubscribe.AsyncOuterManager
  * JD-Core Version:    0.7.0.1
  */

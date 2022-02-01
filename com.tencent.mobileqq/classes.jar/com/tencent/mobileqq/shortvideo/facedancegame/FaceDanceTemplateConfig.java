@@ -13,40 +13,43 @@ public class FaceDanceTemplateConfig
   
   public static FaceDanceTemplateConfig parseConfig(String paramString, List<ExpressionTemplateConfig> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    try
+    if (paramList != null)
     {
-      FaceDanceTemplateConfig localFaceDanceTemplateConfig = new FaceDanceTemplateConfig();
-      paramString = new JSONObject(paramString);
-      String str = paramString.getString("expression");
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ExpressionTemplateConfig localExpressionTemplateConfig = (ExpressionTemplateConfig)paramList.next();
-        if (localExpressionTemplateConfig.expressionID.equals(str)) {
-          localFaceDanceTemplateConfig.mExpressionConfig = localExpressionTemplateConfig;
-        }
-      }
-      if (localFaceDanceTemplateConfig.mExpressionConfig == null) {
+      if (paramList.size() == 0) {
         return null;
       }
-      localFaceDanceTemplateConfig.mTemplateID = paramString.getString("id");
-      localFaceDanceTemplateConfig.mGestureType = paramString.getString("gesture");
-      localFaceDanceTemplateConfig.threshold = ((float)paramString.getDouble("expression_threshold"));
-      return localFaceDanceTemplateConfig;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+      try
+      {
+        FaceDanceTemplateConfig localFaceDanceTemplateConfig = new FaceDanceTemplateConfig();
+        paramString = new JSONObject(paramString);
+        String str = paramString.getString("expression");
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          ExpressionTemplateConfig localExpressionTemplateConfig = (ExpressionTemplateConfig)paramList.next();
+          if (localExpressionTemplateConfig.expressionID.equals(str)) {
+            localFaceDanceTemplateConfig.mExpressionConfig = localExpressionTemplateConfig;
+          }
+        }
+        if (localFaceDanceTemplateConfig.mExpressionConfig == null) {
+          return null;
+        }
+        localFaceDanceTemplateConfig.mTemplateID = paramString.getString("id");
+        localFaceDanceTemplateConfig.mGestureType = paramString.getString("gesture");
+        localFaceDanceTemplateConfig.threshold = ((float)paramString.getDouble("expression_threshold"));
+        return localFaceDanceTemplateConfig;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceTemplateConfig
  * JD-Core Version:    0.7.0.1
  */

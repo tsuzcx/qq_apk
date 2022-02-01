@@ -18,12 +18,20 @@ public class ARCloudLBSLocationCheckResult
   
   public String toString()
   {
-    return "ARCloudLBSLocationCheckResult{retCode = " + this.jdField_a_of_type_Int + ", imageId = " + this.jdField_a_of_type_JavaLangString + ", nearestPOIInfo = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARCloudLBSLocationCheckResult{retCode = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", imageId = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", nearestPOIInfo = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult
  * JD-Core Version:    0.7.0.1
  */

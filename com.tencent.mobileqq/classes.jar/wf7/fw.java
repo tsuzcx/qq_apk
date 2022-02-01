@@ -18,22 +18,24 @@ public class fw
   public cd H(int paramInt)
   {
     Object localObject = this.rH.av(paramInt);
-    if ((localObject != null) && (((ConchPushInfo)localObject).bs != null) && (((ConchPushInfo)localObject).bs.bj != null)) {}
-    for (localObject = (f)df.a(((ConchPushInfo)localObject).bs.bj, new f(), false);; localObject = null)
-    {
-      if ((localObject != null) && (((f)localObject).by != null)) {
-        return new cd(paramInt, ((f)localObject).by);
-      }
-      return new cd(paramInt, null);
+    if ((localObject != null) && (((ConchPushInfo)localObject).bs != null) && (((ConchPushInfo)localObject).bs.bj != null)) {
+      localObject = (f)df.a(((ConchPushInfo)localObject).bs.bj, new f(), false);
+    } else {
+      localObject = null;
     }
+    if ((localObject != null) && (((f)localObject).by != null)) {
+      return new cd(paramInt, ((f)localObject).by);
+    }
+    return new cd(paramInt, null);
   }
   
   public boolean a(int paramInt, a parama)
   {
-    if (this.rH == null) {
+    gh localgh = this.rH;
+    if (localgh == null) {
       return false;
     }
-    return this.rH.a(paramInt, parama);
+    return localgh.a(paramInt, parama);
   }
   
   public boolean a(int paramInt, cf paramcf)
@@ -47,23 +49,25 @@ public class fw
   
   public ConchPushInfo av(int paramInt)
   {
-    if (this.rH == null) {
+    gh localgh = this.rH;
+    if (localgh == null) {
       return null;
     }
-    return this.rH.av(paramInt);
+    return localgh.av(paramInt);
   }
   
   public void aw(int paramInt)
   {
-    if (this.rH == null) {
+    gh localgh = this.rH;
+    if (localgh == null) {
       return;
     }
-    this.rH.aw(paramInt);
+    localgh.aw(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fw
  * JD-Core Version:    0.7.0.1
  */

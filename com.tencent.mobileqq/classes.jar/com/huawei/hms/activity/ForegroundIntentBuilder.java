@@ -12,23 +12,25 @@ import com.huawei.hms.utils.Util;
 
 public class ForegroundIntentBuilder
 {
-  private Activity a;
-  private RequestHeader b;
-  private String c;
-  private ForegroundInnerHeader d;
+  private Activity activity;
+  private String foregroundBody;
+  private RequestHeader foregroundHeader;
+  private ForegroundInnerHeader innerHeader;
   
   public ForegroundIntentBuilder(Activity paramActivity)
   {
-    if (paramActivity == null) {
-      throw new IllegalArgumentException("listener must not be null.");
+    if (paramActivity != null)
+    {
+      this.activity = paramActivity;
+      this.foregroundHeader = new RequestHeader();
+      this.foregroundHeader.setPkgName(paramActivity.getPackageName());
+      this.foregroundHeader.setSdkVersion(50200300);
+      this.foregroundBody = "";
+      this.innerHeader = new ForegroundInnerHeader();
+      this.innerHeader.setApkVersion(30000000);
+      return;
     }
-    this.a = paramActivity;
-    this.b = new RequestHeader();
-    this.b.setPkgName(paramActivity.getPackageName());
-    this.b.setSdkVersion(50000301);
-    this.c = "";
-    this.d = new ForegroundInnerHeader();
-    this.d.setApkVersion(30000000);
+    throw new IllegalArgumentException("listener must not be null.");
   }
   
   public static void registerResponseCallback(String paramString, BusResponseCallback paramBusResponseCallback)
@@ -43,81 +45,101 @@ public class ForegroundIntentBuilder
   
   public Intent build()
   {
-    Intent localIntent = BridgeActivity.getIntentStartBridgeActivity(this.a, a.class.getName());
-    if (this.b.getAppID() == null) {
-      this.b.setAppID(Util.getAppId(this.a) + "|");
-    }
-    for (;;)
+    Intent localIntent = BridgeActivity.getIntentStartBridgeActivity(this.activity, ForegroundBusDelegate.class.getName());
+    RequestHeader localRequestHeader;
+    StringBuilder localStringBuilder;
+    if (this.foregroundHeader.getAppID() == null)
     {
-      if (TextUtils.isEmpty(this.b.getTransactionId())) {
-        this.b.setTransactionId(TransactionIdCreater.getId(this.b.getAppID(), "hub.request"));
-      }
-      localIntent.putExtra("HMS_FOREGROUND_REQ_HEADER", this.b.toJson());
-      localIntent.putExtra("HMS_FOREGROUND_REQ_BODY", this.c);
-      localIntent.putExtra("HMS_FOREGROUND_REQ_INNER", this.d.toJson());
-      return localIntent;
-      this.b.setAppID(Util.getAppId(this.a) + "|" + this.b.getAppID());
+      localRequestHeader = this.foregroundHeader;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Util.getAppId(this.activity));
+      localStringBuilder.append("|");
+      localRequestHeader.setAppID(localStringBuilder.toString());
     }
+    else
+    {
+      localRequestHeader = this.foregroundHeader;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Util.getAppId(this.activity));
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.foregroundHeader.getAppID());
+      localRequestHeader.setAppID(localStringBuilder.toString());
+    }
+    if (TextUtils.isEmpty(this.foregroundHeader.getTransactionId()))
+    {
+      localRequestHeader = this.foregroundHeader;
+      localRequestHeader.setTransactionId(TransactionIdCreater.getId(localRequestHeader.getAppID(), "hub.request"));
+    }
+    localIntent.putExtra("HMS_FOREGROUND_REQ_HEADER", this.foregroundHeader.toJson());
+    localIntent.putExtra("HMS_FOREGROUND_REQ_BODY", this.foregroundBody);
+    localIntent.putExtra("HMS_FOREGROUND_REQ_INNER", this.innerHeader.toJson());
+    return localIntent;
   }
   
   public ForegroundIntentBuilder setAction(String paramString)
   {
-    this.b.setApiName(paramString);
+    this.foregroundHeader.setApiName(paramString);
+    return this;
+  }
+  
+  public ForegroundIntentBuilder setApiLevel(int paramInt)
+  {
+    this.foregroundHeader.setApiLevel(paramInt);
     return this;
   }
   
   public ForegroundIntentBuilder setKitSdkVersion(int paramInt)
   {
-    this.b.setKitSdkVersion(paramInt);
+    this.foregroundHeader.setKitSdkVersion(paramInt);
     return this;
   }
   
   public ForegroundIntentBuilder setMinApkVersion(int paramInt)
   {
-    this.d.setApkVersion(paramInt);
+    this.innerHeader.setApkVersion(paramInt);
     return this;
   }
   
   public ForegroundIntentBuilder setRequestBody(String paramString)
   {
-    this.c = paramString;
+    this.foregroundBody = paramString;
     return this;
   }
   
   public ForegroundIntentBuilder setResponseCallback(String paramString)
   {
-    this.d.setResponseCallbackKey(paramString);
+    this.innerHeader.setResponseCallbackKey(paramString);
     return this;
   }
   
   public ForegroundIntentBuilder setResponseCallback(String paramString, BusResponseCallback paramBusResponseCallback)
   {
-    this.d.setResponseCallbackKey(paramString);
+    this.innerHeader.setResponseCallbackKey(paramString);
     ForegroundBusResponseMgr.getInstance().registerObserver(paramString, paramBusResponseCallback);
     return this;
   }
   
   public ForegroundIntentBuilder setServiceName(String paramString)
   {
-    this.b.setSrvName(paramString);
+    this.foregroundHeader.setSrvName(paramString);
     return this;
   }
   
   public ForegroundIntentBuilder setSubAppId(String paramString)
   {
-    this.b.setAppID(paramString);
+    this.foregroundHeader.setAppID(paramString);
     return this;
   }
   
   public ForegroundIntentBuilder setTransactionId(String paramString)
   {
-    this.b.setTransactionId(paramString);
+    this.foregroundHeader.setTransactionId(paramString);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.activity.ForegroundIntentBuilder
  * JD-Core Version:    0.7.0.1
  */

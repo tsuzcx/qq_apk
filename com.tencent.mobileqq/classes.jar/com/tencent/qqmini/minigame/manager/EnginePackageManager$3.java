@@ -12,25 +12,31 @@ final class EnginePackageManager$3
 {
   public void run()
   {
-    Object localObject = FileUtils.getFiles(EnginePackageManager.access$400(), false, 0);
-    if (localObject == null) {}
-    for (;;)
-    {
+    Object localObject1 = FileUtils.getFiles(EnginePackageManager.access$400(), false, 0);
+    if (localObject1 == null) {
       return;
-      Version localVersion1 = EnginePackageManager.access$500();
-      GameLog.getInstance().i("GameEnvManager[MiniEng]", "deleteOldVersionTritonEngine local:" + localVersion1);
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+    }
+    Version localVersion = EnginePackageManager.access$500();
+    Object localObject2 = GameLog.getInstance();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("deleteOldVersionTritonEngine local:");
+    ((StringBuilder)localObject3).append(localVersion);
+    ((GameLog)localObject2).i("GameEnvManager[MiniEng]", ((StringBuilder)localObject3).toString());
+    localObject1 = ((ArrayList)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (FileInfo)((Iterator)localObject1).next();
+      if (((FileInfo)localObject2).isDirectory())
       {
-        FileInfo localFileInfo = (FileInfo)((Iterator)localObject).next();
-        if (localFileInfo.isDirectory())
+        localObject3 = EnginePackageManager.access$600((FileInfo)localObject2);
+        if (localVersion.compareTo((Version)localObject3) >= 0)
         {
-          Version localVersion2 = EnginePackageManager.access$600(localFileInfo);
-          if (localVersion1.compareTo(localVersion2) >= 0)
-          {
-            GameLog.getInstance().i("GameEnvManager[MiniEng]", "deleteOldVersionTritonEngine delete:" + localVersion2);
-            FileUtils.deleteFile(localFileInfo.getPath());
-          }
+          GameLog localGameLog = GameLog.getInstance();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("deleteOldVersionTritonEngine delete:");
+          localStringBuilder.append(localObject3);
+          localGameLog.i("GameEnvManager[MiniEng]", localStringBuilder.toString());
+          FileUtils.deleteFile(((FileInfo)localObject2).getPath());
         }
       }
     }
@@ -38,7 +44,7 @@ final class EnginePackageManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.EnginePackageManager.3
  * JD-Core Version:    0.7.0.1
  */

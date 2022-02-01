@@ -26,23 +26,20 @@ public class JWTUtil
       paramString = KeyFactory.getInstance("RSA").generatePublic(paramString);
       return paramString;
     }
+    catch (InvalidKeySpecException paramString)
+    {
+      QLog.e("JWTUtil", 1, new Object[] { "getPublicKey InvalidKeySpecException : ", paramString.getMessage() });
+    }
     catch (NoSuchAlgorithmException paramString)
     {
       QLog.e("JWTUtil", 1, new Object[] { "getPublicKey NoSuchAlgorithmException : ", paramString.getMessage() });
-      return null;
     }
-    catch (InvalidKeySpecException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("JWTUtil", 1, new Object[] { "getPublicKey InvalidKeySpecException : ", paramString.getMessage() });
-      }
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.jwt.JWTUtil
  * JD-Core Version:    0.7.0.1
  */

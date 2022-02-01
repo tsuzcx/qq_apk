@@ -14,7 +14,10 @@ class BaseWebDialogFragment$2
   
   public void onLoginFail(int paramInt)
   {
-    QLog.e("BaseWebDialogFragment", 1, "wait login--fail--errCode=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("wait login--fail--errCode=");
+    localStringBuilder.append(paramInt);
+    QLog.e("BaseWebDialogFragment", 1, localStringBuilder.toString());
   }
   
   public void onLoginSucceed()
@@ -24,7 +27,7 @@ class BaseWebDialogFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.dialog.BaseWebDialogFragment.2
  * JD-Core Version:    0.7.0.1
  */

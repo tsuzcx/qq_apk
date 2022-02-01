@@ -1,37 +1,27 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.mobileqq.app.HotChatObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 class Conversation$55
-  extends HotChatObserver
+  extends BroadcastReceiver
 {
   Conversation$55(Conversation paramConversation) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, Long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetUserCreateHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", troopOwner=" + paramLong);
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.a.a(0L);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3, List<Long> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", jumpurl=" + paramString3);
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.a.a(0L);
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext))) {
+      ThreadManager.getSubThreadHandler().post(Conversation.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.55
  * JD-Core Version:    0.7.0.1
  */

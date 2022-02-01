@@ -7,34 +7,26 @@ import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.AssetManager;
 import android.net.Uri;
-import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.ProtoServlet;
 import com.tencent.biz.common.offline.util.DefaultThreadManager;
 import com.tencent.biz.common.offline.util.ILog;
 import com.tencent.biz.common.offline.util.IOfflineDownloader;
 import com.tencent.biz.common.offline.util.IThreadManager;
 import com.tencent.biz.common.offline.util.MyLog;
 import com.tencent.biz.common.offline.util.OfflineDownloader;
-import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.biz.common.util.OfflineSecurity;
 import com.tencent.biz.common.util.QQThreadManager;
-import com.tencent.biz.common.util.ReportUtil;
 import com.tencent.biz.common.util.Util;
 import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.open.base.BspatchUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -47,16 +39,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.im.sso.offlinpkg.OfflinePkg.BidPkg;
-import tencent.im.sso.offlinpkg.OfflinePkg.ReqBody;
 
 public class HtmlOffline
 {
@@ -86,67 +74,92 @@ public class HtmlOffline
   
   protected static int a(Context paramContext, String paramString)
   {
-    return paramContext.getSharedPreferences("local_html", 4).getInt("expire_" + paramString, 0);
+    paramContext = paramContext.getSharedPreferences("local_html", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("expire_");
+    localStringBuilder.append(paramString);
+    return paramContext.getInt(localStringBuilder.toString(), 0);
   }
   
   protected static long a(Context paramContext, String paramString)
   {
-    return paramContext.getSharedPreferences("local_html", 4).getLong("last_up_" + paramString, 0L);
+    paramContext = paramContext.getSharedPreferences("local_html", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("last_up_");
+    localStringBuilder.append(paramString);
+    return paramContext.getLong(localStringBuilder.toString(), 0L);
   }
   
   @SuppressLint({"NewApi"})
   public static HtmlOffline.MyWebResourceResponse a(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (TextUtils.isEmpty(paramString2)) || (!paramString2.startsWith("http")))
+    if ((paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith("http")))
     {
-      if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-        jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "shouldInterceptRequest: businessId null ");
+      Object localObject1 = OfflineEnvHelper.a(paramString1);
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        return null;
       }
-      return null;
-    }
-    Object localObject = OfflineEnvHelper.a(paramString1);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return null;
-    }
-    paramString1 = (String)localObject + paramString1;
-    paramString2 = d(paramString2);
-    localObject = paramString1 + "/" + paramString2;
-    if (!new File((String)localObject).exists())
-    {
-      if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b()) {
-        jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 4, "getResponse local file not exists :" + paramString2);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramString1);
+      paramString1 = ((StringBuilder)localObject2).toString();
+      paramString2 = d(paramString2);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append("/");
+      ((StringBuilder)localObject1).append(paramString2);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      if (!new File((String)localObject1).exists())
+      {
+        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b())
+        {
+          paramString1 = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getResponse local file not exists :");
+          ((StringBuilder)localObject1).append(paramString2);
+          paramString1.a("HtmlCheckUpdate", 4, ((StringBuilder)localObject1).toString());
+        }
+        return null;
       }
-      return null;
-    }
-    paramString1 = "text/html";
-    if (paramString2.contains(".css")) {
-      paramString1 = "text/css";
-    }
-    for (;;)
-    {
-      if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b()) {
-        jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 4, "getResponse ****************** :" + paramString2);
+      if (paramString2.contains(".css")) {
+        paramString1 = "text/css";
+      } else if (paramString2.contains(".js")) {
+        paramString1 = "application/x-javascript";
+      } else if ((!paramString2.contains(".jpg")) && (!paramString2.contains(".gif")) && (!paramString2.contains(".png")) && (!paramString2.contains(".jpeg"))) {
+        paramString1 = "text/html";
+      } else {
+        paramString1 = "image/*";
+      }
+      if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b())
+      {
+        localObject2 = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getResponse ****************** :");
+        localStringBuilder.append(paramString2);
+        ((ILog)localObject2).a("HtmlCheckUpdate", 4, localStringBuilder.toString());
       }
       try
       {
-        localObject = new BufferedInputStream(new FileInputStream((String)localObject));
-        return new HtmlOffline.MyWebResourceResponse(paramString1, (InputStream)localObject);
+        localObject1 = new BufferedInputStream(new FileInputStream((String)localObject1));
+        return new HtmlOffline.MyWebResourceResponse(paramString1, (InputStream)localObject1);
       }
       catch (FileNotFoundException paramString1)
       {
         paramString1.printStackTrace();
-        if (!jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b()) {
-          break label350;
+        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b())
+        {
+          paramString1 = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getResponse get local file fail:");
+          ((StringBuilder)localObject1).append(paramString2);
+          paramString1.a("HtmlCheckUpdate", 4, ((StringBuilder)localObject1).toString());
         }
-        jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 4, "getResponse get local file fail:" + paramString2);
-      }
-      if (paramString2.contains(".js")) {
-        paramString1 = "application/x-javascript";
-      } else if ((paramString2.contains(".jpg")) || (paramString2.contains(".gif")) || (paramString2.contains(".png")) || (paramString2.contains(".jpeg"))) {
-        paramString1 = "image/*";
+        return null;
       }
     }
-    label350:
+    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
+      jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "shouldInterceptRequest: businessId null ");
+    }
     return null;
   }
   
@@ -155,43 +168,47 @@ public class HtmlOffline
     StringBuffer localStringBuffer = new StringBuffer();
     if (Environment.getExternalStorageState().equals("mounted"))
     {
-      str = b(OfflineEnvHelper.b());
-      if (!TextUtils.isEmpty(str)) {
-        localStringBuffer.append(str);
+      localObject = b(OfflineEnvHelper.b());
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localStringBuffer.append((String)localObject);
       }
     }
     if (jdField_a_of_type_AndroidContentContext == null) {
-      jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication().getApplicationContext();
+      jdField_a_of_type_AndroidContentContext = BaseApplication.getContext().getApplicationContext();
     }
-    String str = b(OfflineEnvHelper.a());
-    if (!TextUtils.isEmpty(str))
+    Object localObject = b(OfflineEnvHelper.a());
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       if (localStringBuffer.length() > 0) {
         localStringBuffer.append(",");
       }
-      localStringBuffer.append(str);
+      localStringBuffer.append((String)localObject);
     }
-    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-      jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b("HtmlCheckUpdate", 2, "getLocalOfflineVersions:" + localStringBuffer.toString());
+    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+    {
+      localObject = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLocalOfflineVersions:");
+      localStringBuilder.append(localStringBuffer.toString());
+      ((ILog)localObject).b("HtmlCheckUpdate", 2, localStringBuilder.toString());
     }
     return localStringBuffer.toString();
   }
   
   public static String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    long l1;
-    long l2;
-    do
-    {
-      do
-      {
-        return null;
-        paramString = a(paramString);
-      } while (paramString == null);
-      l1 = System.currentTimeMillis();
-      l2 = paramString.optLong("expired", 0L);
-    } while ((l2 > 0L) && (l1 > l2));
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    paramString = a(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = paramString.optLong("expired", 0L);
+    if ((l2 > 0L) && (l1 > l2)) {
+      return null;
+    }
     try
     {
       paramString = paramString.getString("version");
@@ -206,161 +223,162 @@ public class HtmlOffline
   
   public static String a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return paramString1;
-    }
-    if (paramString1.contains("#"))
+    Object localObject1 = paramString1;
+    if (!TextUtils.isEmpty(paramString1))
     {
-      String[] arrayOfString = paramString1.split("\\#");
-      String str = arrayOfString[0];
-      paramString1 = "";
-      int i = 1;
-      int j = arrayOfString.length;
-      while (i < j)
+      if (TextUtils.isEmpty(paramString2)) {
+        return paramString1;
+      }
+      if (paramString1.contains("#"))
       {
-        paramString1 = paramString1 + "#" + arrayOfString[i];
-        i += 1;
+        Object localObject2 = paramString1.split("\\#");
+        localObject1 = localObject2[0];
+        int j = localObject2.length;
+        int i = 1;
+        paramString1 = "";
+        StringBuilder localStringBuilder;
+        while (i < j)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString1);
+          localStringBuilder.append("#");
+          localStringBuilder.append(localObject2[i]);
+          paramString1 = localStringBuilder.toString();
+          i += 1;
+        }
+        if (((String)localObject1).contains("?"))
+        {
+          localObject2 = new StringBuilder();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("?");
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append("&");
+          ((StringBuilder)localObject2).append(((String)localObject1).replace("?", localStringBuilder.toString()));
+          ((StringBuilder)localObject2).append(paramString1);
+          return ((StringBuilder)localObject2).toString();
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("?");
+        ((StringBuilder)localObject2).append(paramString2);
+        ((StringBuilder)localObject2).append(paramString1);
+        return ((StringBuilder)localObject2).toString();
       }
-      if (str.contains("?")) {
-        return str.replace("?", new StringBuilder().append("?").append(paramString2).append("&").toString()) + paramString1;
+      if (paramString1.contains("?"))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("?");
+        ((StringBuilder)localObject1).append(paramString2);
+        ((StringBuilder)localObject1).append("&");
+        return paramString1.replace("?", ((StringBuilder)localObject1).toString());
       }
-      return str + "?" + paramString2 + paramString1;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append("?");
+      ((StringBuilder)localObject1).append(paramString2);
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
-    if (paramString1.contains("?")) {
-      return paramString1.replace("?", "?" + paramString2 + "&");
-    }
-    return paramString1 + "?" + paramString2;
+    return localObject1;
   }
   
-  /* Error */
   public static JSONObject a(Context paramContext, String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnull +10 -> 11
-    //   4: aload_1
-    //   5: invokestatic 114	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8: ifeq +5 -> 13
-    //   11: aconst_null
-    //   12: areturn
-    //   13: new 78	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   20: aload_1
-    //   21: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: ldc 142
-    //   26: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: ldc 22
-    //   31: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   37: astore_1
-    //   38: new 78	java/lang/StringBuilder
-    //   41: dup
-    //   42: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   45: ldc_w 292
-    //   48: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: aload_1
-    //   52: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   58: astore_1
-    //   59: aload_0
-    //   60: invokevirtual 296	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   63: aload_1
-    //   64: invokevirtual 302	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   67: astore_1
-    //   68: aload_1
-    //   69: invokestatic 307	com/tencent/biz/common/util/Util:a	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   72: astore_0
-    //   73: aload_1
-    //   74: invokevirtual 312	java/io/InputStream:close	()V
-    //   77: new 259	org/json/JSONObject
-    //   80: dup
-    //   81: aload_0
-    //   82: invokespecial 313	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   85: astore_0
-    //   86: aload_0
-    //   87: areturn
-    //   88: astore_0
-    //   89: aload_0
-    //   90: invokevirtual 268	org/json/JSONException:printStackTrace	()V
-    //   93: getstatic 53	com/tencent/biz/common/offline/HtmlOffline:jdField_a_of_type_ComTencentBizCommonOfflineUtilILog	Lcom/tencent/biz/common/offline/util/ILog;
-    //   96: invokeinterface 125 1 0
-    //   101: ifeq +17 -> 118
-    //   104: getstatic 53	com/tencent/biz/common/offline/HtmlOffline:jdField_a_of_type_ComTencentBizCommonOfflineUtilILog	Lcom/tencent/biz/common/offline/util/ILog;
-    //   107: ldc 127
-    //   109: iconst_2
-    //   110: ldc_w 315
-    //   113: invokeinterface 132 4 0
-    //   118: aconst_null
-    //   119: areturn
-    //   120: astore_0
-    //   121: aconst_null
-    //   122: areturn
-    //   123: astore_1
-    //   124: aload_1
-    //   125: invokevirtual 316	java/io/IOException:printStackTrace	()V
-    //   128: goto -51 -> 77
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	131	0	paramContext	Context
-    //   0	131	1	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   77	86	88	org/json/JSONException
-    //   59	68	120	java/io/IOException
-    //   73	77	123	java/io/IOException
+    if (paramContext != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("/");
+      localStringBuilder.append("config.json");
+      paramString = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("html5/");
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
+    }
+    try
+    {
+      paramString = paramContext.getAssets().open(paramString);
+      paramContext = Util.a(paramString);
+      try
+      {
+        paramString.close();
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+      }
+      try
+      {
+        paramContext = new JSONObject(paramContext);
+        return paramContext;
+      }
+      catch (JSONException paramContext)
+      {
+        paramContext.printStackTrace();
+        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
+          jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "error:getAssetConfig");
+        }
+      }
+      return null;
+    }
+    catch (IOException paramContext) {}
+    return null;
   }
   
   public static JSONObject a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      String str = OfflineEnvHelper.a(paramString);
-      if (!TextUtils.isEmpty(str))
+    }
+    String str = OfflineEnvHelper.a(paramString);
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("/");
+    localStringBuilder.append("config.json");
+    paramString = new File(localStringBuilder.toString());
+    if (paramString.exists())
+    {
+      try
       {
-        paramString = new File(str + paramString + "/" + "config.json");
-        if (paramString.exists()) {
-          try
-          {
-            paramString = new FileInputStream(paramString);
-            if (paramString != null) {
-              str = Util.a(paramString);
-            }
-          }
-          catch (IOException paramString)
-          {
-            try
-            {
-              paramString.close();
-              try
-              {
-                paramString = new JSONObject(str);
-                return paramString;
-              }
-              catch (JSONException paramString)
-              {
-                paramString.printStackTrace();
-                return null;
-              }
-              catch (Exception paramString)
-              {
-                paramString.printStackTrace();
-              }
-              paramString = paramString;
-              paramString.printStackTrace();
-              paramString = null;
-            }
-            catch (IOException paramString)
-            {
-              for (;;)
-              {
-                paramString.printStackTrace();
-              }
-            }
-          }
-        }
+        paramString = new FileInputStream(paramString);
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+        paramString = null;
+      }
+      if (paramString == null) {
+        return null;
+      }
+      str = Util.a(paramString);
+      try
+      {
+        paramString.close();
+      }
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+      }
+      try
+      {
+        paramString = new JSONObject(str);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
       }
     }
     return null;
@@ -373,7 +391,7 @@ public class HtmlOffline
       a(new QQThreadManager());
       a(new OfflineDownloader());
       a(new MyLog());
-      a(BaseApplicationImpl.getContext());
+      a(BaseApplication.getContext());
     }
   }
   
@@ -385,7 +403,10 @@ public class HtmlOffline
   protected static void a(Context paramContext, String paramString)
   {
     paramContext = paramContext.getSharedPreferences("local_html", 4);
-    paramString = "last_up_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("last_up_");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
     paramContext = paramContext.edit();
     paramContext.putLong(paramString, System.currentTimeMillis());
     paramContext.commit();
@@ -394,7 +415,10 @@ public class HtmlOffline
   public static void a(Context paramContext, String paramString, int paramInt)
   {
     paramContext = paramContext.getSharedPreferences("local_html", 4);
-    paramString = "expire_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("expire_");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
     paramContext = paramContext.edit();
     paramContext.putInt(paramString, paramInt);
     paramContext.commit();
@@ -405,55 +429,62 @@ public class HtmlOffline
     if (paramAsyncBack == null) {
       return;
     }
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      paramAsyncBack.loaded(null, 1);
-      return;
-    }
-    String str = OfflineEnvHelper.b(paramString1);
-    if (TextUtils.isEmpty(str))
-    {
-      paramAsyncBack.loaded(null, 3);
-      return;
-    }
-    JSONObject localJSONObject = a(paramString1);
-    if (localJSONObject != null)
-    {
-      l1 = 30L;
-      try
+      String str = OfflineEnvHelper.b(paramString1);
+      if (TextUtils.isEmpty(str))
       {
-        l2 = localJSONObject.getLong("frequency");
-        l1 = l2;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          long l2;
-          localException.printStackTrace();
-        }
-      }
-      l2 = (System.currentTimeMillis() - a(paramContext, paramString1)) / 60000L;
-      if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-        jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "checkUpdate check freq:" + l1 + ", time:" + l2);
-      }
-      if (l2 < l1)
-      {
-        paramAsyncBack.loaded(null, 5);
+        paramAsyncBack.loaded(null, 3);
         return;
       }
-    }
-    if (BidDownloader.a(paramString1))
-    {
-      paramAsyncBack.loaded(null, 7);
+      JSONObject localJSONObject = a(paramString1);
+      if (localJSONObject != null)
+      {
+        l1 = 30L;
+        try
+        {
+          l2 = localJSONObject.getLong("frequency");
+          l1 = l2;
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+        long l2 = (System.currentTimeMillis() - a(paramContext, paramString1)) / 60000L;
+        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+        {
+          localObject = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("checkUpdate check freq:");
+          localStringBuilder.append(l1);
+          localStringBuilder.append(", time:");
+          localStringBuilder.append(l2);
+          ((ILog)localObject).a("HtmlCheckUpdate", 2, localStringBuilder.toString());
+        }
+        if (l2 < l1)
+        {
+          paramAsyncBack.loaded(null, 5);
+          return;
+        }
+      }
+      if (BidDownloader.a(paramString1))
+      {
+        paramAsyncBack.loaded(null, 7);
+        return;
+      }
+      BidDownloader.a(paramString1);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(".zip");
+      str = ((StringBuilder)localObject).toString();
+      long l1 = System.currentTimeMillis();
+      localObject = new HashMap();
+      ((HashMap)localObject).put("Accept-Encoding", "gzip");
+      jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new HtmlOffline.5(paramContext, paramString2, paramString1, str, l1, paramAsyncBack, (HashMap)localObject));
       return;
     }
-    BidDownloader.a(paramString1);
-    str = str + paramString1 + ".zip";
-    long l1 = System.currentTimeMillis();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("Accept-Encoding", "gzip");
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new HtmlOffline.6(paramContext, paramString2, paramString1, str, l1, paramAsyncBack, localHashMap));
+    paramAsyncBack.loaded(null, 1);
   }
   
   public static void a(ILog paramILog)
@@ -481,62 +512,73 @@ public class HtmlOffline
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    for (;;)
+    try
+    {
+      i = Integer.valueOf(paramString1).intValue();
+    }
+    catch (NumberFormatException paramString1)
     {
       int i;
-      int j;
-      try
-      {
-        i = Integer.valueOf(paramString1).intValue();
-        if (paramString3 != null) {
-          break label292;
-        }
-        paramString1 = "";
-        paramString3 = "";
-        try
-        {
-          if (jdField_a_of_type_AndroidContentContext == null) {
-            jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-          }
-          String str = jdField_a_of_type_AndroidContentContext.getPackageManager().getPackageInfo(jdField_a_of_type_AndroidContentContext.getPackageName(), 0).versionName;
-          paramString3 = str;
-        }
-        catch (PackageManager.NameNotFoundException localNameNotFoundException)
-        {
-          localNameNotFoundException.printStackTrace();
-          continue;
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          continue;
-        }
-        j = paramInt2;
-        if (paramInt2 == -1)
-        {
-          j = paramInt2;
-          if (jdField_a_of_type_AndroidContentContext != null) {
-            j = NetworkUtil.a(jdField_a_of_type_AndroidContentContext);
-          }
-        }
-        if (jdField_a_of_type_Boolean)
-        {
-          ReportUtil.a(null, "P_CliOper", "Pb_account_lifeservice", paramString3, "mp_msg_sys_14", paramString2, i, paramInt1, "" + paramLong, "3", "" + j, paramString1);
-          return;
-        }
-      }
-      catch (NumberFormatException paramString1)
-      {
-        i = -1;
-        continue;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("HtmlCheckUpdate", 2, "reportDownTime qver=" + paramString3 + ", mainAction=" + paramString2 + ", bid=" + i + ", code=" + paramInt1 + ", time=" + paramLong + ", netType=" + j + ", ex5=" + paramString1);
-      return;
-      label292:
+      label20:
+      Object localObject;
+      StringBuilder localStringBuilder;
+      break label20;
+    }
+    i = -1;
+    if (paramString3 == null) {
+      paramString1 = "";
+    } else {
       paramString1 = paramString3;
+    }
+    try
+    {
+      if (jdField_a_of_type_AndroidContentContext == null) {
+        jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+      }
+      paramString3 = jdField_a_of_type_AndroidContentContext.getPackageManager().getPackageInfo(jdField_a_of_type_AndroidContentContext.getPackageName(), 0).versionName;
+    }
+    catch (Exception paramString3)
+    {
+      paramString3.printStackTrace();
+    }
+    catch (PackageManager.NameNotFoundException paramString3)
+    {
+      paramString3.printStackTrace();
+    }
+    paramString3 = "";
+    if ((paramInt2 <= 0) && (jdField_a_of_type_AndroidContentContext != null)) {
+      paramInt2 = NetworkUtil.getNetWorkType();
+    }
+    if (jdField_a_of_type_Boolean)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramLong);
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt2);
+      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", paramString3, "mp_msg_sys_14", paramString2, i, paramInt1, (String)localObject, "3", localStringBuilder.toString(), paramString1);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportDownTime qver=");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append(", mainAction=");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(", bid=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", code=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", time=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", netType=");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(", ex5=");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.i("HtmlCheckUpdate", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -603,19 +645,26 @@ public class HtmlOffline
   
   protected static void a(String paramString, AppRuntime paramAppRuntime, boolean paramBoolean, AsyncBack paramAsyncBack)
   {
-    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-      jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:checkUp,url=" + paramString + ",callback=" + paramAsyncBack);
+    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+    {
+      localObject = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->offline:checkUp,url=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",callback=");
+      localStringBuilder.append(paramAsyncBack);
+      ((ILog)localObject).a("HtmlCheckUpdate", 2, localStringBuilder.toString());
     }
     if (paramAsyncBack == null) {
       return;
     }
-    String str = Uri.parse(paramString).getQueryParameter("_bid");
+    Object localObject = Uri.parse(paramString).getQueryParameter("_bid");
     int j = AuthorizeConfig.a(true).a(paramString);
     int i = j;
     if (j == 0) {
       i = 5;
     }
-    a(str, paramAppRuntime, paramAsyncBack, paramBoolean, i);
+    a((String)localObject, paramAppRuntime, paramAsyncBack, paramBoolean, i);
   }
   
   public static void a(ArrayList<String> paramArrayList, AppRuntime paramAppRuntime, AsyncBack paramAsyncBack, boolean paramBoolean1, boolean paramBoolean2)
@@ -623,117 +672,255 @@ public class HtmlOffline
     if (paramAsyncBack == null) {
       return;
     }
-    if ((paramAppRuntime == null) || (paramArrayList.size() == 0))
+    if ((paramAppRuntime != null) && (paramArrayList.size() != 0))
     {
-      paramAsyncBack.loaded("{\"r\":-1}", -1);
+      b(paramArrayList, paramAppRuntime, paramAsyncBack, paramBoolean1, paramBoolean2);
       return;
     }
-    b(paramArrayList, paramAppRuntime, paramAsyncBack, paramBoolean1, paramBoolean2);
+    paramAsyncBack.loaded("{\"r\":-1}", -1);
   }
   
+  /* Error */
   public static void a(AppRuntime paramAppRuntime, HashMap<String, String> paramHashMap, AsyncBack paramAsyncBack, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HtmlCheckUpdate", 2, "-->offline:checkUpdate");
-    }
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication().getApplicationContext(), ProtoServlet.class);
-    localNewIntent.putExtra("cmd", "offlinepkg.check");
-    OfflinePkg.ReqBody localReqBody = new OfflinePkg.ReqBody();
-    localReqBody.uint32_cmd.set(3);
-    localReqBody.uint32_platform.set(3);
-    if (paramHashMap == null) {
-      QLog.e("HtmlCheckUpdate", 1, String.format("bidAndVers is null", new Object[0]));
-    }
-    do
-    {
-      return;
-      if ((paramHashMap != null) && (paramHashMap.size() > 0))
-      {
-        QLog.d("HtmlCheckUpdate", 1, String.format("check update, QQ Version: %s", new Object[] { "8.5.5.5105" }));
-        if (QLog.isColorLevel()) {
-          QLog.d("OfflineCheck", 2, "send check" + paramHashMap.toString());
-        }
-      }
-      localReqBody.str_qver.set(ByteStringMicro.copyFrom("8.5.5.5105".getBytes()));
-      localReqBody.str_osrelease.set(ByteStringMicro.copyFrom(Build.VERSION.RELEASE.getBytes()));
-      i = NetworkUtil.a(paramAppRuntime.getApplication());
-      localReqBody.int32_network.set(i);
-      localReqBody.str_from.set(ByteStringMicro.copyFrom("predown".getBytes()));
-      Iterator localIterator = paramHashMap.keySet().iterator();
-      if (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        String str = (String)paramHashMap.get(localObject);
-        for (;;)
-        {
-          try
-          {
-            i = Integer.valueOf((String)localObject).intValue();
-          }
-          catch (NumberFormatException localNumberFormatException1)
-          {
-            try
-            {
-              k = Integer.valueOf(str).intValue();
-              j = i;
-              i = k;
-              if (j == 0) {
-                break;
-              }
-              localObject = new OfflinePkg.BidPkg();
-              ((OfflinePkg.BidPkg)localObject).uint32_bid.set(j);
-              ((OfflinePkg.BidPkg)localObject).uint32_pkg_id.add(Integer.valueOf(i));
-              localReqBody.st_bid_pkg.add((MessageMicro)localObject);
-            }
-            catch (Exception localException2)
-            {
-              for (;;)
-              {
-                int k;
-                int j = i;
-              }
-            }
-            catch (NumberFormatException localNumberFormatException2)
-            {
-              continue;
-            }
-            localNumberFormatException1 = localNumberFormatException1;
-            i = 0;
-            localNumberFormatException1.printStackTrace();
-            k = 0;
-            j = i;
-            i = k;
-            continue;
-          }
-          catch (Exception localException1)
-          {
-            j = 0;
-          }
-          i = 0;
-        }
-      }
-      try
-      {
-        localNewIntent.putExtra("data", localReqBody.toByteArray());
-        localNewIntent.setObserver(new HtmlOffline.5(localNewIntent, paramAsyncBack, paramBoolean1, paramBoolean3, paramAppRuntime, paramBoolean2));
-        paramAppRuntime.startServlet(localNewIntent);
-        return;
-      }
-      catch (Exception paramAppRuntime) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("HtmlCheckUpdate", 2, "offline check update exception!", paramAppRuntime);
+    // Byte code:
+    //   0: invokestatic 477	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 147
+    //   8: iconst_2
+    //   9: ldc_w 595
+    //   12: invokestatic 597	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: new 599	mqq/app/NewIntent
+    //   18: dup
+    //   19: aload_0
+    //   20: invokevirtual 605	mqq/app/AppRuntime:getApplication	()Lmqq/app/MobileQQ;
+    //   23: invokevirtual 608	mqq/app/MobileQQ:getApplicationContext	()Landroid/content/Context;
+    //   26: ldc_w 610
+    //   29: invokespecial 613	mqq/app/NewIntent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   32: astore 9
+    //   34: aload 9
+    //   36: ldc_w 615
+    //   39: ldc_w 617
+    //   42: invokevirtual 621	mqq/app/NewIntent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   45: pop
+    //   46: new 623	tencent/im/sso/offlinpkg/OfflinePkg$ReqBody
+    //   49: dup
+    //   50: invokespecial 624	tencent/im/sso/offlinpkg/OfflinePkg$ReqBody:<init>	()V
+    //   53: astore 10
+    //   55: aload 10
+    //   57: getfield 628	tencent/im/sso/offlinpkg/OfflinePkg$ReqBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   60: iconst_3
+    //   61: invokevirtual 633	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   64: aload 10
+    //   66: getfield 636	tencent/im/sso/offlinpkg/OfflinePkg$ReqBody:uint32_platform	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   69: iconst_3
+    //   70: invokevirtual 633	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   73: aload_1
+    //   74: ifnonnull +20 -> 94
+    //   77: ldc 147
+    //   79: iconst_1
+    //   80: ldc_w 638
+    //   83: iconst_0
+    //   84: anewarray 4	java/lang/Object
+    //   87: invokestatic 642	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   90: invokestatic 645	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   93: return
+    //   94: aload_1
+    //   95: ifnull +78 -> 173
+    //   98: aload_1
+    //   99: invokevirtual 646	java/util/HashMap:size	()I
+    //   102: ifle +71 -> 173
+    //   105: ldc 147
+    //   107: iconst_1
+    //   108: ldc_w 648
+    //   111: iconst_1
+    //   112: anewarray 4	java/lang/Object
+    //   115: dup
+    //   116: iconst_0
+    //   117: ldc_w 650
+    //   120: aastore
+    //   121: invokestatic 642	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   124: invokestatic 597	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   127: invokestatic 477	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   130: ifeq +43 -> 173
+    //   133: new 78	java/lang/StringBuilder
+    //   136: dup
+    //   137: invokespecial 79	java/lang/StringBuilder:<init>	()V
+    //   140: astore 8
+    //   142: aload 8
+    //   144: ldc_w 652
+    //   147: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: pop
+    //   151: aload 8
+    //   153: aload_1
+    //   154: invokevirtual 653	java/util/HashMap:toString	()Ljava/lang/String;
+    //   157: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: pop
+    //   161: ldc_w 655
+    //   164: iconst_2
+    //   165: aload 8
+    //   167: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokestatic 597	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   173: aload 10
+    //   175: getfield 659	tencent/im/sso/offlinpkg/OfflinePkg$ReqBody:str_qver	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   178: ldc_w 650
+    //   181: invokevirtual 663	java/lang/String:getBytes	()[B
+    //   184: invokestatic 669	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   187: invokevirtual 674	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
+    //   190: aload 10
+    //   192: getfield 677	tencent/im/sso/offlinpkg/OfflinePkg$ReqBody:str_osrelease	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   195: getstatic 682	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
+    //   198: invokevirtual 663	java/lang/String:getBytes	()[B
+    //   201: invokestatic 669	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   204: invokevirtual 674	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
+    //   207: invokestatic 456	com/tencent/mobileqq/utils/NetworkUtil:getNetWorkType	()I
+    //   210: istore 6
+    //   212: aload 10
+    //   214: getfield 686	tencent/im/sso/offlinpkg/OfflinePkg$ReqBody:int32_network	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   217: iload 6
+    //   219: invokevirtual 689	com/tencent/mobileqq/pb/PBInt32Field:set	(I)V
+    //   222: aload 10
+    //   224: getfield 692	tencent/im/sso/offlinpkg/OfflinePkg$ReqBody:str_from	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   227: ldc_w 694
+    //   230: invokevirtual 663	java/lang/String:getBytes	()[B
+    //   233: invokestatic 669	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   236: invokevirtual 674	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
+    //   239: aload_1
+    //   240: invokevirtual 698	java/util/HashMap:keySet	()Ljava/util/Set;
+    //   243: invokeinterface 701 1 0
+    //   248: astore 11
+    //   250: aload 11
+    //   252: invokeinterface 540 1 0
+    //   257: ifeq +126 -> 383
+    //   260: aload 11
+    //   262: invokeinterface 544 1 0
+    //   267: checkcast 20	java/lang/String
+    //   270: astore 8
+    //   272: aload_1
+    //   273: aload 8
+    //   275: invokevirtual 705	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   278: checkcast 20	java/lang/String
+    //   281: astore 12
+    //   283: aload 8
+    //   285: invokestatic 428	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   288: invokevirtual 431	java/lang/Integer:intValue	()I
+    //   291: istore 6
+    //   293: aload 12
+    //   295: invokestatic 428	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   298: invokevirtual 431	java/lang/Integer:intValue	()I
+    //   301: istore 7
+    //   303: goto +27 -> 330
+    //   306: astore 8
+    //   308: goto +14 -> 322
+    //   311: iconst_0
+    //   312: istore 6
+    //   314: goto +13 -> 327
+    //   317: astore 8
+    //   319: iconst_0
+    //   320: istore 6
+    //   322: aload 8
+    //   324: invokevirtual 706	java/lang/NumberFormatException:printStackTrace	()V
+    //   327: iconst_0
+    //   328: istore 7
+    //   330: iload 6
+    //   332: ifne +6 -> 338
+    //   335: goto -85 -> 250
+    //   338: new 708	tencent/im/sso/offlinpkg/OfflinePkg$BidPkg
+    //   341: dup
+    //   342: invokespecial 709	tencent/im/sso/offlinpkg/OfflinePkg$BidPkg:<init>	()V
+    //   345: astore 8
+    //   347: aload 8
+    //   349: getfield 712	tencent/im/sso/offlinpkg/OfflinePkg$BidPkg:uint32_bid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   352: iload 6
+    //   354: invokevirtual 633	com/tencent/mobileqq/pb/PBUInt32Field:set	(I)V
+    //   357: aload 8
+    //   359: getfield 716	tencent/im/sso/offlinpkg/OfflinePkg$BidPkg:uint32_pkg_id	Lcom/tencent/mobileqq/pb/PBRepeatField;
+    //   362: iload 7
+    //   364: invokestatic 719	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   367: invokevirtual 724	com/tencent/mobileqq/pb/PBRepeatField:add	(Ljava/lang/Object;)V
+    //   370: aload 10
+    //   372: getfield 728	tencent/im/sso/offlinpkg/OfflinePkg$ReqBody:st_bid_pkg	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   375: aload 8
+    //   377: invokevirtual 733	com/tencent/mobileqq/pb/PBRepeatMessageField:add	(Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   380: goto -130 -> 250
+    //   383: aload 9
+    //   385: ldc_w 735
+    //   388: aload 10
+    //   390: invokevirtual 738	tencent/im/sso/offlinpkg/OfflinePkg$ReqBody:toByteArray	()[B
+    //   393: invokevirtual 741	mqq/app/NewIntent:putExtra	(Ljava/lang/String;[B)Landroid/content/Intent;
+    //   396: pop
+    //   397: aload 9
+    //   399: new 743	com/tencent/biz/common/offline/HtmlOffline$HtmlOfflineObserver
+    //   402: dup
+    //   403: aload_2
+    //   404: aload_0
+    //   405: iload_3
+    //   406: iload 4
+    //   408: iload 5
+    //   410: aload 9
+    //   412: invokespecial 746	com/tencent/biz/common/offline/HtmlOffline$HtmlOfflineObserver:<init>	(Lcom/tencent/biz/common/offline/AsyncBack;Lmqq/app/AppRuntime;ZZZLmqq/app/NewIntent;)V
+    //   415: invokevirtual 750	mqq/app/NewIntent:setObserver	(Lmqq/observer/BusinessObserver;)V
+    //   418: aload_0
+    //   419: aload 9
+    //   421: invokevirtual 754	mqq/app/AppRuntime:startServlet	(Lmqq/app/NewIntent;)V
+    //   424: return
+    //   425: astore_0
+    //   426: invokestatic 477	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   429: ifeq +13 -> 442
+    //   432: ldc 147
+    //   434: iconst_2
+    //   435: ldc_w 756
+    //   438: aload_0
+    //   439: invokestatic 759	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   442: return
+    //   443: astore 8
+    //   445: goto -134 -> 311
+    //   448: astore 8
+    //   450: goto -123 -> 327
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	453	0	paramAppRuntime	AppRuntime
+    //   0	453	1	paramHashMap	HashMap<String, String>
+    //   0	453	2	paramAsyncBack	AsyncBack
+    //   0	453	3	paramBoolean1	boolean
+    //   0	453	4	paramBoolean2	boolean
+    //   0	453	5	paramBoolean3	boolean
+    //   210	143	6	i	int
+    //   301	62	7	j	int
+    //   140	144	8	localObject	Object
+    //   306	1	8	localNumberFormatException1	NumberFormatException
+    //   317	6	8	localNumberFormatException2	NumberFormatException
+    //   345	31	8	localBidPkg	tencent.im.sso.offlinpkg.OfflinePkg.BidPkg
+    //   443	1	8	localException1	Exception
+    //   448	1	8	localException2	Exception
+    //   32	388	9	localNewIntent	mqq.app.NewIntent
+    //   53	336	10	localReqBody	tencent.im.sso.offlinpkg.OfflinePkg.ReqBody
+    //   248	13	11	localIterator	Iterator
+    //   281	13	12	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   293	303	306	java/lang/NumberFormatException
+    //   283	293	317	java/lang/NumberFormatException
+    //   383	397	425	java/lang/Exception
+    //   283	293	443	java/lang/Exception
+    //   293	303	448	java/lang/Exception
   }
   
   public static boolean a(Context paramContext, String paramString, AsyncCallBack paramAsyncCallBack)
   {
-    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-      jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,url:" + paramString);
+    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+    {
+      localObject = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->offline:transToLocalUrl,url:");
+      localStringBuilder.append(paramString);
+      ((ILog)localObject).a("HtmlCheckUpdate", 2, localStringBuilder.toString());
     }
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    String str = Uri.parse(paramString).getQueryParameter("_bid");
-    if (TextUtils.isEmpty(str))
+    Object localObject = Uri.parse(paramString).getQueryParameter("_bid");
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
       if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
         jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,business id is null!");
@@ -742,30 +929,34 @@ public class HtmlOffline
     }
     if (paramContext == null)
     {
-      a(str, 3, 0L, 4, "lixian_cover", "0");
+      a((String)localObject, 3, 0L, 4, "lixian_cover", "0");
+      BidDownloader.a(0, (String)localObject, 3, 0, "lixian_cover", 0);
       return false;
     }
-    if (OfflineEnvHelper.a(str) == null)
+    if (OfflineEnvHelper.a((String)localObject) == null)
     {
       if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
         jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,initEnv fail!");
       }
-      a(str, 2, 0L, NetworkUtil.a(paramContext), "lixian_cover", "0");
+      a((String)localObject, 2, 0L, NetworkUtil.getNetWorkType(), "lixian_cover", "0");
+      BidDownloader.a(0, (String)localObject, 2, 0, "lixian_cover", 0);
       return false;
     }
-    if (Arrays.asList(b).contains(str))
+    if (Arrays.asList(b).contains(localObject))
     {
-      a(str, 4, 0L, NetworkUtil.a(paramContext), "lixian_cover", "0");
+      a((String)localObject, 4, 0L, NetworkUtil.getNetWorkType(), "lixian_cover", "0");
+      BidDownloader.a(0, (String)localObject, 4, 0, "lixian_cover", 0);
       return false;
     }
-    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager == null)
+    localObject = jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager;
+    if (localObject == null)
     {
       if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
         jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,threadManager is null");
       }
       return false;
     }
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.b(new HtmlOffline.1(paramContext, paramString, paramAsyncCallBack));
+    ((IThreadManager)localObject).b(new HtmlOffline.1(paramContext, paramString, paramAsyncCallBack));
     return true;
   }
   
@@ -776,254 +967,296 @@ public class HtmlOffline
     //   0: aconst_null
     //   1: astore 5
     //   3: aconst_null
-    //   4: astore 6
-    //   6: iconst_0
-    //   7: istore 4
-    //   9: aload_0
-    //   10: invokevirtual 296	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   13: aload_1
-    //   14: invokevirtual 302	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   17: astore_0
-    //   18: new 794	java/io/FileOutputStream
-    //   21: dup
-    //   22: new 144	java/io/File
-    //   25: dup
-    //   26: aload_2
-    //   27: invokespecial 147	java/io/File:<init>	(Ljava/lang/String;)V
-    //   30: invokespecial 795	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   33: astore_2
-    //   34: sipush 4096
-    //   37: newarray byte
-    //   39: astore_1
-    //   40: aload_0
-    //   41: aload_1
-    //   42: invokevirtual 799	java/io/InputStream:read	([B)I
-    //   45: istore_3
-    //   46: iload_3
-    //   47: iconst_m1
-    //   48: if_icmpne +29 -> 77
-    //   51: aload_2
-    //   52: invokevirtual 802	java/io/FileOutputStream:flush	()V
-    //   55: aload_0
-    //   56: ifnull +7 -> 63
-    //   59: aload_0
-    //   60: invokevirtual 312	java/io/InputStream:close	()V
-    //   63: aload_2
-    //   64: ifnull +7 -> 71
-    //   67: aload_2
-    //   68: invokevirtual 803	java/io/FileOutputStream:close	()V
-    //   71: iconst_1
-    //   72: istore 4
-    //   74: iload 4
-    //   76: ireturn
-    //   77: aload_2
-    //   78: aload_1
-    //   79: iconst_0
-    //   80: iload_3
-    //   81: invokevirtual 807	java/io/FileOutputStream:write	([BII)V
-    //   84: goto -44 -> 40
-    //   87: astore 5
-    //   89: aload_0
-    //   90: astore_1
-    //   91: aload_2
-    //   92: astore_0
-    //   93: aload 5
-    //   95: astore_2
-    //   96: aload_2
-    //   97: invokevirtual 316	java/io/IOException:printStackTrace	()V
-    //   100: aload_1
-    //   101: ifnull +7 -> 108
-    //   104: aload_1
-    //   105: invokevirtual 312	java/io/InputStream:close	()V
-    //   108: aload_0
-    //   109: ifnull -35 -> 74
-    //   112: aload_0
-    //   113: invokevirtual 803	java/io/FileOutputStream:close	()V
-    //   116: iconst_0
-    //   117: ireturn
-    //   118: astore_0
-    //   119: iconst_0
-    //   120: ireturn
-    //   121: astore_1
-    //   122: aconst_null
-    //   123: astore_0
-    //   124: aload 5
-    //   126: astore_2
-    //   127: aload_0
-    //   128: ifnull +7 -> 135
+    //   4: astore 4
+    //   6: aload_0
+    //   7: invokevirtual 296	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   10: aload_1
+    //   11: invokevirtual 302	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   14: astore_0
+    //   15: new 794	java/io/FileOutputStream
+    //   18: dup
+    //   19: new 132	java/io/File
+    //   22: dup
+    //   23: aload_2
+    //   24: invokespecial 135	java/io/File:<init>	(Ljava/lang/String;)V
+    //   27: invokespecial 795	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   30: astore_2
+    //   31: sipush 4096
+    //   34: newarray byte
+    //   36: astore_1
+    //   37: aload_0
+    //   38: aload_1
+    //   39: invokevirtual 799	java/io/InputStream:read	([B)I
+    //   42: istore_3
+    //   43: iload_3
+    //   44: iconst_m1
+    //   45: if_icmpne +21 -> 66
+    //   48: aload_2
+    //   49: invokevirtual 802	java/io/FileOutputStream:flush	()V
+    //   52: aload_0
+    //   53: ifnull +7 -> 60
+    //   56: aload_0
+    //   57: invokevirtual 312	java/io/InputStream:close	()V
+    //   60: aload_2
+    //   61: invokevirtual 803	java/io/FileOutputStream:close	()V
+    //   64: iconst_1
+    //   65: ireturn
+    //   66: aload_2
+    //   67: aload_1
+    //   68: iconst_0
+    //   69: iload_3
+    //   70: invokevirtual 807	java/io/FileOutputStream:write	([BII)V
+    //   73: goto -36 -> 37
+    //   76: astore_1
+    //   77: goto +70 -> 147
+    //   80: astore_1
+    //   81: goto +13 -> 94
+    //   84: astore_1
+    //   85: aload 5
+    //   87: astore_2
+    //   88: goto +59 -> 147
+    //   91: astore_1
+    //   92: aconst_null
+    //   93: astore_2
+    //   94: aload_0
+    //   95: astore 4
+    //   97: aload_2
+    //   98: astore_0
+    //   99: goto +15 -> 114
+    //   102: astore_1
+    //   103: aconst_null
+    //   104: astore_0
+    //   105: aload 5
+    //   107: astore_2
+    //   108: goto +39 -> 147
+    //   111: astore_1
+    //   112: aconst_null
+    //   113: astore_0
+    //   114: aload_1
+    //   115: invokevirtual 313	java/io/IOException:printStackTrace	()V
+    //   118: aload 4
+    //   120: ifnull +11 -> 131
+    //   123: aload 4
+    //   125: invokevirtual 312	java/io/InputStream:close	()V
+    //   128: goto +3 -> 131
     //   131: aload_0
-    //   132: invokevirtual 312	java/io/InputStream:close	()V
-    //   135: aload_2
-    //   136: ifnull +7 -> 143
-    //   139: aload_2
-    //   140: invokevirtual 803	java/io/FileOutputStream:close	()V
-    //   143: aload_1
-    //   144: athrow
-    //   145: astore_0
-    //   146: goto -83 -> 63
-    //   149: astore_0
-    //   150: goto -79 -> 71
-    //   153: astore_1
-    //   154: goto -46 -> 108
-    //   157: astore_0
-    //   158: goto -23 -> 135
-    //   161: astore_0
-    //   162: goto -19 -> 143
-    //   165: astore_1
-    //   166: aload 5
-    //   168: astore_2
-    //   169: goto -42 -> 127
-    //   172: astore_1
-    //   173: goto -46 -> 127
-    //   176: astore_2
-    //   177: aload_1
-    //   178: astore 5
-    //   180: aload_2
-    //   181: astore_1
-    //   182: aload_0
-    //   183: astore_2
-    //   184: aload 5
+    //   132: ifnull +7 -> 139
+    //   135: aload_0
+    //   136: invokevirtual 803	java/io/FileOutputStream:close	()V
+    //   139: iconst_0
+    //   140: ireturn
+    //   141: astore_1
+    //   142: aload_0
+    //   143: astore_2
+    //   144: aload 4
+    //   146: astore_0
+    //   147: aload_0
+    //   148: ifnull +10 -> 158
+    //   151: aload_0
+    //   152: invokevirtual 312	java/io/InputStream:close	()V
+    //   155: goto +3 -> 158
+    //   158: aload_2
+    //   159: ifnull +7 -> 166
+    //   162: aload_2
+    //   163: invokevirtual 803	java/io/FileOutputStream:close	()V
+    //   166: goto +5 -> 171
+    //   169: aload_1
+    //   170: athrow
+    //   171: goto -2 -> 169
+    //   174: astore_0
+    //   175: goto -115 -> 60
+    //   178: astore_0
+    //   179: goto -115 -> 64
+    //   182: astore_1
+    //   183: goto -52 -> 131
     //   186: astore_0
-    //   187: goto -60 -> 127
-    //   190: astore_2
-    //   191: aconst_null
-    //   192: astore_0
-    //   193: aload 6
-    //   195: astore_1
-    //   196: goto -100 -> 96
-    //   199: astore_2
-    //   200: aconst_null
-    //   201: astore 5
-    //   203: aload_0
-    //   204: astore_1
-    //   205: aload 5
-    //   207: astore_0
-    //   208: goto -112 -> 96
+    //   187: iconst_0
+    //   188: ireturn
+    //   189: astore_0
+    //   190: goto -32 -> 158
+    //   193: astore_0
+    //   194: goto -28 -> 166
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	211	0	paramContext	Context
-    //   0	211	1	paramString1	String
-    //   0	211	2	paramString2	String
-    //   45	36	3	i	int
-    //   7	68	4	bool	boolean
-    //   1	1	5	localObject1	Object
-    //   87	80	5	localIOException	IOException
-    //   178	28	5	str	String
-    //   4	190	6	localObject2	Object
+    //   0	197	0	paramContext	Context
+    //   0	197	1	paramString1	String
+    //   0	197	2	paramString2	String
+    //   42	28	3	i	int
+    //   4	141	4	localContext	Context
+    //   1	105	5	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   34	40	87	java/io/IOException
-    //   40	46	87	java/io/IOException
-    //   51	55	87	java/io/IOException
-    //   77	84	87	java/io/IOException
-    //   112	116	118	java/io/IOException
-    //   9	18	121	finally
-    //   59	63	145	java/io/IOException
-    //   67	71	149	java/io/IOException
-    //   104	108	153	java/io/IOException
-    //   131	135	157	java/io/IOException
-    //   139	143	161	java/io/IOException
-    //   18	34	165	finally
-    //   34	40	172	finally
-    //   40	46	172	finally
-    //   51	55	172	finally
-    //   77	84	172	finally
-    //   96	100	176	finally
-    //   9	18	190	java/io/IOException
-    //   18	34	199	java/io/IOException
+    //   31	37	76	finally
+    //   37	43	76	finally
+    //   48	52	76	finally
+    //   66	73	76	finally
+    //   31	37	80	java/io/IOException
+    //   37	43	80	java/io/IOException
+    //   48	52	80	java/io/IOException
+    //   66	73	80	java/io/IOException
+    //   15	31	84	finally
+    //   15	31	91	java/io/IOException
+    //   6	15	102	finally
+    //   6	15	111	java/io/IOException
+    //   114	118	141	finally
+    //   56	60	174	java/io/IOException
+    //   60	64	178	java/io/IOException
+    //   123	128	182	java/io/IOException
+    //   135	139	186	java/io/IOException
+    //   151	155	189	java/io/IOException
+    //   162	166	193	java/io/IOException
   }
   
   protected static boolean a(String paramString)
   {
-    boolean bool2 = false;
     String str1 = OfflineEnvHelper.b(paramString);
-    String str2 = str1 + paramString + ".zip";
-    String str3 = str1 + "tmp_c_" + System.currentTimeMillis() + File.separator;
-    String str4 = str3 + paramString + ".zip";
-    if (!a(str3, str2, str4))
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(str1);
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(".zip");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(str1);
+    ((StringBuilder)localObject2).append("tmp_c_");
+    ((StringBuilder)localObject2).append(System.currentTimeMillis());
+    ((StringBuilder)localObject2).append(File.separator);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append((String)localObject2);
+    ((StringBuilder)localObject3).append(paramString);
+    ((StringBuilder)localObject3).append(".zip");
+    localObject3 = ((StringBuilder)localObject3).toString();
+    if (!a((String)localObject2, (String)localObject1, (String)localObject3))
     {
       QLog.w("HtmlCheckUpdate", 1, "combine renameToDest businessId.zip failed");
       return false;
     }
-    String str5 = OfflineEnvHelper.a(paramString);
-    str5 = str5 + paramString;
-    String str6 = str5 + "/b.zip";
-    String str7 = str3 + "/b.zip";
-    if (!a(str3, str6, str7))
+    String str2 = OfflineEnvHelper.a(paramString);
+    Object localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append(str2);
+    ((StringBuilder)localObject4).append(paramString);
+    str2 = ((StringBuilder)localObject4).toString();
+    localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append(str2);
+    ((StringBuilder)localObject4).append("/b.zip");
+    localObject4 = ((StringBuilder)localObject4).toString();
+    Object localObject5 = new StringBuilder();
+    ((StringBuilder)localObject5).append((String)localObject2);
+    ((StringBuilder)localObject5).append("/b.zip");
+    localObject5 = ((StringBuilder)localObject5).toString();
+    if (!a((String)localObject2, (String)localObject4, (String)localObject5))
     {
       QLog.w("HtmlCheckUpdate", 1, "combine renameToDest b.zip failed");
       return false;
     }
-    File localFile = new File(str7);
-    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-      jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "combine zip" + paramString);
-    }
-    paramString = new File(str4);
-    boolean bool1 = bool2;
-    if (localFile.exists())
+    Object localObject6 = new File((String)localObject5);
+    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
     {
-      bool1 = bool2;
-      if (paramString.exists()) {
-        try
-        {
-          if (paramString.isDirectory())
-          {
-            QLog.e("HtmlCheckUpdate", 1, "FXXX! This is a wrong patch file! " + str4);
-            paramString.delete();
-            return false;
-          }
-        }
-        catch (Throwable paramString)
-        {
-          bool1 = bool2;
-        }
+      ILog localILog = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("combine zip");
+      localStringBuilder.append(paramString);
+      localILog.a("HtmlCheckUpdate", 2, localStringBuilder.toString());
+    }
+    paramString = new File((String)localObject3);
+    if ((((File)localObject6).exists()) && (paramString.exists())) {}
+    try
+    {
+      if (paramString.isDirectory())
+      {
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append("FXXX! This is a wrong patch file! ");
+        ((StringBuilder)localObject6).append((String)localObject3);
+        QLog.e("HtmlCheckUpdate", 1, ((StringBuilder)localObject6).toString());
+        paramString.delete();
+        return false;
       }
+      bool1 = false;
     }
-    for (;;)
+    catch (Throwable paramString)
     {
-      a(str5 + "/", str7, str6);
-      a(str1, str4, str2);
-      Util.a(str3);
-      return bool1;
-      bool1 = BspatchUtil.a(str3 + "/b.zip", str4, str4);
+      boolean bool1;
+      boolean bool2;
+      label468:
+      label470:
+      break label468;
     }
+    try
+    {
+      paramString = new StringBuilder();
+      paramString.append((String)localObject2);
+      paramString.append("/b.zip");
+      bool2 = BspatchUtil.a(paramString.toString(), (String)localObject3, (String)localObject3);
+      bool1 = bool2;
+    }
+    catch (Throwable paramString)
+    {
+      break label470;
+    }
+    bool1 = false;
+    paramString = new StringBuilder();
+    paramString.append(str2);
+    paramString.append("/");
+    a(paramString.toString(), (String)localObject5, (String)localObject4);
+    a(str1, (String)localObject3, (String)localObject1);
+    Util.a((String)localObject2);
+    return bool1;
   }
   
   public static boolean a(String paramString1, Context paramContext, String paramString2, AsyncCallBack paramAsyncCallBack)
   {
-    return a(paramContext, "https://" + paramString1 + "?_bid=" + paramString2, paramAsyncCallBack);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("?_bid=");
+    localStringBuilder.append(paramString2);
+    return a(paramContext, localStringBuilder.toString(), paramAsyncCallBack);
   }
   
   public static boolean a(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {
+    if (TextUtils.isEmpty(paramString1))
+    {
       if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
         jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "verfyFile: businessId null ");
       }
-    }
-    long l;
-    do
-    {
       return false;
-      String str = OfflineEnvHelper.a(paramString1);
-      if (TextUtils.isEmpty(str)) {
-        return true;
+    }
+    Object localObject = OfflineEnvHelper.a(paramString1);
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return true;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(paramString1);
+    localObject = localStringBuilder.toString();
+    if (!new File((String)localObject).exists()) {
+      return true;
+    }
+    paramString2 = d(paramString2);
+    long l = System.currentTimeMillis();
+    if (!OfflineSecurity.c(paramString2, (String)localObject, paramString1))
+    {
+      a((String)localObject, paramString1);
+      if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+      {
+        paramString1 = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("verfySingleFile fail :");
+        ((StringBuilder)localObject).append(paramString2);
+        paramString1.a("HtmlCheckUpdate", 2, ((StringBuilder)localObject).toString());
       }
-      str = str + paramString1;
-      if (!new File(str).exists()) {
-        return true;
-      }
-      paramString2 = d(paramString2);
-      l = System.currentTimeMillis();
-      if (OfflineSecurity.c(paramString2, str, paramString1)) {
-        break;
-      }
-      a(str, paramString1);
-    } while (!jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a());
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "verfySingleFile fail :" + paramString2);
-    return false;
-    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b()) {
-      jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b("HtmlCheckUpdate", 4, "verifyFile:time=" + (System.currentTimeMillis() - l) + ", file:" + paramString2);
+      return false;
+    }
+    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b())
+    {
+      paramString1 = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("verifyFile:time=");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject).append(", file:");
+      ((StringBuilder)localObject).append(paramString2);
+      paramString1.b("HtmlCheckUpdate", 4, ((StringBuilder)localObject).toString());
     }
     return true;
   }
@@ -1060,30 +1293,29 @@ public class HtmlOffline
       if ((paramString != null) && (paramString.length > 0))
       {
         int i = 0;
-        for (;;)
+        while ((i < paramString.length) && (i < 100))
         {
-          if ((i < paramString.length) && (i < 100))
+          Object localObject = paramString[i];
+          if ((localObject.isDirectory()) && (TextUtils.isDigitsOnly(localObject.getName())))
           {
-            Object localObject = paramString[i];
-            JSONObject localJSONObject;
-            if ((localObject.isDirectory()) && (TextUtils.isDigitsOnly(localObject.getName())))
-            {
-              localJSONObject = a(localObject.getName());
-              if (localJSONObject == null) {}
-            }
-            try
-            {
-              localStringBuffer.append(localObject.getName() + "|" + localJSONObject.getString("version") + ",");
-              i += 1;
-            }
-            catch (JSONException localJSONException)
-            {
-              for (;;)
+            JSONObject localJSONObject = a(localObject.getName());
+            if (localJSONObject != null) {
+              try
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(localObject.getName());
+                localStringBuilder.append("|");
+                localStringBuilder.append(localJSONObject.getString("version"));
+                localStringBuilder.append(",");
+                localStringBuffer.append(localStringBuilder.toString());
+              }
+              catch (JSONException localJSONException)
               {
                 localJSONException.printStackTrace();
               }
             }
           }
+          i += 1;
         }
         if (localStringBuffer.length() > 0) {
           localStringBuffer.delete(localStringBuffer.length() - 1, localStringBuffer.length());
@@ -1100,95 +1332,110 @@ public class HtmlOffline
   
   public static void b(String paramString, AppRuntime paramAppRuntime, AsyncBack paramAsyncBack, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-      jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:checkUpByBusinessId " + paramString);
+    Object localObject1;
+    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+    {
+      localObject1 = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("-->offline:checkUpByBusinessId ");
+      localStringBuilder1.append(paramString);
+      ((ILog)localObject1).a("HtmlCheckUpdate", 2, localStringBuilder1.toString());
     }
-    if (paramAsyncBack == null) {
+    if (paramAsyncBack == null)
+    {
       if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
         jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:checkUpByBusinessId, callback is null!");
       }
-    }
-    for (;;)
-    {
       return;
-      if (OfflineEnvHelper.a(paramString) == null)
-      {
-        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-          jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:checkUpByBusinessId,no sd card!");
-        }
-        paramAsyncBack.loaded(null, 3);
-        return;
+    }
+    if (OfflineEnvHelper.a(paramString) == null)
+    {
+      if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
+        jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:checkUpByBusinessId,no sd card!");
       }
-      if (Arrays.asList(b).contains(paramString))
-      {
-        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-          jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:checkUpByBusinessId,do not update");
-        }
+      paramAsyncBack.loaded(null, 3);
+      return;
+    }
+    if (Arrays.asList(b).contains(paramString))
+    {
+      if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
+        jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:checkUpByBusinessId,do not update");
       }
-      else if ((paramInt > 60) || (paramInt < 0))
+      return;
+    }
+    if ((paramInt <= 60) && (paramInt >= 0))
+    {
+      if ((paramAppRuntime != null) && (paramAppRuntime.isLogin()))
       {
-        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-          jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:checkUpByBusinessId,delayed too long.");
-        }
-      }
-      else
-      {
-        if ((paramAppRuntime == null) || (!paramAppRuntime.isLogin()))
-        {
-          QLog.w("HtmlCheckUpdate", 1, "app == null or user not login.");
-          return;
-        }
-        JSONObject localJSONObject = a(paramString);
+        localObject1 = a(paramString);
         long l2 = 30L;
         long l1 = l2;
-        if (localJSONObject != null) {}
-        try
-        {
-          l1 = localJSONObject.getLong("frequency");
-          l2 = (System.currentTimeMillis() - a(paramAppRuntime.getApplication(), paramString)) / 60000L;
-          if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-            jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:checkUpdate check freq:" + l1 + ", time:" + l2);
-          }
-          if ((!paramBoolean2) && (l2 < l1))
+        if (localObject1 != null) {
+          try
           {
-            paramAsyncBack.loaded(null, 5);
-            return;
+            l1 = ((JSONObject)localObject1).getLong("frequency");
           }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
+          catch (Exception localException)
           {
             localException.printStackTrace();
             l1 = l2;
           }
-          if (BidDownloader.a(paramString))
-          {
-            if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-              jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:" + paramString + " is downloading");
-            }
-            paramAsyncBack.loaded(null, 7);
-            return;
-          }
-          a(paramAppRuntime.getApplication().getApplicationContext(), paramString);
-          if (jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager == null)
-          {
-            if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-              jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "threadManager is null");
-            }
-          }
-          else
-          {
-            HashMap localHashMap = new HashMap(1);
-            int i = 0;
-            if (localJSONObject != null) {
-              i = localJSONObject.optInt("version", 0);
-            }
-            localHashMap.put(paramString, i + "");
-            jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.a(new HtmlOffline.4(paramInt, paramString, paramAppRuntime, localHashMap, paramAsyncBack, paramBoolean1, paramBoolean2));
-          }
         }
+        l2 = (System.currentTimeMillis() - a(paramAppRuntime.getApplication(), paramString)) / 60000L;
+        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+        {
+          localObject2 = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("-->offline:checkUpdate check freq:");
+          localStringBuilder2.append(l1);
+          localStringBuilder2.append(", time:");
+          localStringBuilder2.append(l2);
+          ((ILog)localObject2).a("HtmlCheckUpdate", 2, localStringBuilder2.toString());
+        }
+        if ((!paramBoolean2) && (l2 < l1))
+        {
+          paramAsyncBack.loaded(null, 5);
+          return;
+        }
+        if (BidDownloader.a(paramString))
+        {
+          if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+          {
+            paramAppRuntime = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("-->offline:");
+            ((StringBuilder)localObject1).append(paramString);
+            ((StringBuilder)localObject1).append(" is downloading");
+            paramAppRuntime.a("HtmlCheckUpdate", 2, ((StringBuilder)localObject1).toString());
+          }
+          paramAsyncBack.loaded(null, 7);
+          return;
+        }
+        a(paramAppRuntime.getApplication().getApplicationContext(), paramString);
+        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager == null)
+        {
+          if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
+            jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "threadManager is null");
+          }
+          return;
+        }
+        Object localObject2 = new HashMap(1);
+        int i = 0;
+        if (localObject1 != null) {
+          i = ((JSONObject)localObject1).optInt("version", 0);
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        ((HashMap)localObject2).put(paramString, ((StringBuilder)localObject1).toString());
+        jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.a(new HtmlOffline.4(paramInt, paramString, paramAppRuntime, (HashMap)localObject2, paramAsyncBack, paramBoolean1, paramBoolean2));
+        return;
       }
+      QLog.w("HtmlCheckUpdate", 1, "app == null or user not login.");
+      return;
+    }
+    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
+      jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:checkUpByBusinessId,delayed too long.");
     }
   }
   
@@ -1225,124 +1472,160 @@ public class HtmlOffline
   
   protected static boolean b(String paramString)
   {
-    for (;;)
+    try
     {
-      String str4;
-      File localFile;
-      int i;
-      try
-      {
-        jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 1, "-->offline:doUpdateZip start:" + paramString);
-        bool = TextUtils.isEmpty(paramString);
-        if (bool)
-        {
-          bool = false;
-          return bool;
-        }
-        String str1 = OfflineEnvHelper.b(paramString);
-        if (TextUtils.isEmpty(str1))
-        {
-          if (!jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-            break label622;
-          }
-          jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:doUpdateZip,zip root dir is null:");
-          break label622;
-        }
-        Object localObject = str1 + paramString + ".zip";
-        if (!new File((String)localObject).exists())
-        {
-          if (!jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-            break label627;
-          }
-          jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:doUpdateZip:no zip ! : businessId:" + paramString);
-          break label627;
-        }
-        String str3 = OfflineEnvHelper.a(paramString);
-        str1 = str1 + "tmp_u_" + System.currentTimeMillis() + File.separator;
-        String str2 = str1 + paramString + ".zip";
-        if (!a(str1, (String)localObject, str2))
-        {
-          QLog.w("HtmlCheckUpdate", 1, "doUpdateZip renameToDest businessId.zip failed");
-          bool = false;
-          continue;
-        }
-        localObject = new File(str2);
-        str4 = str3 + paramString;
-        str3 = str3 + paramString + "_new";
-        Util.a(str3);
-        localFile = new File(str3);
-        if (!localFile.mkdirs())
-        {
-          if (!jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-            break label632;
-          }
-          jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.b("HtmlCheckUpdate", 2, "-->offline:doUpdateZip,mkdirs: error:" + str3);
-          break label632;
-        }
-        long l = System.currentTimeMillis();
-        i = ZipUtils.unZipFolder(str2, str3);
-        if (i > 0)
-        {
-          if (jdField_a_of_type_Int == 0) {
-            jdField_a_of_type_Int = 2;
-          }
-          Util.b(str2);
-          a(paramString, 13, 0L, i, "lixian_update", "0");
-          if (!jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-            break label617;
-          }
-          jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:doUpdateZip,unZipFolder fail!");
-          bool = false;
-          if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
-            jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:time of unzip：" + (System.currentTimeMillis() - l) + ", isSuccess: " + bool);
-          }
-          Util.a(str1);
-          continue;
-        }
-        ((File)localObject).renameTo(new File(str3 + "/b.zip"));
+      Object localObject1 = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("-->offline:doUpdateZip start:");
+      ((StringBuilder)localObject2).append(paramString);
+      ((ILog)localObject1).a("HtmlCheckUpdate", 1, ((StringBuilder)localObject2).toString());
+      boolean bool1 = TextUtils.isEmpty(paramString);
+      boolean bool2 = false;
+      if (bool1) {
+        return false;
       }
-      finally {}
-      Util.a(str4);
-      boolean bool = localFile.renameTo(new File(str4));
-      a(paramString, 13, 0L, i, "lixian_time", "0");
-      continue;
-      label617:
-      bool = false;
-      continue;
-      label622:
-      bool = false;
-      continue;
-      label627:
-      bool = false;
-      continue;
-      label632:
-      bool = false;
+      localObject1 = OfflineEnvHelper.b(paramString);
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
+          jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:doUpdateZip,zip root dir is null:");
+        }
+        return false;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(".zip");
+      Object localObject4 = ((StringBuilder)localObject2).toString();
+      if (!new File((String)localObject4).exists())
+      {
+        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+        {
+          localObject1 = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("-->offline:doUpdateZip:no zip ! : businessId:");
+          ((StringBuilder)localObject2).append(paramString);
+          ((ILog)localObject1).a("HtmlCheckUpdate", 2, ((StringBuilder)localObject2).toString());
+        }
+        return false;
+      }
+      localObject2 = OfflineEnvHelper.a(paramString);
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append("tmp_u_");
+      ((StringBuilder)localObject3).append(System.currentTimeMillis());
+      ((StringBuilder)localObject3).append(File.separator);
+      localObject1 = ((StringBuilder)localObject3).toString();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append(paramString);
+      ((StringBuilder)localObject3).append(".zip");
+      localObject3 = ((StringBuilder)localObject3).toString();
+      if (!a((String)localObject1, (String)localObject4, (String)localObject3))
+      {
+        QLog.w("HtmlCheckUpdate", 1, "doUpdateZip renameToDest businessId.zip failed");
+        return false;
+      }
+      localObject4 = new File((String)localObject3);
+      Object localObject5 = new StringBuilder();
+      ((StringBuilder)localObject5).append((String)localObject2);
+      ((StringBuilder)localObject5).append(paramString);
+      localObject5 = ((StringBuilder)localObject5).toString();
+      Object localObject6 = new StringBuilder();
+      ((StringBuilder)localObject6).append((String)localObject2);
+      ((StringBuilder)localObject6).append(paramString);
+      ((StringBuilder)localObject6).append("_new");
+      localObject2 = ((StringBuilder)localObject6).toString();
+      Util.a((String)localObject2);
+      localObject6 = new File((String)localObject2);
+      if (!((File)localObject6).mkdirs())
+      {
+        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+        {
+          paramString = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("-->offline:doUpdateZip,mkdirs: error:");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          paramString.b("HtmlCheckUpdate", 2, ((StringBuilder)localObject1).toString());
+        }
+        return false;
+      }
+      long l = System.currentTimeMillis();
+      int i = ZipUtils.unZipFolder((String)localObject3, (String)localObject2);
+      if (i > 0)
+      {
+        if (jdField_a_of_type_Int == 0) {
+          jdField_a_of_type_Int = 2;
+        }
+        Util.b((String)localObject3);
+        a(paramString, 13, 0L, i, "lixian_update", "0");
+        BidDownloader.a(0, paramString, 13, 0, "lixian_update", i);
+        bool1 = bool2;
+        if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+        {
+          jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "-->offline:doUpdateZip,unZipFolder fail!");
+          bool1 = bool2;
+        }
+      }
+      else
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append("/b.zip");
+        ((File)localObject4).renameTo(new File(((StringBuilder)localObject3).toString()));
+        Util.a((String)localObject5);
+        bool1 = ((File)localObject6).renameTo(new File((String)localObject5));
+        a(paramString, 13, 0L, i, "lixian_time", "0");
+        BidDownloader.a(0, paramString, 13, 0, "lixian_time", i);
+      }
+      if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+      {
+        paramString = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("-->offline:time of unzip：");
+        ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+        ((StringBuilder)localObject2).append(", isSuccess: ");
+        ((StringBuilder)localObject2).append(bool1);
+        paramString.a("HtmlCheckUpdate", 2, ((StringBuilder)localObject2).toString());
+      }
+      Util.a((String)localObject1);
+      return bool1;
     }
+    finally {}
   }
   
   public static String c(String paramString)
   {
-    String str = "file://" + OfflineEnvHelper.b();
-    if ((paramString == null) || (!paramString.startsWith(str))) {
-      return "";
-    }
-    paramString = paramString.substring(str.length());
-    int i = paramString.indexOf('/');
-    if (i <= 0) {
-      return "";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("file://");
+    ((StringBuilder)localObject).append(OfflineEnvHelper.b());
+    localObject = ((StringBuilder)localObject).toString();
+    int i;
+    if (paramString != null)
+    {
+      if (!paramString.startsWith((String)localObject)) {
+        return "";
+      }
+      paramString = paramString.substring(((String)localObject).length());
+      i = paramString.indexOf('/');
+      if (i <= 0) {
+        return "";
+      }
     }
     try
     {
       Integer.parseInt(paramString.substring(0, i), 10);
       paramString = paramString.substring(i + 1);
-      if (paramString.length() > 0) {
-        return "https://" + paramString;
+      if (paramString.length() > 0)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("https://");
+        ((StringBuilder)localObject).append(paramString);
+        return ((StringBuilder)localObject).toString();
       }
-    }
-    catch (NumberFormatException paramString)
-    {
       return "";
     }
+    catch (NumberFormatException paramString) {}
     return "";
   }
   
@@ -1351,104 +1634,128 @@ public class HtmlOffline
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("HtmlCheckUpdate", 2, "parseExpire:" + paramString);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parseExpire:");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.i("HtmlCheckUpdate", 2, ((StringBuilder)localObject1).toString());
     }
-    ArrayList localArrayList;
-    JSONObject localJSONObject;
-    label143:
-    int k;
-    do
+    try
     {
-      try
+      paramString = new JSONObject(paramString).optJSONArray("data");
+      localObject1 = new ArrayList();
+      int j = paramString.length();
+      int i = 0;
+      while (i < j)
       {
-        paramString = new JSONObject(paramString).optJSONArray("data");
-        localArrayList = new ArrayList();
-        int j = paramString.length();
-        int i = 0;
-        while (i < j)
+        JSONObject localJSONObject = paramString.optJSONObject(i);
+        if (localJSONObject != null)
         {
-          localJSONObject = paramString.optJSONObject(i);
-          if (localJSONObject != null) {
-            break label143;
+          int k = localJSONObject.optInt("code");
+          if ((k > 0) && (k < 10))
+          {
+            int m = localJSONObject.optInt("bid");
+            Object localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(m);
+            ((StringBuilder)localObject2).append("");
+            ((ArrayList)localObject1).add(((StringBuilder)localObject2).toString());
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(m);
+            ((StringBuilder)localObject2).append("");
+            localObject2 = new BidDownloader(((StringBuilder)localObject2).toString(), paramAppRuntime, paramAsyncBack, true, k);
+            ((BidDownloader)localObject2).d = localJSONObject.optInt("id");
+            boolean bool;
+            if (localJSONObject.optInt("isWifi", 0) > 0) {
+              bool = true;
+            } else {
+              bool = false;
+            }
+            ((BidDownloader)localObject2).f = bool;
+            ((BidDownloader)localObject2).jdField_a_of_type_Boolean = paramBoolean;
+            ((BidDownloader)localObject2).jdField_c_of_type_JavaLangString = localJSONObject.optString("url");
+            ((BidDownloader)localObject2).jdField_c_of_type_Int = localJSONObject.optInt("filesize");
+            ((BidDownloader)localObject2).a();
           }
-          i += 1;
         }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
+        i += 1;
       }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-      }
-      QLog.i("HtmlCheckUpdate", 2, "parseExpire: " + QLog.getStackTraceString(paramString));
       return;
-      k = localJSONObject.optInt("code");
-    } while ((k <= 0) || (k >= 10));
-    int m = localJSONObject.optInt("bid");
-    localArrayList.add(m + "");
-    BidDownloader localBidDownloader = new BidDownloader(m + "", paramAppRuntime, paramAsyncBack, true, k);
-    localBidDownloader.d = localJSONObject.optInt("id");
-    if (localJSONObject.optInt("isWifi", 0) > 0) {}
-    for (boolean bool = true;; bool = false)
+    }
+    catch (JSONException paramString)
     {
-      localBidDownloader.f = bool;
-      localBidDownloader.jdField_a_of_type_Boolean = paramBoolean;
-      localBidDownloader.jdField_c_of_type_JavaLangString = localJSONObject.optString("url");
-      localBidDownloader.jdField_c_of_type_Int = localJSONObject.optInt("filesize");
-      localBidDownloader.a();
-      break;
+      paramString.printStackTrace();
+      if (QLog.isColorLevel())
+      {
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append("parseExpire: ");
+        paramAppRuntime.append(QLog.getStackTraceString(paramString));
+        QLog.i("HtmlCheckUpdate", 2, paramAppRuntime.toString());
+      }
     }
   }
   
   public static boolean c(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    if (TextUtils.isEmpty(paramString))
+    {
       if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a()) {
         jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "verfySign: businessId null ");
       }
-    }
-    do
-    {
       return false;
-      String str = OfflineEnvHelper.a(paramString);
-      if (TextUtils.isEmpty(str)) {
-        return true;
-      }
-      str = str + paramString;
-      if (!new File(str).exists()) {
-        return true;
-      }
-      if (OfflineSecurity.b(str, paramString)) {
-        return true;
-      }
-      a(str, paramString);
-    } while (!jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a());
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a("HtmlCheckUpdate", 2, "verfySign fail :" + paramString);
+    }
+    Object localObject = OfflineEnvHelper.a(paramString);
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return true;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(paramString);
+    localObject = localStringBuilder.toString();
+    if (!new File((String)localObject).exists()) {
+      return true;
+    }
+    if (OfflineSecurity.b((String)localObject, paramString)) {
+      return true;
+    }
+    a((String)localObject, paramString);
+    if (jdField_a_of_type_ComTencentBizCommonOfflineUtilILog.a())
+    {
+      localObject = jdField_a_of_type_ComTencentBizCommonOfflineUtilILog;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("verfySign fail :");
+      localStringBuilder.append(paramString);
+      ((ILog)localObject).a("HtmlCheckUpdate", 2, localStringBuilder.toString());
+    }
     return false;
   }
   
   public static String d(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      i = paramString.indexOf(":");
-    } while ((i < 0) || (i + 3 >= paramString.length()));
-    String[] arrayOfString = paramString.substring(i + 3).split("\\?");
-    paramString = arrayOfString;
-    if (arrayOfString[0].contains("#")) {
-      paramString = arrayOfString[0].split("\\#");
     }
-    return paramString[0];
+    int i = paramString.indexOf(":");
+    if (i >= 0)
+    {
+      i += 3;
+      if (i >= paramString.length()) {
+        return null;
+      }
+      String[] arrayOfString = paramString.substring(i).split("\\?");
+      paramString = arrayOfString;
+      if (arrayOfString[0].contains("#")) {
+        paramString = arrayOfString[0].split("\\#");
+      }
+      return paramString[0];
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.offline.HtmlOffline
  * JD-Core Version:    0.7.0.1
  */

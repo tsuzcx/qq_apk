@@ -16,32 +16,38 @@ public class TogetherObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 2: 
-    default: 
-    case 1: 
-    case 0: 
-    case 3: 
-      do
+      if (paramInt != 1)
       {
-        return;
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return;
+          }
+          a(paramBoolean, (Bundle)paramObject);
+          return;
+        }
+        if (paramBoolean) {
+          a();
+        }
+      }
+      else
+      {
         paramObject = (Object[])paramObject;
         a(paramBoolean, (TogetherSession)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-        return;
-        paramObject = (Object[])paramObject;
-        a((TogetherSession)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
-        return;
-      } while (!paramBoolean);
-      a();
-      return;
+      }
     }
-    a(paramBoolean, (Bundle)paramObject);
+    else
+    {
+      paramObject = (Object[])paramObject;
+      a((TogetherSession)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherObserver
  * JD-Core Version:    0.7.0.1
  */

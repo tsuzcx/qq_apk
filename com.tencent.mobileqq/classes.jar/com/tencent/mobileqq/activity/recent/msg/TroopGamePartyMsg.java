@@ -15,7 +15,7 @@ public class TroopGamePartyMsg
 {
   public TroopGamePartyMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131692832);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131692786);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
@@ -71,20 +71,17 @@ public class TroopGamePartyMsg
       if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo != null) {
         localJSONObject.put("messageNavInfo", this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a());
       }
-      return localJSONObject.toString().getBytes();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString().getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopGamePartyMsg
  * JD-Core Version:    0.7.0.1
  */

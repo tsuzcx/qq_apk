@@ -18,41 +18,40 @@ class MsgTabStoryNodeListManager$4
       SLog.e(MsgTabStoryNodeListManager.b(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
     }
     MsgTabStoryManager localMsgTabStoryManager = (MsgTabStoryManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER);
-    if (localMsgTabStoryManager.a()) {
+    if (localMsgTabStoryManager.a())
+    {
       if (this.a.a()) {
         this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", 3);
       }
     }
-    do
+    else if (localMsgTabStoryManager.b())
     {
-      do
-      {
-        return;
-        if (!localMsgTabStoryManager.b()) {
-          break;
-        }
-      } while (!this.a.a());
-      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", 2);
-      return;
-      if (!this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager$MsgTabShowCounter.a()) {
-        break;
+      if (this.a.a()) {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", 2);
       }
-    } while (!this.a.a());
-    this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", 5);
-    return;
-    if (localMsgTabStoryManager.c())
-    {
-      this.a.g();
-      localMsgTabStoryManager.a();
-      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_hide", 0);
-      return;
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_hide", 0);
+    else if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager$MsgTabShowCounter.a())
+    {
+      if (this.a.a()) {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", 5);
+      }
+    }
+    else
+    {
+      if (localMsgTabStoryManager.c())
+      {
+        this.a.g();
+        localMsgTabStoryManager.a();
+        this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_hide", 0);
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_hide", 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.4
  * JD-Core Version:    0.7.0.1
  */

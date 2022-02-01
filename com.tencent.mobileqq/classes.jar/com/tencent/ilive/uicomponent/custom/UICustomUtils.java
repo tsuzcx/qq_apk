@@ -10,10 +10,11 @@ public class UICustomUtils
 {
   public static void customAllViews(View paramView, List<BaseUICustom> paramList)
   {
-    if ((paramView == null) || (paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    if ((paramView != null) && (paramList != null))
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -31,7 +32,7 @@ public class UICustomUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.custom.UICustomUtils
  * JD-Core Version:    0.7.0.1
  */

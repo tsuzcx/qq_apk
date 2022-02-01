@@ -24,8 +24,12 @@ public class DonDisturbProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       DonDisturbBean localDonDisturbBean = DonDisturbBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DonDisturbProcessor", 0, "onParsed don disturb" + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed don disturb");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("DonDisturbProcessor", 0, localStringBuilder.toString());
       }
       return localDonDisturbBean;
     }
@@ -35,8 +39,12 @@ public class DonDisturbProcessor
   public void a(DonDisturbBean paramDonDisturbBean)
   {
     SharedPreUtils.a(BaseApplicationImpl.getContext(), "open_don_disturb", BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramDonDisturbBean.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("DonDisturbProcessor", 0, "onUpdate don disturb" + paramDonDisturbBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate don disturb");
+      localStringBuilder.append(paramDonDisturbBean);
+      QLog.d("DonDisturbProcessor", 0, localStringBuilder.toString());
     }
   }
   
@@ -74,7 +82,7 @@ public class DonDisturbProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.DonDisturbProcessor
  * JD-Core Version:    0.7.0.1
  */

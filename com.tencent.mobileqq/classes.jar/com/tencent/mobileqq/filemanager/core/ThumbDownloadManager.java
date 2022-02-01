@@ -32,13 +32,18 @@ public class ThumbDownloadManager
   
   private void a(ThumbDownloadManager.ThumbTask paramThumbTask)
   {
-    if (paramThumbTask == null) {}
-    do
-    {
+    if (paramThumbTask == null) {
       return;
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramThumbTask.jdField_a_of_type_JavaLangString, paramThumbTask);
-    } while (!QLog.isColorLevel());
-    QLog.i("ThumbDownloadManager", 2, "addDownloadingTask : MapDowloadingTask currentSize[" + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
+    }
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramThumbTask.jdField_a_of_type_JavaLangString, paramThumbTask);
+    if (QLog.isColorLevel())
+    {
+      paramThumbTask = new StringBuilder();
+      paramThumbTask.append("addDownloadingTask : MapDowloadingTask currentSize[");
+      paramThumbTask.append(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+      paramThumbTask.append("]");
+      QLog.i("ThumbDownloadManager", 2, paramThumbTask.toString());
+    }
   }
   
   private void a(String paramString)
@@ -48,7 +53,7 @@ public class ThumbDownloadManager
   
   private boolean a(long paramLong, String paramString1, String paramString2)
   {
-    paramString2 = FileManagerUtil.h(paramString2);
+    paramString2 = FileManagerUtil.g(paramString2);
     if (!a(paramString1, paramString2)) {
       return false;
     }
@@ -63,11 +68,10 @@ public class ThumbDownloadManager
   
   private boolean a(String paramString1, String paramString2)
   {
-    if (this.b.contains(paramString2)) {}
-    while (FileUtil.b(paramString1)) {
+    if (this.b.contains(paramString2)) {
       return false;
     }
-    return true;
+    return !FileUtil.a(paramString1);
   }
   
   private void b(ThumbDownloadManager.ThumbTask paramThumbTask)
@@ -81,22 +85,37 @@ public class ThumbDownloadManager
   private void b(String paramString)
   {
     this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.i("ThumbDownloadManager", 2, "removeDownloadingTask : MapDowloadingTask currentSize[" + this.jdField_a_of_type_JavaUtilLinkedHashMap.size() + "]");
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("removeDownloadingTask : MapDowloadingTask currentSize[");
+      paramString.append(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+      paramString.append("]");
+      QLog.i("ThumbDownloadManager", 2, paramString.toString());
     }
   }
   
   private void c(String paramString)
   {
-    if (!this.b.remove(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ThumbDownloadManager", 2, "removeDownloadingList : ListDownloadTask remove task fail, thumbUrl[" + paramString + "]");
+    if (!this.b.remove(paramString))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("removeDownloadingList : ListDownloadTask remove task fail, thumbUrl[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        QLog.i("ThumbDownloadManager", 2, localStringBuilder.toString());
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    else if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("removeDownloadingList : ListDownloadTask currentSize[");
+      paramString.append(this.b.size());
+      paramString.append("]");
+      QLog.i("ThumbDownloadManager", 2, paramString.toString());
     }
-    QLog.i("ThumbDownloadManager", 2, "removeDownloadingList : ListDownloadTask currentSize[" + this.b.size() + "]");
   }
   
   public void a(long paramLong, String paramString1, String paramString2)
@@ -106,7 +125,7 @@ public class ThumbDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.ThumbDownloadManager
  * JD-Core Version:    0.7.0.1
  */

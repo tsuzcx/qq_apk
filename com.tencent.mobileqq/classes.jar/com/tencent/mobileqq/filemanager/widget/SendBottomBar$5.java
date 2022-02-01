@@ -12,18 +12,15 @@ class SendBottomBar$5
   
   public void onClick(View paramView)
   {
-    if (this.a.a.isShowing()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (!this.a.a.isShowing()) {
       this.a.a.show();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.5
  * JD-Core Version:    0.7.0.1
  */

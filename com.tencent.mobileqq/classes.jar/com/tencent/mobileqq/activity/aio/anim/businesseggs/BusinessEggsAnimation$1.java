@@ -23,32 +23,34 @@ class BusinessEggsAnimation$1
     AioAnimationRule localAioAnimationRule = (AioAnimationRule)BusinessEggsAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsElement.a));
     if (localAioAnimationRule != null)
     {
-      if (!"HTML".equals(localAioAnimationRule.b)) {
-        break label116;
-      }
-      if (!TextUtils.isEmpty(localAioAnimationRule.a))
+      if ("HTML".equals(localAioAnimationRule.b))
       {
-        Context localContext = paramView.getContext();
-        Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", localAioAnimationRule.a);
-        localContext.startActivity(localIntent);
+        if (!TextUtils.isEmpty(localAioAnimationRule.a))
+        {
+          localObject = paramView.getContext();
+          Intent localIntent = new Intent((Context)localObject, QQBrowserActivity.class);
+          localIntent.putExtra("url", localAioAnimationRule.a);
+          ((Context)localObject).startActivity(localIntent);
+        }
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[initElementPathStrategy] jump type not define: ");
+        ((StringBuilder)localObject).append(localAioAnimationRule.b);
+        QLog.e("BusinessEggsAnimation", 1, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+      if (localObject != null) {
+        EggsUtil.a(null, "0X800B072", ((ChatMessage)localObject).frienduin, localAioAnimationRule);
       }
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
-        EggsUtil.a(null, "0X800B072", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, localAioAnimationRule);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label116:
-      QLog.e("BusinessEggsAnimation", 1, "[initElementPathStrategy] jump type not define: " + localAioAnimationRule.b);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webview.webso;
 
 import android.text.TextUtils;
+import com.tencent.mobileqq.vas.api.IVasDepTemp;
+import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QUA;
-import cooperation.qzone.util.NetworkState;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONObject;
 
@@ -32,9 +32,9 @@ public class HybridWebReporter$HybridWebReportInfo
   public String h = "";
   public String i = "";
   public String j = "html";
-  public String k = NetworkState.getAPN();
+  public String k = VasUtil.a().websoGetAPN();
   public String l = "QQ";
-  public String m = QUA.getQUA3();
+  public String m = VasUtil.a().websoGetQUA();
   public String n = "Android";
   
   public HybridWebReporter$HybridWebReportInfo()
@@ -54,7 +54,6 @@ public class HybridWebReporter$HybridWebReportInfo
   
   public JSONObject a()
   {
-    label423:
     for (;;)
     {
       try
@@ -87,36 +86,28 @@ public class HybridWebReporter$HybridWebReportInfo
         localJSONObject.put("platform", this.n);
         localJSONObject.put("sampling", this.jdField_f_of_type_Int);
         localJSONObject.put("usewns", this.jdField_a_of_type_Boolean);
-        int i1 = this.jdField_b_of_type_Int;
-        if (i1 != 1000) {
-          if (i1 == 0)
-          {
-            break label423;
-            localJSONObject.put("wnscode", i1);
-            localJSONObject.put("detail", this.i);
-            localJSONObject.put("usecache", this.jdField_b_of_type_Boolean);
-            localJSONObject.put("cachehasdata", this.jdField_c_of_type_Boolean);
-            localJSONObject.put("cacheupdatepolicy", this.jdField_c_of_type_Int);
-            localJSONObject.put("cacheupdatetimecost", this.jdField_d_of_type_Int / 1000.0F);
-            localJSONObject.put("serviceversion", this.jdField_e_of_type_Int);
-            localJSONObject.put("webso3_type", this.j);
-            localJSONObject.put("datasize", this.jdField_b_of_type_Long);
-            return localJSONObject;
-          }
-          else
-          {
-            i1 = this.jdField_b_of_type_Int;
-            i1 += 300000;
-            continue;
-          }
+        i1 = this.jdField_b_of_type_Int;
+        if ((i1 != 1000) && (i1 != 0))
+        {
+          i1 = this.jdField_b_of_type_Int + 300000;
+          localJSONObject.put("wnscode", i1);
+          localJSONObject.put("detail", this.i);
+          localJSONObject.put("usecache", this.jdField_b_of_type_Boolean);
+          localJSONObject.put("cachehasdata", this.jdField_c_of_type_Boolean);
+          localJSONObject.put("cacheupdatepolicy", this.jdField_c_of_type_Int);
+          localJSONObject.put("cacheupdatetimecost", this.jdField_d_of_type_Int / 1000.0F);
+          localJSONObject.put("serviceversion", this.jdField_e_of_type_Int);
+          localJSONObject.put("webso3_type", this.j);
+          localJSONObject.put("datasize", this.jdField_b_of_type_Long);
+          return localJSONObject;
         }
-        i1 = 0;
       }
       catch (Exception localException)
       {
         QLog.e("HybridWebReporter", 1, localException, new Object[0]);
         return null;
       }
+      int i1 = 0;
     }
   }
   
@@ -129,7 +120,7 @@ public class HybridWebReporter$HybridWebReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HybridWebReporter.HybridWebReportInfo
  * JD-Core Version:    0.7.0.1
  */

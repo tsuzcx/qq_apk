@@ -54,10 +54,11 @@ class VirtualDisplayController
   
   public void dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.presentation == null) {
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation == null) {
       return;
     }
-    this.presentation.dispatchTouchEvent(paramMotionEvent);
+    localSingleViewPresentation.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void dispose()
@@ -72,42 +73,59 @@ class VirtualDisplayController
   
   public View getView()
   {
-    if (this.presentation == null) {
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation == null) {
       return null;
     }
-    return this.presentation.getView().getView();
+    return localSingleViewPresentation.getView().getView();
   }
   
   void onFlutterViewAttached(@NonNull View paramView)
   {
-    if ((this.presentation == null) || (this.presentation.getView() == null)) {
-      return;
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation != null)
+    {
+      if (localSingleViewPresentation.getView() == null) {
+        return;
+      }
+      this.presentation.getView().onFlutterViewAttached(paramView);
     }
-    this.presentation.getView().onFlutterViewAttached(paramView);
   }
   
   void onFlutterViewDetached()
   {
-    if ((this.presentation == null) || (this.presentation.getView() == null)) {
-      return;
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation != null)
+    {
+      if (localSingleViewPresentation.getView() == null) {
+        return;
+      }
+      this.presentation.getView().onFlutterViewDetached();
     }
-    this.presentation.getView().onFlutterViewDetached();
   }
   
   void onInputConnectionLocked()
   {
-    if ((this.presentation == null) || (this.presentation.getView() == null)) {
-      return;
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation != null)
+    {
+      if (localSingleViewPresentation.getView() == null) {
+        return;
+      }
+      this.presentation.getView().onInputConnectionLocked();
     }
-    this.presentation.getView().onInputConnectionLocked();
   }
   
   void onInputConnectionUnlocked()
   {
-    if ((this.presentation == null) || (this.presentation.getView() == null)) {
-      return;
+    SingleViewPresentation localSingleViewPresentation = this.presentation;
+    if (localSingleViewPresentation != null)
+    {
+      if (localSingleViewPresentation.getView() == null) {
+        return;
+      }
+      this.presentation.getView().onInputConnectionUnlocked();
     }
-    this.presentation.getView().onInputConnectionUnlocked();
   }
   
   public void resize(int paramInt1, int paramInt2, Runnable paramRunnable)
@@ -128,7 +146,7 @@ class VirtualDisplayController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.VirtualDisplayController
  * JD-Core Version:    0.7.0.1
  */

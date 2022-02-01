@@ -10,30 +10,31 @@ class PhoneStatusMonitor$QQPhoneStateListener
   
   public void onCallStateChanged(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhoneStatusMonitor", 2, "onCallStateChanged, state[" + paramInt + "], isCalling[" + PhoneStatusMonitor.a(this.a) + "]");
-    }
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCallStateChanged, state[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], isCalling[");
+      localStringBuilder.append(PhoneStatusMonitor.a(this.a));
+      localStringBuilder.append("]");
+      QLog.i("PhoneStatusMonitor", 2, localStringBuilder.toString());
     }
-    for (;;)
+    if (paramInt != 0)
     {
-      super.onCallStateChanged(paramInt, paramString);
-      return;
-      if (PhoneStatusMonitor.a(this.a))
-      {
-        PhoneStatusMonitor.a(this.a, false);
-        continue;
-        if (!PhoneStatusMonitor.a(this.a)) {
-          PhoneStatusMonitor.a(this.a, true);
-        }
+      if (((paramInt == 1) || (paramInt == 2)) && (!PhoneStatusMonitor.a(this.a))) {
+        PhoneStatusMonitor.a(this.a, true);
       }
     }
+    else if (PhoneStatusMonitor.a(this.a)) {
+      PhoneStatusMonitor.a(this.a, false);
+    }
+    super.onCallStateChanged(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.PhoneStatusMonitor.QQPhoneStateListener
  * JD-Core Version:    0.7.0.1
  */

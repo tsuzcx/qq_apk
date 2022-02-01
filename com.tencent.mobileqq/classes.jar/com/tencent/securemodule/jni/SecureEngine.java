@@ -11,9 +11,10 @@ public class SecureEngine
     try
     {
       this.object = newObject(paramContext);
-      if (this.object == 0) {
-        throw new VerifyError();
+      if (this.object != 0) {
+        return;
       }
+      throw new VerifyError();
     }
     catch (Throwable paramContext) {}
   }
@@ -25,7 +26,11 @@ public class SecureEngine
       boolean bool = nativeCheckSecureStatus(paramContext);
       return bool;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label7:
+      break label7;
+    }
     return false;
   }
   
@@ -38,7 +43,11 @@ public class SecureEngine
       paramContext = nativeGetEngineVersion(paramContext);
       return paramContext;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label7:
+      break label7;
+    }
     return "";
   }
   
@@ -52,8 +61,9 @@ public class SecureEngine
   
   protected void finalize()
   {
-    if (this.object != 0) {
-      deleteObject(this.object);
+    int i = this.object;
+    if (i != 0) {
+      deleteObject(i);
     }
   }
   
@@ -64,13 +74,17 @@ public class SecureEngine
       paramInt = scanThreatens(this.object, paramInt, paramArrayOfByte);
       return paramInt;
     }
-    catch (Throwable paramArrayOfByte) {}
+    catch (Throwable paramArrayOfByte)
+    {
+      label12:
+      break label12;
+    }
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.jni.SecureEngine
  * JD-Core Version:    0.7.0.1
  */

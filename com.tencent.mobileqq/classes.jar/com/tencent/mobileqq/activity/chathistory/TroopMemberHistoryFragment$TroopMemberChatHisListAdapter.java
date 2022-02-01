@@ -75,74 +75,73 @@ class TroopMemberHistoryFragment$TroopMemberChatHisListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    TroopMemberHistoryFragment.ItemViewHolder localItemViewHolder;
-    TroopMemberHistoryFragment.MsgItemEntity localMsgItemEntity;
-    Object localObject;
-    RelativeLayout.LayoutParams localLayoutParams;
-    int i;
     if (paramView == null)
     {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559463, null);
-      localItemViewHolder = new TroopMemberHistoryFragment.ItemViewHolder();
-      localItemViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131379092));
-      localItemViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379094));
-      localItemViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368603));
-      localItemViewHolder.b = ((TextView)paramView.findViewById(2131370043));
-      localItemViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370465);
-      localItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131379954));
-      paramView.setTag(localItemViewHolder);
-      localMsgItemEntity = (TroopMemberHistoryFragment.MsgItemEntity)getItem(paramInt);
-      localItemViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localMsgItemEntity.jdField_a_of_type_JavaLangCharSequence);
-      localItemViewHolder.b.setText(localMsgItemEntity.a());
-      localObject = new ColorNickText(ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.b, localMsgItemEntity.jdField_a_of_type_JavaLangString), 16).a();
-      localItemViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject);
-      ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localItemViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, (Spannable)localObject);
-      localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, localMsgItemEntity.jdField_a_of_type_JavaLangString);
-      localItemViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      localObject = (RelativeLayout.LayoutParams)localItemViewHolder.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      localLayoutParams = (RelativeLayout.LayoutParams)localItemViewHolder.b.getLayoutParams();
-      if (!localMsgItemEntity.jdField_a_of_type_Boolean) {
-        break label456;
-      }
-      localItemViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      localItemViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (paramInt != 0) {
-        break label436;
-      }
-      i = ViewUtils.a(3.0F);
-      label301:
-      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
-      if (paramInt != 0) {
-        break label446;
-      }
-      i = ViewUtils.a(3.0F);
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559337, null);
+      localObject1 = new TroopMemberHistoryFragment.ItemViewHolder();
+      ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131378461));
+      ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378463));
+      ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
+      ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).b = ((TextView)paramView.findViewById(2131369727));
+      ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370124);
+      ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131379283));
+      paramView.setTag(localObject1);
     }
-    label319:
-    for (localLayoutParams.topMargin = i;; localLayoutParams.topMargin = 0)
+    else
     {
-      localItemViewHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localItemViewHolder.b.setLayoutParams(localLayoutParams);
-      localItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
-      localItemViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.setContentDescription(localMsgItemEntity.jdField_a_of_type_JavaLangCharSequence + " " + localMsgItemEntity.a());
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localItemViewHolder = (TroopMemberHistoryFragment.ItemViewHolder)paramView.getTag();
-      break;
-      i = ViewUtils.a(9.0F);
-      break label301;
-      i = ViewUtils.a(9.0F);
-      break label319;
-      label456:
-      localItemViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      localItemViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = 0;
+      localObject1 = (TroopMemberHistoryFragment.ItemViewHolder)paramView.getTag();
     }
+    TroopMemberHistoryFragment.MsgItemEntity localMsgItemEntity = (TroopMemberHistoryFragment.MsgItemEntity)getItem(paramInt);
+    ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(localMsgItemEntity.jdField_a_of_type_JavaLangCharSequence);
+    ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).b.setText(localMsgItemEntity.a());
+    Object localObject2 = new ColorNickText(ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.b, localMsgItemEntity.jdField_a_of_type_JavaLangString), 16).a();
+    ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject2);
+    ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, (Spannable)localObject2);
+    localObject2 = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, localMsgItemEntity.jdField_a_of_type_JavaLangString);
+    ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+    localObject2 = (RelativeLayout.LayoutParams)((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((TroopMemberHistoryFragment.ItemViewHolder)localObject1).b.getLayoutParams();
+    if (localMsgItemEntity.jdField_a_of_type_Boolean)
+    {
+      ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
+      int i;
+      if (paramInt == 0) {
+        i = ViewUtils.a(3.0F);
+      } else {
+        i = ViewUtils.a(9.0F);
+      }
+      ((RelativeLayout.LayoutParams)localObject2).topMargin = i;
+      if (paramInt == 0) {
+        i = ViewUtils.a(3.0F);
+      } else {
+        i = ViewUtils.a(9.0F);
+      }
+      localLayoutParams.topMargin = i;
+    }
+    else
+    {
+      ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(8);
+      ((RelativeLayout.LayoutParams)localObject2).topMargin = 0;
+      localLayoutParams.topMargin = 0;
+    }
+    ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).b.setLayoutParams(localLayoutParams);
+    ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
+    ((TroopMemberHistoryFragment.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_AndroidViewView$OnClickListener);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(localMsgItemEntity.jdField_a_of_type_JavaLangCharSequence);
+    ((StringBuilder)localObject1).append(" ");
+    ((StringBuilder)localObject1).append(localMsgItemEntity.a());
+    paramView.setContentDescription(((StringBuilder)localObject1).toString());
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment.TroopMemberChatHisListAdapter
  * JD-Core Version:    0.7.0.1
  */

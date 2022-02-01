@@ -47,77 +47,82 @@ public class LimitTextView
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      this.jdField_a_of_type_Boolean = false;
+      label58:
+      break label58;
     }
+    this.jdField_a_of_type_Boolean = false;
   }
   
   @TargetApi(16)
   public int getMaxLines()
   {
-    int i = -1;
     if (Build.VERSION.SDK_INT >= 16) {
-      i = super.getMaxLines();
+      return super.getMaxLines();
     }
-    do
-    {
-      return i;
-      if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_JavaLangReflectField == null) || (this.b == null) || (this.c == null))) {
-        a();
-      }
-    } while (!this.jdField_a_of_type_Boolean);
-    try
-    {
-      int j = this.jdField_a_of_type_JavaLangReflectField.getInt(this);
-      i = this.b.getInt(this);
-      int k = this.c.getInt(this);
-      if (j == k) {}
-      for (;;)
-      {
-        return i;
-        i = -1;
-      }
+    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_JavaLangReflectField == null) || (this.b == null) || (this.c == null))) {
+      a();
+    }
+    boolean bool = this.jdField_a_of_type_Boolean;
+    int i = -1;
+    if (!bool) {
       return -1;
     }
+    try
+    {
+      int k = this.jdField_a_of_type_JavaLangReflectField.getInt(this);
+      int j = this.b.getInt(this);
+      int m = this.c.getInt(this);
+      if (k == m) {
+        i = j;
+      }
+      return i;
+    }
     catch (IllegalAccessException localIllegalAccessException) {}
+    return -1;
   }
   
   @SuppressLint({"NewApi"})
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getMaxLines();
-    Object localObject;
-    String str;
     if ((paramInt1 > 0) && (super.getLineCount() > paramInt1))
     {
-      paramInt1 = super.getLayout().getLineVisibleEnd(paramInt1 - 1);
+      paramInt3 = super.getLayout().getLineVisibleEnd(paramInt1 - 1);
       this.jdField_a_of_type_JavaLangCharSequence = getText();
-      localObject = this.jdField_a_of_type_JavaLangCharSequence.toString();
-      paramInt2 = ((String)localObject).codePointAt(paramInt1 - 2);
-      paramInt3 = ((String)localObject).codePointAt(paramInt1 - 1);
-      if (((paramInt2 != 20) || (paramInt3 < 0) || (paramInt3 >= EmotcationConstants.VALID_SYS_EMOTCATION_COUNT)) && (paramInt2 <= 65535)) {
-        break label164;
-      }
-      str = this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, paramInt1 - 2) + "…";
-      localObject = str;
-      if (QLog.isColorLevel())
+      Object localObject = this.jdField_a_of_type_JavaLangCharSequence.toString();
+      paramInt1 = paramInt3 - 2;
+      paramInt2 = ((String)localObject).codePointAt(paramInt1);
+      paramInt3 -= 1;
+      paramInt4 = ((String)localObject).codePointAt(paramInt3);
+      String str;
+      if (((paramInt2 == 20) && (paramInt4 >= 0) && (paramInt4 < EmotcationConstants.VALID_SYS_EMOTCATION_COUNT)) || (paramInt2 > 65535))
       {
-        QLog.e("QQText", 2, "截取的是系统表情或者emoji表情------------");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, paramInt1));
+        ((StringBuilder)localObject).append("…");
+        str = ((StringBuilder)localObject).toString();
         localObject = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("QQText", 2, "截取的是系统表情或者emoji表情------------");
+          localObject = str;
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, paramInt3));
+        ((StringBuilder)localObject).append("…");
+        str = ((StringBuilder)localObject).toString();
+        localObject = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("QQText", 2, "截取正常文本------------");
+          localObject = str;
+        }
+      }
       setText((CharSequence)localObject);
-      return;
-      label164:
-      str = this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, paramInt1 - 1) + "…";
-      localObject = str;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("QQText", 2, "截取正常文本------------");
-        localObject = str;
-      }
     }
   }
   
@@ -128,7 +133,7 @@ public class LimitTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.LimitTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -61,18 +61,20 @@ public final class upload_finish_req
     paramJceOutputStream.write(this.albumid, 3);
     paramJceOutputStream.write(this.photototal, 4);
     paramJceOutputStream.write(this.photosucc, 5);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 6);
+    Object localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
     paramJceOutputStream.write(this.retry_count, 7);
-    if (this.clientkey != null) {
-      paramJceOutputStream.write(this.clientkey, 8);
+    localObject = this.clientkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.upload_finish_req
  * JD-Core Version:    0.7.0.1
  */

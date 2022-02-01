@@ -71,21 +71,31 @@ public class d
   private a c(String paramString)
   {
     int m = paramString.indexOf(":");
-    if (m == -1) {
-      throw new IllegalArgumentException("WebSocketClient Unexpected header: " + paramString);
+    if (m != -1) {
+      return new a(paramString.substring(0, m).trim(), paramString.substring(m + 1));
     }
-    return new a(paramString.substring(0, m).trim(), paramString.substring(m + 1));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WebSocketClient Unexpected header: ");
+    localStringBuilder.append(paramString);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   private String d(String paramString)
   {
     try
     {
-      paramString = paramString + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("258EAFA5-E914-47DA-95CA-C5AB0DC85B11");
+      paramString = localStringBuilder.toString();
       paramString = Base64.encodeToString(MessageDigest.getInstance("SHA-1").digest(paramString.getBytes()), 0).trim();
       return paramString;
     }
-    catch (NoSuchAlgorithmException paramString) {}
+    catch (NoSuchAlgorithmException paramString)
+    {
+      label48:
+      break label48;
+    }
     return null;
   }
   
@@ -110,7 +120,8 @@ public class d
   
   public void a()
   {
-    if ((this.f != null) && (this.f.isAlive())) {
+    Thread localThread = this.f;
+    if ((localThread != null) && (localThread.isAlive())) {
       return;
     }
     this.f = new Thread(new d.1(this));
@@ -157,7 +168,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.b.d
  * JD-Core Version:    0.7.0.1
  */

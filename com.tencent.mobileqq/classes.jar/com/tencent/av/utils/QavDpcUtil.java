@@ -9,35 +9,40 @@ import java.util.Arrays;
 
 public class QavDpcUtil
 {
-  private static Boolean[] a = null;
+  private static Boolean[] a;
   
   private static void a()
   {
     a = new Boolean[4];
     String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.qavUseSurface.name(), "1|1|1|1");
-    if (!TextUtils.isEmpty(str))
+    boolean bool = TextUtils.isEmpty(str);
+    int i = 0;
+    Object localObject = Boolean.valueOf(false);
+    if (!bool)
     {
       String[] arrayOfString = str.split("\\|");
-      int i = 0;
-      if (i < a.length)
+      for (;;)
       {
-        if (i < arrayOfString.length) {
-          a[i] = Boolean.valueOf("1".equals(arrayOfString[i]));
-        }
-        for (;;)
-        {
-          i += 1;
+        Boolean[] arrayOfBoolean = a;
+        if (i >= arrayOfBoolean.length) {
           break;
-          a[i] = Boolean.valueOf(false);
         }
+        if (i < arrayOfString.length) {
+          arrayOfBoolean[i] = Boolean.valueOf("1".equals(arrayOfString[i]));
+        } else {
+          arrayOfBoolean[i] = localObject;
+        }
+        i += 1;
       }
     }
-    else
+    Arrays.fill(a, localObject);
+    if (QLog.isColorLevel())
     {
-      Arrays.fill(a, Boolean.valueOf(false));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QavDpcUtil", 2, "initQavSurfaceDpc, dpcValue[" + str + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initQavSurfaceDpc, dpcValue[");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("QavDpcUtil", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -46,16 +51,29 @@ public class QavDpcUtil
     if (a == null) {
       a();
     }
-    if ((a == null) || (paramInt >= a.length)) {}
-    while ((a[paramInt] == null) || (!a[paramInt].booleanValue())) {
-      return false;
+    Boolean[] arrayOfBoolean = a;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (arrayOfBoolean != null)
+    {
+      if (paramInt >= arrayOfBoolean.length) {
+        return false;
+      }
+      bool1 = bool2;
+      if (arrayOfBoolean[paramInt] != null)
+      {
+        bool1 = bool2;
+        if (arrayOfBoolean[paramInt].booleanValue()) {
+          bool1 = true;
+        }
+      }
     }
-    return true;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.QavDpcUtil
  * JD-Core Version:    0.7.0.1
  */

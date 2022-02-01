@@ -31,23 +31,32 @@ public final class UserList
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+      if (i == 0) {
         break;
-      case 18: 
-        int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
-        if (this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo == null) {}
-        UserInfo[] arrayOfUserInfo;
-        for (i = 0;; i = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo.length)
+      }
+      if (i != 8)
+      {
+        if (i != 18)
         {
+          if (i != 24)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.b = paramCodedInputByteBufferNano.readUInt64();
+          }
+        }
+        else
+        {
+          int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
+          UserInfo[] arrayOfUserInfo = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
+          if (arrayOfUserInfo == null) {
+            i = 0;
+          } else {
+            i = arrayOfUserInfo.length;
+          }
           arrayOfUserInfo = new UserInfo[j + i];
           j = i;
           if (i != 0)
@@ -62,76 +71,92 @@ public final class UserList
             paramCodedInputByteBufferNano.readTag();
             j += 1;
           }
+          arrayOfUserInfo[j] = new UserInfo();
+          paramCodedInputByteBufferNano.readMessage(arrayOfUserInfo[j]);
+          this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo = arrayOfUserInfo;
         }
-        arrayOfUserInfo[j] = new UserInfo();
-        paramCodedInputByteBufferNano.readMessage(arrayOfUserInfo[j]);
-        this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo = arrayOfUserInfo;
-        break;
       }
-      this.b = paramCodedInputByteBufferNano.readUInt64();
+      else {
+        this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    long l = this.jdField_a_of_type_Long;
     int i = j;
-    if (this.jdField_a_of_type_Long != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.jdField_a_of_type_Long);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
+    Object localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
     j = i;
-    if (this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo != null)
+    if (localObject != null)
     {
       j = i;
-      if (this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo.length > 0)
+      if (localObject.length > 0)
       {
-        j = 0;
-        while (j < this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo.length)
+        int k = 0;
+        for (;;)
         {
-          UserInfo localUserInfo = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo[j];
-          int k = i;
-          if (localUserInfo != null) {
-            k = i + CodedOutputByteBufferNano.computeMessageSize(2, localUserInfo);
+          localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
+          j = i;
+          if (k >= localObject.length) {
+            break;
           }
-          j += 1;
-          i = k;
+          localObject = localObject[k];
+          j = i;
+          if (localObject != null) {
+            j = i + CodedOutputByteBufferNano.computeMessageSize(2, (MessageNano)localObject);
+          }
+          k += 1;
+          i = j;
         }
-        j = i;
       }
     }
+    l = this.b;
     i = j;
-    if (this.b != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, this.b);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, l);
     }
     return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.jdField_a_of_type_Long != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.jdField_a_of_type_Long);
+    long l = this.jdField_a_of_type_Long;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if ((this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo != null) && (this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo.length > 0))
+    Object localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
+    if ((localObject != null) && (localObject.length > 0))
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo.length)
+      for (;;)
       {
-        UserInfo localUserInfo = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo[i];
-        if (localUserInfo != null) {
-          paramCodedOutputByteBufferNano.writeMessage(2, localUserInfo);
+        localObject = this.jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserInfo;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeMessage(2, (MessageNano)localObject);
         }
         i += 1;
       }
     }
-    if (this.b != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(3, this.b);
+    l = this.b;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(3, l);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.UserList
  * JD-Core Version:    0.7.0.1
  */

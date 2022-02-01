@@ -13,67 +13,79 @@ public final class QRCodeWriter
   private static BitMatrix a(QRCode paramQRCode, int paramInt1, int paramInt2, int paramInt3)
   {
     paramQRCode = paramQRCode.a();
-    if (paramQRCode == null) {
-      throw new IllegalStateException();
-    }
-    int k = paramQRCode.b();
-    int m = paramQRCode.a();
-    int i = (paramInt3 << 1) + k;
-    int j = (paramInt3 << 1) + m;
-    paramInt1 = Math.max(paramInt1, i);
-    paramInt3 = Math.max(paramInt2, j);
-    int n = Math.min(paramInt1 / i, paramInt3 / j);
-    j = (paramInt1 - k * n) / 2;
-    paramInt2 = (paramInt3 - m * n) / 2;
-    BitMatrix localBitMatrix = new BitMatrix(paramInt1, paramInt3);
-    paramInt1 = 0;
-    while (paramInt1 < m)
+    if (paramQRCode != null)
     {
-      i = 0;
-      paramInt3 = j;
-      while (i < k)
+      int k = paramQRCode.b();
+      int m = paramQRCode.a();
+      paramInt3 <<= 1;
+      int i = k + paramInt3;
+      int j = paramInt3 + m;
+      paramInt3 = Math.max(paramInt1, i);
+      paramInt2 = Math.max(paramInt2, j);
+      int n = Math.min(paramInt3 / i, paramInt2 / j);
+      j = (paramInt3 - k * n) / 2;
+      paramInt1 = (paramInt2 - m * n) / 2;
+      BitMatrix localBitMatrix = new BitMatrix(paramInt3, paramInt2);
+      paramInt2 = 0;
+      while (paramInt2 < m)
       {
-        if (paramQRCode.a(i, paramInt1) == 1) {
-          localBitMatrix.a(paramInt3, paramInt2, n, n);
+        paramInt3 = j;
+        i = 0;
+        while (i < k)
+        {
+          if (paramQRCode.a(i, paramInt2) == 1) {
+            localBitMatrix.a(paramInt3, paramInt1, n, n);
+          }
+          i += 1;
+          paramInt3 += n;
         }
-        i += 1;
-        paramInt3 += n;
+        paramInt2 += 1;
+        paramInt1 += n;
       }
-      paramInt2 += n;
-      paramInt1 += 1;
+      return localBitMatrix;
     }
-    return localBitMatrix;
+    paramQRCode = new IllegalStateException();
+    for (;;)
+    {
+      throw paramQRCode;
+    }
   }
   
   public BitMatrix a(String paramString, int paramInt1, int paramInt2, Map<EncodeHintType, ?> paramMap)
   {
-    if (paramString.length() == 0) {
-      throw new IllegalArgumentException("Found empty contents");
-    }
-    if ((paramInt1 < 0) || (paramInt2 < 0)) {
-      throw new IllegalArgumentException("Requested dimensions are too small: " + paramInt1 + 'x' + paramInt2);
-    }
-    Object localObject1 = ErrorCorrectionLevel.L;
-    Object localObject2 = localObject1;
-    int i;
-    if (paramMap != null)
+    if (paramString.length() != 0)
     {
-      localObject2 = (ErrorCorrectionLevel)paramMap.get(EncodeHintType.ERROR_CORRECTION);
-      if (localObject2 != null) {
-        localObject1 = localObject2;
+      if ((paramInt1 >= 0) && (paramInt2 >= 0))
+      {
+        Object localObject1 = ErrorCorrectionLevel.L;
+        int j = 4;
+        Object localObject2 = localObject1;
+        int i = j;
+        if (paramMap != null)
+        {
+          localObject2 = (ErrorCorrectionLevel)paramMap.get(EncodeHintType.ERROR_CORRECTION);
+          if (localObject2 != null) {
+            localObject1 = localObject2;
+          }
+          Integer localInteger = (Integer)paramMap.get(EncodeHintType.MARGIN);
+          localObject2 = localObject1;
+          i = j;
+          if (localInteger != null)
+          {
+            i = localInteger.intValue();
+            localObject2 = localObject1;
+          }
+        }
+        return a(Encoder.a(paramString, (ErrorCorrectionLevel)localObject2, paramMap), paramInt1, paramInt2, i);
       }
-      Integer localInteger = (Integer)paramMap.get(EncodeHintType.MARGIN);
-      localObject2 = localObject1;
-      if (localInteger != null) {
-        i = localInteger.intValue();
-      }
+      paramString = new StringBuilder();
+      paramString.append("Requested dimensions are too small: ");
+      paramString.append(paramInt1);
+      paramString.append('x');
+      paramString.append(paramInt2);
+      throw new IllegalArgumentException(paramString.toString());
     }
-    for (;;)
-    {
-      return a(Encoder.a(paramString, (ErrorCorrectionLevel)localObject1, paramMap), paramInt1, paramInt2, i);
-      i = 4;
-      localObject1 = localObject2;
-    }
+    throw new IllegalArgumentException("Found empty contents");
   }
 }
 

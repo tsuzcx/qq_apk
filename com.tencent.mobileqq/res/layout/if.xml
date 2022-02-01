@@ -1,11 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/if5" android:background="#2603081a" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ms5" android:background="@drawable/account_panel_bg" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
-            <TextView android:textSize="17.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center" android:id="@id/nnz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xhw" android:maxLines="1" android:drawableLeft="@drawable/gui" android:drawablePadding="4.0dip" />
-        </LinearLayout>
-        <TextView android:textSize="14.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/nny" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:text="@string/xhv" android:maxLines="2" />
-        <Button android:id="@id/npv" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="15.0dip" android:text="@string/hkf" style="@style/b9" />
-    </LinearLayout>
-</FrameLayout>
+<androidx.appcompat.view.menu.ActionMenuItemView android:textAppearance="?a04" android:textColor="?a05" android:gravity="center" android:layout_gravity="center" android:paddingLeft="8.0dip" android:paddingTop="4.0dip" android:paddingRight="8.0dip" android:paddingBottom="4.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?a01"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

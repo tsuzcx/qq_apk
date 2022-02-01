@@ -2,14 +2,16 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.home_watcher;
 
 import android.content.Context;
 import android.content.IntentFilter;
+import com.tencent.mobileqq.kandian.ad.api.entity.IHomeWatcher;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ReadInJoyAdHomeWatcher
+  implements IHomeWatcher
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
+  private OnHomePressedListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherOnHomePressedListener;
   private ReadInJoyAdHomeWatcher.InnerRecevier jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherReadInJoyAdHomeWatcher$InnerRecevier;
-  private ReadInJoyAdHomeWatcher.OnHomePressedListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherReadInJoyAdHomeWatcher$OnHomePressedListener;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
   public ReadInJoyAdHomeWatcher(Context paramContext)
@@ -25,9 +27,9 @@ public class ReadInJoyAdHomeWatcher
     }
   }
   
-  public void a(ReadInJoyAdHomeWatcher.OnHomePressedListener paramOnHomePressedListener)
+  public void a(OnHomePressedListener paramOnHomePressedListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherReadInJoyAdHomeWatcher$OnHomePressedListener = paramOnHomePressedListener;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherOnHomePressedListener = paramOnHomePressedListener;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdHome_watcherReadInJoyAdHomeWatcher$InnerRecevier = new ReadInJoyAdHomeWatcher.InnerRecevier(this);
   }
   
@@ -45,7 +47,7 @@ public class ReadInJoyAdHomeWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.home_watcher.ReadInJoyAdHomeWatcher
  * JD-Core Version:    0.7.0.1
  */

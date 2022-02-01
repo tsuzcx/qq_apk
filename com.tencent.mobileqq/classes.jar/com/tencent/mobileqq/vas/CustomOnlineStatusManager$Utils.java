@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.pb.onlinestatus.CustomOnlineStatusPb.CustomOnlineStatusMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -31,24 +31,28 @@ public class CustomOnlineStatusManager$Utils
   
   public static String a(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
   {
-    if (paramCustomOnlineStatusMsg != null) {
-      try
+    if (paramCustomOnlineStatusMsg == null) {
+      return "";
+    }
+    try
+    {
+      if (paramCustomOnlineStatusMsg.uHasCustomInfo.get() == 1)
       {
-        if (paramCustomOnlineStatusMsg.uHasCustomInfo.get() == 1)
+        String str = paramCustomOnlineStatusMsg.sCustomDesc.get();
+        paramCustomOnlineStatusMsg = paramCustomOnlineStatusMsg.sCustomModel.get();
+        if ((str != null) && (paramCustomOnlineStatusMsg != null))
         {
-          String str = paramCustomOnlineStatusMsg.sCustomDesc.get();
-          paramCustomOnlineStatusMsg = paramCustomOnlineStatusMsg.sCustomModel.get();
-          if ((str != null) && (paramCustomOnlineStatusMsg != null))
-          {
-            paramCustomOnlineStatusMsg = str + paramCustomOnlineStatusMsg;
-            return paramCustomOnlineStatusMsg;
-          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append(paramCustomOnlineStatusMsg);
+          paramCustomOnlineStatusMsg = localStringBuilder.toString();
+          return paramCustomOnlineStatusMsg;
         }
       }
-      catch (Exception paramCustomOnlineStatusMsg)
-      {
-        QLog.d("CustomOnlineStatusManager", 1, paramCustomOnlineStatusMsg, new Object[0]);
-      }
+    }
+    catch (Exception paramCustomOnlineStatusMsg)
+    {
+      QLog.d("CustomOnlineStatusManager", 1, paramCustomOnlineStatusMsg, new Object[0]);
     }
     return "";
   }
@@ -66,41 +70,48 @@ public class CustomOnlineStatusManager$Utils
     localIntent.putExtra("uin", ((QQAppInterface)localObject).getCurrentAccountUin());
     localIntent.putExtra("hide_operation_bar", true);
     localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("selfSet_leftViewText", paramActivity.getString(2131690946));
-    localIntent.putExtra("leftViewText", paramActivity.getString(2131690946));
+    localIntent.putExtra("selfSet_leftViewText", paramActivity.getString(2131690874));
+    localIntent.putExtra("leftViewText", paramActivity.getString(2131690874));
     localIntent.putExtra("hide_title_left_arrow", true);
     localIntent.putExtra("finish_animation_up_down", true);
-    localObject = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1";
+    String str = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1";
     if ("panel".equals(paramString))
     {
-      paramString = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1" + "&src=1";
+      paramString = new StringBuilder();
+      paramString.append("https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1");
+      paramString.append("&src=1");
+      paramString = paramString.toString();
       localObject = "0X8009F76";
     }
     for (;;)
     {
-      VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, paramString, 256L, localIntent, false, 299);
-      paramActivity.overridePendingTransition(2130771999, 2130771992);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
-      }
-      ReportController.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
-      return;
+      break;
       if ("settings".equals(paramString))
       {
-        paramString = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1" + "&src=2";
+        paramString = new StringBuilder();
+        paramString.append("https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1");
+        paramString.append("&src=2");
+        paramString = paramString.toString();
         localObject = "0X8009F77";
       }
       else if ("aio".equals(paramString))
       {
-        paramString = "https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1" + "&src=3";
+        paramString = new StringBuilder();
+        paramString.append("https://club.vip.qq.com/onlinestatus/set?_wv=67109895&_wvx=10&_proxy=1");
+        paramString.append("&src=3");
+        paramString = paramString.toString();
         localObject = "0X8009F78";
       }
       else
       {
-        String str = "";
-        paramString = (String)localObject;
-        localObject = str;
+        localObject = "";
+        paramString = str;
       }
+    }
+    VasWebviewUtil.b(paramActivity, paramString, 256L, localIntent, false, 299);
+    paramActivity.overridePendingTransition(2130772011, 2130772004);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      ReportController.b(null, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
     }
   }
   
@@ -121,8 +132,12 @@ public class CustomOnlineStatusManager$Utils
   public static void a(SubMsgType0x27.FrdCustomOnlineStatusChange paramFrdCustomOnlineStatusChange)
   {
     long l = paramFrdCustomOnlineStatusChange.uint64_uin.get();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CustomOnlineStatusManager", 4, "onPush uni = " + paramFrdCustomOnlineStatusChange.uint64_uin.get());
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPush uni = ");
+      localStringBuilder.append(paramFrdCustomOnlineStatusChange.uint64_uin.get());
+      QLog.d("CustomOnlineStatusManager", 4, localStringBuilder.toString());
     }
     if (l == BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())
     {
@@ -130,14 +145,15 @@ public class CustomOnlineStatusManager$Utils
         QLog.d("CustomOnlineStatusManager", 4, "sync owner");
       }
       b();
-    }
-    while (TextUtils.isEmpty(String.valueOf(l))) {
       return;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("CustomOnlineStatusManager", 4, "sync friend");
+    if (!TextUtils.isEmpty(String.valueOf(l)))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("CustomOnlineStatusManager", 4, "sync friend");
+      }
+      a(String.valueOf(l));
     }
-    a(String.valueOf(l));
   }
   
   public static boolean a(int paramInt)
@@ -155,21 +171,22 @@ public class CustomOnlineStatusManager$Utils
   
   public static String b(CustomOnlineStatusPb.CustomOnlineStatusMsg paramCustomOnlineStatusMsg)
   {
-    if (paramCustomOnlineStatusMsg != null) {
-      try
+    if (paramCustomOnlineStatusMsg == null) {
+      return "";
+    }
+    try
+    {
+      if (paramCustomOnlineStatusMsg.uHasCustomInfo.get() == 1)
       {
-        if (paramCustomOnlineStatusMsg.uHasCustomInfo.get() == 1)
-        {
-          paramCustomOnlineStatusMsg = paramCustomOnlineStatusMsg.sCustomModel.get();
-          if (paramCustomOnlineStatusMsg != null) {
-            return paramCustomOnlineStatusMsg;
-          }
+        paramCustomOnlineStatusMsg = paramCustomOnlineStatusMsg.sCustomModel.get();
+        if (paramCustomOnlineStatusMsg != null) {
+          return paramCustomOnlineStatusMsg;
         }
       }
-      catch (Exception paramCustomOnlineStatusMsg)
-      {
-        QLog.d("CustomOnlineStatusManager", 1, paramCustomOnlineStatusMsg, new Object[0]);
-      }
+    }
+    catch (Exception paramCustomOnlineStatusMsg)
+    {
+      QLog.d("CustomOnlineStatusManager", 1, paramCustomOnlineStatusMsg, new Object[0]);
     }
     return "";
   }
@@ -182,7 +199,7 @@ public class CustomOnlineStatusManager$Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.CustomOnlineStatusManager.Utils
  * JD-Core Version:    0.7.0.1
  */

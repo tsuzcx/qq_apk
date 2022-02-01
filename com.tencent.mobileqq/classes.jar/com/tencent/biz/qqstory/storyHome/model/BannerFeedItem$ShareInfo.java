@@ -17,23 +17,27 @@ public class BannerFeedItem$ShareInfo
   
   public void a(ShareInfo paramShareInfo)
   {
-    if (paramShareInfo.a != null) {
-      this.a = paramShareInfo.a;
+    String str = paramShareInfo.a;
+    if (str != null) {
+      this.a = str;
     }
-    if (paramShareInfo.b != null) {
-      this.b = paramShareInfo.b;
+    str = paramShareInfo.b;
+    if (str != null) {
+      this.b = str;
     }
-    if (paramShareInfo.c != null) {
-      this.c = paramShareInfo.c;
+    str = paramShareInfo.c;
+    if (str != null) {
+      this.c = str;
     }
-    if (paramShareInfo.d != null) {
-      this.d = paramShareInfo.d;
+    paramShareInfo = paramShareInfo.d;
+    if (paramShareInfo != null) {
+      this.d = paramShareInfo;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.BannerFeedItem.ShareInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,16 @@ class LiteLuxuryGiftModule$1$1
   
   public void onGetGiftInfo(GiftInfo paramGiftInfo)
   {
-    paramGiftInfo = LiteLuxuryGiftModule.access$600(this.this$1.this$0, paramGiftInfo);
-    if (this.val$onQueryLGInfoLIstener != null) {
-      this.val$onQueryLGInfoLIstener.onGetLuxuryGiftInfo(paramGiftInfo);
+    paramGiftInfo = LiteLuxuryGiftModule.access$500(this.this$1.this$0, paramGiftInfo);
+    OnQueryLGInfoListener localOnQueryLGInfoListener = this.val$onQueryLGInfoLIstener;
+    if (localOnQueryLGInfoListener != null) {
+      localOnQueryLGInfoListener.onGetLuxuryGiftInfo(paramGiftInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule.1.1
  * JD-Core Version:    0.7.0.1
  */

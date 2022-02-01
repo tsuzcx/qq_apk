@@ -23,14 +23,14 @@ public final class MediaSourceEventListener$EventDispatcher
   
   public MediaSourceEventListener$EventDispatcher(@Nullable Handler paramHandler, @Nullable MediaSourceEventListener paramMediaSourceEventListener, long paramLong)
   {
-    if (paramMediaSourceEventListener != null) {}
-    for (paramHandler = (Handler)Assertions.checkNotNull(paramHandler);; paramHandler = null)
-    {
-      this.handler = paramHandler;
-      this.listener = paramMediaSourceEventListener;
-      this.mediaTimeOffsetMs = paramLong;
-      return;
+    if (paramMediaSourceEventListener != null) {
+      paramHandler = (Handler)Assertions.checkNotNull(paramHandler);
+    } else {
+      paramHandler = null;
     }
+    this.handler = paramHandler;
+    this.listener = paramMediaSourceEventListener;
+    this.mediaTimeOffsetMs = paramLong;
   }
   
   private long adjustMediaTime(long paramLong)
@@ -49,15 +49,23 @@ public final class MediaSourceEventListener$EventDispatcher
   
   public void downstreamFormatChanged(int paramInt1, Format paramFormat, int paramInt2, Object paramObject, long paramLong)
   {
-    if ((this.listener != null) && (this.handler != null)) {
-      this.handler.post(new MediaSourceEventListener.EventDispatcher.6(this, paramInt1, paramFormat, paramInt2, paramObject, paramLong));
+    if (this.listener != null)
+    {
+      Handler localHandler = this.handler;
+      if (localHandler != null) {
+        localHandler.post(new MediaSourceEventListener.EventDispatcher.6(this, paramInt1, paramFormat, paramInt2, paramObject, paramLong));
+      }
     }
   }
   
   public void loadCanceled(DataSpec paramDataSpec, int paramInt1, int paramInt2, Format paramFormat, int paramInt3, Object paramObject, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
   {
-    if ((this.listener != null) && (this.handler != null)) {
-      this.handler.post(new MediaSourceEventListener.EventDispatcher.3(this, paramDataSpec, paramInt1, paramInt2, paramFormat, paramInt3, paramObject, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5));
+    if (this.listener != null)
+    {
+      Handler localHandler = this.handler;
+      if (localHandler != null) {
+        localHandler.post(new MediaSourceEventListener.EventDispatcher.3(this, paramDataSpec, paramInt1, paramInt2, paramFormat, paramInt3, paramObject, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5));
+      }
     }
   }
   
@@ -68,8 +76,12 @@ public final class MediaSourceEventListener$EventDispatcher
   
   public void loadCompleted(DataSpec paramDataSpec, int paramInt1, int paramInt2, Format paramFormat, int paramInt3, Object paramObject, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
   {
-    if ((this.listener != null) && (this.handler != null)) {
-      this.handler.post(new MediaSourceEventListener.EventDispatcher.2(this, paramDataSpec, paramInt1, paramInt2, paramFormat, paramInt3, paramObject, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5));
+    if (this.listener != null)
+    {
+      Handler localHandler = this.handler;
+      if (localHandler != null) {
+        localHandler.post(new MediaSourceEventListener.EventDispatcher.2(this, paramDataSpec, paramInt1, paramInt2, paramFormat, paramInt3, paramObject, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5));
+      }
     }
   }
   
@@ -80,8 +92,12 @@ public final class MediaSourceEventListener$EventDispatcher
   
   public void loadError(DataSpec paramDataSpec, int paramInt1, int paramInt2, Format paramFormat, int paramInt3, Object paramObject, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, IOException paramIOException, boolean paramBoolean)
   {
-    if ((this.listener != null) && (this.handler != null)) {
-      this.handler.post(new MediaSourceEventListener.EventDispatcher.4(this, paramDataSpec, paramInt1, paramInt2, paramFormat, paramInt3, paramObject, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramIOException, paramBoolean));
+    if (this.listener != null)
+    {
+      Handler localHandler = this.handler;
+      if (localHandler != null) {
+        localHandler.post(new MediaSourceEventListener.EventDispatcher.4(this, paramDataSpec, paramInt1, paramInt2, paramFormat, paramInt3, paramObject, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramIOException, paramBoolean));
+      }
     }
   }
   
@@ -92,8 +108,12 @@ public final class MediaSourceEventListener$EventDispatcher
   
   public void loadStarted(DataSpec paramDataSpec, int paramInt1, int paramInt2, Format paramFormat, int paramInt3, Object paramObject, long paramLong1, long paramLong2, long paramLong3)
   {
-    if ((this.listener != null) && (this.handler != null)) {
-      this.handler.post(new MediaSourceEventListener.EventDispatcher.1(this, paramDataSpec, paramInt1, paramInt2, paramFormat, paramInt3, paramObject, paramLong1, paramLong2, paramLong3));
+    if (this.listener != null)
+    {
+      Handler localHandler = this.handler;
+      if (localHandler != null) {
+        localHandler.post(new MediaSourceEventListener.EventDispatcher.1(this, paramDataSpec, paramInt1, paramInt2, paramFormat, paramInt3, paramObject, paramLong1, paramLong2, paramLong3));
+      }
     }
   }
   
@@ -104,14 +124,18 @@ public final class MediaSourceEventListener$EventDispatcher
   
   public void upstreamDiscarded(int paramInt, long paramLong1, long paramLong2)
   {
-    if ((this.listener != null) && (this.handler != null)) {
-      this.handler.post(new MediaSourceEventListener.EventDispatcher.5(this, paramInt, paramLong1, paramLong2));
+    if (this.listener != null)
+    {
+      Handler localHandler = this.handler;
+      if (localHandler != null) {
+        localHandler.post(new MediaSourceEventListener.EventDispatcher.5(this, paramInt, paramLong1, paramLong2));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.MediaSourceEventListener.EventDispatcher
  * JD-Core Version:    0.7.0.1
  */

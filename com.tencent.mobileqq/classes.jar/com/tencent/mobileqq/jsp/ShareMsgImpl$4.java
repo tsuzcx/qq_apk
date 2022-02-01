@@ -24,69 +24,73 @@ class ShareMsgImpl$4
     try
     {
       localObject1 = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
-      if (localObject1 == null) {
-        break label126;
+      if (localObject1 != null)
+      {
+        localObject2 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length);
+        if (localObject2 != null)
+        {
+          int k = ((Bitmap)localObject2).getWidth();
+          int j = ((Bitmap)localObject2).getHeight();
+          int m = k * j;
+          localObject1 = localObject2;
+          if (m > 8000)
+          {
+            double d1 = m;
+            Double.isNaN(d1);
+            d1 = 8000.0D / d1;
+            d1 = Math.sqrt(d1);
+            double d2 = k;
+            Double.isNaN(d2);
+            k = (int)(d2 * d1);
+            d2 = j;
+            Double.isNaN(d2);
+            j = (int)(d2 * d1);
+            localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, k, j, true);
+            ((Bitmap)localObject2).recycle();
+          }
+          this.jdField_a_of_type_JavaUtilMap.put("image", localObject1);
+        }
       }
-      localObject1 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length);
-      if (localObject1 == null) {
-        break label126;
-      }
-      int j = ((Bitmap)localObject1).getWidth();
-      int k = ((Bitmap)localObject1).getHeight();
-      if (j * k <= 8000) {
-        break label358;
-      }
-      double d = Math.sqrt(8000.0D / (j * k));
-      localObject2 = Bitmap.createScaledBitmap((Bitmap)localObject1, (int)(j * d), (int)(k * d), true);
-      ((Bitmap)localObject1).recycle();
-      localObject1 = localObject2;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (IOException|OutOfMemoryError localIOException)
     {
       Object localObject1;
       Object localObject2;
-      break label126;
+      label162:
+      break label162;
     }
-    catch (IOException localIOException)
-    {
-      for (;;) {}
-    }
-    this.jdField_a_of_type_JavaUtilMap.put("image", localObject1);
-    label126:
-    if (this.this$0.jdField_a_of_type_AndroidAppActivity.getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity"))
-    {
+    if (this.this$0.jdField_a_of_type_AndroidAppActivity.getClass().getName().equalsIgnoreCase("com.tencent.qqreadinjoy.detailspage.ReadInJoyArticleDetailActivity")) {
       this.this$0.jdField_a_of_type_AndroidAppActivity.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("report_type", "102");
-      ((Bundle)localObject1).putString("act_type", "96");
-      localObject2 = new StringBuilder().append("");
-      if (this.jdField_a_of_type_JavaUtilMap.get("image") != null) {
-        break label338;
-      }
-      ((Bundle)localObject1).putString("intext_1", i);
-      ((Bundle)localObject1).putString("intext_4", "0");
-      localObject2 = new StringBuilder().append("");
-      if (!"2".equals(this.b)) {
-        break label343;
-      }
-    }
-    label216:
-    for (i = 3;; i = 4)
-    {
-      ((Bundle)localObject1).putString("intext_3", ReportDef.RepUtil.b(i));
-      ((Bundle)localObject1).putString("stringext_1", this.c);
-      ReportCenter.a().a((Bundle)localObject1, "", this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
-      return;
+    } else {
       this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
-      break;
-      i = 0;
-      break label216;
     }
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("report_type", "102");
+    ((Bundle)localObject1).putString("act_type", "96");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    if (this.jdField_a_of_type_JavaUtilMap.get("image") != null) {
+      i = 0;
+    }
+    ((StringBuilder)localObject2).append(i);
+    ((Bundle)localObject1).putString("intext_1", ((StringBuilder)localObject2).toString());
+    ((Bundle)localObject1).putString("intext_4", "0");
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    if ("2".equals(this.b)) {
+      i = 3;
+    } else {
+      i = 4;
+    }
+    ((StringBuilder)localObject2).append(ReportDef.RepUtil.b(i));
+    ((Bundle)localObject1).putString("intext_3", ((StringBuilder)localObject2).toString());
+    ((Bundle)localObject1).putString("stringext_1", this.c);
+    ReportCenter.a().a((Bundle)localObject1, "", this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.ShareMsgImpl.4
  * JD-Core Version:    0.7.0.1
  */

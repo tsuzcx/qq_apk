@@ -3,7 +3,7 @@ package com.tencent.av.ui.funchat.record;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
+import com.tencent.mobileqq.videocodec.mediacodec.encoder.EncodeConfig;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -24,70 +24,84 @@ class QavVideoAudioRecorder$RecodeHandler
   {
     int i = paramMessage.what;
     QavVideoAudioRecorder localQavVideoAudioRecorder = (QavVideoAudioRecorder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQavVideoAudioRecorder == null) {
+    if (localQavVideoAudioRecorder == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.w("QavVideoAudioRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
       }
+      return;
     }
-    do
+    if (i != 0)
     {
-      for (;;)
+      if (i != 1)
       {
-        return;
-        switch (i)
+        if (i != 2)
         {
-        default: 
-          throw new RuntimeException("Unhandled msg what=" + i);
-        case 0: 
-          if (QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder) == null) {
-            QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder, new ByteArrayOutputStream(32768));
-          }
-          if (paramMessage.obj != null)
+          if (i == 3)
           {
-            QavVideoAudioRecorder.a(localQavVideoAudioRecorder, (EncodeConfig)paramMessage.obj);
-            return;
-          }
-          throw new RuntimeException("MSG_START_RECORDING bundle == null");
-        case 1: 
-          QavVideoAudioRecorder.a(localQavVideoAudioRecorder);
-          try
-          {
-            if (QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder) != null)
+            if (paramMessage.obj != null)
             {
-              QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder).flush();
-              QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder).close();
-              QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder, null);
+              paramMessage = (Object[])paramMessage.obj;
+              localQavVideoAudioRecorder.b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
               return;
             }
+            throw new RuntimeException("MSG_AUDIO_FRAME_AVAILABLE bundle == null");
           }
-          catch (IOException paramMessage) {}
+          paramMessage = new StringBuilder();
+          paramMessage.append("Unhandled msg what=");
+          paramMessage.append(i);
+          throw new RuntimeException(paramMessage.toString());
+        }
+        if (paramMessage.obj != null)
+        {
+          paramMessage = (Object[])paramMessage.obj;
+          if ((paramMessage != null) && (paramMessage.length == 5))
+          {
+            QavVideoAudioRecorder.a(localQavVideoAudioRecorder, ((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
+            return;
+          }
+          throw new IllegalArgumentException("args == null || args.length != 5");
+        }
+        throw new RuntimeException("MSG_VIDEO_FRAME_AVAILABLE bundle == null");
+      }
+      QavVideoAudioRecorder.a(localQavVideoAudioRecorder);
+      try
+      {
+        if (QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder) == null) {
+          break label342;
+        }
+        QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder).flush();
+        QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder).close();
+        QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder, null);
+        return;
+      }
+      catch (IOException paramMessage)
+      {
+        if (!QLog.isColorLevel()) {
+          break label342;
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("QavVideoAudioRecorder", 2, "AudioBuf.close() ", paramMessage);
-    return;
-    if (paramMessage.obj != null)
+      QLog.e("QavVideoAudioRecorder", 2, "AudioBuf.close() ", paramMessage);
+    }
+    else
     {
-      paramMessage = (Object[])paramMessage.obj;
-      if ((paramMessage == null) || (paramMessage.length != 5)) {
-        throw new IllegalArgumentException("args == null || args.length != 5");
+      if (QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder) == null) {
+        QavVideoAudioRecorder.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder, new ByteArrayOutputStream(32768));
       }
-      QavVideoAudioRecorder.a(localQavVideoAudioRecorder, ((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
-      return;
+      if (paramMessage.obj == null) {
+        break label343;
+      }
+      QavVideoAudioRecorder.a(localQavVideoAudioRecorder, (EncodeConfig)paramMessage.obj);
     }
-    throw new RuntimeException("MSG_VIDEO_FRAME_AVAILABLE bundle == null");
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (Object[])paramMessage.obj;
-      localQavVideoAudioRecorder.b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
-      return;
-    }
-    throw new RuntimeException("MSG_AUDIO_FRAME_AVAILABLE bundle == null");
+    label342:
+    return;
+    label343:
+    throw new RuntimeException("MSG_START_RECORDING bundle == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavVideoAudioRecorder.RecodeHandler
  * JD-Core Version:    0.7.0.1
  */

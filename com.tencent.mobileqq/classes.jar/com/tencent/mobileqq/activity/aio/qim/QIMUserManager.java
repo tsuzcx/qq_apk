@@ -15,6 +15,7 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.preference.PreferenceManager;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
+import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -30,9 +31,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -46,10 +47,10 @@ import java.util.List;
 public class QIMUserManager
 {
   private static QIMUserManager jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager;
-  public static String a;
-  private static final String jdField_b_of_type_JavaLangString = AppConstants.SDCARD_AIO_QIM_THEME_DIR + "icons/";
-  private static final String jdField_c_of_type_JavaLangString = AppConstants.SDCARD_AIO_QIM_THEME_DIR + "zip/";
-  private static final String jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131709825);
+  public static String a = "qim_need_show_text_bubble";
+  private static final String jdField_b_of_type_JavaLangString;
+  private static final String jdField_c_of_type_JavaLangString;
+  private static final String jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131709812);
   private volatile int jdField_a_of_type_Int = 0;
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 0;
@@ -65,45 +66,59 @@ public class QIMUserManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = "qim_need_show_text_bubble";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_AIO_QIM_THEME_DIR);
+    localStringBuilder.append("icons/");
+    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_AIO_QIM_THEME_DIR);
+    localStringBuilder.append("zip/");
+    jdField_c_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   private int a(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMUserManager", 2, " doDowndLoadQimThemeZip zipUrl " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(" doDowndLoadQimThemeZip zipUrl ");
+      paramString2.append(paramString1);
+      QLog.i("QIMUserManager", 2, paramString2.toString());
     }
-    File localFile = new File(jdField_b_of_type_JavaLangString);
+    Object localObject = new File(jdField_b_of_type_JavaLangString);
     paramString2 = new File(jdField_c_of_type_JavaLangString);
-    if (!localFile.exists())
+    if (!((File)localObject).exists())
     {
-      localFile.mkdirs();
-      localFile = new File(jdField_b_of_type_JavaLangString + ".nomedia");
-    }
-    for (;;)
-    {
+      ((File)localObject).mkdirs();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(".nomedia");
+      localObject = new File(((StringBuilder)localObject).toString());
       try
       {
-        localFile.createNewFile();
-        if (paramString2.exists()) {
-          break label183;
-        }
-        paramString2.mkdirs();
-        paramString1 = new DownloadTask(paramString1, new File(jdField_c_of_type_JavaLangString + "android_qim_theme_icons.zip"));
-        paramString1.f = "profileCardDownload";
-        paramString1.e = "VIP_profilecard";
-        return DownloaderFactory.a(paramString1, null);
+        ((File)localObject).createNewFile();
       }
       catch (IOException localIOException)
       {
         localIOException.printStackTrace();
-        continue;
       }
-      FileUtils.b(jdField_b_of_type_JavaLangString);
-      continue;
-      label183:
-      FileUtils.b(jdField_c_of_type_JavaLangString);
     }
+    else
+    {
+      FileUtils.deleteFilesInDirectory(jdField_b_of_type_JavaLangString);
+    }
+    if (!paramString2.exists()) {
+      paramString2.mkdirs();
+    } else {
+      FileUtils.deleteFilesInDirectory(jdField_c_of_type_JavaLangString);
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append(jdField_c_of_type_JavaLangString);
+    paramString2.append("android_qim_theme_icons.zip");
+    paramString1 = new DownloadTask(paramString1, new File(paramString2.toString()));
+    paramString1.f = "profileCardDownload";
+    paramString1.e = "VIP_profilecard";
+    return DownloaderFactory.a(paramString1, null);
   }
   
   public static QIMUserManager a()
@@ -116,17 +131,19 @@ public class QIMUserManager
   
   private List<String> a()
   {
-    int j = 0;
     ArrayList localArrayList = new ArrayList();
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("qim_theme_icon_names_sp", 0).getString("android_qim_theme_icon_names", "");
-    String[] arrayOfString = null;
-    if (!TextUtils.isEmpty(str)) {
-      arrayOfString = str.split("\\|");
+    Object localObject = BaseApplicationImpl.getApplication();
+    int j = 0;
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("qim_theme_icon_names_sp", 0).getString("android_qim_theme_icon_names", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localObject = ((String)localObject).split("\\|");
+    } else {
+      localObject = null;
     }
-    if ((arrayOfString != null) && (arrayOfString.length > 0)) {
-      while (j < arrayOfString.length)
+    if ((localObject != null) && (localObject.length > 0)) {
+      while (j < localObject.length)
       {
-        localArrayList.add(arrayOfString[j]);
+        localArrayList.add(localObject[j]);
         j += 1;
       }
     }
@@ -135,21 +152,25 @@ public class QIMUserManager
   
   private void a()
   {
-    int j = 0;
-    Object localObject = new File(jdField_b_of_type_JavaLangString);
-    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+    Object localObject2 = new File(jdField_b_of_type_JavaLangString);
+    if ((((File)localObject2).exists()) && (((File)localObject2).isDirectory()))
     {
-      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("qim_theme_icon_names_sp", 0).edit();
-      localObject = ((File)localObject).list();
-      StringBuilder localStringBuilder = new StringBuilder();
-      while (j < localObject.length)
+      Object localObject1 = BaseApplicationImpl.getApplication();
+      int j = 0;
+      localObject1 = ((BaseApplicationImpl)localObject1).getSharedPreferences("qim_theme_icon_names_sp", 0).edit();
+      localObject2 = ((File)localObject2).list();
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      while (j < localObject2.length)
       {
-        String str = localObject[j].substring(localObject[j].lastIndexOf("/") + 1);
-        localStringBuilder.append(str + "|");
+        String str = localObject2[j].substring(localObject2[j].lastIndexOf("/") + 1);
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(str);
+        localStringBuilder2.append("|");
+        localStringBuilder1.append(localStringBuilder2.toString());
         j += 1;
       }
-      localEditor.putString("android_qim_theme_icon_names", localStringBuilder.toString());
-      localEditor.apply();
+      ((SharedPreferences.Editor)localObject1).putString("android_qim_theme_icon_names", localStringBuilder1.toString());
+      ((SharedPreferences.Editor)localObject1).apply();
     }
   }
   
@@ -161,15 +182,47 @@ public class QIMUserManager
       if ((!this.jdField_b_of_type_Boolean) || (!this.i.equals(str)))
       {
         paramQQAppInterface = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
-        if (paramQQAppInterface.contains(str + "_" + "qim_user_special_config_version"))
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("_");
+        localStringBuilder.append("qim_user_special_config_version");
+        if (paramQQAppInterface.contains(localStringBuilder.toString()))
         {
-          this.jdField_b_of_type_Int = paramQQAppInterface.getInt(str + "_" + "qim_user_special_config_avatar_switch", 0);
-          this.jdField_c_of_type_Int = paramQQAppInterface.getInt(str + "_" + "qim_user_special_config_title_bg_switch", 0);
-          this.jdField_d_of_type_Int = paramQQAppInterface.getInt(str + "_" + "qim_user_special_config_bubble_switch", 0);
-          this.e = paramQQAppInterface.getString(str + "_" + "qim_user_special_config_resources_url", "");
-          this.g = paramQQAppInterface.getString(str + "_" + "qim_user_special_config_resources_md5", "");
-          this.f = paramQQAppInterface.getString(str + "_" + "qim_user_special_config_qim_website", "");
-          this.h = paramQQAppInterface.getString(str + "_" + "qim_user_special_config_online_wording", jdField_d_of_type_JavaLangString);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("_");
+          localStringBuilder.append("qim_user_special_config_avatar_switch");
+          this.jdField_b_of_type_Int = paramQQAppInterface.getInt(localStringBuilder.toString(), 0);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("_");
+          localStringBuilder.append("qim_user_special_config_title_bg_switch");
+          this.jdField_c_of_type_Int = paramQQAppInterface.getInt(localStringBuilder.toString(), 0);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("_");
+          localStringBuilder.append("qim_user_special_config_bubble_switch");
+          this.jdField_d_of_type_Int = paramQQAppInterface.getInt(localStringBuilder.toString(), 0);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("_");
+          localStringBuilder.append("qim_user_special_config_resources_url");
+          this.e = paramQQAppInterface.getString(localStringBuilder.toString(), "");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("_");
+          localStringBuilder.append("qim_user_special_config_resources_md5");
+          this.g = paramQQAppInterface.getString(localStringBuilder.toString(), "");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("_");
+          localStringBuilder.append("qim_user_special_config_qim_website");
+          this.f = paramQQAppInterface.getString(localStringBuilder.toString(), "");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("_");
+          localStringBuilder.append("qim_user_special_config_online_wording");
+          this.h = paramQQAppInterface.getString(localStringBuilder.toString(), jdField_d_of_type_JavaLangString);
           this.jdField_c_of_type_Boolean = paramQQAppInterface.getBoolean("qim_user_special_need_force_download", false);
         }
         this.i = str;
@@ -181,69 +234,41 @@ public class QIMUserManager
     }
   }
   
-  /* Error */
   private boolean a(String paramString)
   {
-    // Byte code:
-    //   0: new 108	java/io/File
-    //   3: dup
-    //   4: new 25	java/lang/StringBuilder
-    //   7: dup
-    //   8: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   11: getstatic 49	com/tencent/mobileqq/activity/aio/qim/QIMUserManager:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   14: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: ldc 126
-    //   19: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   25: invokespecial 111	java/io/File:<init>	(Ljava/lang/String;)V
-    //   28: astore_2
-    //   29: aload_2
-    //   30: invokevirtual 114	java/io/File:exists	()Z
-    //   33: ifne +5 -> 38
-    //   36: iconst_0
-    //   37: ireturn
-    //   38: aload_2
-    //   39: invokevirtual 313	java/io/File:getPath	()Ljava/lang/String;
-    //   42: invokestatic 316	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;)Ljava/lang/String;
-    //   45: astore_3
-    //   46: aload_3
-    //   47: invokestatic 181	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   50: ifne -14 -> 36
-    //   53: aload_3
-    //   54: aload_1
-    //   55: invokevirtual 319	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   58: ifeq -22 -> 36
-    //   61: getstatic 45	com/tencent/mobileqq/activity/aio/qim/QIMUserManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   64: invokestatic 147	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)V
-    //   67: aload_2
-    //   68: getstatic 45	com/tencent/mobileqq/activity/aio/qim/QIMUserManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   71: invokestatic 325	com/tencent/biz/common/util/ZipUtils:unZipFile	(Ljava/io/File;Ljava/lang/String;)V
-    //   74: iconst_1
-    //   75: ireturn
-    //   76: astore_1
-    //   77: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   80: ifeq -44 -> 36
-    //   83: aload_1
-    //   84: invokevirtual 326	java/lang/UnsatisfiedLinkError:printStackTrace	()V
-    //   87: iconst_0
-    //   88: ireturn
-    //   89: astore_1
-    //   90: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   93: ifeq -57 -> 36
-    //   96: aload_1
-    //   97: invokevirtual 327	java/lang/Exception:printStackTrace	()V
-    //   100: iconst_0
-    //   101: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	102	0	this	QIMUserManager
-    //   0	102	1	paramString	String
-    //   28	40	2	localFile	File
-    //   45	9	3	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   38	46	76	java/lang/UnsatisfiedLinkError
-    //   61	74	89	java/lang/Exception
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("android_qim_theme_icons.zip");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (!((File)localObject).exists()) {
+      return false;
+    }
+    try
+    {
+      String str = FileUtils.calcMd5(((File)localObject).getPath());
+      if ((!TextUtils.isEmpty(str)) && (str.equalsIgnoreCase(paramString))) {
+        try
+        {
+          FileUtils.deleteFilesInDirectory(jdField_b_of_type_JavaLangString);
+          ZipUtils.unZipFile((File)localObject, jdField_b_of_type_JavaLangString);
+          return true;
+        }
+        catch (Exception paramString)
+        {
+          if (QLog.isColorLevel()) {
+            paramString.printStackTrace();
+          }
+        }
+      }
+      return false;
+    }
+    catch (UnsatisfiedLinkError paramString)
+    {
+      if (QLog.isColorLevel()) {
+        paramString.printStackTrace();
+      }
+    }
+    return false;
   }
   
   private void b()
@@ -259,26 +284,26 @@ public class QIMUserManager
   
   public Drawable a(int paramInt)
   {
-    Object localObject = null;
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    switch (paramInt)
-    {
+    Object localObject1 = new BitmapFactory.Options();
+    if (paramInt != 2130850433) {
+      return null;
     }
-    Drawable localDrawable;
-    do
+    Object localObject2 = (Drawable)GlobalImageCache.a.get("skin_header_bar.png");
+    if (localObject2 == null)
     {
-      return localObject;
-      localDrawable = (Drawable)GlobalImageCache.a.get("skin_header_bar.png");
-      localObject = localDrawable;
-    } while (localDrawable != null);
-    localObject = ImageUtil.a(jdField_b_of_type_JavaLangString + "skin_header_bar.png", localOptions);
-    if (localObject != null)
-    {
-      localObject = new BitmapDrawable((Bitmap)localObject);
-      GlobalImageCache.a.put("skin_header_bar.png", localObject);
-      return localObject;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append("skin_header_bar.png");
+      localObject1 = ImageUtil.a(((StringBuilder)localObject2).toString(), (BitmapFactory.Options)localObject1);
+      if (localObject1 != null)
+      {
+        localObject1 = new BitmapDrawable((Bitmap)localObject1);
+        GlobalImageCache.a.put("skin_header_bar.png", localObject1);
+        return localObject1;
+      }
+      return BaseApplicationImpl.getContext().getResources().getDrawable(paramInt);
     }
-    return BaseApplicationImpl.getContext().getResources().getDrawable(paramInt);
+    return localObject2;
   }
   
   public String a(QQAppInterface paramQQAppInterface)
@@ -306,80 +331,73 @@ public class QIMUserManager
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     paramQQAppInterface = b(paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMUserManager", 2, "jumpToQimWebsite: invoked. info: qimWebsiteUrl = " + paramQQAppInterface);
-    }
-    if ((!TextUtils.isEmpty(paramQQAppInterface)) && (paramContext != null)) {}
-    try
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramQQAppInterface);
-      paramContext.startActivity(localIntent);
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("jumpToQimWebsite: invoked. info: qimWebsiteUrl = ");
+      ((StringBuilder)localObject).append(paramQQAppInterface);
+      QLog.i("QIMUserManager", 2, ((StringBuilder)localObject).toString());
     }
-    catch (Throwable paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QIMUserManager", 2, "jumpToQimWebsite: Failed. info: exception = ", paramQQAppInterface);
+    if ((!TextUtils.isEmpty(paramQQAppInterface)) && (paramContext != null)) {
+      try
+      {
+        localObject = new Intent(paramContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", paramQQAppInterface);
+        paramContext.startActivity((Intent)localObject);
+        return;
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QIMUserManager", 2, "jumpToQimWebsite: Failed. info: exception = ", paramQQAppInterface);
+        }
+      }
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    boolean bool2 = true;
     Object localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localObject != null)
     {
       localObject = ((FriendsManager)localObject).e(paramSessionInfo.jdField_a_of_type_JavaLangString);
       if ((localObject != null) && (((Friends)localObject).netTypeIconId == 11))
       {
+        boolean bool2 = true;
         paramSessionInfo.jdField_a_of_type_Boolean = true;
         if (paramSessionInfo.jdField_a_of_type_Boolean)
         {
           paramSessionInfo.jdField_c_of_type_Boolean = ThemeUtil.isInNightMode(paramQQAppInterface);
-          if ((c(paramQQAppInterface) == 1) || (a(paramQQAppInterface) == 1))
-          {
-            if (!a(paramQQAppInterface)) {
-              break label179;
+          if ((c(paramQQAppInterface) == 1) || (a(paramQQAppInterface) == 1)) {
+            if (a(paramQQAppInterface)) {
+              a(paramQQAppInterface, true, a(paramQQAppInterface), c(paramQQAppInterface));
+            } else if (!a()) {
+              a(paramQQAppInterface, false, a(paramQQAppInterface), c(paramQQAppInterface));
             }
-            a(paramQQAppInterface, true, a(paramQQAppInterface), c(paramQQAppInterface));
           }
           boolean bool3 = a();
-          if ((c(paramQQAppInterface) != 1) || (!bool3)) {
-            break label205;
+          boolean bool1;
+          if ((c(paramQQAppInterface) == 1) && (bool3)) {
+            bool1 = true;
+          } else {
+            bool1 = false;
           }
-          bool1 = true;
-          label130:
           paramSessionInfo.d = bool1;
-          if ((a(paramQQAppInterface) != 1) || (!bool3)) {
-            break label210;
+          if ((a(paramQQAppInterface) == 1) && (bool3)) {
+            bool1 = true;
+          } else {
+            bool1 = false;
           }
-          bool1 = true;
-          label151:
           paramSessionInfo.f = bool1;
-          if ((b(paramQQAppInterface) != 1) || (!bool3)) {
-            break label215;
+          if ((b(paramQQAppInterface) == 1) && (bool3)) {
+            bool1 = bool2;
+          } else {
+            bool1 = false;
           }
+          paramSessionInfo.h = bool1;
         }
       }
-    }
-    label179:
-    label205:
-    label210:
-    label215:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramSessionInfo.h = bool1;
-      return;
-      if (a()) {
-        break;
-      }
-      a(paramQQAppInterface, false, a(paramQQAppInterface), c(paramQQAppInterface));
-      break;
-      bool1 = false;
-      break label130;
-      bool1 = false;
-      break label151;
     }
   }
   
@@ -388,8 +406,12 @@ public class QIMUserManager
     if (this.jdField_a_of_type_Int == 1) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMUserManager", 2, "startDownLoadQimTheme QimIconsState " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startDownLoadQimTheme QimIconsState ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.i("QIMUserManager", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_Int = 1;
     b();
@@ -429,72 +451,80 @@ public class QIMUserManager
   
   public boolean a()
   {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (this.jdField_a_of_type_Int == 2)
+    int j = this.jdField_a_of_type_Int;
+    boolean bool3 = true;
+    if (j == 2) {
+      return true;
+    }
+    j = this.jdField_a_of_type_Int;
+    boolean bool1 = false;
+    boolean bool4 = false;
+    boolean bool2 = bool1;
+    if (j != 1)
     {
       bool2 = bool1;
-      return bool2;
-    }
-    if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMUserManager", 2, "isQimIconsOk QimIconsState " + this.jdField_a_of_type_Int);
-    }
-    Object localObject2 = new File(jdField_b_of_type_JavaLangString);
-    if ((((File)localObject2).exists()) && (((File)localObject2).isDirectory()))
-    {
-      Object localObject1 = a();
-      ArrayList localArrayList = new ArrayList();
-      localObject2 = ((File)localObject2).list();
-      bool1 = bool2;
-      if (localObject2 != null)
+      if (this.jdField_a_of_type_Int != 3)
       {
-        bool1 = bool2;
-        if (localObject2.length > 0)
+        if (this.jdField_a_of_type_Int == 4) {
+          return false;
+        }
+        Object localObject1;
+        if (QLog.isColorLevel())
         {
-          int j = 0;
-          while (j < localObject2.length)
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("isQimIconsOk QimIconsState ");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+          QLog.i("QIMUserManager", 2, ((StringBuilder)localObject1).toString());
+        }
+        Object localObject3 = new File(jdField_b_of_type_JavaLangString);
+        bool1 = bool4;
+        if (((File)localObject3).exists())
+        {
+          bool1 = bool4;
+          if (((File)localObject3).isDirectory())
           {
-            localArrayList.add(localObject2[j].substring(localObject2[j].lastIndexOf("/") + 1));
-            j += 1;
-          }
-          localObject1 = ((List)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            if (!localArrayList.contains((String)((Iterator)localObject1).next())) {
-              bool1 = bool2;
+            Object localObject2 = a();
+            localObject1 = new ArrayList();
+            localObject3 = ((File)localObject3).list();
+            bool1 = bool4;
+            if (localObject3 != null)
+            {
+              bool1 = bool4;
+              if (localObject3.length > 0)
+              {
+                j = 0;
+                while (j < localObject3.length)
+                {
+                  ((List)localObject1).add(localObject3[j].substring(localObject3[j].lastIndexOf("/") + 1));
+                  j += 1;
+                }
+                localObject2 = ((List)localObject2).iterator();
+                do
+                {
+                  bool1 = bool3;
+                  if (!((Iterator)localObject2).hasNext()) {
+                    break;
+                  }
+                } while (((List)localObject1).contains((String)((Iterator)localObject2).next()));
+                bool1 = false;
+              }
             }
           }
         }
+        bool2 = bool1;
+        if (bool1)
+        {
+          this.jdField_a_of_type_Int = 2;
+          bool2 = bool1;
+        }
       }
     }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
-      this.jdField_a_of_type_Int = 2;
-      return bool1;
-      bool1 = false;
-      continue;
-      bool1 = true;
-    }
+    return bool2;
   }
   
   public boolean a(SessionInfo paramSessionInfo)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramSessionInfo.jdField_a_of_type_Boolean)
-    {
-      bool1 = bool2;
-      if (paramSessionInfo.h) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (paramSessionInfo.jdField_a_of_type_Boolean) && (paramSessionInfo.h);
   }
   
   public boolean a(QQAppInterface paramQQAppInterface)
@@ -506,44 +536,61 @@ public class QIMUserManager
   public boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
     paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.netTypeIconId == 11;
-    }
-    return false;
-  }
-  
-  public boolean a(Object paramObject, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
     boolean bool2 = false;
-    boolean bool3 = "2".equals(paramChatMessage.getExtInfoFromExtStr("app_qim_tail_id"));
     boolean bool1 = bool2;
-    if (a().a(paramQQAppInterface) == 1)
+    if (paramQQAppInterface != null)
     {
       bool1 = bool2;
-      if (!paramChatMessage.isSend()) {
-        if (!bool3)
-        {
-          bool1 = bool2;
-          if (!a().a(paramQQAppInterface, paramChatMessage.senderuin)) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
+      if (paramQQAppInterface.netTypeIconId == 11) {
+        bool1 = true;
       }
     }
     return bool1;
   }
   
+  public boolean a(Object paramObject, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    boolean bool2 = "2".equals(paramChatMessage.getExtInfoFromExtStr("app_qim_tail_id"));
+    int j = a().a(paramQQAppInterface);
+    boolean bool1 = true;
+    if ((j == 1) && (!paramChatMessage.isSend()))
+    {
+      if (bool2) {
+        break label64;
+      }
+      if (a().a(paramQQAppInterface, paramChatMessage.senderuin)) {
+        return true;
+      }
+    }
+    bool1 = false;
+    label64:
+    return bool1;
+  }
+  
   public boolean a(Object paramObject, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, boolean paramBoolean)
   {
-    if ((!paramBoolean) && ((!(paramObject instanceof TextItemBuilder)) || ((paramObject instanceof TextTranslationItemBuilder)))) {}
-    do
-    {
+    boolean bool1 = false;
+    if ((!paramBoolean) && ((!(paramObject instanceof TextItemBuilder)) || ((paramObject instanceof TextTranslationItemBuilder)))) {
       return false;
-      paramBoolean = "2".equals(paramChatMessage.getExtInfoFromExtStr("app_qim_tail_id"));
-    } while ((a().b(paramQQAppInterface) != 1) || (paramChatMessage.isSend()) || ((!paramBoolean) && (!a().a(paramQQAppInterface, paramChatMessage.senderuin))));
-    return true;
+    }
+    boolean bool2 = "2".equals(paramChatMessage.getExtInfoFromExtStr("app_qim_tail_id"));
+    paramBoolean = bool1;
+    if (a().b(paramQQAppInterface) == 1)
+    {
+      paramBoolean = bool1;
+      if (!paramChatMessage.isSend()) {
+        if (!bool2)
+        {
+          paramBoolean = bool1;
+          if (!a().a(paramQQAppInterface, paramChatMessage.senderuin)) {}
+        }
+        else
+        {
+          paramBoolean = true;
+        }
+      }
+    }
+    return paramBoolean;
   }
   
   public int b(QQAppInterface paramQQAppInterface)
@@ -554,91 +601,127 @@ public class QIMUserManager
   
   public Drawable b(int paramInt)
   {
-    Object localObject2 = null;
-    Bitmap localBitmap = null;
-    Object localObject3 = new BitmapFactory.Options();
+    Object localObject2 = new BitmapFactory.Options();
+    Drawable localDrawable = null;
     Object localObject1;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      localObject1 = null;
-    }
-    for (;;)
-    {
-      return localObject1;
-      localObject2 = (Drawable)GlobalImageCache.a.get("skin_aio_qim_header_flag.png");
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      if (paramInt != 2)
       {
-        localBitmap = ImageUtil.a(jdField_b_of_type_JavaLangString + "skin_aio_qim_header_flag.png", (BitmapFactory.Options)localObject3);
-        localObject1 = localObject2;
-        if (localBitmap != null)
+        if (paramInt != 3)
         {
-          localObject1 = new BitmapDrawable(localBitmap);
-          GlobalImageCache.a.put("skin_aio_qim_header_flag.png", localObject1);
-          continue;
-          localBitmap = (Bitmap)GlobalImageCache.a.get("title_bg_round.9.png");
-          if (localBitmap == null)
+          if (paramInt != 4)
           {
-            localObject1 = ImageUtil.a(jdField_b_of_type_JavaLangString + "title_bg_round.9.png", (BitmapFactory.Options)localObject3);
-            if (localObject1 == null) {
+            if (paramInt != 5) {
+              return null;
+            }
+            localDrawable = (Drawable)GlobalImageCache.a.get("aio_qim_user_online_title_icon.png");
+            localObject1 = localDrawable;
+            if (localDrawable == null)
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+              ((StringBuilder)localObject1).append("aio_qim_user_online_title_icon.png");
+              localObject1 = ImageUtil.a(((StringBuilder)localObject1).toString(), (BitmapFactory.Options)localObject2);
+              localObject1 = new BitmapDrawable(BaseApplicationImpl.getContext().getResources(), (Bitmap)localObject1);
+              ((Drawable)localObject1).setBounds(0, 0, ScreenUtil.dip2px(13.0F), ScreenUtil.dip2px(13.0F));
+              return localObject1;
+            }
+          }
+          else
+          {
+            if ((Drawable)GlobalImageCache.a.get("qim_title_immersive_bar.png") == null)
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+              ((StringBuilder)localObject1).append("qim_title_immersive_bar.png");
+              localObject1 = ImageUtil.a(((StringBuilder)localObject1).toString(), (BitmapFactory.Options)localObject2);
+              if (localObject1 != null) {
+                return new BitmapDrawable((Bitmap)localObject1);
+              }
+            }
+            return null;
+          }
+        }
+        else
+        {
+          localDrawable = (Drawable)GlobalImageCache.a.get("aio_qim_online_icon.png");
+          localObject1 = localDrawable;
+          if (localDrawable == null)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append("aio_qim_online_icon.png");
+            localObject2 = ImageUtil.a(((StringBuilder)localObject1).toString(), (BitmapFactory.Options)localObject2);
+            localObject1 = localDrawable;
+            if (localObject2 != null)
+            {
+              localObject1 = new BitmapDrawable((Bitmap)localObject2);
+              GlobalImageCache.a.put("skin_aio_qim_header_flag.png", localObject1);
+              return localObject1;
+            }
+          }
+        }
+      }
+      else
+      {
+        Object localObject3 = (Bitmap)GlobalImageCache.a.get("title_bg_round.9.png");
+        if (localObject3 == null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append("title_bg_round.9.png");
+          localObject2 = ImageUtil.a(((StringBuilder)localObject1).toString(), (BitmapFactory.Options)localObject2);
+          localObject1 = localDrawable;
+          if (localObject2 != null)
+          {
+            GlobalImageCache.a.put("title_bg_round.9.png", localObject2);
+            localObject3 = ((Bitmap)localObject2).getNinePatchChunk();
+            localObject1 = localDrawable;
+            if (localObject3 != null)
+            {
+              localObject1 = localDrawable;
+              if (!NinePatch.isNinePatchChunk((byte[])localObject3)) {}
+            }
+          }
+        }
+        else
+        {
+          for (localObject1 = new NinePatchDrawable((Bitmap)localObject2, (byte[])localObject3, new Rect(), null);; localObject1 = new NinePatchDrawable((Bitmap)localObject3, (byte[])localObject2, new Rect(), null))
+          {
+            return localObject1;
+            localObject2 = ((Bitmap)localObject3).getNinePatchChunk();
+            localObject1 = localDrawable;
+            if (localObject2 == null) {
               break;
             }
-            GlobalImageCache.a.put("title_bg_round.9.png", localObject1);
-            localObject2 = ((Bitmap)localObject1).getNinePatchChunk();
-            if ((localObject2 == null) || (!NinePatch.isNinePatchChunk((byte[])localObject2))) {
-              break label501;
-            }
-            localObject1 = new NinePatchDrawable((Bitmap)localObject1, (byte[])localObject2, new Rect(), null);
-            continue;
-          }
-          localObject3 = localBitmap.getNinePatchChunk();
-          localObject1 = localObject2;
-          if (localObject3 != null)
-          {
-            localObject1 = localObject2;
-            if (NinePatch.isNinePatchChunk((byte[])localObject3)) {
-              localObject1 = new NinePatchDrawable(localBitmap, (byte[])localObject3, new Rect(), null);
-            }
-          }
-          continue;
-          localObject2 = (Drawable)GlobalImageCache.a.get("aio_qim_online_icon.png");
-          localObject1 = localObject2;
-          if (localObject2 == null)
-          {
-            localBitmap = ImageUtil.a(jdField_b_of_type_JavaLangString + "aio_qim_online_icon.png", (BitmapFactory.Options)localObject3);
-            localObject1 = localObject2;
-            if (localBitmap != null)
-            {
-              localObject1 = new BitmapDrawable(localBitmap);
-              GlobalImageCache.a.put("skin_aio_qim_header_flag.png", localObject1);
-              continue;
-              localObject1 = localBitmap;
-              if ((Drawable)GlobalImageCache.a.get("qim_title_immersive_bar.png") == null)
-              {
-                localObject2 = ImageUtil.a(jdField_b_of_type_JavaLangString + "qim_title_immersive_bar.png", (BitmapFactory.Options)localObject3);
-                localObject1 = localBitmap;
-                if (localObject2 != null)
-                {
-                  return new BitmapDrawable((Bitmap)localObject2);
-                  localObject2 = (Drawable)GlobalImageCache.a.get("aio_qim_user_online_title_icon.png");
-                  localObject1 = localObject2;
-                  if (localObject2 == null)
-                  {
-                    localObject1 = ImageUtil.a(jdField_b_of_type_JavaLangString + "aio_qim_user_online_title_icon.png", (BitmapFactory.Options)localObject3);
-                    localObject1 = new BitmapDrawable(BaseApplicationImpl.getContext().getResources(), (Bitmap)localObject1);
-                    ((Drawable)localObject1).setBounds(0, 0, ScreenUtil.dip2px(13.0F), ScreenUtil.dip2px(13.0F));
-                    continue;
-                    label501:
-                    localObject1 = null;
-                  }
-                }
-              }
+            localObject1 = localDrawable;
+            if (!NinePatch.isNinePatchChunk((byte[])localObject2)) {
+              break;
             }
           }
         }
       }
     }
+    else
+    {
+      localDrawable = (Drawable)GlobalImageCache.a.get("skin_aio_qim_header_flag.png");
+      localObject1 = localDrawable;
+      if (localDrawable == null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append("skin_aio_qim_header_flag.png");
+        localObject2 = ImageUtil.a(((StringBuilder)localObject1).toString(), (BitmapFactory.Options)localObject2);
+        localObject1 = localDrawable;
+        if (localObject2 != null)
+        {
+          localObject1 = new BitmapDrawable((Bitmap)localObject2);
+          GlobalImageCache.a.put("skin_aio_qim_header_flag.png", localObject1);
+        }
+      }
+    }
+    return localObject1;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
@@ -661,7 +744,7 @@ public class QIMUserManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.qim.QIMUserManager
  * JD-Core Version:    0.7.0.1
  */

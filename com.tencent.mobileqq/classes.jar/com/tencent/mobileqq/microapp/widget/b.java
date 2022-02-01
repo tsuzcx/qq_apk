@@ -22,13 +22,13 @@ public final class b
   
   private String a(String paramString)
   {
-    if (StringUtil.a(paramString)) {}
-    int i;
-    do
-    {
+    if (StringUtil.a(paramString)) {
       return "";
-      i = paramString.lastIndexOf('.');
-    } while (i <= -1);
+    }
+    int i = paramString.lastIndexOf('.');
+    if (i <= -1) {
+      return "";
+    }
     return paramString.substring(i + 1);
   }
   
@@ -39,8 +39,9 @@ public final class b
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.onStop();
+    TbsReaderView localTbsReaderView = this.a;
+    if (localTbsReaderView != null) {
+      localTbsReaderView.onStop();
     }
   }
   
@@ -84,7 +85,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.b
  * JD-Core Version:    0.7.0.1
  */

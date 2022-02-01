@@ -46,22 +46,24 @@ public class WadlResult
   
   public boolean a()
   {
+    WadlParams localWadlParams = this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams;
     boolean bool2 = false;
-    if (this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams != null) {}
-    for (boolean bool1 = this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.a;; bool1 = false)
-    {
-      if ((!bool1) && (this.jdField_b_of_type_Int == 9)) {
-        this.jdField_b_of_type_Int = 6;
-      }
-      if ((this.jdField_b_of_type_Int == 6) && (!GameCenterUtil.a(this.jdField_b_of_type_JavaLangString))) {
-        this.jdField_b_of_type_Int = 0;
-      }
-      bool1 = bool2;
-      if (this.jdField_b_of_type_Int != 0) {
-        bool1 = true;
-      }
-      return bool1;
+    if (localWadlParams != null) {
+      bool1 = localWadlParams.a;
+    } else {
+      bool1 = false;
     }
+    if ((!bool1) && (this.jdField_b_of_type_Int == 9)) {
+      this.jdField_b_of_type_Int = 6;
+    }
+    if ((this.jdField_b_of_type_Int == 6) && (!GameCenterUtil.a(this.jdField_b_of_type_JavaLangString))) {
+      this.jdField_b_of_type_Int = 0;
+    }
+    boolean bool1 = bool2;
+    if (this.jdField_b_of_type_Int != 0) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public int describeContents()
@@ -71,7 +73,33 @@ public class WadlResult
   
   public String toString()
   {
-    return "WadlResult{wadlParams=" + this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams + ", event=" + this.jdField_a_of_type_Int + ", taskId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", taskStatus=" + this.jdField_b_of_type_Int + ", fileSize=" + this.jdField_a_of_type_Long + ", downloadFileSize=" + this.jdField_b_of_type_Long + ", downloadFilePath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", createTime=" + this.jdField_c_of_type_Long + ", lastUpdateTime=" + this.jdField_d_of_type_Long + ", errCode=" + this.jdField_c_of_type_Int + ", progress=" + this.jdField_d_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WadlResult{wadlParams=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams);
+    localStringBuilder.append(", event=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", taskId='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", taskStatus=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", fileSize=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", downloadFileSize=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", downloadFilePath='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", createTime=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", lastUpdateTime=");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(", errCode=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", progress=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -90,7 +118,7 @@ public class WadlResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.entity.WadlResult
  * JD-Core Version:    0.7.0.1
  */

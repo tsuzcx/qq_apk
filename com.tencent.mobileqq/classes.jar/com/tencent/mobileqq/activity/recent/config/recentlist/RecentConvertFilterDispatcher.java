@@ -22,11 +22,15 @@ public class RecentConvertFilterDispatcher
       }
       return false;
     }
+    for (;;)
+    {
+      throw paramRecentUser;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.RecentConvertFilterDispatcher
  * JD-Core Version:    0.7.0.1
  */

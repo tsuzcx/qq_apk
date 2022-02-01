@@ -19,15 +19,21 @@ class AddFriendVerifyActivity$15
       if (i > 30)
       {
         paramEditable = paramEditable.toString();
-        if (i > 30)
+        while (i > 30)
         {
           i = paramEditable.length();
-          if ((i >= 2) && (Character.isHighSurrogate(paramEditable.charAt(i - 2)))) {}
-          for (paramEditable = paramEditable.substring(0, i - 2);; paramEditable = paramEditable.substring(0, i - 1))
+          if (i >= 2)
           {
-            i = paramEditable.length();
-            break;
+            int j = i - 2;
+            if (Character.isHighSurrogate(paramEditable.charAt(j)))
+            {
+              paramEditable = paramEditable.substring(0, j);
+              break label79;
+            }
           }
+          paramEditable = paramEditable.substring(0, i - 1);
+          label79:
+          i = paramEditable.length();
         }
         this.a.a.setText(paramEditable);
         this.a.a.setSelection(paramEditable.length());
@@ -39,51 +45,58 @@ class AddFriendVerifyActivity$15
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (AddFriendVerifyActivity.a(this.a) != 4) {}
-    for (;;)
-    {
+    if (AddFriendVerifyActivity.a(this.a) != 4) {
       return;
-      try
+    }
+    try
+    {
+      paramInt3 = paramCharSequence.toString().getBytes("utf-8").length;
+      paramInt1 = 90 - paramInt3;
+      paramCharSequence = paramCharSequence.toString();
+      paramInt2 = paramInt1;
+      if (paramInt3 > 90)
       {
-        paramInt3 = paramCharSequence.toString().getBytes("utf-8").length;
-        paramInt1 = 90 - paramInt3;
-        paramCharSequence = paramCharSequence.toString();
-        paramInt2 = paramInt1;
-        if (paramInt3 > 90)
+        paramInt2 = paramInt3;
+        while (paramInt2 > 90)
         {
-          paramInt2 = paramInt3;
-          if (paramInt2 > 90)
+          paramInt1 = paramCharSequence.length();
+          if (paramInt1 >= 2)
           {
-            paramInt1 = paramCharSequence.length();
-            if ((paramInt1 >= 2) && (Character.isHighSurrogate(paramCharSequence.charAt(paramInt1 - 2)))) {}
-            for (paramCharSequence = paramCharSequence.substring(0, paramInt1 - 2);; paramCharSequence = paramCharSequence.substring(0, paramInt1 - 1))
+            paramInt2 = paramInt1 - 2;
+            if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt2)))
             {
-              paramInt2 = paramCharSequence.getBytes("utf-8").length;
-              paramInt1 = 90 - paramInt2;
-              break;
+              paramCharSequence = paramCharSequence.substring(0, paramInt2);
+              break label101;
             }
           }
-          AddFriendVerifyActivity.a(this.a).setText(paramCharSequence);
-          AddFriendVerifyActivity.a(this.a).setSelection(paramCharSequence.length());
-          paramInt2 = paramInt1;
+          paramCharSequence = paramCharSequence.substring(0, paramInt1 - 1);
+          label101:
+          paramInt2 = paramCharSequence.getBytes("utf-8").length;
+          paramInt1 = 90 - paramInt2;
         }
-        if (AddFriendVerifyActivity.b(this.a).getVisibility() == 0)
-        {
-          paramCharSequence = paramInt2 + "";
-          AddFriendVerifyActivity.b(this.a).setText(paramCharSequence);
-          return;
-        }
+        AddFriendVerifyActivity.a(this.a).setText(paramCharSequence);
+        AddFriendVerifyActivity.a(this.a).setSelection(paramCharSequence.length());
+        paramInt2 = paramInt1;
       }
-      catch (UnsupportedEncodingException paramCharSequence)
+      if (AddFriendVerifyActivity.b(this.a).getVisibility() == 0)
       {
-        paramCharSequence.printStackTrace();
+        paramCharSequence = new StringBuilder();
+        paramCharSequence.append(paramInt2);
+        paramCharSequence.append("");
+        paramCharSequence = paramCharSequence.toString();
+        AddFriendVerifyActivity.b(this.a).setText(paramCharSequence);
+        return;
       }
+    }
+    catch (UnsupportedEncodingException paramCharSequence)
+    {
+      paramCharSequence.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.15
  * JD-Core Version:    0.7.0.1
  */

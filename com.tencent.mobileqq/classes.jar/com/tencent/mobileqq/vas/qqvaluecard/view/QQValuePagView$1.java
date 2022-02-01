@@ -19,74 +19,29 @@ class QQValuePagView$1
     if (TextUtils.isEmpty(QQValuePagView.a(this.a))) {
       return false;
     }
-    int j;
-    label91:
-    int i;
-    if ((QQValuePagView.a(this.a) != QQValuePagView.a(this.a).a) || (QQValuePagView.a(this.a, QQValuePagView.a(this.a), QQValuePagView.b(this.a)) != 0) || ((QQValuePagView.b(this.a) == "setting") && (QQValuePagView.a(this.a) != QQValuePagView.c(this.a))))
-    {
-      j = 1;
-      i = QQValuePagView.b(this.a, QQValuePagView.a(this.a), QQValuePagView.b(this.a));
-      if ((j == 0) || (i == -2) || (QQValuePagView.a(this.a).a == QQValuePagView.b(this.a, QQValuePagView.a(this.a), "setting")) || (QQValuePagView.a(this.a).a == QQValuePagView.b(this.a, QQValuePagView.a(this.a), "card"))) {
-        break label503;
-      }
-      if (QQValuePagView.a(this.a).a != i) {
-        break label321;
-      }
-      i = 0;
+    boolean bool = QQValuePagView.a(this.a);
+    int i = QQValuePagView.a(this.a, 0, bool);
+    if (i == 1) {
+      str = "up";
+    } else if (i == -1) {
+      str = "down";
+    } else {
+      str = "nochange";
     }
-    for (;;)
-    {
-      label198:
-      String str1;
-      if (i == 1) {
-        str1 = "up";
-      }
-      for (;;)
-      {
-        String str2 = QQValuePagView.a(this.a).c + str1;
-        str1 = str2 + "/qqvalue.pag";
-        str2 = str2 + "/number.ttf";
-        if ((paramView.getLayoutParams().width > 0) && (j == 0)) {
-          break;
-        }
-        if (((PAGView)paramView).getFile() != null)
-        {
-          this.a.b();
-          return true;
-          j = 0;
-          break label91;
-          label321:
-          if (QQValuePagView.a(this.a).a > i)
-          {
-            i = 1;
-            break label198;
-          }
-          i = -1;
-          break label198;
-          if (i != -1) {
-            break label496;
-          }
-          str1 = "down";
-          continue;
-        }
-        if (QQValuePagView.a(this.a, (PAGView)paramView, QQValuePagView.a(this.a), str2, str1))
-        {
-          QQValuePagView.a(this.a, QQValuePagView.a(this.a), QQValuePagView.b(this.a), i);
-          QQValuePagView.b(this.a, QQValuePagView.a(this.a), QQValuePagView.b(this.a), QQValuePagView.a(this.a).a);
-          QQValuePagView.a(this.a, QQValuePagView.a(this.a));
-          QQValuePagView.a(this.a, QQValuePagView.a(this.a).a);
-          paramLayoutParams.width = AIOUtils.a(QQValuePagView.a, paramView.getResources());
-          paramView.postInvalidate();
-          return false;
-        }
-        paramLayoutParams.width = 0;
-        return false;
-        label496:
-        str1 = "nochange";
-      }
-      label503:
-      i = 0;
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(QQValuePagView.a(this.a).c);
+    ((StringBuilder)localObject).append(str);
+    String str = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("/qqvalue.pag");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("/number.ttf");
+    str = localStringBuilder.toString();
+    int j = paramView.getLayoutParams().width;
+    return QQValuePagView.a(this.a, paramView, paramLayoutParams, i, bool, (String)localObject, str, j);
   }
   
   public Unit a(View paramView)
@@ -98,7 +53,7 @@ class QQValuePagView$1
       localLayoutParams1 = new ViewGroup.LayoutParams(0, 0);
       paramView.setLayoutParams(localLayoutParams1);
     }
-    localLayoutParams1.height = AIOUtils.a(QQValuePagView.b, paramView.getResources());
+    localLayoutParams1.height = AIOUtils.b(QQValuePagView.b, paramView.getResources());
     if ((paramView instanceof PAGView))
     {
       if (a(paramView, localLayoutParams1)) {
@@ -113,7 +68,7 @@ class QQValuePagView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qqvaluecard.view.QQValuePagView.1
  * JD-Core Version:    0.7.0.1
  */

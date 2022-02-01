@@ -80,16 +80,18 @@ public class BaseBubbleBuilderMenuProcessorImpl
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
     a(paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistMenuBaseBubbleBuilderMenuProcessor instanceof IBaseBubbleBuilderMenuClickProcessor)) {
-      ((IBaseBubbleBuilderMenuClickProcessor)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistMenuBaseBubbleBuilderMenuProcessor).a(paramInt, paramContext, paramChatMessage);
+    BaseBubbleBuilderMenuProcessor localBaseBubbleBuilderMenuProcessor = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistMenuBaseBubbleBuilderMenuProcessor;
+    if ((localBaseBubbleBuilderMenuProcessor instanceof IBaseBubbleBuilderMenuClickProcessor)) {
+      ((IBaseBubbleBuilderMenuClickProcessor)localBaseBubbleBuilderMenuProcessor).a(paramInt, paramContext, paramChatMessage);
     }
   }
   
   public void a(QQCustomMenu paramQQCustomMenu, Context paramContext, int paramInt, ChatMessage paramChatMessage, Bundle paramBundle)
   {
     a(paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistMenuBaseBubbleBuilderMenuProcessor instanceof IBaseBubbleBuilderMenuAddProcessor)) {
-      ((IBaseBubbleBuilderMenuAddProcessor)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistMenuBaseBubbleBuilderMenuProcessor).a(paramQQCustomMenu, paramContext, paramInt, paramChatMessage, paramBundle);
+    BaseBubbleBuilderMenuProcessor localBaseBubbleBuilderMenuProcessor = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistMenuBaseBubbleBuilderMenuProcessor;
+    if ((localBaseBubbleBuilderMenuProcessor instanceof IBaseBubbleBuilderMenuAddProcessor)) {
+      ((IBaseBubbleBuilderMenuAddProcessor)localBaseBubbleBuilderMenuProcessor).a(paramQQCustomMenu, paramContext, paramInt, paramChatMessage, paramBundle);
     }
   }
   
@@ -100,7 +102,7 @@ public class BaseBubbleBuilderMenuProcessorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.menu.BaseBubbleBuilderMenuProcessorImpl
  * JD-Core Version:    0.7.0.1
  */

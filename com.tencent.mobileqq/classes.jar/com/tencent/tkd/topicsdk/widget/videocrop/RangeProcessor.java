@@ -70,8 +70,9 @@ public final class RangeProcessor
     paramFrameParent.setBounds(0, 0, (int)this.jdField_b_of_type_Float, (int)this.jdField_c_of_type_Float);
     b(paramFrameParent);
     a(paramFrameParent);
-    this.h = this.jdField_b_of_type_Float;
-    this.i = (12 * this.k + this.jdField_b_of_type_Float);
+    paramFloat1 = this.jdField_b_of_type_Float;
+    this.h = paramFloat1;
+    this.i = (12 * this.k + paramFloat1);
   }
   
   private final int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
@@ -102,49 +103,59 @@ public final class RangeProcessor
   
   private final Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
   {
-    int m = 1;
-    if (paramResources == null) {}
-    while (paramInt1 <= 0) {
+    if (paramResources == null) {
+      return null;
+    }
+    if (paramInt1 <= 0) {
       return null;
     }
     try
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
-      if ((paramInt2 <= 0) && (paramInt3 <= 0)) {}
-      for (paramInt2 = m;; paramInt2 = a(localOptions, paramInt2, paramInt3))
-      {
-        localOptions.inJustDecodeBounds = false;
-        localOptions.inSampleSize = paramInt2;
-        return BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
+      localObject = new BitmapFactory.Options();
+      int m = 1;
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+      BitmapFactory.decodeResource(paramResources, paramInt1, (BitmapFactory.Options)localObject);
+      if ((paramInt2 <= 0) && (paramInt3 <= 0)) {
+        paramInt2 = m;
+      } else {
+        paramInt2 = a((BitmapFactory.Options)localObject, paramInt2, paramInt3);
       }
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
+      ((BitmapFactory.Options)localObject).inSampleSize = paramInt2;
+      paramResources = BitmapFactory.decodeResource(paramResources, paramInt1, (BitmapFactory.Options)localObject);
+      return paramResources;
+    }
+    catch (OutOfMemoryError paramResources)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getBitmapFromResource: ");
+      ((StringBuilder)localObject).append(paramResources);
+      TLog.d("RangeProcessor", ((StringBuilder)localObject).toString());
       return (Bitmap)null;
     }
     catch (Exception paramResources)
     {
-      TLog.d("RangeProcessor", "getBitmapFromResource: " + paramResources);
-      return (Bitmap)null;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getBitmapFromResource: ");
+      ((StringBuilder)localObject).append(paramResources);
+      TLog.d("RangeProcessor", ((StringBuilder)localObject).toString());
     }
-    catch (OutOfMemoryError paramResources)
-    {
-      TLog.d("RangeProcessor", "getBitmapFromResource: " + paramResources);
-    }
+    return (Bitmap)null;
   }
   
   private final void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((paramFloat1 < 0) && (this.jdField_d_of_type_Float + paramFloat1 <= this.jdField_b_of_type_Float)) {}
-    for (;;)
+    if ((paramFloat1 >= 0) || (this.jdField_d_of_type_Float + paramFloat1 > this.jdField_b_of_type_Float))
     {
-      this.jdField_d_of_type_Float = paramFloat2;
-      return;
-      if (this.e - paramFloat3 < this.f) {
-        paramFloat2 = this.e - this.f;
+      paramFloat1 = this.e;
+      paramFloat2 = this.f;
+      if (paramFloat1 - paramFloat3 < paramFloat2) {
+        paramFloat2 = paramFloat1 - paramFloat2;
       } else {
         paramFloat2 = paramFloat3;
       }
     }
+    this.jdField_d_of_type_Float = paramFloat2;
   }
   
   private final void a(Drawable paramDrawable)
@@ -166,9 +177,12 @@ public final class RangeProcessor
   
   private final boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
+    paramFloat1 = Math.abs(paramFloat1 - paramFloat3);
+    paramFloat3 = this.jdField_b_of_type_Float;
+    float f1 = 2;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (Math.abs(paramFloat1 - paramFloat3) <= this.jdField_b_of_type_Float * 2)
+    if (paramFloat1 <= paramFloat3 * f1)
     {
       bool1 = bool2;
       if (paramFloat2 > 0)
@@ -184,17 +198,17 @@ public final class RangeProcessor
   
   private final void b(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((paramFloat1 > 0) && (this.e + paramFloat1 >= this.g)) {}
-    for (;;)
+    if ((paramFloat1 <= 0) || (this.e + paramFloat1 < this.g))
     {
-      this.e = paramFloat2;
-      return;
-      if (paramFloat3 - this.jdField_d_of_type_Float < this.f) {
-        paramFloat2 = this.jdField_d_of_type_Float + this.f;
+      paramFloat1 = this.jdField_d_of_type_Float;
+      paramFloat2 = this.f;
+      if (paramFloat3 - paramFloat1 < paramFloat2) {
+        paramFloat2 = paramFloat1 + paramFloat2;
       } else {
         paramFloat2 = paramFloat3;
       }
     }
+    this.e = paramFloat2;
   }
   
   private final void b(Drawable paramDrawable)
@@ -246,23 +260,29 @@ public final class RangeProcessor
   
   public final void a(float paramFloat1, float paramFloat2)
   {
-    if (paramFloat1 >= 0) {}
-    for (paramFloat1 = this.jdField_b_of_type_Float + paramFloat1;; paramFloat1 = this.jdField_b_of_type_Float)
+    float f1 = 0;
+    if (paramFloat1 >= f1) {
+      paramFloat1 += this.jdField_b_of_type_Float;
+    } else {
+      paramFloat1 = this.jdField_b_of_type_Float;
+    }
+    this.h = paramFloat1;
+    if (paramFloat2 >= f1)
     {
-      this.h = paramFloat1;
-      if (paramFloat2 >= 0) {
-        this.i = Math.min(this.jdField_b_of_type_Float + paramFloat2, this.jdField_a_of_type_Int - this.jdField_b_of_type_Float);
-      }
-      return;
+      paramFloat1 = this.jdField_b_of_type_Float;
+      this.i = Math.min(paramFloat2 + paramFloat1, this.jdField_a_of_type_Int - paramFloat1);
     }
   }
   
   public final void a(int paramInt1, int paramInt2)
   {
-    this.g = Math.min(paramInt2 * 1.0F / this.jdField_d_of_type_Int * this.k, 12 * this.k + this.jdField_b_of_type_Float);
+    float f1 = paramInt2 * 1.0F / this.jdField_d_of_type_Int;
+    float f2 = this.k;
+    this.g = Math.min(f1 * f2, 12 * f2 + this.jdField_b_of_type_Float);
     this.f = Math.max(paramInt1 * 1.0F / this.jdField_d_of_type_Int * this.k, 0.0F);
-    this.jdField_d_of_type_Float = this.jdField_b_of_type_Float;
-    this.e = (this.g + this.jdField_b_of_type_Float);
+    f1 = this.jdField_b_of_type_Float;
+    this.jdField_d_of_type_Float = f1;
+    this.e = (this.g + f1);
   }
   
   public final void a(@NotNull Canvas paramCanvas)
@@ -271,7 +291,10 @@ public final class RangeProcessor
     paramCanvas.save();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
     paramCanvas.drawRect(this.jdField_d_of_type_Float, -this.jdField_a_of_type_Float, this.e, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawRect(this.jdField_d_of_type_Float, this.jdField_c_of_type_Float - this.jdField_a_of_type_Float * 2, this.e, this.jdField_c_of_type_Float - this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    float f1 = this.jdField_d_of_type_Float;
+    float f2 = this.jdField_c_of_type_Float;
+    float f3 = this.jdField_a_of_type_Float;
+    paramCanvas.drawRect(f1, f2 - 2 * f3, this.e, f2 - f3, this.jdField_a_of_type_AndroidGraphicsPaint);
     Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
     if (localBitmap == null) {
       Intrinsics.throwUninitializedPropertyAccessException("thumbMinImage");
@@ -297,33 +320,22 @@ public final class RangeProcessor
       this.j = paramMotionEvent.getX();
       return;
     }
-    float f2;
-    float f3;
     if (paramMotionEvent.getAction() == 2)
     {
-      f2 = f1 - this.j;
-      if (this.jdField_b_of_type_Int != 0) {
-        break label136;
-      }
-      f3 = Math.max(this.e - this.g, this.h);
-      if (f1 < f3)
+      float f2 = f1 - this.j;
+      int m = this.jdField_b_of_type_Int;
+      float f3;
+      if (m == 0)
       {
-        this.jdField_d_of_type_Float = f3;
-        return;
+        f3 = Math.max(this.e - this.g, this.h);
+        if (f1 < f3)
+        {
+          this.jdField_d_of_type_Float = f3;
+          return;
+        }
+        a(f2, f3, f1);
       }
-      a(f2, f3, f1);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.invalidate();
-      paramMotionEvent = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor$OnRangeChangeListener;
-      if (paramMotionEvent == null) {
-        break;
-      }
-      paramMotionEvent.a(this.jdField_d_of_type_Float, this.e);
-      return;
-      label136:
-      if (this.jdField_b_of_type_Int == 1)
+      else if (m == 1)
       {
         f3 = Math.min(this.jdField_d_of_type_Float + this.g, this.i);
         if (f1 > f3)
@@ -333,6 +345,11 @@ public final class RangeProcessor
         }
         b(f2, f3, f1);
       }
+    }
+    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameParent.invalidate();
+    paramMotionEvent = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropRangeProcessor$OnRangeChangeListener;
+    if (paramMotionEvent != null) {
+      paramMotionEvent.a(this.jdField_d_of_type_Float, this.e);
     }
   }
   
@@ -375,7 +392,7 @@ public final class RangeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.RangeProcessor
  * JD-Core Version:    0.7.0.1
  */

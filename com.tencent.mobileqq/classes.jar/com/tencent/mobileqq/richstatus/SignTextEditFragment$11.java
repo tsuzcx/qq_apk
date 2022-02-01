@@ -18,47 +18,36 @@ class SignTextEditFragment$11
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.getActivity() == null) {}
-    for (;;)
+    if (this.a.getBaseActivity() != null)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if ((!NetworkUtil.d(this.a.getActivity())) || (SignTextEditFragment.a(this.a) == null)) {
-        break;
+      if ((NetworkUtil.isNetSupport(this.a.getBaseActivity())) && (SignTextEditFragment.a(this.a) != null))
+      {
+        if (AppSetting.d) {
+          this.a.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(HardCodeUtil.a(2131707927));
+        }
+        SignTextEditFragment.a(this.a).a(paramBoolean);
       }
-      if (AppSetting.d) {
-        this.a.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(HardCodeUtil.a(2131707904));
+      else
+      {
+        Object localObject = this.a.getBaseActivity();
+        int i;
+        if (SignTextEditFragment.a(this.a) != null) {
+          i = 2131694473;
+        } else {
+          i = 2131718834;
+        }
+        QQToast.a((Context)localObject, i, 1).a();
+        localObject = this.a;
+        SignTextEditFragment.a((SignTextEditFragment)localObject, ((SignTextEditFragment)localObject).jdField_a_of_type_AndroidWidgetCheckBox, paramBoolean ^ true);
       }
-      SignTextEditFragment.a(this.a).a(paramBoolean);
       ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A97B", "0X800A97B", 0, 0, "0", "0", "", "");
     }
-    Object localObject = this.a.getActivity();
-    int i;
-    label130:
-    CheckBox localCheckBox;
-    if (SignTextEditFragment.a(this.a) != null)
-    {
-      i = 2131694507;
-      QQToast.a((Context)localObject, i, 1).a();
-      localObject = this.a;
-      localCheckBox = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (paramBoolean) {
-        break label181;
-      }
-    }
-    label181:
-    for (boolean bool = true;; bool = false)
-    {
-      SignTextEditFragment.a((SignTextEditFragment)localObject, localCheckBox, bool);
-      break;
-      i = 2131719116;
-      break label130;
-    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.11
  * JD-Core Version:    0.7.0.1
  */

@@ -13,29 +13,47 @@ final class BannerAdViolationManager$2
   
   public void onClick(View paramView)
   {
-    if (this.val$oldOnClickListener != null) {
-      this.val$oldOnClickListener.onClick(paramView);
+    Object localObject = this.val$oldOnClickListener;
+    if (localObject != null) {
+      ((View.OnClickListener)localObject).onClick(paramView);
     }
     long l = 0L;
-    Long localLong = (Long)BannerAdViolationManager.access$000().get(Long.valueOf(this.val$aid));
-    if (localLong != null) {
-      l = System.currentTimeMillis() - localLong.longValue();
+    localObject = (Long)BannerAdViolationManager.access$000().get(Long.valueOf(this.val$aid));
+    if (localObject != null) {
+      l = System.currentTimeMillis() - ((Long)localObject).longValue();
     }
     int j = this.val$view.getWidth() / 5;
     int k = this.val$view.getHeight() / 2;
-    if (this.val$lastTouchDownXY[1] > k) {}
-    for (int i = (int)this.val$lastTouchDownXY[0] / j + 6;; i = (int)this.val$lastTouchDownXY[0] / j + 1)
-    {
-      QMLog.d("BannerAdViolationManage", "box = " + j + "," + k + " size = " + this.val$view.getWidth() + "," + this.val$view.getHeight() + " x,y = " + this.val$lastTouchDownXY[0] + "," + this.val$lastTouchDownXY[1] + " area = " + i);
-      BannerAdViolationManager.access$100(this.val$miniAppId, this.val$aid, i, l);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    localObject = this.val$lastTouchDownXY;
+    int i;
+    if (localObject[1] > k) {
+      i = (int)localObject[0] / j + 6;
+    } else {
+      i = (int)localObject[0] / j + 1;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("box = ");
+    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(k);
+    ((StringBuilder)localObject).append(" size = ");
+    ((StringBuilder)localObject).append(this.val$view.getWidth());
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(this.val$view.getHeight());
+    ((StringBuilder)localObject).append(" x,y = ");
+    ((StringBuilder)localObject).append(this.val$lastTouchDownXY[0]);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(this.val$lastTouchDownXY[1]);
+    ((StringBuilder)localObject).append(" area = ");
+    ((StringBuilder)localObject).append(i);
+    QMLog.d("BannerAdViolationManage", ((StringBuilder)localObject).toString());
+    BannerAdViolationManager.access$100(this.val$miniAppId, this.val$aid, i, l);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BannerAdViolationManager.2
  * JD-Core Version:    0.7.0.1
  */

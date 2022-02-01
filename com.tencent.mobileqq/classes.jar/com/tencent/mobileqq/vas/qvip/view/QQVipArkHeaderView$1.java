@@ -14,7 +14,7 @@ class QQVipArkHeaderView$1
   {
     if (QQVipArkHeaderView.a(this.a).getHeight() > 0)
     {
-      float f = (this.a.getHeight() * 1.0F - AIOUtils.a(54.0F, this.a.getContext().getResources())) / QQVipArkHeaderView.a(this.a).getHeight();
+      float f = (this.a.getHeight() * 1.0F - AIOUtils.b(54.0F, this.a.getContext().getResources())) / QQVipArkHeaderView.a(this.a).getHeight();
       QQVipArkHeaderView.a(this.a).setScaleY(f);
       QQVipArkHeaderView.a(this.a).setScaleX(f);
     }
@@ -22,7 +22,7 @@ class QQVipArkHeaderView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.QQVipArkHeaderView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,18 +18,18 @@ public final class PosPermissionEvent
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof PosPermissionEvent))
       {
         paramObject = (PosPermissionEvent)paramObject;
-        if (this.a != paramObject.a) {}
+        if (this.a == paramObject.a) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -40,12 +40,16 @@ public final class PosPermissionEvent
   @NotNull
   public String toString()
   {
-    return "PosPermissionEvent(isGranted=" + this.a + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PosPermissionEvent(isGranted=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.events.PosPermissionEvent
  * JD-Core Version:    0.7.0.1
  */

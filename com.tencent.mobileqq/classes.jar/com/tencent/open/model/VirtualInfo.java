@@ -29,9 +29,15 @@ public class VirtualInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("VirtualInfo={");
-    localStringBuilder.append("virtualId=").append(this.jdField_a_of_type_Long).append(",");
-    localStringBuilder.append("nickName=").append(this.jdField_a_of_type_JavaLangString).append(",");
-    localStringBuilder.append("avatarUrl=").append(this.b).append("}");
+    localStringBuilder.append("virtualId=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",");
+    localStringBuilder.append("nickName=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append("avatarUrl=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
@@ -44,7 +50,7 @@ public class VirtualInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.model.VirtualInfo
  * JD-Core Version:    0.7.0.1
  */

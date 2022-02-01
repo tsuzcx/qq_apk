@@ -15,17 +15,18 @@ class FolderFollowTabFragment$3
     {
       FolderFollowTabFragment.a(this.a, paramRelativeLiveFeedsAdapter);
       FolderFollowTabFragment.b(this.a, paramRelativeLiveFeedsAdapter);
-    }
-    while ((!paramLoadInfo.d()) && (!paramLoadInfo.c())) {
       return;
     }
-    FolderFollowTabFragment.c(this.a, paramRelativeLiveFeedsAdapter);
-    FolderFollowTabFragment.d(this.a, paramRelativeLiveFeedsAdapter);
+    if ((paramLoadInfo.d()) || (paramLoadInfo.c()))
+    {
+      FolderFollowTabFragment.c(this.a, paramRelativeLiveFeedsAdapter);
+      FolderFollowTabFragment.d(this.a, paramRelativeLiveFeedsAdapter);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -24,14 +24,15 @@ public class AnimatedImageDrawable
   public void a()
   {
     this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % getNumberOfFrames());
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutAnimatedImageDrawable$UpdateListener != null) {
-      this.jdField_a_of_type_ComEtrumpMixlayoutAnimatedImageDrawable$UpdateListener.a(this.jdField_a_of_type_AndroidViewView);
+    AnimatedImageDrawable.UpdateListener localUpdateListener = this.jdField_a_of_type_ComEtrumpMixlayoutAnimatedImageDrawable$UpdateListener;
+    if (localUpdateListener != null) {
+      localUpdateListener.a(this.jdField_a_of_type_AndroidViewView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.AnimatedImageDrawable
  * JD-Core Version:    0.7.0.1
  */

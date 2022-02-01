@@ -1,7 +1,6 @@
 package com.tencent.weseevideo.editor.sticker;
 
 import android.content.Context;
-import android.graphics.Matrix;
 import android.graphics.PointF;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
@@ -30,7 +29,7 @@ public class WsStickerContext
     super(paramContext);
   }
   
-  private boolean isBlurSticker(TAVSticker paramTAVSticker)
+  public static boolean isBlurSticker(TAVSticker paramTAVSticker)
   {
     return (paramTAVSticker != null) && (paramTAVSticker.getExtraBundle() != null) && (TAVStickerExKt.getExtraStickerType(paramTAVSticker) != null) && (TAVStickerExKt.getExtraStickerType(paramTAVSticker).equals("blur"));
   }
@@ -57,7 +56,7 @@ public class WsStickerContext
     return this.blurStickers;
   }
   
-  public boolean isTouchOnTavSticker(TAVSticker paramTAVSticker, float paramFloat1, float paramFloat2)
+  protected boolean isTouchOnTavSticker(TAVSticker paramTAVSticker, float paramFloat1, float paramFloat2)
   {
     if (paramTAVSticker == null) {
       return false;
@@ -65,16 +64,12 @@ public class WsStickerContext
     if (!TAVStickerUtil.isValidCGSize(this.renderSize)) {
       return false;
     }
-    if ("blur".equals(TAVStickerExKt.getExtraStickerType(paramTAVSticker))) {}
-    for (Matrix localMatrix = WsStickerUtil.getRatioChangeMatrix(paramTAVSticker, (int)this.renderSize.width, (int)this.renderSize.height);; localMatrix = TAVStickerUtil.getMatrix(paramTAVSticker, (int)this.renderSize.width, (int)this.renderSize.height))
-    {
-      paramTAVSticker = TAVStickerUtil.computeRectanglePoints(localMatrix, paramTAVSticker.getWidth(), paramTAVSticker.getHeight());
-      if (!TAVStickerUtil.inQuadrangle(paramTAVSticker[0], paramTAVSticker[1], paramTAVSticker[2], paramTAVSticker[3], new PointF(paramFloat1, paramFloat2))) {
-        break;
-      }
-      return true;
+    if ("blur".equals(TAVStickerExKt.getExtraStickerType(paramTAVSticker))) {
+      paramTAVSticker = WsStickerUtil.computeRectanglePointsForBlurSticker(WsStickerUtil.getRatioChangeMatrix(paramTAVSticker, (int)this.renderSize.width, (int)this.renderSize.height), paramTAVSticker.getWidth(), paramTAVSticker.getHeight());
+    } else {
+      paramTAVSticker = WsStickerUtil.computeRectanglePoints(TAVStickerUtil.getMatrix(paramTAVSticker, (int)this.renderSize.width, (int)this.renderSize.height), paramTAVSticker.getWidth(), paramTAVSticker.getHeight());
     }
-    return false;
+    return TAVStickerUtil.inQuadrangle(paramTAVSticker[0], paramTAVSticker[1], paramTAVSticker[2], paramTAVSticker[3], new PointF(paramFloat1, paramFloat2));
   }
   
   public void loadSticker(TAVSticker paramTAVSticker, boolean paramBoolean)
@@ -95,47 +90,46 @@ public class WsStickerContext
   
   public boolean shouldRenderBlurSticker()
   {
-    if ((this.blurStickers == null) || (this.blurStickers.size() == 0)) {
-      return false;
-    }
-    Iterator localIterator = this.blurStickers.iterator();
-    while (localIterator.hasNext()) {
-      if (((TAVSticker)localIterator.next()).getMode() == TAVStickerMode.INACTIVE) {
-        return true;
+    Object localObject = this.blurStickers;
+    if (localObject != null)
+    {
+      if (((List)localObject).size() == 0) {
+        return false;
+      }
+      localObject = this.blurStickers.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((TAVSticker)((Iterator)localObject).next()).getMode() == TAVStickerMode.INACTIVE) {
+          return true;
+        }
       }
     }
     return false;
   }
   
-  public boolean shouldRenderSticker(TAVSticker paramTAVSticker, long paramLong)
+  protected boolean shouldRenderSticker(TAVSticker paramTAVSticker, long paramLong)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if (paramTAVSticker == null) {
-      bool1 = false;
+      return false;
     }
-    do
-    {
-      return bool1;
-      if (this.renderContextDataSource != null) {
-        return this.renderContextDataSource.shouldRenderSticker(paramTAVSticker, paramLong);
-      }
-      CMTimeRange localCMTimeRange = paramTAVSticker.getTimeRange();
-      if (localCMTimeRange == null) {}
-      for (bool1 = true; (isBlurSticker(paramTAVSticker)) && (paramTAVSticker.getMode() == TAVStickerMode.INACTIVE); bool1 = localCMTimeRange.containsTime(new CMTime(paramLong, 1000))) {
-        return false;
-      }
-      if (!bool1) {
-        break;
-      }
-      bool1 = bool2;
-    } while (TAVStickerMode.INACTIVE == paramTAVSticker.getMode());
-    return false;
+    if (this.renderContextDataSource != null) {
+      return this.renderContextDataSource.shouldRenderSticker(paramTAVSticker, paramLong);
+    }
+    CMTimeRange localCMTimeRange = paramTAVSticker.getTimeRange();
+    boolean bool;
+    if (localCMTimeRange == null) {
+      bool = true;
+    } else {
+      bool = localCMTimeRange.containsTime(new CMTime(paramLong, 1000));
+    }
+    if ((isBlurSticker(paramTAVSticker)) && (paramTAVSticker.getMode() == TAVStickerMode.INACTIVE)) {
+      return false;
+    }
+    return (bool) && (TAVStickerMode.INACTIVE == paramTAVSticker.getMode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.WsStickerContext
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collection;
 import org.json.JSONObject;
 
 public final class StudyModePushConfigProcessor$StudyModePushConfigBean
@@ -23,16 +24,13 @@ public final class StudyModePushConfigProcessor$StudyModePushConfigBean
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       int i = 0;
-      for (;;)
+      while (i < paramArrayOfQConfItem.length)
       {
-        if (i >= paramArrayOfQConfItem.length) {
-          break label187;
-        }
         String str = paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString;
         try
         {
           str = new JSONObject(str).optString("black_ids");
-          ArrayList localArrayList = new ArrayList();
+          Object localObject = new ArrayList();
           if (!TextUtils.isEmpty(str))
           {
             String[] arrayOfString = str.split(",");
@@ -40,33 +38,33 @@ public final class StudyModePushConfigProcessor$StudyModePushConfigBean
             int j = 0;
             while (j < k)
             {
-              localArrayList.add(Integer.valueOf(Integer.parseInt(arrayOfString[j].trim())));
+              ((ArrayList)localObject).add(Integer.valueOf(Integer.parseInt(arrayOfString[j].trim())));
               j += 1;
             }
             localStudyModePushConfigBean.jdField_a_of_type_JavaLangString = str;
-            localStudyModePushConfigBean.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+            localStudyModePushConfigBean.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject);
           }
-          if (QLog.isColorLevel()) {
-            QLog.i("StudyModePushConfigProcessor", 2, "[study mode push config], :" + str);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[study mode push config], :");
+            ((StringBuilder)localObject).append(str);
+            QLog.i("StudyModePushConfigProcessor", 2, ((StringBuilder)localObject).toString());
           }
         }
         catch (Throwable localThrowable)
         {
-          for (;;)
-          {
-            QLog.e("StudyModePushConfigProcessor", 1, localThrowable, new Object[0]);
-          }
+          QLog.e("StudyModePushConfigProcessor", 1, localThrowable, new Object[0]);
         }
         i += 1;
       }
     }
-    label187:
     return localStudyModePushConfigBean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModePushConfigProcessor.StudyModePushConfigBean
  * JD-Core Version:    0.7.0.1
  */

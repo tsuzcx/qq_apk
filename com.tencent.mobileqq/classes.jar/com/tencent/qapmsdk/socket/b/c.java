@@ -15,9 +15,13 @@ final class c
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap(a.length);
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (!localLinkedHashMap.containsKey(a[i].g)) {
+      b[] arrayOfb = a;
+      if (i >= arrayOfb.length) {
+        break;
+      }
+      if (!localLinkedHashMap.containsKey(arrayOfb[i].g)) {
         localLinkedHashMap.put(a[i].g, Integer.valueOf(i));
       }
       i += 1;
@@ -27,13 +31,17 @@ final class c
   
   static ByteString a(ByteString paramByteString)
   {
-    int i = 0;
     int j = paramByteString.size();
+    int i = 0;
     while (i < j)
     {
       int k = paramByteString.getByte(i);
-      if ((k >= 65) && (k <= 90)) {
-        throw new IOException("PROTOCOL_ERROR response malformed: mixed case name: " + paramByteString.utf8());
+      if ((k >= 65) && (k <= 90))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PROTOCOL_ERROR response malformed: mixed case name: ");
+        localStringBuilder.append(paramByteString.utf8());
+        throw new IOException(localStringBuilder.toString());
       }
       i += 1;
     }
@@ -42,7 +50,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.b.c
  * JD-Core Version:    0.7.0.1
  */

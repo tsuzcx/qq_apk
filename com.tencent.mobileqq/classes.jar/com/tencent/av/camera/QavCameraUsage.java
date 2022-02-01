@@ -13,7 +13,7 @@ import java.util.List;
 
 public class QavCameraUsage
 {
-  public static String a = null;
+  public static String a;
   
   public static void a(Context paramContext, String paramString)
   {
@@ -21,8 +21,18 @@ public class QavCameraUsage
       return;
     }
     String str = a;
-    paramString = paramString + "_" + System.currentTimeMillis();
-    QLog.w("QavCameraUsage", 1, "setCameraUsageState, last[" + str + "], cur[" + paramString + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(System.currentTimeMillis());
+    paramString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setCameraUsageState, last[");
+    localStringBuilder.append(str);
+    localStringBuilder.append("], cur[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    QLog.w("QavCameraUsage", 1, localStringBuilder.toString());
     a = paramString;
     paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).edit();
     paramContext.putString("camera_used_desc", paramString);
@@ -32,63 +42,52 @@ public class QavCameraUsage
   
   public static boolean a(Context paramContext)
   {
-    boolean bool = true;
+    boolean bool = false;
     if (paramContext == null) {
       return false;
     }
     paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).getString("camera_used_desc", null);
-    QLog.w("QavCameraUsage", 1, "getCameraUsageState, cameraIsUsing[" + paramContext + "]");
-    if (paramContext != null) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getCameraUsageState, cameraIsUsing[");
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append("]");
+    QLog.w("QavCameraUsage", 1, localStringBuilder.toString());
+    if (paramContext != null) {
+      bool = true;
     }
+    return bool;
   }
   
   public static boolean a(Context paramContext, boolean paramBoolean)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
+    boolean bool = false;
     if (paramContext == null) {
-      return bool2;
+      return false;
     }
     Object localObject = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-    label43:
-    int j;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
       int i = 0;
-      j = i;
-      if (!((Iterator)localObject).hasNext()) {
-        break label83;
+      for (;;)
+      {
+        j = i;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        if (((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName.equals("com.tencent.mobileqq:video")) {
+          i = 1;
+        }
       }
-      if (!((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName.equals("com.tencent.mobileqq:video")) {
-        break label135;
-      }
-      i = 1;
     }
-    label135:
-    for (;;)
-    {
-      break label43;
-      j = 0;
-      label83:
-      if (j != 0) {
-        bool1 = a(paramContext);
-      }
-      bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
-      bool2 = bool1;
-      if (!paramBoolean) {
-        break;
-      }
+    int j = 0;
+    if (j != 0) {
+      bool = a(paramContext);
+    }
+    if ((bool) && (paramBoolean)) {
       new Handler(Looper.getMainLooper()).post(new QavCameraUsage.1(paramContext));
-      return bool1;
     }
+    return bool;
   }
   
   public static void b(Context paramContext, String paramString)
@@ -96,7 +95,13 @@ public class QavCameraUsage
     if (paramContext == null) {
       return;
     }
-    QLog.w("QavCameraUsage", 1, "clearCameraUsageState, cameraIsUsing[" + a + "], type[" + paramString + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("clearCameraUsageState, cameraIsUsing[");
+    localStringBuilder.append(a);
+    localStringBuilder.append("], type[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    QLog.w("QavCameraUsage", 1, localStringBuilder.toString());
     a = null;
     paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).edit();
     paramContext.remove("camera_used_desc");
@@ -111,7 +116,7 @@ public class QavCameraUsage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.camera.QavCameraUsage
  * JD-Core Version:    0.7.0.1
  */

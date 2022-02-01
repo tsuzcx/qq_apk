@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/nez" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/nhx" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/o1d" android:background="@color/m7" android:layout_width="fill_parent" android:layout_height="@dimen/b_p">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="2.0dip">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/n_d" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/fzr" />
-            <android.support.v7.widget.RecyclerView android:layout_gravity="center_vertical" android:id="@id/o27" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
-        </LinearLayout>
-        <android.support.v7.widget.RecyclerView android:id="@id/o2b" android:paddingLeft="15.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/bbx" />
-    </LinearLayout>
-</FrameLayout>
+    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/l7s" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitCenter" />
+</RelativeLayout>

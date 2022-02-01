@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
@@ -26,130 +25,151 @@ class OfflinePlugin$6
   public void run()
   {
     int i = QbSdk.getTbsVersion(BaseApplication.getContext());
-    if (i < 43700) {
-      QLog.e("OfflinePluginQQ", 1, "current tbs version " + i + " doesn't support ServiceWorker! require >= " + 43700);
-    }
-    Object localObject2;
-    String str1;
-    String str2;
-    long l1;
-    do
+    Object localObject1 = "OfflinePluginQQ";
+    if (i < 43700)
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("current tbs version ");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(" doesn't support ServiceWorker! require >= ");
+      ((StringBuilder)localObject1).append(43700);
+      QLog.e("OfflinePluginQQ", 1, ((StringBuilder)localObject1).toString());
       return;
-      localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("offline_sw_register", 4);
-      str1 = HtmlOffline.d(this.jdField_a_of_type_JavaLangString);
-      str2 = str1 + "_register_time";
-      l1 = ((SharedPreferences)localObject2).getLong(str2, -1L);
-      if ((!"0".equals(this.b)) && (OfflinePlugin.a())) {
-        break;
-      }
-    } while (l1 == -1L);
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "unRegisterServiceWorker, url: " + this.jdField_a_of_type_JavaLangString);
     }
-    ((SharedPreferences)localObject2).edit().putLong(str2, -1L).commit();
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getX5WebViewExtension().unRegisterServiceWorker(this.jdField_a_of_type_JavaLangString, true);
-    return;
-    QLog.i("OfflinePluginQQ", 1, String.format("now start registerServiceWorkerOffline, current tbs version: %d, url: %s", new Object[] { Integer.valueOf(i), Util.b(this.jdField_a_of_type_JavaLangString, new String[0]) }));
-    Object localObject1 = ((SharedPreferences)localObject2).getString(str1, "");
-    int j;
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    Object localObject4 = BaseApplication.getContext().getSharedPreferences("offline_sw_register", 4);
+    String str1 = HtmlOffline.d(this.jdField_a_of_type_JavaLangString);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(str1);
+    ((StringBuilder)localObject2).append("_register_time");
+    String str2 = ((StringBuilder)localObject2).toString();
+    long l1 = ((SharedPreferences)localObject4).getLong(str2, -1L);
+    if ((!"0".equals(this.b)) && (OfflinePlugin.a()))
     {
-      localObject1 = new HashSet(Arrays.asList(((String)localObject1).split(",")));
-      j = 0;
-      if (this.this$0.a.size() <= 0) {
-        break label466;
+      QLog.i("OfflinePluginQQ", 1, String.format("now start registerServiceWorkerOffline, current tbs version: %d, url: %s", new Object[] { Integer.valueOf(i), Util.b(this.jdField_a_of_type_JavaLangString, new String[0]) }));
+      localObject2 = ((SharedPreferences)localObject4).getString(str1, "");
+      Object localObject3;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject3 = new HashSet(Arrays.asList(((String)localObject2).split(",")));
+      } else {
+        localObject3 = new HashSet();
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflinePluginQQ", 2, "shouldInterceptRequest has new resource, need register SW again!");
-      }
-      ((Set)localObject1).addAll(this.this$0.a);
-      j = 1;
-      i = j;
-      if (QLog.isColorLevel())
+      if (this.this$0.a.size() > 0)
       {
-        QLog.i("OfflinePluginQQ", 2, "merge new bid: " + TextUtils.join(",", (Iterable)localObject1));
-        i = j;
+        if (QLog.isColorLevel()) {
+          QLog.i("OfflinePluginQQ", 2, "shouldInterceptRequest has new resource, need register SW again!");
+        }
+        ((Set)localObject3).addAll(this.this$0.a);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("merge new bid: ");
+          ((StringBuilder)localObject1).append(TextUtils.join(",", (Iterable)localObject3));
+          QLog.i("OfflinePluginQQ", 2, ((StringBuilder)localObject1).toString());
+        }
+        localObject1 = "OfflinePluginQQ";
       }
-    }
-    label796:
-    for (;;)
-    {
-      label368:
+      Object localObject5;
+      Object localObject6;
+      for (;;)
+      {
+        i = 1;
+        break label525;
+        localObject2 = localObject1;
+        if (((Set)localObject3).size() <= 0) {
+          break;
+        }
+        localObject5 = BaseApplication.getContext().getSharedPreferences("bid_update_success_time", 4);
+        localObject6 = ((Set)localObject3).iterator();
+        long l2;
+        for (;;)
+        {
+          localObject2 = localObject1;
+          if (!((Iterator)localObject6).hasNext()) {
+            break label519;
+          }
+          localObject2 = (String)((Iterator)localObject6).next();
+          l2 = ((SharedPreferences)localObject5).getLong((String)localObject2, -1L);
+          if ((l1 == -1L) || (l2 > l1)) {
+            break;
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("bid ");
+          ((StringBuilder)localObject5).append((String)localObject2);
+          ((StringBuilder)localObject5).append(" has update, now need register again! updateTime: ");
+          ((StringBuilder)localObject5).append(l2);
+          ((StringBuilder)localObject5).append(", lastRegisterTime: ");
+          ((StringBuilder)localObject5).append(l1);
+          localObject2 = ((StringBuilder)localObject5).toString();
+          QLog.i((String)localObject1, 2, (String)localObject2);
+        }
+      }
+      label519:
+      localObject1 = localObject2;
+      i = 0;
+      label525:
       if (i != 0)
       {
-        Object localObject3 = new ArrayList();
-        if (((Set)localObject1).size() > 0)
+        localObject2 = new ArrayList();
+        if (((Set)localObject3).size() > 0)
         {
-          Iterator localIterator = ((Set)localObject1).iterator();
-          for (;;)
+          localObject5 = ((Set)localObject3).iterator();
+          while (((Iterator)localObject5).hasNext())
           {
-            if (localIterator.hasNext())
-            {
-              String str3 = (String)localIterator.next();
-              str3 = this.this$0.b(str3);
-              if (!TextUtils.isEmpty(str3))
-              {
-                ((List)localObject3).add(str3);
-                continue;
-                localObject1 = new HashSet();
-                break;
-                i = j;
-                if (((Set)localObject1).size() <= 0) {
-                  break label796;
-                }
-                localObject3 = BaseApplicationImpl.getApplication().getSharedPreferences("bid_update_success_time", 4);
-                localIterator = ((Set)localObject1).iterator();
-                long l2;
-                do
-                {
-                  i = j;
-                  if (!localIterator.hasNext()) {
-                    break;
-                  }
-                  str3 = (String)localIterator.next();
-                  l2 = ((SharedPreferences)localObject3).getLong(str3, -1L);
-                } while ((l1 != -1L) && (l2 <= l1));
-                i = 1;
-                if (!QLog.isColorLevel()) {
-                  break label796;
-                }
-                QLog.i("OfflinePluginQQ", 2, "bid " + str3 + " has update, now need register again! updateTime: " + l2 + ", lastRegisterTime: " + l1);
-                i = 1;
-                break label368;
-              }
+            localObject6 = (String)((Iterator)localObject5).next();
+            localObject6 = this.this$0.b((String)localObject6);
+            if (!TextUtils.isEmpty((CharSequence)localObject6)) {
+              ((List)localObject2).add(localObject6);
             }
           }
         }
-        localObject2 = ((SharedPreferences)localObject2).edit();
-        if (((List)localObject3).size() > 0)
+        localObject4 = ((SharedPreferences)localObject4).edit();
+        if (((List)localObject2).size() > 0)
         {
-          ((SharedPreferences.Editor)localObject2).putString(str1, TextUtils.join(",", (Iterable)localObject1));
-          ((SharedPreferences.Editor)localObject2).putLong(str2, System.currentTimeMillis());
-          ((SharedPreferences.Editor)localObject2).commit();
-          if (QLog.isColorLevel()) {
-            QLog.i("OfflinePluginQQ", 2, "registerServiceWorkerOffline,, paths: " + TextUtils.join(",", (Iterable)localObject3));
+          ((SharedPreferences.Editor)localObject4).putString(str1, TextUtils.join(",", (Iterable)localObject3));
+          ((SharedPreferences.Editor)localObject4).putLong(str2, System.currentTimeMillis());
+          ((SharedPreferences.Editor)localObject4).commit();
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("registerServiceWorkerOffline,, paths: ");
+            ((StringBuilder)localObject3).append(TextUtils.join(",", (Iterable)localObject2));
+            QLog.i((String)localObject1, 2, ((StringBuilder)localObject3).toString());
           }
-          this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getX5WebViewExtension().registerServiceWorkerOffline(this.jdField_a_of_type_JavaLangString, (List)localObject3, true);
+          this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getX5WebViewExtension().registerServiceWorkerOffline(this.jdField_a_of_type_JavaLangString, (List)localObject2, true);
         }
-        if ((this.this$0.a == null) || (this.this$0.a.size() <= 0)) {
-          break;
+        if ((this.this$0.a != null) && (this.this$0.a.size() > 0)) {
+          this.this$0.a.clear();
         }
-        this.this$0.a.clear();
-        return;
       }
-      label466:
-      if (!QLog.isColorLevel()) {
-        break;
+      else if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("It doesn't need update and register SW again! ");
+        ((StringBuilder)localObject2).append(TextUtils.join(",", (Iterable)localObject3));
+        QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
       }
-      QLog.i("OfflinePluginQQ", 2, "It doesn't need update and register SW again! " + TextUtils.join(",", (Iterable)localObject1));
       return;
+    }
+    if (l1 != -1L)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("unRegisterServiceWorker, url: ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        QLog.i("OfflinePluginQQ", 2, ((StringBuilder)localObject1).toString());
+      }
+      ((SharedPreferences)localObject4).edit().putLong(str2, -1L).commit();
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getX5WebViewExtension().unRegisterServiceWorker(this.jdField_a_of_type_JavaLangString, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.6
  * JD-Core Version:    0.7.0.1
  */

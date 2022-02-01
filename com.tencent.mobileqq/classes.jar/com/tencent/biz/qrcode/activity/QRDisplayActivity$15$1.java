@@ -12,12 +12,12 @@ class QRDisplayActivity$15$1
     if (this.a.this$0.isFinishing()) {
       return;
     }
-    QRUtils.a(1, 2131696461);
+    QRUtils.a(1, 2131696480);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.15.1
  * JD-Core Version:    0.7.0.1
  */

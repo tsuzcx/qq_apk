@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"append", "T", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "value", "", "", "(Ljava/lang/Appendable;[Ljava/lang/CharSequence;)Ljava/lang/Appendable;", "appendElement", "", "element", "transform", "Lkotlin/Function1;", "(Ljava/lang/Appendable;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "appendRange", "startIndex", "", "endIndex", "(Ljava/lang/Appendable;Ljava/lang/CharSequence;II)Ljava/lang/Appendable;", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/text/StringsKt")
-public class StringsKt__AppendableKt
+class StringsKt__AppendableKt
 {
   @NotNull
   public static final <T extends Appendable> T append(@NotNull T paramT, @NotNull CharSequence... paramVarArgs)
@@ -35,8 +35,13 @@ public class StringsKt__AppendableKt
       paramAppendable.append((CharSequence)paramFunction1.invoke(paramT));
       return;
     }
-    if (paramT != null) {}
-    for (boolean bool = paramT instanceof CharSequence; bool; bool = true)
+    boolean bool;
+    if (paramT != null) {
+      bool = paramT instanceof CharSequence;
+    } else {
+      bool = true;
+    }
+    if (bool)
     {
       paramAppendable.append((CharSequence)paramT);
       return;
@@ -56,15 +61,15 @@ public class StringsKt__AppendableKt
   {
     Intrinsics.checkParameterIsNotNull(paramT, "$this$appendRange");
     paramT = paramT.append(paramCharSequence, paramInt1, paramInt2);
-    if (paramT == null) {
-      throw new TypeCastException("null cannot be cast to non-null type T");
+    if (paramT != null) {
+      return paramT;
     }
-    return paramT;
+    throw new TypeCastException("null cannot be cast to non-null type T");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.StringsKt__AppendableKt
  * JD-Core Version:    0.7.0.1
  */

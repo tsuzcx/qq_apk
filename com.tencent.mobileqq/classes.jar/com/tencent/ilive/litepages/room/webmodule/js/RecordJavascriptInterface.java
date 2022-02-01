@@ -28,21 +28,28 @@ public class RecordJavascriptInterface
   @NewJavascriptInterface
   public void playpause(Map<String, String> paramMap)
   {
-    if ((getJsBizAdapter() == null) || (this.avPlayerService == null)) {}
-    do
+    if (getJsBizAdapter() != null)
     {
-      return;
+      if (this.avPlayerService == null) {
+        return;
+      }
       paramMap = (String)paramMap.get("status");
-      logI("RecordJavascriptInterface", "playpause--playStatus=" + paramMap);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playpause--playStatus=");
+      localStringBuilder.append(paramMap);
+      logI("RecordJavascriptInterface", localStringBuilder.toString());
       if (paramMap.equals("0"))
       {
         getJsBizAdapter().onPlayerPause();
         this.avPlayerService.pausePlay();
         return;
       }
-    } while (!paramMap.equals("1"));
-    getJsBizAdapter().onPlayerResume();
-    this.avPlayerService.resumePlay();
+      if (paramMap.equals("1"))
+      {
+        getJsBizAdapter().onPlayerResume();
+        this.avPlayerService.resumePlay();
+      }
+    }
   }
   
   @NewJavascriptInterface
@@ -52,7 +59,10 @@ public class RecordJavascriptInterface
       return;
     }
     paramMap = (String)paramMap.get("time");
-    logI("RecordJavascriptInterface", "seekto--time=" + paramMap);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seekto--time=");
+    localStringBuilder.append(paramMap);
+    logI("RecordJavascriptInterface", localStringBuilder.toString());
     try
     {
       i = Integer.parseInt(paramMap);
@@ -60,18 +70,18 @@ public class RecordJavascriptInterface
     }
     catch (Exception paramMap)
     {
-      for (;;)
-      {
-        int i = 0;
-      }
+      int i;
+      label65:
+      break label65;
     }
+    i = 0;
     this.avPlayerService.seekTo(i);
     this.avPlayerService.startPlay();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.webmodule.js.RecordJavascriptInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,22 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.wifi.FreeWifiHelper.FreeWifiDialogListener;
 
 class PhotoListPanel$6
-  implements DialogInterface.OnClickListener
+  implements FreeWifiHelper.FreeWifiDialogListener
 {
   PhotoListPanel$6(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.6
  * JD-Core Version:    0.7.0.1
  */

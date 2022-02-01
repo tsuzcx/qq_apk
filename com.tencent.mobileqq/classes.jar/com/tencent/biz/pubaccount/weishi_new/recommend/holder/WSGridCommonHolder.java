@@ -12,10 +12,8 @@ import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.pull2refresh.RecyclerViewHeaderViewAdapter;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import java.util.ArrayList;
 
 public abstract class WSGridCommonHolder
   extends AbsWSGridBaseHolder<stSimpleMetaFeed>
@@ -25,7 +23,7 @@ public abstract class WSGridCommonHolder
   
   public WSGridCommonHolder(ViewGroup paramViewGroup, int paramInt, WSRecommendAdapter paramWSRecommendAdapter)
   {
-    super(paramViewGroup, 2131560538, paramInt, paramWSRecommendAdapter);
+    super(paramViewGroup, 2131560427, paramInt, paramWSRecommendAdapter);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter = new WSGridCardPresenter(this);
     this.itemView.setOnClickListener(this);
   }
@@ -37,52 +35,49 @@ public abstract class WSGridCommonHolder
   
   public void onClick(View paramView)
   {
-    if (WeishiUtils.c()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (WeishiUtils.c()) {
       return;
-      int i = getAdapterPosition() - ((RecyclerViewHeaderViewAdapter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.getAdapter()).a();
-      WSLog.b("WSGridCommonHolder", "onClick: " + i);
-      ArrayList localArrayList = new ArrayList();
-      if ((i >= this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.b()) || (i < 0))
-      {
-        WSLog.d("WSGridCommonHolder", "position out of bound");
-      }
-      else
-      {
-        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)this.jdField_a_of_type_JavaLangObject;
-        if (localstSimpleMetaFeed == null)
-        {
-          WSLog.d("WSGridCommonHolder", "feed is null");
-        }
-        else
-        {
-          WSReportDc00898.a(112, WSReportDc00898.a(i, localstSimpleMetaFeed));
-          WeishiLinkUtil.b();
-          Context localContext = a();
-          if (localstSimpleMetaFeed.video_type == 1)
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter.a(localContext, localstSimpleMetaFeed, i);
-            WSLog.b("WSGridCommonHolder", "点击了运营图片");
-          }
-          else if (localstSimpleMetaFeed.video_type == 6)
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter.a(localContext, i, localstSimpleMetaFeed);
-          }
-          else if (!this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter.a(localContext, i, localArrayList, localstSimpleMetaFeed))
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter.a(localContext, i, localArrayList, localstSimpleMetaFeed, true);
-            WSGridBeaconReport.a("gzh_click", localstSimpleMetaFeed, UserActionReportPresenter.a(localstSimpleMetaFeed, i), 1000001, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
-          }
-        }
-      }
     }
+    int i = getAdapterPosition() - ((RecyclerViewHeaderViewAdapter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.getAdapter()).getHeaderCount();
+    paramView = new StringBuilder();
+    paramView.append("onClick: ");
+    paramView.append(i);
+    WSLog.b("WSGridCommonHolder", paramView.toString());
+    if ((i < this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.getCustomItemCount()) && (i >= 0))
+    {
+      paramView = (stSimpleMetaFeed)this.jdField_a_of_type_JavaLangObject;
+      if (paramView == null)
+      {
+        WSLog.d("WSGridCommonHolder", "feed is null");
+        return;
+      }
+      WSReportDc00898.a(112, WSReportDc00898.a(i, paramView));
+      WeishiLinkUtil.b();
+      Context localContext = getContext();
+      if (paramView.video_type == 1)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter.a(localContext, paramView, i);
+        WSLog.b("WSGridCommonHolder", "点击了运营图片");
+        return;
+      }
+      if (paramView.video_type == 6)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter.a(localContext, i, paramView);
+        return;
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter.a(localContext, i, paramView)) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardPresenter.a(localContext, i, paramView, true, false);
+      WSGridBeaconReport.a("gzh_click", paramView, UserActionReportPresenter.a(paramView, i), 1000001, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    WSLog.d("WSGridCommonHolder", "position out of bound");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridCommonHolder
  * JD-Core Version:    0.7.0.1
  */

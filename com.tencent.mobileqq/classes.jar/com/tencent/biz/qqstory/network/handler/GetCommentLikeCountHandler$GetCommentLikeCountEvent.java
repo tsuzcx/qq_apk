@@ -19,12 +19,16 @@ public class GetCommentLikeCountHandler$GetCommentLikeCountEvent
   
   public String toString()
   {
-    return "GetCommentLikeCountEvent{, commentLikeCountList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetCommentLikeCountEvent{, commentLikeCountList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetCommentLikeCountHandler.GetCommentLikeCountEvent
  * JD-Core Version:    0.7.0.1
  */

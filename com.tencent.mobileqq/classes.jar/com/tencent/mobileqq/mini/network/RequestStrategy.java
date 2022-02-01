@@ -13,7 +13,7 @@ public class RequestStrategy
 {
   static final String TAG = "MiniAppInterface";
   private static int forceIpv6Switch = -1;
-  public static RequestStrategy g = null;
+  public static RequestStrategy g;
   private boolean mIPv6Only = false;
   
   static
@@ -30,25 +30,27 @@ public class RequestStrategy
   
   private boolean checkEnable()
   {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "ipv6_proxy_enable", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("qqminiapp", "ipv6_proxy_enable", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   private String getUrlPrefix(String paramString)
   {
-    String str1;
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("MiniAppInterface", 2, "getUrlPrefix fail ! originUrl is empty.");
-      str1 = "";
+      return "";
     }
-    String str2;
-    do
-    {
-      return str1;
-      str2 = QzoneConfig.getInstance().getConfig("qqminiapp", "ipv6_http_proxy_url", "https://proxy.gtimg.cn/tx_tls_gate=");
-      str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "ipv6_websocket_proxy_url", "wss://proxy.gtimg.cn/tx_tls_gate=");
-    } while (paramString.startsWith("wss://"));
-    return str2;
+    Object localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "ipv6_http_proxy_url", "https://proxy.gtimg.cn/tx_tls_gate=");
+    String str = QzoneConfig.getInstance().getConfig("qqminiapp", "ipv6_websocket_proxy_url", "wss://proxy.gtimg.cn/tx_tls_gate=");
+    if (paramString.startsWith("wss://")) {
+      localObject = str;
+    }
+    return localObject;
   }
   
   private boolean isForceIpv6()
@@ -64,82 +66,87 @@ public class RequestStrategy
   public String addHttpForwardingInfo(String paramString, Map<String, String> paramMap)
   {
     boolean bool = isForceIpv6();
-    String str1;
     if ((!bool) && (!checkEnable())) {
-      str1 = paramString;
+      return paramString;
     }
-    for (;;)
+    if (!IPV6OnlyUtils.isUrlAllowedProxy(paramString)) {
+      return paramString;
+    }
+    String str1;
+    String str2;
+    if (!this.mIPv6Only)
     {
-      return str1;
       str1 = paramString;
-      if (IPV6OnlyUtils.isUrlAllowedProxy(paramString)) {
-        if (!this.mIPv6Only)
-        {
-          str1 = paramString;
-          if (!bool) {}
-        }
-        else
-        {
-          String str2 = QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppIPv6OnlyForwardingReferer", "https://appservice.qq.com");
-          str1 = paramString;
-          if (!paramString.isEmpty())
-          {
-            str1 = paramString;
-            try
-            {
-              String str3 = getUrlPrefix(paramString);
-              str1 = paramString;
-              paramString = str3 + paramString;
-              str1 = paramString;
-              if (paramMap != null)
-              {
-                str1 = paramString;
-                paramMap.put("Referer", str2);
-                return paramString;
-              }
-            }
-            catch (Throwable paramString) {}
-          }
-        }
+      if (!bool) {}
+    }
+    else
+    {
+      str2 = QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppIPv6OnlyForwardingReferer", "https://appservice.qq.com");
+      str1 = paramString;
+      if (!paramString.isEmpty()) {
+        str1 = paramString;
       }
     }
+    try
+    {
+      String str3 = getUrlPrefix(paramString);
+      str1 = paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      str1 = paramString;
+      localStringBuilder.append(str3);
+      str1 = paramString;
+      localStringBuilder.append(paramString);
+      str1 = paramString;
+      paramString = localStringBuilder.toString();
+      str1 = paramString;
+      if (paramMap != null)
+      {
+        str1 = paramString;
+        paramMap.put("Referer", str2);
+        str1 = paramString;
+      }
+      return str1;
+    }
+    catch (Throwable paramString) {}
     return str1;
   }
   
   public boolean addHttpForwardingInfo(JSONObject paramJSONObject)
   {
     boolean bool = isForceIpv6();
-    if ((!bool) && (!checkEnable())) {}
-    for (;;)
-    {
+    if ((!bool) && (!checkEnable())) {
       return false;
-      if ((!this.mIPv6Only) && (!bool)) {
-        continue;
-      }
-      String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppIPv6OnlyForwardingReferer", "https://appservice.qq.com");
-      if (!paramJSONObject.has("url")) {
-        continue;
-      }
-      try
-      {
-        Object localObject = paramJSONObject.optString("url");
-        if (!IPV6OnlyUtils.isUrlAllowedProxy((String)localObject)) {
-          continue;
-        }
-        String str2 = getUrlPrefix((String)localObject);
-        paramJSONObject.put("origin_url", localObject);
-        paramJSONObject.put("url", str2 + (String)localObject);
-        if (paramJSONObject.has("header")) {}
-        for (localObject = paramJSONObject.optJSONObject("header");; localObject = new JSONObjectFix())
-        {
-          ((JSONObject)localObject).put("Referer", str1);
-          paramJSONObject.put("header", localObject);
-          return true;
-        }
+    }
+    String str1;
+    if ((this.mIPv6Only) || (bool))
+    {
+      str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppIPv6OnlyForwardingReferer", "https://appservice.qq.com");
+      if (!paramJSONObject.has("url")) {}
+    }
+    try
+    {
+      Object localObject = paramJSONObject.optString("url");
+      if (!IPV6OnlyUtils.isUrlAllowedProxy((String)localObject)) {
         return false;
       }
-      catch (Throwable paramJSONObject) {}
+      String str2 = getUrlPrefix((String)localObject);
+      paramJSONObject.put("origin_url", localObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str2);
+      localStringBuilder.append((String)localObject);
+      paramJSONObject.put("url", localStringBuilder.toString());
+      if (paramJSONObject.has("header")) {
+        localObject = paramJSONObject.optJSONObject("header");
+      } else {
+        localObject = new JSONObjectFix();
+      }
+      ((JSONObject)localObject).put("Referer", str1);
+      paramJSONObject.put("header", localObject);
+      return true;
     }
+    catch (Throwable paramJSONObject) {}
+    return false;
+    return false;
   }
   
   public boolean isIPv6Only()
@@ -154,7 +161,7 @@ public class RequestStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.network.RequestStrategy
  * JD-Core Version:    0.7.0.1
  */

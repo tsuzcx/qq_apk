@@ -10,27 +10,35 @@ final class NativeMemoryInfo$BackTraceLine
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof BackTraceLine)) {
-        return false;
-      }
-      paramObject = (BackTraceLine)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.b, paramObject.b)));
-    return false;
+    }
+    if (!(paramObject instanceof BackTraceLine)) {
+      return false;
+    }
+    paramObject = (BackTraceLine)paramObject;
+    return (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.b, paramObject.b));
   }
   
   public String toString()
   {
-    String str = this.jdField_a_of_type_Int + " " + this.jdField_a_of_type_JavaLangString + " " + this.b;
-    return "BackTraceLine{" + str + '}';
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(" ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(" ");
+    ((StringBuilder)localObject).append(this.b);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BackTraceLine{");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.natmem.NativeMemoryInfo.BackTraceLine
  * JD-Core Version:    0.7.0.1
  */

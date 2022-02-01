@@ -11,9 +11,16 @@ class ThemeHandler$5
 {
   ThemeHandler$5(ThemeHandler paramThemeHandler, ThemeLocator paramThemeLocator, Context paramContext, Bundle paramBundle) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onQueryItemVer(int paramInt, String paramString1, String paramString2)
   {
-    QLog.e("Theme.ThemeHandler", 1, "onQueryItemVer: " + paramInt + "," + paramString1 + "," + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onQueryItemVer: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramString2);
+    QLog.e("Theme.ThemeHandler", 1, localStringBuilder.toString());
     if (paramInt == 0)
     {
       this.jdField_a_of_type_ComTencentMobileqqVasThemeApiThemeLocator.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
@@ -28,7 +35,7 @@ class ThemeHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThemeHandler.5
  * JD-Core Version:    0.7.0.1
  */

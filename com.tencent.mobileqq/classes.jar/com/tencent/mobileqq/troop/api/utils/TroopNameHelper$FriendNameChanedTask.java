@@ -25,54 +25,43 @@ public class TroopNameHelper$FriendNameChanedTask
     Object localObject2 = ((ITroopInfoService)this.this$0.a.getRuntimeService(ITroopInfoService.class, "")).getUiTroopList();
     Object localObject1 = new ArrayList();
     localObject2 = ((List)localObject2).iterator();
-    label212:
-    for (;;)
+    while (((Iterator)localObject2).hasNext())
     {
-      TroopInfo localTroopInfo;
-      if (((Iterator)localObject2).hasNext())
+      TroopInfo localTroopInfo = (TroopInfo)((Iterator)localObject2).next();
+      if ((localTroopInfo != null) && (!localTroopInfo.hasSetTroopName()))
       {
-        localTroopInfo = (TroopInfo)((Iterator)localObject2).next();
-        if ((localTroopInfo != null) && (!localTroopInfo.hasSetTroopName()))
+        Object localObject3 = ((ITroopMemberInfoService)this.this$0.a.getRuntimeService(ITroopMemberInfoService.class, "")).getAllTroopMembers(localTroopInfo.troopuin);
+        if (localObject3 != null)
         {
-          Object localObject3 = ((ITroopMemberInfoService)this.this$0.a.getRuntimeService(ITroopMemberInfoService.class, "")).getAllTroopMembers(localTroopInfo.troopuin);
-          if (localObject3 != null)
+          int j = 0;
+          localObject3 = ((List)localObject3).iterator();
+          TroopMemberInfo localTroopMemberInfo;
+          do
           {
-            localObject3 = ((List)localObject3).iterator();
-            TroopMemberInfo localTroopMemberInfo;
-            do
-            {
-              if (!((Iterator)localObject3).hasNext()) {
-                break;
-              }
-              localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject3).next();
-            } while (!this.a.equals(localTroopMemberInfo.memberuin));
+            i = j;
+            if (!((Iterator)localObject3).hasNext()) {
+              break;
+            }
+            localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject3).next();
+          } while (!this.a.equals(localTroopMemberInfo.memberuin));
+          int i = 1;
+          if (i != 0) {
+            ((ArrayList)localObject1).add(localTroopInfo.troopuin);
           }
         }
       }
-      else
-      {
-        for (int i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label212;
-          }
-          ((ArrayList)localObject1).add(localTroopInfo.troopuin);
-          break;
-          localObject1 = ((ArrayList)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (String)((Iterator)localObject1).next();
-            this.this$0.a((String)localObject2);
-          }
-          return;
-        }
-      }
+    }
+    localObject1 = ((ArrayList)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (String)((Iterator)localObject1).next();
+      this.this$0.a((String)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.utils.TroopNameHelper.FriendNameChanedTask
  * JD-Core Version:    0.7.0.1
  */

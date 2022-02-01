@@ -4,16 +4,17 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.mobileqq.startup.step.SetSplash;
 import com.tencent.mobileqq.utils.StartupTrackerForAio;
 import com.tencent.qphone.base.util.QLog;
@@ -21,19 +22,12 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqperf.opt.threadpriority.ThreadPriorityManager;
 import com.tencent.qqperf.opt.threadpriority.ThreadRegulator;
 
+@RoutePage(desc="AIO", path="/base/activity/ChatActivity")
 public class ChatActivity
-  extends FragmentActivity
+  extends BaseActivity
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString = "Q.aio.ChatActivity";
-  
-  public void a(Intent paramIntent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "switchToAio() called with: intent = [" + paramIntent + "]");
-    }
-    doOnNewIntent(paramIntent);
-  }
+  private String TAG = "Q.aio.ChatActivity";
+  private View mTitleView;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -44,7 +38,7 @@ public class ChatActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     Fragment localFragment = getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
@@ -60,12 +54,12 @@ public class ChatActivity
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     ThreadRegulator.a().a(1);
     StartupTrackerForAio.a(null, "AIO_Start_cost");
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnCreate strat ");
+      QLog.d(this.TAG, 2, "doOnCreate strat ");
     }
     ThreadPriorityManager.a(true);
     this.mActNeedImmersive = false;
@@ -73,102 +67,99 @@ public class ChatActivity
     if (AIOUtils.a(this, this.app, true, getIntent())) {
       return false;
     }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    paramBundle = this.mTitleView;
+    if (paramBundle != null) {
+      paramBundle.setVisibility(0);
     }
     paramBundle = (ChatFragment)getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
     if (paramBundle != null)
     {
       FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
       localFragmentTransaction.remove(paramBundle);
-      localFragmentTransaction.add(16908290, ChatFragment.a(), ChatFragment.class.getName()).commit();
+      localFragmentTransaction.add(16908290, ChatFragment.a(), ChatFragment.class.getName()).commitAllowingStateLoss();
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnCreate f != null ");
+        QLog.d(this.TAG, 2, "doOnCreate f != null ");
       }
     }
-    for (;;)
+    else
     {
+      getSupportFragmentManager().beginTransaction().add(16908290, ChatFragment.a(), ChatFragment.class.getName()).commitAllowingStateLoss();
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnCreate end ");
-      }
-      return true;
-      getSupportFragmentManager().beginTransaction().add(16908290, ChatFragment.a(), ChatFragment.class.getName()).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnCreate f == null ");
+        QLog.d(this.TAG, 2, "doOnCreate f == null ");
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.TAG, 2, "doOnCreate end ");
+    }
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     try
     {
       super.doOnDestroy();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnDestroy ");
-      }
-      if (QLog.isColorLevel())
-      {
-        int i = URLDrawable.getPoolSize();
-        QLog.i("URLDrawableOptions", 2, "URLDrawableOptions main size " + i);
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.TAG, 2, "doOnDestroy ");
+    }
+    if (QLog.isColorLevel())
+    {
+      int i = URLDrawable.getPoolSize();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("URLDrawableOptions main size ");
+      localStringBuilder.append(i);
+      QLog.i("URLDrawableOptions", 2, localStringBuilder.toString());
     }
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     ThreadRegulator.a().a(1);
     StartupTrackerForAio.a(null, "AIO_Start_cost");
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnNewIntent start ");
+      QLog.d(this.TAG, 2, "doOnNewIntent start ");
     }
     super.doOnNewIntent(paramIntent);
-    if (AIOUtils.a(this, this.app, false, getIntent())) {}
-    for (;;)
-    {
+    if (AIOUtils.a(this, this.app, false, getIntent())) {
       return;
-      super.setIntent(paramIntent);
-      paramIntent = (ChatFragment)getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (paramIntent != null)
+    }
+    super.setIntent(paramIntent);
+    paramIntent = (ChatFragment)getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+    if (paramIntent != null)
+    {
+      paramIntent.d();
+      if (!paramIntent.isVisible())
       {
-        paramIntent.d();
-        if (!paramIntent.isVisible())
-        {
-          FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-          localFragmentTransaction.show(paramIntent);
-          localFragmentTransaction.commitAllowingStateLoss();
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnNewIntent !cf.isVisible()");
-          }
-        }
+        FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
+        localFragmentTransaction.show(paramIntent);
+        localFragmentTransaction.commitAllowingStateLoss();
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnNewIntent cf != null");
+          QLog.d(this.TAG, 2, "doOnNewIntent !cf.isVisible()");
         }
       }
-      while (QLog.isColorLevel())
-      {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnNewIntent end");
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.e(this.jdField_a_of_type_JavaLangString, 2, "doOnNewIntent error cf == null");
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.TAG, 2, "doOnNewIntent cf != null");
       }
+    }
+    else if (QLog.isColorLevel())
+    {
+      QLog.e(this.TAG, 2, "doOnNewIntent error cf == null");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.TAG, 2, "doOnNewIntent end");
     }
   }
   
-  public void doOnWindowFocusChanged(boolean paramBoolean)
+  protected void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doOnWindowFocusChanged");
+      QLog.d(this.TAG, 2, "doOnWindowFocusChanged");
     }
     if (paramBoolean)
     {
@@ -188,12 +179,12 @@ public class ChatActivity
     super.finish();
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     ChatFragment localChatFragment = (ChatFragment)getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
     Intent localIntent = getIntent();
@@ -254,7 +245,7 @@ public class ChatActivity
     }
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
     getWindow().setFormat(-3);
@@ -263,11 +254,11 @@ public class ChatActivity
   public boolean showPreview()
   {
     SetSplash.a(this, null, true);
-    getWindow().setFeatureInt(7, 2131559104);
+    getWindow().setFeatureInt(7, 2131558998);
     try
     {
-      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131367050).getParent());
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.mTitleView = ((View)findViewById(2131366900).getParent());
+      this.mTitleView.setVisibility(8);
       return true;
     }
     catch (Throwable localThrowable)
@@ -276,10 +267,24 @@ public class ChatActivity
     }
     return true;
   }
+  
+  public void switchToAio(Intent paramIntent)
+  {
+    if (QLog.isColorLevel())
+    {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("switchToAio() called with: intent = [");
+      localStringBuilder.append(paramIntent);
+      localStringBuilder.append("]");
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    doOnNewIntent(paramIntent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivity
  * JD-Core Version:    0.7.0.1
  */

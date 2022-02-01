@@ -20,59 +20,54 @@ public class ApolloGameResManager$ApolloGameRes
     {
       if (this.b != null)
       {
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (!this.jdField_a_of_type_Boolean)) {
+        Object localObject = this.jdField_a_of_type_ArrayOfByte;
+        if ((localObject != null) && (!this.jdField_a_of_type_Boolean)) {
           return new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new ByteArrayInputStream(this.jdField_a_of_type_ArrayOfByte));
         }
-        if (!FileUtils.a(this.b)) {
-          break label102;
+        if (FileUtils.fileExists(this.b))
+        {
+          localObject = new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new FileInputStream(this.b));
+          return localObject;
         }
-        WebResourceResponse localWebResourceResponse = new WebResourceResponse(this.jdField_a_of_type_JavaLangString, "utf-8", new FileInputStream(this.b));
-        return localWebResourceResponse;
+        return null;
       }
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[getResponse]" });
+      QLog.e("[cmshow]ApolloGameResManager", 1, localThrowable, new Object[] { "[getResponse]" });
     }
     return null;
-    label102:
-    return null;
-  }
-  
-  public String a()
-  {
-    return "file://" + this.b;
   }
   
   public void a()
   {
     try
     {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (FileUtils.a(this.b)))
-      {
-        if (FileUtils.b(this.b) <= 8388608L) {
-          break label84;
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (FileUtils.fileExists(this.b))) {
+        if (FileUtils.getFileOrFolderSize(this.b) > 8388608L) {
+          this.jdField_a_of_type_Boolean = true;
+        } else {
+          this.jdField_a_of_type_ArrayOfByte = FileUtils.readFile(this.b);
         }
-        this.jdField_a_of_type_Boolean = true;
       }
-      while (QLog.isColorLevel())
+      if (QLog.isColorLevel())
       {
-        QLog.d("ApolloGameResManager", 2, "[initData] " + this.b);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[initData] ");
+        localStringBuilder.append(this.b);
+        QLog.d("[cmshow]ApolloGameResManager", 2, localStringBuilder.toString());
         return;
-        label84:
-        this.jdField_a_of_type_ArrayOfByte = FileUtils.a(this.b);
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("ApolloGameResManager", 1, localThrowable, new Object[] { "[initData]" });
+      QLog.e("[cmshow]ApolloGameResManager", 1, localThrowable, new Object[] { "[initData]" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameResManager.ApolloGameRes
  * JD-Core Version:    0.7.0.1
  */

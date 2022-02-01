@@ -2,6 +2,7 @@ package org.light;
 
 import android.graphics.PointF;
 import android.os.SystemClock;
+import android.util.Log;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,6 +51,7 @@ public class CameraController
   
   public void release()
   {
+    Log.d("strangetest:", "cacmeracontroller release");
     nativeRelease();
   }
   
@@ -68,6 +70,8 @@ public class CameraController
   public native void setKapuDisplayType(CameraController.DisplayType paramDisplayType);
   
   public native void setKapuModel(HashMap<String, String> paramHashMap, String paramString, CameraController.CmShowCallback paramCmShowCallback);
+  
+  public native boolean setPerfTest(int paramInt);
   
   public native void setSegmentationFastMode(boolean paramBoolean);
   
@@ -111,10 +115,12 @@ public class CameraController
   public native void updateTouchScale(float paramFloat);
   
   public native void updateViewParams(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat);
+  
+  public native void updateVoiceDecibel(float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.CameraController
  * JD-Core Version:    0.7.0.1
  */

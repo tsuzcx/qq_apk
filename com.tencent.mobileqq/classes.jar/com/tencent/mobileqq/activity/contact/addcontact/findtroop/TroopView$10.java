@@ -13,7 +13,8 @@ class TroopView$10
     if (TroopView.a(this.a) != null) {
       TroopView.a(this.a).a(paramInt1, paramInt2);
     }
-    if (paramInt1 >= paramInt2) {
+    if (paramInt1 >= paramInt2)
+    {
       if (!TroopView.a(this.a))
       {
         TroopView.a(this.a, true);
@@ -22,20 +23,18 @@ class TroopView$10
         }
       }
     }
-    do
+    else if (TroopView.a(this.a))
     {
-      do
-      {
-        return;
-      } while (!TroopView.a(this.a));
       TroopView.a(this.a, false);
-    } while (this.a.a == null);
-    this.a.a.a(TroopView.a(this.a));
+      if (this.a.a != null) {
+        this.a.a.a(TroopView.a(this.a));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.10
  * JD-Core Version:    0.7.0.1
  */

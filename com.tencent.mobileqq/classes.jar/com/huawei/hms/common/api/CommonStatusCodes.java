@@ -22,47 +22,57 @@ public class CommonStatusCodes
   
   public static String getStatusCodeString(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    default: 
-      return "unknown status code: " + paramInt;
-    case -1: 
-      return "SUCCESS_CACHE";
-    case 0: 
+      if (paramInt != 0)
+      {
+        if (paramInt != 10)
+        {
+          if (paramInt != 9004)
+          {
+            switch (paramInt)
+            {
+            default: 
+              switch (paramInt)
+              {
+              default: 
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("unknown status code: ");
+                localStringBuilder.append(paramInt);
+                return localStringBuilder.toString();
+              }
+            case 8: 
+              return "INTERNAL_ERROR";
+            case 7: 
+              return "NETWORK_ERROR";
+            case 6: 
+              return "RESOLUTION_REQUIRED";
+            case 5: 
+              return "INVALID_ACCOUNT";
+            case 4: 
+              return "SIGN_IN_REQUIRED";
+            case 3: 
+              return "SERVICE_DISABLED";
+            }
+            return "SERVICE_VERSION_UPDATE_REQUIRED";
+            return "API_NOT_CONNECTED";
+            return "CANCELED";
+            return "TIMEOUT";
+            return "INTERRUPTED";
+            return "ERROR";
+          }
+          return "DEAD_CLIENT";
+        }
+        return "DEVELOPER_ERROR";
+      }
       return "SUCCESS";
-    case 2: 
-      return "SERVICE_VERSION_UPDATE_REQUIRED";
-    case 3: 
-      return "SERVICE_DISABLED";
-    case 4: 
-      return "SIGN_IN_REQUIRED";
-    case 5: 
-      return "INVALID_ACCOUNT";
-    case 6: 
-      return "RESOLUTION_REQUIRED";
-    case 7: 
-      return "NETWORK_ERROR";
-    case 8: 
-      return "INTERNAL_ERROR";
-    case 10: 
-      return "DEVELOPER_ERROR";
-    case 13: 
-      return "ERROR";
-    case 14: 
-      return "INTERRUPTED";
-    case 15: 
-      return "TIMEOUT";
-    case 16: 
-      return "CANCELED";
-    case 17: 
-      return "API_NOT_CONNECTED";
     }
-    return "DEAD_CLIENT";
+    return "SUCCESS_CACHE";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.api.CommonStatusCodes
  * JD-Core Version:    0.7.0.1
  */

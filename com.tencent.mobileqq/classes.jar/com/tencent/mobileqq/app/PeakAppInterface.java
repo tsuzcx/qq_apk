@@ -5,6 +5,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.accessibility.AccessibilityManager;
+import com.tencent.aelight.camera.api.IAEClassManager;
+import com.tencent.aelight.camera.api.IAEEditorProcess;
+import com.tencent.aelight.camera.api.IPeakJceService;
+import com.tencent.aelight.camera.log.AEQLog;
+import com.tencent.aelight.camera.qqstory.api.IAsyncControl;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.takevideo.slideshow.TransitionHandler;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -17,12 +22,11 @@ import com.tencent.mobileqq.persistence.MessageRecordEntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.persistence.qslowtable.QSlowTableEntityManagerFactory;
 import com.tencent.mobileqq.pic.PresendPicMgr;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmedia.RichmediaClient;
 import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
 import com.tencent.mobileqq.richmedia.server.PeakMsfServletProxy;
-import com.tencent.mobileqq.service.PeakJceService;
 import com.tencent.mobileqq.servlet.AudioTransServlet;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 import com.tencent.mobileqq.startup.step.DtSdkInitStep;
 import com.tencent.mobileqq.startup.step.InitMemoryCache;
 import com.tencent.mobileqq.startup.step.InitUrlDrawable;
@@ -33,11 +37,6 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.util.QZLog;
-import dov.com.qq.im.ae.config.CameraPeakServiceHandler;
-import dov.com.qq.im.ae.util.AEQLog;
-import dov.com.qq.im.aeeditor.AEEditorProcessManager;
-import dov.com.qq.im.aeeditor.manage.AEEditorDataServiceHandler;
-import dov.com.qq.im.capture.control.CaptureAsyncControl;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.IToolProcEventListener;
 import mqq.app.MobileQQ;
@@ -47,18 +46,18 @@ public class PeakAppInterface
   extends BaseToolAppInterface
   implements IToolProcEventListener
 {
-  public static CaptureAsyncControl a;
   public static final String a;
   public static final String b;
   public static final String c = MiniCodePeakHandler.class.getName();
-  public static final String d = CameraPeakServiceHandler.class.getName();
-  public static final String e = AEEditorDataServiceHandler.class.getName();
+  public static final String d = ((IAEClassManager)QRoute.api(IAEClassManager.class)).getCameraPeakServiceHandlerClass().getName();
+  public static final String e = ((IAEClassManager)QRoute.api(IAEClassManager.class)).getAEEditorDataServiceHandlerClass().getName();
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new PeakAppInterface.1(this);
+  private IPeakJceService jdField_a_of_type_ComTencentAelightCameraApiIPeakJceService;
   private QQStoryContext jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext;
+  private PeakAppCrashReporter jdField_a_of_type_ComTencentMobileqqAppPeakAppCrashReporter;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
   private MessageRecordEntityManager jdField_a_of_type_ComTencentMobileqqPersistenceMessageRecordEntityManager;
   private PeakMsfServletProxy jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy;
-  private PeakJceService jdField_a_of_type_ComTencentMobileqqServicePeakJceService;
   private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
   private ConcurrentHashMap<Integer, Manager> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
   public boolean a;
@@ -67,7 +66,6 @@ public class PeakAppInterface
   
   static
   {
-    jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncControl = new CaptureAsyncControl();
     jdField_a_of_type_JavaLangString = PeakAudioTransHandler.class.getName();
     jdField_b_of_type_JavaLangString = TransitionHandler.class.getName();
   }
@@ -91,13 +89,19 @@ public class PeakAppInterface
   {
     AEQLog.d("PeakAppInterface", "exitPeakRunTime");
     paramBaseApplication = paramIntent.getAction();
-    if (paramBaseApplication == null) {}
-    while (!paramBaseApplication.equals("com.tencent.process.exit")) {
+    if (paramBaseApplication == null) {
       return false;
     }
-    boolean bool = AEEditorProcessManager.a().a();
-    AEQLog.d("PeakAppInterface", "isGenerateWorking" + bool);
-    return bool;
+    if (paramBaseApplication.equals("com.tencent.process.exit"))
+    {
+      boolean bool = ((IAEEditorProcess)QRoute.api(IAEEditorProcess.class)).isGenerateWorking();
+      paramBaseApplication = new StringBuilder();
+      paramBaseApplication.append("isGenerateWorking");
+      paramBaseApplication.append(bool);
+      AEQLog.d("PeakAppInterface", paramBaseApplication.toString());
+      return bool;
+    }
+    return false;
   }
   
   public QQStoryContext a()
@@ -138,20 +142,26 @@ public class PeakAppInterface
   
   public void b()
   {
-    try
+    for (;;)
     {
-      AccessibilityManager localAccessibilityManager = (AccessibilityManager)this.app.getSystemService("accessibility");
-      boolean bool1 = localAccessibilityManager.isEnabled();
-      boolean bool2 = localAccessibilityManager.isTouchExplorationEnabled();
-      if ((bool1) && (bool2)) {}
-      for (bool1 = true;; bool1 = false)
+      try
       {
-        AppSetting.d = bool1;
+        AccessibilityManager localAccessibilityManager = (AccessibilityManager)this.app.getSystemService("accessibility");
+        bool1 = localAccessibilityManager.isEnabled();
+        boolean bool2 = localAccessibilityManager.isTouchExplorationEnabled();
+        if ((bool1) && (bool2))
+        {
+          bool1 = true;
+          AppSetting.d = bool1;
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
         return;
       }
-      return;
+      boolean bool1 = false;
     }
-    catch (Throwable localThrowable) {}
   }
   
   public BaseApplication getApp()
@@ -186,32 +196,30 @@ public class PeakAppInterface
   {
     Object localObject2 = (Manager)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
     Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      switch (paramInt)
-      {
-      default: 
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt)) != null) {
-          localObject1 = (Manager)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-        }
-        break;
-      }
-    }
-    for (;;)
+    if (localObject2 == null)
     {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = super.getManager(paramInt);
+      if (paramInt == 4) {
+        localObject2 = new MessageCleanManager();
       }
-      return localObject2;
-      localObject2 = new MessageCleanManager();
-      break;
-      localObject1 = localObject2;
-      if (localObject2 != null)
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt)) != null)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject2);
+        localObject1 = (Manager)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+      }
+      else
+      {
         localObject1 = localObject2;
+        if (localObject2 != null)
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject2);
+          localObject1 = localObject2;
+        }
       }
     }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = super.getManager(paramInt);
+    }
+    return localObject2;
   }
   
   public String getModuleId()
@@ -232,11 +240,12 @@ public class PeakAppInterface
   public void onBeforeExitProc()
   {
     AEQLog.d("PeakAppInterface", "onBeforeExitProc");
-    AEEditorProcessManager.a().b();
+    ((IAEEditorProcess)QRoute.api(IAEEditorProcess.class)).clean();
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
+    long l = System.currentTimeMillis();
     super.onCreate(paramBundle);
     if (QLog.isColorLevel()) {
       QLog.d("PeakAppInterface", 2, "onCreate");
@@ -246,44 +255,47 @@ public class PeakAppInterface
     a();
     this.jdField_b_of_type_Boolean = a();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy = new PeakMsfServletProxy(this);
-    this.jdField_a_of_type_ComTencentMobileqqServicePeakJceService = new PeakJceService(this);
-    jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncControl.a("{1000,1002}");
+    this.jdField_a_of_type_ComTencentAelightCameraApiIPeakJceService = ((IPeakJceService)getRuntimeService(IPeakJceService.class, "all"));
+    ((IAsyncControl)QRoute.api(IAsyncControl.class)).startPeakPreLoadAsyncStep();
     DtSdkInitStep.initDTSDK(0);
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppCrashReporter = new PeakAppCrashReporter();
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppCrashReporter.a();
+    paramBundle = new StringBuilder();
+    paramBundle.append("[onCreate...] + END, time cost:");
+    paramBundle.append(System.currentTimeMillis() - l);
+    QLog.d("[Performance2]PeakAppInterface", 1, paramBundle.toString());
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     RichmediaClient.a().b(BaseApplicationImpl.sApplication);
-    PresendPicMgr localPresendPicMgr = PresendPicMgr.a(null);
-    if (localPresendPicMgr != null) {
-      localPresendPicMgr.b();
+    Object localObject = PresendPicMgr.a(null);
+    if (localObject != null) {
+      ((PresendPicMgr)localObject).b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory != null) {}
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
+    if (localObject != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.onDestroy();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.app.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_b_of_type_Boolean = false;
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        RedBagVideoManager.a(this).a(this);
-      }
-      jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncControl.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakAppInterface", 2, "onDestroy");
-      }
-      return;
+      ((NetEngineFactory)localObject).onDestroy();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.onDestroy();
-      }
+      label42:
+      break label42;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.onDestroy();
+    this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = null;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.app.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_b_of_type_Boolean = false;
+    }
+    ((IAsyncControl)QRoute.api(IAsyncControl.class)).destory();
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppCrashReporter.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakAppInterface", 2, "onDestroy");
     }
   }
   
@@ -299,44 +311,49 @@ public class PeakAppInterface
     return a(BaseApplicationImpl.getContext(), paramIntent);
   }
   
-  public void onRunningBackground()
+  protected void onRunningBackground()
   {
     if (QZLog.isColorLevel()) {
       QZLog.i("PeakAppInterface", 2, "onRunningBackground");
     }
     super.onRunningBackground();
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppCrashReporter.c();
     LpReportManager.getInstance().startReportImediately(2);
   }
   
-  public void onRunningForeground()
+  protected void onRunningForeground()
   {
     super.onRunningForeground();
     ThreadManager.executeOnFileThread(new PeakAppInterface.2(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppCrashReporter.d();
   }
   
   public void receiveToService(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterialV2")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBigShowRecommend")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCircleCatMatTree")))
+    if ((!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetRecommandTextByEmotion")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetTextValidStatus")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCameraConfig")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCategoryMaterial")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetPlayShowCatMatTree")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetOnlineUserNum")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetFontData")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetImgValidStatus")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBulkImageClassify")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBigShowRecommend")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCircleCatMatTree")))
     {
-      this.jdField_a_of_type_ComTencentMobileqqServicePeakJceService.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    IPeakJceService localIPeakJceService = this.jdField_a_of_type_ComTencentAelightCameraApiIPeakJceService;
+    if (localIPeakJceService != null) {
+      localIPeakJceService.handleResponse(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg);
+    }
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterialV2")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBigShowRecommend")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCircleCatMatTree")))
+    if ((!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetRecommandTextByEmotion")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetTextValidStatus")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCameraConfig")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCategoryMaterial")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetPlayShowCatMatTree")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetOnlineUserNum")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetFontData")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetImgValidStatus")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBulkImageClassify")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetBigShowRecommend")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("ShadowBackendSvc.GetCircleCatMatTree")))
     {
-      this.jdField_a_of_type_ComTencentMobileqqServicePeakJceService.a(paramToServiceMsg);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy.a(paramToServiceMsg, AudioTransServlet.class);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaServerPeakMsfServletProxy.a(paramToServiceMsg, AudioTransServlet.class);
+    this.jdField_a_of_type_ComTencentAelightCameraApiIPeakJceService.handleRequest(paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.PeakAppInterface
  * JD-Core Version:    0.7.0.1
  */

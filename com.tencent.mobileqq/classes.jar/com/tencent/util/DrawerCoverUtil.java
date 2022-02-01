@@ -4,18 +4,19 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.FrameHelperActivity.QQSettingMeListener;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profile.ProfileCardManager;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.profilecard.template.ProfileTemplateApi;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.util.ProfileCardTemplateUtil;
 import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.vas.VasExtensionManager;
@@ -33,46 +34,45 @@ import mqq.os.MqqHandler;
 public class DrawerCoverUtil
 {
   public static String a;
-  private static boolean a;
+  private static boolean a = false;
   
-  static
+  public static CallBacker a(QBaseActivity paramQBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, String paramString, FrameHelperActivity.QQSettingMeListener paramQQSettingMeListener, boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static CallBacker a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, String paramString, FrameHelperActivity.QQSettingMeListener paramQQSettingMeListener, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.", 2, "now is in drawer frame?" + paramBoolean);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("now is in drawer frame?");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("Q.profilecard.", 2, localStringBuilder.toString());
     }
     if (!a(paramQQAppInterface, paramCard))
     {
       ThreadManager.getUIHandler().post(new DrawerCoverUtil.1(paramRandomCoverView, paramString));
       a();
     }
-    for (;;)
+    else if (!b(paramQQAppInterface, paramCard))
     {
-      return null;
-      if (!b(paramQQAppInterface, paramCard))
+      if ((paramCard.lCurrentBgId != 160L) && (paramCard.lCurrentBgId != 1600L) && (!ProfileTemplateApi.isDiyTemplateStyleID(paramCard.lCurrentStyleId)))
       {
-        if ((paramCard.lCurrentBgId == 160L) || (paramCard.lCurrentBgId == 1600L) || (ProfileCardTemplate.a(paramCard.lCurrentStyleId)))
-        {
-          c(paramQQAppInterface, paramCard);
-          a(paramBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramQQSettingMeListener, paramBoolean);
-        }
-        else
-        {
-          ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.a(paramQQAppInterface, "card." + paramCard.lCurrentBgId);
-          paramString = (IVasQuickUpdateService)paramQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
-          paramBaseActivity = new DrawerCoverUtil.2(paramBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramQQSettingMeListener, paramBoolean, paramString);
-          paramString.addWeakCallback(paramBaseActivity);
-          return paramBaseActivity;
-        }
+        paramString = ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("card.");
+        localStringBuilder.append(paramCard.lCurrentBgId);
+        paramString.a(paramQQAppInterface, localStringBuilder.toString());
+        paramString = (IVasQuickUpdateService)paramQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+        paramQBaseActivity = new DrawerCoverUtil.2(paramQBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramQQSettingMeListener, paramBoolean, paramString);
+        paramString.addWeakCallback(paramQBaseActivity);
+        return paramQBaseActivity;
       }
-      else {
-        a(paramBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramQQSettingMeListener, paramBoolean);
-      }
+      c(paramQQAppInterface, paramCard);
+      a(paramQBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramQQSettingMeListener, paramBoolean);
     }
+    else
+    {
+      a(paramQBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramQQSettingMeListener, paramBoolean);
+    }
+    return null;
   }
   
   public static void a()
@@ -80,7 +80,7 @@ public class DrawerCoverUtil
     jdField_a_of_type_JavaLangString = null;
   }
   
-  public static void a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, FrameHelperActivity.QQSettingMeListener paramQQSettingMeListener, boolean paramBoolean)
+  public static void a(QBaseActivity paramQBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, FrameHelperActivity.QQSettingMeListener paramQQSettingMeListener, boolean paramBoolean)
   {
     long l = paramCard.lCurrentBgId;
     Object localObject = (Boolean)ProfileCardManager.a.get(Long.valueOf(l));
@@ -90,58 +90,52 @@ public class DrawerCoverUtil
       i = 1;
       ProfileCardManager.a.remove(Long.valueOf(l));
     }
-    for (;;)
+    else
     {
-      localObject = paramQQSettingMeListener.a(paramCard.strDrawerCardUrl);
-      a(paramCard.strDrawerCardUrl);
-      if ((localObject == null) || (i != 0))
-      {
-        if ((l == 160L) || (l == 1600L) || (ProfileCardTemplate.a(paramCard.lCurrentStyleId))) {}
-        for (paramQQAppInterface = ProfileCardUtil.a(paramBaseActivity, paramCard.strDrawerCardUrl);; paramQQAppInterface = ProfileCardManager.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId))
-        {
-          localObject = new BitmapFactory.Options();
-          ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
-          localObject = BitmapManager.a(paramQQAppInterface, (BitmapFactory.Options)localObject);
-          if (localObject != null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.profilecard.", 2, "[personal card] fileName:" + paramQQAppInterface + " bitmap:" + localObject);
-            }
-            ThreadManager.getUIHandler().post(new DrawerCoverUtil.3(paramBaseActivity, (Bitmap)localObject, paramRandomCoverView, paramBoolean, paramQQSettingMeListener, paramCard));
-          }
-          return;
-        }
-      }
+      i = 0;
+    }
+    localObject = paramQQSettingMeListener.a(paramCard.strDrawerCardUrl);
+    a(paramCard.strDrawerCardUrl);
+    if ((localObject != null) && (i == 0))
+    {
       ThreadManager.getUIHandler().post(new DrawerCoverUtil.4(paramRandomCoverView, (UpSideDownDrawable)localObject, paramBoolean));
       return;
-      i = 0;
+    }
+    if ((l != 160L) && (l != 1600L) && (!ProfileTemplateApi.isDiyTemplateStyleID(paramCard.lCurrentStyleId))) {
+      paramQQAppInterface = ProfileCardManager.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId);
+    } else {
+      paramQQAppInterface = ProfileCardUtil.a(paramCard.strDrawerCardUrl);
+    }
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
+    localObject = BitmapManager.a(paramQQAppInterface, (BitmapFactory.Options)localObject);
+    if (localObject != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[personal card] fileName:");
+        localStringBuilder.append(paramQQAppInterface);
+        localStringBuilder.append(" bitmap:");
+        localStringBuilder.append(localObject);
+        QLog.d("Q.profilecard.", 2, localStringBuilder.toString());
+      }
+      ThreadManager.getUIHandler().post(new DrawerCoverUtil.3(paramQBaseActivity, (Bitmap)localObject, paramRandomCoverView, paramBoolean, paramQQSettingMeListener, paramCard));
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Card paramCard)
   {
     CardHandler localCardHandler = (CardHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
-    if (localCardHandler == null) {}
-    do
-    {
+    if (localCardHandler == null) {
       return;
-      byte b = (byte)SharedPreUtils.X(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin());
-      byte[] arrayOfByte1 = null;
-      byte[] arrayOfByte2 = null;
-      if (0 == 0)
-      {
-        arrayOfByte1 = new byte[1];
-        arrayOfByte1[0] = 0;
-      }
-      if (0 == 0)
-      {
-        arrayOfByte2 = new byte[1];
-        arrayOfByte2[0] = 0;
-      }
-      long l = paramCard.feedPreviewTime;
-      localCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentUin(), 0, l, (byte)1, 0L, 0L, arrayOfByte1, "", 0L | 1L | 0x4 | 0x8 | 0x200 | 0x10 | 0x20 | 0x400 | 0x800 | 0x2000, 10004, arrayOfByte2, b);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.profilecard.", 2, "fetch profilecard info failure from cache,restart to fetch from net");
+    }
+    byte b = (byte)SharedPreUtils.U(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin());
+    long l = paramCard.feedPreviewTime;
+    localCardHandler.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentUin(), 0, l, (byte)1, 0L, 0L, new byte[] { 0 }, "", 11837L, 10004, new byte[] { 0 }, b);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.", 2, "fetch profilecard info failure from cache,restart to fetch from net");
+    }
   }
   
   public static void a(String paramString)
@@ -156,20 +150,31 @@ public class DrawerCoverUtil
   
   public static boolean a(QQAppInterface paramQQAppInterface, Card paramCard)
   {
-    paramQQAppInterface = ProfileCardUtil.a(paramQQAppInterface, paramCard.lCurrentStyleId, true);
+    paramQQAppInterface = ProfileCardTemplateUtil.a(paramCard.lCurrentStyleId, true);
     boolean bool = SimpleUIUtil.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.", 2, "[check cardTemplate]lCurrentStyleId:" + paramCard.lCurrentStyleId + " backgroundUrl:" + paramCard.strDrawerCardUrl + " templateRet:" + paramCard.templateRet + " isSimpleUI:" + bool);
-    }
-    if (bool) {}
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[check cardTemplate]lCurrentStyleId:");
+      localStringBuilder.append(paramCard.lCurrentStyleId);
+      localStringBuilder.append(" backgroundUrl:");
+      localStringBuilder.append(paramCard.strDrawerCardUrl);
+      localStringBuilder.append(" templateRet:");
+      localStringBuilder.append(paramCard.templateRet);
+      localStringBuilder.append(" isSimpleUI:");
+      localStringBuilder.append(bool);
+      QLog.d("Q.profilecard.", 2, localStringBuilder.toString());
+    }
+    if (bool) {
       return false;
-      if (ProfileCardTemplate.a(paramCard.lCurrentStyleId)) {
-        return true;
-      }
-    } while ((paramCard.lCurrentStyleId <= 0L) || (paramQQAppInterface == null) || (TextUtils.isEmpty(paramCard.strDrawerCardUrl)) || (paramCard.templateRet != 0));
-    return true;
+    }
+    if (ProfileTemplateApi.isDiyTemplateStyleID(paramCard.lCurrentStyleId)) {
+      return true;
+    }
+    if ((paramCard.lCurrentStyleId > 0L) && (paramQQAppInterface != null) && (!TextUtils.isEmpty(paramCard.strDrawerCardUrl))) {
+      return paramCard.templateRet == 0;
+    }
+    return false;
   }
   
   public static void b()
@@ -184,10 +189,10 @@ public class DrawerCoverUtil
   
   public static boolean b(QQAppInterface paramQQAppInterface, Card paramCard)
   {
-    if ((paramCard.lCurrentBgId == 160L) || (paramCard.lCurrentBgId == 1600L) || (ProfileCardTemplate.a(paramCard.lCurrentStyleId))) {
-      return ProfileCardUtil.a(paramQQAppInterface.getApp(), paramCard.strDrawerCardUrl);
+    if ((paramCard.lCurrentBgId != 160L) && (paramCard.lCurrentBgId != 1600L) && (!ProfileTemplateApi.isDiyTemplateStyleID(paramCard.lCurrentStyleId))) {
+      return new File(ProfileCardManager.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId)).exists();
     }
-    return new File(ProfileCardManager.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId)).exists();
+    return ProfileCardUtil.a(paramCard.strDrawerCardUrl);
   }
   
   public static void c()
@@ -197,7 +202,7 @@ public class DrawerCoverUtil
   
   public static boolean c(QQAppInterface paramQQAppInterface, Card paramCard)
   {
-    Object localObject = new File(ProfileCardUtil.a(paramQQAppInterface.getApplication(), paramCard.strDrawerCardUrl));
+    Object localObject = new File(ProfileCardUtil.a(paramCard.strDrawerCardUrl));
     localObject = new DownloadTask(paramCard.strDrawerCardUrl, (File)localObject);
     ((DownloadTask)localObject).f = "profileCardDownload";
     ((DownloadTask)localObject).e = "VIP_profilecard";
@@ -205,19 +210,28 @@ public class DrawerCoverUtil
     if (i == 0) {
       return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("DIYProfileTemplate.DrawerCover", 1, "download error:" + i);
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      return false;
-      QLog.e("DIYProfileTemplate.DrawerCover", 1, "download {" + paramCard.strDrawerCardUrl + "} error:" + i);
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("download error:");
+      paramQQAppInterface.append(i);
+      QLog.e("DIYProfileTemplate.DrawerCover", 1, paramQQAppInterface.toString());
     }
+    else
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("download {");
+      paramQQAppInterface.append(paramCard.strDrawerCardUrl);
+      paramQQAppInterface.append("} error:");
+      paramQQAppInterface.append(i);
+      QLog.e("DIYProfileTemplate.DrawerCover", 1, paramQQAppInterface.toString());
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.DrawerCoverUtil
  * JD-Core Version:    0.7.0.1
  */

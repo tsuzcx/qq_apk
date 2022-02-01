@@ -45,12 +45,19 @@ public class SimInfo
   
   public String toString()
   {
-    return "SimInfo mIseDataTrafficSim=" + this.mIseDataTrafficSim + ",mIMSI=" + this.mIMSI + ",mPhoneNum=" + this.mPhoneNum;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SimInfo mIseDataTrafficSim=");
+    localStringBuilder.append(this.mIseDataTrafficSim);
+    localStringBuilder.append(",mIMSI=");
+    localStringBuilder.append(this.mIMSI);
+    localStringBuilder.append(",mPhoneNum=");
+    localStringBuilder.append(this.mPhoneNum);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.sim.SimInfo
  * JD-Core Version:    0.7.0.1
  */

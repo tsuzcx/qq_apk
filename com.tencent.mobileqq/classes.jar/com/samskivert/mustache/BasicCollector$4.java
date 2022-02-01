@@ -14,9 +14,15 @@ final class BasicCollector$4
     }
     catch (NumberFormatException paramObject)
     {
-      return Template.NO_FETCHER_FOUND;
+      break label20;
     }
-    catch (IndexOutOfBoundsException paramObject) {}
+    catch (IndexOutOfBoundsException paramObject)
+    {
+      label16:
+      label20:
+      break label16;
+    }
+    return Template.NO_FETCHER_FOUND;
     return Template.NO_FETCHER_FOUND;
   }
   

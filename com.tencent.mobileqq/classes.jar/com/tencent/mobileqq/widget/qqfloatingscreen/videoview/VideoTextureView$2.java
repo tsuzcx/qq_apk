@@ -14,7 +14,8 @@ class VideoTextureView$2
     if (VideoTextureView.a(this.a) != null)
     {
       VideoTextureView.a(this.a).start();
-      VideoTextureView.a(this.a, VideoTextureView.a(this.a).getDuration());
+      paramMediaPlayer = this.a;
+      VideoTextureView.a(paramMediaPlayer, VideoTextureView.a(paramMediaPlayer).getDuration());
     }
     if (VideoTextureView.a() != null)
     {
@@ -29,7 +30,7 @@ class VideoTextureView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView.2
  * JD-Core Version:    0.7.0.1
  */

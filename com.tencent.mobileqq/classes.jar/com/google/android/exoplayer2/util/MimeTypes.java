@@ -70,118 +70,134 @@ public final class MimeTypes
   
   public static String getAudioMediaMimeType(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return null;
-      paramString = paramString.split(",");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = getMediaMimeType(paramString[i]);
-        if ((str != null) && (isAudio(str))) {
-          return str;
-        }
-        i += 1;
-      }
     }
+    paramString = paramString.split(",");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = getMediaMimeType(paramString[i]);
+      if ((str != null) && (isAudio(str))) {
+        return str;
+      }
+      i += 1;
+    }
+    return null;
   }
   
   public static int getEncoding(String paramString)
   {
-    int j = 5;
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        j = 0;
-      case 0: 
-        return j;
-        if (paramString.equals("audio/ac3"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("audio/eac3"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("audio/eac3-joc"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("audio/vnd.dts"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("audio/vnd.dts.hd"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString.equals("audio/true-hd")) {
-                    i = 5;
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1556697186: 
+      if (paramString.equals("audio/true-hd")) {
+        i = 5;
       }
+      break;
+    case 1505942594: 
+      if (paramString.equals("audio/vnd.dts.hd")) {
+        i = 4;
+      }
+      break;
+    case 1504578661: 
+      if (paramString.equals("audio/eac3")) {
+        i = 1;
+      }
+      break;
+    case 187078296: 
+      if (paramString.equals("audio/ac3")) {
+        i = 0;
+      }
+      break;
+    case -1095064472: 
+      if (paramString.equals("audio/vnd.dts")) {
+        i = 3;
+      }
+      break;
+    case -2123537834: 
+      if (paramString.equals("audio/eac3-joc")) {
+        i = 2;
+      }
+      break;
     }
-    return 6;
-    return 7;
-    return 8;
-    return 14;
+    int i = -1;
+    if (i != 0)
+    {
+      if ((i != 1) && (i != 2))
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return 0;
+            }
+            return 14;
+          }
+          return 8;
+        }
+        return 7;
+      }
+      return 6;
+    }
+    return 5;
   }
   
   public static String getMediaMimeType(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return null;
-      paramString = paramString.trim();
-      if ((paramString.startsWith("avc1")) || (paramString.startsWith("avc3"))) {
-        return "video/avc";
-      }
-      if ((paramString.startsWith("hev1")) || (paramString.startsWith("hvc1"))) {
-        return "video/hevc";
-      }
-      if ((paramString.startsWith("vp9")) || (paramString.startsWith("vp09"))) {
+    }
+    paramString = paramString.trim();
+    if ((!paramString.startsWith("avc1")) && (!paramString.startsWith("avc3")))
+    {
+      if ((!paramString.startsWith("hev1")) && (!paramString.startsWith("hvc1")))
+      {
+        if ((!paramString.startsWith("vp9")) && (!paramString.startsWith("vp09")))
+        {
+          if ((!paramString.startsWith("vp8")) && (!paramString.startsWith("vp08")))
+          {
+            if (paramString.startsWith("mp4a")) {
+              return "audio/mp4a-latm";
+            }
+            if ((!paramString.startsWith("ac-3")) && (!paramString.startsWith("dac3")))
+            {
+              if ((!paramString.startsWith("ec-3")) && (!paramString.startsWith("dec3")))
+              {
+                if (paramString.startsWith("ec+3")) {
+                  return "audio/eac3-joc";
+                }
+                if ((!paramString.startsWith("dtsc")) && (!paramString.startsWith("dtse")))
+                {
+                  if ((!paramString.startsWith("dtsh")) && (!paramString.startsWith("dtsl")))
+                  {
+                    if (paramString.startsWith("opus")) {
+                      return "audio/opus";
+                    }
+                    if (paramString.startsWith("vorbis")) {
+                      return "audio/vorbis";
+                    }
+                    return null;
+                  }
+                  return "audio/vnd.dts.hd";
+                }
+                return "audio/vnd.dts";
+              }
+              return "audio/eac3";
+            }
+            return "audio/ac3";
+          }
+          return "video/x-vnd.on2.vp8";
+        }
         return "video/x-vnd.on2.vp9";
       }
-      if ((paramString.startsWith("vp8")) || (paramString.startsWith("vp08"))) {
-        return "video/x-vnd.on2.vp8";
-      }
-      if (paramString.startsWith("mp4a")) {
-        return "audio/mp4a-latm";
-      }
-      if ((paramString.startsWith("ac-3")) || (paramString.startsWith("dac3"))) {
-        return "audio/ac3";
-      }
-      if ((paramString.startsWith("ec-3")) || (paramString.startsWith("dec3"))) {
-        return "audio/eac3";
-      }
-      if (paramString.startsWith("ec+3")) {
-        return "audio/eac3-joc";
-      }
-      if ((paramString.startsWith("dtsc")) || (paramString.startsWith("dtse"))) {
-        return "audio/vnd.dts";
-      }
-      if ((paramString.startsWith("dtsh")) || (paramString.startsWith("dtsl"))) {
-        return "audio/vnd.dts.hd";
-      }
-      if (paramString.startsWith("opus")) {
-        return "audio/opus";
-      }
-    } while (!paramString.startsWith("vorbis"));
-    return "audio/vorbis";
+      return "video/hevc";
+    }
+    return "video/avc";
   }
   
   private static String getTopLevelType(String paramString)
@@ -190,29 +206,34 @@ public final class MimeTypes
       return null;
     }
     int i = paramString.indexOf('/');
-    if (i == -1) {
-      throw new IllegalArgumentException("Invalid mime type: " + paramString);
+    if (i != -1) {
+      return paramString.substring(0, i);
     }
-    return paramString.substring(0, i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Invalid mime type: ");
+    localStringBuilder.append(paramString);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public static int getTrackType(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return -1;
-      if (isAudio(paramString)) {
-        return 1;
+    }
+    if (isAudio(paramString)) {
+      return 1;
+    }
+    if (isVideo(paramString)) {
+      return 2;
+    }
+    if ((!isText(paramString)) && (!"application/cea-608".equals(paramString)) && (!"application/cea-708".equals(paramString)) && (!"application/x-mp4-cea-608".equals(paramString)) && (!"application/x-subrip".equals(paramString)) && (!"application/ttml+xml".equals(paramString)) && (!"application/x-quicktime-tx3g".equals(paramString)) && (!"application/x-mp4-vtt".equals(paramString)) && (!"application/x-rawcc".equals(paramString)) && (!"application/vobsub".equals(paramString)) && (!"application/pgs".equals(paramString)) && (!"application/dvbsubs".equals(paramString)))
+    {
+      if ((!"application/id3".equals(paramString)) && (!"application/x-emsg".equals(paramString)) && (!"application/x-scte35".equals(paramString)) && (!"application/x-camera-motion".equals(paramString))) {
+        return -1;
       }
-      if (isVideo(paramString)) {
-        return 2;
-      }
-      if ((isText(paramString)) || ("application/cea-608".equals(paramString)) || ("application/cea-708".equals(paramString)) || ("application/x-mp4-cea-608".equals(paramString)) || ("application/x-subrip".equals(paramString)) || ("application/ttml+xml".equals(paramString)) || ("application/x-quicktime-tx3g".equals(paramString)) || ("application/x-mp4-vtt".equals(paramString)) || ("application/x-rawcc".equals(paramString)) || ("application/vobsub".equals(paramString)) || ("application/pgs".equals(paramString)) || ("application/dvbsubs".equals(paramString))) {
-        return 3;
-      }
-    } while ((!"application/id3".equals(paramString)) && (!"application/x-emsg".equals(paramString)) && (!"application/x-scte35".equals(paramString)) && (!"application/x-camera-motion".equals(paramString)));
-    return 4;
+      return 4;
+    }
+    return 3;
   }
   
   public static int getTrackTypeOfCodec(String paramString)
@@ -222,22 +243,21 @@ public final class MimeTypes
   
   public static String getVideoMediaMimeType(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return null;
-      paramString = paramString.split(",");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = getMediaMimeType(paramString[i]);
-        if ((str != null) && (isVideo(str))) {
-          return str;
-        }
-        i += 1;
-      }
     }
+    paramString = paramString.split(",");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = getMediaMimeType(paramString[i]);
+      if ((str != null) && (isVideo(str))) {
+        return str;
+      }
+      i += 1;
+    }
+    return null;
   }
   
   public static boolean isApplication(String paramString)
@@ -262,7 +282,7 @@ public final class MimeTypes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.MimeTypes
  * JD-Core Version:    0.7.0.1
  */

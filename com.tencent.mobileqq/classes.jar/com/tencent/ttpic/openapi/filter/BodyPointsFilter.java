@@ -13,42 +13,64 @@ public class BodyPointsFilter
   public static final String FRAGMENT_SHADER = " precision highp float;\n void main()\n {\n     gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n }\n";
   public static final String VERTEX_SHADER = "attribute vec4 position;\n\nvoid main() {\n    gl_Position = position;\n}";
   private int bodyPointsCount = 59;
-  float[] lineVertex = new float[this.bodyPointsCount * 4];
-  private boolean mNoPoints = true;
-  float[] pointsVertex = new float[this.bodyPointsCount * 2];
+  float[] lineVertex;
+  private boolean mNoPoints;
+  float[] pointsVertex;
   
   public BodyPointsFilter()
   {
     super("attribute vec4 position;\n\nvoid main() {\n    gl_Position = position;\n}", " precision highp float;\n void main()\n {\n     gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n }\n");
+    int i = this.bodyPointsCount;
+    this.lineVertex = new float[i * 4];
+    this.pointsVertex = new float[i * 2];
+    this.mNoPoints = true;
   }
   
   private void normalizePoints(List<PointF> paramList, int paramInt1, int paramInt2)
   {
-    int j = 0;
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
+      int j = 0;
       int i = 0;
       while (i < paramList.size() - 1)
       {
-        this.lineVertex[(i * 4 + 0)] = (((PointF)paramList.get(i)).x * 2.0F / paramInt1 - 1.0F);
-        this.lineVertex[(i * 4 + 1)] = (((PointF)paramList.get(i)).y * 2.0F / paramInt2 - 1.0F);
-        this.lineVertex[(i * 4 + 2)] = (((PointF)paramList.get(i + 1)).x * 2.0F / paramInt1 - 1.0F);
-        this.lineVertex[(i * 4 + 3)] = (((PointF)paramList.get(i + 1)).y * 2.0F / paramInt2 - 1.0F);
+        arrayOfFloat = this.lineVertex;
+        k = i * 4;
+        f2 = ((PointF)paramList.get(i)).x;
+        f1 = paramInt1;
+        arrayOfFloat[(k + 0)] = (f2 * 2.0F / f1 - 1.0F);
+        arrayOfFloat = this.lineVertex;
+        f2 = ((PointF)paramList.get(i)).y;
+        f3 = paramInt2;
+        arrayOfFloat[(k + 1)] = (f2 * 2.0F / f3 - 1.0F);
+        arrayOfFloat = this.lineVertex;
         i += 1;
+        arrayOfFloat[(k + 2)] = (((PointF)paramList.get(i)).x * 2.0F / f1 - 1.0F);
+        this.lineVertex[(k + 3)] = (((PointF)paramList.get(i)).y * 2.0F / f3 - 1.0F);
       }
       i = paramList.size() - 1;
-      this.lineVertex[(i * 4 + 0)] = (((PointF)paramList.get(i)).x * 2.0F / paramInt1 - 1.0F);
-      this.lineVertex[(i * 4 + 1)] = (((PointF)paramList.get(i)).y * 2.0F / paramInt2 - 1.0F);
-      this.lineVertex[(i * 4 + 2)] = (((PointF)paramList.get(0)).x * 2.0F / paramInt1 - 1.0F);
-      this.lineVertex[(i * 4 + 3)] = (((PointF)paramList.get(0)).y * 2.0F / paramInt2 - 1.0F);
-      i = j;
-      while (i < paramList.size())
+      float[] arrayOfFloat = this.lineVertex;
+      int k = i * 4;
+      float f2 = ((PointF)paramList.get(i)).x;
+      float f1 = paramInt1;
+      arrayOfFloat[(k + 0)] = (f2 * 2.0F / f1 - 1.0F);
+      arrayOfFloat = this.lineVertex;
+      f2 = ((PointF)paramList.get(i)).y;
+      float f3 = paramInt2;
+      arrayOfFloat[(k + 1)] = (f2 * 2.0F / f3 - 1.0F);
+      this.lineVertex[(k + 2)] = (((PointF)paramList.get(0)).x * 2.0F / f1 - 1.0F);
+      this.lineVertex[(k + 3)] = (((PointF)paramList.get(0)).y * 2.0F / f3 - 1.0F);
+      paramInt1 = j;
+      while (paramInt1 < paramList.size())
       {
-        this.pointsVertex[(i * 2)] = (((PointF)paramList.get(i)).x * 2.0F / paramInt1 - 1.0F);
-        this.pointsVertex[(i * 2 + 1)] = (((PointF)paramList.get(i)).y * 2.0F / paramInt2 - 1.0F);
-        i += 1;
+        arrayOfFloat = this.pointsVertex;
+        paramInt2 = paramInt1 * 2;
+        arrayOfFloat[paramInt2] = (((PointF)paramList.get(paramInt1)).x * 2.0F / f1 - 1.0F);
+        this.pointsVertex[(paramInt2 + 1)] = (((PointF)paramList.get(paramInt1)).y * 2.0F / f3 - 1.0F);
+        paramInt1 += 1;
       }
     }
   }
@@ -100,18 +122,18 @@ public class BodyPointsFilter
   
   public void updatePoints(List<PointF> paramList, int paramInt1, int paramInt2)
   {
-    if ((paramList == null) || (paramList.size() != this.bodyPointsCount))
+    if ((paramList != null) && (paramList.size() == this.bodyPointsCount))
     {
-      this.mNoPoints = true;
+      this.mNoPoints = false;
+      normalizePoints(paramList, paramInt1, paramInt2);
       return;
     }
-    this.mNoPoints = false;
-    normalizePoints(paramList, paramInt1, paramInt2);
+    this.mNoPoints = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BodyPointsFilter
  * JD-Core Version:    0.7.0.1
  */

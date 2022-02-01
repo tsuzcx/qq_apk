@@ -19,18 +19,18 @@ final class i$4
         this.b.a(new NullPointerException("Continuation returned null"));
         return;
       }
+      paramTask.addOnCompleteListener(new i.4.1(this));
+      return;
     }
     catch (Exception paramTask)
     {
       this.b.a(paramTask);
-      return;
     }
-    paramTask.addOnCompleteListener(new i.4.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hmf.tasks.a.i.4
  * JD-Core Version:    0.7.0.1
  */

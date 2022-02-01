@@ -17,24 +17,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.imcore.message.UinTypeUtil;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -42,25 +38,33 @@ import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberCard;
 import com.tencent.mobileqq.data.troop.TroopMemberCard.MemberGameInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profilecard.base.component.AbsProfileContentComponent;
 import com.tencent.mobileqq.profilecard.base.component.AbsProfileHeaderComponent;
-import com.tencent.mobileqq.profilecard.base.container.ProfileContentContainer;
+import com.tencent.mobileqq.profilecard.base.component.AbsQQProfileContentComponent;
+import com.tencent.mobileqq.profilecard.base.component.IProfileActivityDelegate;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
 import com.tencent.mobileqq.profilecard.base.report.ProfileCardReport;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.template.IDiyMoreInfoManager;
+import com.tencent.mobileqq.profilecard.template.ProfileTemplateApi;
+import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.troop.api.handler.ITroopMemberCardHandler;
 import com.tencent.mobileqq.troop.api.observer.TroopObserver;
-import com.tencent.mobileqq.troop.handler.TroopMemberInfoHandler;
-import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberLevelUtils;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager.LinkParams;
+import com.tencent.mobileqq.troop.memberlevel.api.ITroopMemberLevelUtilsApi;
+import com.tencent.mobileqq.troop.onlinepush.api.TroopOnlinePushObserver;
+import com.tencent.mobileqq.troop.trooplink.api.ITroopLinkApi;
+import com.tencent.mobileqq.troop.trooplink.api.ITroopLinkApi.LinkParams;
+import com.tencent.mobileqq.troop.troopmanager.api.ITroopManagerBizHandler;
+import com.tencent.mobileqq.troop.troopmanager.api.TroopManagerBizObserver;
+import com.tencent.mobileqq.troop.utils.BizTroopUtil;
 import com.tencent.mobileqq.troop.utils.TroopMemberGlobalLevelUtils;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.util.TroopReportor;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.troop.TroopPluginManager;
@@ -69,7 +73,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileTroopMemInfoComponent
-  extends AbsProfileContentComponent
+  extends AbsQQProfileContentComponent
   implements View.OnClickListener
 {
   private static final String TAG = "ProfileTroopMemInfoComponent";
@@ -79,8 +83,9 @@ public class ProfileTroopMemInfoComponent
   private View mGameInfoView;
   private View mJoinTimeView;
   private View mRecentSaidView;
-  protected TroopBusinessObserver mTroopBusinessObserver = new ProfileTroopMemInfoComponent.2(this);
+  protected TroopManagerBizObserver mTroopManagerBizObserver = new ProfileTroopMemInfoComponent.3(this);
   protected TroopObserver mTroopObserver = new ProfileTroopMemInfoComponent.1(this);
+  protected TroopOnlinePushObserver troopOnlinePushObserver = new ProfileTroopMemInfoComponent.2(this);
   
   public ProfileTroopMemInfoComponent(IComponentCenter paramIComponentCenter, ProfileCardInfo paramProfileCardInfo)
   {
@@ -105,8 +110,8 @@ public class ProfileTroopMemInfoComponent
           QLog.i("ProfileTroopMemInfoComponent", 2, "add mCharmLevelView :");
         }
         ((ViewGroup)this.mViewContainer).addView(this.mCharmLevelView);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -132,8 +137,8 @@ public class ProfileTroopMemInfoComponent
           QLog.i("ProfileTroopMemInfoComponent", 2, "add mGameInfoView :");
         }
         ((ViewGroup)this.mViewContainer).addView(this.mGameInfoView);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -159,8 +164,8 @@ public class ProfileTroopMemInfoComponent
           QLog.i("ProfileTroopMemInfoComponent", 2, "add mJoinTimeView :");
         }
         ((ViewGroup)this.mViewContainer).addView(this.mJoinTimeView);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -186,8 +191,8 @@ public class ProfileTroopMemInfoComponent
           QLog.i("ProfileTroopMemInfoComponent", 2, "add mRecentSaidView :");
         }
         ((ViewGroup)this.mViewContainer).addView(this.mRecentSaidView);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -197,117 +202,121 @@ public class ProfileTroopMemInfoComponent
   
   private void handleCharmLevelClick()
   {
-    if ((this.mData == null) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null))
+    if ((this.mData != null) && (((ProfileCardInfo)this.mData).allInOne != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileTroopMemInfoComponent", 2, "handleCharmLevelClick, mData == null || mData.allinone == null");
-      }
-      return;
-    }
-    TroopLinkManager localTroopLinkManager = TroopLinkManager.a();
-    Object localObject2 = TroopMemberGlobalLevelUtils.a();
-    Object localObject1 = localObject2;
-    if (this.mData != null)
-    {
-      localObject1 = localObject2;
-      if (TroopMemberLevelUtils.a(((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString))
+      ITroopLinkApi localITroopLinkApi = (ITroopLinkApi)QRoute.api(ITroopLinkApi.class);
+      Object localObject2 = TroopMemberGlobalLevelUtils.a();
+      Object localObject1 = localObject2;
+      if (this.mData != null)
       {
         localObject1 = localObject2;
-        if (TroopMemberLevelUtils.a()) {
-          localObject1 = TroopMemberLevelUtils.a();
+        if (((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).isNewRealLevelGrayTroop(((ProfileCardInfo)this.mData).troopUin))
+        {
+          localObject1 = localObject2;
+          if (((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).hasNewGroupMemberLevelJumpUrl()) {
+            localObject1 = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getNewGroupMemberLevelJumpUrl();
+          }
         }
       }
+      localObject2 = new ITroopLinkApi.LinkParams();
+      ((ITroopLinkApi.LinkParams)localObject2).c = "31";
+      ((ITroopLinkApi.LinkParams)localObject2).b = ((ProfileCardInfo)this.mData).allInOne.uin;
+      ((ITroopLinkApi.LinkParams)localObject2).a = ((ProfileCardInfo)this.mData).troopUin;
+      localObject1 = localITroopLinkApi.replaceParams((String)localObject1, (ITroopLinkApi.LinkParams)localObject2);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("handleCharmLevelClick, url:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("ProfileTroopMemInfoComponent", 2, ((StringBuilder)localObject2).toString());
+      }
+      localObject2 = new Intent(this.mActivity, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      ((Intent)localObject2).putExtra("uin", this.mApp.getCurrentUin());
+      ((Intent)localObject2).putExtra("portraitOnly", true);
+      ((Intent)localObject2).putExtra("hide_more_button", true);
+      ((Intent)localObject2).putExtra("hide_operation_bar", true);
+      ((Intent)localObject2).putExtra("isShowAd", false);
+      this.mActivity.startActivity((Intent)localObject2);
+      ReportController.b(this.mApp, "dc00899", "Grp_grade", "", "mber_card", "clk_grade", 0, 0, ((ProfileCardInfo)this.mData).troopUin, "", "", "");
+      new ReportTask(this.mQQAppInterface).a("dc00899").b("Grp_mem_card").c("page").d("grade_clk").a(new String[] { ((ProfileCardInfo)this.mData).troopUin }).a();
+      ProfileCardReport.reportTroopLevelClick(this.mQQAppInterface, (ProfileCardInfo)this.mData);
+      return;
     }
-    localObject2 = new TroopLinkManager.LinkParams();
-    ((TroopLinkManager.LinkParams)localObject2).c = "31";
-    ((TroopLinkManager.LinkParams)localObject2).jdField_b_of_type_JavaLangString = ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
-    ((TroopLinkManager.LinkParams)localObject2).jdField_a_of_type_JavaLangString = ((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString;
-    localObject1 = localTroopLinkManager.a((String)localObject1, (TroopLinkManager.LinkParams)localObject2);
     if (QLog.isColorLevel()) {
-      QLog.d("ProfileTroopMemInfoComponent", 2, "handleCharmLevelClick, url:" + (String)localObject1);
+      QLog.d("ProfileTroopMemInfoComponent", 2, "handleCharmLevelClick, mData == null || mData.allinone == null");
     }
-    localObject2 = new Intent(this.mActivity, QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("url", (String)localObject1);
-    ((Intent)localObject2).putExtra("uin", this.mApp.getCurrentUin());
-    ((Intent)localObject2).putExtra("portraitOnly", true);
-    ((Intent)localObject2).putExtra("hide_more_button", true);
-    ((Intent)localObject2).putExtra("hide_operation_bar", true);
-    ((Intent)localObject2).putExtra("isShowAd", false);
-    this.mActivity.startActivity((Intent)localObject2);
-    ReportController.b(this.mApp, "dc00899", "Grp_grade", "", "mber_card", "clk_grade", 0, 0, ((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString, "", "", "");
-    new ReportTask(this.mApp).a("dc00899").b("Grp_mem_card").c("page").d("grade_clk").a(new String[] { ((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString }).a();
-    ProfileCardReport.reportTroopLevelClick(this.mApp, (ProfileCardInfo)this.mData);
   }
   
   private void handleGameInfoClick()
   {
-    if ((this.mData != null) && (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard != null))
+    if ((this.mData != null) && (((ProfileCardInfo)this.mData).troopMemberCard != null))
     {
-      TroopMemberCard.MemberGameInfo localMemberGameInfo = ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard.mMemberGameInfo;
+      TroopMemberCard.MemberGameInfo localMemberGameInfo = ((ProfileCardInfo)this.mData).troopMemberCard.mMemberGameInfo;
       if (localMemberGameInfo != null)
       {
         String str = localMemberGameInfo.gameUrl;
         Intent localIntent = new Intent(this.mActivity, QQBrowserActivity.class);
         localIntent.putExtra("url", str);
         this.mActivity.startActivity(localIntent);
-        TroopReportor.a("Grp_game", "Mber_data", "game_clk", 0, 0, new String[] { ((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString, localMemberGameInfo.gameName });
+        TroopReportor.a("Grp_game", "Mber_data", "game_clk", 0, 0, new String[] { ((ProfileCardInfo)this.mData).troopUin, localMemberGameInfo.gameName });
       }
     }
   }
   
   private void handleRecentSaidClick()
   {
-    if ((this.mData == null) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (this.mActivity == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileTroopMemInfoComponent", 2, "handleRecentSaidClick, mData == null || mData.allinone == null || mActivity == null");
-      }
-    }
-    do
+    if ((this.mData != null) && (((ProfileCardInfo)this.mData).allInOne != null) && (this.mActivity != null))
     {
-      return;
       Intent localIntent = new Intent();
-      localIntent.putExtra("troop_uin", ((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("member_uin", ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("troop_uin", ((ProfileCardInfo)this.mData).troopUin);
+      localIntent.putExtra("member_uin", ((ProfileCardInfo)this.mData).allInOne.uin);
       PublicFragmentActivity.a(this.mActivity, localIntent, TroopMemberHistoryFragment.class);
-    } while (this.mApp == null);
-    new ReportTask(this.mApp).a("dc00899").b("Grp_mem_card").c("page").d("recent_clk").a(new String[] { ((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString }).a();
-    ReportController.b(this.mApp, "CliOper", "", "", "0X800A596", "0X800A596", 2, 0, "", "", "", "");
+      if (this.mApp != null)
+      {
+        new ReportTask(this.mQQAppInterface).a("dc00899").b("Grp_mem_card").c("page").d("recent_clk").a(new String[] { ((ProfileCardInfo)this.mData).troopUin }).a();
+        ReportController.b(this.mApp, "CliOper", "", "", "0X800A596", "0X800A596", 2, 0, "", "", "", "");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileTroopMemInfoComponent", 2, "handleRecentSaidClick, mData == null || mData.allinone == null || mActivity == null");
+    }
+  }
+  
+  private void init()
+  {
+    requestTroopMemberInfo();
   }
   
   private void initRecentSaidItem(ProfileCardInfo paramProfileCardInfo)
   {
-    ThreadManager.post(new ProfileTroopMemInfoComponent.3(this, paramProfileCardInfo), 8, null, true);
+    ThreadManager.post(new ProfileTroopMemInfoComponent.4(this, paramProfileCardInfo), 8, null, true);
   }
   
   private boolean makeOrRefreshGameTroopInfoView(ProfileCardInfo paramProfileCardInfo)
   {
-    if ((!paramProfileCardInfo.jdField_b_of_type_Boolean) || (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard == null) || (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard.mMemberGameInfo == null) || (TextUtils.isEmpty(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard.mMemberGameInfo.gameName)))
+    boolean bool2 = paramProfileCardInfo.isTroopMemberCard;
+    boolean bool1 = true;
+    if ((bool2) && (paramProfileCardInfo.troopMemberCard != null) && (paramProfileCardInfo.troopMemberCard.mMemberGameInfo != null) && (!TextUtils.isEmpty(paramProfileCardInfo.troopMemberCard.mMemberGameInfo.gameName)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshGameTroopInfoView. Not showing game info.");
-      }
-      if (this.mGameInfoView != null) {}
-      for (bool = true;; bool = false)
+      if (this.mGameInfoView == null)
       {
-        if (this.mGameInfoView != null) {
-          this.mGameInfoView.setVisibility(8);
-        }
-        return bool;
+        this.mGameInfoView = this.mActivity.getLayoutInflater().inflate(2131561347, null);
+        bool1 = true;
       }
-    }
-    if (this.mGameInfoView == null) {
-      this.mGameInfoView = this.mActivity.getLayoutInflater().inflate(2131561506, null);
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      TextView localTextView1 = (TextView)this.mGameInfoView.findViewById(2131367729);
-      TextView localTextView2 = (TextView)this.mGameInfoView.findViewById(2131367736);
-      localTextView2.setBackgroundDrawable(TroopUtils.a(this.mActivity.getResources(), Color.parseColor("#3094cf")));
-      Object localObject = (ImageView)this.mGameInfoView.findViewById(2131376462);
-      TextView localTextView3 = (TextView)this.mGameInfoView.findViewById(2131367737);
-      TextView localTextView4 = (TextView)this.mGameInfoView.findViewById(2131367738);
-      ImageView localImageView = (ImageView)this.mGameInfoView.findViewById(2131363027);
-      TroopMemberCard.MemberGameInfo localMemberGameInfo = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard.mMemberGameInfo;
+      else
+      {
+        bool1 = false;
+      }
+      TextView localTextView1 = (TextView)this.mGameInfoView.findViewById(2131367486);
+      TextView localTextView2 = (TextView)this.mGameInfoView.findViewById(2131367495);
+      localTextView2.setBackgroundDrawable(BizTroopUtil.a(this.mActivity.getResources(), Color.parseColor("#3094cf")));
+      Object localObject = (ImageView)this.mGameInfoView.findViewById(2131375974);
+      TextView localTextView3 = (TextView)this.mGameInfoView.findViewById(2131367496);
+      TextView localTextView4 = (TextView)this.mGameInfoView.findViewById(2131367497);
+      ImageView localImageView = (ImageView)this.mGameInfoView.findViewById(2131362975);
+      TroopMemberCard.MemberGameInfo localMemberGameInfo = paramProfileCardInfo.troopMemberCard.mMemberGameInfo;
       if (localMemberGameInfo != null)
       {
         localTextView1.setText(localMemberGameInfo.gameName);
@@ -321,13 +330,10 @@ public class ProfileTroopMemInfoComponent
           localTextView4.setVisibility(0);
           localTextView4.setText((CharSequence)localMemberGameInfo.descInfo.get(1));
         }
-      }
-      for (;;)
-      {
         try
         {
-          int i = AIOUtils.a(18.0F, this.mActivity.getResources());
-          int j = AIOUtils.a(18.0F, this.mActivity.getResources());
+          int i = AIOUtils.b(18.0F, this.mActivity.getResources());
+          int j = AIOUtils.b(18.0F, this.mActivity.getResources());
           if (!TextUtils.isEmpty(localMemberGameInfo.levelIcon))
           {
             URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
@@ -339,15 +345,16 @@ public class ProfileTroopMemInfoComponent
           {
             localTextView2.setVisibility(0);
             localTextView2.setText(localMemberGameInfo.levelName);
-            float f = AIOUtils.a(2.0F, this.mActivity.getResources());
-            i = AIOUtils.a(4.0F, this.mActivity.getResources());
+            float f = AIOUtils.b(2.0F, this.mActivity.getResources());
+            i = AIOUtils.b(4.0F, this.mActivity.getResources());
             localObject = new GradientDrawable();
             ((GradientDrawable)localObject).setCornerRadius(f);
             localTextView2.setPadding(i, 0, i, 0);
-            if (TextUtils.isEmpty(localMemberGameInfo.gameBackGroundColor)) {
-              continue;
+            if (!TextUtils.isEmpty(localMemberGameInfo.gameBackGroundColor)) {
+              ((GradientDrawable)localObject).setColor(Color.parseColor(localMemberGameInfo.gameBackGroundColor));
+            } else {
+              ((GradientDrawable)localObject).setColor(Color.parseColor("#FFBA26"));
             }
-            ((GradientDrawable)localObject).setColor(Color.parseColor(localMemberGameInfo.gameBackGroundColor));
             localTextView2.setBackgroundDrawable((Drawable)localObject);
           }
           if (!TextUtils.isEmpty(localMemberGameInfo.gameFontColor)) {
@@ -357,65 +364,90 @@ public class ProfileTroopMemInfoComponent
           if (QLog.isColorLevel()) {
             QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshGameTroopInfoView. Showing game info.");
           }
-          TroopReportor.a("Grp_game", "Mber_data", "game_exp", 0, 0, new String[] { paramProfileCardInfo.jdField_a_of_type_JavaLangString, localMemberGameInfo.gameName });
+          TroopReportor.a("Grp_game", "Mber_data", "game_exp", 0, 0, new String[] { paramProfileCardInfo.troopUin, localMemberGameInfo.gameName });
         }
         catch (Exception paramProfileCardInfo)
         {
-          if (!QLog.isColorLevel()) {
-            continue;
+          if (QLog.isColorLevel()) {
+            QLog.e("Q.profilecard.FrdProfileCard", 2, paramProfileCardInfo.toString());
           }
-          QLog.e("Q.profilecard.FrdProfileCard", 2, paramProfileCardInfo.toString());
-          continue;
         }
-        paramProfileCardInfo = new DataTag(83, null);
-        this.mGameInfoView.setTag(paramProfileCardInfo);
-        this.mGameInfoView.setOnClickListener(this);
-        this.mGameInfoView.setVisibility(0);
-        updateItemTheme(this.mGameInfoView, localTextView1, localTextView3, localImageView);
-        updateItemTheme(this.mGameInfoView, localTextView2, localTextView4, localImageView);
-        return bool;
-        ((GradientDrawable)localObject).setColor(Color.parseColor("#FFBA26"));
       }
+      paramProfileCardInfo = new DataTag(83, null);
+      this.mGameInfoView.setTag(paramProfileCardInfo);
+      this.mGameInfoView.setOnClickListener(this);
+      this.mGameInfoView.setVisibility(0);
+      updateItemTheme(this.mGameInfoView, localTextView1, localTextView3, localImageView);
+      updateItemTheme(this.mGameInfoView, localTextView2, localTextView4, localImageView);
+      return bool1;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshGameTroopInfoView. Not showing game info.");
+    }
+    if (this.mGameInfoView == null) {
+      bool1 = false;
+    }
+    paramProfileCardInfo = this.mGameInfoView;
+    if (paramProfileCardInfo != null) {
+      paramProfileCardInfo.setVisibility(8);
+    }
+    return bool1;
   }
   
   private boolean makeOrRefreshTroopMemInfoEntry(ProfileCardInfo paramProfileCardInfo)
   {
-    boolean bool2 = false | makeOrRefreshTroopMemJoinTime((ProfileCardInfo)this.mData) | makeOrRefreshTroopMemCharmLevelInfo((ProfileCardInfo)this.mData) | makeOrRefreshTroopMemRecentSaidEntry((ProfileCardInfo)this.mData) | makeOrRefreshGameTroopInfoView((ProfileCardInfo)this.mData);
-    if (((this.mJoinTimeView != null) && (this.mJoinTimeView.getVisibility() == 0)) || ((this.mCharmLevelView != null) && (this.mCharmLevelView.getVisibility() == 0)) || ((this.mRecentSaidView != null) && (this.mRecentSaidView.getVisibility() == 0)) || ((this.mGameInfoView != null) && (this.mGameInfoView.getVisibility() == 0)))
+    boolean bool3 = makeOrRefreshTroopMemJoinTime((ProfileCardInfo)this.mData) | false | makeOrRefreshTroopMemCharmLevelInfo((ProfileCardInfo)this.mData) | makeOrRefreshTroopMemRecentSaidEntry((ProfileCardInfo)this.mData) | makeOrRefreshGameTroopInfoView((ProfileCardInfo)this.mData);
+    paramProfileCardInfo = this.mJoinTimeView;
+    if ((paramProfileCardInfo == null) || (paramProfileCardInfo.getVisibility() != 0))
     {
-      bool1 = true;
-      if (bool2)
+      paramProfileCardInfo = this.mCharmLevelView;
+      if ((paramProfileCardInfo == null) || (paramProfileCardInfo.getVisibility() != 0))
       {
-        if (this.mViewContainer == null)
+        paramProfileCardInfo = this.mRecentSaidView;
+        if ((paramProfileCardInfo == null) || (paramProfileCardInfo.getVisibility() != 0))
         {
-          paramProfileCardInfo = new LinearLayout(this.mActivity);
-          paramProfileCardInfo.setOrientation(1);
-          paramProfileCardInfo.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-          this.mViewContainer = paramProfileCardInfo;
+          paramProfileCardInfo = this.mGameInfoView;
+          if ((paramProfileCardInfo == null) || (paramProfileCardInfo.getVisibility() != 0)) {
+            break label120;
+          }
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileTroopMemInfoComponent", 2, new Object[] { "mViewContainer removeAllViews before show. mViewContainer=%s", this.mViewContainer });
-        }
-        ((ViewGroup)this.mViewContainer).removeAllViews();
-        if ((((View)this.mViewContainer).getParent() != null) && ((((View)this.mViewContainer).getParent() instanceof ViewGroup))) {
-          ((ViewGroup)((View)this.mViewContainer).getParent()).removeView((View)this.mViewContainer);
-        }
-        addJoinTimeView();
-        addCharmLevelView();
-        addRecentSaidView();
-        addGameInfoView();
-      }
-      if (bool1) {
-        return bool2;
-      }
-      if (this.mViewContainer != null) {
-        break label347;
       }
     }
-    label347:
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool1 = true;
+    break label122;
+    label120:
+    bool1 = false;
+    label122:
+    if (bool3)
     {
+      if (this.mViewContainer == null)
+      {
+        paramProfileCardInfo = new LinearLayout(this.mActivity);
+        paramProfileCardInfo.setOrientation(1);
+        paramProfileCardInfo.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        this.mViewContainer = paramProfileCardInfo;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileTroopMemInfoComponent", 2, new Object[] { "mViewContainer removeAllViews before show. mViewContainer=%s", this.mViewContainer });
+      }
+      ((ViewGroup)this.mViewContainer).removeAllViews();
+      if ((!ProfileTemplateApi.getDiyMoreInfoManager(this.mComponentCenter).isDiy()) && (((View)this.mViewContainer).getParent() != null) && ((((View)this.mViewContainer).getParent() instanceof ViewGroup))) {
+        ((ViewGroup)((View)this.mViewContainer).getParent()).removeView((View)this.mViewContainer);
+      }
+      addJoinTimeView();
+      addCharmLevelView();
+      addRecentSaidView();
+      addGameInfoView();
+    }
+    boolean bool2 = bool3;
+    if (!bool1)
+    {
+      if (this.mViewContainer == null) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      bool2 = bool3 | bool1;
       if (this.mViewContainer != null)
       {
         if (QLog.isColorLevel()) {
@@ -424,158 +456,167 @@ public class ProfileTroopMemInfoComponent
         ((ViewGroup)this.mViewContainer).removeAllViews();
       }
       this.mViewContainer = null;
-      return bool2 | bool1;
-      bool1 = false;
-      break;
+    }
+    paramProfileCardInfo = ProfileTemplateApi.getDiyMoreInfoManager(this.mComponentCenter);
+    if (paramProfileCardInfo.isDiy()) {
+      paramProfileCardInfo.updateTroopMemInfoForDeepDiy((View)this.mViewContainer);
     }
     return bool2;
   }
   
   private boolean makeOrRefreshTroopMemJoinTime(ProfileCardInfo paramProfileCardInfo)
   {
+    boolean bool4 = paramProfileCardInfo.isTroopMemberCard;
+    boolean bool2 = true;
+    boolean bool3 = true;
     boolean bool1 = true;
-    boolean bool2;
-    if ((!paramProfileCardInfo.jdField_b_of_type_Boolean) || (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard == null)) {
-      if (this.mJoinTimeView != null)
+    long l;
+    if ((bool4) && (paramProfileCardInfo.troopMemberCard != null))
+    {
+      l = paramProfileCardInfo.troopMemberCard.joinTime;
+      str = "";
+      localObject2 = str;
+      if (l > 0L)
       {
-        bool1 = true;
-        if (this.mJoinTimeView != null) {
-          this.mJoinTimeView.setVisibility(8);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ProfileTroopMemInfoComponent", 2, String.format("makeOrRefreshTroopMemJoinTime, Not showing mem join time", new Object[0]));
-        }
-        bool2 = bool1;
+        l = paramProfileCardInfo.troopMemberCard.joinTime;
+        localObject1 = str;
+        if (paramProfileCardInfo.troopMemberCard.joinTime == 1L) {}
       }
     }
-    Object localObject1;
-    Object localObject2;
-    for (;;)
+    try
     {
-      return bool2;
-      bool1 = false;
-      break;
-      localObject1 = "";
+      localObject1 = DateFormat.format(this.mActivity.getString(2131693369), 1000L * l).toString();
+    }
+    catch (Exception paramProfileCardInfo)
+    {
+      for (;;)
+      {
+        localObject1 = str;
+      }
+    }
+    Object localObject2 = localObject1;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ProfileTroopMemInfoComponent", 2, String.format("makeOrRefreshTroopMemJoinTime, timeStamp: %s, joinTime: %s", new Object[] { Long.valueOf(l), localObject1 }));
       localObject2 = localObject1;
-      long l;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard.joinTime > 0L)
-      {
-        l = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard.joinTime;
-        if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard.joinTime == 1L) {}
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      if (this.mJoinTimeView == null) {
+        bool1 = false;
       }
-      try
-      {
-        localObject1 = DateFormat.format(this.mActivity.getString(2131693414), 1000L * l).toString();
-        localObject2 = localObject1;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ProfileTroopMemInfoComponent", 2, String.format("makeOrRefreshTroopMemJoinTime, timeStamp: %s, joinTime: %s", new Object[] { Long.valueOf(l), localObject1 }));
-          localObject2 = localObject1;
-        }
-        if (TextUtils.isEmpty(localObject2)) {
-          if (this.mJoinTimeView != null)
-          {
-            bool2 = bool1;
-            if (this.mJoinTimeView == null) {
-              continue;
-            }
-            this.mJoinTimeView.setVisibility(8);
-            return bool1;
-          }
-        }
+      paramProfileCardInfo = this.mJoinTimeView;
+      if (paramProfileCardInfo != null) {
+        paramProfileCardInfo.setVisibility(8);
       }
-      catch (Exception paramProfileCardInfo)
-      {
-        for (;;)
-        {
-          localObject1 = "";
-          continue;
-          bool1 = false;
-        }
-      }
+      return bool1;
     }
     if (this.mJoinTimeView == null)
     {
-      this.mJoinTimeView = this.mActivity.getLayoutInflater().inflate(2131563146, null);
-      paramProfileCardInfo = (ImageView)this.mJoinTimeView.findViewById(2131368603);
-      paramProfileCardInfo.setImageResource(2130846087);
+      this.mJoinTimeView = this.mActivity.getLayoutInflater().inflate(2131562969, null);
+      paramProfileCardInfo = (ImageView)this.mJoinTimeView.findViewById(2131368343);
+      paramProfileCardInfo.setImageResource(2130845964);
       paramProfileCardInfo.clearColorFilter();
       paramProfileCardInfo.setColorFilter(10067634);
+      bool1 = bool2;
     }
-    for (bool1 = true;; bool1 = false)
+    else
     {
-      paramProfileCardInfo = (TextView)this.mJoinTimeView.findViewById(2131369358);
-      localObject1 = (ImageView)this.mJoinTimeView.findViewById(2131363027);
-      ((ImageView)localObject1).setVisibility(8);
-      paramProfileCardInfo.setText(localObject2);
-      this.mJoinTimeView.setVisibility(0);
-      QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshTroopMemJoinTime 05");
-      updateItemTheme(this.mJoinTimeView, paramProfileCardInfo, null, (ImageView)localObject1);
-      return bool1;
+      bool1 = false;
     }
+    paramProfileCardInfo = (TextView)this.mJoinTimeView.findViewById(2131369087);
+    localObject1 = (ImageView)this.mJoinTimeView.findViewById(2131362975);
+    ((ImageView)localObject1).setVisibility(8);
+    paramProfileCardInfo.setText((CharSequence)localObject2);
+    this.mJoinTimeView.setVisibility(0);
+    QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshTroopMemJoinTime 05");
+    updateItemTheme(this.mJoinTimeView, paramProfileCardInfo, null, (ImageView)localObject1);
+    return bool1;
+    if (this.mJoinTimeView != null) {
+      bool1 = bool3;
+    } else {
+      bool1 = false;
+    }
+    paramProfileCardInfo = this.mJoinTimeView;
+    if (paramProfileCardInfo != null) {
+      paramProfileCardInfo.setVisibility(8);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileTroopMemInfoComponent", 2, String.format("makeOrRefreshTroopMemJoinTime, Not showing mem join time", new Object[0]));
+    }
+    return bool1;
   }
   
   private boolean makeOrRefreshTroopMemRecentSaidEntry(ProfileCardInfo paramProfileCardInfo)
   {
-    boolean bool = false;
-    if (!paramProfileCardInfo.jdField_b_of_type_Boolean)
+    boolean bool3 = paramProfileCardInfo.isTroopMemberCard;
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (!bool3)
     {
-      if (this.mRecentSaidView != null) {
-        bool = true;
+      if (this.mRecentSaidView == null) {
+        bool1 = false;
       }
-      if (this.mRecentSaidView != null) {
-        this.mRecentSaidView.setVisibility(8);
+      paramProfileCardInfo = this.mRecentSaidView;
+      if (paramProfileCardInfo != null) {
+        paramProfileCardInfo.setVisibility(8);
       }
       if (QLog.isColorLevel()) {
         QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshTroopMemRecentSaidEntry, isTroopMemberCard = false. Not showing recent said.");
       }
-      return bool;
+      return bool1;
     }
-    Object localObject;
     if (this.mRecentSaidView == null)
     {
-      this.mRecentSaidView = this.mActivity.getLayoutInflater().inflate(2131563146, null);
-      localObject = (ImageView)this.mRecentSaidView.findViewById(2131368603);
-      ((ImageView)localObject).setImageResource(2130846101);
+      this.mRecentSaidView = this.mActivity.getLayoutInflater().inflate(2131562969, null);
+      localObject = (ImageView)this.mRecentSaidView.findViewById(2131368343);
+      ((ImageView)localObject).setImageResource(2130845978);
       ((ImageView)localObject).clearColorFilter();
       ((ImageView)localObject).setColorFilter(10067634);
+      bool1 = bool2;
     }
-    for (bool = true;; bool = false)
+    else
     {
-      localObject = (TextView)this.mRecentSaidView.findViewById(2131369358);
-      ImageView localImageView = (ImageView)this.mRecentSaidView.findViewById(2131363027);
-      DataTag localDataTag = new DataTag(78, null);
-      this.mRecentSaidView.setTag(localDataTag);
-      this.mRecentSaidView.setOnClickListener(this);
-      updateItemTheme(this.mRecentSaidView, (TextView)localObject, null, localImageView);
+      bool1 = false;
+    }
+    Object localObject = (TextView)this.mRecentSaidView.findViewById(2131369087);
+    ImageView localImageView = (ImageView)this.mRecentSaidView.findViewById(2131362975);
+    DataTag localDataTag = new DataTag(78, null);
+    this.mRecentSaidView.setTag(localDataTag);
+    this.mRecentSaidView.setOnClickListener(this);
+    updateItemTheme(this.mRecentSaidView, (TextView)localObject, null, localImageView);
+    if (!this.isPluginInstalled)
+    {
+      this.isPluginInstalled = ((TroopPluginManager)this.mApp.getManager(QQManagerFactory.TROOP_PLUGIN_MANAGER)).a("troop_member_card_plugin.apk", new ProfileTroopMemInfoComponent.TroopProfilePluginCallback(new WeakReference(this), paramProfileCardInfo));
       if (!this.isPluginInstalled)
       {
-        this.isPluginInstalled = ((TroopPluginManager)this.mApp.getManager(QQManagerFactory.TROOP_PLUGIN_MANAGER)).a("troop_member_card_plugin.apk", new ProfileTroopMemInfoComponent.TroopProfilePluginCallback(new WeakReference(this), paramProfileCardInfo));
-        if (!this.isPluginInstalled)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshTroopMemRecentSaidEntry, isPluginInstalled = false. hide mRecentSaidView.");
-          }
-          this.mRecentSaidView.setVisibility(8);
+        if (QLog.isColorLevel()) {
+          QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshTroopMemRecentSaidEntry, isPluginInstalled = false. hide mRecentSaidView.");
         }
-      }
-      for (;;)
-      {
-        initRecentSaidItem(paramProfileCardInfo);
-        return bool;
-        updateRecentSaidView(this.mRecentSaidView, paramProfileCardInfo, this);
+        this.mRecentSaidView.setVisibility(8);
       }
     }
+    else
+    {
+      updateRecentSaidView(this.mRecentSaidView, paramProfileCardInfo, this);
+    }
+    initRecentSaidItem(paramProfileCardInfo);
+    return bool1;
   }
   
   private void onPluginInstallFinish(ProfileCardInfo paramProfileCardInfo)
   {
     this.isPluginInstalled = true;
-    if ((this.mRecentSaidView == null) || (this.mActivity == null)) {}
-    while (!this.mActivity.isResume()) {
-      return;
+    if (this.mRecentSaidView != null)
+    {
+      if (this.mActivity == null) {
+        return;
+      }
+      if (!this.mActivity.isResume()) {
+        return;
+      }
+      this.mActivity.runOnUiThread(new ProfileTroopMemInfoComponent.5(this, paramProfileCardInfo));
     }
-    this.mActivity.runOnUiThread(new ProfileTroopMemInfoComponent.4(this, paramProfileCardInfo));
   }
   
   private MessageRecord queryRecentMsg(ProfileCardInfo paramProfileCardInfo)
@@ -587,18 +628,23 @@ public class ProfileTroopMemInfoComponent
     }
     String str2 = UinTypeUtil.a();
     EntityManager localEntityManager = this.mApp.getEntityManagerFactory().createEntityManager();
-    String str1 = MessageRecord.getTableName(paramProfileCardInfo.jdField_a_of_type_JavaLangString, 1);
+    String str1 = MessageRecord.getTableName(paramProfileCardInfo.troopUin, 1);
     str2 = String.format("shmsgseq < %d and senderuin = ? and extLong & 3 <> 3 and msgtype %s and isValid=1", new Object[] { Long.valueOf(9223372036854775807L), str2 });
-    if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) {}
-    for (paramProfileCardInfo = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin;; paramProfileCardInfo = paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)
+    if (paramProfileCardInfo.card != null) {
+      paramProfileCardInfo = paramProfileCardInfo.card.uin;
+    } else {
+      paramProfileCardInfo = paramProfileCardInfo.allInOne.uin;
+    }
+    paramProfileCardInfo = localEntityManager.query(MessageRecord.class, str1, false, str2, new String[] { paramProfileCardInfo }, null, null, "shmsgseq DESC", String.valueOf(1));
+    localEntityManager.close();
+    if (paramProfileCardInfo != null)
     {
-      paramProfileCardInfo = localEntityManager.query(MessageRecord.class, str1, false, str2, new String[] { paramProfileCardInfo }, null, null, "shmsgseq DESC", String.valueOf(1));
-      localEntityManager.close();
-      if ((paramProfileCardInfo == null) || (paramProfileCardInfo.isEmpty())) {
-        break;
+      if (paramProfileCardInfo.isEmpty()) {
+        return null;
       }
       return (MessageRecord)paramProfileCardInfo.get(0);
     }
+    return null;
   }
   
   private void updateHeader()
@@ -613,18 +659,18 @@ public class ProfileTroopMemInfoComponent
   {
     paramView.setVisibility(0);
     Context localContext = paramView.getContext();
-    TextView localTextView = (TextView)paramView.findViewById(2131369358);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131363027);
-    if (!TextUtils.isEmpty(paramProfileCardInfo.jdField_b_of_type_JavaLangString))
+    TextView localTextView = (TextView)paramView.findViewById(2131369087);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131362975);
+    if (!TextUtils.isEmpty(paramProfileCardInfo.troopRecentSaid))
     {
-      localTextView.setText(paramProfileCardInfo.jdField_b_of_type_JavaLangString);
-      localTextView.setContentDescription(paramProfileCardInfo.jdField_b_of_type_JavaLangString);
+      localTextView.setText(paramProfileCardInfo.troopRecentSaid);
+      localTextView.setContentDescription(paramProfileCardInfo.troopRecentSaid);
       localImageView.setVisibility(0);
       paramView.setOnClickListener(paramOnClickListener);
       return;
     }
-    localTextView.setText(localContext.getString(2131697583));
-    localTextView.setContentDescription(localContext.getString(2131697583));
+    localTextView.setText(localContext.getString(2131697589));
+    localTextView.setContentDescription(localContext.getString(2131697589));
     localImageView.setVisibility(0);
     paramView.setOnClickListener(paramOnClickListener);
   }
@@ -634,19 +680,18 @@ public class ProfileTroopMemInfoComponent
     if (QLog.isColorLevel()) {
       QLog.i("ProfileTroopMemInfoComponent", 2, "updateTroopUI");
     }
-    ProfileContentContainer localProfileContentContainer = (ProfileContentContainer)this.mComponentCenter.getComponent(103);
-    if (localProfileContentContainer != null) {
-      localProfileContentContainer.onDataUpdate((ProfileCardInfo)this.mData);
+    if (this.mDelegate != null) {
+      this.mDelegate.notifyCardUpdate();
     }
   }
   
   public void checkAndUpdateTroopInfo(TroopInfo paramTroopInfo)
   {
-    ProfileActivity.AllInOne localAllInOne = ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne;
-    if ((localAllInOne != null) && (paramTroopInfo != null) && (ProfileActivity.f(localAllInOne.jdField_a_of_type_Int)) && (TextUtils.isEmpty(localAllInOne.d)))
+    AllInOne localAllInOne = ((ProfileCardInfo)this.mData).allInOne;
+    if ((localAllInOne != null) && (paramTroopInfo != null) && (ProfilePAUtils.isFromTroopMemberCard(localAllInOne.pa)) && (TextUtils.isEmpty(localAllInOne.troopUin)))
     {
-      localAllInOne.d = paramTroopInfo.troopcode;
-      localAllInOne.c = paramTroopInfo.troopuin;
+      localAllInOne.troopUin = paramTroopInfo.troopcode;
+      localAllInOne.troopCode = paramTroopInfo.troopuin;
       if (QLog.isColorLevel()) {
         QLog.i("ProfileTroopMemInfoComponent", 2, String.format("checkAndUpdateTroopInfo troop[%s, %s]", new Object[] { paramTroopInfo.troopuin, paramTroopInfo.troopcode }));
       }
@@ -668,99 +713,97 @@ public class ProfileTroopMemInfoComponent
     return "map_key_troop_mem_info";
   }
   
-  public void init()
-  {
-    requestTroopMemberInfo();
-  }
-  
   public boolean makeOrRefreshTroopMemCharmLevelInfo(ProfileCardInfo paramProfileCardInfo)
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
     Object localObject = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
-    if ((!paramProfileCardInfo.jdField_b_of_type_Boolean) || (paramProfileCardInfo.jdField_a_of_type_Int < 0) || (((TroopManager)localObject).n(paramProfileCardInfo.jdField_a_of_type_JavaLangString)))
+    boolean bool3 = paramProfileCardInfo.isTroopMemberCard;
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if ((bool3) && (paramProfileCardInfo.troopGlamourLevel >= 0) && (!((TroopManager)localObject).m(paramProfileCardInfo.troopUin)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshTroopMemCharmLevelInfo, cardInfo.isTroopMemberCard: " + paramProfileCardInfo.jdField_b_of_type_Boolean + ", cardInfo.glamourLevel: " + paramProfileCardInfo.jdField_a_of_type_Int + " isQidianPrivateTroop");
+      if (this.mActivity == null) {
+        return false;
       }
-      if (this.mCharmLevelView != null) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-      if (this.mCharmLevelView != null)
+      if (this.mCharmLevelView == null)
       {
-        this.mCharmLevelView.setVisibility(8);
-        bool2 = bool1;
+        this.mCharmLevelView = this.mActivity.getLayoutInflater().inflate(2131562969, null);
+        localObject = (ImageView)this.mCharmLevelView.findViewById(2131368343);
+        ((ImageView)localObject).setImageResource(2130845960);
+        ((ImageView)localObject).clearColorFilter();
+        ((ImageView)localObject).setColorFilter(10067634);
       }
-    }
-    while (this.mActivity == null) {
-      return bool2;
-    }
-    if (this.mCharmLevelView == null)
-    {
-      this.mCharmLevelView = this.mActivity.getLayoutInflater().inflate(2131563146, null);
-      localObject = (ImageView)this.mCharmLevelView.findViewById(2131368603);
-      ((ImageView)localObject).setImageResource(2130846083);
-      ((ImageView)localObject).clearColorFilter();
-      ((ImageView)localObject).setColorFilter(10067634);
-    }
-    for (bool1 = true;; bool1 = false)
-    {
-      localObject = (TextView)this.mCharmLevelView.findViewById(2131369358);
-      ImageView localImageView = (ImageView)this.mCharmLevelView.findViewById(2131363027);
-      ((TextView)localObject).setText(this.mActivity.getString(2131693415));
+      else
+      {
+        bool1 = false;
+      }
+      localObject = (TextView)this.mCharmLevelView.findViewById(2131369087);
+      ImageView localImageView = (ImageView)this.mCharmLevelView.findViewById(2131362975);
+      ((TextView)localObject).setText(this.mActivity.getString(2131693370));
       DataTag localDataTag = new DataTag(80, null);
       this.mCharmLevelView.setTag(localDataTag);
       this.mCharmLevelView.setOnClickListener(this);
       updateItemTheme(this.mCharmLevelView, (TextView)localObject, null, localImageView);
-      ReportController.b(this.mApp, "dc00899", "Grp_flower", "", "charm", "exp_grpname", 0, 0, String.valueOf(paramProfileCardInfo.jdField_a_of_type_Int), "", "", "");
+      ReportController.b(this.mApp, "dc00899", "Grp_flower", "", "charm", "exp_grpname", 0, 0, String.valueOf(paramProfileCardInfo.troopGlamourLevel), "", "", "");
       if (QLog.isColorLevel()) {
         QLog.d("ProfileTroopMemInfoComponent", 2, "makeOrRefreshTroopMemCharmLevelInfo, showing charm level.");
       }
       return bool1;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("makeOrRefreshTroopMemCharmLevelInfo, cardInfo.isTroopMemberCard: ");
+      ((StringBuilder)localObject).append(paramProfileCardInfo.isTroopMemberCard);
+      ((StringBuilder)localObject).append(", cardInfo.glamourLevel: ");
+      ((StringBuilder)localObject).append(paramProfileCardInfo.troopGlamourLevel);
+      ((StringBuilder)localObject).append(" isQidianPrivateTroop");
+      QLog.d("ProfileTroopMemInfoComponent", 2, ((StringBuilder)localObject).toString());
+    }
+    if (this.mCharmLevelView != null) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    paramProfileCardInfo = this.mCharmLevelView;
+    if (paramProfileCardInfo != null) {
+      paramProfileCardInfo.setVisibility(8);
+    }
+    return bool1;
   }
   
   public void onClick(View paramView)
   {
-    DataTag localDataTag;
     if ((paramView.getTag() instanceof DataTag))
     {
-      localDataTag = (DataTag)paramView.getTag();
-      if (localDataTag.jdField_a_of_type_Int != 78) {
-        break label39;
-      }
-      handleRecentSaidClick();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label39:
-      if (localDataTag.jdField_a_of_type_Int == 80) {
+      DataTag localDataTag = (DataTag)paramView.getTag();
+      if (localDataTag.a == 78) {
+        handleRecentSaidClick();
+      } else if (localDataTag.a == 80) {
         handleCharmLevelClick();
-      } else if (localDataTag.jdField_a_of_type_Int == 83) {
+      } else if (localDataTag.a == 83) {
         handleGameInfoClick();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onCreate(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
+  public void onCreate(QBaseActivity paramQBaseActivity, @Nullable Bundle paramBundle)
   {
-    super.onCreate(paramBaseActivity, paramBundle);
+    super.onCreate(paramQBaseActivity, paramBundle);
     this.mActivity.addObserver(this.mTroopObserver);
-    this.mActivity.addObserver(this.mTroopBusinessObserver);
-    paramBaseActivity = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).b(((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString);
-    checkAndUpdateTroopInfo(paramBaseActivity);
-    if ((paramBaseActivity != null) && (paramBaseActivity.isGameBind())) {
-      TroopReportor.a("Grp_game", "Mber_data", "mdata_exp", 0, 0, new String[] { paramBaseActivity.troopuin });
+    this.mActivity.addObserver(this.troopOnlinePushObserver);
+    this.mActivity.addObserver(this.mTroopManagerBizObserver);
+    init();
+    paramQBaseActivity = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).b(((ProfileCardInfo)this.mData).troopUin);
+    checkAndUpdateTroopInfo(paramQBaseActivity);
+    if ((paramQBaseActivity != null) && (paramQBaseActivity.isGameBind())) {
+      TroopReportor.a("Grp_game", "Mber_data", "mdata_exp", 0, 0, new String[] { paramQBaseActivity.troopuin });
     }
   }
   
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
-    boolean bool = super.onDataUpdate(paramProfileCardInfo);
-    return makeOrRefreshTroopMemInfoEntry((ProfileCardInfo)this.mData) | bool;
+    return super.onDataUpdate(paramProfileCardInfo) | makeOrRefreshTroopMemInfoEntry((ProfileCardInfo)this.mData);
   }
   
   public void onDestroy()
@@ -768,7 +811,8 @@ public class ProfileTroopMemInfoComponent
     if (this.mActivity != null)
     {
       this.mActivity.removeObserver(this.mTroopObserver);
-      this.mActivity.removeObserver(this.mTroopBusinessObserver);
+      this.mActivity.removeObserver(this.troopOnlinePushObserver);
+      this.mActivity.removeObserver(this.mTroopManagerBizObserver);
     }
     super.onDestroy();
   }
@@ -780,53 +824,58 @@ public class ProfileTroopMemInfoComponent
   
   public void requestTroopMemberInfo()
   {
-    if ((this.mData == null) || (!((ProfileCardInfo)this.mData).jdField_b_of_type_Boolean) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (!NetworkUtil.g(this.mActivity))) {}
-    label305:
-    do
+    if ((this.mData != null) && (((ProfileCardInfo)this.mData).isTroopMemberCard) && (((ProfileCardInfo)this.mData).allInOne != null))
     {
-      do
+      if (!NetworkUtil.isNetworkAvailable(this.mActivity)) {
+        return;
+      }
+      try
       {
-        for (;;)
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(((ProfileCardInfo)this.mData).allInOne.uin);
+        localObject = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
+        ITroopManagerBizHandler localITroopManagerBizHandler = (ITroopManagerBizHandler)((QQAppInterface)this.mApp).getBusinessHandler(BusinessHandlerFactory.TROOP_MANAGER_BIZ_HANDLER);
+        ITroopMemberCardHandler localITroopMemberCardHandler = (ITroopMemberCardHandler)((QQAppInterface)this.mApp).getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER);
+        TroopInfo localTroopInfo = ((TroopManager)localObject).b(((ProfileCardInfo)this.mData).troopUin);
+        checkAndUpdateTroopInfo(localTroopInfo);
+        if ((localTroopInfo != null) && (localITroopMemberCardHandler != null))
         {
-          return;
-          try
-          {
-            ArrayList localArrayList = new ArrayList();
-            localArrayList.add(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-            TroopManager localTroopManager = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
-            TroopHandler localTroopHandler = (TroopHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-            TroopMemberInfoHandler localTroopMemberInfoHandler = (TroopMemberInfoHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER);
-            TroopInfo localTroopInfo = localTroopManager.b(((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString);
-            checkAndUpdateTroopInfo(localTroopInfo);
-            if ((localTroopInfo == null) || (localTroopMemberInfoHandler == null)) {
-              break label305;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileTroopMemInfoComponent", 2, "requestTroopMemberInfo.getTroopMemberCardInfo");
-            }
-            localTroopMemberInfoHandler.a(((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString, localTroopInfo.troopcode, localArrayList);
-            localTroopMemberInfoHandler.a(Long.parseLong(((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString), Long.parseLong(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-            if (!localTroopManager.n(((ProfileCardInfo)this.mData).jdField_a_of_type_JavaLangString))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ProfileTroopMemInfoComponent", 2, "requestTroopMemberInfo.requestGlobalTroopLevel");
-              }
-              localTroopHandler.d(Long.parseLong(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-              return;
-            }
+          if (QLog.isColorLevel()) {
+            QLog.d("ProfileTroopMemInfoComponent", 2, "requestTroopMemberInfo.getTroopMemberCardInfo");
           }
-          catch (Exception localException) {}
+          localITroopMemberCardHandler.a(((ProfileCardInfo)this.mData).troopUin, localTroopInfo.troopcode, localArrayList);
+          localITroopMemberCardHandler.a(Long.parseLong(((ProfileCardInfo)this.mData).troopUin), Long.parseLong(((ProfileCardInfo)this.mData).allInOne.uin));
+          if (!((TroopManager)localObject).m(((ProfileCardInfo)this.mData).troopUin))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ProfileTroopMemInfoComponent", 2, "requestTroopMemberInfo.requestGlobalTroopLevel");
+            }
+            localITroopManagerBizHandler.a(Long.parseLong(((ProfileCardInfo)this.mData).allInOne.uin));
+          }
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("ProfileTroopMemInfoComponent", 2, "loadTroopMemberCard:" + localException.toString());
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("ProfileTroopMemInfoComponent", 2, "requestTroopMemberInfo.getTroopMemberCardInfo troopInfo null");
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("ProfileTroopMemInfoComponent", 2, "requestTroopMemberInfo.getTroopMemberCardInfo troopInfo null");
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("loadTroopMemberCard:");
+          ((StringBuilder)localObject).append(localException.toString());
+          QLog.i("ProfileTroopMemInfoComponent", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.ProfileTroopMemInfoComponent
  * JD-Core Version:    0.7.0.1
  */

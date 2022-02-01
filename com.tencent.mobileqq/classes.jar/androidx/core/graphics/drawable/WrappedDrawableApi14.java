@@ -46,33 +46,36 @@ class WrappedDrawableApi14
   
   private void updateLocalState(@Nullable Resources paramResources)
   {
-    if ((this.mState != null) && (this.mState.mDrawableState != null)) {
+    WrappedDrawableState localWrappedDrawableState = this.mState;
+    if ((localWrappedDrawableState != null) && (localWrappedDrawableState.mDrawableState != null)) {
       setWrappedDrawable(this.mState.mDrawableState.newDrawable(paramResources));
     }
   }
   
   private boolean updateTint(int[] paramArrayOfInt)
   {
-    if (!isCompatTintEnabled()) {}
-    PorterDuff.Mode localMode;
-    int i;
-    do
-    {
+    if (!isCompatTintEnabled()) {
       return false;
-      ColorStateList localColorStateList = this.mState.mTint;
-      localMode = this.mState.mTintMode;
-      if ((localColorStateList == null) || (localMode == null)) {
-        break;
+    }
+    ColorStateList localColorStateList = this.mState.mTint;
+    PorterDuff.Mode localMode = this.mState.mTintMode;
+    if ((localColorStateList != null) && (localMode != null))
+    {
+      int i = localColorStateList.getColorForState(paramArrayOfInt, localColorStateList.getDefaultColor());
+      if ((!this.mColorFilterSet) || (i != this.mCurrentColor) || (localMode != this.mCurrentMode))
+      {
+        setColorFilter(i, localMode);
+        this.mCurrentColor = i;
+        this.mCurrentMode = localMode;
+        this.mColorFilterSet = true;
+        return true;
       }
-      i = localColorStateList.getColorForState(paramArrayOfInt, localColorStateList.getDefaultColor());
-    } while ((this.mColorFilterSet) && (i == this.mCurrentColor) && (localMode == this.mCurrentMode));
-    setColorFilter(i, localMode);
-    this.mCurrentColor = i;
-    this.mCurrentMode = localMode;
-    this.mColorFilterSet = true;
-    return true;
-    this.mColorFilterSet = false;
-    clearColorFilter();
+    }
+    else
+    {
+      this.mColorFilterSet = false;
+      clearColorFilter();
+    }
     return false;
   }
   
@@ -84,16 +87,21 @@ class WrappedDrawableApi14
   public int getChangingConfigurations()
   {
     int j = super.getChangingConfigurations();
-    if (this.mState != null) {}
-    for (int i = this.mState.getChangingConfigurations();; i = 0) {
-      return i | j | this.mDrawable.getChangingConfigurations();
+    WrappedDrawableState localWrappedDrawableState = this.mState;
+    int i;
+    if (localWrappedDrawableState != null) {
+      i = localWrappedDrawableState.getChangingConfigurations();
+    } else {
+      i = 0;
     }
+    return j | i | this.mDrawable.getChangingConfigurations();
   }
   
   @Nullable
   public Drawable.ConstantState getConstantState()
   {
-    if ((this.mState != null) && (this.mState.canConstantState()))
+    WrappedDrawableState localWrappedDrawableState = this.mState;
+    if ((localWrappedDrawableState != null) && (localWrappedDrawableState.canConstantState()))
     {
       this.mState.mChangingConfigurations = getChangingConfigurations();
       return this.mState;
@@ -171,11 +179,18 @@ class WrappedDrawableApi14
   
   public boolean isStateful()
   {
-    if ((isCompatTintEnabled()) && (this.mState != null)) {}
-    for (ColorStateList localColorStateList = this.mState.mTint; ((localColorStateList != null) && (localColorStateList.isStateful())) || (this.mDrawable.isStateful()); localColorStateList = null) {
-      return true;
+    if (isCompatTintEnabled())
+    {
+      localObject = this.mState;
+      if (localObject != null)
+      {
+        localObject = ((WrappedDrawableState)localObject).mTint;
+        break label26;
+      }
     }
-    return false;
+    Object localObject = null;
+    label26:
+    return ((localObject != null) && (((ColorStateList)localObject).isStateful())) || (this.mDrawable.isStateful());
   }
   
   public void jumpToCurrentState()
@@ -186,34 +201,34 @@ class WrappedDrawableApi14
   @NonNull
   public Drawable mutate()
   {
-    WrappedDrawableState localWrappedDrawableState;
     if ((!this.mMutated) && (super.mutate() == this))
     {
       this.mState = mutateConstantState();
-      if (this.mDrawable != null) {
-        this.mDrawable.mutate();
+      Object localObject = this.mDrawable;
+      if (localObject != null) {
+        ((Drawable)localObject).mutate();
       }
-      if (this.mState != null)
+      WrappedDrawableState localWrappedDrawableState = this.mState;
+      if (localWrappedDrawableState != null)
       {
-        localWrappedDrawableState = this.mState;
-        if (this.mDrawable == null) {
-          break label77;
+        localObject = this.mDrawable;
+        if (localObject != null) {
+          localObject = ((Drawable)localObject).getConstantState();
+        } else {
+          localObject = null;
         }
+        localWrappedDrawableState.mDrawableState = ((Drawable.ConstantState)localObject);
       }
-    }
-    label77:
-    for (Drawable.ConstantState localConstantState = this.mDrawable.getConstantState();; localConstantState = null)
-    {
-      localWrappedDrawableState.mDrawableState = localConstantState;
       this.mMutated = true;
-      return this;
     }
+    return this;
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    if (this.mDrawable != null) {
-      this.mDrawable.setBounds(paramRect);
+    Drawable localDrawable = this.mDrawable;
+    if (localDrawable != null) {
+      localDrawable.setBounds(paramRect);
     }
   }
   
@@ -288,8 +303,9 @@ class WrappedDrawableApi14
   
   public final void setWrappedDrawable(Drawable paramDrawable)
   {
-    if (this.mDrawable != null) {
-      this.mDrawable.setCallback(null);
+    Object localObject = this.mDrawable;
+    if (localObject != null) {
+      ((Drawable)localObject).setCallback(null);
     }
     this.mDrawable = paramDrawable;
     if (paramDrawable != null)
@@ -299,8 +315,9 @@ class WrappedDrawableApi14
       setState(paramDrawable.getState());
       setLevel(paramDrawable.getLevel());
       setBounds(paramDrawable.getBounds());
-      if (this.mState != null) {
-        this.mState.mDrawableState = paramDrawable.getConstantState();
+      localObject = this.mState;
+      if (localObject != null) {
+        ((WrappedDrawableState)localObject).mDrawableState = paramDrawable.getConstantState();
       }
     }
     invalidateSelf();
@@ -313,7 +330,7 @@ class WrappedDrawableApi14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.graphics.drawable.WrappedDrawableApi14
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticlePatchStatus;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyPatchAdUtils;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUIService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJPatchAdUtilService;
+import com.tencent.mobileqq.kandian.base.utils.api.IReadInJoyDisplayUtils;
+import com.tencent.mobileqq.kandian.base.view.widget.KanDianUrlRoundCornerImageView;
+import com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView;
+import com.tencent.mobileqq.kandian.biz.video.feeds.entity.VideoPlayParam;
+import com.tencent.mobileqq.kandian.repo.feeds.ArticlePatchStatus;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -36,10 +37,10 @@ public class ReadInJoyPatchAdView
   private Handler jdField_a_of_type_AndroidOsHandler;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public AdvertisementInfo a;
-  private VideoPlayManager.VideoPlayParam jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam;
-  private KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
-  private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
   public ReadInJoyPatchAdView.PatchAdListener a;
+  private KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView;
+  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
+  private VideoPlayParam jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam;
   private TextView b;
   private TextView c;
   private TextView d;
@@ -64,74 +65,77 @@ public class ReadInJoyPatchAdView
   
   private int a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam == null) {
+    VideoPlayParam localVideoPlayParam = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam;
+    if (localVideoPlayParam == null) {
       return 0;
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam.a.patchStatus.a.get();
+    return localVideoPlayParam.a.patchStatus.a.get();
   }
   
   private int b()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam == null) {
+    VideoPlayParam localVideoPlayParam = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam;
+    if (localVideoPlayParam == null) {
       return 0;
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam.a.patchStatus.b.get();
+    return localVideoPlayParam.a.patchStatus.b.get();
   }
   
   private void b(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
       return;
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null)) {}
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+    if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null)) {
       try
       {
-        if (ReadInJoyPatchAdUtils.a(new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdExtInfo)) == paramInt)
+        localObject1 = new JSONObject(((AdvertisementInfo)localObject1).mAdExtInfo);
+        if (((IRIJPatchAdUtilService)QRoute.api(IRIJPatchAdUtilService.class)).getPatchAdDisplaySeconds((JSONObject)localObject1) == paramInt)
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, this.jdField_a_of_type_Int);
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1203, 1000L);
         }
-        if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + "秒");
-        }
-        if (paramInt >= 1)
-        {
-          Message localMessage = new Message();
-          localMessage.what = 1201;
-          localMessage.obj = Integer.valueOf(paramInt - 1);
-          this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
-        }
-        if (paramInt >= 1) {
-          continue;
-        }
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1202);
-        return;
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
+        localException.printStackTrace();
       }
+    }
+    Object localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject2 != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("秒");
+      ((TextView)localObject2).setText(localStringBuilder.toString());
+    }
+    if (paramInt >= 1)
+    {
+      localObject2 = new Message();
+      ((Message)localObject2).what = 1201;
+      ((Message)localObject2).obj = Integer.valueOf(paramInt - 1);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject2, 1000L);
+    }
+    if (paramInt < 1) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1202);
     }
   }
   
   private void e()
   {
-    View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560178, this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)localView.findViewById(2131368769));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378082));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)localView.findViewById(2131362096));
-    this.b = ((TextView)localView.findViewById(2131362257));
-    this.c = ((TextView)localView.findViewById(2131362139));
-    this.d = ((TextView)localView.findViewById(2131372784));
+    View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560065, this);
+    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)localView.findViewById(2131368499));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377508));
+    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView = ((KanDianUrlRoundCornerImageView)localView.findViewById(2131362124));
+    this.b = ((TextView)localView.findViewById(2131362282));
+    this.c = ((TextView)localView.findViewById(2131362169));
+    this.d = ((TextView)localView.findViewById(2131372361));
   }
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setOnClickListener(this);
     this.c.setOnClickListener(this);
     this.d.setOnClickListener(this);
   }
@@ -143,138 +147,145 @@ public class ReadInJoyPatchAdView
   
   private void h()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("0秒");
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setText("0秒");
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null)
     {
       a();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, 0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, this.jdField_a_of_type_Int, 0);
     }
   }
   
-  public VideoPlayManager.VideoPlayParam a()
+  public VideoPlayParam a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam;
+    return this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1201);
+      localHandler.removeMessages(1201);
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1202);
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null)
+    ReadInJoyPatchAdView.PatchAdListener localPatchAdListener = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener;
+    if (localPatchAdListener != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, paramInt);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, 1);
+      localPatchAdListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, this.jdField_a_of_type_Int, paramInt);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, this.jdField_a_of_type_Int, 1);
     }
   }
   
-  public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam, AdvertisementInfo paramAdvertisementInfo, int paramInt)
+  public void a(VideoPlayParam paramVideoPlayParam, AdvertisementInfo paramAdvertisementInfo, int paramInt)
   {
-    if (paramAdvertisementInfo == null) {}
-    do
-    {
+    if (paramAdvertisementInfo == null) {
       return;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam = paramVideoPlayParam;
-      this.c.setText(paramAdvertisementInfo.mTitle);
-      this.b.setText(paramAdvertisementInfo.mAdTxt);
-      this.d.setText(ReadInJoyAdUtils.a(getContext(), paramAdvertisementInfo));
-      try
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam = paramVideoPlayParam;
+    this.c.setText(paramAdvertisementInfo.mTitle);
+    this.b.setText(paramAdvertisementInfo.mAdTxt);
+    this.d.setText(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getPatchAdButtonText(getContext(), paramAdvertisementInfo));
+    try
+    {
+      paramVideoPlayParam = new URL(paramAdvertisementInfo.mAdImg);
+      URL localURL = new URL(paramAdvertisementInfo.mAdCorporateLogo);
+      ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).configImage(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, paramVideoPlayParam, getContext(), false);
+      ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).configImage(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView, localURL, getContext(), false);
+    }
+    catch (Exception paramVideoPlayParam)
+    {
+      paramVideoPlayParam.printStackTrace();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKanDianUrlRoundCornerImageView.setCorner(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(2.0F, getContext().getResources()));
+    try
+    {
+      paramVideoPlayParam = new JSONObject(paramAdvertisementInfo.mAdExtInfo);
+      paramInt = ((IRIJPatchAdUtilService)QRoute.api(IRIJPatchAdUtilService.class)).getPatchAdDisplaySeconds(paramVideoPlayParam);
+      if (paramInt < 0)
       {
-        paramVideoPlayParam = new URL(paramAdvertisementInfo.mAdImg);
-        URL localURL = new URL(paramAdvertisementInfo.mAdCorporateLogo);
-        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramVideoPlayParam, getContext(), false);
-        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView, localURL, getContext(), false);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView.setCorner(AIOUtils.a(2.0F, getContext().getResources()));
-        try
-        {
-          paramInt = ReadInJoyPatchAdUtils.a(new JSONObject(paramAdvertisementInfo.mAdExtInfo));
-          if (paramInt < 0)
-          {
-            a();
-            return;
-          }
-        }
-        catch (JSONException paramVideoPlayParam)
-        {
-          paramVideoPlayParam.printStackTrace();
-          return;
-        }
+        a();
+        return;
       }
-      catch (Exception paramVideoPlayParam)
+      if (this.jdField_a_of_type_AndroidOsHandler != null)
       {
-        for (;;)
-        {
-          paramVideoPlayParam.printStackTrace();
-        }
+        paramVideoPlayParam = new Message();
+        paramVideoPlayParam.what = 1201;
+        paramVideoPlayParam.obj = Integer.valueOf(paramInt);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramVideoPlayParam);
+        return;
       }
-    } while (this.jdField_a_of_type_AndroidOsHandler == null);
-    paramVideoPlayParam = new Message();
-    paramVideoPlayParam.what = 1201;
-    paramVideoPlayParam.obj = Integer.valueOf(paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramVideoPlayParam);
+    }
+    catch (JSONException paramVideoPlayParam)
+    {
+      paramVideoPlayParam.printStackTrace();
+    }
   }
   
   public boolean a()
   {
-    return (a() == 1) || (b() == 1);
+    int i = a();
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (b() == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int);
+    ReadInJoyPatchAdView.PatchAdListener localPatchAdListener = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener;
+    if (localPatchAdListener != null) {
+      localPatchAdListener.c(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, this.jdField_a_of_type_Int);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int);
+    ReadInJoyPatchAdView.PatchAdListener localPatchAdListener = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener;
+    if (localPatchAdListener != null) {
+      localPatchAdListener.d(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, this.jdField_a_of_type_Int);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, 0);
+    ReadInJoyPatchAdView.PatchAdListener localPatchAdListener = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener;
+    if (localPatchAdListener != null) {
+      localPatchAdListener.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, this.jdField_a_of_type_Int, 0);
     }
   }
   
   public void onClick(View paramView)
   {
-    int j = 5;
-    int i = j;
-    switch (paramView.getId())
-    {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null)
-      {
-        a();
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, i);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam, this.jdField_a_of_type_Int, 1);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    int j = paramView.getId();
+    int i = 5;
+    if (j == 2131362124) {
       i = 2;
-      continue;
+    } else if (j == 2131362169) {
       i = 3;
-      continue;
+    } else if ((j != 2131368499) && (j == 2131372361)) {
       i = 8;
     }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener != null)
+    {
+      a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, this.jdField_a_of_type_Int, i);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyPatchAdView$PatchAdListener.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, this.jdField_a_of_type_Int, 1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setOnPatchAdListener(ReadInJoyPatchAdView.PatchAdListener paramPatchAdListener)
@@ -284,7 +295,7 @@ public class ReadInJoyPatchAdView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView
  * JD-Core Version:    0.7.0.1
  */

@@ -28,28 +28,30 @@ public class ConversationHelper$LogBuilder
   {
     if (QLog.isDevelopLevel())
     {
-      if (this.jdField_a_of_type_JavaLangStringBuilder == null)
-      {
+      Object localObject = this.jdField_a_of_type_JavaLangStringBuilder;
+      if (localObject == null) {
         this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-        this.jdField_a_of_type_JavaLangStringBuilder.append("checkRUList, src[");
-        paramList = paramList.iterator();
+      } else {
+        ((StringBuilder)localObject).setLength(0);
       }
-      for (;;)
+      this.jdField_a_of_type_JavaLangStringBuilder.append("checkRUList, src[");
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        if (!paramList.hasNext()) {
-          break label120;
-        }
-        RecentUser localRecentUser = (RecentUser)paramList.next();
-        if (localRecentUser == null)
+        localObject = (RecentUser)paramList.next();
+        if (localObject == null)
         {
           this.jdField_a_of_type_JavaLangStringBuilder.append("null | null,");
-          continue;
-          this.jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-          break;
         }
-        this.jdField_a_of_type_JavaLangStringBuilder.append(localRecentUser.uin).append("|").append(localRecentUser.getType()).append(",");
+        else
+        {
+          StringBuilder localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+          localStringBuilder.append(((RecentUser)localObject).uin);
+          localStringBuilder.append("|");
+          localStringBuilder.append(((RecentUser)localObject).getType());
+          localStringBuilder.append(",");
+        }
       }
-      label120:
       this.jdField_a_of_type_JavaLangStringBuilder.append("], [");
     }
   }
@@ -71,7 +73,7 @@ public class ConversationHelper$LogBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.ConversationHelper.LogBuilder
  * JD-Core Version:    0.7.0.1
  */

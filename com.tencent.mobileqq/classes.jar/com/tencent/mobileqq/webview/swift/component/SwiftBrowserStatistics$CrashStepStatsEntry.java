@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.content.SharedPreferences;
-import com.tencent.gamecenter.activities.GameCenterActivity;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,15 +26,10 @@ public class SwiftBrowserStatistics$CrashStepStatsEntry
     this.jdField_a_of_type_Int = 1;
     this.jdField_a_of_type_Boolean = false;
   }
-  
-  public void a(String paramString)
-  {
-    GameCenterActivity.a(paramString, this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.CrashStepStatsEntry
  * JD-Core Version:    0.7.0.1
  */

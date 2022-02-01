@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,29 +68,34 @@ public final class FileControlRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.result, 1);
-    if (this.session != null) {
-      paramJceOutputStream.write(this.session, 2);
+    Object localObject = this.session;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.offset, 3);
     paramJceOutputStream.write(this.slice_size, 4);
-    if (this.biz_rsp != null) {
-      paramJceOutputStream.write(this.biz_rsp, 5);
+    localObject = this.biz_rsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
-    if (this.offset_list != null) {
-      paramJceOutputStream.write(this.offset_list, 6);
+    localObject = this.offset_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
-    if (this.redirect_ip != null) {
-      paramJceOutputStream.write(this.redirect_ip, 7);
+    localObject = this.redirect_ip;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.thread_num, 8);
-    if (this.dumpRsp != null) {
-      paramJceOutputStream.write(this.dumpRsp, 9);
+    localObject = this.dumpRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.FileControlRsp
  * JD-Core Version:    0.7.0.1
  */

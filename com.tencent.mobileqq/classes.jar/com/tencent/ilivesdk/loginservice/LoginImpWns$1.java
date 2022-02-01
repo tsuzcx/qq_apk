@@ -19,35 +19,44 @@ class LoginImpWns$1
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.this$0.loginInfo = null;
-    this.this$0.handleCallback(this.val$loginCallback, paramInt, "鉴权失败", null);
+    paramString = this.this$0;
+    paramString.loginInfo = null;
+    paramString.handleCallback(this.val$loginCallback, paramInt, "鉴权失败", null);
   }
   
   public void onRecv(byte[] paramArrayOfByte)
   {
     try
     {
-      paramArrayOfByte = LoginReply.a(paramArrayOfByte);
-      LoginInfo localLoginInfo = new LoginInfo();
-      localLoginInfo.openId = this.this$0.accountId;
-      localLoginInfo.access_token = this.this$0.authKey;
-      localLoginInfo.businessUid = this.this$0.accountId;
-      Object localObject = paramArrayOfByte.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo;
-      String str = ((AccountBaseInfo)localObject).jdField_a_of_type_JavaLangString;
+      Object localObject1 = LoginReply.a(paramArrayOfByte);
+      paramArrayOfByte = new LoginInfo();
+      paramArrayOfByte.openId = this.this$0.accountId;
+      paramArrayOfByte.access_token = this.this$0.authKey;
+      paramArrayOfByte.businessUid = this.this$0.accountId;
+      Object localObject2 = ((LoginReply)localObject1).jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo;
+      String str = ((AccountBaseInfo)localObject2).jdField_a_of_type_JavaLangString;
       if (!TextUtils.isEmpty(str)) {
-        localLoginInfo.openId = str;
+        paramArrayOfByte.openId = str;
       }
-      localLoginInfo.uid = ((AccountBaseInfo)localObject).jdField_a_of_type_Long;
-      localLoginInfo.tinyid = ((AccountBaseInfo)localObject).b;
-      localLoginInfo.loginType = this.this$0.mLoginType;
-      localObject = paramArrayOfByte.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo;
+      paramArrayOfByte.uid = ((AccountBaseInfo)localObject2).jdField_a_of_type_Long;
+      paramArrayOfByte.tinyid = ((AccountBaseInfo)localObject2).b;
+      paramArrayOfByte.loginType = this.this$0.mLoginType;
+      localObject2 = ((LoginReply)localObject1).jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo;
       this.this$0.lastLoginTime = (TimeUtil.getCurrentMillis() / 1000L);
-      localLoginInfo.a2 = HexUtil.hexStr2Bytes(((TicketInfo)localObject).jdField_a_of_type_JavaLangString);
-      this.this$0.a2ExpireTime = ((TicketInfo)localObject).jdField_a_of_type_Int;
-      localLoginInfo.configData = this.this$0.wrapConfigJson(paramArrayOfByte.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue);
-      this.this$0.loginServiceAdapter.getLog().v("LoginImpl", "lastLoginTime=" + this.this$0.lastLoginTime + "a2ExpireTime=" + this.this$0.a2ExpireTime + ", loginInfo=" + localLoginInfo.toString(), new Object[0]);
-      this.this$0.loginInfo = localLoginInfo;
-      this.this$0.handleCallback(this.val$loginCallback, 0, null, localLoginInfo.clone());
+      paramArrayOfByte.a2 = HexUtil.hexStr2Bytes(((TicketInfo)localObject2).jdField_a_of_type_JavaLangString);
+      this.this$0.a2ExpireTime = ((TicketInfo)localObject2).jdField_a_of_type_Int;
+      paramArrayOfByte.configData = this.this$0.wrapConfigJson(((LoginReply)localObject1).jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue);
+      localObject1 = this.this$0.loginServiceAdapter.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("lastLoginTime=");
+      ((StringBuilder)localObject2).append(this.this$0.lastLoginTime);
+      ((StringBuilder)localObject2).append("a2ExpireTime=");
+      ((StringBuilder)localObject2).append(this.this$0.a2ExpireTime);
+      ((StringBuilder)localObject2).append(", loginInfo=");
+      ((StringBuilder)localObject2).append(paramArrayOfByte.toString());
+      ((LogInterface)localObject1).v("LoginImpl", ((StringBuilder)localObject2).toString(), new Object[0]);
+      this.this$0.loginInfo = paramArrayOfByte;
+      this.this$0.handleCallback(this.val$loginCallback, 0, null, paramArrayOfByte.clone());
       return;
     }
     catch (Exception paramArrayOfByte)
@@ -59,7 +68,7 @@ class LoginImpWns$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.LoginImpWns.1
  * JD-Core Version:    0.7.0.1
  */

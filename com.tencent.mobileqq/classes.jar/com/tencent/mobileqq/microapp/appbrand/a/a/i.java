@@ -16,52 +16,58 @@ final class i
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    d locald = (d)paramDialogInterface;
-    Object localObject = locald.a();
-    if (localObject != null)
+    Object localObject2 = (d)paramDialogInterface;
+    Object localObject1 = ((d)localObject2).a();
+    if (localObject1 != null)
     {
-      paramDialogInterface = ((Bundle)localObject).getString("key_event_name");
-      localObject = ((Bundle)localObject).getString("key_params");
+      paramDialogInterface = ((Bundle)localObject1).getString("key_event_name");
+      localObject1 = ((Bundle)localObject1).getString("key_params");
     }
-    for (;;)
+    else
     {
-      localObject = a.c(paramDialogInterface, (String)localObject);
-      boolean bool1 = locald.b();
-      boolean bool2 = locald.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("JsPluginEngine", 2, "onDismiss eventName=" + paramDialogInterface + ",scopeName=" + (String)localObject + ",isConfirm=" + bool1 + ",isRefuse=" + bool2);
-      }
-      paramDialogInterface = f.a(this.a).obtainMessage(1);
-      if (bool1)
-      {
-        paramDialogInterface.arg1 = 1;
-        this.a.b.a((String)localObject, true);
-      }
-      for (;;)
-      {
-        paramDialogInterface.sendToTarget();
-        this.a.c = null;
-        return;
-        if (bool2)
-        {
-          paramDialogInterface.arg1 = 2;
-          paramDialogInterface.obj = localObject;
-          this.a.b.a((String)localObject, false);
-        }
-        else
-        {
-          paramDialogInterface.arg1 = 3;
-          paramDialogInterface.obj = localObject;
-        }
-      }
-      localObject = null;
-      paramDialogInterface = null;
+      localObject1 = null;
+      paramDialogInterface = (DialogInterface)localObject1;
     }
+    localObject1 = a.c(paramDialogInterface, (String)localObject1);
+    boolean bool1 = ((d)localObject2).b();
+    boolean bool2 = ((d)localObject2).c();
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onDismiss eventName=");
+      ((StringBuilder)localObject2).append(paramDialogInterface);
+      ((StringBuilder)localObject2).append(",scopeName=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(",isConfirm=");
+      ((StringBuilder)localObject2).append(bool1);
+      ((StringBuilder)localObject2).append(",isRefuse=");
+      ((StringBuilder)localObject2).append(bool2);
+      QLog.d("JsPluginEngine", 2, ((StringBuilder)localObject2).toString());
+    }
+    paramDialogInterface = f.a(this.a).obtainMessage(1);
+    if (bool1)
+    {
+      paramDialogInterface.arg1 = 1;
+      this.a.b.a((String)localObject1, true);
+    }
+    else if (bool2)
+    {
+      paramDialogInterface.arg1 = 2;
+      paramDialogInterface.obj = localObject1;
+      this.a.b.a((String)localObject1, false);
+    }
+    else
+    {
+      paramDialogInterface.arg1 = 3;
+      paramDialogInterface.obj = localObject1;
+    }
+    paramDialogInterface.sendToTarget();
+    this.a.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.a.a.i
  * JD-Core Version:    0.7.0.1
  */

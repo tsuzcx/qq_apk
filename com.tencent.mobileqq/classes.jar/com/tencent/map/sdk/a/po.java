@@ -31,85 +31,89 @@ public final class po
   
   public final byte[] a(String paramString)
   {
-    if ((this.a == null) || (nl.a(paramString))) {
-      return null;
-    }
-    if (!this.b.a(paramString)) {
-      return null;
-    }
-    if ((this.e != null) && (nl.a(this.d)) && (!nl.a(this.e.k()))) {
-      this.d = ("&eng_ver=" + this.e.k());
-    }
-    Object localObject2 = ((MapDataRequest)((ng)MapServiceManager.getService(ng.class)).c()).getIndoorMapUrl();
-    Object localObject1 = paramString;
-    if (paramString.startsWith((String)localObject2))
+    if (this.a != null)
     {
-      paramString = paramString.replace((CharSequence)localObject2, ((IndoorDataRequest)((nd)MapServiceManager.getService(nd.class)).c()).getIndoorMapUrl());
-      localObject1 = paramString + "&apiKey=" + pz.a;
-    }
-    paramString = (na)MapServiceManager.getService(na.class);
-    localObject2 = (nj)MapServiceManager.getService(nj.class);
-    if ((!((String)localObject1).endsWith(".jpg")) && (!((String)localObject1).startsWith(paramString.d())) && (!((String)localObject1).startsWith(((nj)localObject2).d()))) {}
-    for (paramString = (String)localObject1 + this.d + fz.a(this.c);; paramString = (String)localObject1)
-    {
+      if (nl.a(paramString)) {
+        return null;
+      }
+      if (!this.b.a(paramString)) {
+        return null;
+      }
+      if ((this.e != null) && (nl.a(this.d)) && (!nl.a(this.e.k())))
+      {
+        localObject1 = new StringBuilder("&eng_ver=");
+        ((StringBuilder)localObject1).append(this.e.k());
+        this.d = ((StringBuilder)localObject1).toString();
+      }
+      Object localObject2 = ((MapDataRequest)((ng)MapServiceManager.getService(ng.class)).c()).getIndoorMapUrl();
+      Object localObject1 = paramString;
+      if (paramString.startsWith((String)localObject2))
+      {
+        paramString = paramString.replace((CharSequence)localObject2, ((IndoorDataRequest)((nd)MapServiceManager.getService(nd.class)).c()).getIndoorMapUrl());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append("&apiKey=");
+        ((StringBuilder)localObject1).append(pz.a);
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      paramString = (na)MapServiceManager.getService(na.class);
+      localObject2 = (nj)MapServiceManager.getService(nj.class);
+      if ((!((String)localObject1).endsWith(".jpg")) && (!((String)localObject1).startsWith(paramString.d())) && (!((String)localObject1).startsWith(((nj)localObject2).d())))
+      {
+        paramString = new StringBuilder();
+        paramString.append((String)localObject1);
+        paramString.append(this.d);
+        paramString.append(fz.a(this.c));
+        paramString = paramString.toString();
+      }
+      else
+      {
+        paramString = (String)localObject1;
+      }
       try
       {
         localObject2 = NetManager.getInstance().doGet((String)localObject1, "androidsdk");
-        if (localObject2 != null) {
-          break label445;
+        if (localObject2 == null) {
+          return null;
         }
-        return null;
+        if (!paramString.contains("qt=rtt")) {
+          this.b.b(paramString);
+        }
+        return ((NetResponse)localObject2).data;
       }
       catch (Exception localException)
       {
-        if (!((String)localObject1).contains("/mvd_map")) {
-          break label423;
-        }
-      }
-      int i;
-      if ((localException instanceof NetUnavailableException)) {
-        i = ((NetUnavailableException)localException).errorCode;
-      }
-      for (;;)
-      {
-        localObject1 = this.f;
-        long l = System.currentTimeMillis();
-        paramString = paramString.substring(paramString.indexOf('?') + 1);
-        if (((jg)localObject1).c.e == null) {
-          ((jg)localObject1).c.e = new CopyOnWriteArraySet();
-        }
-        jg.g localg;
-        if (((jg)localObject1).c.e.size() <= 9)
+        if (((String)localObject1).contains("/mvd_map"))
         {
-          localg = new jg.g((byte)0);
-          localg.a = (l - ((jg)localObject1).a);
-          localg.b = paramString;
-          localg.c = i;
-          ((jg)localObject1).c.e.add(localg);
-        }
-        label423:
-        return null;
-        if ((localg instanceof qk))
-        {
-          i = ((qk)localg).statusCode;
-          continue;
-          label445:
-          if (!paramString.contains("qt=rtt")) {
-            this.b.b(paramString);
+          int i = -1;
+          if ((localException instanceof NetUnavailableException)) {
+            i = ((NetUnavailableException)localException).errorCode;
+          } else if ((localException instanceof qk)) {
+            i = ((qk)localException).statusCode;
           }
-          return localg.data;
-        }
-        else
-        {
-          i = -1;
+          localObject1 = this.f;
+          long l = System.currentTimeMillis();
+          paramString = paramString.substring(paramString.indexOf('?') + 1);
+          if (((jg)localObject1).c.e == null) {
+            ((jg)localObject1).c.e = new CopyOnWriteArraySet();
+          }
+          if (((jg)localObject1).c.e.size() <= 9)
+          {
+            jg.g localg = new jg.g((byte)0);
+            localg.a = (l - ((jg)localObject1).a);
+            localg.b = paramString;
+            localg.c = i;
+            ((jg)localObject1).c.e.add(localg);
+          }
         }
       }
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.po
  * JD-Core Version:    0.7.0.1
  */

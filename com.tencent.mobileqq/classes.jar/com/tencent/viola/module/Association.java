@@ -34,28 +34,36 @@ public class Association
   @JSMethod
   public void bind(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    boolean bool1;
-    if ((paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_REF)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_EVENT)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_PROPS))) {
-      bool1 = true;
-    }
-    try
+    if ((paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_REF)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_EVENT)) && (paramJSONObject.has(AssocioationEvents.ASSOCIOATION_KEY_PROPS))) {}
+    for (;;)
     {
-      if (paramJSONObject.has("sync")) {
-        bool1 = ViolaUtils.getBoolean(paramJSONObject.opt("sync"));
+      try
+      {
+        if (paramJSONObject.has("sync"))
+        {
+          bool1 = ViolaUtils.getBoolean(paramJSONObject.opt("sync"));
+          if (!paramJSONObject.has("applyLayout")) {
+            break label114;
+          }
+          bool2 = ViolaUtils.getBoolean(paramJSONObject.opt("applyLayout"));
+          bind(paramJSONObject.getString(AssocioationEvents.ASSOCIOATION_KEY_REF), paramJSONObject.getString(AssocioationEvents.ASSOCIOATION_KEY_EVENT), paramJSONObject.getJSONArray(AssocioationEvents.ASSOCIOATION_KEY_PROPS), "", paramString, bool1, bool2);
+          return;
+        }
       }
+      catch (JSONException paramJSONObject)
+      {
+        return;
+      }
+      boolean bool1 = true;
+      continue;
+      label114:
       boolean bool2 = false;
-      if (paramJSONObject.has("applyLayout")) {
-        bool2 = ViolaUtils.getBoolean(paramJSONObject.opt("applyLayout"));
-      }
-      bind(paramJSONObject.getString(AssocioationEvents.ASSOCIOATION_KEY_REF), paramJSONObject.getString(AssocioationEvents.ASSOCIOATION_KEY_EVENT), paramJSONObject.getJSONArray(AssocioationEvents.ASSOCIOATION_KEY_PROPS), "", paramString, bool1, bool2);
-      return;
     }
-    catch (JSONException paramJSONObject) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.module.Association
  * JD-Core Version:    0.7.0.1
  */

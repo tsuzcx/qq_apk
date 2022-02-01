@@ -48,14 +48,15 @@ public final class GetMultiTroopInfoResp
     paramJceOutputStream.write(this.result, 1);
     paramJceOutputStream.write(this.errorCode, 2);
     paramJceOutputStream.write(this.vecTroopInfo, 3);
-    if (this.sGroupClassXMLPath != null) {
-      paramJceOutputStream.write(this.sGroupClassXMLPath, 4);
+    String str = this.sGroupClassXMLPath;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.GetMultiTroopInfoResp
  * JD-Core Version:    0.7.0.1
  */

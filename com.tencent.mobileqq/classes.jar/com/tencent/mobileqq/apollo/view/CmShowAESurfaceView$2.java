@@ -10,13 +10,13 @@ class CmShowAESurfaceView$2
   
   public void run()
   {
-    QLog.i("CmShowAESurfaceView", 1, "mAnimatorCancelRunnable.");
+    QLog.i("[cmshow]CmShowAESurfaceView", 1, "mAnimatorCancelRunnable.");
     CmShowAESurfaceView.a(this.this$0).cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.CmShowAESurfaceView.2
  * JD-Core Version:    0.7.0.1
  */

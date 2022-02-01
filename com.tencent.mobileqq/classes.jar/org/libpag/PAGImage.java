@@ -40,14 +40,18 @@ public class PAGImage
   
   public static PAGImage FromBytes(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    long l;
-    do
+    if (paramArrayOfByte != null)
     {
-      return null;
-      l = LoadFromBytes(paramArrayOfByte, paramArrayOfByte.length);
-    } while (l == 0L);
-    return new PAGImage(l);
+      if (paramArrayOfByte.length == 0) {
+        return null;
+      }
+      long l = LoadFromBytes(paramArrayOfByte, paramArrayOfByte.length);
+      if (l == 0L) {
+        return null;
+      }
+      return new PAGImage(l);
+    }
+    return null;
   }
   
   public static PAGImage FromPath(String paramString)
@@ -129,7 +133,7 @@ public class PAGImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.libpag.PAGImage
  * JD-Core Version:    0.7.0.1
  */

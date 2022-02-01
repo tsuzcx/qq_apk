@@ -7,7 +7,7 @@ import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
 import com.tencent.mobileqq.app.ThreadManagerExecutor;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.intervideo.IVPluginManager;
-import com.tencent.mobileqq.intervideo.Shadow;
+import com.tencent.mobileqq.intervideo.impl.Shadow;
 import com.tencent.mobileqq.intervideo.now.NowDataReporter;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import java.util.concurrent.ExecutorService;
@@ -50,7 +50,7 @@ public class NowShadowImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl
  * JD-Core Version:    0.7.0.1
  */

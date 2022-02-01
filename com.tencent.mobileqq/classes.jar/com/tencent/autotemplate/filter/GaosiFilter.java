@@ -41,7 +41,8 @@ public class GaosiFilter
   private void bindFramebuffer()
   {
     GLES20.glGetIntegerv(2978, this.defaultViewport, 0);
-    if (this.fbo[0] == 0)
+    int[] arrayOfInt = this.fbo;
+    if (arrayOfInt[0] == 0)
     {
       GLES20.glGenTextures(1, this.textureID, 0);
       GLES20.glActiveTexture(33984);
@@ -59,7 +60,7 @@ public class GaosiFilter
       GLES20.glViewport(0, 0, this.rendererWidth, this.rendererHeight);
       return;
     }
-    GLES20.glBindFramebuffer(36160, this.fbo[0]);
+    GLES20.glBindFramebuffer(36160, arrayOfInt[0]);
     GLES20.glClear(16384);
     GLES20.glViewport(0, 0, this.rendererWidth, this.rendererHeight);
   }
@@ -76,8 +77,15 @@ public class GaosiFilter
   
   public TAVTextureInfo applyNewTexture(TAVTextureInfo paramTAVTextureInfo)
   {
-    if ((this.rendererWidth == 0) || (this.rendererHeight == 0)) {
-      Log.w(this.TAG, "rendererWidth = " + this.rendererWidth + ", rendererHeight = " + this.rendererHeight);
+    if ((this.rendererWidth == 0) || (this.rendererHeight == 0))
+    {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("rendererWidth = ");
+      localStringBuilder.append(this.rendererWidth);
+      localStringBuilder.append(", rendererHeight = ");
+      localStringBuilder.append(this.rendererHeight);
+      Log.w(str, localStringBuilder.toString());
     }
     if ((paramTAVTextureInfo.textureType != this.textureType) || (this.program == 0)) {
       initShader(paramTAVTextureInfo);
@@ -93,15 +101,20 @@ public class GaosiFilter
   
   protected void beforeDraw(TAVTextureInfo paramTAVTextureInfo)
   {
+    boolean bool = this.horizontal;
     float f1 = 0.0F;
-    if (this.horizontal) {}
-    for (float f2 = getHorizontalTexelOffsetRatio() / paramTAVTextureInfo.width;; f2 = 0.0F)
+    float f2;
+    if (bool)
     {
-      GLES20.glUniform1f(this.texelWidthOffsetLocation, f2);
-      GLES20.glUniform1f(this.texelHeightOffsetLocation, f1);
-      return;
-      f1 = getVerticalTexelOffsetRatio() / paramTAVTextureInfo.height;
+      f2 = getHorizontalTexelOffsetRatio() / paramTAVTextureInfo.width;
     }
+    else
+    {
+      f1 = getVerticalTexelOffsetRatio() / paramTAVTextureInfo.height;
+      f2 = 0.0F;
+    }
+    GLES20.glUniform1f(this.texelWidthOffsetLocation, f2);
+    GLES20.glUniform1f(this.texelHeightOffsetLocation, f1);
   }
   
   protected String getFragmentShaderCode()
@@ -136,10 +149,11 @@ public class GaosiFilter
   protected void initShader(TAVTextureInfo paramTAVTextureInfo)
   {
     this.triangleVertices = ByteBuffer.allocateDirect(64).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    String str = getFragmentShaderCode();
-    this.vertexShaderCode = VERTEX_SHADER_CODE;
-    this.fragmentShaderCode = str;
-    this.program = TVTGLProgramUtils.createProgram(VERTEX_SHADER_CODE, str);
+    String str1 = getFragmentShaderCode();
+    String str2 = VERTEX_SHADER_CODE;
+    this.vertexShaderCode = str2;
+    this.fragmentShaderCode = str1;
+    this.program = TVTGLProgramUtils.createProgram(str2, str1);
     if (this.program == 0)
     {
       new RuntimeException("failed creating program").printStackTrace();
@@ -199,14 +213,16 @@ public class GaosiFilter
   
   public void release()
   {
-    if (this.textureID[0] != 0)
+    int[] arrayOfInt = this.textureID;
+    if (arrayOfInt[0] != 0)
     {
-      GLES20.glDeleteTextures(1, this.textureID, 0);
+      GLES20.glDeleteTextures(1, arrayOfInt, 0);
       this.textureID[0] = 0;
     }
-    if (this.fbo[0] != 0)
+    arrayOfInt = this.fbo;
+    if (arrayOfInt[0] != 0)
     {
-      GLES20.glDeleteFramebuffers(1, this.fbo, 0);
+      GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
       this.fbo[0] = 0;
     }
     GLES20.glDeleteProgram(this.program);

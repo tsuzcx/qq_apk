@@ -51,12 +51,34 @@ public class j
   
   public String toString()
   {
-    return "QAPMUnit{entryTimestamp=" + this.e + ", exitTimestamp=" + this.f + ", metricName='" + this.g + '\'' + ", children=" + this.n + ", isComplete=" + this.i + ", parentUuid=" + this.j + ", myUuid=" + this.k + ", threadId=" + this.l + ", threadName='" + this.m + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QAPMUnit{entryTimestamp=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", exitTimestamp=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", metricName='");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", children=");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(", isComplete=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", parentUuid=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", myUuid=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(", threadId=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(", threadName='");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.j
  * JD-Core Version:    0.7.0.1
  */

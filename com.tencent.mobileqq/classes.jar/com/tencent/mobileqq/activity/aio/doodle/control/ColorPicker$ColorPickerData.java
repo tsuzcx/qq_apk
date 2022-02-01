@@ -16,21 +16,33 @@ public class ColorPicker$ColorPickerData
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    boolean bool2 = false;
+    if (paramObject == null) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if ((paramObject instanceof ColorPickerData))
     {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof ColorPickerData));
       paramObject = (ColorPickerData)paramObject;
-    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.b != paramObject.b));
-    return true;
+      bool1 = bool2;
+      if (this.a == paramObject.a)
+      {
+        bool1 = bool2;
+        if (this.c == paramObject.c)
+        {
+          bool1 = bool2;
+          if (this.b == paramObject.b) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker.ColorPickerData
  * JD-Core Version:    0.7.0.1
  */

@@ -38,35 +38,31 @@ public class VideoProgressView
     {
       d();
       b(paramCanvas);
-      if (a())
-      {
+      if (a()) {
         a(paramCanvas, this.g);
-        if (this.c == null) {
-          break label68;
-        }
+      } else {
+        c(paramCanvas);
+      }
+      if (this.c != null) {
         a(paramCanvas, this.c);
-        label49:
-        d(paramCanvas);
-        e(paramCanvas);
+      } else {
+        a(paramCanvas);
       }
-    }
-    label68:
-    do
-    {
+      d(paramCanvas);
+      e(paramCanvas);
       return;
-      c(paramCanvas);
-      break;
-      a(paramCanvas);
-      break label49;
-      if (this.d == 2)
-      {
-        d();
-        f(paramCanvas);
-        return;
-      }
-    } while (this.d != 3);
-    d();
-    g(paramCanvas);
+    }
+    if (this.d == 2)
+    {
+      d();
+      f(paramCanvas);
+      return;
+    }
+    if (this.d == 3)
+    {
+      d();
+      g(paramCanvas);
+    }
   }
   
   public void setVideoCompressPercent(String paramString, float paramFloat)
@@ -74,28 +70,26 @@ public class VideoProgressView
     if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F))
     {
       this.g = paramFloat;
-      if (this.g >= 1.0F) {
-        break label86;
+      boolean bool;
+      if (this.g < 1.0F) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    RefreshProgressRunnable localRefreshProgressRunnable;
-    label86:
-    for (boolean bool = true;; bool = false)
-    {
       this.a = bool;
-      if (this.d == 1)
+    }
+    if (this.d == 1)
+    {
+      RefreshProgressRunnable localRefreshProgressRunnable = MessageProgressController.a().a(paramString);
+      if (localRefreshProgressRunnable == null)
       {
-        localRefreshProgressRunnable = MessageProgressController.a().a(paramString);
-        if (localRefreshProgressRunnable != null) {
-          break;
-        }
         localRefreshProgressRunnable = new RefreshProgressRunnable(this, paramString, this.e);
         MessageProgressController.a().a(paramString, localRefreshProgressRunnable);
         ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
+        return;
       }
-      return;
+      localRefreshProgressRunnable.a(this, this.e);
     }
-    localRefreshProgressRunnable.a(this, this.e);
   }
   
   public void setVideoCompressStatus(boolean paramBoolean)
@@ -105,7 +99,7 @@ public class VideoProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.VideoProgressView
  * JD-Core Version:    0.7.0.1
  */

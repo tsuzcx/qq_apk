@@ -15,52 +15,52 @@ class AccountManageActivity$MyOnButtonClickListener
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.isFinishing()) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.isFinishing()) {
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    }
+    StringBuilder localStringBuilder;
+    if (paramInt != 0)
+    {
+      if (paramInt != 1) {
+        return;
       }
-      switch (paramInt)
+      try
       {
-      default: 
-      case 0: 
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-          if (this.jdField_a_of_type_Int < 0) {
-            continue;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, false);
-          return;
-        }
-        catch (Throwable paramView)
-        {
-          for (;;)
-          {
-            paramView.printStackTrace();
-            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 0 error" + paramView.getMessage());
-          }
-        }
-      case 1: 
-        try
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
-          if (this.jdField_a_of_type_Int < 0) {
-            continue;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(this.jdField_a_of_type_Int, true);
-          return;
-        }
-        catch (Throwable paramView)
-        {
-          for (;;)
-          {
-            paramView.printStackTrace();
-            QLog.i("AccountManageActivity", 1, "MyOnButtonClickListener 1 error" + paramView.getMessage());
-          }
-        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+      }
+      catch (Throwable paramView)
+      {
+        paramView.printStackTrace();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("MyOnButtonClickListener 1 error");
+        localStringBuilder.append(paramView.getMessage());
+        QLog.i("AccountManageActivity", 1, localStringBuilder.toString());
+      }
+      paramInt = this.jdField_a_of_type_Int;
+      if (paramInt >= 0) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(paramInt, true);
+      }
+    }
+    else
+    {
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.jdField_a_of_type_AndroidAppDialog.show();
+      }
+      catch (Throwable paramView)
+      {
+        paramView.printStackTrace();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("MyOnButtonClickListener 0 error");
+        localStringBuilder.append(paramView.getMessage());
+        QLog.i("AccountManageActivity", 1, localStringBuilder.toString());
+      }
+      paramInt = this.jdField_a_of_type_Int;
+      if (paramInt >= 0) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(paramInt, false);
       }
     }
   }
@@ -72,7 +72,7 @@ class AccountManageActivity$MyOnButtonClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.MyOnButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

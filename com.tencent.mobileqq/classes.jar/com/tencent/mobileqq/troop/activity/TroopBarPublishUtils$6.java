@@ -11,21 +11,21 @@ final class TroopBarPublishUtils$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
+      if (paramInt != 1) {
+        return;
+      }
+      TroopBarPublishUtils.c(this.a);
       paramDialogInterface.dismiss();
       return;
     }
-    TroopBarPublishUtils.c(this.a);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.6
  * JD-Core Version:    0.7.0.1
  */

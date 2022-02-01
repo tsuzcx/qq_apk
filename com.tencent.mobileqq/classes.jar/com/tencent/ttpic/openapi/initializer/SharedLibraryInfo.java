@@ -31,14 +31,14 @@ public class SharedLibraryInfo
         return localObject;
       }
     }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      localNoSuchFieldException.printStackTrace();
-      return null;
-    }
     catch (IllegalAccessException localIllegalAccessException)
     {
       localIllegalAccessException.printStackTrace();
+      return null;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      localNoSuchFieldException.printStackTrace();
     }
     return null;
   }
@@ -50,7 +50,11 @@ public class SharedLibraryInfo
   
   public static String getFullLibName(String paramString)
   {
-    return "lib" + paramString + ".so";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lib");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".so");
+    return localStringBuilder.toString();
   }
   
   public String getFullLibName()
@@ -66,7 +70,7 @@ public class SharedLibraryInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.SharedLibraryInfo
  * JD-Core Version:    0.7.0.1
  */

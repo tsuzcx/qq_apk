@@ -25,28 +25,32 @@ public class FMHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 1, 14 };
+    return new int[] { 1, 4, 15 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new FMHelper.MyFMObserver(this, null);
+      if (paramInt != 4)
+      {
+        if (paramInt != 15) {
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+        return;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new FMHelper.MyFMObserver(this, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FMHelper
  * JD-Core Version:    0.7.0.1
  */

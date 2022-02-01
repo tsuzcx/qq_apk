@@ -16,76 +16,85 @@ class BindGroupConfirmActivity$7
   
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
+    if (paramInt != 0) {
+      return;
     }
-    do
+    if (paramJSONObject != null) {}
+    for (;;)
     {
-      for (;;)
+      try
       {
-        return;
-        if (paramJSONObject != null) {
-          try
+        paramJSONObject = (JSONObject)paramJSONObject.get("data");
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = (JSONObject)paramJSONObject.get("key");
+          if (paramJSONObject != null)
           {
-            paramJSONObject = (JSONObject)paramJSONObject.get("data");
-            if (paramJSONObject != null)
+            paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
+            paramBundle = (String)paramJSONObject.get("retMsg");
+            if (paramInt == 0)
             {
-              paramJSONObject = (JSONObject)paramJSONObject.get("key");
-              if (paramJSONObject != null)
+              if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog == null)
               {
-                paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
-                paramBundle = (String)paramJSONObject.get("retMsg");
-                if (paramInt != 0) {
-                  break label336;
-                }
-                if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog == null)
-                {
-                  this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this.a);
-                  this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690723));
-                  this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690722, new Object[] { this.a.e }), this.a);
-                  this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a);
-                }
-                if (!this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.isShowing()) {
-                  this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
-                }
-                ReportController.b(this.a.app, "CliOper", "", "", "0x80084B1", "0x80084B1", 0, 0, "", "", "", "");
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("BindGroupConfirmActivity", 2, "bindGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
-                  return;
-                }
+                this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this.a);
+                this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690651));
+                this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690650, new Object[] { this.a.e }), this.a);
+                this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a);
               }
+              if (!this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.isShowing()) {
+                this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
+              }
+              ReportController.b(this.a.app, "CliOper", "", "", "0x80084B1", "0x80084B1", 0, 0, "", "", "", "");
             }
-          }
-          catch (Exception paramJSONObject)
-          {
-            BindGroupConfirmActivity.a(this.a, this.a.getActivity().getResources().getString(2131720172));
+            else
+            {
+              paramJSONObject = this.a.getActivity().getResources().getString(2131719905);
+            }
+            switch (paramInt)
+            {
+            case 221020: 
+              paramJSONObject = this.a.getActivity().getResources().getString(2131719903);
+              break;
+            case 221019: 
+              paramJSONObject = this.a.getActivity().getResources().getString(2131719907);
+              break;
+            case 221001: 
+              paramJSONObject = this.a.getActivity().getResources().getString(2131719908);
+              BindGroupConfirmActivity.a(this.a, paramJSONObject);
+              if (QLog.isColorLevel())
+              {
+                paramJSONObject = new StringBuilder();
+                paramJSONObject.append("bindGroup onResult retCode = ");
+                paramJSONObject.append(paramInt);
+                paramJSONObject.append(" retMsg = ");
+                paramJSONObject.append(paramBundle);
+                QLog.i("BindGroupConfirmActivity", 2, paramJSONObject.toString());
+                return;
+              }
+              break;
+            }
           }
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupConfirmActivity", 2, "bindGroup onResult " + paramJSONObject.toString());
-    return;
-    label336:
-    paramJSONObject = this.a.getActivity().getResources().getString(2131720172);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      BindGroupConfirmActivity.a(this.a, paramJSONObject);
-      break;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131720175);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131720174);
-      continue;
-      paramJSONObject = this.a.getActivity().getResources().getString(2131720170);
+      catch (Exception paramJSONObject)
+      {
+        paramBundle = this.a;
+        BindGroupConfirmActivity.a(paramBundle, paramBundle.getActivity().getResources().getString(2131719905));
+        if (QLog.isColorLevel())
+        {
+          paramBundle = new StringBuilder();
+          paramBundle.append("bindGroup onResult ");
+          paramBundle.append(paramJSONObject.toString());
+          QLog.d("BindGroupConfirmActivity", 2, paramBundle.toString());
+        }
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.7
  * JD-Core Version:    0.7.0.1
  */

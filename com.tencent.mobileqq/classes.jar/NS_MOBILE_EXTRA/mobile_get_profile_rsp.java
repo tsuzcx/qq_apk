@@ -34,17 +34,19 @@ public final class mobile_get_profile_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 0);
+    Object localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.profile != null) {
-      paramJceOutputStream.write(this.profile, 1);
+    localObject = this.profile;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.mobile_get_profile_rsp
  * JD-Core Version:    0.7.0.1
  */

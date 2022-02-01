@@ -15,20 +15,21 @@ class AsyncTask$InternalHandler
   public void handleMessage(Message paramMessage)
   {
     AsyncTask.AsyncTaskResult localAsyncTaskResult = (AsyncTask.AsyncTaskResult)paramMessage.obj;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      AsyncTask.access$500(localAsyncTaskResult.mTask, localAsyncTaskResult.mData[0]);
+      if (i != 2) {
+        return;
+      }
+      localAsyncTaskResult.mTask.onProgressUpdate(localAsyncTaskResult.mData);
       return;
     }
-    localAsyncTaskResult.mTask.onProgressUpdate(localAsyncTaskResult.mData);
+    AsyncTask.access$500(localAsyncTaskResult.mTask, localAsyncTaskResult.mData[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.utils.thread.AsyncTask.InternalHandler
  * JD-Core Version:    0.7.0.1
  */

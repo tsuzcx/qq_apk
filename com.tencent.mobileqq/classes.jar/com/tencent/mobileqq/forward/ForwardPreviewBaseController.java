@@ -28,7 +28,7 @@ public abstract class ForwardPreviewBaseController
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = paramQQCustomDialog;
     this.jdField_a_of_type_AndroidContentContext = paramQQCustomDialog.getContext();
     a();
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(Math.max(paramQQCustomDialog.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297133), AIOUtils.a(a(), this.jdField_a_of_type_AndroidContentContext.getResources())));
+    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(Math.max(paramQQCustomDialog.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297115), AIOUtils.b(a(), this.jdField_a_of_type_AndroidContentContext.getResources())));
   }
   
   protected int a()
@@ -40,11 +40,11 @@ public abstract class ForwardPreviewBaseController
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559065, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380831));
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout = ((MaxHeightRelativelayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131377207));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368997));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131377241));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558959, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380094));
+    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout = ((MaxHeightRelativelayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376667));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368719));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376699));
     View localView = a();
     if (localView != null) {
       this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.addView(localView);
@@ -52,7 +52,7 @@ public abstract class ForwardPreviewBaseController
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ForwardPreviewBaseController.1(this));
     int i = ViewUtils.a(15.0F);
     AIOUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, i, i, i, i);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131704796));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131704872));
   }
   
   public void a(String paramString)
@@ -85,7 +85,7 @@ public abstract class ForwardPreviewBaseController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewBaseController
  * JD-Core Version:    0.7.0.1
  */

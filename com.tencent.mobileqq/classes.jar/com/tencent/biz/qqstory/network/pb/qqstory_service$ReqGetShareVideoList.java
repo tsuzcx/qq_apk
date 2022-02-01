@@ -22,14 +22,16 @@ public final class qqstory_service$ReqGetShareVideoList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50 }, new String[] { "target_uid", "share_time", "start_cookie", "count", "time_zone", "union_id" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, ReqGetShareVideoList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 50 }, new String[] { "target_uid", "share_time", "start_cookie", "count", "time_zone", "union_id" }, new Object[] { localLong, localLong, localByteStringMicro1, localInteger, localInteger, localByteStringMicro2 }, ReqGetShareVideoList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareVideoList
  * JD-Core Version:    0.7.0.1
  */

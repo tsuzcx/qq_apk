@@ -14,7 +14,12 @@ class PayJsPlugin$5
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QMLog.d("PayJsPlugin", "doOnActivityResult requestCode" + paramInt1 + " resultCode:" + paramInt2);
+    paramIntent = new StringBuilder();
+    paramIntent.append("doOnActivityResult requestCode");
+    paramIntent.append(paramInt1);
+    paramIntent.append(" resultCode:");
+    paramIntent.append(paramInt2);
+    QMLog.d("PayJsPlugin", paramIntent.toString());
     if (paramInt1 == 3005)
     {
       new JSONObject();
@@ -27,7 +32,7 @@ class PayJsPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PayJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

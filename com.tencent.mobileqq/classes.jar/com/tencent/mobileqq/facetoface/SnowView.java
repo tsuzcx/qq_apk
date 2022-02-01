@@ -49,7 +49,7 @@ public class SnowView
     paramSnow.b += paramSnow.d + jdField_a_of_type_JavaUtilRandom.nextFloat() * 10.0F;
     paramSnow.c += (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.5F) * 0.5F;
     if (Math.abs(paramSnow.c) > 3.0F) {
-      paramSnow.c = (0.96F * paramSnow.c);
+      paramSnow.c *= 0.96F;
     }
     paramSnow.jdField_a_of_type_Float += paramSnow.c;
     if (paramSnow.jdField_a_of_type_Float > this.jdField_a_of_type_AndroidGraphicsPoint.x) {
@@ -77,28 +77,25 @@ public class SnowView
   {
     paramSnow.jdField_a_of_type_Float = (jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_AndroidGraphicsPoint.x) + 5.0F);
     paramSnow.b = 0.0F;
-    paramSnow.d = (2.0F + jdField_a_of_type_JavaUtilRandom.nextFloat() * 5.0F);
+    paramSnow.d = (jdField_a_of_type_JavaUtilRandom.nextFloat() * 5.0F + 2.0F);
     paramSnow.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilRandom.nextInt(255);
     paramSnow.f = (jdField_a_of_type_JavaUtilRandom.nextFloat() - 0.5F);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = 0;
-    if (i < this.jdField_a_of_type_Int)
+    while (i < this.jdField_a_of_type_Int)
     {
       b(this.jdField_a_of_type_ArrayOfComTencentMobileqqFacetofaceSnow[i]);
       if (i % 2 == 0) {
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(127);
-      }
-      for (;;)
-      {
-        paramCanvas.drawCircle(this.jdField_a_of_type_ArrayOfComTencentMobileqqFacetofaceSnow[i].jdField_a_of_type_Float, this.jdField_a_of_type_ArrayOfComTencentMobileqqFacetofaceSnow[i].b, AIOUtils.a(1.0F, getResources()), this.jdField_a_of_type_AndroidGraphicsPaint);
-        i += 1;
-        break;
+      } else {
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(51);
       }
+      paramCanvas.drawCircle(this.jdField_a_of_type_ArrayOfComTencentMobileqqFacetofaceSnow[i].jdField_a_of_type_Float, this.jdField_a_of_type_ArrayOfComTencentMobileqqFacetofaceSnow[i].b, AIOUtils.b(1.0F, getResources()), this.jdField_a_of_type_AndroidGraphicsPaint);
+      i += 1;
     }
   }
   
@@ -113,7 +110,7 @@ public class SnowView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.SnowView
  * JD-Core Version:    0.7.0.1
  */

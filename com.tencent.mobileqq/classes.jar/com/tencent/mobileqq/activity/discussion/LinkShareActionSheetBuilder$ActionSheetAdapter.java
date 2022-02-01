@@ -32,59 +32,69 @@ class LinkShareActionSheetBuilder$ActionSheetAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView = paramView;
     if (paramView == null) {
-      paramView = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2131563141, null);
+      localView = LayoutInflater.from(LinkShareActionSheetBuilder.a(this.a)).inflate(2131562964, null);
     }
-    for (;;)
+    int i = 2130839063;
+    int j = 2131719020;
+    int k = 2131719459;
+    if (paramInt != 0)
     {
-      int k;
-      int j;
-      int i;
-      switch (paramInt)
+      if (paramInt != 1)
       {
-      case 4: 
-      default: 
-        k = 2130839210;
-        j = 2131719302;
-        i = 2131719735;
-      }
-      for (;;)
-      {
-        ImageView localImageView = (ImageView)paramView.findViewById(2131362887);
-        TextView localTextView = (TextView)paramView.findViewById(2131362899);
-        localImageView.setImageResource(k);
-        localTextView.setText(j);
-        if (AppSetting.d) {
-          paramView.setContentDescription(LinkShareActionSheetBuilder.a(this.a).getString(i));
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt == 5)
+            {
+              i = 2130842548;
+              j = 2131716658;
+              k = 2131716658;
+            }
+          }
+          else
+          {
+            j = 2131719032;
+            i = 2130839065;
+            k = 2131719466;
+          }
         }
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        j = 2131719316;
-        k = 2130839214;
-        i = 2131719752;
-        continue;
-        j = 2131719318;
-        k = 2130839215;
-        i = 2131719753;
-        continue;
-        j = 2131719323;
-        k = 2130839218;
-        i = 2131719760;
-        continue;
-        j = 2131719314;
-        k = 2130839212;
-        i = 2131719742;
-        continue;
-        i = 2131717005;
-        j = 2131717005;
-        k = 2130842649;
+        else
+        {
+          j = 2131719041;
+          i = 2130839071;
+          k = 2131719484;
+        }
+      }
+      else
+      {
+        j = 2131719036;
+        i = 2130839068;
+        k = 2131719477;
       }
     }
+    else
+    {
+      j = 2131719034;
+      i = 2130839067;
+      k = 2131719476;
+    }
+    paramView = (ImageView)localView.findViewById(2131362839);
+    TextView localTextView = (TextView)localView.findViewById(2131362851);
+    paramView.setImageResource(i);
+    localTextView.setText(j);
+    if (AppSetting.d) {
+      localView.setContentDescription(LinkShareActionSheetBuilder.a(this.a).getString(k));
+    }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.discussion.LinkShareActionSheetBuilder.ActionSheetAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -26,41 +26,45 @@ class ADBaseAppDownloadManager$4
           ((DownloadInfo)localObject).e = this.a.d;
           ((DownloadInfo)localObject).f = i;
           this.this$0.a((DownloadInfo)localObject, 4);
-        }
-        do
-        {
           return;
-          if (j == 2)
-          {
-            this.this$0.a(this.a);
-            localObject = new DownloadInfo();
-            ((DownloadInfo)localObject).e = this.a.d;
-            ((DownloadInfo)localObject).f = i;
-            this.this$0.a((DownloadInfo)localObject, 3);
-            return;
-          }
-        } while (j != 4);
+        }
+        if (j == 2)
+        {
+          this.this$0.a(this.a);
+          localObject = new DownloadInfo();
+          ((DownloadInfo)localObject).e = this.a.d;
+          ((DownloadInfo)localObject).f = i;
+          this.this$0.a((DownloadInfo)localObject, 3);
+          return;
+        }
+        if (j == 4)
+        {
+          localObject = new DownloadInfo();
+          ((DownloadInfo)localObject).e = this.a.d;
+          ((DownloadInfo)localObject).f = 100;
+          this.this$0.a((DownloadInfo)localObject, 5);
+        }
+      }
+      else
+      {
         localObject = new DownloadInfo();
         ((DownloadInfo)localObject).e = this.a.d;
-        ((DownloadInfo)localObject).f = 100;
-        this.this$0.a((DownloadInfo)localObject, 5);
-        return;
+        ((DownloadInfo)localObject).f = 0;
+        this.this$0.a((DownloadInfo)localObject, 0);
       }
+    }
+    else
+    {
       localObject = new DownloadInfo();
       ((DownloadInfo)localObject).e = this.a.d;
       ((DownloadInfo)localObject).f = 0;
       this.this$0.a((DownloadInfo)localObject, 0);
-      return;
     }
-    localObject = new DownloadInfo();
-    ((DownloadInfo)localObject).e = this.a.d;
-    ((DownloadInfo)localObject).f = 0;
-    this.this$0.a((DownloadInfo)localObject, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.4
  * JD-Core Version:    0.7.0.1
  */

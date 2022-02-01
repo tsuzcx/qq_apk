@@ -62,7 +62,7 @@ public class BlockableEditTextView
     return true;
   }
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu)
+  protected void onCreateContextMenu(ContextMenu paramContextMenu)
   {
     if ((a()) || (Build.VERSION.SDK_INT >= 11)) {
       super.onCreateContextMenu(paramContextMenu);
@@ -72,47 +72,44 @@ public class BlockableEditTextView
   protected void onSelectionChanged(int paramInt1, int paramInt2)
   {
     super.onSelectionChanged(paramInt1, paramInt2);
-    if (getEditableText() == null) {}
-    int i;
-    int j;
-    do
+    if (getEditableText() == null) {
+      return;
+    }
+    BlockableEditTextView.BlockAble[] arrayOfBlockAble = (BlockableEditTextView.BlockAble[])getEditableText().getSpans(paramInt1, paramInt2, BlockableEditTextView.BlockAble.class);
+    if ((arrayOfBlockAble != null) && (arrayOfBlockAble.length > 0))
     {
-      do
+      int i = getEditableText().getSpanEnd(arrayOfBlockAble[0]);
+      int j = getEditableText().getSpanStart(arrayOfBlockAble[0]);
+      if ((i > j) && (j >= 0))
       {
-        do
-        {
-          BlockableEditTextView.BlockAble[] arrayOfBlockAble;
-          do
-          {
-            return;
-            arrayOfBlockAble = (BlockableEditTextView.BlockAble[])getEditableText().getSpans(paramInt1, paramInt2, BlockableEditTextView.BlockAble.class);
-          } while ((arrayOfBlockAble == null) || (arrayOfBlockAble.length <= 0));
-          i = getEditableText().getSpanEnd(arrayOfBlockAble[0]);
-          j = getEditableText().getSpanStart(arrayOfBlockAble[0]);
-        } while ((i <= j) || (j < 0));
         if ((paramInt1 == j) && (paramInt2 == j) && (this.jdField_a_of_type_Boolean))
         {
           setSelection(i);
           return;
         }
-      } while ((this.c <= 0) || ((paramInt1 >= i) && (paramInt2 >= i)) || ((paramInt1 <= j) && (paramInt2 <= j)));
-      if ((paramInt1 <= j) && (paramInt2 <= i))
-      {
-        setSelection(paramInt1, j);
-        return;
+        if ((this.c > 0) && ((paramInt1 < i) || (paramInt2 < i)) && ((paramInt1 > j) || (paramInt2 > j)))
+        {
+          if ((paramInt1 <= j) && (paramInt2 <= i))
+          {
+            setSelection(paramInt1, j);
+            return;
+          }
+          if ((paramInt1 >= j) && (paramInt2 <= i))
+          {
+            setSelection(j);
+            return;
+          }
+          if ((paramInt1 >= j) && (paramInt2 >= i))
+          {
+            setSelection(i, paramInt2);
+            return;
+          }
+          if ((paramInt1 <= j) && (paramInt2 >= i)) {
+            setSelection(paramInt1, j);
+          }
+        }
       }
-      if ((paramInt1 >= j) && (paramInt2 <= i))
-      {
-        setSelection(j);
-        return;
-      }
-      if ((paramInt1 >= j) && (paramInt2 >= i))
-      {
-        setSelection(i, paramInt2);
-        return;
-      }
-    } while ((paramInt1 > j) || (paramInt2 < i));
-    setSelection(paramInt1, j);
+    }
   }
   
   public void setBlockFront(boolean paramBoolean)
@@ -127,7 +124,7 @@ public class BlockableEditTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.BlockableEditTextView
  * JD-Core Version:    0.7.0.1
  */

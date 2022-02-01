@@ -11,24 +11,34 @@ public final class ActivityMgr
   implements Application.ActivityLifecycleCallbacks
 {
   public static final ActivityMgr INST = new ActivityMgr();
-  private WeakReference<Activity> a;
+  public WeakReference<Activity> a;
   
-  private static String a(Object paramObject)
+  public static String a(Object paramObject)
   {
     if (paramObject == null) {
       return "null";
     }
-    return paramObject.getClass().getName() + '@' + Integer.toHexString(paramObject.hashCode());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramObject.getClass().getName());
+    localStringBuilder.append('@');
+    localStringBuilder.append(Integer.toHexString(paramObject.hashCode()));
+    return localStringBuilder.toString();
   }
   
   public Activity getCurrentActivity()
   {
     if (this.a == null)
     {
-      HMSLog.i("ActivityMgr", "mCurrentActivity is " + this.a);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mCurrentActivity is ");
+      localStringBuilder.append(this.a);
+      HMSLog.i("ActivityMgr", localStringBuilder.toString());
       return null;
     }
-    HMSLog.i("ActivityMgr", "mCurrentActivity.get() is " + this.a.get());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mCurrentActivity.get() is ");
+    localStringBuilder.append(this.a.get());
+    HMSLog.i("ActivityMgr", localStringBuilder.toString());
     return (Activity)this.a.get();
   }
   
@@ -46,7 +56,10 @@ public final class ActivityMgr
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    HMSLog.d("ActivityMgr", "onCreated:" + a(paramActivity));
+    paramBundle = new StringBuilder();
+    paramBundle.append("onCreated:");
+    paramBundle.append(a(paramActivity));
+    HMSLog.d("ActivityMgr", paramBundle.toString());
     this.a = new WeakReference(paramActivity);
   }
   
@@ -56,7 +69,10 @@ public final class ActivityMgr
   
   public void onActivityResumed(Activity paramActivity)
   {
-    HMSLog.d("ActivityMgr", "onResumed:" + a(paramActivity));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onResumed:");
+    localStringBuilder.append(a(paramActivity));
+    HMSLog.d("ActivityMgr", localStringBuilder.toString());
     this.a = new WeakReference(paramActivity);
   }
   
@@ -64,7 +80,10 @@ public final class ActivityMgr
   
   public void onActivityStarted(Activity paramActivity)
   {
-    HMSLog.d("ActivityMgr", "onStarted:" + a(paramActivity));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStarted:");
+    localStringBuilder.append(a(paramActivity));
+    HMSLog.d("ActivityMgr", localStringBuilder.toString());
     this.a = new WeakReference(paramActivity);
   }
   
@@ -72,7 +91,7 @@ public final class ActivityMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.common.ActivityMgr
  * JD-Core Version:    0.7.0.1
  */

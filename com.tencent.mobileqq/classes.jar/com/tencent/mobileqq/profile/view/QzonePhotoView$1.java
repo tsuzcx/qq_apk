@@ -4,9 +4,9 @@ import NS_MOBILE_MAIN_PAGE.PhotoWall;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QZonePhotoWall;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.profilecard.bussiness.photowall.bean.QZonePhotoWall;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -42,7 +42,7 @@ class QzonePhotoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.QzonePhotoView.1
  * JD-Core Version:    0.7.0.1
  */

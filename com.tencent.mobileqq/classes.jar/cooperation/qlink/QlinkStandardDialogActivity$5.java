@@ -3,7 +3,7 @@ package cooperation.qlink;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 class QlinkStandardDialogActivity$5
@@ -13,26 +13,26 @@ class QlinkStandardDialogActivity$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean)
+    {
       if (this.b) {
         FileManagerUtil.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 777, false, 0);
+      } else {
+        FileManagerUtil.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
       }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
-      return;
-      FileManagerUtil.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
-      continue;
-      paramDialogInterface = new Intent(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, ScannerActivity.class);
+      paramDialogInterface = new Intent();
       paramDialogInterface.putExtra("from", "qlink");
-      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(paramDialogInterface);
+      RouteUtils.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, paramDialogInterface, "/qrscan/scanner");
     }
+    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.QlinkStandardDialogActivity.5
  * JD-Core Version:    0.7.0.1
  */

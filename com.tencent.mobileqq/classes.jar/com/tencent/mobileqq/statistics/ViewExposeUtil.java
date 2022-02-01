@@ -2,8 +2,9 @@ package com.tencent.mobileqq.statistics;
 
 import android.os.SystemClock;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AppIntefaceReportWrap;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.util.IUtilApi;
+import com.tencent.util.UtilApi;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -54,28 +55,21 @@ public class ViewExposeUtil
     if (i > 0)
     {
       i -= 1;
-      if (i >= 0)
+      while (i >= 0)
       {
         ViewExposeUtil.ViewExposeUnit localViewExposeUnit = (ViewExposeUtil.ViewExposeUnit)a.get(i);
         if (localViewExposeUnit.jdField_a_of_type_JavaLangClass == paramClass)
         {
-          if (!(paramAppInterface instanceof QQAppInterface)) {
-            break label123;
-          }
-          ReportController.b((QQAppInterface)paramAppInterface, "CliOper", "", "", localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.b), "", "");
-        }
-        for (;;)
-        {
-          a.remove(i);
-          i -= 1;
-          break;
-          label123:
-          if (paramAppInterface != null) {
-            AppIntefaceReportWrap.a(paramAppInterface, "CliOper", "", "", localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.b), "", "");
+          if ((paramAppInterface instanceof BaseQQAppInterface)) {
+            ReportController.b((BaseQQAppInterface)paramAppInterface, "CliOper", "", "", localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.b), "", "");
+          } else if (paramAppInterface != null) {
+            UtilApi.a.a(paramAppInterface, "CliOper", "", "", localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.b), "", "");
           } else {
             ReportController.b(null, "CliOper", "", "", localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_JavaLangString, localViewExposeUnit.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localViewExposeUnit.b), "", "");
           }
+          a.remove(i);
         }
+        i -= 1;
       }
     }
     paramAppInterface = new ViewExposeUtil.ViewExposeUnit();
@@ -89,28 +83,31 @@ public class ViewExposeUtil
   
   public static void a(Class<?> paramClass, int paramInt1, int paramInt2, String paramString)
   {
-    if ((paramClass == null) || (paramString == null)) {
-      return;
-    }
-    if (paramString.contains("/qunactivity/")) {}
-    for (String str = "0X8004EC8";; str = null)
+    if (paramClass != null)
     {
+      if (paramString == null) {
+        return;
+      }
+      String str;
+      if (paramString.contains("/qunactivity/")) {
+        str = "0X8004EC8";
+      } else {
+        str = null;
+      }
       if (paramString.contains("/hotchat/"))
       {
-        str = "0X8004410";
         paramInt2 = 2;
+        str = "0X8004410";
       }
-      if (str == null) {
-        break;
+      if (str != null) {
+        a(null, paramClass, paramInt1, str, paramInt2);
       }
-      a(null, paramClass, paramInt1, str, paramInt2);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ViewExposeUtil
  * JD-Core Version:    0.7.0.1
  */

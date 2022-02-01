@@ -17,15 +17,20 @@ public class ApolloTianshuReportUtil
   
   public static void a(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    QLog.d("ApolloTianshuReportUtil", 1, new Object[] { "tianshuReport action:", Integer.valueOf(paramInt), ", itemId=", paramString1, ",traceInfo=", paramString2, ", bizInfo=", paramString3 });
+    QLog.d("[cmshow]ApolloTianshuReportUtil", 1, new Object[] { "tianshuReport action:", Integer.valueOf(paramInt), ", itemId=", paramString1, ",traceInfo=", paramString2, ", bizInfo=", paramString3 });
     TianShuReportData localTianShuReportData = new TianShuReportData();
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str = "";
-    if (localAppRuntime != null) {
-      str = localAppRuntime.getAccount();
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getAccount();
+    } else {
+      localObject = "";
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localTianShuReportData.b = (str + "_" + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("_");
+    localStringBuilder.append(l);
+    localTianShuReportData.b = localStringBuilder.toString();
     localTianShuReportData.jdField_a_of_type_Int = 1;
     localTianShuReportData.jdField_e_of_type_JavaLangString = "tianshu.75";
     localTianShuReportData.jdField_f_of_type_JavaLangString = "tianshu.75";
@@ -44,7 +49,7 @@ public class ApolloTianshuReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.ApolloTianshuReportUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,31 @@ public class WebGiftInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("【WebGiftInfo】").append("senderName : ").append(this.senderName).append(" | senderHeadKey : ").append(this.senderHeadKey).append(" | senderHeadUrl : ").append(this.senderHeadUrl).append(" | effectId : ").append(this.effectId).append(" | giftName : ").append(this.giftName).append(" | effectNum : ").append(this.effectNum).append(" | linkMicGiftComment : ").append(this.linkMicGiftComment).append(" | anchorName : ").append(this.anchorName).append(" | anchorUin : ").append(this.anchorUin);
+    localStringBuffer.append("【WebGiftInfo】");
+    localStringBuffer.append("senderName : ");
+    localStringBuffer.append(this.senderName);
+    localStringBuffer.append(" | senderHeadKey : ");
+    localStringBuffer.append(this.senderHeadKey);
+    localStringBuffer.append(" | senderHeadUrl : ");
+    localStringBuffer.append(this.senderHeadUrl);
+    localStringBuffer.append(" | effectId : ");
+    localStringBuffer.append(this.effectId);
+    localStringBuffer.append(" | giftName : ");
+    localStringBuffer.append(this.giftName);
+    localStringBuffer.append(" | effectNum : ");
+    localStringBuffer.append(this.effectNum);
+    localStringBuffer.append(" | linkMicGiftComment : ");
+    localStringBuffer.append(this.linkMicGiftComment);
+    localStringBuffer.append(" | anchorName : ");
+    localStringBuffer.append(this.anchorName);
+    localStringBuffer.append(" | anchorUin : ");
+    localStringBuffer.append(this.anchorUin);
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.WebGiftInfo
  * JD-Core Version:    0.7.0.1
  */

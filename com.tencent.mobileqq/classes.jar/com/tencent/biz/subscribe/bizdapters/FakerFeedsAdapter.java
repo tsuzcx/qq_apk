@@ -42,96 +42,107 @@ public abstract class FakerFeedsAdapter
   private int a(String paramString)
   {
     int i = 0;
-    for (;;)
+    while (i < b().size())
     {
-      CertifiedAccountMeta.StFeed localStFeed;
-      if (i < b().size())
+      Object localObject = (CertifiedAccountMeta.StFeed)b().get(i);
+      if ((paramString.startsWith("fakeid_")) && (!((CertifiedAccountMeta.StFeed)localObject).id.get().startsWith("fakeid_")))
       {
-        localStFeed = (CertifiedAccountMeta.StFeed)b().get(i);
-        if ((paramString.startsWith("fakeid_")) && (!localStFeed.id.get().startsWith("fakeid_"))) {
-          QLog.d("FakerFeedsAdapter", 2, "has none fakeFeeds");
-        }
+        QLog.d("FakerFeedsAdapter", 2, "has none fakeFeeds");
+        break;
       }
-      else
+      if (paramString.equals(((CertifiedAccountMeta.StFeed)localObject).id.get()))
       {
-        return -1;
-      }
-      if (paramString.equals(localStFeed.id.get()))
-      {
-        QLog.d("FakerFeedsAdapter", 2, "find fakeid:" + paramString);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("find fakeid:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("FakerFeedsAdapter", 2, ((StringBuilder)localObject).toString());
         return i;
       }
       i += 1;
     }
+    return -1;
   }
   
   private void a(SubscribeFeedsEvent paramSubscribeFeedsEvent)
   {
-    Object localObject = new StringBuilder().append("fakeFeed state:").append(paramSubscribeFeedsEvent.mState).append(",fakeId:").append(paramSubscribeFeedsEvent.mTargetId).append(",fake listSize:");
-    int i;
-    if (paramSubscribeFeedsEvent.mFakeFeedDataList == null)
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("fakeFeed state:");
+    ((StringBuilder)localObject).append(paramSubscribeFeedsEvent.mState);
+    ((StringBuilder)localObject).append(",fakeId:");
+    ((StringBuilder)localObject).append(paramSubscribeFeedsEvent.mTargetId);
+    ((StringBuilder)localObject).append(",fake listSize:");
+    if (paramSubscribeFeedsEvent.mFakeFeedDataList == null) {
       i = 0;
-      QLog.d("FakerFeedsAdapter", 2, i);
-      if (a("share_key_subscribe_user") != null) {
-        break label83;
-      }
+    } else {
+      i = paramSubscribeFeedsEvent.mFakeFeedDataList.size();
     }
-    label83:
-    do
+    ((StringBuilder)localObject).append(i);
+    QLog.d("FakerFeedsAdapter", 2, ((StringBuilder)localObject).toString());
+    if (a("share_key_subscribe_user") == null) {
+      return;
+    }
+    int i = paramSubscribeFeedsEvent.mState;
+    if (i != 1)
     {
-      do
+      if (i != 2)
       {
-        do
+        if (i != 3)
         {
-          do
-          {
+          if (i != 4) {
             return;
-            i = paramSubscribeFeedsEvent.mFakeFeedDataList.size();
-            break;
-            switch (paramSubscribeFeedsEvent.mState)
+          }
+          if (!this.c) {
+            return;
+          }
+          this.c = false;
+          if ((paramSubscribeFeedsEvent.mFakeFeedDataList != null) && (paramSubscribeFeedsEvent.mFakeFeedDataList.size() > 0))
+          {
+            if (SubscribeGlobalInfo.a() != null)
             {
-            default: 
-              return;
-            case 1: 
-              if (SubscribeGlobalInfo.a() != null)
+              localObject = paramSubscribeFeedsEvent.mFakeFeedDataList.iterator();
+              while (((Iterator)localObject).hasNext())
               {
-                paramSubscribeFeedsEvent.mSingleFakeFeed.poster.icon.set(SubscribeGlobalInfo.a().icon.get());
-                paramSubscribeFeedsEvent.mSingleFakeFeed.poster.nick.set(SubscribeGlobalInfo.a().nick.get());
+                CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((Iterator)localObject).next();
+                if (localStFeed.poster != null)
+                {
+                  localStFeed.poster.icon.set(SubscribeGlobalInfo.a().icon.get());
+                  localStFeed.poster.nick.set(SubscribeGlobalInfo.a().nick.get());
+                }
               }
-              a().post(new FakerFeedsAdapter.1(this, paramSubscribeFeedsEvent));
-              return;
-            case 2: 
-              i = a(paramSubscribeFeedsEvent.mTargetId);
             }
-          } while (i == -1);
+            a().post(new FakerFeedsAdapter.4(this, paramSubscribeFeedsEvent));
+          }
+        }
+        else
+        {
+          i = a(paramSubscribeFeedsEvent.mTargetId);
+          if (i != -1) {
+            a().post(new FakerFeedsAdapter.3(this, i));
+          }
+        }
+      }
+      else
+      {
+        i = a(paramSubscribeFeedsEvent.mTargetId);
+        if (i != -1)
+        {
           localObject = SubscribeUtils.a((CertifiedAccountMeta.StFeed)b().get(i));
           ((CertifiedAccountMeta.StFeed)localObject).id.set(paramSubscribeFeedsEvent.mSingleFakeFeed.id.get());
           ((CertifiedAccountMeta.StFeed)localObject).createTime.set(paramSubscribeFeedsEvent.mSingleFakeFeed.createTime.get());
           ((CertifiedAccountMeta.StFeed)localObject).cover.url.set(paramSubscribeFeedsEvent.mSingleFakeFeed.cover.url.get());
           a().post(new FakerFeedsAdapter.2(this, (CertifiedAccountMeta.StFeed)localObject, i));
-          return;
-          i = a(paramSubscribeFeedsEvent.mTargetId);
-        } while (i == -1);
-        a().post(new FakerFeedsAdapter.3(this, i));
-        return;
-      } while (!this.c);
-      this.c = false;
-    } while ((paramSubscribeFeedsEvent.mFakeFeedDataList == null) || (paramSubscribeFeedsEvent.mFakeFeedDataList.size() <= 0));
-    if (SubscribeGlobalInfo.a() != null)
-    {
-      localObject = paramSubscribeFeedsEvent.mFakeFeedDataList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((Iterator)localObject).next();
-        if (localStFeed.poster != null)
-        {
-          localStFeed.poster.icon.set(SubscribeGlobalInfo.a().icon.get());
-          localStFeed.poster.nick.set(SubscribeGlobalInfo.a().nick.get());
         }
       }
     }
-    a().post(new FakerFeedsAdapter.4(this, paramSubscribeFeedsEvent));
+    else
+    {
+      if (SubscribeGlobalInfo.a() != null)
+      {
+        paramSubscribeFeedsEvent.mSingleFakeFeed.poster.icon.set(SubscribeGlobalInfo.a().icon.get());
+        paramSubscribeFeedsEvent.mSingleFakeFeed.poster.nick.set(SubscribeGlobalInfo.a().nick.get());
+      }
+      a().post(new FakerFeedsAdapter.1(this, paramSubscribeFeedsEvent));
+    }
   }
   
   protected void a(int paramInt)
@@ -157,8 +168,9 @@ public abstract class FakerFeedsAdapter
   
   protected void b()
   {
-    if ((this.a instanceof StaggeredGridLayoutManager)) {
-      ((StaggeredGridLayoutManager)this.a).invalidateSpanAssignments();
+    RecyclerView.LayoutManager localLayoutManager = this.a;
+    if ((localLayoutManager instanceof StaggeredGridLayoutManager)) {
+      ((StaggeredGridLayoutManager)localLayoutManager).invalidateSpanAssignments();
     }
   }
   
@@ -212,7 +224,7 @@ public abstract class FakerFeedsAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.FakerFeedsAdapter
  * JD-Core Version:    0.7.0.1
  */

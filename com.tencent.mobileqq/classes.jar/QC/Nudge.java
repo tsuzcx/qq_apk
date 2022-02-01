@@ -39,14 +39,15 @@ public final class Nudge
     paramJceOutputStream.write(this.ischangeswitch, 1);
     paramJceOutputStream.write(this.isclose, 2);
     paramJceOutputStream.write(this.ischangecustomtext, 3);
-    if (this.customtext != null) {
-      paramJceOutputStream.write(this.customtext, 4);
+    String str = this.customtext;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.Nudge
  * JD-Core Version:    0.7.0.1
  */

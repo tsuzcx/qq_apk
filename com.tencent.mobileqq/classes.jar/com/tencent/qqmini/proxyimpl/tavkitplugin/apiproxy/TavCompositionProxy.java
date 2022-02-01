@@ -234,7 +234,7 @@ class TavCompositionProxy
   {
     super.a(paramObjCreateTavEvent);
     paramObjCreateTavEvent = new TAVComposition();
-    paramObjCreateTavEvent.setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFit);
+    paramObjCreateTavEvent.setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFill);
     a(paramObjCreateTavEvent);
   }
   
@@ -244,7 +244,11 @@ class TavCompositionProxy
     Object localObject = paramSendMsgTavEvent.a();
     if (!(localObject instanceof TAVComposition))
     {
-      Log.e(this.jdField_a_of_type_JavaLangString, "sendMsgInvoke: " + "object error");
+      paramSendMsgTavEvent = this.jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendMsgInvoke: ");
+      ((StringBuilder)localObject).append("object error");
+      Log.e(paramSendMsgTavEvent, ((StringBuilder)localObject).toString());
       this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail("object error");
       return;
     }
@@ -253,7 +257,7 @@ class TavCompositionProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavCompositionProxy
  * JD-Core Version:    0.7.0.1
  */

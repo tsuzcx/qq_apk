@@ -1,8 +1,8 @@
 package com.tencent.biz.subscribe.widget;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -22,19 +22,21 @@ public abstract class SubscribeBannerView$BannerAdapter
     Object localObject;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 1)
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt % this.jdField_a_of_type_JavaUtilArrayList.size());
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
-        break label76;
-      }
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject = ((ArrayList)localObject).get(paramInt % ((ArrayList)localObject).size());
     }
-    label76:
-    for (View localView = (View)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();; localView = a(paramViewGroup))
+    else
     {
-      paramViewGroup.addView(localView);
-      return a(localView, localObject);
       localObject = this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      break;
     }
+    View localView;
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0) {
+      localView = (View)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    } else {
+      localView = a(paramViewGroup);
+    }
+    paramViewGroup.addView(localView);
+    return a(localView, localObject);
   }
   
   public ArrayList a()
@@ -70,9 +72,10 @@ public abstract class SubscribeBannerView$BannerAdapter
   
   public int getItemPosition(Object paramObject)
   {
-    if (this.jdField_a_of_type_Int > 0)
+    int i = this.jdField_a_of_type_Int;
+    if (i > 0)
     {
-      this.jdField_a_of_type_Int -= 1;
+      this.jdField_a_of_type_Int = (i - 1);
       return -2;
     }
     return super.getItemPosition(paramObject);
@@ -91,7 +94,7 @@ public abstract class SubscribeBannerView$BannerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView.BannerAdapter
  * JD-Core Version:    0.7.0.1
  */

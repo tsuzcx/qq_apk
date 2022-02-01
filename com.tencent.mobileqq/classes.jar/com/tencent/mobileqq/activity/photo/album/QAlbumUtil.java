@@ -6,6 +6,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import android.util.Pair;
+import android.view.View;
+import android.view.animation.RotateAnimation;
+import android.webkit.MimeTypeMap;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.MimeHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -82,37 +85,65 @@ public class QAlbumUtil
   public static String createContentDescription(int paramInt1, LocalMediaInfo paramLocalMediaInfo, int paramInt2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramInt1)
-    {
-    default: 
+    if (paramInt1 != 1) {
       localStringBuilder.append("照片 ");
-    }
-    for (;;)
-    {
-      localStringBuilder.append("拍摄时间: ");
-      paramLocalMediaInfo = new Date(paramLocalMediaInfo.modifiedDate * 1000L);
-      localStringBuilder.append(sDateFormatForMinute.format(paramLocalMediaInfo));
-      return localStringBuilder.toString();
+    } else {
       localStringBuilder.append("视频 ");
     }
+    localStringBuilder.append("拍摄时间: ");
+    paramLocalMediaInfo = new Date(paramLocalMediaInfo.modifiedDate * 1000L);
+    localStringBuilder.append(sDateFormatForMinute.format(paramLocalMediaInfo));
+    return localStringBuilder.toString();
   }
   
   public static String createContentDescriptionWithCheckBox(int paramInt1, LocalMediaInfo paramLocalMediaInfo, int paramInt2, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramInt1)
-    {
-    default: 
+    if (paramInt1 != 1) {
       localStringBuilder.append("照片 ");
-    }
-    for (;;)
-    {
-      localStringBuilder.append("拍摄时间: ");
-      paramLocalMediaInfo = new Date(paramLocalMediaInfo.modifiedDate * 1000L);
-      localStringBuilder.append(sDateFormatForHour.format(paramLocalMediaInfo));
-      return localStringBuilder.toString();
+    } else {
       localStringBuilder.append("视频 ");
     }
+    localStringBuilder.append("拍摄时间: ");
+    paramLocalMediaInfo = new Date(paramLocalMediaInfo.modifiedDate * 1000L);
+    localStringBuilder.append(sDateFormatForHour.format(paramLocalMediaInfo));
+    return localStringBuilder.toString();
+  }
+  
+  public static String formatTimeToString(long paramLong)
+  {
+    int j = (int)(paramLong / 1000L);
+    int i = j % 60;
+    j /= 60;
+    Object localObject1;
+    if (i > 9)
+    {
+      localObject1 = String.valueOf(i);
+    }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("0");
+      ((StringBuilder)localObject1).append(String.valueOf(i));
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    Object localObject2;
+    if (j > 9)
+    {
+      localObject2 = String.valueOf(j);
+    }
+    else
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("0");
+      ((StringBuilder)localObject2).append(String.valueOf(j));
+      localObject2 = ((StringBuilder)localObject2).toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append(":");
+    localStringBuilder.append((String)localObject1);
+    return localStringBuilder.toString();
   }
   
   public static URL generateAlbumThumbURL(LocalMediaInfo paramLocalMediaInfo)
@@ -177,22 +208,55 @@ public class QAlbumUtil
     if (arrayOfString == null) {
       return 0;
     }
-    Integer localInteger = (Integer)MEDIA_TYPE_MAPS.get(arrayOfString[0]);
-    if (localInteger == null)
+    Object localObject = (Integer)MEDIA_TYPE_MAPS.get(arrayOfString[0]);
+    if (localObject == null)
     {
-      QLog.w("QAlbumUtil", 1, "getMediaType fail : " + paramLocalMediaInfo.mMimeType + " - " + arrayOfString[0]);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMediaType fail : ");
+      ((StringBuilder)localObject).append(paramLocalMediaInfo.mMimeType);
+      ((StringBuilder)localObject).append(" - ");
+      ((StringBuilder)localObject).append(arrayOfString[0]);
+      QLog.w("QQAlbum", 1, ((StringBuilder)localObject).toString());
       return -1;
     }
-    return localInteger.intValue();
+    return ((Integer)localObject).intValue();
+  }
+  
+  public static int getMediaType(String paramString)
+  {
+    if (paramString != null)
+    {
+      if (!paramString.contains(".")) {
+        return -1;
+      }
+      paramString = paramString.substring(paramString.lastIndexOf(".") + 1);
+      paramString = MimeTypeMap.getSingleton().getMimeTypeFromExtension(paramString);
+      if ((paramString != null) && (paramString.contains("video"))) {
+        return 1;
+      }
+      if ((paramString != null) && (paramString.contains("image"))) {
+        return 0;
+      }
+    }
+    return -1;
+  }
+  
+  public static boolean isGif(LocalMediaInfo paramLocalMediaInfo)
+  {
+    return (paramLocalMediaInfo != null) && ("image/gif".equals(paramLocalMediaInfo.mMimeType));
   }
   
   public static final boolean isNetUrl(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://"))) {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static void putLastAlbumInfo(Context paramContext, String paramString1, String paramString2)
@@ -203,29 +267,49 @@ public class QAlbumUtil
     paramContext.commit();
   }
   
+  public static void rotate180Degrees(View paramView, boolean paramBoolean)
+  {
+    float f1;
+    if (paramBoolean) {
+      f1 = 180.0F;
+    } else {
+      f1 = 0.0F;
+    }
+    float f2;
+    if (paramBoolean) {
+      f2 = 360.0F;
+    } else {
+      f2 = 180.0F;
+    }
+    RotateAnimation localRotateAnimation = new RotateAnimation(f1, f2, 1, 0.5F, 1, 0.5F);
+    localRotateAnimation.setDuration(300L);
+    localRotateAnimation.setFillAfter(true);
+    paramView.startAnimation(localRotateAnimation);
+  }
+  
   private static void xInAnim(Activity paramActivity)
   {
-    paramActivity.overridePendingTransition(2130771994, 2130771995);
+    paramActivity.overridePendingTransition(2130772006, 2130772007);
   }
   
   private static void xOutAnim(Activity paramActivity)
   {
-    paramActivity.overridePendingTransition(2130771990, 2130771991);
+    paramActivity.overridePendingTransition(2130772002, 2130772003);
   }
   
   private static void yInAnim(Activity paramActivity)
   {
-    paramActivity.overridePendingTransition(2130771981, 2130771982);
+    paramActivity.overridePendingTransition(2130771993, 2130771994);
   }
   
   private static void yOutAnim(Activity paramActivity)
   {
-    paramActivity.overridePendingTransition(2130771979, 2130771980);
+    paramActivity.overridePendingTransition(2130771991, 2130771992);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.QAlbumUtil
  * JD-Core Version:    0.7.0.1
  */

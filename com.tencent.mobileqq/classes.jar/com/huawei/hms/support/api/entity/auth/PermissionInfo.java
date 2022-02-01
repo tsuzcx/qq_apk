@@ -9,7 +9,7 @@ import com.huawei.hms.core.aidl.annotation.Packed;
 public class PermissionInfo
   implements Parcelable, IMessageEntity
 {
-  public static final Parcelable.Creator<PermissionInfo> CREATOR = new PermissionInfo.1();
+  public static final Parcelable.Creator<PermissionInfo> CREATOR = new PermissionInfo.a();
   @Packed
   private String appID;
   @Packed
@@ -83,7 +83,7 @@ public class PermissionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.entity.auth.PermissionInfo
  * JD-Core Version:    0.7.0.1
  */

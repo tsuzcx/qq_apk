@@ -54,8 +54,20 @@ public final class f
   private String b(String paramString1, String paramString2, BaseAppBrandWebview paramBaseAppBrandWebview, int paramInt)
   {
     int m = this.b.a(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("JsPluginEngine", 2, "handleNativeRequest authFlag=" + m + ",eventName=" + paramString1 + "，jsonParams=" + paramString2 + ",webview=" + paramBaseAppBrandWebview + ",callbackId=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleNativeRequest authFlag=");
+      localStringBuilder.append(m);
+      localStringBuilder.append(",eventName=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("，jsonParams=");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",webview=");
+      localStringBuilder.append(paramBaseAppBrandWebview);
+      localStringBuilder.append(",callbackId=");
+      localStringBuilder.append(paramInt);
+      QLog.d("JsPluginEngine", 2, localStringBuilder.toString());
     }
     if (m == 2)
     {
@@ -71,16 +83,26 @@ public final class f
   
   private String c(String paramString1, String paramString2, BaseAppBrandWebview paramBaseAppBrandWebview, int paramInt)
   {
-    Iterator localIterator = this.g.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.g.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      a locala = (a)localIterator.next();
+      a locala = (a)((Iterator)localObject).next();
       if (locala.a(paramString1)) {
         return locala.a(paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.w("JsPluginEngine", 2, "handleNativeRequest fail,event not support! eventName=" + paramString1 + "，jsonParams=" + paramString2 + ",webview=" + paramBaseAppBrandWebview + ",callbackId=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleNativeRequest fail,event not support! eventName=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("，jsonParams=");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(",webview=");
+      ((StringBuilder)localObject).append(paramBaseAppBrandWebview);
+      ((StringBuilder)localObject).append(",callbackId=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.w("JsPluginEngine", 2, ((StringBuilder)localObject).toString());
     }
     b(paramBaseAppBrandWebview, paramString1, null, paramInt);
     return "";
@@ -88,33 +110,48 @@ public final class f
   
   private void d(String paramString1, String paramString2, BaseAppBrandWebview paramBaseAppBrandWebview, int paramInt)
   {
-    if (this.b.a(paramString1, paramString2) <= System.currentTimeMillis() / 1000L) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (this.b.a(paramString1, paramString2) <= System.currentTimeMillis() / 1000L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("JsPluginEngine", 2, "handleNativeRequest bAuth=" + bool + ",isPause=" + this.l);
-      }
-      if (!bool) {
-        break;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleNativeRequest bAuth=");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append(",isPause=");
+      ((StringBuilder)localObject).append(this.l);
+      QLog.d("JsPluginEngine", 2, ((StringBuilder)localObject).toString());
+    }
+    if (bool)
+    {
       paramBaseAppBrandWebview = new f.a(this, paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
       this.h.offer(paramBaseAppBrandWebview);
-      if ((!this.l) && ((this.c == null) || (!this.c.isShowing())))
+      if (!this.l)
       {
-        paramBaseAppBrandWebview = this.j.obtainMessage(2);
-        Bundle localBundle = new Bundle();
-        localBundle.putString("key_event_name", paramString1);
-        localBundle.putString("key_params", paramString2);
-        paramBaseAppBrandWebview.setData(localBundle);
-        paramBaseAppBrandWebview.sendToTarget();
+        paramBaseAppBrandWebview = this.c;
+        if ((paramBaseAppBrandWebview == null) || (!paramBaseAppBrandWebview.isShowing()))
+        {
+          paramBaseAppBrandWebview = this.j.obtainMessage(2);
+          localObject = new Bundle();
+          ((Bundle)localObject).putString("key_event_name", paramString1);
+          ((Bundle)localObject).putString("key_params", paramString2);
+          paramBaseAppBrandWebview.setData((Bundle)localObject);
+          paramBaseAppBrandWebview.sendToTarget();
+        }
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("JsPluginEngine", 2, "handleNativeRequest callbackJsEventFail");
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("JsPluginEngine", 2, "handleNativeRequest callbackJsEventFail");
+      }
+      b(paramBaseAppBrandWebview, paramString1, null, paramInt);
+      this.j.obtainMessage(1).sendToTarget();
     }
-    b(paramBaseAppBrandWebview, paramString1, null, paramInt);
-    this.j.obtainMessage(1).sendToTarget();
   }
   
   private void g()
@@ -127,41 +164,59 @@ public final class f
   
   public String a(String paramString1, String paramString2, BaseAppBrandWebview paramBaseAppBrandWebview, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramBaseAppBrandWebview == null) || (this.k))
+    Object localObject1;
+    if ((!TextUtils.isEmpty(paramString1)) && (paramBaseAppBrandWebview != null) && (!this.k))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("JsPluginEngine", 2, "handleNativeRequest fail eventName=" + paramString1 + "，jsonParams=" + paramString2 + ",webview=" + paramBaseAppBrandWebview + ",callbackId=" + paramInt + ",isDestory=" + this.k);
-      }
-      return "";
-    }
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      BaseActivity localBaseActivity = this.a.d;
-      String str;
-      if (localBaseActivity != null)
+      if (Build.VERSION.SDK_INT >= 23)
       {
-        str = com.tencent.mobileqq.microapp.app.a.d(paramString1, paramString2);
-        if (StringUtil.a(str)) {
-          break label228;
+        Object localObject2 = this.a.d;
+        if (localObject2 != null)
+        {
+          localObject1 = com.tencent.mobileqq.microapp.app.a.d(paramString1, paramString2);
+          if (!StringUtil.a((String)localObject1))
+          {
+            int m;
+            if (((BaseActivity)localObject2).checkSelfPermission((String)localObject1) == 0) {
+              m = 1;
+            } else {
+              m = 0;
+            }
+            if (m == 0)
+            {
+              ((BaseActivity)localObject2).requestPermissions(new g(this, paramString1, paramString2, paramBaseAppBrandWebview, paramInt), 1, new String[] { localObject1 });
+              return "";
+            }
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append((String)localObject1);
+              ((StringBuilder)localObject2).append(" has granted permission!!!");
+              QLog.d("JsPluginEngine", 2, ((StringBuilder)localObject2).toString());
+            }
+            return b(paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
+          }
+          return b(paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
         }
-        if (localBaseActivity.checkSelfPermission(str) != 0) {
-          break label179;
-        }
-      }
-      label179:
-      for (int m = 1; m == 0; m = 0)
-      {
-        localBaseActivity.requestPermissions(new g(this, paramString1, paramString2, paramBaseAppBrandWebview, paramInt), 1, new String[] { str });
         return "";
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("JsPluginEngine", 2, str + " has granted permission!!!");
-      }
-      return b(paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
-      label228:
       return b(paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
     }
-    return b(paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleNativeRequest fail eventName=");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append("，jsonParams=");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(",webview=");
+      ((StringBuilder)localObject1).append(paramBaseAppBrandWebview);
+      ((StringBuilder)localObject1).append(",callbackId=");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(",isDestory=");
+      ((StringBuilder)localObject1).append(this.k);
+      QLog.w("JsPluginEngine", 2, ((StringBuilder)localObject1).toString());
+    }
+    return "";
   }
   
   public void a()
@@ -175,9 +230,21 @@ public final class f
     if (paramBaseAppBrandWebview == null) {
       return;
     }
-    paramString = "WeixinJSBridge.subscribeHandler(\"" + paramString + "\", " + paramJSONObject + "," + paramBaseAppBrandWebview.pageWebviewId + ")";
-    if (QLog.isColorLevel()) {
-      QLog.d("JsPluginEngine", 2, "callJs jsStr=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("\", ");
+    localStringBuilder.append(paramJSONObject);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramBaseAppBrandWebview.pageWebviewId);
+    localStringBuilder.append(")");
+    paramString = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("callJs jsStr=");
+      paramJSONObject.append(paramString);
+      QLog.d("JsPluginEngine", 2, paramJSONObject.toString());
     }
     paramBaseAppBrandWebview.evaluteJs(paramString);
   }
@@ -187,15 +254,12 @@ public final class f
     if (paramBaseAppBrandWebview != null)
     {
       paramString = c.a(paramString, paramJSONObject);
-      if (paramString == null) {
-        break label27;
+      if (paramString != null) {
+        paramString = paramString.toString();
+      } else {
+        paramString = "";
       }
-    }
-    label27:
-    for (paramString = paramString.toString();; paramString = "")
-    {
       paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, paramString);
-      return;
     }
   }
   
@@ -204,15 +268,12 @@ public final class f
     if (paramBaseAppBrandWebview != null)
     {
       paramString1 = c.a(paramString1, paramJSONObject, paramString2);
-      if (paramString1 == null) {
-        break label29;
+      if (paramString1 != null) {
+        paramString1 = paramString1.toString();
+      } else {
+        paramString1 = "";
       }
-    }
-    label29:
-    for (paramString1 = paramString1.toString();; paramString1 = "")
-    {
       paramBaseAppBrandWebview.evaluateCallbackJs(paramInt, paramString1);
-      return;
     }
   }
   
@@ -261,16 +322,17 @@ public final class f
   {
     this.l = true;
     this.k = true;
-    Iterator localIterator = this.g.iterator();
-    while (localIterator.hasNext()) {
-      localIterator.next();
+    Object localObject = this.g.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((Iterator)localObject).next();
     }
     this.g.clear();
     this.h.clear();
     g();
-    if (this.c != null)
+    localObject = this.c;
+    if (localObject != null)
     {
-      this.c.setOnDismissListener(null);
+      ((d)localObject).setOnDismissListener(null);
       this.c.dismiss();
       this.c = null;
     }
@@ -278,131 +340,176 @@ public final class f
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JsPluginEngine", 2, "handleMessage what=" + paramMessage.what + ",isDestory=" + this.k);
-    }
-    if ((this.k) || (this.l)) {}
-    label625:
-    do
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      do
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleMessage what=");
+      ((StringBuilder)localObject1).append(paramMessage.what);
+      ((StringBuilder)localObject1).append(",isDestory=");
+      ((StringBuilder)localObject1).append(this.k);
+      QLog.d("JsPluginEngine", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (!this.k)
+    {
+      if (this.l) {
+        return false;
+      }
+      int m = paramMessage.what;
+      Object localObject2;
+      if (m != 1)
       {
-        for (;;)
+        if (m != 2)
         {
-          return false;
-          Object localObject;
-          f.a locala;
-          switch (paramMessage.what)
+          if (m != 3)
           {
-          default: 
-            return false;
-          case 1: 
-            localObject = this.h.iterator();
-            if ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 2)) {
-              break;
+            if (m != 4) {
+              return false;
             }
-            paramMessage = (String)paramMessage.obj;
-            if (TextUtils.isEmpty(paramMessage)) {
-              break;
-            }
-            if (paramMessage.equals("scope.camera")) {
-              a(this.a.i, "onCameraNeedAuthCancel", null);
-            }
-            while (((Iterator)localObject).hasNext())
+            localObject1 = this.i.iterator();
+            if ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 2))
             {
-              locala = (f.a)((Iterator)localObject).next();
-              if (paramMessage.equals(com.tencent.mobileqq.microapp.app.a.c(locala.a, locala.b)))
+              paramMessage = (f.a)this.i.peek();
+              if (paramMessage != null)
               {
-                ((Iterator)localObject).remove();
-                b((BaseAppBrandWebview)locala.c.get(), locala.a, null, locala.d);
+                this.h.remove(paramMessage);
+                a(paramMessage.a, paramMessage.b, (BaseAppBrandWebview)paramMessage.c.get(), paramMessage.d);
+                return false;
               }
             }
-          case 3: 
+            else
+            {
+              paramMessage = (String)paramMessage.obj;
+              if (!TextUtils.isEmpty(paramMessage))
+              {
+                if (paramMessage.equals("android.permission.CAMERA")) {
+                  a(this.a.i, "onCameraNeedAuthCancel", null);
+                }
+                while (((Iterator)localObject1).hasNext())
+                {
+                  localObject2 = (f.a)((Iterator)localObject1).next();
+                  if (paramMessage.equals(com.tencent.mobileqq.microapp.app.a.c.get(((f.a)localObject2).a)))
+                  {
+                    ((Iterator)localObject1).remove();
+                    b((BaseAppBrandWebview)((f.a)localObject2).c.get(), ((f.a)localObject2).a, null, ((f.a)localObject2).d);
+                  }
+                }
+              }
+            }
+          }
+          else
+          {
             if (this.c == null)
             {
               this.c = new d(this.f);
               this.c.setOnDismissListener(this.d);
             }
-            localObject = paramMessage.getData();
-            this.c.a((Bundle)localObject);
+            localObject1 = paramMessage.getData();
+            this.c.a((Bundle)localObject1);
             paramMessage = com.tencent.mobileqq.microapp.app.a.d(paramMessage.getData().getString("key_event_name", ""), paramMessage.getData().getString("key_params", ""));
             paramMessage = (String)com.tencent.mobileqq.microapp.app.a.d.get(paramMessage);
             this.c.a("权限设置", paramMessage, "拒绝", "#FF000000", "去设置", "#FF000000", true, null);
             return false;
-          case 2: 
-            if (this.c == null)
-            {
-              this.c = new d(this.f);
-              this.c.setOnDismissListener(this.e);
-            }
-            paramMessage = paramMessage.getData();
-            this.c.a(paramMessage);
-            localObject = com.tencent.mobileqq.microapp.app.a.c(paramMessage.getString("key_event_name", ""), paramMessage.getString("key_params", ""));
-            paramMessage = (Message)localObject;
-            if (localObject != null)
-            {
-              paramMessage = (Message)localObject;
-              if (com.tencent.mobileqq.microapp.app.a.b.containsKey(localObject)) {
-                paramMessage = (String)com.tencent.mobileqq.microapp.app.a.b.get(localObject);
-              }
-            }
-            this.c.a(this.a.c.c + "申请以下权限", paramMessage, "拒绝", "#FF000000", "允许", "#FF000000", true, null);
-            return false;
-          case 4: 
-            localObject = this.i.iterator();
-            if ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 2)) {
-              break label625;
-            }
-            paramMessage = (String)paramMessage.obj;
-            if (!TextUtils.isEmpty(paramMessage))
-            {
-              if (paramMessage.equals("android.permission.CAMERA")) {
-                a(this.a.i, "onCameraNeedAuthCancel", null);
-              }
-              while (((Iterator)localObject).hasNext())
-              {
-                locala = (f.a)((Iterator)localObject).next();
-                if (paramMessage.equals(com.tencent.mobileqq.microapp.app.a.c.get(locala.a)))
-                {
-                  ((Iterator)localObject).remove();
-                  b((BaseAppBrandWebview)locala.c.get(), locala.a, null, locala.d);
-                }
-              }
-            }
-            break;
           }
         }
-        paramMessage = (f.a)this.i.peek();
-      } while (paramMessage == null);
-      this.h.remove(paramMessage);
-      a(paramMessage.a, paramMessage.b, (BaseAppBrandWebview)paramMessage.c.get(), paramMessage.d);
-      return false;
-      paramMessage = (f.a)this.h.peek();
-    } while (paramMessage == null);
-    this.h.remove(paramMessage);
-    a(paramMessage.a, paramMessage.b, (BaseAppBrandWebview)paramMessage.c.get(), paramMessage.d);
+        else
+        {
+          if (this.c == null)
+          {
+            this.c = new d(this.f);
+            this.c.setOnDismissListener(this.e);
+          }
+          paramMessage = paramMessage.getData();
+          this.c.a(paramMessage);
+          localObject1 = com.tencent.mobileqq.microapp.app.a.c(paramMessage.getString("key_event_name", ""), paramMessage.getString("key_params", ""));
+          paramMessage = (Message)localObject1;
+          if (localObject1 != null)
+          {
+            paramMessage = (Message)localObject1;
+            if (com.tencent.mobileqq.microapp.app.a.b.containsKey(localObject1)) {
+              paramMessage = (String)com.tencent.mobileqq.microapp.app.a.b.get(localObject1);
+            }
+          }
+          localObject1 = this.c;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.a.c.c);
+          ((StringBuilder)localObject2).append("申请以下权限");
+          ((d)localObject1).a(((StringBuilder)localObject2).toString(), paramMessage, "拒绝", "#FF000000", "允许", "#FF000000", true, null);
+          return false;
+        }
+      }
+      else
+      {
+        localObject1 = this.h.iterator();
+        if ((paramMessage.arg1 == 3) || (paramMessage.arg1 == 2))
+        {
+          paramMessage = (String)paramMessage.obj;
+          if (!TextUtils.isEmpty(paramMessage))
+          {
+            if (paramMessage.equals("scope.camera")) {
+              a(this.a.i, "onCameraNeedAuthCancel", null);
+            }
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject2 = (f.a)((Iterator)localObject1).next();
+              if (paramMessage.equals(com.tencent.mobileqq.microapp.app.a.c(((f.a)localObject2).a, ((f.a)localObject2).b)))
+              {
+                ((Iterator)localObject1).remove();
+                b((BaseAppBrandWebview)((f.a)localObject2).c.get(), ((f.a)localObject2).a, null, ((f.a)localObject2).d);
+              }
+            }
+          }
+        }
+        paramMessage = (f.a)this.h.peek();
+        if (paramMessage != null)
+        {
+          this.h.remove(paramMessage);
+          a(paramMessage.a, paramMessage.b, (BaseAppBrandWebview)paramMessage.c.get(), paramMessage.d);
+        }
+      }
+    }
     return false;
   }
   
   public void onWebViewEvent(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JsPluginEngine", 4, "onWebViewEvent eventName=" + paramString1 + ",jsonParams=" + paramString2 + ",webviewIds=" + paramString3 + ",appId=" + paramString4 + ",pageWebviewId=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onWebViewEvent eventName=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",jsonParams=");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",webviewIds=");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append(",appId=");
+      localStringBuilder.append(paramString4);
+      localStringBuilder.append(",pageWebviewId=");
+      localStringBuilder.append(paramInt);
+      QLog.d("JsPluginEngine", 4, localStringBuilder.toString());
     }
     this.a.a(paramString1, paramString2, paramInt);
   }
   
   public String onWebViewNativeRequest(String paramString1, String paramString2, BaseAppBrandWebview paramBaseAppBrandWebview, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JsPluginEngine", 4, "onWebViewNativeRequest eventName=" + paramString1 + ",jsonParams=" + paramString2 + ",callbackId=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onWebViewNativeRequest eventName=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",jsonParams=");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",callbackId=");
+      localStringBuilder.append(paramInt);
+      QLog.d("JsPluginEngine", 4, localStringBuilder.toString());
     }
     return a(paramString1, paramString2, paramBaseAppBrandWebview, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.a.a.f
  * JD-Core Version:    0.7.0.1
  */

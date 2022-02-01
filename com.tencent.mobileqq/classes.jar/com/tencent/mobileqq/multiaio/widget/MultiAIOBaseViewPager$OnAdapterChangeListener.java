@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multiaio.widget;
 
-import android.support.v4.view.PagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 
 public abstract interface MultiAIOBaseViewPager$OnAdapterChangeListener
 {
@@ -8,7 +8,7 @@ public abstract interface MultiAIOBaseViewPager$OnAdapterChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.OnAdapterChangeListener
  * JD-Core Version:    0.7.0.1
  */

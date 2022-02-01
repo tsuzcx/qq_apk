@@ -30,12 +30,25 @@ public class MiniProcessorConfig
   
   public String toString()
   {
-    return "pName:" + this.processName + " pType:" + this.processType + " UI:" + this.appUIClass + " Internal:" + this.internalUIClass + " receiver:" + this.appPreLoadClass + " supportRuntimeType:" + this.supportRuntimeType;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pName:");
+    localStringBuilder.append(this.processName);
+    localStringBuilder.append(" pType:");
+    localStringBuilder.append(this.processType);
+    localStringBuilder.append(" UI:");
+    localStringBuilder.append(this.appUIClass);
+    localStringBuilder.append(" Internal:");
+    localStringBuilder.append(this.internalUIClass);
+    localStringBuilder.append(" receiver:");
+    localStringBuilder.append(this.appPreLoadClass);
+    localStringBuilder.append(" supportRuntimeType:");
+    localStringBuilder.append(this.supportRuntimeType);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.MiniProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

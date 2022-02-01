@@ -16,85 +16,66 @@ class BundleCompat$BundleCompatBaseImpl
   
   public static IBinder getBinder(Bundle paramBundle, String paramString)
   {
-    if (!sGetIBinderMethodFetched) {}
-    try
+    if (!sGetIBinderMethodFetched)
     {
-      sGetIBinderMethod = Bundle.class.getMethod("getIBinder", new Class[] { String.class });
-      sGetIBinderMethod.setAccessible(true);
-      sGetIBinderMethodFetched = true;
-      if (sGetIBinderMethod == null) {}
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      for (;;)
+      try
       {
-        try
-        {
-          paramBundle = (IBinder)sGetIBinderMethod.invoke(paramBundle, new Object[] { paramString });
-          return paramBundle;
-        }
-        catch (IllegalAccessException paramBundle)
-        {
-          Log.i("BundleCompatBaseImpl", "Failed to invoke getIBinder via reflection", paramBundle);
-          sGetIBinderMethod = null;
-          return null;
-        }
-        catch (IllegalArgumentException paramBundle)
-        {
-          continue;
-        }
-        catch (InvocationTargetException paramBundle)
-        {
-          continue;
-        }
-        localNoSuchMethodException = localNoSuchMethodException;
+        sGetIBinderMethod = Bundle.class.getMethod("getIBinder", new Class[] { String.class });
+        sGetIBinderMethod.setAccessible(true);
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
         Log.i("BundleCompatBaseImpl", "Failed to retrieve getIBinder method", localNoSuchMethodException);
       }
+      sGetIBinderMethodFetched = true;
     }
+    Method localMethod = sGetIBinderMethod;
+    if (localMethod != null)
+    {
+      try
+      {
+        paramBundle = (IBinder)localMethod.invoke(paramBundle, new Object[] { paramString });
+        return paramBundle;
+      }
+      catch (IllegalArgumentException paramBundle) {}catch (IllegalAccessException paramBundle) {}catch (InvocationTargetException paramBundle) {}
+      Log.i("BundleCompatBaseImpl", "Failed to invoke getIBinder via reflection", paramBundle);
+      sGetIBinderMethod = null;
+    }
+    return null;
   }
   
   public static void putBinder(Bundle paramBundle, String paramString, IBinder paramIBinder)
   {
-    if (!sPutIBinderMethodFetched) {}
-    try
+    if (!sPutIBinderMethodFetched)
     {
-      sPutIBinderMethod = Bundle.class.getMethod("putIBinder", new Class[] { String.class, IBinder.class });
-      sPutIBinderMethod.setAccessible(true);
-      sPutIBinderMethodFetched = true;
-      if (sPutIBinderMethod == null) {}
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      for (;;)
+      try
       {
-        try
-        {
-          sPutIBinderMethod.invoke(paramBundle, new Object[] { paramString, paramIBinder });
-          return;
-        }
-        catch (IllegalAccessException paramBundle)
-        {
-          Log.i("BundleCompatBaseImpl", "Failed to invoke putIBinder via reflection", paramBundle);
-          sPutIBinderMethod = null;
-          return;
-        }
-        catch (IllegalArgumentException paramBundle)
-        {
-          continue;
-        }
-        catch (InvocationTargetException paramBundle)
-        {
-          continue;
-        }
-        localNoSuchMethodException = localNoSuchMethodException;
+        sPutIBinderMethod = Bundle.class.getMethod("putIBinder", new Class[] { String.class, IBinder.class });
+        sPutIBinderMethod.setAccessible(true);
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
         Log.i("BundleCompatBaseImpl", "Failed to retrieve putIBinder method", localNoSuchMethodException);
       }
+      sPutIBinderMethodFetched = true;
+    }
+    Method localMethod = sPutIBinderMethod;
+    if (localMethod != null)
+    {
+      try
+      {
+        localMethod.invoke(paramBundle, new Object[] { paramString, paramIBinder });
+        return;
+      }
+      catch (IllegalArgumentException paramBundle) {}catch (IllegalAccessException paramBundle) {}catch (InvocationTargetException paramBundle) {}
+      Log.i("BundleCompatBaseImpl", "Failed to invoke putIBinder via reflection", paramBundle);
+      sPutIBinderMethod = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.BundleCompat.BundleCompatBaseImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.fileviewer.FileViewerAdapterBase;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
@@ -37,7 +38,7 @@ public class LocalFileViewerAdapter
     if (QLog.isDevelopLevel()) {
       QLog.w("LocalFileViewerAdapter", 4, "getEntity should not be called on LocalFileViewAdapter");
     }
-    return null;
+    return QQFileManagerUtil.a(this.a);
   }
   
   public WeiYunFileInfo a()
@@ -55,6 +56,11 @@ public class LocalFileViewerAdapter
   
   public void a(String paramString) {}
   
+  public boolean a()
+  {
+    return false;
+  }
+  
   public int b()
   {
     return 0;
@@ -67,16 +73,10 @@ public class LocalFileViewerAdapter
   
   public String b()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.a.a() == 5)
-    {
-      localObject1 = localObject2;
-      if (FileUtil.b(this.a.c())) {
-        localObject1 = this.a.c();
-      }
+    if ((this.a.a() == 5) && (FileUtil.a(this.a.c()))) {
+      return this.a.c();
     }
-    return localObject1;
+    return null;
   }
   
   public int c()
@@ -132,7 +132,7 @@ public class LocalFileViewerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileViewAdapter.LocalFileViewerAdapter
  * JD-Core Version:    0.7.0.1
  */

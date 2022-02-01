@@ -57,15 +57,12 @@ public class MessageNavInfo
       localJSONObject.put("biz_type", this.jdField_a_of_type_Int);
       localJSONObject.put("shmsgseq", this.jdField_a_of_type_Long);
       localJSONObject.put("uniseq", this.b);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString();
   }
   
   public void a()
@@ -80,8 +77,16 @@ public class MessageNavInfo
     if ((this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_Long != -1L))
     {
       this.b = paramLong;
-      if (QLog.isColorLevel()) {
-        QLog.d("Navigate.MessageNavInfo", 2, "updateMsgSeq, preBizType = " + this.jdField_a_of_type_Int + ", newBizType = " + paramInt + ", msgSeq = " + paramLong);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateMsgSeq, preBizType = ");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(", newBizType = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", msgSeq = ");
+        localStringBuilder.append(paramLong);
+        QLog.d("Navigate.MessageNavInfo", 2, localStringBuilder.toString());
       }
     }
   }
@@ -125,8 +130,20 @@ public class MessageNavInfo
   public boolean a(int paramInt, long paramLong1, long paramLong2)
   {
     boolean bool = a(paramInt, paramLong1);
-    if (QLog.isColorLevel()) {
-      QLog.d("Navigate.MessageNavInfo", 2, "update, preBizType = " + this.jdField_a_of_type_Int + ", newBizType = " + paramInt + ", needUpdate = " + bool + ", shmsgseq = " + paramLong1 + ", uniseq = " + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("update, preBizType = ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(", newBizType = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", needUpdate = ");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(", shmsgseq = ");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(", uniseq = ");
+      localStringBuilder.append(paramLong2);
+      QLog.d("Navigate.MessageNavInfo", 2, localStringBuilder.toString());
     }
     if (bool)
     {
@@ -148,24 +165,30 @@ public class MessageNavInfo
   
   public boolean a(AppRuntime paramAppRuntime, boolean paramBoolean, String paramString, long paramLong1, long paramLong2)
   {
-    int j = 27;
-    int i = j;
-    if (paramAppRuntime != null)
-    {
-      i = j;
-      if (paramBoolean) {
-        i = a(paramAppRuntime, paramString, 27);
-      }
+    int i;
+    if ((paramAppRuntime != null) && (paramBoolean)) {
+      i = a(paramAppRuntime, paramString, 26);
+    } else {
+      i = 26;
     }
     return a(i, paramLong1, paramLong2);
   }
   
   public void b(int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Navigate.MessageNavInfo", 2, "updateShMsgSeq, preBizType = " + this.jdField_a_of_type_Int + ", newBizType = " + paramInt + ", newShMsgSeq = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateShMsgSeq, preBizType = ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(", newBizType = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", newShMsgSeq = ");
+      localStringBuilder.append(paramLong);
+      QLog.d("Navigate.MessageNavInfo", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != paramInt)) {
+    int i = this.jdField_a_of_type_Int;
+    if ((i != 0) && (i != paramInt)) {
       return;
     }
     this.jdField_a_of_type_Int = paramInt;
@@ -179,7 +202,7 @@ public class MessageNavInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.MessageNavInfo
  * JD-Core Version:    0.7.0.1
  */

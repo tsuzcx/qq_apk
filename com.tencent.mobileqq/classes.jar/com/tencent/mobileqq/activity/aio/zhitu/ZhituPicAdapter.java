@@ -17,6 +17,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.app.AppInterface;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.GifDrawable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -32,13 +33,14 @@ import com.tencent.widget.HorizontalListView.RecycleListener;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
 public class ZhituPicAdapter
   extends BaseAdapter
   implements View.OnClickListener, HorizontalListView.RecycleListener
 {
-  public static int a;
+  public static int a = 6;
   private float jdField_a_of_type_Float;
   public long a;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -57,11 +59,6 @@ public class ZhituPicAdapter
   private int e;
   private int f;
   private int g;
-  
-  static
-  {
-    jdField_a_of_type_Int = 6;
-  }
   
   public ZhituPicAdapter(Context paramContext, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, MqqHandler paramMqqHandler)
   {
@@ -82,11 +79,11 @@ public class ZhituPicAdapter
     }
     this.jdField_a_of_type_JavaUtilList.addAll(this.jdField_b_of_type_JavaUtilList);
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    this.c = AIOUtils.a(85.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.d = AIOUtils.a(85.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.e = AIOUtils.a(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.f = AIOUtils.a(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.g = AIOUtils.a(2.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.c = AIOUtils.b(85.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.d = AIOUtils.b(85.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.e = AIOUtils.b(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.f = AIOUtils.b(80.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.g = AIOUtils.b(2.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   public ZhituPicData a(int paramInt)
@@ -111,27 +108,37 @@ public class ZhituPicAdapter
   
   public void a(int paramInt, String paramString)
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("ZhituManager", 2, "ZhituPicAdapter setPicItemCount: picCount = ,mReqKey = " + paramString + ",this.mReqKey =" + this.jdField_a_of_type_JavaLangString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ZhituPicAdapter setPicItemCount: picCount = ,mReqKey = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",this.mReqKey =");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      QLog.i("ZhituManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramInt <= 0) {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (!paramString.equals(this.jdField_a_of_type_JavaLangString))
+    if (paramInt > 0)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008C71", "0X8008C71", ZhituManager.a(ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a()), 0, "", "", "", "");
+      if (!paramString.equals(this.jdField_a_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_JavaUtilList.clear();
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X8008C71", "0X8008C71", ZhituManager.a(ZhituManager.a((AppInterface)localObject).a()), 0, "", "", "", "");
+      }
+      this.jdField_a_of_type_JavaLangString = paramString;
+      int i = 0;
+      while (i < paramInt)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(new ZhituPicData());
+        i += 1;
+      }
+      this.jdField_b_of_type_Int = -1;
+      notifyDataSetChanged();
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    while (i < paramInt)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(new ZhituPicData());
-      i += 1;
-    }
-    this.jdField_b_of_type_Int = -1;
-    notifyDataSetChanged();
   }
   
   public void a(ZhituPicData paramZhituPicData)
@@ -149,12 +156,14 @@ public class ZhituPicAdapter
   public void b()
   {
     int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (TextUtils.isEmpty(((ZhituPicData)this.jdField_a_of_type_JavaUtilList.get(i - 1)).d)) {}
-    while (i <= this.jdField_b_of_type_Int) {
+    if (TextUtils.isEmpty(((ZhituPicData)this.jdField_a_of_type_JavaUtilList.get(i - 1)).d)) {
       return;
     }
-    this.jdField_b_of_type_Int = i;
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaLangString);
+    if (i > this.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_Int = i;
+      ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaLangString);
+    }
   }
   
   public int getCount()
@@ -169,28 +178,36 @@ public class ZhituPicAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1;
-    if (paramInt >= getCount())
+    int i = getCount();
+    Object localObject1 = null;
+    if (paramInt >= i)
     {
-      QLog.e("ZhituManager", 2, "get view position exception , position = " + paramInt + ",size = " + this.jdField_a_of_type_JavaUtilList.size());
-      localObject1 = paramView;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("get view position exception , position = ");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(",size = ");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilList.size());
+      QLog.e("ZhituManager", 2, ((StringBuilder)localObject2).toString());
     }
     ZhituPicData localZhituPicData;
-    for (paramView = null;; paramView = (View)localObject2)
+    for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      localObject2 = paramView;
+      break label938;
       localZhituPicData = a(paramInt);
       if (localZhituPicData != null) {
         break;
       }
-      QLog.e("ZhituManager", 1, "getView emoticon empty position = " + paramInt);
-      localObject2 = null;
-      localObject1 = paramView;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getView emoticon empty position = ");
+      ((StringBuilder)localObject2).append(paramInt);
+      QLog.e("ZhituManager", 1, ((StringBuilder)localObject2).toString());
     }
-    label373:
-    Object localObject3;
-    if ((paramView == null) || (paramView.getTag() == null))
+    if ((paramView != null) && (paramView.getTag() != null))
+    {
+      localObject1 = (ZhituPicAdapter.ViewHolder)paramView.getTag();
+    }
+    else
     {
       localObject1 = new ZhituPicAdapter.ViewHolder(null);
       ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
@@ -205,129 +222,144 @@ public class ZhituPicAdapter
       paramView.addRule(13, -1);
       ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.addView(((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, paramView);
       ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this.jdField_a_of_type_AndroidContentContext);
-      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839545));
-      paramView = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 30.0F), (int)(this.jdField_a_of_type_Float * 30.0F));
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839401));
+      float f1 = this.jdField_a_of_type_Float;
+      paramView = new RelativeLayout.LayoutParams((int)(f1 * 30.0F), (int)(f1 * 30.0F));
       paramView.addRule(13, -1);
       ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.addView(((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar, paramView);
       paramView = ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout;
       paramView.setTag(localObject1);
       paramView.setOnClickListener(this);
-      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localZhituPicData);
-      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      if (!localZhituPicData.jdField_a_of_type_Boolean) {
-        break label891;
-      }
-      String str = ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(localZhituPicData);
-      localObject3 = ZhituManager.a(str);
+    }
+    ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localZhituPicData);
+    ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    Object localObject4;
+    Object localObject3;
+    if (localZhituPicData.jdField_a_of_type_Boolean)
+    {
+      localObject4 = ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(localZhituPicData);
+      localObject3 = ZhituManager.a((String)localObject4);
       localObject2 = localObject3;
       if (localObject3 == null)
       {
         ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c(localZhituPicData);
         localObject2 = localObject3;
-        if (QLog.isColorLevel()) {
-          QLog.d("ZhituManager", 2, "get gif image from cache fail, " + str);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("get gif image from cache fail, ");
+          ((StringBuilder)localObject2).append((String)localObject4);
+          QLog.d("ZhituManager", 2, ((StringBuilder)localObject2).toString());
+          localObject2 = localObject3;
         }
       }
     }
-    label600:
-    label884:
-    label891:
-    for (Object localObject2 = localObject3;; localObject2 = null)
+    else
     {
-      if ((localZhituPicData.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) || (localObject2 != null))
-      {
-        ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setMinimumWidth(0);
-        localObject3 = localZhituPicData.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setTag(localZhituPicData.jdField_a_of_type_JavaLangString + localZhituPicData.e);
-        if (localObject2 == null) {
-          break label884;
-        }
-      }
-      for (localObject2 = new GifDrawable((AbstractGifImage)localObject2);; localObject2 = localObject3)
-      {
-        int i = ((Drawable)localObject2).getIntrinsicWidth();
-        int j = ((Drawable)localObject2).getIntrinsicHeight();
-        if (j == this.f)
-        {
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setScaleType(ImageView.ScaleType.CENTER);
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams().width = i;
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable((Drawable)localObject2);
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setBackgroundDrawable(null);
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-          if (paramInt != 0) {
-            break label843;
-          }
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().width = (this.g + i);
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, this.g, 0);
-        }
-        for (;;)
-        {
-          if ((localZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData != null) && (!localZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData.jdField_a_of_type_Boolean))
-          {
-            ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(localZhituPicData);
-            localZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData.jdField_a_of_type_Boolean = true;
-          }
-          localObject1 = paramView;
-          break;
-          localObject1 = (ZhituPicAdapter.ViewHolder)paramView.getTag();
-          break label373;
-          if (j > this.f)
-          {
-            i = i * this.f / j;
-            ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            break label600;
-          }
-          i = i * this.e / j;
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-          break label600;
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams().width = this.c;
-          i = this.c;
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-          break label642;
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().width = (this.g * 2 + i);
-          ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(this.g, 0, this.g, 0);
-        }
-      }
+      localObject2 = null;
     }
+    if ((localZhituPicData.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (localObject2 == null))
+    {
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
+      localObject2 = ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams();
+      i = this.c;
+      ((ViewGroup.LayoutParams)localObject2).width = i;
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    }
+    else
+    {
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setMinimumWidth(0);
+      localObject3 = localZhituPicData.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject4 = ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localZhituPicData.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(localZhituPicData.e);
+      ((BubbleImageView)localObject4).setTag(localStringBuilder.toString());
+      if (localObject2 != null) {
+        localObject3 = new GifDrawable((AbstractGifImage)localObject2);
+      }
+      i = ((Drawable)localObject3).getIntrinsicWidth();
+      int j = ((Drawable)localObject3).getIntrinsicHeight();
+      int k = this.f;
+      if (j == k)
+      {
+        ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setScaleType(ImageView.ScaleType.CENTER);
+      }
+      else if (j > k)
+      {
+        i = i * k / j;
+        ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      else
+      {
+        i = i * this.e / j;
+        ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      }
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getLayoutParams().width = i;
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable((Drawable)localObject3);
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setBackgroundDrawable(null);
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    }
+    if (paramInt == 0)
+    {
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().width = (i + this.g);
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, this.g, 0);
+    }
+    else
+    {
+      ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().width = (i + this.g * 2);
+      localObject1 = ((ZhituPicAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout;
+      i = this.g;
+      ((RelativeLayout)localObject1).setPadding(i, 0, i, 0);
+    }
+    if ((localZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData != null) && (!localZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData.jdField_a_of_type_Boolean))
+    {
+      ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(localZhituPicData);
+      localZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData.jdField_a_of_type_Boolean = true;
+    }
+    Object localObject2 = paramView;
+    localObject1 = paramView;
+    label938:
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject2, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
   
   public void onClick(View paramView)
   {
     long l = SystemClock.uptimeMillis();
-    if (l - this.jdField_b_of_type_Long < 200L) {
+    if (l - this.jdField_b_of_type_Long < 200L)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, "filter multi click");
       }
     }
-    label175:
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.jdField_b_of_type_Long = l;
       Object localObject = paramView.getTag();
-      if ((localObject != null) && ((localObject instanceof ZhituPicAdapter.ViewHolder))) {}
-      for (localObject = (ZhituPicAdapter.ViewHolder)localObject;; localObject = null)
+      if ((localObject != null) && ((localObject instanceof ZhituPicAdapter.ViewHolder))) {
+        localObject = (ZhituPicAdapter.ViewHolder)localObject;
+      } else {
+        localObject = null;
+      }
+      if (localObject != null)
       {
-        if (localObject == null) {
-          break label175;
-        }
         localObject = (ZhituPicData)((ZhituPicAdapter.ViewHolder)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
-        if ((localObject == null) || (((ZhituPicData)localObject).jdField_a_of_type_JavaLangString == null) || (((ZhituPicData)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData == null)) {
-          break;
+        if ((localObject != null) && (((ZhituPicData)localObject).jdField_a_of_type_JavaLangString != null) && (((ZhituPicData)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData != null))
+        {
+          ThreadManager.post(new ZhituPicAdapter.1(this, (ZhituPicData)localObject), 8, null, false);
+          ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((ZhituPicData)localObject);
+          localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+          if (localObject != null)
+          {
+            localObject = ((MqqHandler)localObject).obtainMessage(84);
+            ((Message)localObject).arg1 = 1;
+            ((Message)localObject).sendToTarget();
+          }
         }
-        ThreadManager.post(new ZhituPicAdapter.1(this, (ZhituPicData)localObject), 8, null, false);
-        ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((ZhituPicData)localObject);
-        if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
-          break;
-        }
-        localObject = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(84);
-        ((Message)localObject).arg1 = 1;
-        ((Message)localObject).sendToTarget();
-        break;
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onRecycle(View paramView) {}
@@ -345,7 +377,7 @@ public class ZhituPicAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituPicAdapter
  * JD-Core Version:    0.7.0.1
  */

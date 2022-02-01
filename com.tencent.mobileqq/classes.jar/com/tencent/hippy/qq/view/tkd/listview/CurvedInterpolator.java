@@ -30,62 +30,64 @@ public class CurvedInterpolator
   
   public CurvedInterpolator(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.mX = mX_easein;
-      this.mY = mY_easein;
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return;
+          }
+          this.mX = mX_easein_android;
+          this.mY = mY_easein_android;
+          return;
+        }
+        this.mX = mX_easeout_android;
+        this.mY = mY_easeout_android;
+        return;
+      }
       this.mX = mX_easeout;
       this.mY = mY_easeout;
       return;
-    case 3: 
-      this.mX = mX_easein_android;
-      this.mY = mY_easein_android;
-      return;
     }
-    this.mX = mX_easeout_android;
-    this.mY = mY_easeout_android;
+    this.mX = mX_easein;
+    this.mY = mY_easein;
   }
   
   public float getInterpolation(float paramFloat)
   {
-    float f = 1.0F;
     if (paramFloat <= 0.0F) {
-      f = 0.0F;
+      return 0.0F;
     }
-    while (paramFloat >= 1.0F) {
-      return f;
+    if (paramFloat >= 1.0F) {
+      return 1.0F;
     }
     int j = 0;
     int i = this.mX.length - 1;
-    if (i - j > 1)
+    while (i - j > 1)
     {
       int k = (j + i) / 2;
       if (paramFloat < this.mX[k]) {
         i = k;
-      }
-      for (;;)
-      {
-        break;
+      } else {
         j = k;
       }
     }
-    f = this.mX[i] - this.mX[j];
+    float[] arrayOfFloat = this.mX;
+    float f = arrayOfFloat[i] - arrayOfFloat[j];
     if (f == 0.0F) {
       return this.mY[j];
     }
-    paramFloat = (paramFloat - this.mX[j]) / f;
-    f = this.mY[j];
-    return paramFloat * (this.mY[i] - f) + f;
+    paramFloat = (paramFloat - arrayOfFloat[j]) / f;
+    arrayOfFloat = this.mY;
+    f = arrayOfFloat[j];
+    return f + paramFloat * (arrayOfFloat[i] - f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.CurvedInterpolator
  * JD-Core Version:    0.7.0.1
  */

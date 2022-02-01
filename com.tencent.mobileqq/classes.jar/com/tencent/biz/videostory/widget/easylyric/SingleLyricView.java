@@ -55,33 +55,36 @@ public class SingleLyricView
   public SingleLyricView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131563199, this, true);
+    LayoutInflater.from(paramContext).inflate(2131563025, this, true);
     a(paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378216));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377631));
     if (this.jdField_b_of_type_Int == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378217));
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377632));
+      paramContext = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (paramContext != null) {
+        paramContext.setVisibility(0);
       }
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramContext = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (paramContext != null) {
+        paramContext.setVisibility(0);
       }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricControllerWrapper = new LyricControllerWrapper();
-      this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricOnLyricListener = new SingleLyricView.1(this);
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378649));
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378042));
+      paramContext = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (paramContext != null) {
+        paramContext.setVisibility(0);
       }
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramContext = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (paramContext != null) {
+        paramContext.setVisibility(8);
       }
     }
+    this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricControllerWrapper = new LyricControllerWrapper();
+    this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricOnLyricListener = new SingleLyricView.1(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
@@ -100,22 +103,23 @@ public class SingleLyricView
   
   private void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+    Object localObject = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    if (localObject != null) {
+      ((AnimatorSet)localObject).end();
     }
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.3F });
-    localValueAnimator.setDuration(500L);
-    localValueAnimator.setInterpolator(new AccelerateInterpolator());
-    localValueAnimator.addUpdateListener(new SingleLyricView.2(this));
-    localValueAnimator.addListener(new SingleLyricView.3(this, paramString));
+    localObject = ValueAnimator.ofFloat(new float[] { 1.0F, 0.3F });
+    ((ValueAnimator)localObject).setDuration(500L);
+    ((ValueAnimator)localObject).setInterpolator(new AccelerateInterpolator());
+    ((ValueAnimator)localObject).addUpdateListener(new SingleLyricView.2(this));
+    ((ValueAnimator)localObject).addListener(new SingleLyricView.3(this, paramString));
     paramString = ValueAnimator.ofFloat(new float[] { 0.3F, 1.0F });
     paramString.setDuration(500L);
     paramString.addUpdateListener(new SingleLyricView.4(this));
     paramString.addListener(new SingleLyricView.5(this));
     paramString.setInterpolator(new DecelerateInterpolator());
     paramString.addListener(new SingleLyricView.6(this));
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(new Animator[] { localValueAnimator, paramString });
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(new Animator[] { localObject, paramString });
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
   
@@ -124,13 +128,15 @@ public class SingleLyricView
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric = null;
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      ((TextView)localObject).setText("");
       this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
     }
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    localObject = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    if (localObject != null) {
+      ((AnimatorSet)localObject).cancel();
     }
     this.jdField_b_of_type_JavaLangString = null;
     this.jdField_a_of_type_Long = 0L;
@@ -138,55 +144,55 @@ public class SingleLyricView
   
   public void a(long paramLong)
   {
-    int j = 1;
-    if (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) {}
-    label100:
-    label106:
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) {
       return;
-      Sentence localSentence = LyricParserHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric, this.jdField_a_of_type_Long + paramLong);
-      int i;
-      if (this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence != localSentence)
+    }
+    Object localObject = LyricParserHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqLyricDataLyric, this.jdField_a_of_type_Long + paramLong);
+    Sentence localSentence = this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence;
+    int j = 1;
+    int i;
+    if (localSentence != localObject) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((!this.jdField_a_of_type_Boolean) || (paramLong >= this.jdField_b_of_type_Long)) {
+      j = 0;
+    }
+    if ((localObject != null) && (i != 0) && (j == 0))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence = ((Sentence)localObject);
+      a(((Sentence)localObject).jdField_a_of_type_JavaLangString);
+      this.c = ((Sentence)localObject).jdField_a_of_type_JavaLangString;
+      return;
+    }
+    if ((j != 0) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!this.jdField_b_of_type_JavaLangString.equals(this.c)))
+    {
+      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (localObject != null)
       {
-        i = 1;
-        if ((!this.jdField_a_of_type_Boolean) || (paramLong >= this.jdField_b_of_type_Long)) {
-          break label100;
-        }
+        ((TextView)localObject).setText(this.jdField_b_of_type_JavaLangString);
+        this.c = this.jdField_b_of_type_JavaLangString;
+        this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence = null;
       }
-      for (;;)
-      {
-        if ((localSentence == null) || (i == 0) || (j != 0)) {
-          break label106;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence = localSentence;
-        a(localSentence.jdField_a_of_type_JavaLangString);
-        this.c = localSentence.jdField_a_of_type_JavaLangString;
-        return;
-        i = 0;
-        break;
-        j = 0;
-      }
-    } while ((j == 0) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaLangString.equals(this.c)) || (this.jdField_a_of_type_AndroidWidgetTextView == null));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-    this.c = this.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqLyricDataSentence = null;
+    }
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricControllerWrapper.a(this);
     VideoPlayStatusDispatcher.a().a(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricOnLyricListener);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     VideoPlayStatusDispatcher.a().b(this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricOnLyricListener);
     this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricControllerWrapper.a();
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    AnimatorSet localAnimatorSet = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.cancel();
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
   }
@@ -200,13 +206,10 @@ public class SingleLyricView
   
   public void setPos(long paramLong)
   {
-    if (paramLong >= 0L) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = paramLong;
-      return;
+    if (paramLong < 0L) {
       paramLong = 0L;
     }
+    this.jdField_a_of_type_Long = paramLong;
   }
   
   public void setSongName(String paramString, long paramLong)
@@ -214,28 +217,23 @@ public class SingleLyricView
     if (!TextUtils.isEmpty(paramString))
     {
       this.jdField_b_of_type_JavaLangString = paramString;
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      if (localTextView != null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+        localTextView.setAlpha(1.0F);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
       }
       this.jdField_a_of_type_Boolean = true;
       if (paramLong < 0L) {
-        break label52;
+        paramLong = 3000L;
       }
-    }
-    for (;;)
-    {
       this.jdField_b_of_type_Long = paramLong;
-      return;
-      label52:
-      paramLong = 3000L;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.SingleLyricView
  * JD-Core Version:    0.7.0.1
  */

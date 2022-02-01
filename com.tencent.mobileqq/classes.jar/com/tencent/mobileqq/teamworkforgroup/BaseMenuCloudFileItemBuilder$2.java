@@ -2,9 +2,9 @@ package com.tencent.mobileqq.teamworkforgroup;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.rely.SwipRightMenuBuilder.SwipRightMenuItem;
+import com.tencent.mobileqq.rely.SwipTextViewMenuBuilder;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
-import com.tencent.widget.SwipTextViewMenuBuilder;
 import java.util.List;
 
 class BaseMenuCloudFileItemBuilder$2
@@ -26,9 +26,9 @@ class BaseMenuCloudFileItemBuilder$2
   
   public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
   {
-    paramInt = 0;
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupBaseMenuCloudFileItemBuilder.a((ICloudFile)paramObject);
     int i = ((List)localObject).size();
+    paramInt = 0;
     paramObject = localObject;
     if (i > 3)
     {
@@ -36,38 +36,44 @@ class BaseMenuCloudFileItemBuilder$2
       paramObject.add(0, BaseMenuCloudFileItemBuilder.a);
     }
     i = Math.min(paramObject.size(), 3);
-    if (paramInt < paramArrayOfSwipRightMenuItem.length)
+    while (paramInt < paramArrayOfSwipRightMenuItem.length)
     {
-      int j;
       if (paramInt < i)
       {
         localObject = (MenuItem)paramObject.get(paramInt);
-        j = this.jdField_a_of_type_JavaUtilList.indexOf(localObject);
+        int j = this.jdField_a_of_type_JavaUtilList.indexOf(localObject);
         if (j < 0)
         {
-          if (QLog.isColorLevel()) {
-            QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getRightMenuItemInfo error, can not find the menu， menuId[" + ((MenuItem)localObject).b() + "]");
+          if (QLog.isColorLevel())
+          {
+            String str = this.jdField_a_of_type_JavaLangString;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("getRightMenuItemInfo error, can not find the menu， menuId[");
+            localStringBuilder.append(((MenuItem)localObject).b());
+            localStringBuilder.append("]");
+            QLog.i(str, 1, localStringBuilder.toString());
           }
           paramArrayOfSwipRightMenuItem[paramInt].b = -1;
           paramArrayOfSwipRightMenuItem[paramInt].a = -1;
         }
+        else
+        {
+          paramArrayOfSwipRightMenuItem[paramInt].b = j;
+          paramArrayOfSwipRightMenuItem[paramInt].a = this.e[j];
+        }
       }
-      for (;;)
+      else
       {
-        paramInt += 1;
-        break;
-        paramArrayOfSwipRightMenuItem[paramInt].b = j;
-        paramArrayOfSwipRightMenuItem[paramInt].a = this.jdField_a_of_type_ArrayOfInt[j];
-        continue;
         paramArrayOfSwipRightMenuItem[paramInt].b = -1;
         paramArrayOfSwipRightMenuItem[paramInt].a = -1;
       }
+      paramInt += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.BaseMenuCloudFileItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

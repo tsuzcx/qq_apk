@@ -2,14 +2,14 @@
 <LinearLayout android:orientation="horizontal" android:id="@id/lxy" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:lta="http://schemas.android.com/apk/res-auto">
     <View android:id="@id/lxz" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <com.tencent.mobileqq.widget.AutoBgFrameLayout android:id="@id/lxv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip">
+    <com.tencent.mobileqq.colornote.layout.AutoBgFrameLayout android:id="@id/lxv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip">
         <View android:layout_gravity="bottom|center|right" android:id="@id/lxs" android:layout_width="64.0dip" android:layout_height="64.0dip" />
         <RelativeLayout android:padding="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.5dip">
             <com.tencent.mobileqq.widget.RoundImageView android:id="@id/lxw" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/ea0" android:layout_centerVertical="true" lta:qwRadius="6.0dip" />
             <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:id="@id/ly2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxWidth="199.0dip" android:singleLine="true" android:layout_toRightOf="@id/lxw" android:layout_alignTop="@id/lxw" />
             <TextView android:textSize="12.0dip" android:textColor="@color/bp" android:id="@id/ly1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxWidth="199.0dip" android:minWidth="147.0dip" android:singleLine="true" android:layout_toRightOf="@id/lxw" android:layout_alignBottom="@id/lxw" />
         </RelativeLayout>
-        <com.tencent.mobileqq.widget.LargeTouchAreaButton android:layout_gravity="center|right|top" android:id="@id/lxx" android:background="@drawable/hmt" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:contentDescription="@string/ime" lta:addition="16.0dip" />
-    </com.tencent.mobileqq.widget.AutoBgFrameLayout>
+        <com.tencent.mobileqq.colornote.layout.LargeTouchAreaButton android:layout_gravity="center|right|top" android:id="@id/lxx" android:background="@drawable/hmt" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:contentDescription="@string/ime" lta:addition="16.0dip" />
+    </com.tencent.mobileqq.colornote.layout.AutoBgFrameLayout>
     <View android:id="@id/ly0" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
 </LinearLayout>

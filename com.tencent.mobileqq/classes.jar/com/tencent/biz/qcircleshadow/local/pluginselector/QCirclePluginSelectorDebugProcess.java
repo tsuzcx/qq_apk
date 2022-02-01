@@ -18,13 +18,13 @@ public class QCirclePluginSelectorDebugProcess
   
   private QCirclePluginUpdater b()
   {
-    if ((this.a == null) || (!((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()))
+    if ((this.a != null) && (((IAppSettingApi)QRoute.api(IAppSettingApi.class)).isDebugVersion()))
     {
-      QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginSelectorDebugProcess#checkDebug():use test plugin？ false");
-      return null;
+      QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginSelectorDebugProcess#checkDebug():use test plugin？ true");
+      return new QCirclePluginUpdater(this.a);
     }
-    QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginSelectorDebugProcess#checkDebug():use test plugin？ true");
-    return new QCirclePluginUpdater(this.a);
+    QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginSelectorDebugProcess#checkDebug():use test plugin？ false");
+    return null;
   }
   
   public QCirclePluginUpdater a()
@@ -34,7 +34,7 @@ public class QCirclePluginSelectorDebugProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.pluginselector.QCirclePluginSelectorDebugProcess
  * JD-Core Version:    0.7.0.1
  */

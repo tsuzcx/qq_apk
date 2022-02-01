@@ -26,7 +26,13 @@ class NestedScrollView$SavedState
   @NonNull
   public String toString()
   {
-    return "HorizontalScrollView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " scrollPosition=" + this.scrollPosition + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HorizontalScrollView.SavedState{");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    localStringBuilder.append(" scrollPosition=");
+    localStringBuilder.append(this.scrollPosition);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -37,7 +43,7 @@ class NestedScrollView$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.widget.NestedScrollView.SavedState
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,10 @@ public class TPVideoInfo
 {
   private TPVideoInfo.Builder builder;
   private String definition;
-  private ArrayList<TPDownloadParamData> downloadParamList;
+  private ArrayList<TPDownloadParamData> downloadParamList = new ArrayList();
   private String fileID;
   private long height;
+  @TPCommonEnum.TP_VIDEO_CODEC_TYPE
   private int videoCodecId;
   private long width;
   
@@ -61,7 +62,7 @@ public class TPVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPVideoInfo
  * JD-Core Version:    0.7.0.1
  */

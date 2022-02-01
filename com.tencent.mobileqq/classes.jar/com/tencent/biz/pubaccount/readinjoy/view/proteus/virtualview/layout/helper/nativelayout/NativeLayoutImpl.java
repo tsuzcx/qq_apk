@@ -45,78 +45,127 @@ public class NativeLayoutImpl
   
   protected void attachViews(ViewBase paramViewBase)
   {
-    if (LogUtils.shouldLog()) {
-      LogUtils.d("NativeLayoutImpl", "[attachViews] for [" + this.mView.getClass().getSimpleName() + ", " + this.mView.getName() + "]");
+    Object localObject;
+    if (LogUtils.shouldLog())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[attachViews] for [");
+      ((StringBuilder)localObject).append(this.mView.getClass().getSimpleName());
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(this.mView.getName());
+      ((StringBuilder)localObject).append("]");
+      LogUtils.d("NativeLayoutImpl", ((StringBuilder)localObject).toString());
     }
-    if (paramViewBase == null) {
+    if (paramViewBase == null)
+    {
       if (LogUtils.shouldLog()) {
         LogUtils.d("NativeLayoutImpl", "[attachViews] did not attach since view is null");
       }
-    }
-    for (;;)
-    {
       return;
-      if (LogUtils.shouldLog()) {
-        LogUtils.d("NativeLayoutImpl", "[attachViews] try to attach [" + paramViewBase.getClass().getSimpleName() + ", " + paramViewBase.getName() + "]");
-      }
-      View localView;
-      if ((paramViewBase instanceof Layout)) {
-        if (paramViewBase.getNativeView() != null)
+    }
+    if (LogUtils.shouldLog())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[attachViews] try to attach [");
+      ((StringBuilder)localObject).append(paramViewBase.getClass().getSimpleName());
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(paramViewBase.getName());
+      ((StringBuilder)localObject).append("]");
+      LogUtils.d("NativeLayoutImpl", ((StringBuilder)localObject).toString());
+    }
+    StringBuilder localStringBuilder;
+    if ((paramViewBase instanceof Layout))
+    {
+      if (paramViewBase.getNativeView() != null)
+      {
+        localObject = paramViewBase.getNativeView();
+        if (localObject != null)
         {
-          localView = paramViewBase.getNativeView();
-          if (localView != null)
+          if (LogUtils.shouldLog())
           {
-            if (LogUtils.shouldLog()) {
-              LogUtils.d("NativeLayoutImpl", "[attachViews] try to add native view of [" + paramViewBase.getClass().getSimpleName() + ", " + paramViewBase.getName() + "]");
-            }
-            addView(localView, new ViewGroup.LayoutParams(paramViewBase.getComLayoutParams().mLayoutWidth, paramViewBase.getComLayoutParams().mLayoutHeight));
-            if (LogUtils.shouldLog()) {
-              LogUtils.d("NativeLayoutImpl", "[attachViews] child count after add native view: " + getChildCount());
-            }
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[attachViews] try to add native view of [");
+            localStringBuilder.append(paramViewBase.getClass().getSimpleName());
+            localStringBuilder.append(", ");
+            localStringBuilder.append(paramViewBase.getName());
+            localStringBuilder.append("]");
+            LogUtils.d("NativeLayoutImpl", localStringBuilder.toString());
+          }
+          addView((View)localObject, new ViewGroup.LayoutParams(paramViewBase.getComLayoutParams().mLayoutWidth, paramViewBase.getComLayoutParams().mLayoutHeight));
+          if (LogUtils.shouldLog())
+          {
+            paramViewBase = new StringBuilder();
+            paramViewBase.append("[attachViews] child count after add native view: ");
+            paramViewBase.append(getChildCount());
+            LogUtils.d("NativeLayoutImpl", paramViewBase.toString());
           }
         }
-      }
-      while (LogUtils.shouldLog())
-      {
-        LogUtils.d("NativeLayoutImpl", "[attachViews] childCount after [" + this.mView.getClass().getSimpleName() + ", " + this.mView.getName() + "] attach children: " + getChildCount());
-        return;
-        if (LogUtils.shouldLog())
+        else if (LogUtils.shouldLog())
         {
           LogUtils.d("NativeLayoutImpl", "[attachViews] child native view is null");
-          continue;
-          if (LogUtils.shouldLog()) {
-            LogUtils.d("NativeLayoutImpl", "[attachViews] native view is null, attach subviews");
-          }
-          paramViewBase = ((Layout)paramViewBase).getSubViews();
-          if (paramViewBase != null)
-          {
-            paramViewBase = paramViewBase.iterator();
-            while (paramViewBase.hasNext()) {
-              attachViews((ViewBase)paramViewBase.next());
-            }
-          }
-          else if (LogUtils.shouldLog())
-          {
-            LogUtils.d("NativeLayoutImpl", "[attachViews] subViews is null");
-            continue;
-            localView = paramViewBase.getNativeView();
-            if (localView != null)
-            {
-              if (LogUtils.shouldLog()) {
-                LogUtils.d("NativeLayoutImpl", "[attachViews] try to add native view of [" + paramViewBase.getClass().getSimpleName() + ", " + paramViewBase.getName() + "]");
-              }
-              addView(localView, new ViewGroup.LayoutParams(paramViewBase.getComLayoutParams().mLayoutWidth, paramViewBase.getComLayoutParams().mLayoutHeight));
-              if (LogUtils.shouldLog()) {
-                LogUtils.d("NativeLayoutImpl", "[attachViews] child count after add native view: " + getChildCount());
-              }
-            }
-            else if (LogUtils.shouldLog())
-            {
-              LogUtils.d("NativeLayoutImpl", "[attachViews] " + paramViewBase.getName() + " native view is null");
-            }
-          }
         }
       }
+      else
+      {
+        if (LogUtils.shouldLog()) {
+          LogUtils.d("NativeLayoutImpl", "[attachViews] native view is null, attach subviews");
+        }
+        paramViewBase = ((Layout)paramViewBase).getSubViews();
+        if (paramViewBase != null)
+        {
+          paramViewBase = paramViewBase.iterator();
+          while (paramViewBase.hasNext()) {
+            attachViews((ViewBase)paramViewBase.next());
+          }
+        }
+        if (LogUtils.shouldLog()) {
+          LogUtils.d("NativeLayoutImpl", "[attachViews] subViews is null");
+        }
+      }
+    }
+    else
+    {
+      localObject = paramViewBase.getNativeView();
+      if (localObject != null)
+      {
+        if (LogUtils.shouldLog())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[attachViews] try to add native view of [");
+          localStringBuilder.append(paramViewBase.getClass().getSimpleName());
+          localStringBuilder.append(", ");
+          localStringBuilder.append(paramViewBase.getName());
+          localStringBuilder.append("]");
+          LogUtils.d("NativeLayoutImpl", localStringBuilder.toString());
+        }
+        addView((View)localObject, new ViewGroup.LayoutParams(paramViewBase.getComLayoutParams().mLayoutWidth, paramViewBase.getComLayoutParams().mLayoutHeight));
+        if (LogUtils.shouldLog())
+        {
+          paramViewBase = new StringBuilder();
+          paramViewBase.append("[attachViews] child count after add native view: ");
+          paramViewBase.append(getChildCount());
+          LogUtils.d("NativeLayoutImpl", paramViewBase.toString());
+        }
+      }
+      else if (LogUtils.shouldLog())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[attachViews] ");
+        ((StringBuilder)localObject).append(paramViewBase.getName());
+        ((StringBuilder)localObject).append(" native view is null");
+        LogUtils.d("NativeLayoutImpl", ((StringBuilder)localObject).toString());
+      }
+    }
+    if (LogUtils.shouldLog())
+    {
+      paramViewBase = new StringBuilder();
+      paramViewBase.append("[attachViews] childCount after [");
+      paramViewBase.append(this.mView.getClass().getSimpleName());
+      paramViewBase.append(", ");
+      paramViewBase.append(this.mView.getName());
+      paramViewBase.append("] attach children: ");
+      paramViewBase.append(getChildCount());
+      LogUtils.d("NativeLayoutImpl", paramViewBase.toString());
     }
   }
   
@@ -133,7 +182,7 @@ public class NativeLayoutImpl
     this.mView = null;
   }
   
-  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     ViewGroup.LayoutParams localLayoutParams = paramLayoutParams;
     if (paramLayoutParams == null) {
@@ -149,16 +198,18 @@ public class NativeLayoutImpl
   
   public int getComMeasuredHeight()
   {
-    if (this.mView != null) {
-      return this.mView.getComMeasuredHeight();
+    ViewBase localViewBase = this.mView;
+    if (localViewBase != null) {
+      return localViewBase.getComMeasuredHeight();
     }
     return 0;
   }
   
   public int getComMeasuredWidth()
   {
-    if (this.mView != null) {
-      return this.mView.getComMeasuredWidth();
+    ViewBase localViewBase = this.mView;
+    if (localViewBase != null) {
+      return localViewBase.getComMeasuredWidth();
     }
     return 0;
   }
@@ -180,8 +231,9 @@ public class NativeLayoutImpl
   
   public void measureComponent(int paramInt1, int paramInt2)
   {
-    if (this.mView != null) {
-      setMeasuredDimension(this.mView.getComMeasuredWidth(), this.mView.getComMeasuredHeight());
+    ViewBase localViewBase = this.mView;
+    if (localViewBase != null) {
+      setMeasuredDimension(localViewBase.getComMeasuredWidth(), this.mView.getComMeasuredHeight());
     }
   }
   
@@ -189,12 +241,13 @@ public class NativeLayoutImpl
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    if (this.mView != null) {
-      setMeasuredDimension(this.mView.getComMeasuredWidth(), this.mView.getComMeasuredHeight());
+    ViewBase localViewBase = this.mView;
+    if (localViewBase != null) {
+      setMeasuredDimension(localViewBase.getComMeasuredWidth(), this.mView.getComMeasuredHeight());
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.mBackgroundColor != 0)
     {
@@ -221,9 +274,9 @@ public class NativeLayoutImpl
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void onMeasure(int paramInt1, int paramInt2) {}
+  protected void onMeasure(int paramInt1, int paramInt2) {}
   
   public void setBackgroundColor(int paramInt)
   {
@@ -274,7 +327,7 @@ public class NativeLayoutImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.helper.nativelayout.NativeLayoutImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -40,14 +40,14 @@ final class OnSubscribeConcatMap$ConcatMapSubscriber<T, R>
     this.arbiter = new ProducerArbiter();
     this.wip = new AtomicInteger();
     this.error = new AtomicReference();
-    if (UnsafeAccess.isUnsafeAvailable()) {}
-    for (paramSubscriber = new SpscArrayQueue(paramInt1);; paramSubscriber = new SpscAtomicArrayQueue(paramInt1))
-    {
-      this.queue = paramSubscriber;
-      this.inner = new SerialSubscription();
-      request(paramInt1);
-      return;
+    if (UnsafeAccess.isUnsafeAvailable()) {
+      paramSubscriber = new SpscArrayQueue(paramInt1);
+    } else {
+      paramSubscriber = new SpscAtomicArrayQueue(paramInt1);
     }
+    this.queue = paramSubscriber;
+    this.inner = new SerialSubscription();
+    request(paramInt1);
   }
   
   void drain()
@@ -55,91 +55,84 @@ final class OnSubscribeConcatMap$ConcatMapSubscriber<T, R>
     if (this.wip.getAndIncrement() != 0) {
       return;
     }
-    label10:
-    Object localObject;
-    int i;
+    int j = this.delayErrorMode;
     do
     {
-      do
-      {
-        int j;
-        do
-        {
-          j = this.delayErrorMode;
-        } while (this.actual.isUnsubscribed());
-        if (this.active) {
-          break label258;
-        }
-        if ((j != 1) || (this.error.get() == null)) {
-          break;
-        }
-        localObject = ExceptionsUtils.terminate(this.error);
-      } while (ExceptionsUtils.isTerminated((Throwable)localObject));
-      this.actual.onError((Throwable)localObject);
-      return;
-      boolean bool = this.done;
-      localObject = this.queue.poll();
-      if (localObject == null) {}
-      for (i = 1;; i = 0)
-      {
-        if ((!bool) || (i == 0)) {
-          break label151;
-        }
-        localObject = ExceptionsUtils.terminate(this.error);
-        if (localObject != null) {
-          break;
-        }
-        this.actual.onCompleted();
+      if (this.actual.isUnsubscribed()) {
         return;
       }
-    } while (ExceptionsUtils.isTerminated((Throwable)localObject));
-    this.actual.onError((Throwable)localObject);
-    return;
-    label151:
-    ScalarSynchronousObservable localScalarSynchronousObservable;
-    if (i == 0)
-    {
-      try
+      if (!this.active)
       {
-        localObject = (Observable)this.mapper.call(NotificationLite.instance().getValue(localObject));
-        if (localObject == null)
+        if ((j == 1) && (this.error.get() != null))
         {
-          drainError(new NullPointerException("The source returned by the mapper was null"));
+          localObject = ExceptionsUtils.terminate(this.error);
+          if (!ExceptionsUtils.isTerminated((Throwable)localObject)) {
+            this.actual.onError((Throwable)localObject);
+          }
           return;
         }
-      }
-      catch (Throwable localThrowable)
-      {
-        Exceptions.throwIfFatal(localThrowable);
-        drainError(localThrowable);
-        return;
-      }
-      if (localThrowable != Observable.empty())
-      {
-        if (!(localThrowable instanceof ScalarSynchronousObservable)) {
-          break label269;
+        boolean bool = this.done;
+        Object localObject = this.queue.poll();
+        int i;
+        if (localObject == null) {
+          i = 1;
+        } else {
+          i = 0;
         }
-        localScalarSynchronousObservable = (ScalarSynchronousObservable)localThrowable;
-        this.arbiter.setProducer(new OnSubscribeConcatMap.ConcatMapInnerScalarProducer(localScalarSynchronousObservable.get(), this));
+        if ((bool) && (i != 0))
+        {
+          localObject = ExceptionsUtils.terminate(this.error);
+          if (localObject == null)
+          {
+            this.actual.onCompleted();
+            return;
+          }
+          if (!ExceptionsUtils.isTerminated((Throwable)localObject)) {
+            this.actual.onError((Throwable)localObject);
+          }
+          return;
+        }
+        if (i == 0) {
+          try
+          {
+            localObject = (Observable)this.mapper.call(NotificationLite.instance().getValue(localObject));
+            if (localObject == null)
+            {
+              drainError(new NullPointerException("The source returned by the mapper was null"));
+              return;
+            }
+            if (localObject != Observable.empty()) {
+              if ((localObject instanceof ScalarSynchronousObservable))
+              {
+                localObject = (ScalarSynchronousObservable)localObject;
+                this.arbiter.setProducer(new OnSubscribeConcatMap.ConcatMapInnerScalarProducer(((ScalarSynchronousObservable)localObject).get(), this));
+              }
+              else
+              {
+                OnSubscribeConcatMap.ConcatMapInnerSubscriber localConcatMapInnerSubscriber = new OnSubscribeConcatMap.ConcatMapInnerSubscriber(this);
+                this.inner.set(localConcatMapInnerSubscriber);
+                if (!localConcatMapInnerSubscriber.isUnsubscribed())
+                {
+                  this.active = true;
+                  ((Observable)localObject).unsafeSubscribe(localConcatMapInnerSubscriber);
+                }
+                else
+                {
+                  return;
+                }
+              }
+            }
+            request(1L);
+          }
+          catch (Throwable localThrowable)
+          {
+            Exceptions.throwIfFatal(localThrowable);
+            drainError(localThrowable);
+            return;
+          }
+        }
       }
-    }
-    for (;;)
-    {
-      request(1L);
-      label258:
-      if (this.wip.decrementAndGet() != 0) {
-        break;
-      }
-      return;
-      label269:
-      OnSubscribeConcatMap.ConcatMapInnerSubscriber localConcatMapInnerSubscriber = new OnSubscribeConcatMap.ConcatMapInnerSubscriber(this);
-      this.inner.set(localConcatMapInnerSubscriber);
-      if (localConcatMapInnerSubscriber.isUnsubscribed()) {
-        break label10;
-      }
-      this.active = true;
-      localScalarSynchronousObservable.unsafeSubscribe(localConcatMapInnerSubscriber);
-    }
+    } while (this.wip.decrementAndGet() != 0);
   }
   
   void drainError(Throwable paramThrowable)
@@ -151,9 +144,11 @@ final class OnSubscribeConcatMap$ConcatMapSubscriber<T, R>
       if (!ExceptionsUtils.isTerminated(paramThrowable)) {
         this.actual.onError(paramThrowable);
       }
-      return;
     }
-    pluginError(paramThrowable);
+    else
+    {
+      pluginError(paramThrowable);
+    }
   }
   
   void innerCompleted(long paramLong)
@@ -237,18 +232,23 @@ final class OnSubscribeConcatMap$ConcatMapSubscriber<T, R>
   
   void requestMore(long paramLong)
   {
-    if (paramLong > 0L) {
+    if (paramLong > 0L)
+    {
       this.arbiter.request(paramLong);
-    }
-    while (paramLong >= 0L) {
       return;
     }
-    throw new IllegalArgumentException("n >= 0 required but it was " + paramLong);
+    if (paramLong >= 0L) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("n >= 0 required but it was ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeConcatMap.ConcatMapSubscriber
  * JD-Core Version:    0.7.0.1
  */

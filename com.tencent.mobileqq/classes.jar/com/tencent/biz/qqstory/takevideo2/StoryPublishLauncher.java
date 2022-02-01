@@ -5,13 +5,22 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.AndroidRuntimeException;
+import com.tencent.aelight.camera.api.IAEClassManager;
+import com.tencent.aelight.camera.api.ICaptureQmcfSoDownloadLaunch;
+import com.tencent.aelight.camera.api.IQIMCameraCapture;
+import com.tencent.aelight.camera.download.api.AEResInfo;
+import com.tencent.aelight.camera.download.api.IAEResUtil;
+import com.tencent.aelight.camera.entry.api.IAECameraLauncher;
+import com.tencent.aelight.camera.log.AEQLog;
+import com.tencent.aelight.camera.qqstory.api.IShortVideoGuideUtil;
+import com.tencent.aelight.camera.util.api.ICaptureUtil;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DialogUtil;
@@ -19,16 +28,7 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.qq.im.QIMShortVideoUtils;
-import dov.com.qq.im.ae.AEPituCameraUnit;
-import dov.com.qq.im.ae.SessionWrap;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
-import dov.com.qq.im.ae.entry.AECameraLauncher;
-import dov.com.qq.im.ae.util.AEQLog;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity;
-import dov.com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil;
+import dov.com.qq.im.ae.current.SessionWrap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -47,14 +47,8 @@ public class StoryPublishLauncher
       paramBundle.putString("itemid", paramString1);
       paramBundle.putBoolean("qim_camera_open_specific", paramBoolean);
     }
-    for (;;)
-    {
-      SLog.c("Q.qqstory.publish.StoryPublishLauncher", "initLaunchArgs captureMode=%s, tabType=%d, category=%d, itemId=%s, openSpecific=%b", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, Boolean.valueOf(paramBoolean) });
-      return paramBundle;
-      if (paramInt2 == 3) {
-        paramBundle.putString("story_capture_album_id", paramString3);
-      }
-    }
+    SLog.c("Q.qqstory.publish.StoryPublishLauncher", "initLaunchArgs captureMode=%s, tabType=%d, category=%d, itemId=%s, openSpecific=%b", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, Boolean.valueOf(paramBoolean) });
+    return paramBundle;
   }
   
   public static Bundle a(SessionWrap paramSessionWrap, String paramString, int paramInt1, int paramInt2)
@@ -87,58 +81,44 @@ public class StoryPublishLauncher
   
   private void a(boolean paramBoolean)
   {
-    int j = 0;
-    int k = AEResUtil.a(AEResInfo.b);
-    int m = AEResUtil.a(AEResInfo.c);
-    HashMap localHashMap;
-    if ((k != 0) || (m != 0))
+    int j = ((IAEResUtil)QRoute.api(IAEResUtil.class)).getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE);
+    int k = ((IAEResUtil)QRoute.api(IAEResUtil.class)).getAEResStatus(AEResInfo.LIGHT_RES_BASE_PACKAGE);
+    if ((j != 0) || (k != 0))
     {
       ThreadManager.excute(new StoryPublishLauncher.1(this, paramBoolean), 128, null, false);
-      int i = j;
-      if (paramBoolean)
-      {
-        i = j;
-        if (k == 1)
-        {
-          i = j;
-          if (m == 1) {
-            i = 1;
-          }
-        }
+      int i = 1;
+      if ((!paramBoolean) || (j != 1) || (k != 1)) {
+        i = 0;
       }
-      localHashMap = new HashMap();
-      if (!paramBoolean) {
-        break label141;
+      HashMap localHashMap = new HashMap();
+      String str2 = "1";
+      String str1;
+      if (paramBoolean) {
+        str1 = "1";
+      } else {
+        str1 = "0";
       }
-      str = "1";
-      localHashMap.put("videoSoUsable", str);
-      if (i == 0) {
-        break label148;
+      localHashMap.put("videoSoUsable", str1);
+      if (i != 0) {
+        str1 = str2;
+      } else {
+        str1 = "0";
       }
-    }
-    label141:
-    label148:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("videoAndFilterReady", str);
+      localHashMap.put("videoAndFilterReady", str1);
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actShortVideoSoDownload", true, 0L, 0L, localHashMap, "");
-      QQStoryContext.a().b();
-      return;
-      str = "0";
-      break;
     }
+    QQStoryContext.a().b();
   }
   
   private boolean a(Context paramContext)
   {
-    boolean bool = false;
-    if (!CaptureUtil.a())
+    if (!((ICaptureUtil)QRoute.api(ICaptureUtil.class)).supportCapture())
     {
       SLog.b("Q.qqstory.publish.StoryPublishLauncher", "checkApiVersionDialog false");
-      DialogUtil.a(paramContext, 230).setMessage(HardCodeUtil.a(2131714432)).setPositiveButton(2131694615, new StoryPublishLauncher.2(this)).show();
-      bool = true;
+      DialogUtil.a(paramContext, 230).setMessage(HardCodeUtil.a(2131714353)).setPositiveButton(2131694583, new StoryPublishLauncher.2(this)).show();
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public static boolean b()
@@ -150,10 +130,11 @@ public class StoryPublishLauncher
   {
     if (a().isVideoChatting())
     {
-      AEQLog.c("Q.qqstory.publish.StoryPublishLauncher", "【2131719379】");
-      QQToast.a(paramActivity, 0, 2131719379, 0).a();
+      AEQLog.c("Q.qqstory.publish.StoryPublishLauncher", "【2131719097】");
+      QQToast.a(paramActivity, 0, 2131719097, 0).a();
+      return;
     }
-    while (a(paramActivity)) {
+    if (a(paramActivity)) {
       return;
     }
     Bundle localBundle = paramBundle;
@@ -161,26 +142,23 @@ public class StoryPublishLauncher
       localBundle = new Bundle();
     }
     boolean bool;
-    if (localBundle.getInt("entrance_type") == 104)
+    if (localBundle.getInt("entrance_type") == 104) {
+      bool = ((IShortVideoGuideUtil)QRoute.api(IShortVideoGuideUtil.class)).isAllResourceReady(a());
+    } else {
+      bool = ((IAECameraLauncher)QRoute.api(IAECameraLauncher.class)).isCameraResReady();
+    }
+    a(localBundle);
+    if (bool)
     {
-      bool = ShortVideoGuideUtil.d(a());
-      a(localBundle);
-      if (!bool) {
-        break label114;
-      }
       AEQLog.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 QIMCameraCaptureActivity");
-      QIMCameraCaptureActivity.a(paramActivity, localBundle, paramInt);
+      ((IQIMCameraCapture)QRoute.api(IQIMCameraCapture.class)).launchForResult(paramActivity, localBundle, paramInt);
     }
-    for (;;)
+    else
     {
-      a(bool);
-      return;
-      bool = AECameraLauncher.a();
-      break;
-      label114:
       AEQLog.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 CaptureQmcfSoDownloadActivity");
-      CaptureQmcfSoDownloadActivity.a(paramActivity, AEPituCameraUnit.class.getName(), localBundle, paramInt, localBundle.getBoolean("resource_need_all_wait", false));
+      ((ICaptureQmcfSoDownloadLaunch)QRoute.api(ICaptureQmcfSoDownloadLaunch.class)).launchForResult(paramActivity, ((IAEClassManager)QRoute.api(IAEClassManager.class)).getAEPituCameraUnitClass().getName(), localBundle, paramInt, localBundle.getBoolean("resource_need_all_wait", false));
     }
+    a(bool);
   }
   
   public void a(Activity paramActivity, Bundle paramBundle, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt5)
@@ -192,10 +170,11 @@ public class StoryPublishLauncher
   {
     if (a().isVideoChatting())
     {
-      AEQLog.c("Q.qqstory.publish.StoryPublishLauncher", "【2131719379】");
-      QQToast.a(paramContext, 0, 2131719379, 0).a();
+      AEQLog.c("Q.qqstory.publish.StoryPublishLauncher", "【2131719097】");
+      QQToast.a(paramContext, 0, 2131719097, 0).a();
+      return;
     }
-    while (a(paramContext)) {
+    if (a(paramContext)) {
       return;
     }
     Bundle localBundle = paramBundle;
@@ -203,26 +182,23 @@ public class StoryPublishLauncher
       localBundle = new Bundle();
     }
     boolean bool;
-    if (localBundle.getInt("entrance_type") == 104)
+    if (localBundle.getInt("entrance_type") == 104) {
+      bool = ((IShortVideoGuideUtil)QRoute.api(IShortVideoGuideUtil.class)).isAllResourceReady(a());
+    } else {
+      bool = ((IAECameraLauncher)QRoute.api(IAECameraLauncher.class)).isCameraResReady();
+    }
+    a(localBundle);
+    if (bool)
     {
-      bool = ShortVideoGuideUtil.d(a());
-      a(localBundle);
-      if (!bool) {
-        break label109;
-      }
       AEQLog.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 QIMCameraCaptureActivity");
-      QIMCameraCaptureActivity.a(paramContext, localBundle);
+      ((IQIMCameraCapture)QRoute.api(IQIMCameraCapture.class)).launch(paramContext, localBundle);
     }
-    for (;;)
+    else
     {
-      a(bool);
-      return;
-      bool = AECameraLauncher.a();
-      break;
-      label109:
       AEQLog.b("Q.qqstory.publish.StoryPublishLauncher", "【Choose】 CaptureQmcfSoDownloadActivity");
-      CaptureQmcfSoDownloadActivity.a(paramContext, AEPituCameraUnit.class.getName(), localBundle, localBundle.getBoolean("resource_need_all_wait", false));
+      ((ICaptureQmcfSoDownloadLaunch)QRoute.api(ICaptureQmcfSoDownloadLaunch.class)).launch(paramContext, ((IAEClassManager)QRoute.api(IAEClassManager.class)).getAEPituCameraUnitClass().getName(), localBundle, localBundle.getBoolean("resource_need_all_wait", false));
     }
+    a(bool);
   }
   
   public void a(@NonNull Bundle paramBundle)
@@ -236,17 +212,6 @@ public class StoryPublishLauncher
     if (!paramBundle.containsKey("ability_flag")) {
       paramBundle.putInt("ability_flag", 1);
     }
-    if (!paramBundle.containsKey("enable_multi_fragment"))
-    {
-      paramBundle.putBoolean("enable_multi_fragment", true);
-      if (!paramBundle.containsKey("capture_max_duration")) {
-        paramBundle.putLong("capture_max_duration", 60000L);
-      }
-    }
-    if (!paramBundle.containsKey("capture_max_duration")) {
-      paramBundle.putLong("capture_max_duration", 10000L);
-    }
-    paramBundle.putBoolean("camera_peak_is_alive", QIMShortVideoUtils.a(BaseApplicationImpl.getContext()));
   }
   
   @Deprecated
@@ -257,48 +222,40 @@ public class StoryPublishLauncher
   
   public boolean a(Activity paramActivity, Bundle paramBundle, int paramInt)
   {
-    boolean bool2 = true;
     if (a().isVideoChatting())
     {
-      QQToast.a(paramActivity, 0, 2131719379, 0).a();
-      bool2 = false;
-      return bool2;
+      QQToast.a(paramActivity, 0, 2131719097, 0).a();
+      return false;
     }
     if (a(paramActivity)) {
       return false;
     }
-    boolean bool1;
-    if ((paramBundle != null) && (paramBundle.getInt("entrance_type") == 104))
-    {
-      bool1 = ShortVideoGuideUtil.d(a());
-      label63:
-      SLog.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(bool1), Boolean.valueOf(b()));
-      QQStoryContext.a().b();
-      if (paramBundle != null) {
-        break label134;
-      }
-      paramBundle = new Bundle();
+    boolean bool;
+    if ((paramBundle != null) && (paramBundle.getInt("entrance_type") == 104)) {
+      bool = ((IShortVideoGuideUtil)QRoute.api(IShortVideoGuideUtil.class)).isAllResourceReady(a());
+    } else {
+      bool = ((IAECameraLauncher)QRoute.api(IAECameraLauncher.class)).isCameraResReady();
     }
-    label134:
-    for (;;)
-    {
-      a(paramBundle);
-      if (bool1) {
-        break;
-      }
-      CaptureQmcfSoDownloadActivity.a(paramActivity, AEPituCameraUnit.class.getName(), paramBundle, paramInt, true, true);
-      return false;
-      bool1 = AECameraLauncher.a();
-      break label63;
+    SLog.a("Q.qqstory.publish.StoryPublishLauncher", "launchForResult, videoSoUsable=%s, filterOk=%s", Boolean.valueOf(bool), Boolean.valueOf(b()));
+    QQStoryContext.a().b();
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
+    a(localBundle);
+    if (bool) {
+      return true;
+    }
+    ((ICaptureQmcfSoDownloadLaunch)QRoute.api(ICaptureQmcfSoDownloadLaunch.class)).launchForResult(paramActivity, ((IAEClassManager)QRoute.api(IAEClassManager.class)).getAEPituCameraUnitClass().getName(), localBundle, paramInt, true, true);
+    return false;
   }
   
   public void b(Context paramContext, Bundle paramBundle)
   {
     if (a().isVideoChatting())
     {
-      AEQLog.c("Q.qqstory.publish.StoryPublishLauncher", "【2131719379】");
-      QQToast.a(paramContext, 0, 2131719379, 0).a();
+      AEQLog.c("Q.qqstory.publish.StoryPublishLauncher", "【2131719097】");
+      QQToast.a(paramContext, 0, 2131719097, 0).a();
       QLog.e("Q.qqstory.publish.StoryPublishLauncher", 1, "launchForPreview failed: isVideoChatting");
       return;
     }
@@ -312,12 +269,12 @@ public class StoryPublishLauncher
       localBundle = new Bundle();
     }
     a(localBundle);
-    QIMCameraCaptureActivity.a(paramContext, localBundle);
+    ((IQIMCameraCapture)QRoute.api(IQIMCameraCapture.class)).launch(paramContext, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher
  * JD-Core Version:    0.7.0.1
  */

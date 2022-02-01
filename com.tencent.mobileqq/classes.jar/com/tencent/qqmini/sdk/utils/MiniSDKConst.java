@@ -31,7 +31,7 @@ public class MiniSDKConst
   public static final String KEY_BASELIB_MIN_UPDATE_TIME = "baselib_min_update_time";
   public static final String MINI_FILE_LOG_PATH = "/Tencent/mini/files/";
   public static final String MINI_SDK_PATCH_VERSION = "0";
-  public static final String MINI_SDK_VERSION = "1.12.1";
+  public static final String MINI_SDK_VERSION = "1.15.0";
   public static final String MINI_TAG = "[mini] ";
   public static final int MULTI_ENTER_ROOM_RESULT_DEVICE_TAKE_UP = -2;
   public static final int MULTI_ENTER_ROOM_RESULT_DUPLICATE_CALL = -3;
@@ -58,55 +58,72 @@ public class MiniSDKConst
   
   private static String getExternalPath()
   {
-    Object localObject3 = null;
+    StringBuilder localStringBuilder = null;
     try
     {
-      Object localObject1 = AppLoaderFactory.g().getContext().getExternalCacheDir();
-      if (localObject1 != null)
-      {
-        QMLog.e("MiniSDKConst", "getExternalPath : " + ((File)localObject1).getParent());
-        localObject1 = ((File)localObject1).getParent();
-        return localObject1;
-      }
+      localObject = AppLoaderFactory.g().getContext().getExternalCacheDir();
     }
     catch (Throwable localThrowable)
     {
-      do
+      Object localObject;
+      label15:
+      break label15;
+    }
+    localObject = null;
+    if (localObject != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getExternalPath : ");
+      localStringBuilder.append(((File)localObject).getParent());
+      QMLog.e("MiniSDKConst", localStringBuilder.toString());
+      return ((File)localObject).getParent();
+    }
+    localObject = localStringBuilder;
+    if ("mounted".equals(Environment.getExternalStorageState()))
+    {
+      localObject = Environment.getExternalStorageDirectory();
+      if (localObject != null)
       {
-        for (;;)
-        {
-          localObject2 = null;
-        }
-        localObject2 = localObject3;
-      } while (!"mounted".equals(Environment.getExternalStorageState()));
-      Object localObject2 = Environment.getExternalStorageDirectory();
-      if (localObject2 != null)
-      {
-        QMLog.e("MiniSDKConst", "getExternalPath1 : " + ((File)localObject2).getPath() + "/Android/data/com.tencent.mobileqq/");
-        return ((File)localObject2).getPath() + "/Android/data/com.tencent.mobileqq/";
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getExternalPath1 : ");
+        localStringBuilder.append(((File)localObject).getPath());
+        localStringBuilder.append("/Android/data/com.tencent.mobileqq/");
+        QMLog.e("MiniSDKConst", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((File)localObject).getPath());
+        localStringBuilder.append("/Android/data/com.tencent.mobileqq/");
+        return localStringBuilder.toString();
       }
-      localObject2 = AppLoaderFactory.g().getContext().getFilesDir();
-      if (localObject2 != null)
+      localObject = AppLoaderFactory.g().getContext().getFilesDir();
+      if (localObject != null)
       {
-        QMLog.e("MiniAppGlobal", "getExternalPath2 : " + ((File)localObject2).getParent());
-        return ((File)localObject2).getParent();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getExternalPath2 : ");
+        localStringBuilder.append(((File)localObject).getParent());
+        QMLog.e("MiniAppGlobal", localStringBuilder.toString());
+        return ((File)localObject).getParent();
       }
       QMLog.e("MiniAppGlobal", "getExternalPath3 : /data/data/com.tencent.mobileqq/");
+      localObject = "/data/data/com.tencent.mobileqq/";
     }
-    return "/data/data/com.tencent.mobileqq/";
+    return localObject;
   }
   
   public static String getMiniCacheFilePath()
   {
-    if (TextUtils.isEmpty(gMiniCacheFilePath)) {
-      gMiniCacheFilePath = getExternalPath() + "/Tencent/mini/files/";
+    if (TextUtils.isEmpty(gMiniCacheFilePath))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getExternalPath());
+      localStringBuilder.append("/Tencent/mini/files/");
+      gMiniCacheFilePath = localStringBuilder.toString();
     }
     return gMiniCacheFilePath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniSDKConst
  * JD-Core Version:    0.7.0.1
  */

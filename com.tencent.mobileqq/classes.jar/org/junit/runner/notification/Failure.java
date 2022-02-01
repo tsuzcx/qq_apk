@@ -48,12 +48,16 @@ public class Failure
   
   public String toString()
   {
-    return getTestHeader() + ": " + this.fThrownException.getMessage();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getTestHeader());
+    localStringBuilder.append(": ");
+    localStringBuilder.append(this.fThrownException.getMessage());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.runner.notification.Failure
  * JD-Core Version:    0.7.0.1
  */

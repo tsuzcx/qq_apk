@@ -11,28 +11,31 @@ class ScreenshotManager$1
   
   public void run()
   {
-    ScreenshotManager localScreenshotManager;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      localScreenshotManager = this.this$0;
-      if (ScreenshotManager.a(this.this$0) != null) {
-        break label80;
+      ScreenshotManager localScreenshotManager = this.this$0;
+      if (ScreenshotManager.a(localScreenshotManager) == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(ScreenshotManager.b);
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        localObject = BitmapFactory.decodeFile(((StringBuilder)localObject).toString());
       }
-    }
-    label80:
-    for (Bitmap localBitmap = BitmapFactory.decodeFile(ScreenshotManager.b + this.jdField_a_of_type_JavaLangString);; localBitmap = ScreenshotManager.a(this.this$0))
-    {
-      ScreenshotManager.a(localScreenshotManager, localBitmap);
-      if (this.jdField_a_of_type_ComTencentGamecenterCommonUtilScreenshotManager$ShotCallback != null) {
-        this.jdField_a_of_type_ComTencentGamecenterCommonUtilScreenshotManager$ShotCallback.a(304, "load to mem");
+      else
+      {
+        localObject = ScreenshotManager.a(this.this$0);
       }
-      return;
+      ScreenshotManager.a(localScreenshotManager, (Bitmap)localObject);
+      Object localObject = this.jdField_a_of_type_ComTencentGamecenterCommonUtilScreenshotManager$ShotCallback;
+      if (localObject != null) {
+        ((ScreenshotManager.ShotCallback)localObject).a(304, "load to mem");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.ScreenshotManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,24 +19,22 @@ class SnapHelper$2
   
   protected void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
   {
-    if (this.this$0.mRecyclerView == null) {}
-    int i;
-    int j;
-    int k;
-    do
-    {
+    if (this.this$0.mRecyclerView == null) {
       return;
-      paramView = this.this$0.calculateDistanceToFinalSnap(this.this$0.mRecyclerView.getLayoutManager(), paramView);
-      i = paramView[0];
-      j = paramView[1];
-      k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
-    } while (k <= 0);
-    paramAction.update(i, j, k, this.mDecelerateInterpolator);
+    }
+    paramState = this.this$0;
+    paramView = paramState.calculateDistanceToFinalSnap(paramState.mRecyclerView.getLayoutManager(), paramView);
+    int i = paramView[0];
+    int j = paramView[1];
+    int k = calculateTimeForDeceleration(Math.max(Math.abs(i), Math.abs(j)));
+    if (k > 0) {
+      paramAction.update(i, j, k, this.mDecelerateInterpolator);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.SnapHelper.2
  * JD-Core Version:    0.7.0.1
  */

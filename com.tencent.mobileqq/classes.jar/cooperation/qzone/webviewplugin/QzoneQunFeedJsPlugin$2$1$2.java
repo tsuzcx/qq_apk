@@ -20,7 +20,7 @@ class QzoneQunFeedJsPlugin$2$1$2
     paramDialogInterface.dismiss();
     paramDialogInterface = this.this$2.this$1.this$0.parentPlugin.mRuntime.a().getAccount();
     Intent localIntent = new Intent();
-    String str = this.this$2.this$1.this$0.parentPlugin.mRuntime.a().getResources().getString(2131717528);
+    String str = this.this$2.this$1.this$0.parentPlugin.mRuntime.a().getResources().getString(2131717187);
     QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", "jhan_plxz");
     localIntent.putExtra("success_tips", str);
@@ -30,7 +30,7 @@ class QzoneQunFeedJsPlugin$2$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1.2
  * JD-Core Version:    0.7.0.1
  */

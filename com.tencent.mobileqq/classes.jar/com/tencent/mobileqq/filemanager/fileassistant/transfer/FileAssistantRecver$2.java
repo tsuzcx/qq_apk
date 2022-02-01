@@ -21,49 +21,63 @@ class FileAssistantRecver$2
 {
   FileAssistantRecver$2(FileAssistantRecver paramFileAssistantRecver) {}
   
-  public void a(long paramLong, int paramInt1, int paramInt2)
+  protected void a(long paramLong, int paramInt1, int paramInt2)
   {
-    if (FileAssistantRecver.a(this.a).nSessionId != paramLong) {}
-    do
-    {
+    if (FileAssistantRecver.a(this.a).nSessionId != paramLong) {
       return;
-      QLog.i("FileAssistantRecver<FileAssistant>.NFRV", 1, "onWlanConnect:" + paramLong + ", try cancel offline download!");
-      if (this.a.a != null) {
-        this.a.a.d();
-      }
-      FileAssistantRecver.a(this.a).status = 2;
-      FileAssistantRecver.a(this.a).isStartWlan = true;
-    } while (FileAssistantRecver.a(this.a).getFileManagerDataCenter().b(FileAssistantRecver.a(this.a).nSessionId));
-    FileAssistantRecver.a(this.a).getFileManagerDataCenter().b(FileAssistantRecver.a(this.a).nSessionId);
-    QLog.i("FileAssistantRecver<FileAssistant>.NFRV", 1, "MsgRecord is not exsited, addAIOMsg");
-    String str = ((IQFileConfigManager)FileAssistantRecver.a(this.a).getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin();
-    paramInt1 = ((Integer)FileAssistantRecver.a(this.a).mContext).intValue();
-    FileAssistantRecver.a(this.a).mContext = null;
-    FileAssistantRecver.a(this.a).getFileManagerDataCenter().a(str, str, false, paramInt1, FileAssistantRecver.a(this.a));
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onWlanConnect:");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(", try cancel offline download!");
+    QLog.i("FileAssistantRecver<FileAssistant>.NFRV", 1, ((StringBuilder)localObject).toString());
+    if (this.a.a != null) {
+      this.a.a.f();
+    }
+    FileAssistantRecver.a(this.a).status = 2;
+    FileAssistantRecver.a(this.a).isStartWlan = true;
+    if (!FileAssistantRecver.a(this.a).getFileManagerDataCenter().b(FileAssistantRecver.a(this.a).nSessionId))
+    {
+      FileAssistantRecver.a(this.a).getFileManagerDataCenter().b(FileAssistantRecver.a(this.a).nSessionId);
+      QLog.i("FileAssistantRecver<FileAssistant>.NFRV", 1, "MsgRecord is not exsited, addAIOMsg");
+      localObject = ((IQFileConfigManager)FileAssistantRecver.a(this.a).getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin();
+      paramInt1 = ((Integer)FileAssistantRecver.a(this.a).mContext).intValue();
+      FileAssistantRecver.a(this.a).mContext = null;
+      FileAssistantRecver.a(this.a).getFileManagerDataCenter().a((String)localObject, (String)localObject, false, paramInt1, FileAssistantRecver.a(this.a));
+    }
   }
   
-  public void a(Session paramSession, float paramFloat)
+  protected void a(Session paramSession, float paramFloat)
   {
     if (FileAssistantRecver.a(this.a).nSessionId != paramSession.uSessionID) {
       return;
     }
-    QLog.i("FileAssistantRecver<FileAssistant>.NFRV", 1, "onServiceSessionProgress:" + FileAssistantRecver.a(this.a).nSessionId + ", fProgress:" + paramFloat);
+    paramSession = new StringBuilder();
+    paramSession.append("onServiceSessionProgress:");
+    paramSession.append(FileAssistantRecver.a(this.a).nSessionId);
+    paramSession.append(", fProgress:");
+    paramSession.append(paramFloat);
+    QLog.i("FileAssistantRecver<FileAssistant>.NFRV", 1, paramSession.toString());
     FileAssistantRecver.a(this.a).fProgress = paramFloat;
     FileAssistantRecver.a(this.a).getFileManagerNotifyCenter().a(FileAssistantRecver.a(this.a).uniseq, FileAssistantRecver.a(this.a).nSessionId, FileAssistantRecver.a(this.a).peerUin, FileAssistantRecver.a(this.a).peerType, 16, null, 0, null);
   }
   
-  public void a(Session paramSession, boolean paramBoolean)
+  protected void a(Session paramSession, boolean paramBoolean)
   {
     if (!paramSession.isFileAssist) {
-      break label7;
-    }
-    label7:
-    while (paramSession.uSessionID != FileAssistantRecver.a(this.a).nSessionId) {
       return;
     }
-    QLog.i("FileAssistantRecver<FileAssistant>.NFRV", 1, "onServiceSessionComplete:" + FileAssistantRecver.a(this.a).nSessionId + ", isSucc:" + paramBoolean);
+    if (paramSession.uSessionID != FileAssistantRecver.a(this.a).nSessionId) {
+      return;
+    }
+    paramSession = new StringBuilder();
+    paramSession.append("onServiceSessionComplete:");
+    paramSession.append(FileAssistantRecver.a(this.a).nSessionId);
+    paramSession.append(", isSucc:");
+    paramSession.append(paramBoolean);
+    QLog.i("FileAssistantRecver<FileAssistant>.NFRV", 1, paramSession.toString());
     if (this.a.a != null) {
-      this.a.a.d();
+      this.a.a.f();
     }
     if (paramBoolean)
     {
@@ -78,34 +92,35 @@ class FileAssistantRecver$2
         FileAssistantRecver.a(this.a).getFileManagerDataCenter().a(paramSession, paramSession, false, i, FileAssistantRecver.a(this.a));
       }
     }
-    for (;;)
+    else
     {
-      ((DataLineHandler)FileAssistantRecver.a(this.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(3, paramBoolean, new Object[] { Long.valueOf(0L), Long.valueOf(FileAssistantRecver.a(this.a).nSessionId), FileAssistantRecver.a(this.a).getFilePath() });
-      FileAssistantRecver.a(this.a).getFileManagerDataCenter().c(FileAssistantRecver.a(this.a));
-      FileAssistantRecver.a(this.a).getFileManagerNotifyCenter().a(FileAssistantRecver.a(this.a).uniseq, FileAssistantRecver.a(this.a).nSessionId, FileAssistantRecver.a(this.a).peerUin, FileAssistantRecver.a(this.a).peerType, 14, new Object[] { FileAssistantRecver.a(this.a).strFilePath, Long.valueOf(FileAssistantRecver.a(this.a).fileSize), Boolean.valueOf(true), "" }, 0, null);
-      paramSession = (FileAssistantResultCallbak)FileAssistantRecver.a(this.a).get();
-      if (paramSession == null) {
-        break;
-      }
-      paramSession.a(this.a);
-      return;
       FileAssistantRecver.a(this.a).status = 0;
+    }
+    ((DataLineHandler)FileAssistantRecver.a(this.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(3, paramBoolean, new Object[] { Long.valueOf(0L), Long.valueOf(FileAssistantRecver.a(this.a).nSessionId), FileAssistantRecver.a(this.a).getFilePath() });
+    FileAssistantRecver.a(this.a).getFileManagerDataCenter().c(FileAssistantRecver.a(this.a));
+    FileAssistantRecver.a(this.a).getFileManagerNotifyCenter().a(FileAssistantRecver.a(this.a).uniseq, FileAssistantRecver.a(this.a).nSessionId, FileAssistantRecver.a(this.a).peerUin, FileAssistantRecver.a(this.a).peerType, 14, new Object[] { FileAssistantRecver.a(this.a).strFilePath, Long.valueOf(FileAssistantRecver.a(this.a).fileSize), Boolean.valueOf(true), "" }, 0, null);
+    paramSession = (FileAssistantResultCallbak)FileAssistantRecver.a(this.a).get();
+    if (paramSession != null) {
+      paramSession.a(this.a);
     }
   }
   
-  public void b(Session paramSession)
+  protected void b(Session paramSession)
   {
     if (FileAssistantRecver.a(this.a).nSessionId != paramSession.uSessionID) {
       return;
     }
     if (this.a.a != null)
     {
-      this.a.a.d();
+      this.a.a.f();
       FileAssistantRecver.a(this.a, false);
     }
     FileAssistantRecver.a(this.a).status = 2;
     FileAssistantRecver.b(this.a, true);
-    QLog.i("FileAssistantRecver<FileAssistant>.NFRV", 1, "onServiceSessionStart:" + paramSession.uSessionID);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onServiceSessionStart:");
+    localStringBuilder.append(paramSession.uSessionID);
+    QLog.i("FileAssistantRecver<FileAssistant>.NFRV", 1, localStringBuilder.toString());
     FileAssistantRecver.a(this.a).strFilePath = paramSession.strFilePathSrc;
     FileAssistantRecver.a(this.a).strMiddleThumPath = paramSession.strFilePathThumb;
     FileAssistantRecver.a(this.a).fileName = paramSession.strFileNameSrc;
@@ -118,7 +133,7 @@ class FileAssistantRecver$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.transfer.FileAssistantRecver.2
  * JD-Core Version:    0.7.0.1
  */

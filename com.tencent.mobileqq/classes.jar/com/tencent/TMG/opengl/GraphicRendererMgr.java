@@ -11,33 +11,33 @@ public class GraphicRendererMgr
   
   public static GraphicRendererMgr getInstance()
   {
-    if (sGraphicRenderMgr == null) {}
-    try
-    {
-      if (sGraphicRenderMgr == null)
+    if (sGraphicRenderMgr == null) {
+      try
       {
-        loadSo();
-        if (mIsSoLoaded) {
-          sGraphicRenderMgr = new GraphicRendererMgr();
+        if (sGraphicRenderMgr == null)
+        {
+          loadSo();
+          if (mIsSoLoaded) {
+            sGraphicRenderMgr = new GraphicRendererMgr();
+          }
         }
       }
-      return sGraphicRenderMgr;
+      finally {}
     }
-    finally {}
+    return sGraphicRenderMgr;
   }
   
   private static void loadSo()
   {
-    if (!mIsSoLoaded) {
-      if ((!SoUtil.loadSo("stlport_shared")) || (!SoUtil.loadSo("qav_graphics"))) {
-        break label29;
-      }
-    }
-    label29:
-    for (boolean bool = true;; bool = false)
+    if (!mIsSoLoaded)
     {
+      boolean bool;
+      if ((SoUtil.loadSo("stlport_shared")) && (SoUtil.loadSo("qav_graphics"))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       mIsSoLoaded = bool;
-      return;
     }
   }
   

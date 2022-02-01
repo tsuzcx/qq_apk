@@ -7,17 +7,25 @@ class Router$2
   
   public void onError(int paramInt)
   {
-    Logger.warning("start path fail, result:" + paramInt + " path:" + this.val$path);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start path fail, result:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" path:");
+    localStringBuilder.append(this.val$path);
+    Logger.warning(localStringBuilder.toString());
   }
   
   public void onSuccess()
   {
-    Logger.info("start path success, " + this.val$path);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start path success, ");
+    localStringBuilder.append(this.val$path);
+    Logger.info(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.route.Router.2
  * JD-Core Version:    0.7.0.1
  */

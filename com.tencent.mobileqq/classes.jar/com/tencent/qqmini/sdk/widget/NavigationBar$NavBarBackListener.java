@@ -6,7 +6,7 @@ public abstract interface NavigationBar$NavBarBackListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.NavigationBar.NavBarBackListener
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,18 @@ final class ARReport$17
     if (paramFile.startsWith("cpu"))
     {
       int i = 3;
-      while (i < paramFile.length())
-      {
-        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+      while (i < paramFile.length()) {
+        if (paramFile.charAt(i) >= '0')
+        {
+          if (paramFile.charAt(i) > '9') {
+            return false;
+          }
+          i += 1;
+        }
+        else
+        {
           return false;
         }
-        i += 1;
       }
       return true;
     }
@@ -26,7 +32,7 @@ final class ARReport$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.17
  * JD-Core Version:    0.7.0.1
  */

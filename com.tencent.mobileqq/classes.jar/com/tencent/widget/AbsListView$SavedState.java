@@ -31,16 +31,20 @@ public class AbsListView$SavedState
     this.position = paramParcel.readInt();
     this.height = paramParcel.readInt();
     this.filter = paramParcel.readString();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
+    int j = paramParcel.readByte();
+    int i = 0;
+    boolean bool;
+    if (j != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.inActionMode = bool;
+    this.checkedItemCount = paramParcel.readInt();
+    this.checkState = paramParcel.readSparseBooleanArray();
+    j = paramParcel.readInt();
+    if (j > 0)
     {
-      this.inActionMode = bool;
-      this.checkedItemCount = paramParcel.readInt();
-      this.checkState = paramParcel.readSparseBooleanArray();
-      int j = paramParcel.readInt();
-      if (j <= 0) {
-        break;
-      }
       this.checkIdState = new LongSparseArray();
       while (i < j)
       {
@@ -59,12 +63,29 @@ public class AbsListView$SavedState
   
   public String toString()
   {
-    return "AbsListView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " selectedId=" + this.selectedId + " firstId=" + this.firstId + " viewTop=" + this.viewTop + " position=" + this.position + " height=" + this.height + " filter=" + this.filter + " checkState=" + this.checkState + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AbsListView.SavedState{");
+    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+    localStringBuilder.append(" selectedId=");
+    localStringBuilder.append(this.selectedId);
+    localStringBuilder.append(" firstId=");
+    localStringBuilder.append(this.firstId);
+    localStringBuilder.append(" viewTop=");
+    localStringBuilder.append(this.viewTop);
+    localStringBuilder.append(" position=");
+    localStringBuilder.append(this.position);
+    localStringBuilder.append(" height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(" filter=");
+    localStringBuilder.append(this.filter);
+    localStringBuilder.append(" checkState=");
+    localStringBuilder.append(this.checkState);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 0;
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeLong(this.selectedId);
     paramParcel.writeLong(this.firstId);
@@ -72,34 +93,28 @@ public class AbsListView$SavedState
     paramParcel.writeInt(this.position);
     paramParcel.writeInt(this.height);
     paramParcel.writeString(this.filter);
-    if (this.inActionMode)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.checkedItemCount);
-      paramParcel.writeSparseBooleanArray(this.checkState);
-      if (this.checkIdState == null) {
-        break label154;
-      }
-    }
-    label154:
-    for (paramInt = this.checkIdState.size();; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      while (i < paramInt)
-      {
-        paramParcel.writeLong(this.checkIdState.keyAt(i));
-        paramParcel.writeInt(((Integer)this.checkIdState.valueAt(i)).intValue());
-        i += 1;
-      }
+    paramParcel.writeByte((byte)this.inActionMode);
+    paramParcel.writeInt(this.checkedItemCount);
+    paramParcel.writeSparseBooleanArray(this.checkState);
+    LongSparseArray localLongSparseArray = this.checkIdState;
+    int i = 0;
+    if (localLongSparseArray != null) {
+      paramInt = localLongSparseArray.size();
+    } else {
       paramInt = 0;
-      break;
+    }
+    paramParcel.writeInt(paramInt);
+    while (i < paramInt)
+    {
+      paramParcel.writeLong(this.checkIdState.keyAt(i));
+      paramParcel.writeInt(((Integer)this.checkIdState.valueAt(i)).intValue());
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AbsListView.SavedState
  * JD-Core Version:    0.7.0.1
  */

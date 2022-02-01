@@ -11,7 +11,6 @@ import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalJumpUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class WSVerticalItemBottomFlexibleController
   extends AbsWsUIGroup<WSVerticalItemData>
@@ -29,59 +28,58 @@ public class WSVerticalItemBottomFlexibleController
     }
   }
   
-  public void a()
+  protected void a()
   {
     if ((a() != null) && ((((WSVerticalItemData)a()).a() instanceof stSimpleMetaFeed))) {
       this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((WSVerticalItemData)a()).a();
     }
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560154;
+    return 2131560036;
   }
   
-  public void b()
+  protected void b()
   {
     Object localObject = (WSVerticalItemData)a();
-    if (localObject == null) {}
-    while (!(((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed)) {
+    if (localObject == null) {
       return;
     }
-    localObject = ((WSVerticalItemData)localObject).a().poster;
-    if ((localObject != null) && (!TextUtils.isEmpty(((stSimpleMetaPerson)localObject).nick)))
+    if ((((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("@%s", new Object[] { ((stSimpleMetaPerson)localObject).nick }));
-      return;
+      localObject = ((WSVerticalItemData)localObject).a().poster;
+      if ((localObject != null) && (!TextUtils.isEmpty(((stSimpleMetaPerson)localObject).nick)))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("@%s", new Object[] { ((stSimpleMetaPerson)localObject).nick }));
+        return;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131381197));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380451));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (paramView == null) {
       return;
-      if (paramView.getId() == 2131381197) {
-        WSVerticalJumpUtils.a("nickname", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-      }
+    }
+    if (paramView.getId() == 2131380451) {
+      WSVerticalJumpUtils.a("nickname", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomFlexibleController
  * JD-Core Version:    0.7.0.1
  */

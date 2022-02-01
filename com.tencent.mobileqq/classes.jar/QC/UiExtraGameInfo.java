@@ -36,23 +36,27 @@ public final class UiExtraGameInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.gameappid, 0);
-    if (this.loginurl != null) {
-      paramJceOutputStream.write(this.loginurl, 1);
+    String str = this.loginurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.gamevia != null) {
-      paramJceOutputStream.write(this.gamevia, 2);
+    str = this.gamevia;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.gamepkgname != null) {
-      paramJceOutputStream.write(this.gamepkgname, 3);
+    str = this.gamepkgname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.gameappname != null) {
-      paramJceOutputStream.write(this.gameappname, 4);
+    str = this.gameappname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UiExtraGameInfo
  * JD-Core Version:    0.7.0.1
  */

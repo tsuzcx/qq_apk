@@ -82,7 +82,7 @@ public class SphereTo2DRenderObj
     this.glSphereProgram.use();
     this.sphere.uploadTexCoordinateBuffer(this.glSphereProgram.getTextureCoordinateHandle());
     this.sphere.uploadVerticesBuffer(this.glSphereProgram.getPositionHandle());
-    float f = (float)(Math.toDegrees(Math.atan(this.mScale)) * 2.0D);
+    Math.toDegrees(Math.atan(this.mScale));
     Matrix.perspectiveM(this.projectionMatrix, 0, 75.0F, this.ratio, 3.0F, 300.0F);
     Matrix.setIdentityM(this.modelMatrix, 0);
     this.orientationHelper.recordRotation(this.rotationMatrix);
@@ -106,7 +106,7 @@ public class SphereTo2DRenderObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.SphereTo2DRenderObj
  * JD-Core Version:    0.7.0.1
  */

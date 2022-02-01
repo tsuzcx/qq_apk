@@ -9,34 +9,20 @@ import org.jetbrains.annotations.NotNull;
 public final class SDKConfig
 {
   public static final SDKConfig.Companion Companion = new SDKConfig.Companion(null);
-  private static int MAX_AUSTERITY_REPORT_NUM = 0;
-  private static int MAX_LOOSE_REPORT_NUM = 0;
+  private static int MAX_AUSTERITY_REPORT_NUM = 100;
+  private static int MAX_LOOSE_REPORT_NUM = 100;
   @JvmField
-  public static final boolean PURE_QAPM;
+  public static final boolean PURE_QAPM = BuildConfig.SPECIAL_MODE.booleanValue() ^ true;
   @JvmField
-  public static int RES_TYPE = 0;
+  public static int RES_TYPE = 2;
   @NotNull
-  public static final String SDK_VER = "4.0.2.3.2020092316-PCG";
-  private static float USER_SAMPLE_RATIO;
+  public static final String SDK_VER = "4.0.2.3.2020092317-PCG";
+  private static float USER_SAMPLE_RATIO = 1.0F;
   private static int VER_TYPE;
-  
-  static
-  {
-    if (!BuildConfig.SPECIAL_MODE.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PURE_QAPM = bool;
-      USER_SAMPLE_RATIO = 1.0F;
-      MAX_AUSTERITY_REPORT_NUM = 100;
-      MAX_LOOSE_REPORT_NUM = 100;
-      RES_TYPE = 2;
-      return;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.config.SDKConfig
  * JD-Core Version:    0.7.0.1
  */

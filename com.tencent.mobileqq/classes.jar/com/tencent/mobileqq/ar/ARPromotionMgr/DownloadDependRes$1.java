@@ -18,8 +18,13 @@ class DownloadDependRes$1
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(PromotionUtil.a, 2, "onArSoDownloadProcess process=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = PromotionUtil.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onArSoDownloadProcess process=");
+      localStringBuilder.append(paramInt);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
   }
   
@@ -33,7 +38,7 @@ class DownloadDependRes$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.DownloadDependRes.1
  * JD-Core Version:    0.7.0.1
  */

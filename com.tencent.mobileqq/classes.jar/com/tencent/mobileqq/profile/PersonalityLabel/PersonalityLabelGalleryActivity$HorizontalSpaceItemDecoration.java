@@ -9,7 +9,7 @@ import android.view.View;
 class PersonalityLabelGalleryActivity$HorizontalSpaceItemDecoration
   extends RecyclerView.ItemDecoration
 {
-  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
+  private final int jdField_a_of_type_Int = (int)(PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity) * 3.0F);
   
   private PersonalityLabelGalleryActivity$HorizontalSpaceItemDecoration(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
@@ -20,7 +20,7 @@ class PersonalityLabelGalleryActivity$HorizontalSpaceItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.HorizontalSpaceItemDecoration
  * JD-Core Version:    0.7.0.1
  */

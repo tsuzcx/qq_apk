@@ -17,190 +17,194 @@ class ChooseInterestTagActivity$6
 {
   ChooseInterestTagActivity$6(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, List<InterestTagInfo> paramList1, List<InterestTagInfo> paramList2, String paramString1, int paramInt3, int paramInt4, String paramString2)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2, List<Object> paramList1, List<Object> paramList2, String paramString1, int paramInt3, int paramInt4, String paramString2)
   {
-    if (!paramBoolean) {
-      if (ChooseInterestTagActivity.a(this.a).getVisibility() == 0)
+    boolean bool2 = true;
+    boolean bool3 = true;
+    boolean bool4 = true;
+    boolean bool1 = true;
+    if (!paramBoolean)
+    {
+      if (ChooseInterestTagActivity.access$900(this.a).getVisibility() == 0)
       {
         paramList1 = paramString2;
         if (TextUtils.isEmpty(paramString2)) {
-          paramList1 = HardCodeUtil.a(2131701859);
+          paramList1 = HardCodeUtil.a(2131701999);
         }
-        ChooseInterestTagActivity.a(this.a).setText(paramList1);
-        ChooseInterestTagActivity.a(this.a).setOnClickListener(ChooseInterestTagActivity.a(this.a));
-      }
-    }
-    label441:
-    label587:
-    label608:
-    do
-    {
-      do
-      {
+        ChooseInterestTagActivity.access$1700(this.a).setText(paramList1);
+        ChooseInterestTagActivity.access$1700(this.a).setOnClickListener(ChooseInterestTagActivity.access$1800(this.a));
         return;
-        if (ChooseInterestTagActivity.b(this.a).getVisibility() == 0)
-        {
-          paramList1 = paramString2;
-          if (TextUtils.isEmpty(paramString2)) {
-            paramList1 = HardCodeUtil.a(2131701878);
-          }
-          ChooseInterestTagActivity.b(this.a).setText(paramList1);
-          ChooseInterestTagActivity.c(this.a).setVisibility(8);
-          return;
-        }
-        paramList1 = this.a;
-        if (paramInt3 != -1) {}
-        for (paramBoolean = true;; paramBoolean = false)
-        {
-          ChooseInterestTagActivity.a(paramList1, false, paramBoolean);
-          return;
-        }
-        if (paramInt1 == ChooseInterestTagActivity.a(this.a)) {
-          break;
-        }
-        if (ChooseInterestTagActivity.a(this.a).getVisibility() == 0)
-        {
-          ChooseInterestTagActivity.a(this.a).setText(HardCodeUtil.a(2131701886));
-          ChooseInterestTagActivity.a(this.a).setOnClickListener(null);
-          return;
-        }
-      } while (ChooseInterestTagActivity.b(this.a).getVisibility() != 0);
-      ChooseInterestTagActivity.b(this.a).setText(HardCodeUtil.a(2131701850));
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      return;
-      if ((paramList1 == null) || (paramList1.isEmpty()))
-      {
-        if (ChooseInterestTagActivity.a(this.a).getVisibility() == 0)
-        {
-          ChooseInterestTagActivity.a(this.a).setText(HardCodeUtil.a(2131701864));
-          ChooseInterestTagActivity.a(this.a).setOnClickListener(null);
-          return;
-        }
-        if (ChooseInterestTagActivity.b(this.a).getVisibility() == 0)
-        {
-          ChooseInterestTagActivity.b(this.a).setText(HardCodeUtil.a(2131701872));
-          ChooseInterestTagActivity.c(this.a).setVisibility(0);
-          return;
-        }
-        paramList1 = this.a;
-        if (paramInt2 != -1) {}
-        for (paramBoolean = true;; paramBoolean = false)
-        {
-          ChooseInterestTagActivity.a(paramList1, false, paramBoolean);
-          return;
-        }
       }
+      if (ChooseInterestTagActivity.access$1900(this.a).getVisibility() == 0)
+      {
+        paramList1 = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          paramList1 = HardCodeUtil.a(2131702018);
+        }
+        ChooseInterestTagActivity.access$2000(this.a).setText(paramList1);
+        ChooseInterestTagActivity.access$2100(this.a).setVisibility(8);
+        return;
+      }
+      paramList1 = this.a;
+      if (paramInt3 != -1) {
+        paramBoolean = bool1;
+      } else {
+        paramBoolean = false;
+      }
+      ChooseInterestTagActivity.access$1400(paramList1, false, paramBoolean);
+      return;
+    }
+    if (paramInt1 != ChooseInterestTagActivity.access$000(this.a))
+    {
+      if (ChooseInterestTagActivity.access$900(this.a).getVisibility() == 0)
+      {
+        ChooseInterestTagActivity.access$1700(this.a).setText(HardCodeUtil.a(2131702026));
+        ChooseInterestTagActivity.access$1700(this.a).setOnClickListener(null);
+        return;
+      }
+      if (ChooseInterestTagActivity.access$1900(this.a).getVisibility() == 0)
+      {
+        ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131701990));
+        ChooseInterestTagActivity.access$2100(this.a).setVisibility(8);
+      }
+      return;
+    }
+    if ((paramList1 != null) && (!paramList1.isEmpty()))
+    {
       if (paramInt4 == 1)
       {
-        if (paramList2 == null)
+        if (paramList2 == null) {
+          ChooseInterestTagActivity.access$2200(this.a).clear();
+        } else {
+          ChooseInterestTagActivity.access$2202(this.a, (ArrayList)paramList2);
+        }
+        ChooseInterestTagActivity.access$2300(this.a);
+      }
+      if (TextUtils.isEmpty(paramString1))
+      {
+        if (ChooseInterestTagActivity.access$900(this.a).getVisibility() == 0) {
+          ChooseInterestTagActivity.access$900(this.a).setVisibility(8);
+        }
+        if (paramInt3 == 0) {
+          ChooseInterestTagActivity.access$1000(this.a).clear();
+        } else {
+          ChooseInterestTagActivity.access$1000(this.a).removeAll(paramList1);
+        }
+        ChooseInterestTagActivity.access$1000(this.a).addAll(paramList1);
+        if (ChooseInterestTagActivity.access$1100(this.a) == null)
         {
-          ChooseInterestTagActivity.a(this.a).clear();
-          ChooseInterestTagActivity.a(this.a);
+          paramList1 = this.a;
+          ChooseInterestTagActivity.access$1102(paramList1, new InterestTagAdapter(paramList1, ChooseInterestTagActivity.access$000(paramList1), ChooseInterestTagActivity.access$1000(this.a), ChooseInterestTagActivity.access$1200(this.a)));
+          ChooseInterestTagActivity.access$1300(this.a).setAdapter(ChooseInterestTagActivity.access$1100(this.a));
         }
-      }
-      else
-      {
-        if (!TextUtils.isEmpty(paramString1)) {
-          continue;
+        else
+        {
+          ChooseInterestTagActivity.access$1100(this.a).a(ChooseInterestTagActivity.access$1000(this.a), true);
         }
-        if (ChooseInterestTagActivity.a(this.a).getVisibility() == 0) {
-          ChooseInterestTagActivity.a(this.a).setVisibility(8);
-        }
-        if (paramInt3 != 0) {
-          break label569;
-        }
-        ChooseInterestTagActivity.a(this.a).clear();
-        ChooseInterestTagActivity.a(this.a).addAll(paramList1);
-        if (ChooseInterestTagActivity.a(this.a) != null) {
-          break label587;
-        }
-        ChooseInterestTagActivity.a(this.a, new InterestTagAdapter(this.a, ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a)));
-        ChooseInterestTagActivity.a(this.a).setAdapter(ChooseInterestTagActivity.a(this.a));
-        ChooseInterestTagActivity.a(this.a, paramInt2);
+        ChooseInterestTagActivity.access$202(this.a, paramInt2);
         paramList1 = this.a;
-        if (paramInt2 == -1) {
-          break label608;
+        if (paramInt2 != -1) {
+          paramBoolean = bool2;
+        } else {
+          paramBoolean = false;
         }
-      }
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        ChooseInterestTagActivity.a(paramList1, false, paramBoolean);
+        ChooseInterestTagActivity.access$1400(paramList1, false, paramBoolean);
         return;
-        ChooseInterestTagActivity.a(this.a, (ArrayList)paramList2);
-        break;
-        ChooseInterestTagActivity.a(this.a).removeAll(paramList1);
-        break label441;
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-        break label523;
       }
-    } while ((TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a))) || (!ChooseInterestTagActivity.a(this.a).equals(paramString1)));
-    label523:
-    label569:
-    if (ChooseInterestTagActivity.b(this.a).getVisibility() == 0) {
-      ChooseInterestTagActivity.b(this.a).setVisibility(8);
-    }
-    if (paramInt3 == 0)
-    {
-      ChooseInterestTagActivity.b(this.a).clear();
-      ChooseInterestTagActivity.b(this.a).addAll(paramList1);
-      if (ChooseInterestTagActivity.a(this.a) != null) {
-        break label813;
+      if ((!TextUtils.isEmpty(ChooseInterestTagActivity.access$700(this.a))) && (ChooseInterestTagActivity.access$700(this.a).equals(paramString1)))
+      {
+        if (ChooseInterestTagActivity.access$1900(this.a).getVisibility() == 0) {
+          ChooseInterestTagActivity.access$1900(this.a).setVisibility(8);
+        }
+        if (paramInt3 == 0) {
+          ChooseInterestTagActivity.access$2400(this.a).clear();
+        } else {
+          ChooseInterestTagActivity.access$2400(this.a).removeAll(paramList1);
+        }
+        ChooseInterestTagActivity.access$2400(this.a).addAll(paramList1);
+        if (ChooseInterestTagActivity.access$1100(this.a) == null)
+        {
+          paramList1 = this.a;
+          ChooseInterestTagActivity.access$1102(paramList1, new InterestTagAdapter(paramList1, ChooseInterestTagActivity.access$000(paramList1), ChooseInterestTagActivity.access$2400(this.a), ChooseInterestTagActivity.access$1200(this.a)));
+          ChooseInterestTagActivity.access$1300(this.a).setAdapter(ChooseInterestTagActivity.access$1100(this.a));
+        }
+        else
+        {
+          ChooseInterestTagActivity.access$1100(this.a).a(ChooseInterestTagActivity.access$2400(this.a), true);
+        }
+        ChooseInterestTagActivity.access$802(this.a, paramInt2);
+        paramList1 = this.a;
+        if (paramInt2 != -1) {
+          paramBoolean = bool3;
+        } else {
+          paramBoolean = false;
+        }
+        ChooseInterestTagActivity.access$1400(paramList1, false, paramBoolean);
       }
-      ChooseInterestTagActivity.a(this.a, new InterestTagAdapter(this.a, ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), ChooseInterestTagActivity.a(this.a)));
-      ChooseInterestTagActivity.a(this.a).setAdapter(ChooseInterestTagActivity.a(this.a));
-      label765:
-      ChooseInterestTagActivity.b(this.a, paramInt2);
-      paramList1 = this.a;
-      if (paramInt2 == -1) {
-        break label834;
-      }
-    }
-    label813:
-    label834:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ChooseInterestTagActivity.a(paramList1, false, paramBoolean);
       return;
-      ChooseInterestTagActivity.b(this.a).removeAll(paramList1);
-      break;
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.b(this.a), true);
-      break label765;
     }
+    if (ChooseInterestTagActivity.access$900(this.a).getVisibility() == 0)
+    {
+      ChooseInterestTagActivity.access$1700(this.a).setText(HardCodeUtil.a(2131702004));
+      ChooseInterestTagActivity.access$1700(this.a).setOnClickListener(null);
+      return;
+    }
+    if (ChooseInterestTagActivity.access$1900(this.a).getVisibility() == 0)
+    {
+      ChooseInterestTagActivity.access$2000(this.a).setText(HardCodeUtil.a(2131702012));
+      ChooseInterestTagActivity.access$2100(this.a).setVisibility(0);
+      return;
+    }
+    paramList1 = this.a;
+    if (paramInt2 != -1) {
+      paramBoolean = bool4;
+    } else {
+      paramBoolean = false;
+    }
+    ChooseInterestTagActivity.access$1400(paramList1, false, paramBoolean);
   }
   
-  public void a(boolean paramBoolean, String paramString1, List<InterestTag> paramList, String paramString2, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, String paramString1, List<Object> paramList, String paramString2, int paramInt1, int paramInt2)
   {
     if (!paramBoolean)
     {
       if (TextUtils.isEmpty(paramString2))
       {
-        ChooseInterestTagActivity.a(this.a, 2, HardCodeUtil.a(2131701876), 500);
+        ChooseInterestTagActivity.access$2500(this.a, 2, HardCodeUtil.a(2131702016), 500);
         return;
       }
-      ChooseInterestTagActivity.a(this.a, 0, HardCodeUtil.a(2131701849) + paramString2, 500);
+      paramString1 = this.a;
+      paramList = new StringBuilder();
+      paramList.append(HardCodeUtil.a(2131701989));
+      paramList.append(paramString2);
+      ChooseInterestTagActivity.access$2500(paramString1, 0, paramList.toString(), 500);
       return;
     }
     if ((paramInt2 == 1) && (!TextUtils.isEmpty(paramString1)))
     {
-      ChooseInterestTagActivity.b(this.a);
+      ChooseInterestTagActivity.access$2600(this.a);
       paramList = new Intent(this.a, QQBrowserActivity.class);
       paramList.putExtra("isShowAd", false);
       paramList.putExtra("url", paramString1);
-      paramList.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131701865));
-      paramList.putExtra("title", HardCodeUtil.a(2131701887));
-      if (QLog.isColorLevel()) {
-        QLog.d("choose_interest_tag", 2, "url = " + paramString1);
+      paramList.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131702005));
+      paramList.putExtra("title", HardCodeUtil.a(2131702027));
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("url = ");
+        paramString2.append(paramString1);
+        QLog.d("choose_interest_tag", 2, paramString2.toString());
       }
       this.a.startActivity(paramList);
       this.a.finish();
       return;
     }
-    ChooseInterestTagActivity.a(this.a, 1, HardCodeUtil.a(2131701866), 500);
+    ChooseInterestTagActivity.access$2500(this.a, 1, HardCodeUtil.a(2131702006), 500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.6
  * JD-Core Version:    0.7.0.1
  */

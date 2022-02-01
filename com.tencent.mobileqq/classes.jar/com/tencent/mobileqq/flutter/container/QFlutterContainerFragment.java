@@ -12,27 +12,21 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import io.flutter.embedding.engine.FlutterShellArgs;
 
 public class QFlutterContainerFragment
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
   implements LifecycleOwner, IQFlutterContainerHost
 {
   private LifecycleRegistry a;
-  public QFlutterContainerDelegate a;
+  protected QFlutterContainerDelegate a;
   
   public QFlutterContainerFragment()
   {
     setArguments(new Bundle());
     this.jdField_a_of_type_AndroidxLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-  }
-  
-  @NonNull
-  public Context a()
-  {
-    return getActivity();
   }
   
   @Nullable
@@ -51,17 +45,21 @@ public class QFlutterContainerFragment
   public FlutterShellArgs a()
   {
     String[] arrayOfString = getArguments().getStringArray("initialization_args");
-    if (arrayOfString != null) {}
-    for (;;)
-    {
-      return new FlutterShellArgs(arrayOfString);
+    if (arrayOfString == null) {
       arrayOfString = new String[0];
     }
+    return new FlutterShellArgs(arrayOfString);
   }
   
   public boolean a()
   {
     return false;
+  }
+  
+  @NonNull
+  public Context getContext()
+  {
+    return getQBaseActivity();
   }
   
   @NonNull
@@ -89,11 +87,16 @@ public class QFlutterContainerFragment
     this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.a();
   }
   
+  public boolean onBackEvent()
+  {
+    return super.onBackEvent();
+  }
+  
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -161,7 +164,7 @@ public class QFlutterContainerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.QFlutterContainerFragment
  * JD-Core Version:    0.7.0.1
  */

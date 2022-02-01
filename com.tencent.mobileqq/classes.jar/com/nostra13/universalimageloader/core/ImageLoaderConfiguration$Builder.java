@@ -54,43 +54,37 @@ public class ImageLoaderConfiguration$Builder
   
   private void initEmptyFieldsWithDefaultValues()
   {
-    if (this.taskExecutor == null)
-    {
+    if (this.taskExecutor == null) {
       this.taskExecutor = DefaultConfigurationFactory.createExecutor(this.threadPoolSize, this.threadPriority, this.tasksProcessingType);
-      if (this.taskExecutorForCachedImages != null) {
-        break label202;
-      }
-      this.taskExecutorForCachedImages = DefaultConfigurationFactory.createExecutor(this.threadPoolSize, this.threadPriority, this.tasksProcessingType);
-    }
-    for (;;)
-    {
-      if (this.diskCache == null)
-      {
-        if (this.diskCacheFileNameGenerator == null) {
-          this.diskCacheFileNameGenerator = DefaultConfigurationFactory.createFileNameGenerator();
-        }
-        this.diskCache = DefaultConfigurationFactory.createDiskCache(this.context, this.diskCacheFileNameGenerator, this.diskCacheSize, this.diskCacheFileCount);
-      }
-      if (this.memoryCache == null) {
-        this.memoryCache = DefaultConfigurationFactory.createMemoryCache(this.context, this.memoryCacheSize);
-      }
-      if (this.denyCacheImageMultipleSizesInMemory) {
-        this.memoryCache = new FuzzyKeyMemoryCache(this.memoryCache, MemoryCacheUtils.createFuzzyKeyComparator());
-      }
-      if (this.downloader == null) {
-        this.downloader = DefaultConfigurationFactory.createImageDownloader(this.context);
-      }
-      if (this.decoder == null) {
-        this.decoder = DefaultConfigurationFactory.createImageDecoder(this.writeLogs);
-      }
-      if (this.defaultDisplayImageOptions == null) {
-        this.defaultDisplayImageOptions = DisplayImageOptions.createSimple();
-      }
-      return;
+    } else {
       this.customExecutor = true;
-      break;
-      label202:
+    }
+    if (this.taskExecutorForCachedImages == null) {
+      this.taskExecutorForCachedImages = DefaultConfigurationFactory.createExecutor(this.threadPoolSize, this.threadPriority, this.tasksProcessingType);
+    } else {
       this.customExecutorForCachedImages = true;
+    }
+    if (this.diskCache == null)
+    {
+      if (this.diskCacheFileNameGenerator == null) {
+        this.diskCacheFileNameGenerator = DefaultConfigurationFactory.createFileNameGenerator();
+      }
+      this.diskCache = DefaultConfigurationFactory.createDiskCache(this.context, this.diskCacheFileNameGenerator, this.diskCacheSize, this.diskCacheFileCount);
+    }
+    if (this.memoryCache == null) {
+      this.memoryCache = DefaultConfigurationFactory.createMemoryCache(this.context, this.memoryCacheSize);
+    }
+    if (this.denyCacheImageMultipleSizesInMemory) {
+      this.memoryCache = new FuzzyKeyMemoryCache(this.memoryCache, MemoryCacheUtils.createFuzzyKeyComparator());
+    }
+    if (this.downloader == null) {
+      this.downloader = DefaultConfigurationFactory.createImageDownloader(this.context);
+    }
+    if (this.decoder == null) {
+      this.decoder = DefaultConfigurationFactory.createImageDecoder(this.writeLogs);
+    }
+    if (this.defaultDisplayImageOptions == null) {
+      this.defaultDisplayImageOptions = DisplayImageOptions.createSimple();
     }
   }
   
@@ -164,14 +158,15 @@ public class ImageLoaderConfiguration$Builder
   
   public Builder diskCacheFileCount(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("maxFileCount must be a positive number");
+    if (paramInt > 0)
+    {
+      if (this.diskCache != null) {
+        L.w("diskCache(), diskCacheSize() and diskCacheFileCount calls overlap each other", new Object[0]);
+      }
+      this.diskCacheFileCount = paramInt;
+      return this;
     }
-    if (this.diskCache != null) {
-      L.w("diskCache(), diskCacheSize() and diskCacheFileCount calls overlap each other", new Object[0]);
-    }
-    this.diskCacheFileCount = paramInt;
-    return this;
+    throw new IllegalArgumentException("maxFileCount must be a positive number");
   }
   
   public Builder diskCacheFileNameGenerator(FileNameGenerator paramFileNameGenerator)
@@ -185,14 +180,15 @@ public class ImageLoaderConfiguration$Builder
   
   public Builder diskCacheSize(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("maxCacheSize must be a positive number");
+    if (paramInt > 0)
+    {
+      if (this.diskCache != null) {
+        L.w("diskCache(), diskCacheSize() and diskCacheFileCount calls overlap each other", new Object[0]);
+      }
+      this.diskCacheSize = paramInt;
+      return this;
     }
-    if (this.diskCache != null) {
-      L.w("diskCache(), diskCacheSize() and diskCacheFileCount calls overlap each other", new Object[0]);
-    }
-    this.diskCacheSize = paramInt;
-    return this;
+    throw new IllegalArgumentException("maxCacheSize must be a positive number");
   }
   
   public Builder imageDecoder(ImageDecoder paramImageDecoder)
@@ -225,26 +221,28 @@ public class ImageLoaderConfiguration$Builder
   
   public Builder memoryCacheSize(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("memoryCacheSize must be a positive number");
+    if (paramInt > 0)
+    {
+      if (this.memoryCache != null) {
+        L.w("memoryCache() and memoryCacheSize() calls overlap each other", new Object[0]);
+      }
+      this.memoryCacheSize = paramInt;
+      return this;
     }
-    if (this.memoryCache != null) {
-      L.w("memoryCache() and memoryCacheSize() calls overlap each other", new Object[0]);
-    }
-    this.memoryCacheSize = paramInt;
-    return this;
+    throw new IllegalArgumentException("memoryCacheSize must be a positive number");
   }
   
   public Builder memoryCacheSizePercentage(int paramInt)
   {
-    if ((paramInt <= 0) || (paramInt >= 100)) {
-      throw new IllegalArgumentException("availableMemoryPercent must be in range (0 < % < 100)");
+    if ((paramInt > 0) && (paramInt < 100))
+    {
+      if (this.memoryCache != null) {
+        L.w("memoryCache() and memoryCacheSize() calls overlap each other", new Object[0]);
+      }
+      this.memoryCacheSize = ((int)((float)Runtime.getRuntime().maxMemory() * (paramInt / 100.0F)));
+      return this;
     }
-    if (this.memoryCache != null) {
-      L.w("memoryCache() and memoryCacheSize() calls overlap each other", new Object[0]);
-    }
-    this.memoryCacheSize = ((int)((float)Runtime.getRuntime().maxMemory() * (paramInt / 100.0F)));
-    return this;
+    throw new IllegalArgumentException("availableMemoryPercent must be in range (0 < % < 100)");
   }
   
   public Builder taskExecutor(Executor paramExecutor)
@@ -310,7 +308,7 @@ public class ImageLoaderConfiguration$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.ImageLoaderConfiguration.Builder
  * JD-Core Version:    0.7.0.1
  */

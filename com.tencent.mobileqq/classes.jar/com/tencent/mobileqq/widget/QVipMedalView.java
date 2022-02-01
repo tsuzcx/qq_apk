@@ -13,13 +13,13 @@ import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.VipInfoHandler;
 import com.tencent.mobileqq.data.MedalList;
+import com.tencent.mobileqq.profilecard.base.utils.ProfileCardUtils;
 import com.tencent.mobileqq.profilecard.bussiness.diamondwall.AnimatorHandler;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -56,60 +56,64 @@ public class QVipMedalView
       QLog.e("QVipSettingMe.QVipMedalView", 1, "bindData with null value!!");
       return;
     }
-    paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, URLDrawableHelper.TRANSPARENT, null, null);
-    ProfileActivity.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramImageView);
+    paramString = VasApngUtil.getApngURLDrawable(paramString, VasApngUtil.VIP_APNG_TAGS, URLDrawableHelperConstants.a, null, null);
+    ProfileCardUtils.setNightModeFilterForImageView((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramImageView);
     paramImageView.setImageDrawable(paramString);
     paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (paramString != null) {}
-    for (paramInt1 = VipInfoHandler.a(paramString, paramString.getCurrentUin(), false);; paramInt1 = 98)
+    if (paramString != null) {
+      paramInt1 = VipInfoHandler.a(paramString, paramString.getCurrentUin(), false);
+    } else {
+      paramInt1 = 98;
+    }
+    if (paramInt2 != 0)
     {
-      if (paramInt2 != 0)
-      {
-        paramString = new AnimatorHandler();
-        Message localMessage = Message.obtain();
-        localMessage.arg1 = 1;
-        localMessage.obj = paramImageView;
-        localMessage.what = 0;
-        paramImageView = new Bundle();
-        paramImageView.putInt("iTipsTimes", paramInt3);
-        localMessage.setData(paramImageView);
-        paramString.removeMessages(localMessage.what);
-        paramString.sendMessage(localMessage);
-        a("0X800B2B3", paramInt1);
-        return;
-      }
-      a("0X800B2B2", paramInt1);
+      AnimatorHandler localAnimatorHandler = new AnimatorHandler();
+      Message localMessage = Message.obtain();
+      localMessage.arg1 = 1;
+      localMessage.obj = paramImageView;
+      localMessage.what = 0;
+      paramImageView = new Bundle();
+      paramImageView.putInt("iTipsTimes", paramInt3);
+      localMessage.setData(paramImageView);
+      localAnimatorHandler.removeMessages(localMessage.what);
+      localAnimatorHandler.sendMessage(localMessage);
+      ReportController.b(paramString, "dc00898", "", paramString.getCurrentUin(), "0X800B2B3", "0X800B2B3", paramInt1, 0, String.valueOf(paramInt1), "", "", "");
       return;
     }
+    ReportController.b(paramString, "dc00898", "", paramString.getCurrentUin(), "0X800B2B2", "0X800B2B2", paramInt1, 0, String.valueOf(paramInt1), "", "", "");
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter == null) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a() == getChildCount()) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter;
+    if (localObject == null) {
       return;
     }
-    AssertUtils.a("consistency check failed ! adapter count=" + this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a() + " view list size=" + this.jdField_a_of_type_JavaUtilList.size() + " child count=" + getChildCount(), new Object[0]);
+    if (((QVipMedalView.Adapter)localObject).a() == getChildCount()) {
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("consistency check failed ! adapter count=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a());
+    ((StringBuilder)localObject).append(" view list size=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+    ((StringBuilder)localObject).append(" child count=");
+    ((StringBuilder)localObject).append(getChildCount());
+    localObject = ((StringBuilder)localObject).toString();
+    int i = 0;
+    AssertUtils.fail((String)localObject, new Object[0]);
     int j = this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a();
     removeAllViews();
-    int i = 0;
-    label97:
-    if (i < j)
+    while (i < j)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() <= i) {
-        break label205;
+      if (this.jdField_a_of_type_JavaUtilList.size() > i) {
+        ((ImageView)this.jdField_a_of_type_JavaUtilList.get(i)).setImageDrawable(null);
+      } else {
+        this.jdField_a_of_type_JavaUtilList.add(new ImageView(getContext()));
       }
-      ((ImageView)this.jdField_a_of_type_JavaUtilList.get(i)).setImageDrawable(null);
-    }
-    for (;;)
-    {
       a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.b(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.c(i));
       addView((View)this.jdField_a_of_type_JavaUtilList.get(i));
       i += 1;
-      break label97;
-      break;
-      label205:
-      this.jdField_a_of_type_JavaUtilList.add(new ImageView(getContext()));
     }
   }
   
@@ -127,49 +131,47 @@ public class QVipMedalView
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter == null) {}
-    label168:
-    for (;;)
-    {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter;
+    if (localObject == null) {
       return;
-      int i = this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a();
-      int j = getPaddingTop();
-      int k = getPaddingBottom();
-      paramInt2 = 0;
-      for (;;)
+    }
+    int i = ((QVipMedalView.Adapter)localObject).a();
+    int j = getPaddingTop();
+    int k = getPaddingBottom();
+    paramInt2 = 0;
+    while (paramInt2 < i)
+    {
+      int m = (this.b + this.jdField_a_of_type_Int) * paramInt2 + getPaddingLeft();
+      int n = this.b + m;
+      if (n > paramInt3 - paramInt1)
       {
-        if (paramInt2 >= i) {
-          break label168;
-        }
-        int m = this.b;
-        int n = this.jdField_a_of_type_Int;
-        m = getPaddingLeft() + (m + n) * paramInt2;
-        n = m + this.b;
-        if (n > paramInt3 - paramInt1)
+        if (paramInt2 == 0)
         {
-          if (paramInt2 == 0)
-          {
-            QLog.e("QVipMedalView", 1, "illegal size to layout the medal!! no one can layout");
-            return;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("QVipMedalView", 1, "It only can layout " + paramInt2 + "medal");
+          QLog.e("QVipMedalView", 1, "illegal size to layout the medal!! no one can layout");
           return;
         }
-        ((ImageView)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).layout(m, j, n, paramInt4 - k);
-        paramInt2 += 1;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("It only can layout ");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append("medal");
+        QLog.d("QVipMedalView", 1, ((StringBuilder)localObject).toString());
+        return;
       }
+      ((ImageView)this.jdField_a_of_type_JavaUtilList.get(paramInt2)).layout(m, j, n, paramInt4 - k);
+      paramInt2 += 1;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
+    QVipMedalView.Adapter localAdapter = this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter;
     int i = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter == null)
+    if (localAdapter == null)
     {
       setMeasuredDimension(0, 0);
       return;
@@ -181,25 +183,30 @@ public class QVipMedalView
     if (m == 1073741824)
     {
       this.b = (paramInt1 - getPaddingTop() - getPaddingBottom());
-      if (k != 1073741824) {
-        break label167;
-      }
     }
-    for (paramInt2 = j;; paramInt2 = (paramInt2 - 1) * this.jdField_a_of_type_Int + j * paramInt2 + getPaddingLeft() + getPaddingRight())
+    else
     {
-      j = this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a();
-      b();
-      while (i < j)
-      {
-        ((ImageView)this.jdField_a_of_type_JavaUtilList.get(i)).measure(View.MeasureSpec.makeMeasureSpec(this.b, 1073741824), View.MeasureSpec.makeMeasureSpec(this.b, 1073741824));
-        i += 1;
-      }
       this.b = UIUtils.a(getContext(), 20.0F);
       paramInt1 = this.b + getPaddingBottom() + getPaddingTop();
-      break;
-      label167:
+    }
+    if (k == 1073741824)
+    {
+      paramInt2 = j;
+    }
+    else
+    {
       paramInt2 = this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a();
       j = this.b;
+      k = this.jdField_a_of_type_Int;
+      m = getPaddingLeft();
+      paramInt2 = getPaddingRight() + (j * paramInt2 + (paramInt2 - 1) * k + m);
+    }
+    j = this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a();
+    b();
+    while (i < j)
+    {
+      ((ImageView)this.jdField_a_of_type_JavaUtilList.get(i)).measure(View.MeasureSpec.makeMeasureSpec(this.b, 1073741824), View.MeasureSpec.makeMeasureSpec(this.b, 1073741824));
+      i += 1;
     }
     setMeasuredDimension(paramInt2, paramInt1);
   }
@@ -208,23 +215,21 @@ public class QVipMedalView
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter = paramAdapter;
     removeAllViews();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter != null)
+    paramAdapter = this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter;
+    if (paramAdapter != null)
     {
-      int j = this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a();
+      int j = paramAdapter.a();
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         if (this.jdField_a_of_type_JavaUtilList.size() > i) {
           ((ImageView)this.jdField_a_of_type_JavaUtilList.get(i)).setImageDrawable(null);
-        }
-        for (;;)
-        {
-          a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.b(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.c(i));
-          addView((View)this.jdField_a_of_type_JavaUtilList.get(i));
-          i += 1;
-          break;
+        } else {
           this.jdField_a_of_type_JavaUtilList.add(new ImageView(getContext()));
         }
+        a((ImageView)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.a(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.b(i), this.jdField_a_of_type_ComTencentMobileqqWidgetQVipMedalView$Adapter.c(i));
+        addView((View)this.jdField_a_of_type_JavaUtilList.get(i));
+        i += 1;
       }
     }
     requestLayout();
@@ -251,7 +256,7 @@ public class QVipMedalView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QVipMedalView
  * JD-Core Version:    0.7.0.1
  */

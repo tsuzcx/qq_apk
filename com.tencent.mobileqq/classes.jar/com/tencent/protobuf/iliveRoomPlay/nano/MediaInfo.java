@@ -24,14 +24,15 @@ public final class MediaInfo
   
   public static MediaInfo[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new MediaInfo[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new MediaInfo[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static MediaInfo parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -55,20 +56,22 @@ public final class MediaInfo
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
     int i = j;
     if (!Arrays.equals(this.sig, WireFormatNano.EMPTY_BYTES)) {
       i = j + CodedOutputByteBufferNano.computeBytesSize(1, this.sig);
     }
+    long l = this.timeout;
     j = i;
-    if (this.timeout != 0L) {
-      j = i + CodedOutputByteBufferNano.computeInt64Size(2, this.timeout);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeInt64Size(2, l);
     }
+    l = this.type;
     i = j;
-    if (this.type != 0L) {
-      i = j + CodedOutputByteBufferNano.computeInt64Size(3, this.type);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeInt64Size(3, l);
     }
     j = i;
     if (!this.rtmpUrl.equals("")) {
@@ -86,29 +89,44 @@ public final class MediaInfo
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        this.sig = paramCodedInputByteBufferNano.readBytes();
-        break;
-      case 16: 
-        this.timeout = paramCodedInputByteBufferNano.readInt64();
-        break;
-      case 24: 
-        this.type = paramCodedInputByteBufferNano.readInt64();
-        break;
-      case 34: 
-        this.rtmpUrl = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.streamParam = paramCodedInputByteBufferNano.readString();
+      if (i != 10)
+      {
+        if (i != 16)
+        {
+          if (i != 24)
+          {
+            if (i != 34)
+            {
+              if (i != 42)
+              {
+                if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                  return this;
+                }
+              }
+              else {
+                this.streamParam = paramCodedInputByteBufferNano.readString();
+              }
+            }
+            else {
+              this.rtmpUrl = paramCodedInputByteBufferNano.readString();
+            }
+          }
+          else {
+            this.type = paramCodedInputByteBufferNano.readInt64();
+          }
+        }
+        else {
+          this.timeout = paramCodedInputByteBufferNano.readInt64();
+        }
+      }
+      else {
+        this.sig = paramCodedInputByteBufferNano.readBytes();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -116,11 +134,13 @@ public final class MediaInfo
     if (!Arrays.equals(this.sig, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(1, this.sig);
     }
-    if (this.timeout != 0L) {
-      paramCodedOutputByteBufferNano.writeInt64(2, this.timeout);
+    long l = this.timeout;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeInt64(2, l);
     }
-    if (this.type != 0L) {
-      paramCodedOutputByteBufferNano.writeInt64(3, this.type);
+    l = this.type;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeInt64(3, l);
     }
     if (!this.rtmpUrl.equals("")) {
       paramCodedOutputByteBufferNano.writeString(4, this.rtmpUrl);
@@ -133,7 +153,7 @@ public final class MediaInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.MediaInfo
  * JD-Core Version:    0.7.0.1
  */

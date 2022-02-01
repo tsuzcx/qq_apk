@@ -31,6 +31,7 @@ public class WeiYunFileInfo
   
   public WeiYunFileInfo(Parcel paramParcel)
   {
+    boolean bool = false;
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
@@ -73,17 +74,12 @@ public class WeiYunFileInfo
     paramParcel.writeString(this.h);
     paramParcel.writeString(this.i);
     paramParcel.writeString(this.j);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
-    }
+    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo
  * JD-Core Version:    0.7.0.1
  */

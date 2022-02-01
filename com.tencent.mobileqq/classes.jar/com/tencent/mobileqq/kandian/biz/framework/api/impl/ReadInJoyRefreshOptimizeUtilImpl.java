@@ -1,0 +1,26 @@
+package com.tencent.mobileqq.kandian.biz.framework.api.impl;
+
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyRefreshOptimizeUtil;
+import com.tencent.mobileqq.kandian.repo.common.ReadInJoyRefreshOptimizeUtil;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/framework/api/impl/ReadInJoyRefreshOptimizeUtilImpl;", "Lcom/tencent/mobileqq/kandian/biz/framework/api/IReadInJoyRefreshOptimizeUtil;", "()V", "getOptimizeId", "", "isPreloadOptimizeEnable", "", "optimizeID", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+public final class ReadInJoyRefreshOptimizeUtilImpl
+  implements IReadInJoyRefreshOptimizeUtil
+{
+  public long getOptimizeId()
+  {
+    return ReadInJoyRefreshOptimizeUtil.a();
+  }
+  
+  public boolean isPreloadOptimizeEnable(long paramLong)
+  {
+    return ReadInJoyRefreshOptimizeUtil.b(paramLong);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+ * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyRefreshOptimizeUtilImpl
+ * JD-Core Version:    0.7.0.1
+ */

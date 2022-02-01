@@ -48,13 +48,14 @@ public class GLCapabilities
   
   public static String getGlesVersion()
   {
-    
-    if (glesVersion == null) {
+    waitInitFinish();
+    String str = glesVersion;
+    if (str == null) {
       return "2.0";
     }
     try
     {
-      String str = glesVersion.substring(10, 13);
+      str = str.substring(10, 13);
       return str;
     }
     catch (StringIndexOutOfBoundsException localStringIndexOutOfBoundsException)
@@ -68,7 +69,10 @@ public class GLCapabilities
   {
     try
     {
-      LightLogUtil.i("GLCapabilities", "init: enableFramebufferFetch=" + paramBoolean);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init: enableFramebufferFetch=");
+      localStringBuilder.append(paramBoolean);
+      LightLogUtil.i("GLCapabilities", localStringBuilder.toString());
       if ((!mIsInit) && (glThread == null))
       {
         LightLogUtil.i("GLCapabilities", "init: async start");
@@ -134,11 +138,20 @@ public class GLCapabilities
   
   private static void initGpuInfo()
   {
-    String str1 = GLES20.glGetString(7937);
-    String str2 = GLES20.glGetString(7936);
+    Object localObject = GLES20.glGetString(7937);
+    String str = GLES20.glGetString(7936);
     glesVersion = GLES20.glGetString(7938);
-    gpuInfo = str1 + "; " + str2 + "; " + glesVersion;
-    LightLogUtil.d("GLCapabilities", "GPU = " + gpuInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(str);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(glesVersion);
+    gpuInfo = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("GPU = ");
+    ((StringBuilder)localObject).append(gpuInfo);
+    LightLogUtil.d("GLCapabilities", ((StringBuilder)localObject).toString());
   }
   
   private static void initImpl(boolean paramBoolean)
@@ -174,14 +187,15 @@ public class GLCapabilities
     if (localObject == null)
     {
       localObject = GpuScopeAttrs.getInstance().getDeviceModel();
-      if (localObject != null) {}
-    }
-    while ((((GpuScopeAttrs.GpuBean.GpuModel)localObject).filamentSupport) || ((((GpuScopeAttrs.GpuBean.GpuModel)localObject).filamentWhiteList != null) && (((GpuScopeAttrs.GpuBean.GpuModel)localObject).filamentWhiteList.contains(DeviceInstance.getInstance().getDeviceName()))))
-    {
-      return true;
+      if (localObject == null) {
+        return true;
+      }
       return ((GpuScopeAttrs.GpuBean.DeviceModel)localObject).filamentSupport;
     }
-    return false;
+    if (((GpuScopeAttrs.GpuBean.GpuModel)localObject).filamentSupport) {
+      return true;
+    }
+    return (((GpuScopeAttrs.GpuBean.GpuModel)localObject).filamentWhiteList != null) && (((GpuScopeAttrs.GpuBean.GpuModel)localObject).filamentWhiteList.contains(DeviceInstance.getInstance().getDeviceName()));
   }
   
   public static boolean isDeviceSupportAiAbility()
@@ -198,20 +212,6 @@ public class GLCapabilities
     return ((GpuScopeAttrs.GpuBean.DeviceModel)localObject).aiSupport;
   }
   
-  public static boolean isDeviceSupportGPUSegment()
-  {
-    Object localObject = GpuScopeAttrs.getInstance().getDeviceModel();
-    if (localObject == null)
-    {
-      localObject = GpuScopeAttrs.getInstance().getGPuModel();
-      if (localObject == null) {
-        return true;
-      }
-      return ((GpuScopeAttrs.GpuBean.GpuModel)localObject).gpuSegment;
-    }
-    return ((GpuScopeAttrs.GpuBean.DeviceModel)localObject).gpuSegment;
-  }
-  
   public static boolean isDeviceSupportKapu()
   {
     Object localObject = GpuScopeAttrs.getInstance().getDeviceModel();
@@ -226,6 +226,20 @@ public class GLCapabilities
     return ((GpuScopeAttrs.GpuBean.DeviceModel)localObject).kapuSupport;
   }
   
+  public static boolean isDeviceSupportOpenCL()
+  {
+    Object localObject = GpuScopeAttrs.getInstance().getDeviceModel();
+    if (localObject == null)
+    {
+      localObject = GpuScopeAttrs.getInstance().getGPuModel();
+      if (localObject == null) {
+        return true;
+      }
+      return ((GpuScopeAttrs.GpuBean.GpuModel)localObject).openclSupport;
+    }
+    return ((GpuScopeAttrs.GpuBean.DeviceModel)localObject).openclSupport;
+  }
+  
   public static boolean isFilamentShaderCompileSucceed()
   {
     waitInitFinish();
@@ -234,37 +248,22 @@ public class GLCapabilities
   
   public static boolean isInOneGLThreadBlackList()
   {
-    boolean bool2 = false;
     Object localObject = getGPUInfo().split(";");
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
-    if (localObject.length > 0)
+    if ((localObject.length > 0) && (!TextUtils.isEmpty(localObject[0])))
     {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(localObject[0]))
-      {
-        localObject = localObject[0].trim().toLowerCase();
-        arrayOfString = GPU_GL_ONE_THREAD;
-        j = arrayOfString.length;
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      localObject = localObject[0].trim().toLowerCase();
+      String[] arrayOfString = GPU_GL_ONE_THREAD;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
         if (((String)localObject).equals(arrayOfString[i].toLowerCase())) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   public static boolean isShareGLContextError()
@@ -296,9 +295,10 @@ public class GLCapabilities
   @MustRunOnGLThread
   public static boolean supportVTF()
   {
-    boolean bool = false;
     initReshapeValues();
-    if (maxVertexTextureImageUnits[0] > 0) {
+    int[] arrayOfInt = maxVertexTextureImageUnits;
+    boolean bool = false;
+    if (arrayOfInt[0] > 0) {
       bool = true;
     }
     return bool;
@@ -315,7 +315,11 @@ public class GLCapabilities
     {
       localObject = GLES20.glGetShaderInfoLog(paramInt);
       GLES20.glDeleteShader(paramInt);
-      Log.e("GLCapabilities", "vertex shader test compile failed, shader : [" + paramString + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("vertex shader test compile failed, shader : [");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      Log.e("GLCapabilities", localStringBuilder.toString());
       Log.e("GLCapabilities", (String)localObject);
       GLES20.glDeleteShader(paramInt);
       return false;
@@ -333,22 +337,24 @@ public class GLCapabilities
   {
     if (!mIsInit)
     {
-      if (glThread == null) {
-        break label31;
+      SimpleGLThread localSimpleGLThread = glThread;
+      if (localSimpleGLThread != null)
+      {
+        localSimpleGLThread.waitDone(200);
+        if (!mIsInit) {
+          useInWrongTime();
+        }
       }
-      glThread.waitDone(200);
-      if (!mIsInit) {
+      else
+      {
         useInWrongTime();
       }
     }
-    return;
-    label31:
-    useInWrongTime();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.gles.GLCapabilities
  * JD-Core Version:    0.7.0.1
  */

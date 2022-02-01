@@ -19,16 +19,16 @@ class SubLoginActivity$5
         SubLoginActivity.a(this.a).setVisibility(0);
       }
       SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
-    }
-    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
       return;
     }
-    SubLoginActivity.a(this.a).setVisibility(8);
+    if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).isShown())) {
+      SubLoginActivity.a(this.a).setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubLoginActivity.5
  * JD-Core Version:    0.7.0.1
  */

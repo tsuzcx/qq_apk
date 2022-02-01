@@ -20,16 +20,15 @@ public class VideoHolderContainer
   {
     super(paramViewGroup);
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    b(new VideoViewVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131381560)));
-    b(new InteractWidgetVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131369177)));
-    b(new SelectVideoVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131381487)));
-    b(new VideoPauseVideoHolder(this.jdField_a_of_type_AndroidViewView.findViewById(2131381449)));
-    b(new VideoForwardVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131381561)));
+    b(new VideoViewVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380796)));
+    b(new SelectVideoVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380738)));
+    b(new VideoPauseVideoHolder(this.jdField_a_of_type_AndroidViewView.findViewById(2131380705)));
+    b(new VideoForwardVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380797)));
   }
   
   protected View a(ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561894, paramViewGroup, false);
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561744, paramViewGroup, false);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -115,7 +114,7 @@ public class VideoHolderContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoHolderContainer
  * JD-Core Version:    0.7.0.1
  */

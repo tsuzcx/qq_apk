@@ -59,21 +59,20 @@ public class IVideoPlayerImpl
     if (this.absVideoPlayer == null)
     {
       localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      if (localObject == null) {
-        break label47;
+      if (localObject != null) {
+        localObject = ((ChannelProxy)localObject).getVideoPlayer();
+      } else {
+        localObject = null;
       }
-    }
-    label47:
-    for (Object localObject = ((ChannelProxy)localObject).getVideoPlayer();; localObject = null)
-    {
       this.absVideoPlayer = ((AbsVideoPlayer)localObject);
-      if (this.absVideoPlayer != null) {
-        break;
-      }
+    }
+    Object localObject = this.absVideoPlayer;
+    if (localObject == null)
+    {
       QMLog.e("IVideoPlayerImpl", "initPlayer absVideoPlayer is null, return.");
       return;
     }
-    this.absVideoPlayer.createVideoView(this.activity, paramOnVideoViewInitListener);
+    ((AbsVideoPlayer)localObject).createVideoView(this.activity, paramOnVideoViewInitListener);
   }
   
   public long getCurrentPostion()
@@ -135,13 +134,7 @@ public class IVideoPlayerImpl
   {
     updatePlayerListener(paramMiniAppVideoPlayerListenerHolder);
     this.absVideoPlayer.setLoopback(paramMiniAppVideoConfig.loop);
-    paramMiniAppVideoPlayerListenerHolder = this.absVideoPlayer;
-    if ("contain".equals(paramMiniAppVideoConfig.objectFit)) {}
-    for (int i = 0;; i = 1)
-    {
-      paramMiniAppVideoPlayerListenerHolder.setXYaxis(i);
-      return;
-    }
+    this.absVideoPlayer.setXYaxis("contain".equals(paramMiniAppVideoConfig.objectFit) ^ true);
   }
   
   public void start()
@@ -161,9 +154,13 @@ public class IVideoPlayerImpl
   
   public void updateMute(MiniAppVideoConfig paramMiniAppVideoConfig)
   {
-    if ((this.absVideoPlayer != null) && (this.absVideoPlayer.getOutputMute() != paramMiniAppVideoConfig.muted))
+    Object localObject = this.absVideoPlayer;
+    if ((localObject != null) && (((AbsVideoPlayer)localObject).getOutputMute() != paramMiniAppVideoConfig.muted))
     {
-      Log.i("IVideoPlayerImpl", "initSetting: set mute " + paramMiniAppVideoConfig.muted);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initSetting: set mute ");
+      ((StringBuilder)localObject).append(paramMiniAppVideoConfig.muted);
+      Log.i("IVideoPlayerImpl", ((StringBuilder)localObject).toString());
       this.absVideoPlayer.setOutputMute(paramMiniAppVideoConfig.muted);
     }
   }
@@ -172,21 +169,20 @@ public class IVideoPlayerImpl
   {
     if (this.absVideoPlayer != null)
     {
-      if (!"contain".equals(paramMiniAppVideoConfig.objectFit)) {
-        break label28;
+      if ("contain".equals(paramMiniAppVideoConfig.objectFit))
+      {
+        this.absVideoPlayer.setXYaxis(0);
+        return;
       }
-      this.absVideoPlayer.setXYaxis(0);
+      if ("fill".equals(paramMiniAppVideoConfig.objectFit)) {
+        this.absVideoPlayer.setXYaxis(1);
+      }
     }
-    label28:
-    while (!"fill".equals(paramMiniAppVideoConfig.objectFit)) {
-      return;
-    }
-    this.absVideoPlayer.setXYaxis(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.IVideoPlayerImpl
  * JD-Core Version:    0.7.0.1
  */

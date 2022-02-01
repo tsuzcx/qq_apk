@@ -12,17 +12,17 @@ final class NavigationBarUtil$1
   
   public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 5894;; paramInt = 1799)
-    {
-      this.a.getDecorView().setSystemUiVisibility(paramInt);
-      return;
+    if (Build.VERSION.SDK_INT >= 19) {
+      paramInt = 5894;
+    } else {
+      paramInt = 1799;
     }
+    this.a.getDecorView().setSystemUiVisibility(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.NavigationBarUtil.1
  * JD-Core Version:    0.7.0.1
  */

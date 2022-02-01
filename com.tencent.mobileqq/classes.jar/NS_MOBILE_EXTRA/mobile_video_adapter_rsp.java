@@ -30,17 +30,19 @@ public final class mobile_video_adapter_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iType, 0);
-    if (this.strData != null) {
-      paramJceOutputStream.write(this.strData, 1);
+    String str = this.strData;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strOrgUrl != null) {
-      paramJceOutputStream.write(this.strOrgUrl, 2);
+    str = this.strOrgUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_EXTRA.mobile_video_adapter_rsp
  * JD-Core Version:    0.7.0.1
  */

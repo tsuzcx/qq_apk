@@ -34,246 +34,203 @@ public final class MinElf
   {
     ByteBuffer localByteBuffer = ByteBuffer.allocate(8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    if (getu32(paramFileChannel, localByteBuffer, 0L) != 1179403647L) {
-      throw new MinElf.ElfError("file is not ELF");
-    }
-    int j;
-    long l1;
-    label92:
-    long l2;
-    label108:
-    int k;
-    label122:
-    long l4;
-    label150:
-    label168:
-    long l6;
-    if (getu8(paramFileChannel, localByteBuffer, 4L) == 1)
+    if (getu32(paramFileChannel, localByteBuffer, 0L) == 1179403647L)
     {
-      j = 1;
+      int j = getu8(paramFileChannel, localByteBuffer, 4L);
+      int i = 1;
+      if (j != 1) {
+        i = 0;
+      }
       if (getu8(paramFileChannel, localByteBuffer, 5L) == 2) {
         localByteBuffer.order(ByteOrder.BIG_ENDIAN);
       }
-      if (j == 0) {
-        break label255;
+      long l2;
+      if (i != 0) {
+        l2 = getu32(paramFileChannel, localByteBuffer, 28L);
+      } else {
+        l2 = get64(paramFileChannel, localByteBuffer, 32L);
       }
-      l1 = getu32(paramFileChannel, localByteBuffer, 28L);
-      if (j == 0) {
-        break label269;
+      if (i != 0) {
+        l1 = getu16(paramFileChannel, localByteBuffer, 44L);
+      } else {
+        l1 = getu16(paramFileChannel, localByteBuffer, 56L);
       }
-      l2 = getu16(paramFileChannel, localByteBuffer, 44L);
-      if (j == 0) {
-        break label284;
+      if (i != 0) {
+        j = getu16(paramFileChannel, localByteBuffer, 42L);
+      } else {
+        j = getu16(paramFileChannel, localByteBuffer, 54L);
       }
-      k = getu16(paramFileChannel, localByteBuffer, 42L);
-      l4 = l2;
-      if (l2 == 65535L)
+      long l3 = l1;
+      if (l1 == 65535L)
       {
-        if (j == 0) {
-          break label297;
+        if (i != 0) {
+          l1 = getu32(paramFileChannel, localByteBuffer, 32L);
+        } else {
+          l1 = get64(paramFileChannel, localByteBuffer, 40L);
         }
-        l2 = getu32(paramFileChannel, localByteBuffer, 32L);
-        if (j == 0) {
-          break label311;
+        if (i != 0) {
+          l1 = getu32(paramFileChannel, localByteBuffer, l1 + 28L);
+        } else {
+          l1 = getu32(paramFileChannel, localByteBuffer, l1 + 44L);
         }
-        l4 = getu32(paramFileChannel, localByteBuffer, l2 + 28L);
+        l3 = l1;
       }
-      l6 = 0L;
-      l3 = 0L;
-      l5 = l1;
-    }
-    for (;;)
-    {
-      l2 = l6;
-      if (l3 < l4)
+      long l4 = l2;
+      long l5;
+      for (long l1 = 0L; l1 < l3; l1 += 1L)
       {
-        if (j == 0) {
-          break label328;
+        if (i != 0) {
+          l5 = getu32(paramFileChannel, localByteBuffer, l4 + 0L);
+        } else {
+          l5 = getu32(paramFileChannel, localByteBuffer, l4 + 0L);
         }
-        l2 = getu32(paramFileChannel, localByteBuffer, 0L + l5);
-        label206:
-        if (l2 != 2L) {
-          break label360;
-        }
-        if (j == 0) {
-          break label343;
-        }
-      }
-      label269:
-      label284:
-      label297:
-      label311:
-      label328:
-      label343:
-      for (l2 = getu32(paramFileChannel, localByteBuffer, 4L + l5);; l2 = get64(paramFileChannel, localByteBuffer, 8L + l5))
-      {
-        if (l2 != 0L) {
-          break label376;
-        }
-        throw new MinElf.ElfError("ELF file does not contain dynamic linking information");
-        j = 0;
-        break;
-        label255:
-        l1 = get64(paramFileChannel, localByteBuffer, 32L);
-        break label92;
-        l2 = getu16(paramFileChannel, localByteBuffer, 56L);
-        break label108;
-        k = getu16(paramFileChannel, localByteBuffer, 54L);
-        break label122;
-        l2 = get64(paramFileChannel, localByteBuffer, 40L);
-        break label150;
-        l4 = getu32(paramFileChannel, localByteBuffer, l2 + 44L);
-        break label168;
-        l2 = getu32(paramFileChannel, localByteBuffer, 0L + l5);
-        break label206;
-      }
-      label360:
-      l5 += k;
-      l3 = 1L + l3;
-    }
-    label376:
-    int i = 0;
-    long l3 = 0L;
-    long l5 = l2;
-    if (j != 0) {
-      l6 = getu32(paramFileChannel, localByteBuffer, 0L + l5);
-    }
-    while (l6 == 1L) {
-      if (i == 2147483647)
-      {
-        throw new MinElf.ElfError("malformed DT_NEEDED section");
-        l6 = get64(paramFileChannel, localByteBuffer, 0L + l5);
-      }
-      else
-      {
-        i += 1;
-      }
-    }
-    label681:
-    label942:
-    for (;;)
-    {
-      long l7;
-      if (j != 0) {
-        l7 = 8L;
-      }
-      label559:
-      label698:
-      for (;;)
-      {
-        label584:
-        label715:
-        label849:
-        if (l6 == 0L) {
-          label602:
-          label732:
-          label866:
-          label870:
-          if (l3 == 0L)
+        if (l5 == 2L)
+        {
+          if (i != 0)
           {
-            throw new MinElf.ElfError("Dynamic section string-table not found");
-            if (l6 != 5L) {
-              break label942;
+            l1 = getu32(paramFileChannel, localByteBuffer, l4 + 4L);
+            break label354;
+          }
+          l1 = get64(paramFileChannel, localByteBuffer, l4 + 8L);
+          break label354;
+        }
+        l4 += j;
+      }
+      l1 = 0L;
+      label354:
+      if (l1 != 0L)
+      {
+        l5 = l1;
+        l4 = 0L;
+        int k;
+        for (int m = 0;; m = k)
+        {
+          long l6;
+          if (i != 0) {
+            l6 = getu32(paramFileChannel, localByteBuffer, l5 + 0L);
+          } else {
+            l6 = get64(paramFileChannel, localByteBuffer, l5 + 0L);
+          }
+          if (l6 == 1L)
+          {
+            if (m != 2147483647) {
+              k = m + 1;
+            } else {
+              throw new MinElf.ElfError("malformed DT_NEEDED section");
             }
-            if (j != 0) {}
-            for (l3 = getu32(paramFileChannel, localByteBuffer, 4L + l5);; l3 = get64(paramFileChannel, localByteBuffer, 8L + l5)) {
-              break;
-            }
-            l7 = 16L;
           }
           else
           {
-            int m = 0;
-            if (m < l4) {
-              if (j != 0)
-              {
-                l5 = getu32(paramFileChannel, localByteBuffer, 0L + l1);
-                if (l5 != 1L) {
-                  break label732;
-                }
-                if (j == 0) {
-                  break label681;
-                }
-                l5 = getu32(paramFileChannel, localByteBuffer, 8L + l1);
-                if (j == 0) {
-                  break label698;
-                }
-                l6 = getu32(paramFileChannel, localByteBuffer, 20L + l1);
-                if ((l5 > l3) || (l3 >= l6 + l5)) {
-                  break label732;
-                }
-                if (j == 0) {
-                  break label715;
-                }
-                l1 = getu32(paramFileChannel, localByteBuffer, 4L + l1);
-              }
-            }
-            label639:
-            for (l1 += l3 - l5;; l1 = 0L)
+            k = m;
+            if (l6 == 5L)
             {
-              if (l1 == 0L)
-              {
-                throw new MinElf.ElfError("did not find file offset of DT_STRTAB table");
-                l5 = getu32(paramFileChannel, localByteBuffer, 0L + l1);
-                break label559;
-                l5 = get64(paramFileChannel, localByteBuffer, 16L + l1);
-                break label584;
-                l6 = get64(paramFileChannel, localByteBuffer, 40L + l1);
-                break label602;
-                l1 = get64(paramFileChannel, localByteBuffer, 8L + l1);
-                break label639;
-                l5 = k;
-                m += 1;
-                l1 = l5 + l1;
-                break;
+              if (i != 0) {
+                l4 = getu32(paramFileChannel, localByteBuffer, l5 + 4L);
+              } else {
+                l4 = get64(paramFileChannel, localByteBuffer, l5 + 8L);
               }
-              String[] arrayOfString = new String[i];
-              for (i = 0;; i = k)
+              k = m;
+            }
+          }
+          long l7;
+          if (i != 0) {
+            l7 = 8L;
+          } else {
+            l7 = 16L;
+          }
+          l5 += l7;
+          if (l6 == 0L)
+          {
+            if (l4 != 0L)
+            {
+              m = 0;
+              while (m < l3)
               {
-                if (j != 0)
+                if (i != 0) {
+                  l5 = getu32(paramFileChannel, localByteBuffer, l2 + 0L);
+                } else {
+                  l5 = getu32(paramFileChannel, localByteBuffer, l2 + 0L);
+                }
+                if (l5 == 1L)
                 {
-                  l3 = getu32(paramFileChannel, localByteBuffer, 0L + l2);
-                  k = i;
-                  if (l3 != 1L) {
-                    break label870;
+                  if (i != 0) {
+                    l5 = getu32(paramFileChannel, localByteBuffer, l2 + 8L);
+                  } else {
+                    l5 = get64(paramFileChannel, localByteBuffer, l2 + 16L);
                   }
-                  if (j == 0) {
-                    break label849;
+                  if (i != 0) {
+                    l6 = getu32(paramFileChannel, localByteBuffer, l2 + 20L);
+                  } else {
+                    l6 = get64(paramFileChannel, localByteBuffer, l2 + 40L);
                   }
-                }
-                for (l4 = getu32(paramFileChannel, localByteBuffer, 4L + l2);; l4 = get64(paramFileChannel, localByteBuffer, 8L + l2))
-                {
-                  arrayOfString[i] = getSz(paramFileChannel, localByteBuffer, l4 + l1);
-                  if (i != 2147483647) {
-                    break label866;
-                  }
-                  throw new MinElf.ElfError("malformed DT_NEEDED section");
-                  l3 = get64(paramFileChannel, localByteBuffer, 0L + l2);
-                  break;
-                }
-                k = i + 1;
-                if (j != 0) {
-                  l4 = 8L;
-                }
-                while (l3 == 0L) {
-                  if (k != arrayOfString.length)
+                  if ((l5 <= l4) && (l4 < l6 + l5))
                   {
-                    throw new MinElf.ElfError("malformed DT_NEEDED section");
+                    if (i != 0) {
+                      l2 = getu32(paramFileChannel, localByteBuffer, l2 + 4L);
+                    } else {
+                      l2 = get64(paramFileChannel, localByteBuffer, l2 + 8L);
+                    }
+                    l2 += l4 - l5;
+                    break label728;
+                  }
+                }
+                l2 += j;
+                m += 1;
+              }
+              l2 = 0L;
+              if (l2 != 0L)
+              {
+                String[] arrayOfString = new String[k];
+                j = 0;
+                for (;;)
+                {
+                  if (i != 0) {
+                    l3 = getu32(paramFileChannel, localByteBuffer, l1 + 0L);
+                  } else {
+                    l3 = get64(paramFileChannel, localByteBuffer, l1 + 0L);
+                  }
+                  if (l3 == 1L)
+                  {
+                    if (i != 0) {
+                      l4 = getu32(paramFileChannel, localByteBuffer, l1 + 4L);
+                    } else {
+                      l4 = get64(paramFileChannel, localByteBuffer, l1 + 8L);
+                    }
+                    arrayOfString[j] = getSz(paramFileChannel, localByteBuffer, l4 + l2);
+                    if (j != 2147483647) {
+                      j += 1;
+                    } else {
+                      throw new MinElf.ElfError("malformed DT_NEEDED section");
+                    }
+                  }
+                  if (i != 0) {
+                    l4 = 8L;
+                  } else {
                     l4 = 16L;
                   }
-                  else
+                  l1 += l4;
+                  if (l3 == 0L)
                   {
-                    return arrayOfString;
+                    if (j == arrayOfString.length) {
+                      return arrayOfString;
+                    }
+                    throw new MinElf.ElfError("malformed DT_NEEDED section");
                   }
                 }
-                l2 = l4 + l2;
               }
+              throw new MinElf.ElfError("did not find file offset of DT_STRTAB table");
             }
+            throw new MinElf.ElfError("Dynamic section string-table not found");
           }
         }
       }
-      l5 = l7 + l5;
-      break;
+      label728:
+      throw new MinElf.ElfError("ELF file does not contain dynamic linking information");
+    }
+    paramFileChannel = new MinElf.ElfError("file is not ELF");
+    for (;;)
+    {
+      throw paramFileChannel;
     }
   }
   
@@ -320,28 +277,29 @@ public final class MinElf
   {
     paramByteBuffer.position(0);
     paramByteBuffer.limit(paramInt);
-    for (;;)
+    while (paramByteBuffer.remaining() > 0)
     {
-      if (paramByteBuffer.remaining() > 0)
-      {
-        paramInt = paramFileChannel.read(paramByteBuffer, paramLong);
-        if (paramInt != -1) {}
-      }
-      else
-      {
-        if (paramByteBuffer.remaining() <= 0) {
-          break;
-        }
-        throw new MinElf.ElfError("ELF file truncated");
+      paramInt = paramFileChannel.read(paramByteBuffer, paramLong);
+      if (paramInt == -1) {
+        break;
       }
       paramLong += paramInt;
     }
-    paramByteBuffer.position(0);
+    if (paramByteBuffer.remaining() <= 0)
+    {
+      paramByteBuffer.position(0);
+      return;
+    }
+    paramFileChannel = new MinElf.ElfError("ELF file truncated");
+    for (;;)
+    {
+      throw paramFileChannel;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.so.MinElf
  * JD-Core Version:    0.7.0.1
  */

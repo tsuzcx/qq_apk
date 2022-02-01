@@ -78,12 +78,84 @@ public class AEKitBean
   
   public String toString()
   {
-    return "AEKitBean{ext_str1='" + this.ext_str1 + '\'' + ", ext_str2='" + this.ext_str2 + '\'' + ", ext_str3='" + this.ext_str3 + '\'' + ", ext_str4='" + this.ext_str4 + '\'' + ", ext_str5='" + this.ext_str5 + '\'' + ", ext_str6='" + this.ext_str6 + '\'' + ", ext_str7='" + this.ext_str7 + '\'' + ", ext_str8='" + this.ext_str8 + '\'' + ", ext_str19='" + this.ext_str19 + '\'' + ", ext_str10='" + this.ext_str10 + '\'' + ", ext_int1=" + this.ext_int1 + ", ext_int2=" + this.ext_int2 + ", ext_int3=" + this.ext_int3 + ", ext_int4=" + this.ext_int4 + ", ext_int5=" + this.ext_int5 + ", ext_int6=" + this.ext_int6 + ", ext_int7=" + this.ext_int7 + ", ext_int8=" + this.ext_int8 + ", ext_int9=" + this.ext_int9 + ", ext_int10=" + this.ext_int10 + ", ext_int11=" + this.ext_int11 + ", ext_int12=" + this.ext_int12 + ", ext_int13=" + this.ext_int13 + ", ext_int14=" + this.ext_int14 + ", ext_int15=" + this.ext_int15 + ", ext_int16=" + this.ext_int16 + ", ext_int17=" + this.ext_int17 + ", ext_int18=" + this.ext_int18 + ", ext_int19=" + this.ext_int19 + ", ext_int20=" + this.ext_int20 + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AEKitBean{ext_str1='");
+    localStringBuilder.append(this.ext_str1);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ext_str2='");
+    localStringBuilder.append(this.ext_str2);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ext_str3='");
+    localStringBuilder.append(this.ext_str3);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ext_str4='");
+    localStringBuilder.append(this.ext_str4);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ext_str5='");
+    localStringBuilder.append(this.ext_str5);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ext_str6='");
+    localStringBuilder.append(this.ext_str6);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ext_str7='");
+    localStringBuilder.append(this.ext_str7);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ext_str8='");
+    localStringBuilder.append(this.ext_str8);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ext_str19='");
+    localStringBuilder.append(this.ext_str19);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ext_str10='");
+    localStringBuilder.append(this.ext_str10);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ext_int1=");
+    localStringBuilder.append(this.ext_int1);
+    localStringBuilder.append(", ext_int2=");
+    localStringBuilder.append(this.ext_int2);
+    localStringBuilder.append(", ext_int3=");
+    localStringBuilder.append(this.ext_int3);
+    localStringBuilder.append(", ext_int4=");
+    localStringBuilder.append(this.ext_int4);
+    localStringBuilder.append(", ext_int5=");
+    localStringBuilder.append(this.ext_int5);
+    localStringBuilder.append(", ext_int6=");
+    localStringBuilder.append(this.ext_int6);
+    localStringBuilder.append(", ext_int7=");
+    localStringBuilder.append(this.ext_int7);
+    localStringBuilder.append(", ext_int8=");
+    localStringBuilder.append(this.ext_int8);
+    localStringBuilder.append(", ext_int9=");
+    localStringBuilder.append(this.ext_int9);
+    localStringBuilder.append(", ext_int10=");
+    localStringBuilder.append(this.ext_int10);
+    localStringBuilder.append(", ext_int11=");
+    localStringBuilder.append(this.ext_int11);
+    localStringBuilder.append(", ext_int12=");
+    localStringBuilder.append(this.ext_int12);
+    localStringBuilder.append(", ext_int13=");
+    localStringBuilder.append(this.ext_int13);
+    localStringBuilder.append(", ext_int14=");
+    localStringBuilder.append(this.ext_int14);
+    localStringBuilder.append(", ext_int15=");
+    localStringBuilder.append(this.ext_int15);
+    localStringBuilder.append(", ext_int16=");
+    localStringBuilder.append(this.ext_int16);
+    localStringBuilder.append(", ext_int17=");
+    localStringBuilder.append(this.ext_int17);
+    localStringBuilder.append(", ext_int18=");
+    localStringBuilder.append(this.ext_int18);
+    localStringBuilder.append(", ext_int19=");
+    localStringBuilder.append(this.ext_int19);
+    localStringBuilder.append(", ext_int20=");
+    localStringBuilder.append(this.ext_int20);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.AEKitBean
  * JD-Core Version:    0.7.0.1
  */

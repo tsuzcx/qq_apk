@@ -26,33 +26,34 @@ class AsyncListUtil$1
   
   public void addTile(int paramInt, TileList.Tile<T> paramTile)
   {
-    if (!isRequestedGeneration(paramInt)) {
-      this.this$0.mBackgroundProxy.recycleTile(paramTile);
-    }
-    for (;;)
+    if (!isRequestedGeneration(paramInt))
     {
+      this.this$0.mBackgroundProxy.recycleTile(paramTile);
       return;
-      TileList.Tile localTile = this.this$0.mTileList.addOrReplace(paramTile);
-      if (localTile != null)
+    }
+    TileList.Tile localTile = this.this$0.mTileList.addOrReplace(paramTile);
+    if (localTile != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("duplicate tile @");
+      localStringBuilder.append(localTile.mStartPosition);
+      Log.e("AsyncListUtil", localStringBuilder.toString());
+      this.this$0.mBackgroundProxy.recycleTile(localTile);
+    }
+    int i = paramTile.mStartPosition;
+    int j = paramTile.mItemCount;
+    paramInt = 0;
+    while (paramInt < this.this$0.mMissingPositions.size())
+    {
+      int k = this.this$0.mMissingPositions.keyAt(paramInt);
+      if ((paramTile.mStartPosition <= k) && (k < i + j))
       {
-        Log.e("AsyncListUtil", "duplicate tile @" + localTile.mStartPosition);
-        this.this$0.mBackgroundProxy.recycleTile(localTile);
+        this.this$0.mMissingPositions.removeAt(paramInt);
+        this.this$0.mViewCallback.onItemLoaded(k);
       }
-      int i = paramTile.mStartPosition;
-      int j = paramTile.mItemCount;
-      paramInt = 0;
-      while (paramInt < this.this$0.mMissingPositions.size())
+      else
       {
-        int k = this.this$0.mMissingPositions.keyAt(paramInt);
-        if ((paramTile.mStartPosition <= k) && (k < j + i))
-        {
-          this.this$0.mMissingPositions.removeAt(paramInt);
-          this.this$0.mViewCallback.onItemLoaded(k);
-        }
-        else
-        {
-          paramInt += 1;
-        }
+        paramInt += 1;
       }
     }
   }
@@ -62,13 +63,16 @@ class AsyncListUtil$1
     if (!isRequestedGeneration(paramInt1)) {
       return;
     }
-    TileList.Tile localTile = this.this$0.mTileList.removeAtPos(paramInt2);
-    if (localTile == null)
+    Object localObject = this.this$0.mTileList.removeAtPos(paramInt2);
+    if (localObject == null)
     {
-      Log.e("AsyncListUtil", "tile not found @" + paramInt2);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tile not found @");
+      ((StringBuilder)localObject).append(paramInt2);
+      Log.e("AsyncListUtil", ((StringBuilder)localObject).toString());
       return;
     }
-    this.this$0.mBackgroundProxy.recycleTile(localTile);
+    this.this$0.mBackgroundProxy.recycleTile((TileList.Tile)localObject);
   }
   
   public void updateItemCount(int paramInt1, int paramInt2)
@@ -76,17 +80,20 @@ class AsyncListUtil$1
     if (!isRequestedGeneration(paramInt1)) {
       return;
     }
-    this.this$0.mItemCount = paramInt2;
-    this.this$0.mViewCallback.onDataRefresh();
-    this.this$0.mDisplayedGeneration = this.this$0.mRequestedGeneration;
+    AsyncListUtil localAsyncListUtil = this.this$0;
+    localAsyncListUtil.mItemCount = paramInt2;
+    localAsyncListUtil.mViewCallback.onDataRefresh();
+    localAsyncListUtil = this.this$0;
+    localAsyncListUtil.mDisplayedGeneration = localAsyncListUtil.mRequestedGeneration;
     recycleAllTiles();
-    this.this$0.mAllowScrollHints = false;
-    this.this$0.updateRange();
+    localAsyncListUtil = this.this$0;
+    localAsyncListUtil.mAllowScrollHints = false;
+    localAsyncListUtil.updateRange();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.AsyncListUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class QQVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(this.mWidth, this.mHeight);
@@ -46,7 +46,7 @@ public class QQVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQVideoView
  * JD-Core Version:    0.7.0.1
  */

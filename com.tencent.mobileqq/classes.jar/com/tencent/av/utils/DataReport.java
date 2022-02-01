@@ -4,7 +4,6 @@ import android.content.Context;
 import android.media.AudioManager;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.VideoLayerUIBase;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
@@ -17,16 +16,21 @@ public class DataReport
   
   static String a(SessionInfo paramSessionInfo)
   {
-    if (VideoLayerUIBase.a(paramSessionInfo)) {
-      return paramSessionInfo.jdField_d_of_type_JavaLangString;
+    if (paramSessionInfo.u()) {
+      return paramSessionInfo.c;
     }
-    if (VideoLayerUIBase.b(paramSessionInfo)) {
-      return String.valueOf(paramSessionInfo.jdField_g_of_type_Long);
+    if (paramSessionInfo.p()) {
+      return String.valueOf(paramSessionInfo.f);
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.w("DataReport", 1, "getUin, error, sessionInfo[" + paramSessionInfo + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getUin, error, sessionInfo[");
+      localStringBuilder.append(paramSessionInfo);
+      localStringBuilder.append("]");
+      QLog.w("DataReport", 1, localStringBuilder.toString());
     }
-    return paramSessionInfo.jdField_d_of_type_JavaLangString;
+    return paramSessionInfo.c;
   }
   
   public static void a()
@@ -36,163 +40,157 @@ public class DataReport
   
   public static void a(int paramInt)
   {
-    String str1 = "";
-    String str2 = "";
-    switch (paramInt)
-    {
+    String str;
+    if (paramInt != 1) {
+      if (paramInt != 2) {
+        if (paramInt != 3) {
+          if (paramInt != 4) {
+            str = "";
+          }
+        }
+      }
     }
     for (;;)
     {
-      ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
-      str1 = "0X8004E22";
-      str2 = "0X8004E22";
+      break;
+      str = "0X8004E20";
       continue;
-      str1 = "0X8004E21";
-      str2 = "0X8004E21";
+      str = "0X8004E1F";
       continue;
-      str1 = "0X8004E1F";
-      str2 = "0X8004E1F";
+      str = "0X8004E21";
       continue;
-      str1 = "0X8004E20";
-      str2 = "0X8004E20";
+      str = "0X8004E22";
     }
+    ReportController.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
   }
   
   public static void a(int paramInt1, int paramInt2)
   {
     int i = 1;
-    String str1 = "";
-    label25:
-    String str2;
-    if (paramInt2 == 1)
-    {
+    if (paramInt2 == 1) {
       paramInt2 = i;
-      if (paramInt1 != 2131373763) {
-        break label75;
+    } else {
+      paramInt2 = 0;
+    }
+    String str;
+    Object localObject2;
+    Object localObject1;
+    Object localObject3;
+    if (paramInt1 == 2131373335)
+    {
+      str = "0X8004E23";
+      localObject2 = "0X80043C5";
+      if (paramInt2 != 0) {
+        localObject1 = "0X8004E23";
+      } else {
+        localObject1 = "0X80043C5";
       }
-      if (paramInt2 == 0) {
-        break label62;
+      localObject3 = localObject1;
+      if (paramInt2 != 0) {
+        localObject2 = str;
+      } else {
+        localObject1 = localObject3;
       }
-      str1 = "0X8004E23";
-      if (paramInt2 == 0) {
-        break label68;
-      }
-      str2 = "0X8004E23";
     }
     for (;;)
     {
-      ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
-      paramInt2 = 0;
-      break;
-      label62:
-      str1 = "0X80043C5";
-      break label25;
-      label68:
-      str2 = "0X80043C5";
-      continue;
-      label75:
-      if (paramInt1 == 2131373765)
+      break label108;
+      if (paramInt1 == 2131373337)
       {
-        if (paramInt2 != 0)
-        {
-          str1 = "0X8004368";
-          label88:
-          if (paramInt2 == 0) {
-            break label105;
-          }
+        str = "0X8004368";
+        localObject2 = "0X8004450";
+        if (paramInt2 != 0) {
+          localObject1 = "0X8004368";
+        } else {
+          localObject1 = "0X8004450";
         }
-        label105:
-        for (str2 = "0X8004368";; str2 = "0X8004450")
-        {
+        localObject3 = localObject1;
+        if (paramInt2 == 0) {
           break;
-          str1 = "0X8004450";
-          break label88;
         }
+        localObject2 = str;
+        continue;
       }
-      str2 = "";
+      localObject1 = "";
+      localObject2 = localObject1;
     }
+    label108:
+    ReportController.b(null, "CliOper", "", "", (String)localObject1, (String)localObject2, 0, 0, "", "", "", "");
   }
   
   public static void a(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    int i;
-    do
-    {
-      return;
-      i = paramVideoController.a().jdField_d_of_type_Int;
-      if (i == 1)
-      {
-        if (paramVideoController.a().l())
-        {
-          ReportController.b(null, "CliOper", "", "", "0X800436B", "0X800436B", 0, 0, "", "", "", "");
-          return;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X800434C", "0X800434C", 0, 0, String.valueOf(PhoneStatusTools.a(paramVideoController.a())), "", "", "");
-        return;
-      }
-    } while (i != 2);
-    if (paramVideoController.a().l())
-    {
-      ReportController.b(null, "CliOper", "", "", "0X80043CB", "0X80043CB", 0, 0, "", "", "", "");
+    if (paramVideoController == null) {
       return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X80043B7", "0X80043B7", 0, 0, String.valueOf(PhoneStatusTools.a(paramVideoController.a())), "", "", "");
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      if (paramVideoController.a().j())
+      {
+        ReportController.b(null, "CliOper", "", "", "0X800436B", "0X800436B", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X800434C", "0X800434C", 0, 0, String.valueOf(PhoneStatusTools.a(paramVideoController.a())), "", "", "");
+      return;
+    }
+    if (i == 2)
+    {
+      if (paramVideoController.a().j())
+      {
+        ReportController.b(null, "CliOper", "", "", "0X80043CB", "0X80043CB", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X80043B7", "0X80043B7", 0, 0, String.valueOf(PhoneStatusTools.a(paramVideoController.a())), "", "", "");
+    }
   }
   
   public static void a(VideoController paramVideoController, boolean paramBoolean)
   {
-    if (paramVideoController == null) {}
-    for (;;)
-    {
+    if (paramVideoController == null) {
       return;
-      int i = paramVideoController.a().jdField_d_of_type_Int;
-      if (i == 1) {
-        if (paramVideoController.a().l()) {
-          if (paramBoolean) {
-            ReportController.b(null, "CliOper", "", "", "0X8004373", "0X8004373", 0, 0, "", "", "", "");
-          }
+    }
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      if (paramVideoController.a().j())
+      {
+        if (paramBoolean) {
+          ReportController.b(null, "CliOper", "", "", "0X8004373", "0X8004373", 0, 0, "", "", "", "");
+        } else {
+          ReportController.b(null, "CliOper", "", "", "0X8004378", "0X8004378", 0, 0, "", "", "", "");
         }
       }
-      while (paramVideoController.a().jdField_j_of_type_Int == 1008)
-      {
-        if (!paramBoolean) {
-          break label314;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X8005DA8", "0X8005DA8", 0, 0, "", "", "", "");
-        return;
-        ReportController.b(null, "CliOper", "", "", "0X8004378", "0X8004378", 0, 0, "", "", "", "");
-        continue;
-        if (paramBoolean)
-        {
-          ReportController.b(null, "CliOper", "", "", "0X800434F", "0X800434F", 0, 0, "", "", "", "");
-        }
-        else
-        {
-          ReportController.b(null, "CliOper", "", "", "0X8004350", "0X8004350", 0, 0, "", "", "", "");
-          continue;
-          if (i == 2) {
-            if (paramVideoController.a().l())
-            {
-              if (paramBoolean) {
-                ReportController.b(null, "CliOper", "", "", "0X80043D3", "0X80043D3", 0, 0, "", "", "", "");
-              } else {
-                ReportController.b(null, "CliOper", "", "", "0X80043D4", "0X80043D4", 0, 0, "", "", "", "");
-              }
-            }
-            else if (paramBoolean) {
-              ReportController.b(null, "CliOper", "", "", "0X80043BA", "0X80043BA", 0, 0, "", "", "", "");
-            } else {
-              ReportController.b(null, "CliOper", "", "", "0X80043BB", "0X80043BB", 0, 0, "", "", "", "");
-            }
-          }
-        }
+      else if (paramBoolean) {
+        ReportController.b(null, "CliOper", "", "", "0X800434F", "0X800434F", 0, 0, "", "", "", "");
+      } else {
+        ReportController.b(null, "CliOper", "", "", "0X8004350", "0X8004350", 0, 0, "", "", "", "");
       }
     }
-    label314:
-    ReportController.b(null, "CliOper", "", "", "0X8005DAA", "0X8005DAA", 0, 0, "", "", "", "");
+    else if (i == 2) {
+      if (paramVideoController.a().j())
+      {
+        if (paramBoolean) {
+          ReportController.b(null, "CliOper", "", "", "0X80043D3", "0X80043D3", 0, 0, "", "", "", "");
+        } else {
+          ReportController.b(null, "CliOper", "", "", "0X80043D4", "0X80043D4", 0, 0, "", "", "", "");
+        }
+      }
+      else if (paramBoolean) {
+        ReportController.b(null, "CliOper", "", "", "0X80043BA", "0X80043BA", 0, 0, "", "", "", "");
+      } else {
+        ReportController.b(null, "CliOper", "", "", "0X80043BB", "0X80043BB", 0, 0, "", "", "", "");
+      }
+    }
+    if (paramVideoController.a().jdField_k_of_type_Int == 1008)
+    {
+      if (paramBoolean)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X8005DA8", "0X8005DA8", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X8005DAA", "0X8005DAA", 0, 0, "", "", "", "");
+    }
   }
   
   public static void a(String paramString)
@@ -208,43 +206,40 @@ public class DataReport
   public static void a(boolean paramBoolean)
   {
     String str1;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       str1 = "0X80049A8";
-      if (!paramBoolean) {
-        break label43;
-      }
-    }
-    label43:
-    for (String str2 = "0X80049A8";; str2 = "0X80049B8")
-    {
-      ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
+    } else {
       str1 = "0X80049B8";
-      break;
     }
+    String str2;
+    if (paramBoolean) {
+      str2 = "0X80049A8";
+    } else {
+      str2 = "0X80049B8";
+    }
+    ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
   }
   
   public static void a(boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean) {
-      if (paramInt == 10) {
+    if (paramBoolean)
+    {
+      if (paramInt == 10)
+      {
         ReportController.b(null, "CliOper", "", "", "0X800592B", "0X800592B", 0, 0, "", "", "", "");
+        return;
+      }
+      if (paramInt == 2)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X80046D1", "0X80046D1", 0, 0, "", "", "", "");
+        return;
+      }
+      if (paramInt == 1) {
+        ReportController.b(null, "CliOper", "", "", "0X8004CE7", "0X8004CE7", 0, 0, "", "", "", "");
       }
     }
-    do
+    else
     {
-      do
-      {
-        return;
-        if (paramInt == 2)
-        {
-          ReportController.b(null, "CliOper", "", "", "0X80046D1", "0X80046D1", 0, 0, "", "", "", "");
-          return;
-        }
-      } while (paramInt != 1);
-      ReportController.b(null, "CliOper", "", "", "0X8004CE7", "0X8004CE7", 0, 0, "", "", "", "");
-      return;
       if (paramInt == 10)
       {
         ReportController.b(null, "CliOper", "", "", "0X800592C", "0X800592C", 0, 0, "", "", "", "");
@@ -255,79 +250,84 @@ public class DataReport
         ReportController.b(null, "CliOper", "", "", "0X80046D2", "0X80046D2", 0, 0, "", "", "", "");
         return;
       }
-    } while (paramInt != 1);
-    ReportController.b(null, "CliOper", "", "", "0X8004CE6", "0X8004CE6", 0, 0, "", "", "", "");
+      if (paramInt == 1) {
+        ReportController.b(null, "CliOper", "", "", "0X8004CE6", "0X8004CE6", 0, 0, "", "", "", "");
+      }
+    }
   }
   
   public static void a(boolean paramBoolean1, boolean paramBoolean2)
   {
+    String str2;
     String str1;
+    Object localObject2;
     if (paramBoolean1)
     {
+      str2 = "0X80049A2";
+      str1 = "0X80049B1";
+      if (paramBoolean2) {
+        localObject1 = "0X80049A2";
+      } else {
+        localObject1 = "0X80049B1";
+      }
+      localObject2 = localObject1;
       if (paramBoolean2)
       {
-        str1 = "0X80049A2";
-        if (!paramBoolean2) {
-          break label47;
-        }
-      }
-      label47:
-      for (str2 = "0X80049A2";; str2 = "0X80049B1")
-      {
-        ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-        return;
-        str1 = "0X80049B1";
-        break;
+        str1 = str2;
+        break label74;
       }
     }
-    if (paramBoolean2)
+    else
     {
-      str1 = "0X800499F";
-      label60:
-      if (!paramBoolean2) {
-        break label76;
-      }
-    }
-    label76:
-    for (String str2 = "0X800499F";; str2 = "0X80049AE")
-    {
-      break;
+      str2 = "0X800499F";
       str1 = "0X80049AE";
-      break label60;
+      if (paramBoolean2) {
+        localObject1 = "0X800499F";
+      } else {
+        localObject1 = "0X80049AE";
+      }
+      localObject2 = localObject1;
+      if (paramBoolean2)
+      {
+        str1 = str2;
+        break label74;
+      }
     }
+    Object localObject1 = localObject2;
+    label74:
+    ReportController.b(null, "CliOper", "", "", (String)localObject1, str1, 0, 0, "", "", "", "");
   }
   
   public static void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (paramInt == 1) {
-      if (paramBoolean2) {
+    if (paramInt == 1)
+    {
+      if (paramBoolean2)
+      {
         ReportController.b(null, "CliOper", "", "", "0X80041B9", "0X80041B9", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X80041BC", "0X80041BC", 0, 0, "", "", "", "");
+      return;
+    }
+    if (paramInt == 10)
+    {
+      if ((paramBoolean1) && (!paramBoolean2)) {
+        ReportController.b(null, "CliOper", "", "", "0X800593F", "0X800593F", 0, 0, "", "", "", "");
+      }
+      if (paramBoolean2) {
+        ReportController.b(null, "CliOper", "", "", "0X800593C", "0X800593C", 0, 0, "", "", "", "");
       }
     }
-    do
+    else if (paramInt == 2)
     {
-      do
-      {
-        do
-        {
-          return;
-          ReportController.b(null, "CliOper", "", "", "0X80041BC", "0X80041BC", 0, 0, "", "", "", "");
-          return;
-          if (paramInt != 10) {
-            break;
-          }
-          if ((paramBoolean1) && (!paramBoolean2)) {
-            ReportController.b(null, "CliOper", "", "", "0X800593F", "0X800593F", 0, 0, "", "", "", "");
-          }
-        } while (!paramBoolean2);
-        ReportController.b(null, "CliOper", "", "", "0X800593C", "0X800593C", 0, 0, "", "", "", "");
-        return;
-      } while (paramInt != 2);
       if ((paramBoolean1) && (!paramBoolean2)) {
         ReportController.b(null, "CliOper", "", "", "0X80046E9", "0X80046E9", 0, 0, "", "", "", "");
       }
-    } while (!paramBoolean2);
-    ReportController.b(null, "CliOper", "", "", "0X80046E6", "0X80046E6", 0, 0, "", "", "", "");
+      if (paramBoolean2) {
+        ReportController.b(null, "CliOper", "", "", "0X80046E6", "0X80046E6", 0, 0, "", "", "", "");
+      }
+    }
   }
   
   public static void b()
@@ -337,381 +337,334 @@ public class DataReport
   
   public static void b(int paramInt)
   {
-    if (paramInt == 2) {
-      ReportController.b(null, "CliOper", "", "", "0X8004F5E", "0X8004F5E", 0, 0, "", "", "", "");
-    }
-    do
+    if (paramInt == 2)
     {
+      ReportController.b(null, "CliOper", "", "", "0X8004F5E", "0X8004F5E", 0, 0, "", "", "", "");
       return;
-      if (paramInt == 10)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X800594C", "0X800594C", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (paramInt != 1);
-    ReportController.b(null, "CliOper", "", "", "0X8004CFA", "0X8004CFA", 0, 0, "", "", "", "");
+    }
+    if (paramInt == 10)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X800594C", "0X800594C", 0, 0, "", "", "", "");
+      return;
+    }
+    if (paramInt == 1) {
+      ReportController.b(null, "CliOper", "", "", "0X8004CFA", "0X8004CFA", 0, 0, "", "", "", "");
+    }
   }
   
   public static void b(int paramInt1, int paramInt2)
   {
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    }
-    do
-    {
-      do
+      if (paramInt2 != 90)
       {
-        return;
-        if (paramInt1 == 1)
-        {
-          ReportController.b(null, "CliOper", "", "", "0X800442A", "0X800442A", 0, 0, "", "", "", "");
+        if (paramInt2 == 180) {
+          break label85;
+        }
+        if (paramInt2 != 270) {
           return;
         }
-      } while (paramInt1 != 2);
-      ReportController.b(null, "CliOper", "", "", "0X800442B", "0X800442B", 0, 0, "", "", "", "");
-      return;
+      }
       if (paramInt1 == 1)
       {
         ReportController.b(null, "CliOper", "", "", "0X8004429", "0X8004429", 0, 0, "", "", "", "");
         return;
       }
-    } while (paramInt1 != 2);
-    ReportController.b(null, "CliOper", "", "", "0X800442C", "0X800442C", 0, 0, "", "", "", "");
+      if (paramInt1 != 2) {
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X800442C", "0X800442C", 0, 0, "", "", "", "");
+      return;
+    }
+    label85:
+    if (paramInt1 == 1)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X800442A", "0X800442A", 0, 0, "", "", "", "");
+      return;
+    }
+    if (paramInt1 == 2) {
+      ReportController.b(null, "CliOper", "", "", "0X800442B", "0X800442B", 0, 0, "", "", "", "");
+    }
   }
   
   public static void b(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    int i;
-    do
-    {
-      return;
-      i = paramVideoController.a().jdField_d_of_type_Int;
-      if (i == 1)
-      {
-        if (paramVideoController.a().l())
-        {
-          ReportController.b(null, "CliOper", "", "", "0X800436C", "0X800436C", 0, 0, "", "", "", "");
-          return;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X800434D", "0X800434D", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (i != 2);
-    if (paramVideoController.a().l())
-    {
-      ReportController.b(null, "CliOper", "", "", "0X80043CC", "0X80043CC", 0, 0, "", "", "", "");
+    if (paramVideoController == null) {
       return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X80043B8", "0X80043B8", 0, 0, "", "", "", "");
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      if (paramVideoController.a().j())
+      {
+        ReportController.b(null, "CliOper", "", "", "0X800436C", "0X800436C", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X800434D", "0X800434D", 0, 0, "", "", "", "");
+      return;
+    }
+    if (i == 2)
+    {
+      if (paramVideoController.a().j())
+      {
+        ReportController.b(null, "CliOper", "", "", "0X80043CC", "0X80043CC", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X80043B8", "0X80043B8", 0, 0, "", "", "", "");
+    }
   }
   
   public static void b(VideoController paramVideoController, boolean paramBoolean)
   {
-    if ((paramVideoController == null) || (paramVideoController.a().jdField_e_of_type_Long == 0L)) {
-      return;
-    }
-    Object localObject1 = paramVideoController.a();
-    int j = paramVideoController.a().C;
-    AudioManager localAudioManager = (AudioManager)((Context)localObject1).getSystemService("audio");
-    int i = localAudioManager.getStreamVolume(j);
-    j = localAudioManager.getStreamMaxVolume(j);
-    i = (int)(i / j * 100.0F);
-    if (i < 30) {
-      i = 1;
-    }
-    for (;;)
+    if (paramVideoController != null)
     {
-      label76:
-      localObject1 = paramVideoController.a().q;
-      String str;
-      label101:
-      Object localObject2;
-      if ("DEVICE_EARPHONE".equals(localObject1))
-      {
+      if (paramVideoController.a().jdField_d_of_type_Long == 0L) {
+        return;
+      }
+      Object localObject1 = paramVideoController.a();
+      int j = paramVideoController.a().C;
+      AudioManager localAudioManager = (AudioManager)((Context)localObject1).getSystemService("audio");
+      int i = localAudioManager.getStreamVolume(j);
+      j = localAudioManager.getStreamMaxVolume(j);
+      j = (int)(i / j * 100.0F);
+      i = 0;
+      if (j < 30) {
+        i = 1;
+      } else if ((j >= 30) && (j <= 70)) {
+        i = 2;
+      } else if (j > 70) {
+        i = 3;
+      }
+      localObject1 = null;
+      Object localObject3 = null;
+      Object localObject2 = null;
+      String str = paramVideoController.a().p;
+      if ("DEVICE_EARPHONE".equals(str)) {
         str = "0";
-        j = paramVideoController.a().jdField_d_of_type_Int;
-        if (j != 1) {
-          break label408;
-        }
-        switch (i)
+      } else if ("DEVICE_SPEAKERPHONE".equals(str)) {
+        str = "1";
+      } else if ("DEVICE_WIRED_HEADSET".equals(str)) {
+        str = "2";
+      } else if ("DEVICE_BLUETOOTH_HEADSET".equals(str)) {
+        str = "3";
+      } else {
+        str = "4";
+      }
+      j = paramVideoController.a().jdField_d_of_type_Int;
+      if (j == 1)
+      {
+        if (i != 1)
         {
-        default: 
-          localObject1 = null;
-          label143:
-          localObject2 = localObject1;
-          if (paramBoolean)
+          if (i != 2)
           {
-            localObject2 = localObject1;
-            if (paramVideoController.a().jdField_e_of_type_Boolean) {
-              if (localAudioManager.isBluetoothA2dpOn())
-              {
-                str = "3";
-                paramVideoController = (VideoController)localObject1;
-                localObject1 = str;
+            if (i != 3) {
+              localObject1 = localObject2;
+            } else if (paramBoolean) {
+              localObject1 = "0X800437D";
+            } else {
+              localObject1 = "0X8004380";
+            }
+          }
+          else if (paramBoolean) {
+            localObject1 = "0X800437C";
+          } else {
+            localObject1 = "0X800437F";
+          }
+        }
+        else if (paramBoolean) {
+          localObject1 = "0X800437B";
+        } else {
+          localObject1 = "0X800437E";
+        }
+        localObject2 = localObject1;
+        if (!paramBoolean) {
+          break label505;
+        }
+        localObject2 = localObject1;
+        if (!paramVideoController.a().e) {
+          break label505;
+        }
+        if (localAudioManager.isBluetoothA2dpOn())
+        {
+          paramVideoController = (VideoController)localObject1;
+          localObject1 = "3";
+          break label512;
+        }
+        if (!localAudioManager.isWiredHeadsetOn()) {}
+      }
+      do
+      {
+        paramVideoController = (VideoController)localObject1;
+        localObject1 = "2";
+        break label512;
+        paramVideoController = (VideoController)localObject1;
+        localObject1 = "0";
+        break label512;
+        localObject2 = localObject3;
+        if (j != 2) {
+          break label505;
+        }
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i == 3) {
+              if (paramBoolean) {
+                localObject1 = "0X80043D8";
+              } else {
+                localObject1 = "0X80043DB";
               }
             }
           }
+          else if (paramBoolean) {
+            localObject1 = "0X80043D7";
+          } else {
+            localObject1 = "0X80043DA";
+          }
+        }
+        else if (paramBoolean) {
+          localObject1 = "0X80043D6";
+        } else {
+          localObject1 = "0X80043D9";
+        }
+        localObject2 = localObject1;
+        if (!paramBoolean) {
+          break label505;
+        }
+        localObject2 = localObject1;
+        if (!paramVideoController.a().e) {
+          break label505;
+        }
+        if (localAudioManager.isBluetoothA2dpOn()) {
           break;
         }
-      }
-      while ((paramVideoController != null) && (localObject1 != null))
-      {
+      } while (localAudioManager.isWiredHeadsetOn());
+      paramVideoController = (VideoController)localObject1;
+      localObject1 = "1";
+      break label512;
+      label505:
+      paramVideoController = localObject2;
+      localObject1 = str;
+      label512:
+      if (paramVideoController != null) {
         ReportController.b(null, "CliOper", "", "", paramVideoController, paramVideoController, 0, 0, (String)localObject1, "", "", "");
-        return;
-        if ((i >= 30) && (i <= 70))
-        {
-          i = 2;
-          break label76;
-        }
-        if (i <= 70) {
-          break label605;
-        }
-        i = 3;
-        break label76;
-        if ("DEVICE_SPEAKERPHONE".equals(localObject1))
-        {
-          str = "1";
-          break label101;
-        }
-        if ("DEVICE_WIREDHEADSET".equals(localObject1))
-        {
-          str = "2";
-          break label101;
-        }
-        if ("DEVICE_BLUETOOTHHEADSET".equals(localObject1))
-        {
-          str = "3";
-          break label101;
-        }
-        str = "4";
-        break label101;
-        if (paramBoolean)
-        {
-          localObject1 = "0X800437B";
-          break label143;
-        }
-        localObject1 = "0X800437E";
-        break label143;
-        if (paramBoolean)
-        {
-          localObject1 = "0X800437C";
-          break label143;
-        }
-        localObject1 = "0X800437F";
-        break label143;
-        if (paramBoolean)
-        {
-          localObject1 = "0X800437D";
-          break label143;
-        }
-        localObject1 = "0X8004380";
-        break label143;
-        if (localAudioManager.isWiredHeadsetOn())
-        {
-          str = "2";
-          paramVideoController = (VideoController)localObject1;
-          localObject1 = str;
-        }
-        else
-        {
-          str = "0";
-          paramVideoController = (VideoController)localObject1;
-          localObject1 = str;
-          continue;
-          label408:
-          if (j == 2)
-          {
-            switch (i)
-            {
-            default: 
-              localObject1 = null;
-            }
-            for (;;)
-            {
-              localObject2 = localObject1;
-              if (!paramBoolean) {
-                break label586;
-              }
-              localObject2 = localObject1;
-              if (!paramVideoController.a().jdField_e_of_type_Boolean) {
-                break label586;
-              }
-              if (!localAudioManager.isBluetoothA2dpOn()) {
-                break label548;
-              }
-              str = "3";
-              paramVideoController = (VideoController)localObject1;
-              localObject1 = str;
-              break;
-              if (paramBoolean)
-              {
-                localObject1 = "0X80043D6";
-              }
-              else
-              {
-                localObject1 = "0X80043D9";
-                continue;
-                if (paramBoolean)
-                {
-                  localObject1 = "0X80043D7";
-                }
-                else
-                {
-                  localObject1 = "0X80043DA";
-                  continue;
-                  if (paramBoolean) {
-                    localObject1 = "0X80043D8";
-                  } else {
-                    localObject1 = "0X80043DB";
-                  }
-                }
-              }
-            }
-            label548:
-            if (localAudioManager.isWiredHeadsetOn())
-            {
-              str = "2";
-              paramVideoController = (VideoController)localObject1;
-              localObject1 = str;
-            }
-            else
-            {
-              str = "1";
-              paramVideoController = (VideoController)localObject1;
-              localObject1 = str;
-              continue;
-              label586:
-              localObject1 = str;
-              paramVideoController = localObject2;
-            }
-          }
-          else
-          {
-            localObject1 = str;
-            paramVideoController = null;
-          }
-        }
       }
-      label605:
-      i = 0;
     }
-  }
-  
-  static void b(String paramString)
-  {
-    ReportController.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
   public static void b(boolean paramBoolean)
   {
     String str1;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       str1 = "0X80049A9";
-      if (!paramBoolean) {
-        break label46;
-      }
-    }
-    label46:
-    for (String str2 = "0X80049A9";; str2 = "0X80049B9")
-    {
-      ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
+    } else {
       str1 = "0X80049B9";
-      break;
     }
+    String str2;
+    if (paramBoolean) {
+      str2 = "0X80049A9";
+    } else {
+      str2 = "0X80049B9";
+    }
+    ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
   }
   
   public static void b(boolean paramBoolean, int paramInt)
   {
-    if (paramInt == 1) {
-      if (paramBoolean) {
-        ReportController.b(null, "CliOper", "", "", "0X8004CF9", "0X8004CF9", 0, 0, "", "", "", "");
-      }
-    }
-    do
+    if (paramInt == 1)
     {
-      return;
-      ReportController.b(null, "CliOper", "", "", "0X8004CF5", "0X8004CF5", 0, 0, "", "", "", "");
-      return;
-      if (paramInt == 10)
+      if (paramBoolean)
       {
-        if (paramBoolean)
-        {
-          ReportController.b(null, "CliOper", "", "", "0X800594B", "0X800594B", 0, 0, "", "", "", "");
-          return;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X8005947", "0X8005947", 0, 0, "", "", "", "");
+        ReportController.b(null, "CliOper", "", "", "0X8004CF9", "0X8004CF9", 0, 0, "", "", "", "");
         return;
       }
-    } while (paramInt != 2);
-    if (paramBoolean)
-    {
-      ReportController.b(null, "CliOper", "", "", "0X8004F5D", "0X8004F5D", 0, 0, "", "", "", "");
+      ReportController.b(null, "CliOper", "", "", "0X8004CF5", "0X8004CF5", 0, 0, "", "", "", "");
       return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X8004F59", "0X8004F59", 0, 0, "", "", "", "");
+    if (paramInt == 10)
+    {
+      if (paramBoolean)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X800594B", "0X800594B", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X8005947", "0X8005947", 0, 0, "", "", "", "");
+      return;
+    }
+    if (paramInt == 2)
+    {
+      if (paramBoolean)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X8004F5D", "0X8004F5D", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X8004F59", "0X8004F59", 0, 0, "", "", "", "");
+    }
   }
   
   public static void b(boolean paramBoolean1, boolean paramBoolean2)
   {
+    String str2;
     String str1;
+    Object localObject2;
     if (paramBoolean1)
     {
+      str2 = "0X80049A3";
+      str1 = "0X80049B2";
+      if (paramBoolean2) {
+        localObject1 = "0X80049A3";
+      } else {
+        localObject1 = "0X80049B2";
+      }
+      localObject2 = localObject1;
       if (paramBoolean2)
       {
-        str1 = "0X80049A3";
-        if (!paramBoolean2) {
-          break label50;
-        }
-      }
-      label50:
-      for (str2 = "0X80049A3";; str2 = "0X80049B2")
-      {
-        ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-        return;
-        str1 = "0X80049B2";
-        break;
+        str1 = str2;
+        break label82;
       }
     }
-    if (paramBoolean2)
+    else
     {
-      str1 = "0X80049A0";
-      label65:
-      if (!paramBoolean2) {
-        break label83;
-      }
-    }
-    label83:
-    for (String str2 = "0X80049A0";; str2 = "0X80049AF")
-    {
-      break;
+      str2 = "0X80049A0";
       str1 = "0X80049AF";
-      break label65;
+      if (paramBoolean2) {
+        localObject1 = "0X80049A0";
+      } else {
+        localObject1 = "0X80049AF";
+      }
+      localObject2 = localObject1;
+      if (paramBoolean2)
+      {
+        str1 = str2;
+        break label82;
+      }
     }
+    Object localObject1 = localObject2;
+    label82:
+    ReportController.b(null, "CliOper", "", "", (String)localObject1, str1, 0, 0, "", "", "", "");
   }
   
   public static void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (paramInt == 1) {
-      if (paramBoolean2) {
-        ReportController.b(null, "CliOper", "", "", "0x80041BA", "0x80041BA", 0, 0, "", "", "", "");
-      }
-    }
-    do
+    if (paramInt == 1)
     {
-      do
+      if (paramBoolean2)
       {
+        ReportController.b(null, "CliOper", "", "", "0x80041BA", "0x80041BA", 0, 0, "", "", "", "");
         return;
-        ReportController.b(null, "CliOper", "", "", "0x80041BD", "0x80041BD", 0, 0, "", "", "", "");
-        return;
-      } while (paramInt != 10);
+      }
+      ReportController.b(null, "CliOper", "", "", "0x80041BD", "0x80041BD", 0, 0, "", "", "", "");
+      return;
+    }
+    if (paramInt == 10)
+    {
       if ((paramBoolean1) && (!paramBoolean2)) {
         ReportController.b(null, "CliOper", "", "", "0x8005940", "0x8005940", 0, 0, "", "", "", "");
       }
-    } while (!paramBoolean2);
-    ReportController.b(null, "CliOper", "", "", "0x800593D", "0x800593D", 0, 0, "", "", "", "");
+      if (paramBoolean2) {
+        ReportController.b(null, "CliOper", "", "", "0x800593D", "0x800593D", 0, 0, "", "", "", "");
+      }
+    }
   }
   
   public static void c()
@@ -727,222 +680,225 @@ public class DataReport
     {
     default: 
       return;
-    case 2131374081: 
-      str = "0X800A154";
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", str, str, i, 0, "", "", "", "");
-      return;
-      str = "0X800A154";
-      continue;
-      str = "0X800A155";
-      continue;
+    case 2131695346: 
       str = "0X800A156";
-      continue;
-      str = "0X800A157";
-      continue;
+      break;
+    case 2131695343: 
       str = "0X800A158";
-      continue;
-      str = "0X800A15A";
-      continue;
+      break;
+    case 2131695338: 
       str = "0X800A15B";
-      continue;
+      break;
+    case 2131695337: 
+      str = "0X800A157";
+      break;
+    case 2131695336: 
+      str = "0X800A15A";
+      break;
+    case 2131695335: 
       str = "0X800A15C";
-      continue;
+      break;
+    case 2131695333: 
+      str = "0X800A155";
+      break;
+    case 2131373640: 
       str = "0X800A15D";
-      continue;
+      break;
+    case 2131373634: 
+    case 2131373636: 
+      str = "0X800A154";
+      break;
+    case 2131373526: 
       str = "0X800A159";
     }
+    ReportController.b(null, "dc00898", "", "", str, str, i, 0, "", "", "", "");
   }
   
   public static void c(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    int i;
-    do
-    {
-      return;
-      i = paramVideoController.a().jdField_d_of_type_Int;
-      if (i == 1)
-      {
-        if (paramVideoController.a().l())
-        {
-          if (paramVideoController.a().jdField_g_of_type_Boolean)
-          {
-            ReportController.b(null, "CliOper", "", "", "0X8004381", "0X8004381", 0, 0, "", "", "", "");
-            return;
-          }
-          ReportController.b(null, "CliOper", "", "", "0X8004382", "0X8004382", 0, 0, "", "", "", "");
-          return;
-        }
-        if (paramVideoController.a().jdField_g_of_type_Boolean)
-        {
-          ReportController.b(null, "CliOper", "", "", "0X8004353", "0X8004353", 0, 0, "", "", "", "");
-          return;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X8004354", "0X8004354", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (i != 2);
-    if (paramVideoController.a().l())
-    {
-      if (paramVideoController.a().jdField_g_of_type_Boolean)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X80043DC", "0X80043DC", 0, 0, "", "", "", "");
-        return;
-      }
-      ReportController.b(null, "CliOper", "", "", "0X80043DD", "0X80043DD", 0, 0, "", "", "", "");
+    if (paramVideoController == null) {
       return;
     }
-    if (paramVideoController.a().jdField_g_of_type_Boolean)
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
     {
-      ReportController.b(null, "CliOper", "", "", "0X80043BE", "0X80043BE", 0, 0, "", "", "", "");
+      if (paramVideoController.a().j())
+      {
+        if (paramVideoController.a().g)
+        {
+          ReportController.b(null, "CliOper", "", "", "0X8004381", "0X8004381", 0, 0, "", "", "", "");
+          return;
+        }
+        ReportController.b(null, "CliOper", "", "", "0X8004382", "0X8004382", 0, 0, "", "", "", "");
+        return;
+      }
+      if (paramVideoController.a().g)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X8004353", "0X8004353", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X8004354", "0X8004354", 0, 0, "", "", "", "");
       return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X80043BF", "0X80043BF", 0, 0, "", "", "", "");
+    if (i == 2)
+    {
+      if (paramVideoController.a().j())
+      {
+        if (paramVideoController.a().g)
+        {
+          ReportController.b(null, "CliOper", "", "", "0X80043DC", "0X80043DC", 0, 0, "", "", "", "");
+          return;
+        }
+        ReportController.b(null, "CliOper", "", "", "0X80043DD", "0X80043DD", 0, 0, "", "", "", "");
+        return;
+      }
+      if (paramVideoController.a().g)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X80043BE", "0X80043BE", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X80043BF", "0X80043BF", 0, 0, "", "", "", "");
+    }
   }
   
   public static void c(VideoController paramVideoController, boolean paramBoolean)
   {
-    if (paramVideoController == null) {}
-    label172:
-    do
-    {
-      do
-      {
-        int i;
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              i = paramVideoController.a().jdField_d_of_type_Int;
-              if (i != 1) {
-                break label172;
-              }
-              if (!paramBoolean) {
-                break;
-              }
-            } while (paramVideoController.a().jdField_e_of_type_Boolean);
-            if (paramVideoController.a().jdField_g_of_type_Boolean)
-            {
-              ReportController.b(null, "CliOper", "", "", "0X8004356", "0X8004356", 0, 0, "", "", "", "");
-              return;
-            }
-            ReportController.b(null, "CliOper", "", "", "0X8004355", "0X8004355", 0, 0, "", "", "", "");
-            return;
-          } while (paramVideoController.a().jdField_e_of_type_Long <= 0L);
-          if (paramVideoController.a().jdField_g_of_type_Boolean)
-          {
-            ReportController.b(null, "CliOper", "", "", "0X8004384", "0X8004384", 0, 0, "", "", "", "");
-            return;
-          }
-          ReportController.b(null, "CliOper", "", "", "0X8004383", "0X8004383", 0, 0, "", "", "", "");
-          return;
-        } while (i != 2);
-        if (!paramBoolean) {
-          break;
-        }
-      } while (paramVideoController.a().jdField_e_of_type_Boolean);
-      if (paramVideoController.a().jdField_g_of_type_Boolean)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X80043C1", "0X80043C1", 0, 0, "", "", "", "");
-        return;
-      }
-      ReportController.b(null, "CliOper", "", "", "0X80043C0", "0X80043C0", 0, 0, "", "", "", "");
-      return;
-    } while (paramVideoController.a().jdField_e_of_type_Long <= 0L);
-    if (paramVideoController.a().jdField_g_of_type_Boolean)
-    {
-      ReportController.b(null, "CliOper", "", "", "0X80043DF", "0X80043DF", 0, 0, "", "", "", "");
+    if (paramVideoController == null) {
       return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X80043DE", "0X80043DE", 0, 0, "", "", "", "");
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      if (paramBoolean)
+      {
+        if (!paramVideoController.a().e)
+        {
+          if (paramVideoController.a().g)
+          {
+            ReportController.b(null, "CliOper", "", "", "0X8004356", "0X8004356", 0, 0, "", "", "", "");
+            return;
+          }
+          ReportController.b(null, "CliOper", "", "", "0X8004355", "0X8004355", 0, 0, "", "", "", "");
+        }
+      }
+      else if (paramVideoController.a().jdField_d_of_type_Long > 0L)
+      {
+        if (paramVideoController.a().g)
+        {
+          ReportController.b(null, "CliOper", "", "", "0X8004384", "0X8004384", 0, 0, "", "", "", "");
+          return;
+        }
+        ReportController.b(null, "CliOper", "", "", "0X8004383", "0X8004383", 0, 0, "", "", "", "");
+      }
+    }
+    else if (i == 2) {
+      if (paramBoolean)
+      {
+        if (!paramVideoController.a().e)
+        {
+          if (paramVideoController.a().g)
+          {
+            ReportController.b(null, "CliOper", "", "", "0X80043C1", "0X80043C1", 0, 0, "", "", "", "");
+            return;
+          }
+          ReportController.b(null, "CliOper", "", "", "0X80043C0", "0X80043C0", 0, 0, "", "", "", "");
+        }
+      }
+      else if (paramVideoController.a().jdField_d_of_type_Long > 0L)
+      {
+        if (paramVideoController.a().g)
+        {
+          ReportController.b(null, "CliOper", "", "", "0X80043DF", "0X80043DF", 0, 0, "", "", "", "");
+          return;
+        }
+        ReportController.b(null, "CliOper", "", "", "0X80043DE", "0X80043DE", 0, 0, "", "", "", "");
+      }
+    }
   }
   
   public static void c(boolean paramBoolean)
   {
-    String str1;
+    String str;
     if (paramBoolean) {
-      str1 = "0X8004ACC";
+      str = "0X8004ACC";
+    } else {
+      str = "0X8004AC9";
     }
-    for (String str2 = "0X8004ACC";; str2 = "0X8004AC9")
-    {
-      ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
-      str1 = "0X8004AC9";
-    }
+    ReportController.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
   }
   
   public static void c(boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean) {
-      if (paramInt != 1) {}
-    }
-    do
+    if (paramBoolean)
     {
-      do
-      {
-        do
-        {
-          return;
-          if (paramInt == 10)
-          {
-            ReportController.b(null, "CliOper", "", "", "0X8005926", "0X8005926", 0, 0, "", "", "", "");
-            return;
-          }
-        } while (paramInt != 2);
-        ReportController.b(null, "CliOper", "", "", "0X80046CC", "0X80046CC", 0, 0, "", "", "", "");
+      if (paramInt == 1) {
         return;
-      } while (paramInt == 1);
+      }
+      if (paramInt == 10)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X8005926", "0X8005926", 0, 0, "", "", "", "");
+        return;
+      }
+      if (paramInt == 2) {
+        ReportController.b(null, "CliOper", "", "", "0X80046CC", "0X80046CC", 0, 0, "", "", "", "");
+      }
+    }
+    else
+    {
+      if (paramInt == 1) {
+        return;
+      }
       if (paramInt == 10)
       {
         ReportController.b(null, "CliOper", "", "", "0X8005927", "0X8005927", 0, 0, "", "", "", "");
         return;
       }
-    } while (paramInt != 2);
-    ReportController.b(null, "CliOper", "", "", "0X80046CD", "0X80046CD", 0, 0, "", "", "", "");
+      if (paramInt == 2) {
+        ReportController.b(null, "CliOper", "", "", "0X80046CD", "0X80046CD", 0, 0, "", "", "", "");
+      }
+    }
   }
   
   public static void c(boolean paramBoolean1, boolean paramBoolean2)
   {
+    String str2;
     String str1;
+    Object localObject2;
     if (paramBoolean1)
     {
+      str2 = "0X80049A4";
+      str1 = "0X80049B3";
+      if (paramBoolean2) {
+        localObject1 = "0X80049A4";
+      } else {
+        localObject1 = "0X80049B3";
+      }
+      localObject2 = localObject1;
       if (paramBoolean2)
       {
-        str1 = "0X80049A4";
-        if (!paramBoolean2) {
-          break label50;
-        }
-      }
-      label50:
-      for (str2 = "0X80049A4";; str2 = "0X80049B3")
-      {
-        ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-        return;
-        str1 = "0X80049B3";
-        break;
+        str1 = str2;
+        break label82;
       }
     }
-    if (paramBoolean2)
+    else
     {
-      str1 = "0X80049A1";
-      label65:
-      if (!paramBoolean2) {
-        break label83;
-      }
-    }
-    label83:
-    for (String str2 = "0X80049A1";; str2 = "0X80049B0")
-    {
-      break;
+      str2 = "0X80049A1";
       str1 = "0X80049B0";
-      break label65;
+      if (paramBoolean2) {
+        localObject1 = "0X80049A1";
+      } else {
+        localObject1 = "0X80049B0";
+      }
+      localObject2 = localObject1;
+      if (paramBoolean2)
+      {
+        str1 = str2;
+        break label82;
+      }
     }
+    Object localObject1 = localObject2;
+    label82:
+    ReportController.b(null, "CliOper", "", "", (String)localObject1, str1, 0, 0, "", "", "", "");
   }
   
   public static void d()
@@ -952,30 +908,50 @@ public class DataReport
   
   public static void d(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    String str;
-    int i;
-    label258:
-    do
-    {
+    if (paramVideoController == null) {
       return;
-      switch (paramVideoController.a().z)
-      {
-      default: 
-        str = "8";
+    }
+    int i = paramVideoController.a().z;
+    String str;
+    if (i != -1) {
+      if (i != 0) {
+        if (i != 3) {
+          if (i != 12) {
+            if (i != 25) {
+              if (i != 54) {
+                if (i != 42) {
+                  if (i != 43) {
+                    str = "8";
+                  }
+                }
+              }
+            }
+          }
+        }
       }
-      for (;;)
+    }
+    for (;;)
+    {
+      break;
+      str = "5";
+      continue;
+      str = "6";
+      continue;
+      str = "10";
+      continue;
+      str = "7";
+      continue;
+      if (!paramVideoController.a().r)
       {
-        i = paramVideoController.a().jdField_d_of_type_Int;
-        if (i != 1) {
-          break label258;
-        }
-        if (!paramVideoController.a().l()) {
-          break;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X8004389", "0X8004389", 0, 0, "", "", "", "");
-        return;
-        if (paramVideoController.a().o >= 0)
+        str = "2";
+      }
+      else
+      {
+        str = "4";
+        continue;
+        str = "3";
+        continue;
+        if (paramVideoController.a().q >= 0)
         {
           str = "1";
         }
@@ -983,73 +959,63 @@ public class DataReport
         {
           str = "0";
           continue;
-          if (!paramVideoController.a().s)
-          {
-            str = "2";
-          }
-          else
-          {
-            str = "4";
-            continue;
-            str = "3";
-            continue;
-            str = "5";
-            continue;
-            str = "6";
-            continue;
-            str = "7";
-            continue;
-            str = "10";
-            continue;
-            str = "9";
-          }
+          str = "9";
         }
+      }
+    }
+    i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      if (paramVideoController.a().j())
+      {
+        ReportController.b(null, "CliOper", "", "", "0X8004389", "0X8004389", 0, 0, "", "", "", "");
+        return;
       }
       ReportController.b(null, "CliOper", "", "", "0X8004358", "0X8004358", 0, 0, str, "", "", "");
       return;
-    } while (i != 2);
-    if (paramVideoController.a().l())
-    {
-      ReportController.b(null, "CliOper", "", "", "0X80043E4", "0X80043E4", 0, 0, "", "", "", "");
-      return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X80043C3", "0X80043C3", 0, 0, str, "", "", "");
+    if (i == 2)
+    {
+      if (paramVideoController.a().j())
+      {
+        ReportController.b(null, "CliOper", "", "", "0X80043E4", "0X80043E4", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X80043C3", "0X80043C3", 0, 0, str, "", "", "");
+    }
   }
   
   public static void d(boolean paramBoolean)
   {
-    String str1;
+    String str;
     if (paramBoolean) {
-      str1 = "0X8004ACD";
+      str = "0X8004ACD";
+    } else {
+      str = "0X8004ACA";
     }
-    for (String str2 = "0X8004ACD";; str2 = "0X8004ACA")
-    {
-      ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
-      str1 = "0X8004ACA";
-    }
+    ReportController.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
   }
   
   public static void d(boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean) {
-      if (paramInt == 1) {
+    if (paramBoolean)
+    {
+      if (paramInt == 1)
+      {
         ReportController.b(null, "CliOper", "", "", "0X8004CF7", "0X8004CF7", 0, 0, "", "", "", "");
+        return;
+      }
+      if (paramInt == 10)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X8005949", "0X8005949", 0, 0, "", "", "", "");
+        return;
+      }
+      if (paramInt == 2) {
+        ReportController.b(null, "CliOper", "", "", "0X8004F5B", "0X8004F5B", 0, 0, "", "", "", "");
       }
     }
-    do
+    else
     {
-      do
-      {
-        return;
-        if (paramInt == 10)
-        {
-          ReportController.b(null, "CliOper", "", "", "0X8005949", "0X8005949", 0, 0, "", "", "", "");
-          return;
-        }
-      } while (paramInt != 2);
-      ReportController.b(null, "CliOper", "", "", "0X8004F5B", "0X8004F5B", 0, 0, "", "", "", "");
-      return;
       if (paramInt == 1)
       {
         ReportController.b(null, "CliOper", "", "", "0X8004CF4", "0X8004CF4", 0, 0, "", "", "", "");
@@ -1060,8 +1026,10 @@ public class DataReport
         ReportController.b(null, "CliOper", "", "", "0X8005946", "0X8005946", 0, 0, "", "", "", "");
         return;
       }
-    } while (paramInt != 2);
-    ReportController.b(null, "CliOper", "", "", "0X8004F58", "0X8004F58", 0, 0, "", "", "", "");
+      if (paramInt == 2) {
+        ReportController.b(null, "CliOper", "", "", "0X8004F58", "0X8004F58", 0, 0, "", "", "", "");
+      }
+    }
   }
   
   public static void d(boolean paramBoolean1, boolean paramBoolean2)
@@ -1081,33 +1049,29 @@ public class DataReport
   
   public static void e(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    int i;
-    do
-    {
+    if (paramVideoController == null) {
       return;
-      i = paramVideoController.a().jdField_d_of_type_Int;
-      if (i == 1)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X800435E", "0X800435E", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (i != 2);
-    ReportController.b(null, "CliOper", "", "", "0X80043C9", "0X80043C9", 0, 0, "", "", "", "");
+    }
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X800435E", "0X800435E", 0, 0, "", "", "", "");
+      return;
+    }
+    if (i == 2) {
+      ReportController.b(null, "CliOper", "", "", "0X80043C9", "0X80043C9", 0, 0, "", "", "", "");
+    }
   }
   
   public static void e(boolean paramBoolean)
   {
-    String str1;
+    String str;
     if (paramBoolean) {
-      str1 = "0X8004ACE";
+      str = "0X8004ACE";
+    } else {
+      str = "0X8004ACB";
     }
-    for (String str2 = "0X8004ACE";; str2 = "0X8004ACB")
-    {
-      ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
-      str1 = "0X8004ACB";
-    }
+    ReportController.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
   }
   
   public static void e(boolean paramBoolean1, boolean paramBoolean2)
@@ -1139,19 +1103,18 @@ public class DataReport
   
   public static void f(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    int i;
-    do
-    {
+    if (paramVideoController == null) {
       return;
-      i = paramVideoController.a().jdField_d_of_type_Int;
-      if (i == 1)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X8004394", "0X8004394", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (i != 2);
-    ReportController.b(null, "CliOper", "", "", "0X80043F2", "0X80043F2", 0, 0, "", "", "", "");
+    }
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X8004394", "0X8004394", 0, 0, "", "", "", "");
+      return;
+    }
+    if (i == 2) {
+      ReportController.b(null, "CliOper", "", "", "0X80043F2", "0X80043F2", 0, 0, "", "", "", "");
+    }
   }
   
   public static void f(boolean paramBoolean)
@@ -1163,266 +1126,296 @@ public class DataReport
   
   public static void g(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    int i;
-    do
-    {
+    if (paramVideoController == null) {
       return;
-      i = paramVideoController.a().jdField_d_of_type_Int;
-      if (i == 1)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X8004370", "0X8004370", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (i != 2);
-    ReportController.b(null, "CliOper", "", "", "0X80043D0", "0X80043D0", 0, 0, "", "", "", "");
+    }
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X8004370", "0X8004370", 0, 0, "", "", "", "");
+      return;
+    }
+    if (i == 2) {
+      ReportController.b(null, "CliOper", "", "", "0X80043D0", "0X80043D0", 0, 0, "", "", "", "");
+    }
   }
   
   public static void h(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    int i;
-    do
-    {
+    if (paramVideoController == null) {
       return;
-      i = paramVideoController.a().jdField_d_of_type_Int;
-      if (i == 1)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X8004388", "0X8004388", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (i != 2);
-    ReportController.b(null, "CliOper", "", "", "0X80043E3", "0X80043E3", 0, 0, "", "", "", "");
+    }
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X8004388", "0X8004388", 0, 0, "", "", "", "");
+      return;
+    }
+    if (i == 2) {
+      ReportController.b(null, "CliOper", "", "", "0X80043E3", "0X80043E3", 0, 0, "", "", "", "");
+    }
   }
   
   public static void i(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    int i;
-    do
-    {
-      return;
-      i = paramVideoController.a().jdField_d_of_type_Int;
-      if (i == 1)
-      {
-        if (paramVideoController.a().P)
-        {
-          ReportController.b(null, "CliOper", "", "", "0X8004351", "0X8004351", 0, 0, "", "", "", "");
-          return;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X8004352", "0X8004352", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (i != 2);
-    if (paramVideoController.a().P)
-    {
-      ReportController.b(null, "CliOper", "", "", "0X80043BC", "0X80043BC", 0, 0, "", "", "", "");
+    if (paramVideoController == null) {
       return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X80043BD", "0X80043BD", 0, 0, "", "", "", "");
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      if (paramVideoController.a().E)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X8004351", "0X8004351", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X8004352", "0X8004352", 0, 0, "", "", "", "");
+      return;
+    }
+    if (i == 2)
+    {
+      if (paramVideoController.a().E)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X80043BC", "0X80043BC", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X80043BD", "0X80043BD", 0, 0, "", "", "", "");
+    }
   }
   
   public static void j(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    while ((!paramVideoController.a().l()) || (paramVideoController.a().jdField_d_of_type_Int != 1) || (paramVideoController.a().P)) {
+    if (paramVideoController == null) {
       return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X8004379", "0X8004379", 0, 0, "", "", "", "");
+    if ((paramVideoController.a().j()) && (paramVideoController.a().jdField_d_of_type_Int == 1) && (!paramVideoController.a().E)) {
+      ReportController.b(null, "CliOper", "", "", "0X8004379", "0X8004379", 0, 0, "", "", "", "");
+    }
   }
   
   public static void k(VideoController paramVideoController)
   {
-    if (a) {}
-    int i;
-    do
+    if (a) {
+      return;
+    }
+    a = true;
+    if (paramVideoController == null) {
+      return;
+    }
+    if (paramVideoController.a().j())
     {
-      do
-      {
-        return;
-        a = true;
-      } while ((paramVideoController == null) || (!paramVideoController.a().l()));
-      i = paramVideoController.a().jdField_d_of_type_Int;
+      int i = paramVideoController.a().jdField_d_of_type_Int;
       if (i == 1)
       {
         ReportController.b(null, "CliOper", "", "", "0X800437A", "0X800437A", 0, 0, "", "", "", "");
         return;
       }
-    } while (i != 2);
-    ReportController.b(null, "CliOper", "", "", "0X80043D5", "0X80043D5", 0, 0, "", "", "", "");
+      if (i == 2) {
+        ReportController.b(null, "CliOper", "", "", "0X80043D5", "0X80043D5", 0, 0, "", "", "", "");
+      }
+    }
   }
   
   public static void l(VideoController paramVideoController)
   {
-    if (paramVideoController == null) {}
-    String str;
-    int i;
-    label263:
-    do
-    {
+    if (paramVideoController == null) {
       return;
-      str = "";
-      if (!paramVideoController.a().t) {
-        switch (paramVideoController.a().z)
+    }
+    String str;
+    if (!paramVideoController.a().s)
+    {
+      i = paramVideoController.a().z;
+      if (i != -1) {
+        if (i != 0)
         {
-        default: 
-          str = "8";
-        }
-      }
-      for (;;)
-      {
-        i = paramVideoController.a().jdField_d_of_type_Int;
-        if (i != 1) {
-          break label263;
-        }
-        if (!paramVideoController.a().l()) {
-          break;
-        }
-        ReportController.b(null, "CliOper", "", "", "0X800438A", "0X800438A", 0, 0, "", "", "", "");
-        return;
-        if (paramVideoController.a().o >= 0)
-        {
-          str = "1";
-        }
-        else
-        {
-          str = "0";
-          continue;
-          if (!paramVideoController.a().s)
+          if (i != 3)
           {
-            str = "2";
+            if (i != 12)
+            {
+              if (i != 25)
+              {
+                if (i != 54)
+                {
+                  if (i != 42)
+                  {
+                    if (i != 43)
+                    {
+                      str = "8";
+                      break label160;
+                    }
+                    str = "5";
+                    break label160;
+                  }
+                  str = "6";
+                  break label160;
+                }
+              }
+              else
+              {
+                str = "7";
+                break label160;
+              }
+            }
+            else
+            {
+              if (!paramVideoController.a().r)
+              {
+                str = "2";
+                break label160;
+              }
+              str = "4";
+              break label160;
+            }
           }
           else
           {
-            str = "4";
-            continue;
             str = "3";
-            continue;
-            str = "5";
-            continue;
-            str = "6";
-            continue;
-            str = "7";
-            continue;
-            str = "9";
+            break label160;
           }
         }
+        else
+        {
+          if (paramVideoController.a().q >= 0)
+          {
+            str = "1";
+            break label160;
+          }
+          str = "0";
+          break label160;
+        }
+      }
+      str = "9";
+    }
+    else
+    {
+      str = "";
+    }
+    label160:
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
+    {
+      if (paramVideoController.a().j())
+      {
+        ReportController.b(null, "CliOper", "", "", "0X800438A", "0X800438A", 0, 0, "", "", "", "");
+        return;
       }
       ReportController.b(null, "CliOper", "", "", "0X800435B", "0X800435B", 0, 0, str, "", "", "");
       return;
-    } while (i != 2);
-    if (paramVideoController.a().l())
-    {
-      ReportController.b(null, "CliOper", "", "", "0X80043E5", "0X80043E5", 0, 0, "", "", "", "");
-      return;
     }
-    ReportController.b(null, "CliOper", "", "", "0X80043C6", "0X80043C6", 0, 0, str, "", "", "");
+    if (i == 2)
+    {
+      if (paramVideoController.a().j())
+      {
+        ReportController.b(null, "CliOper", "", "", "0X80043E5", "0X80043E5", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "CliOper", "", "", "0X80043C6", "0X80043C6", 0, 0, str, "", "", "");
+    }
   }
   
   public static void m(VideoController paramVideoController)
   {
-    if (b) {}
-    do
-    {
+    if (b) {
       return;
-      b = true;
-    } while ((paramVideoController == null) || ((!paramVideoController.a().jdField_j_of_type_Boolean) && (!paramVideoController.a().k)));
-    ReportController.b(null, "CliOper", "", "", "0X800438F", "0X800438F", 0, 0, "", "", "", "");
+    }
+    b = true;
+    if (paramVideoController == null) {
+      return;
+    }
+    if ((paramVideoController.a().j) || (paramVideoController.a().jdField_k_of_type_Boolean)) {
+      ReportController.b(null, "CliOper", "", "", "0X800438F", "0X800438F", 0, 0, "", "", "", "");
+    }
   }
   
   public static void n(VideoController paramVideoController)
   {
-    if (c) {}
-    do
-    {
+    if (c) {
       return;
-      c = true;
-    } while ((paramVideoController == null) || (paramVideoController.a().jdField_j_of_type_Boolean) || (paramVideoController.a().k));
-    ReportController.b(null, "CliOper", "", "", "0X80043EB", "0X80043EB", 0, 0, "", "", "", "");
+    }
+    c = true;
+    if (paramVideoController == null) {
+      return;
+    }
+    if ((!paramVideoController.a().j) && (!paramVideoController.a().jdField_k_of_type_Boolean)) {
+      ReportController.b(null, "CliOper", "", "", "0X80043EB", "0X80043EB", 0, 0, "", "", "", "");
+    }
   }
   
   public static void o(VideoController paramVideoController)
   {
-    if (d) {}
-    int i;
-    do
+    if (d) {
+      return;
+    }
+    d = true;
+    if (paramVideoController == null) {
+      return;
+    }
+    int i = paramVideoController.a().jdField_d_of_type_Int;
+    if (i == 1)
     {
-      do
-      {
-        return;
-        d = true;
-      } while (paramVideoController == null);
-      i = paramVideoController.a().jdField_d_of_type_Int;
-      if (i == 1)
-      {
-        ReportController.b(null, "CliOper", "", "", "0X8004395", "0X8004395", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (i != 2);
-    ReportController.b(null, "CliOper", "", "", "0X80043F3", "0X80043F3", 0, 0, "", "", "", "");
+      ReportController.b(null, "CliOper", "", "", "0X8004395", "0X8004395", 0, 0, "", "", "", "");
+      return;
+    }
+    if (i == 2) {
+      ReportController.b(null, "CliOper", "", "", "0X80043F3", "0X80043F3", 0, 0, "", "", "", "");
+    }
   }
   
   public static void p(VideoController paramVideoController)
   {
-    String str1 = "";
-    String str2 = "";
+    Object localObject;
     if (paramVideoController.a().jdField_d_of_type_Int == 1)
     {
-      str1 = "0X8004360";
-      str2 = "0X8004361";
+      localObject = "0X8004361";
+      paramVideoController = "0X8004360";
     }
-    for (;;)
+    else
     {
-      ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
-      if (paramVideoController.a().jdField_d_of_type_Int == 2)
-      {
-        str1 = "0X800444C";
-        str2 = "0X800444C";
+      if (paramVideoController.a().jdField_d_of_type_Int == 2) {
+        paramVideoController = "0X800444C";
+      } else {
+        paramVideoController = "";
       }
+      localObject = paramVideoController;
     }
+    ReportController.b(null, "CliOper", "", "", paramVideoController, (String)localObject, 0, 0, "", "", "", "");
   }
   
   public static void q(VideoController paramVideoController)
   {
-    String str1 = "";
-    String str2 = "";
+    Object localObject;
     if (paramVideoController.a().jdField_d_of_type_Int == 1)
     {
-      str1 = "0X8004361";
-      str2 = "0X8004362";
+      localObject = "0X8004362";
+      paramVideoController = "0X8004361";
     }
-    for (;;)
+    else
     {
-      ReportController.b(null, "CliOper", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
-      if (paramVideoController.a().jdField_d_of_type_Int == 2)
-      {
-        str1 = "0X800444D";
-        str2 = "0X800444D";
+      if (paramVideoController.a().jdField_d_of_type_Int == 2) {
+        paramVideoController = "0X800444D";
+      } else {
+        paramVideoController = "";
       }
+      localObject = paramVideoController;
     }
+    ReportController.b(null, "CliOper", "", "", paramVideoController, (String)localObject, 0, 0, "", "", "", "");
   }
   
   public static void r(VideoController paramVideoController)
   {
-    String str = "";
     if (paramVideoController.a().jdField_d_of_type_Int == 1) {
-      str = "0X8004369";
+      paramVideoController = "0X8004369";
+    } else if (paramVideoController.a().jdField_d_of_type_Int == 2) {
+      paramVideoController = "0X8004451";
+    } else {
+      paramVideoController = "";
     }
-    for (;;)
-    {
-      ReportController.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
-      return;
-      if (paramVideoController.a().jdField_d_of_type_Int == 2) {
-        str = "0X8004451";
-      }
-    }
+    ReportController.b(null, "CliOper", "", "", paramVideoController, paramVideoController, 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.DataReport
  * JD-Core Version:    0.7.0.1
  */

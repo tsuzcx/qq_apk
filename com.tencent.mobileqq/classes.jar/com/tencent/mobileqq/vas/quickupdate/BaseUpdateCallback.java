@@ -29,10 +29,19 @@ public abstract class BaseUpdateCallback
   
   private static String getKey(long paramLong, String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      return paramLong + "_" + paramString1;
+    if (TextUtils.isEmpty(paramString2))
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramLong);
+      paramString2.append("_");
+      paramString2.append(paramString1);
+      return paramString2.toString();
     }
-    return paramLong + "_" + paramString2;
+    paramString1 = new StringBuilder();
+    paramString1.append(paramLong);
+    paramString1.append("_");
+    paramString1.append(paramString2);
+    return paramString1.toString();
   }
   
   private boolean isDefaultSc(String paramString)
@@ -48,8 +57,13 @@ public abstract class BaseUpdateCallback
   
   public void cleanCache(Context paramContext)
   {
-    if (!TextUtils.isEmpty(getRootDir())) {
-      VasUpdateUtil.a(new File(paramContext.getFilesDir() + File.separator + getRootDir()));
+    if (!TextUtils.isEmpty(getRootDir()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getFilesDir());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(getRootDir());
+      VasUpdateUtil.a(new File(localStringBuilder.toString()));
     }
   }
   
@@ -67,15 +81,15 @@ public abstract class BaseUpdateCallback
     {
       paramString2 = getDir(MobileQQ.getContext(), paramString1);
       paramString1 = getSavePath(MobileQQ.getContext(), paramString1);
-    }
-    try
-    {
-      FileUtils.a(paramString1, paramString2, false);
-      return;
-    }
-    catch (IOException paramString1)
-    {
-      QLog.e("BaseUpdateCallback", 1, "_onCompleted: ", paramString1);
+      try
+      {
+        FileUtils.uncompressZip(paramString1, paramString2, false);
+        return;
+      }
+      catch (IOException paramString1)
+      {
+        QLog.e("BaseUpdateCallback", 1, "_onCompleted: ", paramString1);
+      }
     }
   }
   
@@ -88,23 +102,24 @@ public abstract class BaseUpdateCallback
   
   public void download(long paramLong, String paramString, QuickUpdateListener paramQuickUpdateListener, boolean paramBoolean)
   {
-    String str;
     if (paramQuickUpdateListener != null)
     {
-      str = getKey(paramLong, paramString, "");
-      if (!paramBoolean) {
-        break label106;
+      localObject = getKey(paramLong, paramString, "");
+      if (paramBoolean) {
+        weakListeners.a((String)localObject, new WeakReference(paramQuickUpdateListener));
+      } else {
+        listeners.a((String)localObject, paramQuickUpdateListener);
       }
-      weakListeners.a(str, new WeakReference(paramQuickUpdateListener));
     }
-    for (;;)
-    {
-      QLog.e("BaseUpdateCallback", 1, "download: " + paramLong + "_" + paramString + ", " + paramQuickUpdateListener);
-      ((IVasQuickUpdateService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(paramLong, paramString, "BaseUpdateCallback");
-      return;
-      label106:
-      listeners.a(str, paramQuickUpdateListener);
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("download: ");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(paramQuickUpdateListener);
+    QLog.e("BaseUpdateCallback", 1, ((StringBuilder)localObject).toString());
+    ((IVasQuickUpdateService)MobileQQ.sMobileQQ.peekAppRuntime().getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(paramLong, paramString, "BaseUpdateCallback");
   }
   
   public void download(String paramString)
@@ -121,7 +136,11 @@ public abstract class BaseUpdateCallback
   
   public String getDir(Context paramContext, String paramString)
   {
-    return new File(paramContext.getFilesDir() + File.separator + getRootDir(), paramString).getAbsolutePath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(getRootDir());
+    return new File(localStringBuilder.toString(), paramString).getAbsolutePath();
   }
   
   public int getId(String paramString)
@@ -133,7 +152,10 @@ public abstract class BaseUpdateCallback
     }
     catch (Exception localException)
     {
-      QLog.e("BaseUpdateCallback", 1, "getId error scid: " + paramString, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getId error scid: ");
+      localStringBuilder.append(paramString);
+      QLog.e("BaseUpdateCallback", 1, localStringBuilder.toString(), localException);
     }
     return 0;
   }
@@ -160,15 +182,24 @@ public abstract class BaseUpdateCallback
   {
     String str = getDir(paramContext, paramString);
     paramContext = str;
-    if (isZip_KeepZip()) {
-      paramContext = str + File.separator + paramString + ".zip";
+    if (isZip_KeepZip())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append(str);
+      paramContext.append(File.separator);
+      paramContext.append(paramString);
+      paramContext.append(".zip");
+      paramContext = paramContext.toString();
     }
     return paramContext;
   }
   
   public String getScid(int paramInt)
   {
-    return getScidPrefix() + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getScidPrefix());
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   protected String getScidPrefix()
@@ -193,48 +224,51 @@ public abstract class BaseUpdateCallback
   {
     doOnCompleted(paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2);
     Object localObject1 = getItemInfo(paramLong, paramString1);
-    if (localObject1 == null) {
-      QLog.e("BaseUpdateCallback", 1, "onComplete getItemInfo failed: " + paramLong + "_" + paramString1);
-    }
-    boolean bool;
-    int i;
-    label82:
-    Object localObject2;
+    int j = 1;
     if (localObject1 == null)
     {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onComplete getItemInfo failed: ");
+      ((StringBuilder)localObject2).append(paramLong);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(paramString1);
+      QLog.e("BaseUpdateCallback", 1, ((StringBuilder)localObject2).toString());
+    }
+    boolean bool;
+    if (localObject1 == null) {
       bool = false;
-      if ((bool) && (paramInt1 == 0)) {
-        break label163;
-      }
-      i = 1;
-      localObject2 = getKey(paramLong, paramString1, paramString2);
-      if (i == 0) {
-        break label169;
-      }
-    }
-    label163:
-    label169:
-    for (localObject1 = listeners.b((String)localObject2);; localObject1 = listeners.a((String)localObject2))
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        ((QuickUpdateListener)((Iterator)localObject1).next()).onCompleted(paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2);
-      }
+    } else {
       bool = ((TagItemInfo)localObject1).jdField_a_of_type_Boolean;
-      break;
-      i = 0;
-      break label82;
     }
-    if (i != 0) {}
-    for (localObject1 = weakListeners.b((String)localObject2);; localObject1 = weakListeners.a((String)localObject2))
+    int i = j;
+    if (bool) {
+      if (paramInt1 != 0) {
+        i = j;
+      } else {
+        i = 0;
+      }
+    }
+    Object localObject2 = getKey(paramLong, paramString1, paramString2);
+    if (i != 0) {
+      localObject1 = listeners.b((String)localObject2);
+    } else {
+      localObject1 = listeners.a((String)localObject2);
+    }
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      ((QuickUpdateListener)((Iterator)localObject1).next()).onCompleted(paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2);
+    }
+    if (i != 0) {
+      localObject1 = weakListeners.b((String)localObject2);
+    } else {
+      localObject1 = weakListeners.a((String)localObject2);
+    }
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (QuickUpdateListener)((WeakReference)((Iterator)localObject1).next()).get();
-        if (localObject2 != null) {
-          ((QuickUpdateListener)localObject2).onCompleted(paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2);
-        }
+      localObject2 = (QuickUpdateListener)((WeakReference)((Iterator)localObject1).next()).get();
+      if (localObject2 != null) {
+        ((QuickUpdateListener)localObject2).onCompleted(paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2);
       }
     }
   }
@@ -242,29 +276,37 @@ public abstract class BaseUpdateCallback
   public final void onProgress(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
   {
     Object localObject1 = getItemInfo(paramLong1, paramString1);
-    if (localObject1 == null) {
-      QLog.e("BaseUpdateCallback", 1, "onProgress getItemInfo failed: " + paramLong1 + "_" + paramString1);
-    }
-    if (localObject1 == null) {}
     Object localObject2;
-    for (boolean bool = false;; bool = ((TagItemInfo)localObject1).jdField_a_of_type_Boolean)
+    if (localObject1 == null)
     {
-      localObject1 = getKey(paramLong1, paramString1, paramString2);
-      if (bool) {
-        return;
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onProgress getItemInfo failed: ");
+      ((StringBuilder)localObject2).append(paramLong1);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(paramString1);
+      QLog.e("BaseUpdateCallback", 1, ((StringBuilder)localObject2).toString());
+    }
+    boolean bool;
+    if (localObject1 == null) {
+      bool = false;
+    } else {
+      bool = ((TagItemInfo)localObject1).jdField_a_of_type_Boolean;
+    }
+    localObject1 = getKey(paramLong1, paramString1, paramString2);
+    if (!bool)
+    {
       doOnProgress(paramLong1, paramString1, paramString2, paramLong2, paramLong3);
       localObject2 = listeners.a((String)localObject1).iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((QuickUpdateListener)((Iterator)localObject2).next()).onProgress(paramLong1, paramString1, paramString2, paramLong2, paramLong3);
       }
-    }
-    localObject1 = weakListeners.a((String)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (QuickUpdateListener)((WeakReference)((Iterator)localObject1).next()).get();
-      if (localObject2 != null) {
-        ((QuickUpdateListener)localObject2).onProgress(paramLong1, paramString1, paramString2, paramLong2, paramLong3);
+      localObject1 = weakListeners.a((String)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (QuickUpdateListener)((WeakReference)((Iterator)localObject1).next()).get();
+        if (localObject2 != null) {
+          ((QuickUpdateListener)localObject2).onProgress(paramLong1, paramString1, paramString2, paramLong2, paramLong3);
+        }
       }
     }
   }
@@ -278,7 +320,7 @@ public abstract class BaseUpdateCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.quickupdate.BaseUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

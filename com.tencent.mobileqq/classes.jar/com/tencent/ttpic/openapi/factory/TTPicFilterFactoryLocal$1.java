@@ -19,18 +19,40 @@ final class TTPicFilterFactoryLocal$1
   {
     try
     {
-      Bitmap localBitmap = TTPicFilterFactoryLocal.preloadBaseLUTImage();
-      if (localBitmap == null) {
+      Object localObject = TTPicFilterFactoryLocal.preloadBaseLUTImage();
+      if (localObject == null) {
         return;
       }
-      int i = RendererUtils.createTexture(localBitmap);
+      int i = RendererUtils.createTexture((Bitmap)localObject);
       Frame localFrame = new Frame();
       BaseFilter localBaseFilter = PtuFilterFactory.createFilter(this.val$filterId);
-      localBaseFilter.applyFilterChain(true, localBitmap.getWidth(), localBitmap.getHeight());
-      localBaseFilter.RenderProcess(i, localBitmap.getWidth(), localBitmap.getHeight(), -1, 0.0D, localFrame);
-      BitmapUtils.saveBitmap2PNG(RendererUtils.saveTexture(localFrame.getLastRenderTextureId(), localBitmap.getWidth(), localBitmap.getHeight()), AEModule.getLutDirPath() + File.separator + this.val$filterName + ".png");
-      FileEncryptUtils.encryptFile(AEModule.getLutDirPath() + File.separator + this.val$filterName + ".png", AEModule.getLutDirPath() + File.separator + this.val$filterName + ".png2");
-      new File(AEModule.getLutDirPath() + File.separator + this.val$filterName + ".png").delete();
+      localBaseFilter.applyFilterChain(true, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      localBaseFilter.RenderProcess(i, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), -1, 0.0D, localFrame);
+      localObject = RendererUtils.saveTexture(localFrame.getLastRenderTextureId(), ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AEModule.getLutDirPath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(this.val$filterName);
+      localStringBuilder.append(".png");
+      BitmapUtils.saveBitmap2PNG((Bitmap)localObject, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(AEModule.getLutDirPath());
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.val$filterName);
+      ((StringBuilder)localObject).append(".png");
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AEModule.getLutDirPath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(this.val$filterName);
+      localStringBuilder.append(".png2");
+      FileEncryptUtils.encryptFile((String)localObject, localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(AEModule.getLutDirPath());
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.val$filterName);
+      ((StringBuilder)localObject).append(".png");
+      new File(((StringBuilder)localObject).toString()).delete();
       RendererUtils.clearTexture(i);
       localFrame.clear();
       localBaseFilter.clearGLSL();
@@ -44,7 +66,7 @@ final class TTPicFilterFactoryLocal$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.factory.TTPicFilterFactoryLocal.1
  * JD-Core Version:    0.7.0.1
  */

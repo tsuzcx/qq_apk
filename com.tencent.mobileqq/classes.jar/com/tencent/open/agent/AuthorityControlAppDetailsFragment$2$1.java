@@ -1,19 +1,20 @@
 package com.tencent.open.agent;
 
 import com.tencent.open.model.AppInfo;
-import java.util.ArrayList;
 
 class AuthorityControlAppDetailsFragment$2$1
-  extends ArrayList<AppInfo>
+  implements Runnable
 {
-  AuthorityControlAppDetailsFragment$2$1(AuthorityControlAppDetailsFragment.2 param2)
+  AuthorityControlAppDetailsFragment$2$1(AuthorityControlAppDetailsFragment.2 param2, AppInfo paramAppInfo) {}
+  
+  public void run()
   {
-    add(AuthorityControlAppDetailsFragment.a(this.this$1.a));
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment$2.a.setTitle(this.jdField_a_of_type_ComTencentOpenModelAppInfo.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlAppDetailsFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

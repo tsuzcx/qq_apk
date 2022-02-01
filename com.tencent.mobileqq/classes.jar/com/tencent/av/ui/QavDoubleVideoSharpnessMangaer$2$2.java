@@ -22,16 +22,16 @@ class QavDoubleVideoSharpnessMangaer$2$2
     {
       ReportController.b(null, "CliOper", "", "", "0X800A565", "0X800A565", 0, 0, "", "", "", "");
       QavDoubleVideoSharpnessMangaer.a(this.a.a);
-    }
-    while (paramInt != 0) {
       return;
     }
-    QavDoubleVideoSharpnessMangaer.a(this.a.a, QavDoubleVideoSharpnessMangaer.a(this.a.a).a().w);
+    if (paramInt == 0) {
+      QavDoubleVideoSharpnessMangaer.a(this.a.a, QavDoubleVideoSharpnessMangaer.a(this.a.a).a().w);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavDoubleVideoSharpnessMangaer.2.2
  * JD-Core Version:    0.7.0.1
  */

@@ -31,30 +31,32 @@ class MemoriesVideoListSegment$2
     Object localObject = (MemoryManager)SuperManager.a(19);
     paramJobContext = new ArrayList();
     paramVarArgs = ((MemoryManager)localObject).a(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString, paramJobContext);
-    if ((paramVarArgs == null) || (paramVarArgs.size() == 0))
+    if ((paramVarArgs != null) && (paramVarArgs.size() != 0))
     {
-      AssertUtils.a("data key null for unionId:%s", new Object[] { MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString });
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_a_of_type_JavaLangString);
+      MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).a(localArrayList);
+      int i = paramVarArgs.indexOf(this.jdField_a_of_type_JavaLangString);
+      if (i == -1)
+      {
+        SLog.e("Q.qqstory.memories.MemoriesVideoListSegment", "onVideoItemClick but can't find item, collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_JavaLangString, paramJobContext, this.b, Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int), paramVarArgs });
+        return null;
+      }
+      localObject = ((MemoryManager)localObject).a(DateCollectionListPageLoader.a(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString));
+      if (localObject != null) {
+        int j = ((MemoryInfoEntry)localObject).isEnd;
+      }
+      localObject = ((UserManager)SuperManager.a(2)).b(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString);
+      ThreadManager.getUIHandler().post(new MemoriesVideoListSegment.2.1(this, paramJobContext, i, paramVarArgs, (QQUserUIItem)localObject));
       return null;
     }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_JavaLangString);
-    MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).a(localArrayList);
-    int i = paramVarArgs.indexOf(this.jdField_a_of_type_JavaLangString);
-    if (i == -1)
-    {
-      SLog.e("Q.qqstory.memories.MemoriesVideoListSegment", "onVideoItemClick but can't find item, collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_JavaLangString, paramJobContext, this.b, Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int), paramVarArgs });
-      return null;
-    }
-    localObject = ((MemoryManager)localObject).a(DateCollectionListPageLoader.a(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString));
-    if ((localObject != null) && (((MemoryInfoEntry)localObject).isEnd == 1)) {}
-    localObject = ((UserManager)SuperManager.a(2)).b(MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString);
-    ThreadManager.getUIHandler().post(new MemoriesVideoListSegment.2.1(this, paramJobContext, i, paramVarArgs, (QQUserUIItem)localObject));
+    AssertUtils.fail("data key null for unionId:%s", new Object[] { MemoriesVideoListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString });
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment.2
  * JD-Core Version:    0.7.0.1
  */

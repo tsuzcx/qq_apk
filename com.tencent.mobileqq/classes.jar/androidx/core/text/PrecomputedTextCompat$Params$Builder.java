@@ -23,12 +23,15 @@ public class PrecomputedTextCompat$Params$Builder
       this.mBreakStrategy = 1;
       this.mHyphenationFrequency = 1;
     }
-    while (Build.VERSION.SDK_INT >= 18)
+    else
+    {
+      this.mHyphenationFrequency = 0;
+      this.mBreakStrategy = 0;
+    }
+    if (Build.VERSION.SDK_INT >= 18)
     {
       this.mTextDir = TextDirectionHeuristics.FIRSTSTRONG_LTR;
       return;
-      this.mHyphenationFrequency = 0;
-      this.mBreakStrategy = 0;
     }
     this.mTextDir = null;
   }
@@ -62,7 +65,7 @@ public class PrecomputedTextCompat$Params$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.text.PrecomputedTextCompat.Params.Builder
  * JD-Core Version:    0.7.0.1
  */

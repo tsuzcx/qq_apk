@@ -69,14 +69,12 @@ public class NavigationBar
   {
     if (this.mBarTextStyle == -1) {
       this.mBackIcon.setImageResource(R.drawable.mini_sdk_nav_bar_title_back_img_white);
-    }
-    for (;;)
-    {
-      if (this.mCapsuleButton != null) {
-        this.mCapsuleButton.changeNavIcon(this.mBarTextStyle);
-      }
-      return;
+    } else {
       this.mBackIcon.setImageResource(R.drawable.mini_sdk_nav_bar_title_back_img);
+    }
+    CapsuleButton localCapsuleButton = this.mCapsuleButton;
+    if (localCapsuleButton != null) {
+      localCapsuleButton.changeNavIcon(this.mBarTextStyle);
     }
   }
   
@@ -93,15 +91,15 @@ public class NavigationBar
       this.mContainer.setClipChildren(false);
       this.mCapsuleButton = new CapsuleButton(getContext());
       this.mCapsuleButton.setId(R.id.mini_sdk_nav_capsule_btn);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
-      localLayoutParams.addRule(11, -1);
-      localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
-      localLayoutParams.rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
-      this.mContainer.addView(this.mCapsuleButton, localLayoutParams);
+      Object localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
+      ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.dip2px(getContext(), 9.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
+      this.mContainer.addView(this.mCapsuleButton, (ViewGroup.LayoutParams)localObject);
       this.mStatusBarMask = new View(getContext());
       this.mStatusBarMask.setBackgroundResource(R.color.mini_sdk_nav_mask);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, DisplayUtil.getStatusBarHeight(getContext()));
-      this.mStatusBarMask.setLayoutParams(localLayoutParams);
+      localObject = new RelativeLayout.LayoutParams(-1, DisplayUtil.getStatusBarHeight(getContext()));
+      this.mStatusBarMask.setLayoutParams((ViewGroup.LayoutParams)localObject);
       addView(this.mStatusBarMask);
       this.mStatusBarMask.setVisibility(8);
       addView(this.mContainer);
@@ -111,8 +109,9 @@ public class NavigationBar
       this.mBackTextView = ((TextView)findViewById(R.id.mini_sdk_nav_back_text));
       this.mLoadingProgressBar = ((ProgressBar)findViewById(R.id.mini_sdk_nav_loading_view));
       this.mBackIcon.setOnClickListener(this);
-      if (this.mBackIconContainer != null) {
-        this.mBackIconContainer.setOnClickListener(this);
+      localObject = this.mBackIconContainer;
+      if (localObject != null) {
+        ((RelativeLayout)localObject).setOnClickListener(this);
       }
       this.mProgressBar = ((WebViewProgressBar)findViewById(R.id.mini_sdk_nav_loading));
       this.mLoadingMask = findViewById(R.id.mini_sdk_nav_loading_mask);
@@ -132,29 +131,28 @@ public class NavigationBar
       this.mLoadingProgressBar.setVisibility(8);
       this.mProgressBar.setVisibility(8);
       this.mLoadingMask.setVisibility(8);
-      if (!this.mEnableLeftText) {
-        break label544;
+      if (this.mEnableLeftText)
+      {
+        this.mBackTextView.setTextSize(1, 18.0F);
+        this.mBackTextView.setTextColor(-16777216);
+        this.mBackTextView.setVisibility(0);
+        this.mBackTextView.setText(this.mBackText);
       }
-      this.mBackTextView.setTextSize(1, 18.0F);
-      this.mBackTextView.setTextColor(-16777216);
-      this.mBackTextView.setVisibility(0);
-      this.mBackTextView.setText(this.mBackText);
-      if (!this.mEnableBackIcon) {
-        break label556;
+      else
+      {
+        this.mBackTextView.setVisibility(8);
       }
-      this.mBackIcon.setVisibility(0);
-      this.mBackIconContainer.setVisibility(0);
-    }
-    for (;;)
-    {
+      if (this.mEnableBackIcon)
+      {
+        this.mBackIcon.setVisibility(0);
+        this.mBackIconContainer.setVisibility(0);
+      }
+      else
+      {
+        this.mBackIcon.setVisibility(4);
+        this.mBackIconContainer.setVisibility(4);
+      }
       changeNavIcon();
-      return;
-      label544:
-      this.mBackTextView.setVisibility(8);
-      break;
-      label556:
-      this.mBackIcon.setVisibility(4);
-      this.mBackIconContainer.setVisibility(4);
     }
   }
   
@@ -162,39 +160,47 @@ public class NavigationBar
   {
     if ("custom".equals(this.mBarStyle))
     {
-      if (this.mTitleView != null) {
-        this.mTitleView.setVisibility(4);
+      localObject = this.mTitleView;
+      if (localObject != null) {
+        ((TextView)localObject).setVisibility(4);
       }
-      if (this.mBackIcon != null) {
-        this.mBackIcon.setVisibility(4);
+      localObject = this.mBackIcon;
+      if (localObject != null) {
+        ((ImageView)localObject).setVisibility(4);
       }
-      if (this.mBackIconContainer != null) {
-        this.mBackIconContainer.setVisibility(4);
+      localObject = this.mBackIconContainer;
+      if (localObject != null) {
+        ((RelativeLayout)localObject).setVisibility(4);
       }
-      if (this.mBackTextView != null) {
-        this.mBackTextView.setVisibility(4);
+      localObject = this.mBackTextView;
+      if (localObject != null) {
+        ((TextView)localObject).setVisibility(4);
       }
       setNavBackgroundColor(0);
-    }
-    do
-    {
       return;
-      setVisibility(0);
-      if (this.mTitleView != null) {
-        this.mTitleView.setVisibility(0);
+    }
+    setVisibility(0);
+    Object localObject = this.mTitleView;
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(0);
+    }
+    if ((this.mEnableBackIcon) && ("default".equals(this.mBarStyle)))
+    {
+      localObject = this.mBackIcon;
+      if (localObject != null) {
+        ((ImageView)localObject).setVisibility(0);
       }
-      if ((this.mEnableBackIcon) && ("default".equals(this.mBarStyle)))
-      {
-        if (this.mBackIcon != null) {
-          this.mBackIcon.setVisibility(0);
-        }
-        if (this.mBackIconContainer != null) {
-          this.mBackIconContainer.setVisibility(0);
-        }
+      localObject = this.mBackIconContainer;
+      if (localObject != null) {
+        ((RelativeLayout)localObject).setVisibility(0);
       }
-    } while (this.barInfo == null);
-    setNavBackgroundColor(this.barInfo.backgoundColor);
-    setTextStyle(this.barInfo.textStyle);
+    }
+    localObject = this.barInfo;
+    if (localObject != null)
+    {
+      setNavBackgroundColor(((NavigationBarInfo)localObject).backgoundColor);
+      setTextStyle(this.barInfo.textStyle);
+    }
   }
   
   public CapsuleButton getCapsuleButton()
@@ -287,15 +293,20 @@ public class NavigationBar
   
   public void hideLoading()
   {
-    if (this.mLoadingProgressBar != null) {
-      this.mLoadingProgressBar.setVisibility(4);
+    ProgressBar localProgressBar = this.mLoadingProgressBar;
+    if (localProgressBar != null) {
+      localProgressBar.setVisibility(4);
     }
   }
   
   public void onClick(View paramView)
   {
-    if (((paramView.getId() == R.id.mini_sdk_top_bar_title_back) || (paramView.getId() == R.id.mini_sdk_top_bar_title_back_container)) && (this.mClickBackListener != null)) {
-      this.mClickBackListener.onClickBack(this);
+    if ((paramView.getId() == R.id.mini_sdk_top_bar_title_back) || (paramView.getId() == R.id.mini_sdk_top_bar_title_back_container))
+    {
+      NavigationBar.NavBarBackListener localNavBarBackListener = this.mClickBackListener;
+      if (localNavBarBackListener != null) {
+        localNavBarBackListener.onClickBack(this);
+      }
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -326,13 +337,11 @@ public class NavigationBar
         this.mTitleView.requestLayout();
         this.mBackIcon.setVisibility(0);
         this.mBackIconContainer.setVisibility(0);
+        return this;
       }
+      this.mBackIcon.setVisibility(8);
+      this.mBackIconContainer.setVisibility(8);
     }
-    else {
-      return this;
-    }
-    this.mBackIcon.setVisibility(8);
-    this.mBackIconContainer.setVisibility(8);
     return this;
   }
   
@@ -340,26 +349,26 @@ public class NavigationBar
   {
     this.mEnableLeftText = paramBoolean;
     this.mBackText = paramString;
-    if (this.mBackTextView != null)
+    paramString = this.mBackTextView;
+    if (paramString != null)
     {
       if (paramBoolean)
       {
-        this.mBackTextView.setVisibility(0);
+        paramString.setVisibility(0);
         this.mBackTextView.setText(this.mBackText);
+        return this;
       }
+      paramString.setVisibility(8);
     }
-    else {
-      return this;
-    }
-    this.mBackTextView.setVisibility(8);
     return this;
   }
   
   public NavigationBar setLeftText(String paramString)
   {
     this.mBackText = paramString;
-    if (this.mBackTextView != null) {
-      this.mBackTextView.setText(this.mBackText);
+    paramString = this.mBackTextView;
+    if (paramString != null) {
+      paramString.setText(this.mBackText);
     }
     return this;
   }
@@ -369,167 +378,176 @@ public class NavigationBar
     this.mBackGroundColor = paramInt;
     if (this.mContainer != null)
     {
-      if ("custom".equals(this.mBarStyle)) {
+      if ("custom".equals(this.mBarStyle))
+      {
         this.mContainer.setBackgroundColor(0);
+        return this;
       }
+      this.mContainer.setBackgroundColor(this.mBackGroundColor);
     }
-    else {
-      return this;
-    }
-    this.mContainer.setBackgroundColor(this.mBackGroundColor);
     return this;
   }
   
   public NavigationBar setNavBackgroundColor(int paramInt, long paramLong, String paramString)
   {
-    ObjectAnimator localObjectAnimator;
-    if (this.mContainer != null)
+    Object localObject = this.mContainer;
+    if (localObject != null)
     {
-      localObjectAnimator = ObjectAnimator.ofInt(this.mContainer, "backgroundColor", new int[] { this.mBackGroundColor, paramInt });
-      localObjectAnimator.setDuration(paramLong);
-      localObjectAnimator.setEvaluator(new ArgbEvaluator());
-      if (!"linear".equals(paramString)) {
-        break label87;
-      }
-      localObjectAnimator.setInterpolator(new LinearInterpolator());
-    }
-    for (;;)
-    {
-      localObjectAnimator.start();
-      this.mBackGroundColor = paramInt;
-      return this;
-      label87:
-      if ("easeIn".equals(paramString))
+      localObject = ObjectAnimator.ofInt(localObject, "backgroundColor", new int[] { this.mBackGroundColor, paramInt });
+      ((ValueAnimator)localObject).setDuration(paramLong);
+      ((ValueAnimator)localObject).setEvaluator(new ArgbEvaluator());
+      if ("linear".equals(paramString)) {
+        ((ValueAnimator)localObject).setInterpolator(new LinearInterpolator());
+      } else if ("easeIn".equals(paramString))
       {
         if (Build.VERSION.SDK_INT >= 21) {
-          localObjectAnimator.setInterpolator(new PathInterpolator(0.42F, 0.0F, 1.0F, 1.0F));
+          ((ValueAnimator)localObject).setInterpolator(new PathInterpolator(0.42F, 0.0F, 1.0F, 1.0F));
         }
       }
       else if ("easeOut".equals(paramString))
       {
         if (Build.VERSION.SDK_INT >= 21) {
-          localObjectAnimator.setInterpolator(new PathInterpolator(0.0F, 0.0F, 0.58F, 1.0F));
+          ((ValueAnimator)localObject).setInterpolator(new PathInterpolator(0.0F, 0.0F, 0.58F, 1.0F));
         }
       }
       else if (("easeInOut".equals(paramString)) && (Build.VERSION.SDK_INT >= 21)) {
-        localObjectAnimator.setInterpolator(new PathInterpolator(0.42F, 0.0F, 0.58F, 1.0F));
+        ((ValueAnimator)localObject).setInterpolator(new PathInterpolator(0.42F, 0.0F, 0.58F, 1.0F));
       }
+      ((ValueAnimator)localObject).start();
     }
+    this.mBackGroundColor = paramInt;
+    return this;
   }
   
   public NavigationBar setTextStyle(String paramString)
   {
     if ("black".equals(paramString)) {
       this.mBarTextStyle = -16777216;
+    } else if ("white".equals(paramString)) {
+      this.mBarTextStyle = -1;
     }
-    for (;;)
-    {
-      if (this.mTitleView != null) {
-        this.mTitleView.setTextColor(this.mBarTextStyle);
-      }
-      if (this.mBackTextView != null) {
-        this.mBackTextView.setTextColor(this.mBarTextStyle);
-      }
-      changeNavIcon();
-      return this;
-      if ("white".equals(paramString)) {
-        this.mBarTextStyle = -1;
-      }
+    paramString = this.mTitleView;
+    if (paramString != null) {
+      paramString.setTextColor(this.mBarTextStyle);
     }
+    paramString = this.mBackTextView;
+    if (paramString != null) {
+      paramString.setTextColor(this.mBarTextStyle);
+    }
+    changeNavIcon();
+    return this;
   }
   
   public NavigationBar setTitleText(String paramString)
   {
     this.mBarText = paramString;
-    if (this.mTitleView != null) {
-      this.mTitleView.setText(this.mBarText);
+    paramString = this.mTitleView;
+    if (paramString != null) {
+      paramString.setText(this.mBarText);
     }
     return this;
   }
   
   public void setUseCustomStatusBarStyle(boolean paramBoolean)
   {
-    RelativeLayout.LayoutParams localLayoutParams;
-    if ((this.mStatusBarMask != null) && (this.mContainer != null))
+    if (this.mStatusBarMask != null)
     {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.mContainer.getLayoutParams();
-      if (!paramBoolean) {
-        break label69;
+      Object localObject = this.mContainer;
+      if (localObject != null)
+      {
+        localObject = (RelativeLayout.LayoutParams)((RelativeLayout)localObject).getLayoutParams();
+        if (paramBoolean)
+        {
+          this.mStatusBarMask.setVisibility(8);
+          this.mContainer.setPadding(0, DisplayUtil.getStatusBarHeight(getContext()), 0, 0);
+          ((RelativeLayout.LayoutParams)localObject).topMargin = 0;
+        }
+        else
+        {
+          this.mStatusBarMask.setVisibility(0);
+          this.mContainer.setPadding(0, 0, 0, 0);
+          ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.getStatusBarHeight(getContext());
+        }
+        this.mContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      this.mStatusBarMask.setVisibility(8);
-      this.mContainer.setPadding(0, DisplayUtil.getStatusBarHeight(getContext()), 0, 0);
-    }
-    for (localLayoutParams.topMargin = 0;; localLayoutParams.topMargin = DisplayUtil.getStatusBarHeight(getContext()))
-    {
-      this.mContainer.setLayoutParams(localLayoutParams);
-      return;
-      label69:
-      this.mStatusBarMask.setVisibility(0);
-      this.mContainer.setPadding(0, 0, 0, 0);
     }
   }
   
   public NavigationBar setWindowInfo(WindowInfo paramWindowInfo, Activity paramActivity)
   {
-    boolean bool2 = false;
     if (paramWindowInfo != null)
     {
       this.barInfo = paramWindowInfo.navigationBarInfo;
-      if (this.barInfo == null) {
-        break label146;
+      paramWindowInfo = this.barInfo;
+      boolean bool2 = false;
+      boolean bool1;
+      if (paramWindowInfo != null)
+      {
+        setTitleText(paramWindowInfo.titleText);
+        if (!TextUtils.isEmpty(this.barInfo.textStyle)) {
+          setTextStyle(this.barInfo.textStyle);
+        }
+        this.mBackGroundColor = this.barInfo.backgoundColor;
+        setNavBackgroundColor(this.barInfo.backgoundColor);
+        hideLoading();
+        if (!TextUtils.isEmpty(this.barInfo.style)) {
+          setBarStyle(this.barInfo.style);
+        }
+        bool1 = "black".equals(this.barInfo.textStyle);
       }
-      setTitleText(this.barInfo.titleText);
-      if (!TextUtils.isEmpty(this.barInfo.textStyle)) {
-        setTextStyle(this.barInfo.textStyle);
+      else
+      {
+        bool1 = false;
       }
-      this.mBackGroundColor = this.barInfo.backgoundColor;
-      setNavBackgroundColor(this.barInfo.backgoundColor);
-      hideLoading();
-      if (!TextUtils.isEmpty(this.barInfo.style)) {
-        setBarStyle(this.barInfo.style);
-      }
-    }
-    label146:
-    for (boolean bool1 = "black".equals(this.barInfo.textStyle);; bool1 = false)
-    {
       if (paramActivity != null) {
         bool2 = DisplayUtil.setStatusTextColor(bool1, paramActivity.getWindow());
       }
       setUseCustomStatusBarStyle(bool2);
-      return this;
     }
+    return this;
   }
   
   public void showLoading()
   {
-    if (this.mLoadingProgressBar != null) {
-      this.mLoadingProgressBar.setVisibility(0);
+    ProgressBar localProgressBar = this.mLoadingProgressBar;
+    if (localProgressBar != null) {
+      localProgressBar.setVisibility(0);
     }
   }
   
   public void updateProgress(byte paramByte)
   {
+    WebViewProgressBar localWebViewProgressBar;
     if (this.mController == null)
     {
       this.mController = new WebViewProgressBarController();
-      if (this.mProgressBar != null)
+      localWebViewProgressBar = this.mProgressBar;
+      if (localWebViewProgressBar != null)
       {
-        this.mProgressBar.setController(this.mController);
+        localWebViewProgressBar.setController(this.mController);
         this.mController.setProgressBar(this.mProgressBar);
       }
     }
-    if ((paramByte == 0) && (this.mProgressBar != null)) {
-      this.mProgressBar.setVisibility(0);
+    if (paramByte == 0)
+    {
+      localWebViewProgressBar = this.mProgressBar;
+      if (localWebViewProgressBar != null) {
+        localWebViewProgressBar.setVisibility(0);
+      }
     }
-    if ((paramByte == 2) && (this.mProgressBar != null)) {
-      this.mProgressBar.setVisibility(8);
+    if (paramByte == 2)
+    {
+      localWebViewProgressBar = this.mProgressBar;
+      if (localWebViewProgressBar != null) {
+        localWebViewProgressBar.setVisibility(8);
+      }
     }
     this.mController.enterStatus(paramByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.NavigationBar
  * JD-Core Version:    0.7.0.1
  */

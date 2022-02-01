@@ -27,12 +27,27 @@ public class HtmlOfflineCheckConfig
   
   public String toString()
   {
-    return "HtmlOfflineCheckConfig{bids='" + this.bids + '\'' + ", time_interval=" + this.time_interval + ", total_cnt=" + this.total_cnt + ", net_type='" + this.net_type + '\'' + ", checkDomain='" + this.checkDomain + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HtmlOfflineCheckConfig{bids='");
+    localStringBuilder.append(this.bids);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", time_interval=");
+    localStringBuilder.append(this.time_interval);
+    localStringBuilder.append(", total_cnt=");
+    localStringBuilder.append(this.total_cnt);
+    localStringBuilder.append(", net_type='");
+    localStringBuilder.append(this.net_type);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", checkDomain='");
+    localStringBuilder.append(this.checkDomain);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.HtmlOfflineCheckConfig
  * JD-Core Version:    0.7.0.1
  */

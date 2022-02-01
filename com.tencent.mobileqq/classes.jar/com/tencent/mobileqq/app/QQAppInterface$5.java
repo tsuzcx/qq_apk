@@ -12,20 +12,21 @@ class QQAppInterface$5
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.this$0.isReleased) {
+    if (this.this$0.isReleased)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
       }
-    }
-    while ((paramIntent == null) || (!"com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
       return;
     }
-    QQAppInterface.access$1700(this.this$0, paramIntent);
+    if ((paramIntent != null) && ("com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
+      QQAppInterface.access$1700(this.this$0, paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.5
  * JD-Core Version:    0.7.0.1
  */

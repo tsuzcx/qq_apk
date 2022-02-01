@@ -46,18 +46,14 @@ public class SmartDeviceIPCHost
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null)) {
+    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.getMessageFacade() != null)) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addObserver(this);
+    } else if (QLog.isColorLevel()) {
+      QLog.i("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost() construct!!!!! error: app == null");
     }
-    for (;;)
-    {
-      c();
-      d();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost() construct!!!!! error: app == null");
-      }
-    }
+    c();
+    d();
   }
   
   private void d()
@@ -76,60 +72,61 @@ public class SmartDeviceIPCHost
   private void e()
   {
     PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
-    if (localPluginCommunicationHandler == null) {
+    if (localPluginCommunicationHandler == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("SmartDeviceIPCHost", 2, "unregisterRemoteCommand PluginCommunicationHandler.getInstance failed");
       }
+      return;
     }
-    do
+    if (localPluginCommunicationHandler.containsCmd("com.qqsmartdevice.remotecall"))
     {
-      do
-      {
-        return;
-      } while (!localPluginCommunicationHandler.containsCmd("com.qqsmartdevice.remotecall"));
       localPluginCommunicationHandler.unregister("com.qqsmartdevice.remotecall");
-    } while (!QLog.isColorLevel());
-    QLog.d("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost::unregisterRemoteCommand unregister CMD:com.qqsmartdevice.remotecall");
+      if (QLog.isColorLevel()) {
+        QLog.d("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost::unregisterRemoteCommand unregister CMD:com.qqsmartdevice.remotecall");
+      }
+    }
   }
   
   public Bundle a(Bundle paramBundle)
   {
     if (paramBundle == null) {
-      paramBundle = null;
+      return null;
     }
-    for (;;)
+    String str = paramBundle.getString("notify_cmd");
+    if ((this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService == null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
     {
-      return paramBundle;
-      String str = paramBundle.getString("notify_cmd");
-      if ((this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService == null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      boolean bool = paramBundle.getBoolean("forceStart", false);
+      paramBundle = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+      if ((bool) || ((paramBundle != null) && (paramBundle.a())))
       {
-        boolean bool = paramBundle.getBoolean("forceStart", false);
-        paramBundle = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-        if ((bool) || ((paramBundle != null) && (paramBundle.a())))
-        {
-          QLog.d("SmartDeviceIPCHost", 1, "start plugin service when send " + str);
-          d();
-        }
-        return null;
+        paramBundle = new StringBuilder();
+        paramBundle.append("start plugin service when send ");
+        paramBundle.append(str);
+        QLog.d("SmartDeviceIPCHost", 1, paramBundle.toString());
+        d();
       }
-      b();
-      try
-      {
+      return null;
+    }
+    b();
+    try
+    {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      paramBundle = this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService.a("com.qqsmartdevice.action.notify", paramBundle);
+      if (paramBundle != null) {
         paramBundle.setClassLoader(getClass().getClassLoader());
-        Bundle localBundle = this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService.a("com.qqsmartdevice.action.notify", paramBundle);
-        paramBundle = localBundle;
-        if (localBundle != null)
-        {
-          localBundle.setClassLoader(getClass().getClassLoader());
-          return localBundle;
-        }
       }
-      catch (Exception paramBundle)
+      return paramBundle;
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+      if (QLog.isColorLevel())
       {
-        paramBundle.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("SmartDeviceIPCHost", 2, "plugin service transfer failed strNotifyCmd:" + str);
-        }
+        paramBundle = new StringBuilder();
+        paramBundle.append("plugin service transfer failed strNotifyCmd:");
+        paramBundle.append(str);
+        QLog.d("SmartDeviceIPCHost", 2, paramBundle.toString());
       }
     }
     return null;
@@ -140,9 +137,10 @@ public class SmartDeviceIPCHost
     if (QLog.isColorLevel()) {
       QLog.d("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost::OnDestory");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) {
+      if (localQQAppInterface.getMessageFacade() != null) {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().deleteObserver(this);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
@@ -152,71 +150,85 @@ public class SmartDeviceIPCHost
   
   public void a(Bundle paramBundle)
   {
-    if (paramBundle == null) {
+    if (paramBundle == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("SmartDeviceIPCHost", 2, "params is null");
       }
-    }
-    Object localObject;
-    do
-    {
-      boolean bool;
-      SmartDeviceProxyMgr localSmartDeviceProxyMgr;
-      do
-      {
-        return;
-        localObject = paramBundle.getString("notify_cmd");
-        if ((this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService != null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SmartDeviceIPCHost", 2, "plugin service not started strNotifyCmd:" + (String)localObject + " cached");
-        }
-        bool = paramBundle.getBoolean("forceStart", false);
-        localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-      } while ((!bool) && ((localSmartDeviceProxyMgr == null) || (!localSmartDeviceProxyMgr.a())));
-      QLog.d("SmartDeviceIPCHost", 1, "start plugin service when post " + (String)localObject);
-      d();
-      localObject = Looper.getMainLooper();
-      if (Thread.currentThread() != ((Looper)localObject).getThread())
-      {
-        new Handler((Looper)localObject).post(new SmartDeviceIPCHost.3(this, paramBundle));
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramBundle);
-      b();
       return;
-      b();
-      if (paramBundle != null) {}
-      try
+    }
+    Object localObject1 = paramBundle.getString("notify_cmd");
+    if ((this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService == null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    {
+      if (QLog.isColorLevel())
       {
-        paramBundle.setClassLoader(getClass().getClassLoader());
-        this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService.a("com.qqsmartdevice.action.notify", paramBundle);
-        return;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("plugin service not started strNotifyCmd:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" cached");
+        QLog.d("SmartDeviceIPCHost", 2, ((StringBuilder)localObject2).toString());
       }
-      catch (RemoteException paramBundle)
+      boolean bool = paramBundle.getBoolean("forceStart", false);
+      Object localObject2 = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+      if ((bool) || ((localObject2 != null) && (((SmartDeviceProxyMgr)localObject2).a())))
       {
-        paramBundle.printStackTrace();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("start plugin service when post ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("SmartDeviceIPCHost", 1, ((StringBuilder)localObject2).toString());
+        d();
+        localObject1 = Looper.getMainLooper();
+        if (Thread.currentThread() != ((Looper)localObject1).getThread())
+        {
+          new Handler((Looper)localObject1).post(new SmartDeviceIPCHost.3(this, paramBundle));
+          return;
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramBundle);
+        b();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("SmartDeviceIPCHost", 2, " plugin service transfer failed strNotifyCmd:" + (String)localObject);
+      return;
+    }
+    b();
+    if (paramBundle != null) {}
+    try
+    {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService.a("com.qqsmartdevice.action.notify", paramBundle);
+      return;
+    }
+    catch (RemoteException paramBundle)
+    {
+      paramBundle.printStackTrace();
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append(" plugin service transfer failed strNotifyCmd:");
+        paramBundle.append((String)localObject1);
+        QLog.d("SmartDeviceIPCHost", 2, paramBundle.toString());
+      }
+    }
   }
   
   public Bundle b(Bundle paramBundle)
   {
-    Object localObject = paramBundle.getString("invoke_cmd");
-    if ((QLog.isColorLevel()) && (!"invokeCmdGetFaceBitmap".equals(localObject))) {
-      QLog.i("SmartDeviceIPCHost", 2, "SmartDeviceIPCHost::OnRemoteInvoke strNotifyCmd:" + (String)localObject);
+    Object localObject1 = paramBundle.getString("invoke_cmd");
+    Object localObject2;
+    if ((QLog.isColorLevel()) && (!"invokeCmdGetFaceBitmap".equals(localObject1)))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("SmartDeviceIPCHost::OnRemoteInvoke strNotifyCmd:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("SmartDeviceIPCHost", 2, ((StringBuilder)localObject2).toString());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return null;
     }
-    if (((String)localObject).compareToIgnoreCase("invokeCmdOpenChatMsgActivity") == 0)
+    if (((String)localObject1).compareToIgnoreCase("invokeCmdOpenChatMsgActivity") == 0)
     {
       ((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramBundle);
       return null;
     }
-    if (((String)localObject).equals("SmartDeviceHandler_makeSureProxyServiceStart"))
+    if (((String)localObject1).equals("SmartDeviceHandler_makeSureProxyServiceStart"))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER);
       if (this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService != null)
@@ -230,92 +242,102 @@ public class SmartDeviceIPCHost
       SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Net_Start_Service_Remote", 0, 0, 0);
       return null;
     }
-    if (((String)localObject).compareToIgnoreCase("invokeCmdStartVideoChat") == 0)
+    if (((String)localObject1).compareToIgnoreCase("invokeCmdStartVideoChat") == 0)
     {
-      if (!paramBundle.containsKey("devSubCode")) {
-        break label733;
+      if (paramBundle.containsKey("devSubCode"))
+      {
+        localObject1 = new HashMap();
+        ((Map)localObject1).put("devSubCode", paramBundle.getString("devSubCode"));
       }
-      localObject = new HashMap();
-      ((Map)localObject).put("devSubCode", paramBundle.getString("devSubCode"));
-    }
-    for (;;)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), 9500, paramBundle.getString("din"), paramBundle.getString("devName"), "", paramBundle.getBoolean("onlyAudio", false), paramBundle.getString("tinyid"), true, false, null, "from_internal", (Map)localObject);
+      else
+      {
+        localObject1 = null;
+      }
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      ChatActivityUtils.a((QQAppInterface)localObject2, ((QQAppInterface)localObject2).getApp().getApplicationContext(), 9500, paramBundle.getString("din"), paramBundle.getString("devName"), "", paramBundle.getBoolean("onlyAudio", false), paramBundle.getString("tinyid"), true, false, null, "from_internal", (Map)localObject1);
       return null;
-      if (((String)localObject).compareToIgnoreCase("invokeCmdStartVideoMessage") == 0)
-      {
-        DevVideoMsgProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramBundle.getString("din"), paramBundle.getString("videoPath"));
-        return null;
-      }
-      if (((String)localObject).compareToIgnoreCase("invokeCmdGetBuddyName") == 0)
-      {
-        paramBundle = paramBundle.getString("Uin");
-        paramBundle = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, true);
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("BuddyName", paramBundle);
-        return localObject;
-      }
-      if (((String)localObject).compareToIgnoreCase("invokeCmdTransFileController") == 0)
-      {
-        ((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).b(paramBundle);
-        return null;
-      }
-      if (((String)localObject).compareToIgnoreCase("invokeCmdGetLockState") == 0)
-      {
-        i = EquipmentLockImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getApplication());
-        paramBundle = new Bundle();
-        paramBundle.putInt("LockState", i);
-        return paramBundle;
-      }
-      if (((String)localObject).compareToIgnoreCase("qfind_localnotify") == 0)
-      {
-        long l = paramBundle.getLong("din");
-        paramBundle = paramBundle.getString("msg");
-        localObject = (MessageForText)MessageRecordFactory.a(-1000);
-        ((MessageForText)localObject).msgtype = -1000;
-        ((MessageForText)localObject).istroop = 9501;
-        ((MessageForText)localObject).issend = 0;
-        ((MessageForText)localObject).isread = false;
-        ((MessageForText)localObject).selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        ((MessageForText)localObject).senderuin = (l + "");
-        ((MessageForText)localObject).frienduin = (l + "");
-        ((MessageForText)localObject).msg = paramBundle;
-        ((MessageForText)localObject).time = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a((MessageRecord)localObject);
-        return null;
-      }
-      if (((String)localObject).compareToIgnoreCase("init_msgHandler") == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
-        return null;
-      }
-      if (((String)localObject).compareToIgnoreCase("invokeCmdGetFaceBitmap") == 0)
-      {
-        paramBundle = paramBundle.getString("uin");
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramBundle, true);
-        localObject = new Bundle();
-        ((Bundle)localObject).putParcelable("face_bitmap", paramBundle);
-        return localObject;
-      }
-      if (((String)localObject).compareToIgnoreCase("invokeCmdGetUnreadMsgNum") != 0) {
-        break;
-      }
+    }
+    if (((String)localObject1).compareToIgnoreCase("invokeCmdStartVideoMessage") == 0)
+    {
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      DevVideoMsgProcessor.a((QQAppInterface)localObject1, ((QQAppInterface)localObject1).getApp().getApplicationContext(), paramBundle.getString("din"), paramBundle.getString("videoPath"));
+      return null;
+    }
+    if (((String)localObject1).compareToIgnoreCase("invokeCmdGetBuddyName") == 0)
+    {
+      paramBundle = paramBundle.getString("Uin");
+      paramBundle = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, true);
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("BuddyName", paramBundle);
+      return localObject1;
+    }
+    if (((String)localObject1).compareToIgnoreCase("invokeCmdTransFileController") == 0)
+    {
+      ((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).b(paramBundle);
+      return null;
+    }
+    int i;
+    if (((String)localObject1).compareToIgnoreCase("invokeCmdGetLockState") == 0)
+    {
+      i = EquipmentLockImpl.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getApplication());
+      paramBundle = new Bundle();
+      paramBundle.putInt("LockState", i);
+      return paramBundle;
+    }
+    if (((String)localObject1).compareToIgnoreCase("qfind_localnotify") == 0)
+    {
+      long l = paramBundle.getLong("din");
+      paramBundle = paramBundle.getString("msg");
+      localObject1 = (MessageForText)MessageRecordFactory.a(-1000);
+      ((MessageForText)localObject1).msgtype = -1000;
+      ((MessageForText)localObject1).istroop = 9501;
+      ((MessageForText)localObject1).issend = 0;
+      ((MessageForText)localObject1).isread = false;
+      ((MessageForText)localObject1).selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append("");
+      ((MessageForText)localObject1).senderuin = ((StringBuilder)localObject2).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append("");
+      ((MessageForText)localObject1).frienduin = ((StringBuilder)localObject2).toString();
+      ((MessageForText)localObject1).msg = paramBundle;
+      ((MessageForText)localObject1).time = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().b((MessageRecord)localObject1);
+      return null;
+    }
+    if (((String)localObject1).compareToIgnoreCase("init_msgHandler") == 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+      return null;
+    }
+    if (((String)localObject1).compareToIgnoreCase("invokeCmdGetFaceBitmap") == 0)
+    {
+      paramBundle = paramBundle.getString("uin");
+      paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceBitmap(paramBundle, true);
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putParcelable("face_bitmap", paramBundle);
+      return localObject1;
+    }
+    if (((String)localObject1).compareToIgnoreCase("invokeCmdGetUnreadMsgNum") == 0)
+    {
       paramBundle = paramBundle.getString("din");
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(paramBundle, 9501);
+      i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(paramBundle, 9501);
       paramBundle = new Bundle();
       paramBundle.putInt("unread", i);
       return paramBundle;
-      label733:
-      localObject = null;
     }
+    return null;
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService == null)) {}
-    for (;;)
+    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
     {
-      return;
+      if (this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService == null) {
+        return;
+      }
       Object localObject1 = Looper.getMainLooper();
       if (Thread.currentThread() != ((Looper)localObject1).getThread())
       {
@@ -337,7 +359,17 @@ public class SmartDeviceIPCHost
           if (QLog.isColorLevel())
           {
             localObject1 = localObject2;
-            QLog.d("SmartDeviceIPCHost", 2, "qq->plugin main thread doPostCachedMsg strNotifyCmd:" + (String)localObject2 + " thread:" + Thread.currentThread());
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localObject1 = localObject2;
+            localStringBuilder2.append("qq->plugin main thread doPostCachedMsg strNotifyCmd:");
+            localObject1 = localObject2;
+            localStringBuilder2.append((String)localObject2);
+            localObject1 = localObject2;
+            localStringBuilder2.append(" thread:");
+            localObject1 = localObject2;
+            localStringBuilder2.append(Thread.currentThread());
+            localObject1 = localObject2;
+            QLog.d("SmartDeviceIPCHost", 2, localStringBuilder2.toString());
           }
           localObject1 = localObject2;
           this.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService.a("com.qqsmartdevice.action.notify", localBundle);
@@ -346,8 +378,12 @@ public class SmartDeviceIPCHost
         {
           localRemoteException.printStackTrace();
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("SmartDeviceIPCHost", 2, "mSmartDeviceService.transfer failed strNotifyCmd:" + (String)localObject1);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("mSmartDeviceService.transfer failed strNotifyCmd:");
+          localStringBuilder1.append((String)localObject1);
+          QLog.d("SmartDeviceIPCHost", 2, localStringBuilder1.toString());
         }
       }
     }
@@ -371,18 +407,22 @@ public class SmartDeviceIPCHost
     if ((paramObject instanceof MessageRecord))
     {
       paramObservable = (MessageRecord)paramObject;
-      if ((paramObservable.istroop == 9501) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(paramObservable.frienduin, 9501) > 0))
+      if (paramObservable.istroop == 9501)
       {
-        paramObservable = new Bundle();
-        paramObservable.putString("notify_cmd", "updateUnreadMsgsNum");
-        a(paramObservable);
+        paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        if ((paramObject != null) && (paramObject.getConversationFacade().a(paramObservable.frienduin, 9501) > 0))
+        {
+          paramObservable = new Bundle();
+          paramObservable.putString("notify_cmd", "updateUnreadMsgsNum");
+          a(paramObservable);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.smartdevice.ipc.SmartDeviceIPCHost
  * JD-Core Version:    0.7.0.1
  */

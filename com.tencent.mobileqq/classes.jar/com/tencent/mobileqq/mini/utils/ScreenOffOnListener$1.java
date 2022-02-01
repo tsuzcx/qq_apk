@@ -12,16 +12,17 @@ class ScreenOffOnListener$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (StringUtil.a(paramIntent.getAction())) {}
-    while (ScreenOffOnListener.access$000(this.this$0) == null) {
+    if (StringUtil.a(paramIntent.getAction())) {
       return;
     }
-    ScreenOffOnListener.access$000(this.this$0).onReceiveListener(paramContext, paramIntent);
+    if (ScreenOffOnListener.access$000(this.this$0) != null) {
+      ScreenOffOnListener.access$000(this.this$0).onReceiveListener(paramContext, paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.ScreenOffOnListener.1
  * JD-Core Version:    0.7.0.1
  */

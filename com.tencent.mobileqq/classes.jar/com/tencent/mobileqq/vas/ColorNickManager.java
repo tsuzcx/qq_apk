@@ -21,7 +21,7 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
-import androidx.annotation.Nullable;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.AppConstants;
@@ -36,9 +36,9 @@ import com.tencent.mobileqq.data.MessageForReplyText;
 import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emosm.api.IEmoticonManagerService;
 import com.tencent.mobileqq.emoticon.EmotionJsonDownloadListener;
-import com.tencent.mobileqq.emoticonview.SmallEmoticonInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.emoticonview.ISmallEmoticonInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -62,6 +62,7 @@ import com.tencent.mobileqq.widget.ColorClearableEditText;
 import com.tencent.mobileqq.widget.ColorClearableEditText.Paragraph;
 import com.tencent.mobileqq.widget.ColorClearableEditText.SpanComparator;
 import com.tencent.mobileqq.widget.ColorNickTextView;
+import com.tencent.mobileqq.widget.QColorNickTextView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XEditTextEx;
 import java.io.File;
@@ -97,7 +98,10 @@ public class ColorNickManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".CorlorNick/");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append(".CorlorNick/");
+    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
@@ -112,22 +116,23 @@ public class ColorNickManager
     Rect localRect = new Rect();
     paramList = paramList.iterator();
     int i = 0;
-    if (paramList.hasNext())
+    while (paramList.hasNext())
     {
       ColorClearableEditText.Paragraph localParagraph = (ColorClearableEditText.Paragraph)paramList.next();
-      switch (localParagraph.c)
+      int j = localParagraph.c;
+      if (j != 1)
       {
+        if (j == 2)
+        {
+          i += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
+          paramRect.bottom = Math.max(paramRect.bottom, ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().height());
+        }
       }
-      for (;;)
+      else
       {
-        break;
-        int j = (int)Math.ceil(paramPaint.measureText(localParagraph.jdField_a_of_type_JavaLangString));
+        i += (int)Math.ceil(paramPaint.measureText(localParagraph.jdField_a_of_type_JavaLangString));
         paramPaint.getTextBounds(localParagraph.jdField_a_of_type_JavaLangString, 0, localParagraph.jdField_a_of_type_JavaLangString.length(), localRect);
         paramRect.bottom = Math.max(paramRect.bottom, localRect.height());
-        i += j;
-        continue;
-        i += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
-        paramRect.bottom = Math.max(paramRect.bottom, ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().height());
       }
     }
     paramRect.left = 0;
@@ -141,292 +146,345 @@ public class ColorNickManager
     return a(paramArrayOfByte).jdField_a_of_type_Int;
   }
   
-  private ColorNickManager.ColorNickColor a(File paramFile, int paramInt)
+  @NotNull
+  private Shader a(float paramFloat1, float paramFloat2, Rect paramRect, ColorNickManager.ColorNickColor paramColorNickColor)
   {
+    float f1;
+    if (paramColorNickColor.b == 1) {
+      f1 = paramFloat1;
+    } else {
+      f1 = paramRect.width() * 0.5F + paramFloat1;
+    }
+    float f2;
+    if (paramColorNickColor.b == 1) {
+      f2 = paramRect.height() * 0.5F + paramFloat2;
+    } else {
+      f2 = paramFloat2;
+    }
+    float f3;
+    if (paramColorNickColor.b == 1) {
+      f3 = paramRect.width();
+    } else {
+      f3 = paramRect.width() * 0.5F;
+    }
+    float f4;
+    if (paramColorNickColor.b == 1) {
+      f4 = paramRect.height() * 0.5F;
+    } else {
+      f4 = paramRect.height();
+    }
+    return new LinearGradient(f1, f2, paramFloat1 + f3, paramFloat2 + f4, paramColorNickColor.jdField_a_of_type_ArrayOfInt, paramColorNickColor.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP);
+  }
+  
+  @NotNull
+  private Shader a(List<ColorClearableEditText.Paragraph> paramList, float paramFloat, Paint paramPaint, int paramInt1, int paramInt2, ColorNickManager.ColorNickColor paramColorNickColor)
+  {
+    Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint(paramPaint);
+    paramInt1 = 0;
     int i = 0;
-    paramFile = FileUtils.a(paramFile, -1);
-    try
+    while (i < paramList.size())
     {
-      paramFile = new JSONObject(paramFile);
-      ColorNickManager.ColorNickColor localColorNickColor = new ColorNickManager.ColorNickColor();
-      paramFile = paramFile.optJSONArray("baseInfo");
-      if ((paramFile != null) && (paramFile.length() > 0))
+      ColorClearableEditText.Paragraph localParagraph = (ColorClearableEditText.Paragraph)paramList.get(i);
+      int j = localParagraph.c;
+      if (j != 1)
       {
-        Object localObject = paramFile.getJSONObject(0);
-        localColorNickColor.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type");
-        if (localColorNickColor.jdField_a_of_type_Int == 5)
-        {
-          localObject = jdField_a_of_type_JavaLangString + paramInt + File.separator + "shaderImg.png";
-          paramFile = localColorNickColor;
-          if (!new File((String)localObject).exists()) {
-            return paramFile;
-          }
-          localColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a((String)localObject, null);
-          return localColorNickColor;
-        }
-        localColorNickColor.b = ((JSONObject)localObject).optInt("orientation");
-        paramFile = ((JSONObject)localObject).optJSONArray("colors");
-        if ((paramFile != null) && (paramFile.length() > 0))
-        {
-          localColorNickColor.jdField_a_of_type_ArrayOfInt = new int[paramFile.length()];
-          paramInt = 0;
-          while (paramInt < paramFile.length())
-          {
-            String str = paramFile.getString(paramInt);
-            localColorNickColor.jdField_a_of_type_ArrayOfInt[paramInt] = Color.parseColor(str);
-            paramInt += 1;
-          }
-        }
-        if ((localColorNickColor.jdField_a_of_type_Int != 1) && (localColorNickColor.jdField_a_of_type_Int != 2))
-        {
-          paramFile = localColorNickColor;
-          if (localColorNickColor.jdField_a_of_type_Int != 3) {
-            return paramFile;
-          }
-        }
-        localObject = ((JSONObject)localObject).optJSONArray("positions");
-        paramFile = localColorNickColor;
-        if (localObject == null) {
-          return paramFile;
-        }
-        paramFile = localColorNickColor;
-        if (((JSONArray)localObject).length() <= 0) {
-          return paramFile;
-        }
-        localColorNickColor.jdField_a_of_type_ArrayOfFloat = new float[((JSONArray)localObject).length()];
-        paramInt = i;
-        for (;;)
-        {
-          paramFile = localColorNickColor;
-          if (paramInt >= ((JSONArray)localObject).length()) {
-            break;
-          }
-          paramFile = ((JSONArray)localObject).getString(paramInt);
-          if (TextUtils.isDigitsOnly(paramFile))
-          {
-            i = Integer.parseInt(paramFile);
-            localColorNickColor.jdField_a_of_type_ArrayOfFloat[paramInt] = (i / 100.0F);
-          }
-          paramInt += 1;
+        if (j == 2) {
+          paramFloat += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
         }
       }
-      return paramFile;
+      else
+      {
+        int k;
+        for (j = 0; j < localParagraph.jdField_a_of_type_JavaLangString.length(); j = k)
+        {
+          String str = localParagraph.jdField_a_of_type_JavaLangString;
+          k = j + 1;
+          float f = paramPaint.measureText(str, j, k);
+          localPaint.setColor(paramColorNickColor.jdField_a_of_type_ArrayOfInt[(paramInt1 % paramColorNickColor.jdField_a_of_type_ArrayOfInt.length)]);
+          localPaint.setStyle(Paint.Style.FILL);
+          f = paramFloat + f;
+          localCanvas.drawRect(paramFloat, 0.0F, f, paramInt2, localPaint);
+          paramInt1 += 1;
+          paramFloat = f;
+        }
+      }
+      i += 1;
+    }
+    return new BitmapShader(localBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+  }
+  
+  private ColorNickManager.ColorNickColor a(File paramFile, int paramInt)
+  {
+    paramFile = FileUtils.readFileToStringEx(paramFile, -1);
+    try
+    {
+      Object localObject = new JSONObject(paramFile);
+      paramFile = new ColorNickManager.ColorNickColor();
+      localObject = ((JSONObject)localObject).optJSONArray("baseInfo");
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+      {
+        int i = 0;
+        localObject = ((JSONArray)localObject).getJSONObject(0);
+        paramFile.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type");
+        if (paramFile.jdField_a_of_type_Int == 5)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append(File.separator);
+          ((StringBuilder)localObject).append("shaderImg.png");
+          localObject = ((StringBuilder)localObject).toString();
+          if (new File((String)localObject).exists())
+          {
+            paramFile.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a((String)localObject, null);
+            return paramFile;
+          }
+        }
+        else
+        {
+          paramFile.b = ((JSONObject)localObject).optInt("orientation");
+          JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("colors");
+          if ((localJSONArray != null) && (localJSONArray.length() > 0))
+          {
+            paramFile.jdField_a_of_type_ArrayOfInt = new int[localJSONArray.length()];
+            paramInt = i;
+            while (paramInt < localJSONArray.length())
+            {
+              String str = localJSONArray.getString(paramInt);
+              paramFile.jdField_a_of_type_ArrayOfInt[paramInt] = Color.parseColor(str);
+              paramInt += 1;
+            }
+          }
+          a(paramFile, (JSONObject)localObject);
+        }
+        return paramFile;
+      }
     }
     catch (Exception paramFile)
     {
       QLog.e("ColorNick", 1, "loadGradientConfig error: ", paramFile);
-      paramFile = null;
     }
+    return null;
   }
   
   @NotNull
   public static ColorNickManager.ColorNickNameData a(byte[] paramArrayOfByte)
   {
+    Object localObject2 = null;
     Iterator localIterator = null;
     int j = 0;
     if (paramArrayOfByte == null) {
       return new ColorNickManager.ColorNickNameData(null, 0);
     }
-    Object localObject;
+    Object localObject1 = localObject2;
     int i;
-    for (;;)
+    try
     {
-      Oidb_0x8fc.RichCardNameElem localRichCardNameElem;
-      try
+      Oidb_0x8fc.CommCardNameBuf localCommCardNameBuf = new Oidb_0x8fc.CommCardNameBuf();
+      localObject1 = localObject2;
+      localCommCardNameBuf.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = localIterator;
+      localObject1 = localObject2;
+      if (localCommCardNameBuf.rpt_rich_card_name.has())
       {
-        localObject = new Oidb_0x8fc.CommCardNameBuf();
-        ((Oidb_0x8fc.CommCardNameBuf)localObject).mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = localIterator;
-        if (!((Oidb_0x8fc.CommCardNameBuf)localObject).rpt_rich_card_name.has()) {
-          break label208;
-        }
+        localObject1 = localObject2;
         paramArrayOfByte = new StringBuilder();
-        localIterator = ((Oidb_0x8fc.CommCardNameBuf)localObject).rpt_rich_card_name.get().iterator();
-        if (!localIterator.hasNext()) {
-          break;
+        localObject1 = localObject2;
+        localIterator = localCommCardNameBuf.rpt_rich_card_name.get().iterator();
+        for (;;)
+        {
+          localObject1 = localObject2;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject1 = localObject2;
+          Oidb_0x8fc.RichCardNameElem localRichCardNameElem = (Oidb_0x8fc.RichCardNameElem)localIterator.next();
+          localObject1 = localObject2;
+          if (localRichCardNameElem.bytes_ctrl.has())
+          {
+            localObject1 = localObject2;
+            paramArrayOfByte.append("<");
+            localObject1 = localObject2;
+            paramArrayOfByte.append(localRichCardNameElem.bytes_ctrl.get().toStringUtf8());
+            localObject1 = localObject2;
+            paramArrayOfByte.append(">");
+          }
+          else
+          {
+            localObject1 = localObject2;
+            if (localRichCardNameElem.bytes_text.has())
+            {
+              localObject1 = localObject2;
+              paramArrayOfByte.append(localRichCardNameElem.bytes_text.get().toStringUtf8());
+            }
+          }
         }
-        localRichCardNameElem = (Oidb_0x8fc.RichCardNameElem)localIterator.next();
-        if (!localRichCardNameElem.bytes_ctrl.has()) {
-          break label173;
-        }
-        paramArrayOfByte.append("<").append(localRichCardNameElem.bytes_ctrl.get().toStringUtf8()).append(">");
-        continue;
-        localObject = paramArrayOfByte;
+        localObject1 = localObject2;
+        paramArrayOfByte = paramArrayOfByte.toString();
       }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+      localObject1 = paramArrayOfByte;
+      localObject2 = paramArrayOfByte;
+      i = j;
+      if (localCommCardNameBuf.uint32_cool_id.has())
       {
-        paramArrayOfByte = null;
+        localObject1 = paramArrayOfByte;
+        i = localCommCardNameBuf.uint32_cool_id.get();
+        localObject2 = paramArrayOfByte;
       }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      localObject2 = localObject1;
       i = j;
       if (QLog.isColorLevel())
       {
-        QLog.d("ColorNick", 1, localInvalidProtocolBufferMicroException1, new Object[0]);
+        QLog.d("ColorNick", 1, paramArrayOfByte, new Object[0]);
         i = j;
-        localObject = paramArrayOfByte;
-      }
-      return new ColorNickManager.ColorNickNameData((String)localObject, i);
-      label173:
-      if (localRichCardNameElem.bytes_text.has()) {
-        paramArrayOfByte.append(localRichCardNameElem.bytes_text.get().toStringUtf8());
+        localObject2 = localObject1;
       }
     }
-    paramArrayOfByte = paramArrayOfByte.toString();
-    for (;;)
-    {
-      try
-      {
-        label208:
-        if (!((Oidb_0x8fc.CommCardNameBuf)localObject).uint32_cool_id.has()) {
-          break label238;
-        }
-        i = ((Oidb_0x8fc.CommCardNameBuf)localObject).uint32_cool_id.get();
-        localObject = paramArrayOfByte;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2) {}
-      break;
-      label238:
-      i = 0;
-    }
+    return new ColorNickManager.ColorNickNameData((String)localObject2, i);
   }
   
-  public static ColorNickManager a(QQAppInterface paramQQAppInterface)
+  public static ColorNickManager a(AppInterface paramAppInterface)
   {
-    return ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+    return ((VasExtensionManager)paramAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
   }
   
   public static CharSequence a(MessageRecord paramMessageRecord, MsgSummary paramMsgSummary)
   {
-    SpannableString localSpannableString;
-    Object localObject;
     if ((!TextUtils.isEmpty(paramMsgSummary.strContent)) || (!TextUtils.isEmpty(paramMsgSummary.suffix)))
     {
-      localSpannableString = null;
-      if (TextUtils.isEmpty(paramMsgSummary.strContent)) {
-        break label218;
-      }
-      String str = paramMsgSummary.strContent.toString();
-      localObject = str;
-      if (!TextUtils.isEmpty(paramMsgSummary.strPrefix))
+      SpannableString localSpannableString = null;
+      if (!TextUtils.isEmpty(paramMsgSummary.strContent))
       {
+        String str = paramMsgSummary.strContent.toString();
         localObject = str;
-        if (TextUtils.indexOf(paramMsgSummary.strContent, paramMsgSummary.strPrefix) == 0)
+        if (!TextUtils.isEmpty(paramMsgSummary.strPrefix))
         {
-          if (paramMsgSummary.strContent.length() <= paramMsgSummary.strPrefix.length() + 2) {
-            break label211;
+          localObject = str;
+          if (TextUtils.indexOf(paramMsgSummary.strContent, paramMsgSummary.strPrefix) == 0) {
+            if (paramMsgSummary.strContent.length() > paramMsgSummary.strPrefix.length() + 2) {
+              localObject = (String)str.subSequence(paramMsgSummary.strPrefix.length() + 2, paramMsgSummary.strContent.length());
+            } else {
+              localObject = "";
+            }
           }
-          localObject = (String)str.subSequence(paramMsgSummary.strPrefix.length() + 2, paramMsgSummary.strContent.length());
         }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        localObject = paramMsgSummary.suffix.toString();
+      }
       if (!TextUtils.isEmpty(paramMsgSummary.strPrefix)) {
         localSpannableString = new ColorNickText(paramMsgSummary.strPrefix, 16).a();
       }
       paramMessageRecord = a((String)localObject, paramMessageRecord, 16, 5);
-      localObject = new SpannableStringBuilder();
+      Object localObject = new SpannableStringBuilder();
       if (localSpannableString != null) {
         ((SpannableStringBuilder)localObject).append(localSpannableString).append(": ");
       }
       ((SpannableStringBuilder)localObject).append(paramMessageRecord);
       paramMsgSummary.strContent = new QQText((CharSequence)localObject, 5, 16);
-      return paramMsgSummary.strContent;
-      label211:
-      localObject = "";
-      continue;
-      label218:
-      localObject = paramMsgSummary.suffix.toString();
     }
+    return paramMsgSummary.strContent;
+  }
+  
+  @org.jetbrains.annotations.Nullable
+  private static CharSequence a(String paramString, int paramInt1, MessageRecord paramMessageRecord, int paramInt2, ArrayList<ColorNickManager.AtTroopMemberParagraph> paramArrayList)
+  {
+    if (paramArrayList.size() > 0)
+    {
+      paramArrayList = (ColorNickManager.AtTroopMemberParagraph[])paramArrayList.toArray(new ColorNickManager.AtTroopMemberParagraph[paramArrayList.size()]);
+      Arrays.sort(paramArrayList, jdField_a_of_type_ComTencentMobileqqVasColorNickManager$AtParagraphComparator);
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      int k = paramArrayList.length;
+      int i = 0;
+      int j = 0;
+      while (i < k)
+      {
+        Object localObject = paramArrayList[i];
+        if (localObject.jdField_a_of_type_Int >= j) {
+          localSpannableStringBuilder.append(new QQText(paramString.subSequence(j, localObject.b), paramInt2, paramInt1, paramMessageRecord));
+        } else {
+          localSpannableStringBuilder.append(localObject.jdField_a_of_type_AndroidTextSpannableString);
+        }
+        j = localObject.b;
+        i += 1;
+      }
+      if (j < paramString.length()) {
+        localSpannableStringBuilder.append(new QQText(paramString.subSequence(j, paramString.length()), paramInt2, paramInt1, paramMessageRecord));
+      }
+      return localSpannableStringBuilder;
+    }
+    return null;
   }
   
   public static CharSequence a(String paramString, MessageRecord paramMessageRecord, int paramInt1, int paramInt2)
   {
-    Object localObject1 = null;
-    Object localObject2;
+    Object localObject1;
     if (paramMessageRecord != null)
     {
-      localObject1 = paramMessageRecord.getExtInfoFromExtStr(MessageConstants.i);
-      if (!(paramMessageRecord instanceof MessageForReplyText)) {
-        break label88;
+      localObject2 = paramMessageRecord.getExtInfoFromExtStr(MessageConstants.i);
+      localObject1 = localObject2;
+      if ((paramMessageRecord instanceof MessageForReplyText))
+      {
+        MessageForReplyText localMessageForReplyText = (MessageForReplyText)paramMessageRecord;
+        localObject1 = localObject2;
+        if (localMessageForReplyText.mSourceMsgInfo != null) {
+          localObject1 = ReplyedMessageSpan.a(localMessageForReplyText.mSourceMsgInfo.mSourceMsgSenderUin, (String)localObject2);
+        }
       }
-      localObject2 = (MessageForReplyText)paramMessageRecord;
-      if (((MessageForReplyText)localObject2).mSourceMsgInfo == null) {
-        break label88;
-      }
-      localObject1 = ReplyedMessageSpan.a(((MessageForReplyText)localObject2).mSourceMsgInfo.mSourceMsgSenderUin, (String)localObject1);
-    }
-    label88:
-    for (;;)
-    {
       localObject1 = a(paramString, (String)localObject1, paramInt1, paramMessageRecord, paramInt2);
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = new QQText(paramString, paramInt2, paramInt1, paramMessageRecord);
-      }
-      return localObject2;
     }
+    else
+    {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = new QQText(paramString, paramInt2, paramInt1, paramMessageRecord);
+    }
+    return localObject2;
   }
   
   public static CharSequence a(String paramString1, String paramString2, int paramInt1, MessageRecord paramMessageRecord, int paramInt2)
   {
-    int k = 0;
     if (!TextUtils.isEmpty(paramString2))
     {
       paramString2 = MessageForText.getTroopMemberInfoFromExtrJson(paramString2);
       if ((paramString2 != null) && (paramString2.size() > 0))
       {
-        Object localObject = new ArrayList();
+        ArrayList localArrayList = new ArrayList();
         int i = 0;
-        AtTroopMemberInfo localAtTroopMemberInfo;
-        int j;
         while (i < paramString2.size())
         {
-          localAtTroopMemberInfo = (AtTroopMemberInfo)paramString2.get(i);
-          if ((localAtTroopMemberInfo.startPos < 0) || (localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen > paramString1.length()))
-          {
-            i += 1;
-          }
-          else
+          AtTroopMemberInfo localAtTroopMemberInfo = (AtTroopMemberInfo)paramString2.get(i);
+          if ((localAtTroopMemberInfo.startPos >= 0) && (localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen <= paramString1.length()))
           {
             ColorNickManager.AtTroopMemberParagraph localAtTroopMemberParagraph = new ColorNickManager.AtTroopMemberParagraph(null);
             localAtTroopMemberParagraph.jdField_a_of_type_Int = localAtTroopMemberInfo.startPos;
-            if (localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen > paramString1.length()) {}
-            for (j = paramString1.length();; j = localAtTroopMemberInfo.textLen + j)
+            int j;
+            if (localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen > paramString1.length())
             {
-              localAtTroopMemberParagraph.b = j;
-              localAtTroopMemberParagraph.jdField_a_of_type_AndroidTextSpannableString = new ColorNickText(paramString1.subSequence(localAtTroopMemberParagraph.jdField_a_of_type_Int, localAtTroopMemberParagraph.b), paramInt1).a();
-              ((ArrayList)localObject).add(localAtTroopMemberParagraph);
-              break;
+              j = paramString1.length();
+            }
+            else
+            {
               j = localAtTroopMemberInfo.startPos;
+              j = localAtTroopMemberInfo.textLen + j;
             }
+            localAtTroopMemberParagraph.b = j;
+            localAtTroopMemberParagraph.jdField_a_of_type_AndroidTextSpannableString = new ColorNickText(paramString1.subSequence(localAtTroopMemberParagraph.jdField_a_of_type_Int, localAtTroopMemberParagraph.b), paramInt1).a();
+            localArrayList.add(localAtTroopMemberParagraph);
           }
+          i += 1;
         }
-        if (((ArrayList)localObject).size() > 0)
-        {
-          paramString2 = (ColorNickManager.AtTroopMemberParagraph[])((ArrayList)localObject).toArray(new ColorNickManager.AtTroopMemberParagraph[((ArrayList)localObject).size()]);
-          Arrays.sort(paramString2, jdField_a_of_type_ComTencentMobileqqVasColorNickManager$AtParagraphComparator);
-          localObject = new SpannableStringBuilder();
-          int m = paramString2.length;
-          j = 0;
-          i = k;
-          if (i < m)
-          {
-            localAtTroopMemberInfo = paramString2[i];
-            if (localAtTroopMemberInfo.jdField_a_of_type_Int >= j) {
-              ((SpannableStringBuilder)localObject).append(new QQText(paramString1.subSequence(j, localAtTroopMemberInfo.b), paramInt2, paramInt1, paramMessageRecord));
-            }
-            for (;;)
-            {
-              j = localAtTroopMemberInfo.b;
-              i += 1;
-              break;
-              ((SpannableStringBuilder)localObject).append(localAtTroopMemberInfo.jdField_a_of_type_AndroidTextSpannableString);
-            }
-          }
-          if (j < paramString1.length()) {
-            ((SpannableStringBuilder)localObject).append(new QQText(paramString1.subSequence(j, paramString1.length()), paramInt2, paramInt1, paramMessageRecord));
-          }
-          return localObject;
+        paramString2 = a(paramString1, paramInt1, paramMessageRecord, paramInt2, localArrayList);
+        if (paramString2 != null) {
+          return paramString2;
         }
       }
     }
@@ -446,8 +504,8 @@ public class ColorNickManager
   
   public static String a(ColorNickColorPanelAdapter.ColorItem paramColorItem)
   {
-    int j = 0;
     char[] arrayOfChar = new char[7];
+    int i = 0;
     arrayOfChar[0] = '<';
     arrayOfChar[1] = '%';
     arrayOfChar[2] = ((char)(paramColorItem.b >>> 24 & 0xFF));
@@ -455,11 +513,12 @@ public class ColorNickManager
     arrayOfChar[4] = ((char)(paramColorItem.b >>> 8 & 0xFF));
     arrayOfChar[5] = ((char)(paramColorItem.b & 0xFF));
     arrayOfChar[6] = '>';
-    int i = j;
-    switch (paramColorItem.jdField_a_of_type_Int)
+    if (paramColorItem.jdField_a_of_type_Int == 2)
     {
-    default: 
-      i = j;
+      if (paramColorItem.b == 0) {
+        return "";
+      }
+      arrayOfChar[1] = '&';
     }
     while (i < arrayOfChar.length)
     {
@@ -467,19 +526,18 @@ public class ColorNickManager
         arrayOfChar[i] = 'Ā';
       }
       i += 1;
-      continue;
-      if (paramColorItem.b == 0) {
-        return "";
-      }
-      arrayOfChar[1] = '&';
-      i = j;
     }
     return new String(arrayOfChar);
   }
   
   public static String a(String paramString)
   {
-    return jdField_a_of_type_JavaLangString + paramString + File.separator + "xydata.json";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("xydata.json");
+    return localStringBuilder.toString();
   }
   
   @NotNull
@@ -490,7 +548,11 @@ public class ColorNickManager
       paramArrayOfByte = new String(paramArrayOfByte, Charset.forName("UTF-8"));
       return paramArrayOfByte;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label17:
+      break label17;
+    }
     return "";
   }
   
@@ -502,28 +564,20 @@ public class ColorNickManager
     int i = (int)Math.ceil(paramPaint.measureText("..."));
     paramString = ((ArrayList)localObject).iterator();
     paramInt2 = 0;
-    if (paramString.hasNext())
+    while (paramString.hasNext())
     {
       paramSpanComparator = (ColorClearableEditText.Paragraph)paramString.next();
-      switch (paramSpanComparator.c)
+      int j = paramSpanComparator.c;
+      if (j != 1)
       {
-      }
-      for (;;)
-      {
-        break;
-        localObject = SceneBuilder.a(paramInt1 - paramInt2, paramSpanComparator.jdField_a_of_type_JavaLangString, paramPaint);
-        int j;
-        if (((String)localObject).equals(paramSpanComparator.jdField_a_of_type_JavaLangString))
+        if (j != 2)
         {
-          j = (int)Math.ceil(paramPaint.measureText(paramSpanComparator.jdField_a_of_type_JavaLangString));
-          localArrayList.add(paramSpanComparator);
-          paramInt2 += j;
+          if (j == 3) {
+            localArrayList.add(paramSpanComparator);
+          }
         }
         else
         {
-          paramSpanComparator.jdField_a_of_type_JavaLangString = ((String)localObject);
-          localArrayList.add(paramSpanComparator);
-          return localArrayList;
           j = ((EmoticonSpan)paramSpanComparator.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
           if (j > paramInt1 - paramInt2 - i)
           {
@@ -532,7 +586,19 @@ public class ColorNickManager
           }
           localArrayList.add(paramSpanComparator);
           paramInt2 += j;
-          continue;
+        }
+      }
+      else
+      {
+        localObject = SceneBuilder.a(paramInt1 - paramInt2, paramSpanComparator.jdField_a_of_type_JavaLangString, paramPaint);
+        if (((String)localObject).equals(paramSpanComparator.jdField_a_of_type_JavaLangString))
+        {
+          paramInt2 += (int)Math.ceil(paramPaint.measureText(paramSpanComparator.jdField_a_of_type_JavaLangString));
+          localArrayList.add(paramSpanComparator);
+        }
+        else
+        {
+          paramSpanComparator.jdField_a_of_type_JavaLangString = ((String)localObject);
           localArrayList.add(paramSpanComparator);
         }
       }
@@ -548,6 +614,45 @@ public class ColorNickManager
     }
   }
   
+  private static void a(TextView paramTextView, ColorNickManager.ColorNickColor paramColorNickColor)
+  {
+    if (paramColorNickColor != null)
+    {
+      if ((paramTextView instanceof ColorClearableEditText))
+      {
+        paramTextView.setTextColor(-16777216);
+        ((ColorClearableEditText)paramTextView).setSpecialColor(paramColorNickColor.jdField_a_of_type_Int, paramColorNickColor.jdField_a_of_type_ArrayOfInt, paramColorNickColor.jdField_a_of_type_ArrayOfFloat, paramColorNickColor.b, paramColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap);
+        return;
+      }
+      if ((paramTextView instanceof ColorNickTextView))
+      {
+        paramTextView.setTextColor(-16777216);
+        paramTextView = (ColorNickTextView)paramTextView;
+        paramTextView.setSpecialColor(paramColorNickColor.jdField_a_of_type_Int, paramColorNickColor.jdField_a_of_type_ArrayOfInt, paramColorNickColor.jdField_a_of_type_ArrayOfFloat, paramColorNickColor.b, paramColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap);
+        paramTextView.a = false;
+        return;
+      }
+      if ((paramTextView instanceof QColorNickTextView))
+      {
+        paramTextView.setTextColor(-16777216);
+        paramTextView = (QColorNickTextView)paramTextView;
+        paramTextView.setSpecialColor(paramColorNickColor.jdField_a_of_type_Int, paramColorNickColor.jdField_a_of_type_ArrayOfInt, paramColorNickColor.jdField_a_of_type_ArrayOfFloat, paramColorNickColor.b, paramColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap);
+        paramTextView.needRefreshSpecialColor = false;
+      }
+    }
+    else
+    {
+      if ((paramTextView instanceof ColorNickTextView))
+      {
+        ((ColorNickTextView)paramTextView).a = true;
+        return;
+      }
+      if ((paramTextView instanceof QColorNickTextView)) {
+        ((QColorNickTextView)paramTextView).needRefreshSpecialColor = true;
+      }
+    }
+  }
+  
   public static void a(QQAppInterface paramQQAppInterface, TextView paramTextView, Spannable paramSpannable)
   {
     a(paramTextView, paramSpannable, 0);
@@ -558,56 +663,35 @@ public class ColorNickManager
     if (SimpleUIUtil.a()) {
       return;
     }
-    paramSpannable = (ColorSpan[])paramSpannable.getSpans(0, paramSpannable.length(), ColorSpan.class);
-    if ((paramSpannable != null) && (paramSpannable.length > 0))
+    Object localObject = (ColorSpan[])paramSpannable.getSpans(0, paramSpannable.length(), ColorSpan.class);
+    if ((localObject != null) && (localObject.length > 0))
     {
-      paramSpannable = paramSpannable[0];
-      if (paramSpannable.jdField_a_of_type_Int == 2)
+      localObject = localObject[0];
+      if (((ColorSpan)localObject).jdField_a_of_type_Int == 2)
       {
-        paramTextView.setTextColor(paramSpannable.b);
+        paramTextView.setTextColor(((ColorSpan)localObject).b);
         if ((paramTextView instanceof ColorClearableEditText)) {
           ((ColorClearableEditText)paramTextView).setSpecialColor(0, null, null, 0, null);
+        } else if ((paramTextView instanceof ColorNickTextView)) {
+          ((ColorNickTextView)paramTextView).setSpecialColor(0, null, null, 0, null);
+        } else if ((paramSpannable instanceof QColorNickTextView)) {
+          ((QColorNickTextView)paramTextView).setSpecialColor(0, null, null, 0, null);
         }
       }
-    }
-    for (;;)
-    {
-      TroopNickNameHelper.a(paramTextView, paramTextView.getContext(), paramInt, paramBoolean);
-      return;
-      if ((paramTextView instanceof ColorNickTextView))
+      else if (((ColorSpan)localObject).jdField_a_of_type_Int == 3)
       {
-        ((ColorNickTextView)paramTextView).setSpecialColor(0, null, null, 0, null);
-        continue;
-        if (paramSpannable.jdField_a_of_type_Int == 3)
-        {
-          paramQQAppInterface = a(paramQQAppInterface).a(paramSpannable.b);
-          if (paramQQAppInterface != null)
-          {
-            if ((paramTextView instanceof ColorClearableEditText))
-            {
-              paramTextView.setTextColor(-16777216);
-              ((ColorClearableEditText)paramTextView).setSpecialColor(paramQQAppInterface.jdField_a_of_type_Int, paramQQAppInterface.jdField_a_of_type_ArrayOfInt, paramQQAppInterface.jdField_a_of_type_ArrayOfFloat, paramQQAppInterface.b, paramQQAppInterface.jdField_a_of_type_AndroidGraphicsBitmap);
-            }
-            else if ((paramTextView instanceof ColorNickTextView))
-            {
-              paramTextView.setTextColor(-16777216);
-              ((ColorNickTextView)paramTextView).setSpecialColor(paramQQAppInterface.jdField_a_of_type_Int, paramQQAppInterface.jdField_a_of_type_ArrayOfInt, paramQQAppInterface.jdField_a_of_type_ArrayOfFloat, paramQQAppInterface.b, paramQQAppInterface.jdField_a_of_type_AndroidGraphicsBitmap);
-              ((ColorNickTextView)paramTextView).a = false;
-            }
-          }
-          else if ((paramTextView instanceof ColorNickTextView))
-          {
-            ((ColorNickTextView)paramTextView).a = true;
-            continue;
-            if ((paramTextView instanceof ColorClearableEditText)) {
-              ((ColorClearableEditText)paramTextView).setSpecialColor(0, null, null, 0, null);
-            } else if ((paramTextView instanceof ColorNickTextView)) {
-              ((ColorNickTextView)paramTextView).setSpecialColor(0, null, null, 0, null);
-            }
-          }
-        }
+        a(paramTextView, a(paramQQAppInterface).a(((ColorSpan)localObject).b));
       }
     }
+    else if ((paramTextView instanceof ColorClearableEditText))
+    {
+      ((ColorClearableEditText)paramTextView).setSpecialColor(0, null, null, 0, null);
+    }
+    else if ((paramTextView instanceof ColorNickTextView))
+    {
+      ((ColorNickTextView)paramTextView).setSpecialColor(0, null, null, 0, null);
+    }
+    TroopNickNameHelper.a(paramTextView, paramTextView.getContext(), paramInt, paramBoolean);
   }
   
   public static void a(DraftTextInfo paramDraftTextInfo, XEditTextEx paramXEditTextEx, String paramString1, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString2)
@@ -621,11 +705,13 @@ public class ColorNickManager
         while (paramDraftTextInfo.hasNext())
         {
           AtTroopMemberInfo localAtTroopMemberInfo = (AtTroopMemberInfo)paramDraftTextInfo.next();
-          if ((localAtTroopMemberInfo.startPos <= paramXEditTextEx.getEditableText().length()) && (localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen + 1 <= paramXEditTextEx.getEditableText().length()))
-          {
-            SpannableString localSpannableString = AtTroopMemberSpan.a(paramQQAppInterface, paramBaseActivity, paramString2, Long.toString(localAtTroopMemberInfo.uin), paramString1.substring(localAtTroopMemberInfo.startPos + 1, localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen), false, paramXEditTextEx, true);
-            if (localSpannableString != null) {
-              paramXEditTextEx.getEditableText().replace(localAtTroopMemberInfo.startPos, localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen + 1, localSpannableString);
+          if (localAtTroopMemberInfo.startPos <= paramXEditTextEx.getEditableText().length()) {
+            if (localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen + 1 <= paramXEditTextEx.getEditableText().length())
+            {
+              SpannableString localSpannableString = AtTroopMemberSpan.a(paramQQAppInterface, paramBaseActivity, paramString2, Long.toString(localAtTroopMemberInfo.uin), paramString1.substring(localAtTroopMemberInfo.startPos + 1, localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen), false, paramXEditTextEx, true);
+              if (localSpannableString != null) {
+                paramXEditTextEx.getEditableText().replace(localAtTroopMemberInfo.startPos, localAtTroopMemberInfo.startPos + localAtTroopMemberInfo.textLen + 1, localSpannableString);
+              }
             }
           }
         }
@@ -633,9 +719,9 @@ public class ColorNickManager
     }
   }
   
-  public static void a(SmallEmoticonInfo paramSmallEmoticonInfo, QQAppInterface paramQQAppInterface, EditText paramEditText)
+  public static void a(ISmallEmoticonInfo paramISmallEmoticonInfo, QQAppInterface paramQQAppInterface, EditText paramEditText)
   {
-    if (paramSmallEmoticonInfo.emoticon == null)
+    if (paramISmallEmoticonInfo.getEmoticon() == null)
     {
       VasReportUtils.a("emotionType", "emotionActionSend", "1", "", "", "", "", "", "", "");
       QLog.e("ColorNick", 1, "fail to send small_emotion.");
@@ -643,90 +729,113 @@ public class ColorNickManager
     }
     try
     {
-      int i = Integer.parseInt(paramSmallEmoticonInfo.emoticon.eId);
-      int j = Integer.parseInt(paramSmallEmoticonInfo.emoticon.epId);
-      ((EmoticonManager)paramQQAppInterface.getManager(QQManagerFactory.EMOTICON_MANAGER)).a(String.valueOf(j), new ColorNickManager.1(j, i, paramEditText));
+      int i = Integer.parseInt(paramISmallEmoticonInfo.getEmoticon().eId);
+      int j = Integer.parseInt(paramISmallEmoticonInfo.getEmoticon().epId);
+      ((IEmoticonManagerService)paramQQAppInterface.getRuntimeService(IEmoticonManagerService.class)).asyncFindEmoticonPackage(String.valueOf(j), new ColorNickManager.1(j, i, paramEditText));
       return;
     }
-    catch (NumberFormatException paramSmallEmoticonInfo)
+    catch (NumberFormatException paramISmallEmoticonInfo)
     {
-      VasReportUtils.a("emotionType", "emotionActionSend", "4", "", "", "", "", "", "", "");
-      QLog.e("ColorNick", 1, "fail to send small_emotion. id is not Int.");
+      label112:
+      break label112;
+    }
+    VasReportUtils.a("emotionType", "emotionActionSend", "4", "", "", "", "", "", "", "");
+    QLog.e("ColorNick", 1, "fail to send small_emotion. id is not Int.");
+  }
+  
+  private void a(ColorNickManager.ColorNickColor paramColorNickColor, JSONObject paramJSONObject)
+  {
+    if ((paramColorNickColor.jdField_a_of_type_Int == 1) || (paramColorNickColor.jdField_a_of_type_Int == 2) || (paramColorNickColor.jdField_a_of_type_Int == 3))
+    {
+      paramJSONObject = paramJSONObject.optJSONArray("positions");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+      {
+        paramColorNickColor.jdField_a_of_type_ArrayOfFloat = new float[paramJSONObject.length()];
+        int i = 0;
+        while (i < paramJSONObject.length())
+        {
+          String str = paramJSONObject.getString(i);
+          if (TextUtils.isDigitsOnly(str))
+          {
+            int j = Integer.parseInt(str);
+            paramColorNickColor.jdField_a_of_type_ArrayOfFloat[i] = (j / 100.0F);
+          }
+          i += 1;
+        }
+      }
     }
   }
   
   private void a(List<ColorClearableEditText.Paragraph> paramList, Paint paramPaint, ColorNickManager.ColorNickColor paramColorNickColor, Canvas paramCanvas, float paramFloat1, float paramFloat2)
   {
     Paint localPaint = new Paint(paramPaint);
-    int i = 0;
     Rect localRect = new Rect();
     int j = 0;
-    ColorClearableEditText.Paragraph localParagraph;
-    while (j < paramList.size())
+    int k = 0;
+    while (k < paramList.size())
     {
-      localParagraph = (ColorClearableEditText.Paragraph)paramList.get(j);
-      switch (localParagraph.c)
+      ColorClearableEditText.Paragraph localParagraph = (ColorClearableEditText.Paragraph)paramList.get(k);
+      int i = localParagraph.c;
+      if (i != 1)
       {
-      default: 
-        j += 1;
-        break;
-      case 1: 
-        if (i != 0) {
-          break label380;
+        if (i == 2) {
+          paramFloat1 += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
         }
-        paramPaint.getTextBounds(localParagraph.jdField_a_of_type_JavaLangString, 0, localParagraph.jdField_a_of_type_JavaLangString.length(), localRect);
-        i = localRect.height();
       }
-    }
-    label162:
-    label186:
-    label201:
-    label342:
-    label380:
-    for (;;)
-    {
-      int k = 0;
-      if (k < localParagraph.jdField_a_of_type_JavaLangString.length())
+      else
       {
-        float f5 = paramPaint.measureText(localParagraph.jdField_a_of_type_JavaLangString, k, k + 1);
-        float f1;
-        float f2;
-        float f3;
-        if (paramColorNickColor.b == 1)
+        i = j;
+        if (j == 0)
         {
-          f1 = paramFloat1;
-          if (paramColorNickColor.b != 1) {
-            break label317;
-          }
-          f2 = i * 0.5F + paramFloat2 - i;
-          if (paramColorNickColor.b != 1) {
-            break label328;
-          }
-          f3 = paramFloat1 + f5;
-          if (paramColorNickColor.b != 1) {
-            break label342;
-          }
+          paramPaint.getTextBounds(localParagraph.jdField_a_of_type_JavaLangString, 0, localParagraph.jdField_a_of_type_JavaLangString.length(), localRect);
+          i = localRect.height();
         }
-        for (float f4 = i * 0.5F + paramFloat2 - i;; f4 = i)
+        int m;
+        for (j = 0; j < localParagraph.jdField_a_of_type_JavaLangString.length(); j = m)
         {
+          String str = localParagraph.jdField_a_of_type_JavaLangString;
+          m = j + 1;
+          float f5 = paramPaint.measureText(str, j, m);
+          if (paramColorNickColor.b == 1) {
+            f1 = paramFloat1;
+          } else {
+            f1 = f5 * 0.5F + paramFloat1;
+          }
+          if (paramColorNickColor.b == 1)
+          {
+            f2 = i;
+            f2 = f2 * 0.5F + paramFloat2 - f2;
+          }
+          else
+          {
+            f2 = paramFloat2 - i;
+          }
+          float f3;
+          if (paramColorNickColor.b == 1) {
+            f3 = paramFloat1 + f5;
+          } else {
+            f3 = f5 * 0.5F + paramFloat1;
+          }
+          float f4;
+          if (paramColorNickColor.b == 1)
+          {
+            f4 = i;
+            f4 = 0.5F * f4 + paramFloat2 - f4;
+          }
+          else
+          {
+            f4 = i;
+          }
           localPaint.setShader(new LinearGradient(f1, f2, f3, f4, paramColorNickColor.jdField_a_of_type_ArrayOfInt, paramColorNickColor.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP));
           localPaint.setStyle(Paint.Style.FILL);
-          paramCanvas.drawRect(paramFloat1, paramFloat2 - i, paramFloat1 + f5, paramFloat2, localPaint);
-          paramFloat1 += f5;
-          k += 1;
-          break;
-          f1 = paramFloat1 + 0.5F * f5;
-          break label162;
-          f2 = paramFloat2 - i;
-          break label186;
-          f3 = paramFloat1 + 0.5F * f5;
-          break label201;
+          float f2 = i;
+          float f1 = paramFloat1 + f5;
+          paramCanvas.drawRect(paramFloat1, paramFloat2 - f2, f1, paramFloat2, localPaint);
+          paramFloat1 = f1;
         }
+        j = i;
       }
-      break;
-      paramFloat1 += ((EmoticonSpan)localParagraph.jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
-      break;
-      return;
+      k += 1;
     }
   }
   
@@ -737,7 +846,7 @@ public class ColorNickManager
     }
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
       if (paramString.charAt(i) == '<')
       {
@@ -746,17 +855,16 @@ public class ColorNickManager
           i = j;
         }
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         localStringBuilder.append(paramString.charAt(i));
       }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
   
-  @Nullable
+  @androidx.annotation.Nullable
   public static String b(byte[] paramArrayOfByte)
   {
     return a(paramArrayOfByte).jdField_a_of_type_JavaLangString;
@@ -766,107 +874,71 @@ public class ColorNickManager
   {
     if (this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNick", 2, "downloadGradientConfig id = " + paramInt + " is downloading");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("downloadGradientConfig id = ");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(" is downloading");
+        QLog.d("ColorNick", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
     this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
-    IVasQuickUpdateService localIVasQuickUpdateService = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
-    localIVasQuickUpdateService.addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
-    localIVasQuickUpdateService.downloadItem(27L, "groupnickitem." + paramInt, "ColorNickManager");
+    Object localObject = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+    ((IVasQuickUpdateService)localObject).addCallBacker(this.jdField_a_of_type_ComTencentMobileqqVasUpdatesystemCallbackCallBacker);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("groupnickitem.");
+    localStringBuilder.append(paramInt);
+    ((IVasQuickUpdateService)localObject).downloadItem(27L, localStringBuilder.toString(), "ColorNickManager");
   }
   
   public Shader a(int paramInt1, List<ColorClearableEditText.Paragraph> paramList, float paramFloat1, float paramFloat2, Rect paramRect, Paint paramPaint, int paramInt2, int paramInt3)
   {
     ColorNickManager.ColorNickColor localColorNickColor = a(paramInt1);
-    if (localColorNickColor != null) {
-      switch (localColorNickColor.jdField_a_of_type_Int)
-      {
-      }
-    }
-    label90:
-    label108:
-    do
-    {
+    if (localColorNickColor == null) {
       return null;
-      float f1;
-      float f2;
-      if (localColorNickColor.b == 1)
-      {
-        f1 = paramFloat1;
-        if (localColorNickColor.b != 1) {
-          break label177;
-        }
-        f2 = paramFloat2 + paramRect.height() * 0.5F;
-        if (localColorNickColor.b != 1) {
-          break label184;
-        }
-        paramFloat1 += paramRect.width();
-        if (localColorNickColor.b != 1) {
-          break label200;
-        }
-      }
-      for (paramFloat2 += paramRect.height() * 0.5F;; paramFloat2 += paramRect.height())
-      {
-        return new LinearGradient(f1, f2, paramFloat1, paramFloat2, localColorNickColor.jdField_a_of_type_ArrayOfInt, localColorNickColor.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP);
-        f1 = paramFloat1 + paramRect.width() * 0.5F;
-        break;
-        f2 = paramFloat2;
-        break label90;
-        paramFloat1 += paramRect.width() * 0.5F;
-        break label108;
-      }
-      localObject1 = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
-      a(paramList, paramPaint, localColorNickColor, new Canvas((Bitmap)localObject1), paramFloat1, paramFloat2 + paramRect.height());
-      return new BitmapShader((Bitmap)localObject1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-      return new RadialGradient(paramRect.width() / 2 + paramFloat1, paramRect.height() / 2 + paramFloat2, paramRect.width() / 2, localColorNickColor.jdField_a_of_type_ArrayOfInt, localColorNickColor.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP);
-      paramRect = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
-      localObject1 = new Canvas(paramRect);
-      localObject2 = new Paint(paramPaint);
-      paramInt1 = 0;
-      paramInt2 = 0;
-      if (paramInt2 < paramList.size())
-      {
-        localObject3 = (ColorClearableEditText.Paragraph)paramList.get(paramInt2);
-        switch (((ColorClearableEditText.Paragraph)localObject3).c)
-        {
-        }
-        for (;;)
-        {
-          paramInt2 += 1;
-          break;
-          int i = 0;
-          while (i < ((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_JavaLangString.length())
-          {
-            paramFloat2 = paramPaint.measureText(((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_JavaLangString, i, i + 1);
-            ((Paint)localObject2).setColor(localColorNickColor.jdField_a_of_type_ArrayOfInt[(paramInt1 % localColorNickColor.jdField_a_of_type_ArrayOfInt.length)]);
-            ((Paint)localObject2).setStyle(Paint.Style.FILL);
-            ((Canvas)localObject1).drawRect(paramFloat1, 0.0F, paramFloat1 + paramFloat2, paramInt3, (Paint)localObject2);
-            i += 1;
-            paramInt1 += 1;
-            paramFloat1 += paramFloat2;
-          }
-          continue;
-          paramFloat1 += ((EmoticonSpan)((ColorClearableEditText.Paragraph)localObject3).jdField_a_of_type_AndroidTextStyleCharacterStyle).getDrawable().getBounds().width();
-        }
-      }
-      return new BitmapShader(paramRect, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-    } while (localColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap == null);
-    label177:
-    label184:
-    label200:
-    paramList = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
-    Object localObject1 = new Canvas(paramList);
-    paramInt1 = localColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    Object localObject2 = new Rect();
-    Object localObject3 = new Rect(0, 0, paramInt1, localColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    for (paramFloat1 = 0.0F; paramFloat1 < paramRect.width(); paramFloat1 += paramInt1)
-    {
-      ((Rect)localObject2).set((int)paramFloat1, 0, (int)(paramInt1 + paramFloat1), paramInt3);
-      ((Canvas)localObject1).drawBitmap(localColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap, (Rect)localObject3, (Rect)localObject2, paramPaint);
     }
-    return new BitmapShader(paramList, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+    paramInt1 = localColorNickColor.jdField_a_of_type_Int;
+    if (paramInt1 != 1)
+    {
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 4)
+          {
+            if (paramInt1 != 5) {
+              return null;
+            }
+            if (localColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap != null)
+            {
+              paramList = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
+              localObject = new Canvas(paramList);
+              paramInt1 = localColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+              Rect localRect1 = new Rect();
+              Rect localRect2 = new Rect(0, 0, paramInt1, localColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+              paramFloat1 = 0.0F;
+              while (paramFloat1 < paramRect.width())
+              {
+                paramInt2 = (int)paramFloat1;
+                paramFloat1 += paramInt1;
+                localRect1.set(paramInt2, 0, (int)paramFloat1, paramInt3);
+                ((Canvas)localObject).drawBitmap(localColorNickColor.jdField_a_of_type_AndroidGraphicsBitmap, localRect2, localRect1, paramPaint);
+              }
+              return new BitmapShader(paramList, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+            }
+            return null;
+          }
+          return a(paramList, paramFloat1, paramPaint, paramInt2, paramInt3, localColorNickColor);
+        }
+        return new RadialGradient(paramFloat1 + paramRect.width() / 2, paramFloat2 + paramRect.height() / 2, paramRect.width() / 2, localColorNickColor.jdField_a_of_type_ArrayOfInt, localColorNickColor.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP);
+      }
+      Object localObject = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
+      a(paramList, paramPaint, localColorNickColor, new Canvas((Bitmap)localObject), paramFloat1, paramFloat2 + paramRect.height());
+      return new BitmapShader((Bitmap)localObject, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    }
+    return a(paramFloat1, paramFloat2, paramRect, localColorNickColor);
   }
   
   public ColorNickManager.ColorNickColor a(int paramInt)
@@ -887,7 +959,7 @@ public class ColorNickManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickManager
  * JD-Core Version:    0.7.0.1
  */

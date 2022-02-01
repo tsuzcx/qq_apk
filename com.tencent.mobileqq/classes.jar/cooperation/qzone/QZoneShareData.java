@@ -71,7 +71,36 @@ public class QZoneShareData
   
   public String toString()
   {
-    return "appid:" + this.appid + " openId:" + this.openId + " mTitle:" + this.mTitle + " mSummary:" + this.mSummary + " targetUrl:" + this.targetUrl + " mImageUrl:" + this.mImageUrls.toString() + " appName:" + this.appName + " shareUin:" + this.shareUin + " extString:" + this.extString + " from:" + this.from + " action:" + this.action + " pkgname:" + this.pkgname + " iUrlInfoFrm" + this.iUrlInfoFrm + " mWebUrl:" + this.mWebUrl;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appid:");
+    localStringBuilder.append(this.appid);
+    localStringBuilder.append(" openId:");
+    localStringBuilder.append(this.openId);
+    localStringBuilder.append(" mTitle:");
+    localStringBuilder.append(this.mTitle);
+    localStringBuilder.append(" mSummary:");
+    localStringBuilder.append(this.mSummary);
+    localStringBuilder.append(" targetUrl:");
+    localStringBuilder.append(this.targetUrl);
+    localStringBuilder.append(" mImageUrl:");
+    localStringBuilder.append(this.mImageUrls.toString());
+    localStringBuilder.append(" appName:");
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append(" shareUin:");
+    localStringBuilder.append(this.shareUin);
+    localStringBuilder.append(" extString:");
+    localStringBuilder.append(this.extString);
+    localStringBuilder.append(" from:");
+    localStringBuilder.append(this.from);
+    localStringBuilder.append(" action:");
+    localStringBuilder.append(this.action);
+    localStringBuilder.append(" pkgname:");
+    localStringBuilder.append(this.pkgname);
+    localStringBuilder.append(" iUrlInfoFrm");
+    localStringBuilder.append(this.iUrlInfoFrm);
+    localStringBuilder.append(" mWebUrl:");
+    localStringBuilder.append(this.mWebUrl);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -100,7 +129,7 @@ public class QZoneShareData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneShareData
  * JD-Core Version:    0.7.0.1
  */

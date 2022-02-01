@@ -9,16 +9,17 @@ final class SearchTask$4
   {
     long l1 = paramISearchable1.c();
     long l2 = paramISearchable2.c();
-    if (l1 < l2) {}
-    do
-    {
+    if (l1 < l2) {
       return 1;
-      if (l1 > l2) {
-        return -1;
-      }
-      l1 = paramISearchable1.b();
-      l2 = paramISearchable2.b();
-    } while (l1 < l2);
+    }
+    if (l1 > l2) {
+      return -1;
+    }
+    l1 = paramISearchable1.b();
+    l2 = paramISearchable2.b();
+    if (l1 < l2) {
+      return 1;
+    }
     if (l1 > l2) {
       return -1;
     }
@@ -27,7 +28,7 @@ final class SearchTask$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchTask.4
  * JD-Core Version:    0.7.0.1
  */

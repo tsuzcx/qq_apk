@@ -1,24 +1,13 @@
 package io.flutter.plugins.webviewflutter;
 
-import android.webkit.JsPromptResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 
 class FlutterWebViewClient$1
   extends WebChromeClient
 {
   FlutterWebViewClient$1(FlutterWebViewClient paramFlutterWebViewClient) {}
-  
-  @Override
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
-  {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
-      return true;
-    }
-    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
-  }
   
   @Override
   public void onProgressChanged(WebView paramWebView, int paramInt)
@@ -37,7 +26,7 @@ class FlutterWebViewClient$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.FlutterWebViewClient.1
  * JD-Core Version:    0.7.0.1
  */

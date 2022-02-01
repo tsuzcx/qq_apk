@@ -22,33 +22,31 @@ public class TroopShortcutBarUtil$RemindGrayTipItem
   String a()
   {
     JSONObject localJSONObject = new JSONObject();
-    for (;;)
+    try
     {
-      try
-      {
-        localJSONObject.put("appId", this.jdField_a_of_type_Long);
-        localJSONObject.put("appType", this.jdField_b_of_type_Long);
-        if (this.jdField_a_of_type_JavaLangString != null) {
-          continue;
-        }
-        str = "";
-        localJSONObject.put("appName", str);
-        if (this.jdField_b_of_type_JavaLangString != null) {
-          continue;
-        }
-        str = "";
-        localJSONObject.put("appJumpUrl", str);
+      localJSONObject.put("appId", this.jdField_a_of_type_Long);
+      localJSONObject.put("appType", this.jdField_b_of_type_Long);
+      Object localObject = this.jdField_a_of_type_JavaLangString;
+      String str = "";
+      if (localObject == null) {
+        localObject = "";
+      } else {
+        localObject = this.jdField_a_of_type_JavaLangString;
       }
-      catch (Exception localException)
-      {
-        String str;
-        continue;
+      localJSONObject.put("appName", localObject);
+      if (this.jdField_b_of_type_JavaLangString == null) {
+        localObject = str;
+      } else {
+        localObject = this.jdField_b_of_type_JavaLangString;
       }
-      return localJSONObject.toString();
-      str = this.jdField_a_of_type_JavaLangString;
-      continue;
-      str = this.jdField_b_of_type_JavaLangString;
+      localJSONObject.put("appJumpUrl", localObject);
     }
+    catch (Exception localException)
+    {
+      label86:
+      break label86;
+    }
+    return localJSONObject.toString();
   }
   
   public boolean a(String paramString)
@@ -75,16 +73,24 @@ public class TroopShortcutBarUtil$RemindGrayTipItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("appId:").append(this.jdField_a_of_type_Long).append(" ");
-    localStringBuilder.append("appType:").append(this.jdField_b_of_type_Long).append(" ");
-    localStringBuilder.append("appName:").append(this.jdField_a_of_type_JavaLangString).append(" ");
-    localStringBuilder.append("appJumpUrl:").append(this.jdField_b_of_type_JavaLangString).append(" ");
+    localStringBuilder.append("appId:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("appType:");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("appName:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("appJumpUrl:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" ");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarUtil.RemindGrayTipItem
  * JD-Core Version:    0.7.0.1
  */

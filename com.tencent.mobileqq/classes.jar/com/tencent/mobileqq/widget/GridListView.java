@@ -52,9 +52,12 @@ public class GridListView
   private void b(int paramInt)
   {
     this.d = paramInt;
-    this.c = this.d;
-    if (this.jdField_a_of_type_Int == 1) {
-      this.c = ((this.d + this.b - 1) / this.b);
+    paramInt = this.d;
+    this.c = paramInt;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      int j = this.b;
+      this.c = ((paramInt + j - 1) / j);
     }
   }
   
@@ -112,21 +115,19 @@ public class GridListView
     if (this.jdField_a_of_type_Int != paramInt)
     {
       this.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter != null)
+      GridListView.GridListAdapter localGridListAdapter = this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter;
+      if (localGridListAdapter != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.a(this.jdField_a_of_type_Int);
+        localGridListAdapter.a(this.jdField_a_of_type_Int);
         b(this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
       }
-      if (this.jdField_a_of_type_Int != 1) {
-        break label71;
+      if (this.jdField_a_of_type_Int == 1) {
+        paramInt = this.f;
+      } else {
+        paramInt = 0;
       }
-    }
-    label71:
-    for (paramInt = this.f;; paramInt = 0)
-    {
       setPadding(0, 0, 0, paramInt);
       this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
-      return;
     }
   }
   
@@ -135,8 +136,9 @@ public class GridListView
     if (paramInt != this.b)
     {
       this.b = paramInt;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter != null) {
-        a(this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+      GridListView.GridListAdapter localGridListAdapter = this.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter;
+      if (localGridListAdapter != null) {
+        a(localGridListAdapter.getCount());
       }
     }
   }
@@ -151,7 +153,7 @@ public class GridListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GridListView
  * JD-Core Version:    0.7.0.1
  */

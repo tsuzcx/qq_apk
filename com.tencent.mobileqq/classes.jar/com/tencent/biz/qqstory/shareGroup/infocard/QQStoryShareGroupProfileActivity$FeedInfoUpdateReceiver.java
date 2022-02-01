@@ -23,49 +23,46 @@ public class QQStoryShareGroupProfileActivity$FeedInfoUpdateReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull FeedInfoChangeEvent paramFeedInfoChangeEvent)
   {
-    if ((paramFeedInfoChangeEvent.b != 3) || (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {}
-    ArrayList localArrayList;
-    label68:
-    do
+    if (paramFeedInfoChangeEvent.b == 3)
     {
-      return;
+      if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null) {
+        return;
+      }
       int i;
-      ShareGroupsListAdapter localShareGroupsListAdapter;
-      HotSortVideoEntry localHotSortVideoEntry;
-      if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike == 1)
-      {
+      if (paramFeedInfoChangeEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike == 1) {
         i = 1;
-        localShareGroupsListAdapter = paramQQStoryShareGroupProfileActivity.a.a;
-        Object localObject = paramQQStoryShareGroupProfileActivity.a.a.a;
-        localArrayList = new ArrayList();
-        localObject = ((List)localObject).iterator();
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-        } while (!localHotSortVideoEntry.feedId.equals(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString));
-        if (i == 0) {
-          break label164;
-        }
-      }
-      for (int j = localHotSortVideoEntry.likeCount + 1;; j = localHotSortVideoEntry.likeCount - 1)
-      {
-        localHotSortVideoEntry.likeCount = j;
-        if (localHotSortVideoEntry.likeCount < 0) {
-          localHotSortVideoEntry.likeCount = 0;
-        }
-        localShareGroupsListAdapter.a(localHotSortVideoEntry);
-        localArrayList.add(localHotSortVideoEntry);
-        break label68;
+      } else {
         i = 0;
-        break;
       }
-    } while (localArrayList.size() <= 0);
-    label164:
-    ((HotSortVideoManager)SuperManager.a(25)).a(localArrayList);
-    paramQQStoryShareGroupProfileActivity.d = true;
+      ShareGroupsListAdapter localShareGroupsListAdapter = paramQQStoryShareGroupProfileActivity.a.a;
+      Object localObject = paramQQStoryShareGroupProfileActivity.a.a.a;
+      ArrayList localArrayList = new ArrayList();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        HotSortVideoEntry localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
+        if (localHotSortVideoEntry.feedId.equals(paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString))
+        {
+          int j;
+          if (i != 0) {
+            j = localHotSortVideoEntry.likeCount + 1;
+          } else {
+            j = localHotSortVideoEntry.likeCount - 1;
+          }
+          localHotSortVideoEntry.likeCount = j;
+          if (localHotSortVideoEntry.likeCount < 0) {
+            localHotSortVideoEntry.likeCount = 0;
+          }
+          localShareGroupsListAdapter.a(localHotSortVideoEntry);
+          localArrayList.add(localHotSortVideoEntry);
+        }
+      }
+      if (localArrayList.size() > 0)
+      {
+        ((HotSortVideoManager)SuperManager.a(25)).a(localArrayList);
+        paramQQStoryShareGroupProfileActivity.d = true;
+      }
+    }
   }
   
   public Class acceptEventClass()
@@ -77,7 +74,7 @@ public class QQStoryShareGroupProfileActivity$FeedInfoUpdateReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.FeedInfoUpdateReceiver
  * JD-Core Version:    0.7.0.1
  */

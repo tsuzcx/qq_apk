@@ -30,13 +30,14 @@ public final class SecVerifyApk$ReportDetectResultPacket
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122 }, new String[] { "uint32_cmd", "uint32_result", "uint32_appid", "str_signature", "str_apkmd5", "str_rsamd5", "str_txsfcfgkmd5", "str_apkversion", "str_channelid", "str_uin", "bytes_guid", "str_sysversion", "str_brand", "str_model", "package_name" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", "", "", "", localByteStringMicro, "", "", "", "" }, ReportDetectResultPacket.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114, 122 }, new String[] { "uint32_cmd", "uint32_result", "uint32_appid", "str_signature", "str_apkmd5", "str_rsamd5", "str_txsfcfgkmd5", "str_apkversion", "str_channelid", "str_uin", "bytes_guid", "str_sysversion", "str_brand", "str_model", "package_name" }, new Object[] { localInteger, localInteger, localInteger, "", "", "", "", "", "", "", localByteStringMicro, "", "", "", "" }, ReportDetectResultPacket.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.SecVerifyApk.ReportDetectResultPacket
  * JD-Core Version:    0.7.0.1
  */

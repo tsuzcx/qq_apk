@@ -58,23 +58,26 @@ public final class operation_publishmessage_req
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.ownuin, 1);
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 2);
+    Object localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.isverified, 3);
     paramJceOutputStream.write(this.mediabittype, 4);
-    if (this.mediainfo != null) {
-      paramJceOutputStream.write(this.mediainfo, 5);
+    localObject = this.mediainfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 6);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
     paramJceOutputStream.write(this.iMsgType, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_publishmessage_req
  * JD-Core Version:    0.7.0.1
  */

@@ -15,25 +15,24 @@ class InputStatusHelper$1
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (InputStatusHelper.a(this.a) != null)
-    {
-      if (TextUtils.isEmpty(paramCharSequence)) {
-        break label45;
-      }
-      if (!InputStatusHelper.b(this.a))
+    if (InputStatusHelper.a(this.a) != null) {
+      if (!TextUtils.isEmpty(paramCharSequence))
       {
-        InputStatusHelper.b(this.a, true);
-        InputStatusHelper.a(this.a, 1);
+        if (!InputStatusHelper.b(this.a))
+        {
+          InputStatusHelper.b(this.a, true);
+          InputStatusHelper.a(this.a, 1);
+        }
+      }
+      else {
+        this.a.c();
       }
     }
-    return;
-    label45:
-    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.inputstatus.InputStatusHelper.1
  * JD-Core Version:    0.7.0.1
  */

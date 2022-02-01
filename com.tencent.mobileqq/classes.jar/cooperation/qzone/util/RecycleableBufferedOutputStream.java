@@ -10,7 +10,7 @@ public class RecycleableBufferedOutputStream
   extends FilterOutputStream
 {
   private static final Object POOL_LOCK = new Object();
-  private static int poolSize = 0;
+  private static int poolSize;
   private static RecycleableBufferedOutputStream sPool;
   private final int MAX_POOL_SIZE = 4;
   protected byte[] buf;
@@ -32,16 +32,25 @@ public class RecycleableBufferedOutputStream
   
   private void checkNotClosed()
   {
-    if (!this.used) {
-      throw new IOException("BufferedOutputStream is closed");
+    if (this.used) {
+      return;
     }
+    throw new IOException("BufferedOutputStream is closed");
   }
   
   public static void checkOffsetAndCount(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (((paramInt2 | paramInt3) < 0) || (paramInt2 > paramInt1) || (paramInt1 - paramInt2 < paramInt3)) {
-      throw new IndexOutOfBoundsException("length=" + paramInt1 + "; regionStart=" + paramInt2 + "; regionLength=" + paramInt3);
+    if (((paramInt2 | paramInt3) >= 0) && (paramInt2 <= paramInt1) && (paramInt1 - paramInt2 >= paramInt3)) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("length=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("; regionStart=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("; regionLength=");
+    localStringBuilder.append(paramInt3);
+    throw new IndexOutOfBoundsException(localStringBuilder.toString());
   }
   
   private void clearForRecycle()
@@ -62,24 +71,27 @@ public class RecycleableBufferedOutputStream
   
   public static RecycleableBufferedOutputStream obtain(@NonNull OutputStream paramOutputStream)
   {
-    RecycleableBufferedOutputStream localRecycleableBufferedOutputStream = null;
-    synchronized (POOL_LOCK)
+    for (;;)
     {
-      if (sPool != null)
+      synchronized (POOL_LOCK)
       {
-        localRecycleableBufferedOutputStream = sPool;
-        sPool = localRecycleableBufferedOutputStream.next;
-        localRecycleableBufferedOutputStream.next = null;
-        poolSize -= 1;
+        if (sPool != null)
+        {
+          localRecycleableBufferedOutputStream = sPool;
+          sPool = localRecycleableBufferedOutputStream.next;
+          localRecycleableBufferedOutputStream.next = null;
+          poolSize -= 1;
+          if (localRecycleableBufferedOutputStream != null)
+          {
+            localRecycleableBufferedOutputStream.out = paramOutputStream;
+            localRecycleableBufferedOutputStream.used = true;
+            return localRecycleableBufferedOutputStream;
+          }
+          return new RecycleableBufferedOutputStream(paramOutputStream);
+        }
       }
-      if (localRecycleableBufferedOutputStream != null)
-      {
-        localRecycleableBufferedOutputStream.out = paramOutputStream;
-        localRecycleableBufferedOutputStream.used = true;
-        return localRecycleableBufferedOutputStream;
-      }
+      RecycleableBufferedOutputStream localRecycleableBufferedOutputStream = null;
     }
-    return new RecycleableBufferedOutputStream(paramOutputStream);
   }
   
   private void recycle()
@@ -97,32 +109,49 @@ public class RecycleableBufferedOutputStream
     }
   }
   
+  /* Error */
   public void close()
   {
-    try
-    {
-      boolean bool = this.used;
-      if (bool) {
-        break label14;
-      }
-    }
-    finally
-    {
-      try
-      {
-        for (;;)
-        {
-          label14:
-          super.close();
-          recycle();
-        }
-      }
-      finally
-      {
-        recycle();
-      }
-      localObject1 = finally;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 51	cooperation/qzone/util/RecycleableBufferedOutputStream:used	Z
+    //   6: istore_1
+    //   7: iload_1
+    //   8: ifne +6 -> 14
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: return
+    //   14: aload_0
+    //   15: invokespecial 113	java/io/FilterOutputStream:close	()V
+    //   18: aload_0
+    //   19: invokespecial 115	cooperation/qzone/util/RecycleableBufferedOutputStream:recycle	()V
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: return
+    //   25: astore_2
+    //   26: aload_0
+    //   27: invokespecial 115	cooperation/qzone/util/RecycleableBufferedOutputStream:recycle	()V
+    //   30: aload_2
+    //   31: athrow
+    //   32: astore_2
+    //   33: aload_0
+    //   34: monitorexit
+    //   35: aload_2
+    //   36: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	37	0	this	RecycleableBufferedOutputStream
+    //   6	2	1	bool	boolean
+    //   25	6	2	localObject1	Object
+    //   32	4	2	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   14	18	25	finally
+    //   2	7	32	finally
+    //   18	22	32	finally
+    //   26	32	32	finally
   }
   
   public void flush()
@@ -165,32 +194,31 @@ public class RecycleableBufferedOutputStream
     try
     {
       checkNotClosed();
-      if (paramArrayOfByte == null) {
-        throw new NullPointerException("buffer == null");
+      if (paramArrayOfByte != null)
+      {
+        byte[] arrayOfByte = this.buf;
+        if (paramInt2 >= arrayOfByte.length)
+        {
+          flushInternal();
+          this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+          return;
+        }
+        checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
+        if (paramInt2 > arrayOfByte.length - this.count) {
+          flushInternal();
+        }
+        System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, this.count, paramInt2);
+        this.count += paramInt2;
+        return;
       }
+      throw new NullPointerException("buffer == null");
     }
     finally {}
-    byte[] arrayOfByte = this.buf;
-    if (paramInt2 >= arrayOfByte.length)
-    {
-      flushInternal();
-      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      return;
-      checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
-      if (paramInt2 > arrayOfByte.length - this.count) {
-        flushInternal();
-      }
-      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, this.count, paramInt2);
-      this.count += paramInt2;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.RecycleableBufferedOutputStream
  * JD-Core Version:    0.7.0.1
  */

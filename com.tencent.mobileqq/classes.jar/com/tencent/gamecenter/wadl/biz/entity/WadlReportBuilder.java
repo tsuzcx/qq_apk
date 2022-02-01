@@ -18,7 +18,7 @@ import org.json.JSONObject;
 
 public class WadlReportBuilder
 {
-  public static int a;
+  public static int a = 51;
   public String a;
   public HashMap<Integer, String> a;
   public int b;
@@ -28,11 +28,6 @@ public class WadlReportBuilder
   public String d;
   public String e;
   public String f;
-  
-  static
-  {
-    jdField_a_of_type_Int = 51;
-  }
   
   public WadlReportBuilder()
   {
@@ -72,70 +67,71 @@ public class WadlReportBuilder
     JSONArray localJSONArray = new JSONArray();
     for (;;)
     {
-      JSONObject localJSONObject2;
       try
       {
-        localJSONObject2 = new JSONObject();
+        JSONObject localJSONObject2 = new JSONObject();
         JSONObject localJSONObject3 = new JSONObject();
         localJSONObject3.put("itimestamp", String.valueOf(NetConnInfoCenter.getServerTime()));
         localJSONObject3.put("domain", "1");
-        localJSONObject3.put("sq_ver", "8.5.5");
+        localJSONObject3.put("sq_ver", "8.7.0");
         localJSONObject3.put("gamecenter_ver", "");
         localJSONObject3.put("gamecenter_ver_type", "2");
         localJSONObject3.put("device_type", Build.BRAND);
         int j = HttpUtil.getNetWorkType();
-        if (j < 0) {
-          break label455;
-        }
-        i = j;
-        if (j >= AppConstants.NET_TYPE_NAME.length) {
-          break label455;
-        }
-        localJSONObject3.put("net_type", AppConstants.NET_TYPE_NAME[i]);
-        localJSONObject3.put("resolution", GameCenterUtil.c());
-        localJSONObject3.put("is_red_point", "0");
-        localJSONObject3.put("is_new_status", "0");
-        localJSONObject3.put("gamecenter_src", "1");
-        localJSONObject3.put("ret_id", String.valueOf(this.jdField_c_of_type_Int));
-        if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-          localJSONObject3.put("oper_moudle", this.jdField_c_of_type_JavaLangString);
-        }
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-          localJSONObject3.put("oper_id", this.jdField_b_of_type_JavaLangString);
-        }
-        if (!TextUtils.isEmpty(this.d)) {
-          localJSONObject3.put("gameappid", this.d);
-        }
-        if (!TextUtils.isEmpty(this.e)) {
-          localJSONObject3.put("tianji_report_str", this.e);
-        }
-        if (!TextUtils.isEmpty(this.f)) {
-          localJSONObject3.put("apk_volume", this.f);
-        }
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-        if (localIterator.hasNext())
+        if (j >= 0)
         {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          String str = (String)localEntry.getValue();
-          if (TextUtils.isEmpty(str)) {
-            continue;
+          i = j;
+          if (j < AppConstants.NET_TYPE_NAME.length)
+          {
+            localJSONObject3.put("net_type", AppConstants.NET_TYPE_NAME[i]);
+            localJSONObject3.put("resolution", GameCenterUtil.c());
+            localJSONObject3.put("is_red_point", "0");
+            localJSONObject3.put("is_new_status", "0");
+            localJSONObject3.put("gamecenter_src", "1");
+            localJSONObject3.put("ret_id", String.valueOf(this.jdField_c_of_type_Int));
+            if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+              localJSONObject3.put("oper_moudle", this.jdField_c_of_type_JavaLangString);
+            }
+            if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+              localJSONObject3.put("oper_id", this.jdField_b_of_type_JavaLangString);
+            }
+            if (!TextUtils.isEmpty(this.d)) {
+              localJSONObject3.put("gameappid", this.d);
+            }
+            if (!TextUtils.isEmpty(this.e)) {
+              localJSONObject3.put("tianji_report_str", this.e);
+            }
+            if (!TextUtils.isEmpty(this.f)) {
+              localJSONObject3.put("apk_volume", this.f);
+            }
+            Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+            if (localIterator.hasNext())
+            {
+              Map.Entry localEntry = (Map.Entry)localIterator.next();
+              String str = (String)localEntry.getValue();
+              if (TextUtils.isEmpty(str)) {
+                continue;
+              }
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("ext");
+              localStringBuilder.append(localEntry.getKey());
+              localJSONObject3.put(localStringBuilder.toString(), str);
+              continue;
+            }
+            localJSONObject2.put("data", localJSONObject3);
+            localJSONObject2.put("dc_id", this.jdField_a_of_type_JavaLangString);
+            localJSONArray.put(localJSONObject2);
+            localJSONObject1.put("target", paramInt);
+            localJSONObject1.put("report_list", localJSONArray);
+            return localJSONObject1;
           }
-          localJSONObject3.put("ext" + localEntry.getKey(), str);
-          continue;
         }
-        localJSONObject2.put("data", localJSONObject3);
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
         return localJSONObject1;
       }
-      localJSONObject2.put("dc_id", this.jdField_a_of_type_JavaLangString);
-      localException.put(localJSONObject2);
-      localJSONObject1.put("target", paramInt);
-      localJSONObject1.put("report_list", localException);
-      return localJSONObject1;
-      label455:
       int i = 0;
     }
   }
@@ -177,17 +173,23 @@ public class WadlReportBuilder
   
   public WadlReportBuilder g(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    a(4, paramString);
     return this;
   }
   
   public WadlReportBuilder h(String paramString)
   {
-    this.e = paramString;
+    this.jdField_c_of_type_JavaLangString = paramString;
     return this;
   }
   
   public WadlReportBuilder i(String paramString)
+  {
+    this.e = paramString;
+    return this;
+  }
+  
+  public WadlReportBuilder j(String paramString)
   {
     this.f = paramString;
     return this;
@@ -195,12 +197,20 @@ public class WadlReportBuilder
   
   public String toString()
   {
-    return "[dcId=" + this.jdField_a_of_type_JavaLangString + ",operId=" + this.jdField_b_of_type_JavaLangString + ",operModule=" + this.jdField_c_of_type_JavaLangString + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[dcId=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",operId=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",operModule=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.entity.WadlReportBuilder
  * JD-Core Version:    0.7.0.1
  */

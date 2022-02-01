@@ -9,8 +9,8 @@ public class QZonePublishVoiceShuoShuoH5Plugin
 {
   public static final String NAMESPACE = "Qzone";
   public static final String TAG = "QZonePublishVoiceShuoShuoH5Plugin";
-  private static int count = 0;
-  public static QZonePublishVoiceShuoShuoH5Plugin my = null;
+  private static int count;
+  public static QZonePublishVoiceShuoShuoH5Plugin my;
   private String voicePanelCallback = null;
   
   public QZonePublishVoiceShuoShuoH5Plugin()
@@ -20,16 +20,23 @@ public class QZonePublishVoiceShuoShuoH5Plugin
   
   public static void onDeleteAudioVoice(String paramString)
   {
-    if ((my != null) && (my.parentPlugin != null))
+    Object localObject = my;
+    if ((localObject != null) && (((QZonePublishVoiceShuoShuoH5Plugin)localObject).parentPlugin != null))
     {
       QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onDeleteAudioVoice");
-      my.parentPlugin.callJs("window.moodVoice.onVoiceDelete('" + paramString + "')");
+      localObject = my.parentPlugin;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("window.moodVoice.onVoiceDelete('");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("')");
+      ((WebViewPlugin)localObject).callJs(localStringBuilder.toString());
     }
   }
   
   public static void onNotifyH5CutCancel()
   {
-    if ((my != null) && (my.parentPlugin != null))
+    QZonePublishVoiceShuoShuoH5Plugin localQZonePublishVoiceShuoShuoH5Plugin = my;
+    if ((localQZonePublishVoiceShuoShuoH5Plugin != null) && (localQZonePublishVoiceShuoShuoH5Plugin.parentPlugin != null))
     {
       QLog.d("QZonePublishVoiceShuoShuoH5Plugin", 2, "onNotifyH5CutCancel");
       my.parentPlugin.callJs("window.moodVoice.cutCancel()");
@@ -38,7 +45,8 @@ public class QZonePublishVoiceShuoShuoH5Plugin
   
   public static void onNotifyH5RecordOk()
   {
-    if ((my != null) && (my.parentPlugin != null)) {
+    QZonePublishVoiceShuoShuoH5Plugin localQZonePublishVoiceShuoShuoH5Plugin = my;
+    if ((localQZonePublishVoiceShuoShuoH5Plugin != null) && (localQZonePublishVoiceShuoShuoH5Plugin.parentPlugin != null)) {
       my.parentPlugin.callJs("window.QZMoodVoiceJSInterface.notifyGetVoiceRecordTime()");
     }
   }
@@ -55,7 +63,7 @@ public class QZonePublishVoiceShuoShuoH5Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZonePublishVoiceShuoShuoH5Plugin
  * JD-Core Version:    0.7.0.1
  */

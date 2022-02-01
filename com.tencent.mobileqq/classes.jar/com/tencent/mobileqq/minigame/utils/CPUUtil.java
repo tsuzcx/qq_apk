@@ -31,15 +31,18 @@ public class CPUUtil
   
   private static Boolean checkCPUABIStringV7(String paramString)
   {
-    if ((paramString.equalsIgnoreCase("armeabi-v7a")) || (paramString.equalsIgnoreCase("arm64-v8a"))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    boolean bool;
+    if ((!paramString.equalsIgnoreCase("armeabi-v7a")) && (!paramString.equalsIgnoreCase("arm64-v8a"))) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    return Boolean.valueOf(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.CPUUtil
  * JD-Core Version:    0.7.0.1
  */

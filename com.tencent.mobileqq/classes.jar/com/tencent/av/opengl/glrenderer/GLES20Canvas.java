@@ -103,20 +103,21 @@ public class GLES20Canvas
       Utils.a();
     }
     float[] arrayOfFloat = a(paramInt2);
-    if (arrayOfFloat[3] < 1.0F) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      if (bool)
-      {
-        GLES20.glBlendColor(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3]);
-        Utils.a();
-      }
-      GLES20.glUniform4fv(this.jdField_a_of_type_ComTencentAvOpenglProgramDrawProgram.a()[2].jdField_a_of_type_Int, 1, arrayOfFloat, 0);
-      a(this.jdField_a_of_type_ComTencentAvOpenglProgramDrawProgram.a(), paramInt1);
-      Utils.a();
-      return;
+    boolean bool;
+    if (arrayOfFloat[3] < 1.0F) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    a(bool);
+    if (bool)
+    {
+      GLES20.glBlendColor(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2], arrayOfFloat[3]);
+      Utils.a();
+    }
+    GLES20.glUniform4fv(this.jdField_a_of_type_ComTencentAvOpenglProgramDrawProgram.a()[2].jdField_a_of_type_Int, 1, arrayOfFloat, 0);
+    a(this.jdField_a_of_type_ComTencentAvOpenglProgramDrawProgram.a(), paramInt1);
+    Utils.a();
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt4, float paramFloat5)
@@ -142,10 +143,14 @@ public class GLES20Canvas
   {
     int k = paramBasicTexture.e();
     int m = paramBasicTexture.f();
-    paramRectF.left /= k;
-    paramRectF.right /= k;
-    paramRectF.top /= m;
-    paramRectF.bottom /= m;
+    float f1 = paramRectF.left;
+    float f2 = k;
+    paramRectF.left = (f1 / f2);
+    paramRectF.right /= f2;
+    f1 = paramRectF.top;
+    f2 = m;
+    paramRectF.top = (f1 / f2);
+    paramRectF.bottom /= f2;
   }
   
   private void a(BasicTexture paramBasicTexture, RectF paramRectF1, RectF paramRectF2)
@@ -221,7 +226,8 @@ public class GLES20Canvas
   private float[] a()
   {
     Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_e_of_type_ArrayOfFloat, 0, this.jdField_f_of_type_ArrayOfFloat, 0);
-    Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_d_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_ArrayOfFloat, 0);
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    Matrix.multiplyMM(arrayOfFloat, 0, this.jdField_d_of_type_ArrayOfFloat, 0, arrayOfFloat, 0);
     return this.jdField_a_of_type_ArrayOfFloat;
   }
   
@@ -231,11 +237,12 @@ public class GLES20Canvas
     float f2 = (paramInt >>> 16 & 0xFF) / 255.0F;
     float f3 = (paramInt >>> 8 & 0xFF) / 255.0F;
     float f4 = (paramInt & 0xFF) / 255.0F;
-    this.jdField_h_of_type_ArrayOfFloat[0] = (f2 * f1);
-    this.jdField_h_of_type_ArrayOfFloat[1] = (f3 * f1);
-    this.jdField_h_of_type_ArrayOfFloat[2] = (f4 * f1);
-    this.jdField_h_of_type_ArrayOfFloat[3] = f1;
-    return this.jdField_h_of_type_ArrayOfFloat;
+    float[] arrayOfFloat = this.jdField_h_of_type_ArrayOfFloat;
+    arrayOfFloat[0] = (f2 * f1);
+    arrayOfFloat[1] = (f3 * f1);
+    arrayOfFloat[2] = (f4 * f1);
+    arrayOfFloat[3] = f1;
+    return arrayOfFloat;
   }
   
   public float a()
@@ -316,46 +323,49 @@ public class GLES20Canvas
   public void a(int paramInt)
   {
     int m = 0;
-    int k;
-    float f1;
-    if ((paramInt & 0x1) == 1)
-    {
+    if ((paramInt & 0x1) == 1) {
       k = 1;
-      if (k != 0)
+    } else {
+      k = 0;
+    }
+    if (k != 0)
+    {
+      float f1 = a();
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_c_of_type_ArrayOfFloat.length <= this.jdField_a_of_type_Int)
       {
-        f1 = a();
-        this.jdField_a_of_type_Int += 1;
-        if (this.jdField_c_of_type_ArrayOfFloat.length <= this.jdField_a_of_type_Int) {
-          if (Build.VERSION.SDK_INT < 9) {
-            break label113;
+        float[] arrayOfFloat1;
+        if (Build.VERSION.SDK_INT >= 9)
+        {
+          arrayOfFloat1 = this.jdField_c_of_type_ArrayOfFloat;
+          this.jdField_c_of_type_ArrayOfFloat = Arrays.copyOf(arrayOfFloat1, arrayOfFloat1.length * 2);
+        }
+        else
+        {
+          arrayOfFloat1 = new float[this.jdField_c_of_type_ArrayOfFloat.length * 2];
+          k = 0;
+          for (;;)
+          {
+            float[] arrayOfFloat2 = this.jdField_c_of_type_ArrayOfFloat;
+            if (k >= arrayOfFloat2.length) {
+              break;
+            }
+            arrayOfFloat1[k] = arrayOfFloat2[k];
+            k += 1;
           }
+          this.jdField_c_of_type_ArrayOfFloat = arrayOfFloat1;
         }
       }
-    }
-    label113:
-    float[] arrayOfFloat;
-    for (this.jdField_c_of_type_ArrayOfFloat = Arrays.copyOf(this.jdField_c_of_type_ArrayOfFloat, this.jdField_c_of_type_ArrayOfFloat.length * 2);; this.jdField_c_of_type_ArrayOfFloat = arrayOfFloat)
-    {
       this.jdField_c_of_type_ArrayOfFloat[this.jdField_a_of_type_Int] = f1;
-      k = m;
-      if ((paramInt & 0x2) == 2) {
-        k = 1;
-      }
-      if (k != 0) {
-        f();
-      }
-      this.jdField_a_of_type_ComTencentAvOpenglUtilsIntArray.a(paramInt);
-      return;
-      k = 0;
-      break;
-      arrayOfFloat = new float[this.jdField_c_of_type_ArrayOfFloat.length * 2];
-      k = 0;
-      while (k < this.jdField_c_of_type_ArrayOfFloat.length)
-      {
-        arrayOfFloat[k] = this.jdField_c_of_type_ArrayOfFloat[k];
-        k += 1;
-      }
     }
+    int k = m;
+    if ((paramInt & 0x2) == 2) {
+      k = 1;
+    }
+    if (k != 0) {
+      f();
+    }
+    this.jdField_a_of_type_ComTencentAvOpenglUtilsIntArray.a(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -364,11 +374,12 @@ public class GLES20Canvas
     this.jdField_d_of_type_Int = paramInt2;
     GLES20.glViewport(0, 0, paramInt1, paramInt2);
     e();
-    a(-paramInt1 / 4, paramInt1 / 4, -paramInt2 / 4, paramInt2 / 4, paramInt2, 1000000.0F);
+    int k = -paramInt1;
+    a(k / 4, paramInt1 / 4, -paramInt2 / 4, paramInt2 / 4, paramInt2, 1000000.0F);
     a(0.0F, 0.0F, paramInt2 * 2, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
     a(0.0F, paramInt2 / 2, 0.0F);
     b(1.0F, -1.0F, 1.0F);
-    a(-paramInt1 / 2, 0.0F, 0.0F);
+    a(k / 2, 0.0F, 0.0F);
     Utils.a();
   }
   
@@ -405,14 +416,17 @@ public class GLES20Canvas
   
   public void a(BasicTexture paramBasicTexture, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt3 <= 0) || (paramInt4 <= 0)) {
-      return;
+    if (paramInt3 > 0)
+    {
+      if (paramInt4 <= 0) {
+        return;
+      }
+      Rect localRect = paramBasicTexture.a();
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(localRect.left, localRect.top, localRect.right, localRect.bottom);
+      this.jdField_b_of_type_AndroidGraphicsRectF.set(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
+      a(this.jdField_a_of_type_AndroidGraphicsRectF, paramBasicTexture);
+      a(paramBasicTexture, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsRectF);
     }
-    Rect localRect = paramBasicTexture.a();
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(localRect.left, localRect.top, localRect.right, localRect.bottom);
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
-    a(this.jdField_a_of_type_AndroidGraphicsRectF, paramBasicTexture);
-    a(paramBasicTexture, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsRectF);
   }
   
   public void a(BasicTexture paramBasicTexture, int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3, int paramInt4)
@@ -445,11 +459,14 @@ public class GLES20Canvas
   
   public void a(BasicTexture paramBasicTexture, float[] paramArrayOfFloat, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt3 <= 0) || (paramInt4 <= 0)) {
-      return;
+    if (paramInt3 > 0)
+    {
+      if (paramInt4 <= 0) {
+        return;
+      }
+      this.jdField_b_of_type_AndroidGraphicsRectF.set(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
+      a(paramBasicTexture, paramArrayOfFloat, this.jdField_b_of_type_AndroidGraphicsRectF);
     }
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
-    a(paramBasicTexture, paramArrayOfFloat, this.jdField_b_of_type_AndroidGraphicsRectF);
   }
   
   public boolean a(BasicTexture paramBasicTexture)
@@ -494,16 +511,6 @@ public class GLES20Canvas
     Matrix.scaleM(this.jdField_f_of_type_ArrayOfFloat, 0, paramFloat1, paramFloat2, paramFloat3);
   }
   
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
-    GLES20.glViewport(0, 0, paramInt1, paramInt2);
-    a(-paramInt1 / 4, paramInt1 / 4, -paramInt2 / 4, paramInt2 / 4, paramInt2, 1000000.0F);
-    a(0.0F, 0.0F, paramInt2 * 2, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
-    Utils.a();
-  }
-  
   public int c()
   {
     return this.jdField_c_of_type_Int;
@@ -511,29 +518,24 @@ public class GLES20Canvas
   
   public void c()
   {
-    int m = 1;
     int n = this.jdField_a_of_type_ComTencentAvOpenglUtilsIntArray.a();
-    if ((n & 0x1) == 1)
-    {
+    int m = 0;
+    if ((n & 0x1) == 1) {
       k = 1;
-      if (k != 0) {
-        this.jdField_a_of_type_Int -= 1;
-      }
-      if ((n & 0x2) != 2) {
-        break label67;
-      }
-    }
-    label67:
-    for (int k = m;; k = 0)
-    {
-      if (k != 0)
-      {
-        this.jdField_b_of_type_Int -= 16;
-        g();
-      }
-      return;
+    } else {
       k = 0;
-      break;
+    }
+    if (k != 0) {
+      this.jdField_a_of_type_Int -= 1;
+    }
+    int k = m;
+    if ((n & 0x2) == 2) {
+      k = 1;
+    }
+    if (k != 0)
+    {
+      this.jdField_b_of_type_Int -= 16;
+      g();
     }
   }
   
@@ -592,7 +594,7 @@ public class GLES20Canvas
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.glrenderer.GLES20Canvas
  * JD-Core Version:    0.7.0.1
  */

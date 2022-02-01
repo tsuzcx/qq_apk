@@ -70,108 +70,123 @@ public class MovingView
   private Point a(int paramInt1, int paramInt2)
   {
     int m = this.jdField_a_of_type_JavaUtilRandom.nextInt(3);
-    switch (this.g)
+    int n = this.g;
+    Point localPoint;
+    if (n != 0)
     {
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_AndroidGraphicsPoint;
-      if (m == 0)
+      if (n != 1)
       {
-        this.g = 2;
-        this.jdField_a_of_type_AndroidGraphicsPoint.x = (-paramInt1);
-        this.jdField_a_of_type_AndroidGraphicsPoint.y = 0;
-      }
-      else if (m == 1)
-      {
-        this.g = 3;
-        this.jdField_a_of_type_AndroidGraphicsPoint.x = (-paramInt1);
-        this.jdField_a_of_type_AndroidGraphicsPoint.y = (-paramInt2);
-      }
-      else if (m == 2)
-      {
-        this.g = 1;
-        this.jdField_a_of_type_AndroidGraphicsPoint.x = 0;
-        this.jdField_a_of_type_AndroidGraphicsPoint.y = (-paramInt2);
-        continue;
-        if (m == 0)
+        if (n != 2)
         {
-          this.g = 0;
-          this.jdField_a_of_type_AndroidGraphicsPoint.x = 0;
-          this.jdField_a_of_type_AndroidGraphicsPoint.y = paramInt2;
-        }
-        else if (m == 1)
-        {
-          this.g = 2;
-          this.jdField_a_of_type_AndroidGraphicsPoint.x = (-paramInt1);
-          this.jdField_a_of_type_AndroidGraphicsPoint.y = paramInt2;
-        }
-        else if (m == 2)
-        {
-          this.g = 3;
-          this.jdField_a_of_type_AndroidGraphicsPoint.x = (-paramInt1);
-          this.jdField_a_of_type_AndroidGraphicsPoint.y = 0;
-          continue;
-          if (m == 0)
-          {
-            this.g = 3;
-            this.jdField_a_of_type_AndroidGraphicsPoint.x = 0;
-            this.jdField_a_of_type_AndroidGraphicsPoint.y = (-paramInt2);
-          }
-          else if (m == 1)
-          {
-            this.g = 1;
-            this.jdField_a_of_type_AndroidGraphicsPoint.x = paramInt1;
-            this.jdField_a_of_type_AndroidGraphicsPoint.y = (-paramInt2);
-          }
-          else if (m == 2)
-          {
-            this.g = 0;
-            this.jdField_a_of_type_AndroidGraphicsPoint.x = paramInt1;
-            this.jdField_a_of_type_AndroidGraphicsPoint.y = 0;
-            continue;
+          if (n == 3) {
             if (m == 0)
             {
               this.g = 1;
-              this.jdField_a_of_type_AndroidGraphicsPoint.x = paramInt1;
-              this.jdField_a_of_type_AndroidGraphicsPoint.y = 0;
+              localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+              localPoint.x = paramInt1;
+              localPoint.y = 0;
             }
             else if (m == 1)
             {
               this.g = 0;
-              this.jdField_a_of_type_AndroidGraphicsPoint.x = paramInt1;
-              this.jdField_a_of_type_AndroidGraphicsPoint.y = paramInt2;
+              localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+              localPoint.x = paramInt1;
+              localPoint.y = paramInt2;
             }
             else if (m == 2)
             {
               this.g = 2;
-              this.jdField_a_of_type_AndroidGraphicsPoint.x = 0;
-              this.jdField_a_of_type_AndroidGraphicsPoint.y = paramInt2;
+              localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+              localPoint.x = 0;
+              localPoint.y = paramInt2;
             }
           }
         }
+        else if (m == 0)
+        {
+          this.g = 3;
+          localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+          localPoint.x = 0;
+          localPoint.y = (-paramInt2);
+        }
+        else if (m == 1)
+        {
+          this.g = 1;
+          localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+          localPoint.x = paramInt1;
+          localPoint.y = (-paramInt2);
+        }
+        else if (m == 2)
+        {
+          this.g = 0;
+          localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+          localPoint.x = paramInt1;
+          localPoint.y = 0;
+        }
+      }
+      else if (m == 0)
+      {
+        this.g = 0;
+        localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+        localPoint.x = 0;
+        localPoint.y = paramInt2;
+      }
+      else if (m == 1)
+      {
+        this.g = 2;
+        localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+        localPoint.x = (-paramInt1);
+        localPoint.y = paramInt2;
+      }
+      else if (m == 2)
+      {
+        this.g = 3;
+        localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+        localPoint.x = (-paramInt1);
+        localPoint.y = 0;
       }
     }
+    else if (m == 0)
+    {
+      this.g = 2;
+      localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+      localPoint.x = (-paramInt1);
+      localPoint.y = 0;
+    }
+    else if (m == 1)
+    {
+      this.g = 3;
+      localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+      localPoint.x = (-paramInt1);
+      localPoint.y = (-paramInt2);
+    }
+    else if (m == 2)
+    {
+      this.g = 1;
+      localPoint = this.jdField_a_of_type_AndroidGraphicsPoint;
+      localPoint.x = 0;
+      localPoint.y = (-paramInt2);
+    }
+    return this.jdField_a_of_type_AndroidGraphicsPoint;
   }
   
   private void a(Bitmap paramBitmap, MovingView.MatrixParams paramMatrixParams)
   {
     float f3 = paramBitmap.getWidth();
     float f4 = paramBitmap.getHeight();
-    float f1 = this.jdField_a_of_type_Float / f3;
-    float f2 = this.jdField_b_of_type_Float / f4;
-    if (f1 > f2) {
-      f2 = this.jdField_a_of_type_Float;
+    float f1 = this.jdField_a_of_type_Float;
+    float f5 = f1 / f3;
+    float f2 = this.jdField_b_of_type_Float;
+    float f6 = f2 / f4;
+    if (f5 > f6) {
+      f2 = f4 * f5;
+    } else {
+      f1 = f3 * f6;
     }
-    for (f1 *= f4;; f1 = this.jdField_b_of_type_Float)
-    {
-      paramMatrixParams.jdField_a_of_type_Float = (f2 / f3);
-      paramMatrixParams.jdField_b_of_type_Float = (f1 / f4);
-      paramMatrixParams.c = ((this.jdField_a_of_type_Float - f2) / 2.0F);
-      paramMatrixParams.d = ((this.jdField_b_of_type_Float - f1) / 2.0F);
-      return;
-      f2 *= f3;
-    }
+    paramMatrixParams.jdField_a_of_type_Float = (f1 / f3);
+    paramMatrixParams.jdField_b_of_type_Float = (f2 / f4);
+    paramMatrixParams.c = ((this.jdField_a_of_type_Float - f1) / 2.0F);
+    paramMatrixParams.d = ((this.jdField_b_of_type_Float - f2) / 2.0F);
   }
   
   private void c()
@@ -192,27 +207,16 @@ public class MovingView
   
   int a(int paramInt1, int paramInt2)
   {
-    if (paramInt1 > 0)
-    {
-      if (paramInt2 <= 0) {
-        break label26;
-      }
-      label8:
-      if (paramInt1 <= paramInt2) {
-        break label32;
-      }
-    }
-    for (;;)
-    {
-      return (int)(paramInt1 * 54.700001F);
+    if (paramInt1 <= 0) {
       paramInt1 = -paramInt1;
-      break;
-      label26:
+    }
+    if (paramInt2 <= 0) {
       paramInt2 = -paramInt2;
-      break label8;
-      label32:
+    }
+    if (paramInt1 <= paramInt2) {
       paramInt1 = paramInt2;
     }
+    return (int)(paramInt1 * 54.700001F);
   }
   
   void a()
@@ -220,60 +224,56 @@ public class MovingView
     if (QLog.isColorLevel()) {
       QLog.i("MovingView", 2, "startTranslate");
     }
-    switch (this.g)
+    int m = this.g;
+    if (m != 0)
     {
+      if (m != 1)
+      {
+        if (m != 2)
+        {
+          if (m == 3)
+          {
+            this.jdField_a_of_type_Int = (-this.e);
+            this.jdField_b_of_type_Int = (-this.f);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_Int = (-this.e);
+          this.jdField_b_of_type_Int = 0;
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_b_of_type_Int = (-this.f);
+      }
     }
-    for (;;)
+    else
     {
-      Point localPoint = a(this.e, this.f);
-      this.jdField_c_of_type_Int = 0;
-      this.d = 0;
-      this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, 0, localPoint.x, localPoint.y, a(localPoint.x, localPoint.y));
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      return;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = (-this.f);
-      continue;
       this.jdField_a_of_type_Int = 0;
       this.jdField_b_of_type_Int = 0;
-      continue;
-      this.jdField_a_of_type_Int = (-this.e);
-      this.jdField_b_of_type_Int = (-this.f);
-      continue;
-      this.jdField_a_of_type_Int = (-this.e);
-      this.jdField_b_of_type_Int = 0;
     }
+    Point localPoint = a(this.e, this.f);
+    this.jdField_c_of_type_Int = 0;
+    this.d = 0;
+    this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
+    this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, 0, localPoint.x, localPoint.y, a(localPoint.x, localPoint.y));
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
   
   public void a(Bitmap paramBitmap)
   {
     if (paramBitmap != null)
     {
-      if (this.jdField_b_of_type_AndroidGraphicsBitmap == paramBitmap) {
+      Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+      if (localBitmap == paramBitmap)
+      {
         this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
-      for (;;)
+      else
       {
-        this.k = 1000;
-        this.i = 0;
-        this.j = 255;
-        this.l = 0;
-        this.jdField_c_of_type_Boolean = true;
-        this.h = 0;
-        if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-          this.jdField_a_of_type_Boolean = false;
-        }
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-          }
-        }
-        invalidate();
-        return;
-        this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+        this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
         this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
         if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
         {
@@ -290,6 +290,24 @@ public class MovingView
         }
         a(paramBitmap, this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams);
       }
+      this.k = 1000;
+      this.i = 0;
+      this.j = 255;
+      this.l = 0;
+      this.jdField_c_of_type_Boolean = true;
+      this.h = 0;
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+        this.jdField_a_of_type_Boolean = false;
+      }
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+        }
+      }
+      invalidate();
+      return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("MovingView", 2, "startTranslate, bitmap = null");
@@ -308,12 +326,13 @@ public class MovingView
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    int n = 1;
-    int m = 1;
     super.onDraw(paramCanvas);
-    if (getVisibility() != 0)
+    int i1 = getVisibility();
+    int n = 0;
+    int m = 0;
+    if (i1 != 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("MovingView", 2, "onDraw, getVisibility() != View.VISIBLE");
@@ -321,10 +340,30 @@ public class MovingView
       paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
       return;
     }
-    switch (this.h)
+    i1 = this.h;
+    if (i1 != 0)
     {
+      if ((i1 == 1) && (this.jdField_a_of_type_Long >= 0L))
+      {
+        float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.k;
+        if (f1 >= 1.0D) {
+          m = 1;
+        }
+        n = this.i;
+        this.l = ((int)(n + (this.j - n) * f1));
+      }
+      else
+      {
+        m = 1;
+      }
     }
-    while (m != 0)
+    else
+    {
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.h = 1;
+      m = n;
+    }
+    if (m != 0)
     {
       this.h = 2;
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
@@ -335,29 +374,12 @@ public class MovingView
         this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams.c + this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams.d + this.jdField_b_of_type_Int);
         paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
         return;
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        this.h = 1;
-        m = 0;
-        continue;
-        if (this.jdField_a_of_type_Long >= 0L)
-        {
-          float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.k;
-          if (f1 >= 1.0D) {}
-          for (m = n;; m = 0)
-          {
-            this.l = ((int)(this.i + f1 * (this.j - this.i)));
-            break;
-          }
-        }
       }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MovingView", 2, "onDraw, bitmap = null 1");
-        }
-        paramCanvas.drawColor(17170445, PorterDuff.Mode.CLEAR);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.i("MovingView", 2, "onDraw, bitmap = null 1");
       }
+      paramCanvas.drawColor(17170445, PorterDuff.Mode.CLEAR);
+      return;
     }
     m = this.l;
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
@@ -374,53 +396,49 @@ public class MovingView
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
       }
     }
-    if (m > 0)
-    {
-      if (this.jdField_b_of_type_AndroidGraphicsBitmap == null) {
-        break label520;
+    if (m > 0) {
+      if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(m);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams.jdField_b_of_type_Float);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams.c + this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams.d + this.jdField_b_of_type_Int);
+        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(m);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams.jdField_b_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams.c + this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentWidgetMovingView$MatrixParams.d + this.jdField_b_of_type_Int);
-      paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
-    }
-    for (;;)
-    {
-      invalidate();
-      return;
-      label520:
-      if (QLog.isColorLevel()) {
-        QLog.i("MovingView", 2, "onDraw, bitmap = null 2");
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("MovingView", 2, "onDraw, bitmap = null 2");
+        }
+        paramCanvas.drawColor(17170445, PorterDuff.Mode.CLEAR);
       }
-      paramCanvas.drawColor(17170445, PorterDuff.Mode.CLEAR);
     }
+    invalidate();
   }
   
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if (paramInt != 0) {
+    if (paramInt != 0)
+    {
       b();
     }
-    for (;;)
+    else if (paramInt == 0)
     {
-      postInvalidate();
-      return;
-      if (paramInt == 0) {
-        if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-          a(this.jdField_b_of_type_AndroidGraphicsBitmap);
-        } else if (QLog.isColorLevel()) {
-          QLog.i("MovingView", 2, "setVisibility, bitmap = null");
-        }
+      Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+      if (localBitmap != null) {
+        a(localBitmap);
+      } else if (QLog.isColorLevel()) {
+        QLog.i("MovingView", 2, "setVisibility, bitmap = null");
       }
     }
+    postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.MovingView
  * JD-Core Version:    0.7.0.1
  */

@@ -14,29 +14,41 @@ final class SwiftBrowserTBSHandler$10
   
   public void run()
   {
+    Object localObject;
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("TYPE", "4");
-      localHashMap.put("mimeType", "text/html");
-      localHashMap.put("encoding", "utf-8");
-      localHashMap.put("baseUrl", this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.getX5WebViewExtension().preLoad(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserTBSHandler", 2, "webView.getX5WebViewExtension().preLoad offline data:" + this.jdField_b_of_type_JavaLangString + ", sha1: " + this.c);
+      localObject = new HashMap();
+      ((Map)localObject).put("TYPE", "4");
+      ((Map)localObject).put("mimeType", "text/html");
+      ((Map)localObject).put("encoding", "utf-8");
+      ((Map)localObject).put("baseUrl", this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.getX5WebViewExtension().preLoad(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, (Map)localObject);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("webView.getX5WebViewExtension().preLoad offline data:");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(", sha1: ");
+        ((StringBuilder)localObject).append(this.c);
+        QLog.d("SwiftBrowserTBSHandler", 2, ((StringBuilder)localObject).toString());
       }
     }
-    do
+    else
     {
-      return;
       this.jdField_a_of_type_ComTencentSmttSdkWebView.getX5WebViewExtension().preLoad(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("SwiftBrowserTBSHandler", 2, "webView.getX5WebViewExtension().preLoad: " + this.jdField_b_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("webView.getX5WebViewExtension().preLoad: ");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+        QLog.d("SwiftBrowserTBSHandler", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.10
  * JD-Core Version:    0.7.0.1
  */

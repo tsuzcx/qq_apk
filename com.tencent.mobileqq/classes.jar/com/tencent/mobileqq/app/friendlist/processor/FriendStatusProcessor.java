@@ -38,44 +38,30 @@ public class FriendStatusProcessor
     paramString = new FriendsStatusUtil.UpdateFriendStatusItem(paramString, 13578, 18);
     if (!paramSnsUpdateItem.bytes_value.has()) {
       paramString.a(null);
-    }
-    for (;;)
-    {
-      FriendsStatusUtil.a(paramQQAppInterface, paramString, paramExtensionInfo);
-      return;
+    } else {
       paramString.a(paramSnsUpdateItem.bytes_value.get().toByteArray());
     }
+    FriendsStatusUtil.a(paramQQAppInterface, paramString, paramExtensionInfo);
   }
   
   private static void a(QQAppInterface paramQQAppInterface, String paramString, ExtensionInfo paramExtensionInfo, Oidb_0x5d0.SnsUpdateItem paramSnsUpdateItem, boolean paramBoolean, Map<String, Boolean> paramMap)
   {
-    boolean bool;
-    if (!TextUtils.isEmpty(paramSnsUpdateItem.bytes_value.get().toStringUtf8()))
+    boolean bool = TextUtils.isEmpty(paramSnsUpdateItem.bytes_value.get().toStringUtf8()) ^ true;
+    if (!paramBoolean)
     {
-      bool = true;
-      if (paramBoolean) {
-        break label70;
-      }
       paramSnsUpdateItem = new FriendsStatusUtil.UpdateFriendStatusItem(paramString, 13581, 21);
-      if (!bool) {
-        break label65;
-      }
-      paramString = new byte[1];
-      paramSnsUpdateItem.a(paramString);
-      FriendsStatusUtil.a(paramQQAppInterface, paramSnsUpdateItem, paramExtensionInfo);
-    }
-    label65:
-    label70:
-    while (paramString == null) {
-      for (;;)
-      {
-        return;
-        bool = false;
-        break;
+      if (bool) {
+        paramString = new byte[1];
+      } else {
         paramString = null;
       }
+      paramSnsUpdateItem.a(paramString);
+      FriendsStatusUtil.a(paramQQAppInterface, paramSnsUpdateItem, paramExtensionInfo);
+      return;
     }
-    paramMap.put(paramString, Boolean.valueOf(bool));
+    if (paramString != null) {
+      paramMap.put(paramString, Boolean.valueOf(bool));
+    }
   }
   
   private static void b(QQAppInterface paramQQAppInterface, String paramString, ExtensionInfo paramExtensionInfo, Oidb_0x5d0.SnsUpdateItem paramSnsUpdateItem)
@@ -115,83 +101,81 @@ public class FriendStatusProcessor
   
   public void onBatchUpdateExtensionInfo(List<Pair<ExtensionInfo, FriendInfo>> paramList, ExtRspData paramExtRspData, long paramLong, boolean paramBoolean)
   {
-    if (!(this.mApp instanceof QQAppInterface)) {
-      QLog.e("IMCore.friend.DontDisturbFriendProces", 1, "onGetExtensionInfoResp| app is not QQAppInterface");
-    }
-    do
+    if (!(this.mApp instanceof QQAppInterface))
     {
+      QLog.e("IMCore.friend.DontDisturbFriendProces", 1, "onGetExtensionInfoResp| app is not QQAppInterface");
       return;
-      paramExtRspData = (QQAppInterface)this.mApp;
-      HashMap localHashMap = new HashMap();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+    }
+    paramExtRspData = (QQAppInterface)this.mApp;
+    HashMap localHashMap = new HashMap();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject1 = (Pair)paramList.next();
+      ExtensionInfo localExtensionInfo = (ExtensionInfo)((Pair)localObject1).first;
+      Object localObject2 = parseSnsUpdateBuffer(((FriendInfo)((Pair)localObject1).second).vecRing);
+      if ((localObject2 != null) && (((Oidb_0x5d0.SnsUpateBuffer)localObject2).rpt_msg_sns_update_item.has()))
       {
-        Object localObject1 = (Pair)paramList.next();
-        ExtensionInfo localExtensionInfo = (ExtensionInfo)((Pair)localObject1).first;
-        Object localObject2 = parseSnsUpdateBuffer(((FriendInfo)((Pair)localObject1).second).vecRing);
-        if ((localObject2 != null) && (((Oidb_0x5d0.SnsUpateBuffer)localObject2).rpt_msg_sns_update_item.has()))
+        localObject1 = String.valueOf(((Oidb_0x5d0.SnsUpateBuffer)localObject2).uint64_uin.get());
+        localObject2 = ((Oidb_0x5d0.SnsUpateBuffer)localObject2).rpt_msg_sns_update_item.get().iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          localObject1 = String.valueOf(((Oidb_0x5d0.SnsUpateBuffer)localObject2).uint64_uin.get());
-          localObject2 = ((Oidb_0x5d0.SnsUpateBuffer)localObject2).rpt_msg_sns_update_item.get().iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            Oidb_0x5d0.SnsUpdateItem localSnsUpdateItem = (Oidb_0x5d0.SnsUpdateItem)((Iterator)localObject2).next();
-            int i = localSnsUpdateItem.uint32_update_sns_type.get();
-            if (i == 13580) {
-              c(paramExtRspData, (String)localObject1, localExtensionInfo, localSnsUpdateItem);
-            } else if (i == 13582) {
-              d(paramExtRspData, (String)localObject1, localExtensionInfo, localSnsUpdateItem);
-            } else if (i == 13578) {
-              a(paramExtRspData, (String)localObject1, localExtensionInfo, localSnsUpdateItem);
-            } else if (i == 13579) {
-              b(paramExtRspData, (String)localObject1, localExtensionInfo, localSnsUpdateItem);
-            } else if (i == 13581) {
-              a(paramExtRspData, (String)localObject1, localExtensionInfo, localSnsUpdateItem, true, localHashMap);
-            }
+          Oidb_0x5d0.SnsUpdateItem localSnsUpdateItem = (Oidb_0x5d0.SnsUpdateItem)((Iterator)localObject2).next();
+          int i = localSnsUpdateItem.uint32_update_sns_type.get();
+          if (i == 13580) {
+            c(paramExtRspData, (String)localObject1, localExtensionInfo, localSnsUpdateItem);
+          } else if (i == 13582) {
+            d(paramExtRspData, (String)localObject1, localExtensionInfo, localSnsUpdateItem);
+          } else if (i == 13578) {
+            a(paramExtRspData, (String)localObject1, localExtensionInfo, localSnsUpdateItem);
+          } else if (i == 13579) {
+            b(paramExtRspData, (String)localObject1, localExtensionInfo, localSnsUpdateItem);
+          } else if (i == 13581) {
+            a(paramExtRspData, (String)localObject1, localExtensionInfo, localSnsUpdateItem, true, localHashMap);
           }
         }
       }
-      if (localHashMap.size() > 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("tag_hidden_chat", 2, new Object[] { "friendlist size", Integer.valueOf(localHashMap.size()) });
-        }
-        FriendsStatusUtil.a(localHashMap, paramExtRspData);
-        return;
+    }
+    if (localHashMap.size() > 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("tag_hidden_chat", 2, new Object[] { "friendlist size", Integer.valueOf(localHashMap.size()) });
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("tag_hidden_chat", 2, "friendlist size 0");
+      FriendsStatusUtil.a(localHashMap, paramExtRspData);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("tag_hidden_chat", 2, "friendlist size 0");
+    }
   }
   
   public void onUpdateExtensionInfo(ExtensionInfo paramExtensionInfo, FriendInfo paramFriendInfo, ExtRspData paramExtRspData)
   {
-    if (!(this.mApp instanceof QQAppInterface)) {
-      QLog.e("IMCore.friend.DontDisturbFriendProces", 1, "onGetExtensionInfoResp| app is not QQAppInterface");
-    }
-    for (;;)
+    if (!(this.mApp instanceof QQAppInterface))
     {
+      QLog.e("IMCore.friend.DontDisturbFriendProces", 1, "onGetExtensionInfoResp| app is not QQAppInterface");
       return;
-      paramExtRspData = (QQAppInterface)this.mApp;
-      Object localObject = parseSnsUpdateBuffer(paramFriendInfo.vecRing);
-      if ((localObject != null) && (((Oidb_0x5d0.SnsUpateBuffer)localObject).rpt_msg_sns_update_item.has()))
+    }
+    paramExtRspData = (QQAppInterface)this.mApp;
+    Object localObject = parseSnsUpdateBuffer(paramFriendInfo.vecRing);
+    if ((localObject != null) && (((Oidb_0x5d0.SnsUpateBuffer)localObject).rpt_msg_sns_update_item.has()))
+    {
+      paramFriendInfo = String.valueOf(((Oidb_0x5d0.SnsUpateBuffer)localObject).uint64_uin.get());
+      localObject = ((Oidb_0x5d0.SnsUpateBuffer)localObject).rpt_msg_sns_update_item.get().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        paramFriendInfo = String.valueOf(((Oidb_0x5d0.SnsUpateBuffer)localObject).uint64_uin.get());
-        localObject = ((Oidb_0x5d0.SnsUpateBuffer)localObject).rpt_msg_sns_update_item.get().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          Oidb_0x5d0.SnsUpdateItem localSnsUpdateItem = (Oidb_0x5d0.SnsUpdateItem)((Iterator)localObject).next();
-          int i = localSnsUpdateItem.uint32_update_sns_type.get();
-          if (i == 13580) {
-            c(paramExtRspData, paramFriendInfo, paramExtensionInfo, localSnsUpdateItem);
-          } else if (i == 13582) {
-            d(paramExtRspData, paramFriendInfo, paramExtensionInfo, localSnsUpdateItem);
-          } else if (i == 13578) {
-            a(paramExtRspData, paramFriendInfo, paramExtensionInfo, localSnsUpdateItem);
-          } else if (i == 13579) {
-            b(paramExtRspData, paramFriendInfo, paramExtensionInfo, localSnsUpdateItem);
-          } else if (i == 13581) {
-            a(paramExtRspData, paramFriendInfo, paramExtensionInfo, localSnsUpdateItem, false, null);
-          }
+        Oidb_0x5d0.SnsUpdateItem localSnsUpdateItem = (Oidb_0x5d0.SnsUpdateItem)((Iterator)localObject).next();
+        int i = localSnsUpdateItem.uint32_update_sns_type.get();
+        if (i == 13580) {
+          c(paramExtRspData, paramFriendInfo, paramExtensionInfo, localSnsUpdateItem);
+        } else if (i == 13582) {
+          d(paramExtRspData, paramFriendInfo, paramExtensionInfo, localSnsUpdateItem);
+        } else if (i == 13578) {
+          a(paramExtRspData, paramFriendInfo, paramExtensionInfo, localSnsUpdateItem);
+        } else if (i == 13579) {
+          b(paramExtRspData, paramFriendInfo, paramExtensionInfo, localSnsUpdateItem);
+        } else if (i == 13581) {
+          a(paramExtRspData, paramFriendInfo, paramExtensionInfo, localSnsUpdateItem, false, null);
         }
       }
     }
@@ -199,7 +183,7 @@ public class FriendStatusProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.processor.FriendStatusProcessor
  * JD-Core Version:    0.7.0.1
  */

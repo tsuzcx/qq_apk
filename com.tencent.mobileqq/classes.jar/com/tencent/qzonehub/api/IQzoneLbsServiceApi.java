@@ -9,13 +9,13 @@ import java.util.ArrayList;
 public abstract interface IQzoneLbsServiceApi
   extends QRouteApi
 {
-  public abstract void getBatchPoiFromServer(ArrayList<GpsInfo4LocalImage> paramArrayList);
+  public abstract void getBatchPoiFromServer(ArrayList<GpsInfo4LocalImage> paramArrayList, boolean paramBoolean);
   
   public abstract void refreshPoiList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qzonehub.api.IQzoneLbsServiceApi
  * JD-Core Version:    0.7.0.1
  */

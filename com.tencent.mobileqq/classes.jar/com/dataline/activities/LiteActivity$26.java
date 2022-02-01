@@ -21,43 +21,36 @@ class LiteActivity$26
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt == 0) && (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(this.jdField_a_of_type_Long)))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
-      if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(this.jdField_a_of_type_Long))
+      paramView = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+      this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
+      if (paramView.a(this.jdField_a_of_type_JavaUtilList))
       {
-        paramView = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-        if (paramView.a(this.jdField_a_of_type_JavaUtilList))
+        paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+        while (paramView.hasNext())
         {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
-          while (paramView.hasNext())
+          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
+          if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord))
           {
-            DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
-            if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord))
-            {
-              localDataLineMsgRecord.bIsResendOrRecvFile = true;
-              localDataLineMsgRecord.fileMsgStatus = 0L;
-              localDataLineMsgRecord.progress = 0.0F;
-            }
+            localDataLineMsgRecord.bIsResendOrRecvFile = true;
+            localDataLineMsgRecord.fileMsgStatus = 0L;
+            localDataLineMsgRecord.progress = 0.0F;
           }
-          this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
         }
-        else
-        {
-          FMToastUtil.a(2131693807);
-        }
+        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
+      }
+      else
+      {
+        FMToastUtil.a(2131693760);
       }
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.26
  * JD-Core Version:    0.7.0.1
  */

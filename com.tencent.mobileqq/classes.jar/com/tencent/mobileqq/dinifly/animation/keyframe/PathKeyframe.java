@@ -23,13 +23,14 @@ public class PathKeyframe
   
   public void createPath()
   {
-    if ((this.endValue != null) && (this.startValue != null) && (((PointF)this.startValue).equals(((PointF)this.endValue).x, ((PointF)this.endValue).y))) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((this.endValue != null) && (i == 0) && (this.startValue != null)) {
-        this.path = Utils.createPath((PointF)this.startValue, (PointF)this.endValue, this.pointKeyFrame.pathCp1, this.pointKeyFrame.pathCp2);
-      }
-      return;
+    int i;
+    if ((this.endValue != null) && (this.startValue != null) && (((PointF)this.startValue).equals(((PointF)this.endValue).x, ((PointF)this.endValue).y))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((this.endValue != null) && (i == 0) && (this.startValue != null)) {
+      this.path = Utils.createPath((PointF)this.startValue, (PointF)this.endValue, this.pointKeyFrame.pathCp1, this.pointKeyFrame.pathCp2);
     }
   }
   
@@ -41,7 +42,7 @@ public class PathKeyframe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.PathKeyframe
  * JD-Core Version:    0.7.0.1
  */

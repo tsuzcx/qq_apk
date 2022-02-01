@@ -7,7 +7,7 @@ import mqq.app.MobileQQ;
 public class CSProcessorImpl
   implements ICSProcessor, IRuntimeInterface
 {
-  private static volatile CSProcessorImpl a = null;
+  private static volatile CSProcessorImpl a;
   
   private CSProcessorImpl()
   {
@@ -16,15 +16,16 @@ public class CSProcessorImpl
   
   public static CSProcessorImpl a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new CSProcessorImpl();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new CSProcessorImpl();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public void a(String paramString, byte[] paramArrayOfByte, ICSProcessor.ICSProcessorListener paramICSProcessorListener)
@@ -53,7 +54,7 @@ public class CSProcessorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CSProcessorImpl
  * JD-Core Version:    0.7.0.1
  */

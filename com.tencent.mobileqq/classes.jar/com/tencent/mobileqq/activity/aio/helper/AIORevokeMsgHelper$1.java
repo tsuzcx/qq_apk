@@ -11,25 +11,27 @@ class AIORevokeMsgHelper$1
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt == 1) {
+        AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper, "0X800A7F6", this.jdField_a_of_type_Boolean);
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper) != null) {
-        AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper, AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper));
+      if (AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper) != null)
+      {
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper;
+        AIORevokeMsgHelper.a(paramView, AIORevokeMsgHelper.a(paramView));
       }
       AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper, "0X800A7F5", this.jdField_a_of_type_Boolean);
-      continue;
-      AIORevokeMsgHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperAIORevokeMsgHelper, "0X800A7F6", this.jdField_a_of_type_Boolean);
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIORevokeMsgHelper.1
  * JD-Core Version:    0.7.0.1
  */

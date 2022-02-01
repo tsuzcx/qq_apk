@@ -19,40 +19,60 @@ class RMFileEventNotify
   
   public void onEvent(int paramInt, String paramString)
   {
-    if ((paramInt & 0x20) == 32) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
+    StringBuilder localStringBuilder;
+    if ((paramInt & 0x20) == 32)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("RMFileEventNotify[onEvent][OPEN]  path=");
+        localStringBuilder.append(paramString);
+        QLog.d("RMFileEventNotify", 2, localStringBuilder.toString());
       }
     }
-    do
+    else
     {
-      return;
       if ((paramInt & 0x400) == 1024)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("RMFileEventNotify[onEvent][DELETE_SELF]  path=");
+          localStringBuilder.append(paramString);
+          QLog.d("RMFileEventNotify", 2, localStringBuilder.toString());
         }
         a();
         return;
       }
       if ((paramInt & 0x200) == 512)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("RMFileEventNotify[onEvent][DELETE]  path=");
+          localStringBuilder.append(paramString);
+          QLog.d("RMFileEventNotify", 2, localStringBuilder.toString());
         }
         a();
         return;
       }
-    } while ((paramInt & 0x8) != 8);
-    if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
+      if ((paramInt & 0x8) == 8)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("RMFileEventNotify[onEvent][CLOSE_WRITE]  path=");
+          localStringBuilder.append(paramString);
+          QLog.d("RMFileEventNotify", 2, localStringBuilder.toString());
+        }
+        a();
+      }
     }
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify
  * JD-Core Version:    0.7.0.1
  */

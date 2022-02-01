@@ -70,20 +70,27 @@ public class FontSettingManager
       customMetrics.setTo(paramContext.getResources().getDisplayMetrics());
       return;
     }
-    if (paramBoolean1) {}
-    for (float f = sFontLevel;; f = getFontLevelFromProperties(paramContext))
-    {
-      setCustomDensity(paramContext, f, paramBoolean2);
-      return;
+    float f;
+    if (paramBoolean1) {
+      f = sFontLevel;
+    } else {
+      f = getFontLevelFromProperties(paramContext);
     }
+    setCustomDensity(paramContext, f, paramBoolean2);
   }
   
   public static boolean isDisplayMetricNoAnswer()
   {
     String str1 = DeviceInfoUtil.h();
     String str2 = DeviceInfoUtil.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("FontSettingManager", 2, "current machine brandName:" + str1 + ", modelName:" + str2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("current machine brandName:");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(", modelName:");
+      localStringBuilder.append(str2);
+      QLog.d("FontSettingManager", 2, localStringBuilder.toString());
     }
     return ((!str1.equals("Xiaomi")) || (!str2.equals("MI 4S"))) && ((!str1.equals("Huawei")) || (!str2.equals("Nexus 6P"))) && ((!str1.equals("BBK")) || (!str2.equals("vivo X3S W"))) && ((!str1.equals("LGE")) || (!str2.equals("Nexus 5X"))) && (!str2.equals("Redmi 3"));
   }
@@ -97,8 +104,14 @@ public class FontSettingManager
   {
     Object localObject = DeviceInfoUtil.h();
     String str = DeviceInfoUtil.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("FontSettingManager", 2, "current machine brandName:" + (String)localObject + ", modelName:" + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("current machine brandName:");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(", modelName:");
+      localStringBuilder.append(str);
+      QLog.d("FontSettingManager", 2, localStringBuilder.toString());
     }
     int i = BRAND_AND_MODEL_BLACK_LIST[0].length - 1;
     while (i >= 0)
@@ -111,17 +124,13 @@ public class FontSettingManager
     localObject = MODEL_BLACK_LIST;
     int j = localObject.length;
     i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label131;
-      }
       if (str.equals(localObject[i])) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label131:
     return true;
   }
   
@@ -140,17 +149,20 @@ public class FontSettingManager
   
   private static boolean killProcess(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (paramString == null)) {
-      return false;
-    }
-    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-    while (paramContext.hasNext())
+    if (paramContext != null)
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      if (localRunningAppProcessInfo.processName.equals(paramString))
+      if (paramString == null) {
+        return false;
+      }
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+      while (paramContext.hasNext())
       {
-        Process.killProcess(localRunningAppProcessInfo.pid);
-        return true;
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if (localRunningAppProcessInfo.processName.equals(paramString))
+        {
+          Process.killProcess(localRunningAppProcessInfo.pid);
+          return true;
+        }
       }
     }
     return false;
@@ -174,12 +186,18 @@ public class FontSettingManager
   
   public static void resetFontIfNeeded(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Resources localResources = paramContext.getResources();
-    if ((localResources != null) && ((Math.abs(customMetrics.density - localResources.getDisplayMetrics().density) > 0.01F) || (Math.abs(customMetrics.scaledDensity - localResources.getDisplayMetrics().scaledDensity) > 0.01F) || (customMetrics.densityDpi != localResources.getDisplayMetrics().densityDpi)))
+    Object localObject = paramContext.getResources();
+    if ((localObject != null) && ((Math.abs(customMetrics.density - ((Resources)localObject).getDisplayMetrics().density) > 0.01F) || (Math.abs(customMetrics.scaledDensity - ((Resources)localObject).getDisplayMetrics().scaledDensity) > 0.01F) || (customMetrics.densityDpi != ((Resources)localObject).getDisplayMetrics().densityDpi)))
     {
-      systemMetrics.setTo(localResources.getDisplayMetrics());
-      if (QLog.isColorLevel()) {
-        QLog.i("FontSettingManager", 2, "current density: " + systemMetrics.density + ", custom density: " + customMetrics.density);
+      systemMetrics.setTo(((Resources)localObject).getDisplayMetrics());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("current density: ");
+        ((StringBuilder)localObject).append(systemMetrics.density);
+        ((StringBuilder)localObject).append(", custom density: ");
+        ((StringBuilder)localObject).append(customMetrics.density);
+        QLog.i("FontSettingManager", 2, ((StringBuilder)localObject).toString());
       }
       initFontSetting(paramContext, paramBoolean1, paramBoolean2);
     }
@@ -202,30 +220,35 @@ public class FontSettingManager
   
   public static boolean setCustomDensity(Context paramContext, float paramFloat, boolean paramBoolean)
   {
-    if (!isScaleValueRight(paramFloat)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("FontSettingManager", 2, "wrong scale vale : " + paramFloat);
+    if (!isScaleValueRight(paramFloat))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("wrong scale vale : ");
+        paramContext.append(paramFloat);
+        QLog.d("FontSettingManager", 2, paramContext.toString());
+      }
+      return false;
+    }
+    float f = paramFloat / 16.0F;
+    DisplayMetrics localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
+    updateSystemMetrics(localDisplayMetrics);
+    localDisplayMetrics.density = (systemMetrics.density * f);
+    localDisplayMetrics.scaledDensity = (systemMetrics.density * f);
+    localDisplayMetrics.densityDpi = ((int)(systemMetrics.densityDpi * f));
+    QLog.d("FontSettingManager", 1, new Object[] { "currentDm: ", Float.valueOf(localDisplayMetrics.density), ", ", Float.valueOf(localDisplayMetrics.scaledDensity), ", ", Integer.valueOf(localDisplayMetrics.densityDpi) });
+    if (paramBoolean)
+    {
+      customMetrics.setTo(localDisplayMetrics);
+      if (sFontLevel != paramFloat)
+      {
+        sFontLevel = paramFloat;
+        setFontLevelToProperties(paramContext, paramFloat);
+        return true;
       }
     }
-    do
-    {
-      DisplayMetrics localDisplayMetrics;
-      do
-      {
-        return false;
-        float f = paramFloat / 16.0F;
-        localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
-        updateSystemMetrics(localDisplayMetrics);
-        localDisplayMetrics.density = (systemMetrics.density * f);
-        localDisplayMetrics.scaledDensity = (systemMetrics.density * f);
-        localDisplayMetrics.densityDpi = ((int)(f * systemMetrics.densityDpi));
-        QLog.d("FontSettingManager", 1, new Object[] { "currentDm: ", Float.valueOf(localDisplayMetrics.density), ", ", Float.valueOf(localDisplayMetrics.scaledDensity), ", ", Integer.valueOf(localDisplayMetrics.densityDpi) });
-      } while (!paramBoolean);
-      customMetrics.setTo(localDisplayMetrics);
-    } while (sFontLevel == paramFloat);
-    sFontLevel = paramFloat;
-    setFontLevelToProperties(paramContext, paramFloat);
-    return true;
+    return false;
   }
   
   private static void setFontLevelToProperties(Context paramContext, float paramFloat)
@@ -245,16 +268,25 @@ public class FontSettingManager
     localDisplayMetrics.densityDpi = systemMetrics.densityDpi;
     if (QLog.isColorLevel())
     {
-      QLog.d("FontSettingManager", 2, "systemMetrics.density : " + systemMetrics.density);
-      QLog.d("FontSettingManager", 2, "systemMetrics.scaledDensity : " + systemMetrics.scaledDensity);
-      QLog.d("FontSettingManager", 2, "systemMetrics.densityDpi : " + systemMetrics.densityDpi);
+      paramDisplayMetrics = new StringBuilder();
+      paramDisplayMetrics.append("systemMetrics.density : ");
+      paramDisplayMetrics.append(systemMetrics.density);
+      QLog.d("FontSettingManager", 2, paramDisplayMetrics.toString());
+      paramDisplayMetrics = new StringBuilder();
+      paramDisplayMetrics.append("systemMetrics.scaledDensity : ");
+      paramDisplayMetrics.append(systemMetrics.scaledDensity);
+      QLog.d("FontSettingManager", 2, paramDisplayMetrics.toString());
+      paramDisplayMetrics = new StringBuilder();
+      paramDisplayMetrics.append("systemMetrics.densityDpi : ");
+      paramDisplayMetrics.append(systemMetrics.densityDpi);
+      QLog.d("FontSettingManager", 2, paramDisplayMetrics.toString());
     }
     systemMetrics = localDisplayMetrics;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FontSettingManager
  * JD-Core Version:    0.7.0.1
  */

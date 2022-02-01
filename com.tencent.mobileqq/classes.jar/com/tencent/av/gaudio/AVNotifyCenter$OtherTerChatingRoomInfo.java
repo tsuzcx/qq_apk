@@ -13,12 +13,17 @@ class AVNotifyCenter$OtherTerChatingRoomInfo
   
   public String toString()
   {
-    return "OtherTerChatingRoomInfo:mRoomId=" + this.jdField_a_of_type_Long + ", mSessionType=" + this.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OtherTerChatingRoomInfo:mRoomId=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mSessionType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.AVNotifyCenter.OtherTerChatingRoomInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -23,78 +23,88 @@ public class AuthCodeWriter
   
   public int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle)
   {
-    int i = -20;
-    if (paramString1.equals(BaseApplicationImpl.sApplication.getPackageName()))
+    boolean bool = paramString1.equals(BaseApplicationImpl.sApplication.getPackageName());
+    paramInt = -1;
+    int i = paramInt;
+    if (bool)
     {
-      if (this.jdField_a_of_type_JavaLangString == null)
+      paramBundle = this.jdField_a_of_type_JavaLangString;
+      i = -20;
+      paramString1 = null;
+      if (paramBundle != null)
       {
-        paramString1 = null;
-        paramInt = -1;
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter$ICheckCodeListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter$ICheckCodeListener.a(paramInt);
-        }
-        QLog.d("UpgradeController", 1, "writeCodeToApk:" + this.jdField_a_of_type_JavaLangString + ", forFile:" + paramString2 + " result: " + paramInt, paramString1);
-        return paramInt;
-        if (this.jdField_a_of_type_JavaLangString.length() == 0)
+        if (paramBundle.length() == 0) {}
+        for (;;)
         {
-          paramString1 = null;
           paramInt = 0;
-        }
-        else
-        {
+          break;
           try
           {
-            paramString1 = new File(paramString2);
-            paramBundle = new File(paramString2 + "~tmp");
-            if (paramBundle.exists()) {
-              paramBundle.delete();
+            paramBundle = new File(paramString2);
+            Object localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString2);
+            ((StringBuilder)localObject).append("~tmp");
+            localObject = new File(((StringBuilder)localObject).toString());
+            if (((File)localObject).exists()) {
+              ((File)localObject).delete();
             }
-            paramString1.renameTo(paramBundle);
-            ApkExternalInfoTool.a(paramBundle, this.jdField_a_of_type_JavaLangString);
-            paramBundle.renameTo(paramString1);
-            paramString1 = null;
-            paramInt = 0;
-          }
-          catch (FileNotFoundException paramString1)
-          {
-            paramInt = -30;
-          }
-          catch (IOException paramString1)
-          {
-            paramInt = i;
-            if (paramString1 != null)
-            {
-              paramInt = i;
-              if (paramString1.getMessage() != null)
-              {
-                paramInt = i;
-                if (paramString1.getMessage().contains("space")) {
-                  paramInt = -10;
-                }
-              }
-            }
+            paramBundle.renameTo((File)localObject);
+            ApkExternalInfoTool.a((File)localObject, this.jdField_a_of_type_JavaLangString);
+            ((File)localObject).renameTo(paramBundle);
           }
           catch (Exception paramString1)
           {
             paramInt = -20;
           }
+          catch (IOException paramString1)
+          {
+            paramInt = i;
+            if (paramString1.getMessage() != null)
+            {
+              paramInt = i;
+              if (paramString1.getMessage().contains("space")) {
+                paramInt = -10;
+              }
+            }
+          }
+          catch (FileNotFoundException paramString1)
+          {
+            paramInt = -30;
+          }
         }
       }
+      paramBundle = this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter$ICheckCodeListener;
+      if (paramBundle != null) {
+        paramBundle.a(paramInt);
+      }
+      paramBundle = new StringBuilder();
+      paramBundle.append("writeCodeToApk:");
+      paramBundle.append(this.jdField_a_of_type_JavaLangString);
+      paramBundle.append(", forFile:");
+      paramBundle.append(paramString2);
+      paramBundle.append(" result: ");
+      paramBundle.append(paramInt);
+      QLog.d("UpgradeController", 1, paramBundle.toString(), paramString1);
+      i = paramInt;
     }
-    return -1;
+    return i;
   }
   
   public void a(String paramString, int paramInt, Bundle paramBundle)
   {
     if (BaseApplicationImpl.sApplication.getPackageName().equals(paramString))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("UpgradeController", 4, "syncVersionCodeToTool:" + paramString + ", versionCode:" + paramInt);
+      if (QLog.isDevelopLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("syncVersionCodeToTool:");
+        paramBundle.append(paramString);
+        paramBundle.append(", versionCode:");
+        paramBundle.append(paramInt);
+        QLog.d("UpgradeController", 4, paramBundle.toString());
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter$ICheckCodeListener != null) && (!this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter$ICheckCodeListener.a(paramInt))) {
+      paramString = this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter$ICheckCodeListener;
+      if ((paramString != null) && (!paramString.a(paramInt))) {
         this.jdField_a_of_type_JavaLangString = null;
       }
     }
@@ -102,7 +112,7 @@ public class AuthCodeWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.AuthCodeWriter
  * JD-Core Version:    0.7.0.1
  */

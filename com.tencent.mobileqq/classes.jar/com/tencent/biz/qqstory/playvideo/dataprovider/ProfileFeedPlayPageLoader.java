@@ -49,24 +49,27 @@ public class ProfileFeedPlayPageLoader
       paramCallBack.a(new ErrorMessage(940001, "null point"), null, true);
       return;
     }
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject).size() > 0))
+    Object localObject1 = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject1).size() > 0))
     {
-      List localList = b((List)localObject);
-      paramCallBack.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
-      SLog.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
+      localObject2 = b((List)localObject1);
+      paramCallBack.a(new ErrorMessage(), (List)localObject2, this.a.jdField_a_of_type_Boolean);
+      SLog.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject1).size()));
       return;
     }
-    localObject = new GetProfileFeedIdListRequest();
-    ((GetProfileFeedIdListRequest)localObject).a = this.a.a();
-    ((GetProfileFeedIdListRequest)localObject).b = QQStoryContext.a().b();
-    SLog.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request with cookie " + ((GetProfileFeedIdListRequest)localObject).a);
-    CmdTaskManger.a().a((NetworkRequest)localObject, new ProfileFeedPlayPageLoader.1(this, paramCallBack));
+    localObject1 = new GetProfileFeedIdListRequest();
+    ((GetProfileFeedIdListRequest)localObject1).a = this.a.a();
+    ((GetProfileFeedIdListRequest)localObject1).b = QQStoryContext.a().b();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("start request with cookie ");
+    ((StringBuilder)localObject2).append(((GetProfileFeedIdListRequest)localObject1).a);
+    SLog.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", ((StringBuilder)localObject2).toString());
+    CmdTaskManger.a().a((NetworkRequest)localObject1, new ProfileFeedPlayPageLoader.1(this, paramCallBack));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.ProfileFeedPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

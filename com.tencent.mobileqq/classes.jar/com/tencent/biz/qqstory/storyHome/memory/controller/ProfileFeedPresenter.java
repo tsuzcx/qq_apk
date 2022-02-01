@@ -64,21 +64,22 @@ public class ProfileFeedPresenter
     if (!this.jdField_b_of_type_JavaUtilList.isEmpty()) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent == null))
+    HomeFeedData localHomeFeedData = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData;
+    if ((localHomeFeedData != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent != null))
     {
-      SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "check result mFeedDataRsp or mYearNodeRsp is null, mFeedDataRsp = %s, mYearNodeRsp = %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent });
-      return;
-    }
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
-    {
+      if ((!localHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+      {
+        SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "check result and result is successful. start updating data.");
+        this.jdField_a_of_type_Boolean = true;
+        a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.jdField_a_of_type_JavaUtilList, true);
+        b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
+        return;
+      }
       SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "check result and result is failed. mFeedDataRsp is failed = %s, mYearNodeRsp is failed = %s.", new Object[] { Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()), Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) });
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$FeedPresenterListener.a(false);
       return;
     }
-    SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "check result and result is successful. start updating data.");
-    this.jdField_a_of_type_Boolean = true;
-    a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.jdField_a_of_type_JavaUtilList, true);
-    b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
+    SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "check result mFeedDataRsp or mYearNodeRsp is null, mFeedDataRsp = %s, mYearNodeRsp = %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent });
   }
   
   public void a()
@@ -94,13 +95,8 @@ public class ProfileFeedPresenter
   
   public void a(HomeFeedData paramHomeFeedData)
   {
-    if (!paramHomeFeedData.d) {}
-    for (boolean bool = true;; bool = false)
-    {
-      SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "on feed item back. need check result %s.", Boolean.valueOf(bool));
-      ThreadManager.getUIHandler().post(new ProfileFeedPresenter.2(this, paramHomeFeedData));
-      return;
-    }
+    SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "on feed item back. need check result %s.", Boolean.valueOf(paramHomeFeedData.d ^ true));
+    ThreadManager.getUIHandler().post(new ProfileFeedPresenter.2(this, paramHomeFeedData));
   }
   
   public void a(boolean paramBoolean)
@@ -113,15 +109,17 @@ public class ProfileFeedPresenter
       if ((a().size() > 0) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
         this.jdField_a_of_type_Boolean = true;
       }
-      return;
     }
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData = null;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent = null;
-    super.a(false);
-    this.jdField_b_of_type_JavaUtilList.add(jdField_a_of_type_JavaLangString);
-    b(false);
-    this.jdField_b_of_type_JavaUtilList.add(jdField_b_of_type_JavaLangString);
+    else
+    {
+      this.jdField_b_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData = null;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent = null;
+      super.a(false);
+      this.jdField_b_of_type_JavaUtilList.add(jdField_a_of_type_JavaLangString);
+      b(false);
+      this.jdField_b_of_type_JavaUtilList.add(jdField_b_of_type_JavaLangString);
+    }
   }
   
   public void b()
@@ -139,7 +137,7 @@ public class ProfileFeedPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter
  * JD-Core Version:    0.7.0.1
  */

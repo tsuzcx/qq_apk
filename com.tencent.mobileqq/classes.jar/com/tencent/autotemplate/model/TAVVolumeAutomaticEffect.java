@@ -20,30 +20,35 @@ public class TAVVolumeAutomaticEffect
   
   public TAVAudioConfiguration.VolumeEdge convertToAudioVolumeEdge(float paramFloat)
   {
-    TAVAudioConfiguration.VolumeEdge localVolumeEdge = null;
-    float f = this.duration;
-    if ((this.startOffset > -1.0F) && (this.endOffset == -1.0F)) {
-      paramFloat = this.startOffset;
-    }
-    for (;;)
+    float f1 = this.duration;
+    float f2 = this.startOffset;
+    if ((f2 > -1.0F) && (this.endOffset == -1.0F))
     {
-      if (f > 0.0F) {
-        localVolumeEdge = new TAVAudioConfiguration.VolumeEdge(new CMTimeRange(new CMTime(paramFloat / 1000.0F), new CMTime(f / 1000.0F)), getStartVolume(), getEndVolume());
-      }
-      return localVolumeEdge;
-      if ((this.startOffset == -1.0F) && (this.endOffset > -1.0F))
-      {
-        paramFloat -= f;
-      }
-      else
-      {
-        if ((this.startOffset <= -1.0F) || (this.endOffset <= -1.0F)) {
-          break;
-        }
-        f = paramFloat - this.startOffset - this.endOffset;
-        paramFloat = this.startOffset;
-      }
+      paramFloat = f2;
     }
+    else if ((this.startOffset == -1.0F) && (this.endOffset > -1.0F))
+    {
+      paramFloat -= f1;
+    }
+    else
+    {
+      f1 = this.startOffset;
+      if (f1 <= -1.0F) {
+        break label146;
+      }
+      f2 = this.endOffset;
+      if (f2 <= -1.0F) {
+        break label146;
+      }
+      f2 = paramFloat - f1 - f2;
+      paramFloat = f1;
+      f1 = f2;
+    }
+    if (f1 > 0.0F) {
+      return new TAVAudioConfiguration.VolumeEdge(new CMTimeRange(new CMTime(paramFloat / 1000.0F), new CMTime(f1 / 1000.0F)), getStartVolume(), getEndVolume());
+    }
+    return null;
+    label146:
     Logger.e("TAVVolumeAutomaticEffect", "effect's startOffset and endOffset is wrong.");
     return null;
   }
@@ -60,8 +65,9 @@ public class TAVVolumeAutomaticEffect
   
   public float getEndVolume()
   {
-    if (this.volumeRange != null) {
-      return this.volumeRange.end;
+    TAVVolumeRange localTAVVolumeRange = this.volumeRange;
+    if (localTAVVolumeRange != null) {
+      return localTAVVolumeRange.end;
     }
     return 0.0F;
   }
@@ -73,8 +79,9 @@ public class TAVVolumeAutomaticEffect
   
   public float getStartVolume()
   {
-    if (this.volumeRange != null) {
-      return this.volumeRange.start;
+    TAVVolumeRange localTAVVolumeRange = this.volumeRange;
+    if (localTAVVolumeRange != null) {
+      return localTAVVolumeRange.start;
     }
     return 0.0F;
   }

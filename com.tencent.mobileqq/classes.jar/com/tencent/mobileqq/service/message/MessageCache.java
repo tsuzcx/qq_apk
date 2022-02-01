@@ -61,16 +61,16 @@ public class MessageCache
   private ConcurrentHashMap<String, byte[]> I = new ConcurrentHashMap();
   private ConcurrentHashMap<String, byte[]> J = new ConcurrentHashMap();
   private ConcurrentHashMap<String, byte[]> K = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, byte[]> L = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Long> L = new ConcurrentHashMap();
   private ConcurrentHashMap<String, Long> M = new ConcurrentHashMap();
   private ConcurrentHashMap<String, Long> N = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Long> O = new ConcurrentHashMap();
+  private ConcurrentHashMap<Pair<String, Integer>, Long> O = new ConcurrentHashMap();
   private ConcurrentHashMap<Pair<String, Integer>, Long> P = new ConcurrentHashMap();
-  private ConcurrentHashMap<Pair<String, Integer>, Long> Q = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, ConcurrentHashMap<String, Set<Integer>>> R = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, ConcurrentHashMap<Integer, HashSet<Long>>> S = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, MessageRecord> T = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Long> U = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, ConcurrentHashMap<String, Set<Integer>>> Q = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, ConcurrentHashMap<Integer, HashSet<Long>>> R = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, MessageRecord> S = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Long> T = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, byte[]> U = new ConcurrentHashMap();
   private ConcurrentHashMap<String, byte[]> V = new ConcurrentHashMap();
   private ConcurrentHashMap<String, byte[]> W = new ConcurrentHashMap();
   private ConcurrentHashMap<String, byte[]> X = new ConcurrentHashMap();
@@ -83,6 +83,7 @@ public class MessageCache
   public MessageCacheItem a;
   ArrayList<MessageRecord> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public HashMap<Long, MessageRecord> a;
+  private final HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
   public List<MessageRecord> a;
   private Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
   public ConcurrentHashMap<String, String> a;
@@ -91,50 +92,49 @@ public class MessageCache
   private byte[] jdField_a_of_type_ArrayOfByte;
   private ConcurrentHashMap<String, byte[]> aa = new ConcurrentHashMap();
   private ConcurrentHashMap<String, byte[]> ab = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, byte[]> ac = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Integer> ad = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, ArrayList<Object[]>> ae = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Integer> ac = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, ArrayList<Object[]>> ad = new ConcurrentHashMap();
+  private ConcurrentHashMap<Long, ArrayList<msg_comm.Msg>> ae = new ConcurrentHashMap();
   private ConcurrentHashMap<Long, ArrayList<msg_comm.Msg>> af = new ConcurrentHashMap();
-  private ConcurrentHashMap<Long, ArrayList<msg_comm.Msg>> ag = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Integer> ah = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, ArrayList<Object[]>> ai = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, DisMsgReadedNotify> aj = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, GroupMsgReadedNotify> ak = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, AppShareID> al = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, OpenID> am = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Object> an = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Integer> ag = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, ArrayList<Object[]>> ah = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, DisMsgReadedNotify> ai = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, GroupMsgReadedNotify> aj = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, AppShareID> ak = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, OpenID> al = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Object> am = new ConcurrentHashMap();
   private long jdField_b_of_type_Long = 0L;
   private ArrayList<stConfNumInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  public ConcurrentHashMap<Long, Object[]> b;
+  public ConcurrentHashMap<String, String> b;
   private boolean jdField_b_of_type_Boolean = false;
   private byte[] jdField_b_of_type_ArrayOfByte;
   private int jdField_c_of_type_Int = 0;
   private ArrayList<String> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap<Long, ArrayList<String>> jdField_c_of_type_JavaUtilHashMap = new HashMap();
-  public ConcurrentHashMap<String, String> c;
+  public ConcurrentHashMap<String, Long> c;
   private boolean jdField_c_of_type_Boolean = false;
   private int jdField_d_of_type_Int = -1;
   public ConcurrentHashMap<String, Long> d;
   private boolean jdField_d_of_type_Boolean = false;
   private int e;
-  public ConcurrentHashMap<String, Long> e;
-  public ConcurrentHashMap<String, Set<String>> f = new ConcurrentHashMap();
-  public ConcurrentHashMap<String, Long> g = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Long> h = new ConcurrentHashMap();
+  public ConcurrentHashMap<String, Set<String>> e;
+  public ConcurrentHashMap<String, Long> f = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Long> g = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Object[]> h = new ConcurrentHashMap();
   private ConcurrentHashMap<String, Object[]> i = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Object[]> j = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Boolean> j = new ConcurrentHashMap();
   private ConcurrentHashMap<String, Boolean> k = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Boolean> l = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Long> l = new ConcurrentHashMap();
   private ConcurrentHashMap<String, Long> m = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Long> n = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Boolean> o = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Long> p = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Boolean> n = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Long> o = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Pair<Long, Long>> p = new ConcurrentHashMap();
   private ConcurrentHashMap<String, Pair<Long, Long>> q = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Pair<Long, Long>> r = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, ConcurrentHashMap<Long, MessageCache.MsgSendingInfo>> r = new ConcurrentHashMap();
   private ConcurrentHashMap<String, ConcurrentHashMap<Long, MessageCache.MsgSendingInfo>> s = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, ConcurrentHashMap<Long, MessageCache.MsgSendingInfo>> t = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, ArrayList<RevokeMsgInfo>> u = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, List<Integer>> v = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, ArrayList<RevokeMsgInfo>> t = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, List<Integer>> u = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, byte[]> v = new ConcurrentHashMap();
   private ConcurrentHashMap<String, byte[]> w = new ConcurrentHashMap();
   private ConcurrentHashMap<String, byte[]> x = new ConcurrentHashMap();
   private ConcurrentHashMap<String, byte[]> y = new ConcurrentHashMap();
@@ -156,9 +156,9 @@ public class MessageCache
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_e_of_type_Int = -1;
+    this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
@@ -174,24 +174,28 @@ public class MessageCache
   
   private String a(List<Integer> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i1 = 0;
-    if (i1 < paramList.size())
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      if (i1 != paramList.size() - 1) {
-        localStringBuilder.append(paramList.get(i1) + "|");
-      }
-      for (;;)
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      int i1 = 0;
+      while (i1 < paramList.size())
       {
+        if (i1 != paramList.size() - 1)
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append(paramList.get(i1));
+          localStringBuilder2.append("|");
+          localStringBuilder1.append(localStringBuilder2.toString());
+        }
+        else
+        {
+          localStringBuilder1.append(paramList.get(i1));
+        }
         i1 += 1;
-        break;
-        localStringBuilder.append(paramList.get(i1));
       }
+      return localStringBuilder1.toString();
     }
-    return localStringBuilder.toString();
+    return "";
   }
   
   private String a(byte[] paramArrayOfByte)
@@ -207,20 +211,30 @@ public class MessageCache
   private List<Integer> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return localArrayList;
-    }
-    paramString = paramString.split("\\|");
-    int i2 = paramString.length;
-    int i1 = 0;
-    while (i1 < i2)
+    int i2;
+    int i1;
+    if (paramString != null)
     {
-      String str = paramString[i1];
+      if (paramString.length() == 0) {
+        return localArrayList;
+      }
+      paramString = paramString.split("\\|");
+      i2 = paramString.length;
+      i1 = 0;
+    }
+    for (;;)
+    {
+      String str;
+      if (i1 < i2) {
+        str = paramString[i1];
+      }
       try
       {
         localArrayList.add(Integer.valueOf(str));
         label59:
         i1 += 1;
+        continue;
+        return localArrayList;
       }
       catch (Exception localException)
       {
@@ -236,25 +250,14 @@ public class MessageCache
   
   public static boolean a(MessageCache.MsgSendingInfo paramMsgSendingInfo)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (paramMsgSendingInfo != null)
+    if ((paramMsgSendingInfo != null) && (paramMsgSendingInfo.jdField_b_of_type_Long > 0L))
     {
-      bool1 = bool2;
-      if (paramMsgSendingInfo.jdField_b_of_type_Long > 0L)
-      {
-        long l1 = System.currentTimeMillis() - paramMsgSendingInfo.jdField_b_of_type_Long;
-        bool1 = bool2;
-        if (l1 < jdField_a_of_type_Int)
-        {
-          bool1 = bool2;
-          if (l1 > 0L) {
-            bool1 = false;
-          }
-        }
+      long l1 = System.currentTimeMillis() - paramMsgSendingInfo.jdField_b_of_type_Long;
+      if ((l1 < jdField_a_of_type_Int) && (l1 > 0L)) {
+        return false;
       }
     }
-    return bool1;
+    return true;
   }
   
   private String b(byte[] paramArrayOfByte)
@@ -270,8 +273,13 @@ public class MessageCache
   private void i(String paramString, long paramLong)
   {
     paramString = MD5.toMD5(paramString);
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("deleteFriendMsgTime" + paramString, paramLong);
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
+    {
+      MessageCache.AsyncEditor localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deleteFriendMsgTime");
+      localStringBuilder.append(paramString);
+      localAsyncEditor.putLong(localStringBuilder.toString(), paramLong);
     }
   }
   
@@ -287,20 +295,26 @@ public class MessageCache
   
   public int a()
   {
-    if (this.jdField_d_of_type_Int == -1) {
-      this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("DS_SEND_KEY", 0);
+    if ((this.jdField_c_of_type_Int <= 0) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)) {
+      this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("getlastMessageTime", 1);
     }
-    this.jdField_d_of_type_Int += 1;
-    this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putInt("DS_SEND_KEY", this.jdField_d_of_type_Int);
-    return this.jdField_d_of_type_Int;
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--->>getBuddyMsgLastSeq: ");
+      localStringBuilder.append(this.jdField_c_of_type_Int);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    return this.jdField_c_of_type_Int;
   }
   
   public int a(String paramString)
   {
-    if (!this.ad.containsKey(paramString)) {
-      this.ad.put(paramString, Integer.valueOf(2));
+    if (!this.ac.containsKey(paramString)) {
+      this.ac.put(paramString, Integer.valueOf(2));
     }
-    return ((Integer)this.ad.get(paramString)).intValue();
+    return ((Integer)this.ac.get(paramString)).intValue();
   }
   
   public int a(String paramString, int paramInt)
@@ -313,67 +327,109 @@ public class MessageCache
   public long a(String paramString)
   {
     String str = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
-    if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramString))) {}
-    long l1;
-    do
+    if (!TextUtils.isEmpty(str))
     {
-      return -1L;
-      paramString = str + "_noticetime_" + paramString;
-      if (this.g.containsKey(paramString)) {
-        break;
+      if (TextUtils.isEmpty(paramString)) {
+        return -1L;
       }
-      l1 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(str + "birth", 0).getLong(paramString, -1L);
-    } while (l1 == -1L);
-    this.g.put(paramString, Long.valueOf(l1));
-    return ((Long)this.g.get(paramString)).longValue();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("_noticetime_");
+      ((StringBuilder)localObject).append(paramString);
+      paramString = ((StringBuilder)localObject).toString();
+      if (!this.f.containsKey(paramString))
+      {
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append("birth");
+        long l1 = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getLong(paramString, -1L);
+        if (l1 == -1L) {
+          return -1L;
+        }
+        this.f.put(paramString, Long.valueOf(l1));
+      }
+      return ((Long)this.f.get(paramString)).longValue();
+    }
+    return -1L;
   }
   
   public long a(String paramString, int paramInt)
   {
     String str = UinTypeUtil.a(paramString, paramInt);
+    Object localObject;
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getMsgDelLastSeq uin = " + paramString + ",type = " + paramInt + " , lastSeqId = " + 0);
+      if (QLog.isColorLevel())
+      {
+        str = jdField_a_of_type_JavaLangString;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getMsgDelLastSeq uin = ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(",type = ");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(" , lastSeqId = ");
+        ((StringBuilder)localObject).append(0);
+        QLog.d(str, 2, ((StringBuilder)localObject).toString());
       }
       return 0L;
     }
-    if (!this.M.containsKey(str))
+    if (!this.L.containsKey(str))
     {
-      long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getDelMsgLastSeq" + str, 0L);
-      this.M.put(str, Long.valueOf(l1));
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getMsgDelLastSeq uin = " + paramString + ",type = " + paramInt + " , lastSeqId = " + l1);
+      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDelMsgLastSeq");
+      localStringBuilder.append(str);
+      long l1 = ((SharedPreferences)localObject).getLong(localStringBuilder.toString(), 0L);
+      this.L.put(str, Long.valueOf(l1));
+      if (QLog.isColorLevel())
+      {
+        localObject = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMsgDelLastSeq uin = ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(",type = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" , lastSeqId = ");
+        localStringBuilder.append(l1);
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
     }
-    return ((Long)this.M.get(str)).longValue();
+    return ((Long)this.L.get(str)).longValue();
   }
   
   public DisMsgReadedNotify a(String paramString)
   {
-    return (DisMsgReadedNotify)this.aj.remove(paramString);
+    return (DisMsgReadedNotify)this.ai.remove(paramString);
   }
   
   public GroupMsgReadedNotify a(String paramString)
   {
-    return (GroupMsgReadedNotify)this.ak.remove(paramString);
+    return (GroupMsgReadedNotify)this.aj.remove(paramString);
   }
   
   public Pair<Long, Long> a(String paramString)
   {
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
-      localObject = null;
+      return null;
     }
-    Pair localPair;
-    do
+    Object localObject2 = (Pair)this.p.get(paramString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      return localObject;
-      localPair = (Pair)this.q.get(paramString);
-      localObject = localPair;
-    } while (localPair != null);
-    Object localObject = new Pair(Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getDisscussionInfoSeq" + paramString, 0L)), Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getDisscussionInfoLastTime" + paramString, 0L)));
-    this.q.put(paramString, localObject);
-    return localObject;
+      localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getDisscussionInfoSeq");
+      ((StringBuilder)localObject2).append(paramString);
+      long l1 = ((SharedPreferences)localObject1).getLong(((StringBuilder)localObject2).toString(), 0L);
+      localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getDisscussionInfoLastTime");
+      ((StringBuilder)localObject2).append(paramString);
+      localObject1 = new Pair(Long.valueOf(l1), Long.valueOf(((SharedPreferences)localObject1).getLong(((StringBuilder)localObject2).toString(), 0L)));
+      this.p.put(paramString, localObject1);
+    }
+    return localObject1;
   }
   
   public BaseMsgProxy a()
@@ -383,68 +439,92 @@ public class MessageCache
   
   public AppShareID a(String paramString)
   {
-    if (!this.al.containsKey(paramString))
+    Object localObject1;
+    if (!this.ak.containsKey(paramString))
     {
-      EntityManager localEntityManager = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager();
-      AppShareID localAppShareID = (AppShareID)localEntityManager.find(AppShareID.class, "strPkgName=?", new String[] { paramString });
-      if (localAppShareID != null)
+      localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager();
+      Object localObject2 = (AppShareID)((EntityManager)localObject1).find(AppShareID.class, "strPkgName=?", new String[] { paramString });
+      if (localObject2 != null)
       {
-        a(paramString, localAppShareID);
-        if (QLog.isColorLevel()) {
-          QLog.d("share_appid", 2, "Add cache from db appid = " + paramString);
+        a(paramString, (AppShareID)localObject2);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Add cache from db appid = ");
+          ((StringBuilder)localObject2).append(paramString);
+          QLog.d("share_appid", 2, ((StringBuilder)localObject2).toString());
         }
-        localEntityManager.close();
       }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Not exist in db appid = ");
+          ((StringBuilder)localObject2).append(paramString);
+          QLog.d("share_appid", 2, ((StringBuilder)localObject2).toString());
+        }
+        a(paramString, jdField_a_of_type_ComTencentMobileqqDataAppShareID);
+      }
+      ((EntityManager)localObject1).close();
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      if (this.al.get(paramString) != jdField_a_of_type_ComTencentMobileqqDataAppShareID) {
-        break label186;
-      }
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.d("share_appid", 2, "Not exist in db appid = " + paramString);
-      }
-      a(paramString, jdField_a_of_type_ComTencentMobileqqDataAppShareID);
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("share_appid", 2, "Already in cache appid = " + paramString);
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Already in cache appid = ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("share_appid", 2, ((StringBuilder)localObject1).toString());
     }
-    label186:
-    return (AppShareID)this.al.get(paramString);
+    if (this.ak.get(paramString) == jdField_a_of_type_ComTencentMobileqqDataAppShareID) {
+      return null;
+    }
+    return (AppShareID)this.ak.get(paramString);
   }
   
   public MessageRecord a(int paramInt, String paramString, long paramLong)
   {
-    paramString = String.valueOf(paramInt) + "_" + paramString + "_" + paramLong;
-    MessageRecord localMessageRecord = (MessageRecord)this.T.get(paramString);
-    this.T.remove(paramString);
-    return localMessageRecord;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(String.valueOf(paramInt));
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramLong);
+    paramString = ((StringBuilder)localObject).toString();
+    localObject = (MessageRecord)this.S.get(paramString);
+    this.S.remove(paramString);
+    return localObject;
   }
   
   public OpenID a(String paramString)
   {
-    if (!this.am.containsKey(paramString))
+    Object localObject1;
+    if (!this.al.containsKey(paramString))
     {
-      EntityManager localEntityManager = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager();
-      OpenID localOpenID = (OpenID)localEntityManager.find(OpenID.class, paramString);
-      if (localOpenID != null)
+      localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory().createEntityManager();
+      Object localObject2 = (OpenID)((EntityManager)localObject1).find(OpenID.class, paramString);
+      if (localObject2 != null)
       {
-        a(paramString, localOpenID);
-        if (QLog.isColorLevel()) {
-          QLog.d("openid", 2, "Add cache from db appid = " + paramString);
+        a(paramString, (OpenID)localObject2);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Add cache from db appid = ");
+          ((StringBuilder)localObject2).append(paramString);
+          QLog.d("openid", 2, ((StringBuilder)localObject2).toString());
         }
       }
-      localEntityManager.close();
+      ((EntityManager)localObject1).close();
     }
-    for (;;)
+    else if (QLog.isColorLevel())
     {
-      return (OpenID)this.am.get(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("openid", 2, "Already in cache appid = " + paramString + ",openid=" + ((OpenID)this.am.get(paramString)).openID);
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Already in cache appid = ");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(",openid=");
+      ((StringBuilder)localObject1).append(((OpenID)this.al.get(paramString)).openID);
+      QLog.d("openid", 2, ((StringBuilder)localObject1).toString());
     }
+    return (OpenID)this.al.get(paramString);
   }
   
   public MessageCache.MsgSendingInfo a(MessageRecord paramMessageRecord)
@@ -457,120 +537,133 @@ public class MessageCache
     String str = UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
     MessageCache.MsgSendingInfo localMsgSendingInfo = new MessageCache.MsgSendingInfo(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, System.currentTimeMillis());
     localMsgSendingInfo.jdField_b_of_type_Int = paramInt;
-    if (this.s.containsKey(str))
+    Object localObject;
+    if (this.r.containsKey(str))
     {
-      localObject = (ConcurrentHashMap)this.s.get(str);
-      if (localObject != null) {
+      localObject = (ConcurrentHashMap)this.r.get(str);
+      if (localObject != null)
+      {
         ((ConcurrentHashMap)localObject).put(Long.valueOf(paramMessageRecord.uniseq), localMsgSendingInfo);
       }
-    }
-    for (;;)
-    {
-      if (paramMessageRecord.isLongMsg())
+      else
       {
-        if (!this.S.containsKey(str)) {
-          break label291;
-        }
-        if (!((ConcurrentHashMap)this.S.get(str)).containsKey(Integer.valueOf(paramMessageRecord.longMsgId))) {
-          break;
-        }
-        ((HashSet)((ConcurrentHashMap)this.S.get(str)).get(Integer.valueOf(paramMessageRecord.longMsgId))).add(Long.valueOf(paramMessageRecord.uniseq));
+        localObject = new ConcurrentHashMap();
+        ((ConcurrentHashMap)localObject).put(Long.valueOf(paramMessageRecord.uniseq), localMsgSendingInfo);
+        this.r.put(str, localObject);
       }
-      return localMsgSendingInfo;
-      localObject = new ConcurrentHashMap();
-      ((ConcurrentHashMap)localObject).put(Long.valueOf(paramMessageRecord.uniseq), localMsgSendingInfo);
-      this.s.put(str, localObject);
-      continue;
-      localObject = new ConcurrentHashMap();
-      ((ConcurrentHashMap)localObject).put(Long.valueOf(paramMessageRecord.uniseq), localMsgSendingInfo);
-      this.s.put(str, localObject);
     }
-    Object localObject = new HashSet();
-    ((HashSet)localObject).add(Long.valueOf(paramMessageRecord.uniseq));
-    ((ConcurrentHashMap)this.S.get(str)).put(Integer.valueOf(paramMessageRecord.longMsgId), localObject);
-    return localMsgSendingInfo;
-    label291:
-    localObject = new ConcurrentHashMap();
-    HashSet localHashSet = new HashSet();
-    localHashSet.add(Long.valueOf(paramMessageRecord.uniseq));
-    ((ConcurrentHashMap)localObject).put(Integer.valueOf(paramMessageRecord.longMsgId), localHashSet);
-    this.S.put(str, localObject);
+    else
+    {
+      localObject = new ConcurrentHashMap();
+      ((ConcurrentHashMap)localObject).put(Long.valueOf(paramMessageRecord.uniseq), localMsgSendingInfo);
+      this.r.put(str, localObject);
+    }
+    if (paramMessageRecord.isLongMsg())
+    {
+      if (this.R.containsKey(str))
+      {
+        if (((ConcurrentHashMap)this.R.get(str)).containsKey(Integer.valueOf(paramMessageRecord.longMsgId)))
+        {
+          ((HashSet)((ConcurrentHashMap)this.R.get(str)).get(Integer.valueOf(paramMessageRecord.longMsgId))).add(Long.valueOf(paramMessageRecord.uniseq));
+          return localMsgSendingInfo;
+        }
+        localObject = new HashSet();
+        ((HashSet)localObject).add(Long.valueOf(paramMessageRecord.uniseq));
+        ((ConcurrentHashMap)this.R.get(str)).put(Integer.valueOf(paramMessageRecord.longMsgId), localObject);
+        return localMsgSendingInfo;
+      }
+      localObject = new ConcurrentHashMap();
+      HashSet localHashSet = new HashSet();
+      localHashSet.add(Long.valueOf(paramMessageRecord.uniseq));
+      ((ConcurrentHashMap)localObject).put(Integer.valueOf(paramMessageRecord.longMsgId), localHashSet);
+      this.R.put(str, localObject);
+    }
     return localMsgSendingInfo;
   }
   
   public MessageCache.MsgSendingInfo a(String paramString, int paramInt, long paramLong)
   {
-    int i2 = 0;
+    int i4 = 0;
+    int i3 = 0;
     QLog.i("MsgSend", 1, String.format("removeSendingCache key = %d %s %d", new Object[] { Long.valueOf(paramLong), MsfSdkUtils.getShortUin(paramString), Integer.valueOf(paramInt) }), new RuntimeException());
-    String str1 = null;
-    Set localSet = null;
     String str2 = UinTypeUtil.a(paramString, paramInt);
-    if (this.s.containsKey(str2))
+    boolean bool = this.r.containsKey(str2);
+    String str1 = null;
+    paramString = null;
+    Object localObject;
+    if (bool)
     {
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.s.get(str2);
-      paramString = localSet;
-      if (localConcurrentHashMap != null) {
-        paramString = (MessageCache.MsgSendingInfo)localConcurrentHashMap.remove(Long.valueOf(paramLong));
+      localObject = (ConcurrentHashMap)this.r.get(str2);
+      if (localObject != null) {
+        paramString = (MessageCache.MsgSendingInfo)((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong));
       }
       str1 = paramString;
-      if (localConcurrentHashMap != null)
+      if (localObject != null)
       {
         str1 = paramString;
-        if (localConcurrentHashMap.isEmpty())
+        if (((ConcurrentHashMap)localObject).isEmpty())
         {
-          this.s.remove(str2);
+          this.r.remove(str2);
           str1 = paramString;
         }
       }
     }
-    if ((!d()) && (this.t.containsKey(str2)))
+    if ((!d()) && (this.s.containsKey(str2)))
     {
-      paramString = (ConcurrentHashMap)this.t.get(str2);
+      paramString = (ConcurrentHashMap)this.s.get(str2);
       if (paramString != null) {
         paramString.remove(Long.valueOf(paramLong));
       }
       if ((paramString != null) && (paramString.isEmpty())) {
-        this.t.remove(str2);
+        this.s.remove(str2);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "msgSending:delete result in messageSendingTemp " + this.t);
+      if (QLog.isColorLevel())
+      {
+        paramString = jdField_a_of_type_JavaLangString;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("msgSending:delete result in messageSendingTemp ");
+        ((StringBuilder)localObject).append(this.s);
+        QLog.d(paramString, 2, ((StringBuilder)localObject).toString());
       }
     }
-    int i1;
-    if (this.S.containsKey(str2))
+    if (this.R.containsKey(str2))
     {
-      paramString = ((ConcurrentHashMap)this.S.get(str2)).keySet().iterator();
+      paramString = ((ConcurrentHashMap)this.R.get(str2)).keySet().iterator();
+      int i2;
       do
       {
-        paramInt = i2;
+        i1 = i4;
         if (!paramString.hasNext()) {
           break;
         }
-        i1 = ((Integer)paramString.next()).intValue();
-        localSet = (Set)((ConcurrentHashMap)this.S.get(str2)).get(Integer.valueOf(i1));
+        i2 = ((Integer)paramString.next()).intValue();
+        localObject = (Set)((ConcurrentHashMap)this.R.get(str2)).get(Integer.valueOf(i2));
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, String.format("removeSendingCache  longMsgFragmentSet = %s", new Object[] { localSet }));
+          QLog.d(jdField_a_of_type_JavaLangString, 2, String.format("removeSendingCache  longMsgFragmentSet = %s", new Object[] { localObject }));
         }
-      } while (!localSet.contains(Long.valueOf(paramLong)));
-      localSet.remove(Long.valueOf(paramLong));
-      if (!localSet.isEmpty()) {
-        break label467;
+      } while (!((Set)localObject).contains(Long.valueOf(paramLong)));
+      ((Set)localObject).remove(Long.valueOf(paramLong));
+      paramInt = i3;
+      if (((Set)localObject).isEmpty()) {
+        paramInt = i2;
       }
-    }
-    label467:
-    for (paramInt = i1;; paramInt = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "removeSendingCache uniseq=" + paramLong + "longid=" + i1);
-      }
-      for (;;)
+      int i1 = paramInt;
+      if (QLog.isColorLevel())
       {
-        if (paramInt != 0) {
-          ((ConcurrentHashMap)this.S.get(str2)).remove(Integer.valueOf(paramInt));
-        }
-        return str1;
+        paramString = jdField_a_of_type_JavaLangString;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("removeSendingCache uniseq=");
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append("longid=");
+        ((StringBuilder)localObject).append(i2);
+        QLog.d(paramString, 2, ((StringBuilder)localObject).toString());
+        i1 = paramInt;
+      }
+      if (i1 != 0) {
+        ((ConcurrentHashMap)this.R.get(str2)).remove(Integer.valueOf(i1));
       }
     }
+    return str1;
   }
   
   public MessageCacheItem a()
@@ -588,64 +681,81 @@ public class MessageCache
   
   public ArrayList<msg_comm.Msg> a(long paramLong)
   {
-    return (ArrayList)this.af.get(Long.valueOf(paramLong));
+    return (ArrayList)this.ae.get(Long.valueOf(paramLong));
   }
   
   public ArrayList<Object[]> a(String paramString)
   {
-    return (ArrayList)this.ae.get(paramString);
+    return (ArrayList)this.ad.get(paramString);
+  }
+  
+  public HashSet<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashSet;
   }
   
   public List<Integer> a(String paramString, int paramInt)
   {
     String str = UinTypeUtil.a(paramString, paramInt);
-    if (!this.v.containsKey(str))
+    if (!this.u.containsKey(str))
     {
-      paramString = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("getLongMsgIdArray" + UinTypeUtil.a(paramString, paramInt), "");
-      this.v.put(str, a(paramString));
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getLongMsgIdArray");
+      localStringBuilder.append(UinTypeUtil.a(paramString, paramInt));
+      paramString = localSharedPreferences.getString(localStringBuilder.toString(), "");
+      this.u.put(str, a(paramString));
     }
-    return (List)this.v.get(str);
+    return (List)this.u.get(str);
   }
   
   public Map<String, Set<Integer>> a(String paramString, int paramInt)
   {
-    synchronized (this.R)
+    synchronized (this.Q)
     {
       paramString = UinTypeUtil.a(paramString, paramInt);
-      if ((this.R.containsKey(paramString)) && (this.R.get(paramString) != null))
+      if ((this.Q.containsKey(paramString)) && (this.Q.get(paramString) != null))
       {
-        Map localMap = (Map)this.R.get(paramString);
+        Map localMap = (Map)this.Q.get(paramString);
         if ((localMap != null) && (localMap.isEmpty()))
         {
-          this.R.remove(paramString);
+          this.Q.remove(paramString);
           return null;
         }
         return localMap;
       }
+      return null;
     }
-    return null;
   }
   
   public Set<String> a()
   {
     String str = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
-    if (TextUtils.isEmpty(str)) {}
-    Set localSet;
-    do
-    {
+    if (TextUtils.isEmpty(str)) {
       return null;
-      if (this.f.containsKey(str)) {
-        break;
+    }
+    if (!this.jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+    {
+      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("birth");
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("_list");
+      localObject = ((SharedPreferences)localObject).getStringSet(localStringBuilder.toString(), null);
+      if (localObject == null) {
+        return null;
       }
-      localSet = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(str + "birth", 0).getStringSet(str + "_list", null);
-    } while (localSet == null);
-    this.f.put(str, localSet);
-    return (Set)this.f.get(str);
+      this.jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject);
+    }
+    return (Set)this.jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
   }
   
   public ConcurrentHashMap<String, Integer> a()
   {
-    return this.ad;
+    return this.ac;
   }
   
   public AppRuntime a()
@@ -672,75 +782,68 @@ public class MessageCache
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putInt("getlastMessageTime", paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>setBuddyMsgLastSeq lastseq = " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--->>setBuddyMsgLastSeq lastseq = ");
+        localStringBuilder.append(paramInt);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
     }
   }
   
   public void a(long paramLong)
   {
-    this.af.remove(Long.valueOf(paramLong));
+    this.ae.remove(Long.valueOf(paramLong));
   }
   
   public void a(long paramLong1, String paramString, long paramLong2)
   {
     Object localObject2 = (ArrayList)this.jdField_c_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong1));
     Object localObject1 = localObject2;
-    long l1;
-    long l2;
-    long l3;
-    if (localObject2 == null) {
+    if (localObject2 == null)
+    {
       if (this.jdField_c_of_type_JavaUtilHashMap.size() >= 20)
       {
+        long l1 = 0L;
         localObject1 = this.jdField_c_of_type_JavaUtilHashMap.keySet().iterator();
-        l1 = 0L;
-        if (!((Iterator)localObject1).hasNext()) {
-          break label232;
+        long l2;
+        for (;;)
+        {
+          l2 = l1;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          l2 = ((Long)((Iterator)localObject1).next()).longValue();
+          long l3 = Long.parseLong((String)((ArrayList)this.jdField_c_of_type_JavaUtilHashMap.get(Long.valueOf(l2))).get(0));
+          if (paramLong2 - l3 > 300L) {
+            break;
+          }
+          if (l3 < paramLong2) {
+            l1 = l2;
+          }
         }
-        l2 = ((Long)((Iterator)localObject1).next()).longValue();
-        l3 = Long.parseLong((String)((ArrayList)this.jdField_c_of_type_JavaUtilHashMap.get(Long.valueOf(l2))).get(0));
-        if (paramLong2 - l3 <= 300L) {
-          break label202;
-        }
+        this.jdField_c_of_type_JavaUtilHashMap.remove(Long.valueOf(l2));
       }
-    }
-    for (;;)
-    {
-      this.jdField_c_of_type_JavaUtilHashMap.remove(Long.valueOf(l2));
       localObject1 = new ArrayList();
-      if (((ArrayList)localObject1).size() >= 20) {
-        ((ArrayList)localObject1).remove(0);
-      }
-      localObject2 = Long.toString(paramLong2);
-      if (((ArrayList)localObject1).size() == 0)
-      {
-        ((ArrayList)localObject1).add(localObject2);
-        label180:
-        ((ArrayList)localObject1).add(paramString);
-        this.jdField_c_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong1), localObject1);
-        return;
-        label202:
-        if (l3 >= paramLong2) {
-          break label229;
-        }
-        l1 = l2;
-      }
-      label229:
-      for (;;)
-      {
-        break;
-        ((ArrayList)localObject1).set(0, localObject2);
-        break label180;
-      }
-      label232:
-      l2 = l1;
     }
+    if (((ArrayList)localObject1).size() >= 20) {
+      ((ArrayList)localObject1).remove(0);
+    }
+    localObject2 = Long.toString(paramLong2);
+    if (((ArrayList)localObject1).size() == 0) {
+      ((ArrayList)localObject1).add(localObject2);
+    } else {
+      ((ArrayList)localObject1).set(0, localObject2);
+    }
+    ((ArrayList)localObject1).add(paramString);
+    this.jdField_c_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong1), localObject1);
   }
   
   public void a(long paramLong, List<msg_comm.Msg> paramList)
   {
-    ArrayList localArrayList2 = (ArrayList)this.af.get(Long.valueOf(paramLong));
+    ArrayList localArrayList2 = (ArrayList)this.ae.get(Long.valueOf(paramLong));
     ArrayList localArrayList1;
     if (localArrayList2 != null)
     {
@@ -752,45 +855,51 @@ public class MessageCache
       localArrayList1 = new ArrayList();
     }
     localArrayList1.addAll(paramList);
-    this.af.put(Long.valueOf(paramLong), localArrayList1);
+    this.ae.put(Long.valueOf(paramLong), localArrayList1);
   }
   
   public void a(MessageRecord paramMessageRecord)
   {
-    for (;;)
+    synchronized (this.Q)
     {
-      String str;
-      synchronized (this.R)
+      if (!paramMessageRecord.isLongMsg()) {
+        return;
+      }
+      Object localObject1;
+      if (QLog.isColorLevel())
       {
-        if (!paramMessageRecord.isLongMsg()) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "addOnlineLongMsgFragment longid=" + paramMessageRecord.getLongMsgInfoString());
-        }
-        localObject = UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-        str = UinTypeUtil.a(paramMessageRecord);
-        if ((this.R.containsKey(localObject)) && (this.R.get(localObject) != null))
-        {
-          localConcurrentHashMap1 = (ConcurrentHashMap)this.R.get(localObject);
-          if (!localConcurrentHashMap1.containsKey(str)) {
-            break label195;
-          }
-          localObject = (Set)localConcurrentHashMap1.get(str);
-          ((Set)localObject).add(Integer.valueOf(paramMessageRecord.longMsgIndex));
-          if (paramMessageRecord.longMsgCount <= ((Set)localObject).size()) {
-            localConcurrentHashMap1.remove(str);
-          }
-          return;
+        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("addOnlineLongMsgFragment longid=");
+        ((StringBuilder)localObject2).append(paramMessageRecord.getLongMsgInfoString());
+        QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+      }
+      Object localObject3 = UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+      Object localObject2 = UinTypeUtil.a(paramMessageRecord);
+      if ((this.Q.containsKey(localObject3)) && (this.Q.get(localObject3) != null))
+      {
+        localObject1 = (ConcurrentHashMap)this.Q.get(localObject3);
+      }
+      else
+      {
+        localObject1 = new ConcurrentHashMap();
+        this.Q.put(localObject3, localObject1);
+      }
+      if (((ConcurrentHashMap)localObject1).containsKey(localObject2))
+      {
+        localObject3 = (Set)((ConcurrentHashMap)localObject1).get(localObject2);
+        ((Set)localObject3).add(Integer.valueOf(paramMessageRecord.longMsgIndex));
+        if (paramMessageRecord.longMsgCount <= ((Set)localObject3).size()) {
+          ((ConcurrentHashMap)localObject1).remove(localObject2);
         }
       }
-      ConcurrentHashMap localConcurrentHashMap1 = new ConcurrentHashMap();
-      this.R.put(localObject, localConcurrentHashMap1);
-      continue;
-      label195:
-      Object localObject = new HashSet();
-      ((Set)localObject).add(Integer.valueOf(paramMessageRecord.longMsgIndex));
-      localConcurrentHashMap1.put(str, localObject);
+      else
+      {
+        localObject3 = new HashSet();
+        ((Set)localObject3).add(Integer.valueOf(paramMessageRecord.longMsgIndex));
+        ((ConcurrentHashMap)localObject1).put(localObject2, localObject3);
+      }
+      return;
     }
   }
   
@@ -801,11 +910,18 @@ public class MessageCache
   
   public void a(String paramString, int paramInt)
   {
-    this.ad.put(paramString, Integer.valueOf(paramInt));
+    this.ac.put(paramString, Integer.valueOf(paramInt));
     if (paramInt != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "setTroopMsgResponseState state: " + paramString + " state: " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setTroopMsgResponseState state: ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" state: ");
+        localStringBuilder.append(paramInt);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
       if (paramInt == 2) {
         f(paramString);
@@ -825,53 +941,70 @@ public class MessageCache
         paramInt2 += 1;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putString("getLongMsgIdArray" + UinTypeUtil.a(paramString, paramInt1), a(a(paramString, paramInt1))).commit();
+    MessageCache.AsyncEditor localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getLongMsgIdArray");
+    localStringBuilder.append(UinTypeUtil.a(paramString, paramInt1));
+    localAsyncEditor.putString(localStringBuilder.toString(), a(a(paramString, paramInt1))).commit();
   }
   
   public void a(String paramString, int paramInt, long paramLong)
   {
-    if (paramInt == 1) {
+    Object localObject;
+    if (paramInt == 1)
+    {
       paramLong = Math.max(paramLong, b(paramString));
     }
-    for (;;)
+    else if (paramInt == 3000)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "addMsgDelLastSeq uin = " + paramString + ",type = " + paramInt + " , lastSeqId = " + paramLong);
-      }
-      this.M.put(UinTypeUtil.a(paramString, paramInt), Long.valueOf(Math.max(paramLong, a(paramString, paramInt))));
-      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
-        this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getDelMsgLastSeq" + UinTypeUtil.a(paramString, paramInt), paramLong).commit();
-      }
-      return;
-      if (paramInt == 3000)
+      paramLong = Math.max(paramLong, h(paramString));
+    }
+    else
+    {
+      localObject = b(paramString, paramInt);
+      long l1 = paramLong;
+      if (localObject != null)
       {
-        paramLong = Math.max(paramLong, h(paramString));
-      }
-      else
-      {
-        List localList = b(paramString, paramInt);
-        long l1 = paramLong;
-        if (localList != null)
-        {
-          l1 = paramLong;
-          if (!localList.isEmpty()) {
-            l1 = Math.max(paramLong, ((MessageRecord)localList.get(localList.size() - 1)).time);
-          }
+        l1 = paramLong;
+        if (!((List)localObject).isEmpty()) {
+          l1 = Math.max(paramLong, ((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).time);
         }
-        b(paramString, 0L, 0L);
+      }
+      b(paramString, 0L, 0L);
+      paramLong = l1;
+      if (paramInt == 0)
+      {
+        i(paramString, NetConnInfoCenter.getServerTimeMillis());
         paramLong = l1;
-        if (paramInt == 0)
-        {
-          i(paramString, NetConnInfoCenter.getServerTimeMillis());
-          paramLong = l1;
-        }
       }
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addMsgDelLastSeq uin = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",type = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" , lastSeqId = ");
+      localStringBuilder.append(paramLong);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    this.L.put(UinTypeUtil.a(paramString, paramInt), Long.valueOf(Math.max(paramLong, a(paramString, paramInt))));
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDelMsgLastSeq");
+      localStringBuilder.append(UinTypeUtil.a(paramString, paramInt));
+      ((MessageCache.AsyncEditor)localObject).putLong(localStringBuilder.toString(), paramLong).commit();
     }
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
   {
-    synchronized (this.R)
+    synchronized (this.Q)
     {
       paramString1 = a(paramString1, paramInt);
       if (paramString1 == null) {
@@ -887,142 +1020,200 @@ public class MessageCache
   public void a(String paramString, long paramLong)
   {
     paramLong = Math.max(paramLong, b(paramString));
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addGroupMsgLastSeq " + paramLong);
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addGroupMsgLastSeq ");
+      localStringBuilder.append(paramLong);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    this.h.put(paramString, Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getTroopLastMessageTime" + paramString, paramLong);
+    this.g.put(paramString, Long.valueOf(paramLong));
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopLastMessageTime");
+      localStringBuilder.append(paramString);
+      ((MessageCache.AsyncEditor)localObject).putLong(localStringBuilder.toString(), paramLong);
     }
   }
   
   public void a(String paramString, long paramLong1, long paramLong2)
   {
-    this.q.put(paramString, new Pair(Long.valueOf(paramLong1), Long.valueOf(paramLong2)));
+    this.p.put(paramString, new Pair(Long.valueOf(paramLong1), Long.valueOf(paramLong2)));
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getDisscussionInfoSeq" + paramString, paramLong1);
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getDisscussionInfoLastTime" + paramString, paramLong2);
+      MessageCache.AsyncEditor localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDisscussionInfoSeq");
+      localStringBuilder.append(paramString);
+      localAsyncEditor.putLong(localStringBuilder.toString(), paramLong1);
+      localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDisscussionInfoLastTime");
+      localStringBuilder.append(paramString);
+      localAsyncEditor.putLong(localStringBuilder.toString(), paramLong2);
     }
   }
   
   public void a(String paramString, DisMsgReadedNotify paramDisMsgReadedNotify)
   {
-    this.aj.put(paramString, paramDisMsgReadedNotify);
+    this.ai.put(paramString, paramDisMsgReadedNotify);
   }
   
   public void a(String paramString, GroupMsgReadedNotify paramGroupMsgReadedNotify)
   {
-    this.ak.put(paramString, paramGroupMsgReadedNotify);
+    this.aj.put(paramString, paramGroupMsgReadedNotify);
   }
   
   public void a(String paramString, AppShareID paramAppShareID)
   {
-    this.al.put(paramString, paramAppShareID);
-    if (QLog.isColorLevel()) {
-      QLog.d("share_appid", 2, "add share appid to cache = " + paramString);
+    this.ak.put(paramString, paramAppShareID);
+    if (QLog.isColorLevel())
+    {
+      paramAppShareID = new StringBuilder();
+      paramAppShareID.append("add share appid to cache = ");
+      paramAppShareID.append(paramString);
+      QLog.d("share_appid", 2, paramAppShareID.toString());
     }
   }
   
   public void a(String paramString, OpenID paramOpenID)
   {
-    this.am.put(paramString, paramOpenID);
-    if (QLog.isColorLevel()) {
-      QLog.d("openid", 2, "add openid to cache = " + paramOpenID);
+    this.al.put(paramString, paramOpenID);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("add openid to cache = ");
+      paramString.append(paramOpenID);
+      QLog.d("openid", 2, paramString.toString());
     }
   }
   
   public void a(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
+    StringBuilder localStringBuilder;
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return;
-      paramString1 = paramString1 + "_" + paramString2;
-      try
-      {
-        paramString2 = (byte[])this.W.get(paramString1);
-        if (((paramString2 != null) && (Arrays.equals(paramString2, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          continue;
-        }
-        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "confess_sig", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
-        {
-          this.W.remove(paramString1);
-          paramString2.remove(paramString1);
-        }
-        for (;;)
-        {
-          paramString2.commit();
-          return;
-          this.W.put(paramString1, paramArrayOfByte);
-          paramString2.putString(paramString1, b(paramArrayOfByte));
-        }
+      if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      catch (Exception paramString1) {}
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString2);
+      paramString1 = localStringBuilder.toString();
     }
+    try
+    {
+      paramString2 = (byte[])this.V.get(paramString1);
+      if (((paramString2 == null) || (!Arrays.equals(paramString2, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
+      {
+        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("confess_sig");
+        paramString2 = paramString2.getSharedPreferences(localStringBuilder.toString(), 0).edit();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+        {
+          this.V.put(paramString1, paramArrayOfByte);
+          paramString2.putString(paramString1, b(paramArrayOfByte));
+        }
+        else
+        {
+          this.V.remove(paramString1);
+          paramString2.remove(paramString1);
+        }
+        paramString2.commit();
+      }
+      return;
+    }
+    catch (Exception paramString1) {}
   }
   
   public void a(String paramString1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
     ConcurrentHashMap localConcurrentHashMap;
-    if (paramBoolean)
+    Object localObject;
+    if (!TextUtils.isEmpty(paramString1))
     {
-      localConcurrentHashMap = this.Y;
-      label26:
-      paramString2 = paramString1 + "_" + paramString2;
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      if (paramBoolean) {
+        localConcurrentHashMap = this.X;
+      } else {
+        localConcurrentHashMap = this.Y;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString2);
+      paramString2 = ((StringBuilder)localObject).toString();
     }
     for (;;)
     {
       try
       {
         paramString1 = (byte[])localConcurrentHashMap.get(paramString2);
-        if (((paramString1 != null) && (Arrays.equals(paramString1, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          break;
+        if (((paramString1 == null) || (!Arrays.equals(paramString1, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
+        {
+          localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+          localStringBuilder.append("MatchChat");
+          if (paramBoolean)
+          {
+            paramString1 = "";
+            localStringBuilder.append(paramString1);
+            paramString1 = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+            if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+            {
+              localConcurrentHashMap.put(paramString2, paramArrayOfByte);
+              paramString1.putString(paramString2, b(paramArrayOfByte));
+            }
+            else
+            {
+              localConcurrentHashMap.remove(paramString2);
+              paramString1.remove(paramString2);
+            }
+            paramString1.commit();
+          }
         }
-        BaseApplication localBaseApplication = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
-        StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin()).append("MatchChat");
-        if (!paramBoolean) {
-          break label190;
+        else
+        {
+          return;
         }
-        paramString1 = "";
-        paramString1 = localBaseApplication.getSharedPreferences(paramString1, 0).edit();
-        if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {
-          break label197;
-        }
-        localConcurrentHashMap.remove(paramString2);
-        paramString1.remove(paramString2);
-        paramString1.commit();
-        return;
       }
       catch (Exception paramString1)
       {
         return;
       }
-      localConcurrentHashMap = this.Z;
-      break label26;
-      label190:
       paramString1 = "_campus";
-      continue;
-      label197:
-      localConcurrentHashMap.put(paramString2, paramArrayOfByte);
-      paramString1.putString(paramString2, b(paramArrayOfByte));
     }
   }
   
   public void a(String paramString, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addWpaMsgKey uin:" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "peerUin:" + paramString + " key:" + a(paramArrayOfByte));
-    }
-    byte[] arrayOfByte = (byte[])this.w.get(paramString);
-    if ((arrayOfByte == null) || (!Arrays.equals(arrayOfByte, paramArrayOfByte)))
+    if (QLog.isColorLevel())
     {
-      this.w.put(paramString, paramArrayOfByte);
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addWpaMsgKey uin:");
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("peerUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" key:");
+      localStringBuilder.append(a(paramArrayOfByte));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    Object localObject = (byte[])this.v.get(paramString);
+    if ((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte)))
+    {
+      this.v.put(paramString, paramArrayOfByte);
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
         paramArrayOfByte = a(paramArrayOfByte);
@@ -1033,7 +1224,7 @@ public class MessageCache
   
   public void a(String paramString, Object[] paramArrayOfObject)
   {
-    ArrayList localArrayList2 = (ArrayList)this.ae.get(paramString);
+    ArrayList localArrayList2 = (ArrayList)this.ad.get(paramString);
     ArrayList localArrayList1;
     if (localArrayList2 != null)
     {
@@ -1045,121 +1236,79 @@ public class MessageCache
       localArrayList1 = new ArrayList();
     }
     localArrayList1.add(paramArrayOfObject);
-    this.ae.put(paramString, localArrayList1);
+    this.ad.put(paramString, localArrayList1);
   }
   
   public void a(ArrayList<RevokeMsgInfo> paramArrayList)
   {
     Object localObject1 = (RevokeMsgInfo)paramArrayList.get(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("revokeMsg", 2, "RevokeNotifyCache, add cache, " + ((RevokeMsgInfo)localObject1).toString());
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("RevokeNotifyCache, add cache, ");
+      ((StringBuilder)localObject2).append(((RevokeMsgInfo)localObject1).toString());
+      QLog.d("revokeMsg", 2, ((StringBuilder)localObject2).toString());
     }
     int i2 = ((RevokeMsgInfo)localObject1).jdField_a_of_type_Int;
     Object localObject2 = ((RevokeMsgInfo)localObject1).jdField_a_of_type_JavaLangString;
     int i1;
-    if (((RevokeMsgInfo)localObject1).jdField_c_of_type_Int > 1)
-    {
+    if (((RevokeMsgInfo)localObject1).jdField_c_of_type_Int > 1) {
       i1 = 1;
-      if (i1 == 0) {
-        break label254;
-      }
+    } else {
+      i1 = 0;
+    }
+    if (i1 != 0) {
       localObject1 = String.format("%s&%d&%d&%d", new Object[] { localObject2, Integer.valueOf(i2), Integer.valueOf(((RevokeMsgInfo)localObject1).jdField_b_of_type_Int), Integer.valueOf(((RevokeMsgInfo)localObject1).jdField_c_of_type_Int) });
+    } else {
+      localObject1 = String.format("%s&%d&%d", new Object[] { localObject2, Integer.valueOf(i2), Long.valueOf(((RevokeMsgInfo)localObject1).jdField_a_of_type_Long) });
     }
-    for (;;)
+    if (this.t.containsKey(localObject1))
     {
-      label121:
-      if (this.u.containsKey(localObject1))
+      localObject1 = (ArrayList)this.t.get(localObject1);
+      localObject2 = new ArrayList();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        localObject1 = (ArrayList)this.u.get(localObject1);
-        localObject2 = new ArrayList();
-        paramArrayList = paramArrayList.iterator();
-        for (;;)
+        RevokeMsgInfo localRevokeMsgInfo1 = (RevokeMsgInfo)paramArrayList.next();
+        Iterator localIterator = ((ArrayList)localObject1).iterator();
+        RevokeMsgInfo localRevokeMsgInfo2;
+        do
         {
-          if (paramArrayList.hasNext())
-          {
-            RevokeMsgInfo localRevokeMsgInfo1 = (RevokeMsgInfo)paramArrayList.next();
-            Iterator localIterator = ((ArrayList)localObject1).iterator();
-            RevokeMsgInfo localRevokeMsgInfo2;
-            do
-            {
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              localRevokeMsgInfo2 = (RevokeMsgInfo)localIterator.next();
-            } while ((localRevokeMsgInfo1.jdField_a_of_type_Long != localRevokeMsgInfo2.jdField_a_of_type_Long) || (localRevokeMsgInfo1.jdField_b_of_type_Long != localRevokeMsgInfo2.jdField_b_of_type_Long));
-            ((ArrayList)localObject2).add(localRevokeMsgInfo1);
-            continue;
-            i1 = 0;
+          if (!localIterator.hasNext()) {
             break;
-            label254:
-            localObject1 = String.format("%s&%d&%d", new Object[] { localObject2, Integer.valueOf(i2), Long.valueOf(((RevokeMsgInfo)localObject1).jdField_a_of_type_Long) });
-            break label121;
           }
-        }
-        ((ArrayList)localObject1).addAll((Collection)localObject2);
-        return;
+          localRevokeMsgInfo2 = (RevokeMsgInfo)localIterator.next();
+        } while ((localRevokeMsgInfo1.jdField_a_of_type_Long != localRevokeMsgInfo2.jdField_a_of_type_Long) || (localRevokeMsgInfo1.jdField_b_of_type_Long != localRevokeMsgInfo2.jdField_b_of_type_Long));
+        ((ArrayList)localObject2).add(localRevokeMsgInfo1);
       }
+      ((ArrayList)localObject1).addAll((Collection)localObject2);
+      return;
     }
-    this.u.put(localObject1, paramArrayList);
+    this.t.put(localObject1, paramArrayList);
   }
   
-  /* Error */
   public void a(List<stConfNumInfo> paramList)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: invokestatic 561	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +42 -> 47
-    //   8: getstatic 132	com/tencent/mobileqq/service/message/MessageCache:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   11: astore_3
-    //   12: new 386	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 387	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 939
-    //   22: invokevirtual 404	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: astore 4
-    //   27: aload_1
-    //   28: ifnonnull +31 -> 59
-    //   31: iconst_0
-    //   32: istore_2
-    //   33: aload_3
-    //   34: iconst_2
-    //   35: aload 4
-    //   37: iload_2
-    //   38: invokevirtual 568	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   41: invokevirtual 407	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   44: invokestatic 573	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   47: aload_0
-    //   48: getfield 177	com/tencent/mobileqq/service/message/MessageCache:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   51: aload_1
-    //   52: invokevirtual 805	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
-    //   55: pop
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: return
-    //   59: aload_1
-    //   60: invokeinterface 391 1 0
-    //   65: istore_2
-    //   66: goto -33 -> 33
-    //   69: astore_1
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: aload_1
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	MessageCache
-    //   0	74	1	paramList	List<stConfNumInfo>
-    //   32	34	2	i1	int
-    //   11	23	3	str	String
-    //   25	11	4	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   2	27	69	finally
-    //   33	47	69	finally
-    //   47	56	69	finally
-    //   59	66	69	finally
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addDiscNumInfoCache size = ");
+        int i1;
+        if (paramList == null) {
+          i1 = 0;
+        } else {
+          i1 = paramList.size();
+        }
+        localStringBuilder.append(i1);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      this.jdField_b_of_type_JavaUtilArrayList.addAll(paramList);
+      return;
+    }
+    finally {}
   }
   
   public void a(Set<String> paramSet)
@@ -1167,10 +1316,17 @@ public class MessageCache
     String str = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
     if ((!TextUtils.isEmpty(str)) && (paramSet != null))
     {
-      this.f.put(str, paramSet);
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(str + "birth", 0).edit();
-      localEditor.putStringSet(str + "_list", paramSet);
-      localEditor.apply();
+      this.jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramSet);
+      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("birth");
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("_list");
+      ((SharedPreferences.Editor)localObject).putStringSet(localStringBuilder.toString(), paramSet);
+      ((SharedPreferences.Editor)localObject).apply();
     }
   }
   
@@ -1184,66 +1340,92 @@ public class MessageCache
     this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
     {
-      String str = a(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>setLastSyncCookie lastSyncCookie:" + str);
+      String str1 = a(paramArrayOfByte);
+      String str2;
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        str2 = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--->>setLastSyncCookie lastSyncCookie:");
+        localStringBuilder.append(str1);
+        QLog.d(str2, 2, localStringBuilder.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>setBuddyMsgLastSeq cookie = " + a(paramArrayOfByte));
+      if (QLog.isColorLevel())
+      {
+        str2 = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--->>setBuddyMsgLastSeq cookie = ");
+        localStringBuilder.append(a(paramArrayOfByte));
+        QLog.d(str2, 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putString("getMsgV4_vSyncCookie", str);
+      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putString("getMsgV4_vSyncCookie", str1);
     }
   }
   
   public void a(String[] paramArrayOfString)
   {
-    if (paramArrayOfString == null) {}
-    StringBuilder localStringBuilder;
-    do
-    {
+    if (paramArrayOfString == null) {
       return;
-      localStringBuilder = new StringBuilder(256);
-      localStringBuilder.append("removeDiscPullSeqCache, uinArray: ");
-      int i2 = paramArrayOfString.length;
-      int i1 = 0;
-      while (i1 < i2)
-      {
-        String str = paramArrayOfString[i1];
-        localStringBuilder.append(str).append(",");
-        if (this.o.containsKey(str)) {
-          this.o.remove(str);
-        }
-        i1 += 1;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(256);
+    localStringBuilder.append("removeDiscPullSeqCache, uinArray: ");
+    int i2 = paramArrayOfString.length;
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      String str = paramArrayOfString[i1];
+      localStringBuilder.append(str);
+      localStringBuilder.append(",");
+      if (this.n.containsKey(str)) {
+        this.n.remove(str);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+      i1 += 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
+    }
   }
   
   public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "isDiscPullSeqFinish size = " + this.o.size());
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isDiscPullSeqFinish size = ");
+      localStringBuilder.append(this.n.size());
+      QLog.d(str, 2, localStringBuilder.toString());
     }
-    return this.o.isEmpty();
+    return this.n.isEmpty();
   }
   
   public boolean a(int paramInt, String paramString, long paramLong)
   {
-    paramString = String.valueOf(paramInt) + "_" + paramString + "_" + paramLong;
-    return this.T.containsKey(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(paramInt));
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramLong);
+    paramString = localStringBuilder.toString();
+    return this.S.containsKey(paramString);
   }
   
   public boolean a(long paramLong, String paramString)
   {
     Object localObject = (ArrayList)this.jdField_c_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-    if ((localObject == null) || (((ArrayList)localObject).size() == 0)) {
-      return false;
-    }
-    localObject = ((ArrayList)localObject).iterator();
-    ((Iterator)localObject).next();
-    while (((Iterator)localObject).hasNext()) {
-      if (paramString.equals((String)((Iterator)localObject).next())) {
-        return true;
+    if (localObject != null)
+    {
+      if (((ArrayList)localObject).size() == 0) {
+        return false;
+      }
+      localObject = ((ArrayList)localObject).iterator();
+      ((Iterator)localObject).next();
+      while (((Iterator)localObject).hasNext()) {
+        if (paramString.equals((String)((Iterator)localObject).next())) {
+          return true;
+        }
       }
     }
     return false;
@@ -1257,20 +1439,34 @@ public class MessageCache
   public boolean a(String paramString)
   {
     paramString = MD5.toMD5(paramString);
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
-      return this.jdField_a_of_type_AndroidContentSharedPreferences.contains("deleteFriendMsgTime" + paramString);
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
+    {
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deleteFriendMsgTime");
+      localStringBuilder.append(paramString);
+      return localSharedPreferences.contains(localStringBuilder.toString());
     }
     return false;
   }
   
   public boolean a(String paramString, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = a(paramString, paramInt1).iterator();
-    while (localIterator.hasNext()) {
-      if (((Integer)localIterator.next()).intValue() == paramInt2)
+    Object localObject = a(paramString, paramInt1).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((Integer)((Iterator)localObject).next()).intValue() == paramInt2)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "long msg id is exist! uin=" + paramString + ",istroop=" + paramInt1 + ",longMsgID=" + paramInt2);
+        if (QLog.isColorLevel())
+        {
+          localObject = jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("long msg id is exist! uin=");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(",istroop=");
+          localStringBuilder.append(paramInt1);
+          localStringBuilder.append(",longMsgID=");
+          localStringBuilder.append(paramInt2);
+          QLog.d((String)localObject, 2, localStringBuilder.toString());
         }
         return true;
       }
@@ -1280,16 +1476,16 @@ public class MessageCache
   
   public boolean a(String paramString, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) {}
-    while ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin.equals(paramString)) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop != paramInt) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq != paramLong)) {
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    if (localMessageRecord == null) {
       return false;
     }
-    return true;
+    return (localMessageRecord.frienduin.equals(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq == paramLong);
   }
   
   public boolean a(String paramString1, int paramInt, String paramString2)
   {
-    synchronized (this.R)
+    synchronized (this.Q)
     {
       paramString1 = a(paramString1, paramInt);
       if (paramString1 == null) {
@@ -1304,8 +1500,8 @@ public class MessageCache
         }
         return true;
       }
+      return false;
     }
-    return false;
   }
   
   public boolean a(String paramString, long paramLong1, long paramLong2)
@@ -1313,7 +1509,13 @@ public class MessageCache
     if (this.jdField_a_of_type_JavaUtilSet.size() == 0) {
       return false;
     }
-    paramString = paramString + "_" + paramLong1 + "_" + paramLong2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramLong2);
+    paramString = localStringBuilder.toString();
     return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
   }
   
@@ -1327,118 +1529,147 @@ public class MessageCache
   
   public byte[] a()
   {
-    String str;
-    if (((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0)) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
+    Object localObject = this.jdField_a_of_type_ArrayOfByte;
+    if (((localObject == null) || (localObject.length == 0)) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
     {
-      str = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("getMsgV4_vSyncCookie", "");
-      if (str.length() != 0) {
-        break label98;
+      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("getMsgV4_vSyncCookie", "");
+      if (((String)localObject).length() == 0) {
+        this.jdField_a_of_type_ArrayOfByte = null;
+      } else {
+        this.jdField_a_of_type_ArrayOfByte = q((String)localObject);
       }
     }
-    label98:
-    for (this.jdField_a_of_type_ArrayOfByte = null;; this.jdField_a_of_type_ArrayOfByte = q(str))
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>getLastSyncCookie lastSyncCookie:" + a(this.jdField_a_of_type_ArrayOfByte));
-      }
-      return this.jdField_a_of_type_ArrayOfByte;
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--->>getLastSyncCookie lastSyncCookie:");
+      localStringBuilder.append(a(this.jdField_a_of_type_ArrayOfByte));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
   public byte[] a(String paramString)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return null;
-      if (this.B.containsKey(paramString)) {
-        break;
+    }
+    if (!this.A.containsKey(paramString))
+    {
+      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("pub");
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+      if (localObject == null) {
+        return null;
       }
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "pub", 0).getString(paramString, null);
-    } while (localObject == null);
-    Object localObject = r((String)localObject);
-    this.B.put(paramString, localObject);
-    return (byte[])this.B.get(paramString);
+      localObject = r((String)localObject);
+      this.A.put(paramString, localObject);
+    }
+    return (byte[])this.A.get(paramString);
   }
   
   public byte[] a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    paramString1 = paramString1 + "_" + paramString2;
-    if (!this.W.containsKey(paramString1))
+    if ((!TextUtils.isEmpty(paramString1)) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
     {
-      paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "confess_sig", 0).getString(paramString1, null);
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        paramString2 = r(paramString2);
-        if ((paramString2 != null) && (paramString2.length > 0))
-        {
-          this.W.put(paramString1, paramString2);
-          return paramString2;
-        }
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
       }
-    }
-    else
-    {
-      return (byte[])this.W.get(paramString1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString2);
+      paramString1 = localStringBuilder.toString();
+      if (!this.V.containsKey(paramString1))
+      {
+        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("confess_sig");
+        paramString2 = paramString2.getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString1, null);
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          paramString2 = r(paramString2);
+          if ((paramString2 != null) && (paramString2.length > 0))
+          {
+            this.V.put(paramString1, paramString2);
+            return paramString2;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.V.get(paramString1);
     }
     return null;
   }
   
   public byte[] a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    ConcurrentHashMap localConcurrentHashMap;
-    BaseApplication localBaseApplication;
-    StringBuilder localStringBuilder;
-    if (paramBoolean)
+    if ((!TextUtils.isEmpty(paramString1)) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
     {
-      localConcurrentHashMap = this.Y;
-      paramString2 = paramString1 + "_" + paramString2;
-      if (localConcurrentHashMap.containsKey(paramString2)) {
-        break label183;
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
       }
-      localBaseApplication = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
-      localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin()).append("MatchChat");
-      if (!paramBoolean) {
-        break label176;
+      ConcurrentHashMap localConcurrentHashMap;
+      if (paramBoolean) {
+        localConcurrentHashMap = this.X;
+      } else {
+        localConcurrentHashMap = this.Y;
       }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString2);
+      paramString2 = ((StringBuilder)localObject).toString();
+      if (!localConcurrentHashMap.containsKey(paramString2))
+      {
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("MatchChat");
+        if (paramBoolean) {
+          paramString1 = "";
+        } else {
+          paramString1 = "_campus";
+        }
+        localStringBuilder.append(paramString1);
+        paramString1 = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString2, null);
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          paramString1 = r(paramString1);
+          if ((paramString1 != null) && (paramString1.length > 0))
+          {
+            localConcurrentHashMap.put(paramString2, paramString1);
+            return paramString1;
+          }
+        }
+        return null;
+      }
+      return (byte[])localConcurrentHashMap.get(paramString2);
     }
-    label176:
-    for (paramString1 = "";; paramString1 = "_campus")
-    {
-      paramString1 = localBaseApplication.getSharedPreferences(paramString1, 0).getString(paramString2, null);
-      if (TextUtils.isEmpty(paramString1)) {
-        break label193;
-      }
-      paramString1 = r(paramString1);
-      if ((paramString1 == null) || (paramString1.length <= 0)) {
-        break label193;
-      }
-      localConcurrentHashMap.put(paramString2, paramString1);
-      return paramString1;
-      localConcurrentHashMap = this.Z;
-      break;
-    }
-    label183:
-    return (byte[])localConcurrentHashMap.get(paramString2);
-    label193:
     return null;
   }
   
   public Object[] a(String paramString)
   {
-    if (this.j.containsKey(paramString)) {
-      return (Object[])this.j.get(paramString);
+    if (this.i.containsKey(paramString)) {
+      return (Object[])this.i.get(paramString);
     }
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
     {
-      long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getDiscussionMemberSeq" + paramString, -1L);
-      long l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getDiscussionConfigSeq" + paramString, -1L);
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDiscussionMemberSeq");
+      localStringBuilder.append(paramString);
+      long l1 = localSharedPreferences.getLong(localStringBuilder.toString(), -1L);
+      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDiscussionConfigSeq");
+      localStringBuilder.append(paramString);
+      long l2 = localSharedPreferences.getLong(localStringBuilder.toString(), -1L);
       if (l1 != 0L) {
         return new Object[] { Long.valueOf(l1), Long.valueOf(l2) };
       }
@@ -1448,38 +1679,47 @@ public class MessageCache
   
   public int b()
   {
-    if ((this.jdField_c_of_type_Int <= 0) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)) {
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("getlastMessageTime", 1);
+    if (this.jdField_e_of_type_Int < 0) {
+      if (this.jdField_a_of_type_AndroidContentSharedPreferences.contains("msgsignal_switch")) {
+        this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("msgsignal_switch", 0);
+      } else {
+        this.jdField_e_of_type_Int = 0;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>getBuddyMsgLastSeq: " + this.jdField_c_of_type_Int);
-    }
-    return this.jdField_c_of_type_Int;
+    return this.jdField_e_of_type_Int;
   }
   
   public int b(String paramString)
   {
-    if (!this.ah.containsKey(paramString)) {
-      this.ah.put(paramString, Integer.valueOf(2));
+    if (!this.ag.containsKey(paramString)) {
+      this.ag.put(paramString, Integer.valueOf(2));
     }
-    return ((Integer)this.ah.get(paramString)).intValue();
+    return ((Integer)this.ag.get(paramString)).intValue();
   }
   
   public long b()
   {
     String str = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
-    if (TextUtils.isEmpty(str)) {}
-    long l1;
-    do
-    {
+    if (TextUtils.isEmpty(str)) {
       return -1L;
-      if (this.jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-        break;
+    }
+    if (!this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+    {
+      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("birth");
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("_time");
+      long l1 = ((SharedPreferences)localObject).getLong(localStringBuilder.toString(), -1L);
+      if (l1 == -1L) {
+        return -1L;
       }
-      l1 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(str + "birth", 0).getLong(str + "_time", -1L);
-    } while (l1 == -1L);
-    this.jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Long.valueOf(l1));
-    return ((Long)this.jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).longValue();
+      this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Long.valueOf(l1));
+    }
+    return ((Long)this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).longValue();
   }
   
   public long b(String paramString)
@@ -1487,60 +1727,79 @@ public class MessageCache
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return 0L;
     }
-    if (!this.h.containsKey(paramString))
+    if (!this.g.containsKey(paramString))
     {
-      l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getTroopLastMessageTime" + paramString, 0L);
-      this.h.put(paramString, Long.valueOf(l1));
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopLastMessageTime");
+      localStringBuilder.append(paramString);
+      long l1 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+      this.g.put(paramString, Long.valueOf(l1));
     }
-    paramString = (Long)this.h.get(paramString);
-    if (paramString == null) {}
-    for (long l1 = 0L;; l1 = paramString.longValue()) {
-      return l1;
+    paramString = (Long)this.g.get(paramString);
+    if (paramString == null) {
+      return 0L;
     }
+    return paramString.longValue();
   }
   
   public Pair<Long, Long> b(String paramString)
   {
     paramString = MD5.toMD5(paramString);
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {}
-    while (TextUtils.isEmpty(paramString)) {
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return null;
     }
-    if (!this.r.containsKey(paramString))
-    {
-      long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getC2CLastMessageTime" + paramString, 0L);
-      long l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getC2CLastMessageTimeRand" + paramString, 0L);
-      this.r.put(paramString, new Pair(Long.valueOf(l1), Long.valueOf(l2)));
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    return (Pair)this.r.get(paramString);
+    if (!this.q.containsKey(paramString))
+    {
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = a();
+      localStringBuilder.append("getC2CLastMessageTime");
+      localStringBuilder.append(paramString);
+      long l1 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      localStringBuilder = a();
+      localStringBuilder.append("getC2CLastMessageTimeRand");
+      localStringBuilder.append(paramString);
+      long l2 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+      this.q.put(paramString, new Pair(Long.valueOf(l1), Long.valueOf(l2)));
+    }
+    return (Pair)this.q.get(paramString);
   }
   
   public ArrayList<stConfNumInfo> b()
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "cloneDiscNumInfoCache size = " + this.jdField_b_of_type_JavaUtilArrayList.size());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("cloneDiscNumInfoCache size = ");
+        localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList.size());
+        QLog.d((String)localObject1, 2, localStringBuilder.toString());
       }
-      ArrayList localArrayList = (ArrayList)this.jdField_b_of_type_JavaUtilArrayList.clone();
-      return localArrayList;
+      Object localObject1 = (ArrayList)this.jdField_b_of_type_JavaUtilArrayList.clone();
+      return localObject1;
     }
     finally {}
   }
   
   public ArrayList<msg_comm.Msg> b(long paramLong)
   {
-    return (ArrayList)this.ag.get(Long.valueOf(paramLong));
+    return (ArrayList)this.af.get(Long.valueOf(paramLong));
   }
   
   public ArrayList<Object[]> b(String paramString)
   {
-    return (ArrayList)this.ai.get(paramString);
+    return (ArrayList)this.ah.get(paramString);
   }
   
   public ConcurrentHashMap<String, ArrayList<Object[]>> b()
   {
-    return this.ae;
+    return this.ad;
   }
   
   public void b()
@@ -1548,29 +1807,34 @@ public class MessageCache
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "clearDiscPullSeqCache");
     }
-    this.o.clear();
+    this.n.clear();
   }
   
   public void b(int paramInt)
   {
-    if (c() != paramInt)
+    if (b() != paramInt)
     {
       this.jdField_e_of_type_Int = paramInt;
       this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putInt("msgsignal_switch", paramInt);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>setMsgSignalSwitch = " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--->>setMsgSignalSwitch = ");
+        localStringBuilder.append(paramInt);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
     }
   }
   
   public void b(long paramLong)
   {
-    this.ag.remove(Long.valueOf(paramLong));
+    this.af.remove(Long.valueOf(paramLong));
   }
   
   public void b(long paramLong, List<msg_comm.Msg> paramList)
   {
-    ArrayList localArrayList2 = (ArrayList)this.ag.get(Long.valueOf(paramLong));
+    ArrayList localArrayList2 = (ArrayList)this.af.get(Long.valueOf(paramLong));
     ArrayList localArrayList1;
     if (localArrayList2 != null)
     {
@@ -1582,29 +1846,38 @@ public class MessageCache
       localArrayList1 = new ArrayList();
     }
     localArrayList1.addAll(paramList);
-    this.ag.put(Long.valueOf(paramLong), localArrayList1);
+    this.af.put(Long.valueOf(paramLong), localArrayList1);
   }
   
   public void b(MessageRecord paramMessageRecord)
   {
-    String str = String.valueOf(paramMessageRecord.istroop) + "_" + paramMessageRecord.frienduin + "_" + paramMessageRecord.uniseq;
-    this.T.put(str, paramMessageRecord);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(String.valueOf(paramMessageRecord.istroop));
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramMessageRecord.frienduin);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramMessageRecord.uniseq);
+    localObject = ((StringBuilder)localObject).toString();
+    this.S.put(localObject, paramMessageRecord);
   }
   
   public void b(String paramString)
   {
-    this.ae.remove(paramString);
+    this.ad.remove(paramString);
   }
   
   public void b(String paramString, int paramInt)
   {
-    this.ah.put(paramString, Integer.valueOf(paramInt));
+    this.ag.put(paramString, Integer.valueOf(paramInt));
     if (paramInt != 0)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder(128);
-        localStringBuilder.append("setDiscussionMsgState discussionUin: ").append(paramString).append(" state: ").append(paramInt);
+        localStringBuilder.append("setDiscussionMsgState discussionUin: ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" state: ");
+        localStringBuilder.append(paramInt);
         QLog.d(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
       }
       if (paramInt == 2) {
@@ -1615,96 +1888,107 @@ public class MessageCache
   
   public void b(String paramString, int paramInt, long paramLong)
   {
-    String str = UinTypeUtil.a(paramString, paramInt);
+    Object localObject = UinTypeUtil.a(paramString, paramInt);
     paramString = new MessageCache.MsgSendingInfo(paramString, paramInt, paramLong, 0L);
     ConcurrentHashMap localConcurrentHashMap;
-    if (this.t.containsKey(str))
+    if (this.s.containsKey(localObject))
     {
-      localConcurrentHashMap = (ConcurrentHashMap)this.t.get(str);
-      if (localConcurrentHashMap != null) {
+      localConcurrentHashMap = (ConcurrentHashMap)this.s.get(localObject);
+      if (localConcurrentHashMap != null)
+      {
         localConcurrentHashMap.put(Long.valueOf(paramLong), paramString);
       }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "msgSending:addSendingCacheTemp,msgSendingTemp:" + this.t + " msgCache:" + hashCode());
+      else
+      {
+        localConcurrentHashMap = new ConcurrentHashMap();
+        localConcurrentHashMap.put(Long.valueOf(paramLong), paramString);
+        this.s.put(localObject, localConcurrentHashMap);
       }
-      return;
+    }
+    else
+    {
       localConcurrentHashMap = new ConcurrentHashMap();
       localConcurrentHashMap.put(Long.valueOf(paramLong), paramString);
-      this.t.put(str, localConcurrentHashMap);
-      continue;
-      localConcurrentHashMap = new ConcurrentHashMap();
-      localConcurrentHashMap.put(Long.valueOf(paramLong), paramString);
-      this.t.put(str, localConcurrentHashMap);
+      this.s.put(localObject, localConcurrentHashMap);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("msgSending:addSendingCacheTemp,msgSendingTemp:");
+      ((StringBuilder)localObject).append(this.s);
+      ((StringBuilder)localObject).append(" msgCache:");
+      ((StringBuilder)localObject).append(hashCode());
+      QLog.d(paramString, 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void b(String paramString, long paramLong)
   {
     paramLong = Math.max(paramLong, c(paramString));
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addGroupExpiredSeq " + paramLong);
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addGroupExpiredSeq ");
+      localStringBuilder.append(paramLong);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    this.m.put(paramString, Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getTroopExpiredSeq" + paramString, paramLong);
+    this.l.put(paramString, Long.valueOf(paramLong));
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopExpiredSeq");
+      localStringBuilder.append(paramString);
+      ((MessageCache.AsyncEditor)localObject).putLong(localStringBuilder.toString(), paramLong);
     }
   }
   
   public void b(String paramString, long paramLong1, long paramLong2)
   {
     paramString = MD5.toMD5(paramString);
-    this.r.put(paramString, new Pair(Long.valueOf(paramLong1), Long.valueOf(paramLong2)));
+    this.q.put(paramString, new Pair(Long.valueOf(paramLong1), Long.valueOf(paramLong2)));
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getC2CLastMessageTime" + paramString, paramLong1);
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getC2CLastMessageTimeRand" + paramString, paramLong2);
+      MessageCache.AsyncEditor localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getC2CLastMessageTime");
+      localStringBuilder.append(paramString);
+      localAsyncEditor.putLong(localStringBuilder.toString(), paramLong1);
+      localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getC2CLastMessageTimeRand");
+      localStringBuilder.append(paramString);
+      localAsyncEditor.putLong(localStringBuilder.toString(), paramLong2);
     }
   }
   
   public void b(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
-    {
-      return;
-      paramString1 = paramString1 + "_" + paramString2;
-      try
-      {
-        paramString2 = (byte[])this.X.get(paramString1);
-        if (((paramString2 != null) && (Arrays.equals(paramString2, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          continue;
-        }
-        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "LimitChat", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
-        {
-          this.X.remove(paramString1);
-          paramString2.remove(paramString1);
-        }
-        for (;;)
-        {
-          paramString2.commit();
-          return;
-          this.X.put(paramString1, paramArrayOfByte);
-          paramString2.putString(paramString1, b(paramArrayOfByte));
-        }
-        return;
-      }
-      catch (Exception paramString1) {}
-    }
+    a(paramString1, paramString2, paramArrayOfByte, true);
   }
   
   public void b(String paramString, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addPCQQSearchMsgKey uin:" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "peerUin:" + paramString + " key:" + a(paramArrayOfByte));
-    }
-    byte[] arrayOfByte = (byte[])this.x.get(paramString);
-    if ((arrayOfByte == null) || (!Arrays.equals(arrayOfByte, paramArrayOfByte)))
+    if (QLog.isColorLevel())
     {
-      this.x.put(paramString, paramArrayOfByte);
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addPCQQSearchMsgKey uin:");
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("peerUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" key:");
+      localStringBuilder.append(a(paramArrayOfByte));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    Object localObject = (byte[])this.w.get(paramString);
+    if ((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte)))
+    {
+      this.w.put(paramString, paramArrayOfByte);
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
         paramArrayOfByte = a(paramArrayOfByte);
@@ -1717,11 +2001,19 @@ public class MessageCache
   {
     if (paramString != null)
     {
-      this.j.put(paramString, paramArrayOfObject);
+      this.i.put(paramString, paramArrayOfObject);
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getDiscussionMemberSeq" + paramString, ((Long)paramArrayOfObject[0]).longValue());
-        this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getDiscussionConfigSeq" + paramString, ((Long)paramArrayOfObject[1]).longValue());
+        MessageCache.AsyncEditor localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getDiscussionMemberSeq");
+        localStringBuilder.append(paramString);
+        localAsyncEditor.putLong(localStringBuilder.toString(), ((Long)paramArrayOfObject[0]).longValue());
+        localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getDiscussionConfigSeq");
+        localStringBuilder.append(paramString);
+        localAsyncEditor.putLong(localStringBuilder.toString(), ((Long)paramArrayOfObject[1]).longValue());
       }
     }
   }
@@ -1748,8 +2040,13 @@ public class MessageCache
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
     {
       paramArrayOfByte = a(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>setLastPubAccountCookie lastPACookie:" + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--->>setLastPubAccountCookie lastPACookie:");
+        localStringBuilder.append(paramArrayOfByte);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putString("getMsgV4_vPubAccountCookie", paramArrayOfByte);
     }
@@ -1757,30 +2054,36 @@ public class MessageCache
   
   public boolean b()
   {
-    return this.k.isEmpty();
+    return this.j.isEmpty();
   }
   
   public boolean b(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {}
-    Object localObject;
-    do
+    boolean bool2 = false;
+    if (paramMessageRecord == null) {
+      return false;
+    }
+    Object localObject = UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+    if (paramMessageRecord.isLongMsg())
     {
-      do
+      boolean bool1 = bool2;
+      if (this.R.containsKey(localObject))
       {
-        return false;
-        localObject = UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-        if (paramMessageRecord.isLongMsg())
-        {
-          if ((this.S.containsKey(localObject)) && (((ConcurrentHashMap)this.S.get(localObject)).containsKey(Integer.valueOf(paramMessageRecord.longMsgId)))) {}
-          for (boolean bool = true;; bool = false) {
-            return bool;
-          }
+        bool1 = bool2;
+        if (((ConcurrentHashMap)this.R.get(localObject)).containsKey(Integer.valueOf(paramMessageRecord.longMsgId))) {
+          bool1 = true;
         }
-      } while (!this.s.containsKey(localObject));
-      localObject = (ConcurrentHashMap)this.s.get(localObject);
-    } while ((localObject == null) || (!((ConcurrentHashMap)localObject).containsKey(Long.valueOf(paramMessageRecord.uniseq))));
-    return true;
+      }
+      return bool1;
+    }
+    if (this.r.containsKey(localObject))
+    {
+      localObject = (ConcurrentHashMap)this.r.get(localObject);
+      if ((localObject != null) && (((ConcurrentHashMap)localObject).containsKey(Long.valueOf(paramMessageRecord.uniseq)))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public byte[] b()
@@ -1788,94 +2091,97 @@ public class MessageCache
     if ((this.jdField_b_of_type_ArrayOfByte == null) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)) {
       this.jdField_b_of_type_ArrayOfByte = q(this.jdField_a_of_type_AndroidContentSharedPreferences.getString("getMsgV4_vPubAccountCookie", ""));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>getLastPubAccountCookie lastPACookie:" + a(this.jdField_b_of_type_ArrayOfByte));
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--->>getLastPubAccountCookie lastPACookie:");
+      localStringBuilder.append(a(this.jdField_b_of_type_ArrayOfByte));
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     return this.jdField_b_of_type_ArrayOfByte;
   }
   
   public byte[] b(String paramString)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getWpaMsgKey uin:null peerUin:" + paramString + " key:null");
-      }
-    }
-    do
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)
     {
+      if (QLog.isColorLevel())
+      {
+        localObject = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getWpaMsgKey uin:null peerUin:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" key:null");
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+      }
       return null;
-      if (this.w.containsKey(paramString)) {
-        break label151;
-      }
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, null);
-      if (localObject != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "getWpaMsgKey uin:" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "peerUin:" + paramString + " key:null");
-    return null;
-    Object localObject = q((String)localObject);
-    this.w.put(paramString, localObject);
-    label151:
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getWpaMsgKey uin:" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "peerUin:" + paramString + " key:" + a((byte[])this.w.get(paramString)));
     }
-    return (byte[])this.w.get(paramString);
+    if (!this.v.containsKey(paramString))
+    {
+      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, null);
+      if (localObject == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getWpaMsgKey uin:");
+          localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+          localStringBuilder.append("peerUin:");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" key:null");
+          QLog.d((String)localObject, 2, localStringBuilder.toString());
+        }
+        return null;
+      }
+      localObject = q((String)localObject);
+      this.v.put(paramString, localObject);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWpaMsgKey uin:");
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("peerUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" key:");
+      localStringBuilder.append(a((byte[])this.v.get(paramString)));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    return (byte[])this.v.get(paramString);
   }
   
   public byte[] b(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    paramString1 = paramString1 + "_" + paramString2;
-    if (!this.X.containsKey(paramString1))
-    {
-      paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "LimitChat", 0).getString(paramString1, null);
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        paramString2 = r(paramString2);
-        if ((paramString2 != null) && (paramString2.length > 0))
-        {
-          this.X.put(paramString1, paramString2);
-          return paramString2;
-        }
-      }
-    }
-    else
-    {
-      return (byte[])this.X.get(paramString1);
-    }
-    return null;
+    return a(paramString1, paramString2, true);
   }
   
   public Object[] b(String paramString)
   {
-    if (this.i.containsKey(paramString)) {
-      return (Object[])this.i.get(paramString);
+    if (this.h.containsKey(paramString)) {
+      return (Object[])this.h.get(paramString);
     }
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
     {
-      long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getTroopMemberSeq" + paramString, -1L);
-      long l2 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getTroopConfigSeq" + paramString, -1L);
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopMemberSeq");
+      localStringBuilder.append(paramString);
+      long l1 = localSharedPreferences.getLong(localStringBuilder.toString(), -1L);
+      localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopConfigSeq");
+      localStringBuilder.append(paramString);
+      long l2 = localSharedPreferences.getLong(localStringBuilder.toString(), -1L);
       if (l1 != 0L) {
         return new Object[] { Long.valueOf(l1), Long.valueOf(l2) };
       }
     }
     return null;
-  }
-  
-  public int c()
-  {
-    if (this.jdField_e_of_type_Int < 0) {
-      if (!this.jdField_a_of_type_AndroidContentSharedPreferences.contains("msgsignal_switch")) {
-        break label44;
-      }
-    }
-    label44:
-    for (this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("msgsignal_switch", 0);; this.jdField_e_of_type_Int = 0) {
-      return this.jdField_e_of_type_Int;
-    }
   }
   
   public int c(String paramString)
@@ -1888,8 +2194,13 @@ public class MessageCache
     if ((this.jdField_a_of_type_Long == -1L) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)) {
       this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getTroopDiscMsgLastTime", 0L);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>getTroopAndDiscMsgLastTime lastTime: " + this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--->>getTroopAndDiscMsgLastTime lastTime: ");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     return this.jdField_a_of_type_Long;
   }
@@ -1899,22 +2210,26 @@ public class MessageCache
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return 0L;
     }
-    if (!this.m.containsKey(paramString))
+    if (!this.l.containsKey(paramString))
     {
-      long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getTroopExpiredSeq" + paramString, 0L);
-      this.m.put(paramString, Long.valueOf(l1));
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopExpiredSeq");
+      localStringBuilder.append(paramString);
+      long l1 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+      this.l.put(paramString, Long.valueOf(l1));
     }
-    return ((Long)this.m.get(paramString)).longValue();
+    return ((Long)this.l.get(paramString)).longValue();
   }
   
   public ConcurrentHashMap<String, Integer> c()
   {
-    return this.ah;
+    return this.ag;
   }
   
   public void c()
   {
-    this.U.clear();
+    this.T.clear();
   }
   
   public void c(long paramLong)
@@ -1922,55 +2237,128 @@ public class MessageCache
     String str = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
     if ((!TextUtils.isEmpty(str)) && (paramLong > 0L))
     {
-      this.jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Long.valueOf(paramLong));
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(str + "birth", 0).edit();
-      localEditor.putLong(str + "_time", paramLong);
-      localEditor.apply();
+      this.jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Long.valueOf(paramLong));
+      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("birth");
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("_time");
+      ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), paramLong);
+      ((SharedPreferences.Editor)localObject).apply();
     }
   }
   
   public void c(MessageRecord paramMessageRecord)
   {
-    paramMessageRecord = paramMessageRecord.frienduin + "_" + paramMessageRecord.msgUid + "_" + paramMessageRecord.shmsgseq;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMessageRecord.frienduin);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramMessageRecord.msgUid);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramMessageRecord.shmsgseq);
+    paramMessageRecord = localStringBuilder.toString();
     this.jdField_a_of_type_JavaUtilSet.add(paramMessageRecord);
   }
   
   public void c(String paramString)
   {
     if (paramString != null) {
-      this.o.put(paramString, Boolean.valueOf(true));
+      this.n.put(paramString, Boolean.valueOf(true));
     }
   }
   
   public void c(String paramString, long paramLong)
   {
     paramLong = Math.max(paramLong, d(paramString));
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addDiscExpiredSeq " + paramLong);
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addDiscExpiredSeq ");
+      localStringBuilder.append(paramLong);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    this.n.put(paramString, Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getDiscussionExpiredSeq" + paramString, paramLong);
+    this.m.put(paramString, Long.valueOf(paramLong));
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDiscussionExpiredSeq");
+      localStringBuilder.append(paramString);
+      ((MessageCache.AsyncEditor)localObject).putLong(localStringBuilder.toString(), paramLong);
     }
   }
   
   public void c(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    a(paramString1, paramString2, paramArrayOfByte, true);
+    StringBuilder localStringBuilder;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString2);
+      paramString1 = localStringBuilder.toString();
+    }
+    try
+    {
+      paramString2 = (byte[])this.Z.get(paramString1);
+      if (((paramString2 == null) || (!Arrays.equals(paramString2, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
+      {
+        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("tiny_session_sig");
+        paramString2 = paramString2.getSharedPreferences(localStringBuilder.toString(), 0).edit();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+        {
+          this.Z.put(paramString1, paramArrayOfByte);
+          paramString2.putString(paramString1, b(paramArrayOfByte));
+        }
+        else
+        {
+          this.Z.remove(paramString1);
+          paramString2.remove(paramString1);
+        }
+        paramString2.commit();
+      }
+      return;
+    }
+    catch (Exception paramString1) {}
   }
   
   public void c(String paramString, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addBusinessCrmMsgKey----> sig:" + a(paramArrayOfByte) + ",length:" + paramArrayOfByte.length);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addBusinessCrmMsgKey----> sig:");
+      localStringBuilder.append(a(paramArrayOfByte));
+      localStringBuilder.append(",length:");
+      localStringBuilder.append(paramArrayOfByte.length);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    Object localObject = (byte[])this.y.get(paramString);
+    Object localObject = (byte[])this.x.get(paramString);
     if ((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte)))
     {
-      this.y.put(paramString, paramArrayOfByte);
+      this.x.put(paramString, paramArrayOfByte);
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "crm", 0);
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("crm");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
         paramArrayOfByte = b(paramArrayOfByte);
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putString(paramString, paramArrayOfByte);
@@ -1983,14 +2371,22 @@ public class MessageCache
   {
     if (paramString != null)
     {
-      this.i.put(paramString, paramArrayOfObject);
+      this.h.put(paramString, paramArrayOfObject);
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "addGroupMsgMemberSeq: groupUin=", paramString, "lastSeqId=", paramArrayOfObject[0] });
       }
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getTroopMemberSeq" + paramString, ((Long)paramArrayOfObject[0]).longValue());
-        this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getTroopConfigSeq" + paramString, ((Long)paramArrayOfObject[1]).longValue());
+        MessageCache.AsyncEditor localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getTroopMemberSeq");
+        localStringBuilder.append(paramString);
+        localAsyncEditor.putLong(localStringBuilder.toString(), ((Long)paramArrayOfObject[0]).longValue());
+        localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getTroopConfigSeq");
+        localStringBuilder.append(paramString);
+        localAsyncEditor.putLong(localStringBuilder.toString(), ((Long)paramArrayOfObject[1]).longValue());
       }
     }
   }
@@ -2001,79 +2397,166 @@ public class MessageCache
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putBoolean("getRegPrxyFailFlag", paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>setRegPrxyFailFlag = " + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--->>setRegPrxyFailFlag = ");
+        localStringBuilder.append(paramBoolean);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
     }
   }
   
   public boolean c()
   {
-    return this.l.isEmpty();
+    return this.k.isEmpty();
   }
   
   public boolean c(MessageRecord paramMessageRecord)
   {
-    boolean bool = b(paramMessageRecord);
-    if ((paramMessageRecord.msgtype == -1051) || (paramMessageRecord.msgtype == -1035)) {}
-    do
+    boolean bool2 = b(paramMessageRecord);
+    boolean bool1 = bool2;
+    if (paramMessageRecord.msgtype != -1051)
     {
-      return bool;
-      if ((!bool) || (paramMessageRecord.isLongMsg()) || ((paramMessageRecord.istroop != 0) && (paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000))) {
-        break;
+      if (paramMessageRecord.msgtype == -1035) {
+        return bool2;
       }
-      Object localObject = UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-      localObject = (ConcurrentHashMap)this.s.get(localObject);
-      if (localObject == null) {
-        break;
+      bool1 = bool2;
+      if (bool2)
+      {
+        bool1 = bool2;
+        if (!paramMessageRecord.isLongMsg()) {
+          if ((paramMessageRecord.istroop != 0) && (paramMessageRecord.istroop != 1))
+          {
+            bool1 = bool2;
+            if (paramMessageRecord.istroop != 3000) {}
+          }
+          else
+          {
+            Object localObject = UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+            localObject = (ConcurrentHashMap)this.r.get(localObject);
+            bool1 = bool2;
+            if (localObject != null)
+            {
+              paramMessageRecord = (MessageCache.MsgSendingInfo)((ConcurrentHashMap)localObject).get(Long.valueOf(paramMessageRecord.uniseq));
+              bool1 = bool2;
+              if (paramMessageRecord != null)
+              {
+                long l1 = System.currentTimeMillis() - paramMessageRecord.jdField_b_of_type_Long;
+                bool1 = bool2;
+                if (l1 < paramMessageRecord.jdField_b_of_type_Int)
+                {
+                  bool1 = bool2;
+                  if (l1 > 0L)
+                  {
+                    bool2 = false;
+                    bool1 = bool2;
+                    if (QLog.isDevelopLevel())
+                    {
+                      paramMessageRecord = new StringBuilder();
+                      paramMessageRecord.append("isStartSendingUI, ");
+                      paramMessageRecord.append(false);
+                      QLog.d("MsgSend", 4, paramMessageRecord.toString());
+                      bool1 = bool2;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
-      paramMessageRecord = (MessageCache.MsgSendingInfo)((ConcurrentHashMap)localObject).get(Long.valueOf(paramMessageRecord.uniseq));
-      if (paramMessageRecord == null) {
-        break;
-      }
-      long l1 = System.currentTimeMillis() - paramMessageRecord.jdField_b_of_type_Long;
-      if ((l1 >= paramMessageRecord.jdField_b_of_type_Int) || (l1 <= 0L)) {
-        break;
-      }
-      bool = false;
-    } while (!QLog.isDevelopLevel());
-    QLog.d("MsgSend", 4, "isStartSendingUI, " + false);
-    return false;
-    return bool;
+    }
+    return bool1;
   }
   
   public byte[] c(String paramString)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "pcQQSearchKey uin:null peerUin:" + paramString + " key:null");
-      }
-    }
-    do
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)
     {
+      if (QLog.isColorLevel())
+      {
+        localObject = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pcQQSearchKey uin:null peerUin:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" key:null");
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+      }
       return null;
-      if (this.x.containsKey(paramString)) {
-        break label151;
-      }
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, null);
-      if (localObject != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "pcQQSearchKey uin:" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "peerUin:" + paramString + " key:null");
-    return null;
-    Object localObject = q((String)localObject);
-    this.x.put(paramString, localObject);
-    label151:
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "pcQQSearchKey uin:" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "peerUin:" + paramString + " key:" + a((byte[])this.x.get(paramString)));
     }
-    return (byte[])this.x.get(paramString);
+    if (!this.w.containsKey(paramString))
+    {
+      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, null);
+      if (localObject == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("pcQQSearchKey uin:");
+          localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+          localStringBuilder.append("peerUin:");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" key:null");
+          QLog.d((String)localObject, 2, localStringBuilder.toString());
+        }
+        return null;
+      }
+      localObject = q((String)localObject);
+      this.w.put(paramString, localObject);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pcQQSearchKey uin:");
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("peerUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" key:");
+      localStringBuilder.append(a((byte[])this.w.get(paramString)));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    return (byte[])this.w.get(paramString);
   }
   
   public byte[] c(String paramString1, String paramString2)
   {
-    return a(paramString1, paramString2, true);
+    if ((!TextUtils.isEmpty(paramString1)) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString2);
+      paramString1 = localStringBuilder.toString();
+      if (!this.Z.containsKey(paramString1))
+      {
+        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("tiny_session_sig");
+        paramString2 = paramString2.getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString1, null);
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          paramString2 = r(paramString2);
+          if ((paramString2 != null) && (paramString2.length > 0))
+          {
+            this.Z.put(paramString1, paramString2);
+            return paramString2;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.Z.get(paramString1);
+    }
+    return null;
   }
   
   public long d(String paramString)
@@ -2081,41 +2564,46 @@ public class MessageCache
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return 0L;
     }
-    if (!this.n.containsKey(paramString))
+    if (!this.m.containsKey(paramString))
     {
-      long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getDiscussionExpiredSeq" + paramString, 0L);
-      this.n.put(paramString, Long.valueOf(l1));
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDiscussionExpiredSeq");
+      localStringBuilder.append(paramString);
+      long l1 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+      this.m.put(paramString, Long.valueOf(l1));
     }
-    return ((Long)this.n.get(paramString)).longValue();
+    return ((Long)this.m.get(paramString)).longValue();
   }
   
   public ConcurrentHashMap<String, ArrayList<Object[]>> d()
   {
-    return this.ai;
+    return this.ah;
   }
   
   public void d()
   {
-    if (!this.s.isEmpty())
+    if (!this.r.isEmpty())
     {
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = this.s.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject1 = new JSONArray();
+      Object localObject2 = this.r.entrySet().iterator();
+      Object localObject3;
+      while (((Iterator)localObject2).hasNext())
       {
-        Object localObject = (Map.Entry)localIterator.next();
-        if ((((Map.Entry)localObject).getValue() != null) && (!((ConcurrentHashMap)((Map.Entry)localObject).getValue()).isEmpty()))
+        localObject3 = (Map.Entry)((Iterator)localObject2).next();
+        if ((((Map.Entry)localObject3).getValue() != null) && (!((ConcurrentHashMap)((Map.Entry)localObject3).getValue()).isEmpty()))
         {
-          localObject = ((ConcurrentHashMap)((Map.Entry)localObject).getValue()).entrySet().iterator();
-          while (((Iterator)localObject).hasNext())
+          localObject3 = ((ConcurrentHashMap)((Map.Entry)localObject3).getValue()).entrySet().iterator();
+          while (((Iterator)localObject3).hasNext())
           {
-            Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+            Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
             JSONObject localJSONObject = new JSONObject();
             try
             {
               localJSONObject.put("uin", ((MessageCache.MsgSendingInfo)localEntry.getValue()).jdField_a_of_type_JavaLangString);
               localJSONObject.put("type", ((MessageCache.MsgSendingInfo)localEntry.getValue()).jdField_a_of_type_Int);
               localJSONObject.put("uniseq", ((MessageCache.MsgSendingInfo)localEntry.getValue()).jdField_a_of_type_Long);
-              localJSONArray.put(localJSONObject);
+              ((JSONArray)localObject1).put(localJSONObject);
             }
             catch (JSONException localJSONException)
             {
@@ -2126,34 +2614,41 @@ public class MessageCache
       }
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putString("msgSending", localJSONArray.toString());
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "msgSending:write msgSending file before exit," + localJSONArray.toString());
+        this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putString("msgSending", ((JSONArray)localObject1).toString());
+        if (QLog.isColorLevel())
+        {
+          localObject2 = jdField_a_of_type_JavaLangString;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("msgSending:write msgSending file before exit,");
+          ((StringBuilder)localObject3).append(((JSONArray)localObject1).toString());
+          QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
         }
       }
     }
     e();
     this.jdField_c_of_type_Int = -1;
-    this.h.clear();
-    this.ae.clear();
-    this.p.clear();
+    this.g.clear();
+    this.ad.clear();
+    this.o.clear();
+    this.ah.clear();
     this.ai.clear();
     this.aj.clear();
-    this.ak.clear();
-    this.r.clear();
+    this.q.clear();
     this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
+    this.ak.clear();
     this.al.clear();
-    this.am.clear();
     this.jdField_c_of_type_JavaUtilArrayList.clear();
+    this.r.clear();
     this.s.clear();
-    this.t.clear();
+    this.h.clear();
     this.i.clear();
-    this.j.clear();
-    this.l.clear();
     this.k.clear();
-    this.N.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCacheItem != null) {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCacheItem.a();
+    this.j.clear();
+    this.M.clear();
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCacheItem;
+    if (localObject1 != null) {
+      ((MessageCacheItem)localObject1).a();
     }
   }
   
@@ -2164,8 +2659,13 @@ public class MessageCache
       this.jdField_a_of_type_Long = paramLong;
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "--->>setTroopAndDiscMsgLastTime lastTime: " + paramLong);
+        if (QLog.isColorLevel())
+        {
+          String str = jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("--->>setTroopAndDiscMsgLastTime lastTime: ");
+          localStringBuilder.append(paramLong);
+          QLog.d(str, 2, localStringBuilder.toString());
         }
         this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getTroopDiscMsgLastTime", this.jdField_a_of_type_Long);
       }
@@ -2179,68 +2679,99 @@ public class MessageCache
   
   public void d(String paramString)
   {
-    this.ai.remove(paramString);
+    this.ah.remove(paramString);
   }
   
   public void d(String paramString, long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramString)) && (paramLong > 0L))
+    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString)) && (paramLong > 0L))
     {
-      paramString = (String)localObject + "_noticetime_" + paramString;
-      this.g.put(paramString, Long.valueOf(paramLong));
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences((String)localObject + "birth", 0).edit();
-      ((SharedPreferences.Editor)localObject).putLong(paramString, paramLong);
-      ((SharedPreferences.Editor)localObject).apply();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("_noticetime_");
+      ((StringBuilder)localObject2).append(paramString);
+      paramString = ((StringBuilder)localObject2).toString();
+      this.f.put(paramString, Long.valueOf(paramLong));
+      localObject2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("birth");
+      localObject1 = ((BaseApplication)localObject2).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      ((SharedPreferences.Editor)localObject1).putLong(paramString, paramLong);
+      ((SharedPreferences.Editor)localObject1).apply();
     }
   }
   
   public void d(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return;
-      paramString1 = paramString1 + "_" + paramString2;
-      try
-      {
-        paramString2 = (byte[])this.aa.get(paramString1);
-        if (((paramString2 != null) && (Arrays.equals(paramString2, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          continue;
-        }
-        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "tiny_session_sig", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
-        {
-          this.aa.remove(paramString1);
-          paramString2.remove(paramString1);
-        }
-        for (;;)
-        {
-          paramString2.commit();
-          return;
-          this.aa.put(paramString1, paramArrayOfByte);
-          paramString2.putString(paramString1, b(paramArrayOfByte));
-        }
+      if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      catch (Exception paramString1) {}
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString2);
+      paramString1 = localStringBuilder.toString();
+      try
+      {
+        paramString2 = (byte[])this.ab.get(paramString1);
+        if (((paramString2 == null) || (!Arrays.equals(paramString2, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
+        {
+          paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+          localStringBuilder.append("game_buddy");
+          paramString2 = paramString2.getSharedPreferences(localStringBuilder.toString(), 0).edit();
+          if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+          {
+            this.ab.put(paramString1, paramArrayOfByte);
+            paramString2.putString(paramString1, b(paramArrayOfByte));
+          }
+          else
+          {
+            this.ab.remove(paramString1);
+            paramString2.remove(paramString1);
+          }
+          paramString2.apply();
+          return;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append(jdField_a_of_type_JavaLangString);
+        paramString2.append("GameBuddy");
+        QLog.d(paramString2.toString(), 2, "addGameBuddyChatSessionKey throw e, e = ", paramString1);
+      }
     }
   }
   
   public void d(String paramString, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addBusinessCrmSigt uin:" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "peerUin:" + paramString + " key:" + a(paramArrayOfByte));
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addBusinessCrmSigt uin:");
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("peerUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" key:");
+      localStringBuilder.append(a(paramArrayOfByte));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    byte[] arrayOfByte = (byte[])this.z.get(paramString);
-    if ((arrayOfByte == null) || (!Arrays.equals(arrayOfByte, paramArrayOfByte))) {
-      this.z.put(paramString, paramArrayOfByte);
+    Object localObject = (byte[])this.y.get(paramString);
+    if ((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte))) {
+      this.y.put(paramString, paramArrayOfByte);
     }
   }
   
   public void d(String paramString, Object[] paramArrayOfObject)
   {
-    ArrayList localArrayList2 = (ArrayList)this.ai.get(paramString);
+    ArrayList localArrayList2 = (ArrayList)this.ah.get(paramString);
     ArrayList localArrayList1;
     if (localArrayList2 != null)
     {
@@ -2252,24 +2783,34 @@ public class MessageCache
       localArrayList1 = new ArrayList();
     }
     localArrayList1.add(paramArrayOfObject);
-    this.ai.put(paramString, localArrayList1);
+    this.ah.put(paramString, localArrayList1);
   }
   
   public boolean d()
   {
-    return (this.t == null) || (this.t.isEmpty());
+    ConcurrentHashMap localConcurrentHashMap = this.s;
+    return (localConcurrentHashMap == null) || (localConcurrentHashMap.isEmpty());
   }
   
   public boolean d(MessageRecord paramMessageRecord)
   {
-    if (this.u.isEmpty()) {
+    if (this.t.isEmpty()) {
       return false;
     }
-    if (paramMessageRecord.isLongMsg()) {}
-    for (String str = String.format("%s&%d&%d&%d", new Object[] { paramMessageRecord.frienduin, Integer.valueOf(paramMessageRecord.istroop), Integer.valueOf(paramMessageRecord.longMsgId), Integer.valueOf(paramMessageRecord.longMsgCount) }); this.u.containsKey(str); str = String.format("%s&%d&%d", new Object[] { paramMessageRecord.frienduin, Integer.valueOf(paramMessageRecord.istroop), Long.valueOf(paramMessageRecord.shmsgseq) }))
+    Object localObject;
+    if (paramMessageRecord.isLongMsg()) {
+      localObject = String.format("%s&%d&%d&%d", new Object[] { paramMessageRecord.frienduin, Integer.valueOf(paramMessageRecord.istroop), Integer.valueOf(paramMessageRecord.longMsgId), Integer.valueOf(paramMessageRecord.longMsgCount) });
+    } else {
+      localObject = String.format("%s&%d&%d", new Object[] { paramMessageRecord.frienduin, Integer.valueOf(paramMessageRecord.istroop), Long.valueOf(paramMessageRecord.shmsgseq) });
+    }
+    if (this.t.containsKey(localObject))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("revokeMsg", 2, "RevokeNotifyCache, msgFilter true, " + paramMessageRecord.toString());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("RevokeNotifyCache, msgFilter true, ");
+        ((StringBuilder)localObject).append(paramMessageRecord.toString());
+        QLog.d("revokeMsg", 2, ((StringBuilder)localObject).toString());
       }
       return true;
     }
@@ -2278,55 +2819,92 @@ public class MessageCache
   
   public byte[] d(String paramString)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getBusinessCrmKey uin:null peerUin:" + paramString + " key:null");
-      }
-    }
-    do
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)
     {
+      if (QLog.isColorLevel())
+      {
+        localObject = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getBusinessCrmKey uin:null peerUin:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" key:null");
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+      }
       return null;
-      if (this.y.containsKey(paramString)) {
-        break label184;
-      }
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "crm", 0).getString(paramString, null);
-      if (localObject != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "businessCrmKey uin:" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "peerUin:" + paramString + " key:null");
-    return null;
-    Object localObject = r((String)localObject);
-    this.y.put(paramString, localObject);
-    label184:
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "businessCrmKey uin:" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "peerUin:" + paramString + " key:" + a((byte[])this.y.get(paramString)));
     }
-    return (byte[])this.y.get(paramString);
+    if (!this.x.containsKey(paramString))
+    {
+      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("crm");
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+      if (localObject == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("businessCrmKey uin:");
+          localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+          localStringBuilder.append("peerUin:");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" key:null");
+          QLog.d((String)localObject, 2, localStringBuilder.toString());
+        }
+        return null;
+      }
+      localObject = r((String)localObject);
+      this.x.put(paramString, localObject);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("businessCrmKey uin:");
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("peerUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" key:");
+      localStringBuilder.append(a((byte[])this.x.get(paramString)));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    return (byte[])this.x.get(paramString);
   }
   
   public byte[] d(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    paramString1 = paramString1 + "_" + paramString2;
-    if (!this.aa.containsKey(paramString1))
+    if ((this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) && (!TextUtils.isEmpty(paramString1)))
     {
-      paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "tiny_session_sig", 0).getString(paramString1, null);
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        paramString2 = r(paramString2);
-        if ((paramString2 != null) && (paramString2.length > 0))
-        {
-          this.aa.put(paramString1, paramString2);
-          return paramString2;
-        }
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
       }
-    }
-    else
-    {
-      return (byte[])this.aa.get(paramString1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString2);
+      paramString1 = localStringBuilder.toString();
+      if (!this.ab.containsKey(paramString1))
+      {
+        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("game_buddy");
+        paramString2 = paramString2.getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString1, null);
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          paramString2 = r(paramString2);
+          if ((paramString2 != null) && (paramString2.length > 0))
+          {
+            this.ab.put(paramString1, paramString2);
+            return paramString2;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.ab.get(paramString1);
     }
     return null;
   }
@@ -2337,17 +2915,21 @@ public class MessageCache
     if (str == null) {
       return 0L;
     }
-    if (!this.O.containsKey(paramString))
+    if (!this.N.containsKey(paramString))
     {
-      long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString + str, 0L);
-      this.O.put(paramString, Long.valueOf(l1));
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(str);
+      long l1 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+      this.N.put(paramString, Long.valueOf(l1));
     }
-    return ((Long)this.O.get(paramString)).longValue();
+    return ((Long)this.N.get(paramString)).longValue();
   }
   
   public ConcurrentHashMap<String, ConcurrentHashMap<Long, MessageCache.MsgSendingInfo>> e()
   {
-    return this.t;
+    return this.s;
   }
   
   public void e()
@@ -2363,60 +2945,82 @@ public class MessageCache
   
   public void e(String paramString)
   {
-    this.k.put(paramString, Boolean.valueOf(true));
+    this.j.put(paramString, Boolean.valueOf(true));
   }
   
   public void e(String paramString, long paramLong)
   {
-    this.O.put(paramString, Long.valueOf(paramLong));
+    this.N.put(paramString, Long.valueOf(paramLong));
     String str = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
-    if (str != null) {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong(paramString + str, paramLong).commit();
+    if (str != null)
+    {
+      MessageCache.AsyncEditor localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(str);
+      localAsyncEditor.putLong(localStringBuilder.toString(), paramLong).commit();
     }
   }
   
   public void e(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    paramString1 = paramString1 + "_" + paramString2;
-    for (;;)
+    if (!TextUtils.isEmpty(paramString1))
     {
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString2);
+      paramString1 = localStringBuilder.toString();
       try
       {
-        paramString2 = (byte[])this.ac.get(paramString1);
-        if (((paramString2 != null) && (Arrays.equals(paramString2, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          break;
-        }
-        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "game_buddy", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+        paramString2 = (byte[])this.aa.get(paramString1);
+        if (((paramString2 == null) || (!Arrays.equals(paramString2, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
         {
-          this.ac.remove(paramString1);
-          paramString2.remove(paramString1);
+          paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+          localStringBuilder.append("qq_circle");
+          paramString2 = paramString2.getSharedPreferences(localStringBuilder.toString(), 0).edit();
+          if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+          {
+            this.aa.put(paramString1, paramArrayOfByte);
+            paramString2.putString(paramString1, b(paramArrayOfByte));
+          }
+          else
+          {
+            this.aa.remove(paramString1);
+            paramString2.remove(paramString1);
+          }
           paramString2.apply();
           return;
         }
       }
       catch (Exception paramString1)
       {
-        QLog.d(jdField_a_of_type_JavaLangString + "GameBuddy", 2, "addGameBuddyChatSessionKey throw e, e = ", paramString1);
-        return;
+        paramString2 = new StringBuilder();
+        paramString2.append(jdField_a_of_type_JavaLangString);
+        paramString2.append("QQCircle");
+        QLog.d(paramString2.toString(), 2, "addQQCircleChatSessionKey throw e, e = ", paramString1);
       }
-      this.ac.put(paramString1, paramArrayOfByte);
-      paramString2.putString(paramString1, b(paramArrayOfByte));
     }
   }
   
   public void e(String paramString, byte[] paramArrayOfByte)
   {
-    Object localObject = (byte[])this.B.get(paramString);
+    Object localObject = (byte[])this.A.get(paramString);
     if ((localObject == null) || (!localObject.equals(paramArrayOfByte)))
     {
-      this.B.put(paramString, paramArrayOfByte);
+      this.A.put(paramString, paramArrayOfByte);
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "pub", 0);
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("pub");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
         paramArrayOfByte = b(paramArrayOfByte);
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putString(paramString, paramArrayOfByte);
@@ -2432,42 +3036,70 @@ public class MessageCache
   
   public byte[] e(String paramString)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "businessCrmSigt uin:null peerUin:" + paramString + " key:null");
+    String str;
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        str = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("businessCrmSigt uin:null peerUin:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" key:null");
+        QLog.d(str, 2, localStringBuilder.toString());
       }
-    }
-    while (!this.z.containsKey(paramString)) {
       return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "businessCrmSigt uin:" + this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "peerUin:" + paramString + " key:" + a((byte[])this.z.get(paramString)));
+    if (!this.y.containsKey(paramString)) {
+      return null;
     }
-    return (byte[])this.z.get(paramString);
+    if (QLog.isColorLevel())
+    {
+      str = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("businessCrmSigt uin:");
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("peerUin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" key:");
+      localStringBuilder.append(a((byte[])this.y.get(paramString)));
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    return (byte[])this.y.get(paramString);
   }
   
   public byte[] e(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    paramString1 = paramString1 + "_" + paramString2;
-    if (!this.ac.containsKey(paramString1))
+    if ((this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) && (!TextUtils.isEmpty(paramString1)))
     {
-      paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "game_buddy", 0).getString(paramString1, null);
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        paramString2 = r(paramString2);
-        if ((paramString2 != null) && (paramString2.length > 0))
-        {
-          this.ac.put(paramString1, paramString2);
-          return paramString2;
-        }
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
       }
-    }
-    else
-    {
-      return (byte[])this.ac.get(paramString1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString2);
+      paramString1 = localStringBuilder.toString();
+      if (!this.aa.containsKey(paramString1))
+      {
+        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("qq_circle");
+        paramString2 = paramString2.getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString1, null);
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          paramString2 = r(paramString2);
+          if ((paramString2 != null) && (paramString2.length > 0))
+          {
+            this.aa.put(paramString1, paramString2);
+            return paramString2;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.aa.get(paramString1);
     }
     return null;
   }
@@ -2477,88 +3109,68 @@ public class MessageCache
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return 0L;
     }
-    Long localLong2 = (Long)this.N.get(paramString);
-    Long localLong1 = localLong2;
-    if (localLong2 == null)
+    Object localObject2 = (Long)this.M.get(paramString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getFriendFeedLastTime" + paramString, -1L);
-      localLong1 = Long.valueOf(l1);
-      this.N.put(paramString, Long.valueOf(l1));
+      localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getFriendFeedLastTime");
+      ((StringBuilder)localObject2).append(paramString);
+      long l1 = ((SharedPreferences)localObject1).getLong(((StringBuilder)localObject2).toString(), -1L);
+      this.M.put(paramString, Long.valueOf(l1));
+      localObject1 = Long.valueOf(l1);
     }
-    return localLong1.longValue();
+    return ((Long)localObject1).longValue();
   }
   
   public ConcurrentHashMap<String, ArrayList<RevokeMsgInfo>> f()
   {
-    return this.u;
+    return this.t;
   }
   
   public void f()
   {
-    synchronized (this.R)
+    synchronized (this.Q)
     {
-      this.R.clear();
+      this.Q.clear();
       return;
     }
   }
   
   public void f(String paramString)
   {
-    if (this.k.containsKey(paramString)) {
-      this.k.remove(paramString);
+    if (this.j.containsKey(paramString)) {
+      this.j.remove(paramString);
     }
   }
   
   public void f(String paramString, long paramLong)
   {
-    this.N.put(paramString, Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getFriendFeedLastTime" + paramString, paramLong);
-    }
-  }
-  
-  public void f(String paramString1, String paramString2, byte[] paramArrayOfByte)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    paramString1 = paramString1 + "_" + paramString2;
-    for (;;)
+    this.M.put(paramString, Long.valueOf(paramLong));
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
     {
-      try
-      {
-        paramString2 = (byte[])this.ab.get(paramString1);
-        if (((paramString2 != null) && (Arrays.equals(paramString2, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          break;
-        }
-        paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "qq_circle", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
-        {
-          this.ab.remove(paramString1);
-          paramString2.remove(paramString1);
-          paramString2.apply();
-          return;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString + "QQCircle", 2, "addQQCircleChatSessionKey throw e, e = ", paramString1);
-        return;
-      }
-      this.ab.put(paramString1, paramArrayOfByte);
-      paramString2.putString(paramString1, b(paramArrayOfByte));
+      MessageCache.AsyncEditor localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getFriendFeedLastTime");
+      localStringBuilder.append(paramString);
+      localAsyncEditor.putLong(localStringBuilder.toString(), paramLong);
     }
   }
   
   public void f(String paramString, byte[] paramArrayOfByte)
   {
-    Object localObject = (byte[])this.C.get(paramString);
+    Object localObject = (byte[])this.B.get(paramString);
     if ((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte)))
     {
-      this.C.put(paramString, paramArrayOfByte);
+      this.B.put(paramString, paramArrayOfByte);
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "same_state", 0);
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("same_state");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
         paramArrayOfByte = b(paramArrayOfByte);
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putString(paramString, paramArrayOfByte);
@@ -2569,49 +3181,28 @@ public class MessageCache
   
   public byte[] f(String paramString)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {}
-    do
-    {
-      return null;
-      if (this.J.containsKey(paramString)) {
-        break;
-      }
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "circle_group", 0).getString(paramString, null);
-    } while (localObject == null);
-    Object localObject = r((String)localObject);
-    this.J.put(paramString, localObject);
-    return (byte[])this.J.get(paramString);
-  }
-  
-  public byte[] f(String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return null;
     }
-    paramString1 = paramString1 + "_" + paramString2;
-    if (!this.ab.containsKey(paramString1))
+    if (!this.I.containsKey(paramString))
     {
-      paramString2 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "qq_circle", 0).getString(paramString1, null);
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        paramString2 = r(paramString2);
-        if ((paramString2 != null) && (paramString2.length > 0))
-        {
-          this.ab.put(paramString1, paramString2);
-          return paramString2;
-        }
+      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("circle_group");
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+      if (localObject == null) {
+        return null;
       }
+      localObject = r((String)localObject);
+      this.I.put(paramString, localObject);
     }
-    else
-    {
-      return (byte[])this.ab.get(paramString1);
-    }
-    return null;
+    return (byte[])this.I.get(paramString);
   }
   
   public long g(String paramString)
   {
-    paramString = (Long)this.U.get(paramString);
+    paramString = (Long)this.T.get(paramString);
     if (paramString == null) {
       return 0L;
     }
@@ -2620,66 +3211,77 @@ public class MessageCache
   
   public void g()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "dumpGroupMsgJob size = " + this.k.size());
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dumpGroupMsgJob size = ");
+      localStringBuilder.append(this.j.size());
+      QLog.d(str, 2, localStringBuilder.toString());
     }
   }
   
   public void g(String paramString)
   {
-    this.l.put(paramString, Boolean.valueOf(true));
+    this.k.put(paramString, Boolean.valueOf(true));
   }
   
   public void g(String paramString, long paramLong)
   {
-    this.U.put(paramString, Long.valueOf(paramLong));
+    this.T.put(paramString, Long.valueOf(paramLong));
   }
   
   public void g(String paramString, byte[] paramArrayOfByte)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      Object localObject = (byte[])this.C.get(paramString);
+      if (((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
       {
-        Object localObject = (byte[])this.D.get(paramString);
-        if (((localObject != null) && (Arrays.equals((byte[])localObject, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          continue;
-        }
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "accost", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("accost");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
         {
-          this.D.remove(paramString);
-          ((SharedPreferences.Editor)localObject).remove(paramString);
-        }
-        for (;;)
-        {
-          ((SharedPreferences.Editor)localObject).commit();
-          return;
-          this.D.put(paramString, paramArrayOfByte);
+          this.C.put(paramString, paramArrayOfByte);
           ((SharedPreferences.Editor)localObject).putString(paramString, b(paramArrayOfByte));
         }
-        return;
+        else
+        {
+          this.C.remove(paramString);
+          ((SharedPreferences.Editor)localObject).remove(paramString);
+        }
+        ((SharedPreferences.Editor)localObject).commit();
       }
-      catch (Exception paramString) {}
+      return;
     }
+    catch (Exception paramString) {}
   }
   
   public byte[] g(String paramString)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return null;
-      if (this.K.containsKey(paramString)) {
-        break;
+    }
+    if (!this.J.containsKey(paramString))
+    {
+      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("circle_group_av");
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+      if (localObject == null) {
+        return null;
       }
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "circle_group_av", 0).getString(paramString, null);
-    } while (localObject == null);
-    Object localObject = r((String)localObject);
-    this.K.put(paramString, localObject);
-    return (byte[])this.K.get(paramString);
+      localObject = r((String)localObject);
+      this.J.put(paramString, localObject);
+    }
+    return (byte[])this.J.get(paramString);
   }
   
   public long h(String paramString)
@@ -2687,85 +3289,112 @@ public class MessageCache
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return 0L;
     }
-    if (!this.p.containsKey(paramString))
+    if (!this.o.containsKey(paramString))
     {
-      long l1 = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("getDiscussionLastMessageTime" + paramString, 0L);
-      this.p.put(paramString, Long.valueOf(l1));
+      SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidContentSharedPreferences;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDiscussionLastMessageTime");
+      localStringBuilder.append(paramString);
+      long l1 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+      this.o.put(paramString, Long.valueOf(l1));
     }
-    return ((Long)this.p.get(paramString)).longValue();
+    return ((Long)this.o.get(paramString)).longValue();
   }
   
   public void h()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "dumpDiscMsgJob size = " + this.l.size());
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dumpDiscMsgJob size = ");
+      localStringBuilder.append(this.k.size());
+      QLog.d(str, 2, localStringBuilder.toString());
     }
   }
   
   public void h(String paramString)
   {
-    if (this.l.containsKey(paramString)) {
-      this.l.remove(paramString);
+    if (this.k.containsKey(paramString)) {
+      this.k.remove(paramString);
     }
   }
   
   public void h(String paramString, long paramLong)
   {
     paramLong = Math.max(paramLong, h(paramString));
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addDiscussionMsgLastSeq " + paramLong);
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addDiscussionMsgLastSeq ");
+      localStringBuilder.append(paramLong);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    this.p.put(paramString, Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong("getDiscussionLastMessageTime" + paramString, paramLong);
+    this.o.put(paramString, Long.valueOf(paramLong));
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDiscussionLastMessageTime");
+      localStringBuilder.append(paramString);
+      ((MessageCache.AsyncEditor)localObject).putLong(localStringBuilder.toString(), paramLong);
     }
   }
   
   public void h(String paramString, byte[] paramArrayOfByte)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      Object localObject = (byte[])this.F.get(paramString);
+      if (((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
       {
-        Object localObject = (byte[])this.G.get(paramString);
-        if (((localObject != null) && (Arrays.equals((byte[])localObject, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          continue;
-        }
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "tribe_bytes_chat_sig", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("tribe_bytes_chat_sig");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
         {
-          this.G.remove(paramString);
-          ((SharedPreferences.Editor)localObject).remove(paramString);
-        }
-        for (;;)
-        {
-          ((SharedPreferences.Editor)localObject).commit();
-          return;
-          this.G.put(paramString, paramArrayOfByte);
+          this.F.put(paramString, paramArrayOfByte);
           ((SharedPreferences.Editor)localObject).putString(paramString, b(paramArrayOfByte));
         }
-        return;
+        else
+        {
+          this.F.remove(paramString);
+          ((SharedPreferences.Editor)localObject).remove(paramString);
+        }
+        ((SharedPreferences.Editor)localObject).commit();
       }
-      catch (Exception paramString) {}
+      return;
     }
+    catch (Exception paramString) {}
   }
   
   public byte[] h(String paramString)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return null;
-      if (this.L.containsKey(paramString)) {
-        break;
+    }
+    if (!this.K.containsKey(paramString))
+    {
+      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("friend_validation");
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+      if (localObject == null) {
+        return null;
       }
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "friend_validation", 0).getString(paramString, null);
-    } while (localObject == null);
-    Object localObject = r((String)localObject);
-    this.L.put(paramString, localObject);
-    return (byte[])this.L.get(paramString);
+      localObject = r((String)localObject);
+      this.K.put(paramString, localObject);
+    }
+    return (byte[])this.K.get(paramString);
   }
   
   public long i(String paramString)
@@ -2783,66 +3412,95 @@ public class MessageCache
   
   public void i(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "removeHotChatSeq groupUin:" + paramString);
+    Object localObject;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeHotChatSeq groupUin:");
+      localStringBuilder.append(paramString);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    this.h.put(paramString, Long.valueOf(0L));
-    this.i.put(paramString, new Object[] { Long.valueOf(0L), Long.valueOf(0L) });
-    this.m.put(paramString, Long.valueOf(0L));
+    this.g.put(paramString, Long.valueOf(0L));
+    this.h.put(paramString, new Object[] { Long.valueOf(0L), Long.valueOf(0L) });
+    this.l.put(paramString, Long.valueOf(0L));
     if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.remove("getTroopLastMessageTime" + paramString);
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.remove("getTroopMemberSeq" + paramString);
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.remove("getTroopConfigSeq" + paramString);
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.remove("getTroopExpiredSeq" + paramString);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopLastMessageTime");
+      localStringBuilder.append(paramString);
+      ((MessageCache.AsyncEditor)localObject).remove(localStringBuilder.toString());
+      localObject = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopMemberSeq");
+      localStringBuilder.append(paramString);
+      ((MessageCache.AsyncEditor)localObject).remove(localStringBuilder.toString());
+      localObject = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopConfigSeq");
+      localStringBuilder.append(paramString);
+      ((MessageCache.AsyncEditor)localObject).remove(localStringBuilder.toString());
+      localObject = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTroopExpiredSeq");
+      localStringBuilder.append(paramString);
+      ((MessageCache.AsyncEditor)localObject).remove(localStringBuilder.toString());
     }
   }
   
   public void i(String paramString, byte[] paramArrayOfByte)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      Object localObject = (byte[])this.H.get(paramString);
+      if (((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
       {
-        Object localObject = (byte[])this.I.get(paramString);
-        if (((localObject != null) && (Arrays.equals((byte[])localObject, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          continue;
-        }
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "movie_ticket_bytes_chat_sig", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("movie_ticket_bytes_chat_sig");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
         {
-          this.I.remove(paramString);
-          ((SharedPreferences.Editor)localObject).remove(paramString);
-        }
-        for (;;)
-        {
-          ((SharedPreferences.Editor)localObject).commit();
-          return;
-          this.I.put(paramString, paramArrayOfByte);
+          this.H.put(paramString, paramArrayOfByte);
           ((SharedPreferences.Editor)localObject).putString(paramString, b(paramArrayOfByte));
         }
-        return;
+        else
+        {
+          this.H.remove(paramString);
+          ((SharedPreferences.Editor)localObject).remove(paramString);
+        }
+        ((SharedPreferences.Editor)localObject).commit();
       }
-      catch (Exception paramString) {}
+      return;
     }
+    catch (Exception paramString) {}
   }
   
   public byte[] i(String paramString)
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
       return null;
-      if (this.C.containsKey(paramString)) {
-        break;
+    }
+    if (!this.B.containsKey(paramString))
+    {
+      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+      localStringBuilder.append("same_state");
+      localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+      if (localObject == null) {
+        return null;
       }
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "same_state", 0).getString(paramString, null);
-    } while (localObject == null);
-    Object localObject = r((String)localObject);
-    this.C.put(paramString, localObject);
-    return (byte[])this.C.get(paramString);
+      localObject = r((String)localObject);
+      this.B.put(paramString, localObject);
+    }
+    return (byte[])this.B.get(paramString);
   }
   
   public long j(String paramString)
@@ -2856,132 +3514,153 @@ public class MessageCache
   public void j(String paramString)
   {
     paramString = MD5.toMD5(paramString);
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.remove("deleteFriendMsgTime" + paramString);
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
+    {
+      MessageCache.AsyncEditor localAsyncEditor = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deleteFriendMsgTime");
+      localStringBuilder.append(paramString);
+      localAsyncEditor.remove(localStringBuilder.toString());
     }
   }
   
   public void j(String paramString, byte[] paramArrayOfByte)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      Object localObject = (byte[])this.U.get(paramString);
+      if (((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
       {
-        Object localObject = (byte[])this.V.get(paramString);
-        if (((localObject != null) && (Arrays.equals((byte[])localObject, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          continue;
-        }
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "approval_assistant", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("approval_assistant");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
         {
-          this.V.remove(paramString);
-          ((SharedPreferences.Editor)localObject).remove(paramString);
-        }
-        for (;;)
-        {
-          ((SharedPreferences.Editor)localObject).commit();
-          return;
-          this.V.put(paramString, paramArrayOfByte);
+          this.U.put(paramString, paramArrayOfByte);
           ((SharedPreferences.Editor)localObject).putString(paramString, b(paramArrayOfByte));
         }
-        return;
+        else
+        {
+          this.U.remove(paramString);
+          ((SharedPreferences.Editor)localObject).remove(paramString);
+        }
+        ((SharedPreferences.Editor)localObject).commit();
       }
-      catch (Exception paramString) {}
+      return;
     }
+    catch (Exception paramString) {}
   }
   
   public byte[] j(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-      return null;
-    }
-    if (!this.G.containsKey(paramString))
+    if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "tribe_bytes_chat_sig", 0).getString(paramString, null);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = r((String)localObject);
-        if ((localObject != null) && (localObject.length > 0))
-        {
-          this.G.put(paramString, localObject);
-          return localObject;
-        }
+      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
+        return null;
       }
-    }
-    else
-    {
-      return (byte[])this.G.get(paramString);
+      if (!this.F.containsKey(paramString))
+      {
+        Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("tribe_bytes_chat_sig");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = r((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            this.F.put(paramString, localObject);
+            return localObject;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.F.get(paramString);
     }
     return null;
   }
   
   public void k(String paramString, byte[] paramArrayOfByte)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      Object localObject = (byte[])this.E.get(paramString);
+      if (((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
       {
-        Object localObject = (byte[])this.F.get(paramString);
-        if (((localObject != null) && (Arrays.equals((byte[])localObject, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          continue;
-        }
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "dating", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("dating");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
         {
-          this.F.remove(paramString);
-          ((SharedPreferences.Editor)localObject).remove(paramString);
-        }
-        for (;;)
-        {
-          ((SharedPreferences.Editor)localObject).commit();
-          return;
-          this.F.put(paramString, paramArrayOfByte);
+          this.E.put(paramString, paramArrayOfByte);
           ((SharedPreferences.Editor)localObject).putString(paramString, b(paramArrayOfByte));
         }
-        return;
+        else
+        {
+          this.E.remove(paramString);
+          ((SharedPreferences.Editor)localObject).remove(paramString);
+        }
+        ((SharedPreferences.Editor)localObject).commit();
       }
-      catch (Exception paramString) {}
+      return;
     }
+    catch (Exception paramString) {}
   }
   
   public byte[] k(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-      return null;
-    }
-    if (!this.H.containsKey(paramString))
+    if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "audioroom_bytes_chat_sig", 0).getString(paramString, null);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = r((String)localObject);
-        if ((localObject != null) && (localObject.length > 0))
-        {
-          this.H.put(paramString, localObject);
-          return localObject;
-        }
+      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
+        return null;
       }
-    }
-    else
-    {
-      return (byte[])this.H.get(paramString);
+      if (!this.G.containsKey(paramString))
+      {
+        Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("audioroom_bytes_chat_sig");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = r((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            this.G.put(paramString, localObject);
+            return localObject;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.G.get(paramString);
     }
     return null;
   }
   
   public void l(String paramString, byte[] paramArrayOfByte)
   {
-    Object localObject = (byte[])this.J.get(paramString);
+    Object localObject = (byte[])this.I.get(paramString);
     if ((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte)))
     {
-      this.J.put(paramString, paramArrayOfByte);
+      this.I.put(paramString, paramArrayOfByte);
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "circle_group", 0);
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("circle_group");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
         paramArrayOfByte = b(paramArrayOfByte);
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putString(paramString, paramArrayOfByte);
@@ -2992,38 +3671,47 @@ public class MessageCache
   
   public byte[] l(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-      return null;
-    }
-    if (!this.I.containsKey(paramString))
+    if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "movie_ticket_bytes_chat_sig", 0).getString(paramString, null);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = r((String)localObject);
-        if ((localObject != null) && (localObject.length > 0))
-        {
-          this.I.put(paramString, localObject);
-          return localObject;
-        }
+      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
+        return null;
       }
-    }
-    else
-    {
-      return (byte[])this.I.get(paramString);
+      if (!this.H.containsKey(paramString))
+      {
+        Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("movie_ticket_bytes_chat_sig");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = r((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            this.H.put(paramString, localObject);
+            return localObject;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.H.get(paramString);
     }
     return null;
   }
   
   public void m(String paramString, byte[] paramArrayOfByte)
   {
-    Object localObject = (byte[])this.K.get(paramString);
+    Object localObject = (byte[])this.J.get(paramString);
     if ((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte)))
     {
-      this.K.put(paramString, paramArrayOfByte);
+      this.J.put(paramString, paramArrayOfByte);
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "circle_group_av", 0);
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("circle_group_av");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
         paramArrayOfByte = b(paramArrayOfByte);
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putString(paramString, paramArrayOfByte);
@@ -3034,38 +3722,47 @@ public class MessageCache
   
   public byte[] m(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-      return null;
-    }
-    if (!this.D.containsKey(paramString))
+    if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "accost", 0).getString(paramString, null);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = r((String)localObject);
-        if ((localObject != null) && (localObject.length > 0))
-        {
-          this.D.put(paramString, localObject);
-          return localObject;
-        }
+      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
+        return null;
       }
-    }
-    else
-    {
-      return (byte[])this.D.get(paramString);
+      if (!this.C.containsKey(paramString))
+      {
+        Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("accost");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = r((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            this.C.put(paramString, localObject);
+            return localObject;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.C.get(paramString);
     }
     return null;
   }
   
   public void n(String paramString, byte[] paramArrayOfByte)
   {
-    Object localObject = (byte[])this.L.get(paramString);
+    Object localObject = (byte[])this.K.get(paramString);
     if ((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte)))
     {
-      this.L.put(paramString, paramArrayOfByte);
+      this.K.put(paramString, paramArrayOfByte);
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null)
       {
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "friend_validation", 0);
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("friend_validation");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
         paramArrayOfByte = b(paramArrayOfByte);
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putString(paramString, paramArrayOfByte);
@@ -3076,113 +3773,129 @@ public class MessageCache
   
   public byte[] n(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-      return null;
-    }
-    if (!this.V.containsKey(paramString))
+    if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "approval_assistant", 0).getString(paramString, null);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = r((String)localObject);
-        if ((localObject != null) && (localObject.length > 0))
-        {
-          this.V.put(paramString, localObject);
-          return localObject;
-        }
+      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
+        return null;
       }
-    }
-    else
-    {
-      return (byte[])this.V.get(paramString);
+      if (!this.U.containsKey(paramString))
+      {
+        Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("approval_assistant");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = r((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            this.U.put(paramString, localObject);
+            return localObject;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.U.get(paramString);
     }
     return null;
   }
   
   public void o(String paramString, byte[] paramArrayOfByte)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      Object localObject = (byte[])this.G.get(paramString);
+      if (((localObject == null) || (!Arrays.equals((byte[])localObject, paramArrayOfByte))) && (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null))
       {
-        Object localObject = (byte[])this.H.get(paramString);
-        if (((localObject != null) && (Arrays.equals((byte[])localObject, paramArrayOfByte))) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-          continue;
-        }
-        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "audioroom_bytes_chat_sig", 0).edit();
-        if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+        localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("audioroom_bytes_chat_sig");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
         {
-          this.H.remove(paramString);
-          ((SharedPreferences.Editor)localObject).remove(paramString);
-        }
-        for (;;)
-        {
-          ((SharedPreferences.Editor)localObject).commit();
-          return;
-          this.H.put(paramString, paramArrayOfByte);
+          this.G.put(paramString, paramArrayOfByte);
           ((SharedPreferences.Editor)localObject).putString(paramString, b(paramArrayOfByte));
         }
-        return;
+        else
+        {
+          this.G.remove(paramString);
+          ((SharedPreferences.Editor)localObject).remove(paramString);
+        }
+        ((SharedPreferences.Editor)localObject).commit();
       }
-      catch (Exception paramString) {}
+      return;
     }
+    catch (Exception paramString) {}
   }
   
   public byte[] o(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-      return null;
-    }
-    if (!this.E.containsKey(paramString))
+    if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "nearby_assistant", 0).getString(paramString, null);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = r((String)localObject);
-        if ((localObject != null) && (localObject.length > 0))
-        {
-          this.E.put(paramString, localObject);
-          return localObject;
-        }
+      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
+        return null;
       }
-    }
-    else
-    {
-      return (byte[])this.E.get(paramString);
+      if (!this.D.containsKey(paramString))
+      {
+        Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("nearby_assistant");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = r((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            this.D.put(paramString, localObject);
+            return localObject;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.D.get(paramString);
     }
     return null;
   }
   
   public byte[] p(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null)) {
-      return null;
-    }
-    if (!this.F.containsKey(paramString))
+    if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() + "dating", 0).getString(paramString, null);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = r((String)localObject);
-        if ((localObject != null) && (localObject.length > 0))
-        {
-          this.F.put(paramString, localObject);
-          return localObject;
-        }
+      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
+        return null;
       }
-    }
-    else
-    {
-      return (byte[])this.F.get(paramString);
+      if (!this.E.containsKey(paramString))
+      {
+        Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+        localStringBuilder.append("dating");
+        localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getString(paramString, null);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = r((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            this.E.put(paramString, localObject);
+            return localObject;
+          }
+        }
+        return null;
+      }
+      return (byte[])this.E.get(paramString);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageCache
  * JD-Core Version:    0.7.0.1
  */

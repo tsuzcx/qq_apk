@@ -45,18 +45,20 @@ public final class GameCoverInfo
     paramJceOutputStream.write(this.yCoordLU, 1);
     paramJceOutputStream.write(this.xCoordRD, 2);
     paramJceOutputStream.write(this.yCoordRD, 3);
-    if (this.jmpUrl != null) {
-      paramJceOutputStream.write(this.jmpUrl, 4);
+    String str = this.jmpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.schema != null) {
-      paramJceOutputStream.write(this.schema, 5);
+    str = this.schema;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.jmpType, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_COVER_DATE.GameCoverInfo
  * JD-Core Version:    0.7.0.1
  */

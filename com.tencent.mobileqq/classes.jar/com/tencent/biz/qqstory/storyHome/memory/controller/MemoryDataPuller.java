@@ -65,57 +65,49 @@ public class MemoryDataPuller
   {
     this.jdField_b_of_type_Boolean = false;
     long l = System.currentTimeMillis();
-    Object localObject = (MemoryManager)SuperManager.a(19);
-    MemoryInfoEntry localMemoryInfoEntry = ((MemoryManager)localObject).a(DateCollectionListPageLoader.a(this.jdField_b_of_type_JavaLangString));
+    Object localObject2 = (MemoryManager)SuperManager.a(19);
+    MemoryInfoEntry localMemoryInfoEntry = ((MemoryManager)localObject2).a(DateCollectionListPageLoader.a(this.jdField_b_of_type_JavaLangString));
     boolean bool;
-    DateCollectionListPageLoader.GetCollectionListEvent localGetCollectionListEvent;
-    if ((localMemoryInfoEntry != null) && (localMemoryInfoEntry.isEnd == 1))
-    {
+    if ((localMemoryInfoEntry != null) && (localMemoryInfoEntry.isEnd == 1)) {
       bool = true;
-      List localList = ((MemoryManager)localObject).a(this.jdField_b_of_type_JavaLangString, null, 10L);
-      localGetCollectionListEvent = new DateCollectionListPageLoader.GetCollectionListEvent(this.c, new ErrorMessage());
-      localGetCollectionListEvent.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localGetCollectionListEvent.jdField_b_of_type_Boolean = true;
-      localGetCollectionListEvent.c = true;
-      localGetCollectionListEvent.e = true;
-      localGetCollectionListEvent.jdField_a_of_type_Boolean = false;
-      localGetCollectionListEvent.jdField_a_of_type_JavaUtilList = localList;
-      if (localList.size() <= 0) {
-        break label225;
-      }
-      localObject = (VideoCollectionItem)localList.get(localList.size() - 1);
-      label155:
-      if (localObject != null) {
-        break label231;
-      }
-      localGetCollectionListEvent.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = true;
-      label171:
-      a(localList, false);
-      if (!localGetCollectionListEvent.jdField_a_of_type_Boolean) {
-        break label273;
-      }
-    }
-    label273:
-    for (localObject = "true";; localObject = "false")
-    {
-      SLog.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { localObject, Long.valueOf(System.currentTimeMillis() - l) });
-      return localGetCollectionListEvent;
+    } else {
       bool = false;
-      break;
-      label225:
-      localObject = null;
-      break label155;
-      label231:
-      if ((localMemoryInfoEntry != null) && (((VideoCollectionItem)localObject).dbIndex >= localMemoryInfoEntry.maxCollectionIndex))
-      {
-        localGetCollectionListEvent.jdField_a_of_type_Boolean = bool;
-        this.jdField_b_of_type_Boolean = true;
-        break label171;
-      }
-      localGetCollectionListEvent.jdField_a_of_type_Boolean = false;
-      break label171;
     }
+    Object localObject3 = this.jdField_b_of_type_JavaLangString;
+    Object localObject1 = null;
+    localObject3 = ((MemoryManager)localObject2).a((String)localObject3, null, 10L);
+    localObject2 = new DateCollectionListPageLoader.GetCollectionListEvent(this.c, new ErrorMessage());
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_b_of_type_Boolean = true;
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).c = true;
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).e = true;
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_Boolean = false;
+    ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_JavaUtilList = ((List)localObject3);
+    if (((List)localObject3).size() > 0) {
+      localObject1 = (VideoCollectionItem)((List)localObject3).get(((List)localObject3).size() - 1);
+    }
+    if (localObject1 == null)
+    {
+      ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_Boolean = true;
+      this.jdField_b_of_type_Boolean = true;
+    }
+    else if ((localMemoryInfoEntry != null) && (((VideoCollectionItem)localObject1).dbIndex >= localMemoryInfoEntry.maxCollectionIndex))
+    {
+      ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_Boolean = bool;
+      this.jdField_b_of_type_Boolean = true;
+    }
+    else
+    {
+      ((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_Boolean = false;
+    }
+    a((List)localObject3, false);
+    if (((DateCollectionListPageLoader.GetCollectionListEvent)localObject2).jdField_a_of_type_Boolean) {
+      localObject1 = "true";
+    } else {
+      localObject1 = "false";
+    }
+    SLog.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { localObject1, Long.valueOf(System.currentTimeMillis() - l) });
+    return localObject2;
   }
   
   public void a()
@@ -134,51 +126,46 @@ public class MemoryDataPuller
   public void a(String paramString)
   {
     BatchHandlerListPuller localBatchHandlerListPuller = (BatchHandlerListPuller)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localBatchHandlerListPuller == null) {
+    if (localBatchHandlerListPuller == null)
+    {
       SLog.d("Q.qqstory.memories:MemoryDataPuller", String.format("cannot fount pageLoader , which collectionId is %s", new Object[] { paramString }));
-    }
-    while ((localBatchHandlerListPuller.b()) || (localBatchHandlerListPuller.a())) {
       return;
     }
-    localBatchHandlerListPuller.b();
+    if ((!localBatchHandlerListPuller.b()) && (!localBatchHandlerListPuller.a())) {
+      localBatchHandlerListPuller.b();
+    }
   }
   
   protected void a(List<String> paramList)
   {
-    int i = 0;
-    if (paramList.size() == 0) {}
-    label185:
-    for (;;)
-    {
+    if (paramList.size() == 0) {
       return;
-      SLog.d("Q.qqstory.memories:MemoryDataPuller", "start update view count : %s", new Object[] { paramList });
-      for (;;)
-      {
-        if (i >= paramList.size()) {
-          break label185;
-        }
-        int j = Math.min(paramList.size(), i + 20);
-        if (i >= j) {
-          break;
-        }
-        Object localObject = paramList.subList(i, j);
-        UpdateCollectionViewCountHandler localUpdateCollectionViewCountHandler = new UpdateCollectionViewCountHandler(this.jdField_b_of_type_JavaLangString);
-        ArrayList localArrayList = new ArrayList();
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          UpdateCollectionViewCountHandler.CollectionID localCollectionID = new UpdateCollectionViewCountHandler.CollectionID();
-          localCollectionID.a = VideoCollectionEntry.getCollectionId(str);
-          localCollectionID.b = VideoCollectionEntry.getCollectionType(str);
-          if (localCollectionID.a != -1) {
-            localArrayList.add(localCollectionID);
-          }
-        }
-        localUpdateCollectionViewCountHandler.a(localArrayList);
-        localUpdateCollectionViewCountHandler.a();
-        i = j;
+    }
+    int i = 0;
+    SLog.d("Q.qqstory.memories:MemoryDataPuller", "start update view count : %s", new Object[] { paramList });
+    while (i < paramList.size())
+    {
+      int j = Math.min(paramList.size(), i + 20);
+      if (i >= j) {
+        return;
       }
+      Object localObject = paramList.subList(i, j);
+      UpdateCollectionViewCountHandler localUpdateCollectionViewCountHandler = new UpdateCollectionViewCountHandler(this.jdField_b_of_type_JavaLangString);
+      ArrayList localArrayList = new ArrayList();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        UpdateCollectionViewCountHandler.CollectionID localCollectionID = new UpdateCollectionViewCountHandler.CollectionID();
+        localCollectionID.a = VideoCollectionEntry.getCollectionId(str);
+        localCollectionID.b = VideoCollectionEntry.getCollectionType(str);
+        if (localCollectionID.a != -1) {
+          localArrayList.add(localCollectionID);
+        }
+      }
+      localUpdateCollectionViewCountHandler.a(localArrayList);
+      localUpdateCollectionViewCountHandler.a();
+      i = j;
     }
   }
   
@@ -251,7 +238,7 @@ public class MemoryDataPuller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller
  * JD-Core Version:    0.7.0.1
  */

@@ -13,29 +13,33 @@ class AndroidCodec$1
   
   public void onError(MediaCodec paramMediaCodec, MediaCodec.CodecException paramCodecException)
   {
-    if (this.val$cb != null) {
-      this.val$cb.onError(paramMediaCodec, paramCodecException);
+    IMediaCodecCallback localIMediaCodecCallback = this.val$cb;
+    if (localIMediaCodecCallback != null) {
+      localIMediaCodecCallback.onError(paramMediaCodec, paramCodecException);
     }
   }
   
   public void onInputBufferAvailable(MediaCodec paramMediaCodec, int paramInt)
   {
-    if (this.val$cb != null) {
-      this.val$cb.onInputBufferAvailable(paramMediaCodec, paramInt);
+    IMediaCodecCallback localIMediaCodecCallback = this.val$cb;
+    if (localIMediaCodecCallback != null) {
+      localIMediaCodecCallback.onInputBufferAvailable(paramMediaCodec, paramInt);
     }
   }
   
   public void onOutputBufferAvailable(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
   {
-    if (this.val$cb != null) {
-      this.val$cb.onOutputBufferAvailable(paramMediaCodec, paramInt, paramBufferInfo);
+    IMediaCodecCallback localIMediaCodecCallback = this.val$cb;
+    if (localIMediaCodecCallback != null) {
+      localIMediaCodecCallback.onOutputBufferAvailable(paramMediaCodec, paramInt, paramBufferInfo);
     }
   }
   
   public void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    if (this.val$cb != null) {
-      this.val$cb.onOutputFormatChanged(paramMediaCodec, paramMediaFormat);
+    IMediaCodecCallback localIMediaCodecCallback = this.val$cb;
+    if (localIMediaCodecCallback != null) {
+      localIMediaCodecCallback.onOutputFormatChanged(paramMediaCodec, paramMediaFormat);
     }
   }
 }

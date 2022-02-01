@@ -47,9 +47,7 @@ public class NetworkUtils
   
   public static String c(Context paramContext)
   {
-    if (paramContext != null) {}
-    for (;;)
-    {
+    if (paramContext != null) {
       try
       {
         paramContext = (WifiManager)paramContext.getSystemService("wifi");
@@ -66,44 +64,39 @@ public class NetworkUtils
       catch (Throwable paramContext)
       {
         paramContext.printStackTrace();
-        return "";
       }
-      paramContext = "";
     }
+    return "";
   }
   
   private static void c(Context paramContext)
   {
-    WifiInfo localWifiInfo;
     if (paramContext != null)
     {
-      localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      WifiInfo localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
       if (localWifiInfo != null)
       {
-        if (!TextUtils.isEmpty(localWifiInfo.getBSSID())) {
-          break label55;
+        boolean bool = TextUtils.isEmpty(localWifiInfo.getBSSID());
+        String str = "";
+        if (bool) {
+          paramContext = "";
+        } else {
+          paramContext = localWifiInfo.getBSSID();
         }
-        paramContext = "";
         jdField_a_of_type_JavaLangString = paramContext;
-        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-          break label63;
+        if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+          paramContext = str;
+        } else {
+          paramContext = localWifiInfo.getSSID();
         }
+        b = paramContext;
       }
-    }
-    label55:
-    label63:
-    for (paramContext = "";; paramContext = localWifiInfo.getSSID())
-    {
-      b = paramContext;
-      return;
-      paramContext = localWifiInfo.getBSSID();
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.NetworkUtils
  * JD-Core Version:    0.7.0.1
  */

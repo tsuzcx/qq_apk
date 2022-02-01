@@ -19,21 +19,22 @@ class g$b
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.b.handle("onPressIn", -1.0F, -1.0F);
-      g.a(this.a, true);
+      if (i != 2) {
+        return;
+      }
+      this.b.handle("onPressOut", -1.0F, -1.0F);
       return;
     }
-    this.b.handle("onPressOut", -1.0F, -1.0F);
+    this.b.handle("onPressIn", -1.0F, -1.0F);
+    g.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.g.b
  * JD-Core Version:    0.7.0.1
  */

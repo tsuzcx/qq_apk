@@ -39,7 +39,7 @@ public final class RecentMediaListView
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramHashMap.size());
     this.jdField_a_of_type_Int = (DisplayUtils.a.b(paramContext) * 3 / 4);
     Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
-    Object localObject2 = paramContext.getResources().getString(R.string.ab);
+    Object localObject2 = paramContext.getResources().getString(R.string.W);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "context.resources.getString(R.string.recent_item)");
     ((ArrayList)localObject1).add(new RecentMediaListView.Album((String)localObject2, "", paramArrayList));
     paramArrayList = paramHashMap.keySet();
@@ -67,7 +67,7 @@ public final class RecentMediaListView
     return this.jdField_a_of_type_KotlinJvmFunctionsFunction3;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     setAdapter((ListAdapter)this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorRecentMediaListView$adapter$1);
@@ -76,10 +76,12 @@ public final class RecentMediaListView
     setDividerHeight(0);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if ((getMeasuredHeight() > this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Int > -1)) {
+    paramInt2 = getMeasuredHeight();
+    int i = this.jdField_a_of_type_Int;
+    if ((paramInt2 > i) && (i > -1)) {
       setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.jdField_a_of_type_Int);
     }
   }
@@ -91,7 +93,7 @@ public final class RecentMediaListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.RecentMediaListView
  * JD-Core Version:    0.7.0.1
  */

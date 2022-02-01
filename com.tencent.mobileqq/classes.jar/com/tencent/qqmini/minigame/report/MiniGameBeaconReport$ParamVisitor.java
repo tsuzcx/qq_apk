@@ -23,18 +23,17 @@ final class MiniGameBeaconReport$ParamVisitor
       MiniGameBeaconReport.ExclusiveVisitor.access$setSkipLevel$p(localExclusiveVisitor, MiniGameBeaconReport.ExclusiveVisitor.access$getSkipLevel$p(localExclusiveVisitor) - 1);
       return;
     }
-    TaskExecutionStatics localTaskExecutionStatics = (TaskExecutionStatics)MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor).get(CollectionsKt.getLastIndex(MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor)));
+    Object localObject = (TaskExecutionStatics)MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor).get(CollectionsKt.getLastIndex(MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor)));
     String str = MiniGameBeaconReport.access$getTaskName(MiniGameBeaconReport.INSTANCE, getStack());
-    if (!((Collection)localTaskExecutionStatics.getSubSteps()).isEmpty()) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        this.map.put(str, String.valueOf(((TaskExecutionStatics)CollectionsKt.last(getStack())).getTotalRunDurationMs()));
-      }
-      this.map.put(str + "_self", String.valueOf(((TaskExecutionStatics)CollectionsKt.last(getStack())).getRunDurationMs()));
-      MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor).remove(CollectionsKt.getLastIndex(MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor)));
-      return;
+    if ((((Collection)((TaskExecutionStatics)localObject).getSubSteps()).isEmpty() ^ true)) {
+      this.map.put(str, String.valueOf(((TaskExecutionStatics)CollectionsKt.last(getStack())).getTotalRunDurationMs()));
     }
+    localObject = this.map;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("_self");
+    ((Map)localObject).put(localStringBuilder.toString(), String.valueOf(((TaskExecutionStatics)CollectionsKt.last(getStack())).getRunDurationMs()));
+    MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor).remove(CollectionsKt.getLastIndex(MiniGameBeaconReport.ExclusiveVisitor.access$getStack$p(localExclusiveVisitor)));
   }
   
   @NotNull
@@ -45,7 +44,7 @@ final class MiniGameBeaconReport$ParamVisitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.report.MiniGameBeaconReport.ParamVisitor
  * JD-Core Version:    0.7.0.1
  */

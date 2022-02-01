@@ -80,37 +80,45 @@ public final class get_video_float_layer_req
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.scene, 1);
     paramJceOutputStream.write(this.appid, 2);
-    if (this.ugckey != null) {
-      paramJceOutputStream.write(this.ugckey, 3);
+    Object localObject = this.ugckey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.video_url != null) {
-      paramJceOutputStream.write(this.video_url, 4);
+    localObject = this.video_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 5);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 6);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 7);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.get_type, 8);
     paramJceOutputStream.write(this.req_type, 9);
-    if (this.qzone_weisi_req != null) {
-      paramJceOutputStream.write(this.qzone_weisi_req, 10);
+    localObject = this.qzone_weisi_req;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
-    if (this.rooftop_id != null) {
-      paramJceOutputStream.write(this.rooftop_id, 11);
+    localObject = this.rooftop_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.layer_user_session_action != null) {
-      paramJceOutputStream.write(this.layer_user_session_action, 12);
+    localObject = this.layer_user_session_action;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.get_video_float_layer_req
  * JD-Core Version:    0.7.0.1
  */

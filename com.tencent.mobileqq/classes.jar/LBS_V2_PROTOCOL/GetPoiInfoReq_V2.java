@@ -83,14 +83,15 @@ public final class GetPoiInfoReq_V2
     paramJceOutputStream.write(this.iDistance, 6);
     paramJceOutputStream.write(this.iAccuracy, 7);
     paramJceOutputStream.write(this.iLocateCostTime, 8);
-    if (this.strAttachInfo != null) {
-      paramJceOutputStream.write(this.strAttachInfo, 9);
+    String str = this.strAttachInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.GetPoiInfoReq_V2
  * JD-Core Version:    0.7.0.1
  */

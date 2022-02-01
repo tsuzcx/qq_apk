@@ -8,17 +8,17 @@ public class Logger
 {
   public static final int a;
   private static VideoDanmakuConfig.ILogger jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger;
-  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
   
   static
   {
-    if (DanmakuDependImp.a().a().a()) {}
-    for (int i = 4;; i = 3)
-    {
-      jdField_a_of_type_Int = i;
-      jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-      return;
+    int i;
+    if (DanmakuDependImp.a().a().a()) {
+      i = 4;
+    } else {
+      i = 3;
     }
+    jdField_a_of_type_Int = i;
   }
   
   public static void a(VideoDanmakuConfig.ILogger paramILogger)
@@ -28,28 +28,37 @@ public class Logger
   
   public static void a(String paramString1, String paramString2)
   {
-    if ((jdField_a_of_type_Int >= 5) && (jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger != null)) {
-      jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger.a(paramString1, paramString2);
+    if (jdField_a_of_type_Int >= 5)
+    {
+      VideoDanmakuConfig.ILogger localILogger = jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger;
+      if (localILogger != null) {
+        localILogger.a(paramString1, paramString2);
+      }
     }
   }
   
   public static void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger != null)) {
-      jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger.a(paramString1, paramString2, paramThrowable);
+    if (jdField_a_of_type_Int >= 1)
+    {
+      VideoDanmakuConfig.ILogger localILogger = jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger;
+      if (localILogger != null) {
+        localILogger.a(paramString1, paramString2, paramThrowable);
+      }
     }
   }
   
   public static void a(String paramString, Object... paramVarArgs)
   {
-    int i = 0;
     if ((jdField_a_of_type_Int >= 5) && (jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger != null))
     {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      Object localObject = jdField_a_of_type_JavaLangStringBuilder;
+      int i = 0;
+      ((StringBuilder)localObject).setLength(0);
       int j = paramVarArgs.length;
       while (i < j)
       {
-        Object localObject = paramVarArgs[i];
+        localObject = paramVarArgs[i];
         jdField_a_of_type_JavaLangStringBuilder.append(localObject);
         i += 1;
       }
@@ -59,21 +68,26 @@ public class Logger
   
   public static void b(String paramString1, String paramString2)
   {
-    if ((jdField_a_of_type_Int >= 4) && (jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger != null)) {
-      jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger.b(paramString1, paramString2);
+    if (jdField_a_of_type_Int >= 4)
+    {
+      VideoDanmakuConfig.ILogger localILogger = jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger;
+      if (localILogger != null) {
+        localILogger.b(paramString1, paramString2);
+      }
     }
   }
   
   public static void b(String paramString, Object... paramVarArgs)
   {
-    int i = 0;
     if ((jdField_a_of_type_Int >= 4) && (jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger != null))
     {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      Object localObject = jdField_a_of_type_JavaLangStringBuilder;
+      int i = 0;
+      ((StringBuilder)localObject).setLength(0);
       int j = paramVarArgs.length;
       while (i < j)
       {
-        Object localObject = paramVarArgs[i];
+        localObject = paramVarArgs[i];
         jdField_a_of_type_JavaLangStringBuilder.append(localObject);
         i += 1;
       }
@@ -83,21 +97,26 @@ public class Logger
   
   public static void c(String paramString1, String paramString2)
   {
-    if ((jdField_a_of_type_Int >= 3) && (jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger != null)) {
-      jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger.c(paramString1, paramString2);
+    if (jdField_a_of_type_Int >= 3)
+    {
+      VideoDanmakuConfig.ILogger localILogger = jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger;
+      if (localILogger != null) {
+        localILogger.c(paramString1, paramString2);
+      }
     }
   }
   
   public static void c(String paramString, Object... paramVarArgs)
   {
-    int i = 0;
     if ((jdField_a_of_type_Int >= 3) && (jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger != null))
     {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      Object localObject = jdField_a_of_type_JavaLangStringBuilder;
+      int i = 0;
+      ((StringBuilder)localObject).setLength(0);
       int j = paramVarArgs.length;
       while (i < j)
       {
-        Object localObject = paramVarArgs[i];
+        localObject = paramVarArgs[i];
         jdField_a_of_type_JavaLangStringBuilder.append(localObject);
         i += 1;
       }
@@ -107,21 +126,26 @@ public class Logger
   
   public static void d(String paramString1, String paramString2)
   {
-    if ((jdField_a_of_type_Int >= 2) && (jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger != null)) {
-      jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger.d(paramString1, paramString2);
+    if (jdField_a_of_type_Int >= 2)
+    {
+      VideoDanmakuConfig.ILogger localILogger = jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger;
+      if (localILogger != null) {
+        localILogger.d(paramString1, paramString2);
+      }
     }
   }
   
   public static void d(String paramString, Object... paramVarArgs)
   {
-    int i = 0;
     if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger != null))
     {
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      Object localObject = jdField_a_of_type_JavaLangStringBuilder;
+      int i = 0;
+      ((StringBuilder)localObject).setLength(0);
       int j = paramVarArgs.length;
       while (i < j)
       {
-        Object localObject = paramVarArgs[i];
+        localObject = paramVarArgs[i];
         jdField_a_of_type_JavaLangStringBuilder.append(localObject);
         i += 1;
       }
@@ -131,14 +155,18 @@ public class Logger
   
   public static void e(String paramString1, String paramString2)
   {
-    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger != null)) {
-      jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger.e(paramString1, paramString2);
+    if (jdField_a_of_type_Int >= 1)
+    {
+      VideoDanmakuConfig.ILogger localILogger = jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger;
+      if (localILogger != null) {
+        localILogger.e(paramString1, paramString2);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.util.Logger
  * JD-Core Version:    0.7.0.1
  */

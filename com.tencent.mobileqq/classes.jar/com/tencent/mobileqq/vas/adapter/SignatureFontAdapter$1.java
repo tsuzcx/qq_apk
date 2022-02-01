@@ -13,20 +13,25 @@ class SignatureFontAdapter$1
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureFontAdapter", 2, "SignatureFontAdapter type = " + paramObject);
+    if (QLog.isColorLevel())
+    {
+      paramObservable = new StringBuilder();
+      paramObservable.append("SignatureFontAdapter type = ");
+      paramObservable.append(paramObject);
+      QLog.d("SignatureFontAdapter", 2, paramObservable.toString());
     }
     if ((paramObject instanceof Integer))
     {
-      switch (((Integer)paramObject).intValue())
+      int i = ((Integer)paramObject).intValue();
+      if (i != 1)
       {
-      default: 
-        return;
-      case 1: 
-        this.a.a.a().sendEmptyMessage(10003);
+        if (i != 2) {
+          return;
+        }
+        this.a.a.a().sendEmptyMessage(10002);
         return;
       }
-      this.a.a.a().sendEmptyMessage(10002);
+      this.a.a.a().sendEmptyMessage(10003);
       return;
     }
     this.a.a.a().sendEmptyMessage(10003);
@@ -34,7 +39,7 @@ class SignatureFontAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureFontAdapter.1
  * JD-Core Version:    0.7.0.1
  */

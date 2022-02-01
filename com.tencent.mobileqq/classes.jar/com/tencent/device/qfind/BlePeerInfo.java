@@ -36,78 +36,90 @@ public class BlePeerInfo
   
   public static void a(byte[] paramArrayOfByte, BlePeerInfo paramBlePeerInfo)
   {
-    try
+    for (;;)
     {
-      paramBlePeerInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
-      paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.LITTLE_ENDIAN);
-      int j;
-      int i;
-      if (paramArrayOfByte.remaining() > 2)
+      try
       {
-        j = paramArrayOfByte.get();
-        if (j == 0) {
-          return;
-        }
-        i = j;
-        switch (paramArrayOfByte.get())
+        paramBlePeerInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
+        paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.LITTLE_ENDIAN);
+        if (paramArrayOfByte.remaining() > 2)
         {
+          j = paramArrayOfByte.get();
+          if (j == 0) {
+            return;
+          }
+          int k = paramArrayOfByte.get();
+          if (k != -1)
+          {
+            if (k != 22)
+            {
+              int i = j;
+              if (k != 2)
+              {
+                i = j;
+                if (k != 3)
+                {
+                  paramArrayOfByte.position(paramArrayOfByte.position() + j - 1);
+                  continue;
+                }
+              }
+              if (i >= 2)
+              {
+                paramBlePeerInfo.jdField_a_of_type_JavaUtilList.add(String.format("%08x-0000-1000-8000-00805f9b34fb", new Object[] { Short.valueOf(paramArrayOfByte.getShort()) }));
+                i = (byte)(i - 2);
+                continue;
+              }
+              continue;
+            }
+            if (j <= 2) {}
+          }
         }
       }
-      for (;;)
+      catch (Throwable paramArrayOfByte)
       {
-        for (;;)
-        {
-          paramArrayOfByte.position(j + paramArrayOfByte.position() - 1);
-          break;
-          while (i >= 2)
-          {
-            paramBlePeerInfo.jdField_a_of_type_JavaUtilList.add(String.format("%08x-0000-1000-8000-00805f9b34fb", new Object[] { Short.valueOf(paramArrayOfByte.getShort()) }));
-            i = (byte)(i - 2);
-          }
-          if (j > 10)
-          {
-            if (j > 11) {
-              paramArrayOfByte.get(new byte[j - 1 - 10]);
-            }
-            paramBlePeerInfo.jdField_a_of_type_Int = paramArrayOfByte.getInt();
-            paramBlePeerInfo.jdField_a_of_type_ArrayOfByte = new byte[6];
-            paramArrayOfByte.get(paramBlePeerInfo.jdField_a_of_type_ArrayOfByte);
-            break;
-          }
-          paramArrayOfByte.position(j + paramArrayOfByte.position() - 1);
-          break;
-          if (j <= 2) {
-            break label254;
-          }
-          try
-          {
-            if (paramArrayOfByte.getShort() != 513) {
-              break;
-            }
-            paramBlePeerInfo.f = paramArrayOfByte.getShort();
-            paramBlePeerInfo.e = paramArrayOfByte.getShort();
-          }
-          catch (Exception localException) {}
-        }
-        break;
-        label254:
-        paramArrayOfByte.position(j + paramArrayOfByte.position() - 1);
-        break;
+        int j;
         return;
       }
-      return;
+      try
+      {
+        if (paramArrayOfByte.getShort() != 513) {
+          continue;
+        }
+        paramBlePeerInfo.f = paramArrayOfByte.getShort();
+        paramBlePeerInfo.e = paramArrayOfByte.getShort();
+      }
+      catch (Exception localException) {}
+      paramArrayOfByte.position(paramArrayOfByte.position() + j - 1);
+      continue;
+      if (j > 10)
+      {
+        if (j > 11) {
+          paramArrayOfByte.get(new byte[j - 1 - 10]);
+        }
+        paramBlePeerInfo.jdField_a_of_type_Int = paramArrayOfByte.getInt();
+        paramBlePeerInfo.jdField_a_of_type_ArrayOfByte = new byte[6];
+        paramArrayOfByte.get(paramBlePeerInfo.jdField_a_of_type_ArrayOfByte);
+      }
+      else
+      {
+        paramArrayOfByte.position(paramArrayOfByte.position() + j - 1);
+        continue;
+        return;
+      }
     }
-    catch (Throwable paramArrayOfByte) {}
   }
   
   public String a()
   {
-    return this.jdField_b_of_type_JavaLangString.replaceAll(":", "") + "0000";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString.replaceAll(":", ""));
+    localStringBuilder.append("0000");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.qfind.BlePeerInfo
  * JD-Core Version:    0.7.0.1
  */

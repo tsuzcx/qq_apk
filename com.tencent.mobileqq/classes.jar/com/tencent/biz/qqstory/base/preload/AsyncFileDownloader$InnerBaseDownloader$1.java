@@ -17,25 +17,25 @@ class AsyncFileDownloader$InnerBaseDownloader$1
   
   public void onResp(NetResp paramNetResp)
   {
-    if (paramNetResp.mResult == 3) {}
-    DownloadTask localDownloadTask;
-    do
-    {
-      do
-      {
-        return;
-        localObject = ((HttpNetReq)paramNetResp.mReq).getUserData();
-      } while ((localObject == null) || (!(localObject instanceof DownloadTask)));
-      localDownloadTask = (DownloadTask)localObject;
-      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((DownloadTask)localObject).jdField_a_of_type_JavaLangString);
-      localDownloadTask.jdField_b_of_type_Long = (System.currentTimeMillis() - localDownloadTask.jdField_a_of_type_Long);
-    } while (localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult == null);
-    Object localObject = localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult;
-    if (paramNetResp.mResult == 0) {}
-    for (paramNetResp = new ErrorMessage(0, "");; paramNetResp = new ErrorMessage(paramNetResp.mErrCode, paramNetResp.mErrDesc))
-    {
-      ((AsyncFileDownloader.DownloadResult)localObject).a(localDownloadTask, paramNetResp);
+    if (paramNetResp.mResult == 3) {
       return;
+    }
+    Object localObject = ((HttpNetReq)paramNetResp.mReq).getUserData();
+    if ((localObject != null) && ((localObject instanceof DownloadTask)))
+    {
+      localObject = (DownloadTask)localObject;
+      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((DownloadTask)localObject).jdField_a_of_type_JavaLangString);
+      ((DownloadTask)localObject).jdField_b_of_type_Long = (System.currentTimeMillis() - ((DownloadTask)localObject).jdField_a_of_type_Long);
+      if (((DownloadTask)localObject).jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult != null)
+      {
+        AsyncFileDownloader.DownloadResult localDownloadResult = ((DownloadTask)localObject).jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult;
+        if (paramNetResp.mResult == 0) {
+          paramNetResp = new ErrorMessage(0, "");
+        } else {
+          paramNetResp = new ErrorMessage(paramNetResp.mErrCode, paramNetResp.mErrDesc);
+        }
+        localDownloadResult.a((DownloadTask)localObject, paramNetResp);
+      }
     }
   }
   
@@ -45,7 +45,11 @@ class AsyncFileDownloader$InnerBaseDownloader$1
     if ((??? != null) && ((??? instanceof DownloadTask)))
     {
       DownloadTask localDownloadTask = (DownloadTask)???;
-      int i = (int)(paramLong1 / paramLong2 * 100.0D);
+      double d1 = paramLong1;
+      double d2 = paramLong2;
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      int i = (int)(d1 / d2 * 100.0D);
       synchronized (PreloadDownloader.a)
       {
         if (this.a.a.jdField_a_of_type_JavaUtilList != null)
@@ -59,13 +63,14 @@ class AsyncFileDownloader$InnerBaseDownloader$1
             }
           }
         }
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerBaseDownloader.1
  * JD-Core Version:    0.7.0.1
  */

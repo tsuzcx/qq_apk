@@ -2,23 +2,23 @@ package com.tencent.mobileqq.activity.aio.pluspanel;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider.Factory;
 import com.tencent.biz.qqstory.utils.FeedUtils;
 import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIOZhituHelper;
 import com.tencent.mobileqq.activity.aio.pluspanel.loader.PlusPanelAppLoader;
-import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
-import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil.DtReportParamsBuilder;
+import com.tencent.mobileqq.apollo.statistics.product.DtReportParamsBuilder;
+import com.tencent.mobileqq.apollo.statistics.product.api.IApolloDtReportHelper;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -30,12 +30,14 @@ import com.tencent.mobileqq.mvvm.BaseViewModel;
 import com.tencent.mobileqq.mvvm.LifeCycleFragment;
 import com.tencent.mobileqq.nearby.NearbyURLSafeUtil;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.mobileqq.troop.aioapp.AioGroupAppsManager;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
-import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.troop.troopapps.api.ITroopAioAppService;
+import com.tencent.mobileqq.troop.troopapps.api.ITroopAppService;
+import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -47,11 +49,11 @@ public class PlusPanelViewModel
 {
   public static ViewModelProvider.Factory a;
   int jdField_a_of_type_Int = 0;
-  private MutableLiveData<Boolean> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final MutableLiveData<Boolean> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
+  private final List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
   public int b;
-  private MutableLiveData<ArrayList<PluginData>> jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
+  private final MutableLiveData<ArrayList<PluginData>> jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
   boolean jdField_b_of_type_Boolean = false;
   private boolean c = false;
   
@@ -68,26 +70,24 @@ public class PlusPanelViewModel
   
   private void a(int paramInt)
   {
-    if (paramInt <= 6) {}
-    for (;;)
-    {
+    if (paramInt <= 7) {
       return;
-      Object localObject = ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
-      if ((localObject != null) && (!((List)localObject).isEmpty()))
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((PlusPanelAppInfo)((Iterator)localObject).next()).onChatPieLifeCycle(paramInt);
-        }
+    }
+    Object localObject = ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PlusPanelAppInfo)((Iterator)localObject).next()).onChatPieLifeCycle(paramInt);
       }
     }
   }
   
-  private void a(int paramInt, PluginData paramPluginData, RedTouchManager paramRedTouchManager)
+  private void a(int paramInt, PluginData paramPluginData, IRedTouchManager paramIRedTouchManager)
   {
-    paramPluginData = paramRedTouchManager.a(10, paramPluginData.c, paramPluginData.f);
+    paramPluginData = paramIRedTouchManager.getAppInfoFilterByID(10, paramPluginData.c, paramPluginData.f);
     if (paramPluginData != null) {
-      paramRedTouchManager.a(paramPluginData.uiAppId.get(), 30);
+      paramIRedTouchManager.reportLevelOneRedInfo(paramPluginData.uiAppId.get(), 30);
     }
   }
   
@@ -97,7 +97,7 @@ public class PlusPanelViewModel
       return false;
     }
     TroopManager localTroopManager = (TroopManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    if (localTroopManager.h(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b))
+    if (localTroopManager.g(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b))
     {
       localTroopManager.h(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
       return true;
@@ -107,13 +107,15 @@ public class PlusPanelViewModel
   
   private void b(LifecycleOwner paramLifecycleOwner)
   {
-    if (this.jdField_b_of_type_AndroidxLifecycleMutableLiveData != null) {
-      this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.removeObservers(paramLifecycleOwner);
+    MutableLiveData localMutableLiveData = this.jdField_b_of_type_AndroidxLifecycleMutableLiveData;
+    if (localMutableLiveData != null) {
+      localMutableLiveData.removeObservers(paramLifecycleOwner);
     }
-    if (this.jdField_a_of_type_AndroidxLifecycleMutableLiveData != null) {
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.removeObservers(paramLifecycleOwner);
+    localMutableLiveData = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
+    if (localMutableLiveData != null) {
+      localMutableLiveData.removeObservers(paramLifecycleOwner);
     }
-    MutableLiveData localMutableLiveData = ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
+    localMutableLiveData = ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a();
     if (localMutableLiveData != null) {
       localMutableLiveData.removeObservers(paramLifecycleOwner);
     }
@@ -123,10 +125,10 @@ public class PlusPanelViewModel
   {
     if (paramInt > 0)
     {
-      RedTouchManager localRedTouchManager = (RedTouchManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
-      paramBaseChatPie = localRedTouchManager.a(10, String.valueOf(paramInt), paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+      IRedTouchManager localIRedTouchManager = (IRedTouchManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+      paramBaseChatPie = localIRedTouchManager.getAppInfoFilterByID(10, String.valueOf(paramInt), paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
       if (paramBaseChatPie != null) {
-        localRedTouchManager.a(paramBaseChatPie.uiAppId.get(), 31);
+        localIRedTouchManager.reportLevelOneRedInfo(paramBaseChatPie.uiAppId.get(), 31);
       }
     }
   }
@@ -140,7 +142,7 @@ public class PlusPanelViewModel
   {
     try
     {
-      paramBaseChatPie = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager().findFragmentByTag("fragment_tag_life_cycle_fragment");
+      paramBaseChatPie = (QBaseFragment)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSupportFragmentManager().findFragmentByTag("fragment_tag_life_cycle_Fragment");
       if ((paramBaseChatPie instanceof LifeCycleFragment))
       {
         paramBaseChatPie = (LifeCycleFragment)paramBaseChatPie;
@@ -188,16 +190,19 @@ public class PlusPanelViewModel
   {
     if (!((HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramSessionInfo.jdField_a_of_type_JavaLangString))
     {
-      TroopAppMgr localTroopAppMgr = (TroopAppMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_APP_MGR);
+      ITroopAppService localITroopAppService = (ITroopAppService)paramQQAppInterface.getRuntimeService(ITroopAppService.class, "all");
       if (paramPlusPanelAppInfo.redPoint)
       {
-        AioGroupAppsManager.a(paramQQAppInterface).a(paramPlusPanelAppInfo.getAppID());
-        ThreadManager.excute(new PlusPanelViewModel.2(this, localTroopAppMgr, paramPlusPanelAppInfo), 128, null, false);
+        ((ITroopAioAppService)paramQQAppInterface.getRuntimeService(ITroopAioAppService.class, "")).requestClearRedDot(paramPlusPanelAppInfo.getAppID());
+        ThreadManager.excute(new PlusPanelViewModel.2(this, localITroopAppService, paramPlusPanelAppInfo), 128, null, false);
       }
       boolean bool = paramPlusPanelAppInfo.canRemove;
       a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramPlusPanelAppInfo.getAppID(), bool);
-      if (localTroopAppMgr != null) {
-        localTroopAppMgr.a(paramPlusPanelAppInfo.getAppID(), false, paramSessionInfo.jdField_a_of_type_JavaLangString);
+      int i = paramPlusPanelAppInfo.getAppID();
+      if ((localITroopAppService != null) && (i > 0))
+      {
+        localITroopAppService.addReportClick(i, false, paramSessionInfo.jdField_a_of_type_JavaLangString);
+        new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("add_page").d("Clk_app").a(new String[] { paramSessionInfo.jdField_a_of_type_JavaLangString }).a(new String[] { String.valueOf(i) }).a(new String[] { "1" }).a();
       }
     }
   }
@@ -210,52 +215,49 @@ public class PlusPanelViewModel
   
   public void a(BaseChatPie paramBaseChatPie, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 7)
     {
+      if (paramInt == 15) {
+        e(paramBaseChatPie);
+      }
     }
-    for (;;)
-    {
-      a(paramInt);
-      return;
+    else {
       d(paramBaseChatPie);
-      continue;
-      e(paramBaseChatPie);
     }
+    a(paramInt);
   }
   
   public void a(BaseChatPie paramBaseChatPie, PluginData paramPluginData)
   {
-    if (a(paramBaseChatPie)) {}
-    SessionInfo localSessionInfo;
-    PlusPanelAppInfo localPlusPanelAppInfo;
-    do
-    {
+    if (a(paramBaseChatPie)) {
       return;
-      localSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      localPlusPanelAppInfo = a(paramPluginData.jdField_b_of_type_Int);
-    } while (localPlusPanelAppInfo == null);
-    if (localSessionInfo.jdField_a_of_type_Int == 1) {}
-    b(paramBaseChatPie, localPlusPanelAppInfo.getRedDotID());
-    b(paramBaseChatPie, paramPluginData);
-    paramBaseChatPie.aZ();
-    localPlusPanelAppInfo.handlePanelClick(this, paramBaseChatPie, localSessionInfo);
-    QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if ((localSessionInfo.jdField_a_of_type_Int == 1001) || (localSessionInfo.jdField_a_of_type_Int == 10002)) {
-      if (localSessionInfo.jdField_a_of_type_Int == 1001)
+    }
+    SessionInfo localSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    PlusPanelAppInfo localPlusPanelAppInfo = a(paramPluginData.jdField_b_of_type_Int);
+    if (localPlusPanelAppInfo != null)
+    {
+      int i = localSessionInfo.jdField_a_of_type_Int;
+      b(paramBaseChatPie, localPlusPanelAppInfo.getRedDotID());
+      b(paramBaseChatPie, paramPluginData);
+      ((AIOZhituHelper)paramBaseChatPie.a(116)).a();
+      localPlusPanelAppInfo.handlePanelClick(this, paramBaseChatPie, localSessionInfo);
+      QQAppInterface localQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if ((localSessionInfo.jdField_a_of_type_Int != 1001) && (localSessionInfo.jdField_a_of_type_Int != 10002))
       {
-        paramPluginData = "0";
+        if (localSessionInfo.jdField_a_of_type_Int == 1) {
+          a(localSessionInfo, localPlusPanelAppInfo, localQQAppInterface);
+        }
+      }
+      else
+      {
+        if (localSessionInfo.jdField_a_of_type_Int == 1001) {
+          paramPluginData = "0";
+        } else {
+          paramPluginData = "1";
+        }
         ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "c2c_tmp", "clk_plus", 0, 0, paramPluginData, ((PlusPanelRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).b(localPlusPanelAppInfo.getAppID()), "", "");
       }
-    }
-    for (;;)
-    {
       b(paramBaseChatPie);
-      return;
-      paramPluginData = "1";
-      break;
-      if (localSessionInfo.jdField_a_of_type_Int == 1) {
-        a(localSessionInfo, localPlusPanelAppInfo, localQQAppInterface);
-      }
     }
   }
   
@@ -275,168 +277,67 @@ public class PlusPanelViewModel
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Int == 2) {
-      ReportController.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "C2C", "gift_exp", 0, 0, "", "", "", "");
-    }
-    do
+    int i = this.jdField_a_of_type_Int;
+    if (i == 2)
     {
+      ReportController.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "C2C", "gift_exp", 0, 0, "", "", "", "");
       return;
-      if (this.jdField_a_of_type_Int == 6)
-      {
-        ReportController.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "discuss_grp", "gift_exp", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 7);
-    ReportController.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "temp_c2c", "gift_exp", 0, 0, "", "", "", "");
+    }
+    if (i == 6)
+    {
+      ReportController.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "discuss_grp", "gift_exp", 0, 0, "", "", "", "");
+      return;
+    }
+    if (i == 7) {
+      ReportController.b(paramQQAppInterface, "dc00899", "Grp_flower", "", "temp_c2c", "gift_exp", 0, 0, "", "", "", "");
+    }
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
   {
-    if (paramInt == 1106717414) {
+    if (paramInt == 1106717414)
+    {
       TroopReportor.a(paramQQAppInterface, paramString, "Grp_chain", "ChainEntry_Clk");
-    }
-    while (paramInt != 1106729451) {
       return;
     }
-    TroopReportor.a(paramQQAppInterface, paramString, "MassMessage", "grpapp_Clk");
+    if (paramInt == 1106729451) {
+      TroopReportor.a(paramQQAppInterface, paramString, "MassMessage", "grpapp_Clk");
+    }
   }
   
   void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, PluginData paramPluginData)
   {
-    RedTouchManager localRedTouchManager = (RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH);
-    if (!TextUtils.isEmpty(paramPluginData.c)) {
-      a(paramInt, paramPluginData, localRedTouchManager);
-    }
-    int j;
-    label103:
-    int k;
-    label111:
-    boolean bool;
-    if ((paramPluginData.jdField_b_of_type_Int > 0) && (!this.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramPluginData.jdField_b_of_type_Int))))
-    {
-      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramPluginData.jdField_b_of_type_Int));
-      if ((paramInt != 0) && (!ChatActivityUtils.a(paramQQAppInterface, paramString))) {
-        break label180;
-      }
-      i = 1;
-      if (paramInt != 3000) {
-        break label186;
-      }
-      j = 1;
-      if (paramInt != 1) {
-        break label192;
-      }
-      k = 1;
-      bool = a(paramInt);
-      if (i == 0) {
-        break label198;
-      }
-      paramInt = 1;
-      label125:
-      j = paramPluginData.jdField_b_of_type_Int;
-      if (!paramPluginData.jdField_a_of_type_Boolean) {
-        break label233;
-      }
-    }
-    label180:
-    label186:
-    label192:
-    label198:
-    label233:
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A46B", "0X800A46B", j, i, String.valueOf(paramInt), "", "", "");
-      return;
-      i = 0;
-      break;
-      j = 0;
-      break label103;
-      k = 0;
-      break label111;
-      if (j != 0)
-      {
-        paramInt = 2;
-        break label125;
-      }
-      if (k != 0)
-      {
-        paramInt = 3;
-        break label125;
-      }
-      if (bool)
-      {
-        paramInt = 4;
-        break label125;
-      }
-      paramInt = 5;
-      break label125;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, PluginData paramPluginData)
   {
-    int k = 0;
-    int i;
-    int j;
-    label44:
-    boolean bool;
-    if (paramPluginData.jdField_b_of_type_Int > 0)
-    {
-      if ((paramSessionInfo.jdField_a_of_type_Int != 0) && (!ChatActivityUtils.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString))) {
-        break label120;
-      }
-      i = 1;
-      if (paramSessionInfo.jdField_a_of_type_Int != 3000) {
-        break label126;
-      }
-      j = 1;
-      bool = a(paramSessionInfo.jdField_a_of_type_Int);
-      if (i == 0) {
-        break label132;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      int m = paramPluginData.jdField_b_of_type_Int;
-      j = k;
-      if (paramPluginData.jdField_a_of_type_Boolean) {
-        j = 1;
-      }
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A46C", "0X800A46C", m, j, String.valueOf(i), "", "", "");
-      return;
-      label120:
-      i = 0;
-      break;
-      label126:
-      j = 0;
-      break label44;
-      label132:
-      if (j != 0) {
-        i = 2;
-      } else if (paramSessionInfo.jdField_a_of_type_Int == 1) {
-        i = 3;
-      } else if (bool) {
-        i = 4;
-      } else {
-        i = 5;
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     Object localObject = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    if (localObject != null) {}
-    for (localObject = ((TroopManager)localObject).b(paramString);; localObject = null)
-    {
-      if (localObject != null) {}
-      for (localObject = "" + ((TroopInfo)localObject).dwGroupClassExt;; localObject = "")
-      {
-        ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X8009E24", "0X8009E24", 0, 0, "", "", "" + (String)localObject, "");
-        return;
-      }
+    if (localObject != null) {
+      localObject = ((TroopManager)localObject).b(paramString);
+    } else {
+      localObject = null;
     }
+    if (localObject != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(((TroopInfo)localObject).dwGroupClassExt);
+      localObject = localStringBuilder.toString();
+    }
+    else
+    {
+      localObject = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append((String)localObject);
+    ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X8009E24", "0X8009E24", 0, 0, "", "", localStringBuilder.toString(), "");
   }
   
   void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, List<PluginData> paramList, int paramInt2)
@@ -444,34 +345,36 @@ public class PlusPanelViewModel
     if (QLog.isColorLevel()) {
       QLog.d("PlusPanelViewModel", 2, new Object[] { "onPlusPanelPageExpose", "Page ", Integer.valueOf(paramInt2), " Stack: ", FeedUtils.a(5) });
     }
-    paramList = paramList.iterator();
-    label316:
-    while (paramList.hasNext())
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      PluginData localPluginData = (PluginData)paramList.next();
-      a(paramQQAppInterface, paramInt1, paramString, localPluginData);
-      switch (localPluginData.jdField_b_of_type_Int)
+      paramList = (PluginData)localIterator.next();
+      a(paramQQAppInterface, paramInt1, paramString, paramList);
+      switch (paramList.jdField_b_of_type_Int)
       {
       }
       for (;;)
       {
-        if (localPluginData.jdField_b_of_type_Int != 209) {
-          break label316;
-        }
-        ReportController.b(null, "dc00898", "", "", "0X800A11F", "0X800A11F", 0, 0, "", "", "", "");
         break;
-        TroopReportor.a(paramQQAppInterface, paramString, "Grp_chain", "ChainEntry_Show");
-        continue;
         TroopReportor.a(paramQQAppInterface, paramString, "MassMessage", "grpapp_Show");
+        continue;
+        TroopReportor.a(paramQQAppInterface, paramString, "Grp_chain", "ChainEntry_Show");
         continue;
         a(paramQQAppInterface, paramString);
         ReportController.b(paramQQAppInterface, "dc00898", "", paramString, "0X8009FCC", "0X8009FCC", 0, 0, "", "", "", "");
-        continue;
-        ApolloDtReportUtil.a("aio", "plus_panel", "expose", new ApolloDtReportUtil.DtReportParamsBuilder().a(ApolloDtReportUtil.a(paramQQAppInterface)).b(ApolloDtReportUtil.a(paramInt1)).b(paramString).a());
+        for (;;)
+        {
+          break;
+          IApolloDtReportHelper localIApolloDtReportHelper = (IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class);
+          localIApolloDtReportHelper.report("aio", "plus_panel", "expose", new DtReportParamsBuilder().a(localIApolloDtReportHelper.getApolloMode(paramQQAppInterface)).b(localIApolloDtReportHelper.getReportSessionType(paramInt1)).b(paramString).a());
+        }
+      }
+      if (paramList.jdField_b_of_type_Int == 209) {
+        ReportController.b(null, "dc00898", "", "", "0X800A11F", "0X800A11F", 0, 0, "", "", "", "");
       }
     }
     if (paramInt2 == this.jdField_b_of_type_Int) {
-      TroopGiftPanel.b(paramInt2, this.jdField_a_of_type_Int);
+      TroopGiftPanel.a(paramInt2, this.jdField_a_of_type_Int);
     }
   }
   
@@ -527,25 +430,27 @@ public class PlusPanelViewModel
   
   public void b(BaseChatPie paramBaseChatPie, boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       if (this.jdField_a_of_type_Boolean) {
-        ((TroopChatPie)paramBaseChatPie).bw();
+        ((TroopChatPie)paramBaseChatPie).aC();
+      } else {
+        return;
       }
     }
-    else
+    if (this.jdField_b_of_type_Boolean)
     {
-      if (!this.jdField_b_of_type_Boolean) {
-        break label32;
-      }
-      if (!QLog.isColorLevel()) {}
+      QLog.isColorLevel();
+      return;
     }
-    return;
-    label32:
     this.jdField_a_of_type_Boolean = false;
     String str = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if ((((TroopManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(str).dwGroupFlagExt3 & 0x2000) == 0L) {}
-    for (int i = 1; i == 0; i = 0)
+    int i;
+    if ((((TroopManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(str).dwGroupFlagExt3 & 0x2000) == 0L) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
     {
       QQToast.a(paramBaseChatPie.a(), TroopConfessUtil.jdField_a_of_type_JavaLangString, 0).a();
       return;
@@ -596,7 +501,7 @@ public class PlusPanelViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel
  * JD-Core Version:    0.7.0.1
  */

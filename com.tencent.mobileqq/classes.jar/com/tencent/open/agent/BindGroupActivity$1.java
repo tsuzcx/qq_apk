@@ -14,17 +14,12 @@ class BindGroupActivity$1
   {
     int j = this.this$0.a.getChildCount();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      BindGroupActivity.ViewHolder localViewHolder = (BindGroupActivity.ViewHolder)this.this$0.a.getChildAt(i).getTag();
+      if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.jdField_a_of_type_JavaLangString)))
       {
-        BindGroupActivity.ViewHolder localViewHolder = (BindGroupActivity.ViewHolder)this.this$0.a.getChildAt(i).getTag();
-        if ((localViewHolder != null) && (this.jdField_a_of_type_JavaLangString.equals(localViewHolder.jdField_a_of_type_JavaLangString))) {
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-      }
-      else
-      {
+        localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
         return;
       }
       i += 1;
@@ -33,7 +28,7 @@ class BindGroupActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupActivity.1
  * JD-Core Version:    0.7.0.1
  */

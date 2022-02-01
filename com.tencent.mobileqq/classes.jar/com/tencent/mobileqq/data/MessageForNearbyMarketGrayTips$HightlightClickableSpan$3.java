@@ -9,16 +9,21 @@ class MessageForNearbyMarketGrayTips$HightlightClickableSpan$3
   
   public void run()
   {
-    String str = this.this$0.a(MessageForNearbyMarketGrayTips.HightlightClickableSpan.a(this.this$0), true);
-    this.this$0.c(str);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE. from file. FaceScoreWording=" + str);
+    Object localObject = this.this$0;
+    localObject = ((MessageForNearbyMarketGrayTips.HightlightClickableSpan)localObject).a(MessageForNearbyMarketGrayTips.HightlightClickableSpan.a((MessageForNearbyMarketGrayTips.HightlightClickableSpan)localObject), true);
+    this.this$0.c((String)localObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ACTION_AUTO_INPUT_FACE_SCORE. from file. FaceScoreWording=");
+      localStringBuilder.append((String)localObject);
+      QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips.HightlightClickableSpan.3
  * JD-Core Version:    0.7.0.1
  */

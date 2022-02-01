@@ -30,13 +30,14 @@ public final class OperatorSampleWithTime<T>
     paramSubscriber.add(localWorker);
     localObject = new OperatorSampleWithTime.SamplerSubscriber((Subscriber)localObject);
     paramSubscriber.add((Subscription)localObject);
-    localWorker.schedulePeriodically((Action0)localObject, this.time, this.time, this.unit);
+    long l = this.time;
+    localWorker.schedulePeriodically((Action0)localObject, l, l, this.unit);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorSampleWithTime
  * JD-Core Version:    0.7.0.1
  */

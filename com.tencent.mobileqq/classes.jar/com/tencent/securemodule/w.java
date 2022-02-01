@@ -54,24 +54,36 @@ public class w
         AppInfo localAppInfo = (AppInfo)this.b.get(Long.valueOf(localf.a));
         if (localAppInfo != null)
         {
-          if ((localf.b == 9) || ((localf.d & 0x200) == 512)) {
-            localAppInfo.safeType = 4;
-          }
-          for (;;)
+          int i;
+          if ((localf.b != 9) && ((localf.d & 0x200) != 512))
           {
-            localAppInfo.safeLevel = localf.c;
-            localAppInfo.isOfficial = localf.e;
-            localArrayList.add(localAppInfo);
-            ax.a("CloudScan", "find VIRUS ! " + localf.a + " type = " + localf.b + " name = " + localAppInfo.softName + " safeLevel = " + localf.c + " category = " + localf.d);
-            break;
             if (localf.c == 1) {
-              localAppInfo.safeType = 2;
+              i = 2;
             } else if (localf.b == 10) {
-              localAppInfo.safeType = 3;
+              i = 3;
             } else {
-              localAppInfo.safeType = 5;
+              i = 5;
             }
           }
+          else {
+            i = 4;
+          }
+          localAppInfo.safeType = i;
+          localAppInfo.safeLevel = localf.c;
+          localAppInfo.isOfficial = localf.e;
+          localArrayList.add(localAppInfo);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("find VIRUS ! ");
+          localStringBuilder.append(localf.a);
+          localStringBuilder.append(" type = ");
+          localStringBuilder.append(localf.b);
+          localStringBuilder.append(" name = ");
+          localStringBuilder.append(localAppInfo.softName);
+          localStringBuilder.append(" safeLevel = ");
+          localStringBuilder.append(localf.c);
+          localStringBuilder.append(" category = ");
+          localStringBuilder.append(localf.d);
+          ax.a("CloudScan", localStringBuilder.toString());
         }
       }
     }
@@ -91,7 +103,18 @@ public class w
         if (localAppInfo != null)
         {
           localArrayList.add(localAppInfo);
-          ax.a("CloudScan", "find VIRUS ! " + localf.a + " type = " + localf.b + " name = " + localAppInfo.softName + " safeLevel = " + localf.c + " category = " + localf.d);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("find VIRUS ! ");
+          localStringBuilder.append(localf.a);
+          localStringBuilder.append(" type = ");
+          localStringBuilder.append(localf.b);
+          localStringBuilder.append(" name = ");
+          localStringBuilder.append(localAppInfo.softName);
+          localStringBuilder.append(" safeLevel = ");
+          localStringBuilder.append(localf.c);
+          localStringBuilder.append(" category = ");
+          localStringBuilder.append(localf.d);
+          ax.a("CloudScan", localStringBuilder.toString());
         }
       }
     }
@@ -105,28 +128,46 @@ public class w
     while (paramArrayList.hasNext())
     {
       f localf = (f)paramArrayList.next();
-      ax.b("CloudScan", "collectDetailFeatureList app key =" + localf.a + " type = " + localf.b + " safeLevel = " + localf.c + " category = " + localf.d + " official = " + localf.e);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("collectDetailFeatureList app key =");
+      ((StringBuilder)localObject1).append(localf.a);
+      ((StringBuilder)localObject1).append(" type = ");
+      ((StringBuilder)localObject1).append(localf.b);
+      ((StringBuilder)localObject1).append(" safeLevel = ");
+      ((StringBuilder)localObject1).append(localf.c);
+      ((StringBuilder)localObject1).append(" category = ");
+      ((StringBuilder)localObject1).append(localf.d);
+      ((StringBuilder)localObject1).append(" official = ");
+      ((StringBuilder)localObject1).append(localf.e);
+      ax.b("CloudScan", ((StringBuilder)localObject1).toString());
       if (localf.b == 6)
       {
-        AppInfo localAppInfo = (AppInfo)this.b.get(Long.valueOf(localf.a));
-        if (localAppInfo != null)
+        localObject1 = (AppInfo)this.b.get(Long.valueOf(localf.a));
+        if (localObject1 != null)
         {
-          g localg = new g();
-          localg.a = az.a(localAppInfo.getPkgName());
-          localg.b = az.a(localAppInfo.getCertMd5());
-          localg.c = ((int)localAppInfo.getFileSize());
-          if (localAppInfo.getAppType() == 1) {}
-          for (boolean bool = true;; bool = false)
-          {
-            localg.g = bool;
-            localg.f = az.a(localAppInfo.getSoftName());
-            localg.d = az.a(localAppInfo.getVersionName());
-            localg.e = localAppInfo.getVersionCode();
-            localg.h = as.a(localAppInfo.apkPath);
-            localArrayList.add(localg);
-            ax.b("CloudScan", "detailFeatureList add app key =" + localf.a + " type = " + localf.b + " pkg =" + localAppInfo.getPkgName());
-            break;
+          Object localObject2 = new g();
+          ((g)localObject2).a = az.a(((AppInfo)localObject1).getPkgName());
+          ((g)localObject2).b = az.a(((AppInfo)localObject1).getCertMd5());
+          ((g)localObject2).c = ((int)((AppInfo)localObject1).getFileSize());
+          int i = ((AppInfo)localObject1).getAppType();
+          boolean bool = true;
+          if (i != 1) {
+            bool = false;
           }
+          ((g)localObject2).g = bool;
+          ((g)localObject2).f = az.a(((AppInfo)localObject1).getSoftName());
+          ((g)localObject2).d = az.a(((AppInfo)localObject1).getVersionName());
+          ((g)localObject2).e = ((AppInfo)localObject1).getVersionCode();
+          ((g)localObject2).h = as.a(((AppInfo)localObject1).apkPath);
+          localArrayList.add(localObject2);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("detailFeatureList add app key =");
+          ((StringBuilder)localObject2).append(localf.a);
+          ((StringBuilder)localObject2).append(" type = ");
+          ((StringBuilder)localObject2).append(localf.b);
+          ((StringBuilder)localObject2).append(" pkg =");
+          ((StringBuilder)localObject2).append(((AppInfo)localObject1).getPkgName());
+          ax.b("CloudScan", ((StringBuilder)localObject2).toString());
         }
       }
     }
@@ -136,80 +177,98 @@ public class w
   public void a(y paramy)
   {
     if (paramy != null) {}
-    for (;;)
+    try
     {
-      long l1;
-      ArrayList localArrayList;
-      Object localObject2;
-      try
+      paramy.a();
+      long l1 = System.currentTimeMillis();
+      this.b = a(as.a(this.a, true));
+      Object localObject2 = new ArrayList();
+      Object localObject1 = this.b.entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        paramy.a();
-        l1 = System.currentTimeMillis();
-        this.b = a(as.a(this.a, true));
-        localArrayList = new ArrayList();
-        localObject1 = this.b.entrySet().iterator();
-        if (((Iterator)localObject1).hasNext())
+        localObject3 = (Map.Entry)((Iterator)localObject1).next();
+        AppInfo localAppInfo = (AppInfo)((Map.Entry)localObject3).getValue();
+        boolean bool2 = false;
+        boolean bool1 = bool2;
+        if (localAppInfo != null)
         {
-          localObject2 = (Map.Entry)((Iterator)localObject1).next();
-          AppInfo localAppInfo = (AppInfo)((Map.Entry)localObject2).getValue();
-          if ((localAppInfo == null) || (localAppInfo.getAppType() != 1)) {
-            break label410;
+          bool1 = bool2;
+          if (localAppInfo.getAppType() == 1) {
+            bool1 = true;
           }
-          bool = true;
-          localArrayList.add(new d(((Long)((Map.Entry)localObject2).getKey()).longValue(), bool));
-          continue;
         }
-        localObject2 = new ArrayList();
+        ((ArrayList)localObject2).add(new d(((Long)((Map.Entry)localObject3).getKey()).longValue(), bool1));
       }
-      finally {}
-      Object localObject1 = new ArrayList();
-      int i = ah.a(this.a).a(localArrayList, (ArrayList)localObject2);
+      Object localObject3 = new ArrayList();
+      localObject1 = new ArrayList();
+      int i = ah.a(this.a).a((ArrayList)localObject2, (ArrayList)localObject3);
       if (i == 0)
       {
-        ax.b("CloudScan", "tinyCloudCheck finish,CloudResult size:" + ((ArrayList)localObject2).size());
-        localObject1 = a((ArrayList)localObject2);
-        localArrayList = d((ArrayList)localObject2);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("tinyCloudCheck finish,CloudResult size:");
+        ((StringBuilder)localObject1).append(((ArrayList)localObject3).size());
+        ax.b("CloudScan", ((StringBuilder)localObject1).toString());
+        localObject1 = a((ArrayList)localObject3);
+        localObject3 = d((ArrayList)localObject3);
         localObject2 = new ArrayList();
-        i = ah.a(this.a).b(localArrayList, (ArrayList)localObject2);
-        if (i == 0) {
-          ax.b("CloudScanEngine", "cloudCheck result: size " + ((ArrayList)localObject2).size() + "\n" + ((ArrayList)localObject2).toString());
+        i = ah.a(this.a).b((ArrayList)localObject3, (ArrayList)localObject2);
+        if (i == 0)
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("cloudCheck result: size ");
+          ((StringBuilder)localObject3).append(((ArrayList)localObject2).size());
+          ((StringBuilder)localObject3).append("\n");
+          ((StringBuilder)localObject3).append(((ArrayList)localObject2).toString());
+          ax.b("CloudScanEngine", ((StringBuilder)localObject3).toString());
+        }
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("cloud scan error ");
+          ((StringBuilder)localObject2).append(i);
         }
       }
-      for (;;)
+      else
       {
-        long l2 = System.currentTimeMillis();
-        l1 = 5000L - (l2 - l1);
-        if (l1 > 0L) {}
-        try
+        for (localObject2 = ((StringBuilder)localObject2).toString();; localObject2 = ((StringBuilder)localObject2).toString())
         {
-          Thread.sleep(l1);
-          if (paramy != null) {
-            paramy.a((ArrayList)localObject1);
-          }
-          return;
-          ax.a("CloudScanEngine", "cloud scan error " + i);
-          continue;
+          ax.a("CloudScanEngine", localObject2);
+          break;
           if (paramy != null) {
             paramy.a(i);
           }
-          ax.a("CloudScanEngine", "cloud scan error " + i);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("cloud scan error ");
+          ((StringBuilder)localObject2).append(i);
+        }
+      }
+      long l2 = System.currentTimeMillis();
+      l1 = 5000L - (l2 - l1);
+      if (l1 > 0L) {
+        try
+        {
+          Thread.sleep(l1);
         }
         catch (InterruptedException localInterruptedException)
         {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
+          localInterruptedException.printStackTrace();
         }
       }
-      label410:
-      boolean bool = false;
+      if (paramy != null) {
+        paramy.a((ArrayList)localObject1);
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramy;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.w
  * JD-Core Version:    0.7.0.1
  */

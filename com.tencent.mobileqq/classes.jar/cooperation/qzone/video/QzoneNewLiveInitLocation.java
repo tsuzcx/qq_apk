@@ -93,40 +93,46 @@ class QzoneNewLiveInitLocation
     long l1 = System.currentTimeMillis();
     long l2 = mLocationStartTime;
     QzoneLbsReporter.reportLocationResult(paramInt, this.mBusinessId, l1 - l2);
-    if ((this.mHandler == null) || (paramSosoLbsInfo == null)) {
-      return;
-    }
-    Message localMessage = this.mHandler.obtainMessage(1);
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("key_initlocation_success", false);
-    if (paramInt == 0)
+    Object localObject1 = this.mHandler;
+    if (localObject1 != null)
     {
-      SosoLocation localSosoLocation = paramSosoLbsInfo.mLocation;
-      paramSosoLbsInfo = getGpsFromSoso(paramSosoLbsInfo.mLocation);
-      if ((localSosoLocation != null) && (paramSosoLbsInfo != null) && (!TextUtils.isEmpty(localSosoLocation.city)) && (!localSosoLocation.city.equalsIgnoreCase("unknown")))
-      {
-        localBundle.putBoolean("key_initlocation_success", true);
-        localBundle.putString("key_select_poi_name", localSosoLocation.city.trim());
-        localBundle.putString("key_select_poi_default_name", localSosoLocation.name);
-        localBundle.putInt("key_select_latitude", paramSosoLbsInfo.lat);
-        localBundle.putInt("key_select_longtitude", paramSosoLbsInfo.lon);
-        localBundle.putInt("key_select_altitude", paramSosoLbsInfo.alt);
-        localBundle.putInt("key_select_gpstype", paramSosoLbsInfo.gpsType);
-        QLog.i("QzoneNewLiveInitLocation", 1, "[QZLIVE_LBS_MODULE]#onGetDeviceData succeed! just location--->" + paramSosoLbsInfo);
+      if (paramSosoLbsInfo == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      localMessage.obj = localBundle;
-      this.mHandler.sendMessage(localMessage);
-      return;
-      QLog.e("QzoneNewLiveInitLocation", 1, "[QZLIVE_LBS_MODULE]location failed: error in force gps info update..");
+      localObject1 = ((Handler)localObject1).obtainMessage(1);
+      Bundle localBundle = new Bundle();
+      localBundle.putBoolean("key_initlocation_success", false);
+      if (paramInt == 0)
+      {
+        Object localObject2 = paramSosoLbsInfo.mLocation;
+        paramSosoLbsInfo = getGpsFromSoso(paramSosoLbsInfo.mLocation);
+        if ((localObject2 != null) && (paramSosoLbsInfo != null) && (!TextUtils.isEmpty(((SosoLocation)localObject2).city)) && (!((SosoLocation)localObject2).city.equalsIgnoreCase("unknown")))
+        {
+          localBundle.putBoolean("key_initlocation_success", true);
+          localBundle.putString("key_select_poi_name", ((SosoLocation)localObject2).city.trim());
+          localBundle.putString("key_select_poi_default_name", ((SosoLocation)localObject2).name);
+          localBundle.putInt("key_select_latitude", paramSosoLbsInfo.lat);
+          localBundle.putInt("key_select_longtitude", paramSosoLbsInfo.lon);
+          localBundle.putInt("key_select_altitude", paramSosoLbsInfo.alt);
+          localBundle.putInt("key_select_gpstype", paramSosoLbsInfo.gpsType);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[QZLIVE_LBS_MODULE]#onGetDeviceData succeed! just location--->");
+          ((StringBuilder)localObject2).append(paramSosoLbsInfo);
+          QLog.i("QzoneNewLiveInitLocation", 1, ((StringBuilder)localObject2).toString());
+        }
+      }
+      else
+      {
+        QLog.e("QzoneNewLiveInitLocation", 1, "[QZLIVE_LBS_MODULE]location failed: error in force gps info update..");
+      }
+      ((Message)localObject1).obj = localBundle;
+      this.mHandler.sendMessage((Message)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.video.QzoneNewLiveInitLocation
  * JD-Core Version:    0.7.0.1
  */

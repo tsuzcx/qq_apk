@@ -1,6 +1,7 @@
 package cooperation.ilive.lite.event;
 
 import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -13,14 +14,15 @@ public class IliveLiteEventCenter
   
   public static IliveLiteEventCenter a()
   {
-    if (jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter == null) {
-        jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter = new IliveLiteEventCenter();
+    if (jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter == null) {
+          jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter = new IliveLiteEventCenter();
+        }
       }
-      return jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter;
     }
+    return jdField_a_of_type_CooperationIliveLiteEventIliveLiteEventCenter;
   }
   
   public void a(IliveLiteEventCenter.Observer paramObserver)
@@ -36,20 +38,37 @@ public class IliveLiteEventCenter
   
   public boolean a(String paramString, Bundle paramBundle)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
+    boolean bool2 = false;
+    boolean bool1 = false;
+    try
     {
-      if (!((IliveLiteEventCenter.Observer)localIterator.next()).onCall(paramString, paramBundle)) {
-        break label50;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      boolean bool3;
+      for (;;)
+      {
+        bool2 = bool1;
+        bool3 = bool1;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        bool2 = bool1;
+        IliveLiteEventCenter.Observer localObserver = (IliveLiteEventCenter.Observer)localIterator.next();
+        if (localObserver != null)
+        {
+          bool2 = bool1;
+          bool3 = localObserver.onCall(paramString, paramBundle);
+          if (bool3) {
+            bool1 = true;
+          }
+        }
       }
-      bool = true;
+      return bool3;
     }
-    label50:
-    for (;;)
+    catch (Throwable paramString)
     {
-      break;
-      return bool;
+      paramString.printStackTrace();
+      QLog.e("IliveLiteEventCenter", 1, "call error", paramString);
+      bool3 = bool2;
     }
   }
   
@@ -64,7 +83,7 @@ public class IliveLiteEventCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.lite.event.IliveLiteEventCenter
  * JD-Core Version:    0.7.0.1
  */

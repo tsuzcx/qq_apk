@@ -1,32 +1,30 @@
 package com.tencent.tavcut.session;
 
 import android.util.SparseArray;
-import com.tencent.tavcut.view.TAVCutImageView;
+import com.tencent.tavcut.util.DurationUtil;
 import com.tencent.weseevideo.editor.sticker.StickerController;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.effect.MediaEffectModel;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 
 class TAVCutImageSession$4
   implements Runnable
 {
-  TAVCutImageSession$4(TAVCutImageSession paramTAVCutImageSession, int paramInt, StickerController paramStickerController) {}
+  TAVCutImageSession$4(TAVCutImageSession paramTAVCutImageSession, int paramInt) {}
   
   public void run()
   {
-    ((StickerController)this.this$0.stickerControllers.get(this.val$index)).resignCurrentSticker();
-    TAVCutImageView localTAVCutImageView = (TAVCutImageView)((WeakReference)TAVCutImageSession.access$200(this.this$0).get(this.val$index)).get();
-    if (localTAVCutImageView != null) {
-      ((StickerController)this.this$0.stickerControllers.get(this.val$index)).setStickerContainer(localTAVCutImageView);
+    DurationUtil.start("releaseTAVCutImageView");
+    TAVCutImageSession.access$400(this.this$0).remove(this.val$index);
+    if (this.this$0.stickerControllers.get(this.val$index) != null)
+    {
+      ((StickerController)this.this$0.stickerControllers.get(this.val$index)).destroy();
+      this.this$0.stickerControllers.remove(this.val$index);
     }
-    this.val$finalStickerController.restoreSticker(new ArrayList(((MediaModel)this.this$0.mediaModels.get(this.val$index)).getMediaEffectModel().getStickerModelList()));
+    TAVCutImageSession.access$500(this.this$0, this.val$index, false);
+    DurationUtil.end("releaseTAVCutImageView");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutImageSession.4
  * JD-Core Version:    0.7.0.1
  */

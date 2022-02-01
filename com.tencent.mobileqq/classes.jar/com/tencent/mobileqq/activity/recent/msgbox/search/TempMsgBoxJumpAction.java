@@ -5,11 +5,11 @@ import android.content.Intent;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.parser.JumpActionBase;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
 
 public class TempMsgBoxJumpAction
-  extends JumpActionBase
+  extends JumpAction
 {
   public TempMsgBoxJumpAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
@@ -34,7 +34,7 @@ public class TempMsgBoxJumpAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.search.TempMsgBoxJumpAction
  * JD-Core Version:    0.7.0.1
  */

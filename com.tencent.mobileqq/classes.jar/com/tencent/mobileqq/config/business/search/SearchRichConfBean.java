@@ -25,20 +25,26 @@ public class SearchRichConfBean
   
   public static SearchRichConfBean a(QConfItem paramQConfItem)
   {
-    int i = 0;
     SearchRichConfBean localSearchRichConfBean = new SearchRichConfBean();
+    Object localObject;
     if (paramQConfItem != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchRichConfBean", 2, "parse taskid->" + paramQConfItem.jdField_a_of_type_Int + " content->" + paramQConfItem.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parse taskid->");
+        ((StringBuilder)localObject).append(paramQConfItem.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(" content->");
+        ((StringBuilder)localObject).append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        QLog.d("SearchRichConfBean", 2, ((StringBuilder)localObject).toString());
       }
     }
     for (;;)
     {
-      ArrayList localArrayList1;
-      ArrayList localArrayList2;
+      int i;
       try
       {
         paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString);
+        i = 0;
         int j = paramQConfItem.optInt("switch", 0);
         int k = paramQConfItem.optInt("ftsEnableMsgSwitch", 1);
         int m = paramQConfItem.optInt("showMessageResult", 1);
@@ -54,49 +60,58 @@ public class SearchRichConfBean
         paramQConfItem = paramQConfItem.optJSONArray("templateinfo");
         if (paramQConfItem != null)
         {
-          localArrayList1 = new ArrayList(10);
-          localArrayList2 = new ArrayList(10);
+          localObject = new ArrayList(10);
+          ArrayList localArrayList = new ArrayList(10);
           j = paramQConfItem.length();
-          if (i >= j) {
-            break label375;
+          if (i < j)
+          {
+            JSONObject localJSONObject = paramQConfItem.optJSONObject(i);
+            if (localJSONObject == null) {
+              break label422;
+            }
+            SearchRichConfBean.RichBaseTemplate localRichBaseTemplate = new SearchRichConfBean.RichBaseTemplate();
+            localRichBaseTemplate.jdField_a_of_type_Int = localJSONObject.optInt("templateid");
+            localRichBaseTemplate.jdField_a_of_type_JavaLangString = localJSONObject.optString("templatetype");
+            localRichBaseTemplate.c = localJSONObject.optString("templatever");
+            localRichBaseTemplate.b = localJSONObject.optString("templatename");
+            localRichBaseTemplate.d = localJSONObject.optString("templateview");
+            if ("ark".equals(localRichBaseTemplate.jdField_a_of_type_JavaLangString))
+            {
+              ((ArrayList)localObject).add(localRichBaseTemplate);
+              break label422;
+            }
+            if (!"native".equals(localRichBaseTemplate.jdField_a_of_type_JavaLangString)) {
+              break label422;
+            }
+            localArrayList.add(localRichBaseTemplate);
+            break label422;
           }
-          JSONObject localJSONObject = paramQConfItem.optJSONObject(i);
-          if (localJSONObject == null) {
-            break label396;
-          }
-          SearchRichConfBean.RichBaseTemplate localRichBaseTemplate = new SearchRichConfBean.RichBaseTemplate();
-          localRichBaseTemplate.jdField_a_of_type_Int = localJSONObject.optInt("templateid");
-          localRichBaseTemplate.jdField_a_of_type_JavaLangString = localJSONObject.optString("templatetype");
-          localRichBaseTemplate.c = localJSONObject.optString("templatever");
-          localRichBaseTemplate.b = localJSONObject.optString("templatename");
-          localRichBaseTemplate.d = localJSONObject.optString("templateview");
-          if ("ark".equals(localRichBaseTemplate.jdField_a_of_type_JavaLangString)) {
-            localArrayList1.add(localRichBaseTemplate);
-          } else if ("native".equals(localRichBaseTemplate.jdField_a_of_type_JavaLangString)) {
-            localArrayList2.add(localRichBaseTemplate);
-          }
+          localSearchRichConfBean.a("ark", (ArrayList)localObject);
+          localSearchRichConfBean.a("native", localArrayList);
+          return localSearchRichConfBean;
         }
       }
       catch (Exception paramQConfItem)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("SearchRichConfBean", 2, "parse error->" + paramQConfItem.toString());
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("parse error->");
+          ((StringBuilder)localObject).append(paramQConfItem.toString());
+          QLog.d("SearchRichConfBean", 2, ((StringBuilder)localObject).toString());
         }
       }
       return localSearchRichConfBean;
-      label375:
-      localSearchRichConfBean.a("ark", localArrayList1);
-      localSearchRichConfBean.a("native", localArrayList2);
-      return localSearchRichConfBean;
-      label396:
+      label422:
       i += 1;
     }
   }
   
   public ArrayList<SearchRichConfBean.RichBaseTemplate> a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap != null) {
-      return (ArrayList)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
+    ArrayMap localArrayMap = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+    if (localArrayMap != null) {
+      return (ArrayList)localArrayMap.get(paramString);
     }
     return null;
   }
@@ -108,8 +123,9 @@ public class SearchRichConfBean
   
   void a(String paramString, ArrayList<SearchRichConfBean.RichBaseTemplate> paramArrayList)
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4UtilArrayMap != null) && (paramString != null)) {
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString, paramArrayList);
+    ArrayMap localArrayMap = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+    if ((localArrayMap != null) && (paramString != null)) {
+      localArrayMap.put(paramString, paramArrayList);
     }
   }
   
@@ -156,15 +172,18 @@ public class SearchRichConfBean
   public String toString()
   {
     int i = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap != null) {}
-    for (String str = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.toString();; str = "null") {
-      return String.format("mRichSwitch:%d  templateData:%s", new Object[] { Integer.valueOf(i), str });
+    Object localObject = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+    if (localObject != null) {
+      localObject = ((ArrayMap)localObject).toString();
+    } else {
+      localObject = "null";
     }
+    return String.format("mRichSwitch:%d  templateData:%s", new Object[] { Integer.valueOf(i), localObject });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.SearchRichConfBean
  * JD-Core Version:    0.7.0.1
  */

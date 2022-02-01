@@ -15,6 +15,7 @@ import com.tencent.mobileqq.app.face.util.FaceUtil;
 import com.tencent.mobileqq.avatar.api.IQQAvatarManagerService;
 import com.tencent.mobileqq.avatar.api.impl.QQAvatarManagerServiceImpl;
 import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -63,64 +64,77 @@ public class FaceHandler
   
   private void a()
   {
-    for (;;)
+    try
     {
-      int i;
-      try
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+      Enumeration localEnumeration = this.jdField_a_of_type_JavaUtilHashtable.keys();
+      while (localEnumeration.hasMoreElements())
       {
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-        Enumeration localEnumeration = this.jdField_a_of_type_JavaUtilHashtable.keys();
-        if (!localEnumeration.hasMoreElements()) {
-          break;
-        }
-        i = ((Integer)localEnumeration.nextElement()).intValue();
-        ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashtable.get(Integer.valueOf(i));
-        if ((i == 200) || (i == 202))
+        int i = ((Integer)localEnumeration.nextElement()).intValue();
+        Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashtable.get(Integer.valueOf(i));
+        if ((i != 200) && (i != 202))
         {
-          a(i, localArrayList);
-          continue;
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("checkWaitingRequests,key =");
+            ((StringBuilder)localObject2).append(i);
+            QLog.d("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject2).toString());
+          }
         }
-        if (!QLog.isColorLevel()) {
-          continue;
+        else {
+          a(i, (ArrayList)localObject2);
         }
       }
-      finally {}
-      QLog.d("Q.qqhead.FaceHandler", 2, "checkWaitingRequests,key =" + i);
+      this.jdField_a_of_type_JavaUtilHashtable.clear();
+      return;
     }
-    this.jdField_a_of_type_JavaUtilHashtable.clear();
+    finally {}
+    for (;;)
+    {
+      throw localObject1;
+    }
   }
   
   private void a(int paramInt, ArrayList<FaceInfo> paramArrayList)
   {
+    boolean bool = QLog.isColorLevel();
     int k = 0;
     Object localObject1;
-    Object localObject2;
-    if (QLog.isColorLevel())
+    int i;
+    if (bool)
     {
       localObject1 = new StringBuilder();
-      localObject2 = ((StringBuilder)localObject1).append("realGetStrangerFace").append(", size=");
-      if (paramArrayList != null) {}
-      for (i = paramArrayList.size();; i = 0)
+      ((StringBuilder)localObject1).append("realGetStrangerFace");
+      ((StringBuilder)localObject1).append(", size=");
+      if (paramArrayList != null) {
+        i = paramArrayList.size();
+      } else {
+        i = 0;
+      }
+      ((StringBuilder)localObject1).append(i);
+      if (paramArrayList != null)
       {
-        ((StringBuilder)localObject2).append(i);
-        if (paramArrayList == null) {
-          break;
-        }
         i = 0;
         while (i < paramArrayList.size())
         {
-          ((StringBuilder)localObject1).append(',').append(paramArrayList.get(i));
+          ((StringBuilder)localObject1).append(',');
+          ((StringBuilder)localObject1).append(paramArrayList.get(i));
           i += 1;
         }
       }
       QLog.i("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return;
-    }
-    if (paramInt == 202) {}
-    for (int i = 1;; i = 0)
+    if (paramArrayList != null)
     {
+      if (paramArrayList.size() == 0) {
+        return;
+      }
+      if (paramInt == 202) {
+        i = 1;
+      } else {
+        i = 0;
+      }
       localObject1 = new MultiHeadUrl.MultiBusidUrlReq();
       ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUidType.set(0);
       ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
@@ -128,52 +142,75 @@ public class FaceHandler
       ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.add(Integer.valueOf(32));
       ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUidType.set(i);
       int j = 0;
-      if (j < paramArrayList.size())
+      Object localObject3;
+      while (j < paramArrayList.size())
       {
         localObject2 = (FaceInfo)paramArrayList.get(j);
-        MultiHeadUrl.ReqUsrInfo localReqUsrInfo = new MultiHeadUrl.ReqUsrInfo();
+        localObject3 = new MultiHeadUrl.ReqUsrInfo();
         if (i == 0) {}
-        for (;;)
+        try
         {
-          try
+          ((MultiHeadUrl.ReqUsrInfo)localObject3).dstUin.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
+          if (i == 1)
           {
-            localReqUsrInfo.dstUin.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
-            ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrInfos.add(localReqUsrInfo);
+            ((MultiHeadUrl.ReqUsrInfo)localObject3).dstTid.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
+            ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrInfos.add((MessageMicro)localObject3);
             ((FaceInfo)localObject2).a(FaceInfo.l);
           }
-          catch (Exception localException)
-          {
-            continue;
-          }
-          j += 1;
-          break;
-          if (i == 1) {
-            localReqUsrInfo.dstTid.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
-          }
         }
+        catch (Exception localException)
+        {
+          label300:
+          break label300;
+        }
+        j += 1;
       }
       if (QLog.isColorLevel())
       {
+        localObject2 = new StringBuilder();
         localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("QQHead_Stranger request.srcUidType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUidType.get()).append(";srcUin=" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()).append("\n\n").append(";dstUsrType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.get()).append(";dstUidType=" + ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUidType.get()).append("\n\n").append(";uinset={");
+        ((StringBuilder)localObject3).append("QQHead_Stranger request.srcUidType=");
+        ((StringBuilder)localObject3).append(((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUidType.get());
+        ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(";srcUin=");
+        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+        ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
+        ((StringBuilder)localObject2).append("\n\n");
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(";dstUsrType=");
+        ((StringBuilder)localObject3).append(((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.get());
+        ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(";dstUidType=");
+        ((StringBuilder)localObject3).append(((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUidType.get());
+        ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
+        ((StringBuilder)localObject2).append("\n\n");
+        ((StringBuilder)localObject2).append(";uinset={");
         if (paramArrayList != null)
         {
           i = k;
           while (i < paramArrayList.size())
           {
-            ((StringBuilder)localObject3).append(paramArrayList.get(i) + ",");
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(paramArrayList.get(i));
+            ((StringBuilder)localObject3).append(",");
+            ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
             i += 1;
           }
         }
-        ((StringBuilder)localObject3).append("}");
-        QLog.i("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject3).toString());
+        ((StringBuilder)localObject2).append("}");
+        QLog.i("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject2).toString());
       }
-      Object localObject3 = createToServiceMsg("MultibusidURLSvr.HeadUrlReq", null);
-      ((ToServiceMsg)localObject3).extraData.putParcelableArrayList("list", paramArrayList);
-      ((ToServiceMsg)localObject3).extraData.putLong("startTime", System.currentTimeMillis());
-      ((ToServiceMsg)localObject3).extraData.putInt("idType", paramInt);
-      ((ToServiceMsg)localObject3).putWupBuffer(((MultiHeadUrl.MultiBusidUrlReq)localObject1).toByteArray());
-      sendPbReq((ToServiceMsg)localObject3);
+      Object localObject2 = createToServiceMsg("MultibusidURLSvr.HeadUrlReq", null);
+      ((ToServiceMsg)localObject2).extraData.putParcelableArrayList("list", paramArrayList);
+      ((ToServiceMsg)localObject2).extraData.putLong("startTime", System.currentTimeMillis());
+      ((ToServiceMsg)localObject2).extraData.putInt("idType", paramInt);
+      ((ToServiceMsg)localObject2).putWupBuffer(((MultiHeadUrl.MultiBusidUrlReq)localObject1).toByteArray());
+      sendPbReq((ToServiceMsg)localObject2);
+    }
+    else
+    {
       return;
     }
   }
@@ -182,28 +219,95 @@ public class FaceHandler
   {
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("start ====================================================================================\n\n");
-      localStringBuilder.append("QQHead_Stranger response.srcUidType=" + paramMultiBusidUrlRsp.srcUidType.get()).append(";srcUin=" + paramMultiBusidUrlRsp.srcUin.get()).append("\n\n").append(";srcTid=" + paramMultiBusidUrlRsp.srcTid.get()).append(";srcOpenid=" + paramMultiBusidUrlRsp.srcOpenid.get()).append("\n\n").append(";dstUidType=" + paramMultiBusidUrlRsp.dstUidType.get()).append(";result=" + paramMultiBusidUrlRsp.result.get()).append("\n\n");
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("start ====================================================================================\n\n");
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("QQHead_Stranger response.srcUidType=");
+      ((StringBuilder)localObject1).append(paramMultiBusidUrlRsp.srcUidType.get());
+      localStringBuilder1.append(((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(";srcUin=");
+      ((StringBuilder)localObject1).append(paramMultiBusidUrlRsp.srcUin.get());
+      localStringBuilder1.append(((StringBuilder)localObject1).toString());
+      localStringBuilder1.append("\n\n");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(";srcTid=");
+      ((StringBuilder)localObject1).append(paramMultiBusidUrlRsp.srcTid.get());
+      localStringBuilder1.append(((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(";srcOpenid=");
+      ((StringBuilder)localObject1).append(paramMultiBusidUrlRsp.srcOpenid.get());
+      localStringBuilder1.append(((StringBuilder)localObject1).toString());
+      localStringBuilder1.append("\n\n");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(";dstUidType=");
+      ((StringBuilder)localObject1).append(paramMultiBusidUrlRsp.dstUidType.get());
+      localStringBuilder1.append(((StringBuilder)localObject1).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(";result=");
+      ((StringBuilder)localObject1).append(paramMultiBusidUrlRsp.result.get());
+      localStringBuilder1.append(((StringBuilder)localObject1).toString());
+      localStringBuilder1.append("\n\n");
       paramMultiBusidUrlRsp = paramMultiBusidUrlRsp.dstUsrHeadInfos.get();
       if (paramMultiBusidUrlRsp != null)
       {
         paramMultiBusidUrlRsp = paramMultiBusidUrlRsp.iterator();
         while (paramMultiBusidUrlRsp.hasNext())
         {
-          Object localObject = (MultiHeadUrl.RspUsrHeadInfo)paramMultiBusidUrlRsp.next();
-          localStringBuilder.append("-------------------------------------------------------------------------------------\n\n");
-          localStringBuilder.append("RspUsrHeadInfo.dstUin=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject).dstUin.get()).append(";dstTid=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject).dstTid.get()).append(";dstOpenid=" + ((MultiHeadUrl.RspUsrHeadInfo)localObject).dstOpenid.get()).append("\n\n");
-          localObject = ((MultiHeadUrl.RspUsrHeadInfo)localObject).dstHeadInfos.get().iterator();
-          while (((Iterator)localObject).hasNext())
+          localObject1 = (MultiHeadUrl.RspUsrHeadInfo)paramMultiBusidUrlRsp.next();
+          localStringBuilder1.append("-------------------------------------------------------------------------------------\n\n");
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("RspUsrHeadInfo.dstUin=");
+          ((StringBuilder)localObject2).append(((MultiHeadUrl.RspUsrHeadInfo)localObject1).dstUin.get());
+          localStringBuilder1.append(((StringBuilder)localObject2).toString());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(";dstTid=");
+          ((StringBuilder)localObject2).append(((MultiHeadUrl.RspUsrHeadInfo)localObject1).dstTid.get());
+          localStringBuilder1.append(((StringBuilder)localObject2).toString());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(";dstOpenid=");
+          ((StringBuilder)localObject2).append(((MultiHeadUrl.RspUsrHeadInfo)localObject1).dstOpenid.get());
+          localStringBuilder1.append(((StringBuilder)localObject2).toString());
+          localStringBuilder1.append("\n\n");
+          localObject1 = ((MultiHeadUrl.RspUsrHeadInfo)localObject1).dstHeadInfos.get().iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            MultiHeadUrl.RspHeadInfo localRspHeadInfo = (MultiHeadUrl.RspHeadInfo)((Iterator)localObject).next();
-            localStringBuilder.append("RspHeadInfo.usrType=" + localRspHeadInfo.usrType.get()).append("\n\n").append(";faceType=" + localRspHeadInfo.faceType.get()).append("\n\n").append(";timestamp=" + localRspHeadInfo.timestamp.get()).append("\n\n").append(";faceFlag=" + localRspHeadInfo.faceFlag.get()).append("\n\n").append(";url=" + localRspHeadInfo.url.get()).append("\n\n").append(";sysid=" + localRspHeadInfo.sysid.get()).append("\n\n");
+            localObject2 = (MultiHeadUrl.RspHeadInfo)((Iterator)localObject1).next();
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("RspHeadInfo.usrType=");
+            localStringBuilder2.append(((MultiHeadUrl.RspHeadInfo)localObject2).usrType.get());
+            localStringBuilder1.append(localStringBuilder2.toString());
+            localStringBuilder1.append("\n\n");
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append(";faceType=");
+            localStringBuilder2.append(((MultiHeadUrl.RspHeadInfo)localObject2).faceType.get());
+            localStringBuilder1.append(localStringBuilder2.toString());
+            localStringBuilder1.append("\n\n");
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append(";timestamp=");
+            localStringBuilder2.append(((MultiHeadUrl.RspHeadInfo)localObject2).timestamp.get());
+            localStringBuilder1.append(localStringBuilder2.toString());
+            localStringBuilder1.append("\n\n");
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append(";faceFlag=");
+            localStringBuilder2.append(((MultiHeadUrl.RspHeadInfo)localObject2).faceFlag.get());
+            localStringBuilder1.append(localStringBuilder2.toString());
+            localStringBuilder1.append("\n\n");
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append(";url=");
+            localStringBuilder2.append(((MultiHeadUrl.RspHeadInfo)localObject2).url.get());
+            localStringBuilder1.append(localStringBuilder2.toString());
+            localStringBuilder1.append("\n\n");
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append(";sysid=");
+            localStringBuilder2.append(((MultiHeadUrl.RspHeadInfo)localObject2).sysid.get());
+            localStringBuilder1.append(localStringBuilder2.toString());
+            localStringBuilder1.append("\n\n");
           }
         }
       }
-      localStringBuilder.append("end ====================================================================================\n\n");
-      QLog.i("Q.qqhead.FaceHandler", 2, localStringBuilder.toString());
+      localStringBuilder1.append("end ====================================================================================\n\n");
+      QLog.i("Q.qqhead.FaceHandler", 2, localStringBuilder1.toString());
     }
   }
   
@@ -211,24 +315,28 @@ public class FaceHandler
   {
     paramToServiceMsg = paramToServiceMsg.extraData.getParcelableArrayList("list");
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = localStringBuilder.append("handleGetQQHeadError, result=").append(paramInt).append(", listSize=");
-    if (paramToServiceMsg != null) {}
-    for (paramInt = paramToServiceMsg.size();; paramInt = -1)
+    localStringBuilder.append("handleGetQQHeadError, result=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", listSize=");
+    if (paramToServiceMsg != null) {
+      paramInt = paramToServiceMsg.size();
+    } else {
+      paramInt = -1;
+    }
+    localStringBuilder.append(paramInt);
+    if ((paramToServiceMsg != null) && (paramToServiceMsg.size() != 0))
     {
-      ((StringBuilder)localObject).append(paramInt);
-      if ((paramToServiceMsg != null) && (paramToServiceMsg.size() != 0)) {
-        break;
+      paramInt = 0;
+      while (paramInt < paramToServiceMsg.size())
+      {
+        FaceInfo localFaceInfo = (FaceInfo)paramToServiceMsg.get(paramInt);
+        a(localFaceInfo.b(), false);
+        localStringBuilder.append("info=");
+        localStringBuilder.append(localFaceInfo);
+        paramInt += 1;
       }
       QLog.i("Q.qqhead.FaceHandler", 1, localStringBuilder.toString());
       return;
-    }
-    paramInt = 0;
-    while (paramInt < paramToServiceMsg.size())
-    {
-      localObject = (FaceInfo)paramToServiceMsg.get(paramInt);
-      a(((FaceInfo)localObject).b(), false);
-      localStringBuilder.append("info=").append(localObject);
-      paramInt += 1;
     }
     QLog.i("Q.qqhead.FaceHandler", 1, localStringBuilder.toString());
   }
@@ -236,126 +344,112 @@ public class FaceHandler
   private void a(List<MultiHeadUrl.RspUsrHeadInfo> paramList, List<FaceInfo> paramList1, ArrayList<FaceInfo> paramArrayList, List<FaceInfo> paramList2, int paramInt1, int paramInt2, IQQAvatarManagerService paramIQQAvatarManagerService)
   {
     Iterator localIterator1 = paramArrayList.iterator();
-    FaceInfo localFaceInfo;
-    label44:
-    String str;
-    Object localObject2;
-    Object localObject1;
-    label110:
-    int i;
-    if (localIterator1.hasNext())
+    while (localIterator1.hasNext())
     {
-      localFaceInfo = (FaceInfo)localIterator1.next();
+      FaceInfo localFaceInfo = (FaceInfo)localIterator1.next();
       localFaceInfo.a(FaceInfo.m);
       Iterator localIterator2 = paramList.iterator();
-      for (;;)
+      label529:
+      while (localIterator2.hasNext())
       {
-        if (localIterator2.hasNext())
+        paramArrayList = (MultiHeadUrl.RspUsrHeadInfo)localIterator2.next();
+        String str = a(paramInt1, paramArrayList);
+        if (localFaceInfo.jdField_a_of_type_JavaLangString.equals(str))
         {
-          paramArrayList = (MultiHeadUrl.RspUsrHeadInfo)localIterator2.next();
-          str = a(paramInt1, paramArrayList);
-          if (localFaceInfo.jdField_a_of_type_JavaLangString.equals(str))
+          Iterator localIterator3 = paramArrayList.dstHeadInfos.get().iterator();
+          Object localObject1 = null;
+          paramArrayList = null;
+          int i;
+          Object localObject2;
+          for (;;)
           {
-            localObject2 = paramArrayList.dstHeadInfos.get();
-            localObject1 = null;
-            paramArrayList = null;
-            Iterator localIterator3 = ((List)localObject2).iterator();
-            if (localIterator3.hasNext())
-            {
-              localObject2 = (MultiHeadUrl.RspHeadInfo)localIterator3.next();
-              i = ((MultiHeadUrl.RspHeadInfo)localObject2).usrType.get();
-              if (i == 1) {
-                localObject1 = localObject2;
-              }
+            boolean bool = localIterator3.hasNext();
+            i = 1;
+            if (!bool) {
+              break;
+            }
+            localObject2 = (MultiHeadUrl.RspHeadInfo)localIterator3.next();
+            i = ((MultiHeadUrl.RspHeadInfo)localObject2).usrType.get();
+            if (i == 1) {
+              paramArrayList = (ArrayList<FaceInfo>)localObject2;
+            } else if ((i == 32) && (((MultiHeadUrl.RspHeadInfo)localObject2).faceType.get() != 0)) {
+              localObject1 = localObject2;
             }
           }
-        }
-      }
-    }
-    for (;;)
-    {
-      break label110;
-      if ((i == 32) && (((MultiHeadUrl.RspHeadInfo)localObject2).faceType.get() != 0))
-      {
-        paramArrayList = (ArrayList<FaceInfo>)localObject2;
-        continue;
-        if (paramArrayList != null)
-        {
-          label183:
-          i = 0;
-          localObject1 = paramIQQAvatarManagerService.getFaceSetting("stranger_" + String.valueOf(localFaceInfo.b) + "_" + localFaceInfo.jdField_a_of_type_JavaLangString);
-          if (paramIQQAvatarManagerService.isFaceFileExist(localFaceInfo)) {
-            break label463;
-          }
-          i = 1;
-          label251:
-          if (i == 0) {
-            break label507;
-          }
-          localObject1 = new QQHeadInfo();
-          ((QQHeadInfo)localObject1).headLevel = localFaceInfo.jdField_a_of_type_Byte;
-          ((QQHeadInfo)localObject1).idType = paramInt2;
-          ((QQHeadInfo)localObject1).phoneNum = str;
-          ((QQHeadInfo)localObject1).dwTimestamp = paramArrayList.timestamp.get();
-          ((QQHeadInfo)localObject1).cHeadType = ((byte)paramArrayList.faceType.get());
-          ((QQHeadInfo)localObject1).dstUsrType = 32;
-          ((QQHeadInfo)localObject1).dwFaceFlgas = ((byte)paramArrayList.faceFlag.get());
-          ((QQHeadInfo)localObject1).downLoadUrl = paramArrayList.url.get();
-          ((QQHeadInfo)localObject1).systemHeadID = ((short)paramArrayList.sysid.get());
-          ((QQHeadInfo)localObject1).originUsrType = paramArrayList.usrType.get();
-          if (!paramArrayList.headVerify.has()) {
-            break label509;
-          }
-        }
-        label463:
-        label507:
-        label509:
-        for (paramArrayList = paramArrayList.headVerify.get();; paramArrayList = "")
-        {
-          ((QQHeadInfo)localObject1).headVerify = paramArrayList;
-          localFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo = ((QQHeadInfo)localObject1);
-          paramList2.add(localFaceInfo);
-          break label44;
-          if (localObject1 != null)
+          if (localObject1 == null)
           {
-            paramArrayList = (ArrayList<FaceInfo>)localObject1;
-            break label183;
-          }
-          if (!QLog.isColorLevel()) {
-            break label44;
-          }
-          QLog.d("Q.qqhead.FaceHandler", 2, "there is no headinfo uin=" + str);
-          break label44;
-          break;
-          if (localObject1 != null)
-          {
-            if (((Setting)localObject1).headImgTimestamp != paramArrayList.timestamp.get())
-            {
-              i = 1;
-              break label251;
+            if (paramArrayList != null) {
+              localObject1 = paramArrayList;
             }
-            paramList1.add(localFaceInfo);
-            break label251;
           }
-          i = 1;
-          break label251;
-          break label44;
+          else
+          {
+            paramArrayList = new StringBuilder();
+            paramArrayList.append("stranger_");
+            paramArrayList.append(String.valueOf(localFaceInfo.b));
+            paramArrayList.append("_");
+            paramArrayList.append(localFaceInfo.jdField_a_of_type_JavaLangString);
+            paramArrayList = paramIQQAvatarManagerService.getFaceSetting(paramArrayList.toString());
+            if (paramIQQAvatarManagerService.isFaceFileExist(localFaceInfo))
+            {
+              while ((paramArrayList == null) || (paramArrayList.headImgTimestamp != ((MultiHeadUrl.RspHeadInfo)localObject1).timestamp.get())) {}
+              paramList1.add(localFaceInfo);
+              i = 0;
+            }
+            if (i == 0) {
+              break label529;
+            }
+            localObject2 = new QQHeadInfo();
+            ((QQHeadInfo)localObject2).headLevel = localFaceInfo.jdField_a_of_type_Byte;
+            ((QQHeadInfo)localObject2).idType = paramInt2;
+            ((QQHeadInfo)localObject2).phoneNum = str;
+            ((QQHeadInfo)localObject2).dwTimestamp = ((MultiHeadUrl.RspHeadInfo)localObject1).timestamp.get();
+            ((QQHeadInfo)localObject2).cHeadType = ((byte)((MultiHeadUrl.RspHeadInfo)localObject1).faceType.get());
+            ((QQHeadInfo)localObject2).dstUsrType = 32;
+            ((QQHeadInfo)localObject2).dwFaceFlgas = ((byte)((MultiHeadUrl.RspHeadInfo)localObject1).faceFlag.get());
+            ((QQHeadInfo)localObject2).downLoadUrl = ((MultiHeadUrl.RspHeadInfo)localObject1).url.get();
+            ((QQHeadInfo)localObject2).systemHeadID = ((short)((MultiHeadUrl.RspHeadInfo)localObject1).sysid.get());
+            ((QQHeadInfo)localObject2).originUsrType = ((MultiHeadUrl.RspHeadInfo)localObject1).usrType.get();
+            if (((MultiHeadUrl.RspHeadInfo)localObject1).headVerify.has()) {
+              paramArrayList = ((MultiHeadUrl.RspHeadInfo)localObject1).headVerify.get();
+            } else {
+              paramArrayList = "";
+            }
+            ((QQHeadInfo)localObject2).headVerify = paramArrayList;
+            localFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo = ((QQHeadInfo)localObject2);
+            paramList2.add(localFaceInfo);
+            continue;
+          }
+          if (QLog.isColorLevel())
+          {
+            paramArrayList = new StringBuilder();
+            paramArrayList.append("there is no headinfo uin=");
+            paramArrayList.append(str);
+            QLog.d("Q.qqhead.FaceHandler", 2, paramArrayList.toString());
+          }
         }
-        return;
       }
     }
   }
   
   public void a(FaceInfo paramFaceInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.FaceHandler", 2, "getStrangerFaceInfo.faceInfo=" + paramFaceInfo);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getStrangerFaceInfo.faceInfo=");
+      ((StringBuilder)localObject).append(paramFaceInfo);
+      QLog.d("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = paramFaceInfo.b();
     if (a((String)localObject))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceHandler", 2, "getStrangerFaceInfo|repeat info=" + paramFaceInfo);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getStrangerFaceInfo|repeat info=");
+        ((StringBuilder)localObject).append(paramFaceInfo);
+        QLog.d("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
@@ -373,86 +467,87 @@ public class FaceHandler
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int j = 0;
-    if (paramFromServiceMsg != null) {}
-    for (;;)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramFromServiceMsg != null)
     {
+      localObject1 = localObject2;
       try
       {
-        if ((paramFromServiceMsg.getResultCode() != 1000) || (paramObject == null)) {
-          break label416;
+        if (paramFromServiceMsg.getResultCode() == 1000)
+        {
+          localObject1 = localObject2;
+          if (paramObject != null)
+          {
+            localObject1 = new MultiHeadUrl.MultiBusidUrlRsp();
+            ((MultiHeadUrl.MultiBusidUrlRsp)localObject1).mergeFrom((byte[])paramObject);
+          }
         }
-        localObject = new MultiHeadUrl.MultiBusidUrlRsp();
-        ((MultiHeadUrl.MultiBusidUrlRsp)localObject).mergeFrom((byte[])paramObject);
-        paramObject = localObject;
       }
       catch (Exception paramObject)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("handleStrangerFaceResp multiBusidUrlRsp mergeFrom exception...");
+          ((StringBuilder)localObject1).append(paramObject.getMessage());
+          QLog.d("Q.qqhead.FaceHandler", 2, ((StringBuilder)localObject1).toString());
         }
-        QLog.d("Q.qqhead.FaceHandler", 2, "handleStrangerFaceResp multiBusidUrlRsp mergeFrom exception..." + paramObject.getMessage());
         paramObject.printStackTrace();
-        paramObject = null;
-        continue;
-        if (paramFromServiceMsg == null) {
-          continue;
-        }
-        int i = paramFromServiceMsg.getResultCode();
-        continue;
-        a(paramObject);
-        Object localObject = paramObject.dstUsrHeadInfos.get();
-        paramFromServiceMsg = new ArrayList();
-        ArrayList localArrayList1 = paramToServiceMsg.extraData.getParcelableArrayList("list");
-        ArrayList localArrayList2 = new ArrayList();
-        i = paramObject.dstUidType.get();
-        int k = paramToServiceMsg.extraData.getInt("idType");
-        paramToServiceMsg = (QQAvatarManagerServiceImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQAvatarManagerService.class, "nearby");
-        a((List)localObject, paramFromServiceMsg, localArrayList1, localArrayList2, i, k, paramToServiceMsg);
-        i = 0;
-        if (i >= localArrayList2.size()) {
-          continue;
-        }
-        paramToServiceMsg.downloadFace((FaceInfo)localArrayList2.get(i));
+        localObject1 = localObject2;
+      }
+    }
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000) && (localObject1 != null) && (((MultiHeadUrl.MultiBusidUrlRsp)localObject1).result.get() == 0))
+    {
+      a((MultiHeadUrl.MultiBusidUrlRsp)localObject1);
+      paramObject = ((MultiHeadUrl.MultiBusidUrlRsp)localObject1).dstUsrHeadInfos.get();
+      paramFromServiceMsg = new ArrayList();
+      localObject2 = paramToServiceMsg.extraData.getParcelableArrayList("list");
+      ArrayList localArrayList = new ArrayList();
+      i = ((MultiHeadUrl.MultiBusidUrlRsp)localObject1).dstUidType.get();
+      int j = paramToServiceMsg.extraData.getInt("idType");
+      paramToServiceMsg = (QQAvatarManagerServiceImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQAvatarManagerService.class, "nearby");
+      a(paramObject, paramFromServiceMsg, (ArrayList)localObject2, localArrayList, i, j, paramToServiceMsg);
+      i = 0;
+      while (i < localArrayList.size())
+      {
+        paramToServiceMsg.downloadFace((FaceInfo)localArrayList.get(i));
         i += 1;
-        continue;
-        if (paramFromServiceMsg.size() <= 0) {
-          continue;
-        }
+      }
+      if (paramFromServiceMsg.size() > 0) {
         try
         {
           paramObject = new ArrayList();
-          i = j;
-          if (i >= paramFromServiceMsg.size()) {
-            continue;
+          i = 0;
+          while (i < paramFromServiceMsg.size())
+          {
+            localObject1 = (FaceInfo)paramFromServiceMsg.get(i);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("stranger_");
+            ((StringBuilder)localObject2).append(String.valueOf(j));
+            ((StringBuilder)localObject2).append("_");
+            ((StringBuilder)localObject2).append(((FaceInfo)localObject1).jdField_a_of_type_JavaLangString);
+            paramObject.add(((StringBuilder)localObject2).toString());
+            a(((FaceInfo)localObject1).b(), false);
+            i += 1;
           }
-          localObject = (FaceInfo)paramFromServiceMsg.get(i);
-          paramObject.add("stranger_" + String.valueOf(k) + "_" + ((FaceInfo)localObject).jdField_a_of_type_JavaLangString);
-          a(((FaceInfo)localObject).b(), false);
-          i += 1;
-          continue;
           paramToServiceMsg.updateFaceTimestamp(paramObject, System.currentTimeMillis());
           return;
         }
         catch (Exception paramToServiceMsg)
         {
           paramToServiceMsg.printStackTrace();
-          return;
         }
       }
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000) || (paramObject == null) || (paramObject.result.get() != 0))
-      {
-        i = 65535;
-        if (paramObject != null)
-        {
-          i = paramObject.result.get();
-          a(paramToServiceMsg, i);
-          return;
-        }
-      }
-      label416:
-      paramObject = null;
+      return;
     }
+    int i = 65535;
+    if (localObject1 != null) {
+      i = ((MultiHeadUrl.MultiBusidUrlRsp)localObject1).result.get();
+    } else if (paramFromServiceMsg != null) {
+      i = paramFromServiceMsg.getResultCode();
+    }
+    a(paramToServiceMsg, i);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -460,20 +555,29 @@ public class FaceHandler
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-    if (!paramBoolean) {
-      try
-      {
-        this.b.remove(paramString);
-        return;
-      }
-      finally {}
+    localObject1 = this.jdField_a_of_type_JavaLangObject;
+    if (!paramBoolean) {}
+    try
+    {
+      this.b.remove(paramString);
     }
-    ArrayList localArrayList;
-    Object localObject2;
+    finally
+    {
+      for (;;)
+      {
+        long l;
+        ArrayList localArrayList;
+        Object localObject2;
+        for (;;)
+        {
+          throw paramString;
+        }
+        int i = 0;
+      }
+    }
     if (this.b.size() > 30)
     {
-      long l = System.currentTimeMillis();
+      l = System.currentTimeMillis();
       localArrayList = new ArrayList();
       localObject2 = this.b.keys();
       while (((Enumeration)localObject2).hasMoreElements())
@@ -483,31 +587,20 @@ public class FaceHandler
           localArrayList.add(paramString);
         }
       }
-    }
-    for (;;)
-    {
-      int i;
-      if (i < localArrayList.size())
+      while (i < localArrayList.size())
       {
         localObject2 = (String)localArrayList.get(i);
         this.b.remove(paramString);
         i += 1;
       }
-      else
-      {
-        this.b.put(paramString, Long.valueOf(System.currentTimeMillis()));
-        break;
-        i = 0;
-      }
     }
+    this.b.put(paramString, Long.valueOf(System.currentTimeMillis()));
   }
   
   public boolean a(String paramString)
   {
     for (;;)
     {
-      boolean bool1;
-      boolean bool3;
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         if (!this.b.containsKey(paramString)) {
@@ -517,42 +610,36 @@ public class FaceHandler
         if (Math.abs(System.currentTimeMillis() - l) > 60000L)
         {
           this.b.remove(paramString);
-          bool1 = false;
-          bool2 = bool1;
+          break label212;
           if (!bool1)
           {
-            bool3 = SystemUtil.a();
-            if (((bool3) && (SystemUtil.a() < 2048L)) || ((!bool3) && (SystemUtil.b() < 102400L)))
+            boolean bool2 = SystemUtil.a();
+            if (((bool2) && (SystemUtil.a() < 2048L)) || ((!bool2) && (SystemUtil.b() < 102400L)))
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.qqhead.FaceHandler", 2, "getQQHead|fail, storage is not enough. key=" + paramString + ", isExistSDCard=" + bool3);
+              if (QLog.isColorLevel())
+              {
+                ??? = new StringBuilder();
+                ((StringBuilder)???).append("getQQHead|fail, storage is not enough. key=");
+                ((StringBuilder)???).append(paramString);
+                ((StringBuilder)???).append(", isExistSDCard=");
+                ((StringBuilder)???).append(bool2);
+                QLog.d("Q.qqhead.FaceHandler", 2, ((StringBuilder)???).toString());
               }
-              bool2 = true;
+              return true;
+            }
+            if ((!bool2) && (!this.jdField_a_of_type_Boolean))
+            {
+              this.jdField_a_of_type_Boolean = true;
+              FaceUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext(), true);
             }
           }
-          else
-          {
-            return bool2;
-          }
-        }
-        else
-        {
-          bool1 = true;
-        }
-      }
-      boolean bool2 = bool1;
-      if (!bool3)
-      {
-        bool2 = bool1;
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          FaceUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext(), true);
           return bool1;
-          label212:
-          bool1 = false;
         }
       }
+      boolean bool1 = true;
+      continue;
+      label212:
+      bool1 = false;
     }
   }
   
@@ -566,27 +653,32 @@ public class FaceHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return FaceObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.FaceHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd()))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("cmdfilter error=");
+        paramToServiceMsg.append(paramFromServiceMsg.getServiceCmd());
+        QLog.d("Q.qqhead.FaceHandler", 2, paramToServiceMsg.toString());
       }
-    }
-    while (!"MultibusidURLSvr.HeadUrlReq".equals(paramFromServiceMsg.getServiceCmd())) {
       return;
     }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    if ("MultibusidURLSvr.HeadUrlReq".equals(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceHandler
  * JD-Core Version:    0.7.0.1
  */

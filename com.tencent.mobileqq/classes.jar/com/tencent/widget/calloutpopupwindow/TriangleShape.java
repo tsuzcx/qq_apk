@@ -24,45 +24,41 @@ public class TriangleShape
     PointF localPointF2;
     if (paramInt == 33)
     {
-      localPointF3 = new PointF(0.0F, paramFloat2);
-      localPointF2 = new PointF(paramFloat1, paramFloat2);
-      localPointF1 = new PointF(paramFloat1 / 2.0F, 0.0F);
+      localPointF1 = new PointF(0.0F, paramFloat2);
+      localPointF3 = new PointF(paramFloat1, paramFloat2);
+      localPointF2 = new PointF(paramFloat1 / 2.0F, 0.0F);
     }
-    for (;;)
+    else if (paramInt == 34)
     {
-      if (localPointF3 != null) {
-        this.jdField_a_of_type_AndroidGraphicsPath.moveTo(localPointF3.x, localPointF3.y);
-      }
-      if (localPointF2 != null) {
-        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF2.x, localPointF2.y);
-      }
-      if (localPointF1 != null) {
-        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF1.x, localPointF1.y);
-      }
-      return;
-      if (paramInt == 34)
-      {
-        localPointF3 = new PointF(0.0F, 0.0F);
-        localPointF2 = new PointF(paramFloat1, 0.0F);
-        localPointF1 = new PointF(paramFloat1 / 2.0F, paramFloat2);
-      }
-      else if (paramInt == 35)
-      {
-        localPointF3 = new PointF(0.0F, 0.0F);
-        localPointF2 = new PointF(0.0F, paramFloat2);
-        localPointF1 = new PointF(paramFloat1, paramFloat2 / 2.0F);
-      }
-      else if (paramInt == 36)
-      {
-        localPointF3 = new PointF(paramFloat1, 0.0F);
-        localPointF2 = new PointF(0.0F, paramFloat2 / 2.0F);
-        localPointF1 = new PointF(paramFloat1, paramFloat2);
-      }
-      else
-      {
-        localPointF2 = null;
-        localPointF3 = null;
-      }
+      localPointF1 = new PointF(0.0F, 0.0F);
+      localPointF3 = new PointF(paramFloat1, 0.0F);
+      localPointF2 = new PointF(paramFloat1 / 2.0F, paramFloat2);
+    }
+    else if (paramInt == 35)
+    {
+      localPointF1 = new PointF(0.0F, 0.0F);
+      localPointF3 = new PointF(0.0F, paramFloat2);
+      localPointF2 = new PointF(paramFloat1, paramFloat2 / 2.0F);
+    }
+    else if (paramInt == 36)
+    {
+      localPointF1 = new PointF(paramFloat1, 0.0F);
+      localPointF3 = new PointF(0.0F, paramFloat2 / 2.0F);
+      localPointF2 = new PointF(paramFloat1, paramFloat2);
+    }
+    else
+    {
+      localPointF3 = null;
+      localPointF2 = localPointF3;
+    }
+    if (localPointF1 != null) {
+      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(localPointF1.x, localPointF1.y);
+    }
+    if (localPointF3 != null) {
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF3.x, localPointF3.y);
+    }
+    if (localPointF2 != null) {
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF2.x, localPointF2.y);
     }
   }
   
@@ -74,7 +70,7 @@ public class TriangleShape
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.calloutpopupwindow.TriangleShape
  * JD-Core Version:    0.7.0.1
  */

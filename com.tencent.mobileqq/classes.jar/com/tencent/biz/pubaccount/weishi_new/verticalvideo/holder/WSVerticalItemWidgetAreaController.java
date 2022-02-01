@@ -27,7 +27,7 @@ public class WSVerticalItemWidgetAreaController
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetController.a(paramWSVerticalItemData);
   }
   
-  public void a() {}
+  protected void a() {}
   
   public void a(WSVerticalItemData paramWSVerticalItemData)
   {
@@ -35,35 +35,45 @@ public class WSVerticalItemWidgetAreaController
     b(paramWSVerticalItemData);
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560164;
+    return 2131560050;
   }
   
-  public void b() {}
+  protected void b() {}
   
-  public void c()
+  protected void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetController.d();
+    WSVerticalItemWidgetController localWSVerticalItemWidgetController = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetController;
+    if (localWSVerticalItemWidgetController != null) {
+      localWSVerticalItemWidgetController.d();
     }
   }
   
   public void c(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetController.c(paramInt);
+    WSVerticalItemWidgetController localWSVerticalItemWidgetController = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetController;
+    if (localWSVerticalItemWidgetController != null) {
+      localWSVerticalItemWidgetController.c(paramInt);
     }
   }
   
-  public void e()
+  protected void d(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131381217));
+    WSVerticalItemWidgetController localWSVerticalItemWidgetController = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetController;
+    if (localWSVerticalItemWidgetController != null) {
+      localWSVerticalItemWidgetController.d(paramInt);
+    }
+  }
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380473));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemWidgetAreaController
  * JD-Core Version:    0.7.0.1
  */

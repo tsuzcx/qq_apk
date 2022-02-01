@@ -39,31 +39,27 @@ public class ParallelStepExecutor
   
   private void b(String paramString)
   {
-    if (paramString == null) {
+    if (paramString == null)
+    {
       SLog.e("Q.qqstory.home.ParallelStepExecutor", "occur error ! step key is null!!");
-    }
-    do
-    {
       return;
-      SLog.e("Q.qqstory.home.ParallelStepExecutor", "%s have been finish", new Object[] { paramString });
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
-    } while (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() != 0);
-    SLog.b("Q.qqstory.home.ParallelStepExecutor", "all step have finish");
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler != null)
+    }
+    SLog.e("Q.qqstory.home.ParallelStepExecutor", "%s have been finish", new Object[] { paramString });
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString);
+    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() == 0)
     {
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
+      SLog.b("Q.qqstory.home.ParallelStepExecutor", "all step have finish");
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler != null)
+      {
+        this.jdField_a_of_type_Int = 2;
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(100);
+        if (this.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$ErrorHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+        } else {
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler.a();
+        }
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$ErrorHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
-    }
-    for (;;)
-    {
       d();
-      return;
-      label99:
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler.a();
     }
   }
   
@@ -92,91 +88,35 @@ public class ParallelStepExecutor
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  /* Error */
   public void a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 63
-    //   4: ldc 133
-    //   6: iconst_1
-    //   7: anewarray 75	java/lang/Object
-    //   10: dup
-    //   11: iconst_0
-    //   12: aload_0
-    //   13: getfield 35	com/tencent/biz/qqstory/storyHome/qqstorylist/model/request/ParallelStepExecutor:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   16: invokevirtual 86	java/util/LinkedHashMap:size	()I
-    //   19: invokestatic 139	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   22: aastore
-    //   23: invokestatic 141	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   26: aload_0
-    //   27: getfield 54	com/tencent/biz/qqstory/storyHome/qqstorylist/model/request/ParallelStepExecutor:jdField_a_of_type_Int	I
-    //   30: iconst_2
-    //   31: if_icmpne +13 -> 44
-    //   34: ldc 63
-    //   36: ldc 143
-    //   38: invokestatic 71	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   41: aload_0
-    //   42: monitorexit
-    //   43: return
-    //   44: aload_0
-    //   45: iconst_1
-    //   46: putfield 54	com/tencent/biz/qqstory/storyHome/qqstorylist/model/request/ParallelStepExecutor:jdField_a_of_type_Int	I
-    //   49: aload_0
-    //   50: getfield 145	com/tencent/biz/qqstory/storyHome/qqstorylist/model/request/ParallelStepExecutor:c	Landroid/os/Handler;
-    //   53: ifnonnull +18 -> 71
-    //   56: aload_0
-    //   57: new 42	android/os/Handler
-    //   60: dup
-    //   61: invokestatic 148	android/os/Looper:myLooper	()Landroid/os/Looper;
-    //   64: aload_0
-    //   65: invokespecial 57	android/os/Handler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   68: putfield 145	com/tencent/biz/qqstory/storyHome/qqstorylist/model/request/ParallelStepExecutor:c	Landroid/os/Handler;
-    //   71: aload_0
-    //   72: getfield 35	com/tencent/biz/qqstory/storyHome/qqstorylist/model/request/ParallelStepExecutor:jdField_a_of_type_JavaUtilLinkedHashMap	Ljava/util/LinkedHashMap;
-    //   75: invokevirtual 152	java/util/LinkedHashMap:entrySet	()Ljava/util/Set;
-    //   78: invokeinterface 158 1 0
-    //   83: astore_1
-    //   84: aload_1
-    //   85: invokeinterface 164 1 0
-    //   90: ifeq -49 -> 41
-    //   93: aload_1
-    //   94: invokeinterface 168 1 0
-    //   99: checkcast 170	java/util/Map$Entry
-    //   102: invokeinterface 173 1 0
-    //   107: checkcast 121	com/tencent/biz/qqstory/storyHome/qqstorylist/model/request/Step
-    //   110: astore_2
-    //   111: aload_2
-    //   112: aload_0
-    //   113: invokeinterface 176 2 0
-    //   118: aload_2
-    //   119: aload_0
-    //   120: invokeinterface 179 2 0
-    //   125: aload_0
-    //   126: getfield 59	com/tencent/biz/qqstory/storyHome/qqstorylist/model/request/ParallelStepExecutor:b	Landroid/os/Handler;
-    //   129: iconst_2
-    //   130: aload_2
-    //   131: invokevirtual 183	android/os/Handler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   134: invokevirtual 188	android/os/Message:sendToTarget	()V
-    //   137: goto -53 -> 84
-    //   140: astore_1
-    //   141: aload_0
-    //   142: monitorexit
-    //   143: aload_1
-    //   144: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	145	0	this	ParallelStepExecutor
-    //   83	11	1	localIterator	Iterator
-    //   140	4	1	localObject	Object
-    //   110	21	2	localStep	Step
-    // Exception table:
-    //   from	to	target	type
-    //   2	41	140	finally
-    //   44	71	140	finally
-    //   71	84	140	finally
-    //   84	137	140	finally
+    try
+    {
+      SLog.d("Q.qqstory.home.ParallelStepExecutor", "startAsyncStep count=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilLinkedHashMap.size()) });
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        SLog.e("Q.qqstory.home.ParallelStepExecutor", "startAsyncStep but state is done ,so ingore this start operate");
+        return;
+      }
+      this.jdField_a_of_type_Int = 1;
+      if (this.c == null) {
+        this.c = new Handler(Looper.myLooper(), this);
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Step localStep = (Step)((Map.Entry)localIterator.next()).getValue();
+        localStep.a(this);
+        localStep.a(this);
+        this.b.obtainMessage(2, localStep).sendToTarget();
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void a(ErrorMessage paramErrorMessage)
@@ -189,24 +129,24 @@ public class ParallelStepExecutor
   
   public void a(String paramString)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        int i = this.jdField_a_of_type_Int;
-        if (i == 3) {
-          return;
-        }
-        if (this.c != null)
-        {
-          this.c.obtainMessage(1, paramString).sendToTarget();
-          continue;
-        }
-        SLog.e("Q.qqstory.home.ParallelStepExecutor", "there is no mCompletedHandler !!!!");
+      int i = this.jdField_a_of_type_Int;
+      if (i == 3) {
+        return;
       }
-      finally {}
-      b(paramString);
+      if (this.c != null)
+      {
+        this.c.obtainMessage(1, paramString).sendToTarget();
+      }
+      else
+      {
+        SLog.e("Q.qqstory.home.ParallelStepExecutor", "there is no mCompletedHandler !!!!");
+        b(paramString);
+      }
+      return;
     }
+    finally {}
   }
   
   public void b() {}
@@ -239,27 +179,33 @@ public class ParallelStepExecutor
         }
       }
       this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    for (;;)
-    {
-      return true;
-      b((String)paramMessage.obj);
-      continue;
+      if (i != 2) {
+        return true;
+      }
       ((Step)paramMessage.obj).a();
+      return true;
     }
+    b((String)paramMessage.obj);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.ParallelStepExecutor
  * JD-Core Version:    0.7.0.1
  */

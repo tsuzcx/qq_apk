@@ -7,14 +7,14 @@ class MsgBoxListActivity$3
   
   public void run()
   {
-    if (MsgBoxListActivity.a(this.this$0) != null) {
-      MsgBoxListActivity.a(this.this$0).a("msglist_carrier_5.8");
+    if (MsgBoxListActivity.access$000(this.this$0) != null) {
+      MsgBoxListActivity.access$000(this.this$0).a("msglist_carrier_5.8");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxListActivity.3
  * JD-Core Version:    0.7.0.1
  */

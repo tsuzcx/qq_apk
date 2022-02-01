@@ -23,16 +23,17 @@ class DoodlePanel$3
       {
         DoodlePanel.a(this.a, true);
         DoodlePanel.3.1 local1 = new DoodlePanel.3.1(this);
-        DialogUtil.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131689932), null, this.a.getContext().getString(2131689923), local1, null).show();
+        DialogUtil.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131689847), null, this.a.getContext().getString(2131689837), local1, null).show();
       }
-      return;
     }
-    QQToast.a(this.a.getContext(), this.a.getContext().getString(2131689925), 0).a();
+    else {
+      QQToast.a(this.a.getContext(), this.a.getContext().getString(2131689839), 0).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodlePanel.3
  * JD-Core Version:    0.7.0.1
  */

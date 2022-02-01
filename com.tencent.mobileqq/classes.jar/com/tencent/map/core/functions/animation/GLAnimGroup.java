@@ -33,14 +33,16 @@ public class GLAnimGroup
   
   protected void performDraw(GL10 paramGL10, long paramLong)
   {
-    if ((this.a == null) || (this.a.isEmpty())) {}
-    for (;;)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
+      if (((ArrayList)localObject).isEmpty()) {
+        return;
+      }
+      localObject = this.a.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        GLAnim localGLAnim = (GLAnim)localIterator.next();
+        GLAnim localGLAnim = (GLAnim)((Iterator)localObject).next();
         if (!localGLAnim.isFinished()) {
           localGLAnim.draw(paramGL10);
         }
@@ -59,7 +61,7 @@ public class GLAnimGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.GLAnimGroup
  * JD-Core Version:    0.7.0.1
  */

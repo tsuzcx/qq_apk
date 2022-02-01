@@ -19,7 +19,12 @@ public class SingleRefDBInnerIter<T>
     this.index = i;
     if (i == 0)
     {
-      Preconditions.checkState(this.dataBuffer.get(0) instanceof DataBufferRef, "DataBuffer reference of type " + this.dataBuffer.get(0).getClass() + " is not movable");
+      boolean bool = this.dataBuffer.get(0) instanceof DataBufferRef;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DataBuffer reference of type ");
+      localStringBuilder.append(this.dataBuffer.get(0).getClass());
+      localStringBuilder.append(" is not movable");
+      Preconditions.checkState(bool, localStringBuilder.toString());
       ((DataBufferRef)this.dataBuffer.get(0)).getWindowIndex(this.index);
     }
     return this.dataBuffer.get(0);
@@ -27,7 +32,7 @@ public class SingleRefDBInnerIter<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.data.SingleRefDBInnerIter
  * JD-Core Version:    0.7.0.1
  */

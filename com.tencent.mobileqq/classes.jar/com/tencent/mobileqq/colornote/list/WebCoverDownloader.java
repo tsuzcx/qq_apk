@@ -18,38 +18,40 @@ public class WebCoverDownloader
 {
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    String str;
-    for (Object localObject = paramDownloadParams.url.getHost();; str = "")
+    Object localObject = paramDownloadParams.url.getHost();
+    String str = "";
+    try
     {
-      try
+      localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { BaseApplicationImpl.getApplication().getRuntime().getAccount(), localObject });
+      HttpResponse localHttpResponse = HttpUtil.openRequest(BaseApplicationImpl.getApplication(), (String)localObject, null, "GET", null, null, 5000, 5000);
+      localObject = str;
+      if (localHttpResponse != null)
       {
-        localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { BaseApplicationImpl.getApplication().getRuntime().getAccount(), localObject });
-        localObject = HttpUtil.openRequest(BaseApplicationImpl.getApplication(), (String)localObject, null, "GET", null, null, 5000, 5000);
-        if ((localObject == null) || (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200)) {
-          continue;
-        }
-        localObject = HttpUtil.readHttpResponse((HttpResponse)localObject);
-        localObject = new JSONObject((String)localObject);
-        if (Integer.parseInt(((JSONObject)localObject).getString("ret")) == 0)
-        {
-          localObject = ((JSONObject)localObject).getString("thumbUrl");
-          paramDownloadParams.url = new URL((String)localObject);
-          paramDownloadParams.urlStr = ((String)localObject);
-          localObject = super.downloadImage(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-          return localObject;
+        localObject = str;
+        if (localHttpResponse.getStatusLine().getStatusCode() == 200) {
+          localObject = HttpUtil.readHttpResponse(localHttpResponse);
         }
       }
-      catch (Exception localException)
+      localObject = new JSONObject((String)localObject);
+      if (Integer.parseInt(((JSONObject)localObject).getString("ret")) == 0)
       {
-        localException.printStackTrace();
+        localObject = ((JSONObject)localObject).getString("thumbUrl");
+        paramDownloadParams.url = new URL((String)localObject);
+        paramDownloadParams.urlStr = ((String)localObject);
+        localObject = super.downloadImage(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+        return localObject;
       }
-      return super.downloadImage(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return super.downloadImage(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.WebCoverDownloader
  * JD-Core Version:    0.7.0.1
  */

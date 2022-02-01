@@ -36,25 +36,25 @@ class AccessRecorder$PrivateHandler
   
   public void handleMessage(Message arg1)
   {
-    switch (???.what)
+    int i = ???.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      write((String)???.obj);
-      return;
+      if (i != 1) {
+        return;
+      }
+      synchronized (this.this$0)
+      {
+        sendMessage(Message.obtain(this, 0, AccessRecorder.access$000(this.this$0).toString()));
+        AccessRecorder.access$000(this.this$0).setLength(0);
+        return;
+      }
     }
-    synchronized (this.this$0)
-    {
-      sendMessage(Message.obtain(this, 0, AccessRecorder.access$000(this.this$0).toString()));
-      AccessRecorder.access$000(this.this$0).setLength(0);
-      return;
-    }
+    write((String)???.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqq.shared_file_accessor.test.AccessRecorder.PrivateHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class GetIsLTUserActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
     setResult(-1, new Intent());
@@ -37,7 +37,7 @@ public class GetIsLTUserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.GetIsLTUserActivity
  * JD-Core Version:    0.7.0.1
  */

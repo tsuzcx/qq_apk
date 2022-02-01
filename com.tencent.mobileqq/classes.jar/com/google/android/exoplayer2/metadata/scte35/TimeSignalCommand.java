@@ -26,12 +26,11 @@ public final class TimeSignalCommand
   
   static long parseSpliceTime(ParsableByteArray paramParsableByteArray, long paramLong)
   {
-    long l2 = paramParsableByteArray.readUnsignedByte();
-    long l1 = -9223372036854775807L;
-    if ((0x80 & l2) != 0L) {
-      l1 = ((1L & l2) << 32 | paramParsableByteArray.readUnsignedInt()) + paramLong & 0xFFFFFFFF;
+    long l = paramParsableByteArray.readUnsignedByte();
+    if ((0x80 & l) != 0L) {
+      return 0xFFFFFFFF & ((l & 1L) << 32 | paramParsableByteArray.readUnsignedInt()) + paramLong;
     }
-    return l1;
+    return -9223372036854775807L;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -42,7 +41,7 @@ public final class TimeSignalCommand
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.scte35.TimeSignalCommand
  * JD-Core Version:    0.7.0.1
  */

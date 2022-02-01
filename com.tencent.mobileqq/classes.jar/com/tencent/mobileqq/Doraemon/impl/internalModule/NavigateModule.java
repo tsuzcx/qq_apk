@@ -9,8 +9,7 @@ import com.tencent.mobileqq.Doraemon.APIParam;
 import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
 import com.tencent.mobileqq.Doraemon.DoraemonAPIModule;
 import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -20,43 +19,41 @@ public class NavigateModule
   public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
     paramString = this.a.a();
-    if ((paramString == null) || (paramString.isFinishing()))
+    if ((paramString != null) && (!paramString.isFinishing()))
     {
-      QLog.e("NavigateModule", 1, "execute activity is null or finish");
-      return false;
-    }
-    Intent localIntent;
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 19: 
-      paramJSONObject = paramJSONObject.optString("action", "");
-      if ((paramJSONObject != null) && (paramJSONObject.startsWith("mqqapi:")))
+      Intent localIntent;
+      switch (paramInt)
       {
-        localIntent = new Intent(paramString, JumpActivity.class);
-        localIntent.setData(Uri.parse(paramJSONObject));
-        paramString.startActivity(localIntent);
+      default: 
+        return false;
+      case 21: 
+        paramJSONObject = paramJSONObject.optString("url", "");
+        localIntent = new Intent();
+        localIntent.putExtra("url", paramJSONObject);
+        RouteUtils.a(paramString, localIntent, "/base/browser");
         DoraemonUtil.a(paramAPICallback, APIParam.a);
+        return true;
+      case 19: 
+        paramJSONObject = paramJSONObject.optString("action", "");
+        if ((paramJSONObject != null) && (paramJSONObject.startsWith("mqqapi:")))
+        {
+          localIntent = new Intent();
+          localIntent.setData(Uri.parse(paramJSONObject));
+          RouteUtils.a(paramString, localIntent, "/base/jump");
+          DoraemonUtil.a(paramAPICallback, APIParam.a);
+          return true;
+        }
+        DoraemonUtil.a(paramAPICallback, -1, "scheme not support");
       }
-      break;
-    }
-    for (;;)
-    {
       return true;
-      paramJSONObject = paramJSONObject.optString("url", "");
-      localIntent = new Intent(paramString, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramJSONObject);
-      paramString.startActivity(localIntent);
-      DoraemonUtil.a(paramAPICallback, APIParam.a);
-      continue;
-      DoraemonUtil.a(paramAPICallback, -1, "scheme not support");
     }
+    QLog.e("NavigateModule", 1, "execute activity is null or finish");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.internalModule.NavigateModule
  * JD-Core Version:    0.7.0.1
  */

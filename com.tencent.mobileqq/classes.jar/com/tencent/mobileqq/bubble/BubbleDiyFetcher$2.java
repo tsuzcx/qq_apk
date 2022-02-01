@@ -19,25 +19,29 @@ class BubbleDiyFetcher$2
     List localList = this.a.getEntityManagerFactory().createEntityManager().query(BubbleDiyEntity.class, true, null, null, null, null, null, " 20 ");
     if ((localList != null) && (localList.size() > 0))
     {
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext())
+      Object localObject = localList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        BubbleDiyEntity localBubbleDiyEntity = (BubbleDiyEntity)localIterator.next();
+        BubbleDiyEntity localBubbleDiyEntity = (BubbleDiyEntity)((Iterator)localObject).next();
         if (!TextUtils.isEmpty(localBubbleDiyEntity.uinAndDiyId))
         {
           this.this$0.a.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.diyText);
           this.this$0.b.put(localBubbleDiyEntity.uinAndDiyId, localBubbleDiyEntity.convertToPasterMap());
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleDiyFetcher", 2, "initCacheFromDB, size: " + localList.size());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initCacheFromDB, size: ");
+        ((StringBuilder)localObject).append(localList.size());
+        QLog.i("BubbleDiyFetcher", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyFetcher.2
  * JD-Core Version:    0.7.0.1
  */

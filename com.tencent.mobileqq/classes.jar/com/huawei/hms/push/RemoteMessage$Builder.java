@@ -13,8 +13,8 @@ import org.json.JSONObject;
 
 public class RemoteMessage$Builder
 {
-  private final Bundle a = new Bundle();
-  private final Map<String, String> b = new HashMap();
+  public final Bundle a = new Bundle();
+  public final Map<String, String> b = new HashMap();
   
   public RemoteMessage$Builder(String paramString)
   {
@@ -23,56 +23,69 @@ public class RemoteMessage$Builder
   
   public Builder addData(String paramString1, String paramString2)
   {
-    if (paramString1 == null) {
-      throw new IllegalArgumentException("add data failed, key is null.");
+    if (paramString1 != null)
+    {
+      this.b.put(paramString1, paramString2);
+      return this;
     }
-    this.b.put(paramString1, paramString2);
-    return this;
+    throw new IllegalArgumentException("add data failed, key is null.");
   }
   
   public RemoteMessage build()
   {
-    Bundle localBundle = new Bundle();
-    localJSONObject1 = new JSONObject();
+    Object localObject1 = new Bundle();
+    Object localObject2 = new JSONObject();
     try
     {
-      Object localObject1 = this.b.entrySet().iterator();
-      Object localObject2;
-      while (((Iterator)localObject1).hasNext())
+      localObject3 = this.b.entrySet().iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        localJSONObject1.put((String)((Map.Entry)localObject2).getKey(), ((Map.Entry)localObject2).getValue());
-      }
-      try
-      {
-        localObject1 = this.a.getString("msgId");
-        localObject2 = localJSONObject1.toString();
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("collapseKey", this.a.getString("collapseKey"));
-        localJSONObject2.put("ttl", this.a.getInt("ttl"));
-        localJSONObject2.put("sendMode", this.a.getInt("sendMode"));
-        localJSONObject2.put("receiptMode", this.a.getInt("receiptMode"));
-        JSONObject localJSONObject3 = new JSONObject();
-        if (localJSONObject1.length() != 0) {
-          localJSONObject3.put("data", localObject2);
-        }
-        localJSONObject3.put("msgId", localObject1);
-        localJSONObject2.put("msgContent", localJSONObject3);
-        localJSONException1.putByteArray("message_body", localJSONObject2.toString().getBytes(ab.a));
-        localJSONException1.putString("to", this.a.getString("to"));
-        localJSONException1.putString("message_type", this.a.getString("message_type"));
-        return new RemoteMessage(localJSONException1);
-      }
-      catch (JSONException localJSONException2)
-      {
-        HMSLog.w("RemoteMessage", "JSONException: parse message body failed.");
-        throw new PushException("send message failed");
+        localObject4 = (Map.Entry)((Iterator)localObject3).next();
+        ((JSONObject)localObject2).put((String)((Map.Entry)localObject4).getKey(), ((Map.Entry)localObject4).getValue());
       }
     }
     catch (JSONException localJSONException1)
     {
-      HMSLog.w("RemoteMessage", "JSONException: parse data to json failed.");
-      throw new PushException("send message failed");
+      Object localObject3;
+      Object localObject4;
+      JSONObject localJSONObject;
+      int i;
+      label275:
+      break label292;
+    }
+    try
+    {
+      localObject3 = ((JSONObject)localObject2).toString();
+      localObject4 = new JSONObject();
+      ((JSONObject)localObject4).put("collapseKey", this.a.getString("collapseKey"));
+      ((JSONObject)localObject4).put("ttl", this.a.getInt("ttl"));
+      ((JSONObject)localObject4).put("sendMode", this.a.getInt("sendMode"));
+      ((JSONObject)localObject4).put("receiptMode", this.a.getInt("receiptMode"));
+      localJSONObject = new JSONObject();
+      i = ((JSONObject)localObject2).length();
+      if (i != 0) {
+        localJSONObject.put("data", localObject3);
+      }
+      localJSONObject.put("msgId", this.a.getString("msgId"));
+      ((JSONObject)localObject4).put("msgContent", localJSONObject);
+      localObject2 = ((JSONObject)localObject4).toString().getBytes(w.a);
+      ((Bundle)localObject1).putByteArray("message_body", (byte[])localObject2);
+      ((Bundle)localObject1).putString("to", this.a.getString("to"));
+      ((Bundle)localObject1).putString("message_type", this.a.getString("message_type"));
+      return new RemoteMessage((Bundle)localObject1);
+    }
+    catch (JSONException localJSONException2)
+    {
+      break label275;
+    }
+    HMSLog.w("RemoteMessage", "JSONException: parse message body failed.");
+    throw new PushException("send message failed");
+    label292:
+    HMSLog.w("RemoteMessage", "JSONException: parse data to json failed.");
+    localObject1 = new PushException("send message failed");
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
     }
   }
   
@@ -132,11 +145,12 @@ public class RemoteMessage$Builder
   
   public Builder setTtl(int paramInt)
   {
-    if ((paramInt < 1) || (paramInt > 1296000)) {
-      throw new IllegalArgumentException("ttl must be greater than or equal to 1 and less than or equal to 1296000");
+    if ((paramInt >= 1) && (paramInt <= 1296000))
+    {
+      this.a.putInt("ttl", paramInt);
+      return this;
     }
-    this.a.putInt("ttl", paramInt);
-    return this;
+    throw new IllegalArgumentException("ttl must be greater than or equal to 1 and less than or equal to 1296000");
   }
 }
 

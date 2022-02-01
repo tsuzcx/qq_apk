@@ -5,16 +5,16 @@ import com.tencent.mobileqq.data.entitymanager.Provider;
 public class DBVersionProvider
   implements Provider<Integer>
 {
-  private static final int DB_VERSION = 348;
+  private static final int DB_VERSION = 353;
   
   public Integer get()
   {
-    return Integer.valueOf(348);
+    return Integer.valueOf(353);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.DBVersionProvider
  * JD-Core Version:    0.7.0.1
  */

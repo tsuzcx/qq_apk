@@ -29,14 +29,18 @@ public class BroadcastConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("BroadcastConfProcessor", 2, "onParsed, content:" + paramArrayOfQConfItem);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onParsed, content:");
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem);
+        QLog.d("BroadcastConfProcessor", 2, ((StringBuilder)localObject).toString());
       }
-      BroadcastConfProcessor.BroadcastConfBean localBroadcastConfBean = BroadcastConfProcessor.BroadcastConfBean.a(paramArrayOfQConfItem);
+      Object localObject = BroadcastConfProcessor.BroadcastConfBean.a(paramArrayOfQConfItem);
       if (!TextUtils.isEmpty(paramArrayOfQConfItem))
       {
         BaseApplicationImpl.getApplication().getSharedPreferences("broadcast_white_pref", 4).edit().putString("white_list", paramArrayOfQConfItem).apply();
-        MobileQQ.addBroadcastWhitList(localBroadcastConfBean.a);
+        MobileQQ.addBroadcastWhitList(((BroadcastConfProcessor.BroadcastConfBean)localObject).a);
       }
     }
     return new BroadcastConfProcessor.BroadcastConfBean();
@@ -83,7 +87,7 @@ public class BroadcastConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.BroadcastConfProcessor
  * JD-Core Version:    0.7.0.1
  */

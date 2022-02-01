@@ -11,20 +11,23 @@ class VidToGroupInfoPuller$2
   
   public void a(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("StoryId list to group info list finish !");
-    if (paramBoolean) {}
-    for (String str = "Every task success";; str = "Some task error")
-    {
-      SLog.d("Q.qqstory.net:VidToGroupInfoPuller", str);
-      this.a.a(this.a.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
-      this.a.jdField_a_of_type_Int = 2;
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StoryId list to group info list finish !");
+    if (paramBoolean) {
+      localObject = "Every task success";
+    } else {
+      localObject = "Some task error";
     }
+    localStringBuilder.append((String)localObject);
+    SLog.d("Q.qqstory.net:VidToGroupInfoPuller", localStringBuilder.toString());
+    Object localObject = this.a;
+    ((VidToGroupInfoPuller)localObject).a(((VidToGroupInfoPuller)localObject).jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
+    this.a.jdField_a_of_type_Int = 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.model.VidToGroupInfoPuller.2
  * JD-Core Version:    0.7.0.1
  */

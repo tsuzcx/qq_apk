@@ -27,8 +27,8 @@ import java.util.List;
 public class BlankRecommendFeedsAdapter
   extends MultiViewBlock<CertifiedAccountMeta.StFollowRcmd>
 {
-  public static int a;
-  public static String a;
+  public static int a = 0;
+  public static String a = "BlankRecommendFeedsAdapter";
   private int b = ImmersiveUtils.dpToPx(20.0F);
   private int jdField_c_of_type_Int = ImmersiveUtils.dpToPx(12.5F);
   private boolean jdField_c_of_type_Boolean = true;
@@ -39,7 +39,6 @@ public class BlankRecommendFeedsAdapter
   
   static
   {
-    jdField_a_of_type_JavaLangString = "BlankRecommendFeedsAdapter";
     jdField_a_of_type_Int = ImmersiveUtils.dpToPx(12.0F);
   }
   
@@ -50,8 +49,8 @@ public class BlankRecommendFeedsAdapter
   
   private View a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(a()).inflate(2131558834, paramViewGroup, false);
-    URLImageView localURLImageView = (URLImageView)paramViewGroup.findViewById(2131369781);
+    paramViewGroup = LayoutInflater.from(a()).inflate(2131558732, paramViewGroup, false);
+    URLImageView localURLImageView = (URLImageView)paramViewGroup.findViewById(2131369471);
     if (localURLImageView != null) {
       localURLImageView.setImageURL("https://qzonestyle.gtimg.cn/aoi/sola/20191225193654_3xBYY4zCcy.png");
     }
@@ -60,13 +59,13 @@ public class BlankRecommendFeedsAdapter
       if (localURLImageView != null) {
         localURLImageView.setColorFilter(-1728053248);
       }
-      ((TextView)paramViewGroup.findViewById(2131380725)).setTextColor(-10132123);
-      paramViewGroup.findViewById(2131365931).setBackgroundColor(-14540254);
-    }
-    while (localURLImageView == null) {
+      ((TextView)paramViewGroup.findViewById(2131379993)).setTextColor(-10132123);
+      paramViewGroup.findViewById(2131365768).setBackgroundColor(-14540254);
       return paramViewGroup;
     }
-    localURLImageView.clearColorFilter();
+    if (localURLImageView != null) {
+      localURLImageView.clearColorFilter();
+    }
     return paramViewGroup;
   }
   
@@ -83,26 +82,24 @@ public class BlankRecommendFeedsAdapter
   private View b(ViewGroup paramViewGroup)
   {
     VSReporter.b("auth_follow", "exp_more", 0, 0, new String[0]);
-    paramViewGroup = LayoutInflater.from(a()).inflate(2131558833, paramViewGroup, false);
-    LinearLayout localLinearLayout = (LinearLayout)paramViewGroup.findViewById(2131370654);
-    GradientDrawable localGradientDrawable;
+    paramViewGroup = LayoutInflater.from(a()).inflate(2131558731, paramViewGroup, false);
+    LinearLayout localLinearLayout = (LinearLayout)paramViewGroup.findViewById(2131370297);
     if (localLinearLayout != null)
     {
-      localGradientDrawable = (GradientDrawable)localLinearLayout.getBackground();
-      if (!this.e) {
-        break label102;
+      GradientDrawable localGradientDrawable = (GradientDrawable)localLinearLayout.getBackground();
+      int i;
+      if (this.e) {
+        i = -13224394;
+      } else {
+        i = -460552;
       }
-    }
-    label102:
-    for (int i = -13224394;; i = -460552)
-    {
       localGradientDrawable.setColor(i);
       localLinearLayout.setOnClickListener(new BlankRecommendFeedsAdapter.2(this));
-      if (this.e) {
-        ((TextView)paramViewGroup.findViewById(2131380724)).setTextColor(-5723992);
-      }
-      return paramViewGroup;
     }
+    if (this.e) {
+      ((TextView)paramViewGroup.findViewById(2131379992)).setTextColor(-5723992);
+    }
+    return paramViewGroup;
   }
   
   public int a()
@@ -129,22 +126,24 @@ public class BlankRecommendFeedsAdapter
     this.g = false;
   }
   
-  public void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  protected void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
     if ((paramView instanceof BlankRecommendItemView))
     {
       paramRect.top = this.b;
-      paramRect.left = jdField_a_of_type_Int;
-      paramRect.right = jdField_a_of_type_Int;
+      int i = jdField_a_of_type_Int;
+      paramRect.left = i;
+      paramRect.right = i;
       paramRect.bottom = this.jdField_c_of_type_Int;
-    }
-    while (paramView.getId() != 2131377372) {
       return;
     }
-    paramRect.top = ImmersiveUtils.dpToPx(19.5F);
-    paramRect.left = 0;
-    paramRect.right = 0;
-    paramRect.bottom = (-ImmersiveUtils.dpToPx(30.0F));
+    if (paramView.getId() == 2131376824)
+    {
+      paramRect.top = ImmersiveUtils.dpToPx(19.5F);
+      paramRect.left = 0;
+      paramRect.right = 0;
+      paramRect.bottom = (-ImmersiveUtils.dpToPx(30.0F));
+    }
   }
   
   public void a(Bundle paramBundle) {}
@@ -209,14 +208,12 @@ public class BlankRecommendFeedsAdapter
     if (this.jdField_c_of_type_Boolean) {
       i = paramInt - 1;
     }
-    if (ArrayUtils.a(i, b())) {}
-    for (;;)
+    if (!ArrayUtils.a(i, b()))
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, i, getItemId(i));
-      return;
       CertifiedAccountMeta.StFollowRcmd localStFollowRcmd = (CertifiedAccountMeta.StFollowRcmd)b().get(i);
       ((BlankRecommendFeedsAdapter.RecommendFeedVH)paramViewHolder).a(localStFollowRcmd, i);
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, i, getItemId(i));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -244,7 +241,7 @@ public class BlankRecommendFeedsAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.BlankRecommendFeedsAdapter
  * JD-Core Version:    0.7.0.1
  */

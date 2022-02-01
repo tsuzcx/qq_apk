@@ -39,30 +39,38 @@ public class VideoFrameCheckHelper
   {
     try
     {
-      if (!paramTextureView.isAvailable()) {
-        break label152;
-      }
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+      boolean bool = paramTextureView.isAvailable();
+      if (bool)
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      }
-      int i = paramTextureView.getWidth() / 16;
-      int j = paramTextureView.getHeight() / 16;
-      if ((i <= 0) || (j <= 0)) {
-        break label159;
-      }
-      if (Build.VERSION.SDK_INT >= 17) {}
-      for (this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramTextureView.getResources().getDisplayMetrics(), i, j, Bitmap.Config.ARGB_8888);; this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888))
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = paramTextureView.getBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        if (!StoryPlayerTest.a(this.jdField_a_of_type_AndroidGraphicsBitmap, 4, 16)) {
-          break;
+        if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+        {
+          this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+          this.jdField_a_of_type_AndroidGraphicsBitmap = null;
         }
-        SLog.b("VideoFrameCheckHelper", "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d");
-        return true;
+        int i = paramTextureView.getWidth() / 16;
+        int j = paramTextureView.getHeight() / 16;
+        if ((i > 0) && (j > 0))
+        {
+          if (Build.VERSION.SDK_INT >= 17) {
+            this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramTextureView.getResources().getDisplayMetrics(), i, j, Bitmap.Config.ARGB_8888);
+          } else {
+            this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+          }
+          this.jdField_a_of_type_AndroidGraphicsBitmap = paramTextureView.getBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+          if (StoryPlayerTest.a(this.jdField_a_of_type_AndroidGraphicsBitmap, 4, 16))
+          {
+            SLog.b("VideoFrameCheckHelper", "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d");
+            return true;
+          }
+          SLog.d("VideoFrameCheckHelper", "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
+          return false;
+        }
       }
-      SLog.d("VideoFrameCheckHelper", "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
+      else
+      {
+        SLog.d("VideoFrameCheckHelper", "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
+        return false;
+      }
     }
     catch (Exception paramTextureView)
     {
@@ -70,15 +78,11 @@ public class VideoFrameCheckHelper
       return false;
     }
     return false;
-    label152:
-    SLog.d("VideoFrameCheckHelper", "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
-    label159:
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoFrameCheckHelper
  * JD-Core Version:    0.7.0.1
  */

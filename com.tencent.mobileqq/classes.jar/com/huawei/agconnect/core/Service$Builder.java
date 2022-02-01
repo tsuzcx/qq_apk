@@ -11,18 +11,22 @@ public class Service$Builder
   
   private Service$Builder(Class<?> paramClass1, Class<?> paramClass2)
   {
-    if (paramClass1 == null) {
-      throw new IllegalArgumentException("the interface parameter cannot be NULL");
-    }
-    if (paramClass2 == null) {
+    if (paramClass1 != null)
+    {
+      if (paramClass2 != null)
+      {
+        if ((!paramClass2.isInterface()) && (Modifier.isPublic(paramClass2.getModifiers())))
+        {
+          this.a = paramClass1;
+          this.b = paramClass2;
+          this.c = paramClass2.isAnnotationPresent(Singleton.class);
+          return;
+        }
+        throw new IllegalArgumentException("the clazz parameter must be interface type and public");
+      }
       throw new IllegalArgumentException("the clazz parameter cannot be NULL");
     }
-    if ((paramClass2.isInterface()) || (!Modifier.isPublic(paramClass2.getModifiers()))) {
-      throw new IllegalArgumentException("the clazz parameter must be interface type and public");
-    }
-    this.a = paramClass1;
-    this.b = paramClass2;
-    this.c = paramClass2.isAnnotationPresent(Singleton.class);
+    throw new IllegalArgumentException("the interface parameter cannot be NULL");
   }
   
   public Service build()

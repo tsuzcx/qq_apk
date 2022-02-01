@@ -12,23 +12,18 @@ public class UnreadHeadMsgRefresher
   {
     if ((int)paramLong2 >= 1L + paramLong1)
     {
-      if (paramLong2 - paramLong1 <= 200L) {
-        break label60;
+      long l = paramLong1;
+      if (paramLong2 - paramLong1 > 200L) {
+        l = paramLong2 - 200L;
       }
-      paramLong1 = paramLong2 - 200L;
-    }
-    label60:
-    for (;;)
-    {
-      paramAIOContext.a().a().a(paramLong2, paramLong1, true);
-      paramAIOContext.a().a().a(0, -1, paramRunnable, 6);
-      return;
+      paramAIOContext.a().a().a(paramLong2, l, true);
+      paramAIOContext.a().a().a(0, -1, paramRunnable, 6, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.UnreadHeadMsgRefresher
  * JD-Core Version:    0.7.0.1
  */

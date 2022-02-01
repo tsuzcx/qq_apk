@@ -21,27 +21,26 @@ public class FadeIconImageView
     super(paramContext, paramAttributeSet);
   }
   
-  public void drawableStateChanged()
+  protected void drawableStateChanged()
   {
     super.drawableStateChanged();
     Drawable localDrawable = getDrawable();
     if (localDrawable != null)
     {
       int[] arrayOfInt = getDrawableState();
-      if (StateSet.stateSetMatches(PRESSED_WINDOW_FOCUSED_STATE_SET, arrayOfInt)) {
+      if (StateSet.stateSetMatches(PRESSED_WINDOW_FOCUSED_STATE_SET, arrayOfInt))
+      {
         localDrawable.setAlpha(66);
+        return;
       }
+      localDrawable.setAlpha(255);
     }
-    else
-    {
-      return;
-    }
-    localDrawable.setAlpha(255);
   }
   
   public void setVisibility(int paramInt)
   {
-    if ((this.setVisibilityHandler == null) || (!this.setVisibilityHandler.onSetVisibility(paramInt))) {
+    FadeIconImageView.ISetVisibilityHandler localISetVisibilityHandler = this.setVisibilityHandler;
+    if ((localISetVisibilityHandler == null) || (!localISetVisibilityHandler.onSetVisibility(paramInt))) {
       super.setVisibility(paramInt);
     }
   }
@@ -53,7 +52,7 @@ public class FadeIconImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.FadeIconImageView
  * JD-Core Version:    0.7.0.1
  */

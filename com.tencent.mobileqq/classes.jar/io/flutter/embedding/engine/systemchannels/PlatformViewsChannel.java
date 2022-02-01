@@ -31,10 +31,11 @@ public class PlatformViewsChannel
   
   public void invokeViewFocused(int paramInt)
   {
-    if (this.channel == null) {
+    MethodChannel localMethodChannel = this.channel;
+    if (localMethodChannel == null) {
       return;
     }
-    this.channel.invokeMethod("viewFocused", Integer.valueOf(paramInt));
+    localMethodChannel.invokeMethod("viewFocused", Integer.valueOf(paramInt));
   }
   
   public void setPlatformViewsHandler(@Nullable PlatformViewsChannel.PlatformViewsHandler paramPlatformViewsHandler)
@@ -44,7 +45,7 @@ public class PlatformViewsChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformViewsChannel
  * JD-Core Version:    0.7.0.1
  */

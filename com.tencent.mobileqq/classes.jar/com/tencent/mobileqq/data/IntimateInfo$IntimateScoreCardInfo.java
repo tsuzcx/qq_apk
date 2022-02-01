@@ -22,34 +22,29 @@ public class IntimateInfo$IntimateScoreCardInfo
   
   public static IntimateScoreCardInfo copyFrom(oidb_0xcf4.MutualScoreCard paramMutualScoreCard)
   {
-    Object localObject;
     if (paramMutualScoreCard == null) {
-      localObject = null;
+      return null;
     }
-    IntimateScoreCardInfo localIntimateScoreCardInfo;
-    do
-    {
-      return localObject;
-      localIntimateScoreCardInfo = new IntimateScoreCardInfo();
-      localIntimateScoreCardInfo.type = paramMutualScoreCard.eMutualMarkNewType.get();
-      localIntimateScoreCardInfo.level = paramMutualScoreCard.uint32_level.get();
-      localIntimateScoreCardInfo.days = paramMutualScoreCard.uint32_days.get();
-      if (paramMutualScoreCard.bytes_title.has()) {
-        localIntimateScoreCardInfo.title = paramMutualScoreCard.bytes_title.get().toStringUtf8();
-      }
-      localIntimateScoreCardInfo.score = paramMutualScoreCard.uint32_score.get();
-      if (paramMutualScoreCard.bytes_type_describe.has()) {
-        localIntimateScoreCardInfo.typeDescribe = paramMutualScoreCard.bytes_type_describe.get().toStringUtf8();
-      }
-      if (paramMutualScoreCard.bytes_level_describe.has()) {
-        localIntimateScoreCardInfo.levelDescribe = paramMutualScoreCard.bytes_level_describe.get().toStringUtf8();
-      }
-      if (paramMutualScoreCard.bytes_button_describe.has()) {
-        localIntimateScoreCardInfo.buttonDescribe = paramMutualScoreCard.bytes_button_describe.get().toStringUtf8();
-      }
-      localObject = localIntimateScoreCardInfo;
-    } while (!paramMutualScoreCard.bytes_button_url.has());
-    localIntimateScoreCardInfo.buttonUrl = paramMutualScoreCard.bytes_button_url.get().toStringUtf8();
+    IntimateScoreCardInfo localIntimateScoreCardInfo = new IntimateScoreCardInfo();
+    localIntimateScoreCardInfo.type = paramMutualScoreCard.eMutualMarkNewType.get();
+    localIntimateScoreCardInfo.level = paramMutualScoreCard.uint32_level.get();
+    localIntimateScoreCardInfo.days = paramMutualScoreCard.uint32_days.get();
+    if (paramMutualScoreCard.bytes_title.has()) {
+      localIntimateScoreCardInfo.title = paramMutualScoreCard.bytes_title.get().toStringUtf8();
+    }
+    localIntimateScoreCardInfo.score = paramMutualScoreCard.uint32_score.get();
+    if (paramMutualScoreCard.bytes_type_describe.has()) {
+      localIntimateScoreCardInfo.typeDescribe = paramMutualScoreCard.bytes_type_describe.get().toStringUtf8();
+    }
+    if (paramMutualScoreCard.bytes_level_describe.has()) {
+      localIntimateScoreCardInfo.levelDescribe = paramMutualScoreCard.bytes_level_describe.get().toStringUtf8();
+    }
+    if (paramMutualScoreCard.bytes_button_describe.has()) {
+      localIntimateScoreCardInfo.buttonDescribe = paramMutualScoreCard.bytes_button_describe.get().toStringUtf8();
+    }
+    if (paramMutualScoreCard.bytes_button_url.has()) {
+      localIntimateScoreCardInfo.buttonUrl = paramMutualScoreCard.bytes_button_url.get().toStringUtf8();
+    }
     return localIntimateScoreCardInfo;
   }
   
@@ -93,12 +88,40 @@ public class IntimateInfo$IntimateScoreCardInfo
   
   public String toString()
   {
-    return "IntimateScoreCardInfo{type=" + this.type + ", level='" + this.level + '\'' + ", days='" + this.days + '\'' + ", title='" + this.title + '\'' + ", score='" + this.score + '\'' + ", typeDescribe='" + this.typeDescribe + '\'' + ", levelDescribe='" + this.levelDescribe + '\'' + ", buttonDescribe='" + this.buttonDescribe + '\'' + ", buttonUrl='" + this.buttonUrl + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IntimateScoreCardInfo{type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", level='");
+    localStringBuilder.append(this.level);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", days='");
+    localStringBuilder.append(this.days);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", title='");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", score='");
+    localStringBuilder.append(this.score);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", typeDescribe='");
+    localStringBuilder.append(this.typeDescribe);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", levelDescribe='");
+    localStringBuilder.append(this.levelDescribe);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", buttonDescribe='");
+    localStringBuilder.append(this.buttonDescribe);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", buttonUrl='");
+    localStringBuilder.append(this.buttonUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.IntimateInfo.IntimateScoreCardInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,21 +13,21 @@ class ScrollReader$RecyclerViewScrollReader
   public int readScroll(View paramView)
   {
     paramView = ((RecyclerView)paramView).getLayoutManager();
-    int k;
-    if ((paramView instanceof LinearLayoutManager))
-    {
-      k = ((LinearLayoutManager)paramView).findLastVisibleItemPosition();
-      return k;
+    if ((paramView instanceof LinearLayoutManager)) {
+      return ((LinearLayoutManager)paramView).findLastVisibleItemPosition();
     }
-    if ((paramView instanceof StaggeredGridLayoutManager))
+    boolean bool = paramView instanceof StaggeredGridLayoutManager;
+    int i = -1;
+    int k = i;
+    if (bool)
     {
       paramView = (StaggeredGridLayoutManager)paramView;
       int m = paramView.getSpanCount();
-      if ((this.mVisiblePos == null) || (this.mVisiblePos.length < m)) {
+      int[] arrayOfInt = this.mVisiblePos;
+      if ((arrayOfInt == null) || (arrayOfInt.length < m)) {
         this.mVisiblePos = new int[m];
       }
       paramView.findLastVisibleItemPositions(this.mVisiblePos);
-      int i = -1;
       int j = 0;
       for (;;)
       {
@@ -39,12 +39,12 @@ class ScrollReader$RecyclerViewScrollReader
         j += 1;
       }
     }
-    return -1;
+    return k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.ScrollReader.RecyclerViewScrollReader
  * JD-Core Version:    0.7.0.1
  */

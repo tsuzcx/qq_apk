@@ -4,14 +4,15 @@ class QZLog$LogBuilder
 {
   private static final int MAX_POOL_SIZE = 50;
   private static LogBuilder sPool;
-  private static int sPoolSize = 0;
+  private static int sPoolSize;
   private static final Object sPoolSync = new Object();
   private LogBuilder next;
   private StringBuilder stringBuilder = new StringBuilder(128);
   
   private void clearForRecycle()
   {
-    this.stringBuilder.delete(0, this.stringBuilder.length());
+    StringBuilder localStringBuilder = this.stringBuilder;
+    localStringBuilder.delete(0, localStringBuilder.length());
   }
   
   public static LogBuilder obtain()
@@ -130,7 +131,7 @@ class QZLog$LogBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.QZLog.LogBuilder
  * JD-Core Version:    0.7.0.1
  */

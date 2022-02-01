@@ -10,8 +10,12 @@ final class PngQuantUtils$1
 {
   public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkUpByBusinessId loaded,code=");
+      localStringBuilder.append(paramInt);
+      QLog.d("PngQuantUtils", 2, localStringBuilder.toString());
     }
     if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
       PngQuantUtils.a.set(false);
@@ -22,7 +26,7 @@ final class PngQuantUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils.1
  * JD-Core Version:    0.7.0.1
  */

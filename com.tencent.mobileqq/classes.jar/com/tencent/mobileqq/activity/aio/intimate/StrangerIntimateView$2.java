@@ -63,13 +63,15 @@ class StrangerIntimateView$2
     }
     catch (IllegalArgumentException paramTextPaint)
     {
-      QLog.e("intimate_relationship", 2, " color parse err");
+      label57:
+      break label57;
     }
+    QLog.e("intimate_relationship", 2, " color parse err");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.StrangerIntimateView.2
  * JD-Core Version:    0.7.0.1
  */

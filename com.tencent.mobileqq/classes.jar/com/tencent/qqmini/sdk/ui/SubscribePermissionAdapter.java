@@ -27,53 +27,57 @@ public class SubscribePermissionAdapter
   
   public int getItemCount()
   {
-    if (this.subscribeItemList != null) {
-      return this.subscribeItemList.size();
+    List localList = this.subscribeItemList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
   
   public int getItemViewType(int paramInt)
   {
-    if ((this.subscribeItemList == null) || (this.subscribeItemList.size() <= 0)) {
-      return SubscribeItemModel.SubscribeViewType.TITLE.ordinal();
+    List localList = this.subscribeItemList;
+    if ((localList != null) && (localList.size() > 0)) {
+      return ((SubscribeItemModel)this.subscribeItemList.get(paramInt)).getViewType().ordinal();
     }
-    return ((SubscribeItemModel)this.subscribeItemList.get(paramInt)).getViewType().ordinal();
+    return SubscribeItemModel.SubscribeViewType.TITLE.ordinal();
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.subscribeItemList == null) {}
-    for (;;)
+    Object localObject = this.subscribeItemList;
+    if (localObject != null)
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      SubscribeItemModel localSubscribeItemModel = (SubscribeItemModel)this.subscribeItemList.get(paramInt);
-      if ((localSubscribeItemModel != null) && (paramViewHolder != null))
+      localObject = (SubscribeItemModel)((List)localObject).get(paramInt);
+      if ((localObject != null) && (paramViewHolder != null))
       {
-        int i = localSubscribeItemModel.getViewType().ordinal();
+        int i = ((SubscribeItemModel)localObject).getViewType().ordinal();
         if (i == SubscribeItemModel.SubscribeViewType.TITLE.ordinal()) {
-          ((SubscribePermissionAdapter.TitleViewHolder)paramViewHolder).titleTextView.setText(localSubscribeItemModel.getContent());
+          ((SubscribePermissionAdapter.TitleViewHolder)paramViewHolder).titleTextView.setText(((SubscribeItemModel)localObject).getContent());
         }
+        SubscribePermissionAdapter.SubscribeViewHolder localSubscribeViewHolder;
         if (i == SubscribeItemModel.SubscribeViewType.LONG_TERM_SUBSCRIBE.ordinal())
         {
-          ((SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder).contentTextView.setText(localSubscribeItemModel.getContent());
-          ((SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder).detailImageView.setVisibility(8);
-          ((SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder).authSwitch.setChecked(localSubscribeItemModel.isChecked());
+          localSubscribeViewHolder = (SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder;
+          localSubscribeViewHolder.contentTextView.setText(((SubscribeItemModel)localObject).getContent());
+          localSubscribeViewHolder.detailImageView.setVisibility(8);
+          localSubscribeViewHolder.authSwitch.setChecked(((SubscribeItemModel)localObject).isChecked());
           int j = paramViewHolder.getAdapterPosition();
-          ((SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder).authSwitch.setOnCheckedChangeListener(new SubscribePermissionAdapter.1(this, j));
+          localSubscribeViewHolder.authSwitch.setOnCheckedChangeListener(new SubscribePermissionAdapter.1(this, j));
         }
         if ((i == SubscribeItemModel.SubscribeViewType.ONE_TIME_SUBSCRIBE.ordinal()) || (i == SubscribeItemModel.SubscribeViewType.INTERACTIVE_SUBSCRIBE.ordinal()))
         {
-          ((SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder).contentTextView.setText(localSubscribeItemModel.getContent());
+          localSubscribeViewHolder = (SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder;
+          localSubscribeViewHolder.contentTextView.setText(((SubscribeItemModel)localObject).getContent());
           i = paramViewHolder.getAdapterPosition();
-          ((SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder).detailImageView.setVisibility(0);
-          ((SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder).detailImageView.setOnClickListener(new SubscribePermissionAdapter.2(this, i));
-          ((SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder).authSwitch.setChecked(localSubscribeItemModel.isChecked());
-          ((SubscribePermissionAdapter.SubscribeViewHolder)paramViewHolder).authSwitch.setOnCheckedChangeListener(new SubscribePermissionAdapter.3(this, i));
+          localSubscribeViewHolder.detailImageView.setVisibility(0);
+          localSubscribeViewHolder.detailImageView.setOnClickListener(new SubscribePermissionAdapter.2(this, i));
+          localSubscribeViewHolder.authSwitch.setChecked(((SubscribeItemModel)localObject).isChecked());
+          localSubscribeViewHolder.authSwitch.setOnCheckedChangeListener(new SubscribePermissionAdapter.3(this, i));
         }
       }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -82,10 +86,10 @@ public class SubscribePermissionAdapter
     if (paramInt == SubscribeItemModel.SubscribeViewType.TITLE.ordinal()) {
       return new SubscribePermissionAdapter.TitleViewHolder(localLayoutInflater.inflate(R.layout.mini_sdk_once_sub_item_title, paramViewGroup, false));
     }
-    if ((paramInt == SubscribeItemModel.SubscribeViewType.LONG_TERM_SUBSCRIBE.ordinal()) || (paramInt == SubscribeItemModel.SubscribeViewType.ONE_TIME_SUBSCRIBE.ordinal()) || (paramInt == SubscribeItemModel.SubscribeViewType.INTERACTIVE_SUBSCRIBE.ordinal())) {
-      return new SubscribePermissionAdapter.SubscribeViewHolder(localLayoutInflater.inflate(R.layout.mini_sdk_once_sub_item_switcher, paramViewGroup, false));
+    if ((paramInt != SubscribeItemModel.SubscribeViewType.LONG_TERM_SUBSCRIBE.ordinal()) && (paramInt != SubscribeItemModel.SubscribeViewType.ONE_TIME_SUBSCRIBE.ordinal()) && (paramInt != SubscribeItemModel.SubscribeViewType.INTERACTIVE_SUBSCRIBE.ordinal())) {
+      return null;
     }
-    return null;
+    return new SubscribePermissionAdapter.SubscribeViewHolder(localLayoutInflater.inflate(R.layout.mini_sdk_once_sub_item_switcher, paramViewGroup, false));
   }
   
   public void setData(List<SubscribeItemModel> paramList)
@@ -96,7 +100,7 @@ public class SubscribePermissionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubscribePermissionAdapter
  * JD-Core Version:    0.7.0.1
  */

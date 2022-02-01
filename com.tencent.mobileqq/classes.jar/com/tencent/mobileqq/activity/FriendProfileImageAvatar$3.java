@@ -18,47 +18,47 @@ class FriendProfileImageAvatar$3
   
   public void run()
   {
-    if (FileUtil.a(FaceUtil.b(String.valueOf(this.a)))) {
+    if (FileUtil.b(FaceUtil.b(String.valueOf(this.a))))
+    {
       if (NearbyUtils.a()) {
         NearbyUtils.a("Q.profilecard.Avatar", "downloadHDAvatar hd avatar file exist 1", new Object[0]);
       }
-    }
-    do
-    {
       return;
-      if (!this.this$0.c) {
-        break;
+    }
+    if (this.this$0.c)
+    {
+      if (NearbyUtils.a()) {
+        NearbyUtils.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 2", new Object[0]);
       }
-    } while (!NearbyUtils.a());
-    NearbyUtils.a("Q.profilecard.Avatar", "downloadHDAvatar makingHDUrl return 2", new Object[0]);
-    return;
-    this.this$0.c = true;
-    Setting localSetting = (Setting)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().find(Setting.class, this.a);
-    if ((localSetting != null) && (!TextUtils.isEmpty(localSetting.url)))
+      return;
+    }
+    Object localObject = this.this$0;
+    ((FriendProfileImageAvatar)localObject).c = true;
+    localObject = (Setting)((FriendProfileImageAvatar)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().find(Setting.class, this.a);
+    if ((localObject != null) && (!TextUtils.isEmpty(((Setting)localObject).url)))
     {
       Message localMessage = Message.obtain();
       localMessage.what = 5;
-      localMessage.obj = localSetting;
+      localMessage.obj = localObject;
       if (this.this$0.jdField_a_of_type_MqqOsMqqHandler != null) {
         this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
       }
     }
-    for (;;)
+    else
     {
-      this.this$0.c = false;
-      if (!NearbyUtils.a()) {
-        break;
-      }
+      localObject = this.this$0;
+      ((FriendProfileImageAvatar)localObject).jdField_a_of_type_Boolean = true;
+      ((FriendProfileImageAvatar)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.refreshFace(this.a);
+    }
+    this.this$0.c = false;
+    if (NearbyUtils.a()) {
       NearbyUtils.a("Q.profilecard.Avatar", "downloadHDAvatar end of makingHDUrl", new Object[0]);
-      return;
-      this.this$0.jdField_a_of_type_Boolean = true;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.refreshFace(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageAvatar.3
  * JD-Core Version:    0.7.0.1
  */

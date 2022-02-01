@@ -18,40 +18,45 @@ class c$2
     {
       try
       {
-        if (this.a.getAction() != 1) {
-          break;
-        }
-        localObject = null;
-        switch (this.a.getKeyCode())
+        if (this.a.getAction() == 1)
         {
-        case 3: 
-          localObject = new d.a().a(UiAction.KEY).a((a)localObject).h(com.tencent.trackrecordlib.g.b.b()).g(com.tencent.trackrecordlib.g.b.c()).a();
-          RecordManager.getInstance().recordEvent((com.tencent.trackrecordlib.c.b)localObject);
-          c.a(this.b, (com.tencent.trackrecordlib.c.b)localObject);
-          return;
+          Object localObject = null;
+          int i = this.a.getKeyCode();
+          if (i != 3) {
+            if (i == 4) {}
+          }
+          switch (i)
+          {
+          case 26: 
+            localObject = f.a(UiActionKey.LOCK);
+            break;
+          case 25: 
+            localObject = f.a(UiActionKey.VOLUME_SUB);
+            break;
+          case 24: 
+            localObject = f.a(UiActionKey.VOLUME_PLUS);
+            continue;
+            localObject = f.a(UiActionKey.BACK);
+            continue;
+            localObject = f.a(UiActionKey.HOME);
+            localObject = new d.a().a(UiAction.KEY).a((a)localObject).h(com.tencent.trackrecordlib.g.b.b()).g(com.tencent.trackrecordlib.g.b.c()).a();
+            RecordManager.getInstance().recordEvent((com.tencent.trackrecordlib.c.b)localObject);
+            c.a(this.b, (com.tencent.trackrecordlib.c.b)localObject);
+            return;
+          }
         }
       }
       catch (Throwable localThrowable)
       {
-        Object localObject;
         localThrowable.printStackTrace();
-        return;
       }
-      localObject = f.a(UiActionKey.HOME);
-      continue;
-      localObject = f.a(UiActionKey.BACK);
-      continue;
-      localObject = f.a(UiActionKey.VOLUME_PLUS);
-      continue;
-      localObject = f.a(UiActionKey.VOLUME_SUB);
-      continue;
-      localObject = f.a(UiActionKey.LOCK);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.core.c.2
  * JD-Core Version:    0.7.0.1
  */

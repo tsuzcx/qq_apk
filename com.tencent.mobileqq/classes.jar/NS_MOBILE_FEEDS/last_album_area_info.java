@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class last_album_area_info
   extends JceStruct
@@ -43,22 +44,25 @@ public final class last_album_area_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 1);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.anonymity, 2);
-    if (this.pos != null) {
-      paramJceOutputStream.write(this.pos, 3);
+    localObject = this.pos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.switch_state, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.last_album_area_info
  * JD-Core Version:    0.7.0.1
  */

@@ -26,10 +26,10 @@ public final class UploadResponse$Builder
   
   public UploadResponse build()
   {
-    if (this.request == null) {
-      throw new IllegalStateException("request == null");
+    if (this.request != null) {
+      return new UploadResponse(this, null);
     }
-    return new UploadResponse(this, null);
+    throw new IllegalStateException("request == null");
   }
   
   public Builder code(int paramInt)
@@ -70,7 +70,7 @@ public final class UploadResponse$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.uploader.UploadResponse.Builder
  * JD-Core Version:    0.7.0.1
  */

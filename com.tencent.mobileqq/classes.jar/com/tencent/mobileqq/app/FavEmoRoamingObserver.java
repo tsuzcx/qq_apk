@@ -16,17 +16,21 @@ public class FavEmoRoamingObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-    case 0: 
-      do
+      if (paramInt != 1)
       {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return;
+          }
+          onModifyFavData(paramBoolean, paramObject);
+          return;
+        }
+        onUpdateFavData(paramBoolean, paramObject);
         return;
-      } while (paramObject == null);
-      onDelEmoResponse(((Boolean)paramObject).booleanValue());
-      return;
-    case 1: 
+      }
       try
       {
         onUploadReq((ArrayList)paramObject);
@@ -37,11 +41,10 @@ public class FavEmoRoamingObserver
         QLog.e("FavEmoRoamingObserver", 1, "onUploadReq error, ", paramObject);
         return;
       }
-    case 2: 
-      onUpdateFavData(paramBoolean, paramObject);
-      return;
     }
-    onModifyFavData(paramBoolean, paramObject);
+    if (paramObject != null) {
+      onDelEmoResponse(((Boolean)paramObject).booleanValue());
+    }
   }
   
   protected void onUpdateFavData(boolean paramBoolean, Object paramObject) {}
@@ -50,7 +53,7 @@ public class FavEmoRoamingObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FavEmoRoamingObserver
  * JD-Core Version:    0.7.0.1
  */

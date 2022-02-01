@@ -18,12 +18,11 @@ public class j
     paramArrayOfByte2 = new byte[this.d];
     util.int8_to_buf(paramArrayOfByte2, 0, paramArrayOfByte1.length);
     System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, 1, paramArrayOfByte1.length);
-    int i = paramArrayOfByte1.length + 1;
+    int i = 1 + paramArrayOfByte1.length;
     util.int16_to_buf(paramArrayOfByte2, i, arrayOfByte.length);
-    i += 2;
-    System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, i, arrayOfByte.length);
+    System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, i + 2, arrayOfByte.length);
     i = arrayOfByte.length;
-    paramArrayOfByte1 = new tlv_t544().get_common_tlv544(this.b, 0L, 0L, paramArrayOfByte2);
+    paramArrayOfByte1 = new tlv_t544().get_tlv_544("", "812_5", paramArrayOfByte2);
     arrayOfByte = new byte[this.d + paramArrayOfByte1.length];
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, 0, paramArrayOfByte2.length);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, paramArrayOfByte2.length, paramArrayOfByte1.length);
@@ -32,7 +31,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.a.j
  * JD-Core Version:    0.7.0.1
  */

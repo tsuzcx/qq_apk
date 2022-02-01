@@ -27,10 +27,13 @@ public class OkHttpClientFactory
   private static OkHttpClient.Builder a(long paramLong, boolean paramBoolean)
   {
     OkHttpClient.Builder localBuilder = new OkHttpClient.Builder();
-    if (paramBoolean) {}
-    for (List localList = Arrays.asList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 });; localList = Arrays.asList(new Protocol[] { Protocol.HTTP_1_1 })) {
-      return localBuilder.protocols(localList).connectTimeout(paramLong, TimeUnit.MILLISECONDS).readTimeout(paramLong, TimeUnit.MILLISECONDS).writeTimeout(paramLong, TimeUnit.MILLISECONDS).connectionPool(jdField_a_of_type_Okhttp3ConnectionPool).dispatcher(jdField_a_of_type_Okhttp3Dispatcher);
+    List localList;
+    if (paramBoolean) {
+      localList = Arrays.asList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 });
+    } else {
+      localList = Arrays.asList(new Protocol[] { Protocol.HTTP_1_1 });
     }
+    return localBuilder.protocols(localList).connectTimeout(paramLong, TimeUnit.MILLISECONDS).readTimeout(paramLong, TimeUnit.MILLISECONDS).writeTimeout(paramLong, TimeUnit.MILLISECONDS).connectionPool(jdField_a_of_type_Okhttp3ConnectionPool).dispatcher(jdField_a_of_type_Okhttp3Dispatcher);
   }
   
   public static OkHttpClient a()
@@ -48,7 +51,7 @@ public class OkHttpClientFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.okhttp.OkHttpClientFactory
  * JD-Core Version:    0.7.0.1
  */

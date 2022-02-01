@@ -40,100 +40,123 @@ public class SonicUtils
   
   static String addSonicUrlParam(String paramString1, String paramString2, String paramString3)
   {
-    StringBuilder localStringBuilder;
-    int j;
-    int i;
-    String str1;
-    String str2;
-    int m;
     if (!TextUtils.isEmpty(paramString1))
     {
-      localStringBuilder = new StringBuilder(paramString1);
-      j = localStringBuilder.lastIndexOf("/");
-      i = j;
+      StringBuilder localStringBuilder = new StringBuilder(paramString1);
+      int j = localStringBuilder.lastIndexOf("/");
+      int i = j;
       if (j < 0) {
         i = 0;
       }
-      str1 = "&" + paramString2 + "=";
-      str2 = "?" + paramString2 + "=";
-      m = str1.length();
-    }
-    for (;;)
-    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("&");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append("=");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("?");
+      ((StringBuilder)localObject2).append(paramString2);
+      ((StringBuilder)localObject2).append("=");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      int m = ((String)localObject1).length();
       try
       {
-        int k = localStringBuilder.indexOf(str1, i);
-        j = k;
-        if (-1 == k) {
-          j = localStringBuilder.indexOf(str2, i);
-        }
-        if (j <= 0) {
-          break;
-        }
-        k = localStringBuilder.indexOf("&", j + m);
-        if (k > 0)
+        for (;;)
         {
-          localStringBuilder.replace(j + 1, k + 1, "");
-          continue;
-          return paramString1;
+          int k = localStringBuilder.indexOf((String)localObject1, i);
+          j = k;
+          if (-1 == k) {
+            j = localStringBuilder.indexOf((String)localObject2, i);
+          }
+          if (j <= 0) {
+            break;
+          }
+          k = localStringBuilder.indexOf("&", j + m);
+          if (k > 0) {
+            localStringBuilder.replace(j + 1, k + 1, "");
+          } else {
+            localStringBuilder.replace(j, localStringBuilder.length(), "");
+          }
         }
+        if (-1 != localStringBuilder.indexOf("?"))
+        {
+          localStringBuilder.append("&");
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append("=");
+          localStringBuilder.append(paramString3);
+        }
+        else
+        {
+          localStringBuilder.append("?");
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append("=");
+          localStringBuilder.append(paramString3);
+        }
+        return localStringBuilder.toString();
       }
       catch (Throwable paramString2)
       {
-        log("SonicSdk_SonicUtils", 6, "addSonicUrlParam error:" + paramString2.getMessage());
+        paramString3 = new StringBuilder();
+        paramString3.append("addSonicUrlParam error:");
+        paramString3.append(paramString2.getMessage());
+        log("SonicSdk_SonicUtils", 6, paramString3.toString());
       }
-      localStringBuilder.replace(j, localStringBuilder.length(), "");
     }
-    if (-1 != localStringBuilder.indexOf("?")) {
-      localStringBuilder.append("&").append(paramString2).append("=").append(paramString3);
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append("?").append(paramString2).append("=").append(paramString3);
-    }
+    return paramString1;
   }
   
   static String addTagInfo(String paramString1, String paramString2, String paramString3)
   {
     StringBuilder localStringBuilder = new StringBuilder(paramString1);
-    if (!TextUtils.isEmpty(paramString1)) {}
-    try
-    {
-      localStringBuilder.append("<script> var _WebSoLocalTime=").append(paramString2).append(";</script>");
-      localStringBuilder.append("<script> var _WebSoNetTime=").append(paramString3).append(";</script>");
-      if (shouldLog(3)) {
-        log("SonicSdk_SonicUtils", 3, "add _WebSoLocalTime=" + paramString2 + ", add _WebSoNetTime=" + paramString3);
-      }
-      return localStringBuilder.toString();
-    }
-    catch (Throwable paramString1)
-    {
-      for (;;)
+    if (!TextUtils.isEmpty(paramString1)) {
+      try
       {
-        log("SonicSdk_SonicUtils", 6, "addTagInfo error:" + paramString1.getMessage());
+        localStringBuilder.append("<script> var _WebSoLocalTime=");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(";</script>");
+        localStringBuilder.append("<script> var _WebSoNetTime=");
+        localStringBuilder.append(paramString3);
+        localStringBuilder.append(";</script>");
+        if (shouldLog(3))
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("add _WebSoLocalTime=");
+          paramString1.append(paramString2);
+          paramString1.append(", add _WebSoNetTime=");
+          paramString1.append(paramString3);
+          log("SonicSdk_SonicUtils", 3, paramString1.toString());
+        }
+      }
+      catch (Throwable paramString1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("addTagInfo error:");
+        paramString2.append(paramString1.getMessage());
+        log("SonicSdk_SonicUtils", 6, paramString2.toString());
       }
     }
+    return localStringBuilder.toString();
   }
   
   static String buildHtml(String paramString, JSONObject paramJSONObject, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramJSONObject == null)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder(paramString.length() + paramInt);
-    localStringBuilder.append(paramString);
-    paramString = paramJSONObject.keys();
-    while (paramString.hasNext())
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null))
     {
-      String str1 = paramString.next().toString();
-      String str2 = paramJSONObject.optString(str1);
-      paramInt = localStringBuilder.indexOf(str1);
-      if (-1 != paramInt) {
-        localStringBuilder.replace(paramInt, str1.length() + paramInt, str2);
+      StringBuilder localStringBuilder = new StringBuilder(paramString.length() + paramInt);
+      localStringBuilder.append(paramString);
+      paramString = paramJSONObject.keys();
+      while (paramString.hasNext())
+      {
+        String str1 = paramString.next().toString();
+        String str2 = paramJSONObject.optString(str1);
+        paramInt = localStringBuilder.indexOf(str1);
+        if (-1 != paramInt) {
+          localStringBuilder.replace(paramInt, str1.length() + paramInt, str2);
+        }
       }
+      return localStringBuilder.toString();
     }
-    return localStringBuilder.toString();
+    return null;
   }
   
   static String buildHtml(String paramString1, JSONObject paramJSONObject, String paramString2, int paramInt)
@@ -149,21 +172,27 @@ public class SonicUtils
       localObject = SonicFileUtils.readFile((File)localObject);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        if (paramBoolean) {}
-        for (paramJSONObject = mergeLocalAndBuildHtml(paramString1, (String)localObject, paramJSONObject, paramInt); (TextUtils.isEmpty(paramString2)) || (paramString2.equalsIgnoreCase(getSHA1(paramJSONObject))); paramJSONObject = buildHtml((String)localObject, paramJSONObject, paramInt)) {
-          return paramJSONObject;
+        if (paramBoolean) {
+          paramJSONObject = mergeLocalAndBuildHtml(paramString1, (String)localObject, paramJSONObject, paramInt);
+        } else {
+          paramJSONObject = buildHtml((String)localObject, paramJSONObject, paramInt);
         }
-        SonicEngine.getInstance().getRuntime().postTaskToThread(new SonicUtils.1(paramString1, paramJSONObject), 0L);
-        log("SonicSdk_SonicUtils", 6, "buildHtml error: verify sha1 error.");
-        return null;
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          if (paramString2.equalsIgnoreCase(getSHA1(paramJSONObject))) {
+            return paramJSONObject;
+          }
+          SonicEngine.getInstance().getRuntime().postTaskToThread(new SonicUtils.1(paramString1, paramJSONObject), 0L);
+          log("SonicSdk_SonicUtils", 6, "buildHtml error: verify sha1 error.");
+          return null;
+        }
+        return paramJSONObject;
       }
       log("SonicSdk_SonicUtils", 6, "buildHtml error: template string is empty.");
-    }
-    for (;;)
-    {
       return null;
-      log("SonicSdk_SonicUtils", 6, "buildHtml error: template file is not exists.");
     }
+    log("SonicSdk_SonicUtils", 6, "buildHtml error: template file is not exists.");
+    return null;
   }
   
   static String getCharset(String paramString)
@@ -183,11 +212,12 @@ public class SonicUtils
         if (j == -1) {
           i = paramString.length();
         }
-        paramString = paramString.substring(8, i);
-        str1 = paramString;
-        if (TextUtils.isEmpty(paramString)) {
-          str1 = DEFAULT_CHARSET;
+        str1 = paramString.substring(8, i);
+        paramString = str1;
+        if (TextUtils.isEmpty(str1)) {
+          paramString = DEFAULT_CHARSET;
         }
+        str1 = paramString;
       }
     }
     return str1;
@@ -197,59 +227,74 @@ public class SonicUtils
   {
     try
     {
-      paramString = SonicFileUtils.readFile(new File(SonicFileUtils.getSonicDataPath(paramString)));
-      if (!TextUtils.isEmpty(paramString)) {}
-      for (paramString = getDiffData(new JSONObject(paramString), paramJSONObject);; paramString = paramJSONObject)
-      {
-        if ((paramString != null) && (paramString.length() > 0)) {
-          paramString.put("local_refresh_time", System.currentTimeMillis());
-        }
-        return paramString;
+      localObject = SonicFileUtils.readFile(new File(SonicFileUtils.getSonicDataPath(paramString)));
+      paramString = paramJSONObject;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        paramString = getDiffData(new JSONObject((String)localObject), paramJSONObject);
       }
-      return null;
+      paramJSONObject = paramString;
+      if (paramString != null)
+      {
+        paramJSONObject = paramString;
+        if (paramString.length() > 0)
+        {
+          paramString.put("local_refresh_time", System.currentTimeMillis());
+          return paramString;
+        }
+      }
     }
     catch (Throwable paramString)
     {
-      log("SonicSdk_SonicUtils", 6, "getDiffData error1:" + paramString.getMessage());
+      paramJSONObject = null;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getDiffData error1:");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      log("SonicSdk_SonicUtils", 6, ((StringBuilder)localObject).toString());
     }
+    return paramJSONObject;
   }
   
   static JSONObject getDiffData(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    Object localObject;
-    if ((paramJSONObject1 == null) || (paramJSONObject2 == null)) {
-      localObject = null;
-    }
-    for (;;)
+    if (paramJSONObject1 != null)
     {
-      return localObject;
+      if (paramJSONObject2 == null) {
+        return null;
+      }
       JSONObject localJSONObject = new JSONObject();
       try
       {
         Iterator localIterator = paramJSONObject2.keys();
-        for (;;)
+        while (localIterator.hasNext())
         {
-          localObject = localJSONObject;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localObject = localIterator.next().toString();
-          String str = paramJSONObject2.optString((String)localObject);
-          if (!str.equals(paramJSONObject1.optString((String)localObject)))
+          String str1 = localIterator.next().toString();
+          String str2 = paramJSONObject2.optString(str1);
+          if (!str2.equals(paramJSONObject1.optString(str1)))
           {
-            localJSONObject.put((String)localObject, str);
-            if (shouldLog(3)) {
-              log("SonicSdk_SonicUtils", 3, "getDiffData:find diff data, key ->" + (String)localObject + ", length=" + str.length() + ".");
+            localJSONObject.put(str1, str2);
+            if (shouldLog(3))
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("getDiffData:find diff data, key ->");
+              localStringBuilder.append(str1);
+              localStringBuilder.append(", length=");
+              localStringBuilder.append(str2.length());
+              localStringBuilder.append(".");
+              log("SonicSdk_SonicUtils", 3, localStringBuilder.toString());
             }
           }
         }
-        return null;
+        return localJSONObject;
       }
       catch (Throwable paramJSONObject1)
       {
-        log("SonicSdk_SonicUtils", 6, "getDiffData error2:" + paramJSONObject1.getMessage());
+        paramJSONObject2 = new StringBuilder();
+        paramJSONObject2.append("getDiffData error2:");
+        paramJSONObject2.append(paramJSONObject1.getMessage());
+        log("SonicSdk_SonicUtils", 6, paramJSONObject2.toString());
       }
     }
+    return null;
   }
   
   public static HashMap<String, String> getFilteredHeaders(Map<String, List<String>> paramMap)
@@ -259,14 +304,15 @@ public class SonicUtils
       try
       {
         paramMap = paramMap.entrySet().iterator();
+        Object localObject;
         while (paramMap.hasNext())
         {
-          Map.Entry localEntry = (Map.Entry)paramMap.next();
-          if ((!"Set-Cookie".equalsIgnoreCase((String)localEntry.getKey())) && (!"Cache-Control".equalsIgnoreCase((String)localEntry.getKey())) && (!"Expires".equalsIgnoreCase((String)localEntry.getKey())) && (!"Etag".equalsIgnoreCase((String)localEntry.getKey())))
+          localObject = (Map.Entry)paramMap.next();
+          if ((!"Set-Cookie".equalsIgnoreCase((String)((Map.Entry)localObject).getKey())) && (!"Cache-Control".equalsIgnoreCase((String)((Map.Entry)localObject).getKey())) && (!"Expires".equalsIgnoreCase((String)((Map.Entry)localObject).getKey())) && (!"Etag".equalsIgnoreCase((String)((Map.Entry)localObject).getKey())))
           {
-            List localList = (List)localEntry.getValue();
+            List localList = (List)((Map.Entry)localObject).getValue();
             if ((localList != null) && (1 == localList.size())) {
-              localHashMap.put(localEntry.getKey(), localList.get(0));
+              localHashMap.put(((Map.Entry)localObject).getKey(), localList.get(0));
             }
           }
         }
@@ -274,7 +320,10 @@ public class SonicUtils
       }
       catch (Throwable paramMap)
       {
-        log("SonicSdk_SonicUtils", 6, "getFilteredHeaders error! " + paramMap.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getFilteredHeaders error! ");
+        ((StringBuilder)localObject).append(paramMap.getMessage());
+        log("SonicSdk_SonicUtils", 6, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -297,22 +346,16 @@ public class SonicUtils
   
   public static String getMime(String paramString)
   {
-    String str1 = "text/html";
-    String str2 = Uri.parse(paramString).getPath();
-    if (str2.endsWith(".css")) {
-      paramString = "text/css";
+    paramString = Uri.parse(paramString).getPath();
+    if (paramString.endsWith(".css")) {
+      return "text/css";
     }
-    do
-    {
-      return paramString;
-      if (str2.endsWith(".js")) {
-        return "application/x-javascript";
-      }
-      if ((str2.endsWith(".jpg")) || (str2.endsWith(".gif")) || (str2.endsWith(".png")) || (str2.endsWith(".jpeg")) || (str2.endsWith(".webp"))) {
-        break;
-      }
-      paramString = str1;
-    } while (!str2.endsWith(".bmp"));
+    if (paramString.endsWith(".js")) {
+      return "application/x-javascript";
+    }
+    if ((!paramString.endsWith(".jpg")) && (!paramString.endsWith(".gif")) && (!paramString.endsWith(".png")) && (!paramString.endsWith(".jpeg")) && (!paramString.endsWith(".webp")) && (!paramString.endsWith(".bmp"))) {
+      return "text/html";
+    }
     return "image/*";
   }
   
@@ -326,8 +369,10 @@ public class SonicUtils
   
   public static String getSHA1(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return "";
+    if (paramArrayOfByte != null) {
+      if (paramArrayOfByte.length <= 0) {
+        return "";
+      }
     }
     try
     {
@@ -338,99 +383,105 @@ public class SonicUtils
     }
     catch (Exception paramArrayOfByte) {}
     return "";
+    return "";
   }
   
   private static void handleCacheControl(Map<String, List<String>> paramMap, SonicDataHelper.SessionData paramSessionData)
   {
-    Object localObject;
     if (paramMap.containsKey("Cache-Control".toLowerCase()))
     {
-      localObject = (List)paramMap.get("Cache-Control".toLowerCase());
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break label260;
-      }
-      paramMap = ((String)((List)localObject).get(0)).toLowerCase();
-      if (!paramMap.contains("max-age")) {
-        break label219;
-      }
-      paramMap = paramMap.substring(paramMap.indexOf("max-age"));
-      int j = paramMap.indexOf(",");
-      int i = j;
-      if (j == -1) {
-        i = paramMap.length();
-      }
-      paramMap = paramMap.substring(8, i);
-    }
-    label260:
-    for (;;)
-    {
-      try
+      Object localObject = (List)paramMap.get("Cache-Control".toLowerCase());
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        l = Long.parseLong(paramMap) * 1000L;
-        if (l != 0L) {
-          paramSessionData.expiredTime = (l + System.currentTimeMillis());
-        }
-      }
-      catch (Exception paramMap)
-      {
-        long l;
-        log("SonicSdk_SonicUtils", 6, "handleCacheControl:sessionId(" + paramSessionData.sessionId + ") error:" + paramMap.getMessage());
-        continue;
-      }
-      l = System.currentTimeMillis() + SonicEngine.getInstance().getConfig().SONIC_CACHE_MAX_AGE;
-      if (paramSessionData.expiredTime > l) {
-        paramSessionData.expiredTime = l;
-      }
-      return;
-      label219:
-      if ((paramMap.contains("private")) || (paramMap.contains("public")))
-      {
-        paramSessionData.expiredTime = (System.currentTimeMillis() + SonicEngine.getInstance().getConfig().SONIC_CACHE_MAX_AGE);
-        continue;
-        if (paramMap.containsKey("Expires"))
+        paramMap = ((String)((List)localObject).get(0)).toLowerCase();
+        if (paramMap.contains("max-age"))
         {
-          paramMap = (List)paramMap.get("Expires");
-          if ((paramMap != null) && (paramMap.size() > 0))
+          paramMap = paramMap.substring(paramMap.indexOf("max-age"));
+          int j = paramMap.indexOf(",");
+          int i = j;
+          if (j == -1) {
+            i = paramMap.length();
+          }
+          paramMap = paramMap.substring(8, i);
+          try
           {
-            paramMap = (String)paramMap.get(0);
-            localObject = new SimpleDateFormat("EEE, dd MMM yyyy hh:mm:ss z", Locale.US);
-            ((DateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT"));
-            try
-            {
-              paramSessionData.expiredTime = (((DateFormat)localObject).parse(paramMap).getTime() + 28800000L);
+            l = Long.parseLong(paramMap) * 1000L;
+            if (l == 0L) {
+              break label401;
             }
-            catch (Exception paramMap)
-            {
-              log("SonicSdk_SonicUtils", 6, "handleCacheControl:sessionId(" + paramSessionData.sessionId + ") error:" + paramMap.getMessage());
-            }
+            paramSessionData.expiredTime = (l + System.currentTimeMillis());
+          }
+          catch (Exception paramMap)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("handleCacheControl:sessionId(");
+            ((StringBuilder)localObject).append(paramSessionData.sessionId);
+            ((StringBuilder)localObject).append(") error:");
+            ((StringBuilder)localObject).append(paramMap.getMessage());
+            log("SonicSdk_SonicUtils", 6, ((StringBuilder)localObject).toString());
           }
         }
+        else if ((paramMap.contains("private")) || (paramMap.contains("public")))
+        {
+          paramSessionData.expiredTime = (System.currentTimeMillis() + SonicEngine.getInstance().getConfig().SONIC_CACHE_MAX_AGE);
+        }
+      }
+      else if (paramMap.containsKey("Expires"))
+      {
+        paramMap = (List)paramMap.get("Expires");
+        if ((paramMap != null) && (paramMap.size() > 0))
+        {
+          paramMap = (String)paramMap.get(0);
+          localObject = new SimpleDateFormat("EEE, dd MMM yyyy hh:mm:ss z", Locale.US);
+          ((DateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT"));
+          try
+          {
+            paramSessionData.expiredTime = (((DateFormat)localObject).parse(paramMap).getTime() + 28800000L);
+          }
+          catch (Exception paramMap)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("handleCacheControl:sessionId(");
+            ((StringBuilder)localObject).append(paramSessionData.sessionId);
+            ((StringBuilder)localObject).append(") error:");
+            ((StringBuilder)localObject).append(paramMap.getMessage());
+            log("SonicSdk_SonicUtils", 6, ((StringBuilder)localObject).toString());
+          }
+        }
+      }
+      label401:
+      long l = System.currentTimeMillis() + SonicEngine.getInstance().getConfig().SONIC_CACHE_MAX_AGE;
+      if (paramSessionData.expiredTime > l) {
+        paramSessionData.expiredTime = l;
       }
     }
   }
   
   private static void handleResourceExpireTime(String paramString, SonicResourceDataHelper.ResourceData paramResourceData)
   {
-    String str = Uri.parse(paramString).getQueryParameter("max-age");
-    if (TextUtils.isEmpty(str)) {
-      paramResourceData.expiredTime = 9223372036854775807L;
-    }
-    for (;;)
+    Object localObject = Uri.parse(paramString).getQueryParameter("max-age");
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
+      paramResourceData.expiredTime = 9223372036854775807L;
       return;
-      try
+    }
+    try
+    {
+      long l = Long.parseLong((String)localObject) * 1000L;
+      if (l != 0L)
       {
-        long l = Long.parseLong(str) * 1000L;
-        if (l != 0L)
-        {
-          paramResourceData.expiredTime = (l + System.currentTimeMillis());
-          return;
-        }
+        paramResourceData.expiredTime = (l + System.currentTimeMillis());
+        return;
       }
-      catch (Exception paramResourceData)
-      {
-        log("SonicSdk_SonicUtils", 6, "handleResourceExpireTime:resourceUrl(" + paramString + ") error:" + paramResourceData.getMessage());
-      }
+    }
+    catch (Exception paramResourceData)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleResourceExpireTime:resourceUrl(");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(") error:");
+      ((StringBuilder)localObject).append(paramResourceData.getMessage());
+      log("SonicSdk_SonicUtils", 6, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -441,50 +492,57 @@ public class SonicUtils
   
   static String mergeLocalAndBuildHtml(String paramString1, String paramString2, JSONObject paramJSONObject, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (paramJSONObject == null)) {
-      return null;
-    }
-    log("SonicSdk_SonicUtils", 6, "sessionId(" + paramString1 + "), mergeLocalAndBuildHtml");
-    localStringBuilder = new StringBuilder(paramString2.length() + paramInt);
-    paramString1 = SonicFileUtils.readFile(new File(SonicFileUtils.getSonicDataPath(paramString1)));
-    try
+    if ((!TextUtils.isEmpty(paramString2)) && (paramJSONObject != null))
     {
-      Object localObject;
-      if (!TextUtils.isEmpty(paramString1))
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sessionId(");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("), mergeLocalAndBuildHtml");
+      log("SonicSdk_SonicUtils", 6, ((StringBuilder)localObject).toString());
+      StringBuilder localStringBuilder = new StringBuilder(paramString2.length() + paramInt);
+      paramString1 = SonicFileUtils.readFile(new File(SonicFileUtils.getSonicDataPath(paramString1)));
+      try
       {
-        localObject = new JSONObject(paramString1);
-        paramString1 = (String)localObject;
-        if (((JSONObject)localObject).has("data")) {
-          paramString1 = ((JSONObject)localObject).optJSONObject("data");
-        }
-        if (paramString1 != null)
+        if (!TextUtils.isEmpty(paramString1))
         {
-          localObject = paramString1.keys();
-          while (((Iterator)localObject).hasNext())
+          localObject = new JSONObject(paramString1);
+          paramString1 = (String)localObject;
+          if (((JSONObject)localObject).has("data")) {
+            paramString1 = ((JSONObject)localObject).optJSONObject("data");
+          }
+          if (paramString1 != null)
           {
-            String str = ((Iterator)localObject).next().toString();
-            if (!paramJSONObject.has(str)) {
-              paramJSONObject.put(str, paramString1.optString(str));
+            localObject = paramString1.keys();
+            while (((Iterator)localObject).hasNext())
+            {
+              String str = ((Iterator)localObject).next().toString();
+              if (!paramJSONObject.has(str)) {
+                paramJSONObject.put(str, paramString1.optString(str));
+              }
             }
           }
         }
+        return null;
       }
-      return localStringBuilder.toString();
-    }
-    catch (Throwable paramString1)
-    {
-      log("SonicSdk_SonicUtils", 6, "merge local data encounter error, " + paramString1.getMessage());
-      localStringBuilder.append(paramString2);
-      paramString1 = paramJSONObject.keys();
-      while (paramString1.hasNext())
+      catch (Throwable paramString1)
       {
-        paramString2 = paramString1.next().toString();
-        paramInt = localStringBuilder.indexOf(paramString2);
-        if (-1 != paramInt)
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("merge local data encounter error, ");
+        ((StringBuilder)localObject).append(paramString1.getMessage());
+        log("SonicSdk_SonicUtils", 6, ((StringBuilder)localObject).toString());
+        localStringBuilder.append(paramString2);
+        paramString1 = paramJSONObject.keys();
+        while (paramString1.hasNext())
         {
-          localObject = paramJSONObject.optString(paramString2);
-          localStringBuilder.replace(paramInt, paramString2.length() + paramInt, (String)localObject);
+          paramString2 = paramString1.next().toString();
+          paramInt = localStringBuilder.indexOf(paramString2);
+          if (-1 != paramInt)
+          {
+            localObject = paramJSONObject.optString(paramString2);
+            localStringBuilder.replace(paramInt, paramString2.length() + paramInt, (String)localObject);
+          }
         }
+        return localStringBuilder.toString();
       }
     }
   }
@@ -496,50 +554,40 @@ public class SonicUtils
   
   static boolean needSaveData(boolean paramBoolean, String paramString, Map<String, List<String>> paramMap)
   {
-    boolean bool1;
-    boolean bool2;
-    if ((!TextUtils.isEmpty(paramString)) && (("store".equals(paramString)) || ("true".equals(paramString))))
-    {
+    boolean bool1 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    if ((!bool1) && (("store".equals(paramString)) || ("true".equals(paramString)))) {
       bool1 = true;
-      bool2 = bool1;
-      if (bool1)
+    } else {
+      bool1 = false;
+    }
+    if ((bool1) && (paramBoolean))
+    {
+      paramString = (List)paramMap.get("Cache-Control".toLowerCase());
+      if (paramMap.containsKey("Cache-Control"))
       {
-        bool2 = bool1;
-        if (paramBoolean)
+        if ((paramString != null) && (paramString.size() > 0))
         {
-          paramString = (List)paramMap.get("Cache-Control".toLowerCase());
-          if (!paramMap.containsKey("Cache-Control")) {
-            break label147;
+          paramString = ((String)paramString.get(0)).toLowerCase();
+          paramBoolean = bool2;
+          if (paramString.contains("no-cache")) {
+            return paramBoolean;
           }
-          bool2 = bool1;
-          if (paramString != null)
-          {
-            bool2 = bool1;
-            if (paramString.size() > 0)
-            {
-              paramString = ((String)paramString.get(0)).toLowerCase();
-              if ((!paramString.contains("no-cache")) && (!paramString.contains("no-store")) && (!paramString.contains("must-revalidate"))) {
-                break label164;
-              }
-            }
+          paramBoolean = bool2;
+          if (paramString.contains("no-store")) {
+            return paramBoolean;
+          }
+          if (paramString.contains("must-revalidate")) {
+            return false;
           }
         }
       }
+      else if (paramMap.containsKey("Pragma")) {
+        return false;
+      }
     }
-    label147:
-    label164:
-    for (paramBoolean = false;; paramBoolean = bool1)
-    {
-      bool2 = paramBoolean;
-      do
-      {
-        return bool2;
-        bool1 = false;
-        break;
-        bool2 = bool1;
-      } while (!paramMap.containsKey("Pragma"));
-      return false;
-    }
+    paramBoolean = bool1;
+    return paramBoolean;
   }
   
   static boolean removeAllSessionCache()
@@ -615,99 +663,130 @@ public class SonicUtils
   @TargetApi(9)
   static void saveSonicData(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, boolean paramBoolean, Map<String, List<String>> paramMap)
   {
-    if (shouldLog(4)) {
-      log("SonicSdk_SonicUtils", 4, "saveSonicData sessionId = " + paramString1 + ", eTag = " + paramString2 + ", templateTag = " + paramString3 + ",htmlSha1 = " + paramString4 + ", htmlSize = " + paramLong);
-    }
-    SonicDataHelper.SessionData localSessionData = new SonicDataHelper.SessionData();
-    localSessionData.sessionId = paramString1;
-    handleCacheControl(paramMap, localSessionData);
-    localSessionData.eTag = paramString2;
-    localSessionData.templateTag = paramString3;
-    localSessionData.htmlSha1 = paramString4;
-    localSessionData.htmlSize = paramLong;
-    localSessionData.templateUpdateTime = System.currentTimeMillis();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localSessionData.isRedPointPreload = i;
-      SonicDataHelper.saveSessionData(paramString1, localSessionData);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static void saveSonicResourceData(String paramString1, String paramString2, long paramLong)
   {
-    if (shouldLog(4)) {
-      log("SonicSdk_SonicUtils", 4, "saveSonicResourceData resourceUrl = " + paramString1 + ", resourceSha1 = " + paramString2 + ", resourceSize = " + paramLong);
+    if (shouldLog(4))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveSonicResourceData resourceUrl = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", resourceSha1 = ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(", resourceSize = ");
+      ((StringBuilder)localObject).append(paramLong);
+      log("SonicSdk_SonicUtils", 4, ((StringBuilder)localObject).toString());
     }
-    SonicResourceDataHelper.ResourceData localResourceData = new SonicResourceDataHelper.ResourceData();
-    localResourceData.resourceId = getMD5(paramString1);
-    localResourceData.resourceSha1 = paramString2;
-    localResourceData.resourceSize = paramLong;
-    handleResourceExpireTime(paramString1, localResourceData);
-    localResourceData.lastUpdateTime = System.currentTimeMillis();
-    SonicResourceDataHelper.saveResourceData(localResourceData.resourceId, localResourceData);
+    Object localObject = new SonicResourceDataHelper.ResourceData();
+    ((SonicResourceDataHelper.ResourceData)localObject).resourceId = getMD5(paramString1);
+    ((SonicResourceDataHelper.ResourceData)localObject).resourceSha1 = paramString2;
+    ((SonicResourceDataHelper.ResourceData)localObject).resourceSize = paramLong;
+    handleResourceExpireTime(paramString1, (SonicResourceDataHelper.ResourceData)localObject);
+    ((SonicResourceDataHelper.ResourceData)localObject).lastUpdateTime = System.currentTimeMillis();
+    SonicResourceDataHelper.saveResourceData(((SonicResourceDataHelper.ResourceData)localObject).resourceId, (SonicResourceDataHelper.ResourceData)localObject);
   }
   
   static boolean separateTemplateAndData(String paramString1, String paramString2, StringBuilder paramStringBuilder1, StringBuilder paramStringBuilder2)
   {
     long l = System.currentTimeMillis();
-    StringBuilder localStringBuilder = new StringBuilder().append("separateTemplateAndData:sessionId(").append(paramString1).append(") start, htmlString = ");
-    if (paramString2.length() > 128) {}
-    for (Object localObject = paramString2.substring(0, 128);; localObject = paramString2)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("separateTemplateAndData:sessionId(");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(") start, htmlString = ");
+    Object localObject;
+    if (paramString2.length() > 128) {
+      localObject = paramString2.substring(0, 128);
+    } else {
+      localObject = paramString2;
+    }
+    localStringBuilder.append((String)localObject);
+    log("SonicSdk_SonicUtils", 4, localStringBuilder.toString());
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
     {
-      log("SonicSdk_SonicUtils", 4, (String)localObject);
-      JSONObject localJSONObject = new JSONObject();
-      int i = 0;
+      int j;
       try
       {
         Matcher localMatcher = Pattern.compile("<!--wnsdiff-?(\\w*)-->([\\s\\S]+?)<!--wnsdiff-?(\\w*)-end-->", 8).matcher(paramString2);
-        while (localMatcher.find())
+        i = 0;
+        if (localMatcher.find())
         {
           String str = localMatcher.group();
-          j = "<!--wnsdiff-".length();
           int k = str.indexOf("<!--wnsdiff-");
-          int m = str.indexOf("-->");
+          j = str.indexOf("-->");
           localStringBuilder = null;
           localObject = localStringBuilder;
           if (k != -1)
           {
+            k += 12;
             localObject = localStringBuilder;
-            if (k + j < m) {
-              localObject = str.substring(k + j, m);
+            if (k < j) {
+              localObject = str.substring(k, j);
             }
           }
-          localObject = "{" + (String)localObject + "}";
-          if (shouldLog(3)) {
-            log("SonicSdk_SonicUtils", 3, "separateTemplateAndData:sessionId(" + paramString1 + "), key = " + (String)localObject);
-          }
-          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str)))
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("{");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("}");
+          localObject = localStringBuilder.toString();
+          if (shouldLog(3))
           {
-            localJSONObject.put((String)localObject, str);
-            paramStringBuilder1.append(paramString2.substring(i, localMatcher.start()));
-            paramStringBuilder1.append((String)localObject);
-            i = localMatcher.end();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("separateTemplateAndData:sessionId(");
+            localStringBuilder.append(paramString1);
+            localStringBuilder.append("), key = ");
+            localStringBuilder.append((String)localObject);
+            log("SonicSdk_SonicUtils", 3, localStringBuilder.toString());
+          }
+          j = i;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            j = i;
+            if (!TextUtils.isEmpty(str))
+            {
+              localJSONObject.put((String)localObject, str);
+              paramStringBuilder1.append(paramString2.substring(i, localMatcher.start()));
+              paramStringBuilder1.append((String)localObject);
+              j = localMatcher.end();
+            }
           }
         }
-        if ((i < paramString2.length()) && (paramStringBuilder1.length() > 0)) {
-          paramStringBuilder1.append(paramString2.substring(i, paramString2.length()));
-        }
-        i = paramStringBuilder1.indexOf("<title>");
-        int j = paramStringBuilder1.indexOf("</title>", "<title>".length() + i) + "</title>".length();
-        if ((i != -1) && (i < j))
+        else
         {
-          localJSONObject.put("{title}", paramStringBuilder1.substring(i, j));
-          paramStringBuilder1.replace(i, j, "{title}");
+          if ((i < paramString2.length()) && (paramStringBuilder1.length() > 0)) {
+            paramStringBuilder1.append(paramString2.substring(i, paramString2.length()));
+          }
+          i = paramStringBuilder1.indexOf("<title>");
+          j = paramStringBuilder1.indexOf("</title>", i + 7) + 8;
+          if ((i != -1) && (i < j))
+          {
+            localJSONObject.put("{title}", paramStringBuilder1.substring(i, j));
+            paramStringBuilder1.replace(i, j, "{title}");
+          }
+          paramStringBuilder2.append(localJSONObject.toString());
+          paramString2 = new StringBuilder();
+          paramString2.append("separateTemplateAndData:sessionId(");
+          paramString2.append(paramString1);
+          paramString2.append(") end, cost ");
+          paramString2.append(System.currentTimeMillis() - l);
+          paramString2.append("ms.");
+          log("SonicSdk_SonicUtils", 4, paramString2.toString());
+          return true;
         }
-        paramStringBuilder2.append(localJSONObject.toString());
-        log("SonicSdk_SonicUtils", 4, "separateTemplateAndData:sessionId(" + paramString1 + ") end, cost " + (System.currentTimeMillis() - l) + "ms.");
-        return true;
       }
       catch (Exception paramString2)
       {
-        log("SonicSdk_SonicUtils", 6, "separateTemplateAndData:sessionId(" + paramString1 + ") error:" + paramString2.getMessage());
+        paramStringBuilder1 = new StringBuilder();
+        paramStringBuilder1.append("separateTemplateAndData:sessionId(");
+        paramStringBuilder1.append(paramString1);
+        paramStringBuilder1.append(") error:");
+        paramStringBuilder1.append(paramString2.getMessage());
+        log("SonicSdk_SonicUtils", 6, paramStringBuilder1.toString());
         return false;
       }
+      int i = j;
     }
   }
   
@@ -739,7 +818,7 @@ public class SonicUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicUtils
  * JD-Core Version:    0.7.0.1
  */

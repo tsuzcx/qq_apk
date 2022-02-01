@@ -15,43 +15,39 @@ final class AdLoader$1
   public void run()
   {
     AdLog.i("AdLoader", "load");
-    if ((this.val$session == null) || (!this.val$session.canSend())) {}
-    for (;;)
+    Object localObject1 = this.val$session;
+    if ((localObject1 != null) && (((AdLoader.Session)localObject1).canSend()))
     {
-      AdThreadManager.INSTANCE.post(new AdLoader.1.1(this), 0);
-      return;
       this.val$session.request.support_https = true;
+      localObject1 = null;
       try
       {
-        Object localObject1 = AdJSON.fromObject(this.val$session.request);
-        if ((localObject1 == null) || (!(localObject1 instanceof JSONObject))) {
-          continue;
-        }
+        Object localObject2 = AdJSON.fromObject(this.val$session.request);
+        localObject1 = localObject2;
+      }
+      catch (Exception localException2)
+      {
+        AdLog.e("AdLoader", "load", localException2);
+      }
+      if ((localObject1 != null) && ((localObject1 instanceof JSONObject)))
+      {
         AdLoaderWithJSON.Session localSession = new AdLoaderWithJSON.Session();
         localSession.request = ((JSONObject)JSONObject.class.cast(localObject1));
         AdLoaderWithJSON.load(localSession);
         this.val$session.httpResponseCode = localSession.httpResponseCode;
-        if ((localSession.httpResponseCode != 200) || (localSession.response == null) || (JSONObject.NULL.equals(localSession.response))) {
-          continue;
-        }
-        try
-        {
-          this.val$session.response = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(AdJSON.toObject(localSession.response, qq_ad_get.QQAdGetRsp.class)));
-        }
-        catch (Exception localException1)
-        {
-          AdLog.e("AdLoader", "load", localException1);
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          AdLog.e("AdLoader", "load", localException2);
-          Object localObject2 = null;
+        if ((localSession.httpResponseCode == 200) && (localSession.response != null) && (!JSONObject.NULL.equals(localSession.response))) {
+          try
+          {
+            this.val$session.response = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(AdJSON.toObject(localSession.response, qq_ad_get.QQAdGetRsp.class)));
+          }
+          catch (Exception localException1)
+          {
+            AdLog.e("AdLoader", "load", localException1);
+          }
         }
       }
     }
+    AdThreadManager.INSTANCE.post(new AdLoader.1.1(this), 0);
   }
 }
 

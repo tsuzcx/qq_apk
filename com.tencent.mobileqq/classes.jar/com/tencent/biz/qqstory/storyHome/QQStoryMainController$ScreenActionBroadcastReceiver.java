@@ -17,17 +17,18 @@ public class QQStoryMainController$ScreenActionBroadcastReceiver
     {
       ((PreloadDownloaderManager)SuperManager.a(6)).a(120000L);
       SLog.d("Q.qqstory.home.QQStoryMainActivity", "screen off , preloader stop");
-    }
-    while (!paramContext.equals("android.intent.action.SCREEN_ON")) {
       return;
     }
-    ((PreloadDownloaderManager)SuperManager.a(6)).c();
-    SLog.d("Q.qqstory.home.QQStoryMainActivity", "screen on , preloader start");
+    if (paramContext.equals("android.intent.action.SCREEN_ON"))
+    {
+      ((PreloadDownloaderManager)SuperManager.a(6)).c();
+      SLog.d("Q.qqstory.home.QQStoryMainActivity", "screen on , preloader start");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainController.ScreenActionBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

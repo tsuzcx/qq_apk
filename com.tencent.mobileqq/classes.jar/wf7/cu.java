@@ -25,10 +25,10 @@ public class cu
   public static int n(bn parambn)
   {
     bk localbk = (bk)ao.c().i(2);
-    if ((parambn == null) || (!localbk.d(parambn))) {
-      return 0;
+    if ((parambn != null) && (localbk.d(parambn))) {
+      return parambn.ad().L();
     }
-    return parambn.ad().L();
+    return 0;
   }
   
   public void bg()
@@ -58,19 +58,16 @@ public class cu
   
   public boolean j(bn parambn)
   {
-    if (parambn == null) {}
-    int i;
-    do
-    {
+    if (parambn == null) {
       return false;
-      i = cw.bo().bp().X();
-    } while ((parambn == null) || (parambn.ad().J() < i) || (!l(parambn)));
-    return true;
+    }
+    int i = cw.bo().bp().X();
+    return (parambn != null) && (parambn.ad().J() >= i) && (l(parambn));
   }
   
   public boolean k(bn parambn)
   {
-    boolean bool = true;
+    boolean bool = false;
     if (parambn == null) {
       return false;
     }
@@ -78,50 +75,50 @@ public class cu
     if ((i == 2) && (parambn.ac().aj() != null) && (bw.c(parambn.ac().aj()) != bw.a.gB))
     {
       parambn = cw.p(parambn);
-      if (parambn == null) {
-        break label127;
-      }
-      parambn = parambn.R();
-      if ((parambn == null) || (TextUtils.isEmpty(parambn.P))) {
-        break label127;
-      }
-    }
-    label127:
-    for (i = da.p(parambn.P);; i = 1)
-    {
-      if (i == 1) {}
-      for (;;)
+      if (parambn != null)
       {
-        return bool;
-        bool = false;
+        parambn = parambn.R();
+        if ((parambn != null) && (!TextUtils.isEmpty(parambn.P)))
+        {
+          i = da.p(parambn.P);
+          break label85;
+        }
       }
-      if ((parambn.ad().J() < this.io) || (!l(parambn)) || (!ck.p(n(parambn), i))) {
-        break;
+      i = 1;
+      label85:
+      if (i == 1) {
+        bool = true;
       }
-      return true;
+      return bool;
     }
+    return (parambn.ad().J() >= this.io) && (l(parambn)) && (ck.p(n(parambn), i));
   }
   
   public boolean l(bn parambn)
   {
-    boolean bool = true;
-    if (parambn == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return false;
-        localObject = cw.p(parambn);
-      } while (localObject == null);
-      localObject = ((ct)localObject).R();
-    } while (localObject == null);
-    if ((ck.f(((d)localObject).v, parambn.ab())) && (da.p(((d)localObject).P) == 1)) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+    boolean bool2 = false;
+    if (parambn == null) {
+      return false;
     }
+    Object localObject = cw.p(parambn);
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      localObject = ((ct)localObject).R();
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (ck.f(((d)localObject).v, parambn.ab()))
+        {
+          bool1 = bool2;
+          if (da.p(((d)localObject).P) == 1) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public boolean m(bn parambn)
@@ -131,7 +128,7 @@ public class cu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cu
  * JD-Core Version:    0.7.0.1
  */

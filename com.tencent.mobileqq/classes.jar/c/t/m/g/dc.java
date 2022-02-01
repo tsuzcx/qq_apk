@@ -3,9 +3,9 @@ package c.t.m.g;
 public final class dc
 {
   private static final int[] c = { 31, 113, 239, 397, 439, 557, 619, 773, 853, 977 };
-  public byte[] a = new byte[0];
+  public byte[] a;
   public byte[] b;
-  private dc.a[] d = new dc.a[Math.min(Math.max(1, 5), 10)];
+  private dc.a[] d;
   
   public dc()
   {
@@ -14,9 +14,16 @@ public final class dc
   
   public dc(byte paramByte)
   {
-    while (paramByte < this.d.length)
+    paramByte = 0;
+    this.a = new byte[0];
+    this.d = new dc.a[Math.min(Math.max(1, 5), 10)];
+    for (;;)
     {
-      this.d[paramByte] = new dc.a(c[paramByte]);
+      dc.a[] arrayOfa = this.d;
+      if (paramByte >= arrayOfa.length) {
+        break;
+      }
+      arrayOfa[paramByte] = new dc.a(c[paramByte]);
       paramByte += 1;
     }
     this.b = new byte[8192];
@@ -39,6 +46,10 @@ public final class dc
       }
       return;
     }
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public final byte[] a()
@@ -56,91 +67,95 @@ public final class dc
     // Byte code:
     //   0: aload_0
     //   1: getfield 24	c/t/m/g/dc:a	[B
-    //   4: astore 5
-    //   6: aload 5
+    //   4: astore 6
+    //   6: aload 6
     //   8: monitorenter
     //   9: aload_1
     //   10: ifnonnull +8 -> 18
-    //   13: aload 5
+    //   13: aload 6
     //   15: monitorexit
     //   16: iconst_0
     //   17: ireturn
     //   18: aload_0
     //   19: getfield 37	c/t/m/g/dc:d	[Lc/t/m/g/dc$a;
-    //   22: astore 6
-    //   24: aload 6
+    //   22: astore 7
+    //   24: aload 7
     //   26: arraylength
     //   27: istore 4
     //   29: iconst_0
     //   30: istore_2
-    //   31: iload_2
-    //   32: iload 4
-    //   34: if_icmpge +60 -> 94
-    //   37: aload 6
-    //   39: iload_2
-    //   40: aaload
-    //   41: aload_1
-    //   42: invokevirtual 46	c/t/m/g/dc$a:a	(Ljava/lang/String;)I
-    //   45: istore_3
-    //   46: iconst_1
-    //   47: iload_3
-    //   48: bipush 8
-    //   50: irem
-    //   51: ishl
-    //   52: aload_0
-    //   53: getfield 42	c/t/m/g/dc:b	[B
-    //   56: iload_3
-    //   57: bipush 8
-    //   59: idiv
-    //   60: baload
-    //   61: iand
-    //   62: ifeq +20 -> 82
-    //   65: iconst_1
-    //   66: istore_3
-    //   67: iload_3
-    //   68: ifne +19 -> 87
-    //   71: aload 5
-    //   73: monitorexit
-    //   74: iconst_0
-    //   75: ireturn
-    //   76: astore_1
-    //   77: aload 5
+    //   31: iconst_1
+    //   32: istore_3
+    //   33: iload_2
+    //   34: iload 4
+    //   36: if_icmpge +46 -> 82
+    //   39: aload 7
+    //   41: iload_2
+    //   42: aaload
+    //   43: aload_1
+    //   44: invokevirtual 46	c/t/m/g/dc$a:a	(Ljava/lang/String;)I
+    //   47: istore 5
+    //   49: iconst_1
+    //   50: iload 5
+    //   52: bipush 8
+    //   54: irem
+    //   55: ishl
+    //   56: aload_0
+    //   57: getfield 42	c/t/m/g/dc:b	[B
+    //   60: iload 5
+    //   62: bipush 8
+    //   64: idiv
+    //   65: baload
+    //   66: iand
+    //   67: ifeq +32 -> 99
+    //   70: goto +3 -> 73
+    //   73: iload_3
+    //   74: ifne +30 -> 104
+    //   77: aload 6
     //   79: monitorexit
-    //   80: aload_1
-    //   81: athrow
-    //   82: iconst_0
-    //   83: istore_3
-    //   84: goto -17 -> 67
-    //   87: iload_2
-    //   88: iconst_1
-    //   89: iadd
-    //   90: istore_2
-    //   91: goto -60 -> 31
-    //   94: aload 5
-    //   96: monitorexit
-    //   97: iconst_1
-    //   98: ireturn
+    //   80: iconst_0
+    //   81: ireturn
+    //   82: aload 6
+    //   84: monitorexit
+    //   85: iconst_1
+    //   86: ireturn
+    //   87: astore_1
+    //   88: aload 6
+    //   90: monitorexit
+    //   91: goto +5 -> 96
+    //   94: aload_1
+    //   95: athrow
+    //   96: goto -2 -> 94
+    //   99: iconst_0
+    //   100: istore_3
+    //   101: goto -28 -> 73
+    //   104: iload_2
+    //   105: iconst_1
+    //   106: iadd
+    //   107: istore_2
+    //   108: goto -77 -> 31
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	99	0	this	dc
-    //   0	99	1	paramString	String
-    //   30	61	2	i	int
-    //   45	39	3	j	int
-    //   27	8	4	k	int
-    //   4	91	5	arrayOfByte	byte[]
+    //   0	111	0	this	dc
+    //   0	111	1	paramString	String
+    //   30	78	2	i	int
+    //   32	69	3	j	int
+    //   27	10	4	k	int
+    //   47	18	5	m	int
+    //   4	85	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   13	16	76	finally
-    //   18	29	76	finally
-    //   37	65	76	finally
-    //   71	74	76	finally
-    //   77	80	76	finally
-    //   94	97	76	finally
+    //   13	16	87	finally
+    //   18	29	87	finally
+    //   39	70	87	finally
+    //   77	80	87	finally
+    //   82	85	87	finally
+    //   88	91	87	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dc
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,30 +72,36 @@ public final class AvatarItem
     paramJceOutputStream.write(this.strId, 0);
     paramJceOutputStream.write(this.iType, 1);
     paramJceOutputStream.write(this.iProperty, 2);
-    if (this.strAvatarName != null) {
-      paramJceOutputStream.write(this.strAvatarName, 3);
+    Object localObject = this.strAvatarName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.strDescription != null) {
-      paramJceOutputStream.write(this.strDescription, 4);
+    localObject = this.strDescription;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.strThumbUrl != null) {
-      paramJceOutputStream.write(this.strThumbUrl, 5);
+    localObject = this.strThumbUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.vecView != null) {
-      paramJceOutputStream.write(this.vecView, 6);
+    localObject = this.vecView;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
     paramJceOutputStream.write(this.iHasNewFlag, 7);
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 10);
+    localObject = this.strTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 11);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.AvatarItem
  * JD-Core Version:    0.7.0.1
  */

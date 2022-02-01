@@ -21,14 +21,14 @@ public class QidianProfileAllTextActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("content");
-    super.setContentView(2131560977);
-    ((TextView)this.mContentView.findViewById(2131379432)).setText(paramBundle);
-    ((TextView)this.mContentView.findViewById(2131365294)).setText(str);
+    super.setContentView(2131560852);
+    ((TextView)this.mContentView.findViewById(2131378784)).setText(paramBundle);
+    ((TextView)this.mContentView.findViewById(2131365169)).setText(str);
     return true;
   }
   
@@ -41,7 +41,7 @@ public class QidianProfileAllTextActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileAllTextActivity
  * JD-Core Version:    0.7.0.1
  */

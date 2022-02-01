@@ -23,13 +23,16 @@ public class LoadGrayImageTask
   
   protected Boolean doInBackground(Void... paramVarArgs)
   {
-    if (isCancelled()) {
-      return Boolean.valueOf(false);
+    boolean bool = isCancelled();
+    paramVarArgs = Boolean.valueOf(false);
+    if (bool) {
+      return paramVarArgs;
     }
-    if (this.mGrayCache == null) {
-      return Boolean.valueOf(false);
+    Map localMap = this.mGrayCache;
+    if (localMap == null) {
+      return paramVarArgs;
     }
-    if (!this.mGrayCache.containsKey(this.featureType))
+    if (!localMap.containsKey(this.featureType))
     {
       paramVarArgs = FaceOffUtil.getGrayBitmap(this.featureType);
       if (BitmapUtils.isLegal(paramVarArgs)) {
@@ -41,7 +44,7 @@ public class LoadGrayImageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadGrayImageTask
  * JD-Core Version:    0.7.0.1
  */

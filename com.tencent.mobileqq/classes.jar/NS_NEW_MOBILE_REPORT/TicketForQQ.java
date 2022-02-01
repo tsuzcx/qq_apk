@@ -36,15 +36,16 @@ public final class TicketForQQ
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.appId, 0);
-    if (this.A2 != null) {
-      paramJceOutputStream.write(this.A2, 1);
+    byte[] arrayOfByte = this.A2;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
     paramJceOutputStream.write(this.uin, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_NEW_MOBILE_REPORT.TicketForQQ
  * JD-Core Version:    0.7.0.1
  */

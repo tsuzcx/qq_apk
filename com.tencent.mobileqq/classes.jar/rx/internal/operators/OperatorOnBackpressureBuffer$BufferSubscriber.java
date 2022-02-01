@@ -30,15 +30,15 @@ final class OperatorOnBackpressureBuffer$BufferSubscriber<T>
   {
     this.child = paramSubscriber;
     this.baseCapacity = paramLong;
-    if (paramLong != null) {}
-    for (paramSubscriber = new AtomicLong(paramLong.longValue());; paramSubscriber = null)
-    {
-      this.capacity = paramSubscriber;
-      this.onOverflow = paramAction0;
-      this.manager = new BackpressureDrainManager(this);
-      this.overflowStrategy = paramStrategy;
-      return;
+    if (paramLong != null) {
+      paramSubscriber = new AtomicLong(paramLong.longValue());
+    } else {
+      paramSubscriber = null;
     }
+    this.capacity = paramSubscriber;
+    this.onOverflow = paramAction0;
+    this.manager = new BackpressureDrainManager(this);
+    this.overflowStrategy = paramStrategy;
   }
   
   private boolean assertCapacity()
@@ -47,42 +47,36 @@ final class OperatorOnBackpressureBuffer$BufferSubscriber<T>
       return true;
     }
     long l;
-    label125:
     do
     {
       l = this.capacity.get();
-      if (l <= 0L) {
-        for (;;)
+      if (l <= 0L)
+      {
+        int i;
+        try
         {
-          try
+          if (this.overflowStrategy.mayAttemptDrop())
           {
-            if (!this.overflowStrategy.mayAttemptDrop()) {
-              continue;
-            }
             Object localObject = poll();
-            if (localObject == null) {
-              continue;
+            if (localObject != null) {
+              i = 1;
             }
-            i = 1;
           }
-          catch (MissingBackpressureException localMissingBackpressureException)
+        }
+        catch (MissingBackpressureException localMissingBackpressureException)
+        {
+          if (this.saturated.compareAndSet(false, true))
           {
-            if (!this.saturated.compareAndSet(false, true)) {
-              continue;
-            }
             unsubscribe();
             this.child.onError(localMissingBackpressureException);
-            int i = 0;
-            continue;
           }
-          if (this.onOverflow != null) {}
+          i = 0;
+        }
+        Action0 localAction0 = this.onOverflow;
+        if (localAction0 != null) {
           try
           {
-            this.onOverflow.call();
-            if (i != 0) {
-              break label125;
-            }
-            return false;
+            localAction0.call();
           }
           catch (Throwable localThrowable)
           {
@@ -90,7 +84,9 @@ final class OperatorOnBackpressureBuffer$BufferSubscriber<T>
             this.manager.terminateAndDrain(localThrowable);
             return false;
           }
-          i = 0;
+        }
+        if (i == 0) {
+          return false;
         }
       }
     } while (!this.capacity.compareAndSet(l, l - 1L));
@@ -153,15 +149,16 @@ final class OperatorOnBackpressureBuffer$BufferSubscriber<T>
   public Object poll()
   {
     Object localObject = this.queue.poll();
-    if ((this.capacity != null) && (localObject != null)) {
-      this.capacity.incrementAndGet();
+    AtomicLong localAtomicLong = this.capacity;
+    if ((localAtomicLong != null) && (localObject != null)) {
+      localAtomicLong.incrementAndGet();
     }
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorOnBackpressureBuffer.BufferSubscriber
  * JD-Core Version:    0.7.0.1
  */

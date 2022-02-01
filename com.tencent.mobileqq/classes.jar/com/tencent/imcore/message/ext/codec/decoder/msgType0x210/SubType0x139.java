@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 import tencent.im.oidb.submsgtype0x139.Submsgtype0x139.MsgBody;
 
 public class SubType0x139
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   private static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
   {
@@ -21,9 +21,9 @@ public class SubType0x139
     try
     {
       localMsgBody.mergeFrom(paramArrayOfByte);
-      l1 = localMsgBody.uint64_friend.get();
-      l2 = localMsgBody.uint64_uin.get();
-      i = localMsgBody.uint32_op_type.get();
+      long l1 = localMsgBody.uint64_friend.get();
+      long l2 = localMsgBody.uint64_uin.get();
+      int i = localMsgBody.uint32_op_type.get();
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.BaseMessageProcessor", 2, new Object[] { "onLinePush shortcut receive 0x210_0x139,pushType =", Integer.valueOf(i), " friendUin =", Long.valueOf(l1), " accountUin = ", Long.valueOf(l2) });
       }
@@ -38,32 +38,33 @@ public class SubType0x139
         paramQQAppInterface.a(l1, l2, true);
         return;
       }
+      if (i == 3)
+      {
+        paramQQAppInterface.a(l1, l2, false);
+        return;
+      }
     }
     catch (Exception paramQQAppInterface)
     {
-      long l1;
-      long l2;
-      int i;
       if (QLog.isColorLevel())
       {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x139 " + paramQQAppInterface);
-        return;
-        if (i == 3) {
-          paramQQAppInterface.a(l1, l2, false);
-        }
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("onLinePush receive 0x210_0x139 ");
+        paramArrayOfByte.append(paramQQAppInterface);
+        QLog.d("Q.msg.BaseMessageProcessor", 2, paramArrayOfByte.toString());
       }
     }
   }
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramOnLinePushMessageProcessor.a(), paramMsgType0x210.vProtobuf);
+    a((QQAppInterface)paramOnLinePushMessageProcessor.a(), paramMsgType0x210.vProtobuf);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x139
  * JD-Core Version:    0.7.0.1
  */

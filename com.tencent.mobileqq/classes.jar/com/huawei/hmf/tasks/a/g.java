@@ -21,61 +21,74 @@ public final class g
   
   private static g a(Activity paramActivity)
   {
-    localObject1 = (WeakReference)b.get(paramActivity);
+    Object localObject1 = (WeakReference)b.get(paramActivity);
     if ((localObject1 != null) && (((WeakReference)localObject1).get() != null)) {
       return (g)((WeakReference)localObject1).get();
     }
-    FragmentManager localFragmentManager = paramActivity.getFragmentManager();
+    Object localObject2 = paramActivity.getFragmentManager();
     try
     {
-      localObject1 = (g)localFragmentManager.findFragmentByTag("com.huawei.hmf.tasks.lifecycle_fragment_tag");
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {}
+      localObject1 = (g)((FragmentManager)localObject2).findFragmentByTag("com.huawei.hmf.tasks.lifecycle_fragment_tag");
+      if (localObject1 == null) {
+        try
+        {
+          localObject2 = a((FragmentManager)localObject2);
+          localObject1 = localObject2;
+        }
+        catch (ClassCastException localClassCastException2)
+        {
+          paramActivity = (Activity)localObject1;
+          localObject1 = localClassCastException2;
+          break label96;
+        }
+      }
       try
       {
-        localObject2 = a(localFragmentManager);
-        localObject1 = localObject2;
-        b.put(paramActivity, new WeakReference(localObject2));
-        return localObject2;
+        b.put(paramActivity, new WeakReference(localObject1));
+        return localObject1;
       }
-      catch (ClassCastException paramActivity) {}
-    }
-    catch (ClassCastException paramActivity)
-    {
-      for (;;)
+      catch (ClassCastException localClassCastException3)
       {
-        localObject1 = null;
+        paramActivity = (Activity)localObject1;
+        localObject1 = localClassCastException3;
       }
+      localStringBuilder = new StringBuilder("found LifecycleCallbackFragment but the type do not match. ");
     }
-    Log.e("LifecycleCallbackFrg", "found LifecycleCallbackFragment but the type do not match. " + paramActivity.getMessage());
-    return localObject1;
+    catch (ClassCastException localClassCastException1)
+    {
+      paramActivity = null;
+    }
+    label96:
+    StringBuilder localStringBuilder;
+    localStringBuilder.append(localClassCastException1.getMessage());
+    Log.e("LifecycleCallbackFrg", localStringBuilder.toString());
+    return paramActivity;
   }
   
   private static g a(FragmentManager paramFragmentManager)
   {
     try
     {
-      g localg = new g();
-      Log.e("LifecycleCallbackFrg", "create fragment failed." + localException1.getMessage());
-    }
-    catch (Exception localException1)
-    {
+      Object localObject = new g();
       try
       {
-        paramFragmentManager.beginTransaction().add(localg, "com.huawei.hmf.tasks.lifecycle_fragment_tag").commitAllowingStateLoss();
-        return localg;
+        paramFragmentManager.beginTransaction().add((Fragment)localObject, "com.huawei.hmf.tasks.lifecycle_fragment_tag").commitAllowingStateLoss();
+        return localObject;
       }
       catch (Exception localException2)
       {
-        for (;;)
-        {
-          paramFragmentManager = localException1;
-          Object localObject = localException2;
-        }
+        paramFragmentManager = (FragmentManager)localObject;
+        localObject = localException2;
       }
-      localException1 = localException1;
+      localStringBuilder = new StringBuilder("create fragment failed.");
+    }
+    catch (Exception localException1)
+    {
       paramFragmentManager = null;
     }
+    StringBuilder localStringBuilder;
+    localStringBuilder.append(localException1.getMessage());
+    Log.e("LifecycleCallbackFrg", localStringBuilder.toString());
     return paramFragmentManager;
   }
   
@@ -104,13 +117,18 @@ public final class g
           localExecuteResult.cancel();
         }
       }
+      this.a.clear();
+      return;
     }
-    this.a.clear();
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hmf.tasks.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -20,11 +20,15 @@ public class NewGifImage
   {
     try
     {
-      NewGifDecoder.Options localOptions = new NewGifDecoder.Options();
-      localOptions.inPreferWidth = paramInt1;
-      localOptions.inPreferHeight = paramInt2;
-      this.mDrawable = new NewGifDrawable(paramImageKey.filePath, localOptions, paramImageKey.url);
-      ImageManagerEnv.getLogger().d("NewGifImage", new Object[] { "create NewGifImage url: " + paramImageKey.url });
+      Object localObject = new NewGifDecoder.Options();
+      ((NewGifDecoder.Options)localObject).inPreferWidth = paramInt1;
+      ((NewGifDecoder.Options)localObject).inPreferHeight = paramInt2;
+      this.mDrawable = new NewGifDrawable(paramImageKey.filePath, (NewGifDecoder.Options)localObject, paramImageKey.url);
+      localObject = ImageManagerEnv.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("create NewGifImage url: ");
+      localStringBuilder.append(paramImageKey.url);
+      ((ILog)localObject).d("NewGifImage", new Object[] { localStringBuilder.toString() });
       return;
     }
     catch (Throwable paramImageKey)
@@ -60,30 +64,33 @@ public class NewGifImage
   
   public boolean isRecycled()
   {
-    if ((this.mDrawable != null) && ((this.mDrawable instanceof NewGifDrawable))) {
-      return ((NewGifDrawable)this.mDrawable).isRecycled();
+    Drawable localDrawable = this.mDrawable;
+    if ((localDrawable != null) && ((localDrawable instanceof NewGifDrawable))) {
+      return ((NewGifDrawable)localDrawable).isRecycled();
     }
     return false;
   }
   
   public void recycle()
   {
-    if ((this.mDrawable != null) && ((this.mDrawable instanceof NewGifDrawable))) {
-      ((NewGifDrawable)this.mDrawable).recycle();
+    Drawable localDrawable = this.mDrawable;
+    if ((localDrawable != null) && ((localDrawable instanceof NewGifDrawable))) {
+      ((NewGifDrawable)localDrawable).recycle();
     }
   }
   
   public int size()
   {
-    if ((this.mDrawable != null) && ((this.mDrawable instanceof NewGifDrawable))) {
-      return this.mDrawable.getIntrinsicWidth() * this.mDrawable.getIntrinsicHeight() * 4;
+    Drawable localDrawable = this.mDrawable;
+    if ((localDrawable != null) && ((localDrawable instanceof NewGifDrawable))) {
+      return localDrawable.getIntrinsicWidth() * this.mDrawable.getIntrinsicHeight() * 4;
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.image.NewGifImage
  * JD-Core Version:    0.7.0.1
  */

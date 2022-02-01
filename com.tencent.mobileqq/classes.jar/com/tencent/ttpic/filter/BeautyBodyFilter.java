@@ -47,17 +47,18 @@ public class BeautyBodyFilter
   
   private PointF[] normalizePoints(List<PointF> paramList, int paramInt1, int paramInt2)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    int i = 0;
-    while (i < paramList.size())
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      this.pointsNormalized[i].x = (((PointF)paramList.get(i)).x / paramInt1);
-      this.pointsNormalized[i].y = (((PointF)paramList.get(i)).y / paramInt2);
-      i += 1;
+      int i = 0;
+      while (i < paramList.size())
+      {
+        this.pointsNormalized[i].x = (((PointF)paramList.get(i)).x / paramInt1);
+        this.pointsNormalized[i].y = (((PointF)paramList.get(i)).y / paramInt2);
+        i += 1;
+      }
+      return this.pointsNormalized;
     }
-    return this.pointsNormalized;
+    return null;
   }
   
   public void beautyBody(float paramFloat, List<PointF> paramList, int paramInt1, int paramInt2)
@@ -69,26 +70,26 @@ public class BeautyBodyFilter
     {
       setParamsWaist(this.beautyBodySlimWaist.getSlimWaistParameters());
       setEnableWaist(true);
-      if (!this.beautyBodyThinBody.setupBodyPoints(arrayOfPointF)) {
-        break label127;
-      }
+    }
+    else
+    {
+      setEnableWaist(false);
+    }
+    if (this.beautyBodyThinBody.setupBodyPoints(arrayOfPointF))
+    {
       setParamsBody(this.beautyBodyThinBody.getThinBodyParameters());
       setEnableBody(true);
     }
-    for (;;)
+    else
     {
-      if (!this.beautyBodyThinShoulder.setupBodyPoints(arrayOfPointF)) {
-        break label135;
-      }
+      setEnableBody(false);
+    }
+    if (this.beautyBodyThinShoulder.setupBodyPoints(arrayOfPointF))
+    {
       setParamsShoulder(this.beautyBodyThinShoulder.getThinShoulderParameters());
       setEnableShoulder(true);
       return;
-      setEnableWaist(false);
-      break;
-      label127:
-      setEnableBody(false);
     }
-    label135:
     setEnableShoulder(false);
   }
   
@@ -101,26 +102,26 @@ public class BeautyBodyFilter
     {
       setParamsWaist(this.beautyBodySlimWaist.getSlimWaistParameters());
       setEnableWaist(true);
-      if (!this.beautyBodyThinBody.setupBodyPoints(arrayOfPointF)) {
-        break label130;
-      }
+    }
+    else
+    {
+      setEnableWaist(false);
+    }
+    if (this.beautyBodyThinBody.setupBodyPoints(arrayOfPointF))
+    {
       setParamsBody(this.beautyBodyThinBody.getThinBodyParameters());
       setEnableBody(true);
     }
-    for (;;)
+    else
     {
-      if (!this.beautyBodyThinShoulder.setupBodyPoints(arrayOfPointF)) {
-        break label138;
-      }
+      setEnableBody(false);
+    }
+    if (this.beautyBodyThinShoulder.setupBodyPoints(arrayOfPointF))
+    {
       setParamsShoulder(this.beautyBodyThinShoulder.getThinShoulderParameters());
       setEnableShoulder(true);
       return;
-      setEnableWaist(false);
-      break;
-      label130:
-      setEnableBody(false);
     }
-    label138:
     setEnableShoulder(false);
   }
   
@@ -133,71 +134,77 @@ public class BeautyBodyFilter
     {
       setParamsWaist(this.beautyBodySlimWaist.getSlimWaistParameters());
       setEnableWaist(true);
-      if (!this.beautyBodyThinBody.setupBodyPoints(arrayOfPointF)) {
-        break label126;
-      }
+    }
+    else
+    {
+      setEnableWaist(false);
+    }
+    if (this.beautyBodyThinBody.setupBodyPoints(arrayOfPointF))
+    {
       setParamsBody(this.beautyBodyThinBody.getThinBodyParameters());
       setEnableBody(true);
     }
-    for (;;)
+    else
     {
-      if (!this.beautyBodyThinShoulder.setupBodyPoints(arrayOfPointF)) {
-        break label134;
-      }
+      setEnableBody(false);
+    }
+    if (this.beautyBodyThinShoulder.setupBodyPoints(arrayOfPointF))
+    {
       setParamsShoulder(this.beautyBodyThinShoulder.getThinShoulderParameters());
       setEnableShoulder(true);
       return;
-      setEnableWaist(false);
-      break;
-      label126:
-      setEnableBody(false);
     }
-    label134:
     setEnableShoulder(false);
   }
   
   public float getStrength(String paramString)
   {
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return 0.0F;
-        if (paramString.equals("LONG_LEG"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("THIN_BODY"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("THIN_SHOULDER"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("SLIM_WAIST")) {
-                i = 3;
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 2112084872: 
+      if (paramString.equals("THIN_BODY")) {
+        i = 1;
       }
+      break;
+    case 1884534918: 
+      if (paramString.equals("THIN_SHOULDER")) {
+        i = 2;
+      }
+      break;
+    case 1738229726: 
+      if (paramString.equals("SLIM_WAIST")) {
+        i = 3;
+      }
+      break;
+    case -1290504789: 
+      if (paramString.equals("LONG_LEG")) {
+        i = 0;
+      }
+      break;
+    }
+    int i = -1;
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return 0.0F;
+          }
+          return this.strengthWaist;
+        }
+        return this.strengthShoulder;
+      }
+      return this.strengthBody;
     }
     return this.strengthLeg;
-    return this.strengthBody;
-    return this.strengthShoulder;
-    return this.strengthWaist;
   }
   
   public void initParams()
   {
-    int i = 0;
     this.centerShoulder = new PointF();
     this.middleLineBody = 0.5F;
     this.y2Body = 0.7F;
@@ -209,6 +216,7 @@ public class BeautyBodyFilter
     addParam(new UniformParam.FloatParam("middleLineBody", this.middleLineBody));
     addParam(new UniformParam.FloatParam("waistWidthBody", 0.0F));
     addParam(new UniformParam.FloatParam("strengthBody", 0.0F));
+    int i = 0;
     addParam(new UniformParam.IntParam("enableBody", 0));
     this.y0Leg = 1.0F;
     this.strengthLeg = 0.0F;
@@ -229,157 +237,127 @@ public class BeautyBodyFilter
     addParam(new UniformParam.FloatParam("widthShoulder", 0.0F));
     addParam(new UniformParam.FloatParam("heightShoulder", 0.0F));
     addParam(new UniformParam.IntParam("enableShoulder", 0));
-    while (i < this.pointsNormalized.length)
+    for (;;)
     {
-      this.pointsNormalized[i] = new PointF();
+      PointF[] arrayOfPointF = this.pointsNormalized;
+      if (i >= arrayOfPointF.length) {
+        break;
+      }
+      arrayOfPointF[i] = new PointF();
       i += 1;
     }
   }
   
   public void setCenter(PointF paramPointF)
   {
-    if (paramPointF.x < 0.0F)
-    {
+    if (paramPointF.x < 0.0F) {
       this.centerShoulder.x = 0.0F;
-      if (paramPointF.y >= 0.0F) {
-        break label97;
-      }
-      this.centerShoulder.y = 0.0F;
-    }
-    for (;;)
-    {
-      addParam(new UniformParam.Float2fParam("centerShoulder", this.centerShoulder.x, this.centerShoulder.y));
-      return;
-      if (paramPointF.x > 1.0F)
-      {
-        this.centerShoulder.x = 1.0F;
-        break;
-      }
+    } else if (paramPointF.x > 1.0F) {
+      this.centerShoulder.x = 1.0F;
+    } else {
       this.centerShoulder.x = paramPointF.x;
-      break;
-      label97:
-      if (paramPointF.y > 1.0F) {
-        this.centerShoulder.y = 1.0F;
-      } else {
-        this.centerShoulder.y = paramPointF.y;
-      }
     }
+    if (paramPointF.y < 0.0F) {
+      this.centerShoulder.y = 0.0F;
+    } else if (paramPointF.y > 1.0F) {
+      this.centerShoulder.y = 1.0F;
+    } else {
+      this.centerShoulder.y = paramPointF.y;
+    }
+    addParam(new UniformParam.Float2fParam("centerShoulder", this.centerShoulder.x, this.centerShoulder.y));
   }
   
   public void setEnable(String paramString, boolean paramBoolean)
   {
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return;
-        if (paramString.equals("LONG_LEG"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("THIN_BODY"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("THIN_SHOULDER"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("SLIM_WAIST")) {
-                i = 3;
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 2112084872: 
+      if (paramString.equals("THIN_BODY")) {
+        i = 1;
       }
+      break;
+    case 1884534918: 
+      if (paramString.equals("THIN_SHOULDER")) {
+        i = 2;
+      }
+      break;
+    case 1738229726: 
+      if (paramString.equals("SLIM_WAIST")) {
+        i = 3;
+      }
+      break;
+    case -1290504789: 
+      if (paramString.equals("LONG_LEG")) {
+        i = 0;
+      }
+      break;
+    }
+    int i = -1;
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          setEnableWaist(paramBoolean);
+          return;
+        }
+        setEnableShoulder(paramBoolean);
+        return;
+      }
+      setEnableBody(paramBoolean);
+      return;
     }
     setEnableLeg(paramBoolean);
-    return;
-    setEnableBody(paramBoolean);
-    return;
-    setEnableShoulder(paramBoolean);
-    return;
-    setEnableWaist(paramBoolean);
   }
   
   public void setEnableBody(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      addParam(new UniformParam.IntParam("enableBody", i));
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setEnableLeg(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      addParam(new UniformParam.IntParam("enableLeg", i));
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setEnableShoulder(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      addParam(new UniformParam.IntParam("enableShoulder", i));
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setEnableWaist(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      addParam(new UniformParam.IntParam("enableWaist", i));
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setHeight(float paramFloat)
   {
     if (paramFloat > 1.0F) {
       this.heightShoulder = 1.0F;
+    } else if (paramFloat < 0.0F) {
+      this.heightShoulder = 0.0F;
+    } else {
+      this.heightShoulder = paramFloat;
     }
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("heightShoulder", this.heightShoulder));
-      return;
-      if (paramFloat < 0.0F) {
-        this.heightShoulder = 0.0F;
-      } else {
-        this.heightShoulder = paramFloat;
-      }
-    }
+    addParam(new UniformParam.FloatParam("heightShoulder", this.heightShoulder));
   }
   
   public void setMiddleLineBody(float paramFloat)
   {
     if (paramFloat < 0.1F) {
       this.middleLineBody = 0.1F;
+    } else if (paramFloat > 0.9F) {
+      this.middleLineBody = 0.9F;
+    } else {
+      this.middleLineBody = paramFloat;
     }
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("middleLineBody", this.middleLineBody));
-      return;
-      if (paramFloat > 0.9F) {
-        this.middleLineBody = 0.9F;
-      } else {
-        this.middleLineBody = paramFloat;
-      }
-    }
+    addParam(new UniformParam.FloatParam("middleLineBody", this.middleLineBody));
   }
   
   public void setParamsBody(BeautyBodyThinBody.ThinBodyParameters paramThinBodyParameters)
@@ -426,91 +404,91 @@ public class BeautyBodyFilter
   
   public void setStrength(String paramString, float paramFloat)
   {
-    boolean bool2 = true;
-    boolean bool3 = true;
-    boolean bool4 = true;
-    boolean bool1 = true;
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool4 = false;
+    boolean bool1 = false;
+    switch (i)
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return;
-        if (paramString.equals("LONG_LEG"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("THIN_BODY"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("THIN_SHOULDER"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("SLIM_WAIST")) {
-                i = 3;
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 2112084872: 
+      if (paramString.equals("THIN_BODY")) {
+        i = 1;
       }
+      break;
+    case 1884534918: 
+      if (paramString.equals("THIN_SHOULDER")) {
+        i = 2;
+      }
+      break;
+    case 1738229726: 
+      if (paramString.equals("SLIM_WAIST")) {
+        i = 3;
+      }
+      break;
+    case -1290504789: 
+      if (paramString.equals("LONG_LEG")) {
+        i = 0;
+      }
+      break;
     }
-    this.strengthLeg = paramFloat;
-    setStrengthLeg(paramFloat);
-    if (paramFloat != 0.0F) {}
-    for (;;)
+    i = -1;
+    if (i != 0)
     {
-      setEnable("LONG_LEG", bool1);
-      return;
-      bool1 = false;
-    }
-    this.strengthBody = paramFloat;
-    setStrengthBody(paramFloat);
-    if (paramFloat != 0.0F) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          this.strengthWaist = paramFloat;
+          setStrengthWaist(paramFloat);
+          if (paramFloat != 0.0F) {
+            bool1 = true;
+          }
+          setEnable("SLIM_WAIST", bool1);
+          return;
+        }
+        this.strengthShoulder = paramFloat;
+        setStrengthShoulder(paramFloat);
+        bool1 = bool2;
+        if (paramFloat != 0.0F) {
+          bool1 = true;
+        }
+        setEnable("THIN_SHOULDER", bool1);
+        return;
+      }
+      this.strengthBody = paramFloat;
+      setStrengthBody(paramFloat);
+      bool1 = bool3;
+      if (paramFloat != 0.0F) {
+        bool1 = true;
+      }
       setEnable("THIN_BODY", bool1);
       return;
     }
-    this.strengthShoulder = paramFloat;
-    setStrengthShoulder(paramFloat);
-    if (paramFloat != 0.0F) {}
-    for (bool1 = bool3;; bool1 = false)
-    {
-      setEnable("THIN_SHOULDER", bool1);
-      return;
+    this.strengthLeg = paramFloat;
+    setStrengthLeg(paramFloat);
+    bool1 = bool4;
+    if (paramFloat != 0.0F) {
+      bool1 = true;
     }
-    this.strengthWaist = paramFloat;
-    setStrengthWaist(paramFloat);
-    if (paramFloat != 0.0F) {}
-    for (bool1 = bool4;; bool1 = false)
-    {
-      setEnable("SLIM_WAIST", bool1);
-      return;
-    }
+    setEnable("LONG_LEG", bool1);
   }
   
   public void setStrengthBody(float paramFloat)
   {
     if (paramFloat < 0.0F) {
       this.strengthBody = 0.0F;
+    } else if (paramFloat > 1.0F) {
+      this.strengthBody = 1.0F;
+    } else {
+      this.strengthBody = paramFloat;
     }
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("strengthBody", this.strengthBody));
-      return;
-      if (paramFloat > 1.0F) {
-        this.strengthBody = 1.0F;
-      } else {
-        this.strengthBody = paramFloat;
-      }
-    }
+    addParam(new UniformParam.FloatParam("strengthBody", this.strengthBody));
   }
   
   public void setStrengthLeg(float paramFloat)
@@ -518,39 +496,29 @@ public class BeautyBodyFilter
     paramFloat *= 0.2F;
     if (paramFloat < -0.2F) {
       this.strengthLeg = -0.2F;
+    } else if (paramFloat > 0.2F) {
+      this.strengthLeg = 0.2F;
+    } else {
+      this.strengthLeg = paramFloat;
     }
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("strengthLeg", this.strengthLeg));
-      return;
-      if (paramFloat > 0.2F) {
-        this.strengthLeg = 0.2F;
-      } else {
-        this.strengthLeg = paramFloat;
-      }
-    }
+    addParam(new UniformParam.FloatParam("strengthLeg", this.strengthLeg));
   }
   
   public void setStrengthShoulder(float paramFloat)
   {
     if (paramFloat < 0.0F) {
       this.strengthShoulder = 0.0F;
+    } else if (paramFloat > 1.0F) {
+      this.strengthShoulder = 1.0F;
+    } else {
+      this.strengthShoulder = paramFloat;
     }
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("strengthShoulder", this.strengthShoulder));
-      return;
-      if (paramFloat > 1.0F) {
-        this.strengthShoulder = 1.0F;
-      } else {
-        this.strengthShoulder = paramFloat;
-      }
-    }
+    addParam(new UniformParam.FloatParam("strengthShoulder", this.strengthShoulder));
   }
   
   public void setStrengthWaist(float paramFloat)
   {
-    this.strengthWaist = (0.68F * paramFloat + this.t0Waist * (1.0F - paramFloat));
+    this.strengthWaist = (this.t0Waist * (1.0F - paramFloat) + paramFloat * 0.68F);
     addParam(new UniformParam.FloatParam("maxPointWaist", this.strengthWaist));
   }
   
@@ -558,124 +526,108 @@ public class BeautyBodyFilter
   {
     if (paramFloat > 1.0F) {
       this.t0Waist = 1.0F;
+    } else if (paramFloat < 0.0F) {
+      this.t0Waist = 0.0F;
+    } else {
+      this.t0Waist = paramFloat;
     }
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("t0Waist", this.t0Waist));
-      return;
-      if (paramFloat < 0.0F) {
-        this.t0Waist = 0.0F;
-      } else {
-        this.t0Waist = paramFloat;
-      }
-    }
+    addParam(new UniformParam.FloatParam("t0Waist", this.t0Waist));
   }
   
   public void setWaistWidthBody(float paramFloat)
   {
     if (paramFloat > 1.0F) {
       this.waistWidthBody = 1.0F;
+    } else if (paramFloat < 0.0F) {
+      this.waistWidthBody = 0.0F;
+    } else {
+      this.waistWidthBody = paramFloat;
     }
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("waistWidthBody", this.waistWidthBody));
-      return;
-      if (paramFloat < 0.0F) {
-        this.waistWidthBody = 0.0F;
-      } else {
-        this.waistWidthBody = paramFloat;
-      }
-    }
+    addParam(new UniformParam.FloatParam("waistWidthBody", this.waistWidthBody));
   }
   
   public void setWidth(float paramFloat)
   {
     if (paramFloat > 1.0F) {
       this.widthShoulder = 1.0F;
+    } else if (paramFloat < 0.0F) {
+      this.widthShoulder = 0.0F;
+    } else {
+      this.widthShoulder = paramFloat;
     }
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("widthShoulder", this.widthShoulder));
-      return;
-      if (paramFloat < 0.0F) {
-        this.widthShoulder = 0.0F;
-      } else {
-        this.widthShoulder = paramFloat;
-      }
-    }
+    addParam(new UniformParam.FloatParam("widthShoulder", this.widthShoulder));
   }
   
   public void setY0Body(float paramFloat)
   {
-    if (paramFloat >= 0.0F) {
-      if (paramFloat > this.y1Body) {
-        this.y0Body = this.y1Body;
+    if (paramFloat >= 0.0F)
+    {
+      float f = this.y1Body;
+      if (paramFloat > f) {
+        this.y0Body = f;
+      } else {
+        this.y0Body = paramFloat;
       }
     }
-    for (;;)
+    else
     {
-      addParam(new UniformParam.FloatParam("y0Body", this.y0Body));
-      return;
-      this.y0Body = paramFloat;
-      continue;
       this.y0Body = 0.0F;
     }
+    addParam(new UniformParam.FloatParam("y0Body", this.y0Body));
   }
   
   public void setY0Leg(float paramFloat)
   {
     if (paramFloat > 1.0F) {
       this.y0Leg = 1.0F;
+    } else if (paramFloat < 0.0F) {
+      this.y0Leg = 0.0F;
+    } else {
+      this.y0Leg = paramFloat;
     }
-    for (;;)
-    {
-      addParam(new UniformParam.FloatParam("y0Leg", this.y0Leg));
-      return;
-      if (paramFloat < 0.0F) {
-        this.y0Leg = 0.0F;
-      } else {
-        this.y0Leg = paramFloat;
-      }
-    }
+    addParam(new UniformParam.FloatParam("y0Leg", this.y0Leg));
   }
   
   public void setY1Body(float paramFloat)
   {
-    if (paramFloat > this.y2Body) {
-      this.y1Body = this.y2Body;
-    }
-    for (;;)
+    float f = this.y2Body;
+    if (paramFloat > f)
     {
-      addParam(new UniformParam.FloatParam("y1Body", this.y1Body));
-      return;
-      if (paramFloat < this.y0Body) {
-        this.y1Body = this.y0Body;
+      this.y1Body = f;
+    }
+    else
+    {
+      f = this.y0Body;
+      if (paramFloat < f) {
+        this.y1Body = f;
       } else {
         this.y1Body = paramFloat;
       }
     }
+    addParam(new UniformParam.FloatParam("y1Body", this.y1Body));
   }
   
   public void setY2Body(float paramFloat)
   {
-    if (paramFloat > 1.0F) {
+    if (paramFloat > 1.0F)
+    {
       this.y2Body = 1.0F;
     }
-    for (;;)
+    else
     {
-      addParam(new UniformParam.FloatParam("y2Body", this.y2Body));
-      return;
-      if (paramFloat < this.y1Body) {
-        this.y2Body = this.y1Body;
+      float f = this.y1Body;
+      if (paramFloat < f) {
+        this.y2Body = f;
       } else {
         this.y2Body = paramFloat;
       }
     }
+    addParam(new UniformParam.FloatParam("y2Body", this.y2Body));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.BeautyBodyFilter
  * JD-Core Version:    0.7.0.1
  */

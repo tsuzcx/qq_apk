@@ -22,10 +22,13 @@ public final class TTAppAgent
   public TTAppAgent(@NotNull InspectorBridge paramInspectorBridge, @NotNull ScriptSystem paramScriptSystem)
   {
     this.nativeInstance = TTAppAgent.Companion.access$nativeCreate(Companion, paramInspectorBridge);
-    if (this.nativeInstance == 0L) {
-      throw ((Throwable)new TritonInitException("failed to create TTApp", ErrorCodes.NATIVE_FUNCTION_CALL, null, 4, null));
+    long l = this.nativeInstance;
+    if (l != 0L)
+    {
+      this.jankCanaryNativeInstance = Companion.nativeGetInstance(l, 1);
+      return;
     }
-    this.jankCanaryNativeInstance = Companion.nativeGetInstance(this.nativeInstance, 1);
+    throw ((Throwable)new TritonInitException("failed to create TTApp", ErrorCodes.NATIVE_FUNCTION_CALL, null, 4, null));
   }
   
   @JvmStatic
@@ -36,7 +39,7 @@ public final class TTAppAgent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.engine.TTAppAgent
  * JD-Core Version:    0.7.0.1
  */

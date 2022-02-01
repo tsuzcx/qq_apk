@@ -23,44 +23,53 @@ public class MultiChannelReportProcessor
   public MultiChannelReportBean a(QConfItem[] paramArrayOfQConfItem)
   {
     QLog.i("MultiChannelReportProcessor", 1, "[onParsed] config");
-    Object localObject = null;
+    Object localObject;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      localMultiChannelReportBean = MultiChannelReportBean.a(paramArrayOfQConfItem[0].a);
+      MultiChannelReportBean localMultiChannelReportBean = MultiChannelReportBean.a(paramArrayOfQConfItem[0].a);
       localObject = localMultiChannelReportBean;
       if (QLog.isColorLevel())
       {
-        QLog.d("MultiChannelReportProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
-        localObject = localMultiChannelReportBean;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onParsed ");
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+        QLog.d("MultiChannelReportProcessor", 2, ((StringBuilder)localObject).toString());
+        return localMultiChannelReportBean;
       }
     }
-    while (!QLog.isColorLevel())
+    else
     {
-      MultiChannelReportBean localMultiChannelReportBean;
-      return localObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiChannelReportProcessor", 2, "onParsed is null");
+      }
+      localObject = null;
     }
-    QLog.d("MultiChannelReportProcessor", 2, "onParsed is null");
-    return null;
+    return localObject;
   }
   
   public void a(MultiChannelReportBean paramMultiChannelReportBean)
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime != null) {}
-    try
-    {
-      paramMultiChannelReportBean = MultiChannelReportBean.a(paramMultiChannelReportBean);
-      QLog.i("MultiChannelReportProcessor", 1, "[onUpdate], strConfig = " + paramMultiChannelReportBean);
-      NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), BuiltInServlet.class);
-      localNewIntent.putExtra("action", 2214);
-      localNewIntent.putExtra("manager_config", paramMultiChannelReportBean);
-      localAppRuntime.startServlet(localNewIntent);
-      return;
-    }
-    catch (Throwable paramMultiChannelReportBean)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MultiChannelReportProcessor", 2, "update msf config, but throw t", paramMultiChannelReportBean);
+    if (localAppRuntime != null) {
+      try
+      {
+        paramMultiChannelReportBean = MultiChannelReportBean.a(paramMultiChannelReportBean);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[onUpdate], strConfig = ");
+        ((StringBuilder)localObject).append(paramMultiChannelReportBean);
+        QLog.i("MultiChannelReportProcessor", 1, ((StringBuilder)localObject).toString());
+        localObject = new NewIntent(localAppRuntime.getApplication(), BuiltInServlet.class);
+        ((NewIntent)localObject).putExtra("action", 2214);
+        ((NewIntent)localObject).putExtra("manager_config", paramMultiChannelReportBean);
+        localAppRuntime.startServlet((NewIntent)localObject);
+        return;
+      }
+      catch (Throwable paramMultiChannelReportBean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiChannelReportProcessor", 2, "update msf config, but throw t", paramMultiChannelReportBean);
+        }
+      }
     }
   }
   
@@ -91,7 +100,10 @@ public class MultiChannelReportProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("MultiChannelReportProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onReqFailed] failCode=");
+    localStringBuilder.append(paramInt);
+    QLog.i("MultiChannelReportProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -101,7 +113,7 @@ public class MultiChannelReportProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MultiChannelReportProcessor
  * JD-Core Version:    0.7.0.1
  */

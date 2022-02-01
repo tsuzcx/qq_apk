@@ -10,17 +10,30 @@ final class ConfessMsgUtil$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager$GroupChatExtra, this.jdField_a_of_type_Long, this.jdField_a_of_type_Long, this.b);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager;
+    String str = this.jdField_a_of_type_JavaLangString;
+    ConfessManager.GroupChatExtra localGroupChatExtra = this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager$GroupChatExtra;
+    long l = this.jdField_a_of_type_Long;
+    ((ConfessManager)localObject).a(str, localGroupChatExtra, l, l, this.b);
     if (QLog.isColorLevel())
     {
-      long l = MessageCache.a();
-      QLog.i("ConfessMsgUtil", 2, "decodeConfessMsgElem 1 strConfessorDesc:" + this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager$GroupChatExtra.f + " msgTime:" + this.jdField_a_of_type_Long + " msgSeq:" + this.b + " nowTime" + l);
+      l = MessageCache.a();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("decodeConfessMsgElem 1 strConfessorDesc:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqConfessConfessManager$GroupChatExtra.f);
+      ((StringBuilder)localObject).append(" msgTime:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(" msgSeq:");
+      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(" nowTime");
+      ((StringBuilder)localObject).append(l);
+      QLog.i("ConfessMsgUtil", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessMsgUtil.1
  * JD-Core Version:    0.7.0.1
  */

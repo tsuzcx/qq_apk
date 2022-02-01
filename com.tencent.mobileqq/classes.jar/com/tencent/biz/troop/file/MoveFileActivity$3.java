@@ -21,68 +21,70 @@ class MoveFileActivity$3
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<TroopFileInfo> paramList, Bundle paramBundle)
   {
     this.a.a(true);
-    if ((!paramBoolean1) || (paramList == null)) {
-      return;
-    }
-    MoveFileActivity.a(this.a, paramInt3);
-    MoveFileActivity.a(this.a, paramBoolean2);
-    paramBoolean1 = paramBundle.getBoolean("isFirstPage");
-    paramByteStringMicro = paramList.iterator();
-    while (paramByteStringMicro.hasNext())
-    {
-      paramBundle = (TroopFileInfo)paramByteStringMicro.next();
-      if (MoveFileActivity.a(this.a).c.get(paramBundle.b) == null)
-      {
-        paramBundle.a = UUID.randomUUID();
-        MoveFileActivity.a(this.a).c.put(paramBundle.b, paramBundle);
-      }
-    }
     if (paramBoolean1)
     {
-      MoveFileActivity.a(this.a).clear();
+      if (paramList == null) {
+        return;
+      }
+      MoveFileActivity.a(this.a, paramInt3);
+      MoveFileActivity.a(this.a, paramBoolean2);
+      paramBoolean1 = paramBundle.getBoolean("isFirstPage");
+      paramByteStringMicro = paramList.iterator();
+      while (paramByteStringMicro.hasNext())
+      {
+        paramBundle = (TroopFileInfo)paramByteStringMicro.next();
+        if (MoveFileActivity.a(this.a).c.get(paramBundle.b) == null)
+        {
+          paramBundle.a = UUID.randomUUID();
+          MoveFileActivity.a(this.a).c.put(paramBundle.b, paramBundle);
+        }
+      }
+      if (paramBoolean1)
+      {
+        MoveFileActivity.a(this.a).clear();
+        if (!MoveFileActivity.c(this.a).equals("/"))
+        {
+          paramByteStringMicro = new TroopFileInfo();
+          paramByteStringMicro.c = HardCodeUtil.a(2131706935);
+          paramByteStringMicro.b = "/";
+          paramByteStringMicro.d = true;
+          paramByteStringMicro.f = -1;
+          MoveFileActivity.a(this.a).add(paramByteStringMicro);
+        }
+      }
+      MoveFileActivity.b(this.a, paramInt1);
       if (!MoveFileActivity.c(this.a).equals("/"))
       {
-        paramByteStringMicro = new TroopFileInfo();
-        paramByteStringMicro.c = HardCodeUtil.a(2131706913);
-        paramByteStringMicro.b = "/";
-        paramByteStringMicro.d = true;
-        paramByteStringMicro.f = -1;
-        MoveFileActivity.a(this.a).add(paramByteStringMicro);
-      }
-    }
-    MoveFileActivity.b(this.a, paramInt1);
-    if (!MoveFileActivity.c(this.a).equals("/"))
-    {
-      paramInt1 = paramList.size() - 1;
-      if (paramInt1 >= 0)
-      {
-        if (!((TroopFileInfo)paramList.get(paramInt1)).b.equals(MoveFileActivity.c(this.a))) {
-          break label389;
-        }
-        if (MoveFileActivity.a(this.a) == -1)
+        paramInt1 = paramList.size() - 1;
+        while (paramInt1 >= 0)
         {
-          MoveFileActivity.c(this.a, paramInt1 + MoveFileActivity.a(this.a).size() - 1);
-          MoveFileActivity.a(this.a).setEnabled(true);
-          MoveFileActivity.a(this.a).setBackgroundResource(2130839445);
-          MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755349);
+          if (((TroopFileInfo)paramList.get(paramInt1)).b.equals(MoveFileActivity.c(this.a)))
+          {
+            if (MoveFileActivity.a(this.a) != -1) {
+              break;
+            }
+            paramByteStringMicro = this.a;
+            MoveFileActivity.c(paramByteStringMicro, MoveFileActivity.a(paramByteStringMicro).size() + paramInt1 - 1);
+            MoveFileActivity.a(this.a).setEnabled(true);
+            MoveFileActivity.a(this.a).setBackgroundResource(2130839301);
+            MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755543);
+            break;
+          }
+          paramInt1 -= 1;
         }
+        MoveFileActivity.a(this.a).addAll(MoveFileActivity.a(this.a).size() - 1, paramList);
       }
-      MoveFileActivity.a(this.a).addAll(MoveFileActivity.a(this.a).size() - 1, paramList);
-    }
-    for (;;)
-    {
+      else
+      {
+        MoveFileActivity.a(this.a).addAll(paramList);
+      }
       MoveFileActivity.a(this.a).notifyDataSetChanged();
-      return;
-      label389:
-      paramInt1 -= 1;
-      break;
-      MoveFileActivity.a(this.a).addAll(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity.3
  * JD-Core Version:    0.7.0.1
  */

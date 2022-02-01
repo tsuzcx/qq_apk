@@ -19,13 +19,14 @@ public class GLPaint
   
   public void a(float paramFloat)
   {
-    if (paramFloat >= 0.0F) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.a(bool);
-      this.jdField_a_of_type_Float = paramFloat;
-      return;
+    boolean bool;
+    if (paramFloat >= 0.0F) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assert.a(bool);
+    this.jdField_a_of_type_Float = paramFloat;
   }
   
   public void a(int paramInt)
@@ -35,7 +36,7 @@ public class GLPaint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.glrenderer.GLPaint
  * JD-Core Version:    0.7.0.1
  */

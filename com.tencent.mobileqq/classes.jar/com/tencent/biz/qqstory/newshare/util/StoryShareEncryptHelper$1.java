@@ -19,32 +19,43 @@ final class StoryShareEncryptHelper$1
 {
   public void a(@NonNull StoryShareTranslateTokenRequest paramStoryShareTranslateTokenRequest, @Nullable StoryShareTranslateTokenRequest.StoryShareTranslateTokenResponse paramStoryShareTranslateTokenResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramStoryShareTranslateTokenResponse == null) || (paramStoryShareTranslateTokenResponse.jdField_a_of_type_Int != 0))
+    if ((paramStoryShareTranslateTokenResponse != null) && (paramStoryShareTranslateTokenResponse.jdField_a_of_type_Int == 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.share.trans.helper", 2, "encrypt failed");
+      if (((Boolean)((StoryConfigManager)SuperManager.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {
+        paramStoryShareTranslateTokenRequest = StoryShareEncryptHelper.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], this.jdField_a_of_type_Boolean);
+      } else {
+        paramStoryShareTranslateTokenRequest = this.jdField_a_of_type_ArrayOfJavaLangString[1];
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      }
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714435), 0).a();
-      return;
-    }
-    if (((Boolean)((StoryConfigManager)SuperManager.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {}
-    for (paramStoryShareTranslateTokenRequest = StoryShareEncryptHelper.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], this.jdField_a_of_type_Boolean);; paramStoryShareTranslateTokenRequest = this.jdField_a_of_type_ArrayOfJavaLangString[1])
-    {
-      paramStoryShareTranslateTokenRequest = this.jdField_a_of_type_ArrayOfJavaLangString[0] + "?token=" + paramStoryShareTranslateTokenResponse.jdField_a_of_type_JavaLangString + "&" + paramStoryShareTranslateTokenRequest;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.share.trans.helper", 2, "encrypt done url:" + paramStoryShareTranslateTokenRequest);
+      paramErrorMessage = new StringBuilder();
+      paramErrorMessage.append(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+      paramErrorMessage.append("?token=");
+      paramErrorMessage.append(paramStoryShareTranslateTokenResponse.jdField_a_of_type_JavaLangString);
+      paramErrorMessage.append("&");
+      paramErrorMessage.append(paramStoryShareTranslateTokenRequest);
+      paramStoryShareTranslateTokenRequest = paramErrorMessage.toString();
+      if (QLog.isColorLevel())
+      {
+        paramErrorMessage = new StringBuilder();
+        paramErrorMessage.append("encrypt done url:");
+        paramErrorMessage.append(paramStoryShareTranslateTokenRequest);
+        QLog.d("Q.qqstory.share.trans.helper", 2, paramErrorMessage.toString());
       }
       this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$EncryptCallback.a(paramStoryShareTranslateTokenResponse, paramStoryShareTranslateTokenRequest, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "encrypt failed");
+    }
+    paramStoryShareTranslateTokenRequest = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if ((paramStoryShareTranslateTokenRequest != null) && (paramStoryShareTranslateTokenRequest.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131714356), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.1
  * JD-Core Version:    0.7.0.1
  */

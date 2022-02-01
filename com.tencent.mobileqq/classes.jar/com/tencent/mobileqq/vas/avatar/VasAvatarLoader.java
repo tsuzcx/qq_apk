@@ -5,12 +5,13 @@ import android.graphics.drawable.Drawable;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloAvatarFileManager;
+import com.tencent.mobileqq.apollo.utils.api.IApolloAvatarFileManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.vas.VasExtensionManager;
 import com.tencent.mobileqq.vas.VasManager.CompleteListener;
 import com.tencent.qphone.base.util.QLog;
@@ -59,30 +60,36 @@ public class VasAvatarLoader
   
   private void a(String paramString)
   {
-    if (paramString == null) {
+    if (paramString == null)
+    {
       QLog.e("Q.qqhead.VasFaceManager", 1, "VasAvatar get null path");
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_b_of_type_Int == -1) && (DeviceInfoUtils.b()));
-      localObject = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localObject == null) || (((VasAvatar)localObject).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader != this));
-    try
-    {
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      localObject = URLDrawable.getFileDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-      ThreadManager.getUIHandler().post(new VasAvatarLoader.2(this, (URLDrawable)localObject));
       return;
     }
-    catch (Exception localException)
+    if ((this.jdField_b_of_type_Int == -1) && (DeviceInfoUtils.b())) {
+      return;
+    }
+    Object localObject = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject != null)
     {
-      QLog.e("Q.qqhead.VasFaceManager", 1, "getGifDrawable GifImage err, path:" + paramString, localException);
+      if (((VasAvatar)localObject).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader != this) {
+        return;
+      }
+      try
+      {
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localObject = URLDrawable.getFileDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
+        ThreadManager.getUIHandler().post(new VasAvatarLoader.2(this, (URLDrawable)localObject));
+        return;
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getGifDrawable GifImage err, path:");
+        localStringBuilder.append(paramString);
+        QLog.e("Q.qqhead.VasFaceManager", 1, localStringBuilder.toString(), localException);
+      }
     }
   }
   
@@ -91,8 +98,12 @@ public class VasAvatarLoader
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVasAvatar);
     if (this.jdField_b_of_type_Int == -1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.VasFaceManager", 2, "delay getAvatar uin: " + this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        paramVasAvatar = new StringBuilder();
+        paramVasAvatar.append("delay getAvatar uin: ");
+        paramVasAvatar.append(this.jdField_a_of_type_JavaLangString);
+        QLog.i("Q.qqhead.VasFaceManager", 2, paramVasAvatar.toString());
       }
       jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic.a(this);
       return;
@@ -100,93 +111,107 @@ public class VasAvatarLoader
     a(false);
   }
   
-  public void a(VasAvatar paramVasAvatar, int paramInt)
+  public void a(VasAvatar paramVasAvatar, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVasAvatar);
     if (this.jdField_b_of_type_Int == -1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.VasFaceManager", 2, "delay getAvatar uin: " + this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        paramVasAvatar = new StringBuilder();
+        paramVasAvatar.append("delay getAvatar uin: ");
+        paramVasAvatar.append(this.jdField_a_of_type_JavaLangString);
+        QLog.i("Q.qqhead.VasFaceManager", 2, paramVasAvatar.toString());
       }
       jdField_a_of_type_ComTencentMobileqqVasAvatarIdleGetDynamic.a(this);
       return;
     }
-    a(ApolloAvatarFileManager.a().a(paramInt));
+    a(((IApolloAvatarFileManager)QRoute.api(IApolloAvatarFileManager.class)).getGifFilePath(paramInt1, paramInt2, this.jdField_a_of_type_JavaLangString));
   }
   
   public void a(String paramString, Object paramObject)
   {
-    if (paramObject == jdField_b_of_type_AndroidGraphicsDrawableDrawable) {
+    if (paramObject == jdField_b_of_type_AndroidGraphicsDrawableDrawable)
+    {
       a(true);
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        if (paramString == null)
-        {
-          QLog.e("Q.qqhead.VasFaceManager", 1, "VasAvatar get null path");
-          return;
-        }
-      } while ((this.jdField_b_of_type_Int == -1) && (DeviceInfoUtils.b()));
-      localObject = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localObject == null) || (((VasAvatar)localObject).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader != this));
-    try
-    {
-      paramObject = new URL("vasapngdownloader", paramString, "-vas-face-");
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mUseApngImage = true;
-      localURLDrawableOptions.mUseMemoryCache = true;
-      localURLDrawableOptions.mMemoryCacheKeySuffix = Long.toString(this.jdField_a_of_type_Long);
-      localObject = ((VasAvatar)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mExtraInfo = VasFaceManager.a(this.jdField_a_of_type_Boolean);
-      VasFaceManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(paramObject, localURLDrawableOptions);
-      paramObject = URLDrawable.getDrawable(paramObject, localURLDrawableOptions);
-      ThreadManager.getUIHandler().post(new VasAvatarLoader.1(this, paramObject));
       return;
     }
-    catch (Exception paramObject)
+    if (paramString == null)
     {
-      QLog.e("Q.qqhead.VasFaceManager", 1, "getApngDrawable ApngImage err, path:" + paramString, paramObject);
+      QLog.e("Q.qqhead.VasFaceManager", 1, "VasAvatar get null path");
+      return;
+    }
+    if ((this.jdField_b_of_type_Int == -1) && (DeviceInfoUtils.b())) {
+      return;
+    }
+    Object localObject2 = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject2 != null)
+    {
+      if (((VasAvatar)localObject2).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader != this) {
+        return;
+      }
+      try
+      {
+        paramObject = new URL("vasapngdownloader", paramString, "-vas-face-");
+        localObject1 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject1).mUseApngImage = true;
+        ((URLDrawable.URLDrawableOptions)localObject1).mUseMemoryCache = true;
+        ((URLDrawable.URLDrawableOptions)localObject1).mMemoryCacheKeySuffix = Long.toString(this.jdField_a_of_type_Long);
+        localObject2 = ((VasAvatar)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
+        ((URLDrawable.URLDrawableOptions)localObject1).mExtraInfo = VasFaceManager.a(this.jdField_a_of_type_Boolean);
+        VasFaceManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(paramObject, (URLDrawable.URLDrawableOptions)localObject1);
+        paramObject = URLDrawable.getDrawable(paramObject, (URLDrawable.URLDrawableOptions)localObject1);
+        ThreadManager.getUIHandler().post(new VasAvatarLoader.1(this, paramObject));
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getApngDrawable ApngImage err, path:");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.e("Q.qqhead.VasFaceManager", 1, ((StringBuilder)localObject1).toString(), paramObject);
+      }
     }
   }
   
   public void a(boolean paramBoolean)
   {
     Object localObject1 = (VasAvatar)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localObject1 == null) || (((VasAvatar)localObject1).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader != this)) {}
-    Object localObject2;
-    do
+    if (localObject1 != null)
     {
-      do
-      {
-        return;
-        localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      } while (!(localObject1 instanceof QQAppInterface));
-      localObject2 = (QQAppInterface)localObject1;
-      localObject1 = ((VasExtensionManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
-      if (this.jdField_a_of_type_Int > 0)
-      {
-        ((VasFaceManager)localObject1).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this, null);
+      if (((VasAvatar)localObject1).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatarLoader != this) {
         return;
       }
-      localObject2 = ((QQAppInterface)localObject2).getExtensionInfo(this.jdField_a_of_type_JavaLangString, paramBoolean);
-      if ((localObject2 == null) || (((ExtensionInfo)localObject2).faceIdUpdateTime == 0L))
+      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 instanceof QQAppInterface))
       {
-        ((VasFaceManager)localObject1).b(this.jdField_a_of_type_JavaLangString, this, jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-        return;
+        Object localObject2 = (QQAppInterface)localObject1;
+        localObject1 = ((VasExtensionManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+        int i = this.jdField_a_of_type_Int;
+        if (i > 0)
+        {
+          ((VasFaceManager)localObject1).a(i, this.jdField_b_of_type_JavaLangString, this, null);
+          return;
+        }
+        localObject2 = ((QQAppInterface)localObject2).getExtensionInfo(this.jdField_a_of_type_JavaLangString, paramBoolean);
+        if ((localObject2 != null) && (((ExtensionInfo)localObject2).faceIdUpdateTime != 0L))
+        {
+          if (((ExtensionInfo)localObject2).faceId > 0) {
+            ((VasFaceManager)localObject1).a(((ExtensionInfo)localObject2).faceId, this.jdField_b_of_type_JavaLangString, this, null);
+          }
+        }
+        else {
+          ((VasFaceManager)localObject1).b(this.jdField_a_of_type_JavaLangString, this, jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+        }
       }
-    } while (((ExtensionInfo)localObject2).faceId <= 0);
-    ((VasFaceManager)localObject1).a(((ExtensionInfo)localObject2).faceId, this.jdField_b_of_type_JavaLangString, this, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasAvatarLoader
  * JD-Core Version:    0.7.0.1
  */

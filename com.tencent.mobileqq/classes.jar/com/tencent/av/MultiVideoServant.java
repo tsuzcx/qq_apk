@@ -14,24 +14,17 @@ public class MultiVideoServant
   
   public boolean a(String paramString)
   {
-    boolean bool2 = false;
     String[] arrayOfString = a;
     int j = arrayOfString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (TextUtils.equals(arrayOfString[i], paramString)) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (TextUtils.equals(arrayOfString[i], paramString)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public String b()

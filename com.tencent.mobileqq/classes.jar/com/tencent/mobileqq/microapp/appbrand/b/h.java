@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class h
 {
-  private static final String a = h.class.getSimpleName();
+  private static final String a = "h";
   private static volatile h e;
   private ConcurrentHashMap b = new ConcurrentHashMap();
   private ConcurrentHashMap c = new ConcurrentHashMap();
@@ -25,15 +25,16 @@ public class h
   
   public static h a()
   {
-    if (e == null) {}
-    try
-    {
-      if (e == null) {
-        e = new h();
+    if (e == null) {
+      try
+      {
+        if (e == null) {
+          e = new h();
+        }
       }
-      return e;
+      finally {}
     }
-    finally {}
+    return e;
   }
   
   private void a(WebView paramWebView)
@@ -56,10 +57,8 @@ public class h
       }
       paramString = new ProgressWebView(this.f);
     }
-    for (;;)
+    else
     {
-      paramString.htmlId = paramInt;
-      return paramString;
       paramString = localProgressWebView;
       if (QLog.isColorLevel())
       {
@@ -67,6 +66,8 @@ public class h
         paramString = localProgressWebView;
       }
     }
+    paramString.htmlId = paramInt;
+    return paramString;
   }
   
   public ServiceWebview a(String paramString)
@@ -114,30 +115,30 @@ public class h
       QLog.d(a, 2, "----recyclePageWebview----");
     }
     b.a().a("hideKeyboard");
-    if (paramPageWebview == null) {}
-    for (;;)
-    {
+    if (paramPageWebview == null) {
       return;
-      if (!"about:blank".equals(paramPageWebview.getUrl())) {}
+    }
+    if (!"about:blank".equals(paramPageWebview.getUrl())) {
       try
       {
         paramPageWebview.clearUp();
         a(paramPageWebview);
-        if ((this.b == null) || (!this.b.contains(paramPageWebview))) {
-          continue;
-        }
-        this.b.remove(paramPageWebview);
-        return;
       }
       catch (Throwable paramContext)
       {
-        for (;;)
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.e(a, 1, "destroy error:" + paramContext.getMessage());
-          }
+          String str = a;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("destroy error:");
+          localStringBuilder.append(paramContext.getMessage());
+          QLog.e(str, 1, localStringBuilder.toString());
         }
       }
+    }
+    paramContext = this.b;
+    if ((paramContext != null) && (paramContext.contains(paramPageWebview))) {
+      this.b.remove(paramPageWebview);
     }
   }
   
@@ -147,52 +148,55 @@ public class h
       QLog.d(a, 2, "----recyclePageWebview----");
     }
     b.a().a("hideKeyboard");
-    if (paramProgressWebView == null) {}
-    for (;;)
-    {
+    if (paramProgressWebView == null) {
       return;
-      if (!"about:blank".equals(paramProgressWebView.getUrl())) {}
+    }
+    if (!"about:blank".equals(paramProgressWebView.getUrl())) {
       try
       {
         a(paramProgressWebView);
-        if ((this.d == null) || (!this.d.contains(paramProgressWebView))) {
-          continue;
-        }
-        this.d.remove(paramProgressWebView);
-        return;
       }
       catch (Throwable paramContext)
       {
-        for (;;)
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.e(a, 1, "destroy error:" + paramContext.getMessage());
-          }
+          String str = a;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("destroy error:");
+          localStringBuilder.append(paramContext.getMessage());
+          QLog.e(str, 1, localStringBuilder.toString());
         }
       }
+    }
+    paramContext = this.d;
+    if ((paramContext != null) && (paramContext.contains(paramProgressWebView))) {
+      this.d.remove(paramProgressWebView);
     }
   }
   
   public void a(ServiceWebview paramServiceWebview, Context paramContext)
   {
-    if (!"about:blank".equals(paramServiceWebview.getUrl())) {}
-    try
-    {
-      paramServiceWebview.clearUp();
-      a(paramServiceWebview);
-      if ((this.c != null) && (this.c.contains(paramServiceWebview))) {
-        this.c.remove(paramServiceWebview);
-      }
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
+    if (!"about:blank".equals(paramServiceWebview.getUrl())) {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e(a, 1, "destroy error:" + paramContext.getMessage());
+        paramServiceWebview.clearUp();
+        a(paramServiceWebview);
+      }
+      catch (Throwable paramContext)
+      {
+        if (QLog.isColorLevel())
+        {
+          String str = a;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("destroy error:");
+          localStringBuilder.append(paramContext.getMessage());
+          QLog.e(str, 1, localStringBuilder.toString());
         }
       }
+    }
+    paramContext = this.c;
+    if ((paramContext != null) && (paramContext.contains(paramServiceWebview))) {
+      this.c.remove(paramServiceWebview);
     }
   }
   
@@ -207,12 +211,8 @@ public class h
       paramString = new PageWebview(this.f);
       paramString.loadHtml();
     }
-    for (;;)
+    else
     {
-      int i = this.g + 1;
-      this.g = i;
-      paramString.pageWebviewId = i;
-      return paramString;
       paramString = localPageWebview;
       if (QLog.isColorLevel())
       {
@@ -220,6 +220,10 @@ public class h
         paramString = localPageWebview;
       }
     }
+    int i = this.g + 1;
+    this.g = i;
+    paramString.pageWebviewId = i;
+    return paramString;
   }
   
   public void b()
@@ -244,7 +248,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.b.h
  * JD-Core Version:    0.7.0.1
  */

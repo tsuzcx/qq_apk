@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowViewController;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.activity.photo.album.photolist.PhotoListBaseData;
 import java.util.HashMap;
 
 public class PhotoListData
@@ -11,8 +10,8 @@ public class PhotoListData
 {
   public int a;
   public long a;
-  public SlideShowViewController a;
-  public SessionInfo a;
+  public NewPhotoListActivityHandler a;
+  QZoneGetAlbumListNumObserver a;
   public String a;
   public HashMap<String, PhotoSendParams> a;
   public boolean a;
@@ -27,8 +26,8 @@ public class PhotoListData
   public boolean e = false;
   public boolean f = false;
   public boolean g = false;
-  public boolean h = false;
-  public boolean i;
+  public boolean h;
+  public boolean i = false;
   public boolean j = false;
   public boolean k = false;
   
@@ -37,13 +36,12 @@ public class PhotoListData
     this.jdField_a_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
     this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListData
  * JD-Core Version:    0.7.0.1
  */

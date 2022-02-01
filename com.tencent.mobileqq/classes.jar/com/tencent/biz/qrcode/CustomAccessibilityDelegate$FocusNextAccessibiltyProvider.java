@@ -12,42 +12,37 @@ public class CustomAccessibilityDelegate$FocusNextAccessibiltyProvider
   
   public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt == -1)
+    if ((paramInt == -1) && (CustomAccessibilityDelegate.a(this.a) != null))
     {
-      localObject1 = localObject2;
-      if (CustomAccessibilityDelegate.a(this.a) != null)
-      {
-        localObject1 = AccessibilityNodeInfo.obtain(CustomAccessibilityDelegate.a(this.a));
-        CustomAccessibilityDelegate.a(this.a).onInitializeAccessibilityNodeInfo((AccessibilityNodeInfo)localObject1);
-        ((AccessibilityNodeInfo)localObject1).setText(CustomAccessibilityDelegate.a(this.a).getContentDescription());
-      }
+      AccessibilityNodeInfo localAccessibilityNodeInfo = AccessibilityNodeInfo.obtain(CustomAccessibilityDelegate.a(this.a));
+      CustomAccessibilityDelegate.a(this.a).onInitializeAccessibilityNodeInfo(localAccessibilityNodeInfo);
+      localAccessibilityNodeInfo.setText(CustomAccessibilityDelegate.a(this.a).getContentDescription());
+      return localAccessibilityNodeInfo;
     }
-    return localObject1;
+    return null;
   }
   
   public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
   {
     boolean bool = CustomAccessibilityDelegate.a(this.a).performAccessibilityAction(paramInt2, paramBundle);
-    if (paramInt2 == 128) {
-      CustomAccessibilityDelegate.a(this.a).post(CustomAccessibilityDelegate.a(this.a));
-    }
-    do
+    if (paramInt2 == 128)
     {
-      do
-      {
-        return bool;
-      } while (paramInt2 != 64);
+      CustomAccessibilityDelegate.a(this.a).post(CustomAccessibilityDelegate.a(this.a));
+      return bool;
+    }
+    if (paramInt2 == 64)
+    {
       CustomAccessibilityDelegate.a(this.a).removeCallbacks(CustomAccessibilityDelegate.a(this.a));
-    } while (CustomAccessibilityDelegate.a(this.a) == null);
-    CustomAccessibilityDelegate.a(this.a).a();
+      if (CustomAccessibilityDelegate.a(this.a) != null) {
+        CustomAccessibilityDelegate.a(this.a).a();
+      }
+    }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.CustomAccessibilityDelegate.FocusNextAccessibiltyProvider
  * JD-Core Version:    0.7.0.1
  */

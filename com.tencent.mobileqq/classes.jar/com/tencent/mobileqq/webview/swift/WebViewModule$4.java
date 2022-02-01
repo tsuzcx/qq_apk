@@ -22,112 +22,81 @@ class WebViewModule$4
       QLog.i("WebViewModule", 2, "TASK_ID_BROWSER_ACTIVITY_RUN_ONCE.");
     }
     long l;
-    boolean bool7;
-    boolean bool8;
-    boolean bool9;
-    boolean bool10;
-    boolean bool6;
-    if (Build.VERSION.SDK_INT < 19)
-    {
+    if (Build.VERSION.SDK_INT < 19) {
       l = System.currentTimeMillis();
-      bool7 = false;
-      bool8 = false;
-      bool9 = false;
-      bool10 = false;
-      bool6 = false;
-      bool2 = bool6;
-      bool3 = bool7;
-      bool4 = bool8;
-      bool5 = bool9;
     }
     for (;;)
     {
+      boolean bool;
       try
       {
-        Object localObject = Class.forName("android.webkit.WebViewCore");
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        Field localField = ((Class)localObject).getDeclaredField("sWebCoreHandler");
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localField.setAccessible(true);
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localObject = (Handler)localField.get(localObject);
-        bool1 = bool10;
-        if (localObject == null) {
-          continue;
+        Object localObject1 = Class.forName("android.webkit.WebViewCore");
+        Object localObject2 = ((Class)localObject1).getDeclaredField("sWebCoreHandler");
+        ((Field)localObject2).setAccessible(true);
+        localObject1 = (Handler)((Field)localObject2).get(localObject1);
+        if (localObject1 != null)
+        {
+          localObject1 = ((Handler)localObject1).getLooper();
+          if (localObject1 != null)
+          {
+            localObject1 = ((Looper)localObject1).getThread().getState();
+            localObject2 = Thread.State.WAITING;
+            if (localObject1 == localObject2)
+            {
+              bool = true;
+              continue;
+            }
+          }
         }
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        localObject = ((Handler)localObject).getLooper();
-        bool1 = bool10;
-        if (localObject == null) {
-          continue;
+        bool = false;
+        if (!bool) {
+          break label278;
         }
-        bool2 = bool6;
-        bool3 = bool7;
-        bool4 = bool8;
-        bool5 = bool9;
-        bool1 = bool10;
-        if (((Looper)localObject).getThread().getState() != Thread.State.WAITING) {
-          continue;
+        i = 0;
+        try
+        {
+          ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "webcore_wait", 0, 1, i, "", "", "", "");
         }
-        bool1 = true;
+        catch (ClassCastException localClassCastException1) {}catch (IllegalAccessException localIllegalAccessException1) {}catch (NoSuchFieldException localNoSuchFieldException1) {}catch (ClassNotFoundException localClassNotFoundException1) {}
+        localClassNotFoundException2.printStackTrace();
       }
-      catch (ClassNotFoundException localClassNotFoundException)
+      catch (ClassCastException localClassCastException2)
       {
-        bool1 = bool2;
-        localClassNotFoundException.printStackTrace();
-        continue;
+        bool = false;
+        localClassCastException2.printStackTrace();
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
+      catch (IllegalAccessException localIllegalAccessException2)
       {
-        bool1 = bool3;
-        localNoSuchFieldException.printStackTrace();
-        continue;
+        bool = false;
+        localIllegalAccessException2.printStackTrace();
       }
-      catch (IllegalAccessException localIllegalAccessException)
+      catch (NoSuchFieldException localNoSuchFieldException2)
       {
-        bool1 = bool4;
-        localIllegalAccessException.printStackTrace();
-        continue;
+        bool = false;
+        localNoSuchFieldException2.printStackTrace();
       }
-      catch (ClassCastException localClassCastException)
+      catch (ClassNotFoundException localClassNotFoundException2)
       {
-        boolean bool1 = bool5;
-        localClassCastException.printStackTrace();
-        continue;
-        if (!bool1) {
-          continue;
-        }
-        int i = 0;
-        continue;
+        bool = false;
       }
-      bool2 = bool1;
-      bool3 = bool1;
-      bool4 = bool1;
-      bool5 = bool1;
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "webcore_wait", 0, 1, i, "", "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("WebViewModule", 2, "check if WebViewCordThread is waiting: " + bool1 + ", cost: " + (System.currentTimeMillis() - l));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("check if WebViewCordThread is waiting: ");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(", cost: ");
+        localStringBuilder.append(System.currentTimeMillis() - l);
+        QLog.d("WebViewModule", 2, localStringBuilder.toString());
       }
       return 1;
-      i = 1;
+      label278:
+      int i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewModule.4
  * JD-Core Version:    0.7.0.1
  */

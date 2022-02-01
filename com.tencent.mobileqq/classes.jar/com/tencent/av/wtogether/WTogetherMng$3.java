@@ -20,23 +20,16 @@ class WTogetherMng$3
     tmp14_9[2] = 14;
     tmp14_9;
     int i = 0;
-    if (i < arrayOfInt.length)
+    while (i < arrayOfInt.length)
     {
-      EffectPendantBase localEffectPendantBase;
       if (WTogetherMng.b(this.this$0).a(arrayOfInt[i]))
       {
-        localEffectPendantBase = (EffectPendantBase)WTogetherMng.c(this.this$0).a(arrayOfInt[i]);
+        EffectPendantBase localEffectPendantBase = (EffectPendantBase)WTogetherMng.c(this.this$0).a(arrayOfInt[i]);
         if (localEffectPendantBase != null) {
-          break label72;
+          localEffectPendantBase.a(this.a, null);
         }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label72:
-        localEffectPendantBase.a(this.a, null);
-      }
+      i += 1;
     }
     if (WTogetherMng.d(this.this$0).a(1)) {
       ((EffectFilterTools)WTogetherMng.e(this.this$0).a(1)).a(this.a, null);
@@ -45,7 +38,7 @@ class WTogetherMng$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.WTogetherMng.3
  * JD-Core Version:    0.7.0.1
  */

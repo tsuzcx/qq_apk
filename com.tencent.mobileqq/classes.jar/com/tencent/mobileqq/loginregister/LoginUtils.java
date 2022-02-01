@@ -30,11 +30,20 @@ public class LoginUtils
   
   public static String a(String paramString)
   {
-    String str = MobileQQ.sMobileQQ.getProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramString);
-    if ((str == null) || (str.length() == 0)) {
-      return paramString;
+    Object localObject1 = MobileQQ.sMobileQQ;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(Constants.PropertiesKey.uinDisplayName.toString());
+    ((StringBuilder)localObject2).append(paramString);
+    localObject2 = ((MobileQQ)localObject1).getProperty(((StringBuilder)localObject2).toString());
+    localObject1 = paramString;
+    if (localObject2 != null)
+    {
+      if (((String)localObject2).length() == 0) {
+        return paramString;
+      }
+      localObject1 = localObject2;
     }
-    return str;
+    return localObject1;
   }
   
   public static MqqHandler a(AppRuntime paramAppRuntime, Class<?> paramClass)
@@ -77,7 +86,7 @@ public class LoginUtils
       QLog.e("LoginRegister.LoginUtils", 1, "showLoginDialog, handler is null");
       return;
     }
-    paramAppRuntime.sendEmptyMessage(20200515);
+    paramAppRuntime.sendEmptyMessage(2002);
   }
   
   public static void a(AppRuntime paramAppRuntime, Class<?> paramClass)
@@ -102,8 +111,8 @@ public class LoginUtils
   
   public static boolean a(Context paramContext)
   {
-    boolean bool2 = false;
     Object localObject = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    boolean bool2 = false;
     boolean bool3 = SettingCloneUtil.readValue(paramContext, null, "security_scan_key", "qqsetting_security_scan_key", false);
     boolean bool4 = ((SharedPreferences)localObject).getBoolean("security_scan_last_result", false);
     long l = ((SharedPreferences)localObject).getLong("security_scan_last_time", 0L);
@@ -145,12 +154,12 @@ public class LoginUtils
       QLog.e("LoginRegister.LoginUtils", 1, "hideLoginDialog, handler is null");
       return;
     }
-    paramAppRuntime.sendEmptyMessage(20140107);
+    paramAppRuntime.sendEmptyMessage(2001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.LoginUtils
  * JD-Core Version:    0.7.0.1
  */

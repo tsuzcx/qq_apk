@@ -20,7 +20,7 @@ class SubscribeReportController$ReportData
   public String h;
   public String i;
   public String j;
-  public String k = "8.5.5.5105";
+  public String k = "8.7.0.5295";
   public String l = "AND";
   
   public SubscribeReportController$ReportData()
@@ -73,7 +73,7 @@ class SubscribeReportController$ReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.SubscribeReportController.ReportData
  * JD-Core Version:    0.7.0.1
  */

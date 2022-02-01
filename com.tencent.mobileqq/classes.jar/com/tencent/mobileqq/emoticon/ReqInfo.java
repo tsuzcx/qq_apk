@@ -2,21 +2,29 @@ package com.tencent.mobileqq.emoticon;
 
 public class ReqInfo
 {
-  int a;
-  public String a;
-  public boolean a;
-  String b;
+  public int encryptKeysResultCode = 0;
+  public boolean encryptKeysSuccess = false;
+  public String strGetKeySeq = null;
+  public String timeoutReason;
   
-  public ReqInfo()
+  public int getEncryptKeyResultCode()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
+    if (this.encryptKeysSuccess) {
+      return 0;
+    }
+    int i = this.encryptKeysResultCode;
+    if (i == 1002) {
+      return 11023;
+    }
+    if (i == 11022) {
+      return 11022;
+    }
+    return 11009;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.ReqInfo
  * JD-Core Version:    0.7.0.1
  */

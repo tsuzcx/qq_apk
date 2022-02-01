@@ -31,31 +31,31 @@ public class NearbyTroopDecoder
     try
     {
       paramList.mergeFrom(paramMsgType0x210.msg_content.get().toByteArray());
-      if (paramList.rpt_msg_grpinfo.has())
-      {
-        paramMsgType0x210 = paramList.rpt_msg_grpinfo.get();
-        paramList = (LBSHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.LBS_HANDLER);
-        if (paramList != null) {
-          paramList.a(paramMsgType0x210);
-        }
-      }
-      MessageProtoCodec.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
-      return;
     }
     catch (Exception paramMsgType0x210)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("nearbyTroopPush", 2, "receive offline msgtype0x210.submsgtype0x67 mergeFrom exception: " + paramMsgType0x210.toString());
-        }
+        paramDecodeProtoPkgContext = new StringBuilder();
+        paramDecodeProtoPkgContext.append("receive offline msgtype0x210.submsgtype0x67 mergeFrom exception: ");
+        paramDecodeProtoPkgContext.append(paramMsgType0x210.toString());
+        QLog.d("nearbyTroopPush", 2, paramDecodeProtoPkgContext.toString());
       }
     }
+    if (paramList.rpt_msg_grpinfo.has())
+    {
+      paramMsgType0x210 = paramList.rpt_msg_grpinfo.get();
+      paramList = (LBSHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.LBS_HANDLER);
+      if (paramList != null) {
+        paramList.a(paramMsgType0x210);
+      }
+    }
+    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.NearbyTroopDecoder
  * JD-Core Version:    0.7.0.1
  */

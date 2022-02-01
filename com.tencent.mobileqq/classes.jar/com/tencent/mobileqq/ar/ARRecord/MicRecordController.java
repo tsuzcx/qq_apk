@@ -65,9 +65,10 @@ public class MicRecordController
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_AndroidMediaAudioRecord != null)
+      AudioRecord localAudioRecord = this.jdField_a_of_type_AndroidMediaAudioRecord;
+      if (localAudioRecord != null)
       {
-        this.jdField_a_of_type_AndroidMediaAudioRecord.stop();
+        localAudioRecord.stop();
         this.jdField_a_of_type_AndroidMediaAudioRecord.release();
         this.jdField_a_of_type_AndroidMediaAudioRecord = null;
       }
@@ -77,7 +78,7 @@ public class MicRecordController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.MicRecordController
  * JD-Core Version:    0.7.0.1
  */

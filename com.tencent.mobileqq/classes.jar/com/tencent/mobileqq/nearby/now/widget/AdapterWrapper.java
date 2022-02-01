@@ -46,7 +46,8 @@ public class AdapterWrapper
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size() + 100000, paramView);
+    SparseArrayCompat localSparseArrayCompat = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+    localSparseArrayCompat.put(localSparseArrayCompat.size() + 100000, paramView);
   }
   
   public int b()
@@ -56,7 +57,8 @@ public class AdapterWrapper
   
   public void b(View paramView)
   {
-    this.b.put(this.b.size() + 200000, paramView);
+    SparseArrayCompat localSparseArrayCompat = this.b;
+    localSparseArrayCompat.put(localSparseArrayCompat.size() + 200000, paramView);
   }
   
   public int getItemCount()
@@ -77,13 +79,10 @@ public class AdapterWrapper
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if ((a(paramInt)) || (b(paramInt))) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
+    if ((!a(paramInt)) && (!b(paramInt))) {
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - a());
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -99,7 +98,7 @@ public class AdapterWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.widget.AdapterWrapper
  * JD-Core Version:    0.7.0.1
  */

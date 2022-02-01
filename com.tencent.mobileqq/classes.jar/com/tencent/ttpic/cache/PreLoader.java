@@ -12,7 +12,7 @@ import java.util.concurrent.Executor;
 public abstract class PreLoader
 {
   public static final Object LOCK_IMAGE_PRE_LOADER = new Object();
-  private static final String TAG = PreLoader.class.getSimpleName();
+  private static final String TAG = "PreLoader";
   protected Map<String, Bitmap> cache;
   protected int capacity;
   protected String dataPath;
@@ -36,7 +36,14 @@ public abstract class PreLoader
   {
     while (paramInt1 != paramInt2)
     {
-      ??? = this.materialId + File.separator + this.item.id + "_" + paramInt1 + ".png";
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append(this.materialId);
+      ((StringBuilder)???).append(File.separator);
+      ((StringBuilder)???).append(this.item.id);
+      ((StringBuilder)???).append("_");
+      ((StringBuilder)???).append(paramInt1);
+      ((StringBuilder)???).append(".png");
+      ??? = ((StringBuilder)???).toString();
       Bitmap localBitmap = (Bitmap)this.cache.remove(???);
       synchronized (LOCK_IMAGE_PRE_LOADER)
       {
@@ -70,18 +77,21 @@ public abstract class PreLoader
   
   public void updateIndex(int paramInt)
   {
-    if ((paramInt == this.frontIndex) || (this.isRunning)) {
-      return;
+    if (paramInt != this.frontIndex)
+    {
+      if (this.isRunning) {
+        return;
+      }
+      this.prepared = false;
+      releaseExpiredBitmaps(this.frontIndex, paramInt);
+      this.isRunning = true;
+      AsyncTask.THREAD_POOL_EXECUTOR.execute(new PreLoader.2(this, paramInt));
     }
-    this.prepared = false;
-    releaseExpiredBitmaps(this.frontIndex, paramInt);
-    this.isRunning = true;
-    AsyncTask.THREAD_POOL_EXECUTOR.execute(new PreLoader.2(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.cache.PreLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/PushUtil;", "", "()V", "INVALID_MAIN_BUSINESS_ID", "", "KEY_MAIN_BUSINESS_ID", "", "KEY_PUSH_ID", "KEY_PUSH_TRIGGER_INFO", "KEY_SUB_BUSINESS_ID", "addBrowserIntent", "", "intent", "Landroid/content/Intent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "getBitmapFromUrl", "Landroid/graphics/Bitmap;", "iconUrl", "reportAdBoss", "selfUin", "actionId", "pushId", "triggerInfo", "reportPushClick", "mainBusinessId", "subBusinessId", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/PushUtil;", "", "()V", "INVALID_MAIN_BUSINESS_ID", "", "KEY_MAIN_BUSINESS_ID", "", "KEY_MAIN_PUSH_ACTION", "KEY_PUSH_ID", "KEY_PUSH_TRIGGER_INFO", "KEY_SUB_BUSINESS_ID", "KEY_THIRD_PARTY_PUSH_ACTION", "addBrowserIntent", "", "intent", "Landroid/content/Intent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "getBitmapFromUrl", "Landroid/graphics/Bitmap;", "iconUrl", "reportAdBoss", "selfUin", "actionId", "pushId", "triggerInfo", "reportPushClick", "mainBusinessId", "subBusinessId", "action", "reportThirdPushClick", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class PushUtil
 {
   public static final PushUtil a = new PushUtil();
@@ -23,25 +23,39 @@ public final class PushUtil
   @JvmStatic
   public static final void a(int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString)
   {
+    a(paramInt1, paramInt2, String.valueOf(paramInt3), paramString, "0X800AE74");
+  }
+  
+  @JvmStatic
+  public static final void a(int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2)
+  {
+    a(paramInt1, paramInt2, paramString1, paramString2, "0X800BBD0");
+  }
+  
+  @JvmStatic
+  public static final void a(int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2, @NotNull String paramString3)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString3, "action");
     if (paramInt1 != -1)
     {
-      ReportController.b(null, "dc00898", "", "", "0X800AE74", "0X800AE74", paramInt1, 0, String.valueOf(paramInt2), String.valueOf(paramInt3), "", "");
-      localObject1 = BaseApplicationImpl.getApplication();
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication()");
-      localObject2 = ((BaseApplicationImpl)localObject1).getRuntime();
-      localObject1 = a;
-      Intrinsics.checkExpressionValueIsNotNull(localObject2, "runtime");
-      localObject2 = ((AppRuntime)localObject2).getAccount();
-      Intrinsics.checkExpressionValueIsNotNull(localObject2, "runtime.account");
-      ((PushUtil)localObject1).a((String)localObject2, 118, String.valueOf(paramInt3), paramString);
-    }
-    while (!QLog.isColorLevel())
-    {
-      Object localObject1;
-      Object localObject2;
+      ReportController.b(null, "dc00898", "", "", paramString3, paramString3, paramInt1, 0, String.valueOf(paramInt2), paramString1, "", "");
+      paramString3 = BaseApplicationImpl.getApplication();
+      Intrinsics.checkExpressionValueIsNotNull(paramString3, "BaseApplicationImpl.getApplication()");
+      Object localObject = paramString3.getRuntime();
+      paramString3 = a;
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "runtime");
+      localObject = ((AppRuntime)localObject).getAccount();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "runtime.account");
+      paramString3.a((String)localObject, 118, String.valueOf(paramString1), paramString2);
       return;
     }
-    QLog.d("PushUtil", 2, new Object[] { "reportPushClick: called. ", "no need report mainBusinessId: " + paramInt1 });
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("no need report mainBusinessId: ");
+      paramString1.append(paramInt1);
+      QLog.d("PushUtil", 2, new Object[] { "reportPushClick: called. ", paramString1.toString() });
+    }
   }
   
   @JvmStatic
@@ -67,7 +81,11 @@ public final class PushUtil
     Intrinsics.checkParameterIsNotNull(paramString2, "pushId");
     TianShuReportData localTianShuReportData = new TianShuReportData();
     long l = System.currentTimeMillis() / 1000;
-    localTianShuReportData.b = (paramString1 + '_' + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append('_');
+    localStringBuilder.append(l);
+    localTianShuReportData.b = localStringBuilder.toString();
     localTianShuReportData.d = paramInt;
     localTianShuReportData.jdField_e_of_type_Int = 1;
     localTianShuReportData.g = paramString2;
@@ -80,14 +98,20 @@ public final class PushUtil
     localTianShuReportData.f = "vab_push";
     localTianShuReportData.i = "";
     TianShuManager.getInstance().report(localTianShuReportData);
-    if (QLog.isColorLevel()) {
-      QLog.d("PushUtil", 2, new Object[] { "reportAdBoss: called. ", "pushId: " + paramString2 + "  actionId: " + paramInt });
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("pushId: ");
+      paramString1.append(paramString2);
+      paramString1.append("  actionId: ");
+      paramString1.append(paramInt);
+      QLog.d("PushUtil", 2, new Object[] { "reportAdBoss: called. ", paramString1.toString() });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.PushUtil
  * JD-Core Version:    0.7.0.1
  */

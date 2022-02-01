@@ -24,9 +24,12 @@ public class VoiceTimeTraceInfo
   
   public void a()
   {
-    this.l = (this.g - this.f);
-    this.k = (this.f - this.jdField_a_of_type_Long);
-    this.j = (this.g - this.jdField_a_of_type_Long);
+    long l1 = this.g;
+    long l2 = this.f;
+    this.l = (l1 - l2);
+    long l3 = this.jdField_a_of_type_Long;
+    this.k = (l2 - l3);
+    this.j = (l1 - l3);
   }
   
   public boolean a()
@@ -36,7 +39,7 @@ public class VoiceTimeTraceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.VoiceTimeTraceInfo
  * JD-Core Version:    0.7.0.1
  */

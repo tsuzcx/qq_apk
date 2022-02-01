@@ -19,32 +19,31 @@ class TroopTeamWorkFileSearchDialog$2
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        int i = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_Int;
-        if (i > 0) {
-          return;
-        }
-        if ((paramInt != 0) || (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Int != this.b - 2)) {
-          continue;
-        }
+      int i = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_Int;
+      if (i > 0) {
+        return;
+      }
+      if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Int == this.b - 2)) {
         if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.e)
         {
           this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.c(true);
-          continue;
         }
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.c(false);
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.c(false);
+          this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.c, 50, 0);
+        }
       }
-      finally {}
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopTeamWorkFileSearchDialog.c, 50, 0);
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.2
  * JD-Core Version:    0.7.0.1
  */

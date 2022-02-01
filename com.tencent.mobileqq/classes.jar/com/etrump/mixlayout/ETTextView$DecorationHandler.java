@@ -17,78 +17,77 @@ class ETTextView$DecorationHandler
   
   public void handleMessage(Message paramMessage)
   {
-    int i;
-    ETEngine localETEngine;
-    Bitmap localBitmap;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 2)
     {
-    default: 
-    case 2: 
-      do
-      {
+      if (i != 3) {
         return;
-        paramMessage = (ETTextView.DecorationHolder)paramMessage.obj;
-      } while (paramMessage == null);
-      i = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      int j = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      if ((ETTextView.access$300() != null) && ((ETTextView.access$300().getWidth() < i) || (ETTextView.access$300().getHeight() < j)))
+      }
+      if (ETTextView.access$300() != null)
       {
         ETTextView.access$300().recycle();
         ETTextView.access$302(null);
       }
-      if (ETTextView.access$300() == null)
-      {
-        ETTextView.access$302(Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
-        localETEngine = ETEngine.getInstanceForAnimation();
-        ??? = paramMessage.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(localETEngine, false);
-        if (??? != null) {
-          ((ETDecoration)???).gotoFrame(paramMessage.jdField_a_of_type_Int);
-        }
-        paramMessage.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(localETEngine, ETTextView.access$300(), (ETDecoration)???, true);
-        if (??? != null) {
-          ((ETDecoration)???).deleteDescriptor();
-        }
-        localBitmap = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap;
-        if (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-          break label308;
-        }
-      }
-      break;
     }
-    for (;;)
+    else
     {
-      synchronized (ETTextView.access$400((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()))
+      paramMessage = (ETTextView.DecorationHolder)paramMessage.obj;
+      if (paramMessage != null)
       {
-        if ((localBitmap.isRecycled()) || (((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()).mMsgId != paramMessage.jdField_a_of_type_Long)) {
-          break label303;
+        int k = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+        int m = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+        if ((ETTextView.access$300() != null) && ((ETTextView.access$300().getWidth() < k) || (ETTextView.access$300().getHeight() < m)))
+        {
+          ETTextView.access$300().recycle();
+          ETTextView.access$302(null);
         }
-        localBitmap.eraseColor(0);
-        localETEngine.native_cloneBitmap(ETTextView.access$300(), localBitmap);
-        i = 1;
-        if (i == 0) {
-          break;
+        Object localObject1 = ETTextView.access$300();
+        i = 0;
+        int j = 0;
+        if (localObject1 == null) {
+          ETTextView.access$302(Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888));
+        } else {
+          ETTextView.access$300().eraseColor(0);
         }
-        ETTextView.access$500().obtainMessage(1, paramMessage).sendToTarget();
-        return;
-        ETTextView.access$300().eraseColor(0);
+        localObject1 = ETEngine.getInstanceForAnimation();
+        Object localObject2 = paramMessage.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a((ETEngine)localObject1, false);
+        if (localObject2 != null) {
+          ((ETDecoration)localObject2).gotoFrame(paramMessage.jdField_a_of_type_Int);
+        }
+        paramMessage.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a((ETEngine)localObject1, ETTextView.access$300(), (ETDecoration)localObject2, true);
+        if (localObject2 != null) {
+          ((ETDecoration)localObject2).deleteDescriptor();
+        }
+        Bitmap localBitmap = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap;
+        if (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+        {
+          localObject2 = ETTextView.access$400((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get());
+          i = j;
+          try
+          {
+            if (!localBitmap.isRecycled())
+            {
+              i = j;
+              if (((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()).mMsgId == paramMessage.jdField_a_of_type_Long)
+              {
+                localBitmap.eraseColor(0);
+                ((ETEngine)localObject1).native_cloneBitmap(ETTextView.access$300(), localBitmap);
+                i = 1;
+              }
+            }
+          }
+          finally {}
+        }
+        if (i != 0) {
+          ETTextView.access$500().obtainMessage(1, paramMessage).sendToTarget();
+        }
       }
-      if (ETTextView.access$300() == null) {
-        break;
-      }
-      ETTextView.access$300().recycle();
-      ETTextView.access$302(null);
-      return;
-      label303:
-      i = 0;
-      continue;
-      label308:
-      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETTextView.DecorationHandler
  * JD-Core Version:    0.7.0.1
  */

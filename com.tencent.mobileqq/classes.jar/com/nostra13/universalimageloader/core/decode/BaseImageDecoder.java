@@ -41,21 +41,17 @@ public class BaseImageDecoder
   {
     Matrix localMatrix = new Matrix();
     ImageScaleType localImageScaleType = paramImageDecodingInfo.getImageScaleType();
-    ImageSize localImageSize1;
-    ImageSize localImageSize2;
-    ViewScaleType localViewScaleType;
     if ((localImageScaleType == ImageScaleType.EXACTLY) || (localImageScaleType == ImageScaleType.EXACTLY_STRETCHED))
     {
-      localImageSize1 = new ImageSize(paramBitmap.getWidth(), paramBitmap.getHeight(), paramInt);
-      localImageSize2 = paramImageDecodingInfo.getTargetSize();
-      localViewScaleType = paramImageDecodingInfo.getViewScaleType();
-      if (localImageScaleType != ImageScaleType.EXACTLY_STRETCHED) {
-        break label257;
+      ImageSize localImageSize1 = new ImageSize(paramBitmap.getWidth(), paramBitmap.getHeight(), paramInt);
+      ImageSize localImageSize2 = paramImageDecodingInfo.getTargetSize();
+      ViewScaleType localViewScaleType = paramImageDecodingInfo.getViewScaleType();
+      boolean bool;
+      if (localImageScaleType == ImageScaleType.EXACTLY_STRETCHED) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label257:
-    for (boolean bool = true;; bool = false)
-    {
       float f = ImageSizeUtils.computeImageScale(localImageSize1, localImageSize2, localViewScaleType, bool);
       if (Float.compare(f, 1.0F) != 0)
       {
@@ -64,26 +60,26 @@ public class BaseImageDecoder
           L.d("Scale subsampled image (%1$s) to %2$s (scale = %3$.5f) [%4$s]", new Object[] { localImageSize1, localImageSize1.scale(f), Float.valueOf(f), paramImageDecodingInfo.getImageKey() });
         }
       }
-      if (paramBoolean)
-      {
-        localMatrix.postScale(-1.0F, 1.0F);
-        if (this.loggingEnabled) {
-          L.d("Flip image horizontally [%s]", new Object[] { paramImageDecodingInfo.getImageKey() });
-        }
-      }
-      if (paramInt != 0)
-      {
-        localMatrix.postRotate(paramInt);
-        if (this.loggingEnabled) {
-          L.d("Rotate image on %1$d° [%2$s]", new Object[] { Integer.valueOf(paramInt), paramImageDecodingInfo.getImageKey() });
-        }
-      }
-      paramImageDecodingInfo = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, true);
-      if (paramImageDecodingInfo != paramBitmap) {
-        paramBitmap.recycle();
-      }
-      return paramImageDecodingInfo;
     }
+    if (paramBoolean)
+    {
+      localMatrix.postScale(-1.0F, 1.0F);
+      if (this.loggingEnabled) {
+        L.d("Flip image horizontally [%s]", new Object[] { paramImageDecodingInfo.getImageKey() });
+      }
+    }
+    if (paramInt != 0)
+    {
+      localMatrix.postRotate(paramInt);
+      if (this.loggingEnabled) {
+        L.d("Rotate image on %1$d° [%2$s]", new Object[] { Integer.valueOf(paramInt), paramImageDecodingInfo.getImageKey() });
+      }
+    }
+    paramImageDecodingInfo = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, true);
+    if (paramImageDecodingInfo != paramBitmap) {
+      paramBitmap.recycle();
+    }
+    return paramImageDecodingInfo;
   }
   
   public Bitmap decode(ImageDecodingInfo paramImageDecodingInfo)
@@ -95,35 +91,33 @@ public class BaseImageDecoder
       return null;
     }
     InputStream localInputStream1 = localInputStream2;
-    BaseImageDecoder.ImageFileInfo localImageFileInfo;
-    Bitmap localBitmap;
     try
     {
-      localImageFileInfo = defineImageSizeAndRotation(localInputStream2, paramImageDecodingInfo);
+      BaseImageDecoder.ImageFileInfo localImageFileInfo = defineImageSizeAndRotation(localInputStream2, paramImageDecodingInfo);
       localInputStream1 = localInputStream2;
       localInputStream2 = resetStream(localInputStream2, paramImageDecodingInfo);
       localInputStream1 = localInputStream2;
-      localBitmap = BitmapFactory.decodeStream(localInputStream2, null, prepareDecodingOptions(localImageFileInfo.imageSize, paramImageDecodingInfo));
+      Bitmap localBitmap = BitmapFactory.decodeStream(localInputStream2, null, prepareDecodingOptions(localImageFileInfo.imageSize, paramImageDecodingInfo));
       IoUtils.closeSilently(localInputStream2);
       if (localBitmap == null)
       {
         L.e("Image can't be decoded [%s]", new Object[] { paramImageDecodingInfo.getImageKey() });
         return localBitmap;
       }
+      return considerExactScaleAndOrientatiton(localBitmap, paramImageDecodingInfo, localImageFileInfo.exif.rotation, localImageFileInfo.exif.flipHorizontal);
     }
     finally
     {
       IoUtils.closeSilently(localInputStream1);
     }
-    return considerExactScaleAndOrientatiton(localBitmap, paramImageDecodingInfo, localImageFileInfo.exif.rotation, localImageFileInfo.exif.flipHorizontal);
   }
   
   protected BaseImageDecoder.ExifInfo defineExifOrientation(String paramString)
   {
+    boolean bool3 = false;
+    boolean bool4 = false;
     int j = 0;
-    boolean bool2 = true;
-    boolean bool3 = true;
-    boolean bool4 = true;
+    boolean bool2 = false;
     boolean bool1 = true;
     try
     {
@@ -135,29 +129,27 @@ public class BaseImageDecoder
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        int i;
-        L.w("Can't read EXIF tags from file [%s]", new Object[] { paramString });
-      }
+      int i;
+      break label132;
     }
+    bool2 = true;
+    bool1 = bool2;
+    i = 90;
+    break label150;
+    bool3 = true;
+    bool1 = bool3;
+    i = 270;
+    break label150;
+    bool4 = true;
+    bool1 = bool4;
+    i = 180;
+    break label150;
+    label132:
+    L.w("Can't read EXIF tags from file [%s]", new Object[] { paramString });
     bool1 = false;
     i = j;
-    for (;;)
-    {
-      return new BaseImageDecoder.ExifInfo(i, bool1);
-      bool2 = false;
-      i = 90;
-      bool1 = bool2;
-      continue;
-      bool3 = false;
-      i = 180;
-      bool1 = bool3;
-      continue;
-      bool4 = false;
-      i = 270;
-      bool1 = bool4;
-    }
+    label150:
+    return new BaseImageDecoder.ExifInfo(i, bool1);
   }
   
   protected BaseImageDecoder.ImageFileInfo defineImageSizeAndRotation(InputStream paramInputStream, ImageDecodingInfo paramImageDecodingInfo)
@@ -166,10 +158,12 @@ public class BaseImageDecoder
     localOptions.inJustDecodeBounds = true;
     BitmapFactory.decodeStream(paramInputStream, null, localOptions);
     paramInputStream = paramImageDecodingInfo.getImageUri();
-    if ((paramImageDecodingInfo.shouldConsiderExifParams()) && (canDefineExifParams(paramInputStream, localOptions.outMimeType))) {}
-    for (paramInputStream = defineExifOrientation(paramInputStream);; paramInputStream = new BaseImageDecoder.ExifInfo()) {
-      return new BaseImageDecoder.ImageFileInfo(new ImageSize(localOptions.outWidth, localOptions.outHeight, paramInputStream.rotation), paramInputStream);
+    if ((paramImageDecodingInfo.shouldConsiderExifParams()) && (canDefineExifParams(paramInputStream, localOptions.outMimeType))) {
+      paramInputStream = defineExifOrientation(paramInputStream);
+    } else {
+      paramInputStream = new BaseImageDecoder.ExifInfo();
     }
+    return new BaseImageDecoder.ImageFileInfo(new ImageSize(localOptions.outWidth, localOptions.outHeight, paramInputStream.rotation), paramInputStream);
   }
   
   protected InputStream getImageStream(ImageDecodingInfo paramImageDecodingInfo)
@@ -180,37 +174,46 @@ public class BaseImageDecoder
   protected BitmapFactory.Options prepareDecodingOptions(ImageSize paramImageSize, ImageDecodingInfo paramImageDecodingInfo)
   {
     ImageScaleType localImageScaleType = paramImageDecodingInfo.getImageScaleType();
-    if (localImageScaleType == ImageScaleType.NONE) {}
-    for (int i = 1;; i = ImageSizeUtils.computeMinImageSampleSize(paramImageSize))
+    int i;
+    if (localImageScaleType == ImageScaleType.NONE)
     {
-      if ((i > 1) && (this.loggingEnabled)) {
-        L.d("Subsample original image (%1$s) to %2$s (scale = %3$d) [%4$s]", new Object[] { paramImageSize, paramImageSize.scaleDown(i), Integer.valueOf(i), paramImageDecodingInfo.getImageKey() });
-      }
-      paramImageSize = paramImageDecodingInfo.getDecodingOptions();
-      paramImageSize.inSampleSize = i;
-      return paramImageSize;
-      if (localImageScaleType != ImageScaleType.NONE_SAFE) {
-        break;
-      }
+      i = 1;
     }
-    ImageSize localImageSize = paramImageDecodingInfo.getTargetSize();
-    if (localImageScaleType == ImageScaleType.IN_SAMPLE_POWER_OF_2) {}
-    for (boolean bool = true;; bool = false)
+    else if (localImageScaleType == ImageScaleType.NONE_SAFE)
     {
+      i = ImageSizeUtils.computeMinImageSampleSize(paramImageSize);
+    }
+    else
+    {
+      ImageSize localImageSize = paramImageDecodingInfo.getTargetSize();
+      boolean bool;
+      if (localImageScaleType == ImageScaleType.IN_SAMPLE_POWER_OF_2) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       i = ImageSizeUtils.computeImageSampleSize(paramImageSize, localImageSize, paramImageDecodingInfo.getViewScaleType(), bool);
-      break;
     }
+    if ((i > 1) && (this.loggingEnabled)) {
+      L.d("Subsample original image (%1$s) to %2$s (scale = %3$d) [%4$s]", new Object[] { paramImageSize, paramImageSize.scaleDown(i), Integer.valueOf(i), paramImageDecodingInfo.getImageKey() });
+    }
+    paramImageSize = paramImageDecodingInfo.getDecodingOptions();
+    paramImageSize.inSampleSize = i;
+    return paramImageSize;
   }
   
   protected InputStream resetStream(InputStream paramInputStream, ImageDecodingInfo paramImageDecodingInfo)
   {
-    if (paramInputStream.markSupported()) {
-      try
-      {
-        paramInputStream.reset();
-        return paramInputStream;
-      }
-      catch (IOException localIOException) {}
+    if (paramInputStream.markSupported()) {}
+    try
+    {
+      paramInputStream.reset();
+      return paramInputStream;
+    }
+    catch (IOException localIOException)
+    {
+      label13:
+      break label13;
     }
     IoUtils.closeSilently(paramInputStream);
     return getImageStream(paramImageDecodingInfo);
@@ -218,7 +221,7 @@ public class BaseImageDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.decode.BaseImageDecoder
  * JD-Core Version:    0.7.0.1
  */

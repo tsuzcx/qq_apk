@@ -19,7 +19,8 @@ class TroopOnlineMemberListAdapter$TmiCallBackForName
   
   public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
+    TroopOnlineMemberListAdapter.ViewHolder localViewHolder = this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder;
+    if ((localViewHolder != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(localViewHolder.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
     {
       paramTroopMemberInfo = new ColorNickText(((TroopManager)this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter.a.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
       this.jdField_a_of_type_ComTencentMobileqqTrooponlineTroopOnlineMemberListAdapter$ViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
@@ -31,7 +32,7 @@ class TroopOnlineMemberListAdapter$TmiCallBackForName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter.TmiCallBackForName
  * JD-Core Version:    0.7.0.1
  */

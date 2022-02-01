@@ -45,12 +45,13 @@ public abstract interface ReliableVideoPlayer
   
   static
   {
-    if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 23)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      SUPPORT_NEXT_MEDIA = bool;
-      return;
+    boolean bool;
+    if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT < 23)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    SUPPORT_NEXT_MEDIA = bool;
   }
   
   public abstract int getAudioSessionId();
@@ -142,7 +143,7 @@ public abstract interface ReliableVideoPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -40,11 +40,13 @@ public final class QQStayTimeInfo
   {
     paramJceOutputStream.write(this.report_time, 0);
     paramJceOutputStream.write(this.page_info, 1);
-    if (this.page_info_ext != null) {
-      paramJceOutputStream.write(this.page_info_ext, 2);
+    String str = this.page_info_ext;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.path_desc != null) {
-      paramJceOutputStream.write(this.path_desc, 3);
+    str = this.path_desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.enter_time, 4);
     paramJceOutputStream.write(this.stay_time, 5);
@@ -52,7 +54,7 @@ public final class QQStayTimeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_USER_ACTION_REPORT.QQStayTimeInfo
  * JD-Core Version:    0.7.0.1
  */

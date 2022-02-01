@@ -15,9 +15,12 @@ final class FileUploadUtil$1
   {
     FileUploadUtil.a(FileUploadUtil.a());
     HashMap localHashMap = new HashMap();
-    String str = "qiqi" + UUID.randomUUID().toString().replace("-", "");
-    Log.i("upload", str);
-    localHashMap.put("taskUuid", str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("qiqi");
+    ((StringBuilder)localObject).append(UUID.randomUUID().toString().replace("-", ""));
+    localObject = ((StringBuilder)localObject).toString();
+    Log.i("upload", (String)localObject);
+    localHashMap.put("taskUuid", localObject);
     localHashMap.put("taskType", "0");
     localHashMap.put("taskBusinessType", "2");
     localHashMap.put("taskTargetId", this.a);
@@ -34,7 +37,7 @@ final class FileUploadUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.FileUploadUtil.1
  * JD-Core Version:    0.7.0.1
  */

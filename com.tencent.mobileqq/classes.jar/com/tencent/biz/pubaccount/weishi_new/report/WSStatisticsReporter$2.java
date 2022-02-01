@@ -14,22 +14,32 @@ class WSStatisticsReporter$2
   
   protected Object a(WSRequest<stWeishiDengtaReportRsp> paramWSRequest, stWeishiDengtaReportRsp paramstWeishiDengtaReportRsp, RspHeaderBean paramRspHeaderBean)
   {
-    WSLog.b("beaconData2Server", "BeaconSendRequest onTaskResponse succeed: " + paramstWeishiDengtaReportRsp.code + " , " + paramstWeishiDengtaReportRsp.msg);
+    paramWSRequest = new StringBuilder();
+    paramWSRequest.append("BeaconSendRequest onTaskResponse succeed: ");
+    paramWSRequest.append(paramstWeishiDengtaReportRsp.code);
+    paramWSRequest.append(" , ");
+    paramWSRequest.append(paramstWeishiDengtaReportRsp.msg);
+    WSLog.b("beaconData2Server", paramWSRequest.toString());
     if (paramstWeishiDengtaReportRsp.code != 0) {
-      WSStatisticsReporter.access$1800(this.a, String.valueOf(2), String.valueOf(paramstWeishiDengtaReportRsp.code), paramstWeishiDengtaReportRsp.msg);
+      WSStatisticsReporter.access$1500(this.a, String.valueOf(2), String.valueOf(paramstWeishiDengtaReportRsp.code), paramstWeishiDengtaReportRsp.msg);
     }
     return null;
   }
   
-  public void a(WSServiceErrorInfo paramWSServiceErrorInfo)
+  protected void a(WSServiceErrorInfo paramWSServiceErrorInfo)
   {
-    WSLog.d("beaconData2Server", "BeaconSendRequest onTaskResponse failed code:" + paramWSServiceErrorInfo.a() + ", msg:" + paramWSServiceErrorInfo.a());
-    WSStatisticsReporter.access$1800(this.a, String.valueOf(1), String.valueOf(paramWSServiceErrorInfo.a()), paramWSServiceErrorInfo.a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BeaconSendRequest onTaskResponse failed code:");
+    localStringBuilder.append(paramWSServiceErrorInfo.a());
+    localStringBuilder.append(", msg:");
+    localStringBuilder.append(paramWSServiceErrorInfo.a());
+    WSLog.d("beaconData2Server", localStringBuilder.toString());
+    WSStatisticsReporter.access$1500(this.a, String.valueOf(1), String.valueOf(paramWSServiceErrorInfo.a()), paramWSServiceErrorInfo.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.2
  * JD-Core Version:    0.7.0.1
  */

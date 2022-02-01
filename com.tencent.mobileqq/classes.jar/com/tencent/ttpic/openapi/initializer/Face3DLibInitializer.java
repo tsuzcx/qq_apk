@@ -3,6 +3,7 @@ package com.tencent.ttpic.openapi.initializer;
 import com.google.gson.JsonArray;
 import com.tencent.ttpic.filter.Face3DLibJNI;
 import com.tencent.ttpic.openapi.util.VideoTemplateParser;
+import com.tencent.ttpic.util.DecryptListener;
 import com.tencent.ttpic.util.GsonUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,73 +31,96 @@ public class Face3DLibInitializer
   private boolean loadFace3DIndices(String paramString1, String paramString2)
   {
     paramString1 = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, VideoTemplateParser.decryptListener);
-    if (paramString1 == null) {}
-    do
-    {
+    if (paramString1 == null) {
       return false;
-      paramString1 = GsonUtils.optJsonArray(paramString1, "index");
-    } while ((paramString1 == null) || (paramString1.size() == 0));
-    int i = 0;
-    while (i < paramString1.size())
-    {
-      face3DIndices[i] = GsonUtils.optInt(paramString1, i, 0);
-      i += 1;
     }
-    return true;
+    paramString1 = GsonUtils.optJsonArray(paramString1, "index");
+    if (paramString1 != null)
+    {
+      if (paramString1.size() == 0) {
+        return false;
+      }
+      int i = 0;
+      while (i < paramString1.size())
+      {
+        face3DIndices[i] = GsonUtils.optInt(paramString1, i, 0);
+        i += 1;
+      }
+      return true;
+    }
+    return false;
   }
   
   private boolean loadFace3DNormal(String paramString1, String paramString2)
   {
+    DecryptListener localDecryptListener = VideoTemplateParser.decryptListener;
     int i = 0;
-    paramString1 = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, VideoTemplateParser.decryptListener);
-    if (paramString1 == null) {}
-    do
-    {
+    paramString1 = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, localDecryptListener);
+    if (paramString1 == null) {
       return false;
-      paramString1 = GsonUtils.optJsonArray(paramString1, "normal");
-    } while ((paramString1 == null) || (paramString1.size() == 0));
-    while (i < paramString1.size())
-    {
-      face3DUV[(i + 24136)] = ((float)GsonUtils.optDouble(paramString1, i, 0.0D));
-      i += 1;
     }
-    return true;
+    paramString1 = GsonUtils.optJsonArray(paramString1, "normal");
+    if (paramString1 != null)
+    {
+      if (paramString1.size() == 0) {
+        return false;
+      }
+      while (i < paramString1.size())
+      {
+        face3DUV[(i + 24136)] = ((float)GsonUtils.optDouble(paramString1, i, 0.0D));
+        i += 1;
+      }
+      return true;
+    }
+    return false;
   }
   
   private boolean loadFace3DUV(String paramString1, String paramString2)
   {
+    DecryptListener localDecryptListener = VideoTemplateParser.decryptListener;
     int i = 0;
-    paramString1 = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, VideoTemplateParser.decryptListener);
-    if (paramString1 == null) {}
-    do
-    {
+    paramString1 = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, localDecryptListener);
+    if (paramString1 == null) {
       return false;
-      paramString1 = GsonUtils.optJsonArray(paramString1, "uv");
-    } while ((paramString1 == null) || (paramString1.size() == 0));
-    while (i < paramString1.size())
-    {
-      face3DUV[(i + 10344)] = ((float)GsonUtils.optDouble(paramString1, i, 0.0D));
-      i += 1;
     }
-    return true;
+    paramString1 = GsonUtils.optJsonArray(paramString1, "uv");
+    if (paramString1 != null)
+    {
+      if (paramString1.size() == 0) {
+        return false;
+      }
+      while (i < paramString1.size())
+      {
+        face3DUV[(i + 10344)] = ((float)GsonUtils.optDouble(paramString1, i, 0.0D));
+        i += 1;
+      }
+      return true;
+    }
+    return false;
   }
   
   private boolean loadFace3DUV2(String paramString1, String paramString2)
   {
+    DecryptListener localDecryptListener = VideoTemplateParser.decryptListener;
     int i = 0;
-    paramString1 = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, VideoTemplateParser.decryptListener);
-    if (paramString1 == null) {}
-    do
-    {
+    paramString1 = VideoTemplateParser.parseVideoMaterialFileAsJSONObject(paramString1, paramString2, false, localDecryptListener);
+    if (paramString1 == null) {
       return false;
-      paramString1 = GsonUtils.optJsonArray(paramString1, "uv");
-    } while ((paramString1 == null) || (paramString1.size() == 0));
-    while (i < paramString1.size())
-    {
-      face3DUV[(i + 17240)] = ((float)GsonUtils.optDouble(paramString1, i, 0.0D));
-      i += 1;
     }
-    return true;
+    paramString1 = GsonUtils.optJsonArray(paramString1, "uv");
+    if (paramString1 != null)
+    {
+      if (paramString1.size() == 0) {
+        return false;
+      }
+      while (i < paramString1.size())
+      {
+        face3DUV[(i + 17240)] = ((float)GsonUtils.optDouble(paramString1, i, 0.0D));
+        i += 1;
+      }
+      return true;
+    }
+    return false;
   }
   
   protected boolean destroyImpl()
@@ -125,8 +149,19 @@ public class Face3DLibInitializer
   
   public boolean initFace3D()
   {
-    if (!loadAllSoFiles()) {}
-    while ((!loadFace3DUV(getFinalResourcesDir(), "face3d_uv_config")) || (!loadFace3DUV2(getFinalResourcesDir(), "face3d_uv_config_yt")) || (!loadFace3DIndices(getFinalResourcesDir(), "face3d_indices_config")) || (!loadFace3DNormal(getFinalResourcesDir(), "face3d_normal_v2"))) {
+    if (!loadAllSoFiles()) {
+      return false;
+    }
+    if (!loadFace3DUV(getFinalResourcesDir(), "face3d_uv_config")) {
+      return false;
+    }
+    if (!loadFace3DUV2(getFinalResourcesDir(), "face3d_uv_config_yt")) {
+      return false;
+    }
+    if (!loadFace3DIndices(getFinalResourcesDir(), "face3d_indices_config")) {
+      return false;
+    }
+    if (!loadFace3DNormal(getFinalResourcesDir(), "face3d_normal_v2")) {
       return false;
     }
     return face3DLibJNI.init(getFinalResourcesDir());
@@ -139,7 +174,7 @@ public class Face3DLibInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.Face3DLibInitializer
  * JD-Core Version:    0.7.0.1
  */

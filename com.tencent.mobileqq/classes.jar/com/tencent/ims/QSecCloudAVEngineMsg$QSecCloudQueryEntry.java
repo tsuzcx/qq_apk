@@ -25,13 +25,14 @@ public final class QSecCloudAVEngineMsg$QSecCloudQueryEntry
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 74, 82 }, new String[] { "entryId", "fileType", "scenarioType", "fileSize", "packageName", "fileName", "appName", "fileMd5", "certMd5", "extraInfo" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", "", localByteStringMicro }, QSecCloudQueryEntry.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 66, 74, 82 }, new String[] { "entryId", "fileType", "scenarioType", "fileSize", "packageName", "fileName", "appName", "fileMd5", "certMd5", "extraInfo" }, new Object[] { localInteger, localInteger, localInteger, localInteger, "", "", "", "", "", localByteStringMicro }, QSecCloudQueryEntry.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.QSecCloudAVEngineMsg.QSecCloudQueryEntry
  * JD-Core Version:    0.7.0.1
  */

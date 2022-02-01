@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil;", "", "()V", "TAG", "", "convertStreamToString", "inputStream", "Ljava/io/InputStream;", "getApkDownloadUrl", "downloadScene", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;", "clickUrl", "parseApkDownloadUrl", "jsonObject", "Lorg/json/JSONObject;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil;", "", "()V", "TAG", "", "convertStreamToString", "inputStream", "Ljava/io/InputStream;", "getApkDownloadUrl", "downloadScene", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;", "clickUrl", "parseApkDownloadUrl", "jsonObject", "Lorg/json/JSONObject;", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJAdUrlChangeUtil
 {
   public static final RIJAdUrlChangeUtil a = new RIJAdUrlChangeUtil();
@@ -37,254 +37,299 @@ public final class RIJAdUrlChangeUtil
   public final String a(@Nullable com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.AdDownloadScene paramAdDownloadScene, @Nullable String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aload_2
-    //   4: checkcast 74	java/lang/CharSequence
-    //   7: invokestatic 80	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   10: ifeq +5 -> 15
-    //   13: aconst_null
-    //   14: areturn
-    //   15: aload_1
-    //   16: getstatic 85	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene:VideoFloatButton	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;
-    //   19: if_acmpeq +10 -> 29
-    //   22: aload_1
-    //   23: getstatic 88	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene:VideoFloatCardButton	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;
-    //   26: if_acmpne +251 -> 277
-    //   29: ldc 90
-    //   31: ldc 92
-    //   33: invokestatic 98	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   0: aload_2
+    //   1: checkcast 74	java/lang/CharSequence
+    //   4: invokestatic 80	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   7: ifeq +5 -> 12
+    //   10: aconst_null
+    //   11: areturn
+    //   12: aload_1
+    //   13: getstatic 85	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene:VideoFloatButton	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;
+    //   16: if_acmpeq +42 -> 58
+    //   19: aload_1
+    //   20: getstatic 88	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene:VideoFloatCardButton	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;
+    //   23: if_acmpne +6 -> 29
+    //   26: goto +32 -> 58
+    //   29: new 90	java/lang/StringBuilder
+    //   32: dup
+    //   33: invokespecial 91	java/lang/StringBuilder:<init>	()V
     //   36: astore_1
     //   37: aload_1
-    //   38: ldc 100
-    //   40: invokestatic 106	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   43: new 108	java/lang/StringBuilder
-    //   46: dup
-    //   47: invokespecial 109	java/lang/StringBuilder:<init>	()V
-    //   50: aload_2
-    //   51: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: ldc 114
-    //   56: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: aload_1
-    //   60: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   66: astore_1
-    //   67: ldc 117
-    //   69: new 108	java/lang/StringBuilder
-    //   72: dup
-    //   73: invokespecial 109	java/lang/StringBuilder:<init>	()V
-    //   76: ldc 119
-    //   78: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: aload_1
-    //   82: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: ldc 121
-    //   87: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: invokestatic 127	java/lang/System:currentTimeMillis	()J
-    //   93: invokevirtual 130	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   96: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   99: invokestatic 135	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdLog:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   102: aconst_null
-    //   103: checkcast 57	java/lang/String
-    //   106: astore_3
-    //   107: aload_1
-    //   108: ifnull +192 -> 300
-    //   111: aload_1
-    //   112: astore_2
-    //   113: aconst_null
-    //   114: checkcast 137	java/net/HttpURLConnection
-    //   117: astore 4
-    //   119: aload 4
-    //   121: astore_1
-    //   122: new 139	java/net/URL
-    //   125: dup
-    //   126: aload_2
-    //   127: invokespecial 142	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   130: invokevirtual 146	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   133: astore_2
-    //   134: aload 4
-    //   136: astore_1
-    //   137: aload_2
-    //   138: instanceof 137
-    //   141: ifne +291 -> 432
-    //   144: aload 5
-    //   146: astore_2
-    //   147: aload 4
-    //   149: astore_1
-    //   150: aload_2
-    //   151: checkcast 137	java/net/HttpURLConnection
-    //   154: astore_2
-    //   155: aload_2
-    //   156: ifnull +47 -> 203
-    //   159: aload_2
-    //   160: ldc 148
-    //   162: invokevirtual 151	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   165: aload_2
-    //   166: ldc 153
-    //   168: ldc 155
-    //   170: invokevirtual 158	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   173: aload_2
-    //   174: ldc 160
-    //   176: ldc 162
-    //   178: invokevirtual 158	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   181: aload_2
-    //   182: ldc 164
-    //   184: ldc 166
-    //   186: invokevirtual 158	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   189: aload_2
-    //   190: sipush 3000
-    //   193: invokevirtual 170	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   196: aload_2
-    //   197: sipush 3000
-    //   200: invokevirtual 173	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   203: aload_2
-    //   204: ifnull +160 -> 364
-    //   207: aload_2
-    //   208: invokevirtual 177	java/net/HttpURLConnection:getResponseCode	()I
-    //   211: sipush 200
-    //   214: if_icmpne +150 -> 364
-    //   217: aload_0
+    //   38: aload_2
+    //   39: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: aload_1
+    //   44: ldc 96
+    //   46: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: pop
+    //   50: aload_1
+    //   51: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   54: astore_1
+    //   55: goto +60 -> 115
+    //   58: ldc 99
+    //   60: ldc 101
+    //   62: invokestatic 107	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   65: astore_1
+    //   66: aload_1
+    //   67: ldc 109
+    //   69: invokestatic 115	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   72: goto +11 -> 83
+    //   75: astore_1
+    //   76: aload_1
+    //   77: invokevirtual 118	java/lang/Exception:printStackTrace	()V
+    //   80: ldc 119
+    //   82: astore_1
+    //   83: new 90	java/lang/StringBuilder
+    //   86: dup
+    //   87: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   90: astore_3
+    //   91: aload_3
+    //   92: aload_2
+    //   93: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: pop
+    //   97: aload_3
+    //   98: ldc 121
+    //   100: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: pop
+    //   104: aload_3
+    //   105: aload_1
+    //   106: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: pop
+    //   110: aload_3
+    //   111: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   114: astore_1
+    //   115: new 90	java/lang/StringBuilder
+    //   118: dup
+    //   119: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   122: astore_2
+    //   123: aload_2
+    //   124: ldc 123
+    //   126: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: pop
+    //   130: aload_2
+    //   131: aload_1
+    //   132: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: pop
+    //   136: aload_2
+    //   137: ldc 125
+    //   139: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: pop
+    //   143: aload_2
+    //   144: invokestatic 131	java/lang/System:currentTimeMillis	()J
+    //   147: invokevirtual 134	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   150: pop
+    //   151: ldc 136
+    //   153: aload_2
+    //   154: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   157: invokestatic 141	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdLog:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   160: aconst_null
+    //   161: checkcast 57	java/lang/String
+    //   164: astore_3
+    //   165: aload_1
+    //   166: ifnull +8 -> 174
+    //   169: aload_1
+    //   170: astore_2
+    //   171: goto +6 -> 177
+    //   174: ldc 119
+    //   176: astore_2
+    //   177: aconst_null
+    //   178: checkcast 143	java/net/HttpURLConnection
+    //   181: astore 4
+    //   183: aload 4
+    //   185: astore_1
+    //   186: new 145	java/net/URL
+    //   189: dup
+    //   190: aload_2
+    //   191: invokespecial 148	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   194: invokevirtual 152	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   197: astore 5
+    //   199: aload 5
+    //   201: astore_2
+    //   202: aload 4
+    //   204: astore_1
+    //   205: aload 5
+    //   207: instanceof 143
+    //   210: ifne +5 -> 215
+    //   213: aconst_null
+    //   214: astore_2
+    //   215: aload 4
+    //   217: astore_1
     //   218: aload_2
-    //   219: invokevirtual 181	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   222: invokespecial 183	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil:a	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   225: astore_1
-    //   226: aload_1
-    //   227: checkcast 74	java/lang/CharSequence
-    //   230: invokestatic 80	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   233: ifne +73 -> 306
-    //   236: aload_0
-    //   237: new 185	org/json/JSONObject
-    //   240: dup
-    //   241: aload_1
-    //   242: invokespecial 186	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   245: invokevirtual 189	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil:a	(Lorg/json/JSONObject;)Ljava/lang/String;
-    //   248: astore_1
-    //   249: aload_1
-    //   250: astore 4
-    //   252: aload_2
-    //   253: ifnull +10 -> 263
-    //   256: aload_2
-    //   257: invokevirtual 192	java/net/HttpURLConnection:disconnect	()V
-    //   260: aload_1
-    //   261: astore 4
-    //   263: aload 4
-    //   265: areturn
-    //   266: astore_1
-    //   267: aload_1
-    //   268: invokevirtual 195	java/lang/Exception:printStackTrace	()V
-    //   271: ldc 196
-    //   273: astore_1
-    //   274: goto -231 -> 43
-    //   277: new 108	java/lang/StringBuilder
-    //   280: dup
-    //   281: invokespecial 109	java/lang/StringBuilder:<init>	()V
-    //   284: aload_2
-    //   285: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   288: ldc 198
-    //   290: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   293: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   219: checkcast 143	java/net/HttpURLConnection
+    //   222: astore_2
+    //   223: aload_2
+    //   224: ifnull +50 -> 274
+    //   227: aload_2
+    //   228: ldc 154
+    //   230: invokevirtual 157	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   233: aload_2
+    //   234: ldc 159
+    //   236: ldc 161
+    //   238: invokevirtual 164	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   241: aload_2
+    //   242: ldc 166
+    //   244: ldc 168
+    //   246: invokevirtual 164	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   249: aload_2
+    //   250: ldc 170
+    //   252: ldc 172
+    //   254: invokevirtual 164	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   257: aload_2
+    //   258: sipush 3000
+    //   261: invokevirtual 176	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   264: aload_2
+    //   265: sipush 3000
+    //   268: invokevirtual 179	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   271: goto +3 -> 274
+    //   274: aload_2
+    //   275: ifnull +60 -> 335
+    //   278: aload_2
+    //   279: invokevirtual 183	java/net/HttpURLConnection:getResponseCode	()I
+    //   282: sipush 200
+    //   285: if_icmpne +50 -> 335
+    //   288: aload_0
+    //   289: aload_2
+    //   290: invokevirtual 187	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   293: invokespecial 189	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   296: astore_1
-    //   297: goto -230 -> 67
-    //   300: ldc 196
-    //   302: astore_2
-    //   303: goto -190 -> 113
-    //   306: ldc 117
-    //   308: ldc 200
-    //   310: invokestatic 135	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdLog:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   313: aload_3
-    //   314: astore_1
-    //   315: goto -66 -> 249
-    //   318: astore 5
-    //   320: aload_2
-    //   321: astore_1
-    //   322: ldc 117
-    //   324: new 108	java/lang/StringBuilder
-    //   327: dup
-    //   328: invokespecial 109	java/lang/StringBuilder:<init>	()V
-    //   331: ldc 202
-    //   333: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   336: aload 5
-    //   338: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   341: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   344: invokestatic 135	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdLog:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   347: aload_3
-    //   348: astore 4
+    //   297: aload_1
+    //   298: checkcast 74	java/lang/CharSequence
+    //   301: invokestatic 80	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   304: ifne +19 -> 323
+    //   307: aload_0
+    //   308: new 191	org/json/JSONObject
+    //   311: dup
+    //   312: aload_1
+    //   313: invokespecial 192	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   316: invokevirtual 195	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil:a	(Lorg/json/JSONObject;)Ljava/lang/String;
+    //   319: astore_1
+    //   320: goto +57 -> 377
+    //   323: ldc 136
+    //   325: ldc 197
+    //   327: invokestatic 141	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdLog:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   330: aload_3
+    //   331: astore_1
+    //   332: goto +45 -> 377
+    //   335: new 90	java/lang/StringBuilder
+    //   338: dup
+    //   339: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   342: astore_1
+    //   343: aload_1
+    //   344: ldc 199
+    //   346: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   349: pop
     //   350: aload_2
-    //   351: ifnull -88 -> 263
-    //   354: aload_2
-    //   355: invokevirtual 192	java/net/HttpURLConnection:disconnect	()V
-    //   358: aload_3
-    //   359: astore 4
-    //   361: goto -98 -> 263
-    //   364: new 108	java/lang/StringBuilder
-    //   367: dup
-    //   368: invokespecial 109	java/lang/StringBuilder:<init>	()V
-    //   371: ldc 207
-    //   373: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   351: ifnonnull +6 -> 357
+    //   354: invokestatic 202	kotlin/jvm/internal/Intrinsics:throwNpe	()V
+    //   357: aload_1
+    //   358: aload_2
+    //   359: invokevirtual 183	java/net/HttpURLConnection:getResponseCode	()I
+    //   362: invokevirtual 205	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   365: pop
+    //   366: ldc 136
+    //   368: aload_1
+    //   369: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   372: invokestatic 141	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdLog:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   375: aload_3
     //   376: astore_1
-    //   377: aload_2
-    //   378: ifnonnull +6 -> 384
-    //   381: invokestatic 210	kotlin/jvm/internal/Intrinsics:throwNpe	()V
-    //   384: ldc 117
-    //   386: aload_1
-    //   387: aload_2
-    //   388: invokevirtual 177	java/net/HttpURLConnection:getResponseCode	()I
-    //   391: invokevirtual 213	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   394: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   397: invokestatic 135	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdLog:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   400: aload_3
-    //   401: astore_1
-    //   402: goto -153 -> 249
-    //   405: astore_1
-    //   406: aload_2
-    //   407: ifnull +7 -> 414
-    //   410: aload_2
-    //   411: invokevirtual 192	java/net/HttpURLConnection:disconnect	()V
-    //   414: aload_1
-    //   415: athrow
-    //   416: astore_3
-    //   417: aload_1
-    //   418: astore_2
-    //   419: aload_3
-    //   420: astore_1
-    //   421: goto -15 -> 406
-    //   424: astore 5
-    //   426: aload 4
-    //   428: astore_2
-    //   429: goto -109 -> 320
-    //   432: goto -285 -> 147
+    //   377: aload_1
+    //   378: astore 4
+    //   380: aload_2
+    //   381: ifnull +81 -> 462
+    //   384: aload_2
+    //   385: invokevirtual 208	java/net/HttpURLConnection:disconnect	()V
+    //   388: aload_1
+    //   389: areturn
+    //   390: astore_3
+    //   391: aload_1
+    //   392: astore_2
+    //   393: aload_3
+    //   394: astore_1
+    //   395: goto +70 -> 465
+    //   398: astore_1
+    //   399: aload 4
+    //   401: astore_2
+    //   402: aload_1
+    //   403: astore 4
+    //   405: aload_2
+    //   406: astore_1
+    //   407: new 90	java/lang/StringBuilder
+    //   410: dup
+    //   411: invokespecial 91	java/lang/StringBuilder:<init>	()V
+    //   414: astore 5
+    //   416: aload_2
+    //   417: astore_1
+    //   418: aload 5
+    //   420: ldc 210
+    //   422: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   425: pop
+    //   426: aload_2
+    //   427: astore_1
+    //   428: aload 5
+    //   430: aload 4
+    //   432: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   435: pop
+    //   436: aload_2
+    //   437: astore_1
+    //   438: ldc 136
+    //   440: aload 5
+    //   442: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   445: invokestatic 141	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdLog:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   448: aload_3
+    //   449: astore 4
+    //   451: aload_2
+    //   452: ifnull +10 -> 462
+    //   455: aload_2
+    //   456: invokevirtual 208	java/net/HttpURLConnection:disconnect	()V
+    //   459: aload_3
+    //   460: astore 4
+    //   462: aload 4
+    //   464: areturn
+    //   465: aload_2
+    //   466: ifnull +7 -> 473
+    //   469: aload_2
+    //   470: invokevirtual 208	java/net/HttpURLConnection:disconnect	()V
+    //   473: aload_1
+    //   474: athrow
+    //   475: astore_1
+    //   476: goto -11 -> 465
+    //   479: astore 4
+    //   481: goto -76 -> 405
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	435	0	this	RIJAdUrlChangeUtil
-    //   0	435	1	paramAdDownloadScene	com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.AdDownloadScene
-    //   0	435	2	paramString	String
-    //   106	295	3	str	String
-    //   416	4	3	localObject1	Object
-    //   117	310	4	localObject2	Object
-    //   1	144	5	localObject3	Object
-    //   318	19	5	localException1	java.lang.Exception
-    //   424	1	5	localException2	java.lang.Exception
+    //   0	484	0	this	RIJAdUrlChangeUtil
+    //   0	484	1	paramAdDownloadScene	com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.AdDownloadScene
+    //   0	484	2	paramString	String
+    //   90	286	3	localObject1	Object
+    //   390	70	3	localObject2	Object
+    //   181	282	4	localObject3	Object
+    //   479	1	4	localException	java.lang.Exception
+    //   197	244	5	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   29	43	266	java/lang/Exception
-    //   159	203	318	java/lang/Exception
-    //   207	249	318	java/lang/Exception
-    //   306	313	318	java/lang/Exception
-    //   364	377	318	java/lang/Exception
-    //   381	384	318	java/lang/Exception
-    //   384	400	318	java/lang/Exception
-    //   159	203	405	finally
-    //   207	249	405	finally
-    //   306	313	405	finally
-    //   364	377	405	finally
-    //   381	384	405	finally
-    //   384	400	405	finally
-    //   122	134	416	finally
-    //   137	144	416	finally
-    //   150	155	416	finally
-    //   322	347	416	finally
-    //   122	134	424	java/lang/Exception
-    //   137	144	424	java/lang/Exception
-    //   150	155	424	java/lang/Exception
+    //   58	72	75	java/lang/Exception
+    //   186	199	390	finally
+    //   205	213	390	finally
+    //   218	223	390	finally
+    //   407	416	390	finally
+    //   418	426	390	finally
+    //   428	436	390	finally
+    //   438	448	390	finally
+    //   186	199	398	java/lang/Exception
+    //   205	213	398	java/lang/Exception
+    //   218	223	398	java/lang/Exception
+    //   227	271	475	finally
+    //   278	320	475	finally
+    //   323	330	475	finally
+    //   335	350	475	finally
+    //   354	357	475	finally
+    //   357	375	475	finally
+    //   227	271	479	java/lang/Exception
+    //   278	320	479	java/lang/Exception
+    //   323	330	479	java/lang/Exception
+    //   335	350	479	java/lang/Exception
+    //   354	357	479	java/lang/Exception
+    //   357	375	479	java/lang/Exception
   }
   
   @Nullable
@@ -300,24 +345,28 @@ public final class RIJAdUrlChangeUtil
     }
     catch (Throwable paramJSONObject)
     {
-      try
+      for (;;)
       {
-        if (TextUtils.isEmpty((CharSequence)str2))
+        try
         {
-          str1 = paramJSONObject.optJSONObject("data").optString("dstlink");
-          Intrinsics.checkExpressionValueIsNotNull(str1, "jsonObject.optJSONObject…ta\").optString(\"dstlink\")");
+          if (TextUtils.isEmpty((CharSequence)str2))
+          {
+            paramJSONObject = paramJSONObject.optJSONObject("data").optString("dstlink");
+            Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "jsonObject.optJSONObject…ta\").optString(\"dstlink\")");
+            return paramJSONObject;
+            str1 = "";
+          }
+          return str1;
         }
-        return str1;
+        catch (Throwable paramJSONObject) {}
+        paramJSONObject = paramJSONObject;
       }
-      catch (Throwable paramJSONObject) {}
-      paramJSONObject = paramJSONObject;
-      return "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdUrlChangeUtil
  * JD-Core Version:    0.7.0.1
  */

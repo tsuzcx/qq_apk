@@ -1,12 +1,12 @@
 package com.tencent.biz.webviewplugin;
 
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 class HotchatPlugin$5
-  implements TroopMemberApiClient.Callback
+  implements ITroopMemberApiClientApi.Callback
 {
   HotchatPlugin$5(HotchatPlugin paramHotchatPlugin) {}
   
@@ -27,7 +27,7 @@ class HotchatPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HotchatPlugin.5
  * JD-Core Version:    0.7.0.1
  */

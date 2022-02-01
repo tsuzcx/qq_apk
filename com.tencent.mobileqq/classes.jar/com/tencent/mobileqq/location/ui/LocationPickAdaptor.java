@@ -36,10 +36,11 @@ public class LocationPickAdaptor
   
   LocationRoom.Venue a()
   {
-    if (this.jdField_a_of_type_Int < 0) {
+    int i = this.jdField_a_of_type_Int;
+    if (i < 0) {
       return null;
     }
-    return a(this.jdField_a_of_type_Int);
+    return a(i);
   }
   
   public LocationRoom.Venue a(int paramInt)
@@ -52,30 +53,35 @@ public class LocationPickAdaptor
   
   void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper.a()) && (this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor$OnDataLoadStateChangeListener != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor$OnDataLoadStateChangeListener.a(1);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper.a())
+    {
+      LocationPickAdaptor.OnDataLoadStateChangeListener localOnDataLoadStateChangeListener = this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor$OnDataLoadStateChangeListener;
+      if (localOnDataLoadStateChangeListener != null) {
+        localOnDataLoadStateChangeListener.a(1);
+      }
     }
   }
   
   void a(int paramInt)
   {
-    LocationRoom.Venue localVenue1 = (LocationRoom.Venue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject = (LocationRoom.Venue)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (this.b > 0)
     {
-      LocationRoom.Venue localVenue2 = (LocationRoom.Venue)this.jdField_a_of_type_JavaUtilList.remove(0);
-      this.jdField_a_of_type_JavaUtilList.add(this.b, localVenue2);
+      LocationRoom.Venue localVenue = (LocationRoom.Venue)this.jdField_a_of_type_JavaUtilList.remove(0);
+      this.jdField_a_of_type_JavaUtilList.add(this.b, localVenue);
     }
-    this.jdField_a_of_type_JavaUtilList.remove(localVenue1);
-    this.jdField_a_of_type_JavaUtilList.add(0, localVenue1);
+    this.jdField_a_of_type_JavaUtilList.remove(localObject);
+    this.jdField_a_of_type_JavaUtilList.add(0, localObject);
     this.b = paramInt;
     this.jdField_a_of_type_Int = 0;
     notifyDataSetChanged();
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor$OnDataLoadStateChangeListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor$OnDataLoadStateChangeListener.a(4);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor$OnDataLoadStateChangeListener;
+    if (localObject != null) {
+      ((LocationPickAdaptor.OnDataLoadStateChangeListener)localObject).a(4);
     }
   }
   
-  void a(LocationPickAdaptor.OnDataLoadStateChangeListener paramOnDataLoadStateChangeListener)
+  public void a(LocationPickAdaptor.OnDataLoadStateChangeListener paramOnDataLoadStateChangeListener)
   {
     this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor$OnDataLoadStateChangeListener = paramOnDataLoadStateChangeListener;
   }
@@ -84,34 +90,36 @@ public class LocationPickAdaptor
   {
     this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper = new LocationPoiDataFromMapHelper(paramTencentMap, paramLatLng, paramString);
     this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper.a(new LocationPickAdaptor.1(this, paramString));
-    if ((this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper.a()) && (this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor$OnDataLoadStateChangeListener != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor$OnDataLoadStateChangeListener.a(0);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper.a())
+    {
+      paramTencentMap = this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickAdaptor$OnDataLoadStateChangeListener;
+      if (paramTencentMap != null) {
+        paramTencentMap.a(0);
+      }
     }
     this.b = -1;
     this.jdField_a_of_type_Int = -1;
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
+    paramTencentMap = this.jdField_a_of_type_JavaUtilList;
+    if (paramTencentMap != null) {
+      paramTencentMap.clear();
     }
   }
   
-  boolean a()
+  public boolean a()
   {
     return this.jdField_a_of_type_Boolean;
   }
   
   public int getCount()
   {
-    int i = 0;
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper.b()) {
-        i = this.jdField_a_of_type_JavaUtilList.size() + 1;
+        return this.jdField_a_of_type_JavaUtilList.size() + 1;
       }
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    else {
-      return i;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return 0;
   }
   
   public long getItemId(int paramInt)
@@ -122,56 +130,74 @@ public class LocationPickAdaptor
   @SuppressLint({"InflateParams"})
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    Object localObject1;
     if (paramView == null)
     {
-      localObject = new LocationPickAdaptor.ItemViewHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559403, null);
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365723);
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372127));
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362229));
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377721);
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_b_of_type_AndroidViewView.setVisibility(4);
-      ((LocationPickAdaptor.ItemViewHolder)localObject).c = paramView.findViewById(2131371874);
-      paramView.setTag(localObject);
+      localObject1 = new LocationPickAdaptor.ItemViewHolder();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559278, null);
+      ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365560);
+      ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371709));
+      ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362252));
+      ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_b_of_type_AndroidViewView = paramView.findViewById(2131377149);
+      ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_b_of_type_AndroidViewView.setVisibility(4);
+      ((LocationPickAdaptor.ItemViewHolder)localObject1).c = paramView.findViewById(2131371496);
+      paramView.setTag(localObject1);
     }
-    while ((this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper.b()) && (paramInt == this.jdField_a_of_type_JavaUtilList.size()))
+    else
     {
-      ((LocationPickAdaptor.ItemViewHolder)localObject).c.setVisibility(0);
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(8);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localObject = (LocationPickAdaptor.ItemViewHolder)paramView.getTag();
+      localObject1 = (LocationPickAdaptor.ItemViewHolder)paramView.getTag();
     }
-    ((LocationPickAdaptor.ItemViewHolder)localObject).c.setVisibility(8);
-    ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
-    LocationRoom.Venue localVenue = a(paramInt);
-    String str;
-    if (localVenue != null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPoiDataFromMapHelper.b()) && (paramInt == this.jdField_a_of_type_JavaUtilList.size()))
     {
-      ((LocationPickAdaptor.ItemViewHolder)localObject).c.setVisibility(8);
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setText(localVenue.c);
-      str = localVenue.b + localVenue.c;
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break label387;
+      ((LocationPickAdaptor.ItemViewHolder)localObject1).c.setVisibility(0);
+      ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    else
+    {
+      ((LocationPickAdaptor.ItemViewHolder)localObject1).c.setVisibility(8);
+      ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
+      Object localObject2 = a(paramInt);
+      if (localObject2 != null)
+      {
+        ((LocationPickAdaptor.ItemViewHolder)localObject1).c.setVisibility(8);
+        ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
+        ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText(((LocationRoom.Venue)localObject2).c);
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(((LocationRoom.Venue)localObject2).b);
+        ((StringBuilder)localObject3).append(((LocationRoom.Venue)localObject2).c);
+        localObject3 = ((StringBuilder)localObject3).toString();
+        if (paramInt == this.jdField_a_of_type_Int)
+        {
+          ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131693818), new Object[] { ((LocationRoom.Venue)localObject2).b }));
+          ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_b_of_type_AndroidViewView.setVisibility(0);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.getText().toString());
+          ((StringBuilder)localObject3).append(((LocationRoom.Venue)localObject2).c);
+          localObject1 = ((StringBuilder)localObject3).toString();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext.getString(2131694943));
+          localObject1 = ((StringBuilder)localObject2).toString();
+        }
+        else
+        {
+          ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((LocationRoom.Venue)localObject2).b);
+          ((LocationPickAdaptor.ItemViewHolder)localObject1).jdField_b_of_type_AndroidViewView.setVisibility(4);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append((String)localObject3);
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131694944));
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        paramView.setContentDescription((CharSequence)localObject1);
       }
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131693864), new Object[] { localVenue.b }));
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_b_of_type_AndroidViewView.setVisibility(0);
-      localObject = ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.getText().toString() + localVenue.c;
     }
-    for (Object localObject = (String)localObject + this.jdField_a_of_type_AndroidContentContext.getString(2131694953);; localObject = str + this.jdField_a_of_type_AndroidContentContext.getString(2131694954))
-    {
-      paramView.setContentDescription((CharSequence)localObject);
-      break;
-      label387:
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localVenue.b);
-      ((LocationPickAdaptor.ItemViewHolder)localObject).jdField_b_of_type_AndroidViewView.setVisibility(4);
-    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickAdaptor
  * JD-Core Version:    0.7.0.1
  */

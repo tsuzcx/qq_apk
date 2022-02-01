@@ -11,6 +11,7 @@ public class TPReportParams$VodExParam
   int freeTypeInt;
   int hasSubtitleInt;
   int hevcLcInt;
+  int hitDownloaded;
   int isSelectedSubtitleInt;
   int multiTrackInt;
   int optimizedPlayInt;
@@ -32,13 +33,14 @@ public class TPReportParams$VodExParam
     paramITPReportProperties.put("hevclv", this.hevcLcInt);
     paramITPReportProperties.put("clip", this.clipInt);
     paramITPReportProperties.put("status", this.statusInt);
+    paramITPReportProperties.put("hitdownloaded", this.hitDownloaded);
   }
   
   public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportParams.VodExParam
  * JD-Core Version:    0.7.0.1
  */

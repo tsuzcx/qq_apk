@@ -14,20 +14,18 @@ class EmoticonPanelHotPicSearchHelper$LabelFlowAdapter$1
   
   public void onClick(View paramView)
   {
-    if (this.val$tagBtn.getText() == null) {}
-    for (;;)
+    if (this.val$tagBtn.getText() != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       String str = this.val$tagBtn.getText().toString();
       this.this$1.this$0.startSearch(str);
       ReportController.b(this.this$1.this$0.getApp().getQQAppInterface(), "dc00898", "", "", "0X800AE1F", "0X800AE1F", 0, 0, "2", "", str, "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelHotPicSearchHelper.LabelFlowAdapter.1
  * JD-Core Version:    0.7.0.1
  */

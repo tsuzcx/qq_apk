@@ -6,31 +6,24 @@ import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.pic.api.IPicTransFile;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.shortvideo.api.IShortVideoFactory;
 import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
-import com.tencent.mobileqq.transfile.C2CPicDownloadProcessor;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
-import com.tencent.mobileqq.transfile.C2CPttDownloadProcessor;
-import com.tencent.mobileqq.transfile.C2CPttUploadProcessor;
 import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.mobileqq.transfile.ForwardImageProcessor;
 import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.mobileqq.transfile.GroupPicDownloadProcessor;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
-import com.tencent.mobileqq.transfile.GroupPttDownloadProcessor;
-import com.tencent.mobileqq.transfile.GroupPttUploadProcessor;
-import com.tencent.mobileqq.transfile.PAAudioPttDownloadProcessor;
-import com.tencent.mobileqq.transfile.PttSliceUploadProcessor;
-import com.tencent.mobileqq.transfile.ScribblePicDownloadProcessor;
-import com.tencent.mobileqq.transfile.ScribblePicUploadProcessor;
+import com.tencent.mobileqq.transfile.IScribblePicDownloadProcessor;
+import com.tencent.mobileqq.transfile.IScribblePicUploadProcessor;
 import com.tencent.mobileqq.transfile.ShortVideoDownloadProcessor;
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
 import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.mobileqq.transfile.api.IProtoReqManager;
+import com.tencent.mobileqq.transfile.api.IPttTransProcessorHelper;
 import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Iterator;
 import mqq.manager.Manager;
 
 public class FileTransferManager
@@ -42,7 +35,7 @@ public class FileTransferManager
   
   public FileTransferManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BuddyTransfileProcessor.class, C2CPicUploadProcessor.class, C2CPttDownloadProcessor.class, C2CPttUploadProcessor.class, GroupPicUploadProcessor.class, GroupPttDownloadProcessor.class, C2CPicDownloadProcessor.class, GroupPicDownloadProcessor.class, ForwardImageProcessor.class, ShortVideoUploadProcessor.class, ShortVideoDownloadProcessor.class, ShortVideoForwardProcessor.class, PAAudioPttDownloadProcessor.class, ScribblePicDownloadProcessor.class, ScribblePicUploadProcessor.class, ForwardSdkShareProcessor.class, GroupPttUploadProcessor.class, PttSliceUploadProcessor.class });
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BuddyTransfileProcessor.class, ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getC2CPttDownloadProcessorClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getC2CPttUpProcessorClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getC2CUploadProClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getGroupUploadProClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getGroupPttDownloadProcessorClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getC2CPicDownloadProClass(), ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getGroupDownloadProClass(), ForwardImageProcessor.class, ((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getShortVideoUploadProcessorClass(), ShortVideoDownloadProcessor.class, ((IShortVideoFactory)QRoute.api(IShortVideoFactory.class)).getShortVideoForwardProcessorClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getPAAudioDownloadProcessorClass(), ((IScribblePicDownloadProcessor)QRoute.api(IScribblePicDownloadProcessor.class)).getProcessorClazz(), ((IScribblePicUploadProcessor)QRoute.api(IScribblePicUploadProcessor.class)).getProcessorClazz(), ForwardSdkShareProcessor.class, ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getGroupPttUpProcessorClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getSlicePttUpProcessorClass() });
     a(paramQQAppInterface);
   }
   
@@ -53,10 +46,12 @@ public class FileTransferManager
   
   private void a(QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() == paramQQAppInterface)) {
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() == paramQQAppInterface)) {
       return;
     }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+    localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       a();
     }
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
@@ -66,7 +61,8 @@ public class FileTransferManager
   public void a()
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
       ((ITransFileController)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getRuntimeService(ITransFileController.class)).removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
       ((IProtoReqManager)((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getRuntimeService(IProtoReqManager.class, "")).onDestroy();
@@ -76,107 +72,86 @@ public class FileTransferManager
   
   void a(Message paramMessage)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label203;
-        }
-        QLog.d("FileTransferManager", 2, "handleMessage" + ((FileMsg)paramMessage.obj).uniseq + " status " + paramMessage.what + "retCode " + paramMessage.arg1);
+      if (!QLog.isColorLevel()) {
+        break label226;
       }
-      finally {}
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleMessage");
+      ((StringBuilder)localObject1).append(((FileMsg)paramMessage.obj).uniseq);
+      ((StringBuilder)localObject1).append(" status ");
+      ((StringBuilder)localObject1).append(paramMessage.what);
+      ((StringBuilder)localObject1).append("retCode ");
+      ((StringBuilder)localObject1).append(paramMessage.arg1);
+      QLog.d("FileTransferManager", 2, ((StringBuilder)localObject1).toString());
+    }
+    finally
+    {
+      for (;;)
       {
-        Object localObject2 = (FileTransferManager.CallbackPack)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (localObject2 != null)
+        Object localObject1;
+        Object localObject2;
+        int j;
+        for (;;)
         {
-          Object localObject1 = ((FileTransferManager.CallbackPack)localObject2).a();
-          localObject2 = ((FileTransferManager.CallbackPack)localObject2).a();
-          if ((localObject1 != null) && (localObject2 != null))
-          {
-            ((FileTransferManager.Callback)localObject2).a((View)localObject1, (FileMsg)paramMessage.obj, paramMessage.what, paramMessage.arg1);
-            break label208;
-          }
-          localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
-          int j = i - 1;
-          ((ArrayList)localObject1).remove(i);
-          i = j;
-          break label208;
+          throw paramMessage;
+        }
+        label226:
+        int i = 0;
+        continue;
+        i = j + 1;
+      }
+    }
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      localObject2 = (FileTransferManager.CallbackPack)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      j = i;
+      if (localObject2 != null)
+      {
+        localObject1 = ((FileTransferManager.CallbackPack)localObject2).a();
+        localObject2 = ((FileTransferManager.CallbackPack)localObject2).a();
+        if ((localObject1 != null) && (localObject2 != null))
+        {
+          ((Callback)localObject2).handleMessage((View)localObject1, (FileMsg)paramMessage.obj, paramMessage.what, paramMessage.arg1);
+          j = i;
+        }
+        else
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+          j = i - 1;
         }
       }
-      else
-      {
-        OpenApiManager.getInstance().onFileTransStatusChanged((FileMsg)paramMessage.obj, paramMessage.what, paramMessage.arg1);
-        return;
-      }
-      break label208;
-      label203:
-      int i = 0;
-      continue;
-      label208:
-      i += 1;
+    }
+    else
+    {
+      OpenApiManager.getInstance().onFileTransStatusChanged((FileMsg)paramMessage.obj, paramMessage.what, paramMessage.arg1);
+      return;
     }
   }
   
-  /* Error */
-  public void a(View paramView, FileTransferManager.Callback paramCallback)
+  public void a(View paramView, Callback paramCallback)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 35	com/tencent/mobileqq/activity/aio/FileTransferManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   6: invokevirtual 226	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   9: astore_3
-    //   10: aload_3
-    //   11: invokeinterface 231 1 0
-    //   16: ifeq +39 -> 55
-    //   19: aload_3
-    //   20: invokeinterface 234 1 0
-    //   25: checkcast 197	com/tencent/mobileqq/activity/aio/FileTransferManager$CallbackPack
-    //   28: astore 4
-    //   30: aload 4
-    //   32: invokevirtual 200	com/tencent/mobileqq/activity/aio/FileTransferManager$CallbackPack:a	()Landroid/view/View;
-    //   35: aload_1
-    //   36: if_acmpne -26 -> 10
-    //   39: aload 4
-    //   41: new 99	java/lang/ref/WeakReference
-    //   44: dup
-    //   45: aload_2
-    //   46: invokespecial 108	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   49: putfield 237	com/tencent/mobileqq/activity/aio/FileTransferManager$CallbackPack:b	Ljava/lang/ref/WeakReference;
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: return
-    //   55: aload_0
-    //   56: getfield 35	com/tencent/mobileqq/activity/aio/FileTransferManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   59: new 197	com/tencent/mobileqq/activity/aio/FileTransferManager$CallbackPack
-    //   62: dup
-    //   63: aload_0
-    //   64: aload_1
-    //   65: aload_2
-    //   66: invokespecial 240	com/tencent/mobileqq/activity/aio/FileTransferManager$CallbackPack:<init>	(Lcom/tencent/mobileqq/activity/aio/FileTransferManager;Landroid/view/View;Lcom/tencent/mobileqq/activity/aio/FileTransferManager$Callback;)V
-    //   69: invokevirtual 244	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   72: pop
-    //   73: goto -21 -> 52
-    //   76: astore_1
-    //   77: aload_0
-    //   78: monitorexit
-    //   79: aload_1
-    //   80: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	81	0	this	FileTransferManager
-    //   0	81	1	paramView	View
-    //   0	81	2	paramCallback	FileTransferManager.Callback
-    //   9	11	3	localIterator	java.util.Iterator
-    //   28	12	4	localCallbackPack	FileTransferManager.CallbackPack
-    // Exception table:
-    //   from	to	target	type
-    //   2	10	76	finally
-    //   10	52	76	finally
-    //   55	73	76	finally
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        FileTransferManager.CallbackPack localCallbackPack = (FileTransferManager.CallbackPack)localIterator.next();
+        if (localCallbackPack.a() == paramView)
+        {
+          localCallbackPack.b = new WeakReference(paramCallback);
+          return;
+        }
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(new FileTransferManager.CallbackPack(this, paramView, paramCallback));
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramView;
+    }
   }
   
   public void b()
@@ -202,7 +177,7 @@ public class FileTransferManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.FileTransferManager
  * JD-Core Version:    0.7.0.1
  */

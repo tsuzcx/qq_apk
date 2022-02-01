@@ -41,14 +41,18 @@ public class ODWebCookieManager
   {
     ArrayList localArrayList = new ArrayList();
     paramString = UriUtil.a(paramString);
-    paramString = ";Domain=" + paramString + ";Path=/;";
-    String str = DeviceInfoUtil.c();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(";Domain=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(";Path=/;");
+    paramString = ((StringBuilder)localObject).toString();
+    localObject = DeviceInfoUtil.c();
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "p_skey", this.jdField_a_of_type_JavaLangString, paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "__client_type", Integer.valueOf(406), paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "sdkver", "2.0.0", paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "platform", "Android", paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "program_id", "", paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "appversion", str, paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "appversion", localObject, paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "versioncode", "800409", paramString }));
     return localArrayList;
   }
@@ -69,16 +73,22 @@ public class ODWebCookieManager
   {
     ArrayList localArrayList = new ArrayList();
     paramString = UriUtil.a(paramString);
-    paramString = ";Domain=" + paramString + ";Path=/;";
-    Object localObject = DeviceUtil.getDeviceId(BaseApplicationImpl.getContext());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(";Domain=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(";Path=/;");
+    paramString = ((StringBuilder)localObject).toString();
+    localObject = DeviceUtil.getDeviceId(BaseApplicationImpl.getContext());
     int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
     String str1 = BusinessManager.a.a().e;
     String str2 = DeviceInfoUtil.c();
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "p_skey", this.jdField_a_of_type_JavaLangString, paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "__client_type", Integer.valueOf(405), paramString }));
+    Locale localLocale = Locale.ENGLISH;
+    Integer localInteger = Integer.valueOf(405);
+    localArrayList.add(String.format(localLocale, "%s=%d%s", new Object[] { "__client_type", localInteger, paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "sdkver", "2.0.0", paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "platform", "Android", paramString }));
-    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "installsrc", Integer.valueOf(405), paramString }));
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "installsrc", localInteger, paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "deviceID", localObject, paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "networktype", Integer.valueOf(i), paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "program_id", "", paramString }));
@@ -91,17 +101,15 @@ public class ODWebCookieManager
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "version", str2, paramString }));
     localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "versioncode", "800409", paramString }));
     localObject = ((LoginServiceInterface)BizEngineMgr.getInstance().getUserEngine().getService(LoginServiceInterface.class)).getLoginInfo();
-    long l2;
     if (localObject != null)
     {
-      l2 = ((LoginInfo)localObject).uid;
-      if (((LoginInfo)localObject).tinyid == 0L) {
-        break label1020;
+      long l2 = ((LoginInfo)localObject).uid;
+      long l1;
+      if (((LoginInfo)localObject).tinyid != 0L) {
+        l1 = ((LoginInfo)localObject).tinyid;
+      } else {
+        l1 = l2;
       }
-    }
-    label1020:
-    for (long l1 = ((LoginInfo)localObject).tinyid;; l1 = l2)
-    {
       str1 = HexUtil.bytesToHexString(((LoginInfo)localObject).a2);
       localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "ilive_uin", Long.valueOf(l2), paramString }));
       localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "ilive_tinyid", Long.valueOf(l1), paramString }));
@@ -111,9 +119,9 @@ public class ODWebCookieManager
       localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "original_id_type", Integer.valueOf(1), paramString }));
       localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "original_key_type", Integer.valueOf(37), paramString }));
       localArrayList.add(String.format(Locale.ENGLISH, "%s=%s%s", new Object[] { "original_auth_appid", "101490787", paramString }));
-      localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "uin_type", Integer.valueOf(2), paramString }));
-      return localArrayList;
     }
+    localArrayList.add(String.format(Locale.ENGLISH, "%s=%d%s", new Object[] { "uin_type", Integer.valueOf(2), paramString }));
+    return localArrayList;
   }
   
   public void a(String paramString)
@@ -144,7 +152,7 @@ public class ODWebCookieManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_od.ODWebCookieManager
  * JD-Core Version:    0.7.0.1
  */

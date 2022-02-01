@@ -22,12 +22,13 @@ class DragFrameLayout$ShakeRunner
     this.jdField_b_of_type_AndroidGraphicsPointF = new PointF(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
     this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
     this.jdField_a_of_type_Float = ((float)Math.sqrt(this.jdField_a_of_type_AndroidGraphicsRectF.width() * this.jdField_a_of_type_AndroidGraphicsRectF.width() + this.jdField_a_of_type_AndroidGraphicsRectF.height() * this.jdField_a_of_type_AndroidGraphicsRectF.height()));
-    if (this.jdField_a_of_type_Float <= 0.01D)
+    float f = this.jdField_a_of_type_Float;
+    if (f <= 0.01D)
     {
       this.c = 0;
       return;
     }
-    this.jdField_b_of_type_Int = ((int)(this.jdField_b_of_type_Int * this.jdField_a_of_type_Float / DragFrameLayout.b(paramDragFrameLayout)));
+    this.jdField_b_of_type_Int = ((int)(this.jdField_b_of_type_Int * f / DragFrameLayout.b(paramDragFrameLayout)));
     this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * this.jdField_a_of_type_Float / DragFrameLayout.b(paramDragFrameLayout)));
     this.c = (-this.jdField_b_of_type_Int);
   }
@@ -42,34 +43,34 @@ class DragFrameLayout$ShakeRunner
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    if ((Math.abs(this.c) < this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Int == 0)) {
-      if (DragFrameLayout.a(this.this$0) == this)
-      {
-        DragFrameLayout.a(this.this$0, null);
-        DragFrameLayout.a(this.this$0, -1);
-        DragFrameLayout.a(this.this$0, null);
-        DragFrameLayout.a(this.this$0).setVisibility(0);
-        DragFrameLayout.a(this.this$0, null);
-        DragFrameLayout.a(this.this$0, false);
-      }
-    }
-    for (;;)
+    int i = Math.abs(this.c);
+    int j = this.jdField_a_of_type_Int;
+    if ((i >= j) && (j != 0))
     {
-      this.this$0.invalidate();
-      return;
       this.jdField_b_of_type_AndroidGraphicsPointF.x = (this.jdField_a_of_type_AndroidGraphicsPointF.x + this.c * this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_a_of_type_Float);
       this.jdField_b_of_type_AndroidGraphicsPointF.y = (this.jdField_a_of_type_AndroidGraphicsPointF.y + this.c * this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.jdField_a_of_type_Float);
-      if (this.c < 0) {
-        this.c = (-this.c - this.jdField_a_of_type_Int);
+      i = this.c;
+      if (i < 0) {
+        this.c = (-i - this.jdField_a_of_type_Int);
       } else {
-        this.c = (-this.c + this.jdField_a_of_type_Int);
+        this.c = (-i + this.jdField_a_of_type_Int);
       }
     }
+    else if (DragFrameLayout.a(this.this$0) == this)
+    {
+      DragFrameLayout.a(this.this$0, null);
+      DragFrameLayout.a(this.this$0, -1);
+      DragFrameLayout.a(this.this$0, null);
+      DragFrameLayout.a(this.this$0).setVisibility(0);
+      DragFrameLayout.a(this.this$0, null);
+      DragFrameLayout.a(this.this$0, false);
+    }
+    this.this$0.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.ShakeRunner
  * JD-Core Version:    0.7.0.1
  */

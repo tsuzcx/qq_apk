@@ -25,17 +25,18 @@ public final class ClippingMediaSource
   
   public ClippingMediaSource(MediaSource paramMediaSource, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (paramLong1 >= 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      this.mediaSource = ((MediaSource)Assertions.checkNotNull(paramMediaSource));
-      this.startUs = paramLong1;
-      this.endUs = paramLong2;
-      this.enableInitialDiscontinuity = paramBoolean;
-      this.mediaPeriods = new ArrayList();
-      return;
+    boolean bool;
+    if (paramLong1 >= 0L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkArgument(bool);
+    this.mediaSource = ((MediaSource)Assertions.checkNotNull(paramMediaSource));
+    this.startUs = paramLong1;
+    this.endUs = paramLong2;
+    this.enableInitialDiscontinuity = paramBoolean;
+    this.mediaPeriods = new ArrayList();
   }
   
   public MediaPeriod createPeriod(MediaSource.MediaPeriodId paramMediaPeriodId, Allocator paramAllocator)
@@ -48,35 +49,36 @@ public final class ClippingMediaSource
   
   public void maybeThrowSourceInfoRefreshError()
   {
-    if (this.clippingError != null) {
-      throw this.clippingError;
+    ClippingMediaSource.IllegalClippingException localIllegalClippingException = this.clippingError;
+    if (localIllegalClippingException == null)
+    {
+      super.maybeThrowSourceInfoRefreshError();
+      return;
     }
-    super.maybeThrowSourceInfoRefreshError();
+    throw localIllegalClippingException;
   }
   
   protected void onChildSourceInfoRefreshed(Void paramVoid, MediaSource paramMediaSource, Timeline paramTimeline, @Nullable Object paramObject)
   {
-    if (this.clippingError != null) {}
-    for (;;)
-    {
+    if (this.clippingError != null) {
       return;
-      try
+    }
+    try
+    {
+      paramVoid = new ClippingMediaSource.ClippingTimeline(paramTimeline, this.startUs, this.endUs);
+      this.sourceListener.onSourceInfoRefreshed(this, paramVoid, paramObject);
+      int j = this.mediaPeriods.size();
+      int i = 0;
+      while (i < j)
       {
-        paramVoid = new ClippingMediaSource.ClippingTimeline(paramTimeline, this.startUs, this.endUs);
-        this.sourceListener.onSourceInfoRefreshed(this, paramVoid, paramObject);
-        int j = this.mediaPeriods.size();
-        int i = 0;
-        while (i < j)
-        {
-          ((ClippingMediaPeriod)this.mediaPeriods.get(i)).setClipping(this.startUs, this.endUs);
-          i += 1;
-        }
-        return;
+        ((ClippingMediaPeriod)this.mediaPeriods.get(i)).setClipping(this.startUs, this.endUs);
+        i += 1;
       }
-      catch (ClippingMediaSource.IllegalClippingException paramVoid)
-      {
-        this.clippingError = paramVoid;
-      }
+      return;
+    }
+    catch (ClippingMediaSource.IllegalClippingException paramVoid)
+    {
+      this.clippingError = paramVoid;
     }
   }
   
@@ -102,7 +104,7 @@ public final class ClippingMediaSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ClippingMediaSource
  * JD-Core Version:    0.7.0.1
  */

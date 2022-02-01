@@ -12,21 +12,25 @@ class MusicGeneWebViewPlugin$2
   public void a(int paramInt)
   {
     MusicGeneWebViewPlugin.a(this.a, paramInt);
-    if (paramInt == 2) {
-      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).c());
+    if (paramInt == 2)
+    {
+      MusicGeneWebViewPlugin localMusicGeneWebViewPlugin = this.a;
+      MusicGeneWebViewPlugin.a(localMusicGeneWebViewPlugin, MusicGeneWebViewPlugin.a(localMusicGeneWebViewPlugin).c());
     }
   }
   
   public void a(SongInfo paramSongInfo)
   {
-    if (MusicGeneWebViewPlugin.a(this.a) != null) {
-      MusicGeneWebViewPlugin.a(this.a, MusicGeneWebViewPlugin.a(this.a).a());
+    if (MusicGeneWebViewPlugin.a(this.a) != null)
+    {
+      paramSongInfo = this.a;
+      MusicGeneWebViewPlugin.a(paramSongInfo, MusicGeneWebViewPlugin.a(paramSongInfo).a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,10 @@ package com.tencent.mobileqq.app.friendlist;
 
 import KQQ.ProfSmpInfoRes;
 import QQService.VipBaseInfo;
-import QQService.VipOpenInfo;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.etrump.mixlayout.FontManager;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.EnterpriseQQHandler;
@@ -15,7 +13,6 @@ import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.bubble.BubbleManager;
 import com.tencent.mobileqq.businessCard.BusinessCardManager;
 import com.tencent.mobileqq.businessCard.BusinessCardServlet;
@@ -24,6 +21,8 @@ import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.ContactConfig;
+import com.tencent.mobileqq.vas.font.api.FontManagerConstants;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -31,7 +30,6 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import mqq.app.Constants.PropertiesKey;
 import mqq.app.MobileQQ;
 
@@ -39,25 +37,18 @@ public class FriendListHandlerUtil
 {
   public static int a(VipBaseInfo paramVipBaseInfo, int paramInt1, int paramInt2)
   {
-    if ((paramVipBaseInfo != null) && (paramVipBaseInfo.mOpenInfo != null))
-    {
-      paramVipBaseInfo = (VipOpenInfo)paramVipBaseInfo.mOpenInfo.get(Integer.valueOf(paramInt1));
-      if ((paramVipBaseInfo != null) && (paramVipBaseInfo.iVipLevel != -1) && (paramVipBaseInfo.iVipType != -1)) {}
-    }
-    else
-    {
-      return paramInt2;
-    }
-    if (paramVipBaseInfo.bOpen) {}
-    for (paramInt1 = 1;; paramInt1 = 0) {
-      return (paramInt1 << 8 | (byte)paramVipBaseInfo.iVipType & 0xFF) << 16 | (short)paramVipBaseInfo.iVipLevel;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static void a(ProfSmpInfoRes paramProfSmpInfoRes, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (paramBoolean) {
-      paramQQAppInterface.getApplication().setProperty(Constants.PropertiesKey.nickName.toString() + paramString, paramProfSmpInfoRes.strNick);
+    if (paramBoolean)
+    {
+      MobileQQ localMobileQQ = paramQQAppInterface.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Constants.PropertiesKey.nickName.toString());
+      localStringBuilder.append(paramString);
+      localMobileQQ.setProperty(localStringBuilder.toString(), paramProfSmpInfoRes.strNick);
     }
     if ((paramProfSmpInfoRes.cBusiCardFlag == 1) && (paramBoolean))
     {
@@ -84,10 +75,18 @@ public class FriendListHandlerUtil
         localObject = paramString;
       }
       paramList.add(new Object[] { paramString, localObject, Byte.valueOf(paramProfSmpInfoRes.cSex) });
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler", 2, "$handleFriendInfo add to nickSaveList| uin=" + paramString + " | datenick = " + paramProfSmpInfoRes.sDateNick + " | nick=" + paramProfSmpInfoRes.strNick);
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("$handleFriendInfo add to nickSaveList| uin=");
+        paramToServiceMsg.append(paramString);
+        paramToServiceMsg.append(" | datenick = ");
+        paramToServiceMsg.append(paramProfSmpInfoRes.sDateNick);
+        paramToServiceMsg.append(" | nick=");
+        paramToServiceMsg.append(paramProfSmpInfoRes.strNick);
+        QLog.d("FriendListHandler", 2, paramToServiceMsg.toString());
       }
-      paramFriendListHandler.notifyUI(89, true, new Object[] { paramString, localObject });
+      paramFriendListHandler.notifyUI(87, true, new Object[] { paramString, localObject });
     }
   }
   
@@ -111,22 +110,22 @@ public class FriendListHandlerUtil
     if ((paramString.equals(paramQQAppInterface.getCurrentAccountUin())) && (paramProfSmpInfoRes.wLevel != 0)) {
       paramCard.iQQLevel = paramProfSmpInfoRes.wLevel;
     }
-    if ((paramProfSmpInfoRes.isShowXMan != -1) && (paramProfSmpInfoRes.dwLoginDay >= 0L) && (paramProfSmpInfoRes.dwPhoneQQXManDay > 0L)) {
+    if ((paramProfSmpInfoRes.isShowXMan != -1) && (paramProfSmpInfoRes.dwLoginDay >= 0L) && (paramProfSmpInfoRes.dwPhoneQQXManDay > 0L))
+    {
       if (paramString.equals(paramQQAppInterface.getCurrentAccountUin()))
       {
         paramCard.lLoginDays = paramProfSmpInfoRes.dwLoginDay;
         paramCard.lQQMasterLogindays = paramProfSmpInfoRes.dwPhoneQQXManDay;
         paramCard.iXManScene1DelayTime = paramProfSmpInfoRes.iXManScene1DelayTime;
         paramCard.iXManScene2DelayTime = paramProfSmpInfoRes.iXManScene2DelayTime;
-        if (paramProfSmpInfoRes.isShowXMan != 1) {
-          break label234;
+        boolean bool;
+        if (paramProfSmpInfoRes.isShowXMan == 1) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        paramCard.setXManFlag(bool);
       }
-    }
-    label234:
-    for (boolean bool = true;; bool = false)
-    {
-      paramCard.setXManFlag(bool);
       if (paramArrayList.size() == 1)
       {
         if (!paramString.equals(paramQQAppInterface.getCurrentAccountUin())) {
@@ -134,7 +133,6 @@ public class FriendListHandlerUtil
         }
         paramCard.allowClick = paramProfSmpInfoRes.bXManIconClick;
       }
-      return;
     }
   }
   
@@ -143,8 +141,12 @@ public class FriendListHandlerUtil
     if (paramToServiceMsg.extraData.getBoolean("reqSelfLevel", false))
     {
       ContactConfig.a(paramQQAppInterface.getApp().getApplicationContext(), paramQQAppInterface.getCurrentAccountUin(), System.currentTimeMillis());
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler", 2, "$handleFriendInfo | iQQLevel = " + paramProfSmpInfoRes.wLevel);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("$handleFriendInfo | iQQLevel = ");
+        paramQQAppInterface.append(paramProfSmpInfoRes.wLevel);
+        QLog.d("FriendListHandler", 2, paramQQAppInterface.toString());
       }
     }
   }
@@ -157,7 +159,7 @@ public class FriendListHandlerUtil
       if ((paramInt >= 0) && (String.valueOf(paramLong).equals(paramQQAppInterface.getCurrentAccountUin())))
       {
         ((BubbleManager)paramQQAppInterface.getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER)).a(paramInt, true);
-        ((SVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramInt);
+        ((ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramInt);
       }
     }
   }
@@ -171,17 +173,35 @@ public class FriendListHandlerUtil
       Object[] arrayOfObject = (Object[])paramList.next();
       try
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("FriendListHandler", 2, "handleFriendInfo handle nickSaveList:" + arrayOfObject[0] + ", " + arrayOfObject[1] + ", " + arrayOfObject[2]);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleFriendInfo handle nickSaveList:");
+          localStringBuilder.append(arrayOfObject[0]);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(arrayOfObject[1]);
+          localStringBuilder.append(", ");
+          localStringBuilder.append(arrayOfObject[2]);
+          QLog.i("FriendListHandler", 2, localStringBuilder.toString());
         }
         paramQQAppInterface.a((String)arrayOfObject[0], (String)arrayOfObject[1], ((Byte)arrayOfObject[2]).byteValue());
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("FriendListHandler", 2, "handleFriendInfo saveDateNickByUin err" + localException, localException);
-        } else {
-          QLog.i("FriendListHandler", 1, "handleFriendInfo saveDateNickByUin err" + localException);
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleFriendInfo saveDateNickByUin err");
+          localStringBuilder.append(localException);
+          QLog.e("FriendListHandler", 2, localStringBuilder.toString(), localException);
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleFriendInfo saveDateNickByUin err");
+          localStringBuilder.append(localException);
+          QLog.i("FriendListHandler", 1, localStringBuilder.toString());
         }
       }
     }
@@ -200,24 +220,17 @@ public class FriendListHandlerUtil
   
   public static boolean a(ByteBuffer paramByteBuffer, ExtensionInfo paramExtensionInfo, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt == 27025)
+    if ((paramInt == 27025) && (paramByteBuffer.getShort() == 8))
     {
-      bool1 = bool2;
-      if (paramByteBuffer.getShort() == 8)
+      long l = paramByteBuffer.getLong();
+      if (paramExtensionInfo.pendantId != l)
       {
-        long l = paramByteBuffer.getLong();
-        bool1 = bool2;
-        if (paramExtensionInfo.pendantId != l)
-        {
-          paramExtensionInfo.pendantId = l;
-          paramExtensionInfo.lastUpdateTime = NetConnInfoCenter.getServerTime();
-          bool1 = true;
-        }
+        paramExtensionInfo.pendantId = l;
+        paramExtensionInfo.lastUpdateTime = NetConnInfoCenter.getServerTime();
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public static void b(QQAppInterface paramQQAppInterface, ToServiceMsg paramToServiceMsg, ProfSmpInfoRes paramProfSmpInfoRes)
@@ -230,8 +243,20 @@ public class FriendListHandlerUtil
       if (paramToServiceMsg.extraData.getInt("getXManInfoScene", 0) == 2) {
         ContactConfig.c(localContext, paramQQAppInterface, System.currentTimeMillis());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler", 2, "$handleFriendInfo | dwLoginDay=" + paramProfSmpInfoRes.dwLoginDay + " | dwPhoneQQXManDay=" + paramProfSmpInfoRes.dwPhoneQQXManDay + " | isShowXMan=" + paramProfSmpInfoRes.isShowXMan + " | iXManScene1DelayTime=" + paramProfSmpInfoRes.iXManScene1DelayTime + " | iXManScene2DelayTime=" + paramProfSmpInfoRes.iXManScene2DelayTime);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("$handleFriendInfo | dwLoginDay=");
+        paramQQAppInterface.append(paramProfSmpInfoRes.dwLoginDay);
+        paramQQAppInterface.append(" | dwPhoneQQXManDay=");
+        paramQQAppInterface.append(paramProfSmpInfoRes.dwPhoneQQXManDay);
+        paramQQAppInterface.append(" | isShowXMan=");
+        paramQQAppInterface.append(paramProfSmpInfoRes.isShowXMan);
+        paramQQAppInterface.append(" | iXManScene1DelayTime=");
+        paramQQAppInterface.append(paramProfSmpInfoRes.iXManScene1DelayTime);
+        paramQQAppInterface.append(" | iXManScene2DelayTime=");
+        paramQQAppInterface.append(paramProfSmpInfoRes.iXManScene2DelayTime);
+        QLog.d("FriendListHandler", 2, paramQQAppInterface.toString());
       }
     }
   }
@@ -246,7 +271,7 @@ public class FriendListHandlerUtil
         String str = (String)paramList.next();
         try
         {
-          Object localObject = paramQQAppInterface.getMessageFacade().b(str, 0);
+          Object localObject = paramQQAppInterface.getMessageFacade().a(str, 0);
           if ((localObject != null) && (((List)localObject).size() > 0))
           {
             localObject = ((List)localObject).iterator();
@@ -269,55 +294,39 @@ public class FriendListHandlerUtil
   
   public static boolean b(ByteBuffer paramByteBuffer, ExtensionInfo paramExtensionInfo, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt == 27201)
+    if ((paramInt == 27201) && (paramByteBuffer.getShort() == 4))
     {
-      bool1 = bool2;
-      if (paramByteBuffer.getShort() == 4)
+      long l = paramByteBuffer.getInt();
+      if ((paramExtensionInfo.uVipFont != FontManagerConstants.parseFontId(l)) || (paramExtensionInfo.vipFontType != FontManagerConstants.parseFontType(l)))
       {
-        long l = paramByteBuffer.getInt();
-        if (paramExtensionInfo.uVipFont == FontManager.a(l))
-        {
-          bool1 = bool2;
-          if (paramExtensionInfo.vipFontType == FontManager.b(l)) {}
-        }
-        else
-        {
-          paramExtensionInfo.uVipFont = FontManager.a(l);
-          paramExtensionInfo.vipFontType = FontManager.b(l);
-          paramExtensionInfo.lastUpdateTime = NetConnInfoCenter.getServerTime();
-          bool1 = true;
-        }
+        paramExtensionInfo.uVipFont = FontManagerConstants.parseFontId(l);
+        paramExtensionInfo.vipFontType = FontManagerConstants.parseFontType(l);
+        paramExtensionInfo.lastUpdateTime = NetConnInfoCenter.getServerTime();
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public static boolean c(ByteBuffer paramByteBuffer, ExtensionInfo paramExtensionInfo, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramInt == 27041)
+    if ((paramInt == 27041) && (paramByteBuffer.getShort() == 4))
     {
-      bool1 = bool2;
-      if (paramByteBuffer.getShort() == 4)
+      paramInt = paramByteBuffer.getInt();
+      long l1 = paramExtensionInfo.colorRingId;
+      long l2 = paramInt;
+      if (l1 != l2)
       {
-        paramInt = paramByteBuffer.getInt();
-        bool1 = bool2;
-        if (paramExtensionInfo.colorRingId != paramInt)
-        {
-          paramExtensionInfo.colorRingId = paramInt;
-          bool1 = true;
-        }
+        paramExtensionInfo.colorRingId = l2;
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.FriendListHandlerUtil
  * JD-Core Version:    0.7.0.1
  */

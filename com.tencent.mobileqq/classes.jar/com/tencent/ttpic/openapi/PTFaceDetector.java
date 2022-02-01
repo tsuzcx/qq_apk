@@ -36,7 +36,7 @@ public class PTFaceDetector
   extends IDetect
 {
   private static final long MAX_REUSE_FACE_INTEVAL = 1500L;
-  private static final String TAG = PTFaceDetector.class.getSimpleName();
+  private static final String TAG = "PTFaceDetector";
   public static AtomicInteger activeRefCount = new AtomicInteger(0);
   private static volatile VideoPreviewFaceOutlineDetector mSpareFaceDetector;
   private boolean firstDet = true;
@@ -75,15 +75,17 @@ public class PTFaceDetector
   
   public void destroy()
   {
-    if (this.mDetGLThread != null) {
-      this.mDetGLThread.postFaceDetectorDestroy();
+    FaceGestureDetGLThread localFaceGestureDetGLThread = this.mDetGLThread;
+    if (localFaceGestureDetGLThread != null) {
+      localFaceGestureDetGLThread.postFaceDetectorDestroy();
     }
     this.mRotateFilter.clearGLSL();
     this.mRotateFrame.clear();
     this.mCopyFilter.clearGLSL();
-    if (this.mDetGLThread != null)
+    localFaceGestureDetGLThread = this.mDetGLThread;
+    if (localFaceGestureDetGLThread != null)
     {
-      this.mDetGLThread.destroy();
+      localFaceGestureDetGLThread.destroy();
       activeRefCount.getAndDecrement();
       this.mDetGLThread = null;
     }
@@ -92,277 +94,267 @@ public class PTFaceDetector
   
   public Object detect(AIInput paramAIInput, AIParam paramAIParam)
   {
-    if (!this.isInited) {}
-    while ((paramAIInput == null) || (paramAIParam == null)) {
+    if (!this.isInited) {
       return null;
     }
-    paramAIInput = (Frame)paramAIInput.getInput("frame");
-    int j = paramAIParam.getRotation();
-    int i;
-    if (this.mLastHasFace)
+    if ((paramAIInput != null) && (paramAIParam != null))
     {
-      i = this.mLastRotation;
+      paramAIInput = (Frame)paramAIInput.getInput("frame");
+      int j = paramAIParam.getRotation();
+      int i;
+      if (this.mLastHasFace) {
+        i = this.mLastRotation;
+      } else {
+        i = j;
+      }
       paramAIInput = detectFrame(paramAIInput, i, paramAIParam);
       paramAIInput.setSrcRotation(j);
-      if (paramAIInput.getFaceCount() <= 0) {
-        break label98;
+      boolean bool;
+      if (paramAIInput.getFaceCount() > 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label98:
-    for (boolean bool = true;; bool = false)
-    {
       this.mLastHasFace = bool;
       if (this.mLastHasFace) {
         this.mLastRotation = paramAIInput.getRotation();
       }
       return paramAIInput;
-      i = j;
-      break;
     }
+    return null;
   }
   
   public PTFaceAttr detectFrame(Frame paramFrame, int paramInt, AIParam paramAIParam)
   {
-    boolean bool4 = true;
     Map localMap = paramAIParam.getModuleParam(AEDetectorType.FACE.value);
     float f1 = ((Float)paramAIParam.getModuleParam(AEDetectorType.FACE.value).get("scale")).floatValue();
     float f2 = ((Float)localMap.get("phoneRoll")).floatValue();
     StarParam localStarParam = (StarParam)localMap.get("starParam");
-    boolean bool1;
+    boolean bool1 = localMap.containsKey("allFrameDetect");
+    boolean bool4 = true;
+    if ((bool1) && (((Boolean)localMap.get("allFrameDetect")).booleanValue())) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
     boolean bool2;
-    label137:
-    boolean bool3;
-    label170:
-    label211:
-    int i;
-    if ((localMap.containsKey("allFrameDetect")) && (((Boolean)localMap.get("allFrameDetect")).booleanValue()))
-    {
-      bool1 = true;
-      if ((!localMap.containsKey("expressionDetectForEveryFace")) || (!((Boolean)localMap.get("expressionDetectForEveryFace")).booleanValue())) {
-        break label340;
-      }
+    if ((localMap.containsKey("expressionDetectForEveryFace")) && (((Boolean)localMap.get("expressionDetectForEveryFace")).booleanValue())) {
       bool2 = true;
-      if ((!localMap.containsKey("enableAgeDetect")) || (!((Boolean)localMap.get("enableAgeDetect")).booleanValue())) {
-        break label346;
-      }
+    } else {
+      bool2 = false;
+    }
+    boolean bool3;
+    if ((localMap.containsKey("enableAgeDetect")) && (((Boolean)localMap.get("enableAgeDetect")).booleanValue())) {
       bool3 = true;
-      AgeDetector.getInstance().setNeedDetectAge(bool3);
-      if ((!localMap.containsKey("syncAgeDetect")) || (!((Boolean)localMap.get("syncAgeDetect")).booleanValue())) {
-        break label352;
-      }
+    } else {
+      bool3 = false;
+    }
+    AgeDetector.getInstance().setNeedDetectAge(bool3);
+    if ((localMap.containsKey("syncAgeDetect")) && (((Boolean)localMap.get("syncAgeDetect")).booleanValue())) {
       bool3 = true;
-      AgeDetector.getInstance().setSyncDetectAge(bool3);
-      if ((!localMap.containsKey("needDetectAndTrackFirstFrame")) || (!((Boolean)localMap.get("needDetectAndTrackFirstFrame")).booleanValue())) {
-        break label358;
-      }
+    } else {
+      bool3 = false;
+    }
+    AgeDetector.getInstance().setSyncDetectAge(bool3);
+    int i;
+    if ((localMap.containsKey("needDetectAndTrackFirstFrame")) && (((Boolean)localMap.get("needDetectAndTrackFirstFrame")).booleanValue())) {
       i = 1;
-      label252:
-      if ((!this.firstDet) || (i == 0)) {
-        break label370;
-      }
+    } else {
+      i = 0;
+    }
+    if ((this.firstDet) && (i != 0)) {
       bool1 = true;
     }
-    label340:
-    label346:
-    label352:
-    label358:
-    label370:
-    for (;;)
-    {
-      this.firstDet = false;
-      if ((localMap.containsKey("reset")) && (((Boolean)localMap.get("reset")).booleanValue())) {}
-      for (bool3 = bool4;; bool3 = false)
-      {
-        this.needReset = bool3;
-        return detectFrame(paramFrame, paramAIParam.getSurfaceTime(), paramInt, f1, f2, bool1, bool2, localStarParam);
-        bool1 = false;
-        break;
-        bool2 = false;
-        break label137;
-        bool3 = false;
-        break label170;
-        bool3 = false;
-        break label211;
-        i = 0;
-        break label252;
-      }
+    this.firstDet = false;
+    if ((localMap.containsKey("reset")) && (((Boolean)localMap.get("reset")).booleanValue())) {
+      bool3 = bool4;
+    } else {
+      bool3 = false;
     }
+    this.needReset = bool3;
+    return detectFrame(paramFrame, paramAIParam.getSurfaceTime(), paramInt, f1, f2, bool1, bool2, localStarParam);
   }
   
   public PTFaceAttr detectFrame(Frame paramFrame, long paramLong, int paramInt, double paramDouble, float paramFloat, boolean paramBoolean1, boolean paramBoolean2, StarParam paramStarParam)
   {
+    Object localObject1 = this.mDetGLThread;
     int i;
-    boolean bool;
-    int k;
-    int j;
-    int m;
-    if (this.mDetGLThread != null)
-    {
-      i = this.mDetGLThread.getLastFaceDetectedPhoneRotation();
-      bool = isPhoneFlatHorizontal(paramFloat);
-      k = paramInt;
-      if (bool) {
-        k = i;
-      }
-      paramInt = paramFrame.width;
-      j = paramFrame.height;
-      m = (k + 360) % 360;
-      if ((m != 90) && (m != 270)) {
-        break label983;
-      }
-      k = paramInt;
-      paramInt = j;
-      j = k;
+    if (localObject1 != null) {
+      i = ((FaceGestureDetGLThread)localObject1).getLastFaceDetectedPhoneRotation();
+    } else {
+      i = paramInt;
     }
-    label914:
-    label983:
-    for (;;)
+    boolean bool = isPhoneFlatHorizontal(paramFloat);
+    if (bool) {
+      k = i;
+    } else {
+      k = paramInt;
+    }
+    paramInt = paramFrame.width;
+    int j = paramFrame.height;
+    int m = (k + 360) % 360;
+    if ((m != 90) && (m != 270))
     {
-      k = (int)(paramInt * paramDouble);
-      j = (int)(j * paramDouble);
-      Object localObject12 = new ArrayList();
-      Object localObject11 = new ArrayList();
-      Object localObject7 = new ArrayList();
-      Object localObject6 = new HashMap();
-      Object localObject10 = new ArrayList();
-      Object localObject5 = new HashSet();
-      ((Set)localObject5).add(Integer.valueOf(1));
-      Object localObject4 = new ArrayList();
-      Object localObject9 = new ArrayList();
-      Object localObject3 = new ArrayList();
-      Object localObject2 = new HashMap();
-      Pair localPair = Pair.create(Integer.valueOf(255), null);
-      Object localObject1 = new HashMap();
-      Object localObject8;
-      byte[] arrayOfByte;
-      float[] arrayOfFloat;
-      int[] arrayOfInt3;
-      int[] arrayOfInt2;
-      int[] arrayOfInt1;
-      List localList4;
-      Frame localFrame1;
-      double d;
-      List localList3;
-      List localList2;
-      List localList1;
-      if ((this.mDetGLThread != null) && (this.mDetGLThread.isInitReady()))
+      k = j;
+      j = paramInt;
+    }
+    else
+    {
+      k = paramInt;
+    }
+    double d = j;
+    Double.isNaN(d);
+    paramInt = (int)(d * paramDouble);
+    d = k;
+    Double.isNaN(d);
+    int k = (int)(d * paramDouble);
+    Object localObject8 = new ArrayList();
+    localObject1 = new ArrayList();
+    Object localObject2 = new ArrayList();
+    Object localObject4 = new HashMap();
+    Object localObject3 = new ArrayList();
+    Object localObject5 = new HashSet();
+    ((Set)localObject5).add(Integer.valueOf(1));
+    Object localObject11 = new ArrayList();
+    Object localObject13 = new ArrayList();
+    Object localObject6 = new ArrayList();
+    Object localObject12 = new HashMap();
+    byte[] arrayOfByte = new byte[0];
+    Pair localPair = Pair.create(Integer.valueOf(255), null);
+    Object localObject7 = new HashMap();
+    float[] arrayOfFloat = new float[3];
+    float[] tmp279_277 = arrayOfFloat;
+    tmp279_277[0] = 1.0F;
+    float[] tmp283_279 = tmp279_277;
+    tmp283_279[1] = 1.0F;
+    float[] tmp287_283 = tmp283_279;
+    tmp287_283[2] = 1.0F;
+    tmp287_283;
+    Object localObject9 = this.mDetGLThread;
+    if ((localObject9 != null) && (((FaceGestureDetGLThread)localObject9).isInitReady()))
+    {
+      localObject10 = this.mDetGLThread.postFaceGestureDet(paramFrame, paramDouble, paramBoolean1, this.needReset, m, paramStarParam, paramBoolean2);
+      if ((localObject10 != null) && (((SegmentDataPipe)localObject10).mTexFrame.width == j))
       {
-        localObject8 = this.mDetGLThread.postFaceGestureDet(paramFrame, paramDouble, paramBoolean1, this.needReset, m, paramStarParam, paramBoolean2);
-        if ((localObject8 != null) && (((SegmentDataPipe)localObject8).mTexFrame.width == paramInt))
-        {
-          localObject12 = ((SegmentDataPipe)localObject8).allFacePoints;
-          localObject11 = ((SegmentDataPipe)localObject8).allIrisPoints;
-          localObject7 = ((SegmentDataPipe)localObject8).allPointsVis;
-          localObject6 = ((SegmentDataPipe)localObject8).recordFaceInfo;
-          localObject10 = ((SegmentDataPipe)localObject8).allFaceAngles;
-          localObject5 = ((SegmentDataPipe)localObject8).mTriggeredExpressionType;
-          localObject4 = ((SegmentDataPipe)localObject8).expressions;
-          localObject9 = ((SegmentDataPipe)localObject8).faceStatus;
-          localObject3 = ((SegmentDataPipe)localObject8).faceInfos;
-          arrayOfByte = ((SegmentDataPipe)localObject8).mData;
-          localObject1 = ((SegmentDataPipe)localObject8).faceActionCounter;
-          localPair = ((SegmentDataPipe)localObject8).histogram;
-          arrayOfFloat = ((SegmentDataPipe)localObject8).rgbGain;
-          arrayOfInt3 = ((SegmentDataPipe)localObject8).curve;
-          arrayOfInt2 = ((SegmentDataPipe)localObject8).autoContrastCurve;
-          arrayOfInt1 = ((SegmentDataPipe)localObject8).autoBrightnessCurve;
-          localList4 = ((SegmentDataPipe)localObject8).starPoints;
-          localFrame1 = ((SegmentDataPipe)localObject8).starMaskFrame;
-          d = ((SegmentDataPipe)localObject8).faceAverageL;
-          localObject2 = ((SegmentDataPipe)localObject8).detectTimes;
-          localList3 = ((SegmentDataPipe)localObject8).faceKitVerticesArray;
-          localList2 = ((SegmentDataPipe)localObject8).face3DVerticesArray;
-          localList1 = ((SegmentDataPipe)localObject8).face3DRotationArray;
-          paramStarParam = ((SegmentDataPipe)localObject8).featureIndicesArray;
-          localObject8 = ((SegmentDataPipe)localObject8).facePiont2DCenter;
-        }
-      }
-      for (;;)
-      {
-        Frame localFrame2 = paramFrame;
-        if (this.mLastInputFrame != null) {
-          this.mLastInputFrame.setCanUnlock(true);
-        }
-        paramFrame.setCanUnlock(false);
-        if ((paramFrame == localFrame2) && (this.mLastInputFrame != null)) {
-          this.mLastInputFrame.unlock();
-        }
-        this.mLastInputFrame = paramFrame;
-        paramFrame = AlgoUtils.rotatePointsForList((List)localObject12, k, j, m);
-        localObject11 = AlgoUtils.rotatePointsForList((List)localObject11, k, j, m);
-        localObject10 = AlgoUtils.rotateAngles((List)localObject10, -m);
-        localObject9 = FaceStatusUtil.rotateFaceStatusFor3D((List)localObject9, k, j, m);
-        localObject8 = AlgoUtils.rotatePoint((PointF)localObject8, k, j, m);
-        localObject12 = new PTFaceAttr.Builder();
-        if ((paramLong != 0L) && (!this.mOffsetTimeInited))
-        {
-          this.mOffsetTimeInited = true;
-          this.mOffsetTime = (System.currentTimeMillis() - paramLong / 1000000L);
-        }
-        if (paramLong == 0L)
-        {
-          paramLong = System.currentTimeMillis();
-          label623:
-          ((PTFaceAttr.Builder)localObject12).facePoints(paramFrame).irisPoints((List)localObject11).pointsVis((List)localObject7).recordFaceInfo((Map)localObject6).faceAngles((List)localObject10).triggeredExpression((Set)localObject5).faceStatusList((List)localObject9).faceInfoList((List)localObject3).faceDetectScale(paramDouble).data(arrayOfByte).origFrame(localFrame2).rotation(m).faceActionCounter((Map)localObject1).histogram(localPair).faceDetector(this.mFaceDetector).rgbGain(arrayOfFloat).curve(arrayOfInt3).autoContrastCurve(arrayOfInt2).autoBrightnessCurve(arrayOfInt1).starPoints(localList4).starMaskFrame(localFrame1).isPhoneFlatHorizontal(bool).lastFaceDetectedPhoneRotation(i).faceAverageL(d).faceKitVerticesArray(localList3).face3DVerticesArray(localList2).face3DRotationArray(localList1).featureIndicesArray(paramStarParam).facePiont2DCenter((PointF)localObject8).shookFaceInfos(getFaceDetector().getShookFaceInfos()).faceDetWidth(k).faceDetHeight(j).faceDetRotation(m).expressions((List)localObject4).timeStamp(paramLong).detectTimes((Map)localObject2);
-          this.needReset = false;
-          paramStarParam = new PTFaceAttr((PTFaceAttr.Builder)localObject12);
-          if (((paramFrame != null) && (paramFrame.size() != 0)) || (this.storedFaceAttr == null) || (System.currentTimeMillis() - this.storedFaceAttr.getTimeStamp() > 1500L)) {
-            break label914;
-          }
-          paramStarParam.setReusedFaceAttr(null);
-        }
-        for (;;)
-        {
-          if ((paramFrame != null) && (paramFrame.size() > 0)) {
-            this.storedFaceAttr = paramStarParam;
-          }
-          return paramStarParam;
-          i = paramInt;
-          break;
-          paramLong = paramLong / 1000000L + this.mOffsetTime;
-          break label623;
-          paramStarParam.setReusedFaceAttr(null);
-        }
-        localObject8 = null;
-        paramStarParam = null;
-        localList1 = null;
-        localList2 = null;
-        localList3 = null;
-        localFrame1 = null;
-        localList4 = null;
-        arrayOfInt1 = null;
-        d = 60.0D;
-        arrayOfInt2 = null;
-        arrayOfInt3 = null;
-        arrayOfFloat = new float[] { 1.0F, 1.0F, 1.0F };
-        arrayOfByte = new byte[0];
+        localObject16 = ((SegmentDataPipe)localObject10).allFacePoints;
+        localObject15 = ((SegmentDataPipe)localObject10).allIrisPoints;
+        localObject3 = ((SegmentDataPipe)localObject10).allPointsVis;
+        localObject4 = ((SegmentDataPipe)localObject10).recordFaceInfo;
+        localObject14 = ((SegmentDataPipe)localObject10).allFaceAngles;
+        localObject5 = ((SegmentDataPipe)localObject10).mTriggeredExpressionType;
+        localObject1 = ((SegmentDataPipe)localObject10).expressions;
+        localObject13 = ((SegmentDataPipe)localObject10).faceStatus;
+        localObject6 = ((SegmentDataPipe)localObject10).faceInfos;
+        arrayOfByte = ((SegmentDataPipe)localObject10).mData;
+        localObject7 = ((SegmentDataPipe)localObject10).faceActionCounter;
+        localPair = ((SegmentDataPipe)localObject10).histogram;
+        arrayOfFloat = ((SegmentDataPipe)localObject10).rgbGain;
+        localObject8 = ((SegmentDataPipe)localObject10).curve;
+        localObject9 = ((SegmentDataPipe)localObject10).autoContrastCurve;
+        arrayOfInt = ((SegmentDataPipe)localObject10).autoBrightnessCurve;
+        localList1 = ((SegmentDataPipe)localObject10).starPoints;
+        localFrame = ((SegmentDataPipe)localObject10).starMaskFrame;
+        d = ((SegmentDataPipe)localObject10).faceAverageL;
+        localObject12 = ((SegmentDataPipe)localObject10).detectTimes;
+        localObject2 = ((SegmentDataPipe)localObject10).faceKitVerticesArray;
+        localList2 = ((SegmentDataPipe)localObject10).face3DVerticesArray;
+        localList3 = ((SegmentDataPipe)localObject10).face3DRotationArray;
+        paramStarParam = ((SegmentDataPipe)localObject10).featureIndicesArray;
+        localPointF = ((SegmentDataPipe)localObject10).facePiont2DCenter;
+        localObject10 = localObject2;
+        localStarParam = paramStarParam;
+        localObject11 = localObject1;
+        break label598;
       }
     }
+    paramStarParam = (StarParam)localObject8;
+    d = 60.0D;
+    PointF localPointF = null;
+    localObject8 = null;
+    localObject9 = null;
+    int[] arrayOfInt = null;
+    List localList1 = null;
+    Frame localFrame = null;
+    Object localObject10 = null;
+    List localList2 = null;
+    List localList3 = null;
+    StarParam localStarParam = null;
+    Object localObject14 = localObject3;
+    localObject3 = localObject2;
+    Object localObject15 = localObject1;
+    Object localObject16 = paramStarParam;
+    label598:
+    paramStarParam = this.mLastInputFrame;
+    if (paramStarParam != null) {
+      paramStarParam.setCanUnlock(true);
+    }
+    paramFrame.setCanUnlock(false);
+    paramStarParam = this.mLastInputFrame;
+    if (paramStarParam != null) {
+      paramStarParam.unlock();
+    }
+    this.mLastInputFrame = paramFrame;
+    paramStarParam = AlgoUtils.rotatePointsForList((List)localObject16, paramInt, k, m);
+    localObject1 = AlgoUtils.rotatePointsForList((List)localObject15, paramInt, k, m);
+    localObject2 = AlgoUtils.rotateAngles((List)localObject14, -m);
+    localObject13 = FaceStatusUtil.rotateFaceStatusFor3D((List)localObject13, paramInt, k, m);
+    localPointF = AlgoUtils.rotatePoint(localPointF, paramInt, k, m);
+    localObject14 = new PTFaceAttr.Builder();
+    if ((paramLong != 0L) && (!this.mOffsetTimeInited))
+    {
+      this.mOffsetTimeInited = true;
+      this.mOffsetTime = (System.currentTimeMillis() - paramLong / 1000000L);
+    }
+    if (paramLong == 0L) {
+      paramLong = System.currentTimeMillis();
+    } else {
+      paramLong = paramLong / 1000000L + this.mOffsetTime;
+    }
+    ((PTFaceAttr.Builder)localObject14).facePoints(paramStarParam).irisPoints((List)localObject1).pointsVis((List)localObject3).recordFaceInfo((Map)localObject4).faceAngles((List)localObject2).triggeredExpression((Set)localObject5).faceStatusList((List)localObject13).faceInfoList((List)localObject6).faceDetectScale(paramDouble).data(arrayOfByte).origFrame(paramFrame).rotation(m).faceActionCounter((Map)localObject7).histogram(localPair).faceDetector(this.mFaceDetector).rgbGain(arrayOfFloat).curve((int[])localObject8).autoContrastCurve((int[])localObject9).autoBrightnessCurve(arrayOfInt).starPoints(localList1).starMaskFrame(localFrame).isPhoneFlatHorizontal(bool).lastFaceDetectedPhoneRotation(i).faceAverageL(d).faceKitVerticesArray((List)localObject10).face3DVerticesArray(localList2).face3DRotationArray(localList3).featureIndicesArray(localStarParam).facePiont2DCenter(localPointF).shookFaceInfos(getFaceDetector().getShookFaceInfos()).faceDetWidth(paramInt).faceDetHeight(k).faceDetRotation(m).expressions((List)localObject11).timeStamp(paramLong).detectTimes((Map)localObject12);
+    this.needReset = false;
+    paramFrame = new PTFaceAttr((PTFaceAttr.Builder)localObject14);
+    if (((paramStarParam == null) || (paramStarParam.size() == 0)) && (this.storedFaceAttr != null) && (System.currentTimeMillis() - this.storedFaceAttr.getTimeStamp() <= 1500L)) {
+      paramFrame.setReusedFaceAttr(null);
+    } else {
+      paramFrame.setReusedFaceAttr(null);
+    }
+    if ((paramStarParam != null) && (paramStarParam.size() > 0)) {
+      this.storedFaceAttr = paramFrame;
+    }
+    return paramFrame;
   }
   
   public VideoPreviewFaceOutlineDetector getFaceDetector()
   {
-    if (this.mFaceDetector == null)
+    VideoPreviewFaceOutlineDetector localVideoPreviewFaceOutlineDetector2 = this.mFaceDetector;
+    Object localObject1 = localVideoPreviewFaceOutlineDetector2;
+    VideoPreviewFaceOutlineDetector localVideoPreviewFaceOutlineDetector1;
+    if (localVideoPreviewFaceOutlineDetector2 == null)
     {
-      if (mSpareFaceDetector == null) {}
-      try
-      {
-        if (mSpareFaceDetector == null)
+      if (mSpareFaceDetector == null) {
+        try
         {
-          ReportUtil.report("PTFaceDetector.getFaceDetector() is null!, OS version is " + Build.VERSION.SDK_INT);
-          mSpareFaceDetector = new VideoPreviewFaceOutlineDetector();
+          if (mSpareFaceDetector == null)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("PTFaceDetector.getFaceDetector() is null!, OS version is ");
+            ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
+            ReportUtil.report(((StringBuilder)localObject1).toString());
+            mSpareFaceDetector = new VideoPreviewFaceOutlineDetector();
+          }
         }
-        return mSpareFaceDetector;
+        finally {}
       }
-      finally {}
+      localVideoPreviewFaceOutlineDetector1 = mSpareFaceDetector;
     }
-    return this.mFaceDetector;
+    return localVideoPreviewFaceOutlineDetector1;
   }
   
   public String getHistogramInfo()
   {
-    if (this.mDetGLThread != null) {
-      return this.mDetGLThread.getHistogramInfo();
+    FaceGestureDetGLThread localFaceGestureDetGLThread = this.mDetGLThread;
+    if (localFaceGestureDetGLThread != null) {
+      return localFaceGestureDetGLThread.getHistogramInfo();
     }
     return "";
   }
@@ -394,15 +386,19 @@ public class PTFaceDetector
   @MustRunOnGLThread
   public boolean init()
   {
-    if ((this.isInited) || (!ApiHelper.hasJellyBeanMR1()) || (!FeatureManager.isBasicFeaturesFunctionReady())) {
-      return false;
+    if ((!this.isInited) && (ApiHelper.hasJellyBeanMR1()))
+    {
+      if (!FeatureManager.isBasicFeaturesFunctionReady()) {
+        return false;
+      }
+      init(false);
+      this.firstDet = true;
+      this.isInited = true;
+      this.mOffsetTimeInited = false;
+      this.storedFaceAttr = null;
+      return true;
     }
-    init(false);
-    this.firstDet = true;
-    this.isInited = true;
-    this.mOffsetTimeInited = false;
-    this.storedFaceAttr = null;
-    return true;
+    return false;
   }
   
   public boolean isPhoneFlatHorizontal(float paramFloat)
@@ -419,16 +415,18 @@ public class PTFaceDetector
   
   public void onPreviewStartPreImmediately()
   {
-    if (this.mDetGLThread != null) {
-      this.mDetGLThread.onPreviewStartPreImmediately();
+    FaceGestureDetGLThread localFaceGestureDetGLThread = this.mDetGLThread;
+    if (localFaceGestureDetGLThread != null) {
+      localFaceGestureDetGLThread.onPreviewStartPreImmediately();
     }
   }
   
   public void resetDetector()
   {
-    if (this.mLastInputFrame != null)
+    Frame localFrame = this.mLastInputFrame;
+    if (localFrame != null)
     {
-      this.mLastInputFrame.setCanUnlock(false);
+      localFrame.setCanUnlock(false);
       this.mLastInputFrame.unlock();
     }
     this.mDetDataPipe = null;
@@ -436,22 +434,25 @@ public class PTFaceDetector
   
   public void setAgeDetectable(boolean paramBoolean)
   {
-    if (this.mDetGLThread != null) {
-      this.mDetGLThread.setAgeDetectable(paramBoolean);
+    FaceGestureDetGLThread localFaceGestureDetGLThread = this.mDetGLThread;
+    if (localFaceGestureDetGLThread != null) {
+      localFaceGestureDetGLThread.setAgeDetectable(paramBoolean);
     }
   }
   
   public void setMaxFaceCount(int paramInt)
   {
-    if (this.mDetGLThread != null) {
-      this.mDetGLThread.setMaxFaceCount(paramInt);
+    FaceGestureDetGLThread localFaceGestureDetGLThread = this.mDetGLThread;
+    if (localFaceGestureDetGLThread != null) {
+      localFaceGestureDetGLThread.setMaxFaceCount(paramInt);
     }
   }
   
   public void setSupportSmallFace(boolean paramBoolean)
   {
-    if (this.mFaceDetector != null) {
-      this.mFaceDetector.setSupportSmallFace(paramBoolean);
+    VideoPreviewFaceOutlineDetector localVideoPreviewFaceOutlineDetector = this.mFaceDetector;
+    if (localVideoPreviewFaceOutlineDetector != null) {
+      localVideoPreviewFaceOutlineDetector.setSupportSmallFace(paramBoolean);
     }
   }
   
@@ -459,7 +460,7 @@ public class PTFaceDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.PTFaceDetector
  * JD-Core Version:    0.7.0.1
  */

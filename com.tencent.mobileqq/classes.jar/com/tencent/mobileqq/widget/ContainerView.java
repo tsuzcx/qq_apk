@@ -99,8 +99,7 @@ public class ContainerView
       int i3 = localLayout.getLineForVertical(i1 - 1) + 1;
       i2 = localLayout.getLineStart(i3);
       i3 = localLayout.getLineTop(i3);
-      float f1 = i2;
-      return (i3 - i1) / this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLineHeight() + f1;
+      return i2 + (i3 - i1) / this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLineHeight();
     }
     return i1 / this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLineHeight();
   }
@@ -109,24 +108,16 @@ public class ContainerView
   {
     int i1 = this.jdField_b_of_type_Int;
     int i2 = l;
-    int i3 = this.jdField_b_of_type_Int;
-    int i4 = l;
-    int i5 = this.jdField_c_of_type_Int;
-    int i6 = n;
-    int i7 = l;
-    int i8 = this.jdField_c_of_type_Int;
-    if ((paramFloat1 >= i1 - i2 * 3) && (paramFloat1 <= i3 + i4 * 3) && (paramFloat2 >= i5 - i6 - i7 * 2) && (paramFloat2 <= i8) && (this.jdField_c_of_type_Boolean)) {
+    int i3 = this.jdField_c_of_type_Int;
+    int i4 = n;
+    if ((paramFloat1 >= i1 - i2 * 3) && (paramFloat1 <= i1 + i2 * 3) && (paramFloat2 >= i3 - i4 - i2 * 2) && (paramFloat2 <= i3) && (this.jdField_c_of_type_Boolean)) {
       return 1;
     }
     i1 = this.jdField_d_of_type_Int;
     i2 = l;
-    i3 = this.jdField_d_of_type_Int;
-    i4 = l;
-    i5 = this.jdField_e_of_type_Int;
-    i6 = n;
-    i7 = this.jdField_e_of_type_Int;
-    i8 = l;
-    if ((paramFloat1 >= i1 - i2 * 3) && (paramFloat1 <= i3 + i4 * 3) && (paramFloat2 >= i5 - i6) && (paramFloat2 <= i7 + i8 * 2) && (this.jdField_d_of_type_Boolean)) {
+    i3 = this.jdField_e_of_type_Int;
+    i4 = n;
+    if ((paramFloat1 >= i1 - i2 * 3) && (paramFloat1 <= i1 + i2 * 3) && (paramFloat2 >= i3 - i4) && (paramFloat2 <= i3 + i2 * 2) && (this.jdField_d_of_type_Boolean)) {
       return 2;
     }
     return -1;
@@ -134,31 +125,36 @@ public class ContainerView
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate == null) {
-      throw new IllegalStateException("Has no bound delegate!");
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate != null) {
+      return;
     }
+    throw new IllegalStateException("Has no bound delegate!");
   }
   
   private void a(float paramFloat)
   {
-    if ((paramFloat == 0.0F) || (paramFloat == this.jdField_a_of_type_ComTencentWidgetScrollView.getScrollY())) {
-      return;
-    }
-    int i1 = (int)paramFloat;
-    int i2 = (int)((paramFloat - i1) * this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLineHeight());
-    Layout localLayout = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLayout();
-    if (localLayout != null)
+    if (paramFloat != 0.0F)
     {
-      i1 = localLayout.getLineForOffset(i1);
-      if (i1 == 0) {}
-      for (i1 = -localLayout.getTopPadding();; i1 = localLayout.getLineTop(i1))
+      if (paramFloat == this.jdField_a_of_type_ComTencentWidgetScrollView.getScrollY()) {
+        return;
+      }
+      int i1 = (int)paramFloat;
+      int i2 = (int)((paramFloat - i1) * this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLineHeight());
+      Layout localLayout = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLayout();
+      if (localLayout != null)
       {
+        i1 = localLayout.getLineForOffset(i1);
+        if (i1 == 0) {
+          i1 = -localLayout.getTopPadding();
+        } else {
+          i1 = localLayout.getLineTop(i1);
+        }
         new Handler().post(new ContainerView.3(this, i1 - i2));
         return;
       }
+      i2 = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLineHeight();
+      new Handler().post(new ContainerView.4(this, i1 * i2));
     }
-    i2 = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLineHeight();
-    new Handler().post(new ContainerView.4(this, i1 * i2));
   }
   
   private void a(Context paramContext)
@@ -170,7 +166,7 @@ public class ContainerView
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setHighlightColor(1722605812);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setTextSize(1, 32.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setTextColor(-16777216);
-    int i1 = AIOUtils.a(10.0F, getResources());
+    int i1 = AIOUtils.b(10.0F, getResources());
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setPadding(i1, i1, i1, i1);
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     addView(this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView, paramContext);
@@ -180,129 +176,153 @@ public class ContainerView
   private void c(int paramInt1, int paramInt2, int paramInt3)
   {
     int i2;
-    int i1;
-    if (this.g == 1)
-    {
+    if (this.g == 1) {
       i2 = this.h;
-      i1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, paramInt2);
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseChatItemLayout", 2, "updateCursorLocation, touchIndex=" + i1 + ", type=" + this.g);
-      }
-      if (paramInt3 == -1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.g, false);
-      }
-      if (i1 != -1) {
-        break label108;
-      }
+    } else {
+      i2 = this.i;
     }
-    label108:
-    do
+    int i1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, paramInt2);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      do
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateCursorLocation, touchIndex=");
+      localStringBuilder.append(i1);
+      localStringBuilder.append(", type=");
+      localStringBuilder.append(this.g);
+      QLog.d("BaseChatItemLayout", 2, localStringBuilder.toString());
+    }
+    if (paramInt3 == -1) {
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.g, false);
+    }
+    if (i1 == -1) {
+      return;
+    }
+    if (i1 != i2)
+    {
+      if (this.g == 1)
       {
-        do
+        paramInt3 = this.h;
+        if (i1 < paramInt3)
         {
-          return;
-          i2 = this.i;
-          break;
-          if (i1 == i2) {
-            break label560;
-          }
-          if (this.g == 1) {
-            if (i1 < this.h)
-            {
-              paramInt3 = this.i;
-              this.h = i1;
-            }
-          }
-          for (;;)
+          paramInt3 = this.i;
+          this.h = i1;
+        }
+      }
+      for (;;)
+      {
+        i2 = i1;
+        i1 = paramInt3;
+        paramInt3 = i2;
+        break;
+        if (i1 > paramInt3)
+        {
+          paramInt3 = this.i;
+          if (i1 < paramInt3)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("BaseChatItemLayout", 2, "update selection, s=" + i1 + ", e=" + paramInt3);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(i1, paramInt3);
-            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b(paramInt1, paramInt2);
-            if (this.g != 1) {
-              break label528;
-            }
-            if (this.j == -1) {
+            this.h = i1;
+            continue;
+          }
+        }
+        paramInt3 = this.h;
+        if (i1 == paramInt3)
+        {
+          i1 = this.i;
+          break;
+        }
+        paramInt3 = this.i;
+        if (i1 == paramInt3)
+        {
+          i1 = paramInt3 - 1;
+        }
+        else
+        {
+          this.h = paramInt3;
+          this.i = i1;
+          this.g = 2;
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.g);
+          break;
+          paramInt3 = this.i;
+          if (i1 > paramInt3)
+          {
+            paramInt3 = this.h;
+            this.i = i1;
+            break;
+          }
+          if (i1 < paramInt3)
+          {
+            paramInt3 = this.h;
+            if (i1 > paramInt3)
+            {
+              this.i = i1;
               break;
             }
-            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, this.j, true);
-            return;
-            if ((i1 > this.h) && (i1 < this.i))
-            {
-              paramInt3 = this.i;
-              this.h = i1;
-            }
-            else if (i1 == this.h)
-            {
-              i1 = this.h;
-              paramInt3 = this.i;
-            }
-            else if (i1 == this.i)
-            {
-              i1 = this.i - 1;
-              paramInt3 = this.i;
-            }
-            else
-            {
-              i2 = this.i;
-              this.h = this.i;
-              this.i = i1;
-              this.g = 2;
-              this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.g);
-              paramInt3 = i1;
-              i1 = i2;
-              continue;
-              if (i1 > this.i)
-              {
-                i2 = this.h;
-                this.i = i1;
-                paramInt3 = i1;
-                i1 = i2;
-              }
-              else if ((i1 < this.i) && (i1 > this.h))
-              {
-                i2 = this.h;
-                this.i = i1;
-                paramInt3 = i1;
-                i1 = i2;
-              }
-              else if (i1 == this.i)
-              {
-                i1 = this.h;
-                paramInt3 = this.i;
-              }
-              else if (i1 == this.h)
-              {
-                i1 = this.h;
-                paramInt3 = this.h + 1;
-              }
-              else
-              {
-                paramInt3 = this.h;
-                this.i = this.h;
-                this.h = i1;
-                this.g = 1;
-                this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.g);
-              }
-            }
           }
-        } while ((this.g != 2) || (this.k == -1));
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, this.k, true);
-        return;
-        if (this.g != 1) {
-          break label592;
+          paramInt3 = this.i;
+          if (i1 == paramInt3)
+          {
+            i1 = this.h;
+          }
+          else
+          {
+            paramInt3 = this.h;
+            if (i1 == paramInt3)
+            {
+              i1 = paramInt3 + 1;
+              break;
+            }
+            this.i = paramInt3;
+            this.h = i1;
+            this.g = 1;
+            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(this.g);
+          }
         }
-      } while (this.j == -1);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, this.j, false);
-      return;
-    } while ((this.g != 2) || (this.k == -1));
-    label528:
-    label560:
-    label592:
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, this.k, false);
+      }
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("update selection, s=");
+        localStringBuilder.append(paramInt3);
+        localStringBuilder.append(", e=");
+        localStringBuilder.append(i1);
+        QLog.d("BaseChatItemLayout", 2, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt3, i1);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b(paramInt1, paramInt2);
+      paramInt2 = this.g;
+      if (paramInt2 == 1)
+      {
+        paramInt2 = this.j;
+        if (paramInt2 != -1) {
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, paramInt2, true);
+        }
+      }
+      else if (paramInt2 == 2)
+      {
+        paramInt2 = this.k;
+        if (paramInt2 != -1) {
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, paramInt2, true);
+        }
+      }
+    }
+    else
+    {
+      paramInt2 = this.g;
+      if (paramInt2 == 1)
+      {
+        paramInt2 = this.j;
+        if (paramInt2 != -1) {
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, paramInt2, false);
+        }
+      }
+      else if (paramInt2 == 2)
+      {
+        paramInt2 = this.k;
+        if (paramInt2 != -1) {
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(paramInt1, paramInt2, false);
+        }
+      }
+    }
   }
   
   public int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
@@ -336,13 +356,10 @@ public class ContainerView
   {
     if (paramInt == 1) {
       this.jdField_c_of_type_Boolean = false;
-    }
-    for (;;)
-    {
-      invalidate();
-      return;
+    } else {
       this.jdField_d_of_type_Boolean = false;
     }
+    invalidate();
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -396,67 +413,81 @@ public class ContainerView
     a();
     getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
     boolean bool;
-    if ((paramInt1 != -1) && (paramInt2 != -1))
-    {
+    if ((paramInt1 != -1) && (paramInt2 != -1)) {
       bool = true;
-      if (paramInt3 != 1) {
-        break label118;
-      }
-      this.jdField_b_of_type_Int = (paramInt1 - this.jdField_a_of_type_ArrayOfInt[0]);
-      this.jdField_c_of_type_Int = (paramInt2 - this.jdField_a_of_type_ArrayOfInt[1]);
+    } else {
+      bool = false;
+    }
+    int[] arrayOfInt;
+    if (paramInt3 == 1)
+    {
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      this.jdField_b_of_type_Int = (paramInt1 - arrayOfInt[0]);
+      this.jdField_c_of_type_Int = (paramInt2 - arrayOfInt[1]);
       this.jdField_c_of_type_Boolean = bool;
-      label60:
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-        this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      }
-      if (paramInt3 != 1) {
-        break label151;
-      }
+    }
+    else
+    {
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      this.jdField_d_of_type_Int = (paramInt1 - arrayOfInt[0]);
+      this.jdField_e_of_type_Int = (paramInt2 - arrayOfInt[1]);
+      this.jdField_d_of_type_Boolean = bool;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
+      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
+      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    }
+    if (paramInt3 == 1)
+    {
       this.j = paramInt2;
     }
-    for (;;)
+    else if (paramInt3 == 2)
     {
-      invalidate();
-      return;
-      bool = false;
-      break;
-      label118:
-      this.jdField_d_of_type_Int = (paramInt1 - this.jdField_a_of_type_ArrayOfInt[0]);
-      this.jdField_e_of_type_Int = (paramInt2 - this.jdField_a_of_type_ArrayOfInt[1]);
-      this.jdField_d_of_type_Boolean = bool;
-      break label60;
-      label151:
-      if (paramInt3 == 2)
-      {
-        this.k = paramInt2;
-      }
-      else
-      {
-        this.j = -1;
-        this.k = -1;
-      }
+      this.k = paramInt2;
     }
+    else
+    {
+      this.j = -1;
+      this.k = -1;
+    }
+    invalidate();
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
+    Rect localRect;
+    int i1;
+    int i2;
+    float f1;
     if (this.jdField_c_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_b_of_type_Int - m, this.jdField_c_of_type_Int - n, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      i1 = this.jdField_b_of_type_Int;
+      i2 = m;
+      int i3 = this.jdField_c_of_type_Int;
+      localRect.set(i1 - i2, i3 - n, i1, i3);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_f_of_type_Int);
       paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.top - l, l, this.jdField_a_of_type_AndroidGraphicsPaint);
+      f1 = this.jdField_a_of_type_AndroidGraphicsRect.centerX();
+      i1 = this.jdField_a_of_type_AndroidGraphicsRect.top;
+      i2 = l;
+      paramCanvas.drawCircle(f1, i1 - i2, i2, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     if (this.jdField_d_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int - n, this.jdField_d_of_type_Int + m, this.jdField_e_of_type_Int);
+      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      i1 = this.jdField_d_of_type_Int;
+      i2 = this.jdField_e_of_type_Int;
+      localRect.set(i1, i2 - n, m + i1, i2);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_f_of_type_Int);
       paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRect.centerX(), this.jdField_a_of_type_AndroidGraphicsRect.bottom + l, l, this.jdField_a_of_type_AndroidGraphicsPaint);
+      f1 = this.jdField_a_of_type_AndroidGraphicsRect.centerX();
+      i1 = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
+      i2 = l;
+      paramCanvas.drawCircle(f1, i1 + i2, i2, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
@@ -468,13 +499,13 @@ public class ContainerView
     return true;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     jdField_a_of_type_Float = a();
     super.onDetachedFromWindow();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_Int == 0)
     {
@@ -499,10 +530,11 @@ public class ContainerView
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_ComTencentWidgetScrollView != null) && (this.jdField_a_of_type_ComTencentWidgetScrollView.getHeight() > getHeight())) {
+    ScrollView localScrollView = this.jdField_a_of_type_ComTencentWidgetScrollView;
+    if ((localScrollView != null) && (localScrollView.getHeight() > getHeight())) {
       return;
     }
     paramInt4 = getHeight();
@@ -522,44 +554,40 @@ public class ContainerView
       paramInt2 = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getMeasuredHeight();
       paramInt1 = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getMeasuredWidth();
     }
-    if (paramInt2 < paramInt4 * 0.8F) {
-      if (this.jdField_a_of_type_Boolean)
-      {
+    if (paramInt2 < paramInt4 * 0.8F)
+    {
+      if (this.jdField_a_of_type_Boolean) {
         if (paramInt1 < i1) {
           setGravity(17);
+        } else {
+          setGravity(19);
         }
       }
-      else {
-        this.jdField_a_of_type_Int = (-this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLineHeight());
-      }
+      this.jdField_a_of_type_Int = (-this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.getLineHeight());
     }
-    for (;;)
+    else if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setVisibility(0);
-      return;
-      setGravity(19);
-      break;
-      if (this.jdField_a_of_type_Boolean) {
-        setGravity(51);
-      }
+      setGravity(51);
     }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setVisibility(0);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i1 = 2;
+    int i1;
+    int i2;
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
     {
-      int i2 = paramMotionEvent.getAction();
-      if (!this.jdField_e_of_type_Boolean)
+      i1 = paramMotionEvent.getAction();
+      if (this.jdField_e_of_type_Boolean) {
+        break label139;
+      }
+      i2 = a(paramMotionEvent.getX(), paramMotionEvent.getY());
+      if ((i2 != -1) && (i1 == 0))
       {
-        i1 = a(paramMotionEvent.getX(), paramMotionEvent.getY());
-        if ((i1 == -1) || (i2 != 0)) {
-          break label515;
-        }
         a();
         this.jdField_e_of_type_Boolean = true;
-        this.g = i1;
+        this.g = i2;
         this.h = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b();
         this.i = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.c();
         if (paramMotionEvent.getSource() != -1) {
@@ -568,110 +596,100 @@ public class ContainerView
         if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a()) {
           this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b();
         }
-      }
-      do
-      {
-        do
-        {
-          return true;
-          a();
-          if ((i2 != 1) && (i2 != 3)) {
-            break;
-          }
-          this.jdField_e_of_type_Boolean = false;
-          this.j = -1;
-          this.k = -1;
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(-1, true);
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a();
-        } while (i2 != 1);
-        if (paramMotionEvent.getSource() == -1) {}
-        for (;;)
-        {
-          ReportController.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
-          return true;
-          i1 = 1;
-        }
-      } while (i2 != 2);
-      int i3 = (int)paramMotionEvent.getRawX();
-      i2 = (int)paramMotionEvent.getRawY();
-      int i4;
-      int i5;
-      int i6;
-      int i7;
-      int i8;
-      int i9;
-      int i10;
-      if (this.g == 1)
-      {
-        i4 = this.jdField_b_of_type_Int;
-        i5 = l;
-        i6 = this.jdField_b_of_type_Int;
-        i7 = l;
-        i8 = this.jdField_c_of_type_Int;
-        i9 = n;
-        i10 = l;
-        int i11 = this.jdField_c_of_type_Int;
-        int i12 = n;
-        i1 = i2;
-        if (i3 >= i4 - i5 * 3)
-        {
-          i1 = i2;
-          if (i3 <= i6 + i7 * 3)
-          {
-            i1 = i2;
-            if (i2 >= i8 - i9 - i10 * 2)
-            {
-              i1 = i2;
-              if (i2 <= i11 - i12)
-              {
-                i1 = i2;
-                if (this.jdField_c_of_type_Boolean) {
-                  i1 = i2 + l * 2;
-                }
-              }
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        c(i3, i1, paramMotionEvent.getSource());
         return true;
-        i1 = i2;
-        if (this.g == 2)
+      }
+    }
+    return super.onTouchEvent(paramMotionEvent);
+    label139:
+    a();
+    if ((i1 != 1) && (i1 != 3))
+    {
+      if (i1 == 2)
+      {
+        int i3 = (int)paramMotionEvent.getRawX();
+        i2 = (int)paramMotionEvent.getRawY();
+        int i4 = this.g;
+        int i5;
+        int i6;
+        if (i4 == 1)
         {
-          i4 = this.jdField_d_of_type_Int;
+          i4 = this.jdField_b_of_type_Int;
           i5 = l;
-          i6 = this.jdField_d_of_type_Int;
-          i7 = l;
-          i8 = this.jdField_e_of_type_Int;
-          i9 = this.jdField_e_of_type_Int;
-          i10 = l;
+          i6 = this.jdField_c_of_type_Int;
+          int i7 = n;
           i1 = i2;
           if (i3 >= i4 - i5 * 3)
           {
             i1 = i2;
-            if (i3 <= i6 + i7 * 3)
+            if (i3 <= i4 + i5 * 3)
             {
               i1 = i2;
-              if (i2 >= i8)
+              if (i2 >= i6 - i7 - i5 * 2)
               {
                 i1 = i2;
-                if (i2 <= i9 + i10 * 2)
+                if (i2 <= i6 - i7)
                 {
                   i1 = i2;
-                  if (this.jdField_d_of_type_Boolean) {
-                    i1 = i2 - l * 2;
+                  if (this.jdField_c_of_type_Boolean) {
+                    i1 = i2 + i5 * 2;
                   }
                 }
               }
             }
           }
         }
+        else
+        {
+          i1 = i2;
+          if (i4 == 2)
+          {
+            i4 = this.jdField_d_of_type_Int;
+            i5 = l;
+            i6 = this.jdField_e_of_type_Int;
+            i1 = i2;
+            if (i3 >= i4 - i5 * 3)
+            {
+              i1 = i2;
+              if (i3 <= i4 + i5 * 3)
+              {
+                i1 = i2;
+                if (i2 >= i6)
+                {
+                  i1 = i2;
+                  if (i2 <= i5 * 2 + i6)
+                  {
+                    i1 = i2;
+                    if (this.jdField_d_of_type_Boolean) {
+                      i1 = i2 - i5 * 2;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        c(i3, i1, paramMotionEvent.getSource());
+        return true;
       }
     }
-    label515:
-    return super.onTouchEvent(paramMotionEvent);
+    else
+    {
+      this.jdField_e_of_type_Boolean = false;
+      this.j = -1;
+      this.k = -1;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a(-1, true);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a();
+      if (i1 == 1)
+      {
+        if (paramMotionEvent.getSource() == -1) {
+          i1 = 2;
+        } else {
+          i1 = 1;
+        }
+        ReportController.b(null, "dc00898", "", "", "0X800AE7B", "0X800AE7B", i1, 0, "", "", "", "");
+      }
+    }
+    return true;
   }
   
   public void setMsgHandler(Handler paramHandler)
@@ -698,7 +716,7 @@ public class ContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContainerView
  * JD-Core Version:    0.7.0.1
  */

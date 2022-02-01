@@ -13,13 +13,18 @@ public class TMAssistantGetAppDetailTool
   implements ITMAssistantExchangeURLListenner
 {
   protected static final String TAG = "TMAssistantDownloadSDKExchangeURL";
-  protected static TMAssistantGetAppDetailTool mInstance = null;
+  protected static TMAssistantGetAppDetailTool mInstance;
   protected a engine = null;
   protected ITMAssistantExchangeURLListenner mListener = null;
   
   private TMAssistantGetAppDetailTool(ITMAssistantExchangeURLListenner paramITMAssistantExchangeURLListenner, Context paramContext)
   {
-    ab.c("TMAssistantDownloadSDKExchangeURL", "listener = " + paramITMAssistantExchangeURLListenner + ",context = " + paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("listener = ");
+    localStringBuilder.append(paramITMAssistantExchangeURLListenner);
+    localStringBuilder.append(",context = ");
+    localStringBuilder.append(paramContext);
+    ab.c("TMAssistantDownloadSDKExchangeURL", localStringBuilder.toString());
     if ((paramITMAssistantExchangeURLListenner != null) && (paramContext != null))
     {
       this.mListener = paramITMAssistantExchangeURLListenner;
@@ -45,14 +50,18 @@ public class TMAssistantGetAppDetailTool
   
   public void exchangeUrlsFromPackageNames(ArrayList<String> paramArrayList)
   {
-    Object localObject2 = new StringBuilder().append("paramStrs size = ");
-    if (paramArrayList == null) {}
-    for (Object localObject1 = "null";; localObject1 = Integer.valueOf(paramArrayList.size()))
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("paramStrs size = ");
+    Object localObject1;
+    if (paramArrayList == null) {
+      localObject1 = "null";
+    } else {
+      localObject1 = Integer.valueOf(paramArrayList.size());
+    }
+    ((StringBuilder)localObject2).append(localObject1);
+    ab.c("TMAssistantDownloadSDKExchangeURL", ((StringBuilder)localObject2).toString());
+    if (paramArrayList != null)
     {
-      ab.c("TMAssistantDownloadSDKExchangeURL", localObject1);
-      if (paramArrayList == null) {
-        break label159;
-      }
       localObject1 = new ArrayList();
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
@@ -68,26 +77,37 @@ public class TMAssistantGetAppDetailTool
           ((ArrayList)localObject1).add(localAppDetailParam);
         }
       }
+      if (((ArrayList)localObject1).size() > 0)
+      {
+        paramArrayList = this.engine;
+        if (paramArrayList != null) {
+          paramArrayList.a((ArrayList)localObject1);
+        }
+      }
     }
-    if ((((ArrayList)localObject1).size() > 0) && (this.engine != null)) {
-      this.engine.a((ArrayList)localObject1);
+    else
+    {
+      ab.e("TMAssistantDownloadSDKExchangeURL", "packageNames is null!");
     }
-    return;
-    label159:
-    ab.e("TMAssistantDownloadSDKExchangeURL", "packageNames is null!");
   }
   
   public void onExchangedURLSucceed(ArrayList<AppSimpleDetail> paramArrayList, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("appDetails size = ");
-    if (paramArrayList == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramArrayList.size()))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appDetails size = ");
+    if (paramArrayList == null) {
+      localObject = "null";
+    } else {
+      localObject = Integer.valueOf(paramArrayList.size());
+    }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(",isSuccess = ");
+    localStringBuilder.append(paramBoolean);
+    ab.c("TMAssistantDownloadSDKExchangeURL", localStringBuilder.toString());
+    Object localObject = this.mListener;
+    if (localObject != null)
     {
-      ab.c("TMAssistantDownloadSDKExchangeURL", localObject + ",isSuccess = " + paramBoolean);
-      if (this.mListener == null) {
-        break;
-      }
-      this.mListener.onExchangedURLSucceed(paramArrayList, paramBoolean);
+      ((ITMAssistantExchangeURLListenner)localObject).onExchangedURLSucceed(paramArrayList, paramBoolean);
       return;
     }
     ab.e("TMAssistantDownloadSDKExchangeURL", "mListener is null!");
@@ -95,7 +115,7 @@ public class TMAssistantGetAppDetailTool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdatasourcesdk.TMAssistantGetAppDetailTool
  * JD-Core Version:    0.7.0.1
  */

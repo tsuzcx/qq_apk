@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.biz.pubaccount.ecshopassit.aio.IEcshopChatPie.IRefreshCallback;
-import com.tencent.mobileqq.activity.aio.core.msglist.MsgList;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.ListUI;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 
 class PublicAccountChatPie$54
-  implements IEcshopChatPie.IRefreshCallback
+  implements Runnable
 {
-  PublicAccountChatPie$54(PublicAccountChatPie paramPublicAccountChatPie, CharSequence paramCharSequence, int paramInt) {}
+  PublicAccountChatPie$54(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void a(List<ChatMessage> paramList)
+  public void run()
   {
-    if (PublicAccountChatPie.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.post(new PublicAccountChatPie.54.1(this));
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (IWebProcessManagerService)((QQAppInterface)localObject).getRuntimeService(IWebProcessManagerService.class, "");
+      if ((localObject != null) && (((IWebProcessManagerService)localObject).enablePreloadInBusiness(9))) {
+        ((IWebProcessManagerService)localObject).startWebProcess(-1, new PublicAccountChatPie.54.1(this));
+      }
     }
-    PublicAccountChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie).a().a(false);
-    PublicAccountChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie, paramList, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.54
  * JD-Core Version:    0.7.0.1
  */

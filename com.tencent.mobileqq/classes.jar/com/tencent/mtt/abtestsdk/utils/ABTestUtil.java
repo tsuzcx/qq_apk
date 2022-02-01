@@ -25,8 +25,6 @@ import okhttp3.RequestBody;
 
 public class ABTestUtil
 {
-  private static final String TAG = "ABTestUtils";
-  
   public static String encryptPostBodyByRSA(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -47,96 +45,99 @@ public class ABTestUtil
   
   public static String getABTestSDKAppId(Context paramContext, ABTestConfig paramABTestConfig)
   {
-    Object localObject = "";
-    if ((paramContext == null) || (paramABTestConfig == null))
+    Object localObject1 = "";
+    if ((paramContext != null) && (paramABTestConfig != null))
     {
-      ABTestLog.error("please use init method firstly", new Object[0]);
-      paramContext = (Context)localObject;
-    }
-    for (;;)
-    {
-      return paramContext;
       if (!TextUtils.isEmpty(paramABTestConfig.getAppId())) {
         return paramABTestConfig.getAppId();
       }
+      Object localObject2;
       try
       {
-        String str = String.valueOf(paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.getInt("ABTestSDK_appId"));
-        paramContext = str;
-        localObject = str;
-        if (!TextUtils.isEmpty(str))
+        paramContext = String.valueOf(paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.getInt("ABTestSDK_appId"));
+        localObject1 = paramContext;
+        localObject2 = paramContext;
+        if (!TextUtils.isEmpty(paramContext))
         {
-          localObject = str;
-          paramABTestConfig.setAppId(str);
-          localObject = str;
-          ABTestLog.debug("SDKAppId: " + str, new Object[0]);
-          return str;
+          localObject1 = paramContext;
+          paramABTestConfig.setAppId(paramContext);
+          localObject1 = paramContext;
+          paramABTestConfig = new StringBuilder();
+          localObject1 = paramContext;
+          paramABTestConfig.append("SDKAppId: ");
+          localObject1 = paramContext;
+          paramABTestConfig.append(paramContext);
+          localObject1 = paramContext;
+          ABTestLog.debug(paramABTestConfig.toString(), new Object[0]);
+          return paramContext;
         }
       }
       catch (PackageManager.NameNotFoundException paramContext)
       {
         ABTestLog.error(paramContext.getMessage(), new Object[0]);
+        localObject2 = localObject1;
       }
+      return localObject2;
     }
-    return localObject;
+    ABTestLog.error("please use init method firstly", new Object[0]);
+    return "";
   }
   
   public static String getABTestSDKAppKey(Context paramContext, ABTestConfig paramABTestConfig)
   {
-    Object localObject = "";
-    if ((paramContext == null) || (paramABTestConfig == null))
+    Object localObject1 = "";
+    if ((paramContext != null) && (paramABTestConfig != null))
     {
-      ABTestLog.error("please use init method firstly", new Object[0]);
-      paramContext = (Context)localObject;
-    }
-    for (;;)
-    {
-      return paramContext;
       if (!TextUtils.isEmpty(paramABTestConfig.getAppKey())) {
         return paramABTestConfig.getAppKey();
       }
+      Object localObject2;
       try
       {
-        String str = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.getString("ABTestSDK_appKey");
-        paramContext = str;
-        localObject = str;
-        if (!TextUtils.isEmpty(str))
+        paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.getString("ABTestSDK_appKey");
+        localObject1 = paramContext;
+        localObject2 = paramContext;
+        if (!TextUtils.isEmpty(paramContext))
         {
-          localObject = str;
-          paramABTestConfig.setAppKey(str);
-          localObject = str;
-          ABTestLog.debug("SDKAppKey: " + str, new Object[0]);
-          return str;
+          localObject1 = paramContext;
+          paramABTestConfig.setAppKey(paramContext);
+          localObject1 = paramContext;
+          paramABTestConfig = new StringBuilder();
+          localObject1 = paramContext;
+          paramABTestConfig.append("SDKAppKey: ");
+          localObject1 = paramContext;
+          paramABTestConfig.append(paramContext);
+          localObject1 = paramContext;
+          ABTestLog.debug(paramABTestConfig.toString(), new Object[0]);
+          return paramContext;
         }
       }
       catch (PackageManager.NameNotFoundException paramContext)
       {
         ABTestLog.error(paramContext.getMessage(), new Object[0]);
+        localObject2 = localObject1;
       }
+      return localObject2;
     }
-    return localObject;
+    ABTestLog.error("please use init method firstly", new Object[0]);
+    return "";
   }
   
   public static void getRequest(String paramString, int paramInt, Callback paramCallback, OkHttpClient.Builder paramBuilder)
   {
+    long l = paramInt;
     try
     {
-      paramString = new Request.Builder().url(paramString).build();
-      paramBuilder.connectTimeout(paramInt, TimeUnit.MINUTES);
-      paramBuilder.writeTimeout(paramInt, TimeUnit.MINUTES);
-      paramBuilder.readTimeout(paramInt, TimeUnit.MINUTES);
-      paramBuilder.build().newCall(paramString).enqueue(paramCallback);
+      paramBuilder.connectTimeout(l, TimeUnit.MINUTES);
+      paramBuilder.writeTimeout(l, TimeUnit.MINUTES);
+      paramBuilder.readTimeout(l, TimeUnit.MINUTES);
+      paramBuilder.build().newCall(new Request.Builder().url(paramString).build()).enqueue(paramCallback);
       return;
     }
     catch (Exception paramString)
     {
       ABTestLog.error(paramString.getMessage(), new Object[0]);
     }
-  }
-  
-  public static boolean isAppKeyValid(Context paramContext, ABTestConfig paramABTestConfig)
-  {
-    return !TextUtils.isEmpty(getABTestSDKAppKey(paramContext, paramABTestConfig));
   }
   
   public static boolean isSDCardMounted()
@@ -160,17 +161,17 @@ public class ABTestUtil
   
   private static void onCall(String paramString, int paramInt, Callback paramCallback, OkHttpClient.Builder paramBuilder, RequestBody paramRequestBody)
   {
+    int i = paramInt;
+    if (paramInt < 0) {
+      i = 0;
+    }
+    long l = i;
     try
     {
-      paramString = new Request.Builder().url(paramString).post(paramRequestBody).build();
-      int i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
-      }
-      paramBuilder.connectTimeout(i, TimeUnit.SECONDS);
-      paramBuilder.writeTimeout(i, TimeUnit.SECONDS);
-      paramBuilder.readTimeout(i, TimeUnit.SECONDS);
-      paramBuilder.build().newCall(paramString).enqueue(paramCallback);
+      paramBuilder.connectTimeout(l, TimeUnit.SECONDS);
+      paramBuilder.writeTimeout(l, TimeUnit.SECONDS);
+      paramBuilder.readTimeout(l, TimeUnit.SECONDS);
+      paramBuilder.build().newCall(new Request.Builder().url(paramString).post(paramRequestBody).build()).enqueue(paramCallback);
       return;
     }
     catch (Exception paramString)
@@ -195,11 +196,11 @@ public class ABTestUtil
           localBuilder.add((String)localEntry.getKey(), (String)localEntry.getValue());
         }
         onCall(paramString, paramInt, paramCallback, paramBuilder, localBuilder.build());
+        return;
       }
       catch (Exception paramString)
       {
         ABTestLog.error(paramString.getMessage(), new Object[0]);
-        return;
       }
     }
   }
@@ -219,7 +220,7 @@ public class ABTestUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.utils.ABTestUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -63,22 +63,11 @@ public class DomainValidator
   
   public boolean isValid(String paramString)
   {
-    boolean bool2 = false;
     String[] arrayOfString = this.domainRegex.match(paramString);
-    boolean bool1;
     if ((arrayOfString != null) && (arrayOfString.length > 0)) {
-      bool1 = isValidTld(arrayOfString[0]);
+      return isValidTld(arrayOfString[0]);
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!this.allowLocal);
-      bool1 = bool2;
-    } while (!this.hostnameRegex.isValid(paramString));
-    return true;
+    return (this.allowLocal) && (this.hostnameRegex.isValid(paramString));
   }
   
   public boolean isValidCountryCodeTld(String paramString)
@@ -103,16 +92,29 @@ public class DomainValidator
   
   public boolean isValidTld(String paramString)
   {
-    if ((this.allowLocal) && (isValidLocalTld(paramString))) {}
-    while ((isValidInfrastructureTld(paramString)) || (isValidGenericTld(paramString)) || (isValidCountryCodeTld(paramString))) {
+    boolean bool1 = this.allowLocal;
+    boolean bool2 = true;
+    if ((bool1) && (isValidLocalTld(paramString))) {
       return true;
     }
-    return false;
+    bool1 = bool2;
+    if (!isValidInfrastructureTld(paramString))
+    {
+      bool1 = bool2;
+      if (!isValidGenericTld(paramString))
+      {
+        if (isValidCountryCodeTld(paramString)) {
+          return true;
+        }
+        bool1 = false;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.util.apache.DomainValidator
  * JD-Core Version:    0.7.0.1
  */

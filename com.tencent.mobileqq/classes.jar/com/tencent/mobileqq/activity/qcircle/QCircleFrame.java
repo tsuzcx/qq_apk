@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.qcircle;
 
+import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build.VERSION;
 import android.os.Handler;
@@ -12,43 +12,49 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
-import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl;
 import com.tencent.mobileqq.activity.home.MainFragment;
-import com.tencent.mobileqq.activity.qcircle.handler.QCircleObserver;
 import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
 import com.tencent.mobileqq.app.Frame;
+import com.tencent.mobileqq.app.FrameFragment;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qcircle.api.IQCircleClassApi;
 import com.tencent.mobileqq.qcircle.api.IQCircleService;
 import com.tencent.mobileqq.qcircle.api.data.QCircleRedInfoBean;
 import com.tencent.mobileqq.qcircle.api.event.QCircleFrameEvent;
 import com.tencent.mobileqq.qcircle.api.event.QCircleRedInfoEvent;
+import com.tencent.mobileqq.qcircle.api.event.QCircleThemeChangeEvent;
 import com.tencent.mobileqq.qcircle.api.global.QCircleHostGlobalInfo;
 import com.tencent.mobileqq.qcircle.api.helper.HostUIHelper;
+import com.tencent.mobileqq.qcircle.api.helper.QCircleObserver;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import common.config.service.QzoneConfig;
 import common.config.service.QzoneConfig.QzoneConfigChangeListener;
+import cooperation.qqcircle.report.QCircleReportHelper;
+import cooperation.qqcircle.report.datong.QCircleDTParamBuilder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,40 +62,48 @@ public class QCircleFrame
   extends Frame
   implements SimpleEventReceiver, QzoneConfig.QzoneConfigChangeListener
 {
+  private static final long jdField_a_of_type_Long = QzoneConfig.getQQCircleFolderPageCacheLifeCycle() * 1000;
   private static final QCircleRedInfoBean jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean = new QCircleRedInfoBean(1);
-  public static boolean a;
-  private int jdField_a_of_type_Int = ImmersiveUtils.dpToPx(54.0F);
+  public static boolean a = false;
+  private static boolean d = false;
+  private int jdField_a_of_type_Int;
+  private LocalActivityManager jdField_a_of_type_AndroidAppLocalActivityManager;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private View jdField_a_of_type_AndroidViewView;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private MainFragment jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment;
-  private QCircleObserver jdField_a_of_type_ComTencentMobileqqActivityQcircleHandlerQCircleObserver = new QCircleFrame.1(this);
+  private QCircleObserver jdField_a_of_type_ComTencentMobileqqQcircleApiHelperQCircleObserver = new QCircleFrame.2(this);
   private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
   private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
+  private long jdField_b_of_type_Long = 9223372036854775807L;
+  private boolean jdField_b_of_type_Boolean = false;
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long = 9223372036854775807L;
+  private boolean jdField_c_of_type_Boolean;
+  private boolean e;
   
   private int a()
   {
-    int i;
-    if (a().getAllRedNum() > 0) {
-      i = 1;
+    if (this.e) {
+      return 4;
     }
-    for (;;)
+    if (jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.isShowRecommendRedDot()) {
+      return 1;
+    }
+    if (jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.isShowActiveRedDot()) {
+      return 2;
+    }
+    return -1;
+  }
+  
+  private LocalActivityManager a()
+  {
+    if (this.jdField_a_of_type_AndroidAppLocalActivityManager == null)
     {
-      QLog.d("QCircleFrame", 2, "RedDotDowpVia:" + i);
-      return i;
-      if (a().isShowActiveRedDot()) {
-        i = 2;
-      } else {
-        i = 3;
-      }
+      this.jdField_a_of_type_AndroidAppLocalActivityManager = new LocalActivityManager(a(), true);
+      this.jdField_a_of_type_AndroidAppLocalActivityManager.dispatchCreate(null);
     }
+    return this.jdField_a_of_type_AndroidAppLocalActivityManager;
   }
   
   private Handler a()
@@ -107,162 +121,284 @@ public class QCircleFrame
   
   public static BusinessInfoCheckUpdate.RedTypeInfo a(boolean paramBoolean)
   {
-    for (;;)
+    try
     {
+      jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.refreshRedDotInfo();
+      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+      localRedTypeInfo.red_type.set(-1);
+      JSONObject localJSONObject = new JSONObject();
       try
       {
-        jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.refreshRedDotInfo();
-        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-        localRedTypeInfo.red_type.set(-1);
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          localJSONObject.put("cn", "#FF0000");
-          localRedTypeInfo.red_desc.set(localJSONObject.toString());
-          if (jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getAllRedNum() > 0)
-          {
-            localRedTypeInfo.red_type.set(5);
-            localRedTypeInfo.red_content.set(String.valueOf(jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getAllRedNum()));
-            return localRedTypeInfo;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-          continue;
-        }
-        if (!jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.isShowActiveRedDot()) {
-          continue;
-        }
+        localJSONObject.put("cn", "#FF0000");
       }
-      finally {}
-      if (!paramBoolean) {
-        localObject.red_type.set(0);
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
       }
+      localRedTypeInfo.red_desc.set(localJSONObject.toString());
+      if (jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getAllRedNum() > 0)
+      {
+        localRedTypeInfo.red_type.set(5);
+        localRedTypeInfo.red_content.set(String.valueOf(jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getAllRedNum()));
+      }
+      else if ((jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.isShowRedDot()) && (!paramBoolean))
+      {
+        localRedTypeInfo.red_type.set(0);
+        d = true;
+      }
+      return localRedTypeInfo;
     }
+    finally {}
   }
   
   private void a(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    if ((paramSimpleBaseEvent instanceof QCircleRedInfoEvent)) {
-      QCircleInjectImpl.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment, ((QCircleRedInfoEvent)paramSimpleBaseEvent).mInvokeMethodName, ((QCircleRedInfoEvent)paramSimpleBaseEvent).mIsClearRedPoint);
+    if ((paramSimpleBaseEvent instanceof QCircleRedInfoEvent))
+    {
+      MainFragment localMainFragment = this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment;
+      paramSimpleBaseEvent = (QCircleRedInfoEvent)paramSimpleBaseEvent;
+      QCircleInjectImpl.a(localMainFragment, paramSimpleBaseEvent.mInvokeMethodName, paramSimpleBaseEvent.mIsClearRedPoint);
     }
+  }
+  
+  private int b()
+  {
+    int i;
+    if (a().getAllRedNum() > 0) {
+      i = 1;
+    } else if (a().isShowRedDot()) {
+      i = 2;
+    } else {
+      i = 3;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RedDotDowpVia:");
+    localStringBuilder.append(i);
+    QLog.d("QCircleFrame", 2, localStringBuilder.toString());
+    return i;
   }
   
   private void b(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    if (((paramSimpleBaseEvent instanceof QCircleFrameEvent)) && (a() != null) && (paramSimpleBaseEvent.mHashCode != a().hashCode()))
-    {
-      if (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 != null) {
-        this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(Color.parseColor(((QCircleFrameEvent)paramSimpleBaseEvent).mBackgroundColor));
-      }
-      if (((QCircleFrameEvent)paramSimpleBaseEvent).mIsNeedExposeTab) {
-        c();
-      }
+    if (((paramSimpleBaseEvent instanceof QCircleFrameEvent)) && (a() != null) && (paramSimpleBaseEvent.mHashCode != a().hashCode()) && (((QCircleFrameEvent)paramSimpleBaseEvent).mIsNeedExposeTab)) {
+      k();
     }
   }
   
-  private void g()
+  private void c(int paramInt)
   {
-    int i;
+    if (paramInt != 1) {
+      if (paramInt != 2) {
+        if (paramInt != 3) {
+          if (paramInt != 4) {
+            return;
+          }
+        }
+      }
+    }
+    try
+    {
+      a().dispatchDestroy(false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    a().dispatchStop();
+    return;
+    a().dispatchPause(false);
+    return;
+    a().dispatchResume();
+    return;
+  }
+  
+  private void l()
+  {
     if (a() != null)
     {
       SimpleUIUtil.a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, a().getWindow());
-      if (!ThemeUtil.a(null, false, null)) {
-        break label104;
+      int i;
+      if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
+        i = this.jdField_b_of_type_Int;
+      } else {
+        i = this.jdField_a_of_type_Int;
       }
-      i = this.c;
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(i);
+      Object localObject = this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
+      if (localObject != null) {
+        ((ImmersiveTitleBar2)localObject).setBackgroundColor(i);
       }
-      if (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 != null) {
-        this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(i);
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        localObject = a().getWindow();
+        ((Window)localObject).clearFlags(67108864);
+        ((Window)localObject).getDecorView().setSystemUiVisibility(1280);
+        ((Window)localObject).addFlags(-2147483648);
+        return;
       }
-      if (Build.VERSION.SDK_INT < 21) {
-        break label112;
+      if (Build.VERSION.SDK_INT >= 19) {
+        a().getWindow().addFlags(67108864);
       }
-      localWindow = a().getWindow();
-      localWindow.clearFlags(67108864);
-      localWindow.getDecorView().setSystemUiVisibility(1280);
-      localWindow.addFlags(-2147483648);
     }
-    label104:
-    label112:
-    while (Build.VERSION.SDK_INT < 19)
-    {
-      Window localWindow;
-      return;
-      i = this.jdField_b_of_type_Int;
-      break;
-    }
-    a().getWindow().addFlags(67108864);
   }
   
-  private void i()
+  private void m()
   {
     QCircleHostGlobalInfo.setCurrentTabActive(true);
-    QCircleHostGlobalInfo.setHasRestoreState(false);
-    HashMap localHashMap1 = new HashMap();
-    HashMap localHashMap2 = new HashMap();
-    localHashMap1.put("key_jump_from", String.valueOf(11));
-    localHashMap1.put("key_activity_bottom_margin", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap1.put("key_enable_splash", "1");
-    if (jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.isShowActiveRedDot())
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      localObject = "1";
+      n();
+      c(1);
+      return;
+    }
+    if ((!this.jdField_c_of_type_Boolean) && (!((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).checkIsQCirclePluginLoadingActivity(QBaseActivity.sTopActivity)))
+    {
+      this.jdField_c_of_type_Boolean = true;
+      HashMap localHashMap1 = new HashMap();
+      HashMap localHashMap2 = new HashMap();
+      localHashMap1.put("key_jump_from", String.valueOf(11));
+      Object localObject = "1";
+      localHashMap1.put("key_enable_splash", "1");
+      if (!jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.isShowRedDot()) {
+        localObject = "0";
+      }
       localHashMap1.put("key_show_active_red_dot", localObject);
       localHashMap1.put("key_unread_red_num", String.valueOf(jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getAllRedNum()));
-      if ((jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean != null) && (jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getRedDotTransInfo() != null)) {
+      localHashMap1.put("xsj_main_entrance", "qq_main_tab");
+      localObject = jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean;
+      if ((localObject != null) && (((QCircleRedInfoBean)localObject).getRedDotTransInfo() != null)) {
         localHashMap2.put("key_red_dot_trans_info", jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getRedDotTransInfo());
       }
-      if ((jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean != null) && (jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getEntranceTabType() > 0)) {
+      localObject = jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean;
+      if ((localObject != null) && (((QCircleRedInfoBean)localObject).getEntranceTabType() > 0)) {
         localHashMap1.put("key_assign_show_tab_type", String.valueOf(jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getEntranceTabType()));
       }
-      HostUIHelper.setTransEventViewGroup(this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment.a());
-      if ((!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) || (a() == null) || (TextUtils.isEmpty(jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getRedDotJumpUrl()))) {
-        break label310;
+      if (((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) && (a() != null) && (!TextUtils.isEmpty(jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getRedDotJumpUrl())))
+      {
+        localObject = JumpParser.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, a(), jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getRedDotJumpUrl());
+        if ((localObject != null) && (!StringUtil.a(((JumpAction)localObject).c)))
+        {
+          localHashMap1.putAll(((JumpAction)localObject).a);
+          localObject = ((JumpAction)localObject).c;
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("has JumpUrl:");
+          ((StringBuilder)localObject).append(jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getRedDotJumpUrl());
+          ((StringBuilder)localObject).append(", but parse jump action failed");
+          QLog.e("QCircleFrame", 2, ((StringBuilder)localObject).toString());
+        }
       }
-      localObject = JumpParser.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, a(), jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getRedDotJumpUrl());
-      if ((localObject == null) || (StringUtil.a(((JumpAction)localObject).c))) {
-        break label273;
+      else
+      {
+        localObject = "openfolder";
       }
-      localHashMap1.putAll(((JumpAction)localObject).a);
-    }
-    label273:
-    label310:
-    for (Object localObject = ((JumpAction)localObject).c;; localObject = "openfolder")
-    {
+      HostUIHelper.getInstance().setPluginIntentHook(new QCircleFrame.1(this));
       QCircleUtils.a().enterBySchemeAction(a(), (String)localObject, localHashMap1, localHashMap2);
       return;
-      localObject = "0";
-      break;
-      QLog.e("QCircleFrame", 2, "has JumpUrl:" + jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.getRedDotJumpUrl() + ", but parse jump action failed");
+    }
+    QLog.e("QCircleFrame", 1, "plugin is loading now and return");
+  }
+  
+  private void n()
+  {
+    if (d)
+    {
+      SimpleEventBus.getInstance().dispatchEvent(new QCircleFrameEvent(a().hashCode(), a()));
+      this.e = false;
+      d = false;
     }
   }
   
-  private void j()
+  private void o()
   {
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "little_world", "bottom_tab_clk", a(), 1, "", "", "", "");
+    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    if (System.currentTimeMillis() - this.jdField_b_of_type_Long > jdField_a_of_type_Long)
+    {
+      d = true;
+      this.e = true;
+    }
+  }
+  
+  private void p()
+  {
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    if (System.currentTimeMillis() - this.jdField_c_of_type_Long > jdField_a_of_type_Long)
+    {
+      d = true;
+      this.e = true;
+    }
+  }
+  
+  private void r()
+  {
+    FrameLayout localFrameLayout = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    if (localFrameLayout == null) {
+      return;
+    }
+    Resources localResources = a();
+    int i;
+    if (QQTheme.a()) {
+      i = 2131166281;
+    } else {
+      i = 2131166280;
+    }
+    localFrameLayout.setBackgroundColor(localResources.getColor(i));
+  }
+  
+  private void s()
+  {
+    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "little_world", "bottom_tab_clk", b(), 1, "", "", "", "");
+  }
+  
+  private void t()
+  {
+    Map localMap = new QCircleDTParamBuilder().buildElementParams();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QCircleReportHelper.getQQCirclePageStackNum());
+    localStringBuilder.append("");
+    localMap.put("xsj_page_stack_num", localStringBuilder.toString());
+    localMap.put("xsj_main_entrance", "qq_main_tab");
+    localMap.put("xsj_sub_entrance", "default");
+    VideoReport.reportEvent("xsj_login", localMap);
+  }
+  
+  public void V_()
+  {
+    QLog.d("QCircleFrame", 1, "onStart: ");
+    super.V_();
   }
   
   public View a(LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.inflate(2131560851, null));
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramLayoutInflater.inflate(2131560726, null));
+    r();
+    return this.jdField_a_of_type_AndroidWidgetFrameLayout;
+  }
+  
+  public void a()
+  {
+    QLog.d("QCircleFrame", 1, "onCreate: ");
+    super.a();
+    this.jdField_a_of_type_Int = a().getColor(2131166280);
+    this.jdField_b_of_type_Int = a().getColor(2131166281);
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)a(2131378881));
+    IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2);
+    SimpleEventBus.getInstance().registerReceiver(this);
+    if (a() != null) {
+      l();
+    }
   }
   
   public void a(int paramInt)
   {
+    o();
     QCircleHostGlobalInfo.setCurrentTabActive(false);
-    HostUIHelper.closeTopShadowActivity();
-    if ((QBaseActivity.sTopActivity instanceof QPublicTransFragmentActivity)) {
-      QBaseActivity.sTopActivity.finish();
-    }
-    if (a() != null) {
-      ImmersiveUtils.setStatusTextColor(false, a().getWindow());
-    }
-    FrameHelperActivity.c(true);
-    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    c(2);
+    c(3);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -279,14 +415,13 @@ public class QCircleFrame
   {
     if (paramView != null)
     {
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         paramView.setBackgroundColor(Color.parseColor("#FAFAFB"));
+        return;
       }
+      paramView.setBackgroundColor(a().getColor(2131167114));
     }
-    else {
-      return;
-    }
-    paramView.setBackgroundColor(a().getColor(2131167091));
   }
   
   public void a(MainFragment paramMainFragment)
@@ -296,11 +431,13 @@ public class QCircleFrame
   
   public void a(Frame paramFrame)
   {
-    g();
-    FrameHelperActivity.c(false);
-    FrameHelperActivity.w();
-    i();
-    j();
+    p();
+    this.jdField_b_of_type_Boolean = true;
+    FrameHelperActivity.b(false);
+    l();
+    m();
+    s();
+    t();
   }
   
   public void a(QBaseActivity paramQBaseActivity)
@@ -308,86 +445,85 @@ public class QCircleFrame
     super.a(paramQBaseActivity);
   }
   
-  public void b()
+  public void a(boolean paramBoolean)
   {
-    if (a() != null) {
-      SimpleEventBus.getInstance().dispatchEvent(new QCircleFrameEvent(a().hashCode(), true));
+    QLog.d("QCircleFrame", 1, "onResume: ");
+    super.a(paramBoolean);
+    MainFragment localMainFragment = this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment;
+    if (localMainFragment != null) {
+      QCircleInjectImpl.c(localMainFragment, "QCircleFrame onResume");
     }
-    j();
+    if (this.jdField_b_of_type_Boolean)
+    {
+      c(1);
+      FrameHelperActivity.b(false);
+    }
+  }
+  
+  public void ab_()
+  {
+    QLog.d("QCircleFrame", 1, "onPause: ");
+    super.ab_();
+    c(2);
+    FrameHelperActivity.b(true);
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == this.jdField_c_of_type_Int) {
+      return;
+    }
+    this.jdField_c_of_type_Int = paramInt;
+    FrameLayout localFrameLayout = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    if (localFrameLayout != null) {
+      localFrameLayout.setPadding(0, 0, 0, this.jdField_c_of_type_Int);
+    }
+    HostUIHelper.getInstance().setHostTABHeight(this.jdField_c_of_type_Int);
   }
   
   public void b(boolean paramBoolean)
   {
-    QLog.d("QCircleFrame", 1, "onResume: ");
-    super.b(paramBoolean);
-    if (a() != null) {
-      ImmersiveUtils.setStatusTextColor(true, a().getWindow());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment != null) {
-      QCircleInjectImpl.c(this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment, "QCircleFrame onResume");
-    }
-    Bitmap localBitmap = QCircleHostGlobalInfo.getFrameSnapShot();
-    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (localBitmap != null) && (localBitmap.getWidth() > 0))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Boolean = false;
-      return;
-    }
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "little_world", "bottom_tab_exp", a(), 1, "", "", "", "");
-  }
-  
-  public void d()
-  {
     if (this.jdField_a_of_type_MqqAppAppRuntime != null) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleHandlerQCircleObserver);
+      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqQcircleApiHelperQCircleObserver);
     }
   }
   
-  public void e()
-  {
-    QLog.d("QCircleFrame", 1, "onStart: ");
-    super.e();
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_MqqAppAppRuntime != null) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleHandlerQCircleObserver);
-    }
-  }
-  
-  public boolean e_()
+  public boolean b()
   {
     return true;
   }
   
-  public void f()
+  public void c()
   {
-    QLog.d("QCircleFrame", 1, "onCreate: ");
+    QLog.d("QCircleFrame", 1, "onStop: ");
+    super.c();
+    c(3);
+  }
+  
+  public void d()
+  {
+    QLog.d("QCircleFrame", 1, "onDestroy: ");
+    super.d();
+    c(4);
+    QCircleHostGlobalInfo.setCurrentTabActive(false);
+    SimpleEventBus.getInstance().unRegisterReceiver(this);
+    if ((this.jdField_a_of_type_MqqAppAppRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqQcircleApiHelperQCircleObserver != null)) {
+      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqQcircleApiHelperQCircleObserver);
+    }
+    a().removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment = null;
+  }
+  
+  protected void f()
+  {
     super.f();
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)a(2131379533));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369667));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_START);
-    this.jdField_b_of_type_Int = a().getColor(2131166269);
-    this.c = a().getColor(2131166270);
-    SimpleEventBus.getInstance().registerReceiver(this);
-    if (a() != null)
-    {
-      IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2);
-      g();
+    Object localObject = jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean;
+    if (localObject != null) {
+      ((QCircleRedInfoBean)localObject).reset();
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment;
+    if (localObject != null) {
+      QCircleInjectImpl.c((FrameFragment)localObject, "onAccountChanged");
     }
   }
   
@@ -401,46 +537,60 @@ public class QCircleFrame
   
   public void h()
   {
-    QLog.d("QCircleFrame", 1, "onStop: ");
-    super.h();
+    if (this.jdField_a_of_type_MqqAppAppRuntime != null) {
+      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqQcircleApiHelperQCircleObserver);
+    }
+  }
+  
+  public void i()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment;
+    if (localObject != null) {
+      QCircleInjectImpl.c((FrameFragment)localObject, "onPostThemeChanged");
+    }
+    l();
+    SimpleEventBus.getInstance().dispatchEvent(new QCircleThemeChangeEvent(a().hashCode()));
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onPostThemeChanged: removeView isNowThemeIsNight()");
+        ((StringBuilder)localObject).append(QQTheme.a());
+        QLog.d("QCircleFrame", 1, ((StringBuilder)localObject).toString());
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
+        r();
+      }
+      c(4);
+      this.jdField_a_of_type_AndroidViewView = null;
+      this.jdField_c_of_type_Boolean = false;
+    }
+    if (this.jdField_b_of_type_Boolean) {
+      m();
+    }
+  }
+  
+  public void j()
+  {
+    if (a() != null) {
+      SimpleEventBus.getInstance().dispatchEvent(new QCircleFrameEvent(a().hashCode(), 0));
+    }
+    s();
   }
   
   public void k()
   {
-    QLog.d("QCircleFrame", 1, "onDestroy: ");
-    super.k();
-    FrameHelperActivity.c(true);
-    QCircleHostGlobalInfo.setCurrentTabActive(false);
-    HostUIHelper.closeTopShadowActivity();
-    SimpleEventBus.getInstance().unRegisterReceiver(this);
-    if ((this.jdField_a_of_type_MqqAppAppRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityQcircleHandlerQCircleObserver != null)) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleHandlerQCircleObserver);
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
     }
-    a().removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment = null;
-  }
-  
-  public void l()
-  {
-    super.l();
-    if (jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean != null) {
-      jdField_a_of_type_ComTencentMobileqqQcircleApiDataQCircleRedInfoBean.reset();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment != null) {
-      QCircleInjectImpl.c(this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment, "onAccountChanged");
-    }
-  }
-  
-  public void n()
-  {
-    QLog.d("QCircleFrame", 1, "onPause: ");
-    super.n();
+    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "little_world", "bottom_tab_exp", b(), 1, "", "", "", "");
   }
   
   public void onConfigChange()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment != null) {
-      QCircleInjectImpl.c(this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment, "Wns onConfigChange");
+    MainFragment localMainFragment = this.jdField_a_of_type_ComTencentMobileqqActivityHomeMainFragment;
+    if (localMainFragment != null) {
+      QCircleInjectImpl.c(localMainFragment, "Wns onConfigChange");
     }
   }
   
@@ -452,7 +602,7 @@ public class QCircleFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.QCircleFrame
  * JD-Core Version:    0.7.0.1
  */

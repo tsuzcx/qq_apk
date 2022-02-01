@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import com.tencent.mobileqq.troop.api.essence.data.TroopEssenceMsgItem.TroopEssenceMsgItemKey;
-import com.tencent.mobileqq.troop.api.essence.data.TroopEssenceMsgItem.TroopEssenceMsgItemValue;
+import com.tencent.mobileqq.troop.essence.data.TroopEssenceMsgItem.TroopEssenceMsgItemKey;
+import com.tencent.mobileqq.troop.essence.data.TroopEssenceMsgItem.TroopEssenceMsgItemValue;
 import java.util.HashMap;
 
 public abstract interface TroopEssenceMsgManager$callbackInMainThread
@@ -10,7 +10,7 @@ public abstract interface TroopEssenceMsgManager$callbackInMainThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.callbackInMainThread
  * JD-Core Version:    0.7.0.1
  */

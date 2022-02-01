@@ -10,21 +10,21 @@ class DoodlePanel$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 0: 
-    default: 
-      return;
+      if (paramInt != 1) {
+        return;
+      }
+      if (this.a.a != null) {
+        this.a.a.a(false, false);
+      }
+      DoodlePanel.a(this.a);
     }
-    if (DoodlePanel.a(this.a) != null) {
-      DoodlePanel.a(this.a).a(false, false);
-    }
-    DoodlePanel.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodlePanel.4
  * JD-Core Version:    0.7.0.1
  */

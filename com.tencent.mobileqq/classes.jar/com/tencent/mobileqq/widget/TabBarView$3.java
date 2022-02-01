@@ -12,12 +12,13 @@ class TabBarView$3
   public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.a.a(paramView) == this.a.o) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
+    boolean bool;
+    if (this.a.a(paramView) == this.a.o) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramAccessibilityNodeInfoCompat.setSelected(bool);
   }
   
   public void sendAccessibilityEvent(View paramView, int paramInt)
@@ -27,7 +28,7 @@ class TabBarView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView.3
  * JD-Core Version:    0.7.0.1
  */

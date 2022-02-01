@@ -22,57 +22,58 @@ class LeakInspector$InspectorRunner
   
   public void run()
   {
-    if (this.uuid == null) {
-      Logger.INSTANCE.w(new String[] { "QAPM_memory_LeakInspector", "uuid is null" });
-    }
-    String str;
-    DumpResult localDumpResult;
-    do
+    Object localObject = this.uuid;
+    if (localObject == null)
     {
-      do
+      Logger.INSTANCE.w(new String[] { "QAPM_memory_LeakInspector", "uuid is null" });
+      return;
+    }
+    localObject = ((InspectUUID)localObject).toString();
+    try
+    {
+      Logger.INSTANCE.d(new String[] { "QAPM_memory_LeakInspector", "Inspecting ", localObject, " Time=", String.valueOf(System.currentTimeMillis()), " count=", String.valueOf(this.retryCount) });
+      if (this.uuid.weakObj.get() != null)
       {
-        return;
-        str = this.uuid.toString();
-        try
+        int i = this.retryCount + 1;
+        this.retryCount = i;
+        if (i < LeakInspector.access$000())
         {
-          Logger.INSTANCE.d(new String[] { "QAPM_memory_LeakInspector", "Inspecting ", str, " Time=", String.valueOf(System.currentTimeMillis()), " count=", String.valueOf(this.retryCount) });
-          if (this.uuid.weakObj.get() == null) {
-            break label326;
-          }
-          int i = this.retryCount + 1;
-          this.retryCount = i;
-          if (i < LeakInspector.access$000())
-          {
-            LeakInspector.access$100();
-            LeakInspector.access$200(this.this$0).onCheckingLeaked((this.retryCount - 1) * 5000 / 1000, str);
-            LeakInspector.access$300(this.this$0).postDelayed(this, 5000L);
+          LeakInspector.access$100();
+          LeakInspector.access$200(this.this$0).onCheckingLeaked((this.retryCount - 1) * 5000 / 1000, (String)localObject);
+          LeakInspector.access$300(this.this$0).postDelayed(this, 5000L);
+          return;
+        }
+        if (!LeakInspector.access$200(this.this$0).onLeaked(this.uuid))
+        {
+          if (LeakInspector.access$400()) {
             return;
           }
-        }
-        catch (Throwable localThrowable)
-        {
-          Logger.INSTANCE.e(new String[] { "QAPM_memory_LeakInspector", "error, ", str, " Time=", String.valueOf(System.currentTimeMillis()), " count=", String.valueOf(this.retryCount), " Throwable: ", Logger.INSTANCE.getThrowableMessage(localThrowable) });
           LeakInspector.access$500().recycle(this.uuid);
           return;
         }
-        if (LeakInspector.access$200(this.this$0).onLeaked(this.uuid)) {
-          break;
+        DumpResult localDumpResult = LeakInspector.dumpMemory((String)localObject, LeakInspector.access$600(), LeakInspector.access$200(this.this$0));
+        if (localDumpResult.success) {
+          LeakInspector.report(this.uuid.className, localDumpResult.zipFilePath);
         }
-      } while (LeakInspector.access$400());
+      }
+      else
+      {
+        Logger.INSTANCE.d(new String[] { "QAPM_memory_LeakInspector", "inspect ", localObject, " finished no leak" });
+        LeakInspector.access$500().recycle(this.uuid);
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      Logger.INSTANCE.e(new String[] { "QAPM_memory_LeakInspector", "error, ", localObject, " Time=", String.valueOf(System.currentTimeMillis()), " count=", String.valueOf(this.retryCount), " Throwable: ", Logger.INSTANCE.getThrowableMessage(localThrowable) });
       LeakInspector.access$500().recycle(this.uuid);
-      return;
-      localDumpResult = LeakInspector.dumpMemory(str, LeakInspector.access$600(), LeakInspector.access$200(this.this$0));
-    } while (!localDumpResult.success);
-    LeakInspector.report(this.uuid.className, localDumpResult.zipFilePath);
+    }
     return;
-    label326:
-    Logger.INSTANCE.d(new String[] { "QAPM_memory_LeakInspector", "inspect ", str, " finished no leak" });
-    LeakInspector.access$500().recycle(this.uuid);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.leakdetect.LeakInspector.InspectorRunner
  * JD-Core Version:    0.7.0.1
  */

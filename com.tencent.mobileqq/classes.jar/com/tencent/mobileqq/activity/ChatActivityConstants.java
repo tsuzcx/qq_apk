@@ -10,13 +10,13 @@ public abstract interface ChatActivityConstants
   
   static
   {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131701633);
+    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131701773);
     jdField_a_of_type_Boolean = AppSetting.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityConstants
  * JD-Core Version:    0.7.0.1
  */

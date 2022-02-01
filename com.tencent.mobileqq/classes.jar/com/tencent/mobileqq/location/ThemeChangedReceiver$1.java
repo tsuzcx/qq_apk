@@ -12,16 +12,17 @@ class ThemeChangedReceiver$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    while ((paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) || (ThemeChangedReceiver.a(this.a) == null)) {
+    if (paramIntent == null) {
       return;
     }
-    ThemeChangedReceiver.a(this.a).a();
+    if ((paramIntent.getIntExtra("pid", Process.myPid()) == Process.myPid()) && (ThemeChangedReceiver.a(this.a) != null)) {
+      ThemeChangedReceiver.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ThemeChangedReceiver.1
  * JD-Core Version:    0.7.0.1
  */

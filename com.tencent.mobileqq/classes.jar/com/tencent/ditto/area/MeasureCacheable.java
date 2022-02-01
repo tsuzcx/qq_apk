@@ -13,28 +13,29 @@ public class MeasureCacheable
   
   public static void removeMeasureCache(Integer paramInteger)
   {
-    if (paramInteger == null) {}
-    for (;;)
-    {
+    if (paramInteger == null) {
       return;
-      Iterator localIterator = mMeasureCache.snapshot().entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        MeasureCacheable.CanvasMeasureCacheKey localCanvasMeasureCacheKey = (MeasureCacheable.CanvasMeasureCacheKey)((Map.Entry)localIterator.next()).getKey();
-        if ((localCanvasMeasureCacheKey != null) && (paramInteger.equals(localCanvasMeasureCacheKey.cacheKey))) {
-          mMeasureCache.remove(localCanvasMeasureCacheKey);
-        }
+    }
+    Iterator localIterator = mMeasureCache.snapshot().entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      MeasureCacheable.CanvasMeasureCacheKey localCanvasMeasureCacheKey = (MeasureCacheable.CanvasMeasureCacheKey)((Map.Entry)localIterator.next()).getKey();
+      if ((localCanvasMeasureCacheKey != null) && (paramInteger.equals(localCanvasMeasureCacheKey.cacheKey))) {
+        mMeasureCache.remove(localCanvasMeasureCacheKey);
       }
     }
   }
   
   public void addMeasureCache(Integer paramInteger, int paramInt1, int paramInt2, MeasureCacheable.TextMeasureCacheItem paramTextMeasureCacheItem)
   {
-    if ((paramTextMeasureCacheItem == null) || (paramInteger == null)) {
-      return;
+    if (paramTextMeasureCacheItem != null)
+    {
+      if (paramInteger == null) {
+        return;
+      }
+      paramInteger = new MeasureCacheable.CanvasMeasureCacheKey(paramInteger, paramInt1, paramInt2);
+      mMeasureCache.put(paramInteger, paramTextMeasureCacheItem);
     }
-    paramInteger = new MeasureCacheable.CanvasMeasureCacheKey(paramInteger, paramInt1, paramInt2);
-    mMeasureCache.put(paramInteger, paramTextMeasureCacheItem);
   }
   
   public MeasureCacheable.TextMeasureCacheItem getMeasureCache(Integer paramInteger, int paramInt1, int paramInt2)
@@ -50,17 +51,14 @@ public class MeasureCacheable
     }
     catch (Exception paramInteger)
     {
-      for (;;)
-      {
-        DittoLog.e("DITTO_UI", "", paramInteger);
-        paramInteger = null;
-      }
+      DittoLog.e("DITTO_UI", "", paramInteger);
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.area.MeasureCacheable
  * JD-Core Version:    0.7.0.1
  */

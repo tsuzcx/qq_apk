@@ -57,17 +57,19 @@ public final class event_card
     paramJceOutputStream.write(this.photos, 1);
     paramJceOutputStream.write(this.status, 2);
     paramJceOutputStream.write(this.type, 3);
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 4);
+    Object localObject = this.desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.ext != null) {
-      paramJceOutputStream.write(this.ext, 5);
+    localObject = this.ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.event_card
  * JD-Core Version:    0.7.0.1
  */

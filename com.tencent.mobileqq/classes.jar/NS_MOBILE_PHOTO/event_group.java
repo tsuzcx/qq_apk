@@ -53,18 +53,20 @@ public final class event_group
   {
     paramJceOutputStream.write(this.groupid, 0);
     paramJceOutputStream.write(this.types, 1);
-    if (this.cards != null) {
-      paramJceOutputStream.write(this.cards, 2);
+    ArrayList localArrayList = this.cards;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
     paramJceOutputStream.write(this.type, 3);
-    if (this.cloudCards != null) {
-      paramJceOutputStream.write(this.cloudCards, 4);
+    localArrayList = this.cloudCards;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.event_group
  * JD-Core Version:    0.7.0.1
  */

@@ -21,37 +21,37 @@ public final class SeekParameters
   
   public SeekParameters(long paramLong1, long paramLong2)
   {
-    if (paramLong1 >= 0L)
-    {
+    boolean bool2 = true;
+    boolean bool1;
+    if (paramLong1 >= 0L) {
       bool1 = true;
-      Assertions.checkArgument(bool1);
-      if (paramLong2 < 0L) {
-        break label53;
-      }
-    }
-    label53:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assertions.checkArgument(bool1);
-      this.toleranceBeforeUs = paramLong1;
-      this.toleranceAfterUs = paramLong2;
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    Assertions.checkArgument(bool1);
+    if (paramLong2 >= 0L) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    this.toleranceBeforeUs = paramLong1;
+    this.toleranceAfterUs = paramLong2;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (SeekParameters)paramObject;
-    } while ((this.toleranceBeforeUs == paramObject.toleranceBeforeUs) && (this.toleranceAfterUs == paramObject.toleranceAfterUs));
+      return (this.toleranceBeforeUs == paramObject.toleranceBeforeUs) && (this.toleranceAfterUs == paramObject.toleranceAfterUs);
+    }
     return false;
   }
   
@@ -62,7 +62,7 @@ public final class SeekParameters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.SeekParameters
  * JD-Core Version:    0.7.0.1
  */

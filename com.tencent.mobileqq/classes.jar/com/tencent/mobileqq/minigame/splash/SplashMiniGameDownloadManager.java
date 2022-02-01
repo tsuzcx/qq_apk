@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.minigame.splash;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.qphone.base.util.QLog;
 
 public class SplashMiniGameDownloadManager
@@ -17,16 +16,20 @@ public class SplashMiniGameDownloadManager
     {
       try
       {
-        PreDownloadController localPreDownloadController = (PreDownloadController)paramQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
-        if (localPreDownloadController.isEnable())
+        IPreDownloadController localIPreDownloadController = (IPreDownloadController)paramQQAppInterface.getRuntimeService(IPreDownloadController.class);
+        boolean bool = localIPreDownloadController.isEnable();
+        if (bool)
         {
           String str = "minigame_splash_png";
           if (paramInt == 1)
           {
             str = "minigame_splash_video";
             i = 10087;
-            QLog.i("SplashMiniGameDownloadMgr", 1, "downloadPicAGifAVideoRes request appid" + paramString1);
-            localPreDownloadController.requestPreDownload(i, "prd", paramString2, 0, paramString2, paramString3, 2, 0, false, new SplashMiniGameDownloadManager.1(paramQQAppInterface, str, paramString1, paramInt, paramString3, paramString2));
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("downloadPicAGifAVideoRes request appid");
+            localStringBuilder.append(paramString1);
+            QLog.i("SplashMiniGameDownloadMgr", 1, localStringBuilder.toString());
+            localIPreDownloadController.requestPreDownload(i, "prd", paramString2, 0, paramString2, paramString3, 2, 0, false, new SplashMiniGameDownloadManager.1(paramQQAppInterface, str, paramString1, paramInt, paramString3, paramString2));
           }
         }
         else
@@ -45,7 +48,7 @@ public class SplashMiniGameDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.splash.SplashMiniGameDownloadManager
  * JD-Core Version:    0.7.0.1
  */

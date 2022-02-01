@@ -62,20 +62,17 @@ public class GameCenterAPIJavaScript$VideoViewInfo
       localJSONObject.put("isFullScreen", this.jdField_c_of_type_Boolean);
       localJSONObject.put("progress", this.e);
       localJSONObject.put("danmakuOn", this.jdField_d_of_type_Boolean);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GameCenterAPIJavaScript.VideoViewInfo
  * JD-Core Version:    0.7.0.1
  */

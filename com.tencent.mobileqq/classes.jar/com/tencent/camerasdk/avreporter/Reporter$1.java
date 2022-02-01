@@ -11,51 +11,49 @@ class Reporter$1
   public void run()
   {
     byte[] arrayOfByte;
-    int m;
+    label72:
     int j;
-    for (;;)
+    try
     {
-      int i;
+      File[] arrayOfFile = Reporter.access$000(this.this$0).listFiles();
+      int k = arrayOfFile.length;
+      int i = 0;
       File localFile;
       FileInputStream localFileInputStream;
       StringBuilder localStringBuilder;
-      try
+      int m;
+      if (i < k)
       {
-        File[] arrayOfFile = Reporter.access$000(this.this$0).listFiles();
-        int k = arrayOfFile.length;
-        i = 0;
-        if (i >= k) {
-          continue;
-        }
         localFile = arrayOfFile[i];
-        if ((!localFile.exists()) || (!localFile.isFile())) {
-          break label151;
+        if ((localFile.exists()) && (localFile.isFile()))
+        {
+          localFileInputStream = new FileInputStream(localFile);
+          arrayOfByte = new byte[1024];
+          localStringBuilder = new StringBuilder();
+          m = localFileInputStream.read(arrayOfByte);
+          if (m != -1) {
+            j = 0;
+          }
         }
-        localFileInputStream = new FileInputStream(localFile);
-        arrayOfByte = new byte[1024];
-        localStringBuilder = new StringBuilder();
-        m = localFileInputStream.read(arrayOfByte);
-        if (m == -1) {
-          break label128;
-        }
-        j = 0;
       }
-      catch (Throwable localThrowable)
+      while (j >= m)
       {
-        localThrowable.printStackTrace();
-        Reporter.access$200(this.this$0);
-        return;
+        localStringBuilder.append(new String(arrayOfByte, 0, m));
+        break label72;
+        localFileInputStream.close();
+        localFile.delete();
+        Reporter.access$100(this.this$0, localStringBuilder.toString());
+        i += 1;
+        break;
       }
-      localStringBuilder.append(new String(arrayOfByte, 0, m));
-      continue;
-      label128:
-      localFileInputStream.close();
-      localFile.delete();
-      Reporter.access$100(this.this$0, localStringBuilder.toString());
-      label151:
-      i += 1;
     }
-    while (j < m)
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      Reporter.access$200(this.this$0);
+      return;
+    }
+    for (;;)
     {
       arrayOfByte[j] = ((byte)(arrayOfByte[j] ^ 0xFFFFFFE9));
       j += 1;
@@ -64,7 +62,7 @@ class Reporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.camerasdk.avreporter.Reporter.1
  * JD-Core Version:    0.7.0.1
  */

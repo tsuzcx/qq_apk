@@ -4,6 +4,7 @@ public class DTParamKey
 {
   public static final String CUR_PAGE_PATH = "dt_pg_path";
   public static final String DT_PRE_FIX = "dt_";
+  public static final String ELEMENT_PARAMS = "dt_element_params";
   public static final String ELEMENT_PATH = "dt_element_path";
   public static final String REF_PAGE_CONTENT_ID = "dt_refpg_contentid";
   public static final String REF_PAGE_PATH = "dt_refpg_path";
@@ -48,8 +49,11 @@ public class DTParamKey
   public static final String REPORT_KEY_PLAY_TYPE = "dt_play_type";
   public static final String REPORT_KEY_PROTO_VERSION = "dt_protoversion";
   public static final String REPORT_KEY_REF_PAGE_ID = "dt_ref_pgid";
+  public static final String REPORT_KEY_SEQID = "dt_seqid";
+  public static final String REPORT_KEY_SEQ_TIME = "dt_seqtime";
   public static final String REPORT_KEY_SYS_ELAPSED_REALTIME = "dt_sys_elapsed_realtime";
   public static final String REPORT_KEY_USID = "dt_usid";
+  public static final String REPORT_KEY_USSN = "dt_ussn";
   public static final String REPORT_KEY_US_STMP = "dt_usstmp";
   public static final String REPORT_KEY_VIDEO_CONTENTID = "dt_video_contentid";
   public static final String REPORT_KEY_VIDEO_CONTENT_TYPE = "dt_content_type";
@@ -57,6 +61,8 @@ public class DTParamKey
   public static final String REPORT_KEY_VIDEO_END_TIME = "dt_play_end_state_time";
   public static final String REPORT_KEY_VIDEO_LENGTH = "dt_video_length";
   public static final String REPORT_KEY_VIDEO_PLAY_DURATION = "dt_play_duration";
+  public static final String REPORT_KEY_VIDEO_PLAY_END_TIME = "dt_video_endtime";
+  public static final String REPORT_KEY_VIDEO_PLAY_START_TIME = "dt_video_starttime";
   public static final String REPORT_KEY_VIDEO_START_REASON = "dt_start_reason";
   public static final String REPORT_KEY_VIDEO_START_TIME = "dt_play_start_state_time";
   public static final String REPORT_KEY_VIDEO_START_TYPE = "dt_start_type";
@@ -65,7 +71,7 @@ public class DTParamKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.constants.DTParamKey
  * JD-Core Version:    0.7.0.1
  */

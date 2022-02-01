@@ -12,7 +12,7 @@ class MultiAIOItemFragment$3
   implements FitSystemWindowsRelativeLayout.OnInterceptTouchEventListener
 {
   float jdField_a_of_type_Float;
-  final int jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment.getActivity()));
+  final int jdField_a_of_type_Int = ViewConfigurationCompat.getScaledPagingTouchSlop(ViewConfiguration.get(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment.getBaseActivity()));
   float jdField_b_of_type_Float;
   int jdField_b_of_type_Int;
   float c;
@@ -22,20 +22,87 @@ class MultiAIOItemFragment$3
   
   public boolean a(MotionEvent paramMotionEvent)
   {
+    int i = paramMotionEvent.getActionMasked();
     boolean bool2 = false;
+    boolean bool3 = false;
     boolean bool1;
-    switch (paramMotionEvent.getActionMasked())
+    float f1;
+    Object localObject;
+    if (i != 0)
     {
-    default: 
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOItemFragment", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "], intercept = " + bool1);
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          bool1 = bool2;
+        }
+        else
+        {
+          i = this.jdField_b_of_type_Int;
+          bool1 = bool2;
+          if (i != -1)
+          {
+            i = MotionEventCompat.findPointerIndex(paramMotionEvent, i);
+            bool1 = bool2;
+            if (i >= 0) {
+              if (i > paramMotionEvent.getPointerCount() - 1)
+              {
+                bool1 = bool2;
+              }
+              else
+              {
+                float f2 = MotionEventCompat.getX(paramMotionEvent, i);
+                f1 = Math.abs(f2 - this.d);
+                float f3 = MotionEventCompat.getY(paramMotionEvent, i) - this.jdField_a_of_type_Float;
+                float f4 = Math.abs(f3);
+                i = this.jdField_a_of_type_Int;
+                if ((f4 > i) && (f4 * 0.5F > f1))
+                {
+                  if (f3 > 0.0F) {
+                    f1 = this.c + i;
+                  } else {
+                    f1 = this.c - i;
+                  }
+                  this.jdField_a_of_type_Float = f1;
+                  this.jdField_b_of_type_Float = f2;
+                  bool2 = bool3;
+                }
+                else if (f1 > this.jdField_a_of_type_Int)
+                {
+                  bool2 = true;
+                }
+                else
+                {
+                  bool2 = bool3;
+                  if (QLog.isColorLevel())
+                  {
+                    localObject = new StringBuilder();
+                    ((StringBuilder)localObject).append("onInterceptTouchEvent() called with: ev = [");
+                    ((StringBuilder)localObject).append(paramMotionEvent);
+                    ((StringBuilder)localObject).append("] do nothing");
+                    QLog.d("MultiAIOItemFragment", 2, ((StringBuilder)localObject).toString());
+                    bool2 = bool3;
+                  }
+                }
+                localObject = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+                bool1 = bool2;
+                if (localObject != null)
+                {
+                  bool1 = bool2;
+                  if (((MultiAIOBaseViewPager)localObject).a() == MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) {}
+                }
+              }
+            }
+          }
+        }
       }
-      return bool1;
-      float f1 = paramMotionEvent.getX();
+      else {
+        bool1 = true;
+      }
+    }
+    else
+    {
+      f1 = paramMotionEvent.getX();
       this.d = f1;
       this.jdField_b_of_type_Float = f1;
       f1 = paramMotionEvent.getY();
@@ -43,69 +110,22 @@ class MultiAIOItemFragment$3
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
       bool1 = bool2;
-      continue;
-      int i = this.jdField_b_of_type_Int;
-      bool1 = bool2;
-      if (i != -1)
-      {
-        i = MotionEventCompat.findPointerIndex(paramMotionEvent, i);
-        bool1 = bool2;
-        if (i >= 0)
-        {
-          bool1 = bool2;
-          if (i <= paramMotionEvent.getPointerCount() - 1)
-          {
-            float f2 = MotionEventCompat.getX(paramMotionEvent, i);
-            f1 = Math.abs(f2 - this.d);
-            float f3 = MotionEventCompat.getY(paramMotionEvent, i) - this.jdField_a_of_type_Float;
-            float f4 = Math.abs(f3);
-            if ((f4 > this.jdField_a_of_type_Int) && (f4 * 0.5F > f1)) {
-              if (f3 > 0.0F)
-              {
-                f1 = this.c + this.jdField_a_of_type_Int;
-                label250:
-                this.jdField_a_of_type_Float = f1;
-                this.jdField_b_of_type_Float = f2;
-                bool1 = false;
-              }
-            }
-            for (;;)
-            {
-              MultiAIOBaseViewPager localMultiAIOBaseViewPager = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
-              bool2 = bool1;
-              if (localMultiAIOBaseViewPager != null)
-              {
-                bool2 = bool1;
-                if (localMultiAIOBaseViewPager.a() != MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment)) {
-                  bool2 = true;
-                }
-              }
-              bool1 = bool2;
-              break;
-              f1 = this.c - this.jdField_a_of_type_Int;
-              break label250;
-              if (f1 > this.jdField_a_of_type_Int)
-              {
-                bool1 = true;
-              }
-              else
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("MultiAIOItemFragment", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "] do nothing");
-                }
-                bool1 = false;
-              }
-            }
-            bool1 = true;
-          }
-        }
-      }
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onInterceptTouchEvent() called with: ev = [");
+      ((StringBuilder)localObject).append(paramMotionEvent);
+      ((StringBuilder)localObject).append("], intercept = ");
+      ((StringBuilder)localObject).append(bool1);
+      QLog.d("MultiAIOItemFragment", 2, ((StringBuilder)localObject).toString());
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOItemFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,10 @@ class RatingBar$1
   {
     if (RatingBar.a(this.a))
     {
-      RatingBar.a(this.a, this.a.indexOfChild(paramView) + 1);
-      this.a.setStar(RatingBar.a(this.a), true);
+      RatingBar localRatingBar = this.a;
+      RatingBar.a(localRatingBar, localRatingBar.indexOfChild(paramView) + 1);
+      localRatingBar = this.a;
+      localRatingBar.setStar(RatingBar.a(localRatingBar), true);
       if (RatingBar.a(this.a) != null) {
         RatingBar.a(this.a).a(RatingBar.a(this.a), RatingBar.a(this.a));
       }
@@ -24,7 +26,7 @@ class RatingBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.widget.RatingBar.1
  * JD-Core Version:    0.7.0.1
  */

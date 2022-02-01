@@ -13,22 +13,23 @@ class TroopMemberListActivity$13
   
   public void onClick(View paramView)
   {
-    this.a.c = false;
-    this.a.t = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.d != 22) {
-      this.a.b.setVisibility(0);
+    TroopMemberListActivity localTroopMemberListActivity = this.a;
+    localTroopMemberListActivity.mIsInDeleteState = false;
+    localTroopMemberListActivity.mSlideLeftUin = "";
+    localTroopMemberListActivity.mRightManageBtn.setVisibility(8);
+    this.a.mTitleRightImgBtn.setVisibility(0);
+    if (this.a.mFrom != 22) {
+      this.a.mTitleSortImgBtn.setVisibility(0);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
+    if (this.a.mAdapter != null) {
+      this.a.mAdapter.a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.13
  * JD-Core Version:    0.7.0.1
  */

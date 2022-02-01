@@ -7,25 +7,25 @@ public class UpSendMsgReq
   implements IMessageEntity
 {
   @Packed
-  private String collapseKey;
+  public String collapseKey;
   @Packed
-  private String data;
+  public String data;
   @Packed
-  private String msgId;
+  public String msgId;
   @Packed
-  private String msgType;
+  public String msgType;
   @Packed
-  private String packageName;
+  public String packageName;
   @Packed
-  private int receiptMode;
+  public int receiptMode;
   @Packed
-  private int sendMode;
+  public int sendMode;
   @Packed
-  private String to;
+  public String to;
   @Packed
-  private String token;
+  public String token;
   @Packed
-  private int ttl;
+  public int ttl;
   
   public String getCollapseKey()
   {

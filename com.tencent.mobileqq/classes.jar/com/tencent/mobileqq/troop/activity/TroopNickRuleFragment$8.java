@@ -19,37 +19,35 @@ class TroopNickRuleFragment$8
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    TextView localTextView;
     if (!TextUtils.isEmpty(TroopNickRuleFragment.a(this.a).getText().toString()))
     {
       TroopNickRuleFragment.a(this.a).setHint("");
       paramInt1 = 0;
-      if ((this.a.a.getChildCount() > 0) && (TroopNickRuleFragment.a(this.a)))
-      {
-        paramCharSequence = (PresetWordsListAdapter.ViewHolder)this.a.a.getChildAt(0).getTag();
-        if (paramCharSequence != null)
-        {
-          localTextView = paramCharSequence.a;
-          if (paramInt1 == 0) {
-            break label122;
-          }
-        }
-      }
     }
-    label122:
-    for (paramCharSequence = this.a.getString(2131720271);; paramCharSequence = TroopNickRuleFragment.a(this.a).getText())
+    else
     {
-      localTextView.setText(paramCharSequence);
-      return;
-      TroopNickRuleFragment.a(this.a).setHint(2131720271);
+      TroopNickRuleFragment.a(this.a).setHint(2131720009);
       paramInt1 = 1;
-      break;
+    }
+    if ((this.a.a.getChildCount() > 0) && (TroopNickRuleFragment.a(this.a)))
+    {
+      paramCharSequence = (PresetWordsListAdapter.ViewHolder)this.a.a.getChildAt(0).getTag();
+      if (paramCharSequence != null)
+      {
+        TextView localTextView = paramCharSequence.a;
+        if (paramInt1 != 0) {
+          paramCharSequence = this.a.getString(2131720009);
+        } else {
+          paramCharSequence = TroopNickRuleFragment.a(this.a).getText();
+        }
+        localTextView.setText(paramCharSequence);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopNickRuleFragment.8
  * JD-Core Version:    0.7.0.1
  */

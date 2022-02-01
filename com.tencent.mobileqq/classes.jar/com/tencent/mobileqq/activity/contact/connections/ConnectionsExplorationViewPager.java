@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import androidx.viewpager.widget.ViewPager;
 
 public class ConnectionsExplorationViewPager
   extends ViewPager
@@ -37,7 +37,7 @@ public class ConnectionsExplorationViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationViewPager
  * JD-Core Version:    0.7.0.1
  */

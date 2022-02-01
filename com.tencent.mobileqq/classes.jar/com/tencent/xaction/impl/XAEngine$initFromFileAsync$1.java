@@ -1,11 +1,7 @@
 package com.tencent.xaction.impl;
 
-import android.os.Handler;
-import com.google.gson.Gson;
-import com.tencent.xaction.api.data.AnimData;
 import com.tencent.xaction.api.util.FileUtil;
 import com.tencent.xaction.api.util.FileUtil.Companion;
-import com.tencent.xaction.api.util.GsonAdapter;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 
@@ -17,20 +13,15 @@ final class XAEngine$initFromFileAsync$1
   
   public final void run()
   {
-    Object localObject = FileUtil.a.a(this.jdField_a_of_type_JavaLangString);
-    if (localObject != null)
-    {
-      XAEngine.access$setAnimData$p(this.this$0, (AnimData)GsonAdapter.a().fromJson((String)localObject, AnimData.class));
-      localObject = this.this$0.getUiHandler();
-      if (localObject != null) {
-        ((Handler)localObject).post((Runnable)new XAEngine.initFromFileAsync.1.1(this));
-      }
+    String str = FileUtil.a.b(this.jdField_a_of_type_JavaLangString);
+    if (str != null) {
+      this.this$0.initAsync(str, this.jdField_a_of_type_KotlinJvmFunctionsFunction0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.impl.XAEngine.initFromFileAsync.1
  * JD-Core Version:    0.7.0.1
  */

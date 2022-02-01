@@ -24,8 +24,12 @@ public class MiniMsgConfigProcessor
   @Nullable
   public MiniMsgConfigData a(QConfItem[] paramArrayOfQConfItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfQConfItem[0].a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parse.configData : ");
+      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      QLog.d("mini_msg_config", 2, localStringBuilder.toString());
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
       return MiniMsgConfigData.a(paramArrayOfQConfItem);
@@ -57,8 +61,12 @@ public class MiniMsgConfigProcessor
   
   public void onUpdate(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramObject);
+      QLog.d("mini_msg_config", 0, localStringBuilder.toString());
     }
   }
   
@@ -69,7 +77,7 @@ public class MiniMsgConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

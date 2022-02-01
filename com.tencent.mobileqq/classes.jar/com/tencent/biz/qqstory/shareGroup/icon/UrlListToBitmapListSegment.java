@@ -25,7 +25,12 @@ public class UrlListToBitmapListSegment
   public UrlListToBitmapListSegment(@Nullable Bitmap paramBitmap, String paramString, int paramInt, UrlBitmapDownloader paramUrlBitmapDownloader)
   {
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
+    paramBitmap = new StringBuilder();
+    paramBitmap.append(this.jdField_a_of_type_JavaLangString);
+    paramBitmap.append("[");
+    paramBitmap.append(paramString);
+    paramBitmap.append("]");
+    this.jdField_a_of_type_JavaLangString = paramBitmap.toString();
     this.b = paramString;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader = paramUrlBitmapDownloader;
@@ -33,12 +38,8 @@ public class UrlListToBitmapListSegment
   
   protected void a(JobContext paramJobContext, List<String> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      notifyError(new ErrorMessage(-1, "url list is empty"));
-    }
-    for (;;)
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      return;
       paramJobContext = Collections.unmodifiableList(paramList);
       int i = paramJobContext.size();
       paramList = new Bitmap[i];
@@ -55,12 +56,14 @@ public class UrlListToBitmapListSegment
           this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(str, i, i, new UrlListToBitmapListSegment.1(this, paramJobContext, paramList, localHandler));
         }
       }
+      return;
     }
+    notifyError(new ErrorMessage(-1, "url list is empty"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.icon.UrlListToBitmapListSegment
  * JD-Core Version:    0.7.0.1
  */

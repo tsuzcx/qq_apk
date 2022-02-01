@@ -51,7 +51,14 @@ public class LpReportInfo_dc00420
   
   public String getSimpleInfo()
   {
-    return "dc00420:" + this.actiontype + "," + this.subactiontype + "," + this.reserves;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc00420:");
+    localStringBuilder.append(this.actiontype);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.subactiontype);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.reserves);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
@@ -69,7 +76,7 @@ public class LpReportInfo_dc00420
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc00420
  * JD-Core Version:    0.7.0.1
  */

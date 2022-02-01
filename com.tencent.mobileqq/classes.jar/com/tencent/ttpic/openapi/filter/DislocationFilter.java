@@ -36,20 +36,15 @@ public class DislocationFilter
     while (localIterator.hasNext())
     {
       Pair localPair = (Pair)localIterator.next();
-      float f1 = ((RectF)localPair.first).left;
-      f1 = Math.min(Math.max(((PointF)localPair.second).x + f1, 0.0F), 1.0F);
-      float f2 = ((RectF)localPair.first).top;
-      f2 = Math.min(Math.max(((PointF)localPair.second).y + f2, 0.0F), 1.0F);
-      float f3 = ((RectF)localPair.first).right;
-      f3 = Math.min(Math.max(((PointF)localPair.second).x + f3, 0.0F), 1.0F);
-      float f4 = ((RectF)localPair.first).bottom;
-      float[] arrayOfFloat1 = AlgoUtils.calPositions(f1, f2, f3, Math.min(Math.max(((PointF)localPair.second).y + f4, 0.0F), 1.0F), 1, 1);
+      float[] arrayOfFloat1 = AlgoUtils.calPositions(Math.min(Math.max(((RectF)localPair.first).left + ((PointF)localPair.second).x, 0.0F), 1.0F), Math.min(Math.max(((RectF)localPair.first).top + ((PointF)localPair.second).y, 0.0F), 1.0F), Math.min(Math.max(((RectF)localPair.first).right + ((PointF)localPair.second).x, 0.0F), 1.0F), Math.min(Math.max(((RectF)localPair.first).bottom + ((PointF)localPair.second).y, 0.0F), 1.0F), 1, 1);
       float[] arrayOfFloat2 = new float[arrayOfFloat1.length];
       int i = 0;
       while (i < arrayOfFloat1.length / 2)
       {
-        arrayOfFloat2[(i * 2)] = ((arrayOfFloat1[(i * 2)] + 1.0F) / 2.0F - ((PointF)localPair.second).x);
-        arrayOfFloat2[(i * 2 + 1)] = ((arrayOfFloat1[(i * 2 + 1)] + 1.0F) / 2.0F - ((PointF)localPair.second).y);
+        int j = i * 2;
+        arrayOfFloat2[j] = ((arrayOfFloat1[j] + 1.0F) / 2.0F - ((PointF)localPair.second).x);
+        j += 1;
+        arrayOfFloat2[j] = ((arrayOfFloat1[j] + 1.0F) / 2.0F - ((PointF)localPair.second).y);
         i += 1;
       }
       setPositions(arrayOfFloat1);
@@ -61,7 +56,7 @@ public class DislocationFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.DislocationFilter
  * JD-Core Version:    0.7.0.1
  */

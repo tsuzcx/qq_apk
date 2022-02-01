@@ -16,13 +16,15 @@ class QQMusicPlayService$NetInfoHandler
   
   private void a(int paramInt)
   {
-    boolean bool2 = true;
     QQMusicPlayService localQQMusicPlayService = (QQMusicPlayService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQMusicPlayService == null) {}
-    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
+    if (localQQMusicPlayService == null) {
+      return;
+    }
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
       return;
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
+    boolean bool2 = true;
     boolean bool1 = bool2;
     if (paramInt != 1)
     {
@@ -31,18 +33,15 @@ class QQMusicPlayService$NetInfoHandler
       {
         bool1 = bool2;
         if (paramInt != 3) {
-          if (paramInt != 6) {
-            break label78;
+          if (paramInt == 6) {
+            bool1 = bool2;
+          } else {
+            bool1 = false;
           }
         }
       }
     }
-    label78:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      QQMusicPlayService.a(localQQMusicPlayService, bool1);
-      return;
-    }
+    QQMusicPlayService.a(localQQMusicPlayService, bool1);
   }
   
   public void onNetMobile2None()
@@ -77,7 +76,7 @@ class QQMusicPlayService$NetInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayService.NetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

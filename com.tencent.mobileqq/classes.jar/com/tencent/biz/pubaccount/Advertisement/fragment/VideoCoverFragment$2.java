@@ -17,21 +17,20 @@ class VideoCoverFragment$2
       VideoCoverFragment.a(this.a).b();
       if (!this.a.a())
       {
-        if (!VideoCoverFragment.a(this.a)) {
-          break label47;
+        if (VideoCoverFragment.a(this.a))
+        {
+          this.a.a(false);
+          return false;
         }
-        this.a.a(false);
+        this.a.a(true);
       }
     }
-    return false;
-    label47:
-    this.a.a(true);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.2
  * JD-Core Version:    0.7.0.1
  */

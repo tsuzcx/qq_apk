@@ -1,45 +1,31 @@
 package com.tencent.mobileqq.listentogether;
 
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.listentogether.player.IQQMusicPlayClient;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
 import com.tencent.qphone.base.util.QLog;
 
 class ListenTogetherManager$9
-  implements Handler.Callback
+  extends BroadcastReceiver
 {
   ListenTogetherManager$9(ListenTogetherManager paramListenTogetherManager) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
+    if (paramIntent == null) {
+      return;
     }
-    paramMessage = this.a.a();
-    if (paramMessage != null)
+    if (paramIntent.getIntExtra("pid", Process.myPid()) == Process.myPid())
     {
-      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
-      paramMessage.c = SystemClock.elapsedRealtime();
-      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
-      QLog.i("ListenTogether.Seek", 1, "MSG_TYPE_TIME_SYNC seek is: " + paramMessage.a + " currentTime: " + System.currentTimeMillis() + " result: " + bool);
-    }
-    for (;;)
-    {
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, ListenTogetherDPC.a().a);
-      return true;
-      QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
+      QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
+      ListenTogetherManager.c(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.9
  * JD-Core Version:    0.7.0.1
  */

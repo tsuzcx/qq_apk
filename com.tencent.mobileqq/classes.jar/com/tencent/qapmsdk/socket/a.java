@@ -11,21 +11,23 @@ public class a
   
   public static void a(boolean paramBoolean, String paramString, int paramInt, long paramLong, com.tencent.qapmsdk.socket.c.a parama)
   {
-    if (a != null) {
-      a.a(paramBoolean, paramString, paramInt, paramLong, parama);
+    a.a locala = a;
+    if (locala != null) {
+      locala.a(paramBoolean, paramString, paramInt, paramLong, parama);
     }
   }
   
   public static void b(boolean paramBoolean, String paramString, int paramInt, long paramLong, com.tencent.qapmsdk.socket.c.a parama)
   {
-    if (a != null) {
-      a.b(paramBoolean, paramString, paramInt, paramLong, parama);
+    a.a locala = a;
+    if (locala != null) {
+      locala.b(paramBoolean, paramString, paramInt, paramLong, parama);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.a
  * JD-Core Version:    0.7.0.1
  */

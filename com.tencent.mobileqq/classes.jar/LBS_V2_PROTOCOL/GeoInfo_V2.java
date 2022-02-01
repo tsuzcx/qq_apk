@@ -59,14 +59,15 @@ public final class GeoInfo_V2
     paramJceOutputStream.write(this.strTown, 6);
     paramJceOutputStream.write(this.strVillage, 7);
     paramJceOutputStream.write(this.strRoad, 8);
-    if (this.strDefaultName != null) {
-      paramJceOutputStream.write(this.strDefaultName, 9);
+    String str = this.strDefaultName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.GeoInfo_V2
  * JD-Core Version:    0.7.0.1
  */

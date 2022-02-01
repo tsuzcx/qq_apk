@@ -20,53 +20,73 @@ class TroopFileModel$1
   public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
     this.a.e = FileManagerUtil.a(paramByteStringMicro1);
-    short s;
+    boolean bool = true;
     if ((paramBoolean) && (!TextUtils.isEmpty(this.a.e)))
     {
-      QLog.d("TroopFileModel<FileAssistant>", 2, "downURL:" + this.a.e);
-      this.a.jdField_a_of_type_JavaLangString = paramString3;
-      this.a.b = ("" + paramInt3);
+      paramString1 = new StringBuilder();
+      paramString1.append("downURL:");
+      paramString1.append(this.a.e);
+      QLog.d("TroopFileModel<FileAssistant>", 2, paramString1.toString());
+      paramString1 = this.a;
+      paramString1.jdField_a_of_type_JavaLangString = paramString3;
+      paramString2 = new StringBuilder();
+      paramString2.append("");
+      paramString2.append(paramInt3);
+      paramString1.b = paramString2.toString();
       this.a.c = FileManagerUtil.a(paramByteStringMicro1);
-      this.a.d = paramString4;
-      this.a.c = FileManagerUtil.a(paramByteStringMicro1);
-      if ((!TroopFileUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (!TroopFileUtils.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (paramBundle == null)) {
-        break label418;
-      }
-      paramString1 = paramBundle.getString("strHttpsDomain");
-      if (TextUtils.isEmpty(paramString1)) {
-        break label418;
-      }
-      s = (short)paramBundle.getInt("httpsPort", 0);
-      if (s != 0) {
-        break label413;
-      }
-      paramBoolean = true;
-      s = 443;
-    }
-    for (;;)
-    {
-      TroopFileProtocol.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString3, "" + paramInt3, this.a.c, FileManagerUtil.c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()), "/", paramString4, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a(), new TroopFileModel.1.1(this, paramBoolean, paramString1, s));
-      do
+      paramString1 = this.a;
+      paramString1.d = paramString4;
+      paramString1.c = FileManagerUtil.a(paramByteStringMicro1);
+      paramBoolean = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      short s1 = 0;
+      if ((paramBoolean) && (TroopFileUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (paramBundle != null))
       {
-        return;
-        QLog.e("TroopFileModel<FileAssistant>", 1, "get preview url failed for troop, retCode[" + paramInt1 + "], retMeg[" + paramString1 + "]");
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin, "-1", FileManagerUtil.g(this.a.c()), "1");
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener == null);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(paramInt1);
-      return;
-      label413:
-      paramBoolean = true;
-      continue;
-      label418:
-      s = 0;
+        paramString2 = paramBundle.getString("strHttpsDomain");
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          short s2 = (short)paramBundle.getInt("httpsPort", 0);
+          paramBoolean = bool;
+          paramString1 = paramString2;
+          s1 = s2;
+          if (s2 != 0) {
+            break label243;
+          }
+          s1 = 443;
+          paramBoolean = bool;
+          paramString1 = paramString2;
+          break label243;
+        }
+      }
       paramString1 = null;
       paramBoolean = false;
+      label243:
+      paramString2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramByteStringMicro1 = new StringBuilder();
+      paramByteStringMicro1.append("");
+      paramByteStringMicro1.append(paramInt3);
+      TroopFileProtocol.a(paramString2, paramString3, paramByteStringMicro1.toString(), this.a.c, FileManagerUtil.c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()), "/", paramString4, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a(), new TroopFileModel.1.1(this, paramBoolean, paramString1, s1));
+      return;
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append("get preview url failed for troop, retCode[");
+    paramString2.append(paramInt1);
+    paramString2.append("], retMeg[");
+    paramString2.append(paramString1);
+    paramString2.append("]");
+    QLog.e("TroopFileModel<FileAssistant>", 1, paramString2.toString());
+    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramString2 = new StringBuilder();
+    paramString2.append("");
+    paramString2.append(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin);
+    ReportController.b(paramString1, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, paramString2.toString(), "-1", FileManagerUtil.f(this.a.c()), "1");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(paramInt1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.1
  * JD-Core Version:    0.7.0.1
  */

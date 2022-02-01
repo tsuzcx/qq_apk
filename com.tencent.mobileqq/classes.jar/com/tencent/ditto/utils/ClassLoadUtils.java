@@ -19,43 +19,44 @@ public class ClassLoadUtils
   
   public static Class<?> load(ClassLoader paramClassLoader, String paramString)
   {
-    Class localClass = null;
     try
     {
       paramClassLoader = paramClassLoader.loadClass(paramString);
-      if (paramClassLoader != null) {
-        return paramClassLoader;
+    }
+    catch (ClassNotFoundException paramClassLoader)
+    {
+      if (LOADERS.isEmpty()) {
+        break label80;
       }
     }
-    catch (ClassNotFoundException localClassNotFoundException2)
-    {
-      do
-      {
-        paramClassLoader = localClass;
-      } while (!LOADERS.isEmpty());
-      throw localClassNotFoundException2;
+    paramClassLoader = null;
+    if (paramClassLoader != null) {
+      return paramClassLoader;
     }
     Iterator localIterator = LOADERS.iterator();
-    if (localIterator.hasNext()) {}
-    for (;;)
+    while (localIterator.hasNext())
     {
       try
       {
-        localClass = ((ClassLoader)localIterator.next()).loadClass(paramString);
-        paramClassLoader = localClass;
-        return paramClassLoader;
+        Class localClass = ((ClassLoader)localIterator.next()).loadClass(paramString);
+        return localClass;
       }
-      catch (ClassNotFoundException localClassNotFoundException1) {}
-      if (localIterator.hasNext()) {
-        break;
+      catch (ClassNotFoundException localClassNotFoundException) {}
+      if (!localIterator.hasNext()) {
+        throw localClassNotFoundException;
       }
-      throw localClassNotFoundException1;
+    }
+    return paramClassLoader;
+    for (;;)
+    {
+      label80:
+      throw paramClassLoader;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.utils.ClassLoadUtils
  * JD-Core Version:    0.7.0.1
  */

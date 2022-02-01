@@ -34,46 +34,40 @@ public class MiniAppGetUserGroupInfoServlet
       {
         paramBundle.putString("extra_json_data", localStGetUserGroupInfoRsp.userGroupInfo.get());
         notifyObserver(paramIntent, 1062, true, paramBundle, MiniAppObserver.class);
+        return;
       }
+      notifyObserver(paramIntent, 1062, false, paramBundle, MiniAppObserver.class);
     }
-    else
-    {
-      return;
-    }
-    notifyObserver(paramIntent, 1062, false, paramBundle, MiniAppObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    String str1 = paramIntent.getStringExtra("key_appid");
-    String str2 = paramIntent.getStringExtra("group_id");
+    Object localObject2 = paramIntent.getStringExtra("key_appid");
+    String str = paramIntent.getStringExtra("group_id");
     long l = paramIntent.getLongExtra("group_class", -1L);
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
     int i = paramIntent.getIntExtra("key_index", -1);
-    Object localObject1 = null;
     if (arrayOfByte != null) {
-      localObject3 = new COMM.StCommonExt();
+      localObject1 = new COMM.StCommonExt();
     }
     try
     {
-      ((COMM.StCommonExt)localObject3).mergeFrom(arrayOfByte);
-      localObject1 = localObject3;
+      ((COMM.StCommonExt)localObject1).mergeFrom(arrayOfByte);
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
-      for (;;)
-      {
-        Object localObject2 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("MiniAppGetUserGroupInfoServlet", 2, "onSend. mergeFrom extData exception!");
-          localObject2 = localObject3;
-        }
-      }
+      label68:
+      break label68;
     }
-    localObject3 = new GetUserGroupInfoRequest(str1, str2, l, (COMM.StCommonExt)localObject1).encode(paramIntent, i, getTraceId());
-    localObject1 = localObject3;
-    if (localObject3 == null) {
+    if (QLog.isColorLevel()) {
+      QLog.e("MiniAppGetUserGroupInfoServlet", 2, "onSend. mergeFrom extData exception!");
+    }
+    break label88;
+    Object localObject1 = null;
+    label88:
+    localObject2 = new GetUserGroupInfoRequest((String)localObject2, str, l, (COMM.StCommonExt)localObject1).encode(paramIntent, i, getTraceId());
+    localObject1 = localObject2;
+    if (localObject2 == null) {
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetUserGroupInfo");
@@ -84,7 +78,7 @@ public class MiniAppGetUserGroupInfoServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetUserGroupInfoServlet
  * JD-Core Version:    0.7.0.1
  */

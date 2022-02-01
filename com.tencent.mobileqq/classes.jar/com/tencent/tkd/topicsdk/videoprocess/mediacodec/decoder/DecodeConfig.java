@@ -26,38 +26,63 @@ public class DecodeConfig
   
   void a(DecodeConfig paramDecodeConfig)
   {
-    if (paramDecodeConfig == null) {
-      throw new NullPointerException();
+    if (paramDecodeConfig != null)
+    {
+      if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramDecodeConfig.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaLangString = paramDecodeConfig.jdField_a_of_type_JavaLangString;
+      }
+      int i = this.jdField_a_of_type_Int;
+      int j = paramDecodeConfig.jdField_a_of_type_Int;
+      if (i != j) {
+        this.jdField_a_of_type_Int = j;
+      }
+      boolean bool1 = this.jdField_a_of_type_Boolean;
+      boolean bool2 = paramDecodeConfig.jdField_a_of_type_Boolean;
+      if (bool1 != bool2) {
+        this.jdField_a_of_type_Boolean = bool2;
+      }
+      bool1 = this.jdField_b_of_type_Boolean;
+      bool2 = paramDecodeConfig.jdField_b_of_type_Boolean;
+      if (bool1 != bool2) {
+        this.jdField_b_of_type_Boolean = bool2;
+      }
+      long l1 = this.jdField_a_of_type_Long;
+      long l2 = paramDecodeConfig.jdField_a_of_type_Long;
+      if (l1 != l2) {
+        this.jdField_a_of_type_Long = l2;
+      }
+      l1 = this.jdField_b_of_type_Long;
+      l2 = paramDecodeConfig.jdField_b_of_type_Long;
+      if (l1 != l2) {
+        this.jdField_b_of_type_Long = l2;
+      }
+      return;
     }
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramDecodeConfig.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = paramDecodeConfig.jdField_a_of_type_JavaLangString;
-    }
-    if (this.jdField_a_of_type_Int != paramDecodeConfig.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_Int = paramDecodeConfig.jdField_a_of_type_Int;
-    }
-    if (this.jdField_a_of_type_Boolean != paramDecodeConfig.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = paramDecodeConfig.jdField_a_of_type_Boolean;
-    }
-    if (this.jdField_b_of_type_Boolean != paramDecodeConfig.jdField_b_of_type_Boolean) {
-      this.jdField_b_of_type_Boolean = paramDecodeConfig.jdField_b_of_type_Boolean;
-    }
-    if (this.jdField_a_of_type_Long != paramDecodeConfig.jdField_a_of_type_Long) {
-      this.jdField_a_of_type_Long = paramDecodeConfig.jdField_a_of_type_Long;
-    }
-    if (this.jdField_b_of_type_Long != paramDecodeConfig.jdField_b_of_type_Long) {
-      this.jdField_b_of_type_Long = paramDecodeConfig.jdField_b_of_type_Long;
-    }
+    throw new NullPointerException();
   }
   
   @NotNull
   public String toString()
   {
-    return "inputFilePath=" + this.jdField_a_of_type_JavaLangString + " speedType=" + this.jdField_a_of_type_Int + " noSleep=" + this.jdField_a_of_type_Boolean + " repeat=" + this.jdField_b_of_type_Boolean + " startTimeMillSecond=" + this.jdField_a_of_type_Long + " endTimeMillSecond=" + this.jdField_b_of_type_Long;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("inputFilePath=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" speedType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" noSleep=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" repeat=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(" startTimeMillSecond=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" endTimeMillSecond=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.decoder.DecodeConfig
  * JD-Core Version:    0.7.0.1
  */

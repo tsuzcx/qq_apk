@@ -20,21 +20,17 @@ class ImageViewJsPlugin$4
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("data", this.val$data);
       this.val$req.jsService.evaluateSubscribeJS("onImageViewClick", localJSONObject.toString(), ImageViewJsPlugin.access$200(this.this$0));
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QMLog.e("ImageViewJsPlugin", "evaluateSubcribeJS error.", localThrowable);
-      }
+      QMLog.e("ImageViewJsPlugin", "evaluateSubcribeJS error.", localThrowable);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.ImageViewJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

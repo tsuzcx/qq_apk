@@ -55,32 +55,39 @@ public final class MainpageQzmallDeco
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stCustomVip != null) {
-      paramJceOutputStream.write(this.stCustomVip, 0);
+    Object localObject = this.stCustomVip;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.stVipWidget != null) {
-      paramJceOutputStream.write(this.stVipWidget, 1);
+    localObject = this.stVipWidget;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stYellowDiamond != null) {
-      paramJceOutputStream.write(this.stYellowDiamond, 2);
+    localObject = this.stYellowDiamond;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.stQbossData != null) {
-      paramJceOutputStream.write(this.stQbossData, 3);
+    localObject = this.stQbossData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.stCustomTrack != null) {
-      paramJceOutputStream.write(this.stCustomTrack, 4);
+    localObject = this.stCustomTrack;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.stStrangerSkin != null) {
-      paramJceOutputStream.write(this.stStrangerSkin, 5);
+    localObject = this.stStrangerSkin;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.stCmShowQzoneTrack != null) {
-      paramJceOutputStream.write(this.stCmShowQzoneTrack, 6);
+    localObject = this.stCmShowQzoneTrack;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.MainpageQzmallDeco
  * JD-Core Version:    0.7.0.1
  */

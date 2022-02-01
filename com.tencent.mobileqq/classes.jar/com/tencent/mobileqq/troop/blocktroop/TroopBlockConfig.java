@@ -14,91 +14,103 @@ public class TroopBlockConfig
   
   public static TroopBlockConfig a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopBlockConfig", 2, "content : " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("content : ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("TroopBlockConfig", 2, ((StringBuilder)localObject).toString());
     }
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    ArrayList localArrayList;
-    TroopBlockConfig localTroopBlockConfig;
-    for (;;)
+    Object localObject = new ArrayList();
+    try
     {
-      return paramString;
-      localArrayList = new ArrayList();
-      try
+      paramString = new JSONObject(paramString).getJSONArray("grayTroopUins");
+      if ((paramString != null) && (paramString.length() > 0))
       {
-        paramString = new JSONObject(paramString).getJSONArray("grayTroopUins");
-        if ((paramString != null) && (paramString.length() > 0))
+        int i = 0;
+        while (i < paramString.length())
         {
-          int i = 0;
-          while (i < paramString.length())
-          {
-            localArrayList.add(Integer.valueOf(paramString.getInt(i)));
-            i += 1;
-          }
+          ((List)localObject).add(Integer.valueOf(paramString.getInt(i)));
+          i += 1;
         }
-        if (!QLog.isColorLevel()) {}
       }
-      catch (JSONException paramString)
+      StringBuilder localStringBuilder;
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      paramString = new TroopBlockConfig();
+      paramString.a = ((List)localObject);
+      if (QLog.isColorLevel())
       {
-        paramString.printStackTrace();
-        localTroopBlockConfig = new TroopBlockConfig();
-        localTroopBlockConfig.a = localArrayList;
-        paramString = localTroopBlockConfig;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("tempGrayList.size : ");
+        localStringBuilder.append(((List)localObject).size());
+        QLog.d("TroopBlockConfig", 2, localStringBuilder.toString());
       }
     }
-    QLog.d("TroopBlockConfig", 2, "tempGrayList.size : " + localArrayList.size());
-    return localTroopBlockConfig;
   }
   
   public boolean a(String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopBlockConfig", 2, "isGrayTroop troopUin = " + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (this.a == null))
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder().append("grayTroopUinList isNull:  ");
-        if (this.a != null) {
-          break label96;
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isGrayTroop troopUin = ");
+      localStringBuilder.append(paramString);
+      QLog.d("TroopBlockConfig", 2, localStringBuilder.toString());
+    }
+    boolean bool3 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    boolean bool1 = true;
+    if ((!bool3) && (this.a != null))
+    {
+      paramString = paramString.substring(paramString.length() - 1);
+      int i = 0;
       for (;;)
       {
-        QLog.d("TroopBlockConfig", 2, bool1);
-        bool2 = false;
-        return bool2;
-        label96:
+        bool1 = bool2;
+        if (i >= this.a.size()) {
+          break;
+        }
+        if (String.valueOf(this.a.get(i)).equals(paramString))
+        {
+          bool1 = true;
+          break;
+        }
+        i += 1;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("isGrayTroop grayTroopUinList size = ");
+        paramString.append(this.a.size());
+        paramString.append(", isGrayTroop = ");
+        paramString.append(bool1);
+        QLog.d("TroopBlockConfig", 2, paramString.toString());
+      }
+      return bool1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("grayTroopUinList isNull:  ");
+      if (this.a != null) {
         bool1 = false;
       }
+      paramString.append(bool1);
+      QLog.d("TroopBlockConfig", 2, paramString.toString());
     }
-    paramString = paramString.substring(paramString.length() - 1);
-    int i = 0;
-    label114:
-    if (i < this.a.size()) {
-      if (!String.valueOf(this.a.get(i)).equals(paramString)) {}
-    }
-    for (bool1 = bool2;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopBlockConfig", 2, "isGrayTroop grayTroopUinList size = " + this.a.size() + ", isGrayTroop = " + bool1);
-      return bool1;
-      i += 1;
-      break label114;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopBlockConfig
  * JD-Core Version:    0.7.0.1
  */

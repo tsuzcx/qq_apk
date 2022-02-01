@@ -22,40 +22,42 @@ public class UserData
   
   public static final String getUserDataFileName(String paramString)
   {
-    return "spring_festival_redpacket2021_userdata_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("spring_festival_redpacket2021_userdata_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   @NotNull
   public static UserData read(String paramString)
   {
     paramString = getUserDataFileName(paramString);
+    localObject1 = null;
     try
     {
-      paramString = FileUtils.a(paramString);
-      if ((paramString instanceof UserData))
-      {
-        paramString = (UserData)paramString;
-        Object localObject = paramString;
-        if (paramString == null) {
-          localObject = new UserData();
-        }
-        return localObject;
+      Object localObject2 = FileUtils.readObject(paramString);
+      paramString = (String)localObject1;
+      if ((localObject2 instanceof UserData)) {
+        paramString = (UserData)localObject2;
       }
     }
     catch (Throwable paramString)
     {
       for (;;)
       {
-        paramString = null;
-        continue;
-        paramString = null;
+        paramString = (String)localObject1;
       }
     }
+    localObject1 = paramString;
+    if (paramString == null) {
+      localObject1 = new UserData();
+    }
+    return localObject1;
   }
   
   public static void write(String paramString, UserData paramUserData)
   {
-    FileUtils.a(getUserDataFileName(paramString), paramUserData);
+    FileUtils.writeObject(getUserDataFileName(paramString), paramUserData);
   }
   
   public UserData.UserDataItem getAndGenUserDataItem(String paramString)
@@ -77,15 +79,19 @@ public class UserData
   
   public boolean onGetEntryConfig(EntryConfigBean paramEntryConfigBean)
   {
-    if (paramEntryConfigBean.version != this.configVersion)
+    int j = paramEntryConfigBean.version;
+    int i = this.configVersion;
+    boolean bool = false;
+    if (j != i)
     {
-      QLog.d("shua2021_UserData", 1, String.format("onGetEntryConfig changed oldV=%d newV=%d", new Object[] { Integer.valueOf(this.configVersion), Integer.valueOf(paramEntryConfigBean.version) }));
+      j = paramEntryConfigBean.version;
+      bool = true;
+      QLog.d("shua2021_UserData", 1, String.format("onGetEntryConfig changed oldV=%d newV=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
       reset();
       this.grabReqInterval = paramEntryConfigBean.commonData.grabReqInterval;
       this.configVersion = paramEntryConfigBean.version;
-      return true;
     }
-    return false;
+    return bool;
   }
   
   public void reset()
@@ -105,12 +111,22 @@ public class UserData
   
   public String toString()
   {
-    return "UserData{configVersion=" + this.configVersion + ", grabReqInterval=" + this.grabReqInterval + ", showGestureTs=" + this.showGestureTs + ", userDataItems=" + this.userDataItems + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UserData{configVersion=");
+    localStringBuilder.append(this.configVersion);
+    localStringBuilder.append(", grabReqInterval=");
+    localStringBuilder.append(this.grabReqInterval);
+    localStringBuilder.append(", showGestureTs=");
+    localStringBuilder.append(this.showGestureTs);
+    localStringBuilder.append(", userDataItems=");
+    localStringBuilder.append(this.userDataItems);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.UserData
  * JD-Core Version:    0.7.0.1
  */

@@ -126,34 +126,36 @@ public final class ReportInfo
   
   private final String convertName(String paramString)
   {
+    String str = paramString;
     if (paramString != null)
     {
       char[] arrayOfChar = paramString.toCharArray();
       int m = arrayOfChar.length;
       int j = 0;
       int i = 0;
-      for (;;)
+      while (j < m)
       {
-        str = paramString;
-        if (j >= m) {
-          break;
-        }
         char c = arrayOfChar[j];
         str = paramString;
         int k = i;
         if (Character.isUpperCase(c))
         {
           str = paramString.substring(0, i);
-          paramString = paramString.substring(i + 1);
-          str = str + "_" + Character.toLowerCase(c) + paramString;
           k = i + 1;
+          paramString = paramString.substring(k);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("_");
+          localStringBuilder.append(Character.toLowerCase(c));
+          localStringBuilder.append(paramString);
+          str = localStringBuilder.toString();
         }
-        j += 1;
         i = k + 1;
+        j += 1;
         paramString = str;
       }
+      str = paramString;
     }
-    String str = paramString;
     return str;
   }
   
@@ -190,50 +192,44 @@ public final class ReportInfo
         Field localField;
         Object localObject;
         Class localClass;
+        int k;
+        long l;
         localException.printStackTrace();
       }
       try
       {
         localObject = (String)localField.get(this);
-        if ((localObject != null) && (((String)localObject).length() > 0)) {
-          localJSONObject.put(localField.getName(), localObject);
+        if ((localObject == null) || (((String)localObject).length() <= 0)) {
+          continue;
         }
+        localJSONObject.put(localField.getName(), localObject);
       }
-      catch (IllegalAccessException localIllegalAccessException3)
+      catch (IllegalAccessException localIllegalAccessException)
       {
         continue;
       }
-      i += 1;
-      continue;
       localObject = localField.getType();
       localClass = Integer.TYPE;
       if (localObject == localClass)
       {
-        try
-        {
-          int k = ((Integer)localField.get(this)).intValue();
-          if (k == -999) {
-            continue;
-          }
+        k = ((Integer)localField.get(this)).intValue();
+        if (k != -999) {
           localJSONObject.put(localField.getName(), k);
         }
-        catch (IllegalAccessException localIllegalAccessException1) {}
       }
       else
       {
-        localObject = localIllegalAccessException1.getType();
+        localObject = localField.getType();
         localClass = Long.TYPE;
-        if (localObject == localClass) {
-          try
-          {
-            long l = ((Long)localIllegalAccessException1.get(this)).longValue();
-            if (l > 0L) {
-              localJSONObject.put(localIllegalAccessException1.getName(), l);
-            }
+        if (localObject == localClass)
+        {
+          l = ((Long)localField.get(this)).longValue();
+          if (l > 0L) {
+            localJSONObject.put(localField.getName(), l);
           }
-          catch (IllegalAccessException localIllegalAccessException2) {}
         }
       }
+      i += 1;
     }
     return localJSONObject;
   }
@@ -250,46 +246,40 @@ public final class ReportInfo
     int i = arrayOfField.length;
     int j = arrayOfField.length;
     i = 0;
-    if (i < j)
+    while (i < j)
     {
       Field localField = arrayOfField[i];
       if (localField.getType() == String.class) {}
-      for (;;)
+      try
       {
-        try
-        {
-          String str = (String)localField.get(this);
-          if ((str != null) && (str.length() > 0)) {
-            localHashMap.put(convertName(localField.getName()), str);
-          }
+        String str = (String)localField.get(this);
+        if ((str == null) || (str.length() <= 0)) {
+          break label214;
         }
-        catch (IllegalAccessException localIllegalAccessException3)
-        {
-          continue;
-        }
-        i += 1;
-        break;
-        if (localField.getType() == Integer.TYPE) {
-          try
-          {
-            int k = ((Integer)localField.get(this)).intValue();
-            if (k == -999) {
-              continue;
-            }
-            localHashMap.put(convertName(localField.getName()), String.valueOf(k));
-          }
-          catch (IllegalAccessException localIllegalAccessException1) {}
-        } else if (localIllegalAccessException1.getType() == Long.TYPE) {
-          try
-          {
-            long l = ((Long)localIllegalAccessException1.get(this)).longValue();
-            if (l > 0L) {
-              localHashMap.put(convertName(localIllegalAccessException1.getName()), String.valueOf(l));
-            }
-          }
-          catch (IllegalAccessException localIllegalAccessException2) {}
+        localHashMap.put(convertName(localField.getName()), str);
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        int k;
+        long l;
+        label214:
+        break label214;
+      }
+      if (localField.getType() == Integer.TYPE)
+      {
+        k = ((Integer)localField.get(this)).intValue();
+        if (k != -999) {
+          localHashMap.put(convertName(localField.getName()), String.valueOf(k));
         }
       }
+      else if (localField.getType() == Long.TYPE)
+      {
+        l = ((Long)localField.get(this)).longValue();
+        if (l > 0L) {
+          localHashMap.put(convertName(localField.getName()), String.valueOf(l));
+        }
+      }
+      i += 1;
     }
     return localHashMap;
   }
@@ -488,44 +478,38 @@ public final class ReportInfo
     {
       int j = arrayOfField.length;
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         Field localField = arrayOfField[i];
-        if ((localField.getName() == "serialVersionUID") || (localField.getName() == "act") || (localField.getName() == "page") || (localField.getName() == "pageModule")) {}
-        for (;;)
+        if ((localField.getName() == "serialVersionUID") || (localField.getName() == "act") || (localField.getName() == "page") || (localField.getName() == "pageModule") || (localField.getType() == String.class)) {}
+        try
         {
-          i += 1;
-          break;
-          if (localField.getType() == String.class) {
-            try
-            {
-              String str = (String)localField.get(this);
-              if ((str == null) || (str.length() <= 0)) {
-                continue;
-              }
-              localField.set(this, "");
-            }
-            catch (IllegalAccessException localIllegalAccessException1) {}
-          } else if (localIllegalAccessException1.getType() == Integer.TYPE) {
-            try
-            {
-              if (((Integer)localIllegalAccessException1.get(this)).intValue() == -999) {
-                continue;
-              }
-              localIllegalAccessException1.set(this, Integer.valueOf(-999));
-            }
-            catch (IllegalAccessException localIllegalAccessException2) {}
-          } else if (localIllegalAccessException2.getType() == Long.TYPE) {
-            try
-            {
-              if (((Long)localIllegalAccessException2.get(this)).longValue() > 0L) {
-                localIllegalAccessException2.set(this, Integer.valueOf(-1));
-              }
-            }
-            catch (IllegalAccessException localIllegalAccessException3) {}
+          String str = (String)localField.get(this);
+          if ((str == null) || (str.length() <= 0)) {
+            break label205;
+          }
+          localField.set(this, "");
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          label205:
+          break label205;
+        }
+        if (localField.getType() == Integer.TYPE)
+        {
+          if (((Integer)localField.get(this)).intValue() != -999) {
+            localField.set(this, Integer.valueOf(-999));
           }
         }
+        else if ((localField.getType() == Long.TYPE) && (((Long)localField.get(this)).longValue() > 0L)) {
+          localField.set(this, Integer.valueOf(-1));
+        }
+        i += 1;
       }
+    }
+    else
+    {
+      return;
     }
   }
   
@@ -738,7 +722,7 @@ public final class ReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.aifilter.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

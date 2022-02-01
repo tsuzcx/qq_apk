@@ -17,8 +17,9 @@ class SmartDeviceIPCHost$2
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     SmartDeviceIPCHost.a(this.a).removeMessages(1);
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = ISmartDeviceService.Stub.a(paramIBinder);
+    paramComponentName = this.a;
+    paramComponentName.jdField_a_of_type_Boolean = false;
+    paramComponentName.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = ISmartDeviceService.Stub.a(paramIBinder);
     this.a.b();
     QLog.d("SmartDeviceIPCHost", 1, "plugin service connected");
     if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
@@ -34,8 +35,9 @@ class SmartDeviceIPCHost$2
         this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(this.a.jdField_a_of_type_AndroidContentServiceConnection);
       }
       label30:
-      this.a.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = null;
-      this.a.jdField_a_of_type_Boolean = false;
+      paramComponentName = this.a;
+      paramComponentName.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = null;
+      paramComponentName.jdField_a_of_type_Boolean = false;
       QLog.d("SmartDeviceIPCHost", 1, "plugin service disconnected");
       return;
     }
@@ -47,7 +49,7 @@ class SmartDeviceIPCHost$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.smartdevice.ipc.SmartDeviceIPCHost.2
  * JD-Core Version:    0.7.0.1
  */

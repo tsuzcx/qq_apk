@@ -16,8 +16,8 @@ import mqq.app.MobileQQ;
 public class DBFixConfigActivity
   extends AppActivity
 {
-  public static int a;
-  public static String a;
+  public static int a = 2;
+  public static String a = "DBFix";
   Button jdField_a_of_type_AndroidWidgetButton;
   CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
@@ -26,12 +26,6 @@ public class DBFixConfigActivity
   Button jdField_b_of_type_AndroidWidgetButton;
   CheckBox jdField_b_of_type_AndroidWidgetCheckBox;
   RadioButton jdField_b_of_type_AndroidWidgetRadioButton;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "DBFix";
-    jdField_a_of_type_Int = 2;
-  }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -42,39 +36,43 @@ public class DBFixConfigActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559454);
+    super.setContentView(2131559328);
     paramBundle = getAppRuntime();
     String str = paramBundle.getAccount();
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)super.findViewById(2131364726));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)super.findViewById(2131364613));
     this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new DBFixConfigActivity.1(this, paramBundle, str));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131366078));
-    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131365595));
-    jdField_a_of_type_Int = paramBundle.getApplication().getSharedPreferences(DBFixManager.b, 0).getInt(str + DBFixManager.c, 2);
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131365995));
+    this.jdField_b_of_type_AndroidWidgetRadioButton = ((RadioButton)super.findViewById(2131365438));
+    SharedPreferences localSharedPreferences = paramBundle.getApplication().getSharedPreferences(DBFixManager.b, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(DBFixManager.c);
+    jdField_a_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), 2);
     if (jdField_a_of_type_Int == 2)
     {
       this.jdField_a_of_type_AndroidWidgetRadioButton.setChecked(false);
       this.jdField_b_of_type_AndroidWidgetRadioButton.setChecked(true);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131381997));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new DBFixConfigActivity.2(this));
-      ((Button)super.findViewById(2131365386)).setOnClickListener(new DBFixConfigActivity.3(this, str));
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)super.findViewById(2131370867));
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new DBFixConfigActivity.4(this, paramBundle));
-      this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)super.findViewById(2131364318));
-      this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(true);
-      this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new DBFixConfigActivity.5(this, paramBundle));
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373478));
-      this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new DBFixConfigActivity.6(this));
-      return true;
       this.jdField_a_of_type_AndroidWidgetRadioButton.setChecked(true);
       this.jdField_b_of_type_AndroidWidgetRadioButton.setChecked(false);
     }
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131381202));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new DBFixConfigActivity.2(this));
+    ((Button)super.findViewById(2131365251)).setOnClickListener(new DBFixConfigActivity.3(this, str));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)super.findViewById(2131370500));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new DBFixConfigActivity.4(this, paramBundle));
+    this.jdField_b_of_type_AndroidWidgetCheckBox = ((CheckBox)super.findViewById(2131364230));
+    this.jdField_b_of_type_AndroidWidgetCheckBox.setChecked(true);
+    this.jdField_b_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new DBFixConfigActivity.5(this, paramBundle));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373053));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new DBFixConfigActivity.6(this));
+    return true;
   }
   
   @Override
@@ -86,7 +84,7 @@ public class DBFixConfigActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixConfigActivity
  * JD-Core Version:    0.7.0.1
  */

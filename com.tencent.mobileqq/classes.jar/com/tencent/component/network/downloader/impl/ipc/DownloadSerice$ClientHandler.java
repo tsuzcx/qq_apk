@@ -12,53 +12,56 @@ class DownloadSerice$ClientHandler
   
   public void handleMessage(Message paramMessage)
   {
-    Log.i("DownloadSerice", "on msg:" + paramMessage.what);
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("on msg:");
+    ((StringBuilder)localObject).append(paramMessage.what);
+    Log.i("DownloadSerice", ((StringBuilder)localObject).toString());
+    try
     {
-      try
+      int i = paramMessage.what;
+      if (i != 101)
       {
-        switch (paramMessage.what)
+        if (i != 102)
         {
-        case 101: 
-          super.handleMessage(paramMessage);
-          return;
+          if (i != 107)
+          {
+            super.handleMessage(paramMessage);
+            return;
+          }
+          if (paramMessage.getData() != null)
+          {
+            localObject = paramMessage.getData();
+            ((Bundle)localObject).setClassLoader(this.this$0.getClassLoader());
+            localObject = (Const.SimpleRequest)((Bundle)localObject).get("request");
+            DownloadSerice.access$200(this.this$0, (Const.SimpleRequest)localObject, paramMessage.replyTo);
+          }
+        }
+        else if (paramMessage.getData() != null)
+        {
+          localObject = paramMessage.getData();
+          ((Bundle)localObject).setClassLoader(this.this$0.getClassLoader());
+          localObject = (Const.SimpleRequest)((Bundle)localObject).get("request");
+          DownloadSerice.access$100(this.this$0, (Const.SimpleRequest)localObject, paramMessage.replyTo);
         }
       }
-      catch (Throwable paramMessage)
+      else if (paramMessage.getData() != null)
       {
-        Log.e("DownloadSerice", "", paramMessage);
+        localObject = paramMessage.getData();
+        ((Bundle)localObject).setClassLoader(this.this$0.getClassLoader());
+        localObject = (Const.SimpleRequest)((Bundle)localObject).get("request");
+        DownloadSerice.access$000(this.this$0, (Const.SimpleRequest)localObject, paramMessage.replyTo);
         return;
       }
-      if (paramMessage.getData() == null) {
-        break;
-      }
-      Object localObject = paramMessage.getData();
-      ((Bundle)localObject).setClassLoader(this.this$0.getClassLoader());
-      localObject = (Const.SimpleRequest)((Bundle)localObject).get("request");
-      DownloadSerice.access$000(this.this$0, (Const.SimpleRequest)localObject, paramMessage.replyTo);
-      return;
-      if (paramMessage.getData() == null) {
-        break;
-      }
-      localObject = paramMessage.getData();
-      ((Bundle)localObject).setClassLoader(this.this$0.getClassLoader());
-      localObject = (Const.SimpleRequest)((Bundle)localObject).get("request");
-      DownloadSerice.access$100(this.this$0, (Const.SimpleRequest)localObject, paramMessage.replyTo);
-      return;
-      if (paramMessage.getData() == null) {
-        break;
-      }
-      localObject = paramMessage.getData();
-      ((Bundle)localObject).setClassLoader(this.this$0.getClassLoader());
-      localObject = (Const.SimpleRequest)((Bundle)localObject).get("request");
-      DownloadSerice.access$200(this.this$0, (Const.SimpleRequest)localObject, paramMessage.replyTo);
-      return;
+    }
+    catch (Throwable paramMessage)
+    {
+      Log.e("DownloadSerice", "", paramMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.ipc.DownloadSerice.ClientHandler
  * JD-Core Version:    0.7.0.1
  */

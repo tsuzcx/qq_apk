@@ -12,18 +12,19 @@ class SDKEmotionSettingManager$11
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QLog.d("SDKEmotionSettingManager", 1, new Object[] { "showAccountConfirm which=", Integer.valueOf(paramInt) });
-    if (paramInt == 1) {
+    if (paramInt == 1)
+    {
       SDKEmotionSettingManager.c(this.a);
-    }
-    while (paramInt != 0) {
       return;
     }
-    SDKEmotionSettingManager.a(this.a);
+    if (paramInt == 0) {
+      SDKEmotionSettingManager.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.11
  * JD-Core Version:    0.7.0.1
  */

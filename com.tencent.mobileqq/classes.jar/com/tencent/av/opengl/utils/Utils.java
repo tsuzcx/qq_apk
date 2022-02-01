@@ -66,310 +66,249 @@ public class Utils
   
   static
   {
+    int i1 = Build.VERSION.SDK_INT;
     boolean bool2 = true;
-    jdField_a_of_type_Int = 0;
-    if (Build.VERSION.SDK_INT >= 16)
-    {
+    if (i1 >= 16) {
       bool1 = true;
-      jdField_a_of_type_Boolean = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label707;
-      }
-      bool1 = true;
-      label30:
-      b = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        break label712;
-      }
-      bool1 = true;
-      label44:
-      c = bool1;
-      d = a(View.class, "SYSTEM_UI_FLAG_LAYOUT_STABLE");
-      e = a(View.class, "SYSTEM_UI_FLAG_HIDE_NAVIGATION");
-      f = a(MediaStore.MediaColumns.class, "WIDTH");
-      if (Build.VERSION.SDK_INT < 16) {
-        break label717;
-      }
-      bool1 = true;
-      label88:
-      g = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        break label722;
-      }
-      bool1 = true;
-      label102:
-      h = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label727;
-      }
-      bool1 = true;
-      label116:
-      i = bool1;
-      j = a("android.graphics.SurfaceTexture", "setDefaultBufferSize", new Class[] { Integer.TYPE, Integer.TYPE });
-      k = a("android.graphics.SurfaceTexture", "release", new Class[0]);
-      if (Build.VERSION.SDK_INT < 11) {
-        break label732;
-      }
-      bool1 = true;
-      label170:
-      l = bool1;
-      if (Build.VERSION.SDK_INT < 12) {
-        break label737;
-      }
-      bool1 = true;
-      label184:
-      m = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label742;
-      }
-      bool1 = true;
-      label198:
-      n = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        break label747;
-      }
-      bool1 = true;
-      label212:
-      o = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        break label752;
-      }
-      bool1 = true;
-      label226:
-      p = bool1;
-      q = a(View.class, "setSystemUiVisibility", new Class[] { Integer.TYPE });
+    } else {
+      bool1 = false;
     }
-    for (;;)
+    jdField_a_of_type_Boolean = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    b = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    c = bool1;
+    d = a(View.class, "SYSTEM_UI_FLAG_LAYOUT_STABLE");
+    e = a(View.class, "SYSTEM_UI_FLAG_HIDE_NAVIGATION");
+    f = a(MediaStore.MediaColumns.class, "WIDTH");
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    g = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    h = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    i = bool1;
+    j = a("android.graphics.SurfaceTexture", "setDefaultBufferSize", new Class[] { Integer.TYPE, Integer.TYPE });
+    k = a("android.graphics.SurfaceTexture", "release", new Class[0]);
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    l = bool1;
+    if (Build.VERSION.SDK_INT >= 12) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    m = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    n = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    o = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    p = bool1;
+    q = a(View.class, "setSystemUiVisibility", new Class[] { Integer.TYPE });
+    try
     {
-      try
+      if ((a(Camera.class, "setFaceDetectionListener", new Class[] { Class.forName("android.hardware.Camera$FaceDetectionListener") })) && (a(Camera.class, "startFaceDetection", new Class[0])) && (a(Camera.class, "stopFaceDetection", new Class[0])))
       {
-        if ((!a(Camera.class, "setFaceDetectionListener", new Class[] { Class.forName("android.hardware.Camera$FaceDetectionListener") })) || (!a(Camera.class, "startFaceDetection", new Class[0])) || (!a(Camera.class, "stopFaceDetection", new Class[0]))) {
-          continue;
-        }
         bool1 = a(Camera.Parameters.class, "getMaxNumDetectedFaces", new Class[0]);
-        if (!bool1) {
-          continue;
+        if (bool1) {
+          bool1 = true;
         }
-        bool1 = true;
       }
-      catch (Throwable localThrowable)
-      {
-        label707:
-        label712:
-        label717:
-        label722:
-        label727:
-        label732:
-        label737:
-        label742:
-        label747:
-        label752:
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        continue;
-      }
-      r = bool1;
-      s = a(DevicePolicyManager.class, "getCameraDisabled", new Class[] { ComponentName.class });
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
+    }
+    catch (Throwable localThrowable)
+    {
+      label374:
+      break label374;
+    }
+    boolean bool1 = false;
+    r = bool1;
+    s = a(DevicePolicyManager.class, "getCameraDisabled", new Class[] { ComponentName.class });
+    if (Build.VERSION.SDK_INT >= 16) {
       bool1 = true;
-      t = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      u = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      v = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      w = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      x = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      y = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        continue;
-      }
-      bool1 = true;
-      z = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      A = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      B = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      C = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      D = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      E = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      F = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        continue;
-      }
-      bool1 = true;
-      G = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      H = bool1;
-      if (Build.VERSION.SDK_INT < 14) {
-        continue;
-      }
-      bool1 = true;
-      I = bool1;
-      if (Build.VERSION.SDK_INT < 12) {
-        continue;
-      }
-      bool1 = true;
-      J = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      K = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      L = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      M = bool1;
-      if (Build.VERSION.SDK_INT < 11) {
-        continue;
-      }
-      bool1 = true;
-      N = bool1;
-      O = a(WindowManager.LayoutParams.class, "rotationAnimation");
-      if (Build.VERSION.SDK_INT < 18) {
-        continue;
-      }
-      bool1 = true;
-      P = bool1;
-      if (Build.VERSION.SDK_INT < 16) {
-        continue;
-      }
-      bool1 = true;
-      Q = bool1;
-      if (Build.VERSION.SDK_INT < 18) {
-        continue;
-      }
-      bool1 = true;
-      R = bool1;
-      if (Build.VERSION.SDK_INT < 17) {
-        continue;
-      }
-      bool1 = bool2;
-      S = bool1;
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label30;
-      bool1 = false;
-      break label44;
-      bool1 = false;
-      break label88;
-      bool1 = false;
-      break label102;
-      bool1 = false;
-      break label116;
-      bool1 = false;
-      break label170;
-      bool1 = false;
-      break label184;
-      bool1 = false;
-      break label198;
-      bool1 = false;
-      break label212;
-      bool1 = false;
-      break label226;
+    } else {
       bool1 = false;
     }
+    t = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    u = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    v = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    w = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    x = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    y = bool1;
+    if (Build.VERSION.SDK_INT >= 17) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    z = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    A = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    B = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    C = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    D = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    E = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    F = bool1;
+    if (Build.VERSION.SDK_INT >= 17) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    G = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    H = bool1;
+    if (Build.VERSION.SDK_INT >= 14) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    I = bool1;
+    if (Build.VERSION.SDK_INT >= 12) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    J = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    K = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    L = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    M = bool1;
+    if (Build.VERSION.SDK_INT >= 11) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    N = bool1;
+    O = a(WindowManager.LayoutParams.class, "rotationAnimation");
+    if (Build.VERSION.SDK_INT >= 18) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    P = bool1;
+    if (Build.VERSION.SDK_INT >= 16) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Q = bool1;
+    if (Build.VERSION.SDK_INT >= 18) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    R = bool1;
+    if (Build.VERSION.SDK_INT >= 17) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    S = bool1;
   }
   
   public static int a()
@@ -377,8 +316,12 @@ public class Utils
     int i1 = GLES20.glGetError();
     if (i1 != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Utils", 2, "checkError error = " + i1);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkError error = ");
+        localStringBuilder.append(i1);
+        QLog.d("Utils", 2, localStringBuilder.toString());
       }
       SmallScreenUtils.a();
     }
@@ -399,30 +342,32 @@ public class Utils
   public static int a(Context paramContext)
   {
     if (jdField_a_of_type_Int == 0) {}
-    for (;;)
+    try
     {
-      try
-      {
-        paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getDeviceConfigurationInfo();
-        if (paramContext != null) {
-          continue;
-        }
-        jdField_a_of_type_Int = 1;
-      }
-      catch (Exception paramContext)
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getDeviceConfigurationInfo();
+      if (paramContext == null)
       {
         jdField_a_of_type_Int = 1;
-        continue;
-        int i1 = 1;
-        continue;
+        break label57;
       }
-      return jdField_a_of_type_Int;
       if (paramContext.reqGlEsVersion < 131072) {
-        continue;
+        break label65;
       }
       i1 = 2;
-      jdField_a_of_type_Int = i1;
     }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        continue;
+        int i1 = 1;
+      }
+    }
+    jdField_a_of_type_Int = i1;
+    break label57;
+    jdField_a_of_type_Int = 1;
+    label57:
+    return jdField_a_of_type_Int;
   }
   
   private static boolean a(Class<?> paramClass, String paramString)
@@ -432,7 +377,11 @@ public class Utils
       paramClass.getDeclaredField(paramString);
       return true;
     }
-    catch (NoSuchFieldException paramClass) {}
+    catch (NoSuchFieldException paramClass)
+    {
+      label8:
+      break label8;
+    }
     return false;
   }
   
@@ -443,20 +392,17 @@ public class Utils
       paramClass.getDeclaredMethod(paramString, paramVarArgs);
       return true;
     }
-    catch (NoSuchMethodException paramClass) {}
+    catch (NoSuchMethodException paramClass)
+    {
+      label9:
+      break label9;
+    }
     return false;
   }
   
   public static boolean a(Object paramObject1, Object paramObject2)
   {
-    if (paramObject1 != paramObject2)
-    {
-      if (paramObject1 == null) {}
-      while (!paramObject1.equals(paramObject2)) {
-        return false;
-      }
-    }
-    return true;
+    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
   }
   
   private static boolean a(String paramString1, String paramString2, Class<?>... paramVarArgs)
@@ -466,13 +412,17 @@ public class Utils
       Class.forName(paramString1).getDeclaredMethod(paramString2, paramVarArgs);
       return true;
     }
-    catch (Throwable paramString1) {}
+    catch (Throwable paramString1)
+    {
+      label12:
+      break label12;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

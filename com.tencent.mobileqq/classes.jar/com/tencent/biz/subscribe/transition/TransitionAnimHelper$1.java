@@ -13,14 +13,18 @@ class TransitionAnimHelper$1
   public boolean onPreDraw()
   {
     TransitionAnimHelper.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    TransitionAnimHelper.a(this.a, TransitionAnimHelper.a(this.a).getLeft(), TransitionAnimHelper.a(this.a).getTop(), TransitionAnimHelper.a(this.a).getWidth(), TransitionAnimHelper.a(this.a).getHeight());
-    QLog.d("TransitionAnimHelper", 4, new Object[] { "initImageEnterAnimation left:" + TransitionAnimHelper.a(this.a).getLeft(), ",top:", Integer.valueOf(TransitionAnimHelper.a(this.a).getTop()), ",width:", Integer.valueOf(TransitionAnimHelper.a(this.a).getWidth()), ",height:", Integer.valueOf(TransitionAnimHelper.a(this.a).getHeight()) });
+    Object localObject = this.a;
+    TransitionAnimHelper.a((TransitionAnimHelper)localObject, TransitionAnimHelper.a((TransitionAnimHelper)localObject).getLeft(), TransitionAnimHelper.a(this.a).getTop(), TransitionAnimHelper.a(this.a).getWidth(), TransitionAnimHelper.a(this.a).getHeight());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initImageEnterAnimation left:");
+    ((StringBuilder)localObject).append(TransitionAnimHelper.a(this.a).getLeft());
+    QLog.d("TransitionAnimHelper", 4, new Object[] { ((StringBuilder)localObject).toString(), ",top:", Integer.valueOf(TransitionAnimHelper.a(this.a).getTop()), ",width:", Integer.valueOf(TransitionAnimHelper.a(this.a).getWidth()), ",height:", Integer.valueOf(TransitionAnimHelper.a(this.a).getHeight()) });
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.transition.TransitionAnimHelper.1
  * JD-Core Version:    0.7.0.1
  */

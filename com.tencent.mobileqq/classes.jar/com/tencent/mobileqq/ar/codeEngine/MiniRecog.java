@@ -7,40 +7,40 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.biz.qrcode.activity.ScannerResult;
-import com.tencent.mobileqq.minicode.RecogUtil;
-import com.tencent.mobileqq.minicode.recog.RecogCallback;
+import com.tencent.mobileqq.ar.arengine.MiniSaveImgListener;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qrscan.AIRect;
+import com.tencent.mobileqq.qrscan.OnMiniCodeDetectCallback;
+import com.tencent.mobileqq.qrscan.OnMiniCodeInitCallback;
+import com.tencent.mobileqq.qrscan.QRScanUtil;
+import com.tencent.mobileqq.qrscan.ScannerResult;
+import com.tencent.mobileqq.qrscan.api.IMiniCodeApi;
+import com.tencent.mobileqq.qrscan.api.IQRScanReportApi;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MiniRecog
-  implements MiniCodeController.OnMiniInitListener, RecogCallback
+  implements OnMiniCodeDetectCallback, OnMiniCodeInitCallback
 {
-  public static boolean c;
+  public static boolean c = true;
   public static boolean d = false;
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   Context jdField_a_of_type_AndroidContentContext;
   Rect jdField_a_of_type_AndroidGraphicsRect;
   Handler jdField_a_of_type_AndroidOsHandler;
-  MiniCodeController jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController;
-  MiniRecogListener jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniRecogListener;
+  MiniSaveImgListener jdField_a_of_type_ComTencentMobileqqArArengineMiniSaveImgListener;
   volatile boolean jdField_a_of_type_Boolean = false;
   int[] jdField_a_of_type_ArrayOfInt;
   int jdField_b_of_type_Int;
   boolean jdField_b_of_type_Boolean = false;
-  int c;
-  
-  static
-  {
-    jdField_c_of_type_Boolean = true;
-  }
+  int c = -2147483648;
   
   public MiniRecog(Handler paramHandler, Context paramContext)
   {
-    this.jdField_c_of_type_Int = -2147483648;
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
@@ -61,82 +61,82 @@ public class MiniRecog
     try
     {
       paramArrayOfByte = a(paramArrayOfByte, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      if (paramArrayOfByte == null) {
-        return null;
-      }
     }
     catch (Throwable paramArrayOfByte)
     {
-      do
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("QRSession.MiniRecog", 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
-          }
-          paramArrayOfByte = null;
-        }
-        try
-        {
-          paramRect = Bitmap.createBitmap(paramArrayOfByte, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height());
-          if (paramRect != paramArrayOfByte) {
-            paramArrayOfByte.recycle();
-          }
-          return paramRect;
-        }
-        catch (Throwable paramArrayOfByte) {}
-      } while (!QLog.isColorLevel());
-      QLog.i("QRSession.MiniRecog", 2, "recognizeDetect exception", paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i("QRSession.MiniRecog", 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
+      }
+      paramArrayOfByte = null;
+    }
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      paramRect = Bitmap.createBitmap(paramArrayOfByte, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height());
+      if (paramRect != paramArrayOfByte) {
+        paramArrayOfByte.recycle();
+      }
+      return paramRect;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QRSession.MiniRecog", 2, "recognizeDetect exception", paramArrayOfByte);
+      }
     }
     return null;
   }
   
   private String a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (!MiniCodeController.a()) {
-      paramArrayOfByte = null;
+    if (!((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).isDecodeInited()) {
+      return null;
     }
-    String str;
-    do
+    paramArrayOfByte = ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).decode(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, 0);
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recognizeNoAI resultStr:");
+      localStringBuilder.append(paramArrayOfByte);
+      QLog.i("QRSession.MiniRecog", 2, localStringBuilder.toString());
+    }
+    if (((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).bValidDecodeResult(paramArrayOfByte)) {
       return paramArrayOfByte;
-      str = this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController.a(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, 0);
-      if (QLog.isColorLevel()) {
-        QLog.i("QRSession.MiniRecog", 2, "recognizeNoAI resultStr:" + str);
-      }
-      paramArrayOfByte = str;
-    } while (MiniCodeController.a(str));
+    }
     return null;
   }
   
   public int a()
   {
     this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController = MiniCodeController.a();
-    this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController.a(this.jdField_a_of_type_AndroidContentContext, hashCode(), "MiniRecog");
-    this.jdField_c_of_type_Int = RecogUtil.getSupportDetectType();
-    if (this.jdField_c_of_type_Int >= 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_b_of_type_Boolean = bool;
-      return 0;
+    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).addInitCallback(this);
+    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).addDetectCallback(this);
+    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).init(this.jdField_a_of_type_AndroidContentContext, hashCode(), "MiniRecog");
+    this.c = ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).getSupportDetectType();
+    boolean bool;
+    if (this.c > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_b_of_type_Boolean = bool;
+    return 0;
   }
   
   public Bitmap a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    Bitmap localBitmap = null;
     try
     {
       if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length != paramInt1 * paramInt2)) {
         this.jdField_a_of_type_ArrayOfInt = new int[paramInt1 * paramInt2];
       }
-      if (MiniCodeController.a(this.jdField_a_of_type_ArrayOfInt, paramArrayOfByte, paramInt1, paramInt2) == 0) {
-        localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_ArrayOfInt, paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      if (((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).yuv2Rgba(this.jdField_a_of_type_ArrayOfInt, paramArrayOfByte, paramInt1, paramInt2) == 0)
+      {
+        paramArrayOfByte = Bitmap.createBitmap(this.jdField_a_of_type_ArrayOfInt, paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+        return paramArrayOfByte;
       }
-      return localBitmap;
     }
     catch (Throwable paramArrayOfByte)
     {
@@ -146,128 +146,148 @@ public class MiniRecog
     return null;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(IRecogListener paramIRecogListener)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniRecogListener = ((MiniRecogListener)paramIRecogListener);
+    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).removeInitCallback(this);
+    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).removeDetectCallback(this);
+    ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).unInit(hashCode(), "MiniRecog");
   }
+  
+  public void a(int paramInt)
+  {
+    long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+    if ((QLog.isColorLevel()) || (((IQRScanReportApi)QRoute.api(IQRScanReportApi.class)).isBaseTestSwitchOn())) {
+      QLog.i("QRSession.MiniRecog", 1, String.format("base_test_scan mini_detect_init consume=%d", new Object[] { Long.valueOf(l) }));
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(new MiniRecog.2(this));
+    ((IQRScanReportApi)QRoute.api(IQRScanReportApi.class)).onDetectInitCost(this.c, (int)l);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new MiniRecog.1(this, paramLong));
+  }
+  
+  public void a(MiniSaveImgListener paramMiniSaveImgListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArArengineMiniSaveImgListener = paramMiniSaveImgListener;
+  }
+  
+  public void a(List<AIRect> paramList, long paramLong) {}
   
   public boolean a()
   {
     return this.jdField_a_of_type_Boolean;
   }
   
-  public boolean a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, Rect paramRect, byte[] paramArrayOfByte2, int paramInt3, int paramInt4, ScannerResult paramScannerResult, ArrayList<AIRect> paramArrayList)
+  public boolean a(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, Rect paramRect, byte[] paramArrayOfByte2, int paramInt3, int paramInt4, ScannerResult paramScannerResult, ArrayList<AIRect> paramArrayList, AtomicInteger paramAtomicInteger)
   {
-    if (!MiniCodeController.a()) {
+    if (!((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).isDecodeInited()) {
       return false;
     }
-    long l1 = System.currentTimeMillis();
+    long l = System.currentTimeMillis();
     int i;
-    if ((MiniCodeController.b()) && (this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController.c())) {
+    if ((((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).isDetectInited()) && (((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).isDetectReady())) {
       i = 1;
+    } else {
+      i = 0;
     }
-    Object localObject1;
-    while ((this.jdField_b_of_type_Boolean) && (i != 0))
+    int j = paramAtomicInteger.get();
+    boolean bool = this.jdField_b_of_type_Boolean;
+    Object localObject2 = "QRSession.MiniRecog";
+    if ((bool) && (i != 0) && (j < 3))
     {
       paramScannerResult.jdField_a_of_type_Boolean = true;
-      long l2 = System.currentTimeMillis();
-      paramArrayOfByte1 = a(paramArrayOfByte1, paramInt1, paramInt2, paramRect);
-      if (paramArrayOfByte1 == null)
-      {
+      Object localObject1 = a(paramArrayOfByte1, paramInt1, paramInt2, paramRect);
+      if (localObject1 == null) {
         return false;
-        i = 0;
       }
-      else
-      {
-        localObject1 = new ArrayList();
-        boolean bool = MiniCodeController.a().a(paramArrayOfByte1, l2, (ArrayList)localObject1);
-        if (QLog.isColorLevel()) {
-          QLog.i("QRSession.MiniRecog", 2, String.format("recognize exec=%b, detectRects=%s", new Object[] { Boolean.valueOf(bool), localObject1 }));
-        }
-        paramArrayOfByte1.recycle();
-        if ((!bool) || (((ArrayList)localObject1).isEmpty())) {
-          break label472;
-        }
-        paramArrayOfByte1 = ((ArrayList)localObject1).iterator();
+      paramArrayOfByte1 = new ArrayList();
+      bool = ((IMiniCodeApi)QRoute.api(IMiniCodeApi.class)).detectSync((Bitmap)localObject1, paramArrayOfByte1);
+      if (QLog.isColorLevel()) {
+        QLog.i("QRSession.MiniRecog", 2, String.format("recognize exec=%b, detectRects=%s", new Object[] { Boolean.valueOf(bool), paramArrayOfByte1 }));
       }
-    }
-    while (paramArrayOfByte1.hasNext())
-    {
-      localObject1 = (AIRect)paramArrayOfByte1.next();
-      if (!((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.isEmpty())
+      ((Bitmap)localObject1).recycle();
+      localObject1 = localObject2;
+      i = j;
+      if (bool)
       {
-        Rect localRect = new Rect(((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect);
-        localRect.offset(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top);
-        Object localObject2 = new AIRect();
-        ((AIRect)localObject2).jdField_a_of_type_AndroidGraphicsRect.set(localRect);
-        ((AIRect)localObject2).jdField_a_of_type_Int = ((AIRect)localObject1).jdField_a_of_type_Int;
-        ((AIRect)localObject2).jdField_a_of_type_Float = ((AIRect)localObject1).jdField_a_of_type_Float;
-        paramArrayList.add(localObject2);
-        if (((AIRect)localObject1).jdField_a_of_type_Int == 2)
+        localObject1 = localObject2;
+        i = j;
+        if (!paramArrayOfByte1.isEmpty())
         {
-          localObject2 = new Rect();
-          localRect = new Rect();
-          localRect.set(0, 0, ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.height(), ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.width());
-          localRect.offset(paramInt3 - ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.top - ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.height(), ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.left);
-          RecogUtil.scaleRect(localRect, (Rect)localObject2, paramInt3, paramInt4, 1.2F);
-          localObject2 = a(paramArrayOfByte2, paramInt3, paramInt4, ((Rect)localObject2).left, ((Rect)localObject2).top, ((Rect)localObject2).width(), ((Rect)localObject2).height());
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
+          Iterator localIterator = paramArrayOfByte1.iterator();
+          paramArrayOfByte1 = (byte[])localObject2;
+          for (;;)
           {
-            localRect.offset(paramRect.left, paramRect.top);
-            paramScannerResult.a((String)localObject2, localRect, ((AIRect)localObject1).jdField_a_of_type_Float, paramInt2, paramInt1);
-            continue;
-            paramArrayOfByte1 = a(paramArrayOfByte2, paramInt3, paramInt4, 0, 0, 0, 0);
-            paramScannerResult.jdField_a_of_type_Boolean = false;
-            if (!TextUtils.isEmpty(paramArrayOfByte1)) {
-              paramScannerResult.a(paramArrayOfByte1);
+            int k = paramInt3;
+            localObject2 = this;
+            localObject1 = paramArrayOfByte1;
+            i = j;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localObject1 = (AIRect)localIterator.next();
+            if (!((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.isEmpty())
+            {
+              Object localObject3 = new Rect(((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect);
+              ((Rect)localObject3).offset(((MiniRecog)localObject2).jdField_a_of_type_AndroidGraphicsRect.left, ((MiniRecog)localObject2).jdField_a_of_type_AndroidGraphicsRect.top);
+              localObject2 = new AIRect();
+              ((AIRect)localObject2).jdField_a_of_type_AndroidGraphicsRect.set((Rect)localObject3);
+              ((AIRect)localObject2).jdField_a_of_type_Int = ((AIRect)localObject1).jdField_a_of_type_Int;
+              ((AIRect)localObject2).jdField_a_of_type_Float = ((AIRect)localObject1).jdField_a_of_type_Float;
+              paramArrayList.add(localObject2);
+              if (((AIRect)localObject1).jdField_a_of_type_Int == 2)
+              {
+                localObject3 = new Rect();
+                localObject2 = new Rect();
+                ((Rect)localObject2).set(0, 0, ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.height(), ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.width());
+                ((Rect)localObject2).offset(k - ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.top - ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.height(), ((AIRect)localObject1).jdField_a_of_type_AndroidGraphicsRect.left);
+                QRScanUtil.a((Rect)localObject2, (Rect)localObject3, k, paramInt4, 1.2F);
+                localObject3 = a(paramArrayOfByte2, paramInt3, paramInt4, ((Rect)localObject3).left, ((Rect)localObject3).top, ((Rect)localObject3).width(), ((Rect)localObject3).height());
+                if (!TextUtils.isEmpty((CharSequence)localObject3))
+                {
+                  ((Rect)localObject2).offset(paramRect.left, paramRect.top);
+                  paramScannerResult.a((String)localObject3, (Rect)localObject2, ((AIRect)localObject1).jdField_a_of_type_Float, paramInt2, paramInt1);
+                }
+                else
+                {
+                  paramAtomicInteger.getAndIncrement();
+                }
+              }
             }
           }
         }
       }
+      paramArrayOfByte1 = (byte[])localObject1;
+      paramInt1 = i;
     }
-    label472:
+    else
+    {
+      paramRect = "QRSession.MiniRecog";
+      paramAtomicInteger.set(0);
+      paramArrayOfByte2 = a(paramArrayOfByte2, paramInt3, paramInt4, 0, 0, 0, 0);
+      paramScannerResult.jdField_a_of_type_Boolean = false;
+      paramArrayOfByte1 = paramRect;
+      paramInt1 = j;
+      if (!TextUtils.isEmpty(paramArrayOfByte2))
+      {
+        paramScannerResult.a(paramArrayOfByte2);
+        paramInt1 = j;
+        paramArrayOfByte1 = paramRect;
+      }
+    }
     if (QLog.isColorLevel()) {
-      QLog.i("QRSession.MiniRecog", 2, String.format("------>recognize Mini suc=%b minicode_timecost=%d result=%s \nrects=%s", new Object[] { Boolean.valueOf(paramScannerResult.c()), Long.valueOf(System.currentTimeMillis() - l1), paramScannerResult, paramArrayList }));
+      QLog.i(paramArrayOfByte1, 2, String.format("------>recognize Mini suc=%b minicode_timecost=%d lastHitAiButMissDecodeCnt=%d result=%s \nrects=%s", new Object[] { Boolean.valueOf(paramScannerResult.c()), Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(paramInt1), paramScannerResult, paramArrayList }));
     }
     return paramScannerResult.c();
   }
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController.c(this);
-      this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController.b(this);
-      this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController.a(hashCode(), "MiniRecog");
-    }
-  }
-  
-  public void b(int paramInt) {}
-  
-  public void onDetectReady(int paramInt)
-  {
-    long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-    if ((QLog.isColorLevel()) || (MiniScanReport.a())) {
-      QLog.i("QRSession.MiniRecog", 1, String.format("base_test_scan mini_detect_init consume=%d", new Object[] { Long.valueOf(l) }));
-    }
-    this.jdField_a_of_type_AndroidOsHandler.post(new MiniRecog.2(this));
-    MiniScanReport.d(this.jdField_c_of_type_Int, (int)l);
-  }
-  
-  public void onDetectResult(List<AIRect> paramList, long paramLong) {}
-  
-  public void onSaveImg(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new MiniRecog.1(this, paramLong));
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.codeEngine.MiniRecog
  * JD-Core Version:    0.7.0.1
  */

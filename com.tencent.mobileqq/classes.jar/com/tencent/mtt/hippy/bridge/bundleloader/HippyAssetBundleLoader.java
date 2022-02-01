@@ -45,8 +45,13 @@ public class HippyAssetBundleLoader
   
   public String getPath()
   {
-    if ((this.mAssetPath != null) && (!this.mAssetPath.startsWith("assets://"))) {
-      return "assets://" + this.mAssetPath;
+    Object localObject = this.mAssetPath;
+    if ((localObject != null) && (!((String)localObject).startsWith("assets://")))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("assets://");
+      ((StringBuilder)localObject).append(this.mAssetPath);
+      return ((StringBuilder)localObject).toString();
     }
     return this.mAssetPath;
   }
@@ -62,7 +67,25 @@ public class HippyAssetBundleLoader
       return false;
     }
     AssetManager localAssetManager = this.mContext.getAssets();
-    return paramHippyBridge.runScriptFromAssets(this.mAssetPath, localAssetManager, this.mCanUseCodeCache, this.mCodeCacheTag, paramNativeCallback);
+    String str2 = this.mAssetPath;
+    String str1 = "asset:";
+    Object localObject = str2;
+    if (!str2.startsWith("asset:"))
+    {
+      if (this.mAssetPath.startsWith("/"))
+      {
+        localObject = new StringBuilder();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        str1 = "asset:/";
+      }
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append(this.mAssetPath);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return paramHippyBridge.runScriptFromUri((String)localObject, localAssetManager, this.mCanUseCodeCache, this.mCodeCacheTag, paramNativeCallback);
   }
   
   public void setCodeCache(boolean paramBoolean, String paramString)
@@ -73,7 +96,7 @@ public class HippyAssetBundleLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.bundleloader.HippyAssetBundleLoader
  * JD-Core Version:    0.7.0.1
  */

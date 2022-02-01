@@ -17,9 +17,9 @@ public class DetailCommentSegment$CommentTextOnTouchListener
     int i = paramMotionEvent.getAction();
     if ((i == 1) || (i == 0))
     {
-      Object localObject = ((TextView)paramView).getText();
-      localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
       paramView = (TextView)paramView;
+      Object localObject = paramView.getText();
+      localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
       int j = (int)paramMotionEvent.getX();
       int k = (int)paramMotionEvent.getY();
       int m = paramView.getTotalPaddingLeft();
@@ -42,7 +42,7 @@ public class DetailCommentSegment$CommentTextOnTouchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailCommentSegment.CommentTextOnTouchListener
  * JD-Core Version:    0.7.0.1
  */

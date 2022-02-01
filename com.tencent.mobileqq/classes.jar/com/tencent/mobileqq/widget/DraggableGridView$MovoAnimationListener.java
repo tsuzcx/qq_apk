@@ -38,35 +38,30 @@ class DraggableGridView$MovoAnimationListener
         {
           paramAnimation = (GridView)paramAnimation;
           int j = 0;
-          if (j < paramAnimation.getChildCount())
+          while (j < paramAnimation.getChildCount())
           {
             paramAnimation.getChildAt(j).clearAnimation();
             if ((((Integer)paramAnimation.getTag()).intValue() == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y) && (j == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x) && (!this.jdField_a_of_type_Boolean)) {
               paramAnimation.getChildAt(j).setVisibility(4);
-            }
-            for (;;)
-            {
-              j += 1;
-              break;
+            } else {
               paramAnimation.getChildAt(j).setVisibility(0);
             }
+            j += 1;
           }
         }
         i += 1;
       }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label216;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x);
+        DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).set(-1, -1);
       }
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x);
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).set(-1, -1);
-    }
-    for (;;)
-    {
+      else
+      {
+        DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.b.y, this.b.x);
+      }
       DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
       DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, false);
-      return;
-      label216:
-      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.b.y, this.b.x);
     }
   }
   
@@ -76,7 +71,7 @@ class DraggableGridView$MovoAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DraggableGridView.MovoAnimationListener
  * JD-Core Version:    0.7.0.1
  */

@@ -16,51 +16,48 @@ class QQGameTroopManager$2
 {
   QQGameTroopManager$2(QQGameTroopManager paramQQGameTroopManager) {}
   
-  public HashSet<String> a()
+  public HashSet<String> getFilterCmds()
   {
     return new QQGameTroopManager.2.1(this);
   }
   
-  public void a(Intent paramIntent, String paramString, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp)
+  public void onTrpcRsp(Intent paramIntent, String paramString, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp)
   {
-    int i = 0;
     QQGameTroopManager.b.clear();
-    if ((paramLong == 0L) && (paramTrpcInovkeRsp != null) && (paramTrpcInovkeRsp.data.get() != null)) {}
-    try
-    {
-      paramIntent = new QQGameMemberSelectInfo.QueryOldFriendsRsp();
-      paramIntent.mergeFrom(paramTrpcInovkeRsp.data.get().toByteArray());
-      if (paramIntent.uinList.get() != null) {
-        QQGameTroopManager.b.addAll(paramIntent.uinList.get());
-      }
-      this.a.b();
-      this.a.a("friends");
-      if (QLog.isColorLevel())
+    int i = 0;
+    if ((paramLong == 0L) && (paramTrpcInovkeRsp != null) && (paramTrpcInovkeRsp.data.get() != null)) {
+      try
       {
-        paramIntent = new StringBuilder().append("onTrpcRsp,:gameFriendList size:");
-        if (QQGameTroopManager.b == null) {
-          QLog.i("QQGameTroopManager", 2, i + ",cost:" + (System.currentTimeMillis() - QQGameTroopManager.a(this.a)));
+        paramIntent = new QQGameMemberSelectInfo.QueryOldFriendsRsp();
+        paramIntent.mergeFrom(paramTrpcInovkeRsp.data.get().toByteArray());
+        if (paramIntent.uinList.get() != null) {
+          QQGameTroopManager.b.addAll(paramIntent.uinList.get());
         }
       }
-      else
-      {
-        return;
-      }
-    }
-    catch (Exception paramIntent)
-    {
-      for (;;)
+      catch (Exception paramIntent)
       {
         QLog.e("QQGameTroopManager", 1, paramIntent, new Object[0]);
-        continue;
+      }
+    }
+    this.a.b();
+    this.a.a("friends");
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onTrpcRsp,:gameFriendList size:");
+      if (QQGameTroopManager.b != null) {
         i = QQGameTroopManager.b.size();
       }
+      paramIntent.append(i);
+      paramIntent.append(",cost:");
+      paramIntent.append(System.currentTimeMillis() - QQGameTroopManager.a(this.a));
+      QLog.i("QQGameTroopManager", 2, paramIntent.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.util.QQGameTroopManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -39,15 +39,12 @@ public class GetShareVideoListRequest
     try
     {
       localRspGetShareVideoList.mergeFrom(paramArrayOfByte);
-      return new GetShareVideoListResponse(this.jdField_b_of_type_JavaLangString, localRspGetShareVideoList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetShareVideoListResponse(this.jdField_b_of_type_JavaLangString, localRspGetShareVideoList);
   }
   
   public String a()
@@ -55,7 +52,7 @@ public class GetShareVideoListRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetShareVideoList localReqGetShareVideoList = new qqstory_service.ReqGetShareVideoList();
     if (this.jdField_b_of_type_Long != -1L) {
@@ -72,12 +69,23 @@ public class GetShareVideoListRequest
   
   public String toString()
   {
-    return "GetShareVideoListRequest{, uid=" + this.jdField_b_of_type_JavaLangString + "count=" + this.jdField_c_of_type_Int + "timeZoneOffset=" + this.d + ", startCookie='" + this.jdField_c_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetShareVideoListRequest{, uid=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("count=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("timeZoneOffset=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", startCookie='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetShareVideoListRequest
  * JD-Core Version:    0.7.0.1
  */

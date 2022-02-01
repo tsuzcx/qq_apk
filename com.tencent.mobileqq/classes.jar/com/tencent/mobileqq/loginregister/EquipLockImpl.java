@@ -8,7 +8,7 @@ import com.tencent.image.ApngDrawable;
 import com.tencent.mobileqq.equipmentlock.EquipLockWebEntrance;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
@@ -79,7 +79,7 @@ public class EquipLockImpl
   
   public void a(Context paramContext, String paramString, long paramLong, Intent paramIntent, boolean paramBoolean, int paramInt)
   {
-    VasWebviewUtil.openQQBrowserActivity(paramContext, paramString, paramLong, paramIntent, paramBoolean, paramInt);
+    VasWebviewUtil.a(paramContext, paramString, paramLong, paramIntent, paramBoolean, paramInt);
   }
   
   public void a(String paramString, ApngDrawable paramApngDrawable)
@@ -89,7 +89,7 @@ public class EquipLockImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.EquipLockImpl
  * JD-Core Version:    0.7.0.1
  */

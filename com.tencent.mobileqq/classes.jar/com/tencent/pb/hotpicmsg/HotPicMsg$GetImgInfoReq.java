@@ -27,14 +27,15 @@ public final class HotPicMsg$GetImgInfoReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 64, 74, 80, 90 }, new String[] { "bytes_session_id", "uint64_src_uin", "uint32_src_term", "uint32_build_ver", "uint32_pic_tag", "uint32_start_pic_index", "uint32_end_pic_index", "uint32_need_update", "bytes_client_ver", "uint32_search_req", "str_search_word" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), "" }, GetImgInfoReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 64, 74, 80, 90 }, new String[] { "bytes_session_id", "uint64_src_uin", "uint32_src_term", "uint32_build_ver", "uint32_pic_tag", "uint32_start_pic_index", "uint32_end_pic_index", "uint32_need_update", "bytes_client_ver", "uint32_search_req", "str_search_word" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, localInteger, "" }, GetImgInfoReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.hotpicmsg.HotPicMsg.GetImgInfoReq
  * JD-Core Version:    0.7.0.1
  */

@@ -17,15 +17,15 @@ class SessionClearFragment$SessionHolder
   public SessionClearFragment$SessionHolder(SessionClearFragment paramSessionClearFragment, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364726));
-    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368603));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372115));
-    this.b = ((TextView)paramView.findViewById(2131378226));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364613));
+    this.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)paramView.findViewById(2131368343));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371697));
+    this.b = ((TextView)paramView.findViewById(2131377641));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment.SessionHolder
  * JD-Core Version:    0.7.0.1
  */

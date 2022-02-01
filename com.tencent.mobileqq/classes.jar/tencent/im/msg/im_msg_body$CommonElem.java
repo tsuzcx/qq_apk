@@ -17,13 +17,14 @@ public final class im_msg_body$CommonElem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_service_type", "bytes_pb_elem", "uint32_business_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, CommonElem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_service_type", "bytes_pb_elem", "uint32_business_type" }, new Object[] { localInteger, localByteStringMicro, localInteger }, CommonElem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.msg.im_msg_body.CommonElem
  * JD-Core Version:    0.7.0.1
  */

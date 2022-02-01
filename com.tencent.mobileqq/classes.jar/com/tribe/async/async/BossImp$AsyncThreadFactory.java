@@ -18,15 +18,19 @@ class BossImp$AsyncThreadFactory
     if (paramRunnable == null) {
       return new Thread("no_name");
     }
-    StringBuilder localStringBuilder = new StringBuilder().append("type_").append(this.type).append("_index");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("type_");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append("_index");
     int i = this.index;
     this.index = (i + 1);
-    return new Thread(paramRunnable, i);
+    localStringBuilder.append(i);
+    return new Thread(paramRunnable, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.BossImp.AsyncThreadFactory
  * JD-Core Version:    0.7.0.1
  */

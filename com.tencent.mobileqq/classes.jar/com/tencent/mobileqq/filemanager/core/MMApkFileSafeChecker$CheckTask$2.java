@@ -14,36 +14,41 @@ class MMApkFileSafeChecker$CheckTask$2
   
   public void onResult(long paramLong, Map<Integer, IteApkInfoResp> paramMap)
   {
-    int k = 2;
-    int m = 0;
-    String str3 = "";
-    String str4 = "";
-    int j = k;
-    int i = m;
-    String str2 = str3;
-    String str1 = str4;
     if (paramMap != null)
     {
       paramMap = (IteApkInfoResp)paramMap.get(Integer.valueOf(this.a.a));
-      j = k;
-      i = m;
-      str2 = str3;
-      str1 = str4;
       if (paramMap != null)
       {
-        j = (int)paramMap.getErrorCode();
-        i = paramMap.getSafeLevel();
-        str2 = paramMap.getRiskTips();
-        str1 = paramMap.getHandleUrl();
+        i = (int)paramMap.getErrorCode();
+        j = paramMap.getSafeLevel();
+        str = paramMap.getRiskTips();
+        paramMap = paramMap.getHandleUrl();
+        break label76;
       }
     }
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] <" + this.a.a + "> on checkresult. errCode:" + j + " safeLevel:" + i + " tipString:" + str2 + " jumpDetailUrl:" + str1);
-    new Handler(Looper.getMainLooper()).post(new MMApkFileSafeChecker.CheckTask.2.1(this, j, i, str2, str1));
+    String str = "";
+    paramMap = str;
+    int i = 2;
+    int j = 0;
+    label76:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MMApkCheck] <");
+    localStringBuilder.append(this.a.a);
+    localStringBuilder.append("> on checkresult. errCode:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" safeLevel:");
+    localStringBuilder.append(j);
+    localStringBuilder.append(" tipString:");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" jumpDetailUrl:");
+    localStringBuilder.append(paramMap);
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, localStringBuilder.toString());
+    new Handler(Looper.getMainLooper()).post(new MMApkFileSafeChecker.CheckTask.2.1(this, i, j, str, paramMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.CheckTask.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,6 +14,7 @@ import com.tencent.tav.extractor.AssetExtractor;
 import com.tencent.tav.extractor.ExtractorUtils;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public abstract class Asset<Track extends AssetTrack>
   private boolean containsFragments;
   private CMTime duration = CMTime.CMTimeZero;
   private boolean exportable;
+  protected HashMap<String, Object> extraInfo = new HashMap();
   protected AssetExtractor extractor;
   private int extractorRetryCount = 3;
   private boolean hasProtectedContent;
@@ -66,10 +68,16 @@ public abstract class Asset<Track extends AssetTrack>
     if (this.preferRotation != 0)
     {
       this.preferredTransform = new Matrix();
-      while (this.preferRotation < 0) {
-        this.preferRotation += 4;
+      int i;
+      for (;;)
+      {
+        i = this.preferRotation;
+        if (i >= 0) {
+          break;
+        }
+        this.preferRotation = (i + 4);
       }
-      this.preferRotation %= 4;
+      this.preferRotation = (i % 4);
       DecoderUtils.getRotationMatrix(this.preferredTransform, this.preferRotation, this.naturalSize.width, this.naturalSize.height);
     }
   }
@@ -84,18 +92,20 @@ public abstract class Asset<Track extends AssetTrack>
     try
     {
       initMembers();
-      Logger.v("Asset", "tryInitMembers: try count = " + (3 - this.extractorRetryCount));
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Logger.e("Asset", "Asset: initMembers failed, path = " + getSourcePath(), localException);
-        trySleep(100);
-        tryInitMembers();
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("Asset: initMembers failed, path = ");
+      localStringBuilder2.append(getSourcePath());
+      Logger.e("Asset", localStringBuilder2.toString(), localException);
+      trySleep(100);
+      tryInitMembers();
     }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("tryInitMembers: try count = ");
+    localStringBuilder1.append(3 - this.extractorRetryCount);
+    Logger.v("Asset", localStringBuilder1.toString());
   }
   
   private void trySleep(int paramInt)
@@ -122,9 +132,9 @@ public abstract class Asset<Track extends AssetTrack>
       this.tracks = new ArrayList();
     }
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      Object localObject = this.extractor.getTrackFormat(i).getString("mime");
+      localObject = this.extractor.getTrackFormat(i).getString("mime");
       int k;
       if (((String)localObject).startsWith("video/"))
       {
@@ -135,21 +145,20 @@ public abstract class Asset<Track extends AssetTrack>
         ((AssetTrack)localObject).setPreferredRotation(this.preferRotation);
         this.tracks.add(localObject);
       }
-      for (;;)
+      else if (((String)localObject).startsWith("audio/"))
       {
-        i += 1;
-        break;
-        if (((String)localObject).startsWith("audio/"))
-        {
-          k = this.trackIndex;
-          this.trackIndex = (k + 1);
-          localObject = new AssetTrack(this, k, 2, new CMTimeRange(CMTime.CMTimeZero, getAudioDuration()));
-          ((AssetTrack)localObject).setPreferredVolume(this.preferredVolume);
-          this.tracks.add(localObject);
-        }
+        k = this.trackIndex;
+        this.trackIndex = (k + 1);
+        localObject = new AssetTrack(this, k, 2, new CMTimeRange(CMTime.CMTimeZero, getAudioDuration()));
+        ((AssetTrack)localObject).setPreferredVolume(this.preferredVolume);
+        this.tracks.add(localObject);
       }
+      i += 1;
     }
-    Logger.d("Asset", "Asset createTracks finish, has track count: " + this.tracks);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Asset createTracks finish, has track count: ");
+    ((StringBuilder)localObject).append(this.tracks);
+    Logger.d("Asset", ((StringBuilder)localObject).toString());
   }
   
   protected CMTime getAudioDuration()
@@ -174,6 +183,11 @@ public abstract class Asset<Track extends AssetTrack>
       return localCMTime1;
     }
     finally {}
+  }
+  
+  public HashMap<String, Object> getExtraInfo()
+  {
+    return this.extraInfo;
   }
   
   public AssetExtractor getExtractor()
@@ -230,39 +244,22 @@ public abstract class Asset<Track extends AssetTrack>
     return this.preferredVolume;
   }
   
-  /* Error */
   public String getSourcePath()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 77	com/tencent/tav/asset/Asset:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 77	com/tencent/tav/asset/Asset:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   13: invokevirtual 281	com/tencent/tav/extractor/AssetExtractor:getSourcePath	()Ljava/lang/String;
-    //   16: astore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: aload_1
-    //   20: areturn
-    //   21: aconst_null
-    //   22: astore_1
-    //   23: goto -6 -> 17
-    //   26: astore_1
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_1
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	Asset
-    //   16	7	1	str	String
-    //   26	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	26	finally
+    try
+    {
+      if (this.extractor != null)
+      {
+        String str = this.extractor.getSourcePath();
+        return str;
+      }
+      return null;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public int getTrackCount()
@@ -270,41 +267,22 @@ public abstract class Asset<Track extends AssetTrack>
     return this.trackCount;
   }
   
-  /* Error */
   public MediaFormat getTrackFormat(int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 77	com/tencent/tav/asset/Asset:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   6: ifnull +16 -> 22
-    //   9: aload_0
-    //   10: getfield 77	com/tencent/tav/asset/Asset:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   13: iload_1
-    //   14: invokevirtual 188	com/tencent/tav/extractor/AssetExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
-    //   17: astore_2
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: aload_2
-    //   21: areturn
-    //   22: aconst_null
-    //   23: astore_2
-    //   24: goto -6 -> 18
-    //   27: astore_2
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: aload_2
-    //   31: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	32	0	this	Asset
-    //   0	32	1	paramInt	int
-    //   17	7	2	localMediaFormat	MediaFormat
-    //   27	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	18	27	finally
+    try
+    {
+      if (this.extractor != null)
+      {
+        MediaFormat localMediaFormat = this.extractor.getTrackFormat(paramInt);
+        return localMediaFormat;
+      }
+      return null;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public List<Track> getTracks()
@@ -357,6 +335,11 @@ public abstract class Asset<Track extends AssetTrack>
     return this.readable;
   }
   
+  public void putExtraInfoKeyValue(String paramString, Object paramObject)
+  {
+    this.extraInfo.put(paramString, paramObject);
+  }
+  
   public void selectTrack(int paramInt)
   {
     try
@@ -375,12 +358,13 @@ public abstract class Asset<Track extends AssetTrack>
   
   public AssetTrack trackWithTrackID(int paramInt)
   {
-    if (this.tracks != null)
+    Object localObject = this.tracks;
+    if (localObject != null)
     {
-      Iterator localIterator = this.tracks.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AssetTrack localAssetTrack = (AssetTrack)localIterator.next();
+        AssetTrack localAssetTrack = (AssetTrack)((Iterator)localObject).next();
         if ((localAssetTrack != null) && (localAssetTrack.getTrackID() == paramInt)) {
           return localAssetTrack;
         }
@@ -414,7 +398,7 @@ public abstract class Asset<Track extends AssetTrack>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.asset.Asset
  * JD-Core Version:    0.7.0.1
  */

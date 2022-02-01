@@ -12,6 +12,7 @@ public class ConfigUtil
     localLiveEngineConfig.wns_appid = paramLiveConfig.wns_appid;
     localLiveEngineConfig.opensdk_appid = paramLiveConfig.opensdk_appid;
     localLiveEngineConfig.tpplayer_platform = paramLiveConfig.tpplayer_platform;
+    localLiveEngineConfig.isNeedInitTPPlatform = paramLiveConfig.initTpplatform;
     localLiveEngineConfig.channelID = paramLiveConfig.channelID;
     localLiveEngineConfig.clientType = paramLiveConfig.clientType;
     localLiveEngineConfig.isDebug = paramLiveConfig.isDebug;
@@ -23,12 +24,13 @@ public class ConfigUtil
     localLiveEngineConfig.liteSdk = paramLiveConfig.liteSdk;
     localLiveEngineConfig.tCloudId = paramLiveConfig.tCloudId;
     localLiveEngineConfig.tCloudLice = paramLiveConfig.tCloudLice;
+    localLiveEngineConfig.isHoldPlayerLog = paramLiveConfig.isHoldPlayerLog;
     return localLiveEngineConfig;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.util.ConfigUtil
  * JD-Core Version:    0.7.0.1
  */

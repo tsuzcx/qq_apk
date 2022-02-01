@@ -5,11 +5,11 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.mobileqq.R.styleable;
 
 public class SimpleCircleIndicator
@@ -18,7 +18,7 @@ public class SimpleCircleIndicator
 {
   private int jdField_a_of_type_Int = 30;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
+  private ViewPager jdField_a_of_type_AndroidxViewpagerWidgetViewPager;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -73,58 +73,46 @@ public class SimpleCircleIndicator
     this.g = Math.max(this.e, this.f);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     paramAttributeSet = this.jdField_a_of_type_AndroidGraphicsPaint;
-    if (this.jdField_a_of_type_Boolean)
-    {
+    if (this.jdField_a_of_type_Boolean) {
       paramContext = Paint.Style.STROKE;
-      paramAttributeSet.setStyle(paramContext);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-      this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-      paramAttributeSet = this.jdField_b_of_type_AndroidGraphicsPaint;
-      if (!this.jdField_b_of_type_Boolean) {
-        break label296;
-      }
-    }
-    label296:
-    for (paramContext = Paint.Style.STROKE;; paramContext = Paint.Style.FILL)
-    {
-      paramAttributeSet.setStyle(paramContext);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.i);
-      return;
+    } else {
       paramContext = Paint.Style.FILL;
-      break;
     }
+    paramAttributeSet.setStyle(paramContext);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.e);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+    paramAttributeSet = this.jdField_b_of_type_AndroidGraphicsPaint;
+    if (this.jdField_b_of_type_Boolean) {
+      paramContext = Paint.Style.STROKE;
+    } else {
+      paramContext = Paint.Style.FILL;
+    }
+    paramAttributeSet.setStyle(paramContext);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.i);
   }
   
   private int b()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager == null) {
+      if (this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager == null) {
         return 0;
       }
-      int n = this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getAdapter().getCount();
-      m = n;
-      if (a() > 0)
+      int m = this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.getAdapter().getCount();
+      if ((a() > 0) && (a() < m))
       {
-        m = n;
-        if (a() < n) {
-          m = a();
-        }
+        m = a();
+        return m;
       }
+      return m;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int m = 0;
-      }
-    }
-    return m;
+    catch (Exception localException) {}
+    return 0;
   }
   
   public int a()
@@ -132,77 +120,93 @@ public class SimpleCircleIndicator
     return this.k;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     int m = getWidth();
-    int i1 = b();
-    if (i1 <= 1) {}
-    label283:
-    for (;;)
-    {
+    int i3 = b();
+    if (i3 <= 1) {
       return;
-      int n = this.e + (i1 - 1) * (this.f + this.jdField_a_of_type_Int + this.c * 2) + this.jdField_b_of_type_Int * 2;
-      int i2;
-      if (this.j == 0)
+    }
+    int n = this.e;
+    int i1 = this.f;
+    int i5 = this.jdField_a_of_type_Int;
+    int i2 = this.c;
+    int i4 = this.jdField_b_of_type_Int;
+    i5 = (i3 - 1) * (i5 + i1 + i2 * 2) + n + i4 * 2;
+    if (this.j == 0)
+    {
+      d1 = (m - i5) / 2.0F + i4 + n / 2;
+      Double.isNaN(d1);
+    }
+    else
+    {
+      d1 = (m - i5) / 2.0F + i2 + i1 / 2;
+      Double.isNaN(d1);
+    }
+    m = (int)(d1 + 0.5D);
+    double d1 = getHeight() / 2.0F;
+    Double.isNaN(d1);
+    i4 = (int)(d1 + 0.5D);
+    n = 0;
+    while (n < i3) {
+      if (n == this.j)
       {
-        m = (int)((m - n) / 2.0F + this.jdField_b_of_type_Int + this.e / 2 + 0.5D);
-        i2 = (int)(getHeight() / 2.0F + 0.5D);
-        n = 0;
-      }
-      for (;;)
-      {
-        if (n >= i1) {
-          break label283;
-        }
-        if (n == this.j)
-        {
-          paramCanvas.drawCircle(m, i2, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-          m += this.jdField_a_of_type_Int + this.c + this.jdField_b_of_type_Int + (this.f + this.e) / 2;
-          n += 1;
-          continue;
-          m = (int)((m - n) / 2.0F + this.c + this.f / 2 + 0.5D);
-          break;
-        }
-        paramCanvas.drawCircle(m, i2, this.c, this.jdField_b_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawCircle(m, i4, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+        m += this.jdField_a_of_type_Int + this.c + this.jdField_b_of_type_Int + (this.f + this.e) / 2;
         n += 1;
-        if (n == this.j) {
-          m += this.jdField_a_of_type_Int + this.c + this.jdField_b_of_type_Int + (this.f + this.e) / 2;
-        } else {
-          m += this.jdField_a_of_type_Int + this.c * 2 + this.f;
+      }
+      else
+      {
+        paramCanvas.drawCircle(m, i4, this.c, this.jdField_b_of_type_AndroidGraphicsPaint);
+        i2 = n + 1;
+        if (i2 == this.j)
+        {
+          n = this.jdField_a_of_type_Int + this.c + this.jdField_b_of_type_Int;
+          i1 = (this.f + this.e) / 2;
         }
+        else
+        {
+          n = this.jdField_a_of_type_Int + this.c * 2;
+          i1 = this.f;
+        }
+        m += n + i1;
+        n = i2;
       }
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int i1 = View.MeasureSpec.getMode(paramInt1);
-    int m = View.MeasureSpec.getSize(paramInt1);
-    int n = View.MeasureSpec.getMode(paramInt2);
-    paramInt1 = View.MeasureSpec.getSize(paramInt2);
-    if (i1 == 1073741824) {
-      if (n == 1073741824) {
-        paramInt2 = m;
-      }
-    }
-    for (;;)
+    int n = View.MeasureSpec.getMode(paramInt1);
+    paramInt1 = View.MeasureSpec.getSize(paramInt1);
+    int m = View.MeasureSpec.getMode(paramInt2);
+    paramInt2 = View.MeasureSpec.getSize(paramInt2);
+    if (n == 1073741824)
     {
-      setMeasuredDimension(paramInt2, paramInt1);
-      return;
-      paramInt1 = this.d * 2 + this.g;
-      paramInt2 = m;
-      continue;
-      paramInt2 = b();
-      m = this.e;
-      m = (paramInt2 - 1) * (this.f + this.jdField_a_of_type_Int + this.c * 2) + m + this.jdField_b_of_type_Int * 2;
-      paramInt2 = m;
-      if (n != 1073741824)
-      {
-        paramInt1 = this.d * 2 + this.g;
-        paramInt2 = m;
+      if (m == 1073741824) {
+        break label137;
       }
+      m = this.d * 2;
+      paramInt2 = this.g;
     }
+    else
+    {
+      paramInt1 = b();
+      n = this.e;
+      int i1 = this.f;
+      int i2 = this.jdField_a_of_type_Int;
+      int i3 = this.c;
+      paramInt1 = this.jdField_b_of_type_Int * 2 + (n + (paramInt1 - 1) * (i1 + i2 + i3 * 2));
+      if (m == 1073741824) {
+        break label137;
+      }
+      m = this.d * 2;
+      paramInt2 = this.g;
+    }
+    paramInt2 = m + paramInt2;
+    label137:
+    setMeasuredDimension(paramInt1, paramInt2);
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -215,12 +219,12 @@ public class SimpleCircleIndicator
     if (paramInt >= b()) {
       m = b() - 1;
     }
-    if (b() > 0) {}
-    for (this.j = (m % b());; this.j = -1)
-    {
-      invalidate();
-      return;
+    if (b() > 0) {
+      this.j = (m % b());
+    } else {
+      this.j = -1;
     }
+    invalidate();
   }
   
   public void setCurrentItem(int paramInt)
@@ -236,19 +240,21 @@ public class SimpleCircleIndicator
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    if ((paramViewPager == null) || (paramViewPager.getAdapter() == null)) {
-      throw new IllegalStateException("you must initial the viewpager with adapter");
+    if ((paramViewPager != null) && (paramViewPager.getAdapter() != null))
+    {
+      paramViewPager.removeOnPageChangeListener(this);
+      paramViewPager.addOnPageChangeListener(this);
+      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager = paramViewPager;
+      paramViewPager.getAdapter().registerDataSetObserver(new SimpleCircleIndicator.1(this, paramViewPager));
+      setCurrentItem(0);
+      return;
     }
-    paramViewPager.removeOnPageChangeListener(this);
-    paramViewPager.addOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
-    paramViewPager.getAdapter().registerDataSetObserver(new SimpleCircleIndicator.1(this, paramViewPager));
-    setCurrentItem(0);
+    throw new IllegalStateException("you must initial the viewpager with adapter");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.widget.SimpleCircleIndicator
  * JD-Core Version:    0.7.0.1
  */

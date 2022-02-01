@@ -11,12 +11,12 @@ class TroopMemberListActivity$31
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.postDelayed(new TroopMemberListActivity.SearchDialogDismissRunnable(this.a), 150L);
+    this.a.mHandler.postDelayed(new TroopMemberListActivity.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.31
  * JD-Core Version:    0.7.0.1
  */

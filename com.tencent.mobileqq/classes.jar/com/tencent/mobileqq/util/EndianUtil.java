@@ -21,8 +21,8 @@ public class EndianUtil
   
   public static int a(byte[] paramArrayOfByte, int paramInt)
   {
-    int j = 0;
     int i = paramInt;
+    int j = 0;
     while (i < paramInt + 4)
     {
       j = j << 8 | a(paramArrayOfByte[i]);
@@ -68,12 +68,12 @@ public class EndianUtil
     int i = (byte)(paramInt & 0xFF);
     int j = (byte)((0xFF00 & paramInt) >> 8);
     int k = (byte)((0xFF0000 & paramInt) >> 16);
-    return new byte[] { (byte)((0xFF000000 & paramInt) >> 24), k, j, i };
+    return new byte[] { (byte)((paramInt & 0xFF000000) >> 24), k, j, i };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.EndianUtil
  * JD-Core Version:    0.7.0.1
  */

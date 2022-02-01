@@ -57,17 +57,17 @@ public final class LinkifyCompat
   @SuppressLint({"NewApi"})
   public static void addLinks(@NonNull TextView paramTextView, @NonNull Pattern paramPattern, @Nullable String paramString, @Nullable String[] paramArrayOfString, @Nullable Linkify.MatchFilter paramMatchFilter, @Nullable Linkify.TransformFilter paramTransformFilter)
   {
-    if (shouldAddLinksFallbackToFramework()) {
-      Linkify.addLinks(paramTextView, paramPattern, paramString, paramArrayOfString, paramMatchFilter, paramTransformFilter);
-    }
-    SpannableString localSpannableString;
-    do
+    if (shouldAddLinksFallbackToFramework())
     {
+      Linkify.addLinks(paramTextView, paramPattern, paramString, paramArrayOfString, paramMatchFilter, paramTransformFilter);
       return;
-      localSpannableString = SpannableString.valueOf(paramTextView.getText());
-    } while (!addLinks(localSpannableString, paramPattern, paramString, paramArrayOfString, paramMatchFilter, paramTransformFilter));
-    paramTextView.setText(localSpannableString);
-    addLinkMovementMethod(paramTextView);
+    }
+    SpannableString localSpannableString = SpannableString.valueOf(paramTextView.getText());
+    if (addLinks(localSpannableString, paramPattern, paramString, paramArrayOfString, paramMatchFilter, paramTransformFilter))
+    {
+      paramTextView.setText(localSpannableString);
+      addLinkMovementMethod(paramTextView);
+    }
   }
   
   public static boolean addLinks(@NonNull Spannable paramSpannable, int paramInt)
@@ -136,11 +136,8 @@ public final class LinkifyCompat
   @SuppressLint({"NewApi"})
   public static boolean addLinks(@NonNull Spannable paramSpannable, @NonNull Pattern paramPattern, @Nullable String paramString, @Nullable String[] paramArrayOfString, @Nullable Linkify.MatchFilter paramMatchFilter, @Nullable Linkify.TransformFilter paramTransformFilter)
   {
-    boolean bool2;
-    if (shouldAddLinksFallbackToFramework())
-    {
-      bool2 = Linkify.addLinks(paramSpannable, paramPattern, paramString, paramArrayOfString, paramMatchFilter, paramTransformFilter);
-      return bool2;
+    if (shouldAddLinksFallbackToFramework()) {
+      return Linkify.addLinks(paramSpannable, paramPattern, paramString, paramArrayOfString, paramMatchFilter, paramTransformFilter);
     }
     String str = paramString;
     if (paramString == null) {
@@ -158,39 +155,36 @@ public final class LinkifyCompat
     String[] arrayOfString = new String[paramString.length + 1];
     arrayOfString[0] = str.toLowerCase(Locale.ROOT);
     int i = 0;
-    if (i < paramString.length)
+    while (i < paramString.length)
     {
       paramArrayOfString = paramString[i];
-      if (paramArrayOfString == null) {}
-      for (paramArrayOfString = "";; paramArrayOfString = paramArrayOfString.toLowerCase(Locale.ROOT))
-      {
-        arrayOfString[(i + 1)] = paramArrayOfString;
-        i += 1;
-        break;
+      i += 1;
+      if (paramArrayOfString == null) {
+        paramArrayOfString = "";
+      } else {
+        paramArrayOfString = paramArrayOfString.toLowerCase(Locale.ROOT);
       }
+      arrayOfString[i] = paramArrayOfString;
     }
     paramPattern = paramPattern.matcher(paramSpannable);
     boolean bool1 = false;
-    label207:
-    for (;;)
+    while (paramPattern.find())
     {
-      bool2 = bool1;
-      if (!paramPattern.find()) {
-        break;
-      }
       i = paramPattern.start();
       int j = paramPattern.end();
-      if (paramMatchFilter != null) {}
-      for (bool2 = paramMatchFilter.acceptMatch(paramSpannable, i, j);; bool2 = true)
+      boolean bool2;
+      if (paramMatchFilter != null) {
+        bool2 = paramMatchFilter.acceptMatch(paramSpannable, i, j);
+      } else {
+        bool2 = true;
+      }
+      if (bool2)
       {
-        if (!bool2) {
-          break label207;
-        }
         applyLink(makeUrl(paramPattern.group(0), arrayOfString, paramPattern, paramTransformFilter), i, j, paramSpannable);
         bool1 = true;
-        break;
       }
     }
+    return bool1;
   }
   
   public static boolean addLinks(@NonNull TextView paramTextView, int paramInt)
@@ -265,129 +259,145 @@ public final class LinkifyCompat
     //   8: invokestatic 269	androidx/core/text/util/LinkifyCompat:findAddress	(Ljava/lang/String;)Ljava/lang/String;
     //   11: astore 6
     //   13: aload 6
-    //   15: ifnull +115 -> 130
+    //   15: ifnull +116 -> 131
     //   18: aload_1
     //   19: aload 6
     //   21: invokevirtual 273	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   24: istore_3
-    //   25: iload_3
-    //   26: ifge +4 -> 30
-    //   29: return
-    //   30: new 161	androidx/core/text/util/LinkifyCompat$LinkSpec
-    //   33: dup
-    //   34: invokespecial 254	androidx/core/text/util/LinkifyCompat$LinkSpec:<init>	()V
-    //   37: astore 5
-    //   39: aload 6
-    //   41: invokevirtual 274	java/lang/String:length	()I
-    //   44: iload_3
-    //   45: iadd
-    //   46: istore 4
-    //   48: aload 5
-    //   50: iload_3
-    //   51: iload_2
-    //   52: iadd
-    //   53: putfield 173	androidx/core/text/util/LinkifyCompat$LinkSpec:start	I
-    //   56: aload 5
-    //   58: iload_2
-    //   59: iload 4
+    //   24: istore 4
+    //   26: iload 4
+    //   28: ifge +4 -> 32
+    //   31: return
+    //   32: new 161	androidx/core/text/util/LinkifyCompat$LinkSpec
+    //   35: dup
+    //   36: invokespecial 254	androidx/core/text/util/LinkifyCompat$LinkSpec:<init>	()V
+    //   39: astore 5
+    //   41: aload 6
+    //   43: invokevirtual 274	java/lang/String:length	()I
+    //   46: iload 4
+    //   48: iadd
+    //   49: istore_3
+    //   50: aload 5
+    //   52: iload 4
+    //   54: iload_2
+    //   55: iadd
+    //   56: putfield 173	androidx/core/text/util/LinkifyCompat$LinkSpec:start	I
+    //   59: iload_2
+    //   60: iload_3
     //   61: iadd
-    //   62: putfield 176	androidx/core/text/util/LinkifyCompat$LinkSpec:end	I
-    //   65: aload_1
-    //   66: iload 4
-    //   68: invokevirtual 277	java/lang/String:substring	(I)Ljava/lang/String;
-    //   71: astore_1
-    //   72: iload_2
-    //   73: iload 4
-    //   75: iadd
-    //   76: istore_2
-    //   77: aload 6
-    //   79: ldc_w 279
-    //   82: invokestatic 285	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   85: astore 6
-    //   87: aload 5
-    //   89: new 287	java/lang/StringBuilder
-    //   92: dup
-    //   93: invokespecial 288	java/lang/StringBuilder:<init>	()V
+    //   62: istore_2
+    //   63: aload 5
+    //   65: iload_2
+    //   66: putfield 176	androidx/core/text/util/LinkifyCompat$LinkSpec:end	I
+    //   69: aload_1
+    //   70: iload_3
+    //   71: invokevirtual 277	java/lang/String:substring	(I)Ljava/lang/String;
+    //   74: astore_1
+    //   75: aload 6
+    //   77: ldc_w 279
+    //   80: invokestatic 285	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   83: astore 6
+    //   85: new 287	java/lang/StringBuilder
+    //   88: dup
+    //   89: invokespecial 288	java/lang/StringBuilder:<init>	()V
+    //   92: astore 7
+    //   94: aload 7
     //   96: ldc_w 290
     //   99: invokevirtual 294	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: aload 6
-    //   104: invokevirtual 294	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   107: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   110: putfield 169	androidx/core/text/util/LinkifyCompat$LinkSpec:url	Ljava/lang/String;
-    //   113: aload_0
-    //   114: aload 5
-    //   116: invokevirtual 258	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   119: pop
-    //   120: goto -113 -> 7
-    //   123: astore_0
-    //   124: return
-    //   125: astore 5
-    //   127: goto -120 -> 7
-    //   130: return
+    //   102: pop
+    //   103: aload 7
+    //   105: aload 6
+    //   107: invokevirtual 294	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: pop
+    //   111: aload 5
+    //   113: aload 7
+    //   115: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   118: putfield 169	androidx/core/text/util/LinkifyCompat$LinkSpec:url	Ljava/lang/String;
+    //   121: aload_0
+    //   122: aload 5
+    //   124: invokevirtual 258	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   127: pop
+    //   128: goto -121 -> 7
+    //   131: return
+    //   132: astore_0
+    //   133: return
+    //   134: astore 5
+    //   136: goto -129 -> 7
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	131	0	paramArrayList	ArrayList<LinkifyCompat.LinkSpec>
-    //   0	131	1	paramSpannable	Spannable
-    //   6	71	2	i	int
-    //   24	29	3	j	int
-    //   46	30	4	k	int
-    //   37	78	5	localLinkSpec	LinkifyCompat.LinkSpec
-    //   125	1	5	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
-    //   11	92	6	str	String
+    //   0	139	0	paramArrayList	ArrayList<LinkifyCompat.LinkSpec>
+    //   0	139	1	paramSpannable	Spannable
+    //   6	60	2	i	int
+    //   49	22	3	j	int
+    //   24	32	4	k	int
+    //   39	84	5	localLinkSpec	LinkifyCompat.LinkSpec
+    //   134	1	5	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
+    //   11	95	6	str	String
+    //   92	22	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   7	13	123	java/lang/UnsupportedOperationException
-    //   18	25	123	java/lang/UnsupportedOperationException
-    //   30	72	123	java/lang/UnsupportedOperationException
-    //   77	87	123	java/lang/UnsupportedOperationException
-    //   87	120	123	java/lang/UnsupportedOperationException
-    //   77	87	125	java/io/UnsupportedEncodingException
+    //   7	13	132	java/lang/UnsupportedOperationException
+    //   18	26	132	java/lang/UnsupportedOperationException
+    //   32	59	132	java/lang/UnsupportedOperationException
+    //   63	75	132	java/lang/UnsupportedOperationException
+    //   75	85	132	java/lang/UnsupportedOperationException
+    //   85	128	132	java/lang/UnsupportedOperationException
+    //   75	85	134	java/io/UnsupportedEncodingException
   }
   
   private static String makeUrl(@NonNull String paramString, @NonNull String[] paramArrayOfString, Matcher paramMatcher, @Nullable Linkify.TransformFilter paramTransformFilter)
   {
-    int k = 1;
-    if (paramTransformFilter != null) {}
-    for (paramMatcher = paramTransformFilter.transformUrl(paramMatcher, paramString);; paramMatcher = paramString)
+    String str = paramString;
+    if (paramTransformFilter != null) {
+      str = paramTransformFilter.transformUrl(paramMatcher, paramString);
+    }
+    int i = 0;
+    for (;;)
     {
-      int i = 0;
-      int j;
-      if (i < paramArrayOfString.length) {
-        if (paramMatcher.regionMatches(true, 0, paramArrayOfString[i], 0, paramArrayOfString[i].length()))
-        {
-          paramString = paramMatcher;
-          j = k;
-          if (!paramMatcher.regionMatches(false, 0, paramArrayOfString[i], 0, paramArrayOfString[i].length()))
-          {
-            paramString = paramArrayOfString[i] + paramMatcher.substring(paramArrayOfString[i].length());
-            j = k;
-          }
-        }
-      }
-      for (;;)
-      {
-        paramMatcher = paramString;
-        if (j == 0)
-        {
-          paramMatcher = paramString;
-          if (paramArrayOfString.length > 0) {
-            paramMatcher = paramArrayOfString[0] + paramString;
-          }
-        }
-        return paramMatcher;
-        i += 1;
+      j = paramArrayOfString.length;
+      int k = 1;
+      if (i >= j) {
         break;
-        j = 0;
-        paramString = paramMatcher;
+      }
+      if (str.regionMatches(true, 0, paramArrayOfString[i], 0, paramArrayOfString[i].length()))
+      {
+        j = k;
+        paramString = str;
+        if (str.regionMatches(false, 0, paramArrayOfString[i], 0, paramArrayOfString[i].length())) {
+          break label146;
+        }
+        paramString = new StringBuilder();
+        paramString.append(paramArrayOfString[i]);
+        paramString.append(str.substring(paramArrayOfString[i].length()));
+        paramString = paramString.toString();
+        j = k;
+        break label146;
+      }
+      i += 1;
+    }
+    int j = 0;
+    paramString = str;
+    label146:
+    paramMatcher = paramString;
+    if (j == 0)
+    {
+      paramMatcher = paramString;
+      if (paramArrayOfString.length > 0)
+      {
+        paramMatcher = new StringBuilder();
+        paramMatcher.append(paramArrayOfString[0]);
+        paramMatcher.append(paramString);
+        paramMatcher = paramMatcher.toString();
       }
     }
+    return paramMatcher;
   }
   
   private static void pruneOverlaps(ArrayList<LinkifyCompat.LinkSpec> paramArrayList, Spannable paramSpannable)
   {
+    int i = paramSpannable.length();
     int j = 0;
-    Object localObject = (URLSpan[])paramSpannable.getSpans(0, paramSpannable.length(), URLSpan.class);
-    int i = 0;
+    Object localObject = (URLSpan[])paramSpannable.getSpans(0, i, URLSpan.class);
+    i = 0;
     LinkifyCompat.LinkSpec localLinkSpec;
     while (i < localObject.length)
     {
@@ -400,43 +410,37 @@ public final class LinkifyCompat
     }
     Collections.sort(paramArrayList, COMPARATOR);
     int k = paramArrayList.size();
-    if (j < k - 1)
+    i = j;
+    while (i < k - 1)
     {
-      localObject = (LinkifyCompat.LinkSpec)paramArrayList.get(j);
-      localLinkSpec = (LinkifyCompat.LinkSpec)paramArrayList.get(j + 1);
-      if ((((LinkifyCompat.LinkSpec)localObject).start <= localLinkSpec.start) && (((LinkifyCompat.LinkSpec)localObject).end > localLinkSpec.start)) {
-        if (localLinkSpec.end <= ((LinkifyCompat.LinkSpec)localObject).end) {
-          i = j + 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i != -1)
+      localObject = (LinkifyCompat.LinkSpec)paramArrayList.get(i);
+      int m = i + 1;
+      localLinkSpec = (LinkifyCompat.LinkSpec)paramArrayList.get(m);
+      if ((((LinkifyCompat.LinkSpec)localObject).start <= localLinkSpec.start) && (((LinkifyCompat.LinkSpec)localObject).end > localLinkSpec.start))
       {
-        localObject = ((LinkifyCompat.LinkSpec)paramArrayList.get(i)).frameworkAddedSpan;
-        if (localObject != null) {
-          paramSpannable.removeSpan(localObject);
-        }
-        paramArrayList.remove(i);
-        k -= 1;
-        break;
-        if (((LinkifyCompat.LinkSpec)localObject).end - ((LinkifyCompat.LinkSpec)localObject).start > localLinkSpec.end - localLinkSpec.start)
+        if (localLinkSpec.end <= ((LinkifyCompat.LinkSpec)localObject).end) {}
+        while (((LinkifyCompat.LinkSpec)localObject).end - ((LinkifyCompat.LinkSpec)localObject).start > localLinkSpec.end - localLinkSpec.start)
         {
-          i = j + 1;
+          j = m;
+          break;
+        }
+        if (((LinkifyCompat.LinkSpec)localObject).end - ((LinkifyCompat.LinkSpec)localObject).start < localLinkSpec.end - localLinkSpec.start) {
+          j = i;
+        } else {
+          j = -1;
+        }
+        if (j != -1)
+        {
+          localObject = ((LinkifyCompat.LinkSpec)paramArrayList.get(j)).frameworkAddedSpan;
+          if (localObject != null) {
+            paramSpannable.removeSpan(localObject);
+          }
+          paramArrayList.remove(j);
+          k -= 1;
           continue;
         }
-        if (((LinkifyCompat.LinkSpec)localObject).end - ((LinkifyCompat.LinkSpec)localObject).start >= localLinkSpec.end - localLinkSpec.start) {
-          break label295;
-        }
-        i = j;
-        continue;
       }
-      j += 1;
-      break;
-      return;
-      label295:
-      i = -1;
+      i = m;
     }
   }
   
@@ -447,7 +451,7 @@ public final class LinkifyCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.text.util.LinkifyCompat
  * JD-Core Version:    0.7.0.1
  */

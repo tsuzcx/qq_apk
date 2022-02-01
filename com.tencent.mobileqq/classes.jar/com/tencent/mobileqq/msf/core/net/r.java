@@ -33,11 +33,12 @@ class r
     }
     catch (Exception localException)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.NetConnTag", 2, "tcpdump Report exception" + localException, localException);
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("tcpdump Report exception");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.NetConnTag", 2, localStringBuilder.toString(), localException);
       }
     }
     n.b(this.a, false);
@@ -46,7 +47,7 @@ class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.r
  * JD-Core Version:    0.7.0.1
  */

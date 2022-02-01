@@ -31,18 +31,20 @@ public final class BigShowRecommendInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.MaterialInfo != null) {
-      paramJceOutputStream.write(this.MaterialInfo, 0);
+    Object localObject = this.MaterialInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.Reason != null) {
-      paramJceOutputStream.write(this.Reason, 1);
+    localObject = this.Reason;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.Confidence, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.RECOMMEND_GENERAL_DATASTRUCT.BigShowRecommendInfo
  * JD-Core Version:    0.7.0.1
  */

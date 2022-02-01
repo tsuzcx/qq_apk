@@ -18,16 +18,17 @@ public class FooterRecyclerView
   
   public void a(HotPicFooterInterface paramHotPicFooterInterface)
   {
-    if (getAdapter() != null) {}
+    getAdapter();
     this.a = paramHotPicFooterInterface;
   }
   
   public void setAdapter(RecyclerView.Adapter paramAdapter)
   {
+    HotPicFooterInterface localHotPicFooterInterface = this.a;
     Object localObject = paramAdapter;
-    if (this.a != null)
+    if (localHotPicFooterInterface != null)
     {
-      localObject = new RecyclerFooterWrapperAdapter(paramAdapter, this.a);
+      localObject = new RecyclerFooterWrapperAdapter(paramAdapter, localHotPicFooterInterface);
       if (QLog.isColorLevel()) {
         QLog.d("FooterRecyclerView", 2, "has footer");
       }
@@ -37,7 +38,7 @@ public class FooterRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.FooterRecyclerView
  * JD-Core Version:    0.7.0.1
  */

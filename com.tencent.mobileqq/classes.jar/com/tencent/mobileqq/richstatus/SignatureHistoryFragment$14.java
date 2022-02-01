@@ -1,23 +1,32 @@
 package com.tencent.mobileqq.richstatus;
 
-import com.tencent.mobileqq.emoticonview.EmoticonListProvider;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-final class SignatureHistoryFragment$14
-  implements EmoticonListProvider
+class SignatureHistoryFragment$14
+  implements View.OnTouchListener
 {
-  public List<EmotionPanelInfo> getEmotionPanelInfo(boolean paramBoolean1, boolean paramBoolean2)
+  SignatureHistoryFragment$14(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new EmotionPanelInfo(7, 7, null));
-    return localArrayList;
+    if (paramMotionEvent.getAction() == 1)
+    {
+      if (paramMotionEvent.getY() < paramView.findViewById(2131379883).getHeight() + AIOUtils.b(30.0F, paramView.getResources()))
+      {
+        SignatureHistoryFragment.a(this.a, true);
+        return false;
+      }
+      SignatureHistoryFragment.a(this.a, false);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.14
  * JD-Core Version:    0.7.0.1
  */

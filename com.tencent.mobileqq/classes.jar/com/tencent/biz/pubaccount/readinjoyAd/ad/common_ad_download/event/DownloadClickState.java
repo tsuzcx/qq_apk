@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event;
 
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/event/DownloadClickState;", "", "(Ljava/lang/String;I)V", "START_DOWNLOAD", "PAUSE_DOWNLOAD", "RESUME_DOWNLOAD", "OPEN_APP", "INSTALL_APP", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/event/DownloadClickState;", "", "(Ljava/lang/String;I)V", "START_DOWNLOAD", "PAUSE_DOWNLOAD", "RESUME_DOWNLOAD", "OPEN_APP", "INSTALL_APP", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public enum DownloadClickState
 {
   static
@@ -24,7 +24,7 @@ public enum DownloadClickState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.DownloadClickState
  * JD-Core Version:    0.7.0.1
  */

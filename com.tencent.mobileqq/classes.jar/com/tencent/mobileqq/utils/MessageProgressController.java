@@ -18,11 +18,13 @@ public class MessageProgressController
   
   public RefreshProgressRunnable a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.a.isEmpty()) {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    return (RefreshProgressRunnable)this.a.get(paramString);
+    if (!this.a.isEmpty()) {
+      return (RefreshProgressRunnable)this.a.get(paramString);
+    }
+    return null;
   }
   
   public void a()
@@ -37,26 +39,30 @@ public class MessageProgressController
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      RefreshProgressRunnable localRefreshProgressRunnable = (RefreshProgressRunnable)this.a.get(paramString);
-      if (localRefreshProgressRunnable != null) {
-        localRefreshProgressRunnable.a();
+      Object localObject = (RefreshProgressRunnable)this.a.get(paramString);
+      if (localObject != null) {
+        ((RefreshProgressRunnable)localObject).a();
       }
-    }
-    try
-    {
-      this.a.remove(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.e("MessageProgressView", 2, " aflter removeAnimRunnable size=" + this.a.size());
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("MessageProgressView", 2, "removeAnimRunnable exception = " + paramString.getMessage());
+        this.a.remove(paramString);
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("removeAnimRunnable exception = ");
+          ((StringBuilder)localObject).append(paramString.getMessage());
+          QLog.e("MessageProgressView", 2, ((StringBuilder)localObject).toString());
         }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append(" aflter removeAnimRunnable size=");
+        paramString.append(this.a.size());
+        QLog.e("MessageProgressView", 2, paramString.toString());
       }
     }
   }
@@ -70,7 +76,7 @@ public class MessageProgressController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.MessageProgressController
  * JD-Core Version:    0.7.0.1
  */

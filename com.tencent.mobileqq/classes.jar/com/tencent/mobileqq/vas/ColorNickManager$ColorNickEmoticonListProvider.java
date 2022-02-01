@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vas;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emosm.api.IEmoticonManagerService;
+import com.tencent.mobileqq.emoticon.IEmojiListenerManager;
+import com.tencent.mobileqq.emoticon.api.EmojiManagerServiceConstant;
+import com.tencent.mobileqq.emoticon.api.IEmojiManagerService;
 import com.tencent.mobileqq.emoticonview.EmoticonListProvider;
 import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,29 +30,30 @@ public class ColorNickManager$ColorNickEmoticonListProvider
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new EmotionPanelInfo(7, 7, null));
-    EmoticonManager localEmoticonManager = (EmoticonManager)ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager).getManager(QQManagerFactory.EMOTICON_MANAGER);
+    IEmoticonManagerService localIEmoticonManagerService = (IEmoticonManagerService)ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager).getRuntimeService(IEmoticonManagerService.class);
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
-      EmoticonPackage localEmoticonPackage = localEmoticonManager.a(String.valueOf(i));
-      if (localEmoticonPackage != null)
+      Object localObject = localIEmoticonManagerService.syncFindEmoticonPackageById(String.valueOf(i));
+      if (localObject != null)
       {
-        localArrayList.add(new EmotionPanelInfo(10, 7, localEmoticonPackage));
+        localArrayList.add(new EmotionPanelInfo(10, 7, (EmoticonPackage)localObject));
       }
       else
       {
-        localEmoticonPackage = new EmoticonPackage();
-        localEmoticonPackage.epId = String.valueOf(i);
-        localEmoticonPackage.wordingId = -1L;
-        localEmoticonPackage.jobType = 4;
-        localEmoticonPackage.isMagicFaceDownloading = false;
-        localEmoticonPackage.valid = true;
-        localEmoticonPackage.status = 0;
-        localEmoticonPackage.aio = true;
-        localEmoticonManager.a(localEmoticonPackage);
-        EmojiListenerManager.a().a(ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager));
-        ((EmojiManager)ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager).getManager(QQManagerFactory.CHAT_EMOTION_MANAGER)).a(String.valueOf(i), EmojiManager.c, null, true, 0);
+        localObject = new EmoticonPackage();
+        ((EmoticonPackage)localObject).epId = String.valueOf(i);
+        ((EmoticonPackage)localObject).wordingId = -1L;
+        ((EmoticonPackage)localObject).jobType = 4;
+        ((EmoticonPackage)localObject).isMagicFaceDownloading = false;
+        ((EmoticonPackage)localObject).valid = true;
+        ((EmoticonPackage)localObject).status = 0;
+        ((EmoticonPackage)localObject).aio = true;
+        localIEmoticonManagerService.saveEmoticonPackage((EmoticonPackage)localObject);
+        localObject = (IEmojiManagerService)ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager).getRuntimeService(IEmojiManagerService.class);
+        ((IEmojiManagerService)localObject).getEmojiListenerManager().addEmotionJsonDownloadListener(ColorNickManager.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickManager));
+        ((IEmojiManagerService)localObject).startDownloadEmosmJson(String.valueOf(i), EmojiManagerServiceConstant.JSON_EMOSM_MALL, null, true, 0);
       }
     }
     return localArrayList;
@@ -60,7 +61,7 @@ public class ColorNickManager$ColorNickEmoticonListProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickManager.ColorNickEmoticonListProvider
  * JD-Core Version:    0.7.0.1
  */

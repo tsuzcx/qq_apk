@@ -29,17 +29,18 @@ public class ZhituPanelView$ZhituOnScrollListener
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    boolean bool;
+    if (paramInt2 > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView.ZhituOnScrollListener
  * JD-Core Version:    0.7.0.1
  */

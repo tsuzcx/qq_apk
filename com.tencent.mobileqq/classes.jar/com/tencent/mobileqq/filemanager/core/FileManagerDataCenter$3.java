@@ -10,26 +10,27 @@ class FileManagerDataCenter$3
   
   public void run()
   {
-    if (this.a == null)
+    Object localObject = this.a;
+    if (localObject == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("FileManagerDataCenter<FileAssistant>", 2, "INTENT_ACTION_RENAME_FILENAME extra is null!!!");
       }
       return;
     }
-    String str1 = this.a.getString("peerUin");
+    localObject = ((Bundle)localObject).getString("peerUin");
     int i = this.a.getInt("peerType");
-    String str2 = this.a.getString("sourceStr");
-    String str3 = this.a.getString("filePath");
+    String str1 = this.a.getString("sourceStr");
+    String str2 = this.a.getString("filePath");
     long l = this.a.getLong("dataLength");
     int j = this.a.getInt("fileSourceId");
     Bundle localBundle = this.a.getBundle("otherData");
-    this.this$0.a(str1, i, str3, l, j, str2, localBundle);
+    this.this$0.a((String)localObject, i, str2, l, j, str1, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.3
  * JD-Core Version:    0.7.0.1
  */

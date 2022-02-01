@@ -42,15 +42,16 @@ public final class common_gift_type_item
   {
     paramJceOutputStream.write(this.item_type_id, 0);
     paramJceOutputStream.write(this.name, 1);
-    if (this.common_gift_list != null) {
-      paramJceOutputStream.write(this.common_gift_list, 2);
+    ArrayList localArrayList = this.common_gift_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
     paramJceOutputStream.write(this.total, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.common_gift_type_item
  * JD-Core Version:    0.7.0.1
  */

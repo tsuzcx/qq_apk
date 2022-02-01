@@ -39,39 +39,39 @@ class ISms$Stub$Proxy
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    try
     {
-      try
+      localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
+      localParcel1.writeString(paramString1);
+      localParcel1.writeString(paramString2);
+      localParcel1.writeInt(paramInt);
+      localParcel1.writeByteArray(paramArrayOfByte);
+      if (paramPendingIntent1 != null)
       {
-        localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
-        localParcel1.writeString(paramString1);
-        localParcel1.writeString(paramString2);
-        localParcel1.writeInt(paramInt);
-        localParcel1.writeByteArray(paramArrayOfByte);
-        if (paramPendingIntent1 != null)
-        {
-          localParcel1.writeInt(1);
-          paramPendingIntent1.writeToParcel(localParcel1, 0);
-          if (paramPendingIntent2 != null)
-          {
-            localParcel1.writeInt(1);
-            paramPendingIntent2.writeToParcel(localParcel1, 0);
-            this.a.transact(4, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
+        localParcel1.writeInt(1);
+        paramPendingIntent1.writeToParcel(localParcel1, 0);
+      }
+      else
+      {
         localParcel1.writeInt(0);
       }
-      finally
+      if (paramPendingIntent2 != null)
       {
-        localParcel2.recycle();
-        localParcel1.recycle();
+        localParcel1.writeInt(1);
+        paramPendingIntent2.writeToParcel(localParcel1, 0);
       }
+      else
+      {
+        localParcel1.writeInt(0);
+      }
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
@@ -79,38 +79,38 @@ class ISms$Stub$Proxy
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    try
     {
-      try
+      localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
+      localParcel1.writeString(paramString1);
+      localParcel1.writeString(paramString2);
+      localParcel1.writeString(paramString3);
+      if (paramPendingIntent1 != null)
       {
-        localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
-        localParcel1.writeString(paramString1);
-        localParcel1.writeString(paramString2);
-        localParcel1.writeString(paramString3);
-        if (paramPendingIntent1 != null)
-        {
-          localParcel1.writeInt(1);
-          paramPendingIntent1.writeToParcel(localParcel1, 0);
-          if (paramPendingIntent2 != null)
-          {
-            localParcel1.writeInt(1);
-            paramPendingIntent2.writeToParcel(localParcel1, 0);
-            this.a.transact(5, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
+        localParcel1.writeInt(1);
+        paramPendingIntent1.writeToParcel(localParcel1, 0);
+      }
+      else
+      {
         localParcel1.writeInt(0);
       }
-      finally
+      if (paramPendingIntent2 != null)
       {
-        localParcel2.recycle();
-        localParcel1.recycle();
+        localParcel1.writeInt(1);
+        paramPendingIntent2.writeToParcel(localParcel1, 0);
       }
+      else
+      {
+        localParcel1.writeInt(0);
+      }
+      this.a.transact(5, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
@@ -139,14 +139,15 @@ class ISms$Stub$Proxy
   
   public boolean a(int paramInt)
   {
-    boolean bool = false;
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
       localParcel1.writeInt(paramInt);
-      this.a.transact(7, localParcel1, localParcel2, 0);
+      IBinder localIBinder = this.a;
+      boolean bool = false;
+      localIBinder.transact(7, localParcel1, localParcel2, 0);
       localParcel2.readException();
       paramInt = localParcel2.readInt();
       if (paramInt != 0) {
@@ -163,7 +164,6 @@ class ISms$Stub$Proxy
   
   public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    boolean bool = false;
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -172,7 +172,9 @@ class ISms$Stub$Proxy
       localParcel1.writeInt(paramInt1);
       localParcel1.writeInt(paramInt2);
       localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(2, localParcel1, localParcel2, 0);
+      paramArrayOfByte = this.a;
+      boolean bool = false;
+      paramArrayOfByte.transact(2, localParcel1, localParcel2, 0);
       localParcel2.readException();
       paramInt1 = localParcel2.readInt();
       if (paramInt1 != 0) {
@@ -189,7 +191,6 @@ class ISms$Stub$Proxy
   
   public boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    boolean bool = false;
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -198,7 +199,9 @@ class ISms$Stub$Proxy
       localParcel1.writeInt(paramInt);
       localParcel1.writeByteArray(paramArrayOfByte1);
       localParcel1.writeByteArray(paramArrayOfByte2);
-      this.a.transact(3, localParcel1, localParcel2, 0);
+      paramArrayOfByte1 = this.a;
+      boolean bool = false;
+      paramArrayOfByte1.transact(3, localParcel1, localParcel2, 0);
       localParcel2.readException();
       paramInt = localParcel2.readInt();
       if (paramInt != 0) {
@@ -220,14 +223,15 @@ class ISms$Stub$Proxy
   
   public boolean b(int paramInt)
   {
-    boolean bool = false;
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("com.android.internal.telephony.ISms");
       localParcel1.writeInt(paramInt);
-      this.a.transact(8, localParcel1, localParcel2, 0);
+      IBinder localIBinder = this.a;
+      boolean bool = false;
+      localIBinder.transact(8, localParcel1, localParcel2, 0);
       localParcel2.readException();
       paramInt = localParcel2.readInt();
       if (paramInt != 0) {
@@ -244,7 +248,7 @@ class ISms$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.android.internal.telephony.ISms.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

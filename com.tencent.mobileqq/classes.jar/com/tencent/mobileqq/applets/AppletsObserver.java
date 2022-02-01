@@ -28,91 +28,96 @@ public class AppletsObserver
   
   protected void onGetAppletsSettingSwitch(boolean paramBoolean, List<AppletsSetting> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, "onGetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject1 instanceof QQAppInterface)) {}
-    for (localObject1 = (AppletsFolderManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER);; localObject1 = null)
+    if (QLog.isColorLevel())
     {
-      if (localObject1 == null) {
-        return;
-      }
-      HashSet localHashSet = new HashSet();
-      if ((paramList != null) && (paramBoolean) && (paramList.size() > 0))
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onGetAppletsSettingSwitch:  isSuccess: ");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      QLog.d("AppletsObserver", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = null;
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject2 instanceof QQAppInterface)) {
+      localObject1 = (AppletsFolderManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER);
+    }
+    if (localObject1 == null) {
+      return;
+    }
+    localObject2 = new HashSet();
+    if ((paramList != null) && (paramBoolean) && (paramList.size() > 0))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
+        Object localObject3 = (AppletsSetting)paramList.next();
+        Object localObject4 = ((AppletsSetting)localObject3).a;
+        paramBoolean = true;
+        if ((localObject4 != null) && (((AppletsSetting)localObject3).a.size() > 0) && (((AppletsSetting)localObject3).a.get(0) != null) && (((AppletItem)((AppletsSetting)localObject3).a.get(0)).a() == 1L))
         {
-          Object localObject2 = (AppletsSetting)paramList.next();
-          if ((((AppletsSetting)localObject2).a != null) && (((AppletsSetting)localObject2).a.size() > 0) && (((AppletsSetting)localObject2).a.get(0) != null) && (((AppletItem)((AppletsSetting)localObject2).a.get(0)).a() == 1L))
-          {
-            localObject2 = (AppletItem)((AppletsSetting)localObject2).a.get(0);
-            if (((AppletItem)localObject2).b() == 1) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              ((AppletsFolderManager)localObject1).a(paramBoolean);
-              onAppletsSettingSwitchChange(((AppletItem)localObject2).b());
-              break;
-            }
+          localObject3 = (AppletItem)((AppletsSetting)localObject3).a.get(0);
+          if (((AppletItem)localObject3).b() != 1) {
+            paramBoolean = false;
           }
-          if ((((AppletsSetting)localObject2).a != null) && (((AppletsSetting)localObject2).a.size() > 0))
+          ((AppletsFolderManager)localObject1).a(paramBoolean);
+          onAppletsSettingSwitchChange(((AppletItem)localObject3).b());
+        }
+        else if ((((AppletsSetting)localObject3).a != null) && (((AppletsSetting)localObject3).a.size() > 0))
+        {
+          localObject3 = ((AppletsSetting)localObject3).a.iterator();
+          while (((Iterator)localObject3).hasNext())
           {
-            localObject2 = ((AppletsSetting)localObject2).a.iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              AppletItem localAppletItem = (AppletItem)((Iterator)localObject2).next();
-              if ((localAppletItem.a() != 1L) && (localAppletItem.b() != 1)) {
-                localHashSet.add(String.valueOf(localAppletItem.a()));
-              }
+            localObject4 = (AppletItem)((Iterator)localObject3).next();
+            if ((((AppletItem)localObject4).a() != 1L) && (((AppletItem)localObject4).b() != 1)) {
+              ((Set)localObject2).add(String.valueOf(((AppletItem)localObject4).a()));
             }
           }
         }
       }
-      ((AppletsFolderManager)localObject1).a(localHashSet);
-      return;
     }
+    ((AppletsFolderManager)localObject1).a((Set)localObject2);
   }
   
   protected void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap) {}
   
   protected void onSetAppletsSettingSwitch(boolean paramBoolean, List<AppletItem> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, "onSetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
-    }
-    AppletsFolderManager localAppletsFolderManager = null;
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {
-      localAppletsFolderManager = (AppletsFolderManager)((QQAppInterface)localObject).getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER);
-    }
-    if (localAppletsFolderManager == null) {}
-    for (;;)
+    if (QLog.isColorLevel())
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onSetAppletsSettingSwitch:  isSuccess: ");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      QLog.d("AppletsObserver", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = null;
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject2 instanceof QQAppInterface)) {
+      localObject1 = (AppletsFolderManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER);
+    }
+    if (localObject1 == null) {
       return;
-      if ((paramList != null) && (paramBoolean))
+    }
+    if ((paramList != null) && (paramBoolean))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
+        localObject2 = (AppletItem)paramList.next();
+        int i = ((AppletItem)localObject2).b();
+        if (((AppletItem)localObject2).a() == 1L)
         {
-          localObject = (AppletItem)paramList.next();
-          int i = ((AppletItem)localObject).b();
-          if (((AppletItem)localObject).a() == 1L)
-          {
-            if (i == 1) {}
-            for (paramBoolean = true;; paramBoolean = false)
-            {
-              localAppletsFolderManager.a(paramBoolean);
-              onAppletsSettingSwitchChange(i);
-              break;
-            }
+          paramBoolean = true;
+          if (i != 1) {
+            paramBoolean = false;
           }
-          if (localAppletsFolderManager != null) {
-            if (i == 0) {
-              localAppletsFolderManager.c(String.valueOf(((AppletItem)localObject).a()));
-            } else {
-              localAppletsFolderManager.d(String.valueOf(((AppletItem)localObject).a()));
-            }
+          ((AppletsFolderManager)localObject1).a(paramBoolean);
+          onAppletsSettingSwitchChange(i);
+        }
+        else if (localObject1 != null)
+        {
+          if (i == 0) {
+            ((AppletsFolderManager)localObject1).c(String.valueOf(((AppletItem)localObject2).a()));
+          } else {
+            ((AppletsFolderManager)localObject1).d(String.valueOf(((AppletItem)localObject2).a()));
           }
         }
       }
@@ -121,33 +126,35 @@ public class AppletsObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
-    case 1: 
-      onGetAppletsDetail(paramBoolean, (List)paramObject);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 8)
+          {
+            if (paramInt != 9) {
+              return;
+            }
+            onGetAppletsPushUnreadInfo(paramObject);
+            return;
+          }
+          onReceiveAppletsMessageUnreadInfo((Map)paramObject);
+          return;
+        }
+        onSetAppletsSettingSwitch(paramBoolean, (List)paramObject);
+        return;
+      }
       onGetAppletsSettingSwitch(paramBoolean, (List)paramObject);
       return;
-    case 3: 
-      onSetAppletsSettingSwitch(paramBoolean, (List)paramObject);
-      return;
-    case 8: 
-      onReceiveAppletsMessageUnreadInfo((Map)paramObject);
-      return;
     }
-    onGetAppletsPushUnreadInfo(paramObject);
+    onGetAppletsDetail(paramBoolean, (List)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.applets.AppletsObserver
  * JD-Core Version:    0.7.0.1
  */

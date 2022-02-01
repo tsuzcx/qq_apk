@@ -16,7 +16,8 @@ class NotifyPushSettingActivity$3
   {
     if (NotifyPushSettingActivity.a(this.a) == null)
     {
-      NotifyPushSettingActivity.a(this.a, new NotifyPushSettingActivity.TimePickDialog(this.a, this.a.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a).a(), NotifyPushSettingActivity.a(this.a)));
+      NotifyPushSettingActivity localNotifyPushSettingActivity = this.a;
+      NotifyPushSettingActivity.a(localNotifyPushSettingActivity, new NotifyPushSettingActivity.TimePickDialog(localNotifyPushSettingActivity, localNotifyPushSettingActivity.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a).a(), NotifyPushSettingActivity.a(this.a)));
       NotifyPushSettingActivity.a(this.a).a(NotifyPushSettingActivity.a(this.a));
     }
     if (NotifyPushSettingActivity.a(this.a))
@@ -31,7 +32,7 @@ class NotifyPushSettingActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPushSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,10 @@ public class MiuiRomUtils
       goToMiuiPermissionActivity_V8(paramContext);
       return;
     }
-    Logger.e("MiuiRomUtils", "this is a special MIUI rom version, its version code " + i);
+    paramContext = new StringBuilder();
+    paramContext.append("this is a special MIUI rom version, its version code ");
+    paramContext.append(i);
+    Logger.e("MiuiRomUtils", paramContext.toString());
   }
   
   public static int getMiuiVersion()
@@ -49,7 +52,10 @@ public class MiuiRomUtils
       }
       catch (Exception localException)
       {
-        Logger.e("MiuiRomUtils", "get miui version code error, version : " + str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get miui version code error, version : ");
+        localStringBuilder.append(str);
+        Logger.e("MiuiRomUtils", localStringBuilder.toString());
         localException.printStackTrace();
       }
     }
@@ -123,16 +129,19 @@ public class MiuiRomUtils
   
   private static boolean isIntentAvailable(Intent paramIntent, Context paramContext)
   {
-    if (paramIntent == null) {}
-    while (paramContext.getPackageManager().queryIntentActivities(paramIntent, 65536).size() <= 0) {
+    boolean bool = false;
+    if (paramIntent == null) {
       return false;
     }
-    return true;
+    if (paramContext.getPackageManager().queryIntentActivities(paramIntent, 65536).size() > 0) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.permission.romutils.MiuiRomUtils
  * JD-Core Version:    0.7.0.1
  */

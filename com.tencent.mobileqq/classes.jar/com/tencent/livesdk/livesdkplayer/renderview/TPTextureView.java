@@ -48,117 +48,192 @@ public class TPTextureView
     setSurfaceTextureListener(this.textureListener);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     Log.i("TPPlayer[TPTextureView]", "onAttachedToWindow");
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     Log.i("TPPlayer[TPTextureView]", "onDetachedFromWindow");
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i;
-    int j;
-    float f;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onMeasure widthMeasureSpec: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" heightMeasureSpec:");
+    localStringBuilder.append(paramInt2);
+    Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onMeasure videoWidth: ");
+    localStringBuilder.append(this.videoWidth);
+    localStringBuilder.append(" videoHeight:");
+    localStringBuilder.append(this.videoHeight);
+    Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onMeasure type: ");
+    localStringBuilder.append(this.type);
+    Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
     if ((this.videoWidth > 0) && (this.videoHeight > 0))
     {
-      i = getDefaultSize(getWidth(), paramInt1);
-      j = getDefaultSize(getHeight(), paramInt2);
-      if (this.type == 2) {
-        if (this.videoWidth * j > this.videoHeight * i)
-        {
-          paramInt2 = this.videoWidth * j / this.videoHeight;
-          f = 1.0F;
-          paramInt1 = j;
-        }
-      }
-    }
-    for (;;)
-    {
-      setMeasuredDimension((int)(paramInt2 * this.scale * f), (int)(f * (paramInt1 * this.scale)));
-      return;
-      if (this.videoWidth * j < this.videoHeight * i)
+      int i = getDefaultSize(getWidth(), paramInt1);
+      int j = getDefaultSize(getHeight(), paramInt2);
+      float f2 = 1.0F;
+      paramInt1 = this.type;
+      int k;
+      int m;
+      float f1;
+      if (paramInt1 == 2)
       {
-        paramInt1 = this.videoHeight * i / this.videoWidth;
-        f = 1.0F;
-        paramInt2 = i;
-        continue;
-        if (this.type == 1)
+        k = this.videoWidth;
+        m = this.videoHeight;
+        if (k * j > i * m)
         {
-          f = 1.0F;
-          paramInt1 = j;
-          paramInt2 = i;
-          continue;
-        }
-        if (this.type == 6)
-        {
-          if (this.videoWidth * j > this.videoHeight * i)
-          {
-            paramInt1 = this.videoHeight * i / this.videoWidth;
-            f = 1.0F;
-            paramInt2 = i;
-            continue;
-          }
-          if (this.videoWidth * j < this.videoHeight * i)
-          {
-            paramInt2 = this.videoWidth * j / this.videoHeight;
-            f = j / (this.videoWidth / this.videoHeight * j);
-            paramInt1 = j;
-          }
+          paramInt1 = k * j / m;
+          f1 = f2;
+          paramInt2 = j;
         }
         else
         {
-          paramInt2 = this.videoWidth;
-          paramInt1 = paramInt2;
-          if (this.radioWidth != 0)
+          f1 = f2;
+          paramInt1 = i;
+          paramInt2 = j;
+          if (k * j < i * m)
           {
-            paramInt1 = paramInt2;
-            if (this.radioHeight != 0) {
-              paramInt1 = (int)(this.videoWidth * this.radioWidth / this.radioHeight);
-            }
-          }
-          if (paramInt1 * j > this.videoHeight * i)
-          {
-            paramInt1 = this.videoHeight * i / paramInt1;
-            paramInt2 = i;
-          }
-          for (;;)
-          {
-            if (((this.degree == 90) || (this.degree == 270)) && (paramInt1 > 0) && (paramInt2 > 0))
-            {
-              if (i / paramInt1 < j / paramInt2)
-              {
-                f = i / paramInt1;
-                break;
-                if (paramInt1 * j >= this.videoHeight * i) {
-                  break label431;
-                }
-                paramInt2 = paramInt1 * j / this.videoHeight;
-                paramInt1 = j;
-                continue;
-              }
-              f = j / paramInt2;
-              break;
-              super.onMeasure(paramInt1, paramInt2);
-              return;
-            }
-            f = 1.0F;
-            break;
-            label431:
-            paramInt1 = j;
-            paramInt2 = i;
+            paramInt2 = m * i / k;
+            f1 = f2;
+            paramInt1 = i;
           }
         }
       }
-      f = 1.0F;
-      paramInt1 = j;
-      paramInt2 = i;
+      else if (paramInt1 == 1)
+      {
+        f1 = f2;
+        paramInt1 = i;
+        paramInt2 = j;
+      }
+      else if (paramInt1 == 6)
+      {
+        k = this.videoWidth;
+        m = this.videoHeight;
+        if (k * j > i * m)
+        {
+          paramInt2 = m * i / k;
+          f1 = f2;
+          paramInt1 = i;
+        }
+        else
+        {
+          f1 = f2;
+          paramInt1 = i;
+          paramInt2 = j;
+          if (k * j < i * m)
+          {
+            paramInt1 = j * k / m;
+            f1 = j;
+            f1 /= k / m * f1;
+            paramInt2 = j;
+          }
+        }
+      }
+      else
+      {
+        paramInt2 = this.videoWidth;
+        k = this.radioWidth;
+        paramInt1 = paramInt2;
+        if (k != 0)
+        {
+          m = this.radioHeight;
+          paramInt1 = paramInt2;
+          if (m != 0) {
+            paramInt1 = (int)(paramInt2 * k / m);
+          }
+        }
+        paramInt2 = paramInt1 * j;
+        k = this.videoHeight;
+        if (paramInt2 > i * k)
+        {
+          paramInt1 = k * i / paramInt1;
+          paramInt2 = i;
+        }
+        else
+        {
+          if (paramInt2 < i * k) {
+            paramInt2 /= k;
+          } else {
+            paramInt2 = i;
+          }
+          paramInt1 = j;
+        }
+        k = this.degree;
+        if (k != 90)
+        {
+          f1 = f2;
+          if (k != 270) {}
+        }
+        else
+        {
+          f1 = f2;
+          if (paramInt1 > 0)
+          {
+            f1 = f2;
+            if (paramInt2 > 0)
+            {
+              if (i / paramInt1 < j / paramInt2)
+              {
+                f1 = i;
+                f2 = paramInt1;
+              }
+              else
+              {
+                f1 = j;
+                f2 = paramInt2;
+              }
+              f1 /= f2;
+            }
+          }
+        }
+        i = paramInt2;
+        paramInt2 = paramInt1;
+        paramInt1 = i;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMeasure radioWidth:");
+      localStringBuilder.append(this.radioWidth);
+      localStringBuilder.append(" radioHeight:");
+      localStringBuilder.append(this.radioHeight);
+      Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMeasure degree:");
+      localStringBuilder.append(this.degree);
+      Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMeasure vScale:");
+      localStringBuilder.append(f1);
+      Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMeasure setMeasuredDimension: ");
+      f2 = paramInt1;
+      localStringBuilder.append((int)(this.scale * f2 * f1));
+      localStringBuilder.append("  ");
+      float f3 = paramInt2;
+      localStringBuilder.append((int)(this.scale * f3 * f1));
+      Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
+      float f4 = this.scale;
+      setMeasuredDimension((int)(f2 * f4 * f1), (int)(f3 * f4 * f1));
+      return;
     }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onMeasure setMeasuredDimension: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("  ");
+    localStringBuilder.append(paramInt2);
+    Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
+    super.onMeasure(paramInt1, paramInt2);
   }
   
   public boolean setDegree(int paramInt)
@@ -184,6 +259,12 @@ public class TPTextureView
   {
     this.radioHeight = paramInt2;
     this.radioWidth = paramInt1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setRadio num: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("  den: ");
+    localStringBuilder.append(paramInt2);
+    Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
   }
   
   public void setScaleParam(float paramFloat)
@@ -193,12 +274,22 @@ public class TPTextureView
       this.type = 0;
       this.scale = paramFloat;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setScaleParam scale: ");
+    localStringBuilder.append(paramFloat);
+    Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
   }
   
   public void setVideoWidthAndHeight(int paramInt1, int paramInt2)
   {
     this.videoWidth = paramInt1;
     this.videoHeight = paramInt2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setVideoWidthAndHeight width: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("  height: ");
+    localStringBuilder.append(paramInt2);
+    Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
   }
   
   public void setViewCallBack(ITPViewBase.ViewCreateCallBack paramViewCreateCallBack)
@@ -210,11 +301,15 @@ public class TPTextureView
   {
     this.type = paramInt;
     this.scale = 1.0F;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setXYAxis mXYAxis: ");
+    localStringBuilder.append(paramInt);
+    Log.i("TPPlayer[TPTextureView]", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.renderview.TPTextureView
  * JD-Core Version:    0.7.0.1
  */

@@ -22,6 +22,7 @@ import com.huawei.hms.support.hianalytics.b;
 import com.huawei.hms.support.log.HMSLog;
 import com.huawei.hms.utils.Checker;
 import com.huawei.hms.utils.HMSBIInitializer;
+import com.huawei.hms.utils.HMSPackageManager;
 import com.huawei.hms.utils.Util;
 import java.lang.ref.WeakReference;
 import java.util.Collections;
@@ -29,113 +30,117 @@ import java.util.List;
 
 public class HuaweiApi<TOption extends Api.ApiOptions>
 {
-  private HuaweiApiManager a;
-  private Context b;
-  private ConnectionManagerKey<TOption> c;
-  private TOption d;
-  private AbstractClientBuilder<?, TOption> e;
-  private String f;
-  private String g;
-  private String h;
-  private SubAppInfo i;
-  private WeakReference<Activity> j;
-  private int k;
-  private int l = 1;
-  private boolean m = false;
+  private static final String TAG = "HuaweiApi";
+  private int apiLevel = 1;
+  private String innerHmsPkg;
+  private boolean isFirstReqSent = false;
+  private WeakReference<Activity> mActivity;
+  private String mAppID;
+  private AbstractClientBuilder<?, TOption> mClientBuilder;
+  private ConnectionManagerKey<TOption> mConnectionManagerKey;
+  private Context mContext;
+  private String mCpID;
+  private String mHostAppid;
+  private HuaweiApiManager mHuaweiApiManager;
+  private int mKitSdkVersion;
+  private TOption mOption;
+  private SubAppInfo mSubAppInfo;
   
   public HuaweiApi(Activity paramActivity, Api<TOption> paramApi, TOption paramTOption, AbstractClientBuilder paramAbstractClientBuilder)
   {
     Checker.checkNonNull(paramActivity, "Null activity is not permitted.");
-    this.j = new WeakReference(paramActivity);
-    a(paramActivity, paramApi, paramTOption, paramAbstractClientBuilder, 0, null);
+    this.mActivity = new WeakReference(paramActivity);
+    init(paramActivity, paramApi, paramTOption, paramAbstractClientBuilder, 0, null);
   }
   
   public HuaweiApi(Activity paramActivity, Api<TOption> paramApi, TOption paramTOption, AbstractClientBuilder paramAbstractClientBuilder, int paramInt)
   {
     Checker.checkNonNull(paramActivity, "Null activity is not permitted.");
-    this.j = new WeakReference(paramActivity);
-    a(paramActivity, paramApi, paramTOption, paramAbstractClientBuilder, paramInt, null);
+    this.mActivity = new WeakReference(paramActivity);
+    init(paramActivity, paramApi, paramTOption, paramAbstractClientBuilder, paramInt, null);
   }
   
   public HuaweiApi(Activity paramActivity, Api<TOption> paramApi, TOption paramTOption, AbstractClientBuilder paramAbstractClientBuilder, int paramInt, String paramString)
   {
     Checker.checkNonNull(paramActivity, "Null activity is not permitted.");
-    this.j = new WeakReference(paramActivity);
-    a(paramActivity, paramApi, paramTOption, paramAbstractClientBuilder, paramInt, paramString);
+    this.mActivity = new WeakReference(paramActivity);
+    init(paramActivity, paramApi, paramTOption, paramAbstractClientBuilder, paramInt, paramString);
   }
   
   public HuaweiApi(Context paramContext, Api<TOption> paramApi, TOption paramTOption, AbstractClientBuilder paramAbstractClientBuilder)
   {
     Checker.checkNonNull(paramContext, "Null context is not permitted.");
-    a(paramContext, paramApi, paramTOption, paramAbstractClientBuilder, 0, null);
+    init(paramContext, paramApi, paramTOption, paramAbstractClientBuilder, 0, null);
   }
   
   public HuaweiApi(Context paramContext, Api<TOption> paramApi, TOption paramTOption, AbstractClientBuilder paramAbstractClientBuilder, int paramInt)
   {
     Checker.checkNonNull(paramContext, "Null context is not permitted.");
-    a(paramContext, paramApi, paramTOption, paramAbstractClientBuilder, paramInt, null);
+    init(paramContext, paramApi, paramTOption, paramAbstractClientBuilder, paramInt, null);
   }
   
   public HuaweiApi(Context paramContext, Api<TOption> paramApi, TOption paramTOption, AbstractClientBuilder paramAbstractClientBuilder, int paramInt, String paramString)
   {
     Checker.checkNonNull(paramContext, "Null context is not permitted.");
-    a(paramContext, paramApi, paramTOption, paramAbstractClientBuilder, paramInt, paramString);
+    init(paramContext, paramApi, paramTOption, paramAbstractClientBuilder, paramInt, paramString);
   }
   
-  private <TResult, TClient extends AnyClient> Task<TResult> a(TaskApiCall<TClient, TResult> paramTaskApiCall)
+  private void init(Context paramContext, Api<TOption> paramApi, TOption paramTOption, AbstractClientBuilder paramAbstractClientBuilder, int paramInt, String paramString)
   {
-    if (paramTaskApiCall.getToken() == null) {}
-    for (TaskCompletionSource localTaskCompletionSource = new TaskCompletionSource();; localTaskCompletionSource = new TaskCompletionSource(paramTaskApiCall.getToken()))
-    {
-      this.a.sendRequest(this, paramTaskApiCall, localTaskCompletionSource);
-      return localTaskCompletionSource.getTask();
+    this.mContext = paramContext.getApplicationContext();
+    this.mHuaweiApiManager = HuaweiApiManager.getInstance(this.mContext);
+    this.mConnectionManagerKey = ConnectionManagerKey.createConnectionManagerKey(paramContext, paramApi, paramTOption, paramString);
+    this.mOption = paramTOption;
+    this.mClientBuilder = paramAbstractClientBuilder;
+    this.mHostAppid = Util.getAppId(paramContext);
+    this.mAppID = this.mHostAppid;
+    this.mCpID = Util.getCpId(paramContext);
+    this.mSubAppInfo = new SubAppInfo("");
+    this.mKitSdkVersion = paramInt;
+    if (!TextUtils.isEmpty(paramString)) {
+      if (paramString.equals(this.mHostAppid))
+      {
+        HMSLog.e("HuaweiApi", "subAppId is host appid");
+      }
+      else
+      {
+        paramApi = new StringBuilder();
+        paramApi.append("subAppId is ");
+        paramApi.append(paramString);
+        HMSLog.i("HuaweiApi", paramApi.toString());
+        this.mSubAppInfo = new SubAppInfo(paramString);
+      }
     }
+    initBI(paramContext);
   }
   
-  private void a(Context paramContext)
+  private void initBI(Context paramContext)
   {
     HMSBIInitializer.getInstance(paramContext).initBI();
   }
   
-  private void a(Context paramContext, Api<TOption> paramApi, TOption paramTOption, AbstractClientBuilder paramAbstractClientBuilder, int paramInt, String paramString)
+  private <TResult, TClient extends AnyClient> Task<TResult> sendRequest(TaskApiCall<TClient, TResult> paramTaskApiCall)
   {
-    this.b = paramContext.getApplicationContext();
-    this.a = HuaweiApiManager.getInstance(this.b);
-    this.c = ConnectionManagerKey.createConnectionManagerKey(paramContext, paramApi, paramTOption, paramString);
-    this.d = paramTOption;
-    this.e = paramAbstractClientBuilder;
-    this.f = Util.getAppId(paramContext);
-    this.g = this.f;
-    this.h = Util.getCpId(paramContext);
-    this.i = new SubAppInfo("");
-    this.k = paramInt;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (!paramString.equals(this.f)) {
-        break label118;
-      }
-      HMSLog.e("HuaweiApi", "subAppId is host appid");
+    TaskCompletionSource localTaskCompletionSource;
+    if (paramTaskApiCall.getToken() == null) {
+      localTaskCompletionSource = new TaskCompletionSource();
+    } else {
+      localTaskCompletionSource = new TaskCompletionSource(paramTaskApiCall.getToken());
     }
-    for (;;)
-    {
-      a(paramContext);
-      return;
-      label118:
-      HMSLog.i("HuaweiApi", "subAppId is " + paramString);
-      this.i = new SubAppInfo(paramString);
-    }
+    this.mHuaweiApiManager.sendRequest(this, paramTaskApiCall, localTaskCompletionSource);
+    return localTaskCompletionSource.getTask();
   }
   
   public Task<Boolean> disconnectService()
   {
     TaskCompletionSource localTaskCompletionSource = new TaskCompletionSource();
-    this.a.disconnectService(this, localTaskCompletionSource);
+    this.mHuaweiApiManager.disconnectService(this, localTaskCompletionSource);
     return localTaskCompletionSource.getTask();
   }
   
   public <TResult, TClient extends AnyClient> Task<TResult> doWrite(TaskApiCall<TClient, TResult> paramTaskApiCall)
   {
-    this.m = true;
+    this.isFirstReqSent = true;
     if (paramTaskApiCall == null)
     {
       HMSLog.e("HuaweiApi", "in doWrite:taskApiCall is null");
@@ -143,57 +148,78 @@ public class HuaweiApi<TOption extends Api.ApiOptions>
       paramTaskApiCall.setException(new ApiException(Status.FAILURE));
       return paramTaskApiCall.getTask();
     }
-    if (TextUtils.isEmpty(this.i.getSubAppID())) {}
-    for (String str = this.g;; str = this.i.getSubAppID())
-    {
-      b.a(this.b, paramTaskApiCall.getUri(), str, paramTaskApiCall.getTransactionId(), String.valueOf(getKitSdkVersion()));
-      return a(paramTaskApiCall);
+    String str;
+    if (TextUtils.isEmpty(this.mSubAppInfo.getSubAppID())) {
+      str = this.mAppID;
+    } else {
+      str = this.mSubAppInfo.getSubAppID();
     }
+    b.a(this.mContext, paramTaskApiCall.getUri(), str, paramTaskApiCall.getTransactionId(), String.valueOf(getKitSdkVersion()));
+    return sendRequest(paramTaskApiCall);
+  }
+  
+  public Activity getActivity()
+  {
+    WeakReference localWeakReference = this.mActivity;
+    if (localWeakReference != null) {
+      return (Activity)localWeakReference.get();
+    }
+    return null;
   }
   
   public int getApiLevel()
   {
-    return this.l;
+    return this.apiLevel;
   }
   
   public String getAppID()
   {
-    return this.g;
+    return this.mAppID;
   }
   
   public AnyClient getClient(Looper paramLooper, HuaweiApiManager.ConnectionManager paramConnectionManager)
   {
-    return this.e.buildClient(this.b, getClientSetting(), paramConnectionManager, paramConnectionManager);
+    return this.mClientBuilder.buildClient(this.mContext, getClientSetting(), paramConnectionManager, paramConnectionManager);
   }
   
   protected ClientSettings getClientSetting()
   {
-    ClientSettings localClientSettings = new ClientSettings(this.b.getPackageName(), this.b.getClass().getName(), getScopes(), this.f, null, this.i);
-    localClientSettings.setCpID(this.h);
-    if (this.j != null) {
-      localClientSettings.setCpActivity((Activity)this.j.get());
+    ClientSettings localClientSettings = new ClientSettings(this.mContext.getPackageName(), this.mContext.getClass().getName(), getScopes(), this.mHostAppid, null, this.mSubAppInfo);
+    localClientSettings.setCpID(this.mCpID);
+    if (TextUtils.isEmpty(this.innerHmsPkg))
+    {
+      this.innerHmsPkg = HMSPackageManager.getInstance(this.mContext).getHMSPackageName();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("inner hms is empty,hms pkg name is ");
+      ((StringBuilder)localObject).append(this.innerHmsPkg);
+      HMSLog.i("HuaweiApi", ((StringBuilder)localObject).toString());
+    }
+    localClientSettings.setInnerHmsPkg(this.innerHmsPkg);
+    Object localObject = this.mActivity;
+    if (localObject != null) {
+      localClientSettings.setCpActivity((Activity)((WeakReference)localObject).get());
     }
     return localClientSettings;
   }
   
   public ConnectionManagerKey<TOption> getConnectionManagerKey()
   {
-    return this.c;
+    return this.mConnectionManagerKey;
   }
   
   public Context getContext()
   {
-    return this.b;
+    return this.mContext;
   }
   
   public int getKitSdkVersion()
   {
-    return this.k;
+    return this.mKitSdkVersion;
   }
   
   public TOption getOption()
   {
-    return this.d;
+    return this.mOption;
   }
   
   protected List<Scope> getScopes()
@@ -203,31 +229,42 @@ public class HuaweiApi<TOption extends Api.ApiOptions>
   
   public String getSubAppID()
   {
-    return this.i.getSubAppID();
+    return this.mSubAppInfo.getSubAppID();
   }
   
   public void setApiLevel(int paramInt)
   {
-    this.l = paramInt;
+    this.apiLevel = paramInt;
+  }
+  
+  public void setInnerHms()
+  {
+    this.innerHmsPkg = this.mContext.getPackageName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init inner hms pkg info:");
+    localStringBuilder.append(this.innerHmsPkg);
+    HMSLog.i("HuaweiApi", localStringBuilder.toString());
   }
   
   public void setKitSdkVersion(int paramInt)
   {
-    this.k = paramInt;
+    this.mKitSdkVersion = paramInt;
   }
   
   public void setSubAppId(String paramString)
   {
-    if (!setSubAppInfo(new SubAppInfo(paramString))) {
-      throw new ApiException(Status.FAILURE);
+    if (setSubAppInfo(new SubAppInfo(paramString))) {
+      return;
     }
+    throw new ApiException(Status.FAILURE);
   }
   
   @Deprecated
   public boolean setSubAppInfo(SubAppInfo paramSubAppInfo)
   {
     HMSLog.i("HuaweiApi", "Enter setSubAppInfo");
-    if ((this.i != null) && (!TextUtils.isEmpty(this.i.getSubAppID())))
+    Object localObject = this.mSubAppInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((SubAppInfo)localObject).getSubAppID())))
     {
       HMSLog.e("HuaweiApi", "subAppInfo is already set");
       return false;
@@ -237,29 +274,29 @@ public class HuaweiApi<TOption extends Api.ApiOptions>
       HMSLog.e("HuaweiApi", "subAppInfo is null");
       return false;
     }
-    String str = paramSubAppInfo.getSubAppID();
-    if (TextUtils.isEmpty(str))
+    localObject = paramSubAppInfo.getSubAppID();
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
       HMSLog.e("HuaweiApi", "subAppId is empty");
       return false;
     }
-    if (str.equals(this.f))
+    if (((String)localObject).equals(this.mHostAppid))
     {
       HMSLog.e("HuaweiApi", "subAppId is host appid");
       return false;
     }
-    if (this.m)
+    if (this.isFirstReqSent)
     {
       HMSLog.e("HuaweiApi", "Client has sent request to Huawei Mobile Services, setting subAppId is not allowed");
       return false;
     }
-    this.i = new SubAppInfo(paramSubAppInfo);
+    this.mSubAppInfo = new SubAppInfo(paramSubAppInfo);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.HuaweiApi
  * JD-Core Version:    0.7.0.1
  */

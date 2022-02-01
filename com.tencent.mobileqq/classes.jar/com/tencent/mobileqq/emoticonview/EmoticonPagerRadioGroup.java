@@ -2,13 +2,13 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.common.config.AppSetting;
 
 public class EmoticonPagerRadioGroup
@@ -44,62 +44,62 @@ public class EmoticonPagerRadioGroup
   
   private RadioButton createButton(int paramInt)
   {
-    float f1 = 13.0F;
-    float f2 = 10.0F;
     EmoticonPagerRadioGroup.1 local1 = new EmoticonPagerRadioGroup.1(this, getContext());
-    Resources localResources;
     if (paramInt == 2)
     {
-      local1.setButtonDrawable(2130850938);
-      local1.setGravity(17);
-      localResources = super.getContext().getResources();
-      if (paramInt != 2) {
-        break label228;
+      local1.setButtonDrawable(2130850878);
+    }
+    else if (paramInt == 3)
+    {
+      local1.setButtonDrawable(2130850879);
+    }
+    else if (paramInt == 4)
+    {
+      local1.setButtonDrawable(2130850891);
+    }
+    else
+    {
+      i = this.indicatorDrawable;
+      if (i == 0) {
+        local1.setButtonDrawable(2130850890);
+      } else {
+        local1.setButtonDrawable(i);
       }
+    }
+    local1.setGravity(17);
+    Resources localResources = super.getContext().getResources();
+    float f1 = 13.0F;
+    float f2 = 10.0F;
+    if (paramInt == 2)
+    {
       f1 = 15.0F;
       f2 = 15.0F;
     }
-    for (;;)
+    else if (paramInt == 3)
     {
-      RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, f1, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, f2, localResources.getDisplayMetrics()));
-      localLayoutParams.gravity = 17;
-      int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
-      localLayoutParams.leftMargin = i;
-      localLayoutParams.rightMargin = i;
-      local1.setLayoutParams(localLayoutParams);
-      local1.setClickable(true);
-      if ((AppSetting.d) && (paramInt != 3) && (paramInt != 2))
-      {
-        local1.setClickable(false);
-        local1.setFocusable(false);
-      }
-      return local1;
-      if (paramInt == 3)
-      {
-        local1.setButtonDrawable(2130850939);
-        break;
-      }
-      if (paramInt == 4)
-      {
-        local1.setButtonDrawable(2130850951);
-        break;
-      }
-      if (this.indicatorDrawable == 0)
-      {
-        local1.setButtonDrawable(2130850950);
-        break;
-      }
-      local1.setButtonDrawable(this.indicatorDrawable);
-      break;
-      label228:
-      if (paramInt == 3) {
-        f1 = 24.0F;
-      } else if (paramInt == 4) {
-        f2 = 13.0F;
-      } else {
-        f1 = 10.0F;
-      }
+      f1 = 24.0F;
     }
+    else if (paramInt == 4)
+    {
+      f2 = 13.0F;
+    }
+    else
+    {
+      f1 = 10.0F;
+    }
+    RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, f1, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, f2, localResources.getDisplayMetrics()));
+    localLayoutParams.gravity = 17;
+    int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
+    localLayoutParams.leftMargin = i;
+    localLayoutParams.rightMargin = i;
+    local1.setLayoutParams(localLayoutParams);
+    local1.setClickable(true);
+    if ((AppSetting.d) && (paramInt != 3) && (paramInt != 2))
+    {
+      local1.setClickable(false);
+      local1.setFocusable(false);
+    }
+    return local1;
   }
   
   public ViewPager getViewPager()
@@ -109,120 +109,112 @@ public class EmoticonPagerRadioGroup
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    if (this.mOnPageChangeListener != null) {
-      this.mOnPageChangeListener.onPageScrollStateChanged(paramInt);
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.mOnPageChangeListener;
+    if (localOnPageChangeListener != null) {
+      localOnPageChangeListener.onPageScrollStateChanged(paramInt);
     }
   }
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.mOnPageChangeListener != null) {
-      this.mOnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
+    ViewPager.OnPageChangeListener localOnPageChangeListener = this.mOnPageChangeListener;
+    if (localOnPageChangeListener != null) {
+      localOnPageChangeListener.onPageScrolled(paramInt1, paramFloat, paramInt2);
     }
   }
   
   public void onPageSelected(int paramInt)
   {
-    if (this.mOnPageChangeListener != null) {
-      this.mOnPageChangeListener.onPageSelected(paramInt);
+    Object localObject = this.mOnPageChangeListener;
+    if (localObject != null) {
+      ((ViewPager.OnPageChangeListener)localObject).onPageSelected(paramInt);
     }
-    int j;
-    int k;
-    int i;
-    RadioButton localRadioButton;
     if (super.getChildCount() > paramInt)
     {
-      if (!this.mIsClassicPage) {
-        break label372;
-      }
-      j = SystemAndEmojiEmoticonInfo.EMOTICON_EMOJI_PAGE_COUNT;
-      k = this.EMOTICON_SYSTEM_PAGE_COUNT;
-      if (((this.lastClassicPageIndex != j) || (paramInt != j - 1)) && (paramInt != 0)) {
-        break label232;
-      }
-      this.emojiButton.setVisibility(8);
-      this.systemButton.setVisibility(0);
-      if (j > k)
+      if (this.mIsClassicPage)
       {
-        i = k + 1;
-        while (i <= j)
+        int j = SystemAndEmojiEmoticonInfo.EMOTICON_EMOJI_PAGE_COUNT;
+        int k = this.EMOTICON_SYSTEM_PAGE_COUNT;
+        if (((this.lastClassicPageIndex == j) && (paramInt == j - 1)) || (paramInt == 0))
         {
-          localRadioButton = (RadioButton)super.getChildAt(i);
-          if (localRadioButton != null) {
-            localRadioButton.setVisibility(0);
+          this.emojiButton.setVisibility(8);
+          this.systemButton.setVisibility(0);
+          if (j > k)
+          {
+            i = k + 1;
+            while (i <= j)
+            {
+              localObject = (RadioButton)super.getChildAt(i);
+              if (localObject != null) {
+                ((RadioButton)localObject).setVisibility(0);
+              }
+              i += 1;
+            }
           }
-          i += 1;
+          if (j < k)
+          {
+            i = j + 1;
+            while (i <= k)
+            {
+              localObject = (RadioButton)super.getChildAt(i);
+              if (localObject != null) {
+                ((RadioButton)localObject).setVisibility(8);
+              }
+              i += 1;
+            }
+          }
+          this.mClassicMode = MODE_EMOJI;
         }
+        else if ((paramInt == j) || (paramInt == j + k - 1))
+        {
+          this.emojiButton.setVisibility(0);
+          this.systemButton.setVisibility(8);
+          if (j > k)
+          {
+            i = k + 1;
+            while (i <= j)
+            {
+              localObject = (RadioButton)super.getChildAt(i);
+              if (localObject != null) {
+                ((RadioButton)localObject).setVisibility(8);
+              }
+              i += 1;
+            }
+          }
+          if (j < k)
+          {
+            i = j + 1;
+            while (i <= k)
+            {
+              localObject = (RadioButton)super.getChildAt(i);
+              if (localObject != null) {
+                ((RadioButton)localObject).setVisibility(0);
+              }
+              i += 1;
+            }
+          }
+          this.mClassicMode = MODE_SYSTEM;
+        }
+        if (this.mClassicMode == MODE_EMOJI) {
+          i = paramInt + 1;
+        } else {
+          i = paramInt - (j - 1);
+        }
+        this.lastClassicPageIndex = paramInt;
+        paramInt = i;
       }
-      if (j < k)
+      else
       {
-        i = j + 1;
-        while (i <= k)
-        {
-          localRadioButton = (RadioButton)super.getChildAt(i);
-          if (localRadioButton != null) {
-            localRadioButton.setVisibility(8);
-          }
-          i += 1;
-        }
+        this.lastClassicPageIndex = -1;
       }
-      this.mClassicMode = MODE_EMOJI;
-      if (this.mClassicMode != MODE_EMOJI) {
-        break label363;
+      int i = paramInt;
+      if (paramInt >= super.getChildCount()) {
+        i = super.getChildCount() - 1;
       }
-      i = paramInt + 1;
-      label188:
-      this.lastClassicPageIndex = paramInt;
-    }
-    for (;;)
-    {
-      paramInt = i;
-      if (i >= super.getChildCount()) {
-        paramInt = super.getChildCount() - 1;
+      localObject = (RadioButton)super.getChildAt(i);
+      if (localObject != null) {
+        ((RadioButton)localObject).setChecked(true);
       }
-      localRadioButton = (RadioButton)super.getChildAt(paramInt);
-      if (localRadioButton != null) {
-        localRadioButton.setChecked(true);
-      }
-      return;
-      label232:
-      if ((paramInt != j) && (paramInt != j + k - 1)) {
-        break;
-      }
-      this.emojiButton.setVisibility(0);
-      this.systemButton.setVisibility(8);
-      if (j > k)
-      {
-        i = k + 1;
-        while (i <= j)
-        {
-          localRadioButton = (RadioButton)super.getChildAt(i);
-          if (localRadioButton != null) {
-            localRadioButton.setVisibility(8);
-          }
-          i += 1;
-        }
-      }
-      if (j < k)
-      {
-        i = j + 1;
-        while (i <= k)
-        {
-          localRadioButton = (RadioButton)super.getChildAt(i);
-          if (localRadioButton != null) {
-            localRadioButton.setVisibility(0);
-          }
-          i += 1;
-        }
-      }
-      this.mClassicMode = MODE_SYSTEM;
-      break;
-      label363:
-      i = paramInt - (j - 1);
-      break label188;
-      label372:
-      this.lastClassicPageIndex = -1;
-      i = paramInt;
     }
   }
   
@@ -283,39 +275,34 @@ public class EmoticonPagerRadioGroup
         i -= 1;
       }
     }
-    RadioButton localRadioButton;
     if ((paramInt > 0) && (this.viewPager != null))
     {
-      localRadioButton = (RadioButton)super.getChildAt(0);
+      RadioButton localRadioButton = (RadioButton)super.getChildAt(0);
       if (!paramBoolean)
       {
-        if (this.indicatorDrawable != 0) {
-          break label198;
+        paramInt = this.indicatorDrawable;
+        if (paramInt == 0) {
+          localRadioButton.setButtonDrawable(2130850890);
+        } else {
+          localRadioButton.setButtonDrawable(paramInt);
         }
-        localRadioButton.setButtonDrawable(2130850950);
       }
-    }
-    for (;;)
-    {
       localRadioButton = (RadioButton)super.getChildAt(this.viewPager.getCurrentItem());
       if (localRadioButton != null) {
         localRadioButton.setChecked(true);
       }
-      paramInt = 0;
-      while (paramInt < getChildCount())
-      {
-        ((RadioButton)super.getChildAt(paramInt)).setVisibility(0);
-        paramInt += 1;
-      }
-      label198:
-      localRadioButton.setButtonDrawable(this.indicatorDrawable);
+    }
+    paramInt = 0;
+    while (paramInt < getChildCount())
+    {
+      ((RadioButton)super.getChildAt(paramInt)).setVisibility(0);
+      paramInt += 1;
     }
     this.mIsClassicPage = false;
   }
   
   public void synClassicButton(int paramInt)
   {
-    int j = 0;
     this.EMOTICON_SYSTEM_PAGE_COUNT = paramInt;
     if (!this.mIsClassicPage)
     {
@@ -323,6 +310,7 @@ public class EmoticonPagerRadioGroup
       int k = SystemAndEmojiEmoticonInfo.EMOTICON_EMOJI_PAGE_COUNT;
       int m = Math.max(SystemAndEmojiEmoticonInfo.EMOTICON_EMOJI_PAGE_COUNT, paramInt);
       super.addView(this.emojiButton);
+      int j = 0;
       int i = 0;
       while (i < m)
       {
@@ -344,7 +332,7 @@ public class EmoticonPagerRadioGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup
  * JD-Core Version:    0.7.0.1
  */

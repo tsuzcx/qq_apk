@@ -9,14 +9,24 @@ public class ExtensionInfoLogUtils
 {
   public static void a(String paramString1, String paramString2, ExtensionInfo paramExtensionInfo)
   {
-    if ((paramExtensionInfo != null) && (!TextUtils.isEmpty(paramString1))) {
-      QLog.i(paramString1, 1, paramString2 + MobileQQ.getShortUinStr(paramExtensionInfo.uin) + ", intimate_type:" + paramExtensionInfo.intimate_type + ", hiddenChatSwitch:" + paramExtensionInfo.hiddenChatSwitch + ", isSharingLocation:" + paramExtensionInfo.isSharingLocation);
+    if ((paramExtensionInfo != null) && (!TextUtils.isEmpty(paramString1)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(MobileQQ.getShortUinStr(paramExtensionInfo.uin));
+      localStringBuilder.append(", intimate_type:");
+      localStringBuilder.append(paramExtensionInfo.intimate_type);
+      localStringBuilder.append(", hiddenChatSwitch:");
+      localStringBuilder.append(paramExtensionInfo.hiddenChatSwitch);
+      localStringBuilder.append(", isSharingLocation:");
+      localStringBuilder.append(paramExtensionInfo.isSharingLocation);
+      QLog.i(paramString1, 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.ExtensionInfoLogUtils
  * JD-Core Version:    0.7.0.1
  */

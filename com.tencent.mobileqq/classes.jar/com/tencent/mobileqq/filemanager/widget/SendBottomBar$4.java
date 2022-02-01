@@ -15,67 +15,66 @@ class SendBottomBar$4
   
   public void onClick(View paramView)
   {
-    if (SendBottomBar.b(this.a)) {}
-    for (;;)
+    if (!SendBottomBar.b(this.a))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       SendBottomBar.a(this.a, true);
       new Handler().postDelayed(new SendBottomBar.4.1(this), 800L);
       SendBottomBar.b(this.a);
-      switch (SendBottomBar.a(this.a).b())
+      int i = SendBottomBar.a(this.a).b();
+      if (i != 1)
       {
-      case 2: 
-      case 3: 
-      case 4: 
-      case 6: 
-      default: 
-        if (!AppNetConnInfo.isNetSupport()) {
-          FMToastUtil.a(2131694430);
-        }
-        break;
-      case 7: 
-        SendBottomBar.c(this.a);
-        break;
-      case 10: 
-        SendBottomBar.d(this.a);
-        break;
-      case 1: 
-        SendBottomBar.e(this.a);
-        break;
-      case 5: 
-        SendBottomBar.f(this.a);
-        break;
-      case 8: 
-        SendBottomBar.g(this.a);
-        break;
-      case 9: 
-        this.a.b();
-        continue;
-        int j = SendBottomBar.a(this.a).a();
-        if (j == 1) {}
-        for (int i = 1;; i = 0)
-        {
-          if (j != 5) {
-            break label232;
+        if (i != 5) {
+          switch (i)
+          {
+          default: 
+            if (!AppNetConnInfo.isNetSupport())
+            {
+              FMToastUtil.a(2131698210);
+            }
+            else
+            {
+              int j = SendBottomBar.a(this.a).a();
+              if (j == 1) {
+                i = 1;
+              } else {
+                i = 0;
+              }
+              if (j == 5) {
+                this.a.c();
+              } else if (i != 0) {
+                SendBottomBar.a(this.a, true);
+              } else {
+                SendBottomBar.h(this.a);
+              }
+            }
+            break;
+          case 10: 
+            SendBottomBar.d(this.a);
+            break;
+          case 9: 
+            this.a.b();
+            break;
+          case 8: 
+            SendBottomBar.g(this.a);
+            break;
+          case 7: 
+            SendBottomBar.c(this.a);
+            break;
           }
-          this.a.c();
-          break;
-        }
-        label232:
-        if (i != 0) {
-          SendBottomBar.a(this.a, true);
         } else {
-          SendBottomBar.h(this.a);
+          SendBottomBar.f(this.a);
         }
-        break;
+      }
+      else {
+        SendBottomBar.e(this.a);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.4
  * JD-Core Version:    0.7.0.1
  */

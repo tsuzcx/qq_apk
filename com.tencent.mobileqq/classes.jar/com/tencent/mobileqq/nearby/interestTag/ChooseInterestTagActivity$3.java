@@ -15,12 +15,12 @@ class ChooseInterestTagActivity$3
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    ChooseInterestTagActivity.a(this.a).fullScroll(66);
+    ChooseInterestTagActivity.access$500(this.a).fullScroll(66);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.3
  * JD-Core Version:    0.7.0.1
  */

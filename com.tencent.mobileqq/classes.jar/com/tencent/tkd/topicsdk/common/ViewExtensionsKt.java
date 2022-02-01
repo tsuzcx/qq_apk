@@ -27,23 +27,24 @@ public final class ViewExtensionsKt
     if ((paramView.getContext() instanceof Activity))
     {
       paramView = paramView.getContext();
-      if (paramView == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
+      if (paramView != null) {
+        return (Activity)paramView;
       }
-      return (Activity)paramView;
+      throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
     }
     if ((paramView.getContext() instanceof ContextWrapper))
     {
       paramView = paramView.getContext();
-      if (paramView == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.content.ContextWrapper");
+      if (paramView != null)
+      {
+        Context localContext = ((ContextWrapper)paramView).getBaseContext();
+        paramView = localContext;
+        if (!(localContext instanceof Activity)) {
+          paramView = null;
+        }
+        return (Activity)paramView;
       }
-      Context localContext = ((ContextWrapper)paramView).getBaseContext();
-      paramView = localContext;
-      if (!(localContext instanceof Activity)) {
-        paramView = null;
-      }
-      return (Activity)paramView;
+      throw new TypeCastException("null cannot be cast to non-null type android.content.ContextWrapper");
     }
     return null;
   }
@@ -74,15 +75,17 @@ public final class ViewExtensionsKt
         paramView.setTag(R.id.a, Long.valueOf(SystemClock.uptimeMillis()));
         paramFunction1.invoke(paramView);
       }
-      return;
     }
-    paramView.setTag(R.id.a, Long.valueOf(SystemClock.uptimeMillis()));
-    paramFunction1.invoke(paramView);
+    else
+    {
+      paramView.setTag(R.id.a, Long.valueOf(SystemClock.uptimeMillis()));
+      paramFunction1.invoke(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.ViewExtensionsKt
  * JD-Core Version:    0.7.0.1
  */

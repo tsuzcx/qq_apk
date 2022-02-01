@@ -368,358 +368,323 @@ public final class LayoutAttrsKt
   
   public static final void setLayout_above(@NotNull View paramView, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramView, "$this$layout_above");
     Object localObject = paramView.getLayoutParams();
     int i;
+    if (localObject != null) {
+      i = ((ViewGroup.LayoutParams)localObject).width;
+    } else {
+      i = paramView.getWidth();
+    }
+    localObject = paramView.getLayoutParams();
+    int j;
+    if (localObject != null) {
+      j = ((ViewGroup.LayoutParams)localObject).height;
+    } else {
+      j = paramView.getHeight();
+    }
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
+      localObject = null;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
     if (localObject != null)
     {
-      i = ((ViewGroup.LayoutParams)localObject).width;
-      localObject = paramView.getLayoutParams();
-      if (localObject == null) {
-        break label145;
-      }
-    }
-    RelativeLayout.LayoutParams localLayoutParams1;
-    label145:
-    for (int j = ((ViewGroup.LayoutParams)localObject).height;; j = paramView.getHeight())
-    {
-      localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-        localObject = null;
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      if (localObject == null) {
-        break label153;
-      }
       localObject = ((RelativeLayout.LayoutParams)localObject).getRules();
-      if (localObject == null) {
-        break label153;
-      }
-      int m = localObject.length;
-      j = 0;
-      i = k;
-      while (j < m)
+      if (localObject != null)
       {
-        localLayoutParams1.addRule(i, localObject[j]);
-        j += 1;
-        i += 1;
+        int k = localObject.length;
+        j = 0;
+        i = 0;
+        while (j < k)
+        {
+          localLayoutParams1.addRule(i, localObject[j]);
+          j += 1;
+          i += 1;
+        }
       }
-      i = paramView.getWidth();
-      break;
     }
-    label153:
     localLayoutParams1.addRule(2, paramInt);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
   }
   
   public static final void setLayout_alignParentLeft(@NotNull View paramView, boolean paramBoolean)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramView, "$this$layout_alignParentLeft");
     if (!paramBoolean) {
       return;
     }
     Object localObject = paramView.getLayoutParams();
     int i;
+    if (localObject != null) {
+      i = ((ViewGroup.LayoutParams)localObject).width;
+    } else {
+      i = paramView.getWidth();
+    }
+    localObject = paramView.getLayoutParams();
+    int j;
+    if (localObject != null) {
+      j = ((ViewGroup.LayoutParams)localObject).height;
+    } else {
+      j = paramView.getHeight();
+    }
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
+      localObject = null;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
     if (localObject != null)
     {
-      i = ((ViewGroup.LayoutParams)localObject).width;
-      localObject = paramView.getLayoutParams();
-      if (localObject == null) {
-        break label150;
-      }
-    }
-    RelativeLayout.LayoutParams localLayoutParams1;
-    label150:
-    for (int j = ((ViewGroup.LayoutParams)localObject).height;; j = paramView.getHeight())
-    {
-      localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-        localObject = null;
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      if (localObject == null) {
-        break label158;
-      }
       localObject = ((RelativeLayout.LayoutParams)localObject).getRules();
-      if (localObject == null) {
-        break label158;
-      }
-      int m = localObject.length;
-      j = 0;
-      i = k;
-      while (j < m)
+      if (localObject != null)
       {
-        localLayoutParams1.addRule(i, localObject[j]);
-        j += 1;
-        i += 1;
+        int k = localObject.length;
+        j = 0;
+        i = 0;
+        while (j < k)
+        {
+          localLayoutParams1.addRule(i, localObject[j]);
+          j += 1;
+          i += 1;
+        }
       }
-      i = paramView.getWidth();
-      break;
     }
-    label158:
     localLayoutParams1.addRule(9, -1);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
   }
   
   public static final void setLayout_alignParentRight(@NotNull View paramView, boolean paramBoolean)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramView, "$this$layout_alignParentRight");
     if (!paramBoolean) {
       return;
     }
     Object localObject = paramView.getLayoutParams();
     int i;
+    if (localObject != null) {
+      i = ((ViewGroup.LayoutParams)localObject).width;
+    } else {
+      i = paramView.getWidth();
+    }
+    localObject = paramView.getLayoutParams();
+    int j;
+    if (localObject != null) {
+      j = ((ViewGroup.LayoutParams)localObject).height;
+    } else {
+      j = paramView.getHeight();
+    }
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
+      localObject = null;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
     if (localObject != null)
     {
-      i = ((ViewGroup.LayoutParams)localObject).width;
-      localObject = paramView.getLayoutParams();
-      if (localObject == null) {
-        break label150;
-      }
-    }
-    RelativeLayout.LayoutParams localLayoutParams1;
-    label150:
-    for (int j = ((ViewGroup.LayoutParams)localObject).height;; j = paramView.getHeight())
-    {
-      localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-        localObject = null;
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      if (localObject == null) {
-        break label158;
-      }
       localObject = ((RelativeLayout.LayoutParams)localObject).getRules();
-      if (localObject == null) {
-        break label158;
-      }
-      int m = localObject.length;
-      j = 0;
-      i = k;
-      while (j < m)
+      if (localObject != null)
       {
-        localLayoutParams1.addRule(i, localObject[j]);
-        j += 1;
-        i += 1;
+        int k = localObject.length;
+        j = 0;
+        i = 0;
+        while (j < k)
+        {
+          localLayoutParams1.addRule(i, localObject[j]);
+          j += 1;
+          i += 1;
+        }
       }
-      i = paramView.getWidth();
-      break;
     }
-    label158:
     localLayoutParams1.addRule(11, -1);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
   }
   
   public static final void setLayout_alignParentTop(@NotNull View paramView, boolean paramBoolean)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramView, "$this$layout_alignParentTop");
     if (!paramBoolean) {
       return;
     }
     Object localObject = paramView.getLayoutParams();
     int i;
+    if (localObject != null) {
+      i = ((ViewGroup.LayoutParams)localObject).width;
+    } else {
+      i = paramView.getWidth();
+    }
+    localObject = paramView.getLayoutParams();
+    int j;
+    if (localObject != null) {
+      j = ((ViewGroup.LayoutParams)localObject).height;
+    } else {
+      j = paramView.getHeight();
+    }
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
+      localObject = null;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
     if (localObject != null)
     {
-      i = ((ViewGroup.LayoutParams)localObject).width;
-      localObject = paramView.getLayoutParams();
-      if (localObject == null) {
-        break label150;
-      }
-    }
-    RelativeLayout.LayoutParams localLayoutParams1;
-    label150:
-    for (int j = ((ViewGroup.LayoutParams)localObject).height;; j = paramView.getHeight())
-    {
-      localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-        localObject = null;
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      if (localObject == null) {
-        break label158;
-      }
       localObject = ((RelativeLayout.LayoutParams)localObject).getRules();
-      if (localObject == null) {
-        break label158;
-      }
-      int m = localObject.length;
-      j = 0;
-      i = k;
-      while (j < m)
+      if (localObject != null)
       {
-        localLayoutParams1.addRule(i, localObject[j]);
-        j += 1;
-        i += 1;
+        int k = localObject.length;
+        j = 0;
+        i = 0;
+        while (j < k)
+        {
+          localLayoutParams1.addRule(i, localObject[j]);
+          j += 1;
+          i += 1;
+        }
       }
-      i = paramView.getWidth();
-      break;
     }
-    label158:
     localLayoutParams1.addRule(9, -1);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
   }
   
   public static final void setLayout_below(@NotNull View paramView, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramView, "$this$layout_below");
     Object localObject = paramView.getLayoutParams();
     int i;
+    if (localObject != null) {
+      i = ((ViewGroup.LayoutParams)localObject).width;
+    } else {
+      i = paramView.getWidth();
+    }
+    localObject = paramView.getLayoutParams();
+    int j;
+    if (localObject != null) {
+      j = ((ViewGroup.LayoutParams)localObject).height;
+    } else {
+      j = paramView.getHeight();
+    }
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
+      localObject = null;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
     if (localObject != null)
     {
-      i = ((ViewGroup.LayoutParams)localObject).width;
-      localObject = paramView.getLayoutParams();
-      if (localObject == null) {
-        break label145;
-      }
-    }
-    RelativeLayout.LayoutParams localLayoutParams1;
-    label145:
-    for (int j = ((ViewGroup.LayoutParams)localObject).height;; j = paramView.getHeight())
-    {
-      localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-        localObject = null;
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      if (localObject == null) {
-        break label153;
-      }
       localObject = ((RelativeLayout.LayoutParams)localObject).getRules();
-      if (localObject == null) {
-        break label153;
-      }
-      int m = localObject.length;
-      j = 0;
-      i = k;
-      while (j < m)
+      if (localObject != null)
       {
-        localLayoutParams1.addRule(i, localObject[j]);
-        j += 1;
-        i += 1;
+        int k = localObject.length;
+        j = 0;
+        i = 0;
+        while (j < k)
+        {
+          localLayoutParams1.addRule(i, localObject[j]);
+          j += 1;
+          i += 1;
+        }
       }
-      i = paramView.getWidth();
-      break;
     }
-    label153:
     localLayoutParams1.addRule(3, paramInt);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
   }
   
   public static final void setLayout_centerHorizontal(@NotNull View paramView, boolean paramBoolean)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramView, "$this$layout_centerHorizontal");
     if (!paramBoolean) {
       return;
     }
     Object localObject = paramView.getLayoutParams();
     int i;
+    if (localObject != null) {
+      i = ((ViewGroup.LayoutParams)localObject).width;
+    } else {
+      i = paramView.getWidth();
+    }
+    localObject = paramView.getLayoutParams();
+    int j;
+    if (localObject != null) {
+      j = ((ViewGroup.LayoutParams)localObject).height;
+    } else {
+      j = paramView.getHeight();
+    }
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
+      localObject = null;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
     if (localObject != null)
     {
-      i = ((ViewGroup.LayoutParams)localObject).width;
-      localObject = paramView.getLayoutParams();
-      if (localObject == null) {
-        break label150;
-      }
-    }
-    RelativeLayout.LayoutParams localLayoutParams1;
-    label150:
-    for (int j = ((ViewGroup.LayoutParams)localObject).height;; j = paramView.getHeight())
-    {
-      localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-        localObject = null;
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      if (localObject == null) {
-        break label158;
-      }
       localObject = ((RelativeLayout.LayoutParams)localObject).getRules();
-      if (localObject == null) {
-        break label158;
-      }
-      int m = localObject.length;
-      j = 0;
-      i = k;
-      while (j < m)
+      if (localObject != null)
       {
-        localLayoutParams1.addRule(i, localObject[j]);
-        j += 1;
-        i += 1;
+        int k = localObject.length;
+        j = 0;
+        i = 0;
+        while (j < k)
+        {
+          localLayoutParams1.addRule(i, localObject[j]);
+          j += 1;
+          i += 1;
+        }
       }
-      i = paramView.getWidth();
-      break;
     }
-    label158:
     localLayoutParams1.addRule(14, -1);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
   }
   
   public static final void setLayout_centerInParent(@NotNull View paramView, boolean paramBoolean)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramView, "$this$layout_centerInParent");
     if (!paramBoolean) {
       return;
     }
     Object localObject = paramView.getLayoutParams();
     int i;
+    if (localObject != null) {
+      i = ((ViewGroup.LayoutParams)localObject).width;
+    } else {
+      i = paramView.getWidth();
+    }
+    localObject = paramView.getLayoutParams();
+    int j;
+    if (localObject != null) {
+      j = ((ViewGroup.LayoutParams)localObject).height;
+    } else {
+      j = paramView.getHeight();
+    }
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
+      localObject = null;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
     if (localObject != null)
     {
-      i = ((ViewGroup.LayoutParams)localObject).width;
-      localObject = paramView.getLayoutParams();
-      if (localObject == null) {
-        break label150;
-      }
-    }
-    RelativeLayout.LayoutParams localLayoutParams1;
-    label150:
-    for (int j = ((ViewGroup.LayoutParams)localObject).height;; j = paramView.getHeight())
-    {
-      localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-        localObject = null;
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      if (localObject == null) {
-        break label158;
-      }
       localObject = ((RelativeLayout.LayoutParams)localObject).getRules();
-      if (localObject == null) {
-        break label158;
-      }
-      int m = localObject.length;
-      j = 0;
-      i = k;
-      while (j < m)
+      if (localObject != null)
       {
-        localLayoutParams1.addRule(i, localObject[j]);
-        j += 1;
-        i += 1;
+        int k = localObject.length;
+        j = 0;
+        i = 0;
+        while (j < k)
+        {
+          localLayoutParams1.addRule(i, localObject[j]);
+          j += 1;
+          i += 1;
+        }
       }
-      i = paramView.getWidth();
-      break;
     }
-    label158:
     localLayoutParams1.addRule(13, -1);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
   }
@@ -731,40 +696,45 @@ public final class LayoutAttrsKt
     if ((localObject instanceof FrameLayout))
     {
       localObject = paramView.getLayoutParams();
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+      if (localObject != null)
+      {
+        localObject = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject);
+        ((FrameLayout.LayoutParams)localObject).gravity = paramInt;
+        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        return;
       }
-      localObject = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject);
-      ((FrameLayout.LayoutParams)localObject).gravity = paramInt;
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    }
-    while (!(localObject instanceof LinearLayout)) {
-      return;
-    }
-    localObject = paramView.getLayoutParams();
-    if (localObject == null) {
       throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
     }
-    localObject = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject);
-    ((LinearLayout.LayoutParams)localObject).gravity = paramInt;
-    paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if ((localObject instanceof LinearLayout))
+    {
+      localObject = paramView.getLayoutParams();
+      if (localObject != null)
+      {
+        localObject = new LinearLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject);
+        ((LinearLayout.LayoutParams)localObject).gravity = paramInt;
+        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        return;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+    }
   }
   
   public static final void setLayout_height(@NotNull View paramView, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "$this$layout_height");
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    if (localLayoutParams != null) {}
-    int j;
-    for (int i = localLayoutParams.width;; i = 0)
+    int i;
+    if (localLayoutParams != null) {
+      i = localLayoutParams.width;
+    } else {
+      i = 0;
+    }
+    int j = paramInt;
+    if (paramInt > 0) {
+      j = getDp(paramInt);
+    }
+    if (paramView.getLayoutParams() != null)
     {
-      j = paramInt;
-      if (paramInt > 0) {
-        j = getDp(paramInt);
-      }
-      if (paramView.getLayoutParams() == null) {
-        break;
-      }
       paramView.getLayoutParams().width = i;
       paramView.getLayoutParams().height = j;
       return;
@@ -833,94 +803,85 @@ public final class LayoutAttrsKt
     Intrinsics.checkParameterIsNotNull(paramView, "$this$layout_toLeftOf");
     Object localObject = paramView.getLayoutParams();
     int i;
+    if (localObject != null) {
+      i = ((ViewGroup.LayoutParams)localObject).width;
+    } else {
+      i = paramView.getWidth();
+    }
+    localObject = paramView.getLayoutParams();
+    int j;
+    if (localObject != null) {
+      j = ((ViewGroup.LayoutParams)localObject).height;
+    } else {
+      j = paramView.getHeight();
+    }
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
+      localObject = null;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
     if (localObject != null)
     {
-      i = ((ViewGroup.LayoutParams)localObject).width;
-      localObject = paramView.getLayoutParams();
-      if (localObject == null) {
-        break label141;
-      }
-    }
-    RelativeLayout.LayoutParams localLayoutParams1;
-    label141:
-    for (int j = ((ViewGroup.LayoutParams)localObject).height;; j = paramView.getHeight())
-    {
-      localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-        localObject = null;
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      if (localObject == null) {
-        break label149;
-      }
       localObject = ((RelativeLayout.LayoutParams)localObject).getRules();
-      if (localObject == null) {
-        break label149;
-      }
-      int k = localObject.length;
-      j = 0;
-      i = 0;
-      while (j < k)
+      if (localObject != null)
       {
-        localLayoutParams1.addRule(i, localObject[j]);
-        j += 1;
-        i += 1;
+        int k = localObject.length;
+        j = 0;
+        i = 0;
+        while (j < k)
+        {
+          localLayoutParams1.addRule(i, localObject[j]);
+          j += 1;
+          i += 1;
+        }
       }
-      i = paramView.getWidth();
-      break;
     }
-    label149:
     localLayoutParams1.addRule(0, paramInt);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
   }
   
   public static final void setLayout_toRightOf(@NotNull View paramView, int paramInt)
   {
-    int k = 0;
     Intrinsics.checkParameterIsNotNull(paramView, "$this$layout_toRightOf");
     Object localObject = paramView.getLayoutParams();
     int i;
+    if (localObject != null) {
+      i = ((ViewGroup.LayoutParams)localObject).width;
+    } else {
+      i = paramView.getWidth();
+    }
+    localObject = paramView.getLayoutParams();
+    int j;
+    if (localObject != null) {
+      j = ((ViewGroup.LayoutParams)localObject).height;
+    } else {
+      j = paramView.getHeight();
+    }
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
+      localObject = null;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
     if (localObject != null)
     {
-      i = ((ViewGroup.LayoutParams)localObject).width;
-      localObject = paramView.getLayoutParams();
-      if (localObject == null) {
-        break label145;
-      }
-    }
-    RelativeLayout.LayoutParams localLayoutParams1;
-    label145:
-    for (int j = ((ViewGroup.LayoutParams)localObject).height;; j = paramView.getHeight())
-    {
-      localLayoutParams1 = new RelativeLayout.LayoutParams(i, j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-        localObject = null;
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      if (localObject == null) {
-        break label153;
-      }
       localObject = ((RelativeLayout.LayoutParams)localObject).getRules();
-      if (localObject == null) {
-        break label153;
-      }
-      int m = localObject.length;
-      j = 0;
-      i = k;
-      while (j < m)
+      if (localObject != null)
       {
-        localLayoutParams1.addRule(i, localObject[j]);
-        j += 1;
-        i += 1;
+        int k = localObject.length;
+        j = 0;
+        i = 0;
+        while (j < k)
+        {
+          localLayoutParams1.addRule(i, localObject[j]);
+          j += 1;
+          i += 1;
+        }
       }
-      i = paramView.getWidth();
-      break;
     }
-    label153:
     localLayoutParams1.addRule(1, paramInt);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
   }
@@ -929,40 +890,33 @@ public final class LayoutAttrsKt
   {
     Intrinsics.checkParameterIsNotNull(paramLinearLayout, "$this$layout_weight");
     Object localObject = paramLinearLayout.getLayoutParams();
-    int j;
-    label41:
-    LinearLayout.LayoutParams localLayoutParams1;
-    if (localObject != null)
-    {
+    int i;
+    if (localObject != null) {
       i = ((ViewGroup.LayoutParams)localObject).width;
-      localObject = paramLinearLayout.getLayoutParams();
-      if (localObject == null) {
-        break label116;
-      }
-      j = ((ViewGroup.LayoutParams)localObject).height;
-      localLayoutParams1 = new LinearLayout.LayoutParams(i, j, paramFloat);
-      ViewGroup.LayoutParams localLayoutParams = paramLinearLayout.getLayoutParams();
-      localObject = localLayoutParams;
-      if (!(localLayoutParams instanceof LinearLayout.LayoutParams)) {
-        localObject = null;
-      }
-      localObject = (LinearLayout.LayoutParams)localObject;
-      if (localObject == null) {
-        break label124;
-      }
-    }
-    label116:
-    label124:
-    for (int i = ((LinearLayout.LayoutParams)localObject).gravity;; i = -1)
-    {
-      localLayoutParams1.gravity = i;
-      paramLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
-      return;
+    } else {
       i = paramLinearLayout.getWidth();
-      break;
-      j = paramLinearLayout.getHeight();
-      break label41;
     }
+    localObject = paramLinearLayout.getLayoutParams();
+    int j;
+    if (localObject != null) {
+      j = ((ViewGroup.LayoutParams)localObject).height;
+    } else {
+      j = paramLinearLayout.getHeight();
+    }
+    LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(i, j, paramFloat);
+    ViewGroup.LayoutParams localLayoutParams = paramLinearLayout.getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof LinearLayout.LayoutParams)) {
+      localObject = null;
+    }
+    localObject = (LinearLayout.LayoutParams)localObject;
+    if (localObject != null) {
+      i = ((LinearLayout.LayoutParams)localObject).gravity;
+    } else {
+      i = -1;
+    }
+    localLayoutParams1.gravity = i;
+    paramLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams1);
   }
   
   public static final void setLayout_width(@NotNull View paramView, int paramInt)
@@ -973,8 +927,12 @@ public final class LayoutAttrsKt
       i = getDp(paramInt);
     }
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    if (localLayoutParams != null) {}
-    for (paramInt = localLayoutParams.height; paramView.getLayoutParams() != null; paramInt = 0)
+    if (localLayoutParams != null) {
+      paramInt = localLayoutParams.height;
+    } else {
+      paramInt = 0;
+    }
+    if (paramView.getLayoutParams() != null)
     {
       paramView.getLayoutParams().width = i;
       paramView.getLayoutParams().height = paramInt;
@@ -1017,26 +975,28 @@ public final class LayoutAttrsKt
   {
     Intrinsics.checkParameterIsNotNull(paramTextView, "$this$textColor");
     Intrinsics.checkParameterIsNotNull(paramObject, "value");
-    if ((paramObject instanceof Integer)) {
+    if ((paramObject instanceof Integer))
+    {
       paramTextView.setTextColor(paramTextView.getResources().getColor(((Number)paramObject).intValue()));
-    }
-    while (!(paramObject instanceof String)) {
       return;
     }
-    paramTextView.setTextColor(Color.parseColor((String)paramObject));
+    if ((paramObject instanceof String)) {
+      paramTextView.setTextColor(Color.parseColor((String)paramObject));
+    }
   }
   
   public static final void set_background(@NotNull View paramView, @NotNull Object paramObject)
   {
     Intrinsics.checkParameterIsNotNull(paramView, "$this$_background");
     Intrinsics.checkParameterIsNotNull(paramObject, "value");
-    if ((paramObject instanceof String)) {
+    if ((paramObject instanceof String))
+    {
       paramView.setBackgroundColor(Color.parseColor((String)paramObject));
-    }
-    while (!(paramObject instanceof Integer)) {
       return;
     }
-    paramView.setBackgroundResource(((Number)paramObject).intValue());
+    if ((paramObject instanceof Integer)) {
+      paramView.setBackgroundResource(((Number)paramObject).intValue());
+    }
   }
   
   public static final void set_clipChildren(@NotNull ViewGroup paramViewGroup, boolean paramBoolean)
@@ -1054,18 +1014,19 @@ public final class LayoutAttrsKt
   public static final void set_text(@NotNull TextView paramTextView, @Nullable Object paramObject)
   {
     Intrinsics.checkParameterIsNotNull(paramTextView, "$this$_text");
-    if ((paramObject instanceof Integer)) {
+    if ((paramObject instanceof Integer))
+    {
       paramTextView.setText(((Number)paramObject).intValue());
-    }
-    while (!(paramObject instanceof String)) {
       return;
     }
-    paramTextView.setText((CharSequence)paramObject);
+    if ((paramObject instanceof String)) {
+      paramTextView.setText((CharSequence)paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.layout.LayoutAttrsKt
  * JD-Core Version:    0.7.0.1
  */

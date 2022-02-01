@@ -65,8 +65,9 @@ public final class RequestQueryQQMobileContactsV3
     paramJceOutputStream.write(this.queryFlag, 3);
     paramJceOutputStream.write(this.Compressd, 4);
     paramJceOutputStream.write(this.MaxsignTimeStamp, 5);
-    if (this.MobileUniqueNo != null) {
-      paramJceOutputStream.write(this.MobileUniqueNo, 6);
+    String str = this.MobileUniqueNo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.OmitOffline, 7);
     paramJceOutputStream.write(this.queryFrom, 8);
@@ -75,7 +76,7 @@ public final class RequestQueryQQMobileContactsV3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestQueryQQMobileContactsV3
  * JD-Core Version:    0.7.0.1
  */

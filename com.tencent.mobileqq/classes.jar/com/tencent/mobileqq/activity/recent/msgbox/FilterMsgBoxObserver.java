@@ -8,14 +8,23 @@ public class FilterMsgBoxObserver
 {
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FilterMsgBoxObserver", 2, "onUpdate() called with: type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], data = [" + paramObject + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate() called with: type = [");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], isSuccess = [");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], data = [");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append("]");
+      QLog.d("FilterMsgBoxObserver", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.FilterMsgBoxObserver
  * JD-Core Version:    0.7.0.1
  */

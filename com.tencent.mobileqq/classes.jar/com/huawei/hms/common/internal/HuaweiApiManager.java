@@ -18,86 +18,89 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class HuaweiApiManager
   implements Handler.Callback
 {
-  private static final Object a = new Object();
-  private static HuaweiApiManager b;
-  private final Handler c = new Handler(paramLooper, this);
-  private final AtomicInteger d = new AtomicInteger(0);
-  private final Map<ConnectionManagerKey<?>, HuaweiApiManager.ConnectionManager<?>> e = new ConcurrentHashMap(5, 0.75F, 1);
+  private static final String HANDLER_NAME = "HuaweiApiHandler";
+  private static final Object LOCK_OBJECT = new Object();
+  private static final int MSG_RECEIVE_SEND_REQ = 4;
+  private static final String TAG = "HuaweiApiManager";
+  private static HuaweiApiManager mInstance;
+  private final Map<ConnectionManagerKey<?>, HuaweiApiManager.ConnectionManager<?>> mConnectionCache = new ConcurrentHashMap(5, 0.75F, 1);
+  private final Handler mHandler = new Handler(paramLooper, this);
+  private final AtomicInteger mSerial = new AtomicInteger(0);
   
   private HuaweiApiManager(Context paramContext, Looper paramLooper, HuaweiApiAvailability paramHuaweiApiAvailability) {}
   
-  private void a(HuaweiApi<?> paramHuaweiApi, TaskCompletionSource<Boolean> paramTaskCompletionSource)
+  private void connectAndSendRequest(HandlerMessageWrapper paramHandlerMessageWrapper)
   {
-    paramHuaweiApi = (HuaweiApiManager.ConnectionManager)this.e.get(paramHuaweiApi.getConnectionManagerKey());
+    HuaweiApi localHuaweiApi = paramHandlerMessageWrapper.mApi;
+    HuaweiApiManager.ConnectionManager localConnectionManager2 = (HuaweiApiManager.ConnectionManager)this.mConnectionCache.get(localHuaweiApi.getConnectionManagerKey());
+    HuaweiApiManager.ConnectionManager localConnectionManager1 = localConnectionManager2;
+    if (localConnectionManager2 == null)
+    {
+      localConnectionManager1 = new HuaweiApiManager.ConnectionManager(this, localHuaweiApi);
+      this.mConnectionCache.put(localHuaweiApi.getConnectionManagerKey(), localConnectionManager1);
+    }
+    localConnectionManager1.sendRequest((TaskApiCallWrapper)paramHandlerMessageWrapper.mContentWrapper);
+  }
+  
+  public static HuaweiApiManager getInstance(Context paramContext)
+  {
+    synchronized (LOCK_OBJECT)
+    {
+      if (mInstance == null)
+      {
+        HandlerThread localHandlerThread = new HandlerThread("HuaweiApiManager");
+        localHandlerThread.start();
+        mInstance = new HuaweiApiManager(paramContext.getApplicationContext(), localHandlerThread.getLooper(), HuaweiApiAvailability.getInstance());
+      }
+      return mInstance;
+    }
+  }
+  
+  private void innerDisconnect(HuaweiApi<?> paramHuaweiApi, TaskCompletionSource<Boolean> paramTaskCompletionSource)
+  {
+    paramHuaweiApi = (HuaweiApiManager.ConnectionManager)this.mConnectionCache.get(paramHuaweiApi.getConnectionManagerKey());
     if (paramHuaweiApi == null)
     {
       paramTaskCompletionSource.setResult(Boolean.valueOf(false));
       return;
     }
-    paramTaskCompletionSource.setResult(Boolean.valueOf(paramHuaweiApi.a()));
-  }
-  
-  private void a(b paramb)
-  {
-    HuaweiApi localHuaweiApi = paramb.b;
-    HuaweiApiManager.ConnectionManager localConnectionManager = (HuaweiApiManager.ConnectionManager)this.e.get(localHuaweiApi.getConnectionManagerKey());
-    if (localConnectionManager == null)
-    {
-      localConnectionManager = new HuaweiApiManager.ConnectionManager(this, localHuaweiApi);
-      this.e.put(localHuaweiApi.getConnectionManagerKey(), localConnectionManager);
-    }
-    for (;;)
-    {
-      localConnectionManager.a((TaskApiCallWrapper)paramb.a);
-      return;
-    }
-  }
-  
-  public static HuaweiApiManager getInstance(Context paramContext)
-  {
-    synchronized (a)
-    {
-      if (b == null)
-      {
-        HandlerThread localHandlerThread = new HandlerThread("HuaweiApiManager");
-        localHandlerThread.start();
-        b = new HuaweiApiManager(paramContext.getApplicationContext(), localHandlerThread.getLooper(), HuaweiApiAvailability.getInstance());
-      }
-      return b;
-    }
+    paramTaskCompletionSource.setResult(Boolean.valueOf(paramHuaweiApi.disconnect()));
   }
   
   public void disconnectService(HuaweiApi<?> paramHuaweiApi, TaskCompletionSource<Boolean> paramTaskCompletionSource)
   {
-    if (Looper.myLooper() == this.c.getLooper())
+    if (Looper.myLooper() == this.mHandler.getLooper())
     {
-      a(paramHuaweiApi, paramTaskCompletionSource);
+      innerDisconnect(paramHuaweiApi, paramTaskCompletionSource);
       return;
     }
-    this.c.post(new HuaweiApiManager.1(this, paramHuaweiApi, paramTaskCompletionSource));
+    this.mHandler.post(new HuaweiApiManager.1(this, paramHuaweiApi, paramTaskCompletionSource));
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what != 4)
     {
-    default: 
-      HMSLog.w("HuaweiApiManager", "Unknown message id: " + paramMessage.what);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unknown message id: ");
+      localStringBuilder.append(paramMessage.what);
+      HMSLog.w("HuaweiApiManager", localStringBuilder.toString());
       return false;
     }
-    a((b)paramMessage.obj);
+    connectAndSendRequest((HandlerMessageWrapper)paramMessage.obj);
     return true;
   }
   
   public final <TOption extends Api.ApiOptions, TResult> void sendRequest(HuaweiApi<TOption> paramHuaweiApi, TaskApiCall<? extends AnyClient, TResult> paramTaskApiCall, TaskCompletionSource<TResult> paramTaskCompletionSource)
   {
     paramTaskApiCall = new TaskApiCallWrapper(paramTaskApiCall, paramTaskCompletionSource);
-    this.c.sendMessage(this.c.obtainMessage(4, new b(paramTaskApiCall, this.d.getAndIncrement(), paramHuaweiApi)));
+    paramTaskCompletionSource = this.mHandler;
+    paramTaskCompletionSource.sendMessage(paramTaskCompletionSource.obtainMessage(4, new HandlerMessageWrapper(paramTaskApiCall, this.mSerial.getAndIncrement(), paramHuaweiApi)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.HuaweiApiManager
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ import android.net.Uri;
 import com.tencent.biz.videostory.support.VSReporter;
 import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Timer;
@@ -29,40 +30,43 @@ public class VsMediaPlayer
   
   public VsMediaPlayer()
   {
-    f();
+    e();
   }
   
-  private void f()
+  private void e()
   {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer = new ReportMediaPlayer();
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setVolume(this.jdField_a_of_type_Float, this.jdField_a_of_type_Float);
+    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    float f = this.jdField_a_of_type_Float;
+    localMediaPlayer.setVolume(f, f);
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(this);
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(this);
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
   }
   
-  private void g()
+  private void f()
   {
     if (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo != null)
     {
       this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicStart);
-      h();
+      g();
     }
   }
   
-  private void h()
+  private void g()
   {
-    i();
+    h();
     this.jdField_a_of_type_JavaUtilTimer = new Timer();
     this.jdField_a_of_type_JavaUtilTimer.schedule(new VsMediaPlayer.1(this), 0L, 1000L);
   }
   
-  private void i()
+  private void h()
   {
     this.jdField_b_of_type_Int = 0;
-    if (this.jdField_a_of_type_JavaUtilTimer != null) {
-      this.jdField_a_of_type_JavaUtilTimer.cancel();
+    Timer localTimer = this.jdField_a_of_type_JavaUtilTimer;
+    if (localTimer != null) {
+      localTimer.cancel();
     }
   }
   
@@ -73,19 +77,19 @@ public class VsMediaPlayer
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-    {
-      if (!this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
-        break label30;
+    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying())
+      {
+        if (this.jdField_a_of_type_Int == -1) {
+          f();
+        }
       }
-      if (this.jdField_a_of_type_Int == -1) {
+      else
+      {
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
         g();
       }
     }
-    return;
-    label30:
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-    h();
   }
   
   public void a(float paramFloat)
@@ -123,38 +127,39 @@ public class VsMediaPlayer
       ((HashMap)localObject).put("element_id", this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid);
       VSReporter.a("edit_smart_music_play", VSReporter.a((HashMap)localObject));
     }
-    if (paramVsMusicItemInfo == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if ((paramVsMusicItemInfo.mUrl != null) && (paramVsMusicItemInfo.mUrl.trim().length() != 0)) {
-          break;
-        }
-      } while (this.jdField_a_of_type_ComTencentBizVideostoryVideoVsMediaPlayer$VsMediaPlayerListener == null);
-      this.jdField_a_of_type_ComTencentBizVideostoryVideoVsMediaPlayer$VsMediaPlayerListener.a(this.jdField_a_of_type_AndroidMediaMediaPlayer, -2, -1);
-      return;
-      localObject = Uri.parse(paramVsMusicItemInfo.mUrl);
-      if (localObject != null) {
-        break;
-      }
-    } while (this.jdField_a_of_type_ComTencentBizVideostoryVideoVsMediaPlayer$VsMediaPlayerListener == null);
-    this.jdField_a_of_type_ComTencentBizVideostoryVideoVsMediaPlayer$VsMediaPlayerListener.a(this.jdField_a_of_type_AndroidMediaMediaPlayer, -1, -1);
-    return;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo = paramVsMusicItemInfo;
-    b();
-    try
-    {
-      f();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(BaseApplicationImpl.getContext(), (Uri)localObject);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+    if (paramVsMusicItemInfo == null) {
       return;
     }
-    catch (IOException paramVsMusicItemInfo)
+    if ((paramVsMusicItemInfo.mUrl != null) && (paramVsMusicItemInfo.mUrl.trim().length() != 0))
     {
-      paramVsMusicItemInfo.printStackTrace();
+      localObject = Uri.parse(paramVsMusicItemInfo.mUrl);
+      if (localObject == null)
+      {
+        paramVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryVideoVsMediaPlayer$VsMediaPlayerListener;
+        if (paramVsMusicItemInfo != null) {
+          paramVsMusicItemInfo.a(this.jdField_a_of_type_AndroidMediaMediaPlayer, -1, -1);
+        }
+        return;
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo = paramVsMusicItemInfo;
+      b();
+      try
+      {
+        e();
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(BaseApplicationImpl.getContext(), (Uri)localObject);
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+        return;
+      }
+      catch (IOException paramVsMusicItemInfo)
+      {
+        paramVsMusicItemInfo.printStackTrace();
+        return;
+      }
+    }
+    paramVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryVideoVsMediaPlayer$VsMediaPlayerListener;
+    if (paramVsMusicItemInfo != null) {
+      paramVsMusicItemInfo.a(this.jdField_a_of_type_AndroidMediaMediaPlayer, -2, -1);
     }
   }
   
@@ -173,7 +178,7 @@ public class VsMediaPlayer
     if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
       this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
     }
-    i();
+    h();
   }
   
   public void d()
@@ -183,25 +188,23 @@ public class VsMediaPlayer
     }
   }
   
-  public void e()
-  {
-    if ((this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo != null)) {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-    }
-  }
-  
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentBizVideostoryVideoVsMediaPlayer$VsMediaPlayerListener != null) && (paramInt1 != -38)) {
-      this.jdField_a_of_type_ComTencentBizVideostoryVideoVsMediaPlayer$VsMediaPlayerListener.a(paramMediaPlayer, paramInt1, paramInt2);
+    VsMediaPlayer.VsMediaPlayerListener localVsMediaPlayerListener = this.jdField_a_of_type_ComTencentBizVideostoryVideoVsMediaPlayer$VsMediaPlayerListener;
+    if ((localVsMediaPlayerListener != null) && (paramInt1 != -38)) {
+      localVsMediaPlayerListener.a(paramMediaPlayer, paramInt1, paramInt2);
     }
     return false;
   }
   
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if ((paramMediaPlayer != null) && (this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo != null)) {
-      paramMediaPlayer.seekTo(this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.musicStart);
+    if (paramMediaPlayer != null)
+    {
+      VsMusicItemInfo localVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
+      if (localVsMusicItemInfo != null) {
+        paramMediaPlayer.seekTo(localVsMusicItemInfo.musicStart);
+      }
     }
   }
   
@@ -217,7 +220,7 @@ public class VsMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.video.VsMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

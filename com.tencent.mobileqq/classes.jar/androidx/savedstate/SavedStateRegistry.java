@@ -6,7 +6,6 @@ import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.arch.core.internal.SafeIterableMap;
-import androidx.arch.core.internal.SafeIterableMap.IteratorWithAdditions;
 import androidx.lifecycle.Lifecycle;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -26,19 +25,21 @@ public final class SavedStateRegistry
   @Nullable
   public Bundle consumeRestoredStateForKey(@NonNull String paramString)
   {
-    if (!this.mRestored) {
-      throw new IllegalStateException("You can consumeRestoredStateForKey only after super.onCreate of corresponding component");
-    }
-    if (this.mRestoredState != null)
+    if (this.mRestored)
     {
-      Bundle localBundle = this.mRestoredState.getBundle(paramString);
-      this.mRestoredState.remove(paramString);
-      if (this.mRestoredState.isEmpty()) {
-        this.mRestoredState = null;
+      Bundle localBundle = this.mRestoredState;
+      if (localBundle != null)
+      {
+        localBundle = localBundle.getBundle(paramString);
+        this.mRestoredState.remove(paramString);
+        if (this.mRestoredState.isEmpty()) {
+          this.mRestoredState = null;
+        }
+        return localBundle;
       }
-      return localBundle;
+      return null;
     }
-    return null;
+    throw new IllegalStateException("You can consumeRestoredStateForKey only after super.onCreate of corresponding component");
   }
   
   @MainThread
@@ -50,27 +51,30 @@ public final class SavedStateRegistry
   @MainThread
   void performRestore(@NonNull Lifecycle paramLifecycle, @Nullable Bundle paramBundle)
   {
-    if (this.mRestored) {
-      throw new IllegalStateException("SavedStateRegistry was already restored.");
+    if (!this.mRestored)
+    {
+      if (paramBundle != null) {
+        this.mRestoredState = paramBundle.getBundle("androidx.lifecycle.BundlableSavedStateRegistry.key");
+      }
+      paramLifecycle.addObserver(new SavedStateRegistry.1(this));
+      this.mRestored = true;
+      return;
     }
-    if (paramBundle != null) {
-      this.mRestoredState = paramBundle.getBundle("androidx.lifecycle.BundlableSavedStateRegistry.key");
-    }
-    paramLifecycle.addObserver(new SavedStateRegistry.1(this));
-    this.mRestored = true;
+    throw new IllegalStateException("SavedStateRegistry was already restored.");
   }
   
   @MainThread
   void performSave(@NonNull Bundle paramBundle)
   {
     Bundle localBundle = new Bundle();
-    if (this.mRestoredState != null) {
-      localBundle.putAll(this.mRestoredState);
+    Object localObject = this.mRestoredState;
+    if (localObject != null) {
+      localBundle.putAll((Bundle)localObject);
     }
-    SafeIterableMap.IteratorWithAdditions localIteratorWithAdditions = this.mComponents.iteratorWithAdditions();
-    while (localIteratorWithAdditions.hasNext())
+    localObject = this.mComponents.iteratorWithAdditions();
+    while (((Iterator)localObject).hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)localIteratorWithAdditions.next();
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
       localBundle.putBundle((String)localEntry.getKey(), ((SavedStateRegistry.SavedStateProvider)localEntry.getValue()).saveState());
     }
     paramBundle.putBundle("androidx.lifecycle.BundlableSavedStateRegistry.key", localBundle);
@@ -79,30 +83,36 @@ public final class SavedStateRegistry
   @MainThread
   public void registerSavedStateProvider(@NonNull String paramString, @NonNull SavedStateRegistry.SavedStateProvider paramSavedStateProvider)
   {
-    if ((SavedStateRegistry.SavedStateProvider)this.mComponents.putIfAbsent(paramString, paramSavedStateProvider) != null) {
-      throw new IllegalArgumentException("SavedStateProvider with the given key is already registered");
+    if ((SavedStateRegistry.SavedStateProvider)this.mComponents.putIfAbsent(paramString, paramSavedStateProvider) == null) {
+      return;
     }
+    throw new IllegalArgumentException("SavedStateProvider with the given key is already registered");
   }
   
   @MainThread
   public void runOnNextRecreation(@NonNull Class<? extends SavedStateRegistry.AutoRecreated> paramClass)
   {
-    if (!this.mAllowingSavingState) {
-      throw new IllegalStateException("Can not perform this action after onSaveInstanceState");
-    }
-    if (this.mRecreatorProvider == null) {
-      this.mRecreatorProvider = new Recreator.SavedStateProvider(this);
-    }
-    try
+    if (this.mAllowingSavingState)
     {
-      paramClass.getDeclaredConstructor(new Class[0]);
-      this.mRecreatorProvider.add(paramClass.getName());
-      return;
+      if (this.mRecreatorProvider == null) {
+        this.mRecreatorProvider = new Recreator.SavedStateProvider(this);
+      }
+      try
+      {
+        paramClass.getDeclaredConstructor(new Class[0]);
+        this.mRecreatorProvider.add(paramClass.getName());
+        return;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Class");
+        localStringBuilder.append(paramClass.getSimpleName());
+        localStringBuilder.append(" must have default constructor in order to be automatically recreated");
+        throw new IllegalArgumentException(localStringBuilder.toString(), localNoSuchMethodException);
+      }
     }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      throw new IllegalArgumentException("Class" + paramClass.getSimpleName() + " must have default constructor in order to be automatically recreated", localNoSuchMethodException);
-    }
+    throw new IllegalStateException("Can not perform this action after onSaveInstanceState");
   }
   
   @MainThread
@@ -113,7 +123,7 @@ public final class SavedStateRegistry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.savedstate.SavedStateRegistry
  * JD-Core Version:    0.7.0.1
  */

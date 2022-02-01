@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.widget;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.WindowManager;
 
 class PopupWindowWithMask$4
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   PopupWindowWithMask$4(PopupWindowWithMask paramPopupWindowWithMask) {}
   
@@ -26,7 +25,7 @@ class PopupWindowWithMask$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PopupWindowWithMask.4
  * JD-Core Version:    0.7.0.1
  */

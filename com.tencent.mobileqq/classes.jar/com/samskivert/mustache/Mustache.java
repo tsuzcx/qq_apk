@@ -37,49 +37,56 @@ public class Mustache
   
   protected static Template.Segment[] trim(Template.Segment[] paramArrayOfSegment, boolean paramBoolean)
   {
-    int m = paramArrayOfSegment.length;
+    int n = paramArrayOfSegment.length;
     int i = 0;
-    if (i < m)
+    while (i < n)
     {
       Object localObject = paramArrayOfSegment[i];
+      Mustache.StringSegment localStringSegment2 = null;
       Template.Segment localSegment1;
-      label28:
-      Template.Segment localSegment2;
-      label43:
-      Mustache.StringSegment localStringSegment1;
-      label58:
-      Mustache.StringSegment localStringSegment2;
-      label73:
-      int j;
-      label97:
-      int k;
-      if (i > 0)
-      {
+      if (i > 0) {
         localSegment1 = paramArrayOfSegment[(i - 1)];
-        if (i >= m - 1) {
-          break label215;
-        }
+      } else {
+        localSegment1 = null;
+      }
+      Template.Segment localSegment2;
+      if (i < n - 1) {
         localSegment2 = paramArrayOfSegment[(i + 1)];
-        if (!(localSegment1 instanceof Mustache.StringSegment)) {
-          break label221;
-        }
+      } else {
+        localSegment2 = null;
+      }
+      Mustache.StringSegment localStringSegment1;
+      if ((localSegment1 instanceof Mustache.StringSegment)) {
         localStringSegment1 = (Mustache.StringSegment)localSegment1;
-        if (!(localSegment2 instanceof Mustache.StringSegment)) {
-          break label227;
-        }
+      } else {
+        localStringSegment1 = null;
+      }
+      if ((localSegment2 instanceof Mustache.StringSegment)) {
         localStringSegment2 = (Mustache.StringSegment)localSegment2;
-        if (((localSegment1 != null) || (!paramBoolean)) && ((localStringSegment1 == null) || (!localStringSegment1.trailsBlank()))) {
-          break label233;
-        }
+      }
+      int m = 1;
+      int j;
+      if (((localSegment1 == null) && (paramBoolean)) || ((localStringSegment1 != null) && (localStringSegment1.trailsBlank()))) {
         j = 1;
-        if (((localSegment2 != null) || (!paramBoolean)) && ((localStringSegment2 == null) || (!localStringSegment2.leadsBlank()))) {
-          break label238;
-        }
-        k = 1;
-        label122:
-        if (!(localObject instanceof Mustache.BlockSegment)) {
-          break label244;
-        }
+      } else {
+        j = 0;
+      }
+      int k;
+      if (localSegment2 == null)
+      {
+        k = m;
+        if (paramBoolean) {}
+      }
+      else if ((localStringSegment2 != null) && (localStringSegment2.leadsBlank()))
+      {
+        k = m;
+      }
+      else
+      {
+        k = 0;
+      }
+      if ((localObject instanceof Mustache.BlockSegment))
+      {
         localObject = (Mustache.BlockSegment)localObject;
         if ((j != 0) && (((Mustache.BlockSegment)localObject).firstLeadsBlank()))
         {
@@ -96,38 +103,16 @@ public class Mustache
           }
         }
       }
-      for (;;)
+      else if (((localObject instanceof Mustache.FauxSegment)) && (j != 0) && (k != 0))
       {
-        i += 1;
-        break;
-        localSegment1 = null;
-        break label28;
-        label215:
-        localSegment2 = null;
-        break label43;
-        label221:
-        localStringSegment1 = null;
-        break label58;
-        label227:
-        localStringSegment2 = null;
-        break label73;
-        label233:
-        j = 0;
-        break label97;
-        label238:
-        k = 0;
-        break label122;
-        label244:
-        if (((localObject instanceof Mustache.FauxSegment)) && (j != 0) && (k != 0))
-        {
-          if (localSegment1 != null) {
-            paramArrayOfSegment[(i - 1)] = localStringSegment1.trimTrailBlank();
-          }
-          if (localSegment2 != null) {
-            paramArrayOfSegment[(i + 1)] = localStringSegment2.trimLeadBlank();
-          }
+        if (localSegment1 != null) {
+          paramArrayOfSegment[(i - 1)] = localStringSegment1.trimTrailBlank();
+        }
+        if (localSegment2 != null) {
+          paramArrayOfSegment[(i + 1)] = localStringSegment2.trimLeadBlank();
         }
       }
+      i += 1;
     }
     return paramArrayOfSegment;
   }

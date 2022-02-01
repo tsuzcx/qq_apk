@@ -16,16 +16,18 @@ final class MiniErrorListener$onError$1$dialog$1
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = MiniErrorListener.access$getContext$p(this.this$0.this$0);
-    if (paramDialogInterface == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
+    if (paramDialogInterface != null)
+    {
+      ((Activity)paramDialogInterface).finish();
+      Process.killProcess(Process.myPid());
+      return;
     }
-    ((Activity)paramDialogInterface).finish();
-    Process.killProcess(Process.myPid());
+    throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.api.MiniErrorListener.onError.1.dialog.1
  * JD-Core Version:    0.7.0.1
  */

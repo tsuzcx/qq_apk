@@ -1,9 +1,9 @@
 package com.tencent.biz.qcircleshadow.libmanager;
 
 import android.util.SparseArray;
-import com.ae.light.camera.api.IAEEditorGenerateResultListener;
-import com.ae.light.camera.api.IAEEditorManagerForQzone;
-import com.ae.light.camera.api.IAEEditorUICallbackListener;
+import com.tencent.aelight.camera.api.IAEEditorGenerateResultListener;
+import com.tencent.aelight.camera.api.IAEEditorManagerForQzone;
+import com.tencent.aelight.camera.api.IAEEditorUICallbackListener;
 import com.tencent.biz.qcircleshadow.lib.listener.QCircleAEEditorGenerateResultListener;
 import com.tencent.biz.qcircleshadow.lib.listener.QCircleAEEditorUICallbackListener;
 import com.tencent.biz.qcircleshadow.lib.listener.QCircleWXShareListener;
@@ -28,15 +28,16 @@ public class QCircleListenerProxyManager
   
   public static QCircleListenerProxyManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new QCircleListenerProxyManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new QCircleListenerProxyManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public void addQCircleAEEditorGenerateResultListener(QCircleAEEditorGenerateResultListener paramQCircleAEEditorGenerateResultListener)
@@ -95,35 +96,35 @@ public class QCircleListenerProxyManager
   
   public void removeQCircleAEEditorGenerateResultListener(QCircleAEEditorGenerateResultListener paramQCircleAEEditorGenerateResultListener)
   {
-    if (paramQCircleAEEditorGenerateResultListener == null) {}
-    do
-    {
+    if (paramQCircleAEEditorGenerateResultListener == null) {
       return;
-      paramQCircleAEEditorGenerateResultListener = (IAEEditorGenerateResultListener)this.mMapAEEditorResultListener.get(paramQCircleAEEditorGenerateResultListener.hashCode());
-    } while (paramQCircleAEEditorGenerateResultListener == null);
-    ((IAEEditorManagerForQzone)QRoute.api(IAEEditorManagerForQzone.class)).removeListener(paramQCircleAEEditorGenerateResultListener);
+    }
+    paramQCircleAEEditorGenerateResultListener = (IAEEditorGenerateResultListener)this.mMapAEEditorResultListener.get(paramQCircleAEEditorGenerateResultListener.hashCode());
+    if (paramQCircleAEEditorGenerateResultListener != null) {
+      ((IAEEditorManagerForQzone)QRoute.api(IAEEditorManagerForQzone.class)).removeListener(paramQCircleAEEditorGenerateResultListener);
+    }
   }
   
   public void removeQCircleAEEditorUICallbackListener(QCircleAEEditorUICallbackListener paramQCircleAEEditorUICallbackListener)
   {
-    if (paramQCircleAEEditorUICallbackListener == null) {}
-    do
-    {
+    if (paramQCircleAEEditorUICallbackListener == null) {
       return;
-      paramQCircleAEEditorUICallbackListener = (IAEEditorUICallbackListener)this.mMapAEEditorUICallbackListener.get(paramQCircleAEEditorUICallbackListener.hashCode());
-    } while (paramQCircleAEEditorUICallbackListener == null);
-    ((IAEEditorManagerForQzone)QRoute.api(IAEEditorManagerForQzone.class)).removeUICallbackListener(paramQCircleAEEditorUICallbackListener);
+    }
+    paramQCircleAEEditorUICallbackListener = (IAEEditorUICallbackListener)this.mMapAEEditorUICallbackListener.get(paramQCircleAEEditorUICallbackListener.hashCode());
+    if (paramQCircleAEEditorUICallbackListener != null) {
+      ((IAEEditorManagerForQzone)QRoute.api(IAEEditorManagerForQzone.class)).removeUICallbackListener(paramQCircleAEEditorUICallbackListener);
+    }
   }
   
   public void removeQCircleWXShareListener(QCircleWXShareListener paramQCircleWXShareListener)
   {
-    if (paramQCircleWXShareListener == null) {}
-    do
-    {
+    if (paramQCircleWXShareListener == null) {
       return;
-      paramQCircleWXShareListener = (IWXShareHelperListener)this.mMapWXShareListener.get(paramQCircleWXShareListener.hashCode());
-    } while (paramQCircleWXShareListener == null);
-    ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).removeObserver(paramQCircleWXShareListener);
+    }
+    paramQCircleWXShareListener = (IWXShareHelperListener)this.mMapWXShareListener.get(paramQCircleWXShareListener.hashCode());
+    if (paramQCircleWXShareListener != null) {
+      ((IWXShareHelper)QRoute.api(IWXShareHelper.class)).removeObserver(paramQCircleWXShareListener);
+    }
   }
   
   public void removeQQFrontBackListener(IQQFrontBackListener paramIQQFrontBackListener)
@@ -136,7 +137,7 @@ public class QCircleListenerProxyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.libmanager.QCircleListenerProxyManager
  * JD-Core Version:    0.7.0.1
  */

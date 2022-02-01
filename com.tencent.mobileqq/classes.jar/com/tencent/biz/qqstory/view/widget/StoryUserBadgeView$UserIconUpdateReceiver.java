@@ -16,11 +16,12 @@ public class StoryUserBadgeView$UserIconUpdateReceiver
   
   public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull GetUserIconHandler.UserIconUpdateEvent paramUserIconUpdateEvent)
   {
-    if (paramUserIconUpdateEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
-    while (paramUserIconUpdateEvent.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
+    if (paramUserIconUpdateEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {
       return;
     }
-    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
+    if (paramUserIconUpdateEvent.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) != null) {
+      paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
+    }
   }
   
   public Class acceptEventClass()
@@ -30,7 +31,7 @@ public class StoryUserBadgeView$UserIconUpdateReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.StoryUserBadgeView.UserIconUpdateReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,25 @@ class BaseStageView$4
   
   public void a(LottieDrawable paramLottieDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseStageView", 2, "COUNT_DOWN_5S_JSON onLoad lottieDrawable = " + paramLottieDrawable);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("COUNT_DOWN_5S_JSON onLoad lottieDrawable = ");
+      ((StringBuilder)localObject).append(paramLottieDrawable);
+      QLog.d("BaseStageView", 2, ((StringBuilder)localObject).toString());
     }
     if (paramLottieDrawable != null)
     {
-      this.a.a = paramLottieDrawable;
-      BaseStageView.a(this.a);
+      localObject = this.a;
+      ((BaseStageView)localObject).a = paramLottieDrawable;
+      BaseStageView.a((BaseStageView)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.base.BaseStageView.4
  * JD-Core Version:    0.7.0.1
  */

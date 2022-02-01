@@ -31,7 +31,7 @@ public class StructMsgItemContent
   
   public int c()
   {
-    return 2131380283;
+    return 2131379595;
   }
   
   public int e()
@@ -49,7 +49,7 @@ public class StructMsgItemContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemContent
  * JD-Core Version:    0.7.0.1
  */

@@ -23,35 +23,38 @@ abstract class ImplLoader
   
   String[] loadWhiteList(InstalledApk paramInstalledApk)
   {
-    paramInstalledApk = new DexClassLoader(paramInstalledApk.apkFilePath, paramInstalledApk.oDexPath, paramInstalledApk.libraryPath, getClass().getClassLoader());
+    Object localObject = new DexClassLoader(paramInstalledApk.apkFilePath, paramInstalledApk.oDexPath, paramInstalledApk.libraryPath, getClass().getClassLoader());
+    paramInstalledApk = null;
     try
     {
-      paramInstalledApk = (String[])paramInstalledApk.loadClass("com.tencent.shadow.dynamic.impl.WhiteList").getDeclaredField("sWhiteList").get(null);
-      if (paramInstalledApk != null) {
-        return concatenate(getCustomWhiteList(), paramInstalledApk);
-      }
-    }
-    catch (ClassNotFoundException paramInstalledApk)
-    {
-      for (;;)
+      try
       {
-        paramInstalledApk = null;
+        localObject = (String[])((DexClassLoader)localObject).loadClass("com.tencent.shadow.dynamic.impl.WhiteList").getDeclaredField("sWhiteList").get(null);
+        paramInstalledApk = (InstalledApk)localObject;
+      }
+      catch (IllegalAccessException paramInstalledApk)
+      {
+        throw new RuntimeException(paramInstalledApk);
+      }
+      catch (NoSuchFieldException paramInstalledApk)
+      {
+        throw new RuntimeException(paramInstalledApk);
       }
     }
-    catch (NoSuchFieldException paramInstalledApk)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      throw new RuntimeException(paramInstalledApk);
+      label76:
+      break label76;
     }
-    catch (IllegalAccessException paramInstalledApk)
-    {
-      throw new RuntimeException(paramInstalledApk);
+    if (paramInstalledApk != null) {
+      return concatenate(getCustomWhiteList(), paramInstalledApk);
     }
     return getCustomWhiteList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.ImplLoader
  * JD-Core Version:    0.7.0.1
  */

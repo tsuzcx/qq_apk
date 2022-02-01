@@ -36,7 +36,11 @@ public class VFSRegisterProxy
   private List<String> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(AppConstants.SDCARD_PATH + paramString + File.separator);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    localArrayList.add(localStringBuilder.toString());
     return localArrayList;
   }
   
@@ -44,18 +48,25 @@ public class VFSRegisterProxy
   {
     if (paramBoolean2)
     {
-      QLog.d("VFSRegisterProxy", 1, "publishOnEditorCommit() is called. isMainProcess = " + paramBoolean1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("publishOnEditorCommit() is called. isMainProcess = ");
+      localStringBuilder.append(paramBoolean1);
+      QLog.d("VFSRegisterProxy", 1, localStringBuilder.toString());
       FileSystemManager.instance().publishOnEditorCommit(paramBoolean1);
     }
   }
   
   private boolean a()
   {
+    Object localObject = BaseApplication.getContext().getSharedPreferences("StepUpdate", 4);
     boolean bool = false;
-    if (BaseApplication.getContext().getSharedPreferences("StepUpdate", 4).getInt("vfs_version", 0) < 10) {
+    if (((SharedPreferences)localObject).getInt("vfs_version", 0) < 10) {
       bool = true;
     }
-    QLog.d("VFSRegisterProxy", 1, "initConfig checkSP is called, return val = " + bool);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initConfig checkSP is called, return val = ");
+    ((StringBuilder)localObject).append(bool);
+    QLog.d("VFSRegisterProxy", 1, ((StringBuilder)localObject).toString());
     return bool;
   }
   
@@ -67,16 +78,23 @@ public class VFSRegisterProxy
   
   private void b(String paramString)
   {
-    File localFile1 = new File(paramString);
-    if (localFile1.isDirectory())
+    File localFile = new File(paramString);
+    if (localFile.isDirectory())
     {
       paramString = new File(VFSAssistantUtils.getSDKPrivatePath(paramString));
-      File localFile2 = paramString.getParentFile();
-      if ((localFile2 != null) && (!localFile2.exists())) {
-        localFile2.mkdirs();
+      Object localObject = paramString.getParentFile();
+      if ((localObject != null) && (!((File)localObject).exists())) {
+        ((File)localObject).mkdirs();
       }
-      if ((localFile1.renameTo(paramString)) && (QLog.isColorLevel())) {
-        QLog.i("VFSRegisterProxy", 2, "executeLightMigrate Fast moved '" + localFile1 + "' -> '" + paramString + "'");
+      if ((localFile.renameTo(paramString)) && (QLog.isColorLevel()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("executeLightMigrate Fast moved '");
+        ((StringBuilder)localObject).append(localFile);
+        ((StringBuilder)localObject).append("' -> '");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("'");
+        QLog.i("VFSRegisterProxy", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -84,8 +102,12 @@ public class VFSRegisterProxy
   private boolean b()
   {
     boolean bool = BaseApplication.getContext().getSharedPreferences("VFS_Config_Register_Proxy", 4).getBoolean("state_account_registered", true);
-    if (QLog.isColorLevel()) {
-      QLog.d("VFSRegisterProxy", 2, "isFirstRegisterAccount is called, return val = " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isFirstRegisterAccount is called, return val = ");
+      localStringBuilder.append(bool);
+      QLog.d("VFSRegisterProxy", 2, localStringBuilder.toString());
     }
     return bool;
   }
@@ -108,21 +130,32 @@ public class VFSRegisterProxy
       paramVFSReportCallback = (String)localIterator.next();
       if (!TextUtils.isEmpty(paramVFSReportCallback))
       {
-        if ((paramVFSReportCallback.startsWith("/")) || (paramVFSReportCallback.indexOf(":") > 0)) {}
-        for (paramContext = paramVFSReportCallback;; paramContext = b() + File.separator + paramVFSReportCallback)
+        if ((!paramVFSReportCallback.startsWith("/")) && (paramVFSReportCallback.indexOf(":") <= 0))
         {
-          String str = VFSAssistantUtils.getSDKPrivatePath(paramVFSReportCallback);
-          Object localObject = new File(str).getParentFile();
-          if ((localObject != null) && (!((File)localObject).exists())) {
-            ((File)localObject).mkdirs();
-          }
-          localObject = new MigrationFileSystem(true, new NativeFileSystem(str, false), new FileSystem[] { new NativeFileSystem(paramContext, false) });
-          if (QLog.isColorLevel()) {
-            QLog.d("VFSRegisterProxy", 2, "initConfig filesystem key is " + paramVFSReportCallback);
-          }
-          localEditor.install(paramVFSReportCallback, (FileSystem)localObject).mount(str, paramVFSReportCallback).mount(paramContext, paramVFSReportCallback);
-          break;
+          paramContext = new StringBuilder();
+          paramContext.append(b());
+          paramContext.append(File.separator);
+          paramContext.append(paramVFSReportCallback);
+          paramContext = paramContext.toString();
         }
+        else
+        {
+          paramContext = paramVFSReportCallback;
+        }
+        String str = VFSAssistantUtils.getSDKPrivatePath(paramVFSReportCallback);
+        Object localObject = new File(str).getParentFile();
+        if ((localObject != null) && (!((File)localObject).exists())) {
+          ((File)localObject).mkdirs();
+        }
+        localObject = new MigrationFileSystem(true, new NativeFileSystem(str, false), new FileSystem[] { new NativeFileSystem(paramContext, false) });
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("initConfig filesystem key is ");
+          localStringBuilder.append(paramVFSReportCallback);
+          QLog.d("VFSRegisterProxy", 2, localStringBuilder.toString());
+        }
+        localEditor.install(paramVFSReportCallback, (FileSystem)localObject).mount(str, paramVFSReportCallback).mount(paramContext, paramVFSReportCallback);
       }
     }
     localEditor.commit();
@@ -140,35 +173,34 @@ public class VFSRegisterProxy
         }
         int j = arrayOfFile.length;
         i = 0;
-        if (i >= j) {
-          break;
-        }
-        localFile = arrayOfFile[i];
-        str = localFile.getName().trim();
-        int k = str.length();
-        if (k >= 5) {
-          if (k <= 15) {
-            continue;
+        if (i < j)
+        {
+          localFile = arrayOfFile[i];
+          str = localFile.getName().trim();
+          int k = str.length();
+          if (k >= 5) {
+            if (k <= 15) {}
           }
         }
       }
       catch (Exception localException)
       {
-        try
-        {
-          int i;
-          String str;
-          Long.parseLong(str);
-          File localFile = new File(localFile, "ppt");
-          if (!localFile.exists()) {
-            continue;
-          }
+        int i;
+        File localFile;
+        String str;
+        localException.printStackTrace();
+      }
+      try
+      {
+        Long.parseLong(str);
+        localFile = new File(localFile, "ppt");
+        if (localFile.exists()) {
           b(localFile.getAbsolutePath());
         }
-        catch (NumberFormatException localNumberFormatException) {}
-        localException = localException;
-        localException.printStackTrace();
-        return;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        continue;
       }
       i += 1;
     }
@@ -218,13 +250,11 @@ public class VFSRegisterProxy
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback.reportError(new Throwable("FileSystemManager proxy", paramContext));
-        }
-        QLog.e("VFSRegisterProxy", 1, paramContext, new Object[0]);
+      paramVFSReportCallback = this.jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback;
+      if (paramVFSReportCallback != null) {
+        paramVFSReportCallback.reportError(new Throwable("FileSystemManager proxy", paramContext));
       }
+      QLog.e("VFSRegisterProxy", 1, paramContext, new Object[0]);
     }
     QLog.d("VFSRegisterProxy", 1, "initConfig end!");
   }
@@ -234,8 +264,12 @@ public class VFSRegisterProxy
     if (b())
     {
       Object localObject = a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("VFSRegisterProxy", 2, "registerAccountPath is called later! account relate length = " + ((List)localObject).size());
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("registerAccountPath is called later! account relate length = ");
+        paramString.append(((List)localObject).size());
+        QLog.d("VFSRegisterProxy", 2, paramString.toString());
       }
       paramString = FileSystemManager.instance().edit();
       localObject = ((List)localObject).iterator();
@@ -252,8 +286,9 @@ public class VFSRegisterProxy
       paramString.commit();
       c();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback.a();
+    paramString = this.jdField_a_of_type_ComTencentMobileqqVfsVFSReportCallback;
+    if (paramString != null) {
+      paramString.a();
     }
   }
   
@@ -277,7 +312,7 @@ public class VFSRegisterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vfs.VFSRegisterProxy
  * JD-Core Version:    0.7.0.1
  */

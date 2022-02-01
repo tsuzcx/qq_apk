@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.emoticonview.CameraEmoticonInfo;
 import com.tencent.mobileqq.emoticonview.EmoticonInfo;
@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class BaseEmosmStrategy
   implements IEmosmStrategy
 {
-  protected QQAppInterface a;
+  protected BaseQQAppInterface a;
   FavEmosmViewPage jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage;
   MultiEmotionSaveManager jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager = null;
   List<FavoriteEmoticonInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -30,17 +30,17 @@ public abstract class BaseEmosmStrategy
   public boolean a;
   public boolean b = false;
   
-  public BaseEmosmStrategy(QQAppInterface paramQQAppInterface, FavEmosmViewPage paramFavEmosmViewPage)
+  public BaseEmosmStrategy(BaseQQAppInterface paramBaseQQAppInterface, FavEmosmViewPage paramFavEmosmViewPage)
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage = paramFavEmosmViewPage;
-    this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager = new MultiEmotionSaveManager(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager = new MultiEmotionSaveManager(paramBaseQQAppInterface);
   }
   
   public int a()
   {
-    return 2131691989;
+    return 2131691910;
   }
   
   public View a(int paramInt, View paramView, FavEmosmViewPage.Holder paramHolder, EmoticonInfo paramEmoticonInfo)
@@ -98,45 +98,43 @@ public abstract class BaseEmosmStrategy
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    switch (paramInt1)
-    {
-    }
-    do
-    {
+    if (paramInt1 != 10015) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseEmosmStrategy", 2, "onActivityResult, PeakConstants.REQUEST_CODE_FOR_PHOTO_PREVIEW");
-      }
-      if (paramIntent == null) {
-        break;
-      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseEmosmStrategy", 2, "onActivityResult, PeakConstants.REQUEST_CODE_FOR_PHOTO_PREVIEW");
+    }
+    if (paramIntent != null)
+    {
       paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
       if (paramIntent != null)
       {
         ThreadManager.excute(new BaseEmosmStrategy.2(this, paramIntent), 64, null, false);
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BaseEmosmStrategy", 2, "onActivityResult, selected is empty");
-    return;
-    QLog.e("BaseEmosmStrategy", 1, "onActivityResult, PeakConstants.REQUEST_CODE_FOR_PHOTO_PREVIEW, data is null");
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseEmosmStrategy", 2, "onActivityResult, selected is empty");
+      }
+    }
+    else
+    {
+      QLog.e("BaseEmosmStrategy", 1, "onActivityResult, PeakConstants.REQUEST_CODE_FOR_PHOTO_PREVIEW, data is null");
+    }
   }
   
   public void a(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage == null) {}
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage == null) {
+      return;
+    }
+    paramContext = paramIntent.getAction();
+    if ("com.tencent.mobileqq.action.refresh.emotiom".equals(paramContext))
     {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if ("com.tencent.mobileqq.action.refresh.emotiom".equals(paramContext))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.e();
-          return;
-        }
-      } while (!"com.tencent.mobileqq.action.upload.emotiom".equals(paramContext));
+      this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.k();
+      return;
+    }
+    if ("com.tencent.mobileqq.action.upload.emotiom".equals(paramContext))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("BaseEmosmStrategy", 2, "onReceive ACTION_UPLOAD_EMOTION");
       }
@@ -146,13 +144,15 @@ public abstract class BaseEmosmStrategy
         ThreadManager.excute(new BaseEmosmStrategy.1(this, paramContext), 64, null, false);
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("BaseEmosmStrategy", 2, "onReceive selected is empty");
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseEmosmStrategy", 2, "onReceive selected is empty");
+      }
+    }
   }
   
   public void a(CustomEmotionRoamingDBManagerBase.CustomEmotionDataInPanelCallback paramCustomEmotionDataInPanelCallback)
   {
-    a().a(paramCustomEmotionDataInPanelCallback);
+    a().asyncGetFavEmotionInfoShowedInPanel(paramCustomEmotionDataInPanelCallback);
   }
   
   public void a(GridView paramGridView, int paramInt, ICustomEmotionInfo paramICustomEmotionInfo) {}
@@ -174,21 +174,19 @@ public abstract class BaseEmosmStrategy
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage;
+    if (localObject == null) {
       return;
     }
-    Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_JavaUtilList);
-    if (localObject == null) {
+    List localList = a(((FavEmosmViewPage)localObject).jdField_a_of_type_JavaUtilList);
+    localObject = localList;
+    if (localList == null) {
       localObject = new ArrayList();
     }
-    for (;;)
-    {
-      if ((((List)localObject).size() > 0) && (((EmoticonInfo)((List)localObject).get(0)).operateType == 1)) {
-        ((List)localObject).remove(0);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.d((List)localObject);
-      return;
+    if ((((List)localObject).size() > 0) && (((EmoticonInfo)((List)localObject).get(0)).operateType == 1)) {
+      ((List)localObject).remove(0);
     }
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.d((List)localObject);
   }
   
   public boolean b()
@@ -198,38 +196,33 @@ public abstract class BaseEmosmStrategy
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage == null) {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage;
+    if (localObject1 == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_JavaUtilList;
-    if (localObject == null) {
-      localObject = new ArrayList();
+    Object localObject2 = ((FavEmosmViewPage)localObject1).jdField_a_of_type_JavaUtilList;
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new ArrayList();
     }
-    for (;;)
-    {
-      EmoticonInfo localEmoticonInfo;
-      if (a())
+    if (a()) {
+      if (((List)localObject1).size() > 0)
       {
-        if (((List)localObject).size() <= 0) {
-          break label91;
-        }
-        if (((EmoticonInfo)((List)localObject).get(0)).operateType != 1)
+        if (((EmoticonInfo)((List)localObject1).get(0)).operateType != 1)
         {
-          localEmoticonInfo = new EmoticonInfo();
-          localEmoticonInfo.operateType = 1;
-          ((List)localObject).add(0, localEmoticonInfo);
+          localObject2 = new EmoticonInfo();
+          ((EmoticonInfo)localObject2).operateType = 1;
+          ((List)localObject1).add(0, localObject2);
         }
       }
-      for (;;)
+      else
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.d((List)localObject);
-        return;
-        label91:
-        localEmoticonInfo = new EmoticonInfo();
-        localEmoticonInfo.operateType = 1;
-        ((List)localObject).add(0, localEmoticonInfo);
+        localObject2 = new EmoticonInfo();
+        ((EmoticonInfo)localObject2).operateType = 1;
+        ((List)localObject1).add(0, localObject2);
       }
     }
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.d((List)localObject1);
   }
   
   public void d()
@@ -246,7 +239,7 @@ public abstract class BaseEmosmStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.BaseEmosmStrategy
  * JD-Core Version:    0.7.0.1
  */

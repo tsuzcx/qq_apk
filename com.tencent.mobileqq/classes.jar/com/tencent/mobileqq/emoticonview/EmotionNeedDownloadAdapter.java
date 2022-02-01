@@ -1,13 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
-import com.tencent.mobileqq.core.QQEmotionPanelManager;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
 import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
 import com.tencent.mobileqq.emoticon.EmotionPanelPayBackListener;
-import com.tencent.mobileqq.emoticon.IEmoticonPackageDownloadListener;
-import com.tencent.mobileqq.emoticonview.api.IBigEmotionService;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.emoticon.EmotionPanelPayBackListenerManager;
 
 public abstract class EmotionNeedDownloadAdapter
   extends AbsBigEmotionUpdateAdapter
@@ -21,19 +19,15 @@ public abstract class EmotionNeedDownloadAdapter
   public EmotionNeedDownloadAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonCallback paramEmoticonCallback)
   {
     super(paramIEmoticonMainPanelApp, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonCallback);
-    if (QQEmotionPanelManager.a().a() != null) {
-      QQEmotionPanelManager.a().a().addEmoticonPackageDownloadListener(this.mEPDownloadListener);
-    }
-    ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).addEmotionPanelPayBackListener(this.mPayBackListener);
+    EmojiListenerManager.a().addEmoticonPackageDownloadListener(this.mEPDownloadListener);
+    EmotionPanelPayBackListenerManager.a().a(this.mPayBackListener);
   }
   
   public void destory()
   {
     super.destory();
-    if (QQEmotionPanelManager.a().a() != null) {
-      QQEmotionPanelManager.a().a().removeEmoticonPackageDownloadListener(this.mEPDownloadListener);
-    }
-    ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).removeEmotionPanelPayBackListener(this.mPayBackListener);
+    EmojiListenerManager.a().removeEmoticonPackageDownloadListener(this.mEPDownloadListener);
+    EmotionPanelPayBackListenerManager.a().b(this.mPayBackListener);
   }
   
   public void packageDownloadEnd(EmoticonPackage paramEmoticonPackage, int paramInt) {}
@@ -48,7 +42,7 @@ public abstract class EmotionNeedDownloadAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter
  * JD-Core Version:    0.7.0.1
  */

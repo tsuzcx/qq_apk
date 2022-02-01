@@ -56,142 +56,146 @@ public final class FWTouchUtils
     this.leftDistance = paramLayoutParams.x;
     this.rightDistance = (this.parentWidth - (this.leftDistance + paramView.getRight()));
     this.topDistance = paramLayoutParams.y;
-    if (this.hasStatusBar) {}
-    for (int i = this.parentHeight - statusBarHeight(paramView) - this.topDistance - paramView.getHeight();; i = this.parentHeight - this.topDistance - paramView.getHeight())
+    int i;
+    int j;
+    if (this.hasStatusBar)
     {
-      this.bottomDistance = i;
-      this.minX = Math.min(this.leftDistance, this.rightDistance);
-      this.minY = Math.min(this.topDistance, this.bottomDistance);
-      return;
+      i = this.parentHeight - statusBarHeight(paramView) - this.topDistance;
+      j = paramView.getHeight();
     }
+    else
+    {
+      i = this.parentHeight - this.topDistance;
+      j = paramView.getHeight();
+    }
+    this.bottomDistance = (i - j);
+    this.minX = Math.min(this.leftDistance, this.rightDistance);
+    this.minY = Math.min(this.topDistance, this.bottomDistance);
   }
   
   private final void sideAnim(View paramView, WindowManager.LayoutParams paramLayoutParams, WindowManager paramWindowManager)
   {
     initDistanceValue(paramLayoutParams, paramView);
-    int i = (int)this.config.horizontalMargin;
+    int k = (int)this.config.horizontalMargin;
     int j = (int)this.config.verticalMargin;
-    boolean bool;
+    int i = k;
     switch (this.config.sidePattern)
     {
     default: 
       return;
-    case 9: 
-      bool = true;
-      if (!bool) {
-        break;
-      }
-    }
-    for (j = paramLayoutParams.x;; j = paramLayoutParams.y)
-    {
-      ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { j, i });
-      localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new FWTouchUtils.sideAnim.1(bool, paramLayoutParams, paramWindowManager, paramView));
-      localValueAnimator.addListener((Animator.AnimatorListener)new FWTouchUtils.sideAnim.2(this, paramView));
-      localValueAnimator.start();
-      return;
-      i = paramLayoutParams.x + this.rightDistance - i;
-      bool = true;
-      break;
-      if (this.leftDistance < this.rightDistance)
-      {
-        bool = true;
-        break;
-      }
-      i = paramLayoutParams.x + this.rightDistance - i;
-      bool = true;
-      break;
-      bool = false;
-      i = j;
-      break;
-      if (this.hasStatusBar)
-      {
-        i = this.emptyHeight - statusBarHeight(paramView) - j;
-        bool = false;
-        break;
-      }
-      i = this.emptyHeight - j;
-      bool = false;
-      break;
-      if (this.topDistance < this.bottomDistance)
-      {
-        bool = false;
-        i = j;
-        break;
-      }
-      if (this.hasStatusBar) {}
-      for (i = this.emptyHeight - statusBarHeight(paramView) - j;; i = this.emptyHeight - j)
-      {
-        bool = false;
-        break;
-      }
+    case 15: 
       if (this.minX < this.minY)
       {
         if (this.leftDistance < this.rightDistance)
         {
-          bool = true;
-          break;
+          i = k;
+          break label318;
         }
-        i = paramLayoutParams.x + this.rightDistance - i;
-        bool = true;
-        break;
+        i = paramLayoutParams.x;
+        j = this.rightDistance;
       }
-      if (this.topDistance < this.bottomDistance) {
-        i = j;
-      }
-      for (;;)
+      else if (this.topDistance >= this.bottomDistance)
       {
-        bool = false;
-        break;
         if (this.hasStatusBar) {
-          i = this.emptyHeight - statusBarHeight(paramView) - j;
+          i = this.emptyHeight - statusBarHeight(paramView);
         } else {
-          i = this.emptyHeight - j;
+          i = this.emptyHeight;
         }
       }
+      break;
+    case 14: 
+      if (this.topDistance >= this.bottomDistance) {
+        if (this.hasStatusBar) {
+          i = this.emptyHeight - statusBarHeight(paramView);
+        } else {
+          i = this.emptyHeight;
+        }
+      }
+      break;
+    case 13: 
+      if (this.leftDistance < this.rightDistance)
+      {
+        i = k;
+      }
+      else
+      {
+        i = paramLayoutParams.x;
+        j = this.rightDistance;
+      }
+      break;
+    case 12: 
+      if (this.hasStatusBar) {
+        i = this.emptyHeight - statusBarHeight(paramView);
+      } else {
+        i = this.emptyHeight;
+      }
+      i -= j;
+      break;
+    case 11: 
+      i = j;
+      bool = false;
+      break;
+    case 10: 
+      i = paramLayoutParams.x;
+      j = this.rightDistance;
+      i = i + j - k;
     }
+    label318:
+    boolean bool = true;
+    if (bool) {
+      j = paramLayoutParams.x;
+    } else {
+      j = paramLayoutParams.y;
+    }
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { j, i });
+    localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new FWTouchUtils.sideAnim.1(bool, paramLayoutParams, paramWindowManager, paramView));
+    localValueAnimator.addListener((Animator.AnimatorListener)new FWTouchUtils.sideAnim.2(this, paramView));
+    localValueAnimator.start();
   }
   
   private final void sideAnimWhenOutOfScreen(View paramView, WindowManager.LayoutParams paramLayoutParams, WindowManager paramWindowManager)
   {
     initDistanceValue(paramLayoutParams, paramView);
-    int j = (int)this.config.horizontalMargin;
-    int i = (int)this.config.verticalMargin;
-    int m = paramLayoutParams.x;
-    int k = paramLayoutParams.y;
-    if ((this.leftDistance < 0) || (this.rightDistance < 0)) {
-      if (this.leftDistance >= this.rightDistance) {}
-    }
-    for (;;)
+    int i = (int)this.config.horizontalMargin;
+    int k = (int)this.config.verticalMargin;
+    int j = paramLayoutParams.x;
+    int m = paramLayoutParams.y;
+    if ((this.leftDistance < 0) || (this.rightDistance < 0))
     {
-      if ((this.topDistance < 0) || (this.bottomDistance < 0)) {
-        if (this.topDistance >= this.bottomDistance) {}
+      if (this.leftDistance >= this.rightDistance) {
+        i = paramLayoutParams.x + this.rightDistance - i;
+      }
+      j = i;
+    }
+    if (this.topDistance >= 0)
+    {
+      i = m;
+      if (this.bottomDistance >= 0) {}
+    }
+    else
+    {
+      if (this.topDistance < this.bottomDistance) {
+        i = k;
       }
       for (;;)
       {
-        ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramLayoutParams.x, j });
-        localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new FWTouchUtils.sideAnimWhenOutOfScreen.1(paramLayoutParams, paramWindowManager, paramView));
-        localValueAnimator.addListener((Animator.AnimatorListener)new FWTouchUtils.sideAnimWhenOutOfScreen.2(this, paramView));
-        paramView = ValueAnimator.ofInt(new int[] { paramLayoutParams.y, i });
-        paramView.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new FWTouchUtils.sideAnimWhenOutOfScreen.3(paramLayoutParams));
-        paramLayoutParams = new AnimatorSet();
-        paramLayoutParams.playTogether(new Animator[] { (Animator)localValueAnimator, (Animator)paramView });
-        paramLayoutParams.start();
-        return;
-        j = paramLayoutParams.x + this.rightDistance - j;
         break;
-        if (this.hasStatusBar)
-        {
-          i = this.emptyHeight - statusBarHeight(paramView) - i;
+        if (this.hasStatusBar) {
+          i = this.emptyHeight - statusBarHeight(paramView);
+        } else {
+          i = this.emptyHeight;
         }
-        else
-        {
-          i = this.emptyHeight - i;
-          continue;
-          i = k;
-        }
+        i -= k;
       }
-      j = m;
     }
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramLayoutParams.x, j });
+    localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new FWTouchUtils.sideAnimWhenOutOfScreen.1(paramLayoutParams, paramWindowManager, paramView));
+    localValueAnimator.addListener((Animator.AnimatorListener)new FWTouchUtils.sideAnimWhenOutOfScreen.2(this, paramView));
+    paramView = ValueAnimator.ofInt(new int[] { paramLayoutParams.y, i });
+    paramView.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new FWTouchUtils.sideAnimWhenOutOfScreen.3(paramLayoutParams));
+    paramLayoutParams = new AnimatorSet();
+    paramLayoutParams.playTogether(new Animator[] { (Animator)localValueAnimator, (Animator)paramView });
+    paramLayoutParams.start();
   }
   
   private final int statusBarHeight(View paramView)
@@ -213,7 +217,6 @@ public final class FWTouchUtils
   
   public final void updateFloat(@NotNull View paramView, @NotNull MotionEvent paramMotionEvent, @NotNull WindowManager paramWindowManager, @NotNull WindowManager.LayoutParams paramLayoutParams)
   {
-    boolean bool = true;
     Intrinsics.checkParameterIsNotNull(paramView, "view");
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "event");
     Intrinsics.checkParameterIsNotNull(paramWindowManager, "windowManager");
@@ -222,129 +225,171 @@ public final class FWTouchUtils
     if (localOnFloatWindowCallbacks != null) {
       localOnFloatWindowCallbacks.touchEvent(paramView, paramMotionEvent);
     }
-    if ((!this.config.dragEnable) || (this.config.isAnim)) {
-      this.config.isDrag = false;
-    }
-    do
+    boolean bool2 = this.config.dragEnable;
+    boolean bool1 = false;
+    if ((bool2) && (!this.config.isAnim))
     {
-      do
+      float f6 = this.config.horizontalMargin;
+      float f4 = this.config.verticalMargin;
+      int i = paramMotionEvent.getAction() & 0xFF;
+      if (i != 0)
       {
-        float f4;
-        float f3;
-        do
+        if (i != 1)
         {
-          return;
-          f4 = this.config.horizontalMargin;
-          f3 = this.config.verticalMargin;
-          switch (paramMotionEvent.getAction() & 0xFF)
-          {
-          default: 
+          if (i != 2) {
             return;
-          case 0: 
-            this.config.isDrag = false;
+          }
+          float f2 = paramMotionEvent.getRawX() - this.lastX;
+          float f1 = paramMotionEvent.getRawY() - this.lastY;
+          if ((!this.config.isDrag) && (f2 * f2 + f1 * f1 < 81)) {
+            return;
+          }
+          this.config.isDrag = true;
+          float f3 = f2 + paramLayoutParams.x;
+          float f5 = paramLayoutParams.y + f1;
+          f1 = f4;
+          f2 = f6;
+          int j;
+          switch (this.config.sidePattern)
+          {
+          case 6: 
+          default: 
+            f1 = f3;
+            f2 = f5;
+            break;
+          case 8: 
+            this.leftDistance = ((int)paramMotionEvent.getRawX());
+            this.rightDistance = (this.parentWidth - (int)paramMotionEvent.getRawX());
+            this.topDistance = ((int)paramMotionEvent.getRawY() - this.parentRect.top);
+            this.bottomDistance = (this.parentHeight + this.parentRect.top - (int)paramMotionEvent.getRawY());
+            this.minX = Math.min(this.leftDistance, this.rightDistance);
+            this.minY = Math.min(this.topDistance, this.bottomDistance);
+            i = this.minX;
+            j = this.minY;
+            if (i < j)
+            {
+              if (this.leftDistance == i)
+              {
+                f2 = f6;
+                break label612;
+              }
+              i = this.parentWidth;
+              j = paramView.getWidth();
+            }
+            else if (this.topDistance == j)
+            {
+              f1 = f4;
+            }
+            else
+            {
+              i = this.parentHeight;
+              j = paramView.getHeight();
+            }
+            break;
+          case 7: 
+            f2 = paramMotionEvent.getRawY();
+            f5 = this.parentRect.top;
+            f6 = 2;
+            i = this.parentHeight;
+            f1 = f4;
+            if ((f2 - f5) * f6 > i) {
+              f1 = i - paramView.getHeight();
+            }
+            break;
+          case 5: 
+            f1 = paramMotionEvent.getRawX();
+            f3 = 2;
+            i = this.parentWidth;
+            f2 = f6;
+            if (f1 * f3 > i) {
+              j = paramView.getWidth();
+            }
+            break;
+          case 4: 
+            i = this.parentHeight;
+            j = paramView.getHeight();
+            f1 = i - j;
+            f1 -= f4;
+          case 3: 
+            f2 = f1;
+            f1 = f3;
+            break;
+          case 2: 
+            i = this.parentWidth;
+            j = paramView.getWidth();
+            f2 = i - j - f6;
+          }
+          label612:
+          f1 = f2;
+          f2 = f5;
+          paramLayoutParams.flags = 552;
+          paramLayoutParams.x = ((int)f1);
+          paramLayoutParams.y = ((int)f2);
+          try
+          {
+            paramWindowManager.updateViewLayout(paramView, (ViewGroup.LayoutParams)paramLayoutParams);
+            paramWindowManager = this.config.callbacks;
+            if (paramWindowManager != null) {
+              paramWindowManager.drag(paramView, paramMotionEvent);
+            }
             this.lastX = paramMotionEvent.getRawX();
             this.lastY = paramMotionEvent.getRawY();
-            this.parentWidth = UIUtil.getScreenWidth(this.context);
-            this.parentHeight = this.config.displayHeight.getDisplayRealHeight(this.context);
-            paramView.getLocationOnScreen(this.location);
-            if (this.location[1] > paramLayoutParams.y) {}
-            for (;;)
-            {
-              this.hasStatusBar = bool;
-              this.emptyHeight = (this.parentHeight - paramView.getHeight());
-              return;
-              bool = false;
-            }
-          case 2: 
-            f1 = paramMotionEvent.getRawX() - this.lastX;
-            f2 = paramMotionEvent.getRawY() - this.lastY;
+            return;
           }
-        } while ((!this.config.isDrag) && (f1 * f1 + f2 * f2 < 81));
-        this.config.isDrag = true;
-        float f1 = paramLayoutParams.x + f1;
-        float f2 = paramLayoutParams.y + f2;
+          catch (Exception paramView)
+          {
+            paramView.printStackTrace();
+            return;
+          }
+        }
+        if (!this.config.isDrag) {
+          return;
+        }
         switch (this.config.sidePattern)
         {
-        case 6: 
         default: 
-        case 1: 
-        case 2: 
-        case 3: 
-        case 4: 
-          for (;;)
-          {
-            paramLayoutParams.flags = 552;
-            paramLayoutParams.x = ((int)f1);
-            paramLayoutParams.y = ((int)f2);
-            try
-            {
-              paramWindowManager.updateViewLayout(paramView, (ViewGroup.LayoutParams)paramLayoutParams);
-              paramWindowManager = this.config.callbacks;
-              if (paramWindowManager != null) {
-                paramWindowManager.drag(paramView, paramMotionEvent);
-              }
-              this.lastX = paramMotionEvent.getRawX();
-              this.lastY = paramMotionEvent.getRawY();
-              return;
-            }
-            catch (Exception paramView)
-            {
-              paramView.printStackTrace();
-              return;
-            }
-            f1 = f4;
-            continue;
-            f1 = this.parentWidth - paramView.getWidth() - f4;
-            continue;
-            f2 = f3;
-            continue;
-            f2 = this.parentHeight - paramView.getHeight() - f3;
-          }
-        case 5: 
-          if (paramMotionEvent.getRawX() * 2 > this.parentWidth) {}
-          for (f1 = this.parentWidth - paramView.getWidth() - f4;; f1 = f4) {
+          paramMotionEvent = this.config.callbacks;
+          if (paramMotionEvent == null) {
             break;
           }
-        case 7: 
-          if ((paramMotionEvent.getRawY() - this.parentRect.top) * 2 > this.parentHeight) {}
-          for (f2 = this.parentHeight - paramView.getHeight() - f3;; f2 = f3) {
-            break;
-          }
+          paramMotionEvent.dragEnd(paramView);
+          return;
+        case 16: 
+          sideAnimWhenOutOfScreen(paramView, paramLayoutParams, paramWindowManager);
+          return;
+        case 9: 
+        case 10: 
+        case 11: 
+        case 12: 
+        case 13: 
+        case 14: 
+        case 15: 
+          sideAnim(paramView, paramLayoutParams, paramWindowManager);
+          return;
         }
-        this.leftDistance = ((int)paramMotionEvent.getRawX());
-        this.rightDistance = (this.parentWidth - (int)paramMotionEvent.getRawX());
-        this.topDistance = ((int)paramMotionEvent.getRawY() - this.parentRect.top);
-        this.bottomDistance = (this.parentHeight + this.parentRect.top - (int)paramMotionEvent.getRawY());
-        this.minX = Math.min(this.leftDistance, this.rightDistance);
-        this.minY = Math.min(this.topDistance, this.bottomDistance);
-        if (this.minX < this.minY)
-        {
-          if (this.leftDistance == this.minX) {}
-          for (f1 = f4;; f1 = this.parentWidth - paramView.getWidth() - f4) {
-            break;
-          }
-        }
-        if (this.topDistance == this.minY) {}
-        for (f2 = f3;; f2 = this.parentHeight - paramView.getHeight() - f3) {
-          break;
-        }
-      } while (!this.config.isDrag);
-      switch (this.config.sidePattern)
-      {
-      default: 
-        paramMotionEvent = this.config.callbacks;
       }
-    } while (paramMotionEvent == null);
-    paramMotionEvent.dragEnd(paramView);
-    return;
-    sideAnim(paramView, paramLayoutParams, paramWindowManager);
-    return;
-    sideAnimWhenOutOfScreen(paramView, paramLayoutParams, paramWindowManager);
+      else
+      {
+        this.config.isDrag = false;
+        this.lastX = paramMotionEvent.getRawX();
+        this.lastY = paramMotionEvent.getRawY();
+        this.parentWidth = UIUtil.getScreenWidth(this.context);
+        this.parentHeight = this.config.displayHeight.getDisplayRealHeight(this.context);
+        paramView.getLocationOnScreen(this.location);
+        if (this.location[1] > paramLayoutParams.y) {
+          bool1 = true;
+        }
+        this.hasStatusBar = bool1;
+        this.emptyHeight = (this.parentHeight - paramView.getHeight());
+      }
+      return;
+    }
+    this.config.isDrag = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.appfloat.FWTouchUtils
  * JD-Core Version:    0.7.0.1
  */

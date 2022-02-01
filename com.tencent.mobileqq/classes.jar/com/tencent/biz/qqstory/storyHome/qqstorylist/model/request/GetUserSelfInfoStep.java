@@ -28,14 +28,16 @@ public class GetUserSelfInfoStep
   
   public static boolean a(MyStorys paramMyStorys)
   {
-    if (paramMyStorys == null) {
-      throw new IllegalArgumentException("argument can't be null");
-    }
-    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    paramMyStorys.jdField_b_of_type_Int = ((Integer)localStoryConfigManager.b("qqstory_my_fans_count", Integer.valueOf(0))).intValue();
-    if (((Integer)localStoryConfigManager.b("qqstory_i_am_vip", Integer.valueOf(0))).intValue() > 0) {}
-    for (boolean bool = true;; bool = false)
+    if (paramMyStorys != null)
     {
+      StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
+      paramMyStorys.jdField_b_of_type_Int = ((Integer)localStoryConfigManager.b("qqstory_my_fans_count", Integer.valueOf(0))).intValue();
+      boolean bool;
+      if (((Integer)localStoryConfigManager.b("qqstory_i_am_vip", Integer.valueOf(0))).intValue() > 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       paramMyStorys.jdField_c_of_type_Boolean = bool;
       paramMyStorys.jdField_c_of_type_Int = ((Integer)localStoryConfigManager.b("qqstory_my_vidoe_count", Integer.valueOf(0))).intValue();
       paramMyStorys.a = ((Integer)localStoryConfigManager.b("qqstory_my_visiter_count", Integer.valueOf(0))).intValue();
@@ -43,6 +45,7 @@ public class GetUserSelfInfoStep
       paramMyStorys.jdField_c_of_type_JavaLangString = ((String)localStoryConfigManager.b("qqstory_my_newest_video_vid", ""));
       return true;
     }
+    throw new IllegalArgumentException("argument can't be null");
   }
   
   public String a()
@@ -59,7 +62,6 @@ public class GetUserSelfInfoStep
   
   public void a(@NonNull GetUserSelfInfoStep.Request paramRequest, @Nullable GetUserSelfInfoStep.Response paramResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    boolean bool = true;
     SLog.d("Q.qqstory.home.GetUserSelfInfoStep", "onCmdRespond");
     if (b())
     {
@@ -78,21 +80,19 @@ public class GetUserSelfInfoStep
     {
       paramErrorMessage = new QQUserUIItem();
       paramErrorMessage.uid = paramResponse.a;
-      if (paramResponse.jdField_b_of_type_Int != 1) {
-        break label129;
+      int i = paramResponse.jdField_b_of_type_Int;
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
       }
-    }
-    for (;;)
-    {
       paramErrorMessage.isVip = bool;
       paramRequest.a(paramErrorMessage);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRepository == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRepository.a(new GetUserSelfInfoStep.1(this, paramResponse));
+    }
+    paramRequest = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRepository;
+    if (paramRequest != null)
+    {
+      paramRequest.a(new GetUserSelfInfoStep.1(this, paramResponse));
       return;
-      label129:
-      bool = false;
     }
     SLog.a("Q.qqstory.home.GetUserSelfInfoStep", "receive the user self2 info: %s", paramResponse);
     paramRequest = (StoryConfigManager)SuperManager.a(10);
@@ -138,7 +138,7 @@ public class GetUserSelfInfoStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserSelfInfoStep
  * JD-Core Version:    0.7.0.1
  */

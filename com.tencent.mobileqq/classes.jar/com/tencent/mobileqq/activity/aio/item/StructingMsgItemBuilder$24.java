@@ -16,41 +16,36 @@ class StructingMsgItemBuilder$24
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean)
+    {
       if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)) {
         new TeamWorkSender(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
-      String str1;
-      String str2;
+    else {
       try
       {
         paramInt = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("peerType"));
         paramView = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("filePath");
-        str1 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("peerUin");
-        str2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("strSendUin");
-        if (1 != paramInt) {
-          break label133;
+        String str1 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("peerUin");
+        String str2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("strSendUin");
+        if (1 == paramInt) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramView, str1);
+        } else {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramView, str2, str1, paramInt, true);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramView, str1);
       }
       catch (Exception paramView)
       {
         paramView.printStackTrace();
       }
-      continue;
-      label133:
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramView, str2, str1, paramInt, true);
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.24
  * JD-Core Version:    0.7.0.1
  */

@@ -59,17 +59,17 @@ public class OcrScrollGestureListener
     paramList = paramGestureFrameLayout.getContext();
     paramGestureFrameLayout.a().a().a().invert(this.jdField_a_of_type_AndroidGraphicsMatrix);
     this.jdField_a_of_type_ComTencentMobileqqOcrViewCommonMenuPopupView = new CommonMenuPopupView();
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewCommonMenuPopupView.a(2131365448, paramList.getString(2131691369), 2130839050);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewCommonMenuPopupView.a(2131367398, paramList.getString(2131692687), 2130839059);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewCommonMenuPopupView.a(2131379761, paramList.getString(2131699008), 2130839059);
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewCommonMenuPopupView.a(2131365311, paramList.getString(2131691291), 2130838903);
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewCommonMenuPopupView.a(2131367180, paramList.getString(2131692644), 2130838912);
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewCommonMenuPopupView.a(2131379096, paramList.getString(2131699086), 2130838912);
     this.jdField_a_of_type_ComTencentMobileqqOcrViewCommonMenuPopupView.a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    if (GestureFps.a()) {}
-    for (paramGestureFrameLayout = new GestureFps();; paramGestureFrameLayout = null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps = paramGestureFrameLayout;
-      return;
+    if (GestureFps.a()) {
+      paramGestureFrameLayout = new GestureFps();
+    } else {
+      paramGestureFrameLayout = null;
     }
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationGestureFps = paramGestureFrameLayout;
   }
   
   public static int a(Point paramPoint1, Point paramPoint2)
@@ -92,20 +92,22 @@ public class OcrScrollGestureListener
   
   private void a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
   {
+    boolean bool = this.jdField_a_of_type_Boolean;
+    int j = 0;
     int i;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!bool)
     {
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_ArrayOfFloat[0] = paramMotionEvent1.getX();
       this.jdField_a_of_type_ArrayOfFloat[1] = paramMotionEvent1.getY();
       this.jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(this.jdField_a_of_type_ArrayOfFloat);
-      j = Math.round(this.jdField_a_of_type_ArrayOfFloat[0]);
-      k = Math.round(this.jdField_a_of_type_ArrayOfFloat[1]);
+      k = Math.round(this.jdField_a_of_type_ArrayOfFloat[0]);
+      m = Math.round(this.jdField_a_of_type_ArrayOfFloat[1]);
       paramMotionEvent1 = a();
       i = 0;
       while (i < paramMotionEvent1.size())
       {
-        if (a(new Point(j, k), (OcrGestureBeanInfo)paramMotionEvent1.get(i))) {
+        if (a(new Point(k, m), (OcrGestureBeanInfo)paramMotionEvent1.get(i))) {
           a((OcrGestureBeanInfo)paramMotionEvent1.get(i), i);
         }
         i += 1;
@@ -114,73 +116,87 @@ public class OcrScrollGestureListener
     this.jdField_a_of_type_ArrayOfFloat[0] = paramMotionEvent2.getX();
     this.jdField_a_of_type_ArrayOfFloat[1] = paramMotionEvent2.getY();
     this.jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(this.jdField_a_of_type_ArrayOfFloat);
-    int j = Math.round(this.jdField_a_of_type_ArrayOfFloat[0]);
-    int k = Math.round(this.jdField_a_of_type_ArrayOfFloat[1]);
+    int k = Math.round(this.jdField_a_of_type_ArrayOfFloat[0]);
+    int m = Math.round(this.jdField_a_of_type_ArrayOfFloat[1]);
     if (this.jdField_a_of_type_AndroidGraphicsPoint != null)
     {
       paramMotionEvent1 = a();
-      i = 0;
+      i = j;
       while (i < paramMotionEvent1.size())
       {
-        if (a(j, k, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, (OcrGestureBeanInfo)paramMotionEvent1.get(i))) {
+        if (a(k, m, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y, (OcrGestureBeanInfo)paramMotionEvent1.get(i))) {
           a((OcrGestureBeanInfo)paramMotionEvent1.get(i), i);
         }
         i += 1;
       }
     }
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(j, k);
+    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(k, m);
   }
   
   private boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    int i = (paramInt8 - paramInt6) * (paramInt3 - paramInt1) - (paramInt7 - paramInt5) * (paramInt4 - paramInt2);
-    float f1 = ((paramInt7 - paramInt5) * (paramInt2 - paramInt6) - (paramInt8 - paramInt6) * (paramInt1 - paramInt5)) / i;
-    float f2 = ((paramInt3 - paramInt1) * (paramInt2 - paramInt6) - (paramInt4 - paramInt2) * (paramInt1 - paramInt5)) / i;
-    return (f1 >= 0.0F) && (f1 <= 1.0F) && (f2 >= 0.0F) && (f2 <= 1.0F);
+    paramInt8 -= paramInt6;
+    paramInt3 -= paramInt1;
+    paramInt7 -= paramInt5;
+    paramInt4 -= paramInt2;
+    paramInt2 -= paramInt6;
+    paramInt1 -= paramInt5;
+    float f2 = paramInt7 * paramInt2 - paramInt8 * paramInt1;
+    float f1 = paramInt8 * paramInt3 - paramInt7 * paramInt4;
+    f2 /= f1;
+    f1 = (paramInt3 * paramInt2 - paramInt4 * paramInt1) / f1;
+    return (f2 >= 0.0F) && (f2 <= 1.0F) && (f1 >= 0.0F) && (f1 <= 1.0F);
   }
   
   private boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, OcrGestureBeanInfo paramOcrGestureBeanInfo)
   {
-    Point localPoint1 = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(0);
-    Point localPoint2 = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(1);
-    if (a(paramInt1, paramInt2, paramInt3, paramInt4, localPoint1.x, localPoint1.y, localPoint2.x, localPoint2.y)) {
+    Object localObject = paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList;
+    boolean bool = false;
+    localObject = (Point)((List)localObject).get(0);
+    Point localPoint1 = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(1);
+    if (a(paramInt1, paramInt2, paramInt3, paramInt4, ((Point)localObject).x, ((Point)localObject).y, localPoint1.x, localPoint1.y)) {
       return true;
     }
-    Point localPoint3 = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(2);
+    Point localPoint2 = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(2);
     paramOcrGestureBeanInfo = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(3);
-    if (a(paramInt1, paramInt2, paramInt3, paramInt4, localPoint3.x, localPoint3.y, paramOcrGestureBeanInfo.x, paramOcrGestureBeanInfo.y)) {
+    if (a(paramInt1, paramInt2, paramInt3, paramInt4, localPoint2.x, localPoint2.y, paramOcrGestureBeanInfo.x, paramOcrGestureBeanInfo.y)) {
       return true;
     }
-    return (a(paramInt1, paramInt2, paramInt3, paramInt4, localPoint2.x, localPoint2.y, localPoint3.x, localPoint3.y)) || (a(paramInt1, paramInt2, paramInt3, paramInt4, paramOcrGestureBeanInfo.x, paramOcrGestureBeanInfo.y, localPoint1.x, localPoint1.y));
+    if ((a(paramInt1, paramInt2, paramInt3, paramInt4, localPoint1.x, localPoint1.y, localPoint2.x, localPoint2.y)) || (a(paramInt1, paramInt2, paramInt3, paramInt4, paramOcrGestureBeanInfo.x, paramOcrGestureBeanInfo.y, ((Point)localObject).x, ((Point)localObject).y))) {
+      bool = true;
+    }
+    return bool;
   }
   
   private static boolean a(Point paramPoint, OcrGestureBeanInfo paramOcrGestureBeanInfo)
   {
-    if ((paramPoint.y > paramOcrGestureBeanInfo.jdField_c_of_type_Int) || (paramPoint.y < paramOcrGestureBeanInfo.e) || (paramPoint.x > paramOcrGestureBeanInfo.jdField_b_of_type_Int) || (paramPoint.x < paramOcrGestureBeanInfo.d)) {}
-    int i;
-    do
+    if ((paramPoint.y <= paramOcrGestureBeanInfo.jdField_c_of_type_Int) && (paramPoint.y >= paramOcrGestureBeanInfo.e) && (paramPoint.x <= paramOcrGestureBeanInfo.jdField_b_of_type_Int))
     {
-      Point localPoint1;
-      Point localPoint3;
-      do
-      {
+      if (paramPoint.x < paramOcrGestureBeanInfo.d) {
         return false;
-        if (paramOcrGestureBeanInfo.jdField_a_of_type_Int % 90 < 1) {
-          return true;
-        }
-        Point localPoint2 = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(0);
-        localPoint1 = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(1);
-        paramOcrGestureBeanInfo = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(2);
-        localPoint3 = a(localPoint2, localPoint1);
-        i = a(localPoint3, a(localPoint2, paramPoint));
-      } while ((i < 0) || (i > a(localPoint3, localPoint3)));
+      }
+      if (paramOcrGestureBeanInfo.jdField_a_of_type_Int % 90 < 1) {
+        return true;
+      }
+      Point localPoint2 = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(0);
+      Point localPoint1 = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(1);
+      paramOcrGestureBeanInfo = (Point)paramOcrGestureBeanInfo.jdField_a_of_type_JavaUtilList.get(2);
+      Point localPoint3 = a(localPoint2, localPoint1);
+      int i = a(localPoint3, a(localPoint2, paramPoint));
+      if (i < 0) {
+        return false;
+      }
+      if (i > a(localPoint3, localPoint3)) {
+        return false;
+      }
       paramOcrGestureBeanInfo = a(localPoint1, paramOcrGestureBeanInfo);
       i = a(paramOcrGestureBeanInfo, a(localPoint1, paramPoint));
-    } while (i < 0);
-    if (i <= a(paramOcrGestureBeanInfo, paramOcrGestureBeanInfo)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+      if (i < 0) {
+        return false;
+      }
+      return i <= a(paramOcrGestureBeanInfo, paramOcrGestureBeanInfo);
     }
+    return false;
   }
   
   private boolean a(MotionEvent paramMotionEvent, boolean paramBoolean1, boolean paramBoolean2)
@@ -188,60 +204,45 @@ public class OcrScrollGestureListener
     this.jdField_a_of_type_ArrayOfFloat[0] = paramMotionEvent.getX();
     this.jdField_a_of_type_ArrayOfFloat[1] = paramMotionEvent.getY();
     this.jdField_a_of_type_AndroidGraphicsMatrix.mapPoints(this.jdField_a_of_type_ArrayOfFloat);
-    int j = Math.round(this.jdField_a_of_type_ArrayOfFloat[0]);
-    int k = Math.round(this.jdField_a_of_type_ArrayOfFloat[1]);
+    int k = Math.round(this.jdField_a_of_type_ArrayOfFloat[0]);
+    int m = Math.round(this.jdField_a_of_type_ArrayOfFloat[1]);
     paramMotionEvent = a().iterator();
     boolean bool = false;
-    label124:
-    int i;
-    if (paramMotionEvent.hasNext())
+    while (paramMotionEvent.hasNext())
     {
       OcrGestureBeanInfo localOcrGestureBeanInfo = (OcrGestureBeanInfo)paramMotionEvent.next();
-      if (!a(new Point(j, k), localOcrGestureBeanInfo)) {
-        break label218;
-      }
-      if (!paramBoolean2)
+      if (a(new Point(k, m), localOcrGestureBeanInfo))
       {
-        if ((paramBoolean1) || (!localOcrGestureBeanInfo.jdField_a_of_type_Boolean))
+        if (!paramBoolean2)
         {
-          bool = true;
-          localOcrGestureBeanInfo.jdField_a_of_type_Boolean = bool;
-          this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureFrameLayout);
-          if ((!paramBoolean1) && (!localOcrGestureBeanInfo.jdField_a_of_type_Boolean)) {
-            break label203;
+          if ((!paramBoolean1) && (localOcrGestureBeanInfo.jdField_a_of_type_Boolean)) {
+            bool = false;
+          } else {
+            bool = true;
           }
-          i = 1;
-          label157:
+          localOcrGestureBeanInfo.jdField_a_of_type_Boolean = bool;
+          GestureFrameLayout localGestureFrameLayout = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureFrameLayout;
+          localGestureFrameLayout.a(localGestureFrameLayout);
+          int j = 2;
+          if ((!paramBoolean1) && (!localOcrGestureBeanInfo.jdField_a_of_type_Boolean)) {
+            i = 2;
+          } else {
+            i = 1;
+          }
           this.jdField_c_of_type_Int = i;
           if (paramBoolean1) {
             a(localOcrGestureBeanInfo);
           }
-          if (!localOcrGestureBeanInfo.jdField_a_of_type_Boolean) {
-            break label209;
+          int i = j;
+          if (localOcrGestureBeanInfo.jdField_a_of_type_Boolean) {
+            i = 1;
           }
-          i = 1;
-          label184:
           OCRPerformUtil.a("0X800AAED", i);
         }
-      }
-      else {
         bool = true;
       }
     }
-    label203:
-    label209:
-    label218:
-    for (;;)
-    {
-      break;
-      bool = false;
-      break label124;
-      i = 2;
-      break label157;
-      i = 2;
-      break label184;
-      return bool;
-    }
+    return bool;
   }
   
   public void a(Matrix paramMatrix)
@@ -252,41 +253,36 @@ public class OcrScrollGestureListener
   public void a(MotionEvent paramMotionEvent)
   {
     this.jdField_a_of_type_ComTencentMobileqqOcrViewOcrScrollGestureListener$OcrPerformListener.b();
-    int i;
     if (this.jdField_b_of_type_Boolean)
     {
       this.jdField_b_of_type_Int = 4;
-      if (this.jdField_c_of_type_Int == 1)
-      {
+      int i;
+      if (this.jdField_c_of_type_Int == 1) {
         i = 1;
-        ReportController.b(null, "dc00898", "", "", "0X800AAEE", "0X800AAEE", i, 0, String.valueOf(this.jdField_a_of_type_Int), "0", "0", "");
+      } else {
+        i = 2;
       }
+      ReportController.b(null, "dc00898", "", "", "0X800AAEE", "0X800AAEE", i, 0, String.valueOf(this.jdField_a_of_type_Int), "0", "0", "");
     }
-    for (;;)
+    else if (this.d)
     {
-      this.jdField_b_of_type_Boolean = false;
-      this.d = false;
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 500L);
-      this.jdField_a_of_type_AndroidGraphicsPoint = null;
-      this.jdField_c_of_type_Int = -1;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      i = 2;
-      break;
-      if (this.d)
-      {
-        this.jdField_b_of_type_Int = 1;
-        OCRPerformUtil.a("0X800AAF6", 0);
-      }
-      else if (this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_b_of_type_Int = 3;
-        OCRPerformUtil.a("0X800AAF7", 0);
-      }
+      this.jdField_b_of_type_Int = 1;
+      OCRPerformUtil.a("0X800AAF6", 0);
     }
+    else if (this.jdField_c_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Int = 3;
+      OCRPerformUtil.a("0X800AAF7", 0);
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.d = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 500L);
+    this.jdField_a_of_type_AndroidGraphicsPoint = null;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a(ScaleGestureDetector paramScaleGestureDetector)
@@ -312,43 +308,36 @@ public class OcrScrollGestureListener
       localMatrix.mapPoints(arrayOfFloat);
       localMatrix.mapPoints((float[])localObject);
       int i = (int)(arrayOfFloat[0] + localObject[0]) / 2;
-      float f = arrayOfFloat[1];
-      int j = (int)(localObject[1] + f) / 2;
+      int j = (int)(arrayOfFloat[1] + localObject[1]) / 2;
       this.jdField_a_of_type_ComTencentMobileqqOcrViewCommonMenuPopupView.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureFrameLayout, i, j);
     }
   }
   
   public void a(OcrGestureBeanInfo paramOcrGestureBeanInfo, int paramInt)
   {
-    boolean bool = true;
     if (this.jdField_c_of_type_Int == -1)
     {
-      if (paramOcrGestureBeanInfo.jdField_a_of_type_Boolean)
-      {
+      if (paramOcrGestureBeanInfo.jdField_a_of_type_Boolean) {
         paramInt = 2;
-        this.jdField_c_of_type_Int = paramInt;
-        this.jdField_b_of_type_Boolean = true;
+      } else {
+        paramInt = 1;
       }
+      this.jdField_c_of_type_Int = paramInt;
+      this.jdField_b_of_type_Boolean = true;
     }
-    else {
-      if (this.jdField_c_of_type_Int != 1) {
-        break label92;
-      }
-    }
-    for (;;)
-    {
-      if (bool != paramOcrGestureBeanInfo.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Int += 1;
-        paramOcrGestureBeanInfo.jdField_a_of_type_Boolean = bool;
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureFrameLayout);
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureFrameLayout.a().a().a(false);
-      }
-      return;
-      paramInt = 1;
-      break;
-      label92:
+    boolean bool;
+    if (this.jdField_c_of_type_Int == 1) {
+      bool = true;
+    } else {
       bool = false;
+    }
+    if (bool != paramOcrGestureBeanInfo.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Int += 1;
+      paramOcrGestureBeanInfo.jdField_a_of_type_Boolean = bool;
+      paramOcrGestureBeanInfo = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureFrameLayout;
+      paramOcrGestureBeanInfo.a(paramOcrGestureBeanInfo);
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureFrameLayout.a().a().a(false);
     }
   }
   
@@ -370,13 +359,13 @@ public class OcrScrollGestureListener
       this.jdField_c_of_type_Boolean = true;
       return false;
     }
-    if ((this.jdField_c_of_type_Boolean) || ((this.jdField_a_of_type_AndroidGraphicsPoint == null) && (a()) && (!a(paramMotionEvent1, false, true))))
+    if ((!this.jdField_c_of_type_Boolean) && ((this.jdField_a_of_type_AndroidGraphicsPoint != null) || (!a()) || (a(paramMotionEvent1, false, true))))
     {
-      this.jdField_c_of_type_Boolean = true;
-      return false;
+      a(paramMotionEvent1, paramMotionEvent2);
+      return true;
     }
-    a(paramMotionEvent1, paramMotionEvent2);
-    return true;
+    this.jdField_c_of_type_Boolean = true;
+    return false;
   }
   
   public boolean a(ScaleGestureDetector paramScaleGestureDetector)
@@ -419,9 +408,7 @@ public class OcrScrollGestureListener
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return false;
     }
     paramMessage = new HashMap();
@@ -433,7 +420,7 @@ public class OcrScrollGestureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.OcrScrollGestureListener
  * JD-Core Version:    0.7.0.1
  */

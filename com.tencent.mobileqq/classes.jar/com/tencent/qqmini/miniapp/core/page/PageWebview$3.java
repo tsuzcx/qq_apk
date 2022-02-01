@@ -13,36 +13,46 @@ class PageWebview$3
   
   public void run()
   {
+    label133:
     try
     {
-      Object localObject = this.this$0.getContext().getResources().getDisplayMetrics();
+      localObject = this.this$0.getContext().getResources().getDisplayMetrics();
       int i = ((DisplayMetrics)localObject).widthPixels;
-      int j = (int)(((DisplayMetrics)localObject).widthPixels * 0.8D);
+      int j = ((DisplayMetrics)localObject).widthPixels;
+      double d = j;
+      Double.isNaN(d);
+      j = (int)(d * 0.8D);
       localObject = PageWebview.screenShot(this.this$0, i, j);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        if (this.val$callback != null) {
-          this.val$callback.onShotReady((Bitmap)localObject);
+        if (this.val$callback == null) {
+          break label133;
         }
-      }
-      else if (this.val$callback != null)
-      {
-        this.val$callback.onShotReady(null);
+        this.val$callback.onShotReady((Bitmap)localObject);
         return;
       }
+      if (this.val$callback == null) {
+        break label133;
+      }
+      this.val$callback.onShotReady(null);
+      return;
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("PageWebview", "shotWebview error.");
-      if (this.val$callback != null) {
-        this.val$callback.onShotReady(null);
-      }
+      Object localObject;
+      label107:
+      break label107;
+    }
+    QMLog.e("PageWebview", "shotWebview error.");
+    localObject = this.val$callback;
+    if (localObject != null) {
+      ((PageWebview.WebviewShotCallback)localObject).onShotReady(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.PageWebview.3
  * JD-Core Version:    0.7.0.1
  */

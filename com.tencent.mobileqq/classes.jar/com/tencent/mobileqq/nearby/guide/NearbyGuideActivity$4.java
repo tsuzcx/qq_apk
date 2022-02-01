@@ -12,20 +12,21 @@ class NearbyGuideActivity$4
   public void OnClick(View paramView, int paramInt)
   {
     this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.a);
+      if (paramInt != 1) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.showChangePhotoActionSheet();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.f();
+    paramView = this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity;
+    paramView.showBigPhoto(paramView.mAvatarPhotoPath);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.4
  * JD-Core Version:    0.7.0.1
  */

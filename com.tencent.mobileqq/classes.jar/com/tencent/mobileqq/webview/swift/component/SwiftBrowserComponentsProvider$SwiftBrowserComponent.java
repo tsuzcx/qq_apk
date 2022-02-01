@@ -6,13 +6,13 @@ public class SwiftBrowserComponentsProvider$SwiftBrowserComponent
 {
   protected SwiftBrowserComponentsProvider.SwiftBrowserComponentContext a;
   
-  public void a(int paramInt, Bundle paramBundle) {}
+  public void a() {}
   
-  public void b() {}
+  public void a(int paramInt, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponent
  * JD-Core Version:    0.7.0.1
  */

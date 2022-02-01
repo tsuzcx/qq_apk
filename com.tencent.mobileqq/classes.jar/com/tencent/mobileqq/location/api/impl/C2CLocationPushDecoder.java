@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.location.api.impl;
 
 import com.tencent.mobileqq.location.data.LocationRoom.RoomKey;
-import com.tencent.mobileqq.location.net.LocationHandler;
+import com.tencent.mobileqq.location.net.LocationShareRoomManager;
+import com.tencent.mobileqq.location.net.LocationShareVenueManager;
 import com.tencent.mobileqq.location.net.RoomQueryHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -14,14 +15,13 @@ public class C2CLocationPushDecoder
 {
   public static void a(submsgtype0x125.MsgBody paramMsgBody)
   {
-    LocationHandler localLocationHandler = LocationHandler.a();
     paramMsgBody = paramMsgBody.bytes_ext_info.get().toByteArray();
     qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
     try
     {
       localPushExtInfo.mergeFrom(paramMsgBody);
       long l = localPushExtInfo.peer_uin.get();
-      localLocationHandler.a.a(0, String.valueOf(l));
+      LocationShareRoomManager.a().a.a(0, String.valueOf(l));
       return;
     }
     catch (Exception paramMsgBody)
@@ -32,44 +32,57 @@ public class C2CLocationPushDecoder
   
   public static void a(submsgtype0x125.MsgBody paramMsgBody, int paramInt)
   {
-    LocationHandler localLocationHandler = LocationHandler.a();
     long l1 = paramMsgBody.uint64_oper_uin.get();
     paramMsgBody = paramMsgBody.bytes_ext_info.get().toByteArray();
-    qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
+    Object localObject = new qq_lbs_share.PushExtInfo();
     for (;;)
     {
       try
       {
-        localPushExtInfo.mergeFrom(paramMsgBody);
-        long l2 = localPushExtInfo.peer_uin.get();
+        ((qq_lbs_share.PushExtInfo)localObject).mergeFrom(paramMsgBody);
+        long l2 = ((qq_lbs_share.PushExtInfo)localObject).peer_uin.get();
         paramMsgBody = new LocationRoom.RoomKey(0, String.valueOf(l2));
-        localLocationHandler.a.a(0, String.valueOf(l2));
+        LocationShareRoomManager.a().a.a(0, String.valueOf(l2));
         switch (paramInt)
         {
+        case 103: 
+          LocationShareVenueManager.a().b(paramMsgBody);
+          break;
+        case 102: 
+          LocationShareVenueManager.a().a(paramMsgBody);
+          break;
         case 101: 
-          if (!QLog.isColorLevel()) {
+          LocationShareVenueManager.a().a(paramMsgBody, String.valueOf(l1));
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramMsgBody);
+            ((StringBuilder)localObject).append(" opt: ");
+            ((StringBuilder)localObject).append(paramInt);
+            ((StringBuilder)localObject).append(" optUin: ");
+            ((StringBuilder)localObject).append(l1);
+            QLog.d("C2CLocationPushDecoder", 2, new Object[] { "[venue] c2c onPushRoomVenueChanged: invoked. roomKey: ", ((StringBuilder)localObject).toString() });
             return;
           }
-          QLog.d("C2CLocationPushDecoder", 2, new Object[] { "[venue] c2c onPushRoomVenueChanged: invoked. roomKey: ", paramMsgBody + " opt: " + paramInt + " optUin: " + l1 });
-          return;
+          break;
         }
       }
       catch (Exception paramMsgBody)
       {
-        QLog.e("C2CLocationPushDecoder", 1, "[venue] c2c onPushRoomVenueChanged: failed. opt: " + paramInt + " optUin: " + l1, paramMsgBody);
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[venue] c2c onPushRoomVenueChanged: failed. opt: ");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(" optUin: ");
+        ((StringBuilder)localObject).append(l1);
+        QLog.e("C2CLocationPushDecoder", 1, ((StringBuilder)localObject).toString(), paramMsgBody);
       }
-      localLocationHandler.a(paramMsgBody, String.valueOf(l1));
-      continue;
-      localLocationHandler.b(paramMsgBody);
-      continue;
-      localLocationHandler.c(paramMsgBody);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.api.impl.C2CLocationPushDecoder
  * JD-Core Version:    0.7.0.1
  */

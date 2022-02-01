@@ -25,7 +25,7 @@ public class ScaleFilter
     return super.applyNewTexture(paramTAVTextureInfo2);
   }
   
-  public void beforeDraw(TAVTextureInfo paramTAVTextureInfo)
+  protected void beforeDraw(TAVTextureInfo paramTAVTextureInfo)
   {
     GLES20.glUniform1f(this.blurOffsetXHandle, this.offsetX);
     GLES20.glUniform1f(this.blurOffsetYHandle, this.offsetY);
@@ -34,7 +34,7 @@ public class ScaleFilter
     GLES20.glUniform1i(this.blurTextureHandle, 1);
   }
   
-  public String getFragmentShaderCode(TAVTextureInfo paramTAVTextureInfo)
+  protected String getFragmentShaderCode(TAVTextureInfo paramTAVTextureInfo)
   {
     if (paramTAVTextureInfo.textureType == 36197) {
       return " #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES sTexture;\nuniform sampler2D blurTexture;\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform float blurOffsetX;  // x轴边框模糊偏移值\nuniform float blurOffsetY;  // y轴边框模糊偏移值\nvoid main() {\n   vec2 uv = vTextureCoord.xy;\n   vec4 color;\n   // 中间为原图，需要缩小\n   if (uv.x >= blurOffsetX && uv.x <= 1.0 - blurOffsetX && uv.y >= blurOffsetY && uv.y <= 1.0 - blurOffsetY) {\n       // 内部UV缩放值\n       float scaleX = 1.0 / (1.0 - 2.0 * blurOffsetX);\n       float scaleY = 1.0 / (1.0 - 2.0 * blurOffsetY);\n       // 计算出内部新的UV坐标\n       vec2 newUV = vec2((uv.x - blurOffsetX) * scaleX, (uv.y - blurOffsetY) * scaleY);\n       color = texture2D(sTexture, newUV);\n   } else {\n       color = texture2D(blurTexture, uv);\n   }\n   gl_FragColor = color;\n}";
@@ -42,7 +42,7 @@ public class ScaleFilter
     return "uniform sampler2D sTexture;\nuniform sampler2D blurTexture;\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform float blurOffsetX;  // x轴边框模糊偏移值\nuniform float blurOffsetY;  // y轴边框模糊偏移值\nvoid main() {\n   vec2 uv = vTextureCoord.xy;\n   vec4 color;\n   // 中间为原图，需要缩小\n   if (uv.x >= blurOffsetX && uv.x <= 1.0 - blurOffsetX && uv.y >= blurOffsetY && uv.y <= 1.0 - blurOffsetY) {\n       // 内部UV缩放值\n       float scaleX = 1.0 / (1.0 - 2.0 * blurOffsetX);\n       float scaleY = 1.0 / (1.0 - 2.0 * blurOffsetY);\n       // 计算出内部新的UV坐标\n       vec2 newUV = vec2((uv.x - blurOffsetX) * scaleX, (uv.y - blurOffsetY) * scaleY);\n       color = texture2D(sTexture, newUV);\n   } else {\n       color = texture2D(blurTexture, uv);\n   }\n   gl_FragColor = color;\n}";
   }
   
-  public TAVTextureInfo getOutputTextureInfo(TAVTextureInfo paramTAVTextureInfo)
+  protected TAVTextureInfo getOutputTextureInfo(TAVTextureInfo paramTAVTextureInfo)
   {
     if (this.outputTextureInfo == null) {
       this.outputTextureInfo = new TAVTextureInfo();
@@ -56,7 +56,7 @@ public class ScaleFilter
     return this.outputTextureInfo;
   }
   
-  public void initShader(TAVTextureInfo paramTAVTextureInfo)
+  protected void initShader(TAVTextureInfo paramTAVTextureInfo)
   {
     super.initShader(paramTAVTextureInfo);
     this.blurOffsetXHandle = GLES20.glGetUniformLocation(this.program, "blurOffsetX");

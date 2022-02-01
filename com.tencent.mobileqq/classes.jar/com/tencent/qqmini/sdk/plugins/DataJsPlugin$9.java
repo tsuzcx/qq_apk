@@ -12,7 +12,12 @@ class DataJsPlugin$9
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("DataJsPlugin", "webapi_plugin_login " + paramBoolean + ", " + paramJSONObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("webapi_plugin_login ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramJSONObject);
+    QMLog.d("DataJsPlugin", localStringBuilder.toString());
     if (paramBoolean)
     {
       this.val$req.ok(paramJSONObject);
@@ -23,7 +28,7 @@ class DataJsPlugin$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin.9
  * JD-Core Version:    0.7.0.1
  */

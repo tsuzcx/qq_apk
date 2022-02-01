@@ -1,6 +1,6 @@
 package com.tencent.mtt.hippy;
 
-import android.content.Context;
+import com.tencent.mtt.hippy.bridge.a.a;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyBundleLoader;
 import com.tencent.mtt.hippy.utils.ContextHolder;
 import com.tencent.mtt.hippy.utils.LogUtils;
@@ -10,60 +10,53 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class HippyEngine
 {
-  public static final int STATUS_ERR_BRIDGE = -50;
-  public static final int STATUS_ERR_DEVSERVER = -100;
-  public static final int STATUS_ERR_RUN_BUNDLE = -600;
-  public static final int STATUS_INIT_EXCEPTION = -200;
-  public static final int STATUS_OK = 0;
-  public static final int STATUS_REPEAT_LOAD = -700;
-  public static final int STATUS_VARIABLE_UNINIT = -500;
-  public static final int STATUS_WRONG_STATE = -150;
-  public static final int STATUS_WRONG_STATE_LISTEN = -151;
   private static final AtomicInteger sIdCounter = new AtomicInteger();
   volatile HippyEngine.EngineState mCurrentState = HippyEngine.EngineState.UNINIT;
   final CopyOnWriteArrayList<HippyEngine.EngineListener> mEventListeners = new CopyOnWriteArrayList();
+  protected int mGroupId;
   private int mID = sIdCounter.getAndIncrement();
   HippyEngine.ModuleListener mModuleListener;
   
+  static
+  {
+    a.a();
+  }
+  
   public static HippyEngine create(HippyEngine.EngineInitParams paramEngineInitParams)
   {
-    if (paramEngineInitParams == null) {
-      throw new RuntimeException("Hippy: initParams must no be null");
-    }
-    paramEngineInitParams.check();
-    LogUtils.enableDebugLog(paramEngineInitParams.enableLog);
-    if (paramEngineInitParams.appContext != null) {
-      ContextHolder.initAppContext(paramEngineInitParams.appContext);
-    }
-    for (;;)
+    if (paramEngineInitParams != null)
     {
-      switch (HippyEngine.2.$SwitchMap$com$tencent$mtt$hippy$HippyEngine$EngineMode[paramEngineInitParams.engineMode.ordinal()])
-      {
-      default: 
-        return null;
-        if (paramEngineInitParams.context != null) {
-          ContextHolder.initAppContext(paramEngineInitParams.context.getApplicationContext());
-        }
-        break;
+      paramEngineInitParams.check();
+      LogUtils.enableDebugLog(paramEngineInitParams.enableLog);
+      ContextHolder.initAppContext(paramEngineInitParams.context);
+      if (paramEngineInitParams.groupId == -1) {
+        return new HippyNormalEngineManager(paramEngineInitParams, null);
       }
+      return new HippySingleThreadEngineManager(paramEngineInitParams, null);
     }
-    return new HippyNormalEngineManager(paramEngineInitParams, null);
-    return new HippySingleThreadEngineManager(paramEngineInitParams, null);
+    throw new RuntimeException("Hippy: initParams must no be null");
   }
   
   private void listenInUIThread(HippyEngine.EngineListener paramEngineListener)
   {
-    if (this.mCurrentState == HippyEngine.EngineState.INITED)
-    {
-      paramEngineListener.onInitialized(0, null);
-      return;
+    HippyEngine.EngineInitStatus localEngineInitStatus;
+    if (this.mCurrentState == HippyEngine.EngineState.INITED) {
+      localEngineInitStatus = HippyEngine.EngineInitStatus.STATUS_OK;
     }
-    if ((this.mCurrentState == HippyEngine.EngineState.INITERRORED) || (this.mCurrentState == HippyEngine.EngineState.DESTROYED))
+    for (Object localObject = null;; localObject = ((StringBuilder)localObject).toString())
     {
-      paramEngineListener.onInitialized(-150, "engine state=" + this.mCurrentState);
+      paramEngineListener.onInitialized(localEngineInitStatus, (String)localObject);
       return;
+      if ((this.mCurrentState != HippyEngine.EngineState.INITERRORED) && (this.mCurrentState != HippyEngine.EngineState.DESTROYED))
+      {
+        this.mEventListeners.add(paramEngineListener);
+        return;
+      }
+      localEngineInitStatus = HippyEngine.EngineInitStatus.STATUS_WRONG_STATE;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("engine state=");
+      ((StringBuilder)localObject).append(this.mCurrentState);
     }
-    this.mEventListeners.add(paramEngineListener);
   }
   
   public abstract void destroyEngine();
@@ -75,6 +68,11 @@ public abstract class HippyEngine
   public HippyEngine.EngineState getEngineState()
   {
     return this.mCurrentState;
+  }
+  
+  public int getGroupId()
+  {
+    return this.mGroupId;
   }
   
   public int getId()
@@ -114,7 +112,7 @@ public abstract class HippyEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngine
  * JD-Core Version:    0.7.0.1
  */

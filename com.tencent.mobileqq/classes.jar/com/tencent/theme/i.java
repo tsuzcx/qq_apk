@@ -38,138 +38,175 @@ public class i
     }
     int i2 = paramByteBuffer.position();
     locali.e = n;
-    if (k == 0) {}
-    for (i = j;; i = k)
+    if (k == 0) {
+      i = j;
+    } else {
+      i = k;
+    }
+    i -= i1;
+    if (i % 4 == 0)
     {
-      i -= i1;
-      if (i % 4 == 0) {
-        break;
+      ByteBuffer localByteBuffer = ByteBuffer.wrap(paramByteBuffer.array(), i2, i);
+      localByteBuffer.order(paramByteBuffer.order());
+      locali.f = localByteBuffer;
+      locali.b = new String[m];
+      a.b(paramByteBuffer, i);
+      if ((n != 0) && (n != 256))
+      {
+        paramByteBuffer = new StringBuilder();
+        paramByteBuffer.append("Unknow version xml file: version: ");
+        paramByteBuffer.append(n);
+        throw new IOException(paramByteBuffer.toString());
       }
-      throw new IOException("String data size is not multiple of 4 (" + i + ").");
-    }
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramByteBuffer.array(), i2, i);
-    localByteBuffer.order(paramByteBuffer.order());
-    locali.f = localByteBuffer;
-    locali.b = new String[m];
-    a.b(paramByteBuffer, i);
-    if ((n != 0) && (n != 256)) {
-      throw new IOException("Unknow version xml file: version: " + n);
-    }
-    if (k != 0)
-    {
-      i = j - k;
-      if (i % 4 != 0) {
-        throw new IOException("Style data size is not multiple of 4 (" + i + ").");
+      if (k != 0)
+      {
+        i = j - k;
+        if (i % 4 == 0)
+        {
+          locali.d = a.c(paramByteBuffer, i / 4);
+          return locali;
+        }
+        paramByteBuffer = new StringBuilder();
+        paramByteBuffer.append("Style data size is not multiple of 4 (");
+        paramByteBuffer.append(i);
+        paramByteBuffer.append(").");
+        throw new IOException(paramByteBuffer.toString());
       }
-      locali.d = a.c(paramByteBuffer, i / 4);
+      return locali;
     }
-    return locali;
+    paramByteBuffer = new StringBuilder();
+    paramByteBuffer.append("String data size is not multiple of 4 (");
+    paramByteBuffer.append(i);
+    paramByteBuffer.append(").");
+    throw new IOException(paramByteBuffer.toString());
   }
   
   private int[] d(int paramInt)
   {
-    int k = 0;
-    if ((this.c == null) || (this.d == null) || (paramInt >= this.c.length)) {
-      return null;
-    }
-    paramInt = this.c[paramInt] / 4;
-    int i = paramInt;
-    int j = 0;
-    for (;;)
+    int[] arrayOfInt3 = this.c;
+    int[] arrayOfInt2 = null;
+    int[] arrayOfInt1 = arrayOfInt2;
+    if (arrayOfInt3 != null)
     {
-      if ((i >= this.d.length) || (this.d[i] == -1))
+      arrayOfInt1 = arrayOfInt2;
+      if (this.d != null)
       {
-        if ((j != 0) && (j % 3 == 0)) {
-          break;
+        if (paramInt >= arrayOfInt3.length) {
+          return null;
         }
-        return null;
+        paramInt = arrayOfInt3[paramInt] / 4;
+        int k = 0;
+        int i = paramInt;
+        int j = 0;
+        for (;;)
+        {
+          arrayOfInt1 = this.d;
+          if ((i >= arrayOfInt1.length) || (arrayOfInt1[i] == -1)) {
+            break;
+          }
+          j += 1;
+          i += 1;
+        }
+        arrayOfInt1 = arrayOfInt2;
+        if (j != 0)
+        {
+          if (j % 3 != 0) {
+            return null;
+          }
+          arrayOfInt2 = new int[j];
+          i = k;
+          for (;;)
+          {
+            arrayOfInt3 = this.d;
+            arrayOfInt1 = arrayOfInt2;
+            if (paramInt >= arrayOfInt3.length) {
+              break;
+            }
+            if (arrayOfInt3[paramInt] == -1) {
+              return arrayOfInt2;
+            }
+            arrayOfInt2[i] = arrayOfInt3[paramInt];
+            i += 1;
+            paramInt += 1;
+          }
+        }
       }
-      j += 1;
-      i += 1;
     }
-    int[] arrayOfInt = new int[j];
-    i = k;
-    for (;;)
-    {
-      if ((paramInt >= this.d.length) || (this.d[paramInt] == -1)) {
-        return arrayOfInt;
-      }
-      arrayOfInt[i] = this.d[paramInt];
-      i += 1;
-      paramInt += 1;
-    }
+    return arrayOfInt1;
   }
   
   public int a()
   {
-    if (this.a != null) {
-      return this.a.length;
+    int[] arrayOfInt = this.a;
+    if (arrayOfInt != null) {
+      return arrayOfInt.length;
     }
     return 0;
   }
   
   public int a(String paramString)
   {
-    int j;
-    if (paramString == null)
-    {
-      j = -1;
-      return j;
+    if (paramString == null) {
+      return -1;
     }
     int i = 0;
     for (;;)
     {
-      if (i >= this.b.length) {
-        break label61;
-      }
-      String str2 = this.b[i];
-      String str1 = str2;
-      if (str2 == null) {
-        str1 = a(i);
-      }
-      j = i;
-      if (paramString.equals(str1)) {
+      Object localObject1 = this.b;
+      if (i >= localObject1.length) {
         break;
+      }
+      Object localObject2 = localObject1[i];
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = a(i);
+      }
+      if (paramString.equals(localObject1)) {
+        return i;
       }
       i += 1;
     }
-    label61:
     return -1;
   }
   
   public String a(int paramInt)
   {
-    if ((paramInt < 0) || (this.a == null) || (paramInt >= this.a.length)) {
-      localObject = null;
-    }
-    String str;
-    do
+    if (paramInt >= 0)
     {
-      return localObject;
-      str = this.b[paramInt];
-      localObject = str;
-    } while (str != null);
-    int i = this.a[paramInt];
-    this.f.mark();
-    a.b(this.f, i);
-    if (this.e == 0)
-    {
-      localObject = new char[this.f.getShort()];
-      i = 0;
-      while (i < localObject.length)
+      int[] arrayOfInt = this.a;
+      if ((arrayOfInt != null) && (paramInt < arrayOfInt.length))
       {
-        localObject[i] = this.f.getChar();
-        i += 1;
+        String str = this.b[paramInt];
+        Object localObject = str;
+        if (str == null)
+        {
+          int i = arrayOfInt[paramInt];
+          this.f.mark();
+          a.b(this.f, i);
+          if (this.e == 0)
+          {
+            localObject = new char[this.f.getShort()];
+            i = 0;
+            while (i < localObject.length)
+            {
+              localObject[i] = this.f.getChar();
+              i += 1;
+            }
+            localObject = new String((char[])localObject);
+          }
+          else
+          {
+            i = this.f.get();
+            this.f.get();
+            localObject = new String(a.d(this.f, i));
+          }
+          this.b[paramInt] = localObject;
+          this.f.reset();
+        }
+        return localObject;
       }
     }
-    for (Object localObject = new String((char[])localObject);; localObject = new String(a.d(this.f, i)))
-    {
-      this.b[paramInt] = localObject;
-      this.f.reset();
-      return localObject;
-      i = this.f.get();
-      this.f.get();
-    }
+    return null;
   }
   
   public CharSequence b(int paramInt)
@@ -189,78 +226,67 @@ public class i
     }
     StringBuilder localStringBuilder = new StringBuilder(str.length() + 32);
     paramInt = 0;
-    int i = 0;
-    int k = -1;
-    int j;
-    if (i != arrayOfInt.length)
+    for (;;)
     {
-      if (arrayOfInt[(i + 1)] == -1) {
-        j = k;
-      }
-      for (;;)
+      int i = 0;
+      int j;
+      for (int k = -1; i != arrayOfInt.length; k = j)
       {
-        i += 3;
-        k = j;
-        break;
-        if (k != -1)
+        m = i + 1;
+        if (arrayOfInt[m] == -1)
         {
           j = k;
-          if (arrayOfInt[(k + 1)] <= arrayOfInt[(i + 1)]) {}
+        }
+        else if (k != -1)
+        {
+          j = k;
+          if (arrayOfInt[(k + 1)] <= arrayOfInt[m]) {}
         }
         else
         {
           j = i;
         }
+        i += 3;
       }
-    }
-    int m;
-    label131:
-    int n;
-    if (k != -1)
-    {
-      i = arrayOfInt[(k + 1)];
-      m = 0;
-      if (m == arrayOfInt.length) {
-        break label260;
+      if (k != -1) {
+        i = arrayOfInt[(k + 1)];
+      } else {
+        i = str.length();
       }
-      n = arrayOfInt[(m + 2)];
-      j = paramInt;
-      if (n != -1)
+      int m = 0;
+      while (m != arrayOfInt.length)
       {
-        if (n < i) {
-          break label184;
-        }
+        int n = m + 2;
+        int i1 = arrayOfInt[n];
         j = paramInt;
+        if (i1 != -1) {
+          if (i1 >= i)
+          {
+            j = paramInt;
+          }
+          else
+          {
+            j = paramInt;
+            if (paramInt <= i1)
+            {
+              j = i1 + 1;
+              localStringBuilder.append(str, paramInt, j);
+            }
+            arrayOfInt[n] = -1;
+            localStringBuilder.append('<');
+            localStringBuilder.append('/');
+            localStringBuilder.append(a(arrayOfInt[m]));
+            localStringBuilder.append('>');
+          }
+        }
+        m += 3;
+        paramInt = j;
       }
-    }
-    for (;;)
-    {
-      m += 3;
-      paramInt = j;
-      break label131;
-      i = str.length();
-      break;
-      label184:
-      j = paramInt;
-      if (paramInt <= n)
+      if (paramInt < i)
       {
-        localStringBuilder.append(str, paramInt, n + 1);
-        j = n + 1;
+        localStringBuilder.append(str, paramInt, i);
+        paramInt = i;
       }
-      arrayOfInt[(m + 2)] = -1;
-      localStringBuilder.append('<');
-      localStringBuilder.append('/');
-      localStringBuilder.append(a(arrayOfInt[m]));
-      localStringBuilder.append('>');
-    }
-    label260:
-    if (paramInt < i)
-    {
-      localStringBuilder.append(str, paramInt, i);
-      paramInt = i;
-    }
-    for (;;)
-    {
       if (k == -1) {
         return localStringBuilder.toString();
       }
@@ -268,13 +294,12 @@ public class i
       localStringBuilder.append(a(arrayOfInt[k]));
       localStringBuilder.append('>');
       arrayOfInt[(k + 1)] = -1;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.theme.i
  * JD-Core Version:    0.7.0.1
  */

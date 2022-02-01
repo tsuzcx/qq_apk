@@ -23,13 +23,14 @@ public final class AvGameCommon$RoomUserInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56 }, new String[] { "uin", "role", "status", "enter_time", "cli_ver", "match_tag", "game_view" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, RoomUserInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56 }, new String[] { "uin", "role", "status", "enter_time", "cli_ver", "match_tag", "game_view" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localByteStringMicro, localInteger, localInteger }, RoomUserInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trpc.qq_vgame.common.AvGameCommon.RoomUserInfo
  * JD-Core Version:    0.7.0.1
  */

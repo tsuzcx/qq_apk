@@ -58,7 +58,16 @@ public class RecommendAppInfo
   
   public String toString()
   {
-    return "RecommendAppInfo{appId='" + this.appId + '\'' + ", exposuredNum=" + this.exposuredNum + ", pullTime=" + this.pullTime + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RecommendAppInfo{appId='");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", exposuredNum=");
+    localStringBuilder.append(this.exposuredNum);
+    localStringBuilder.append(", pullTime=");
+    localStringBuilder.append(this.pullTime);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -70,7 +79,7 @@ public class RecommendAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.RecommendAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -74,30 +74,29 @@ public class RoundCornerHelper
     localRectF.bottom = (j - paramView.getPaddingBottom());
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     float f1;
-    if (localRectF.width() >= localRectF.height())
-    {
+    if (localRectF.width() >= localRectF.height()) {
       f1 = localRectF.height();
-      f1 /= 2.0F;
-      paramView = new PointF(i / 2, j / 2);
-      if (Build.VERSION.SDK_INT > 27) {
-        break label228;
-      }
+    } else {
+      f1 = localRectF.width();
+    }
+    f1 /= 2.0F;
+    float f2 = i / 2;
+    float f3 = j / 2;
+    paramView = new PointF(f2, f3);
+    if (Build.VERSION.SDK_INT <= 27)
+    {
       this.jdField_a_of_type_AndroidGraphicsPath.addCircle(paramView.x, paramView.y, f1, Path.Direction.CW);
       this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, 0.0F);
       this.jdField_a_of_type_AndroidGraphicsPath.moveTo(i, j);
     }
-    for (;;)
+    else
     {
-      paramView = new Region((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom);
-      this.jdField_a_of_type_AndroidGraphicsRegion.setPath(this.jdField_a_of_type_AndroidGraphicsPath, paramView);
-      return;
-      f1 = localRectF.width();
-      break;
-      label228:
-      float f2 = j / 2 - f1;
+      f2 = f3 - f1;
       this.jdField_a_of_type_AndroidGraphicsPath.moveTo(localRectF.left, f2);
       this.jdField_a_of_type_AndroidGraphicsPath.addCircle(paramView.x, f2 + f1, f1, Path.Direction.CW);
     }
+    paramView = new Region((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom);
+    this.jdField_a_of_type_AndroidGraphicsRegion.setPath(this.jdField_a_of_type_AndroidGraphicsPath, paramView);
   }
   
   public void a(View paramView, int paramInt1, int paramInt2)
@@ -108,7 +107,7 @@ public class RoundCornerHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RoundCornerHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,13 @@ public class ChallengeBragBase$GetNickNameCallback
     if (i != 0)
     {
       Toast.makeText(this.a, paramIntent.getStringExtra("key_error_msg"), 0).show();
-      LogUtility.e("qqBaseActivity", "onGetNickNameError{KEY_ERROR_CODE:" + i + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetNickNameError{KEY_ERROR_CODE:");
+      localStringBuilder.append(i);
+      localStringBuilder.append("; KEY_ERROR_MSG:");
+      localStringBuilder.append(paramIntent.getStringExtra("key_error_msg"));
+      localStringBuilder.append("}");
+      LogUtility.e("qqBaseActivity", localStringBuilder.toString());
     }
     this.a.setResult(-1, paramIntent);
     this.a.finish();
@@ -38,48 +44,47 @@ public class ChallengeBragBase$GetNickNameCallback
   public void a(Exception paramException)
   {
     this.a.d();
-    LogUtility.c("qqBaseActivity", "GetNickNameCallback exception." + paramException.getMessage(), paramException);
-    Intent localIntent = new Intent();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("GetNickNameCallback exception.");
+    ((StringBuilder)localObject).append(paramException.getMessage());
+    LogUtility.c("qqBaseActivity", ((StringBuilder)localObject).toString(), paramException);
+    localObject = new Intent();
     if ((paramException instanceof ConnectTimeoutException))
     {
-      localIntent.putExtra("key_error_code", -7);
-      localIntent.putExtra("key_error_msg", Constants.e);
+      ((Intent)localObject).putExtra("key_error_code", -7);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.e);
     }
-    for (;;)
+    else if ((paramException instanceof SocketTimeoutException))
     {
-      a(localIntent);
-      return;
-      if ((paramException instanceof SocketTimeoutException))
-      {
-        localIntent.putExtra("key_error_code", -8);
-        localIntent.putExtra("key_error_msg", Constants.f);
-      }
-      else if ((paramException instanceof MalformedURLException))
-      {
-        localIntent.putExtra("key_error_code", -3);
-        localIntent.putExtra("key_error_msg", "访问url有误!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
-      {
-        localIntent.putExtra("key_error_code", -10);
-        localIntent.putExtra("key_error_msg", "Http返回码异常!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
-      {
-        localIntent.putExtra("key_error_code", -9);
-        localIntent.putExtra("key_error_msg", Constants.g);
-      }
-      else if ((paramException instanceof IOException))
-      {
-        localIntent.putExtra("key_error_code", -2);
-        localIntent.putExtra("key_error_msg", Constants.a);
-      }
-      else
-      {
-        localIntent.putExtra("key_error_code", -6);
-        localIntent.putExtra("key_error_msg", Constants.d);
-      }
+      ((Intent)localObject).putExtra("key_error_code", -8);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.f);
     }
+    else if ((paramException instanceof MalformedURLException))
+    {
+      ((Intent)localObject).putExtra("key_error_code", -3);
+      ((Intent)localObject).putExtra("key_error_msg", "访问url有误!");
+    }
+    else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
+    {
+      ((Intent)localObject).putExtra("key_error_code", -10);
+      ((Intent)localObject).putExtra("key_error_msg", "Http返回码异常!");
+    }
+    else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
+    {
+      ((Intent)localObject).putExtra("key_error_code", -9);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.g);
+    }
+    else if ((paramException instanceof IOException))
+    {
+      ((Intent)localObject).putExtra("key_error_code", -2);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.a);
+    }
+    else
+    {
+      ((Intent)localObject).putExtra("key_error_code", -6);
+      ((Intent)localObject).putExtra("key_error_msg", Constants.d);
+    }
+    a((Intent)localObject);
   }
   
   public void a(JSONObject paramJSONObject)
@@ -88,12 +93,12 @@ public class ChallengeBragBase$GetNickNameCallback
     {
       this.a.d();
       int i = paramJSONObject.getInt("ret");
-      String str = paramJSONObject.getString("msg");
+      localObject = paramJSONObject.getString("msg");
       if (i != 0)
       {
         Intent localIntent = new Intent();
         localIntent.putExtra("key_error_code", i);
-        localIntent.putExtra("key_error_msg", str);
+        localIntent.putExtra("key_error_msg", (String)localObject);
         localIntent.putExtra("key_response", paramJSONObject.toString());
         a(localIntent);
         return;
@@ -104,23 +109,19 @@ public class ChallengeBragBase$GetNickNameCallback
         paramJSONObject = new Intent();
         paramJSONObject.putExtra("key_error_code", -5);
         paramJSONObject.putExtra("key_error_msg", Constants.c);
-        paramJSONObject.putExtra("key_error_detail", HardCodeUtil.a(2131701583));
+        paramJSONObject.putExtra("key_error_detail", HardCodeUtil.a(2131701723));
         a(paramJSONObject);
         return;
       }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      LogUtility.c("qqBaseActivity", "GetNickNameCallback exception." + paramJSONObject.getMessage(), paramJSONObject);
-      paramJSONObject = new Intent();
-      paramJSONObject.putExtra("key_error_code", -4);
-      paramJSONObject.putExtra("key_error_msg", Constants.b);
-      a(paramJSONObject);
-      return;
       paramJSONObject = StringAddition.a(StringAddition.a(paramJSONObject.getJSONObject(0).getString("nick")), 12, true, true);
       if ("action_brag".equals(this.a.p))
       {
-        this.a.a.setText(this.a.getString(2131689893, new Object[] { paramJSONObject }));
+        this.a.a.setText(this.a.getString(2131689812, new Object[] { paramJSONObject }));
+        return;
+      }
+      if ("action_challenge".equals(this.a.p))
+      {
+        this.a.a.setText(this.a.getString(2131689816, new Object[] { paramJSONObject }));
         return;
       }
     }
@@ -129,14 +130,22 @@ public class ChallengeBragBase$GetNickNameCallback
       a(paramJSONObject);
       return;
     }
-    if ("action_challenge".equals(this.a.p)) {
-      this.a.a.setText(this.a.getString(2131689897, new Object[] { paramJSONObject }));
+    catch (JSONException paramJSONObject)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GetNickNameCallback exception.");
+      ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+      LogUtility.c("qqBaseActivity", ((StringBuilder)localObject).toString(), paramJSONObject);
+      paramJSONObject = new Intent();
+      paramJSONObject.putExtra("key_error_code", -4);
+      paramJSONObject.putExtra("key_error_msg", Constants.b);
+      a(paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.ChallengeBragBase.GetNickNameCallback
  * JD-Core Version:    0.7.0.1
  */

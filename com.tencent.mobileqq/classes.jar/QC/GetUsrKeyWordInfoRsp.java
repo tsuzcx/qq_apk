@@ -41,18 +41,20 @@ public final class GetUsrKeyWordInfoRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vBaseWord != null) {
-      paramJceOutputStream.write(this.vBaseWord, 0);
+    ArrayList localArrayList = this.vBaseWord;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
-    if (this.vVaWord != null) {
-      paramJceOutputStream.write(this.vVaWord, 1);
+    localArrayList = this.vVaWord;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
     paramJceOutputStream.write(this.iShowEntry, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.GetUsrKeyWordInfoRsp
  * JD-Core Version:    0.7.0.1
  */

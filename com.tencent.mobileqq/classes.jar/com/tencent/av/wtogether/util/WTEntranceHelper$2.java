@@ -19,20 +19,18 @@ class WTEntranceHelper$2
     {
       if (this.jdField_a_of_type_Int == 3) {
         ChooseFileAssistant.a().a(WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a().jdField_a_of_type_Int, WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a().jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
-      }
-      for (;;)
-      {
-        PlusPanelUtils.a(WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), true, "AIOQAVWatchTogether", null);
-        return;
+      } else {
         ChooseFileAssistant.a().a(this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo);
       }
+      PlusPanelUtils.a(WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), WTEntranceHelper.a(this.jdField_a_of_type_ComTencentAvWtogetherUtilWTEntranceHelper).a(), true, "AIOQAVWatchTogether", null);
+      return;
     }
     QLog.e(WTEntranceHelper.jdField_a_of_type_JavaLangString, 1, "deny permission");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.util.WTEntranceHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -53,14 +53,16 @@ public class k
   
   private int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -3)
     {
-    case -2: 
-    case -1: 
-    default: 
+      if ((paramInt != -2) && (paramInt != -1))
+      {
+        if (paramInt != 0) {
+          return -1;
+        }
+        return 0;
+      }
       return -1;
-    case 0: 
-      return 0;
     }
     return -2;
   }
@@ -79,49 +81,50 @@ public class k
   {
     n localn = new n(paramString, paramLong, paramBoolean, paramInt);
     Iterator localIterator = this.t.entrySet().iterator();
-    StringBuffer localStringBuffer;
-    Object localObject;
-    try
-    {
-      localStringBuffer = new StringBuffer();
-      paramInt = 0;
-      for (;;)
-      {
-        if (!localIterator.hasNext()) {
-          break label162;
-        }
-        localObject = (Map.Entry)localIterator.next();
-        String str = (String)((Map.Entry)localObject).getKey();
-        localObject = (n)((Map.Entry)localObject).getValue();
-        if ((((n)localObject).a.equals(paramString)) || (System.currentTimeMillis() - ((n)localObject).b <= 86400000L)) {
-          break;
-        }
-        localIterator.remove();
-      }
-      localObject = ((n)localObject).a();
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      return;
-    }
-    if (localObject != null) {
-      if (localStringBuffer.length() <= 0) {
-        localStringBuffer.append((String)localObject);
-      }
-    }
     for (;;)
     {
-      label162:
-      this.t.put(paramString, localn);
-      MsfStore.getNativeConfigStore().setConfig("_wifi_detect_history", localStringBuffer.toString());
-      return;
-      localStringBuffer.append("#&#").append((String)localObject);
-      do
+      try
       {
-        break;
-        paramInt += 1;
-      } while (paramInt <= 5L);
+        StringBuffer localStringBuffer = new StringBuffer();
+        paramInt = 0;
+        if (localIterator.hasNext())
+        {
+          Object localObject = (Map.Entry)localIterator.next();
+          String str = (String)((Map.Entry)localObject).getKey();
+          localObject = (n)((Map.Entry)localObject).getValue();
+          if ((!((n)localObject).a.equals(paramString)) && (System.currentTimeMillis() - ((n)localObject).b > 86400000L))
+          {
+            localIterator.remove();
+            continue;
+          }
+          localObject = ((n)localObject).a();
+          if (localObject != null) {
+            if (localStringBuffer.length() <= 0)
+            {
+              localStringBuffer.append((String)localObject);
+            }
+            else
+            {
+              localStringBuffer.append("#&#");
+              localStringBuffer.append((String)localObject);
+            }
+          }
+        }
+        else
+        {
+          this.t.put(paramString, localn);
+          MsfStore.getNativeConfigStore().setConfig("_wifi_detect_history", localStringBuffer.toString());
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      int i1 = paramInt + 1;
+      paramInt = i1;
+      if (i1 <= 5L) {}
     }
   }
   
@@ -150,30 +153,26 @@ public class k
   
   private void c(String paramString)
   {
-    int i1 = 0;
-    for (;;)
+    try
     {
-      try
+      if (!NetConnInfoCenter.isWifiConn())
       {
-        if (!NetConnInfoCenter.isWifiConn())
-        {
-          QLog.d("WifiDetector", 1, "WIFI detect start failed, wifi is not connected!");
-          return;
-        }
-        if (!d(paramString))
-        {
-          QLog.d("WifiDetector", 1, "WIFI detect start failed, ssid is invalid!");
-          continue;
-        }
-        if (this.o.compareAndSet(false, true)) {
-          break label76;
-        }
+        QLog.d("WifiDetector", 1, "WIFI detect start failed, wifi is not connected!");
+        return;
       }
-      finally {}
-      QLog.d("WifiDetector", 1, "WIFI detect start failed, there is detect running!");
-      b(paramString, 30000L);
-      continue;
-      label76:
+      if (!d(paramString))
+      {
+        QLog.d("WifiDetector", 1, "WIFI detect start failed, ssid is invalid!");
+        return;
+      }
+      Object localObject = this.o;
+      int i1 = 0;
+      if (!((AtomicBoolean)localObject).compareAndSet(false, true))
+      {
+        QLog.d("WifiDetector", 1, "WIFI detect start failed, there is detect running!");
+        b(paramString, 30000L);
+        return;
+      }
       QLog.d("WifiDetector", 1, "WIFI detect started!");
       this.s = paramString;
       a(this.s, System.currentTimeMillis());
@@ -181,7 +180,7 @@ public class k
       while (i1 < this.f.length)
       {
         this.p |= 1 << i1;
-        Object localObject = a(this.f[i1], i1, this.w);
+        localObject = a(this.f[i1], i1, this.w);
         ((a)localObject).g = paramString;
         if (localObject != null)
         {
@@ -191,6 +190,12 @@ public class k
         }
         i1 += 1;
       }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -255,12 +260,18 @@ public class k
   
   public void a(String paramString, int paramInt)
   {
-    QLog.d("WifiDetector", 1, "WIFI detect onWifiConnected! with " + paramInt);
-    Object localObject = this.n.configManager;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("WIFI detect onWifiConnected! with ");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.d("WifiDetector", 1, ((StringBuilder)localObject).toString());
+    localObject = this.n.configManager;
     if (!com.tencent.mobileqq.msf.core.a.a.y())
     {
       paramInt = 0;
-      QLog.d("WifiDetector", 1, "WIFI detect onWifiConnected into:  " + 0);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("WIFI detect onWifiConnected into:  ");
+      ((StringBuilder)localObject).append(0);
+      QLog.d("WifiDetector", 1, ((StringBuilder)localObject).toString());
     }
     localObject = (n)this.t.get(paramString);
     long l2 = System.currentTimeMillis();
@@ -276,8 +287,13 @@ public class k
       return;
     }
     ((n)localObject).d = paramInt;
-    if (1 == paramInt) {}
-    for (long l1 = 10000L; l2 - ((n)localObject).b >= l1; l1 = 7200000L)
+    long l1;
+    if (1 == paramInt) {
+      l1 = 10000L;
+    } else {
+      l1 = 7200000L;
+    }
+    if (l2 - ((n)localObject).b >= l1)
     {
       c(paramString);
       return;
@@ -311,7 +327,8 @@ public class k
   {
     int i1 = this.q;
     String str = this.r;
-    if (NetConnInfoCenter.isWifiConn()) {
+    if (NetConnInfoCenter.isWifiConn())
+    {
       if (i1 == 0)
       {
         QLog.d("WifiDetector", 1, "WIFI detect result, WIFI_OK");
@@ -323,12 +340,7 @@ public class k
           }
         }
       }
-    }
-    for (;;)
-    {
-      e();
-      return;
-      if (i1 == -1)
+      else if (i1 == -1)
       {
         QLog.d("WifiDetector", 1, "WIFI detect result, WIFI_EXCEPTION");
       }
@@ -345,10 +357,12 @@ public class k
       else
       {
         QLog.d("WifiDetector", 1, "WIFI detect result, WIFI_OTHER");
-        continue;
-        QLog.d("WifiDetector", 1, "WIFI detect result, WIFI_NONE");
       }
     }
+    else {
+      QLog.d("WifiDetector", 1, "WIFI detect result, WIFI_NONE");
+    }
+    e();
   }
   
   public void c()
@@ -359,7 +373,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.k
  * JD-Core Version:    0.7.0.1
  */

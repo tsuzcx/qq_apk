@@ -52,41 +52,45 @@ public abstract class BaseUpdateBusiness
   
   public void onLoadFail(@NonNull UpdateListenerParams paramUpdateListenerParams)
   {
-    if (weakListener != null)
+    Object localObject = weakListener;
+    if (localObject != null)
     {
-      IUpdateListener localIUpdateListener = (IUpdateListener)weakListener.get();
-      if (localIUpdateListener != null) {
-        localIUpdateListener.onLoadFail(paramUpdateListenerParams);
+      localObject = (IUpdateListener)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((IUpdateListener)localObject).onLoadFail(paramUpdateListenerParams);
       }
     }
   }
   
   public void onLoadSuccess(@NonNull UpdateListenerParams paramUpdateListenerParams)
   {
-    if (weakListener != null)
+    Object localObject = weakListener;
+    if (localObject != null)
     {
-      IUpdateListener localIUpdateListener = (IUpdateListener)weakListener.get();
-      if (localIUpdateListener != null) {
-        localIUpdateListener.onLoadSuccess(paramUpdateListenerParams);
+      localObject = (IUpdateListener)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((IUpdateListener)localObject).onLoadSuccess(paramUpdateListenerParams);
       }
     }
   }
   
   public void onProgress(@NonNull UpdateListenerParams paramUpdateListenerParams)
   {
-    if (weakListener != null)
+    Object localObject = weakListener;
+    if (localObject != null)
     {
-      IUpdateListener localIUpdateListener = (IUpdateListener)weakListener.get();
-      if (localIUpdateListener != null) {
-        localIUpdateListener.onProgress(paramUpdateListenerParams);
+      localObject = (IUpdateListener)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((IUpdateListener)localObject).onProgress(paramUpdateListenerParams);
       }
     }
   }
   
   public void removeUpdateListener()
   {
-    if (weakListener != null) {
-      weakListener.clear();
+    WeakReference localWeakReference = weakListener;
+    if (localWeakReference != null) {
+      localWeakReference.clear();
     }
   }
   
@@ -103,7 +107,7 @@ public abstract class BaseUpdateBusiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.business.BaseUpdateBusiness
  * JD-Core Version:    0.7.0.1
  */

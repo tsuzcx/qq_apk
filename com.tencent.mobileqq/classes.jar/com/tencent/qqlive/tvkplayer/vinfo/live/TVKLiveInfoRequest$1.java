@@ -16,21 +16,25 @@ class TVKLiveInfoRequest$1
   
   public void onFailure(IOException paramIOException)
   {
-    TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", "livecgi error = " + paramIOException.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("livecgi error = ");
+    localStringBuilder.append(paramIOException.toString());
+    TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", localStringBuilder.toString());
     if (TVKLiveInfoRequest.access$000(this.this$0) <= 3)
     {
       if (TVKLiveInfoRequest.access$100(this.this$0) == 1) {
         TVKLiveInfoRequest.access$102(this.this$0, 2);
-      }
-      for (;;)
-      {
-        TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", " change host, retry");
-        TVKLiveInfoRequest.access$008(this.this$0);
-        TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", " retry count " + TVKLiveInfoRequest.access$000(this.this$0));
-        this.this$0.execute();
-        return;
+      } else {
         TVKLiveInfoRequest.access$102(this.this$0, 1);
       }
+      TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", " change host, retry");
+      TVKLiveInfoRequest.access$008(this.this$0);
+      paramIOException = new StringBuilder();
+      paramIOException.append(" retry count ");
+      paramIOException.append(TVKLiveInfoRequest.access$000(this.this$0));
+      TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", paramIOException.toString());
+      this.this$0.execute();
+      return;
     }
     paramIOException = new TVKLiveVideoInfo();
     paramIOException.setErrModule(10000);
@@ -82,7 +86,7 @@ class TVKLiveInfoRequest$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.live.TVKLiveInfoRequest.1
  * JD-Core Version:    0.7.0.1
  */

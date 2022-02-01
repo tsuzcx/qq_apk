@@ -32,115 +32,103 @@ public class NativeRuntimeCreateTask
   
   private static boolean isFileExists(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramString != null)
-    {
-      bool1 = bool2;
-      if (paramString.length() <= 0) {}
-    }
-    try
-    {
-      bool1 = new File(paramString).exists();
-      return bool1;
-    }
-    catch (Exception paramString)
-    {
-      QMLog.e("Tools.isFileExists", "" + paramString.getMessage());
+    if ((paramString != null) && (paramString.length() > 0)) {
+      try
+      {
+        boolean bool = new File(paramString).exists();
+        return bool;
+      }
+      catch (Exception paramString)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(paramString.getMessage());
+        QMLog.e("Tools.isFileExists", localStringBuilder.toString());
+      }
     }
     return false;
   }
   
   private boolean loadAssetRes(String paramString)
   {
-    paramString = paramString + "/res.apk";
-    if ((mLoadedAssetResPath != null) && (mLoadedAssetResPath.equals(paramString))) {
-      bool = true;
-    }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("/res.apk");
+    paramString = ((StringBuilder)localObject).toString();
+    boolean bool;
+    if ((mLoadedAssetResPath == null) || (!mLoadedAssetResPath.equals(paramString)))
     {
-      if (QMLog.isColorLevel()) {
-        QMLog.d("miniapp-start-TISSUE", String.format("loadAssetRes, isSuccess: %s", new Object[] { Boolean.valueOf(bool) }));
-      }
-      return bool;
-      if (isFileExists(paramString))
-      {
+      if (isFileExists(paramString)) {
         try
         {
-          l1 = System.currentTimeMillis();
-          AssetManager localAssetManager = getContext().getAssets();
+          long l1 = System.currentTimeMillis();
+          localObject = getContext().getAssets();
           Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
           localMethod.setAccessible(true);
-          localMethod.invoke(localAssetManager, new Object[] { paramString });
-          l2 = System.currentTimeMillis();
-        }
-        catch (Exception paramString)
-        {
+          localMethod.invoke(localObject, new Object[] { paramString });
+          long l2 = System.currentTimeMillis();
           try
           {
-            long l1;
-            long l2;
             mLoadedAssetResPath = paramString;
             QMLog.d("miniapp-start-TISSUE", String.format("load asset file %s cost %s ms", new Object[] { paramString, Long.valueOf(l2 - l1) }));
-            bool = true;
           }
           catch (Exception paramString)
           {
-            for (;;)
-            {
-              bool = true;
-            }
+            bool = true;
           }
-          paramString = paramString;
+          QMLog.e("miniapp-start-TISSUE", "loadAsset", paramString);
+        }
+        catch (Exception paramString)
+        {
           bool = false;
         }
-        QMLog.e("miniapp-start-TISSUE", "loadAsset", paramString);
-      }
-      else
-      {
+      } else {
         QMLog.e("miniapp-start-TISSUE", String.format("assetsPath: %s not exist", new Object[] { paramString }));
-        bool = true;
       }
     }
+    else {
+      bool = true;
+    }
+    if (QMLog.isColorLevel()) {
+      QMLog.d("miniapp-start-TISSUE", String.format("loadAssetRes, isSuccess: %s", new Object[] { Boolean.valueOf(bool) }));
+    }
+    return bool;
   }
   
   public void executeInMainThread()
   {
     MiniAppReportManager2.reportLaunchPiecewise(200, "", getRuntimeLoader().getMiniAppInfoForReport());
-    if (TissueGlobal.tissueEnv != null) {
+    if (TissueGlobal.tissueEnv != null)
+    {
       if (!loadAssetRes(TissueGlobal.tissueEnv.getNativeLibDir())) {
         QMLog.e("miniapp-start-TISSUE", "flutter loadAssetRes failed!!! enableFlutter=false");
       }
     }
-    for (;;)
+    else {
+      QMLog.e("miniapp-start-TISSUE", "enableFlutter=false, tissueEnv is null");
+    }
+    if (this.flutterProxy == null) {
+      QMLog.e("miniapp-start-TISSUE", "enableFlutter=false, flutterProxy is null");
+    }
+    try
     {
-      if (this.flutterProxy == null) {
-        QMLog.e("miniapp-start-TISSUE", "enableFlutter=false, flutterProxy is null");
-      }
-      try
+      BaseRuntime localBaseRuntime = getRuntimeLoader().getRuntime();
+      if (localBaseRuntime == null)
       {
-        BaseRuntime localBaseRuntime = getRuntimeLoader().getRuntime();
-        if (localBaseRuntime == null)
-        {
-          onTaskFailed();
-          return;
-          QMLog.e("miniapp-start-TISSUE", "enableFlutter=false, tissueEnv is null");
-        }
-        else
-        {
-          localBaseRuntime.onRuntimeCreate();
-          this.flutterProxy.initFlutterRuntime(localBaseRuntime, getContext());
-          FlutterNativeView localFlutterNativeView = new FlutterNativeView(this.mContext.getApplicationContext());
-          ((NativeAppBrandRuntime)localBaseRuntime).setFlutterNativeView(localFlutterNativeView);
-          onTaskSucceed();
-          return;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QMLog.e("minisdk-start", "RuntimeCreateTask exception!", localThrowable);
         onTaskFailed();
+        return;
       }
+      localBaseRuntime.onRuntimeCreate();
+      this.flutterProxy.initFlutterRuntime(localBaseRuntime, getContext());
+      FlutterNativeView localFlutterNativeView = new FlutterNativeView(this.mContext.getApplicationContext());
+      ((NativeAppBrandRuntime)localBaseRuntime).setFlutterNativeView(localFlutterNativeView);
+      onTaskSucceed();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("minisdk-start", "RuntimeCreateTask exception!", localThrowable);
+      onTaskFailed();
     }
   }
   
@@ -172,7 +160,7 @@ public class NativeRuntimeCreateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.task.NativeRuntimeCreateTask
  * JD-Core Version:    0.7.0.1
  */

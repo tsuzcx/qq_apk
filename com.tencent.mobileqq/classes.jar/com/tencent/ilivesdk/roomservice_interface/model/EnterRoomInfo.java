@@ -20,12 +20,24 @@ public class EnterRoomInfo
   
   public String toString()
   {
-    return "EnterRoomInfo:[roomId=" + this.roomId + ";source=" + this.source + ";programId=" + this.programId + ";machine=" + this.machine + ";roomType=" + this.roomType + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EnterRoomInfo:[roomId=");
+    localStringBuilder.append(this.roomId);
+    localStringBuilder.append(";source=");
+    localStringBuilder.append(this.source);
+    localStringBuilder.append(";programId=");
+    localStringBuilder.append(this.programId);
+    localStringBuilder.append(";machine=");
+    localStringBuilder.append(this.machine);
+    localStringBuilder.append(";roomType=");
+    localStringBuilder.append(this.roomType);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice_interface.model.EnterRoomInfo
  * JD-Core Version:    0.7.0.1
  */

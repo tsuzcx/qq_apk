@@ -44,15 +44,15 @@ public class VSReporter
   @NonNull
   public static String a(int paramInt, String... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= paramInt)) {
-      return "";
+    if ((paramVarArgs != null) && (paramVarArgs.length > paramInt)) {
+      return paramVarArgs[paramInt];
     }
-    return paramVarArgs[paramInt];
+    return "";
   }
   
   public static List<COMM.Entry> a()
   {
-    return new ArrayList(Arrays.asList(new COMM.Entry[] { a("uin", String.valueOf(CommonDataAdapter.a().a())), a("timestamp", String.valueOf(System.currentTimeMillis())), a("qua", QUA.getQUA3()), a("version", "8.5.5.5105"), a("imei", MobileInfoUtil.c()), a("idfa", ""), a("idfv", ""), a("android_id", Settings.Secure.getString(CommonDataAdapter.a().a().getContentResolver(), "android_id")) }));
+    return new ArrayList(Arrays.asList(new COMM.Entry[] { a("uin", String.valueOf(CommonDataAdapter.a().a())), a("timestamp", String.valueOf(System.currentTimeMillis())), a("qua", QUA.getQUA3()), a("version", "8.7.0.5295"), a("imei", MobileInfoUtil.getImei()), a("idfa", ""), a("idfv", ""), a("android_id", Settings.Secure.getString(CommonDataAdapter.a().a().getContentResolver(), "android_id")) }));
   }
   
   public static List<COMM.Entry> a(int paramInt, long paramLong1, String paramString1, long paramLong2, String paramString2)
@@ -103,8 +103,10 @@ public class VSReporter
   
   public static void a()
   {
-    jdField_a_of_type_Long = System.currentTimeMillis() / 1000L << 32 | jdField_a_of_type_Int;
-    jdField_a_of_type_Int += 1;
+    long l = System.currentTimeMillis() / 1000L;
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Long = l << 32 | i;
+    jdField_a_of_type_Int = i + 1;
   }
   
   public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String... paramVarArgs)
@@ -142,7 +144,7 @@ public class VSReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.support.VSReporter
  * JD-Core Version:    0.7.0.1
  */

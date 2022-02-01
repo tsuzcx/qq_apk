@@ -35,6 +35,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ExpParam;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -52,7 +53,6 @@ public class AdUtils
 {
   public static final int AD_EXPOSURE_EXP_ID = 95807;
   public static final String AD_GDT_COOKIE_PRE = "gdt_cookie";
-  public static final int AD_INTERSTITIAL_NEW_STYLE_EXP_ID = 101736;
   public static final int AD_REWARD_SHOW_TIME_EXP_ID = 103300;
   public static final int DEVICE_ORIENTATION_LANDSCAPE = 90;
   public static final int DEVICE_ORIENTATION_PORTRAIT = 0;
@@ -61,81 +61,44 @@ public class AdUtils
   
   public static List<GdtAd> convertJson2GdtAds(String paramString)
   {
-    localObject2 = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     try
     {
       paramString = ((qq_ad_get.QQAdGetRsp)qq_ad_get.QQAdGetRsp.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp(), new JSONObject(paramString)))).pos_ads_info.get();
-      if ((paramString == null) || (paramString.isEmpty()))
+      if ((paramString != null) && (!paramString.isEmpty()))
       {
-        GdtLog.d("AdUtils", "convertJson2GdtAds() posAdInfos.isEmpty");
-        return null;
-      }
-      if (localObject2 != null) {
-        ((List)localObject2).clear();
-      }
-      Iterator localIterator1 = paramString.iterator();
-      for (;;)
-      {
-        paramString = (String)localObject2;
-        try
+        localArrayList.clear();
+        paramString = paramString.iterator();
+        while (paramString.hasNext())
         {
-          if (!localIterator1.hasNext()) {
-            break label226;
-          }
-          paramString = (String)localObject2;
-          List localList = ((qq_ad_get.QQAdGetRsp.PosAdInfo)localIterator1.next()).ads_info.get();
-          if (localList != null)
+          Object localObject = ((qq_ad_get.QQAdGetRsp.PosAdInfo)paramString.next()).ads_info.get();
+          if ((localObject != null) && (!((List)localObject).isEmpty()))
           {
-            paramString = (String)localObject2;
-            if (!localList.isEmpty()) {
-              break label147;
+            localObject = ((List)localObject).iterator();
+            while (((Iterator)localObject).hasNext()) {
+              localArrayList.add(new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)((Iterator)localObject).next()));
             }
           }
-          paramString = (String)localObject2;
-          GdtLog.d("AdUtils", "convertJson2GdtAds() adInfos.isEmpty");
+          else
+          {
+            GdtLog.d("AdUtils", "convertJson2GdtAds() adInfos.isEmpty");
+          }
         }
-        catch (Exception localException1) {}
+        paramString = new StringBuilder();
+        paramString.append("convertJson2GdtAds() result = [");
+        paramString.append(Arrays.toString(localArrayList.toArray()));
+        paramString.append("]");
+        GdtLog.a("AdUtils", paramString.toString());
+        return localArrayList;
       }
+      GdtLog.d("AdUtils", "convertJson2GdtAds() posAdInfos.isEmpty");
+      return null;
     }
-    catch (Exception localException2)
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        Iterator localIterator2;
-        Object localObject1;
-        paramString = (String)localObject2;
-      }
+      GdtLog.d("AdUtils", "convertJson2GdtAds", paramString);
     }
-    GdtLog.d("AdUtils", "convertJson2GdtAds", localException1);
-    return paramString;
-    label147:
-    paramString = (String)localObject2;
-    localIterator2 = localException1.iterator();
-    for (localObject1 = localObject2;; localObject1 = localObject2)
-    {
-      localObject2 = localObject1;
-      paramString = localObject1;
-      if (!localIterator2.hasNext()) {
-        break;
-      }
-      paramString = localObject1;
-      qq_ad_get.QQAdGetRsp.AdInfo localAdInfo = (qq_ad_get.QQAdGetRsp.AdInfo)localIterator2.next();
-      localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        paramString = localObject1;
-        localObject2 = new ArrayList();
-      }
-      paramString = (String)localObject2;
-      ((List)localObject2).add(new GdtAd(localAdInfo));
-    }
-    label226:
-    if (localObject2 != null)
-    {
-      paramString = (String)localObject2;
-      GdtLog.a("AdUtils", "convertJson2GdtAds() result = [" + Arrays.toString(((List)localObject2).toArray()) + "]");
-    }
-    return localObject2;
+    return localArrayList;
   }
   
   public static MiniAppAd.StGetAdReq createAdRequest(Context paramContext, long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -193,70 +156,70 @@ public class AdUtils
     ((GdtDeviceInfoHelper.Params)localObject1).a = "e8d69a";
     long l = System.currentTimeMillis();
     localObject1 = GdtDeviceInfoHelper.a(paramContext, (GdtDeviceInfoHelper.Params)localObject1);
+    if (localObject1 != null) {
+      localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).a;
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("get deviceInfo cost：");
+    ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+    ((StringBuilder)localObject2).append(", result = ");
     boolean bool;
-    label77:
-    MiniAppAd.DeviceInfo localDeviceInfo;
-    Object localObject3;
+    if (localObject1 != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((StringBuilder)localObject2).append(bool);
+    QLog.i("AdUtils", 2, ((StringBuilder)localObject2).toString());
+    MiniAppAd.DeviceInfo localDeviceInfo = new MiniAppAd.DeviceInfo();
     if (localObject1 != null)
     {
-      localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).a;
-      localObject2 = new StringBuilder().append("get deviceInfo cost：").append(System.currentTimeMillis() - l).append(", result = ");
-      if (localObject1 == null) {
-        break label720;
+      localDeviceInfo.muid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid.get());
+      localDeviceInfo.muid_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid_type.get());
+      localDeviceInfo.conn.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).conn.get());
+      localDeviceInfo.carrier_code.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).carrier_code.get());
+      localDeviceInfo.os_ver.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_ver.get());
+      localDeviceInfo.qq_ver.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).qq_ver.get());
+      localDeviceInfo.os_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_type.get());
+      localDeviceInfo.location.coordinates_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.coordinates_type.get());
+      localDeviceInfo.location.latitude.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.latitude.get());
+      localDeviceInfo.location.longitude.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.longitude.get());
+      localDeviceInfo.manufacturer.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).manufacturer.get());
+      localDeviceInfo.device_brand_and_model.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_brand_and_model.get());
+      localDeviceInfo.qadid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).qadid.get());
+      localDeviceInfo.app_version_id.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).app_version_id.get());
+      localDeviceInfo.device_orientation.set(paramInt);
+      if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.has()) {
+        localDeviceInfo.taid_ticket.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get());
       }
-      bool = true;
-      QLog.i("AdUtils", 2, bool);
-      localDeviceInfo = new MiniAppAd.DeviceInfo();
-      if (localObject1 != null)
+      if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.has()) {
+        localDeviceInfo.aid_ticket.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get());
+      }
+      if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
+        localDeviceInfo.client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
+      }
+      Object localObject3 = DeviceInfoUtil.a();
+      PBStringField localPBStringField = localDeviceInfo.android_imei;
+      localObject2 = localObject3;
+      if (TextUtils.isEmpty((CharSequence)localObject3)) {
+        localObject2 = "";
+      }
+      localPBStringField.set((String)localObject2);
+      localObject2 = DeviceInfoUtil.f();
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localDeviceInfo.muid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid.get());
-        localDeviceInfo.muid_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid_type.get());
-        localDeviceInfo.conn.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).conn.get());
-        localDeviceInfo.carrier_code.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).carrier_code.get());
-        localDeviceInfo.os_ver.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_ver.get());
-        localDeviceInfo.qq_ver.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).qq_ver.get());
-        localDeviceInfo.os_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_type.get());
-        localDeviceInfo.location.coordinates_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.coordinates_type.get());
-        localDeviceInfo.location.latitude.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.latitude.get());
-        localDeviceInfo.location.longitude.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.longitude.get());
-        localDeviceInfo.manufacturer.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).manufacturer.get());
-        localDeviceInfo.device_brand_and_model.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_brand_and_model.get());
-        localDeviceInfo.qadid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).qadid.get());
-        localDeviceInfo.app_version_id.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).app_version_id.get());
-        localDeviceInfo.device_orientation.set(paramInt);
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.has()) {
-          localDeviceInfo.taid_ticket.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get());
-        }
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.has()) {
-          localDeviceInfo.aid_ticket.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get());
-        }
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
-          localDeviceInfo.client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
-        }
-        localObject3 = DeviceInfoUtil.a();
-        PBStringField localPBStringField = localDeviceInfo.android_imei;
-        localObject2 = localObject3;
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+        localDeviceInfo.android_id.set((String)localObject2);
+        localObject2 = MD5Utils.toMD5((String)localObject2);
+        localObject3 = localDeviceInfo.md5_android_id;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
           localObject2 = "";
+        } else {
+          localObject2 = ((String)localObject2).toLowerCase();
         }
-        localPBStringField.set((String)localObject2);
-        localObject2 = DeviceInfoUtil.f();
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          localDeviceInfo.android_id.set((String)localObject2);
-          localObject2 = MD5Utils.toMD5((String)localObject2);
-          localObject3 = localDeviceInfo.md5_android_id;
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label726;
-          }
-        }
+        ((PBStringField)localObject3).set((String)localObject2);
       }
-    }
-    label720:
-    label726:
-    for (Object localObject2 = "";; localObject2 = ((String)localObject2).toLowerCase())
-    {
-      ((PBStringField)localObject3).set((String)localObject2);
       paramContext = DeviceInfoUtil.d(paramContext);
       if (!TextUtils.isEmpty(paramContext))
       {
@@ -273,13 +236,18 @@ public class AdUtils
       if (!TextUtils.isEmpty(paramContext)) {
         localDeviceInfo.device_ext.set(paramContext);
       }
-      QLog.i("AdUtils", 1, "oaid = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).oaid.get() + ", taid_ticket = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get() + ", aid_ticket = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get() + ", client_ipv4 = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
-      return localDeviceInfo;
-      localObject1 = null;
-      break;
-      bool = false;
-      break label77;
+      paramContext = new StringBuilder();
+      paramContext.append("oaid = ");
+      paramContext.append(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).oaid.get());
+      paramContext.append(", taid_ticket = ");
+      paramContext.append(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get());
+      paramContext.append(", aid_ticket = ");
+      paramContext.append(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get());
+      paramContext.append(", client_ipv4 = ");
+      paramContext.append(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
+      QLog.i("AdUtils", 1, paramContext.toString());
     }
+    return localDeviceInfo;
   }
   
   public static INTERFACE.DeviceInfo getDeviceInfo(Context paramContext)
@@ -287,61 +255,58 @@ public class AdUtils
     Object localObject1 = new GdtDeviceInfoHelper.Params();
     ((GdtDeviceInfoHelper.Params)localObject1).a = "e8d69a";
     localObject1 = GdtDeviceInfoHelper.a(paramContext, (GdtDeviceInfoHelper.Params)localObject1);
-    INTERFACE.DeviceInfo localDeviceInfo;
-    Object localObject3;
+    if (localObject1 != null) {
+      localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).a;
+    } else {
+      localObject1 = null;
+    }
+    INTERFACE.DeviceInfo localDeviceInfo = new INTERFACE.DeviceInfo();
     if (localObject1 != null)
     {
-      localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).a;
-      localDeviceInfo = new INTERFACE.DeviceInfo();
-      if (localObject1 != null)
-      {
-        localDeviceInfo.muid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid.get());
-        localDeviceInfo.muid_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid_type.get());
-        localDeviceInfo.conn.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).conn.get());
-        localDeviceInfo.carrier_code.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).carrier_code.get());
-        localDeviceInfo.os_ver.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_ver.get());
-        localDeviceInfo.qq_ver.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).qq_ver.get());
-        localDeviceInfo.os_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_type.get());
-        localDeviceInfo.location.coordinates_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.coordinates_type.get());
-        localDeviceInfo.location.latitude.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.latitude.get());
-        localDeviceInfo.location.longitude.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.longitude.get());
-        localDeviceInfo.manufacturer.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).manufacturer.get());
-        localDeviceInfo.device_brand_and_model.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_brand_and_model.get());
-        localDeviceInfo.qadid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).qadid.get());
-        localDeviceInfo.app_version_id.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).app_version_id.get());
-        localDeviceInfo.device_orientation.set(0);
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.has()) {
-          localDeviceInfo.taid_ticket.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get());
-        }
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.has()) {
-          localDeviceInfo.aid_ticket.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get());
-        }
-        if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
-          localDeviceInfo.client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
-        }
-        localObject3 = DeviceInfoUtil.a();
-        PBStringField localPBStringField = localDeviceInfo.android_imei;
-        localObject2 = localObject3;
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          localObject2 = "";
-        }
-        localPBStringField.set((String)localObject2);
-        localObject2 = DeviceInfoUtil.f();
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          localDeviceInfo.android_id.set((String)localObject2);
-          localObject2 = MD5Utils.toMD5((String)localObject2);
-          localObject3 = localDeviceInfo.md5_android_id;
-          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label584;
-          }
-        }
+      localDeviceInfo.muid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid.get());
+      localDeviceInfo.muid_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).muid_type.get());
+      localDeviceInfo.conn.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).conn.get());
+      localDeviceInfo.carrier_code.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).carrier_code.get());
+      localDeviceInfo.os_ver.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_ver.get());
+      localDeviceInfo.qq_ver.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).qq_ver.get());
+      localDeviceInfo.os_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).os_type.get());
+      localDeviceInfo.location.coordinates_type.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.coordinates_type.get());
+      localDeviceInfo.location.latitude.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.latitude.get());
+      localDeviceInfo.location.longitude.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).location.longitude.get());
+      localDeviceInfo.manufacturer.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).manufacturer.get());
+      localDeviceInfo.device_brand_and_model.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).device_brand_and_model.get());
+      localDeviceInfo.qadid.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).qadid.get());
+      localDeviceInfo.app_version_id.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).app_version_id.get());
+      localDeviceInfo.device_orientation.set(0);
+      if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.has()) {
+        localDeviceInfo.taid_ticket.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get());
       }
-    }
-    label584:
-    for (Object localObject2 = "";; localObject2 = ((String)localObject2).toLowerCase())
-    {
-      ((PBStringField)localObject3).set((String)localObject2);
+      if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.has()) {
+        localDeviceInfo.aid_ticket.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get());
+      }
+      if (((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.has()) {
+        localDeviceInfo.client_ipv4.set(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
+      }
+      Object localObject3 = DeviceInfoUtil.a();
+      PBStringField localPBStringField = localDeviceInfo.android_imei;
+      Object localObject2 = localObject3;
+      if (TextUtils.isEmpty((CharSequence)localObject3)) {
+        localObject2 = "";
+      }
+      localPBStringField.set((String)localObject2);
+      localObject2 = DeviceInfoUtil.f();
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localDeviceInfo.android_id.set((String)localObject2);
+        localObject2 = MD5Utils.toMD5((String)localObject2);
+        localObject3 = localDeviceInfo.md5_android_id;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          localObject2 = "";
+        } else {
+          localObject2 = ((String)localObject2).toLowerCase();
+        }
+        ((PBStringField)localObject3).set((String)localObject2);
+      }
       paramContext = DeviceInfoUtil.d(paramContext);
       if (!TextUtils.isEmpty(paramContext))
       {
@@ -354,11 +319,44 @@ public class AdUtils
         }
         ((PBStringField)localObject3).set(paramContext);
       }
-      QLog.d("AdUtils", 1, "oaid = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).oaid.get() + ", taid_ticket = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get() + ", aid_ticket = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get() + ", client_ipv4 = " + ((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
-      return localDeviceInfo;
-      localObject1 = null;
-      break;
+      paramContext = new StringBuilder();
+      paramContext.append("oaid = ");
+      paramContext.append(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).oaid.get());
+      paramContext.append(", taid_ticket = ");
+      paramContext.append(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).taid_ticket.get());
+      paramContext.append(", aid_ticket = ");
+      paramContext.append(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).aid_ticket.get());
+      paramContext.append(", client_ipv4 = ");
+      paramContext.append(((qq_ad_get.QQAdGet.DeviceInfo)localObject1).client_ipv4.get());
+      QLog.d("AdUtils", 1, paramContext.toString());
     }
+    return localDeviceInfo;
+  }
+  
+  public static List<AdProxy.ExpParam> getExpParam(GdtAd paramGdtAd)
+  {
+    if (paramGdtAd != null) {
+      try
+      {
+        paramGdtAd = paramGdtAd.getExpMap();
+        localObject = new ArrayList();
+        int i = 0;
+        while (i < paramGdtAd.size())
+        {
+          ((List)localObject).add(new AdProxy.ExpParam(((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)paramGdtAd.get(i)).key.get(), ((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)paramGdtAd.get(i)).value.get()));
+          i += 1;
+        }
+        return localObject;
+      }
+      catch (Throwable paramGdtAd)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("exp_map error");
+        ((StringBuilder)localObject).append(paramGdtAd);
+        QLog.e("AdUtils", 1, ((StringBuilder)localObject).toString());
+      }
+    }
+    return null;
   }
   
   public static String getExpValueByKey(GdtAd paramGdtAd, int paramInt)
@@ -377,24 +375,36 @@ public class AdUtils
           }
           i += 1;
         }
+        StringBuilder localStringBuilder;
         return "";
       }
       catch (Throwable paramGdtAd)
       {
-        QLog.e("AdUtils", 1, "exp_map error" + paramGdtAd);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("exp_map error");
+        localStringBuilder.append(paramGdtAd);
+        QLog.e("AdUtils", 1, localStringBuilder.toString());
       }
     }
   }
   
   private static String getGdtCookieSpKey(int paramInt)
   {
-    return "gdt_cookie_" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gdt_cookie_");
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public static int getRewardVideoShowTimeFromExp(GdtAd paramGdtAd)
   {
     paramGdtAd = getExpValueByKey(paramGdtAd, 103300);
-    QLog.i("AdUtils", 1, "getRewardVideoShowTimeFromExp = " + paramGdtAd);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getRewardVideoShowTimeFromExp = ");
+    localStringBuilder.append(paramGdtAd);
+    QLog.i("AdUtils", 1, localStringBuilder.toString());
     if (TextUtils.isEmpty(paramGdtAd)) {
       return -1;
     }
@@ -418,51 +428,42 @@ public class AdUtils
   
   public static boolean isHitExp(GdtAd paramGdtAd, int paramInt)
   {
-    boolean bool = false;
-    if (paramGdtAd != null) {}
-    for (;;)
-    {
+    if (paramGdtAd != null) {
       try
       {
         paramGdtAd = paramGdtAd.getExpMap();
         int i = 0;
-        if (i < paramGdtAd.size())
+        while (i < paramGdtAd.size())
         {
           if (((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)paramGdtAd.get(i)).key.get() == paramInt)
           {
-            bool = ((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)paramGdtAd.get(i)).value.get().equals("1");
-            if (bool)
-            {
-              bool = true;
-              return bool;
+            boolean bool = ((qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)paramGdtAd.get(i)).value.get().equals("1");
+            if (bool) {
+              return true;
             }
           }
           i += 1;
         }
-        else
-        {
-          bool = false;
-        }
+        StringBuilder localStringBuilder;
+        return false;
       }
       catch (Throwable paramGdtAd)
       {
-        QLog.e("AdUtils", 1, "exp_map error" + paramGdtAd);
-        return false;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("exp_map error");
+        localStringBuilder.append(paramGdtAd);
+        QLog.e("AdUtils", 1, localStringBuilder.toString());
       }
     }
-  }
-  
-  public static boolean isHitInterstitialAdNewStyle(GdtAd paramGdtAd)
-  {
-    boolean bool = isHitExp(paramGdtAd, 101736);
-    QLog.i("AdUtils", 1, "interstitialAd new style hit=" + bool);
-    return bool;
   }
   
   public static boolean isHitReport50ViewAndOneSecond(GdtAd paramGdtAd)
   {
     boolean bool = isHitExp(paramGdtAd, 95807);
-    QLog.i("AdUtils", 1, "bannerad hit=" + bool);
+    paramGdtAd = new StringBuilder();
+    paramGdtAd.append("bannerad hit=");
+    paramGdtAd.append(bool);
+    QLog.i("AdUtils", 1, paramGdtAd.toString());
     return bool;
   }
   
@@ -486,7 +487,7 @@ public class AdUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.AdUtils
  * JD-Core Version:    0.7.0.1
  */

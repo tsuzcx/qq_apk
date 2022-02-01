@@ -20,7 +20,7 @@ public abstract class CardShareModeBase
   protected String g;
   protected String h;
   protected String i = QQStoryContext.a().b();
-  public String j;
+  protected String j;
   protected String k;
   
   public CardShareModeBase()
@@ -48,11 +48,13 @@ public abstract class CardShareModeBase
     paramShareQQData.k = this.e;
     paramShareQQData.jdField_a_of_type_JavaLangString = this.j;
     paramShareQQData.h = a(1);
-    if (this.jdField_a_of_type_Int != -1) {
-      paramShareQQData.jdField_d_of_type_Int = this.jdField_a_of_type_Int;
+    int m = this.jdField_a_of_type_Int;
+    if (m != -1) {
+      paramShareQQData.jdField_d_of_type_Int = m;
     }
-    if (this.b != -1) {
-      paramShareQQData.e = this.b;
+    m = this.b;
+    if (m != -1) {
+      paramShareQQData.e = m;
     }
     a(paramShareQQData);
   }
@@ -71,9 +73,10 @@ public abstract class CardShareModeBase
   {
     super.a(paramShareSinaData);
     paramShareSinaData.jdField_a_of_type_JavaLangString = this.k;
-    paramShareSinaData.e = this.j;
+    String str = this.j;
+    paramShareSinaData.e = str;
     paramShareSinaData.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    paramShareSinaData.jdField_d_of_type_JavaLangString = ShareUtils.a(this.j);
+    paramShareSinaData.jdField_d_of_type_JavaLangString = ShareUtils.a(str);
     paramShareSinaData.c = a(5);
     a(paramShareSinaData);
   }
@@ -102,7 +105,7 @@ public abstract class CardShareModeBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.CardShareModeBase
  * JD-Core Version:    0.7.0.1
  */

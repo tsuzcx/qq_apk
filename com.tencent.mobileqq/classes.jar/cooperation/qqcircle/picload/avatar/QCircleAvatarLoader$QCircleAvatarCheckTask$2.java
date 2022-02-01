@@ -12,18 +12,19 @@ class QCircleAvatarLoader$QCircleAvatarCheckTask$2
   public void onStateChang(int paramInt, Option paramOption)
   {
     super.onStateChang(paramInt, paramOption);
-    if (paramInt == 6) {
+    if (paramInt == 6)
+    {
       QCircleAvatarLoader.QCircleAvatarCheckTask.access$700(this.this$1, this.val$info.getUin(), paramOption);
-    }
-    while ((paramInt != 8) && (paramInt != 7)) {
       return;
     }
-    QCircleAvatarLoader.QCircleAvatarCheckTask.access$600(this.this$1, this.val$info.getUin(), paramOption);
+    if ((paramInt == 8) || (paramInt == 7)) {
+      QCircleAvatarLoader.QCircleAvatarCheckTask.access$600(this.this$1, this.val$info.getUin(), paramOption);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.avatar.QCircleAvatarLoader.QCircleAvatarCheckTask.2
  * JD-Core Version:    0.7.0.1
  */

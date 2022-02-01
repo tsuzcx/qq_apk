@@ -38,14 +38,17 @@ public class BatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp
     paramRspStoryFeed = paramRspStoryFeed.feed_list.get().iterator();
     while (paramRspStoryFeed.hasNext())
     {
-      qqstory_struct.StoryFeed localStoryFeed = (qqstory_struct.StoryFeed)paramRspStoryFeed.next();
-      int i = localStoryFeed.type.get();
+      Object localObject = (qqstory_struct.StoryFeed)paramRspStoryFeed.next();
+      int i = ((qqstory_struct.StoryFeed)localObject).type.get();
       StoryHomeFeed localStoryHomeFeed = StoryHomeFeed.a(i);
       if (localStoryHomeFeed == null)
       {
-        SLog.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", "目前没有这个类型的Feed=" + i);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("目前没有这个类型的Feed=");
+        ((StringBuilder)localObject).append(i);
+        SLog.e("Q.qqstory.net:BatchGetFriendStoryFeedInfoRequest", ((StringBuilder)localObject).toString());
       }
-      else if (localStoryHomeFeed.a(localStoryFeed))
+      else if (localStoryHomeFeed.a((qqstory_struct.StoryFeed)localObject))
       {
         if (localStoryHomeFeed.a() != null) {
           this.jdField_a_of_type_JavaUtilHashSet.add(localStoryHomeFeed.a().feedId);
@@ -59,7 +62,7 @@ public class BatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp
  * JD-Core Version:    0.7.0.1
  */

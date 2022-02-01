@@ -25,14 +25,16 @@ class MiniLoadingAdManager$1$1
   
   public void onSelectAdProcessDone(String paramString, long paramLong)
   {
-    boolean bool = false;
-    QMLog.d("MiniLoadingAdManager", "选单接口 onSelectAdProcessDone adJson：" + paramString + " aid：" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("选单接口 onSelectAdProcessDone adJson：");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" aid：");
+    localStringBuilder.append(paramLong);
+    QMLog.d("MiniLoadingAdManager", localStringBuilder.toString());
     if (!TextUtils.isEmpty(paramString))
     {
-      if (!MiniLoadingAdManager.access$300().containsKey(Long.valueOf(paramLong))) {
-        bool = true;
-      }
-      this.this$1.val$onChooseAdEndListener.onChooseAdEnd(paramString, paramLong, bool);
+      boolean bool = MiniLoadingAdManager.access$300().containsKey(Long.valueOf(paramLong));
+      this.this$1.val$onChooseAdEndListener.onChooseAdEnd(paramString, paramLong, bool ^ true);
       return;
     }
     this.this$1.val$onChooseAdEndListener.onChooseAdEnd(null, -1L, false);
@@ -40,7 +42,7 @@ class MiniLoadingAdManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniLoadingAdManager.1.1
  * JD-Core Version:    0.7.0.1
  */

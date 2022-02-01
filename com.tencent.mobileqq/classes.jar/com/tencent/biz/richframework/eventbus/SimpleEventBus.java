@@ -44,28 +44,38 @@ public class SimpleEventBus
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("SimpleEventBusReceiver_DISPATCH_SIMPLE_BUS_EVENT");
       this.mSimpleEventBusReceiver = new SimpleEventBusReceiver();
-      if (RFApplication.getApplication() == null) {
-        break label57;
+      if (RFApplication.getApplication() != null)
+      {
+        RFApplication.getApplication().registerReceiver(this.mSimpleEventBusReceiver, localIntentFilter);
+        return;
       }
-      RFApplication.getApplication().registerReceiver(this.mSimpleEventBusReceiver, localIntentFilter);
+      if (!RFApplication.isDebug()) {
+        return;
+      }
+      throw new RuntimeException("please invoke RFApplication at your application onCreate Method");
     }
-    label57:
-    while (!RFApplication.isDebug()) {
-      return;
-    }
-    throw new RuntimeException("please invoke RFApplication at your application onCreate Method");
   }
   
   private void registerEachReceiver(String paramString, SimpleEventReceiver paramSimpleEventReceiver)
   {
-    ConcurrentHashMap localConcurrentHashMap2 = (ConcurrentHashMap)this.mEventCenter.get(paramString);
-    ConcurrentHashMap localConcurrentHashMap1 = localConcurrentHashMap2;
-    if (localConcurrentHashMap2 == null) {
-      localConcurrentHashMap1 = new ConcurrentHashMap();
+    Object localObject2 = (ConcurrentHashMap)this.mEventCenter.get(paramString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new ConcurrentHashMap();
     }
-    localConcurrentHashMap1.put(Integer.valueOf(paramSimpleEventReceiver.hashCode()), new WeakReference(paramSimpleEventReceiver));
-    this.mEventCenter.put(paramString, localConcurrentHashMap1);
-    RFLog.d("SimpleEventBus", RFLog.CLR, "registerReceiver event Name:" + paramString + ",key：[" + paramSimpleEventReceiver.getClass().getSimpleName() + ":" + paramSimpleEventReceiver.hashCode() + "], subscribers size:" + localConcurrentHashMap1.size());
+    ((ConcurrentHashMap)localObject1).put(Integer.valueOf(paramSimpleEventReceiver.hashCode()), new WeakReference(paramSimpleEventReceiver));
+    this.mEventCenter.put(paramString, localObject1);
+    int i = RFLog.CLR;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("registerReceiver event Name:");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(",key：[");
+    ((StringBuilder)localObject2).append(paramSimpleEventReceiver.getClass().getSimpleName());
+    ((StringBuilder)localObject2).append(":");
+    ((StringBuilder)localObject2).append(paramSimpleEventReceiver.hashCode());
+    ((StringBuilder)localObject2).append("], subscribers size:");
+    ((StringBuilder)localObject2).append(((ConcurrentHashMap)localObject1).size());
+    RFLog.d("SimpleEventBus", i, ((StringBuilder)localObject2).toString());
   }
   
   private void unRegisterEachReceiver(String paramString, SimpleEventReceiver paramSimpleEventReceiver)
@@ -78,7 +88,17 @@ public class SimpleEventBus
     if (localConcurrentHashMap.size() == 0) {
       this.mEventCenter.remove(paramString);
     }
-    RFLog.d("SimpleEventBus", RFLog.CLR, "unRegisterReceiver event Name:" + paramString + ",key：[" + paramSimpleEventReceiver.getClass().getSimpleName() + ":" + paramSimpleEventReceiver.hashCode() + "], subscribers size:" + localConcurrentHashMap.size());
+    int i = RFLog.CLR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unRegisterReceiver event Name:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(",key：[");
+    localStringBuilder.append(paramSimpleEventReceiver.getClass().getSimpleName());
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramSimpleEventReceiver.hashCode());
+    localStringBuilder.append("], subscribers size:");
+    localStringBuilder.append(localConcurrentHashMap.size());
+    RFLog.d("SimpleEventBus", i, localStringBuilder.toString());
   }
   
   public void dispatchEvent(SimpleBaseEvent paramSimpleBaseEvent)
@@ -98,19 +118,18 @@ public class SimpleEventBus
         RFApplication.getApplication().sendBroadcast((Intent)localObject);
       }
     }
-    for (;;)
+    else
     {
-      return;
       localObject = (ConcurrentHashMap)this.mEventCenter.get(paramSimpleBaseEvent.getClass().getName());
-      if (localObject != null)
+      if (localObject == null) {
+        return;
+      }
+      localObject = ((ConcurrentHashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = ((ConcurrentHashMap)localObject).values().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-          if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-            ((SimpleEventReceiver)localWeakReference.get()).onReceiveEvent(paramSimpleBaseEvent);
-          }
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+          ((SimpleEventReceiver)localWeakReference.get()).onReceiveEvent(paramSimpleBaseEvent);
         }
       }
     }
@@ -125,18 +144,12 @@ public class SimpleEventBus
   
   public void registerReceiver(SimpleEventReceiver paramSimpleEventReceiver)
   {
-    Object localObject;
     if (paramSimpleEventReceiver != null)
     {
-      localObject = paramSimpleEventReceiver.getEventClass();
-      if (localObject != null) {
-        break label16;
+      Object localObject = paramSimpleEventReceiver.getEventClass();
+      if (localObject == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      return;
-      label16:
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
         registerEachReceiver(((Class)((Iterator)localObject).next()).getName(), paramSimpleEventReceiver);
@@ -146,10 +159,11 @@ public class SimpleEventBus
   
   public void unRegisterReceiver(SimpleEventReceiver paramSimpleEventReceiver)
   {
-    if ((paramSimpleEventReceiver == null) || (paramSimpleEventReceiver.getEventClass() == null)) {}
-    for (;;)
+    if (paramSimpleEventReceiver != null)
     {
-      return;
+      if (paramSimpleEventReceiver.getEventClass() == null) {
+        return;
+      }
       Iterator localIterator = paramSimpleEventReceiver.getEventClass().iterator();
       while (localIterator.hasNext()) {
         unRegisterEachReceiver(((Class)localIterator.next()).getName(), paramSimpleEventReceiver);
@@ -159,7 +173,7 @@ public class SimpleEventBus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.eventbus.SimpleEventBus
  * JD-Core Version:    0.7.0.1
  */

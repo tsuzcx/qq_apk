@@ -21,29 +21,31 @@ class PoiMapActivity$3
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getLayoutParams();
     LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity).getLayoutParams();
     ViewGroup.LayoutParams localLayoutParams2 = PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity).getLayoutParams();
+    int i;
+    int j;
     if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
     {
       this.jdField_a_of_type_AndroidAppDialog.show();
-      localLayoutParams.height = (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight() + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(this.jdField_a_of_type_Int / 2, true);
+      i = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight();
+      j = this.jdField_a_of_type_Int;
+      localLayoutParams.height = (i + j);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(j / 2, true);
     }
-    for (;;)
+    else if (paramAnimation == this.b)
     {
-      localLayoutParams1.height = -1;
-      localLayoutParams2.height = -1;
-      PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setLayoutParams(localLayoutParams2);
-      PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setLayoutParams(localLayoutParams1);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.setLayoutParams(localLayoutParams);
-      PoiMapActivity.c(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setEnabled(true);
-      if ((this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) && (paramAnimation == this.b)) {
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity.i();
-      }
-      return;
-      if (paramAnimation == this.b)
-      {
-        localLayoutParams.height = (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight() - this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(-this.jdField_a_of_type_Int / 2, true);
-      }
+      i = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight();
+      j = this.jdField_a_of_type_Int;
+      localLayoutParams.height = (i - j);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(-j / 2, true);
+    }
+    localLayoutParams1.height = -1;
+    localLayoutParams2.height = -1;
+    PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setLayoutParams(localLayoutParams2);
+    PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setLayoutParams(localLayoutParams1);
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.setLayoutParams(localLayoutParams);
+    PoiMapActivity.c(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setEnabled(true);
+    if ((this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) && (paramAnimation == this.b)) {
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.e();
     }
   }
   
@@ -53,7 +55,7 @@ class PoiMapActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.PoiMapActivity.3
  * JD-Core Version:    0.7.0.1
  */

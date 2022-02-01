@@ -1,15 +1,12 @@
 package com.tencent.mobileqq.colornote.launcher;
 
 import android.content.Context;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.os.Bundle;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.mini.api.data.SimpleMiniAppConfig.SimpleLaunchParam;
-import com.tencent.mobileqq.miniapp.MiniAppColorNoteData;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class MiniAppLauncher
   implements ILauncher
@@ -22,32 +19,15 @@ public class MiniAppLauncher
     return 1131;
   }
   
-  private void a(int paramInt, MiniAppInfo paramMiniAppInfo)
-  {
-    IMiniAppService localIMiniAppService = (IMiniAppService)QRoute.api(IMiniAppService.class);
-    if (paramInt == 1132)
-    {
-      if (paramMiniAppInfo != null)
-      {
-        localIMiniAppService.report4239AsyncBySdkMiniAppInfo(paramMiniAppInfo, "addRecentColorSign", "recentColorSign_enter", "click", null);
-        return;
-      }
-      localIMiniAppService.report4239Async("addRecentColorSign", "recentColorSign_enter", "click", null, null, null);
-      return;
-    }
-    if (paramMiniAppInfo != null)
-    {
-      localIMiniAppService.report4239AsyncBySdkMiniAppInfo(paramMiniAppInfo, "addColorSign", "colorSign_enter", "click", null);
-      return;
-    }
-    localIMiniAppService.report4239Async("addColorSign", "colorSign_enter", "click", null, null, null);
-  }
-  
   private void a(Context paramContext, String paramString)
   {
     ((IMiniAppService)QRoute.api(IMiniAppService.class)).startAppByAppid(paramContext, paramString, "", "", 1131, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher_colorNote", 2, "startMiniAppByAppId, appId: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("startMiniAppByAppId, appId: ");
+      paramContext.append(paramString);
+      QLog.d("MiniAppLauncher_colorNote", 2, paramContext.toString());
     }
   }
   
@@ -55,59 +35,88 @@ public class MiniAppLauncher
   {
     paramString3 = SimpleMiniAppConfig.SimpleLaunchParam.standardEntryPath(paramString3);
     ((IMiniAppService)QRoute.api(IMiniAppService.class)).startAppByAppid(paramContext, paramString1, paramString3, paramString2, paramInt, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppLauncher_colorNote", 2, "startMiniApp, appId: " + paramString1 + ", entryPath: " + paramString3 + ", versionType: " + paramString2 + ", colorSignScene: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("startMiniApp, appId: ");
+      paramContext.append(paramString1);
+      paramContext.append(", entryPath: ");
+      paramContext.append(paramString3);
+      paramContext.append(", versionType: ");
+      paramContext.append(paramString2);
+      paramContext.append(", colorSignScene: ");
+      paramContext.append(paramInt);
+      QLog.d("MiniAppLauncher_colorNote", 2, paramContext.toString());
     }
+  }
+  
+  public int getType()
+  {
+    return 16842752;
   }
   
   public void launch(Context paramContext, ColorNote paramColorNote)
   {
-    if (paramColorNote.getServiceType() != 16842752) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        i = a(paramColorNote.getSubTitle());
-        str = paramColorNote.getSubType();
-        if (!str.contains("###")) {
-          break;
-        }
-        localObject = str.split("###");
-      } while (localObject.length != 2);
-      str = localObject[0];
-      localObject = localObject[1];
-      paramColorNote = paramColorNote.getReserve();
-      Parcel localParcel = Parcel.obtain();
-      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
-      localParcel.setDataPosition(0);
-      paramColorNote = (MiniAppColorNoteData)MiniAppColorNoteData.CREATOR.createFromParcel(localParcel);
-      a(i, paramColorNote.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
-      a(paramContext, str, (String)localObject, paramColorNote.jdField_a_of_type_JavaLangString, i);
-      return;
-      if (!str.contains(".")) {
-        break;
-      }
-      localObject = str.split("\\.");
-    } while (localObject.length != 2);
-    String str = localObject[0];
-    Object localObject = localObject[1];
-    paramColorNote = paramColorNote.getReserve();
-    if ((paramColorNote != null) && (paramColorNote.length > 0)) {}
-    for (paramColorNote = new String(paramColorNote);; paramColorNote = null)
-    {
-      a(i, null);
-      a(paramContext, str, (String)localObject, paramColorNote, i);
-      return;
-      a(paramContext, str);
+    if (paramColorNote.getServiceType() != 16842752) {
       return;
     }
+    int i = a(paramColorNote.getSubTitle());
+    Object localObject1 = paramColorNote.getSubType();
+    Object localObject2;
+    if (((String)localObject1).contains("#@#"))
+    {
+      localObject2 = ((String)localObject1).split("#@#");
+      if (localObject2.length == 2)
+      {
+        localObject1 = localObject2[0];
+        localObject2 = localObject2[1];
+        paramColorNote = paramColorNote.getReserve();
+        if ((paramColorNote != null) && (paramColorNote.length > 0)) {
+          paramColorNote = new String(paramColorNote);
+        } else {
+          paramColorNote = null;
+        }
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportColorSignClickAndStartMiniApp(paramContext, (String)localObject1, paramColorNote, (String)localObject2, i);
+      }
+    }
+    else if (((String)localObject1).contains("###"))
+    {
+      localObject1 = ((String)localObject1).split("###");
+      if (localObject1.length == 2)
+      {
+        paramColorNote = localObject1[0];
+        localObject1 = localObject1[1];
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportColorSignClickAndStartMiniApp(paramContext, paramColorNote, null, (String)localObject1, i);
+      }
+    }
+    else if (((String)localObject1).contains("."))
+    {
+      localObject2 = ((String)localObject1).split("\\.");
+      if (localObject2.length == 2)
+      {
+        localObject1 = localObject2[0];
+        localObject2 = localObject2[1];
+        paramColorNote = paramColorNote.getReserve();
+        if ((paramColorNote != null) && (paramColorNote.length > 0)) {
+          paramColorNote = new String(paramColorNote);
+        } else {
+          paramColorNote = null;
+        }
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).reportColorSignClickWithNoAppInfo(i);
+        a(paramContext, (String)localObject1, (String)localObject2, paramColorNote, i);
+      }
+    }
+    else
+    {
+      a(paramContext, (String)localObject1);
+    }
   }
+  
+  public void onCreate(Context paramContext, ColorNote paramColorNote, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.launcher.MiniAppLauncher
  * JD-Core Version:    0.7.0.1
  */

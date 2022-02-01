@@ -22,13 +22,16 @@ public class DoGameRaffleRequest
   {
     try
     {
-      GameRaffleInfo.StDoGameRaffleRsp localStDoGameRaffleRsp = new GameRaffleInfo.StDoGameRaffleRsp();
-      localStDoGameRaffleRsp.mergeFrom(paramArrayOfByte);
-      return localStDoGameRaffleRsp;
+      localObject = new GameRaffleInfo.StDoGameRaffleRsp();
+      ((GameRaffleInfo.StDoGameRaffleRsp)localObject).mergeFrom(paramArrayOfByte);
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QLog.d("DoGameRaffleRequest", 1, "onResponse fail." + paramArrayOfByte);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse fail.");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      QLog.d("DoGameRaffleRequest", 1, ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -40,7 +43,7 @@ public class DoGameRaffleRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.DoGameRaffleRequest
  * JD-Core Version:    0.7.0.1
  */

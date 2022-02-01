@@ -35,24 +35,29 @@ public class FuzzyKeyMemoryCache
   
   public boolean put(String paramString, Bitmap paramBitmap)
   {
+    MemoryCache localMemoryCache = this.cache;
+    Object localObject2 = null;
+    try
+    {
+      Iterator localIterator = this.cache.keys().iterator();
+      Object localObject1;
+      do
+      {
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject1 = (String)localIterator.next();
+      } while (this.keyComparator.compare(paramString, localObject1) != 0);
+      if (localObject1 != null) {
+        this.cache.remove((String)localObject1);
+      }
+      return this.cache.put(paramString, paramBitmap);
+    }
+    finally {}
     for (;;)
     {
-      synchronized (this.cache)
-      {
-        Iterator localIterator = this.cache.keys().iterator();
-        if (localIterator.hasNext())
-        {
-          str = (String)localIterator.next();
-          if (this.keyComparator.compare(paramString, str) != 0) {
-            continue;
-          }
-          if (str != null) {
-            this.cache.remove(str);
-          }
-          return this.cache.put(paramString, paramBitmap);
-        }
-      }
-      String str = null;
+      throw paramString;
     }
   }
   
@@ -63,7 +68,7 @@ public class FuzzyKeyMemoryCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.cache.memory.impl.FuzzyKeyMemoryCache
  * JD-Core Version:    0.7.0.1
  */

@@ -22,14 +22,39 @@ public class IjkTrackInfo
   public String getInfoInline()
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
-    switch (this.mTrackType)
+    int i = this.mTrackType;
+    if (i != 1)
     {
-    default: 
-      localStringBuilder.append("UNKNOWN");
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            localStringBuilder.append("UNKNOWN");
+          } else {
+            localStringBuilder.append("SUBTITLE");
+          }
+        }
+        else
+        {
+          localStringBuilder.append("TIMEDTEXT");
+          localStringBuilder.append(", ");
+          localStringBuilder.append(this.mStreamMeta.mLanguage);
+        }
+      }
+      else
+      {
+        localStringBuilder.append("AUDIO");
+        localStringBuilder.append(", ");
+        localStringBuilder.append(this.mStreamMeta.getCodecShortNameInline());
+        localStringBuilder.append(", ");
+        localStringBuilder.append(this.mStreamMeta.getBitrateInline());
+        localStringBuilder.append(", ");
+        localStringBuilder.append(this.mStreamMeta.getSampleRateInline());
+      }
     }
-    for (;;)
+    else
     {
-      return localStringBuilder.toString();
       localStringBuilder.append("VIDEO");
       localStringBuilder.append(", ");
       localStringBuilder.append(this.mStreamMeta.getCodecShortNameInline());
@@ -39,29 +64,17 @@ public class IjkTrackInfo
       localStringBuilder.append(this.mStreamMeta.getResolutionInline());
       localStringBuilder.append(", ");
       localStringBuilder.append(this.mStreamMeta.getFpsInline());
-      continue;
-      localStringBuilder.append("AUDIO");
-      localStringBuilder.append(", ");
-      localStringBuilder.append(this.mStreamMeta.getCodecShortNameInline());
-      localStringBuilder.append(", ");
-      localStringBuilder.append(this.mStreamMeta.getBitrateInline());
-      localStringBuilder.append(", ");
-      localStringBuilder.append(this.mStreamMeta.getSampleRateInline());
-      continue;
-      localStringBuilder.append("TIMEDTEXT");
-      localStringBuilder.append(", ");
-      localStringBuilder.append(this.mStreamMeta.mLanguage);
-      continue;
-      localStringBuilder.append("SUBTITLE");
     }
+    return localStringBuilder.toString();
   }
   
   public String getLanguage()
   {
-    if ((this.mStreamMeta == null) || (TextUtils.isEmpty(this.mStreamMeta.mLanguage))) {
-      return "und";
+    IjkMediaMeta.IjkStreamMeta localIjkStreamMeta = this.mStreamMeta;
+    if ((localIjkStreamMeta != null) && (!TextUtils.isEmpty(localIjkStreamMeta.mLanguage))) {
+      return this.mStreamMeta.mLanguage;
     }
-    return this.mStreamMeta.mLanguage;
+    return "und";
   }
   
   public int getTrackType()
@@ -81,12 +94,17 @@ public class IjkTrackInfo
   
   public String toString()
   {
-    return getClass().getSimpleName() + '{' + getInfoInline() + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append('{');
+    localStringBuilder.append(getInfoInline());
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.misc.IjkTrackInfo
  * JD-Core Version:    0.7.0.1
  */

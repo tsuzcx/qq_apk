@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.search.searchengine;
 
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
+import com.tencent.mobileqq.search.base.model.SearchRequest;
 import java.util.List;
 
 class PublicAccountSearchEngine$1
@@ -9,15 +11,16 @@ class PublicAccountSearchEngine$1
   
   public void run()
   {
-    List localList = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+    List localList = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest);
+    ISearchListener localISearchListener = this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener;
+    if (localISearchListener != null) {
+      localISearchListener.a(localList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine.1
  * JD-Core Version:    0.7.0.1
  */

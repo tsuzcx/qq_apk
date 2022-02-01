@@ -59,37 +59,40 @@ public class AnimationPoint
   
   protected float a(long paramLong)
   {
-    float f = 1.0F;
-    paramLong %= this.jdField_d_of_type_Long;
-    if (paramLong < this.jdField_d_of_type_Long * 16L / 100L) {
-      f = 1.0F * (float)paramLong / (float)(this.jdField_d_of_type_Long * 16L / 100L);
+    long l = this.jdField_d_of_type_Long;
+    paramLong %= l;
+    float f;
+    if (paramLong < l * 16L / 100L) {
+      f = (float)paramLong * 1.0F;
     }
-    while (paramLong < 60L * this.jdField_d_of_type_Long / 100L) {
-      return f;
+    for (paramLong = l * 16L / 100L;; paramLong = l * 40L / 100L)
+    {
+      return f / (float)paramLong;
+      if (paramLong < 60L * l / 100L) {
+        return 1.0F;
+      }
+      f = (float)(l - paramLong) * 1.0F;
     }
-    return 1.0F * (float)(this.jdField_d_of_type_Long - paramLong) / (float)(40L * this.jdField_d_of_type_Long / 100L);
   }
   
   protected int a(long paramLong)
   {
-    float f = this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator.getInterpolation((float)(paramLong % this.jdField_d_of_type_Long) / (float)this.jdField_d_of_type_Long);
+    AccelerateDecelerateInterpolator localAccelerateDecelerateInterpolator = this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator;
+    long l = this.jdField_d_of_type_Long;
+    float f = localAccelerateDecelerateInterpolator.getInterpolation((float)(paramLong % l) / (float)l);
     int i;
-    int j;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = this.jdField_c_of_type_Int - this.jdField_a_of_type_Int * 2;
-      if (paramLong <= this.jdField_d_of_type_Long) {
-        break label90;
-      }
-      j = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Boolean) {
+      i = this.jdField_c_of_type_Int;
+    } else {
+      i = this.jdField_b_of_type_Int;
     }
-    label90:
-    for (this.jdField_d_of_type_Int = ((int)(i * f) + j);; this.jdField_d_of_type_Int = (this.jdField_a_of_type_Int + i - (int)(i * f)))
-    {
-      return this.jdField_d_of_type_Int;
-      i = this.jdField_b_of_type_Int - this.jdField_a_of_type_Int * 2;
-      break;
+    i -= this.jdField_a_of_type_Int * 2;
+    if (paramLong > this.jdField_d_of_type_Long) {
+      this.jdField_d_of_type_Int = (this.jdField_a_of_type_Int + (int)(i * f));
+    } else {
+      this.jdField_d_of_type_Int = (this.jdField_a_of_type_Int + i - (int)(i * f));
     }
+    return this.jdField_d_of_type_Int;
   }
   
   public void a()
@@ -98,23 +101,31 @@ public class AnimationPoint
     this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
     this.jdField_b_of_type_Int = super.getWidth();
     this.jdField_c_of_type_Int = super.getHeight();
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener != null) {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener.onAnimationStart(null);
+    Animation.AnimationListener localAnimationListener = this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+    if (localAnimationListener != null) {
+      localAnimationListener.onAnimationStart(null);
     }
     this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
   protected float b(long paramLong)
   {
-    paramLong %= this.jdField_d_of_type_Long;
-    if (paramLong < 16L * this.jdField_d_of_type_Long / 100L) {
+    long l = this.jdField_d_of_type_Long;
+    paramLong %= l;
+    if (paramLong < l * 16L / 100L) {
       return 0.0F;
     }
-    if (paramLong < 24L * this.jdField_d_of_type_Long / 100L) {
-      return (float)(paramLong - 16L * this.jdField_d_of_type_Long / 100L) * 0.4F / (float)(8L * this.jdField_d_of_type_Long / 100L);
+    float f;
+    if (paramLong < 24L * l / 100L) {
+      f = (float)(paramLong - 16L * l / 100L) * 0.4F;
     }
-    if (paramLong < 60L * this.jdField_d_of_type_Long / 100L) {
-      return (float)(60L * this.jdField_d_of_type_Long / 100L - paramLong) * 0.4F / (float)(36L * this.jdField_d_of_type_Long / 100L);
+    for (paramLong = l * 8L / 100L;; paramLong = l * 36L / 100L)
+    {
+      return f / (float)paramLong;
+      if (paramLong >= l * 60L / 100L) {
+        break;
+      }
+      f = (float)(60L * l / 100L - paramLong) * 0.4F;
     }
     return 0.0F;
   }
@@ -135,15 +146,22 @@ public class AnimationPoint
   
   protected float c(long paramLong)
   {
-    paramLong %= this.jdField_d_of_type_Long;
-    if (paramLong < 24L * this.jdField_d_of_type_Long / 100L) {
+    long l = this.jdField_d_of_type_Long;
+    paramLong %= l;
+    if (paramLong < l * 24L / 100L) {
       return 0.0F;
     }
-    if (paramLong < 36L * this.jdField_d_of_type_Long / 100L) {
-      return (float)(paramLong - 24L * this.jdField_d_of_type_Long / 100L) * 0.2F / (float)(12L * this.jdField_d_of_type_Long / 100L);
+    float f;
+    if (paramLong < 36L * l / 100L) {
+      f = (float)(paramLong - 24L * l / 100L) * 0.2F;
     }
-    if (paramLong < 60L * this.jdField_d_of_type_Long / 100L) {
-      return (float)(60L * this.jdField_d_of_type_Long / 100L - paramLong) * 0.2F / (float)(24L * this.jdField_d_of_type_Long / 100L);
+    for (paramLong = l * 12L / 100L;; paramLong = l * 24L / 100L)
+    {
+      return f / (float)paramLong;
+      if (paramLong >= l * 60L / 100L) {
+        break;
+      }
+      f = (float)(60L * l / 100L - paramLong) * 0.2F;
     }
     return 0.0F;
   }
@@ -156,7 +174,7 @@ public class AnimationPoint
     return this.jdField_d_of_type_Int - this.jdField_a_of_type_Int;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.jdField_b_of_type_Int = super.getWidth();
@@ -170,56 +188,44 @@ public class AnimationPoint
     float f1 = a(l);
     float f2 = b(l);
     float f3 = c(l);
-    int i;
     if (this.jdField_a_of_type_Int == 0)
     {
+      int i;
+      if (this.jdField_a_of_type_Boolean) {
+        i = this.jdField_b_of_type_Int;
+      } else {
+        i = this.jdField_c_of_type_Int;
+      }
+      this.jdField_a_of_type_Int = (i / 2);
+    }
+    if (f3 != 0.0F)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f3 * 255.0F));
+      if (this.jdField_a_of_type_Boolean) {
+        paramCanvas.drawCircle(j, i1, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      } else {
+        paramCanvas.drawCircle(i1, k, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+    }
+    if (f2 != 0.0F)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f2 * 255.0F));
+      if (this.jdField_a_of_type_Boolean) {
+        paramCanvas.drawCircle(j, n, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      } else {
+        paramCanvas.drawCircle(n, k, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+    }
+    if (f1 != 0.0F)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f1 * 255.0F));
       if (this.jdField_a_of_type_Boolean)
       {
-        i = this.jdField_b_of_type_Int / 2;
-        this.jdField_a_of_type_Int = i;
-      }
-    }
-    else
-    {
-      if (f3 != 0.0F)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f3 * 255.0F));
-        if (!this.jdField_a_of_type_Boolean) {
-          break label272;
-        }
-        paramCanvas.drawCircle(j, i1, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      label172:
-      if (f2 != 0.0F)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f2 * 255.0F));
-        if (!this.jdField_a_of_type_Boolean) {
-          break label294;
-        }
-        paramCanvas.drawCircle(j, n, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-    }
-    for (;;)
-    {
-      if (f1 != 0.0F)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f1 * 255.0F));
-        if (!this.jdField_a_of_type_Boolean) {
-          break label316;
-        }
         paramCanvas.drawCircle(j, m, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+        return;
       }
-      return;
-      i = this.jdField_c_of_type_Int / 2;
-      break;
-      label272:
-      paramCanvas.drawCircle(i1, k, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      break label172;
-      label294:
-      paramCanvas.drawCircle(n, k, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(m, k, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    label316:
-    paramCanvas.drawCircle(m, k, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public void setDuration(long paramLong)
@@ -258,7 +264,7 @@ public class AnimationPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.AnimationPoint
  * JD-Core Version:    0.7.0.1
  */

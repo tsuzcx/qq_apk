@@ -14,20 +14,19 @@ abstract class MsfCmdConfig$a
   {
     if (a())
     {
+      int j = 1;
       Iterator localIterator = this.b.iterator();
       do
       {
+        i = j;
         if (!localIterator.hasNext()) {
           break;
         }
       } while (a((Pair)localIterator.next()));
-    }
-    for (int i = 0;; i = 1)
-    {
+      int i = 0;
       if (i != 0) {
         a(paramInt, this.b);
       }
-      return;
     }
   }
   
@@ -39,7 +38,7 @@ abstract class MsfCmdConfig$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.MsfCmdConfig.a
  * JD-Core Version:    0.7.0.1
  */

@@ -20,18 +20,19 @@ class LoverDisbandRequestManager$1
   public JceStruct getReq()
   {
     sweet_pair_byebye_req localsweet_pair_byebye_req = new sweet_pair_byebye_req();
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    Object localObject = this.jdField_a_of_type_AndroidContentIntent;
+    if (localObject != null)
     {
-      long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      long l1 = ((Intent)localObject).getLongExtra("currentUin", -1L);
       long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("friendUin", -1L);
-      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
-      localsweet_req_comm.opuin = l1;
-      localsweet_req_comm.uin = l1;
-      localsweet_req_comm.loveuin = l2;
-      localsweet_req_comm.qua = QUA.getQUA3();
-      localsweet_req_comm.pf = 1;
-      localsweet_req_comm.src = 3;
-      localsweet_pair_byebye_req.req_comm = localsweet_req_comm;
+      localObject = new sweet_req_comm();
+      ((sweet_req_comm)localObject).opuin = l1;
+      ((sweet_req_comm)localObject).uin = l1;
+      ((sweet_req_comm)localObject).loveuin = l2;
+      ((sweet_req_comm)localObject).qua = QUA.getQUA3();
+      ((sweet_req_comm)localObject).pf = 1;
+      ((sweet_req_comm)localObject).src = 3;
+      localsweet_pair_byebye_req.req_comm = ((sweet_req_comm)localObject);
     }
     return localsweet_pair_byebye_req;
   }
@@ -43,7 +44,7 @@ class LoverDisbandRequestManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.manager.LoverDisbandRequestManager.1
  * JD-Core Version:    0.7.0.1
  */

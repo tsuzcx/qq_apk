@@ -12,24 +12,31 @@ public class HippyQQFontAdapter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
-      if ((paramString.charAt(i) == '\024') && (i + 2 < paramString.length()))
+      if (paramString.charAt(i) == '\024')
       {
-        int j = QQSysFaceUtil.convertToLocal((paramString.charAt(i + 1) - 'A') * 128 + paramString.charAt(i + 2) - 65);
-        if (j >= 0)
+        int k = i + 2;
+        if (k < paramString.length())
         {
-          localStringBuilder.append(paramString.charAt(i));
-          localStringBuilder.append((char)j);
+          int j = i + 1;
+          k = (paramString.charAt(j) - 'A') * 128 + paramString.charAt(k) - 65;
+          if (k >= 0)
+          {
+            k = QQSysFaceUtil.convertToLocal(k);
+            if (k >= 0)
+            {
+              localStringBuilder.append(paramString.charAt(i));
+              localStringBuilder.append((char)k);
+            }
+          }
+          i = j + 1;
+          break label126;
         }
-        i = i + 1 + 1;
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append(paramString.charAt(i));
-      }
+      localStringBuilder.append(paramString.charAt(i));
+      label126:
+      i += 1;
     }
     return localStringBuilder;
   }
@@ -39,7 +46,10 @@ public class HippyQQFontAdapter
     if (TextUtils.isEmpty(paramCharSequence)) {
       return "";
     }
-    return new QQText(decodeEmojiFromString(paramCharSequence.toString()), 2, (int)(paramInt / 2.5D));
+    paramCharSequence = decodeEmojiFromString(paramCharSequence.toString());
+    double d = paramInt;
+    Double.isNaN(d);
+    return new QQText(paramCharSequence, 2, (int)(d / 2.5D));
   }
   
   public float getFontScale()
@@ -49,7 +59,7 @@ public class HippyQQFontAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.adapter.HippyQQFontAdapter
  * JD-Core Version:    0.7.0.1
  */

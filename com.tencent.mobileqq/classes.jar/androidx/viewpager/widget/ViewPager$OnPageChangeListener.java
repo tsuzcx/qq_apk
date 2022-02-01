@@ -12,7 +12,7 @@ public abstract interface ViewPager$OnPageChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.viewpager.widget.ViewPager.OnPageChangeListener
  * JD-Core Version:    0.7.0.1
  */

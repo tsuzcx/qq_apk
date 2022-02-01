@@ -14,39 +14,43 @@ class HorizontalListView$CheckForLongPress
   
   public void run()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this.this$0.needTtransTouchStateToParen()) {
-      bool1 = ((View)this.this$0.getParent()).performLongClick();
-    }
-    while (bool1)
+    boolean bool;
+    Object localObject;
+    if (this.this$0.needTtransTouchStateToParen())
     {
-      this.this$0.mTouchMode = -1;
-      HorizontalListView.access$100(this.this$0);
-      return;
+      bool = ((View)this.this$0.getParent()).performLongClick();
+    }
+    else
+    {
       int i = HorizontalListView.access$500(this.this$0);
-      View localView = this.this$0.getChildAt(i - this.this$0.getFirstVisiblePosition());
-      bool1 = bool2;
-      if (localView != null)
+      localObject = this.this$0;
+      localObject = ((HorizontalListView)localObject).getChildAt(i - ((HorizontalListView)localObject).getFirstVisiblePosition());
+      if (localObject != null)
       {
         i = HorizontalListView.access$500(this.this$0);
         long l = this.this$0.mAdapter.getItemId(HorizontalListView.access$500(this.this$0));
-        bool1 = bool2;
-        if (sameWindow())
+        if ((sameWindow()) && (!this.this$0.mDataChanged))
         {
-          bool1 = bool2;
-          if (!this.this$0.mDataChanged) {
-            bool1 = this.this$0.performLongPress(localView, i, l);
-          }
+          bool = this.this$0.performLongPress((View)localObject, i, l);
+          break label122;
         }
       }
+      bool = false;
+    }
+    label122:
+    if (bool)
+    {
+      localObject = this.this$0;
+      ((HorizontalListView)localObject).mTouchMode = -1;
+      HorizontalListView.access$100((HorizontalListView)localObject);
+      return;
     }
     this.this$0.mTouchMode = 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

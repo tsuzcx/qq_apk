@@ -13,27 +13,28 @@ class ActivateFriendActivity$10
   public void run()
   {
     int i = this.this$0.app.getMessageFacade().b();
-    Object localObject2 = this.this$0.app.getApp().getString(2131719718);
-    Object localObject1 = localObject2;
+    String str = this.this$0.app.getApp().getString(2131719442);
+    Object localObject = str;
     if (i > 0)
     {
-      localObject2 = new StringBuilder().append((String)localObject2).append("(");
-      if (i <= 99) {
-        break label88;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("(");
+      if (i > 99) {
+        localObject = "99+";
+      } else {
+        localObject = Integer.valueOf(i);
       }
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(")");
+      localObject = localStringBuilder.toString();
     }
-    label88:
-    for (localObject1 = "99+";; localObject1 = Integer.valueOf(i))
-    {
-      localObject1 = localObject1 + ")";
-      ActivateFriendActivity.a(this.this$0).setText((CharSequence)localObject1);
-      return;
-    }
+    ActivateFriendActivity.a(this.this$0).setText((CharSequence)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity.10
  * JD-Core Version:    0.7.0.1
  */

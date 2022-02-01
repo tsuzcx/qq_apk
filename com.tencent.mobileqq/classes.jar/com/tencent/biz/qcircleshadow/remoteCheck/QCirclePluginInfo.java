@@ -4,8 +4,7 @@ import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
+import cooperation.qzone.QUA;
 import java.io.Serializable;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="version")
@@ -37,13 +36,13 @@ public class QCirclePluginInfo
     this.managerFileUrl = paramString3;
     this.zipFileLength = paramLong1;
     this.managerFilelength = paramLong2;
-    this.qua = QCircleServiceImpl.getQZoneService().getQUA3();
+    this.qua = QUA.getQUA3();
     this.mUin = paramLong3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.remoteCheck.QCirclePluginInfo
  * JD-Core Version:    0.7.0.1
  */

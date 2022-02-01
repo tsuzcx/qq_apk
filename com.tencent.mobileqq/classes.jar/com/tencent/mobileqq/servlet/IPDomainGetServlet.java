@@ -15,8 +15,14 @@ public class IPDomainGetServlet
     if ("ConfigPushSvc.GetIpDirect".equals(paramFromServiceMsg.getServiceCmd()))
     {
       BaseInnerDns.getInstance().onReceivePush(paramFromServiceMsg);
-      if (QLog.isColorLevel()) {
-        QLog.i("IPDomainGet", 2, "onReceive response resultCode:" + paramFromServiceMsg.getResultCode() + " log:" + paramFromServiceMsg.getStringForLog());
+      if (QLog.isColorLevel())
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("onReceive response resultCode:");
+        paramIntent.append(paramFromServiceMsg.getResultCode());
+        paramIntent.append(" log:");
+        paramIntent.append(paramFromServiceMsg.getStringForLog());
+        QLog.i("IPDomainGet", 2, paramIntent.toString());
       }
     }
   }
@@ -32,7 +38,7 @@ public class IPDomainGetServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.IPDomainGetServlet
  * JD-Core Version:    0.7.0.1
  */

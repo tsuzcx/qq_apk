@@ -120,56 +120,57 @@ public class c
   
   public void a(Throwable paramThrowable)
   {
-    int j = 0;
     this.a.setText(paramThrowable.getMessage());
-    if ((paramThrowable instanceof HippyJsException))
-    {
-      this.b.setText(((HippyJsException)paramThrowable).getStack());
-      paramThrowable.printStackTrace();
+    Object localObject1;
+    if ((paramThrowable instanceof HippyJsException)) {
+      localObject1 = this.b;
     }
-    for (;;)
+    for (Object localObject2 = ((HippyJsException)paramThrowable).getStack();; localObject2 = ((StringBuilder)localObject2).toString())
     {
-      this.b.setGravity(3);
-      return;
-      StackTraceElement[] arrayOfStackTraceElement = paramThrowable.getStackTrace();
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (arrayOfStackTraceElement != null)
+      ((TextView)localObject1).setText((CharSequence)localObject2);
+      paramThrowable.printStackTrace();
+      break;
+      localObject1 = paramThrowable.getStackTrace();
+      localObject2 = new StringBuilder();
+      if (localObject1 != null)
       {
-        int k = arrayOfStackTraceElement.length;
+        int k = localObject1.length;
+        int j = 0;
         int i = 0;
         while (i < k)
         {
-          localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append("\n").append("\n");
+          ((StringBuilder)localObject2).append(localObject1[i].toString());
+          ((StringBuilder)localObject2).append("\n");
+          ((StringBuilder)localObject2).append("\n");
           i += 1;
         }
-        k = arrayOfStackTraceElement.length;
+        k = localObject1.length;
         i = j;
         while (i < k)
         {
-          localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append("\n").append("\n");
+          ((StringBuilder)localObject2).append(localObject1[i].toString());
+          ((StringBuilder)localObject2).append("\n");
+          ((StringBuilder)localObject2).append("\n");
           i += 1;
         }
       }
-      this.b.setText(localStringBuilder.toString());
-      paramThrowable.printStackTrace();
+      localObject1 = this.b;
     }
+    this.b.setGravity(3);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.d) {
+    if (paramView == this.d)
+    {
       dismiss();
     }
-    for (;;)
+    else if ((paramView == this.c) && (this.e != null))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((paramView == this.c) && (this.e != null))
-      {
-        dismiss();
-        this.e.a();
-      }
+      dismiss();
+      this.e.a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -180,7 +181,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.c
  * JD-Core Version:    0.7.0.1
  */

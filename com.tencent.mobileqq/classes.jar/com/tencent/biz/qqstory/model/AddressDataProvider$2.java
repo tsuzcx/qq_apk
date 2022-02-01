@@ -28,20 +28,20 @@ class AddressDataProvider$2
       this.a.a("longitude", paramGetLocationRequest.d);
       this.a.a("latitude", paramGetLocationRequest.e);
       this.a.a("time", System.currentTimeMillis());
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+      paramGetLocationRequest = this.a;
+      paramGetLocationRequest.a(true, paramGetLocationRequest.jdField_a_of_type_JavaLangObject);
     }
-    for (;;)
+    else
     {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
       SLog.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetLocationRequest });
       this.a.a(false, null);
     }
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.AddressDataProvider.2
  * JD-Core Version:    0.7.0.1
  */

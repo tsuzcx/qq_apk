@@ -17,62 +17,65 @@ class RoomSwitchCgiService$1
   
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
-    int i = 0;
-    if (paramJSONObject == null) {}
-    while (paramInt != 0) {
+    if (paramJSONObject == null) {
       return;
     }
-    for (;;)
-    {
-      SwitchRoomInfo localSwitchRoomInfo;
+    if (paramInt == 0) {
       try
       {
         paramJSONObject.getInt("retcode");
-        localObject = paramJSONObject.getJSONObject("result").getJSONArray("data");
+        Object localObject1 = paramJSONObject.getJSONObject("result").getJSONArray("data");
         paramJSONObject = new ArrayList();
-        paramInt = i;
-        if (paramInt >= ((JSONArray)localObject).length()) {
-          break;
-        }
-        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(paramInt);
-        localSwitchRoomInfo = new SwitchRoomInfo();
-        localSwitchRoomInfo.roomId = localJSONObject.getLong("room_id");
-        localSwitchRoomInfo.logoUrl = localJSONObject.getString("room_logo_url");
-        if (paramInt == 0)
+        paramInt = 0;
+        while (paramInt < ((JSONArray)localObject1).length())
         {
-          localSwitchRoomInfo.roomId = 1210982456L;
-          localSwitchRoomInfo.videoUrl = "http://flv.6721.liveplay.now.qq.com/live/6721_c21f14dc5c3ce1b2513f5810f359ea15.flv?txSecret=c2993deb92b4907ae09e44280b9bb32a&txTime=5F926D06";
-          localSwitchRoomInfo.videoUrl += "&dispatch_from=ztc";
-          localSwitchRoomInfo.videoType = VideoType.LIVE;
+          Object localObject2 = ((JSONArray)localObject1).getJSONObject(paramInt);
+          SwitchRoomInfo localSwitchRoomInfo = new SwitchRoomInfo();
+          localSwitchRoomInfo.roomId = ((JSONObject)localObject2).getLong("room_id");
+          localSwitchRoomInfo.logoUrl = ((JSONObject)localObject2).getString("room_logo_url");
+          if (paramInt == 0)
+          {
+            localSwitchRoomInfo.roomId = 1210982456L;
+            localSwitchRoomInfo.videoUrl = "http://flv.6721.liveplay.now.qq.com/live/6721_c21f14dc5c3ce1b2513f5810f359ea15.flv?txSecret=c2993deb92b4907ae09e44280b9bb32a&txTime=5F926D06";
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(localSwitchRoomInfo.videoUrl);
+            ((StringBuilder)localObject2).append("&dispatch_from=ztc");
+            localSwitchRoomInfo.videoUrl = ((StringBuilder)localObject2).toString();
+            localSwitchRoomInfo.videoType = VideoType.LIVE;
+          }
+          else if (paramInt == 2)
+          {
+            localSwitchRoomInfo.videoUrl = this.this$0.video_url1;
+            localSwitchRoomInfo.videoType = VideoType.VIDEO;
+          }
+          else
+          {
+            localSwitchRoomInfo.videoUrl = ((JSONObject)localObject2).getString("hlsurl").replace(".m3u8", ".flv").replace("https://", "http://");
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(localSwitchRoomInfo.videoUrl);
+            ((StringBuilder)localObject2).append("&dispatch_from=ztc");
+            localSwitchRoomInfo.videoUrl = ((StringBuilder)localObject2).toString();
+            localSwitchRoomInfo.videoType = VideoType.LIVE;
+          }
           paramJSONObject.add(localSwitchRoomInfo);
           paramInt += 1;
-          continue;
         }
-        if (paramInt == 2)
-        {
-          localSwitchRoomInfo.videoUrl = this.this$0.video_url1;
-          localSwitchRoomInfo.videoType = VideoType.VIDEO;
-          continue;
-        }
-        localSwitchRoomInfo.videoUrl = localJSONObject.getString("hlsurl").replace(".m3u8", ".flv").replace("https://", "http://");
+        localObject1 = new ArrayList();
+        ((List)localObject1).addAll(this.val$roomList);
+        ((List)localObject1).addAll(paramJSONObject);
+        this.val$listener.onResult(0, ((List)localObject1).size(), (List)localObject1);
+        return;
       }
       catch (JSONException paramJSONObject)
       {
         paramJSONObject.printStackTrace();
-        return;
       }
-      localSwitchRoomInfo.videoUrl += "&dispatch_from=ztc";
-      localSwitchRoomInfo.videoType = VideoType.LIVE;
     }
-    Object localObject = new ArrayList();
-    ((List)localObject).addAll(this.val$roomList);
-    ((List)localObject).addAll(paramJSONObject);
-    this.val$listener.onResult(0, ((List)localObject).size(), (List)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.service.RoomSwitchCgiService.1
  * JD-Core Version:    0.7.0.1
  */

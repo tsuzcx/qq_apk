@@ -50,21 +50,24 @@ public final class stGetAllABTestPolicyRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.policyInfo != null) {
-      paramJceOutputStream.write(this.policyInfo, 0);
+    Map localMap = this.policyInfo;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
-    if (this.profile != null) {
-      paramJceOutputStream.write(this.profile, 1);
+    localMap = this.profile;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 1);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 2);
+    localMap = this.mapExt;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
     paramJceOutputStream.write(this.serverTime, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stGetAllABTestPolicyRsp
  * JD-Core Version:    0.7.0.1
  */

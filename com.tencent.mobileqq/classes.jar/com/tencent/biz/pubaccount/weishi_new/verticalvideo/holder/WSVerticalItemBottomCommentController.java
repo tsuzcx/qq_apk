@@ -34,7 +34,8 @@ public class WSVerticalItemBottomCommentController
   
   private void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a != null))
+    WSVerticalPageFragment localWSVerticalPageFragment = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+    if ((localWSVerticalPageFragment != null) && (localWSVerticalPageFragment.a != null))
     {
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(WSVerticalBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a()), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b());
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(a());
@@ -53,19 +54,19 @@ public class WSVerticalItemBottomCommentController
     a(1, 7);
   }
   
-  public void a()
+  protected void a()
   {
     if ((a() != null) && ((((WSVerticalItemData)a()).a() instanceof stSimpleMetaFeed))) {
       this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((WSVerticalItemData)a()).a();
     }
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560152;
+    return 2131560034;
   }
   
-  public void b()
+  protected void b()
   {
     String str = WSGlobalConfig.a().f();
     if (!TextUtils.isEmpty(str)) {
@@ -73,20 +74,20 @@ public class WSVerticalItemBottomCommentController
     }
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380271));
-    this.b = a(2131372588);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379584));
+    this.b = a(2131372172);
     this.b.setOnClickListener(new WSVerticalItemBottomCommentController.1(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369593));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369303));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new WSVerticalItemBottomCommentController.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomCommentController
  * JD-Core Version:    0.7.0.1
  */

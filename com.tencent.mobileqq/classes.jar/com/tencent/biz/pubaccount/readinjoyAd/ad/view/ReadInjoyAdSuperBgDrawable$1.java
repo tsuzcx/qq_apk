@@ -11,7 +11,8 @@ class ReadInjoyAdSuperBgDrawable$1
   
   public void run()
   {
-    ReadInjoyAdSuperBgDrawable.a(this.this$0, ReadInjoyAdSuperBgDrawable.a(this.this$0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Int, this.b));
+    ReadInjoyAdSuperBgDrawable localReadInjoyAdSuperBgDrawable = this.this$0;
+    ReadInjoyAdSuperBgDrawable.a(localReadInjoyAdSuperBgDrawable, ReadInjoyAdSuperBgDrawable.a(localReadInjoyAdSuperBgDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Int, this.b));
     if (ReadInjoyAdSuperBgDrawable.a(this.this$0) != null) {
       ThreadManager.getUIHandler().post(new ReadInjoyAdSuperBgDrawable.1.1(this));
     }
@@ -19,7 +20,7 @@ class ReadInjoyAdSuperBgDrawable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyAdSuperBgDrawable.1
  * JD-Core Version:    0.7.0.1
  */

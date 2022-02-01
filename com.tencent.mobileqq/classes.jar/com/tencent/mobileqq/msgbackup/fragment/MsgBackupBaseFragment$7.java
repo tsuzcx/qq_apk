@@ -9,16 +9,17 @@ class MsgBackupBaseFragment$7
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      localTextView.setText(this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment.7
  * JD-Core Version:    0.7.0.1
  */

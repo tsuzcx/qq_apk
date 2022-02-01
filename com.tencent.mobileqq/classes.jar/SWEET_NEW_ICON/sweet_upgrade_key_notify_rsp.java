@@ -34,15 +34,16 @@ public final class sweet_upgrade_key_notify_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.rsp_comm, 0);
-    if (this.req_comm != null) {
-      paramJceOutputStream.write(this.req_comm, 1);
+    sweet_req_comm localsweet_req_comm = this.req_comm;
+    if (localsweet_req_comm != null) {
+      paramJceOutputStream.write(localsweet_req_comm, 1);
     }
     paramJceOutputStream.write(this.host_state, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SWEET_NEW_ICON.sweet_upgrade_key_notify_rsp
  * JD-Core Version:    0.7.0.1
  */

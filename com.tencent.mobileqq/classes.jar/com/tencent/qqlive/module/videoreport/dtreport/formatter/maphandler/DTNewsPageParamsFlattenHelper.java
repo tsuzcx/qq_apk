@@ -27,14 +27,18 @@ class DTNewsPageParamsFlattenHelper
   
   Map<String, Object> getMapParams(Map<String, Object> paramMap, String paramString)
   {
-    if ((!isValidMap(paramMap)) || (TextUtils.isEmpty(paramString))) {
-      return null;
+    if (isValidMap(paramMap))
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
+      }
+      paramMap = paramMap.get(paramString);
+      if (!isValidMap(paramMap)) {
+        return null;
+      }
+      return (Map)paramMap;
     }
-    paramMap = paramMap.get(paramString);
-    if (!isValidMap(paramMap)) {
-      return null;
-    }
-    return (Map)paramMap;
+    return null;
   }
   
   Object getOrRemove(@NonNull Map<?, ?> paramMap, String paramString)
@@ -44,27 +48,24 @@ class DTNewsPageParamsFlattenHelper
   
   void putAllPageParams(Map<String, Object> paramMap1, Map<String, Object> paramMap2, String paramString)
   {
-    if ((!isValidMap(paramMap1)) || (BaseUtils.isEmpty(paramMap2))) {}
-    for (;;)
+    if (isValidMap(paramMap1))
     {
-      return;
+      if (BaseUtils.isEmpty(paramMap2)) {
+        return;
+      }
       paramMap2 = paramMap2.entrySet().iterator();
       while (paramMap2.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)paramMap2.next();
-        if ((localEntry != null) && (localEntry.getKey() != null) && (localEntry.getValue() != null)) {
-          paramMap1.put(paramString + (String)localEntry.getKey(), localEntry.getValue());
+        if ((localEntry != null) && (localEntry.getKey() != null) && (localEntry.getValue() != null))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append((String)localEntry.getKey());
+          paramMap1.put(localStringBuilder.toString(), localEntry.getValue());
         }
       }
     }
-  }
-  
-  Object remove(Map<String, Object> paramMap, String paramString)
-  {
-    if ((paramMap == null) || (paramString == null) || (!paramMap.containsKey(paramString))) {
-      return null;
-    }
-    return paramMap.remove(paramString);
   }
   
   Map<String, Object> removeMapParams(Map<String, Object> paramMap, String paramString)
@@ -76,7 +77,7 @@ class DTNewsPageParamsFlattenHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.formatter.maphandler.DTNewsPageParamsFlattenHelper
  * JD-Core Version:    0.7.0.1
  */

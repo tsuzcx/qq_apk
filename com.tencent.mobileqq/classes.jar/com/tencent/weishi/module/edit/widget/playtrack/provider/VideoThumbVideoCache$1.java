@@ -12,25 +12,32 @@ class VideoThumbVideoCache$1
   
   public void run()
   {
-    Object localObject = VideoThumbVideoCache.access$100(this.this$0, VideoThumbVideoCache.access$000(this.this$0), this.val$time, false);
-    Logger.i("VideoThumbVideoCache", "bitmap start recycle:" + ((BaseVideoThumbAssetCache.SeekListResult)localObject).isNormalized);
-    if (!((BaseVideoThumbAssetCache.SeekListResult)localObject).isNormalized)
+    Object localObject1 = this.this$0;
+    localObject1 = VideoThumbVideoCache.access$100((VideoThumbVideoCache)localObject1, VideoThumbVideoCache.access$000((VideoThumbVideoCache)localObject1), this.val$time, false);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("bitmap start recycle:");
+    ((StringBuilder)localObject2).append(((BaseVideoThumbAssetCache.SeekListResult)localObject1).isNormalized);
+    Logger.i("VideoThumbVideoCache", ((StringBuilder)localObject2).toString());
+    if (!((BaseVideoThumbAssetCache.SeekListResult)localObject1).isNormalized)
     {
-      localObject = (BaseVideoThumbAssetCache.BitmapPoint)VideoThumbVideoCache.access$000(this.this$0).remove(((BaseVideoThumbAssetCache.SeekListResult)localObject).index);
-      VideoThumbVideoCache.access$200(this.this$0).remove(String.valueOf(((BaseVideoThumbAssetCache.BitmapPoint)localObject).time));
-      VideoThumbVideoCache localVideoThumbVideoCache = this.this$0;
-      localVideoThumbVideoCache.mCacheSize -= ((BaseVideoThumbAssetCache.BitmapPoint)localObject).bitmap.getAllocationByteCount();
-      if ((((BaseVideoThumbAssetCache.BitmapPoint)localObject).bitmap != null) && (!((BaseVideoThumbAssetCache.BitmapPoint)localObject).bitmap.isRecycled()))
+      localObject1 = (BaseVideoThumbAssetCache.BitmapPoint)VideoThumbVideoCache.access$000(this.this$0).remove(((BaseVideoThumbAssetCache.SeekListResult)localObject1).index);
+      VideoThumbVideoCache.access$200(this.this$0).remove(String.valueOf(((BaseVideoThumbAssetCache.BitmapPoint)localObject1).time));
+      localObject2 = this.this$0;
+      ((VideoThumbVideoCache)localObject2).mCacheSize -= ((BaseVideoThumbAssetCache.BitmapPoint)localObject1).bitmap.getAllocationByteCount();
+      if ((((BaseVideoThumbAssetCache.BitmapPoint)localObject1).bitmap != null) && (!((BaseVideoThumbAssetCache.BitmapPoint)localObject1).bitmap.isRecycled()))
       {
-        Logger.i("VideoThumbVideoCache", "bitmap recycle:" + ((BaseVideoThumbAssetCache.BitmapPoint)localObject).time);
-        ((BaseVideoThumbAssetCache.BitmapPoint)localObject).bitmap.recycle();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("bitmap recycle:");
+        ((StringBuilder)localObject2).append(((BaseVideoThumbAssetCache.BitmapPoint)localObject1).time);
+        Logger.i("VideoThumbVideoCache", ((StringBuilder)localObject2).toString());
+        ((BaseVideoThumbAssetCache.BitmapPoint)localObject1).bitmap.recycle();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbVideoCache.1
  * JD-Core Version:    0.7.0.1
  */

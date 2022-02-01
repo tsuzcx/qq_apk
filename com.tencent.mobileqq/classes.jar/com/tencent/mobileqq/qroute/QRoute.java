@@ -33,10 +33,14 @@ public class QRoute
   
   public static <T extends QRouteApi> T apiFromPlugin(Class<T> paramClass)
   {
-    if (!paramClass.isAnnotationPresent(QPlugin.class)) {
-      throw new QRoutePluginException(QPlugin.class.getName() + " need add to your api class" + paramClass.getSimpleName());
+    if (paramClass.isAnnotationPresent(QPlugin.class)) {
+      return apiImpl(paramClass, true);
     }
-    return apiImpl(paramClass, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QPlugin.class.getName());
+    localStringBuilder.append(" need add to your api class");
+    localStringBuilder.append(paramClass.getSimpleName());
+    throw new QRoutePluginException(localStringBuilder.toString());
   }
   
   public static <T extends QRouteApi> T apiIPCSync(Class<T> paramClass)
@@ -56,13 +60,21 @@ public class QRoute
       if ((localObject instanceof QRouteApi)) {
         return (QRouteApi)localObject;
       }
-      localObject = "getQRemoteProxy null, class=" + paramClass;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getQRemoteProxy null, class=");
+      ((StringBuilder)localObject).append(paramClass);
+      localObject = ((StringBuilder)localObject).toString();
       logger.warning("QRoute", (String)localObject);
       throw new IllegalStateException((String)localObject);
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      paramClass = "ClassNotFoundException error, class= " + paramClass.getName() + "target Class= " + str;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ClassNotFoundException error, class= ");
+      localStringBuilder.append(paramClass.getName());
+      localStringBuilder.append("target Class= ");
+      localStringBuilder.append(str);
+      paramClass = localStringBuilder.toString();
       logger.warning("QRoute", paramClass, localClassNotFoundException);
       throw new IllegalStateException(paramClass, localClassNotFoundException);
     }
@@ -71,7 +83,7 @@ public class QRoute
   @NonNull
   private static <T extends QRouteApi> T apiImpl(Class<T> paramClass, boolean paramBoolean)
   {
-    String str = QRouteUtil.convertApiToImplClass(paramClass);
+    Object localObject1 = QRouteUtil.convertApiToImplClass(paramClass);
     if (mConfig.isForceCheck())
     {
       QRouteUtil.isAnnotationQAPI(paramClass);
@@ -79,32 +91,44 @@ public class QRoute
       RemoteProxyUtil.verifyClass(paramClass);
     }
     if (QRouteUtil.isSingleton(paramClass)) {
-      return (QRouteApi)SingletonPool.get(paramClass, str, paramBoolean);
+      return (QRouteApi)SingletonPool.get(paramClass, (String)localObject1, paramBoolean);
     }
     try
     {
-      if (!APICycleInitCheckUtil.checkAndSet(str))
+      if (APICycleInitCheckUtil.checkAndSet((String)localObject1))
       {
-        APICycleInitCheckUtil.removeOnException();
-        str = "find cycle init from:" + str;
-        logger.warning("QRoute", str);
-        throw new IllegalStateException(str);
+        localObject2 = Class.forName((String)localObject1);
+        QRouteApi localQRouteApi = (QRouteApi)((Class)localObject2).newInstance();
+        if (localQRouteApi != null)
+        {
+          APICycleInitCheckUtil.checkAndRemove((String)localObject1);
+          return localQRouteApi;
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getInstance null! @");
+        ((StringBuilder)localObject1).append(((Class)localObject2).getName());
+        throw new IllegalStateException(((StringBuilder)localObject1).toString());
       }
+      APICycleInitCheckUtil.removeOnException();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("find cycle init from:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject2).toString();
+      logger.warning("QRoute", (String)localObject1);
+      throw new IllegalStateException((String)localObject1);
     }
     catch (Exception localException)
     {
       APICycleInitCheckUtil.removeOnException();
-      paramClass = "build API fatal:" + paramClass.getSimpleName() + " " + localException.toString();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("build API fatal:");
+      ((StringBuilder)localObject2).append(paramClass.getSimpleName());
+      ((StringBuilder)localObject2).append(" ");
+      ((StringBuilder)localObject2).append(localException.toString());
+      paramClass = ((StringBuilder)localObject2).toString();
       logger.warning("QRoute", paramClass, localException);
       throw new IllegalStateException(paramClass, localException);
     }
-    Class localClass = Class.forName(localException);
-    QRouteApi localQRouteApi = (QRouteApi)localClass.newInstance();
-    if (localQRouteApi == null) {
-      throw new IllegalStateException("getInstance null! @" + localClass.getName());
-    }
-    APICycleInitCheckUtil.checkAndRemove(localException);
-    return localQRouteApi;
   }
   
   public static QRouteConfig getConfig()
@@ -127,12 +151,23 @@ public class QRoute
   
   private static <T extends QRouteApi> void processCheck(Class<T> paramClass)
   {
-    if ((mConfig.getProcessCheck() != null) && (!mConfig.getProcessCheck().check(paramClass, mConfig.getProcessName(), mConfig.isForceCheck())))
+    if (mConfig.getProcessCheck() != null)
     {
-      logger.warning("QRoute", "checkProcessName failed api:" + paramClass.getSimpleName());
-      StringBuilder localStringBuilder = new StringBuilder(50);
-      localStringBuilder.append("QRouteApi: ").append(paramClass.getSimpleName()).append(" can not run on this process: ").append(mConfig.getProcessName()).append("，请联系API开发者沟通处理。\n");
-      throw new IllegalStateException(localStringBuilder.toString());
+      if (mConfig.getProcessCheck().check(paramClass, mConfig.getProcessName(), mConfig.isForceCheck())) {
+        return;
+      }
+      Object localObject = logger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkProcessName failed api:");
+      localStringBuilder.append(paramClass.getSimpleName());
+      ((ILogger)localObject).warning("QRoute", localStringBuilder.toString());
+      localObject = new StringBuilder(50);
+      ((StringBuilder)localObject).append("QRouteApi: ");
+      ((StringBuilder)localObject).append(paramClass.getSimpleName());
+      ((StringBuilder)localObject).append(" can not run on this process: ");
+      ((StringBuilder)localObject).append(mConfig.getProcessName());
+      ((StringBuilder)localObject).append("，请联系API开发者沟通处理。\n");
+      throw new IllegalStateException(((StringBuilder)localObject).toString());
     }
   }
   
@@ -146,6 +181,11 @@ public class QRoute
     Router.getInstance().start(new ActivityURIRequest(paramContext, paramString), paramOnCompleteListener);
   }
   
+  public static void startUri(URIRequest paramURIRequest)
+  {
+    startUri(paramURIRequest, null);
+  }
+  
   public static void startUri(URIRequest paramURIRequest, Router.OnCompleteListener paramOnCompleteListener)
   {
     Router.getInstance().start(paramURIRequest, paramOnCompleteListener);
@@ -153,7 +193,7 @@ public class QRoute
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.QRoute
  * JD-Core Version:    0.7.0.1
  */

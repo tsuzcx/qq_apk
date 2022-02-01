@@ -14,8 +14,8 @@ public class PathTraceService$KernelService
   private Notification a()
   {
     Notification localNotification = new Notification();
-    localNotification.icon = 2130840535;
-    localNotification.contentView = new RemoteViews(PathTraceService.a.getApplication().getPackageName(), 2131559772);
+    localNotification.icon = 2130840405;
+    localNotification.contentView = new RemoteViews(PathTraceService.a.getApplication().getPackageName(), 2131559649);
     startForeground(1, localNotification);
     return localNotification;
   }
@@ -41,45 +41,44 @@ public class PathTraceService$KernelService
     try
     {
       super.stopForeground(true);
-      super.onDestroy();
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PathTraceManager.Service", 2, "destory failed");
-        }
-      }
+      label22:
+      break label22;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("PathTraceManager.Service", 2, "destory failed");
+    }
+    super.onDestroy();
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    if ((paramIntent != null) && (PathTraceService.a != null)) {
+    if ((paramIntent != null) && (PathTraceService.a != null))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("PathTraceManager.Service", 2, "onStartCommand:");
       }
-    }
-    try
-    {
-      QLog.d("PathTraceManager.Service", 1, "PathTraceService startForeground");
-      PathTraceService.a.startForeground(237, a());
-      super.startForeground(237, a());
-      super.stopForeground(true);
-      return 2;
-    }
-    catch (Exception paramIntent)
-    {
-      QLog.d("PathTraceManager.Service", 1, "", paramIntent);
+      try
+      {
+        QLog.d("PathTraceManager.Service", 1, "PathTraceService startForeground");
+        PathTraceService.a.startForeground(237, a());
+        super.startForeground(237, a());
+        super.stopForeground(true);
+        return 2;
+      }
+      catch (Exception paramIntent)
+      {
+        QLog.d("PathTraceManager.Service", 1, "", paramIntent);
+      }
     }
     return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceService.KernelService
  * JD-Core Version:    0.7.0.1
  */

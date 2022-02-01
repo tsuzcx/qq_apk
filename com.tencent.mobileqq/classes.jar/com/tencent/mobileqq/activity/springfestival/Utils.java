@@ -16,11 +16,12 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalEntryManager;
 import com.tencent.mobileqq.activity.springfestival.entry.helper.SpringHbHelper;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory.Options;
+import com.tencent.mobileqq.vas.apng.api.ApngOptions;
+import com.tencent.mobileqq.vas.apng.api.IVasApngFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -44,58 +45,73 @@ public class Utils
   
   public static int a(Context paramContext, String paramString1, String paramString2)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString1 + "_" + a + "_" + paramString2, 0);
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(a);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return paramContext.getInt(localStringBuilder.toString(), 0);
   }
   
   private static int a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return 0;
-      if (paramString.equalsIgnoreCase("WiFi")) {
-        return 1;
-      }
-      if (paramString.equalsIgnoreCase("5G")) {
-        return 6;
-      }
-      if (paramString.equalsIgnoreCase("4G")) {
-        return 4;
-      }
-      if (paramString.equalsIgnoreCase("3G")) {
-        return 3;
-      }
-    } while (!paramString.equalsIgnoreCase("2G"));
-    return 2;
+    }
+    if (paramString.equalsIgnoreCase("WiFi")) {
+      return 1;
+    }
+    if (paramString.equalsIgnoreCase("5G")) {
+      return 6;
+    }
+    if (paramString.equalsIgnoreCase("4G")) {
+      return 4;
+    }
+    if (paramString.equalsIgnoreCase("3G")) {
+      return 3;
+    }
+    if (paramString.equalsIgnoreCase("2G")) {
+      return 2;
+    }
+    return 0;
   }
   
   public static long a(Context paramContext, String paramString1, String paramString2)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong(paramString1 + "_" + b + "_" + paramString2, 0L);
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(b);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return paramContext.getLong(localStringBuilder.toString(), 0L);
   }
   
   public static long a(String paramString)
   {
-    long l1 = 0L;
+    long l;
     try
     {
       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
       localSimpleDateFormat.setCalendar(new GregorianCalendar());
       localSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-      long l2 = localSimpleDateFormat.parse(paramString).getTime();
-      l1 = l2;
+      l = localSimpleDateFormat.parse(paramString).getTime();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("springHb_Utils", 1, "parseTime exception: " + localException);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseTime exception: ");
+      localStringBuilder.append(localException);
+      QLog.e("springHb_Utils", 1, localStringBuilder.toString());
+      l = 0L;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("springHb_Utils", 2, String.format("parseTime timeStr=%s timeMillis=%s", new Object[] { paramString, Long.valueOf(l1) }));
+      QLog.d("springHb_Utils", 2, String.format("parseTime timeStr=%s timeMillis=%s", new Object[] { paramString, Long.valueOf(l) }));
     }
-    return l1;
+    return l;
   }
   
   public static Drawable a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, String paramString2)
@@ -106,56 +122,51 @@ public class Utils
       if (localSpringFestivalEntryManager != null)
       {
         paramString2 = localSpringFestivalEntryManager.a(paramString1, paramString2);
-        if (paramString2 == null) {}
+        if (paramString2 != null)
+        {
+          paramAppRuntime = new BitmapDrawable(paramAppRuntime.getApp().getResources(), paramString2);
+          break label58;
+        }
       }
     }
-    for (paramAppRuntime = new BitmapDrawable(paramAppRuntime.getApp().getResources(), paramString2);; paramAppRuntime = null)
-    {
-      if (paramAppRuntime != null) {}
-      do
-      {
-        return paramAppRuntime;
-        paramString1 = a(paramString1, paramInt1, paramInt2, false);
-        paramAppRuntime = paramString1;
-      } while (paramString1 == null);
-      paramString1.startDownload();
-      return paramString1;
+    paramAppRuntime = null;
+    label58:
+    if (paramAppRuntime != null) {
+      return paramAppRuntime;
     }
+    paramAppRuntime = a(paramString1, paramInt1, paramInt2, false);
+    if (paramAppRuntime != null) {
+      paramAppRuntime.startDownload();
+    }
+    return paramAppRuntime;
   }
   
   private static URLDrawable a(String paramString, int paramInt1, int paramInt2)
   {
-    VasApngFactory.Options localOptions = new VasApngFactory.Options();
-    localOptions.a(new ColorDrawable(7));
-    localOptions.a(true);
-    localOptions.b(paramInt1);
-    localOptions.c(paramInt2);
-    URLDrawable localURLDrawable = null;
+    ApngOptions localApngOptions = new ApngOptions();
+    localApngOptions.a(new ColorDrawable(7));
+    localApngOptions.a(true);
+    localApngOptions.b(paramInt1);
+    localApngOptions.c(paramInt2);
     String str = SpringHbHelper.a(paramString);
-    if (!FileUtils.d(str)) {
-      localURLDrawable = VasApngFactory.a("", localOptions, str);
+    if (!FileUtils.isEmptyFile(str)) {
+      return ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable("", localApngOptions, str);
     }
-    while (!paramString.startsWith("https://")) {
-      return localURLDrawable;
+    if (paramString.startsWith("https://")) {
+      return ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(paramString, localApngOptions);
     }
-    return VasApngFactory.a(paramString, localOptions);
+    return null;
   }
   
   public static URLDrawable a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramInt1 <= 0) || (paramInt2 <= 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("HBEntryBannerView", 2, "loadUrlDrawable input params error");
-      }
-    }
-    do
+    if ((!TextUtils.isEmpty(paramString)) && (paramInt1 > 0) && (paramInt2 > 0))
     {
-      return null;
       if (paramBoolean) {
         return a(paramString, paramInt1, paramInt2);
       }
-      URL localURL = a(paramString);
-      if (localURL != null)
+      Object localObject = a(paramString);
+      if (localObject != null)
       {
         paramString = URLDrawable.URLDrawableOptions.obtain();
         paramString.mUseApngImage = false;
@@ -163,58 +174,89 @@ public class Utils
         paramString.mRequestWidth = paramInt1;
         paramString.mRequestHeight = paramInt2;
         paramString.mLoadingDrawable = new ColorDrawable(7);
-        return URLDrawable.getDrawable(localURL, paramString);
+        return URLDrawable.getDrawable((URL)localObject, paramString);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("HBEntryBannerView", 2, "resource url parse error:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("resource url parse error:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("HBEntryBannerView", 2, ((StringBuilder)localObject).toString());
+      }
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HBEntryBannerView", 2, "loadUrlDrawable input params error");
+    }
     return null;
   }
   
   private static URL a(String paramString)
   {
+    Object localObject = null;
     try
     {
       String str = SpringHbHelper.a(paramString);
-      if (!FileUtils.d(str))
+      boolean bool = FileUtils.isEmptyFile(str);
+      if (!bool)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("HBEntryBannerView", 2, "resource url is file:" + paramString);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("resource url is file:");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.d("HBEntryBannerView", 2, ((StringBuilder)localObject).toString());
         }
-        paramString = new URI(Uri.fromFile(new File(str)).toString()).toURL();
+        return new URI(Uri.fromFile(new File(str)).toString()).toURL();
       }
-      else if (paramString.startsWith("https://"))
+      if (paramString.startsWith("https://"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("HBEntryBannerView", 2, "resource url is network:" + paramString);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("resource url is network:");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.d("HBEntryBannerView", 2, ((StringBuilder)localObject).toString());
         }
-        paramString = new URL(paramString);
+        localObject = new URL(paramString);
       }
-    }
-    catch (MalformedURLException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
+      return localObject;
     }
     catch (URISyntaxException paramString)
     {
       paramString.printStackTrace();
       return null;
     }
-    paramString = null;
-    return paramString;
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString1 + "_" + a + "_" + paramString2, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(a);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    paramContext.putInt(localStringBuilder.toString(), paramInt);
     paramContext.apply();
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, long paramLong)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putLong(paramString1 + "_" + b + "_" + paramString2, paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(b);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    paramContext.putLong(localStringBuilder.toString(), paramLong);
     paramContext.apply();
   }
   
@@ -224,23 +266,23 @@ public class Utils
       return true;
     }
     paramString = paramString.split("\\|");
-    int j = NetworkUtil.a(paramContext);
-    if (QLog.isColorLevel()) {
-      QLog.d("SpringFestivalRedpakcet", 2, "current net type: " + j);
+    int j = NetworkUtil.getSystemNetwork(paramContext);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("current net type: ");
+      paramContext.append(j);
+      QLog.d("SpringFestivalRedpakcet", 2, paramContext.toString());
     }
     int k = paramString.length;
     int i = 0;
-    for (;;)
+    while (i < k)
     {
-      if (i >= k) {
-        break label84;
-      }
       if (a(paramString[i]) == j) {
-        break;
+        return true;
       }
       i += 1;
     }
-    label84:
     return false;
   }
   
@@ -248,47 +290,42 @@ public class Utils
   {
     JSONObject localJSONObject = HtmlOffline.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString);
     paramString = HtmlOffline.a(paramString);
-    if (localJSONObject != null) {}
-    for (int i = localJSONObject.optInt("version", 0);; i = 0)
-    {
-      if (paramString != null) {}
-      for (int j = paramString.optInt("version", 0);; j = 0) {
-        return (i != 0) || (j != 0);
-      }
+    int i;
+    if (localJSONObject != null) {
+      i = localJSONObject.optInt("version", 0);
+    } else {
+      i = 0;
     }
+    int j;
+    if (paramString != null) {
+      j = paramString.optInt("version", 0);
+    } else {
+      j = 0;
+    }
+    return (i != 0) || (j != 0);
   }
   
   public static boolean a(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int j;
-    int i;
     if (!StringUtil.a(paramString2))
     {
       paramString2 = paramString2.split("\\|");
-      j = paramString2.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      int j = paramString2.length;
+      int i = 0;
+      while (i < j)
       {
         if (paramString2[i].equals(paramString1)) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.Utils
  * JD-Core Version:    0.7.0.1
  */

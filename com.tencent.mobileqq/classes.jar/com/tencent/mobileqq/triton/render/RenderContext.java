@@ -55,17 +55,21 @@ public final class RenderContext
     this.onInitEnd = paramFunction0;
     this.lifeCycleOwner = paramLifeCycleOwner;
     this.nativeTTAppHandle = paramLong;
-    if ((paramBoolean) && (RenderContext.Companion.access$checkOpenGLES30(Companion, paramContext))) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.supportES3 = paramBoolean;
-      this.canvasWidthHolder = ValueHolder.Companion.just(Integer.valueOf(0));
-      this.canvasHeightHolder = ValueHolder.Companion.just(Integer.valueOf(0));
-      this.touchEventManager = paramTouchProviderBridge;
-      Logger.e$default("RenderContext", "initialize:" + this, null, 4, null);
-      this.swapListeners = ((List)new CopyOnWriteArrayList((Collection)CollectionsKt.listOf(new RenderContext.SwapListener[] { (RenderContext.SwapListener)new FPSMonitor(paramValueHolder), (RenderContext.SwapListener)new BlackScreenMonitor(paramValueHolder1, this.canvasWidthHolder, this.canvasHeightHolder, paramExecutor1), (RenderContext.SwapListener)new FirstScreenMonitor(paramValueHolder2, paramValueHolder3), (RenderContext.SwapListener)new ScreenShootMonitor(paramValueHolder4, this.canvasWidthHolder, this.canvasHeightHolder, paramExecutor2, paramExecutor1) })));
-      return;
+    paramFunction0 = Integer.valueOf(0);
+    if ((paramBoolean) && (RenderContext.Companion.access$checkOpenGLES30(Companion, paramContext))) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
     }
+    this.supportES3 = paramBoolean;
+    this.canvasWidthHolder = ValueHolder.Companion.just(paramFunction0);
+    this.canvasHeightHolder = ValueHolder.Companion.just(paramFunction0);
+    this.touchEventManager = paramTouchProviderBridge;
+    paramFunction0 = new StringBuilder();
+    paramFunction0.append("initialize:");
+    paramFunction0.append(this);
+    Logger.e$default("RenderContext", paramFunction0.toString(), null, 4, null);
+    this.swapListeners = ((List)new CopyOnWriteArrayList((Collection)CollectionsKt.listOf(new RenderContext.SwapListener[] { (RenderContext.SwapListener)new FPSMonitor(paramValueHolder), (RenderContext.SwapListener)new BlackScreenMonitor(paramValueHolder1, this.canvasWidthHolder, this.canvasHeightHolder, paramExecutor1), (RenderContext.SwapListener)new FirstScreenMonitor(paramValueHolder2, paramValueHolder3), (RenderContext.SwapListener)new ScreenShootMonitor(paramValueHolder4, this.canvasWidthHolder, this.canvasHeightHolder, paramExecutor2, paramExecutor1) })));
   }
   
   private final void attachSurface(GameView paramGameView)
@@ -114,7 +118,12 @@ public final class RenderContext
   {
     Intrinsics.checkParameterIsNotNull(paramGameView, "gameView");
     Intrinsics.checkParameterIsNotNull(paramSurface, "surface");
-    JNICaller.RenderContext.nInitRenderContext(this, this.nativeTTAppHandle, paramSurface, this.supportES3, (int)(paramGameView.getWidth() / this.displayDensity), (int)(paramGameView.getHeight() / this.displayDensity), this.displayDensity);
+    long l = this.nativeTTAppHandle;
+    boolean bool = this.supportES3;
+    int i = (int)(paramGameView.getWidth() / this.displayDensity);
+    float f1 = paramGameView.getHeight();
+    float f2 = this.displayDensity;
+    JNICaller.RenderContext.nInitRenderContext(this, l, paramSurface, bool, i, (int)(f1 / f2), f2);
   }
   
   public final native void nExit(long paramLong);
@@ -142,7 +151,12 @@ public final class RenderContext
   {
     this.canvasWidthHolder.setValue(Integer.valueOf(paramInt1));
     this.canvasHeightHolder.setValue(Integer.valueOf(paramInt2));
-    Logger.i$default("RenderContext", "setFixedSize mCanvasWidth=" + paramInt1 + ", mCanvasHeight=" + paramInt2, null, 4, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setFixedSize mCanvasWidth=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", mCanvasHeight=");
+    localStringBuilder.append(paramInt2);
+    Logger.i$default("RenderContext", localStringBuilder.toString(), null, 4, null);
   }
   
   public final void surfaceChanged(@Nullable Surface paramSurface)
@@ -152,7 +166,7 @@ public final class RenderContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.render.RenderContext
  * JD-Core Version:    0.7.0.1
  */

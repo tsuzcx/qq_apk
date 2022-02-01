@@ -16,13 +16,16 @@ final class QZoneNotifyServlet$3
     }
     catch (Exception localException)
     {
-      QLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "locate exception " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("locate exception ");
+      localStringBuilder.append(localException);
+      QLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.3
  * JD-Core Version:    0.7.0.1
  */

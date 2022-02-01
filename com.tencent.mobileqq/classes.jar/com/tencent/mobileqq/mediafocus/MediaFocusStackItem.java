@@ -51,7 +51,21 @@ public class MediaFocusStackItem
   
   public String toString()
   {
-    return "MediaFocusStackItem{type='" + this.jdField_a_of_type_Int + '\'' + ", time='" + this.jdField_a_of_type_Long + '\'' + ", id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pname='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MediaFocusStackItem{type='");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", time='");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pname='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -64,7 +78,7 @@ public class MediaFocusStackItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusStackItem
  * JD-Core Version:    0.7.0.1
  */

@@ -31,14 +31,15 @@ public final class CustomTrack
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.Actions != null) {
-      paramJceOutputStream.write(this.Actions, 0);
+    ArrayList localArrayList = this.Actions;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.CustomTrack
  * JD-Core Version:    0.7.0.1
  */

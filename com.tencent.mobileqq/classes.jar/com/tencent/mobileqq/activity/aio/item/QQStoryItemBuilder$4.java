@@ -12,42 +12,55 @@ class QQStoryItemBuilder$4
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQStoryItemBuilder", 2, "get video download finish,vid=" + paramString1);
-    }
-    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
-    do
+    if (QLog.isColorLevel())
     {
+      paramString2 = new StringBuilder();
+      paramString2.append("get video download finish,vid=");
+      paramString2.append(paramString1);
+      QLog.i("QQStoryItemBuilder", 2, paramString2.toString());
+    }
+    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {
       return;
-      paramString1 = ((StoryManager)SuperManager.a(5)).a(paramString1);
-      if (paramString1 != null) {
-        break;
+    }
+    paramString1 = ((StoryManager)SuperManager.a(5)).a(paramString1);
+    if (paramString1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQStoryItemBuilder", 2, "get video download finish, storyVideoItem == null");
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("QQStoryItemBuilder", 2, "get video download finish, storyVideoItem == null");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long, paramString1, false);
+    }
+    else {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long, paramString1, false);
+    }
   }
   
   public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQStoryItemBuilder", 2, "Download video failed,vid=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("Download video failed,vid=");
+      paramString2.append(paramString1);
+      QLog.e("QQStoryItemBuilder", 2, paramString2.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long);
   }
   
   public void b(String paramString1, String paramString2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQStoryItemBuilder", 2, "Download video onPause,vid=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("Download video onPause,vid=");
+      paramString2.append(paramString1);
+      QLog.e("QQStoryItemBuilder", 2, paramString2.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

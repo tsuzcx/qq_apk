@@ -5,7 +5,7 @@ import OnlinePushPack.MsgInfo;
 import com.tencent.imcore.message.OnLinePushMessageProcessor;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.KplRoleInfo;
+import com.tencent.mobileqq.data.KplHelper;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PushRecommend;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -25,7 +25,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xae.SubMsgType0xae.PersonMayKnow;
 import tencent.im.s2c.msgtype0x210.submsgtype0xae.SubMsgType0xae.PushPeopleMayKnowV2;
 
 public class SubType0xae
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
@@ -33,23 +33,22 @@ public class SubType0xae
     try
     {
       localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      long l;
-      Object localObject;
-      if ((localMsgBody.uint32_type.has()) && (localMsgBody.uint32_type.get() == 2))
-      {
-        l = localMsgBody.msg_persons_may_know.fixed32_timestamp.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "handlePushRecommend receive push time=" + l);
-        }
-        localObject = localMsgBody.msg_persons_may_know.rpt_msg_friend_list.get();
-        if ((localObject != null) && (((List)localObject).size() > 0))
-        {
-          paramMsgType0x210 = new ArrayList(((List)localObject).size());
-          localObject = ((List)localObject).iterator();
-        }
+      if ((!localMsgBody.uint32_type.has()) || (localMsgBody.uint32_type.get() != 2)) {
+        break label650;
       }
-      else
+      long l = localMsgBody.msg_persons_may_know.fixed32_timestamp.get();
+      if (QLog.isColorLevel())
       {
+        paramMsgType0x210 = new StringBuilder();
+        paramMsgType0x210.append("handlePushRecommend receive push time=");
+        paramMsgType0x210.append(l);
+        QLog.d("Q.msg.BaseMessageProcessor", 2, paramMsgType0x210.toString());
+      }
+      Object localObject = localMsgBody.msg_persons_may_know.rpt_msg_friend_list.get();
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        paramMsgType0x210 = new ArrayList(((List)localObject).size());
+        localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           SubMsgType0xae.PersonMayKnow localPersonMayKnow = (SubMsgType0xae.PersonMayKnow)((Iterator)localObject).next();
@@ -102,37 +101,36 @@ public class SubType0xae
           }
           localPushRecommend.timestamp = l;
           paramMsgType0x210.add(localPushRecommend);
-          continue;
-          MessageProtoCodec.a(paramMessageHandler, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
         }
       }
+      if (!localMsgBody.msg_persons_may_know.bytes_role_name.has()) {
+        break label650;
+      }
+      paramMsgType0x210 = localMsgBody.msg_persons_may_know.bytes_role_name.get().toStringUtf8();
+      KplHelper.a(paramQQAppInterface, paramQQAppInterface.getCurrentUin(), paramMsgType0x210);
     }
     catch (Exception paramQQAppInterface)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PullActive", 2, "recv 0x210_0xae, prase msgBody error");
-      }
+      label634:
+      break label634;
     }
-    for (;;)
-    {
-      return;
-      if (localMsgBody.msg_persons_may_know.bytes_role_name.has())
-      {
-        paramMsgType0x210 = localMsgBody.msg_persons_may_know.bytes_role_name.get().toStringUtf8();
-        KplRoleInfo.saveGameNickWithUin(paramQQAppInterface, paramQQAppInterface.getCurrentUin(), paramMsgType0x210);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PullActive", 2, "recv 0x210_0xae, prase msgBody error");
     }
+    label650:
+    MessageProtoCodec.a(paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType, paramMessageHandler.a());
   }
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramOnLinePushMessageProcessor.a(), paramOnLinePushMessageProcessor.a().getMsgHandler(), paramMsgInfo, paramMsgType0x210);
+    paramOnLinePushMessageProcessor = (QQAppInterface)paramOnLinePushMessageProcessor.a();
+    a(paramOnLinePushMessageProcessor, paramOnLinePushMessageProcessor.getMsgHandler(), paramMsgInfo, paramMsgType0x210);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xae
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,6 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -62,55 +61,53 @@ public abstract class BigDataHandler
   
   private int a(int paramInt1, MessageMicro<?> paramMessageMicro, boolean paramBoolean, int paramInt2, Object paramObject)
   {
-    int i = 1;
     String str = this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a();
-    if (this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a() == null) {
-      if (paramBoolean) {
-        i = 2;
-      }
-    }
-    do
+    if (this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a() == null)
     {
-      do
-      {
-        do
-        {
-          return i;
-        } while (this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
-        return 3;
-        if (this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.b() != null) {
-          break;
-        }
-        if (paramBoolean) {
-          return 4;
-        }
-      } while (this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
-      return 5;
-      if ((str != null) && (str.length() != 0)) {
-        break;
-      }
       if (paramBoolean) {
-        return 6;
+        return 2;
       }
-    } while (this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
+      if (this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a(paramInt1, paramMessageMicro, paramInt2, paramObject)) {
+        return 1;
+      }
+      return 3;
+    }
+    if (this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.b() == null)
+    {
+      if (paramBoolean) {
+        return 4;
+      }
+      if (this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a(paramInt1, paramMessageMicro, paramInt2, paramObject)) {
+        return 1;
+      }
+      return 5;
+    }
+    if ((str != null) && (str.length() != 0)) {
+      return 0;
+    }
+    if (paramBoolean) {
+      return 6;
+    }
+    if (this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a(paramInt1, paramMessageMicro, paramInt2, paramObject)) {
+      return 1;
+    }
     return 7;
-    return 0;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
+        while (localIterator.hasNext())
         {
           BigDataHandler.ReqStruct localReqStruct = (BigDataHandler.ReqStruct)localIterator.next();
           a(localReqStruct.a(), localReqStruct.a(), true, localReqStruct.b(), localReqStruct.a());
         }
+        this.jdField_a_of_type_JavaUtilList.clear();
+        return;
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
     }
   }
   
@@ -119,7 +116,10 @@ public abstract class BigDataHandler
     int i = a(paramInt1, paramMessageMicro, paramBoolean, paramInt2, paramObject);
     if (i == 1)
     {
-      QLog.d("BigDataHandler", 1, "We will wait getIPList call back to do bigData Req" + paramInt1);
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("We will wait getIPList call back to do bigData Req");
+      ((StringBuilder)???).append(paramInt1);
+      QLog.d("BigDataHandler", 1, ((StringBuilder)???).toString());
       if (!paramBoolean) {
         synchronized (this.jdField_a_of_type_JavaLangObject)
         {
@@ -127,42 +127,33 @@ public abstract class BigDataHandler
           return;
         }
       }
+      return;
     }
-    else
+    if (i != 0)
     {
-      if (i != 0)
+      paramMessageMicro = new StringBuilder();
+      paramMessageMicro.append("USER command get key error status: ");
+      paramMessageMicro.append(i);
+      QLog.d("BigDataHandler", 1, paramMessageMicro.toString());
+      a(paramInt1, false, null, paramInt2, paramObject);
+      return;
+    }
+    try
+    {
+      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      Object localObject2 = new Cryptor().encrypt(paramMessageMicro.toByteArray(), this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a());
+      paramMessageMicro = new String();
+      i = 0;
+      while (i < 5)
       {
-        QLog.d("BigDataHandler", 1, "USER command get key error status: " + i);
-        a(paramInt1, false, null, paramInt2, paramObject);
-        return;
-      }
-      long l;
-      Object localObject2;
-      try
-      {
-        l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        localObject2 = new Cryptor().encrypt(paramMessageMicro.toByteArray(), this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a());
-        paramMessageMicro = new String();
-        i = 0;
-        while (i < "8.5.5".length())
-        {
-          ??? = paramMessageMicro;
-          if ("8.5.5".charAt(i) != '.') {
-            ??? = paramMessageMicro.concat(Character.toString("8.5.5".charAt(i)));
-          }
-          i += 1;
-          paramMessageMicro = (MessageMicro<?>)???;
+        ??? = paramMessageMicro;
+        if ("8.7.0".charAt(i) != '.') {
+          ??? = paramMessageMicro.concat(Character.toString("8.7.0".charAt(i)));
         }
-        ??? = new im_msg_head.LoginSig();
+        i += 1;
+        paramMessageMicro = (MessageMicro<?>)???;
       }
-      catch (Exception paramMessageMicro)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataHandler", 2, paramInt1 + " uin case long fail");
-        }
-        a(paramInt1, false, null, paramInt2, paramObject);
-        return;
-      }
+      ??? = new im_msg_head.LoginSig();
       ((im_msg_head.LoginSig)???).uint32_type.set(22);
       ((im_msg_head.LoginSig)???).bytes_sig.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.b()));
       Object localObject3 = new im_msg_head.HttpConnHead();
@@ -191,20 +182,23 @@ public abstract class BigDataHandler
         ((DataOutputStream)localObject3).write(41);
         ((DataOutputStream)localObject3).flush();
         ??? = this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a();
-        ??? = (String)??? + "cgi-bin/httpconn";
-        paramMessageMicro = paramMessageMicro.toByteArray();
-        localObject2 = new HttpNetReq();
-        ((HttpNetReq)localObject2).setUserData(paramObject);
-        ((HttpNetReq)localObject2).mSendData = paramMessageMicro;
-        ((HttpNetReq)localObject2).mCallback = new BigDataHandler.BigDataDownloadListener(paramInt1, this, this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a(), paramInt2, paramObject);
-        ((HttpNetReq)localObject2).mReqUrl = ((String)???);
-        ((HttpNetReq)localObject2).mHttpMethod = 1;
-        ((HttpNetReq)localObject2).mReqProperties.put("Accept-Encoding", "identity");
-        if (this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq((NetReq)localObject2);
-          return;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)???);
+        ((StringBuilder)localObject2).append("cgi-bin/httpconn");
+        ??? = ((StringBuilder)localObject2).toString();
+        localObject2 = paramMessageMicro.toByteArray();
+        paramMessageMicro = new HttpNetReq();
+        paramMessageMicro.setUserData(paramObject);
+        paramMessageMicro.mSendData = ((byte[])localObject2);
+        paramMessageMicro.mCallback = new BigDataHandler.BigDataDownloadListener(paramInt1, this, this.jdField_a_of_type_ComTencentQidianControllerBigDataGetIpHandler.a(), paramInt2, paramObject);
+        paramMessageMicro.mReqUrl = ((String)???);
+        paramMessageMicro.mHttpMethod = 1;
+        paramMessageMicro.mReqProperties.put("Accept-Encoding", "identity");
+        paramObject = this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService;
+        if (paramObject != null) {
+          paramObject.sendReq(paramMessageMicro);
         }
+        return;
       }
       catch (Exception paramMessageMicro)
       {
@@ -212,24 +206,38 @@ public abstract class BigDataHandler
           QLog.d("BigDataHandler", 2, paramMessageMicro.getMessage());
         }
         a(paramInt1, false, null, paramInt2, paramObject);
+        return;
       }
     }
+    catch (Exception paramMessageMicro)
+    {
+      label649:
+      break label649;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramMessageMicro = new StringBuilder();
+      paramMessageMicro.append(paramInt1);
+      paramMessageMicro.append(" uin case long fail");
+      QLog.d("BigDataHandler", 2, paramMessageMicro.toString());
+    }
+    a(paramInt1, false, null, paramInt2, paramObject);
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
+        while (localIterator.hasNext())
         {
           BigDataHandler.ReqStruct localReqStruct = (BigDataHandler.ReqStruct)localIterator.next();
           a(localReqStruct.a(), false, null, localReqStruct.b(), localReqStruct.a());
         }
+        this.jdField_a_of_type_JavaUtilList.clear();
+        return;
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
     }
   }
   
@@ -243,8 +251,9 @@ public abstract class BigDataHandler
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver);
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver);
     }
   }
   
@@ -252,7 +261,7 @@ public abstract class BigDataHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.controller.BigDataHandler
  * JD-Core Version:    0.7.0.1
  */

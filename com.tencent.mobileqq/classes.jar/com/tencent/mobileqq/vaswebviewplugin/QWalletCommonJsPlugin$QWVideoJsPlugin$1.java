@@ -13,44 +13,47 @@ class QWalletCommonJsPlugin$QWVideoJsPlugin$1
   
   public void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletCommonJsPlugin", 2, "onDownloadVideoFinished,id:" + paramString1 + ",path:" + paramString2 + ", resInfo:" + paramResourceInfo);
-    }
-    if ((paramResourceInfo == null) || (paramResourceInfo.type != 5)) {
-      return;
-    }
-    paramString1 = new JSONObject();
-    if (paramInt == 0) {
-      paramInt = 0;
-    }
-    try
+    if (QLog.isColorLevel())
     {
-      for (;;)
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadVideoFinished,id:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",path:");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(", resInfo:");
+      localStringBuilder.append(paramResourceInfo);
+      QLog.i("QWalletCommonJsPlugin", 2, localStringBuilder.toString());
+    }
+    if (paramResourceInfo != null)
+    {
+      if (paramResourceInfo.type != 5) {
+        return;
+      }
+      paramString1 = new JSONObject();
+      if (paramInt == 0) {
+        paramInt = 0;
+      } else if (paramInt == -4) {
+        paramInt = -2;
+      } else {
+        paramInt = -1;
+      }
+      try
       {
         paramString1.put("resultCode", paramInt);
-        QWalletCommonJsPlugin.QWVideoJsPlugin.access$1000(this.this$1, "downloadVideo", this.val$vid, paramString1);
-        return;
-        if (paramInt == -4) {
-          paramInt = -2;
-        } else {
-          paramInt = -1;
-        }
       }
-    }
-    catch (JSONException paramString2)
-    {
-      for (;;)
+      catch (JSONException paramString2)
       {
         if (QLog.isColorLevel()) {
           QLog.e("QWalletCommonJsPlugin", 2, paramString2, new Object[0]);
         }
       }
+      QWalletCommonJsPlugin.QWVideoJsPlugin.access$1000(this.this$1, "downloadVideo", this.val$vid, paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.QWVideoJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

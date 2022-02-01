@@ -30,10 +30,11 @@ public class HypeLinkAvTipsItem
   
   public View.OnClickListener a()
   {
-    if ((this.a == null) || (this.a.isEnqueued())) {
-      return null;
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (!localWeakReference.isEnqueued())) {
+      return (View.OnClickListener)this.a.get();
     }
-    return (View.OnClickListener)this.a.get();
+    return null;
   }
   
   public void a(View.OnClickListener paramOnClickListener)
@@ -73,7 +74,7 @@ public class HypeLinkAvTipsItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.tips.data.HypeLinkAvTipsItem
  * JD-Core Version:    0.7.0.1
  */

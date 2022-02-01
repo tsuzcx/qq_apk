@@ -73,27 +73,29 @@ public class FlutterActivity
   @Nullable
   private Drawable getSplashScreenFromManifest()
   {
+    Drawable localDrawable = null;
     for (;;)
     {
       try
       {
-        Object localObject = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
-        if (localObject == null) {
-          break label68;
-        }
-        i = ((Bundle)localObject).getInt("io.flutter.embedding.android.SplashScreenDrawable");
-        if (i != 0)
+        Bundle localBundle = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+        if (localBundle != null)
         {
-          if (Build.VERSION.SDK_INT > 21) {
-            return getResources().getDrawable(i, getTheme());
+          i = localBundle.getInt("io.flutter.embedding.android.SplashScreenDrawable");
+          if (i != 0)
+          {
+            if (Build.VERSION.SDK_INT > 21) {
+              return getResources().getDrawable(i, getTheme());
+            }
+            localDrawable = getResources().getDrawable(i);
           }
-          localObject = getResources().getDrawable(i);
-          return localObject;
+          return localDrawable;
         }
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
-      return null;
-      label68:
+      catch (PackageManager.NameNotFoundException localNameNotFoundException)
+      {
+        return null;
+      }
       int i = 0;
     }
   }
@@ -111,20 +113,22 @@ public class FlutterActivity
       if (localActivityInfo.metaData != null)
       {
         int i = localActivityInfo.metaData.getInt("io.flutter.embedding.android.NormalTheme", -1);
-        if (i != -1) {
-          setTheme(i);
+        if (i == -1) {
+          break label59;
         }
-      }
-      else
-      {
-        Log.v("FlutterActivity", "Using the launch theme as normal theme.");
+        setTheme(i);
         return;
       }
+      Log.v("FlutterActivity", "Using the launch theme as normal theme.");
+      return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      Log.e("FlutterActivity", "Could not read meta-data for FlutterActivity. Using the launch theme as normal theme.");
+      label52:
+      label59:
+      break label52;
     }
+    Log.e("FlutterActivity", "Could not read meta-data for FlutterActivity. Using the launch theme as normal theme.");
   }
   
   public static FlutterActivity.CachedEngineIntentBuilder withCachedEngine(@NonNull String paramString)
@@ -197,14 +201,19 @@ public class FlutterActivity
   @NonNull
   public String getDartEntrypointFunctionName()
   {
+    Object localObject2 = "main";
     try
     {
-      Object localObject = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
-      if (localObject != null) {}
-      for (localObject = ((Bundle)localObject).getString("io.flutter.Entrypoint"); localObject != null; localObject = null) {
-        return localObject;
+      Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+      if (localObject1 != null) {
+        localObject1 = ((Bundle)localObject1).getString("io.flutter.Entrypoint");
+      } else {
+        localObject1 = null;
       }
-      return "main";
+      if (localObject1 != null) {
+        localObject2 = localObject1;
+      }
+      return localObject2;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
     return "main";
@@ -225,29 +234,25 @@ public class FlutterActivity
   @NonNull
   public String getInitialRoute()
   {
-    Object localObject2;
+    Object localObject2 = "/";
     if (getIntent().hasExtra("route")) {
-      localObject2 = getIntent().getStringExtra("route");
+      return getIntent().getStringExtra("route");
     }
-    for (;;)
+    try
     {
-      return localObject2;
-      try
-      {
-        Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
-        if (localObject1 != null) {}
-        for (localObject1 = ((Bundle)localObject1).getString("io.flutter.InitialRoute");; localObject1 = null)
-        {
-          localObject2 = localObject1;
-          if (localObject1 != null) {
-            break;
-          }
-          return "/";
-        }
-        return "/";
+      Object localObject1 = getPackageManager().getActivityInfo(getComponentName(), 128).metaData;
+      if (localObject1 != null) {
+        localObject1 = ((Bundle)localObject1).getString("io.flutter.InitialRoute");
+      } else {
+        localObject1 = null;
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+      if (localObject1 != null) {
+        localObject2 = localObject1;
+      }
+      return localObject2;
     }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+    return "/";
   }
   
   @NonNull
@@ -425,28 +430,29 @@ public class FlutterActivity
   
   public boolean shouldDestroyEngineWithHost()
   {
-    boolean bool = getIntent().getBooleanExtra("destroy_engine_with_activity", false);
-    if ((getCachedEngineId() != null) || (this.delegate.isFlutterEngineFromHost())) {
-      return bool;
+    boolean bool2 = getIntent().getBooleanExtra("destroy_engine_with_activity", false);
+    boolean bool1 = bool2;
+    if (getCachedEngineId() == null)
+    {
+      if (this.delegate.isFlutterEngineFromHost()) {
+        return bool2;
+      }
+      bool1 = getIntent().getBooleanExtra("destroy_engine_with_activity", true);
     }
-    return getIntent().getBooleanExtra("destroy_engine_with_activity", true);
+    return bool1;
   }
   
   public boolean shouldRestoreAndSaveState()
   {
-    boolean bool = false;
     if (getIntent().hasExtra("enable_state_restoration")) {
-      bool = getIntent().getBooleanExtra("enable_state_restoration", false);
+      return getIntent().getBooleanExtra("enable_state_restoration", false);
     }
-    while (getCachedEngineId() != null) {
-      return bool;
-    }
-    return true;
+    return getCachedEngineId() == null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterActivity
  * JD-Core Version:    0.7.0.1
  */

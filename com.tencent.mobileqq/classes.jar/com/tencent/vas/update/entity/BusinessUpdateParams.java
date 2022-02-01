@@ -21,12 +21,21 @@ public class BusinessUpdateParams
   @NonNull
   public String toString()
   {
-    return "BusinessUpdateParams mItemId = " + this.mItemId + "，mBid = " + this.mBid + "，mScid = " + this.mScid + "，mFrom = " + this.mFrom;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BusinessUpdateParams mItemId = ");
+    localStringBuilder.append(this.mItemId);
+    localStringBuilder.append("，mBid = ");
+    localStringBuilder.append(this.mBid);
+    localStringBuilder.append("，mScid = ");
+    localStringBuilder.append(this.mScid);
+    localStringBuilder.append("，mFrom = ");
+    localStringBuilder.append(this.mFrom);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.entity.BusinessUpdateParams
  * JD-Core Version:    0.7.0.1
  */

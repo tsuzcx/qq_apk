@@ -50,56 +50,56 @@ public class TroopPobingItemView
   public TroopPobingItemView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    inflate(paramContext, 2131562163, this);
-    findViewById(2131373310).setOnClickListener(this);
-    findViewById(2131373304).setOnClickListener(this);
+    inflate(paramContext, 2131562000, this);
+    findViewById(2131372890).setOnClickListener(this);
+    findViewById(2131372884).setOnClickListener(this);
   }
   
   private void a(PobingDecoder.BitmapsCache paramBitmapsCache)
   {
     Resources localResources = getContext().getResources();
     int i = 0;
-    if (i < getChildCount())
+    while (i < getChildCount())
     {
       View localView = getChildAt(i);
-      int j = localView.getId();
-      BitmapDrawable localBitmapDrawable1 = new BitmapDrawable(localResources, (Bitmap)paramBitmapsCache.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j)));
-      switch (j)
+      int k = localView.getId();
+      BitmapDrawable localBitmapDrawable = new BitmapDrawable(localResources, (Bitmap)paramBitmapsCache.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(k)));
+      int j = 8;
+      Object localObject1;
+      Object localObject2;
+      switch (k)
       {
       default: 
-        localView.setBackgroundDrawable(localBitmapDrawable1);
-      case 2131373302: 
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = (Bitmap)paramBitmapsCache.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j));
-          ((TextView)localView).setTextColor(paramBitmapsCache.b);
-          ((TextView)localView).setMaxWidth(localBitmapDrawable1.getIntrinsicWidth());
-          localView.setBackgroundDrawable(PobingUpdateCallback.createNinePatchDrawable(getResources(), (Bitmap)localObject));
+        localView.setBackgroundDrawable(localBitmapDrawable);
+        break;
+      case 2131372890: 
+        localObject1 = new StateListDrawable();
+        localObject2 = new BitmapDrawable(localResources, (Bitmap)paramBitmapsCache.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(k)));
+        ((Drawable)localObject2).setColorFilter(0, PorterDuff.Mode.CLEAR);
+        ((StateListDrawable)localObject1).addState(new int[] { 16842919 }, localBitmapDrawable);
+        ((StateListDrawable)localObject1).addState(new int[] { 0 }, (Drawable)localObject2);
+        localView.setBackgroundDrawable((Drawable)localObject1);
+        if (!this.jdField_a_of_type_Boolean) {
+          j = 0;
         }
-      case 2131373301: 
-        localView.setBackgroundDrawable(localBitmapDrawable1);
-        if (this.jdField_a_of_type_Boolean) {}
-        for (j = 8;; j = 0)
-        {
-          localView.setVisibility(j);
-          break;
-        }
-      }
-      Object localObject = new StateListDrawable();
-      BitmapDrawable localBitmapDrawable2 = new BitmapDrawable(localResources, (Bitmap)paramBitmapsCache.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(j)));
-      localBitmapDrawable2.setColorFilter(0, PorterDuff.Mode.CLEAR);
-      ((StateListDrawable)localObject).addState(new int[] { 16842919 }, localBitmapDrawable1);
-      ((StateListDrawable)localObject).addState(new int[] { 0 }, localBitmapDrawable2);
-      localView.setBackgroundDrawable((Drawable)localObject);
-      if (this.jdField_a_of_type_Boolean) {}
-      for (j = 8;; j = 0)
-      {
         localView.setVisibility(j);
         ((TextView)localView).setTextColor(paramBitmapsCache.b);
         break;
+      case 2131372882: 
+        localObject1 = (Bitmap)paramBitmapsCache.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(k));
+        localObject2 = (TextView)localView;
+        ((TextView)localObject2).setTextColor(paramBitmapsCache.b);
+        ((TextView)localObject2).setMaxWidth(localBitmapDrawable.getIntrinsicWidth());
+        localView.setBackgroundDrawable(PobingUpdateCallback.createNinePatchDrawable(getResources(), (Bitmap)localObject1));
+        break;
+      case 2131372881: 
+        localView.setBackgroundDrawable(localBitmapDrawable);
+        if (!this.jdField_a_of_type_Boolean) {
+          j = 0;
+        }
+        localView.setVisibility(j);
       }
+      i += 1;
     }
     TroopPobingItemBuilder.a(this.jdField_a_of_type_AndroidViewView, true);
     ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A4F6", 0, 0, "", "", "", "");
@@ -135,25 +135,27 @@ public class TroopPobingItemView
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131372884)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopPobingItemBuilder$Callback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopPobingItemBuilder$Callback.a(this);
+      if (i == 2131372890)
+      {
+        TroopPobingItemBuilder.Callback localCallback = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopPobingItemBuilder$Callback;
+        if (localCallback != null) {
+          localCallback.a(this);
+        }
+        ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A4F7", 2, 0, "", "", "", "");
       }
-      ReportController.b(null, "dc00898", "", "", "qq_vip", "0X800A4F7", 2, 0, "", "", "", "");
-      continue;
+    }
+    else {
       PobingManager.a(getContext());
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopPobingItemView
  * JD-Core Version:    0.7.0.1
  */

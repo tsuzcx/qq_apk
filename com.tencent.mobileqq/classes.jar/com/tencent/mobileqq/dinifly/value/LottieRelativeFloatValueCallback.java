@@ -15,10 +15,10 @@ public class LottieRelativeFloatValueCallback
   
   public Float getOffset(LottieFrameInfo<Float> paramLottieFrameInfo)
   {
-    if (this.value == null) {
-      throw new IllegalArgumentException("You must provide a static value in the constructor , call setValue, or override getValue.");
+    if (this.value != null) {
+      return (Float)this.value;
     }
-    return (Float)this.value;
+    throw new IllegalArgumentException("You must provide a static value in the constructor , call setValue, or override getValue.");
   }
   
   public Float getValue(LottieFrameInfo<Float> paramLottieFrameInfo)
@@ -28,7 +28,7 @@ public class LottieRelativeFloatValueCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.value.LottieRelativeFloatValueCallback
  * JD-Core Version:    0.7.0.1
  */

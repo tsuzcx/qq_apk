@@ -25,7 +25,6 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.MqqWeakReferenceHandler;
 import cooperation.plugin.IPluginManager;
-import cooperation.plugin.PluginInfo;
 
 public class QlinkBridgeActivity
   extends IphoneTitleBarActivity
@@ -40,23 +39,25 @@ public class QlinkBridgeActivity
   
   private void a(int paramInt)
   {
-    QLog.e("QlinkBridgeActivity", 1, "[QlinkBridgeActivity] handleFailed errCode:" + paramInt);
-    int i = getResources().getDimensionPixelSize(2131299166);
-    String str = HardCodeUtil.a(2131709848);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[QlinkBridgeActivity] handleFailed errCode:");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.e("QlinkBridgeActivity", 1, ((StringBuilder)localObject).toString());
+    int i = getResources().getDimensionPixelSize(2131299168);
+    localObject = HardCodeUtil.a(2131709835);
     if (-4 == paramInt) {
-      str = HardCodeUtil.a(2131709849);
-    }
-    for (;;)
+      localObject = HardCodeUtil.a(2131709836);
+    } else if ((-5 != paramInt) && (-1 != paramInt) && (-3 != paramInt) && (-2 != paramInt))
     {
-      QQToast.a(this.app.getApp(), 1, str, 0).b(i);
-      finish();
-      return;
-      if ((-5 == paramInt) || (-1 == paramInt) || (-3 == paramInt) || (-2 == paramInt)) {
-        str = HardCodeUtil.a(2131709850);
-      } else if (-6 == paramInt) {
-        str = HardCodeUtil.a(2131709852);
+      if (-6 == paramInt) {
+        localObject = HardCodeUtil.a(2131709839);
       }
     }
+    else {
+      localObject = HardCodeUtil.a(2131709837);
+    }
+    QQToast.a(this.app.getApp(), 1, (CharSequence)localObject, 0).b(i);
+    finish();
   }
   
   private void a(String paramString, PluginBaseInfo paramPluginBaseInfo)
@@ -86,10 +87,16 @@ public class QlinkBridgeActivity
       a(-1);
       return;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QlinkBridgeActivity", 4, "[QlinkBridgeActivity] queryPluginInfo mState : " + paramPluginBaseInfo.mState + " progress:" + paramPluginBaseInfo.mDownloadProgress);
+    if (QLog.isDevelopLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("[QlinkBridgeActivity] queryPluginInfo mState : ");
+      paramString.append(paramPluginBaseInfo.mState);
+      paramString.append(" progress:");
+      paramString.append(paramPluginBaseInfo.mDownloadProgress);
+      QLog.d("QlinkBridgeActivity", 4, paramString.toString());
     }
-    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!NetworkUtil.g(getApplicationContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
+    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!NetworkUtil.isNetworkAvailable(getApplicationContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
     {
       a(-4);
       return;
@@ -99,8 +106,16 @@ public class QlinkBridgeActivity
     default: 
       a(-3);
       return;
-    case -1: 
-      a(-6);
+    case 4: 
+      b();
+      return;
+    case 3: 
+      if (i != 0)
+      {
+        a(-5);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
       return;
     case 0: 
       this.jdField_a_of_type_CooperationPluginIPluginManager.d("qlink_plugin.apk");
@@ -113,16 +128,8 @@ public class QlinkBridgeActivity
       }
       this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
       return;
-    case 3: 
-      if (i != 0)
-      {
-        a(-5);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
-      return;
-    case 4: 
-      b();
+    case -1: 
+      a(-6);
       return;
     }
     a(-2);
@@ -130,54 +137,52 @@ public class QlinkBridgeActivity
   
   private boolean a()
   {
-    boolean bool = false;
     if (QlinkPluginProxyActivity.a(this))
     {
       Intent localIntent = QlinkHelper.a();
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("string_from", this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        localBundle.putAll(this.jdField_a_of_type_AndroidOsBundle);
+      Bundle localBundle1 = new Bundle();
+      localBundle1.putInt("string_from", this.jdField_a_of_type_Int);
+      Bundle localBundle2 = this.jdField_a_of_type_AndroidOsBundle;
+      if (localBundle2 != null) {
+        localBundle1.putAll(localBundle2);
       }
-      localIntent.putExtra("string_bundle", localBundle);
-      localBundle.putString("_SELF_NICK_", ContactUtils.i(this.app, this.app.getAccount()));
+      localIntent.putExtra("string_bundle", localBundle1);
+      localBundle1.putString("_SELF_NICK_", ContactUtils.c(this.app, this.app.getAccount()));
       QlinkPluginProxyActivity.a(this, this.app.getAccount(), localIntent, 0, null);
       finish();
       overridePendingTransition(0, 0);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   private void b()
   {
-    QLog.i("QlinkBridgeActivity", 1, "[QlinkBridgeActivity] launchPlugin mFrom:" + this.jdField_a_of_type_Int);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[QlinkBridgeActivity] launchPlugin mFrom:");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+    QLog.i("QlinkBridgeActivity", 1, ((StringBuilder)localObject1).toString());
     Intent localIntent = QlinkHelper.a();
     Bundle localBundle = new Bundle();
     localBundle.putInt("string_from", this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      localBundle.putAll(this.jdField_a_of_type_AndroidOsBundle);
+    localObject1 = this.jdField_a_of_type_AndroidOsBundle;
+    if (localObject1 != null) {
+      localBundle.putAll((Bundle)localObject1);
     }
     if (this.app == null) {
       return;
     }
-    Object localObject1 = this.app.getAccount();
+    localObject1 = this.app.getAccount();
     try
     {
-      localObject2 = ContactUtils.a(this.app, this.app.getAccount());
-      localObject1 = localObject2;
+      String str = ContactUtils.a(this.app, this.app.getAccount());
+      localObject1 = str;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject2;
-        localException.printStackTrace();
-      }
-      QlinkPluginProxyActivity.a(this, this.app.getAccount(), localIntent, 0, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
-      overridePendingTransition(0, 0);
+      localException.printStackTrace();
     }
-    localObject2 = localObject1;
+    Object localObject2 = localObject1;
     if (localObject1 == null) {
       localObject2 = this.app.getAccount();
     }
@@ -190,42 +195,46 @@ public class QlinkBridgeActivity
       overridePendingTransition(0, 0);
       return;
     }
+    QlinkPluginProxyActivity.a(this, this.app.getAccount(), localIntent, 0, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    overridePendingTransition(0, 0);
   }
   
   public void a()
   {
     this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(QQManagerFactory.MGR_PLUGIN));
+    int i = 1;
     QLog.i("QlinkBridgeActivity", 1, "[QlinkBridgeActivity] onPluginManagerLoaded SUPPORT_NETWORKING:true");
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager == null) {
-      a(-6);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_CooperationPluginIPluginManager == null)
     {
+      a(-6);
       return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      PluginInfo localPluginInfo = this.jdField_a_of_type_CooperationPluginIPluginManager.a("qlink_plugin.apk");
-      int j = 0;
-      int i = j;
-      if (localPluginInfo != null)
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    Object localObject = this.jdField_a_of_type_CooperationPluginIPluginManager.a("qlink_plugin.apk");
+    if (localObject != null)
+    {
+      if (((PluginBaseInfo)localObject).mState == 4)
       {
-        if (localPluginInfo.mState != 4) {
-          break label123;
-        }
         b();
       }
-      for (i = 1; i == 0; i = j)
+      else
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131709851));
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-        }
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
-        return;
-        label123:
         QLog.i("QlinkBridgeActivity", 1, "[QlinkBridgeActivity] onPluginManagerLoaded start down or install...");
         this.jdField_a_of_type_CooperationPluginIPluginManager.d("qlink_plugin.apk");
       }
+    }
+    else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      if (localObject != null)
+      {
+        ((QQProgressDialog)localObject).a(HardCodeUtil.a(2131709838));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      }
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1001, 400L);
     }
   }
   
@@ -238,51 +247,48 @@ public class QlinkBridgeActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
-    boolean bool = true;
-    do
+    try
     {
-      try
+      super.doOnCreate(paramBundle);
+      this.jdField_a_of_type_Int = getIntent().getIntExtra("_from_", 0);
+      this.jdField_a_of_type_AndroidOsBundle = getIntent().getBundleExtra("_param_");
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
+      if (BaseApplication.getContext().getSharedPreferences("QlinkResistTerrorist", 0).getInt("QlinkResistTerrorist_res", 0) == 1)
       {
-        super.doOnCreate(paramBundle);
-        this.jdField_a_of_type_Int = getIntent().getIntExtra("_from_", 0);
-        this.jdField_a_of_type_AndroidOsBundle = getIntent().getBundleExtra("_param_");
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
-        if (BaseApplication.getContext().getSharedPreferences("QlinkResistTerrorist", 0).getInt("QlinkResistTerrorist_res", 0) == 1)
-        {
-          FileManagerReporter.a("0X8005392");
-          if (QLog.isColorLevel()) {
-            QLog.e("QlinkBridgeActivity", 2, "[QLINK] QQ - startQlink failed because of QlinkResistTerrorist_res is 1!!!");
-          }
-          paramBundle = new QlinkBridgeActivity.1(this);
-          DialogUtil.a(this, 233, getString(2131698333), getString(2131698358), 2131698332, 2131698332, paramBundle, null).show();
-          bool = false;
-          return bool;
+        FileManagerReporter.a("0X8005392");
+        if (QLog.isColorLevel()) {
+          QLog.e("QlinkBridgeActivity", 2, "[QLINK] QQ - startQlink failed because of QlinkResistTerrorist_res is 1!!!");
         }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e("QlinkBridgeActivity", 1, "oncreate excption:" + paramBundle.toString());
-        finish();
+        paramBundle = new QlinkBridgeActivity.1(this);
+        DialogUtil.a(this, 233, getString(2131698398), getString(2131698423), 2131698397, 2131698397, paramBundle, null).show();
         return false;
       }
-    } while (a());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131299166));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131709847));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new QlinkBridgeActivity.2(this));
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new QlinkBridgeActivity.3(this), 300L);
-    return true;
+      if (a()) {
+        return true;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131299168));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131709834));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new QlinkBridgeActivity.2(this));
+      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.postDelayed(new QlinkBridgeActivity.3(this), 300L);
+      return true;
+    }
+    catch (Exception paramBundle)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("oncreate excption:");
+      localStringBuilder.append(paramBundle.toString());
+      QLog.e("QlinkBridgeActivity", 1, localStringBuilder.toString());
+      finish();
+    }
+    return false;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 1001)
     {
-    }
-    for (;;)
-    {
-      return true;
       if (QLog.isDevelopLevel()) {
         QLog.d("QlinkBridgeActivity", 4, "[QlinkBridgeActivity]  ACTION_QUERY!");
       }
@@ -290,6 +296,7 @@ public class QlinkBridgeActivity
         a("qlink_plugin.apk", this.jdField_a_of_type_CooperationPluginIPluginManager.a("qlink_plugin.apk"));
       }
     }
+    return true;
   }
   
   @Override
@@ -302,27 +309,30 @@ public class QlinkBridgeActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      ((QQProgressDialog)localObject).dismiss();
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
     }
-    if (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null) {
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1001);
+    localObject = this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
+    if (localObject != null) {
+      ((MqqWeakReferenceHandler)localObject).removeMessages(1001);
     }
-    if ((this.jdField_a_of_type_CooperationPluginIPluginManager == null) || (QLog.isDevelopLevel())) {
+    localObject = this.jdField_a_of_type_CooperationPluginIPluginManager;
+    if (QLog.isDevelopLevel()) {
       QLog.d("QPlugin", 4, "QlinkBridgeActivity onDestroy");
     }
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.QlinkBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

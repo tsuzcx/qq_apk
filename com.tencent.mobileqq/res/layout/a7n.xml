@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+<androidx.appcompat.widget.FitWindowsLinearLayout android:orientation="vertical" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.story.view.AEAnimationQIMCircleProgress android:layout_gravity="center" android:id="@id/m3x" android:visibility="visible" android:layout_width="86.0dip" android:layout_height="86.0dip" android:scaleType="fitCenter" />
-    <ImageView android:layout_gravity="center" android:id="@id/na2" android:layout_width="95.0dip" android:layout_height="95.0dip" android:scaleType="fitXY" />
-    <ImageView android:layout_gravity="center" android:id="@id/n_o" android:layout_width="@dimen/b_e" android:layout_height="@dimen/b_e" android:scaleType="fitXY" />
-</merge>
+    <TextView android:ellipsize="end" android:layout_gravity="start" android:id="@id/title" android:paddingLeft="?a3b" android:paddingTop="@dimen/ba1" android:paddingRight="?a3b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="?android:windowTitleStyle" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aur" />
+</androidx.appcompat.widget.FitWindowsLinearLayout>

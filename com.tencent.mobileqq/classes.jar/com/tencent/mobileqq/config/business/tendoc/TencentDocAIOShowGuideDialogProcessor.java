@@ -54,7 +54,10 @@ public class TencentDocAIOShowGuideDialogProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, "TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:");
+    localStringBuilder.append(paramInt);
+    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -64,7 +67,7 @@ public class TencentDocAIOShowGuideDialogProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocAIOShowGuideDialogProcessor
  * JD-Core Version:    0.7.0.1
  */

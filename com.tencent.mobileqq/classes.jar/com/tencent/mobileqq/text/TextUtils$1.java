@@ -12,14 +12,18 @@ final class TextUtils$1
   public void run()
   {
     Drawable localDrawable = QQEmojiUtil.loadEmojiFromDisk(BaseApplication.getContext().getResources(), this.val$index);
-    if ((localDrawable != null) && (this.val$callback != null)) {
-      this.val$callback.callbackWhenSysEmojiLoaded(localDrawable);
+    if (localDrawable != null)
+    {
+      TextUtils.LoadSysEmojiCallback localLoadSysEmojiCallback = this.val$callback;
+      if (localLoadSysEmojiCallback != null) {
+        localLoadSysEmojiCallback.callbackWhenSysEmojiLoaded(localDrawable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.TextUtils.1
  * JD-Core Version:    0.7.0.1
  */

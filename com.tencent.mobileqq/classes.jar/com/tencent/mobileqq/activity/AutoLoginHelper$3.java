@@ -14,25 +14,21 @@ class AutoLoginHelper$3
       if ((AutoLoginHelper.a(this.this$0) == null) && (!AutoLoginHelper.a(this.this$0).isFinishing()))
       {
         AutoLoginHelper.a(this.this$0, new QQProgressDialog(AutoLoginHelper.a(this.this$0), AutoLoginHelper.a(this.this$0).getTitleBarHeight()));
-        AutoLoginHelper.a(this.this$0).c(2131694694);
+        AutoLoginHelper.a(this.this$0).c(2131694668);
       }
-      if ((AutoLoginHelper.a(this.this$0) != null) && (!AutoLoginHelper.a(this.this$0).isShowing())) {
-        AutoLoginHelper.a(this.this$0).show();
-      }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
+    }
+    if ((AutoLoginHelper.a(this.this$0) != null) && (!AutoLoginHelper.a(this.this$0).isShowing())) {
+      AutoLoginHelper.a(this.this$0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoLoginHelper.3
  * JD-Core Version:    0.7.0.1
  */

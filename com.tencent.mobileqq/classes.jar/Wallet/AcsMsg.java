@@ -17,6 +17,7 @@ public final class AcsMsg
   public String busi_id = "";
   public String busi_logo = "";
   public String busi_name = "";
+  public int calendar = 0;
   public String content = "";
   public String flag_text = "";
   public String jump_url = "";
@@ -30,7 +31,7 @@ public final class AcsMsg
   
   public AcsMsg() {}
   
-  public AcsMsg(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, int paramInt1, String paramString5, String paramString6, String paramString7, String paramString8, long paramLong2, String paramString9, String paramString10, String paramString11, int paramInt2, int paramInt3, String paramString12, String paramString13)
+  public AcsMsg(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, int paramInt1, String paramString5, String paramString6, String paramString7, String paramString8, long paramLong2, String paramString9, String paramString10, String paramString11, int paramInt2, int paramInt3, String paramString12, String paramString13, int paramInt4)
   {
     this.msg_id = paramString1;
     this.busi_id = paramString2;
@@ -50,28 +51,22 @@ public final class AcsMsg
     this.mn_appid = paramInt3;
     this.mn_reserved = paramString12;
     this.busi_logo = paramString13;
+    this.calendar = paramInt4;
   }
   
   public int compareTo(AcsMsg paramAcsMsg)
   {
-    int k = 0;
     int[] arrayOfInt = new int[1];
     arrayOfInt[0] = JceUtil.compareTo(this.notice_time, paramAcsMsg.notice_time);
     int i = 0;
-    for (;;)
+    while (i < arrayOfInt.length)
     {
-      int j = k;
-      if (i < arrayOfInt.length)
-      {
-        if (arrayOfInt[i] != 0) {
-          j = arrayOfInt[i];
-        }
-      }
-      else {
-        return j;
+      if (arrayOfInt[i] != 0) {
+        return arrayOfInt[i];
       }
       i += 1;
     }
+    return 0;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -94,59 +89,74 @@ public final class AcsMsg
     this.mn_appid = paramJceInputStream.read(this.mn_appid, 15, false);
     this.mn_reserved = paramJceInputStream.readString(16, false);
     this.busi_logo = paramJceInputStream.readString(17, false);
+    this.calendar = paramJceInputStream.read(this.calendar, 18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.msg_id != null) {
-      paramJceOutputStream.write(this.msg_id, 0);
+    String str = this.msg_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.busi_id != null) {
-      paramJceOutputStream.write(this.busi_id, 1);
+    str = this.busi_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.busi_name != null) {
-      paramJceOutputStream.write(this.busi_name, 2);
+    str = this.busi_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.busi_icon != null) {
-      paramJceOutputStream.write(this.busi_icon, 3);
+    str = this.busi_icon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.sub_time, 4);
     paramJceOutputStream.write(this.type, 5);
-    if (this.flag_text != null) {
-      paramJceOutputStream.write(this.flag_text, 6);
+    str = this.flag_text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.btn_text != null) {
-      paramJceOutputStream.write(this.btn_text, 7);
+    str = this.btn_text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 8);
+    str = this.title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 9);
+    str = this.content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
     paramJceOutputStream.write(this.notice_time, 10);
-    if (this.banner_url != null) {
-      paramJceOutputStream.write(this.banner_url, 11);
+    str = this.banner_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.jump_url != null) {
-      paramJceOutputStream.write(this.jump_url, 12);
+    str = this.jump_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
-    if (this.applet_jump_url != null) {
-      paramJceOutputStream.write(this.applet_jump_url, 13);
+    str = this.applet_jump_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 13);
     }
     paramJceOutputStream.write(this.banner_type, 14);
     paramJceOutputStream.write(this.mn_appid, 15);
-    if (this.mn_reserved != null) {
-      paramJceOutputStream.write(this.mn_reserved, 16);
+    str = this.mn_reserved;
+    if (str != null) {
+      paramJceOutputStream.write(str, 16);
     }
-    if (this.busi_logo != null) {
-      paramJceOutputStream.write(this.busi_logo, 17);
+    str = this.busi_logo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 17);
     }
+    paramJceOutputStream.write(this.calendar, 18);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsMsg
  * JD-Core Version:    0.7.0.1
  */

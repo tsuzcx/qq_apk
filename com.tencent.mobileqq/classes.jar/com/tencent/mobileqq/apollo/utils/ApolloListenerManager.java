@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import com.tencent.mobileqq.apollo.api.model.ApolloActionData;
+import com.tencent.mobileqq.apollo.model.ApolloActionData;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,8 +12,9 @@ public class ApolloListenerManager
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.clear();
+    List localList = this.a;
+    if (localList != null) {
+      localList.clear();
     }
   }
   
@@ -38,20 +39,19 @@ public class ApolloListenerManager
   
   public void a(IResDownloadListener paramIResDownloadListener)
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      Iterator localIterator = this.a.iterator();
-      WeakReference localWeakReference;
-      do
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        if (!localIterator.hasNext()) {
-          break;
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if ((localWeakReference != null) && (localWeakReference.get() == paramIResDownloadListener)) {
+          return;
         }
-        localWeakReference = (WeakReference)localIterator.next();
-      } while ((localWeakReference == null) || (localWeakReference.get() != paramIResDownloadListener));
+      }
+      this.a.add(new WeakReference(paramIResDownloadListener));
     }
-    return;
-    this.a.add(new WeakReference(paramIResDownloadListener));
   }
   
   public void a(Boolean paramBoolean)
@@ -94,14 +94,15 @@ public class ApolloListenerManager
   
   public void b(IResDownloadListener paramIResDownloadListener)
   {
-    if (this.a != null) {
-      this.a.remove(paramIResDownloadListener);
+    List localList = this.a;
+    if (localList != null) {
+      localList.remove(paramIResDownloadListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloListenerManager
  * JD-Core Version:    0.7.0.1
  */

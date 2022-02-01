@@ -2,7 +2,6 @@ package com.tencent.mobileqq.webview.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -11,6 +10,7 @@ import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
+import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,8 +43,12 @@ public class WebStateReporter
   {
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_c_of_type_Long = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebStateReporter_report", 2, "Current State = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Current State = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("WebStateReporter_report", 2, localStringBuilder.toString());
     }
   }
   
@@ -55,99 +59,118 @@ public class WebStateReporter
   
   void a(Context paramContext)
   {
-    paramContext = new File(paramContext.getFilesDir(), ClubContentJsonTask.e.jdField_a_of_type_JavaLangString);
-    if (!paramContext.exists()) {}
-    do
+    Object localObject = ClubContentJsonTask.e.jdField_a_of_type_JavaLangString;
+    paramContext = new File(paramContext.getFilesDir(), (String)localObject);
+    if (!paramContext.exists()) {
+      return;
+    }
+    paramContext = FileUtils.readFileContent(paramContext);
+    if (TextUtils.isEmpty(paramContext)) {
+      return;
+    }
+    try
     {
-      do
+      paramContext = new JSONObject(paramContext);
+      int i = paramContext.getInt("sample_rate");
+      jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(i));
+      localObject = paramContext.getJSONArray("rules");
+      int j = ((JSONArray)localObject).length();
+      i = 0;
+      while (i < j)
       {
-        return;
-        paramContext = FileUtils.a(paramContext);
-      } while (TextUtils.isEmpty(paramContext));
-      try
-      {
-        paramContext = new JSONObject(paramContext);
-        int i = paramContext.getInt("sample_rate");
-        jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(i));
-        JSONArray localJSONArray = paramContext.getJSONArray("rules");
-        int j = localJSONArray.length();
-        i = 0;
-        while (i < j)
-        {
-          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-          jdField_a_of_type_JavaUtilHashMap.put(localJSONObject.getString("distUrl"), Integer.valueOf(localJSONObject.getInt("rate")));
-          i += 1;
-        }
-        jdField_c_of_type_Int = paramContext.getInt("tail_number");
-        return;
+        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+        jdField_a_of_type_JavaUtilHashMap.put(localJSONObject.getString("distUrl"), Integer.valueOf(localJSONObject.getInt("rate")));
+        i += 1;
       }
-      catch (JSONException paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("WebStateReporter", 2, "" + paramContext);
+      jdField_c_of_type_Int = paramContext.getInt("tail_number");
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(paramContext);
+        QLog.d("WebStateReporter", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   public void a(Context paramContext, long paramLong, String paramString, boolean paramBoolean)
   {
-    if ((paramContext == null) || (paramLong <= 0L) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramContext != null) && (paramLong > 0L))
     {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Boolean = false;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+        this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
+        this.jdField_a_of_type_Boolean = false;
+      }
     }
     try
     {
-      i = NetworkUtil.a(paramContext);
-      switch (i)
-      {
-      default: 
-        String str1 = "Unknown";
-        ThreadManager.post(new WebStateReporter.1(this, paramBoolean, paramString, paramContext, paramLong, str1), 5, null, false);
-        return;
-      }
+      i = NetworkUtil.getSystemNetwork(paramContext);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        int i = 0;
-        continue;
-        String str2 = "2G";
-        continue;
-        str2 = "3G";
-        continue;
-        str2 = "4G";
-        continue;
-        str2 = "wifi";
+      int i;
+      label56:
+      String str;
+      break label56;
+    }
+    i = 0;
+    if (i != 1) {
+      if (i != 2) {
+        if (i != 3) {
+          if (i != 4) {
+            str = "Unknown";
+          }
+        }
       }
     }
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString, int paramInt)
-  {
-    if (paramInt == 0) {}
     for (;;)
     {
-      return;
-      if (paramAppInterface == null) {}
-      for (long l = 0L; !TextUtils.isEmpty(paramString); l = paramAppInterface.getLongAccountUin())
-      {
-        ThreadManager.post(new WebStateReporter.2(this, paramString, l, paramInt), 5, null, false);
-        return;
-      }
+      break;
+      str = "4G";
+      continue;
+      str = "3G";
+      continue;
+      str = "2G";
+      continue;
+      str = "wifi";
     }
+    ThreadManager.post(new WebStateReporter.1(this, paramBoolean, paramString, paramContext, paramLong, str), 5, null, false);
   }
   
   public void a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
   }
+  
+  public void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  {
+    if (paramInt == 0) {
+      return;
+    }
+    long l;
+    if (paramAppRuntime == null) {
+      l = 0L;
+    } else {
+      l = paramAppRuntime.getLongAccountUin();
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    ThreadManager.post(new WebStateReporter.2(this, paramString, l, paramInt), 5, null, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.utils.WebStateReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,11 @@ import androidx.annotation.GuardedBy;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.VisibleForTesting;
 import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
 public class SelfDestructiveThread
@@ -107,112 +112,59 @@ public class SelfDestructiveThread
     post(new SelfDestructiveThread.2(this, paramCallable, new Handler(), paramReplyCallback));
   }
   
-  /* Error */
   public <T> T postAndWait(Callable<T> paramCallable, int paramInt)
   {
-    // Byte code:
-    //   0: new 130	java/util/concurrent/locks/ReentrantLock
-    //   3: dup
-    //   4: invokespecial 131	java/util/concurrent/locks/ReentrantLock:<init>	()V
-    //   7: astore 7
-    //   9: aload 7
-    //   11: invokevirtual 135	java/util/concurrent/locks/ReentrantLock:newCondition	()Ljava/util/concurrent/locks/Condition;
-    //   14: astore 8
-    //   16: new 137	java/util/concurrent/atomic/AtomicReference
-    //   19: dup
-    //   20: invokespecial 138	java/util/concurrent/atomic/AtomicReference:<init>	()V
-    //   23: astore 9
-    //   25: new 140	java/util/concurrent/atomic/AtomicBoolean
-    //   28: dup
-    //   29: iconst_1
-    //   30: invokespecial 143	java/util/concurrent/atomic/AtomicBoolean:<init>	(Z)V
-    //   33: astore 10
-    //   35: aload_0
-    //   36: new 145	androidx/core/provider/SelfDestructiveThread$3
-    //   39: dup
-    //   40: aload_0
-    //   41: aload 9
-    //   43: aload_1
-    //   44: aload 7
-    //   46: aload 10
-    //   48: aload 8
-    //   50: invokespecial 148	androidx/core/provider/SelfDestructiveThread$3:<init>	(Landroidx/core/provider/SelfDestructiveThread;Ljava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/Callable;Ljava/util/concurrent/locks/ReentrantLock;Ljava/util/concurrent/atomic/AtomicBoolean;Ljava/util/concurrent/locks/Condition;)V
-    //   53: invokespecial 122	androidx/core/provider/SelfDestructiveThread:post	(Ljava/lang/Runnable;)V
-    //   56: aload 7
-    //   58: invokevirtual 151	java/util/concurrent/locks/ReentrantLock:lock	()V
-    //   61: aload 10
-    //   63: invokevirtual 154	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   66: ifne +16 -> 82
-    //   69: aload 9
-    //   71: invokevirtual 157	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
-    //   74: astore_1
-    //   75: aload 7
-    //   77: invokevirtual 160	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   80: aload_1
-    //   81: areturn
-    //   82: getstatic 166	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   85: iload_2
-    //   86: i2l
-    //   87: invokevirtual 170	java/util/concurrent/TimeUnit:toNanos	(J)J
-    //   90: lstore_3
-    //   91: aload 8
-    //   93: lload_3
-    //   94: invokeinterface 175 3 0
-    //   99: lstore 5
-    //   101: aload 10
-    //   103: invokevirtual 154	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   106: ifne +16 -> 122
-    //   109: aload 9
-    //   111: invokevirtual 157	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
-    //   114: astore_1
-    //   115: aload 7
-    //   117: invokevirtual 160	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   120: aload_1
-    //   121: areturn
-    //   122: lload 5
-    //   124: lstore_3
-    //   125: lload 5
-    //   127: lconst_0
-    //   128: lcmp
-    //   129: ifgt -38 -> 91
-    //   132: new 128	java/lang/InterruptedException
-    //   135: dup
-    //   136: ldc 177
-    //   138: invokespecial 180	java/lang/InterruptedException:<init>	(Ljava/lang/String;)V
-    //   141: athrow
-    //   142: astore_1
-    //   143: aload 7
-    //   145: invokevirtual 160	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   148: aload_1
-    //   149: athrow
-    //   150: astore_1
-    //   151: lload_3
-    //   152: lstore 5
-    //   154: goto -53 -> 101
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	157	0	this	SelfDestructiveThread
-    //   0	157	1	paramCallable	Callable<T>
-    //   0	157	2	paramInt	int
-    //   90	62	3	l1	long
-    //   99	54	5	l2	long
-    //   7	137	7	localReentrantLock	java.util.concurrent.locks.ReentrantLock
-    //   14	78	8	localCondition	java.util.concurrent.locks.Condition
-    //   23	87	9	localAtomicReference	java.util.concurrent.atomic.AtomicReference
-    //   33	69	10	localAtomicBoolean	java.util.concurrent.atomic.AtomicBoolean
-    // Exception table:
-    //   from	to	target	type
-    //   61	75	142	finally
-    //   82	91	142	finally
-    //   91	101	142	finally
-    //   101	115	142	finally
-    //   132	142	142	finally
-    //   91	101	150	java/lang/InterruptedException
+    localReentrantLock = new ReentrantLock();
+    Condition localCondition = localReentrantLock.newCondition();
+    AtomicReference localAtomicReference = new AtomicReference();
+    AtomicBoolean localAtomicBoolean = new AtomicBoolean(true);
+    post(new SelfDestructiveThread.3(this, localAtomicReference, paramCallable, localReentrantLock, localAtomicBoolean, localCondition));
+    localReentrantLock.lock();
+    label104:
+    do
+    {
+      try
+      {
+        if (!localAtomicBoolean.get())
+        {
+          paramCallable = localAtomicReference.get();
+          localReentrantLock.unlock();
+          return paramCallable;
+        }
+        l1 = TimeUnit.MILLISECONDS.toNanos(paramInt);
+      }
+      finally
+      {
+        long l1;
+        long l2;
+        localReentrantLock.unlock();
+        for (;;)
+        {
+          throw paramCallable;
+        }
+      }
+      try
+      {
+        l2 = localCondition.awaitNanos(l1);
+        l1 = l2;
+      }
+      catch (InterruptedException paramCallable)
+      {
+        break label104;
+      }
+      if (!localAtomicBoolean.get())
+      {
+        paramCallable = localAtomicReference.get();
+        localReentrantLock.unlock();
+        return paramCallable;
+      }
+    } while (l1 > 0L);
+    throw new InterruptedException("timeout");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.provider.SelfDestructiveThread
  * JD-Core Version:    0.7.0.1
  */

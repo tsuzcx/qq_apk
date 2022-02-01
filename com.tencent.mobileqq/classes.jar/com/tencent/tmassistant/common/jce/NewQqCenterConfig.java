@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,17 +47,19 @@ public final class NewQqCenterConfig
   {
     paramJceOutputStream.write(this.detailSwitch, 0);
     paramJceOutputStream.write(this.entranceSwitch, 1);
-    if (this.enterOldViaList != null) {
-      paramJceOutputStream.write(this.enterOldViaList, 2);
+    Object localObject = this.enterOldViaList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.appNewsUrlMap != null) {
-      paramJceOutputStream.write(this.appNewsUrlMap, 3);
+    localObject = this.appNewsUrlMap;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.NewQqCenterConfig
  * JD-Core Version:    0.7.0.1
  */

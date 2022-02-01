@@ -14,23 +14,35 @@ class hv$1
     if (this.uq == 8) {
       hk.az(500176);
     }
-    switch (hv.c(this.ur))
+    int i = hv.c(this.ur);
+    if (i != 1)
     {
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i == 5) {
+              hk.az(398686);
+            }
+          }
+          else {
+            hk.az(398675);
+          }
+        }
+        else {
+          hk.az(398674);
+        }
+      }
+      else {
+        hk.az(398673);
+      }
     }
-    for (;;)
-    {
-      hv.b(this.ur).post(new hv.1.2(this, paramString));
-      return;
-      hk.az(398674);
-      continue;
-      hk.az(398673);
-      continue;
-      hk.az(398675);
-      continue;
+    else {
       hk.az(398672);
-      continue;
-      hk.az(398686);
     }
+    hv.b(this.ur).post(new hv.1.2(this, paramString));
   }
   
   public void ay(int paramInt)
@@ -46,7 +58,7 @@ class hv$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.hv.1
  * JD-Core Version:    0.7.0.1
  */

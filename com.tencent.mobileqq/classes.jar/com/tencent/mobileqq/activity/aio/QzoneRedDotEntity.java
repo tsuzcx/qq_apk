@@ -36,16 +36,25 @@ public class QzoneRedDotEntity
   
   public boolean equals(Object paramObject)
   {
-    QzoneRedDotEntity localQzoneRedDotEntity = null;
+    QzoneRedDotEntity localQzoneRedDotEntity;
     if ((paramObject instanceof QzoneRedDotEntity)) {
       localQzoneRedDotEntity = (QzoneRedDotEntity)paramObject;
+    } else {
+      localQzoneRedDotEntity = null;
     }
-    return (paramObject == this) || ((this.uin != null) && (localQzoneRedDotEntity != null) && (this.uin.equals(localQzoneRedDotEntity.uin)));
+    if (paramObject != this)
+    {
+      paramObject = this.uin;
+      if ((paramObject == null) || (localQzoneRedDotEntity == null) || (!paramObject.equals(localQzoneRedDotEntity.uin))) {
+        return false;
+      }
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.QzoneRedDotEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -82,7 +82,12 @@ public class AppBrandProxy
   
   public void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo)
   {
-    QMLog.e("minisdk-start_AppBrandProxy", "preloadDownloadPackage. pName=" + AppLoaderFactory.g().getCurrentProcessName() + " miniAppInfo:" + paramMiniAppInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("preloadDownloadPackage. pName=");
+    localStringBuilder.append(AppLoaderFactory.g().getCurrentProcessName());
+    localStringBuilder.append(" miniAppInfo:");
+    localStringBuilder.append(paramMiniAppInfo);
+    QMLog.e("minisdk-start_AppBrandProxy", localStringBuilder.toString());
     if (!AppLoaderFactory.g().isMainProcess()) {
       this.mLaunchManagerClient.preloadPackage(paramMiniAppInfo);
     }
@@ -90,15 +95,29 @@ public class AppBrandProxy
   
   public void sendCmd(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
   {
-    QMLog.i("minisdk-start_AppBrandProxy", "cmd. pName=" + AppLoaderFactory.g().getCurrentProcessName() + " cmd:" + paramString);
-    if ((!AppLoaderFactory.g().isMainProcess()) && (this.mLaunchManagerClient != null)) {
-      this.mLaunchManagerClient.sendCmd(paramString, paramBundle, paramMiniCmdCallback);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("cmd. pName=");
+    ((StringBuilder)localObject).append(AppLoaderFactory.g().getCurrentProcessName());
+    ((StringBuilder)localObject).append(" cmd:");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.i("minisdk-start_AppBrandProxy", ((StringBuilder)localObject).toString());
+    if (!AppLoaderFactory.g().isMainProcess())
+    {
+      localObject = this.mLaunchManagerClient;
+      if (localObject != null) {
+        ((LaunchManagerClient)localObject).sendCmd(paramString, paramBundle, paramMiniCmdCallback);
+      }
     }
   }
   
   public void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    QMLog.e("minisdk-start_AppBrandProxy", "startMiniApp. pName=" + AppLoaderFactory.g().getCurrentProcessName() + " miniAppInfo:" + paramMiniAppInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startMiniApp. pName=");
+    localStringBuilder.append(AppLoaderFactory.g().getCurrentProcessName());
+    localStringBuilder.append(" miniAppInfo:");
+    localStringBuilder.append(paramMiniAppInfo);
+    QMLog.e("minisdk-start_AppBrandProxy", localStringBuilder.toString());
     if (!AppLoaderFactory.g().isMainProcess()) {
       this.mLaunchManagerClient.startMiniApp(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
     }
@@ -106,7 +125,10 @@ public class AppBrandProxy
   
   public void stopAllMiniApp()
   {
-    QMLog.e("minisdk-start_AppBrandProxy", "stopAllMiniApp. pName=" + AppLoaderFactory.g().getCurrentProcessName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopAllMiniApp. pName=");
+    localStringBuilder.append(AppLoaderFactory.g().getCurrentProcessName());
+    QMLog.e("minisdk-start_AppBrandProxy", localStringBuilder.toString());
     if (!AppLoaderFactory.g().isMainProcess()) {
       this.mLaunchManagerClient.stopAllMiniApp();
     }
@@ -114,7 +136,12 @@ public class AppBrandProxy
   
   public void stopMiniApp(MiniAppInfo paramMiniAppInfo)
   {
-    QMLog.e("minisdk-start_AppBrandProxy", "stopMiniApp. pName=" + AppLoaderFactory.g().getCurrentProcessName() + " miniAppInfo:" + paramMiniAppInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopMiniApp. pName=");
+    localStringBuilder.append(AppLoaderFactory.g().getCurrentProcessName());
+    localStringBuilder.append(" miniAppInfo:");
+    localStringBuilder.append(paramMiniAppInfo);
+    QMLog.e("minisdk-start_AppBrandProxy", localStringBuilder.toString());
     if (!AppLoaderFactory.g().isMainProcess()) {
       this.mLaunchManagerClient.stopMiniApp(paramMiniAppInfo);
     }
@@ -122,7 +149,7 @@ public class AppBrandProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ipc.AppBrandProxy
  * JD-Core Version:    0.7.0.1
  */

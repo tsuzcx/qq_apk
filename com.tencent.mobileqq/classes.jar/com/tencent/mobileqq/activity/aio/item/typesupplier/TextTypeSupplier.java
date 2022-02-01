@@ -9,7 +9,7 @@ import com.tencent.mobileqq.data.MessageForWantGiftMsg;
 public class TextTypeSupplier
   implements MessageTypeSupplier
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public int get(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
     if ((paramChatMessage instanceof MessageForLongTextMsg)) {
       return 63;
@@ -25,7 +25,7 @@ public class TextTypeSupplier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.typesupplier.TextTypeSupplier
  * JD-Core Version:    0.7.0.1
  */

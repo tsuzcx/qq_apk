@@ -15,7 +15,11 @@ class VideoTextureView$1
   {
     if (VideoTextureView.a(this.a) != null)
     {
-      paramInt = (int)(paramInt * VideoTextureView.a(this.a) / 100.0D);
+      double d1 = paramInt;
+      double d2 = VideoTextureView.a(this.a);
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      paramInt = (int)(d1 * d2 / 100.0D);
       VideoTextureView.a(this.a).seekTo(paramInt);
     }
   }
@@ -42,7 +46,7 @@ class VideoTextureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView.1
  * JD-Core Version:    0.7.0.1
  */

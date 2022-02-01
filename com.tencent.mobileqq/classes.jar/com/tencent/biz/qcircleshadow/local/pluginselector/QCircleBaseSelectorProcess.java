@@ -11,10 +11,18 @@ public abstract class QCircleBaseSelectorProcess
 {
   protected boolean a(int paramInt)
   {
-    if (MobileQQ.sMobileQQ.getSharedPreferences("QCircle_crash_share", 0).getInt("QCircle_crash_count_" + paramInt, 0) >= QCircleConfigHelper.a())
+    Object localObject = MobileQQ.sMobileQQ.getSharedPreferences("QCircle_crash_share", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QCircle_crash_count_");
+    localStringBuilder.append(paramInt);
+    if (((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0) >= QCircleConfigHelper.c())
     {
       QCirclePluginManager.a().a(paramInt);
-      QLog.i("QCIRCLE_PLUGIN", 1, "crashValidEnable():net plugin ,current version:" + paramInt + ",crashed to many times");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("crashValidEnable():net plugin ,current version:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",crashed to many times");
+      QLog.i("QCIRCLE_PLUGIN", 1, ((StringBuilder)localObject).toString());
       return false;
     }
     return true;
@@ -22,7 +30,7 @@ public abstract class QCircleBaseSelectorProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.pluginselector.QCircleBaseSelectorProcess
  * JD-Core Version:    0.7.0.1
  */

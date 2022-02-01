@@ -16,18 +16,28 @@ class NativeVideoImage$RefreshJob
   
   public void run()
   {
-    if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.this$0.debug)) {
-      URLDrawable.depImp.mLog.d(NativeVideoImage.TAG + NativeVideoImage.access$000(this.this$0), 2, "RefreshJob.run(): refreshId:" + this.refreshId);
+    if ((URLDrawable.depImp.mLog.isColorLevel()) && (this.this$0.debug))
+    {
+      localObject1 = URLDrawable.depImp.mLog;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(NativeVideoImage.TAG);
+      ((StringBuilder)localObject2).append(NativeVideoImage.access$000(this.this$0));
+      localObject2 = ((StringBuilder)localObject2).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RefreshJob.run(): refreshId:");
+      localStringBuilder.append(this.refreshId);
+      ((ILog)localObject1).d((String)localObject2, 2, localStringBuilder.toString());
     }
-    NativeVideoImage.WrappedRefreshImg localWrappedRefreshImg = new NativeVideoImage.WrappedRefreshImg();
-    localWrappedRefreshImg.img = this.this$0;
-    localWrappedRefreshImg.refeshId = this.refreshId;
-    this.this$0.mAccumulativeRunnable.add(new WeakReference[] { new WeakReference(localWrappedRefreshImg) });
+    Object localObject1 = new NativeVideoImage.WrappedRefreshImg();
+    Object localObject2 = this.this$0;
+    ((NativeVideoImage.WrappedRefreshImg)localObject1).img = ((AbstractVideoImage)localObject2);
+    ((NativeVideoImage.WrappedRefreshImg)localObject1).refeshId = this.refreshId;
+    ((NativeVideoImage)localObject2).mAccumulativeRunnable.add(new WeakReference[] { new WeakReference(localObject1) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.NativeVideoImage.RefreshJob
  * JD-Core Version:    0.7.0.1
  */

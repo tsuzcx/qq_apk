@@ -74,32 +74,32 @@ public abstract class BaseLayer
   {
     this.lottieDrawable = paramLottieDrawable;
     this.layerModel = paramLayer;
-    this.drawTraceName = (paramLayer.getName() + "#draw");
+    paramLottieDrawable = new StringBuilder();
+    paramLottieDrawable.append(paramLayer.getName());
+    paramLottieDrawable.append("#draw");
+    this.drawTraceName = paramLottieDrawable.toString();
     if (paramLayer.getMatteType() == Layer.MatteType.INVERT) {
       this.mattePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+    } else {
+      this.mattePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
     }
-    for (;;)
+    this.transform = paramLayer.getTransform().createAnimation();
+    this.transform.addListener(this);
+    if ((paramLayer.getMasks() != null) && (!paramLayer.getMasks().isEmpty()))
     {
-      this.transform = paramLayer.getTransform().createAnimation();
-      this.transform.addListener(this);
-      if ((paramLayer.getMasks() == null) || (paramLayer.getMasks().isEmpty())) {
-        break label391;
-      }
       this.mask = new MaskKeyframeAnimation(paramLayer.getMasks());
       paramLottieDrawable = this.mask.getMaskAnimations().iterator();
       while (paramLottieDrawable.hasNext()) {
         ((BaseKeyframeAnimation)paramLottieDrawable.next()).addUpdateListener(this);
       }
-      this.mattePaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+      paramLottieDrawable = this.mask.getOpacityAnimations().iterator();
+      while (paramLottieDrawable.hasNext())
+      {
+        paramLayer = (BaseKeyframeAnimation)paramLottieDrawable.next();
+        addAnimation(paramLayer);
+        paramLayer.addUpdateListener(this);
+      }
     }
-    paramLottieDrawable = this.mask.getOpacityAnimations().iterator();
-    while (paramLottieDrawable.hasNext())
-    {
-      paramLayer = (BaseKeyframeAnimation)paramLottieDrawable.next();
-      addAnimation(paramLayer);
-      paramLayer.addUpdateListener(this);
-    }
-    label391:
     setupInOutAnimations();
   }
   
@@ -162,51 +162,50 @@ public abstract class BaseLayer
   private void applyMasks(Canvas paramCanvas, Matrix paramMatrix)
   {
     L.beginSection("Layer#saveLayer");
-    saveLayerCompat(paramCanvas, this.rect, this.dstInPaint, false);
-    L.endSection("Layer#saveLayer");
+    Object localObject1 = this.rect;
+    Object localObject2 = this.dstInPaint;
     int i = 0;
-    if (i < this.mask.getMasks().size())
+    saveLayerCompat(paramCanvas, (RectF)localObject1, (Paint)localObject2, false);
+    L.endSection("Layer#saveLayer");
+    while (i < this.mask.getMasks().size())
     {
-      Mask localMask = (Mask)this.mask.getMasks().get(i);
-      BaseKeyframeAnimation localBaseKeyframeAnimation1 = (BaseKeyframeAnimation)this.mask.getMaskAnimations().get(i);
-      BaseKeyframeAnimation localBaseKeyframeAnimation2 = (BaseKeyframeAnimation)this.mask.getOpacityAnimations().get(i);
-      switch (BaseLayer.2.$SwitchMap$com$tencent$mobileqq$dinifly$model$content$Mask$MaskMode[localMask.getMaskMode().ordinal()])
+      localObject1 = (Mask)this.mask.getMasks().get(i);
+      localObject2 = (BaseKeyframeAnimation)this.mask.getMaskAnimations().get(i);
+      BaseKeyframeAnimation localBaseKeyframeAnimation = (BaseKeyframeAnimation)this.mask.getOpacityAnimations().get(i);
+      int j = BaseLayer.2.$SwitchMap$com$tencent$mobileqq$dinifly$model$content$Mask$MaskMode[localObject1.getMaskMode().ordinal()];
+      if (j != 1)
       {
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (localMask.isInverted())
+        if (j != 2)
         {
-          applyInvertedAddMask(paramCanvas, paramMatrix, localMask, localBaseKeyframeAnimation1, localBaseKeyframeAnimation2);
-        }
-        else
-        {
-          applyAddMask(paramCanvas, paramMatrix, localMask, localBaseKeyframeAnimation1, localBaseKeyframeAnimation2);
-          continue;
-          if (i == 0)
-          {
-            Paint localPaint = new Paint();
-            localPaint.setColor(-16777216);
-            paramCanvas.drawRect(this.rect, localPaint);
-          }
-          if (localMask.isInverted())
-          {
-            applyInvertedSubtractMask(paramCanvas, paramMatrix, localMask, localBaseKeyframeAnimation1, localBaseKeyframeAnimation2);
-          }
-          else
-          {
-            applySubtractMask(paramCanvas, paramMatrix, localMask, localBaseKeyframeAnimation1, localBaseKeyframeAnimation2);
-            continue;
-            if (localMask.isInverted()) {
-              applyInvertedIntersectMask(paramCanvas, paramMatrix, localMask, localBaseKeyframeAnimation1, localBaseKeyframeAnimation2);
+          if (j == 3) {
+            if (((Mask)localObject1).isInverted()) {
+              applyInvertedAddMask(paramCanvas, paramMatrix, (Mask)localObject1, (BaseKeyframeAnimation)localObject2, localBaseKeyframeAnimation);
             } else {
-              applyIntersectMask(paramCanvas, paramMatrix, localMask, localBaseKeyframeAnimation1, localBaseKeyframeAnimation2);
+              applyAddMask(paramCanvas, paramMatrix, (Mask)localObject1, (BaseKeyframeAnimation)localObject2, localBaseKeyframeAnimation);
             }
           }
         }
+        else if (((Mask)localObject1).isInverted()) {
+          applyInvertedIntersectMask(paramCanvas, paramMatrix, (Mask)localObject1, (BaseKeyframeAnimation)localObject2, localBaseKeyframeAnimation);
+        } else {
+          applyIntersectMask(paramCanvas, paramMatrix, (Mask)localObject1, (BaseKeyframeAnimation)localObject2, localBaseKeyframeAnimation);
+        }
       }
+      else
+      {
+        if (i == 0)
+        {
+          Paint localPaint = new Paint();
+          localPaint.setColor(-16777216);
+          paramCanvas.drawRect(this.rect, localPaint);
+        }
+        if (((Mask)localObject1).isInverted()) {
+          applyInvertedSubtractMask(paramCanvas, paramMatrix, (Mask)localObject1, (BaseKeyframeAnimation)localObject2, localBaseKeyframeAnimation);
+        } else {
+          applySubtractMask(paramCanvas, paramMatrix, (Mask)localObject1, (BaseKeyframeAnimation)localObject2, localBaseKeyframeAnimation);
+        }
+      }
+      i += 1;
     }
     L.beginSection("Layer#restoreLayer");
     paramCanvas.restore();
@@ -223,26 +222,24 @@ public abstract class BaseLayer
   
   private void buildParentLayerListIfNeeded()
   {
-    if (this.parentLayers != null) {}
-    for (;;)
-    {
+    if (this.parentLayers != null) {
       return;
-      if (this.parentLayer == null)
-      {
-        this.parentLayers = Collections.emptyList();
-        return;
-      }
-      this.parentLayers = new ArrayList();
-      for (BaseLayer localBaseLayer = this.parentLayer; localBaseLayer != null; localBaseLayer = localBaseLayer.parentLayer) {
-        this.parentLayers.add(localBaseLayer);
-      }
+    }
+    if (this.parentLayer == null)
+    {
+      this.parentLayers = Collections.emptyList();
+      return;
+    }
+    this.parentLayers = new ArrayList();
+    for (BaseLayer localBaseLayer = this.parentLayer; localBaseLayer != null; localBaseLayer = localBaseLayer.parentLayer) {
+      this.parentLayers.add(localBaseLayer);
     }
   }
   
   private void clearCanvas(Canvas paramCanvas)
   {
     L.beginSection("Layer#clearLayer");
-    paramCanvas.drawRect(this.rect.left - 1.0F, this.rect.top - 1.0F, this.rect.right + 1.0F, 1.0F + this.rect.bottom, this.clearPaint);
+    paramCanvas.drawRect(this.rect.left - 1.0F, this.rect.top - 1.0F, this.rect.right + 1.0F, this.rect.bottom + 1.0F, this.clearPaint);
     L.endSection("Layer#clearLayer");
   }
   
@@ -252,76 +249,80 @@ public abstract class BaseLayer
     switch (BaseLayer.2.$SwitchMap$com$tencent$mobileqq$dinifly$model$layer$Layer$LayerType[paramLayer.getLayerType().ordinal()])
     {
     default: 
-      L.warn("Unknown layer type " + paramLayer.getLayerType());
+      paramLottieDrawable = new StringBuilder();
+      paramLottieDrawable.append("Unknown layer type ");
+      paramLottieDrawable.append(paramLayer.getLayerType());
+      L.warn(paramLottieDrawable.toString());
       return null;
-    case 1: 
-      return new ShapeLayer(paramLottieDrawable, paramLayer);
-    case 2: 
-      return new CompositionLayer(paramLottieDrawable, paramLayer, paramLottieComposition.getPrecomps(paramLayer.getRefId()), paramLottieComposition);
-    case 3: 
-      return new SolidLayer(paramLottieDrawable, paramLayer);
-    case 4: 
-      return new ImageLayer(paramLottieDrawable, paramLayer);
+    case 6: 
+      return new TextLayer(paramLottieDrawable, paramLayer);
     case 5: 
       return new NullLayer(paramLottieDrawable, paramLayer);
+    case 4: 
+      return new ImageLayer(paramLottieDrawable, paramLayer);
+    case 3: 
+      return new SolidLayer(paramLottieDrawable, paramLayer);
+    case 2: 
+      return new CompositionLayer(paramLottieDrawable, paramLayer, paramLottieComposition.getPrecomps(paramLayer.getRefId()), paramLottieComposition);
     }
-    return new TextLayer(paramLottieDrawable, paramLayer);
+    return new ShapeLayer(paramLottieDrawable, paramLayer);
   }
   
   private void intersectBoundsWithMask(RectF paramRectF, Matrix paramMatrix)
   {
     this.maskBoundsRect.set(0.0F, 0.0F, 0.0F, 0.0F);
-    if (!hasMasksOnThisLayer()) {}
-    label140:
-    do
-    {
+    if (!hasMasksOnThisLayer()) {
       return;
-      int j = this.mask.getMasks().size();
-      int i = 0;
-      if (i < j)
+    }
+    int j = this.mask.getMasks().size();
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = (Mask)this.mask.getMasks().get(i);
+      Path localPath = (Path)((BaseKeyframeAnimation)this.mask.getMaskAnimations().get(i)).getValue();
+      this.path.set(localPath);
+      this.path.transform(paramMatrix);
+      int k = BaseLayer.2.$SwitchMap$com$tencent$mobileqq$dinifly$model$content$Mask$MaskMode[localObject.getMaskMode().ordinal()];
+      if (k != 1)
       {
-        Mask localMask = (Mask)this.mask.getMasks().get(i);
-        Path localPath = (Path)((BaseKeyframeAnimation)this.mask.getMaskAnimations().get(i)).getValue();
-        this.path.set(localPath);
-        this.path.transform(paramMatrix);
-        switch (BaseLayer.2.$SwitchMap$com$tencent$mobileqq$dinifly$model$content$Mask$MaskMode[localMask.getMaskMode().ordinal()])
-        {
-        case 1: 
-        default: 
-          this.path.computeBounds(this.tempMaskBoundsRect, false);
-          if (i == 0) {
-            this.maskBoundsRect.set(this.tempMaskBoundsRect);
-          }
-          break;
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (!localMask.isInverted()) {
-            break label140;
-          }
+        if (((k == 2) || (k == 3)) && (((Mask)localObject).isInverted())) {
           return;
-          this.maskBoundsRect.set(Math.min(this.maskBoundsRect.left, this.tempMaskBoundsRect.left), Math.min(this.maskBoundsRect.top, this.tempMaskBoundsRect.top), Math.max(this.maskBoundsRect.right, this.tempMaskBoundsRect.right), Math.max(this.maskBoundsRect.bottom, this.tempMaskBoundsRect.bottom));
         }
+        this.path.computeBounds(this.tempMaskBoundsRect, false);
+        if (i == 0)
+        {
+          this.maskBoundsRect.set(this.tempMaskBoundsRect);
+        }
+        else
+        {
+          localObject = this.maskBoundsRect;
+          ((RectF)localObject).set(Math.min(((RectF)localObject).left, this.tempMaskBoundsRect.left), Math.min(this.maskBoundsRect.top, this.tempMaskBoundsRect.top), Math.max(this.maskBoundsRect.right, this.tempMaskBoundsRect.right), Math.max(this.maskBoundsRect.bottom, this.tempMaskBoundsRect.bottom));
+        }
+        i += 1;
       }
-    } while (paramRectF.intersect(this.maskBoundsRect));
-    paramRectF.set(0.0F, 0.0F, 0.0F, 0.0F);
+      else
+      {
+        return;
+      }
+    }
+    if (!paramRectF.intersect(this.maskBoundsRect)) {
+      paramRectF.set(0.0F, 0.0F, 0.0F, 0.0F);
+    }
   }
   
   private void intersectBoundsWithMatte(RectF paramRectF, Matrix paramMatrix)
   {
-    if (!hasMatteOnThisLayer()) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.layerModel.getMatteType() == Layer.MatteType.INVERT);
-      this.matteBoundsRect.set(0.0F, 0.0F, 0.0F, 0.0F);
-      this.matteLayer.getBounds(this.matteBoundsRect, paramMatrix, true);
-    } while (paramRectF.intersect(this.matteBoundsRect));
-    paramRectF.set(0.0F, 0.0F, 0.0F, 0.0F);
+    if (!hasMatteOnThisLayer()) {
+      return;
+    }
+    if (this.layerModel.getMatteType() == Layer.MatteType.INVERT) {
+      return;
+    }
+    this.matteBoundsRect.set(0.0F, 0.0F, 0.0F, 0.0F);
+    this.matteLayer.getBounds(this.matteBoundsRect, paramMatrix, true);
+    if (!paramRectF.intersect(this.matteBoundsRect)) {
+      paramRectF.set(0.0F, 0.0F, 0.0F, 0.0F);
+    }
   }
   
   private void invalidateSelf()
@@ -339,12 +340,14 @@ public abstract class BaseLayer
   {
     if (Build.VERSION.SDK_INT < 23)
     {
-      if (paramBoolean) {}
-      for (int i = 31;; i = 19)
-      {
-        paramCanvas.saveLayer(paramRectF, paramPaint, i);
-        return;
+      int i;
+      if (paramBoolean) {
+        i = 31;
+      } else {
+        i = 19;
       }
+      paramCanvas.saveLayer(paramRectF, paramPaint, i);
+      return;
     }
     paramCanvas.saveLayer(paramRectF, paramPaint);
   }
@@ -360,18 +363,19 @@ public abstract class BaseLayer
   
   private void setupInOutAnimations()
   {
-    if (!this.layerModel.getInOutKeyframes().isEmpty())
+    boolean bool2 = this.layerModel.getInOutKeyframes().isEmpty();
+    boolean bool1 = true;
+    if (!bool2)
     {
       FloatKeyframeAnimation localFloatKeyframeAnimation = new FloatKeyframeAnimation(this.layerModel.getInOutKeyframes());
       localFloatKeyframeAnimation.setIsDiscrete();
       localFloatKeyframeAnimation.addUpdateListener(new BaseLayer.1(this, localFloatKeyframeAnimation));
-      if (((Float)localFloatKeyframeAnimation.getValue()).floatValue() == 1.0F) {}
-      for (boolean bool = true;; bool = false)
-      {
-        setVisible(bool);
-        addAnimation(localFloatKeyframeAnimation);
-        return;
+      if (((Float)localFloatKeyframeAnimation.getValue()).floatValue() != 1.0F) {
+        bool1 = false;
       }
+      setVisible(bool1);
+      addAnimation(localFloatKeyframeAnimation);
+      return;
     }
     setVisible(true);
   }
@@ -393,73 +397,73 @@ public abstract class BaseLayer
   public void draw(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
     L.beginSection(this.drawTraceName);
-    if ((!this.visible) || (this.layerModel.isHidden()))
+    if ((this.visible) && (!this.layerModel.isHidden()))
     {
-      L.endSection(this.drawTraceName);
-      return;
-    }
-    buildParentLayerListIfNeeded();
-    L.beginSection("Layer#parentMatrix");
-    this.matrix.reset();
-    this.matrix.set(paramMatrix);
-    int i = this.parentLayers.size() - 1;
-    while (i >= 0)
-    {
-      this.matrix.preConcat(((BaseLayer)this.parentLayers.get(i)).transform.getMatrix());
-      i -= 1;
-    }
-    L.endSection("Layer#parentMatrix");
-    if (this.transform.getOpacity() == null) {}
-    for (i = 100;; i = ((Integer)this.transform.getOpacity().getValue()).intValue())
-    {
-      float f = paramInt / 255.0F;
-      paramInt = (int)(i * f / 100.0F * 255.0F);
-      if ((hasMatteOnThisLayer()) || (hasMasksOnThisLayer())) {
-        break;
-      }
-      this.matrix.preConcat(this.transform.getMatrix());
-      L.beginSection("Layer#drawLayer");
-      drawLayer(paramCanvas, this.matrix, paramInt);
-      L.endSection("Layer#drawLayer");
-      recordRenderTime(L.endSection(this.drawTraceName));
-      return;
-    }
-    L.beginSection("Layer#computeBounds");
-    getBounds(this.rect, this.matrix, false);
-    intersectBoundsWithMatte(this.rect, paramMatrix);
-    this.matrix.preConcat(this.transform.getMatrix());
-    intersectBoundsWithMask(this.rect, this.matrix);
-    L.endSection("Layer#computeBounds");
-    if (!this.rect.isEmpty())
-    {
-      L.beginSection("Layer#saveLayer");
-      saveLayerCompat(paramCanvas, this.rect, this.contentPaint, true);
-      L.endSection("Layer#saveLayer");
-      clearCanvas(paramCanvas);
-      L.beginSection("Layer#drawLayer");
-      drawLayer(paramCanvas, this.matrix, paramInt);
-      L.endSection("Layer#drawLayer");
-      if (hasMasksOnThisLayer()) {
-        applyMasks(paramCanvas, this.matrix);
-      }
-      if (hasMatteOnThisLayer())
+      buildParentLayerListIfNeeded();
+      L.beginSection("Layer#parentMatrix");
+      this.matrix.reset();
+      this.matrix.set(paramMatrix);
+      int i = this.parentLayers.size() - 1;
+      while (i >= 0)
       {
-        L.beginSection("Layer#drawMatte");
+        this.matrix.preConcat(((BaseLayer)this.parentLayers.get(i)).transform.getMatrix());
+        i -= 1;
+      }
+      L.endSection("Layer#parentMatrix");
+      if (this.transform.getOpacity() == null) {
+        i = 100;
+      } else {
+        i = ((Integer)this.transform.getOpacity().getValue()).intValue();
+      }
+      paramInt = (int)(paramInt / 255.0F * i / 100.0F * 255.0F);
+      if ((!hasMatteOnThisLayer()) && (!hasMasksOnThisLayer()))
+      {
+        this.matrix.preConcat(this.transform.getMatrix());
+        L.beginSection("Layer#drawLayer");
+        drawLayer(paramCanvas, this.matrix, paramInt);
+        L.endSection("Layer#drawLayer");
+        recordRenderTime(L.endSection(this.drawTraceName));
+        return;
+      }
+      L.beginSection("Layer#computeBounds");
+      getBounds(this.rect, this.matrix, false);
+      intersectBoundsWithMatte(this.rect, paramMatrix);
+      this.matrix.preConcat(this.transform.getMatrix());
+      intersectBoundsWithMask(this.rect, this.matrix);
+      L.endSection("Layer#computeBounds");
+      if (!this.rect.isEmpty())
+      {
         L.beginSection("Layer#saveLayer");
-        saveLayerCompat(paramCanvas, this.rect, this.mattePaint, false);
+        saveLayerCompat(paramCanvas, this.rect, this.contentPaint, true);
         L.endSection("Layer#saveLayer");
         clearCanvas(paramCanvas);
-        this.matteLayer.draw(paramCanvas, paramMatrix, paramInt);
+        L.beginSection("Layer#drawLayer");
+        drawLayer(paramCanvas, this.matrix, paramInt);
+        L.endSection("Layer#drawLayer");
+        if (hasMasksOnThisLayer()) {
+          applyMasks(paramCanvas, this.matrix);
+        }
+        if (hasMatteOnThisLayer())
+        {
+          L.beginSection("Layer#drawMatte");
+          L.beginSection("Layer#saveLayer");
+          saveLayerCompat(paramCanvas, this.rect, this.mattePaint, false);
+          L.endSection("Layer#saveLayer");
+          clearCanvas(paramCanvas);
+          this.matteLayer.draw(paramCanvas, paramMatrix, paramInt);
+          L.beginSection("Layer#restoreLayer");
+          paramCanvas.restore();
+          L.endSection("Layer#restoreLayer");
+          L.endSection("Layer#drawMatte");
+        }
         L.beginSection("Layer#restoreLayer");
         paramCanvas.restore();
         L.endSection("Layer#restoreLayer");
-        L.endSection("Layer#drawMatte");
       }
-      L.beginSection("Layer#restoreLayer");
-      paramCanvas.restore();
-      L.endSection("Layer#restoreLayer");
+      recordRenderTime(L.endSection(this.drawTraceName));
+      return;
     }
-    recordRenderTime(L.endSection(this.drawTraceName));
+    L.endSection(this.drawTraceName);
   }
   
   abstract void drawLayer(Canvas paramCanvas, Matrix paramMatrix, int paramInt);
@@ -472,17 +476,19 @@ public abstract class BaseLayer
     this.boundsMatrix.set(paramMatrix);
     if (paramBoolean)
     {
-      if (this.parentLayers != null)
+      paramRectF = this.parentLayers;
+      if (paramRectF != null)
       {
-        int i = this.parentLayers.size() - 1;
+        int i = paramRectF.size() - 1;
         while (i >= 0)
         {
           this.boundsMatrix.preConcat(((BaseLayer)this.parentLayers.get(i)).transform.getMatrix());
           i -= 1;
         }
       }
-      if (this.parentLayer != null) {
-        this.boundsMatrix.preConcat(this.parentLayer.transform.getMatrix());
+      paramRectF = this.parentLayer;
+      if (paramRectF != null) {
+        this.boundsMatrix.preConcat(paramRectF.transform.getMatrix());
       }
     }
     this.boundsMatrix.preConcat(this.transform.getMatrix());
@@ -500,7 +506,8 @@ public abstract class BaseLayer
   
   boolean hasMasksOnThisLayer()
   {
-    return (this.mask != null) && (!this.mask.getMaskAnimations().isEmpty());
+    MaskKeyframeAnimation localMaskKeyframeAnimation = this.mask;
+    return (localMaskKeyframeAnimation != null) && (!localMaskKeyframeAnimation.getMaskAnimations().isEmpty());
   }
   
   boolean hasMatteOnThisLayer()
@@ -522,24 +529,23 @@ public abstract class BaseLayer
   
   public void resolveKeyPath(KeyPath paramKeyPath1, int paramInt, List<KeyPath> paramList, KeyPath paramKeyPath2)
   {
-    if (!paramKeyPath1.matches(getName(), paramInt)) {}
-    KeyPath localKeyPath;
-    do
-    {
+    if (!paramKeyPath1.matches(getName(), paramInt)) {
       return;
+    }
+    KeyPath localKeyPath = paramKeyPath2;
+    if (!"__container".equals(getName()))
+    {
+      paramKeyPath2 = paramKeyPath2.addKey(getName());
       localKeyPath = paramKeyPath2;
-      if (!"__container".equals(getName()))
+      if (paramKeyPath1.fullyResolvesTo(getName(), paramInt))
       {
-        paramKeyPath2 = paramKeyPath2.addKey(getName());
+        paramList.add(paramKeyPath2.resolve(this));
         localKeyPath = paramKeyPath2;
-        if (paramKeyPath1.fullyResolvesTo(getName(), paramInt))
-        {
-          paramList.add(paramKeyPath2.resolve(this));
-          localKeyPath = paramKeyPath2;
-        }
       }
-    } while (!paramKeyPath1.propagateToChildren(getName(), paramInt));
-    resolveChildKeyPath(paramKeyPath1, paramKeyPath1.incrementDepthBy(getName(), paramInt) + paramInt, paramList, localKeyPath);
+    }
+    if (paramKeyPath1.propagateToChildren(getName(), paramInt)) {
+      resolveChildKeyPath(paramKeyPath1, paramInt + paramKeyPath1.incrementDepthBy(getName(), paramInt), paramList, localKeyPath);
+    }
   }
   
   public void setContents(List<Content> paramList1, List<Content> paramList2) {}
@@ -556,9 +562,10 @@ public abstract class BaseLayer
   
   void setProgress(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    int j = 0;
     this.transform.setProgress(paramFloat);
-    if (this.mask != null)
+    Object localObject = this.mask;
+    int j = 0;
+    if (localObject != null)
     {
       i = 0;
       while (i < this.mask.getMaskAnimations().size())
@@ -571,10 +578,11 @@ public abstract class BaseLayer
     if (this.layerModel.getTimeStretch() != 0.0F) {
       f = paramFloat / this.layerModel.getTimeStretch();
     }
+    localObject = this.matteLayer;
     int i = j;
-    if (this.matteLayer != null)
+    if (localObject != null)
     {
-      paramFloat = this.matteLayer.layerModel.getTimeStretch();
+      paramFloat = ((BaseLayer)localObject).layerModel.getTimeStretch();
       this.matteLayer.setProgress(paramFloat * f);
       i = j;
     }
@@ -587,7 +595,7 @@ public abstract class BaseLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.layer.BaseLayer
  * JD-Core Version:    0.7.0.1
  */

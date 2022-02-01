@@ -7,11 +7,11 @@ class MiniPie$1
 {
   MiniPie$1(MiniPie paramMiniPie) {}
   
-  public void a(Object paramObject) {}
+  public void a(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.1
  * JD-Core Version:    0.7.0.1
  */

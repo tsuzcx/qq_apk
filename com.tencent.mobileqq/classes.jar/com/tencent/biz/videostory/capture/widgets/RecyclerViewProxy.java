@@ -68,7 +68,7 @@ public class RecyclerViewProxy
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    this.a.layoutDecorated(paramView, localLayoutParams.leftMargin + paramInt1, localLayoutParams.topMargin + paramInt2, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
+    this.a.layoutDecorated(paramView, paramInt1 + localLayoutParams.leftMargin, paramInt2 + localLayoutParams.topMargin, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
   }
   
   public void a(View paramView, RecyclerView.Recycler paramRecycler)
@@ -84,9 +84,7 @@ public class RecyclerViewProxy
   public int b(View paramView)
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    int i = this.a.getDecoratedMeasuredWidth(paramView);
-    int j = localMarginLayoutParams.leftMargin;
-    return localMarginLayoutParams.rightMargin + (i + j);
+    return this.a.getDecoratedMeasuredWidth(paramView) + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin;
   }
   
   public void b()
@@ -122,9 +120,7 @@ public class RecyclerViewProxy
   public int c(View paramView)
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
-    int i = this.a.getDecoratedMeasuredHeight(paramView);
-    int j = localMarginLayoutParams.topMargin;
-    return localMarginLayoutParams.bottomMargin + (i + j);
+    return this.a.getDecoratedMeasuredHeight(paramView) + localMarginLayoutParams.topMargin + localMarginLayoutParams.bottomMargin;
   }
   
   public int d()
@@ -134,7 +130,7 @@ public class RecyclerViewProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.capture.widgets.RecyclerViewProxy
  * JD-Core Version:    0.7.0.1
  */

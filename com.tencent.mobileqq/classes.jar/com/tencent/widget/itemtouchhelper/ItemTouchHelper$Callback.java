@@ -39,11 +39,14 @@ public abstract class ItemTouchHelper$Callback
     if (i == 0) {
       return paramInt1;
     }
-    paramInt1 = (i ^ 0xFFFFFFFF) & paramInt1;
-    if (paramInt2 == 0) {
-      return paramInt1 | i << 2;
+    paramInt1 &= (i ^ 0xFFFFFFFF);
+    if (paramInt2 == 0) {}
+    for (paramInt2 = i << 2;; paramInt2 = (paramInt2 & 0xC0C0C) << 2)
+    {
+      return paramInt1 | paramInt2;
+      paramInt2 = i << 1;
+      paramInt1 |= 0xFFF3F3F3 & paramInt2;
     }
-    return paramInt1 | i << 1 & 0xFFF3F3F3 | (i << 1 & 0xC0C0C) << 2;
   }
   
   public static ItemTouchUIUtil getDefaultUIUtil()
@@ -54,7 +57,7 @@ public abstract class ItemTouchHelper$Callback
   private int getMaxDragScroll(RecyclerView paramRecyclerView)
   {
     if (this.mCachedMaxScrollSpeed == -1) {
-      this.mCachedMaxScrollSpeed = paramRecyclerView.getResources().getDimensionPixelSize(2131297285);
+      this.mCachedMaxScrollSpeed = paramRecyclerView.getResources().getDimensionPixelSize(2131297274);
     }
     return this.mCachedMaxScrollSpeed;
   }
@@ -66,7 +69,9 @@ public abstract class ItemTouchHelper$Callback
   
   public static int makeMovementFlags(int paramInt1, int paramInt2)
   {
-    return makeFlag(0, paramInt2 | paramInt1) | makeFlag(1, paramInt2) | makeFlag(2, paramInt1);
+    int i = makeFlag(0, paramInt2 | paramInt1);
+    paramInt2 = makeFlag(1, paramInt2);
+    return makeFlag(2, paramInt1) | paramInt2 | i;
   }
   
   public boolean canDropOver(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
@@ -76,88 +81,99 @@ public abstract class ItemTouchHelper$Callback
   
   public RecyclerView.ViewHolder chooseDropTarget(RecyclerView.ViewHolder paramViewHolder, List<RecyclerView.ViewHolder> paramList, int paramInt1, int paramInt2)
   {
-    int m = paramViewHolder.itemView.getWidth();
-    int n = paramViewHolder.itemView.getHeight();
+    int n = paramViewHolder.itemView.getWidth();
+    int i1 = paramViewHolder.itemView.getHeight();
+    int i2 = paramInt1 - paramViewHolder.itemView.getLeft();
+    int i3 = paramInt2 - paramViewHolder.itemView.getTop();
+    int i4 = paramList.size();
     Object localObject2 = null;
     int i = -1;
-    int i1 = paramInt1 - paramViewHolder.itemView.getLeft();
-    int i2 = paramInt2 - paramViewHolder.itemView.getTop();
-    int i3 = paramList.size();
-    int j = 0;
-    Object localObject1;
-    int k;
-    if (j < i3)
+    int k = 0;
+    while (k < i4)
     {
-      localObject1 = (RecyclerView.ViewHolder)paramList.get(j);
-      if (i1 <= 0) {
-        break label346;
-      }
-      k = ((RecyclerView.ViewHolder)localObject1).itemView.getRight() - (paramInt1 + m);
-      if ((k >= 0) || (((RecyclerView.ViewHolder)localObject1).itemView.getRight() <= paramViewHolder.itemView.getRight())) {
-        break label346;
-      }
-      k = Math.abs(k);
-      if (k <= i) {
-        break label346;
-      }
-      i = k;
-      localObject2 = localObject1;
-      label143:
-      if (i1 >= 0) {
-        break label359;
-      }
-      k = ((RecyclerView.ViewHolder)localObject1).itemView.getLeft() - paramInt1;
-      if ((k <= 0) || (((RecyclerView.ViewHolder)localObject1).itemView.getLeft() >= paramViewHolder.itemView.getLeft())) {
-        break label359;
-      }
-      k = Math.abs(k);
-      if (k <= i) {
-        break label359;
-      }
-      localObject2 = localObject1;
-      i = k;
-    }
-    label346:
-    label359:
-    for (;;)
-    {
-      if (i2 < 0)
+      RecyclerView.ViewHolder localViewHolder = (RecyclerView.ViewHolder)paramList.get(k);
+      if (i2 > 0)
       {
-        k = ((RecyclerView.ViewHolder)localObject1).itemView.getTop() - paramInt2;
-        if ((k > 0) && (((RecyclerView.ViewHolder)localObject1).itemView.getTop() < paramViewHolder.itemView.getTop()))
+        j = localViewHolder.itemView.getRight() - (paramInt1 + n);
+        if ((j < 0) && (localViewHolder.itemView.getRight() > paramViewHolder.itemView.getRight()))
         {
-          k = Math.abs(k);
-          if (k > i)
+          j = Math.abs(j);
+          if (j > i)
           {
-            localObject2 = localObject1;
-            i = k;
+            localObject2 = localViewHolder;
+            break label146;
           }
         }
       }
-      for (;;)
+      int j = i;
+      label146:
+      Object localObject1 = localObject2;
+      i = j;
+      int m;
+      if (i2 < 0)
       {
-        if (i2 > 0)
+        m = localViewHolder.itemView.getLeft() - paramInt1;
+        localObject1 = localObject2;
+        i = j;
+        if (m > 0)
         {
-          k = ((RecyclerView.ViewHolder)localObject1).itemView.getBottom() - (paramInt2 + n);
-          if ((k < 0) && (((RecyclerView.ViewHolder)localObject1).itemView.getBottom() > paramViewHolder.itemView.getBottom()))
+          localObject1 = localObject2;
+          i = j;
+          if (localViewHolder.itemView.getLeft() < paramViewHolder.itemView.getLeft())
           {
-            k = Math.abs(k);
-            if (k > i) {
-              i = k;
+            m = Math.abs(m);
+            localObject1 = localObject2;
+            i = j;
+            if (m > j)
+            {
+              i = m;
+              localObject1 = localViewHolder;
             }
           }
         }
-        for (;;)
+      }
+      localObject2 = localObject1;
+      j = i;
+      if (i3 < 0)
+      {
+        m = localViewHolder.itemView.getTop() - paramInt2;
+        localObject2 = localObject1;
+        j = i;
+        if (m > 0)
         {
-          j += 1;
           localObject2 = localObject1;
-          break;
-          return localObject2;
-          break label143;
-          localObject1 = localObject2;
+          j = i;
+          if (localViewHolder.itemView.getTop() < paramViewHolder.itemView.getTop())
+          {
+            m = Math.abs(m);
+            localObject2 = localObject1;
+            j = i;
+            if (m > i)
+            {
+              j = m;
+              localObject2 = localViewHolder;
+            }
+          }
         }
       }
+      if (i3 > 0)
+      {
+        i = localViewHolder.itemView.getBottom() - (paramInt2 + i1);
+        if ((i < 0) && (localViewHolder.itemView.getBottom() > paramViewHolder.itemView.getBottom()))
+        {
+          i = Math.abs(i);
+          if (i > j)
+          {
+            localObject2 = localViewHolder;
+            break label404;
+          }
+        }
+      }
+      i = j;
+      label404:
+      k += 1;
     }
+    return localObject2;
   }
   
   public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
@@ -171,11 +187,14 @@ public abstract class ItemTouchHelper$Callback
     if (i == 0) {
       return paramInt1;
     }
-    paramInt1 = (i ^ 0xFFFFFFFF) & paramInt1;
-    if (paramInt2 == 0) {
-      return paramInt1 | i >> 2;
+    paramInt1 &= (i ^ 0xFFFFFFFF);
+    if (paramInt2 == 0) {}
+    for (paramInt2 = i >> 2;; paramInt2 = (paramInt2 & 0x303030) >> 2)
+    {
+      return paramInt1 | paramInt2;
+      paramInt2 = i >> 1;
+      paramInt1 |= 0xFFCFCFCF & paramInt2;
     }
-    return paramInt1 | i >> 1 & 0xFFCFCFCF | (i >> 1 & 0x303030) >> 2;
   }
   
   final int getAbsoluteMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
@@ -238,29 +257,26 @@ public abstract class ItemTouchHelper$Callback
   
   public int interpolateOutOfBoundsScroll(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    float f1 = 1.0F;
     paramInt3 = getMaxDragScroll(paramRecyclerView);
     int i = Math.abs(paramInt2);
     int j = (int)Math.signum(paramInt2);
-    float f2 = Math.min(1.0F, i * 1.0F / paramInt1);
-    paramInt1 = (int)(paramInt3 * j * sDragViewScrollCapInterpolator.getInterpolation(f2));
-    if (paramLong > 2000L) {}
-    for (;;)
-    {
-      f2 = paramInt1;
-      paramInt3 = (int)(sDragScrollInterpolator.getInterpolation(f1) * f2);
-      paramInt1 = paramInt3;
-      if (paramInt3 == 0)
-      {
-        if (paramInt2 <= 0) {
-          break;
-        }
-        paramInt1 = 1;
-      }
-      return paramInt1;
+    float f2 = i;
+    float f1 = 1.0F;
+    f2 = Math.min(1.0F, f2 * 1.0F / paramInt1);
+    paramInt1 = (int)(j * paramInt3 * sDragViewScrollCapInterpolator.getInterpolation(f2));
+    if (paramLong <= 2000L) {
       f1 = (float)paramLong / 2000.0F;
     }
-    return -1;
+    paramInt3 = (int)(paramInt1 * sDragScrollInterpolator.getInterpolation(f1));
+    paramInt1 = paramInt3;
+    if (paramInt3 == 0)
+    {
+      if (paramInt2 > 0) {
+        return 1;
+      }
+      paramInt1 = -1;
+    }
+    return paramInt1;
   }
   
   public boolean isItemViewSwipeEnabled()
@@ -306,14 +322,15 @@ public abstract class ItemTouchHelper$Callback
   
   void onDrawOver(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder, List<ItemTouchHelper.RecoverAnimation> paramList, int paramInt, float paramFloat1, float paramFloat2)
   {
-    int j = paramList.size();
+    int k = paramList.size();
+    int j = 0;
     int i = 0;
-    while (i < j)
+    while (i < k)
     {
       ItemTouchHelper.RecoverAnimation localRecoverAnimation = (ItemTouchHelper.RecoverAnimation)paramList.get(i);
-      int k = paramCanvas.save();
+      int m = paramCanvas.save();
       onChildDrawOver(paramCanvas, paramRecyclerView, localRecoverAnimation.mViewHolder, localRecoverAnimation.mX, localRecoverAnimation.mY, localRecoverAnimation.mActionState, false);
-      paramCanvas.restoreToCount(k);
+      paramCanvas.restoreToCount(m);
       i += 1;
     }
     if (paramViewHolder != null)
@@ -322,28 +339,20 @@ public abstract class ItemTouchHelper$Callback
       onChildDrawOver(paramCanvas, paramRecyclerView, paramViewHolder, paramFloat1, paramFloat2, paramInt, true);
       paramCanvas.restoreToCount(i);
     }
-    paramInt = 0;
-    i = j - 1;
-    if (i >= 0)
+    paramInt = k - 1;
+    i = j;
+    while (paramInt >= 0)
     {
-      paramCanvas = (ItemTouchHelper.RecoverAnimation)paramList.get(i);
+      paramCanvas = (ItemTouchHelper.RecoverAnimation)paramList.get(paramInt);
       if ((paramCanvas.mEnded) && (!paramCanvas.mIsPendingCleanup)) {
-        paramList.remove(i);
+        paramList.remove(paramInt);
+      } else if (!paramCanvas.mEnded) {
+        i = 1;
       }
+      paramInt -= 1;
     }
-    for (;;)
-    {
-      i -= 1;
-      break;
-      if (!paramCanvas.mEnded)
-      {
-        paramInt = 1;
-        continue;
-        if (paramInt != 0) {
-          paramRecyclerView.invalidate();
-        }
-        return;
-      }
+    if (i != 0) {
+      paramRecyclerView.invalidate();
     }
   }
   
@@ -352,29 +361,29 @@ public abstract class ItemTouchHelper$Callback
   public void onMoved(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, int paramInt1, RecyclerView.ViewHolder paramViewHolder2, int paramInt2, int paramInt3, int paramInt4)
   {
     RecyclerView.LayoutManager localLayoutManager = paramRecyclerView.getLayoutManager();
-    if ((localLayoutManager instanceof ItemTouchHelper.ViewDropHandler)) {
-      ((ItemTouchHelper.ViewDropHandler)localLayoutManager).prepareForDrop(paramViewHolder1.itemView, paramViewHolder2.itemView, paramInt3, paramInt4);
-    }
-    do
+    if ((localLayoutManager instanceof ItemTouchHelper.ViewDropHandler))
     {
-      do
-      {
-        return;
-        if (localLayoutManager.canScrollHorizontally())
-        {
-          if (localLayoutManager.getDecoratedLeft(paramViewHolder2.itemView) <= paramRecyclerView.getPaddingLeft()) {
-            paramRecyclerView.scrollToPosition(paramInt2);
-          }
-          if (localLayoutManager.getDecoratedRight(paramViewHolder2.itemView) >= paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight()) {
-            paramRecyclerView.scrollToPosition(paramInt2);
-          }
-        }
-      } while (!localLayoutManager.canScrollVertically());
+      ((ItemTouchHelper.ViewDropHandler)localLayoutManager).prepareForDrop(paramViewHolder1.itemView, paramViewHolder2.itemView, paramInt3, paramInt4);
+      return;
+    }
+    if (localLayoutManager.canScrollHorizontally())
+    {
+      if (localLayoutManager.getDecoratedLeft(paramViewHolder2.itemView) <= paramRecyclerView.getPaddingLeft()) {
+        paramRecyclerView.scrollToPosition(paramInt2);
+      }
+      if (localLayoutManager.getDecoratedRight(paramViewHolder2.itemView) >= paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight()) {
+        paramRecyclerView.scrollToPosition(paramInt2);
+      }
+    }
+    if (localLayoutManager.canScrollVertically())
+    {
       if (localLayoutManager.getDecoratedTop(paramViewHolder2.itemView) <= paramRecyclerView.getPaddingTop()) {
         paramRecyclerView.scrollToPosition(paramInt2);
       }
-    } while (localLayoutManager.getDecoratedBottom(paramViewHolder2.itemView) < paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom());
-    paramRecyclerView.scrollToPosition(paramInt2);
+      if (localLayoutManager.getDecoratedBottom(paramViewHolder2.itemView) >= paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom()) {
+        paramRecyclerView.scrollToPosition(paramInt2);
+      }
+    }
   }
   
   public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -388,7 +397,7 @@ public abstract class ItemTouchHelper$Callback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.itemtouchhelper.ItemTouchHelper.Callback
  * JD-Core Version:    0.7.0.1
  */

@@ -79,9 +79,13 @@ public class OpenGLRenderer
         localObject = chooseEglConfig();
         this.eglContext = createContext(this.egl, this.eglDisplay, (EGLConfig)localObject);
         this.eglSurface = this.egl.eglCreateWindowSurface(this.eglDisplay, (EGLConfig)localObject, this.texture, null);
-        if ((this.eglSurface != null) && (this.eglSurface != EGL10.EGL_NO_SURFACE))
+        localObject = this.eglSurface;
+        if ((localObject != null) && (localObject != EGL10.EGL_NO_SURFACE))
         {
-          if (this.egl.eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this.eglContext)) {
+          localObject = this.egl;
+          EGLDisplay localEGLDisplay = this.eglDisplay;
+          EGLSurface localEGLSurface = this.eglSurface;
+          if (((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.eglContext)) {
             return;
           }
           localObject = new StringBuilder();
@@ -152,7 +156,7 @@ public class OpenGLRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.renderer.OpenGLRenderer
  * JD-Core Version:    0.7.0.1
  */

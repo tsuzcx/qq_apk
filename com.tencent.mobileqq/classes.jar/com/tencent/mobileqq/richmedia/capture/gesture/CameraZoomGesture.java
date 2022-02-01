@@ -24,8 +24,9 @@ public class CameraZoomGesture
   
   protected void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraCaptureView)) {
-      ((CameraCaptureView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setZoom(paramInt);
+    GLSurfaceView localGLSurfaceView = this.jdField_a_of_type_AndroidOpenglGLSurfaceView;
+    if ((localGLSurfaceView instanceof CameraCaptureView)) {
+      ((CameraCaptureView)localGLSurfaceView).setZoom(paramInt);
     }
   }
   
@@ -38,82 +39,83 @@ public class CameraZoomGesture
   {
     int i = paramMotionEvent.getPointerCount();
     int j = paramMotionEvent.getAction() & 0xFF;
-    if ((j != 3) || ((i == 1) && (paramBoolean))) {
-      switch (j)
-      {
-      }
-    }
-    while ((i != 2) || (paramBoolean))
+    float f1;
+    float f2;
+    if ((i == 1) && (paramBoolean))
     {
-      return false;
-      this.c = this.jdField_a_of_type_Float;
-      return false;
-      if (paramMotionEvent.getY() >= this.jdField_a_of_type_Float)
+      if (j != 0)
       {
-        this.c = this.jdField_a_of_type_Float;
-        return false;
-      }
-      i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture$ZoomGestureListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture$ZoomGestureListener.a(i);
-      }
-      for (;;)
-      {
-        this.c = paramMotionEvent.getY();
-        return false;
-        if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
+        if (j != 2) {
+          return false;
+        }
+        f1 = paramMotionEvent.getY();
+        f2 = this.jdField_a_of_type_Float;
+        if (f1 >= f2)
+        {
+          this.c = f2;
+          return false;
+        }
+        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
+        CameraZoomGesture.ZoomGestureListener localZoomGestureListener = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture$ZoomGestureListener;
+        if (localZoomGestureListener != null) {
+          localZoomGestureListener.a(i);
+        } else if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
           a(i);
         }
-      }
-    }
-    SLog.a("CameraZoomGesture", "onTouchEvent %s", new Object[] { paramMotionEvent });
-    float f4;
-    float f2;
-    float f3;
-    float f1;
-    if (i == 2)
-    {
-      f4 = paramMotionEvent.getX(0);
-      f2 = paramMotionEvent.getY(0);
-      f3 = paramMotionEvent.getX(1);
-      f1 = paramMotionEvent.getY(1);
-      switch (j)
-      {
-      case 6: 
-      case 3: 
-      case 4: 
-      default: 
+        this.c = paramMotionEvent.getY();
         return false;
-      case 2: 
-        f1 = TakeVideoUtils.a(f4, f2, f3, f1);
-        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture$ZoomGestureListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture$ZoomGestureListener.a(i);
-        }
-        break;
       }
-    }
-    for (;;)
-    {
-      return true;
-      f4 = paramMotionEvent.getX(1);
-      f2 = paramMotionEvent.getY(1);
-      f3 = paramMotionEvent.getX(2);
-      f1 = paramMotionEvent.getY(2);
-      break;
-      this.b = TakeVideoUtils.a(f4, f2, f3, f1);
+      this.c = this.jdField_a_of_type_Float;
       return false;
+    }
+    if ((i == 2) && (!paramBoolean))
+    {
+      SLog.a("CameraZoomGesture", "onTouchEvent %s", new Object[] { paramMotionEvent });
+      float f4;
+      float f3;
+      if (i == 2)
+      {
+        f4 = paramMotionEvent.getX(0);
+        f1 = paramMotionEvent.getY(0);
+        f2 = paramMotionEvent.getX(1);
+        f3 = paramMotionEvent.getY(1);
+      }
+      else
+      {
+        f4 = paramMotionEvent.getX(1);
+        f1 = paramMotionEvent.getY(1);
+        f2 = paramMotionEvent.getX(2);
+        f3 = paramMotionEvent.getY(2);
+      }
+      if (j != 2)
+      {
+        if (j != 5) {
+          return false;
+        }
+        this.b = TakeVideoUtils.a(f4, f1, f2, f3);
+        return false;
+      }
+      f1 = TakeVideoUtils.a(f4, f1, f2, f3);
+      i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
+      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraZoomGesture$ZoomGestureListener;
+      if (paramMotionEvent != null)
+      {
+        paramMotionEvent.a(i);
+        return true;
+      }
       if ((i != 0) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null))
       {
         a(i);
         this.b = f1;
       }
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.gesture.CameraZoomGesture
  * JD-Core Version:    0.7.0.1
  */

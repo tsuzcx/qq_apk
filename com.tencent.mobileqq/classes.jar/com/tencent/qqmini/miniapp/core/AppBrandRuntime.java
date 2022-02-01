@@ -55,12 +55,15 @@ public class AppBrandRuntime
       {
         webviewDataDirectoryInited = true;
         WebView.setDataDirectorySuffix(AppLoaderFactory.g().getProcessName());
+        return;
       }
-      return;
     }
     catch (Throwable paramContext)
     {
-      QMLog.e("minisdk-start_AppBrandRuntime", "setDataDirectorySuffix error. " + paramContext.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setDataDirectorySuffix error. ");
+      localStringBuilder.append(paramContext.getMessage());
+      QMLog.e("minisdk-start_AppBrandRuntime", localStringBuilder.toString());
     }
   }
   
@@ -72,14 +75,14 @@ public class AppBrandRuntime
   private void getScreenshotFromView(ICaptureImageCallback paramICaptureImageCallback, View paramView)
   {
     paramView = SaveCaptureImageUitl.buildBitmapFromView(paramView);
-    if ((paramView == null) || (paramView.isRecycled()))
+    if ((paramView != null) && (!paramView.isRecycled()))
     {
-      if (paramICaptureImageCallback != null) {
-        paramICaptureImageCallback.onResult(null);
-      }
+      ThreadManager.executeOnDiskIOThreadPool(new AppBrandRuntime.6(this, paramICaptureImageCallback, paramView));
       return;
     }
-    ThreadManager.executeOnDiskIOThreadPool(new AppBrandRuntime.6(this, paramICaptureImageCallback, paramView));
+    if (paramICaptureImageCallback != null) {
+      paramICaptureImageCallback.onResult(null);
+    }
   }
   
   private void initEmbeddedState()
@@ -100,22 +103,16 @@ public class AppBrandRuntime
     AppBrandPage localAppBrandPage = ((AppBrandPageContainer)this.pageContainer).getShowingPage();
     if (localAppBrandPage != null)
     {
-      localFrameLayout = localAppBrandPage.getCenterLayout();
-      localObject = localAppBrandPage.getPageWebviewContainer();
-      localView = ((PageWebviewContainer)localObject).findViewWithTag("MiniAppVideoPlayer");
+      FrameLayout localFrameLayout = localAppBrandPage.getCenterLayout();
+      Object localObject = localAppBrandPage.getPageWebviewContainer();
+      View localView = ((PageWebviewContainer)localObject).findViewWithTag("MiniAppVideoPlayer");
       localObject = ((PageWebviewContainer)localObject).findViewWithTag("MiniAppMapTag");
-      localEmbeddedWidgetClientFactory = localAppBrandPage.getRootContainer().getCurrentX5EmbeddedWidgetClientFactory();
-      if ((localView instanceof IVideoPlayerUIImpl)) {
+      EmbeddedWidgetClientFactory localEmbeddedWidgetClientFactory = localAppBrandPage.getRootContainer().getCurrentX5EmbeddedWidgetClientFactory();
+      if ((localView instanceof IVideoPlayerUIImpl))
+      {
         captureImageForVideoPlayer(paramICaptureImageCallback, localFrameLayout, localView);
+        return;
       }
-    }
-    while (paramICaptureImageCallback == null)
-    {
-      FrameLayout localFrameLayout;
-      Object localObject;
-      View localView;
-      EmbeddedWidgetClientFactory localEmbeddedWidgetClientFactory;
-      return;
       if (localObject != null)
       {
         ((MapProxy)ProxyManager.get(MapProxy.class)).captureImage(this, (View)localObject, localFrameLayout, new AppBrandRuntime.3(this, paramICaptureImageCallback));
@@ -130,9 +127,12 @@ public class AppBrandRuntime
       this.isGettingScreenShot = false;
       return;
     }
-    QMLog.e("minisdk-start_AppBrandRuntime", "captureImage, current page is null, callback null.");
-    paramICaptureImageCallback.onResult(null);
-    this.isGettingScreenShot = false;
+    if (paramICaptureImageCallback != null)
+    {
+      QMLog.e("minisdk-start_AppBrandRuntime", "captureImage, current page is null, callback null.");
+      paramICaptureImageCallback.onResult(null);
+      this.isGettingScreenShot = false;
+    }
   }
   
   public AdReportData getAdReportData()
@@ -237,7 +237,7 @@ public class AppBrandRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.AppBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

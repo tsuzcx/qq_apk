@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,9 +23,10 @@ public final class newest_feeds_req
   
   static
   {
-    cache_vec_uinlist.add(Long.valueOf(0L));
+    Long localLong = Long.valueOf(0L);
+    cache_vec_uinlist.add(localLong);
     cache_mapUinTimes = new HashMap();
-    cache_mapUinTimes.put(Long.valueOf(0L), Long.valueOf(0L));
+    cache_mapUinTimes.put(localLong, localLong);
   }
   
   public newest_feeds_req() {}
@@ -55,24 +57,28 @@ public final class newest_feeds_req
   {
     paramJceOutputStream.write(this.cmd, 0);
     paramJceOutputStream.write(this.login_uin, 1);
-    if (this.vec_uinlist != null) {
-      paramJceOutputStream.write(this.vec_uinlist, 2);
+    Object localObject = this.vec_uinlist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
     paramJceOutputStream.write(this.last_feed_time, 3);
-    if (this.str_attach != null) {
-      paramJceOutputStream.write(this.str_attach, 4);
+    localObject = this.str_attach;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.strQua != null) {
-      paramJceOutputStream.write(this.strQua, 5);
+    localObject = this.strQua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.mapUinTimes != null) {
-      paramJceOutputStream.write(this.mapUinTimes, 6);
+    localObject = this.mapUinTimes;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_NEWEST_FEEDS.newest_feeds_req
  * JD-Core Version:    0.7.0.1
  */

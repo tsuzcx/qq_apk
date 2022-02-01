@@ -15,14 +15,20 @@ import java.util.List;
 public class TAVAudioMixInputParameters
   extends MutableAudioMixInputParameters
 {
-  private final String TAG = "TAVAudioMixInputParamet@" + Integer.toHexString(hashCode());
+  private final String TAG;
   @NonNull
-  private List<TAVAudioConfigurationSegment> audioConfigurationSegmentList = new ArrayList();
-  private int reportCount = 0;
+  private List<TAVAudioConfigurationSegment> audioConfigurationSegmentList;
+  private int reportCount;
   
   public TAVAudioMixInputParameters(AssetTrack paramAssetTrack)
   {
     super(paramAssetTrack);
+    paramAssetTrack = new StringBuilder();
+    paramAssetTrack.append("TAVAudioMixInputParamet@");
+    paramAssetTrack.append(Integer.toHexString(hashCode()));
+    this.TAG = paramAssetTrack.toString();
+    this.audioConfigurationSegmentList = new ArrayList();
+    this.reportCount = 0;
   }
   
   private void errorReport(String paramString1, String paramString2, Throwable paramThrowable)
@@ -73,7 +79,7 @@ public class TAVAudioMixInputParameters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.audio.TAVAudioMixInputParameters
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,21 @@ class YtVideoEncoder$2
   
   public void run()
   {
-    YtVideoEncoder.access$102(this.this$0, AudioRecord.getMinBufferSize(YtVideoEncoder.access$200(this.this$0), 16, 2));
+    Object localObject = this.this$0;
+    YtVideoEncoder.access$102((YtVideoEncoder)localObject, AudioRecord.getMinBufferSize(YtVideoEncoder.access$200((YtVideoEncoder)localObject), 16, 2));
     int i = Math.min(16384, YtVideoEncoder.access$100(this.this$0) * 2);
-    YtVideoEncoder.access$302(this.this$0, new AudioRecord(1, YtVideoEncoder.access$200(this.this$0), 16, 2, i));
-    YtLogger.i(YtVideoEncoder.access$400(), "Audio recorder init :" + YtVideoEncoder.access$300(this.this$0).getState());
-    byte[] arrayOfByte = new byte[2048];
+    localObject = this.this$0;
+    YtVideoEncoder.access$302((YtVideoEncoder)localObject, new AudioRecord(1, YtVideoEncoder.access$200((YtVideoEncoder)localObject), 16, 2, i));
+    localObject = YtVideoEncoder.access$400();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Audio recorder init :");
+    localStringBuilder.append(YtVideoEncoder.access$300(this.this$0).getState());
+    YtLogger.i((String)localObject, localStringBuilder.toString());
+    localObject = new byte[2048];
     YtVideoEncoder.access$300(this.this$0).startRecording();
     while (!YtVideoEncoder.access$500(this.this$0)) {
-      if (YtVideoEncoder.access$300(this.this$0).read(arrayOfByte, 0, arrayOfByte.length) > 0) {
-        this.this$0.encodeAudioData(arrayOfByte);
+      if (YtVideoEncoder.access$300(this.this$0).read((byte[])localObject, 0, localObject.length) > 0) {
+        this.this$0.encodeAudioData((byte[])localObject);
       }
     }
     YtLogger.d(YtVideoEncoder.access$400(), "Audio push last buffer");
@@ -28,7 +34,7 @@ class YtVideoEncoder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtVideoEncoder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,13 +9,19 @@ public class PttShowRoomMng$PendingCmd
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_a_of_type_Long).append("]");
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.PttShowRoomMng.PendingCmd
  * JD-Core Version:    0.7.0.1
  */

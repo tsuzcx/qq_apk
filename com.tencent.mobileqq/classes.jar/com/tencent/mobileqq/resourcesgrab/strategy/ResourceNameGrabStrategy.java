@@ -17,19 +17,18 @@ public abstract class ResourceNameGrabStrategy
     if ((paramDrawable != null) && (paramDrawable.getConstantState() != null) && (paramList != null))
     {
       paramDrawable = paramDrawable.getConstantState();
-      if (!(paramDrawable instanceof BaseConstantState)) {
-        break label81;
+      if ((paramDrawable instanceof BaseConstantState))
+      {
+        paramList.add(new ResourceGrabSkinData(paramInt, ((BaseConstantState)paramDrawable).skinData));
+        if (QLog.isColorLevel())
+        {
+          paramDrawable = new StringBuilder();
+          paramDrawable.append("getFileNameByConstantState BaseConstantState resourceNames -> ");
+          paramDrawable.append(paramList);
+          QLog.d("SpecialResourceNameGrab", 2, paramDrawable.toString());
+        }
       }
-      paramList.add(new ResourceGrabSkinData(paramInt, ((BaseConstantState)paramDrawable).skinData));
-      if (QLog.isColorLevel()) {
-        QLog.d("SpecialResourceNameGrab", 2, "getFileNameByConstantState BaseConstantState resourceNames -> " + paramList);
-      }
-    }
-    for (;;)
-    {
-      return;
-      label81:
-      if ((paramDrawable instanceof DrawableContainer.DrawableContainerState))
+      else if ((paramDrawable instanceof DrawableContainer.DrawableContainerState))
       {
         if (QLog.isColorLevel()) {
           QLog.d("SpecialResourceNameGrab", 2, "getFileNameByConstantState DrawableContainerState");
@@ -51,7 +50,7 @@ public abstract class ResourceNameGrabStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.strategy.ResourceNameGrabStrategy
  * JD-Core Version:    0.7.0.1
  */

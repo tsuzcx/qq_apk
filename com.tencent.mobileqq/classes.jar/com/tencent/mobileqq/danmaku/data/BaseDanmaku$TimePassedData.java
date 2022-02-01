@@ -8,25 +8,31 @@ public final class BaseDanmaku$TimePassedData
   
   public int a(TimePassedData paramTimePassedData)
   {
-    if (paramTimePassedData == null) {}
-    do
-    {
+    if (paramTimePassedData == null) {
       return 1;
-      if (this.a > paramTimePassedData.a) {
-        return -1;
-      }
-    } while (this.a < paramTimePassedData.a);
+    }
+    long l1 = this.a;
+    long l2 = paramTimePassedData.a;
+    if (l1 > l2) {
+      return -1;
+    }
+    if (l1 < l2) {
+      return 1;
+    }
     return 0;
   }
   
   public String toString()
   {
-    return "mRemainTime:" + this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mRemainTime:");
+    localStringBuilder.append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.data.BaseDanmaku.TimePassedData
  * JD-Core Version:    0.7.0.1
  */

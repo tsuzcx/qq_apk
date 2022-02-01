@@ -13,23 +13,33 @@ class m
   {
     try
     {
-      ab.c("RemoteOpProxy", "<setBlob> process:" + s.e() + ", getServiceInterface()");
-      a locala = (a)this.c.getServiceInterface();
-      if (locala != null) {
-        locala.a(this.a, this.b);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("<setBlob> process:");
+      ((StringBuilder)localObject).append(s.e());
+      ((StringBuilder)localObject).append(", getServiceInterface()");
+      ab.c("RemoteOpProxy", ((StringBuilder)localObject).toString());
+      localObject = (a)this.c.getServiceInterface();
+      if (localObject != null)
+      {
+        ((a)localObject).a(this.a, this.b);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      ab.c("RemoteOpProxy", "<setBlob> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<setBlob> process:");
+      localStringBuilder.append(s.e());
+      localStringBuilder.append(", getServiceInterface() error, error msg = ");
+      localStringBuilder.append(localException.getMessage());
+      ab.c("RemoteOpProxy", localStringBuilder.toString());
       localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.m
  * JD-Core Version:    0.7.0.1
  */

@@ -70,120 +70,117 @@ public class PresetWordFlowLayout
     return (RelativeLayout.LayoutParams)new ViewGroup.MarginLayoutParams(getContext(), paramAttributeSet);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     TraceUtils.traceBegin("PresetWordFlowLayout.onLayout");
     int j = getWidth();
     int k = getChildCount();
-    paramInt2 = 0;
-    paramInt3 = 0;
     paramInt4 = 0;
-    if (paramInt4 < k)
+    paramInt2 = 0;
+    for (paramInt3 = 0; paramInt4 < k; paramInt3 = paramInt1)
     {
       View localView = getChildAt(paramInt4);
-      if (localView.getVisibility() == 8) {
-        paramInt1 = paramInt2;
-      }
-      for (;;)
+      if (localView.getVisibility() == 8)
       {
-        paramInt4 += 1;
-        paramInt2 = paramInt1;
-        break;
+        paramInt1 = paramInt3;
+      }
+      else
+      {
         int m = localView.getMeasuredWidth();
         int n = localView.getMeasuredHeight();
-        paramInt1 = paramInt2;
-        int i = paramInt3;
-        if (this.jdField_a_of_type_Int + paramInt3 + m + this.b > j)
+        paramInt1 = paramInt3;
+        int i = paramInt2;
+        if (this.jdField_a_of_type_Int + paramInt2 + m + this.b > j)
         {
-          paramInt1 = paramInt2 + (this.c + n + this.d);
+          paramInt1 = paramInt3 + (this.c + n + this.d);
           i = 0;
         }
         paramInt2 = this.jdField_a_of_type_Int + i;
         paramInt3 = this.c + paramInt1;
         localView.layout(paramInt2, paramInt3, paramInt2 + m, n + paramInt3);
-        paramInt3 = i + (this.jdField_a_of_type_Int + m + this.b);
+        paramInt2 = i + (this.jdField_a_of_type_Int + m + this.b);
       }
+      paramInt4 += 1;
     }
     TraceUtils.traceEnd();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     TraceUtils.traceBegin("PresetWordFlowLayout.onMeasure");
-    int i6 = View.MeasureSpec.getSize(paramInt1);
-    int i5 = View.MeasureSpec.getSize(paramInt2);
-    int i8 = View.MeasureSpec.getMode(paramInt1);
-    int i7 = View.MeasureSpec.getMode(paramInt2);
-    int i9 = getChildCount();
+    int i4 = View.MeasureSpec.getSize(paramInt1);
+    int i3 = View.MeasureSpec.getSize(paramInt2);
+    int i7 = View.MeasureSpec.getMode(paramInt1);
+    int i6 = View.MeasureSpec.getMode(paramInt2);
+    int i8 = getChildCount();
     int i2 = 0;
-    int k = 0;
-    int m = 0;
-    int i = 0;
     int j = 0;
-    while (i2 < i9)
+    int m = 0;
+    int k = 0;
+    int i1;
+    for (int i = 0; i2 < i8; i = i1)
     {
       View localView = getChildAt(i2);
-      int i3;
-      int i4;
       if (localView.getVisibility() == 8)
       {
-        i3 = m;
-        i4 = k;
-        i2 += 1;
-        k = i4;
-        m = i3;
+        i1 = i;
       }
       else
       {
         measureChild(localView, paramInt1, paramInt2);
-        int n = localView.getMeasuredWidth();
-        int i1 = localView.getMeasuredHeight();
-        n = n + this.jdField_a_of_type_Int + this.b;
-        i1 = i1 + this.c + this.d;
-        if (m + n > i6)
+        i1 = localView.getMeasuredWidth();
+        int n = localView.getMeasuredHeight();
+        i1 = i1 + this.jdField_a_of_type_Int + this.b;
+        int i5 = n + this.c + this.d;
+        n = m + i1;
+        if (n > i4)
         {
-          j = Math.max(m, n);
-          i += i1;
-          k = i1;
-          m = n;
-          i1 = j;
-          n = i;
-        }
-        for (;;)
-        {
-          i4 = k;
-          i3 = m;
-          i = n;
-          j = i1;
-          if (i2 != i9 - 1) {
-            break;
-          }
           j = Math.max(m, i1);
-          i = n + k;
-          i4 = k;
-          i3 = m;
-          break;
-          m += n;
-          k = Math.max(k, i1);
-          n = i;
-          i1 = j;
+          n = i + i5;
+          m = i5;
+          k = i1;
         }
+        else
+        {
+          m = Math.max(k, i5);
+          k = n;
+          n = i;
+        }
+        i = j;
+        i1 = n;
+        if (i2 == i8 - 1)
+        {
+          i = Math.max(k, j);
+          i1 = n + m;
+        }
+        j = k;
+        k = m;
+        m = j;
+        j = i;
       }
-    }
-    if (i8 == 1073741824) {
-      j = i6;
+      i2 += 1;
     }
     if (i7 == 1073741824) {
-      i = i5;
+      paramInt1 = i4;
+    } else {
+      paramInt1 = j;
     }
-    setMeasuredDimension(j, i);
+    if (i6 == 1073741824) {
+      i = i3;
+    }
+    setMeasuredDimension(paramInt1, i);
     TraceUtils.traceEnd();
   }
   
   public void setAdapter(BaseAdapter paramBaseAdapter)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) && (this.jdField_a_of_type_AndroidDatabaseDataSetObserver != null)) {
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+    BaseAdapter localBaseAdapter = this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    if (localBaseAdapter != null)
+    {
+      DataSetObserver localDataSetObserver = this.jdField_a_of_type_AndroidDatabaseDataSetObserver;
+      if (localDataSetObserver != null) {
+        localBaseAdapter.unregisterDataSetObserver(localDataSetObserver);
+      }
     }
     removeAllViews();
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
@@ -197,7 +194,7 @@ public class PresetWordFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.PresetWordFlowLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -29,22 +29,35 @@ public class UniteEntity$Note
       localStringBuilder2.append("\t");
       i += 1;
     }
-    localStringBuilder1.append(localStringBuilder2).append(UniteEntity.a(this.jdField_a_of_type_Int)).append(":[\n");
-    localStringBuilder1.append(localStringBuilder2).append("\tfields").append(":[\n");
+    localStringBuilder1.append(localStringBuilder2);
+    localStringBuilder1.append(UniteEntity.a(this.jdField_a_of_type_Int));
+    localStringBuilder1.append(":[\n");
+    localStringBuilder1.append(localStringBuilder2);
+    localStringBuilder1.append("\tfields");
+    localStringBuilder1.append(":[\n");
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Integer)localIterator.next();
       String str = UniteEntity.b(((Integer)localObject).intValue());
       localObject = this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      localStringBuilder1.append(localStringBuilder2).append("\t\t").append(str).append(":").append(localObject).append("\n");
+      localStringBuilder1.append(localStringBuilder2);
+      localStringBuilder1.append("\t\t");
+      localStringBuilder1.append(str);
+      localStringBuilder1.append(":");
+      localStringBuilder1.append(localObject);
+      localStringBuilder1.append("\n");
     }
-    localStringBuilder1.append(localStringBuilder2).append("\t]").append("\n");
+    localStringBuilder1.append(localStringBuilder2);
+    localStringBuilder1.append("\t]");
+    localStringBuilder1.append("\n");
     localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
       localStringBuilder1.append(((Note)localIterator.next()).a(paramInt + 1));
     }
-    localStringBuilder1.append(localStringBuilder2).append("]").append("\n");
+    localStringBuilder1.append(localStringBuilder2);
+    localStringBuilder1.append("]");
+    localStringBuilder1.append("\n");
     return localStringBuilder1.toString();
   }
   
@@ -92,7 +105,7 @@ public class UniteEntity$Note
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteEntity.Note
  * JD-Core Version:    0.7.0.1
  */

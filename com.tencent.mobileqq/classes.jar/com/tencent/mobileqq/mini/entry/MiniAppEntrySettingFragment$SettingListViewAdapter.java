@@ -32,8 +32,9 @@ class MiniAppEntrySettingFragment$SettingListViewAdapter
   
   public int getCount()
   {
-    if (this.mData != null) {
-      return this.mData.size();
+    ArrayList localArrayList = this.mData;
+    if (localArrayList != null) {
+      return localArrayList.size();
     }
     return 0;
   }
@@ -50,12 +51,13 @@ class MiniAppEntrySettingFragment$SettingListViewAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if ((this.mData != null) && (paramInt < this.mData.size()))
+    Object localObject = this.mData;
+    if ((localObject != null) && (paramInt < ((ArrayList)localObject).size()))
     {
-      MiniAppSettingSwitchInfoEntity localMiniAppSettingSwitchInfoEntity = (MiniAppSettingSwitchInfoEntity)this.mData.get(paramInt);
-      if (localMiniAppSettingSwitchInfoEntity != null)
+      localObject = (MiniAppSettingSwitchInfoEntity)this.mData.get(paramInt);
+      if (localObject != null)
       {
-        if (TextUtils.isEmpty(localMiniAppSettingSwitchInfoEntity.subTitle)) {
+        if (TextUtils.isEmpty(((MiniAppSettingSwitchInfoEntity)localObject).subTitle)) {
           return 0;
         }
         return 1;
@@ -66,49 +68,53 @@ class MiniAppEntrySettingFragment$SettingListViewAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    boolean bool = true;
     MiniAppSettingSwitchInfoEntity localMiniAppSettingSwitchInfoEntity = (MiniAppSettingSwitchInfoEntity)this.mData.get(paramInt);
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(2131562535, null);
-      paramViewGroup = new MiniAppEntrySettingFragment.SettingListViewAdapter.Holder(this);
-      paramViewGroup.singleLineSwitchItem = ((FormSwitchItem)paramView.findViewById(2131371772));
-      paramViewGroup.multiLineSwitchItem = ((FormMultiLineSwitchItem)paramView.findViewById(2131371771));
-      paramView.setTag(paramViewGroup);
+      paramViewGroup = LayoutInflater.from(this.mContext).inflate(2131562371, null);
+      paramView = new MiniAppEntrySettingFragment.SettingListViewAdapter.Holder(this);
+      paramView.singleLineSwitchItem = ((FormSwitchItem)paramViewGroup.findViewById(2131371398));
+      paramView.multiLineSwitchItem = ((FormMultiLineSwitchItem)paramViewGroup.findViewById(2131371397));
+      paramViewGroup.setTag(paramView);
     }
-    for (;;)
+    else
     {
-      switch (getItemViewType(paramInt))
-      {
-      default: 
-        return paramView;
-        paramViewGroup = (MiniAppEntrySettingFragment.SettingListViewAdapter.Holder)paramView.getTag();
+      localObject = (MiniAppEntrySettingFragment.SettingListViewAdapter.Holder)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+    }
+    paramInt = getItemViewType(paramInt);
+    boolean bool1 = false;
+    boolean bool2 = true;
+    if (paramInt != 0)
+    {
+      if (paramInt != 1) {
+        return paramViewGroup;
       }
+      paramView.singleLineSwitchItem.setVisibility(8);
+      paramView.multiLineSwitchItem.setText(localMiniAppSettingSwitchInfoEntity.title);
+      paramView.multiLineSwitchItem.setSecendLineText(localMiniAppSettingSwitchInfoEntity.subTitle);
+      localObject = paramView.multiLineSwitchItem;
+      if (localMiniAppSettingSwitchInfoEntity.value == 1) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
+      ((FormMultiLineSwitchItem)localObject).setChecked(bool1);
+      paramView.multiLineSwitchItem.setOnCheckedChangeListener(getOnCheckedChangeListener(localMiniAppSettingSwitchInfoEntity));
+      paramView.multiLineSwitchItem.setVisibility(0);
+      return paramViewGroup;
     }
-    paramViewGroup.singleLineSwitchItem.setVisibility(0);
-    paramViewGroup.singleLineSwitchItem.setText(localMiniAppSettingSwitchInfoEntity.title);
-    Object localObject = paramViewGroup.singleLineSwitchItem;
-    if (localMiniAppSettingSwitchInfoEntity.value == 1) {}
-    for (bool = true;; bool = false)
-    {
-      ((FormSwitchItem)localObject).setChecked(bool);
-      paramViewGroup.singleLineSwitchItem.setOnCheckedChangeListener(getOnCheckedChangeListener(localMiniAppSettingSwitchInfoEntity));
-      paramViewGroup.multiLineSwitchItem.setVisibility(8);
-      return paramView;
+    paramView.singleLineSwitchItem.setVisibility(0);
+    paramView.singleLineSwitchItem.setText(localMiniAppSettingSwitchInfoEntity.title);
+    Object localObject = paramView.singleLineSwitchItem;
+    if (localMiniAppSettingSwitchInfoEntity.value == 1) {
+      bool1 = true;
     }
-    paramViewGroup.singleLineSwitchItem.setVisibility(8);
-    paramViewGroup.multiLineSwitchItem.setText(localMiniAppSettingSwitchInfoEntity.title);
-    paramViewGroup.multiLineSwitchItem.setSecendLineText(localMiniAppSettingSwitchInfoEntity.subTitle);
-    localObject = paramViewGroup.multiLineSwitchItem;
-    if (localMiniAppSettingSwitchInfoEntity.value == 1) {}
-    for (;;)
-    {
-      ((FormMultiLineSwitchItem)localObject).setChecked(bool);
-      paramViewGroup.multiLineSwitchItem.setOnCheckedChangeListener(getOnCheckedChangeListener(localMiniAppSettingSwitchInfoEntity));
-      paramViewGroup.multiLineSwitchItem.setVisibility(0);
-      return paramView;
-      bool = false;
-    }
+    ((FormSwitchItem)localObject).setChecked(bool1);
+    paramView.singleLineSwitchItem.setOnCheckedChangeListener(getOnCheckedChangeListener(localMiniAppSettingSwitchInfoEntity));
+    paramView.multiLineSwitchItem.setVisibility(8);
+    return paramViewGroup;
   }
   
   public void setData(ArrayList<MiniAppSettingSwitchInfoEntity> paramArrayList)
@@ -122,7 +128,7 @@ class MiniAppEntrySettingFragment$SettingListViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntrySettingFragment.SettingListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

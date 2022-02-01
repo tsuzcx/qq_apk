@@ -20,26 +20,23 @@ class QQCustomMenuNoIconLayout$MenuLine
   {
     View localView = new View(QQCustomMenuNoIconLayout.a(this.a));
     Resources localResources = QQCustomMenuNoIconLayout.a(this.a).getResources();
-    if (paramBoolean)
-    {
-      i = 2131165815;
-      localView.setBackgroundColor(localResources.getColor(i));
-      addView(localView, new LinearLayout.LayoutParams(1, -1));
-      localView = new View(QQCustomMenuNoIconLayout.a(this.a));
-      localResources = QQCustomMenuNoIconLayout.a(this.a).getResources();
-      if (!paramBoolean) {
-        break label123;
-      }
+    int i;
+    if (paramBoolean) {
+      i = 2131165818;
+    } else {
+      i = 2131165820;
     }
-    label123:
-    for (int i = 2131165816;; i = 2131165818)
-    {
-      localView.setBackgroundColor(localResources.getColor(i));
-      addView(localView, new LinearLayout.LayoutParams(1, -1));
-      return;
-      i = 2131165817;
-      break;
+    localView.setBackgroundColor(localResources.getColor(i));
+    addView(localView, new LinearLayout.LayoutParams(1, -1));
+    localView = new View(QQCustomMenuNoIconLayout.a(this.a));
+    localResources = QQCustomMenuNoIconLayout.a(this.a).getResources();
+    if (paramBoolean) {
+      i = 2131165819;
+    } else {
+      i = 2131165821;
     }
+    localView.setBackgroundColor(localResources.getColor(i));
+    addView(localView, new LinearLayout.LayoutParams(1, -1));
   }
   
   public void addView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
@@ -50,7 +47,7 @@ class QQCustomMenuNoIconLayout$MenuLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout.MenuLine
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,14 @@ class PublishHomeWorkFragment$11
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.c = TroopHWJsPlugin.a(this.a.getActivity(), 260);
+    paramArrayOfString = this.a;
+    paramArrayOfString.c = TroopHWJsPlugin.a(paramArrayOfString.getActivity(), 260);
     InputMethodUtil.a(this.a.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.11
  * JD-Core Version:    0.7.0.1
  */

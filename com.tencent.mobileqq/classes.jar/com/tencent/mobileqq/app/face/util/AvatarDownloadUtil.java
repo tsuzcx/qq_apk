@@ -19,8 +19,10 @@ public class AvatarDownloadUtil
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
     int i = Math.min(localBaseApplication.getResources().getDisplayMetrics().widthPixels, localBaseApplication.getResources().getDisplayMetrics().heightPixels);
-    if (i > 720) {}
-    while (i >= 640) {
+    if (i > 720) {
+      return 140;
+    }
+    if (i >= 640) {
       return 140;
     }
     return 40;
@@ -28,12 +30,11 @@ public class AvatarDownloadUtil
   
   private static byte getImageIndex(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 40)
     {
-    case 140: 
-    default: 
-      return 3;
-    case 100: 
+      if (paramInt != 100) {
+        return 3;
+      }
       return 2;
     }
     return 0;
@@ -51,140 +52,140 @@ public class AvatarDownloadUtil
   
   public static String getQQAvatarDownLoadUrl(String paramString, byte paramByte1, byte paramByte2, int paramInt, boolean paramBoolean)
   {
-    String str1 = "q.qlogo.cn";
-    StringBuilder localStringBuilder;
+    Object localObject2 = "p.qlogo.cn";
     if (paramByte2 == 32) {
-      if (paramInt == 1)
+      if ((paramInt != 1) && (paramInt == 32))
       {
-        str1 = "q.qlogo.cn";
-        String str2 = getIp(str1, paramBoolean);
-        localStringBuilder = new StringBuilder("https://");
-        if (TextUtils.isEmpty(str2)) {
-          break label181;
-        }
-        localStringBuilder.append(str2);
-        label55:
-        int i = paramString.indexOf("/", 8);
-        str1 = paramString;
-        if (i > 8)
-        {
-          localStringBuilder.append(paramString.substring(i));
-          str1 = localStringBuilder.toString();
-        }
-        if (paramByte2 != 32) {
-          break label199;
-        }
-        if (paramInt != 1) {
-          break label192;
-        }
-        paramByte2 = getQQHeadImageSize(paramByte1);
+        localObject1 = localObject2;
+        break label70;
       }
     }
-    for (;;)
+    do
     {
-      return str1 + paramByte2;
-      if (paramInt != 32) {
-        break;
-      }
-      str1 = "p.qlogo.cn";
+      localObject1 = "q.qlogo.cn";
       break;
       if (paramByte2 == 16)
       {
-        str1 = "p.qlogo.cn";
+        localObject1 = localObject2;
         break;
       }
-      if ((paramByte2 == 4) || (paramByte2 == 8))
-      {
-        str1 = "p.qlogo.cn";
+      localObject1 = localObject2;
+      if (paramByte2 == 4) {
         break;
       }
-      str1 = "q.qlogo.cn";
-      break;
-      label181:
-      localStringBuilder.append(str1);
-      break label55;
-      label192:
-      paramByte2 = 140;
-      continue;
-      label199:
-      if (paramByte2 == 16) {
-        paramByte2 = 224;
-      } else {
+    } while (paramByte2 != 8);
+    Object localObject1 = localObject2;
+    label70:
+    String str = getIp((String)localObject1, paramBoolean);
+    localObject2 = new StringBuilder("https://");
+    if (!TextUtils.isEmpty(str)) {
+      ((StringBuilder)localObject2).append(str);
+    } else {
+      ((StringBuilder)localObject2).append((String)localObject1);
+    }
+    int i = paramString.indexOf("/", 8);
+    localObject1 = paramString;
+    if (i > 8)
+    {
+      ((StringBuilder)localObject2).append(paramString.substring(i));
+      localObject1 = ((StringBuilder)localObject2).toString();
+    }
+    if (paramByte2 == 32)
+    {
+      if (paramInt == 1) {
         paramByte2 = getQQHeadImageSize(paramByte1);
+      } else {
+        paramByte2 = 140;
       }
     }
+    else if (paramByte2 == 16) {
+      paramByte2 = 224;
+    } else {
+      paramByte2 = getQQHeadImageSize(paramByte1);
+    }
+    paramString = new StringBuilder();
+    paramString.append((String)localObject1);
+    paramString.append(paramByte2);
+    return paramString.toString();
   }
   
   public static int getQQHeadImageSize(byte paramByte)
   {
-    byte b4 = 1;
-    byte b1 = getFaceImageSize();
-    int i = getImageIndex(b1);
-    byte b3 = paramByte;
+    int i = getFaceImageSize();
+    int k = getImageIndex(i);
+    byte b1 = paramByte;
     if (paramByte == 0) {
-      b3 = 1;
+      b1 = 1;
     }
-    paramByte = 1 << i;
-    if ((paramByte & b3) == paramByte) {
-      return b1;
+    paramByte = 1 << k;
+    if ((paramByte & b1) == paramByte) {
+      return i;
     }
     byte b2 = 0;
-    paramByte = i - 1;
-    b1 = b2;
-    if (paramByte >= 0)
-    {
-      b1 = (byte)(1 << paramByte);
-      if ((b1 & b3) == b1) {
-        b1 = 1;
-      }
-    }
-    else
-    {
-      b2 = paramByte;
-      if (b1 != 0) {
-        break label168;
-      }
-      paramByte = i + 1;
-      b2 = paramByte;
-      if (paramByte >= 8) {
-        break label168;
-      }
-      b2 = (byte)(1 << paramByte);
-      if ((b2 & b3) != b2) {
-        break label147;
-      }
-      b1 = b4;
-    }
+    i = k - 1;
     for (;;)
     {
-      if (b1 != 0) {}
-      switch (paramByte)
+      paramByte = b2;
+      if (i < 0) {
+        break;
+      }
+      paramByte = (byte)(1 << i);
+      if ((paramByte & b1) == paramByte)
       {
-      case 1: 
-      default: 
-        return 140;
-        paramByte -= 1;
+        paramByte = 1;
         break;
-        paramByte += 1;
-        break;
-      case 0: 
-        return 40;
-      case 2: 
-        return 100;
-      case 3: 
-        return 140;
-      case 4: 
-        label147:
-        return 640;
-        label168:
-        paramByte = b2;
+      }
+      i -= 1;
+    }
+    b2 = paramByte;
+    int j = i;
+    if (paramByte == 0)
+    {
+      i = k + 1;
+      for (;;)
+      {
+        b2 = paramByte;
+        j = i;
+        if (i >= 8) {
+          break;
+        }
+        b2 = (byte)(1 << i);
+        if ((b2 & b1) == b2)
+        {
+          b2 = 1;
+          j = i;
+          break;
+        }
+        i += 1;
       }
     }
+    paramByte = 140;
+    i = paramByte;
+    if (b2 != 0)
+    {
+      if (j != 0)
+      {
+        if (j != 2)
+        {
+          if (j != 3)
+          {
+            if (j != 4) {
+              return 140;
+            }
+            paramByte = 640;
+          }
+          return paramByte;
+        }
+        return 100;
+      }
+      i = 40;
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.util.AvatarDownloadUtil
  * JD-Core Version:    0.7.0.1
  */

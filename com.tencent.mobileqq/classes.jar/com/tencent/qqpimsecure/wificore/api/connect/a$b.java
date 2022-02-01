@@ -12,12 +12,16 @@ public enum a$b
   
   public String toString()
   {
-    return "[" + dC[ordinal()] + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(dC[ordinal()]);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqpimsecure.wificore.api.connect.a.b
  * JD-Core Version:    0.7.0.1
  */

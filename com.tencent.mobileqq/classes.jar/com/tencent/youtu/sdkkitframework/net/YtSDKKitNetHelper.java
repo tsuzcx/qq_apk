@@ -10,7 +10,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class YtSDKKitNetHelper
 {
-  private static final String TAG = YtSDKKitNetHelper.class.getSimpleName();
+  private static final String TAG = "YtSDKKitNetHelper";
   private static final int TIME_OUT = 10000;
   private static YtSDKKitNetHelper _instane;
   private HttpsURLConnection conn;
@@ -59,21 +59,25 @@ public class YtSDKKitNetHelper
   
   public void stopNetworkRequest()
   {
-    Iterator localIterator = this.runningMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.runningMap.entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
       if (localEntry.getValue() == this.networkThread)
       {
         this.runningMap.remove(localEntry.getKey());
-        YtLogger.d(TAG, "network remove " + localEntry.getKey());
+        localObject = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("network remove ");
+        localStringBuilder.append(localEntry.getKey());
+        YtLogger.d((String)localObject, localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.net.YtSDKKitNetHelper
  * JD-Core Version:    0.7.0.1
  */

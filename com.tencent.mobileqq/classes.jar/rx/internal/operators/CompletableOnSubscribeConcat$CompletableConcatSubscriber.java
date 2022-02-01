@@ -73,13 +73,13 @@ final class CompletableOnSubscribeConcat$CompletableConcatSubscriber
   
   public void onCompleted()
   {
-    if (this.done) {}
-    do
-    {
+    if (this.done) {
       return;
-      this.done = true;
-    } while (this.wip.getAndIncrement() != 0);
-    next();
+    }
+    this.done = true;
+    if (this.wip.getAndIncrement() == 0) {
+      next();
+    }
   }
   
   public void onError(Throwable paramThrowable)
@@ -94,18 +94,19 @@ final class CompletableOnSubscribeConcat$CompletableConcatSubscriber
   
   public void onNext(Completable paramCompletable)
   {
-    if (!this.queue.offer(paramCompletable)) {
+    if (!this.queue.offer(paramCompletable))
+    {
       onError(new MissingBackpressureException());
-    }
-    while (this.wip.getAndIncrement() != 0) {
       return;
     }
-    next();
+    if (this.wip.getAndIncrement() == 0) {
+      next();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.CompletableOnSubscribeConcat.CompletableConcatSubscriber
  * JD-Core Version:    0.7.0.1
  */

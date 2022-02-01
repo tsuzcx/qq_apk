@@ -26,7 +26,11 @@ public final class eh
       }
       i += 1;
     }
-    throw new NoSuchElementException();
+    paramArrayOfObject = new NoSuchElementException();
+    for (;;)
+    {
+      throw paramArrayOfObject;
+    }
   }
   
   private static Class<?> a(TypeVariable<?> paramTypeVariable)
@@ -47,14 +51,12 @@ public final class eh
   {
     if ((paramType instanceof Class))
     {
-      paramType = (Class)paramType;
-      if (paramType.isArray()) {
-        paramType = new eh.a(a(paramType.getComponentType()));
+      Class localClass = (Class)paramType;
+      paramType = localClass;
+      if (localClass.isArray()) {
+        paramType = new eh.a(a(localClass.getComponentType()));
       }
-      for (;;)
-      {
-        return (Type)paramType;
-      }
+      return (Type)paramType;
     }
     if ((paramType instanceof ParameterizedType))
     {
@@ -87,231 +89,234 @@ public final class eh
   
   private static Type a(Type paramType, Class<?> paramClass1, Class<?> paramClass2)
   {
-    Object localObject = paramClass1;
-    paramClass1 = paramType;
-    paramType = (Type)localObject;
-    if (paramClass2 == paramType) {}
-    label13:
-    label89:
-    do
+    if (paramClass2 == paramClass1) {
+      return paramType;
+    }
+    if (paramClass2.isInterface())
     {
-      return paramClass1;
-      if (paramClass2.isInterface())
+      Class[] arrayOfClass = paramClass1.getInterfaces();
+      int i = 0;
+      int j = arrayOfClass.length;
+      while (i < j)
       {
-        localObject = paramType.getInterfaces();
-        int i = 0;
-        int j = localObject.length;
-        for (;;)
+        if (arrayOfClass[i] == paramClass2) {
+          return paramClass1.getGenericInterfaces()[i];
+        }
+        if (paramClass2.isAssignableFrom(arrayOfClass[i]))
         {
-          if (i >= j) {
-            break label89;
-          }
-          if (localObject[i] == paramClass2) {
-            return paramType.getGenericInterfaces()[i];
-          }
-          if (paramClass2.isAssignableFrom(localObject[i]))
-          {
-            paramClass1 = paramType.getGenericInterfaces()[i];
-            paramType = localObject[i];
-            break;
-          }
-          i += 1;
+          paramType = paramClass1.getGenericInterfaces()[i];
+          paramClass1 = arrayOfClass[i];
+          break label124;
+        }
+        i += 1;
+      }
+    }
+    if (!paramClass1.isInterface()) {
+      for (paramType = paramClass1;; paramType = paramClass1)
+      {
+        if (paramType == Object.class) {
+          return paramClass2;
+        }
+        paramClass1 = paramType.getSuperclass();
+        if (paramClass1 == paramClass2) {
+          return paramType.getGenericSuperclass();
+        }
+        if (paramClass2.isAssignableFrom(paramClass1))
+        {
+          paramType = paramType.getGenericSuperclass();
+          label124:
+          break;
         }
       }
-      paramClass1 = paramClass2;
-    } while (paramType.isInterface());
-    for (;;)
-    {
-      paramClass1 = paramClass2;
-      if (paramType == Object.class) {
-        break label13;
-      }
-      paramClass1 = paramType.getSuperclass();
-      if (paramClass1 == paramClass2) {
-        return paramType.getGenericSuperclass();
-      }
-      if (paramClass2.isAssignableFrom(paramClass1))
-      {
-        localObject = paramType.getGenericSuperclass();
-        paramType = paramClass1;
-        paramClass1 = (Class<?>)localObject;
-        break;
-      }
-      paramType = paramClass1;
     }
+    return paramClass2;
   }
   
   public static Type a(Type paramType1, Class<?> paramClass, Type paramType2)
   {
-    Object localObject1 = paramType2;
-    if ((localObject1 instanceof TypeVariable))
+    while ((paramType2 instanceof TypeVariable))
     {
-      localObject1 = (TypeVariable)localObject1;
+      localObject1 = (TypeVariable)paramType2;
       paramType2 = a(paramType1, paramClass, (TypeVariable)localObject1);
-      if (paramType2 != localObject1) {}
+      if (paramType2 == localObject1) {
+        return paramType2;
+      }
     }
-    label90:
-    Object localObject3;
-    label131:
-    label292:
-    label361:
-    do
+    if ((paramType2 instanceof Class))
     {
-      do
+      localObject1 = (Class)paramType2;
+      if (((Class)localObject1).isArray())
       {
-        Object localObject2;
-        do
+        paramType2 = ((Class)localObject1).getComponentType();
+        paramType1 = a(paramType1, paramClass, paramType2);
+        if (paramType2 == paramType1) {
+          return localObject1;
+        }
+        return f(paramType1);
+      }
+    }
+    if ((paramType2 instanceof GenericArrayType))
+    {
+      paramType2 = (GenericArrayType)paramType2;
+      localObject1 = paramType2.getGenericComponentType();
+      paramType1 = a(paramType1, paramClass, (Type)localObject1);
+      if (localObject1 == paramType1) {
+        return paramType2;
+      }
+      return f(paramType1);
+    }
+    boolean bool = paramType2 instanceof ParameterizedType;
+    int k = 0;
+    Object localObject2;
+    Object localObject3;
+    if (bool)
+    {
+      localObject2 = (ParameterizedType)paramType2;
+      paramType2 = ((ParameterizedType)localObject2).getOwnerType();
+      localObject3 = a(paramType1, paramClass, paramType2);
+      int i;
+      if (localObject3 != paramType2) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      paramType2 = ((ParameterizedType)localObject2).getActualTypeArguments();
+      int m = paramType2.length;
+      while (k < m)
+      {
+        Type localType = a(paramType1, paramClass, paramType2[k]);
+        int j = i;
+        localObject1 = paramType2;
+        if (localType != paramType2[k])
         {
-          do
+          j = i;
+          localObject1 = paramType2;
+          if (i == 0)
           {
-            int i;
-            do
-            {
-              do
-              {
-                do
-                {
-                  return paramType2;
-                  localObject1 = paramType2;
-                  break;
-                  if ((!(localObject1 instanceof Class)) || (!((Class)localObject1).isArray())) {
-                    break label90;
-                  }
-                  paramType2 = (Class)localObject1;
-                  localObject1 = paramType2.getComponentType();
-                  paramType1 = a(paramType1, paramClass, (Type)localObject1);
-                } while (localObject1 == paramType1);
-                return f(paramType1);
-                if (!(localObject1 instanceof GenericArrayType)) {
-                  break label131;
-                }
-                paramType2 = (GenericArrayType)localObject1;
-                localObject1 = paramType2.getGenericComponentType();
-                paramType1 = a(paramType1, paramClass, (Type)localObject1);
-              } while (localObject1 == paramType1);
-              return f(paramType1);
-              if (!(localObject1 instanceof ParameterizedType)) {
-                break label292;
-              }
-              localObject2 = (ParameterizedType)localObject1;
-              paramType2 = ((ParameterizedType)localObject2).getOwnerType();
-              localObject3 = a(paramType1, paramClass, paramType2);
-              if (localObject3 != paramType2) {}
-              for (i = 1;; i = 0)
-              {
-                localObject1 = ((ParameterizedType)localObject2).getActualTypeArguments();
-                int m = localObject1.length;
-                int k = 0;
-                while (k < m)
-                {
-                  Type localType = a(paramType1, paramClass, localObject1[k]);
-                  paramType2 = (Type)localObject1;
-                  int j = i;
-                  if (localType != localObject1[k])
-                  {
-                    paramType2 = (Type)localObject1;
-                    j = i;
-                    if (i == 0)
-                    {
-                      paramType2 = (Type[])((Type[])localObject1).clone();
-                      j = 1;
-                    }
-                    paramType2[k] = localType;
-                  }
-                  k += 1;
-                  localObject1 = paramType2;
-                  i = j;
-                }
-              }
-              paramType2 = (Type)localObject2;
-            } while (i == 0);
-            return a((Type)localObject3, ((ParameterizedType)localObject2).getRawType(), (Type[])localObject1);
-            paramType2 = (Type)localObject1;
-          } while (!(localObject1 instanceof WildcardType));
-          localObject1 = (WildcardType)localObject1;
-          localObject2 = ((WildcardType)localObject1).getLowerBounds();
-          localObject3 = ((WildcardType)localObject1).getUpperBounds();
-          if (localObject2.length != 1) {
-            break label361;
+            localObject1 = (Type[])paramType2.clone();
+            j = 1;
           }
-          paramType1 = a(paramType1, paramClass, localObject2[0]);
-          paramType2 = (Type)localObject1;
-        } while (paramType1 == localObject2[0]);
-        return h(paramType1);
+          localObject1[k] = localType;
+        }
+        k += 1;
+        i = j;
         paramType2 = (Type)localObject1;
-      } while (localObject3.length != 1);
-      paramType1 = a(paramType1, paramClass, localObject3[0]);
-      paramType2 = (Type)localObject1;
-    } while (paramType1 == localObject3[0]);
-    return g(paramType1);
+      }
+      if (i != 0) {
+        return a((Type)localObject3, ((ParameterizedType)localObject2).getRawType(), paramType2);
+      }
+      return localObject2;
+    }
+    Object localObject1 = paramType2;
+    if ((paramType2 instanceof WildcardType))
+    {
+      paramType2 = (WildcardType)paramType2;
+      localObject3 = paramType2.getLowerBounds();
+      localObject2 = paramType2.getUpperBounds();
+      if (localObject3.length == 1)
+      {
+        paramType1 = a(paramType1, paramClass, localObject3[0]);
+        localObject1 = paramType2;
+        if (paramType1 != localObject3[0]) {
+          return h(paramType1);
+        }
+      }
+      else
+      {
+        localObject1 = paramType2;
+        if (localObject2.length == 1) {
+          localObject1 = localObject2[0];
+        }
+      }
+    }
+    try
+    {
+      paramType1 = a(paramType1, paramClass, (Type)localObject1);
+      localObject1 = paramType2;
+      if (paramType1 != localObject2[0]) {
+        return g(paramType1);
+      }
+      return localObject1;
+    }
+    catch (Throwable paramType1) {}
+    for (;;)
+    {
+      throw paramType1;
+    }
   }
   
   private static Type a(Type paramType, Class<?> paramClass, TypeVariable<?> paramTypeVariable)
   {
     Class localClass = a(paramTypeVariable);
-    if (localClass == null) {}
-    do
-    {
+    if (localClass == null) {
       return paramTypeVariable;
-      paramType = a(paramType, paramClass, localClass);
-    } while (!(paramType instanceof ParameterizedType));
-    int i = a(localClass.getTypeParameters(), paramTypeVariable);
-    return ((ParameterizedType)paramType).getActualTypeArguments()[i];
+    }
+    paramType = a(paramType, paramClass, localClass);
+    if ((paramType instanceof ParameterizedType))
+    {
+      int i = a(localClass.getTypeParameters(), paramTypeVariable);
+      return ((ParameterizedType)paramType).getActualTypeArguments()[i];
+    }
+    return paramTypeVariable;
   }
   
   public static boolean a(Type paramType1, Type paramType2)
   {
-    Type localType1 = paramType1;
-    for (paramType1 = paramType2;; paramType1 = paramType1.getGenericComponentType())
+    for (;;)
     {
-      if (localType1 == paramType1) {
+      if (paramType1 == paramType2) {
         return true;
       }
-      if ((localType1 instanceof Class)) {
-        return localType1.equals(paramType1);
+      if ((paramType1 instanceof Class)) {
+        return paramType1.equals(paramType2);
       }
-      if ((localType1 instanceof ParameterizedType))
+      if ((paramType1 instanceof ParameterizedType))
       {
-        if (!(paramType1 instanceof ParameterizedType)) {
+        if (!(paramType2 instanceof ParameterizedType)) {
           return false;
         }
-        paramType2 = (ParameterizedType)localType1;
         paramType1 = (ParameterizedType)paramType1;
-        localType1 = paramType2.getOwnerType();
-        Type localType2 = paramType1.getOwnerType();
-        if ((localType1 == localType2) || ((localType1 != null) && (localType1.equals(localType2)))) {}
-        for (int i = 1; (i != 0) && (paramType2.getRawType().equals(paramType1.getRawType())) && (Arrays.equals(paramType2.getActualTypeArguments(), paramType1.getActualTypeArguments())); i = 0) {
-          return true;
+        paramType2 = (ParameterizedType)paramType2;
+        Type localType1 = paramType1.getOwnerType();
+        Type localType2 = paramType2.getOwnerType();
+        int i;
+        if ((localType1 != localType2) && ((localType1 == null) || (!localType1.equals(localType2)))) {
+          i = 0;
+        } else {
+          i = 1;
         }
-        return false;
-      }
-      if (!(localType1 instanceof GenericArrayType)) {
-        break;
+        return (i != 0) && (paramType1.getRawType().equals(paramType2.getRawType())) && (Arrays.equals(paramType1.getActualTypeArguments(), paramType2.getActualTypeArguments()));
       }
       if (!(paramType1 instanceof GenericArrayType)) {
+        break;
+      }
+      if (!(paramType2 instanceof GenericArrayType)) {
         return false;
       }
-      paramType2 = (GenericArrayType)localType1;
       paramType1 = (GenericArrayType)paramType1;
-      localType1 = paramType2.getGenericComponentType();
+      paramType2 = (GenericArrayType)paramType2;
+      paramType1 = paramType1.getGenericComponentType();
+      paramType2 = paramType2.getGenericComponentType();
     }
-    if ((localType1 instanceof WildcardType))
+    if ((paramType1 instanceof WildcardType))
     {
-      if (!(paramType1 instanceof WildcardType)) {
+      if (!(paramType2 instanceof WildcardType)) {
         return false;
       }
-      paramType2 = (WildcardType)localType1;
       paramType1 = (WildcardType)paramType1;
-      return (Arrays.equals(paramType2.getUpperBounds(), paramType1.getUpperBounds())) && (Arrays.equals(paramType2.getLowerBounds(), paramType1.getLowerBounds()));
+      paramType2 = (WildcardType)paramType2;
+      return (Arrays.equals(paramType1.getUpperBounds(), paramType2.getUpperBounds())) && (Arrays.equals(paramType1.getLowerBounds(), paramType2.getLowerBounds()));
     }
-    if ((localType1 instanceof TypeVariable))
+    if ((paramType1 instanceof TypeVariable))
     {
-      if (!(paramType1 instanceof TypeVariable)) {
+      if (!(paramType2 instanceof TypeVariable)) {
         return false;
       }
-      paramType2 = (TypeVariable)localType1;
       paramType1 = (TypeVariable)paramType1;
-      return (paramType2.getGenericDeclaration() == paramType1.getGenericDeclaration()) && (paramType2.getName().equals(paramType1.getName()));
+      paramType2 = (TypeVariable)paramType2;
+      if ((paramType1.getGenericDeclaration() == paramType2.getGenericDeclaration()) && (paramType1.getName().equals(paramType2.getName()))) {
+        return true;
+      }
     }
     return false;
   }
@@ -340,9 +345,20 @@ public final class eh
       }
       paramType = ((WildcardType)paramType).getUpperBounds()[0];
     }
-    if (paramType == null) {}
-    for (String str = "null";; str = paramType.getClass().getName()) {
-      throw new IllegalArgumentException("Expected a Class, ParameterizedType, or GenericArrayType, but <" + paramType + "> is of type " + str);
+    String str;
+    if (paramType == null) {
+      str = "null";
+    } else {
+      str = paramType.getClass().getName();
+    }
+    StringBuilder localStringBuilder = new StringBuilder("Expected a Class, ParameterizedType, or GenericArrayType, but <");
+    localStringBuilder.append(paramType);
+    localStringBuilder.append("> is of type ");
+    localStringBuilder.append(str);
+    paramType = new IllegalArgumentException(localStringBuilder.toString());
+    for (;;)
+    {
+      throw paramType;
     }
   }
   
@@ -398,7 +414,7 @@ public final class eh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.eh
  * JD-Core Version:    0.7.0.1
  */

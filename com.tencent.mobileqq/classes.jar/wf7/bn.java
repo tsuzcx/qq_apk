@@ -17,12 +17,13 @@ public class bn
   
   public bn()
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (Object localObject = new ArrayMap();; localObject = new HashMap())
-    {
-      this.ga = Collections.synchronizedMap((Map)localObject);
-      return;
+    Object localObject;
+    if (Build.VERSION.SDK_INT >= 19) {
+      localObject = new ArrayMap();
+    } else {
+      localObject = new HashMap();
     }
+    this.ga = Collections.synchronizedMap((Map)localObject);
   }
   
   public void A(int paramInt)
@@ -120,12 +121,22 @@ public class bn
   
   public String toString()
   {
-    return "AccessPoint{mSsid='" + this.ey + '\'' + ", mBssid='" + this.fZ + '\'' + ", mSecurity=" + this.ez + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AccessPoint{mSsid='");
+    localStringBuilder.append(this.ey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mBssid='");
+    localStringBuilder.append(this.fZ);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mSecurity=");
+    localStringBuilder.append(this.ez);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.bn
  * JD-Core Version:    0.7.0.1
  */

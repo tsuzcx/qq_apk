@@ -8,7 +8,7 @@ import android.view.WindowManager;
 public class c
   implements a
 {
-  public static final String a = c.class.getSimpleName();
+  public static final String a = "c";
   private boolean b = false;
   private int c;
   private WindowManager d;
@@ -46,7 +46,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.e.c
  * JD-Core Version:    0.7.0.1
  */

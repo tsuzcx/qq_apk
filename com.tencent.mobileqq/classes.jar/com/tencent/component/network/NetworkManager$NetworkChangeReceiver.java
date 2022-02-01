@@ -26,33 +26,32 @@ public class NetworkManager$NetworkChangeReceiver
   
   public String getApnValue()
   {
-    for (;;)
+    NetworkInfo localNetworkInfo = null;
+    try
     {
-      try
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)this.mContext.getSystemService("connectivity");
+      if (localConnectivityManager != null) {
+        localNetworkInfo = localConnectivityManager.getActiveNetworkInfo();
+      }
+      if ((localNetworkInfo != null) && (localNetworkInfo.isConnected()))
       {
-        Object localObject1 = (ConnectivityManager)this.mContext.getSystemService("connectivity");
-        if (localObject1 != null)
-        {
-          localObject1 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
-          if ((localObject1 == null) || (!((NetworkInfo)localObject1).isConnected())) {
-            break;
-          }
-          if (1 == ((NetworkInfo)localObject1).getType()) {
-            return "wifi";
-          }
-          if (((NetworkInfo)localObject1).getExtraInfo() != null) {
-            return ((NetworkInfo)localObject1).getExtraInfo().toLowerCase();
-          }
-          return "unknown";
+        if (1 == localNetworkInfo.getType()) {
+          return "wifi";
+        }
+        if (localNetworkInfo.getExtraInfo() != null) {
+          return localNetworkInfo.getExtraInfo().toLowerCase();
         }
       }
-      catch (Throwable localThrowable)
+      else
       {
-        return "unknown";
+        return "none";
       }
-      Object localObject2 = null;
     }
-    return "none";
+    catch (Throwable localThrowable)
+    {
+      return "unknown";
+    }
+    return "unknown";
   }
   
   public Context getContext()
@@ -74,7 +73,7 @@ public class NetworkManager$NetworkChangeReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.NetworkManager.NetworkChangeReceiver
  * JD-Core Version:    0.7.0.1
  */

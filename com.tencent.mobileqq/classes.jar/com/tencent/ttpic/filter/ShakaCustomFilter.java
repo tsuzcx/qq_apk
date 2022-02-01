@@ -23,19 +23,21 @@ public class ShakaCustomFilter
   
   protected String[] getParamKeys()
   {
-    if (this.uniformList != null) {
-      return (String[])this.uniformList.toArray(new String[this.uniformList.size()]);
+    List localList = this.uniformList;
+    if (localList != null) {
+      return (String[])localList.toArray(new String[localList.size()]);
     }
     return null;
   }
   
   public void initParams()
   {
-    if (this.uniformList != null)
+    Object localObject = this.uniformList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.uniformList.iterator();
-      while (localIterator.hasNext()) {
-        addParam(new UniformParam.FloatParam((String)localIterator.next(), 1.0F));
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        addParam(new UniformParam.FloatParam((String)((Iterator)localObject).next(), 1.0F));
       }
     }
     addParam(new UniformParam.FloatParam("progress", 0.0F));
@@ -43,12 +45,13 @@ public class ShakaCustomFilter
   
   public void setParameterDic(Map<String, Float> paramMap)
   {
-    if (this.uniformList != null)
+    Object localObject = this.uniformList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.uniformList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        String str = (String)localIterator.next();
+        String str = (String)((Iterator)localObject).next();
         addParam(new UniformParam.FloatParam(str, ((Float)paramMap.get(str)).floatValue()));
       }
     }
@@ -59,7 +62,7 @@ public class ShakaCustomFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.ShakaCustomFilter
  * JD-Core Version:    0.7.0.1
  */

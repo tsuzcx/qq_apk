@@ -16,33 +16,41 @@ public class LruLimitTimeAvatarMemoryCache
   
   public Bitmap a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null)
+    Object localObject1 = this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
+    if (localObject1 != null)
     {
-      Bitmap localBitmap2 = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
-      Bitmap localBitmap1 = localBitmap2;
-      if (localBitmap2 != null)
+      Object localObject2 = (Bitmap)((MQLruCache)localObject1).get(paramString);
+      localObject1 = localObject2;
+      if (localObject2 != null)
       {
-        localBitmap1 = localBitmap2;
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+        ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+        localObject1 = localObject2;
+        if (localConcurrentHashMap != null)
         {
-          localBitmap1 = localBitmap2;
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+          localObject1 = localObject2;
+          if (localConcurrentHashMap.containsKey(paramString))
           {
             long l = ((Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).longValue();
-            localBitmap1 = localBitmap2;
+            localObject1 = localObject2;
             if (System.currentTimeMillis() - l > jdField_a_of_type_Long)
             {
               this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
               this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(paramString);
-              localBitmap1 = null;
+              localObject1 = null;
             }
           }
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.", 2, "getAvatar from cache, key: " + paramString + " value: " + localBitmap1);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getAvatar from cache, key: ");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(" value: ");
+        ((StringBuilder)localObject2).append(localObject1);
+        QLog.i("Q.qqhead.", 2, ((StringBuilder)localObject2).toString());
       }
-      return localBitmap1;
+      return localObject1;
     }
     return null;
   }
@@ -51,11 +59,13 @@ public class LruLimitTimeAvatarMemoryCache
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) {
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(paramString);
+    Object localObject = this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
+    if (localObject != null) {
+      ((MQLruCache)localObject).remove(paramString);
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localObject != null) {
+      ((ConcurrentHashMap)localObject).remove(paramString);
     }
   }
   
@@ -66,11 +76,13 @@ public class LruLimitTimeAvatarMemoryCache
   
   public boolean a(String paramString, Bitmap paramBitmap, byte paramByte)
   {
-    if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null)
+    MQLruCache localMQLruCache = this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
+    if (localMQLruCache != null)
     {
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramString, paramBitmap, paramByte);
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
+      localMQLruCache.put(paramString, paramBitmap, paramByte);
+      paramBitmap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      if (paramBitmap != null) {
+        paramBitmap.put(paramString, Long.valueOf(System.currentTimeMillis()));
       }
       return true;
     }
@@ -79,7 +91,7 @@ public class LruLimitTimeAvatarMemoryCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.cache.memory.avatar.LruLimitTimeAvatarMemoryCache
  * JD-Core Version:    0.7.0.1
  */

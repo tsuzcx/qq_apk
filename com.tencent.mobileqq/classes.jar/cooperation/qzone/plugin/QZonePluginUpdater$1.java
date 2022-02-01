@@ -1,8 +1,9 @@
 package cooperation.qzone.plugin;
 
 import android.content.Intent;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.networkedmodule.QzoneModuleConfigManager;
+import com.tencent.qzonehub.api.IQzoneModuleManageApi;
 import cooperation.qzone.patch.QZonePatchRequest;
 
 class QZonePluginUpdater$1
@@ -18,7 +19,7 @@ class QZonePluginUpdater$1
       paramIntent = QZonePatchRequest.onResponse(paramFromServiceMsg.getWupBuffer());
       QZonePluginUpdater.access$000(this.this$0, paramIntent);
       QZonePluginUpdater.access$100(this.this$0, paramIntent, null);
-      QzoneModuleConfigManager.getInstance().handleModuleRsp(paramIntent);
+      ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).handleModuleRsp(paramIntent);
       if (this.this$0.listner != null)
       {
         paramFromServiceMsg = this.this$0.listner;
@@ -28,17 +29,18 @@ class QZonePluginUpdater$1
         paramFromServiceMsg.onUpdatefinish(bool);
       }
     }
-    do
+    else
     {
-      return;
       QZonePluginUpdater.access$100(this.this$0, null, null);
-    } while (this.this$0.listner == null);
-    this.this$0.listner.onUpdatefinish(false);
+      if (this.this$0.listner != null) {
+        this.this$0.listner.onUpdatefinish(false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginUpdater.1
  * JD-Core Version:    0.7.0.1
  */

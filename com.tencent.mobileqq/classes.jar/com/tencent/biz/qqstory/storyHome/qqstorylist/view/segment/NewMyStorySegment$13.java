@@ -15,18 +15,20 @@ class NewMyStorySegment$13
   
   public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (UIUtils.b()) {}
-    while (paramView.getId() != 2131379119) {
+    if (UIUtils.b()) {
       return;
     }
-    StoryReportor.a("mystory", "clk_all_story", 0, 0, new String[0]);
-    paramView = QQStoryContext.a().b();
-    StoryApi.a(NewMyStorySegment.c(this.a), 1, paramView);
+    if (paramView.getId() == 2131378489)
+    {
+      StoryReportor.a("mystory", "clk_all_story", 0, 0, new String[0]);
+      paramView = QQStoryContext.a().b();
+      StoryApi.a(NewMyStorySegment.c(this.a), 1, paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.13
  * JD-Core Version:    0.7.0.1
  */

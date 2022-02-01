@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="ring" android:useLevel="false" android:innerRadius="21.0dip" android:thickness="3.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ff66d99e" />
-</shape>
+<animated-rotate android:drawable="@drawable/i44" android:pivotX="50.0%" android:pivotY="50.0%"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

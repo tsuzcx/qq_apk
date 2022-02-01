@@ -8,12 +8,19 @@ public class QueryFollowRspModel
   
   public String toString()
   {
-    return " ret:" + this.ret + " isFans:" + this.isFans + " msg:" + this.msg;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" ret:");
+    localStringBuilder.append(this.ret);
+    localStringBuilder.append(" isFans:");
+    localStringBuilder.append(this.isFans);
+    localStringBuilder.append(" msg:");
+    localStringBuilder.append(this.msg);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.minicardservice_interface.model.QueryFollowRspModel
  * JD-Core Version:    0.7.0.1
  */

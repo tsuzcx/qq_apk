@@ -22,70 +22,62 @@ public class ScreenJsPlugin
   
   public static float getScreenBrightness(Activity paramActivity)
   {
-    f1 = 0.0F;
-    float f3 = 0.0F;
     Window localWindow;
-    if (paramActivity != null)
-    {
+    if (paramActivity != null) {
       localWindow = paramActivity.getWindow();
-      if (localWindow != null) {
-        break label30;
-      }
-      f1 = -1.0F;
-    }
-    for (;;)
-    {
-      return f1;
+    } else {
       localWindow = null;
-      break;
+    }
+    if (localWindow == null) {
+      return -1.0F;
+    }
+    float f1;
+    try
+    {
+      float f2 = localWindow.getAttributes().screenBrightness;
+      if (f2 >= 0.0F)
+      {
+        f1 = f2;
+        if (f2 <= 1.0F) {
+          break label63;
+        }
+      }
       try
       {
-        label30:
-        f2 = localWindow.getAttributes().screenBrightness;
-        if (f2 >= 0.0F)
-        {
-          f1 = f2;
-          if (f2 <= 1.0F) {
-            break label71;
-          }
+        int i = Settings.System.getInt(paramActivity.getContentResolver(), "screen_brightness");
+        f1 = i / 255.0F;
+        label63:
+        f2 = f1;
+        if (f1 > 1.0F) {
+          f2 = 1.0F;
         }
+        f1 = f2;
+        if (f2 >= 0.0F) {
+          return f1;
+        }
+        return 0.0F;
       }
       catch (Exception paramActivity)
       {
-        try
-        {
-          int i = Settings.System.getInt(paramActivity.getContentResolver(), "screen_brightness");
-          f1 = i / 255.0F;
-          label71:
-          f2 = f1;
-          if (f1 > 1.0F) {
-            f2 = 1.0F;
-          }
-          f1 = f3;
-          if (f2 < 0.0F) {
-            continue;
-          }
-          return f2;
-        }
-        catch (Exception paramActivity)
-        {
-          for (;;)
-          {
-            float f2;
-            f1 = f2;
-          }
-        }
-        paramActivity = paramActivity;
+        f1 = f2;
       }
+      QMLog.e("ScreenJsPlugin", paramActivity.getMessage(), paramActivity);
     }
-    QMLog.e("ScreenJsPlugin", paramActivity.getMessage(), paramActivity);
+    catch (Exception paramActivity)
+    {
+      f1 = 0.0F;
+    }
     return f1;
   }
   
   public static boolean keepScreenOn(Activity paramActivity, boolean paramBoolean)
   {
-    if (paramActivity != null) {}
-    for (paramActivity = paramActivity.getWindow(); paramActivity == null; paramActivity = null) {
+    if (paramActivity != null) {
+      paramActivity = paramActivity.getWindow();
+    } else {
+      paramActivity = null;
+    }
+    if (paramActivity == null) {
       return false;
     }
     if (paramBoolean)
@@ -101,12 +93,13 @@ public class ScreenJsPlugin
   
   public static void setScreenBrightness(Activity paramActivity, float paramFloat)
   {
-    if (paramActivity == null) {}
-    do
-    {
+    if (paramActivity == null) {
       return;
-      paramActivity = paramActivity.getWindow();
-    } while (paramActivity == null);
+    }
+    paramActivity = paramActivity.getWindow();
+    if (paramActivity == null) {
+      return;
+    }
     WindowManager.LayoutParams localLayoutParams = paramActivity.getAttributes();
     localLayoutParams.screenBrightness = paramFloat;
     paramActivity.setAttributes(localLayoutParams);
@@ -120,15 +113,12 @@ public class ScreenJsPlugin
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("value", getScreenBrightness(this.mMiniAppContext.getAttachedActivity()));
       paramRequestEvent.ok(localJSONObject);
-      return "";
     }
     catch (Throwable paramRequestEvent)
     {
-      for (;;)
-      {
-        QMLog.e("ScreenJsPlugin", paramRequestEvent.getMessage(), paramRequestEvent);
-      }
+      QMLog.e("ScreenJsPlugin", paramRequestEvent.getMessage(), paramRequestEvent);
     }
+    return "";
   }
   
   public void onCreate(IMiniAppContext paramIMiniAppContext)
@@ -153,7 +143,7 @@ public class ScreenJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ScreenJsPlugin
  * JD-Core Version:    0.7.0.1
  */

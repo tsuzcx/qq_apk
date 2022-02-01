@@ -48,13 +48,16 @@ public class ProgressRequestBody
     }
     catch (IllegalStateException paramBufferedSink)
     {
-      Log.e("ProgressRequestBody", "ProgressRequestBody exp:" + paramBufferedSink.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ProgressRequestBody exp:");
+      localStringBuilder.append(paramBufferedSink.getMessage());
+      Log.e("ProgressRequestBody", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.plato.mqq.network.ProgressRequestBody
  * JD-Core Version:    0.7.0.1
  */

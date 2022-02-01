@@ -42,10 +42,9 @@ public class MiniLogWriter
   public MiniLogWriter(OutputStream paramOutputStream, String paramString)
   {
     super(paramOutputStream);
-    if (paramString == null) {
-      throw new NullPointerException();
+    if (paramString != null) {
+      this.out = paramOutputStream;
     }
-    this.out = paramOutputStream;
     try
     {
       this.encoder = Charset.forName(paramString).newEncoder();
@@ -55,8 +54,11 @@ public class MiniLogWriter
     }
     catch (Exception paramOutputStream)
     {
-      throw new UnsupportedEncodingException(paramString);
+      label63:
+      break label63;
     }
+    throw new UnsupportedEncodingException(paramString);
+    throw new NullPointerException();
   }
   
   public MiniLogWriter(OutputStream paramOutputStream, Charset paramCharset)
@@ -78,37 +80,40 @@ public class MiniLogWriter
   
   private boolean CharBufferInnerLogic(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
+    Object localObject;
     if ((sCharBufferClass == null) || (sBackingArrayField == null) || (sCapacityField == null))
     {
-      if ((Build.VERSION.SDK_INT < 8) || (Build.VERSION.SDK_INT > 17)) {
-        break label181;
+      if ((Build.VERSION.SDK_INT >= 8) && (Build.VERSION.SDK_INT <= 17))
+      {
+        sCharBufferClass = Class.forName("java.nio.ReadWriteCharArrayBuffer");
+        sBackingArrayField = sCharBufferClass.getSuperclass().getDeclaredField("backingArray");
+        sCapacityField = sCharBufferClass.getSuperclass().getSuperclass().getSuperclass().getDeclaredField("capacity");
       }
-      sCharBufferClass = Class.forName("java.nio.ReadWriteCharArrayBuffer");
-      sBackingArrayField = sCharBufferClass.getSuperclass().getDeclaredField("backingArray");
-      sCapacityField = sCharBufferClass.getSuperclass().getSuperclass().getSuperclass().getDeclaredField("capacity");
-    }
-    for (;;)
-    {
-      if (sBackingArrayField != null) {
-        sBackingArrayField.setAccessible(true);
-      }
-      if (sCapacityField != null) {
-        sCapacityField.setAccessible(true);
-      }
-      if ((sCapacityField == null) || (sBackingArrayField == null) || (sCharBufferClass == null) || (!sCharBufferClass.isInstance(this.mRecycleBuffer))) {
-        break;
-      }
-      sBackingArrayField.set(this.mRecycleBuffer, paramArrayOfChar);
-      sCapacityField.set(this.mRecycleBuffer, MiniLogWriter.LargerInteger.valueOf(paramArrayOfChar.length));
-      this.mRecycleBuffer.position(paramInt1);
-      this.mRecycleBuffer.limit(paramInt1 + paramInt2);
-      return true;
-      label181:
-      if (Build.VERSION.SDK_INT >= 18)
+      else if (Build.VERSION.SDK_INT >= 18)
       {
         sCharBufferClass = Class.forName("java.nio.CharArrayBuffer");
         sBackingArrayField = sCharBufferClass.getDeclaredField("backingArray");
         sCapacityField = sCharBufferClass.getSuperclass().getSuperclass().getDeclaredField("capacity");
+      }
+      localObject = sBackingArrayField;
+      if (localObject != null) {
+        ((Field)localObject).setAccessible(true);
+      }
+      localObject = sCapacityField;
+      if (localObject != null) {
+        ((Field)localObject).setAccessible(true);
+      }
+    }
+    if ((sCapacityField != null) && (sBackingArrayField != null))
+    {
+      localObject = sCharBufferClass;
+      if ((localObject != null) && (((Class)localObject).isInstance(this.mRecycleBuffer)))
+      {
+        sBackingArrayField.set(this.mRecycleBuffer, paramArrayOfChar);
+        sCapacityField.set(this.mRecycleBuffer, MiniLogWriter.LargerInteger.valueOf(paramArrayOfChar.length));
+        this.mRecycleBuffer.position(paramInt1);
+        this.mRecycleBuffer.limit(paramInt1 + paramInt2);
+        return true;
       }
     }
     return false;
@@ -116,24 +121,25 @@ public class MiniLogWriter
   
   public static void checkOffsetAndCount(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (((paramInt2 | paramInt3) < 0) || (paramInt2 > paramInt1) || (paramInt1 - paramInt2 < paramInt3))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(50);
-      localStringBuilder.append("length=");
-      localStringBuilder.append(paramInt1);
-      localStringBuilder.append("; regionStart=");
-      localStringBuilder.append(paramInt2);
-      localStringBuilder.append("; regionLength=");
-      localStringBuilder.append(paramInt3);
-      throw new ArrayIndexOutOfBoundsException(localStringBuilder.toString());
+    if (((paramInt2 | paramInt3) >= 0) && (paramInt2 <= paramInt1) && (paramInt1 - paramInt2 >= paramInt3)) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    localStringBuilder.append("length=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("; regionStart=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("; regionLength=");
+    localStringBuilder.append(paramInt3);
+    throw new ArrayIndexOutOfBoundsException(localStringBuilder.toString());
   }
   
   private void checkStatus()
   {
-    if (this.encoder == null) {
-      throw new IOException("OutputStreamWriter is closed");
+    if (this.encoder != null) {
+      return;
     }
+    throw new IOException("OutputStreamWriter is closed");
   }
   
   private void convert(CharBuffer paramCharBuffer)
@@ -155,30 +161,30 @@ public class MiniLogWriter
   private void drainEncoder()
   {
     Object localObject = CharBuffer.allocate(0);
-    CoderResult localCoderResult = this.encoder.encode((CharBuffer)localObject, this.bytes, true);
-    if (localCoderResult.isError())
-    {
-      localCoderResult.throwException();
-      label30:
-      localObject = this.encoder.flush(this.bytes);
-    }
     for (;;)
     {
-      if (((CoderResult)localObject).isUnderflow()) {
-        return;
+      CoderResult localCoderResult = this.encoder.encode((CharBuffer)localObject, this.bytes, true);
+      if (localCoderResult.isError())
+      {
+        localCoderResult.throwException();
+        break;
       }
+      if (!localCoderResult.isOverflow()) {
+        break;
+      }
+      flushBytes(false);
+    }
+    localObject = this.encoder.flush(this.bytes);
+    while (!((CoderResult)localObject).isUnderflow()) {
       if (((CoderResult)localObject).isOverflow())
       {
         flushBytes(false);
         localObject = this.encoder.flush(this.bytes);
-        continue;
-        if (!localCoderResult.isOverflow()) {
-          break label30;
-        }
-        flushBytes(false);
-        break;
       }
-      ((CoderResult)localObject).throwException();
+      else
+      {
+        ((CoderResult)localObject).throwException();
+      }
     }
   }
   
@@ -209,52 +215,41 @@ public class MiniLogWriter
       this.mInited = true;
       return this.mRecycleBuffer;
     }
-    if (mCanRecycle) {
+    if (mCanRecycle)
+    {
       this.mRecycleBuffer.clear();
-    }
-    try
-    {
-      if (CharBufferInnerLogic(paramArrayOfChar, paramInt1, paramInt2))
+      try
       {
-        CharBuffer localCharBuffer = this.mRecycleBuffer;
-        return localCharBuffer;
+        if (CharBufferInnerLogic(paramArrayOfChar, paramInt1, paramInt2))
+        {
+          CharBuffer localCharBuffer = this.mRecycleBuffer;
+          return localCharBuffer;
+        }
       }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      localClassNotFoundException.printStackTrace();
-      mCanRecycle = false;
-      this.mRecycleBuffer = null;
-      return CharBuffer.wrap(paramArrayOfChar, paramInt1, paramInt2);
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
-      {
-        localNoSuchFieldException.printStackTrace();
-      }
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
-      {
-        localIllegalArgumentException.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        localIllegalAccessException.printStackTrace();
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
       }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        localIllegalArgumentException.printStackTrace();
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        localNoSuchFieldException.printStackTrace();
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        localClassNotFoundException.printStackTrace();
+      }
+      mCanRecycle = false;
+      this.mRecycleBuffer = null;
     }
+    return CharBuffer.wrap(paramArrayOfChar, paramInt1, paramInt2);
   }
   
   public void close()
@@ -290,27 +285,16 @@ public class MiniLogWriter
   
   public void write(String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject = this.lock;
-    StringBuilder localStringBuilder;
-    if (paramInt2 < 0) {
-      try
-      {
-        localStringBuilder = new StringBuilder(50);
-        localStringBuilder.append("length=");
-        localStringBuilder.append(paramString.length());
-        localStringBuilder.append("; regionStart=");
-        localStringBuilder.append(paramInt1);
-        localStringBuilder.append("; regionLength=");
-        localStringBuilder.append(paramInt2);
-        throw new StringIndexOutOfBoundsException(localStringBuilder.toString());
-      }
-      finally {}
-    }
-    if (paramString == null) {
-      throw new NullPointerException("str == null");
-    }
-    if (((paramInt1 | paramInt2) < 0) || (paramInt1 > paramString.length() - paramInt2))
+    localObject = this.lock;
+    if ((paramInt2 < 0) || ((paramString == null) || ((paramInt1 | paramInt2) >= 0))) {}
+    try
     {
+      if (paramInt1 <= paramString.length() - paramInt2)
+      {
+        checkStatus();
+        convert(CharBuffer.wrap(paramString, paramInt1, paramInt2 + paramInt1));
+        return;
+      }
       localStringBuilder = new StringBuilder(50);
       localStringBuilder.append("length=");
       localStringBuilder.append(paramString.length());
@@ -320,8 +304,16 @@ public class MiniLogWriter
       localStringBuilder.append(paramInt2);
       throw new StringIndexOutOfBoundsException(localStringBuilder.toString());
     }
-    checkStatus();
-    convert(CharBuffer.wrap(paramString, paramInt1, paramInt2 + paramInt1));
+    finally {}
+    throw new NullPointerException("str == null");
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    localStringBuilder.append("length=");
+    localStringBuilder.append(paramString.length());
+    localStringBuilder.append("; regionStart=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("; regionLength=");
+    localStringBuilder.append(paramInt2);
+    throw new StringIndexOutOfBoundsException(localStringBuilder.toString());
   }
   
   public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
@@ -337,7 +329,7 @@ public class MiniLogWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniLogWriter
  * JD-Core Version:    0.7.0.1
  */

@@ -38,17 +38,17 @@ public final class MetadataRenderer
   {
     super(4);
     this.output = ((MetadataOutput)Assertions.checkNotNull(paramMetadataOutput));
-    if (paramLooper == null) {}
-    for (paramMetadataOutput = null;; paramMetadataOutput = new Handler(paramLooper, this))
-    {
-      this.outputHandler = paramMetadataOutput;
-      this.decoderFactory = ((MetadataDecoderFactory)Assertions.checkNotNull(paramMetadataDecoderFactory));
-      this.formatHolder = new FormatHolder();
-      this.buffer = new MetadataInputBuffer();
-      this.pendingMetadata = new Metadata[5];
-      this.pendingMetadataTimestamps = new long[5];
-      return;
+    if (paramLooper == null) {
+      paramMetadataOutput = null;
+    } else {
+      paramMetadataOutput = new Handler(paramLooper, this);
     }
+    this.outputHandler = paramMetadataOutput;
+    this.decoderFactory = ((MetadataDecoderFactory)Assertions.checkNotNull(paramMetadataDecoderFactory));
+    this.formatHolder = new FormatHolder();
+    this.buffer = new MetadataInputBuffer();
+    this.pendingMetadata = new Metadata[5];
+    this.pendingMetadataTimestamps = new long[5];
   }
   
   private void flushPendingMetadata()
@@ -60,9 +60,10 @@ public final class MetadataRenderer
   
   private void invokeRenderer(Metadata paramMetadata)
   {
-    if (this.outputHandler != null)
+    Handler localHandler = this.outputHandler;
+    if (localHandler != null)
     {
-      this.outputHandler.obtainMessage(0, paramMetadata).sendToTarget();
+      localHandler.obtainMessage(0, paramMetadata).sendToTarget();
       return;
     }
     invokeRendererInternal(paramMetadata);
@@ -75,13 +76,12 @@ public final class MetadataRenderer
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 0)
     {
-    default: 
-      throw new IllegalStateException();
+      invokeRendererInternal((Metadata)paramMessage.obj);
+      return true;
     }
-    invokeRendererInternal((Metadata)paramMessage.obj);
-    return true;
+    throw new IllegalStateException();
   }
   
   public boolean isEnded()
@@ -94,62 +94,64 @@ public final class MetadataRenderer
     return true;
   }
   
-  public void onDisabled()
+  protected void onDisabled()
   {
     flushPendingMetadata();
     this.decoder = null;
   }
   
-  public void onPositionReset(long paramLong, boolean paramBoolean)
+  protected void onPositionReset(long paramLong, boolean paramBoolean)
   {
     flushPendingMetadata();
     this.inputStreamEnded = false;
   }
   
-  public void onStreamChanged(Format[] paramArrayOfFormat, long paramLong)
+  protected void onStreamChanged(Format[] paramArrayOfFormat, long paramLong)
   {
     this.decoder = this.decoderFactory.createDecoder(paramArrayOfFormat[0]);
   }
   
   public void render(long paramLong1, long paramLong2)
   {
+    int i;
     if ((!this.inputStreamEnded) && (this.pendingMetadataCount < 5))
     {
       this.buffer.clear();
-      if (readSource(this.formatHolder, this.buffer, false) == -4)
-      {
-        if (!this.buffer.isEndOfStream()) {
-          break label122;
+      if (readSource(this.formatHolder, this.buffer, false) == -4) {
+        if (this.buffer.isEndOfStream())
+        {
+          this.inputStreamEnded = true;
         }
-        this.inputStreamEnded = true;
+        else if (!this.buffer.isDecodeOnly())
+        {
+          this.buffer.subsampleOffsetUs = this.formatHolder.format.subsampleOffsetUs;
+          this.buffer.flip();
+          try
+          {
+            i = (this.pendingMetadataIndex + this.pendingMetadataCount) % 5;
+            this.pendingMetadata[i] = this.decoder.decode(this.buffer);
+            this.pendingMetadataTimestamps[i] = this.buffer.timeUs;
+            this.pendingMetadataCount += 1;
+          }
+          catch (MetadataDecoderException localMetadataDecoderException)
+          {
+            throw ExoPlaybackException.createForRenderer(localMetadataDecoderException, getIndex());
+          }
+        }
       }
     }
-    for (;;)
+    if (this.pendingMetadataCount > 0)
     {
-      if ((this.pendingMetadataCount > 0) && (this.pendingMetadataTimestamps[this.pendingMetadataIndex] <= paramLong1))
+      Object localObject = this.pendingMetadataTimestamps;
+      i = this.pendingMetadataIndex;
+      if (localObject[i] <= paramLong1)
       {
-        invokeRenderer(this.pendingMetadata[this.pendingMetadataIndex]);
-        this.pendingMetadata[this.pendingMetadataIndex] = null;
-        this.pendingMetadataIndex = ((this.pendingMetadataIndex + 1) % 5);
+        invokeRenderer(this.pendingMetadata[i]);
+        localObject = this.pendingMetadata;
+        i = this.pendingMetadataIndex;
+        localObject[i] = null;
+        this.pendingMetadataIndex = ((i + 1) % 5);
         this.pendingMetadataCount -= 1;
-      }
-      return;
-      label122:
-      if (this.buffer.isDecodeOnly()) {
-        continue;
-      }
-      this.buffer.subsampleOffsetUs = this.formatHolder.format.subsampleOffsetUs;
-      this.buffer.flip();
-      try
-      {
-        int i = (this.pendingMetadataIndex + this.pendingMetadataCount) % 5;
-        this.pendingMetadata[i] = this.decoder.decode(this.buffer);
-        this.pendingMetadataTimestamps[i] = this.buffer.timeUs;
-        this.pendingMetadataCount += 1;
-      }
-      catch (MetadataDecoderException localMetadataDecoderException)
-      {
-        throw ExoPlaybackException.createForRenderer(localMetadataDecoderException, getIndex());
       }
     }
   }
@@ -168,7 +170,7 @@ public final class MetadataRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.MetadataRenderer
  * JD-Core Version:    0.7.0.1
  */

@@ -40,71 +40,71 @@ class FollowImageTextView$TextLineHelper
   {
     this.jdField_a_of_type_JavaUtilList.clear();
     int n = a();
+    Object localObject;
     if (n <= 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FollowImageTextView", 2, "lineWidth=" + n);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("lineWidth=");
+        ((StringBuilder)localObject).append(n);
+        QLog.i("FollowImageTextView", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
     int i1 = this.jdField_a_of_type_JavaLangCharSequence.length();
-    int j = 0;
-    int k = 0;
     int i = 0;
-    label70:
-    FollowImageTextView.Line localLine;
-    if (j < i1) {
-      if (this.jdField_a_of_type_JavaLangCharSequence.charAt(j) == '\n')
-      {
-        localLine = new FollowImageTextView.Line(null);
-        localLine.jdField_a_of_type_Int = i;
-        localLine.b = (j - 1);
-        localLine.c = k;
-        localLine.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, j);
-        this.jdField_a_of_type_JavaUtilList.add(localLine);
-        i = j + 1;
-        k = 0;
-      }
-    }
-    for (;;)
+    int k = 0;
+    int j = 0;
+    while (i < i1)
     {
-      j += 1;
-      break label70;
-      int m = a(this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, j + 1));
-      if (m > n)
+      if (this.jdField_a_of_type_JavaLangCharSequence.charAt(i) == '\n')
       {
-        localLine = new FollowImageTextView.Line(null);
-        localLine.jdField_a_of_type_Int = i;
-        localLine.b = (j - 1);
-        localLine.c = k;
-        localLine.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, j);
-        this.jdField_a_of_type_JavaUtilList.add(localLine);
-        if (this.jdField_a_of_type_JavaUtilList.size() >= i1)
-        {
-          if (FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView) == null) {
-            break;
-          }
-          FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView).a(this.jdField_a_of_type_JavaUtilList.size());
-          return;
-        }
-        i = j;
-        j -= 1;
-        k = 0;
-        continue;
-      }
-      if (j == i1 - 1)
-      {
-        localLine = new FollowImageTextView.Line(null);
-        localLine.jdField_a_of_type_Int = i;
-        localLine.b = (j - 1);
-        localLine.c = m;
-        localLine.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, i1);
-        this.jdField_a_of_type_JavaUtilList.add(localLine);
+        localObject = new FollowImageTextView.Line(null);
+        ((FollowImageTextView.Line)localObject).jdField_a_of_type_Int = k;
+        ((FollowImageTextView.Line)localObject).b = (i - 1);
+        ((FollowImageTextView.Line)localObject).c = j;
+        ((FollowImageTextView.Line)localObject).jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i);
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        k = i + 1;
+        j = 0;
       }
       else
       {
-        k = m;
+        int m = a(this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i + 1));
+        if (m > n)
+        {
+          localObject = new FollowImageTextView.Line(null);
+          ((FollowImageTextView.Line)localObject).jdField_a_of_type_Int = k;
+          ((FollowImageTextView.Line)localObject).b = (i - 1);
+          ((FollowImageTextView.Line)localObject).c = j;
+          ((FollowImageTextView.Line)localObject).jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i);
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
+          if (this.jdField_a_of_type_JavaUtilList.size() >= i1) {
+            break;
+          }
+          j = 0;
+          k = i;
+          i -= 1;
+        }
+        else if (i == i1 - 1)
+        {
+          localObject = new FollowImageTextView.Line(null);
+          ((FollowImageTextView.Line)localObject).jdField_a_of_type_Int = k;
+          ((FollowImageTextView.Line)localObject).b = (i - 1);
+          ((FollowImageTextView.Line)localObject).c = m;
+          ((FollowImageTextView.Line)localObject).jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(k, i1);
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
+        }
+        else
+        {
+          j = m;
+        }
       }
+      i += 1;
+    }
+    if (FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView) != null) {
+      FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView).a(this.jdField_a_of_type_JavaUtilList.size());
     }
   }
   
@@ -126,57 +126,43 @@ class FollowImageTextView$TextLineHelper
   public void a(Canvas paramCanvas)
   {
     int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i;
-    if ((this.c > 0) && (this.c < j))
-    {
+    int i = this.c;
+    if ((i > 0) && (i < j)) {
       i = 1;
-      if (i == 0) {
-        break label260;
-      }
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       j = this.c;
     }
-    label260:
-    for (;;)
+    int k = 0;
+    while (k < j)
     {
-      int k = 0;
-      for (;;)
+      CharSequence localCharSequence = ((FollowImageTextView.Line)this.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaLangCharSequence;
+      float f1 = this.jdField_a_of_type_AndroidTextTextPaint.getTextSize();
+      paramCanvas.drawText(localCharSequence, 0, localCharSequence.length(), this.d + 0, f1 + this.b * k + this.e, this.jdField_a_of_type_AndroidTextTextPaint);
+      k += 1;
+    }
+    if ((i != 0) && (j < this.jdField_a_of_type_JavaUtilList.size()))
+    {
+      paramCanvas = (FollowImageTextView.Line)this.jdField_a_of_type_JavaUtilList.get(j);
+      i = this.jdField_a_of_type_JavaLangCharSequence.length();
+      if ((paramCanvas.jdField_a_of_type_Int > -1) && (paramCanvas.jdField_a_of_type_Int < i))
       {
-        if (k < j)
-        {
-          CharSequence localCharSequence = ((FollowImageTextView.Line)this.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaLangCharSequence;
-          float f1 = this.jdField_a_of_type_AndroidTextTextPaint.getTextSize();
-          int m = localCharSequence.length();
-          float f2 = this.d + 0;
-          float f3 = this.b * k;
-          paramCanvas.drawText(localCharSequence, 0, m, f2, this.e + (f1 + f3), this.jdField_a_of_type_AndroidTextTextPaint);
-          k += 1;
-          continue;
-          i = 0;
-          break;
-        }
-      }
-      if ((i != 0) && (j < this.jdField_a_of_type_JavaUtilList.size()))
-      {
-        paramCanvas = (FollowImageTextView.Line)this.jdField_a_of_type_JavaUtilList.get(j);
-        i = this.jdField_a_of_type_JavaLangCharSequence.length();
-        if ((paramCanvas.jdField_a_of_type_Int > -1) && (paramCanvas.jdField_a_of_type_Int < i))
-        {
-          paramCanvas = this.jdField_a_of_type_JavaLangCharSequence.subSequence(paramCanvas.jdField_a_of_type_Int, i);
-          FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView).setText(paramCanvas);
-          FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, true);
-          return;
-        }
-        FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, false);
+        paramCanvas = this.jdField_a_of_type_JavaLangCharSequence.subSequence(paramCanvas.jdField_a_of_type_Int, i);
+        FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView).setText(paramCanvas);
+        FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, true);
         return;
       }
       FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, false);
       return;
     }
+    FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.FollowImageTextView.TextLineHelper
  * JD-Core Version:    0.7.0.1
  */

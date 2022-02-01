@@ -34,78 +34,78 @@ public class TTCartoonFilterGroup
   
   public TTCartoonFilterGroup()
   {
-    if (AEOfflineConfig.getPhonePerfLevel() <= 3) {}
-    for (int i = 2;; i = 1)
-    {
-      this.mScaleValue = i;
-      this.names = new ArrayList();
-      this.times = new ArrayList();
-      this.mOriginBlurFilter = new TTOriginBlurFilter();
-      this.mSobelFilter = new TTSobelFilter();
-      this.mRevertFilter = new TTRevertFilter();
-      this.mYellowFilter = new TTYellowFilter();
-      this.mYellowBlurFilter = new TTYellowBlurFilter();
-      this.mStylizationFilter = new TTStylizationFilter();
-      this.mCartoonFilter = new TTCartoonFilter();
-      this.mCartoonLUTFilter = new TTLookupFilter();
-      return;
+    int i;
+    if (AEOfflineConfig.getPhonePerfLevel() <= 3) {
+      i = 2;
+    } else {
+      i = 1;
     }
+    this.mScaleValue = i;
+    this.names = new ArrayList();
+    this.times = new ArrayList();
+    this.mOriginBlurFilter = new TTOriginBlurFilter();
+    this.mSobelFilter = new TTSobelFilter();
+    this.mRevertFilter = new TTRevertFilter();
+    this.mYellowFilter = new TTYellowFilter();
+    this.mYellowBlurFilter = new TTYellowBlurFilter();
+    this.mStylizationFilter = new TTStylizationFilter();
+    this.mCartoonFilter = new TTCartoonFilter();
+    this.mCartoonLUTFilter = new TTLookupFilter();
   }
   
   private void addPerforData(String paramString) {}
   
   private OptimGaussianMaskFilter getGaussianFilter(int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    default: 
-      return null;
-    case 0: 
-      if (this.mGaussianMaskFilter1 == null)
-      {
-        this.mGaussianMaskFilter1 = new OptimGaussianMaskFilter(false, 1.01F, false);
-        this.mGaussianMaskFilter1.applyFilterChain(false, paramInt2, paramInt3);
+      if (paramInt1 != 1) {
+        return null;
       }
-      return this.mGaussianMaskFilter1;
+      if (this.mGaussianMaskFilter2 == null)
+      {
+        this.mGaussianMaskFilter2 = new OptimGaussianMaskFilter(false, 2.0F, false);
+        this.mGaussianMaskFilter2.applyFilterChain(false, paramInt2, paramInt3);
+      }
+      return this.mGaussianMaskFilter2;
     }
-    if (this.mGaussianMaskFilter2 == null)
+    if (this.mGaussianMaskFilter1 == null)
     {
-      this.mGaussianMaskFilter2 = new OptimGaussianMaskFilter(false, 2.0F, false);
-      this.mGaussianMaskFilter2.applyFilterChain(false, paramInt2, paramInt3);
+      this.mGaussianMaskFilter1 = new OptimGaussianMaskFilter(false, 1.01F, false);
+      this.mGaussianMaskFilter1.applyFilterChain(false, paramInt2, paramInt3);
     }
-    return this.mGaussianMaskFilter2;
+    return this.mGaussianMaskFilter1;
   }
   
   private boolean isInBlackList()
   {
-    boolean bool2 = false;
     String str = Build.MODEL.toLowerCase();
     String[] arrayOfString = BLACK_LIST;
     int j = arrayOfString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfString[i].equals(str)) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (arrayOfString[i].equals(str)) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   private void printLog()
   {
-    String str = "LOG:";
     int i = 1;
+    String str = "LOG:";
     while (i < this.names.size())
     {
-      str = str + " - " + (String)this.names.get(i) + ":" + (((Long)this.times.get(i)).longValue() - ((Long)this.times.get(i - 1)).longValue());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(" - ");
+      localStringBuilder.append((String)this.names.get(i));
+      localStringBuilder.append(":");
+      localStringBuilder.append(((Long)this.times.get(i)).longValue() - ((Long)this.times.get(i - 1)).longValue());
+      str = localStringBuilder.toString();
       i += 1;
     }
     Log.i("TTCartoonFilterGroup", str);
@@ -164,11 +164,13 @@ public class TTCartoonFilterGroup
     this.mCartoonFilter.clearGLSLSelf();
     this.mCartoonLUTFilter.clearGLSLSelf();
     this.mIsApplied = false;
-    if (this.mGaussianMaskFilter1 != null) {
-      this.mGaussianMaskFilter1.clear();
+    OptimGaussianMaskFilter localOptimGaussianMaskFilter = this.mGaussianMaskFilter1;
+    if (localOptimGaussianMaskFilter != null) {
+      localOptimGaussianMaskFilter.clear();
     }
-    if (this.mGaussianMaskFilter2 != null) {
-      this.mGaussianMaskFilter2.clear();
+    localOptimGaussianMaskFilter = this.mGaussianMaskFilter2;
+    if (localOptimGaussianMaskFilter != null) {
+      localOptimGaussianMaskFilter.clear();
     }
   }
   
@@ -261,7 +263,7 @@ public class TTCartoonFilterGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.stylizefilter.cartoonfilter.TTCartoonFilterGroup
  * JD-Core Version:    0.7.0.1
  */

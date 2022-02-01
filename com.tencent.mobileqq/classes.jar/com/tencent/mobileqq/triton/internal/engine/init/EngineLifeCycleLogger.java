@@ -27,7 +27,10 @@ final class EngineLifeCycleLogger
   public void onGameLaunched(@NotNull TritonEngine paramTritonEngine)
   {
     Intrinsics.checkParameterIsNotNull(paramTritonEngine, "engine");
-    Logger.v$default("TritonLifeCycle", "onGameLaunched() called with: engine = " + paramTritonEngine, null, 4, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGameLaunched() called with: engine = ");
+    localStringBuilder.append(paramTritonEngine);
+    Logger.v$default("TritonLifeCycle", localStringBuilder.toString(), null, 4, null);
   }
   
   public void onStart()
@@ -42,7 +45,7 @@ final class EngineLifeCycleLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.engine.init.EngineLifeCycleLogger
  * JD-Core Version:    0.7.0.1
  */

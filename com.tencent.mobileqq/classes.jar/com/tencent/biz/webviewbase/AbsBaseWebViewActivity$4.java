@@ -1,8 +1,8 @@
 package com.tencent.biz.webviewbase;
 
-import android.os.Bundle;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.filemanageraux.app.UniformDownload;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.open.temp.api.IWebViewOpenSdkApi;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.DownloadListener;
 
@@ -17,18 +17,12 @@ class AbsBaseWebViewActivity$4
       QLog.d("WebLog_WebViewBase", 2, "start UniformDownloadActivity");
     }
     String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    UniformDownload.a(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, paramString1, localBundle);
+    ((IWebViewOpenSdkApi)QRoute.api(IWebViewOpenSdkApi.class)).downloadUrlByUniformDownload(paramString1, paramString2, paramString3, paramString4, paramLong, this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity.4
  * JD-Core Version:    0.7.0.1
  */

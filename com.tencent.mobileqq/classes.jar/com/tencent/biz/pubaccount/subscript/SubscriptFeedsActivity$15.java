@@ -13,33 +13,39 @@ class SubscriptFeedsActivity$15
   
   protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
-    }
-    if (!paramBoolean) {}
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetRecommendReadInJoyArticleList isSuccess: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" | data: ");
+      ((StringBuilder)localObject).append(paramArrayList);
+      QLog.d("SubscriptObserver", 2, ((StringBuilder)localObject).toString());
+    }
+    if (!paramBoolean) {
       return;
-    } while (this.a.a == null);
-    Message localMessage = new Message();
-    localMessage.what = 1003;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
-    localMessage.setData(localBundle);
-    this.a.a.removeMessages(1003);
+    }
+    if ((paramArrayList != null) && (paramArrayList.size() == 4))
+    {
+      if (this.a.a != null)
+      {
+        localObject = new Message();
+        ((Message)localObject).what = 1003;
+        Bundle localBundle = new Bundle();
+        localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
+        ((Message)localObject).setData(localBundle);
+        this.a.a.removeMessages(1003);
+      }
+    }
+    else if (QLog.isColorLevel()) {
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.15
  * JD-Core Version:    0.7.0.1
  */

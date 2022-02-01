@@ -10,7 +10,6 @@ public class TroopFeedParserHelper$VoteFeedParser
 {
   public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    int j = 0;
     TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
     if (localTroopFeedItem == null) {
       return null;
@@ -27,45 +26,47 @@ public class TroopFeedParserHelper$VoteFeedParser
         {
           JSONArray localJSONArray = paramJSONObject.getJSONArray("opts");
           i = 0;
-          if ((i >= localJSONArray.length()) || (j > 1))
-          {
-            paramJSONObject = paramJSONObject.getJSONArray("title");
-            if (paramJSONObject.length() > 0) {
-              localTroopFeedItem.title = paramJSONObject.getJSONObject(0).getString("value");
-            }
-          }
-          else
+          j = 0;
+          k = localJSONArray.length();
+          if ((i < k) && (j <= 1))
           {
             Object localObject = localJSONArray.getJSONArray(i);
             k = j;
             if (((JSONArray)localObject).length() <= 0) {
-              break label177;
+              break label181;
             }
             localObject = ((JSONArray)localObject).getJSONObject(0);
-            if (j == 0) {
+            if (j == 0)
+            {
               localTroopFeedItem.content = ((JSONObject)localObject).getString("value");
-            } else {
-              localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("value");
+              break label176;
             }
+            localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("value");
+            break label176;
+          }
+          paramJSONObject = paramJSONObject.getJSONArray("title");
+          if (paramJSONObject.length() > 0) {
+            localTroopFeedItem.title = paramJSONObject.getJSONObject(0).getString("value");
           }
         }
+        return localTroopFeedItem;
       }
       catch (JSONException paramJSONObject)
       {
         paramJSONObject.printStackTrace();
         return null;
       }
-      return localTroopFeedItem;
+      label176:
       int k = j + 1;
-      label177:
+      label181:
       i += 1;
-      j = k;
+      int j = k;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedParserHelper.VoteFeedParser
  * JD-Core Version:    0.7.0.1
  */

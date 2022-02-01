@@ -45,39 +45,42 @@ public class FdTrie
     if (localObject != null) {
       this.b.put(paramFdNode, localObject);
     }
+    int j = 1;
     localObject = paramFdNode.jdField_a_of_type_JavaUtilHashMap.values().iterator();
     FdNode localFdNode;
     do
     {
+      i = j;
       if (!((Iterator)localObject).hasNext()) {
         break;
       }
       localFdNode = (FdNode)((Iterator)localObject).next();
     } while ((localFdNode == null) || (localFdNode.a()));
-    for (int i = 0;; i = 1)
+    int i = 0;
+    if ((i != 0) && (!paramFdNode.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
     {
-      if ((i != 0) && (!paramFdNode.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramFdNode, paramString);
+      return;
+    }
+    localObject = paramFdNode.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localFdNode = (FdNode)((Iterator)localObject).next();
+      if (localFdNode != null)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramFdNode, paramString);
-        return;
-      }
-      localObject = paramFdNode.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      label117:
-      while (((Iterator)localObject).hasNext())
-      {
-        localFdNode = (FdNode)((Iterator)localObject).next();
-        if (localFdNode != null) {
-          if (paramString == null) {
-            break label186;
-          }
+        if (paramString != null)
+        {
+          paramFdNode = new StringBuilder();
+          paramFdNode.append(paramString);
+          paramFdNode.append("/");
+          paramFdNode.append(localFdNode.jdField_a_of_type_JavaLangString);
+          paramFdNode = paramFdNode.toString();
         }
-      }
-      label186:
-      for (paramFdNode = paramString + "/" + localFdNode.jdField_a_of_type_JavaLangString;; paramFdNode = localFdNode.jdField_a_of_type_JavaLangString)
-      {
+        else
+        {
+          paramFdNode = localFdNode.jdField_a_of_type_JavaLangString;
+        }
         a(localFdNode, paramFdNode);
-        break label117;
-        break;
       }
     }
   }
@@ -126,7 +129,7 @@ public class FdTrie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.fd.FdTrie
  * JD-Core Version:    0.7.0.1
  */

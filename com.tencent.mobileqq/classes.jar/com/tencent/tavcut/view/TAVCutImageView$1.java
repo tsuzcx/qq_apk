@@ -1,22 +1,35 @@
 package com.tencent.tavcut.view;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.tavcut.view.ext.OnLongPressListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class TAVCutImageView$1
-  implements Runnable
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/tavcut/view/TAVCutImageView$1", "Landroid/view/GestureDetector$SimpleOnGestureListener;", "onFling", "", "e1", "Landroid/view/MotionEvent;", "e2", "velocityX", "", "velocityY", "onLongPress", "", "e", "libtavcut_debug"}, k=1, mv={1, 1, 16})
+public final class TAVCutImageView$1
+  extends GestureDetector.SimpleOnGestureListener
 {
-  TAVCutImageView$1(TAVCutImageView paramTAVCutImageView, Bitmap paramBitmap) {}
-  
-  public void run()
+  public boolean onFling(@NotNull MotionEvent paramMotionEvent1, @NotNull MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    TAVCutImageView.access$000(this.this$0).setImageBitmap(this.val$bitmap);
-    TAVCutImageView.access$100(this.this$0, this.val$bitmap);
+    Intrinsics.checkParameterIsNotNull(paramMotionEvent1, "e1");
+    Intrinsics.checkParameterIsNotNull(paramMotionEvent2, "e2");
+    return false;
+  }
+  
+  public void onLongPress(@NotNull MotionEvent paramMotionEvent)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMotionEvent, "e");
+    paramMotionEvent = TAVCutImageView.access$getMLongPressListener$p(this.this$0);
+    if (paramMotionEvent != null) {
+      paramMotionEvent.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.view.TAVCutImageView.1
  * JD-Core Version:    0.7.0.1
  */

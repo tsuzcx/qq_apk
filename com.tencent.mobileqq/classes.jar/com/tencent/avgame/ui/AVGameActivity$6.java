@@ -3,9 +3,8 @@ package com.tencent.avgame.ui;
 import android.text.TextUtils;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.gamelogic.GameEngine;
-import com.tencent.avgame.gamelogic.data.EngineData;
-import com.tencent.avgame.gameroom.festivalreport.CJSurvivalFestivalReporter;
 import com.tencent.avgame.ipc.AVGameClientQIPCModule;
+import com.tencent.avgame.report.exception.AVGameExceptionReporter;
 import com.tencent.qphone.base.util.QLog;
 
 class AVGameActivity$6
@@ -15,40 +14,39 @@ class AVGameActivity$6
   
   public void run()
   {
-    QLog.i("AVGameActivity", 1, "onEnterRoom run mGameExited:" + AVGameActivity.a(this.this$0) + " retCode:" + this.a + " mRoomId:" + AVGameActivity.a(this.this$0));
-    if (AVGameActivity.a(this.this$0)) {}
-    do
-    {
-      do
-      {
-        return;
-        if (this.a != 0) {
-          break;
-        }
-      } while ((TextUtils.isEmpty(AVGameActivity.a(this.this$0))) || (AVGameActivity.a(this.this$0) == null));
-      AVGameActivity.a(this.this$0).a().a(1, AVGameActivity.a(this.this$0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEnterRoom run mGameExited:");
+    localStringBuilder.append(AVGameActivity.access$300(this.this$0));
+    localStringBuilder.append(" retCode:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" mRoomId:");
+    localStringBuilder.append(AVGameActivity.access$000(this.this$0));
+    QLog.i("AVGameActivity", 1, localStringBuilder.toString());
+    if (AVGameActivity.access$300(this.this$0)) {
       return;
-    } while ((this.a == 5) || (this.a == 6));
-    int i;
-    if ((GameEngine.a().i()) && (GameEngine.a().g()))
+    }
+    int i = this.a;
+    if (i == 0)
     {
-      i = this.a;
-      if (GameEngine.a().a().m()) {
-        break label200;
+      if ((!TextUtils.isEmpty(AVGameActivity.access$000(this.this$0))) && (AVGameActivity.access$400(this.this$0) != null)) {
+        AVGameActivity.access$400(this.this$0).a().a(1, AVGameActivity.access$000(this.this$0));
       }
     }
-    label200:
-    for (boolean bool = true;; bool = false)
+    else if (i != 5)
     {
-      CJSurvivalFestivalReporter.a(8, true, String.valueOf(i), null, bool);
-      AVGameActivity.a(this.this$0, 2, this.a);
-      return;
+      if (i == 6) {
+        return;
+      }
+      if ((GameEngine.a().i()) && (GameEngine.a().g())) {
+        AVGameExceptionReporter.a().a(8, null, String.valueOf(this.a), null);
+      }
+      AVGameActivity.access$100(this.this$0, 2, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameActivity.6
  * JD-Core Version:    0.7.0.1
  */

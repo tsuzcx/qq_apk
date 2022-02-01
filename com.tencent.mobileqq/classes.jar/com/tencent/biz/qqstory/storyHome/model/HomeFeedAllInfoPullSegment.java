@@ -33,140 +33,132 @@ public class HomeFeedAllInfoPullSegment
   private FeedFeatureItem a(int paramInt, CommentLikeHomeFeed paramCommentLikeHomeFeed)
   {
     List localList = this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetFeedFeatureResponse.jdField_a_of_type_JavaUtilList;
-    if (paramInt < localList.size()) {}
-    for (FeedFeatureItem localFeedFeatureItem = (FeedFeatureItem)localList.get(paramInt);; localFeedFeatureItem = null)
-    {
-      if ((localFeedFeatureItem != null) && (localFeedFeatureItem.a.equals(paramCommentLikeHomeFeed.a.feedId))) {
-        return localFeedFeatureItem;
-      }
-      localFeedFeatureItem = new FeedFeatureItem();
-      localFeedFeatureItem.a = paramCommentLikeHomeFeed.a.feedId;
-      paramInt = localList.indexOf(localFeedFeatureItem);
-      if (paramInt >= 0) {
-        return (FeedFeatureItem)localList.get(paramInt);
-      }
-      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "can't not find feed like for id:%s", new Object[] { paramCommentLikeHomeFeed.a.feedId });
-      return null;
+    if (paramInt < localList.size()) {
+      localFeedFeatureItem = (FeedFeatureItem)localList.get(paramInt);
+    } else {
+      localFeedFeatureItem = null;
     }
+    if ((localFeedFeatureItem != null) && (localFeedFeatureItem.a.equals(paramCommentLikeHomeFeed.a.feedId))) {
+      return localFeedFeatureItem;
+    }
+    FeedFeatureItem localFeedFeatureItem = new FeedFeatureItem();
+    localFeedFeatureItem.a = paramCommentLikeHomeFeed.a.feedId;
+    paramInt = localList.indexOf(localFeedFeatureItem);
+    if (paramInt >= 0) {
+      return (FeedFeatureItem)localList.get(paramInt);
+    }
+    SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "can't not find feed like for id:%s", new Object[] { paramCommentLikeHomeFeed.a.feedId });
+    return null;
   }
   
   private void a(FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult)
   {
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp;
     boolean bool3 = true;
     int i = 0;
     boolean bool1;
-    boolean bool2;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp != null)
-    {
+    if (localObject1 != null) {
       bool1 = true;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp == null) {
-        break label68;
-      }
-      bool2 = true;
-      label24:
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedLikeRequest$BatchGetFeedLikeResp == null) {
-        break label74;
-      }
-    }
-    for (;;)
-    {
-      SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed info resp basic info:%b, comment %b, like %b", Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3));
-      if (this.jdField_a_of_type_JavaUtilVector.isEmpty()) {
-        break label80;
-      }
-      return;
+    } else {
       bool1 = false;
-      break;
-      label68:
+    }
+    boolean bool2;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp != null) {
+      bool2 = true;
+    } else {
       bool2 = false;
-      break label24;
-      label74:
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedLikeRequest$BatchGetFeedLikeResp == null) {
       bool3 = false;
     }
-    label80:
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp == null) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_Int != 0))
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp == null)
-      {
-        i = 940001;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp != null) {
-          break label142;
-        }
-      }
-      for (paramGetFeedIdListResult = "";; paramGetFeedIdListResult = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.b)
-      {
-        notifyError(new ErrorMessage(i, paramGetFeedIdListResult));
-        return;
-        i = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_Int;
-        break;
-      }
+    SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed info resp basic info:%b, comment %b, like %b", Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3));
+    if (!this.jdField_a_of_type_JavaUtilVector.isEmpty()) {
+      return;
     }
-    label142:
-    FeedManager localFeedManager = (FeedManager)SuperManager.a(11);
-    HomeFeedData localHomeFeedData = new HomeFeedData(new ErrorMessage());
-    localHomeFeedData.c = paramGetFeedIdListResult.jdField_a_of_type_Boolean;
-    localHomeFeedData.jdField_a_of_type_Boolean = paramGetFeedIdListResult.b;
-    localHomeFeedData.jdField_a_of_type_JavaUtilList = new ArrayList();
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject1).hasNext())
+    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp;
+    if ((localObject1 != null) && (((BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp)localObject1).jdField_a_of_type_Int == 0))
     {
-      localObject2 = (StoryHomeFeed)((Iterator)localObject1).next();
-      localHomeFeedData.jdField_a_of_type_JavaUtilList.add(((StoryHomeFeed)localObject2).a.feedId);
-    }
-    localHomeFeedData.b = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList;
-    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject3;
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (StoryHomeFeed)((Iterator)localObject1).next();
-      ((StoryHomeFeed)localObject2).a(i, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedLikeRequest$BatchGetFeedLikeResp);
-      if ((localObject2 instanceof CommentLikeHomeFeed))
+      localObject1 = (FeedManager)SuperManager.a(11);
+      HomeFeedData localHomeFeedData = new HomeFeedData(new ErrorMessage());
+      localHomeFeedData.c = paramGetFeedIdListResult.jdField_a_of_type_Boolean;
+      localHomeFeedData.jdField_a_of_type_Boolean = paramGetFeedIdListResult.b;
+      localHomeFeedData.jdField_a_of_type_JavaUtilList = new ArrayList();
+      Object localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        localObject2 = (CommentLikeHomeFeed)localObject2;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetFeedFeatureResponse != null)
+        localObject3 = (StoryHomeFeed)((Iterator)localObject2).next();
+        localHomeFeedData.jdField_a_of_type_JavaUtilList.add(((StoryHomeFeed)localObject3).a.feedId);
+      }
+      localHomeFeedData.b = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList;
+      localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject4;
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (StoryHomeFeed)((Iterator)localObject2).next();
+        ((StoryHomeFeed)localObject3).a(i, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp, this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedLikeRequest$BatchGetFeedLikeResp);
+        if ((localObject3 instanceof CommentLikeHomeFeed))
         {
-          localObject3 = a(i, (CommentLikeHomeFeed)localObject2);
-          if (localObject3 != null)
+          localObject3 = (CommentLikeHomeFeed)localObject3;
+          if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetFeedFeatureResponse != null)
           {
-            ((CommentLikeHomeFeed)localObject2).a().mViewTotalTime = ((FeedFeatureItem)localObject3).c;
-            SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "get feature feedId=%s, view total=%d", ((CommentLikeHomeFeed)localObject2).a.feedId, Long.valueOf(((CommentLikeHomeFeed)localObject2).a().mViewTotalTime));
+            localObject4 = a(i, (CommentLikeHomeFeed)localObject3);
+            if (localObject4 != null)
+            {
+              ((CommentLikeHomeFeed)localObject3).a().mViewTotalTime = ((FeedFeatureItem)localObject4).c;
+              SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "get feature feedId=%s, view total=%d", ((CommentLikeHomeFeed)localObject3).a.feedId, Long.valueOf(((CommentLikeHomeFeed)localObject3).a().mViewTotalTime));
+            }
           }
         }
+        i += 1;
       }
-      i += 1;
-    }
-    localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ((StoryHomeFeed)((Iterator)localObject1).next()).a();
-    }
-    localObject1 = new ArrayList(localHomeFeedData.b.size());
-    Object localObject2 = localHomeFeedData.b.iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      ((ArrayList)localObject1).add(((StoryHomeFeed)((Iterator)localObject2).next()).a);
-    }
-    localObject1 = localFeedManager.a((List)localObject1);
-    localObject2 = localHomeFeedData.b.iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (StoryHomeFeed)((Iterator)localObject2).next();
-      i = ((List)localObject1).indexOf(((StoryHomeFeed)localObject3).a);
-      if (i >= 0)
+      localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((StoryHomeFeed)((Iterator)localObject2).next()).a();
+      }
+      localObject2 = new ArrayList(localHomeFeedData.b.size());
+      Object localObject3 = localHomeFeedData.b.iterator();
+      while (((Iterator)localObject3).hasNext()) {
+        ((ArrayList)localObject2).add(((StoryHomeFeed)((Iterator)localObject3).next()).a);
+      }
+      localObject2 = ((FeedManager)localObject1).a((List)localObject2);
+      localObject3 = localHomeFeedData.b.iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        ((StoryHomeFeed)localObject3).a = ((FeedItem)((List)localObject1).get(i));
-        ((StoryHomeFeed)localObject3).a.onRefresh();
+        localObject4 = (StoryHomeFeed)((Iterator)localObject3).next();
+        i = ((List)localObject2).indexOf(((StoryHomeFeed)localObject4).a);
+        if (i >= 0)
+        {
+          ((StoryHomeFeed)localObject4).a = ((FeedItem)((List)localObject2).get(i));
+          ((StoryHomeFeed)localObject4).a.onRefresh();
+        }
       }
-    }
-    if (paramGetFeedIdListResult.jdField_a_of_type_Boolean) {
-      localFeedManager.a().a();
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp != null)
-    {
-      SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "need sync comment size:%d", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp.b.size()));
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp.b.size() > 0)) {
-        localFeedManager.a().a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp.b);
+      if (paramGetFeedIdListResult.jdField_a_of_type_Boolean) {
+        ((FeedManager)localObject1).a().a();
       }
+      paramGetFeedIdListResult = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp;
+      if (paramGetFeedIdListResult != null)
+      {
+        SLog.a("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "need sync comment size:%d", Integer.valueOf(paramGetFeedIdListResult.b.size()));
+        if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp.b.size() > 0)) {
+          ((FeedManager)localObject1).a().a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFeedCommentRequest$BatchGetFeedCommentResp.b);
+        }
+      }
+      notifyResult(localHomeFeedData);
+      return;
     }
-    notifyResult(localHomeFeedData);
+    paramGetFeedIdListResult = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp;
+    if (paramGetFeedIdListResult == null) {
+      i = 940001;
+    } else {
+      i = paramGetFeedIdListResult.jdField_a_of_type_Int;
+    }
+    paramGetFeedIdListResult = this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest$GetFriendStoryFeedInfoResp;
+    if (paramGetFeedIdListResult == null) {
+      paramGetFeedIdListResult = "";
+    } else {
+      paramGetFeedIdListResult = paramGetFeedIdListResult.b;
+    }
+    notifyError(new ErrorMessage(i, paramGetFeedIdListResult));
   }
   
   private void b(JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult)
@@ -226,7 +218,7 @@ public class HomeFeedAllInfoPullSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedAllInfoPullSegment
  * JD-Core Version:    0.7.0.1
  */

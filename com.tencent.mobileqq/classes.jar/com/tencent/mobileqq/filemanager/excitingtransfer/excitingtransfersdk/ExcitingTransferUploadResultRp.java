@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
-import android.support.annotation.NonNull;
-
 public class ExcitingTransferUploadResultRp
 {
   public boolean mbIsFlashTransfer = false;
@@ -43,15 +41,83 @@ public class ExcitingTransferUploadResultRp
   public short mwServerPort = 0;
   public int mwTranferPlatform = -1;
   
-  @NonNull
   public String toString()
   {
-    return "m_dwFileCookieId:" + this.mdwFileCookieId + "TransferType:" + this.mcXTFTransferType + " m_wTranferPlatform:" + this.mwTranferPlatform + " m_wAppType:" + this.mwAppType + " m_nResult:" + this.mnResult + " m_nSrvReturCode:" + this.mnSrvReturCode + " m_strFileName:" + this.mstrFileName + " m_strSuffix:" + this.mstrSuffix + " m_u64FileSize:" + this.mu64FileSize + " m_uPeerUin:" + this.muPeerUin + " m_uGroupCode:" + this.muGroupCode + " m_bIsXTFValid:" + this.mbIsXTFValid + " m_u64TransferSpeed:" + this.mu64TransferSpeed + " m_u64HttpTime:" + this.mu64HttpTime + " m_u64TransferSize:" + this.mu64TransferSize + " m_strServerIp:" + this.mstrServerIp + " m_wServerPort:" + this.mwServerPort + " m_dwProxyType:" + this.mdwProxyType + " m_strFileUrl:" + this.mstrFileUrl + " m_u64StartSize:" + this.mu64StartSize + " m_u64ReportVer:" + this.mu64ReportVer + " m_eInvalidReason:" + this.meInvalidReason + " m_uMaxUploadingFtnNum:" + this.muMaxUploadingFtnNum + " m_uRetryCount:" + this.muRetryCount + " m_uIpChangeCount:" + this.muIpChangeCount + " m_uRollBackCount:" + this.muRollBackCount + " m_uQueryHoleCount:" + this.muQueryHoleCount + " m_uRangDiffCount:" + this.muRangDiffCount + " m_uDelayTotoalCount:" + this.muDelayTotoalCount + " m_nTcpCnnCode:" + this.mnTcpCnnCode + " m_nTcpSocketCode:" + this.mnTcpSocketCode + " m_wHttpsSupport:" + this.mwHttpsSupport + " m_uTotalTime:" + this.muTotalTime + " m_uFullHashCaculateTime:" + this.muFullHashCaculateTime;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("m_dwFileCookieId:");
+    localStringBuilder.append(this.mdwFileCookieId);
+    localStringBuilder.append("TransferType:");
+    localStringBuilder.append(this.mcXTFTransferType);
+    localStringBuilder.append(" m_wTranferPlatform:");
+    localStringBuilder.append(this.mwTranferPlatform);
+    localStringBuilder.append(" m_wAppType:");
+    localStringBuilder.append(this.mwAppType);
+    localStringBuilder.append(" m_nResult:");
+    localStringBuilder.append(this.mnResult);
+    localStringBuilder.append(" m_nSrvReturCode:");
+    localStringBuilder.append(this.mnSrvReturCode);
+    localStringBuilder.append(" m_strFileName:");
+    localStringBuilder.append(this.mstrFileName);
+    localStringBuilder.append(" m_strSuffix:");
+    localStringBuilder.append(this.mstrSuffix);
+    localStringBuilder.append(" m_u64FileSize:");
+    localStringBuilder.append(this.mu64FileSize);
+    localStringBuilder.append(" m_uPeerUin:");
+    localStringBuilder.append(this.muPeerUin);
+    localStringBuilder.append(" m_uGroupCode:");
+    localStringBuilder.append(this.muGroupCode);
+    localStringBuilder.append(" m_bIsXTFValid:");
+    localStringBuilder.append(this.mbIsXTFValid);
+    localStringBuilder.append(" m_u64TransferSpeed:");
+    localStringBuilder.append(this.mu64TransferSpeed);
+    localStringBuilder.append(" m_u64HttpTime:");
+    localStringBuilder.append(this.mu64HttpTime);
+    localStringBuilder.append(" m_u64TransferSize:");
+    localStringBuilder.append(this.mu64TransferSize);
+    localStringBuilder.append(" m_strServerIp:");
+    localStringBuilder.append(this.mstrServerIp);
+    localStringBuilder.append(" m_wServerPort:");
+    localStringBuilder.append(this.mwServerPort);
+    localStringBuilder.append(" m_dwProxyType:");
+    localStringBuilder.append(this.mdwProxyType);
+    localStringBuilder.append(" m_strFileUrl:");
+    localStringBuilder.append(this.mstrFileUrl);
+    localStringBuilder.append(" m_u64StartSize:");
+    localStringBuilder.append(this.mu64StartSize);
+    localStringBuilder.append(" m_u64ReportVer:");
+    localStringBuilder.append(this.mu64ReportVer);
+    localStringBuilder.append(" m_eInvalidReason:");
+    localStringBuilder.append(this.meInvalidReason);
+    localStringBuilder.append(" m_uMaxUploadingFtnNum:");
+    localStringBuilder.append(this.muMaxUploadingFtnNum);
+    localStringBuilder.append(" m_uRetryCount:");
+    localStringBuilder.append(this.muRetryCount);
+    localStringBuilder.append(" m_uIpChangeCount:");
+    localStringBuilder.append(this.muIpChangeCount);
+    localStringBuilder.append(" m_uRollBackCount:");
+    localStringBuilder.append(this.muRollBackCount);
+    localStringBuilder.append(" m_uQueryHoleCount:");
+    localStringBuilder.append(this.muQueryHoleCount);
+    localStringBuilder.append(" m_uRangDiffCount:");
+    localStringBuilder.append(this.muRangDiffCount);
+    localStringBuilder.append(" m_uDelayTotoalCount:");
+    localStringBuilder.append(this.muDelayTotoalCount);
+    localStringBuilder.append(" m_nTcpCnnCode:");
+    localStringBuilder.append(this.mnTcpCnnCode);
+    localStringBuilder.append(" m_nTcpSocketCode:");
+    localStringBuilder.append(this.mnTcpSocketCode);
+    localStringBuilder.append(" m_wHttpsSupport:");
+    localStringBuilder.append(this.mwHttpsSupport);
+    localStringBuilder.append(" m_uTotalTime:");
+    localStringBuilder.append(this.muTotalTime);
+    localStringBuilder.append(" m_uFullHashCaculateTime:");
+    localStringBuilder.append(this.muFullHashCaculateTime);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp
  * JD-Core Version:    0.7.0.1
  */

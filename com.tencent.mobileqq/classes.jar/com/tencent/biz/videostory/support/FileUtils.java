@@ -12,39 +12,50 @@ public class FileUtils
     if (paramInt1 <= paramInt2) {
       return 1.0F;
     }
-    return 1.0F * paramInt2 / paramInt1;
+    return paramInt2 * 1.0F / paramInt1;
   }
   
   public static Bitmap a(Bitmap paramBitmap)
   {
-    int i;
-    int j;
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    Object localObject = paramBitmap;
+    if (paramBitmap != null)
     {
-      i = paramBitmap.getWidth();
-      j = paramBitmap.getHeight();
-      if ((i > 0) && (j > 0)) {}
+      localObject = paramBitmap;
+      if (!paramBitmap.isRecycled())
+      {
+        int i = paramBitmap.getWidth();
+        int j = paramBitmap.getHeight();
+        localObject = paramBitmap;
+        if (i > 0)
+        {
+          if (j <= 0) {
+            return paramBitmap;
+          }
+          int k = ((Long)VSConfigManager.a().a("SmartCutPicWidth", Long.valueOf(224L))).intValue();
+          float f;
+          if (i <= j) {
+            f = a(i, k);
+          } else {
+            f = a(j, k);
+          }
+          k = (int)f;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(k * i);
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(k * j);
+          Logger.a("Q.videostory", "Q.videostory.capture", "resizeImage", ((StringBuilder)localObject).toString());
+          localObject = new Matrix();
+          ((Matrix)localObject).postScale(f, f);
+          localObject = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, (Matrix)localObject, true);
+        }
+      }
     }
-    else
-    {
-      return paramBitmap;
-    }
-    int k = ((Long)VSConfigManager.a().a("SmartCutPicWidth", Long.valueOf(224L))).intValue();
-    if (i <= j) {}
-    for (float f = a(i, k);; f = a(j, k))
-    {
-      k = (int)f;
-      int m = (int)f;
-      Logger.a("Q.videostory", "Q.videostory.capture", "resizeImage", k * i + " " + m * j);
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(f, f);
-      return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
-    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.support.FileUtils
  * JD-Core Version:    0.7.0.1
  */

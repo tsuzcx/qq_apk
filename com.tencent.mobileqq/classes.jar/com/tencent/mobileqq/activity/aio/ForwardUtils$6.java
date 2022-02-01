@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import com.tencent.mobileqq.pic.PicBusiManager;
 import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.pic.api.IPicBus;
+import com.tencent.mobileqq.qroute.QRoute;
 
 final class ForwardUtils$6
   implements Runnable
@@ -10,12 +11,12 @@ final class ForwardUtils$6
   
   public void run()
   {
-    PicBusiManager.a(this.a);
+    ((IPicBus)QRoute.api(IPicBus.class)).launch(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.6
  * JD-Core Version:    0.7.0.1
  */

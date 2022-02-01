@@ -19,68 +19,93 @@ public class ShortVideoPreviewActivity$HWCompressProcessor
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_Long = paramLong1;
     this.jdField_b_of_type_Long = paramLong2;
-    if (paramInt2 > 0) {}
-    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
+    if (paramInt2 > 0)
     {
-      if (paramString == null) {}
+      this.jdField_b_of_type_Int = paramInt2;
       return;
     }
+    this.jdField_b_of_type_Int = 30;
   }
   
   public VideoConverterConfig getEncodeConfig(int paramInt1, int paramInt2)
   {
-    int j = 1280;
-    int i = 30;
     VideoConverterConfig localVideoConverterConfig = new VideoConverterConfig();
-    String str;
-    if (paramInt1 <= paramInt2)
-    {
-      localVideoConverterConfig.output = this.jdField_a_of_type_JavaLangString;
-      if (paramInt2 < 1280) {
-        break label244;
-      }
-      str = "720p";
-      paramInt1 = j;
-      label45:
-      if (paramInt2 >= paramInt1) {
-        break label273;
-      }
+    int i = paramInt1;
+    if (paramInt1 <= paramInt2) {
+      i = paramInt2;
     }
-    label273:
-    for (localVideoConverterConfig.videoBitRate = ((int)(819200 * 1.0D / paramInt1 * paramInt2));; localVideoConverterConfig.videoBitRate = 819200)
+    localVideoConverterConfig.output = this.jdField_a_of_type_JavaLangString;
+    paramInt1 = 960;
+    String str;
+    if (i >= 1280)
     {
-      localVideoConverterConfig.scaleRate = (paramInt1 / paramInt2);
-      paramInt2 = i;
-      if (this.jdField_b_of_type_Int <= 30) {
-        paramInt2 = this.jdField_b_of_type_Int;
-      }
-      localVideoConverterConfig.videoFrameRate = paramInt2;
-      localVideoConverterConfig.beginTime = this.jdField_a_of_type_Long;
-      localVideoConverterConfig.endTime = this.jdField_b_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localVideoConverterConfig.setRotation + ", scaleRate=" + localVideoConverterConfig.scaleRate + ", videoBitRate=" + localVideoConverterConfig.videoBitRate + ", videoFrameRate=" + localVideoConverterConfig.videoFrameRate + ", beginTime=" + localVideoConverterConfig.beginTime + ", endTime=" + localVideoConverterConfig.endTime + ",quality:" + str + ",videoLongestEdge=" + paramInt1);
-      }
-      return localVideoConverterConfig;
-      paramInt2 = paramInt1;
-      break;
-      label244:
-      if (paramInt2 >= 960)
-      {
-        str = "540p";
-        paramInt1 = 960;
-        break label45;
-      }
+      str = "720p";
+      paramInt1 = 1280;
+    }
+    else if (i >= 960)
+    {
+      str = "540p";
+    }
+    else
+    {
       paramInt1 = 640;
       str = "480p";
-      break label45;
     }
+    if (i < paramInt1)
+    {
+      double d1 = 819200;
+      Double.isNaN(d1);
+      double d2 = paramInt1;
+      Double.isNaN(d2);
+      d1 = d1 * 1.0D / d2;
+      d2 = i;
+      Double.isNaN(d2);
+      localVideoConverterConfig.videoBitRate = ((int)(d1 * d2));
+    }
+    else
+    {
+      localVideoConverterConfig.videoBitRate = 819200;
+    }
+    localVideoConverterConfig.scaleRate = (paramInt1 / i);
+    paramInt2 = this.jdField_b_of_type_Int;
+    if (paramInt2 > 30) {
+      paramInt2 = 30;
+    }
+    localVideoConverterConfig.videoFrameRate = paramInt2;
+    localVideoConverterConfig.beginTime = this.jdField_a_of_type_Long;
+    localVideoConverterConfig.endTime = this.jdField_b_of_type_Long;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("CompressTask, step: getEncodeConfig() config.setRotation = ");
+      localStringBuilder.append(localVideoConverterConfig.setRotation);
+      localStringBuilder.append(", scaleRate=");
+      localStringBuilder.append(localVideoConverterConfig.scaleRate);
+      localStringBuilder.append(", videoBitRate=");
+      localStringBuilder.append(localVideoConverterConfig.videoBitRate);
+      localStringBuilder.append(", videoFrameRate=");
+      localStringBuilder.append(localVideoConverterConfig.videoFrameRate);
+      localStringBuilder.append(", beginTime=");
+      localStringBuilder.append(localVideoConverterConfig.beginTime);
+      localStringBuilder.append(", endTime=");
+      localStringBuilder.append(localVideoConverterConfig.endTime);
+      localStringBuilder.append(",quality:");
+      localStringBuilder.append(str);
+      localStringBuilder.append(",videoLongestEdge=");
+      localStringBuilder.append(paramInt1);
+      QLog.d("VideoCompressTask", 2, localStringBuilder.toString());
+    }
+    return localVideoConverterConfig;
   }
   
   public void onCancel() {}
   
   public void onFail(Throwable paramThrowable)
   {
-    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onFailed:" + paramThrowable.getMessage());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CompressTask, step: HWCompressProcessor onFailed:");
+    localStringBuilder.append(paramThrowable.getMessage());
+    QLog.e("VideoCompressTask", 1, localStringBuilder.toString());
   }
   
   public void onProgress(int paramInt) {}
@@ -89,7 +114,7 @@ public class ShortVideoPreviewActivity$HWCompressProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.HWCompressProcessor
  * JD-Core Version:    0.7.0.1
  */

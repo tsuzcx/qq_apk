@@ -14,12 +14,12 @@ public class SPUtil
   
   private SPUtil(Context paramContext, String paramString)
   {
-    if ("default".equals(paramString)) {}
-    for (this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramContext);; this.sharedPreferences = paramContext.getSharedPreferences(paramString, 0))
-    {
-      this.editor = this.sharedPreferences.edit();
-      return;
+    if ("default".equals(paramString)) {
+      this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    } else {
+      this.sharedPreferences = paramContext.getSharedPreferences(paramString, 0);
     }
+    this.editor = this.sharedPreferences.edit();
   }
   
   public static SPUtil get(Context paramContext, String paramString)
@@ -122,7 +122,7 @@ public class SPUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.SPUtil
  * JD-Core Version:    0.7.0.1
  */

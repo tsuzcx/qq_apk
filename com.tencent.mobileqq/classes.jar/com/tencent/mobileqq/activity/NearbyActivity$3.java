@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.NearbyBaseFragment;
 import com.tencent.mobileqq.nearby.NearbyUsingTimeReport;
@@ -23,72 +24,66 @@ class NearbyActivity$3
   public void onPageSelected(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      NearbyUtils.a("onPageSelected", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.f), Integer.valueOf(paramInt) });
+      NearbyUtils.a("onPageSelected", new Object[] { Integer.valueOf(this.a.mResumeTabIndex), Integer.valueOf(this.a.mTabBarIndex), Integer.valueOf(paramInt) });
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyUsingTimeReport != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyUsingTimeReport.a(paramInt, this.a.b);
+    if (this.a.mNearbyUsingTimeReport != null) {
+      this.a.mNearbyUsingTimeReport.a(paramInt, this.a.mResumeTabIndex);
     }
     Object localObject = this.a;
-    int i = ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabIndex;
-    ((NearbyActivity)localObject).b = i;
-    NearbyBaseFragment.b = i;
-    if ((this.a.i == 0L) && (this.a.b == 2))
+    int i = ((NearbyTabInfo)((NearbyActivity)localObject).mTabInfos.get(paramInt)).getTabIndex();
+    ((NearbyActivity)localObject).mResumeTabIndex = i;
+    NearbyBaseFragment.a = i;
+    if ((this.a.mClickTime == 0L) && (this.a.mResumeTabIndex == 2))
     {
-      this.a.i = System.currentTimeMillis();
+      this.a.mClickTime = System.currentTimeMillis();
       if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.i) });
+        NearbyUtils.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.mClickTime) });
       }
     }
-    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.b == 1))
+    if ((this.a.mNowClickTime == 0L) && (this.a.mResumeTabIndex == 1))
     {
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.a.mNowClickTime = System.currentTimeMillis();
       if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_a_of_type_Long) });
+        NearbyUtils.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.mNowClickTime) });
       }
     }
-    if (this.a.f != paramInt) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    if (this.a.mTabBarIndex != paramInt) {
+      this.a.mBarView.setSelectedTab(paramInt, true);
     }
-    if (this.a.f != -1)
+    if (this.a.mTabBarIndex != -1)
     {
-      i = this.a.f;
-      if (this.a.f != this.a.c) {
-        break label503;
+      i = this.a.mTabBarIndex + 1;
+      if (this.a.mTabBarIndex == this.a.mMsgBoxTabIndex) {
+        i = 9;
       }
-      i = 9;
-    }
-    for (;;)
-    {
-      if (TextUtils.equals(HardCodeUtil.a(2131707104), ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName)) {
+      if (TextUtils.equals(HardCodeUtil.a(2131707129), ((NearbyTabInfo)this.a.mTabInfos.get(paramInt)).getTabName())) {
         i = 11;
       }
-      int j = ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).reportId;
+      int j = ((NearbyTabInfo)this.a.mTabInfos.get(paramInt)).getReportId();
       if (j != 0)
       {
         if (QLog.isColorLevel()) {
-          NearbyUtils.a("report_switch_tab", new Object[] { ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName, Integer.valueOf(j) });
+          NearbyUtils.a("report_switch_tab", new Object[] { ((NearbyTabInfo)this.a.mTabInfos.get(paramInt)).getTabName(), Integer.valueOf(j) });
         }
         i = j;
       }
-      NearbyUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "switch_tab", i);
-      localObject = this.a.a(paramInt);
-      if (((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabType == 7)
-      {
-        ((NearbyTabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).showRedRot = false;
-        NearbyActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(this.a.f));
-      }
-      if (localObject != null) {
-        ((NearbyBaseFragment)localObject).aE_();
-      }
-      return;
-      label503:
-      i += 1;
+      NearbyUtils.b((AppInterface)this.a.app, "switch_tab", i);
+    }
+    localObject = this.a.getFragmentByIndex(paramInt);
+    if (((NearbyTabInfo)this.a.mTabInfos.get(paramInt)).getTabType() == 7)
+    {
+      ((NearbyTabInfo)this.a.mTabInfos.get(paramInt)).setShowRedRot(false);
+      NearbyActivity localNearbyActivity = this.a;
+      NearbyActivity.access$000(localNearbyActivity, localNearbyActivity.mBarView.a(this.a.mTabBarIndex));
+    }
+    if (localObject != null) {
+      ((NearbyBaseFragment)localObject).aR_();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NearbyActivity.3
  * JD-Core Version:    0.7.0.1
  */

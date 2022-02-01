@@ -15,25 +15,18 @@ class LiteLuxuryGiftController$1$1
   
   public void onCompleted(List<LuxuryGiftInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0))
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      LiteLuxuryGiftController.access$000(this.this$1.this$0).getLogger().e("LiteLuxuryGiftController", "FetchGiftInfoHelper fetch gift info is null", new Object[0]);
-      if (LiteLuxuryGiftController.access$300(this.this$1.this$0) != null) {
-        LiteLuxuryGiftController.access$300(this.this$1.this$0).onPlayError(2);
-      }
-      LiteLuxuryGiftController.access$400(this.this$1.this$0);
-      return;
-    }
-    Iterator localIterator = paramList.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramList = (LuxuryGiftInfo)localIterator.next();
-    } while ((paramList == null) || (this.this$1.val$webGiftInfo.effectId == null) || (!this.this$1.val$webGiftInfo.effectId.equals(paramList.effectId)));
-    for (;;)
-    {
+      Object localObject = null;
+      Iterator localIterator = paramList.iterator();
+      do
+      {
+        paramList = localObject;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramList = (LuxuryGiftInfo)localIterator.next();
+      } while ((paramList == null) || (this.this$1.val$webGiftInfo.effectId == null) || (!this.this$1.val$webGiftInfo.effectId.equals(paramList.effectId)));
       if (paramList == null)
       {
         LiteLuxuryGiftController.access$000(this.this$1.this$0).getLogger().e("LiteLuxuryGiftController", "FetchGiftInfoHelper currentInfo is null", new Object[0]);
@@ -42,13 +35,17 @@ class LiteLuxuryGiftController$1$1
       }
       LiteLuxuryGiftController.access$700(this.this$1.this$0, paramList);
       return;
-      paramList = null;
     }
+    LiteLuxuryGiftController.access$000(this.this$1.this$0).getLogger().e("LiteLuxuryGiftController", "FetchGiftInfoHelper fetch gift info is null", new Object[0]);
+    if (LiteLuxuryGiftController.access$300(this.this$1.this$0) != null) {
+      LiteLuxuryGiftController.access$300(this.this$1.this$0).onPlayError(2);
+    }
+    LiteLuxuryGiftController.access$400(this.this$1.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.components.luxurygift.LiteLuxuryGiftController.1.1
  * JD-Core Version:    0.7.0.1
  */

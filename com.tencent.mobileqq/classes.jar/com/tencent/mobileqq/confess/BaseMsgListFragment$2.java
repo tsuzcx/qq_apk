@@ -8,7 +8,7 @@ class BaseMsgListFragment$2
 {
   BaseMsgListFragment$2(BaseMsgListFragment paramBaseMsgListFragment) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a(paramString, 1))) {
       this.a.b();
@@ -17,7 +17,7 @@ class BaseMsgListFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.BaseMsgListFragment.2
  * JD-Core Version:    0.7.0.1
  */

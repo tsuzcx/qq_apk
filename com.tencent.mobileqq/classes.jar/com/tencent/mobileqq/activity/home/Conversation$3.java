@@ -17,13 +17,14 @@ class Conversation$3
     if (this.this$0.a != null)
     {
       this.this$0.a.a(0L);
-      this.this$0.onViewCompleteVisableAndReleased(0, this.this$0.a, Conversation.a(this.this$0));
+      Conversation localConversation = this.this$0;
+      localConversation.onViewCompleteVisableAndReleased(0, localConversation.a, Conversation.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.3
  * JD-Core Version:    0.7.0.1
  */

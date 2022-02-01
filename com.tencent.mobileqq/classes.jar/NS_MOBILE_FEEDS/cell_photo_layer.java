@@ -33,20 +33,23 @@ public final class cell_photo_layer
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.opmask, 0);
-    if (this.layer_title != null) {
-      paramJceOutputStream.write(this.layer_title, 1);
+    String str = this.layer_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.layer_text != null) {
-      paramJceOutputStream.write(this.layer_text, 2);
+    str = this.layer_text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.button_text != null) {
-      paramJceOutputStream.write(this.button_text, 3);
+    str = this.button_text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_photo_layer
  * JD-Core Version:    0.7.0.1
  */

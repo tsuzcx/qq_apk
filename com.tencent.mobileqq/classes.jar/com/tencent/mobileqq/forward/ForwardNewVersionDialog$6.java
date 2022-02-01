@@ -20,25 +20,23 @@ class ForwardNewVersionDialog$6
   
   public void delete()
   {
-    if (ForwardNewVersionDialog.a(this.a).getSelectionStart() == 0) {}
-    for (;;)
-    {
+    if (ForwardNewVersionDialog.a(this.a).getSelectionStart() == 0) {
       return;
-      try
+    }
+    try
+    {
+      Editable localEditable = ForwardNewVersionDialog.a(this.a).getText();
+      int i = ForwardNewVersionDialog.a(this.a).getSelectionStart();
+      int j = android.text.TextUtils.getOffsetBefore(ForwardNewVersionDialog.a(this.a).getText(), i);
+      if (i != j)
       {
-        Editable localEditable = ForwardNewVersionDialog.a(this.a).getText();
-        int i = ForwardNewVersionDialog.a(this.a).getSelectionStart();
-        int j = android.text.TextUtils.getOffsetBefore(ForwardNewVersionDialog.a(this.a).getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
+        localEditable.delete(Math.min(i, j), Math.max(i, j));
+        return;
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
@@ -63,51 +61,42 @@ class ForwardNewVersionDialog$6
     {
       i = ForwardNewVersionDialog.a(this.a).getSelectionStart();
       j = ForwardNewVersionDialog.a(this.a).getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
+      if ((i >= 0) && (j >= 0) && (j >= i)) {
+        ForwardNewVersionDialog.a(this.a).getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
+      }
     }
-    SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo;
-    int k;
-    int m;
-    do
+    else if ((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo))
     {
-      ForwardNewVersionDialog.a(this.a).getEditableText().replace(i, j, com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(((SystemEmoticonInfo)paramEmoticonInfo).code));
-      do
-      {
-        return;
-      } while (!(paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo));
-      localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
+      SystemAndEmojiEmoticonInfo localSystemAndEmojiEmoticonInfo = (SystemAndEmojiEmoticonInfo)paramEmoticonInfo;
       i = ForwardNewVersionDialog.a(this.a).getSelectionStart();
       j = ForwardNewVersionDialog.a(this.a).getSelectionEnd();
-      k = localSystemAndEmojiEmoticonInfo.emotionType;
-      m = localSystemAndEmojiEmoticonInfo.code;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
-      }
-    } while ((k == 2) && (m == -1));
-    String str = "";
-    if (k == 1) {}
-    try
-    {
-      for (paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(m);; paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m))
+      int k = localSystemAndEmojiEmoticonInfo.emotionType;
+      int m = localSystemAndEmojiEmoticonInfo.code;
+      if ((i >= 0) && (j >= 0) && (j >= i))
       {
+        if ((k == 2) && (m == -1)) {
+          return;
+        }
+        if (k == 1) {}
+        try
+        {
+          paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getSysEmotcationString(m);
+        }
+        catch (Exception paramEmoticonInfo)
+        {
+          if (!QLog.isColorLevel()) {
+            break label187;
+          }
+          QLog.d("Forward.NewVersion.Dialog", 2, QLog.getStackTraceString(paramEmoticonInfo));
+          label187:
+          paramEmoticonInfo = "";
+        }
+        paramEmoticonInfo = com.tencent.mobileqq.text.TextUtils.getEmojiString(m);
         ForwardNewVersionDialog.a(this.a).getEditableText().replace(i, j, paramEmoticonInfo);
         ForwardNewVersionDialog.a(this.a).requestFocus();
-        localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-        QQSysAndEmojiResMgr.getInstance().getResImpl(k).reportEmoClick(m, 4);
-        return;
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        paramEmoticonInfo = str;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Forward.NewVersion.Dialog", 2, QLog.getStackTraceString(localException));
-          paramEmoticonInfo = str;
-        }
-      }
+      localSystemAndEmojiEmoticonInfo.addToCommonUsed((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
+      QQSysAndEmojiResMgr.getInstance().getResImpl(k).reportEmoClick(m, 4);
     }
   }
   
@@ -115,7 +104,7 @@ class ForwardNewVersionDialog$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog.6
  * JD-Core Version:    0.7.0.1
  */

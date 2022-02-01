@@ -18,15 +18,16 @@ public class SuperMaskPopStepProxy
   
   public static boolean a()
   {
-    if (a == null) {
+    RIJADSuperMaskPopupStep localRIJADSuperMaskPopupStep = a;
+    if (localRIJADSuperMaskPopupStep == null) {
       return false;
     }
-    return a.b();
+    return localRIJADSuperMaskPopupStep.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.SuperMaskPopStepProxy
  * JD-Core Version:    0.7.0.1
  */

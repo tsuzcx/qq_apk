@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.location.ui;
 
-import android.support.v4.app.QFragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnHoverListener;
 import android.view.accessibility.AccessibilityManager;
 import android.view.inputmethod.InputMethodManager;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.mobileqq.statistics.ReportController;
 
 class LocationPickFragment$6
@@ -33,7 +33,7 @@ class LocationPickFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickFragment.6
  * JD-Core Version:    0.7.0.1
  */

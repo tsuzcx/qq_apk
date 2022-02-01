@@ -20,23 +20,22 @@ class SimpleCheckableSlidingIndicator$2
           SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
         }
         SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
+        return false;
       }
+      SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
+      if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
+        SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+      }
+      paramMessage = this.a;
+      SimpleCheckableSlidingIndicator.b(paramMessage, paramMessage.getScrollX());
+      SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
     }
-    else {
-      return false;
-    }
-    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
-    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
-      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
-    }
-    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
-    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator.2
  * JD-Core Version:    0.7.0.1
  */

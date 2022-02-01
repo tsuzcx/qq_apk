@@ -7,7 +7,6 @@ import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.IBaseActivityInjectInterface;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,7 +29,7 @@ public class BaseActivityInjectImpl
   
   public Intent a(QBaseActivity paramQBaseActivity)
   {
-    GesturePWDUnlockActivity.c = true;
+    GesturePWDUnlockActivity.sGesturePWDUnlockShowing = true;
     return new Intent(paramQBaseActivity, GesturePWDUnlockActivity.class);
   }
   
@@ -41,26 +40,26 @@ public class BaseActivityInjectImpl
   
   public void a(QBaseActivity paramQBaseActivity, Intent paramIntent)
   {
-    JumpActivity.f(paramIntent);
-    JumpActivity.a(paramQBaseActivity, paramIntent);
+    JumpActivity.processIntent(paramIntent);
+    JumpActivity.handleIntentForQQBrowser(paramQBaseActivity, paramIntent);
   }
   
   public void a(QBaseActivity paramQBaseActivity, Intent paramIntent, int paramInt)
   {
-    JumpActivity.f(paramIntent);
-    JumpActivity.a(paramQBaseActivity, paramIntent);
+    JumpActivity.processIntent(paramIntent);
+    JumpActivity.handleIntentForQQBrowser(paramQBaseActivity, paramIntent);
   }
   
   public void a(QBaseActivity paramQBaseActivity, Intent paramIntent, Bundle paramBundle)
   {
-    JumpActivity.f(paramIntent);
-    JumpActivity.a(paramQBaseActivity, paramIntent);
+    JumpActivity.processIntent(paramIntent);
+    JumpActivity.handleIntentForQQBrowser(paramQBaseActivity, paramIntent);
   }
   
   public boolean a(QBaseActivity paramQBaseActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    JumpActivity.f(paramIntent);
-    JumpActivity.a(paramQBaseActivity, paramIntent);
+    JumpActivity.processIntent(paramIntent);
+    JumpActivity.handleIntentForQQBrowser(paramQBaseActivity, paramIntent);
     Object localObject = paramQBaseActivity.getAppRuntime();
     if ((localObject instanceof QQAppInterface))
     {
@@ -72,7 +71,7 @@ public class BaseActivityInjectImpl
     else if ((paramQBaseActivity instanceof QQBrowserActivity))
     {
       localObject = ((QQBrowserActivity)paramQBaseActivity).getCurrentWebViewFragment();
-      if ((localObject != null) && (((WebViewFragment)localObject).browserApp != null) && (((WebViewFragment)localObject).browserApp.a != null) && (((WebViewFragment)localObject).browserApp.a.a(paramIntent, paramQBaseActivity))) {
+      if ((localObject != null) && (((WebViewFragment)localObject).getAppRuntime() != null) && (((WebViewFragment)localObject).getAppRuntime().getManager(QQManagerFactory.URL_INTECEPT_MANAGER) != null) && (((URLInterceptManager)((WebViewFragment)localObject).getAppRuntime().getManager(QQManagerFactory.URL_INTECEPT_MANAGER)).a(paramIntent, paramQBaseActivity))) {
         return true;
       }
     }
@@ -83,11 +82,9 @@ public class BaseActivityInjectImpl
     }
     catch (Throwable paramQBaseActivity)
     {
-      for (;;)
-      {
-        QLog.e("qqBaseActivity", 1, paramQBaseActivity, new Object[0]);
-      }
+      QLog.e("qqBaseActivity", 1, paramQBaseActivity, new Object[0]);
     }
+    return false;
   }
   
   public boolean a(QBaseActivity paramQBaseActivity, MotionEvent paramMotionEvent)
@@ -98,7 +95,7 @@ public class BaseActivityInjectImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.lifecycle.BaseActivityInjectImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -48,30 +48,41 @@ public class InstallMonitor
   
   private boolean a(String paramString1, String paramString2, String paramString3)
   {
-    if (!paramString3.endsWith(".apk")) {}
-    String str;
-    do
-    {
+    if (!paramString3.endsWith(".apk")) {
       return false;
-      str = MD5.a(new File(paramString3));
-      QLog.d("[UniteDownload] InstallMonitor", 2, new Object[] { "[check] validApkMd5: invoked. ", " actualMd5: ", str, " source: ", paramString2, " apkPath: ", paramString3 });
-      paramString1 = UniteDownloadDbOperator.a().a(paramString1, paramString2);
-    } while (paramString1 == null);
+    }
+    String str = MD5.a(new File(paramString3));
+    QLog.d("[UniteDownload] InstallMonitor", 2, new Object[] { "[check] validApkMd5: invoked. ", " actualMd5: ", str, " source: ", paramString2, " apkPath: ", paramString3 });
+    paramString1 = UniteDownloadDbOperator.a().a(paramString1, paramString2);
+    if (paramString1 == null) {
+      return false;
+    }
     return a(str, paramString1);
   }
   
   private boolean a(String paramString, List<UniteDownloadEntity> paramList)
   {
     paramList = paramList.iterator();
-    while (paramList.hasNext())
+    int i;
+    do
     {
+      boolean bool = paramList.hasNext();
+      int j = 0;
+      if (!bool) {
+        break;
+      }
       String str = ((UniteDownloadEntity)paramList.next()).apkMd5;
       QLog.d("[UniteDownload] InstallMonitor", 2, new Object[] { "[check] containsValidEntity: invoked. ", " expectedApkMd5: ", str, " actualMd5: ", paramString });
-      if ((paramString != null) && (paramString.equals(str))) {}
-      for (int i = 1; i != 0; i = 0) {
-        return true;
+      i = j;
+      if (paramString != null)
+      {
+        i = j;
+        if (paramString.equals(str)) {
+          i = 1;
+        }
       }
-    }
+    } while (i == 0);
+    return true;
     return false;
   }
   
@@ -96,7 +107,7 @@ public class InstallMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.InstallMonitor
  * JD-Core Version:    0.7.0.1
  */

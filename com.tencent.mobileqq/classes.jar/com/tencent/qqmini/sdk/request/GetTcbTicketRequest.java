@@ -47,26 +47,24 @@ public class GetTcbTicketRequest
     try
     {
       localStGetTCBTicketRsp.mergeFrom(paramArrayOfByte);
-      if (localStGetTCBTicketRsp != null)
-      {
-        paramJSONObject.put("ticket", localStGetTCBTicketRsp.ticket.get());
-        paramJSONObject.put("createTime", localStGetTCBTicketRsp.createTime.get());
-        paramJSONObject.put("period", localStGetTCBTicketRsp.period.get());
-        return paramJSONObject;
-      }
+      paramJSONObject.put("ticket", localStGetTCBTicketRsp.ticket.get());
+      paramJSONObject.put("createTime", localStGetTCBTicketRsp.createTime.get());
+      paramJSONObject.put("period", localStGetTCBTicketRsp.period.get());
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("GetTcbTicketRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("GetTcbTicketRequest", paramJSONObject.toString());
     }
-    QMLog.d("GetTcbTicketRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetTcbTicketRequest
  * JD-Core Version:    0.7.0.1
  */

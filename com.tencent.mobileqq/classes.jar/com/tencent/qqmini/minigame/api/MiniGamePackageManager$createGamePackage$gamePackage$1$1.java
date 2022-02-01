@@ -19,7 +19,7 @@ public final class MiniGamePackageManager$createGamePackage$gamePackage$1$1
   
   public void onDownloadGpkgProgress(@Nullable MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
-    this.$callback.onProgress(paramLong, ((float)paramLong * paramFloat));
+    this.$callback.onProgress(paramLong, (paramFloat * (float)paramLong));
   }
   
   public void onInitGpkgInfo(int paramInt, @Nullable MiniGamePkg paramMiniGamePkg, @Nullable String paramString, @Nullable GpkgManager.Info paramInfo)
@@ -29,26 +29,26 @@ public final class MiniGamePackageManager$createGamePackage$gamePackage$1$1
     try
     {
       localCompanion = Result.Companion;
-      if ((paramMiniGamePkg != null) && (paramInt != 0)) {
-        throw ((Throwable)new RuntimeException("download failed " + paramString));
+      if ((paramMiniGamePkg != null) && (paramInt != 0))
+      {
+        paramMiniGamePkg = new StringBuilder();
+        paramMiniGamePkg.append("download failed ");
+        paramMiniGamePkg.append(paramString);
+        throw ((Throwable)new RuntimeException(paramMiniGamePkg.toString()));
       }
+      paramMiniGamePkg = Result.constructor-impl(new MiniGamePackageManager.createGamePackage.gamePackage.1.1.onInitGpkgInfo..inlined.runCatching.lambda.1(this, paramMiniGamePkg, paramInt, paramString));
     }
     catch (Throwable paramMiniGamePkg)
     {
       paramString = Result.Companion;
       paramMiniGamePkg = Result.constructor-impl(ResultKt.createFailure(paramMiniGamePkg));
     }
-    for (;;)
-    {
-      paramInfo.onComplete(paramMiniGamePkg);
-      return;
-      paramMiniGamePkg = Result.constructor-impl(new MiniGamePackageManager.createGamePackage.gamePackage.1.1.onInitGpkgInfo..inlined.runCatching.lambda.1(this, paramMiniGamePkg, paramInt, paramString));
-    }
+    paramInfo.onComplete(paramMiniGamePkg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.api.MiniGamePackageManager.createGamePackage.gamePackage.1.1
  * JD-Core Version:    0.7.0.1
  */

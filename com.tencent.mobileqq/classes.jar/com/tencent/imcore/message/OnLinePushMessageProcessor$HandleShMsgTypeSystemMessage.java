@@ -32,16 +32,16 @@ class OnLinePushMessageProcessor$HandleShMsgTypeSystemMessage
   
   public HandleShMsgTypeSystemMessage a()
   {
-    this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a.getMsgHandler().a().a(2);
+    ((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a).getMsgHandler().a().a(2);
     this.jdField_b_of_type_Long = 9998L;
     this.jdField_b_of_type_Int = (-1006 - (this.jdField_a_of_type_Int - 187));
-    this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a.getMsgHandler().a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, this.jdField_a_of_type_OnlinePushPackMsgInfo.shMsgSeq);
+    ((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a).getMsgHandler().a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, this.jdField_a_of_type_OnlinePushPackMsgInfo.shMsgSeq);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.OnLinePushMessageProcessor.HandleShMsgTypeSystemMessage
  * JD-Core Version:    0.7.0.1
  */

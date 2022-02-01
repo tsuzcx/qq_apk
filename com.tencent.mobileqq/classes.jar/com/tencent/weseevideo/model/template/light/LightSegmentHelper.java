@@ -63,12 +63,18 @@ public final class LightSegmentHelper
   private final void fillPhotoSegment(MediaClipModel paramMediaClipModel, MovieSegmentModel paramMovieSegmentModel)
   {
     paramMediaClipModel = paramMediaClipModel.getResource();
-    Logger.d("LightSegmentHelper", "begin--fillClipsPhoto photo path: " + paramMediaClipModel.getPath());
-    CMTimeRange localCMTimeRange = paramMovieSegmentModel.getTimeRange();
-    Intrinsics.checkExpressionValueIsNotNull(localCMTimeRange, "segment.timeRange");
-    paramMediaClipModel = VideoResourceModel.copy$default(paramMediaClipModel, null, 0L, 0, 0L, 0L, 0L, localCMTimeRange.getDurationUs(), 0L, 0L, 0, 0, 0, null, 8127, null);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("begin--fillClipsPhoto photo path: ");
+    ((StringBuilder)localObject).append(paramMediaClipModel.getPath());
+    Logger.d("LightSegmentHelper", ((StringBuilder)localObject).toString());
+    localObject = paramMovieSegmentModel.getTimeRange();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "segment.timeRange");
+    paramMediaClipModel = VideoResourceModel.copy$default(paramMediaClipModel, null, 0L, 0, 0L, 0L, 0L, ((CMTimeRange)localObject).getDurationUs(), 0L, 0L, 0, 0, 0, null, 8127, null);
     paramMovieSegmentModel.getVideoResourceModels().add(paramMediaClipModel);
-    Logger.d("LightSegmentHelper", "end--fillClipsPhoto photo path: " + paramMediaClipModel.getPath());
+    paramMovieSegmentModel = new StringBuilder();
+    paramMovieSegmentModel.append("end--fillClipsPhoto photo path: ");
+    paramMovieSegmentModel.append(paramMediaClipModel.getPath());
+    Logger.d("LightSegmentHelper", paramMovieSegmentModel.toString());
   }
   
   private final void fillVideoClips(VideoResourceModel paramVideoResourceModel, float paramFloat, ArrayList<ClipAsset> paramArrayList)
@@ -84,69 +90,63 @@ public final class LightSegmentHelper
   
   private final void fillVideoSegment(MediaClipModel paramMediaClipModel, MovieSegmentModel paramMovieSegmentModel, List<MediaClipModel> paramList)
   {
-    List localList = (List)new ArrayList();
-    Object localObject = paramMovieSegmentModel.getTimeRange();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "segment.timeRange");
-    long l2 = ((CMTimeRange)localObject).getDurationUs();
-    long l1;
-    int j;
-    int i;
-    label84:
-    long l3;
-    if (l2 > 0L)
-    {
-      l1 = paramMediaClipModel.getResource().getSelectTimeDurationUs();
-      j = paramMediaClipModel.getResource().getType();
-      if ((!localList.isEmpty()) || (j != 1) || (l1 <= l2)) {
-        break label229;
-      }
-      i = 1;
-      if (i == 0) {
-        break label235;
-      }
-      l3 = (l1 - l2) / 2;
-      paramMediaClipModel = MediaClipModel.copy$default(paramMediaClipModel, VideoResourceModel.copy$default(paramMediaClipModel.getResource(), null, l2 / 1000, 0, 0L, 0L, l3 + paramMediaClipModel.getResource().getSelectTimeStartUs(), l2, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null);
-    }
+    Object localObject2 = (List)new ArrayList();
+    Object localObject1 = paramMovieSegmentModel.getTimeRange();
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "segment.timeRange");
+    long l1 = ((CMTimeRange)localObject1).getDurationUs();
+    localObject1 = paramMediaClipModel;
+    paramMediaClipModel = (MediaClipModel)localObject2;
     for (;;)
     {
-      localList.add(paramMediaClipModel);
-      l2 -= l1;
-      if (l2 > 0L)
+      localObject2 = paramMediaClipModel;
+      if (l1 <= 0L) {
+        break;
+      }
+      long l2 = ((MediaClipModel)localObject1).getResource().getSelectTimeDurationUs();
+      int j = ((MediaClipModel)localObject1).getResource().getType();
+      boolean bool = paramMediaClipModel.isEmpty();
+      int i = 1;
+      if ((!bool) || (j != 1) || (l2 <= l1)) {
+        i = 0;
+      }
+      long l3;
+      if (i != 0)
+      {
+        l3 = (l2 - l1) / 2;
+        localObject1 = MediaClipModel.copy$default((MediaClipModel)localObject1, VideoResourceModel.copy$default(((MediaClipModel)localObject1).getResource(), null, l1 / 1000, 0, 0L, 0L, l3 + ((MediaClipModel)localObject1).getResource().getSelectTimeStartUs(), l1, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null);
+      }
+      else
+      {
+        if (j == 2)
+        {
+          localObject1 = MediaClipModel.copy$default((MediaClipModel)localObject1, VideoResourceModel.copy$default(((MediaClipModel)localObject1).getResource(), null, l1 / 1000, 0, 0L, 0L, 0L, l1, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null);
+          l2 = l1;
+        }
+        if (l1 < l2)
+        {
+          localObject2 = ((MediaClipModel)localObject1).getResource();
+          l3 = ((MediaClipModel)localObject1).getResource().getSelectTimeStartUs();
+          localObject1 = MediaClipModel.copy$default((MediaClipModel)localObject1, VideoResourceModel.copy$default((VideoResourceModel)localObject2, null, l1 / 1000, 0, 0L, 0L, l3, l1, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null);
+        }
+      }
+      paramMediaClipModel.add(localObject1);
+      l1 -= l2;
+      if (l1 > 0L)
       {
         if (paramList.size() == 0)
         {
-          paramMediaClipModel = new ArrayList();
-          paramList = localList.iterator();
-          while (paramList.hasNext()) {
-            paramMediaClipModel.add(((MediaClipModel)paramList.next()).getResource());
-          }
-          label229:
-          i = 0;
-          break label84;
-          label235:
-          localObject = paramMediaClipModel;
-          if (j == 2)
-          {
-            localObject = MediaClipModel.copy$default(paramMediaClipModel, VideoResourceModel.copy$default(paramMediaClipModel.getResource(), null, l2 / 1000, 0, 0L, 0L, 0L, l2, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null);
-            l1 = l2;
-          }
-          if (l2 >= l1) {
-            break label386;
-          }
-          paramMediaClipModel = ((MediaClipModel)localObject).getResource();
-          l3 = ((MediaClipModel)localObject).getResource().getSelectTimeStartUs();
-          paramMediaClipModel = MediaClipModel.copy$default((MediaClipModel)localObject, VideoResourceModel.copy$default(paramMediaClipModel, null, l2 / 1000, 0, 0L, 0L, l3, l2, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null);
-          continue;
+          localObject2 = paramMediaClipModel;
+          break;
         }
-        paramMediaClipModel = (MediaClipModel)paramList.remove(0);
-        break;
-        paramMovieSegmentModel.setVideoResourceModels(paramMediaClipModel);
-        return;
+        localObject1 = (MediaClipModel)paramList.remove(0);
       }
-      break;
-      label386:
-      paramMediaClipModel = (MediaClipModel)localObject;
     }
+    paramMediaClipModel = new ArrayList();
+    paramList = ((List)localObject2).iterator();
+    while (paramList.hasNext()) {
+      paramMediaClipModel.add(((MediaClipModel)paramList.next()).getResource());
+    }
+    paramMovieSegmentModel.setVideoResourceModels(paramMediaClipModel);
   }
   
   private final boolean isAllPhotoClip(List<MediaClipModel> paramList)
@@ -168,7 +168,20 @@ public final class LightSegmentHelper
   
   private final boolean isSingleVideo(List<MediaClipModel> paramList)
   {
-    return (paramList != null) && (paramList.size() == 1) && (((MediaClipModel)paramList.get(0)).getResource().getType() == 1);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramList != null)
+    {
+      bool1 = bool2;
+      if (paramList.size() == 1)
+      {
+        bool1 = bool2;
+        if (((MediaClipModel)paramList.get(0)).getResource().getType() == 1) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   @NotNull
@@ -179,21 +192,16 @@ public final class LightSegmentHelper
     ArrayList localArrayList = new ArrayList();
     int j = RangesKt.coerceAtMost(paramList.size(), paramList1.size());
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       MediaClipModel localMediaClipModel = (MediaClipModel)paramList.get(i);
       if (localMediaClipModel.getResource().getType() == 2) {
         fillPhotoClips(localMediaClipModel.getResource(), localArrayList);
+      } else if (localMediaClipModel.getResource().getType() == 1) {
+        fillVideoClips(localMediaClipModel.getResource(), paramFloat, localArrayList);
       }
-      for (;;)
-      {
-        ((MovieSegmentModel)paramList1.get(i)).getVideoResourceModels().add(localMediaClipModel.getResource());
-        i += 1;
-        break;
-        if (localMediaClipModel.getResource().getType() == 1) {
-          fillVideoClips(localMediaClipModel.getResource(), paramFloat, localArrayList);
-        }
-      }
+      ((MovieSegmentModel)paramList1.get(i)).getVideoResourceModels().add(localMediaClipModel.getResource());
+      i += 1;
     }
     return localArrayList;
   }
@@ -209,37 +217,38 @@ public final class LightSegmentHelper
       ((List)localObject).add(((MediaClipModel)paramList.next()).deepCopy());
     }
     boolean bool = isSingleVideo((List)localObject);
-    if ((bool) && (paramList1.size() > 1)) {
+    if ((bool) && (paramList1.size() > 1))
+    {
       paramList = separateClip((MediaClipModel)((List)localObject).get(0), paramList1);
     }
-    for (;;)
+    else
     {
-      bool = isNeedCycleFill(paramList);
-      localObject = paramList1.iterator();
-      for (;;)
-      {
-        MovieSegmentModel localMovieSegmentModel;
-        if (((Iterator)localObject).hasNext())
-        {
-          localMovieSegmentModel = (MovieSegmentModel)((Iterator)localObject).next();
-          if ((paramList != null) && (!paramList.isEmpty())) {}
-        }
-        else
-        {
-          return fillSegmentToClipAsset(paramList1, paramFloat);
-          if ((!isAllVideoClip((List)localObject)) || (((List)localObject).size() >= paramList1.size()) || (bool)) {
-            break label232;
-          }
-          paramList = separateClips((List)localObject, paramList1, paramLong);
-          break;
-        }
-        Logger.d("LightSegmentHelper", "fillSegments begin");
-        fillSegments(localMovieSegmentModel, paramList, bool);
-        Logger.d("LightSegmentHelper", "fillSegments end");
-      }
-      label232:
       paramList = (List<MediaClipModel>)localObject;
+      if (isAllVideoClip((List)localObject))
+      {
+        paramList = (List<MediaClipModel>)localObject;
+        if (((List)localObject).size() < paramList1.size())
+        {
+          paramList = (List<MediaClipModel>)localObject;
+          if (!bool) {
+            paramList = separateClips((List)localObject, paramList1, paramLong);
+          }
+        }
+      }
     }
+    bool = isNeedCycleFill(paramList);
+    localObject = paramList1.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      MovieSegmentModel localMovieSegmentModel = (MovieSegmentModel)((Iterator)localObject).next();
+      if ((paramList == null) || (paramList.isEmpty())) {
+        break;
+      }
+      Logger.d("LightSegmentHelper", "fillSegments begin");
+      fillSegments(localMovieSegmentModel, paramList, bool);
+      Logger.d("LightSegmentHelper", "fillSegments end");
+    }
+    return fillSegmentToClipAsset(paramList1, paramFloat);
   }
   
   @NotNull
@@ -256,30 +265,37 @@ public final class LightSegmentHelper
   
   public final boolean fillSegments(@Nullable MovieSegmentModel paramMovieSegmentModel, @Nullable List<MediaClipModel> paramList, boolean paramBoolean)
   {
-    if ((paramMovieSegmentModel == null) || (paramList == null) || (paramList.isEmpty())) {
-      return false;
-    }
-    MediaClipModel localMediaClipModel;
-    if (paramBoolean)
+    if ((paramMovieSegmentModel != null) && (paramList != null))
     {
-      localMediaClipModel = (MediaClipModel)paramList.remove(0);
-      paramList.add(localMediaClipModel.deepCopy());
-    }
-    while (localMediaClipModel == null)
-    {
-      return false;
-      localMediaClipModel = (MediaClipModel)paramList.remove(0);
-    }
-    switch (localMediaClipModel.getResource().getType())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      fillPhotoSegment(localMediaClipModel, paramMovieSegmentModel);
-      continue;
+      if (paramList.isEmpty()) {
+        return false;
+      }
+      MediaClipModel localMediaClipModel;
+      if (paramBoolean)
+      {
+        localMediaClipModel = (MediaClipModel)paramList.remove(0);
+        paramList.add(localMediaClipModel.deepCopy());
+      }
+      else
+      {
+        localMediaClipModel = (MediaClipModel)paramList.remove(0);
+      }
+      if (localMediaClipModel == null) {
+        return false;
+      }
+      int i = localMediaClipModel.getResource().getType();
+      if (i != 1)
+      {
+        if (i != 2) {
+          return true;
+        }
+        fillPhotoSegment(localMediaClipModel, paramMovieSegmentModel);
+        return true;
+      }
       fillVideoSegment(localMediaClipModel, paramMovieSegmentModel, paramList);
+      return true;
     }
+    return false;
   }
   
   public final boolean isAllVideoClip(@Nullable List<MediaClipModel> paramList)
@@ -306,58 +322,61 @@ public final class LightSegmentHelper
   
   public final boolean isNoDurationLimitTemplate(@Nullable ClipPlaceHolder[] paramArrayOfClipPlaceHolder)
   {
-    if (paramArrayOfClipPlaceHolder != null) {
-      if (paramArrayOfClipPlaceHolder.length != 0) {
-        break label17;
-      }
-    }
-    label17:
-    for (int i = 1; i != 0; i = 0) {
-      return false;
-    }
-    int j = paramArrayOfClipPlaceHolder.length;
-    i = 0;
-    for (;;)
+    if (paramArrayOfClipPlaceHolder != null)
     {
-      if (i >= j) {
-        break label50;
+      if (paramArrayOfClipPlaceHolder.length == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      if (paramArrayOfClipPlaceHolder[i].contentDuration != 0L) {
-        break;
+      if (i != 0) {
+        return false;
       }
-      i += 1;
+      int j = paramArrayOfClipPlaceHolder.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (paramArrayOfClipPlaceHolder[i].contentDuration != 0L) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
     }
-    label50:
-    return true;
+    return false;
   }
   
   @VisibleForTesting
   @NotNull
   public final List<MovieSegmentModel> parseLightSegmentInfo(@Nullable ClipPlaceHolder[] paramArrayOfClipPlaceHolder)
   {
-    int j = 0;
-    if (paramArrayOfClipPlaceHolder != null) {
-      if (paramArrayOfClipPlaceHolder.length != 0) {
-        break label21;
+    if (paramArrayOfClipPlaceHolder != null)
+    {
+      int i = paramArrayOfClipPlaceHolder.length;
+      int j = 0;
+      if (i == 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i == 0)
+      {
+        ArrayList localArrayList = new ArrayList();
+        int k = paramArrayOfClipPlaceHolder.length;
+        i = j;
+        while (i < k)
+        {
+          ClipPlaceHolder localClipPlaceHolder = paramArrayOfClipPlaceHolder[i];
+          MovieSegmentModel localMovieSegmentModel = new MovieSegmentModel();
+          localMovieSegmentModel.setTimeRange(CMTimeRange.fromUs(0L, localClipPlaceHolder.contentDuration));
+          localMovieSegmentModel.setMinDuration(CMTime.fromUs(localClipPlaceHolder.contentDuration));
+          localArrayList.add(localMovieSegmentModel);
+          i += 1;
+        }
+        return (List)localArrayList;
       }
     }
-    label21:
-    for (int i = 1; i != 0; i = 0) {
-      return CollectionsKt.emptyList();
-    }
-    ArrayList localArrayList = new ArrayList();
-    int k = paramArrayOfClipPlaceHolder.length;
-    i = j;
-    while (i < k)
-    {
-      ClipPlaceHolder localClipPlaceHolder = paramArrayOfClipPlaceHolder[i];
-      MovieSegmentModel localMovieSegmentModel = new MovieSegmentModel();
-      localMovieSegmentModel.setTimeRange(CMTimeRange.fromUs(0L, localClipPlaceHolder.contentDuration));
-      localMovieSegmentModel.setMinDuration(CMTime.fromUs(localClipPlaceHolder.contentDuration));
-      localArrayList.add(localMovieSegmentModel);
-      i += 1;
-    }
-    return (List)localArrayList;
+    return CollectionsKt.emptyList();
   }
   
   @Nullable
@@ -367,38 +386,36 @@ public final class LightSegmentHelper
     Intrinsics.checkParameterIsNotNull(paramList, "mLightSegments");
     List localList = (List)new ArrayList();
     paramList = paramList.iterator();
-    for (;;)
+    while (paramList.hasNext())
     {
-      if (paramList.hasNext())
+      Object localObject1 = (MovieSegmentModel)paramList.next();
+      if (localObject1 != null)
       {
-        localObject1 = (MovieSegmentModel)paramList.next();
-        if (localObject1 == null) {
-          continue;
-        }
-        localObject2 = ((MovieSegmentModel)localObject1).getTimeRange();
+        Object localObject2 = ((MovieSegmentModel)localObject1).getTimeRange();
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "segment.timeRange");
-        if (((CMTimeRange)localObject2).getDurationUs() >= paramMediaClipModel.getResource().getSelectTimeDurationUs()) {
+        if (((CMTimeRange)localObject2).getDurationUs() >= paramMediaClipModel.getResource().getSelectTimeDurationUs())
+        {
           localList.add(paramMediaClipModel);
+          return localList;
         }
+        localObject2 = paramMediaClipModel.getResource();
+        CMTimeRange localCMTimeRange = ((MovieSegmentModel)localObject1).getTimeRange();
+        Intrinsics.checkExpressionValueIsNotNull(localCMTimeRange, "segment.timeRange");
+        long l2 = localCMTimeRange.getDurationUs();
+        localObject1 = ((MovieSegmentModel)localObject1).getTimeRange();
+        Intrinsics.checkExpressionValueIsNotNull(localObject1, "segment.timeRange");
+        long l3 = ((CMTimeRange)localObject1).getDurationUs();
+        long l1 = 1000;
+        localObject1 = MediaClipModel.copy$default(paramMediaClipModel, VideoResourceModel.copy$default((VideoResourceModel)localObject2, null, l3 / l1, 0, 0L, 0L, paramMediaClipModel.getResource().getSelectTimeStartUs(), l2, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null);
+        localList.add(localObject1);
+        l2 = paramMediaClipModel.getResource().getSelectTimeDurationUs() - ((MediaClipModel)localObject1).getResource().getSelectTimeDurationUs();
+        localObject2 = paramMediaClipModel.getResource();
+        l3 = ((MediaClipModel)localObject1).getResource().getSelectTimeStartUs();
+        long l4 = ((MediaClipModel)localObject1).getResource().getSelectTimeDurationUs();
+        paramMediaClipModel = MediaClipModel.copy$default(paramMediaClipModel, VideoResourceModel.copy$default((VideoResourceModel)localObject2, null, l2 / l1, 0, 0L, 0L, l3 + l4, l2, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null);
       }
-      else
-      {
-        return localList;
-      }
-      Object localObject2 = paramMediaClipModel.getResource();
-      CMTimeRange localCMTimeRange = ((MovieSegmentModel)localObject1).getTimeRange();
-      Intrinsics.checkExpressionValueIsNotNull(localCMTimeRange, "segment.timeRange");
-      long l1 = localCMTimeRange.getDurationUs();
-      Object localObject1 = ((MovieSegmentModel)localObject1).getTimeRange();
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "segment.timeRange");
-      localObject1 = MediaClipModel.copy$default(paramMediaClipModel, VideoResourceModel.copy$default((VideoResourceModel)localObject2, null, ((CMTimeRange)localObject1).getDurationUs() / 1000, 0, 0L, 0L, paramMediaClipModel.getResource().getSelectTimeStartUs(), l1, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null);
-      localList.add(localObject1);
-      l1 = paramMediaClipModel.getResource().getSelectTimeDurationUs() - ((MediaClipModel)localObject1).getResource().getSelectTimeDurationUs();
-      localObject2 = paramMediaClipModel.getResource();
-      long l2 = ((MediaClipModel)localObject1).getResource().getSelectTimeStartUs();
-      long l3 = ((MediaClipModel)localObject1).getResource().getSelectTimeDurationUs();
-      paramMediaClipModel = MediaClipModel.copy$default(paramMediaClipModel, VideoResourceModel.copy$default((VideoResourceModel)localObject2, null, l1 / 1000, 0, 0L, 0L, l2 + l3, l1, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null);
     }
+    return localList;
   }
   
   @Nullable
@@ -407,124 +424,99 @@ public final class LightSegmentHelper
     Intrinsics.checkParameterIsNotNull(paramList1, "lightSegments");
     List localList = (List)new ArrayList();
     Map localMap = (Map)new ConcurrentHashMap(16);
-    if (paramLong <= 0L) {}
-    Object localObject1;
-    long l1;
-    do
-    {
+    long l3 = 0L;
+    if (paramLong <= 0L) {
       return localList;
-      if (paramList == null) {
-        Intrinsics.throwNpe();
-      }
-      localObject1 = paramList.iterator();
-      l1 = 0L;
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (MediaClipModel)((Iterator)localObject1).next();
-        if ((localObject2 == null) || (((MediaClipModel)localObject2).getResource().getSelectTimeDurationUs() == 0L)) {
-          ((Iterator)localObject1).remove();
-        }
-        for (;;)
-        {
-          break;
-          l1 = ((MediaClipModel)localObject2).getResource().getSelectTimeDurationUs() + l1;
-        }
-      }
-    } while (l1 <= 0L);
-    Object localObject2 = paramList.iterator();
-    long l2;
-    long l3;
-    if (((Iterator)localObject2).hasNext())
+    }
+    if (paramList == null) {
+      Intrinsics.throwNpe();
+    }
+    Object localObject1 = paramList.iterator();
+    long l1 = 0L;
+    while (((Iterator)localObject1).hasNext())
     {
-      localObject1 = (MediaClipModel)((Iterator)localObject2).next();
-      l2 = ((MediaClipModel)localObject1).getResource().getSelectTimeDurationUs();
-      l3 = l2 * paramLong / l1;
-      if (l2 >= l3) {
-        break label645;
+      localObject2 = (MediaClipModel)((Iterator)localObject1).next();
+      if ((localObject2 != null) && (((MediaClipModel)localObject2).getResource().getSelectTimeDurationUs() != 0L)) {
+        l1 += ((MediaClipModel)localObject2).getResource().getSelectTimeDurationUs();
+      } else {
+        ((Iterator)localObject1).remove();
       }
     }
-    for (;;)
+    if (l1 <= 0L) {
+      return localList;
+    }
+    Object localObject2 = paramList.iterator();
+    long l2;
+    while (((Iterator)localObject2).hasNext())
     {
+      localObject1 = (MediaClipModel)((Iterator)localObject2).next();
+      long l4 = ((MediaClipModel)localObject1).getResource().getSelectTimeDurationUs();
+      long l5 = l4 * paramLong / l1;
+      l2 = l5;
+      if (l4 < l5) {
+        l2 = l4;
+      }
       localObject1 = ((MediaClipModel)localObject1).getResource().getPath();
-      if (localObject1 != null) {}
-      for (;;)
-      {
-        localMap.put(localObject1, Long.valueOf(l2));
-        break;
+      if (localObject1 == null) {
         localObject1 = "";
       }
-      int k = ((Collection)paramList1).size();
-      int i = 0;
-      label244:
-      int j;
-      if ((i < k) && (!paramList.isEmpty()))
-      {
-        localObject1 = ((MovieSegmentModel)paramList1.get(i)).getTimeRange();
-        Intrinsics.checkExpressionValueIsNotNull(localObject1, "segment.timeRange");
-        paramLong = ((CMTimeRange)localObject1).getDurationUs();
-        label289:
-        if (paramLong > 0L) {
-          if (!((Collection)paramList).isEmpty())
-          {
-            j = 1;
-            label310:
-            if (j == 0) {
-              break label633;
-            }
-            localObject1 = (MediaClipModel)paramList.remove(0);
-            l2 = ((MediaClipModel)localObject1).getResource().getSelectTimeDurationUs();
-            localObject2 = localList.iterator();
-            l1 = 0L;
-            label349:
-            if (!((Iterator)localObject2).hasNext()) {
-              break label421;
-            }
-            MediaClipModel localMediaClipModel = (MediaClipModel)((Iterator)localObject2).next();
-            if (!TextUtils.equals((CharSequence)localMediaClipModel.getResource().getPath(), (CharSequence)((MediaClipModel)localObject1).getResource().getPath())) {
-              break label642;
-            }
-            l1 = localMediaClipModel.getResource().getSelectTimeDurationUs() + l1;
-          }
-        }
+      localMap.put(localObject1, Long.valueOf(l2));
+    }
+    int j = ((Collection)paramList1).size();
+    int i = 0;
+    paramLong = l3;
+    while (i < j)
+    {
+      if (paramList.isEmpty()) {
+        return localList;
       }
-      label642:
-      for (;;)
+      localObject1 = ((MovieSegmentModel)paramList1.get(i)).getTimeRange();
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "segment.timeRange");
+      l1 = ((CMTimeRange)localObject1).getDurationUs();
+      while ((l1 > paramLong) && ((((Collection)paramList).isEmpty() ^ true)))
       {
-        break label349;
-        j = 0;
-        break label310;
-        label421:
+        localObject1 = (MediaClipModel)paramList.remove(0);
+        l3 = ((MediaClipModel)localObject1).getResource().getSelectTimeDurationUs();
+        localObject2 = localList.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          MediaClipModel localMediaClipModel = (MediaClipModel)((Iterator)localObject2).next();
+          l2 = paramLong;
+          if (TextUtils.equals((CharSequence)localMediaClipModel.getResource().getPath(), (CharSequence)((MediaClipModel)localObject1).getResource().getPath())) {
+            l2 = paramLong + localMediaClipModel.getResource().getSelectTimeDurationUs();
+          }
+          paramLong = l2;
+        }
         localObject2 = localMap.get(((MediaClipModel)localObject1).getResource().getPath());
         if (localObject2 == null) {
           Intrinsics.throwNpe();
         }
-        if ((l1 > ((Number)localObject2).longValue()) || (l2 <= 0L) || ((l1 != 0L) && (l2 < paramLong))) {
-          break label289;
-        }
-        if (l2 > paramLong) {}
-        for (l1 = paramLong;; l1 = l2)
+        if ((paramLong <= ((Number)localObject2).longValue()) && (l3 > 0L) && ((paramLong == 0L) || (l3 >= l1)))
         {
-          localList.add(MediaClipModel.copy$default((MediaClipModel)localObject1, VideoResourceModel.copy$default(((MediaClipModel)localObject1).getResource(), null, l1 / 1000, 0, 0L, 0L, 0L, l1, 0L, 0L, 0, 0, 0, null, 8125, null), null, null, null, null, null, 62, null));
-          l1 = l2 - paramLong;
-          if (l1 > 0L) {
-            paramList.add(0, MediaClipModel.copy$default((MediaClipModel)localObject1, VideoResourceModel.copy$default(((MediaClipModel)localObject1).getResource(), null, l1 / 1000, 0, 0L, 0L, ((MediaClipModel)localObject1).getResource().getSelectTimeStartUs() + paramLong, l1, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null));
+          if (l3 > l1) {
+            paramLong = l1;
+          } else {
+            paramLong = l3;
           }
-          paramLong -= l2;
-          break;
+          localObject2 = ((MediaClipModel)localObject1).getResource();
+          l2 = 1000;
+          localList.add(MediaClipModel.copy$default((MediaClipModel)localObject1, VideoResourceModel.copy$default((VideoResourceModel)localObject2, null, paramLong / l2, 0, 0L, 0L, 0L, paramLong, 0L, 0L, 0, 0, 0, null, 8125, null), null, null, null, null, null, 62, null));
+          paramLong = l3 - l1;
+          if (paramLong > 0L) {
+            paramList.add(0, MediaClipModel.copy$default((MediaClipModel)localObject1, VideoResourceModel.copy$default(((MediaClipModel)localObject1).getResource(), null, paramLong / l2, 0, 0L, 0L, ((MediaClipModel)localObject1).getResource().getSelectTimeStartUs() + l1, paramLong, 0L, 0L, 0, 0, 0, null, 8093, null), null, null, null, null, null, 62, null));
+          }
+          l1 -= l3;
         }
-        label633:
-        i += 1;
-        break label244;
-        break;
+        paramLong = 0L;
       }
-      label645:
-      l2 = l3;
+      i += 1;
     }
+    return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.light.LightSegmentHelper
  * JD-Core Version:    0.7.0.1
  */

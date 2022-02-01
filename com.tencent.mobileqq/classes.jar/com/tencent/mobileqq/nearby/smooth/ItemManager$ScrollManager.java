@@ -20,50 +20,42 @@ class ItemManager$ScrollManager
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
+    int i = this.a.jdField_b_of_type_Int;
     int j = 0;
-    int i;
-    Object localObject;
-    if ((this.a.jdField_b_of_type_Int == 2) && (paramInt != 2))
-    {
+    if ((i == 2) && (paramInt != 2)) {
       i = 1;
-      if (i == 0) {
-        break label136;
-      }
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
       localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this.a);
       this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      if (!this.a.c) {
-        break label129;
+      if (this.a.c) {
+        i = j;
+      } else {
+        i = 550;
       }
-      i = j;
-      label66:
       this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, i);
       this.a.jdField_b_of_type_Boolean = true;
     }
-    for (;;)
+    else if (paramInt == 2)
     {
-      this.a.jdField_b_of_type_Int = paramInt;
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
-      if (localObject != null) {
-        ((AbsListView.OnScrollListener)localObject).onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      return;
-      i = 0;
-      break;
-      label129:
-      i = 550;
-      break label66;
-      label136:
-      if (paramInt == 2)
-      {
-        this.a.jdField_b_of_type_Boolean = false;
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      }
+      localObject = this.a;
+      ((ItemManager)localObject).jdField_b_of_type_Boolean = false;
+      ((ItemManager)localObject).jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    }
+    Object localObject = this.a;
+    ((ItemManager)localObject).jdField_b_of_type_Int = paramInt;
+    localObject = ((ItemManager)localObject).jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
+    if (localObject != null) {
+      ((AbsListView.OnScrollListener)localObject).onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemManager.ScrollManager
  * JD-Core Version:    0.7.0.1
  */

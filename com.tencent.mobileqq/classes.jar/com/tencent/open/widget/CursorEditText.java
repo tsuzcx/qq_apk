@@ -17,29 +17,31 @@ public class CursorEditText
   
   protected void onSelectionChanged(int paramInt1, int paramInt2)
   {
-    int k = 0;
-    int j = 0;
     if (this.a == null) {
       return;
     }
     Editable localEditable = super.getEditableText();
-    Object[] arrayOfObject = localEditable.getSpans(0, localEditable.length(), this.a);
-    int m = arrayOfObject.length;
-    int i = 0;
-    Object localObject;
+    int i = localEditable.length();
+    Object localObject1 = this.a;
+    int k = 0;
+    int j = 0;
+    localObject1 = localEditable.getSpans(0, i, (Class)localObject1);
+    int m = localObject1.length;
+    i = 0;
+    Object localObject2;
     while (i < m)
     {
-      localObject = arrayOfObject[i];
-      int n = localEditable.getSpanStart(localObject);
-      if ((paramInt1 < localEditable.getSpanEnd(localObject)) && (paramInt1 > n))
+      localObject2 = localObject1[i];
+      int n = localEditable.getSpanStart(localObject2);
+      if ((paramInt1 < localEditable.getSpanEnd(localObject2)) && (paramInt1 > n))
       {
-        i = arrayOfObject.length;
+        i = localObject1.length;
         paramInt1 = j;
         while (paramInt1 < i)
         {
-          localObject = arrayOfObject[paramInt1];
-          j = localEditable.getSpanStart(localObject);
-          k = localEditable.getSpanEnd(localObject);
+          localObject2 = localObject1[paramInt1];
+          j = localEditable.getSpanStart(localObject2);
+          k = localEditable.getSpanEnd(localObject2);
           if ((paramInt2 < k) && (paramInt2 > j))
           {
             super.setSelection(k);
@@ -52,13 +54,13 @@ public class CursorEditText
       }
       i += 1;
     }
-    j = arrayOfObject.length;
+    j = localObject1.length;
     i = k;
     while (i < j)
     {
-      localObject = arrayOfObject[i];
-      k = localEditable.getSpanStart(localObject);
-      if ((paramInt2 < localEditable.getSpanEnd(localObject)) && (paramInt2 > k))
+      localObject2 = localObject1[i];
+      k = localEditable.getSpanStart(localObject2);
+      if ((paramInt2 < localEditable.getSpanEnd(localObject2)) && (paramInt2 > k))
       {
         super.setSelection(paramInt1);
         return;
@@ -75,7 +77,7 @@ public class CursorEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.widget.CursorEditText
  * JD-Core Version:    0.7.0.1
  */

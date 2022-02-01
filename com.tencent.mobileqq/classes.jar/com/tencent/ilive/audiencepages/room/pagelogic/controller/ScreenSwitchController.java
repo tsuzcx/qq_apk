@@ -16,6 +16,9 @@ public class ScreenSwitchController
   
   private void initView()
   {
+    if (this.bootBizModules == null) {
+      return;
+    }
     View localView = (View)this.bootBizModules.getUiLayoutList().get(3);
     if (localView != null)
     {
@@ -41,32 +44,27 @@ public class ScreenSwitchController
   
   public void onLandscape(boolean paramBoolean)
   {
-    int j = 0;
     super.onLandscape(paramBoolean);
-    View localView;
-    if (this.portraitLayout != null)
+    View localView = this.portraitLayout;
+    int j = 8;
+    int i;
+    if (localView != null)
     {
-      localView = this.portraitLayout;
-      if (paramBoolean)
-      {
+      if (paramBoolean) {
         i = 8;
-        localView.setVisibility(i);
+      } else {
+        i = 0;
       }
-    }
-    else if (this.landLayout != null)
-    {
-      localView = this.landLayout;
-      if (!paramBoolean) {
-        break label64;
-      }
-    }
-    label64:
-    for (int i = j;; i = 8)
-    {
       localView.setVisibility(i);
-      return;
-      i = 0;
-      break;
+    }
+    localView = this.landLayout;
+    if (localView != null)
+    {
+      i = j;
+      if (paramBoolean) {
+        i = 0;
+      }
+      localView.setVisibility(i);
     }
   }
   
@@ -83,7 +81,7 @@ public class ScreenSwitchController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.controller.ScreenSwitchController
  * JD-Core Version:    0.7.0.1
  */

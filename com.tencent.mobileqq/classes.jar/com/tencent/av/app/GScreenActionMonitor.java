@@ -24,10 +24,11 @@ public class GScreenActionMonitor
       localIntentFilter.addAction("android.intent.action.USER_PRESENT");
       localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
       this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor$ScreenActionReceiver = new GScreenActionMonitor.ScreenActionReceiver();
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+      {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().registerReceiver(this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor$ScreenActionReceiver, localIntentFilter);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -39,10 +40,11 @@ public class GScreenActionMonitor
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor$ScreenActionReceiver != null)) {
+      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor$ScreenActionReceiver != null))
+      {
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_ComTencentAvAppGScreenActionMonitor$ScreenActionReceiver);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -52,7 +54,7 @@ public class GScreenActionMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GScreenActionMonitor
  * JD-Core Version:    0.7.0.1
  */

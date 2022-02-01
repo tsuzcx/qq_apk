@@ -15,17 +15,17 @@ public class SerializableManager
 {
   public static boolean a(QQAppInterface paramQQAppInterface, Map<UUID, ? extends Entity> paramMap, long paramLong)
   {
-    if (paramMap == null) {
-      QLog.e("SerializableManager", 4, "bad Entity Param");
-    }
-    Object localObject;
-    do
+    if (paramMap == null)
     {
+      QLog.e("SerializableManager", 4, "bad Entity Param");
       return false;
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject = new TroopFileTansferItemEntity();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-    } while (!paramQQAppInterface.drop(((TroopFileTansferItemEntity)localObject).getTableName()));
+    }
+    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    Object localObject = new TroopFileTansferItemEntity();
+    ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
+    if (!paramQQAppInterface.drop(((TroopFileTansferItemEntity)localObject).getTableName())) {
+      return false;
+    }
     paramMap = paramMap.values().iterator();
     while (paramMap.hasNext())
     {
@@ -39,7 +39,7 @@ public class SerializableManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.SerializableManager
  * JD-Core Version:    0.7.0.1
  */

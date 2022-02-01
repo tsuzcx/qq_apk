@@ -17,18 +17,23 @@ class WSPublisherDialog$MiniAppListener
   
   public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
-    if (paramBoolean) {}
-    for (String str = "success";; str = "fail")
-    {
-      WSLog.d("WSPublisherDialog", str + ", bundle: " + paramBundle.toString());
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("launch mini program ");
+    String str;
+    if (paramBoolean) {
+      str = "success";
+    } else {
+      str = "fail";
     }
+    localStringBuilder.append(str);
+    localStringBuilder.append(", bundle: ");
+    localStringBuilder.append(paramBundle.toString());
+    WSLog.d("WSPublisherDialog", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSPublisherDialog.MiniAppListener
  * JD-Core Version:    0.7.0.1
  */

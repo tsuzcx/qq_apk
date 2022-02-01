@@ -14,16 +14,20 @@ public class Messages$LoopingMessage
     if (localObject == null)
     {
       localObject = null;
-      localLoopingMessage.textureId = ((Long)localObject);
-      localLoopingMessage.isLooping = ((Boolean)paramHashMap.get("isLooping"));
-      return localLoopingMessage;
     }
-    if ((localObject instanceof Integer)) {}
-    for (long l = ((Integer)localObject).intValue();; l = ((Long)localObject).longValue())
+    else
     {
+      long l;
+      if ((localObject instanceof Integer)) {
+        l = ((Integer)localObject).intValue();
+      } else {
+        l = ((Long)localObject).longValue();
+      }
       localObject = Long.valueOf(l);
-      break;
     }
+    localLoopingMessage.textureId = ((Long)localObject);
+    localLoopingMessage.isLooping = ((Boolean)paramHashMap.get("isLooping"));
+    return localLoopingMessage;
   }
   
   public Boolean getIsLooping()
@@ -56,7 +60,7 @@ public class Messages$LoopingMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqcircle.video.Messages.LoopingMessage
  * JD-Core Version:    0.7.0.1
  */

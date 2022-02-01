@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.activity.contacts.base.BuddyListItem;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
@@ -20,7 +19,9 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.friend.status.OnlineStatusUtils;
 import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.widget.SingleLineTextView;
 import com.tencent.widget.ThemeImageView;
@@ -35,160 +36,159 @@ public class BuddyListPhone
   
   public View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
   {
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-    PhoneContact localPhoneContact;
-    if ((paramView == null) || (!(paramView.getTag() instanceof BuddyListPhone.PhoneContactChildTag)))
+    paramOnClickListener = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject1 = "";
+    Object localObject2 = (IPhoneContactService)paramOnClickListener.getRuntimeService(IPhoneContactService.class, "");
+    if ((paramView != null) && ((paramView.getTag() instanceof BuddyListPhone.PhoneContactChildTag)))
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559032, paramViewGroup, false);
-      paramOnClickListener = new BuddyListPhone.PhoneContactChildTag();
-      paramOnClickListener.d = ((ImageView)paramViewGroup.findViewById(2131368603));
-      paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131379092));
-      paramOnClickListener.c = ((SingleLineTextView)paramViewGroup.findViewById(2131380497));
-      paramOnClickListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369834));
-      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131376990));
-      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377001));
-      paramViewGroup.setTag(paramOnClickListener);
-      a(paramViewGroup.findViewById(2131368603));
-      localPhoneContact = (PhoneContact)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
-      paramOnClickListener.jdField_a_of_type_JavaLangObject = localPhoneContact;
-      paramOnClickListener.jdField_a_of_type_JavaLangString = localPhoneContact.mobileCode;
-      paramInt2 = ContactUtils.a(localPhoneContact.detalStatusFlag, localPhoneContact.iTermType);
-      paramView = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-      paramInt1 = localPhoneContact.netTypeIconId;
+      paramOnClickListener = (BuddyListPhone.PhoneContactChildTag)paramView.getTag();
+      paramViewGroup = paramView;
     }
-    label313:
-    Object localObject;
-    switch (paramInt2)
+    else
+    {
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558926, paramViewGroup, false);
+      paramOnClickListener = new BuddyListPhone.PhoneContactChildTag();
+      paramOnClickListener.d = ((ImageView)paramViewGroup.findViewById(2131368343));
+      paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131378461));
+      paramOnClickListener.c = ((SingleLineTextView)paramViewGroup.findViewById(2131379798));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369520));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131376477));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131376485));
+      paramViewGroup.setTag(paramOnClickListener);
+      a(paramViewGroup.findViewById(2131368343));
+    }
+    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
+    paramOnClickListener.jdField_a_of_type_JavaLangObject = localPhoneContact;
+    paramOnClickListener.jdField_a_of_type_JavaLangString = localPhoneContact.mobileCode;
+    int i = OnlineStatusUtils.a(localPhoneContact.detalStatusFlag, localPhoneContact.iTermType);
+    Object localObject3 = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+    paramInt2 = localPhoneContact.netTypeIconId;
+    paramInt1 = paramInt2;
+    paramView = (View)localObject1;
+    switch (i)
     {
     case 5: 
     default: 
-      paramView = paramView.getOfflineTipsConfig(localPhoneContactManagerImp.a(localPhoneContact.unifiedCode));
-      if (paramView == null) {
-        paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131719511);
+      localObject1 = ((FriendListHandler)localObject3).getOfflineTipsConfig(((IPhoneContactService)localObject2).getLastLoginType(localPhoneContact.unifiedCode));
+      paramInt1 = paramInt2;
+      paramView = (View)localObject1;
+      if (localObject1 == null)
+      {
+        paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131719229);
+        paramInt1 = paramInt2;
       }
       break;
-    case 1: 
-    case 2: 
     case 7: 
-    case 3: 
-    case 6: 
+      paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131719225);
+      paramInt1 = paramInt2;
+      break;
     case 4: 
     case 8: 
-      for (;;)
+      paramInt1 = paramInt2;
+      if (i == 8)
       {
-        if ((paramInt2 == 0) || (paramInt2 == 6))
-        {
-          paramInt2 = 1;
-          if ((localPhoneContactManagerImp.f & 0x8) != 8L)
-          {
-            localObject = a();
-            ImageView localImageView = paramOnClickListener.d;
-            if (paramInt2 == 0) {
-              break label710;
-            }
-            label346:
-            localImageView.setImageDrawable((Drawable)localObject);
-          }
-          if ((localPhoneContactManagerImp.f & 0x4) != 4L) {
-            break label716;
-          }
-          paramInt2 = 1;
-          label371:
-          if (paramInt2 == 0) {
-            break label721;
-          }
-          paramOnClickListener.c.setVisibility(8);
-          label385:
-          paramOnClickListener.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131167040));
-          paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localPhoneContact.name);
-          localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-          if ((TextUtils.isEmpty(localPhoneContact.uin)) || (localPhoneContact.uin.equals("0"))) {
-            break label787;
-          }
-          paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-          paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701295));
-          paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(HardCodeUtil.a(2131701298));
-          label509:
-          if (AppSetting.d)
-          {
-            paramOnClickListener = paramOnClickListener.jdField_a_of_type_JavaLangStringBuilder;
-            if (paramOnClickListener != null) {
-              break label911;
-            }
-            paramOnClickListener = new StringBuilder(24);
-            paramOnClickListener.append(localPhoneContact.name).append(".").append(paramView).append(".");
-            paramOnClickListener.append(ContactUtils.b(paramInt1));
-            paramViewGroup.setContentDescription(paramOnClickListener);
-          }
-          label538:
-          return paramViewGroup;
-          paramOnClickListener = (BuddyListPhone.PhoneContactChildTag)paramView.getTag();
-          paramViewGroup = paramView;
-          break;
-          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131719501);
-          continue;
-          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131719503);
-          continue;
-          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131719507);
-          continue;
-          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131719513);
-          continue;
-          paramView = "";
-          continue;
-          if ((paramInt2 != 8) || ((localPhoneContact.abilityBits & 1L) != 0L)) {
-            break label929;
-          }
+        paramInt1 = paramInt2;
+        if ((localPhoneContact.abilityBits & 1L) == 0L) {
           if (localPhoneContact.netTypeIconIdIphoneOrWphoneNoWifi != 0) {
             paramInt1 = localPhoneContact.netTypeIconIdIphoneOrWphoneNoWifi;
+          } else {
+            paramInt1 = localPhoneContact.netTypeIconId;
           }
         }
       }
-    }
-    label787:
-    label929:
-    for (;;)
-    {
       paramView = ContactUtils.a(paramInt1);
       break;
-      paramInt1 = localPhoneContact.netTypeIconId;
-      continue;
-      paramInt2 = 0;
-      break label313;
-      label710:
-      localObject = null;
-      break label346;
-      label716:
-      paramInt2 = 0;
-      break label371;
-      label721:
-      if (!TextUtils.isEmpty(paramView))
-      {
-        paramOnClickListener.c.setText("[" + paramView + "]");
-        paramOnClickListener.c.setVisibility(0);
-        break label385;
-      }
-      paramOnClickListener.c.setVisibility(8);
-      break label385;
-      if (((FriendsManager)localObject).a(localPhoneContact.unifiedCode, true))
-      {
-        paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701297));
-        paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(HardCodeUtil.a(2131701299));
-        break label509;
-      }
-      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131689557));
-      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setTag(localPhoneContact);
-      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setContentDescription(HardCodeUtil.a(2131689557));
-      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label509;
-      paramOnClickListener.delete(0, paramOnClickListener.length());
-      break label538;
+    case 3: 
+      paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131719231);
+      paramInt1 = paramInt2;
       break;
+    case 2: 
+      paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131719221);
+      paramInt1 = paramInt2;
+      break;
+    case 1: 
+      paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131719219);
+      paramInt1 = paramInt2;
     }
+    if ((i != 0) && (i != 6)) {
+      paramInt2 = 0;
+    } else {
+      paramInt2 = 1;
+    }
+    if ((((IPhoneContactService)localObject2).getUIBits() & 0x8) != 8L)
+    {
+      localObject1 = a();
+      localObject3 = paramOnClickListener.d;
+      if (paramInt2 == 0) {
+        localObject1 = null;
+      }
+      ((ImageView)localObject3).setImageDrawable((Drawable)localObject1);
+    }
+    if ((((IPhoneContactService)localObject2).getUIBits() & 0x4) == 4L) {
+      paramInt2 = 1;
+    } else {
+      paramInt2 = 0;
+    }
+    if (paramInt2 != 0)
+    {
+      paramOnClickListener.c.setVisibility(8);
+    }
+    else if (!TextUtils.isEmpty(paramView))
+    {
+      localObject1 = paramOnClickListener.c;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[");
+      ((StringBuilder)localObject2).append(paramView);
+      ((StringBuilder)localObject2).append("]");
+      ((SingleLineTextView)localObject1).setText(((StringBuilder)localObject2).toString());
+      paramOnClickListener.c.setVisibility(0);
+    }
+    else
+    {
+      paramOnClickListener.c.setVisibility(8);
+    }
+    paramOnClickListener.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131167063));
+    paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localPhoneContact.name);
+    localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if ((!TextUtils.isEmpty(localPhoneContact.uin)) && (!localPhoneContact.uin.equals("0")))
+    {
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701435));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(HardCodeUtil.a(2131701438));
+    }
+    else if (((FriendsManager)localObject1).a(localPhoneContact.unifiedCode, true))
+    {
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701437));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(HardCodeUtil.a(2131701439));
+    }
+    else
+    {
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131689589));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setTag(localPhoneContact);
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetButton.setContentDescription(HardCodeUtil.a(2131689589));
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    if (AppSetting.d)
+    {
+      paramOnClickListener = paramOnClickListener.jdField_a_of_type_JavaLangStringBuilder;
+      if (paramOnClickListener == null) {
+        paramOnClickListener = new StringBuilder(24);
+      } else {
+        paramOnClickListener.delete(0, paramOnClickListener.length());
+      }
+      paramOnClickListener.append(localPhoneContact.name);
+      paramOnClickListener.append(".");
+      paramOnClickListener.append(paramView);
+      paramOnClickListener.append(".");
+      paramOnClickListener.append(ContactUtils.b(paramInt1));
+      paramViewGroup.setContentDescription(paramOnClickListener);
+    }
+    return paramViewGroup;
   }
   
   protected void a(View paramView)
@@ -200,7 +200,7 @@ public class BuddyListPhone
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.phone.BuddyListPhone
  * JD-Core Version:    0.7.0.1
  */

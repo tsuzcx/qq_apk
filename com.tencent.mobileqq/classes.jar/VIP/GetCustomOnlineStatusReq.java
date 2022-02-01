@@ -30,15 +30,16 @@ public final class GetCustomOnlineStatusReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.lUin, 0);
-    if (this.sIMei != null) {
-      paramJceOutputStream.write(this.sIMei, 1);
+    String str = this.sIMei;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.iModelNum, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.GetCustomOnlineStatusReq
  * JD-Core Version:    0.7.0.1
  */

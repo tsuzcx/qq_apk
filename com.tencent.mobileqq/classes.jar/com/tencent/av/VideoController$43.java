@@ -16,8 +16,10 @@ class VideoController$43
     if (!this.jdField_a_of_type_Boolean)
     {
       paramInt = this.jdField_a_of_type_ComTencentAvVideoController.e();
-      this.jdField_a_of_type_ComTencentAvVideoController.a("onHowling_click", this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Long, true, false, -1);
-      this.jdField_a_of_type_ComTencentAvVideoController.a(-1L, paramInt, this.jdField_a_of_type_ComTencentAvVideoController.e());
+      paramDialogInterface = this.jdField_a_of_type_ComTencentAvVideoController;
+      paramDialogInterface.a("onHowling_click", paramDialogInterface.jdField_a_of_type_Long, true, false, -1);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentAvVideoController;
+      paramDialogInterface.a(-1L, paramInt, paramDialogInterface.e());
       if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
         this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
       }
@@ -30,7 +32,7 @@ class VideoController$43
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.43
  * JD-Core Version:    0.7.0.1
  */

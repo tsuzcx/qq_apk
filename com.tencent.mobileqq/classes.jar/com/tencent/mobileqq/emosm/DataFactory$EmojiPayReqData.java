@@ -54,38 +54,55 @@ public class DataFactory$EmojiPayReqData
   
   public static EmojiPayReqData a(Bundle paramBundle)
   {
-    String str1 = "";
-    String str2 = "";
-    String str3 = "";
-    String str4 = "";
-    String str5 = "";
-    String str6 = "";
-    String str7 = "";
-    String str8 = "";
-    String str9 = "";
-    String str10 = "";
-    String str11 = "";
-    String str12 = "";
-    String str13 = "";
-    String str14 = "";
+    String str1;
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    Object localObject4;
+    Object localObject5;
+    Object localObject6;
+    Object localObject7;
+    Object localObject8;
+    Object localObject9;
+    Object localObject10;
+    Object localObject11;
+    Object localObject12;
     if (paramBundle != null)
     {
       str1 = paramBundle.getString("callbackid");
-      str2 = paramBundle.getString("appid");
-      str3 = paramBundle.getString("userId");
-      str4 = paramBundle.getString("userKey");
-      str5 = paramBundle.getString("sessionId");
-      str6 = paramBundle.getString("sessionType");
-      str7 = paramBundle.getString("zoneId");
-      str8 = paramBundle.getString("pf");
-      str9 = paramBundle.getString("pfKey");
-      str10 = paramBundle.getString("tokenUrl");
-      str11 = paramBundle.getString("discountId");
-      str12 = paramBundle.getString("other");
-      str13 = paramBundle.getString("payload");
-      str14 = paramBundle.getString("drmInfo");
+      String str2 = paramBundle.getString("appid");
+      localObject1 = paramBundle.getString("userId");
+      localObject2 = paramBundle.getString("userKey");
+      localObject3 = paramBundle.getString("sessionId");
+      localObject4 = paramBundle.getString("sessionType");
+      localObject5 = paramBundle.getString("zoneId");
+      localObject6 = paramBundle.getString("pf");
+      localObject7 = paramBundle.getString("pfKey");
+      localObject8 = paramBundle.getString("tokenUrl");
+      localObject9 = paramBundle.getString("discountId");
+      localObject10 = paramBundle.getString("other");
+      localObject11 = paramBundle.getString("payload");
+      localObject12 = paramBundle.getString("drmInfo");
+      paramBundle = str2;
     }
-    return new EmojiPayReqData(str1, str2, str3, str4, str5, str6, str7, str8, str9, str10, str11, str12, str13, str14);
+    else
+    {
+      str1 = "";
+      paramBundle = str1;
+      localObject1 = paramBundle;
+      localObject2 = localObject1;
+      localObject3 = localObject2;
+      localObject4 = localObject3;
+      localObject5 = localObject4;
+      localObject6 = localObject5;
+      localObject7 = localObject6;
+      localObject8 = localObject7;
+      localObject9 = localObject8;
+      localObject10 = localObject9;
+      localObject11 = localObject10;
+      localObject12 = localObject11;
+    }
+    return new EmojiPayReqData(str1, paramBundle, (String)localObject1, (String)localObject2, (String)localObject3, (String)localObject4, (String)localObject5, (String)localObject6, (String)localObject7, (String)localObject8, (String)localObject9, (String)localObject10, (String)localObject11, (String)localObject12);
   }
   
   public Bundle a()
@@ -106,7 +123,7 @@ public class DataFactory$EmojiPayReqData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.DataFactory.EmojiPayReqData
  * JD-Core Version:    0.7.0.1
  */

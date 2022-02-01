@@ -35,20 +35,24 @@ public class WerewolvesDataManager
     ArrayList localArrayList = new ArrayList();
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      Object localObject3 = this.jdField_a_of_type_JavaUtilMap.values();
-      ??? = ((Collection)localObject3).iterator();
+      Object localObject4 = this.jdField_a_of_type_JavaUtilMap.values();
+      ??? = ((Collection)localObject4).iterator();
       while (((Iterator)???).hasNext())
       {
-        localObject3 = (RecentInviteUser)((Iterator)???).next();
-        if (((RecentInviteUser)localObject3).uinType == 0) {
-          localArrayList.add(localObject3);
+        localObject4 = (RecentInviteUser)((Iterator)???).next();
+        if (((RecentInviteUser)localObject4).uinType == 0) {
+          localArrayList.add(localObject4);
         }
       }
+      synchronized (this.b)
+      {
+        Collections.sort(localArrayList);
+        return localArrayList;
+      }
     }
-    synchronized (this.b)
+    for (;;)
     {
-      Collections.sort(localList);
-      return localList;
+      throw localObject2;
     }
   }
   
@@ -68,24 +72,20 @@ public class WerewolvesDataManager
       {
         ??? = new RecentInviteUser();
         ((RecentInviteUser)???).uniKey = str;
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          this.jdField_a_of_type_JavaUtilMap.put(str, ???);
+        }
       }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      ((RecentInviteUser)???).uin = ???;
+      ((RecentInviteUser)???).uinType = paramInt;
+      ((RecentInviteUser)???).lastInviteId = paramString2;
+      synchronized (this.b)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(str, ???);
-        ((RecentInviteUser)???).uin = ???;
-        ((RecentInviteUser)???).uinType = paramInt;
-        ((RecentInviteUser)???).lastInviteId = paramString2;
+        ((RecentInviteUser)???).lastInviteTime = System.currentTimeMillis();
+        a((RecentInviteUser)???);
+        return;
       }
-    }
-    synchronized (this.b)
-    {
-      ((RecentInviteUser)???).lastInviteTime = System.currentTimeMillis();
-      a((RecentInviteUser)???);
-      return;
-      ??? = finally;
-      throw ???;
-      ??? = finally;
-      throw ???;
     }
   }
   
@@ -113,25 +113,29 @@ public class WerewolvesDataManager
     ArrayList localArrayList = new ArrayList();
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      Object localObject2 = this.jdField_a_of_type_JavaUtilMap.values();
-      ??? = ((Collection)localObject2).iterator();
+      Object localObject3 = this.jdField_a_of_type_JavaUtilMap.values();
+      ??? = ((Collection)localObject3).iterator();
       while (((Iterator)???).hasNext())
       {
-        localObject2 = (RecentInviteUser)((Iterator)???).next();
-        if (((RecentInviteUser)localObject2).uinType == 1) {
-          localArrayList.add(localObject2);
+        localObject3 = (RecentInviteUser)((Iterator)???).next();
+        if (((RecentInviteUser)localObject3).uinType == 1) {
+          localArrayList.add(localObject3);
         }
       }
+      Collections.sort(localArrayList);
+      return localArrayList;
     }
-    Collections.sort(localList);
-    return localList;
+    for (;;)
+    {
+      throw localObject1;
+    }
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager
  * JD-Core Version:    0.7.0.1
  */

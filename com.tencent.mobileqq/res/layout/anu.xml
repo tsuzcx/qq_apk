@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="40.0dip" android:textColor="@color/al3" android:id="@id/jsi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="02" />
-    <TextView android:textSize="19.0dip" android:textColor="@color/al3" android:id="@id/jsh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qcq" />
-</merge>

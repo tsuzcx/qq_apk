@@ -13,9 +13,7 @@ public class PicOcrObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 100) {
       return;
     }
     a(paramBoolean, (PicOcrRspResult)paramObject);
@@ -23,7 +21,7 @@ public class PicOcrObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gallery.picocr.PicOcrObserver
  * JD-Core Version:    0.7.0.1
  */

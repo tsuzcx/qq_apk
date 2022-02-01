@@ -24,29 +24,33 @@ public class QuicNative
   
   private void onClose(int paramInt, String paramString)
   {
-    if (this.callback != null) {
-      this.callback.onClose(this.handleId, paramInt, paramString);
+    QuicNative.QuicCallback localQuicCallback = this.callback;
+    if (localQuicCallback != null) {
+      localQuicCallback.onClose(this.handleId, paramInt, paramString);
     }
   }
   
   private void onCompleted()
   {
-    if (this.callback != null) {
-      this.callback.onCompleted(this.handleId);
+    QuicNative.QuicCallback localQuicCallback = this.callback;
+    if (localQuicCallback != null) {
+      localQuicCallback.onCompleted(this.handleId);
     }
   }
   
   private void onConnect(int paramInt)
   {
-    if (this.callback != null) {
-      this.callback.onConnect(this.handleId, paramInt);
+    QuicNative.QuicCallback localQuicCallback = this.callback;
+    if (localQuicCallback != null) {
+      localQuicCallback.onConnect(this.handleId, paramInt);
     }
   }
   
   private void onDataReceive(byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.callback != null) {
-      this.callback.onDataReceive(this.handleId, paramArrayOfByte, paramInt);
+    QuicNative.QuicCallback localQuicCallback = this.callback;
+    if (localQuicCallback != null) {
+      localQuicCallback.onDataReceive(this.handleId, paramArrayOfByte, paramInt);
     }
   }
   
@@ -120,7 +124,7 @@ public class QuicNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.quic.internal.QuicNative
  * JD-Core Version:    0.7.0.1
  */

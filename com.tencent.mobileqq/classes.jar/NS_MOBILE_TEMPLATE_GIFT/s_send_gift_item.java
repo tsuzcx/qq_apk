@@ -78,40 +78,47 @@ public final class s_send_gift_item
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.giftCard != null) {
-      paramJceOutputStream.write(this.giftCard, 0);
+    Object localObject = this.giftCard;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.giftType, 1);
     paramJceOutputStream.write(this.receiver, 2);
     paramJceOutputStream.write(this.giftItemId, 3);
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 4);
+    localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.isBack, 5);
     paramJceOutputStream.write(this.isPrivate, 6);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 7);
+    localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.isTiming, 8);
-    if (this.sendTime != null) {
-      paramJceOutputStream.write(this.sendTime, 9);
+    localObject = this.sendTime;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.arch, 10);
-    if (this.s_back_id != null) {
-      paramJceOutputStream.write(this.s_back_id, 11);
+    localObject = this.s_back_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.clientIp != null) {
-      paramJceOutputStream.write(this.clientIp, 12);
+    localObject = this.clientIp;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.recv_source, 13);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 14);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.s_send_gift_item
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.av.doodle;
 
 import com.tencent.av.AVFunDrawing.MessageBody;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 
 class DoodleLogic$SendItemInfo
 {
@@ -15,7 +15,7 @@ class DoodleLogic$SendItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleLogic.SendItemInfo
  * JD-Core Version:    0.7.0.1
  */

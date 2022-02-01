@@ -12,33 +12,22 @@ class QidianProfileCardActivity$6
   
   public void onClick(View paramView)
   {
-    boolean bool = true;
     Object localObject = QidianProfileCardActivity.a(this.a);
     int i;
-    if (QidianProfileCardActivity.a(this.a))
-    {
+    if (QidianProfileCardActivity.a(this.a)) {
       i = 1;
-      ((TextView)localObject).setMaxLines(i);
-      localObject = this.a;
-      if (QidianProfileCardActivity.a(this.a)) {
-        break label65;
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.a((QidianProfileCardActivity)localObject, bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       i = 3;
-      break;
-      label65:
-      bool = false;
     }
+    ((TextView)localObject).setMaxLines(i);
+    localObject = this.a;
+    QidianProfileCardActivity.a((QidianProfileCardActivity)localObject, QidianProfileCardActivity.a((QidianProfileCardActivity)localObject) ^ true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -27,30 +27,30 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.identification.AppConf;
+import com.tencent.mobileqq.identification.AppConf.AppWordings;
+import com.tencent.mobileqq.identification.FaceConf;
+import com.tencent.mobileqq.identification.IYTFaceView;
 import com.tencent.mobileqq.identification.IdentificationActivityHelper;
-import com.tencent.mobileqq.identification.RequestHelper.IYTFaceView;
-import com.tencent.mobileqq.identification.RequestHelper.RequestListener;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppWordings;
-import com.tencent.mobileqq.jsp.IdentificationApiPlugin;
+import com.tencent.mobileqq.identification.IdentificationConstant;
+import com.tencent.mobileqq.identification.RequestListener;
+import com.tencent.mobileqq.qqconnectface.api.ICamera;
+import com.tencent.mobileqq.qqconnectface.impl.FaceCameraProxy;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.mobileqq.richmedia.capture.util.SensorShower;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureParam;
 import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+import com.tencent.mobileqq.richmedia.capture.view.OutPreviewCallback;
 import com.tencent.mobileqq.richmedia.capture.view.QIdentifierCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.QIdentifierCaptureView.CaptureParam;
-import com.tencent.mobileqq.richmedia.capture.view.QIdentifierCaptureView.OutPreviewCallback;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraAbility;
+import com.tencent.mobileqq.richmedia.capture.view.QIdentityCircleLayout;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.IdentificationCircleDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -63,72 +63,272 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@RequiresApi(api=18)
+@RoutePage(desc="人脸识别页面", path="/base/connectface/identity")
 public class QQIdentiferActivity
-  extends BaseActivity
-  implements Handler.Callback, View.OnClickListener, RequestHelper.IYTFaceView, RequestHelper.RequestListener, QIdentifierCaptureView.OutPreviewCallback
+  extends QBaseActivity
+  implements Handler.Callback, View.OnClickListener, IYTFaceView, RequestListener, OutPreviewCallback
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new QQIdentiferActivity.7(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private IdentificationActivityHelper jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationActivityHelper;
-  private CircleBarView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView;
-  private QIdentifierCaptureView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView;
-  private IdentificationCircleDrawable jdField_a_of_type_ComTencentMobileqqWidgetIdentificationCircleDrawable;
-  public YTReflectLayout a;
-  private String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131694349);
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  private Map<String, Object> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this);
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int = -1;
-  private final long jdField_b_of_type_Long = 60000L;
-  private View jdField_b_of_type_AndroidViewView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
-  private Map<String, Integer> jdField_b_of_type_JavaUtilMap;
-  private AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private MqqHandler jdField_b_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getSubThreadLooper(), this);
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 120000;
-  private volatile long jdField_c_of_type_Long;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String jdField_c_of_type_JavaLangString;
-  private Map<String, String> jdField_c_of_type_JavaUtilMap = new QQIdentiferActivity.1(this);
-  private AtomicBoolean jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = 1500;
-  private long jdField_d_of_type_Long;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private AtomicBoolean jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
-  private boolean jdField_d_of_type_Boolean;
-  private int e;
-  private int f = Color.rgb(0, 202, 252);
-  private int g = Color.rgb(255, 64, 96);
-  private int h = Color.argb(0, 0, 0, 0);
-  private int i = 500;
+  private static final int APPID_DELETE_FACE = 101868556;
+  public static final int CAMERA_STATE_RIGHT_FACE = 1;
+  private static final int ERROR_REQUEST_FEATURE_CODE = -11;
+  private static final String FACE_IDENTIFICATION_AUTO_LOGIN_TVALUE = "0X800AD2C";
+  private static final String KEY_ERROR_MSG = "errorMsg";
+  public static final String KEY_FACE_SCANN_ERROR = "isScanError";
+  private static final String KEY_UIN = "key_uin";
+  private static final int LIGHT_THRESHOLD = 175;
+  public static final int MSG_NOTICE_REFRESH_NOTICE = 4;
+  public static final int MSG_PAGE_CHANGE = 0;
+  public static final int MSG_PAGE_INIT_TIMEOUT = 1;
+  public static final int MSG_POST_FILE_TIME_OUT = 5;
+  public static final int MSG_RESULT_SUCESSFUL_FINISH = 3;
+  public static final int PAGE_ID_UPLOAD = 2;
+  public static final String TAG = "qq_Identification.act";
+  private static final String TAG_IDENTIFICATION_ERROR_CODE = "tagIdentificationErrorCode";
+  private static final String YT_MSG_KEY_CODE = "errorcode";
+  private static final String YT_MSG_KEY_INFO = "extrainfo";
+  private static final String YT_MSG_KEY_MSG = "errormsg";
+  private static final int YT_SDK_ERROR_CODE = -10;
+  private int DELAY_RESULT_SUCESSFUL_FINISH = 1500;
+  private int DELAY_SET_NOTICE = 500;
+  private int PAGE_INIT_TIMEOUT = 120000;
+  private final long POST_FILE_TIMEOUT_SECOND = 60000L;
+  private int faceClear = Color.argb(0, 0, 0, 0);
+  private int faceNo = Color.rgb(255, 64, 96);
+  private int faceOk = Color.rgb(0, 202, 252);
+  public int identificationType;
+  private boolean initYTFinish;
+  private AtomicBoolean isCameraOnPause = new AtomicBoolean(false);
+  private AtomicBoolean isReflecting = new AtomicBoolean(false);
+  private AtomicBoolean isScaningFace = new AtomicBoolean(true);
+  private IdentificationActivityHelper mActivityHelper;
+  private StringBuilder mAllResults = new StringBuilder();
+  private ImageView mBlurIv;
+  private RelativeLayout mBtnLayout;
+  private TextView mCameraErrorTv;
+  private ICamera mCameraProxy;
+  private int mCameraState;
+  private TextView mCameraTv;
+  private QIdentifierCaptureView mCameraView;
+  private CircleBarView mCircleView;
+  private Context mContext;
+  private long mEnterTime;
+  private FaceConf mFaceConf;
+  private MqqHandler mHandler = new MqqHandler(this);
+  private RelativeLayout mInfoLayout;
+  private boolean mIsPreCheckOk;
+  private byte[] mLastPreviewData;
+  private View mMaskView;
+  private LinearLayout mNoticeLayout;
+  private String mNoticeText;
+  private int mPageId = -1;
+  private QIdentityCircleLayout mQIdentityCircleLayout;
+  private BroadcastReceiver mReceiver = new QQIdentiferActivity.7(this);
+  private int mReceiverState;
+  private boolean mResultCanRetry;
+  private String mResultErrorStr = HardCodeUtil.a(2131694314);
+  private ImageView mResultImg;
+  private LinearLayout mResultLayout;
+  private boolean mResultSucess;
+  private TextView mResultTv;
+  private Map<String, Object> mScanningData = new HashMap();
+  private MqqHandler mSubHandler = new MqqHandler(ThreadManager.getSubThreadLooper(), this);
+  private TextView mTitleProgressTv;
+  private Map<String, Integer> mWordingMap;
+  public YTReflectLayout mYTReflectLayout;
+  private String method;
+  private long reflectTimeDelta;
+  private Map<String, String> sdkTips = new QQIdentiferActivity.1(this);
+  private AtomicBoolean uploading = new AtomicBoolean(false);
+  private View ytTips;
   
-  private Intent a(Intent paramIntent)
+  private void addWordingRecord(String paramString)
   {
-    String str = this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    if ("identify".equals(this.method)) {
+      return;
+    }
+    if (paramString == null)
+    {
+      QLog.e("qq_Identification.act", 1, "add wording record, wording is null");
+      return;
+    }
+    if (this.mWordingMap.containsKey(paramString))
+    {
+      Integer localInteger = (Integer)this.mWordingMap.get(paramString);
+      this.mWordingMap.put(paramString, Integer.valueOf(localInteger.intValue() + 1));
+      return;
+    }
+    this.mWordingMap.put(paramString, Integer.valueOf(1));
+  }
+  
+  private void blueLastFrameAsync()
+  {
+    ThreadManagerV2.executeOnFileThread(new QQIdentiferActivity.9(this));
+  }
+  
+  private void collectErrorCode(int paramInt, String paramString)
+  {
+    QLog.d("qq_Identification.act", 1, new Object[] { "collectErrorCode error code : ", Integer.valueOf(paramInt) });
+    HashMap localHashMap = new HashMap(4);
+    localHashMap.put("errorCode", String.valueOf(paramInt));
+    if (!TextUtils.isEmpty(paramString)) {
+      localHashMap.put("errorMsg", paramString);
+    }
+    paramString = getAppRuntime();
+    if (paramString == null) {
+      paramString = "";
+    } else {
+      paramString = paramString.getAccount();
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      localHashMap.put("key_uin", paramString);
+    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramString, "tagIdentificationErrorCode", this.mResultSucess, 0L, 0L, localHashMap, "");
+  }
+  
+  private String getAppWording()
+  {
+    int i = this.mFaceConf.getServiceType();
+    Object localObject1 = this.mFaceConf.getAppConf();
+    Object localObject2;
+    if ((localObject1 != null) && (i != -1) && (((AppConf)localObject1).al != null) && (!((AppConf)localObject1).al.isEmpty()))
+    {
+      localObject1 = ((AppConf)localObject1).al.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (AppConf.AppWordings)((Iterator)localObject1).next();
+        if (((AppConf.AppWordings)localObject2).serviceType == i) {
+          return ((AppConf.AppWordings)localObject2).text;
+        }
+      }
+      return null;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getAppWording PARAMS ERROR serviceType=");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(" appConf=");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("qq_Identification.act", 2, ((StringBuilder)localObject2).toString());
+    }
+    return null;
+  }
+  
+  private CaptureParam initCaptureParam()
+  {
+    CaptureParam localCaptureParam = new CaptureParam();
+    localCaptureParam.b(480);
+    localCaptureParam.a(640);
+    localCaptureParam.a(false);
+    return localCaptureParam;
+  }
+  
+  private void onFailedResultReport()
+  {
+    reportByEntrance("0X800A865");
+    if ("changeSecureMobile".equals(this.method)) {
+      ReportController.b(null, "dc00898", "", "", "0X800AEC5", "0X800AEC5", 0, 0, "", "", "", "");
+    }
+  }
+  
+  private void onPageShowReport()
+  {
+    if ("deleteFace".equals(this.method))
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800AF62", "0X800AF62", 0, 0, "", "", "", "");
+      return;
+    }
+    if ("changeSecureMobile".equals(this.method))
+    {
+      ReportController.a(null, "dc00898", "", "", "0X800AEC3", "0X800AEC3", 0, 0, "", "", "", "");
+      return;
+    }
+    if ("identify".equals(this.method)) {
+      QQIdentiferUtil.a(this.mFaceConf.getAppConf(), "0X800B2BF");
+    }
+  }
+  
+  private String parseFailedString(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("qq_Identification.act", 1, "parse msg to json error : originMsg is empty");
+      return paramString;
+    }
+    try
+    {
+      Object localObject = new JSONObject(paramString);
+      String str = ((JSONObject)localObject).optString("errormsg", "");
+      localObject = ((JSONObject)localObject).optString("extrainfo", "");
+      str = (String)this.sdkTips.get(str);
+      if (TextUtils.isEmpty(str))
+      {
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+        if (bool) {
+          return paramString;
+        }
+        return localObject;
+      }
+      return str;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("qq_Identification.act", 1, new Object[] { "parse msg to json error : ", localJSONException.getMessage() });
+    }
+    return paramString;
+  }
+  
+  private boolean preCheck()
+  {
+    if ((Build.VERSION.SDK_INT >= 23) && (checkSelfPermission("android.permission.CAMERA") != 0))
+    {
+      setResult(205, HardCodeUtil.a(2131710314));
+      finish();
+      return false;
+    }
+    if (!this.mCameraProxy.a())
+    {
+      setResult(203, HardCodeUtil.a(2131710312));
+      DialogUtil.a(this, 230, HardCodeUtil.a(2131710326), HardCodeUtil.a(2131710312), "", HardCodeUtil.a(2131691064), new QQIdentiferActivity.5(this), null).show();
+      return false;
+    }
+    if (isInMultiWindow())
+    {
+      setResult(206, IdentificationConstant.b);
+      finish();
+      return false;
+    }
+    return true;
+  }
+  
+  private void reportByEntrance(String paramString)
+  {
+    reportByEntrance(paramString, "", "");
+  }
+  
+  private void reportByEntrance(String paramString1, String paramString2, String paramString3)
+  {
+    if ("setFaceData".equals(this.method))
+    {
+      ReportController.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, "1", paramString2, paramString3, "");
+      return;
+    }
+    if ("loginVerify".equals(this.method)) {
+      ReportController.a(null, "dc00898", "", "", paramString1, paramString1, 0, 0, "2", paramString2, paramString3, "");
+    }
+  }
+  
+  private Intent setAllResults(Intent paramIntent)
+  {
+    String str = this.mAllResults.toString();
     if ((paramIntent != null) && (paramIntent.hasExtra("data"))) {
-      b(paramIntent.getBundleExtra("data").getInt("ret", 299), "");
+      collectErrorCode(paramIntent.getBundleExtra("data").getInt("ret", 299), "");
     }
     if (TextUtils.isEmpty(str)) {
       return paramIntent;
@@ -141,533 +341,21 @@ public class QQIdentiferActivity
     return localIntent;
   }
   
-  private QIdentifierCaptureView.CaptureParam a()
-  {
-    QIdentifierCaptureView.CaptureParam localCaptureParam = new QIdentifierCaptureView.CaptureParam();
-    localCaptureParam.b(480);
-    localCaptureParam.a(640);
-    localCaptureParam.a(false);
-    return localCaptureParam;
-  }
-  
-  private String a()
-  {
-    int j = getIntent().getIntExtra("serviceType", -1);
-    Object localObject = (FaceDetectForThirdPartyManager.AppConf)getIntent().getSerializableExtra("FaceRecognition.AppConf");
-    if ((localObject == null) || (j == -1) || (((FaceDetectForThirdPartyManager.AppConf)localObject).al == null) || (((FaceDetectForThirdPartyManager.AppConf)localObject).al.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qq_Identification.act", 2, "getAppWording PARAMS ERROR serviceType=" + j + " appConf=" + localObject);
-      }
-      return null;
-    }
-    localObject = ((FaceDetectForThirdPartyManager.AppConf)localObject).al.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      FaceDetectForThirdPartyManager.AppWordings localAppWordings = (FaceDetectForThirdPartyManager.AppWordings)((Iterator)localObject).next();
-      if (localAppWordings.serviceType == j) {
-        return localAppWordings.text;
-      }
-    }
-    return null;
-  }
-  
-  private String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("qq_Identification.act", 1, "parse msg to json error : originMsg is empty");
-    }
-    for (;;)
-    {
-      return paramString;
-      try
-      {
-        Object localObject = new JSONObject(paramString);
-        String str = ((JSONObject)localObject).optString("errormsg", "");
-        localObject = ((JSONObject)localObject).optString("extrainfo", "");
-        str = (String)this.jdField_c_of_type_JavaUtilMap.get(str);
-        if (TextUtils.isEmpty(str))
-        {
-          boolean bool = TextUtils.isEmpty((CharSequence)localObject);
-          if (!bool) {
-            return localObject;
-          }
-        }
-        else
-        {
-          return str;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("qq_Identification.act", 1, new Object[] { "parse msg to json error : ", localJSONException.getMessage() });
-      }
-    }
-    return paramString;
-  }
-  
-  private void a(int paramInt, String paramString)
+  private void setResult(int paramInt, String paramString)
   {
     Intent localIntent = new Intent();
     Bundle localBundle = new Bundle();
     localBundle.putInt("ret", paramInt);
     localBundle.putString("errMsg", paramString);
     localIntent.putExtra("data", localBundle);
-    setResult(-1, a(localIntent));
+    setResult(-1, setAllResults(localIntent));
   }
   
-  private void a(String paramString)
+  private void updateCancelResult()
   {
-    if ("identify".equals(this.jdField_b_of_type_JavaLangString)) {
-      return;
+    if (this.uploading.get()) {
+      setResult(210, IdentificationConstant.c);
     }
-    if (paramString == null)
-    {
-      QLog.e("qq_Identification.act", 1, "add wording record, wording is null");
-      return;
-    }
-    if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString))
-    {
-      Integer localInteger = (Integer)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-      this.jdField_b_of_type_JavaUtilMap.put(paramString, Integer.valueOf(localInteger.intValue() + 1));
-      return;
-    }
-    this.jdField_b_of_type_JavaUtilMap.put(paramString, Integer.valueOf(1));
-  }
-  
-  private void a(String paramString1, String paramString2, String paramString3)
-  {
-    if ("setFaceData".equals(this.jdField_b_of_type_JavaLangString)) {
-      ReportController.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, "1", paramString2, paramString3, "");
-    }
-    while (!"loginVerify".equals(this.jdField_b_of_type_JavaLangString)) {
-      return;
-    }
-    ReportController.a(null, "dc00898", "", "", paramString1, paramString1, 0, 0, "2", paramString2, paramString3, "");
-  }
-  
-  private boolean a()
-  {
-    if ((Build.VERSION.SDK_INT >= 23) && (checkSelfPermission("android.permission.CAMERA") != 0))
-    {
-      a(205, HardCodeUtil.a(2131710333));
-      finish();
-      return false;
-    }
-    if (!CameraAbility.c())
-    {
-      a(203, HardCodeUtil.a(2131710331));
-      DialogUtil.a(this, 230, HardCodeUtil.a(2131710346), HardCodeUtil.a(2131710339), "", HardCodeUtil.a(2131710327), new QQIdentiferActivity.5(this), null).show();
-      return false;
-    }
-    if (isInMultiWindow())
-    {
-      a(206, IdentificationApiPlugin.jdField_b_of_type_JavaLangString);
-      finish();
-      return false;
-    }
-    return true;
-  }
-  
-  private void b(int paramInt, String paramString)
-  {
-    QLog.d("qq_Identification.act", 1, new Object[] { "collectErrorCode error code : ", Integer.valueOf(paramInt) });
-    HashMap localHashMap = new HashMap(4);
-    localHashMap.put("errorCode", String.valueOf(paramInt));
-    if (!TextUtils.isEmpty(paramString)) {
-      localHashMap.put("errorMsg", paramString);
-    }
-    paramString = getAppInterface();
-    if (paramString == null) {}
-    for (paramString = "";; paramString = paramString.getAccount())
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        localHashMap.put("key_uin", paramString);
-      }
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(paramString, "tagIdentificationErrorCode", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
-      return;
-    }
-  }
-  
-  private void b(String paramString)
-  {
-    a(paramString, "", "");
-  }
-  
-  private void f()
-  {
-    if ("deleteFace".equals(this.jdField_b_of_type_JavaLangString)) {
-      ReportController.b(null, "dc00898", "", "", "0X800AF62", "0X800AF62", 0, 0, "", "", "", "");
-    }
-    do
-    {
-      return;
-      if ("changeSecureMobile".equals(this.jdField_b_of_type_JavaLangString))
-      {
-        ReportController.a(null, "dc00898", "", "", "0X800AEC3", "0X800AEC3", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (!"identify".equals(this.jdField_b_of_type_JavaLangString));
-    QQIdentiferUtil.a((FaceDetectForThirdPartyManager.AppConf)getIntent().getSerializableExtra("FaceRecognition.AppConf"), "0X800B2BF");
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      a(210, IdentificationApiPlugin.jdField_c_of_type_JavaLangString);
-    }
-  }
-  
-  private void h()
-  {
-    ThreadManagerV2.executeOnFileThread(new QQIdentiferActivity.9(this));
-  }
-  
-  private void i()
-  {
-    b("0X800A865");
-    if ("changeSecureMobile".equals(this.jdField_b_of_type_JavaLangString)) {
-      ReportController.b(null, "dc00898", "", "", "0X800AEC5", "0X800AEC5", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public void a()
-  {
-    if (!NetworkUtil.g(this))
-    {
-      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131710325);
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = true;
-      a(202, this.jdField_a_of_type_JavaLangString);
-      QLog.e("qq_Identification.act", 1, "onUploadVideo net error");
-      b(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    c();
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    int j;
-    if (paramBundle != null)
-    {
-      j = paramBundle.getInt("ret", -1);
-      if ((j != -1) && (paramBundle.getBoolean("needRetry", false))) {
-        this.jdField_a_of_type_JavaLangStringBuilder.append(j).append("|");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("qq_Identification.act", 2, "QQIdentifer onRequestFinish: ,ret=" + j);
-      }
-    }
-    for (;;)
-    {
-      Intent localIntent;
-      switch (paramInt)
-      {
-      default: 
-        if (paramBundle != null)
-        {
-          this.jdField_a_of_type_JavaLangString = paramBundle.getString("errMsg");
-          localIntent = new Intent();
-          localIntent.putExtra("data", paramBundle);
-          setResult(-1, a(localIntent));
-        }
-        break;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_b_of_type_Boolean = true;
-        for (;;)
-        {
-          QLog.d("qq_Identification.act", 1, new Object[] { "onRequestFinish: code=", Integer.valueOf(paramInt), ",ret=", Integer.valueOf(j), "|", this.jdField_a_of_type_JavaLangString, " isSuccess : ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-          this.jdField_a_of_type_MqqOsMqqHandler.post(new QQIdentiferActivity.6(this));
-          return;
-          if (paramBundle != null)
-          {
-            if (paramBundle.getInt("ret") == 0) {}
-            for (boolean bool = true;; bool = false)
-            {
-              this.jdField_a_of_type_Boolean = bool;
-              this.jdField_b_of_type_Boolean = paramBundle.getBoolean("needRetry");
-              this.jdField_a_of_type_JavaLangString = paramBundle.getString("errMsg");
-              localIntent = new Intent();
-              localIntent.putExtra("data", paramBundle);
-              paramBundle = a(localIntent);
-              if (this.jdField_a_of_type_Boolean) {
-                paramBundle.putExtra("key_face_scan_result", true);
-              }
-              setResult(-1, paramBundle);
-              break;
-            }
-          }
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_b_of_type_Boolean = true;
-          this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131710321);
-          setResult(-1, a(null));
-        }
-        this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131710329);
-        setResult(-1, a(null));
-      }
-      j = -1;
-    }
-  }
-  
-  public void a(ColorMatrixColorFilter paramColorMatrixColorFilter)
-  {
-    this.jdField_a_of_type_ComTencentYoutuYtagreflectlivecheckUiYTReflectLayout.setColorMatrixColorFilter(paramColorMatrixColorFilter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIdentificationCircleDrawable.a(paramColorMatrixColorFilter);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.a(this.h);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    long l = System.currentTimeMillis();
-    if (this.jdField_d_of_type_Long != 0L) {
-      QLog.d("qq_Identification.act", 1, new Object[] { "reflect delta time is : ", Long.valueOf(l - this.jdField_d_of_type_Long) });
-    }
-    this.jdField_d_of_type_Long = l;
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    a(paramCharSequence.toString());
-  }
-  
-  public void a(CharSequence paramCharSequence, Map<String, Object> paramMap)
-  {
-    if ((this.jdField_b_of_type_AndroidWidgetLinearLayout.getVisibility() != 0) || (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.b(this.h);
-      if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-      }
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    paramMap = paramMap.get("keyStateIdentify");
-    if ("statePass".equals(paramMap))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.a(this.f);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.b(this.h);
-    }
-    for (;;)
-    {
-      a(paramCharSequence.toString());
-      return;
-      if ("stateNotPass".equals(paramMap))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.a(this.g);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.b(this.h);
-      }
-    }
-  }
-  
-  public void a(Map<String, Object> paramMap)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView == null) || (this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {}
-    for (;;)
-    {
-      return;
-      if (paramMap.containsKey("state_stats")) {
-        QLog.d("qq_Identification.act", 1, paramMap.get("state_stats").toString());
-      }
-      if (paramMap.containsKey("ui_tips")) {}
-      try
-      {
-        String str1 = getActivity().getPackageName();
-        String str2 = (String)paramMap.get("ui_tips");
-        String str3 = (String)this.jdField_c_of_type_JavaUtilMap.get(str2);
-        if (!TextUtils.isEmpty(str3)) {}
-        for (this.jdField_c_of_type_JavaLangString = str3;; this.jdField_c_of_type_JavaLangString = getString(getResources().getIdentifier(str2, "string", str1)))
-        {
-          if (paramMap.containsKey("ui_action"))
-          {
-            if (!"not_pass".equals(paramMap.get("ui_action"))) {
-              break label336;
-            }
-            this.jdField_a_of_type_JavaUtilMap.put("keyStateIdentify", "stateNotPass");
-          }
-          if ((paramMap.containsKey("process_action")) && ("failed".equals(paramMap.get("process_action"))))
-          {
-            this.jdField_b_of_type_Boolean = true;
-            str1 = (String)paramMap.get("message");
-            this.jdField_a_of_type_JavaLangString = a(str1);
-            QLog.e("qq_Identification.act", 1, new Object[] { "handleEvent process result failed : ", this.jdField_a_of_type_JavaLangString, " origin msg : ", str1 });
-            b(this.jdField_a_of_type_JavaLangString);
-            b(-10, this.jdField_a_of_type_JavaLangString);
-          }
-          if (!paramMap.containsKey("version_tips")) {
-            break;
-          }
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("qq_Identification.act", 1, "get resource string error : " + localException.getMessage());
-          continue;
-          label336:
-          if ("pass".equals(paramMap.get("ui_action"))) {
-            this.jdField_a_of_type_JavaUtilMap.put("keyStateIdentify", "statePass");
-          } else {
-            this.jdField_a_of_type_JavaUtilMap.put("keyStateIdentify", null);
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
-    if (paramBoolean)
-    {
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379501).setVisibility(8);
-      if (!TextUtils.isEmpty(a()))
-      {
-        String str = a();
-        a(str);
-        a(str);
-      }
-      this.jdField_d_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIdentificationCircleDrawable.a(getResources().getColor(2131167305));
-      findViewById(2131364357).post(new QQIdentiferActivity.8(this));
-      return;
-    }
-    a(paramInt, this.jdField_a_of_type_JavaLangString);
-    b(HardCodeUtil.a(2131710338));
-  }
-  
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    paramCamera = paramCamera.getParameters().getPreviewSize();
-    if (!this.jdField_d_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    YtSDKKitFramework.getInstance().updateWithFrameData(paramArrayOfByte, paramCamera.width, paramCamera.height, 1);
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379501).setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIdentificationCircleDrawable.a(getResources().getColor(2131167307));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131710328));
-    a(HardCodeUtil.a(2131710328));
-  }
-  
-  public void b(CharSequence paramCharSequence)
-  {
-    int j = 0;
-    Object localObject = paramCharSequence;
-    if (paramCharSequence == null) {
-      localObject = HardCodeUtil.a(2131710329);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.onPause();
-    this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379501).setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840571);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.a();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.a(getResources().getColor(2131165486));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.b(this.h);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIdentificationCircleDrawable.a(getResources().getColor(2131167307));
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(5);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    h();
-    paramCharSequence = findViewById(2131379505);
-    if (this.jdField_b_of_type_Boolean) {}
-    for (;;)
-    {
-      paramCharSequence.setVisibility(j);
-      a(((CharSequence)localObject).toString());
-      i();
-      return;
-      j = 8;
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.onPause();
-    this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379501).setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIdentificationCircleDrawable.a(getResources().getColor(2131167307));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131710322));
-    findViewById(2131369126).setVisibility(8);
-    a(HardCodeUtil.a(2131710322));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.a(this.h);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.b(this.f);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.a(1000);
-    h();
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(5, 60000L);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.onPause();
-    this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379501).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131710337));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840572);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    findViewById(2131379505).setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.a();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.a(this.f);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.b(this.h);
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(5);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    long l;
-    if ("loginVerify".equals(this.jdField_b_of_type_JavaLangString))
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800A31A", "0X800A31A", 0, 0, "", "", "", "");
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-      if (!"setFaceData".equals(this.jdField_b_of_type_JavaLangString)) {
-        break label375;
-      }
-      ReportController.b(null, "dc00898", "", "", "0X800A861", "0X800A861", 0, 0, String.valueOf(l), "1", "", "");
-    }
-    label375:
-    do
-    {
-      return;
-      if ("setFaceData".equals(this.jdField_b_of_type_JavaLangString))
-      {
-        ReportController.b(null, "dc00898", "", "", "0X800A31F", "0X800A31F", 0, 0, "", "", "", "");
-        break;
-      }
-      if ("deleteFace".equals(this.jdField_b_of_type_JavaLangString))
-      {
-        ReportController.b(null, "dc00898", "", "", "0X800AE96", "0X800AE96", 0, 0, "", "", "", "");
-        break;
-      }
-      if (!"changeSecureMobile".equals(this.jdField_b_of_type_JavaLangString)) {
-        break;
-      }
-      ReportController.b(null, "dc00898", "", "", "0X800AEC4", "0X800AEC4", 0, 0, "", "", "", "");
-      break;
-      if ("loginVerify".equals(this.jdField_b_of_type_JavaLangString))
-      {
-        ReportController.b(null, "dc00898", "", "", "0X800A861", "0X800A861", 0, 0, String.valueOf(l), "2", "", "");
-        return;
-      }
-    } while (!"identify".equals(this.jdField_b_of_type_JavaLangString));
-    QQIdentiferUtil.a((FaceDetectForThirdPartyManager.AppConf)getIntent().getSerializableExtra("FaceRecognition.AppConf"), "0X800B2C0");
   }
   
   @Override
@@ -679,253 +367,294 @@ public class QQIdentiferActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  @RequiresApi(api=18)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = this;
-    if (ImmersiveUtils.isSupporImmersive() == 1) {
-      ImmersiveUtils.clearCoverForStatus(getWindow(), this.isClearCoverLayer);
-    }
-    getWindow().setFlags(128, 128);
-    try
+    this.mContext = this;
+    Object localObject = getWindow();
+    ((Window)localObject).setFlags(128, 128);
+    this.mActNeedImmersive = false;
+    super.doOnCreate(paramBundle);
+    super.setContentView(2131561122);
+    ImmersiveUtils.setStatusTextColor(true, (Window)localObject);
+    this.mWordingMap = new HashMap();
+    this.mCameraProxy = new FaceCameraProxy();
+    this.mIsPreCheckOk = preCheck();
+    if (!this.mIsPreCheckOk)
     {
-      requestWindowFeature(1);
-      ImmersiveUtils.setStatusTextColor(true, getWindow());
-      this.mNeedStatusTrans = false;
-      super.doOnCreate(paramBundle);
-      super.setContentView(2131561279);
-      this.jdField_c_of_type_Long = System.currentTimeMillis();
-      this.jdField_b_of_type_JavaUtilMap = new HashMap();
-      this.jdField_c_of_type_Boolean = a();
-      if (!this.jdField_c_of_type_Boolean)
-      {
-        QLog.e("qq_Identification.act", 1, "preCheck not pass");
-        findViewById(16908290).setVisibility(8);
-        return true;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("qq_Identification.act", 1, new Object[] { "requestWindowFeature error : ", localException.getMessage() });
-        b(-11, localException.getMessage());
-      }
-      paramBundle = getIntent();
-      this.jdField_a_of_type_Int = paramBundle.getIntExtra("key_identification_type", 2);
-      this.jdField_b_of_type_JavaLangString = paramBundle.getStringExtra("method");
-      if ((paramBundle.getIntExtra("srcAppId", 0) == 101868556) && ("changeSecureMobile".equals(this.jdField_b_of_type_JavaLangString))) {
-        this.jdField_b_of_type_JavaLangString = "deleteFace";
-      }
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379467));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368712));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView = ((QIdentifierCaptureView)findViewById(2131368711));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.setCaptureParam(a());
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.setPreviewCallback(this);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.setCaptureListener(new QQIdentiferActivity.2(this));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373579));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379509));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379507));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379468));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364347));
-      this.jdField_a_of_type_ComTencentYoutuYtagreflectlivecheckUiYTReflectLayout = ((YTReflectLayout)findViewById(2131382113));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView = ((CircleBarView)findViewById(2131382112));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131379506));
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131381102);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131379508));
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131382114);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369590));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIdentificationCircleDrawable = new IdentificationCircleDrawable();
-      if (Build.VERSION.SDK_INT <= 15) {
-        break label827;
-      }
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_ComTencentMobileqqWidgetIdentificationCircleDrawable);
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView.a(getResources().getColor(2131165486));
-      paramBundle = findViewById(2131364357);
-      paramBundle.setOnClickListener(this);
-      paramBundle.post(new QQIdentiferActivity.3(this, paramBundle));
-      findViewById(2131379505).setOnClickListener(this);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationActivityHelper = new IdentificationActivityHelper(this, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(4);
-      b();
-      if (TextUtils.isEmpty(a()))
-      {
-        QLog.d("qq_Identification.act", 1, "getAppWording return empty");
-        SensorShower.a().a(getApplicationContext(), new QQIdentiferActivity.4(this));
-      }
-      if (this.e == 0)
-      {
-        paramBundle = new IntentFilter();
-        paramBundle.addAction("tencent.av.v2q.StartVideoChat");
-        paramBundle.addAction("tencent.av.v2q.AvSwitch");
-        paramBundle.addAction("mqq.intent.action.ACCOUNT_KICKED");
-        this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-        this.e = 1;
-      }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      int j = getIntent().getIntExtra("serviceType", -1);
-      ReportController.b(this.app, "dc00898", "", "", "0X80097EA", "0X80097EA", 0, 0, j + "", "" + this.jdField_a_of_type_Int, getIntent().getIntExtra("srcAppId", 0) + "", "");
-      b("0X800A85F");
-      f();
+      QLog.e("qq_Identification.act", 1, "preCheck not pass");
+      findViewById(16908290).setVisibility(8);
       return true;
-      label827:
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetIdentificationCircleDrawable);
     }
+    this.mFaceConf = ((FaceConf)getIntent().getSerializableExtra("faceConf"));
+    paramBundle = this.mFaceConf;
+    if (paramBundle == null)
+    {
+      finish();
+      QLog.e("qq_Identification.act", 1, "mFaceConf is null");
+      return true;
+    }
+    paramBundle = paramBundle.getAppConf();
+    if (paramBundle == null)
+    {
+      finish();
+      QLog.e("qq_Identification.act", 1, "appConf is null");
+      return true;
+    }
+    this.identificationType = paramBundle.mode;
+    this.method = this.mFaceConf.getMethod();
+    if ((this.mFaceConf.getAppId() == 101868556) && ("changeSecureMobile".equals(this.method))) {
+      this.method = "deleteFace";
+    }
+    this.mNoticeLayout = ((LinearLayout)findViewById(2131378819));
+    this.mInfoLayout = ((RelativeLayout)findViewById(2131368443));
+    this.mQIdentityCircleLayout = ((QIdentityCircleLayout)findViewById(2131368442));
+    this.mMaskView = findViewById(2131380366);
+    this.mCameraView = ((QIdentifierCaptureView)findViewById(2131364258));
+    this.mCameraView.a(false);
+    this.mCameraView.setCaptureParam(initCaptureParam());
+    this.mCameraView.setPreviewCallback(this);
+    this.mCameraView.setCaptureListener(new QQIdentiferActivity.2(this));
+    this.mTitleProgressTv = ((TextView)findViewById(2131373159));
+    this.mResultTv = ((TextView)findViewById(2131378858));
+    this.mResultImg = ((ImageView)findViewById(2131378856));
+    this.mCameraTv = ((TextView)findViewById(2131378820));
+    this.mCameraErrorTv = ((TextView)findViewById(2131364251));
+    this.mYTReflectLayout = ((YTReflectLayout)findViewById(2131381317));
+    this.mCircleView = ((CircleBarView)findViewById(2131381316));
+    this.mBtnLayout = ((RelativeLayout)findViewById(2131378855));
+    this.mResultLayout = ((LinearLayout)findViewById(2131378857));
+    this.ytTips = findViewById(2131381318);
+    this.mBlurIv = ((ImageView)findViewById(2131369300));
+    this.mCircleView.a(getResources().getColor(2131165462));
+    paramBundle = findViewById(2131364259);
+    paramBundle.setOnClickListener(this);
+    paramBundle.post(new QQIdentiferActivity.3(this, paramBundle));
+    findViewById(2131378854).setOnClickListener(this);
+    this.uploading.set(false);
+    this.mActivityHelper = new IdentificationActivityHelper(this, this.identificationType);
+    this.mHandler.sendEmptyMessageDelayed(1, this.PAGE_INIT_TIMEOUT);
+    this.mHandler.sendEmptyMessage(4);
+    showYTSdkInitStart();
+    if (TextUtils.isEmpty(getAppWording()))
+    {
+      QLog.d("qq_Identification.act", 1, "getAppWording return empty");
+      SensorShower.a().a(getApplicationContext(), new QQIdentiferActivity.4(this));
+    }
+    if (this.mReceiverState == 0)
+    {
+      paramBundle = new IntentFilter();
+      paramBundle.addAction("tencent.av.v2q.StartVideoChat");
+      paramBundle.addAction("tencent.av.v2q.AvSwitch");
+      paramBundle.addAction("mqq.intent.action.ACCOUNT_KICKED");
+      this.mContext.registerReceiver(this.mReceiver, paramBundle);
+      this.mReceiverState = 1;
+    }
+    this.mEnterTime = System.currentTimeMillis();
+    int i = this.mFaceConf.getServiceType();
+    paramBundle = this.mRuntime;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.identificationType);
+    ReportController.b(paramBundle, "dc00898", "", "", "0X80097EA", "0X80097EA", 0, 0, (String)localObject, localStringBuilder.toString(), String.valueOf(this.mFaceConf.getAppId()), "");
+    reportByEntrance("0X800A85F");
+    onPageShowReport();
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (!this.jdField_c_of_type_Boolean) {}
-    label276:
-    for (;;)
-    {
+    if (!this.mIsPreCheckOk) {
       return;
-      this.jdField_d_of_type_Boolean = false;
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-      this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-      if (TextUtils.isEmpty(a())) {
-        SensorShower.a().a();
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationActivityHelper != null) {
-        this.jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationActivityHelper.c();
-      }
-      if (this.e == 1)
-      {
-        this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.e = 0;
-      }
-      long l;
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-        if (!"setFaceData".equals(this.jdField_b_of_type_JavaLangString)) {
-          break label232;
-        }
+    }
+    this.initYTFinish = false;
+    this.mHandler.removeCallbacksAndMessages(null);
+    this.mSubHandler.removeCallbacksAndMessages(null);
+    if (TextUtils.isEmpty(getAppWording())) {
+      SensorShower.a().a();
+    }
+    Object localObject = this.mActivityHelper;
+    if (localObject != null) {
+      ((IdentificationActivityHelper)localObject).g();
+    }
+    if (this.mReceiverState == 1)
+    {
+      this.mContext.unregisterReceiver(this.mReceiver);
+      this.mReceiverState = 0;
+    }
+    if (!this.mResultSucess)
+    {
+      long l = System.currentTimeMillis() - this.mEnterTime;
+      if ("setFaceData".equals(this.method)) {
         ReportController.b(null, "dc00898", "", "", "0X800A862", "0X800A862", 0, 0, String.valueOf(l), "1", "", "");
+      } else if ("loginVerify".equals(this.method)) {
+        ReportController.b(null, "dc00898", "", "", "0X800A862", "0X800A862", 0, 0, String.valueOf(l), "2", "", "");
       }
-      for (;;)
+    }
+    localObject = this.mWordingMap;
+    if ((localObject != null) && (!((Map)localObject).isEmpty()))
+    {
+      localObject = this.mWordingMap.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        if ((this.jdField_b_of_type_JavaUtilMap == null) || (this.jdField_b_of_type_JavaUtilMap.isEmpty())) {
-          break label276;
-        }
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          a("0X800A863", String.valueOf(((Integer)this.jdField_b_of_type_JavaUtilMap.get(str)).intValue()), str);
-        }
-        break;
-        label232:
-        if ("loginVerify".equals(this.jdField_b_of_type_JavaLangString)) {
-          ReportController.b(null, "dc00898", "", "", "0X800A862", "0X800A862", 0, 0, String.valueOf(l), "2", "", "");
-        }
+        String str = (String)((Iterator)localObject).next();
+        reportByEntrance("0X800A863", String.valueOf(((Integer)this.mWordingMap.get(str)).intValue()), str);
       }
     }
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.mIsPreCheckOk) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.onPause();
-    this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.mCameraView.onPause();
+    this.isCameraOnPause.set(true);
     YtSDKKitFramework.getInstance().deInit();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    if (!this.jdField_c_of_type_Boolean) {}
-    do
-    {
+    if (!this.mIsPreCheckOk) {
       return;
-      QLog.d("qq_Identification.act", 1, new Object[] { "onResume isScanningFace : ", Boolean.valueOf(this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) });
-    } while (!this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.onResume();
+    }
+    QLog.d("qq_Identification.act", 1, new Object[] { "onResume isScanningFace : ", Boolean.valueOf(this.isScaningFace.get()) });
+    if (this.isScaningFace.get()) {
+      this.mCameraView.onResume();
+    }
   }
   
-  public void e()
+  public Bundle getParams()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379501).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIdentificationCircleDrawable.a(getResources().getColor(2131167305));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.setVisibility(0);
+    return null;
+  }
+  
+  public void handleEvent(Map<String, Object> paramMap)
+  {
+    if (this.mCameraView != null)
+    {
+      if (this.isCameraOnPause.get()) {
+        return;
+      }
+      if (paramMap.containsKey("state_stats")) {
+        QLog.d("qq_Identification.act", 1, paramMap.get("state_stats").toString());
+      }
+      if (paramMap.containsKey("ui_tips")) {
+        try
+        {
+          String str1 = getActivity().getPackageName();
+          localObject = (String)paramMap.get("ui_tips");
+          String str3 = (String)this.sdkTips.get(localObject);
+          if (!TextUtils.isEmpty(str3)) {
+            this.mNoticeText = str3;
+          } else {
+            this.mNoticeText = getString(getResources().getIdentifier((String)localObject, "string", str1));
+          }
+        }
+        catch (Exception localException)
+        {
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("get resource string error : ");
+          ((StringBuilder)localObject).append(localException.getMessage());
+          QLog.e("qq_Identification.act", 1, ((StringBuilder)localObject).toString());
+        }
+      }
+      if (paramMap.containsKey("ui_action")) {
+        if ("not_pass".equals(paramMap.get("ui_action"))) {
+          this.mScanningData.put("keyStateIdentify", "stateNotPass");
+        } else if ("pass".equals(paramMap.get("ui_action"))) {
+          this.mScanningData.put("keyStateIdentify", "statePass");
+        } else {
+          this.mScanningData.put("keyStateIdentify", null);
+        }
+      }
+      if ((paramMap.containsKey("process_action")) && ("failed".equals(paramMap.get("process_action"))))
+      {
+        this.mResultCanRetry = true;
+        String str2 = (String)paramMap.get("message");
+        this.mResultErrorStr = parseFailedString(str2);
+        QLog.e("qq_Identification.act", 1, new Object[] { "handleEvent process result failed : ", this.mResultErrorStr, " origin msg : ", str2 });
+        showFailedResult(this.mResultErrorStr);
+        collectErrorCode(-10, this.mResultErrorStr);
+      }
+      paramMap.containsKey("version_tips");
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    case 2: 
-    default: 
-      return false;
-    case 3: 
-      if ("loginVerify".equals(this.jdField_b_of_type_JavaLangString))
+      if (i != 3)
       {
-        ReportController.a(this.app, "dc00898", "", "", "0X800AD2C", "0X800AD2C", 0, 0, "", "", "", "");
+        if (i != 4)
+        {
+          if (i != 5) {
+            return false;
+          }
+          QLog.d("qq_Identification.act", 1, "MSG_POST_FILE_TIME_OUT");
+          showFailedResult(HardCodeUtil.a(2131710306));
+          return false;
+        }
+        if ((!TextUtils.isEmpty(this.mNoticeText)) && (!this.isCameraOnPause.get())) {
+          showScanningTips(this.mNoticeText, this.mScanningData);
+        }
+        this.mHandler.sendEmptyMessageDelayed(4, this.DELAY_SET_NOTICE);
+        return false;
+      }
+      if ("loginVerify".equals(this.method))
+      {
+        ReportController.a(this.mRuntime, "dc00898", "", "", "0X800AD2C", "0X800AD2C", 0, 0, "", "", "", "");
         paramMessage = new Intent();
         paramMessage.setAction("com.tencent.mobileqq.InvitationWebViewPlugin");
+        paramMessage.putExtra("key_login_by_qr_face", true);
         paramMessage.setPackage(MobileQQ.getContext().getPackageName());
         sendBroadcast(paramMessage);
       }
       finish();
       return false;
-    case 1: 
-      QLog.d("qq_Identification.act", 1, "init time out");
-      a(false, 218);
-      return false;
-    case 4: 
-      if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())) {
-        a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilMap);
-      }
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(4, this.i);
-      return false;
     }
-    QLog.d("qq_Identification.act", 1, "MSG_POST_FILE_TIME_OUT");
-    b(HardCodeUtil.a(2131710325));
+    QLog.d("qq_Identification.act", 1, "init time out");
+    showYTInitFinish(false, 218);
     return false;
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
-    g();
+    updateCancelResult();
     return super.onBackEvent();
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i == 2131364259)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!"setFaceData".equals(this.jdField_b_of_type_JavaLangString))
+      if (!"setFaceData".equals(this.method))
       {
         QLog.d("qq_Identification.act", 1, "click cancel, method is not METHOD_SETTING_FACE_DATA");
-        g();
+        updateCancelResult();
       }
-      b("0X800A860");
+      reportByEntrance("0X800A860");
       finish();
-      continue;
-      b("0X800A866");
-      YtSDKKitFramework.getInstance().deInit();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQIdentifierCaptureView.onResume();
-      this.jdField_d_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      e();
     }
+    else if (i == 2131378854)
+    {
+      reportByEntrance("0X800A866");
+      YtSDKKitFramework.getInstance().deInit();
+      this.mCameraView.onResume();
+      this.isScaningFace.set(true);
+      showRetryView();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -939,17 +668,290 @@ public class QQIdentiferActivity
   public void onMultiWindowModeChanged(boolean paramBoolean)
   {
     super.onMultiWindowModeChanged(paramBoolean);
-    if ((paramBoolean) && (Build.VERSION.SDK_INT < 24)) {}
-    while (!paramBoolean) {
+    if ((paramBoolean) && (Build.VERSION.SDK_INT < 24)) {
       return;
     }
-    a(206, HardCodeUtil.a(2131710332));
-    finish();
+    if (paramBoolean)
+    {
+      setResult(206, HardCodeUtil.a(2131710313));
+      finish();
+    }
+  }
+  
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    paramCamera = paramCamera.getParameters().getPreviewSize();
+    if (!this.initYTFinish) {
+      return;
+    }
+    this.mLastPreviewData = paramArrayOfByte;
+    YtSDKKitFramework.getInstance().updateWithFrameData(paramArrayOfByte, paramCamera.width, paramCamera.height, 1);
+  }
+  
+  public void onRequestFinish(int paramInt, Bundle paramBundle)
+  {
+    this.uploading.set(false);
+    Object localObject;
+    int i;
+    if (paramBundle != null)
+    {
+      int j = paramBundle.getInt("ret", -1);
+      if ((j != -1) && (paramBundle.getBoolean("needRetry", false)))
+      {
+        localObject = this.mAllResults;
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append("|");
+      }
+      i = j;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("QQIdentifer onRequestFinish: ,ret=");
+        ((StringBuilder)localObject).append(j);
+        QLog.d("qq_Identification.act", 2, ((StringBuilder)localObject).toString());
+        i = j;
+      }
+    }
+    else
+    {
+      i = -1;
+    }
+    if (paramInt != 1)
+    {
+      if (paramBundle != null)
+      {
+        this.mResultErrorStr = paramBundle.getString("errMsg");
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("data", paramBundle);
+        setResult(-1, setAllResults((Intent)localObject));
+      }
+      else
+      {
+        this.mResultErrorStr = HardCodeUtil.a(2131710310);
+        setResult(-1, setAllResults(null));
+      }
+      this.mResultSucess = false;
+      this.mResultCanRetry = true;
+    }
+    else if (paramBundle != null)
+    {
+      boolean bool;
+      if (paramBundle.getInt("ret") == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.mResultSucess = bool;
+      this.mResultCanRetry = paramBundle.getBoolean("needRetry");
+      this.mResultErrorStr = paramBundle.getString("errMsg");
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("data", paramBundle);
+      paramBundle = setAllResults((Intent)localObject);
+      if (this.mResultSucess) {
+        paramBundle.putExtra("key_face_scan_result", true);
+      }
+      setResult(-1, paramBundle);
+    }
+    else
+    {
+      this.mResultSucess = false;
+      this.mResultCanRetry = true;
+      this.mResultErrorStr = HardCodeUtil.a(2131710302);
+      setResult(-1, setAllResults(null));
+    }
+    QLog.d("qq_Identification.act", 1, new Object[] { "onRequestFinish: code=", Integer.valueOf(paramInt), ",ret=", Integer.valueOf(i), "|", this.mResultErrorStr, " isSuccess : ", Boolean.valueOf(this.mResultSucess) });
+    this.mHandler.post(new QQIdentiferActivity.6(this));
+  }
+  
+  public void onUploadVideo()
+  {
+    this.uploading.set(true);
+    showUploadingFileView();
+  }
+  
+  public void showFailedResult(CharSequence paramCharSequence)
+  {
+    Object localObject = paramCharSequence;
+    if (paramCharSequence == null) {
+      localObject = HardCodeUtil.a(2131710310);
+    }
+    this.mCameraView.onPause();
+    this.isCameraOnPause.set(true);
+    paramCharSequence = this.isScaningFace;
+    int i = 0;
+    paramCharSequence.set(false);
+    this.mNoticeLayout.setVisibility(8);
+    this.mResultLayout.setVisibility(0);
+    this.mBtnLayout.setVisibility(0);
+    this.mInfoLayout.findViewById(2131378851).setVisibility(8);
+    this.mResultTv.setText((CharSequence)localObject);
+    this.mResultImg.setImageResource(2130840440);
+    this.mCircleView.a();
+    this.mCircleView.a(getResources().getColor(2131165462));
+    this.mCircleView.b(this.faceClear);
+    this.mMaskView.setVisibility(0);
+    this.mHandler.removeMessages(5);
+    this.isReflecting.set(false);
+    blueLastFrameAsync();
+    paramCharSequence = findViewById(2131378854);
+    if (!this.mResultCanRetry) {
+      i = 8;
+    }
+    paramCharSequence.setVisibility(i);
+    addWordingRecord(((CharSequence)localObject).toString());
+    onFailedResultReport();
+  }
+  
+  public void showRetryView()
+  {
+    this.mInfoLayout.findViewById(2131378851).setVisibility(8);
+    this.mResultLayout.setVisibility(8);
+    this.mBtnLayout.setVisibility(8);
+    this.mNoticeLayout.setVisibility(0);
+    this.mMaskView.setVisibility(8);
+    this.mBlurIv.setVisibility(8);
+    this.mCameraView.setVisibility(0);
+  }
+  
+  public void showScanningTips(CharSequence paramCharSequence, Map<String, Object> paramMap)
+  {
+    if ((this.mNoticeLayout.getVisibility() == 0) && (!this.isReflecting.get()))
+    {
+      this.mCameraTv.setText(paramCharSequence);
+      paramMap = paramMap.get("keyStateIdentify");
+      if ("statePass".equals(paramMap))
+      {
+        this.mCircleView.a(this.faceOk);
+        this.mCircleView.b(this.faceClear);
+      }
+      else if ("stateNotPass".equals(paramMap))
+      {
+        this.mCircleView.a(this.faceNo);
+        this.mCircleView.b(this.faceClear);
+      }
+      addWordingRecord(paramCharSequence.toString());
+      return;
+    }
+    this.mCircleView.b(this.faceClear);
+    if (this.isReflecting.get()) {
+      this.mCameraTv.setText(paramCharSequence);
+    }
+  }
+  
+  public void showSuccessResult()
+  {
+    this.mCameraView.onPause();
+    this.isCameraOnPause.set(true);
+    this.isScaningFace.set(false);
+    this.mNoticeLayout.setVisibility(8);
+    this.ytTips.setVisibility(0);
+    this.mInfoLayout.findViewById(2131378851).setVisibility(8);
+    this.mResultLayout.setVisibility(0);
+    this.mResultTv.setText(HardCodeUtil.a(2131710318));
+    this.mResultImg.setImageResource(2130840441);
+    this.mBtnLayout.setVisibility(0);
+    findViewById(2131378854).setVisibility(8);
+    this.mCircleView.a();
+    this.mCircleView.a(this.faceOk);
+    this.mCircleView.b(this.faceClear);
+    this.mHandler.removeMessages(5);
+    this.isReflecting.set(false);
+    if ("loginVerify".equals(this.method)) {
+      ReportController.b(null, "dc00898", "", "", "0X800A31A", "0X800A31A", 0, 0, "", "", "", "");
+    } else if ("setFaceData".equals(this.method)) {
+      ReportController.b(null, "dc00898", "", "", "0X800A31F", "0X800A31F", 0, 0, "", "", "", "");
+    } else if ("deleteFace".equals(this.method)) {
+      ReportController.b(null, "dc00898", "", "", "0X800AE96", "0X800AE96", 0, 0, "", "", "", "");
+    } else if ("changeSecureMobile".equals(this.method)) {
+      ReportController.b(null, "dc00898", "", "", "0X800AEC4", "0X800AEC4", 0, 0, "", "", "", "");
+    }
+    long l = System.currentTimeMillis() - this.mEnterTime;
+    if ("setFaceData".equals(this.method))
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800A861", "0X800A861", 0, 0, String.valueOf(l), "1", "", "");
+      return;
+    }
+    if ("loginVerify".equals(this.method))
+    {
+      ReportController.b(null, "dc00898", "", "", "0X800A861", "0X800A861", 0, 0, String.valueOf(l), "2", "", "");
+      return;
+    }
+    if ("identify".equals(this.method)) {
+      QQIdentiferUtil.a(this.mFaceConf.getAppConf(), "0X800B2C0");
+    }
+  }
+  
+  public void showTitleTips(CharSequence paramCharSequence)
+  {
+    this.mCameraErrorTv.setText(paramCharSequence);
+    addWordingRecord(paramCharSequence.toString());
+  }
+  
+  public void showUploadingFileView()
+  {
+    this.mCameraView.onPause();
+    this.isCameraOnPause.set(true);
+    this.isScaningFace.set(false);
+    this.mNoticeLayout.setVisibility(8);
+    this.mInfoLayout.findViewById(2131378851).setVisibility(0);
+    this.mMaskView.setVisibility(0);
+    this.mTitleProgressTv.setText(HardCodeUtil.a(2131710303));
+    findViewById(2131368859).setVisibility(8);
+    addWordingRecord(HardCodeUtil.a(2131710303));
+    this.mCircleView.a(this.faceClear);
+    this.mCircleView.b(this.faceOk);
+    this.mCircleView.a(1000);
+    blueLastFrameAsync();
+    this.mHandler.sendEmptyMessageDelayed(5, 60000L);
+  }
+  
+  public void showYTInitFinish(boolean paramBoolean, int paramInt)
+  {
+    this.mHandler.removeMessages(1);
+    if (paramBoolean)
+    {
+      this.mNoticeLayout.setVisibility(4);
+      this.mInfoLayout.findViewById(2131378851).setVisibility(8);
+      if (!TextUtils.isEmpty(getAppWording()))
+      {
+        String str = getAppWording();
+        showTitleTips(str);
+        addWordingRecord(str);
+      }
+      this.initYTFinish = true;
+      this.mMaskView.setVisibility(8);
+      findViewById(2131364259).post(new QQIdentiferActivity.8(this));
+      return;
+    }
+    setResult(paramInt, this.mResultErrorStr);
+    showFailedResult(HardCodeUtil.a(2131710319));
+  }
+  
+  public void showYTSdkInitStart()
+  {
+    this.mNoticeLayout.setVisibility(8);
+    this.mInfoLayout.findViewById(2131378851).setVisibility(0);
+    this.mMaskView.setVisibility(0);
+    this.mTitleProgressTv.setText(HardCodeUtil.a(2131710309));
+    addWordingRecord(HardCodeUtil.a(2131710309));
+  }
+  
+  public void updateLightReflect(ColorMatrixColorFilter paramColorMatrixColorFilter)
+  {
+    this.mYTReflectLayout.setColorMatrixColorFilter(paramColorMatrixColorFilter);
+    this.mCircleView.a(this.faceClear);
+    this.isReflecting.set(true);
+    long l1 = System.currentTimeMillis();
+    long l2 = this.reflectTimeDelta;
+    if (l2 != 0L) {
+      QLog.d("qq_Identification.act", 1, new Object[] { "reflect delta time is : ", Long.valueOf(l1 - l2) });
+    }
+    this.reflectTimeDelta = l1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity
  * JD-Core Version:    0.7.0.1
  */

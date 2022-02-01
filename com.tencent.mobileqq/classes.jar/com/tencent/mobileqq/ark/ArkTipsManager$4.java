@@ -12,14 +12,15 @@ class ArkTipsManager$4
     if ((ArkTipsManager.a(this.this$0) != null) && (this.a == ArkTipsManager.a(this.this$0).b))
     {
       ArkTipsManager.a(this.this$0, this.a);
-      ArkTipsManager.a(this.this$0, new WeakReference(ArkTipsManager.a(this.this$0).a));
+      ArkTipsManager localArkTipsManager = this.this$0;
+      ArkTipsManager.a(localArkTipsManager, new WeakReference(ArkTipsManager.a(localArkTipsManager).a));
       this.this$0.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkTipsManager.4
  * JD-Core Version:    0.7.0.1
  */

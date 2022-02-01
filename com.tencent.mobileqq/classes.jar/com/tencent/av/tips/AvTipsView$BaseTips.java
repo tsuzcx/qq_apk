@@ -12,14 +12,15 @@ abstract class AvTipsView$BaseTips
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localLinearLayout != null) {
+      localLinearLayout.setVisibility(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.tips.AvTipsView.BaseTips
  * JD-Core Version:    0.7.0.1
  */

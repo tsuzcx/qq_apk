@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class QQCircleBase$StudentInfo
   extends MessageMicro<StudentInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 58, 66, 72, 82, 90, 98, 104 }, new String[] { "name", "schoolName", "collegeName", "education", "degree", "enrollmentTime", "email", "evidencePicturies", "optime", "id", "schoolLogo", "collegeID", "graduationTime" }, new Object[] { "", "", "", Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(0), "", "", Long.valueOf(0L), "", "", "", Integer.valueOf(0) }, StudentInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField collegeID = PBField.initString("");
   public final PBStringField collegeName = PBField.initString("");
   public final PBEnumField degree = PBField.initEnum(1);
@@ -26,10 +26,17 @@ public final class QQCircleBase$StudentInfo
   public final PBInt64Field optime = PBField.initInt64(0L);
   public final PBStringField schoolLogo = PBField.initString("");
   public final PBStringField schoolName = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 58, 66, 72, 82, 90, 98, 104 }, new String[] { "name", "schoolName", "collegeName", "education", "degree", "enrollmentTime", "email", "evidencePicturies", "optime", "id", "schoolLogo", "collegeID", "graduationTime" }, new Object[] { "", "", "", localInteger2, localInteger2, localInteger1, "", "", Long.valueOf(0L), "", "", "", localInteger1 }, StudentInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleBase.StudentInfo
  * JD-Core Version:    0.7.0.1
  */

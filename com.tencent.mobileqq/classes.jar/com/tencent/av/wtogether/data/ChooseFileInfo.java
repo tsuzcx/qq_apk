@@ -72,137 +72,129 @@ public class ChooseFileInfo
   
   public int a()
   {
-    if (this.jdField_b_of_type_Int == 0) {
+    int i = this.jdField_b_of_type_Int;
+    if (i == 0) {
       return 1;
     }
-    if (this.jdField_b_of_type_Int == 1) {
+    if (i == 1) {
       return 2;
-    }
-    if (this.jdField_b_of_type_Int == 4) {
-      return 3;
     }
     return 3;
   }
   
   public String a()
   {
-    String str = "";
-    if (this.jdField_b_of_type_Int == 0) {
-      str = this.jdField_d_of_type_JavaLangString;
+    int i = this.jdField_b_of_type_Int;
+    if (i == 0) {
+      return this.jdField_d_of_type_JavaLangString;
     }
-    do
-    {
-      return str;
-      if (this.jdField_b_of_type_Int == 1) {
-        return this.jdField_d_of_type_JavaLangString;
-      }
-    } while (this.jdField_b_of_type_Int != 4);
-    return this.jdField_d_of_type_JavaLangString;
+    if (i == 1) {
+      return this.jdField_d_of_type_JavaLangString;
+    }
+    if (i == 4) {
+      return this.jdField_d_of_type_JavaLangString;
+    }
+    return "";
   }
   
   public WTogetherCommon.VideoInfoReq a()
   {
     WTogetherCommon.VideoInfoReq localVideoInfoReq = new WTogetherCommon.VideoInfoReq();
-    Object localObject;
-    if ((this.jdField_b_of_type_Int == 0) || (this.jdField_b_of_type_Int == 1))
+    int i = this.jdField_b_of_type_Int;
+    if ((i != 0) && (i != 1))
     {
-      localObject = new WTogetherCommon.ForwardReq();
-      ((WTogetherCommon.ForwardReq)localObject).src_uin.set(this.jdField_a_of_type_Long);
-      ((WTogetherCommon.ForwardReq)localObject).src_group.set(this.jdField_b_of_type_Long);
-      ((WTogetherCommon.ForwardReq)localObject).src_svcid.set(this.jdField_c_of_type_Int);
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        ((WTogetherCommon.ForwardReq)localObject).src_parentfolder.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_JavaLangString.getBytes()));
+      if (i == 2)
+      {
+        localObject = new WTogetherCommon.DirectUrlInfo();
+        if (this.jdField_d_of_type_JavaLangString != null) {
+          ((WTogetherCommon.DirectUrlInfo)localObject).file_name.set(this.jdField_d_of_type_JavaLangString);
+        }
+        if (this.jdField_e_of_type_JavaLangString != null) {
+          ((WTogetherCommon.DirectUrlInfo)localObject).url.set(this.jdField_e_of_type_JavaLangString);
+        }
+        if (this.f != null) {
+          ((WTogetherCommon.DirectUrlInfo)localObject).cookie.set(this.f);
+        }
+        ((WTogetherCommon.DirectUrlInfo)localObject).media_format.set(this.jdField_e_of_type_Int);
+        localVideoInfoReq.video_src_type.set(1);
+        localVideoInfoReq.direct_url_info.set((MessageMicro)localObject);
+        return localVideoInfoReq;
       }
-      if (this.jdField_b_of_type_JavaLangString != null) {
-        ((WTogetherCommon.ForwardReq)localObject).src_uuid.set(ByteStringMicro.copyFrom(this.jdField_b_of_type_JavaLangString.getBytes()));
-      }
-      if (this.jdField_c_of_type_JavaLangString != null) {
-        ((WTogetherCommon.ForwardReq)localObject).file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(this.jdField_c_of_type_JavaLangString)));
-      }
-      ((WTogetherCommon.ForwardReq)localObject).dst_uin.set(this.jdField_c_of_type_Long);
-      ((WTogetherCommon.ForwardReq)localObject).file_size.set(this.jdField_d_of_type_Long);
-      if (this.jdField_d_of_type_JavaLangString != null) {
-        ((WTogetherCommon.ForwardReq)localObject).file_name.set(this.jdField_d_of_type_JavaLangString);
-      }
-      ((WTogetherCommon.ForwardReq)localObject).client_type.set(104);
-      localVideoInfoReq.video_src_type.set(0);
-      localVideoInfoReq.forward_req.set((MessageMicro)localObject);
+      localVideoInfoReq.video_src_type.set(2);
+      localVideoInfoReq.online_resource_id.set(this.g);
       return localVideoInfoReq;
     }
-    if (this.jdField_b_of_type_Int == 2)
-    {
-      localObject = new WTogetherCommon.DirectUrlInfo();
-      if (this.jdField_d_of_type_JavaLangString != null) {
-        ((WTogetherCommon.DirectUrlInfo)localObject).file_name.set(this.jdField_d_of_type_JavaLangString);
-      }
-      if (this.jdField_e_of_type_JavaLangString != null) {
-        ((WTogetherCommon.DirectUrlInfo)localObject).url.set(this.jdField_e_of_type_JavaLangString);
-      }
-      if (this.f != null) {
-        ((WTogetherCommon.DirectUrlInfo)localObject).cookie.set(this.f);
-      }
-      ((WTogetherCommon.DirectUrlInfo)localObject).media_format.set(this.jdField_e_of_type_Int);
-      localVideoInfoReq.video_src_type.set(1);
-      localVideoInfoReq.direct_url_info.set((MessageMicro)localObject);
-      return localVideoInfoReq;
+    Object localObject = new WTogetherCommon.ForwardReq();
+    ((WTogetherCommon.ForwardReq)localObject).src_uin.set(this.jdField_a_of_type_Long);
+    ((WTogetherCommon.ForwardReq)localObject).src_group.set(this.jdField_b_of_type_Long);
+    ((WTogetherCommon.ForwardReq)localObject).src_svcid.set(this.jdField_c_of_type_Int);
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      ((WTogetherCommon.ForwardReq)localObject).src_parentfolder.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_JavaLangString.getBytes()));
     }
-    localVideoInfoReq.video_src_type.set(2);
-    localVideoInfoReq.online_resource_id.set(this.g);
+    if (this.jdField_b_of_type_JavaLangString != null) {
+      ((WTogetherCommon.ForwardReq)localObject).src_uuid.set(ByteStringMicro.copyFrom(this.jdField_b_of_type_JavaLangString.getBytes()));
+    }
+    if (this.jdField_c_of_type_JavaLangString != null) {
+      ((WTogetherCommon.ForwardReq)localObject).file_md5.set(ByteStringMicro.copyFrom(HexUtil.hexStr2Bytes(this.jdField_c_of_type_JavaLangString)));
+    }
+    ((WTogetherCommon.ForwardReq)localObject).dst_uin.set(this.jdField_c_of_type_Long);
+    ((WTogetherCommon.ForwardReq)localObject).file_size.set(this.jdField_d_of_type_Long);
+    if (this.jdField_d_of_type_JavaLangString != null) {
+      ((WTogetherCommon.ForwardReq)localObject).file_name.set(this.jdField_d_of_type_JavaLangString);
+    }
+    ((WTogetherCommon.ForwardReq)localObject).client_type.set(104);
+    localVideoInfoReq.video_src_type.set(0);
+    localVideoInfoReq.forward_req.set((MessageMicro)localObject);
     return localVideoInfoReq;
   }
   
   public String b()
   {
-    String str = "";
-    if (this.jdField_b_of_type_Int == 0) {
-      str = this.jdField_b_of_type_JavaLangString;
+    int i = this.jdField_b_of_type_Int;
+    if (i == 0) {
+      return this.jdField_b_of_type_JavaLangString;
     }
-    do
-    {
-      return str;
-      if (this.jdField_b_of_type_Int == 1) {
-        return this.jdField_b_of_type_JavaLangString;
-      }
-    } while (this.jdField_b_of_type_Int != 4);
-    return this.g;
+    if (i == 1) {
+      return this.jdField_b_of_type_JavaLangString;
+    }
+    if (i == 4) {
+      return this.g;
+    }
+    return "";
   }
   
   public String c()
   {
-    String str2 = "0";
-    String str1 = str2;
-    if (this.jdField_b_of_type_Int == 4)
+    if ((this.jdField_b_of_type_Int == 4) && (!TextUtils.isEmpty(this.g)))
     {
-      str1 = str2;
-      if (!TextUtils.isEmpty(this.g))
+      localObject = this.g.split("@");
+      if (localObject.length >= 2)
       {
-        String[] arrayOfString = this.g.split("@");
-        str1 = str2;
-        if (arrayOfString.length >= 2) {
-          str1 = arrayOfString[(arrayOfString.length - 1)];
-        }
+        localObject = localObject[(localObject.length - 1)];
+        break label47;
       }
     }
-    if (TextUtils.isDigitsOnly(str1)) {
-      return str1;
+    Object localObject = "0";
+    label47:
+    if (TextUtils.isDigitsOnly((CharSequence)localObject)) {
+      return localObject;
     }
     return "0";
   }
   
   public String d()
   {
-    String str = "0";
-    if (this.jdField_a_of_type_Int == 1) {
-      str = "1";
+    int i = this.jdField_a_of_type_Int;
+    if (i == 1) {
+      return "1";
     }
-    do
-    {
-      return str;
-      if (this.jdField_a_of_type_Int == 3) {
-        return "2";
-      }
-    } while (this.jdField_a_of_type_Int != 4);
-    return "3";
+    if (i == 3) {
+      return "2";
+    }
+    if (i == 4) {
+      return "3";
+    }
+    return "0";
   }
   
   public int describeContents()
@@ -216,43 +208,53 @@ public class ChooseFileInfo
     {
       paramObject = (ChooseFileInfo)paramObject;
       if (paramObject == this) {}
+      int i;
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return true;
-              if (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) {
-                break label237;
-              }
-              if ((this.jdField_b_of_type_Int != 0) && (this.jdField_b_of_type_Int != 1)) {
-                break;
-              }
-            } while ((TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)));
-            return false;
-            if (this.jdField_b_of_type_Int != 2) {
-              break;
-            }
-          } while ((TextUtils.equals(this.jdField_e_of_type_JavaLangString, paramObject.jdField_e_of_type_JavaLangString)) && (TextUtils.equals(this.f, paramObject.f)) && (TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)));
-          return false;
-          if (this.jdField_b_of_type_Int != 4) {
-            break;
-          }
-        } while ((TextUtils.equals(this.g, paramObject.g)) && (TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)));
-        return false;
-      } while ((TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_e_of_type_JavaLangString, paramObject.jdField_e_of_type_JavaLangString)) && (TextUtils.equals(this.f, paramObject.f)) && (TextUtils.equals(this.g, paramObject.g)));
-      return false;
+        return true;
+        i = this.jdField_b_of_type_Int;
+      } while ((i == paramObject.jdField_b_of_type_Int) && ((i != 0) && (i != 1) ? i == 2 ? (!TextUtils.equals(this.jdField_e_of_type_JavaLangString, paramObject.jdField_e_of_type_JavaLangString)) || (!TextUtils.equals(this.f, paramObject.f)) || (!TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) : i == 4 ? (!TextUtils.equals(this.g, paramObject.g)) || (!TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) : (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) || (TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) || (TextUtils.equals(this.jdField_e_of_type_JavaLangString, paramObject.jdField_e_of_type_JavaLangString)) || (TextUtils.equals(this.f, paramObject.f)) || (TextUtils.equals(this.g, paramObject.g)) : (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString))));
     }
-    label237:
     return false;
   }
   
   public String toString()
   {
-    return "ChooseFile{entrance: " + this.jdField_a_of_type_Int + ", type: " + this.jdField_b_of_type_Int + ", srcUin: " + this.jdField_a_of_type_Long + ", srcGroup: " + this.jdField_b_of_type_Long + ", busId: " + this.jdField_c_of_type_Int + ", parentFolder: " + this.jdField_a_of_type_JavaLangString + ", uuid: " + this.jdField_b_of_type_JavaLangString + ", fileMD5: " + this.jdField_c_of_type_JavaLangString + ", destUin: " + this.jdField_c_of_type_Long + ", fileSize: " + this.jdField_d_of_type_Long + ", fileName: " + this.jdField_d_of_type_JavaLangString + ", url: " + this.jdField_e_of_type_JavaLangString + ", cookie: " + this.f + ", matchId: " + this.g + ", isPay: " + this.jdField_d_of_type_Int + ", mediaFormat: " + this.jdField_e_of_type_Int + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ChooseFile{entrance: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", type: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", srcUin: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", srcGroup: ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", busId: ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", parentFolder: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", uuid: ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", fileMD5: ");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", destUin: ");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", fileSize: ");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(", fileName: ");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(", url: ");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(", cookie: ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", matchId: ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", isPay: ");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(", mediaFormat: ");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -277,7 +279,7 @@ public class ChooseFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.data.ChooseFileInfo
  * JD-Core Version:    0.7.0.1
  */

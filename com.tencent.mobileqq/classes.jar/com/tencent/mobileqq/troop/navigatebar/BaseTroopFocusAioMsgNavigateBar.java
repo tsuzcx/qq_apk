@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.navigatebar;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
@@ -19,122 +19,119 @@ import java.util.List;
 public abstract class BaseTroopFocusAioMsgNavigateBar
   extends BaseTroopAioMsgMultiNavigateBarDelegate
 {
-  public BaseTroopFocusAioMsgNavigateBar(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public BaseTroopFocusAioMsgNavigateBar(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
   }
   
   @Nullable
   public BaseTroopAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
     TroopAioAgent.Message localMessage = TroopAioAgent.Message.a(paramInt1, paramLong1, paramInt2);
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    Object localObject;
-    if (!ListUtils.a(paramList))
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().d(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, paramLong1);
+    boolean bool1 = ListUtils.a(paramList);
+    Object localObject1 = "";
+    boolean bool2 = false;
+    Object localObject2;
+    if (!bool1)
     {
-      localObject = this.jdField_a_of_type_AndroidContentContext;
-      if (paramInt1 == 17)
-      {
-        paramInt1 = 2131694393;
-        if (paramList.size() <= 99) {
-          break label367;
-        }
+      localObject2 = this.jdField_a_of_type_AndroidContentContext;
+      if (paramInt1 == 17) {
+        paramInt1 = 2131694358;
+      } else {
+        paramInt1 = 2131699495;
+      }
+      if (paramList.size() > 99) {
         paramObject = "99+";
-        label73:
-        paramObject = ((Context)localObject).getString(paramInt1, new Object[] { paramObject });
-        localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-        if (localObject == null) {
-          break label493;
+      } else {
+        paramObject = Integer.valueOf(paramList.size());
+      }
+      localObject2 = ((Context)localObject2).getString(paramInt1, new Object[] { paramObject });
+      paramObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      if (paramObject != null)
+      {
+        paramObject = paramObject.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+        if ((paramObject != null) && (paramObject.hasOrgs()))
+        {
+          paramInt1 = 1;
+          break label175;
         }
-        localObject = ((TroopManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-        if ((localObject == null) || (!((TroopInfo)localObject).hasOrgs())) {
-          break label381;
+      }
+      paramInt1 = 0;
+      label175:
+      paramObject = localObject2;
+      if (paramInt1 != 0) {
+        if (paramList.size() == 1)
+        {
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_work", "", "use", "focus", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+          paramObject = localObject2;
         }
-        paramInt1 = 1;
+        else
+        {
+          paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+          String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramList.size());
+          localStringBuilder.append("");
+          ReportController.b(paramObject, "P_CliOper", "Grp_work", "", "use", "msg_owner", 0, 0, str, localStringBuilder.toString(), "", "");
+          paramObject = localObject2;
+        }
       }
     }
-    for (;;)
+    else
     {
-      label139:
-      label185:
-      label188:
-      label236:
-      boolean bool1;
-      if (paramInt1 != 0)
+      paramObject = this.jdField_a_of_type_AndroidContentContext.getString(2131719200);
+    }
+    paramList = paramObject;
+    if (MessageForQQWalletMsg.isRedPacketMsg(localMessageRecord))
+    {
+      paramList = (MessageForQQWalletMsg)localMessageRecord;
+      if ((paramList.messageType != 7) && (paramList.messageType != 8))
       {
-        if (paramList.size() == 1) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_work", "", "use", "focus", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-        }
+        paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131718742);
+        localMessage.a = true;
       }
       else
       {
-        paramList = paramObject;
-        if (!MessageForQQWalletMsg.isRedPacketMsg(localMessageRecord)) {
-          break label472;
-        }
-        paramList = (MessageForQQWalletMsg)localMessageRecord;
-        if ((paramList.messageType != 7) && (paramList.messageType != 8)) {
-          break label456;
-        }
-        paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131719042);
+        paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131718758);
         localMessage.b = true;
-        if ((localMessageRecord == null) || (!a(localMessageRecord, paramLong2, paramLong3))) {
-          break label483;
-        }
-        paramObject = localMessageRecord.senderuin;
-        bool1 = true;
       }
-      for (;;)
-      {
-        StringBuilder localStringBuilder;
-        if (QLog.isColorLevel())
-        {
-          localObject = this.jdField_a_of_type_JavaLangString + ".troop.special_msg.special_attention";
-          localStringBuilder = new StringBuilder().append("需要定位的第一条消息是否已经拉到本地：");
-          if (localMessageRecord == null) {
-            break label475;
-          }
-        }
-        label456:
-        label472:
-        label475:
-        for (boolean bool2 = true;; bool2 = false)
-        {
-          QLog.d((String)localObject, 2, bool2 + ", isShow = " + bool1);
-          if (!bool1) {
-            break label481;
-          }
-          return new BaseTroopAioMsgNavigateBarDelegate.Entity(true, paramList, localMessage, paramObject);
-          paramInt1 = 2131699390;
-          break;
-          label367:
-          paramObject = Integer.valueOf(paramList.size());
-          break label73;
-          label381:
-          paramInt1 = 0;
-          break label139;
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_work", "", "use", "msg_owner", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramList.size() + "", "", "");
-          break label185;
-          paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131719482);
-          break label188;
-          paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131719026);
-          localMessage.a = true;
-          break label236;
-        }
-        label481:
-        return null;
-        label483:
-        bool1 = false;
-        paramObject = "";
-      }
-      label493:
-      paramInt1 = 0;
     }
+    if ((localMessageRecord != null) && (a(localMessageRecord, paramLong2, paramLong3)))
+    {
+      paramObject = localMessageRecord.senderuin;
+      bool1 = true;
+    }
+    else
+    {
+      bool1 = false;
+      paramObject = localObject1;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(".troop.special_msg.special_attention");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("需要定位的第一条消息是否已经拉到本地：");
+      if (localMessageRecord != null) {
+        bool2 = true;
+      }
+      ((StringBuilder)localObject2).append(bool2);
+      ((StringBuilder)localObject2).append(", isShow = ");
+      ((StringBuilder)localObject2).append(bool1);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    if (bool1) {
+      return new BaseTroopAioMsgNavigateBarDelegate.Entity(true, paramList, localMessage, paramObject);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.BaseTroopFocusAioMsgNavigateBar
  * JD-Core Version:    0.7.0.1
  */

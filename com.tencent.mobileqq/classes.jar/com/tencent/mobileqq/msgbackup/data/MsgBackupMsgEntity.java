@@ -25,25 +25,29 @@ public class MsgBackupMsgEntity
     return "msg";
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
     MsgBackupUtil.a(this);
     try
     {
-      if (this.extraData != null) {
-        this.extraDataStr = new String(this.extraData, "utf-8");
+      if (this.extraData == null) {
+        break label50;
       }
+      this.extraDataStr = new String(this.extraData, "utf-8");
       return;
     }
     catch (Exception localException)
     {
-      MsgBackupUtil.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
-      this.extraDataStr = "";
+      label33:
+      label50:
+      break label33;
     }
+    MsgBackupUtil.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
+    this.extraDataStr = "";
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
     if (!TextUtils.isEmpty(this.extraDataStr)) {
@@ -54,7 +58,7 @@ public class MsgBackupMsgEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupMsgEntity
  * JD-Core Version:    0.7.0.1
  */

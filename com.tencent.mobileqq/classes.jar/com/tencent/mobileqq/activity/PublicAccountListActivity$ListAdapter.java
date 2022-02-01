@@ -11,7 +11,7 @@ import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.adapter.CharDividedFacePreloadBaseAdapter;
 import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
@@ -43,111 +43,123 @@ public class PublicAccountListActivity$ListAdapter
   private void b()
   {
     this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.b == null) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.b == null) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.b.iterator();
+    char c;
+    int j;
     for (;;)
     {
-      return;
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.b.iterator();
-      label89:
-      int i;
-      while (((Iterator)localObject2).hasNext())
+      boolean bool = localIterator.hasNext();
+      c = 'A';
+      j = 0;
+      String str = "#";
+      if (!bool) {
+        break;
+      }
+      PublicAccountListActivity.InnerPAInfo localInnerPAInfo = (PublicAccountListActivity.InnerPAInfo)localIterator.next();
+      if (!PublicAccountListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity, localInnerPAInfo))
       {
-        PublicAccountListActivity.InnerPAInfo localInnerPAInfo = (PublicAccountListActivity.InnerPAInfo)((Iterator)localObject2).next();
-        if (!PublicAccountListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity, localInnerPAInfo))
+        if ((localInnerPAInfo.jdField_a_of_type_JavaLangString != null) && (localInnerPAInfo.jdField_a_of_type_JavaLangString.length() != 0)) {
+          localObject1 = localInnerPAInfo.jdField_a_of_type_JavaLangString.substring(0, 1);
+        } else {
+          localObject1 = "#";
+        }
+        i = ((String)localObject1).charAt(0);
+        if ((65 > i) || (i > 90))
         {
-          if ((localInnerPAInfo.jdField_a_of_type_JavaLangString == null) || (localInnerPAInfo.jdField_a_of_type_JavaLangString.length() == 0))
+          localObject2 = str;
+          if (97 <= i)
           {
-            localObject1 = "#";
-            i = ((String)localObject1).charAt(0);
-            if (((65 > i) || (i > 90)) && ((97 > i) || (i > 122))) {
-              break label194;
-            }
-          }
-          label194:
-          for (localObject1 = ((String)localObject1).toUpperCase();; localObject1 = "#")
-          {
-            if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1) == null) {
-              this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, new ArrayList());
-            }
-            ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1)).add(localInnerPAInfo);
-            break;
-            localObject1 = localInnerPAInfo.jdField_a_of_type_JavaLangString.substring(0, 1);
-            break label89;
+            localObject2 = str;
+            if (i > 122) {}
           }
         }
-      }
-      Object localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-      this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-      for (char c = 'A'; c <= 'Z'; c = (char)(c + '\001')) {
-        if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null)
+        else
         {
-          localObject2 = (List)((LinkedHashMap)localObject1).get(String.valueOf(c));
-          Collections.sort((List)localObject2, PublicAccountListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity));
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), localObject2);
+          localObject2 = ((String)localObject1).toUpperCase();
         }
+        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2) == null) {
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject2, new ArrayList());
+        }
+        ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2)).add(localInnerPAInfo);
       }
-      if (((LinkedHashMap)localObject1).get("#") != null)
+    }
+    Object localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap;
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    while (c <= 'Z')
+    {
+      if (((LinkedHashMap)localObject1).get(String.valueOf(c)) != null)
       {
-        localObject2 = (List)((LinkedHashMap)localObject1).get("#");
+        localObject2 = (List)((LinkedHashMap)localObject1).get(String.valueOf(c));
         Collections.sort((List)localObject2, PublicAccountListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity));
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", localObject2);
+        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(String.valueOf(c), localObject2);
       }
-      ((LinkedHashMap)localObject1).clear();
-      this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
-      this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
-      localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-      if (this.jdField_a_of_type_ArrayOfInt.length != 0)
-      {
-        this.jdField_a_of_type_ArrayOfInt[0] = 0;
-        i = 1;
-        while (i < this.jdField_a_of_type_ArrayOfInt.length)
-        {
-          localObject2 = this.jdField_a_of_type_ArrayOfInt;
-          int j = localObject2[i];
-          int k = this.jdField_a_of_type_ArrayOfInt[(i - 1)];
-          localObject2[i] = (((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + k + 1 + j);
-          i += 1;
-        }
-        localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-        i = 0;
-        while (((Iterator)localObject1).hasNext())
-        {
-          this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
-          i += 1;
-        }
+      c = (char)(c + '\001');
+    }
+    if (((LinkedHashMap)localObject1).get("#") != null)
+    {
+      localObject2 = (List)((LinkedHashMap)localObject1).get("#");
+      Collections.sort((List)localObject2, PublicAccountListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity));
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("#", localObject2);
+    }
+    ((LinkedHashMap)localObject1).clear();
+    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size()];
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_ArrayOfInt.length];
+    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Object localObject2 = this.jdField_a_of_type_ArrayOfInt;
+    if (localObject2.length == 0) {
+      return;
+    }
+    localObject2[0] = 0;
+    int i = 1;
+    for (;;)
+    {
+      localObject2 = this.jdField_a_of_type_ArrayOfInt;
+      if (i >= localObject2.length) {
+        break;
       }
+      localObject2[i] += localObject2[(i - 1)] + ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(((Iterator)localObject1).next())).size() + 1;
+      i += 1;
+    }
+    localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    i = j;
+    while (((Iterator)localObject1).hasNext())
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[i] = ((String)((Iterator)localObject1).next());
+      i += 1;
     }
   }
   
   public int a()
   {
-    return 2131559435;
+    return 2131559309;
   }
   
   public int a(String paramString)
   {
-    int i;
     if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
     {
-      i = 0;
-      if (i >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-        break label53;
-      }
-      if (!this.jdField_a_of_type_ArrayOfJavaLangString[i].equals(paramString)) {}
-    }
-    for (;;)
-    {
-      if (i >= 0)
+      int i = 0;
+      for (;;)
       {
-        return this.jdField_a_of_type_ArrayOfInt[i];
+        String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+        if (i >= arrayOfString.length) {
+          break;
+        }
+        if (arrayOfString[i].equals(paramString)) {
+          break label42;
+        }
         i += 1;
-        break;
       }
-      return -1;
-      return -1;
-      label53:
       i = -1;
+      label42:
+      if (i >= 0) {
+        return this.jdField_a_of_type_ArrayOfInt[i];
+      }
     }
+    return -1;
   }
   
   public void a()
@@ -163,10 +175,11 @@ public class PublicAccountListActivity$ListAdapter
     if (i < 0) {
       paramInt = -(i + 1) - 1;
     }
-    if (paramInt >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
+    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    if (paramInt >= arrayOfString.length) {
       return;
     }
-    ((TextView)paramView).setText(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+    ((TextView)paramView).setText(arrayOfString[paramInt]);
   }
   
   public boolean a(int paramInt)
@@ -176,11 +189,14 @@ public class PublicAccountListActivity$ListAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_ArrayOfInt.length == 0) {
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    if (localObject.length == 0) {
       return 0;
     }
-    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1)];
-    return ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_ArrayOfJavaLangString.length - 1)])).size() + i + 1;
+    int i = localObject[(localObject.length - 1)];
+    localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap;
+    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    return i + ((List)((LinkedHashMap)localObject).get(arrayOfString[(arrayOfString.length - 1)])).size() + 1;
   }
   
   public Object getItem(int paramInt)
@@ -201,109 +217,117 @@ public class PublicAccountListActivity$ListAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int i = Arrays.binarySearch(this.jdField_a_of_type_ArrayOfInt, paramInt);
-    PublicAccountListActivity.PAViewHolder localPAViewHolder;
+    View localView;
     Object localObject;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559740, paramViewGroup, false);
-      localPAViewHolder = new PublicAccountListActivity.PAViewHolder();
-      localPAViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368603));
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364322));
-      localPAViewHolder.d = ((TextView)paramView.findViewById(2131379092));
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373646));
-      localPAViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373629));
-      localPAViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373656));
-      localPAViewHolder.e = ((TextView)paramView.findViewById(2131379094));
-      localPAViewHolder.f = ((TextView)paramView.findViewById(2131380419));
-      localPAViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131373643);
-      localPAViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364294));
-      paramView.setTag(localPAViewHolder);
-      if (i >= 0) {
-        break label764;
-      }
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559616, paramViewGroup, false);
+      paramView = new PublicAccountListActivity.PAViewHolder();
+      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368343));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364234));
+      paramView.d = ((TextView)localView.findViewById(2131378461));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373219));
+      paramView.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373202));
+      paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373229));
+      paramView.e = ((TextView)localView.findViewById(2131378463));
+      paramView.f = ((TextView)localView.findViewById(2131379732));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131373216);
+      paramView.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364206));
+      localView.setTag(paramView);
+    }
+    else
+    {
+      localObject = (PublicAccountListActivity.PAViewHolder)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+    }
+    if (i < 0)
+    {
       i = -(i + 1) - 1;
       localObject = (PublicAccountListActivity.InnerPAInfo)((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(this.jdField_a_of_type_ArrayOfJavaLangString[i])).get(paramInt - this.jdField_a_of_type_ArrayOfInt[i] - 1);
-      localPAViewHolder.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity$InnerPAInfo = ((PublicAccountListActivity.InnerPAInfo)localObject);
-      localPAViewHolder.jdField_a_of_type_JavaLangString = String.valueOf(((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.uin);
-      localPAViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      localPAViewHolder.f.setVisibility(8);
-      localPAViewHolder.d.setVisibility(0);
-      localPAViewHolder.d.setText(((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name);
-      if (((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.certifiedGrade <= 0L) {
-        break label703;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+      paramView.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity$InnerPAInfo = ((PublicAccountListActivity.InnerPAInfo)localObject);
+      paramView.jdField_a_of_type_JavaLangString = String.valueOf(((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.uin);
+      paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramView.f.setVisibility(8);
+      paramView.d.setVisibility(0);
+      paramView.d.setText(((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name);
+      if (((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.certifiedGrade > 0L)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getResources().getDrawable(2130841947);
-        this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.dpToPx(15.0F), ImmersiveUtils.dpToPx(15.0F));
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+        {
+          PublicAccountListActivity localPublicAccountListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity;
+          localPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localPublicAccountListActivity.getResources().getDrawable(2130841838);
+          this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.dpToPx(15.0F), ImmersiveUtils.dpToPx(15.0F));
+        }
+        ThemeUtil.setThemeFilter(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
+        paramView.d.setCompoundDrawables(null, null, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
       }
-      ThemeUtil.setThemeFilter(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
-      localPAViewHolder.d.setCompoundDrawables(null, null, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
-      label398:
-      localPAViewHolder.e.setText(((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.summary);
-      localPAViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(super.a(localPAViewHolder.jdField_a_of_type_JavaLangString));
-      boolean bool = false;
+      else
+      {
+        paramView.d.setCompoundDrawables(null, null, null, null);
+      }
+      paramView.e.setText(((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.summary);
+      paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(super.a(paramView.jdField_a_of_type_JavaLangString));
+      boolean bool;
       if (((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.extendType == 2) {
         bool = CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.app, ((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin(), 1024);
+      } else {
+        bool = false;
       }
-      if (!bool) {
-        break label718;
+      if (bool)
+      {
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setTag(-1, ((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin());
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setTag(-2, ((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name);
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       }
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(-1, ((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.getUin());
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(-2, ((PublicAccountListActivity.InnerPAInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name);
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      label533:
+      else
+      {
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setTag(-1, "");
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setTag(-2, "");
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      }
       if (!bool)
       {
-        localPAViewHolder.jdField_b_of_type_AndroidWidgetImageView.setTag(-1, "");
-        localPAViewHolder.jdField_b_of_type_AndroidWidgetImageView.setTag(-2, "");
-        localPAViewHolder.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(null);
-        localPAViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+        paramView.jdField_b_of_type_AndroidWidgetImageView.setTag(-1, "");
+        paramView.jdField_b_of_type_AndroidWidgetImageView.setTag(-2, "");
+        paramView.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(null);
+        paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
       }
-      localPAViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      localPAViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramView.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       if (AppSetting.d)
       {
         localObject = new StringBuilder(24);
-        ((StringBuilder)localObject).append(localPAViewHolder.d.getText()).append(" 简介 ").append(localPAViewHolder.e.getText());
-        paramView.setContentDescription((CharSequence)localObject);
-        paramView.setFocusable(true);
-        paramView.setFocusableInTouchMode(true);
+        ((StringBuilder)localObject).append(paramView.d.getText());
+        ((StringBuilder)localObject).append(" 简介 ");
+        ((StringBuilder)localObject).append(paramView.e.getText());
+        localView.setContentDescription((CharSequence)localObject);
+        localView.setFocusable(true);
+        localView.setFocusableInTouchMode(true);
       }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localPAViewHolder = (PublicAccountListActivity.PAViewHolder)paramView.getTag();
-      break;
-      label703:
-      localPAViewHolder.d.setCompoundDrawables(null, null, null, null);
-      break label398;
-      label718:
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(-1, "");
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetImageView.setTag(-2, "");
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
-      localPAViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      break label533;
-      label764:
-      localPAViewHolder.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity$InnerPAInfo = null;
-      localPAViewHolder.jdField_a_of_type_JavaLangString = "";
-      localPAViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      localPAViewHolder.f.setVisibility(0);
+      paramView.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity$InnerPAInfo = null;
+      paramView.jdField_a_of_type_JavaLangString = "";
+      paramView.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramView.f.setVisibility(0);
       localObject = String.valueOf(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-      localPAViewHolder.f.setText((CharSequence)localObject);
+      paramView.f.setText((CharSequence)localObject);
       if (AppSetting.d) {
-        localPAViewHolder.f.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getString(2131691884), new Object[] { ((String)localObject).toLowerCase() }));
+        paramView.f.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getString(2131691806), new Object[] { ((String)localObject).toLowerCase() }));
       }
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.ListAdapter
  * JD-Core Version:    0.7.0.1
  */

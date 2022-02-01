@@ -13,16 +13,15 @@ class QUSDragFloatingScreenDialog$1
 {
   public int a()
   {
-    switch (QUSDragFloatingScreenDialog.a(this.a))
+    int i = QUSDragFloatingScreenDialog.a(this.a);
+    if ((i != 0) && (i != 2))
     {
-    case 1: 
-    default: 
-      return 0;
-    case 0: 
-    case 2: 
-      return AIOUtils.a(80.0F, this.a.getContext().getResources());
+      if (i != 3) {
+        return 0;
+      }
+      return AIOUtils.b(1000.0F, this.a.getContext().getResources());
     }
-    return AIOUtils.a(1000.0F, this.a.getContext().getResources());
+    return AIOUtils.b(80.0F, this.a.getContext().getResources());
   }
   
   public View a()
@@ -40,11 +39,10 @@ class QUSDragFloatingScreenDialog$1
   
   public int d()
   {
-    int i = 1;
-    if ((QUSDragFloatingScreenDialog.a(this.a) == 0) || (QUSDragFloatingScreenDialog.a(this.a) == 1)) {
-      i = 0;
+    if ((QUSDragFloatingScreenDialog.a(this.a) != 0) && (QUSDragFloatingScreenDialog.a(this.a) != 1)) {
+      return 1;
     }
-    return i;
+    return 0;
   }
   
   public void d()
@@ -54,7 +52,7 @@ class QUSDragFloatingScreenDialog$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenDialog.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,12 +25,18 @@ public class HostInfo
   
   public String toString()
   {
-    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int + " failCount:" + this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" failCount:");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.HostInfo
  * JD-Core Version:    0.7.0.1
  */

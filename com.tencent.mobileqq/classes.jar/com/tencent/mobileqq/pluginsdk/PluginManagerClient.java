@@ -46,7 +46,11 @@ public class PluginManagerClient
       boolean bool = this.mRemote.isPlugininstalled(paramString);
       return bool;
     }
-    catch (RemoteException paramString) {}
+    catch (RemoteException paramString)
+    {
+      label13:
+      break label13;
+    }
     return false;
   }
   
@@ -57,7 +61,11 @@ public class PluginManagerClient
       boolean bool = this.mRemote.isReady();
       return bool;
     }
-    catch (RemoteException localRemoteException) {}
+    catch (RemoteException localRemoteException)
+    {
+      label12:
+      break label12;
+    }
     return false;
   }
   
@@ -68,7 +76,11 @@ public class PluginManagerClient
       paramString = this.mRemote.queryPlugin(paramString);
       return paramString;
     }
-    catch (RemoteException paramString) {}
+    catch (RemoteException paramString)
+    {
+      label13:
+      break label13;
+    }
     return null;
   }
   
@@ -84,19 +96,20 @@ public class PluginManagerClient
   
   public boolean useful()
   {
+    Object localObject = this.mRemote;
     bool2 = false;
     bool1 = bool2;
-    if (this.mRemote != null) {}
+    if (localObject != null) {}
     try
     {
-      IBinder localIBinder = this.mRemote.asBinder();
+      localObject = ((RemotePluginManager)localObject).asBinder();
       bool1 = bool2;
-      if (localIBinder != null)
+      if (localObject != null)
       {
         bool1 = bool2;
-        if (localIBinder.isBinderAlive())
+        if (((IBinder)localObject).isBinderAlive())
         {
-          boolean bool3 = localIBinder.pingBinder();
+          boolean bool3 = ((IBinder)localObject).pingBinder();
           bool1 = bool2;
           if (bool3) {
             bool1 = true;
@@ -111,15 +124,19 @@ public class PluginManagerClient
         bool1 = bool2;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, " useful: " + bool1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" useful: ");
+      ((StringBuilder)localObject).append(bool1);
+      QLog.i("plugin_tag", 2, ((StringBuilder)localObject).toString());
     }
     return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginManagerClient
  * JD-Core Version:    0.7.0.1
  */

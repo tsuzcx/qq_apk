@@ -10,9 +10,7 @@ class a$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     this.a.b();
@@ -20,7 +18,7 @@ class a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.a.1
  * JD-Core Version:    0.7.0.1
  */

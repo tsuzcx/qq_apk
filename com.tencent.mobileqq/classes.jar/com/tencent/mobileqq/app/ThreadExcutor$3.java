@@ -7,19 +7,22 @@ class ThreadExcutor$3
   
   public void run()
   {
-    Job localJob = ThreadExcutor.buildJob(this.val$priority, this.val$job, this.val$listener, this.val$canAutoRetrieve);
-    if (localJob == null)
+    Object localObject = ThreadExcutor.buildJob(this.val$priority, this.val$job, this.val$listener, this.val$canAutoRetrieve);
+    if (localObject == null)
     {
-      ThreadLog.printQLog("ThreadManager", "postDownLoadTask -1:w == null" + this.val$job);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("postDownLoadTask -1:w == null");
+      ((StringBuilder)localObject).append(this.val$job);
+      ThreadLog.printQLog("ThreadManager", ((StringBuilder)localObject).toString());
       return;
     }
-    localJob.poolNum = 5;
-    ThreadExcutor.access$600(this.this$0).execute(localJob);
+    ((Job)localObject).poolNum = 5;
+    ThreadExcutor.access$600(this.this$0).execute((Runnable)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadExcutor.3
  * JD-Core Version:    0.7.0.1
  */

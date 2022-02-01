@@ -57,192 +57,175 @@ public class LebaTabletController
   {
     Object localObject1 = a();
     int i;
-    Object localObject2;
-    if (("1000".equals(localObject1)) || ("2105".equals(localObject1)) || ("2101".equals(localObject1)) || ("1103".equals(localObject1)) || ("2920".equals(localObject1)) || (a((String)localObject1)))
-    {
+    if ((!"1000".equals(localObject1)) && (!"2105".equals(localObject1)) && (!"2101".equals(localObject1)) && (!"1103".equals(localObject1)) && (!"2920".equals(localObject1)) && (!a((String)localObject1))) {
+      i = 0;
+    } else {
       i = 1;
-      if (i == 0) {
-        break label174;
-      }
-      localObject1 = paramView.findViewById(2131370245);
+    }
+    Object localObject2;
+    if (i != 0)
+    {
+      localObject1 = paramView.findViewById(2131369913);
       ViewUtils.a((View)localObject1, null);
-      localObject2 = (RoundRelativeLayout)((View)localObject1).findViewById(2131377395);
+      localObject2 = (RoundRelativeLayout)((View)localObject1).findViewById(2131376845);
       ((RoundRelativeLayout)localObject2).jdField_a_of_type_Int = ViewUtils.b(16.0F);
       ((RoundRelativeLayout)localObject2).setVisibility(0);
-      localObject2 = ((View)localObject1).findViewById(2131377396);
-      if (!a()) {
-        break label164;
+      localObject2 = ((View)localObject1).findViewById(2131376846);
+      if (a()) {
+        ((View)localObject2).setBackgroundResource(2130850559);
+      } else {
+        ((View)localObject2).setBackgroundResource(2130850581);
       }
-      ((View)localObject2).setBackgroundResource(2130850633);
-      label125:
-      ViewUtils.a(((View)localObject1).findViewById(2131366452), null);
+      ViewUtils.a(((View)localObject1).findViewById(2131366333), null);
     }
-    for (;;)
+    else
     {
-      paramView.findViewById(2131378865).setVisibility(0);
-      ((FrameLayout)paramView.findViewById(2131367059)).setVisibility(0);
-      return;
-      i = 0;
-      break;
-      label164:
-      ((View)localObject2).setBackgroundResource(2130850655);
-      break label125;
-      label174:
-      localObject1 = paramView.findViewById(2131370245);
-      ((View)localObject1).setBackgroundResource(2130850756);
-      localObject2 = (RoundRelativeLayout)((View)localObject1).findViewById(2131377395);
+      localObject1 = paramView.findViewById(2131369913);
+      ((View)localObject1).setBackgroundResource(2130850682);
+      localObject2 = (RoundRelativeLayout)((View)localObject1).findViewById(2131376845);
       ((RoundRelativeLayout)localObject2).jdField_a_of_type_Int = ViewUtils.b(16.0F);
       ((RoundRelativeLayout)localObject2).setVisibility(8);
-      ((View)localObject1).findViewById(2131366452).setBackgroundResource(2130850768);
+      ((View)localObject1).findViewById(2131366333).setBackgroundResource(2130850694);
     }
+    paramView.findViewById(2131378254).setVisibility(0);
+    ((FrameLayout)paramView.findViewById(2131366904)).setVisibility(0);
   }
   
   private void b(View paramView)
   {
-    float f = 16.0F;
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131375881);
-    ViewUtils.a(localRelativeLayout, null);
-    localRelativeLayout.setPadding(0, 0, 0, 0);
-    Object localObject = (LinearLayout.LayoutParams)localRelativeLayout.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).leftMargin = ViewUtils.a(16.0F);
-    ((LinearLayout.LayoutParams)localObject).rightMargin = ViewUtils.a(16.0F);
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      ((LinearLayout.LayoutParams)localObject).topMargin = ViewUtils.a(4.0F);
-      ((LinearLayout.LayoutParams)localObject).height = ViewUtils.a(72.0F);
-      localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = (RoundRelativeLayout)localRelativeLayout.findViewById(2131377393);
-      ((RoundRelativeLayout)localObject).jdField_a_of_type_Int = ViewUtils.b(16.0F);
-      ((RoundRelativeLayout)localObject).setVisibility(0);
-      localObject = localRelativeLayout.findViewById(2131377388);
-      if (!a()) {
-        break label367;
-      }
-      ((View)localObject).setBackgroundResource(2130840686);
-      label138:
-      localObject = (ImageView)localRelativeLayout.findViewById(2131370322);
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
-      localLayoutParams.width = ViewUtils.b(32.0F);
-      localLayoutParams.height = ViewUtils.b(32.0F);
-      if (this.jdField_a_of_type_Int != 1) {
-        break label377;
-      }
-      label187:
-      localLayoutParams.leftMargin = ViewUtils.a(f);
-      paramView = paramView.getResources().getDrawable(2130845628);
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaDiyIconPart == null) {
-        break label383;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaDiyIconPart.addPersonalBackgroundToIcon((ImageView)localObject, paramView, "skin_leba_haoyoudongtai_bg");
-      label228:
-      paramView = (RelativeLayout)localRelativeLayout.findViewById(2131377184);
-      localObject = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-      if (this.jdField_a_of_type_Int != 1) {
-        break label395;
-      }
-    }
-    label395:
-    for (f = 21.0F;; f = 19.0F)
-    {
-      ((RelativeLayout.LayoutParams)localObject).width = ViewUtils.a(f);
-      paramView = (RelativeLayout.LayoutParams)((ImageView)paramView.findViewById(2131363028)).getLayoutParams();
-      paramView.width = ViewUtils.a(9.0F);
-      paramView.height = ViewUtils.a(15.0F);
-      ((RelativeLayout.LayoutParams)((TextView)localRelativeLayout.findViewById(2131370323)).getLayoutParams()).leftMargin = ViewUtils.a(8.0F);
-      ((RelativeLayout.LayoutParams)((TextView)localRelativeLayout.findViewById(2131376096)).getLayoutParams()).leftMargin = ViewUtils.a(4.0F);
-      return;
-      ((LinearLayout.LayoutParams)localObject).topMargin = 0;
-      ((LinearLayout.LayoutParams)localObject).height = ViewUtils.a(56.0F);
-      break;
-      label367:
-      ((View)localObject).setBackgroundResource(2130839537);
-      break label138;
-      label377:
-      f = 12.0F;
-      break label187;
-      label383:
-      LebaUtil.a("Q.lebatab.LebaTabletController", "initApi", "refreshQzoneUi");
-      break label228;
-    }
-  }
-  
-  private void c(View paramView)
-  {
-    float f2 = 12.0F;
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131374846);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131375397);
     ViewUtils.a(localRelativeLayout, null);
     localRelativeLayout.setPadding(0, 0, 0, 0);
     Object localObject1 = (LinearLayout.LayoutParams)localRelativeLayout.getLayoutParams();
+    float f = 16.0F;
     ((LinearLayout.LayoutParams)localObject1).leftMargin = ViewUtils.a(16.0F);
     ((LinearLayout.LayoutParams)localObject1).rightMargin = ViewUtils.a(16.0F);
     if (this.jdField_a_of_type_Int == 1)
     {
-      f1 = 11.0F;
-      ((LinearLayout.LayoutParams)localObject1).topMargin = ViewUtils.a(f1);
-      if (this.jdField_a_of_type_Int != 1) {
-        break label400;
-      }
-      f1 = 72.0F;
-      label90:
-      ((LinearLayout.LayoutParams)localObject1).height = ViewUtils.a(f1);
-      localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = (RoundRelativeLayout)localRelativeLayout.findViewById(2131377393);
-      ((RoundRelativeLayout)localObject1).jdField_a_of_type_Int = ViewUtils.b(16.0F);
-      ((RoundRelativeLayout)localObject1).setVisibility(0);
-      localObject1 = localRelativeLayout.findViewById(2131377388);
-      if (!a()) {
-        break label406;
-      }
-      ((View)localObject1).setBackgroundResource(2130840686);
-      label157:
-      localObject1 = (ImageView)localRelativeLayout.findViewById(2131370322);
-      Object localObject2 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject2).width = ViewUtils.b(32.0F);
-      ((RelativeLayout.LayoutParams)localObject2).height = ViewUtils.b(32.0F);
-      f1 = f2;
-      if (this.jdField_a_of_type_Int == 1) {
-        f1 = 16.0F;
-      }
-      ((RelativeLayout.LayoutParams)localObject2).leftMargin = ViewUtils.a(f1);
-      localObject2 = paramView.getResources().getDrawable(2130845617);
-      if ((this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaDiyIconPart != null) && (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaDiyIconPart.addPersonalBackgroundToIcon((ImageView)localObject1, (Drawable)localObject2, "skin_leba_xiaoshijie_bg"))) {
-        ((ImageView)localObject1).setImageDrawable(paramView.getResources().getDrawable(2130845619));
-      }
-      paramView = (RelativeLayout)localRelativeLayout.findViewById(2131377184);
-      localObject1 = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-      if (this.jdField_a_of_type_Int != 1) {
-        break label416;
-      }
+      ((LinearLayout.LayoutParams)localObject1).topMargin = ViewUtils.a(4.0F);
+      ((LinearLayout.LayoutParams)localObject1).height = ViewUtils.a(72.0F);
     }
-    label400:
-    label406:
-    label416:
-    for (float f1 = 21.0F;; f1 = 19.0F)
+    else
     {
-      ((RelativeLayout.LayoutParams)localObject1).width = ViewUtils.a(f1);
-      paramView = (RelativeLayout.LayoutParams)((ImageView)paramView.findViewById(2131363028)).getLayoutParams();
-      paramView.width = ViewUtils.a(9.0F);
-      paramView.height = ViewUtils.a(15.0F);
-      ((RelativeLayout.LayoutParams)((TextView)localRelativeLayout.findViewById(2131374851)).getLayoutParams()).leftMargin = ViewUtils.a(8.0F);
-      ((RelativeLayout.LayoutParams)((TextView)localRelativeLayout.findViewById(2131374852)).getLayoutParams()).leftMargin = ViewUtils.a(4.0F);
-      return;
-      f1 = 12.0F;
-      break;
-      f1 = 56.0F;
-      break label90;
-      ((View)localObject1).setBackgroundResource(2130839537);
-      break label157;
+      ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
+      ((LinearLayout.LayoutParams)localObject1).height = ViewUtils.a(56.0F);
     }
+    localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject1 = (RoundRelativeLayout)localRelativeLayout.findViewById(2131376843);
+    ((RoundRelativeLayout)localObject1).jdField_a_of_type_Int = ViewUtils.b(16.0F);
+    ((RoundRelativeLayout)localObject1).setVisibility(0);
+    localObject1 = localRelativeLayout.findViewById(2131376840);
+    if (a()) {
+      ((View)localObject1).setBackgroundResource(2130840561);
+    } else {
+      ((View)localObject1).setBackgroundResource(2130839393);
+    }
+    localObject1 = (ImageView)localRelativeLayout.findViewById(2131369990);
+    Object localObject2 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject2).width = ViewUtils.b(32.0F);
+    ((RelativeLayout.LayoutParams)localObject2).height = ViewUtils.b(32.0F);
+    if (this.jdField_a_of_type_Int != 1) {
+      f = 12.0F;
+    }
+    ((RelativeLayout.LayoutParams)localObject2).leftMargin = ViewUtils.a(f);
+    paramView = paramView.getResources().getDrawable(2130845501);
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaDiyIconPart;
+    if (localObject2 != null) {
+      ((ILebaDiyIconPart)localObject2).addPersonalBackgroundToIcon((ImageView)localObject1, paramView, "skin_leba_haoyoudongtai_bg");
+    } else {
+      LebaUtil.a("Q.lebatab.LebaTabletController", "initApi", "refreshQzoneUi");
+    }
+    paramView = (RelativeLayout)localRelativeLayout.findViewById(2131376650);
+    localObject1 = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    if (this.jdField_a_of_type_Int == 1) {
+      f = 21.0F;
+    } else {
+      f = 19.0F;
+    }
+    ((RelativeLayout.LayoutParams)localObject1).width = ViewUtils.a(f);
+    paramView = (RelativeLayout.LayoutParams)((ImageView)paramView.findViewById(2131362976)).getLayoutParams();
+    paramView.width = ViewUtils.a(9.0F);
+    paramView.height = ViewUtils.a(15.0F);
+    ((RelativeLayout.LayoutParams)((TextView)localRelativeLayout.findViewById(2131369991)).getLayoutParams()).leftMargin = ViewUtils.a(8.0F);
+    ((RelativeLayout.LayoutParams)((TextView)localRelativeLayout.findViewById(2131375609)).getLayoutParams()).leftMargin = ViewUtils.a(4.0F);
+  }
+  
+  private void c(View paramView)
+  {
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131374379);
+    ViewUtils.a(localRelativeLayout, null);
+    localRelativeLayout.setPadding(0, 0, 0, 0);
+    Object localObject1 = (LinearLayout.LayoutParams)localRelativeLayout.getLayoutParams();
+    float f2 = 16.0F;
+    ((LinearLayout.LayoutParams)localObject1).leftMargin = ViewUtils.a(16.0F);
+    ((LinearLayout.LayoutParams)localObject1).rightMargin = ViewUtils.a(16.0F);
+    float f1;
+    if (this.jdField_a_of_type_Int == 1) {
+      f1 = 11.0F;
+    } else {
+      f1 = 12.0F;
+    }
+    ((LinearLayout.LayoutParams)localObject1).topMargin = ViewUtils.a(f1);
+    if (this.jdField_a_of_type_Int == 1) {
+      f1 = 72.0F;
+    } else {
+      f1 = 56.0F;
+    }
+    ((LinearLayout.LayoutParams)localObject1).height = ViewUtils.a(f1);
+    localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject1 = (RoundRelativeLayout)localRelativeLayout.findViewById(2131376843);
+    ((RoundRelativeLayout)localObject1).jdField_a_of_type_Int = ViewUtils.b(16.0F);
+    ((RoundRelativeLayout)localObject1).setVisibility(0);
+    localObject1 = localRelativeLayout.findViewById(2131376840);
+    if (a()) {
+      ((View)localObject1).setBackgroundResource(2130840561);
+    } else {
+      ((View)localObject1).setBackgroundResource(2130839393);
+    }
+    localObject1 = (ImageView)localRelativeLayout.findViewById(2131369990);
+    Object localObject2 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject2).width = ViewUtils.b(32.0F);
+    ((RelativeLayout.LayoutParams)localObject2).height = ViewUtils.b(32.0F);
+    if (this.jdField_a_of_type_Int == 1) {
+      f1 = f2;
+    } else {
+      f1 = 12.0F;
+    }
+    ((RelativeLayout.LayoutParams)localObject2).leftMargin = ViewUtils.a(f1);
+    localObject2 = paramView.getResources().getDrawable(2130845490);
+    ILebaDiyIconPart localILebaDiyIconPart = this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaDiyIconPart;
+    if ((localILebaDiyIconPart != null) && (localILebaDiyIconPart.addPersonalBackgroundToIcon((ImageView)localObject1, (Drawable)localObject2, "skin_leba_xiaoshijie_bg"))) {
+      ((ImageView)localObject1).setImageDrawable(paramView.getResources().getDrawable(2130845492));
+    }
+    paramView = (RelativeLayout)localRelativeLayout.findViewById(2131376650);
+    localObject1 = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+    if (this.jdField_a_of_type_Int == 1) {
+      f1 = 21.0F;
+    } else {
+      f1 = 19.0F;
+    }
+    ((RelativeLayout.LayoutParams)localObject1).width = ViewUtils.a(f1);
+    paramView = (RelativeLayout.LayoutParams)((ImageView)paramView.findViewById(2131362976)).getLayoutParams();
+    paramView.width = ViewUtils.a(9.0F);
+    paramView.height = ViewUtils.a(15.0F);
+    ((RelativeLayout.LayoutParams)((TextView)localRelativeLayout.findViewById(2131374384)).getLayoutParams()).leftMargin = ViewUtils.a(8.0F);
+    ((RelativeLayout.LayoutParams)((TextView)localRelativeLayout.findViewById(2131374386)).getLayoutParams()).leftMargin = ViewUtils.a(4.0F);
   }
   
   private void f()
   {
-    try
+    for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaConfigLebaConfigApi.b()) {}
-      for (int i = 1;; i = 0)
+      try
       {
-        QLog.i("Q.lebatab.LebaTabletController", 1, "loadQzoneStyle=" + i);
+        if (!this.jdField_a_of_type_ComTencentMobileqqLebaConfigLebaConfigApi.b()) {
+          break label94;
+        }
+        i = 1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("loadQzoneStyle=");
+        localStringBuilder.append(i);
+        QLog.i("Q.lebatab.LebaTabletController", 1, localStringBuilder.toString());
         if (i != this.jdField_a_of_type_Int)
         {
           this.jdField_a_of_type_Int = i;
@@ -250,15 +233,17 @@ public class LebaTabletController
           {
             b(this.jdField_a_of_type_AndroidViewView);
             c(this.jdField_a_of_type_AndroidViewView);
+            return;
           }
         }
-        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.i("Q.lebatab.LebaTabletController", 1, "loadQzoneStyle", localException);
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      QLog.i("Q.lebatab.LebaTabletController", 1, "loadQzoneStyle", localException);
+      label94:
+      int i = 0;
     }
   }
   
@@ -269,23 +254,26 @@ public class LebaTabletController
   
   public String a()
   {
-    return ThemeUtil.a();
+    return ThemeUtil.getCurrentThemeId();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_Float = (-this.jdField_a_of_type_AndroidViewView.getY());
+      this.jdField_a_of_type_Float = (-((View)localObject).getY());
       this.b = this.jdField_a_of_type_Float;
     }
     f();
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.a(this.jdField_a_of_type_Int);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic;
+    if (localObject != null) {
+      ((LebaTableLogic)localObject).a(this.jdField_a_of_type_Int);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a(this.jdField_a_of_type_Int);
+      ((LebaBannerLogic)localObject).a(this.jdField_a_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.d();
     }
   }
@@ -312,8 +300,13 @@ public class LebaTabletController
       if (localFPSXListView.getOverscrollHeader() != null) {
         localFPSXListView.setOverscrollHeader(null);
       }
-      f();
-      if (localView != null) {}
+    }
+    catch (Exception paramInitViewParam)
+    {
+      QLog.i("Q.lebatab.LebaTabletController", 1, "setOverscrollHeader", paramInitViewParam);
+    }
+    f();
+    if (localView != null) {
       try
       {
         if (localFPSXListView.getHeaderViewsCount() <= 0) {
@@ -325,64 +318,53 @@ public class LebaTabletController
       }
       catch (Exception paramInitViewParam)
       {
-        for (;;)
-        {
-          label157:
-          QLog.i("Q.lebatab.LebaTabletController", 1, "addHeaderView", paramInitViewParam);
-        }
+        QLog.i("Q.lebatab.LebaTabletController", 1, "addHeaderView", paramInitViewParam);
       }
-      try
-      {
-        paramInitViewParam = localFPSXListView.getAdapter();
-        if ((paramInitViewParam == null) || (!(paramInitViewParam instanceof LebaTabletController.EmptyAdapter))) {
-          localFPSXListView.setAdapter(new LebaTabletController.EmptyAdapter());
-        }
+    }
+    try
+    {
+      paramInitViewParam = localFPSXListView.getAdapter();
+      if ((paramInitViewParam == null) || (!(paramInitViewParam instanceof LebaTabletController.EmptyAdapter))) {
+        localFPSXListView.setAdapter(new LebaTabletController.EmptyAdapter());
       }
-      catch (Exception paramInitViewParam)
-      {
-        QLog.i("Q.lebatab.LebaTabletController", 1, "setAdapter", paramInitViewParam);
-        break label157;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic = new LebaTableLogic(localContext);
-        this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaDiyIconPart);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.a(this.jdField_a_of_type_Int);
-      if ((this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.jdField_a_of_type_ComTencentMobileqqLebaWidgetLebaTableLayout == null) && (localView != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.jdField_a_of_type_ComTencentMobileqqLebaWidgetLebaTableLayout = ((LebaTableLayout)localView.findViewById(2131378865));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.jdField_a_of_type_MqqAppAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.jdField_a_of_type_ComTencentMobileqqLebaRedtouchLebaRedTouchBase = this.jdField_a_of_type_ComTencentMobileqqLebaRedtouchLebaRedTouchBase;
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaItemListener = localLebaItemListener;
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.a(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic = new LebaBannerLogic(localContext);
-        this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.b();
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a == null) && (localView != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a = ((FrameLayout)localView.findViewById(2131367059));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a(this.jdField_a_of_type_MqqAppAppRuntime);
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.d();
-      return;
     }
     catch (Exception paramInitViewParam)
     {
-      for (;;)
-      {
-        QLog.i("Q.lebatab.LebaTabletController", 1, "setOverscrollHeader", paramInitViewParam);
-      }
+      QLog.i("Q.lebatab.LebaTabletController", 1, "setAdapter", paramInitViewParam);
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic = new LebaTableLogic(localContext);
+      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaDiyIconPart);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.a(this.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.jdField_a_of_type_ComTencentMobileqqLebaWidgetLebaTableLayout == null) && (localView != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.jdField_a_of_type_ComTencentMobileqqLebaWidgetLebaTableLayout = ((LebaTableLayout)localView.findViewById(2131378254));
+    }
+    paramInitViewParam = this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic;
+    paramInitViewParam.jdField_a_of_type_MqqAppAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    paramInitViewParam.jdField_a_of_type_ComTencentMobileqqLebaRedtouchLebaRedTouchBase = this.jdField_a_of_type_ComTencentMobileqqLebaRedtouchLebaRedTouchBase;
+    paramInitViewParam.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaItemListener = localLebaItemListener;
+    paramInitViewParam.a(this.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic = new LebaBannerLogic(localContext);
+      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.b();
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a == null) && (localView != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a = ((FrameLayout)localView.findViewById(2131366904));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a(this.jdField_a_of_type_MqqAppAppRuntime);
+    this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.d();
   }
   
   public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    paramAbsListView = this.jdField_a_of_type_AndroidViewView;
+    if (paramAbsListView != null)
     {
-      float f = -this.jdField_a_of_type_AndroidViewView.getY();
+      float f = -paramAbsListView.getY();
       if (f > this.b) {
         this.b = f;
       }
@@ -394,34 +376,38 @@ public class LebaTabletController
   
   public void a(AppRuntime paramAppRuntime, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.a(this.jdField_a_of_type_Float, this.b, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView, this.jdField_a_of_type_AndroidViewView, paramInt1, this.jdField_a_of_type_Int, paramBoolean, paramInt2);
+      ((LebaTableLogic)localObject).a(this.jdField_a_of_type_Float, this.b, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView, this.jdField_a_of_type_AndroidViewView, paramInt1, this.jdField_a_of_type_Int, paramBoolean, paramInt2);
       this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.c();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic;
+    if (localObject != null) {
+      ((LebaBannerLogic)localObject).c();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaRedtouchLebaRedTouchBase != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaRedtouchLebaRedTouchBase.a(paramAppRuntime);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaRedtouchLebaRedTouchBase;
+    if (localObject != null) {
+      ((LebaRedTouchBase)localObject).a(paramAppRuntime);
     }
   }
   
   public boolean a()
   {
-    return ThemeUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, false, null);
+    return ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_MqqAppAppRuntime, false, null);
   }
   
   public boolean a(String paramString)
   {
-    return QQTheme.b(paramString);
+    return QQTheme.c(paramString);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null)
     {
-      a(this.jdField_a_of_type_AndroidViewView);
+      a(localView);
       b(this.jdField_a_of_type_AndroidViewView);
       c(this.jdField_a_of_type_AndroidViewView);
     }
@@ -430,24 +416,28 @@ public class LebaTabletController
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.d();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic;
+    if (localObject != null) {
+      ((LebaBannerLogic)localObject).d();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.a(this.jdField_a_of_type_JavaUtilList);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic;
+    if (localObject != null) {
+      ((LebaTableLogic)localObject).a(this.jdField_a_of_type_JavaUtilList);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a();
+      ((LebaBannerLogic)localObject).a();
       this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaBannerLogic.a = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.a();
+      ((LebaTableLogic)localObject).a();
       this.jdField_a_of_type_ComTencentMobileqqLebaControllerTableLebaTableLogic.jdField_a_of_type_ComTencentMobileqqLebaWidgetLebaTableLayout = null;
     }
   }
@@ -462,7 +452,7 @@ public class LebaTabletController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.controller.table.LebaTabletController
  * JD-Core Version:    0.7.0.1
  */

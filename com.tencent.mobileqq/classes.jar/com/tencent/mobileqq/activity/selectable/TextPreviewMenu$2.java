@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import com.tencent.mobileqq.textpreview.ParticipleObserver;
+import com.tencent.mobileqq.participle.ParticipleObserver;
 import java.util.List;
 
 class TextPreviewMenu$2
@@ -8,7 +8,7 @@ class TextPreviewMenu$2
 {
   TextPreviewMenu$2(TextPreviewMenu paramTextPreviewMenu) {}
   
-  public void a(boolean paramBoolean, List<String> paramList)
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
     TextPreviewMenu.b(this.a);
     TextPreviewMenu.a(this.a, paramList);
@@ -16,7 +16,7 @@ class TextPreviewMenu$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.TextPreviewMenu.2
  * JD-Core Version:    0.7.0.1
  */

@@ -129,17 +129,19 @@ public final class stWMDBCombinRsp
     paramJceOutputStream.write(this.androidPush, 6);
     paramJceOutputStream.write(this.ads, 7);
     paramJceOutputStream.write(this.opData, 8);
-    if (this.watermarksInt != null) {
-      paramJceOutputStream.write(this.watermarksInt, 9);
+    ArrayList localArrayList = this.watermarksInt;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 9);
     }
-    if (this.watermarksAdv != null) {
-      paramJceOutputStream.write(this.watermarksAdv, 10);
+    localArrayList = this.watermarksAdv;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     WMDBClientInterface.stWMDBCombinRsp
  * JD-Core Version:    0.7.0.1
  */

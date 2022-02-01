@@ -2,9 +2,11 @@ package com.tencent.mobileqq.search.fragment;
 
 import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.search.SearchEntryConfigManager;
-import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.base.adapter.BaseMvpAdapter;
+import com.tencent.mobileqq.search.base.api.SearchEntryConfigManager;
+import com.tencent.mobileqq.search.base.engine.ISearchEngine;
+import com.tencent.mobileqq.search.base.fragment.BaseSearchFragment;
 import com.tencent.widget.ListView;
 import cooperation.qqfav.globalsearch.FunctionSearchEngine;
 
@@ -28,7 +30,7 @@ public class FunctionSearchFragment
   
   protected ISearchEngine a()
   {
-    return new FunctionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1);
+    return new FunctionSearchEngine((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, -1);
   }
   
   protected String a()
@@ -41,6 +43,11 @@ public class FunctionSearchFragment
     super.a(paramString, paramInt);
   }
   
+  protected String b()
+  {
+    return a();
+  }
+  
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
@@ -49,7 +56,7 @@ public class FunctionSearchFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.FunctionSearchFragment
  * JD-Core Version:    0.7.0.1
  */

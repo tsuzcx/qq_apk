@@ -7,8 +7,6 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class QQSlidingTabView$1
   implements View.OnClickListener
 {
-  QQSlidingTabView$1(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
-  
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
@@ -17,7 +15,7 @@ class QQSlidingTabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView.1
  * JD-Core Version:    0.7.0.1
  */

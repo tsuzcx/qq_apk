@@ -44,20 +44,24 @@ public final class AudioPlayerManager$InnerAudioStateChangeHandler
   private final void downloadAndPlayAudio()
   {
     String str = this.rawPath;
-    if (TextUtils.isEmpty((CharSequence)str)) {}
-    Object localObject;
-    do
-    {
+    if (TextUtils.isEmpty((CharSequence)str)) {
       return;
-      localObject = GameDataFileSystem.DefaultImpls.newTempFile$default(this.this$0.getDataFileSystem(), str, null, 2, null);
-      Downloader localDownloader = this.this$0.getDownloader();
-      if (str == null) {
-        Intrinsics.throwNpe();
-      }
-      localDownloader.download(str, ((TemporaryFile)localObject).getFile(), (Downloader.Listener)new AudioPlayerManager.InnerAudioStateChangeHandler.downloadAndPlayAudio.1(this, (TemporaryFile)localObject, str));
-      localObject = this.this$0.getLogger();
-    } while (localObject == null);
-    LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject, LogDelegate.Level.INFO, "[audio] AudioPlayerManager", "downloadAndPlayAudio rawPath:" + str, null, 8, null);
+    }
+    Object localObject1 = GameDataFileSystem.DefaultImpls.newTempFile$default(this.this$0.getDataFileSystem(), str, null, 2, null);
+    Object localObject2 = this.this$0.getDownloader();
+    if (str == null) {
+      Intrinsics.throwNpe();
+    }
+    ((Downloader)localObject2).download(str, ((TemporaryFile)localObject1).getFile(), (Downloader.Listener)new AudioPlayerManager.InnerAudioStateChangeHandler.downloadAndPlayAudio.1(this, (TemporaryFile)localObject1, str));
+    localObject1 = this.this$0.getLogger();
+    if (localObject1 != null)
+    {
+      localObject2 = LogDelegate.Level.INFO;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadAndPlayAudio rawPath:");
+      localStringBuilder.append(str);
+      LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject1, (LogDelegate.Level)localObject2, "[audio] AudioPlayerManager", localStringBuilder.toString(), null, 8, null);
+    }
   }
   
   private final boolean isFileExists(String paramString)
@@ -67,41 +71,54 @@ public final class AudioPlayerManager$InnerAudioStateChangeHandler
   
   private final void prepareAndPlayLocalAudio(boolean paramBoolean)
   {
-    Object localObject1;
+    Object localObject2;
+    Object localObject3;
     if (this.localPath != null)
     {
       localObject1 = this.this$0.getDataFileSystem();
-      Object localObject2 = this.localPath;
+      localObject2 = this.localPath;
       if (localObject2 == null) {
         Intrinsics.throwNpe();
       }
       if (((GameDataFileSystem)localObject1).getFile((String)localObject2).exists())
       {
         localObject1 = this.managerReference;
-        if (localObject1 != null)
-        {
+        if (localObject1 != null) {
           localObject1 = (AudioPlayerManager)((WeakReference)localObject1).get();
-          localObject2 = this.this$0.getLogger();
-          if (localObject2 != null) {
-            LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject2, LogDelegate.Level.INFO, "[audio] AudioPlayerManager", "audioId:" + this.audioId + ", playLocalAudio localPath:" + this.localPath, null, 8, null);
-          }
-          if (localObject1 != null) {
-            ((AudioPlayerManager)localObject1).setMusicPath(this.audioId, this.localPath);
-          }
-          if ((paramBoolean) && (localObject1 != null)) {
-            ((AudioPlayerManager)localObject1).playMusic(this.audioId);
-          }
+        } else {
+          localObject1 = null;
         }
+        localObject2 = this.this$0.getLogger();
+        if (localObject2 != null)
+        {
+          localObject3 = LogDelegate.Level.INFO;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("audioId:");
+          localStringBuilder.append(this.audioId);
+          localStringBuilder.append(", playLocalAudio localPath:");
+          localStringBuilder.append(this.localPath);
+          LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject2, (LogDelegate.Level)localObject3, "[audio] AudioPlayerManager", localStringBuilder.toString(), null, 8, null);
+        }
+        if (localObject1 != null) {
+          ((AudioPlayerManager)localObject1).setMusicPath(this.audioId, this.localPath);
+        }
+        if ((!paramBoolean) || (localObject1 == null)) {
+          return;
+        }
+        ((AudioPlayerManager)localObject1).playMusic(this.audioId);
+        return;
       }
     }
-    do
+    Object localObject1 = this.this$0.getLogger();
+    if (localObject1 != null)
     {
-      return;
-      localObject1 = null;
-      break;
-      localObject1 = this.this$0.getLogger();
-    } while (localObject1 == null);
-    LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject1, LogDelegate.Level.ERROR, "[audio] AudioPlayerManager", "playLocalAudio localPath:" + this.localPath + " not exists", null, 8, null);
+      localObject2 = LogDelegate.Level.ERROR;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("playLocalAudio localPath:");
+      ((StringBuilder)localObject3).append(this.localPath);
+      ((StringBuilder)localObject3).append(" not exists");
+      LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject1, (LogDelegate.Level)localObject2, "[audio] AudioPlayerManager", ((StringBuilder)localObject3).toString(), null, 8, null);
+    }
   }
   
   public final boolean hasCallPlay()
@@ -128,41 +145,48 @@ public final class AudioPlayerManager$InnerAudioStateChangeHandler
   public void onError(int paramInt)
   {
     Object localObject = this.managerReference;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       localObject = (AudioPlayerManager)((WeakReference)localObject).get();
-      if (localObject == null) {
-        break label202;
-      }
+    } else {
+      localObject = null;
     }
-    label202:
-    for (int i = ((AudioPlayerManager)localObject).getTotalErrorCount();; i = 10)
+    int i;
+    if (localObject != null) {
+      i = ((AudioPlayerManager)localObject).getTotalErrorCount();
+    } else {
+      i = 10;
+    }
+    LogDelegate localLogDelegate = this.this$0.getLogger();
+    if (localLogDelegate != null)
     {
-      LogDelegate localLogDelegate = this.this$0.getLogger();
-      if (localLogDelegate != null) {
-        LogDelegate.DefaultImpls.printLog$default(localLogDelegate, LogDelegate.Level.ERROR, "[audio] AudioPlayerManager", toString() + " onError retryCount:" + this.retryCount + ", audioId:" + this.audioId + " totalErrorCount:" + i, null, 8, null);
+      LogDelegate.Level localLevel = LogDelegate.Level.ERROR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(toString());
+      localStringBuilder.append(" onError retryCount:");
+      localStringBuilder.append(this.retryCount);
+      localStringBuilder.append(", audioId:");
+      localStringBuilder.append(this.audioId);
+      localStringBuilder.append(" totalErrorCount:");
+      localStringBuilder.append(i);
+      LogDelegate.DefaultImpls.printLog$default(localLogDelegate, localLevel, "[audio] AudioPlayerManager", localStringBuilder.toString(), null, 8, null);
+    }
+    if ((URLUtil.isNetworkUrl(this.rawPath)) && (this.retryCount < this.maxRetryCount) && (i < 10))
+    {
+      this.retryCount += 1;
+      if (localObject != null) {
+        ((AudioPlayerManager)localObject).setTotalErrorCount(((AudioPlayerManager)localObject).getTotalErrorCount() + 1);
       }
-      if ((URLUtil.isNetworkUrl(this.rawPath)) && (this.retryCount < this.maxRetryCount) && (i < 10))
+      if (isFileExists(this.localPath))
       {
-        this.retryCount += 1;
-        if (localObject != null) {
-          ((AudioPlayerManager)localObject).setTotalErrorCount(((AudioPlayerManager)localObject).getTotalErrorCount() + 1);
-        }
-        if (isFileExists(this.localPath)) {
-          prepareAndPlayLocalAudio(hasCallPlay());
-        }
+        prepareAndPlayLocalAudio(hasCallPlay());
+        return;
       }
-      do
-      {
-        return;
-        localObject = null;
-        break;
-        downloadAndPlayAudio();
-        return;
-        localObject = this.callback;
-      } while (localObject == null);
-      ((IAudioStateChangeListener)localObject).onError(paramInt);
+      downloadAndPlayAudio();
       return;
+    }
+    localObject = this.callback;
+    if (localObject != null) {
+      ((IAudioStateChangeListener)localObject).onError(paramInt);
     }
   }
   
@@ -235,7 +259,7 @@ public final class AudioPlayerManager$InnerAudioStateChangeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.inneraudio.AudioPlayerManager.InnerAudioStateChangeHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -56,24 +56,21 @@ public class VideoThumbAssetProvider
   
   private long getNormalizedSeekTime(long paramLong1, long paramLong2)
   {
-    long l2 = 0L;
-    long l3 = paramLong1 / 1000L;
-    long l1 = l3;
+    long l2 = paramLong1 / 1000L;
+    long l1 = l2;
     if (paramLong1 % 1000L >= 500L) {
-      l1 = l3 + 1L;
+      l1 = l2 + 1L;
     }
     paramLong1 = l1 * 1000L;
+    l1 = 0L;
     if (paramLong1 < 0L) {
-      paramLong1 = l2;
+      paramLong1 = l1;
     }
-    for (;;)
-    {
-      l1 = paramLong1;
-      if (paramLong1 > paramLong2) {
-        l1 = paramLong2 - 100L;
-      }
-      return l1;
+    l1 = paramLong1;
+    if (paramLong1 > paramLong2) {
+      l1 = paramLong2 - 100L;
     }
+    return l1;
   }
   
   private void initGeneratorAndCache(TAVSource paramTAVSource, int paramInt1, int paramInt2, LruCache<BaseVideoThumbAssetCache.LRUKey, Integer> paramLruCache, RunnableHandler paramRunnableHandler)
@@ -90,7 +87,8 @@ public class VideoThumbAssetProvider
   private void initGeneratorAndCache(VideoResourceModel paramVideoResourceModel, int paramInt1, int paramInt2, LruCache<BaseVideoThumbAssetCache.LRUKey, Integer> paramLruCache, RunnableHandler paramRunnableHandler)
   {
     this.mAssetType = paramVideoResourceModel.getType();
-    if (this.mAssetType == 2)
+    int i = this.mAssetType;
+    if (i == 2)
     {
       this.mCoverCache = new VideoThumbImageCache(paramVideoResourceModel.getPath(), paramLruCache);
       this.mCoverGenerator = new VideoThumbImageGenerator();
@@ -98,57 +96,57 @@ public class VideoThumbAssetProvider
       this.mCoverGenerator.setCoverHeight(paramInt2);
       this.mCoverGenerator.setCoverWidth(paramInt1);
     }
-    while (this.mAssetType != 1)
+    else if (i == 1)
     {
-      this.mCoverGenerator.setVideoThumbListener(this.mDefaultVideoThumbListener);
-      this.mCoverGenerator.setGenerateHandler(paramRunnableHandler);
-      return;
-    }
-    Object localObject = new URLAsset(paramVideoResourceModel.getPath());
-    float f3 = ((URLAsset)localObject).getNaturalSize().height;
-    float f4 = ((URLAsset)localObject).getNaturalSize().width;
-    float f1 = paramInt1 * f3 / f4;
-    float f2 = paramInt1;
-    if (f1 < paramInt2)
-    {
-      f1 = paramInt2;
-      f2 = f4 * f1 / f3;
-    }
-    for (;;)
-    {
+      Object localObject = new URLAsset(paramVideoResourceModel.getPath());
+      float f4 = ((URLAsset)localObject).getNaturalSize().height;
+      float f5 = ((URLAsset)localObject).getNaturalSize().width;
+      float f1 = paramInt1;
+      float f3 = f4 * f1 / f5;
+      float f2 = paramInt2;
+      if (f3 < f2) {
+        f1 = f5 * f2 / f4;
+      } else {
+        f2 = f3;
+      }
       localObject = new TAVClip((Asset)localObject);
       ((TAVClip)localObject).getResource().setSourceTimeRange(new CMTimeRange(new CMTime((float)paramVideoResourceModel.getSourceTimeStart() / 1000.0F), new CMTime((float)paramVideoResourceModel.getSourceTimeDuration() / 1000.0F)));
       localObject = new TAVComposition(ListUtils.listWithObjects(new TAVClip[] { localObject }));
-      ((TAVComposition)localObject).setRenderSize(new CGSize(f2, f1));
+      ((TAVComposition)localObject).setRenderSize(new CGSize(f1, f2));
       localObject = new TAVCompositionBuilder((TAVComposition)localObject).buildSource();
       this.mCoverCache = new VideoThumbVideoCache(paramVideoResourceModel.getPath(), paramLruCache);
       this.mCoverGenerator = new VideoThumbVideoGenerator();
       ((VideoThumbVideoGenerator)this.mCoverGenerator).init((TAVSource)localObject);
-      this.mCoverGenerator.setCoverHeight(f1);
-      this.mCoverGenerator.setCoverWidth(f2);
-      break;
+      this.mCoverGenerator.setCoverHeight(f2);
+      this.mCoverGenerator.setCoverWidth(f1);
     }
+    this.mCoverGenerator.setVideoThumbListener(this.mDefaultVideoThumbListener);
+    this.mCoverGenerator.setGenerateHandler(paramRunnableHandler);
   }
   
   private void sendGenerateRequest(Object paramObject, long paramLong)
   {
-    if (this.mCoverGenerator == null) {}
-    String str;
-    do
-    {
+    if (this.mCoverGenerator == null) {
       return;
-      str = String.valueOf(paramLong);
-      localObject = (List)this.mTagTable.get(str);
-      if (localObject == null) {
-        break;
+    }
+    Object localObject1 = String.valueOf(paramLong);
+    Object localObject2 = (List)this.mTagTable.get(localObject1);
+    if (localObject2 != null)
+    {
+      if (!((List)localObject2).contains(paramObject)) {
+        ((List)localObject2).add(paramObject);
       }
-    } while (((List)localObject).contains(paramObject));
-    ((List)localObject).add(paramObject);
-    return;
-    Object localObject = new CopyOnWriteArrayList();
-    ((CopyOnWriteArrayList)localObject).add(paramObject);
-    this.mTagTable.put(str, localObject);
-    Logger.i("VideoThumbAssetProvider", "sendGenerateRequest time:" + paramLong + ",Object:" + paramObject);
+      return;
+    }
+    localObject2 = new CopyOnWriteArrayList();
+    ((CopyOnWriteArrayList)localObject2).add(paramObject);
+    this.mTagTable.put(localObject1, localObject2);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("sendGenerateRequest time:");
+    ((StringBuilder)localObject1).append(paramLong);
+    ((StringBuilder)localObject1).append(",Object:");
+    ((StringBuilder)localObject1).append(paramObject);
+    Logger.i("VideoThumbAssetProvider", ((StringBuilder)localObject1).toString());
     this.mCoverGenerator.generateCoverByTime(CMTime.fromMs(paramLong));
   }
   
@@ -167,8 +165,9 @@ public class VideoThumbAssetProvider
   
   public long getCache()
   {
-    if (this.mCoverCache != null) {
-      return this.mCoverCache.getCacheSize();
+    BaseVideoThumbAssetCache localBaseVideoThumbAssetCache = this.mCoverCache;
+    if (localBaseVideoThumbAssetCache != null) {
+      return localBaseVideoThumbAssetCache.getCacheSize();
     }
     return 0L;
   }
@@ -194,37 +193,45 @@ public class VideoThumbAssetProvider
   
   public void pause()
   {
-    if (this.mCoverGenerator != null) {
-      this.mCoverGenerator.pause();
+    BaseVideoThumbGenerator localBaseVideoThumbGenerator = this.mCoverGenerator;
+    if (localBaseVideoThumbGenerator != null) {
+      localBaseVideoThumbGenerator.pause();
     }
   }
   
   public void release()
   {
-    Logger.i("VideoThumbAssetProvider", "release:" + getAssetId());
-    if (this.mCoverGenerator != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("release:");
+    ((StringBuilder)localObject).append(getAssetId());
+    Logger.i("VideoThumbAssetProvider", ((StringBuilder)localObject).toString());
+    localObject = this.mCoverGenerator;
+    if (localObject != null)
     {
-      this.mCoverGenerator.release();
+      ((BaseVideoThumbGenerator)localObject).release();
       this.mCoverGenerator = null;
     }
-    if (this.mCoverCache != null)
+    localObject = this.mCoverCache;
+    if (localObject != null)
     {
-      this.mCoverCache.release();
+      ((BaseVideoThumbAssetCache)localObject).release();
       this.mCoverCache = null;
     }
   }
   
   public void releaseBitmap(long paramLong)
   {
-    if (this.mCoverCache != null) {
-      this.mCoverCache.releaseLowMemory(paramLong);
+    BaseVideoThumbAssetCache localBaseVideoThumbAssetCache = this.mCoverCache;
+    if (localBaseVideoThumbAssetCache != null) {
+      localBaseVideoThumbAssetCache.releaseLowMemory(paramLong);
     }
   }
   
   public void resume()
   {
-    if (this.mCoverGenerator != null) {
-      this.mCoverGenerator.resume();
+    BaseVideoThumbGenerator localBaseVideoThumbGenerator = this.mCoverGenerator;
+    if (localBaseVideoThumbGenerator != null) {
+      localBaseVideoThumbGenerator.resume();
     }
   }
   
@@ -240,7 +247,7 @@ public class VideoThumbAssetProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbAssetProvider
  * JD-Core Version:    0.7.0.1
  */

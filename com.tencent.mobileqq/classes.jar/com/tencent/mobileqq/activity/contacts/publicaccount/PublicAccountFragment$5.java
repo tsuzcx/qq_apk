@@ -1,26 +1,22 @@
 package com.tencent.mobileqq.activity.contacts.publicaccount;
 
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
 
 class PublicAccountFragment$5
-  implements ThreadExcutor.IThreadListener
+  implements Runnable
 {
   PublicAccountFragment$5(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void run()
   {
-    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
+    if (this.this$0.a != null) {
+      this.this$0.a.initPublicAccountDataManager();
+    }
   }
-  
-  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.5
  * JD-Core Version:    0.7.0.1
  */

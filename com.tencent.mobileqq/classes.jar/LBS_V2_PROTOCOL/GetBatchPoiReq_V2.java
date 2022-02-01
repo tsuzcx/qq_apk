@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,18 +48,20 @@ public final class GetBatchPoiReq_V2
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.stCommon, 0);
-    if (this.vecGpsInfo != null) {
-      paramJceOutputStream.write(this.vecGpsInfo, 1);
+    Object localObject = this.vecGpsInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.opMask, 2);
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 3);
+    localObject = this.map_ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.GetBatchPoiReq_V2
  * JD-Core Version:    0.7.0.1
  */

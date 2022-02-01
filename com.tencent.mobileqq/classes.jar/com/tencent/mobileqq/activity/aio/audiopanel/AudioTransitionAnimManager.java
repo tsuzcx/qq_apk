@@ -34,8 +34,14 @@ public class AudioTransitionAnimManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_ROOT + "/Tencent/MobileQQ/pttPanelAnimations/");
-    jdField_b_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_ROOT + "/Tencent/MobileQQ/pttPanelAnimations/qq_android_ptt_transition_anim_res/");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_ROOT);
+    localStringBuilder.append("/Tencent/MobileQQ/pttPanelAnimations/");
+    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_ROOT);
+    localStringBuilder.append("/Tencent/MobileQQ/pttPanelAnimations/qq_android_ptt_transition_anim_res/");
+    jdField_b_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   private AudioTransitionAnimManager()
@@ -94,16 +100,20 @@ public class AudioTransitionAnimManager
       QLog.e("AudioTransitionAnimManager", 2, "getDrawable onCompositionLoaded lottieComposition is null or mIsDestroyed:");
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable finish type" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("AIOAudioPanel getDrawable finish type");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AudioTransitionAnimManager", 2, ((StringBuilder)localObject).toString());
     }
     this.jdField_b_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
-    LottieDrawable localLottieDrawable = new LottieDrawable();
+    Object localObject = new LottieDrawable();
     paramContext = new AuidoTransitionAssetDelegate(paramContext, paramString);
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImageAssetDelegate(paramContext);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, localLottieDrawable);
-    a(localLottieDrawable, paramInt);
+    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+    ((LottieDrawable)localObject).setImageAssetDelegate(paramContext);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+    a((LottieDrawable)localObject, paramInt);
   }
   
   private void a(LottieDrawable paramLottieDrawable, int paramInt)
@@ -130,14 +140,16 @@ public class AudioTransitionAnimManager
   
   private void c()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
+      ((Handler)localObject).removeCallbacks(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      ((HandlerThread)localObject).quit();
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
     }
   }
@@ -152,7 +164,10 @@ public class AudioTransitionAnimManager
       localLottieDrawable.cancelAnimation();
       localLottieDrawable.removeAllAnimatorListeners();
       localLottieDrawable.recycleBitmaps();
-      localLottieDrawable.clearCompositionAndCache(str + "data.json");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("data.json");
+      localLottieDrawable.clearCompositionAndCache(localStringBuilder.toString());
       localLottieDrawable.setImageAssetDelegate(null);
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
@@ -160,28 +175,37 @@ public class AudioTransitionAnimManager
   
   public LottieDrawable a(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable type" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("AIOAudioPanel getDrawable type");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AudioTransitionAnimManager", 2, ((StringBuilder)localObject).toString());
     }
     b();
-    if ((jdField_b_of_type_JavaUtilMap == null) || (!jdField_b_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))))
+    Object localObject = jdField_b_of_type_JavaUtilMap;
+    if ((localObject != null) && (((Map)localObject).containsKey(Integer.valueOf(paramInt))))
     {
-      QLog.e("AudioTransitionAnimManager", 1, "getDrawable mResPathMap error.");
-      return null;
-    }
-    String str = (String)jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if ((this.jdField_a_of_type_JavaUtilMap.containsKey(str)) && (this.jdField_a_of_type_JavaUtilMap.get(str) != null)) {
-      return (LottieDrawable)this.jdField_a_of_type_JavaUtilMap.get(str);
-    }
-    if (this.jdField_b_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable loading type" + paramInt);
+      localObject = (String)jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      if ((this.jdField_a_of_type_JavaUtilMap.containsKey(localObject)) && (this.jdField_a_of_type_JavaUtilMap.get(localObject) != null)) {
+        return (LottieDrawable)this.jdField_a_of_type_JavaUtilMap.get(localObject);
       }
+      if (this.jdField_b_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("AIOAudioPanel getDrawable loading type");
+          paramContext.append(paramInt);
+          QLog.d("AudioTransitionAnimManager", 2, paramContext.toString());
+        }
+        return null;
+      }
+      this.jdField_b_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+      a(paramInt, (String)localObject, paramContext);
       return null;
     }
-    this.jdField_b_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
-    a(paramInt, str, paramContext);
+    QLog.e("AudioTransitionAnimManager", 1, "getDrawable mResPathMap error.");
     return null;
   }
   
@@ -189,9 +213,10 @@ public class AudioTransitionAnimManager
   {
     this.jdField_a_of_type_JavaUtilSet.clear();
     this.jdField_b_of_type_JavaUtilSet.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyCancellable != null)
+    Cancellable localCancellable = this.jdField_a_of_type_ComTencentMobileqqDiniflyCancellable;
+    if (localCancellable != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyCancellable.cancel();
+      localCancellable.cancel();
       this.jdField_a_of_type_ComTencentMobileqqDiniflyCancellable = null;
     }
     if (this.jdField_a_of_type_JavaUtilMap != null) {
@@ -224,39 +249,59 @@ public class AudioTransitionAnimManager
   
   public void a(LottieDrawable paramLottieDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel cancelAnimation drawable=" + paramLottieDrawable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AIOAudioPanel cancelAnimation drawable=");
+      localStringBuilder.append(paramLottieDrawable);
+      QLog.d("AudioTransitionAnimManager", 2, localStringBuilder.toString());
     }
     paramLottieDrawable.cancelAnimation();
   }
   
   public void a(LottieDrawable paramLottieDrawable, float paramFloat, int paramInt, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    while ((paramFloat > 1.0F) || (paramFloat < 0.0F)) {
+    if (paramBoolean) {
       return;
     }
-    float f = paramFloat;
-    if (AudioTransitionAnimUtils.a(paramInt)) {
-      f = 1.0F - paramFloat;
+    if (paramFloat <= 1.0F)
+    {
+      if (paramFloat < 0.0F) {
+        return;
+      }
+      float f = paramFloat;
+      if (AudioTransitionAnimUtils.a(paramInt)) {
+        f = 1.0F - paramFloat;
+      }
+      paramLottieDrawable.setProgress(f);
     }
-    paramLottieDrawable.setProgress(f);
   }
   
   public void a(LottieDrawable paramLottieDrawable, int paramInt, ImageView paramImageView, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel playTransitionAnim   type" + paramInt + " drawable=" + paramLottieDrawable + " needDoPlay= " + paramBoolean);
-    }
-    if ((paramLottieDrawable == null) || (paramImageView == null)) {}
-    do
+    if (QLog.isColorLevel())
     {
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AIOAudioPanel playTransitionAnim   type");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" drawable=");
+      localStringBuilder.append(paramLottieDrawable);
+      localStringBuilder.append(" needDoPlay= ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("AudioTransitionAnimManager", 2, localStringBuilder.toString());
+    }
+    if (paramLottieDrawable != null)
+    {
+      if (paramImageView == null) {
+        return;
+      }
       paramImageView.setImageDrawable(paramLottieDrawable);
       paramLottieDrawable.removeAllAnimatorListeners();
       paramLottieDrawable.addAnimatorListener(new AudioTransitionAnimManager.2(this, paramLottieDrawable, paramInt, paramImageView));
-    } while (!paramBoolean);
-    paramLottieDrawable.playAnimation();
+      if (paramBoolean) {
+        paramLottieDrawable.playAnimation();
+      }
+    }
   }
   
   public boolean a()
@@ -271,14 +316,18 @@ public class AudioTransitionAnimManager
   
   public boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "isFileExsit fileExsit = " + this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isFileExsit fileExsit = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      QLog.d("AudioTransitionAnimManager", 2, ((StringBuilder)localObject).toString());
     }
     if (this.jdField_a_of_type_Boolean) {
       return true;
     }
-    File localFile = new File(jdField_b_of_type_JavaLangString);
-    if ((localFile.exists()) && (jdField_b_of_type_JavaUtilMap != null) && (localFile.listFiles() != null) && (localFile.listFiles().length == jdField_b_of_type_JavaUtilMap.size()))
+    Object localObject = new File(jdField_b_of_type_JavaLangString);
+    if ((((File)localObject).exists()) && (jdField_b_of_type_JavaUtilMap != null) && (((File)localObject).listFiles() != null) && (((File)localObject).listFiles().length == jdField_b_of_type_JavaUtilMap.size()))
     {
       this.jdField_a_of_type_Boolean = true;
       return true;
@@ -288,7 +337,7 @@ public class AudioTransitionAnimManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager
  * JD-Core Version:    0.7.0.1
  */

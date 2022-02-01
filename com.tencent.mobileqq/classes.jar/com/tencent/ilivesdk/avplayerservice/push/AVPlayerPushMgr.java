@@ -33,68 +33,72 @@ public class AVPlayerPushMgr
   
   private void dispatcher(VideoBroadcastEvent paramVideoBroadcastEvent)
   {
-    if (this.mPlayerStatusListener == null) {}
-    do
+    if (this.mPlayerStatusListener == null) {
+      return;
+    }
+    Object localObject = this.mServiceAdapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("videoPushDispatcher,dispatcher,event.operType:");
+    localStringBuilder.append(paramVideoBroadcastEvent.operType);
+    ((LogInterface)localObject).i("AVPlayerPushMgr", localStringBuilder.toString(), new Object[0]);
+    if (paramVideoBroadcastEvent.operType == -2)
     {
-      do
+      this.mVideoStatus = VideoStatus.STOP;
+      if (this.mPlayerStatusListener != null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    this.mServiceAdapter.getLogger().i("AVPlayerPushMgr", "videoPushDispatcher,dispatcher,event.operType:" + paramVideoBroadcastEvent.operType, new Object[0]);
-                    if (paramVideoBroadcastEvent.operType != -2) {
-                      break;
-                    }
-                    this.mVideoStatus = VideoStatus.STOP;
-                  } while (this.mPlayerStatusListener == null);
-                  this.mServiceAdapter.getLogger().i("AVPlayerPushMgr", "PhonePlayer,videoPushDispatcher,dispatcher,onPlayOver:", new Object[0]);
-                  this.mPlayerStatusListener.onPushPlayOver();
-                  return;
-                  if (paramVideoBroadcastEvent.operType != 0) {
-                    break;
-                  }
-                  this.mVideoStatus = VideoStatus.PLAY;
-                } while (this.mPlayerStatusListener == null);
-                this.mPlayerStatusListener.onPlayResume(paramVideoBroadcastEvent.uin);
-                return;
-                if (paramVideoBroadcastEvent.operType != 2) {
-                  break;
-                }
-                this.mVideoStatus = VideoStatus.PAUSE;
-              } while (this.mPlayerStatusListener == null);
-              this.mPlayerStatusListener.onPlayPause(paramVideoBroadcastEvent.uin);
-              return;
-              if (paramVideoBroadcastEvent.operType != 3) {
-                break;
-              }
-              this.mVideoStatus = VideoStatus.PLAY;
-            } while ((paramVideoBroadcastEvent.avTypeChange != 0) && (this.mPlayerStatusListener == null));
-            this.mPlayerStatusListener.onPlayResume(paramVideoBroadcastEvent.uin);
-            return;
-          } while (paramVideoBroadcastEvent.operType == 6);
-          if (paramVideoBroadcastEvent.operType != 7) {
-            break;
-          }
-          this.mVideoQuality = VideoQuality.CATON;
-        } while (this.mPlayerStatusListener == null);
-        this.mPlayerStatusListener.onPlayCaton();
-        return;
-      } while (paramVideoBroadcastEvent.operType != 8);
+        this.mServiceAdapter.getLogger().i("AVPlayerPushMgr", "PhonePlayer,videoPushDispatcher,dispatcher,onPlayOver:", new Object[0]);
+        this.mPlayerStatusListener.onPushPlayOver();
+      }
+    }
+    else if (paramVideoBroadcastEvent.operType == 0)
+    {
       this.mVideoStatus = VideoStatus.PLAY;
-      this.mVideoQuality = VideoQuality.OK;
-      this.mServiceAdapter.getLogger().i("AVPlayerPushMgr", "video OK", new Object[0]);
-    } while (this.mPlayerStatusListener == null);
-    this.mPlayerStatusListener.onPlayCatonRecover();
+      localObject = this.mPlayerStatusListener;
+      if (localObject != null) {
+        ((PlayerStatusListener)localObject).onPlayResume(paramVideoBroadcastEvent.uin);
+      }
+    }
+    else if (paramVideoBroadcastEvent.operType == 2)
+    {
+      this.mVideoStatus = VideoStatus.PAUSE;
+      localObject = this.mPlayerStatusListener;
+      if (localObject != null) {
+        ((PlayerStatusListener)localObject).onPlayPause(paramVideoBroadcastEvent.uin);
+      }
+    }
+    else if (paramVideoBroadcastEvent.operType == 3)
+    {
+      this.mVideoStatus = VideoStatus.PLAY;
+      int i = paramVideoBroadcastEvent.avTypeChange;
+      localObject = this.mPlayerStatusListener;
+      if (localObject != null) {
+        ((PlayerStatusListener)localObject).onPlayResume(paramVideoBroadcastEvent.uin);
+      }
+    }
+    else
+    {
+      if (paramVideoBroadcastEvent.operType == 6) {
+        return;
+      }
+      if (paramVideoBroadcastEvent.operType == 7)
+      {
+        this.mVideoQuality = VideoQuality.CATON;
+        paramVideoBroadcastEvent = this.mPlayerStatusListener;
+        if (paramVideoBroadcastEvent != null) {
+          paramVideoBroadcastEvent.onPlayCaton();
+        }
+      }
+      else if (paramVideoBroadcastEvent.operType == 8)
+      {
+        this.mVideoStatus = VideoStatus.PLAY;
+        this.mVideoQuality = VideoQuality.OK;
+        this.mServiceAdapter.getLogger().i("AVPlayerPushMgr", "video OK", new Object[0]);
+        paramVideoBroadcastEvent = this.mPlayerStatusListener;
+        if (paramVideoBroadcastEvent != null) {
+          paramVideoBroadcastEvent.onPlayCatonRecover();
+        }
+      }
+    }
   }
   
   private void initVideoPush()
@@ -108,46 +112,70 @@ public class AVPlayerPushMgr
   
   private void processPushMsg0x4a(byte[] paramArrayOfByte)
   {
-    int i = 0;
     this.mServiceAdapter.getLogger().i("AVPlayerPushMgr", "processPushMsg:", new Object[0]);
     paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
     for (;;)
     {
-      Object localObject;
       try
       {
-        localObject = IOUtil.readWLenData(paramArrayOfByte, true);
-        if ((localObject == null) || (localObject.length == 0))
+        Object localObject1 = IOUtil.readWLenData(paramArrayOfByte, true);
+        if ((localObject1 != null) && (localObject1.length != 0))
+        {
+          paramArrayOfByte = new ProtocolVideoState.RoomVideoStateBroadcast();
+          paramArrayOfByte.mergeFrom((byte[])localObject1);
+          long l = paramArrayOfByte.RoomID.get();
+          if (l != this.mServiceAdapter.getRoomId()) {
+            return;
+          }
+          localObject1 = this.mServiceAdapter.getLogger();
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("processPushMsg,rid:");
+          ((StringBuilder)localObject2).append(l);
+          ((StringBuilder)localObject2).append(" roomid:");
+          ((StringBuilder)localObject2).append(this.mServiceAdapter.getRoomId());
+          ((StringBuilder)localObject2).append(" mRoomType=");
+          ((StringBuilder)localObject2).append(this.mServiceAdapter.getRoomType());
+          ((LogInterface)localObject1).i("AVPlayerPushMgr", ((StringBuilder)localObject2).toString(), new Object[0]);
+          localObject1 = new VideoBroadcastEvent();
+          ((VideoBroadcastEvent)localObject1).uin = paramArrayOfByte.Uin.get();
+          ((VideoBroadcastEvent)localObject1).operType = paramArrayOfByte.OperType.get();
+          ((VideoBroadcastEvent)localObject1).liveType = paramArrayOfByte.LiveType.get();
+          ((VideoBroadcastEvent)localObject1).avTypeChange = paramArrayOfByte.av_type_change.get();
+          localObject2 = this.mServiceAdapter.getLogger();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("processPushMsg,rvsb.OperType.get():");
+          localStringBuilder.append(paramArrayOfByte.OperType.get());
+          localStringBuilder.append("-rvsb.LiveType.get():");
+          localStringBuilder.append(paramArrayOfByte.LiveType.get());
+          ((LogInterface)localObject2).i("AVPlayerPushMgr", localStringBuilder.toString(), new Object[0]);
+          if (paramArrayOfByte.CloseType.has())
+          {
+            i = paramArrayOfByte.CloseType.get();
+            ((VideoBroadcastEvent)localObject1).OperReasonType = i;
+            ((VideoBroadcastEvent)localObject1).OperReasonNote = paramArrayOfByte.CloseDescription.get().toStringUtf8();
+            if (((VideoBroadcastEvent)localObject1).operType == 0) {
+              ((VideoBroadcastEvent)localObject1).operType = -2;
+            }
+            if (((VideoBroadcastEvent)localObject1).OperReasonType == 10)
+            {
+              ((VideoBroadcastEvent)localObject1).operType = 6;
+              this.mServiceAdapter.getLogger().w("AVPlayerPushMgr", "violate supervise", new Object[0]);
+            }
+            else if (!paramArrayOfByte.PlayingInfos.has())
+            {
+              ((VideoBroadcastEvent)localObject1).operType = -2;
+              this.mServiceAdapter.getLogger().w("AVPlayerPushMgr", "has none live playing info", new Object[0]);
+            }
+            else if ((!paramArrayOfByte.VideoChanel.has()) || (paramArrayOfByte.VideoChanel.get() != 0))
+            {
+              this.mServiceAdapter.getLogger().w("AVPlayerPushMgr", "video channel %d not supported!", new Object[] { Integer.valueOf(paramArrayOfByte.VideoChanel.get()) });
+            }
+            ThreadCenter.postDefaultUITask(new AVPlayerPushMgr.2(this, (VideoBroadcastEvent)localObject1));
+          }
+        }
+        else
         {
           this.mServiceAdapter.getLogger().w("AVPlayerPushMgr", "pb length is invalid!", new Object[0]);
-          return;
-        }
-        paramArrayOfByte = new ProtocolVideoState.RoomVideoStateBroadcast();
-        paramArrayOfByte.mergeFrom((byte[])localObject);
-        long l = paramArrayOfByte.RoomID.get();
-        if (l != this.mServiceAdapter.getRoomId()) {
-          break;
-        }
-        this.mServiceAdapter.getLogger().i("AVPlayerPushMgr", "processPushMsg,rid:" + l + " roomid:" + this.mServiceAdapter.getRoomId() + " mRoomType=" + this.mServiceAdapter.getRoomType(), new Object[0]);
-        localObject = new VideoBroadcastEvent();
-        ((VideoBroadcastEvent)localObject).uin = paramArrayOfByte.Uin.get();
-        ((VideoBroadcastEvent)localObject).operType = paramArrayOfByte.OperType.get();
-        ((VideoBroadcastEvent)localObject).liveType = paramArrayOfByte.LiveType.get();
-        ((VideoBroadcastEvent)localObject).avTypeChange = paramArrayOfByte.av_type_change.get();
-        this.mServiceAdapter.getLogger().i("AVPlayerPushMgr", "processPushMsg,rvsb.OperType.get():" + paramArrayOfByte.OperType.get() + "-rvsb.LiveType.get():" + paramArrayOfByte.LiveType.get(), new Object[0]);
-        if (paramArrayOfByte.CloseType.has()) {
-          i = paramArrayOfByte.CloseType.get();
-        }
-        ((VideoBroadcastEvent)localObject).OperReasonType = i;
-        ((VideoBroadcastEvent)localObject).OperReasonNote = paramArrayOfByte.CloseDescription.get().toStringUtf8();
-        if (((VideoBroadcastEvent)localObject).operType == 0) {
-          ((VideoBroadcastEvent)localObject).operType = -2;
-        }
-        if (((VideoBroadcastEvent)localObject).OperReasonType == 10)
-        {
-          ((VideoBroadcastEvent)localObject).operType = 6;
-          this.mServiceAdapter.getLogger().w("AVPlayerPushMgr", "violate supervise", new Object[0]);
-          ThreadCenter.postDefaultUITask(new AVPlayerPushMgr.2(this, (VideoBroadcastEvent)localObject));
           return;
         }
       }
@@ -156,15 +184,7 @@ public class AVPlayerPushMgr
         this.mServiceAdapter.getLogger().printStackTrace(paramArrayOfByte);
         return;
       }
-      if (!paramArrayOfByte.PlayingInfos.has())
-      {
-        ((VideoBroadcastEvent)localObject).operType = -2;
-        this.mServiceAdapter.getLogger().w("AVPlayerPushMgr", "has none live playing info", new Object[0]);
-      }
-      else if ((!paramArrayOfByte.VideoChanel.has()) || (paramArrayOfByte.VideoChanel.get() != 0))
-      {
-        this.mServiceAdapter.getLogger().w("AVPlayerPushMgr", "video channel %d not supported!", new Object[] { Integer.valueOf(paramArrayOfByte.VideoChanel.get()) });
-      }
+      int i = 0;
     }
   }
   
@@ -180,14 +200,15 @@ public class AVPlayerPushMgr
   
   public void unInit()
   {
-    if (this.roomPushReceiver0x4a != null) {
-      this.roomPushReceiver0x4a.unInit();
+    PushReceiver localPushReceiver = this.roomPushReceiver0x4a;
+    if (localPushReceiver != null) {
+      localPushReceiver.unInit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.AVPlayerPushMgr
  * JD-Core Version:    0.7.0.1
  */

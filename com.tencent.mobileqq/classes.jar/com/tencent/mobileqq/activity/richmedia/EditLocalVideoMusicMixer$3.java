@@ -11,12 +11,14 @@ class EditLocalVideoMusicMixer$3
   
   public void a()
   {
-    EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer, new QQProgressDialog(EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer), EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer).getResources().getDimensionPixelSize(2131299166)));
-    EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer).c(2131717748);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer;
+    EditLocalVideoMusicMixer.a((EditLocalVideoMusicMixer)localObject, new QQProgressDialog(EditLocalVideoMusicMixer.a((EditLocalVideoMusicMixer)localObject), EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer).getResources().getDimensionPixelSize(2131299168)));
+    EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer).c(2131717407);
     EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer).setCancelable(false);
     EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer).show();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer$MusicMixCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer$MusicMixCallback.a();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer$MusicMixCallback;
+    if (localObject != null) {
+      ((EditLocalVideoMusicMixer.MusicMixCallback)localObject).a();
     }
   }
   
@@ -27,8 +29,9 @@ class EditLocalVideoMusicMixer$3
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer.a(true);
     EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer, false);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer$MusicMixCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer$MusicMixCallback.a(paramString);
+    EditLocalVideoMusicMixer.MusicMixCallback localMusicMixCallback = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer$MusicMixCallback;
+    if (localMusicMixCallback != null) {
+      localMusicMixCallback.a(paramString);
     }
   }
   
@@ -38,14 +41,15 @@ class EditLocalVideoMusicMixer$3
       EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer).dismiss();
     }
     EditLocalVideoMusicMixer.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer, false);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer$MusicMixCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer$MusicMixCallback.b();
+    EditLocalVideoMusicMixer.MusicMixCallback localMusicMixCallback = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoMusicMixer$MusicMixCallback;
+    if (localMusicMixCallback != null) {
+      localMusicMixCallback.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoMusicMixer.3
  * JD-Core Version:    0.7.0.1
  */

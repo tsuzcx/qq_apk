@@ -33,14 +33,15 @@ public final class ResponeBindMobile
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.sessionSid, 0);
-    if (this.alreadyBindedUin != null) {
-      paramJceOutputStream.write(this.alreadyBindedUin, 1);
+    String str = this.alreadyBindedUin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.ResponeBindMobile
  * JD-Core Version:    0.7.0.1
  */

@@ -34,30 +34,24 @@ public class PBJsonAdapter
       paramType.mergeFrom(Base64.decode(paramJsonElement.getAsString(), 3));
       return paramType;
     }
-    catch (IllegalAccessException paramJsonElement)
+    catch (InvalidProtocolBufferMicroException paramJsonElement)
     {
       paramJsonElement.printStackTrace();
-      return null;
     }
     catch (InstantiationException paramJsonElement)
     {
-      for (;;)
-      {
-        paramJsonElement.printStackTrace();
-      }
+      paramJsonElement.printStackTrace();
     }
-    catch (InvalidProtocolBufferMicroException paramJsonElement)
+    catch (IllegalAccessException paramJsonElement)
     {
-      for (;;)
-      {
-        paramJsonElement.printStackTrace();
-      }
+      paramJsonElement.printStackTrace();
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.hookparcel.PBJsonAdapter
  * JD-Core Version:    0.7.0.1
  */

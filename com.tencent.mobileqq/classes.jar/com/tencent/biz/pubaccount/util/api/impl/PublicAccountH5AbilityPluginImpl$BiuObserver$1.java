@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
 
 class PublicAccountH5AbilityPluginImpl$BiuObserver$1
   implements Runnable
@@ -14,7 +14,7 @@ class PublicAccountH5AbilityPluginImpl$BiuObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.BiuObserver.1
  * JD-Core Version:    0.7.0.1
  */

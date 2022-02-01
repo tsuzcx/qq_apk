@@ -18,63 +18,66 @@ public class NotificationCompat$DecoratedCustomViewStyle
   
   private RemoteViews createRemoteViews(RemoteViews paramRemoteViews, boolean paramBoolean)
   {
-    RemoteViews localRemoteViews = applyStandardTemplate(true, 2131559630, false);
-    localRemoteViews.removeAllViews(2131361992);
+    int m = 1;
+    int k = 0;
+    RemoteViews localRemoteViews = applyStandardTemplate(true, 2131559507, false);
+    localRemoteViews.removeAllViews(2131362007);
     List localList = getNonContextualActions(this.mBuilder.mActions);
+    int i;
     if ((paramBoolean) && (localList != null))
     {
-      int j = Math.min(localList.size(), 3);
-      if (j > 0)
+      int n = Math.min(localList.size(), 3);
+      if (n > 0)
       {
         i = 0;
-        while (i < j)
+        for (;;)
         {
-          localRemoteViews.addView(2131361992, generateActionButton((NotificationCompat.Action)localList.get(i)));
+          j = m;
+          if (i >= n) {
+            break;
+          }
+          localRemoteViews.addView(2131362007, generateActionButton((NotificationCompat.Action)localList.get(i)));
           i += 1;
         }
       }
     }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {}
-      for (i = 0;; i = 8)
-      {
-        localRemoteViews.setViewVisibility(2131361992, i);
-        localRemoteViews.setViewVisibility(2131361954, i);
-        buildIntoRemoteViews(localRemoteViews, paramRemoteViews);
-        return localRemoteViews;
-      }
+    int j = 0;
+    if (j != 0) {
+      i = k;
+    } else {
+      i = 8;
     }
+    localRemoteViews.setViewVisibility(2131362007, i);
+    localRemoteViews.setViewVisibility(2131361967, i);
+    buildIntoRemoteViews(localRemoteViews, paramRemoteViews);
+    return localRemoteViews;
   }
   
   private RemoteViews generateActionButton(NotificationCompat.Action paramAction)
   {
     int i;
-    Object localObject;
-    if (paramAction.actionIntent == null)
-    {
+    if (paramAction.actionIntent == null) {
       i = 1;
-      localObject = this.mBuilder.mContext.getPackageName();
-      if (i == 0) {
-        break label123;
-      }
-    }
-    label123:
-    for (int j = 2131559627;; j = 2131559626)
-    {
-      localObject = new RemoteViews((String)localObject, j);
-      ((RemoteViews)localObject).setImageViewBitmap(2131361958, createColoredBitmap(paramAction.getIconCompat(), this.mBuilder.mContext.getResources().getColor(2131165893)));
-      ((RemoteViews)localObject).setTextViewText(2131361990, paramAction.title);
-      if (i == 0) {
-        ((RemoteViews)localObject).setOnClickPendingIntent(2131361951, paramAction.actionIntent);
-      }
-      if (Build.VERSION.SDK_INT >= 15) {
-        ((RemoteViews)localObject).setContentDescription(2131361951, paramAction.title);
-      }
-      return localObject;
+    } else {
       i = 0;
-      break;
     }
+    Object localObject = this.mBuilder.mContext.getPackageName();
+    int j;
+    if (i != 0) {
+      j = 2131559504;
+    } else {
+      j = 2131559503;
+    }
+    localObject = new RemoteViews((String)localObject, j);
+    ((RemoteViews)localObject).setImageViewBitmap(2131361970, createColoredBitmap(paramAction.getIconCompat(), this.mBuilder.mContext.getResources().getColor(2131165896)));
+    ((RemoteViews)localObject).setTextViewText(2131362006, paramAction.title);
+    if (i == 0) {
+      ((RemoteViews)localObject).setOnClickPendingIntent(2131361964, paramAction.actionIntent);
+    }
+    if (Build.VERSION.SDK_INT >= 15) {
+      ((RemoteViews)localObject).setContentDescription(2131361964, paramAction.title);
+    }
+    return localObject;
   }
   
   private static List<NotificationCompat.Action> getNonContextualActions(List<NotificationCompat.Action> paramList)
@@ -105,25 +108,26 @@ public class NotificationCompat$DecoratedCustomViewStyle
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public RemoteViews makeBigContentView(NotificationBuilderWithBuilderAccessor paramNotificationBuilderWithBuilderAccessor)
   {
-    if (Build.VERSION.SDK_INT >= 24) {}
-    for (;;)
-    {
+    if (Build.VERSION.SDK_INT >= 24) {
       return null;
-      paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getBigContentView();
-      if (paramNotificationBuilderWithBuilderAccessor != null) {}
-      while (paramNotificationBuilderWithBuilderAccessor != null)
-      {
-        return createRemoteViews(paramNotificationBuilderWithBuilderAccessor, true);
-        paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getContentView();
-      }
     }
+    paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getBigContentView();
+    if (paramNotificationBuilderWithBuilderAccessor == null) {
+      paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getContentView();
+    }
+    if (paramNotificationBuilderWithBuilderAccessor == null) {
+      return null;
+    }
+    return createRemoteViews(paramNotificationBuilderWithBuilderAccessor, true);
   }
   
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public RemoteViews makeContentView(NotificationBuilderWithBuilderAccessor paramNotificationBuilderWithBuilderAccessor)
   {
-    if (Build.VERSION.SDK_INT >= 24) {}
-    while (this.mBuilder.getContentView() == null) {
+    if (Build.VERSION.SDK_INT >= 24) {
+      return null;
+    }
+    if (this.mBuilder.getContentView() == null) {
       return null;
     }
     return createRemoteViews(this.mBuilder.getContentView(), false);
@@ -132,21 +136,24 @@ public class NotificationCompat$DecoratedCustomViewStyle
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public RemoteViews makeHeadsUpContentView(NotificationBuilderWithBuilderAccessor paramNotificationBuilderWithBuilderAccessor)
   {
-    if (Build.VERSION.SDK_INT >= 24) {}
-    for (;;)
-    {
+    if (Build.VERSION.SDK_INT >= 24) {
       return null;
-      RemoteViews localRemoteViews = this.mBuilder.getHeadsUpContentView();
-      if (localRemoteViews != null) {}
-      for (paramNotificationBuilderWithBuilderAccessor = localRemoteViews; localRemoteViews != null; paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getContentView()) {
-        return createRemoteViews(paramNotificationBuilderWithBuilderAccessor, true);
-      }
     }
+    RemoteViews localRemoteViews = this.mBuilder.getHeadsUpContentView();
+    if (localRemoteViews != null) {
+      paramNotificationBuilderWithBuilderAccessor = localRemoteViews;
+    } else {
+      paramNotificationBuilderWithBuilderAccessor = this.mBuilder.getContentView();
+    }
+    if (localRemoteViews == null) {
+      return null;
+    }
+    return createRemoteViews(paramNotificationBuilderWithBuilderAccessor, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.DecoratedCustomViewStyle
  * JD-Core Version:    0.7.0.1
  */

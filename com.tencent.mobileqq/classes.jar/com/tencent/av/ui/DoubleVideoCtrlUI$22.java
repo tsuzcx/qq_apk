@@ -7,12 +7,12 @@ class DoubleVideoCtrlUI$22
   
   public void run()
   {
-    this.this$0.d(true);
+    this.this$0.e(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.22
  * JD-Core Version:    0.7.0.1
  */

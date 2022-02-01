@@ -10,19 +10,19 @@ final class DynamicAnimation$4
     super(paramString, null);
   }
   
-  public float a(View paramView)
+  public float getValue(View paramView)
   {
     return paramView.getScaleX();
   }
   
-  public void a(View paramView, float paramFloat)
+  public void setValue(View paramView, float paramFloat)
   {
     paramView.setScaleX(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.dynamicanimation.animation.DynamicAnimation.4
  * JD-Core Version:    0.7.0.1
  */

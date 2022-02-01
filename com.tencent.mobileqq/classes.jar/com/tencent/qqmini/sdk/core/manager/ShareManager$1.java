@@ -16,57 +16,60 @@ class ShareManager$1
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
     String str;
+    Object localObject;
     if ((paramBoolean) && (paramJSONObject != null))
     {
       str = paramJSONObject.optString("jump_url");
       paramBoolean = paramJSONObject.optBoolean("needShareCallBack");
-      this.val$shareData.needShareCallback = paramBoolean;
-      this.val$shareData.targetUrl = str;
-      this.val$shareData.jsonObject = paramJSONObject;
+      localObject = this.val$shareData;
+      ((InnerShareData)localObject).needShareCallback = paramBoolean;
+      ((InnerShareData)localObject).targetUrl = str;
+      ((InnerShareData)localObject).jsonObject = paramJSONObject;
       if (!paramBoolean) {
-        this.val$shareData.notifyShareResult(this.val$shareData.fromActivity, 0, true);
+        ((InnerShareData)localObject).notifyShareResult(((InnerShareData)localObject).fromActivity, 0, true);
       }
       if (((ShareProxy)ProxyManager.get(ShareProxy.class)).isShareTargetAvailable(this.val$shareData.fromActivity, this.val$shareData.shareTarget))
       {
-        if (this.val$shareData.shareInMiniProcess) {
+        if (this.val$shareData.shareInMiniProcess)
+        {
           ((ShareProxy)ProxyManager.get(ShareProxy.class)).share(this.val$shareData.fromActivity, this.val$shareData);
+          return;
         }
+        ShareManager.access$000(this.val$shareData);
       }
-      else {
-        return;
-      }
-      ShareManager.access$000(this.val$shareData);
-      return;
     }
-    long l;
-    if (paramJSONObject != null)
+    else
     {
-      paramBoolean = paramJSONObject.optBoolean("needShareCallBack");
-      l = paramJSONObject.optLong("retCode");
-      str = paramJSONObject.optString("errMsg");
-    }
-    for (;;)
-    {
-      this.val$shareData.needShareCallback = paramBoolean;
-      if (!paramBoolean) {
-        this.val$shareData.notifyShareResult(this.val$shareData.fromActivity, 0, true);
-      }
-      for (;;)
-      {
-        QMLog.e("ShareManager", "Failed to getShareInfo, result: " + paramJSONObject);
-        ThreadManager.getUIHandler().post(new ShareManager.1.1(this, l, str));
-        return;
-        this.val$shareData.notifyShareResult(this.val$shareData.fromActivity, 1);
-      }
-      l = -1L;
+      long l = -1L;
       str = null;
-      paramBoolean = false;
+      if (paramJSONObject != null)
+      {
+        paramBoolean = paramJSONObject.optBoolean("needShareCallBack");
+        l = paramJSONObject.optLong("retCode");
+        str = paramJSONObject.optString("errMsg");
+      }
+      else
+      {
+        paramBoolean = false;
+      }
+      localObject = this.val$shareData;
+      ((InnerShareData)localObject).needShareCallback = paramBoolean;
+      if (!paramBoolean) {
+        ((InnerShareData)localObject).notifyShareResult(((InnerShareData)localObject).fromActivity, 0, true);
+      } else {
+        ((InnerShareData)localObject).notifyShareResult(((InnerShareData)localObject).fromActivity, 1);
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Failed to getShareInfo, result: ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QMLog.e("ShareManager", ((StringBuilder)localObject).toString());
+      ThreadManager.getUIHandler().post(new ShareManager.1.1(this, l, str));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.ShareManager.1
  * JD-Core Version:    0.7.0.1
  */

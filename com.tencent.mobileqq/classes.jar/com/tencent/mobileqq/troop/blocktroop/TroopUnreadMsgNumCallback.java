@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.blocktroop;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.core.GetUnreadMsgNumCallback;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopUnreadMsgNumCallback
   implements GetUnreadMsgNumCallback
 {
-  public int a(String paramString, StringBuilder paramStringBuilder)
+  public int a(String paramString, StringBuilder paramStringBuilder, AppInterface paramAppInterface)
   {
     return 0;
   }
@@ -23,18 +23,18 @@ public class TroopUnreadMsgNumCallback
     return false;
   }
   
-  public boolean a(ConversationInfo paramConversationInfo, boolean[] paramArrayOfBoolean)
+  public boolean a(ConversationInfo paramConversationInfo, boolean[] paramArrayOfBoolean, AppInterface paramAppInterface)
   {
     if (paramConversationInfo.type == 1)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface == null) {
+      paramAppInterface = (QQAppInterface)paramAppInterface;
+      if (paramAppInterface == null) {
         return false;
       }
-      Object localObject = localQQAppInterface.getProxyManager().a().b(paramConversationInfo.uin, paramConversationInfo.type);
+      Object localObject = paramAppInterface.getProxyManager().a().b(paramConversationInfo.uin, paramConversationInfo.type);
       if ((localObject != null) && ((((RecentUser)localObject).lFlag & 1L) != 0L))
       {
-        localObject = localQQAppInterface.getHotChatMng(true);
+        localObject = paramAppInterface.getHotChatMng(true);
         if ((localObject != null) && (!((HotChatManager)localObject).b(paramConversationInfo.uin)))
         {
           if (QLog.isColorLevel()) {
@@ -44,7 +44,7 @@ public class TroopUnreadMsgNumCallback
           return true;
         }
       }
-      if (TroopBlockUtils.a(localQQAppInterface, paramConversationInfo.uin))
+      if (TroopBlockUtils.a(paramAppInterface, paramConversationInfo.uin))
       {
         paramArrayOfBoolean[0] = true;
         return true;
@@ -55,7 +55,7 @@ public class TroopUnreadMsgNumCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.blocktroop.TroopUnreadMsgNumCallback
  * JD-Core Version:    0.7.0.1
  */

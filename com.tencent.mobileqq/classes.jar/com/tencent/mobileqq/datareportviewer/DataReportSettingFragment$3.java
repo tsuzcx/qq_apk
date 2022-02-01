@@ -14,13 +14,13 @@ class DataReportSettingFragment$3
   
   public void onClick(View paramView)
   {
-    DialogUtil.a(this.a.getActivity(), 0, 2131559721, HardCodeUtil.a(2131702812), "", HardCodeUtil.a(2131702807), HardCodeUtil.a(2131702813), new DataReportSettingFragment.3.1(this), new DataReportSettingFragment.3.2(this)).show();
+    DialogUtil.a(this.a.getBaseActivity(), 0, 2131559597, HardCodeUtil.a(2131702944), "", HardCodeUtil.a(2131702939), HardCodeUtil.a(2131702945), new DataReportSettingFragment.3.1(this), new DataReportSettingFragment.3.2(this)).show();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportSettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

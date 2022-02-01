@@ -17,9 +17,21 @@ public class LightalkBlueTipsBarData
   
   static
   {
-    jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "lightalkfiles";
-    b = jdField_a_of_type_JavaLangString + File.separator + "aio_lightalk_tips_config";
-    c = jdField_a_of_type_JavaLangString + File.separator + "aio_lightalk_tips_icon";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getContext().getFilesDir());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("lightalkfiles");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("aio_lightalk_tips_config");
+    b = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("aio_lightalk_tips_icon");
+    c = localStringBuilder.toString();
     jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBarData = null;
   }
   
@@ -28,20 +40,22 @@ public class LightalkBlueTipsBarData
     long l1 = SystemClock.uptimeMillis();
     a();
     long l2 = SystemClock.uptimeMillis();
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("read config cost ").append(l2 - l1).append(" , result is ");
-      if (jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBarData != null) {
-        break label71;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("read config cost ");
+      localStringBuilder.append(l2 - l1);
+      localStringBuilder.append(" , result is ");
+      boolean bool;
+      if (jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBarData == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localStringBuilder.append(bool);
+      QLog.d("LightalkBlueTipsBar", 2, localStringBuilder.toString());
     }
-    label71:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("LightalkBlueTipsBar", 2, bool);
-      return jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBarData;
-    }
+    return jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBarData;
   }
   
   /* Error */
@@ -63,15 +77,15 @@ public class LightalkBlueTipsBarData
     //   28: astore_1
     //   29: aload_0
     //   30: invokevirtual 102	java/io/File:exists	()Z
-    //   33: ifeq +204 -> 237
+    //   33: ifeq +205 -> 238
     //   36: aload_0
     //   37: invokevirtual 105	java/io/File:length	()J
     //   40: lconst_0
     //   41: lcmp
-    //   42: ifle +195 -> 237
+    //   42: ifle +196 -> 238
     //   45: aload_1
     //   46: invokevirtual 102	java/io/File:exists	()Z
-    //   49: ifeq +188 -> 237
+    //   49: ifeq +189 -> 238
     //   52: new 107	java/io/FileInputStream
     //   55: dup
     //   56: aload_0
@@ -126,115 +140,112 @@ public class LightalkBlueTipsBarData
     //   134: aaload
     //   135: putfield 136	com/tencent/mobileqq/activity/aio/tips/LightalkBlueTipsBarData:e	Ljava/lang/String;
     //   138: aload_1
-    //   139: ifnull -133 -> 6
-    //   142: aload_1
-    //   143: invokevirtual 139	java/io/FileInputStream:close	()V
-    //   146: return
-    //   147: astore_0
-    //   148: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   151: ifeq -145 -> 6
-    //   154: ldc 86
-    //   156: iconst_2
-    //   157: ldc 141
-    //   159: aload_0
-    //   160: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   163: return
-    //   164: astore_2
+    //   139: invokevirtual 139	java/io/FileInputStream:close	()V
+    //   142: return
+    //   143: astore_0
+    //   144: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   147: ifeq +105 -> 252
+    //   150: ldc 89
+    //   152: iconst_2
+    //   153: ldc 141
+    //   155: aload_0
+    //   156: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   159: return
+    //   160: astore_2
+    //   161: goto +12 -> 173
+    //   164: astore_0
     //   165: aconst_null
     //   166: astore_1
-    //   167: aload_1
-    //   168: astore_0
-    //   169: aload_2
-    //   170: invokevirtual 147	java/lang/Exception:printStackTrace	()V
+    //   167: goto +42 -> 209
+    //   170: astore_2
+    //   171: aconst_null
+    //   172: astore_1
     //   173: aload_1
     //   174: astore_0
-    //   175: aconst_null
-    //   176: putstatic 60	com/tencent/mobileqq/activity/aio/tips/LightalkBlueTipsBarData:jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBarData	Lcom/tencent/mobileqq/activity/aio/tips/LightalkBlueTipsBarData;
+    //   175: aload_2
+    //   176: invokevirtual 147	java/lang/Exception:printStackTrace	()V
     //   179: aload_1
-    //   180: ifnull -174 -> 6
-    //   183: aload_1
-    //   184: invokevirtual 139	java/io/FileInputStream:close	()V
-    //   187: return
-    //   188: astore_0
-    //   189: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   192: ifeq -186 -> 6
-    //   195: ldc 86
-    //   197: iconst_2
-    //   198: ldc 141
-    //   200: aload_0
-    //   201: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   204: return
-    //   205: astore_1
-    //   206: aconst_null
-    //   207: astore_0
-    //   208: aload_0
-    //   209: ifnull +7 -> 216
-    //   212: aload_0
-    //   213: invokevirtual 139	java/io/FileInputStream:close	()V
-    //   216: aload_1
-    //   217: athrow
-    //   218: astore_0
-    //   219: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   222: ifeq -6 -> 216
-    //   225: ldc 86
-    //   227: iconst_2
-    //   228: ldc 141
-    //   230: aload_0
-    //   231: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   234: goto -18 -> 216
-    //   237: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   240: ifeq -234 -> 6
-    //   243: ldc 86
-    //   245: iconst_2
-    //   246: ldc 149
-    //   248: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   251: return
-    //   252: astore_1
-    //   253: goto -45 -> 208
-    //   256: astore_2
-    //   257: goto -90 -> 167
+    //   180: astore_0
+    //   181: aconst_null
+    //   182: putstatic 60	com/tencent/mobileqq/activity/aio/tips/LightalkBlueTipsBarData:jdField_a_of_type_ComTencentMobileqqActivityAioTipsLightalkBlueTipsBarData	Lcom/tencent/mobileqq/activity/aio/tips/LightalkBlueTipsBarData;
+    //   185: aload_1
+    //   186: ifnull +66 -> 252
+    //   189: aload_1
+    //   190: invokevirtual 139	java/io/FileInputStream:close	()V
+    //   193: return
+    //   194: astore_0
+    //   195: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   198: ifeq +54 -> 252
+    //   201: goto -51 -> 150
+    //   204: astore_2
+    //   205: aload_0
+    //   206: astore_1
+    //   207: aload_2
+    //   208: astore_0
+    //   209: aload_1
+    //   210: ifnull +26 -> 236
+    //   213: aload_1
+    //   214: invokevirtual 139	java/io/FileInputStream:close	()V
+    //   217: goto +19 -> 236
+    //   220: astore_1
+    //   221: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   224: ifeq +12 -> 236
+    //   227: ldc 89
+    //   229: iconst_2
+    //   230: ldc 141
+    //   232: aload_1
+    //   233: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   236: aload_0
+    //   237: athrow
+    //   238: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   241: ifeq +11 -> 252
+    //   244: ldc 89
+    //   246: iconst_2
+    //   247: ldc 149
+    //   249: invokestatic 92	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   252: return
     // Local variable table:
     //   start	length	slot	name	signature
     //   17	112	0	localObject1	Object
-    //   147	13	0	localIOException1	java.io.IOException
-    //   168	7	0	localObject2	Object
-    //   188	13	0	localIOException2	java.io.IOException
-    //   207	6	0	localObject3	Object
-    //   218	13	0	localIOException3	java.io.IOException
-    //   28	156	1	localObject4	Object
-    //   205	12	1	localObject5	Object
-    //   252	1	1	localObject6	Object
-    //   69	64	2	localObject7	Object
-    //   164	6	2	localException1	java.lang.Exception
-    //   256	1	2	localException2	java.lang.Exception
+    //   143	13	0	localIOException1	java.io.IOException
+    //   164	1	0	localObject2	Object
+    //   174	7	0	localObject3	Object
+    //   194	12	0	localIOException2	java.io.IOException
+    //   208	29	0	localObject4	Object
+    //   28	186	1	localObject5	Object
+    //   220	13	1	localIOException3	java.io.IOException
+    //   69	64	2	localObject6	Object
+    //   160	1	2	localException1	java.lang.Exception
+    //   170	6	2	localException2	java.lang.Exception
+    //   204	4	2	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   142	146	147	java/io/IOException
-    //   52	61	164	java/lang/Exception
-    //   183	187	188	java/io/IOException
-    //   52	61	205	finally
-    //   212	216	218	java/io/IOException
-    //   63	70	252	finally
-    //   72	78	252	finally
-    //   80	96	252	finally
-    //   98	104	252	finally
-    //   106	116	252	finally
-    //   118	127	252	finally
-    //   129	138	252	finally
-    //   169	173	252	finally
-    //   175	179	252	finally
-    //   63	70	256	java/lang/Exception
-    //   72	78	256	java/lang/Exception
-    //   80	96	256	java/lang/Exception
-    //   98	104	256	java/lang/Exception
-    //   106	116	256	java/lang/Exception
-    //   118	127	256	java/lang/Exception
-    //   129	138	256	java/lang/Exception
+    //   138	142	143	java/io/IOException
+    //   63	70	160	java/lang/Exception
+    //   72	78	160	java/lang/Exception
+    //   80	96	160	java/lang/Exception
+    //   98	104	160	java/lang/Exception
+    //   106	116	160	java/lang/Exception
+    //   118	127	160	java/lang/Exception
+    //   129	138	160	java/lang/Exception
+    //   52	61	164	finally
+    //   52	61	170	java/lang/Exception
+    //   189	193	194	java/io/IOException
+    //   63	70	204	finally
+    //   72	78	204	finally
+    //   80	96	204	finally
+    //   98	104	204	finally
+    //   106	116	204	finally
+    //   118	127	204	finally
+    //   129	138	204	finally
+    //   175	179	204	finally
+    //   181	185	204	finally
+    //   213	217	220	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBarData
  * JD-Core Version:    0.7.0.1
  */

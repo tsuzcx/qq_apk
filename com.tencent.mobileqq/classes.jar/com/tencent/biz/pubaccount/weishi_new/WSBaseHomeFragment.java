@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSView;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.pull2refresh.BaseAdapter;
 import com.tencent.widget.pull2refresh.LoadingMoreHelper;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
@@ -28,18 +27,19 @@ public abstract class WSBaseHomeFragment<V extends IWSBaseView, P extends IWSPre
   private void b(View paramView)
   {
     if (this.jdField_b_of_type_Boolean) {
-      paramView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165357));
+      paramView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165327));
     }
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368468);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView = ((XRecyclerView)paramView.findViewById(2131382056));
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView != null)
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368216);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView = ((XRecyclerView)paramView.findViewById(2131381258));
+    paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView;
+    if (paramView != null)
     {
-      paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
+      paramView = paramView.getLoadMoreLayoutHelper();
       if (paramView != null) {
-        paramView.a(12);
+        paramView.setPreLoaderCount(12);
       }
       this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(new WSBaseHomeFragment.1(this));
-      paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.a();
+      paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.getRecyclerView();
       if (a() != null) {
         paramView.setAdapter(a());
       }
@@ -58,8 +58,6 @@ public abstract class WSBaseHomeFragment<V extends IWSBaseView, P extends IWSPre
   
   protected abstract BaseAdapter a();
   
-  protected abstract void a();
-  
   public void a(int paramInt, String paramString) {}
   
   protected abstract void a(Bundle paramBundle);
@@ -70,9 +68,12 @@ public abstract class WSBaseHomeFragment<V extends IWSBaseView, P extends IWSPre
   
   protected abstract void a(XRecyclerView paramXRecyclerView, boolean paramBoolean);
   
+  protected abstract void b();
+  
   public void c()
   {
-    if ((this.jdField_b_of_type_AndroidViewView != null) && (!this.jdField_b_of_type_AndroidViewView.isShown())) {
+    View localView = this.jdField_b_of_type_AndroidViewView;
+    if ((localView != null) && (!localView.isShown())) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
     }
   }
@@ -83,7 +84,8 @@ public abstract class WSBaseHomeFragment<V extends IWSBaseView, P extends IWSPre
   
   public void f()
   {
-    if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView.isShown())) {
+    View localView = this.jdField_b_of_type_AndroidViewView;
+    if ((localView != null) && (localView.isShown())) {
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
   }
@@ -91,17 +93,16 @@ public abstract class WSBaseHomeFragment<V extends IWSBaseView, P extends IWSPre
   @Nullable
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = getActivity();
+    this.jdField_a_of_type_AndroidContentContext = getBaseActivity();
     if (getArguments() != null) {
       a(getArguments());
     }
-    if (a() != -1) {}
-    for (this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(a(), paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560131, paramViewGroup, false))
-    {
-      paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
-      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
+    if (a() != -1) {
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(a(), paramViewGroup, false);
+    } else {
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560015, paramViewGroup, false);
     }
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void onViewCreated(View paramView, @Nullable Bundle paramBundle)
@@ -114,7 +115,7 @@ public abstract class WSBaseHomeFragment<V extends IWSBaseView, P extends IWSPre
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment
  * JD-Core Version:    0.7.0.1
  */

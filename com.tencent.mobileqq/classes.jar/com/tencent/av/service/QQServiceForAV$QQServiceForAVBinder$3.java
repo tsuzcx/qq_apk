@@ -1,7 +1,6 @@
 package com.tencent.av.service;
 
 import android.os.Bundle;
-import com.tencent.av.ui.redbag.RedBagUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class QQServiceForAV$QQServiceForAVBinder$3
@@ -11,12 +10,12 @@ class QQServiceForAV$QQServiceForAVBinder$3
   
   public void run()
   {
-    RedBagUtil.a((QQAppInterface)this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV$QQServiceForAVBinder.a.a(), this.jdField_a_of_type_AndroidOsBundle);
+    QQServiceForAV.a((QQAppInterface)this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV$QQServiceForAVBinder.a.a(), this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.QQServiceForAV.QQServiceForAVBinder.3
  * JD-Core Version:    0.7.0.1
  */

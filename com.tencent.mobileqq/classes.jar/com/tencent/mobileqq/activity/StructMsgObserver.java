@@ -13,40 +13,42 @@ public class StructMsgObserver
 {
   public void update(Observable paramObservable, Object paramObject)
   {
-    if (!WebAccelerator.a) {}
-    do
+    if (!WebAccelerator.a) {
+      return;
+    }
+    String str1;
+    String str2;
+    if ((paramObject instanceof MessageForStructing))
     {
-      do
+      paramObject = (MessageForStructing)paramObject;
+      paramObservable = paramObject.structingMsg;
+      if ((!paramObject.isSend()) && (WebAccelerator.a(paramObservable)))
       {
-        do
+        paramObject = paramObservable.mMsgUrl;
+        str1 = paramObservable.currentAccountUin;
+        str2 = paramObservable.uin;
+        ThreadManager.post(new StructMsgObserver.1(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
+      }
+    }
+    else if ((paramObject instanceof MessageForText))
+    {
+      paramObservable = (MessageForText)paramObject;
+      if ((!paramObservable.isSend()) && (!TextUtils.isEmpty(paramObservable.msg)))
+      {
+        paramObject = WebAccelerator.c(paramObservable.msg);
+        if (!TextUtils.isEmpty(paramObject))
         {
-          do
-          {
-            return;
-            if (!(paramObject instanceof MessageForStructing)) {
-              break;
-            }
-            paramObject = (MessageForStructing)paramObject;
-            paramObservable = paramObject.structingMsg;
-          } while ((paramObject.isSend()) || (!WebAccelerator.a(paramObservable)));
-          paramObject = paramObservable.mMsgUrl;
-          str1 = paramObservable.currentAccountUin;
-          str2 = paramObservable.uin;
-          ThreadManager.post(new StructMsgObserver.1(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
-          return;
-        } while (!(paramObject instanceof MessageForText));
-        paramObservable = (MessageForText)paramObject;
-      } while ((paramObservable.isSend()) || (TextUtils.isEmpty(paramObservable.msg)));
-      paramObject = WebAccelerator.c(paramObservable.msg);
-    } while (TextUtils.isEmpty(paramObject));
-    String str1 = paramObservable.frienduin;
-    String str2 = paramObservable.selfuin;
-    ThreadManager.post(new StructMsgObserver.2(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
+          str1 = paramObservable.frienduin;
+          str2 = paramObservable.selfuin;
+          ThreadManager.post(new StructMsgObserver.2(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.StructMsgObserver
  * JD-Core Version:    0.7.0.1
  */

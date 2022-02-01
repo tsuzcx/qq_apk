@@ -18,9 +18,10 @@ public class DataReportSettingFragment$ItemListener
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDatareportviewerBaseReportDataConfig != null)
+    BaseReportDataConfig localBaseReportDataConfig = this.jdField_a_of_type_ComTencentMobileqqDatareportviewerBaseReportDataConfig;
+    if (localBaseReportDataConfig != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDatareportviewerBaseReportDataConfig.a = paramBoolean;
+      localBaseReportDataConfig.a = paramBoolean;
       DataReportViewerFloatViewHelper.a().e();
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -28,13 +29,13 @@ public class DataReportSettingFragment$ItemListener
   
   public boolean onLongClick(View paramView)
   {
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getActivity(), 230, null, HardCodeUtil.a(2131702814), new DataReportSettingFragment.ItemListener.1(this), new DataReportSettingFragment.ItemListener.2(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.getBaseActivity(), 230, null, HardCodeUtil.a(2131702946), new DataReportSettingFragment.ItemListener.1(this), new DataReportSettingFragment.ItemListener.2(this)).show();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportSettingFragment.ItemListener
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,22 @@ class TrimTextureVideoView$3
   
   public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      paramIMediaPlayer = this.a.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TrimTextureVideoView MediaPlayer onError==>what:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("|extra:");
+      localStringBuilder.append(paramInt2);
+      QLog.e(paramIMediaPlayer, 2, localStringBuilder.toString());
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView.3
  * JD-Core Version:    0.7.0.1
  */

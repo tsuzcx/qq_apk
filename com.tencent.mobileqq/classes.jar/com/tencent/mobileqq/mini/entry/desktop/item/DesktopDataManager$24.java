@@ -20,17 +20,28 @@ class DesktopDataManager$24
       localSharedPreferences.edit().clear().commit();
       QLog.d("DesktopDataManager-Recommend", 2, "updateRecommendExposureSp : clear.");
       StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.val$recommendAppInfoList.iterator();
-      while (localIterator.hasNext())
+      Object localObject = this.val$recommendAppInfoList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        RecommendAppInfo localRecommendAppInfo = (RecommendAppInfo)localIterator.next();
-        if (localRecommendAppInfo != null) {
-          localStringBuilder.append(localRecommendAppInfo.getAppId()).append("_").append(localRecommendAppInfo.getExposuredNum()).append("_").append(localRecommendAppInfo.getPullTime()).append(";");
+        RecommendAppInfo localRecommendAppInfo = (RecommendAppInfo)((Iterator)localObject).next();
+        if (localRecommendAppInfo != null)
+        {
+          localStringBuilder.append(localRecommendAppInfo.getAppId());
+          localStringBuilder.append("_");
+          localStringBuilder.append(localRecommendAppInfo.getExposuredNum());
+          localStringBuilder.append("_");
+          localStringBuilder.append(localRecommendAppInfo.getPullTime());
+          localStringBuilder.append(";");
         }
       }
       if (localStringBuilder.length() > 0)
       {
-        QLog.d("DesktopDataManager-Recommend", 2, "updateRecommendExposureSp : " + localStringBuilder.toString() + ", recommendAppList size: " + this.val$recommendAppInfoList.size());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateRecommendExposureSp : ");
+        ((StringBuilder)localObject).append(localStringBuilder.toString());
+        ((StringBuilder)localObject).append(", recommendAppList size: ");
+        ((StringBuilder)localObject).append(this.val$recommendAppInfoList.size());
+        QLog.d("DesktopDataManager-Recommend", 2, ((StringBuilder)localObject).toString());
         localSharedPreferences.edit().putString("app_recommend_exposure", localStringBuilder.toString()).commit();
       }
     }
@@ -38,7 +49,7 @@ class DesktopDataManager$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.24
  * JD-Core Version:    0.7.0.1
  */

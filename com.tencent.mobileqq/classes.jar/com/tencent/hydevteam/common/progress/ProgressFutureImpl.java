@@ -34,10 +34,11 @@ public class ProgressFutureImpl<T>
   
   public double getProgress()
   {
-    if (this.b == null) {
+    Progress localProgress = this.b;
+    if (localProgress == null) {
       return 0.0D;
     }
-    return this.b.getProgress();
+    return localProgress.getProgress();
   }
   
   public boolean isCancelled()
@@ -52,7 +53,7 @@ public class ProgressFutureImpl<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hydevteam.common.progress.ProgressFutureImpl
  * JD-Core Version:    0.7.0.1
  */

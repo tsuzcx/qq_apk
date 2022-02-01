@@ -47,22 +47,27 @@ public class HeadSetViewModule
     if (QLog.isColorLevel())
     {
       Iterator localIterator = paramArrayList.iterator();
-      String str2;
-      for (String str1 = ""; localIterator.hasNext(); str1 = str1 + ", " + str2) {
-        str2 = (String)localIterator.next();
+      StringBuilder localStringBuilder;
+      for (String str1 = ""; localIterator.hasNext(); str1 = localStringBuilder.toString())
+      {
+        String str2 = (String)localIterator.next();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(str2);
       }
       QLog.d("HeadSetViewModule", 2, new Object[] { "refreshHeadSet: invoked. ", " uins: ", str1, " headAdapter.count: ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadsetHeadAdapter.getCount()) });
     }
     if (this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadsetHeadAdapter == null) {
       return;
     }
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0))
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      QLog.e("HeadSetViewModule", 1, "refreshHeadSet: failed. uins empty, maybe exit room");
+      paramArrayList = new HeadSetViewModule.1(this, paramArrayList);
+      ThreadManager.getUIHandlerV2().post(paramArrayList);
       return;
     }
-    paramArrayList = new HeadSetViewModule.1(this, paramArrayList);
-    ThreadManager.getUIHandlerV2().post(paramArrayList);
+    QLog.e("HeadSetViewModule", 1, "refreshHeadSet: failed. uins empty, maybe exit room");
   }
   
   private void b()
@@ -73,16 +78,23 @@ public class HeadSetViewModule
   
   private void b(ArrayList<String> paramArrayList)
   {
-    if (paramArrayList.size() == 1) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity.getResources().getString(2131693852));
-    }
-    for (;;)
+    if (paramArrayList.size() == 1)
     {
-      MapUtils.a(this.jdField_a_of_type_AndroidWidgetTextView, "" + this.jdField_a_of_type_AndroidWidgetTextView.getText());
-      return;
-      paramArrayList = paramArrayList.size() + this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity.getString(2131693872);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity.getResources().getString(2131693806));
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArrayList.size());
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity.getString(2131693826));
+      paramArrayList = localStringBuilder.toString();
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramArrayList);
     }
+    paramArrayList = this.jdField_a_of_type_AndroidWidgetTextView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+    MapUtils.a(paramArrayList, localStringBuilder.toString());
   }
   
   private void c()
@@ -102,9 +114,9 @@ public class HeadSetViewModule
       QLog.d("HeadSetViewModule", 2, "onClickCancelShare: invoked. ");
     }
     ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentMobileqqActivityQPublicFragmentActivity);
-    localActionSheet.addButton(2131692033, 3);
-    localActionSheet.setMainTitle(2131694455);
-    localActionSheet.addCancelButton(2131690800);
+    localActionSheet.addButton(2131691952, 3);
+    localActionSheet.setMainTitle(2131694420);
+    localActionSheet.addCancelButton(2131690728);
     localActionSheet.setOnButtonClickListener(new HeadSetViewModule.2(this, localActionSheet));
     localActionSheet.show();
     ReportController.b(null, "CliOper", "", "", "0X800A76D", "0X800A76D", 0, 0, "", "0", "0", "");
@@ -138,22 +150,17 @@ public class HeadSetViewModule
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131364374) {
+    if (i == 2131364272) {
       d();
+    } else if (i == 2131371038) {
+      c();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (i == 2131371416) {
-        c();
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.HeadSetViewModule
  * JD-Core Version:    0.7.0.1
  */

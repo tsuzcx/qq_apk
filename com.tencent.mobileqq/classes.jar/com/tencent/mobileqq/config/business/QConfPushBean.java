@@ -14,31 +14,34 @@ public class QConfPushBean
   
   public static QConfPushBean a(String paramString)
   {
-    boolean bool = true;
     if (paramString == null) {
       return null;
     }
-    try
+    for (;;)
     {
-      QConfPushBean localQConfPushBean = new QConfPushBean();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("enable", 0) == 1) {}
-      for (;;)
+      try
       {
-        localQConfPushBean.jdField_a_of_type_Boolean = bool;
-        localQConfPushBean.jdField_a_of_type_Int = paramString.optInt("showCount", 0);
-        localQConfPushBean.jdField_a_of_type_JavaLangString = paramString.optString("c2cTipsContent", "");
-        localQConfPushBean.b = paramString.optString("c2cHighlightContent", "");
-        localQConfPushBean.c = paramString.optString("groupTipsContent", "");
-        localQConfPushBean.d = paramString.optString("groupHighlightContent", "");
-        return localQConfPushBean;
-        bool = false;
+        QConfPushBean localQConfPushBean = new QConfPushBean();
+        paramString = new JSONObject(paramString);
+        int i = paramString.optInt("enable", 0);
+        bool = true;
+        if (i == 1)
+        {
+          localQConfPushBean.jdField_a_of_type_Boolean = bool;
+          localQConfPushBean.jdField_a_of_type_Int = paramString.optInt("showCount", 0);
+          localQConfPushBean.jdField_a_of_type_JavaLangString = paramString.optString("c2cTipsContent", "");
+          localQConfPushBean.b = paramString.optString("c2cHighlightContent", "");
+          localQConfPushBean.c = paramString.optString("groupTipsContent", "");
+          localQConfPushBean.d = paramString.optString("groupHighlightContent", "");
+          return localQConfPushBean;
+        }
       }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return null;
+      }
+      boolean bool = false;
     }
   }
   
@@ -91,7 +94,7 @@ public class QConfPushBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QConfPushBean
  * JD-Core Version:    0.7.0.1
  */

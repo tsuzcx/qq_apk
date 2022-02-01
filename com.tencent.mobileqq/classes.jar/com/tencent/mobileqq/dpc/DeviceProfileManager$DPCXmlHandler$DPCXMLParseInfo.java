@@ -10,12 +10,23 @@ class DeviceProfileManager$DPCXmlHandler$DPCXMLParseInfo
   
   public String toString()
   {
-    return "DPCXMLParseInfo: key=" + this.key + ",value=" + this.value + ",weight=" + this.weight + ",taskId=" + this.taskId + ",testType=" + this.testType;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DPCXMLParseInfo: key=");
+    localStringBuilder.append(this.key);
+    localStringBuilder.append(",value=");
+    localStringBuilder.append(this.value);
+    localStringBuilder.append(",weight=");
+    localStringBuilder.append(this.weight);
+    localStringBuilder.append(",taskId=");
+    localStringBuilder.append(this.taskId);
+    localStringBuilder.append(",testType=");
+    localStringBuilder.append(this.testType);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dpc.DeviceProfileManager.DPCXmlHandler.DPCXMLParseInfo
  * JD-Core Version:    0.7.0.1
  */

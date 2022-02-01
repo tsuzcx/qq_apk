@@ -2,15 +2,14 @@ package com.tencent.mobileqq.resourcesgrab;
 
 import android.app.Activity;
 import android.graphics.Rect;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mvvm.LifeCycleExtKt;
+import com.tencent.mobileqq.mvvm.ViewModelProviderHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Field;
@@ -49,11 +48,12 @@ public class ResourceNameOnClickListener
       if ((paramView instanceof ResourceNameOnClickListener))
       {
         paramView = ((ResourceNameOnClickListener)paramView).jdField_a_of_type_JavaUtilList;
-        if ((paramView != null) && (paramView.size() > 0)) {
+        if ((paramView != null) && (paramView.size() > 0))
+        {
           localArrayList.addAll(paramView);
+          return localArrayList;
         }
       }
-      return localArrayList;
     }
     catch (Exception paramView)
     {
@@ -62,35 +62,31 @@ public class ResourceNameOnClickListener
     return localArrayList;
   }
   
-  private void a(View paramView, FragmentActivity paramFragmentActivity, List<ResourceGrabSkinData> paramList)
+  private void a(View paramView, BaseActivity paramBaseActivity, List<ResourceGrabSkinData> paramList)
   {
-    Rect localRect;
-    int i;
     if ((paramView instanceof ViewGroup))
     {
-      localRect = new Rect();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < ((ViewGroup)paramView).getChildCount())
+      Rect localRect = new Rect();
+      int i = 0;
+      for (;;)
       {
-        View localView = ((ViewGroup)paramView).getChildAt(i);
-        localView.getGlobalVisibleRect(localRect);
-        if (localRect.contains(paramFragmentActivity.clickX, paramFragmentActivity.clickY))
+        Object localObject = (ViewGroup)paramView;
+        if (i >= ((ViewGroup)localObject).getChildCount()) {
+          break;
+        }
+        localObject = ((ViewGroup)localObject).getChildAt(i);
+        ((View)localObject).getGlobalVisibleRect(localRect);
+        if (localRect.contains(paramBaseActivity.clickX, paramBaseActivity.clickY))
         {
-          paramView = a(localView);
+          paramView = a((View)localObject);
           if (paramView.size() > 0) {
             paramList.addAll(paramView);
           }
-          a(localView, paramFragmentActivity, paramList);
+          a((View)localObject, paramBaseActivity, paramList);
+          return;
         }
+        i += 1;
       }
-      else
-      {
-        return;
-      }
-      i += 1;
     }
   }
   
@@ -125,43 +121,37 @@ public class ResourceNameOnClickListener
     if (localObject1 == null) {
       localObject2 = BaseActivity.sTopActivity;
     }
-    ResourceGrabViewModel localResourceGrabViewModel;
-    ArrayList localArrayList;
-    if ((localObject2 instanceof FragmentActivity))
+    if ((localObject2 instanceof BaseActivity))
     {
-      localObject1 = ((FragmentActivity)localObject2).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
+      localObject1 = ((BaseActivity)localObject2).getSupportFragmentManager().findFragmentByTag("ResourceGrabFragment");
       if ((localObject1 instanceof ResourceGrabFragment))
       {
         localObject1 = (ResourceGrabFragment)localObject1;
-        localResourceGrabViewModel = (ResourceGrabViewModel)LifeCycleExtKt.a((ViewModelStoreOwner)localObject1, ResourceGrabViewModel.a).get(ResourceGrabViewModel.class);
-        localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+        ResourceGrabViewModel localResourceGrabViewModel = (ResourceGrabViewModel)ViewModelProviderHelper.a((ViewModelStoreOwner)localObject1, ResourceGrabViewModel.a).get(ResourceGrabViewModel.class);
+        ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
+        try
+        {
+          a(paramView, (BaseActivity)localObject2, localArrayList);
+          localObject2 = new Rect();
+          paramView.getGlobalVisibleRect((Rect)localObject2);
+          a(paramView, localArrayList, (Rect)localObject2);
+        }
+        catch (Exception localException)
+        {
+          QLog.d("ResourceNameOnClickListener", 1, localException, new Object[0]);
+        }
+        ((ResourceGrabFragment)localObject1).a(localArrayList);
+        if (((ResourceGrabFragment)localObject1).a()) {
+          localResourceGrabViewModel.a(localArrayList);
+        }
       }
     }
-    try
-    {
-      a(paramView, (FragmentActivity)localObject2, localArrayList);
-      localObject2 = new Rect();
-      paramView.getGlobalVisibleRect((Rect)localObject2);
-      a(paramView, localArrayList, (Rect)localObject2);
-      ((ResourceGrabFragment)localObject1).a(localArrayList);
-      if (((ResourceGrabFragment)localObject1).a()) {
-        localResourceGrabViewModel.a(localArrayList);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("ResourceNameOnClickListener", 1, localException, new Object[0]);
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceNameOnClickListener
  * JD-Core Version:    0.7.0.1
  */

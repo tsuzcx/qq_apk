@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_0xe2e$ReqBody
   extends MessageMicro<ReqBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 48, 56, 66, 72, 80, 88 }, new String[] { "client", "group_id", "group_type", "mode", "keyword", "page", "num", "attachinfo", "miniapp_protect", "from", "redpoint" }, new Object[] { null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField attachinfo = PBField.initString("");
   public oidb_0xe2e.ClientInfo client = new oidb_0xe2e.ClientInfo();
   public final PBUInt32Field from = PBField.initUInt32(0);
@@ -22,10 +22,16 @@ public final class oidb_0xe2e$ReqBody
   public final PBUInt32Field num = PBField.initUInt32(0);
   public final PBUInt32Field page = PBField.initUInt32(0);
   public final PBUInt32Field redpoint = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 48, 56, 66, 72, 80, 88 }, new String[] { "client", "group_id", "group_type", "mode", "keyword", "page", "num", "attachinfo", "miniapp_protect", "from", "redpoint" }, new Object[] { null, Long.valueOf(0L), localInteger, localInteger, "", localInteger, localInteger, "", localInteger, localInteger, localInteger }, ReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe2e.oidb_0xe2e.ReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mobileqq.teamwork;
 
 import android.os.Handler.Callback;
 import android.os.Message;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -14,22 +14,25 @@ public class TenDocOCRExportHandler
   extends BusinessHandler
   implements Handler.Callback
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public static final String a = "com.tencent.mobileqq.teamwork.TenDocOCRExportHandler";
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private String[] jdField_a_of_type_ArrayOfJavaLangString = { "docs.qq.com" };
   
-  public TenDocOCRExportHandler(QQAppInterface paramQQAppInterface)
+  public TenDocOCRExportHandler(AppInterface paramAppInterface)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramAppInterface);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
   private void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    while (((TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 16L, this.jdField_a_of_type_ArrayOfJavaLangString, new TenDocOCRExportHandler.2(this, paramRunnable)) == null) {
+    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if (localAppInterface == null) {
       return;
     }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
+    if (((TicketManager)localAppInterface.getManager(2)).getPskey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 16L, this.jdField_a_of_type_ArrayOfJavaLangString, new TenDocOCRExportHandler.2(this, paramRunnable)) != null) {
+      ThreadManager.executeOnNetWorkThread(paramRunnable);
+    }
   }
   
   public void a(String paramString)
@@ -42,7 +45,7 @@ public class TenDocOCRExportHandler
     return false;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return TenDocOCRExportObserver.class;
   }
@@ -51,7 +54,7 @@ public class TenDocOCRExportHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocOCRExportHandler
  * JD-Core Version:    0.7.0.1
  */

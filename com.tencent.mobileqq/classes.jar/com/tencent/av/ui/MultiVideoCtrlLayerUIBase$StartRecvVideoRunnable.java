@@ -11,15 +11,20 @@ class MultiVideoCtrlLayerUIBase$StartRecvVideoRunnable
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.d, 2, "StartRecvAllVideoRunnable-->FunctionName=" + this.a);
+    if (QLog.isColorLevel())
+    {
+      String str = this.this$0.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("StartRecvAllVideoRunnable-->FunctionName=");
+      localStringBuilder.append(this.a);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     this.this$0.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUIBase.StartRecvVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

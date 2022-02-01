@@ -53,15 +53,10 @@ public final class Uploader
   {
     this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesBaseUploader.a();
   }
-  
-  public final void c()
-  {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesBaseUploader.b();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.Uploader
  * JD-Core Version:    0.7.0.1
  */

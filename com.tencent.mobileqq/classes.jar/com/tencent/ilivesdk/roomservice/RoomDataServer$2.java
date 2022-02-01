@@ -11,7 +11,13 @@ final class RoomDataServer$2
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.val$adapter.getLogger().e("RoomDataServer", "requestExitLive error isTimeout=" + paramBoolean + ";code=" + paramInt, new Object[0]);
+    paramString = this.val$adapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestExitLive error isTimeout=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(";code=");
+    localStringBuilder.append(paramInt);
+    paramString.e("RoomDataServer", localStringBuilder.toString(), new Object[0]);
   }
   
   public void onRecv(byte[] paramArrayOfByte)
@@ -21,7 +27,7 @@ final class RoomDataServer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice.RoomDataServer.2
  * JD-Core Version:    0.7.0.1
  */

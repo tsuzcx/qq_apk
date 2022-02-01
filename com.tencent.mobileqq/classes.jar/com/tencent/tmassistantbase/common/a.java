@@ -13,42 +13,43 @@ public enum a
   {
     switch (b.a[ordinal()])
     {
-    case 11: 
     default: 
       return 10;
-    case 1: 
-      return 0;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
-    case 4: 
-      return 3;
-    case 5: 
-      return 4;
-    case 6: 
-      return 5;
-    case 7: 
-      return 6;
-    case 8: 
-      return 7;
-    case 9: 
-      return 8;
-    case 10: 
-      return 9;
-    case 12: 
-      return 11;
-    case 13: 
-      return 12;
+    case 15: 
+      return 14;
     case 14: 
       return 13;
+    case 13: 
+      return 12;
+    case 12: 
+      return 11;
+    case 11: 
+      return 10;
+    case 10: 
+      return 9;
+    case 9: 
+      return 8;
+    case 8: 
+      return 7;
+    case 7: 
+      return 6;
+    case 6: 
+      return 5;
+    case 5: 
+      return 4;
+    case 4: 
+      return 3;
+    case 3: 
+      return 2;
+    case 2: 
+      return 1;
     }
-    return 14;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.common.a
  * JD-Core Version:    0.7.0.1
  */

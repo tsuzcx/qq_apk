@@ -35,7 +35,7 @@ public class PicUploadInfo$Builder
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_g_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
   public void b(int paramInt)
@@ -51,11 +51,6 @@ public class PicUploadInfo$Builder
   public void b(String paramString)
   {
     this.jdField_h_of_type_JavaLangString = paramString;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.i = paramBoolean;
   }
   
   public void c(int paramInt)
@@ -135,7 +130,7 @@ public class PicUploadInfo$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicUploadInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

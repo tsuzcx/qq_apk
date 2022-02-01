@@ -33,8 +33,9 @@ public final class Net
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.netType, 0);
-    if (this.extNetworkOperator != null) {
-      paramJceOutputStream.write(this.extNetworkOperator, 1);
+    String str = this.extNetworkOperator;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.extNetworkType, 2);
     paramJceOutputStream.write(this.isWap, 3);
@@ -42,7 +43,7 @@ public final class Net
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.logic.protocol.jce.Net
  * JD-Core Version:    0.7.0.1
  */

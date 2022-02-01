@@ -51,14 +51,14 @@ public class QzoneLoverCheckRequest
   
   public static String a()
   {
-    if (TextUtils.isEmpty("SweetQzoneService.sweetKeyNotify")) {}
-    String[] arrayOfString;
-    do
-    {
+    if (TextUtils.isEmpty("SweetQzoneService.sweetKeyNotify")) {
       return null;
-      arrayOfString = "SweetQzoneService.sweetKeyNotify".split("\\.");
-    } while ((arrayOfString == null) || (arrayOfString.length <= 0));
-    return arrayOfString[(arrayOfString.length - 1)];
+    }
+    String[] arrayOfString = "SweetQzoneService.sweetKeyNotify".split("\\.");
+    if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+      return arrayOfString[(arrayOfString.length - 1)];
+    }
+    return null;
   }
   
   public String getCmdString()
@@ -78,7 +78,7 @@ public class QzoneLoverCheckRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.qzonelover.QzoneLoverCheckRequest
  * JD-Core Version:    0.7.0.1
  */

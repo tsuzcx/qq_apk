@@ -122,32 +122,29 @@ public class SDKMiniProgramLpReportDC04239
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
     String str = AppBrandUtil.getUrlWithoutParams(paramString2);
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
-    {
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null)) {
       paramString2 = String.valueOf(paramMiniAppInfo.launchParam.scene);
-      localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppInfo, str, paramString2, paramString3, paramString4, paramString5, paramString6, null, null, null, null, paramString1, ""));
-      localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
-      if ((paramMiniAppInfo != null) && (paramMiniAppInfo.reportData != null) && (!TextUtils.isEmpty(paramMiniAppInfo.reportData))) {
-        localArrayList.addAll(MiniProgramReportHelper.newReportEntries(paramMiniAppInfo.reportData));
-      }
-      if (!QUAUtil.isQQApp())
-      {
-        localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
-        localArrayList.add(MiniProgramReportHelper.newEntry("customInfo", paramMiniAppInfo.customInfo));
-      }
-      if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
-        break label197;
-      }
-    }
-    label197:
-    for (int i = 2;; i = 12)
-    {
-      paramMiniAppInfo = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
-      MiniProgramReporter.getInstance().addData(paramMiniAppInfo);
-      return;
+    } else {
       paramString2 = null;
-      break;
     }
+    localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppInfo, str, paramString2, paramString3, paramString4, paramString5, paramString6, null, null, null, null, paramString1, ""));
+    localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.reportData != null) && (!TextUtils.isEmpty(paramMiniAppInfo.reportData))) {
+      localArrayList.addAll(MiniProgramReportHelper.newReportEntries(paramMiniAppInfo.reportData));
+    }
+    if (!QUAUtil.isQQApp())
+    {
+      localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
+      localArrayList.add(MiniProgramReportHelper.newEntry("customInfo", paramMiniAppInfo.customInfo));
+    }
+    int i;
+    if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
+      i = 12;
+    } else {
+      i = 2;
+    }
+    paramMiniAppInfo = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
+    MiniProgramReporter.getInstance().addData(paramMiniAppInfo);
   }
   
   private static void exposureReport(String paramString1, String paramString2, String paramString3)
@@ -159,22 +156,26 @@ public class SDKMiniProgramLpReportDC04239
     if (!QUAUtil.isQQApp()) {
       localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
     }
-    if ((QUAUtil.isQQApp()) || (QUAUtil.isMicroApp())) {}
-    for (int i = 2;; i = 12)
-    {
-      paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
-      MiniProgramReporter.getInstance().addData(paramString1);
-      MiniProgramReporter.getInstance().flush();
-      return;
+    int i;
+    if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
+      i = 12;
+    } else {
+      i = 2;
     }
+    paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
+    MiniProgramReporter.getInstance().addData(paramString1);
+    MiniProgramReporter.getInstance().flush();
   }
   
   public static void exposureReport(List<MiniAppExposureManager.BaseExposureReport> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return;
+      }
+      MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.14(paramList));
     }
-    MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.14(paramList));
   }
   
   private static void flushReport(String paramString1, String paramString2)
@@ -195,42 +196,51 @@ public class SDKMiniProgramLpReportDC04239
   
   private static String getAppId(MiniAppInfo paramMiniAppInfo)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMiniAppInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramMiniAppInfo.launchParam != null) {
-        localObject1 = paramMiniAppInfo.launchParam.miniAppId;
-      }
+    String str1;
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null)) {
+      str1 = paramMiniAppInfo.launchParam.miniAppId;
+    } else {
+      str1 = null;
     }
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = paramMiniAppInfo.appId;
+    String str2 = str1;
+    if (TextUtils.isEmpty(str1)) {
+      str2 = paramMiniAppInfo.appId;
     }
-    return localObject2;
+    return str2;
   }
   
   public static String getAppType(MiniAppInfo paramMiniAppInfo)
   {
+    String str2 = "0";
+    String str1 = str2;
     if (paramMiniAppInfo != null)
     {
+      str1 = str2;
       if (paramMiniAppInfo.isReportTypeMiniGame()) {
-        return "1";
+        str1 = "1";
       }
-      return "0";
     }
-    return "0";
+    return str1;
   }
   
   private static String getDurationKey(String paramString1, String paramString2)
   {
-    return paramString1 + "_" + paramString2 + "_duration";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_duration");
+    return localStringBuilder.toString();
   }
   
   private static SharedPreferences getDurationSp(String paramString1, String paramString2)
   {
-    return AppLoaderFactory.g().getContext().getSharedPreferences(paramString1 + "_" + paramString2, 0);
+    Context localContext = AppLoaderFactory.g().getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   public static boolean isLifeCycle(String paramString)
@@ -244,11 +254,11 @@ public class SDKMiniProgramLpReportDC04239
     {
       showMiniAppConfig = paramMiniAppInfo;
       sendRecordDurationMsg();
-    }
-    while ((!"unload".equals(paramString)) && (!"hide".equals(paramString)) && (!"close".equals(paramString))) {
       return;
     }
-    deleteRecordDurationMsg();
+    if (("unload".equals(paramString)) || ("hide".equals(paramString)) || ("close".equals(paramString))) {
+      deleteRecordDurationMsg();
+    }
   }
   
   public static void recordDuration(MiniAppInfo paramMiniAppInfo, long paramLong)
@@ -260,35 +270,34 @@ public class SDKMiniProgramLpReportDC04239
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
-    String str1 = "0";
+    String str1;
     if (paramMiniAppInfo != null) {
       str1 = getAppType(paramMiniAppInfo);
+    } else {
+      str1 = "0";
     }
     String str2;
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
-    {
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null)) {
       str2 = String.valueOf(paramMiniAppInfo.launchParam.scene);
-      localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppInfo, null, str2, paramString1, paramString2, paramString3, paramString4, null, null, null, null, str1, ""));
-      localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
-      if (!QUAUtil.isQQApp())
-      {
-        localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
-        localArrayList.add(MiniProgramReportHelper.newEntry("customInfo", paramMiniAppInfo.customInfo));
-      }
-      if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
-        break label176;
-      }
-    }
-    label176:
-    for (int i = 2;; i = 12)
-    {
-      paramMiniAppInfo = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
-      MiniProgramReporter.getInstance().addData(paramMiniAppInfo);
-      MiniProgramReporter.getInstance().flush();
-      return;
+    } else {
       str2 = null;
-      break;
     }
+    localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppInfo, null, str2, paramString1, paramString2, paramString3, paramString4, null, null, null, null, str1, ""));
+    localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
+    if (!QUAUtil.isQQApp())
+    {
+      localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
+      localArrayList.add(MiniProgramReportHelper.newEntry("customInfo", paramMiniAppInfo.customInfo));
+    }
+    int i;
+    if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
+      i = 12;
+    } else {
+      i = 2;
+    }
+    paramMiniAppInfo = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
+    MiniProgramReporter.getInstance().addData(paramMiniAppInfo);
+    MiniProgramReporter.getInstance().flush();
   }
   
   private static void report(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -301,17 +310,17 @@ public class SDKMiniProgramLpReportDC04239
     if ((isLifeCycle(paramString4)) && (!MiniAppReportManager2.IS_MAIN_PROCESS))
     {
       MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.11(paramMiniAppInfo, paramString3, paramString4, paramString2, paramString5, paramString6, paramString1));
-      flushReport(paramString3, paramString4);
-      processRecordDurationMsg(paramMiniAppInfo, paramString4);
-      return;
     }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
-    String str = AppBrandUtil.getUrlWithoutParams(paramString2);
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
+    else
     {
-      paramString2 = String.valueOf(paramMiniAppInfo.launchParam.scene);
-      label102:
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
+      String str = AppBrandUtil.getUrlWithoutParams(paramString2);
+      if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null)) {
+        paramString2 = String.valueOf(paramMiniAppInfo.launchParam.scene);
+      } else {
+        paramString2 = null;
+      }
       localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppInfo, str, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString1, null));
       localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
       if (!QUAUtil.isQQApp())
@@ -319,19 +328,17 @@ public class SDKMiniProgramLpReportDC04239
         localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
         localArrayList.add(MiniProgramReportHelper.newEntry("customInfo", paramMiniAppInfo.customInfo));
       }
+      int i;
       if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
-        break label219;
+        i = 12;
+      } else {
+        i = 2;
       }
-    }
-    label219:
-    for (int i = 2;; i = 12)
-    {
       paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
       MiniProgramReporter.getInstance().addData(paramString1);
-      break;
-      paramString2 = null;
-      break label102;
     }
+    flushReport(paramString3, paramString4);
+    processRecordDurationMsg(paramMiniAppInfo, paramString4);
   }
   
   private static void report(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -348,14 +355,15 @@ public class SDKMiniProgramLpReportDC04239
     if (!QUAUtil.isQQApp()) {
       localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
     }
-    if ((QUAUtil.isQQApp()) || (QUAUtil.isMicroApp())) {}
-    for (int i = 2;; i = 12)
-    {
-      paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
-      MiniProgramReporter.getInstance().addData(paramString1);
-      MiniProgramReporter.getInstance().flush();
-      return;
+    int i;
+    if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
+      i = 12;
+    } else {
+      i = 2;
     }
+    paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
+    MiniProgramReporter.getInstance().addData(paramString1);
+    MiniProgramReporter.getInstance().flush();
   }
   
   public static void report(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean)
@@ -367,15 +375,16 @@ public class SDKMiniProgramLpReportDC04239
     if (!QUAUtil.isQQApp()) {
       localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
     }
-    if ((QUAUtil.isQQApp()) || (QUAUtil.isMicroApp())) {}
-    for (int i = 2;; i = 12)
-    {
-      paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
-      MiniProgramReporter.getInstance().addData(paramString1);
-      if (paramBoolean) {
-        MiniProgramReporter.getInstance().flush();
-      }
-      return;
+    int i;
+    if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
+      i = 12;
+    } else {
+      i = 2;
+    }
+    paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
+    MiniProgramReporter.getInstance().addData(paramString1);
+    if (paramBoolean) {
+      MiniProgramReporter.getInstance().flush();
     }
   }
   
@@ -408,14 +417,15 @@ public class SDKMiniProgramLpReportDC04239
     if (!QUAUtil.isQQApp()) {
       localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
     }
-    if ((QUAUtil.isQQApp()) || (QUAUtil.isMicroApp())) {}
-    for (int i = 2;; i = 12)
-    {
-      paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
-      MiniProgramReporter.getInstance().addData(paramString1);
-      MiniProgramReporter.getInstance().flush();
-      return;
+    int i;
+    if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
+      i = 12;
+    } else {
+      i = 2;
     }
+    paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
+    MiniProgramReporter.getInstance().addData(paramString1);
+    MiniProgramReporter.getInstance().flush();
   }
   
   public static void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -427,14 +437,15 @@ public class SDKMiniProgramLpReportDC04239
     if (!QUAUtil.isQQApp()) {
       localArrayList.addAll(MiniProgramReportHelper.newThirdSourceEntries());
     }
-    if ((QUAUtil.isQQApp()) || (QUAUtil.isMicroApp())) {}
-    for (int i = 2;; i = 12)
-    {
-      paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
-      MiniProgramReporter.getInstance().addData(paramString1);
-      MiniProgramReporter.getInstance().flush();
-      return;
+    int i;
+    if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
+      i = 12;
+    } else {
+      i = 2;
     }
+    paramString1 = MiniProgramReportHelper.newSingleReportData(i, localArrayList, null);
+    MiniProgramReporter.getInstance().addData(paramString1);
+    MiniProgramReporter.getInstance().flush();
   }
   
   public static void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
@@ -446,14 +457,15 @@ public class SDKMiniProgramLpReportDC04239
     if (!QUAUtil.isQQApp()) {
       paramString1.addAll(MiniProgramReportHelper.newThirdSourceEntries());
     }
-    if ((QUAUtil.isQQApp()) || (QUAUtil.isMicroApp())) {}
-    for (int i = 2;; i = 12)
-    {
-      paramString1 = MiniProgramReportHelper.newSingleReportData(i, paramString1, null);
-      MiniProgramReporter.getInstance().addData(paramString1);
-      MiniProgramReporter.getInstance().flush();
-      return;
+    int i;
+    if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
+      i = 12;
+    } else {
+      i = 2;
     }
+    paramString1 = MiniProgramReportHelper.newSingleReportData(i, paramString1, null);
+    MiniProgramReporter.getInstance().addData(paramString1);
+    MiniProgramReporter.getInstance().flush();
   }
   
   public static void reportDropDown(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2)
@@ -493,10 +505,13 @@ public class SDKMiniProgramLpReportDC04239
   
   private static void reportPageView(List<MiniAppExposureManager.MiniAppExposureData> paramList, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return;
+      }
+      MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.6(paramList, paramBoolean, paramString1, paramString2));
     }
-    MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.6(paramList, paramBoolean, paramString1, paramString2));
   }
   
   public static void reportPageView(List<MiniAppExposureManager.MiniAppExposureData> paramList, String paramString, boolean paramBoolean)
@@ -525,7 +540,7 @@ public class SDKMiniProgramLpReportDC04239
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239
  * JD-Core Version:    0.7.0.1
  */

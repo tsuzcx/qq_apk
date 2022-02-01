@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.api.IQQFileEngine;
 import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 import com.tencent.mobileqq.filemanager.util.IClickListenerVer51;
@@ -14,7 +14,7 @@ class QfileEditBottomBar$6
   
   public void a()
   {
-    QfileEditBottomBar.a(this.a).getFileManagerEngine().a(QfileEditBottomBar.a(this.a));
+    ((IQQFileEngine)((BaseQQAppInterface)QfileEditBottomBar.a(this.a)).getRuntimeService(IQQFileEngine.class)).downLoadAllSelectFiles(QfileEditBottomBar.a(this.a));
     if (this.a.a != null) {
       this.a.a.b();
     }
@@ -28,7 +28,7 @@ class QfileEditBottomBar$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar.6
  * JD-Core Version:    0.7.0.1
  */

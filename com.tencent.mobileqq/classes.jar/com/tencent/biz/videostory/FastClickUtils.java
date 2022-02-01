@@ -21,15 +21,21 @@ public final class FastClickUtils
   
   public static boolean a(@NonNull String paramString)
   {
-    if ((jdField_a_of_type_AndroidUtilPair != null) && (TextUtils.equals(paramString, (CharSequence)jdField_a_of_type_AndroidUtilPair.first))) {}
-    long l;
-    for (Long localLong = (Long)jdField_a_of_type_AndroidUtilPair.second;; localLong = null)
+    Object localObject = jdField_a_of_type_AndroidUtilPair;
+    if ((localObject != null) && (TextUtils.equals(paramString, (CharSequence)((Pair)localObject).first))) {
+      localObject = (Long)jdField_a_of_type_AndroidUtilPair.second;
+    } else {
+      localObject = null;
+    }
+    long l = SystemClock.elapsedRealtime();
+    if ((localObject != null) && (l - ((Long)localObject).longValue() < 1000L))
     {
-      l = SystemClock.elapsedRealtime();
-      if ((localLong == null) || (l - localLong.longValue() >= 1000L)) {
-        break;
-      }
-      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fast click ,tag  = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", intervalTime = ");
+      localStringBuilder.append(l - ((Long)localObject).longValue());
+      LogUtils.w("FastClickUtils", localStringBuilder.toString());
       return true;
     }
     jdField_a_of_type_AndroidUtilPair = new Pair(paramString, Long.valueOf(l));
@@ -43,14 +49,27 @@ public final class FastClickUtils
       jdField_a_of_type_JavaUtilHashMap = new HashMap();
     }
     Long localLong = (Long)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    boolean bool = false;
     if (localLong != null)
     {
       if (jdField_a_of_type_JavaUtilHashMap.size() > 10) {
         jdField_a_of_type_JavaUtilHashMap.clear();
       }
       jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
-      QLog.d("FastClickUtils", 4, "fast click ,tag  = " + paramString + ", currentTime = " + l + " lastTime" + localLong + " intervalTime = " + (l - localLong.longValue()));
-      return l - localLong.longValue() < paramLong;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fast click ,tag  = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", currentTime = ");
+      localStringBuilder.append(l);
+      localStringBuilder.append(" lastTime");
+      localStringBuilder.append(localLong);
+      localStringBuilder.append(" intervalTime = ");
+      localStringBuilder.append(l - localLong.longValue());
+      QLog.d("FastClickUtils", 4, localStringBuilder.toString());
+      if (l - localLong.longValue() < paramLong) {
+        bool = true;
+      }
+      return bool;
     }
     jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
     return false;
@@ -58,7 +77,7 @@ public final class FastClickUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.FastClickUtils
  * JD-Core Version:    0.7.0.1
  */

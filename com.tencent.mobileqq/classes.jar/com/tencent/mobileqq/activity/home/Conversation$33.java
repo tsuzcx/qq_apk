@@ -12,7 +12,12 @@ class Conversation$33
 {
   Conversation$33(Conversation paramConversation) {}
   
-  public void onGetTroopInfoResult(boolean paramBoolean, String paramString)
+  protected void onGenNewTroopName(String paramString1, String paramString2)
+  {
+    this.a.a(8, paramString1, 1);
+  }
+  
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
     if (paramBoolean)
     {
@@ -22,10 +27,16 @@ class Conversation$33
     }
   }
   
-  public void onGetTroopMemberCard(boolean paramBoolean, Object paramObject)
+  protected void onGetTroopMemberCard(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "Conversation.onGetTroopMemberCard isSuccess=" + paramBoolean + " data=" + paramObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Conversation.onGetTroopMemberCard isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" data=");
+      localStringBuilder.append(paramObject);
+      QLog.d("Q.recent", 2, localStringBuilder.toString());
     }
     if ((paramBoolean) && (paramObject != null))
     {
@@ -34,7 +45,7 @@ class Conversation$33
     }
   }
   
-  public void onGetTroopMemberCardInfoResult(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
+  protected void onGetTroopMemberCardInfoResult(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
   {
     if ((paramBoolean1) && (paramBoolean2) && (paramArrayList != null) && (paramArrayList.size() > 0))
     {
@@ -49,7 +60,7 @@ class Conversation$33
     }
   }
   
-  public void onUpdateRecentList()
+  protected void onUpdateRecentList()
   {
     if (QLog.isColorLevel()) {
       QLog.i("Q.recent", 2, "refresh recent, from_onupdaterecentlist");
@@ -57,14 +68,14 @@ class Conversation$33
     this.a.a(0L);
   }
   
-  public void onUpdateTroopList(boolean paramBoolean)
+  protected void onUpdateTroopList(boolean paramBoolean)
   {
     TroopAssistantManager.a().c(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.33
  * JD-Core Version:    0.7.0.1
  */

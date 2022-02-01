@@ -21,19 +21,22 @@ public class ProtoReqManagerImpl$ProtoReqRunnable
   
   public void run()
   {
-    QLog.d("Q.richmedia.ProtoReqManager", 2, "ProtoReqRunnable.run() : resp.startTime" + this.resp.startTime);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ProtoReqRunnable.run() : resp.startTime");
+    ((StringBuilder)localObject).append(this.resp.startTime);
+    QLog.d("Q.richmedia.ProtoReqManager", 2, ((StringBuilder)localObject).toString());
     this.activated = true;
     this.startTime = System.currentTimeMillis();
     this.intent.putExtra("key_timeout", this.timeOut);
-    StatictisInfo localStatictisInfo = this.resp.statisInfo;
-    localStatictisInfo.c += 1;
+    localObject = this.resp.statisInfo;
+    ((StatictisInfo)localObject).c += 1;
     this.this$0.requests.put(this.intent, this.resp);
     this.this$0.sendToMsf(this.intent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReqRunnable
  * JD-Core Version:    0.7.0.1
  */

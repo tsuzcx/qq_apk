@@ -14,32 +14,42 @@ class OpenDataCommonJsPlugin$6
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("OpenDataCommonJsPlugin", "getUserInteractiveStorage receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getUserInteractiveStorage receive isSuc= ");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    ((StringBuilder)localObject1).append(" ret=");
+    ((StringBuilder)localObject1).append(String.valueOf(paramJSONObject));
+    QMLog.d("OpenDataCommonJsPlugin", ((StringBuilder)localObject1).toString());
     if (paramJSONObject == null)
     {
       QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , ret == null");
       this.val$req.fail("request request is null.");
       return;
     }
-    if (paramBoolean)
-    {
-      int i;
-      JSONObject localJSONObject;
+    if (paramBoolean) {
       try
       {
-        Object localObject = (CloudStorage.StGetUserInteractiveStorageRsp)paramJSONObject.get("response");
-        i = paramJSONObject.getInt("retCode");
+        Object localObject2 = (CloudStorage.StGetUserInteractiveStorageRsp)paramJSONObject.get("response");
+        int i = paramJSONObject.getInt("retCode");
         paramJSONObject = paramJSONObject.getString("errMsg");
-        String str = ((CloudStorage.StGetUserInteractiveStorageRsp)localObject).encryptedData.get();
-        localObject = ((CloudStorage.StGetUserInteractiveStorageRsp)localObject).iv.get();
-        localJSONObject = new JSONObject();
+        localObject1 = ((CloudStorage.StGetUserInteractiveStorageRsp)localObject2).encryptedData.get();
+        String str = ((CloudStorage.StGetUserInteractiveStorageRsp)localObject2).iv.get();
+        localObject2 = new JSONObject();
         if (i == 0)
         {
-          localJSONObject.put("encryptedData", str);
-          localJSONObject.put("iv", localObject);
-          this.val$req.ok(localJSONObject);
+          ((JSONObject)localObject2).put("encryptedData", localObject1);
+          ((JSONObject)localObject2).put("iv", str);
+          this.val$req.ok((JSONObject)localObject2);
           return;
         }
+        ((JSONObject)localObject2).put("retErrMsg", paramJSONObject);
+        ((JSONObject)localObject2).put("errCode", i);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE ");
+        paramJSONObject.append(((JSONObject)localObject2).toString());
+        QMLog.e("OpenDataCommonJsPlugin", paramJSONObject.toString());
+        this.val$req.fail((JSONObject)localObject2, "");
+        return;
       }
       catch (Exception paramJSONObject)
       {
@@ -47,11 +57,6 @@ class OpenDataCommonJsPlugin$6
         this.val$req.fail(paramJSONObject.getMessage());
         return;
       }
-      localJSONObject.put("retErrMsg", paramJSONObject);
-      localJSONObject.put("errCode", i);
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE " + localJSONObject.toString());
-      this.val$req.fail(localJSONObject, "");
-      return;
     }
     QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_USER_INTERACTIVE_STORAGE error , isSuc false");
     this.val$req.fail("request failed.");
@@ -59,7 +64,7 @@ class OpenDataCommonJsPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

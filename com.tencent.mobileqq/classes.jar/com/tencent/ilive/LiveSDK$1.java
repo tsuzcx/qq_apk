@@ -19,7 +19,12 @@ final class LiveSDK$1
   
   public void result(boolean paramBoolean, String paramString)
   {
-    Log.i("livesdk", "core init suc: " + paramBoolean + ", msg: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("core init suc: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", msg: ");
+    localStringBuilder.append(paramString);
+    Log.i("livesdk", localStringBuilder.toString());
     if (paramBoolean) {}
     try
     {
@@ -37,7 +42,7 @@ final class LiveSDK$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.LiveSDK.1
  * JD-Core Version:    0.7.0.1
  */

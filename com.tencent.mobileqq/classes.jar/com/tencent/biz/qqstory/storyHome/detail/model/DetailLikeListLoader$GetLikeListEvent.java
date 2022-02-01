@@ -25,12 +25,27 @@ public class DetailLikeListLoader$GetLikeListEvent
   
   public String toString()
   {
-    return "GetLikeListEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isForDetail=" + this.jdField_a_of_type_Boolean + ", mType=" + this.jdField_a_of_type_Int + ", mLikeCount=" + this.b + ", mHasLike=" + this.c + ", mLikeEntryList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetLikeListEvent{feedId='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isForDetail=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mLikeCount=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", mHasLike=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", mLikeEntryList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListEvent
  * JD-Core Version:    0.7.0.1
  */

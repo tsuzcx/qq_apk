@@ -7,18 +7,19 @@ class AnimationHandler$AnimationCallbackDispatcher
 {
   AnimationHandler$AnimationCallbackDispatcher(AnimationHandler paramAnimationHandler) {}
   
-  void a()
+  void dispatchAnimationFrame()
   {
-    this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    this.a.a(this.a.jdField_a_of_type_Long);
-    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      this.a.a().a();
+    this.this$0.mCurrentFrameTime = SystemClock.uptimeMillis();
+    AnimationHandler localAnimationHandler = this.this$0;
+    localAnimationHandler.doAnimationFrame(localAnimationHandler.mCurrentFrameTime);
+    if (this.this$0.mAnimationCallbacks.size() > 0) {
+      this.this$0.getProvider().postFrameCallback();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.dynamicanimation.animation.AnimationHandler.AnimationCallbackDispatcher
  * JD-Core Version:    0.7.0.1
  */

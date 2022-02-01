@@ -21,7 +21,7 @@ class ForwardShortVideoOption$ContentViewHolder
       if (QLog.isColorLevel()) {
         QLog.d("ForwardOption.ForwardShortVideoOption", 2, "setPreviewImage null");
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838184);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838025);
       return;
     }
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
@@ -35,7 +35,7 @@ class ForwardShortVideoOption$ContentViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShortVideoOption.ContentViewHolder
  * JD-Core Version:    0.7.0.1
  */

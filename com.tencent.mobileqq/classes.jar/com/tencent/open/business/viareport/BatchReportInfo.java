@@ -34,12 +34,24 @@ public class BatchReportInfo
   
   public String toString()
   {
-    return this.d + "_" + this.a + "_" + this.b + "_" + this.c + "_" + this.f + "_" + this.g;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.g);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.business.viareport.BatchReportInfo
  * JD-Core Version:    0.7.0.1
  */

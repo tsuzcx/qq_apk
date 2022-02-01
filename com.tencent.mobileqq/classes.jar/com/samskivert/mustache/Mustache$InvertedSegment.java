@@ -34,22 +34,20 @@ public class Mustache$InvertedSegment
   {
     Object localObject = paramTemplate.getSectionValue(paramContext, this._name, this._line);
     Iterator localIterator = this._comp.collector.toIterator(localObject);
-    if (localIterator != null) {
+    if (localIterator != null)
+    {
       if (!localIterator.hasNext()) {
         executeSegs(paramTemplate, paramContext, paramWriter);
       }
     }
-    do
+    else if ((localObject instanceof Boolean))
     {
-      do
-      {
-        return;
-        if (!(localObject instanceof Boolean)) {
-          break;
-        }
-      } while (((Boolean)localObject).booleanValue());
-      executeSegs(paramTemplate, paramContext, paramWriter);
-      return;
+      if (!((Boolean)localObject).booleanValue()) {
+        executeSegs(paramTemplate, paramContext, paramWriter);
+      }
+    }
+    else
+    {
       if ((localObject instanceof Mustache.InvertibleLambda)) {
         try
         {
@@ -61,13 +59,22 @@ public class Mustache$InvertedSegment
           throw new MustacheException(paramTemplate);
         }
       }
-    } while (!this._comp.isFalsey(localObject));
-    executeSegs(paramTemplate, paramContext, paramWriter);
+      if (this._comp.isFalsey(localObject)) {
+        executeSegs(paramTemplate, paramContext, paramWriter);
+      }
+    }
   }
   
   public String toString()
   {
-    return "Inverted(" + this._name + ":" + this._line + "): " + Arrays.toString(this._segs);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Inverted(");
+    localStringBuilder.append(this._name);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this._line);
+    localStringBuilder.append("): ");
+    localStringBuilder.append(Arrays.toString(this._segs));
+    return localStringBuilder.toString();
   }
   
   public void visit(Mustache.Visitor paramVisitor)

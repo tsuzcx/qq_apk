@@ -28,6 +28,7 @@ public final class videoFile$ResvAttr
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -37,12 +38,12 @@ public final class videoFile$ResvAttr
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 56, 64, 74, 82, 88, 96, 106, 114 }, new String[] { "bytes_hotvideo_icon", "bytes_hotvideo_title", "bytes_hotvideo_url", "bytes_hotvideo_icon_sub", "uint32_special_video_type", "bytes_dynamic_text", "uint32_msg_tail_type", "uint32_red_envelope_type", "bytes_shortVideoId", "bytes_animoji_modelId", "uint32_long_video_kandian_type", "uint32_source", "bytes_camera_templateid", "bytes_camera_templateName" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), localByteStringMicro5, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro6, localByteStringMicro7, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro8, localByteStringMicro9 }, ResvAttr.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 56, 64, 74, 82, 88, 96, 106, 114 }, new String[] { "bytes_hotvideo_icon", "bytes_hotvideo_title", "bytes_hotvideo_url", "bytes_hotvideo_icon_sub", "uint32_special_video_type", "bytes_dynamic_text", "uint32_msg_tail_type", "uint32_red_envelope_type", "bytes_shortVideoId", "bytes_animoji_modelId", "uint32_long_video_kandian_type", "uint32_source", "bytes_camera_templateid", "bytes_camera_templateName" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localInteger, localByteStringMicro5, localInteger, localInteger, localByteStringMicro6, localByteStringMicro7, localInteger, localInteger, localByteStringMicro8, localByteStringMicro9 }, ResvAttr.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.msg.hummer.resv.videoFile.ResvAttr
  * JD-Core Version:    0.7.0.1
  */

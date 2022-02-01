@@ -5,29 +5,50 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.QFragment;
-import android.support.v4.app.QFragmentActivity;
-import android.support.v4.app.QFragmentManager;
-import android.support.v4.app.QFragmentTransaction;
 import android.support.v4.util.ArrayMap;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.fragment.QPublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 
 public class QPublicFragmentActivity
-  extends QFragmentActivity
+  extends QBaseActivity
 {
-  private static ArrayMap<String, QPublicFragmentActivity.IViewCreator> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
-  private QPublicBaseFragment jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment;
+  public static final String KEY_FRAGMENT_CLASS = "public_fragment_class";
+  public static final String KEY_WINDOW_FEATURE = "public_fragment_window_feature";
+  private static final String TAG = " QPublicFragmentActivity";
+  private static ArrayMap<String, QPublicFragmentActivity.IViewCreator> viewCreators = new ArrayMap();
+  private QPublicBaseFragment mFrag;
   
-  private QPublicBaseFragment a()
+  public static void addViewCreator(String paramString, QPublicFragmentActivity.IViewCreator paramIViewCreator)
+  {
+    viewCreators.put(paramString, paramIViewCreator);
+  }
+  
+  public static void closeQuietly(InputStream paramInputStream)
+  {
+    if (paramInputStream != null) {}
+    try
+    {
+      paramInputStream.close();
+      return;
+    }
+    catch (IOException paramInputStream) {}
+  }
+  
+  private QPublicBaseFragment createFragment()
   {
     Object localObject = getIntent().getStringExtra("public_fragment_class");
     if (QLog.isColorLevel()) {
@@ -47,180 +68,206 @@ public class QPublicFragmentActivity
     return null;
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends QPublicBaseFragment> paramClass, int paramInt)
+  private void patchSavedInstanceState(Bundle paramBundle)
   {
-    QPublicFragmentActivity.Launcher.a(paramActivity, paramIntent, QPublicFragmentActivity.class, paramClass, paramInt);
+    Object localObject1 = paramBundle.getParcelable("android:support:fragments");
+    if (localObject1 != null) {}
+    try
+    {
+      Object localObject2 = Class.forName("androidx.fragment.app.QFragmentManagerState");
+      paramBundle = Class.forName("androidx.fragment.app.QFragmentState");
+      if (!((Class)localObject2).isInstance(localObject1)) {
+        break label188;
+      }
+      localObject2 = ((Class)localObject2).getDeclaredField("mActive");
+      if (!((Field)localObject2).isAccessible()) {
+        ((Field)localObject2).setAccessible(true);
+      }
+      if (!((Field)localObject2).getType().isArray()) {
+        break label188;
+      }
+      localObject1 = ((Field)localObject2).get(localObject1);
+      int j = Array.getLength(localObject1);
+      int i = 0;
+      while (i < j)
+      {
+        localObject2 = Array.get(localObject1, i);
+        if ((localObject2 != null) && (paramBundle.isInstance(localObject2)))
+        {
+          Field localField = paramBundle.getDeclaredField("mArguments");
+          if (!localField.isAccessible()) {
+            localField.setAccessible(true);
+          }
+          localObject2 = localField.get(localObject2);
+          if ((localObject2 != null) && ((localObject2 instanceof Bundle))) {
+            ((Bundle)localObject2).setClassLoader(getClass().getClassLoader());
+          }
+        }
+        i += 1;
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      label180:
+      label188:
+      break label180;
+    }
+    QLog.d(" QPublicFragmentActivity", 2, "Patch error");
   }
   
-  public static void a(Context paramContext, Intent paramIntent, Class<? extends QPublicBaseFragment> paramClass)
+  public static void start(Context paramContext, Intent paramIntent, Class<? extends QPublicBaseFragment> paramClass)
   {
     QPublicFragmentActivity.Launcher.a(paramContext, paramIntent, QPublicFragmentActivity.class, paramClass);
   }
   
-  public static void a(Context paramContext, Class<? extends QPublicBaseFragment> paramClass)
+  public static void start(Context paramContext, Class<? extends QPublicBaseFragment> paramClass)
   {
-    a(paramContext, null, paramClass);
+    start(paramContext, null, paramClass);
   }
   
-  private void a(Bundle paramBundle)
+  public static void startForResult(Activity paramActivity, Intent paramIntent, Class<? extends QPublicBaseFragment> paramClass, int paramInt)
   {
-    Object localObject1 = paramBundle.getParcelable("android:support:fragments");
-    if (localObject1 != null) {
-      try
-      {
-        Object localObject2 = Class.forName("android.support.v4.app.QFragmentManagerState");
-        paramBundle = Class.forName("android.support.v4.app.QFragmentState");
-        if (((Class)localObject2).isInstance(localObject1))
-        {
-          localObject2 = ((Class)localObject2).getDeclaredField("mActive");
-          if (!((Field)localObject2).isAccessible()) {
-            ((Field)localObject2).setAccessible(true);
-          }
-          if (((Field)localObject2).getType().isArray())
-          {
-            localObject1 = ((Field)localObject2).get(localObject1);
-            int j = Array.getLength(localObject1);
-            int i = 0;
-            while (i < j)
-            {
-              localObject2 = Array.get(localObject1, i);
-              if ((localObject2 != null) && (paramBundle.isInstance(localObject2)))
-              {
-                Field localField = paramBundle.getDeclaredField("mArguments");
-                if (!localField.isAccessible()) {
-                  localField.setAccessible(true);
-                }
-                localObject2 = localField.get(localObject2);
-                if ((localObject2 != null) && ((localObject2 instanceof Bundle))) {
-                  ((Bundle)localObject2).setClassLoader(getClass().getClassLoader());
-                }
-              }
-              i += 1;
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.d(" QPublicFragmentActivity", 2, "Patch error");
-      }
-    }
+    QPublicFragmentActivity.Launcher.a(paramActivity, paramIntent, QPublicFragmentActivity.class, paramClass, paramInt);
   }
   
-  public static void a(QFragment paramQFragment, Intent paramIntent, Class<? extends QPublicBaseFragment> paramClass, int paramInt)
+  public static void startForResult(Activity paramActivity, Class<? extends QPublicBaseFragment> paramClass, int paramInt)
   {
-    QPublicFragmentActivity.Launcher.a(paramQFragment, paramIntent, QPublicFragmentActivity.class, paramClass, paramInt);
+    startForResult(paramActivity, null, paramClass, paramInt);
+  }
+  
+  public static void startForResult(QBaseFragment paramQBaseFragment, Intent paramIntent, Class<? extends QPublicBaseFragment> paramClass, int paramInt)
+  {
+    QPublicFragmentActivity.Launcher.a(paramQBaseFragment, paramIntent, QPublicFragmentActivity.class, paramClass, paramInt);
+  }
+  
+  public static void startForResult(QBaseFragment paramQBaseFragment, Class<? extends QPublicBaseFragment> paramClass, int paramInt)
+  {
+    startForResult(paramQBaseFragment, null, paramClass, paramInt);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    Object localObject = EventCollector.getInstance();
     boolean bool = true;
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.g()) && (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.a(paramMotionEvent))) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-      return bool;
+    ((EventCollector)localObject).onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    localObject = this.mFrag;
+    if ((localObject == null) || (!((QPublicBaseFragment)localObject).needDispatchTouchEvent()) || (!this.mFrag.dispatchTouchEvent(paramMotionEvent))) {
       bool = super.dispatchTouchEvent(paramMotionEvent);
     }
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.onActivityResult(0xFFFF & paramInt1, paramInt2, paramIntent);
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      localQPublicBaseFragment.onActivityResult(paramInt1 & 0xFFFF, paramInt2, paramIntent);
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment = a();
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null)
+    this.mFrag = createFragment();
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null)
     {
-      this.mNeedStatusTrans = this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.d();
-      this.mActNeedImmersive = this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.d_();
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.a(this);
+      this.mNeedStatusTrans = localQPublicBaseFragment.needStatusTrans();
+      this.mActNeedImmersive = this.mFrag.needImmersive();
+      this.mFrag.initWindowStyleAndAnimation(this);
     }
     if (paramBundle != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d(" QPublicFragmentActivity", 1, "Activity restored, set classloader.");
       }
-      a(paramBundle);
+      patchSavedInstanceState(paramBundle);
     }
     super.doOnCreate(paramBundle);
-    setContentView(2131558459);
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment == null)
+    setContentView(2131558488);
+    if (this.mFrag == null)
     {
       finish();
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131367430, this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment);
-    paramBundle.commit();
-    this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.a(this, this.mFlingHandler);
+    paramBundle.replace(2131367211, this.mFrag);
+    paramBundle.commitAllowingStateLoss();
+    this.mFrag.initSideFling(this, this.mFlingHandler);
     return true;
   }
   
-  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  protected boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.a(paramInt, paramKeyEvent))) {
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if ((localQPublicBaseFragment != null) && (localQPublicBaseFragment.doOnKeyDown(paramInt, paramKeyEvent))) {
       return true;
     }
     return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.a(paramIntent);
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      localQPublicBaseFragment.onNewIntent(paramIntent);
     }
   }
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment == null) || (!this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.h())) {
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if ((localQPublicBaseFragment == null) || (!localQPublicBaseFragment.overrideFinish())) {
       superFinish();
     }
   }
   
   public String getCIOPageName()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.getCIOPageName();
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      return localQPublicBaseFragment.getCIOPageName();
     }
     return super.getCIOPageName();
   }
   
-  public boolean isSupportScreenShot()
+  public QPublicBaseFragment getFragment()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment == null) || (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.e());
+    return this.mFrag;
   }
   
-  public boolean isWrapContent()
+  public boolean isSupportScreenShot()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.f();
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    return (localQPublicBaseFragment == null) || (localQPublicBaseFragment.isSupportScreenShot());
+  }
+  
+  protected boolean isWrapContent()
+  {
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      return localQPublicBaseFragment.isWrapContent();
     }
     return super.isWrapContent();
   }
   
-  public void onAccountChanged()
+  protected void onAccountChanged()
   {
     super.onAccountChanged();
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.g();
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      localQPublicBaseFragment.onAccountChanged();
     }
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment == null) {
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment == null) {
       return super.onBackEvent();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.c();
+    return localQPublicBaseFragment.onBackEvent();
   }
   
   @Override
@@ -232,9 +279,9 @@ public class QPublicFragmentActivity
   
   public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    if (jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramString))
+    if (viewCreators.containsKey(paramString))
     {
-      View localView = ((QPublicFragmentActivity.IViewCreator)jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString)).a(paramString, paramContext, paramAttributeSet);
+      View localView = ((QPublicFragmentActivity.IViewCreator)viewCreators.get(paramString)).a(paramString, paramContext, paramAttributeSet);
       if (localView != null) {
         return localView;
       }
@@ -245,36 +292,40 @@ public class QPublicFragmentActivity
   public void onMultiWindowModeChanged(boolean paramBoolean)
   {
     super.onMultiWindowModeChanged(paramBoolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.c(paramBoolean);
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      localQPublicBaseFragment.onMultiWindowModeChanged(paramBoolean);
     }
   }
   
   public void onPostThemeChanged()
   {
     super.onPostThemeChanged();
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.f();
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      localQPublicBaseFragment.onPostThemeChanged();
     }
   }
   
   public void onPreThemeChanged()
   {
     super.onPreThemeChanged();
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.e();
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      localQPublicBaseFragment.onPreThemeChanged();
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.b(paramBoolean);
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      localQPublicBaseFragment.onWindowFocusChanged(paramBoolean);
     }
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     super.requestWindowFeature(paramIntent);
     if (paramIntent.hasExtra("public_fragment_window_feature")) {
@@ -284,37 +335,49 @@ public class QPublicFragmentActivity
   
   public void superFinish()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.h();
+    QPublicBaseFragment localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      localQPublicBaseFragment.beforeFinish();
     }
     super.finish();
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.i();
+    localQPublicBaseFragment = this.mFrag;
+    if (localQPublicBaseFragment != null) {
+      localQPublicBaseFragment.onFinish();
     }
   }
   
   public String toString()
   {
-    String str2 = super.toString();
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment != null) {
-      str1 = str2 + "#" + this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.getClass().getName() + "@" + Integer.toHexString(this.jdField_a_of_type_ComTencentMobileqqFragmentQPublicBaseFragment.hashCode());
-    }
-    do
+    String str = super.toString();
+    if (this.mFrag != null)
     {
-      do
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("#");
+      ((StringBuilder)localObject).append(this.mFrag.getClass().getName());
+      ((StringBuilder)localObject).append("@");
+      ((StringBuilder)localObject).append(Integer.toHexString(this.mFrag.hashCode()));
+      return ((StringBuilder)localObject).toString();
+    }
+    Object localObject = str;
+    if (getIntent() != null)
+    {
+      localObject = str;
+      if (getIntent().getStringExtra("public_fragment_class") != null)
       {
-        return str1;
-        str1 = str2;
-      } while (getIntent() == null);
-      str1 = str2;
-    } while (getIntent().getStringExtra("public_fragment_class") == null);
-    return str2 + "#" + getIntent().getStringExtra("public_fragment_class");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("#");
+        ((StringBuilder)localObject).append(getIntent().getStringExtra("public_fragment_class"));
+        localObject = ((StringBuilder)localObject).toString();
+      }
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QPublicFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

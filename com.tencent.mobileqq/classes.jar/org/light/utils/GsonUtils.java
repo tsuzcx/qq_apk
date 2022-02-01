@@ -9,26 +9,33 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSyntaxException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public final class GsonUtils
 {
-  private static final String TAG = GsonUtils.class.getName();
+  private static final String TAG = "org.light.utils.GsonUtils";
   private static Gson gson = new GsonBuilder().create();
   
   public static void confirmValueIsArray(JsonObject paramJsonObject, String paramString)
   {
-    if ((paramJsonObject == null) || (paramString == null)) {}
-    JsonElement localJsonElement;
-    do
+    if (paramJsonObject != null)
     {
-      return;
-      localJsonElement = paramJsonObject.get(paramString);
-    } while ((localJsonElement == null) || (localJsonElement.isJsonArray()));
-    JsonArray localJsonArray = new JsonArray();
-    localJsonArray.add(localJsonElement);
-    paramJsonObject.remove(paramString);
-    paramJsonObject.add(paramString, localJsonArray);
+      if (paramString == null) {
+        return;
+      }
+      JsonElement localJsonElement = paramJsonObject.get(paramString);
+      if (localJsonElement == null) {
+        return;
+      }
+      if (localJsonElement.isJsonArray()) {
+        return;
+      }
+      JsonArray localJsonArray = new JsonArray();
+      localJsonArray.add(localJsonElement);
+      paramJsonObject.remove(paramString);
+      paramJsonObject.add(paramString, localJsonArray);
+    }
   }
   
   public static double getDoubleUnsafe(JsonArray paramJsonArray, int paramInt)
@@ -85,7 +92,11 @@ public final class GsonUtils
         return paramString;
       }
     }
-    catch (JsonSyntaxException paramString) {}
+    catch (JsonSyntaxException paramString)
+    {
+      label26:
+      break label26;
+    }
     return null;
   }
   
@@ -96,7 +107,11 @@ public final class GsonUtils
       paramGson = paramGson.fromJson(paramString, paramClass);
       return paramGson;
     }
-    catch (Throwable paramGson) {}
+    catch (Throwable paramGson)
+    {
+      label9:
+      break label9;
+    }
     return null;
   }
   
@@ -107,7 +122,11 @@ public final class GsonUtils
       paramGson = paramGson.fromJson(paramString, paramType);
       return paramGson;
     }
-    catch (Exception paramGson) {}
+    catch (Exception paramGson)
+    {
+      label9:
+      break label9;
+    }
     return null;
   }
   
@@ -123,71 +142,45 @@ public final class GsonUtils
       paramString = gson.fromJson(paramString, paramType);
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label11:
+      break label11;
+    }
     return null;
   }
   
-  /* Error */
   public static <T> List<T> json2ObjList(Gson paramGson, String paramString, Class<T> paramClass)
   {
-    // Byte code:
-    //   0: new 102	com/google/gson/JsonParser
-    //   3: dup
-    //   4: invokespecial 103	com/google/gson/JsonParser:<init>	()V
-    //   7: aload_1
-    //   8: invokevirtual 106	com/google/gson/JsonParser:parse	(Ljava/lang/String;)Lcom/google/gson/JsonElement;
-    //   11: invokevirtual 135	com/google/gson/JsonElement:getAsJsonArray	()Lcom/google/gson/JsonArray;
-    //   14: astore 6
-    //   16: new 137	java/util/ArrayList
-    //   19: dup
-    //   20: invokespecial 138	java/util/ArrayList:<init>	()V
-    //   23: astore 5
-    //   25: iconst_0
-    //   26: istore_3
-    //   27: aload 6
-    //   29: invokevirtual 73	com/google/gson/JsonArray:size	()I
-    //   32: istore 4
-    //   34: aload 5
-    //   36: astore_1
-    //   37: iload_3
-    //   38: iload 4
-    //   40: if_icmpge +32 -> 72
-    //   43: aload 5
-    //   45: aload_0
-    //   46: aload 6
-    //   48: iload_3
-    //   49: invokevirtual 63	com/google/gson/JsonArray:get	(I)Lcom/google/gson/JsonElement;
-    //   52: aload_2
-    //   53: invokevirtual 141	com/google/gson/Gson:fromJson	(Lcom/google/gson/JsonElement;Ljava/lang/Class;)Ljava/lang/Object;
-    //   56: invokeinterface 146 2 0
-    //   61: pop
-    //   62: iload_3
-    //   63: iconst_1
-    //   64: iadd
-    //   65: istore_3
-    //   66: goto -32 -> 34
-    //   69: astore_0
-    //   70: aconst_null
-    //   71: astore_1
-    //   72: aload_1
-    //   73: areturn
-    //   74: astore_0
-    //   75: aload 5
-    //   77: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	78	0	paramGson	Gson
-    //   0	78	1	paramString	String
-    //   0	78	2	paramClass	Class<T>
-    //   26	40	3	i	int
-    //   32	9	4	j	int
-    //   23	53	5	localArrayList	java.util.ArrayList
-    //   14	33	6	localJsonArray	JsonArray
-    // Exception table:
-    //   from	to	target	type
-    //   0	25	69	java/lang/Exception
-    //   27	34	74	java/lang/Exception
-    //   43	62	74	java/lang/Exception
+    try
+    {
+      JsonArray localJsonArray = new JsonParser().parse(paramString).getAsJsonArray();
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      int j;
+      return localArrayList;
+    }
+    catch (Exception paramGson)
+    {
+      for (;;)
+      {
+        try
+        {
+          j = localJsonArray.size();
+          paramString = localArrayList;
+          if (i < j)
+          {
+            localArrayList.add(paramGson.fromJson(localJsonArray.get(i), paramClass));
+            i += 1;
+            continue;
+            paramString = null;
+          }
+          return paramString;
+        }
+        catch (Exception paramGson) {}
+        paramGson = paramGson;
+      }
+    }
   }
   
   public static <T> List<T> json2ObjList(String paramString, Class<T> paramClass)
@@ -202,7 +195,11 @@ public final class GsonUtils
       paramGson = paramGson.toJson(paramT);
       return paramGson;
     }
-    catch (Exception paramGson) {}
+    catch (Exception paramGson)
+    {
+      label8:
+      break label8;
+    }
     return null;
   }
   
@@ -213,7 +210,11 @@ public final class GsonUtils
       paramGson = paramGson.toJson(paramT, paramType);
       return paramGson;
     }
-    catch (Exception paramGson) {}
+    catch (Exception paramGson)
+    {
+      label9:
+      break label9;
+    }
     return null;
   }
   
@@ -234,7 +235,11 @@ public final class GsonUtils
       paramGson = paramGson.toJson(paramList);
       return paramGson;
     }
-    catch (Exception paramGson) {}
+    catch (Exception paramGson)
+    {
+      label8:
+      break label8;
+    }
     return null;
   }
   
@@ -253,11 +258,12 @@ public final class GsonUtils
     try
     {
       paramJsonObject = paramJsonObject.get(paramString);
-      boolean bool = paramBoolean;
-      if ((paramJsonObject instanceof JsonPrimitive)) {
-        bool = paramJsonObject.getAsBoolean();
+      if ((paramJsonObject instanceof JsonPrimitive))
+      {
+        boolean bool = paramJsonObject.getAsBoolean();
+        return bool;
       }
-      return bool;
+      return paramBoolean;
     }
     catch (Exception paramJsonObject) {}
     return paramBoolean;
@@ -270,21 +276,19 @@ public final class GsonUtils
   
   public static double optDouble(JsonArray paramJsonArray, int paramInt, double paramDouble)
   {
-    double d = paramDouble;
-    if (paramInt >= 0) {
-      d = paramDouble;
-    }
+    if (paramInt >= 0) {}
     try
     {
       if (paramInt < paramJsonArray.size())
       {
         paramJsonArray = paramJsonArray.get(paramInt);
-        d = paramDouble;
-        if ((paramJsonArray instanceof JsonPrimitive)) {
-          d = paramJsonArray.getAsDouble();
+        if ((paramJsonArray instanceof JsonPrimitive))
+        {
+          double d = paramJsonArray.getAsDouble();
+          return d;
         }
       }
-      return d;
+      return paramDouble;
     }
     catch (Exception paramJsonArray) {}
     return paramDouble;
@@ -300,11 +304,12 @@ public final class GsonUtils
     try
     {
       paramJsonObject = paramJsonObject.get(paramString);
-      double d = paramDouble;
-      if ((paramJsonObject instanceof JsonPrimitive)) {
-        d = paramJsonObject.getAsDouble();
+      if ((paramJsonObject instanceof JsonPrimitive))
+      {
+        double d = paramJsonObject.getAsDouble();
+        return d;
       }
-      return d;
+      return paramDouble;
     }
     catch (Exception paramJsonObject) {}
     return paramDouble;
@@ -320,11 +325,12 @@ public final class GsonUtils
     try
     {
       paramJsonObject = paramJsonObject.get(paramString);
-      float f = paramFloat;
-      if ((paramJsonObject instanceof JsonPrimitive)) {
-        f = paramJsonObject.getAsFloat();
+      if ((paramJsonObject instanceof JsonPrimitive))
+      {
+        float f = paramJsonObject.getAsFloat();
+        return f;
       }
-      return f;
+      return paramFloat;
     }
     catch (Exception paramJsonObject) {}
     return paramFloat;
@@ -337,21 +343,19 @@ public final class GsonUtils
   
   public static int optInt(JsonArray paramJsonArray, int paramInt1, int paramInt2)
   {
-    int i = paramInt2;
-    if (paramInt1 >= 0) {
-      i = paramInt2;
-    }
+    if (paramInt1 >= 0) {}
     try
     {
       if (paramInt1 < paramJsonArray.size())
       {
         paramJsonArray = paramJsonArray.get(paramInt1);
-        i = paramInt2;
-        if ((paramJsonArray instanceof JsonPrimitive)) {
-          i = paramJsonArray.getAsInt();
+        if ((paramJsonArray instanceof JsonPrimitive))
+        {
+          paramInt1 = paramJsonArray.getAsInt();
+          return paramInt1;
         }
       }
-      return i;
+      return paramInt2;
     }
     catch (Exception paramJsonArray) {}
     return paramInt2;
@@ -367,11 +371,12 @@ public final class GsonUtils
     try
     {
       paramJsonObject = paramJsonObject.get(paramString);
-      int i = paramInt;
-      if ((paramJsonObject instanceof JsonPrimitive)) {
-        i = paramJsonObject.getAsInt();
+      if ((paramJsonObject instanceof JsonPrimitive))
+      {
+        int i = paramJsonObject.getAsInt();
+        return i;
       }
-      return i;
+      return paramInt;
     }
     catch (Exception paramJsonObject) {}
     return paramInt;
@@ -379,20 +384,23 @@ public final class GsonUtils
   
   public static JsonArray optJsonArray(JsonArray paramJsonArray, int paramInt)
   {
-    if (paramInt >= 0) {
-      try
+    if (paramInt >= 0) {}
+    try
+    {
+      if (paramInt < paramJsonArray.size())
       {
-        if (paramInt < paramJsonArray.size())
+        paramJsonArray = paramJsonArray.get(paramInt);
+        if ((paramJsonArray instanceof JsonArray))
         {
-          paramJsonArray = paramJsonArray.get(paramInt);
-          if ((paramJsonArray instanceof JsonArray))
-          {
-            paramJsonArray = (JsonArray)paramJsonArray;
-            return paramJsonArray;
-          }
+          paramJsonArray = (JsonArray)paramJsonArray;
+          return paramJsonArray;
         }
       }
-      catch (Exception paramJsonArray) {}
+    }
+    catch (Exception paramJsonArray)
+    {
+      label32:
+      break label32;
     }
     return null;
   }
@@ -408,26 +416,33 @@ public final class GsonUtils
         return paramJsonObject;
       }
     }
-    catch (Exception paramJsonObject) {}
+    catch (Exception paramJsonObject)
+    {
+      label20:
+      break label20;
+    }
     return null;
   }
   
   public static JsonObject optJsonObject(JsonArray paramJsonArray, int paramInt)
   {
-    if (paramInt >= 0) {
-      try
+    if (paramInt >= 0) {}
+    try
+    {
+      if (paramInt < paramJsonArray.size())
       {
-        if (paramInt < paramJsonArray.size())
+        paramJsonArray = paramJsonArray.get(paramInt);
+        if ((paramJsonArray instanceof JsonObject))
         {
-          paramJsonArray = paramJsonArray.get(paramInt);
-          if ((paramJsonArray instanceof JsonObject))
-          {
-            paramJsonArray = (JsonObject)paramJsonArray;
-            return paramJsonArray;
-          }
+          paramJsonArray = (JsonObject)paramJsonArray;
+          return paramJsonArray;
         }
       }
-      catch (Exception paramJsonArray) {}
+    }
+    catch (Exception paramJsonArray)
+    {
+      label32:
+      break label32;
     }
     return null;
   }
@@ -443,7 +458,11 @@ public final class GsonUtils
         return paramJsonObject;
       }
     }
-    catch (Exception paramJsonObject) {}
+    catch (Exception paramJsonObject)
+    {
+      label20:
+      break label20;
+    }
     return null;
   }
   
@@ -457,11 +476,12 @@ public final class GsonUtils
     try
     {
       paramJsonObject = paramJsonObject.get(paramString);
-      long l = paramLong;
-      if ((paramJsonObject instanceof JsonPrimitive)) {
-        l = paramJsonObject.getAsLong();
+      if ((paramJsonObject instanceof JsonPrimitive))
+      {
+        long l = paramJsonObject.getAsLong();
+        return l;
       }
-      return l;
+      return paramLong;
     }
     catch (Exception paramJsonObject) {}
     return paramLong;
@@ -469,20 +489,23 @@ public final class GsonUtils
   
   public static String optString(JsonArray paramJsonArray, int paramInt)
   {
-    if (paramInt >= 0) {
-      try
+    if (paramInt >= 0) {}
+    try
+    {
+      if (paramInt < paramJsonArray.size())
       {
-        if (paramInt < paramJsonArray.size())
+        paramJsonArray = paramJsonArray.get(paramInt);
+        if ((paramJsonArray instanceof JsonPrimitive))
         {
-          paramJsonArray = paramJsonArray.get(paramInt);
-          if ((paramJsonArray instanceof JsonPrimitive))
-          {
-            paramJsonArray = paramJsonArray.getAsString();
-            return paramJsonArray;
-          }
+          paramJsonArray = paramJsonArray.getAsString();
+          return paramJsonArray;
         }
       }
-      catch (Exception paramJsonArray) {}
+    }
+    catch (Exception paramJsonArray)
+    {
+      label32:
+      break label32;
     }
     return "";
   }
@@ -496,12 +519,13 @@ public final class GsonUtils
   {
     try
     {
-      paramString1 = paramJsonObject.get(paramString1);
-      paramJsonObject = paramString2;
-      if ((paramString1 instanceof JsonPrimitive)) {
-        paramJsonObject = paramString1.getAsString();
+      paramJsonObject = paramJsonObject.get(paramString1);
+      if ((paramJsonObject instanceof JsonPrimitive))
+      {
+        paramJsonObject = paramJsonObject.getAsString();
+        return paramJsonObject;
       }
-      return paramJsonObject;
+      return paramString2;
     }
     catch (Exception paramJsonObject) {}
     return paramString2;
@@ -509,7 +533,7 @@ public final class GsonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.utils.GsonUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -32,8 +32,11 @@ public class PTFilter$PTClarityMaskFilter
   {
     if (!this.hasApply)
     {
-      this.mClarityMaskFilter.applyFilterChain(true, paramInt1, paramInt2);
-      this.mSmoothSharpenFilter.applyFilterChain(true, paramInt1, paramInt2);
+      ClarityMaskFilter localClarityMaskFilter = this.mClarityMaskFilter;
+      float f1 = paramInt1;
+      float f2 = paramInt2;
+      localClarityMaskFilter.applyFilterChain(true, f1, f2);
+      this.mSmoothSharpenFilter.applyFilterChain(true, f1, f2);
       this.hasApply = true;
     }
     paramInt1 = paramFrame.height * 720 / paramFrame.width;
@@ -46,7 +49,7 @@ public class PTFilter$PTClarityMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.PTFilter.PTClarityMaskFilter
  * JD-Core Version:    0.7.0.1
  */

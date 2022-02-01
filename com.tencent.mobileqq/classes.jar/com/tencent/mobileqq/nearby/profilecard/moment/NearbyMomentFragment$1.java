@@ -14,11 +14,13 @@ class NearbyMomentFragment$1
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    int i = 0;
     if (paramInt == 0)
     {
+      int j = NearbyMomentFragment.a(this.a).getLastVisiblePosition();
+      int k = NearbyMomentFragment.a(this.a).getCount();
+      int i = 0;
       paramInt = i;
-      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
+      if (j == k - 1)
       {
         paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
         paramInt = i;
@@ -34,7 +36,7 @@ class NearbyMomentFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment.1
  * JD-Core Version:    0.7.0.1
  */

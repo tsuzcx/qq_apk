@@ -19,12 +19,18 @@ public class TAVAudioConfigurationSegment
   
   public String toString()
   {
-    return "TAVAudioConfigurationSegment{compositionTimeRange=" + this.compositionTimeRange.toSimpleString() + ", audioConfiguration=" + this.audioConfiguration + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVAudioConfigurationSegment{compositionTimeRange=");
+    localStringBuilder.append(this.compositionTimeRange.toSimpleString());
+    localStringBuilder.append(", audioConfiguration=");
+    localStringBuilder.append(this.audioConfiguration);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.audio.TAVAudioConfigurationSegment
  * JD-Core Version:    0.7.0.1
  */

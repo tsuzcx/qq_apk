@@ -14,25 +14,29 @@ final class MiniProgramOpenSdkUtil$2
   
   public void run()
   {
-    this.val$outInfo.isTimeout = true;
+    MiniProgramOpenSdkUtil.TimeOutInfo localTimeOutInfo = this.val$outInfo;
+    localTimeOutInfo.isTimeout = true;
     try
     {
-      if ((this.val$outInfo.progressDialog != null) && (this.val$outInfo.progressDialog.isShowing())) {
+      if ((localTimeOutInfo.progressDialog != null) && (this.val$outInfo.progressDialog.isShowing())) {
         this.val$outInfo.progressDialog.dismiss();
       }
-      QQToast.a(this.val$context, HardCodeUtil.a(2131692184), 0).b(this.val$context.getResources().getDimensionPixelSize(2131299166));
+      QQToast.a(this.val$context, HardCodeUtil.a(2131692110), 0).b(this.val$context.getResources().getDimensionPixelSize(2131299168));
       MiniProgramOpenSdkUtil.access$100(this.val$context);
       return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("MiniProgramOpenSdkUtil", 1, "forwardShare timeoutRunnable has Exception" + localThrowable.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("forwardShare timeoutRunnable has Exception");
+      localStringBuilder.append(localThrowable.getMessage());
+      QLog.e("MiniProgramOpenSdkUtil", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil.2
  * JD-Core Version:    0.7.0.1
  */

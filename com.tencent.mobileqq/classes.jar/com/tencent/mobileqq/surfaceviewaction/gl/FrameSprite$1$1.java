@@ -9,44 +9,38 @@ class FrameSprite$1$1
   
   public void run()
   {
-    for (;;)
+    int i;
+    synchronized (this.a.this$0)
     {
-      int j;
-      synchronized (this.a.this$0)
+      Texture[] arrayOfTexture = FrameSprite.a(this.a.this$0);
+      if ((arrayOfTexture != null) && (!FrameSprite.a(this.a.this$0)))
       {
-        Texture[] arrayOfTexture = FrameSprite.a(this.a.this$0);
-        if ((arrayOfTexture == null) || (FrameSprite.a(this.a.this$0))) {
-          return;
-        }
         FrameSprite.a(this.a.this$0, new Texture[FrameSprite.a(this.a.this$0).length / 2]);
-        j = 0;
-        int i = 0;
-        if (j < FrameSprite.a(this.a.this$0).length)
-        {
-          if (j % 2 == 0)
+        i = 0;
+        int j = 0;
+        if (i < FrameSprite.a(this.a.this$0).length) {
+          if (i % 2 == 0)
           {
-            FrameSprite localFrameSprite2 = this.a.this$0;
-            int k = i + 1;
-            FrameSprite.a(localFrameSprite2, i, arrayOfTexture[j]);
-            i = k;
+            FrameSprite.a(this.a.this$0, j, arrayOfTexture[i]);
+            j += 1;
           }
           else
           {
-            FrameSprite.a(this.a.this$0).remove(arrayOfTexture[j]);
-            arrayOfTexture[j].c();
+            FrameSprite.a(this.a.this$0).remove(arrayOfTexture[i]);
+            arrayOfTexture[i].c();
           }
         }
-        else {
-          return;
-        }
       }
-      j += 1;
+      else
+      {
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.1.1
  * JD-Core Version:    0.7.0.1
  */

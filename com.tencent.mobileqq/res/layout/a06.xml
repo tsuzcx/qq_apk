@@ -7,7 +7,7 @@
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/agk">
         <ImageView android:id="@id/jtf" android:layout_width="fill_parent" android:layout_height="480.0dip" />
     </LinearLayout>
-    <com.tencent.biz.pubaccount.AccountDetailBounceScrollView android:id="@id/ixx" android:background="#ff59d3ff" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_above="@id/agk">
+    <com.tencent.biz.lebasearch.widget.LebaSearchBounceScrollView android:id="@id/ixx" android:background="#ff59d3ff" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_above="@id/agk">
         <RelativeLayout android:orientation="vertical" android:id="@id/b9t" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <RelativeLayout android:id="@id/fvp" android:background="#ff59d3ff" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
                 <ImageView android:id="@id/fvo" android:layout_width="110.0dip" android:layout_height="110.0dip" android:layout_marginTop="52.0dip" android:layout_centerHorizontal="true" />
@@ -20,7 +20,7 @@
                 <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/fvl" android:paddingLeft="15.0dip" android:paddingTop="15.0dip" android:paddingRight="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="5.0dip" />
             </LinearLayout>
         </RelativeLayout>
-    </com.tencent.biz.pubaccount.AccountDetailBounceScrollView>
+    </com.tencent.biz.lebasearch.widget.LebaSearchBounceScrollView>
     <RelativeLayout android:gravity="center_vertical" android:id="@id/e8z" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true">
         <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/gg" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     </RelativeLayout>

@@ -34,10 +34,11 @@ class SkinEngine$a
     }
     h.a("SkinEngine", 1, "UpdateTask switch theme end");
     SkinEngine.a(this.a, null);
-    SkinEngine.a(this.a, SkinEngine.a(this.a));
-    Intent localIntent = new Intent("com.tencent.qplus.THEME_INVALIDATE");
-    localIntent.putExtra("pid", Process.myPid());
-    paramContext.sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+    Object localObject = this.a;
+    SkinEngine.a((SkinEngine)localObject, SkinEngine.a((SkinEngine)localObject));
+    localObject = new Intent("com.tencent.qplus.THEME_INVALIDATE");
+    ((Intent)localObject).putExtra("pid", Process.myPid());
+    paramContext.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
     if (SkinEngine.SWITCH_DEBUG)
     {
       Log.d("SkinEngine.switch", "UpdateTask.onPostExecute sendBroadcast(ACTION_THEME_INVALIDATE)");
@@ -47,7 +48,7 @@ class SkinEngine$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.theme.SkinEngine.a
  * JD-Core Version:    0.7.0.1
  */

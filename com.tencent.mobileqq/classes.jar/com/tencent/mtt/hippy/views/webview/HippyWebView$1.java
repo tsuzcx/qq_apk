@@ -48,19 +48,20 @@ class HippyWebView$1
   public void onReceivedError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
   {
     HippyMap localHippyMap = new HippyMap();
+    int i;
     if (Build.VERSION.SDK_INT >= 23)
     {
       localHippyMap.pushString("error", (String)paramWebResourceError.getDescription());
-      localHippyMap.pushInt("errorCode", paramWebResourceError.getErrorCode());
+      i = paramWebResourceError.getErrorCode();
     }
-    for (;;)
+    else
     {
-      this.mEventOnError.send(this.this$0, localHippyMap);
-      super.onReceivedError(paramWebView, paramWebResourceRequest, paramWebResourceError);
-      return;
       localHippyMap.pushString("error", "unknown error");
-      localHippyMap.pushInt("errorCode", 2147483647);
+      i = 2147483647;
     }
+    localHippyMap.pushInt("errorCode", i);
+    this.mEventOnError.send(this.this$0, localHippyMap);
+    super.onReceivedError(paramWebView, paramWebResourceRequest, paramWebResourceError);
   }
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
@@ -91,7 +92,7 @@ class HippyWebView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.webview.HippyWebView.1
  * JD-Core Version:    0.7.0.1
  */

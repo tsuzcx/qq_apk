@@ -23,16 +23,18 @@ public final class OneShotPreDrawListener
   @NonNull
   public static OneShotPreDrawListener add(@NonNull View paramView, @NonNull Runnable paramRunnable)
   {
-    if (paramView == null) {
-      throw new NullPointerException("view == null");
-    }
-    if (paramRunnable == null) {
+    if (paramView != null)
+    {
+      if (paramRunnable != null)
+      {
+        paramRunnable = new OneShotPreDrawListener(paramView, paramRunnable);
+        paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
+        paramView.addOnAttachStateChangeListener(paramRunnable);
+        return paramRunnable;
+      }
       throw new NullPointerException("runnable == null");
     }
-    paramRunnable = new OneShotPreDrawListener(paramView, paramRunnable);
-    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
-    paramView.addOnAttachStateChangeListener(paramRunnable);
-    return paramRunnable;
+    throw new NullPointerException("view == null");
   }
   
   public boolean onPreDraw()
@@ -56,18 +58,15 @@ public final class OneShotPreDrawListener
   {
     if (this.mViewTreeObserver.isAlive()) {
       this.mViewTreeObserver.removeOnPreDrawListener(this);
-    }
-    for (;;)
-    {
-      this.mView.removeOnAttachStateChangeListener(this);
-      return;
+    } else {
       this.mView.getViewTreeObserver().removeOnPreDrawListener(this);
     }
+    this.mView.removeOnAttachStateChangeListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.OneShotPreDrawListener
  * JD-Core Version:    0.7.0.1
  */

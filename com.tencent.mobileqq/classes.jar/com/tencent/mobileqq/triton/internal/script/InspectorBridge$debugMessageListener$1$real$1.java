@@ -24,17 +24,16 @@ public final class InspectorBridge$debugMessageListener$1$real$1
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        InspectorBridge.Companion.access$sendMessageToEngine(InspectorBridge.Companion, InspectorBridge.access$getNativeInstance$p(this.this$0.this$0), paramString);
-        paramString = Unit.INSTANCE;
-      }
+      label49:
+      break label49;
     }
+    InspectorBridge.Companion.access$sendMessageToEngine(InspectorBridge.Companion, InspectorBridge.access$getNativeInstance$p(this.this$0.this$0), paramString);
+    paramString = Unit.INSTANCE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.InspectorBridge.debugMessageListener.1.real.1
  * JD-Core Version:    0.7.0.1
  */

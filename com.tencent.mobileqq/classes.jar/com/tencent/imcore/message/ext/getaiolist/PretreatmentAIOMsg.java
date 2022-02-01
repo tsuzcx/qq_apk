@@ -16,70 +16,86 @@ public class PretreatmentAIOMsg
 {
   public static void a(List<MessageRecord> paramList, QQAppInterface paramQQAppInterface)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    do
+    if (paramList != null)
     {
-      String str;
-      do
-      {
+      if (paramList.size() == 0) {
         return;
-        ArrayList localArrayList = new ArrayList(8);
-        str = null;
-        Iterator localIterator = paramList.iterator();
-        while (localIterator.hasNext())
+      }
+      ArrayList localArrayList = new ArrayList(8);
+      Object localObject = null;
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+        if (localMessageRecord == null)
         {
-          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-          if (localMessageRecord == null)
+          localArrayList.add(localMessageRecord);
+        }
+        else
+        {
+          String str = localMessageRecord.frienduin;
+          if ((localMessageRecord.msgtype != -2006) && (localMessageRecord.isValid))
           {
-            localArrayList.add(localMessageRecord);
-          }
-          else
-          {
-            str = localMessageRecord.frienduin;
-            if ((localMessageRecord.msgtype == -2006) || (!localMessageRecord.isValid)) {
-              localArrayList.add(localMessageRecord);
-            }
-            for (;;)
+            localObject = str;
+            if (localMessageRecord.msgtype == -2015)
             {
-              break;
-              if ((localMessageRecord.msgtype == -2015) && ((localMessageRecord instanceof MessageForQzoneFeed)))
+              localObject = str;
+              if ((localMessageRecord instanceof MessageForQzoneFeed))
               {
-                ((MessageForQzoneFeed)localMessageRecord).parse();
+                localObject = (MessageForQzoneFeed)localMessageRecord;
+                ((MessageForQzoneFeed)localObject).parse();
                 if (QZoneHelper.hideAioFeeds())
                 {
                   if (QLog.isColorLevel()) {
                     QLog.i("Q.msg.MsgProxyUtils", 2, "QZoneFeeds ,空间下发配置屏蔽 aiofeeds，不再显示");
                   }
                   localArrayList.add(localMessageRecord);
+                  localObject = str;
                 }
-                else if (((MessageForQzoneFeed)localMessageRecord).isOldStructMsg)
+                else if (((MessageForQzoneFeed)localObject).isOldStructMsg)
                 {
                   if (QLog.isColorLevel()) {
                     QLog.i("Q.msg.MsgProxyUtils", 2, "QZoneFeeds ,空间aio feeds格式不兼容，不再显示");
                   }
                   localArrayList.add(localMessageRecord);
+                  localObject = str;
                 }
-                else if (FeedsManager.isShowStatus(localMessageRecord.frienduin))
+                else
                 {
-                  if (QLog.isColorLevel()) {
-                    QLog.i("Q.msg.MsgProxyUtils", 2, "QZoneFeeds ,当前会话列表中有新动态，先将aio中的feeds隐藏，避免aio中的feeds跳变");
+                  localObject = str;
+                  if (FeedsManager.isShowStatus(localMessageRecord.frienduin))
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.i("Q.msg.MsgProxyUtils", 2, "QZoneFeeds ,当前会话列表中有新动态，先将aio中的feeds隐藏，避免aio中的feeds跳变");
+                    }
+                    localArrayList.add(localMessageRecord);
+                    localObject = str;
                   }
-                  localArrayList.add(localMessageRecord);
                 }
               }
             }
           }
+          else
+          {
+            localArrayList.add(localMessageRecord);
+            localObject = str;
+          }
         }
-        paramList.removeAll(localArrayList);
-      } while ((str == null) || (!FeedsManager.isShowStatus(str)) || (paramQQAppInterface == null));
-      paramQQAppInterface = (BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(paramList, false);
+      }
+      paramList.removeAll(localArrayList);
+      if ((localObject != null) && (FeedsManager.isShowStatus((String)localObject)) && (paramQQAppInterface != null))
+      {
+        paramQQAppInterface = (BeancurdManager)paramQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
+        if (paramQQAppInterface != null) {
+          paramQQAppInterface.a(paramList, false);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.getaiolist.PretreatmentAIOMsg
  * JD-Core Version:    0.7.0.1
  */

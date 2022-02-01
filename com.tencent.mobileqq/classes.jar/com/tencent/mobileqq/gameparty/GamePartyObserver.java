@@ -14,23 +14,26 @@ public class GamePartyObserver
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    switch (((Integer)paramObject).intValue())
+    int i = ((Integer)paramObject).intValue();
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a();
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        c();
+        return;
+      }
       b();
       return;
     }
-    c();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gameparty.GamePartyObserver
  * JD-Core Version:    0.7.0.1
  */

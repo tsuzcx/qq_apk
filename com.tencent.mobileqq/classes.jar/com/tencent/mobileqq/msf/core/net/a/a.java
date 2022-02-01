@@ -24,8 +24,8 @@ public class a
   private static int h = -2;
   private static boolean i = true;
   private static int j = -1;
-  private static a.a k = null;
-  private static Handler l = null;
+  private static a.a k;
+  private static Handler l;
   private static volatile AtomicBoolean m = new AtomicBoolean(false);
   private static boolean n = false;
   private static boolean o = false;
@@ -61,14 +61,22 @@ public class a
           QLog.d(a, 1, "failed to pause heartbeat");
         }
         b.e = false;
-        QLog.d(a, 1, "pause heartbeat proxy " + paramString);
+        str = a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("pause heartbeat proxy ");
+        localStringBuilder.append(paramString);
+        QLog.d(str, 1, localStringBuilder.toString());
         g.pushManager.b(300000L);
         return true;
       }
     }
     catch (Exception paramString)
     {
-      QLog.d(a, 1, "failed to pause heartbeat " + paramString.toString());
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to pause heartbeat ");
+      localStringBuilder.append(paramString.toString());
+      QLog.d(str, 1, localStringBuilder.toString());
     }
     return true;
   }
@@ -82,15 +90,20 @@ public class a
       {
         p = 0;
         j = 0;
-        if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aM())) {
+        if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aM()))
+        {
           QLog.d(a, 1, "failed to add msg testHeartbeat");
+          return;
         }
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.d(a, 1, "failed to process onConnect event " + localException.toString());
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to process onConnect event ");
+      localStringBuilder.append(localException.toString());
+      QLog.d(str, 1, localStringBuilder.toString());
     }
   }
   
@@ -107,10 +120,11 @@ public class a
   {
     try
     {
-      if ((h == 2) || (h == 1)) {
+      if ((h == 2) || (h == 1))
+      {
         l.sendEmptyMessage(21);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -122,9 +136,9 @@ public class a
   {
     try
     {
+      int i1 = h;
       Object localObject1;
-      Object localObject2;
-      if (h == 2)
+      if (i1 == 2)
       {
         localObject1 = g.sender.I.b().a(513);
         if (localObject1 != null)
@@ -180,7 +194,11 @@ public class a
     }
     catch (Exception localException)
     {
-      QLog.d(a, 1, "failed to report sending " + localException.toString());
+      Object localObject2 = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to report sending ");
+      localStringBuilder.append(localException.toString());
+      QLog.d((String)localObject2, 1, localStringBuilder.toString());
     }
   }
   
@@ -188,17 +206,17 @@ public class a
   {
     try
     {
+      int i1 = h;
       String str;
-      HashMap localHashMap;
-      if (h == 2)
+      if (i1 == 2)
       {
         str = g.sender.I.b().a(515);
         if (str != null)
         {
-          localHashMap = new HashMap();
-          localHashMap.put("heartbeat", str);
+          localObject = new HashMap();
+          ((HashMap)localObject).put("heartbeat", str);
           if (g.getStatReporter() != null) {
-            g.getStatReporter().a("dim.Msf.hwHeartbeat", true, 0L, 0L, localHashMap, false, false);
+            g.getStatReporter().a("dim.Msf.hwHeartbeat", true, 0L, 0L, (Map)localObject, false, false);
           }
         }
       }
@@ -207,11 +225,11 @@ public class a
         str = g.sender.I.b().a(515);
         if (str != null)
         {
-          localHashMap = new HashMap();
-          localHashMap.put("heartbeat", str);
+          localObject = new HashMap();
+          ((HashMap)localObject).put("heartbeat", str);
           if (g.getStatReporter() != null)
           {
-            g.getStatReporter().a("dim.Msf.NmHeartbeat", false, 0L, 0L, localHashMap, false, false);
+            g.getStatReporter().a("dim.Msf.NmHeartbeat", false, 0L, 0L, (Map)localObject, false, false);
             return;
           }
         }
@@ -219,13 +237,21 @@ public class a
     }
     catch (Exception localException)
     {
-      QLog.d(a, 1, "failed to report heartbeat " + localException.toString());
+      Object localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to report heartbeat ");
+      localStringBuilder.append(localException.toString());
+      QLog.d((String)localObject, 1, localStringBuilder.toString());
     }
   }
   
   public static void j()
   {
-    QLog.d(a, 1, "reset current mode: " + h);
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reset current mode: ");
+    localStringBuilder.append(h);
+    QLog.d(str, 1, localStringBuilder.toString());
     try
     {
       a("exception");
@@ -242,20 +268,20 @@ public class a
   
   public static void k()
   {
-    QLog.d(a, 1, "resume current mode: " + h);
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("resume current mode: ");
+    localStringBuilder.append(h);
+    QLog.d(str, 1, localStringBuilder.toString());
     try
     {
       g.sender.I.e();
-      h = f.b;
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.d(a, 1, "failed to resume mode", localException);
-      }
+      QLog.d(a, 1, "failed to resume mode", localException);
     }
+    h = f.b;
   }
   
   public static boolean l()
@@ -265,48 +291,57 @@ public class a
       if (h == 2)
       {
         m.set(false);
-        QLog.d(a, 1, "maincount: " + j + ", fore: " + i + ", mobile: " + NetConnInfoCenter.isMobileConn() + ", screenoff: " + n);
-        if (((j <= 0) && (!i)) || ((!n) || (!NetConnInfoCenter.isMobileConn())))
+        String str = a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("maincount: ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(", fore: ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(", mobile: ");
+        ((StringBuilder)localObject).append(NetConnInfoCenter.isMobileConn());
+        ((StringBuilder)localObject).append(", screenoff: ");
+        ((StringBuilder)localObject).append(n);
+        QLog.d(str, 1, ((StringBuilder)localObject).toString());
+        if (((j <= 0) && (!i)) || ((n) && (NetConnInfoCenter.isMobileConn())))
         {
-          QLog.d(a, 1, "condition check failed");
-          return false;
+          if (g.sender.I.b().a(156).equals("false"))
+          {
+            QLog.d(a, 1, "native switch closed");
+            return false;
+          }
+          if (b.e)
+          {
+            QLog.d(a, 1, "already in proxy heartbeat, return");
+            return true;
+          }
+          if (g.sender.I.b().b(151, true))
+          {
+            QLog.d(a, 1, "set heartbeat proxy");
+            if (!m())
+            {
+              QLog.d(a, 1, "resume heartbeat failed");
+              return false;
+            }
+            b.e = true;
+            g.pushManager.b(1500000L);
+            return true;
+          }
+          QLog.d(a, 1, "failed to set heartbeat proxy");
+          return true;
         }
-        if (!g.sender.I.b().a(156).equals("false")) {
-          break label189;
-        }
-        QLog.d(a, 1, "native switch closed");
+        QLog.d(a, 1, "condition check failed");
         return false;
       }
     }
     catch (Exception localException)
     {
-      QLog.d(a, 1, "failed to set heartbeat proxy " + localException.toString());
+      Object localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to set heartbeat proxy ");
+      localStringBuilder.append(localException.toString());
+      QLog.d((String)localObject, 1, localStringBuilder.toString());
     }
-    for (;;)
-    {
-      return true;
-      label189:
-      if (b.e)
-      {
-        QLog.d(a, 1, "already in proxy heartbeat, return");
-        return true;
-      }
-      if (g.sender.I.b().b(151, true))
-      {
-        QLog.d(a, 1, "set heartbeat proxy");
-        if (!m())
-        {
-          QLog.d(a, 1, "resume heartbeat failed");
-          return false;
-        }
-        b.e = true;
-        g.pushManager.b(1500000L);
-      }
-      else
-      {
-        QLog.d(a, 1, "failed to set heartbeat proxy");
-      }
-    }
+    return true;
   }
   
   public static boolean m()
@@ -318,12 +353,16 @@ public class a
         QLog.d(a, 1, "resume heartbeat");
         b.e = true;
         g.sender.I.b().b(152, true);
+        return true;
       }
-      return true;
     }
     catch (Exception localException)
     {
-      QLog.d(a, 1, "failed to resume heartbeat " + localException.toString());
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to resume heartbeat ");
+      localStringBuilder.append(localException.toString());
+      QLog.d(str, 1, localStringBuilder.toString());
     }
     return true;
   }
@@ -337,19 +376,33 @@ public class a
         QLog.d(a, 1, "stop heartbeat");
         b.e = true;
         g.sender.I.b().b(153, true);
+        return true;
       }
-      return true;
     }
     catch (Exception localException)
     {
-      QLog.d(a, 1, "failed to stop heartbeat " + localException.toString());
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to stop heartbeat ");
+      localStringBuilder.append(localException.toString());
+      QLog.d(str, 1, localStringBuilder.toString());
     }
     return true;
   }
   
   public void a()
   {
-    QLog.d(a, 1, "main process enter background inMode:" + h + ", mobile:" + NetConnInfoCenter.isMobileConn() + " ,inproxy:" + b.e + ", enterprocess:" + m);
+    String str = a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("main process enter background inMode:");
+    ((StringBuilder)localObject).append(h);
+    ((StringBuilder)localObject).append(", mobile:");
+    ((StringBuilder)localObject).append(NetConnInfoCenter.isMobileConn());
+    ((StringBuilder)localObject).append(" ,inproxy:");
+    ((StringBuilder)localObject).append(b.e);
+    ((StringBuilder)localObject).append(", enterprocess:");
+    ((StringBuilder)localObject).append(m);
+    QLog.d(str, 1, ((StringBuilder)localObject).toString());
     try
     {
       if ((h == 2) && (NetConnInfoCenter.isMobileConn()))
@@ -359,22 +412,31 @@ public class a
         if ((!b.e) && (m.compareAndSet(false, true)))
         {
           j = 0;
-          if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aM())) {
+          if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aM()))
+          {
             QLog.d(a, 1, "failed to add msg testHeartbeat");
+            return;
           }
         }
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.d(a, 1, "failed to process background event " + localException.toString());
+      localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to process background event ");
+      localStringBuilder.append(localException.toString());
+      QLog.d((String)localObject, 1, localStringBuilder.toString());
     }
   }
   
   public void b()
   {
-    QLog.d(a, 1, "main process enter foreground inproxy:" + b.e);
+    String str = a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("main process enter foreground inproxy:");
+    ((StringBuilder)localObject).append(b.e);
+    QLog.d(str, 1, ((StringBuilder)localObject).toString());
     try
     {
       if (h == 2)
@@ -384,61 +446,90 @@ public class a
         }
         i = true;
         j += 1;
-        if (!o) {
+        if (!o)
+        {
           l.sendEmptyMessageDelayed(20, 3600000L);
+          return;
         }
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.d(a, 1, "failed to process foreground event " + localException.toString());
+      localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to process foreground event ");
+      localStringBuilder.append(localException.toString());
+      QLog.d((String)localObject, 1, localStringBuilder.toString());
     }
   }
   
   public void c()
   {
-    QLog.d(a, 1, "receive screen off msg inMode:" + h + ", mobile:" + NetConnInfoCenter.isMobileConn() + " ,inproxy:" + b.e + ", enterprocess:" + m);
+    String str = a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("receive screen off msg inMode:");
+    ((StringBuilder)localObject).append(h);
+    ((StringBuilder)localObject).append(", mobile:");
+    ((StringBuilder)localObject).append(NetConnInfoCenter.isMobileConn());
+    ((StringBuilder)localObject).append(" ,inproxy:");
+    ((StringBuilder)localObject).append(b.e);
+    ((StringBuilder)localObject).append(", enterprocess:");
+    ((StringBuilder)localObject).append(m);
+    QLog.d(str, 1, ((StringBuilder)localObject).toString());
     try
     {
       if ((h == 2) && (NetConnInfoCenter.isMobileConn()) && (!b.e) && (m.compareAndSet(false, true)))
       {
         n = true;
-        if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aM())) {
+        if (!l.sendEmptyMessageDelayed(18, com.tencent.mobileqq.msf.core.a.a.aM()))
+        {
           QLog.d(a, 1, "failed to add msg testHeartbeat");
+          return;
         }
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.d(a, 1, "failed to process screenoff event " + localException.toString());
+      localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to process screenoff event ");
+      localStringBuilder.append(localException.toString());
+      QLog.d((String)localObject, 1, localStringBuilder.toString());
     }
   }
   
   public void d()
   {
-    QLog.d(a, 1, "receive screen on msg inproxy:" + b.e);
+    String str = a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("receive screen on msg inproxy:");
+    ((StringBuilder)localObject).append(b.e);
+    QLog.d(str, 1, ((StringBuilder)localObject).toString());
     try
     {
       if (h == 2)
       {
         n = false;
-        if ((true == b.e) && (i)) {
+        if ((true == b.e) && (i))
+        {
           a("screenon");
+          return;
         }
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.d(a, 1, "failed to process screenoff event " + localException.toString());
+      localObject = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to process screenoff event ");
+      localStringBuilder.append(localException.toString());
+      QLog.d((String)localObject, 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.a.a
  * JD-Core Version:    0.7.0.1
  */

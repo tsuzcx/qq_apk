@@ -54,87 +54,89 @@ public class FunnyFaceMessage
   
   public boolean msgEquals(Object paramObject)
   {
-    boolean bool1 = true;
     boolean bool2 = false;
-    boolean bool3 = false;
     if (paramObject == null)
     {
-      bool2 = bool3;
+      if (QLog.isColorLevel()) {
+        QLog.d("FunnyFaceMessage", 2, "msgEquals, obj == null");
+      }
+      return false;
+    }
+    if (paramObject == this)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FunnyFaceMessage", 2, "msgEquals, obj == this");
+      }
+      return true;
+    }
+    if (!(paramObject instanceof FunnyFaceMessage))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FunnyFaceMessage", 2, "msgEquals, obj not FunnyFaceMessage");
+      }
+      return false;
+    }
+    paramObject = (FunnyFaceMessage)paramObject;
+    int i = this.faceId;
+    if (i != paramObject.faceId)
+    {
       if (QLog.isColorLevel())
       {
-        QLog.d("FunnyFaceMessage", 2, "msgEquals, obj == null");
-        bool2 = bool3;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("msgEquals, this.faceId == ");
+        localStringBuilder.append(this.faceId);
+        localStringBuilder.append(", rhs.faceId == ");
+        localStringBuilder.append(paramObject.faceId);
+        QLog.d("FunnyFaceMessage", 2, localStringBuilder.toString());
+      }
+      return false;
+    }
+    if (i != 1)
+    {
+      if (i != 2) {
+        return false;
+      }
+      bool1 = bool2;
+    }
+    try
+    {
+      if (this.bomb.isBurst != paramObject.bomb.isBurst) {
+        break label262;
       }
     }
-    do
+    catch (Exception paramObject)
     {
-      do
-      {
-        return bool2;
-        if (paramObject == this)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("FunnyFaceMessage", 2, "msgEquals, obj == this");
-          }
-          return true;
-        }
-        if ((paramObject instanceof FunnyFaceMessage)) {
-          break;
-        }
-        bool2 = bool3;
-      } while (!QLog.isColorLevel());
-      QLog.d("FunnyFaceMessage", 2, "msgEquals, obj not FunnyFaceMessage");
-      return false;
-      paramObject = (FunnyFaceMessage)paramObject;
-      if (this.faceId == paramObject.faceId) {
-        break;
+      boolean bool3;
+      bool1 = bool2;
+      if (!QLog.isColorLevel()) {
+        break label262;
       }
-      bool2 = bool3;
-    } while (!QLog.isColorLevel());
-    QLog.d("FunnyFaceMessage", 2, "msgEquals, this.faceId == " + this.faceId + ", rhs.faceId == " + paramObject.faceId);
-    return false;
+      QLog.d("FunnyFaceMessage", 2, paramObject.toString());
+      bool1 = bool2;
+    }
+    boolean bool1 = bool2;
+    if (this.turntable.hitUin.equals(paramObject.turntable.hitUin))
+    {
+      bool3 = this.turntable.uinList.equals(paramObject.turntable.uinList);
+      bool1 = bool2;
+      if (bool3) {
+        break label301;
+      }
+    }
     for (;;)
     {
-      try
+      label262:
+      if (QLog.isColorLevel())
       {
-        switch (this.faceId)
-        {
-        case 1: 
-          if (!this.turntable.hitUin.equals(paramObject.turntable.hitUin)) {
-            continue;
-          }
-          bool3 = this.turntable.uinList.equals(paramObject.turntable.uinList);
-          if (!bool3) {
-            continue;
-          }
-        }
-      }
-      catch (Exception paramObject)
-      {
-        boolean bool4;
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
+        paramObject = new StringBuilder();
+        paramObject.append("msgEquals, ret == ");
+        paramObject.append(bool1);
         QLog.d("FunnyFaceMessage", 2, paramObject.toString());
-        bool1 = bool2;
-        continue;
       }
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("FunnyFaceMessage", 2, "msgEquals, ret == " + bool1);
       return bool1;
-      bool1 = false;
-      continue;
-      bool3 = this.bomb.isBurst;
-      bool4 = paramObject.bomb.isBurst;
-      if (bool3 != bool4) {
-        bool1 = false;
-      }
+      label301:
+      bool1 = true;
     }
-    return false;
   }
   
   public void readExternal(ObjectInput paramObjectInput)
@@ -143,40 +145,48 @@ public class FunnyFaceMessage
     {
       this.faceId = paramObjectInput.readInt();
       this.playAnimation = paramObjectInput.readBoolean();
-      if (this.faceId != 1) {
-        break label58;
+      int i = this.faceId;
+      if (i == 1)
+      {
+        this.turntable = new FunnyFaceMessage.Turntable();
+        this.turntable.readExternal(paramObjectInput);
+        return;
       }
-      this.turntable = new FunnyFaceMessage.Turntable();
-      this.turntable.readExternal(paramObjectInput);
+      if (i == 2)
+      {
+        this.bomb = new FunnyFaceMessage.Bomb();
+        this.bomb.readExternal(paramObjectInput);
+      }
     }
-    label58:
-    while (this.faceId != 2) {
-      return;
-    }
-    this.bomb = new FunnyFaceMessage.Bomb();
-    this.bomb.readExternal(paramObjectInput);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("faceId:").append(this.faceId);
-    if (this.faceId == 1)
+    localStringBuilder.append("faceId:");
+    localStringBuilder.append(this.faceId);
+    int i = this.faceId;
+    if (i == 1)
     {
-      localStringBuilder.append(",hituin:").append(this.turntable.hitUin).append(",uinList[");
+      localStringBuilder.append(",hituin:");
+      localStringBuilder.append(this.turntable.hitUin);
+      localStringBuilder.append(",uinList[");
       Iterator localIterator = this.turntable.uinList.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append((String)localIterator.next()).append(",");
+      while (localIterator.hasNext())
+      {
+        localStringBuilder.append((String)localIterator.next());
+        localStringBuilder.append(",");
       }
-      localStringBuilder.append("]").append(",nickNane:").append(this.turntable.hitNickName);
+      localStringBuilder.append("]");
+      localStringBuilder.append(",nickNane:");
+      localStringBuilder.append(this.turntable.hitNickName);
     }
-    for (;;)
+    else if (i == 2)
     {
-      return localStringBuilder.toString();
-      if (this.faceId == 2) {
-        localStringBuilder.append(",isBurst:").append(this.bomb.isBurst);
-      }
+      localStringBuilder.append(",isBurst:");
+      localStringBuilder.append(this.bomb.isBurst);
     }
+    return localStringBuilder.toString();
   }
   
   public void writeExternal(ObjectOutput paramObjectOutput)
@@ -184,18 +194,20 @@ public class FunnyFaceMessage
     paramObjectOutput.writeInt(VERSION);
     paramObjectOutput.writeInt(this.faceId);
     paramObjectOutput.writeBoolean(this.playAnimation);
-    if (this.faceId == 1) {
+    int i = this.faceId;
+    if (i == 1)
+    {
       this.turntable.writeExternal(paramObjectOutput);
-    }
-    while (this.faceId != 2) {
       return;
     }
-    this.bomb.writeExternal(paramObjectOutput);
+    if (i == 2) {
+      this.bomb.writeExternal(paramObjectOutput);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.FunnyFaceMessage
  * JD-Core Version:    0.7.0.1
  */

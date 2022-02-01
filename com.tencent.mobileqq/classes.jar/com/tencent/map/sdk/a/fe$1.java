@@ -13,9 +13,9 @@ final class fe$1
     {
       paramfe = (eu)paramfe;
       paramfe.a(ff.e);
-      Map.Entry localEntry = (Map.Entry)((Iterator)paramfe.g()).next();
-      paramfe.a.add(localEntry.getValue());
-      paramfe.a.add(new dy((String)localEntry.getKey()));
+      localObject = (Map.Entry)((Iterator)paramfe.g()).next();
+      paramfe.a.add(((Map.Entry)localObject).getValue());
+      paramfe.a.add(new dy((String)((Map.Entry)localObject).getKey()));
       return;
     }
     int j = fe.a(paramfe);
@@ -38,12 +38,18 @@ final class fe$1
       fe.a(paramfe, 10);
       return;
     }
-    throw new IllegalStateException("Expected a name but was " + paramfe.f() + "  at line " + fe.c(paramfe) + " column " + fe.d(paramfe));
+    Object localObject = new StringBuilder("Expected a name but was ");
+    ((StringBuilder)localObject).append(paramfe.f());
+    ((StringBuilder)localObject).append("  at line ");
+    ((StringBuilder)localObject).append(fe.c(paramfe));
+    ((StringBuilder)localObject).append(" column ");
+    ((StringBuilder)localObject).append(fe.d(paramfe));
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.fe.1
  * JD-Core Version:    0.7.0.1
  */

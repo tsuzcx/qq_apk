@@ -19,7 +19,10 @@ public class ProgressWebView
   {
     super(paramContext);
     WebSettings localWebSettings = getSettings();
-    localWebSettings.setUserAgent(localWebSettings.getUserAgentString() + "QQ/MicroApp/H5");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localWebSettings.getUserAgentString());
+    localStringBuilder.append("QQ/MicroApp/H5");
+    localWebSettings.setUserAgent(localStringBuilder.toString());
     localWebSettings.setSavePassword(false);
     localWebSettings.setSaveFormData(false);
     localWebSettings.setBuiltInZoomControls(true);
@@ -38,13 +41,13 @@ public class ProgressWebView
     try
     {
       requestFocus();
-      label116:
+      label122:
       init(paramContext);
       return;
     }
     catch (Exception localException)
     {
-      break label116;
+      break label122;
     }
   }
   
@@ -52,29 +55,27 @@ public class ProgressWebView
   {
     try
     {
-      if ((paramContext instanceof MutableContextWrapper))
-      {
-        BaseActivity localBaseActivity = (BaseActivity)((MutableContextWrapper)paramContext).getBaseContext();
-        if (localBaseActivity != null)
-        {
-          this.mWebViewDirector = new WebViewDirector(new ProgressWebView.MiniAppWebviewBuilder(paramContext, localBaseActivity, localBaseActivity.getAppInterface(), this));
-          this.mWebViewDirector.a(null, localBaseActivity.app, localBaseActivity.getIntent());
-        }
-        return;
+      if ((paramContext instanceof MutableContextWrapper)) {
+        localBaseActivity = (BaseActivity)((MutableContextWrapper)paramContext).getBaseContext();
       }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Object localObject = null;
-      }
+      BaseActivity localBaseActivity;
+      label21:
+      break label21;
+    }
+    localBaseActivity = null;
+    if (localBaseActivity != null)
+    {
+      this.mWebViewDirector = new WebViewDirector(new ProgressWebView.MiniAppWebviewBuilder(paramContext, localBaseActivity, localBaseActivity.getAppInterface(), this));
+      this.mWebViewDirector.construct(null, localBaseActivity.app, localBaseActivity.getIntent());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.ProgressWebView
  * JD-Core Version:    0.7.0.1
  */

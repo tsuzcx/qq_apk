@@ -3,7 +3,7 @@ package cooperation.ilive.config;
 import android.support.annotation.NonNull;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.config.business.qvip.BaseQVipConfigProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.BaseQVipConfigProcessor;
 import com.tencent.qphone.base.util.QLog;
 
 public class IliveManagerConfProcessor
@@ -21,17 +21,21 @@ public class IliveManagerConfProcessor
     if (paramArrayOfQConfItem != null) {
       try
       {
+        Object localObject;
         if (paramArrayOfQConfItem.length > 0)
         {
           int j = paramArrayOfQConfItem.length;
           int i = 0;
           while (i < j)
           {
-            QConfItem localQConfItem = paramArrayOfQConfItem[i];
-            if (localQConfItem != null)
+            localObject = paramArrayOfQConfItem[i];
+            if (localObject != null)
             {
-              IliveManagerCfgBean localIliveManagerCfgBean = IliveManagerCfgBean.a(localQConfItem.a);
-              QLog.e("IliveManagerConfProcessor", 1, "onParsed content = " + localQConfItem.a);
+              IliveManagerCfgBean localIliveManagerCfgBean = IliveManagerCfgBean.a(((QConfItem)localObject).a);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("onParsed content = ");
+              localStringBuilder.append(((QConfItem)localObject).a);
+              QLog.e("IliveManagerConfProcessor", 1, localStringBuilder.toString());
               if (localIliveManagerCfgBean != null) {
                 return localIliveManagerCfgBean;
               }
@@ -44,7 +48,10 @@ public class IliveManagerConfProcessor
       catch (Throwable paramArrayOfQConfItem)
       {
         paramArrayOfQConfItem.printStackTrace();
-        QLog.e("IliveManagerConfProcessor", 1, "onParsed Exception = " + paramArrayOfQConfItem.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onParsed Exception = ");
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem.getMessage());
+        QLog.e("IliveManagerConfProcessor", 1, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -73,7 +80,7 @@ public class IliveManagerConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.config.IliveManagerConfProcessor
  * JD-Core Version:    0.7.0.1
  */

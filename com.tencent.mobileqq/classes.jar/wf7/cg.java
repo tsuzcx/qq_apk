@@ -8,20 +8,26 @@ public class cg
   
   private String J(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return "wifi_user_phone";
-    case 3: 
-      return "phone_num_from_pimsecure";
-    case 4: 
-      return "phone_num_from_push";
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return null;
+            }
+            return "phone_num_from_temp_input";
+          }
+          return "phone_num_from_push";
+        }
+        return "phone_num_from_pimsecure";
+      }
       return "phone_num_from_system";
     }
-    return "phone_num_from_temp_input";
+    return "wifi_user_phone";
   }
   
   public static final cg aL()
@@ -39,18 +45,21 @@ public class cg
   
   public bv I(int paramInt)
   {
-    if (paramInt == 5) {}
-    String str;
-    do
+    Object localObject2 = null;
+    if (paramInt == 5) {
+      return null;
+    }
+    String str = J(paramInt);
+    Object localObject1 = localObject2;
+    if (!TextUtils.isEmpty(str))
     {
-      do
-      {
-        return null;
-        str = J(paramInt);
-      } while (TextUtils.isEmpty(str));
       str = ch.aP().getString(str, "");
-    } while (TextUtils.isEmpty(str));
-    return new bv(str, paramInt);
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(str)) {
+        localObject1 = new bv(str, paramInt);
+      }
+    }
+    return localObject1;
   }
   
   public boolean aM()
@@ -60,50 +69,45 @@ public class cg
   
   public bv aN()
   {
-    Object localObject = I(1);
-    if (localObject != null) {}
-    bv localbv;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return localObject;
-            localbv = I(3);
-            localObject = localbv;
-          } while (localbv != null);
-          localbv = I(2);
-          localObject = localbv;
-        } while (localbv != null);
-        localbv = I(4);
-        localObject = localbv;
-      } while (localbv != null);
-      localbv = I(5);
-      localObject = localbv;
-    } while (localbv != null);
+    bv localbv = I(1);
+    if (localbv != null) {
+      return localbv;
+    }
+    localbv = I(3);
+    if (localbv != null) {
+      return localbv;
+    }
+    localbv = I(2);
+    if (localbv != null) {
+      return localbv;
+    }
+    localbv = I(4);
+    if (localbv != null) {
+      return localbv;
+    }
+    localbv = I(5);
+    if (localbv != null) {
+      return localbv;
+    }
     return null;
   }
   
   public boolean aO()
   {
-    boolean bool = true;
     bv localbv = aN();
     if (localbv != null)
     {
       if (localbv.gu != 1) {
-        bool = aL().aM();
+        return aL().aM();
       }
-      return bool;
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cg
  * JD-Core Version:    0.7.0.1
  */

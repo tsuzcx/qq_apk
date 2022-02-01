@@ -22,23 +22,24 @@ class VasCommonJsPlugin$4
       {
         paramDialogInterface.put("message", " press");
         this.val$listener.a(paramDialogInterface);
-        return true;
       }
       catch (Exception paramDialogInterface)
       {
-        for (;;)
-        {
-          this.val$listener.a("Exception:" + paramDialogInterface.getMessage());
-          paramDialogInterface.printStackTrace();
-        }
+        paramKeyEvent = this.val$listener;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Exception:");
+        localStringBuilder.append(paramDialogInterface.getMessage());
+        paramKeyEvent.a(localStringBuilder.toString());
+        paramDialogInterface.printStackTrace();
       }
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

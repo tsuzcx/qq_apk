@@ -21,31 +21,31 @@ public class Cache$CacheInputStream
   
   public void close()
   {
-    if (this.mInputStream != null) {}
-    try
-    {
-      this.mInputStream.close();
-      if (this.mSnapshot != null) {
-        this.mSnapshot.close();
+    InputStream localInputStream = this.mInputStream;
+    if (localInputStream != null) {
+      try
+      {
+        localInputStream.close();
       }
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      catch (IOException localIOException)
       {
         localIOException.printStackTrace();
       }
+    }
+    DiskLruCache.Snapshot localSnapshot = this.mSnapshot;
+    if (localSnapshot != null) {
+      localSnapshot.close();
     }
   }
   
   public FileDescriptor getFileDescriptor()
   {
-    if (this.mInputStream != null) {
+    Object localObject = this.mInputStream;
+    if (localObject != null) {
       try
       {
-        FileDescriptor localFileDescriptor = ((FileInputStream)this.mInputStream).getFD();
-        return localFileDescriptor;
+        localObject = ((FileInputStream)localObject).getFD();
+        return localObject;
       }
       catch (IOException localIOException)
       {
@@ -72,7 +72,7 @@ public class Cache$CacheInputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.cache.Cache.CacheInputStream
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.share.api.IArkAsyncShareMsgService;
 import com.tencent.mobileqq.ark.share.core.ArkAsyncShareMsgManager;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
@@ -21,47 +21,48 @@ class ArkAppItemBubbleBuilder$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_AndroidContentContext)) {}
-    Object localObject;
-    do
+    if (ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_AndroidContentContext)) {
+      return;
+    }
+    paramDialogInterface = (MessageForArkApp)MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    if (paramDialogInterface.msgData == null)
     {
-      do
+      if (paramDialogInterface.ark_app_message == null)
       {
-        do
+        ArkAppCenter.a("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
+        return;
+      }
+      paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    {
+      paramInt = paramDialogInterface.getProcessState();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
+      if ((paramInt != 1002) && (paramInt != 0))
+      {
+        Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject instanceof QQAppInterface))
         {
-          do
+          localObject = (IArkAsyncShareMsgService)((QQAppInterface)localObject).getRuntimeService(IArkAsyncShareMsgService.class, "");
+          if (localObject != null)
           {
-            return;
-            paramDialogInterface = (MessageForArkApp)MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
-            if (paramDialogInterface.msgData == null)
-            {
-              if (paramDialogInterface.ark_app_message == null)
-              {
-                ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
-                return;
-              }
-              paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
+            localObject = ((IArkAsyncShareMsgService)localObject).getAsyncShareMsgManager();
+            if (localObject != null) {
+              ((ArkAsyncShareMsgManager)localObject).a(paramDialogInterface);
             }
-          } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null);
-          paramInt = paramDialogInterface.getProcessState();
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
-          if ((paramInt == 1002) || (paramInt == 0)) {
-            break;
           }
-          localObject = BaseApplicationImpl.getApplication().getRuntime();
-        } while (!(localObject instanceof QQAppInterface));
-        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER);
-      } while (localObject == null);
-      localObject = ((ArkAppCenter)localObject).a();
-    } while (localObject == null);
-    ((ArkAsyncShareMsgManager)localObject).a(paramDialogInterface);
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramDialogInterface, null, true);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppItemBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramDialogInterface, null, true);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.2
  * JD-Core Version:    0.7.0.1
  */

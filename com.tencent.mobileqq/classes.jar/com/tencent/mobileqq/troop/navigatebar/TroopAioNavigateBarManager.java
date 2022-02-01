@@ -2,16 +2,18 @@ package com.tencent.mobileqq.troop.navigatebar;
 
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.BaseProxyManager;
 import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
 import com.tencent.mobileqq.utils.ListUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -25,7 +27,7 @@ public class TroopAioNavigateBarManager
   extends Observable
   implements Manager
 {
-  protected QQAppInterface a;
+  protected AppInterface a;
   private HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   protected final ConcurrentHashMap<String, List<TroopMessageNavigateInfo>> a;
   volatile boolean jdField_a_of_type_Boolean = false;
@@ -35,118 +37,91 @@ public class TroopAioNavigateBarManager
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
-  public TroopAioNavigateBarManager(QQAppInterface paramQQAppInterface)
+  public TroopAioNavigateBarManager(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     b();
   }
   
   private String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mapTroopNavigateInfo: size = ").append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size()).append(" {");
+    localStringBuilder.append("mapTroopNavigateInfo: size = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+    localStringBuilder.append(" {");
     Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
     int i = 0;
-    label208:
-    label222:
-    for (;;)
+    int j;
+    do
     {
-      Object localObject1;
-      int j;
-      if (localIterator.hasNext())
-      {
-        Object localObject2 = (Map.Entry)localIterator.next();
-        localObject1 = (List)((Map.Entry)localObject2).getValue();
-        localObject2 = localStringBuilder.append((String)((Map.Entry)localObject2).getKey()).append(": size = ");
-        if (localObject1 != null) {
-          break label208;
-        }
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      Object localObject = (Map.Entry)localIterator.next();
+      List localList = (List)((Map.Entry)localObject).getValue();
+      localStringBuilder.append((String)((Map.Entry)localObject).getKey());
+      localStringBuilder.append(": size = ");
+      if (localList == null) {
         j = 0;
-        ((StringBuilder)localObject2).append(j).append("->{ ");
-        if (localObject1 != null)
-        {
-          localObject1 = ((List)localObject1).iterator();
-          j = 0;
-        }
+      } else {
+        j = localList.size();
       }
-      for (;;)
+      localStringBuilder.append(j);
+      localStringBuilder.append("->{ ");
+      if (localList != null)
       {
-        if (((Iterator)localObject1).hasNext())
+        localObject = localList.iterator();
+        j = 0;
+        int k;
+        do
         {
-          localStringBuilder.append(((TroopMessageNavigateInfo)((Iterator)localObject1).next()).toString()).append(" ");
-          j += 1;
-          if (j < 10) {}
-        }
-        else
-        {
-          localStringBuilder.append(" } ");
-          i += 1;
-          if (i < 20) {
-            break label222;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
           }
-          localStringBuilder.append(" }");
-          return localStringBuilder.toString();
-          j = ((List)localObject1).size();
-          break;
-        }
+          localStringBuilder.append(((TroopMessageNavigateInfo)((Iterator)localObject).next()).toString());
+          localStringBuilder.append(" ");
+          k = j + 1;
+          j = k;
+        } while (k < 10);
       }
-    }
+      localStringBuilder.append(" } ");
+      j = i + 1;
+      i = j;
+    } while (j < 20);
+    localStringBuilder.append(" }");
+    return localStringBuilder.toString();
   }
   
   protected static String a(String paramString, int paramInt)
   {
-    if (paramInt == 1) {}
-    while (paramInt != 3000) {
+    if (paramInt == 1) {
       return paramString;
     }
-    return paramString + "&" + 3000;
+    Object localObject = paramString;
+    if (paramInt == 3000)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("&");
+      ((StringBuilder)localObject).append(3000);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
   
-  /* Error */
   private void a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifne +16 -> 22
-    //   9: aload_0
-    //   10: getfield 22	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   13: aload_1
-    //   14: invokevirtual 119	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   17: istore_2
-    //   18: iload_2
-    //   19: ifne +6 -> 25
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: return
-    //   25: aload_0
-    //   26: getfield 22	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   29: aload_1
-    //   30: invokevirtual 123	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   33: checkcast 82	java/util/List
-    //   36: new 125	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager$NavigationMsgComparator
-    //   39: dup
-    //   40: aconst_null
-    //   41: invokespecial 128	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager$NavigationMsgComparator:<init>	(Lcom/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager$1;)V
-    //   44: invokestatic 134	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   47: goto -25 -> 22
-    //   50: astore_1
-    //   51: aload_0
-    //   52: monitorexit
-    //   53: aload_1
-    //   54: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	55	0	this	TroopAioNavigateBarManager
-    //   0	55	1	paramString	String
-    //   17	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	18	50	finally
-    //   25	47	50	finally
+    try
+    {
+      if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)))
+      {
+        Collections.sort((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString), new TroopAioNavigateBarManager.NavigationMsgComparator(null));
+        return;
+      }
+      return;
+    }
+    finally {}
   }
   
   private void b()
@@ -161,288 +136,154 @@ public class TroopAioNavigateBarManager
       try
       {
         a();
-        int i = 0;
+        i = 0;
         Iterator localIterator1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-        if (localIterator1.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)localIterator1.next();
-          List localList = (List)localEntry.getValue();
-          Iterator localIterator2 = localList.iterator();
-          if (localIterator2.hasNext())
-          {
-            TroopMessageNavigateInfo localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)localIterator2.next();
-            if (localTroopMessageNavigateInfo != null) {
-              if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_ADD)
-              {
-                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().doAddMsgQueue(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 3, null);
-                i = 1;
-              }
-              else if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_MODIFY)
-              {
-                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().doAddMsgQueue(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 4, null);
-                i = 1;
-              }
-              else if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_DELETE)
-              {
-                localIterator2.remove();
-                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().doAddMsgQueue(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 5, null);
-                i = 1;
-              }
-            }
-          }
-          else if (localList.isEmpty())
-          {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEntry.getKey());
-          }
+        if (!localIterator1.hasNext()) {
+          continue;
         }
-        else
+        localEntry = (Map.Entry)localIterator1.next();
+        localList = (List)localEntry.getValue();
+        localIterator2 = localList.iterator();
+        j = i;
+      }
+      finally
+      {
+        int i;
+        Map.Entry localEntry;
+        List localList;
+        Iterator localIterator2;
+        TroopMessageNavigateInfo localTroopMessageNavigateInfo;
+        continue;
+        throw localObject;
+        continue;
+        int j = 1;
+        continue;
+      }
+      if (localIterator2.hasNext())
+      {
+        localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)localIterator2.next();
+        if (localTroopMessageNavigateInfo != null)
         {
-          if (i != 0) {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().saveNotify();
+          if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_ADD)
+          {
+            this.jdField_a_of_type_ComTencentCommonAppAppInterface.getProxyManagerInner().doAddMsgQueue(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 3, null);
+            continue;
           }
-          return;
+          if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_MODIFY)
+          {
+            this.jdField_a_of_type_ComTencentCommonAppAppInterface.getProxyManagerInner().doAddMsgQueue(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 4, null);
+            continue;
+          }
+          if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_DELETE)
+          {
+            localIterator2.remove();
+            this.jdField_a_of_type_ComTencentCommonAppAppInterface.getProxyManagerInner().doAddMsgQueue(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 5, null);
+          }
         }
       }
-      finally {}
+      else
+      {
+        i = j;
+        if (localList.isEmpty())
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEntry.getKey());
+          i = j;
+        }
+      }
+    }
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getProxyManagerInner().saveNotify();
     }
   }
   
-  /* Error */
   public int a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: aload_1
-    //   4: invokevirtual 194	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/TroopMessageNavigateInfo;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnull +12 -> 21
-    //   12: aload_1
-    //   13: getfield 197	com/tencent/mobileqq/data/TroopMessageNavigateInfo:type	I
-    //   16: istore_2
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: iload_2
-    //   20: ireturn
-    //   21: iconst_m1
-    //   22: istore_2
-    //   23: goto -6 -> 17
-    //   26: astore_1
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_1
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	TroopAioNavigateBarManager
-    //   0	31	1	paramString	String
-    //   16	7	2	i	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	26	finally
-    //   12	17	26	finally
+    try
+    {
+      paramString = a(paramString);
+      if (paramString != null)
+      {
+        int i = paramString.type;
+        return i;
+      }
+      return -1;
+    }
+    finally {}
   }
   
-  /* Error */
   public int a(String paramString, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: iload_2
-    //   4: invokevirtual 201	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(I)Z
-    //   7: istore_3
-    //   8: iload_3
-    //   9: ifne +9 -> 18
-    //   12: iconst_m1
-    //   13: istore_2
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: iload_2
-    //   17: ireturn
-    //   18: aload_0
-    //   19: aload_1
-    //   20: iload_2
-    //   21: invokestatic 203	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   24: invokevirtual 205	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;)I
-    //   27: istore_2
-    //   28: goto -14 -> 14
-    //   31: astore_1
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: aload_1
-    //   35: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	this	TroopAioNavigateBarManager
-    //   0	36	1	paramString	String
-    //   0	36	2	paramInt	int
-    //   7	2	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	31	finally
-    //   18	28	31	finally
+    try
+    {
+      boolean bool = a(paramInt);
+      if (!bool) {
+        return -1;
+      }
+      paramInt = a(a(paramString, paramInt));
+      return paramInt;
+    }
+    finally {}
   }
   
-  /* Error */
   public long a(int paramInt, String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: iload_1
-    //   4: invokevirtual 201	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(I)Z
-    //   7: istore_3
-    //   8: iload_3
-    //   9: ifne +13 -> 22
-    //   12: ldc2_w 207
-    //   15: lstore 4
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: lload 4
-    //   21: lreturn
-    //   22: aload_0
-    //   23: aload_2
-    //   24: iload_1
-    //   25: invokestatic 203	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   28: invokevirtual 211	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;)J
-    //   31: lstore 4
-    //   33: goto -16 -> 17
-    //   36: astore_2
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_2
-    //   40: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	41	0	this	TroopAioNavigateBarManager
-    //   0	41	1	paramInt	int
-    //   0	41	2	paramString	String
-    //   7	2	3	bool	boolean
-    //   15	17	4	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	36	finally
-    //   22	33	36	finally
+    try
+    {
+      boolean bool = a(paramInt);
+      if (!bool) {
+        return -1L;
+      }
+      long l = a(a(paramString, paramInt));
+      return l;
+    }
+    finally {}
   }
   
-  /* Error */
   public long a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: aload_1
-    //   4: invokevirtual 194	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/TroopMessageNavigateInfo;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnull +12 -> 21
-    //   12: aload_1
-    //   13: getfield 215	com/tencent/mobileqq/data/TroopMessageNavigateInfo:msgseq	J
-    //   16: lstore_2
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: lload_2
-    //   20: lreturn
-    //   21: lconst_0
-    //   22: lstore_2
-    //   23: goto -6 -> 17
-    //   26: astore_1
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_1
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	TroopAioNavigateBarManager
-    //   0	31	1	paramString	String
-    //   16	7	2	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	26	finally
-    //   12	17	26	finally
+    try
+    {
+      paramString = a(paramString);
+      if (paramString != null)
+      {
+        long l = paramString.msgseq;
+        return l;
+      }
+      return 0L;
+    }
+    finally {}
   }
   
-  /* Error */
   public long a(String paramString, long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 22	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   6: aload_1
-    //   7: invokevirtual 119	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   10: ifeq +88 -> 98
-    //   13: aload_0
-    //   14: getfield 22	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   17: aload_1
-    //   18: invokevirtual 123	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   21: checkcast 82	java/util/List
-    //   24: astore_1
-    //   25: aload_1
-    //   26: invokestatic 221	com/tencent/mobileqq/utils/ListUtils:a	(Ljava/util/Collection;)Z
-    //   29: istore 5
-    //   31: iload 5
-    //   33: ifeq +9 -> 42
-    //   36: lconst_0
-    //   37: lstore_2
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: lload_2
-    //   41: lreturn
-    //   42: aload_1
-    //   43: invokeinterface 105 1 0
-    //   48: iconst_1
-    //   49: isub
-    //   50: istore 4
-    //   52: iload 4
-    //   54: iflt +44 -> 98
-    //   57: aload_1
-    //   58: iload 4
-    //   60: invokeinterface 224 2 0
-    //   65: checkcast 94	com/tencent/mobileqq/data/TroopMessageNavigateInfo
-    //   68: astore 6
-    //   70: aload 6
-    //   72: getfield 215	com/tencent/mobileqq/data/TroopMessageNavigateInfo:msgseq	J
-    //   75: lload_2
-    //   76: lcmp
-    //   77: ifne +12 -> 89
-    //   80: aload 6
-    //   82: getfield 227	com/tencent/mobileqq/data/TroopMessageNavigateInfo:shmsgseq	J
-    //   85: lstore_2
-    //   86: goto -48 -> 38
-    //   89: iload 4
-    //   91: iconst_1
-    //   92: isub
-    //   93: istore 4
-    //   95: goto -43 -> 52
-    //   98: lconst_0
-    //   99: lstore_2
-    //   100: goto -62 -> 38
-    //   103: astore_1
-    //   104: aload_0
-    //   105: monitorexit
-    //   106: aload_1
-    //   107: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	108	0	this	TroopAioNavigateBarManager
-    //   0	108	1	paramString	String
-    //   0	108	2	paramLong	long
-    //   50	44	4	i	int
-    //   29	3	5	bool	boolean
-    //   68	13	6	localTroopMessageNavigateInfo	TroopMessageNavigateInfo
-    // Exception table:
-    //   from	to	target	type
-    //   2	31	103	finally
-    //   42	52	103	finally
-    //   57	86	103	finally
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+      {
+        paramString = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        boolean bool = ListUtils.a(paramString);
+        if (bool) {
+          return 0L;
+        }
+        int i = paramString.size() - 1;
+        while (i >= 0)
+        {
+          TroopMessageNavigateInfo localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)paramString.get(i);
+          if (localTroopMessageNavigateInfo.msgseq == paramLong)
+          {
+            paramLong = localTroopMessageNavigateInfo.shmsgseq;
+            return paramLong;
+          }
+          i -= 1;
+        }
+      }
+      return 0L;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   @Nullable
@@ -451,168 +292,164 @@ public class TroopAioNavigateBarManager
     a();
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
     {
-      List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (ListUtils.a(localList))
-      {
-        paramString = null;
-        return paramString;
+      paramString = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (ListUtils.a(paramString)) {
+        return null;
       }
-      int j = localList.size();
+      int j = paramString.size();
       int i = 0;
-      for (;;)
+      while (i < j)
       {
-        if (i >= j) {
-          break label89;
+        TroopMessageNavigateInfo localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)paramString.get(i);
+        if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_DELETE) {
+          i += 1;
+        } else {
+          return localTroopMessageNavigateInfo;
         }
-        TroopMessageNavigateInfo localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)localList.get(i);
-        paramString = localTroopMessageNavigateInfo;
-        if (localTroopMessageNavigateInfo.status != TroopMessageNavigateInfo.STATUS_DELETE) {
-          break;
-        }
-        i += 1;
       }
     }
-    label89:
     return null;
   }
   
-  /* Error */
   public Object a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: aload_1
-    //   4: invokevirtual 194	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/TroopMessageNavigateInfo;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: ifnull +12 -> 21
-    //   12: aload_1
-    //   13: getfield 234	com/tencent/mobileqq/data/TroopMessageNavigateInfo:extObj	Ljava/lang/Object;
-    //   16: astore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: aload_1
-    //   20: areturn
-    //   21: aconst_null
-    //   22: astore_1
-    //   23: goto -6 -> 17
-    //   26: astore_1
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_1
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	TroopAioNavigateBarManager
-    //   0	31	1	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	26	finally
-    //   12	17	26	finally
+    try
+    {
+      paramString = a(paramString);
+      if (paramString != null)
+      {
+        paramString = paramString.extObj;
+        return paramString;
+      }
+      return null;
+    }
+    finally {}
   }
   
   public List<Long> a(String paramString, int paramInt)
   {
-    for (;;)
+    try
     {
-      StringBuilder localStringBuilder;
-      int i;
-      try
-      {
-        ThreadManager.excute(new TroopAioNavigateBarManager.2(this), 32, null, false);
-        ArrayList localArrayList = new ArrayList();
-        localStringBuilder = new StringBuilder("getMultiNavigateSeqList, troopUin = ");
-        localStringBuilder.append(paramString).append(", type = ").append(paramInt).append(", seqList = ");
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
-        {
-          paramString = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-          if (ListUtils.a(paramString))
-          {
-            localStringBuilder.append("null");
-            if (QLog.isColorLevel()) {
-              QLog.d("Navigate.Manager", 2, localStringBuilder.toString());
-            }
-            return localArrayList;
-          }
-          int j = paramString.size();
-          i = 0;
-          if (i < j)
-          {
-            TroopMessageNavigateInfo localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)paramString.get(i);
-            if ((localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_DELETE) || (localTroopMessageNavigateInfo.type != paramInt)) {
-              break label232;
-            }
-            localArrayList.add(Long.valueOf(localTroopMessageNavigateInfo.msgseq));
-            localStringBuilder.append(localTroopMessageNavigateInfo.msgseq).append(",");
-          }
-        }
+      localObject = new TroopAioNavigateBarManager.2(this);
+      i = 0;
+      ThreadManager.excute((Runnable)localObject, 32, null, false);
+      localObject = new ArrayList();
+      localStringBuilder = new StringBuilder("getMultiNavigateSeqList, troopUin = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", type = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", seqList = ");
+      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+        break label222;
       }
-      finally {}
+      paramString = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (ListUtils.a(paramString))
+      {
+        localStringBuilder.append("null");
+        if (QLog.isColorLevel()) {
+          QLog.d("Navigate.Manager", 2, localStringBuilder.toString());
+        }
+        return localObject;
+      }
+      j = paramString.size();
+    }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject;
+        int i;
+        StringBuilder localStringBuilder;
+        int j;
+        TroopMessageNavigateInfo localTroopMessageNavigateInfo;
+        for (;;)
+        {
+          label222:
+          throw paramString;
+        }
+        i += 1;
+      }
+    }
+    if (i < j)
+    {
+      localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)paramString.get(i);
+      if ((localTroopMessageNavigateInfo.status != TroopMessageNavigateInfo.STATUS_DELETE) && (localTroopMessageNavigateInfo.type == paramInt))
+      {
+        ((List)localObject).add(Long.valueOf(localTroopMessageNavigateInfo.msgseq));
+        localStringBuilder.append(localTroopMessageNavigateInfo.msgseq);
+        localStringBuilder.append(",");
+      }
+    }
+    else
+    {
       if (QLog.isColorLevel()) {
         QLog.d("Navigate.Manager", 2, localStringBuilder.toString());
       }
-      continue;
-      label232:
-      i += 1;
+      return localObject;
     }
   }
   
   public void a()
   {
-    for (;;)
+    try
     {
-      Object localObject3;
-      try
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (bool) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Navigate.Manager", 2, "initTroopMessageNavigateInfo before, " + a());
-        }
-        Object localObject1 = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().query(TroopMessageNavigateInfo.class, false, null, null, null, null, null, null);
-        if (localObject1 == null) {
-          break label252;
-        }
-        localObject1 = ((ArrayList)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label252;
-        }
-        localObject3 = (TroopMessageNavigateInfo)((Iterator)localObject1).next();
-        if ((localObject3 == null) || (TextUtils.isEmpty(((TroopMessageNavigateInfo)localObject3).troopCode))) {
-          continue;
-        }
-        localObject4 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(((TroopMessageNavigateInfo)localObject3).troopCode);
-        if (localObject4 != null)
-        {
-          localObject3 = ((List)localObject4).iterator();
-          if (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (TroopMessageNavigateInfo)((Iterator)localObject3).next();
-            if ((localObject4 == null) || (((TroopMessageNavigateInfo)localObject4).status != TroopMessageNavigateInfo.STATUS_ADD)) {
-              continue;
-            }
-            ((TroopMessageNavigateInfo)localObject4).status = TroopMessageNavigateInfo.STATUS_MODIFY;
-            continue;
-          }
-          continue;
-        }
-        ((TroopMessageNavigateInfo)localObject3).status = TroopMessageNavigateInfo.STATUS_NORMAL;
+      boolean bool = this.jdField_a_of_type_Boolean;
+      if (bool) {
+        return;
       }
-      finally {}
-      Object localObject4 = new ArrayList();
-      ((List)localObject4).add(localObject3);
-      a(((TroopMessageNavigateInfo)localObject3).troopCode);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((TroopMessageNavigateInfo)localObject3).troopCode, localObject4);
-      continue;
-      label252:
-      if (QLog.isColorLevel()) {
-        QLog.d("Navigate.Manager", 2, "initTroopMessageNavigateInfo after, " + a());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("initTroopMessageNavigateInfo before, ");
+        ((StringBuilder)localObject1).append(a());
+        QLog.d("Navigate.Manager", 2, ((StringBuilder)localObject1).toString());
+      }
+      Object localObject1 = (ArrayList)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager().query(TroopMessageNavigateInfo.class, false, null, null, null, null, null, null);
+      if (localObject1 != null)
+      {
+        localObject1 = ((ArrayList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject3 = (TroopMessageNavigateInfo)((Iterator)localObject1).next();
+          if ((localObject3 != null) && (!TextUtils.isEmpty(((TroopMessageNavigateInfo)localObject3).troopCode)))
+          {
+            Object localObject4 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(((TroopMessageNavigateInfo)localObject3).troopCode);
+            if (localObject4 != null)
+            {
+              localObject3 = ((List)localObject4).iterator();
+              while (((Iterator)localObject3).hasNext())
+              {
+                localObject4 = (TroopMessageNavigateInfo)((Iterator)localObject3).next();
+                if ((localObject4 != null) && (((TroopMessageNavigateInfo)localObject4).status == TroopMessageNavigateInfo.STATUS_ADD)) {
+                  ((TroopMessageNavigateInfo)localObject4).status = TroopMessageNavigateInfo.STATUS_MODIFY;
+                }
+              }
+            }
+            else
+            {
+              ((TroopMessageNavigateInfo)localObject3).status = TroopMessageNavigateInfo.STATUS_NORMAL;
+              localObject4 = new ArrayList();
+              ((List)localObject4).add(localObject3);
+              a(((TroopMessageNavigateInfo)localObject3).troopCode);
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((TroopMessageNavigateInfo)localObject3).troopCode, localObject4);
+            }
+          }
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("initTroopMessageNavigateInfo after, ");
+        ((StringBuilder)localObject1).append(a());
+        QLog.d("Navigate.Manager", 2, ((StringBuilder)localObject1).toString());
       }
       this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -623,12 +460,12 @@ public class TroopAioNavigateBarManager
       paramTroopMessageNavigateInfo2.status = TroopMessageNavigateInfo.STATUS_ADD;
       return;
     }
-    if ((paramTroopMessageNavigateInfo1 == null) || (paramTroopMessageNavigateInfo1.status == TroopMessageNavigateInfo.STATUS_DELETE))
+    if ((paramTroopMessageNavigateInfo1 != null) && (paramTroopMessageNavigateInfo1.status != TroopMessageNavigateInfo.STATUS_DELETE))
     {
-      paramTroopMessageNavigateInfo2.status = TroopMessageNavigateInfo.STATUS_ADD;
+      paramTroopMessageNavigateInfo2.status = TroopMessageNavigateInfo.STATUS_MODIFY;
       return;
     }
-    paramTroopMessageNavigateInfo2.status = TroopMessageNavigateInfo.STATUS_MODIFY;
+    paramTroopMessageNavigateInfo2.status = TroopMessageNavigateInfo.STATUS_ADD;
   }
   
   void a(@Nullable TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2, int paramInt1, int paramInt2)
@@ -636,277 +473,239 @@ public class TroopAioNavigateBarManager
     if (paramInt1 != 26) {
       return;
     }
-    if ((paramTroopMessageNavigateInfo1 == null) || (paramTroopMessageNavigateInfo1.status == TroopMessageNavigateInfo.STATUS_DELETE))
+    if ((paramTroopMessageNavigateInfo1 != null) && (paramTroopMessageNavigateInfo1.status != TroopMessageNavigateInfo.STATUS_DELETE))
     {
-      paramTroopMessageNavigateInfo2.receivedFlowserCount = paramInt2;
+      paramTroopMessageNavigateInfo1.receivedFlowserCount += paramInt2;
       return;
     }
-    paramTroopMessageNavigateInfo1.receivedFlowserCount += paramInt2;
+    paramTroopMessageNavigateInfo2.receivedFlowserCount = paramInt2;
   }
   
   public void a(String paramString, int paramInt)
   {
-    for (;;)
+    try
     {
-      List localList;
-      int i;
-      try
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Navigate.Manager", 2, "clearTroopMsgNavigateInfo: troopCode = " + paramString + ", type = " + paramInt);
-        }
-        boolean bool = TextUtils.isEmpty(paramString);
-        if (bool) {
-          return;
-        }
-        if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-          continue;
-        }
-        localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        if (ListUtils.a(localList)) {
-          continue;
-        }
-        i = localList.size() - 1;
-        if (i >= 0)
-        {
-          TroopMessageNavigateInfo localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)localList.get(i);
-          if ((paramInt != localTroopMessageNavigateInfo.type) && (paramInt != 0)) {
-            break label191;
-          }
-          if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_ADD) {
-            localList.remove(i);
-          } else {
-            localTroopMessageNavigateInfo.status = TroopMessageNavigateInfo.STATUS_DELETE;
-          }
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("clearTroopMsgNavigateInfo: troopCode = ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(", type = ");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("Navigate.Manager", 2, ((StringBuilder)localObject).toString());
       }
-      finally {}
-      if (localList.isEmpty())
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (bool) {
+        return;
+      }
+      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+        break label206;
+      }
+      localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      bool = ListUtils.a((Collection)localObject);
+      if (bool) {
+        return;
+      }
+      i = ((List)localObject).size() - 1;
+    }
+    finally
+    {
+      for (;;)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-        continue;
-        label191:
+        Object localObject;
+        int i;
+        TroopMessageNavigateInfo localTroopMessageNavigateInfo;
+        for (;;)
+        {
+          label206:
+          throw paramString;
+        }
         i -= 1;
       }
     }
+    if (i >= 0)
+    {
+      localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)((List)localObject).get(i);
+      if ((paramInt == localTroopMessageNavigateInfo.type) || (paramInt == 0)) {
+        if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_ADD) {
+          ((List)localObject).remove(i);
+        } else {
+          localTroopMessageNavigateInfo.status = TroopMessageNavigateInfo.STATUS_DELETE;
+        }
+      }
+    }
+    else
+    {
+      if (((List)localObject).isEmpty()) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      }
+      return;
+    }
   }
   
-  /* Error */
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: iload_2
-    //   4: invokevirtual 201	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(I)Z
-    //   7: istore 4
-    //   9: iload 4
-    //   11: ifne +6 -> 17
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: return
-    //   17: aload_0
-    //   18: aload_1
-    //   19: iload_2
-    //   20: invokestatic 203	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   23: iload_3
-    //   24: invokevirtual 329	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;I)V
-    //   27: goto -13 -> 14
-    //   30: astore_1
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: aload_1
-    //   34: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	35	0	this	TroopAioNavigateBarManager
-    //   0	35	1	paramString	String
-    //   0	35	2	paramInt1	int
-    //   0	35	3	paramInt2	int
-    //   7	3	4	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	9	30	finally
-    //   17	27	30	finally
+    try
+    {
+      boolean bool = a(paramInt1);
+      if (!bool) {
+        return;
+      }
+      a(a(paramString, paramInt1), paramInt2);
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
   public void a(String paramString1, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString2, int paramInt3, Object paramObject)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: iload_2
-    //   4: invokevirtual 201	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(I)Z
-    //   7: istore 11
-    //   9: iload 11
-    //   11: ifne +6 -> 17
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: return
-    //   17: aload_0
-    //   18: aload_1
-    //   19: iload_2
-    //   20: invokestatic 203	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   23: iload_3
-    //   24: lload 4
-    //   26: lload 6
-    //   28: aload 8
-    //   30: iload 9
-    //   32: aload 10
-    //   34: invokevirtual 333	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:a	(Ljava/lang/String;IJJLjava/lang/String;ILjava/lang/Object;)V
-    //   37: goto -23 -> 14
-    //   40: astore_1
-    //   41: aload_0
-    //   42: monitorexit
-    //   43: aload_1
-    //   44: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	45	0	this	TroopAioNavigateBarManager
-    //   0	45	1	paramString1	String
-    //   0	45	2	paramInt1	int
-    //   0	45	3	paramInt2	int
-    //   0	45	4	paramLong1	long
-    //   0	45	6	paramLong2	long
-    //   0	45	8	paramString2	String
-    //   0	45	9	paramInt3	int
-    //   0	45	10	paramObject	Object
-    //   7	3	11	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	9	40	finally
-    //   17	37	40	finally
+    try
+    {
+      boolean bool = a(paramInt1);
+      if (!bool) {
+        return;
+      }
+      a(a(paramString1, paramInt1), paramInt2, paramLong1, paramLong2, paramString2, paramInt3, paramObject);
+      return;
+    }
+    finally {}
   }
   
   public void a(String paramString1, int paramInt1, long paramLong1, long paramLong2, String paramString2, int paramInt2, Object paramObject)
   {
-    if (paramInt1 <= 0) {}
-    TroopMessageNavigateInfo localTroopMessageNavigateInfo;
-    for (;;)
-    {
+    if (paramInt1 <= 0) {
       return;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Navigate.Manager", 2, "addTroopMsgNavigateInfo, troopCode = " + paramString1 + ", navType = " + paramInt1 + ", shMsgSeq = " + paramLong1 + " ,uinseq = " + paramLong2 + " ,summary = " + paramString2 + ", flowersCount = " + paramInt2);
-        }
-        localTroopMessageNavigateInfo = new TroopMessageNavigateInfo();
-        localTroopMessageNavigateInfo.type = paramInt1;
-        localTroopMessageNavigateInfo.troopCode = paramString1;
-        localTroopMessageNavigateInfo.shmsgseq = paramLong1;
-        localTroopMessageNavigateInfo.msgseq = paramLong2;
-        localTroopMessageNavigateInfo.summary = paramString2;
-        localTroopMessageNavigateInfo.extObj = paramObject;
-        paramObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-        if (ListUtils.a(paramObject)) {
-          break label410;
-        }
-        if (TroopAioNavigateUtil.a(paramInt1))
-        {
-          localTroopMessageNavigateInfo.status = TroopMessageNavigateInfo.STATUS_ADD;
-          paramObject.add(localTroopMessageNavigateInfo);
-          a(paramString1);
-        }
-      }
-      finally {}
     }
-    int i = paramObject.size() - 1;
-    for (;;)
+    try
     {
-      if (i >= 0)
+      if (QLog.isColorLevel())
       {
-        if (paramInt1 != ((TroopMessageNavigateInfo)paramObject.get(i)).type) {}
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("addTroopMsgNavigateInfo, troopCode = ");
+        ((StringBuilder)localObject).append(paramString1);
+        ((StringBuilder)localObject).append(", navType = ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append(", shMsgSeq = ");
+        ((StringBuilder)localObject).append(paramLong1);
+        ((StringBuilder)localObject).append(" ,uinseq = ");
+        ((StringBuilder)localObject).append(paramLong2);
+        ((StringBuilder)localObject).append(" ,summary = ");
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append(", flowersCount = ");
+        ((StringBuilder)localObject).append(paramInt2);
+        QLog.d("Navigate.Manager", 2, ((StringBuilder)localObject).toString());
       }
-      else {
-        for (paramString2 = (TroopMessageNavigateInfo)paramObject.get(i);; paramString2 = null)
+      localObject = new TroopMessageNavigateInfo();
+      ((TroopMessageNavigateInfo)localObject).type = paramInt1;
+      ((TroopMessageNavigateInfo)localObject).troopCode = paramString1;
+      ((TroopMessageNavigateInfo)localObject).shmsgseq = paramLong1;
+      ((TroopMessageNavigateInfo)localObject).msgseq = paramLong2;
+      ((TroopMessageNavigateInfo)localObject).summary = paramString2;
+      ((TroopMessageNavigateInfo)localObject).extObj = paramObject;
+      localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+      if (ListUtils.a(localList)) {
+        break label461;
+      }
+      if (TroopAioNavigateUtil.a(paramInt1))
+      {
+        ((TroopMessageNavigateInfo)localObject).status = TroopMessageNavigateInfo.STATUS_ADD;
+        localList.add(localObject);
+        a(paramString1);
+        break label512;
+      }
+      paramObject = null;
+      i = localList.size() - 1;
+    }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject;
+        List localList;
+        int i;
+        int j;
+        for (;;)
         {
-          int j = NavConstants.a(paramInt1);
-          if ((paramInt1 != 1) && (paramString2 != null) && (paramString2.status != TroopMessageNavigateInfo.STATUS_DELETE) && (!MessageNavInfo.a(NavConstants.a(paramString2.type), paramString2.shmsgseq, j, paramLong1)))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Navigate.Manager", 2, "addTroopMsgNavigateInfo, but do not need update, shMsgSeq = " + paramLong1);
-            }
-            localTroopMessageNavigateInfo.receivedFlowserCount = paramInt2;
-            a(localTroopMessageNavigateInfo, paramString2, paramInt1, paramString2.receivedFlowserCount);
-            break;
-          }
-          if (i >= 0) {
-            paramObject.remove(i);
-          }
-          a(paramString2, localTroopMessageNavigateInfo, paramInt1);
-          a(paramString2, localTroopMessageNavigateInfo, paramInt1, paramInt2);
-          paramObject.add(localTroopMessageNavigateInfo);
-          a(paramString1);
-          break;
-          label410:
-          localTroopMessageNavigateInfo.status = TroopMessageNavigateInfo.STATUS_ADD;
-          if (paramInt1 == 26) {
-            localTroopMessageNavigateInfo.receivedFlowserCount = paramInt2;
-          }
-          paramString2 = new ArrayList();
-          paramString2.add(localTroopMessageNavigateInfo);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramString2);
-          break;
+          throw paramString1;
         }
+        i -= 1;
+        continue;
       }
-      i -= 1;
+    }
+    paramString2 = paramObject;
+    if (i >= 0)
+    {
+      if (paramInt1 != ((TroopMessageNavigateInfo)localList.get(i)).type) {
+        break label526;
+      }
+      paramString2 = (TroopMessageNavigateInfo)localList.get(i);
+    }
+    j = NavConstants.a(paramInt1);
+    if ((paramInt1 != 1) && (paramString2 != null) && (paramString2.status != TroopMessageNavigateInfo.STATUS_DELETE)) {
+      if (!MessageNavInfo.a(NavConstants.a(paramString2.type), paramString2.shmsgseq, j, paramLong1))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("addTroopMsgNavigateInfo, but do not need update, shMsgSeq = ");
+          paramString1.append(paramLong1);
+          QLog.d("Navigate.Manager", 2, paramString1.toString());
+        }
+        ((TroopMessageNavigateInfo)localObject).receivedFlowserCount = paramInt2;
+        a((TroopMessageNavigateInfo)localObject, paramString2, paramInt1, paramString2.receivedFlowserCount);
+        break label512;
+        if (i >= 0) {
+          localList.remove(i);
+        }
+        a(paramString2, (TroopMessageNavigateInfo)localObject, paramInt1);
+        a(paramString2, (TroopMessageNavigateInfo)localObject, paramInt1, paramInt2);
+        localList.add(localObject);
+        a(paramString1);
+        break label512;
+        label461:
+        ((TroopMessageNavigateInfo)localObject).status = TroopMessageNavigateInfo.STATUS_ADD;
+        if (paramInt1 == 26) {
+          ((TroopMessageNavigateInfo)localObject).receivedFlowserCount = paramInt2;
+        }
+        paramString2 = new ArrayList();
+        paramString2.add(localObject);
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramString2);
+        label512:
+        return;
+      }
     }
   }
   
   boolean a(int paramInt)
   {
-    return (paramInt == 1) || (paramInt == 3000);
+    boolean bool = true;
+    if (paramInt != 1)
+    {
+      if (paramInt == 3000) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
-  /* Error */
   public long b(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 29	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   6: aload_1
-    //   7: invokevirtual 366	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   10: ifeq +35 -> 45
-    //   13: aload_0
-    //   14: getfield 29	com/tencent/mobileqq/troop/navigatebar/TroopAioNavigateBarManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   17: aload_1
-    //   18: invokevirtual 367	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   21: checkcast 264	java/lang/Long
-    //   24: astore_1
-    //   25: aload_1
-    //   26: ifnonnull +11 -> 37
-    //   29: ldc2_w 207
-    //   32: lstore_2
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: lload_2
-    //   36: lreturn
-    //   37: aload_1
-    //   38: invokevirtual 371	java/lang/Long:longValue	()J
-    //   41: lstore_2
-    //   42: goto -9 -> 33
-    //   45: ldc2_w 207
-    //   48: lstore_2
-    //   49: goto -16 -> 33
-    //   52: astore_1
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: aload_1
-    //   56: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	57	0	this	TroopAioNavigateBarManager
-    //   0	57	1	paramString	String
-    //   32	17	2	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   2	25	52	finally
-    //   37	42	52	finally
+    try
+    {
+      boolean bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+      long l = -1L;
+      if (bool)
+      {
+        paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+        if (paramString != null) {
+          l = paramString.longValue();
+        }
+        return l;
+      }
+      return -1L;
+    }
+    finally {}
   }
   
   public void onDestroy()
@@ -916,7 +715,7 @@ public class TroopAioNavigateBarManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioNavigateBarManager
  * JD-Core Version:    0.7.0.1
  */

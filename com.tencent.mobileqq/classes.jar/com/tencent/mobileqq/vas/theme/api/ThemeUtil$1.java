@@ -17,37 +17,38 @@ final class ThemeUtil$1
     String str1 = paramIntent.getStringExtra("bg3D");
     String str4 = paramIntent.getStringExtra("aio");
     String str5 = paramIntent.getStringExtra("playerSkin");
-    if ((!TextUtils.isEmpty(str2)) || (!TextUtils.isEmpty(str3))) {
-      ThemeUtil.a(paramContext, str2, str3);
-    }
-    do
+    if ((TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(str3)))
     {
-      do
+      if (!TextUtils.isEmpty(str1))
       {
-        return;
-        if (TextUtils.isEmpty(str1)) {
-          break;
+        paramIntent = (AppRuntime)ThemeUtil.weakApp.get();
+        if (paramIntent != null) {
+          ThemeUtil.access$000(paramContext, paramIntent, paramIntent.getAccount(), str1);
         }
-        paramIntent = (AppRuntime)ThemeUtil.a.get();
-      } while (paramIntent == null);
-      ThemeUtil.a(paramContext, paramIntent, paramIntent.getAccount(), str1);
-      return;
-      if (!TextUtils.isEmpty(str4))
-      {
-        ThemeUtil.b(paramContext, str4);
-        return;
       }
-      if (!TextUtils.isEmpty(str5))
+      else
       {
-        ThemeUtil.a(paramContext, str5);
-        return;
+        if (!TextUtils.isEmpty(str4))
+        {
+          ThemeUtil.previewAIOTheme(paramContext, str4);
+          return;
+        }
+        if (!TextUtils.isEmpty(str5))
+        {
+          ThemeUtil.previewPlayerSkin(paramContext, str5);
+          return;
+        }
+        ThemeUtil.themeFont(paramIntent, "themeFont");
       }
-    } while (!ThemeUtil.a(paramIntent, "themeFont"));
+    }
+    else {
+      ThemeUtil.validLocalTheme(paramContext, str2, str3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.api.ThemeUtil.1
  * JD-Core Version:    0.7.0.1
  */

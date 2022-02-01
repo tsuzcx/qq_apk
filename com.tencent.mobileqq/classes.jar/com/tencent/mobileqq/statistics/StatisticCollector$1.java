@@ -1,50 +1,21 @@
 package com.tencent.mobileqq.statistics;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.feedback.eup.CrashReport;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 class StatisticCollector$1
   implements Runnable
 {
-  StatisticCollector$1(StatisticCollector paramStatisticCollector) {}
+  StatisticCollector$1(StatisticCollector paramStatisticCollector, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
-    int i = StatisticCollector.getQzonePatchTag();
-    Object localObject1;
-    if (i > 0)
-    {
-      localObject1 = MobileQQ.sMobileQQ;
-      if (localObject1 == null) {}
-    }
-    try
-    {
-      localObject1 = ((Context)localObject1).getPackageManager().getPackageInfo(((Context)localObject1).getPackageName(), 0);
-      if ((localObject1 != null) && (((PackageInfo)localObject1).versionName != null))
-      {
-        localObject1 = ((PackageInfo)localObject1).versionName + "." + (((PackageInfo)localObject1).versionCode + i);
-        CrashReport.setProductVersion(MobileQQ.sMobileQQ, (String)localObject1);
-      }
-      return;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      for (;;)
-      {
-        QLog.w("StatisticCollector", 1, "", localNameNotFoundException);
-        Object localObject2 = null;
-      }
-    }
+    MsfServiceSdk.get().sendMsg(this.val$rdmReportMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.StatisticCollector.1
  * JD-Core Version:    0.7.0.1
  */

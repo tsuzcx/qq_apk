@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.ChannelInfo;
 import java.util.List;
 
 class ClassificationSearchActivity$9
@@ -9,7 +9,7 @@ class ClassificationSearchActivity$9
 {
   ClassificationSearchActivity$9(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
+  public void a(boolean paramBoolean, List<ChannelInfo> paramList)
   {
     if (paramBoolean)
     {
@@ -24,7 +24,7 @@ class ClassificationSearchActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.9
  * JD-Core Version:    0.7.0.1
  */

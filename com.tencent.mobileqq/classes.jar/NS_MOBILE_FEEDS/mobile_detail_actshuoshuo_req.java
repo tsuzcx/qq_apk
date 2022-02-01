@@ -26,17 +26,19 @@ public final class mobile_detail_actshuoshuo_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.act_id != null) {
-      paramJceOutputStream.write(this.act_id, 0);
+    String str = this.act_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 1);
+    str = this.busi_param;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_detail_actshuoshuo_req
  * JD-Core Version:    0.7.0.1
  */

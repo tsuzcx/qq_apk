@@ -24,7 +24,6 @@ public class PhoneUnityBannerData
   
   public static PhoneUnityBannerData a(String paramString)
   {
-    Object localObject = null;
     if (!TextUtils.isEmpty(paramString))
     {
       PhoneUnityBannerData localPhoneUnityBannerData = new PhoneUnityBannerData();
@@ -32,7 +31,7 @@ public class PhoneUnityBannerData
       localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
       for (int i = 0;; i = localXmlPullParser.next())
       {
-        localObject = localPhoneUnityBannerData;
+        paramString = localPhoneUnityBannerData;
         if (i == 1) {
           break;
         }
@@ -40,47 +39,59 @@ public class PhoneUnityBannerData
         {
           int j = localXmlPullParser.getAttributeCount();
           i = 0;
-          if (i < j)
+          while (i < j)
           {
             paramString = localXmlPullParser.getAttributeName(i);
             if ("text".equals(paramString)) {
               localPhoneUnityBannerData.jdField_b_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
+            } else if ("url".equals(paramString)) {
+              localPhoneUnityBannerData.jdField_a_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
+            } else if ("dayNum".equals(paramString)) {
+              localPhoneUnityBannerData.jdField_a_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+            } else if ("dayIntervalNum".equals(paramString)) {
+              localPhoneUnityBannerData.jdField_b_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+            } else if ("totalNum".equals(paramString)) {
+              localPhoneUnityBannerData.c = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+            } else if ("loginNum".equals(paramString)) {
+              localPhoneUnityBannerData.e = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+            } else if ("banner".equals(paramString)) {
+              localPhoneUnityBannerData.jdField_a_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
+            } else if ("setEntry".equals(paramString)) {
+              localPhoneUnityBannerData.jdField_b_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
             }
-            for (;;)
-            {
-              i += 1;
-              break;
-              if ("url".equals(paramString)) {
-                localPhoneUnityBannerData.jdField_a_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
-              } else if ("dayNum".equals(paramString)) {
-                localPhoneUnityBannerData.jdField_a_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("dayIntervalNum".equals(paramString)) {
-                localPhoneUnityBannerData.jdField_b_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("totalNum".equals(paramString)) {
-                localPhoneUnityBannerData.c = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("loginNum".equals(paramString)) {
-                localPhoneUnityBannerData.e = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
-              } else if ("banner".equals(paramString)) {
-                localPhoneUnityBannerData.jdField_a_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
-              } else if ("setEntry".equals(paramString)) {
-                localPhoneUnityBannerData.jdField_b_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
-              }
-            }
+            i += 1;
           }
         }
       }
     }
-    return localObject;
+    paramString = null;
+    return paramString;
   }
   
   public String toString()
   {
-    return "MobileUnityBannerData [url=" + this.jdField_a_of_type_JavaLangString + ", text=" + this.jdField_b_of_type_JavaLangString + ", dayNum=" + this.jdField_a_of_type_Int + ", dayIntervalNum=" + this.jdField_b_of_type_Int + ", totalNum=" + this.c + ", loginNum = " + this.e + ", version=" + this.d + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MobileUnityBannerData [url=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", text=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", dayNum=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", dayIntervalNum=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", totalNum=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", loginNum = ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", version=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.phonecontact.PhoneUnityBannerData
  * JD-Core Version:    0.7.0.1
  */

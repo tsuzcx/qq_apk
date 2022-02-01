@@ -33,13 +33,13 @@ class BBannerHelper$FragmentBannerInteract
   
   public void onClose()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
+    }
     BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
   }
   
@@ -49,37 +49,32 @@ class BBannerHelper$FragmentBannerInteract
     if (localQQAppInterface == null) {
       return;
     }
-    Intent localIntent;
     if (BaseActivity.sTopActivity != null)
     {
-      localIntent = new Intent();
+      Intent localIntent = new Intent();
       localIntent.putExtra("public_fragment_window_feature", 1);
       localIntent.addFlags(268435456);
-    }
-    for (;;)
-    {
       try
       {
         PublicTransFragmentActivity.b(localQQAppInterface.getApp(), localIntent, Class.forName(this.jdField_a_of_type_JavaLangString));
-        BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
-        return;
       }
       catch (ClassNotFoundException localClassNotFoundException)
       {
         localClassNotFoundException.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
       }
     }
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+    }
+    BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
   }
   
   public void onOverride() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.FragmentBannerInteract
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,10 @@ class LightNode$3
   
   public void OnAssetProcessing(HashMap<String, String> paramHashMap)
   {
-    Log.d("LightNode", "OnAssetProcessing: " + paramHashMap);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnAssetProcessing: ");
+    localStringBuilder.append(paramHashMap);
+    Log.d("LightNode", localStringBuilder.toString());
     if (LightNode.access$200(this.this$0) != null) {
       LightNode.access$200(this.this$0).OnAssetProcessing(paramHashMap);
     }
@@ -19,7 +22,10 @@ class LightNode$3
   
   public void OnLoadAssetError(int paramInt)
   {
-    Log.d("LightNode", "OnLoadAssetError: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnLoadAssetError: ");
+    localStringBuilder.append(paramInt);
+    Log.d("LightNode", localStringBuilder.toString());
     if (LightNode.access$200(this.this$0) != null) {
       LightNode.access$200(this.this$0).OnLoadAssetError(paramInt);
     }
@@ -27,7 +33,7 @@ class LightNode$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.LightNode.3
  * JD-Core Version:    0.7.0.1
  */

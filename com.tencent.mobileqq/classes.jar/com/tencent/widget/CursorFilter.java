@@ -7,16 +7,21 @@ import android.widget.Filter.FilterResults;
 class CursorFilter
   extends Filter
 {
-  CursorFilter.CursorFilterClient a;
+  CursorFilter.CursorFilterClient mClient;
+  
+  CursorFilter(CursorFilter.CursorFilterClient paramCursorFilterClient)
+  {
+    this.mClient = paramCursorFilterClient;
+  }
   
   public CharSequence convertResultToString(Object paramObject)
   {
-    return this.a.a((Cursor)paramObject);
+    return this.mClient.convertToString((Cursor)paramObject);
   }
   
   protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
-    paramCharSequence = this.a.a(paramCharSequence);
+    paramCharSequence = this.mClient.runQueryOnBackgroundThread(paramCharSequence);
     Filter.FilterResults localFilterResults = new Filter.FilterResults();
     if (paramCharSequence != null)
     {
@@ -31,15 +36,15 @@ class CursorFilter
   
   protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
   {
-    paramCharSequence = this.a.a();
+    paramCharSequence = this.mClient.getCursor();
     if ((paramFilterResults.values != null) && (paramFilterResults.values != paramCharSequence)) {
-      this.a.a((Cursor)paramFilterResults.values);
+      this.mClient.changeCursor((Cursor)paramFilterResults.values);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.CursorFilter
  * JD-Core Version:    0.7.0.1
  */

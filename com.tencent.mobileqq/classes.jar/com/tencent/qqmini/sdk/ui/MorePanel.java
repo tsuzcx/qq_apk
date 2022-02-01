@@ -11,6 +11,7 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.AppMode;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.ShareState;
 import com.tencent.qqmini.sdk.launcher.ui.MiniFragmentLauncher;
@@ -45,7 +46,6 @@ public class MorePanel
   @MiniKeep
   public static void show(IMiniAppContext paramIMiniAppContext)
   {
-    boolean bool2 = false;
     if (sVisible)
     {
       QMLog.w("MorePanel", "Ignore. Already showing");
@@ -57,43 +57,46 @@ public class MorePanel
       return;
     }
     Activity localActivity = paramIMiniAppContext.getAttachedActivity();
-    if ((localActivity == null) || (localActivity.isFinishing()))
+    if ((localActivity != null) && (!localActivity.isFinishing()))
     {
-      QMLog.w("MorePanel", "Failed to show. activity is null");
-      return;
-    }
-    MiniAppInfo localMiniAppInfo = paramIMiniAppContext.getMiniAppInfo();
-    if (localMiniAppInfo == null)
-    {
-      QMLog.w("MorePanel", "Failed to show. MiniAppInfo is null");
-      return;
-    }
-    ShareState localShareState = GetShareState.obtain(paramIMiniAppContext);
-    if (localShareState == null)
-    {
-      QMLog.w("MorePanel", "Failed to show. shareState is null");
-      return;
-    }
-    Intent localIntent = new Intent();
-    Object localObject1 = new MoreItemList.DisplaySettings();
-    ((MoreItemList.DisplaySettings)localObject1).isShowShareQQ = localShareState.withShareQQ;
-    ((MoreItemList.DisplaySettings)localObject1).isShowShareQzone = localShareState.withShareQzone;
-    ((MoreItemList.DisplaySettings)localObject1).isShowShareWxFriends = localShareState.withShareWeChatFriend;
-    ((MoreItemList.DisplaySettings)localObject1).isShowShareWxMoments = localShareState.withShareWeChatMoment;
-    ((MoreItemList.DisplaySettings)localObject1).isShowShareOthers = localShareState.withShareOthers;
-    ((MoreItemList.DisplaySettings)localObject1).isShowDebug = localShareState.showDebug;
-    ((MoreItemList.DisplaySettings)localObject1).isShowMonitor = localShareState.showMonitor;
-    ((MoreItemList.DisplaySettings)localObject1).isShowAbout = true;
-    ((MoreItemList.DisplaySettings)localObject1).isShowComplaint = true;
-    boolean bool1;
-    if (paramIMiniAppContext.isMiniGame()) {
-      if ((GameWnsUtils.showRestartButton()) && (localShareState.showRestart)) {
-        bool1 = true;
+      MiniAppInfo localMiniAppInfo = paramIMiniAppContext.getMiniAppInfo();
+      if (localMiniAppInfo == null)
+      {
+        QMLog.w("MorePanel", "Failed to show. MiniAppInfo is null");
+        return;
       }
-    }
-    for (;;)
-    {
+      ShareState localShareState = GetShareState.obtain(paramIMiniAppContext);
+      if (localShareState == null)
+      {
+        QMLog.w("MorePanel", "Failed to show. shareState is null");
+        return;
+      }
+      Intent localIntent = new Intent();
+      Object localObject1 = new MoreItemList.DisplaySettings();
+      ((MoreItemList.DisplaySettings)localObject1).isShowShareQQ = localShareState.withShareQQ;
+      ((MoreItemList.DisplaySettings)localObject1).isShowShareQzone = localShareState.withShareQzone;
+      ((MoreItemList.DisplaySettings)localObject1).isShowShareWxFriends = localShareState.withShareWeChatFriend;
+      ((MoreItemList.DisplaySettings)localObject1).isShowShareWxMoments = localShareState.withShareWeChatMoment;
+      ((MoreItemList.DisplaySettings)localObject1).isShowShareOthers = localShareState.withShareOthers;
+      ((MoreItemList.DisplaySettings)localObject1).isShowDebug = localShareState.showDebug;
+      ((MoreItemList.DisplaySettings)localObject1).isShowMonitor = localShareState.showMonitor;
+      ((MoreItemList.DisplaySettings)localObject1).isShowAbout = true;
+      ((MoreItemList.DisplaySettings)localObject1).isShowComplaint = true;
+      boolean bool1 = paramIMiniAppContext.isMiniGame();
+      boolean bool2 = false;
+      if (bool1)
+      {
+        if ((GameWnsUtils.showRestartButton()) && (localShareState.showRestart)) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+      }
+      else {
+        bool1 = localShareState.showRestart;
+      }
       ((MoreItemList.DisplaySettings)localObject1).isShowRestart = bool1;
+      ((MoreItemList.DisplaySettings)localObject1).isShowQQFavorite = showAddQQFavorite(localMiniAppInfo);
       ((MoreItemList.DisplaySettings)localObject1).isShowFavorite = showAddFavorite(localMiniAppInfo);
       bool1 = bool2;
       if (localMiniAppInfo.topType == 1) {
@@ -112,33 +115,43 @@ public class MorePanel
       reportClick(paramIMiniAppContext, "open");
       sVisible = true;
       return;
-      bool1 = false;
-      continue;
-      bool1 = localShareState.showRestart;
     }
+    QMLog.w("MorePanel", "Failed to show. activity is null");
   }
   
   private static boolean showAddFavorite(MiniAppInfo paramMiniAppInfo)
   {
-    if (paramMiniAppInfo == null) {}
-    while ((paramMiniAppInfo.isSpecialMiniApp()) || (paramMiniAppInfo.isLimitedAccessApp())) {
+    if (paramMiniAppInfo == null) {
       return false;
     }
-    return true;
+    if (!paramMiniAppInfo.appMode.disableAddToMyApp) {
+      return !paramMiniAppInfo.isLimitedAccessApp();
+    }
+    return false;
+  }
+  
+  private static boolean showAddQQFavorite(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo == null) {
+      return false;
+    }
+    return !paramMiniAppInfo.appMode.disableAddToMyFavor;
   }
   
   private static boolean showAddShortcut(MiniAppInfo paramMiniAppInfo)
   {
-    if (paramMiniAppInfo == null) {}
-    while ((paramMiniAppInfo.isLimitedAccessApp()) || ((!QUAUtil.isQQApp()) && (QUAUtil.isDemoApp()))) {
+    if (paramMiniAppInfo == null) {
       return false;
     }
-    return true;
+    if (paramMiniAppInfo.isLimitedAccessApp()) {
+      return false;
+    }
+    return (QUAUtil.isQQApp()) || (!QUAUtil.isDemoApp());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MorePanel
  * JD-Core Version:    0.7.0.1
  */

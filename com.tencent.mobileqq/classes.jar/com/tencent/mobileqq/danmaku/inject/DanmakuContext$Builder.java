@@ -15,6 +15,7 @@ public final class DanmakuContext$Builder
   private IDanmakuPlayTimeSupplier jdField_a_of_type_ComTencentMobileqqDanmakuInjectIDanmakuPlayTimeSupplier;
   private IDanmakuUIConfigCreator jdField_a_of_type_ComTencentMobileqqDanmakuInjectIDanmakuUIConfigCreator;
   private IDanmakuWindowConfigCreator jdField_a_of_type_ComTencentMobileqqDanmakuInjectIDanmakuWindowConfigCreator;
+  private IDanmakuWindowCreator jdField_a_of_type_ComTencentMobileqqDanmakuInjectIDanmakuWindowCreator;
   private List<BaseDanmakuRender> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
   private boolean b = false;
@@ -25,9 +26,33 @@ public final class DanmakuContext$Builder
     return this;
   }
   
+  public Builder a(IDanmakuCreator paramIDanmakuCreator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectIDanmakuCreator = paramIDanmakuCreator;
+    return this;
+  }
+  
+  public Builder a(IDanmakuExposureCallback paramIDanmakuExposureCallback)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectIDanmakuExposureCallback = paramIDanmakuExposureCallback;
+    return this;
+  }
+  
   public Builder a(IDanmakuPlayTimeSupplier paramIDanmakuPlayTimeSupplier)
   {
     this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectIDanmakuPlayTimeSupplier = paramIDanmakuPlayTimeSupplier;
+    return this;
+  }
+  
+  public Builder a(IDanmakuUIConfigCreator paramIDanmakuUIConfigCreator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectIDanmakuUIConfigCreator = paramIDanmakuUIConfigCreator;
+    return this;
+  }
+  
+  public Builder a(IDanmakuWindowCreator paramIDanmakuWindowCreator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectIDanmakuWindowCreator = paramIDanmakuWindowCreator;
     return this;
   }
   
@@ -44,7 +69,7 @@ public final class DanmakuContext$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.inject.DanmakuContext.Builder
  * JD-Core Version:    0.7.0.1
  */

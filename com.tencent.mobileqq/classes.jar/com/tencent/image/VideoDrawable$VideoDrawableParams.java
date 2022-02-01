@@ -16,26 +16,59 @@ public class VideoDrawable$VideoDrawableParams
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[");
-    localStringBuilder.append(" mVideoRoundCorner: " + this.mVideoRoundCorner);
-    localStringBuilder.append(" mPlayVideoFrame: " + this.mPlayVideoFrame);
-    localStringBuilder.append(" mPlayAudioFrame: " + this.mPlayAudioFrame);
-    localStringBuilder.append(" mEnableAntiAlias: " + this.mEnableAntiAlias);
-    localStringBuilder.append(" mEnableFilter: " + this.mEnableFilter);
-    localStringBuilder.append(" mRequestedFPS: " + this.mRequestedFPS);
-    localStringBuilder.append(" mDecodeType: " + this.mDecodeType);
-    localStringBuilder.append(" mVfPath: " + this.mVfPath);
-    localStringBuilder.append(" mAfPath: " + this.mAfPath);
-    localStringBuilder.append(" mTotalTime: " + this.mTotalTime);
-    localStringBuilder.append(" mVideoFrames: " + this.mVideoFrames);
-    localStringBuilder.append("] ");
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("[");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mVideoRoundCorner: ");
+    localStringBuilder2.append(this.mVideoRoundCorner);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mPlayVideoFrame: ");
+    localStringBuilder2.append(this.mPlayVideoFrame);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mPlayAudioFrame: ");
+    localStringBuilder2.append(this.mPlayAudioFrame);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mEnableAntiAlias: ");
+    localStringBuilder2.append(this.mEnableAntiAlias);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mEnableFilter: ");
+    localStringBuilder2.append(this.mEnableFilter);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mRequestedFPS: ");
+    localStringBuilder2.append(this.mRequestedFPS);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mDecodeType: ");
+    localStringBuilder2.append(this.mDecodeType);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mVfPath: ");
+    localStringBuilder2.append(this.mVfPath);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mAfPath: ");
+    localStringBuilder2.append(this.mAfPath);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mTotalTime: ");
+    localStringBuilder2.append(this.mTotalTime);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" mVideoFrames: ");
+    localStringBuilder2.append(this.mVideoFrames);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append("] ");
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.VideoDrawable.VideoDrawableParams
  * JD-Core Version:    0.7.0.1
  */

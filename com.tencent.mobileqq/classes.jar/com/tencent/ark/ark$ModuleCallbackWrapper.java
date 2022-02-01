@@ -6,7 +6,7 @@ public abstract interface ark$ModuleCallbackWrapper
   
   public abstract String GetTypeName();
   
-  public abstract boolean HasMenthod(String paramString);
+  public abstract boolean HasMethod(String paramString);
   
   public abstract boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
 }

@@ -27,54 +27,71 @@ public class MutualMarkConfigIRType$TypeItem
     if (paramJSONObject == null) {
       return null;
     }
-    localTypeItem = new TypeItem();
+    Object localObject = new TypeItem();
     try
     {
-      localTypeItem.jdField_a_of_type_JavaLangString = paramJSONObject.optString("id");
-      localTypeItem.jdField_a_of_type_Long = MutualMarkUtils.b(localTypeItem.jdField_a_of_type_JavaLangString);
-      localTypeItem.jdField_b_of_type_Long = MutualMarkUtils.a(localTypeItem.jdField_a_of_type_JavaLangString);
-      localTypeItem.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
-      localTypeItem.c = paramJSONObject.optString("Android_iconPath");
-      localTypeItem.jdField_a_of_type_Boolean = true;
+      ((TypeItem)localObject).jdField_a_of_type_JavaLangString = paramJSONObject.optString("id");
+      ((TypeItem)localObject).jdField_a_of_type_Long = MutualMarkUtils.b(((TypeItem)localObject).jdField_a_of_type_JavaLangString);
+      ((TypeItem)localObject).jdField_b_of_type_Long = MutualMarkUtils.a(((TypeItem)localObject).jdField_a_of_type_JavaLangString);
+      ((TypeItem)localObject).jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
+      ((TypeItem)localObject).c = paramJSONObject.optString("Android_iconPath");
+      ((TypeItem)localObject).jdField_a_of_type_Boolean = true;
       if (paramJSONObject.has("subLevelInfo"))
       {
         paramJSONObject = paramJSONObject.optJSONArray("subLevelInfo");
-        localTypeItem.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        ((TypeItem)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
         int i = 0;
         while (i < paramJSONObject.length())
         {
           MutualMarkConfigIRType.SubLevelInfo localSubLevelInfo = MutualMarkConfigIRType.SubLevelInfo.a(paramJSONObject.getJSONObject(i));
           if (localSubLevelInfo != null) {
-            localTypeItem.jdField_a_of_type_JavaUtilArrayList.add(localSubLevelInfo);
+            ((TypeItem)localObject).jdField_a_of_type_JavaUtilArrayList.add(localSubLevelInfo);
           }
           i += 1;
         }
       }
-      return localTypeItem;
+      return localObject;
     }
     catch (Exception paramJSONObject)
     {
-      QLog.e("MutualMarkConfigIRType", 1, "parse error->" + paramJSONObject.toString());
-      return null;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parse error->");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QLog.e("MutualMarkConfigIRType", 1, ((StringBuilder)localObject).toString());
     }
+    return null;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("type=").append(this.jdField_a_of_type_Long).append("|");
-    localStringBuilder.append("level=").append(this.jdField_b_of_type_Long).append("|");
-    localStringBuilder.append("name=").append(this.jdField_b_of_type_JavaLangString).append("|");
-    localStringBuilder.append("iconPath=").append(this.c).append("|");
-    localStringBuilder.append("enable=").append(this.jdField_a_of_type_Boolean).append("|");
-    localStringBuilder.append("subLevelInfoArrayList=").append(this.jdField_a_of_type_JavaUtilArrayList).append("|");
+    localStringBuilder.append("id=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("type=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("|");
+    localStringBuilder.append("level=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("|");
+    localStringBuilder.append("name=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("iconPath=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("|");
+    localStringBuilder.append("enable=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("|");
+    localStringBuilder.append("subLevelInfoArrayList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.info.MutualMarkConfigIRType.TypeItem
  * JD-Core Version:    0.7.0.1
  */

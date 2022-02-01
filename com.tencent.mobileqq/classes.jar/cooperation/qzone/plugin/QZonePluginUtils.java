@@ -46,92 +46,92 @@ public class QZonePluginUtils
   
   public static boolean fileExists(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return false;
-      paramString = new File(paramString);
-    } while ((paramString == null) || (!paramString.exists()));
-    return true;
+    }
+    return new File(paramString).exists();
   }
   
   public static File getIntalledPluginCfgFile(Context paramContext, String paramString)
   {
-    return new File(paramContext.getDir("qzone_installed_plugin", 0), paramString + ".cfg");
+    paramContext = paramContext.getDir("qzone_installed_plugin", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".cfg");
+    return new File(paramContext, localStringBuilder.toString());
   }
   
   public static String getLoadQZoneLivePluginId()
   {
+    if (!TextUtils.isEmpty(mQzoneLivePluginId)) {
+      return mQzoneLivePluginId;
+    }
+    Object localObject2 = "qzone_live_video_plugin_hack.apk";
+    Object localObject1 = LocalMultiProcConfig.getString("qzone_live_pluginid", "qzone_live_video_plugin_hack.apk");
+    int k = useLocalLivePlugin();
     int j = 0;
     int i = 0;
-    Object localObject;
-    if (!TextUtils.isEmpty(mQzoneLivePluginId))
+    if ((k == 0) && (!"qzone_live_video_plugin_hack.apk".equals(localObject1)))
     {
-      localObject = mQzoneLivePluginId;
-      return localObject;
-    }
-    String str = LocalMultiProcConfig.getString("qzone_live_pluginid", "qzone_live_video_plugin_hack.apk");
-    int k = useLocalLivePlugin();
-    if ((k == 0) && (!"qzone_live_video_plugin_hack.apk".equals(str)))
-    {
-      localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-      for (;;)
+      List localList = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+      while (i < localList.size())
       {
-        if (i >= ((List)localObject).size()) {
-          break label138;
-        }
-        if ("com.tencent.mobileqq:qzonelive".equals(((ActivityManager.RunningAppProcessInfo)((List)localObject).get(i)).processName))
+        if ("com.tencent.mobileqq:qzonelive".equals(((ActivityManager.RunningAppProcessInfo)localList.get(i)).processName))
         {
-          localObject = str;
-          if (!QLog.isColorLevel()) {
-            break;
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("切换时 qzonelive 进程存在 pluginid 保持不变，getLoadQZoneLivePluginId:");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            QLog.i("QZonePluginManger", 2, ((StringBuilder)localObject2).toString());
           }
-          QLog.i("QZonePluginManger", 2, "切换时 qzonelive 进程存在 pluginid 保持不变，getLoadQZoneLivePluginId:" + str);
-          return str;
+          return localObject1;
         }
         i += 1;
       }
-      label138:
-      str = "qzone_live_video_plugin_hack.apk";
       LocalMultiProcConfig.putString("qzone_live_pluginid", "qzone_live_video_plugin_hack.apk");
+      localObject1 = localObject2;
     }
-    for (;;)
+    else if ((k == 1) && (!"qzone_live_video_plugin.apk".equals(localObject1)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "getLoadQZoneLivePluginId:" + str);
-      }
-      mQzoneLivePluginId = str;
-      return str;
-      if ((k == 1) && (!"qzone_live_video_plugin.apk".equals(str)))
+      localObject2 = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+      i = j;
+      while (i < ((List)localObject2).size())
       {
-        localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-        i = j;
-        for (;;)
+        if ("com.tencent.mobileqq:qzonelive".equals(((ActivityManager.RunningAppProcessInfo)((List)localObject2).get(i)).processName))
         {
-          if (i >= ((List)localObject).size()) {
-            break label293;
-          }
-          if ("com.tencent.mobileqq:qzonelive".equals(((ActivityManager.RunningAppProcessInfo)((List)localObject).get(i)).processName))
+          if (QLog.isColorLevel())
           {
-            localObject = str;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.i("QZonePluginManger", 2, "切换时 qzonelive 进程存在 pluginid 保持不变，getLoadQZoneLivePluginId:" + str);
-            return str;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("切换时 qzonelive 进程存在 pluginid 保持不变，getLoadQZoneLivePluginId:");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            QLog.i("QZonePluginManger", 2, ((StringBuilder)localObject2).toString());
           }
-          i += 1;
+          return localObject1;
         }
-        label293:
-        str = "qzone_live_video_plugin.apk";
-        LocalMultiProcConfig.putString("qzone_live_pluginid", "qzone_live_video_plugin.apk");
+        i += 1;
       }
+      LocalMultiProcConfig.putString("qzone_live_pluginid", "qzone_live_video_plugin.apk");
+      localObject1 = "qzone_live_video_plugin.apk";
     }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getLoadQZoneLivePluginId:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("QZonePluginManger", 2, ((StringBuilder)localObject2).toString());
+    }
+    mQzoneLivePluginId = (String)localObject1;
+    return localObject1;
   }
   
   public static File getPluginCfgFile(Context paramContext, String paramString)
   {
-    return new File(paramContext.getDir("qzone_plugin_info", 0), paramString + ".cfg");
+    paramContext = paramContext.getDir("qzone_plugin_info", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".cfg");
+    return new File(paramContext, localStringBuilder.toString());
   }
   
   public static File getPluginDownLoadedPath(Context paramContext, String paramString)
@@ -161,111 +161,120 @@ public class QZonePluginUtils
   
   public static String getQzoneSVFilterSoPath(Context paramContext)
   {
-    String str = "/app_lib/qzone_live_video_plugin_hack/";
+    String str;
     if ("qzone_live_video_plugin.apk".equals(getLoadQZoneLivePluginId())) {
       str = "/app_lib/qzone_live_video_plugin/";
+    } else {
+      str = "/app_lib/qzone_live_video_plugin_hack/";
     }
     paramContext = paramContext.getFilesDir();
-    if (paramContext != null) {
-      return paramContext.getParent() + str + "/PTBase/";
+    if (paramContext != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getParent());
+      localStringBuilder.append(str);
+      localStringBuilder.append("/PTBase/");
+      return localStringBuilder.toString();
     }
     return null;
   }
   
   private static String getSoLibraryName(String paramString)
   {
-    return "lib" + paramString + ".so";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lib");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".so");
+    return localStringBuilder.toString();
   }
   
   static boolean isPluginRunning(PluginRecord paramPluginRecord, Context paramContext)
   {
-    if ((paramPluginRecord == null) || (paramContext == null)) {
-      return false;
-    }
-    if (TextUtils.isEmpty(paramPluginRecord.mProcesses)) {
-      return false;
-    }
-    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-    if (paramContext == null) {
-      return false;
-    }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext())
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      if (paramPluginRecord.mProcesses.equalsIgnoreCase(localRunningAppProcessInfo.processName)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean isProcessExist(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return false;
-      Object localObject = (ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity");
-      if (localObject != null)
-      {
-        localObject = ((ActivityManager)localObject).getRunningAppProcesses();
-        if (localObject != null)
-        {
-          int i = 0;
-          while (i < ((List)localObject).size())
-          {
-            if (paramString.equals(((ActivityManager.RunningAppProcessInfo)((List)localObject).get(i)).processName)) {
-              return true;
-            }
-            i += 1;
-          }
-        }
-      }
-    }
-  }
-  
-  public static boolean isQzoneLiveSoExist(Context paramContext)
-  {
     boolean bool2 = false;
-    paramContext = getQzoneSVFilterSoPath(paramContext);
-    boolean bool3 = fileExists(paramContext + PTU_SO_filter_com);
-    boolean bool4 = fileExists(paramContext + PTU_SO_filter_gpu);
-    boolean bool5 = fileExists(paramContext + "libformat_convert.so");
-    boolean bool6 = fileExists(paramContext + "libpitu_tools.so");
-    int i = LocalMultiProcConfig.getInt("QzoneLiveSoVersion", 0);
-    int j = QzoneConfig.getInstance().getConfig("LiveSetting", "LivePluginSOVersion", 5);
     boolean bool1 = bool2;
-    if (bool3)
+    if (paramPluginRecord != null)
     {
-      bool1 = bool2;
-      if (bool4)
+      if (paramContext == null) {
+        return false;
+      }
+      if (TextUtils.isEmpty(paramPluginRecord.mProcesses)) {
+        return false;
+      }
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+      if (paramContext == null) {
+        return false;
+      }
+      paramContext = paramContext.iterator();
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
+      do
       {
         bool1 = bool2;
-        if (bool5)
-        {
-          bool1 = bool2;
-          if (bool6)
-          {
-            bool1 = bool2;
-            if (i == j) {
-              bool1 = true;
-            }
-          }
+        if (!paramContext.hasNext()) {
+          break;
         }
-      }
+        localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+      } while (!paramPluginRecord.mProcesses.equalsIgnoreCase(localRunningAppProcessInfo.processName));
+      bool1 = true;
     }
     return bool1;
   }
   
+  public static boolean isProcessExist(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    Object localObject = (ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity");
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((ActivityManager)localObject).getRunningAppProcesses();
+    if (localObject == null) {
+      return false;
+    }
+    int i = 0;
+    while (i < ((List)localObject).size())
+    {
+      if (paramString.equals(((ActivityManager.RunningAppProcessInfo)((List)localObject).get(i)).processName)) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public static boolean isQzoneLiveSoExist(Context paramContext)
+  {
+    paramContext = getQzoneSVFilterSoPath(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(PTU_SO_filter_com);
+    boolean bool1 = fileExists(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(PTU_SO_filter_gpu);
+    boolean bool2 = fileExists(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append("libformat_convert.so");
+    boolean bool3 = fileExists(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append("libpitu_tools.so");
+    boolean bool4 = fileExists(localStringBuilder.toString());
+    int i = LocalMultiProcConfig.getInt("QzoneLiveSoVersion", 0);
+    int j = QzoneConfig.getInstance().getConfig("LiveSetting", "LivePluginSOVersion", 5);
+    return (bool1) && (bool2) && (bool3) && (bool4) && (i == j);
+  }
+  
   public static void listInstalledPlugininfos(Context paramContext, Map<String, PluginRecord> paramMap, QZonePluginInstaller.OnValidatePluginListner paramOnValidatePluginListner)
   {
+    int i = 0;
     paramContext = getPluginInfoFileList(paramContext.getDir("qzone_installed_plugin", 0));
     if (paramContext != null)
     {
       int j = paramContext.length;
-      int i = 0;
-      if (i < j)
+      while (i < j)
       {
         File localFile = paramContext[i];
         if (localFile.exists())
@@ -273,23 +282,20 @@ public class QZonePluginUtils
           PluginRecord localPluginRecord = readFileCfg(localFile);
           if (localPluginRecord != null)
           {
-            boolean bool = true;
+            boolean bool;
             if (paramOnValidatePluginListner != null) {
               bool = paramOnValidatePluginListner.onValidatePlugin(localPluginRecord, localFile);
+            } else {
+              bool = true;
             }
-            if (!bool) {
-              break label97;
+            if (bool) {
+              paramMap.put(localPluginRecord.id, localPluginRecord);
+            } else {
+              localFile.delete();
             }
-            paramMap.put(localPluginRecord.id, localPluginRecord);
           }
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label97:
-          localFile.delete();
-        }
+        i += 1;
       }
     }
   }
@@ -303,24 +309,20 @@ public class QZonePluginUtils
     paramContext = getPluginInfoFileList((File)localObject);
     if (paramContext != null)
     {
-      if (!bool) {
-        break label72;
-      }
-      j = paramContext.length;
-      while (i < j)
+      if (bool)
       {
-        paramMap = paramContext[i];
-        if (paramMap.exists()) {
-          paramMap.delete();
+        j = paramContext.length;
+        while (i < j)
+        {
+          paramMap = paramContext[i];
+          if (paramMap.exists()) {
+            paramMap.delete();
+          }
+          i += 1;
         }
-        i += 1;
+        PluginInfoUtil.a((File)localObject);
+        return;
       }
-      PluginInfoUtil.a((File)localObject);
-    }
-    for (;;)
-    {
-      return;
-      label72:
       int k = paramContext.length;
       i = j;
       while (i < k)
@@ -342,175 +344,159 @@ public class QZonePluginUtils
   public static PluginRecord readFileCfg(File paramFile)
   {
     // Byte code:
-    //   0: new 333	java/io/FileInputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 335	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   8: astore_2
-    //   9: aload_2
-    //   10: astore_1
-    //   11: aload_0
-    //   12: invokevirtual 339	java/io/File:length	()J
-    //   15: l2i
-    //   16: newarray byte
-    //   18: astore_0
-    //   19: aload_2
-    //   20: astore_1
-    //   21: aload_2
-    //   22: aload_0
-    //   23: invokevirtual 343	java/io/FileInputStream:read	([B)I
-    //   26: pop
-    //   27: aload_2
-    //   28: astore_1
-    //   29: new 38	java/lang/String
-    //   32: dup
-    //   33: aload_0
-    //   34: iconst_0
-    //   35: invokestatic 349	com/tencent/mobileqq/utils/Base64Util:decode	([BI)[B
-    //   38: invokespecial 352	java/lang/String:<init>	([B)V
-    //   41: astore_3
-    //   42: aload_2
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore 5
+    //   6: aconst_null
+    //   7: astore_1
+    //   8: new 333	java/io/FileInputStream
+    //   11: dup
+    //   12: aload_0
+    //   13: invokespecial 335	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   16: astore_2
+    //   17: aload_0
+    //   18: invokevirtual 339	java/io/File:length	()J
+    //   21: l2i
+    //   22: newarray byte
+    //   24: astore_0
+    //   25: aload_2
+    //   26: aload_0
+    //   27: invokevirtual 343	java/io/FileInputStream:read	([B)I
+    //   30: pop
+    //   31: new 38	java/lang/String
+    //   34: dup
+    //   35: aload_0
+    //   36: iconst_0
+    //   37: invokestatic 349	com/tencent/mobileqq/utils/Base64Util:decode	([BI)[B
+    //   40: invokespecial 352	java/lang/String:<init>	([B)V
     //   43: astore_1
     //   44: new 82	cooperation/qzone/plugin/PluginRecord
     //   47: dup
     //   48: invokespecial 353	cooperation/qzone/plugin/PluginRecord:<init>	()V
     //   51: astore_0
-    //   52: aload_2
-    //   53: astore_1
-    //   54: aload_0
-    //   55: aload_3
-    //   56: invokevirtual 356	cooperation/qzone/plugin/PluginRecord:fromJson	(Ljava/lang/String;)V
-    //   59: aload_0
-    //   60: astore_1
-    //   61: aload_2
-    //   62: ifnull +9 -> 71
-    //   65: aload_2
-    //   66: invokevirtual 359	java/io/FileInputStream:close	()V
+    //   52: aload_0
+    //   53: aload_1
+    //   54: invokevirtual 356	cooperation/qzone/plugin/PluginRecord:fromJson	(Ljava/lang/String;)V
+    //   57: aload_2
+    //   58: invokevirtual 359	java/io/FileInputStream:close	()V
+    //   61: goto +8 -> 69
+    //   64: astore_1
+    //   65: aload_1
+    //   66: invokevirtual 362	java/io/IOException:printStackTrace	()V
     //   69: aload_0
-    //   70: astore_1
-    //   71: aload_1
-    //   72: areturn
-    //   73: astore_1
-    //   74: aload_1
-    //   75: invokevirtual 362	java/io/IOException:printStackTrace	()V
-    //   78: aload_0
-    //   79: areturn
-    //   80: astore_3
-    //   81: aconst_null
-    //   82: astore_2
-    //   83: aconst_null
-    //   84: astore_0
-    //   85: aload_2
-    //   86: astore_1
-    //   87: aload_3
-    //   88: invokevirtual 363	java/io/FileNotFoundException:printStackTrace	()V
-    //   91: aload_0
-    //   92: astore_1
-    //   93: aload_2
-    //   94: ifnull -23 -> 71
-    //   97: aload_2
-    //   98: invokevirtual 359	java/io/FileInputStream:close	()V
-    //   101: aload_0
-    //   102: areturn
-    //   103: astore_1
-    //   104: aload_1
-    //   105: invokevirtual 362	java/io/IOException:printStackTrace	()V
-    //   108: aload_0
-    //   109: areturn
-    //   110: astore_3
-    //   111: aconst_null
-    //   112: astore_2
-    //   113: aconst_null
-    //   114: astore_0
-    //   115: aload_2
-    //   116: astore_1
-    //   117: aload_3
-    //   118: invokevirtual 362	java/io/IOException:printStackTrace	()V
-    //   121: aload_0
-    //   122: astore_1
-    //   123: aload_2
-    //   124: ifnull -53 -> 71
-    //   127: aload_2
-    //   128: invokevirtual 359	java/io/FileInputStream:close	()V
-    //   131: aload_0
-    //   132: areturn
-    //   133: astore_1
-    //   134: aload_1
-    //   135: invokevirtual 362	java/io/IOException:printStackTrace	()V
-    //   138: aload_0
-    //   139: areturn
+    //   70: areturn
+    //   71: astore_1
+    //   72: goto +14 -> 86
+    //   75: astore_1
+    //   76: goto +18 -> 94
+    //   79: astore_0
+    //   80: goto +86 -> 166
+    //   83: astore_1
+    //   84: aconst_null
+    //   85: astore_0
+    //   86: aload_1
+    //   87: astore_3
+    //   88: goto +23 -> 111
+    //   91: astore_1
+    //   92: aconst_null
+    //   93: astore_0
+    //   94: aload_1
+    //   95: astore_3
+    //   96: goto +48 -> 144
+    //   99: astore_0
+    //   100: aload_1
+    //   101: astore_2
+    //   102: goto +64 -> 166
+    //   105: astore_3
+    //   106: aconst_null
+    //   107: astore_0
+    //   108: aload 4
+    //   110: astore_2
+    //   111: aload_2
+    //   112: astore_1
+    //   113: aload_3
+    //   114: invokevirtual 362	java/io/IOException:printStackTrace	()V
+    //   117: aload_0
+    //   118: astore_1
+    //   119: aload_2
+    //   120: ifnull +44 -> 164
+    //   123: aload_0
+    //   124: astore_1
+    //   125: aload_2
+    //   126: invokevirtual 359	java/io/FileInputStream:close	()V
+    //   129: aload_0
+    //   130: areturn
+    //   131: astore_0
+    //   132: aload_0
+    //   133: invokevirtual 362	java/io/IOException:printStackTrace	()V
+    //   136: aload_1
+    //   137: areturn
+    //   138: astore_3
+    //   139: aconst_null
     //   140: astore_0
-    //   141: aconst_null
-    //   142: astore_1
-    //   143: aload_1
-    //   144: ifnull +7 -> 151
-    //   147: aload_1
-    //   148: invokevirtual 359	java/io/FileInputStream:close	()V
-    //   151: aload_0
-    //   152: athrow
-    //   153: astore_1
-    //   154: aload_1
-    //   155: invokevirtual 362	java/io/IOException:printStackTrace	()V
-    //   158: goto -7 -> 151
-    //   161: astore_0
-    //   162: goto -19 -> 143
-    //   165: astore_3
-    //   166: aconst_null
-    //   167: astore_0
-    //   168: goto -53 -> 115
-    //   171: astore_3
-    //   172: goto -57 -> 115
-    //   175: astore_3
-    //   176: aconst_null
-    //   177: astore_0
-    //   178: goto -93 -> 85
-    //   181: astore_3
-    //   182: goto -97 -> 85
+    //   141: aload 5
+    //   143: astore_2
+    //   144: aload_2
+    //   145: astore_1
+    //   146: aload_3
+    //   147: invokevirtual 363	java/io/FileNotFoundException:printStackTrace	()V
+    //   150: aload_0
+    //   151: astore_1
+    //   152: aload_2
+    //   153: ifnull +11 -> 164
+    //   156: aload_0
+    //   157: astore_1
+    //   158: aload_2
+    //   159: invokevirtual 359	java/io/FileInputStream:close	()V
+    //   162: aload_0
+    //   163: astore_1
+    //   164: aload_1
+    //   165: areturn
+    //   166: aload_2
+    //   167: ifnull +15 -> 182
+    //   170: aload_2
+    //   171: invokevirtual 359	java/io/FileInputStream:close	()V
+    //   174: goto +8 -> 182
+    //   177: astore_1
+    //   178: aload_1
+    //   179: invokevirtual 362	java/io/IOException:printStackTrace	()V
+    //   182: aload_0
+    //   183: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	185	0	paramFile	File
-    //   10	62	1	localObject1	Object
-    //   73	2	1	localIOException1	java.io.IOException
-    //   86	7	1	localObject2	Object
-    //   103	2	1	localIOException2	java.io.IOException
-    //   116	7	1	localObject3	Object
-    //   133	2	1	localIOException3	java.io.IOException
-    //   142	6	1	localObject4	Object
-    //   153	2	1	localIOException4	java.io.IOException
-    //   8	120	2	localFileInputStream	java.io.FileInputStream
-    //   41	15	3	str	String
-    //   80	8	3	localFileNotFoundException1	java.io.FileNotFoundException
-    //   110	8	3	localIOException5	java.io.IOException
-    //   165	1	3	localIOException6	java.io.IOException
-    //   171	1	3	localIOException7	java.io.IOException
-    //   175	1	3	localFileNotFoundException2	java.io.FileNotFoundException
-    //   181	1	3	localFileNotFoundException3	java.io.FileNotFoundException
+    //   0	184	0	paramFile	File
+    //   7	47	1	str	String
+    //   64	2	1	localIOException1	java.io.IOException
+    //   71	1	1	localIOException2	java.io.IOException
+    //   75	1	1	localFileNotFoundException1	java.io.FileNotFoundException
+    //   83	4	1	localIOException3	java.io.IOException
+    //   91	10	1	localFileNotFoundException2	java.io.FileNotFoundException
+    //   112	53	1	localObject1	Object
+    //   177	2	1	localIOException4	java.io.IOException
+    //   16	155	2	localObject2	Object
+    //   87	9	3	localObject3	Object
+    //   105	9	3	localIOException5	java.io.IOException
+    //   138	9	3	localFileNotFoundException3	java.io.FileNotFoundException
+    //   1	108	4	localObject4	Object
+    //   4	138	5	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   65	69	73	java/io/IOException
-    //   0	9	80	java/io/FileNotFoundException
-    //   97	101	103	java/io/IOException
-    //   0	9	110	java/io/IOException
-    //   127	131	133	java/io/IOException
-    //   0	9	140	finally
-    //   147	151	153	java/io/IOException
-    //   11	19	161	finally
-    //   21	27	161	finally
-    //   29	42	161	finally
-    //   44	52	161	finally
-    //   54	59	161	finally
-    //   87	91	161	finally
-    //   117	121	161	finally
-    //   11	19	165	java/io/IOException
-    //   21	27	165	java/io/IOException
-    //   29	42	165	java/io/IOException
-    //   44	52	165	java/io/IOException
-    //   54	59	171	java/io/IOException
-    //   11	19	175	java/io/FileNotFoundException
-    //   21	27	175	java/io/FileNotFoundException
-    //   29	42	175	java/io/FileNotFoundException
-    //   44	52	175	java/io/FileNotFoundException
-    //   54	59	181	java/io/FileNotFoundException
+    //   57	61	64	java/io/IOException
+    //   52	57	71	java/io/IOException
+    //   52	57	75	java/io/FileNotFoundException
+    //   17	52	79	finally
+    //   52	57	79	finally
+    //   17	52	83	java/io/IOException
+    //   17	52	91	java/io/FileNotFoundException
+    //   8	17	99	finally
+    //   113	117	99	finally
+    //   146	150	99	finally
+    //   8	17	105	java/io/IOException
+    //   125	129	131	java/io/IOException
+    //   158	162	131	java/io/IOException
+    //   8	17	138	java/io/FileNotFoundException
+    //   170	174	177	java/io/IOException
   }
   
   public static void saveInstalledPluginInfo(PluginRecord paramPluginRecord)
@@ -558,119 +544,122 @@ public class QZonePluginUtils
     //   0: iconst_0
     //   1: istore_2
     //   2: aconst_null
-    //   3: astore 5
+    //   3: astore 4
     //   5: aconst_null
-    //   6: astore 4
-    //   8: aload_1
-    //   9: invokevirtual 383	cooperation/qzone/plugin/PluginRecord:toJson	()Ljava/lang/String;
-    //   12: astore 6
-    //   14: invokestatic 186	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   17: ifeq +29 -> 46
-    //   20: ldc 33
-    //   22: iconst_2
-    //   23: new 114	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 115	java/lang/StringBuilder:<init>	()V
+    //   6: astore_3
+    //   7: aload_1
+    //   8: invokevirtual 383	cooperation/qzone/plugin/PluginRecord:toJson	()Ljava/lang/String;
+    //   11: astore 5
+    //   13: invokestatic 186	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   16: ifeq +39 -> 55
+    //   19: new 114	java/lang/StringBuilder
+    //   22: dup
+    //   23: invokespecial 115	java/lang/StringBuilder:<init>	()V
+    //   26: astore 6
+    //   28: aload 6
     //   30: ldc_w 385
     //   33: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload_1
-    //   37: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   40: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: invokestatic 391	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   46: aload 6
-    //   48: invokevirtual 395	java/lang/String:getBytes	()[B
-    //   51: iconst_0
-    //   52: invokestatic 398	com/tencent/mobileqq/utils/Base64Util:encode	([BI)[B
-    //   55: astore_1
-    //   56: new 400	java/io/FileOutputStream
-    //   59: dup
-    //   60: aload_0
-    //   61: invokespecial 401	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   64: astore_0
-    //   65: aload_0
-    //   66: aload_1
-    //   67: invokevirtual 404	java/io/FileOutputStream:write	([B)V
-    //   70: iconst_1
-    //   71: istore_3
-    //   72: iload_3
-    //   73: istore_2
+    //   36: pop
+    //   37: aload 6
+    //   39: aload_1
+    //   40: invokevirtual 388	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   43: pop
+    //   44: ldc 33
+    //   46: iconst_2
+    //   47: aload 6
+    //   49: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: invokestatic 391	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   55: aload 5
+    //   57: invokevirtual 395	java/lang/String:getBytes	()[B
+    //   60: iconst_0
+    //   61: invokestatic 398	com/tencent/mobileqq/utils/Base64Util:encode	([BI)[B
+    //   64: astore_1
+    //   65: new 400	java/io/FileOutputStream
+    //   68: dup
+    //   69: aload_0
+    //   70: invokespecial 401	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   73: astore_0
     //   74: aload_0
-    //   75: ifnull +9 -> 84
-    //   78: aload_0
-    //   79: invokevirtual 405	java/io/FileOutputStream:close	()V
-    //   82: iload_3
-    //   83: istore_2
-    //   84: iload_2
-    //   85: ireturn
-    //   86: astore_0
-    //   87: aload 4
-    //   89: astore_0
-    //   90: aload_0
-    //   91: ifnull -7 -> 84
-    //   94: aload_0
-    //   95: invokevirtual 405	java/io/FileOutputStream:close	()V
-    //   98: iconst_0
-    //   99: ireturn
-    //   100: astore_0
-    //   101: iconst_0
-    //   102: ireturn
-    //   103: astore_0
-    //   104: aload 5
-    //   106: astore_1
-    //   107: aload_1
-    //   108: ifnull +7 -> 115
-    //   111: aload_1
-    //   112: invokevirtual 405	java/io/FileOutputStream:close	()V
+    //   75: aload_1
+    //   76: invokevirtual 404	java/io/FileOutputStream:write	([B)V
+    //   79: iconst_1
+    //   80: istore_2
+    //   81: aload_0
+    //   82: invokevirtual 405	java/io/FileOutputStream:close	()V
+    //   85: iconst_1
+    //   86: ireturn
+    //   87: astore_3
+    //   88: aload_0
+    //   89: astore_1
+    //   90: aload_3
+    //   91: astore_0
+    //   92: goto +9 -> 101
+    //   95: goto +16 -> 111
+    //   98: astore_0
+    //   99: aload_3
+    //   100: astore_1
+    //   101: aload_1
+    //   102: ifnull +7 -> 109
+    //   105: aload_1
+    //   106: invokevirtual 405	java/io/FileOutputStream:close	()V
+    //   109: aload_0
+    //   110: athrow
+    //   111: aload_0
+    //   112: ifnull +7 -> 119
     //   115: aload_0
-    //   116: athrow
-    //   117: astore_0
-    //   118: iconst_1
-    //   119: ireturn
-    //   120: astore_1
-    //   121: goto -6 -> 115
-    //   124: astore 4
-    //   126: aload_0
-    //   127: astore_1
-    //   128: aload 4
-    //   130: astore_0
-    //   131: goto -24 -> 107
-    //   134: astore_1
-    //   135: goto -45 -> 90
+    //   116: invokevirtual 405	java/io/FileOutputStream:close	()V
+    //   119: iconst_0
+    //   120: ireturn
+    //   121: astore_0
+    //   122: aload 4
+    //   124: astore_0
+    //   125: goto -14 -> 111
+    //   128: astore_1
+    //   129: goto -34 -> 95
+    //   132: astore_0
+    //   133: iload_2
+    //   134: ireturn
+    //   135: astore_1
+    //   136: goto -27 -> 109
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	138	0	paramFile	File
-    //   0	138	1	paramPluginRecord	PluginRecord
-    //   1	84	2	bool1	boolean
-    //   71	12	3	bool2	boolean
-    //   6	82	4	localObject1	Object
-    //   124	5	4	localObject2	Object
-    //   3	102	5	localObject3	Object
-    //   12	35	6	str	String
+    //   0	139	0	paramFile	File
+    //   0	139	1	paramPluginRecord	PluginRecord
+    //   1	133	2	bool	boolean
+    //   6	1	3	localObject1	Object
+    //   87	13	3	localObject2	Object
+    //   3	120	4	localObject3	Object
+    //   11	45	5	str	String
+    //   26	22	6	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   8	46	86	java/lang/Exception
-    //   46	65	86	java/lang/Exception
-    //   94	98	100	java/io/IOException
-    //   8	46	103	finally
-    //   46	65	103	finally
-    //   78	82	117	java/io/IOException
-    //   111	115	120	java/io/IOException
-    //   65	70	124	finally
-    //   65	70	134	java/lang/Exception
+    //   74	79	87	finally
+    //   7	55	98	finally
+    //   55	74	98	finally
+    //   7	55	121	java/lang/Exception
+    //   55	74	121	java/lang/Exception
+    //   74	79	128	java/lang/Exception
+    //   81	85	132	java/io/IOException
+    //   115	119	132	java/io/IOException
+    //   105	109	135	java/io/IOException
   }
   
   public static int useLocalLivePlugin()
   {
     int i = QzoneConfig.getInstance().getConfig("LiveSetting", "useQQPluginManager", 1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "[useLocalLivePlugin] value=" + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[useLocalLivePlugin] value=");
+      localStringBuilder.append(i);
+      QLog.d("QZonePluginManger", 2, localStringBuilder.toString());
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginUtils
  * JD-Core Version:    0.7.0.1
  */

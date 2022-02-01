@@ -20,17 +20,25 @@ public class OfflineFileControlReq
   
   public String a()
   {
-    if ((this.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_Long != 0L) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      QLog.e("OfflineFileControlReq<QFile>", 1, "key params is null");
-      return "";
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("");
+      return a((String)localObject, str, localStringBuilder.toString());
     }
-    return a(this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long + "");
+    QLog.e("OfflineFileControlReq<QFile>", 1, "key params is null");
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.OfflineFileControlReq
  * JD-Core Version:    0.7.0.1
  */

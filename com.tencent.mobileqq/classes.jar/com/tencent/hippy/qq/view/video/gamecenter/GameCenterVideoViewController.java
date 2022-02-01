@@ -37,12 +37,12 @@ public class GameCenterVideoViewController
     return super.createView(paramHippyRootView, paramInt, paramHippyEngineContext, paramString, paramHippyMap);
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return null;
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     return new GameCenterVideoView(paramContext, this.mHippyEngineId);
   }
@@ -136,7 +136,7 @@ public class GameCenterVideoViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoViewController
  * JD-Core Version:    0.7.0.1
  */

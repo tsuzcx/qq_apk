@@ -23,22 +23,23 @@ public final class MessageNanoPrinter
     }
     paramStringBuffer.append('"');
     int i = 0;
-    if (i < paramArrayOfByte.length)
+    while (i < paramArrayOfByte.length)
     {
       int j = paramArrayOfByte[i] & 0xFF;
-      if ((j == 92) || (j == 34)) {
-        paramStringBuffer.append('\\').append((char)j);
-      }
-      for (;;)
+      if ((j != 92) && (j != 34))
       {
-        i += 1;
-        break;
         if ((j >= 32) && (j < 127)) {
           paramStringBuffer.append((char)j);
         } else {
           paramStringBuffer.append(String.format("\\%03o", new Object[] { Integer.valueOf(j) }));
         }
       }
+      else
+      {
+        paramStringBuffer.append('\\');
+        paramStringBuffer.append((char)j);
+      }
+      i += 1;
     }
     paramStringBuffer.append('"');
   }
@@ -47,22 +48,23 @@ public final class MessageNanoPrinter
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
       char c = paramString.charAt(i);
-      if (i == 0) {
+      if (i == 0)
+      {
         localStringBuffer.append(Character.toLowerCase(c));
       }
-      for (;;)
+      else if (Character.isUpperCase(c))
       {
-        i += 1;
-        break;
-        if (Character.isUpperCase(c)) {
-          localStringBuffer.append('_').append(Character.toLowerCase(c));
-        } else {
-          localStringBuffer.append(c);
-        }
+        localStringBuffer.append('_');
+        localStringBuffer.append(Character.toLowerCase(c));
       }
+      else
+      {
+        localStringBuffer.append(c);
+      }
+      i += 1;
     }
     return localStringBuffer.toString();
   }
@@ -72,18 +74,15 @@ public final class MessageNanoPrinter
     int j = paramString.length();
     StringBuilder localStringBuilder = new StringBuilder(j);
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramString.charAt(i);
       if ((c >= ' ') && (c <= '~') && (c != '"') && (c != '\'')) {
         localStringBuilder.append(c);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
       }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
@@ -93,18 +92,26 @@ public final class MessageNanoPrinter
     if (paramT == null) {
       return "";
     }
-    StringBuffer localStringBuffer = new StringBuffer();
+    Object localObject = new StringBuffer();
     try
     {
-      print(null, paramT, new StringBuffer(), localStringBuffer);
-      return localStringBuffer.toString();
+      print(null, paramT, new StringBuffer(), (StringBuffer)localObject);
+      return ((StringBuffer)localObject).toString();
+    }
+    catch (InvocationTargetException paramT)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Error printing proto: ");
+      ((StringBuilder)localObject).append(paramT.getMessage());
+      return ((StringBuilder)localObject).toString();
     }
     catch (IllegalAccessException paramT)
     {
-      return "Error printing proto: " + paramT.getMessage();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Error printing proto: ");
+      ((StringBuilder)localObject).append(paramT.getMessage());
     }
-    catch (InvocationTargetException paramT) {}
-    return "Error printing proto: " + paramT.getMessage();
+    return ((StringBuilder)localObject).toString();
   }
   
   private static void print(String paramString, Object paramObject, StringBuffer paramStringBuffer1, StringBuffer paramStringBuffer2)
@@ -112,155 +119,163 @@ public final class MessageNanoPrinter
     if (paramObject == null) {
       return;
     }
-    int m;
     Object localObject1;
     int i;
-    String str;
-    Object localObject3;
     if ((paramObject instanceof MessageNano))
     {
-      m = paramStringBuffer1.length();
+      int m = paramStringBuffer1.length();
       if (paramString != null)
       {
-        paramStringBuffer2.append(paramStringBuffer1).append(deCamelCaseify(paramString)).append(" <\n");
+        paramStringBuffer2.append(paramStringBuffer1);
+        paramStringBuffer2.append(deCamelCaseify(paramString));
+        paramStringBuffer2.append(" <\n");
         paramStringBuffer1.append("  ");
       }
       localObject1 = paramObject.getClass();
       Object localObject2 = ((Class)localObject1).getFields();
       int n = localObject2.length;
       i = 0;
-      if (i < n)
+      String str;
+      Object localObject3;
+      while (i < n)
       {
         Object localObject4 = localObject2[i];
         j = localObject4.getModifiers();
         str = localObject4.getName();
-        if ("cachedSize".equals(str)) {}
-        for (;;)
+        if ((!"cachedSize".equals(str)) && ((j & 0x1) == 1) && ((j & 0x8) != 8) && (!str.startsWith("_")) && (!str.endsWith("_")))
         {
-          i += 1;
-          break;
-          if (((j & 0x1) == 1) && ((j & 0x8) != 8) && (!str.startsWith("_")) && (!str.endsWith("_")))
+          localObject3 = localObject4.getType();
+          localObject4 = localObject4.get(paramObject);
+          if (((Class)localObject3).isArray())
           {
-            localObject3 = localObject4.getType();
-            localObject4 = localObject4.get(paramObject);
-            if (((Class)localObject3).isArray())
+            if (((Class)localObject3).getComponentType() == Byte.TYPE)
             {
-              if (((Class)localObject3).getComponentType() == Byte.TYPE)
-              {
-                print(str, localObject4, paramStringBuffer1, paramStringBuffer2);
-              }
-              else
-              {
-                if (localObject4 == null) {}
-                for (j = 0;; j = Array.getLength(localObject4))
-                {
-                  int k = 0;
-                  while (k < j)
-                  {
-                    print(str, Array.get(localObject4, k), paramStringBuffer1, paramStringBuffer2);
-                    k += 1;
-                  }
-                  break;
-                }
-              }
-            }
-            else {
               print(str, localObject4, paramStringBuffer1, paramStringBuffer2);
             }
+            else
+            {
+              if (localObject4 == null) {
+                j = 0;
+              } else {
+                j = Array.getLength(localObject4);
+              }
+              int k = 0;
+              while (k < j)
+              {
+                print(str, Array.get(localObject4, k), paramStringBuffer1, paramStringBuffer2);
+                k += 1;
+              }
+            }
+          }
+          else {
+            print(str, localObject4, paramStringBuffer1, paramStringBuffer2);
           }
         }
+        i += 1;
       }
       localObject2 = ((Class)localObject1).getMethods();
       int j = localObject2.length;
       i = 0;
-      label277:
-      if (i < j)
+      while (i < j)
       {
         str = localObject2[i].getName();
         if (str.startsWith("set")) {
           str = str.substring(3);
         }
+        try
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("has");
+          ((StringBuilder)localObject3).append(str);
+          localObject3 = ((Class)localObject1).getMethod(((StringBuilder)localObject3).toString(), new Class[0]);
+          if (((Boolean)((Method)localObject3).invoke(paramObject, new Object[0])).booleanValue())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("get");
+            ((StringBuilder)localObject3).append(str);
+            localObject3 = ((Class)localObject1).getMethod(((StringBuilder)localObject3).toString(), new Class[0]);
+            print(str, ((Method)localObject3).invoke(paramObject, new Object[0]), paramStringBuffer1, paramStringBuffer2);
+          }
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
+          label437:
+          break label437;
+        }
+        i += 1;
+      }
+      if (paramString != null)
+      {
+        paramStringBuffer1.setLength(m);
+        paramStringBuffer2.append(paramStringBuffer1);
+        paramStringBuffer2.append(">\n");
       }
     }
-    for (;;)
+    else
     {
-      try
-      {
-        localObject3 = ((Class)localObject1).getMethod("has" + str, new Class[0]);
-        if (((Boolean)((Method)localObject3).invoke(paramObject, new Object[0])).booleanValue()) {
-          continue;
-        }
-      }
-      catch (NoSuchMethodException localNoSuchMethodException2)
-      {
-        continue;
-      }
-      i += 1;
-      break label277;
-      try
-      {
-        localObject3 = ((Class)localObject1).getMethod("get" + str, new Class[0]);
-        print(str, ((Method)localObject3).invoke(paramObject, new Object[0]), paramStringBuffer1, paramStringBuffer2);
-      }
-      catch (NoSuchMethodException localNoSuchMethodException1) {}
-      if (paramString == null) {
-        break;
-      }
-      paramStringBuffer1.setLength(m);
-      paramStringBuffer2.append(paramStringBuffer1).append(">\n");
-      return;
       if ((paramObject instanceof Map))
       {
         paramObject = (Map)paramObject;
         paramString = deCamelCaseify(paramString);
         paramObject = paramObject.entrySet().iterator();
-        if (paramObject.hasNext())
+        while (paramObject.hasNext())
         {
           localObject1 = (Map.Entry)paramObject.next();
-          paramStringBuffer2.append(paramStringBuffer1).append(paramString).append(" <\n");
+          paramStringBuffer2.append(paramStringBuffer1);
+          paramStringBuffer2.append(paramString);
+          paramStringBuffer2.append(" <\n");
           i = paramStringBuffer1.length();
           paramStringBuffer1.append("  ");
           print("key", ((Map.Entry)localObject1).getKey(), paramStringBuffer1, paramStringBuffer2);
           print("value", ((Map.Entry)localObject1).getValue(), paramStringBuffer1, paramStringBuffer2);
           paramStringBuffer1.setLength(i);
-          paramStringBuffer2.append(paramStringBuffer1).append(">\n");
-          continue;
+          paramStringBuffer2.append(paramStringBuffer1);
+          paramStringBuffer2.append(">\n");
         }
-        break;
       }
       paramString = deCamelCaseify(paramString);
-      paramStringBuffer2.append(paramStringBuffer1).append(paramString).append(": ");
+      paramStringBuffer2.append(paramStringBuffer1);
+      paramStringBuffer2.append(paramString);
+      paramStringBuffer2.append(": ");
       if ((paramObject instanceof String))
       {
         paramString = sanitizeString((String)paramObject);
-        paramStringBuffer2.append("\"").append(paramString).append("\"");
-        paramStringBuffer2.append("\n");
-        return;
+        paramStringBuffer2.append("\"");
+        paramStringBuffer2.append(paramString);
+        paramStringBuffer2.append("\"");
       }
-      if ((paramObject instanceof byte[])) {
+      else if ((paramObject instanceof byte[]))
+      {
         appendQuotedBytes((byte[])paramObject, paramStringBuffer2);
-      } else {
+      }
+      else
+      {
         paramStringBuffer2.append(paramObject);
       }
+      paramStringBuffer2.append("\n");
     }
   }
   
   private static String sanitizeString(String paramString)
   {
-    String str = paramString;
+    Object localObject = paramString;
     if (!paramString.startsWith("http"))
     {
-      str = paramString;
-      if (paramString.length() > 200) {
-        str = paramString.substring(0, 200) + "[...]";
+      localObject = paramString;
+      if (paramString.length() > 200)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString.substring(0, 200));
+        ((StringBuilder)localObject).append("[...]");
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    return escapeString(str);
+    return escapeString((String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.protobuf.nano.MessageNanoPrinter
  * JD-Core Version:    0.7.0.1
  */

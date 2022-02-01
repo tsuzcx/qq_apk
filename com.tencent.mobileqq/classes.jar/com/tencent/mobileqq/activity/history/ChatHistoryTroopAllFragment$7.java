@@ -8,7 +8,7 @@ class ChatHistoryTroopAllFragment$7
 {
   ChatHistoryTroopAllFragment$7(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void onTroopFileStatusUpdate(Object paramObject)
+  protected void a(Object paramObject)
   {
     if (this.a.a != null) {
       this.a.a.notifyDataSetChanged();
@@ -17,7 +17,7 @@ class ChatHistoryTroopAllFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment.7
  * JD-Core Version:    0.7.0.1
  */

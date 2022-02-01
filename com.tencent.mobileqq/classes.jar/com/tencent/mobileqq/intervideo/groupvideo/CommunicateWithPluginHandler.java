@@ -44,28 +44,28 @@ class CommunicateWithPluginHandler
   
   private void a(Intent paramIntent, List<OnOpenCloseRoomCallback> paramList)
   {
-    int i;
-    String str;
-    StringBuilder localStringBuilder;
     if (!paramList.isEmpty())
     {
-      i = paramIntent.getIntExtra("callback_return_code", 0);
-      str = paramIntent.getStringExtra("callback_return_message");
+      int i = paramIntent.getIntExtra("callback_return_code", 0);
+      String str = paramIntent.getStringExtra("callback_return_message");
       paramIntent = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramIntent.hasNext()) {
         ((OnOpenCloseRoomCallback)paramIntent.next()).a(i, str);
       }
-      localStringBuilder = new StringBuilder().append("receive ");
-      if (paramList != this.jdField_a_of_type_JavaUtilList) {
-        break label130;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("receive ");
+      if (paramList == this.jdField_a_of_type_JavaUtilList) {
+        paramIntent = "close";
+      } else {
+        paramIntent = "open";
       }
-    }
-    label130:
-    for (paramIntent = "close";; paramIntent = "open")
-    {
-      QLog.i("GroupVideoManager|Communicate", 2, paramIntent + " room message " + i + " " + str);
+      localStringBuilder.append(paramIntent);
+      localStringBuilder.append(" room message ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(str);
+      QLog.i("GroupVideoManager|Communicate", 2, localStringBuilder.toString());
       paramList.clear();
-      return;
     }
   }
   
@@ -134,7 +134,7 @@ class CommunicateWithPluginHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.CommunicateWithPluginHandler
  * JD-Core Version:    0.7.0.1
  */

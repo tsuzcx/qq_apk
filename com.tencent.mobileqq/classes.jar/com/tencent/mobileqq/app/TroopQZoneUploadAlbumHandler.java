@@ -14,6 +14,7 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -70,27 +71,32 @@ public class TroopQZoneUploadAlbumHandler
   
   private void b()
   {
-    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 1)) {}
-    do
+    if (this.jdField_a_of_type_Int != 2)
     {
-      return;
-      if (!this.jdField_b_of_type_Boolean) {
-        break;
+      if (this.jdField_a_of_type_Int == 1) {
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("UploadPhoto", 2, "TroopQZoneUploadAlbumHandler 已经被销毁，不能doBindService");
-    return;
-    this.jdField_a_of_type_Int = 1;
-    QZoneHelper.bindQzonePublishQueueService(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentServiceConnection);
+      if (this.jdField_b_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("UploadPhoto", 2, "TroopQZoneUploadAlbumHandler 已经被销毁，不能doBindService");
+        }
+        return;
+      }
+      this.jdField_a_of_type_Int = 1;
+      QZoneHelper.bindQzonePublishQueueService(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentServiceConnection);
+    }
   }
   
   private void b(int paramInt)
   {
     this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0) {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)
+    {
       a();
+      return;
     }
-    while (this.jdField_a_of_type_AndroidOsMessenger == null) {
+    if (this.jdField_a_of_type_AndroidOsMessenger == null) {
       return;
     }
     Message localMessage = Message.obtain(null, 999, paramInt, 0);
@@ -145,21 +151,21 @@ public class TroopQZoneUploadAlbumHandler
   void a(long paramLong, int paramInt1, int paramInt2)
   {
     int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
       Object localObject = (TroopQZoneUploadAlbumHandler.CallbackPack)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       View localView = ((TroopQZoneUploadAlbumHandler.CallbackPack)localObject).a();
       localObject = ((TroopQZoneUploadAlbumHandler.CallbackPack)localObject).a();
-      if ((localView != null) && (localObject != null)) {
+      if ((localView != null) && (localObject != null))
+      {
         ((TroopQZoneUploadAlbumHandler.Callback)localObject).a(localView, paramLong, paramInt1, paramInt2);
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         this.jdField_a_of_type_JavaUtilArrayList.remove(i);
         i -= 1;
       }
+      i += 1;
     }
   }
   
@@ -180,61 +186,63 @@ public class TroopQZoneUploadAlbumHandler
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, long paramLong, int paramInt2, int paramInt3)
   {
-    Object localObject1 = paramQQAppInterface.getMessageFacade().a(paramString, 1, paramLong);
-    if (localObject1 == null)
+    Object localObject2 = paramQQAppInterface.getMessageFacade().a(paramString, 1, paramLong);
+    if (localObject2 == null)
     {
       b(paramInt1);
       return;
     }
-    if (((MessageRecord)localObject1).msgtype == -2011)
+    String str = null;
+    Object localObject1 = str;
+    if (((MessageRecord)localObject2).msgtype == -2011)
     {
-      localObject2 = ((MessageForStructing)localObject1).structingMsg;
-      if (!(localObject2 instanceof StructMsgForGeneralShare)) {}
+      AbsStructMsg localAbsStructMsg = ((MessageForStructing)localObject2).structingMsg;
+      localObject1 = str;
+      if ((localAbsStructMsg instanceof StructMsgForGeneralShare)) {
+        localObject1 = (StructMsgForGeneralShare)localAbsStructMsg;
+      }
     }
-    for (Object localObject2 = (StructMsgForGeneralShare)localObject2;; localObject2 = null)
+    if ((localObject1 != null) && (((StructMsgForGeneralShare)localObject1).getProgress() >= 0))
     {
-      if ((localObject2 == null) || (((StructMsgForGeneralShare)localObject2).getProgress() < 0))
+      if ((paramInt2 == 1001) && (((MessageRecord)localObject2).extraflag != 32768))
       {
-        b(paramInt1);
+        ((StructMsgForGeneralShare)localObject1).setSummary(BaseApplication.getContext().getResources().getString(2131690840));
+        ((StructMsgForGeneralShare)localObject1).setProgress(paramInt3);
         return;
       }
-      if ((paramInt2 == 1001) && (((MessageRecord)localObject1).extraflag != 32768))
-      {
-        ((StructMsgForGeneralShare)localObject2).setSummary(BaseApplication.getContext().getResources().getString(2131690911));
-        ((StructMsgForGeneralShare)localObject2).setProgress(paramInt3);
-        return;
-      }
+      str = BaseApplication.getContext().getResources().getString(2131690841);
       paramInt1 = 32772;
-      localObject1 = BaseApplication.getContext().getResources().getString(2131690912);
-      if ((paramInt2 == 1000) || (paramInt2 == 1004))
+      if ((paramInt2 != 1000) && (paramInt2 != 1004))
       {
-        localObject1 = BaseApplication.getContext().getResources().getString(2131690912);
-        paramInt1 = 32772;
-      }
-      for (;;)
-      {
-        ((StructMsgForGeneralShare)localObject2).setProgress(100);
-        ((StructMsgForGeneralShare)localObject2).setSummary((String)localObject1);
-        ((StructMsgForGeneralShare)localObject2).mMsgBrief = (HardCodeUtil.a(2131715577) + (String)localObject1);
-        paramQQAppInterface.getMsgCache().a(paramString, 1, paramLong);
-        paramQQAppInterface.getMessageFacade().a(paramString, 1, paramLong, paramInt1, 0);
-        paramQQAppInterface.getMessageFacade().a(paramString, 1, paramLong, ((StructMsgForGeneralShare)localObject2).getBytes());
-        notifyUI(999, true, paramString);
-        return;
         if (paramInt2 == 1003)
         {
-          localObject1 = BaseApplication.getContext().getResources().getString(2131690910);
+          str = BaseApplication.getContext().getResources().getString(2131690839);
           paramInt1 = 32768;
         }
         else if (paramInt2 == 1005)
         {
-          localObject1 = BaseApplication.getContext().getResources().getString(2131690909);
+          str = BaseApplication.getContext().getResources().getString(2131690838);
+          ((StructMsgForGeneralShare)localObject1).mMsgActionData = "";
+          ((StructMsgForGeneralShare)localObject1).mMsg_A_ActionData = "";
           paramInt1 = 32770;
-          ((StructMsgForGeneralShare)localObject2).mMsgActionData = "";
-          ((StructMsgForGeneralShare)localObject2).mMsg_A_ActionData = "";
         }
       }
+      else {
+        str = BaseApplication.getContext().getResources().getString(2131690841);
+      }
+      ((StructMsgForGeneralShare)localObject1).setProgress(100);
+      ((StructMsgForGeneralShare)localObject1).setSummary(str);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131715501));
+      ((StringBuilder)localObject2).append(str);
+      ((StructMsgForGeneralShare)localObject1).mMsgBrief = ((StringBuilder)localObject2).toString();
+      paramQQAppInterface.getMsgCache().a(paramString, 1, paramLong);
+      paramQQAppInterface.getMessageFacade().a(paramString, 1, paramLong, paramInt1, 0);
+      paramQQAppInterface.getMessageFacade().a(paramString, 1, paramLong, ((StructMsgForGeneralShare)localObject1).getBytes());
+      notifyUI(999, true, paramString);
+      return;
     }
+    b(paramInt1);
   }
   
   public boolean a()
@@ -266,8 +274,9 @@ public class TroopQZoneUploadAlbumHandler
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {
-      this.jdField_a_of_type_AndroidOsHandlerThread.interrupt();
+    HandlerThread localHandlerThread = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if (localHandlerThread != null) {
+      localHandlerThread.interrupt();
     }
     a();
   }
@@ -276,7 +285,7 @@ public class TroopQZoneUploadAlbumHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler
  * JD-Core Version:    0.7.0.1
  */

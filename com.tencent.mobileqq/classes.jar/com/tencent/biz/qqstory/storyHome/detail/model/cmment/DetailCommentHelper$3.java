@@ -11,18 +11,19 @@ class DetailCommentHelper$3
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (!paramBoolean) {
+    if (!paramBoolean)
+    {
       this.a.b();
-    }
-    while (DetailCommentHelper.a(this.a)) {
       return;
     }
-    new Handler().postDelayed(new DetailCommentHelper.3.1(this), 200L);
+    if (!DetailCommentHelper.a(this.a)) {
+      new Handler().postDelayed(new DetailCommentHelper.3.1(this), 200L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper.3
  * JD-Core Version:    0.7.0.1
  */

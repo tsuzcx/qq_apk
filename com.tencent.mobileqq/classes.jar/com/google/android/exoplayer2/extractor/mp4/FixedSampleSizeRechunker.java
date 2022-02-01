@@ -8,53 +8,50 @@ final class FixedSampleSizeRechunker
   
   public static FixedSampleSizeRechunker.Results rechunk(int paramInt, long[] paramArrayOfLong, int[] paramArrayOfInt, long paramLong)
   {
-    int i2 = 8192 / paramInt;
-    int k = paramArrayOfInt.length;
+    int i1 = 8192 / paramInt;
+    int m = paramArrayOfInt.length;
+    int k = 0;
+    int i = 0;
     int j = 0;
-    for (int i = 0; j < k; i = m + i)
+    while (i < m)
     {
-      m = Util.ceilDivide(paramArrayOfInt[j], i2);
-      j += 1;
+      j += Util.ceilDivide(paramArrayOfInt[i], i1);
+      i += 1;
     }
-    long[] arrayOfLong1 = new long[i];
-    int[] arrayOfInt1 = new int[i];
-    long[] arrayOfLong2 = new long[i];
-    int[] arrayOfInt2 = new int[i];
-    int m = 0;
+    long[] arrayOfLong1 = new long[j];
+    int[] arrayOfInt1 = new int[j];
+    long[] arrayOfLong2 = new long[j];
+    int[] arrayOfInt2 = new int[j];
+    m = 0;
     j = 0;
-    k = 0;
-    i = 0;
-    while (m < paramArrayOfInt.length)
+    int n = 0;
+    i = k;
+    k = m;
+    while (i < paramArrayOfInt.length)
     {
-      int n = paramArrayOfInt[m];
-      long l = paramArrayOfLong[m];
-      int i1 = k;
-      k = j;
-      j = i1;
-      while (n > 0)
+      m = paramArrayOfInt[i];
+      long l = paramArrayOfLong[i];
+      while (m > 0)
       {
-        i1 = Math.min(i2, n);
-        arrayOfLong1[i] = l;
-        arrayOfInt1[i] = (paramInt * i1);
-        k = Math.max(k, arrayOfInt1[i]);
-        arrayOfLong2[i] = (j * paramLong);
-        arrayOfInt2[i] = 1;
-        l += arrayOfInt1[i];
-        i += 1;
-        n -= i1;
-        j += i1;
+        int i2 = Math.min(i1, m);
+        arrayOfLong1[j] = l;
+        arrayOfInt1[j] = (paramInt * i2);
+        n = Math.max(n, arrayOfInt1[j]);
+        arrayOfLong2[j] = (k * paramLong);
+        arrayOfInt2[j] = 1;
+        l += arrayOfInt1[j];
+        k += i2;
+        m -= i2;
+        j += 1;
       }
-      m += 1;
-      n = k;
-      k = j;
-      j = n;
+      i += 1;
     }
-    return new FixedSampleSizeRechunker.Results(arrayOfLong1, arrayOfInt1, j, arrayOfLong2, arrayOfInt2, k * paramLong, null);
+    return new FixedSampleSizeRechunker.Results(arrayOfLong1, arrayOfInt1, n, arrayOfLong2, arrayOfInt2, paramLong * k, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.FixedSampleSizeRechunker
  * JD-Core Version:    0.7.0.1
  */

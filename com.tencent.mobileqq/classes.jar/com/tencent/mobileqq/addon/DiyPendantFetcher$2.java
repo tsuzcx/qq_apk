@@ -20,8 +20,12 @@ class DiyPendantFetcher$2
     Object localObject2;
     if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DiyPendantFetcher", 2, "now query mUnCacheDiyId: " + TextUtils.join(",", this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet));
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("now query mUnCacheDiyId: ");
+        ((StringBuilder)localObject1).append(TextUtils.join(",", this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet));
+        QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject1).toString());
       }
       this.this$0.c(this.a);
       if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
@@ -52,7 +56,7 @@ class DiyPendantFetcher$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.2
  * JD-Core Version:    0.7.0.1
  */

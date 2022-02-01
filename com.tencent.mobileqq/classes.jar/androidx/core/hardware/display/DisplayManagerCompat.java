@@ -39,17 +39,13 @@ public final class DisplayManagerCompat
   @Nullable
   public Display getDisplay(int paramInt)
   {
-    Object localObject;
     if (Build.VERSION.SDK_INT >= 17) {
-      localObject = ((DisplayManager)this.mContext.getSystemService("display")).getDisplay(paramInt);
+      return ((DisplayManager)this.mContext.getSystemService("display")).getDisplay(paramInt);
     }
-    Display localDisplay;
-    do
-    {
-      return localObject;
-      localDisplay = ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay();
-      localObject = localDisplay;
-    } while (localDisplay.getDisplayId() == paramInt);
+    Display localDisplay = ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay();
+    if (localDisplay.getDisplayId() == paramInt) {
+      return localDisplay;
+    }
     return null;
   }
   
@@ -76,7 +72,7 @@ public final class DisplayManagerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.hardware.display.DisplayManagerCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -19,16 +19,17 @@ class NearbyProfileEditPanel$5
       this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setTag(Byte.valueOf((byte)(this.b + 1)));
       this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setText(NearbyProfileEditPanel.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel).getText(0, this.b));
     }
-    for (;;)
+    else
     {
-      if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
-      {
-        NearbyProfileEditPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h, false);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      }
-      return;
       this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setTag(Byte.valueOf((byte)(this.jdField_a_of_type_Int + 1)));
       this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.h.setText(NearbyProfileEditPanel.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel).getText(0, this.jdField_a_of_type_Int));
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if ((localObject != null) && (((ActionSheet)localObject).isShowing()))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel;
+      NearbyProfileEditPanel.a((NearbyProfileEditPanel)localObject, ((NearbyProfileEditPanel)localObject).h, false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
   }
   
@@ -39,7 +40,7 @@ class NearbyProfileEditPanel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.5
  * JD-Core Version:    0.7.0.1
  */

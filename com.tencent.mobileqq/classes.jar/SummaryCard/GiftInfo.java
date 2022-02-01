@@ -33,8 +33,9 @@ public final class GiftInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uOpenFlag, 0);
-    if (this.vGiftInfo != null) {
-      paramJceOutputStream.write(this.vGiftInfo, 1);
+    byte[] arrayOfByte = this.vGiftInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }

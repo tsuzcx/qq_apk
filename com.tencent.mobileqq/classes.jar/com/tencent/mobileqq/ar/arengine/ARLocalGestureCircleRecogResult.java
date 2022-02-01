@@ -28,12 +28,22 @@ public class ARLocalGestureCircleRecogResult
   
   public String toString()
   {
-    return "ARLocalGestureCircleRecogResult{recogType = " + this.b + ", frameIdx = " + this.jdField_a_of_type_Long + ", gestureResult = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARGestureResult + ", circleResult = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARLocalGestureCircleRecogResult{recogType = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", frameIdx = ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", gestureResult = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARGestureResult);
+    localStringBuilder.append(", circleResult = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult$ARCircleResult);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult
  * JD-Core Version:    0.7.0.1
  */

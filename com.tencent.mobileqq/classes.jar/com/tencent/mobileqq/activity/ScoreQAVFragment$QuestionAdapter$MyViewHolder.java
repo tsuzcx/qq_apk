@@ -18,28 +18,24 @@ class ScoreQAVFragment$QuestionAdapter$MyViewHolder
   {
     super(paramView);
     this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131375221));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374736));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener.a(paramView, getPosition());
+    ScoreQAVFragment.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
+    if (localOnItemClickListener != null) {
+      localOnItemClickListener.a(paramView, getPosition());
+    } else if (QLog.isColorLevel()) {
+      QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ScoreQAVFragment.QuestionAdapter.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

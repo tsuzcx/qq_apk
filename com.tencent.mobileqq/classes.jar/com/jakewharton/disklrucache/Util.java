@@ -23,28 +23,45 @@ public final class Util
     catch (RuntimeException paramCloseable)
     {
       throw paramCloseable;
+      return;
     }
     catch (Exception paramCloseable) {}
   }
   
   static void deleteContents(File paramFile)
   {
-    File[] arrayOfFile = paramFile.listFiles();
-    if (arrayOfFile == null) {
-      throw new IOException("not a readable directory: " + paramFile);
-    }
-    int j = arrayOfFile.length;
-    int i = 0;
-    while (i < j)
+    Object localObject = paramFile.listFiles();
+    if (localObject != null)
     {
-      paramFile = arrayOfFile[i];
-      if (paramFile.isDirectory()) {
-        deleteContents(paramFile);
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramFile = localObject[i];
+        if (paramFile.isDirectory()) {
+          deleteContents(paramFile);
+        }
+        if (paramFile.delete())
+        {
+          i += 1;
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("failed to delete file: ");
+          ((StringBuilder)localObject).append(paramFile);
+          throw new IOException(((StringBuilder)localObject).toString());
+        }
       }
-      if (!paramFile.delete()) {
-        throw new IOException("failed to delete file: " + paramFile);
-      }
-      i += 1;
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("not a readable directory: ");
+    ((StringBuilder)localObject).append(paramFile);
+    paramFile = new IOException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramFile;
     }
   }
   
@@ -52,7 +69,7 @@ public final class Util
   {
     try
     {
-      StringWriter localStringWriter = new StringWriter();
+      Object localObject1 = new StringWriter();
       char[] arrayOfChar = new char[1024];
       for (;;)
       {
@@ -60,22 +77,25 @@ public final class Util
         if (i == -1) {
           break;
         }
-        localStringWriter.write(arrayOfChar, 0, i);
+        ((StringWriter)localObject1).write(arrayOfChar, 0, i);
       }
-      str = localObject.toString();
+      localObject1 = ((StringWriter)localObject1).toString();
+      paramReader.close();
+      return localObject1;
     }
     finally
     {
       paramReader.close();
     }
-    String str;
-    paramReader.close();
-    return str;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.jakewharton.disklrucache.Util
  * JD-Core Version:    0.7.0.1
  */

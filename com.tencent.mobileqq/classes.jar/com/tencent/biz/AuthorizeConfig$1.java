@@ -28,18 +28,19 @@ class AuthorizeConfig$1
       AuthorizeConfig.jdField_b_of_type_Long = l;
       this.this$0.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.b();
       this.this$0.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a();
-      this.this$0.f = null;
-      this.this$0.jdField_b_of_type_OrgJsonJSONObject = null;
-      this.this$0.c = null;
-      this.this$0.jdField_a_of_type_OrgJsonJSONObject = null;
-      this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      AuthorizeConfig localAuthorizeConfig = this.this$0;
+      localAuthorizeConfig.f = null;
+      localAuthorizeConfig.jdField_b_of_type_OrgJsonJSONObject = null;
+      localAuthorizeConfig.c = null;
+      localAuthorizeConfig.jdField_a_of_type_OrgJsonJSONObject = null;
+      localAuthorizeConfig.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
       this.this$0.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfig.1
  * JD-Core Version:    0.7.0.1
  */

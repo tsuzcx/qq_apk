@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import android.support.v4.app.FragmentActivity;
 import android.widget.ImageView;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -18,7 +18,7 @@ class NearbyAuthVideoPlayerFragment$2$1
       NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a, NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a), false, false);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a.getActivity(), 1, HardCodeUtil.a(2131707121), 0).b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a.getActivity().getTitleBarHeight());
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a.getBaseActivity(), 1, HardCodeUtil.a(2131707146), 0).b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a.getBaseActivity().getTitleBarHeight());
     NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a).setVisibility(0);
     NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a).setVisibility(0);
     NearbyAuthVideoPlayerFragment.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment$2.a).setVisibility(8);
@@ -26,7 +26,7 @@ class NearbyAuthVideoPlayerFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

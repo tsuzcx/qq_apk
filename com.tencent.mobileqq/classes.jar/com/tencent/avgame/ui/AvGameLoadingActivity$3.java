@@ -2,8 +2,8 @@ package com.tencent.avgame.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.avgame.util.AVGameNodeReportUtil;
-import com.tencent.avgame.util.AVGameUtils;
+import com.tencent.avgame.report.AVGameNodeReportUtil;
+import com.tencent.avgame.util.AVGameUtil;
 import com.tencent.avgame.util.AvGameEntranceUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,14 @@ class AvGameLoadingActivity$3
   
   public void onClick(View paramView)
   {
-    QLog.e("AvGameManagerAvGameLoadingActivity", 2, "mExitBtn " + AvGameLoadingActivity.a(this.a) + " bExitEnable " + AvGameLoadingActivity.f(this.a) + "mExit" + AvGameLoadingActivity.b(this.a));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mExitBtn ");
+    localStringBuilder.append(AvGameLoadingActivity.a(this.a));
+    localStringBuilder.append(" bExitEnable ");
+    localStringBuilder.append(AvGameLoadingActivity.f(this.a));
+    localStringBuilder.append("mExit");
+    localStringBuilder.append(AvGameLoadingActivity.b(this.a));
+    QLog.e("AvGameLoadingActivity", 2, localStringBuilder.toString());
     if (AvGameLoadingActivity.b(this.a) != null)
     {
       long l = AvGameEntranceUtil.a(AvGameLoadingActivity.b(this.a));
@@ -24,24 +31,23 @@ class AvGameLoadingActivity$3
     }
     ReportController.b(null, "dc00898", "", "", "0X800B042", "0X800B042", 0, 0, "", "", "", "");
     if ((AvGameLoadingActivity.a(this.a) == 9) || (AvGameLoadingActivity.a(this.a) == 11) || (AvGameLoadingActivity.a(this.a) == 13)) {
-      ReportController.b(null, "dc00898", "", "", "0X800B4A0", "0X800B4A0", AVGameUtils.e(), 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B4A0", "0X800B4A0", AVGameUtil.e(), 0, "", "", "", "");
     }
     if (AvGameLoadingActivity.f(this.a))
     {
       AVGameNodeReportUtil.b(1);
       this.a.a();
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "mExitBtn click but not enabled");
+      QLog.e("AvGameLoadingActivity", 1, "mExitBtn click but not enabled");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AvGameLoadingActivity.3
  * JD-Core Version:    0.7.0.1
  */

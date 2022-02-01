@@ -2,10 +2,10 @@ package com.tencent.mobileqq.debug;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import kotlin.Metadata;
 
@@ -17,16 +17,16 @@ final class VasAdvDebugFragment$initView$$inlined$apply$lambda$2
   
   public final void onClick(View paramView)
   {
-    Intent localIntent = new Intent((Context)this.a.getActivity(), QQBrowserActivity.class);
+    Intent localIntent = new Intent((Context)this.a.getBaseActivity(), QQBrowserActivity.class);
     localIntent.putExtra("url", "https://imgcache.qq.com/club/mTools/webview.html");
     localIntent.putExtra("big_brother_source_key", "biz_src_gzh_weather");
-    this.a.getActivity().startActivity(localIntent);
+    this.a.getBaseActivity().startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.debug.VasAdvDebugFragment.initView..inlined.apply.lambda.2
  * JD-Core Version:    0.7.0.1
  */

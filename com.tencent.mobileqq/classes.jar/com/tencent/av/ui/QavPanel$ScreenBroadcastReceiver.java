@@ -11,25 +11,26 @@ class QavPanel$ScreenBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
+    if (paramIntent != null)
     {
-      do
-      {
+      if (paramIntent.getAction() == null) {
         return;
-        if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
-          break;
+      }
+      if ("android.intent.action.SCREEN_ON".equals(paramIntent.getAction()))
+      {
+        if ((this.a.a != null) && (this.a.b) && (this.a.a.getVisibility() == 0)) {
+          this.a.a.f();
         }
-      } while ((this.a.a == null) || (!this.a.b) || (this.a.a.getVisibility() != 0));
-      this.a.a.f();
-      return;
-    } while ((!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) || (this.a.a == null));
-    this.a.a.g();
+      }
+      else if (("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) && (this.a.a != null)) {
+        this.a.a.g();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavPanel.ScreenBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

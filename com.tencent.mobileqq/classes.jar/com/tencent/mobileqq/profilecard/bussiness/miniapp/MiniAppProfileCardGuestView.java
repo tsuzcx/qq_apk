@@ -44,8 +44,8 @@ public class MiniAppProfileCardGuestView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131561510, this, true);
-    this.mRecyclerView = ((RecyclerView)findViewById(2131367593));
+    this.mLayoutInflater.inflate(2131561351, this, true);
+    this.mRecyclerView = ((RecyclerView)findViewById(2131367351));
     this.mRecyclerView.setVisibility(0);
   }
   
@@ -58,9 +58,10 @@ public class MiniAppProfileCardGuestView
     }
     paramString1 = new MiniAppProfileCardGuestView.1(this, paramString1);
     setVisibility(0);
-    if (this.mRecyclerView != null)
+    RecyclerView localRecyclerView = this.mRecyclerView;
+    if (localRecyclerView != null)
     {
-      this.mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+      localRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
       this.adapter = new IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter(paramList, paramString2, paramString1);
       this.adapter.b(2062);
       this.mRecyclerView.setAdapter(this.adapter);
@@ -84,7 +85,7 @@ public class MiniAppProfileCardGuestView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.miniapp.MiniAppProfileCardGuestView
  * JD-Core Version:    0.7.0.1
  */

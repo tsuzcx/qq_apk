@@ -21,19 +21,16 @@ public class NewUpgradeDialog$YYBDownloadListener
   
   public void installSucceed(String paramString1, String paramString2)
   {
-    long l;
     if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
     {
-      l = System.currentTimeMillis();
-      if (l - this.b >= 1000L) {}
+      long l = System.currentTimeMillis();
+      if (l - this.b < 1000L) {
+        return;
+      }
+      this.b = l;
+      LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 3, 400));
+      AppCircleReportManager.a().a(22, STUtils.a(10010, NewUpgradeDialog.a(), 3, 400));
     }
-    else
-    {
-      return;
-    }
-    this.b = l;
-    LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 3, 400));
-    AppCircleReportManager.a().a(22, STUtils.a(10010, NewUpgradeDialog.a(), 3, 400));
   }
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
@@ -45,42 +42,40 @@ public class NewUpgradeDialog$YYBDownloadListener
   {
     if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
     {
-      LogUtility.c("NewUpgradeDialog", "onDownloadError state = " + paramInt2);
-      if ((paramDownloadInfo.f == 100) || (paramDownloadInfo.a() == 4)) {
-        onDownloadFinish(paramDownloadInfo);
+      paramString = new StringBuilder();
+      paramString.append("onDownloadError state = ");
+      paramString.append(paramInt2);
+      LogUtility.c("NewUpgradeDialog", paramString.toString());
+      if ((paramDownloadInfo.f != 100) && (paramDownloadInfo.a() != 4))
+      {
+        ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.4(this, paramDownloadInfo));
+        return;
       }
+      onDownloadFinish(paramDownloadInfo);
     }
-    else
-    {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.4(this, paramDownloadInfo));
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
     LogUtility.c("NewUpgradeDialog", "onDownloadFinish");
-    long l;
     if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
     {
-      l = System.currentTimeMillis();
-      if (l - this.jdField_a_of_type_Long >= 1000L) {}
+      long l = System.currentTimeMillis();
+      if (l - this.jdField_a_of_type_Long < 1000L) {
+        return;
+      }
+      this.jdField_a_of_type_Long = l;
+      LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 3, 700));
+      AppCircleReportManager.a().a(20, STUtils.a(10010, NewUpgradeDialog.a(), 3, 700));
+      ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.2(this, paramDownloadInfo));
+      if (NewUpgradeDialog.b(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog))
+      {
+        NewUpgradeDialog.b(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog);
+        LogUtility.c("NewUpgradeDialog", HardCodeUtil.a(2131707584));
+        return;
+      }
+      LogUtility.c("NewUpgradeDialog", HardCodeUtil.a(2131707592));
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 3, 700));
-    AppCircleReportManager.a().a(20, STUtils.a(10010, NewUpgradeDialog.a(), 3, 700));
-    ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.2(this, paramDownloadInfo));
-    if (NewUpgradeDialog.b(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog))
-    {
-      NewUpgradeDialog.b(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog);
-      LogUtility.c("NewUpgradeDialog", HardCodeUtil.a(2131707559));
-      return;
-    }
-    LogUtility.c("NewUpgradeDialog", HardCodeUtil.a(2131707567));
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
@@ -105,7 +100,10 @@ public class NewUpgradeDialog$YYBDownloadListener
         DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
         if (localDownloadInfo.c.equals("1101070898"))
         {
-          LogUtility.c("NewUpgradeDialog", "onDownloadUpdate STATE = " + localDownloadInfo.a());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onDownloadUpdate STATE = ");
+          localStringBuilder.append(localDownloadInfo.a());
+          LogUtility.c("NewUpgradeDialog", localStringBuilder.toString());
           ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.3(this, localDownloadInfo));
         }
       }
@@ -125,14 +123,15 @@ public class NewUpgradeDialog$YYBDownloadListener
   {
     if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
     {
-      NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog, new YYBDownloadListener(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog));
+      paramString1 = this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog;
+      NewUpgradeDialog.a(paramString1, new YYBDownloadListener(paramString1));
       ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.5(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.YYBDownloadListener
  * JD-Core Version:    0.7.0.1
  */

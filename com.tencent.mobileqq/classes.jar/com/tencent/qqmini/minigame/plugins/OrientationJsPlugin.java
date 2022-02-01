@@ -25,19 +25,16 @@ public class OrientationJsPlugin
       {
         QMLog.i("OrientationJsPlugin", "can detect orientation, start listening Orientation change");
         this.mOrientationListener.enable();
+        return;
       }
+      QMLog.i("OrientationJsPlugin", "can not detect orientation");
+      this.mOrientationListener.disable();
     }
-    else
-    {
-      return;
-    }
-    QMLog.i("OrientationJsPlugin", "can not detect orientation");
-    this.mOrientationListener.disable();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.OrientationJsPlugin
  * JD-Core Version:    0.7.0.1
  */

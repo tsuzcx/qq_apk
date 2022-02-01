@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.gamecenter.web.QQGameWebViewBuilder;
+import com.tencent.mobileqq.qqgamepub.web.QQGameWebViewBuilder;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class MiniGamePublicAccountWebViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountWebViewBuilder
  * JD-Core Version:    0.7.0.1
  */

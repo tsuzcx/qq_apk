@@ -46,21 +46,24 @@ public final class material_tab_get_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iCode, 0);
-    if (this.stTab != null) {
-      paramJceOutputStream.write(this.stTab, 1);
+    Object localObject = this.stTab;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.strAttachInfo != null) {
-      paramJceOutputStream.write(this.strAttachInfo, 2);
+    localObject = this.strAttachInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.iHasMore, 3);
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 4);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.material_tab_get_rsp
  * JD-Core Version:    0.7.0.1
  */

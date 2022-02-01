@@ -172,14 +172,61 @@ public class a
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("url:" + this.c).append(" carrier:" + this.d).append(" time:" + this.e).append(" statusCode:" + this.g).append(" errorCode:" + this.h).append(" byteSent:" + this.j).append(" bytesReceived:" + this.k).append(" appData:" + this.l).append(" formattedUrlParams:" + this.o).append(" requestMethodType:" + this.m).append(" cdnHeaderName :" + this.y).append("contentType : " + this.x);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("url:");
+    localStringBuilder2.append(this.c);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" carrier:");
+    localStringBuilder2.append(this.d);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" time:");
+    localStringBuilder2.append(this.e);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" statusCode:");
+    localStringBuilder2.append(this.g);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" errorCode:");
+    localStringBuilder2.append(this.h);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" byteSent:");
+    localStringBuilder2.append(this.j);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" bytesReceived:");
+    localStringBuilder2.append(this.k);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" appData:");
+    localStringBuilder2.append(this.l);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" formattedUrlParams:");
+    localStringBuilder2.append(this.o);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" requestMethodType:");
+    localStringBuilder2.append(this.m);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" cdnHeaderName :");
+    localStringBuilder2.append(this.y);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("contentType : ");
+    localStringBuilder2.append(this.x);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.a.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,46 +14,67 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vashealth.api.IQQHealthApi;
 import mqq.app.NewIntent;
 
 public class SearchProtocol
 {
-  public static int a = 0;
+  public static int a;
+  public static final String a = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).SP_LBS_UPDATE_TIME_STAMP();
+  public static final String b = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).SP_LBS_LATITUDE();
+  public static final String c = ((IQQHealthApi)QRoute.api(IQQHealthApi.class)).SP_LBS_LOGITUDE();
   
   public static void a(AppInterface paramAppInterface, Context paramContext, SearchProtocol.SearchObserver paramSearchObserver)
   {
-    if ((paramAppInterface == null) || (paramSearchObserver == null)) {
-      return;
-    }
-    paramContext = new SearchProtocol.1(Looper.getMainLooper(), paramSearchObserver);
-    if (HttpUtil.getNetWorkType() == 0)
+    if (paramAppInterface != null)
     {
-      paramAppInterface = paramContext.obtainMessage();
-      paramAppInterface.arg1 = -1;
-      paramContext.sendMessage(paramAppInterface);
-      return;
+      if (paramSearchObserver == null) {
+        return;
+      }
+      paramContext = new SearchProtocol.1(Looper.getMainLooper(), paramSearchObserver);
+      if (HttpUtil.getNetWorkType() == 0)
+      {
+        paramAppInterface = paramContext.obtainMessage();
+        paramAppInterface.arg1 = -1;
+        paramContext.sendMessage(paramAppInterface);
+        return;
+      }
+      paramSearchObserver = new NewIntent(paramAppInterface.getApp(), ProtoServlet.class);
+      paramSearchObserver.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
+      mobileqq_dynamic_search.RequestBody localRequestBody = new mobileqq_dynamic_search.RequestBody();
+      localRequestBody.cmd.set(1);
+      mobileqq_dynamic_search.RootSearcherRequest localRootSearcherRequest = new mobileqq_dynamic_search.RootSearcherRequest();
+      localRootSearcherRequest.business.set(128);
+      localRequestBody.search_request.set(localRootSearcherRequest);
+      localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+      paramSearchObserver.putExtra("data", localRequestBody.toByteArray());
+      paramSearchObserver.setObserver(new SearchProtocol.2(paramContext));
+      paramAppInterface.startServlet(paramSearchObserver);
     }
-    paramSearchObserver = new NewIntent(paramAppInterface.getApp(), ProtoServlet.class);
-    paramSearchObserver.putExtra("cmd", "PubAccountArticleCenter.GetSearchHotwords");
-    mobileqq_dynamic_search.RequestBody localRequestBody = new mobileqq_dynamic_search.RequestBody();
-    localRequestBody.cmd.set(1);
-    mobileqq_dynamic_search.RootSearcherRequest localRootSearcherRequest = new mobileqq_dynamic_search.RootSearcherRequest();
-    localRootSearcherRequest.business.set(128);
-    localRequestBody.search_request.set(localRootSearcherRequest);
-    localRequestBody.version.set(ByteStringMicro.copyFromUtf8("8.5.5"));
-    paramSearchObserver.putExtra("data", localRequestBody.toByteArray());
-    paramSearchObserver.setObserver(new SearchProtocol.2(paramContext));
-    paramAppInterface.startServlet(paramSearchObserver);
   }
   
   private static int b(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.startsWith("#")) || (paramString.length() > 9) || (paramString.length() < 6)) {
-      return 0;
+    boolean bool = TextUtils.isEmpty(paramString);
+    int j = 0;
+    int i = j;
+    if (!bool)
+    {
+      i = j;
+      if (paramString.startsWith("#"))
+      {
+        i = j;
+        if (paramString.length() <= 9) {
+          if (paramString.length() < 6) {
+            return 0;
+          }
+        }
+      }
     }
     try
     {
-      int i = Color.parseColor(paramString);
+      i = Color.parseColor(paramString);
       return i;
     }
     catch (Exception paramString) {}
@@ -62,7 +83,7 @@ public class SearchProtocol
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.lebasearch.SearchProtocol
  * JD-Core Version:    0.7.0.1
  */

@@ -20,61 +20,79 @@ final class SystemCaptureProxy$capture$1
   
   public final void invoke()
   {
-    if (SystemCaptureProxy.a(this.this$0)) {
-      TLog.b("SystemCaptureProxy", "capture return for released.");
-    }
-    label136:
-    Object localObject2;
-    label231:
-    do
+    if (SystemCaptureProxy.a(this.this$0))
     {
+      TLog.b("SystemCaptureProxy", "capture return for released.");
       return;
-      TLog.b("SystemCaptureProxy", "capture captureTask:" + this.$captureTask + "  useScaleAPI:" + SystemCaptureProxy.b(this.this$0));
-      for (Object localObject1 = (Bitmap)null;; localObject1 = localObject3)
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("capture captureTask: ");
+    ((StringBuilder)localObject).append(this.$captureTask);
+    ((StringBuilder)localObject).append(" useScaleAPI: ");
+    ((StringBuilder)localObject).append(SystemCaptureProxy.b(this.this$0));
+    TLog.b("SystemCaptureProxy", ((StringBuilder)localObject).toString());
+    localObject = (Bitmap)null;
+    int i;
+    if (SystemCaptureProxy.c(this.this$0)) {
+      i = 3;
+    } else {
+      i = 2;
+    }
+    try
+    {
+      try
       {
-        try
+        Bitmap localBitmap;
+        if ((SystemCaptureProxy.b(this.this$0)) && (Build.VERSION.SDK_INT >= 27))
         {
-          if ((!SystemCaptureProxy.b(this.this$0)) || (Build.VERSION.SDK_INT < 27)) {
-            break label136;
-          }
-          localObject3 = SystemCaptureProxy.a(this.this$0, SystemCaptureProxy.a(this.this$0), this.$captureTask);
-          localObject1 = localObject3;
+          localBitmap = SystemCaptureProxy.a(this.this$0, i, this.$captureTask);
+          localObject = localBitmap;
         }
-        catch (Error localError)
+        else
         {
-          for (;;)
-          {
-            Object localObject3;
-            SystemCaptureProxy.a(this.this$0, false);
-            localObject2 = SystemCaptureProxy.b(this.this$0, SystemCaptureProxy.a(this.this$0), this.$captureTask);
-          }
+          localBitmap = SystemCaptureProxy.b(this.this$0, i, this.$captureTask);
+          localObject = localBitmap;
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            TLog.d("SystemCaptureProxy", "capture failed for captureTask" + this.$captureTask + ", " + localException);
-          }
-          localObject2 = this.$captureCallback;
-        }
-        if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
-          break label231;
-        }
-        localObject3 = this.$captureCallback;
-        if (localObject3 == null) {
-          break;
-        }
-        ((CaptureTask.OnCaptureCallback)localObject3).a((Bitmap)localObject1, this.$captureTask);
-        return;
-        localObject3 = SystemCaptureProxy.b(this.this$0, SystemCaptureProxy.a(this.this$0), this.$captureTask);
       }
-    } while (localObject2 == null);
-    ((CaptureTask.OnCaptureCallback)localObject2).a();
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("capture failed for captureTask");
+        localStringBuilder.append(this.$captureTask);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(localException);
+        TLog.d("SystemCaptureProxy", localStringBuilder.toString());
+      }
+    }
+    catch (Error localError)
+    {
+      label202:
+      CaptureTask.OnCaptureCallback localOnCaptureCallback;
+      break label202;
+    }
+    SystemCaptureProxy.a(this.this$0, false);
+    localObject = SystemCaptureProxy.b(this.this$0, i, this.$captureTask);
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+    {
+      TLog.b("SystemCaptureProxy", "captureCallback.onCaptureSuccess");
+      localOnCaptureCallback = this.$captureCallback;
+      if (localOnCaptureCallback != null) {
+        localOnCaptureCallback.a((Bitmap)localObject, this.$captureTask);
+      }
+    }
+    else
+    {
+      TLog.b("SystemCaptureProxy", "captureCallback.onCaptureFailed");
+      localObject = this.$captureCallback;
+      if (localObject != null) {
+        ((CaptureTask.OnCaptureCallback)localObject).a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.SystemCaptureProxy.capture.1
  * JD-Core Version:    0.7.0.1
  */

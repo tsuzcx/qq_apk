@@ -16,26 +16,25 @@ class JsonConfig$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 1) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
-      }
-      this.a.a.clear();
-    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
     }
-    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+    }
+    this.a.a.clear();
+    if ((paramMessage.obj instanceof ConcurrentHashMap))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
+      }
+      this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.JsonConfig.1
  * JD-Core Version:    0.7.0.1
  */

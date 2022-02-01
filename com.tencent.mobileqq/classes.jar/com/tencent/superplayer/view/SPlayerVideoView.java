@@ -44,7 +44,10 @@ public class SPlayerVideoView
     this.mContext = paramContext.getApplicationContext();
     this.mIsUseTextureView = paramBoolean;
     this.mVideoViewId = sVideoViewIdCreater.getAndAdd(1);
-    this.mTAG = ("SPlayerVideoView-" + this.mVideoViewId);
+    paramContext = new StringBuilder();
+    paramContext.append("SPlayerVideoView-");
+    paramContext.append(this.mVideoViewId);
+    this.mTAG = paramContext.toString();
     if (Build.VERSION.SDK_INT < 14) {
       this.mIsUseTextureView = false;
     }
@@ -53,12 +56,13 @@ public class SPlayerVideoView
   
   private void callOnSurfaceChanged(Object paramObject, int paramInt1, int paramInt2)
   {
-    if (this.mVideoViewCallBackList != null)
+    Object localObject = this.mVideoViewCallBackList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mVideoViewCallBackList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        ISPlayerVideoView.IVideoViewCallBack localIVideoViewCallBack = (ISPlayerVideoView.IVideoViewCallBack)localIterator.next();
+        ISPlayerVideoView.IVideoViewCallBack localIVideoViewCallBack = (ISPlayerVideoView.IVideoViewCallBack)((Iterator)localObject).next();
         if (localIVideoViewCallBack != null) {
           localIVideoViewCallBack.onSurfaceChanged(paramObject);
         }
@@ -68,12 +72,13 @@ public class SPlayerVideoView
   
   private void callOnSurfaceCreate(Object paramObject)
   {
-    if (this.mVideoViewCallBackList != null)
+    Object localObject = this.mVideoViewCallBackList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mVideoViewCallBackList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        ISPlayerVideoView.IVideoViewCallBack localIVideoViewCallBack = (ISPlayerVideoView.IVideoViewCallBack)localIterator.next();
+        ISPlayerVideoView.IVideoViewCallBack localIVideoViewCallBack = (ISPlayerVideoView.IVideoViewCallBack)((Iterator)localObject).next();
         if (localIVideoViewCallBack != null) {
           localIVideoViewCallBack.onSurfaceCreated(paramObject);
         }
@@ -83,12 +88,13 @@ public class SPlayerVideoView
   
   private void callOnSurfaceDestroy(Object paramObject)
   {
-    if (this.mVideoViewCallBackList != null)
+    Object localObject = this.mVideoViewCallBackList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mVideoViewCallBackList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        ISPlayerVideoView.IVideoViewCallBack localIVideoViewCallBack = (ISPlayerVideoView.IVideoViewCallBack)localIterator.next();
+        ISPlayerVideoView.IVideoViewCallBack localIVideoViewCallBack = (ISPlayerVideoView.IVideoViewCallBack)((Iterator)localObject).next();
         if (localIVideoViewCallBack != null) {
           localIVideoViewCallBack.onSurfaceDestroy(paramObject);
         }
@@ -104,14 +110,20 @@ public class SPlayerVideoView
       if (this.mSurfaceObject.surfaceTexture == paramObject) {
         return;
       }
-      this.mSurfaceObject.surfaceTexture = paramObject;
-      this.mSurfaceObject.surface = new Surface(paramObject);
-      LogUtil.d(this.mTAG, "创建Surface实例，Surface=" + this.mSurfaceObject.surface);
+      localObject = this.mSurfaceObject;
+      ((SPlayerVideoView.SurfaceObject)localObject).surfaceTexture = paramObject;
+      ((SPlayerVideoView.SurfaceObject)localObject).surface = new Surface(paramObject);
+      paramObject = this.mTAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("创建Surface实例，Surface=");
+      ((StringBuilder)localObject).append(this.mSurfaceObject.surface);
+      LogUtil.d(paramObject, ((StringBuilder)localObject).toString());
       return;
     }
     paramObject = (SurfaceHolder)paramObject;
-    this.mSurfaceObject.surfaceTexture = null;
-    this.mSurfaceObject.surface = paramObject.getSurface();
+    Object localObject = this.mSurfaceObject;
+    ((SPlayerVideoView.SurfaceObject)localObject).surfaceTexture = null;
+    ((SPlayerVideoView.SurfaceObject)localObject).surface = paramObject.getSurface();
   }
   
   private void initViewAfterV4()
@@ -128,15 +140,15 @@ public class SPlayerVideoView
   
   public void addViewCallBack(ISPlayerVideoView.IVideoViewCallBack paramIVideoViewCallBack)
   {
-    if (paramIVideoViewCallBack == null) {}
-    do
-    {
+    if (paramIVideoViewCallBack == null) {
       return;
-      if (this.mVideoViewCallBackList == null) {
-        this.mVideoViewCallBackList = new CopyOnWriteArrayList();
-      }
-    } while (this.mVideoViewCallBackList.contains(paramIVideoViewCallBack));
-    this.mVideoViewCallBackList.add(paramIVideoViewCallBack);
+    }
+    if (this.mVideoViewCallBackList == null) {
+      this.mVideoViewCallBackList = new CopyOnWriteArrayList();
+    }
+    if (!this.mVideoViewCallBackList.contains(paramIVideoViewCallBack)) {
+      this.mVideoViewCallBackList.add(paramIVideoViewCallBack);
+    }
   }
   
   public void changeSurfaceObject(SPlayerVideoView.SurfaceObject paramSurfaceObject)
@@ -182,11 +194,13 @@ public class SPlayerVideoView
   public boolean enableViewCallback()
   {
     LogUtil.i(this.mTAG, "attach to new parent view");
-    if ((this.mDisPlayView != null) && ((this.mDisPlayView instanceof SPlayerTextureView)) && (this.mStoredSurfaceObject != null) && (((SPlayerTextureView)this.mDisPlayView).getSurfaceTexture() != this.mStoredSurfaceObject.surfaceTexture) && (Build.VERSION.SDK_INT >= 16)) {
+    ISPlayerViewBase localISPlayerViewBase = this.mDisPlayView;
+    if ((localISPlayerViewBase != null) && ((localISPlayerViewBase instanceof SPlayerTextureView)) && (this.mStoredSurfaceObject != null) && (((SPlayerTextureView)localISPlayerViewBase).getSurfaceTexture() != this.mStoredSurfaceObject.surfaceTexture) && (Build.VERSION.SDK_INT >= 16)) {
       ((SPlayerTextureView)this.mDisPlayView).setSurfaceTexture(this.mStoredSurfaceObject.surfaceTexture);
     }
-    if (this.mDisPlayView != null) {
-      this.mDisPlayView.setViewCallBack(this.mViewCallBack);
+    localISPlayerViewBase = this.mDisPlayView;
+    if (localISPlayerViewBase != null) {
+      localISPlayerViewBase.setViewCallBack(this.mViewCallBack);
     }
     this.mDetachingView.set(false);
     return true;
@@ -194,7 +208,12 @@ public class SPlayerVideoView
   
   public String getLogTag()
   {
-    return "SPlayerVideoView-" + this.mVideoViewId + "|SPlayerTextureView-" + this.mVideoViewId;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SPlayerVideoView-");
+    localStringBuilder.append(this.mVideoViewId);
+    localStringBuilder.append("|SPlayerTextureView-");
+    localStringBuilder.append(this.mVideoViewId);
+    return localStringBuilder.toString();
   }
   
   public View getRenderView()
@@ -204,18 +223,20 @@ public class SPlayerVideoView
   
   public int getRenderViewHeight()
   {
-    if (this.mDisPlayView == null) {
+    ISPlayerViewBase localISPlayerViewBase = this.mDisPlayView;
+    if (localISPlayerViewBase == null) {
       return 0;
     }
-    return ((View)this.mDisPlayView).getHeight();
+    return ((View)localISPlayerViewBase).getHeight();
   }
   
   public int getRenderViewWidth()
   {
-    if (this.mDisPlayView == null) {
+    ISPlayerViewBase localISPlayerViewBase = this.mDisPlayView;
+    if (localISPlayerViewBase == null) {
       return 0;
     }
-    return ((View)this.mDisPlayView).getWidth();
+    return ((View)localISPlayerViewBase).getWidth();
   }
   
   public SPlayerVideoView.SurfaceObject getStoredSurfaceObject()
@@ -243,38 +264,48 @@ public class SPlayerVideoView
   
   public void removeViewCallBack(ISPlayerVideoView.IVideoViewCallBack paramIVideoViewCallBack)
   {
-    if (this.mVideoViewCallBackList != null)
+    List localList = this.mVideoViewCallBackList;
+    if (localList != null)
     {
-      if (paramIVideoViewCallBack == null) {
-        this.mVideoViewCallBackList.clear();
+      if (paramIVideoViewCallBack == null)
+      {
+        localList.clear();
+        return;
       }
+      localList.remove(paramIVideoViewCallBack);
     }
-    else {
-      return;
-    }
-    this.mVideoViewCallBackList.remove(paramIVideoViewCallBack);
   }
   
   public void setDegree(int paramInt)
   {
-    if (this.mDisPlayView != null) {
-      this.mDisPlayView.setDegree(paramInt);
+    ISPlayerViewBase localISPlayerViewBase = this.mDisPlayView;
+    if (localISPlayerViewBase != null) {
+      localISPlayerViewBase.setDegree(paramInt);
     }
   }
   
   public void setFixedSize(int paramInt1, int paramInt2)
   {
-    LogUtil.i(this.mTAG, "setFixedSize, vW: " + paramInt1 + ", vH: " + paramInt2);
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return;
-    }
-    this.mDisPlayView.setVideoWidthAndHeight(paramInt1, paramInt2);
-    if (Looper.getMainLooper() == Looper.myLooper())
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setFixedSize, vW: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", vH: ");
+    localStringBuilder.append(paramInt2);
+    LogUtil.i(str, localStringBuilder.toString());
+    if (paramInt1 > 0)
     {
-      ((View)this.mDisPlayView).requestLayout();
-      return;
+      if (paramInt2 <= 0) {
+        return;
+      }
+      this.mDisPlayView.setVideoWidthAndHeight(paramInt1, paramInt2);
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
+        ((View)this.mDisPlayView).requestLayout();
+        return;
+      }
+      ThreadUtil.runOnUiThread(new SPlayerVideoView.3(this));
     }
-    ThreadUtil.runOnUiThread(new SPlayerVideoView.3(this));
   }
   
   public void setScaleParam(float paramFloat)
@@ -298,12 +329,16 @@ public class SPlayerVideoView
   
   public String toString()
   {
-    return "SuperPlayerVideoInfo[" + this.mTAG + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SuperPlayerVideoInfo[");
+    localStringBuilder.append(this.mTAG);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.view.SPlayerVideoView
  * JD-Core Version:    0.7.0.1
  */

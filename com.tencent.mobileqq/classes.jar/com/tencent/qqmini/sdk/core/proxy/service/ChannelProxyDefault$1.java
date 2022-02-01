@@ -26,11 +26,9 @@ class ChannelProxyDefault$1
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject1;
-    Object localObject2;
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      localObject1 = paramJSONObject.opt("authList");
+      Object localObject1 = paramJSONObject.opt("authList");
       if ((localObject1 instanceof byte[]))
       {
         paramJSONObject = new INTERFACE.StGetAuthListRsp();
@@ -38,6 +36,7 @@ class ChannelProxyDefault$1
         {
           paramJSONObject.mergeFrom((byte[])localObject1);
           localObject1 = paramJSONObject.auths.get().iterator();
+          Object localObject2;
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (INTERFACE.StUserAuthInfo)((Iterator)localObject1).next();
@@ -47,38 +46,39 @@ class ChannelProxyDefault$1
             localUserAuthInfo.authState = ((INTERFACE.StUserAuthInfo)localObject2).authState.get();
             localArrayList1.add(localUserAuthInfo);
           }
-          if (this.val$result == null) {
-            break label207;
+          paramJSONObject = paramJSONObject.settings.get().iterator();
+          while (paramJSONObject.hasNext())
+          {
+            localObject1 = (INTERFACE.StUserSettingInfo)paramJSONObject.next();
+            localObject2 = new UserSettingInfo();
+            ((UserSettingInfo)localObject2).settingItem = ((INTERFACE.StUserSettingInfo)localObject1).settingItem.get();
+            ((UserSettingInfo)localObject2).authState = ((INTERFACE.StUserSettingInfo)localObject1).authState.get();
+            ((UserSettingInfo)localObject2).desc = ((INTERFACE.StUserSettingInfo)localObject1).desc.get();
           }
+          if (this.val$result != null) {
+            this.val$result.onReceiveResult(true, localArrayList1, localArrayList2);
+          }
+          return;
         }
         catch (InvalidProtocolBufferMicroException paramJSONObject)
         {
-          QMLog.e("ChannelProxyDefault", "getSetting, InvalidProtocolBufferMicroException:" + paramJSONObject);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getSetting, InvalidProtocolBufferMicroException:");
+          ((StringBuilder)localObject1).append(paramJSONObject);
+          QMLog.e("ChannelProxyDefault", ((StringBuilder)localObject1).toString());
           paramJSONObject.printStackTrace();
         }
       }
     }
-    this.val$result.onReceiveResult(false, localArrayList1, localArrayList2);
-    label207:
-    do
-    {
-      return;
-      paramJSONObject = paramJSONObject.settings.get().iterator();
-      while (paramJSONObject.hasNext())
-      {
-        localObject1 = (INTERFACE.StUserSettingInfo)paramJSONObject.next();
-        localObject2 = new UserSettingInfo();
-        ((UserSettingInfo)localObject2).settingItem = ((INTERFACE.StUserSettingInfo)localObject1).settingItem.get();
-        ((UserSettingInfo)localObject2).authState = ((INTERFACE.StUserSettingInfo)localObject1).authState.get();
-        ((UserSettingInfo)localObject2).desc = ((INTERFACE.StUserSettingInfo)localObject1).desc.get();
-      }
-    } while (this.val$result == null);
-    this.val$result.onReceiveResult(true, localArrayList1, localArrayList2);
+    paramJSONObject = this.val$result;
+    if (paramJSONObject != null) {
+      paramJSONObject.onReceiveResult(false, localArrayList1, localArrayList2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault.1
  * JD-Core Version:    0.7.0.1
  */

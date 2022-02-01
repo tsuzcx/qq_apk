@@ -24,14 +24,15 @@ class AfterSyncMsg$6
     }
     catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQInitHandler", 2, "PreloadWebService", localThrowable);
+      if (QLog.isColorLevel()) {
+        QLog.e("QQInitHandler", 2, "PreloadWebService", localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.AfterSyncMsg.6
  * JD-Core Version:    0.7.0.1
  */

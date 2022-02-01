@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vas.avatar;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -17,8 +17,12 @@ public class VasFaceJsPlugin
   public void a(JSONObject paramJSONObject, String paramString)
   {
     int i = paramJSONObject.getInt("faceId");
-    if (QLog.isColorLevel()) {
-      QLog.i("VasFaceJsPlugin", 2, "setup " + paramJSONObject.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setup ");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.i("VasFaceJsPlugin", 2, localStringBuilder.toString());
     }
     paramJSONObject = new Bundle();
     paramJSONObject.clear();
@@ -26,88 +30,105 @@ public class VasFaceJsPlugin
     super.sendRemoteReq(DataFactory.a("face_setup", paramString, this.mOnRemoteResp.key, paramJSONObject), false, true);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("VasFaceJsPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
-    }
-    boolean bool1;
-    if ((paramString1 == null) || (!"face".equals(paramString2)) || (paramString3 == null)) {
-      bool1 = false;
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      for (;;)
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest, url=");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append(", pkgName=");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append(", methodName=");
+      paramJsBridgeListener.append(paramString3);
+      QLog.d("VasFaceJsPlugin", 2, paramJsBridgeListener.toString());
+    }
+    if ((paramString1 != null) && ("face".equals(paramString2)) && (paramString3 != null)) {
+      try
       {
-        return bool1;
-        try
-        {
-          paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-          bool1 = bool2;
-          if (paramJsBridgeListener != null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("VasFaceJsPlugin", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
-            }
-            paramString1 = paramJsBridgeListener.optString("callback");
-            if (!TextUtils.isEmpty(paramString1)) {
-              break label171;
-            }
-            QLog.e("VasFaceJsPlugin", 1, "callback id is null, so return");
-            return true;
-          }
+        paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
+        if (paramJsBridgeListener == null) {
+          return true;
         }
-        catch (Throwable paramJsBridgeListener)
+        if (QLog.isColorLevel())
         {
-          bool1 = bool2;
+          paramString1 = new StringBuilder();
+          paramString1.append("handleJsRequest JSON = ");
+          paramString1.append(paramJsBridgeListener.toString());
+          QLog.d("VasFaceJsPlugin", 2, paramString1.toString());
         }
+        paramString1 = paramJsBridgeListener.optString("callback");
+        if (TextUtils.isEmpty(paramString1))
+        {
+          QLog.e("VasFaceJsPlugin", 1, "callback id is null, so return");
+          return true;
+        }
+        if ("setup".equals(paramString3))
+        {
+          a(paramJsBridgeListener, paramString1);
+          return true;
+        }
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append(" unsupport method name ");
+        paramJsBridgeListener.append(paramString3);
+        throw new Exception(paramJsBridgeListener.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("VasFaceJsPlugin", 2, paramJsBridgeListener.getMessage());
-    return true;
-    label171:
-    if ("setup".equals(paramString3))
-    {
-      a(paramJsBridgeListener, paramString1);
-      return true;
+      catch (Throwable paramJsBridgeListener)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("VasFaceJsPlugin", 2, paramJsBridgeListener.getMessage());
+        }
+        return true;
+      }
     }
-    throw new Exception(" unsupport method name " + paramString3);
+    return false;
   }
   
-  public void onResponse(Bundle paramBundle)
+  protected void onResponse(Bundle paramBundle)
   {
-    Object localObject;
-    String str;
     if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key))
     {
-      localObject = paramBundle.getString("cmd");
-      str = paramBundle.getString("callbackid");
-      if (QLog.isColorLevel()) {
-        QLog.i("VasFaceJsPlugin", 2, "response:" + (String)localObject);
+      Object localObject = paramBundle.getString("cmd");
+      String str = paramBundle.getString("callbackid");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("response:");
+        localStringBuilder.append((String)localObject);
+        QLog.i("VasFaceJsPlugin", 2, localStringBuilder.toString());
       }
-      if (!"face_setup".equals(localObject)) {}
-    }
-    try
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("result", paramBundle.getInt("result"));
-      ((JSONObject)localObject).put("message", "ok");
-      if (QLog.isColorLevel()) {
-        QLog.i("VasFaceJsPlugin", 2, "setup result: " + ((JSONObject)localObject).toString());
+      if ("face_setup".equals(localObject)) {
+        try
+        {
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("result", paramBundle.getInt("result"));
+          ((JSONObject)localObject).put("message", "ok");
+          if (QLog.isColorLevel())
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("setup result: ");
+            paramBundle.append(((JSONObject)localObject).toString());
+            QLog.i("VasFaceJsPlugin", 2, paramBundle.toString());
+          }
+          paramBundle = new StringBuilder();
+          paramBundle.append(str);
+          paramBundle.append("(");
+          paramBundle.append(((JSONObject)localObject).toString());
+          paramBundle.append(");");
+          super.callJs(paramBundle.toString());
+          return;
+        }
+        catch (JSONException paramBundle)
+        {
+          QLog.e("VasFaceJsPlugin", 1, "", paramBundle);
+        }
       }
-      super.callJs(str + "(" + ((JSONObject)localObject).toString() + ");");
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.e("VasFaceJsPlugin", 1, "", paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasFaceJsPlugin
  * JD-Core Version:    0.7.0.1
  */

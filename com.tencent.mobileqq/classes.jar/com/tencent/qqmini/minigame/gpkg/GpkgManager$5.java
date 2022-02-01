@@ -11,20 +11,25 @@ final class GpkgManager$5
   
   public void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString, GpkgManager.Info paramInfo)
   {
-    if (paramInt == 0) {
-      if (this.val$listener != null) {
-        this.val$listener.onInitGpkgInfo(0, paramMiniGamePkg, null, paramInfo);
+    if (paramInt == 0)
+    {
+      paramString = this.val$listener;
+      if (paramString != null) {
+        paramString.onInitGpkgInfo(0, paramMiniGamePkg, null, paramInfo);
       }
     }
-    while (this.val$listener == null) {
-      return;
+    else
+    {
+      paramMiniGamePkg = this.val$listener;
+      if (paramMiniGamePkg != null) {
+        paramMiniGamePkg.onInitGpkgInfo(paramInt, null, paramString, paramInfo);
+      }
     }
-    this.val$listener.onInitGpkgInfo(paramInt, null, paramString, paramInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.GpkgManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -12,61 +12,71 @@ final class Debugger$1
   
   public void onResponse(int paramInt, String paramString)
   {
-    boolean bool1 = true;
-    Object localObject = "status=" + paramInt;
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("status=");
+    ((StringBuilder)localObject1).append(paramInt);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2;
+    if (!TextUtils.isEmpty(paramString))
     {
-      StringBuilder localStringBuilder;
+      Object localObject3 = null;
       try
       {
-        localObject = new JSONObject(paramString);
-        if (localObject == null)
-        {
-          paramString = "rsp=" + paramString;
-          Log.w("Debugger", "checkWhiteListFromRemote " + paramString);
-          return;
-        }
+        localObject1 = new JSONObject(paramString);
       }
       catch (Exception localException)
       {
         Log.e("Debugger", "checkWhiteListFromRemote error", localException);
-        localStringBuilder = null;
-        continue;
-        boolean bool2 = localStringBuilder.has("retcode");
-        paramInt = localStringBuilder.optInt("retcode");
-        if ((bool2) && (paramInt == 0))
-        {
-          if (localStringBuilder.has("is_white_uin"))
-          {
-            paramInt = localStringBuilder.optInt("is_white_uin");
-            paramString = this.val$moduleId;
-            if (paramInt == 1)
-            {
-              Debugger.access$000(paramString, bool1);
-              return;
-            }
-            bool1 = false;
-            continue;
-          }
-          paramString = "no has white";
-          continue;
-        }
-        localStringBuilder = new StringBuilder().append("retCode=");
-        if (!bool2) {}
+        localObject2 = null;
       }
-      for (paramString = Integer.valueOf(paramInt);; paramString = null)
+      if (localObject2 == null)
       {
-        paramString = paramString;
-        break;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("rsp=");
+        ((StringBuilder)localObject2).append(paramString);
+        localObject2 = ((StringBuilder)localObject2).toString();
       }
-      paramString = localStringBuilder;
+      else
+      {
+        boolean bool = ((JSONObject)localObject2).has("retcode");
+        paramInt = ((JSONObject)localObject2).optInt("retcode");
+        if ((bool) && (paramInt == 0))
+        {
+          if (((JSONObject)localObject2).has("is_white_uin"))
+          {
+            paramInt = ((JSONObject)localObject2).optInt("is_white_uin");
+            paramString = this.val$moduleId;
+            bool = true;
+            if (paramInt != 1) {
+              bool = false;
+            }
+            Debugger.access$000(paramString, bool);
+            return;
+          }
+          localObject2 = "no has white";
+        }
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("retCode=");
+          paramString = localObject3;
+          if (bool) {
+            paramString = Integer.valueOf(paramInt);
+          }
+          ((StringBuilder)localObject2).append(paramString);
+          localObject2 = ((StringBuilder)localObject2).toString();
+        }
+      }
     }
+    paramString = new StringBuilder();
+    paramString.append("checkWhiteListFromRemote ");
+    paramString.append((String)localObject2);
+    Log.w("Debugger", paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kwstudio.office.debug.Debugger.1
  * JD-Core Version:    0.7.0.1
  */

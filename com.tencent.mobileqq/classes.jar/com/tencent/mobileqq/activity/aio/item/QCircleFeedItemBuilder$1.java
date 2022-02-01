@@ -20,20 +20,18 @@ class QCircleFeedItemBuilder$1
   public void onClick(View paramView)
   {
     ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQCircleFeedItemBuilder.a.a, "0X800B27A", "0X800B27A", 0, 0, "", "", "", "");
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed.contentJumpUrl))) {
+    MessageForQCircleFeed localMessageForQCircleFeed = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed;
+    if ((localMessageForQCircleFeed != null) && (!TextUtils.isEmpty(localMessageForQCircleFeed.contentJumpUrl))) {
+      QCircleUtils.a().enterByScheme(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed.contentJumpUrl);
+    } else {
       QLog.e("QCircleFeedItemBuilder", 1, "getItemView onClick  circleFeed || contentJumpUrl == null");
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QCircleUtils.a().enterByScheme(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed.contentJumpUrl);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QCircleFeedItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

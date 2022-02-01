@@ -22,25 +22,38 @@ public abstract class BaseSearchEntryModel<T extends View>
   
   public static BaseSearchEntryModel a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    case 2: 
-    case 4: 
-    case 5: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseSearchEntryModel", 2, "createSearchEntryModel, modelType = " + paramInt1 + ", tabType = " + paramInt2);
+      if (paramInt1 != 1) {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 6)
+          {
+            if ((paramInt1 != 7) && (paramInt1 != 8))
+            {
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("createSearchEntryModel, modelType = ");
+                localStringBuilder.append(paramInt1);
+                localStringBuilder.append(", tabType = ");
+                localStringBuilder.append(paramInt2);
+                QLog.d("BaseSearchEntryModel", 2, localStringBuilder.toString());
+              }
+              return null;
+            }
+          }
+          else {
+            return new SearchWordHistoryEntryModel(paramInt2);
+          }
+        }
+        else {
+          return new BusinessSearchEntryModel(paramInt2, paramBoolean);
+        }
       }
-      return null;
-    case 0: 
-      return new HistorySearchEntryModel(paramInt2);
-    case 1: 
-    case 7: 
       return new HotWordSearchEntryModel(paramInt1, paramInt2, paramBoolean);
-    case 3: 
-      return new BusinessSearchEntryModel(paramInt2, paramBoolean);
     }
-    return new SearchWordHistoryEntryModel(paramInt2);
+    return new HistorySearchEntryModel(paramInt2);
   }
   
   public abstract T a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, Bundle paramBundle);
@@ -57,7 +70,7 @@ public abstract class BaseSearchEntryModel<T extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.BaseSearchEntryModel
  * JD-Core Version:    0.7.0.1
  */

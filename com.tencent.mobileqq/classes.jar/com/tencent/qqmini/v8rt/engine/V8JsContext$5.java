@@ -8,14 +8,15 @@ class V8JsContext$5
   public void run()
   {
     Engine.loadScriptStringWithCodeCache(V8JsContext.access$000(this.this$0).getId(), V8JsContext.access$100(this.this$0), this.val$jsStr, this.val$scriptName, this.val$codeCacheAbsolutePath);
-    if (this.val$callback != null) {
-      this.val$callback.onFinish(null);
+    Callback localCallback = this.val$callback;
+    if (localCallback != null) {
+      localCallback.onFinish(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.V8JsContext.5
  * JD-Core Version:    0.7.0.1
  */

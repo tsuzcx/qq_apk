@@ -39,14 +39,15 @@ public final class mobile_video_nag_feedback_req
   {
     paramJceOutputStream.write(this.loginUin, 0);
     paramJceOutputStream.write(this.feedsUin, 1);
-    if (this.vecNagFbInfo != null) {
-      paramJceOutputStream.write(this.vecNagFbInfo, 2);
+    ArrayList localArrayList = this.vecNagFbInfo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_DROPLIST.mobile_video_nag_feedback_req
  * JD-Core Version:    0.7.0.1
  */

@@ -4,56 +4,43 @@ import android.app.Activity;
 import android.content.Context;
 import com.huawei.hmf.tasks.Task;
 import com.huawei.hmf.tasks.TaskCompletionSource;
+import com.huawei.hms.aaid.constant.ErrorEnum;
 import com.huawei.hms.aaid.entity.TokenReq;
 import com.huawei.hms.aaid.entity.TokenResult;
 import com.huawei.hms.aaid.plugin.ProxyCenter;
 import com.huawei.hms.aaid.plugin.PushProxy;
+import com.huawei.hms.aaid.task.PushClientBuilder;
+import com.huawei.hms.aaid.utils.PushPreferences;
 import com.huawei.hms.api.Api;
 import com.huawei.hms.api.Api.ApiOptions.NoOptions;
 import com.huawei.hms.common.ApiException;
 import com.huawei.hms.common.HuaweiApi;
 import com.huawei.hms.common.internal.Preconditions;
-import com.huawei.hms.core.aidl.IMessageEntity;
-import com.huawei.hms.opendevice.a;
-import com.huawei.hms.opendevice.k;
-import com.huawei.hms.opendevice.m;
-import com.huawei.hms.opendevice.n;
-import com.huawei.hms.opendevice.p;
+import com.huawei.hms.opendevice.l;
+import com.huawei.hms.opendevice.o;
 import com.huawei.hms.opendevice.q;
 import com.huawei.hms.support.log.HMSLog;
-import com.huawei.hms.utils.JsonUtil;
+import java.util.UUID;
 
+@Deprecated
 public class HmsInstanceIdEx
 {
-  public static final String TAG = HmsInstanceIdEx.class.getSimpleName();
-  private static final byte[] a = new byte[0];
-  private Context b = null;
-  private q c = null;
-  private HuaweiApi<Api.ApiOptions.NoOptions> d;
+  public static final String TAG = "HmsInstanceIdEx";
+  public Context a = null;
+  public PushPreferences b = null;
+  public HuaweiApi<Api.ApiOptions.NoOptions> c;
   
-  private HmsInstanceIdEx(Context paramContext)
+  public HmsInstanceIdEx(Context paramContext)
   {
-    this.b = paramContext;
-    this.c = new q(paramContext, "aaid");
+    this.a = paramContext;
+    this.b = new PushPreferences(paramContext, "aaid");
     Api localApi = new Api("HuaweiPush.API");
-    if ((paramContext instanceof Activity)) {}
-    for (this.d = new HuaweiApi((Activity)paramContext, localApi, null, new m());; this.d = new HuaweiApi(paramContext, localApi, null, new m()))
-    {
-      this.d.setKitSdkVersion(50002300);
-      return;
+    if ((paramContext instanceof Activity)) {
+      this.c = new HuaweiApi((Activity)paramContext, localApi, null, new PushClientBuilder());
+    } else {
+      this.c = new HuaweiApi(paramContext, localApi, null, new PushClientBuilder());
     }
-  }
-  
-  private Task<TokenResult> a(Exception paramException)
-  {
-    TaskCompletionSource localTaskCompletionSource = new TaskCompletionSource();
-    localTaskCompletionSource.setException(paramException);
-    return localTaskCompletionSource.getTask();
-  }
-  
-  private String a(String paramString)
-  {
-    return "creationTime" + paramString;
+    this.c.setKitSdkVersion(50101300);
   }
   
   public static HmsInstanceIdEx getInstance(Context paramContext)
@@ -62,123 +49,150 @@ public class HmsInstanceIdEx
     return new HmsInstanceIdEx(paramContext);
   }
   
+  public final Task<TokenResult> a(Exception paramException)
+  {
+    TaskCompletionSource localTaskCompletionSource = new TaskCompletionSource();
+    localTaskCompletionSource.setException(paramException);
+    return localTaskCompletionSource.getTask();
+  }
+  
+  public final String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("creationTime");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
   public void deleteAAID(String paramString)
   {
-    if (paramString == null) {
-      throw a.a(a.v);
-    }
+    if (paramString != null) {}
     try
     {
-      if (this.c.d(paramString))
+      if (this.b.containsKey(paramString))
       {
-        this.c.e(paramString);
-        this.c.e(a(paramString));
+        this.b.removeKey(paramString);
+        this.b.removeKey(a(paramString));
       }
       return;
     }
     catch (RuntimeException paramString)
     {
-      throw a.a(a.w);
+      break label45;
     }
     catch (Exception paramString)
     {
-      throw a.a(a.w);
+      label38:
+      break label38;
     }
+    throw ErrorEnum.ERROR_INTERNAL_ERROR.toApiException();
+    label45:
+    throw ErrorEnum.ERROR_INTERNAL_ERROR.toApiException();
+    throw ErrorEnum.ERROR_ARGUMENTS_INVALID.toApiException();
   }
   
   public String getAAId(String paramString)
   {
-    if (paramString == null) {
-      throw a.a(a.v);
-    }
+    if (paramString != null) {}
     try
     {
-      if (this.c.d(paramString)) {
-        return this.c.b(paramString);
+      if (this.b.containsKey(paramString)) {
+        return this.b.getString(paramString);
       }
-      String str = n.a(this.b);
-      str = n.a(paramString + str);
-      this.c.a(paramString, str);
-      this.c.a(a(paramString), Long.valueOf(System.currentTimeMillis()));
+      String str = UUID.randomUUID().toString();
+      this.b.saveString(paramString, str);
+      this.b.saveLong(a(paramString), Long.valueOf(System.currentTimeMillis()));
       return str;
     }
     catch (RuntimeException paramString)
     {
-      throw a.a(a.w);
+      break label68;
     }
     catch (Exception paramString)
     {
-      throw a.a(a.w);
+      label61:
+      break label61;
     }
+    throw ErrorEnum.ERROR_INTERNAL_ERROR.toApiException();
+    label68:
+    throw ErrorEnum.ERROR_INTERNAL_ERROR.toApiException();
+    throw ErrorEnum.ERROR_ARGUMENTS_INVALID.toApiException();
   }
   
   public long getCreationTime(String paramString)
   {
-    if (paramString == null) {
-      throw a.a(a.v);
-    }
+    if (paramString != null) {}
     try
     {
-      if (!this.c.d(a(paramString))) {
+      if (!this.b.containsKey(a(paramString))) {
         getAAId(paramString);
       }
-      long l = this.c.c(a(paramString));
+      long l = this.b.getLong(a(paramString));
       return l;
     }
     catch (RuntimeException paramString)
     {
-      throw a.a(a.w);
+      break label47;
     }
     catch (Exception paramString)
     {
-      throw a.a(a.w);
+      label40:
+      break label40;
     }
+    throw ErrorEnum.ERROR_INTERNAL_ERROR.toApiException();
+    label47:
+    throw ErrorEnum.ERROR_INTERNAL_ERROR.toApiException();
+    throw ErrorEnum.ERROR_ARGUMENTS_INVALID.toApiException();
   }
   
   public Task<TokenResult> getToken()
   {
-    if (ProxyCenter.getInstance().getProxy() != null) {
-      try
-      {
-        HMSLog.i(TAG, "use proxy get token, please check HmsMessageService.onNewToken receive result.");
-        ProxyCenter.getInstance().getProxy().getToken(this.b);
-        Object localObject1 = new TaskCompletionSource();
-        ((TaskCompletionSource)localObject1).setResult(new TokenResult());
-        localObject1 = ((TaskCompletionSource)localObject1).getTask();
-        return localObject1;
-      }
-      catch (ApiException localApiException)
-      {
-        return a(localApiException);
-      }
-      catch (Exception localException1)
-      {
-        return a(a.a(a.w));
-      }
-    }
-    String str = p.a(this.b, "push.gettoken");
+    if (ProxyCenter.getProxy() != null) {}
     try
     {
-      Object localObject2 = n.a(null, null, this.b);
-      ((TokenReq)localObject2).setAaid(HmsInstanceId.getInstance(this.b).getId());
-      localObject2 = this.d.doWrite(new k("push.gettoken", JsonUtil.createJsonString((IMessageEntity)localObject2), this.b, str));
-      return localObject2;
+      Object localObject1 = TAG;
+      HMSLog.i((String)localObject1, "use proxy get token, please check HmsMessageService.onNewToken receive result.");
+      ProxyCenter.getProxy().getToken(this.a, null, null);
+      localObject1 = new TaskCompletionSource();
+      ((TaskCompletionSource)localObject1).setResult(new TokenResult());
+      localObject1 = ((TaskCompletionSource)localObject1).getTask();
+      return localObject1;
     }
-    catch (RuntimeException localRuntimeException)
+    catch (ApiException localApiException)
     {
-      p.a(this.b, "push.gettoken", str, a.w);
-      return a(a.a(a.w));
+      return a(localApiException);
+      String str = q.a(this.a, "push.gettoken");
+      try
+      {
+        Object localObject2 = o.b(this.a, null, null);
+        ((TokenReq)localObject2).setAaid(HmsInstanceId.getInstance(this.a).getId());
+        localObject2 = this.c.doWrite(new l("push.gettoken", (TokenReq)localObject2, this.a, str));
+        return localObject2;
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        break label157;
+      }
+      catch (Exception localException2)
+      {
+        break label133;
+      }
+      q.a(this.a, "push.gettoken", str, ErrorEnum.ERROR_INTERNAL_ERROR);
+      return a(ErrorEnum.ERROR_INTERNAL_ERROR.toApiException());
+      q.a(this.a, "push.gettoken", str, ErrorEnum.ERROR_INTERNAL_ERROR);
+      return a(ErrorEnum.ERROR_INTERNAL_ERROR.toApiException());
     }
-    catch (Exception localException2)
+    catch (Exception localException1)
     {
-      p.a(this.b, "push.gettoken", str, a.w);
+      label56:
+      break label56;
     }
-    return a(a.a(a.w));
+    return a(ErrorEnum.ERROR_INTERNAL_ERROR.toApiException());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.aaid.HmsInstanceIdEx
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class HuaweiApiManager$1
   
   public void run()
   {
-    HuaweiApiManager.a(this.c, this.a, this.b);
+    HuaweiApiManager.access$000(this.this$0, this.val$api, this.val$completionSource);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.HuaweiApiManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,15 @@ public class GetHotSortVideoHandler$GetVideoByHotSortEvent
   
   public String toString()
   {
-    return " GetVideoByHotSortEvent " + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" GetVideoByHotSortEvent ");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetVideoByHotSortEvent
  * JD-Core Version:    0.7.0.1
  */

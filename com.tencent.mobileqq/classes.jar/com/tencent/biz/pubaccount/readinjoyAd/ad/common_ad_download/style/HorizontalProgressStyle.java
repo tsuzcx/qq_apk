@@ -4,7 +4,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/HorizontalProgressStyle;", "", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "(Ljava/lang/String;I)V", "btnDrawableActiveColor", "", "getBtnDrawableActiveColor", "()Ljava/lang/String;", "setBtnDrawableActiveColor", "(Ljava/lang/String;)V", "btnDrawableActiveRadius", "", "getBtnDrawableActiveRadius", "()F", "setBtnDrawableActiveRadius", "(F)V", "btnDrawableNormalColor", "getBtnDrawableNormalColor", "setBtnDrawableNormalColor", "btnDrawableNormalRadius", "getBtnDrawableNormalRadius", "setBtnDrawableNormalRadius", "btnTextLength", "", "getBtnTextLength", "()I", "setBtnTextLength", "(I)V", "progressDrawable", "getProgressDrawable", "setProgressDrawable", "progressTextColor", "getProgressTextColor", "setProgressTextColor", "progressTextSize", "getProgressTextSize", "setProgressTextSize", "styleType", "getStyleType", "setStyleType", "VideoStyleNormal", "VideoStyleTikTok", "VideoCardStyleNormal", "VideoCardStyleTikTok", "FastWebGameStyle", "FastWebAppStyle", "DefaultHorizontalStyle", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/HorizontalProgressStyle;", "", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "(Ljava/lang/String;I)V", "btnDrawableActiveColor", "", "getBtnDrawableActiveColor", "()Ljava/lang/String;", "setBtnDrawableActiveColor", "(Ljava/lang/String;)V", "btnDrawableActiveRadius", "", "getBtnDrawableActiveRadius", "()F", "setBtnDrawableActiveRadius", "(F)V", "btnDrawableNormalColor", "getBtnDrawableNormalColor", "setBtnDrawableNormalColor", "btnDrawableNormalRadius", "getBtnDrawableNormalRadius", "setBtnDrawableNormalRadius", "btnTextLength", "", "getBtnTextLength", "()I", "setBtnTextLength", "(I)V", "progressDrawable", "getProgressDrawable", "setProgressDrawable", "progressTextColor", "getProgressTextColor", "setProgressTextColor", "progressTextSize", "getProgressTextSize", "setProgressTextSize", "styleType", "getStyleType", "setStyleType", "VideoStyleNormal", "VideoStyleTikTok", "VideoCardStyleNormal", "VideoCardStyleTikTok", "FastWebGameStyle", "FastWebAppStyle", "DefaultHorizontalStyle", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public enum HorizontalProgressStyle
   implements IDownloadStyle
 {
@@ -15,7 +15,7 @@ public enum HorizontalProgressStyle
   private String btnDrawableNormalColor = "#1AFFFFFF";
   private float btnDrawableNormalRadius;
   private int btnTextLength = 4;
-  private int progressDrawable = 2130842913;
+  private int progressDrawable = 2130842818;
   @NotNull
   private String progressTextColor = "#FFFFFF";
   private float progressTextSize = 14.0F;
@@ -140,7 +140,7 @@ public enum HorizontalProgressStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle
  * JD-Core Version:    0.7.0.1
  */

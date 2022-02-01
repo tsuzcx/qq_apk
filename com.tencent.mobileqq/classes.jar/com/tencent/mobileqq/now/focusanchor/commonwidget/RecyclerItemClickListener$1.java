@@ -11,22 +11,30 @@ class RecyclerItemClickListener$1
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if ((RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener) != null) && (this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener$OnItemClickListener != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener$OnItemClickListener.b(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener), RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener).getChildPosition(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener)));
+    if (RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener) != null)
+    {
+      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener$OnItemClickListener;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.b(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener), RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener).getChildPosition(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener)));
+      }
     }
   }
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if ((RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener) != null) && (this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener$OnItemClickListener != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener$OnItemClickListener.a(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener), RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener).getChildPosition(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener)));
+    if (RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener) != null)
+    {
+      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener$OnItemClickListener;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.a(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener), RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener).getChildPosition(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener)));
+      }
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.commonwidget.RecyclerItemClickListener.1
  * JD-Core Version:    0.7.0.1
  */

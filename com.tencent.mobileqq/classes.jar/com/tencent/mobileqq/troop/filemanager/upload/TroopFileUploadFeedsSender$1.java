@@ -17,41 +17,63 @@ class TroopFileUploadFeedsSender$1
   
   public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    if (!paramBoolean) {}
-    do
+    if (!paramBoolean) {
+      return;
+    }
+    paramString = paramBundle.getString("itemKey");
+    if (paramString == null) {
+      return;
+    }
+    paramString = UUID.fromString(paramString);
+    if (!paramString.equals(this.a.a())) {
+      return;
+    }
+    paramInt2 = TroopFileTransferUtil.Log.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("] onReqFeedsResult retCode:");
+    ((StringBuilder)localObject).append(paramInt1);
+    TroopFileTransferUtil.Log.c("TroopFileUploadFeedsSender", paramInt2, ((StringBuilder)localObject).toString());
+    paramBundle = paramBundle.getString("fileId");
+    localObject = TroopFileTransferUtil.a(this.a.jdField_a_of_type_Long);
+    if (localObject == null)
     {
-      do
-      {
-        do
-        {
-          return;
-          paramString = paramBundle.getString("itemKey");
-        } while (paramString == null);
-        paramString = UUID.fromString(paramString);
-      } while (!paramString.equals(this.a.a()));
-      TroopFileTransferUtil.Log.c("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult retCode:" + paramInt1);
-      paramBundle = paramBundle.getString("fileId");
-      TroopFileManager localTroopFileManager = TroopFileTransferUtil.a(this.a.e);
-      if (localTroopFileManager == null)
-      {
-        TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getTroopFileMgr()=null");
-        return;
-      }
-      paramString = localTroopFileManager.a(paramString);
-      if (paramString == null)
-      {
-        TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult getFileInfo()=null");
-        return;
-      }
-    } while (paramInt1 != 0);
-    TroopFileTransferUtil.Log.c("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFeedsResult refreshOneFile");
-    TroopFileProtocol.a(TroopFileTransferUtil.a(), this.a.e, paramString.a, paramString.b, this.a.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetOneFileInfoObserver);
-    ThreadManager.executeOnSubThread(new TroopFileUploadFeedsSender.1.1(this, paramBundle, paramString));
+      paramInt1 = TroopFileTransferUtil.Log.a;
+      paramString = new StringBuilder();
+      paramString.append("[");
+      paramString.append(this.a.jdField_a_of_type_JavaLangString);
+      paramString.append("] onReqFeedsResult getTroopFileMgr()=null");
+      TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", paramInt1, paramString.toString());
+      return;
+    }
+    paramString = ((TroopFileManager)localObject).a(paramString);
+    if (paramString == null)
+    {
+      paramInt1 = TroopFileTransferUtil.Log.a;
+      paramString = new StringBuilder();
+      paramString.append("[");
+      paramString.append(this.a.jdField_a_of_type_JavaLangString);
+      paramString.append("] onReqFeedsResult getFileInfo()=null");
+      TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", paramInt1, paramString.toString());
+      return;
+    }
+    if (paramInt1 == 0)
+    {
+      paramInt1 = TroopFileTransferUtil.Log.a;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] onReqFeedsResult refreshOneFile");
+      TroopFileTransferUtil.Log.c("TroopFileUploadFeedsSender", paramInt1, ((StringBuilder)localObject).toString());
+      TroopFileProtocol.a(TroopFileTransferUtil.a(), this.a.jdField_a_of_type_Long, paramString.a, paramString.b, this.a.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileGetOneFileInfoObserver);
+      ThreadManager.executeOnSubThread(new TroopFileUploadFeedsSender.1.1(this, paramBundle, paramString));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender.1
  * JD-Core Version:    0.7.0.1
  */

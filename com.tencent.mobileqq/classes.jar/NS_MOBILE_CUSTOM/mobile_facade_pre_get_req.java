@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,18 +45,20 @@ public final class mobile_facade_pre_get_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecReqUin != null) {
-      paramJceOutputStream.write(this.vecReqUin, 0);
+    Object localObject = this.vecReqUin;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.lLastFetchTimestamp, 1);
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 2);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.mobile_facade_pre_get_req
  * JD-Core Version:    0.7.0.1
  */

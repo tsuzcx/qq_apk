@@ -3,19 +3,19 @@ package com.huawei.hms.support.api.push;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.huawei.hms.push.a;
-import com.huawei.hms.push.aa;
-import com.huawei.hms.push.l;
+import com.huawei.hms.aaid.constant.ErrorEnum;
+import com.huawei.hms.push.h;
+import com.huawei.hms.push.v;
 import com.huawei.hms.support.log.HMSLog;
 import java.util.concurrent.RejectedExecutionException;
 
-class PushReceiver$b
+public class PushReceiver$b
   implements Runnable
 {
-  private Context a;
-  private Intent b;
+  public Context a;
+  public Intent b;
   
-  private PushReceiver$b(Context paramContext, Intent paramIntent)
+  public PushReceiver$b(Context paramContext, Intent paramIntent)
   {
     this.a = paramContext;
     this.b = paramIntent;
@@ -25,35 +25,49 @@ class PushReceiver$b
   {
     try
     {
-      byte[] arrayOfByte = this.b.getByteArrayExtra("device_token");
-      if ((arrayOfByte == null) || (arrayOfByte.length == 0))
+      Object localObject1 = this.b.getByteArrayExtra("device_token");
+      if ((localObject1 != null) && (localObject1.length != 0))
       {
-        HMSLog.i("PushReceiver", "get a deviceToken, but it is null or empty");
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("receive a push token: ");
+        ((StringBuilder)localObject2).append(this.a.getPackageName());
+        HMSLog.i("PushReceiver", ((StringBuilder)localObject2).toString());
+        localObject2 = new Intent("com.huawei.push.action.MESSAGING_EVENT");
+        ((Intent)localObject2).setPackage(this.b.getPackage());
+        Bundle localBundle = new Bundle();
+        localBundle.putString("message_type", "new_token");
+        localBundle.putString("device_token", v.a((byte[])localObject1));
+        localBundle.putString("transaction_id", this.b.getStringExtra("transaction_id"));
+        localBundle.putString("subjectId", this.b.getStringExtra("subjectId"));
+        localBundle.putInt("error", this.b.getIntExtra("error", ErrorEnum.SUCCESS.getInternalCode()));
+        localBundle.putString("belongId", this.b.getStringExtra("belongId"));
+        if (new h().a(this.a, localBundle, (Intent)localObject2)) {
+          break label258;
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("receive ");
+        ((StringBuilder)localObject1).append(this.b.getAction());
+        ((StringBuilder)localObject1).append(" and start service failed");
+        HMSLog.e("PushReceiver", ((StringBuilder)localObject1).toString());
         return;
       }
-      HMSLog.i("PushReceiver", "receive a push token: " + this.a.getPackageName());
-      Intent localIntent = new Intent("com.huawei.push.action.MESSAGING_EVENT");
-      localIntent.setPackage(this.b.getPackage());
-      Bundle localBundle = new Bundle();
-      localBundle.putString("message_type", "new_token");
-      localBundle.putString("device_token", aa.a(arrayOfByte));
-      localBundle.putString("transaction_id", this.b.getStringExtra("transaction_id"));
-      localBundle.putInt("error", this.b.getIntExtra("error", a.a.a()));
-      if (!new l().a(this.a, localBundle, localIntent))
-      {
-        HMSLog.e("PushReceiver", "receive " + this.b.getAction() + " and start service failed");
-        return;
-      }
+      HMSLog.i("PushReceiver", "get a deviceToken, but it is null or empty");
+      return;
     }
     catch (RejectedExecutionException localRejectedExecutionException)
     {
-      HMSLog.e("PushReceiver", "execute task error");
-      return;
+      label258:
+      break label251;
     }
     catch (Exception localException)
     {
-      HMSLog.e("PushReceiver", "handle push token error");
+      label243:
+      label251:
+      break label243;
     }
+    HMSLog.e("PushReceiver", "handle push token error");
+    return;
+    HMSLog.e("PushReceiver", "execute task error");
   }
 }
 

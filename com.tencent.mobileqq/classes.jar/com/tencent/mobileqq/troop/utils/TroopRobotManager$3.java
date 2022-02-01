@@ -1,26 +1,32 @@
 package com.tencent.mobileqq.troop.utils;
 
-import java.lang.ref.WeakReference;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.mtt.MttBrowerWrapper;
 
-class TroopRobotManager$3
-  implements Runnable
+final class TroopRobotManager$3
+  extends ClickableSpan
 {
-  TroopRobotManager$3(TroopRobotManager paramTroopRobotManager) {}
+  TroopRobotManager$3(String paramString, MessageRecord paramMessageRecord) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.this$0.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      TroopRobotManager.OnTalkingChangeListener localOnTalkingChangeListener = (TroopRobotManager.OnTalkingChangeListener)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localOnTalkingChangeListener != null) {
-        localOnTalkingChangeListener.a(this.this$0.d, this.this$0.b, this.this$0.jdField_a_of_type_Boolean);
-      }
-    }
+    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
+    MttBrowerWrapper.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRobotManager.3
  * JD-Core Version:    0.7.0.1
  */

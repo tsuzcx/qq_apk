@@ -10,20 +10,21 @@ class VideoShelfPlayView$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.this$0.start();
+      if (i != 2) {
+        return;
+      }
+      this.this$0.flush();
       return;
     }
-    this.this$0.flush();
+    this.this$0.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.ui.VideoShelfPlayView.1
  * JD-Core Version:    0.7.0.1
  */

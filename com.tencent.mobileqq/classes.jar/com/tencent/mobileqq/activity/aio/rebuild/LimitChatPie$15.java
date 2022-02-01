@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.Context;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.qqexpand.bean.chat.ExpandFriendData;
 
 class LimitChatPie$15
   implements Runnable
@@ -10,13 +10,12 @@ class LimitChatPie$15
   
   public void run()
   {
-    LimitChatPie.b(this.this$0, this.this$0.a.getString(2131698793));
-    this.this$0.f.setText(LimitChatPie.a(this.this$0));
+    ExpandFriendData.setAdvertiseDate(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.15
  * JD-Core Version:    0.7.0.1
  */

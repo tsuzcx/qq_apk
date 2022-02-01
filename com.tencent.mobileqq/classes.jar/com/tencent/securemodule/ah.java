@@ -32,6 +32,7 @@ public class ah
   
   private int a(UniPacket paramUniPacket1, UniPacket paramUniPacket2, boolean paramBoolean)
   {
+    int j = 0;
     int i;
     try
     {
@@ -43,27 +44,38 @@ public class ah
         return i;
       }
       localObject = new AtomicReference();
-      int j = paramUniPacket1.a(false, (AtomicReference)localObject);
-      i = j;
-      if (j == 0)
-      {
-        paramUniPacket1 = (byte[])((AtomicReference)localObject).get();
-        if ((paramUniPacket1 != null) && (paramUniPacket1.length > 0)) {
-          paramUniPacket2.decode(TccCryptor.decrypt(this.b, paramUniPacket1, null));
-        }
-        return 0;
+      i = paramUniPacket1.a(false, (AtomicReference)localObject);
+      if (i != 0) {
+        return i;
       }
-    }
-    catch (IllegalArgumentException paramUniPacket1)
-    {
-      ax.a("WupSession", "wup agrs error:" + paramUniPacket1.getMessage());
-      paramUniPacket1.printStackTrace();
-      return -6057;
+      paramUniPacket1 = (byte[])((AtomicReference)localObject).get();
+      i = j;
+      if (paramUniPacket1 != null)
+      {
+        i = j;
+        if (paramUniPacket1.length > 0)
+        {
+          paramUniPacket2.decode(TccCryptor.decrypt(this.b, paramUniPacket1, null));
+          return 0;
+        }
+      }
     }
     catch (Exception paramUniPacket1)
     {
-      i = -6000;
-      ax.a("WupSession", "wup error:" + paramUniPacket1.getMessage());
+      paramUniPacket2 = new StringBuilder();
+      paramUniPacket2.append("wup error:");
+      paramUniPacket2.append(paramUniPacket1.getMessage());
+      ax.a("WupSession", paramUniPacket2.toString());
+      paramUniPacket1.printStackTrace();
+      return -6000;
+    }
+    catch (IllegalArgumentException paramUniPacket1)
+    {
+      i = -6057;
+      paramUniPacket2 = new StringBuilder();
+      paramUniPacket2.append("wup agrs error:");
+      paramUniPacket2.append(paramUniPacket1.getMessage());
+      ax.a("WupSession", paramUniPacket2.toString());
       paramUniPacket1.printStackTrace();
     }
     return i;
@@ -137,17 +149,16 @@ public class ah
     UniPacket localUniPacket2 = new UniPacket(true);
     UniPacket localUniPacket1 = new UniPacket(true);
     int i = a(3, localUniPacket2, localUniPacket1);
-    if (i != 0) {}
-    int j;
-    do
-    {
+    if (i != 0) {
       return i;
-      localUniPacket2.put("phonetype", this.c.a());
-      localUniPacket2.put("userinfo", this.c.c());
-      localUniPacket2.put("vecCloudFeature", paramArrayList);
-      j = a(localUniPacket2, localUniPacket1, false);
-      i = j;
-    } while (j != 0);
+    }
+    localUniPacket2.put("phonetype", this.c.a());
+    localUniPacket2.put("userinfo", this.c.c());
+    localUniPacket2.put("vecCloudFeature", paramArrayList);
+    i = a(localUniPacket2, localUniPacket1, false);
+    if (i != 0) {
+      return i;
+    }
     paramArrayList = new ArrayList();
     paramArrayList.add(new f());
     paramArrayList = (ArrayList)localUniPacket1.getByClass("vecCloudResult", paramArrayList);
@@ -164,17 +175,16 @@ public class ah
     UniPacket localUniPacket1 = new UniPacket(true);
     UniPacket localUniPacket2 = new UniPacket(true);
     int i = a(1, localUniPacket1, localUniPacket2);
-    if (i != 0) {}
-    int j;
-    do
-    {
+    if (i != 0) {
       return i;
-      localUniPacket1.put("phonetype", this.c.a());
-      localUniPacket1.put("userinfo", this.c.c());
-      localUniPacket1.put("vecclient", paramList);
-      j = a(localUniPacket1, localUniPacket2, false);
-      i = j;
-    } while (j != 0);
+    }
+    localUniPacket1.put("phonetype", this.c.a());
+    localUniPacket1.put("userinfo", this.c.c());
+    localUniPacket1.put("vecclient", paramList);
+    i = a(localUniPacket1, localUniPacket2, false);
+    if (i != 0) {
+      return i;
+    }
     paramList = (q)localUniPacket2.getByClass("cmdinfo", new q());
     if (paramList != null) {
       paramAtomicReference.set(paramList);
@@ -187,17 +197,16 @@ public class ah
     UniPacket localUniPacket2 = new UniPacket(true);
     UniPacket localUniPacket1 = new UniPacket(true);
     int i = a(4, localUniPacket2, localUniPacket1);
-    if (i != 0) {}
-    int j;
-    do
-    {
+    if (i != 0) {
       return i;
-      localUniPacket2.put("phonetype", this.c.a());
-      localUniPacket2.put("userinfo", this.c.c());
-      localUniPacket2.put("vecDetailCloudFeature", paramArrayList);
-      j = a(localUniPacket2, localUniPacket1, false);
-      i = j;
-    } while (j != 0);
+    }
+    localUniPacket2.put("phonetype", this.c.a());
+    localUniPacket2.put("userinfo", this.c.c());
+    localUniPacket2.put("vecDetailCloudFeature", paramArrayList);
+    i = a(localUniPacket2, localUniPacket1, false);
+    if (i != 0) {
+      return i;
+    }
     paramArrayList = new ArrayList();
     paramArrayList.add(new f());
     paramArrayList = (ArrayList)localUniPacket1.getByClass("vecCloudResult", paramArrayList);
@@ -211,7 +220,7 @@ public class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.ah
  * JD-Core Version:    0.7.0.1
  */

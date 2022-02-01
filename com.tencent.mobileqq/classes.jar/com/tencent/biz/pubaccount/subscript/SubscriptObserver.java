@@ -13,42 +13,33 @@ public class SubscriptObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      if (paramObject != null) {
-        try
-        {
-          a(paramBoolean, (ArrayList)paramObject);
-          return;
-        }
-        catch (Exception paramObject)
-        {
-          return;
-        }
+      if (paramInt != 2) {
+        return;
       }
-      a(false, new ArrayList(0));
+      if (paramObject == null) {}
+    }
+    try
+    {
+      a(paramBoolean, (ArrayList)paramObject);
       return;
     }
-    if (paramObject != null) {
-      try
-      {
-        a(paramBoolean, (ArrayList)paramObject);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        return;
-      }
+    catch (Exception paramObject) {}
+    a(false, new ArrayList(0));
+    return;
+    if (paramObject != null)
+    {
+      a(paramBoolean, (ArrayList)paramObject);
+      return;
     }
     a(false, new ArrayList(0));
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptObserver
  * JD-Core Version:    0.7.0.1
  */

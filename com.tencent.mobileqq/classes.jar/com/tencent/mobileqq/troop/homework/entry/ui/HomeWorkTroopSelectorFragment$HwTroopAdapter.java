@@ -45,12 +45,13 @@ class HomeWorkTroopSelectorFragment$HwTroopAdapter
         paramList = (TroopInfo)paramActivity.next();
         if (paramList != null)
         {
-          if ((paramList1 != null) && (paramList1.contains(paramList.troopuin))) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.jdField_a_of_type_JavaUtilList.add(new HomeWorkTroopSelectorFragment.MyPair(paramList, Boolean.valueOf(bool)));
-            break;
+          boolean bool;
+          if ((paramList1 != null) && (paramList1.contains(paramList.troopuin))) {
+            bool = true;
+          } else {
+            bool = false;
           }
+          this.jdField_a_of_type_JavaUtilList.add(new HomeWorkTroopSelectorFragment.MyPair(paramList, Boolean.valueOf(bool)));
         }
       }
     }
@@ -75,35 +76,20 @@ class HomeWorkTroopSelectorFragment$HwTroopAdapter
   {
     HomeWorkTroopSelectorFragment.MyPair localMyPair = (HomeWorkTroopSelectorFragment.MyPair)getItem(paramInt);
     HomeWorkTroopSelectorFragment.HwTroopAdapter.ViewHolder localViewHolder;
-    Object localObject1;
     if (paramView != null)
     {
       localViewHolder = (HomeWorkTroopSelectorFragment.HwTroopAdapter.ViewHolder)paramView.getTag();
-      paramView.setOnClickListener(null);
-      localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(null);
-      localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(((Boolean)localMyPair.b).booleanValue());
-      localObject1 = localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (((TroopInfo)localMyPair.a).troopuin.equals(this.jdField_a_of_type_JavaLangString)) {
-        break label485;
-      }
     }
-    label485:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      ((CheckBox)localObject1).setEnabled(bool);
-      localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new HomeWorkTroopSelectorFragment.HwTroopAdapter.1(this, localMyPair));
-      paramView.setOnClickListener(new HomeWorkTroopSelectorFragment.HwTroopAdapter.2(this, localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localMyPair.a).troopname);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
       localViewHolder = new HomeWorkTroopSelectorFragment.HwTroopAdapter.ViewHolder();
       paramView = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
       paramView.setMinimumHeight(ScreenUtil.dip2px(48.0F));
       paramView.setOrientation(0);
       paramView.setGravity(16);
       localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(this.jdField_a_of_type_AndroidAppActivity);
-      localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130839219);
-      localObject1 = new LinearLayout.LayoutParams(-2, -2);
+      localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130839072);
+      Object localObject1 = new LinearLayout.LayoutParams(-2, -2);
       ((LinearLayout.LayoutParams)localObject1).setMargins(ScreenUtil.dip2px(12.0F), 0, 0, 0);
       localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
@@ -127,13 +113,21 @@ class HomeWorkTroopSelectorFragment$HwTroopAdapter
       paramView.addView((View)localObject1);
       paramView.setClickable(true);
       paramView.setTag(localViewHolder);
-      break;
     }
+    paramView.setOnClickListener(null);
+    localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(null);
+    localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(((Boolean)localMyPair.b).booleanValue());
+    localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true ^ ((TroopInfo)localMyPair.a).troopuin.equals(this.jdField_a_of_type_JavaLangString));
+    localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new HomeWorkTroopSelectorFragment.HwTroopAdapter.1(this, localMyPair));
+    paramView.setOnClickListener(new HomeWorkTroopSelectorFragment.HwTroopAdapter.2(this, localViewHolder.jdField_a_of_type_AndroidWidgetCheckBox));
+    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localMyPair.a).troopname);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment.HwTroopAdapter
  * JD-Core Version:    0.7.0.1
  */

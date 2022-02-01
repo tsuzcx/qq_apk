@@ -6,11 +6,13 @@ import com.tencent.mobileqq.config.business.tendoc.TencentDocImportFileInfoBean;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocImportFileInfoProcessor;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.util.IClickListenerVer51;
 import com.tencent.mobileqq.filemanager.util.IReportVer51;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.TencentDocConfig;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,33 +45,39 @@ public class QfileRecentDocFileTabView
   
   private String a(String paramString)
   {
-    if (paramString == null) {}
-    do
+    if (paramString == null) {
+      return null;
+    }
+    paramString = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExtension(paramString).toLowerCase();
+    if (paramString != null)
     {
-      do
+      if (paramString.length() == 0) {
+        return null;
+      }
+      if (QQFileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity))
       {
-        do
-        {
-          return null;
-          paramString = FileUtil.a(paramString).toLowerCase();
-        } while ((paramString == null) || (paramString.length() == 0));
-        if (!FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity)) {
-          break;
-        }
         paramString = b(paramString);
-      } while (TextUtils.isEmpty(paramString));
-      return paramString;
-      if (".doc|.docx|.wps|.pages|".indexOf(paramString) >= 0) {
-        return "WORD";
+        if (!TextUtils.isEmpty(paramString)) {
+          return paramString;
+        }
       }
-      if (".ppt|.pptx.|.dps|.keynote|".indexOf(paramString) >= 0) {
-        return "PPT";
+      else
+      {
+        if (".doc|.docx|.wps|.pages|".indexOf(paramString) >= 0) {
+          return "WORD";
+        }
+        if (".ppt|.pptx.|.dps|.keynote|".indexOf(paramString) >= 0) {
+          return "PPT";
+        }
+        if (".xls|.xlsx|.et|.numbers|".indexOf(paramString) >= 0) {
+          return "EXCEL";
+        }
+        if (".pdf|".indexOf(paramString) >= 0) {
+          return "PDF";
+        }
       }
-      if (".xls|.xlsx|.et|.numbers|".indexOf(paramString) >= 0) {
-        return "EXCEL";
-      }
-    } while (".pdf|".indexOf(paramString) < 0);
-    return "PDF";
+    }
+    return null;
   }
   
   private List<String> a()
@@ -78,11 +86,12 @@ public class QfileRecentDocFileTabView
     if (this.jdField_a_of_type_JavaUtilHashMap == null) {
       o();
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add((String)localIterator.next());
+      localObject = ((HashMap)localObject).keySet().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add((String)((Iterator)localObject).next());
       }
     }
     return localArrayList;
@@ -93,12 +102,13 @@ public class QfileRecentDocFileTabView
     if (this.jdField_a_of_type_JavaUtilHashMap == null) {
       o();
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = ((HashMap)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
         String str = (String)localEntry.getValue();
         if ((!TextUtils.isEmpty(str)) && (str.indexOf(paramString) >= 0)) {
           return (String)localEntry.getKey();
@@ -112,12 +122,13 @@ public class QfileRecentDocFileTabView
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().H();
+    } else {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().M();
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListenerVer51 != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListenerVer51 != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListenerVer51);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().M();
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListenerVer51 = new QfileRecentDocFileTabView.1(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListenerVer51);
@@ -129,7 +140,7 @@ public class QfileRecentDocFileTabView
     {
       String str = TencentDocImportFileInfoProcessor.a().d();
       if (!TextUtils.isEmpty(str)) {
-        this.jdField_a_of_type_JavaUtilHashMap = FileManagerUtil.a(str);
+        this.jdField_a_of_type_JavaUtilHashMap = TencentDocConfig.a(str);
       }
       if (this.jdField_a_of_type_JavaUtilHashMap == null) {
         this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -163,7 +174,7 @@ public class QfileRecentDocFileTabView
     localLinkedHashMap.put("PDF", new ArrayList());
     localLinkedHashMap.put("PPT", new ArrayList());
     Object localObject2;
-    if (FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity))
+    if (QQFileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity))
     {
       localObject1 = a();
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
@@ -205,17 +216,18 @@ public class QfileRecentDocFileTabView
   
   public void b(FileManagerEntity paramFileManagerEntity)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramFileManagerEntity)) {
-      if ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString.trim().length() == 0) || (this.jdField_b_of_type_JavaLangString.equals(paramFileManagerEntity.peerUin))) {}
-    }
-    String str;
-    do
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramFileManagerEntity))
     {
-      return;
+      if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.trim().length() != 0) && (!this.jdField_b_of_type_JavaLangString.equals(paramFileManagerEntity.peerUin))) {
+        return;
+      }
       this.jdField_a_of_type_JavaUtilList.add(paramFileManagerEntity);
       Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
-      str = a(paramFileManagerEntity.fileName);
-    } while (str == null);
+    }
+    String str = a(paramFileManagerEntity.fileName);
+    if (str == null) {
+      return;
+    }
     a(new QfileRecentDocFileTabView.2(this, str, paramFileManagerEntity));
   }
   
@@ -238,14 +250,19 @@ public class QfileRecentDocFileTabView
       i();
       return true;
     }
+    for (;;)
+    {
+      throw paramFileManagerEntity;
+    }
   }
   
   public void c(ArrayList<FileManagerEntity> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    for (;;)
+    if (paramArrayList != null)
     {
-      return;
+      if (paramArrayList.size() == 0) {
+        return;
+      }
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext()) {
         b((FileManagerEntity)paramArrayList.next());
@@ -269,7 +286,7 @@ public class QfileRecentDocFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView
  * JD-Core Version:    0.7.0.1
  */

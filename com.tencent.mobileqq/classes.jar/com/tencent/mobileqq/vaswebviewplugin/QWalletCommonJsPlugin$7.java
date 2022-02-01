@@ -16,7 +16,8 @@ class QWalletCommonJsPlugin$7
       QLog.d("QWalletCommonJsPlugin", 1, "CheckPermission user denied");
     }
     DialogUtil.a(this.this$0.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
-    this.this$0.callJs(QWalletCommonJsPlugin.access$200(this.this$0), new String[] { "{'result':-1, 'msg': 'no permission to read contact number'}" });
+    paramArrayOfString = this.this$0;
+    paramArrayOfString.callJs(QWalletCommonJsPlugin.access$200(paramArrayOfString), new String[] { "{'result':-1, 'msg': 'no permission to read contact number'}" });
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -29,7 +30,7 @@ class QWalletCommonJsPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

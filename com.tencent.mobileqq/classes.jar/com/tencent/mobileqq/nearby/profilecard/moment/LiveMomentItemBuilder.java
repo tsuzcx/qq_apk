@@ -18,8 +18,9 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.profilecard.moment.data.LiveMomentFeedInfo;
 import com.tencent.mobileqq.nearby.profilecard.moment.data.MomentFeedInfo;
-import com.tencent.mobileqq.nearby.report.ODReportTask;
+import com.tencent.mobileqq.nearby.report.IODReportTask;
 import com.tencent.mobileqq.now.utils.UrlUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.NearbyImgDownloader;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.mobileqq.util.DisplayUtil;
@@ -47,7 +48,7 @@ public class LiveMomentItemBuilder
     }
     String str = UrlUtil.a(paramLiveMomentFeedInfo.m, "roomid");
     paramLiveMomentFeedInfo = UrlUtil.a(paramLiveMomentFeedInfo.m, "anchor");
-    new ODReportTask().b("personal_page").c("view").a("res6", this.jdField_a_of_type_Int).a("roomid", str).a("anchor", paramLiveMomentFeedInfo).a("reporttime", System.currentTimeMillis()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).a();
+    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("personal_page").setAction("view").addKeyValue("res6", this.jdField_a_of_type_Int).addKeyValue("roomid", str).addKeyValue("anchor", paramLiveMomentFeedInfo).addKeyValue("reporttime", System.currentTimeMillis()).setUin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).report();
     this.b = true;
   }
   
@@ -59,10 +60,10 @@ public class LiveMomentItemBuilder
   public View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (LiveMomentItemBuilder.LiveViewHolder)paramMomentViewHolder;
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561382, paramViewGroup, false);
-    paramMomentViewHolder.g = ((TextView)paramViewGroup.findViewById(2131380639));
-    paramMomentViewHolder.e = ((ImageView)paramViewGroup.findViewById(2131369628));
-    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131370533));
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561221, paramViewGroup, false);
+    paramMomentViewHolder.g = ((TextView)paramViewGroup.findViewById(2131379920));
+    paramMomentViewHolder.e = ((ImageView)paramViewGroup.findViewById(2131369331));
+    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131370192));
     return paramViewGroup;
   }
   
@@ -78,69 +79,74 @@ public class LiveMomentItemBuilder
   
   public void d(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
-    if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, HardCodeUtil.a(2131706228), 0).a();
-    }
-    do
+    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
     {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, HardCodeUtil.a(2131706279), 0).a();
       return;
-      JumpAction localJumpAction = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramMomentViewHolder.a.m);
-      if (localJumpAction != null) {
-        localJumpAction.a();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("LiveMomentItemBuilder", 2, "handleContentClick, liveUrl=" + paramMomentViewHolder.a.m);
+    }
+    Object localObject = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramMomentViewHolder.a.m);
+    if (localObject != null) {
+      ((JumpAction)localObject).a();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleContentClick, liveUrl=");
+      ((StringBuilder)localObject).append(paramMomentViewHolder.a.m);
+      QLog.i("LiveMomentItemBuilder", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public void f(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
-    paramMomentViewHolder = (LiveMomentItemBuilder.LiveViewHolder)paramMomentViewHolder;
-    LiveMomentFeedInfo localLiveMomentFeedInfo = (LiveMomentFeedInfo)paramMomentViewHolder.a;
-    paramMomentViewHolder.g.setMovementMethod(LinkMovementMethod.getInstance());
-    if (!TextUtils.isEmpty(localLiveMomentFeedInfo.n))
+    Object localObject1 = (LiveMomentItemBuilder.LiveViewHolder)paramMomentViewHolder;
+    paramMomentViewHolder = (LiveMomentFeedInfo)((LiveMomentItemBuilder.LiveViewHolder)localObject1).a;
+    ((LiveMomentItemBuilder.LiveViewHolder)localObject1).g.setMovementMethod(LinkMovementMethod.getInstance());
+    if (!TextUtils.isEmpty(paramMomentViewHolder.n))
     {
-      paramMomentViewHolder.g.setVisibility(0);
-      paramMomentViewHolder.g.setText(localLiveMomentFeedInfo.n);
+      ((LiveMomentItemBuilder.LiveViewHolder)localObject1).g.setVisibility(0);
+      ((LiveMomentItemBuilder.LiveViewHolder)localObject1).g.setText(paramMomentViewHolder.n);
     }
-    for (;;)
+    else
     {
-      Object localObject2 = (String)paramMomentViewHolder.e.getTag(2131378926);
-      Object localObject1 = localLiveMomentFeedInfo.a;
-      if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1)) {}
+      ((LiveMomentItemBuilder.LiveViewHolder)localObject1).g.setVisibility(8);
+    }
+    Object localObject3 = (String)((LiveMomentItemBuilder.LiveViewHolder)localObject1).e.getTag(2131378314);
+    Object localObject2 = paramMomentViewHolder.a;
+    if (!TextUtils.equals((CharSequence)localObject3, (CharSequence)localObject2)) {
       try
       {
-        localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845777);
-        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845777);
-        localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-        ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.b(UIUtils.a(BaseApplicationImpl.getContext(), 180.0F), UIUtils.a(BaseApplicationImpl.getContext(), 180.0F), DisplayUtil.a(paramMomentViewHolder.e.getContext(), 4.0F)));
-        ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.c);
-        paramMomentViewHolder.e.setImageDrawable((Drawable)localObject1);
-        localObject1 = NearbyImgDownloader.convertURL("https://pub.idqqimg.com/pc/misc/files/20171219/4ed0e5a61d2f4024ac6886ee826ac51c.gif");
-        localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
-        localObject1 = URLDrawable.getDrawable((URL)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-        paramMomentViewHolder.f.setImageDrawable((Drawable)localObject1);
-        a(localLiveMomentFeedInfo);
-        return;
-        paramMomentViewHolder.g.setVisibility(8);
+        localObject3 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845650);
+        ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845650);
+        localObject2 = URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
+        ((URLDrawable)localObject2).setTag(URLDrawableDecodeHandler.b(UIUtils.a(BaseApplicationImpl.getContext(), 180.0F), UIUtils.a(BaseApplicationImpl.getContext(), 180.0F), DisplayUtil.a(((LiveMomentItemBuilder.LiveViewHolder)localObject1).e.getContext(), 4.0F)));
+        ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.c);
+        ((LiveMomentItemBuilder.LiveViewHolder)localObject1).e.setImageDrawable((Drawable)localObject2);
+        localObject2 = NearbyImgDownloader.convertURL("https://pub.idqqimg.com/pc/misc/files/20171219/4ed0e5a61d2f4024ac6886ee826ac51c.gif");
+        localObject3 = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
+        localObject2 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
+        ((LiveMomentItemBuilder.LiveViewHolder)localObject1).f.setImageDrawable((Drawable)localObject2);
       }
       catch (Exception localException)
       {
-        for (;;)
+        ((LiveMomentItemBuilder.LiveViewHolder)localObject1).e.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845650));
+        if (QLog.isColorLevel())
         {
-          paramMomentViewHolder.e.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845777));
-          if (QLog.isColorLevel()) {
-            QLog.i("LiveMomentItemBuilder", 2, "convertURL, e=" + localException.toString(), localException);
-          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("convertURL, e=");
+          ((StringBuilder)localObject1).append(localException.toString());
+          QLog.i("LiveMomentItemBuilder", 2, ((StringBuilder)localObject1).toString(), localException);
         }
       }
     }
+    a(paramMomentViewHolder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.LiveMomentItemBuilder
  * JD-Core Version:    0.7.0.1
  */

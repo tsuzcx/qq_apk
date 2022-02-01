@@ -16,13 +16,15 @@ final class c$1
     }
     catch (InterruptedException localInterruptedException)
     {
-      Thread.currentThread().interrupt();
+      label17:
+      break label17;
     }
+    Thread.currentThread().interrupt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.c.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,11 +37,19 @@ public final class PanelController
   @NotNull
   private ArrayList<String> d = new ArrayList();
   @NotNull
-  private ArrayList<Boolean> e = CollectionsKt.arrayListOf(new Boolean[] { Boolean.valueOf(true), Boolean.valueOf(true) });
+  private ArrayList<Boolean> e;
+  
+  public PanelController()
+  {
+    Boolean localBoolean = Boolean.valueOf(true);
+    this.e = CollectionsKt.arrayListOf(new Boolean[] { localBoolean, localBoolean });
+  }
   
   private final void a(int paramInt, PanelType paramPanelType, boolean paramBoolean)
   {
-    if (paramInt != this.jdField_a_of_type_Int) {
+    Object localObject1;
+    if (paramInt != this.jdField_a_of_type_Int)
+    {
       if (!a(paramPanelType))
       {
         paramPanelType = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
@@ -52,31 +60,31 @@ public final class PanelController
           paramPanelType = (Unit)paramPanelType.invoke(localObject1);
         }
       }
-    }
-    do
-    {
-      do
+      else
       {
-        int i;
-        do
+        int i = this.jdField_a_of_type_Int;
+        a(paramInt);
+        paramPanelType = this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
+        if (paramPanelType != null)
         {
-          return;
-          i = this.jdField_a_of_type_Int;
-          a(paramInt);
-          paramPanelType = this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
-        } while (paramPanelType == null);
-        localObject1 = this.jdField_b_of_type_JavaUtilArrayList.get(i);
-        Intrinsics.checkExpressionValueIsNotNull(localObject1, "panelTypeList[lastPanelIndex]");
-        Object localObject2 = this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
-        Intrinsics.checkExpressionValueIsNotNull(localObject2, "panelTypeList[index]");
-        paramPanelType = (Unit)paramPanelType.invoke(localObject1, localObject2);
-        return;
-      } while (!paramBoolean);
+          localObject1 = this.jdField_b_of_type_JavaUtilArrayList.get(i);
+          Intrinsics.checkExpressionValueIsNotNull(localObject1, "panelTypeList[lastPanelIndex]");
+          Object localObject2 = this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+          Intrinsics.checkExpressionValueIsNotNull(localObject2, "panelTypeList[index]");
+          paramPanelType = (Unit)paramPanelType.invoke(localObject1, localObject2);
+        }
+      }
+    }
+    else if (paramBoolean)
+    {
       paramPanelType = this.jdField_b_of_type_KotlinJvmFunctionsFunction1;
-    } while (paramPanelType == null);
-    Object localObject1 = this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
-    Intrinsics.checkExpressionValueIsNotNull(localObject1, "panelTypeList[index]");
-    paramPanelType = (Unit)paramPanelType.invoke(localObject1);
+      if (paramPanelType != null)
+      {
+        localObject1 = this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+        Intrinsics.checkExpressionValueIsNotNull(localObject1, "panelTypeList[index]");
+        paramPanelType = (Unit)paramPanelType.invoke(localObject1);
+      }
+    }
   }
   
   private final void a(View paramView)
@@ -119,17 +127,18 @@ public final class PanelController
   
   private final boolean a(PanelType paramPanelType)
   {
-    switch (PanelController.WhenMappings.a[paramPanelType.ordinal()])
+    int i = PanelController.WhenMappings.a[paramPanelType.ordinal()];
+    if (i != 1)
     {
-    default: 
-      return true;
-    case 1: 
-      paramPanelType = this.e.get(0);
-      Intrinsics.checkExpressionValueIsNotNull(paramPanelType, "panelEnableList[0]");
+      if (i != 2) {
+        return true;
+      }
+      paramPanelType = this.e.get(1);
+      Intrinsics.checkExpressionValueIsNotNull(paramPanelType, "panelEnableList[1]");
       return ((Boolean)paramPanelType).booleanValue();
     }
-    paramPanelType = this.e.get(1);
-    Intrinsics.checkExpressionValueIsNotNull(paramPanelType, "panelEnableList[1]");
+    paramPanelType = this.e.get(0);
+    Intrinsics.checkExpressionValueIsNotNull(paramPanelType, "panelEnableList[0]");
     return ((Boolean)paramPanelType).booleanValue();
   }
   
@@ -202,7 +211,7 @@ public final class PanelController
     this.c.add(paramView2);
     this.jdField_b_of_type_JavaUtilArrayList.add(paramPanelType);
     paramView1.setOnClickListener((View.OnClickListener)new PanelController.addPanel.1(this, paramView1, paramPanelType));
-    this.d.add(AppContext.a.a().getResources().getString(R.string.ab));
+    this.d.add(AppContext.a.a().getResources().getString(R.string.W));
   }
   
   public final void a(@NotNull PanelType paramPanelType)
@@ -246,7 +255,7 @@ public final class PanelController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.PanelController
  * JD-Core Version:    0.7.0.1
  */

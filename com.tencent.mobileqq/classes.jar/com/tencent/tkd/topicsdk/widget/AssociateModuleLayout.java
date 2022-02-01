@@ -16,7 +16,6 @@ import com.tencent.tkd.R.dimen;
 import com.tencent.tkd.R.id;
 import com.tencent.tkd.R.layout;
 import com.tencent.tkd.R.string;
-import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig;
 import com.tencent.tkd.topicsdk.common.DisplayUtils;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -54,14 +53,14 @@ public final class AssociateModuleLayout
   public AssociateModuleLayout(@NotNull Context paramContext, @NotNull AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(R.layout.A, (ViewGroup)this);
-    paramContext = findViewById(R.id.bN);
+    LayoutInflater.from(paramContext).inflate(R.layout.z, (ViewGroup)this);
+    paramContext = findViewById(R.id.bh);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_tips)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = findViewById(R.id.bR);
+    paramContext = findViewById(R.id.bl);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_topic)");
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = findViewById(R.id.bx);
+    paramContext = findViewById(R.id.aS);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_community)");
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramContext);
     if (!isInEditMode())
@@ -90,7 +89,7 @@ public final class AssociateModuleLayout
     localObject = this.jdField_b_of_type_AndroidWidgetTextView.getPaint();
     localContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    int m = (int)((TextPaint)localObject).measureText(localContext.getResources().getString(R.string.X));
+    int m = (int)((TextPaint)localObject).measureText(localContext.getResources().getString(R.string.T));
     localObject = DisplayUtils.a;
     localContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
@@ -99,162 +98,123 @@ public final class AssociateModuleLayout
   
   private final void a()
   {
-    int j = 0;
     Object localObject1 = (CharSequence)this.d;
+    int k = 1;
+    int j = 0;
     int i;
-    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0))
+    if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0)
     {
-      i = 1;
-      if (i == 0) {
-        break label170;
+      i = k;
+      if (!this.jdField_a_of_type_Boolean) {
+        if (this.jdField_b_of_type_Boolean) {
+          i = k;
+        } else {
+          i = 0;
+        }
       }
-      if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
-        break label103;
-      }
-      i = 1;
-      label45:
       localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
       if (i == 0) {
-        break label108;
+        j = 8;
       }
-    }
-    for (;;)
-    {
       ((TextView)localObject1).setVisibility(j);
       if (i != 0)
       {
-        if ((!this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean)) {
-          break label114;
+        if ((this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+        {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.d));
+          return;
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.e));
+        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+        {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.b));
+          return;
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.c));
       }
-      return;
-      i = 0;
-      break;
-      label103:
-      i = 0;
-      break label45;
-      label108:
-      j = 8;
     }
-    label114:
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    else
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.c));
-      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      localObject1 = getResources().getString(R.string.aj);
+      Object localObject2 = getResources().getString(R.string.ak);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append((String)localObject2);
+      localObject2 = new SpannableString((CharSequence)localStringBuilder.toString());
+      ((SpannableString)localObject2).setSpan(new AssociateModuleLayout.refreshTipsView.clickableSpan.1(this), ((String)localObject1).length(), ((SpannableString)localObject2).length(), 33);
+      this.jdField_a_of_type_AndroidWidgetTextView.setHighlightColor(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.d));
-    return;
-    label170:
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    localObject1 = getResources().getString(R.string.at);
-    Object localObject2 = getResources().getString(R.string.au);
-    localObject2 = new SpannableString((CharSequence)((String)localObject1 + (String)localObject2));
-    ((SpannableString)localObject2).setSpan(new AssociateModuleLayout.refreshTipsView.clickableSpan.1(this), ((String)localObject1).length(), ((SpannableString)localObject2).length(), 33);
-    this.jdField_a_of_type_AndroidWidgetTextView.setHighlightColor(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
   }
   
   private final void b()
   {
+    Object localObject1 = this.jdField_b_of_type_AndroidWidgetTextView;
+    boolean bool = this.jdField_a_of_type_Boolean;
     int j = 0;
-    Object localObject = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = 8)
+    if (bool) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    ((TextView)localObject1).setVisibility(i);
+    int i = j;
+    if (((CharSequence)this.jdField_a_of_type_JavaLangString).length() == 0) {
+      i = 1;
+    }
+    if (i != 0)
     {
-      ((TextView)localObject).setVisibility(i);
-      i = j;
-      if (((CharSequence)this.jdField_a_of_type_JavaLangString).length() == 0) {
-        i = 1;
-      }
-      if (i == 0) {
-        break;
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.X));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.T));
       return;
     }
-    localObject = getResources().getString(R.string.ap);
-    SpannableString localSpannableString = new SpannableString((CharSequence)((String)localObject + ' ' + this.jdField_a_of_type_JavaLangString));
-    localSpannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.c)), ((String)localObject).length(), localSpannableString.length(), 33);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localSpannableString);
+    localObject1 = getResources().getString(R.string.ag);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(' ');
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    localObject2 = new SpannableString((CharSequence)((StringBuilder)localObject2).toString());
+    ((SpannableString)localObject2).setSpan(new ForegroundColorSpan(getResources().getColor(R.color.c)), ((String)localObject1).length(), ((SpannableString)localObject2).length(), 33);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
   }
   
   private final void c()
   {
+    Object localObject1 = this.jdField_c_of_type_AndroidWidgetTextView;
+    boolean bool = this.jdField_b_of_type_Boolean;
     int j = 0;
-    Object localObject = this.jdField_c_of_type_AndroidWidgetTextView;
-    if (this.jdField_b_of_type_Boolean) {}
-    for (int i = 0;; i = 8)
+    if (bool) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    ((TextView)localObject1).setVisibility(i);
+    int i = j;
+    if (((CharSequence)this.jdField_b_of_type_JavaLangString).length() == 0) {
+      i = 1;
+    }
+    if (i != 0)
     {
-      ((TextView)localObject).setVisibility(i);
-      i = j;
-      if (((CharSequence)this.jdField_b_of_type_JavaLangString).length() == 0) {
-        i = 1;
-      }
-      if (i == 0) {
-        break;
-      }
-      this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.V));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)getResources().getString(R.string.R));
       return;
     }
-    localObject = getResources().getString(R.string.l);
-    SpannableString localSpannableString = new SpannableString((CharSequence)((String)localObject + ' ' + this.jdField_b_of_type_JavaLangString));
-    localSpannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.c)), ((String)localObject).length(), localSpannableString.length(), 33);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localSpannableString);
-  }
-  
-  public final long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @NotNull
-  public final TextView a()
-  {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public final void a(@NotNull GlobalPublisherConfig paramGlobalPublisherConfig)
-  {
-    Intrinsics.checkParameterIsNotNull(paramGlobalPublisherConfig, "config");
-    if ((paramGlobalPublisherConfig.getShowTopicSelector()) || (paramGlobalPublisherConfig.getShowCommunitySelector()))
-    {
-      setVisibility(0);
-      if (paramGlobalPublisherConfig.getTopicInfo() != null)
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setEnabled(false);
-        setShouldShowCommunity(false);
-      }
-      while (paramGlobalPublisherConfig.getCommunityInfo() != null)
-      {
-        this.jdField_c_of_type_AndroidWidgetTextView.setEnabled(false);
-        setShouldShowTopic(false);
-        return;
-        this.jdField_b_of_type_AndroidWidgetTextView.setEnabled(true);
-        setShouldShowCommunity(paramGlobalPublisherConfig.getShowCommunitySelector());
-      }
-      this.jdField_c_of_type_AndroidWidgetTextView.setEnabled(true);
-      setShouldShowTopic(paramGlobalPublisherConfig.getShowTopicSelector());
-      return;
-    }
-    setVisibility(8);
-  }
-  
-  @NotNull
-  public final TextView b()
-  {
-    return this.jdField_c_of_type_AndroidWidgetTextView;
+    localObject1 = getResources().getString(R.string.j);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(' ');
+    ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+    localObject2 = new SpannableString((CharSequence)((StringBuilder)localObject2).toString());
+    ((SpannableString)localObject2).setSpan(new ForegroundColorSpan(getResources().getColor(R.color.c)), ((String)localObject1).length(), ((SpannableString)localObject2).length(), 33);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
   }
   
   @Nullable
-  public final String b()
+  public final String a()
   {
     return this.d;
   }
@@ -269,17 +229,18 @@ public final class AssociateModuleLayout
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
     this.jdField_b_of_type_JavaLangString = paramString;
-    if (((CharSequence)paramString).length() > 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        setTopicName("");
-        this.jdField_a_of_type_Long = 0L;
-      }
-      c();
-      return;
+    int i;
+    if (((CharSequence)paramString).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0)
+    {
+      setTopicName("");
+      this.jdField_a_of_type_Long = 0L;
+    }
+    c();
   }
   
   public final void setCommunityView(@NotNull TextView paramTextView)
@@ -292,32 +253,34 @@ public final class AssociateModuleLayout
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
     TextView localTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localTextView.setVisibility(i);
-      if (!paramBoolean) {
-        setCommunityName("");
-      }
-      a();
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localTextView.setVisibility(i);
+    if (!paramBoolean) {
+      setCommunityName("");
+    }
+    a();
   }
   
   public final void setShouldShowTopic(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localTextView.setVisibility(i);
-      if (!paramBoolean) {
-        setTopicName("");
-      }
-      a();
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localTextView.setVisibility(i);
+    if (!paramBoolean) {
+      setTopicName("");
+    }
+    a();
   }
   
   public final void setTipsView(@NotNull TextView paramTextView)
@@ -335,17 +298,18 @@ public final class AssociateModuleLayout
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
     this.jdField_a_of_type_JavaLangString = paramString;
-    if (((CharSequence)paramString).length() > 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        setCommunityName("");
-        this.jdField_c_of_type_JavaLangString = "";
-      }
-      b();
-      return;
+    int i;
+    if (((CharSequence)paramString).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0)
+    {
+      setCommunityName("");
+      this.jdField_c_of_type_JavaLangString = "";
+    }
+    b();
   }
   
   public final void setTopicView(@NotNull TextView paramTextView)
@@ -362,7 +326,7 @@ public final class AssociateModuleLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.AssociateModuleLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -28,67 +28,72 @@ public final class MediaCodecInfo
     this.name = ((String)Assertions.checkNotNull(paramString1));
     this.mimeType = paramString2;
     this.capabilities = paramCodecCapabilities;
-    if ((!paramBoolean1) && (paramCodecCapabilities != null) && (isAdaptive(paramCodecCapabilities)))
-    {
+    boolean bool = true;
+    if ((!paramBoolean1) && (paramCodecCapabilities != null) && (isAdaptive(paramCodecCapabilities))) {
       paramBoolean1 = true;
-      this.adaptive = paramBoolean1;
-      if ((paramCodecCapabilities == null) || (!isTunneling(paramCodecCapabilities))) {
-        break label113;
-      }
-    }
-    label113:
-    for (paramBoolean1 = true;; paramBoolean1 = false)
-    {
-      this.tunneling = paramBoolean1;
-      if (!paramBoolean2)
-      {
-        paramBoolean1 = bool;
-        if (paramCodecCapabilities != null)
-        {
-          paramBoolean1 = bool;
-          if (!isSecure(paramCodecCapabilities)) {}
-        }
-      }
-      else
-      {
-        paramBoolean1 = true;
-      }
-      this.secure = paramBoolean1;
-      return;
+    } else {
       paramBoolean1 = false;
-      break;
     }
+    this.adaptive = paramBoolean1;
+    if ((paramCodecCapabilities != null) && (isTunneling(paramCodecCapabilities))) {
+      paramBoolean1 = true;
+    } else {
+      paramBoolean1 = false;
+    }
+    this.tunneling = paramBoolean1;
+    paramBoolean1 = bool;
+    if (!paramBoolean2) {
+      if ((paramCodecCapabilities != null) && (isSecure(paramCodecCapabilities))) {
+        paramBoolean1 = bool;
+      } else {
+        paramBoolean1 = false;
+      }
+    }
+    this.secure = paramBoolean1;
   }
   
   private static int adjustMaxInputChannelCount(String paramString1, String paramString2, int paramInt)
   {
-    if ((paramInt > 1) || ((Util.SDK_INT >= 26) && (paramInt > 0))) {}
-    while (("audio/mpeg".equals(paramString2)) || ("audio/3gpp".equals(paramString2)) || ("audio/amr-wb".equals(paramString2)) || ("audio/mp4a-latm".equals(paramString2)) || ("audio/vorbis".equals(paramString2)) || ("audio/opus".equals(paramString2)) || ("audio/raw".equals(paramString2)) || ("audio/flac".equals(paramString2)) || ("audio/g711-alaw".equals(paramString2)) || ("audio/g711-mlaw".equals(paramString2)) || ("audio/gsm".equals(paramString2))) {
-      return paramInt;
-    }
-    int i;
-    if ("audio/ac3".equals(paramString2)) {
-      i = 6;
-    }
-    for (;;)
+    if (paramInt <= 1)
     {
-      Log.w("MediaCodecInfo", "AssumedMaxChannelAdjustment: " + paramString1 + ", [" + paramInt + " to " + i + "]");
-      return i;
-      if ("audio/eac3".equals(paramString2)) {
-        i = 16;
-      } else {
-        i = 30;
+      if ((Util.SDK_INT >= 26) && (paramInt > 0)) {
+        return paramInt;
+      }
+      if ((!"audio/mpeg".equals(paramString2)) && (!"audio/3gpp".equals(paramString2)) && (!"audio/amr-wb".equals(paramString2)) && (!"audio/mp4a-latm".equals(paramString2)) && (!"audio/vorbis".equals(paramString2)) && (!"audio/opus".equals(paramString2)) && (!"audio/raw".equals(paramString2)) && (!"audio/flac".equals(paramString2)) && (!"audio/g711-alaw".equals(paramString2)) && (!"audio/g711-mlaw".equals(paramString2)))
+      {
+        if ("audio/gsm".equals(paramString2)) {
+          return paramInt;
+        }
+        int i;
+        if ("audio/ac3".equals(paramString2)) {
+          i = 6;
+        } else if ("audio/eac3".equals(paramString2)) {
+          i = 16;
+        } else {
+          i = 30;
+        }
+        paramString2 = new StringBuilder();
+        paramString2.append("AssumedMaxChannelAdjustment: ");
+        paramString2.append(paramString1);
+        paramString2.append(", [");
+        paramString2.append(paramInt);
+        paramString2.append(" to ");
+        paramString2.append(i);
+        paramString2.append("]");
+        Log.w("MediaCodecInfo", paramString2.toString());
+        return i;
       }
     }
+    return paramInt;
   }
   
   @TargetApi(21)
   private static boolean areSizeAndRateSupportedV21(MediaCodecInfo.VideoCapabilities paramVideoCapabilities, int paramInt1, int paramInt2, double paramDouble)
   {
-    if ((paramDouble == -1.0D) || (paramDouble <= 0.0D)) {
-      return paramVideoCapabilities.isSizeSupported(paramInt1, paramInt2);
+    if ((paramDouble != -1.0D) && (paramDouble > 0.0D)) {
+      return paramVideoCapabilities.areSizeAndRateSupported(paramInt1, paramInt2, paramDouble);
     }
-    return paramVideoCapabilities.areSizeAndRateSupported(paramInt1, paramInt2, paramDouble);
+    return paramVideoCapabilities.isSizeSupported(paramInt1, paramInt2);
   }
   
   private static boolean isAdaptive(MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
@@ -126,12 +131,32 @@ public final class MediaCodecInfo
   
   private void logAssumedSupport(String paramString)
   {
-    Log.d("MediaCodecInfo", "AssumedSupport [" + paramString + "] [" + this.name + ", " + this.mimeType + "] [" + Util.DEVICE_DEBUG_INFO + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AssumedSupport [");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("] [");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.mimeType);
+    localStringBuilder.append("] [");
+    localStringBuilder.append(Util.DEVICE_DEBUG_INFO);
+    localStringBuilder.append("]");
+    Log.d("MediaCodecInfo", localStringBuilder.toString());
   }
   
   private void logNoSupport(String paramString)
   {
-    Log.d("MediaCodecInfo", "NoSupport [" + paramString + "] [" + this.name + ", " + this.mimeType + "] [" + Util.DEVICE_DEBUG_INFO + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NoSupport [");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("] [");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.mimeType);
+    localStringBuilder.append("] [");
+    localStringBuilder.append(Util.DEVICE_DEBUG_INFO);
+    localStringBuilder.append("]");
+    Log.d("MediaCodecInfo", localStringBuilder.toString());
   }
   
   public static MediaCodecInfo newInstance(String paramString1, String paramString2, MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
@@ -152,47 +177,53 @@ public final class MediaCodecInfo
   @TargetApi(21)
   public Point alignVideoSizeV21(int paramInt1, int paramInt2)
   {
-    if (this.capabilities == null)
+    Object localObject = this.capabilities;
+    if (localObject == null)
     {
       logNoSupport("align.caps");
       return null;
     }
-    MediaCodecInfo.VideoCapabilities localVideoCapabilities = this.capabilities.getVideoCapabilities();
-    if (localVideoCapabilities == null)
+    localObject = ((MediaCodecInfo.CodecCapabilities)localObject).getVideoCapabilities();
+    if (localObject == null)
     {
       logNoSupport("align.vCaps");
       return null;
     }
-    int i = localVideoCapabilities.getWidthAlignment();
-    int j = localVideoCapabilities.getHeightAlignment();
-    return new Point(i * Util.ceilDivide(paramInt1, i), j * Util.ceilDivide(paramInt2, j));
+    int i = ((MediaCodecInfo.VideoCapabilities)localObject).getWidthAlignment();
+    int j = ((MediaCodecInfo.VideoCapabilities)localObject).getHeightAlignment();
+    return new Point(Util.ceilDivide(paramInt1, i) * i, Util.ceilDivide(paramInt2, j) * j);
   }
   
   public MediaCodecInfo.CodecProfileLevel[] getProfileLevels()
   {
-    if ((this.capabilities == null) || (this.capabilities.profileLevels == null)) {
-      return new MediaCodecInfo.CodecProfileLevel[0];
+    MediaCodecInfo.CodecCapabilities localCodecCapabilities = this.capabilities;
+    if ((localCodecCapabilities != null) && (localCodecCapabilities.profileLevels != null)) {
+      return this.capabilities.profileLevels;
     }
-    return this.capabilities.profileLevels;
+    return new MediaCodecInfo.CodecProfileLevel[0];
   }
   
   @TargetApi(21)
   public boolean isAudioChannelCountSupportedV21(int paramInt)
   {
-    if (this.capabilities == null)
+    Object localObject = this.capabilities;
+    if (localObject == null)
     {
       logNoSupport("channelCount.caps");
       return false;
     }
-    MediaCodecInfo.AudioCapabilities localAudioCapabilities = this.capabilities.getAudioCapabilities();
-    if (localAudioCapabilities == null)
+    localObject = ((MediaCodecInfo.CodecCapabilities)localObject).getAudioCapabilities();
+    if (localObject == null)
     {
       logNoSupport("channelCount.aCaps");
       return false;
     }
-    if (adjustMaxInputChannelCount(this.name, this.mimeType, localAudioCapabilities.getMaxInputChannelCount()) < paramInt)
+    if (adjustMaxInputChannelCount(this.name, this.mimeType, ((MediaCodecInfo.AudioCapabilities)localObject).getMaxInputChannelCount()) < paramInt)
     {
-      logNoSupport("channelCount.support, " + paramInt);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("channelCount.support, ");
+      ((StringBuilder)localObject).append(paramInt);
+      logNoSupport(((StringBuilder)localObject).toString());
       return false;
     }
     return true;
@@ -201,20 +232,24 @@ public final class MediaCodecInfo
   @TargetApi(21)
   public boolean isAudioSampleRateSupportedV21(int paramInt)
   {
-    if (this.capabilities == null)
+    Object localObject = this.capabilities;
+    if (localObject == null)
     {
       logNoSupport("sampleRate.caps");
       return false;
     }
-    MediaCodecInfo.AudioCapabilities localAudioCapabilities = this.capabilities.getAudioCapabilities();
-    if (localAudioCapabilities == null)
+    localObject = ((MediaCodecInfo.CodecCapabilities)localObject).getAudioCapabilities();
+    if (localObject == null)
     {
       logNoSupport("sampleRate.aCaps");
       return false;
     }
-    if (!localAudioCapabilities.isSampleRateSupported(paramInt))
+    if (!((MediaCodecInfo.AudioCapabilities)localObject).isSampleRateSupported(paramInt))
     {
-      logNoSupport("sampleRate.support, " + paramInt);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sampleRate.support, ");
+      ((StringBuilder)localObject).append(paramInt);
+      logNoSupport(((StringBuilder)localObject).toString());
       return false;
     }
     return true;
@@ -222,66 +257,97 @@ public final class MediaCodecInfo
   
   public boolean isCodecSupported(String paramString)
   {
-    if ((paramString == null) || (this.mimeType == null)) {
-      return true;
-    }
-    String str = MimeTypes.getMediaMimeType(paramString);
-    if (str == null) {
-      return true;
-    }
-    if (!this.mimeType.equals(str))
+    if (paramString != null)
     {
-      logNoSupport("codec.mime " + paramString + ", " + str);
-      return false;
-    }
-    Pair localPair = MediaCodecUtil.getCodecProfileAndLevel(paramString);
-    if (localPair == null) {
-      return true;
-    }
-    MediaCodecInfo.CodecProfileLevel[] arrayOfCodecProfileLevel = getProfileLevels();
-    int j = arrayOfCodecProfileLevel.length;
-    int i = 0;
-    while (i < j)
-    {
-      MediaCodecInfo.CodecProfileLevel localCodecProfileLevel = arrayOfCodecProfileLevel[i];
-      if ((localCodecProfileLevel.profile == ((Integer)localPair.first).intValue()) && (localCodecProfileLevel.level >= ((Integer)localPair.second).intValue())) {
+      if (this.mimeType == null) {
         return true;
       }
-      i += 1;
+      String str = MimeTypes.getMediaMimeType(paramString);
+      if (str == null) {
+        return true;
+      }
+      if (!this.mimeType.equals(str))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("codec.mime ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(", ");
+        ((StringBuilder)localObject).append(str);
+        logNoSupport(((StringBuilder)localObject).toString());
+        return false;
+      }
+      Object localObject = MediaCodecUtil.getCodecProfileAndLevel(paramString);
+      if (localObject == null) {
+        return true;
+      }
+      MediaCodecInfo.CodecProfileLevel[] arrayOfCodecProfileLevel = getProfileLevels();
+      int j = arrayOfCodecProfileLevel.length;
+      int i = 0;
+      while (i < j)
+      {
+        MediaCodecInfo.CodecProfileLevel localCodecProfileLevel = arrayOfCodecProfileLevel[i];
+        if ((localCodecProfileLevel.profile == ((Integer)((Pair)localObject).first).intValue()) && (localCodecProfileLevel.level >= ((Integer)((Pair)localObject).second).intValue())) {
+          return true;
+        }
+        i += 1;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("codec.profileLevel, ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(str);
+      logNoSupport(((StringBuilder)localObject).toString());
+      return false;
     }
-    logNoSupport("codec.profileLevel, " + paramString + ", " + str);
-    return false;
+    return true;
   }
   
   @TargetApi(21)
   public boolean isVideoSizeAndRateSupportedV21(int paramInt1, int paramInt2, double paramDouble)
   {
-    if (this.capabilities == null)
+    Object localObject = this.capabilities;
+    if (localObject == null)
     {
       logNoSupport("sizeAndRate.caps");
       return false;
     }
-    MediaCodecInfo.VideoCapabilities localVideoCapabilities = this.capabilities.getVideoCapabilities();
-    if (localVideoCapabilities == null)
+    localObject = ((MediaCodecInfo.CodecCapabilities)localObject).getVideoCapabilities();
+    if (localObject == null)
     {
       logNoSupport("sizeAndRate.vCaps");
       return false;
     }
-    if (!areSizeAndRateSupportedV21(localVideoCapabilities, paramInt1, paramInt2, paramDouble))
-    {
-      if ((paramInt1 >= paramInt2) || (!areSizeAndRateSupportedV21(localVideoCapabilities, paramInt2, paramInt1, paramDouble)))
+    if (!areSizeAndRateSupportedV21((MediaCodecInfo.VideoCapabilities)localObject, paramInt1, paramInt2, paramDouble)) {
+      if ((paramInt1 < paramInt2) && (areSizeAndRateSupportedV21((MediaCodecInfo.VideoCapabilities)localObject, paramInt2, paramInt1, paramDouble)))
       {
-        logNoSupport("sizeAndRate.support, " + paramInt1 + "x" + paramInt2 + "x" + paramDouble);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sizeAndRate.rotated, ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("x");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append("x");
+        ((StringBuilder)localObject).append(paramDouble);
+        logAssumedSupport(((StringBuilder)localObject).toString());
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sizeAndRate.support, ");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("x");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append("x");
+        ((StringBuilder)localObject).append(paramDouble);
+        logNoSupport(((StringBuilder)localObject).toString());
         return false;
       }
-      logAssumedSupport("sizeAndRate.rotated, " + paramInt1 + "x" + paramInt2 + "x" + paramDouble);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.mediacodec.MediaCodecInfo
  * JD-Core Version:    0.7.0.1
  */

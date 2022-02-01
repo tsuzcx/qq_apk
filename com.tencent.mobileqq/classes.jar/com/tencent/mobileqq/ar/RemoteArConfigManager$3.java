@@ -12,55 +12,71 @@ class RemoteArConfigManager$3
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("download success ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject).toString());
     }
     if (RemoteArConfigManager.a(this.a) == null)
     {
       QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
       return;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 6;
-    localMessage.arg1 = paramInt;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+    Object localObject = Message.obtain();
+    ((Message)localObject).what = 6;
+    ((Message)localObject).arg1 = paramInt;
+    RemoteArConfigManager.a(this.a).sendMessage((Message)localObject);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("download process ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" : ");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject).toString());
     }
     if (RemoteArConfigManager.a(this.a) == null) {
       return;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 7;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+    Object localObject = Message.obtain();
+    ((Message)localObject).what = 7;
+    ((Message)localObject).arg1 = paramInt1;
+    ((Message)localObject).arg2 = paramInt2;
+    RemoteArConfigManager.a(this.a).sendMessage((Message)localObject);
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("download error ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" : ");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject).toString());
     }
     if (RemoteArConfigManager.a(this.a) == null)
     {
       QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
       return;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 8;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+    Object localObject = Message.obtain();
+    ((Message)localObject).what = 8;
+    ((Message)localObject).arg1 = paramInt1;
+    ((Message)localObject).arg2 = paramInt2;
+    RemoteArConfigManager.a(this.a).sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.RemoteArConfigManager.3
  * JD-Core Version:    0.7.0.1
  */

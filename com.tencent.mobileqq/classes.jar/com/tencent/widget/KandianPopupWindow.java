@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
@@ -16,8 +17,10 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.repo.dislike.DislikeInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -60,71 +63,71 @@ public class KandianPopupWindow
   {
     super(paramActivity);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131380921, 2131380922, 2131380923, 2131380924 };
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131380926, 2131380927, 2131380928, 2131380929, 2131380930, 2131380931, 2131380932, 2131380933 };
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131380187, 2131380188, 2131380189, 2131380190 };
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131380192, 2131380193, 2131380194, 2131380195, 2131380196, 2131380197, 2131380198, 2131380199 };
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131699742));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131699883));
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
   }
   
   private void e()
   {
     d();
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i >= this.jdField_a_of_type_ArrayOfAndroidWidgetButton.length)
+    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    Button[] arrayOfButton = this.jdField_a_of_type_ArrayOfAndroidWidgetButton;
+    int i = j;
+    if (j >= arrayOfButton.length) {
+      i = arrayOfButton.length;
+    }
+    j = 0;
+    while (j < i)
     {
-      i = this.jdField_a_of_type_ArrayOfAndroidWidgetButton.length;
-      j = 0;
-      label29:
-      if (j >= i) {
-        break label121;
+      if (TextUtils.isEmpty(((DislikeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a))
+      {
+        this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setVisibility(8);
       }
-      if (!TextUtils.isEmpty(((DislikeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a)) {
-        break label85;
+      else
+      {
+        this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setVisibility(0);
+        this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setText(((DislikeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a);
       }
-      this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setVisibility(8);
+      this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setSelected(false);
+      j += 1;
+    }
+    j = i;
+    int k;
+    for (;;)
+    {
+      arrayOfButton = this.jdField_a_of_type_ArrayOfAndroidWidgetButton;
+      int m = arrayOfButton.length;
+      k = 1;
+      if (j >= m) {
+        break;
+      }
+      if ((j == i) && (i % 2 == 1)) {
+        arrayOfButton[j].setVisibility(4);
+      } else {
+        this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setVisibility(8);
+      }
+      this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setSelected(false);
+      j += 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setSelected(false);
-      j += 1;
-      break label29;
-      break;
-      label85:
-      this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setVisibility(0);
-      this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setText(((DislikeInfo)this.jdField_a_of_type_JavaUtilArrayList.get(j)).a);
-    }
-    label121:
-    int j = i;
-    if (j < this.jdField_a_of_type_ArrayOfAndroidWidgetButton.length)
-    {
-      if ((j == i) && (i % 2 == 1)) {
-        this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setVisibility(4);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setSelected(false);
-        j += 1;
+      arrayOfButton = this.jdField_a_of_type_ArrayOfAndroidWidgetButton;
+      if (k >= arrayOfButton.length) {
         break;
-        this.jdField_a_of_type_ArrayOfAndroidWidgetButton[j].setVisibility(8);
       }
-    }
-    i = 1;
-    if (i < this.jdField_a_of_type_ArrayOfAndroidWidgetButton.length)
-    {
-      if (this.jdField_a_of_type_ArrayOfAndroidWidgetButton[i].getVisibility() == 8) {
-        this.jdField_a_of_type_ArrayOfAndroidViewView[(i / 2)].setVisibility(8);
+      if (arrayOfButton[k].getVisibility() == 8) {
+        this.jdField_a_of_type_ArrayOfAndroidViewView[(k / 2)].setVisibility(8);
+      } else {
+        this.jdField_a_of_type_ArrayOfAndroidViewView[(k / 2)].setVisibility(0);
       }
-      for (;;)
-      {
-        i += 2;
-        break;
-        this.jdField_a_of_type_ArrayOfAndroidViewView[(i / 2)].setVisibility(0);
-      }
+      k += 2;
     }
   }
   
@@ -138,33 +141,42 @@ public class KandianPopupWindow
   {
     this.d = ((int)DeviceInfoUtil.i());
     this.e = ((int)DeviceInfoUtil.j());
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560208, null);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131560095, null);
     setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380925));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380917));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380191));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380183));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380919);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380934));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380916));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380185);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380200));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131380182));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380920));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380918));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380186));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380184));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380937));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380936));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380203));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380202));
     this.jdField_a_of_type_ArrayOfAndroidViewView = new View[this.jdField_a_of_type_ArrayOfInt.length];
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    int[] arrayOfInt;
+    for (;;)
     {
-      this.jdField_a_of_type_ArrayOfAndroidViewView[i] = this.jdField_a_of_type_AndroidViewView.findViewById(this.jdField_a_of_type_ArrayOfInt[i]);
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      if (i >= arrayOfInt.length) {
+        break;
+      }
+      this.jdField_a_of_type_ArrayOfAndroidViewView[i] = this.jdField_a_of_type_AndroidViewView.findViewById(arrayOfInt[i]);
       i += 1;
     }
     this.jdField_a_of_type_ArrayOfAndroidWidgetButton = new Button[this.jdField_b_of_type_ArrayOfInt.length];
     i = 0;
-    while (i < this.jdField_b_of_type_ArrayOfInt.length)
+    for (;;)
     {
-      this.jdField_a_of_type_ArrayOfAndroidWidgetButton[i] = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(this.jdField_b_of_type_ArrayOfInt[i]));
+      arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
+      if (i >= arrayOfInt.length) {
+        break;
+      }
+      this.jdField_a_of_type_ArrayOfAndroidWidgetButton[i] = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(arrayOfInt[i]));
       this.jdField_a_of_type_ArrayOfAndroidWidgetButton[i].setOnClickListener(this);
       i += 1;
     }
@@ -199,73 +211,117 @@ public class KandianPopupWindow
     a(paramView.getWindowToken());
     paramOnUninterestConfirmListener = new int[2];
     paramView.getLocationOnScreen(paramOnUninterestConfirmListener);
-    int j;
-    int i;
-    int n;
     if (!this.jdField_c_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("KandianPopupWindow", 2, "DeviceInfoUtil.getWidth() = " + this.d + ", DeviceInfoUtil.getHeight() = " + this.e);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("DeviceInfoUtil.getWidth() = ");
+        localStringBuilder.append(this.d);
+        localStringBuilder.append(", DeviceInfoUtil.getHeight() = ");
+        localStringBuilder.append(this.e);
+        QLog.d("KandianPopupWindow", 2, localStringBuilder.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("KandianPopupWindow", 2, "popupWidth = " + this.jdField_b_of_type_Int + ", popupHeight = " + this.jdField_c_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("popupWidth = ");
+        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(", popupHeight = ");
+        localStringBuilder.append(this.jdField_c_of_type_Int);
+        QLog.d("KandianPopupWindow", 2, localStringBuilder.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("KandianPopupWindow", 2, "x = " + paramOnUninterestConfirmListener[0] + ", y = " + paramOnUninterestConfirmListener[1]);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("x = ");
+        localStringBuilder.append(paramOnUninterestConfirmListener[0]);
+        localStringBuilder.append(", y = ");
+        localStringBuilder.append(paramOnUninterestConfirmListener[1]);
+        QLog.d("KandianPopupWindow", 2, localStringBuilder.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("KandianPopupWindow", 2, "parent.getWidth() = " + paramView.getWidth() + ", parent.getHeight() = " + paramView.getHeight());
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parent.getWidth() = ");
+        localStringBuilder.append(paramView.getWidth());
+        localStringBuilder.append(", parent.getHeight() = ");
+        localStringBuilder.append(paramView.getHeight());
+        QLog.d("KandianPopupWindow", 2, localStringBuilder.toString());
       }
-      j = this.e;
+      int j = this.e;
       int k = paramOnUninterestConfirmListener[1];
       int m = paramView.getHeight();
-      i = paramOnUninterestConfirmListener[1];
-      i = (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298865);
-      n = this.jdField_b_of_type_Int - paramOnUninterestConfirmListener[0] - paramView.getWidth() / 2 + i;
-      if (QLog.isColorLevel()) {
-        QLog.d("KandianPopupWindow", 2, "marginRight = " + n);
+      int i = paramOnUninterestConfirmListener[1];
+      i = (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298867);
+      int n = this.jdField_b_of_type_Int - paramOnUninterestConfirmListener[0] - paramView.getWidth() / 2 + i;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("marginRight = ");
+        localStringBuilder.append(n);
+        QLog.d("KandianPopupWindow", 2, localStringBuilder.toString());
       }
-      if (j - (k + m) > this.jdField_c_of_type_Int) {
-        if (n > this.jdField_b_of_type_Int * 0.1D)
+      double d1;
+      double d2;
+      if (j - (k + m) > this.jdField_c_of_type_Int)
+      {
+        d1 = n;
+        d2 = this.jdField_b_of_type_Int;
+        Double.isNaN(d2);
+        if (d1 > d2 * 0.1D) {
+          setAnimationStyle(2131755041);
+        } else {
+          setAnimationStyle(2131755040);
+        }
+        this.jdField_b_of_type_AndroidWidgetImageView.setPadding(0, 0, n, 0);
+        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+        j = paramOnUninterestConfirmListener[1] + paramView.getHeight() / 2 + AIOUtils.b(9.5F, this.jdField_a_of_type_AndroidAppActivity.getResources());
+        showAtLocation(paramView, 0, i, j);
+        if (QLog.isColorLevel())
         {
-          setAnimationStyle(2131755038);
-          this.jdField_b_of_type_AndroidWidgetImageView.setPadding(0, 0, n, 0);
-          this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-          j = paramOnUninterestConfirmListener[1] + paramView.getHeight() / 2 + AIOUtils.a(9.5F, this.jdField_a_of_type_AndroidAppActivity.getResources());
-          showAtLocation(paramView, 0, i, j);
-          if (QLog.isColorLevel()) {
-            QLog.d("KandianPopupWindow", 2, "show x = " + i + ", show y = " + j);
-          }
+          paramView = new StringBuilder();
+          paramView.append("show x = ");
+          paramView.append(i);
+          paramView.append(", show y = ");
+          paramView.append(j);
+          QLog.d("KandianPopupWindow", 2, paramView.toString());
         }
       }
-    }
-    for (;;)
-    {
-      com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.jdField_a_of_type_Boolean = true;
-      return;
-      setAnimationStyle(2131755037);
-      break;
-      if (n > this.jdField_b_of_type_Int * 0.1D) {
-        setAnimationStyle(2131755041);
-      }
-      for (;;)
+      else
       {
+        d1 = n;
+        d2 = this.jdField_b_of_type_Int;
+        Double.isNaN(d2);
+        if (d1 > d2 * 0.1D) {
+          setAnimationStyle(2131755044);
+        } else {
+          setAnimationStyle(2131755043);
+        }
         this.jdField_c_of_type_AndroidWidgetImageView.setPadding(0, 0, n, 0);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
         this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-        j = paramOnUninterestConfirmListener[1] + paramView.getHeight() / 2 - AIOUtils.a(9.5F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - this.jdField_c_of_type_Int;
+        j = paramOnUninterestConfirmListener[1] + paramView.getHeight() / 2 - AIOUtils.b(9.5F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - this.jdField_c_of_type_Int;
         showAtLocation(paramView, 0, i, j);
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel())
+        {
+          paramView = new StringBuilder();
+          paramView.append("show x = ");
+          paramView.append(i);
+          paramView.append(", show y = ");
+          paramView.append(j);
+          QLog.d("KandianPopupWindow", 2, paramView.toString());
         }
-        QLog.d("KandianPopupWindow", 2, "show x = " + i + ", show y = " + j);
-        break;
-        setAnimationStyle(2131755040);
       }
-      setAnimationStyle(2131755039);
-      showAtLocation(paramView, 0, paramOnUninterestConfirmListener[0] + paramView.getWidth() / 2 - AIOUtils.a(10.5F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298866), paramOnUninterestConfirmListener[1] + paramView.getHeight() / 2 - this.jdField_c_of_type_Int / 2);
     }
+    else
+    {
+      setAnimationStyle(2131755042);
+      showAtLocation(paramView, 0, paramOnUninterestConfirmListener[0] + paramView.getWidth() / 2 - AIOUtils.b(10.5F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298868), paramOnUninterestConfirmListener[1] + paramView.getHeight() / 2 - this.jdField_c_of_type_Int / 2);
+    }
+    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).setIsShowPopup(true);
   }
   
   public void a(KandianPopupWindow.OnComplainListener paramOnComplainListener)
@@ -284,53 +340,59 @@ public class KandianPopupWindow
       return false;
     }
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+    if (localArrayList == null) {
       this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    } else {
+      localArrayList.clear();
     }
-    while ((paramArrayList == null) || (paramArrayList.size() == 0))
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
+    {
+      this.jdField_c_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_b_of_type_Int = ((int)(this.d - this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298867) * 2.0F));
+      setWidth(this.jdField_b_of_type_Int);
+      localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      if (localArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      } else {
+        localArrayList.clear();
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      e();
+    }
+    else
     {
       this.jdField_c_of_type_Boolean = true;
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298866));
+      this.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298868));
       setWidth(this.jdField_b_of_type_Int);
-      f();
-      return true;
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
     }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_b_of_type_Int = ((int)(this.d - this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131298865) * 2.0F));
-    setWidth(this.jdField_b_of_type_Int);
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-      e();
-      break;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
+    f();
+    return true;
   }
   
   public void b()
   {
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    Object localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    if (localObject != null) {
+      ((RelativeLayout)localObject).setVisibility(0);
     }
-    if (this.jdField_b_of_type_AndroidViewView != null) {
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130843247);
+    localObject = this.jdField_b_of_type_AndroidViewView;
+    if (localObject != null) {
+      ((View)localObject).setBackgroundResource(2130843158);
     }
-    if (this.jdField_c_of_type_AndroidWidgetImageView != null)
+    localObject = this.jdField_c_of_type_AndroidWidgetImageView;
+    if (localObject != null)
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130843257);
+      ((ImageView)localObject).setImageResource(2130843168);
       if (RelativeLayout.LayoutParams.class.isInstance(this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams()))
       {
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
-        localLayoutParams.addRule(3, 2131380918);
-        this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+        localObject = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetImageView.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131380184);
+        this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
   }
@@ -346,79 +408,80 @@ public class KandianPopupWindow
   
   public void onClick(View paramView)
   {
-    int i;
+    Object localObject;
     switch (paramView.getId())
     {
     default: 
       i = 0;
-      if (i < this.jdField_b_of_type_ArrayOfInt.length) {
-        if (paramView.getId() != this.jdField_b_of_type_ArrayOfInt[i]) {
-          break;
-        }
+      break;
+    case 2131380184: 
+      localObject = this.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnComplainListener;
+      if (localObject != null) {
+        ((KandianPopupWindow.OnComplainListener)localObject).a();
       }
+      dismiss();
+      break;
+    case 2131380182: 
+    case 2131380183: 
+      localObject = this.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnUninterestConfirmListener;
+      if (localObject != null) {
+        ((KandianPopupWindow.OnUninterestConfirmListener)localObject).a(paramView, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilArrayList, null);
+      }
+      dismiss();
       break;
     }
-    for (;;)
+    while (i < this.jdField_b_of_type_ArrayOfInt.length)
     {
-      if (i != -1)
+      if (paramView.getId() == this.jdField_b_of_type_ArrayOfInt[i]) {
+        break label131;
+      }
+      i += 1;
+    }
+    int i = -1;
+    label131:
+    if (i != -1)
+    {
+      if (this.jdField_a_of_type_ArrayOfAndroidWidgetButton[i].isSelected())
       {
-        if (!this.jdField_a_of_type_ArrayOfAndroidWidgetButton[i].isSelected()) {
-          break label204;
-        }
         this.jdField_a_of_type_ArrayOfAndroidWidgetButton[i].setSelected(false);
         this.jdField_b_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.get(i));
-        label99:
-        if (this.jdField_b_of_type_JavaUtilArrayList.size() != 0) {
-          break label281;
-        }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131699742));
-        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       }
-      for (;;)
+      else
       {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (this.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnUninterestConfirmListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnUninterestConfirmListener.a(paramView, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaUtilArrayList, null);
-        }
-        dismiss();
-        continue;
-        if (this.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnComplainListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnComplainListener.a();
-        }
-        dismiss();
-        continue;
-        i += 1;
-        break;
-        label204:
         if (!this.jdField_a_of_type_Boolean)
         {
-          Button[] arrayOfButton = this.jdField_a_of_type_ArrayOfAndroidWidgetButton;
-          int k = arrayOfButton.length;
+          localObject = this.jdField_a_of_type_ArrayOfAndroidWidgetButton;
+          int k = localObject.length;
           int j = 0;
           while (j < k)
           {
-            arrayOfButton[j].setSelected(false);
+            localObject[j].setSelected(false);
             j += 1;
           }
           this.jdField_b_of_type_JavaUtilArrayList.clear();
         }
         this.jdField_a_of_type_ArrayOfAndroidWidgetButton[i].setSelected(true);
         this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
-        break label99;
-        label281:
+      }
+      if (this.jdField_b_of_type_JavaUtilArrayList.size() == 0)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131699883));
+        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      }
+      else
+      {
         if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_AndroidAppActivity.getString(2131699743), new Object[] { Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) }));
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_AndroidAppActivity.getString(2131699884), new Object[] { Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) }));
         }
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       }
-      i = -1;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.KandianPopupWindow
  * JD-Core Version:    0.7.0.1
  */

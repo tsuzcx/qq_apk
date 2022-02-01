@@ -29,16 +29,19 @@ public class BlurEffectForMultiConnect
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3)
   {
     super.beforeRender(paramInt1, paramInt2, paramInt3);
-    if ((paramInt2 <= 0) || (paramInt3 <= 0)) {
-      return;
+    if (paramInt2 > 0)
+    {
+      if (paramInt3 <= 0) {
+        return;
+      }
+      int i = paramInt3 * 400 / paramInt2;
+      this.mBlurFilter.updateTextureSize(1.0F / 400, 0.0F);
+      this.mBlurFilter.RenderProcess(paramInt1, 400, i, -1, 0.0D, this.mBlurFrame1);
+      this.mBlurFilter.updateTextureSize(0.0F, 1.0F / i);
+      this.mBlurFilter.RenderProcess(this.mBlurFrame1.getTextureId(), 400, i, -1, 0.0D, this.mBlurFrame2);
+      this.mBlendFilter.updateTexture(paramInt1);
+      this.mBlendFilter.RenderProcess(this.mBlurFrame2.getTextureId(), paramInt2, paramInt3, -1, 0.0D, this.mBlendFrame);
     }
-    int i = paramInt3 * 400 / paramInt2;
-    this.mBlurFilter.updateTextureSize(1.0F / 400, 0.0F);
-    this.mBlurFilter.RenderProcess(paramInt1, 400, i, -1, 0.0D, this.mBlurFrame1);
-    this.mBlurFilter.updateTextureSize(0.0F, 1.0F / i);
-    this.mBlurFilter.RenderProcess(this.mBlurFrame1.getTextureId(), 400, i, -1, 0.0D, this.mBlurFrame2);
-    this.mBlendFilter.updateTexture(paramInt1);
-    this.mBlendFilter.RenderProcess(this.mBlurFrame2.getTextureId(), paramInt2, paramInt3, -1, 0.0D, this.mBlendFrame);
   }
   
   public void clearGLSL()
@@ -76,7 +79,7 @@ public class BlurEffectForMultiConnect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.BlurEffectForMultiConnect
  * JD-Core Version:    0.7.0.1
  */

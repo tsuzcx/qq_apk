@@ -7,8 +7,8 @@ import java.util.Map;
 public final class f
   extends k
 {
-  private static byte[] k;
-  private static Map<String, String> l;
+  private static byte[] k = null;
+  private static Map<String, String> l = null;
   public short a = 0;
   public int b = 0;
   public String c = null;
@@ -19,18 +19,6 @@ public final class f
   private int h = 0;
   private Map<String, String> i;
   private Map<String, String> j;
-  
-  static
-  {
-    if (!f.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      m = bool;
-      k = null;
-      l = null;
-      return;
-    }
-  }
   
   public final void a(i parami)
   {
@@ -45,10 +33,11 @@ public final class f
       if (k == null) {
         k = new byte[] { 0 };
       }
-      Object localObject = k;
+      localObject = k;
       this.e = ((byte[])parami.c(7, true));
       this.h = parami.a(this.h, 8, true);
-      if (l == null)
+      localObject = l;
+      if (localObject == null)
       {
         localObject = new HashMap();
         l = (Map)localObject;
@@ -67,7 +56,10 @@ public final class f
     catch (Exception parami)
     {
       parami.printStackTrace();
-      System.out.println("RequestPacket decode error " + e.a(this.e));
+      Object localObject = System.out;
+      StringBuilder localStringBuilder = new StringBuilder("RequestPacket decode error ");
+      localStringBuilder.append(e.a(this.e));
+      ((PrintStream)localObject).println(localStringBuilder.toString());
       throw new RuntimeException(parami);
     }
   }
@@ -103,29 +95,33 @@ public final class f
   
   public final Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (m) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (m) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public final boolean equals(Object paramObject)
   {
     paramObject = (f)paramObject;
-    return (l.a(1, paramObject.a)) && (l.a(1, paramObject.f)) && (l.a(1, paramObject.g)) && (l.a(1, paramObject.b)) && (l.a(Integer.valueOf(1), paramObject.c)) && (l.a(Integer.valueOf(1), paramObject.d)) && (l.a(Integer.valueOf(1), paramObject.e)) && (l.a(1, paramObject.h)) && (l.a(Integer.valueOf(1), paramObject.i)) && (l.a(Integer.valueOf(1), paramObject.j));
+    int n = paramObject.a;
+    Integer localInteger = Integer.valueOf(1);
+    return (l.a(1, n)) && (l.a(1, paramObject.f)) && (l.a(1, paramObject.g)) && (l.a(1, paramObject.b)) && (l.a(localInteger, paramObject.c)) && (l.a(localInteger, paramObject.d)) && (l.a(localInteger, paramObject.e)) && (l.a(1, paramObject.h)) && (l.a(localInteger, paramObject.i)) && (l.a(localInteger, paramObject.j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.f
  * JD-Core Version:    0.7.0.1
  */

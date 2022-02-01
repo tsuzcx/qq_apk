@@ -14,15 +14,19 @@ class LocationPlugin$1$1
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LocationPlugin", 2, "onLocationFinish errCode = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLocationFinish errCode = ");
+      localStringBuilder.append(paramInt);
+      QLog.e("LocationPlugin", 2, localStringBuilder.toString());
     }
     LocationPlugin.a(this.a.jdField_a_of_type_ComTencentBizWebviewpluginLocationPlugin, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.LocationPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

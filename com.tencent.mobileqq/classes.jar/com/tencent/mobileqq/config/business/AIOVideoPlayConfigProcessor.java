@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.structmsg.AIOVideoPlayController;
 import com.tencent.qphone.base.util.QLog;
 
 public class AIOVideoPlayConfigProcessor
@@ -25,8 +24,12 @@ public class AIOVideoPlayConfigProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayConfigProcessor", 2, "onParsed, content:" + paramArrayOfQConfItem);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed, content:");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.d("AIOVideoPlayConfigProcessor", 2, localStringBuilder.toString());
       }
       return AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean.a(paramArrayOfQConfItem);
     }
@@ -38,7 +41,6 @@ public class AIOVideoPlayConfigProcessor
     if (QLog.isColorLevel()) {
       QLog.d("AIOVideoPlayConfigProcessor", 2, "onUpdate");
     }
-    AIOVideoPlayController.a().a(paramAIOVideoPlayConfigBean);
   }
   
   public Class clazz()
@@ -75,7 +77,7 @@ public class AIOVideoPlayConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AIOVideoPlayConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

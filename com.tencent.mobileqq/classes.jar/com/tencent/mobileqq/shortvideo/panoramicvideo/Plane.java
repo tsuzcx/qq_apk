@@ -54,15 +54,16 @@ public class Plane
   
   public Plane scale(float paramFloat)
   {
-    float[] arrayOfFloat = new float[this.TRIANGLES_DATA_CW.length];
-    System.arraycopy(this.TRIANGLES_DATA_CW, 0, arrayOfFloat, 0, this.TRIANGLES_DATA_CW.length);
+    float[] arrayOfFloat1 = this.TRIANGLES_DATA_CW;
+    float[] arrayOfFloat2 = new float[arrayOfFloat1.length];
+    System.arraycopy(arrayOfFloat1, 0, arrayOfFloat2, 0, arrayOfFloat1.length);
     int i = 0;
-    while (i < arrayOfFloat.length)
+    while (i < arrayOfFloat2.length)
     {
-      arrayOfFloat[i] *= paramFloat;
+      arrayOfFloat2[i] *= paramFloat;
       i += 1;
     }
-    this.mVerticesBuffer = BufferUtils.getFloatBuffer(arrayOfFloat, 0);
+    this.mVerticesBuffer = BufferUtils.getFloatBuffer(arrayOfFloat2, 0);
     return this;
   }
   
@@ -104,7 +105,7 @@ public class Plane
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.Plane
  * JD-Core Version:    0.7.0.1
  */

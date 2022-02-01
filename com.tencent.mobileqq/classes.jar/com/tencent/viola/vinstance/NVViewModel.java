@@ -22,12 +22,13 @@ public class NVViewModel
   
   public static NVViewModel createSync(String paramString1, String paramString2)
   {
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      throw new IllegalStateException("can not createSync in main thread");
+    if (Looper.myLooper() != Looper.getMainLooper())
+    {
+      paramString1 = new NVViewModel(paramString1, paramString2);
+      paramString1.initSync();
+      return paramString1;
     }
-    paramString1 = new NVViewModel(paramString1, paramString2);
-    paramString1.initSync();
-    return paramString1;
+    throw new IllegalStateException("can not createSync in main thread");
   }
   
   private void initSync()
@@ -80,8 +81,9 @@ public class NVViewModel
   
   public void onError(String paramString)
   {
-    if (this.modelEventListener != null) {
-      this.modelEventListener.onError(paramString, this.data);
+    NVViewModel.NVViewModelEventListener localNVViewModelEventListener = this.modelEventListener;
+    if (localNVViewModelEventListener != null) {
+      localNVViewModelEventListener.onError(paramString, this.data);
     }
   }
   
@@ -90,8 +92,9 @@ public class NVViewModel
     if ((!this.destroy) && (paramString != null) && (paramString.equals(this.id)))
     {
       bindData();
-      if (this.modelEventListener != null) {
-        this.modelEventListener.onRefresh(this.data, this.nativeVueView);
+      paramString = this.modelEventListener;
+      if (paramString != null) {
+        paramString.onRefresh(this.data, this.nativeVueView);
       }
     }
   }
@@ -108,7 +111,7 @@ public class NVViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.vinstance.NVViewModel
  * JD-Core Version:    0.7.0.1
  */

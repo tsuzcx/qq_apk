@@ -8,18 +8,17 @@ public class HorizontalOverScrollBounceEffectDecorator$MotionAttributesHorizonta
 {
   public boolean init(View paramView, MotionEvent paramMotionEvent)
   {
+    int i = paramMotionEvent.getHistorySize();
     boolean bool = false;
-    if (paramMotionEvent.getHistorySize() == 0) {}
-    float f1;
-    float f2;
-    float f3;
-    do
-    {
+    if (i == 0) {
       return false;
-      f1 = paramMotionEvent.getY(0);
-      f2 = paramMotionEvent.getHistoricalY(0, 0);
-      f3 = paramMotionEvent.getX(0) - paramMotionEvent.getHistoricalX(0, 0);
-    } while (Math.abs(f3) < Math.abs(f1 - f2));
+    }
+    float f1 = paramMotionEvent.getY(0);
+    float f2 = paramMotionEvent.getHistoricalY(0, 0);
+    float f3 = paramMotionEvent.getX(0) - paramMotionEvent.getHistoricalX(0, 0);
+    if (Math.abs(f3) < Math.abs(f1 - f2)) {
+      return false;
+    }
     this.mAbsOffset = paramView.getTranslationX();
     this.mDeltaOffset = f3;
     if (this.mDeltaOffset > 0.0F) {
@@ -31,7 +30,7 @@ public class HorizontalOverScrollBounceEffectDecorator$MotionAttributesHorizonta
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.overscroll.HorizontalOverScrollBounceEffectDecorator.MotionAttributesHorizontal
  * JD-Core Version:    0.7.0.1
  */

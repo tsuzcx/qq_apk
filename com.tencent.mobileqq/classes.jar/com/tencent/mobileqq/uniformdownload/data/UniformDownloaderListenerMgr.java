@@ -11,16 +11,17 @@ public class UniformDownloaderListenerMgr
   public IUniformDownloaderListener a(String paramString)
   {
     if (paramString == null) {
-      paramString = null;
+      return null;
     }
-    for (;;)
+    try
     {
+      paramString = (IUniformDownloaderListener)this.a.get(paramString);
       return paramString;
-      try
-      {
-        paramString = (IUniformDownloaderListener)this.a.get(paramString);
-      }
-      finally {}
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
     }
   }
   
@@ -30,13 +31,8 @@ public class UniformDownloaderListenerMgr
     try
     {
       this.a.put(paramString, paramIUniformDownloaderListener);
-      return;
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    finally {}
   }
   
   public IUniformDownloaderListener b(String paramString)
@@ -55,7 +51,7 @@ public class UniformDownloaderListenerMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.data.UniformDownloaderListenerMgr
  * JD-Core Version:    0.7.0.1
  */

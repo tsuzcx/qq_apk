@@ -18,41 +18,47 @@ public class TroopKeyWord
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof TroopKeyWord)) {
-        return false;
-      }
-      paramObject = (TroopKeyWord)paramObject;
-    } while ((equals(this.troopUin, paramObject.troopUin)) && (equals(this.keyword, paramObject.keyword)));
-    return false;
+    }
+    if (!(paramObject instanceof TroopKeyWord)) {
+      return false;
+    }
+    paramObject = (TroopKeyWord)paramObject;
+    return (equals(this.troopUin, paramObject.troopUin)) && (equals(this.keyword, paramObject.keyword));
   }
   
   public int hashCode()
   {
-    if (this.keyword == null) {
+    String str = this.keyword;
+    if (str == null) {
       return 0;
     }
-    return this.keyword.hashCode();
+    return str.hashCode();
   }
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("TroopKeyWord{");
-    localStringBuffer.append("wordId=").append(this.wordId);
-    localStringBuffer.append(", troopUin='").append(this.troopUin).append('\'');
-    localStringBuffer.append(", keyword='").append(this.keyword).append('\'');
-    localStringBuffer.append(", expiredFlag=").append(this.expiredFlag);
-    localStringBuffer.append(", enable=").append(this.enable);
+    localStringBuffer.append("wordId=");
+    localStringBuffer.append(this.wordId);
+    localStringBuffer.append(", troopUin='");
+    localStringBuffer.append(this.troopUin);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", keyword='");
+    localStringBuffer.append(this.keyword);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", expiredFlag=");
+    localStringBuffer.append(this.expiredFlag);
+    localStringBuffer.append(", enable=");
+    localStringBuffer.append(this.enable);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopKeyWord
  * JD-Core Version:    0.7.0.1
  */

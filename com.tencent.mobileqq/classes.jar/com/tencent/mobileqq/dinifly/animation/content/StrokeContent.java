@@ -41,20 +41,22 @@ public class StrokeContent
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
     super.addValueCallback(paramT, paramLottieValueCallback);
-    if (paramT == LottieProperty.STROKE_COLOR) {
-      this.colorAnimation.setValueCallback(paramLottieValueCallback);
-    }
-    while (paramT != LottieProperty.COLOR_FILTER) {
-      return;
-    }
-    if (paramLottieValueCallback == null)
+    if (paramT == LottieProperty.STROKE_COLOR)
     {
-      this.colorFilterAnimation = null;
+      this.colorAnimation.setValueCallback(paramLottieValueCallback);
       return;
     }
-    this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
-    this.colorFilterAnimation.addUpdateListener(this);
-    this.layer.addAnimation(this.colorAnimation);
+    if (paramT == LottieProperty.COLOR_FILTER)
+    {
+      if (paramLottieValueCallback == null)
+      {
+        this.colorFilterAnimation = null;
+        return;
+      }
+      this.colorFilterAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.colorFilterAnimation.addUpdateListener(this);
+      this.layer.addAnimation(this.colorAnimation);
+    }
   }
   
   public void draw(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
@@ -76,7 +78,7 @@ public class StrokeContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.StrokeContent
  * JD-Core Version:    0.7.0.1
  */

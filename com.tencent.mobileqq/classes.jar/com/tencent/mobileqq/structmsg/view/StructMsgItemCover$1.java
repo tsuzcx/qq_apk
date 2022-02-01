@@ -29,8 +29,12 @@ class StructMsgItemCover$1
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadFailed ,cause = " + paramThrowable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLoadFailed ,cause = ");
+      localStringBuilder.append(paramThrowable);
+      QLog.d("StructMsgItemCover", 2, localStringBuilder.toString());
     }
     if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null))
     {
@@ -61,8 +65,8 @@ class StructMsgItemCover$1
     }
     catch (Exception paramURLDrawable)
     {
-      label156:
-      break label156;
+      label166:
+      break label166;
     }
     this.a.a(paramView, 0, 1001);
   }
@@ -104,7 +108,7 @@ class StructMsgItemCover$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemCover.1
  * JD-Core Version:    0.7.0.1
  */

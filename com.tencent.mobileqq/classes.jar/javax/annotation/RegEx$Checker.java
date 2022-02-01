@@ -18,13 +18,17 @@ public class RegEx$Checker
       Pattern.compile((String)paramObject);
       return When.ALWAYS;
     }
-    catch (PatternSyntaxException paramRegEx) {}
+    catch (PatternSyntaxException paramRegEx)
+    {
+      label23:
+      break label23;
+    }
     return When.NEVER;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     javax.annotation.RegEx.Checker
  * JD-Core Version:    0.7.0.1
  */

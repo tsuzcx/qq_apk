@@ -35,7 +35,7 @@ import java.util.List;
 
 public class MediaBuilder
 {
-  public static final String TAG = MediaBuilder.class.getSimpleName();
+  public static final String TAG = "MediaBuilder";
   
   public static void build(@NonNull MediaModel paramMediaModel, VideoRenderChainManager.IStickerContextInterface paramIStickerContextInterface, @NonNull MediaBuilderListener paramMediaBuilderListener, @NonNull VideoRenderChainConfigure paramVideoRenderChainConfigure)
   {
@@ -67,7 +67,6 @@ public class MediaBuilder
       return paramITAVCompositionBuilderInterface.buildComposition((List)localObject2);
     }
     paramITAVCompositionBuilderInterface = ((List)localObject2).iterator();
-    long l = 0L;
     while (paramITAVCompositionBuilderInterface.hasNext())
     {
       localObject2 = (MediaClipModel)paramITAVCompositionBuilderInterface.next();
@@ -89,11 +88,7 @@ public class MediaBuilder
           if (((MediaClipModel)localObject2).getAudioConfigurationModel() != null) {
             ((TAVClip)localObject3).setAudioConfiguration(ModelAdaptUtils.transformToTAVAudioConfiguration(((MediaClipModel)localObject2).getAudioConfigurationModel()).convertToConfiguration());
           }
-          if (0 != 0) {
-            l = multiClipsAdjustTimeRange((List)localObject1, ((MediaClipModel)localObject2).getResource(), (TAVClip)localObject3, 1.0F, l, 0L, 0L);
-          } else {
-            ((List)localObject1).add(localObject3);
-          }
+          ((List)localObject1).add(localObject3);
         }
       }
     }
@@ -123,43 +118,40 @@ public class MediaBuilder
       paramMediaModel.getMediaEffectModel().setMusicModel((MusicModel)localObject1);
     }
     localObject1 = ((MusicModel)localObject1).getMetaDataBean();
-    float f2;
     if ((localObject1 != null) && (paramTAVComposition != null) && (!TextUtils.isEmpty(((MusicMaterialMetaDataBean)localObject1).path)))
     {
-      f1 = ((MusicMaterialMetaDataBean)localObject1).startTime;
-      f2 = ((MusicMaterialMetaDataBean)localObject1).mTotalTime * 1000;
-      if (f2 <= 0.0F) {
-        break label213;
+      float f1 = ((MusicMaterialMetaDataBean)localObject1).startTime;
+      float f2 = ((MusicMaterialMetaDataBean)localObject1).mTotalTime * 1000;
+      if (f2 > 0.0F) {
+        f1 = f2 - f1;
+      } else {
+        f1 = ((MusicMaterialMetaDataBean)localObject1).segDuration;
       }
-    }
-    label213:
-    for (float f1 = f2 - f1;; f1 = ((MusicMaterialMetaDataBean)localObject1).segDuration)
-    {
       f2 = (float)paramTAVComposition.getDuration().getTimeUs() / 1000.0F;
-      if ((f2 >= f1) && (f1 > 0.0F)) {
-        break;
+      if ((f2 >= f1) && (f1 > 0.0F))
+      {
+        paramTAVComposition = new TAVClip(new URLAsset(((MusicMaterialMetaDataBean)localObject1).path));
+        localObject2 = new CMTime(f1 / 1000.0F);
+        int i = 0;
+        while (f2 > 0.0F)
+        {
+          TAVClip localTAVClip = paramTAVComposition.clone();
+          localTAVClip.getAudioConfiguration().setVolume(paramMediaModel.getMediaEffectModel().getMusicModel().getBgmVolume());
+          localTAVClip.getResource().setSourceTimeRange(new CMTimeRange(new CMTime(((MusicMaterialMetaDataBean)localObject1).startTime / 1000.0F), (CMTime)localObject2));
+          localTAVClip.setStartTime(((CMTime)localObject2).multi(i));
+          localArrayList.add(localTAVClip);
+          f2 -= f1;
+          i += 1;
+        }
+        CompositionUtils.reloadAudioStartTimeWithTransitionableAudio(localArrayList);
+        return localArrayList;
       }
       paramTAVComposition = paramTAVComposition.getDuration();
       localObject2 = new TAVClip(new URLAsset(((MusicMaterialMetaDataBean)localObject1).path));
       ((TAVClip)localObject2).getAudioConfiguration().setVolume(paramMediaModel.getMediaEffectModel().getMusicModel().getBgmVolume());
       ((TAVClip)localObject2).getResource().setSourceTimeRange(new CMTimeRange(new CMTime(((MusicMaterialMetaDataBean)localObject1).startTime / 1000.0F), paramTAVComposition));
       localArrayList.add(localObject2);
-      return localArrayList;
     }
-    paramTAVComposition = new TAVClip(new URLAsset(((MusicMaterialMetaDataBean)localObject1).path));
-    localObject2 = new CMTime(f1 / 1000.0F);
-    int i = 0;
-    while (f2 > 0.0F)
-    {
-      TAVClip localTAVClip = paramTAVComposition.clone();
-      localTAVClip.getAudioConfiguration().setVolume(paramMediaModel.getMediaEffectModel().getMusicModel().getBgmVolume());
-      localTAVClip.getResource().setSourceTimeRange(new CMTimeRange(new CMTime(((MusicMaterialMetaDataBean)localObject1).startTime / 1000.0F), (CMTime)localObject2));
-      localTAVClip.setStartTime(((CMTime)localObject2).multi(i));
-      localArrayList.add(localTAVClip);
-      f2 -= f1;
-      i += 1;
-    }
-    CompositionUtils.reloadAudioStartTimeWithTransitionableAudio(localArrayList);
     return localArrayList;
   }
   
@@ -176,76 +168,72 @@ public class MediaBuilder
   
   public static long multiClipsAdjustTimeRange(List<TAVClip> paramList, VideoResourceModel paramVideoResourceModel, TAVClip paramTAVClip, float paramFloat, long paramLong1, long paramLong2, long paramLong3)
   {
-    long l1;
-    float f;
-    long l3;
-    long l2;
-    if (paramLong2 - paramLong1 < 0L)
-    {
+    long l3 = paramLong2 - paramLong1;
+    long l2 = 0L;
+    long l1 = l3;
+    if (l3 < 0L) {
       l1 = 0L;
-      f = paramFloat;
-      if (paramVideoResourceModel.getScaleDuration() != 0L) {
-        f = (float)paramVideoResourceModel.getSelectTimeDuration() * paramFloat / (float)paramVideoResourceModel.getScaleDuration();
-      }
-      if (paramVideoResourceModel.getType() != 1) {
-        break label283;
-      }
-      l3 = ((float)(paramVideoResourceModel.getSelectTimeDuration() * 1000L) / f);
+    }
+    if (paramVideoResourceModel.getScaleDuration() != 0L) {
+      paramFloat = (float)paramVideoResourceModel.getSelectTimeDuration() * paramFloat / (float)paramVideoResourceModel.getScaleDuration();
+    }
+    if (paramVideoResourceModel.getType() == 1)
+    {
+      l3 = ((float)(paramVideoResourceModel.getSelectTimeDuration() * 1000L) / paramFloat);
       l2 = l3 - l1;
       if ((l2 > 0L) && (paramLong1 < paramLong3))
       {
         if (paramLong1 + l3 >= paramLong3) {
-          break label270;
+          l2 = paramLong3 - paramLong1 - l1;
         }
-        label96:
         CMTime localCMTime = new CMTime(l2, 1000000);
-        TAVResource localTAVResource = paramTAVClip.getResource();
-        paramFloat = (float)((paramVideoResourceModel.getSourceTimeStart() + paramVideoResourceModel.getSelectTimeStart()) * 1000L);
-        localTAVResource.setSourceTimeRange(new CMTimeRange(new CMTime(((float)l1 * f + paramFloat) / 1000000.0F), localCMTime.multi(f)));
+        paramTAVClip.getResource().setSourceTimeRange(new CMTimeRange(new CMTime(((float)((paramVideoResourceModel.getSourceTimeStart() + paramVideoResourceModel.getSelectTimeStart()) * 1000L) + (float)l1 * paramFloat) / 1000000.0F), localCMTime.multi(paramFloat)));
         paramTAVClip.getResource().setScaledDuration(localCMTime);
         paramList.add(paramTAVClip);
       }
       paramLong1 += l3;
       l1 = l3;
     }
-    for (;;)
+    else if ((paramVideoResourceModel.getType() != 2) && (paramVideoResourceModel.getType() != 4))
     {
-      Logger.e(TAG, "multiClipsAdjustTimeRange: rangeStartUs-" + paramLong2 + ", rangeEndUs-" + paramLong3 + ", speed-" + f + ", itemScaleUs-" + l1);
-      return paramLong1;
-      l1 = paramLong2 - paramLong1;
-      break;
-      label270:
-      l2 = paramLong3 - paramLong1 - l1;
-      break label96;
-      label283:
-      if ((paramVideoResourceModel.getType() == 2) || (paramVideoResourceModel.getType() == 4))
-      {
-        l2 = ((float)(paramVideoResourceModel.getSelectTimeDuration() * 1000L) / f);
-        l3 = l2 - l1;
-        if ((l3 > 0L) && (paramLong1 < paramLong3)) {
-          if (paramLong1 + l2 >= paramLong3) {
-            break label404;
-          }
-        }
-        for (l1 = l3;; l1 = paramLong3 - paramLong1 - l1)
-        {
-          paramVideoResourceModel = new CMTime(l1, 1000000);
-          paramTAVClip.setDuration(paramVideoResourceModel.multi(f));
-          paramTAVClip.getResource().setScaledDuration(paramVideoResourceModel);
-          paramList.add(paramTAVClip);
-          paramLong1 += l2;
-          l1 = l2;
-          break;
-        }
-      }
-      label404:
-      l1 = 0L;
+      l1 = l2;
     }
+    else
+    {
+      l2 = ((float)(paramVideoResourceModel.getSelectTimeDuration() * 1000L) / paramFloat);
+      l3 = l2 - l1;
+      if ((l3 > 0L) && (paramLong1 < paramLong3))
+      {
+        if (paramLong1 + l2 < paramLong3) {
+          l1 = l3;
+        } else {
+          l1 = paramLong3 - paramLong1 - l1;
+        }
+        paramVideoResourceModel = new CMTime(l1, 1000000);
+        paramTAVClip.setDuration(paramVideoResourceModel.multi(paramFloat));
+        paramTAVClip.getResource().setScaledDuration(paramVideoResourceModel);
+        paramList.add(paramTAVClip);
+      }
+      paramLong1 += l2;
+      l1 = l2;
+    }
+    paramList = TAG;
+    paramVideoResourceModel = new StringBuilder();
+    paramVideoResourceModel.append("multiClipsAdjustTimeRange: rangeStartUs-");
+    paramVideoResourceModel.append(paramLong2);
+    paramVideoResourceModel.append(", rangeEndUs-");
+    paramVideoResourceModel.append(paramLong3);
+    paramVideoResourceModel.append(", speed-");
+    paramVideoResourceModel.append(paramFloat);
+    paramVideoResourceModel.append(", itemScaleUs-");
+    paramVideoResourceModel.append(l1);
+    Logger.e(paramList, paramVideoResourceModel.toString());
+    return paramLong1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.builder.MediaBuilder
  * JD-Core Version:    0.7.0.1
  */

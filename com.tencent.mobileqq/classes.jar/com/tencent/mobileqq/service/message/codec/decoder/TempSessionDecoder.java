@@ -52,116 +52,118 @@ public class TempSessionDecoder
 {
   private static int a(int paramInt1, int paramInt2)
   {
-    switch (paramInt2)
+    if (paramInt2 != 133)
     {
-    case 134: 
-    case 135: 
-    case 136: 
-    case 138: 
-    case 139: 
-    case 140: 
-    case 141: 
-    case 142: 
-    case 143: 
-    case 145: 
-    case 146: 
-    case 147: 
-    case 148: 
-    case 150: 
-    case 151: 
-    case 152: 
-    case 154: 
-    case 155: 
-    case 157: 
-    case 158: 
-    case 162: 
-    default: 
-      return paramInt1;
-    case 133: 
-      return 1023;
-    case 137: 
+      if (paramInt2 != 137)
+      {
+        if (paramInt2 != 144)
+        {
+          if (paramInt2 != 149)
+          {
+            if (paramInt2 != 153)
+            {
+              if (paramInt2 != 156)
+              {
+                if (paramInt2 != 160)
+                {
+                  if (paramInt2 != 161)
+                  {
+                    switch (paramInt2)
+                    {
+                    default: 
+                      return paramInt1;
+                    case 168: 
+                      return 10009;
+                    case 167: 
+                      return 10010;
+                    case 166: 
+                      return 1045;
+                    case 165: 
+                      return 10008;
+                    case 164: 
+                      return 10007;
+                    }
+                    return 1044;
+                  }
+                  return 1038;
+                }
+                return 1036;
+              }
+              return 1032;
+            }
+            return 10004;
+          }
+          return 10002;
+        }
+        return 7400;
+      }
       return 1010;
-    case 144: 
-      return 7400;
-    case 149: 
-      return 10002;
-    case 153: 
-      return 10004;
-    case 160: 
-      return 1036;
-    case 156: 
-      return 1032;
-    case 159: 
-      return 1037;
-    case 161: 
-      return 1038;
-    case 163: 
-      return 1044;
-    case 164: 
-      return 10007;
-    case 165: 
-      return 10008;
-    case 166: 
-      return 1045;
-    case 167: 
-      return 10010;
     }
-    return 10009;
+    return 1023;
   }
   
   private static int a(msg_comm.Msg paramMsg, int paramInt1, int paramInt2)
   {
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    default: 
-      paramInt1 = a(paramInt1, paramInt2);
-    case 0: 
-    case 1: 
-    case 58: 
-      do
+      if (paramInt2 != 1)
       {
-        return paramInt1;
-        return 1000;
-        return 1004;
-        paramInt1 = 1024;
-      } while ((!BmqqSegmentUtil.a(BaseApplicationImpl.getContext(), String.valueOf(paramMsg.msg_head.from_uin.get()))) && (!BmqqSegmentUtil.a(BaseApplicationImpl.getContext(), String.valueOf(paramMsg.msg_head.to_uin.get()))));
-      return 1025;
-    case 201: 
-      return 1005;
-    case 129: 
-    case 140: 
-    case 142: 
-      return 1008;
-    case 130: 
-      return 1006;
-    case 131: 
-      return 1009;
-    case 124: 
-      return 1001;
-    case 132: 
-      return 1020;
-    case 121: 
-      return 1021;
+        if (paramInt2 != 58)
+        {
+          if (paramInt2 != 121)
+          {
+            if (paramInt2 != 124)
+            {
+              if (paramInt2 != 134)
+              {
+                if ((paramInt2 != 140) && (paramInt2 != 142))
+                {
+                  if (paramInt2 != 201) {}
+                  switch (paramInt2)
+                  {
+                  default: 
+                    return a(paramInt1, paramInt2);
+                  case 132: 
+                    return 1020;
+                  case 131: 
+                    return 1009;
+                  case 130: 
+                    return 1006;
+                    return 1005;
+                  }
+                }
+                return 1008;
+              }
+              return 1022;
+            }
+            return 1001;
+          }
+          return 1021;
+        }
+        if ((!BmqqSegmentUtil.a(BaseApplicationImpl.getContext(), String.valueOf(paramMsg.msg_head.from_uin.get()))) && (!BmqqSegmentUtil.a(BaseApplicationImpl.getContext(), String.valueOf(paramMsg.msg_head.to_uin.get())))) {
+          return 1024;
+        }
+        return 1025;
+      }
+      return 1004;
     }
-    return 1022;
+    return 1000;
   }
   
   private int a(im_msg_body.TmpPtt paramTmpPtt, int paramInt)
   {
-    int i = paramInt;
     if (paramTmpPtt.uint32_user_type.has())
     {
       int j = paramTmpPtt.uint32_user_type.get();
-      if (j != 1)
-      {
-        i = paramInt;
-        if (j != 2) {}
+      i = j;
+      if (j == 1) {
+        return i;
       }
-      else
-      {
-        i = j;
+      if (j == 2) {
+        return j;
       }
     }
+    int i = paramInt;
     return i;
   }
   
@@ -187,186 +189,223 @@ public class TempSessionDecoder
   
   private void a(MessageHandler paramMessageHandler, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte)
   {
-    switch (paramTempSessionInfo.jdField_a_of_type_Int)
+    int i = paramTempSessionInfo.jdField_a_of_type_Int;
+    if (i != 1001)
     {
-    default: 
-      paramMessageHandler = (TempSessionCache)paramMessageHandler.a.getMessageFacade().a().a().a(Integer.valueOf(paramTempSessionInfo.jdField_a_of_type_Int));
-      if (paramMessageHandler != null) {
-        paramMessageHandler.a(paramDecodeProtoPkgContext, paramArrayOfByte);
-      }
-    case 1005: 
-    case 1023: 
-    case 1024: 
-    case 1025: 
-    case 1006: 
-    case 1008: 
-    case 1009: 
-    case 1001: 
-    case 10002: 
-    case 10004: 
-    case 1021: 
-    case 1022: 
-    case 1010: 
-    case 7400: 
-    case 1032: 
-    case 1033: 
-    case 1034: 
-    case 1037: 
-    case 1044: 
-    case 1045: 
-    case 10007: 
-      do
+      if (i != 7400)
       {
-        return;
-        paramTempSessionInfo = new byte[paramArrayOfByte.length + 2];
-        paramTempSessionInfo[0] = paramByte1;
-        paramTempSessionInfo[1] = paramByte2;
-        PkgTools.copyData(paramTempSessionInfo, 2, paramArrayOfByte, 0, paramArrayOfByte.length);
-        paramMessageHandler.a.getMsgCache().a(String.valueOf(paramDecodeProtoPkgContext.e), paramTempSessionInfo);
-        return;
-        paramTempSessionInfo = new byte[paramArrayOfByte.length + 2];
-        paramTempSessionInfo[0] = paramByte1;
-        paramTempSessionInfo[1] = paramByte2;
-        PkgTools.copyData(paramTempSessionInfo, 2, paramArrayOfByte, 0, paramArrayOfByte.length);
-        paramMessageHandler.a.getMsgCache().b(String.valueOf(paramDecodeProtoPkgContext.e), paramTempSessionInfo);
-        return;
-        paramMessageHandler.a.getMsgCache().c(String.valueOf(paramDecodeProtoPkgContext.e), paramArrayOfByte);
-        return;
-        paramMessageHandler = new byte[paramArrayOfByte.length + 2];
-        paramMessageHandler[0] = paramByte1;
-        paramMessageHandler[1] = paramByte2;
-        PkgTools.copyData(paramMessageHandler, 2, paramArrayOfByte, 0, paramArrayOfByte.length);
-        return;
-        paramTempSessionInfo = new byte[paramArrayOfByte.length + 2];
-        paramTempSessionInfo[0] = paramByte1;
-        paramTempSessionInfo[1] = paramByte2;
-        PkgTools.copyData(paramTempSessionInfo, 2, paramArrayOfByte, 0, paramArrayOfByte.length);
-        paramMessageHandler.a.getMsgCache().e(String.valueOf(paramDecodeProtoPkgContext.e), paramTempSessionInfo);
-        return;
-        paramMessageHandler.a.getMsgCache().f(String.valueOf(paramDecodeProtoPkgContext.e), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().g(String.valueOf(paramDecodeProtoPkgContext.e), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().h(String.valueOf(paramDecodeProtoPkgContext.e), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().i(String.valueOf(paramDecodeProtoPkgContext.e), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().l(String.valueOf(paramDecodeProtoPkgContext.e), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().n(String.valueOf(paramDecodeProtoPkgContext.e), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().k(String.valueOf(paramDecodeProtoPkgContext.e), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().j(String.valueOf(paramDecodeProtoPkgContext.e), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().a(String.valueOf(paramDecodeProtoPkgContext.e), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().b(String.valueOf(paramDecodeProtoPkgContext.e), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().c(String.valueOf(paramDecodeProtoPkgContext.e), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
-        return;
-        paramMessageHandler.a.getMsgCache().a(String.valueOf(paramDecodeProtoPkgContext.e), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte, false);
-        return;
-      } while (!paramDecodeProtoPkgContext.i);
-      paramMessageHandler.a.getMsgCache().d(String.valueOf(paramDecodeProtoPkgContext.e), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
-      return;
-    case 10008: 
-      paramMessageHandler.a.getMsgCache().f(String.valueOf(paramDecodeProtoPkgContext.e), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
-      return;
-    case 10009: 
-      paramMessageHandler.a.getMsgCache().e(String.valueOf(paramDecodeProtoPkgContext.e), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
-      return;
+        if (i != 10002)
+        {
+          if (i != 10004)
+          {
+            if (i != 1005)
+            {
+              if (i != 1006)
+              {
+                if (i != 1044)
+                {
+                  if (i != 1045) {
+                    switch (i)
+                    {
+                    default: 
+                      switch (i)
+                      {
+                      default: 
+                        switch (i)
+                        {
+                        default: 
+                          switch (i)
+                          {
+                          default: 
+                            paramMessageHandler = (TempSessionCache)paramMessageHandler.a.getMessageFacade().a().a().a(Integer.valueOf(paramTempSessionInfo.jdField_a_of_type_Int));
+                            if (paramMessageHandler == null) {
+                              break;
+                            }
+                            paramMessageHandler.a(paramDecodeProtoPkgContext, paramArrayOfByte);
+                            return;
+                          case 10010: 
+                            paramMessageHandler.a.getMsgCache().o(String.valueOf(paramDecodeProtoPkgContext.g), paramArrayOfByte);
+                            return;
+                          case 10009: 
+                            paramMessageHandler.a.getMsgCache().d(String.valueOf(paramDecodeProtoPkgContext.g), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
+                            return;
+                          case 10008: 
+                            paramMessageHandler.a.getMsgCache().e(String.valueOf(paramDecodeProtoPkgContext.g), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
+                            return;
+                          case 10007: 
+                            if (!paramDecodeProtoPkgContext.i) {
+                              break;
+                            }
+                            paramMessageHandler.a.getMsgCache().c(String.valueOf(paramDecodeProtoPkgContext.g), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
+                            return;
+                          }
+                          break;
+                        case 1032: 
+                        case 1033: 
+                        case 1034: 
+                          paramMessageHandler.a.getMsgCache().a(String.valueOf(paramDecodeProtoPkgContext.g), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
+                          return;
+                        }
+                        break;
+                      case 1024: 
+                      case 1025: 
+                        paramMessageHandler.a.getMsgCache().c(String.valueOf(paramDecodeProtoPkgContext.g), paramArrayOfByte);
+                        return;
+                      case 1023: 
+                        paramTempSessionInfo = new byte[paramArrayOfByte.length + 2];
+                        paramTempSessionInfo[0] = paramByte1;
+                        paramTempSessionInfo[1] = paramByte2;
+                        PkgTools.copyData(paramTempSessionInfo, 2, paramArrayOfByte, 0, paramArrayOfByte.length);
+                        paramMessageHandler.a.getMsgCache().b(String.valueOf(paramDecodeProtoPkgContext.g), paramTempSessionInfo);
+                        return;
+                      case 1022: 
+                        paramMessageHandler.a.getMsgCache().n(String.valueOf(paramDecodeProtoPkgContext.g), paramArrayOfByte);
+                        return;
+                      case 1021: 
+                        paramMessageHandler.a.getMsgCache().l(String.valueOf(paramDecodeProtoPkgContext.g), paramArrayOfByte);
+                        return;
+                      }
+                      break;
+                    case 1010: 
+                      paramMessageHandler.a.getMsgCache().k(String.valueOf(paramDecodeProtoPkgContext.g), paramArrayOfByte);
+                      return;
+                    case 1009: 
+                      paramMessageHandler.a.getMsgCache().f(String.valueOf(paramDecodeProtoPkgContext.g), paramArrayOfByte);
+                      return;
+                    case 1008: 
+                      paramTempSessionInfo = new byte[paramArrayOfByte.length + 2];
+                      paramTempSessionInfo[0] = paramByte1;
+                      paramTempSessionInfo[1] = paramByte2;
+                      PkgTools.copyData(paramTempSessionInfo, 2, paramArrayOfByte, 0, paramArrayOfByte.length);
+                      paramMessageHandler.a.getMsgCache().e(String.valueOf(paramDecodeProtoPkgContext.g), paramTempSessionInfo);
+                      return;
+                    }
+                  } else {
+                    paramMessageHandler.a.getMsgCache().a(String.valueOf(paramDecodeProtoPkgContext.g), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte, false);
+                  }
+                }
+                else {
+                  paramMessageHandler.a.getMsgCache().b(String.valueOf(paramDecodeProtoPkgContext.g), String.valueOf(paramDecodeProtoPkgContext.jdField_a_of_type_Long), paramArrayOfByte);
+                }
+              }
+              else
+              {
+                paramMessageHandler = new byte[paramArrayOfByte.length + 2];
+                paramMessageHandler[0] = paramByte1;
+                paramMessageHandler[1] = paramByte2;
+                PkgTools.copyData(paramMessageHandler, 2, paramArrayOfByte, 0, paramArrayOfByte.length);
+              }
+            }
+            else
+            {
+              paramTempSessionInfo = new byte[paramArrayOfByte.length + 2];
+              paramTempSessionInfo[0] = paramByte1;
+              paramTempSessionInfo[1] = paramByte2;
+              PkgTools.copyData(paramTempSessionInfo, 2, paramArrayOfByte, 0, paramArrayOfByte.length);
+              paramMessageHandler.a.getMsgCache().a(String.valueOf(paramDecodeProtoPkgContext.g), paramTempSessionInfo);
+            }
+          }
+          else {
+            paramMessageHandler.a.getMsgCache().i(String.valueOf(paramDecodeProtoPkgContext.g), paramArrayOfByte);
+          }
+        }
+        else {
+          paramMessageHandler.a.getMsgCache().h(String.valueOf(paramDecodeProtoPkgContext.g), paramArrayOfByte);
+        }
+      }
+      else {
+        paramMessageHandler.a.getMsgCache().j(String.valueOf(paramDecodeProtoPkgContext.g), paramArrayOfByte);
+      }
     }
-    paramMessageHandler.a.getMsgCache().o(String.valueOf(paramDecodeProtoPkgContext.e), paramArrayOfByte);
+    else {
+      paramMessageHandler.a.getMsgCache().g(String.valueOf(paramDecodeProtoPkgContext.g), paramArrayOfByte);
+    }
   }
   
   private void a(MessageHandler paramMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
     Object localObject = (msg_comm.MsgHead)paramMsg.msg_head.get();
-    int i;
-    if ((((msg_comm.MsgHead)localObject).msg_type.get() == 529) && (((msg_comm.MsgHead)localObject).c2c_cmd.get() == 6))
-    {
+    int i = ((msg_comm.MsgHead)localObject).msg_type.get();
+    boolean bool = false;
+    if ((i == 529) && (((msg_comm.MsgHead)localObject).c2c_cmd.get() == 6)) {
       i = 1;
-      if ((((msg_comm.MsgHead)localObject).c2c_tmp_msg_head.has()) && (paramMsg.msg_body.has()) && ((i != 0) || (((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()))) {
-        break label94;
-      }
-    }
-    label94:
-    msg_comm.C2CTmpMsgHead localC2CTmpMsgHead;
-    int j;
-    int k;
-    do
-    {
-      return;
+    } else {
       i = 0;
-      break;
-      localC2CTmpMsgHead = (msg_comm.C2CTmpMsgHead)((msg_comm.MsgHead)localObject).c2c_tmp_msg_head.get();
-      j = localC2CTmpMsgHead.c2c_type.get();
-      k = localC2CTmpMsgHead.service_type.get();
-    } while (a(paramMessageHandler, paramTempSessionInfo, paramDecodeProtoPkgContext, localC2CTmpMsgHead));
-    byte[] arrayOfByte = null;
-    localObject = arrayOfByte;
-    if (!paramDecodeProtoPkgContext.jdField_d_of_type_Boolean)
+    }
+    if ((((msg_comm.MsgHead)localObject).c2c_tmp_msg_head.has()) && (paramMsg.msg_body.has()) && ((i != 0) || (((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has())))
     {
-      localObject = arrayOfByte;
-      if (localC2CTmpMsgHead.sig.has())
+      localObject = (msg_comm.C2CTmpMsgHead)((msg_comm.MsgHead)localObject).c2c_tmp_msg_head.get();
+      int j = ((msg_comm.C2CTmpMsgHead)localObject).c2c_type.get();
+      int k = ((msg_comm.C2CTmpMsgHead)localObject).service_type.get();
+      if (a(paramMessageHandler, paramTempSessionInfo, paramDecodeProtoPkgContext, (msg_comm.C2CTmpMsgHead)localObject)) {
+        return;
+      }
+      if ((!paramDecodeProtoPkgContext.jdField_d_of_type_Boolean) && (((msg_comm.C2CTmpMsgHead)localObject).sig.has()))
       {
-        arrayOfByte = localC2CTmpMsgHead.sig.get().toByteArray();
-        localObject = arrayOfByte;
+        localObject = ((msg_comm.C2CTmpMsgHead)localObject).sig.get().toByteArray();
         if (QLog.isDevelopLevel())
         {
-          QLog.d("TempSessionDecoder", 4, "tempHead.sig.get()----> sig:" + HexUtil.bytes2HexStr(arrayOfByte) + ",length:" + arrayOfByte.length);
-          localObject = arrayOfByte;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("tempHead.sig.get()----> sig:");
+          localStringBuilder.append(HexUtil.bytes2HexStr((byte[])localObject));
+          localStringBuilder.append(",length:");
+          localStringBuilder.append(localObject.length);
+          QLog.d("TempSessionDecoder", 4, localStringBuilder.toString());
         }
       }
-    }
-    if (localObject != null) {
-      a(paramMessageHandler, paramTempSessionInfo, paramDecodeProtoPkgContext, (byte)j, (byte)k, (byte[])localObject);
-    }
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMsg.content_head.has())
-    {
-      bool1 = bool2;
-      if (((msg_comm.ContentHead)paramMsg.content_head.get()).auto_reply.has())
+      else
       {
-        if (((msg_comm.ContentHead)paramMsg.content_head.get()).auto_reply.get() != 1) {
-          break label374;
-        }
-        bool1 = true;
+        localObject = null;
       }
-    }
-    if (i == 0) {}
-    for (localObject = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();; localObject = null)
-    {
-      a(paramMessageHandler, paramList, paramMsg, paramTempSessionInfo, paramDecodeProtoPkgContext, bool1, (List)localObject);
+      if (localObject != null) {
+        a(paramMessageHandler, paramTempSessionInfo, paramDecodeProtoPkgContext, (byte)j, (byte)k, (byte[])localObject);
+      }
+      if ((paramMsg.content_head.has()) && (((msg_comm.ContentHead)paramMsg.content_head.get()).auto_reply.has()))
+      {
+        if (((msg_comm.ContentHead)paramMsg.content_head.get()).auto_reply.get() == 1) {
+          bool = true;
+        }
+      }
+      else {
+        bool = false;
+      }
+      if (i == 0) {
+        localObject = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
+      } else {
+        localObject = null;
+      }
+      a(paramMessageHandler, paramList, paramMsg, paramTempSessionInfo, paramDecodeProtoPkgContext, bool, (List)localObject);
       return;
-      label374:
-      bool1 = false;
-      break;
     }
   }
   
   private void a(MessageHandler paramMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext, boolean paramBoolean, List<im_msg_body.Elem> paramList1)
   {
-    if (paramBoolean) {
-      if ((paramList1 != null) && (paramList1.size() > 0)) {}
-    }
-    while (paramTempSessionInfo == null)
+    if (paramBoolean)
     {
-      do
+      if (paramList1 != null)
       {
-        return;
+        if (paramList1.size() <= 0) {
+          return;
+        }
         paramMessageHandler = (im_msg_body.Text)((im_msg_body.Elem)paramList1.get(0)).text.get();
-      } while (paramDecodeProtoPkgContext.jdField_b_of_type_Boolean);
-      paramMessageHandler = BaseApplication.getContext().getString(2131690323) + " " + paramMessageHandler.str.get().toStringUtf8();
-      paramMsg = MessageRecordFactory.a(-10000);
-      paramMsg.msgtype = -10000;
-      paramMsg.msg = paramMessageHandler;
-      paramList.add(paramMsg);
-      return;
+        if (paramDecodeProtoPkgContext.jdField_b_of_type_Boolean) {
+          return;
+        }
+        paramMsg = new StringBuilder();
+        paramMsg.append(BaseApplication.getContext().getString(2131690244));
+        paramMsg.append(" ");
+        paramMsg.append(paramMessageHandler.str.get().toStringUtf8());
+        paramMessageHandler = paramMsg.toString();
+        paramMsg = MessageRecordFactory.a(-10000);
+        paramMsg.msgtype = -10000;
+        paramMsg.msg = paramMessageHandler;
+        paramList.add(paramMsg);
+      }
     }
-    b(paramMessageHandler, paramList, paramMsg, paramTempSessionInfo, paramDecodeProtoPkgContext);
+    else if (paramTempSessionInfo != null) {
+      b(paramMessageHandler, paramList, paramMsg, paramTempSessionInfo, paramDecodeProtoPkgContext);
+    }
   }
   
   private static void a(TempSessionInfo paramTempSessionInfo, int paramInt1, int paramInt2)
@@ -374,38 +413,47 @@ public class TempSessionDecoder
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("<---getC2CMsgPkgTempInfo: dump info:");
-      localStringBuilder.append(" c2cType:").append(paramInt1).append(" serviceType:").append(paramInt2).append("direction_flag:").append(paramTempSessionInfo.jdField_b_of_type_Int).append(" info:").append(paramTempSessionInfo.toString());
+      localStringBuilder.append(" c2cType:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" serviceType:");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("direction_flag:");
+      localStringBuilder.append(paramTempSessionInfo.jdField_b_of_type_Int);
+      localStringBuilder.append(" info:");
+      localStringBuilder.append(paramTempSessionInfo.toString());
       QLog.d("TempSessionDecoder", 2, localStringBuilder.toString());
     }
   }
   
   private static void a(TempSessionInfo paramTempSessionInfo, msg_comm.C2CTmpMsgHead paramC2CTmpMsgHead, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-    case 132: 
-      paramTempSessionInfo.jdField_a_of_type_Long = paramC2CTmpMsgHead.group_code.get();
-      paramTempSessionInfo.jdField_b_of_type_Long = paramC2CTmpMsgHead.group_uin.get();
-      return;
+    if (paramInt != 0) {
+      if (paramInt != 1)
+      {
+        if (paramInt == 132) {}
+      }
+      else
+      {
+        paramTempSessionInfo.jdField_a_of_type_Long = paramC2CTmpMsgHead.group_code.get();
+        paramTempSessionInfo.jdField_b_of_type_Long = paramC2CTmpMsgHead.group_code.get();
+        return;
+      }
     }
     paramTempSessionInfo.jdField_a_of_type_Long = paramC2CTmpMsgHead.group_code.get();
-    paramTempSessionInfo.jdField_b_of_type_Long = paramC2CTmpMsgHead.group_code.get();
+    paramTempSessionInfo.jdField_b_of_type_Long = paramC2CTmpMsgHead.group_uin.get();
   }
   
   private static void a(msg_comm.C2CTmpMsgHead paramC2CTmpMsgHead)
   {
-    if (!paramC2CTmpMsgHead.c2c_type.has()) {
+    if (!paramC2CTmpMsgHead.c2c_type.has())
+    {
       if (QLog.isColorLevel()) {
         QLog.e("TempSessionDecoder", 2, "It doesn't has a c2cType.");
       }
     }
-    while ((paramC2CTmpMsgHead.service_type.has()) || (!QLog.isColorLevel())) {
-      return;
+    else if ((!paramC2CTmpMsgHead.service_type.has()) && (QLog.isColorLevel())) {
+      QLog.e("TempSessionDecoder", 2, "Invalid service type, the pb data has no service type.");
     }
-    QLog.e("TempSessionDecoder", 2, "Invalid service type, the pb data has no service type.");
   }
   
   private boolean a(MessageHandler paramMessageHandler, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext, msg_comm.C2CTmpMsgHead paramC2CTmpMsgHead)
@@ -413,171 +461,197 @@ public class TempSessionDecoder
     if ((!paramDecodeProtoPkgContext.jdField_d_of_type_Boolean) && (paramTempSessionInfo.jdField_a_of_type_Int == 1006))
     {
       paramTempSessionInfo = paramC2CTmpMsgHead.from_phone.get();
-      if ((!paramC2CTmpMsgHead.from_phone.has()) || (paramTempSessionInfo == null) || (paramTempSessionInfo.equals("+0")))
+      if ((paramC2CTmpMsgHead.from_phone.has()) && (paramTempSessionInfo != null) && (!paramTempSessionInfo.equals("+0")))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TempSessionDecoder", 2, "<---decodeC2CMsgPkg_Temp2 : contact fromPhoneNum error : " + paramC2CTmpMsgHead.from_phone.get());
+        paramMessageHandler = paramMessageHandler.a;
+        paramTempSessionInfo = paramC2CTmpMsgHead.from_phone.get();
+        paramC2CTmpMsgHead = new StringBuilder();
+        paramC2CTmpMsgHead.append(paramDecodeProtoPkgContext.g);
+        paramC2CTmpMsgHead.append("");
+        ContactUtils.a(paramMessageHandler, paramTempSessionInfo, paramC2CTmpMsgHead.toString());
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          paramMessageHandler = new StringBuilder();
+          paramMessageHandler.append("<---decodeC2CMsgPkg_Temp2 : contact fromPhoneNum error : ");
+          paramMessageHandler.append(paramC2CTmpMsgHead.from_phone.get());
+          QLog.d("TempSessionDecoder", 2, paramMessageHandler.toString());
         }
         return true;
       }
-      ContactUtils.a(paramMessageHandler.a, paramC2CTmpMsgHead.from_phone.get(), paramDecodeProtoPkgContext.e + "");
     }
     return false;
   }
   
   private void b(MessageHandler paramMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    Object localObject1;
+    Object localObject2;
+    int m;
     if ((((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get() == 529) && (((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.get() == 6))
     {
       paramDecodeProtoPkgContext = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
       localObject1 = new im_msg_body.TmpPtt();
       try
       {
-        paramDecodeProtoPkgContext = (im_msg_body.TmpPtt)((im_msg_body.TmpPtt)localObject1).mergeFrom(paramDecodeProtoPkgContext);
-        RichMsg.PttRec localPttRec;
-        int n;
-        int k;
-        int i;
-        int m;
-        int j;
-        if ((paramDecodeProtoPkgContext != null) && (paramDecodeProtoPkgContext.uint32_file_type.has()) && (paramDecodeProtoPkgContext.uint32_file_type.get() == 4) && (paramDecodeProtoPkgContext.bytes_file_uuid.has()))
-        {
-          localObject1 = paramDecodeProtoPkgContext.bytes_file_uuid.get().toStringUtf8();
-          if (QLog.isColorLevel()) {
-            QLog.d("TempSessionDecoder", 2, "<---decodeC2CMsgPkg_Temp2 : ptt uuid:" + (String)localObject1);
-          }
-          localPttRec = new RichMsg.PttRec();
-          localPttRec.localPath.set(paramDecodeProtoPkgContext.bytes_file_uuid.get().toStringUtf8());
-          localPttRec.size.set(paramDecodeProtoPkgContext.uint32_file_size.get());
-          localPttRec.type.set(2);
-          localPttRec.uuid.set((String)localObject1);
-          localPttRec.isRead.set(false);
-          localPttRec.serverStorageSource.set("pttcenter");
-          localPttRec.isReport.set(0);
-          localPttRec.version.set(5);
-          localPttRec.pttFlag.set(0);
-          n = a(paramDecodeProtoPkgContext, 0);
-          k = 0;
-          i = 0;
-          m = 0;
-          j = 0;
-          str = "";
-          localObject1 = str;
-          if (paramDecodeProtoPkgContext.bytes_pb_reserve.has())
-          {
-            localObject1 = new ptt_reserve.ReserveStruct();
-            j = m;
-            i = k;
-          }
-        }
-        try
-        {
-          ((ptt_reserve.ReserveStruct)localObject1).mergeFrom(paramDecodeProtoPkgContext.bytes_pb_reserve.get().toByteArray());
-          j = m;
-          i = k;
-          k = ((ptt_reserve.ReserveStruct)localObject1).uint32_change_voice.get();
-          j = m;
-          i = k;
-          m = ((ptt_reserve.ReserveStruct)localObject1).uint32_autototext_voice.get();
-          j = m;
-          i = k;
-          localObject1 = ((ptt_reserve.ReserveStruct)localObject1).bytes_voice_text_abs.get().toStringUtf8();
-          i = k;
-          j = m;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            long l1;
-            long l2;
-            Object localObject2 = str;
-          }
-        }
-        localPttRec.longPttVipFlag.set(n);
-        l1 = System.currentTimeMillis() / 1000L;
-        l2 = paramMsg.msg_head.msg_time.get();
-        localPttRec.msgRecTime.set(l1);
-        localPttRec.msgTime.set(l2);
-        localPttRec.voiceChangeFlag.set(i);
-        localPttRec.busiType.set(paramDecodeProtoPkgContext.uint32_busi_type.get());
-        localPttRec.autototext_voice.set(j);
-        localPttRec.sttText.set((String)localObject1);
-        localObject1 = MessageRecordFactory.a(-2002);
-        ((MessageRecord)localObject1).msgtype = -2002;
-        ((MessageRecord)localObject1).msgData = localPttRec.toByteArray();
-        ((MessageForPtt)localObject1).parse();
-        if ((paramDecodeProtoPkgContext.uint64_msg_id.has()) && (paramDecodeProtoPkgContext.uint64_msg_id.get() != 0L)) {
-          ((MessageRecord)localObject1).saveExtInfoToExtStr("pa_msgId", paramDecodeProtoPkgContext.uint64_msg_id.get() + "");
-        }
-        ConfessMsgUtil.a(paramMsg, (MessageRecord)localObject1, paramMessageHandler.a);
-        QidianUtils.a(paramTempSessionInfo, paramMsg, (MessageRecord)localObject1);
-        paramList.add(localObject1);
-        return;
+        localObject1 = (im_msg_body.TmpPtt)((im_msg_body.TmpPtt)localObject1).mergeFrom(paramDecodeProtoPkgContext);
       }
       catch (InvalidProtocolBufferMicroException paramDecodeProtoPkgContext)
       {
-        for (;;)
+        paramDecodeProtoPkgContext.printStackTrace();
+        localObject1 = null;
+      }
+      if ((localObject1 != null) && (((im_msg_body.TmpPtt)localObject1).uint32_file_type.has()) && (((im_msg_body.TmpPtt)localObject1).uint32_file_type.get() == 4) && (((im_msg_body.TmpPtt)localObject1).bytes_file_uuid.has()))
+      {
+        paramDecodeProtoPkgContext = ((im_msg_body.TmpPtt)localObject1).bytes_file_uuid.get().toStringUtf8();
+        if (QLog.isColorLevel())
         {
-          paramDecodeProtoPkgContext.printStackTrace();
-          paramDecodeProtoPkgContext = null;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("<---decodeC2CMsgPkg_Temp2 : ptt uuid:");
+          ((StringBuilder)localObject2).append(paramDecodeProtoPkgContext);
+          QLog.d("TempSessionDecoder", 2, ((StringBuilder)localObject2).toString());
+        }
+        localObject2 = new RichMsg.PttRec();
+        ((RichMsg.PttRec)localObject2).localPath.set(((im_msg_body.TmpPtt)localObject1).bytes_file_uuid.get().toStringUtf8());
+        ((RichMsg.PttRec)localObject2).size.set(((im_msg_body.TmpPtt)localObject1).uint32_file_size.get());
+        ((RichMsg.PttRec)localObject2).type.set(2);
+        ((RichMsg.PttRec)localObject2).uuid.set(paramDecodeProtoPkgContext);
+        paramDecodeProtoPkgContext = ((RichMsg.PttRec)localObject2).isRead;
+        j = 0;
+        k = 0;
+        paramDecodeProtoPkgContext.set(false);
+        ((RichMsg.PttRec)localObject2).serverStorageSource.set("pttcenter");
+        ((RichMsg.PttRec)localObject2).isReport.set(0);
+        ((RichMsg.PttRec)localObject2).version.set(5);
+        ((RichMsg.PttRec)localObject2).pttFlag.set(0);
+        m = a((im_msg_body.TmpPtt)localObject1, 0);
+        if (((im_msg_body.TmpPtt)localObject1).bytes_pb_reserve.has()) {
+          paramDecodeProtoPkgContext = new ptt_reserve.ReserveStruct();
         }
       }
     }
-    else
+    try
     {
-      localObject1 = new MessageInfo();
-      ((MessageInfo)localObject1).a = String.valueOf(paramDecodeProtoPkgContext.e);
-      MessageProtoCodec.a(paramMessageHandler, paramList, paramMsg, true, paramDecodeProtoPkgContext.jdField_b_of_type_Boolean, (MessageInfo)localObject1, paramTempSessionInfo, paramDecodeProtoPkgContext);
-      return;
+      paramDecodeProtoPkgContext.mergeFrom(((im_msg_body.TmpPtt)localObject1).bytes_pb_reserve.get().toByteArray());
+      i = paramDecodeProtoPkgContext.uint32_change_voice.get();
     }
+    catch (Exception paramDecodeProtoPkgContext)
+    {
+      for (;;)
+      {
+        int i;
+        label405:
+        long l1;
+        long l2;
+        j = k;
+      }
+    }
+    try
+    {
+      k = paramDecodeProtoPkgContext.uint32_autototext_voice.get();
+    }
+    catch (Exception paramDecodeProtoPkgContext)
+    {
+      break label416;
+    }
+    try
+    {
+      paramDecodeProtoPkgContext = paramDecodeProtoPkgContext.bytes_voice_text_abs.get().toStringUtf8();
+      j = i;
+      i = k;
+    }
+    catch (Exception paramDecodeProtoPkgContext)
+    {
+      break label405;
+    }
+    j = i;
+    i = k;
+    break label423;
+    label416:
+    j = i;
+    i = 0;
+    label423:
+    paramDecodeProtoPkgContext = "";
+    break label439;
+    paramDecodeProtoPkgContext = "";
+    i = 0;
+    label439:
+    ((RichMsg.PttRec)localObject2).longPttVipFlag.set(m);
+    l1 = System.currentTimeMillis() / 1000L;
+    l2 = paramMsg.msg_head.msg_time.get();
+    ((RichMsg.PttRec)localObject2).msgRecTime.set(l1);
+    ((RichMsg.PttRec)localObject2).msgTime.set(l2);
+    ((RichMsg.PttRec)localObject2).voiceChangeFlag.set(j);
+    ((RichMsg.PttRec)localObject2).busiType.set(((im_msg_body.TmpPtt)localObject1).uint32_busi_type.get());
+    ((RichMsg.PttRec)localObject2).autototext_voice.set(i);
+    ((RichMsg.PttRec)localObject2).sttText.set(paramDecodeProtoPkgContext);
+    paramDecodeProtoPkgContext = MessageRecordFactory.a(-2002);
+    paramDecodeProtoPkgContext.msgtype = -2002;
+    paramDecodeProtoPkgContext.msgData = ((RichMsg.PttRec)localObject2).toByteArray();
+    ((MessageForPtt)paramDecodeProtoPkgContext).parse();
+    if ((((im_msg_body.TmpPtt)localObject1).uint64_msg_id.has()) && (((im_msg_body.TmpPtt)localObject1).uint64_msg_id.get() != 0L))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(((im_msg_body.TmpPtt)localObject1).uint64_msg_id.get());
+      ((StringBuilder)localObject2).append("");
+      paramDecodeProtoPkgContext.saveExtInfoToExtStr("pa_msgId", ((StringBuilder)localObject2).toString());
+    }
+    ConfessMsgUtil.a(paramMsg, paramDecodeProtoPkgContext, paramMessageHandler.a);
+    QidianUtils.a(paramTempSessionInfo, paramMsg, paramDecodeProtoPkgContext);
+    paramList.add(paramDecodeProtoPkgContext);
+    return;
+    return;
+    Object localObject1 = new MessageInfo();
+    ((MessageInfo)localObject1).a = String.valueOf(paramDecodeProtoPkgContext.g);
+    MessageProtoCodec.a(paramMessageHandler, paramList, paramMsg, true, paramDecodeProtoPkgContext.jdField_b_of_type_Boolean, (MessageInfo)localObject1, paramTempSessionInfo, paramDecodeProtoPkgContext);
   }
   
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    int j = 1;
     TempSessionInfo localTempSessionInfo = a(paramMsg, paramMessageHandler.a);
+    int i;
     if (localTempSessionInfo.jdField_a_of_type_Int == -1)
     {
       i = 0;
-      if (i != 0)
-      {
-        paramDecodeProtoPkgContext.jdField_d_of_type_Int = localTempSessionInfo.jdField_b_of_type_Int;
-        a(paramMessageHandler, paramList, paramMsg, localTempSessionInfo, paramDecodeProtoPkgContext);
-        paramDecodeProtoPkgContext.c = localTempSessionInfo.jdField_a_of_type_Int;
-      }
-      if ((paramList.size() > 0) && (ConfessMsgUtil.a((MessageRecord)paramList.get(0)))) {
-        if (!((MessageRecord)paramList.get(0)).isSelfConfessor()) {
-          break label230;
-        }
-      }
     }
-    label230:
-    for (int i = 1033;; i = 1034)
+    else
     {
+      if ((localTempSessionInfo.jdField_a_of_type_Int == 1000) || (localTempSessionInfo.jdField_a_of_type_Int == 1020) || (localTempSessionInfo.jdField_a_of_type_Int == 1004)) {
+        paramDecodeProtoPkgContext.jdField_b_of_type_Long = localTempSessionInfo.jdField_b_of_type_Long;
+      }
+      i = 1;
+    }
+    if (i != 0)
+    {
+      paramDecodeProtoPkgContext.jdField_d_of_type_Int = localTempSessionInfo.jdField_b_of_type_Int;
+      a(paramMessageHandler, paramList, paramMsg, localTempSessionInfo, paramDecodeProtoPkgContext);
+      paramDecodeProtoPkgContext.c = localTempSessionInfo.jdField_a_of_type_Int;
+    }
+    if ((paramList.size() > 0) && (ConfessMsgUtil.a((MessageRecord)paramList.get(0))))
+    {
+      if (((MessageRecord)paramList.get(0)).isSelfConfessor()) {
+        i = 1033;
+      } else {
+        i = 1034;
+      }
       localTempSessionInfo.jdField_a_of_type_Int = i;
       paramDecodeProtoPkgContext.c = localTempSessionInfo.jdField_a_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.d("TempSessionDecoder", 2, "friendType:" + paramDecodeProtoPkgContext.c + ", direction_flag:" + paramDecodeProtoPkgContext.jdField_d_of_type_Int);
-      }
-      return;
-      if ((localTempSessionInfo.jdField_a_of_type_Int != 1000) && (localTempSessionInfo.jdField_a_of_type_Int != 1020))
-      {
-        i = j;
-        if (localTempSessionInfo.jdField_a_of_type_Int != 1004) {
-          break;
-        }
-      }
-      paramDecodeProtoPkgContext.jdField_b_of_type_Long = localTempSessionInfo.jdField_b_of_type_Long;
-      i = j;
-      break;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramMessageHandler = new StringBuilder();
+      paramMessageHandler.append("friendType:");
+      paramMessageHandler.append(paramDecodeProtoPkgContext.c);
+      paramMessageHandler.append(", direction_flag:");
+      paramMessageHandler.append(paramDecodeProtoPkgContext.jdField_d_of_type_Int);
+      QLog.d("TempSessionDecoder", 2, paramMessageHandler.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.TempSessionDecoder
  * JD-Core Version:    0.7.0.1
  */

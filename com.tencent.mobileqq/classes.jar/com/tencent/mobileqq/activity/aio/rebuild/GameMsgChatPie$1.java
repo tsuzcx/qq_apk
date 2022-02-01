@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.Message;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.activity.aio.helper.AddFriendHelper;
+import com.tencent.mobileqq.activity.aio.helper.GameMsgAddFriendHelper;
+import com.tencent.mobileqq.activity.aio.helper.HelperProvider;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgAddFriendRulesApi;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgUnissoHandlerApi;
 import com.tencent.mobileqq.gamecenter.data.GameMsgGrayTipsHandler;
-import com.tencent.mobileqq.gamecenter.message.GameDetailInfo;
-import com.tencent.mobileqq.gamecenter.message.GameMsgManager;
-import com.tencent.mobileqq.gamecenter.message.GameMsgUtil;
 import com.tencent.mobileqq.gamecenter.message.TinyInfo;
-import com.tencent.mobileqq.gamecenter.protocol.GameCenterUnissoHandler;
-import com.tencent.mobileqq.gamecenter.protocol.GameCenterUnissoObserver;
-import com.tencent.mobileqq.gamecenter.util.GameMsgStrangerRules;
+import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.sso.GameCenterUnissoObserver;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -42,30 +42,35 @@ class GameMsgChatPie$1
 {
   GameMsgChatPie$1(GameMsgChatPie paramGameMsgChatPie) {}
   
-  public void a()
+  protected void a()
   {
     if (!GameMsgChatPie.b(this.a)) {
       GameMsgChatPie.a(this.a);
     }
   }
   
-  public void a(Object paramObject)
+  protected void a(Object paramObject)
   {
     super.a(paramObject);
-    Object localObject;
+    boolean bool2 = false;
+    Object localObject1;
+    Object localObject2;
     if ((paramObject != null) && ((paramObject instanceof JSONObject)))
     {
-      QLog.i(GameMsgChatPie.f, 1, "[onGetGameStartPriority] data:" + paramObject.toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[onGetGameStartPriority] data:");
+      ((StringBuilder)localObject1).append(paramObject.toString());
+      QLog.i("GameMsgChatPie", 1, ((StringBuilder)localObject1).toString());
       try
       {
         paramObject = (JSONObject)paramObject;
         if (paramObject.optString("ret_code") != null)
         {
-          localObject = paramObject.optJSONObject("download_info");
-          if (localObject != null)
+          localObject1 = paramObject.optJSONObject("download_info");
+          if (localObject1 != null)
           {
-            GameMsgChatPie.a(this.a, ((JSONObject)localObject).optString("pkg_name"));
-            GameMsgChatPie.b(this.a, ((JSONObject)localObject).optString("ticket"));
+            GameMsgChatPie.a(this.a, ((JSONObject)localObject1).optString("pkg_name"));
+            GameMsgChatPie.b(this.a, ((JSONObject)localObject1).optString("ticket"));
           }
           GameMsgChatPie.a(this.a, paramObject.optInt("open_switch"));
           GameMsgChatPie.c(this.a, paramObject.optString("reserved_str"));
@@ -76,53 +81,61 @@ class GameMsgChatPie$1
             int i = 0;
             while (i < paramObject.length())
             {
-              localObject = paramObject.optJSONObject(i);
-              GameMsgChatPie.GamePriorityInfo localGamePriorityInfo = new GameMsgChatPie.GamePriorityInfo(null);
-              localGamePriorityInfo.b = ((JSONObject)localObject).optString("content");
-              localGamePriorityInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("icon_url");
-              GameMsgChatPie.a(this.a).add(localGamePriorityInfo);
+              localObject1 = paramObject.optJSONObject(i);
+              localObject2 = new GameMsgChatPie.GamePriorityInfo(null);
+              ((GameMsgChatPie.GamePriorityInfo)localObject2).b = ((JSONObject)localObject1).optString("content");
+              ((GameMsgChatPie.GamePriorityInfo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("icon_url");
+              GameMsgChatPie.a(this.a).add(localObject2);
               i += 1;
             }
           }
         }
         if (GameMsgChatPie.a(this.a)) {
-          break label316;
+          break label347;
         }
       }
       catch (Exception paramObject)
       {
-        QLog.e(GameMsgChatPie.f, 1, paramObject, new Object[0]);
+        QLog.e("GameMsgChatPie", 1, paramObject, new Object[0]);
       }
     }
     else if (GameMsgChatPie.a(this.a) != null)
     {
-      localObject = GameMsgChatPie.a(this.a).d;
-      if (GameMsgChatPie.a(this.a) != 1) {
-        break label455;
+      localObject1 = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
+      localObject2 = GameMsgChatPie.a(this.a).c;
+      if (GameMsgChatPie.a(this.a) == 1) {
+        paramObject = "1";
+      } else {
+        paramObject = "0";
       }
-      paramObject = "1";
-      GameMsgUtil.a((String)localObject, "1", "145", "920", "92005", "207561", paramObject, "", "8", "0");
+      ((IGameMsgHelperApi)localObject1).reportForGameMsg((String)localObject2, "1", "145", "920", "92005", "207561", paramObject, "", "8", "0");
       GameMsgChatPie.a(this.a, true);
     }
-    label316:
-    if ((this.a.a() != null) && (GameMsgChatPie.a(this.a) != null)) {}
-    for (boolean bool = BaseApplicationImpl.getContext().getSharedPreferences("game_center_sp", 0).getBoolean(this.a.a().getCurrentUin() + "_game_msg_chatpie_reddot_click_" + GameMsgChatPie.a(this.a).d, false);; bool = false)
+    label347:
+    boolean bool1 = bool2;
+    if (this.a.a() != null)
     {
-      if ((GameMsgChatPie.a(this.a) == 1) && (!bool))
+      bool1 = bool2;
+      if (GameMsgChatPie.a(this.a) != null)
       {
-        GameMsgUtil.a(GameMsgChatPie.a(this.a).d, "1", "145", "920", "92005", "207562", "", "", "8", "0");
-        ThreadManagerV2.getUIHandlerV2().post(new GameMsgChatPie.1.1(this));
+        paramObject = BaseApplicationImpl.getContext().getSharedPreferences("game_center_sp", 0);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(this.a.a().getCurrentUin());
+        ((StringBuilder)localObject1).append("_game_msg_chatpie_reddot_click_");
+        ((StringBuilder)localObject1).append(GameMsgChatPie.a(this.a).c);
+        bool1 = paramObject.getBoolean(((StringBuilder)localObject1).toString(), false);
       }
-      return;
-      label455:
-      paramObject = "0";
-      break;
+    }
+    if ((GameMsgChatPie.a(this.a) == 1) && (!bool1))
+    {
+      ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.a(this.a).c, "1", "145", "920", "92005", "207562", "", "", "8", "0");
+      ThreadManagerV2.getUIHandlerV2().post(new GameMsgChatPie.1.1(this));
     }
   }
   
-  public void b()
+  protected void b()
   {
-    QLog.i(GameMsgChatPie.f, 1, "[onSetSwitchCallback]");
+    QLog.i("GameMsgChatPie", 1, "[onSetSwitchCallback]");
     try
     {
       JSONArray localJSONArray = new JSONArray();
@@ -139,267 +152,286 @@ class GameMsgChatPie$1
       ((JSONObject)localObject).put("content", localJSONArray);
       localJSONArray = new JSONArray();
       localJSONArray.put(localObject);
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 10007);
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 10007);
       if (localObject != null)
       {
         localObject = new TinyInfo(((Message)localObject).getExtInfoFromExtStr("ext_key_game_msg_info"));
-        GameMsgGrayTipsHandler.a(localJSONArray, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, Long.toString(((TinyInfo)localObject).fromTinyId), Long.toString(((TinyInfo)localObject).toTinyId), "");
+        GameMsgGrayTipsHandler.a(localJSONArray, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, Long.toString(((TinyInfo)localObject).fromTinyId), Long.toString(((TinyInfo)localObject).toTinyId), "", 0L);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e(GameMsgChatPie.f, 1, localThrowable.getMessage());
+      QLog.e("GameMsgChatPie", 1, localThrowable.getMessage());
     }
   }
   
-  public void b(Object paramObject)
+  protected void b(Object paramObject)
   {
-    QLog.i(GameMsgChatPie.f, 1, "[onGameUsrInfoChangedNotify]");
-    for (;;)
+    QLog.i("GameMsgChatPie", 1, "[onGameUsrInfoChangedNotify]");
+    try
     {
-      GameDetailInfo localGameDetailInfo;
-      try
+      if ((paramObject instanceof ArrayList))
       {
-        if ((paramObject instanceof ArrayList))
+        paramObject = ((ArrayList)paramObject).iterator();
+        while (paramObject.hasNext())
         {
-          paramObject = ((ArrayList)paramObject).iterator();
-          if (paramObject.hasNext())
+          GameDetailInfo localGameDetailInfo = (GameDetailInfo)paramObject.next();
+          if ((!TextUtils.isEmpty(localGameDetailInfo.jdField_a_of_type_JavaLangString)) && (localGameDetailInfo.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a())))
           {
-            localGameDetailInfo = (GameDetailInfo)paramObject.next();
-            if ((TextUtils.isEmpty(localGameDetailInfo.b)) || (!localGameDetailInfo.b.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a()))) {
-              break label199;
-            }
             GameMsgChatPie.a(this.a, localGameDetailInfo);
             GameMsgChatPie.a(this.a, GameMsgChatPie.a(this.a));
             if (GameMsgChatPie.a(this.a) != null)
             {
-              ((GameCenterUnissoHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GAME_CENTER_UNISSO_HANDLER)).a(GameMsgChatPie.a(this.a).d);
-              GameMsgChatPie.h = GameMsgChatPie.a(this.a).d;
+              ((IGameMsgUnissoHandlerApi)QRoute.api(IGameMsgUnissoHandlerApi.class)).getGameStartPriority(GameMsgChatPie.a(this.a).c);
+              GameMsgChatPie.e = GameMsgChatPie.a(this.a).c;
             }
             GameMsgChatPie.a(this.a, "onGameUsrInfoChangedNotify");
             GameMsgChatPie.b(this.a, GameMsgChatPie.a(this.a));
-            QLog.i(GameMsgChatPie.f, 1, "update friend info.");
-            continue;
+            QLog.i("GameMsgChatPie", 1, "update friend info.");
+          }
+          else if ((!TextUtils.isEmpty(localGameDetailInfo.jdField_a_of_type_JavaLangString)) && (localGameDetailInfo.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b())))
+          {
+            GameMsgChatPie.b(this.a, localGameDetailInfo);
+            QLog.i("GameMsgChatPie", 1, "update my info.");
           }
         }
-        return;
-      }
-      catch (Throwable paramObject)
-      {
-        QLog.e(GameMsgChatPie.f, 1, paramObject.getMessage());
-      }
-      label199:
-      if ((!TextUtils.isEmpty(localGameDetailInfo.b)) && (localGameDetailInfo.b.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b())))
-      {
-        GameMsgChatPie.b(this.a, localGameDetailInfo);
-        QLog.i(GameMsgChatPie.f, 1, "update my info.");
-      }
-    }
-  }
-  
-  public void c(Object paramObject)
-  {
-    if (paramObject == null) {}
-    for (paramObject = "";; paramObject = paramObject.toString()) {
-      try
-      {
-        QLog.i(GameMsgChatPie.f, 1, "[onGetFriendExtInfo], data:" + paramObject);
-        GameMsgChatPie.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a(), paramObject);
-        return;
-      }
-      catch (Throwable paramObject)
-      {
-        QLog.e(GameMsgChatPie.f, 1, paramObject, new Object[0]);
-      }
-    }
-  }
-  
-  public void d(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(GameMsgChatPie.f, 2, "[onGetTopGrayTips], tips:" + paramObject);
-    }
-    String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("game_msg_top_gray_text");
-    if ((TextUtils.isEmpty(str)) && ((paramObject instanceof String))) {}
-    for (paramObject = (String)paramObject;; paramObject = str)
-    {
-      GameMsgChatPie.d(this.a, paramObject);
-      if ((GameMsgChatPie.a(this.a) != null) && (GameMsgChatPie.a(this.a).b == 0)) {
-        GameMsgChatPie.b(this.a, paramObject);
       }
       return;
     }
+    catch (Throwable paramObject)
+    {
+      QLog.e("GameMsgChatPie", 1, paramObject.getMessage());
+    }
   }
   
-  public void e(Object paramObject)
+  protected void c(Object paramObject)
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(GameMsgChatPie.f, 2, "[onGetPlayerAvatar]");
+    if (paramObject == null) {
+      paramObject = "";
     }
-    if (!(paramObject instanceof JSONArray)) {
-      QLog.w(GameMsgChatPie.f, 1, "NOT JSONArray return, avatarList:" + paramObject);
-    }
-    for (;;)
+    try
     {
+      paramObject = paramObject.toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onGetFriendExtInfo], data:");
+      localStringBuilder.append(paramObject);
+      QLog.i("GameMsgChatPie", 1, localStringBuilder.toString());
+      GameMsgChatPie.a(this.a).updateRedDotConfig(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a(), paramObject);
       return;
-      paramObject = (JSONArray)paramObject;
-      ArrayList localArrayList = new ArrayList();
-      try
-      {
-        QLog.i(GameMsgChatPie.f, 1, "[setAavarList], root:" + paramObject);
-        int j = paramObject.length();
-        while (i < j)
-        {
-          localArrayList.add(paramObject.optString(i));
-          i += 1;
-        }
-        paramObject = null;
-        if (GameMsgChatPie.a(this.a) != null) {
-          paramObject = GameMsgChatPie.a(this.a).c();
-        }
-        if ((paramObject == null) || (paramObject.size() == 0))
-        {
-          GameMsgChatPie.a(this.a, localArrayList, false);
-          return;
-        }
-      }
-      catch (Throwable paramObject)
-      {
-        QLog.w(GameMsgChatPie.f, 1, paramObject.getMessage());
-      }
+    }
+    catch (Throwable paramObject)
+    {
+      QLog.e("GameMsgChatPie", 1, paramObject, new Object[0]);
     }
   }
   
-  public void f(Object paramObject)
+  protected void d(Object paramObject)
   {
-    if ((paramObject != null) && ((paramObject instanceof JSONObject))) {
-      QLog.i(GameMsgChatPie.f, 1, "[onGetAioPopInfo] data:" + paramObject.toString());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[onGetTopGrayTips], tips:");
+      ((StringBuilder)localObject).append(paramObject);
+      QLog.d("GameMsgChatPie", 2, ((StringBuilder)localObject).toString());
+    }
+    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("game_msg_top_gray_text");
+    Object localObject = str;
+    if (TextUtils.isEmpty(str))
+    {
+      localObject = str;
+      if ((paramObject instanceof String)) {
+        localObject = (String)paramObject;
+      }
+    }
+    GameMsgChatPie.d(this.a, (String)localObject);
+    if ((GameMsgChatPie.a(this.a) != null) && (GameMsgChatPie.a(this.a).b == 0)) {
+      GameMsgChatPie.b(this.a, (String)localObject);
+    }
+  }
+  
+  protected void e(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameMsgChatPie", 2, "[onGetPlayerAvatar]");
+    }
+    if (!(paramObject instanceof JSONArray))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("NOT JSONArray return, avatarList:");
+      ((StringBuilder)localObject).append(paramObject);
+      QLog.w("GameMsgChatPie", 1, ((StringBuilder)localObject).toString());
+      return;
+    }
+    paramObject = (JSONArray)paramObject;
+    Object localObject = new ArrayList();
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[setAavarList], root:");
+      localStringBuilder.append(paramObject);
+      QLog.i("GameMsgChatPie", 1, localStringBuilder.toString());
+      int j = paramObject.length();
+      int i = 0;
+      while (i < j)
+      {
+        ((ArrayList)localObject).add(paramObject.optString(i));
+        i += 1;
+      }
+      paramObject = null;
+      if (GameMsgChatPie.a(this.a) != null) {
+        paramObject = GameMsgChatPie.a(this.a).getUnreadFriIcon();
+      }
+      if ((paramObject == null) || (paramObject.size() == 0))
+      {
+        GameMsgChatPie.a(this.a, (List)localObject, false);
+        return;
+      }
+    }
+    catch (Throwable paramObject)
+    {
+      QLog.w("GameMsgChatPie", 1, paramObject.getMessage());
+    }
+  }
+  
+  protected void f(Object paramObject)
+  {
+    Object localObject1;
+    if ((paramObject != null) && ((paramObject instanceof JSONObject)))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[onGetAioPopInfo] data:");
+      ((StringBuilder)localObject1).append(paramObject.toString());
+      QLog.i("GameMsgChatPie", 1, ((StringBuilder)localObject1).toString());
     }
     for (;;)
     {
-      String str;
-      ArrayList localArrayList;
       int i;
       try
       {
-        Object localObject = (JSONObject)paramObject;
-        paramObject = ((JSONObject)localObject).optString("title");
-        str = ((JSONObject)localObject).optString("content");
-        localObject = ((JSONObject)localObject).optJSONArray("buttons");
-        if (TextUtils.isEmpty(str)) {
-          break label288;
-        }
-        if (((JSONArray)localObject).length() == 0) {
+        Object localObject2 = (JSONObject)paramObject;
+        paramObject = ((JSONObject)localObject2).optString("title");
+        localObject1 = ((JSONObject)localObject2).optString("content");
+        localObject2 = ((JSONObject)localObject2).optJSONArray("buttons");
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          if (((JSONArray)localObject2).length() == 0) {
+            return;
+          }
+          ArrayList localArrayList = new ArrayList();
+          i = 0;
+          if (i < ((JSONArray)localObject2).length())
+          {
+            JSONObject localJSONObject = (JSONObject)((JSONArray)localObject2).get(i);
+            GameMsgChatPie.ButtonInfo localButtonInfo = new GameMsgChatPie.ButtonInfo(this.a);
+            localButtonInfo.b = localJSONObject.optString("title");
+            if (TextUtils.isEmpty(localButtonInfo.b)) {
+              break label294;
+            }
+            localButtonInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString("url");
+            localButtonInfo.jdField_a_of_type_Int = localJSONObject.optInt("type");
+            localArrayList.add(localButtonInfo);
+            break label294;
+          }
+          if (localArrayList.size() == 1)
+          {
+            GameMsgChatPie.a(this.a, paramObject, (String)localObject1, (GameMsgChatPie.ButtonInfo)localArrayList.get(0), null);
+            return;
+          }
+          if (localArrayList.size() >= 2)
+          {
+            GameMsgChatPie.a(this.a, paramObject, (String)localObject1, (GameMsgChatPie.ButtonInfo)localArrayList.get(0), (GameMsgChatPie.ButtonInfo)localArrayList.get(1));
+            return;
+          }
+          QLog.i("GameMsgChatPie", 1, "[onGetAioPopInfo] no button.");
           return;
         }
-        localArrayList = new ArrayList();
-        i = 0;
-        if (i < ((JSONArray)localObject).length())
-        {
-          JSONObject localJSONObject = (JSONObject)((JSONArray)localObject).get(i);
-          GameMsgChatPie.ButtonInfo localButtonInfo = new GameMsgChatPie.ButtonInfo(this.a);
-          localButtonInfo.b = localJSONObject.optString("title");
-          if (TextUtils.isEmpty(localButtonInfo.b)) {
-            break label289;
-          }
-          localButtonInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString("url");
-          localButtonInfo.jdField_a_of_type_Int = localJSONObject.optInt("type");
-          localArrayList.add(localButtonInfo);
-        }
+        return;
       }
       catch (JSONException paramObject)
       {
         paramObject.printStackTrace();
-        return;
       }
-      if (localArrayList.size() == 1)
-      {
-        GameMsgChatPie.a(this.a, paramObject, str, (GameMsgChatPie.ButtonInfo)localArrayList.get(0), null);
-        return;
-      }
-      if (localArrayList.size() >= 2)
-      {
-        GameMsgChatPie.a(this.a, paramObject, str, (GameMsgChatPie.ButtonInfo)localArrayList.get(0), (GameMsgChatPie.ButtonInfo)localArrayList.get(1));
-        return;
-      }
-      QLog.i(GameMsgChatPie.f, 1, "[onGetAioPopInfo] no button.");
-      label288:
       return;
-      label289:
+      label294:
       i += 1;
     }
   }
   
-  public void g(Object paramObject)
+  protected void g(Object paramObject)
   {
-    String str = "";
+    String str;
     if (GameMsgChatPie.a(this.a) != null) {
       str = GameMsgChatPie.a(this.a).jdField_a_of_type_JavaLangString;
+    } else {
+      str = "";
     }
-    GameMsgGrayTipsHandler.a(paramObject, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", str);
+    GameMsgGrayTipsHandler.a(paramObject, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", str, 0L);
   }
   
-  public void h(Object paramObject)
+  protected void h(Object paramObject)
   {
-    QLog.i(GameMsgChatPie.g, 1, "[onAddOrShiledFriendCallback]");
-    int i;
-    for (;;)
+    QLog.i("GameMsgChatPie.strangerRecom", 1, "[onAddOrShiledFriendCallback]");
+    try
     {
-      int j;
-      try
+      ChatActivityUtils.b();
+      if (paramObject == null)
       {
-        ChatActivityUtils.b();
-        if (paramObject == null)
-        {
-          QLog.w(GameMsgChatPie.g, 1, "data is null.");
-          return;
-        }
-        paramObject = (JSONObject)paramObject;
-        i = paramObject.optInt("ret_code");
-        j = paramObject.optInt("op_type");
-        paramObject.optString("err_msg");
-        if (i != 0) {
-          break;
-        }
-        if (1 == j)
-        {
-          GameMsgChatPie.a(this.a).b();
-          QQToast.a(this.a.a(), HardCodeUtil.a(2131692834), 1).a();
-          this.a.a(true, "");
-          return;
-        }
-      }
-      catch (Throwable paramObject)
-      {
-        QLog.e(GameMsgChatPie.f, 1, paramObject, new Object[0]);
+        QLog.w("GameMsgChatPie.strangerRecom", 1, "data is null.");
         return;
       }
-      if (2 == j)
+      paramObject = (JSONObject)paramObject;
+      int i = paramObject.optInt("ret_code");
+      int j = paramObject.optInt("op_type");
+      paramObject.optString("err_msg");
+      if (i == 0)
       {
-        GameMsgChatPie.a(this.a).setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690028));
-        if (GameMsgChatPie.a(this.a) != null) {
-          GameMsgChatPie.a(this.a).c = 1;
+        paramObject = (GameMsgAddFriendHelper)this.a.a(113);
+        if (1 == j)
+        {
+          GameMsgChatPie.a(this.a).recordAction();
+          QQToast.a(this.a.a(), HardCodeUtil.a(2131692788), 1).a();
         }
-        GameMsgChatPie.a(this.a, true);
-      }
-      else if (4 == j)
-      {
-        GameMsgChatPie.b(this.a).setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690029));
-        if (GameMsgChatPie.a(this.a) != null) {
-          GameMsgChatPie.a(this.a).c = 0;
+        else if (2 == j)
+        {
+          paramObject.a(2131689943);
+          if (GameMsgChatPie.a(this.a) != null) {
+            GameMsgChatPie.a(this.a).c = 1;
+          }
+          GameMsgChatPie.a(this.a, true);
         }
-        GameMsgChatPie.a(this.a, false);
+        else if (4 == j)
+        {
+          paramObject.a(2131689944);
+          if (GameMsgChatPie.a(this.a) != null) {
+            GameMsgChatPie.a(this.a).c = 0;
+          }
+          GameMsgChatPie.a(this.a, false);
+        }
+        ((AddFriendHelper)GameMsgChatPie.a(this.a).a(113)).a(true, "");
+        return;
       }
+      paramObject = new StringBuilder();
+      paramObject.append("[onAddOrShiledFriendCallback],FAILS! code:");
+      paramObject.append(i);
+      QLog.i("GameMsgChatPie.strangerRecom", 1, paramObject.toString());
+      return;
     }
-    QLog.i(GameMsgChatPie.g, 1, "[onAddOrShiledFriendCallback],FAILS! code:" + i);
+    catch (Throwable paramObject)
+    {
+      QLog.e("GameMsgChatPie", 1, paramObject, new Object[0]);
+    }
   }
   
-  public void i(Object paramObject)
+  protected void i(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(GameMsgChatPie.g, 1, "[onGetStrangerRecomInfo], data:" + paramObject);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[onGetStrangerRecomInfo], data:");
+      ((StringBuilder)localObject1).append(paramObject);
+      QLog.d("GameMsgChatPie.strangerRecom", 1, ((StringBuilder)localObject1).toString());
     }
     if ((paramObject != null) && ((paramObject instanceof JSONObject))) {}
     for (;;)
@@ -407,56 +439,89 @@ class GameMsgChatPie$1
       try
       {
         paramObject = (JSONObject)paramObject;
-        String str2 = paramObject.optString("uin");
+        Object localObject2 = paramObject.optString("uin");
         i = paramObject.optInt("relationship");
         int j = paramObject.optInt("add_friend_type");
         int k = paramObject.optInt("is_shield");
-        QLog.i(GameMsgChatPie.g, 1, "relation:" + i + ",addFriendType:" + j + ",isShield:" + k);
+        paramObject = new StringBuilder();
+        paramObject.append("relation:");
+        paramObject.append(i);
+        paramObject.append(",addFriendType:");
+        paramObject.append(j);
+        paramObject.append(",isShield:");
+        paramObject.append(k);
+        QLog.i("GameMsgChatPie.strangerRecom", 1, paramObject.toString());
         GameMsgChatPie.a(this.a, new GameMsgChatPie.StrangerRecomInfo());
         GameMsgChatPie.a(this.a).jdField_a_of_type_Int = i;
         GameMsgChatPie.a(this.a).b = j;
         GameMsgChatPie.a(this.a).c = k;
-        GameMsgChatPie.a(this.a).jdField_a_of_type_JavaLangString = str2;
+        GameMsgChatPie.a(this.a).jdField_a_of_type_JavaLangString = ((String)localObject2);
         GameMsgChatPie.a(this.a, GameMsgChatPie.a(this.a));
-        this.a.p();
+        ((AddFriendHelper)GameMsgChatPie.b(this.a).a(113)).e();
         GameMsgChatPie.b(this.a);
         GameMsgChatPie.a(this.a, i);
-        String str1 = ContactUtils.l(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, GameMsgChatPie.a(this.a).jdField_a_of_type_JavaLangString);
-        paramObject = str1;
-        if (TextUtils.isEmpty(str1)) {
-          paramObject = GameMsgChatPie.a(this.a).f;
+        localObject1 = ContactUtils.f(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, GameMsgChatPie.a(this.a).jdField_a_of_type_JavaLangString);
+        paramObject = localObject1;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramObject = GameMsgChatPie.a(this.a).e;
         }
         this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramObject;
         GameMsgChatPie.a(this.a, GameMsgChatPie.a(this.a));
-        GameMsgUtil.a(GameMsgChatPie.a(this.a).d, "1", "145", "920", "92015", "207856", str2, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "8", "");
+        ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(GameMsgChatPie.a(this.a).c, "1", "145", "920", "92015", "207856", (String)localObject2, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "8", "");
         if ((GameMsgChatPie.a(this.a) != null) && (GameMsgChatPie.a(this.a).getVisibility() == 0) && (GameMsgChatPie.a(this.a) != null))
         {
           if (!GameMsgChatPie.c(this.a)) {
-            break label567;
+            break label697;
           }
           i = 1;
-          if (GameMsgChatPie.a(this.a).jdField_a_of_type_Int == 0)
+          j = GameMsgChatPie.a(this.a).jdField_a_of_type_Int;
+          if (j == 0)
           {
-            GameMsgUtil.b(GameMsgChatPie.a(this.a).d, "1", "145", "920", "92015", "207959", "8", GameMsgChatPie.b(this.a) + "", i + "", GameMsgChatPie.a(this.a));
+            paramObject = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
+            localObject1 = GameMsgChatPie.a(this.a).c;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(GameMsgChatPie.b(this.a));
+            ((StringBuilder)localObject2).append("");
+            localObject2 = ((StringBuilder)localObject2).toString();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(i);
+            localStringBuilder.append("");
+            paramObject.reportForGameMsg850((String)localObject1, "1", "145", "920", "92015", "207959", "8", (String)localObject2, localStringBuilder.toString(), GameMsgChatPie.a(this.a));
             return;
           }
-          GameMsgUtil.b(GameMsgChatPie.a(this.a).d, "1", "145", "920", "92005", "207957", "8", GameMsgChatPie.b(this.a) + "", i + "", GameMsgChatPie.a(this.a));
+          paramObject = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
+          localObject1 = GameMsgChatPie.a(this.a).c;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(GameMsgChatPie.b(this.a));
+          ((StringBuilder)localObject2).append("");
+          localObject2 = ((StringBuilder)localObject2).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(i);
+          localStringBuilder.append("");
+          paramObject.reportForGameMsg850((String)localObject1, "1", "145", "920", "92005", "207957", "8", (String)localObject2, localStringBuilder.toString(), GameMsgChatPie.a(this.a));
           return;
         }
       }
       catch (Throwable paramObject)
       {
-        QLog.e(GameMsgChatPie.g, 1, paramObject, new Object[0]);
+        QLog.e("GameMsgChatPie.strangerRecom", 1, paramObject, new Object[0]);
       }
       return;
-      label567:
+      label697:
       int i = 0;
+    }
+  }
+  
+  protected void j(Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof String))) {
+      GameMsgChatPie.e(this.a, (String)paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.1
  * JD-Core Version:    0.7.0.1
  */

@@ -34,37 +34,41 @@ public class LoadImageTask
   
   protected Boolean doInBackground(Void... paramVarArgs)
   {
-    if (this.cache == null) {
-      return Boolean.valueOf(false);
+    paramVarArgs = this.cache;
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (paramVarArgs == null) {
+      return localBoolean;
     }
     paramVarArgs = null;
     Iterator localIterator = this.resourceList.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       if (isCancelled()) {
-        return Boolean.valueOf(false);
+        return localBoolean;
       }
-      Object localObject = this.dataPath + File.separator + str;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.dataPath);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
       localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, this.sampleSize);
-      if (TextUtils.isEmpty(this.materialId))
+      if (!TextUtils.isEmpty(this.materialId))
       {
-        label108:
-        if (!BitmapUtils.isLegal((Bitmap)localObject)) {
-          break label163;
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.materialId);
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(str);
+        str = localStringBuilder.toString();
+      }
+      if (BitmapUtils.isLegal((Bitmap)localObject))
+      {
         this.cache.put(str, localObject);
         paramVarArgs = (Void[])localObject;
       }
-      for (;;)
+      else if (BitmapUtils.isLegal(paramVarArgs))
       {
-        break;
-        str = this.materialId + File.separator + str;
-        break label108;
-        label163:
-        if (BitmapUtils.isLegal(paramVarArgs)) {
-          this.cache.put(str, paramVarArgs);
-        }
+        this.cache.put(str, paramVarArgs);
       }
     }
     return Boolean.valueOf(true);
@@ -72,7 +76,7 @@ public class LoadImageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadImageTask
  * JD-Core Version:    0.7.0.1
  */

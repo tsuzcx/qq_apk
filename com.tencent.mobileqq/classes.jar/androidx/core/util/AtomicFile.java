@@ -18,7 +18,10 @@ public class AtomicFile
   public AtomicFile(@NonNull File paramFile)
   {
     this.mBaseName = paramFile;
-    this.mBackupName = new File(paramFile.getPath() + ".bak");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramFile.getPath());
+    localStringBuilder.append(".bak");
+    this.mBackupName = new File(localStringBuilder.toString());
   }
   
   private static boolean sync(@NonNull FileOutputStream paramFileOutputStream)
@@ -28,7 +31,11 @@ public class AtomicFile
       paramFileOutputStream.getFD().sync();
       return true;
     }
-    catch (IOException paramFileOutputStream) {}
+    catch (IOException paramFileOutputStream)
+    {
+      label9:
+      break label9;
+    }
     return false;
   }
   
@@ -40,36 +47,38 @@ public class AtomicFile
   
   public void failWrite(@Nullable FileOutputStream paramFileOutputStream)
   {
-    if (paramFileOutputStream != null) {
+    if (paramFileOutputStream != null)
+    {
       sync(paramFileOutputStream);
-    }
-    try
-    {
-      paramFileOutputStream.close();
-      this.mBaseName.delete();
-      this.mBackupName.renameTo(this.mBaseName);
-      return;
-    }
-    catch (IOException paramFileOutputStream)
-    {
-      Log.w("AtomicFile", "failWrite: Got exception:", paramFileOutputStream);
+      try
+      {
+        paramFileOutputStream.close();
+        this.mBaseName.delete();
+        this.mBackupName.renameTo(this.mBaseName);
+        return;
+      }
+      catch (IOException paramFileOutputStream)
+      {
+        Log.w("AtomicFile", "failWrite: Got exception:", paramFileOutputStream);
+      }
     }
   }
   
   public void finishWrite(@Nullable FileOutputStream paramFileOutputStream)
   {
-    if (paramFileOutputStream != null) {
+    if (paramFileOutputStream != null)
+    {
       sync(paramFileOutputStream);
-    }
-    try
-    {
-      paramFileOutputStream.close();
-      this.mBackupName.delete();
-      return;
-    }
-    catch (IOException paramFileOutputStream)
-    {
-      Log.w("AtomicFile", "finishWrite: Got exception:", paramFileOutputStream);
+      try
+      {
+        paramFileOutputStream.close();
+        this.mBackupName.delete();
+        return;
+      }
+      catch (IOException paramFileOutputStream)
+      {
+        Log.w("AtomicFile", "finishWrite: Got exception:", paramFileOutputStream);
+      }
     }
   }
   
@@ -93,77 +102,93 @@ public class AtomicFile
   @NonNull
   public byte[] readFully()
   {
-    int i = 0;
     FileInputStream localFileInputStream = openRead();
     try
     {
       Object localObject1 = new byte[localFileInputStream.available()];
-      int j = localFileInputStream.read((byte[])localObject1, i, localObject1.length - i);
-      if (j <= 0) {
-        return localObject1;
-      }
-      i = j + i;
-      j = localFileInputStream.available();
-      if (j > localObject1.length - i)
-      {
-        byte[] arrayOfByte = new byte[j + i];
-        System.arraycopy(localObject1, 0, arrayOfByte, 0, i);
-        localObject1 = arrayOfByte;
-      }
+      int i = 0;
       for (;;)
       {
-        break;
+        int j = localFileInputStream.read((byte[])localObject1, i, localObject1.length - i);
+        if (j <= 0)
+        {
+          localFileInputStream.close();
+          return localObject1;
+        }
+        j = i + j;
+        int k = localFileInputStream.available();
+        i = j;
+        if (k > localObject1.length - j)
+        {
+          byte[] arrayOfByte = new byte[k + j];
+          System.arraycopy(localObject1, 0, arrayOfByte, 0, j);
+          localObject1 = arrayOfByte;
+          i = j;
+        }
       }
+      throw localObject2;
     }
     finally
     {
       localFileInputStream.close();
     }
+    for (;;) {}
   }
   
   @NonNull
   public FileOutputStream startWrite()
   {
-    if (this.mBaseName.exists())
-    {
-      if (this.mBackupName.exists()) {
-        break label88;
+    if (this.mBaseName.exists()) {
+      if (!this.mBackupName.exists())
+      {
+        if (!this.mBaseName.renameTo(this.mBackupName))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Couldn't rename file ");
+          ((StringBuilder)localObject).append(this.mBaseName);
+          ((StringBuilder)localObject).append(" to backup file ");
+          ((StringBuilder)localObject).append(this.mBackupName);
+          Log.w("AtomicFile", ((StringBuilder)localObject).toString());
+        }
       }
-      if (!this.mBaseName.renameTo(this.mBackupName)) {
-        Log.w("AtomicFile", "Couldn't rename file " + this.mBaseName + " to backup file " + this.mBackupName);
+      else {
+        this.mBaseName.delete();
       }
     }
-    for (;;)
+    try
     {
-      try
-      {
-        FileOutputStream localFileOutputStream1 = new FileOutputStream(this.mBaseName);
-        return localFileOutputStream1;
-      }
-      catch (FileNotFoundException localFileNotFoundException1)
-      {
-        label88:
-        if (this.mBaseName.getParentFile().mkdirs()) {
-          continue;
-        }
-        throw new IOException("Couldn't create directory " + this.mBaseName);
-        try
-        {
-          FileOutputStream localFileOutputStream2 = new FileOutputStream(this.mBaseName);
-          return localFileOutputStream2;
-        }
-        catch (FileNotFoundException localFileNotFoundException2)
-        {
-          throw new IOException("Couldn't create " + this.mBaseName);
-        }
-      }
-      this.mBaseName.delete();
+      localObject = new FileOutputStream(this.mBaseName);
+      return localObject;
     }
+    catch (FileNotFoundException localFileNotFoundException1)
+    {
+      label109:
+      break label109;
+    }
+    if (this.mBaseName.getParentFile().mkdirs()) {}
+    try
+    {
+      localObject = new FileOutputStream(this.mBaseName);
+      return localObject;
+    }
+    catch (FileNotFoundException localFileNotFoundException2)
+    {
+      label136:
+      break label136;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Couldn't create ");
+    ((StringBuilder)localObject).append(this.mBaseName);
+    throw new IOException(((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Couldn't create directory ");
+    ((StringBuilder)localObject).append(this.mBaseName);
+    throw new IOException(((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.util.AtomicFile
  * JD-Core Version:    0.7.0.1
  */

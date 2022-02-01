@@ -9,7 +9,10 @@ public class WXAPIFactory
   
   private WXAPIFactory()
   {
-    throw new RuntimeException(getClass().getSimpleName() + " should not be instantiated");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append(" should not be instantiated");
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
   public static IWXAPI createWXAPI(Context paramContext, String paramString)
@@ -19,13 +22,17 @@ public class WXAPIFactory
   
   public static IWXAPI createWXAPI(Context paramContext, String paramString, boolean paramBoolean)
   {
-    Log.d("MicroMsg.PaySdk.WXFactory", "createWXAPI, appId = " + paramString + ", checkSignature = " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder("createWXAPI, appId = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", checkSignature = ");
+    localStringBuilder.append(paramBoolean);
+    Log.d("MicroMsg.PaySdk.WXFactory", localStringBuilder.toString());
     return new WXApiImplV10(paramContext, paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.WXAPIFactory
  * JD-Core Version:    0.7.0.1
  */

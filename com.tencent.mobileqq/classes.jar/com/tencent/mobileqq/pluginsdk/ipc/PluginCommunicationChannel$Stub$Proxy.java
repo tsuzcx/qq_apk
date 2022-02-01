@@ -105,36 +105,32 @@ class PluginCommunicationChannel$Stub$Proxy
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    try
     {
-      try
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationChannel");
+      localParcel1.writeString(paramString);
+      if (paramBundle != null)
       {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationChannel");
-        localParcel1.writeString(paramString);
-        if (paramBundle != null)
-        {
-          localParcel1.writeInt(1);
-          paramBundle.writeToParcel(localParcel1, 0);
-          this.mRemote.transact(5, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramString = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
-            return paramString;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
+        localParcel1.writeInt(1);
+        paramBundle.writeToParcel(localParcel1, 0);
+      }
+      else
+      {
+        localParcel1.writeInt(0);
+      }
+      this.mRemote.transact(5, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      if (localParcel2.readInt() != 0) {
+        paramString = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
+      } else {
         paramString = null;
       }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
+      return paramString;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
@@ -152,32 +148,32 @@ class PluginCommunicationChannel$Stub$Proxy
         {
           localParcel1.writeInt(1);
           paramBundle.writeToParcel(localParcel1, 0);
-          if (paramRemoteCallback != null)
-          {
-            paramString = paramRemoteCallback.asBinder();
-            localParcel1.writeStrongBinder(paramString);
-            this.mRemote.transact(6, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-          }
         }
         else
         {
           localParcel1.writeInt(0);
-          continue;
         }
-        paramString = null;
+        if (paramRemoteCallback != null)
+        {
+          paramString = paramRemoteCallback.asBinder();
+          localParcel1.writeStrongBinder(paramString);
+          this.mRemote.transact(6, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
       }
       finally
       {
         localParcel2.recycle();
         localParcel1.recycle();
       }
+      paramString = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationChannel.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

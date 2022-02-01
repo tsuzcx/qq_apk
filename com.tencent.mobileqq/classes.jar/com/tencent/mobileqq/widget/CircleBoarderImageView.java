@@ -81,20 +81,22 @@ public class CircleBoarderImageView
     }
     try
     {
-      if ((paramDrawable instanceof ColorDrawable)) {}
-      for (Bitmap localBitmap = Bitmap.createBitmap(2, 2, jdField_a_of_type_AndroidGraphicsBitmap$Config);; localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), jdField_a_of_type_AndroidGraphicsBitmap$Config))
-      {
-        Canvas localCanvas = new Canvas(localBitmap);
-        paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-        paramDrawable.draw(localCanvas);
-        return localBitmap;
+      Bitmap localBitmap;
+      if ((paramDrawable instanceof ColorDrawable)) {
+        localBitmap = Bitmap.createBitmap(2, 2, jdField_a_of_type_AndroidGraphicsBitmap$Config);
+      } else {
+        localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), jdField_a_of_type_AndroidGraphicsBitmap$Config);
       }
-      return null;
+      Canvas localCanvas = new Canvas(localBitmap);
+      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+      paramDrawable.draw(localCanvas);
+      return localBitmap;
     }
     catch (Exception paramDrawable)
     {
       paramDrawable.printStackTrace();
     }
+    return null;
   }
   
   private RectF a()
@@ -102,11 +104,10 @@ public class CircleBoarderImageView
     int i = getWidth() - getPaddingLeft() - getPaddingRight();
     int j = getHeight() - getPaddingTop() - getPaddingBottom();
     int k = Math.min(i, j);
-    float f1 = getPaddingLeft();
-    f1 = (i - k) / 2.0F + f1;
-    float f2 = getPaddingTop();
-    f2 = (j - k) / 2.0F + f2;
-    return new RectF(f1, f2, k + f1, k + f2);
+    float f1 = getPaddingLeft() + (i - k) / 2.0F;
+    float f2 = getPaddingTop() + (j - k) / 2.0F;
+    float f3 = k;
+    return new RectF(f1, f2, f1 + f3, f3 + f2);
   }
   
   private void a()
@@ -122,35 +123,39 @@ public class CircleBoarderImageView
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPaint != null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
+    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    if (localPaint != null) {
+      localPaint.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
     }
   }
   
   private void c()
   {
-    if (this.jdField_d_of_type_Boolean) {}
-    for (this.jdField_a_of_type_AndroidGraphicsBitmap = null;; this.jdField_a_of_type_AndroidGraphicsBitmap = a(getDrawable()))
-    {
-      d();
-      return;
+    if (this.jdField_d_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = a(getDrawable());
     }
+    d();
   }
   
   private void d()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Boolean)
+    {
       this.jdField_b_of_type_Boolean = true;
-    }
-    while ((getWidth() == 0) && (getHeight() == 0)) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    if ((getWidth() == 0) && (getHeight() == 0)) {
+      return;
+    }
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap == null)
     {
       invalidate();
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
@@ -165,8 +170,12 @@ public class CircleBoarderImageView
     this.jdField_b_of_type_AndroidGraphicsRectF.set(a());
     this.jdField_b_of_type_Float = Math.min((this.jdField_b_of_type_AndroidGraphicsRectF.height() - this.jdField_b_of_type_Int) / 2.0F, (this.jdField_b_of_type_AndroidGraphicsRectF.width() - this.jdField_b_of_type_Int) / 2.0F);
     this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_AndroidGraphicsRectF);
-    if ((!this.jdField_c_of_type_Boolean) && (this.jdField_b_of_type_Int > 0)) {
-      this.jdField_a_of_type_AndroidGraphicsRectF.inset(this.jdField_b_of_type_Int - 1.0F, this.jdField_b_of_type_Int - 1.0F);
+    if (!this.jdField_c_of_type_Boolean)
+    {
+      int i = this.jdField_b_of_type_Int;
+      if (i > 0) {
+        this.jdField_a_of_type_AndroidGraphicsRectF.inset(i - 1.0F, i - 1.0F);
+      }
     }
     this.jdField_a_of_type_Float = Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.height() / 2.0F, this.jdField_a_of_type_AndroidGraphicsRectF.width() / 2.0F);
     b();
@@ -176,27 +185,26 @@ public class CircleBoarderImageView
   
   private void e()
   {
-    float f1 = 0.0F;
     this.jdField_a_of_type_AndroidGraphicsMatrix.set(null);
-    float f3;
-    float f2;
-    if (this.jdField_d_of_type_Int * this.jdField_a_of_type_AndroidGraphicsRectF.height() > this.jdField_a_of_type_AndroidGraphicsRectF.width() * this.e)
+    float f1 = this.jdField_d_of_type_Int;
+    float f2 = this.jdField_a_of_type_AndroidGraphicsRectF.height();
+    float f4 = this.jdField_a_of_type_AndroidGraphicsRectF.width();
+    float f5 = this.e;
+    float f3 = 0.0F;
+    if (f1 * f2 > f4 * f5)
     {
-      f3 = this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.e;
-      f2 = (this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_d_of_type_Int * f3) * 0.5F;
+      f1 = this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.e;
+      f2 = (this.jdField_a_of_type_AndroidGraphicsRectF.width() - this.jdField_d_of_type_Int * f1) * 0.5F;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f3, f3);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((int)(f2 + 0.5F) + this.jdField_a_of_type_AndroidGraphicsRectF.left, (int)(f1 + 0.5F) + this.jdField_a_of_type_AndroidGraphicsRectF.top);
-      this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      return;
-      f3 = this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_d_of_type_Int;
-      f1 = this.jdField_a_of_type_AndroidGraphicsRectF.height();
-      float f4 = this.e;
+      f1 = this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_d_of_type_Int;
+      f3 = (this.jdField_a_of_type_AndroidGraphicsRectF.height() - this.e * f1) * 0.5F;
       f2 = 0.0F;
-      f1 = (f1 - f4 * f3) * 0.5F;
     }
+    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((int)(f2 + 0.5F) + this.jdField_a_of_type_AndroidGraphicsRectF.left, (int)(f3 + 0.5F) + this.jdField_a_of_type_AndroidGraphicsRectF.top);
+    this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
   }
   
   public ColorFilter getColorFilter()
@@ -209,26 +217,26 @@ public class CircleBoarderImageView
     return jdField_a_of_type_AndroidWidgetImageView$ScaleType;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_d_of_type_Boolean) {
-      super.onDraw(paramCanvas);
-    }
-    do
+    if (this.jdField_d_of_type_Boolean)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_AndroidGraphicsBitmap == null);
-      if (this.jdField_c_of_type_Int != 0) {
-        paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), this.jdField_a_of_type_Float, this.jdField_c_of_type_AndroidGraphicsPaint);
-      }
-      paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    } while (this.jdField_b_of_type_Int <= 0);
-    paramCanvas.drawCircle(this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY(), this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidGraphicsPaint);
+      super.onDraw(paramCanvas);
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      return;
+    }
+    if (this.jdField_c_of_type_Int != 0) {
+      paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), this.jdField_a_of_type_Float, this.jdField_c_of_type_AndroidGraphicsPaint);
+    }
+    paramCanvas.drawCircle(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_b_of_type_Int > 0) {
+      paramCanvas.drawCircle(this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), this.jdField_b_of_type_AndroidGraphicsRectF.centerY(), this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidGraphicsPaint);
+    }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     d();
@@ -236,9 +244,10 @@ public class CircleBoarderImageView
   
   public void setAdjustViewBounds(boolean paramBoolean)
   {
-    if (paramBoolean) {
-      throw new IllegalArgumentException("adjustViewBounds not supported.");
+    if (!paramBoolean) {
+      return;
     }
+    throw new IllegalArgumentException("adjustViewBounds not supported.");
   }
   
   public void setBorderColor(int paramInt)
@@ -343,14 +352,15 @@ public class CircleBoarderImageView
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
   {
-    if (paramScaleType != jdField_a_of_type_AndroidWidgetImageView$ScaleType) {
-      throw new IllegalArgumentException(String.format("ScaleType %s not supported.", new Object[] { paramScaleType }));
+    if (paramScaleType == jdField_a_of_type_AndroidWidgetImageView$ScaleType) {
+      return;
     }
+    throw new IllegalArgumentException(String.format("ScaleType %s not supported.", new Object[] { paramScaleType }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleBoarderImageView
  * JD-Core Version:    0.7.0.1
  */

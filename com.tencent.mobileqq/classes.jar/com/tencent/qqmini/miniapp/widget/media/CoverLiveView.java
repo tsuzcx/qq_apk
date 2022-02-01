@@ -36,7 +36,10 @@ public class CoverLiveView
       long l = System.currentTimeMillis() - this.livePlayer.lastSmallScreenTime;
       if (l < 1000L)
       {
-        Log.w("CoverView", "setLayoutParams: wrong set size " + l, new Throwable());
+        paramLayoutParams = new StringBuilder();
+        paramLayoutParams.append("setLayoutParams: wrong set size ");
+        paramLayoutParams.append(l);
+        Log.w("CoverView", paramLayoutParams.toString(), new Throwable());
         return true;
       }
     }
@@ -65,15 +68,7 @@ public class CoverLiveView
   public void onPageForeground()
   {
     if (this.isPageBackground) {
-      if (this.livePlayer.enterForeground()) {
-        break label25;
-      }
-    }
-    label25:
-    for (boolean bool = true;; bool = false)
-    {
-      this.isPageBackground = bool;
-      return;
+      this.isPageBackground = (this.livePlayer.enterForeground() ^ true);
     }
   }
   
@@ -92,15 +87,7 @@ public class CoverLiveView
   public void onPageWebViewResume()
   {
     if (this.isPageBackground) {
-      if (this.livePlayer.enterForeground()) {
-        break label25;
-      }
-    }
-    label25:
-    for (boolean bool = true;; bool = false)
-    {
-      this.isPageBackground = bool;
-      return;
+      this.isPageBackground = (this.livePlayer.enterForeground() ^ true);
     }
   }
   
@@ -164,7 +151,7 @@ public class CoverLiveView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.CoverLiveView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.ilive.litepages.room.webmodule.js;
 import android.content.Context;
 import android.webkit.JavascriptInterface;
 import com.tencent.falco.utils.SPUtil;
-import com.tencent.ilive.audiencepages.room.AudienceRoomViewPager;
 import com.tencent.ilive.interfaces.IAudienceRoomPager;
 
 public class NormalJavascriptInterface
@@ -39,35 +38,44 @@ public class NormalJavascriptInterface
   @JavascriptInterface
   public void beginDraw()
   {
-    if (this.mAudienceRoomPager == null) {}
-    AudienceRoomViewPager localAudienceRoomViewPager;
-    do
-    {
+    IAudienceRoomPager localIAudienceRoomPager = this.mAudienceRoomPager;
+    if (localIAudienceRoomPager == null) {
       return;
-      localAudienceRoomViewPager = (AudienceRoomViewPager)this.mAudienceRoomPager.getViewPager();
-    } while (this.ignoreScrollForbidden);
-    localAudienceRoomViewPager.setScrollForbidden(true);
-    saveForbiddenSPValue(true);
+    }
+    if (!this.ignoreScrollForbidden)
+    {
+      localIAudienceRoomPager.setScrollForbidden(true);
+      saveForbiddenSPValue(true);
+    }
   }
   
   @JavascriptInterface
   public void endDraw()
   {
-    if (this.mAudienceRoomPager == null) {}
-    while ((isLandscape) || (isNetWorkClose) || (this.mContentType == 5)) {
+    IAudienceRoomPager localIAudienceRoomPager = this.mAudienceRoomPager;
+    if (localIAudienceRoomPager == null) {
       return;
     }
-    ((AudienceRoomViewPager)this.mAudienceRoomPager.getViewPager()).setScrollForbidden(false);
-    saveForbiddenSPValue(false);
+    if (!isLandscape)
+    {
+      if (isNetWorkClose) {
+        return;
+      }
+      if (this.mContentType == 5) {
+        return;
+      }
+      localIAudienceRoomPager.setScrollForbidden(false);
+      saveForbiddenSPValue(false);
+    }
   }
   
   public boolean getForbiddenSPValue()
   {
-    boolean bool = false;
-    if (this.mContext != null) {
-      bool = SPUtil.get(this.mContext, "nowlive_config").getBoolean("scrollForbidden", false);
+    Context localContext = this.mContext;
+    if (localContext != null) {
+      return SPUtil.get(localContext, "nowlive_config").getBoolean("scrollForbidden", false);
     }
-    return bool;
+    return false;
   }
   
   public void onDestroy()
@@ -78,8 +86,9 @@ public class NormalJavascriptInterface
   
   public void saveForbiddenSPValue(boolean paramBoolean)
   {
-    if (this.mContext != null) {
-      SPUtil.get(this.mContext, "nowlive_config").putBoolean("scrollForbidden", paramBoolean);
+    Context localContext = this.mContext;
+    if (localContext != null) {
+      SPUtil.get(localContext, "nowlive_config").putBoolean("scrollForbidden", paramBoolean);
     }
   }
   
@@ -90,7 +99,7 @@ public class NormalJavascriptInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.webmodule.js.NormalJavascriptInterface
  * JD-Core Version:    0.7.0.1
  */

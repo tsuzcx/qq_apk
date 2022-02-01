@@ -5,10 +5,13 @@ import android.os.Build.VERSION;
 import android.view.View;
 import android.view.Window;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class StatusBarUtil
 {
@@ -26,7 +29,7 @@ public class StatusBarUtil
   
   public static void a(Activity paramActivity, boolean paramBoolean)
   {
-    if (ThemeUtil.isCustomTheme(false))
+    if (QQTheme.a(MobileQQ.sMobileQQ.waitAppRuntime(null).getCurrentUin(), true))
     {
       a(paramActivity, 0);
       return;
@@ -52,36 +55,44 @@ public class StatusBarUtil
   
   public static boolean a(Activity paramActivity, boolean paramBoolean)
   {
+    int j = Build.VERSION.SDK_INT;
     int i = 9216;
-    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.d()) && (!SystemUtil.b())) {
-      if (paramBoolean) {
-        paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
-      }
-    }
-    do
+    if ((j >= 23) && (!SystemUtil.d()) && (!SystemUtil.b()))
     {
-      return paramBoolean;
-      i = 1280;
-      break;
-      if (!ImmersiveUtils.supportStatusBarDarkMode()) {
-        break label101;
+      if (!paramBoolean) {
+        i = 1280;
       }
-      ImmersiveUtils.setStatusBarDarkMode(paramActivity.getWindow(), paramBoolean);
-    } while ((Build.VERSION.SDK_INT < 23) || (!SystemUtil.b()));
-    if (paramBoolean) {}
-    for (;;)
-    {
       paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
       return paramBoolean;
-      i = 1280;
     }
-    label101:
-    return false;
+    boolean bool;
+    if (ImmersiveUtils.supportStatusBarDarkMode())
+    {
+      ImmersiveUtils.setStatusBarDarkMode(paramActivity.getWindow(), paramBoolean);
+      bool = paramBoolean;
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        bool = paramBoolean;
+        if (SystemUtil.b())
+        {
+          if (!paramBoolean) {
+            i = 1280;
+          }
+          paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
+          return paramBoolean;
+        }
+      }
+    }
+    else
+    {
+      bool = false;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.utils.StatusBarUtil
  * JD-Core Version:    0.7.0.1
  */

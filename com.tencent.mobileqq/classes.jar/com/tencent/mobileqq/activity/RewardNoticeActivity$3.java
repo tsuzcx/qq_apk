@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionObserver;
+import com.tencent.mobileqq.apollo.handler.IApolloExtensionObserver;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,61 +22,80 @@ class RewardNoticeActivity$3
     paramObject = (Bundle)paramObject;
     long l = paramObject.getLong("pendantId");
     String str = paramObject.getString("uin");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.BabyQ", 2, "handlePendantAuth isSuccess:" + paramBoolean + " pendantId:" + l + " uin:" + str);
-    }
-    if ((l == -1L) || (str == null)) {
-      return;
-    }
-    if (paramBoolean)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      FriendsManager localFriendsManager = (FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      ExtensionInfo localExtensionInfo = localFriendsManager.a(str);
-      paramObject = localExtensionInfo;
-      if (localExtensionInfo == null)
-      {
-        paramObject = new ExtensionInfo();
-        paramObject.uin = str;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handlePendantAuth isSuccess:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" pendantId:");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append(" uin:");
+      ((StringBuilder)localObject).append(str);
+      QLog.d("Q.BabyQ", 2, ((StringBuilder)localObject).toString());
+    }
+    if (l != -1L)
+    {
+      if (str == null) {
+        return;
       }
-      paramObject.pendantId = l;
-      paramObject.timestamp = System.currentTimeMillis();
-      localFriendsManager.a(paramObject);
-      if (!TextUtils.isEmpty(this.a.f)) {
-        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      if (paramBoolean)
+      {
+        FriendsManager localFriendsManager = (FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        localObject = localFriendsManager.a(str);
+        paramObject = localObject;
+        if (localObject == null)
+        {
+          paramObject = new ExtensionInfo();
+          paramObject.uin = str;
+        }
+        paramObject.pendantId = l;
+        paramObject.timestamp = System.currentTimeMillis();
+        localFriendsManager.a(paramObject);
+        if (!TextUtils.isEmpty(this.a.f)) {
+          QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+        }
+      }
+      else
+      {
+        int i = paramObject.getInt("result");
+        if (NetworkUtil.isNetSupport(this.a)) {
+          paramObject = "4";
+        } else {
+          paramObject = "3";
+        }
+        if (i != 1004)
+        {
+          if (i != 6001) {
+            if (i != 2001) {
+              if (i == 2002) {}
+            }
+          }
+          for (;;)
+          {
+            i = -1;
+            break;
+            i = 2131716876;
+            paramObject = "1";
+            break;
+            i = 2131716875;
+            paramObject = "0";
+            break;
+            paramObject = "2";
+          }
+        }
+        i = 2131716874;
+        if ((i != -1) && (QLog.isColorLevel()))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handlePendantAuth error:");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(paramObject);
+          QLog.e("Q.BabyQ", 2, ((StringBuilder)localObject).toString());
+        }
+        QQToast.a(this.a.app.getApp(), 1, HardCodeUtil.a(2131713369), 0).a();
       }
       this.a.finish();
-      return;
-    }
-    int i = paramObject.getInt("result");
-    if (NetworkUtil.d(this.a))
-    {
-      paramObject = "4";
-      switch (i)
-      {
-      default: 
-        label226:
-        i = -1;
-      }
-    }
-    for (;;)
-    {
-      if ((i != -1) && (QLog.isColorLevel())) {
-        QLog.e("Q.BabyQ", 2, "handlePendantAuth error:" + i + paramObject);
-      }
-      QQToast.a(this.a.app.getApp(), 1, HardCodeUtil.a(2131713401), 0).a();
-      break;
-      paramObject = "3";
-      break label226;
-      i = 2131717215;
-      continue;
-      paramObject = "0";
-      i = 2131717216;
-      continue;
-      paramObject = "1";
-      i = 2131717217;
-      continue;
-      paramObject = "2";
-      i = -1;
     }
   }
   
@@ -89,7 +108,7 @@ class RewardNoticeActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RewardNoticeActivity.3
  * JD-Core Version:    0.7.0.1
  */

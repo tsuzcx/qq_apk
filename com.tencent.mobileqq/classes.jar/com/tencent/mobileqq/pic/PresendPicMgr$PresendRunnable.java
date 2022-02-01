@@ -12,13 +12,16 @@ class PresendPicMgr$PresendRunnable
   
   public void run()
   {
-    Logger.a("PresendPicMgr", "PresendRunnable.run", "PresendReq is " + this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PresendReq is ");
+    localStringBuilder.append(this.a);
+    Logger.a("PresendPicMgr", "PresendRunnable.run", localStringBuilder.toString());
     this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PresendPicMgr.PresendRunnable
  * JD-Core Version:    0.7.0.1
  */

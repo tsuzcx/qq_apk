@@ -11,8 +11,8 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -45,180 +45,223 @@ public class CUOpenCardGuideMng
     if (paramQQAppInterface != null) {}
     for (;;)
     {
+      int j;
       try
       {
         localObject1 = (CUOpenCardGuideMng)paramQQAppInterface.getManager(QQManagerFactory.CU_OPEN_CARD_GUIDE_MANAGER);
-        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-          if (((CUOpenCardGuideMng)localObject1).a())
-          {
-            localObject1 = ((CUOpenCardGuideMng)localObject1).a(paramInt);
-            i = 0;
-            j = i;
-            localObject2 = paramString;
-            if (localObject1 != null)
-            {
-              j = i;
-              localObject2 = paramString;
-            }
-          }
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        Object localObject1;
-        i = 0;
-      }
-      try
-      {
-        if (!TextUtils.isEmpty(((CUOpenCardGuideMng.GuideEntry)localObject1).jdField_a_of_type_JavaLangString))
+        if (Thread.currentThread() == Looper.getMainLooper().getThread())
         {
+          if (!((CUOpenCardGuideMng)localObject1).a()) {
+            break label334;
+          }
+          localObject1 = ((CUOpenCardGuideMng)localObject1).a(paramInt);
+        }
+        else
+        {
+          localObject1 = ((CUOpenCardGuideMng)localObject1).a(paramInt);
+        }
+        i = 0;
+        j = i;
+        localObject2 = paramString;
+        if (localObject1 == null) {
+          break label288;
+        }
+        j = i;
+        localObject2 = paramString;
+        try
+        {
+          if (TextUtils.isEmpty(((CUOpenCardGuideMng.GuideEntry)localObject1).jdField_a_of_type_JavaLangString)) {
+            break label288;
+          }
           j = i;
           localObject2 = paramString;
-          if (!TextUtils.isEmpty(((CUOpenCardGuideMng.GuideEntry)localObject1).b))
-          {
-            j = i;
-            localObject2 = paramString;
-            if (((CUOpenCardGuideMng.GuideEntry)localObject1).jdField_a_of_type_JavaLangString.contains(((CUOpenCardGuideMng.GuideEntry)localObject1).b))
-            {
-              j = i;
-              localObject2 = paramString;
-              if (!TextUtils.isEmpty(((CUOpenCardGuideMng.GuideEntry)localObject1).c))
-              {
-                String str = String.format("%s\n%s", new Object[] { paramString, ((CUOpenCardGuideMng.GuideEntry)localObject1).jdField_a_of_type_JavaLangString });
-                localObject2 = new SpannableString(str);
-                j = str.indexOf(((CUOpenCardGuideMng.GuideEntry)localObject1).b);
-                int k = ((CUOpenCardGuideMng.GuideEntry)localObject1).b.length();
-                ((SpannableString)localObject2).setSpan(new CUOpenCardGuideMng.CUOpenCardClickableSpan(paramContext, ((CUOpenCardGuideMng.GuideEntry)localObject1).c, paramQQAppInterface.getCurrentUin(), paramInt), j, k + j, 17);
-                j = i;
-              }
-            }
+          if (TextUtils.isEmpty(((CUOpenCardGuideMng.GuideEntry)localObject1).b)) {
+            break label288;
           }
+          j = i;
+          localObject2 = paramString;
+          if (!((CUOpenCardGuideMng.GuideEntry)localObject1).jdField_a_of_type_JavaLangString.contains(((CUOpenCardGuideMng.GuideEntry)localObject1).b)) {
+            break label288;
+          }
+          j = i;
+          localObject2 = paramString;
+          if (TextUtils.isEmpty(((CUOpenCardGuideMng.GuideEntry)localObject1).c)) {
+            break label288;
+          }
+          String str = String.format("%s\n%s", new Object[] { paramString, ((CUOpenCardGuideMng.GuideEntry)localObject1).jdField_a_of_type_JavaLangString });
+          localObject2 = new SpannableString(str);
+          j = str.indexOf(((CUOpenCardGuideMng.GuideEntry)localObject1).b);
+          int k = ((CUOpenCardGuideMng.GuideEntry)localObject1).b.length();
+          ((SpannableString)localObject2).setSpan(new CUOpenCardGuideMng.CUOpenCardClickableSpan(paramContext, ((CUOpenCardGuideMng.GuideEntry)localObject1).c, paramQQAppInterface.getCurrentUin(), paramInt), j, k + j, 17);
+          j = i;
         }
-        if (QLog.isColorLevel()) {
-          QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "getGuideEntry entry: %d retCode: %d context: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext }));
-        }
-        return localObject2;
+        catch (Exception paramQQAppInterface) {}
+        j = i;
       }
       catch (Exception paramQQAppInterface)
       {
-        break label301;
+        i = 0;
       }
-      localObject1 = null;
-      int i = 3;
-      continue;
-      localObject1 = ((CUOpenCardGuideMng)localObject1).a(paramInt);
-      i = 0;
-      continue;
-      label301:
-      int j = i;
       Object localObject2 = paramString;
       if (QLog.isColorLevel())
       {
         QLog.i("CUOpenCardGuideMng", 2, "getGuideEnty", paramQQAppInterface);
         j = i;
         localObject2 = paramString;
-        continue;
+        break label288;
         j = 0;
         localObject2 = paramString;
       }
+      label288:
+      if (QLog.isColorLevel()) {
+        QLog.i("CUOpenCardGuideMng", 2, String.format(Locale.getDefault(), "getGuideEntry entry: %d retCode: %d context: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext }));
+      }
+      return localObject2;
+      label334:
+      Object localObject1 = null;
+      int i = 3;
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
   {
-    int i = NetworkUtil.a(BaseApplicationImpl.getApplication().getApplicationContext());
-    Object localObject1 = null;
+    int i = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication().getApplicationContext());
     long l2 = 0L;
-    long l1 = 0L;
-    CUKingCardHelper.CUKingCustomDialogInfo localCUKingCustomDialogInfo;
+    long l1;
+    Object localObject3;
     if (i != 1)
     {
-      l2 = SharedPreUtils.e(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin());
-      l1 = System.currentTimeMillis();
-      localCUKingCustomDialogInfo = CUKingCardHelper.a(paramString2, true, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("CUOpenCardGuideMng", 2, "WL_DEBUG addCallGrayTip info.mPopUpType = " + localCUKingCustomDialogInfo.jdField_a_of_type_Int + ", info.mGuideJumpUrl = " + localCUKingCustomDialogInfo.jdField_a_of_type_JavaLangString);
+      long l3 = SharedPreUtils.b(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin());
+      long l4 = System.currentTimeMillis();
+      CUKingCardHelper.CUKingCustomDialogInfo localCUKingCustomDialogInfo = CUKingCardHelper.a(paramString2, true, false);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("WL_DEBUG addCallGrayTip info.mPopUpType = ");
+        paramString2.append(localCUKingCustomDialogInfo.jdField_a_of_type_Int);
+        paramString2.append(", info.mGuideJumpUrl = ");
+        paramString2.append(localCUKingCustomDialogInfo.jdField_a_of_type_JavaLangString);
+        QLog.d("CUOpenCardGuideMng", 2, paramString2.toString());
       }
       paramString2 = (CUOpenCardGuideMng)paramQQAppInterface.getManager(QQManagerFactory.CU_OPEN_CARD_GUIDE_MANAGER);
-      if (paramString2 == null) {
-        break label622;
-      }
-      if (!paramBoolean) {
-        break label579;
-      }
-      paramString2 = paramString2.a(4);
-    }
-    for (;;)
-    {
-      String[] arrayOfString2;
-      String[] arrayOfString1;
-      Bundle localBundle;
-      Object localObject3;
-      Object localObject2;
-      if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString2.b)) && (!TextUtils.isEmpty(localCUKingCustomDialogInfo.jdField_a_of_type_JavaLangString)))
+      if (paramString2 != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("CUOpenCardGuideMng", 2, "WL_DEBUG addCallGrayTip entry.tip = " + paramString2.jdField_a_of_type_JavaLangString + ", entry.keyWord = " + paramString2.b);
+        if (paramBoolean) {
+          paramString2 = paramString2.a(4);
+        } else {
+          paramString2 = paramString2.a(3);
         }
-        arrayOfString2 = paramString2.jdField_a_of_type_JavaLangString.split("\\|");
-        arrayOfString1 = paramString2.b.split("\\|");
-        localBundle = null;
-        localObject3 = null;
-        localObject1 = localObject3;
-        localObject2 = localBundle;
-        if (arrayOfString2.length >= 2)
+      }
+      else {
+        paramString2 = null;
+      }
+      l2 = l3;
+      l1 = l4;
+      localObject3 = paramString2;
+      if (paramString2 != null)
+      {
+        l2 = l3;
+        l1 = l4;
+        localObject3 = paramString2;
+        if (!TextUtils.isEmpty(paramString2.jdField_a_of_type_JavaLangString))
         {
-          localObject1 = localObject3;
-          localObject2 = localBundle;
-          if (arrayOfString1.length >= 2)
+          l2 = l3;
+          l1 = l4;
+          localObject3 = paramString2;
+          if (!TextUtils.isEmpty(paramString2.b))
           {
-            if (localCUKingCustomDialogInfo.jdField_a_of_type_Int != 2) {
-              break label590;
+            l2 = l3;
+            l1 = l4;
+            localObject3 = paramString2;
+            if (!TextUtils.isEmpty(localCUKingCustomDialogInfo.jdField_a_of_type_JavaLangString))
+            {
+              if (QLog.isColorLevel())
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("WL_DEBUG addCallGrayTip entry.tip = ");
+                ((StringBuilder)localObject1).append(paramString2.jdField_a_of_type_JavaLangString);
+                ((StringBuilder)localObject1).append(", entry.keyWord = ");
+                ((StringBuilder)localObject1).append(paramString2.b);
+                QLog.d("CUOpenCardGuideMng", 2, ((StringBuilder)localObject1).toString());
+              }
+              Object localObject1 = paramString2.jdField_a_of_type_JavaLangString.split("\\|");
+              Object localObject2 = paramString2.b.split("\\|");
+              if ((localObject1.length >= 2) && (localObject2.length >= 2))
+              {
+                if (localCUKingCustomDialogInfo.jdField_a_of_type_Int == 2)
+                {
+                  localObject1 = localObject1[0];
+                  localObject2 = localObject2[0];
+                  break label399;
+                }
+                if (localCUKingCustomDialogInfo.jdField_a_of_type_Int == 3)
+                {
+                  localObject1 = localObject1[1];
+                  localObject2 = localObject2[1];
+                  break label399;
+                }
+              }
+              localObject1 = null;
+              localObject2 = null;
+              label399:
+              l2 = l3;
+              l1 = l4;
+              localObject3 = paramString2;
+              if (localObject1 != null)
+              {
+                l2 = l3;
+                l1 = l4;
+                localObject3 = paramString2;
+                if (localObject2 != null)
+                {
+                  localObject3 = new Bundle();
+                  ((Bundle)localObject3).putInt("key_action", 1);
+                  ((Bundle)localObject3).putString("textColor", "#40A0FF");
+                  ((Bundle)localObject3).putString("key_action_DATA", localCUKingCustomDialogInfo.jdField_a_of_type_JavaLangString);
+                  int j = ((String)localObject1).indexOf((String)localObject2);
+                  int k = ((String)localObject2).length();
+                  localObject1 = new UniteGrayTipParam(paramString1, paramQQAppInterface.getCurrentUin(), (String)localObject1, paramInt, -5020, 3145729, MessageCache.a());
+                  localObject2 = new MessageForUniteGrayTip();
+                  if (j >= 0) {
+                    ((UniteGrayTipParam)localObject1).a(j, k + j, (Bundle)localObject3);
+                  }
+                  ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject1);
+                  UniteGrayTipMsgUtil.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject2);
+                  ReportController.b(null, "dc00898", "", "", "0X800812A", "0X800812A", 0, 0, "", "", "", "");
+                  SharedPreUtils.b(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin(), System.currentTimeMillis());
+                  l2 = l3;
+                  l1 = l4;
+                  localObject3 = paramString2;
+                }
+              }
             }
-            localObject2 = arrayOfString2[0];
-            localObject1 = arrayOfString1[0];
           }
         }
       }
-      for (;;)
-      {
-        if ((localObject2 != null) && (localObject1 != null))
-        {
-          localBundle = new Bundle();
-          localBundle.putInt("key_action", 1);
-          localBundle.putString("textColor", "#40A0FF");
-          localBundle.putString("key_action_DATA", localCUKingCustomDialogInfo.jdField_a_of_type_JavaLangString);
-          int j = ((String)localObject2).indexOf((String)localObject1);
-          int k = ((String)localObject1).length();
-          localObject1 = new UniteGrayTipParam(paramString1, paramQQAppInterface.getCurrentUin(), (String)localObject2, paramInt, -5020, 3145729, MessageCache.a());
-          localObject2 = new MessageForUniteGrayTip();
-          if (j >= 0) {
-            ((UniteGrayTipParam)localObject1).a(j, k + j, localBundle);
-          }
-          ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject1);
-          UniteGrayTipUtil.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject2);
-          ReportController.b(null, "dc00898", "", "", "0X800812A", "0X800812A", 0, 0, "", "", "", "");
-          SharedPreUtils.e(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin(), System.currentTimeMillis());
-        }
-        localObject1 = paramString2;
-        if (QLog.isColorLevel()) {
-          QLog.i("CUOpenCardGuideMng", 2, "addCallGrayTip, friendUin= " + paramString1 + ",isVideoMsg=" + paramBoolean + ",netType=" + i + ",uinType=" + paramInt + ",lastAlertTime=" + l2 + ",currentTime=" + l1 + ",entry=" + localObject1);
-        }
-        return;
-        label579:
-        paramString2 = paramString2.a(3);
-        break;
-        label590:
-        localObject1 = localObject3;
-        localObject2 = localBundle;
-        if (localCUKingCustomDialogInfo.jdField_a_of_type_Int == 3)
-        {
-          localObject2 = arrayOfString2[1];
-          localObject1 = arrayOfString1[1];
-        }
-      }
-      label622:
-      paramString2 = null;
+    }
+    else
+    {
+      l1 = 0L;
+      localObject3 = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("addCallGrayTip, friendUin= ");
+      paramQQAppInterface.append(paramString1);
+      paramQQAppInterface.append(",isVideoMsg=");
+      paramQQAppInterface.append(paramBoolean);
+      paramQQAppInterface.append(",netType=");
+      paramQQAppInterface.append(i);
+      paramQQAppInterface.append(",uinType=");
+      paramQQAppInterface.append(paramInt);
+      paramQQAppInterface.append(",lastAlertTime=");
+      paramQQAppInterface.append(l2);
+      paramQQAppInterface.append(",currentTime=");
+      paramQQAppInterface.append(l1);
+      paramQQAppInterface.append(",entry=");
+      paramQQAppInterface.append(localObject3);
+      QLog.i("CUOpenCardGuideMng", 2, paramQQAppInterface.toString());
     }
   }
   
@@ -258,7 +301,11 @@ public class CUOpenCardGuideMng
     if (paramString == null) {
       str = "";
     }
-    paramString = BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_ComTencentMobileqqManagersCUOpenCardGuideMng$GuideConfigData.jdField_a_of_type_JavaLangString, 4).edit();
+    paramString = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ChinaUnicomPhoneCard");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqManagersCUOpenCardGuideMng$GuideConfigData.jdField_a_of_type_JavaLangString);
+    paramString = paramString.getSharedPreferences(localStringBuilder.toString(), 4).edit();
     paramString.putString("config_content", str);
     paramString.commit();
     this.jdField_a_of_type_ComTencentMobileqqManagersCUOpenCardGuideMng$GuideConfigData.a(str);
@@ -278,7 +325,7 @@ public class CUOpenCardGuideMng
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.CUOpenCardGuideMng
  * JD-Core Version:    0.7.0.1
  */

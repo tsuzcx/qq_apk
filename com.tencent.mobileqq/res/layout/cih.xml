@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
+<FrameLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="40.0dip" android:textColor="@color/al3" android:id="@id/ofa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wln" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="24.0dip" android:textColor="@color/al3" android:id="@id/of_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wlm" android:layout_below="@id/ofa" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="24.0dip" android:textColor="@color/al3" android:id="@id/of9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wll" android:layout_below="@id/of_" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <com.tencent.ark.open.ArkView android:layout_gravity="center" android:id="@id/cvu" android:layout_width="350.0dip" android:layout_height="373.0dip" />
+</FrameLayout>

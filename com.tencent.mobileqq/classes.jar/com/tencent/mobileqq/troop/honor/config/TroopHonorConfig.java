@@ -23,188 +23,228 @@ public class TroopHonorConfig
     // Byte code:
     //   0: aload_0
     //   1: invokestatic 35	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifeq +5 -> 9
-    //   7: aconst_null
-    //   8: areturn
-    //   9: new 16	android/util/SparseArray
-    //   12: dup
-    //   13: invokespecial 17	android/util/SparseArray:<init>	()V
-    //   16: astore 8
-    //   18: new 37	org/json/JSONObject
-    //   21: dup
-    //   22: aload_0
-    //   23: invokespecial 40	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   26: astore 7
-    //   28: aload 7
-    //   30: ldc 42
-    //   32: iconst_0
-    //   33: invokevirtual 46	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   36: istore_2
-    //   37: aload 7
-    //   39: ldc 48
-    //   41: iconst_3
-    //   42: invokevirtual 46	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   45: istore_1
-    //   46: aload 7
-    //   48: ldc 50
-    //   50: invokevirtual 54	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   53: astore 7
-    //   55: iload_1
-    //   56: istore 5
-    //   58: iload_2
-    //   59: istore 4
-    //   61: aload 7
-    //   63: ifnull +140 -> 203
-    //   66: iload_1
-    //   67: istore 5
-    //   69: iload_2
-    //   70: istore 4
-    //   72: aload 7
-    //   74: invokevirtual 60	org/json/JSONArray:length	()I
-    //   77: ifle +126 -> 203
-    //   80: iconst_0
-    //   81: istore_3
-    //   82: iload_1
-    //   83: istore 5
+    //   4: istore 7
+    //   6: aconst_null
+    //   7: astore 9
+    //   9: iload 7
+    //   11: ifeq +5 -> 16
+    //   14: aconst_null
+    //   15: areturn
+    //   16: new 16	android/util/SparseArray
+    //   19: dup
+    //   20: invokespecial 17	android/util/SparseArray:<init>	()V
+    //   23: astore 10
+    //   25: iconst_3
+    //   26: istore_1
+    //   27: iconst_0
+    //   28: istore 7
+    //   30: new 37	org/json/JSONObject
+    //   33: dup
+    //   34: aload_0
+    //   35: invokespecial 40	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   38: astore 8
+    //   40: aload 8
+    //   42: ldc 42
+    //   44: iconst_0
+    //   45: invokevirtual 46	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   48: istore_2
+    //   49: aload 8
+    //   51: ldc 48
+    //   53: iconst_3
+    //   54: invokevirtual 46	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   57: istore_3
+    //   58: iload_3
+    //   59: istore_1
+    //   60: aload 8
+    //   62: ldc 50
+    //   64: invokevirtual 54	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   67: astore 8
+    //   69: iload_3
+    //   70: istore 6
+    //   72: iload_2
+    //   73: istore 5
+    //   75: aload 8
+    //   77: ifnull +168 -> 245
+    //   80: iload_3
+    //   81: istore_1
+    //   82: iload_3
+    //   83: istore 6
     //   85: iload_2
-    //   86: istore 4
-    //   88: iload_3
-    //   89: aload 7
-    //   91: invokevirtual 60	org/json/JSONArray:length	()I
-    //   94: if_icmpge +109 -> 203
-    //   97: aload 7
+    //   86: istore 5
+    //   88: aload 8
+    //   90: invokevirtual 60	org/json/JSONArray:length	()I
+    //   93: ifle +152 -> 245
+    //   96: iconst_0
+    //   97: istore 4
     //   99: iload_3
-    //   100: invokevirtual 64	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   103: astore 9
-    //   105: aload 9
-    //   107: ldc 66
-    //   109: invokevirtual 69	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   112: istore 4
-    //   114: aload 9
-    //   116: ldc 71
-    //   118: invokevirtual 75	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   121: astore 10
-    //   123: aload 9
-    //   125: ldc 77
-    //   127: invokevirtual 80	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   130: astore 11
-    //   132: aload 9
-    //   134: ldc 82
-    //   136: invokevirtual 85	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   139: istore 5
-    //   141: aload 10
-    //   143: invokestatic 35	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   146: ifne +33 -> 179
-    //   149: aload 11
-    //   151: invokestatic 35	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   154: ifne +25 -> 179
-    //   157: aload 8
-    //   159: iload 4
-    //   161: new 87	com/tencent/mobileqq/troop/honor/config/TroopHonor
-    //   164: dup
-    //   165: iload 4
-    //   167: aload 11
-    //   169: aload 10
-    //   171: iload 5
-    //   173: invokespecial 90	com/tencent/mobileqq/troop/honor/config/TroopHonor:<init>	(ILjava/lang/String;Ljava/lang/String;I)V
-    //   176: invokevirtual 94	android/util/SparseArray:append	(ILjava/lang/Object;)V
-    //   179: iload_3
-    //   180: iconst_1
-    //   181: iadd
-    //   182: istore_3
-    //   183: goto -101 -> 82
-    //   186: astore 7
-    //   188: iconst_0
-    //   189: istore_2
-    //   190: iconst_3
-    //   191: istore_1
-    //   192: aload 7
-    //   194: invokevirtual 97	org/json/JSONException:printStackTrace	()V
-    //   197: iload_2
-    //   198: istore 4
-    //   200: iload_1
-    //   201: istore 5
-    //   203: aload 8
-    //   205: invokevirtual 100	android/util/SparseArray:size	()I
-    //   208: ifle +92 -> 300
-    //   211: new 2	com/tencent/mobileqq/troop/honor/config/TroopHonorConfig
-    //   214: dup
-    //   215: invokespecial 101	com/tencent/mobileqq/troop/honor/config/TroopHonorConfig:<init>	()V
-    //   218: astore 7
-    //   220: aload 7
-    //   222: aload 8
-    //   224: putfield 19	com/tencent/mobileqq/troop/honor/config/TroopHonorConfig:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
-    //   227: iload 4
-    //   229: iconst_1
-    //   230: if_icmpne +64 -> 294
-    //   233: iconst_1
-    //   234: istore 6
-    //   236: aload 7
-    //   238: iload 6
-    //   240: putfield 103	com/tencent/mobileqq/troop/honor/config/TroopHonorConfig:jdField_a_of_type_Boolean	Z
-    //   243: aload 7
-    //   245: iload 5
-    //   247: putfield 23	com/tencent/mobileqq/troop/honor/config/TroopHonorConfig:jdField_a_of_type_Int	I
-    //   250: invokestatic 109	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   253: ifeq +38 -> 291
-    //   256: ldc 111
-    //   258: iconst_2
-    //   259: new 113	java/lang/StringBuilder
-    //   262: dup
-    //   263: invokespecial 114	java/lang/StringBuilder:<init>	()V
-    //   266: ldc 116
-    //   268: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: aload_0
-    //   272: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: ldc 121
-    //   277: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   280: aload 7
-    //   282: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   285: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   288: invokestatic 132	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   291: aload 7
-    //   293: areturn
-    //   294: iconst_0
-    //   295: istore 6
-    //   297: goto -61 -> 236
-    //   300: ldc 111
-    //   302: iconst_1
-    //   303: ldc 134
-    //   305: invokestatic 132	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   308: aconst_null
-    //   309: astore 7
-    //   311: goto -61 -> 250
-    //   314: astore 7
-    //   316: iconst_3
-    //   317: istore_1
-    //   318: goto -126 -> 192
-    //   321: astore 7
-    //   323: goto -131 -> 192
+    //   100: istore_1
+    //   101: iload_3
+    //   102: istore 6
+    //   104: iload_2
+    //   105: istore 5
+    //   107: iload 4
+    //   109: aload 8
+    //   111: invokevirtual 60	org/json/JSONArray:length	()I
+    //   114: if_icmpge +131 -> 245
+    //   117: iload_3
+    //   118: istore_1
+    //   119: aload 8
+    //   121: iload 4
+    //   123: invokevirtual 64	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   126: astore 11
+    //   128: iload_3
+    //   129: istore_1
+    //   130: aload 11
+    //   132: ldc 66
+    //   134: invokevirtual 69	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   137: istore 5
+    //   139: iload_3
+    //   140: istore_1
+    //   141: aload 11
+    //   143: ldc 71
+    //   145: invokevirtual 75	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   148: astore 12
+    //   150: iload_3
+    //   151: istore_1
+    //   152: aload 11
+    //   154: ldc 77
+    //   156: invokevirtual 80	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   159: astore 13
+    //   161: iload_3
+    //   162: istore_1
+    //   163: aload 11
+    //   165: ldc 82
+    //   167: invokevirtual 85	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   170: istore 6
+    //   172: iload_3
+    //   173: istore_1
+    //   174: aload 12
+    //   176: invokestatic 35	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   179: ifne +37 -> 216
+    //   182: iload_3
+    //   183: istore_1
+    //   184: aload 13
+    //   186: invokestatic 35	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   189: ifne +27 -> 216
+    //   192: iload_3
+    //   193: istore_1
+    //   194: aload 10
+    //   196: iload 5
+    //   198: new 87	com/tencent/mobileqq/troop/honor/config/TroopHonor
+    //   201: dup
+    //   202: iload 5
+    //   204: aload 13
+    //   206: aload 12
+    //   208: iload 6
+    //   210: invokespecial 90	com/tencent/mobileqq/troop/honor/config/TroopHonor:<init>	(ILjava/lang/String;Ljava/lang/String;I)V
+    //   213: invokevirtual 94	android/util/SparseArray:append	(ILjava/lang/Object;)V
+    //   216: iload 4
+    //   218: iconst_1
+    //   219: iadd
+    //   220: istore 4
+    //   222: goto -123 -> 99
+    //   225: astore 8
+    //   227: goto +7 -> 234
+    //   230: astore 8
+    //   232: iconst_0
+    //   233: istore_2
+    //   234: aload 8
+    //   236: invokevirtual 97	org/json/JSONException:printStackTrace	()V
+    //   239: iload_2
+    //   240: istore 5
+    //   242: iload_1
+    //   243: istore 6
+    //   245: aload 10
+    //   247: invokevirtual 100	android/util/SparseArray:size	()I
+    //   250: ifle +45 -> 295
+    //   253: new 2	com/tencent/mobileqq/troop/honor/config/TroopHonorConfig
+    //   256: dup
+    //   257: invokespecial 101	com/tencent/mobileqq/troop/honor/config/TroopHonorConfig:<init>	()V
+    //   260: astore 8
+    //   262: aload 8
+    //   264: aload 10
+    //   266: putfield 19	com/tencent/mobileqq/troop/honor/config/TroopHonorConfig:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
+    //   269: iload 5
+    //   271: iconst_1
+    //   272: if_icmpne +6 -> 278
+    //   275: iconst_1
+    //   276: istore 7
+    //   278: aload 8
+    //   280: iload 7
+    //   282: putfield 103	com/tencent/mobileqq/troop/honor/config/TroopHonorConfig:jdField_a_of_type_Boolean	Z
+    //   285: aload 8
+    //   287: iload 6
+    //   289: putfield 23	com/tencent/mobileqq/troop/honor/config/TroopHonorConfig:jdField_a_of_type_Int	I
+    //   292: goto +15 -> 307
+    //   295: ldc 105
+    //   297: iconst_1
+    //   298: ldc 107
+    //   300: invokestatic 113	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   303: aload 9
+    //   305: astore 8
+    //   307: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   310: ifeq +54 -> 364
+    //   313: new 119	java/lang/StringBuilder
+    //   316: dup
+    //   317: invokespecial 120	java/lang/StringBuilder:<init>	()V
+    //   320: astore 9
+    //   322: aload 9
+    //   324: ldc 122
+    //   326: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: pop
+    //   330: aload 9
+    //   332: aload_0
+    //   333: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   336: pop
+    //   337: aload 9
+    //   339: ldc 127
+    //   341: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   344: pop
+    //   345: aload 9
+    //   347: aload 8
+    //   349: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   352: pop
+    //   353: ldc 105
+    //   355: iconst_2
+    //   356: aload 9
+    //   358: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   361: invokestatic 113	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   364: aload 8
+    //   366: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	326	0	paramString	String
-    //   45	273	1	i	int
-    //   36	162	2	j	int
-    //   81	102	3	k	int
-    //   59	172	4	m	int
-    //   56	190	5	n	int
-    //   234	62	6	bool	boolean
-    //   26	72	7	localObject	Object
-    //   186	7	7	localJSONException1	org.json.JSONException
-    //   218	92	7	localTroopHonorConfig	TroopHonorConfig
-    //   314	1	7	localJSONException2	org.json.JSONException
-    //   321	1	7	localJSONException3	org.json.JSONException
-    //   16	207	8	localSparseArray	SparseArray
-    //   103	30	9	localJSONObject	org.json.JSONObject
-    //   121	49	10	str1	String
-    //   130	38	11	str2	String
+    //   0	367	0	paramString	String
+    //   26	217	1	i	int
+    //   48	192	2	j	int
+    //   57	136	3	k	int
+    //   97	124	4	m	int
+    //   73	200	5	n	int
+    //   70	218	6	i1	int
+    //   4	277	7	bool	boolean
+    //   38	82	8	localObject1	Object
+    //   225	1	8	localJSONException1	org.json.JSONException
+    //   230	5	8	localJSONException2	org.json.JSONException
+    //   260	105	8	localObject2	Object
+    //   7	350	9	localStringBuilder	StringBuilder
+    //   23	242	10	localSparseArray	SparseArray
+    //   126	38	11	localJSONObject	org.json.JSONObject
+    //   148	59	12	str1	String
+    //   159	46	13	str2	String
     // Exception table:
     //   from	to	target	type
-    //   18	37	186	org/json/JSONException
-    //   37	46	314	org/json/JSONException
-    //   46	55	321	org/json/JSONException
-    //   72	80	321	org/json/JSONException
-    //   88	179	321	org/json/JSONException
+    //   49	58	225	org/json/JSONException
+    //   60	69	225	org/json/JSONException
+    //   88	96	225	org/json/JSONException
+    //   107	117	225	org/json/JSONException
+    //   119	128	225	org/json/JSONException
+    //   130	139	225	org/json/JSONException
+    //   141	150	225	org/json/JSONException
+    //   152	161	225	org/json/JSONException
+    //   163	172	225	org/json/JSONException
+    //   174	182	225	org/json/JSONException
+    //   184	192	225	org/json/JSONException
+    //   194	216	225	org/json/JSONException
+    //   30	49	230	org/json/JSONException
   }
   
   private void a()
@@ -237,50 +277,56 @@ public class TroopHonorConfig
   
   public TroopHonor a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      return (TroopHonor)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    if (localSparseArray != null) {
+      return (TroopHonor)localSparseArray.get(paramInt);
     }
     return null;
   }
   
   public TroopHonor a(int paramInt1, int paramInt2)
   {
-    if (this.b == null) {
-      localObject = null;
+    Object localObject = this.b;
+    if (localObject == null) {
+      return null;
     }
-    TroopHonor localTroopHonor2;
-    do
+    TroopHonor localTroopHonor1 = (TroopHonor)((SparseArray)localObject).get(paramInt1);
+    localObject = localTroopHonor1;
+    if (localTroopHonor1 == null)
     {
-      TroopHonor localTroopHonor1;
-      do
-      {
-        return localObject;
-        localTroopHonor1 = (TroopHonor)this.b.get(paramInt1);
-        localObject = localTroopHonor1;
-      } while (localTroopHonor1 != null);
-      localTroopHonor2 = (TroopHonor)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+      TroopHonor localTroopHonor2 = (TroopHonor)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
       localObject = localTroopHonor1;
-    } while (localTroopHonor2 == null);
-    Object localObject = new TroopHonor(localTroopHonor2.jdField_a_of_type_Int, localTroopHonor2.jdField_a_of_type_JavaLangString, TroopHonorUtils.a(paramInt1, paramInt2), localTroopHonor2.b);
-    this.b.put(paramInt1, localObject);
+      if (localTroopHonor2 != null)
+      {
+        localObject = new TroopHonor(localTroopHonor2.jdField_a_of_type_Int, localTroopHonor2.jdField_a_of_type_JavaLangString, TroopHonorUtils.a(paramInt1, paramInt2), localTroopHonor2.b);
+        this.b.put(paramInt1, localObject);
+      }
+    }
     return localObject;
   }
   
   public void a(TroopHonor paramTroopHonor)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramTroopHonor.jdField_a_of_type_Int, paramTroopHonor);
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    if (localSparseArray != null) {
+      localSparseArray.put(paramTroopHonor.jdField_a_of_type_Int, paramTroopHonor);
     }
   }
   
   public String toString()
   {
-    return "TroopHonorConfig{mHonorMap=" + this.jdField_a_of_type_AndroidUtilSparseArray + ", isSupport=" + this.jdField_a_of_type_Boolean + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopHonorConfig{mHonorMap=");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidUtilSparseArray);
+    localStringBuilder.append(", isSupport=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.config.TroopHonorConfig
  * JD-Core Version:    0.7.0.1
  */

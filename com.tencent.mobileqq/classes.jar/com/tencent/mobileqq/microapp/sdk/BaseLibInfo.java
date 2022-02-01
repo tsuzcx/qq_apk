@@ -18,12 +18,23 @@ public class BaseLibInfo
   
   public String toString()
   {
-    return "BaseLibInfo{baseLibUrl='" + this.baseLibUrl + '\'' + ", baseLibKey='" + this.baseLibKey + '\'' + ", baseLibVersion='" + this.baseLibVersion + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BaseLibInfo{baseLibUrl='");
+    localStringBuilder.append(this.baseLibUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", baseLibKey='");
+    localStringBuilder.append(this.baseLibKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", baseLibVersion='");
+    localStringBuilder.append(this.baseLibVersion);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.BaseLibInfo
  * JD-Core Version:    0.7.0.1
  */

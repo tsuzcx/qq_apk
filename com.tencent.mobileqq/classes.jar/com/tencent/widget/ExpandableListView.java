@@ -87,8 +87,12 @@ public class ExpandableListView
     this.mChildIndicator = paramContext.getDrawable(EXPANDABLELISTVIEW_CHILDINDICATOR);
     this.mIndicatorLeft = paramContext.getDimensionPixelSize(EXPANDABLELISTVIEW_INDICATORLEFT, 0);
     this.mIndicatorRight = paramContext.getDimensionPixelSize(EXPANDABLELISTVIEW_INDICATORRIGHT, 0);
-    if ((this.mIndicatorRight == 0) && (this.mGroupIndicator != null)) {
-      this.mIndicatorRight = (this.mIndicatorLeft + this.mGroupIndicator.getIntrinsicWidth());
+    if (this.mIndicatorRight == 0)
+    {
+      paramAttributeSet = this.mGroupIndicator;
+      if (paramAttributeSet != null) {
+        this.mIndicatorRight = (this.mIndicatorLeft + paramAttributeSet.getIntrinsicWidth());
+      }
     }
     this.mChildIndicatorLeft = paramContext.getDimensionPixelSize(EXPANDABLELISTVIEW_CHILDINDICATORLEFT, -1);
     this.mChildIndicatorRight = paramContext.getDimensionPixelSize(EXPANDABLELISTVIEW_CHILDINDICATORRIGHT, -1);
@@ -98,7 +102,7 @@ public class ExpandableListView
   
   private int getAbsoluteFlatPosition(int paramInt)
   {
-    return getHeaderViewsCount() + paramInt;
+    return paramInt + getHeaderViewsCount();
   }
   
   private long getChildOrGroupId(ExpandableListPosition paramExpandableListPosition)
@@ -116,58 +120,63 @@ public class ExpandableListView
   
   private Drawable getIndicator(ExpandableListConnector.PositionMetadata paramPositionMetadata)
   {
-    int j = 1;
-    int k = 0;
-    Drawable localDrawable;
-    if (paramPositionMetadata.position.type == 2)
+    int i = paramPositionMetadata.position.type;
+    int j = 2;
+    Drawable localDrawable2;
+    Drawable localDrawable1;
+    if (i == 2)
     {
-      localDrawable = this.mGroupIndicator;
-      if ((localDrawable != null) && (localDrawable.isStateful()))
+      localDrawable2 = this.mGroupIndicator;
+      localDrawable1 = localDrawable2;
+      if (localDrawable2 != null)
       {
-        int i;
-        if ((paramPositionMetadata.groupMetadata == null) || (paramPositionMetadata.groupMetadata.lastChildFlPos == paramPositionMetadata.groupMetadata.flPos))
+        localDrawable1 = localDrawable2;
+        if (localDrawable2.isStateful())
         {
-          i = 1;
-          if (!paramPositionMetadata.isExpanded()) {
-            break label97;
+          if ((paramPositionMetadata.groupMetadata != null) && (paramPositionMetadata.groupMetadata.lastChildFlPos != paramPositionMetadata.groupMetadata.flPos)) {
+            i = 0;
+          } else {
+            i = 1;
           }
-        }
-        for (;;)
-        {
+          int k = paramPositionMetadata.isExpanded();
           if (i != 0) {
-            k = 2;
+            i = j;
+          } else {
+            i = 0;
           }
-          localDrawable.setState(GROUP_STATE_SETS[(j | k)]);
-          return localDrawable;
-          i = 0;
-          break;
-          label97:
-          j = 0;
+          localDrawable2.setState(GROUP_STATE_SETS[(k | i)]);
+          return localDrawable2;
         }
       }
     }
     else
     {
-      localDrawable = this.mChildIndicator;
-      if ((localDrawable != null) && (localDrawable.isStateful())) {
-        if (paramPositionMetadata.position.flatListPos != paramPositionMetadata.groupMetadata.lastChildFlPos) {
-          break label152;
+      localDrawable2 = this.mChildIndicator;
+      localDrawable1 = localDrawable2;
+      if (localDrawable2 != null)
+      {
+        localDrawable1 = localDrawable2;
+        if (localDrawable2.isStateful())
+        {
+          if (paramPositionMetadata.position.flatListPos == paramPositionMetadata.groupMetadata.lastChildFlPos) {
+            paramPositionMetadata = CHILD_LAST_STATE_SET;
+          } else {
+            paramPositionMetadata = EMPTY_STATE_SET;
+          }
+          localDrawable2.setState(paramPositionMetadata);
+          localDrawable1 = localDrawable2;
         }
       }
-      label152:
-      for (paramPositionMetadata = CHILD_LAST_STATE_SET;; paramPositionMetadata = EMPTY_STATE_SET)
-      {
-        localDrawable.setState(paramPositionMetadata);
-        return localDrawable;
-      }
     }
-    return localDrawable;
+    return localDrawable1;
   }
   
   public static int getPackedPositionChild(long paramLong)
   {
-    if (paramLong == 4294967295L) {}
-    while ((paramLong & 0x0) != -9223372036854775808L) {
+    if (paramLong == 4294967295L) {
+      return -1;
+    }
+    if ((paramLong & 0x0) != -9223372036854775808L) {
       return -1;
     }
     return (int)(paramLong & 0xFFFFFFFF);
@@ -175,7 +184,8 @@ public class ExpandableListView
   
   public static long getPackedPositionForChild(int paramInt1, int paramInt2)
   {
-    return 0x0 | (paramInt1 & 0x7FFFFFFF) << 32 | paramInt2 & 0xFFFFFFFF;
+    long l = paramInt1;
+    return paramInt2 & 0xFFFFFFFF | (l & 0x7FFFFFFF) << 32 | 0x0;
   }
   
   public static long getPackedPositionForGroup(int paramInt)
@@ -188,7 +198,7 @@ public class ExpandableListView
     if (paramLong == 4294967295L) {
       return -1;
     }
-    return (int)((0x0 & paramLong) >> 32);
+    return (int)((paramLong & 0x0) >> 32);
   }
   
   public static int getPackedPositionType(long paramLong)
@@ -212,8 +222,9 @@ public class ExpandableListView
   public boolean collapseGroup(int paramInt)
   {
     boolean bool = this.mConnector.collapseGroup(paramInt);
-    if (this.mOnGroupCollapseListener != null) {
-      this.mOnGroupCollapseListener.onGroupCollapse(paramInt);
+    ExpandableListView.OnGroupCollapseListener localOnGroupCollapseListener = this.mOnGroupCollapseListener;
+    if (localOnGroupCollapseListener != null) {
+      localOnGroupCollapseListener.onGroupCollapse(paramInt);
     }
     return bool;
   }
@@ -233,144 +244,135 @@ public class ExpandableListView
     return new ExpandableListView.ExpandableListContextMenuInfo(paramView, l, paramLong);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
     if ((this.mChildIndicator == null) && (this.mGroupIndicator == null)) {
       return;
     }
-    int m = 0;
+    int i = getQQGroupFlag();
+    int i1 = 0;
     int k;
-    label38:
-    int i;
-    int i2;
-    int i3;
-    int i4;
-    int i5;
-    Rect localRect;
-    int i1;
-    int n;
-    if ((this.mGroupFlags & 0x22) == 34)
-    {
+    if ((i & 0x22) == 34) {
       k = 1;
-      if (k != 0)
-      {
-        m = paramCanvas.save();
-        i = getScrollX();
-        j = getScrollY();
-        paramCanvas.clipRect(getPaddingLeft() + i, getPaddingTop() + j, i + getRight() - getLeft() - getPaddingRight(), j + getBottom() - getTop() - getPaddingBottom());
-      }
-      i2 = getHeaderViewsCount();
-      i3 = this.mItemCount;
-      i4 = getFooterViewsCount();
-      i5 = getBottom();
-      localRect = this.mIndicatorRect;
-      int i6 = getChildCount();
-      j = this.mFirstPosition;
-      i = -4;
-      i1 = 0;
-      n = j - i2;
-      label161:
-      if (i1 >= i6) {
-        break label213;
-      }
-      if (n >= 0) {
-        break label198;
-      }
-      j = i;
+    } else {
+      k = 0;
     }
-    label198:
-    label213:
-    int i7;
-    int i8;
-    do
+    int m;
+    int j;
+    if (k != 0)
     {
-      do
+      m = paramCanvas.save();
+      i = getScrollX();
+      j = getScrollY();
+      paramCanvas.clipRect(getPaddingLeft() + i, getPaddingTop() + j, i + getRight() - getLeft() - getPaddingRight(), j + getBottom() - getTop() - getPaddingBottom());
+    }
+    else
+    {
+      m = 0;
+    }
+    int i2 = getHeaderViewsCount();
+    int i3 = this.mItemCount;
+    int i4 = getFooterViewsCount();
+    int i5 = getBottom();
+    i = -4;
+    Rect localRect = this.mIndicatorRect;
+    int i6 = getChildCount();
+    int n = this.mFirstPosition - i2;
+    while (i1 < i6)
+    {
+      if (n < 0)
       {
-        i1 += 1;
-        n += 1;
-        i = j;
-        break label161;
-        k = 0;
-        break label38;
-        if (n > i3 - i4 - i2 - 1)
-        {
-          if (k == 0) {
-            break;
-          }
-          paramCanvas.restoreToCount(m);
-          return;
-        }
-        localObject = getChildAt(i1);
-        i7 = ((View)localObject).getTop();
-        i8 = ((View)localObject).getBottom();
         j = i;
-      } while (i8 < 0);
-      j = i;
-    } while (i7 > i5);
-    Object localObject = this.mConnector.getUnflattenedPos(n);
-    int j = i;
-    if (((ExpandableListConnector.PositionMetadata)localObject).position.type != i)
-    {
-      if (((ExpandableListConnector.PositionMetadata)localObject).position.type != 1) {
-        break label461;
       }
-      if (this.mChildIndicatorLeft == -1)
+      else
       {
-        i = this.mIndicatorLeft;
-        label313:
-        localRect.left = i;
-        if (this.mChildIndicatorRight != -1) {
-          break label453;
+        if (n > i3 - i4 - i2 - 1) {
+          break;
         }
-        i = this.mIndicatorRight;
-        label332:
-        localRect.right = i;
-        label338:
-        localRect.left += getPaddingLeft();
-        localRect.right += getPaddingLeft();
-        j = ((ExpandableListConnector.PositionMetadata)localObject).position.type;
+        Object localObject = getChildAt(i1);
+        int i7 = ((View)localObject).getTop();
+        int i8 = ((View)localObject).getBottom();
+        j = i;
+        if (i8 >= 0) {
+          if (i7 > i5)
+          {
+            j = i;
+          }
+          else
+          {
+            localObject = this.mConnector.getUnflattenedPos(n);
+            j = i;
+            if (((ExpandableListConnector.PositionMetadata)localObject).position.type != i)
+            {
+              if (((ExpandableListConnector.PositionMetadata)localObject).position.type == 1)
+              {
+                j = this.mChildIndicatorLeft;
+                i = j;
+                if (j == -1) {
+                  i = this.mIndicatorLeft;
+                }
+                localRect.left = i;
+                j = this.mChildIndicatorRight;
+                i = j;
+                if (j == -1) {
+                  i = this.mIndicatorRight;
+                }
+                localRect.right = i;
+              }
+              else
+              {
+                localRect.left = this.mIndicatorLeft;
+                localRect.right = this.mIndicatorRight;
+              }
+              localRect.left += getPaddingLeft();
+              localRect.right += getPaddingLeft();
+              j = ((ExpandableListConnector.PositionMetadata)localObject).position.type;
+            }
+            if (localRect.left != localRect.right)
+            {
+              if (this.mStackFromBottom)
+              {
+                localRect.top = i7;
+                localRect.bottom = i8;
+              }
+              else
+              {
+                localRect.top = i7;
+                localRect.bottom = i8;
+              }
+              Drawable localDrawable = getIndicator((ExpandableListConnector.PositionMetadata)localObject);
+              if (localDrawable != null)
+              {
+                localDrawable.setBounds(localRect);
+                localDrawable.draw(paramCanvas);
+              }
+            }
+            ((ExpandableListConnector.PositionMetadata)localObject).recycle();
+          }
+        }
       }
+      i1 += 1;
+      n += 1;
+      i = j;
     }
-    else if (localRect.left != localRect.right)
-    {
-      if (!this.mStackFromBottom) {
-        break label482;
-      }
-      localRect.top = i7;
-    }
-    for (localRect.bottom = i8;; localRect.bottom = i8)
-    {
-      Drawable localDrawable = getIndicator((ExpandableListConnector.PositionMetadata)localObject);
-      if (localDrawable != null)
-      {
-        localDrawable.setBounds(localRect);
-        localDrawable.draw(paramCanvas);
-      }
-      ((ExpandableListConnector.PositionMetadata)localObject).recycle();
-      break;
-      i = this.mChildIndicatorLeft;
-      break label313;
-      label453:
-      i = this.mChildIndicatorRight;
-      break label332;
-      label461:
-      localRect.left = this.mIndicatorLeft;
-      localRect.right = this.mIndicatorRight;
-      break label338;
-      label482:
-      localRect.top = i7;
+    if (k != 0) {
+      paramCanvas.restoreToCount(m);
     }
   }
   
   void drawDivider(Canvas paramCanvas, Rect paramRect, int paramInt)
   {
-    paramInt = this.mFirstPosition + paramInt;
+    paramInt += this.mFirstPosition;
     if (paramInt >= 0)
     {
       int i = getFlatPositionForConnector(paramInt);
       ExpandableListConnector.PositionMetadata localPositionMetadata = this.mConnector.getUnflattenedPos(i);
-      if ((localPositionMetadata.position.type == 1) || ((localPositionMetadata.isExpanded()) && (localPositionMetadata.groupMetadata.lastChildFlPos != localPositionMetadata.groupMetadata.flPos)))
+      if ((localPositionMetadata.position.type != 1) && ((!localPositionMetadata.isExpanded()) || (localPositionMetadata.groupMetadata.lastChildFlPos == localPositionMetadata.groupMetadata.flPos)))
+      {
+        localPositionMetadata.recycle();
+      }
+      else
       {
         Drawable localDrawable = this.mChildDivider;
         if (localDrawable != null)
@@ -381,7 +383,6 @@ public class ExpandableListView
         localPositionMetadata.recycle();
         return;
       }
-      localPositionMetadata.recycle();
     }
     super.drawDivider(paramCanvas, paramRect, paramInt);
   }
@@ -395,8 +396,9 @@ public class ExpandableListView
   {
     ExpandableListConnector.PositionMetadata localPositionMetadata = this.mConnector.getFlattenedPos(ExpandableListPosition.obtain(2, paramInt, -1, -1));
     boolean bool = this.mConnector.expandGroup(localPositionMetadata);
-    if (this.mOnGroupExpandListener != null) {
-      this.mOnGroupExpandListener.onGroupExpand(paramInt);
+    ExpandableListView.OnGroupExpandListener localOnGroupExpandListener = this.mOnGroupExpandListener;
+    if (localOnGroupExpandListener != null) {
+      localOnGroupExpandListener.onGroupExpand(paramInt);
     }
     if (paramBoolean)
     {
@@ -463,9 +465,13 @@ public class ExpandableListView
   {
     ExpandableListConnector.PositionMetadata localPositionMetadata = this.mConnector.getUnflattenedPos(paramInt);
     paramLong = getChildOrGroupId(localPositionMetadata.position);
-    if (localPositionMetadata.position.type == 2)
+    paramInt = localPositionMetadata.position.type;
+    boolean bool2 = true;
+    boolean bool1;
+    if (paramInt == 2)
     {
-      if ((this.mOnGroupClickListener != null) && (this.mOnGroupClickListener.onGroupClick(this, paramView, localPositionMetadata.position.groupPos, paramLong)))
+      ExpandableListView.OnGroupClickListener localOnGroupClickListener = this.mOnGroupClickListener;
+      if ((localOnGroupClickListener != null) && (localOnGroupClickListener.onGroupClick(this, paramView, localPositionMetadata.position.groupPos, paramLong)))
       {
         localPositionMetadata.recycle();
         return true;
@@ -474,30 +480,39 @@ public class ExpandableListView
       {
         this.mConnector.collapseGroup(localPositionMetadata);
         playSoundEffect(0);
-        if (this.mOnGroupCollapseListener != null) {
-          this.mOnGroupCollapseListener.onGroupCollapse(localPositionMetadata.position.groupPos);
+        paramView = this.mOnGroupCollapseListener;
+        bool1 = bool2;
+        if (paramView != null)
+        {
+          paramView.onGroupCollapse(localPositionMetadata.position.groupPos);
+          bool1 = bool2;
         }
       }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      localPositionMetadata.recycle();
-      return bool;
-      this.mConnector.expandGroup(localPositionMetadata);
-      playSoundEffect(0);
-      if (this.mOnGroupExpandListener != null) {
-        this.mOnGroupExpandListener.onGroupExpand(localPositionMetadata.position.groupPos);
+      else
+      {
+        this.mConnector.expandGroup(localPositionMetadata);
+        playSoundEffect(0);
+        paramView = this.mOnGroupExpandListener;
+        if (paramView != null) {
+          paramView.onGroupExpand(localPositionMetadata.position.groupPos);
+        }
+        paramInt = localPositionMetadata.position.groupPos;
+        int i = localPositionMetadata.position.flatListPos + getHeaderViewsCount();
+        smoothScrollToPosition(this.mAdapter.getChildrenCount(paramInt) + i, i);
+        bool1 = bool2;
       }
-      paramInt = localPositionMetadata.position.groupPos;
-      int i = localPositionMetadata.position.flatListPos + getHeaderViewsCount();
-      smoothScrollToPosition(this.mAdapter.getChildrenCount(paramInt) + i, i);
-      break;
+    }
+    else
+    {
       if (this.mOnChildClickListener != null)
       {
         playSoundEffect(0);
         return this.mOnChildClickListener.onChildClick(this, paramView, localPositionMetadata.position.groupPos, localPositionMetadata.position.childPos, paramLong);
       }
+      bool1 = false;
     }
+    localPositionMetadata.recycle();
+    return bool1;
   }
   
   public boolean isGroupExpanded(int paramInt)
@@ -507,25 +522,28 @@ public class ExpandableListView
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    if (!(paramParcelable instanceof ExpandableListView.SavedState)) {
-      super.onRestoreInstanceState(paramParcelable);
-    }
-    do
+    if (!(paramParcelable instanceof ExpandableListView.SavedState))
     {
+      super.onRestoreInstanceState(paramParcelable);
       return;
-      paramParcelable = (ExpandableListView.SavedState)paramParcelable;
-      super.onRestoreInstanceState(ExpandableListView.SavedState.access$100(paramParcelable));
-    } while ((this.mConnector == null) || (paramParcelable.expandedGroupMetadataList == null));
-    this.mConnector.setExpandedGroupMetadataList(paramParcelable.expandedGroupMetadataList);
+    }
+    paramParcelable = (ExpandableListView.SavedState)paramParcelable;
+    super.onRestoreInstanceState(ExpandableListView.SavedState.access$100(paramParcelable));
+    if ((this.mConnector != null) && (paramParcelable.expandedGroupMetadataList != null)) {
+      this.mConnector.setExpandedGroupMetadataList(paramParcelable.expandedGroupMetadataList);
+    }
   }
   
   public Parcelable onSaveInstanceState()
   {
     Parcelable localParcelable = super.onSaveInstanceState();
-    if (this.mConnector != null) {}
-    for (ArrayList localArrayList = this.mConnector.getExpandedGroupMetadataList();; localArrayList = null) {
-      return new ExpandableListView.SavedState(localParcelable, localArrayList);
+    Object localObject = this.mConnector;
+    if (localObject != null) {
+      localObject = ((ExpandableListConnector)localObject).getExpandedGroupMetadataList();
+    } else {
+      localObject = null;
     }
+    return new ExpandableListView.SavedState(localParcelable, (ArrayList)localObject);
   }
   
   public boolean performItemClick(View paramView, int paramInt, long paramLong)
@@ -539,12 +557,12 @@ public class ExpandableListView
   public void setAdapter(ExpandableListAdapter paramExpandableListAdapter)
   {
     this.mAdapter = paramExpandableListAdapter;
-    if (paramExpandableListAdapter != null) {}
-    for (this.mConnector = new ExpandableListConnector(paramExpandableListAdapter);; this.mConnector = null)
-    {
-      super.setAdapter(this.mConnector);
-      return;
+    if (paramExpandableListAdapter != null) {
+      this.mConnector = new ExpandableListConnector(paramExpandableListAdapter);
+    } else {
+      this.mConnector = null;
     }
+    super.setAdapter(this.mConnector);
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
@@ -571,8 +589,12 @@ public class ExpandableListView
   public void setGroupIndicator(Drawable paramDrawable)
   {
     this.mGroupIndicator = paramDrawable;
-    if ((this.mIndicatorRight == 0) && (this.mGroupIndicator != null)) {
-      this.mIndicatorRight = (this.mIndicatorLeft + this.mGroupIndicator.getIntrinsicWidth());
+    if (this.mIndicatorRight == 0)
+    {
+      paramDrawable = this.mGroupIndicator;
+      if (paramDrawable != null) {
+        this.mIndicatorRight = (this.mIndicatorLeft + paramDrawable.getIntrinsicWidth());
+      }
     }
   }
   
@@ -618,9 +640,8 @@ public class ExpandableListView
         return false;
       }
       expandGroup(paramInt1);
-      localPositionMetadata2 = this.mConnector.getFlattenedPos(localExpandableListPosition);
-      localPositionMetadata1 = localPositionMetadata2;
-      if (localPositionMetadata2 == null) {
+      localPositionMetadata1 = this.mConnector.getFlattenedPos(localExpandableListPosition);
+      if (localPositionMetadata1 == null) {
         throw new IllegalStateException("Could not find child");
       }
     }
@@ -651,7 +672,7 @@ public class ExpandableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ExpandableListView
  * JD-Core Version:    0.7.0.1
  */

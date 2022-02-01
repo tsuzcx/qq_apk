@@ -18,18 +18,18 @@ public class ChatHistoryC2CLinkAdapter$URLItemHolder
   
   ChatHistoryC2CLinkAdapter$URLItemHolder(ChatHistoryC2CLinkAdapter paramChatHistoryC2CLinkAdapter, View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369444);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131370433));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370440));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379527));
-    this.b = ((TextView)paramView.findViewById(2131365575));
-    this.c = ((TextView)paramView.findViewById(2131372286));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365692));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369172);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131370092));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370099));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378876));
+    this.b = ((TextView)paramView.findViewById(2131365418));
+    this.c = ((TextView)paramView.findViewById(2131371874));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365529));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkAdapter.URLItemHolder
  * JD-Core Version:    0.7.0.1
  */

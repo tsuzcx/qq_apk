@@ -20,8 +20,9 @@ class SlideDetectListView$2
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a.c = paramInt;
-    if (SlideDetectListView.a(this.a) != null) {
+    SlideDetectListView localSlideDetectListView = this.a;
+    localSlideDetectListView.c = paramInt;
+    if (SlideDetectListView.a(localSlideDetectListView) != null) {
       SlideDetectListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
     }
     if (SlideDetectListView.b(this.a) != null) {
@@ -31,7 +32,7 @@ class SlideDetectListView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideDetectListView.2
  * JD-Core Version:    0.7.0.1
  */

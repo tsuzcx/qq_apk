@@ -13,10 +13,8 @@ import com.tencent.biz.ProtoUtils;
 import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.HotChatHandler;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,14 +25,17 @@ import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.DateNickNameInfo;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.mobileqq.hotchat.api.IHotChatApi;
+import com.tencent.mobileqq.hotchat.api.IHotChatHandler;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
+import com.tencent.mobileqq.nearby.gameroom.IGameRoomAVControllerDelegate;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.utils.ContactUtils;
@@ -116,63 +117,71 @@ public class WerewolvesHandler
   public void a(TextView paramTextView, String paramString1, String paramString2)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString1)) {}
-    do
+    try
     {
-      try
-      {
-        paramTextView.setText(String.format(paramString2, new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname() }));
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        paramTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-        return;
-      }
-      Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if (((FriendsManager)localObject).b(paramString1))
-      {
-        paramString1 = ContactUtils.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1);
-        try
-        {
-          paramTextView.setText(String.format(paramString2, new Object[] { paramString1 }));
-          return;
-        }
-        catch (Exception paramString2)
-        {
-          paramTextView.setText(paramString1);
-          return;
-        }
-      }
-      localObject = ((FriendsManager)localObject).a(paramString1);
-      if ((localObject != null) && (((DateNickNameInfo)localObject).nickName != null) && (!((DateNickNameInfo)localObject).nickName.equals(paramString1))) {
-        try
-        {
-          paramTextView.setText(String.format(paramString2, new Object[] { ((DateNickNameInfo)localObject).nickName }));
-          return;
-        }
-        catch (Exception paramString1)
-        {
-          paramTextView.setText(((DateNickNameInfo)localObject).nickName);
-          return;
-        }
-      }
-      paramTextView.setText(paramString1);
-      paramTextView.setTag(new String[] { paramString1, paramString2 });
-      if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
-      {
-        jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
-        jdField_a_of_type_JavaUtilHashMap.put(paramString1, new WeakReference(paramTextView));
-        return;
-      }
+      paramTextView.setText(String.format(paramString2, new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname() }));
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      label37:
+      Object localObject;
+      break label37;
+    }
+    paramTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+    return;
+    localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (((FriendsManager)localObject).b(paramString1)) {
+      paramString1 = ContactUtils.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1);
+    }
+    try
+    {
+      paramTextView.setText(String.format(paramString2, new Object[] { paramString1 }));
+      return;
+    }
+    catch (Exception paramString2)
+    {
+      label99:
+      break label99;
+    }
+    paramTextView.setText(paramString1);
+    return;
+    localObject = ((FriendsManager)localObject).a(paramString1);
+    if ((localObject != null) && (((DateNickNameInfo)localObject).nickName != null) && (!((DateNickNameInfo)localObject).nickName.equals(paramString1))) {}
+    try
+    {
+      paramTextView.setText(String.format(paramString2, new Object[] { ((DateNickNameInfo)localObject).nickName }));
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      label159:
+      break label159;
+    }
+    paramTextView.setText(((DateNickNameInfo)localObject).nickName);
+    return;
+    paramTextView.setText(paramString1);
+    paramTextView.setTag(new String[] { paramString1, paramString2 });
+    if (jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+    {
+      jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
       jdField_a_of_type_JavaUtilHashMap.put(paramString1, new WeakReference(paramTextView));
-      paramTextView = createToServiceMsg("ProfileService.GetSimpleInfo");
-      paramString2 = new ArrayList();
-      paramString2.add(paramString1);
-      paramTextView.extraData.putStringArrayList("uinList", paramString2);
-      paramTextView.extraData.putBoolean("reqDateNick", true);
-      send(paramTextView);
-    } while (!QLog.isColorLevel());
-    QLog.d("WerewolvesHandler", 2, "WerewolvesHandler: setNickname->sendToServiceMsg, uin = " + paramString1);
+      return;
+    }
+    jdField_a_of_type_JavaUtilHashMap.put(paramString1, new WeakReference(paramTextView));
+    paramTextView = createToServiceMsg("ProfileService.GetSimpleInfo");
+    paramString2 = new ArrayList();
+    paramString2.add(paramString1);
+    paramTextView.extraData.putStringArrayList("uinList", paramString2);
+    paramTextView.extraData.putBoolean("reqDateNick", true);
+    send(paramTextView);
+    if (QLog.isColorLevel())
+    {
+      paramTextView = new StringBuilder();
+      paramTextView.append("WerewolvesHandler: setNickname->sendToServiceMsg, uin = ");
+      paramTextView.append(paramString1);
+      QLog.d("WerewolvesHandler", 2, paramTextView.toString());
+    }
   }
   
   public void a(HotChatInfo paramHotChatInfo)
@@ -180,20 +189,21 @@ public class WerewolvesHandler
     try
     {
       long l = Long.parseLong(paramHotChatInfo.troopUin);
-      GameRoomAVController.a().a(l);
-      NearbySPUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.a()));
+      ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).exitRoom(l);
+      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.a()));
       if ((paramHotChatInfo.troopUin != null) && (!paramHotChatInfo.troopUin.equals("0"))) {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramHotChatInfo.troopUin, 1);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.b();
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager;
+      if (localObject != null) {
+        ((WerewolvesPluginManager)localObject).b();
       }
-      HotChatManager localHotChatManager = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-      List localList = localHotChatManager.a();
+      localObject = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      List localList = ((HotChatManager)localObject).a();
       if (localList != null) {
         localList.remove(paramHotChatInfo);
       }
-      localHotChatManager.a(paramHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
+      ((HotChatManager)localObject).a(paramHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
       return;
     }
     catch (Exception paramHotChatInfo)
@@ -219,7 +229,10 @@ public class WerewolvesHandler
     }
     catch (Exception paramHotChatInfo)
     {
-      while (!QLog.isColorLevel()) {}
+      label126:
+      break label126;
+    }
+    if (QLog.isColorLevel()) {
       QLog.e("WerewolvesHandler", 2, "hotChatInfo.troopUin is wrong");
     }
   }
@@ -236,33 +249,30 @@ public class WerewolvesHandler
       localReqBody.uint64_room_id.set(l, true);
       localReqBody.rpt_uint64_uins.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()));
       ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, b(new WerewolvesHandler.1(this, paramCallback, paramHotChatInfo)), localReqBody.toByteArray(), "OidbSvc.0x8ed_2", 2285, 2, new Bundle(), 5000L);
-      GameRoomAVController.a().a(l);
-      NearbySPUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.a()));
+      ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).exitRoom(l);
+      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.a()));
       try
       {
         if ((paramHotChatInfo.troopUin != null) && (!paramHotChatInfo.troopUin.equals("0"))) {
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramHotChatInfo.troopUin, 1);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.b();
-          return;
-        }
       }
       catch (Exception paramHotChatInfo)
       {
-        for (;;)
-        {
-          paramHotChatInfo.printStackTrace();
-        }
+        paramHotChatInfo.printStackTrace();
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.b();
       }
       return;
     }
     catch (Exception paramHotChatInfo)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("WerewolvesHandler", 2, "hotChatInfo.troopUin is wrong");
-      }
+      label209:
+      break label209;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("WerewolvesHandler", 2, "hotChatInfo.troopUin is wrong");
     }
   }
   
@@ -297,90 +307,124 @@ public class WerewolvesHandler
   {
     if (TextUtils.isEmpty(paramString))
     {
-      QLog.e("WerewolvesHandler", 2, "acceptInvite failed, invitedId null; isAccept = " + paramBoolean);
+      paramString = new StringBuilder();
+      paramString.append("acceptInvite failed, invitedId null; isAccept = ");
+      paramString.append(paramBoolean);
+      QLog.e("WerewolvesHandler", 2, paramString.toString());
       return;
     }
     oidb_0x8e4.ReqBody localReqBody = new oidb_0x8e4.ReqBody();
     localReqBody.string_invite_id.set(ByteStringMicro.copyFromUtf8(paramString), true);
     paramString = localReqBody.uint32_accept_invite;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      paramString.set(i, true);
-      localReqBody.uint32_ready_state.set(2);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(paramCallback), localReqBody.toByteArray(), "OidbSvc.0x8e4_2", 2276, 2, new Bundle(), 5000L);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    paramString.set(i, true);
+    localReqBody.uint32_ready_state.set(2);
+    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(paramCallback), localReqBody.toByteArray(), "OidbSvc.0x8e4_2", 2276, 2, new Bundle(), 5000L);
   }
   
   public void a(TroopTips0x857.WereWolfPush paramWereWolfPush, byte[] paramArrayOfByte)
   {
-    if (paramWereWolfPush == null) {}
-    String str2;
-    long l;
-    String str1;
-    do
+    if (paramWereWolfPush == null) {
+      return;
+    }
+    if ((paramWereWolfPush.uint64_game_room.has()) && (paramWereWolfPush.bytes_judge_words.has()) && (paramWereWolfPush.uint64_judge_uin.has()))
     {
-      do
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramWereWolfPush.uint64_game_room.get());
+      ((StringBuilder)localObject1).append("");
+      String str2 = ((StringBuilder)localObject1).toString();
+      long l = MessageCache.a();
+      String str1 = paramWereWolfPush.bytes_judge_words.get().toStringUtf8();
+      if (TextUtils.isEmpty(str1))
       {
+        if (QLog.isColorLevel())
+        {
+          paramWereWolfPush = new StringBuilder();
+          paramWereWolfPush.append("uint64_game_room:");
+          paramWereWolfPush.append(str2);
+          paramWereWolfPush.append(", msg is empty");
+          QLog.d("Q.werewolf.WereWolfPush", 2, paramWereWolfPush.toString());
+        }
         return;
-        if ((!paramWereWolfPush.uint64_game_room.has()) || (!paramWereWolfPush.bytes_judge_words.has()) || (!paramWereWolfPush.uint64_judge_uin.has())) {
-          break label508;
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHotChatMng(false);
+      if (localObject1 == null) {
+        return;
+      }
+      localObject1 = ((HotChatManager)localObject1).a(str2);
+      if ((localObject1 != null) && (((HotChatInfo)localObject1).isGameRoom))
+      {
+        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(str2, 1);
+        localObject1 = MessageRecordFactory.a(-1000);
+        ((MessageRecord)localObject1).init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str1, l, -1000, 1, l);
+        if (localObject2 != null) {
+          ((MessageRecord)localObject1).shmsgseq = ((com.tencent.imcore.message.Message)localObject2).shmsgseq;
         }
-        str2 = paramWereWolfPush.uint64_game_room.get() + "";
-        l = MessageCache.a();
-        str1 = paramWereWolfPush.bytes_judge_words.get().toStringUtf8();
-        if (!TextUtils.isEmpty(str1)) {
-          break;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramWereWolfPush.uint64_judge_uin.get());
+        ((StringBuilder)localObject2).append("");
+        ((MessageRecord)localObject1).senderuin = ((StringBuilder)localObject2).toString();
+        this.jdField_a_of_type_JavaLangString = ((MessageRecord)localObject1).senderuin;
+        if (paramWereWolfPush.bytes_judge_nickname.has())
+        {
+          localObject2 = paramWereWolfPush.bytes_judge_nickname.get().toStringUtf8();
+          TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramWereWolfPush.uint64_judge_uin.get());
+          localStringBuilder.append("");
+          localTroopManager.a(str2, localStringBuilder.toString(), (String)localObject2, 0, null, null, 0, 0, 0, 0L, (byte)0, 0L, 0.0D);
+          paramWereWolfPush = (TroopTips0x857.WereWolfPush)localObject2;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.werewolf.WereWolfPush", 2, "uint64_game_room:" + str2 + ", msg is empty");
-      return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHotChatMng(false);
-    } while (localObject == null);
-    Object localObject = ((HotChatManager)localObject).a(str2);
-    if ((localObject == null) || (!((HotChatInfo)localObject).isGameRoom))
-    {
-      ((HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER)).a(2);
-      return;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(str2, 1);
-    MessageRecord localMessageRecord = MessageRecordFactory.a(-1000);
-    localMessageRecord.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str1, l, -1000, 1, l);
-    if (localObject != null) {
-      localMessageRecord.shmsgseq = ((com.tencent.imcore.message.Message)localObject).shmsgseq;
-    }
-    localMessageRecord.senderuin = (paramWereWolfPush.uint64_judge_uin.get() + "");
-    this.jdField_a_of_type_JavaLangString = localMessageRecord.senderuin;
-    localObject = "";
-    if (paramWereWolfPush.bytes_judge_nickname.has())
-    {
-      localObject = paramWereWolfPush.bytes_judge_nickname.get().toStringUtf8();
-      ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(str2, paramWereWolfPush.uint64_judge_uin.get() + "", (String)localObject, 0, null, null, 0, 0, 0, 0L, (byte)0, 0L, 0.0D);
-    }
-    localMessageRecord.isread = true;
-    localMessageRecord.issend = 0;
-    localMessageRecord.saveExtInfoToExtStr("isJudgeMsg", "true");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    paramWereWolfPush = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-    paramWereWolfPush.a(paramWereWolfPush.a(str2, 1));
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append("uint64_game_room:").append(str2).append("|judge_nickname:").append((String)localObject).append("|msg:");
-      if (!TextUtils.isEmpty(str1)) {
-        break label527;
+        else
+        {
+          paramWereWolfPush = "";
+        }
+        ((MessageRecord)localObject1).isread = true;
+        ((MessageRecord)localObject1).issend = 0;
+        ((MessageRecord)localObject1).saveExtInfoToExtStr("isJudgeMsg", "true");
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+        ((RecentUserProxy)localObject1).a(((RecentUserProxy)localObject1).a(str2, 1));
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("uint64_game_room:");
+          ((StringBuilder)localObject1).append(str2);
+          ((StringBuilder)localObject1).append("|judge_nickname:");
+          ((StringBuilder)localObject1).append(paramWereWolfPush);
+          ((StringBuilder)localObject1).append("|msg:");
+          if (TextUtils.isEmpty(str1))
+          {
+            paramWereWolfPush = "";
+          }
+          else
+          {
+            paramWereWolfPush = new StringBuilder();
+            paramWereWolfPush.append(str1.substring(0, 1));
+            paramWereWolfPush.append("***");
+            paramWereWolfPush.append(str1.substring(str1.length() - 1));
+            paramWereWolfPush.append("|msg len:");
+            paramWereWolfPush.append(str1.length());
+            paramWereWolfPush = paramWereWolfPush.toString();
+          }
+          ((StringBuilder)localObject1).append(paramWereWolfPush);
+          QLog.d("Q.werewolf.WereWolfPush", 2, ((StringBuilder)localObject1).toString());
+        }
+      }
+      else
+      {
+        ((IHotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).getMyHotChatList(2);
+        return;
       }
     }
-    label527:
-    for (paramWereWolfPush = "";; paramWereWolfPush = str1.substring(0, 1) + "***" + str1.substring(str1.length() - 1) + "|msg len:" + str1.length())
-    {
-      QLog.d("Q.werewolf.WereWolfPush", 2, paramWereWolfPush);
-      label508:
-      if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a("WereWolfPush", paramArrayOfByte);
-      return;
+    paramWereWolfPush = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager;
+    if (paramWereWolfPush != null) {
+      paramWereWolfPush.a("WereWolfPush", paramArrayOfByte);
     }
   }
   
@@ -395,8 +439,9 @@ public class WerewolvesHandler
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("WerewolvesHandler", 2, QLog.getStackTraceString(paramArrayOfByte));
+      if (QLog.isColorLevel()) {
+        QLog.e("WerewolvesHandler", 2, QLog.getStackTraceString(paramArrayOfByte));
+      }
     }
   }
   
@@ -433,28 +478,29 @@ public class WerewolvesHandler
     oidb_0x8e4.ReqBody localReqBody = new oidb_0x8e4.ReqBody();
     localReqBody.string_invite_id.set(ByteStringMicro.copyFromUtf8(paramString));
     paramString = localReqBody.uint32_ready_state;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      paramString.set(i);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(paramCallback), localReqBody.toByteArray(), "OidbSvc.0x8e4_7", 2276, 7, new Bundle(), 5000L);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    paramString.set(i);
+    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(paramCallback), localReqBody.toByteArray(), "OidbSvc.0x8e4_7", 2276, 7, new Bundle(), 5000L);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return WerewolvesObserver.class;
   }
   
   public void onDestroy()
   {
-    GameRoomAVController localGameRoomAVController = GameRoomAVController.a();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    localGameRoomAVController.d();
-    localGameRoomAVController.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.b();
+    ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).hideFloatView();
+    ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).unbindService();
+    WerewolvesPluginManager localWerewolvesPluginManager = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager;
+    if (localWerewolvesPluginManager != null) {
+      localWerewolvesPluginManager.b();
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("werewolves_sp", 0).edit().putString("judgeUin", this.jdField_a_of_type_JavaLangString).commit();
@@ -466,8 +512,12 @@ public class WerewolvesHandler
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     Object localObject = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.protocol", 2, "WereWolevsHandler onReceive. cmd=" + (String)localObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WereWolevsHandler onReceive. cmd=");
+      localStringBuilder.append((String)localObject);
+      QLog.d("Q.qqstory.protocol", 2, localStringBuilder.toString());
     }
     if ("ProfileService.GetSimpleInfo".equals(localObject))
     {
@@ -493,7 +543,7 @@ public class WerewolvesHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHandler
  * JD-Core Version:    0.7.0.1
  */

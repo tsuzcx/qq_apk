@@ -19,7 +19,20 @@ public class Formatter
     if (paramLogItem == null) {
       return "";
     }
-    return sLogDateFormat.format(new Date(paramLogItem.timeMillis)) + " " + Process.myPid() + "-" + Process.myTid() + " " + LogLevel.getShortName(paramLogItem.level) + "/" + paramLogItem.tag + ": " + paramLogItem.msg + "\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(sLogDateFormat.format(new Date(paramLogItem.timeMillis)));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(Process.myPid());
+    localStringBuilder.append("-");
+    localStringBuilder.append(Process.myTid());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(LogLevel.getShortName(paramLogItem.level));
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramLogItem.tag);
+    localStringBuilder.append(": ");
+    localStringBuilder.append(paramLogItem.msg);
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
   
   public static String formatThrowable(Throwable paramThrowable)
@@ -41,7 +54,7 @@ public class Formatter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.log.Formatter
  * JD-Core Version:    0.7.0.1
  */

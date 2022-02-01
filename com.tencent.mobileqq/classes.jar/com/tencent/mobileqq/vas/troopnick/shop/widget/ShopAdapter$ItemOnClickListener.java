@@ -20,23 +20,25 @@ class ShopAdapter$ItemOnClickListener
   {
     this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter.a = this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter$DataItem.b;
     ShopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter, this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter$DataItem);
-    ShopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter, ShopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter));
+    ShopAdapter localShopAdapter = this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter;
+    ShopAdapter.a(localShopAdapter, ShopAdapter.a(localShopAdapter));
     if (this.jdField_a_of_type_Boolean) {
       ShopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter).a();
     }
     int j = this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter$DataItem.b;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 4;; i = this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter$DataItem.d)
-    {
-      ReportHelper.a(2, j, i, 102);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      i = 4;
+    } else {
+      i = this.jdField_a_of_type_ComTencentMobileqqVasTroopnickShopWidgetShopAdapter$DataItem.d;
     }
+    ReportHelper.a(2, j, i, 102);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.widget.ShopAdapter.ItemOnClickListener
  * JD-Core Version:    0.7.0.1
  */

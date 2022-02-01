@@ -18,40 +18,35 @@ class RecentAdapter$10
       RecentAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_JavaLangString, this.b);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A361", "0X800A361", 0, 0, "1", "", this.b, "");
     }
-    for (;;)
+    else if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (paramInt == 1)
+      if (this.jdField_a_of_type_Boolean)
       {
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
         ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserUin(), this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserType(), new RecentAdapter.10.1(this), 1);
       }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserType() == 3000)
-    {
-      paramView = new DeleteRecordDialog(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-      paramView.a(new RecentAdapter.10.2(this));
-      paramView.a(1);
-    }
-    for (;;)
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A362", "0X800A362", 0, 0, "1", "", this.b, "");
-      break;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserType() == 1)
+      else
       {
-        paramView = new DeleteRecordDialog(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-        paramView.a(new RecentAdapter.10.3(this));
-        paramView.a(1);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserType() == 3000)
+        {
+          paramView = new DeleteRecordDialog(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+          paramView.a(new RecentAdapter.10.2(this));
+          paramView.a(1);
+        }
+        else if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.getRecentUserType() == 1)
+        {
+          paramView = new DeleteRecordDialog(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+          paramView.a(new RecentAdapter.10.3(this));
+          paramView.a(1);
+        }
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A362", "0X800A362", 0, 0, "1", "", this.b, "");
       }
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.10
  * JD-Core Version:    0.7.0.1
  */

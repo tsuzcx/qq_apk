@@ -37,20 +37,28 @@ public final class EmoJiParser
     if (localObject != null)
     {
       localObject = ((IEmoJiBridge)localObject).a();
-      if (((CharSequence)this.jdField_a_of_type_JavaLangString).length() == 0) {}
-      for (int i = 1; (i != 0) || (localObject == null); i = 0) {
-        return false;
+      int i;
+      if (((CharSequence)this.jdField_a_of_type_JavaLangString).length() == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      localObject = ((Pattern)localObject).matcher((CharSequence)this.jdField_a_of_type_JavaLangString);
-      while (((Matcher)localObject).find())
+      if (i == 0)
       {
-        List localList = this.jdField_a_of_type_JavaUtilList;
-        String str = ((Matcher)localObject).group();
-        Intrinsics.checkExpressionValueIsNotNull(str, "matcher.group()");
-        localList.add(str);
-        this.b.add(Integer.valueOf(((Matcher)localObject).start()));
+        if (localObject == null) {
+          return false;
+        }
+        localObject = ((Pattern)localObject).matcher((CharSequence)this.jdField_a_of_type_JavaLangString);
+        while (((Matcher)localObject).find())
+        {
+          List localList = this.jdField_a_of_type_JavaUtilList;
+          String str = ((Matcher)localObject).group();
+          Intrinsics.checkExpressionValueIsNotNull(str, "matcher.group()");
+          localList.add(str);
+          this.b.add(Integer.valueOf(((Matcher)localObject).start()));
+        }
+        return b();
       }
-      return b();
     }
     return false;
   }
@@ -74,33 +82,12 @@ public final class EmoJiParser
   
   public final boolean b()
   {
-    if (!((Collection)this.jdField_a_of_type_JavaUtilList).isEmpty())
-    {
-      i = 1;
-      if (i == 0) {
-        break label75;
-      }
-      if (((Collection)this.b).isEmpty()) {
-        break label70;
-      }
-    }
-    label70:
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) || (this.b.size() != this.jdField_a_of_type_JavaUtilList.size())) {
-        break label75;
-      }
-      return true;
-      i = 0;
-      break;
-    }
-    label75:
-    return false;
+    return ((((Collection)this.jdField_a_of_type_JavaUtilList).isEmpty() ^ true)) && ((((Collection)this.b).isEmpty() ^ true)) && (this.b.size() == this.jdField_a_of_type_JavaUtilList.size());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.utils.EmoJiParser
  * JD-Core Version:    0.7.0.1
  */

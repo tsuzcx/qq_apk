@@ -27,9 +27,10 @@ public class e$a
   
   public int read()
   {
-    int i = -1;
     byte[] arrayOfByte = new byte[1];
-    if (read(arrayOfByte, 0, 1) != -1) {
+    int j = read(arrayOfByte, 0, 1);
+    int i = -1;
+    if (j != -1) {
       i = arrayOfByte[0] & 0xFF;
     }
     return i;
@@ -56,11 +57,10 @@ public class e$a
   
   public long skip(long paramLong)
   {
-    long l2 = this.c;
-    long l3 = this.b;
+    long l2 = this.c - this.b;
     long l1 = paramLong;
-    if (paramLong > l2 - l3) {
-      l1 = l2 - l3;
+    if (paramLong > l2) {
+      l1 = l2;
     }
     this.b += l1;
     return l1;

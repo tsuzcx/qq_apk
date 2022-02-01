@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ml8" android:layout_width="42.0dip" android:layout_height="fill_parent">
-        <View android:id="@id/mq5" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_above="@id/jfb" />
-        <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="#ff5de1ff" android:id="@id/non" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="allala" android:layout_above="@id/nzq" android:layout_centerHorizontal="true" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/nzq" android:layout_width="32.0dip" android:layout_height="6.0dip" android:layout_above="@id/jfb" android:layout_centerHorizontal="true">
-            <ImageView android:id="@id/nzr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        </LinearLayout>
-        <ImageView android:id="@id/nzs" android:layout_width="32.0dip" android:layout_height="35.0dip" android:layout_marginTop="-6.0dip" android:layout_alignLeft="@id/nzq" android:layout_alignTop="@id/nzq" />
-        <TextView android:textSize="12.0sp" android:textColor="#ffb0b3bf" android:id="@id/jfb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="allala" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/lfw" android:background="#ffa0a0a0" android:longClickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="16.0dip" android:textColor="#ff000000" android:id="@id/ll2" android:background="@null" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:minWidth="0.0dip" android:minHeight="0.0dip" android:text="关闭显示" android:layout_alignParentRight="true" />
+        <Button android:textSize="16.0dip" android:textColor="#ff000000" android:id="@id/ayc" android:background="@null" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:minWidth="0.0dip" android:minHeight="0.0dip" android:text="@string/tz_" />
     </RelativeLayout>
-</RelativeLayout>
+    <View android:id="@id/m5q" android:background="#ffcccccc" android:visibility="gone" android:longClickable="true" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+    <include layout="@layout/cw_" />
+    <com.tencent.mobileqq.tablequery.DataReportListView android:id="@id/m_f" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="#7fcccccc" android:dividerHeight="1.0dip" />
+    <View android:background="#ffcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</LinearLayout>

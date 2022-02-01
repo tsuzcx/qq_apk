@@ -47,38 +47,38 @@ public class MemoriesVideoCollectionPresenter
   
   private void a(VideoCollectionItem paramVideoCollectionItem)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramVideoCollectionItem) > 0) {
-      SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "data already exist, id=%s, time=%d", paramVideoCollectionItem.collectionId, Long.valueOf(paramVideoCollectionItem.collectionTime));
-    }
-    do
+    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramVideoCollectionItem) > 0)
     {
+      SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "data already exist, id=%s, time=%d", paramVideoCollectionItem.collectionId, Long.valueOf(paramVideoCollectionItem.collectionTime));
       return;
-      i = Collections.binarySearch(this.jdField_a_of_type_JavaUtilArrayList, paramVideoCollectionItem, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem$DataSortedComparator);
-    } while (i >= 0);
-    int i = -i;
-    this.jdField_a_of_type_JavaUtilArrayList.add(i - 1, paramVideoCollectionItem);
+    }
+    int i = Collections.binarySearch(this.jdField_a_of_type_JavaUtilArrayList, paramVideoCollectionItem, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem$DataSortedComparator);
+    if (i < 0)
+    {
+      i = -i;
+      this.jdField_a_of_type_JavaUtilArrayList.add(i - 1, paramVideoCollectionItem);
+    }
   }
   
   public VideoCollectionItem a()
   {
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      VideoCollectionItem localVideoCollectionItem2 = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-      VideoCollectionItem localVideoCollectionItem1;
-      if (localVideoCollectionItem2.isEmptyFakeItem)
+      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject = (VideoCollectionItem)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+      if (((VideoCollectionItem)localObject).isEmptyFakeItem)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 2)
         {
-          localVideoCollectionItem1 = (VideoCollectionItem)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 2);
-          if (TextUtils.isEmpty(localVideoCollectionItem1.collectionId)) {}
+          localObject = this.jdField_a_of_type_JavaUtilArrayList;
+          localObject = (VideoCollectionItem)((ArrayList)localObject).get(((ArrayList)localObject).size() - 2);
+          if (!TextUtils.isEmpty(((VideoCollectionItem)localObject).collectionId)) {
+            return localObject;
+          }
         }
       }
-      else {
-        do
-        {
-          return localVideoCollectionItem1;
-          localVideoCollectionItem1 = localVideoCollectionItem2;
-        } while (!TextUtils.isEmpty(localVideoCollectionItem2.collectionId));
+      else if (!TextUtils.isEmpty(((VideoCollectionItem)localObject).collectionId)) {
+        return localObject;
       }
     }
     return null;
@@ -155,8 +155,9 @@ public class MemoriesVideoCollectionPresenter
   {
     StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$GetCollectListEventReceiver);
     StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter$GetSimpleInfoListEventReceiver);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.b();
+    MemoryDataPuller localMemoryDataPuller = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller;
+    if (localMemoryDataPuller != null) {
+      localMemoryDataPuller.b();
     }
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
@@ -169,12 +170,12 @@ public class MemoriesVideoCollectionPresenter
   
   public boolean isValidate()
   {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -24,76 +24,99 @@ public class TVKPlayerPreDownloader
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null) {
+    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    if (localTVK_ICacheMgr == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.stopCacheData(WSPlayerUtils.a);
+    localTVK_ICacheMgr.stopCacheData(WSPlayerUtils.a);
   }
   
   public void a(AbsWSPlayerInfo<TVK_UserInfo, TVK_PlayerVideoInfo> paramAbsWSPlayerInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null) || (paramAbsWSPlayerInfo == null)) {
-      return;
+    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    if (localTVK_ICacheMgr != null)
+    {
+      if (paramAbsWSPlayerInfo == null) {
+        return;
+      }
+      localTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramAbsWSPlayerInfo.b, (TVK_UserInfo)paramAbsWSPlayerInfo.b(), (TVK_PlayerVideoInfo)paramAbsWSPlayerInfo.d());
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramAbsWSPlayerInfo.b, (TVK_UserInfo)paramAbsWSPlayerInfo.b(), (TVK_PlayerVideoInfo)paramAbsWSPlayerInfo.d());
   }
   
   public void a(IWSPlayerPreDownloader.Listener paramListener)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener = paramListener;
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(this);
+    paramListener = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    if (paramListener != null) {
+      paramListener.setPreloadCallback(this);
     }
   }
   
   public boolean a(AbsWSPlayerInfo<TVK_UserInfo, TVK_PlayerVideoInfo> paramAbsWSPlayerInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null) || (paramAbsWSPlayerInfo == null)) {
-      return false;
-    }
-    try
+    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    if (localTVK_ICacheMgr != null)
     {
-      int i = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.isVideoCached(BaseApplicationImpl.getContext(), paramAbsWSPlayerInfo.b, (TVK_UserInfo)paramAbsWSPlayerInfo.b(), (TVK_PlayerVideoInfo)paramAbsWSPlayerInfo.d(), "");
-      if ((i == 2) || (i == 1)) {}
-      for (boolean bool = true;; bool = false) {
+      if (paramAbsWSPlayerInfo == null) {
+        return false;
+      }
+      try
+      {
+        int i = localTVK_ICacheMgr.isVideoCached(BaseApplicationImpl.getContext(), paramAbsWSPlayerInfo.b, (TVK_UserInfo)paramAbsWSPlayerInfo.b(), (TVK_PlayerVideoInfo)paramAbsWSPlayerInfo.d(), "");
+        boolean bool = true;
+        if (i != 2)
+        {
+          if (i == 1) {
+            return true;
+          }
+          bool = false;
+        }
         return bool;
       }
-      return false;
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[WSVideoPreDownloadManager.java][checkIsCached] Exception url:");
+        localStringBuilder.append(paramAbsWSPlayerInfo.b);
+        localStringBuilder.append(", cacheMgr.isVideoCached Exception:");
+        localStringBuilder.append(localException.getMessage());
+        WSLog.d("TVKPlayerPreDownloader", localStringBuilder.toString());
+      }
     }
-    catch (Exception localException)
-    {
-      WSLog.d("TVKPlayerPreDownloader", "[WSVideoPreDownloadManager.java][checkIsCached] Exception url:" + paramAbsWSPlayerInfo.b + ", cacheMgr.isVideoCached Exception:" + localException.getMessage());
-    }
+    return false;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr == null) {
+    TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
+    if (localTVK_ICacheMgr == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.removePreloadCallback();
+    localTVK_ICacheMgr.removePreloadCallback();
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.releasePreload(WSPlayerUtils.a);
   }
   
   public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener == null) {
+    IWSPlayerPreDownloader.Listener localListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener;
+    if (localListener == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener.a(paramString1, paramInt, paramString2);
+    localListener.a(paramString1, paramInt, paramString2);
   }
   
   public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener == null) {
+    IWSPlayerPreDownloader.Listener localListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener;
+    if (localListener == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener.a(paramString1, paramString2);
+    localListener.a(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.tvkplayer.TVKPlayerPreDownloader
  * JD-Core Version:    0.7.0.1
  */

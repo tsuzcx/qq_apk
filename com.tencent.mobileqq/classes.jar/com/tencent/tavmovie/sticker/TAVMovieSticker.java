@@ -38,36 +38,34 @@ public class TAVMovieSticker
     this.rotation = 0.0F;
     this.centerPosition = new PointF(0.5F, 0.5F);
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        this.sticker = new TAVSticker().setAssetFilePath(paramString).setScale(1.0F).setRotate(0.0F).setCenterX(0.5F).setCenterY(0.5F).init();
-        this.timeRange = this.sticker.getTimeRange();
-        this.imageList = this.sticker.getStickerImageItems();
-        paramString = this.sticker.getStickerTextItems();
-        if ((paramString != null) && (paramString.size() > 0))
-        {
-          this.textList = new ArrayList();
-          paramString = paramString.iterator();
-          if (paramString.hasNext())
-          {
-            TAVStickerTextItem localTAVStickerTextItem = (TAVStickerTextItem)paramString.next();
-            TAVMovieStickerTextItem localTAVMovieStickerTextItem = new TAVMovieStickerTextItem();
-            localTAVMovieStickerTextItem.setTextItem(localTAVStickerTextItem);
-            localTAVMovieStickerTextItem.setText(localTAVStickerTextItem.getDefaultText());
-            localTAVMovieStickerTextItem.setTextColor(localTAVStickerTextItem.getDefaultColor());
-            this.textList.add(localTAVMovieStickerTextItem);
-            continue;
-          }
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
+      this.sticker = new TAVSticker().setAssetFilePath(paramString).setScale(1.0F).setRotate(0.0F).setCenterX(0.5F).setCenterY(0.5F).init();
+      break label113;
       this.sticker = new TAVSticker().setFilePath(paramString).setScale(1.0F).setRotate(0.0F).setCenterX(0.5F).setCenterY(0.5F).init();
+      label113:
+      this.timeRange = this.sticker.getTimeRange();
+      this.imageList = this.sticker.getStickerImageItems();
+      paramString = this.sticker.getStickerTextItems();
+      if ((paramString != null) && (paramString.size() > 0))
+      {
+        this.textList = new ArrayList();
+        paramString = paramString.iterator();
+        while (paramString.hasNext())
+        {
+          TAVStickerTextItem localTAVStickerTextItem = (TAVStickerTextItem)paramString.next();
+          TAVMovieStickerTextItem localTAVMovieStickerTextItem = new TAVMovieStickerTextItem();
+          localTAVMovieStickerTextItem.setTextItem(localTAVStickerTextItem);
+          localTAVMovieStickerTextItem.setText(localTAVStickerTextItem.getDefaultText());
+          localTAVMovieStickerTextItem.setTextColor(localTAVStickerTextItem.getDefaultColor());
+          this.textList.add(localTAVMovieStickerTextItem);
+        }
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
@@ -109,16 +107,18 @@ public class TAVMovieSticker
   
   public List<TAVStickerLayerInfo> getStickerLayerInfos()
   {
-    if (this.sticker != null) {
-      return this.sticker.getStickerLayerInfos();
+    TAVSticker localTAVSticker = this.sticker;
+    if (localTAVSticker != null) {
+      return localTAVSticker.getStickerLayerInfos();
     }
     return null;
   }
   
   public List<TAVStickerLayerInfo> getStickerLayerInfosFake()
   {
-    if (this.sticker != null) {
-      return this.sticker.getStickerLayerInfosFake();
+    TAVSticker localTAVSticker = this.sticker;
+    if (localTAVSticker != null) {
+      return localTAVSticker.getStickerLayerInfosFake();
     }
     return null;
   }
@@ -189,21 +189,23 @@ public class TAVMovieSticker
   
   public void updateImageData()
   {
-    if (this.sticker != null) {
-      this.sticker.updateImageData();
+    TAVSticker localTAVSticker = this.sticker;
+    if (localTAVSticker != null) {
+      localTAVSticker.updateImageData();
     }
   }
   
   public void updateTextData()
   {
-    if (this.sticker != null) {
-      this.sticker.updateTextData();
+    TAVSticker localTAVSticker = this.sticker;
+    if (localTAVSticker != null) {
+      localTAVSticker.updateTextData();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavmovie.sticker.TAVMovieSticker
  * JD-Core Version:    0.7.0.1
  */

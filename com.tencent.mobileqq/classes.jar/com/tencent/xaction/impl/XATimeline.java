@@ -10,11 +10,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/impl/XATimeline;", "Lcom/tencent/xaction/api/ITimeline;", "id", "", "(I)V", "animStateListenerList", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/impl/AnimStateListener;", "Lkotlin/collections/ArrayList;", "callback", "", "currentRepeatCount", "fpstime", "", "frame", "frameCallback", "Lcom/tencent/xaction/impl/XATimeline$XAFrameCallback;", "frameDurationNs", "frameRate", "frameTime", "", "getId", "()I", "setId", "isReverse", "", "lastFrameTimeNs", "running", "speed", "timelineList", "tp", "Lcom/tencent/xaction/api/data/TimeProp;", "getTp", "()Lcom/tencent/xaction/api/data/TimeProp;", "setTp", "(Lcom/tencent/xaction/api/data/TimeProp;)V", "addAnimStateListener", "", "animState", "addTimeline", "timeline", "cancel", "clear", "doFrame", "frameTimeNanos", "frameRepeat", "getFpsTime", "isRunning", "()Ljava/lang/Boolean;", "notifyUpdate", "pause", "postFrameCallback", "removeAnimStateListener", "removeFrameCallback", "stopRunning", "removeTimeline", "resume", "setFps", "fps", "start", "stop", "Companion", "XAFrameCallback", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/impl/XATimeline;", "Lcom/tencent/xaction/api/ITimeline;", "id", "", "(I)V", "animStateListenerList", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/impl/AnimStateListener;", "Lkotlin/collections/ArrayList;", "callback", "", "currentRepeatCount", "fpstime", "", "frame", "frameCallback", "Lcom/tencent/xaction/impl/XATimeline$XAFrameCallback;", "frameDurationNs", "frameRate", "frameTime", "", "getId", "()I", "setId", "isReverse", "", "lastFrameTimeNs", "running", "speed", "timelineList", "tp", "Lcom/tencent/xaction/api/data/TimeProp;", "getTp", "()Lcom/tencent/xaction/api/data/TimeProp;", "setTp", "(Lcom/tencent/xaction/api/data/TimeProp;)V", "addAnimStateListener", "", "animState", "addTimeline", "timeline", "cancel", "clear", "doFrame", "frameTimeNanos", "getFpsTime", "isRunning", "()Ljava/lang/Boolean;", "notifyUpdate", "pause", "postFrameCallback", "removeAnimStateListener", "removeFrameCallback", "stopRunning", "removeTimeline", "resume", "setFps", "fps", "start", "stop", "Companion", "XAFrameCallback", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public final class XATimeline
   implements ITimeline
 {
@@ -94,24 +93,6 @@ public final class XATimeline
   
   private final void f()
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentXactionApiDataTimeProp.getRm() == 1) {
-      this.jdField_b_of_type_Float = 0.0F;
-    }
-    while (this.jdField_a_of_type_ComTencentXactionApiDataTimeProp.getRm() != 2) {
-      return;
-    }
-    if (!this.jdField_b_of_type_Boolean) {}
-    for (;;)
-    {
-      this.jdField_b_of_type_Boolean = bool;
-      return;
-      bool = false;
-    }
-  }
-  
-  private final void g()
-  {
     if (this.jdField_a_of_type_Boolean)
     {
       b(false);
@@ -151,7 +132,7 @@ public final class XATimeline
     {
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_Long = System.nanoTime();
-      g();
+      f();
     }
   }
   
@@ -178,7 +159,7 @@ public final class XATimeline
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Long = System.nanoTime();
-    g();
+    f();
   }
   
   public final void c()
@@ -198,52 +179,51 @@ public final class XATimeline
   
   public void doFrame(long paramLong)
   {
-    if (jdField_c_of_type_Boolean) {
-      jdField_c_of_type_JavaUtilArrayList.add(this);
-    }
-    do
+    if (jdField_c_of_type_Boolean)
     {
-      do
-      {
-        float f2;
-        do
-        {
-          do
-          {
-            return;
-            g();
-          } while (!this.jdField_a_of_type_Boolean);
-          paramLong = System.nanoTime();
-          f2 = RangesKt.coerceAtLeast(0.0F, RangesKt.coerceAtMost(4.294967E+009F, (float)(paramLong - this.jdField_a_of_type_Long) / this.d));
-        } while (f2 < 0.9D);
-        if (f2 > 3)
-        {
-          this.jdField_a_of_type_Long = paramLong;
-          return;
-        }
-        float f3 = this.jdField_b_of_type_Float;
-        float f1 = f2;
-        if (this.jdField_b_of_type_Boolean) {
-          f1 = -f2;
-        }
-        this.jdField_b_of_type_Float = (f1 + f3);
-        this.jdField_a_of_type_Long = paramLong;
-        this.jdField_b_of_type_Long = ((this.jdField_c_of_type_Float * this.jdField_b_of_type_Float));
-        a(this.jdField_b_of_type_Long);
-      } while ((this.jdField_a_of_type_ComTencentXactionApiDataTimeProp.getDuration() > this.jdField_b_of_type_Long) && (this.jdField_b_of_type_Float > 0.0F));
+      jdField_c_of_type_JavaUtilArrayList.add(this);
+      return;
+    }
+    f();
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    paramLong = System.nanoTime();
+    float f2 = (float)(paramLong - this.jdField_a_of_type_Long) / this.d;
+    if (f2 < 0.8D) {
+      return;
+    }
+    if (f2 > 3)
+    {
+      this.jdField_a_of_type_Long = paramLong;
+      return;
+    }
+    float f3 = this.jdField_b_of_type_Float;
+    float f1 = f2;
+    if (this.jdField_b_of_type_Boolean) {
+      f1 = -f2;
+    }
+    this.jdField_b_of_type_Float = (f3 + f1);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Long = ((this.jdField_c_of_type_Float * this.jdField_b_of_type_Float));
+    a(this.jdField_b_of_type_Long);
+    if ((this.jdField_a_of_type_ComTencentXactionApiDataTimeProp.getDuration() <= this.jdField_b_of_type_Long) || (this.jdField_b_of_type_Float <= 0.0F))
+    {
       if (this.jdField_a_of_type_ComTencentXactionApiDataTimeProp.getRc() == -1)
       {
-        f();
+        XATimeline.Companion.a(jdField_a_of_type_ComTencentXactionImplXATimeline$Companion, this);
         return;
       }
       if (this.jdField_c_of_type_Int < this.jdField_a_of_type_ComTencentXactionApiDataTimeProp.getRc())
       {
         this.jdField_c_of_type_Int += 1;
-        f();
+        XATimeline.Companion.a(jdField_a_of_type_ComTencentXactionImplXATimeline$Companion, this);
         return;
       }
-    } while (this.jdField_c_of_type_Int < this.jdField_a_of_type_ComTencentXactionApiDataTimeProp.getRc());
-    b(true);
+      if (this.jdField_c_of_type_Int >= this.jdField_a_of_type_ComTencentXactionApiDataTimeProp.getRc()) {
+        b(true);
+      }
+    }
   }
   
   public final void e()
@@ -266,7 +246,7 @@ public final class XATimeline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.impl.XATimeline
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.utils;
 
 import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.qwallet.hb.aio.specify.ISpecifyRedPacketAnimMsg.OnAnimEndListener;
 
 class AIOAnimationControlManager$13
-  implements FrameSprite.OnFrameEndListener
+  implements ISpecifyRedPacketAnimMsg.OnAnimEndListener
 {
   AIOAnimationControlManager$13(AIOAnimationControlManager paramAIOAnimationControlManager, boolean paramBoolean) {}
   
@@ -17,7 +17,7 @@ class AIOAnimationControlManager$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.13
  * JD-Core Version:    0.7.0.1
  */

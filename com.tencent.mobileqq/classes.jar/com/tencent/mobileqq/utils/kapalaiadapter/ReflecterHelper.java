@@ -5,6 +5,11 @@ import java.lang.reflect.Method;
 
 public final class ReflecterHelper
 {
+  public static Object a(Object paramObject, String paramString)
+  {
+    return a(paramObject, paramString, null);
+  }
+  
   public static Object a(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
     paramString = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
@@ -48,29 +53,23 @@ public final class ReflecterHelper
       Class[] arrayOfClass = new Class[paramArrayOfObject.length];
       int i = 0;
       int j = paramArrayOfObject.length;
-      localObject = arrayOfClass;
-      if (i < j)
+      for (;;)
       {
-        if (paramArrayOfObject[i] != null)
-        {
-          arrayOfClass[i] = paramArrayOfObject[i].getClass();
-          label45:
-          if (arrayOfClass[i] != Integer.class) {
-            break label77;
-          }
-          arrayOfClass[i] = Integer.TYPE;
-        }
-        for (;;)
-        {
-          i += 1;
+        localObject = arrayOfClass;
+        if (i >= j) {
           break;
-          arrayOfClass[i] = String.class;
-          break label45;
-          label77:
-          if (arrayOfClass[i] == Boolean.class) {
-            arrayOfClass[i] = Boolean.TYPE;
-          }
         }
+        if (paramArrayOfObject[i] != null) {
+          arrayOfClass[i] = paramArrayOfObject[i].getClass();
+        } else {
+          arrayOfClass[i] = String.class;
+        }
+        if (arrayOfClass[i] == Integer.class) {
+          arrayOfClass[i] = Integer.TYPE;
+        } else if (arrayOfClass[i] == Boolean.class) {
+          arrayOfClass[i] = Boolean.TYPE;
+        }
+        i += 1;
       }
     }
     return localObject;
@@ -78,7 +77,7 @@ public final class ReflecterHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.kapalaiadapter.ReflecterHelper
  * JD-Core Version:    0.7.0.1
  */

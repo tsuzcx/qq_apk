@@ -29,39 +29,35 @@ public class Collector
   
   public void doWork()
   {
-    boolean bool = true;
     haveArest();
-    List localList;
-    Object localObject1;
     if ((this.condition.meet(this)) || (this.flush))
     {
+      int j = 0;
       this.flush = false;
-      localList = this.statisticFolder.pollAll();
+      List localList = this.statisticFolder.pollAll();
       if ((localList != null) && (localList.size() > 0))
       {
-        if (this.needForceDeliver) {
-          i = 1;
-        }
-        for (;;)
+        boolean bool2 = this.needForceDeliver;
+        boolean bool1 = true;
+        if (bool2) {}
+        while (getSampler() == null)
         {
-          localObject1 = localList.iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            ((Statistic)((Iterator)localObject1).next()).setValue(WnsKeys.Frequency, Integer.valueOf(i));
-          }
-          if (getSampler() == null) {
-            i = 1;
-          } else {
-            i = getSampler().getFrequency();
-          }
+          i = 1;
+          break;
+        }
+        int i = getSampler().getFrequency();
+        Object localObject1 = localList.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          ((Statistic)((Iterator)localObject1).next()).setValue(WnsKeys.Frequency, Integer.valueOf(i));
         }
         localObject1 = localList.toArray();
         if (this.lastStatistics.size() > 0) {
           localList.addAll(this.lastStatistics);
         }
         this.lastStatistics.clear();
-        int j = localObject1.length;
+        int k = localObject1.length;
         i = 0;
-        while (i < j)
+        while (i < k)
         {
           Object localObject2 = localObject1[i];
           this.lastStatistics.add((Statistic)localObject2);
@@ -70,37 +66,28 @@ public class Collector
         localObject1 = getAssembler().assemble(localList);
         if ((localObject1 != null) && (((String)localObject1).length() > 0))
         {
-          if (!this.needForceDeliver) {
-            break label284;
+          if ((!this.needForceDeliver) && (getSampler() != null)) {
+            bool1 = getSampler().sample();
           }
           this.needForceDeliver = false;
-          if (!bool) {
-            break label302;
+          i = j;
+          if (bool1) {
+            i = getDeliverer().deliver((String)localObject1, localList.size());
           }
+          if (i == 0) {
+            this.lastStatistics.clear();
+          }
+          recordLatestWorkTime();
         }
       }
-    }
-    label284:
-    label302:
-    for (int i = getDeliverer().deliver((String)localObject1, localList.size());; i = 0)
-    {
-      if (i == 0) {
-        this.lastStatistics.clear();
-      }
-      recordLatestWorkTime();
-      return;
-      if (getSampler() == null) {
-        break;
-      }
-      bool = getSampler().sample();
-      break;
     }
   }
   
   public void flush()
   {
     this.flush = true;
-    if ((this.thread != null) && (this.thread.isAlive())) {
+    Thread localThread = this.thread;
+    if ((localThread != null) && (localThread.isAlive())) {
       this.thread.interrupt();
     }
   }
@@ -156,10 +143,11 @@ public class Collector
   
   public void haveArest()
   {
-    if (this.sleepTimespan > 0L) {}
+    long l = this.sleepTimespan;
+    if (l > 0L) {}
     try
     {
-      Thread.sleep(this.sleepTimespan);
+      Thread.sleep(l);
       return;
     }
     catch (InterruptedException localInterruptedException) {}
@@ -167,7 +155,7 @@ public class Collector
   
   public boolean isStopped()
   {
-    return !this.isWorking;
+    return this.isWorking ^ true;
   }
   
   public void onStop()
@@ -220,7 +208,8 @@ public class Collector
   
   public void startWork()
   {
-    if ((this.thread != null) && (this.thread.isAlive()))
+    Thread localThread = this.thread;
+    if ((localThread != null) && (localThread.isAlive()))
     {
       this.isWorking = false;
       this.thread.interrupt();
@@ -236,7 +225,7 @@ public class Collector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.concept.Collector
  * JD-Core Version:    0.7.0.1
  */

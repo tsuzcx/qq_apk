@@ -10,39 +10,27 @@ class SwiftBrowserIdleTaskHelper$1
   
   public boolean queueIdle()
   {
-    Object localObject;
     int i;
-    if (!SwiftBrowserIdleTaskHelper.a().isEmpty())
+    do
     {
-      localObject = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.a().remove(0);
-      i = ((SwiftBrowserIdleTaskHelper.IdleTask)localObject).a();
-      if (2 == i) {
-        SwiftBrowserIdleTaskHelper.a().add(localObject);
-      }
-    }
-    else
-    {
-      label38:
-      localObject = this.a;
       if (SwiftBrowserIdleTaskHelper.a().isEmpty()) {
-        break label75;
-      }
-    }
-    label75:
-    for (boolean bool = true;; bool = false)
-    {
-      ((SwiftBrowserIdleTaskHelper)localObject).a = bool;
-      return this.a.a;
-      if (1 != i) {
         break;
       }
-      break label38;
-    }
+      SwiftBrowserIdleTaskHelper.IdleTask localIdleTask = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.a().remove(0);
+      i = localIdleTask.a();
+      if (2 == i)
+      {
+        SwiftBrowserIdleTaskHelper.a().add(localIdleTask);
+        break;
+      }
+    } while (1 != i);
+    this.a.a = (true ^ SwiftBrowserIdleTaskHelper.a().isEmpty());
+    return this.a.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.1
  * JD-Core Version:    0.7.0.1
  */

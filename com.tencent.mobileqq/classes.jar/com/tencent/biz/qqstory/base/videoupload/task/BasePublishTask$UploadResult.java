@@ -30,12 +30,16 @@ class BasePublishTask$UploadResult
       this.a.a((ErrorMessage)paramError);
       return;
     }
-    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
+    BasePublishTask localBasePublishTask = this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("upload file fail:");
+    localStringBuilder.append(paramError);
+    localBasePublishTask.a(new ErrorMessage(940005, localStringBuilder.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask.UploadResult
  * JD-Core Version:    0.7.0.1
  */

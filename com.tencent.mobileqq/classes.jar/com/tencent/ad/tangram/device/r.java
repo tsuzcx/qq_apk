@@ -6,9 +6,10 @@ import android.text.TextUtils;
 import com.tencent.ad.tangram.file.AdFile;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForUUID;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForDeviceInfo;
+import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForDeviceInfo.UUID;
+import com.tencent.ad.tangram.settings.AdSettingsManager;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.ad.tangram.util.e;
 import java.io.File;
 
@@ -19,8 +20,7 @@ final class r
   
   private static String getDirectoryAbsolutePath(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (Environment.getExternalStorageDirectory() == null) {
+    if ((TextUtils.isEmpty(paramString)) || (Environment.getExternalStorageDirectory() == null)) {
       return null;
     }
     return new File(Environment.getExternalStorageDirectory(), paramString).getAbsolutePath();
@@ -31,30 +31,24 @@ final class r
     long l = System.currentTimeMillis();
     r.a locala = new r.a();
     locala.error = 1;
-    if (uuidInfo != null)
+    Object localObject1 = uuidInfo;
+    if (localObject1 != null)
     {
-      locala.uuidInfo = uuidInfo;
+      locala.uuidInfo = ((q)localObject1);
       locala.error = 0;
       locala.cached = true;
     }
-    Object localObject;
-    q.a locala1;
-    AdFile localAdFile1;
-    AdFile localAdFile2;
-    for (;;)
+    else
     {
-      AdLog.i("AdUUIDUtil", String.format("getUUID %d", new Object[] { Integer.valueOf(locala.error) }));
-      locala.duration = (System.currentTimeMillis() - l);
-      return locala;
-      localObject = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-      if (localObject == null)
+      localObject1 = AdSettingsManager.INSTANCE.getCache();
+      if (localObject1 == null)
       {
         locala.error = 106;
       }
       else
       {
-        locala1 = new q.a(((gdt_settings.Settings)localObject).settingsForUUID);
-        if ((locala1 == null) || (!locala1.isValid()))
+        q.a locala1 = new q.a(((gdt_settings.Settings)localObject1).settingsForDeviceInfo.uuid);
+        if (!locala1.isValid())
         {
           locala.error = 4;
         }
@@ -68,59 +62,63 @@ final class r
         }
         else
         {
-          localAdFile1 = new AdFile(getDirectoryAbsolutePath("Tencent/ams/cache"), "meta.dat", "UTF-8", true);
-          localAdFile2 = new AdFile(getDirectoryAbsolutePath("Android/data/com.tencent.ams/cache"), "meta.dat", "UTF-8", true);
-          if ((localAdFile1.open()) && (localAdFile2.open())) {
-            break;
+          AdFile localAdFile1 = new AdFile(getDirectoryAbsolutePath("Tencent/ams/cache"), "meta.dat", "UTF-8", true);
+          AdFile localAdFile2 = new AdFile(getDirectoryAbsolutePath("Android/data/com.tencent.ams/cache"), "meta.dat", "UTF-8", true);
+          if ((localAdFile1.open()) && (localAdFile2.open()))
+          {
+            int i = ((gdt_settings.Settings)localObject1).settingsForDeviceInfo.uuid.maxLength;
+            String str1 = localAdFile1.readFully(i);
+            q localq1 = q.fromString(str1);
+            String str2 = localAdFile2.readFully(i);
+            q localq2 = q.fromString(str2);
+            q localq3 = q.create(locala1);
+            Object localObject2 = null;
+            if (localq3 != null) {
+              localObject1 = localq3.toString();
+            } else {
+              localObject1 = null;
+            }
+            if ((localq1 != null) && (localq1.isValid(locala1)))
+            {
+              localObject2 = str1;
+              localObject1 = localq1;
+            }
+            else if ((localq2 != null) && (localq2.isValid(locala1)))
+            {
+              localObject2 = str2;
+              localObject1 = localq2;
+            }
+            else if (!TextUtils.isEmpty((CharSequence)localObject1))
+            {
+              localObject2 = localObject1;
+              localObject1 = localq3;
+            }
+            else
+            {
+              localObject1 = null;
+            }
+            if ((localAdFile1.writeFully((String)localObject2)) && (localAdFile2.writeFully((String)localObject2)))
+            {
+              uuidInfo = (q)localObject1;
+              locala.uuidInfo = uuidInfo;
+              locala.error = 0;
+            }
+            localAdFile1.close();
+            localAdFile2.close();
+            AdAnalysisHelperForUtil.reportForUUID(paramContext, localq1, localq2, locala1);
           }
-          localAdFile1.close();
-          localAdFile2.close();
-          locala.error = 18;
+          else
+          {
+            localAdFile1.close();
+            localAdFile2.close();
+            locala.error = 18;
+          }
         }
       }
     }
-    int i = ((gdt_settings.Settings)localObject).settingsForUUID.maxLength;
-    String str1 = localAdFile1.readFully(i);
-    q localq2 = q.fromString(str1);
-    String str2 = localAdFile2.readFully(i);
-    q localq3 = q.fromString(str2);
-    q localq1 = q.create(locala1);
-    if (localq1 != null)
-    {
-      localObject = localq1.toString();
-      label320:
-      if ((localq2 == null) || (!localq2.isValid(locala1))) {
-        break label411;
-      }
-      localq1 = localq2;
-      localObject = str1;
-    }
-    for (;;)
-    {
-      if ((localAdFile1.writeFully((String)localObject)) && (localAdFile2.writeFully((String)localObject)))
-      {
-        uuidInfo = localq1;
-        locala.uuidInfo = uuidInfo;
-        locala.error = 0;
-      }
-      localAdFile1.close();
-      localAdFile2.close();
-      AdReporterForAnalysis.reportForUUID(paramContext, localq2, localq3, locala1);
-      break;
-      localObject = null;
-      break label320;
-      label411:
-      if ((localq3 != null) && (localq3.isValid(locala1)))
-      {
-        localObject = str2;
-        localq1 = localq3;
-      }
-      else if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = null;
-        localq1 = null;
-      }
-    }
+    AdLog.i("AdUUIDUtil", String.format("getUUID %d", new Object[] { Integer.valueOf(locala.error) }));
+    locala.duration = (System.currentTimeMillis() - l);
+    return locala;
   }
 }
 

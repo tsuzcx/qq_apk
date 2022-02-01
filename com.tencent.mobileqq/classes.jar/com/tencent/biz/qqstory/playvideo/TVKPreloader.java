@@ -13,6 +13,7 @@ import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper;
 import com.tencent.biz.qqstory.playvideo.player.VideoViewFactory;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
 import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
@@ -57,24 +58,26 @@ public class TVKPreloader
   
   public static int a(TVKPreloader.PreloadItem paramPreloadItem)
   {
-    int i = 1;
-    if (paramPreloadItem == null) {
-      throw new NullPointerException("preloadItem is null");
-    }
-    paramPreloadItem = new File(paramPreloadItem.c);
-    if (FileCacheUtils.a(paramPreloadItem)) {
-      return 1;
-    }
-    if ((paramPreloadItem.isFile()) && (paramPreloadItem.length() >= 409600L)) {}
-    while (i != 0)
+    if (paramPreloadItem != null)
     {
-      return 2;
-      i = 0;
+      paramPreloadItem = new File(paramPreloadItem.c);
+      boolean bool = FileCacheUtils.a(paramPreloadItem);
+      int i = 1;
+      if (bool) {
+        return 1;
+      }
+      if ((!paramPreloadItem.isFile()) || (paramPreloadItem.length() < 409600L)) {
+        i = 0;
+      }
+      if (i != 0) {
+        return 2;
+      }
+      if (paramPreloadItem.length() > 0L) {
+        return 3;
+      }
+      return 4;
     }
-    if (paramPreloadItem.length() > 0L) {
-      return 3;
-    }
-    return 4;
+    throw new NullPointerException("preloadItem is null");
   }
   
   private static TVK_ICacheMgr a()
@@ -92,27 +95,32 @@ public class TVKPreloader
       Object localObject1 = new ArrayList(jdField_a_of_type_JavaUtilQueue);
       jdField_a_of_type_JavaUtilQueue.clear();
       localObject1 = ((List)localObject1).iterator();
-      if (((Iterator)localObject1).hasNext())
+      while (((Iterator)localObject1).hasNext())
       {
         TVKPreloader.PreloadItem localPreloadItem = (TVKPreloader.PreloadItem)((Iterator)localObject1).next();
         jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.4(localPreloadItem));
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   public static void a(TVKPreloader.PreloadItem paramPreloadItem)
   {
-    if (paramPreloadItem == null) {
-      throw new IllegalArgumentException("item should not be null");
-    }
-    synchronized (jdField_a_of_type_JavaUtilQueue)
-    {
-      if (!jdField_a_of_type_JavaUtilQueue.contains(paramPreloadItem)) {
-        jdField_a_of_type_JavaUtilQueue.offer(paramPreloadItem);
+    if (paramPreloadItem != null) {
+      synchronized (jdField_a_of_type_JavaUtilQueue)
+      {
+        if (!jdField_a_of_type_JavaUtilQueue.contains(paramPreloadItem)) {
+          jdField_a_of_type_JavaUtilQueue.offer(paramPreloadItem);
+        }
+        b(false);
+        return;
       }
-      b(false);
-      return;
     }
+    throw new IllegalArgumentException("item should not be null");
   }
   
   public static void a(String paramString)
@@ -148,11 +156,16 @@ public class TVKPreloader
       jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem = null;
       jdField_a_of_type_JavaUtilQueue.clear();
       localObject2 = ((List)localObject2).iterator();
-      if (((Iterator)localObject2).hasNext())
+      while (((Iterator)localObject2).hasNext())
       {
         TVKPreloader.PreloadItem localPreloadItem = (TVKPreloader.PreloadItem)((Iterator)localObject2).next();
         jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.5(localPreloadItem));
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
   
@@ -166,102 +179,68 @@ public class TVKPreloader
     jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.10(paramPreloadItem));
   }
   
-  /* Error */
   private static void b(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: getstatic 27	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   3: astore_1
-    //   4: aload_1
-    //   5: monitorenter
-    //   6: iload_0
-    //   7: ifne +9 -> 16
-    //   10: getstatic 29	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
-    //   13: ifnonnull +45 -> 58
-    //   16: getstatic 27	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   19: invokeinterface 261 1 0
-    //   24: checkcast 79	com/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem
-    //   27: putstatic 29	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
-    //   30: getstatic 29	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
-    //   33: ifnull +22 -> 55
-    //   36: invokestatic 267	com/tribe/async/async/Bosses:get	()Lcom/tribe/async/async/Boss;
-    //   39: new 269	com/tencent/biz/qqstory/playvideo/TVKPreloader$6
-    //   42: dup
-    //   43: ldc_w 271
-    //   46: invokespecial 272	com/tencent/biz/qqstory/playvideo/TVKPreloader$6:<init>	(Ljava/lang/String;)V
-    //   49: invokeinterface 278 2 0
-    //   54: pop
-    //   55: aload_1
-    //   56: monitorexit
-    //   57: return
-    //   58: ldc_w 271
-    //   61: ldc_w 280
-    //   64: getstatic 29	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
-    //   67: invokestatic 285	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
-    //   70: goto -15 -> 55
-    //   73: astore_2
-    //   74: aload_1
-    //   75: monitorexit
-    //   76: aload_2
-    //   77: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	78	0	paramBoolean	boolean
-    //   3	72	1	localQueue	Queue
-    //   73	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   10	16	73	finally
-    //   16	55	73	finally
-    //   55	57	73	finally
-    //   58	70	73	finally
-    //   74	76	73	finally
+    Queue localQueue = jdField_a_of_type_JavaUtilQueue;
+    if (!paramBoolean) {}
+    try
+    {
+      if (jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem != null)
+      {
+        SLog.a("Q.qqstory.playernew.TVKPreloader", "triggerPreload, clearCurrentItem=false, sCurrentPreloadItem=%s", jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem);
+      }
+      else
+      {
+        jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem = (TVKPreloader.PreloadItem)jdField_a_of_type_JavaUtilQueue.poll();
+        if (jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem != null) {
+          Bosses.get().postJob(new TVKPreloader.6("Q.qqstory.playernew.TVKPreloader"));
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   private static void c(@NonNull TVKPreloader.PreloadItem paramPreloadItem)
   {
-    TVK_ICacheMgr localTVK_ICacheMgr;
-    switch (a(paramPreloadItem))
+    int i = a(paramPreloadItem);
+    if ((i != 1) && (i != 2))
     {
-    default: 
-      localTVK_ICacheMgr = a();
+      TVK_ICacheMgr localTVK_ICacheMgr = a();
       if (localTVK_ICacheMgr == null)
       {
         jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.8(paramPreloadItem));
         b(true);
         return;
       }
-      break;
-    case 1: 
-    case 2: 
-      jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.7(paramPreloadItem));
-      b(true);
-      return;
-    }
-    String[] arrayOfString = new String[1];
-    arrayOfString[0] = paramPreloadItem.b;
-    int i = ((Integer)((StoryConfigManager)SuperManager.a(10)).b("key_story_video_preload_duration", Integer.valueOf(2))).intValue();
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = StoryPlayerTVKWrapper.a(paramPreloadItem.a, paramPreloadItem.c);
-    localTVK_PlayerVideoInfo.setConfigMap("cache_duration", String.valueOf(i));
-    if (arrayOfString[0].contains("qqstocdnd"))
-    {
-      VideoServerInfoManager localVideoServerInfoManager = (VideoServerInfoManager)SuperManager.a(4);
-      String str = localVideoServerInfoManager.b();
-      if (!TextUtils.isEmpty(str))
+      String[] arrayOfString = new String[1];
+      arrayOfString[0] = paramPreloadItem.b;
+      i = ((Integer)((StoryConfigManager)SuperManager.a(10)).b("key_story_video_preload_duration", Integer.valueOf(2))).intValue();
+      TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = StoryPlayerTVKWrapper.a(paramPreloadItem.a, paramPreloadItem.c);
+      localTVK_PlayerVideoInfo.setConfigMap("cache_duration", String.valueOf(i));
+      if (arrayOfString[0].contains("qqstocdnd"))
       {
-        arrayOfString[0] = URLUtil.a(arrayOfString[0], "authkey", str);
-        b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramPreloadItem);
+        VideoServerInfoManager localVideoServerInfoManager = (VideoServerInfoManager)SuperManager.a(4);
+        String str = localVideoServerInfoManager.b();
+        if (!TextUtils.isEmpty(str))
+        {
+          arrayOfString[0] = URLUtil.a(arrayOfString[0], "authkey", str);
+          b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramPreloadItem);
+          return;
+        }
+        Bosses.get().postJob(new TVKPreloader.9("Q.qqstory.playernew.TVKPreloader", localVideoServerInfoManager, arrayOfString, i, paramPreloadItem, localTVK_ICacheMgr, localTVK_PlayerVideoInfo));
         return;
       }
-      Bosses.get().postJob(new TVKPreloader.9("Q.qqstory.playernew.TVKPreloader", localVideoServerInfoManager, arrayOfString, i, paramPreloadItem, localTVK_ICacheMgr, localTVK_PlayerVideoInfo));
+      b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramPreloadItem);
       return;
     }
-    b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramPreloadItem);
+    jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.7(paramPreloadItem));
+    b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.TVKPreloader
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,9 @@ class AVContextImpl$1
   
   public void run()
   {
-    if (this.val$event_listener != null) {
-      this.val$event_listener.onEnterRoomComplete(1004, "enter param is null");
+    AVRoomMulti.EventListener localEventListener = this.val$event_listener;
+    if (localEventListener != null) {
+      localEventListener.onEnterRoomComplete(1004, "enter param is null");
     }
   }
 }

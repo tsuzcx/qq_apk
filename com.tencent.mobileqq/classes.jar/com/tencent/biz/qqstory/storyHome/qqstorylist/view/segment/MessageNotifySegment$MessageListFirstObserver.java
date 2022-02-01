@@ -36,72 +36,73 @@ class MessageNotifySegment$MessageListFirstObserver
   
   public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list result, code=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("fetch message list result, code=");
+      paramBundle.append(paramInt);
+      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, paramBundle.toString());
     }
     MessageNotifySegment localMessageNotifySegment = (MessageNotifySegment)this.b.get();
     paramBundle = (ImageView)this.c.get();
-    if ((localMessageNotifySegment == null) || (paramBundle == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "weak reference null.");
-      }
-    }
-    do
+    if ((localMessageNotifySegment != null) && (paramBundle != null))
     {
-      for (;;)
-      {
-        return null;
-        if ((paramInt == 0) && (paramArrayOfByte != null)) {
-          try
+      if ((paramInt == 0) && (paramArrayOfByte != null)) {
+        try
+        {
+          Object localObject = new qqstory_710_message.RspStoryMessageList();
+          ((qqstory_710_message.RspStoryMessageList)localObject).mergeFrom(paramArrayOfByte);
+          if ((((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.has()) && (((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.get() == 0) && (((qqstory_710_message.RspStoryMessageList)localObject).message_num.get() > 0) && (!((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().isEmpty()))
           {
-            Object localObject = new qqstory_710_message.RspStoryMessageList();
-            ((qqstory_710_message.RspStoryMessageList)localObject).mergeFrom(paramArrayOfByte);
-            if ((((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.has()) && (((qqstory_710_message.RspStoryMessageList)localObject).errinfo.error_code.get() == 0) && (((qqstory_710_message.RspStoryMessageList)localObject).message_num.get() > 0) && (!((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().isEmpty()))
+            paramArrayOfByte = ((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().iterator();
+            while (paramArrayOfByte.hasNext())
             {
-              paramArrayOfByte = ((qqstory_710_message.RspStoryMessageList)localObject).message_list.get().iterator();
-              for (;;)
+              localObject = new MessageData((qqstory_710_message.StoryMessage)paramArrayOfByte.next());
+              if (((MessageData)localObject).d)
               {
-                if (paramArrayOfByte.hasNext())
+                paramArrayOfByte = ((MessageData)localObject).a;
+                if (QLog.isColorLevel())
                 {
-                  localObject = new MessageData((qqstory_710_message.StoryMessage)paramArrayOfByte.next());
-                  if (((MessageData)localObject).d)
-                  {
-                    paramArrayOfByte = ((MessageData)localObject).a;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "set bigV avatar from MessageData. unionId=" + paramArrayOfByte);
-                    }
-                    if (TextUtils.isEmpty(paramArrayOfByte)) {
-                      break;
-                    }
-                    PlayModeUtils.a(paramBundle, PlayModeUtils.b(paramArrayOfByte), true, (int)DisplayUtils.a(MessageNotifySegment.b(localMessageNotifySegment), 33.0F));
-                    return null;
-                  }
+                  localObject = new StringBuilder();
+                  ((StringBuilder)localObject).append("set bigV avatar from MessageData. unionId=");
+                  ((StringBuilder)localObject).append(paramArrayOfByte);
+                  QLog.d("Q.qqstory.home.MessageNotifySegment", 2, ((StringBuilder)localObject).toString());
                 }
+                if (!TextUtils.isEmpty(paramArrayOfByte)) {
+                  PlayModeUtils.a(paramBundle, PlayModeUtils.b(paramArrayOfByte), true, (int)DisplayUtils.a(MessageNotifySegment.b(localMessageNotifySegment), 33.0F));
+                }
+                return null;
               }
             }
           }
-          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "parse RspStoryMessageList error", paramArrayOfByte);
-            }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "parse RspStoryMessageList error", paramArrayOfByte);
           }
         }
       }
-      paramArrayOfByte = ImageUtil.c();
+      paramArrayOfByte = ImageUtil.e();
       QQStoryContext.a();
       paramArrayOfByte = FaceDrawable.getFaceDrawable(QQStoryContext.a(), 1, Long.toString(MessageNotifySegment.a(localMessageNotifySegment)), 3, paramArrayOfByte, paramArrayOfByte);
       if (paramArrayOfByte != null) {
         paramBundle.setImageDrawable(paramArrayOfByte);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list failed");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list failed");
+      }
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "weak reference null.");
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment.MessageListFirstObserver
  * JD-Core Version:    0.7.0.1
  */

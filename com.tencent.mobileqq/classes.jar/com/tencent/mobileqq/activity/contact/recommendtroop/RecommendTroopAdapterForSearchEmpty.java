@@ -3,7 +3,8 @@ package com.tencent.mobileqq.activity.contact.recommendtroop;
 import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.adapter.RecommendTroopAdapter;
+import com.tencent.mobileqq.troop.recommend.data.RecommendTroopItem;
 
 public class RecommendTroopAdapterForSearchEmpty
   extends RecommendTroopAdapter
@@ -45,7 +46,7 @@ public class RecommendTroopAdapterForSearchEmpty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.recommendtroop.RecommendTroopAdapterForSearchEmpty
  * JD-Core Version:    0.7.0.1
  */

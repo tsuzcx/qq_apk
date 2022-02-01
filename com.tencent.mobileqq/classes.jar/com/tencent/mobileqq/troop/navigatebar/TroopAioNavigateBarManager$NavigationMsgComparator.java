@@ -12,19 +12,19 @@ class TroopAioNavigateBarManager$NavigationMsgComparator
     {
       int i = 0;
       if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
-        i = -1;
+        return -1;
       }
-      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
-        return i;
+      if (paramTroopMessageNavigateInfo1.msgseq < paramTroopMessageNavigateInfo2.msgseq) {
+        i = 1;
       }
-      return 1;
+      return i;
     }
     return -(NavConstants.a(paramTroopMessageNavigateInfo1.type) - NavConstants.a(paramTroopMessageNavigateInfo2.type));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioNavigateBarManager.NavigationMsgComparator
  * JD-Core Version:    0.7.0.1
  */

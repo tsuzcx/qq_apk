@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.ITroopFileUploadWorkerListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.uftwrapper.QFileTroopTransferWrapper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.UUID;
 
@@ -12,7 +12,6 @@ class QFileMsgForwardManager$TroopUploadTaskExcuter
   private long jdField_a_of_type_Long;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private QFileMsgForwardManager.OnUploadCallback jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$OnUploadCallback;
-  private TroopFileUploadMgr.ITroopFileUploadWorkerListener jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadMgr$ITroopFileUploadWorkerListener = new QFileMsgForwardManager.TroopUploadTaskExcuter.1(this);
   private String jdField_a_of_type_JavaLangString;
   private UUID jdField_a_of_type_JavaUtilUUID;
   private boolean jdField_a_of_type_Boolean = false;
@@ -27,34 +26,49 @@ class QFileMsgForwardManager$TroopUploadTaskExcuter
     this.jdField_a_of_type_AndroidOsBundle = new Bundle();
     this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFilePath", this.jdField_b_of_type_JavaLangString);
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter begin filename " + this.jdField_a_of_type_JavaLangString);
+    paramQFileMsgForwardManager = new StringBuilder();
+    paramQFileMsgForwardManager.append("TroopUploadTaskExcuter begin filename ");
+    paramQFileMsgForwardManager.append(this.jdField_a_of_type_JavaLangString);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, paramQFileMsgForwardManager.toString());
   }
   
   void a(String paramString, int paramInt)
   {
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter stopped WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
+    paramString = new StringBuilder();
+    paramString.append("TroopUploadTaskExcuter stopped WorkerId[");
+    paramString.append(this.jdField_a_of_type_JavaUtilUUID);
+    paramString.append("] filename ");
+    paramString.append(this.jdField_a_of_type_JavaLangString);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
     this.jdField_a_of_type_Boolean = true;
-    TroopFileUploadMgr.a().a(this.jdField_a_of_type_JavaUtilUUID, null);
+    QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager).getFileManagerEngine().a().a(this.jdField_a_of_type_JavaUtilUUID);
   }
   
   void a(String paramString, int paramInt, QFileMsgForwardManager.OnUploadCallback paramOnUploadCallback)
   {
     if (paramOnUploadCallback == null)
     {
-      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run but callback is null filename " + this.jdField_a_of_type_JavaLangString);
+      paramString = new StringBuilder();
+      paramString.append("TroopUploadTaskExcuter run but callback is null filename ");
+      paramString.append(this.jdField_a_of_type_JavaLangString);
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$OnUploadCallback = paramOnUploadCallback;
     this.jdField_b_of_type_Long = Long.parseLong(paramString);
     this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", String.valueOf(this.jdField_b_of_type_Long));
-    this.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
-    TroopFileUploadMgr.a().a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadMgr$ITroopFileUploadWorkerListener);
+    this.jdField_a_of_type_JavaUtilUUID = QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager).getFileManagerEngine().a().a(this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, new QFileMsgForwardManager.TroopUploadTaskExcuter.1(this));
+    paramString = new StringBuilder();
+    paramString.append("TroopUploadTaskExcuter run WorkerId[");
+    paramString.append(this.jdField_a_of_type_JavaUtilUUID);
+    paramString.append("] filename ");
+    paramString.append(this.jdField_a_of_type_JavaLangString);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.TroopUploadTaskExcuter
  * JD-Core Version:    0.7.0.1
  */

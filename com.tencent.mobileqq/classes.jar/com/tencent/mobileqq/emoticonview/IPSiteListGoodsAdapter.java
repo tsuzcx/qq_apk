@@ -16,8 +16,6 @@ import android.widget.TextView;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.mobileqq.EmotionUtils;
 import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.emoticonview.api.IBigEmotionService;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.List;
@@ -47,11 +45,13 @@ public class IPSiteListGoodsAdapter
   
   public int getCount()
   {
-    if (this.mGoodsList != null)
+    List localList = this.mGoodsList;
+    if (localList != null)
     {
-      int i = this.mGoodsList.size();
-      if (i > MAX_ITEM_SIZE) {
-        return MAX_ITEM_SIZE + 1;
+      int i = localList.size();
+      int j = MAX_ITEM_SIZE;
+      if (i > j) {
+        return j + 1;
       }
       return i + 1;
     }
@@ -73,39 +73,46 @@ public class IPSiteListGoodsAdapter
     Object localObject3;
     Object localObject1;
     Object localObject2;
+    Object localObject4;
+    Object localObject5;
     if (paramInt < getCount() - 1)
     {
       localObject3 = (IPSiteModel.Goods)this.mGoodsList.get(paramInt);
       if (paramView == null)
       {
-        paramView = LayoutInflater.from(this.mContext).inflate(2131561741, null, false);
+        paramView = LayoutInflater.from(this.mContext).inflate(2131561600, null, false);
         localObject1 = new IPSiteListGoodsAdapter.Holder(this, null);
         ((IPSiteListGoodsAdapter.Holder)localObject1).itemLayout = ((RelativeLayout)paramView);
-        ((IPSiteListGoodsAdapter.Holder)localObject1).cover = ((ImageView)paramView.findViewById(2131362439));
-        ((IPSiteListGoodsAdapter.Holder)localObject1).title = ((TextView)paramView.findViewById(2131362440));
-        ((IPSiteListGoodsAdapter.Holder)localObject1).desc = ((TextView)paramView.findViewById(2131362438));
+        ((IPSiteListGoodsAdapter.Holder)localObject1).cover = ((ImageView)paramView.findViewById(2131362395));
+        ((IPSiteListGoodsAdapter.Holder)localObject1).title = ((TextView)paramView.findViewById(2131362396));
+        ((IPSiteListGoodsAdapter.Holder)localObject1).desc = ((TextView)paramView.findViewById(2131362394));
         paramView.setTag(localObject1);
-        localObject2 = paramView;
-        if (localObject3 != null)
-        {
-          ((IPSiteListGoodsAdapter.Holder)localObject1).cover.setImageDrawable(((IBigEmotionService)QRoute.api(IBigEmotionService.class)).getIPSiteDrawable(((IPSiteModel.Goods)localObject3).cover, this.mURLDrawableListener, this.mDefaultDrawable));
-          ((IPSiteListGoodsAdapter.Holder)localObject1).title.setText(((IPSiteModel.Goods)localObject3).name);
+      }
+      else
+      {
+        localObject1 = (IPSiteListGoodsAdapter.Holder)paramView.getTag();
+      }
+      localObject2 = paramView;
+      if (localObject3 != null)
+      {
+        ((IPSiteListGoodsAdapter.Holder)localObject1).cover.setImageDrawable(IPSiteUtil.getIPSiteDrawable(((IPSiteModel.Goods)localObject3).cover, this.mURLDrawableListener, this.mDefaultDrawable));
+        ((IPSiteListGoodsAdapter.Holder)localObject1).title.setText(((IPSiteModel.Goods)localObject3).name);
+        if (!TextUtils.isEmpty(((IPSiteModel.Goods)localObject3).saleNum)) {
+          localObject2 = ((IPSiteModel.Goods)localObject3).saleNum;
+        } else {
           localObject2 = "0";
-          if (!TextUtils.isEmpty(((IPSiteModel.Goods)localObject3).saleNum)) {
-            localObject2 = ((IPSiteModel.Goods)localObject3).saleNum;
-          }
-          ((IPSiteListGoodsAdapter.Holder)localObject1).desc.setText((String)localObject2 + this.mContext.getString(2131699603));
-          ((IPSiteListGoodsAdapter.Holder)localObject1).itemLayout.setOnClickListener(new IPSiteListGoodsAdapter.1(this, (IPSiteModel.Goods)localObject3));
-          localObject2 = paramView;
         }
+        localObject4 = ((IPSiteListGoodsAdapter.Holder)localObject1).desc;
+        localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append((String)localObject2);
+        ((StringBuilder)localObject5).append(this.mContext.getString(2131699711));
+        ((TextView)localObject4).setText(((StringBuilder)localObject5).toString());
+        ((IPSiteListGoodsAdapter.Holder)localObject1).itemLayout.setOnClickListener(new IPSiteListGoodsAdapter.1(this, (IPSiteModel.Goods)localObject3));
+        localObject2 = paramView;
       }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject2, paramViewGroup, getItemId(paramInt));
-      return localObject2;
-      localObject1 = (IPSiteListGoodsAdapter.Holder)paramView.getTag();
-      break;
       paramView = (IPSiteModel.Goods)this.mGoodsList.get(0);
       localObject2 = new RelativeLayout(this.mContext);
       ((RelativeLayout)localObject2).setBackgroundColor(Color.parseColor("#fafafa"));
@@ -119,28 +126,30 @@ public class IPSiteListGoodsAdapter
       ((RelativeLayout.LayoutParams)localObject3).addRule(14);
       ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
       localObject3 = new TextView(this.mContext);
-      ((TextView)localObject3).setId(2131362448);
+      ((TextView)localObject3).setId(2131362404);
       ((TextView)localObject3).setTextSize(12.0F);
       ((TextView)localObject3).setTextColor(Color.parseColor("#777777"));
-      ((TextView)localObject3).setText(this.mContext.getString(2131699620));
+      ((TextView)localObject3).setText(this.mContext.getString(2131699737));
       ((TextView)localObject3).setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
-      ImageView localImageView = new ImageView(this.mContext);
-      localImageView.setImageResource(2130846566);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(1, 2131362448);
-      localLayoutParams.addRule(15);
-      localLayoutParams.leftMargin = EmotionUtils.a(2.0F, this.mContext.getResources());
-      localImageView.setLayoutParams(localLayoutParams);
+      localObject4 = new ImageView(this.mContext);
+      ((ImageView)localObject4).setImageResource(2130846444);
+      localObject5 = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject5).addRule(1, 2131362404);
+      ((RelativeLayout.LayoutParams)localObject5).addRule(15);
+      ((RelativeLayout.LayoutParams)localObject5).leftMargin = EmotionUtils.a(2.0F, this.mContext.getResources());
+      ((ImageView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
       ((RelativeLayout)localObject1).addView((View)localObject3);
-      ((RelativeLayout)localObject1).addView(localImageView);
+      ((RelativeLayout)localObject1).addView((View)localObject4);
       ((RelativeLayout)localObject2).addView((View)localObject1);
       ((RelativeLayout)localObject2).setOnClickListener(new IPSiteListGoodsAdapter.2(this, paramView));
     }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject2, paramViewGroup, getItemId(paramInt));
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.IPSiteListGoodsAdapter
  * JD-Core Version:    0.7.0.1
  */

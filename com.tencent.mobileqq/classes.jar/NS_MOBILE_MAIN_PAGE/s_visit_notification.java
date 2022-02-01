@@ -46,23 +46,26 @@ public final class s_visit_notification
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 0);
+    Object localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.user_type, 1);
     paramJceOutputStream.write(this.state, 2);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 3);
+    localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.time, 4);
-    if (this.contentkey != null) {
-      paramJceOutputStream.write(this.contentkey, 5);
+    localObject = this.contentkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_visit_notification
  * JD-Core Version:    0.7.0.1
  */

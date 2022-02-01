@@ -3,7 +3,7 @@ package com.tencent.tavsticker.model;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
-final class TAVStickerShapeItem$1
+class TAVStickerShapeItem$1
   implements Parcelable.Creator<TAVStickerShapeItem>
 {
   public TAVStickerShapeItem createFromParcel(Parcel paramParcel)
@@ -18,7 +18,7 @@ final class TAVStickerShapeItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerShapeItem.1
  * JD-Core Version:    0.7.0.1
  */

@@ -52,7 +52,14 @@ public class ApolloVideoEncoder
     this.jdField_b_of_type_Boolean = false;
     this.f = paramInt1;
     this.g = paramInt2;
-    QLog.i("ApolloVideoEncoder", 1, "ApolloVideoEncoder ver1.0, " + Build.BRAND + ", " + Build.MODEL + ", " + Build.VERSION.SDK_INT);
+    paramList = new StringBuilder();
+    paramList.append("ApolloVideoEncoder ver1.1, ");
+    paramList.append(Build.BRAND);
+    paramList.append(", ");
+    paramList.append(Build.MODEL);
+    paramList.append(", ");
+    paramList.append(Build.VERSION.SDK_INT);
+    QLog.i("[cmshow]ApolloVideoEncoder", 1, paramList.toString());
   }
   
   private int a(int paramInt)
@@ -62,15 +69,16 @@ public class ApolloVideoEncoder
   
   private long a(long paramLong)
   {
-    return (100.0F + (float)(1000000L * paramLong / this.jdField_a_of_type_Int) * 1.8F);
+    return ((float)(paramLong * 1000000L / this.jdField_a_of_type_Int) * 1.8F + 100.0F);
   }
   
   private Bitmap a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList.isEmpty()) || (this.c >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      if (this.c >= this.jdField_a_of_type_JavaUtilList.size()) {
+        return null;
+      }
     }
-    label261:
     for (;;)
     {
       try
@@ -79,45 +87,55 @@ public class ApolloVideoEncoder
         Object localObject1 = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject1).inPreferredConfig = Bitmap.Config.ARGB_8888;
         Bitmap localBitmap = BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject1);
-        localObject1 = new StringBuilder().append("getNextBitmap ").append(this.c).append(", ").append(str).append(": ");
-        if (localBitmap == null)
-        {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getNextBitmap ");
+        ((StringBuilder)localObject1).append(this.c);
+        ((StringBuilder)localObject1).append(", ");
+        ((StringBuilder)localObject1).append(str);
+        ((StringBuilder)localObject1).append(": ");
+        int j = 0;
+        int i;
+        if (localBitmap == null) {
           i = 0;
-          QLog.d("ApolloVideoEncoder", 4, i);
-          this.c += 1;
-          if (localBitmap == null) {
-            break label261;
-          }
-          Object localObject3 = Bitmap.createScaledBitmap(localBitmap, this.f, this.g, true);
-          localObject1 = localObject3;
-          if (localBitmap != localObject3)
-          {
-            localBitmap.recycle();
-            localObject1 = localObject3;
-          }
-          localObject3 = new StringBuilder().append("getNextBitmap ").append(this.c).append(", ").append(str).append(": ");
-          if (localObject1 == null)
-          {
-            i = 0;
-            QLog.d("ApolloVideoEncoder", 4, i);
-            return localObject1;
-          }
-        }
-        else
-        {
+        } else {
           i = localBitmap.getByteCount();
-          continue;
         }
-        int i = ((Bitmap)localObject1).getByteCount();
-        continue;
-        Object localObject2 = null;
+        ((StringBuilder)localObject1).append(i);
+        QLog.d("[cmshow]ApolloVideoEncoder", 4, ((StringBuilder)localObject1).toString());
+        this.c += 1;
+        if (localBitmap == null) {
+          break label302;
+        }
+        Object localObject3 = Bitmap.createScaledBitmap(localBitmap, this.f, this.g, true);
+        localObject1 = localObject3;
+        if (localBitmap != localObject3)
+        {
+          localBitmap.recycle();
+          localObject1 = localObject3;
+        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("getNextBitmap ");
+        ((StringBuilder)localObject3).append(this.c);
+        ((StringBuilder)localObject3).append(", ");
+        ((StringBuilder)localObject3).append(str);
+        ((StringBuilder)localObject3).append(": ");
+        if (localObject1 == null) {
+          i = j;
+        } else {
+          i = ((Bitmap)localObject1).getByteCount();
+        }
+        ((StringBuilder)localObject3).append(i);
+        QLog.d("[cmshow]ApolloVideoEncoder", 4, ((StringBuilder)localObject3).toString());
+        return localObject1;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        QLog.e("ApolloVideoEncoder", 2, "getNextBitmap error", localOutOfMemoryError);
+        QLog.e("[cmshow]ApolloVideoEncoder", 2, "getNextBitmap error", localOutOfMemoryError);
         System.gc();
-        return null;
       }
+      return null;
+      label302:
+      Object localObject2 = null;
     }
   }
   
@@ -133,271 +151,318 @@ public class ApolloVideoEncoder
   
   private void a(boolean paramBoolean, MediaCodec.BufferInfo paramBufferInfo)
   {
-    for (;;)
+    localObject1 = null;
+    label361:
+    do
     {
-      ByteBuffer[] arrayOfByteBuffer;
-      int i;
       try
       {
-        if (Build.VERSION.SDK_INT > 21) {
-          break label468;
+        if (Build.VERSION.SDK_INT <= 21) {
+          localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
         }
-        arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-        if (paramBoolean) {}
-        try
+        if (paramBoolean) {
+          try
+          {
+            this.jdField_a_of_type_AndroidMediaMediaCodec.signalEndOfInputStream();
+          }
+          catch (Exception localException1)
+          {
+            localException1.printStackTrace();
+          }
+        }
+        for (;;)
         {
-          this.jdField_a_of_type_AndroidMediaMediaCodec.signalEndOfInputStream();
           i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
-          if (i != -1) {
-            break label109;
+          if (i == -1)
+          {
+            if (!paramBoolean) {
+              return;
+            }
+            QLog.i("[cmshow]ApolloVideoEncoder", 4, "no output available, spinning to await EOS");
           }
-          if (!paramBoolean) {
-            return;
+          else if (i == -2)
+          {
+            if (!this.jdField_b_of_type_Boolean)
+            {
+              localObject2 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+              this.d = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject2);
+              this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
+              this.jdField_b_of_type_Boolean = true;
+            }
+            else
+            {
+              throw new RuntimeException("format changed twice");
+            }
+          }
+          else
+          {
+            if (i >= 0) {
+              break;
+            }
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("unexpected result from encoder.dequeueOutputBuffer: ");
+            ((StringBuilder)localObject2).append(i);
+            QLog.i("[cmshow]ApolloVideoEncoder", 4, ((StringBuilder)localObject2).toString());
           }
         }
-        catch (Exception localException1)
+        if (Build.VERSION.SDK_INT <= 21) {
+          localObject2 = localObject1[i];
+        } else {
+          localObject2 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffer(i);
+        }
+        if (localObject2 != null)
         {
-          localException1.printStackTrace();
-          continue;
+          if ((paramBufferInfo.flags & 0x2) != 0)
+          {
+            QLog.d("[cmshow]ApolloVideoEncoder", 4, "ignoring BUFFER_FLAG_CODEC_CONFIG");
+            paramBufferInfo.size = 0;
+          }
+          if (paramBufferInfo.size != 0) {
+            if (this.jdField_b_of_type_Boolean)
+            {
+              ((ByteBuffer)localObject2).position(paramBufferInfo.offset);
+              ((ByteBuffer)localObject2).limit(paramBufferInfo.offset + paramBufferInfo.size);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("BufferInfo: ");
+              localStringBuilder.append(paramBufferInfo.offset);
+              localStringBuilder.append(", ");
+              localStringBuilder.append(paramBufferInfo.size);
+              localStringBuilder.append(", ");
+              localStringBuilder.append(paramBufferInfo.presentationTimeUs);
+              QLog.d("[cmshow]ApolloVideoEncoder", 4, localStringBuilder.toString());
+            }
+          }
         }
-        QLog.i("ApolloVideoEncoder", 4, "no output available, spinning to await EOS");
       }
       catch (Exception paramBufferInfo)
       {
-        QLog.i("ApolloVideoEncoder", 1, "drainEncoder error: " + paramBufferInfo.getMessage(), paramBufferInfo);
+        int i;
+        Object localObject2;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("drainEncoder error: ");
+        ((StringBuilder)localObject1).append(paramBufferInfo.getMessage());
+        QLog.i("[cmshow]ApolloVideoEncoder", 1, ((StringBuilder)localObject1).toString(), paramBufferInfo);
         a(3, "");
         return;
       }
-      continue;
-      label109:
-      Object localObject;
-      if (i == -2)
+      try
       {
-        if (this.jdField_b_of_type_Boolean) {
-          throw new RuntimeException("format changed twice");
-        }
-        localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-        this.d = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject);
-        this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
-        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.d, (ByteBuffer)localObject2, paramBufferInfo);
       }
-      else if (i < 0)
+      catch (Exception localException2)
       {
-        QLog.i("ApolloVideoEncoder", 4, "unexpected result from encoder.dequeueOutputBuffer: " + i);
+        break label361;
       }
-      else
-      {
-        if (Build.VERSION.SDK_INT <= 21) {}
-        for (localObject = arrayOfByteBuffer[i]; localObject == null; localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffer(i)) {
-          throw new RuntimeException("encoderOutputBuffer " + i + " was null");
-        }
-        if ((paramBufferInfo.flags & 0x2) != 0)
-        {
-          QLog.d("ApolloVideoEncoder", 4, "ignoring BUFFER_FLAG_CODEC_CONFIG");
-          paramBufferInfo.size = 0;
-        }
-        if (paramBufferInfo.size != 0)
-        {
-          if (!this.jdField_b_of_type_Boolean) {
-            throw new RuntimeException("muxer hasn't started");
-          }
-          ((ByteBuffer)localObject).position(paramBufferInfo.offset);
-          ((ByteBuffer)localObject).limit(paramBufferInfo.offset + paramBufferInfo.size);
-          QLog.d("ApolloVideoEncoder", 4, "BufferInfo: " + paramBufferInfo.offset + ", " + paramBufferInfo.size + ", " + paramBufferInfo.presentationTimeUs);
-        }
-        try
-        {
-          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.d, (ByteBuffer)localObject, paramBufferInfo);
-          this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(i, false);
-          if ((paramBufferInfo.flags & 0x4) == 0) {
-            continue;
-          }
-          if (!paramBoolean)
-          {
-            QLog.i("ApolloVideoEncoder", 1, "reached end of stream unexpectedly");
-            a(1, "");
-            return;
-          }
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            QLog.i("ApolloVideoEncoder", 4, "Too many frames");
-          }
-          QLog.i("ApolloVideoEncoder", 1, "end of stream reached");
-          return;
-        }
-        label468:
-        arrayOfByteBuffer = null;
-      }
+      QLog.i("[cmshow]ApolloVideoEncoder", 4, "Too many frames");
+      break label384;
+      throw new RuntimeException("muxer hasn't started");
+      this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(i, false);
+    } while ((paramBufferInfo.flags & 0x4) == 0);
+    label384:
+    if (!paramBoolean)
+    {
+      QLog.i("[cmshow]ApolloVideoEncoder", 1, "reached end of stream unexpectedly");
+      a(1, "");
+      return;
     }
+    QLog.i("[cmshow]ApolloVideoEncoder", 1, "end of stream reached");
+    return;
+    paramBufferInfo = new StringBuilder();
+    paramBufferInfo.append("encoderOutputBuffer ");
+    paramBufferInfo.append(i);
+    paramBufferInfo.append(" was null");
+    throw new RuntimeException(paramBufferInfo.toString());
   }
   
   private boolean a(int paramInt1, int paramInt2)
   {
-    int i = this.jdField_b_of_type_Int;
-    if (this.jdField_b_of_type_Int == 0) {
+    int j = this.jdField_b_of_type_Int;
+    int i = j;
+    if (j == 0) {
       i = paramInt1 * paramInt2;
     }
-    QLog.i("ApolloVideoEncoder", 1, "bitrate = " + i);
-    Object localObject = a();
-    int k = localObject.length;
-    int j = 0;
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("bitrate = ");
+    ((StringBuilder)localObject).append(i);
+    QLog.i("[cmshow]ApolloVideoEncoder", 1, ((StringBuilder)localObject).toString());
+    localObject = a();
+    if (localObject == null)
     {
-      int m;
-      if (j < k)
+      QLog.e("[cmshow]ApolloVideoEncoder", 1, "getMediaCodecList returns null");
+      return false;
+    }
+    int k = localObject.length;
+    j = 0;
+    while (j < k)
+    {
+      int m = localObject[j];
+      if (m != 39)
       {
-        m = localObject[j];
         switch (m)
         {
+        default: 
+          break;
+        case 21: 
+          QLog.i("[cmshow]ApolloVideoEncoder", 2, "COLOR_FormatYUV420SemiPlanar");
+          this.e = m;
+          break;
+        case 20: 
+          QLog.i("[cmshow]ApolloVideoEncoder", 2, "COLOR_FormatYUV420PackedPlanar");
+          this.e = m;
+          break;
+        case 19: 
+          QLog.i("[cmshow]ApolloVideoEncoder", 2, "COLOR_FormatYUV420Planar");
+          this.e = m;
+          break;
         }
       }
-      while (this.e > 0)
+      else
       {
-        if (this.e <= 0) {
-          this.e = 21;
-        }
-        localObject = MediaFormat.createVideoFormat("video/avc", paramInt1, paramInt2);
-        ((MediaFormat)localObject).setInteger("color-format", this.e);
-        ((MediaFormat)localObject).setInteger("bitrate", i);
-        ((MediaFormat)localObject).setInteger("frame-rate", this.jdField_a_of_type_Int);
-        ((MediaFormat)localObject).setInteger("i-frame-interval", 0);
-        try
-        {
-          this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("video/avc");
-          this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 0);
-          this.jdField_a_of_type_AndroidMediaMediaCodec.configure((MediaFormat)localObject, null, null, 1);
-          this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-          this.jdField_a_of_type_Boolean = true;
-          return true;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("ApolloVideoEncoder", 1, "init error video/avc, " + this.e, localException);
-          a(4, "");
-        }
-        QLog.i("ApolloVideoEncoder", 2, "COLOR_FormatYUV420SemiPlanar");
+        QLog.i("[cmshow]ApolloVideoEncoder", 2, "COLOR_FormatYUV420PackedSemiPlanar");
         this.e = m;
-        continue;
-        QLog.i("ApolloVideoEncoder", 2, "COLOR_FormatYUV420Planar");
-        this.e = m;
-        continue;
-        QLog.i("ApolloVideoEncoder", 2, "COLOR_FormatYUV420PackedSemiPlanar");
-        this.e = m;
-        continue;
-        QLog.i("ApolloVideoEncoder", 2, "COLOR_FormatYUV420PackedPlanar");
-        this.e = m;
+      }
+      if (this.e > 0) {
+        break;
       }
       j += 1;
+    }
+    if (this.e <= 0) {
+      this.e = 21;
+    }
+    localObject = MediaFormat.createVideoFormat("video/avc", paramInt1, paramInt2);
+    ((MediaFormat)localObject).setInteger("color-format", this.e);
+    ((MediaFormat)localObject).setInteger("bitrate", i);
+    ((MediaFormat)localObject).setInteger("frame-rate", this.jdField_a_of_type_Int);
+    ((MediaFormat)localObject).setInteger("i-frame-interval", 0);
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("video/avc");
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), 0);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.configure((MediaFormat)localObject, null, null, 1);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+      this.jdField_a_of_type_Boolean = true;
+      return true;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init error video/avc, ");
+      localStringBuilder.append(this.e);
+      QLog.e("[cmshow]ApolloVideoEncoder", 1, localStringBuilder.toString(), localException);
+      a(4, "");
     }
     return false;
   }
   
   private byte[] a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    int[] arrayOfInt;
+    int i = paramInt1 * paramInt2;
     try
     {
-      arrayOfInt = new int[paramInt1 * paramInt2];
+      int[] arrayOfInt = new int[i];
       paramBitmap.getPixels(arrayOfInt, 0, paramInt1, 0, 0, paramInt1, paramInt2);
-      paramBitmap = new byte[paramInt1 * paramInt2 * 3 / 2];
-      QLog.d("ApolloVideoEncoder", 4, "getNV12 " + this.e);
-      switch (this.e)
+      paramBitmap = new byte[i * 3 / 2];
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNV12 ");
+      localStringBuilder.append(this.e);
+      QLog.d("[cmshow]ApolloVideoEncoder", 4, localStringBuilder.toString());
+      i = this.e;
+      if (i != 39) {}
+      switch (i)
       {
       case 21: 
         ApolloVideoUtils.a(paramBitmap, arrayOfInt, paramInt1, paramInt2);
+        return paramBitmap;
+      case 20: 
+        ApolloVideoUtils.d(paramBitmap, arrayOfInt, paramInt1, paramInt2);
+        return paramBitmap;
+      case 19: 
+        ApolloVideoUtils.b(paramBitmap, arrayOfInt, paramInt1, paramInt2);
+        return paramBitmap;
+        ApolloVideoUtils.c(paramBitmap, arrayOfInt, paramInt1, paramInt2);
         return paramBitmap;
       }
     }
     catch (OutOfMemoryError paramBitmap)
     {
-      QLog.e("ApolloVideoEncoder", 1, "getNV12 OOM", paramBitmap);
+      QLog.e("[cmshow]ApolloVideoEncoder", 1, "getNV12 OOM", paramBitmap);
       System.gc();
       return null;
     }
-    ApolloVideoUtils.b(paramBitmap, arrayOfInt, paramInt1, paramInt2);
-    return paramBitmap;
-    ApolloVideoUtils.c(paramBitmap, arrayOfInt, paramInt1, paramInt2);
-    return paramBitmap;
-    ApolloVideoUtils.d(paramBitmap, arrayOfInt, paramInt1, paramInt2);
-    return paramBitmap;
     return paramBitmap;
   }
   
   private void c()
   {
-    if ((this.jdField_a_of_type_AndroidMediaMediaCodec == null) || (this.jdField_a_of_type_AndroidMediaMediaMuxer == null))
+    if ((this.jdField_a_of_type_AndroidMediaMediaCodec != null) && (this.jdField_a_of_type_AndroidMediaMediaMuxer != null))
     {
-      QLog.e("ApolloVideoEncoder", 1, "doStart exits due to codec or muxer null: " + this.jdField_a_of_type_AndroidMediaMediaCodec + ", " + this.jdField_a_of_type_AndroidMediaMediaMuxer);
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
-    ByteBuffer[] arrayOfByteBuffer;
-    long l1;
-    if (Build.VERSION.SDK_INT <= 21)
-    {
-      arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-      l1 = 0L;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Boolean)
+      this.jdField_a_of_type_Boolean = true;
+      long l1 = 0L;
+      MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
+      Object localObject1 = null;
+      if (Build.VERSION.SDK_INT <= 21) {
+        localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
+      }
+      while (this.jdField_a_of_type_Boolean)
       {
         int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
-        QLog.d("ApolloVideoEncoder", 4, "run " + i);
-        long l2;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("run ");
+        ((StringBuilder)localObject2).append(i);
+        QLog.d("[cmshow]ApolloVideoEncoder", 4, ((StringBuilder)localObject2).toString());
         if (i >= 0)
         {
-          l2 = a(l1);
+          long l2 = a(l1);
           if (l1 >= this.jdField_a_of_type_JavaUtilList.size())
           {
             this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, l2, 4);
             this.jdField_a_of_type_Boolean = false;
             a(true, localBufferInfo);
-            l1 += 1L;
           }
-        }
-        for (;;)
-        {
-          break;
-          Bitmap localBitmap = a();
-          Object localObject3 = "";
-          int j = this.c - 1;
-          Object localObject2 = localObject3;
-          if (j < this.jdField_a_of_type_JavaUtilList.size())
+          else
           {
-            localObject2 = localObject3;
-            if (j >= 0) {
+            Bitmap localBitmap = a();
+            int j = this.c - 1;
+            if ((j < this.jdField_a_of_type_JavaUtilList.size()) && (j >= 0)) {
               localObject2 = (String)this.jdField_a_of_type_JavaUtilList.get(j);
+            } else {
+              localObject2 = "";
             }
-          }
-          if (localBitmap == null)
-          {
-            QLog.e("ApolloVideoEncoder", 1, "getNextBitmap returns null: " + (String)localObject2);
-            a(2, "");
-            return;
-          }
-          localObject3 = a(a(localBitmap.getWidth()), a(localBitmap.getHeight()), localBitmap);
-          localBitmap.recycle();
-          if (localObject3 == null)
-          {
-            QLog.e("ApolloVideoEncoder", 1, "getNV12 returns null: " + (String)localObject2);
-            a(6, "");
-            return;
-          }
-          if (Build.VERSION.SDK_INT <= 21) {}
-          for (localObject2 = arrayOfByteBuffer[i];; localObject2 = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffer(i))
-          {
+            if (localBitmap == null)
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("getNextBitmap returns null: ");
+              ((StringBuilder)localObject1).append((String)localObject2);
+              QLog.e("[cmshow]ApolloVideoEncoder", 1, ((StringBuilder)localObject1).toString());
+              a(2, "");
+              return;
+            }
+            byte[] arrayOfByte = a(a(localBitmap.getWidth()), a(localBitmap.getHeight()), localBitmap);
+            localBitmap.recycle();
+            if (arrayOfByte == null)
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("getNV12 returns null: ");
+              ((StringBuilder)localObject1).append((String)localObject2);
+              QLog.e("[cmshow]ApolloVideoEncoder", 1, ((StringBuilder)localObject1).toString());
+              a(6, "");
+              return;
+            }
+            if (Build.VERSION.SDK_INT <= 21) {
+              localObject2 = localObject1[i];
+            } else {
+              localObject2 = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffer(i);
+            }
             ((ByteBuffer)localObject2).clear();
-            ((ByteBuffer)localObject2).put((byte[])localObject3);
-            this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, localObject3.length, l2, 0);
+            ((ByteBuffer)localObject2).put(arrayOfByte);
+            this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, arrayOfByte.length, l2, 0);
             a(false, localBufferInfo);
-            break;
           }
-          QLog.i("ApolloVideoEncoder", 4, "input buffer not available");
+          l1 += 1L;
+        }
+        else
+        {
+          QLog.i("[cmshow]ApolloVideoEncoder", 4, "input buffer not available");
           try
           {
             Thread.sleep(50L);
@@ -408,32 +473,42 @@ public class ApolloVideoEncoder
           }
         }
       }
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {}
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.flush();
-        a(0, this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        return;
+      localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec;
+      if (localObject1 != null) {
+        try
+        {
+          ((MediaCodec)localObject1).flush();
+        }
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("flush error: ");
+          localStringBuilder2.append(localException.getMessage());
+          QLog.e("[cmshow]ApolloVideoEncoder", 1, localStringBuilder2.toString(), localException);
+          a(5, "");
+          return;
+        }
       }
-      catch (Exception localException)
-      {
-        QLog.e("ApolloVideoEncoder", 1, "flush error: " + localException.getMessage(), localException);
-        a(5, "");
-        return;
-      }
-      Object localObject1 = null;
-      l1 = 0L;
+      a(0, this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+      return;
     }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("doStart exits due to codec or muxer null: ");
+    localStringBuilder1.append(this.jdField_a_of_type_AndroidMediaMediaCodec);
+    localStringBuilder1.append(", ");
+    localStringBuilder1.append(this.jdField_a_of_type_AndroidMediaMediaMuxer);
+    QLog.e("[cmshow]ApolloVideoEncoder", 1, localStringBuilder1.toString());
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_JavaIoFile == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaIoFile.getAbsolutePath())))
+    File localFile = this.jdField_a_of_type_JavaIoFile;
+    if ((localFile != null) && (!TextUtils.isEmpty(localFile.getAbsolutePath())))
     {
-      QLog.e("ApolloVideoEncoder", 1, "cannot start due to empty output path");
+      ThreadManager.getSubThreadHandler().post(new ApolloVideoEncoder.1(this));
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new ApolloVideoEncoder.1(this));
+    QLog.e("[cmshow]ApolloVideoEncoder", 1, "cannot start due to empty output path");
   }
   
   public void a(ApolloVideoEncoder.OnEncodeFinishListener paramOnEncodeFinishListener)
@@ -447,74 +522,86 @@ public class ApolloVideoEncoder
     Object localObject1 = null;
     int i = 0;
     Object localObject2;
-    if ((i < k) && (localObject1 == null))
+    Object localObject3;
+    while ((i < k) && (localObject1 == null))
     {
       localObject2 = MediaCodecList.getCodecInfoAt(i);
-      if (((MediaCodecInfo)localObject2).isEncoder()) {}
-    }
-    label138:
-    for (;;)
-    {
-      i += 1;
-      break;
-      String[] arrayOfString = ((MediaCodecInfo)localObject2).getSupportedTypes();
-      int j = 0;
-      label49:
-      if (j < arrayOfString.length) {
-        if (!arrayOfString[j].equals("video/avc")) {}
-      }
-      for (j = 1;; j = 0)
+      if (((MediaCodecInfo)localObject2).isEncoder())
       {
-        if (j == 0) {
-          break label138;
+        localObject3 = ((MediaCodecInfo)localObject2).getSupportedTypes();
+        int j = 0;
+        while (j < localObject3.length)
+        {
+          if (localObject3[j].equals("video/avc"))
+          {
+            j = 1;
+            break label79;
+          }
+          j += 1;
         }
-        localObject1 = localObject2;
-        break;
-        j += 1;
-        break label49;
-        localObject2 = localObject1.getCapabilitiesForType("video/avc");
-        QLog.d("ApolloVideoEncoder", 4, "getMediaCodecList " + localObject1.getName());
-        return ((MediaCodecInfo.CodecCapabilities)localObject2).colorFormats;
+        j = 0;
+        label79:
+        if (j != 0) {
+          localObject1 = localObject2;
+        }
       }
+      i += 1;
     }
+    if (localObject1 != null)
+    {
+      localObject2 = localObject1.getCapabilitiesForType("video/avc");
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("getMediaCodecList ");
+      ((StringBuilder)localObject3).append(localObject1.getName());
+      QLog.d("[cmshow]ApolloVideoEncoder", 4, ((StringBuilder)localObject3).toString());
+      return ((MediaCodecInfo.CodecCapabilities)localObject2).colorFormats;
+    }
+    return null;
   }
   
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      if (this.jdField_a_of_type_AndroidMediaMediaMuxer == null) {}
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
+    MediaCodec localMediaCodec = this.jdField_a_of_type_AndroidMediaMediaCodec;
+    StringBuilder localStringBuilder;
+    if (localMediaCodec != null) {
+      try
       {
-        try
+        localMediaCodec.stop();
+        this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+      }
+      catch (Exception localException1)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("finish media codec error: ");
+        localStringBuilder.append(localException1.getMessage());
+        QLog.e("[cmshow]ApolloVideoEncoder", 1, localStringBuilder.toString(), localException1);
+      }
+    }
+    MediaMuxer localMediaMuxer = this.jdField_a_of_type_AndroidMediaMediaMuxer;
+    if (localMediaMuxer != null) {
+      try
+      {
+        if (this.jdField_b_of_type_Boolean)
         {
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_a_of_type_AndroidMediaMediaMuxer.stop();
-            this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
-          }
+          localMediaMuxer.stop();
+          this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
           return;
         }
-        catch (Exception localException2)
-        {
-          QLog.e("ApolloVideoEncoder", 1, "finish media muxer error: " + localException2.getMessage(), localException2);
-        }
-        localException1 = localException1;
-        QLog.e("ApolloVideoEncoder", 1, "finish media codec error: " + localException1.getMessage(), localException1);
+      }
+      catch (Exception localException2)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("finish media muxer error: ");
+        localStringBuilder.append(localException2.getMessage());
+        QLog.e("[cmshow]ApolloVideoEncoder", 1, localStringBuilder.toString(), localException2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,6 @@ import mqq.os.MqqHandler;
 class SwiftBrowserTBSHandler$8
   implements URLDrawable.URLDrawableListener
 {
-  SwiftBrowserTBSHandler$8(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
-  
   public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
@@ -22,7 +20,7 @@ class SwiftBrowserTBSHandler$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.8
  * JD-Core Version:    0.7.0.1
  */

@@ -62,85 +62,89 @@ public class LivePusherEmbeddedWidgetClient
   
   private File copyFile(String paramString1, String paramString2)
   {
-    File localFile1 = new File(paramString2);
-    Object localObject2 = localFile1;
-    if (!localFile1.exists())
+    Object localObject1 = new File(paramString2);
+    Object localObject2 = localObject1;
+    String str;
+    if (!((File)localObject1).exists())
     {
-      localObject2 = localFile1;
+      localObject2 = localObject1;
       if (!TextUtils.isEmpty(paramString1))
       {
         QMLog.e("miniapp-embedded-live-pusher", "file no exists, try to copy again.");
-        Object localObject1 = localFile1;
         try
         {
-          File localFile2 = new File(paramString1);
-          localObject1 = localFile1;
-          localObject2 = localFile1;
-          if (localFile2.exists())
-          {
-            localObject1 = localFile1;
-            localObject2 = localFile1;
-            if (localFile2.isFile())
-            {
-              localObject1 = localFile1;
-              localObject2 = localFile1;
-              if (localFile2.length() > 0L)
-              {
-                localObject1 = localFile1;
-                QMLog.w("miniapp-embedded-live-pusher", "download Succeed but target file not exists, try copy from download tmp file:" + paramString1 + ", length:" + localFile2.length() + ", to:" + paramString2);
-                localObject1 = localFile1;
-                paramString2 = FileUtils.createFile(paramString2);
-                localObject1 = paramString2;
-                if (FileUtils.copyFile(localFile2, paramString2))
-                {
-                  localObject1 = paramString2;
-                  if (paramString2.exists())
-                  {
-                    localObject1 = paramString2;
-                    if (paramString2.length() == localFile2.length())
-                    {
-                      localObject1 = paramString2;
-                      QMLog.d("miniapp-embedded-live-pusher", "copy from download tmp file:" + paramString1 + " success");
-                      return paramString2;
-                    }
-                  }
-                }
-                localObject1 = paramString2;
-                localObject2 = paramString2;
-                if (paramString2.exists())
-                {
-                  localObject1 = paramString2;
-                  paramString2.delete();
-                  return paramString2;
-                }
-              }
-            }
-          }
-        }
-        catch (Throwable paramString2)
-        {
-          QMLog.e("miniapp-embedded-live-pusher", "try copy from download tmp file exception! tmp file:" + paramString1, paramString2);
+          File localFile = new File(paramString1);
           localObject2 = localObject1;
+          if (!localFile.exists()) {
+            break label281;
+          }
+          localObject2 = localObject1;
+          if (!localFile.isFile()) {
+            break label281;
+          }
+          localObject2 = localObject1;
+          if (localFile.length() <= 0L) {
+            break label281;
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("download Succeed but target file not exists, try copy from download tmp file:");
+          ((StringBuilder)localObject2).append(paramString1);
+          ((StringBuilder)localObject2).append(", length:");
+          ((StringBuilder)localObject2).append(localFile.length());
+          ((StringBuilder)localObject2).append(", to:");
+          ((StringBuilder)localObject2).append(paramString2);
+          QMLog.w("miniapp-embedded-live-pusher", ((StringBuilder)localObject2).toString());
+          paramString2 = FileUtils.createFile(paramString2);
+          try
+          {
+            if ((FileUtils.copyFile(localFile, paramString2)) && (paramString2.exists()) && (paramString2.length() == localFile.length()))
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("copy from download tmp file:");
+              ((StringBuilder)localObject1).append(paramString1);
+              ((StringBuilder)localObject1).append(" success");
+              QMLog.d("miniapp-embedded-live-pusher", ((StringBuilder)localObject1).toString());
+            }
+            else if (paramString2.exists())
+            {
+              paramString2.delete();
+            }
+            return paramString2;
+          }
+          catch (Throwable localThrowable1) {}
+          localObject1 = new StringBuilder();
         }
+        catch (Throwable localThrowable2)
+        {
+          paramString2 = (String)localObject1;
+        }
+        ((StringBuilder)localObject1).append("try copy from download tmp file exception! tmp file:");
+        ((StringBuilder)localObject1).append(paramString1);
+        QMLog.e("miniapp-embedded-live-pusher", ((StringBuilder)localObject1).toString(), localThrowable2);
+        str = paramString2;
       }
     }
-    return localObject2;
+    label281:
+    return str;
   }
   
   private void evaluateCallbackJs(int paramInt, String paramString)
   {
-    if (this.callBackWebview != null) {
-      this.callBackWebview.evaluateCallbackJs(paramInt, paramString);
+    IJsService localIJsService = this.callBackWebview;
+    if (localIJsService != null) {
+      localIJsService.evaluateCallbackJs(paramInt, paramString);
     }
   }
   
   private void evaluateSubscribeJS(String paramString1, String paramString2, int paramInt)
   {
-    if (this.mMiniAppContext != null) {
-      this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain(paramString1, paramString2, paramInt));
+    Object localObject = this.mMiniAppContext;
+    if (localObject != null) {
+      ((IMiniAppContext)localObject).performAction(ServiceSubscribeEvent.obtain(paramString1, paramString2, paramInt));
     }
-    if (this.callBackWebview != null) {
-      this.callBackWebview.evaluateSubscribeJS(paramString1, paramString2, paramInt);
+    localObject = this.callBackWebview;
+    if (localObject != null) {
+      ((IJsService)localObject).evaluateSubscribeJS(paramString1, paramString2, paramInt);
     }
   }
   
@@ -152,7 +156,10 @@ public class LivePusherEmbeddedWidgetClient
   private void handleBGMDownloadFailed(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     this.downloadMap.remove(paramString2, paramString3);
-    QMLog.e("miniapp-embedded-live-pusher", "playBGM - download onDownloadFailed failed:" + paramString1);
+    paramString2 = new StringBuilder();
+    paramString2.append("playBGM - download onDownloadFailed failed:");
+    paramString2.append(paramString1);
+    QMLog.e("miniapp-embedded-live-pusher", paramString2.toString());
     paramString2 = new JSONObject();
     try
     {
@@ -172,33 +179,43 @@ public class LivePusherEmbeddedWidgetClient
   {
     try
     {
-      QMLog.e("miniapp-embedded-live-pusher", "playBGM - download onDownloadSucceed statusCode:" + paramInt);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("playBGM - download onDownloadSucceed statusCode:");
+      ((StringBuilder)localObject).append(paramInt);
+      QMLog.e("miniapp-embedded-live-pusher", ((StringBuilder)localObject).toString());
       if (this.needToStopDownloadBGM)
       {
         QMLog.e("miniapp-embedded-live-pusher", "playBGM - download onDownloadSucceed but needToStopDownloadBGM");
         return;
       }
-      if (TextUtils.isEmpty(paramString2)) {
-        return;
-      }
-      File localFile = copyFile(paramString1, paramString2);
-      this.downloadMap.remove(paramString3);
-      if ((localFile.exists()) && (localFile.canRead()))
+      if (!TextUtils.isEmpty(paramString2))
       {
-        if (QMLog.isColorLevel()) {
-          QMLog.d("miniapp-embedded-live-pusher", "download success bgmFilePath:" + paramString2);
+        localObject = copyFile(paramString1, paramString2);
+        this.downloadMap.remove(paramString3);
+        if ((((File)localObject).exists()) && (((File)localObject).canRead()))
+        {
+          if (QMLog.isColorLevel())
+          {
+            paramString1 = new StringBuilder();
+            paramString1.append("download success bgmFilePath:");
+            paramString1.append(paramString2);
+            QMLog.d("miniapp-embedded-live-pusher", paramString1.toString());
+          }
+          paramJSONObject.put("BGMFilePath", paramString2);
+          this.livePusherJSAdapter.operateLivePusher(paramString4, paramJSONObject);
+          return;
         }
-        paramJSONObject.put("BGMFilePath", paramString2);
-        this.livePusherJSAdapter.operateLivePusher(paramString4, paramJSONObject);
+        paramString2 = new StringBuilder();
+        paramString2.append("download failed, filepath not exists, tmpFile:");
+        paramString2.append(paramString1);
+        QMLog.d("miniapp-embedded-live-pusher", paramString2.toString());
         return;
       }
     }
     catch (JSONException paramString1)
     {
       paramString1.printStackTrace();
-      return;
     }
-    QMLog.d("miniapp-embedded-live-pusher", "download failed, filepath not exists, tmpFile:" + paramString1);
   }
   
   private void handlePlayBGMEvent(JSONObject paramJSONObject, int paramInt1, int paramInt2, String paramString)
@@ -219,77 +236,75 @@ public class LivePusherEmbeddedWidgetClient
     {
       paramJSONObject.put("BGMPosition", paramJSONObject.getInt("position") * 1000);
       this.livePusherJSAdapter.operateLivePusher(paramString, paramJSONObject);
-      evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackOk("operateXWebLivePusher", null).toString());
-      return;
     }
     catch (JSONException paramJSONObject)
     {
-      for (;;)
-      {
-        QMLog.e("miniapp-embedded-live-pusher", "setBGMPosition - JSONException:" + paramJSONObject);
-      }
+      paramString = new StringBuilder();
+      paramString.append("setBGMPosition - JSONException:");
+      paramString.append(paramJSONObject);
+      QMLog.e("miniapp-embedded-live-pusher", paramString.toString());
     }
+    evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackOk("operateXWebLivePusher", null).toString());
   }
   
   private void handleSnapShotEvent(JSONObject paramJSONObject, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (paramJSONObject != null)
     {
       paramJSONObject = paramJSONObject.optString("quality");
-      bool1 = bool2;
-      if (paramJSONObject != null)
+      if ((paramJSONObject != null) && (paramJSONObject.equalsIgnoreCase("compressed")))
       {
-        bool1 = bool2;
-        if (paramJSONObject.equalsIgnoreCase("compressed")) {
-          bool1 = true;
-        }
+        bool = true;
+        break label33;
       }
     }
-    takePhoto("operateXWebLivePusher", bool1, paramInt);
+    boolean bool = false;
+    label33:
+    takePhoto("operateXWebLivePusher", bool, paramInt);
   }
   
   private void handleStartAudioRecord(JSONObject paramJSONObject, int paramInt)
   {
-    Object localObject = MiniAppFileManager.getInstance().getTmpPath("pcm");
+    String str = MiniAppFileManager.getInstance().getTmpPath("pcm");
     long l = paramJSONObject.optLong("maxDuration");
-    QMLog.d("miniapp-embedded-live-pusher", "recordFile:" + (String)localObject);
-    int i = this.livePusherJSAdapter.startDumpAudioData((String)localObject);
-    QMLog.d("miniapp-embedded-live-pusher", "recordResult:" + i);
-    JSONObject localJSONObject;
-    if (i == 0) {
-      localJSONObject = new JSONObject();
-    }
-    for (;;)
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("recordFile:");
+    paramJSONObject.append(str);
+    QMLog.d("miniapp-embedded-live-pusher", paramJSONObject.toString());
+    int i = this.livePusherJSAdapter.startDumpAudioData(str);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("recordResult:");
+    paramJSONObject.append(i);
+    QMLog.d("miniapp-embedded-live-pusher", paramJSONObject.toString());
+    if (i == 0)
     {
+      JSONObject localJSONObject = new JSONObject();
+      paramJSONObject = str;
       try
       {
-        paramJSONObject = MiniAppFileManager.getInstance().getWxFilePath((String)localObject);
-        ((JSONException)localObject).printStackTrace();
+        str = MiniAppFileManager.getInstance().getWxFilePath(str);
+        paramJSONObject = str;
+        StringBuilder localStringBuilder = new StringBuilder();
+        paramJSONObject = str;
+        localStringBuilder.append("recordFile transformed:");
+        paramJSONObject = str;
+        localStringBuilder.append(str);
+        paramJSONObject = str;
+        QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
+        paramJSONObject = str;
+        localJSONObject.put("tempFilePath", str);
+        paramJSONObject = str;
       }
-      catch (JSONException localJSONException2)
+      catch (JSONException localJSONException)
       {
-        try
-        {
-          QMLog.d("miniapp-embedded-live-pusher", "recordFile transformed:" + paramJSONObject);
-          localJSONObject.put("tempFilePath", paramJSONObject);
-          this.tempAudioFilePath = paramJSONObject;
-          evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackOk("operateXWebLivePusher", localJSONObject).toString());
-          this.handler.postDelayed(this.stopDumpRunnable, l);
-          QMLog.d("miniapp-embedded-live-pusher", "recordResult:" + i);
-          return;
-        }
-        catch (JSONException localJSONException1)
-        {
-          break label208;
-        }
-        localJSONException2 = localJSONException2;
-        paramJSONObject = (JSONObject)localObject;
-        localObject = localJSONException2;
+        localJSONException.printStackTrace();
       }
-      label208:
-      continue;
+      this.tempAudioFilePath = paramJSONObject;
+      evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackOk("operateXWebLivePusher", localJSONObject).toString());
+      this.handler.postDelayed(this.stopDumpRunnable, l);
+    }
+    else
+    {
       if (i == -1)
       {
         evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackFail("operateXWebLivePusher", null, "LivePusher is recording").toString());
@@ -303,6 +318,10 @@ public class LivePusherEmbeddedWidgetClient
         evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackFail("operateXWebLivePusher", null, "LivePusher starts recording fail").toString());
       }
     }
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("recordResult:");
+    paramJSONObject.append(i);
+    QMLog.d("miniapp-embedded-live-pusher", paramJSONObject.toString());
   }
   
   private void handleStopAudioRecord(int paramInt)
@@ -313,25 +332,22 @@ public class LivePusherEmbeddedWidgetClient
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      if (!StringUtil.isEmpty(this.tempAudioFilePath))
+      boolean bool = StringUtil.isEmpty(this.tempAudioFilePath);
+      if (!bool)
       {
         localJSONObject.put("tempFilePath", this.tempAudioFilePath);
         this.tempAudioFilePath = null;
       }
-      for (;;)
+      else
       {
-        evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackOk("operateXWebLivePusher", localJSONObject).toString());
-        return;
         localJSONObject.put("tempFilePath", "");
       }
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackOk("operateXWebLivePusher", localJSONObject).toString());
   }
   
   private void handleStopBGMEvent(JSONObject paramJSONObject, int paramInt, String paramString)
@@ -345,54 +361,55 @@ public class LivePusherEmbeddedWidgetClient
   private static void saveJpeg(android.graphics.Bitmap paramBitmap, File paramFile)
   {
     // Byte code:
-    //   0: new 453	java/io/BufferedOutputStream
-    //   3: dup
-    //   4: new 455	java/io/FileOutputStream
-    //   7: dup
-    //   8: aload_1
-    //   9: invokespecial 458	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 461	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   15: astore_1
-    //   16: aload_0
-    //   17: getstatic 467	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   20: bipush 100
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: new 452	java/io/BufferedOutputStream
+    //   5: dup
+    //   6: new 454	java/io/FileOutputStream
+    //   9: dup
+    //   10: aload_1
+    //   11: invokespecial 457	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   14: invokespecial 460	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   17: astore_1
+    //   18: aload_0
+    //   19: getstatic 466	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   22: bipush 100
-    //   24: invokestatic 473	java/lang/Math:min	(II)I
-    //   27: aload_1
-    //   28: invokevirtual 479	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   31: pop
-    //   32: aload_1
-    //   33: invokevirtual 482	java/io/BufferedOutputStream:flush	()V
-    //   36: aload_1
-    //   37: ifnull +7 -> 44
-    //   40: aload_1
-    //   41: invokevirtual 485	java/io/BufferedOutputStream:close	()V
-    //   44: return
-    //   45: astore_0
-    //   46: aconst_null
-    //   47: astore_1
-    //   48: aload_1
-    //   49: ifnull +7 -> 56
-    //   52: aload_1
-    //   53: invokevirtual 485	java/io/BufferedOutputStream:close	()V
-    //   56: aload_0
-    //   57: athrow
-    //   58: astore_0
-    //   59: return
-    //   60: astore_1
-    //   61: goto -5 -> 56
-    //   64: astore_0
-    //   65: goto -17 -> 48
+    //   24: bipush 100
+    //   26: invokestatic 472	java/lang/Math:min	(II)I
+    //   29: aload_1
+    //   30: invokevirtual 478	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   33: pop
+    //   34: aload_1
+    //   35: invokevirtual 481	java/io/BufferedOutputStream:flush	()V
+    //   38: aload_1
+    //   39: invokevirtual 484	java/io/BufferedOutputStream:close	()V
+    //   42: return
+    //   43: astore_0
+    //   44: goto +6 -> 50
+    //   47: astore_0
+    //   48: aload_2
+    //   49: astore_1
+    //   50: aload_1
+    //   51: ifnull +7 -> 58
+    //   54: aload_1
+    //   55: invokevirtual 484	java/io/BufferedOutputStream:close	()V
+    //   58: aload_0
+    //   59: athrow
+    //   60: astore_0
+    //   61: return
+    //   62: astore_1
+    //   63: goto -5 -> 58
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	68	0	paramBitmap	android.graphics.Bitmap
-    //   0	68	1	paramFile	File
+    //   0	66	0	paramBitmap	android.graphics.Bitmap
+    //   0	66	1	paramFile	File
+    //   1	48	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	16	45	finally
-    //   40	44	58	java/lang/Exception
-    //   52	56	60	java/lang/Exception
-    //   16	36	64	finally
+    //   18	38	43	finally
+    //   2	18	47	finally
+    //   38	42	60	java/lang/Exception
+    //   54	58	62	java/lang/Exception
   }
   
   public boolean enterBackground()
@@ -400,8 +417,9 @@ public class LivePusherEmbeddedWidgetClient
     if (QMLog.isColorLevel()) {
       QMLog.d("miniapp-embedded-live-pusher", "enterBackground");
     }
-    if (this.livePusherJSAdapter != null) {
-      this.livePusherJSAdapter.enterBackground(false);
+    TXLivePusherJSAdapter localTXLivePusherJSAdapter = this.livePusherJSAdapter;
+    if (localTXLivePusherJSAdapter != null) {
+      localTXLivePusherJSAdapter.enterBackground(false);
     }
     return true;
   }
@@ -411,8 +429,9 @@ public class LivePusherEmbeddedWidgetClient
     if (QMLog.isColorLevel()) {
       QMLog.d("miniapp-embedded-live-pusher", "enterForeground");
     }
-    if (this.livePusherJSAdapter != null) {
-      this.livePusherJSAdapter.enterForeground();
+    TXLivePusherJSAdapter localTXLivePusherJSAdapter = this.livePusherJSAdapter;
+    if (localTXLivePusherJSAdapter != null) {
+      localTXLivePusherJSAdapter.enterForeground();
     }
     return true;
   }
@@ -430,79 +449,86 @@ public class LivePusherEmbeddedWidgetClient
   public void handleInsertXWebLivePusher(JSONObject paramJSONObject, IJsService paramIJsService)
   {
     this.callBackWebview = paramIJsService;
-    if ((paramIJsService instanceof BrandPageWebview)) {
+    if ((paramIJsService instanceof BrandPageWebview))
+    {
       this.curPageWebviewId = ((BrandPageWebview)paramIJsService).getWebViewId();
     }
-    for (;;)
+    else
     {
-      if (paramJSONObject != null)
-      {
-        QMLog.d("miniapp-embedded-live-pusher", "handleInsertXWebLivePusher : " + paramJSONObject.toString());
-        this.viewId = paramJSONObject.optInt("viewId");
-        if (paramJSONObject.has("position"))
-        {
-          paramIJsService = paramJSONObject.optJSONObject("position");
-          this.width = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * paramIJsService.optInt("width", -1) + 0.5F));
-          float f = DisplayUtil.getDensity(AppLoaderFactory.g().getContext());
-          this.height = ((int)(paramIJsService.optInt("height", -1) * f + 0.5F));
-        }
-        this.livePusherJSAdapter = new TXLivePusherJSAdapter(AppLoaderFactory.g().getContext());
-        this.livePusherJSAdapter.setSurface(this.mSurface);
-        this.livePusherJSAdapter.setSurfaceSize(this.width, this.height);
-        this.livePusherJSAdapter.initEmbeddedLivePusher(paramJSONObject);
-        this.livePusherJSAdapter.setBGMNotifyListener(new LivePusherEmbeddedWidgetClient.2(this));
-        this.livePusherJSAdapter.setPushListener(new LivePusherEmbeddedWidgetClient.3(this));
-      }
-      return;
-      QMLog.e("miniapp-embedded-live-pusher", "cant get webviewId from " + paramIJsService);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cant get webviewId from ");
+      localStringBuilder.append(paramIJsService);
+      QMLog.e("miniapp-embedded-live-pusher", localStringBuilder.toString());
     }
+    if (paramJSONObject != null)
+    {
+      paramIJsService = new StringBuilder();
+      paramIJsService.append("handleInsertXWebLivePusher : ");
+      paramIJsService.append(paramJSONObject.toString());
+      QMLog.d("miniapp-embedded-live-pusher", paramIJsService.toString());
+      this.viewId = paramJSONObject.optInt("viewId");
+      if (paramJSONObject.has("position"))
+      {
+        paramIJsService = paramJSONObject.optJSONObject("position");
+        this.width = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * paramIJsService.optInt("width", -1) + 0.5F));
+        this.height = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * paramIJsService.optInt("height", -1) + 0.5F));
+      }
+      this.livePusherJSAdapter = new TXLivePusherJSAdapter(AppLoaderFactory.g().getContext());
+      this.livePusherJSAdapter.setSurface(this.mSurface);
+      this.livePusherJSAdapter.setSurfaceSize(this.width, this.height);
+      this.livePusherJSAdapter.initEmbeddedLivePusher(paramJSONObject);
+      this.livePusherJSAdapter.setBGMNotifyListener(new LivePusherEmbeddedWidgetClient.2(this));
+      this.livePusherJSAdapter.setPushListener(new LivePusherEmbeddedWidgetClient.3(this));
+    }
+    this.livePusherJSAdapter.updateHomeOrientation(this.mMiniAppContext);
   }
   
   public void handleOperateXWebLivePusher(JSONObject paramJSONObject, int paramInt)
   {
-    QMLog.d("miniapp-embedded-live-pusher", "handleOperateXWebLivePusher : " + paramJSONObject.toString());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleOperateXWebLivePusher : ");
+    ((StringBuilder)localObject).append(paramJSONObject.toString());
+    QMLog.d("miniapp-embedded-live-pusher", ((StringBuilder)localObject).toString());
     int i = paramJSONObject.optInt("viewId", -1);
-    String str;
     if ((i == this.viewId) && (paramJSONObject.has("type")))
     {
-      str = paramJSONObject.optString("type");
+      localObject = paramJSONObject.optString("type");
       if (this.livePusherJSAdapter != null)
       {
-        if (!"playBGM".equals(str)) {
-          break label92;
+        if ("playBGM".equals(localObject))
+        {
+          handlePlayBGMEvent(paramJSONObject, paramInt, i, (String)localObject);
+          return;
         }
-        handlePlayBGMEvent(paramJSONObject, paramInt, i, str);
+        if ("stopBGM".equals(localObject))
+        {
+          handleStopBGMEvent(paramJSONObject, paramInt, (String)localObject);
+          return;
+        }
+        if ("setBGMPosition".equals(localObject))
+        {
+          handleSetBGMPosition(paramJSONObject, paramInt, (String)localObject);
+          return;
+        }
+        if ("snapshot".equals(localObject))
+        {
+          handleSnapShotEvent(paramJSONObject, paramInt);
+          return;
+        }
+        if (((String)localObject).equalsIgnoreCase("startAudioRecord"))
+        {
+          handleStartAudioRecord(paramJSONObject, paramInt);
+          return;
+        }
+        if (((String)localObject).equalsIgnoreCase("stopAudioRecord"))
+        {
+          handleStopAudioRecord(paramInt);
+          return;
+        }
+        this.livePusherJSAdapter.operateLivePusher((String)localObject, paramJSONObject);
+        evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackOk("operateXWebLivePusher", null).toString());
       }
     }
-    return;
-    label92:
-    if ("stopBGM".equals(str))
-    {
-      handleStopBGMEvent(paramJSONObject, paramInt, str);
-      return;
-    }
-    if ("setBGMPosition".equals(str))
-    {
-      handleSetBGMPosition(paramJSONObject, paramInt, str);
-      return;
-    }
-    if ("snapshot".equals(str))
-    {
-      handleSnapShotEvent(paramJSONObject, paramInt);
-      return;
-    }
-    if (str.equalsIgnoreCase("startAudioRecord"))
-    {
-      handleStartAudioRecord(paramJSONObject, paramInt);
-      return;
-    }
-    if (str.equalsIgnoreCase("stopAudioRecord"))
-    {
-      handleStopAudioRecord(paramInt);
-      return;
-    }
-    this.livePusherJSAdapter.operateLivePusher(str, paramJSONObject);
-    evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackOk("operateXWebLivePusher", null).toString());
   }
   
   public void handleRemoveXWebLivePusher()
@@ -514,36 +540,48 @@ public class LivePusherEmbeddedWidgetClient
   {
     if (paramJSONObject != null)
     {
-      QMLog.d("miniapp-embedded-live-pusher", "handleUpdateXWebLivePusher : " + paramJSONObject.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleUpdateXWebLivePusher : ");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QMLog.d("miniapp-embedded-live-pusher", ((StringBuilder)localObject).toString());
       if (paramJSONObject.has("position"))
       {
-        JSONObject localJSONObject = paramJSONObject.optJSONObject("position");
-        this.width = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * localJSONObject.optInt("width", -1) + 0.5F));
-        float f = DisplayUtil.getDensity(AppLoaderFactory.g().getContext());
-        this.height = ((int)(localJSONObject.optInt("height", -1) * f + 0.5F));
+        localObject = paramJSONObject.optJSONObject("position");
+        this.width = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * ((JSONObject)localObject).optInt("width", -1) + 0.5F));
+        this.height = ((int)(DisplayUtil.getDensity(AppLoaderFactory.g().getContext()) * ((JSONObject)localObject).optInt("height", -1) + 0.5F));
         this.livePusherJSAdapter.setSurfaceSize(this.width, this.height);
       }
-      if (this.livePusherJSAdapter != null) {
-        this.livePusherJSAdapter.updateLivePusher(paramJSONObject);
+      localObject = this.livePusherJSAdapter;
+      if (localObject != null) {
+        ((TXLivePusherJSAdapter)localObject).updateLivePusher(paramJSONObject);
       }
     }
   }
   
   public void nativeDestroy()
   {
-    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.nativeDestroy " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePusherEmbeddedWidgetClient.nativeDestroy ");
+    localStringBuilder.append(this);
+    QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
     release();
   }
   
   public void nativePause()
   {
-    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.nativePause " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePusherEmbeddedWidgetClient.nativePause ");
+    localStringBuilder.append(this);
+    QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
     enterBackground();
   }
   
   public void nativeResume()
   {
-    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.nativeResume " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePusherEmbeddedWidgetClient.nativeResume ");
+    localStringBuilder.append(this);
+    QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
     enterForeground();
   }
   
@@ -565,7 +603,14 @@ public class LivePusherEmbeddedWidgetClient
   
   public void onRectChanged(Rect paramRect)
   {
-    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.onRectChanged, rect:" + paramRect.toString() + "； size : " + (paramRect.right - paramRect.left) + "," + (paramRect.bottom - paramRect.top));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePusherEmbeddedWidgetClient.onRectChanged, rect:");
+    localStringBuilder.append(paramRect.toString());
+    localStringBuilder.append("； size : ");
+    localStringBuilder.append(paramRect.right - paramRect.left);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramRect.bottom - paramRect.top);
+    QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
   }
   
   public void onRequestRedraw()
@@ -575,24 +620,28 @@ public class LivePusherEmbeddedWidgetClient
   
   public void onSurfaceCreated(Surface paramSurface)
   {
-    QMLog.d("miniapp-embedded-live-pusher", "onSurfaceCreated: " + paramSurface);
-    if ((paramSurface == null) || (!paramSurface.isValid()))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSurfaceCreated: ");
+    localStringBuilder.append(paramSurface);
+    QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
+    if ((paramSurface != null) && (paramSurface.isValid()))
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("onSurfaceCreated isValid() : ");
-      if (paramSurface != null)
-      {
-        paramSurface = Boolean.valueOf(paramSurface.isValid());
-        QMLog.e("miniapp-embedded-live-pusher", paramSurface);
-      }
-    }
-    do
-    {
-      return;
-      paramSurface = null;
-      break;
       this.mSurface = paramSurface;
-    } while (this.livePusherJSAdapter == null);
-    this.livePusherJSAdapter.setSurface(this.mSurface);
+      paramSurface = this.livePusherJSAdapter;
+      if (paramSurface != null) {
+        paramSurface.setSurface(this.mSurface);
+      }
+      return;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSurfaceCreated isValid() : ");
+    if (paramSurface != null) {
+      paramSurface = Boolean.valueOf(paramSurface.isValid());
+    } else {
+      paramSurface = null;
+    }
+    localStringBuilder.append(paramSurface);
+    QMLog.e("miniapp-embedded-live-pusher", localStringBuilder.toString());
   }
   
   public void onSurfaceDestroyed(Surface paramSurface)
@@ -602,54 +651,71 @@ public class LivePusherEmbeddedWidgetClient
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.onTouchEvent, rect:" + paramMotionEvent.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePusherEmbeddedWidgetClient.onTouchEvent, rect:");
+    localStringBuilder.append(paramMotionEvent.toString());
+    QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
     return false;
   }
   
   public void onVisibilityChanged(boolean paramBoolean)
   {
-    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.onVisibilityChanged ： " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePusherEmbeddedWidgetClient.onVisibilityChanged ： ");
+    localStringBuilder.append(paramBoolean);
+    QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
   }
   
   public void release()
   {
     this.handler.removeCallbacks(this.stopDumpRunnable);
-    if (this.livePusherJSAdapter != null)
+    TXLivePusherJSAdapter localTXLivePusherJSAdapter = this.livePusherJSAdapter;
+    if (localTXLivePusherJSAdapter != null)
     {
-      this.livePusherJSAdapter.unInitLivePusher();
+      localTXLivePusherJSAdapter.unInitLivePusher();
       this.livePusherJSAdapter.setSurface(null);
     }
   }
   
   public void takePhoto(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (this.livePusherJSAdapter == null) {
+    TXLivePusherJSAdapter localTXLivePusherJSAdapter = this.livePusherJSAdapter;
+    if (localTXLivePusherJSAdapter == null) {
       return;
     }
-    this.livePusherJSAdapter.takePhoto(paramBoolean, new LivePusherEmbeddedWidgetClient.5(this, paramString, paramInt));
+    localTXLivePusherJSAdapter.takePhoto(paramBoolean, new LivePusherEmbeddedWidgetClient.5(this, paramString, paramInt));
   }
   
   public void webViewDestroy()
   {
-    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.webViewDestroy " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePusherEmbeddedWidgetClient.webViewDestroy ");
+    localStringBuilder.append(this);
+    QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
     release();
   }
   
   public void webViewPause()
   {
-    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.webviewPause " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePusherEmbeddedWidgetClient.webviewPause ");
+    localStringBuilder.append(this);
+    QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
     enterBackground();
   }
   
   public void webViewResume()
   {
-    QMLog.d("miniapp-embedded-live-pusher", "LivePusherEmbeddedWidgetClient.webviewResume " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LivePusherEmbeddedWidgetClient.webviewResume ");
+    localStringBuilder.append(this);
+    QMLog.d("miniapp-embedded-live-pusher", localStringBuilder.toString());
     enterForeground();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePusherEmbeddedWidgetClient
  * JD-Core Version:    0.7.0.1
  */

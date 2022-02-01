@@ -29,8 +29,9 @@ public class QQCustomArkDialog$AppInfo
     paramBundle = paramBundle.getString("troop_uin");
     if (paramBundle != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramBundle;
+      SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      localSessionInfo.jdField_a_of_type_Int = 1;
+      localSessionInfo.jdField_a_of_type_JavaLangString = paramBundle;
     }
   }
   
@@ -51,7 +52,7 @@ public class QQCustomArkDialog$AppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo
  * JD-Core Version:    0.7.0.1
  */

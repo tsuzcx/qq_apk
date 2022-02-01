@@ -35,31 +35,31 @@ public class TPPlaybackInfo
     String[] arrayOfString = paramString.split("\n");
     HashMap localHashMap = new HashMap();
     int i = 0;
-    if (i < arrayOfString.length)
+    while (i < arrayOfString.length)
     {
-      if (arrayOfString[i].startsWith("#")) {}
-      for (;;)
+      if ((!arrayOfString[i].startsWith("#")) && (arrayOfString[i].contains("=")))
       {
-        i += 1;
-        break;
-        if (arrayOfString[i].contains("="))
+        paramString = arrayOfString[i].split("=");
+        if ((paramString != null) && (paramString.length >= 2))
         {
-          paramString = arrayOfString[i].split("=");
-          if ((paramString == null) || (paramString.length < 2)) {
-            break label102;
-          }
           localHashMap.put(paramString[0], paramString[1]);
         }
+        else
+        {
+          String str = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("parseInfo, ");
+          if ((paramString != null) && (paramString.length >= 1)) {
+            paramString = paramString[0];
+          } else {
+            paramString = "param null, ";
+          }
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("is empty");
+          TPLogUtil.i(str, localStringBuilder.toString());
+        }
       }
-      label102:
-      String str = TAG;
-      StringBuilder localStringBuilder = new StringBuilder().append("parseInfo, ");
-      if ((paramString != null) && (paramString.length >= 1)) {}
-      for (paramString = paramString[0];; paramString = "param null, ")
-      {
-        TPLogUtil.i(str, paramString + "is empty");
-        break;
-      }
+      i += 1;
     }
     paramString = new TPPlaybackInfo();
     if (localHashMap.containsKey("ContainerFormat")) {
@@ -298,7 +298,7 @@ public class TPPlaybackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlaybackInfo
  * JD-Core Version:    0.7.0.1
  */

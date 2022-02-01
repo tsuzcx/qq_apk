@@ -19,157 +19,165 @@ public abstract class OneDReader
 {
   private Result doDecode(BinaryBitmap paramBinaryBitmap, Map<DecodeHintType, ?> paramMap)
   {
-    int i1 = paramBinaryBitmap.getWidth();
+    int k = paramBinaryBitmap.getWidth();
     int m = paramBinaryBitmap.getHeight();
-    Object localObject1 = new BitArray(i1);
-    int i;
-    int j;
-    label49:
-    int i2;
-    label67:
-    int i3;
-    int n;
-    if ((paramMap != null) && (paramMap.containsKey(DecodeHintType.TRY_HARDER)))
-    {
+    Object localObject = new BitArray(k);
+    if ((paramMap != null) && (paramMap.containsKey(DecodeHintType.TRY_HARDER))) {
       i = 1;
-      if (i == 0) {
-        break label140;
-      }
-      j = 8;
-      i2 = Math.max(1, m >> j);
-      if (i == 0) {
-        break label146;
-      }
-      i = m;
-      i3 = m / 2;
-      j = 0;
-      if (j < i)
-      {
-        n = (j + 1) / 2;
-        if ((j & 0x1) != 0) {
-          break label152;
-        }
-        k = 1;
-        label100:
-        if (k == 0) {
-          break label158;
-        }
-      }
-    }
-    label140:
-    label146:
-    label152:
-    label158:
-    for (int k = n;; k = -n)
-    {
-      n = i3 + k * i2;
-      if ((n >= 0) && (n < m)) {
-        break label166;
-      }
-      throw NotFoundException.getNotFoundInstance();
+    } else {
       i = 0;
-      break;
-      j = 5;
-      break label49;
-      i = 15;
-      break label67;
-      k = 0;
-      break label100;
     }
-    label398:
-    for (;;)
+    int j;
+    if (i != 0) {
+      j = 8;
+    } else {
+      j = 5;
+    }
+    int i2 = Math.max(1, m >> j);
+    if (i != 0) {
+      j = m;
+    } else {
+      j = 15;
+    }
+    int i3 = m / 2;
+    int n = 0;
+    int i = k;
+    for (k = n; k < j; k = n)
     {
-      try
-      {
-        label166:
-        Object localObject2 = paramBinaryBitmap.getBlackRow(n, (BitArray)localObject1);
-        localObject1 = localObject2;
+      n = k + 1;
+      int i1 = n / 2;
+      if ((k & 0x1) == 0) {
+        k = 1;
+      } else {
         k = 0;
-        localObject3 = localObject1;
-        localObject2 = paramMap;
-        if (k < 2)
+      }
+      if (k != 0) {
+        k = i1;
+      } else {
+        k = -i1;
+      }
+      i1 = k * i2 + i3;
+      if ((i1 < 0) || (i1 >= m)) {
+        break;
+      }
+      for (;;)
+      {
+        try
         {
-          if (k != 1) {
-            break label398;
-          }
-          ((BitArray)localObject1).reverse();
-          if ((paramMap == null) || (!paramMap.containsKey(DecodeHintType.NEED_RESULT_POINT_CALLBACK))) {
-            break label398;
-          }
-          localObject2 = new HashMap();
-          ((Map)localObject2).putAll(paramMap);
-          ((Map)localObject2).remove(DecodeHintType.NEED_RESULT_POINT_CALLBACK);
-          paramMap = (Map<DecodeHintType, ?>)localObject2;
-          try
+          localBitArray = paramBinaryBitmap.getBlackRow(i1, (BitArray)localObject);
+          k = 0;
+          if (k < 2)
           {
-            localObject2 = decodeRow(n, (BitArray)localObject1, paramMap);
+            localObject = paramMap;
             if (k == 1)
             {
-              ((Result)localObject2).putMetadata(ResultMetadataType.ORIENTATION, Integer.valueOf(180));
-              localObject3 = ((Result)localObject2).getResultPoints();
-              if (localObject3 != null)
+              localBitArray.reverse();
+              localObject = paramMap;
+              if (paramMap != null)
               {
-                localObject3[0] = new ResultPoint(i1 - localObject3[0].getX() - 1.0F, localObject3[0].getY());
-                localObject3[1] = new ResultPoint(i1 - localObject3[1].getX() - 1.0F, localObject3[1].getY());
+                localObject = paramMap;
+                if (paramMap.containsKey(DecodeHintType.NEED_RESULT_POINT_CALLBACK))
+                {
+                  localObject = new HashMap();
+                  ((Map)localObject).putAll(paramMap);
+                  ((Map)localObject).remove(DecodeHintType.NEED_RESULT_POINT_CALLBACK);
+                }
               }
             }
-            return localObject2;
-          }
-          catch (ReaderException localReaderException)
-          {
-            k += 1;
           }
         }
+        catch (NotFoundException localNotFoundException)
+        {
+          BitArray localBitArray;
+          ResultPoint[] arrayOfResultPoint;
+          float f1;
+          float f2;
+          continue;
+        }
+        try
+        {
+          paramMap = decodeRow(i1, localBitArray, (Map)localObject);
+          if (k == 1)
+          {
+            paramMap.putMetadata(ResultMetadataType.ORIENTATION, Integer.valueOf(180));
+            arrayOfResultPoint = paramMap.getResultPoints();
+            if (arrayOfResultPoint != null)
+            {
+              f1 = i;
+              f2 = arrayOfResultPoint[0].getX();
+            }
+          }
+        }
+        catch (ReaderException paramMap)
+        {
+          continue;
+        }
+        try
+        {
+          arrayOfResultPoint[0] = new ResultPoint(f1 - f2 - 1.0F, arrayOfResultPoint[0].getY());
+        }
+        catch (ReaderException paramMap)
+        {
+          continue;
+        }
+        try
+        {
+          arrayOfResultPoint[1] = new ResultPoint(f1 - arrayOfResultPoint[1].getX() - 1.0F, arrayOfResultPoint[1].getY());
+          return paramMap;
+        }
+        catch (ReaderException paramMap)
+        {
+          continue;
+        }
+        k += 1;
+        paramMap = (Map<DecodeHintType, ?>)localObject;
       }
-      catch (NotFoundException localNotFoundException)
-      {
-        Map<DecodeHintType, ?> localMap = paramMap;
-        Object localObject3 = localObject1;
-        j += 1;
-        localObject1 = localObject3;
-        paramMap = localMap;
-      }
+      localObject = localBitArray;
+    }
+    paramBinaryBitmap = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramBinaryBitmap;
     }
   }
   
   protected static float patternMatchVariance(int[] paramArrayOfInt1, int[] paramArrayOfInt2, float paramFloat)
   {
-    int m = paramArrayOfInt1.length;
+    int n = paramArrayOfInt1.length;
+    int m = 0;
     int j = 0;
     int k = 0;
     int i = 0;
-    while (j < m)
+    while (j < n)
     {
-      i += paramArrayOfInt1[j];
-      k += paramArrayOfInt2[j];
+      k += paramArrayOfInt1[j];
+      i += paramArrayOfInt2[j];
       j += 1;
     }
-    if (i < k) {}
-    float f1;
-    label144:
-    for (;;)
-    {
+    if (k < i) {
       return (1.0F / 1.0F);
-      float f3 = i / k;
-      f1 = 0.0F;
-      j = 0;
-      if (j >= m) {
-        break;
-      }
-      k = paramArrayOfInt1[j];
-      float f2 = paramArrayOfInt2[j] * f3;
-      if (k > f2) {}
-      for (f2 = k - f2;; f2 -= k)
-      {
-        if (f2 > paramFloat * f3) {
-          break label144;
-        }
-        f1 += f2;
-        j += 1;
-        break;
-      }
     }
-    return f1 / i;
+    float f3 = k;
+    float f4 = f3 / i;
+    float f1 = 0.0F;
+    i = m;
+    while (i < n)
+    {
+      j = paramArrayOfInt1[i];
+      float f2 = paramArrayOfInt2[i] * f4;
+      float f5 = j;
+      if (f5 > f2) {
+        f2 = f5 - f2;
+      } else {
+        f2 -= f5;
+      }
+      if (f2 > paramFloat * f4) {
+        return (1.0F / 1.0F);
+      }
+      f1 += f2;
+      i += 1;
+    }
+    return f1 / f3;
   }
   
   protected static void recordPattern(BitArray paramBitArray, int paramInt, int[] paramArrayOfInt)
@@ -177,43 +185,52 @@ public abstract class OneDReader
     int k = paramArrayOfInt.length;
     Arrays.fill(paramArrayOfInt, 0, k, 0);
     int m = paramBitArray.getSize();
-    if (paramInt >= m) {
-      throw NotFoundException.getNotFoundInstance();
-    }
-    if (!paramBitArray.get(paramInt)) {}
-    int i;
-    for (int n = 1;; n = 0)
+    if (paramInt < m)
     {
+      boolean bool = paramBitArray.get(paramInt) ^ true;
       int j = 0;
-      i = paramInt;
+      int i = paramInt;
       paramInt = j;
       for (;;)
       {
+        j = paramInt;
         if (i >= m) {
-          break label140;
-        }
-        if (paramBitArray.get(i) == n) {
           break;
         }
-        paramArrayOfInt[paramInt] += 1;
+        if (paramBitArray.get(i) != bool)
+        {
+          paramArrayOfInt[paramInt] += 1;
+        }
+        else
+        {
+          paramInt += 1;
+          if (paramInt == k)
+          {
+            j = paramInt;
+            break;
+          }
+          paramArrayOfInt[paramInt] = 1;
+          if (!bool) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+        }
         i += 1;
       }
-    }
-    paramInt += 1;
-    if (paramInt == k) {}
-    label140:
-    for (;;)
-    {
-      if ((paramInt != k) && ((paramInt != k - 1) || (i != m)))
+      if (j != k)
       {
-        throw NotFoundException.getNotFoundInstance();
-        paramArrayOfInt[paramInt] = 1;
-        if (n == 0) {}
-        for (n = 1;; n = 0) {
-          break;
+        if ((j == k - 1) && (i == m)) {
+          return;
         }
+        throw NotFoundException.getNotFoundInstance();
       }
       return;
+    }
+    paramBitArray = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramBitArray;
     }
   }
   
@@ -240,10 +257,16 @@ public abstract class OneDReader
         }
       }
     }
-    if (i >= 0) {
-      throw NotFoundException.getNotFoundInstance();
+    if (i < 0)
+    {
+      recordPattern(paramBitArray, paramInt + 1, paramArrayOfInt);
+      return;
     }
-    recordPattern(paramBitArray, paramInt + 1, paramArrayOfInt);
+    paramBitArray = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramBitArray;
+    }
   }
   
   public Result decode(BinaryBitmap paramBinaryBitmap)
@@ -253,6 +276,7 @@ public abstract class OneDReader
   
   public Result decode(BinaryBitmap paramBinaryBitmap, Map<DecodeHintType, ?> paramMap)
   {
+    Object localObject;
     try
     {
       Result localResult = doDecode(paramBinaryBitmap, paramMap);
@@ -260,48 +284,44 @@ public abstract class OneDReader
     }
     catch (NotFoundException localNotFoundException)
     {
-      if (paramMap == null) {
-        break label178;
-      }
-    }
-    Object localObject;
-    if (paramMap.containsKey(DecodeHintType.TRY_HARDER))
-    {
-      i = 1;
-      if ((i == 0) || (!paramBinaryBitmap.isRotateSupported())) {
-        break label185;
-      }
-      paramBinaryBitmap = paramBinaryBitmap.rotateCounterClockwise();
-      paramMap = doDecode(paramBinaryBitmap, paramMap);
-      localObject = paramMap.getResultMetadata();
-      if ((localObject == null) || (!((Map)localObject).containsKey(ResultMetadataType.ORIENTATION))) {
-        break label188;
-      }
-    }
-    label178:
-    label185:
-    label188:
-    for (int i = (((Integer)((Map)localObject).get(ResultMetadataType.ORIENTATION)).intValue() + 270) % 360;; i = 270)
-    {
-      paramMap.putMetadata(ResultMetadataType.ORIENTATION, Integer.valueOf(i));
-      localObject = paramMap.getResultPoints();
-      if (localObject != null)
-      {
-        int j = paramBinaryBitmap.getHeight();
+      int j = 0;
+      int i;
+      if ((paramMap != null) && (paramMap.containsKey(DecodeHintType.TRY_HARDER))) {
+        i = 1;
+      } else {
         i = 0;
-        for (;;)
+      }
+      if ((i != 0) && (paramBinaryBitmap.isRotateSupported()))
+      {
+        paramBinaryBitmap = paramBinaryBitmap.rotateCounterClockwise();
+        paramMap = doDecode(paramBinaryBitmap, paramMap);
+        localObject = paramMap.getResultMetadata();
+        int k = 270;
+        i = k;
+        if (localObject != null)
         {
-          if (i < localObject.length)
-          {
-            localObject[i] = new ResultPoint(j - localObject[i].getY() - 1.0F, localObject[i].getX());
-            i += 1;
-            continue;
-            i = 0;
-            break;
+          i = k;
+          if (((Map)localObject).containsKey(ResultMetadataType.ORIENTATION)) {
+            i = (((Integer)((Map)localObject).get(ResultMetadataType.ORIENTATION)).intValue() + 270) % 360;
           }
         }
+        paramMap.putMetadata(ResultMetadataType.ORIENTATION, Integer.valueOf(i));
+        localObject = paramMap.getResultPoints();
+        if (localObject != null)
+        {
+          k = paramBinaryBitmap.getHeight();
+          i = j;
+          while (i < localObject.length)
+          {
+            localObject[i] = new ResultPoint(k - localObject[i].getY() - 1.0F, localObject[i].getX());
+            i += 1;
+          }
+        }
+        return paramMap;
       }
-      return paramMap;
+    }
+    for (;;)
+    {
       throw ((Throwable)localObject);
     }
   }
@@ -312,7 +332,7 @@ public abstract class OneDReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.OneDReader
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,14 @@ public final class qqstory_service$RspStoryFeedIdList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "result", "feed_seq_info_list", "is_end", "next_cookie", "is_today_end" }, new Object[] { null, null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, RspStoryFeedIdList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40 }, new String[] { "result", "feed_seq_info_list", "is_end", "next_cookie", "is_today_end" }, new Object[] { null, null, localInteger, localByteStringMicro, localInteger }, RspStoryFeedIdList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList
  * JD-Core Version:    0.7.0.1
  */

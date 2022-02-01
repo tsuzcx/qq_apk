@@ -18,24 +18,32 @@ class GameRoomInviteActivity$10
   {
     if (paramInt == 0)
     {
-      GameRoomInviteActivity localGameRoomInviteActivity = this.a;
+      Object localObject = this.a;
       String str = paramRspBody.string_invite_id.get().toStringUtf8();
-      localGameRoomInviteActivity.jdField_b_of_type_JavaLangString = str;
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
-      this.a.jdField_b_of_type_Long = paramRspBody.uint64_leader_uin.get();
-      this.a.e();
-      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), true, System.currentTimeMillis());
-      if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_b_of_type_Boolean)) {
-        GameRoomInviteActivity.a(this.a, "" + this.a.jdField_a_of_type_Long, 1);
+      ((GameRoomInviteActivity)localObject).mInviteId = str;
+      GameRoomConstants.a = str;
+      this.a.mOwnerUin = paramRspBody.uint64_leader_uin.get();
+      this.a.reqUserList();
+      paramRspBody = this.a;
+      SharedPreUtils.a(paramRspBody, paramRspBody.app.getCurrentAccountUin(), true, System.currentTimeMillis());
+      if ((this.a.mGc > 0L) && (this.a.isInviteTroop))
+      {
+        paramRspBody = this.a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(this.a.mGc);
+        GameRoomInviteActivity.access$000(paramRspBody, ((StringBuilder)localObject).toString(), 1);
       }
-      return;
     }
-    this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    else
+    {
+      this.a.handle8e4Error(paramInt, paramRspBody, (String)GameRoomInviteActivity.errorCodeMsgs.get(paramInt));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.10
  * JD-Core Version:    0.7.0.1
  */

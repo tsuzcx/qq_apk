@@ -23,27 +23,42 @@ class AnonymousView$1
   
   public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    do
-    {
-      do
-      {
-        do
+      if (i != 1) {
+        if (i != 2)
         {
+          if (i != 3) {
+            return false;
+          }
+        }
+        else
+        {
+          if (this.mCheckInterceptTouch) {
+            break label105;
+          }
+          this.mCheckInterceptTouch = true;
+          if ((!moveHorizontal(paramMotionEvent)) || (paramRecyclerView.getParent() == null)) {
+            break label105;
+          }
+          paramRecyclerView.getParent().requestDisallowInterceptTouchEvent(true);
           return false;
-          this.mLastTouchDownX = paramMotionEvent.getX();
-          this.mLastTouchDownY = paramMotionEvent.getY();
-          this.mCheckInterceptTouch = false;
-          return false;
-        } while (this.mCheckInterceptTouch);
-        this.mCheckInterceptTouch = true;
-      } while ((!moveHorizontal(paramMotionEvent)) || (paramRecyclerView.getParent() == null));
-      paramRecyclerView.getParent().requestDisallowInterceptTouchEvent(true);
-      return false;
-    } while (paramRecyclerView.getParent() == null);
-    paramRecyclerView.getParent().requestDisallowInterceptTouchEvent(false);
+        }
+      }
+      if (paramRecyclerView.getParent() != null)
+      {
+        paramRecyclerView.getParent().requestDisallowInterceptTouchEvent(false);
+        return false;
+      }
+    }
+    else
+    {
+      this.mLastTouchDownX = paramMotionEvent.getX();
+      this.mLastTouchDownY = paramMotionEvent.getY();
+      this.mCheckInterceptTouch = false;
+    }
+    label105:
     return false;
   }
   
@@ -53,7 +68,7 @@ class AnonymousView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -31,14 +31,14 @@ public class CalloutPopupWindow$DrawableBuilder
     {
     default: 
       return 32;
-    case 49: 
-      return 33;
-    case 50: 
-      return 34;
+    case 52: 
+      return 35;
     case 51: 
       return 36;
+    case 50: 
+      return 34;
     }
-    return 35;
+    return 33;
   }
   
   private static Drawable a(float paramFloat, int paramInt)
@@ -84,7 +84,7 @@ public class CalloutPopupWindow$DrawableBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.DrawableBuilder
  * JD-Core Version:    0.7.0.1
  */

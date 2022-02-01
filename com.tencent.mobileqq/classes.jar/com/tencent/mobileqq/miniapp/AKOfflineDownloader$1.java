@@ -11,8 +11,14 @@ class AKOfflineDownloader$1
   
   public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AKOfflineDownloader", 2, "checkUpByBusinessId loaded, code:" + paramInt + ", param :" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkUpByBusinessId loaded, code:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", param :");
+      localStringBuilder.append(paramString);
+      QLog.d("AKOfflineDownloader", 2, localStringBuilder.toString());
     }
     if (paramInt == 0)
     {
@@ -37,7 +43,7 @@ class AKOfflineDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.AKOfflineDownloader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,18 +14,15 @@ class EmotionInputDetector$5
   {
     if ((EmotionInputDetector.a(this.a) != null) && (EmotionInputDetector.a(this.a).isShown())) {
       this.a.b();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       EmotionInputDetector.c(this.a);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.EmotionInputDetector.5
  * JD-Core Version:    0.7.0.1
  */

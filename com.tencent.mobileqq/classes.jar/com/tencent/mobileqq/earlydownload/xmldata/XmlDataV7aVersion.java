@@ -10,7 +10,7 @@ public abstract class XmlDataV7aVersion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.XmlDataV7aVersion
  * JD-Core Version:    0.7.0.1
  */

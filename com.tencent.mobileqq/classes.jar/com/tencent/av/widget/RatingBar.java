@@ -9,7 +9,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 
 public class RatingBar
   extends LinearLayout
@@ -26,12 +26,13 @@ public class RatingBar
   public RatingBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    int i = 0;
     setOrientation(0);
-    Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RatingBar);
-    this.jdField_a_of_type_Float = ((TypedArray)localObject).getDimension(11, 20.0F);
-    this.jdField_a_of_type_Int = ((TypedArray)localObject).getInteger(2, 5);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((TypedArray)localObject).getDrawable(3);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((TypedArray)localObject).getDrawable(5);
+    Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aO);
+    this.jdField_a_of_type_Float = ((TypedArray)localObject).getDimension(R.styleable.bm, 20.0F);
+    this.jdField_a_of_type_Int = ((TypedArray)localObject).getInteger(R.styleable.bj, 5);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((TypedArray)localObject).getDrawable(R.styleable.bk);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((TypedArray)localObject).getDrawable(R.styleable.bl);
     ((TypedArray)localObject).recycle();
     while (i < this.jdField_a_of_type_Int)
     {
@@ -70,33 +71,34 @@ public class RatingBar
   
   public void setStar(int paramInt, boolean paramBoolean)
   {
-    if (paramInt > this.jdField_a_of_type_Int) {
-      paramInt = this.jdField_a_of_type_Int;
+    int j = this.jdField_a_of_type_Int;
+    int i = paramInt;
+    if (paramInt > j) {
+      i = j;
     }
-    int i;
-    for (;;)
+    int k = 0;
+    j = k;
+    paramInt = i;
+    if (i < 0)
     {
-      i = paramInt;
-      if (paramInt < 0) {
-        i = 0;
-      }
       paramInt = 0;
-      while (paramInt < i)
-      {
-        ((ImageView)getChildAt(paramInt)).setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-        if (paramBoolean)
-        {
-          ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 0.0F, 1.0F, 1.0F);
-          getChildAt(paramInt).startAnimation(localScaleAnimation);
-        }
-        paramInt += 1;
-      }
+      j = k;
     }
-    paramInt = this.jdField_a_of_type_Int - 1;
-    while (paramInt >= i)
+    while (j < paramInt)
     {
-      ((ImageView)getChildAt(paramInt)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      paramInt -= 1;
+      ((ImageView)getChildAt(j)).setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+      if (paramBoolean)
+      {
+        ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 0.0F, 1.0F, 1.0F);
+        getChildAt(j).startAnimation(localScaleAnimation);
+      }
+      j += 1;
+    }
+    i = this.jdField_a_of_type_Int - 1;
+    while (i >= paramInt)
+    {
+      ((ImageView)getChildAt(i)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      i -= 1;
     }
   }
   
@@ -122,7 +124,7 @@ public class RatingBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.widget.RatingBar
  * JD-Core Version:    0.7.0.1
  */

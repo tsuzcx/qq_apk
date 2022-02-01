@@ -11,17 +11,18 @@ public class MusicMaterialMataDataBeanUtils
 {
   public static void clearMatchVolumeEffect(List<VolumeAutomaticEffect> paramList, MusicMaterialMataDataBeanUtils.IFilter paramIFilter)
   {
-    if (CollectionUtils.isEmpty(paramList)) {}
-    do
-    {
-      do
-      {
-        return;
-        while (paramIFilter == null) {}
-        paramList = paramList.iterator();
-      } while (!paramList.hasNext());
-    } while (!paramIFilter.isMatch((VolumeAutomaticEffect)paramList.next()));
-    paramList.remove();
+    if (CollectionUtils.isEmpty(paramList)) {
+      return;
+    }
+    if (paramIFilter == null) {
+      return;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (paramIFilter.isMatch((VolumeAutomaticEffect)paramList.next())) {
+        paramList.remove();
+      }
+    }
   }
   
   public static void clearSpecialEditEffect(MusicMaterialMetaDataBean paramMusicMaterialMetaDataBean)
@@ -58,23 +59,25 @@ public class MusicMaterialMataDataBeanUtils
   
   public static long getEndOutTimeFromBean(MusicMaterialMetaDataBean paramMusicMaterialMetaDataBean)
   {
-    if (paramMusicMaterialMetaDataBean == null) {}
-    do
-    {
+    if (paramMusicMaterialMetaDataBean == null) {
       return 0L;
-      paramMusicMaterialMetaDataBean = findMatchEffectFromBean(paramMusicMaterialMetaDataBean.mVolumeAutomaticEffectList, new MusicMaterialMataDataBeanUtils.EndOutEffectFilter(null));
-    } while (paramMusicMaterialMetaDataBean == null);
+    }
+    paramMusicMaterialMetaDataBean = findMatchEffectFromBean(paramMusicMaterialMetaDataBean.mVolumeAutomaticEffectList, new MusicMaterialMataDataBeanUtils.EndOutEffectFilter(null));
+    if (paramMusicMaterialMetaDataBean == null) {
+      return 0L;
+    }
     return paramMusicMaterialMetaDataBean.getDuration();
   }
   
   public static long getStartInTimeFromBean(MusicMaterialMetaDataBean paramMusicMaterialMetaDataBean)
   {
-    if (paramMusicMaterialMetaDataBean == null) {}
-    do
-    {
+    if (paramMusicMaterialMetaDataBean == null) {
       return 0L;
-      paramMusicMaterialMetaDataBean = findMatchEffectFromBean(paramMusicMaterialMetaDataBean.mVolumeAutomaticEffectList, new MusicMaterialMataDataBeanUtils.StartInEffectFilter(null));
-    } while (paramMusicMaterialMetaDataBean == null);
+    }
+    paramMusicMaterialMetaDataBean = findMatchEffectFromBean(paramMusicMaterialMetaDataBean.mVolumeAutomaticEffectList, new MusicMaterialMataDataBeanUtils.StartInEffectFilter(null));
+    if (paramMusicMaterialMetaDataBean == null) {
+      return 0L;
+    }
     return paramMusicMaterialMetaDataBean.getDuration();
   }
   
@@ -106,7 +109,7 @@ public class MusicMaterialMataDataBeanUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.utils.MusicMaterialMataDataBeanUtils
  * JD-Core Version:    0.7.0.1
  */

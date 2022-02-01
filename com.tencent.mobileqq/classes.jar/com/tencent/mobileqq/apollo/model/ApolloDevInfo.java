@@ -1,0 +1,21 @@
+package com.tencent.mobileqq.apollo.model;
+
+public class ApolloDevInfo
+{
+  public String model;
+  public float pixelRatio;
+  public String platform;
+  public String qqVersion;
+  public float screenHeight;
+  public float screenWidth;
+  public String system;
+  public String version;
+  public float windowHeight;
+  public float windowWidth;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.mobileqq.apollo.model.ApolloDevInfo
+ * JD-Core Version:    0.7.0.1
+ */

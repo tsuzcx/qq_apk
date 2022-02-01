@@ -10,22 +10,24 @@ final class dg$1
   public final void a(String paramString)
   {
     this.a.putString("msg_suc", paramString);
-    if (this.b != null) {
-      this.b.a(paramString);
+    de localde = this.b;
+    if (localde != null) {
+      localde.a(paramString);
     }
   }
   
   public final void b(String paramString)
   {
     this.a.putString("msg_fail", paramString);
-    if (this.b != null) {
-      this.b.b(paramString);
+    de localde = this.b;
+    if (localde != null) {
+      localde.b(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dg.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,14 @@
 package com.tencent.mobileqq.richmediabrowser.model;
 
 import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import com.tencent.richmediabrowser.model.RichMediaBaseData;
 
 public class AIOVideoData
   extends AIOBrowserBaseData
 {
+  public static final Parcelable.Creator<RichMediaBaseData> CREATOR = new AIOVideoData.1();
   public String a = "I:N";
   public String b = "I:N";
   public int c;
@@ -22,26 +25,15 @@ public class AIOVideoData
   public String f;
   public boolean f;
   public int g;
-  public String g;
   public boolean g;
   public int h;
-  public String h;
   public boolean h;
-  public int i = 0;
-  public boolean i;
-  public int j;
-  public int k = 0;
-  public int l;
-  public int m;
+  public int i;
   
   public AIOVideoData()
   {
-    this.jdField_g_of_type_Int = 0;
     this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_h_of_type_Int = 0;
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = null;
+    this.jdField_d_of_type_JavaLangString = null;
     this.jdField_f_of_type_Boolean = false;
     this.jdField_g_of_type_Boolean = false;
   }
@@ -66,16 +58,10 @@ public class AIOVideoData
     this.jdField_e_of_type_Int = paramParcel.readInt();
     this.jdField_f_of_type_Int = paramParcel.readInt();
     this.jdField_e_of_type_Long = paramParcel.readLong();
-    this.jdField_g_of_type_Int = paramParcel.readInt();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_h_of_type_Int = paramParcel.readInt();
+    this.jdField_g_of_type_Int = paramParcel.readInt();
     this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.i = paramParcel.readInt();
-    this.k = paramParcel.readInt();
-    this.j = paramParcel.readInt();
-    this.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_f_of_type_JavaLangString = paramParcel.readString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -88,21 +74,15 @@ public class AIOVideoData
     paramParcel.writeInt(this.jdField_e_of_type_Int);
     paramParcel.writeInt(this.jdField_f_of_type_Int);
     paramParcel.writeLong(this.jdField_e_of_type_Long);
-    paramParcel.writeInt(this.jdField_g_of_type_Int);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_h_of_type_Int);
+    paramParcel.writeInt(this.jdField_g_of_type_Int);
     paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeInt(this.i);
-    paramParcel.writeInt(this.k);
-    paramParcel.writeInt(this.j);
-    paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOVideoData
  * JD-Core Version:    0.7.0.1
  */

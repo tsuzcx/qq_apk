@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule.CallJs;
+import com.tencent.mobileqq.kandian.biz.fastweb.CallJs;
 
 class PublicAccountH5AbilityPluginImpl$11
-  implements BridgeModule.CallJs
+  implements CallJs
 {
   PublicAccountH5AbilityPluginImpl$11(PublicAccountH5AbilityPluginImpl paramPublicAccountH5AbilityPluginImpl) {}
   
@@ -14,7 +14,7 @@ class PublicAccountH5AbilityPluginImpl$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.11
  * JD-Core Version:    0.7.0.1
  */

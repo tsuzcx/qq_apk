@@ -38,35 +38,30 @@ public class FriendChatReceiver
     if (k != 0) {
       bool = false;
     }
-    int i;
-    if ((bool) && (localRspBody.uint32_result.has()) && (localRspBody.uint32_result.get() == 0))
-    {
+    if ((bool) && (localRspBody.uint32_result.has()) && (localRspBody.uint32_result.get() == 0)) {
       bool = true;
-      paramFromServiceMsg = paramToServiceMsg.extraData.getString("selfUin", "");
-      paramToServiceMsg = paramToServiceMsg.extraData.getString("frdUin", "");
-      if (!localRspBody.uint32_retry_interval.has()) {
-        break label222;
-      }
-      i = localRspBody.uint32_retry_interval.get();
-      label113:
-      if (QLog.isColorLevel()) {
-        if (!localRspBody.uint32_result.has()) {
-          break label228;
-        }
-      }
-    }
-    label222:
-    label228:
-    for (int j = localRspBody.uint32_result.get();; j = -1)
-    {
-      QLog.i("FriendReactive", 2, String.format("handleReqRecheckInHotReactive suc=%b oidb=%d result=%d interval=%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) }));
-      a(116, bool, new Object[] { paramFromServiceMsg, paramToServiceMsg, Integer.valueOf(i) });
-      return;
+    } else {
       bool = false;
-      break;
-      i = 0;
-      break label113;
     }
+    paramFromServiceMsg = paramToServiceMsg.extraData.getString("selfUin", "");
+    paramToServiceMsg = paramToServiceMsg.extraData.getString("frdUin", "");
+    int i;
+    if (localRspBody.uint32_retry_interval.has()) {
+      i = localRspBody.uint32_retry_interval.get();
+    } else {
+      i = 0;
+    }
+    if (QLog.isColorLevel())
+    {
+      int j;
+      if (localRspBody.uint32_result.has()) {
+        j = localRspBody.uint32_result.get();
+      } else {
+        j = -1;
+      }
+      QLog.i("FriendReactive", 2, String.format("handleReqRecheckInHotReactive suc=%b oidb=%d result=%d interval=%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) }));
+    }
+    a(114, bool, new Object[] { paramFromServiceMsg, paramToServiceMsg, Integer.valueOf(i) });
   }
   
   private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -78,58 +73,55 @@ public class FriendChatReceiver
     if (m != 0) {
       bool = false;
     }
-    int i;
-    label113:
-    long l;
-    int k;
-    if ((bool) && (localRspBody.uint32_result.has()) && (localRspBody.uint32_result.get() == 0))
-    {
+    int j;
+    if ((bool) && (localRspBody.uint32_result.has()) && (localRspBody.uint32_result.get() == 0)) {
       j = 1;
-      paramFromServiceMsg = paramToServiceMsg.extraData.getString("selfUin", "");
-      paramToServiceMsg = paramToServiceMsg.extraData.getString("frdUin", "");
-      if (!localRspBody.uint32_recent_interaction_time.has()) {
-        break label265;
-      }
-      i = localRspBody.uint32_recent_interaction_time.get();
-      l = i;
-      if (i > 0) {
-        l = 1000L * (86400 * i - 28800);
-      }
-      if (l < 0L) {
-        break label271;
-      }
-      k = 1;
-      label149:
-      bool = k & j;
-      if (QLog.isColorLevel()) {
-        if (!localRspBody.uint32_result.has()) {
-          break label277;
-        }
-      }
-    }
-    label265:
-    label271:
-    label277:
-    for (int j = localRspBody.uint32_result.get();; j = -1)
-    {
-      QLog.i("IceBreak", 2, String.format("handleReqLastChatTime suc=%b oidb=%d result=%d ts=%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(i) }));
-      a(117, bool, new Object[] { paramFromServiceMsg, paramToServiceMsg, Long.valueOf(l) });
-      return;
+    } else {
       j = 0;
-      break;
-      i = 0;
-      break label113;
-      k = 0;
-      break label149;
     }
+    paramFromServiceMsg = paramToServiceMsg.extraData.getString("selfUin", "");
+    paramToServiceMsg = paramToServiceMsg.extraData.getString("frdUin", "");
+    int i;
+    if (localRspBody.uint32_recent_interaction_time.has()) {
+      i = localRspBody.uint32_recent_interaction_time.get();
+    } else {
+      i = 0;
+    }
+    long l = i;
+    if (i > 0) {
+      l = 1000L * (86400 * i - 28800);
+    }
+    int k;
+    if (l >= 0L) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    bool = j & k;
+    if (QLog.isColorLevel())
+    {
+      if (localRspBody.uint32_result.has()) {
+        j = localRspBody.uint32_result.get();
+      } else {
+        j = -1;
+      }
+      QLog.i("IceBreak", 2, String.format("handleReqLastChatTime suc=%b oidb=%d result=%d ts=%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(i) }));
+    }
+    a(115, bool, new Object[] { paramFromServiceMsg, paramToServiceMsg, Long.valueOf(l) });
   }
   
   private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("tag_msg_notification", 2, "FriendListHandler.handleSetMessageNotificationSettingResp(). res=" + paramFromServiceMsg + ", data=" + paramObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("FriendListHandler.handleSetMessageNotificationSettingResp(). res=");
+      ((StringBuilder)localObject).append(paramFromServiceMsg);
+      ((StringBuilder)localObject).append(", data=");
+      ((StringBuilder)localObject).append(paramObject);
+      QLog.d("tag_msg_notification", 2, ((StringBuilder)localObject).toString());
     }
-    MessageNotificationSettingManager localMessageNotificationSettingManager = MessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject = MessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     int j = paramToServiceMsg.extraData.getInt("param_type");
     String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("param_uins");
     boolean[] arrayOfBoolean = paramToServiceMsg.extraData.getBooleanArray("param_switch_state");
@@ -143,50 +135,53 @@ public class FriendChatReceiver
       }
       catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
-        for (;;)
-        {
-          int i;
-          if (QLog.isColorLevel()) {
-            QLog.d("tag_hidden_chat", 2, "parse oidb_sso.OIDBSSOPkg failed.");
-          }
-          paramFromServiceMsg.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("tag_hidden_chat", 2, "parse oidb_sso.OIDBSSOPkg failed.");
         }
-        bool = true;
+        paramFromServiceMsg.printStackTrace();
       }
       if (paramToServiceMsg.uint32_result.has())
       {
-        i = paramToServiceMsg.uint32_result.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("tag_hidden_chat", 2, "ssoPkg.uint32_result=" + i);
+        int i = paramToServiceMsg.uint32_result.get();
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("ssoPkg.uint32_result=");
+          paramToServiceMsg.append(i);
+          QLog.d("tag_hidden_chat", 2, paramToServiceMsg.toString());
         }
         if (i == 0)
         {
           i = 0;
           while (i < arrayOfString.length)
           {
-            localMessageNotificationSettingManager.a(arrayOfString[i], j, arrayOfBoolean[i]);
+            ((MessageNotificationSettingManager)localObject).a(arrayOfString[i], j, arrayOfBoolean[i]);
             i += 1;
           }
+          bool = true;
+          break label268;
         }
       }
     }
-    for (;;)
-    {
-      a(130, bool, new Object[] { arrayOfString, arrayOfBoolean, Integer.valueOf(j) });
-      return;
-      boolean bool = false;
-    }
+    boolean bool = false;
+    label268:
+    a(128, bool, new Object[] { arrayOfString, arrayOfBoolean, Integer.valueOf(j) });
   }
   
   private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("tag_hidden_chat", 2, "FriendListHandler.handleSetHiddenChatResp(). res=" + paramFromServiceMsg + ", data=" + paramObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("FriendListHandler.handleSetHiddenChatResp(). res=");
+      ((StringBuilder)localObject).append(paramFromServiceMsg);
+      ((StringBuilder)localObject).append(", data=");
+      ((StringBuilder)localObject).append(paramObject);
+      QLog.d("tag_hidden_chat", 2, ((StringBuilder)localObject).toString());
     }
-    String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("param_uins");
+    Object localObject = paramToServiceMsg.extraData.getStringArray("param_uins");
     int[] arrayOfInt = paramToServiceMsg.extraData.getIntArray("param_chat_types");
     boolean[] arrayOfBoolean = paramToServiceMsg.extraData.getBooleanArray("param_switch_state");
-    int k;
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null))
     {
       paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -197,53 +192,46 @@ public class FriendChatReceiver
       }
       catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
-        for (;;)
-        {
-          int i;
-          if (QLog.isColorLevel()) {
-            QLog.d("tag_hidden_chat", 2, "parse oidb_sso.OIDBSSOPkg failed.");
-          }
-          paramFromServiceMsg.printStackTrace();
-          continue;
-          paramToServiceMsg.a(null);
+        if (QLog.isColorLevel()) {
+          QLog.d("tag_hidden_chat", 2, "parse oidb_sso.OIDBSSOPkg failed.");
         }
-        k = 1;
+        paramFromServiceMsg.printStackTrace();
       }
       if (paramToServiceMsg.uint32_result.has())
       {
-        i = paramToServiceMsg.uint32_result.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("tag_hidden_chat", 2, "ssoPkg.uint32_result=" + i);
+        int i = paramToServiceMsg.uint32_result.get();
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("ssoPkg.uint32_result=");
+          paramToServiceMsg.append(i);
+          QLog.d("tag_hidden_chat", 2, paramToServiceMsg.toString());
         }
         if (i == 0)
         {
           i = 0;
-          for (;;)
+          while (i < localObject.length)
           {
-            if (i >= arrayOfString.length) {
-              break label274;
-            }
-            paramToServiceMsg = arrayOfString[i];
+            paramToServiceMsg = localObject[i];
             k = arrayOfBoolean[i];
             int j = arrayOfInt[i];
             paramToServiceMsg = new FriendsStatusUtil.UpdateFriendStatusItem(paramToServiceMsg, 13581, 21);
-            if (k == 0) {
-              break;
+            if (k != 0) {
+              paramToServiceMsg.a(new byte[1]);
+            } else {
+              paramToServiceMsg.a(null);
             }
-            paramToServiceMsg.a(new byte[1]);
             FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramToServiceMsg, null);
             i += 1;
           }
+          k = 1;
+          break label305;
         }
       }
     }
-    for (;;)
-    {
-      label274:
-      a(129, k, new Object[] { arrayOfString, arrayOfBoolean });
-      return;
-      int m = 0;
-    }
+    int k = 0;
+    label305:
+    a(127, k, new Object[] { localObject, arrayOfBoolean });
   }
   
   public boolean a(String paramString)
@@ -254,29 +242,29 @@ public class FriendChatReceiver
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    if ("OidbSvc.0xc83".equals(str)) {
-      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    do
+    if ("OidbSvc.0xc83".equals(str))
     {
+      d(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
-      if ("OidbSvc.0xc85".equals(str))
+    }
+    if ("OidbSvc.0xc85".equals(str))
+    {
+      e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0x5d6_21".equals(str))
+    {
+      if (paramToServiceMsg.extraData.getInt("param_type") == 0)
       {
-        e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        g(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
-      if ("OidbSvc.0x5d6_21".equals(str))
-      {
-        if (paramToServiceMsg.extraData.getInt("param_type") == 0)
-        {
-          g(paramToServiceMsg, paramFromServiceMsg, paramObject);
-          return;
-        }
-        f(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while ((!"OidbSvc.0x5d6_18".equals(str)) && (!"OidbSvc.0x5d6_19".equals(str)));
-    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (("OidbSvc.0x5d6_18".equals(str)) || ("OidbSvc.0x5d6_19".equals(str))) {
+      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
   
   public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -284,26 +272,22 @@ public class FriendChatReceiver
     int i = paramToServiceMsg.extraData.getInt("param_type", -1);
     ArrayList localArrayList = paramToServiceMsg.extraData.getParcelableArrayList("param_status_item_list");
     boolean bool = paramToServiceMsg.extraData.getBoolean("param_notify_plugin", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage serviceType=" + i);
-    }
-    if ((paramFromServiceMsg == null) || (paramObject == null) || (!paramFromServiceMsg.isSuccess()))
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage req failed!");
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handle0x5d6ResponsePackage serviceType=");
+      paramToServiceMsg.append(i);
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 4, paramToServiceMsg.toString());
+    }
+    if ((paramFromServiceMsg != null) && (paramObject != null) && (paramFromServiceMsg.isSuccess()))
+    {
+      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+      try
+      {
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
+        paramToServiceMsg = paramFromServiceMsg;
       }
-      FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
-      return;
-    }
-    paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
-      paramToServiceMsg = paramFromServiceMsg;
-    }
-    catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
         if (QLog.isColorLevel()) {
           QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage parse oidb_sso.OIDBSSOPkg failed.");
@@ -311,61 +295,65 @@ public class FriendChatReceiver
         FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
         paramFromServiceMsg.printStackTrace();
       }
-      int j = paramToServiceMsg.uint32_result.get();
-      if (!QLog.isColorLevel()) {
-        break label285;
-      }
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "ssoPkg.uint32_result=" + j);
-      label285:
-      if (j != 0) {
-        break label419;
-      }
-      paramFromServiceMsg = new oidb_0x5d6.RspBody();
-      try
+      if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null))
       {
-        paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-        paramToServiceMsg = paramFromServiceMsg.rpt_msg_update_result.get();
-        if ((paramToServiceMsg == null) || (paramToServiceMsg.isEmpty()))
+        int j = paramToServiceMsg.uint32_result.get();
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage resultList null!");
-          }
-          FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
-          return;
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("ssoPkg.uint32_result=");
+          paramFromServiceMsg.append(j);
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 4, paramFromServiceMsg.toString());
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
+        if (j == 0)
+        {
+          paramFromServiceMsg = new oidb_0x5d6.RspBody();
+          try
+          {
+            paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+            paramToServiceMsg = paramFromServiceMsg.rpt_msg_update_result.get();
+            if ((paramToServiceMsg != null) && (!paramToServiceMsg.isEmpty()))
+            {
+              FriendsStatusUtil.a(i, true, localArrayList, paramToServiceMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+              return;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage resultList null!");
+            }
+            FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+            return;
+          }
+          catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage res failed!");
+            }
+            FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
+            paramToServiceMsg.printStackTrace();
+            return;
+          }
+        }
         if (QLog.isColorLevel()) {
-          QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage res failed!");
+          QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage uint32_result failed!");
         }
         FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
-        paramToServiceMsg.printStackTrace();
         return;
       }
-      FriendsStatusUtil.a(i, true, localArrayList, paramToServiceMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
-      return;
-      label419:
-      if (!QLog.isColorLevel()) {
-        break label435;
-      }
-      QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage uint32_result failed!");
-      label435:
-      FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
-    }
-    if ((!paramToServiceMsg.uint32_result.has()) || (!paramToServiceMsg.bytes_bodybuffer.has()) || (paramToServiceMsg.bytes_bodybuffer.get() == null))
-    {
       if (QLog.isColorLevel()) {
         QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage res failed!");
       }
       FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendListHandler.BaseHandlerReceiver", 4, "handle0x5d6ResponsePackage req failed!");
+    }
+    FriendsStatusUtil.a(i, false, localArrayList, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.FriendChatReceiver
  * JD-Core Version:    0.7.0.1
  */

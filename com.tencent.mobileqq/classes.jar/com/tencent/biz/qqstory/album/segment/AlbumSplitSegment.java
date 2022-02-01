@@ -24,12 +24,6 @@ public class AlbumSplitSegment
   private ArrayList<StoryAlbum> jdField_a_of_type_JavaUtilArrayList;
   private List<BaseAlbumFilter> jdField_a_of_type_JavaUtilList;
   
-  public AlbumSplitSegment(ScanInfo paramScanInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo = paramScanInfo;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
   private List<BaseAlbumFilter> a(long paramLong1, long paramLong2)
   {
     int i = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt("kmeans_interval_txt", 1);
@@ -79,7 +73,10 @@ public class AlbumSplitSegment
       while (localIterator.hasNext())
       {
         StoryAlbum localStoryAlbum = (StoryAlbum)localIterator.next();
-        SLog.b("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", "onFilterFinish album:" + localStoryAlbum.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onFilterFinish album:");
+        localStringBuilder.append(localStoryAlbum.toString());
+        SLog.b("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", localStringBuilder.toString());
       }
       this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
     }
@@ -88,7 +85,7 @@ public class AlbumSplitSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.segment.AlbumSplitSegment
  * JD-Core Version:    0.7.0.1
  */

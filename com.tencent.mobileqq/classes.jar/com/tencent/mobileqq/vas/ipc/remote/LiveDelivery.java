@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -43,50 +45,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.app.AppRuntime;
+import org.jetbrains.annotations.Nullable;
 
 public class LiveDelivery
   implements ILiveDelivery
 {
   private static final String TAG = "LiveDelivery";
   
-  public void followUin(String paramString, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
+  @Nullable
+  private TogetherControlManager.EntryBannerInfo getEntryBannerInfo(TianShuAccess.RspEntry paramRspEntry)
   {
-    paramEIPCResultCallback = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).followUin(paramEIPCResultCallback, BaseApplicationImpl.getContext(), paramString, new LiveDelivery.3(this, paramEIPCModule, paramInt, paramEIPCResultCallback), false, 0, true);
-  }
-  
-  public long getAccount()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-  }
-  
-  public TogetherControlManager.EntryBannerInfo getAdsInfo(TianShuAccess.GetAdsRsp paramGetAdsRsp, int paramInt)
-  {
-    if (paramGetAdsRsp == null) {
-      return null;
-    }
-    if (paramGetAdsRsp.mapAds.has()) {}
-    for (paramGetAdsRsp = paramGetAdsRsp.mapAds.get(); paramGetAdsRsp == null; paramGetAdsRsp = null) {
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    paramGetAdsRsp = paramGetAdsRsp.iterator();
-    Object localObject1;
-    while (paramGetAdsRsp.hasNext())
+    if (paramRspEntry.value.lst.size() > 0)
     {
-      localObject1 = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
-      if ((localObject1 != null) && (((TianShuAccess.RspEntry)localObject1).key.has())) {
-        localHashMap.put(Integer.valueOf(((TianShuAccess.RspEntry)localObject1).key.get()), localObject1);
-      }
-    }
-    paramGetAdsRsp = (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(paramInt));
-    if ((paramGetAdsRsp == null) || (paramGetAdsRsp.value == null) || (paramGetAdsRsp.value.lst.size() == 0) || (paramGetAdsRsp.value.lst.get(0) == null) || (((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList == null) || (((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList.get() == null)) {
-      return null;
-    }
-    if (paramGetAdsRsp.value.lst.size() < 0)
-    {
-      localObject1 = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0)).argList.get();
-      localHashMap = new HashMap();
+      Object localObject1 = ((TianShuAccess.AdItem)paramRspEntry.value.lst.get(0)).argList.get();
+      HashMap localHashMap = new HashMap();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
@@ -101,14 +73,59 @@ public class LiveDelivery
       ((TogetherControlManager.EntryBannerInfo)localObject1).jdField_a_of_type_JavaLangString = ((String)localHashMap.get("type"));
       ((TogetherControlManager.EntryBannerInfo)localObject1).c = ((String)localHashMap.get("pic"));
       ((TogetherControlManager.EntryBannerInfo)localObject1).b = ((String)localHashMap.get("url"));
-      ((TogetherControlManager.EntryBannerInfo)localObject1).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramGetAdsRsp.value.lst.get(0));
-      if (!TextUtils.isEmpty(((TogetherControlManager.EntryBannerInfo)localObject1).c)) {}
+      ((TogetherControlManager.EntryBannerInfo)localObject1).jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem = ((TianShuAccess.AdItem)paramRspEntry.value.lst.get(0));
+      if (!TextUtils.isEmpty(((TogetherControlManager.EntryBannerInfo)localObject1).c)) {
+        return localObject1;
+      }
     }
-    else
-    {
+    return null;
+  }
+  
+  private boolean isResEntrylst(TianShuAccess.RspEntry paramRspEntry)
+  {
+    return (paramRspEntry == null) || (paramRspEntry.value == null) || (paramRspEntry.value.lst.size() == 0) || (paramRspEntry.value.lst.get(0) == null) || (((TianShuAccess.AdItem)paramRspEntry.value.lst.get(0)).argList == null) || (((TianShuAccess.AdItem)paramRspEntry.value.lst.get(0)).argList.get() == null);
+  }
+  
+  public void followUin(String paramString, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
+  {
+    paramEIPCResultCallback = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    IPublicAccountObserver localIPublicAccountObserver = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
+    localIPublicAccountObserver.setOnCallback(new LiveDelivery.3(this, paramEIPCModule, paramInt, paramEIPCResultCallback));
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).followUin(paramEIPCResultCallback, BaseApplicationImpl.getContext(), paramString, localIPublicAccountObserver, false, 0, true);
+  }
+  
+  public long getAccount()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+  }
+  
+  public TogetherControlManager.EntryBannerInfo getAdsInfo(TianShuAccess.GetAdsRsp paramGetAdsRsp, int paramInt)
+  {
+    if (paramGetAdsRsp == null) {
       return null;
     }
-    return localObject1;
+    if (paramGetAdsRsp.mapAds.has()) {
+      paramGetAdsRsp = paramGetAdsRsp.mapAds.get();
+    } else {
+      paramGetAdsRsp = null;
+    }
+    if (paramGetAdsRsp == null) {
+      return null;
+    }
+    HashMap localHashMap = new HashMap();
+    paramGetAdsRsp = paramGetAdsRsp.iterator();
+    while (paramGetAdsRsp.hasNext())
+    {
+      TianShuAccess.RspEntry localRspEntry = (TianShuAccess.RspEntry)paramGetAdsRsp.next();
+      if ((localRspEntry != null) && (localRspEntry.key.has())) {
+        localHashMap.put(Integer.valueOf(localRspEntry.key.get()), localRspEntry);
+      }
+    }
+    paramGetAdsRsp = (TianShuAccess.RspEntry)localHashMap.get(Integer.valueOf(paramInt));
+    if (isResEntrylst(paramGetAdsRsp)) {
+      return null;
+    }
+    return getEntryBannerInfo(paramGetAdsRsp);
   }
   
   public boolean isFollowUin(String paramString)
@@ -137,30 +154,30 @@ public class LiveDelivery
   
   public void openSchema(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.d("LiveDelivery", 2, "openSchema empty");
-    }
-    do
+    if (TextUtils.isEmpty(paramString))
     {
+      QLog.d("LiveDelivery", 2, "openSchema empty");
       return;
-      Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (URLUtil.isNetworkUrl(paramString))
-      {
-        localObject = new Intent(BaseApplicationImpl.getApplication().getApplicationContext(), QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", paramString);
-        ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
-        ((Intent)localObject).addFlags(268435456);
-        BaseApplicationImpl.getApplication().getApplicationContext().startActivity((Intent)localObject);
-        return;
-      }
-      paramString = JumpParser.a((QQAppInterface)localObject, BaseApplicationImpl.getApplication().getApplicationContext(), paramString);
-      if (paramString != null)
-      {
-        paramString.a();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LiveDelivery", 2, "onEditorAction jumpUrl is illegal");
+    }
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (URLUtil.isNetworkUrl(paramString))
+    {
+      localObject = new Intent(BaseApplicationImpl.getApplication().getApplicationContext(), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramString);
+      ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
+      ((Intent)localObject).addFlags(268435456);
+      BaseApplicationImpl.getApplication().getApplicationContext().startActivity((Intent)localObject);
+      return;
+    }
+    paramString = JumpParser.a((BaseQQAppInterface)localObject, BaseApplicationImpl.getApplication().getApplicationContext(), paramString);
+    if (paramString != null)
+    {
+      paramString.a();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LiveDelivery", 2, "onEditorAction jumpUrl is illegal");
+    }
   }
   
   public void reportAction(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, int paramInt1, int paramInt2)
@@ -177,13 +194,18 @@ public class LiveDelivery
   public void reportTianshu(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     TianShuReportData localTianShuReportData = new TianShuReportData();
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    String str = "";
-    if (localAppRuntime != null) {
-      str = localAppRuntime.getAccount();
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getAccount();
+    } else {
+      localObject = "";
     }
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    localTianShuReportData.b = (str + "_" + l);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("_");
+    localStringBuilder.append(l);
+    localTianShuReportData.b = localStringBuilder.toString();
     localTianShuReportData.jdField_a_of_type_Int = paramInt2;
     localTianShuReportData.jdField_e_of_type_JavaLangString = paramString1;
     localTianShuReportData.f = paramString2;
@@ -236,12 +258,14 @@ public class LiveDelivery
   public void unfollowUin(String paramString, EIPCModule paramEIPCModule, int paramInt, EIPCResultCallback paramEIPCResultCallback)
   {
     paramEIPCResultCallback = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).unfollowUin(paramEIPCResultCallback, BaseApplicationImpl.getContext(), paramString, false, new LiveDelivery.4(this, paramEIPCModule, paramInt), true);
+    IPublicAccountObserver localIPublicAccountObserver = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
+    localIPublicAccountObserver.setOnCallback(new LiveDelivery.4(this, paramEIPCModule, paramInt));
+    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).unfollowUin(paramEIPCResultCallback, BaseApplicationImpl.getContext(), paramString, false, localIPublicAccountObserver, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.LiveDelivery
  * JD-Core Version:    0.7.0.1
  */

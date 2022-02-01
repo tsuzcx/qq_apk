@@ -10,12 +10,13 @@ class ExtfBaseFileDownloader$1
     if (this.this$0.a) {
       return;
     }
-    this.this$0.a(this.a, this.this$0.b, this.b);
+    ExtfBaseFileDownloader localExtfBaseFileDownloader = this.this$0;
+    localExtfBaseFileDownloader.a(this.a, localExtfBaseFileDownloader.b, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.download.downloader.ExtfBaseFileDownloader.1
  * JD-Core Version:    0.7.0.1
  */

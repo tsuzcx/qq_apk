@@ -13,7 +13,7 @@ import com.tencent.biz.qqstory.troop.TroopStoryUtil;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.SVUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
@@ -51,6 +51,7 @@ public class PlayingListPreloader
     ArrayList localArrayList2 = new ArrayList();
     boolean bool1 = localArrayList1.contains(paramString);
     boolean bool2 = VideoViewFactory.a(BaseApplicationImpl.getContext()).a();
+    Boolean localBoolean = Boolean.valueOf(true);
     Object localObject1;
     Object localObject2;
     if (bool2)
@@ -60,36 +61,10 @@ public class PlayingListPreloader
       ((DownloadTask)localObject1).g = 0;
       ((DownloadTask)localObject2).g = 1;
       localArrayList2.add(localObject1);
-      ((DownloadTask)localObject1).a.put("handleCallback", Boolean.valueOf(true));
-      if (paramVarArgs == null) {
-        break label398;
-      }
-      int j = paramVarArgs.length;
-      i = 0;
-      label113:
-      if (i >= j) {
-        break label398;
-      }
-      localObject1 = paramVarArgs[i];
-      if ((localObject1 != null) && (!((String)localObject1).startsWith("fake_vid_")))
-      {
-        if (!bool2) {
-          break label339;
-        }
-        localObject2 = DownloadTask.a((String)localObject1, 1);
-        localArrayList2.add(localObject2);
-        ((DownloadTask)localObject2).a.put("handleCallback", Boolean.valueOf(true));
-        localObject2 = FileCacheUtils.a((String)localObject1, 0, true, true);
-        if (localObject2 == null) {
-          break label320;
-        }
-        ((DownloadUrlManager)SuperManager.a(28)).a((String)localObject1, 0, new PlayingListPreloader.2(this, (File)localObject2, (String)localObject1));
-      }
+      ((DownloadTask)localObject1).a.put("handleCallback", localBoolean);
     }
-    for (;;)
+    else
     {
-      i += 1;
-      break label113;
       localObject1 = DownloadTask.a(paramString, 1);
       ((DownloadTask)localObject1).g = 0;
       localObject2 = DownloadTask.a(paramString, 0, bool1);
@@ -99,18 +74,39 @@ public class PlayingListPreloader
       localArrayList2.add(localObject1);
       localArrayList2.add(localObject2);
       localArrayList2.add(localDownloadTask);
-      ((DownloadTask)localObject2).a.put("handleCallback", Boolean.valueOf(true));
-      break;
-      label320:
-      SLog.e("Q.qqstory.download.preload.PlayingListPreloader", "triggerDownload : supportStreamPlay=true : TVK preload : ignore ! vid=%s", new Object[] { localObject1 });
-      continue;
-      label339:
-      localArrayList2.add(DownloadTask.a((String)localObject1, 1));
-      localObject1 = DownloadTask.a(paramString, 0, localArrayList1.contains(paramString));
-      localArrayList2.add(localObject1);
-      ((DownloadTask)localObject1).a.put("handleCallback", Boolean.valueOf(true));
+      ((DownloadTask)localObject2).a.put("handleCallback", localBoolean);
     }
-    label398:
+    if (paramVarArgs != null)
+    {
+      int j = paramVarArgs.length;
+      i = 0;
+      while (i < j)
+      {
+        localObject1 = paramVarArgs[i];
+        if ((localObject1 != null) && (!((String)localObject1).startsWith("fake_vid_"))) {
+          if (bool2)
+          {
+            localObject2 = DownloadTask.a((String)localObject1, 1);
+            localArrayList2.add(localObject2);
+            ((DownloadTask)localObject2).a.put("handleCallback", localBoolean);
+            localObject2 = FileCacheUtils.a((String)localObject1, 0, true, true);
+            if (localObject2 != null) {
+              ((DownloadUrlManager)SuperManager.a(28)).a((String)localObject1, 0, new PlayingListPreloader.2(this, (File)localObject2, (String)localObject1));
+            } else {
+              SLog.e("Q.qqstory.download.preload.PlayingListPreloader", "triggerDownload : supportStreamPlay=true : TVK preload : ignore ! vid=%s", new Object[] { localObject1 });
+            }
+          }
+          else
+          {
+            localArrayList2.add(DownloadTask.a((String)localObject1, 1));
+            localObject1 = DownloadTask.a(paramString, 0, localArrayList1.contains(paramString));
+            localArrayList2.add(localObject1);
+            ((DownloadTask)localObject1).a.put("handleCallback", localBoolean);
+          }
+        }
+        i += 1;
+      }
+    }
     int i = 0;
     while (i < localArrayList2.size())
     {
@@ -127,7 +123,7 @@ public class PlayingListPreloader
     if (Math.abs(l - this.jdField_a_of_type_Long) > 5000L)
     {
       this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Boolean = NetworkUtil.h(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Boolean = NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext());
     }
     return this.jdField_a_of_type_Boolean;
   }
@@ -142,49 +138,40 @@ public class PlayingListPreloader
   
   protected String a(String paramString, boolean paramBoolean)
   {
-    Object localObject2 = null;
     if ((!this.c.isEmpty()) && (this.c.contains(paramString)))
     {
       QQStoryContext.a();
       paramString = TroopStoryUtil.a(QQStoryContext.a(), paramString);
-      if (!(paramString instanceof MessageForShortVideo)) {
-        break label141;
+      if ((paramString instanceof MessageForShortVideo)) {
+        paramString = (MessageForShortVideo)paramString;
+      } else {
+        paramString = null;
       }
-    }
-    label141:
-    for (paramString = (MessageForShortVideo)paramString;; paramString = null)
-    {
-      Object localObject1 = localObject2;
       if (paramString != null)
       {
-        paramString = ShortVideoUtils.getShortVideoSavePath(paramString, "mp4");
-        if (!FileUtils.c(paramString)) {
-          break label77;
+        paramString = SVUtils.a(paramString, "mp4");
+        if (FileUtils.c(paramString)) {
+          return paramString;
         }
-        localObject1 = paramString;
+        return null;
       }
-      label77:
-      do
-      {
-        do
-        {
-          return localObject1;
-          paramString = null;
-          break;
-          if (a(paramString))
-          {
-            localObject1 = FileCacheUtils.a(paramString, 0, paramBoolean, paramBoolean);
-            if (localObject1 != null) {
-              return ((File)localObject1).getAbsolutePath();
-            }
-          }
-          localObject1 = localObject2;
-        } while (!StoryVideoItem.isFakeVid(paramString));
-        paramString = ((StoryManager)SuperManager.a(5)).a(paramString);
-        localObject1 = localObject2;
-      } while (paramString == null);
-      return paramString.mLocalVideoPath;
+      return null;
     }
+    if (a(paramString))
+    {
+      File localFile = FileCacheUtils.a(paramString, 0, paramBoolean, paramBoolean);
+      if (localFile != null) {
+        return localFile.getAbsolutePath();
+      }
+    }
+    if (StoryVideoItem.isFakeVid(paramString))
+    {
+      paramString = ((StoryManager)SuperManager.a(5)).a(paramString);
+      if (paramString != null) {
+        return paramString.mLocalVideoPath;
+      }
+    }
+    return null;
   }
   
   public void a()
@@ -221,121 +208,104 @@ public class PlayingListPreloader
   protected void b(boolean paramBoolean)
   {
     List localList1 = this.jdField_a_of_type_JavaUtilList;
-    String str;
-    List localList2;
-    int k;
-    label34:
-    ArrayList localArrayList;
-    int i;
-    label53:
-    int j;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$CurrentVid == null)
-    {
-      str = "";
-      localList2 = this.c;
-      if (!a()) {
-        break label334;
-      }
-      k = 3;
-      localArrayList = new ArrayList();
-      if (TextUtils.isEmpty(str)) {
-        break label471;
-      }
-      i = 0;
-      if (i >= localList1.size()) {
-        break label466;
-      }
-      if (!TextUtils.equals(((StoryVideoItem)localList1.get(i)).mVid, str)) {
-        break label340;
-      }
-      j = 1;
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$CurrentVid;
+    if (localObject1 == null) {
+      localObject1 = "";
+    } else {
+      localObject1 = ((PlayingListPreloader.CurrentVid)localObject1).a;
     }
+    List localList2 = this.c;
+    int k;
+    if (a()) {
+      k = 3;
+    } else {
+      k = 2;
+    }
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      i = 0;
+      while (i < localList1.size())
+      {
+        if (TextUtils.equals(((StoryVideoItem)localList1.get(i)).mVid, (CharSequence)localObject1))
+        {
+          j = 1;
+          break label127;
+        }
+        i += 1;
+      }
+      j = 0;
+    }
+    else
+    {
+      j = 0;
+      i = 0;
+    }
+    label127:
+    if (j == 0) {
+      i = 0;
+    }
+    int m = 0;
+    int j = i;
+    int i = m;
     for (;;)
     {
-      if (j == 0) {
-        i = 0;
+      m = i;
+      if (j >= localList1.size()) {
+        break;
       }
-      j = i;
-      i = 0;
-      for (;;)
+      Object localObject2 = (StoryVideoItem)localList1.get(j);
+      if ((!localList2.isEmpty()) && (localList2.contains(((StoryVideoItem)localObject2).mVid))) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
+      }
+      DownloadTask localDownloadTask1;
+      if (TextUtils.equals((CharSequence)localObject1, ((StoryVideoItem)localObject2).mVid))
       {
-        int m = i;
-        Object localObject;
-        label152:
-        DownloadTask localDownloadTask1;
-        if (j < localList1.size())
+        localDownloadTask1 = DownloadTask.a(((StoryVideoItem)localObject2).mVid, 1);
+        DownloadTask localDownloadTask2 = DownloadTask.a(((StoryVideoItem)localObject2).mVid, 0, paramBoolean);
+        localObject2 = DownloadTask.a(((StoryVideoItem)localObject2).mVid, 2, paramBoolean);
+        localDownloadTask1.g = 0;
+        localDownloadTask2.g = 0;
+        ((DownloadTask)localObject2).g = 1;
+        localArrayList.add(localDownloadTask1);
+        if (!VideoViewFactory.a(BaseApplicationImpl.getContext()).a())
         {
-          localObject = (StoryVideoItem)localList1.get(j);
-          if ((localList2.isEmpty()) || (!localList2.contains(((StoryVideoItem)localObject).mVid))) {
-            break label347;
-          }
-          paramBoolean = true;
-          if (!TextUtils.equals(str, ((StoryVideoItem)localObject).mVid)) {
-            break label372;
-          }
-          localDownloadTask1 = DownloadTask.a(((StoryVideoItem)localObject).mVid, 1);
-          DownloadTask localDownloadTask2 = DownloadTask.a(((StoryVideoItem)localObject).mVid, 0, paramBoolean);
-          localObject = DownloadTask.a(((StoryVideoItem)localObject).mVid, 2, paramBoolean);
-          localDownloadTask1.g = 0;
-          localDownloadTask2.g = 0;
-          ((DownloadTask)localObject).g = 1;
-          localArrayList.add(localDownloadTask1);
-          if (VideoViewFactory.a(BaseApplicationImpl.getContext()).a()) {
-            break label352;
-          }
           localArrayList.add(localDownloadTask2);
           localDownloadTask2.a.put("handleCallback", Boolean.valueOf(true));
-          label267:
-          localArrayList.add(localObject);
         }
-        for (;;)
+        else
         {
-          i += 1;
-          if (i < k) {
-            break label459;
-          }
-          m = i;
-          SLog.a("Q.qqstory.download.preload.PlayingListPreloader", "start download ,download count = %d", Integer.valueOf(m));
-          this.b = localArrayList;
-          this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(localArrayList, true);
-          return;
-          str = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$CurrentVid.a;
-          break;
-          label334:
-          k = 2;
-          break label34;
-          label340:
-          i += 1;
-          break label53;
-          label347:
-          paramBoolean = false;
-          break label152;
-          label352:
           localDownloadTask1.a.put("handleCallback", Boolean.valueOf(true));
-          break label267;
-          label372:
-          localArrayList.add(DownloadTask.a(((StoryVideoItem)localObject).mVid, 2, paramBoolean));
-          localArrayList.add(DownloadTask.a(((StoryVideoItem)localObject).mVid, 1));
-          localDownloadTask1 = DownloadTask.a(((StoryVideoItem)localObject).mVid, 0, paramBoolean);
-          localDownloadTask1.a.put("handleCallback", Boolean.valueOf(true));
-          localArrayList.add(localDownloadTask1);
-          localArrayList.add(localDownloadTask1);
         }
-        label459:
-        j += 1;
+        localArrayList.add(localObject2);
       }
-      label466:
-      j = 0;
-      continue;
-      label471:
-      j = 0;
-      i = 0;
+      else
+      {
+        localArrayList.add(DownloadTask.a(((StoryVideoItem)localObject2).mVid, 2, paramBoolean));
+        localArrayList.add(DownloadTask.a(((StoryVideoItem)localObject2).mVid, 1));
+        localDownloadTask1 = DownloadTask.a(((StoryVideoItem)localObject2).mVid, 0, paramBoolean);
+        localDownloadTask1.a.put("handleCallback", Boolean.valueOf(true));
+        localArrayList.add(localDownloadTask1);
+        localArrayList.add(localDownloadTask1);
+      }
+      i += 1;
+      if (i >= k)
+      {
+        m = i;
+        break;
+      }
+      j += 1;
     }
+    SLog.a("Q.qqstory.download.preload.PlayingListPreloader", "start download ,download count = %d", Integer.valueOf(m));
+    this.b = localArrayList;
+    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(localArrayList, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PlayingListPreloader
  * JD-Core Version:    0.7.0.1
  */

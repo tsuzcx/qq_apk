@@ -1,43 +1,30 @@
 package com.tencent.mobileqq.richmedia;
 
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class VideoCompoundController
 {
   public ConcurrentHashMap<String, CompoundProcessor> a = new ConcurrentHashMap(10);
   
-  public CompoundProcessor a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
-  {
-    paramSVHwEncoder = new CompoundProcessor(paramSVHwEncoder, paramSessionInfo, paramInt);
-    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
-    LOG.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
-    return paramSVHwEncoder;
-  }
-  
-  public CompoundProcessor a(String paramString)
-  {
-    LOG.a("VideoCompoundController", "findProcessor, key = " + paramString);
-    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
-      return (CompoundProcessor)this.a.get(paramString);
-    }
-    return null;
-  }
-  
   public boolean a(String paramString)
   {
-    LOG.a("VideoCompoundController", "removeProcessor, key = " + paramString);
-    if (paramString == null) {}
-    while (this.a.remove(paramString) == null) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("removeProcessor, key = ");
+    localStringBuilder.append(paramString);
+    LOG.a("VideoCompoundController", localStringBuilder.toString());
+    boolean bool = false;
+    if (paramString == null) {
       return false;
     }
-    return true;
+    if (this.a.remove(paramString) != null) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.VideoCompoundController
  * JD-Core Version:    0.7.0.1
  */

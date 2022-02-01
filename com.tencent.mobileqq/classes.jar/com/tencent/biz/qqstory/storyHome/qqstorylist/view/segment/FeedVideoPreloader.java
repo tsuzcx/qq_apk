@@ -36,6 +36,7 @@ public class FeedVideoPreloader
   
   private void a(StoryVideoItem paramStoryVideoItem, List<DownloadTask> paramList, boolean paramBoolean)
   {
+    Boolean localBoolean = Boolean.valueOf(true);
     if (paramBoolean)
     {
       DownloadTask localDownloadTask1 = DownloadTask.a(paramStoryVideoItem.mVid, 1);
@@ -44,7 +45,7 @@ public class FeedVideoPreloader
       localDownloadTask1.g = 0;
       localDownloadTask2.g = 0;
       paramStoryVideoItem.g = 1;
-      localDownloadTask2.a.put("handleCallback", Boolean.valueOf(true));
+      localDownloadTask2.a.put("handleCallback", localBoolean);
       paramList.add(localDownloadTask1);
       paramList.add(localDownloadTask2);
       paramList.add(paramStoryVideoItem);
@@ -53,7 +54,7 @@ public class FeedVideoPreloader
     paramList.add(DownloadTask.a(paramStoryVideoItem.mVid, 2));
     paramList.add(DownloadTask.a(paramStoryVideoItem.mVid, 1));
     paramStoryVideoItem = DownloadTask.a(paramStoryVideoItem.mVid, 0);
-    paramStoryVideoItem.a.put("handleCallback", Boolean.valueOf(true));
+    paramStoryVideoItem.a.put("handleCallback", localBoolean);
     paramList.add(paramStoryVideoItem);
   }
   
@@ -86,26 +87,24 @@ public class FeedVideoPreloader
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject2 = new ArrayList();
-    for (;;)
+    int i;
+    int j;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      ((List)localObject2).addAll(this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
       {
-        ((List)localObject2).addAll(this.jdField_a_of_type_JavaUtilList);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-          break label290;
-        }
         i = 0;
-        if (i >= ((List)localObject2).size()) {
-          break label285;
-        }
-        List localList = ((StoryHomeFeed)((List)localObject2).get(i)).d();
-        if ((localList.size() > 0) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, ((StoryVideoItem)localList.get(0)).mVid)))
+        if (i < ((List)localObject2).size())
         {
-          j = 1;
-          a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, localArrayList, true);
-          if (j == 0)
+          List localList = ((StoryHomeFeed)((List)localObject2).get(i)).d();
+          if ((localList.size() > 0) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, ((StoryVideoItem)localList.get(0)).mVid)))
           {
-            i = 0;
+            j = 1;
+            a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, localArrayList, true);
+            if (j == 0) {
+              i = 0;
+            }
             j = i + 1;
             if (j < ((List)localObject2).size())
             {
@@ -124,26 +123,16 @@ public class FeedVideoPreloader
             }
             this.b = localArrayList;
             this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(localArrayList, true);
+            return;
           }
         }
-        else
-        {
-          i += 1;
-        }
       }
-      continue;
-      label285:
-      int j = 0;
-      continue;
-      label290:
-      j = 0;
-      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedVideoPreloader
  * JD-Core Version:    0.7.0.1
  */

@@ -26,10 +26,12 @@ class MyVideoCleanStep$FileInfo
   
   public int a(FileInfo paramFileInfo)
   {
-    if (this.jdField_a_of_type_Long < paramFileInfo.jdField_a_of_type_Long) {
+    long l1 = this.jdField_a_of_type_Long;
+    long l2 = paramFileInfo.jdField_a_of_type_Long;
+    if (l1 < l2) {
       return -1;
     }
-    if (this.jdField_a_of_type_Long == paramFileInfo.jdField_a_of_type_Long) {
+    if (l1 == l2) {
       return 0;
     }
     return 1;
@@ -37,7 +39,7 @@ class MyVideoCleanStep$FileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.cachecleaner.MyVideoCleanStep.FileInfo
  * JD-Core Version:    0.7.0.1
  */

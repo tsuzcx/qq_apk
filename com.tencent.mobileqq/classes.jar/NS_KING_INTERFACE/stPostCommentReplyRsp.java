@@ -25,14 +25,15 @@ public final class stPostCommentReplyRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.reply != null) {
-      paramJceOutputStream.write(this.reply, 0);
+    stMetaReply localstMetaReply = this.reply;
+    if (localstMetaReply != null) {
+      paramJceOutputStream.write(localstMetaReply, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stPostCommentReplyRsp
  * JD-Core Version:    0.7.0.1
  */

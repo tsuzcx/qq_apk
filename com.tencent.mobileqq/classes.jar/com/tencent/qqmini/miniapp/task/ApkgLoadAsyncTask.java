@@ -49,7 +49,10 @@ public class ApkgLoadAsyncTask
     }
     if ((this.enableFlutter) && (paramMiniAppInfo != null) && (paramMiniAppInfo.supportNativeRenderMode()))
     {
-      QMLog.i("BaseRuntimeLoader", "ApkgLoadAsyncTask use flutter url:" + (String)paramMiniAppInfo.renderInfo.renderMaterialMap.get(Integer.valueOf(1)));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ApkgLoadAsyncTask use flutter url:");
+      localStringBuilder.append((String)paramMiniAppInfo.renderInfo.renderMaterialMap.get(Integer.valueOf(1)));
+      QMLog.i("BaseRuntimeLoader", localStringBuilder.toString());
       paramMiniAppInfo.downloadUrl = ((String)paramMiniAppInfo.renderInfo.renderMaterialMap.get(Integer.valueOf(1)));
     }
     ApkgManager.getInstance().getApkgInfoByConfig(paramMiniAppInfo, new ApkgLoadAsyncTask.1(this, paramMiniAppInfo));
@@ -68,7 +71,7 @@ public class ApkgLoadAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.ApkgLoadAsyncTask
  * JD-Core Version:    0.7.0.1
  */

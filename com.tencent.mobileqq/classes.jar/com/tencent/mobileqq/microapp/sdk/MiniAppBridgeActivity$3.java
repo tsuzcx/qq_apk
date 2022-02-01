@@ -25,18 +25,20 @@ class MiniAppBridgeActivity$3
           return;
         }
         MiniAppController.startApp(this.this$0.getActivity(), this.this$0.wrapConfig(this.val$miniConfig), new MiniAppBridgeActivity.3.1(this, new Handler(Looper.getMainLooper())));
-        return;
       }
+      return;
     }
     catch (Throwable localThrowable)
     {
-      MiniAppBridgeActivity.access$300(this.this$0, "start miniapp error");
+      label78:
+      break label78;
     }
+    MiniAppBridgeActivity.access$300(this.this$0, "start miniapp error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.sdk.MiniAppBridgeActivity.3
  * JD-Core Version:    0.7.0.1
  */

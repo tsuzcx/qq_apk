@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.widget;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.view.View;
 
 class ScrollerRunnable$4$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   ScrollerRunnable$4$1(ScrollerRunnable.4 param4, ValueAnimator paramValueAnimator) {}
   
@@ -23,7 +22,7 @@ class ScrollerRunnable$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ScrollerRunnable.4.1
  * JD-Core Version:    0.7.0.1
  */

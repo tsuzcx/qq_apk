@@ -27,9 +27,6 @@ public class HttpWebCgiAsyncTask2
     {
       paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
       localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
-    }
-    for (;;)
-    {
       try
       {
         Bundle localBundle = new Bundle();
@@ -52,31 +49,27 @@ public class HttpWebCgiAsyncTask2
           ((Bundle)localObject).remove("Origin");
         }
         paramVarArgs = new JSONObject(HttpUtil.openUrl(paramVarArgs, this.a, this.b, (Bundle)localObject, localBundle));
-      }
-      catch (IOException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (JSONException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
+        return paramVarArgs;
       }
       catch (OutOfMemoryError paramVarArgs)
       {
         QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
       }
-      return paramVarArgs;
-      paramVarArgs = null;
+      catch (JSONException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
+      catch (IOException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2
  * JD-Core Version:    0.7.0.1
  */

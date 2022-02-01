@@ -26,13 +26,15 @@ public final class qqstory_group$ReqGroupVideoPublish
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 56, 64, 72, 80 }, new String[] { "chat_type", "client_type", "file_id", "group_id", "file_md5", "business_type", "source", "msg_seq", "sync_flag", "msg_time" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, ReqGroupVideoPublish.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 56, 64, 72, 80 }, new String[] { "chat_type", "client_type", "file_id", "group_id", "file_md5", "business_type", "source", "msg_seq", "sync_flag", "msg_time" }, new Object[] { localInteger, localInteger, "", localLong, localByteStringMicro, localInteger, localInteger, localLong, localInteger, localInteger }, ReqGroupVideoPublish.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupVideoPublish
  * JD-Core Version:    0.7.0.1
  */

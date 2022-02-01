@@ -39,17 +39,15 @@ public class ChatHistoryTimeLineContainer
   {
     if (a(paramMotionEvent))
     {
-      switch (paramMotionEvent.getAction())
+      if (paramMotionEvent.getAction() == 1)
       {
-      }
-      for (;;)
-      {
-        getParent().requestDisallowInterceptTouchEvent(true);
-        return false;
-        if (this.a != null) {
-          this.a.onTouchEvent(paramMotionEvent);
+        AutoFitScrollView localAutoFitScrollView = this.a;
+        if (localAutoFitScrollView != null) {
+          localAutoFitScrollView.onTouchEvent(paramMotionEvent);
         }
       }
+      getParent().requestDisallowInterceptTouchEvent(true);
+      return false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
@@ -61,7 +59,7 @@ public class ChatHistoryTimeLineContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.widget.ChatHistoryTimeLineContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public abstract class BaseWidgetView<T>
   extends FrameLayout
   implements ExtraInfoInterface
 {
-  public int a;
+  protected int a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private SparseArray<Long> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private BaseWidgetView.IInteractor jdField_a_of_type_ComTencentBizSubscribeBaseUIBaseWidgetView$IInteractor;
@@ -78,8 +78,9 @@ public abstract class BaseWidgetView<T>
   
   public Activity a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localWeakReference != null) {
+      return (Activity)localWeakReference.get();
     }
     return null;
   }
@@ -152,7 +153,7 @@ public abstract class BaseWidgetView<T>
   
   protected void b(Context paramContext, int paramInt) {}
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     a().removeCallbacksAndMessages(null);
@@ -207,7 +208,7 @@ public abstract class BaseWidgetView<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.baseUI.BaseWidgetView
  * JD-Core Version:    0.7.0.1
  */

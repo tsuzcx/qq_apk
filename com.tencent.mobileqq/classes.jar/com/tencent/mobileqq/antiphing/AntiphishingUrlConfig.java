@@ -38,7 +38,10 @@ public class AntiphishingUrlConfig
   
   private String a()
   {
-    new StringBuilder().append(Environment.getExternalStorageDirectory().getAbsolutePath()).append("/Tencent/com/tencent/mobileqq/antiphishingconfig.xml").toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    localStringBuilder.append("/Tencent/com/tencent/mobileqq/antiphishingconfig.xml");
+    localStringBuilder.toString();
     return this.jdField_b_of_type_JavaLangString;
   }
   
@@ -54,7 +57,14 @@ public class AntiphishingUrlConfig
   {
     if (paramInt <= this.jdField_a_of_type_Int)
     {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 4, "nNewVersion:" + paramInt + "nLocalConfigVer:" + this.jdField_a_of_type_Int + "Do not Need Update!");
+      paramString1 = this.jdField_a_of_type_JavaLangString;
+      paramString2 = new StringBuilder();
+      paramString2.append("nNewVersion:");
+      paramString2.append(paramInt);
+      paramString2.append("nLocalConfigVer:");
+      paramString2.append(this.jdField_a_of_type_Int);
+      paramString2.append("Do not Need Update!");
+      QLog.d(paramString1, 4, paramString2.toString());
       return;
     }
     if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Int == paramInt) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 7200000L))
@@ -64,7 +74,13 @@ public class AntiphishingUrlConfig
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_b_of_type_Int = paramInt;
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "filehash:" + paramString2 + "downloadurl:" + paramString1);
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("filehash:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("downloadurl:");
+    localStringBuilder.append(paramString1);
+    QLog.d(str, 1, localStringBuilder.toString());
     ThreadManager.post(new AntiphishingUrlConfig.2(this, paramContext, paramString1, paramString2), 5, null, true);
   }
   
@@ -99,7 +115,7 @@ public class AntiphishingUrlConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.AntiphishingUrlConfig
  * JD-Core Version:    0.7.0.1
  */

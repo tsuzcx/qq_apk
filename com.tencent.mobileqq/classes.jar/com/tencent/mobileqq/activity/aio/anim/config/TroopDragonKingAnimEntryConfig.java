@@ -20,184 +20,198 @@ public class TroopDragonKingAnimEntryConfig
   {
     // Byte code:
     //   0: invokestatic 29	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +28 -> 31
-    //   6: ldc 31
-    //   8: iconst_2
-    //   9: new 33	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 34	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 36
-    //   18: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: aload_0
-    //   22: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   31: aload_0
-    //   32: invokestatic 54	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   35: ifeq +5 -> 40
-    //   38: aconst_null
-    //   39: areturn
-    //   40: new 16	java/util/ArrayList
-    //   43: dup
-    //   44: invokespecial 17	java/util/ArrayList:<init>	()V
-    //   47: astore 5
-    //   49: new 56	org/json/JSONObject
-    //   52: dup
-    //   53: aload_0
-    //   54: invokespecial 59	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   57: astore_0
-    //   58: aload_0
-    //   59: ldc 61
-    //   61: iconst_0
-    //   62: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   65: istore_1
+    //   3: ifeq +38 -> 41
+    //   6: new 31	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 32	java/lang/StringBuilder:<init>	()V
+    //   13: astore 5
+    //   15: aload 5
+    //   17: ldc 34
+    //   19: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: pop
+    //   23: aload 5
+    //   25: aload_0
+    //   26: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: pop
+    //   30: ldc 40
+    //   32: iconst_2
+    //   33: aload 5
+    //   35: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: aload_0
+    //   42: invokestatic 54	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   45: ifeq +5 -> 50
+    //   48: aconst_null
+    //   49: areturn
+    //   50: new 16	java/util/ArrayList
+    //   53: dup
+    //   54: invokespecial 17	java/util/ArrayList:<init>	()V
+    //   57: astore 5
+    //   59: iconst_0
+    //   60: istore 4
+    //   62: new 56	org/json/JSONObject
+    //   65: dup
     //   66: aload_0
-    //   67: ldc 67
-    //   69: invokevirtual 71	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   72: astore_0
-    //   73: iload_1
-    //   74: istore_3
-    //   75: aload_0
-    //   76: ifnull +54 -> 130
-    //   79: iload_1
-    //   80: istore_3
-    //   81: aload_0
-    //   82: invokevirtual 77	org/json/JSONArray:length	()I
-    //   85: ifle +45 -> 130
-    //   88: iconst_0
-    //   89: istore_2
-    //   90: iload_1
-    //   91: istore_3
-    //   92: iload_2
-    //   93: aload_0
-    //   94: invokevirtual 77	org/json/JSONArray:length	()I
-    //   97: if_icmpge +33 -> 130
-    //   100: aload 5
-    //   102: aload_0
-    //   103: iload_2
-    //   104: invokevirtual 81	org/json/JSONArray:getInt	(I)I
-    //   107: invokestatic 87	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   110: invokevirtual 91	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   113: pop
-    //   114: iload_2
-    //   115: iconst_1
-    //   116: iadd
-    //   117: istore_2
-    //   118: goto -28 -> 90
-    //   121: astore_0
-    //   122: iconst_0
-    //   123: istore_1
-    //   124: aload_0
-    //   125: invokevirtual 94	org/json/JSONException:printStackTrace	()V
-    //   128: iload_1
-    //   129: istore_3
-    //   130: new 2	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig
-    //   133: dup
-    //   134: invokespecial 95	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig:<init>	()V
-    //   137: astore_0
-    //   138: iload_3
-    //   139: iconst_1
-    //   140: if_icmpne +69 -> 209
-    //   143: iconst_1
-    //   144: istore 4
-    //   146: aload_0
-    //   147: iload 4
-    //   149: putfield 14	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig:jdField_a_of_type_Boolean	Z
-    //   152: aload_0
-    //   153: aload 5
-    //   155: putfield 19	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   158: invokestatic 29	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   161: ifeq +46 -> 207
-    //   164: ldc 31
-    //   166: iconst_2
-    //   167: new 33	java/lang/StringBuilder
-    //   170: dup
-    //   171: invokespecial 34	java/lang/StringBuilder:<init>	()V
-    //   174: ldc 97
-    //   176: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: aload_0
-    //   180: getfield 14	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig:jdField_a_of_type_Boolean	Z
-    //   183: invokevirtual 100	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   186: ldc 102
-    //   188: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: aload_0
-    //   192: getfield 19	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   195: invokevirtual 103	java/util/ArrayList:toString	()Ljava/lang/String;
-    //   198: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   201: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   204: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   207: aload_0
-    //   208: areturn
-    //   209: iconst_0
-    //   210: istore 4
-    //   212: goto -66 -> 146
-    //   215: astore_0
-    //   216: goto -92 -> 124
+    //   67: invokespecial 59	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   70: astore_0
+    //   71: aload_0
+    //   72: ldc 61
+    //   74: iconst_0
+    //   75: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   78: istore_1
+    //   79: aload_0
+    //   80: ldc 67
+    //   82: invokevirtual 71	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   85: astore_0
+    //   86: iload_1
+    //   87: istore_3
+    //   88: aload_0
+    //   89: ifnull +58 -> 147
+    //   92: iload_1
+    //   93: istore_3
+    //   94: aload_0
+    //   95: invokevirtual 77	org/json/JSONArray:length	()I
+    //   98: ifle +49 -> 147
+    //   101: iconst_0
+    //   102: istore_2
+    //   103: iload_1
+    //   104: istore_3
+    //   105: iload_2
+    //   106: aload_0
+    //   107: invokevirtual 77	org/json/JSONArray:length	()I
+    //   110: if_icmpge +37 -> 147
+    //   113: aload 5
+    //   115: aload_0
+    //   116: iload_2
+    //   117: invokevirtual 81	org/json/JSONArray:getInt	(I)I
+    //   120: invokestatic 87	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   123: invokevirtual 91	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   126: pop
+    //   127: iload_2
+    //   128: iconst_1
+    //   129: iadd
+    //   130: istore_2
+    //   131: goto -28 -> 103
+    //   134: astore_0
+    //   135: goto +6 -> 141
+    //   138: astore_0
+    //   139: iconst_0
+    //   140: istore_1
+    //   141: aload_0
+    //   142: invokevirtual 94	org/json/JSONException:printStackTrace	()V
+    //   145: iload_1
+    //   146: istore_3
+    //   147: new 2	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig
+    //   150: dup
+    //   151: invokespecial 95	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig:<init>	()V
+    //   154: astore_0
+    //   155: iload_3
+    //   156: iconst_1
+    //   157: if_icmpne +6 -> 163
+    //   160: iconst_1
+    //   161: istore 4
+    //   163: aload_0
+    //   164: iload 4
+    //   166: putfield 14	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig:jdField_a_of_type_Boolean	Z
+    //   169: aload_0
+    //   170: aload 5
+    //   172: putfield 19	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   175: invokestatic 29	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   178: ifeq +62 -> 240
+    //   181: new 31	java/lang/StringBuilder
+    //   184: dup
+    //   185: invokespecial 32	java/lang/StringBuilder:<init>	()V
+    //   188: astore 5
+    //   190: aload 5
+    //   192: ldc 97
+    //   194: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: pop
+    //   198: aload 5
+    //   200: aload_0
+    //   201: getfield 14	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig:jdField_a_of_type_Boolean	Z
+    //   204: invokevirtual 100	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   207: pop
+    //   208: aload 5
+    //   210: ldc 102
+    //   212: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   215: pop
+    //   216: aload 5
+    //   218: aload_0
+    //   219: getfield 19	com/tencent/mobileqq/activity/aio/anim/config/TroopDragonKingAnimEntryConfig:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   222: invokevirtual 103	java/util/ArrayList:toString	()Ljava/lang/String;
+    //   225: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: pop
+    //   229: ldc 40
+    //   231: iconst_2
+    //   232: aload 5
+    //   234: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   237: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   240: aload_0
+    //   241: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	219	0	paramString	String
-    //   65	64	1	i	int
-    //   89	29	2	j	int
-    //   74	67	3	k	int
-    //   144	67	4	bool	boolean
-    //   47	107	5	localArrayList	ArrayList
+    //   0	242	0	paramString	String
+    //   78	68	1	i	int
+    //   102	29	2	j	int
+    //   87	71	3	k	int
+    //   60	105	4	bool	boolean
+    //   13	220	5	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   49	66	121	org/json/JSONException
-    //   66	73	215	org/json/JSONException
-    //   81	88	215	org/json/JSONException
-    //   92	114	215	org/json/JSONException
+    //   79	86	134	org/json/JSONException
+    //   94	101	134	org/json/JSONException
+    //   105	127	134	org/json/JSONException
+    //   62	79	138	org/json/JSONException
   }
   
   public boolean a(String paramString)
   {
-    if (paramString == null) {
+    if (paramString == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "isDragKingEntry : troopUin null");
       }
+      return false;
     }
-    do
+    if (paramString.isEmpty())
     {
-      do
-      {
-        do
-        {
-          return false;
-          if (!paramString.isEmpty()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
+      if (QLog.isColorLevel()) {
         QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "isDragKingEntry : troopUin empty");
-        return false;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "isDragKingEntry : true");
-          }
-          return true;
-        }
-      } while (this.jdField_a_of_type_JavaUtilArrayList.isEmpty());
-      paramString = paramString.substring(paramString.length() - 1);
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        if (((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).equals(paramString))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "isDragKingEntry : gray true!");
-          }
-          return true;
-        }
-        i += 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "isDragKingEntry: gray false!");
+      return false;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "isDragKingEntry : true");
+      }
+      return true;
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+      return false;
+    }
+    paramString = paramString.substring(paramString.length() - 1);
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).equals(paramString))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "isDragKingEntry : gray true!");
+        }
+        return true;
+      }
+      i += 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "isDragKingEntry: gray false!");
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.config.TroopDragonKingAnimEntryConfig
  * JD-Core Version:    0.7.0.1
  */

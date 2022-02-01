@@ -9,12 +9,15 @@ class QCircleFeedPicLoader$1
   
   public void run()
   {
-    FileUtils.c(QCircleFeedPicLoader.DOWNLOAD_ROOT_PATH + ".nomedia");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QCircleFeedPicLoader.DOWNLOAD_ROOT_PATH);
+    localStringBuilder.append(".nomedia");
+    FileUtils.createFileIfNotExits(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.QCircleFeedPicLoader.1
  * JD-Core Version:    0.7.0.1
  */

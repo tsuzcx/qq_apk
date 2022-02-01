@@ -46,7 +46,7 @@ public final class GalleryView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy = ((PagerAdapterProxy)new GalleryView.mAdapter.1(this, paramContext));
-    LayoutInflater.from(paramContext).inflate(R.layout.o, (ViewGroup)this);
+    LayoutInflater.from(paramContext).inflate(R.layout.n, (ViewGroup)this);
     this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy = new ViewPagerProxy(paramContext, TopicSDK.a.a().a().a());
     addView(this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy.a(), (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
     this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy.a(this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy);
@@ -65,7 +65,7 @@ public final class GalleryView
     return this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy.a();
@@ -102,7 +102,7 @@ public final class GalleryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.GalleryView
  * JD-Core Version:    0.7.0.1
  */

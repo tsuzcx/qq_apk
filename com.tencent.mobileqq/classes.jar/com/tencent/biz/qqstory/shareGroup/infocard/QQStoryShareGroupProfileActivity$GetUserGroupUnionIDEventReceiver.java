@@ -28,17 +28,9 @@ class QQStoryShareGroupProfileActivity$GetUserGroupUnionIDEventReceiver
         if (paramQQStoryShareGroupProfileActivity.c.equals(localGroupID.a))
         {
           paramQQStoryShareGroupProfileActivity.b = localGroupID.b;
-          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
-            break label111;
-          }
+          QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity) ^ true);
         }
       }
-    }
-    label111:
-    for (boolean bool = true;; bool = false)
-    {
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
-      return;
     }
   }
   
@@ -49,7 +41,7 @@ class QQStoryShareGroupProfileActivity$GetUserGroupUnionIDEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.GetUserGroupUnionIDEventReceiver
  * JD-Core Version:    0.7.0.1
  */

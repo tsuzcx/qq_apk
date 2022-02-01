@@ -18,7 +18,7 @@ import android.view.animation.Interpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ScrollView;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 
 public class FixedBounceScrollView
@@ -33,7 +33,7 @@ public class FixedBounceScrollView
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
   private FixedBounceScrollView.OnOverScrollListener jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnOverScrollListener;
   private FixedBounceScrollView.OnScrollListener jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnScrollListener;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -41,7 +41,7 @@ public class FixedBounceScrollView
   private int jdField_c_of_type_Int;
   private boolean jdField_c_of_type_Boolean;
   private float jdField_d_of_type_Float = -1.0F;
-  private int jdField_d_of_type_Int = 0;
+  private int jdField_d_of_type_Int;
   private float e = -1.0F;
   private float f = -1.0F;
   
@@ -58,38 +58,47 @@ public class FixedBounceScrollView
   public FixedBounceScrollView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    boolean bool = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_d_of_type_Int = 0;
     setOverScrollMode(2);
     setHorizontalScrollBarEnabled(false);
     setVerticalScrollBarEnabled(false);
     setFillViewport(true);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FixedBounceScrollView, 0, 0);
-    this.jdField_a_of_type_Float = paramContext.getFloat(1, 4.0F);
-    if (paramContext.getInt(3, 0) == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_b_of_type_Boolean = bool;
-      this.jdField_c_of_type_Boolean = paramContext.getBoolean(2, true);
-      this.jdField_a_of_type_Long = paramContext.getInt(0, 400);
-      this.jdField_a_of_type_Int = paramContext.getInt(4, 20);
-      paramContext.recycle();
-      if (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewAnimationInterpolator = new FixedBounceScrollView.DefaultQuartOutInterpolator(null);
-      }
-      setmCustomBottomFadingEdgeScale(0.0F);
-      setmCustomTopFadingEdgeScale(0.0F);
-      return;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.O, 0, 0);
+    this.jdField_a_of_type_Float = paramContext.getFloat(R.styleable.D, 4.0F);
+    if (paramContext.getInt(R.styleable.F, 0) == 1) {
+      bool = true;
     }
+    this.jdField_b_of_type_Boolean = bool;
+    this.jdField_c_of_type_Boolean = paramContext.getBoolean(R.styleable.E, true);
+    this.jdField_a_of_type_Long = paramContext.getInt(R.styleable.C, 400);
+    this.jdField_a_of_type_Int = paramContext.getInt(R.styleable.G, 20);
+    paramContext.recycle();
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidViewAnimationInterpolator = new FixedBounceScrollView.DefaultQuartOutInterpolator(null);
+    }
+    setmCustomBottomFadingEdgeScale(0.0F);
+    setmCustomTopFadingEdgeScale(0.0F);
   }
   
   private float a()
   {
-    if (this.jdField_b_of_type_Boolean) {}
-    for (float f1 = Math.abs(this.jdField_a_of_type_AndroidViewView.getLeft()) * 1.0F / this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();; f1 = Math.abs(this.jdField_a_of_type_AndroidViewView.getTop()) * 1.0F / this.jdField_a_of_type_AndroidViewView.getMeasuredHeight())
+    int i;
+    if (this.jdField_b_of_type_Boolean)
     {
-      f1 = (float)(f1 + 0.2D);
-      if (!this.jdField_c_of_type_Boolean) {
-        break;
-      }
+      f1 = Math.abs(this.jdField_a_of_type_AndroidViewView.getLeft()) * 1.0F;
+      i = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+    }
+    else
+    {
+      f1 = Math.abs(this.jdField_a_of_type_AndroidViewView.getTop()) * 1.0F;
+      i = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+    }
+    double d1 = f1 / i;
+    Double.isNaN(d1);
+    float f1 = (float)(d1 + 0.2D);
+    if (this.jdField_c_of_type_Boolean) {
       return this.jdField_a_of_type_Float / (1.0F - (float)Math.pow(f1, 2.0D));
     }
     return this.jdField_a_of_type_Float;
@@ -98,57 +107,60 @@ public class FixedBounceScrollView
   private void a()
   {
     ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    boolean bool = this.jdField_b_of_type_Boolean;
+    int j = 0;
     int i = 0;
-    int j;
-    if (this.jdField_b_of_type_Boolean) {
+    int k;
+    if (bool)
+    {
       if (ViewCompat.getLayoutDirection(this) == 1)
       {
-        j = ViewCompat.getPaddingEnd(this);
-        i = j;
-        if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-          break label252;
+        k = ViewCompat.getPaddingEnd(this);
+        j = k;
+        if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
+        {
+          i = ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin;
+          j = k;
         }
-        i = ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin;
       }
-    }
-    for (;;)
-    {
-      for (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(this.jdField_a_of_type_AndroidViewView.getLeft() - j - i, this.jdField_a_of_type_AndroidGraphicsRect.left - j - i, 0.0F, 0.0F);; this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_AndroidViewView.getTop() - j - i, this.jdField_a_of_type_AndroidGraphicsRect.top - j - i))
+      else
       {
-        this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-        this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-        this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-        this.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
-        return;
-        j = ViewCompat.getPaddingStart(this);
-        i = j;
-        if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-          break label252;
-        }
-        i = ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin;
-        break;
-        j = getPaddingTop();
-        if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-          i = ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin;
+        k = ViewCompat.getPaddingStart(this);
+        j = k;
+        if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
+        {
+          i = ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin;
+          j = k;
         }
       }
-      label252:
-      int k = 0;
-      j = i;
-      i = k;
+      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(this.jdField_a_of_type_AndroidViewView.getLeft() - j - i, this.jdField_a_of_type_AndroidGraphicsRect.left - j - i, 0.0F, 0.0F);
     }
+    else
+    {
+      k = getPaddingTop();
+      i = j;
+      if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+        i = ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin;
+      }
+      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_AndroidViewView.getTop() - k - i, this.jdField_a_of_type_AndroidGraphicsRect.top - k - i);
+    }
+    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
+    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
+    this.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
   }
   
   private boolean a()
   {
-    if (this.jdField_b_of_type_Boolean) {
-      if (getScrollX() != 0) {}
-    }
-    while (getScrollY() == 0)
+    if (this.jdField_b_of_type_Boolean)
     {
+      if (getScrollX() == 0) {
+        return true;
+      }
+    }
+    else if (getScrollY() == 0) {
       return true;
-      return false;
     }
     return false;
   }
@@ -163,8 +175,6 @@ public class FixedBounceScrollView
   
   private boolean b()
   {
-    boolean bool1 = true;
-    boolean bool2 = false;
     if (this.jdField_b_of_type_Boolean)
     {
       j = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth() - getWidth();
@@ -172,23 +182,14 @@ public class FixedBounceScrollView
       if (j < 0) {
         i = 0;
       }
-      bool1 = bool2;
-      if (getScrollX() == i) {
-        bool1 = true;
-      }
-      return bool1;
+      return getScrollX() == i;
     }
     int j = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - getHeight();
     int i = j;
     if (j < 0) {
       i = 0;
     }
-    if (getScrollY() == i) {}
-    for (;;)
-    {
-      return bool1;
-      bool1 = false;
-    }
+    return getScrollY() == i;
   }
   
   public boolean canScrollHorizontally(int paramInt)
@@ -198,16 +199,17 @@ public class FixedBounceScrollView
   
   public boolean canScrollVertically(int paramInt)
   {
-    return !this.jdField_b_of_type_Boolean;
+    return this.jdField_b_of_type_Boolean ^ true;
   }
   
-  public float getBottomFadingEdgeStrength()
+  protected float getBottomFadingEdgeStrength()
   {
     if (getChildCount() == 0) {
       return 0.0F;
     }
-    if (this.jdField_d_of_type_Float != -1.0F) {
-      return this.jdField_d_of_type_Float;
+    float f1 = this.jdField_d_of_type_Float;
+    if (f1 != -1.0F) {
+      return f1;
     }
     int i = getVerticalFadingEdgeLength();
     int j = getHeight();
@@ -219,10 +221,11 @@ public class FixedBounceScrollView
     return 1.0F;
   }
   
-  public float getLeftFadingEdgeStrength()
+  protected float getLeftFadingEdgeStrength()
   {
-    if (this.e != -1.0F) {
-      return this.e;
+    float f1 = this.e;
+    if (f1 != -1.0F) {
+      return f1;
     }
     if (computeHorizontalScrollOffset() > 0) {
       return 1.0F;
@@ -230,10 +233,11 @@ public class FixedBounceScrollView
     return 0.0F;
   }
   
-  public float getRightFadingEdgeStrength()
+  protected float getRightFadingEdgeStrength()
   {
-    if (this.f != -1.0F) {
-      return this.f;
+    float f1 = this.f;
+    if (f1 != -1.0F) {
+      return f1;
     }
     if (computeHorizontalScrollOffset() + computeHorizontalScrollExtent() < computeHorizontalScrollRange()) {
       return 1.0F;
@@ -241,13 +245,14 @@ public class FixedBounceScrollView
     return 0.0F;
   }
   
-  public float getTopFadingEdgeStrength()
+  protected float getTopFadingEdgeStrength()
   {
     if (getChildCount() == 0) {
       return 0.0F;
     }
-    if (this.jdField_c_of_type_Float != -1.0F) {
-      return this.jdField_c_of_type_Float;
+    float f1 = this.jdField_c_of_type_Float;
+    if (f1 != -1.0F) {
+      return f1;
     }
     int i = getVerticalFadingEdgeLength();
     if (getScrollY() < i) {
@@ -256,15 +261,16 @@ public class FixedBounceScrollView
     return 1.0F;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null) && (!this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.hasEnded())) {
+    TranslateAnimation localTranslateAnimation = this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
+    if ((localTranslateAnimation != null) && (!localTranslateAnimation.hasEnded())) {
       this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.cancel();
     }
   }
   
-  public void onFinishInflate()
+  protected void onFinishInflate()
   {
     super.onFinishInflate();
     if (getChildCount() > 0) {
@@ -274,184 +280,191 @@ public class FixedBounceScrollView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     if (this.jdField_a_of_type_Boolean) {
       getParent().requestDisallowInterceptTouchEvent(true);
     }
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    case 1: 
-    default: 
-      bool = super.onInterceptTouchEvent(paramMotionEvent);
-    }
-    label114:
-    do
-    {
-      do
+      if (i == 2)
       {
-        return bool;
-        if (this.jdField_b_of_type_Boolean) {}
-        for (float f1 = paramMotionEvent.getX();; f1 = paramMotionEvent.getY())
-        {
-          this.jdField_b_of_type_Float = f1;
-          break;
+        if (this.jdField_b_of_type_Boolean) {
+          return Math.abs(paramMotionEvent.getX() - this.jdField_b_of_type_Float) >= this.jdField_a_of_type_Int;
         }
-        if (!this.jdField_b_of_type_Boolean) {
-          break label114;
-        }
-      } while (Math.abs(paramMotionEvent.getX() - this.jdField_b_of_type_Float) >= this.jdField_a_of_type_Int);
-      return false;
-    } while (Math.abs(paramMotionEvent.getY() - this.jdField_b_of_type_Float) >= this.jdField_a_of_type_Int);
-    return false;
+        return Math.abs(paramMotionEvent.getY() - this.jdField_b_of_type_Float) >= this.jdField_a_of_type_Int;
+      }
+    }
+    else
+    {
+      float f1;
+      if (this.jdField_b_of_type_Boolean) {
+        f1 = paramMotionEvent.getX();
+      } else {
+        f1 = paramMotionEvent.getY();
+      }
+      this.jdField_b_of_type_Float = f1;
+    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_d_of_type_Int > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.jdField_d_of_type_Int, -2147483648);
+    int i = this.jdField_d_of_type_Int;
+    if (i > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(i, -2147483648);
     }
     super.onMeasure(paramInt1, paramInt2);
-    View localView;
     if (getChildCount() > 0)
     {
-      localView = getChildAt(0);
+      View localView = getChildAt(0);
       paramInt2 = localView.getMeasuredHeight();
-      if (paramInt2 > 0) {
-        break label49;
-      }
-    }
-    label49:
-    int k;
-    int i;
-    int m;
-    int j;
-    do
-    {
-      ViewGroup.LayoutParams localLayoutParams;
-      do
-      {
+      if (paramInt2 <= 0) {
         return;
-        paramInt1 = localView.getMeasuredWidth();
-        localLayoutParams = localView.getLayoutParams();
-      } while (!(localLayoutParams instanceof FrameLayout.LayoutParams));
-      k = ((FrameLayout.LayoutParams)localLayoutParams).leftMargin;
-      i = ((FrameLayout.LayoutParams)localLayoutParams).topMargin;
-      m = ((FrameLayout.LayoutParams)localLayoutParams).rightMargin;
-      j = ((FrameLayout.LayoutParams)localLayoutParams).bottomMargin;
-      if (QLog.isColorLevel()) {
-        QLog.d("FixedBounceScrollView", 4, "marginStart=" + k + " topMargin=" + i + " marginEnd=" + m + " bottomMargin=" + j);
       }
-    } while ((k == 0) && (i == 0) && (m == 0) && (j == 0));
-    if (paramInt2 <= getMeasuredHeight())
-    {
-      paramInt1 -= m + k;
-      paramInt2 -= j + i;
-    }
-    for (;;)
-    {
-      localView.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
-      return;
-      paramInt2 = i + j + paramInt2;
+      paramInt1 = localView.getMeasuredWidth();
+      Object localObject = localView.getLayoutParams();
+      if ((localObject instanceof FrameLayout.LayoutParams))
+      {
+        localObject = (FrameLayout.LayoutParams)localObject;
+        int k = ((FrameLayout.LayoutParams)localObject).leftMargin;
+        i = ((FrameLayout.LayoutParams)localObject).topMargin;
+        int m = ((FrameLayout.LayoutParams)localObject).rightMargin;
+        int j = ((FrameLayout.LayoutParams)localObject).bottomMargin;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("marginStart=");
+          ((StringBuilder)localObject).append(k);
+          ((StringBuilder)localObject).append(" topMargin=");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(" marginEnd=");
+          ((StringBuilder)localObject).append(m);
+          ((StringBuilder)localObject).append(" bottomMargin=");
+          ((StringBuilder)localObject).append(j);
+          QLog.d("FixedBounceScrollView", 4, ((StringBuilder)localObject).toString());
+        }
+        if ((k != 0) || (i != 0) || (m != 0) || (j != 0))
+        {
+          if (paramInt2 <= getMeasuredHeight())
+          {
+            paramInt1 -= k + m;
+            paramInt2 -= i + j;
+          }
+          else
+          {
+            paramInt2 += i + j;
+          }
+          localView.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
+        }
+      }
     }
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnScrollListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnScrollListener.a(paramInt1, paramInt2);
+    FixedBounceScrollView.OnScrollListener localOnScrollListener = this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnScrollListener;
+    if (localOnScrollListener != null) {
+      localOnScrollListener.a(paramInt1, paramInt2);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     if (this.jdField_a_of_type_AndroidViewView == null) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    float f1;
-    label66:
-    int j;
-    int i;
-    switch (paramMotionEvent.getActionMasked())
+    int i = paramMotionEvent.getActionMasked();
+    boolean bool = true;
+    if (i != 1)
     {
-    default: 
-      return super.onTouchEvent(paramMotionEvent);
-    case 2: 
-      if (this.jdField_b_of_type_Boolean)
+      if (i != 2)
       {
-        f1 = paramMotionEvent.getX();
-        j = (int)((this.jdField_b_of_type_Float - f1) / a());
+        if (i != 3) {
+          break label557;
+        }
+      }
+      else
+      {
+        float f1;
+        if (this.jdField_b_of_type_Boolean) {
+          f1 = paramMotionEvent.getX();
+        } else {
+          f1 = paramMotionEvent.getY();
+        }
+        int j = (int)((this.jdField_b_of_type_Float - f1) / a());
         this.jdField_b_of_type_Float = f1;
         setmCustomTopFadingEdgeScale(1.0F);
         setmCustomBottomFadingEdgeScale(1.0F);
-        if ((this.jdField_b_of_type_Int > 0) || (j <= 0)) {
-          break label411;
-        }
-        i = 0;
-      }
-      break;
-    }
-    for (;;)
-    {
-      label109:
-      this.jdField_b_of_type_Int = j;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("FixedBounceScrollView", 2, "dampingDelta=" + j);
-        QLog.d("FixedBounceScrollView", 2, "mChildView.getTop()+mChildView.getPaddingTop()" + this.jdField_a_of_type_AndroidViewView.getTop() + " " + this.jdField_a_of_type_AndroidViewView.getPaddingTop());
-        QLog.d("FixedBounceScrollView", 2, "mChildView.getBottom() + mChildView.getPaddingBottom()" + this.jdField_a_of_type_AndroidViewView.getBottom() + " " + this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
-      }
-      if ((i == 0) || (!a(j))) {
-        break;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()) {
-        this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom());
-      }
-      label353:
-      FixedBounceScrollView.OnOverScrollListener localOnOverScrollListener;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft() - j, this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight() - j, this.jdField_a_of_type_AndroidViewView.getBottom());
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnOverScrollListener == null) {
+        if ((this.jdField_b_of_type_Int <= 0) && (j > 0)) {}
+        while ((this.jdField_b_of_type_Int >= 0) && (j < 0))
+        {
+          i = 0;
           break;
         }
+        i = 1;
+        this.jdField_b_of_type_Int = j;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("dampingDelta=");
+          ((StringBuilder)localObject).append(j);
+          QLog.d("FixedBounceScrollView", 2, ((StringBuilder)localObject).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mChildView.getTop()+mChildView.getPaddingTop()");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidViewView.getTop());
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidViewView.getPaddingTop());
+          QLog.d("FixedBounceScrollView", 2, ((StringBuilder)localObject).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mChildView.getBottom() + mChildView.getPaddingBottom()");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidViewView.getBottom());
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
+          QLog.d("FixedBounceScrollView", 2, ((StringBuilder)localObject).toString());
+        }
+        if ((i == 0) || (!a(j))) {
+          break label557;
+        }
+        if (this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()) {
+          this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom());
+        }
+        if (this.jdField_b_of_type_Boolean)
+        {
+          localObject = this.jdField_a_of_type_AndroidViewView;
+          ((View)localObject).layout(((View)localObject).getLeft() - j, this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight() - j, this.jdField_a_of_type_AndroidViewView.getBottom());
+        }
+        else
+        {
+          localObject = this.jdField_a_of_type_AndroidViewView;
+          ((View)localObject).layout(((View)localObject).getLeft(), this.jdField_a_of_type_AndroidViewView.getTop() - j + 2, this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom() - j + 2);
+        }
+        Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnOverScrollListener;
+        if (localObject == null) {
+          break label557;
+        }
         this.jdField_c_of_type_Int += j;
-        localOnOverScrollListener = this.jdField_a_of_type_ComTencentMobileqqWidgetFixedBounceScrollView$OnOverScrollListener;
         if (this.jdField_c_of_type_Int > 0) {
-          break label476;
+          bool = false;
         }
+        ((FixedBounceScrollView.OnOverScrollListener)localObject).a(bool, Math.abs(this.jdField_c_of_type_Int));
+        break label557;
       }
-      for (;;)
-      {
-        localOnOverScrollListener.a(bool, Math.abs(this.jdField_c_of_type_Int));
-        break;
-        f1 = paramMotionEvent.getY();
-        break label66;
-        label411:
-        if ((this.jdField_b_of_type_Int < 0) || (j >= 0)) {
-          break label528;
-        }
-        i = 0;
-        break label109;
-        this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getTop() - j + 2, this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom() - j + 2);
-        break label353;
-        label476:
-        bool = false;
-      }
+    }
+    else
+    {
       setmCustomTopFadingEdgeScale(0.0F);
       setmCustomBottomFadingEdgeScale(0.0F);
       postInvalidate();
       performClick();
-      if (!this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()) {
-        a();
-      }
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_c_of_type_Int = 0;
-      break;
-      label528:
-      i = 1;
     }
+    if (!this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()) {
+      a();
+    }
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    label557:
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setBounceDelay(long paramLong)
@@ -532,7 +545,7 @@ public class FixedBounceScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FixedBounceScrollView
  * JD-Core Version:    0.7.0.1
  */

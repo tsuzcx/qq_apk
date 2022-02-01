@@ -26,27 +26,37 @@ public final class Reporter
   static
   {
     CGI_URLS = new SparseArray();
-    OP_CMDS.put("preview_impl", new Pair(Integer.valueOf(10001), Integer.valueOf(1001)));
-    OP_CMDS.put("open_doc", new Pair(Integer.valueOf(10011), Integer.valueOf(1001)));
-    OP_CMDS.put("convert_doc", new Pair(Integer.valueOf(10011), Integer.valueOf(1002)));
-    OP_CMDS.put("open_sheet", new Pair(Integer.valueOf(10021), Integer.valueOf(1001)));
-    OP_CMDS.put("convert_sheet", new Pair(Integer.valueOf(10021), Integer.valueOf(1002)));
-    OP_CMDS.put("open_slide", new Pair(Integer.valueOf(10031), Integer.valueOf(1001)));
-    OP_CMDS.put("convert_slide", new Pair(Integer.valueOf(10031), Integer.valueOf(1002)));
-    OP_CMDS.put("open_pdf", new Pair(Integer.valueOf(10041), Integer.valueOf(1001)));
+    Object localObject1 = OP_CMDS;
+    Integer localInteger = Integer.valueOf(1001);
+    ((Map)localObject1).put("preview_impl", new Pair(Integer.valueOf(10001), localInteger));
+    localObject1 = OP_CMDS;
+    Object localObject2 = Integer.valueOf(10011);
+    ((Map)localObject1).put("open_doc", new Pair(localObject2, localInteger));
+    Object localObject3 = OP_CMDS;
+    localObject1 = Integer.valueOf(1002);
+    ((Map)localObject3).put("convert_doc", new Pair(localObject2, localObject1));
+    localObject2 = OP_CMDS;
+    localObject3 = Integer.valueOf(10021);
+    ((Map)localObject2).put("open_sheet", new Pair(localObject3, localInteger));
+    OP_CMDS.put("convert_sheet", new Pair(localObject3, localObject1));
+    localObject2 = OP_CMDS;
+    localObject3 = Integer.valueOf(10031);
+    ((Map)localObject2).put("open_slide", new Pair(localObject3, localInteger));
+    OP_CMDS.put("convert_slide", new Pair(localObject3, localObject1));
+    OP_CMDS.put("open_pdf", new Pair(Integer.valueOf(10041), localInteger));
     CGI_URLS.put(1, "https://preview-report.docs.qq.com/online_docs_cgi/preview/module_report");
     CGI_URLS.put(2, "https://preview-report.docs.qq.com/online_docs_cgi/preview/log_report");
   }
   
   private static void report(int paramInt, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      str = (String)CGI_URLS.get(paramInt);
-    } while (TextUtils.isEmpty(str));
+    }
+    String str = (String)CGI_URLS.get(paramInt);
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
     Noumenon.sHostInterface.sendHttpRequest(str, true, paramString, new Reporter.1(paramInt));
   }
   
@@ -76,7 +86,7 @@ public final class Reporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kwstudio.office.debug.Reporter
  * JD-Core Version:    0.7.0.1
  */

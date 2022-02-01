@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PackageUpdateManager
 {
-  private static PackageUpdateManager jdField_a_of_type_CooperationVipManagerPackageUpdateManager = null;
+  private static PackageUpdateManager jdField_a_of_type_CooperationVipManagerPackageUpdateManager;
   private int jdField_a_of_type_Int = 0;
   private boolean jdField_a_of_type_Boolean = false;
   private boolean b = false;
@@ -25,10 +25,12 @@ public class PackageUpdateManager
     }
     this.b = true;
     long l = a(BaseApplicationImpl.getApplication());
-    if (b(BaseApplicationImpl.getApplication()) > l) {}
-    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0) {
-      return this.jdField_a_of_type_Int;
+    if (b(BaseApplicationImpl.getApplication()) > l) {
+      this.jdField_a_of_type_Int = 1;
+    } else {
+      this.jdField_a_of_type_Int = 0;
     }
+    return this.jdField_a_of_type_Int;
   }
   
   public static long a(Context paramContext)
@@ -48,15 +50,16 @@ public class PackageUpdateManager
   
   public static PackageUpdateManager a()
   {
-    if (jdField_a_of_type_CooperationVipManagerPackageUpdateManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationVipManagerPackageUpdateManager == null) {
-        jdField_a_of_type_CooperationVipManagerPackageUpdateManager = new PackageUpdateManager();
+    if (jdField_a_of_type_CooperationVipManagerPackageUpdateManager == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationVipManagerPackageUpdateManager == null) {
+          jdField_a_of_type_CooperationVipManagerPackageUpdateManager = new PackageUpdateManager();
+        }
       }
-      return jdField_a_of_type_CooperationVipManagerPackageUpdateManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationVipManagerPackageUpdateManager;
   }
   
   private void a()
@@ -83,21 +86,23 @@ public class PackageUpdateManager
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Boolean)
+    {
       QLog.d("PackageUpdateManager", 1, "checkUpgrade has pulll");
-    }
-    while (a() != 1) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
-    ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true);
-    a();
+    if (a() == 1)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
+      ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true);
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.manager.PackageUpdateManager
  * JD-Core Version:    0.7.0.1
  */

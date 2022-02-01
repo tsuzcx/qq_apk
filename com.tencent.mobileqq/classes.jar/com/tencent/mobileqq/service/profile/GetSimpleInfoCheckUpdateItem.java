@@ -14,13 +14,8 @@ public class GetSimpleInfoCheckUpdateItem
   extends FriendListHandler
   implements CheckUpdateItemInterface
 {
-  public static String a;
+  public static String a = "GetSimpleInfoCheckUpdateItem";
   private ToServiceMsg a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "GetSimpleInfoCheckUpdateItem";
-  }
   
   public GetSimpleInfoCheckUpdateItem(QQAppInterface paramQQAppInterface)
   {
@@ -34,27 +29,24 @@ public class GetSimpleInfoCheckUpdateItem
   
   public ReqItem a(int paramInt)
   {
-    Object localObject2 = null;
     getFriendInfo(this.app.getAccount());
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null)
+    if (this.a != null)
     {
-      BaseProtocolCoder localBaseProtocolCoder = this.app.mqqService.lookupCoder(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd());
-      localObject1 = localObject2;
-      if (localBaseProtocolCoder != null)
+      Object localObject = this.app.mqqService.lookupCoder(this.a.getServiceCmd());
+      if (localObject != null)
       {
         UniPacket localUniPacket = new UniPacket(true);
         localUniPacket.setEncodeName("utf-8");
-        localObject1 = localObject2;
-        if (localBaseProtocolCoder.encodeReqMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, localUniPacket))
+        if (((BaseProtocolCoder)localObject).encodeReqMsg(this.a, localUniPacket))
         {
-          localObject1 = new ReqItem();
-          ((ReqItem)localObject1).eServiceID = 113;
-          ((ReqItem)localObject1).vecParam = localUniPacket.encode();
+          localObject = new ReqItem();
+          ((ReqItem)localObject).eServiceID = 113;
+          ((ReqItem)localObject).vecParam = localUniPacket.encode();
+          return localObject;
         }
       }
     }
-    return localObject1;
+    return null;
   }
   
   public void a(RespItem paramRespItem)
@@ -64,18 +56,18 @@ public class GetSimpleInfoCheckUpdateItem
       FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.app.getAccount(), "ProfileService.GetSimpleInfo");
       localFromServiceMsg.setMsgSuccess();
       localFromServiceMsg.putWupBuffer(paramRespItem.vecUpdate);
-      this.app.receiveToService(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, localFromServiceMsg);
+      this.app.receiveToService(this.a, localFromServiceMsg);
     }
   }
   
   public void send(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.a = paramToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.profile.GetSimpleInfoCheckUpdateItem
  * JD-Core Version:    0.7.0.1
  */

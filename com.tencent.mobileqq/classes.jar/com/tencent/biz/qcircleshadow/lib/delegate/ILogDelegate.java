@@ -8,6 +8,8 @@ public abstract interface ILogDelegate
   
   public abstract void e(String paramString1, int paramInt, String paramString2);
   
+  public abstract void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable);
+  
   public abstract void e(String paramString, int paramInt, Object... paramVarArgs);
   
   public abstract int getCLRValue();
@@ -26,7 +28,7 @@ public abstract interface ILogDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.delegate.ILogDelegate
  * JD-Core Version:    0.7.0.1
  */

@@ -27,15 +27,7 @@ public class PaSubscribeRedDotBean
   
   public static PaSubscribeRedDotBean a(int paramInt, String paramString, boolean paramBoolean)
   {
-    PaSubscribeRedDotBean localPaSubscribeRedDotBean = new PaSubscribeRedDotBean();
-    localPaSubscribeRedDotBean.jdField_a_of_type_Int = paramInt;
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localPaSubscribeRedDotBean.b = paramInt;
-      localPaSubscribeRedDotBean.jdField_a_of_type_JavaLangString = paramString;
-      return localPaSubscribeRedDotBean;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static PaSubscribeRedDotBean a(String paramString)
@@ -47,7 +39,10 @@ public class PaSubscribeRedDotBean
     }
     catch (QStorageInstantiateException localQStorageInstantiateException)
     {
-      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadConfig l :");
+      localStringBuilder.append(paramString);
+      QLog.i("PublicAccountCenterUrlConfProcessor", 1, localStringBuilder.toString(), localQStorageInstantiateException);
     }
     return null;
   }
@@ -71,28 +66,32 @@ public class PaSubscribeRedDotBean
     {
       localObject = (QQAppInterface)localObject;
       int i = SubscriptRecommendController.a((QQAppInterface)localObject);
-      if (this.jdField_a_of_type_Int != i) {
-        break label47;
+      int j = this.jdField_a_of_type_Int;
+      if (j == i)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PaSubscribeRedDotProcessor", 2, "IGNORE THIS ACTION because of SAME VERSION");
+        }
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PaSubscribeRedDotProcessor", 2, "IGNORE THIS ACTION because of SAME VERSION");
-      }
-    }
-    label47:
-    do
-    {
-      return;
-      SubscriptRecommendController.a((QQAppInterface)localObject, this.jdField_a_of_type_Int);
+      SubscriptRecommendController.a((QQAppInterface)localObject, j);
       SubscriptRecommendController.a((QQAppInterface)localObject, this.b, this.jdField_a_of_type_JavaLangString);
       localObject = (IWebProcessManagerService)((QQAppInterface)localObject).getRuntimeService(IWebProcessManagerService.class, "");
-    } while (localObject == null);
-    ((IWebProcessManagerService)localObject).startWebProcess(-1, null);
+      if (localObject != null) {
+        ((IWebProcessManagerService)localObject).startWebProcess(-1, null);
+      }
+    }
   }
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml: " + paramString);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("updateSubscribeConfig xml: ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("PaSubscribeRedDotProcessor", 2, ((StringBuilder)localObject1).toString());
     }
     try
     {
@@ -100,12 +99,12 @@ public class PaSubscribeRedDotBean
       {
         paramString = paramString.trim();
         paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-        NodeList localNodeList = paramString.getElementsByTagName("version");
-        Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject instanceof QQAppInterface))
+        localObject1 = paramString.getElementsByTagName("version");
+        Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject2 instanceof QQAppInterface))
         {
-          localObject = (QQAppInterface)localObject;
-          this.jdField_a_of_type_Int = Integer.parseInt(localNodeList.item(0).getFirstChild().getNodeValue());
+          localObject2 = (QQAppInterface)localObject2;
+          this.jdField_a_of_type_Int = Integer.parseInt(((NodeList)localObject1).item(0).getFirstChild().getNodeValue());
           paramString = paramString.getElementsByTagName("public-account-folder");
           if (paramString.getLength() > 0)
           {
@@ -132,7 +131,7 @@ public class PaSubscribeRedDotBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PaSubscribeRedDotBean
  * JD-Core Version:    0.7.0.1
  */

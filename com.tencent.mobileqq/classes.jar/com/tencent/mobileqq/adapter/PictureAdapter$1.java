@@ -13,8 +13,14 @@ class PictureAdapter$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PictureAdapter", 2, "height is " + this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.getHeight() + " and width is " + this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.getWidth());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("height is ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.getHeight());
+      ((StringBuilder)localObject1).append(" and width is ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAdapterPictureAdapter$ViewHolder.a.getWidth());
+      QLog.i("PictureAdapter", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -34,7 +40,7 @@ class PictureAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.PictureAdapter.1
  * JD-Core Version:    0.7.0.1
  */

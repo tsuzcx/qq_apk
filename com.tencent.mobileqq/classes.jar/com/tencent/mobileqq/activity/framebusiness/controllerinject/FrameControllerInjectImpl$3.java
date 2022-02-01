@@ -26,7 +26,11 @@ class FrameControllerInjectImpl$3
       long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.b;
       if ((this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.b > 0L) && (l < 1000L))
       {
-        QLog.d("FrameControllerInjectImpl", 1, "Mainfragment onLongClick interval = [" + l + "], not start multi aio");
+        paramView = new StringBuilder();
+        paramView.append("Mainfragment onLongClick interval = [");
+        paramView.append(l);
+        paramView.append("], not start multi aio");
+        QLog.d("FrameControllerInjectImpl", 1, paramView.toString());
         return false;
       }
       paramView = (Conversation)this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.a(Conversation.class);
@@ -34,7 +38,7 @@ class FrameControllerInjectImpl$3
       {
         paramView = paramView.a().a();
         if (paramView != null) {
-          MultiAIOStarter.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.getActivity(), paramView.getRecentUserUin(), paramView.getRecentUserType(), paramView.getTitleName(), "conversation_tab_bottom");
+          MultiAIOStarter.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameFragment.a(), paramView.getRecentUserUin(), paramView.getRecentUserType(), paramView.getTitleName(), "conversation_tab_bottom");
         }
       }
     }
@@ -43,7 +47,7 @@ class FrameControllerInjectImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.controllerinject.FrameControllerInjectImpl.3
  * JD-Core Version:    0.7.0.1
  */

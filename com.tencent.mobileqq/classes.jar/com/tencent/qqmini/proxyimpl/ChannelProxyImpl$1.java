@@ -25,10 +25,9 @@ class ChannelProxyImpl$1
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject;
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      localObject = paramJSONObject.opt("authList");
+      Object localObject = paramJSONObject.opt("authList");
       if ((localObject instanceof byte[]))
       {
         paramJSONObject = new INTERFACE.StGetAuthListRsp();
@@ -45,35 +44,36 @@ class ChannelProxyImpl$1
             localUserAuthInfo.authState = localStUserAuthInfo.authState.get();
             localArrayList1.add(localUserAuthInfo);
           }
-          if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult == null) {
-            break label208;
+          paramJSONObject = paramJSONObject.settings.get().iterator();
+          while (paramJSONObject.hasNext())
+          {
+            localObject = (INTERFACE.StUserSettingInfo)paramJSONObject.next();
+            localArrayList2.add(ChannelProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplChannelProxyImpl, (INTERFACE.StUserSettingInfo)localObject));
           }
+          if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult != null) {
+            this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult.onReceiveResult(true, localArrayList1, localArrayList2);
+          }
+          return;
         }
         catch (InvalidProtocolBufferMicroException paramJSONObject)
         {
-          QLog.e("ChannelProxyImpl", 1, "getSetting, InvalidProtocolBufferMicroException:" + paramJSONObject);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getSetting, InvalidProtocolBufferMicroException:");
+          ((StringBuilder)localObject).append(paramJSONObject);
+          QLog.e("ChannelProxyImpl", 1, ((StringBuilder)localObject).toString());
           paramJSONObject.printStackTrace();
         }
       }
     }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult.onReceiveResult(false, localArrayList1, localArrayList2);
-    label208:
-    do
-    {
-      return;
-      paramJSONObject = paramJSONObject.settings.get().iterator();
-      while (paramJSONObject.hasNext())
-      {
-        localObject = (INTERFACE.StUserSettingInfo)paramJSONObject.next();
-        localArrayList2.add(ChannelProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplChannelProxyImpl, (INTERFACE.StUserSettingInfo)localObject));
-      }
-    } while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult == null);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult.onReceiveResult(true, localArrayList1, localArrayList2);
+    paramJSONObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$AuthListResult;
+    if (paramJSONObject != null) {
+      paramJSONObject.onReceiveResult(false, localArrayList1, localArrayList2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

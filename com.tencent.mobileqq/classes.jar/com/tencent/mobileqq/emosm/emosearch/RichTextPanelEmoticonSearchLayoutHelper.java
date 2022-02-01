@@ -2,35 +2,38 @@ package com.tencent.mobileqq.emosm.emosearch;
 
 import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
 import com.tencent.mobileqq.emoticonview.BaseEmotionAdapter;
 import com.tencent.mobileqq.emoticonview.EmoticonPanelHotPicSearchHelper;
+import com.tencent.mobileqq.emoticonview.IEmotionHotPicSearchAdapter;
 import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
-import com.tencent.mobileqq.hiboom.RichTextPanelExtendHelper;
+import com.tencent.mobileqq.hiboom.IRichTextPanelExtendHelper;
 import com.tencent.widget.ListView;
 
 public class RichTextPanelEmoticonSearchLayoutHelper
   extends EmoticonPanelHotPicSearchHelper
-  implements IEmoticonSearchHelper
+  implements IEmoticonSearchHelper, IRichTextPanelEmoticonSearchLayoutHelper
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private QQEmoticonMainPanelApp jdField_a_of_type_ComTencentMobileqqEmoticonviewIpcQQEmoticonMainPanelApp;
-  private RichTextPanelExtendHelper jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelExtendHelper;
+  private QQEmoticonMainPanelApp jdField_a_of_type_ComTencentMobileqqEmoticonviewIpcQQEmoticonMainPanelApp = new QQEmoticonMainPanelApp();
+  private IRichTextPanelExtendHelper jdField_a_of_type_ComTencentMobileqqHiboomIRichTextPanelExtendHelper;
   private String jdField_a_of_type_JavaLangString;
   
-  public RichTextPanelEmoticonSearchLayoutHelper(QQAppInterface paramQQAppInterface, Context paramContext, RichTextPanelExtendHelper paramRichTextPanelExtendHelper)
+  public RichTextPanelEmoticonSearchLayoutHelper(IPanelInteractionListener paramIPanelInteractionListener, Context paramContext, IRichTextPanelExtendHelper paramIRichTextPanelExtendHelper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIpcQQEmoticonMainPanelApp = new QQEmoticonMainPanelApp(paramQQAppInterface);
+    super(paramIPanelInteractionListener);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelExtendHelper = paramRichTextPanelExtendHelper;
+    this.jdField_a_of_type_ComTencentMobileqqHiboomIRichTextPanelExtendHelper = paramIRichTextPanelExtendHelper;
   }
   
-  public void a(ListView paramListView, BaseEmotionAdapter paramBaseEmotionAdapter)
+  public void a(ViewGroup paramViewGroup, IEmotionHotPicSearchAdapter paramIEmotionHotPicSearchAdapter)
   {
-    attach(paramListView, paramBaseEmotionAdapter);
-    paramBaseEmotionAdapter = getFooterView();
-    if (paramBaseEmotionAdapter.getParent() == null) {
-      paramListView.addFooterView(paramBaseEmotionAdapter);
+    paramViewGroup = (ListView)paramViewGroup;
+    attach(paramViewGroup, (BaseEmotionAdapter)paramIEmotionHotPicSearchAdapter);
+    paramIEmotionHotPicSearchAdapter = getFooterView();
+    if (paramIEmotionHotPicSearchAdapter.getParent() == null) {
+      paramViewGroup.addFooterView(paramIEmotionHotPicSearchAdapter);
     }
   }
   
@@ -66,7 +69,7 @@ public class RichTextPanelEmoticonSearchLayoutHelper
   
   public void onPullDown()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelExtendHelper.onPullDown();
+    this.jdField_a_of_type_ComTencentMobileqqHiboomIRichTextPanelExtendHelper.onPullDown();
   }
   
   public void onPullUp() {}
@@ -78,7 +81,7 @@ public class RichTextPanelEmoticonSearchLayoutHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.emosearch.RichTextPanelEmoticonSearchLayoutHelper
  * JD-Core Version:    0.7.0.1
  */

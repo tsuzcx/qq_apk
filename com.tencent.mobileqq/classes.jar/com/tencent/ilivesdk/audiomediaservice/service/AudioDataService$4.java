@@ -13,7 +13,15 @@ final class AudioDataService$4
 {
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a().i("AudioDataService", "get userSig onError:isTimeout" + paramBoolean + ";code=" + paramInt + ";msg=" + paramString, new Object[0]);
+    LogInterface localLogInterface = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("get userSig onError:isTimeout");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(";code=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(";msg=");
+    localStringBuilder.append(paramString);
+    localLogInterface.i("AudioDataService", localStringBuilder.toString(), new Object[0]);
     this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestSigCallback.a(paramInt);
   }
   
@@ -25,7 +33,11 @@ final class AudioDataService$4
       ILiveChanneSvr.GetIMSigRsp localGetIMSigRsp = new ILiveChanneSvr.GetIMSigRsp();
       localGetIMSigRsp.mergeFrom(paramArrayOfByte);
       int i = localGetIMSigRsp.err.get();
-      this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a().i("AudioDataService", "get userSig success, get sig cost errCode=" + i, new Object[0]);
+      paramArrayOfByte = this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceInterfacesIAudioMediaServiceAdapter.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get userSig success, get sig cost errCode=");
+      localStringBuilder.append(i);
+      paramArrayOfByte.i("AudioDataService", localStringBuilder.toString(), new Object[0]);
       if (i == 0)
       {
         this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestSigCallback.a(localGetIMSigRsp.sig.get().toByteArray());
@@ -36,13 +48,15 @@ final class AudioDataService$4
     }
     catch (Exception paramArrayOfByte)
     {
-      this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestSigCallback.a(-1);
+      label130:
+      break label130;
     }
+    this.jdField_a_of_type_ComTencentIlivesdkAudiomediaserviceServiceRequestSigCallback.a(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.service.AudioDataService.4
  * JD-Core Version:    0.7.0.1
  */

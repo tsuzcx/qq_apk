@@ -17,13 +17,20 @@ public class ShareGroupOneDayStoryShareMode
   extends VideoShareModeBase
 {
   public static final String a;
-  public static final String b = jdField_a_of_type_JavaLangString + "&et=%d&time_zone=%d";
+  public static final String b;
   protected int a;
   private final int[] a;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + StoryApi.a(2131699762);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0");
+    localStringBuilder.append(StoryApi.a(2131699903));
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("&et=%d&time_zone=%d");
+    b = localStringBuilder.toString();
   }
   
   public ShareGroupOneDayStoryShareMode(ShareGroupItem paramShareGroupItem, StoryVideoItem paramStoryVideoItem, String paramString, long paramLong, int paramInt1, int paramInt2)
@@ -38,11 +45,29 @@ public class ShareGroupOneDayStoryShareMode
     this.c = StringUtil.a(paramShareGroupItem.name, 0, 16, "...");
     this.g = paramStoryVideoItem.mDoodleText;
     this.jdField_d_of_type_JavaLangString = a();
-    this.k = (HardCodeUtil.a(2131713856) + this.c + HardCodeUtil.a(2131713864) + QQStoryConstant.jdField_a_of_type_JavaLangString);
-    this.l = (this.c + "\n" + paramInt2 + HardCodeUtil.a(2131713860));
+    paramShareGroupItem = new StringBuilder();
+    paramShareGroupItem.append(HardCodeUtil.a(2131713784));
+    paramShareGroupItem.append(this.c);
+    paramShareGroupItem.append(HardCodeUtil.a(2131713792));
+    paramShareGroupItem.append(QQStoryConstant.jdField_a_of_type_JavaLangString);
+    this.k = paramShareGroupItem.toString();
+    paramShareGroupItem = new StringBuilder();
+    paramShareGroupItem.append(this.c);
+    paramShareGroupItem.append("\n");
+    paramShareGroupItem.append(paramInt2);
+    paramShareGroupItem.append(HardCodeUtil.a(2131713788));
+    this.l = paramShareGroupItem.toString();
     new SimpleDateFormat("M月d日").format(Long.valueOf(paramLong));
     this.i = b();
-    this.j = ("#" + QQStoryConstant.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
+    paramShareGroupItem = new StringBuilder();
+    paramShareGroupItem.append("#");
+    paramShareGroupItem.append(QQStoryConstant.jdField_a_of_type_JavaLangString);
+    paramShareGroupItem.append("# ");
+    paramShareGroupItem.append(a());
+    paramShareGroupItem.append("（");
+    paramShareGroupItem.append(this.i);
+    paramShareGroupItem.append("）");
+    this.j = paramShareGroupItem.toString();
     this.jdField_d_of_type_Int = 11;
     this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 97, 98, 99, 100, 101 };
   }
@@ -52,7 +77,7 @@ public class ShareGroupOneDayStoryShareMode
     return new ShareGroupOneDayStoryShareMode(paramShareGroupItem, paramStoryVideoItem, paramString, paramLong, 9, paramInt);
   }
   
-  public String a(int paramInt)
+  protected String a(int paramInt)
   {
     if (paramInt == 1) {
       return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&ptype=%d&identify=1&type=onedaylist&et=%d&time_zone=%d", new Object[] { this.jdField_e_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.f, this.h, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime / 1000L), Integer.valueOf(UIUtils.a()) });
@@ -62,7 +87,7 @@ public class ShareGroupOneDayStoryShareMode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.ShareGroupOneDayStoryShareMode
  * JD-Core Version:    0.7.0.1
  */

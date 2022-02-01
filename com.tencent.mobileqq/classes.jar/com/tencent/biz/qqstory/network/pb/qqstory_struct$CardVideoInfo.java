@@ -24,17 +24,18 @@ public final class qqstory_struct$CardVideoInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 58, 66 }, new String[] { "vid", "video_cover", "label", "view_total_num", "total_like_num", "total_comment_num", "feed_id", "vid_list" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5 }, CardVideoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 58, 66 }, new String[] { "vid", "video_cover", "label", "view_total_num", "total_like_num", "total_comment_num", "feed_id", "vid_list" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), localInteger, localInteger, localByteStringMicro4, localByteStringMicro5 }, CardVideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo
  * JD-Core Version:    0.7.0.1
  */

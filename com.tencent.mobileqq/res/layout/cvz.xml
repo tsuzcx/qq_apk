@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:id="@id/lfw" android:background="#ffa0a0a0" android:longClickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:textSize="16.0dip" android:textColor="#ff000000" android:id="@id/ll2" android:background="@null" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:minWidth="0.0dip" android:minHeight="0.0dip" android:text="关闭显示" android:layout_alignParentRight="true" />
-        <Button android:textSize="16.0dip" android:textColor="#ff000000" android:id="@id/ayc" android:background="@null" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:minWidth="0.0dip" android:minHeight="0.0dip" android:text="@string/tz_" />
+    <ImageView android:id="@id/kmz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/i95" android:scaleType="centerCrop" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/kls">
+        <ImageView android:id="@id/kqj" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/i96" android:scaleType="centerCrop" android:layout_centerInParent="true" />
     </RelativeLayout>
-    <View android:id="@id/m5q" android:background="#ffcccccc" android:visibility="gone" android:longClickable="true" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-    <include layout="@layout/cw0" />
-    <com.tencent.mobileqq.tablequery.DataReportListView android:id="@id/m_f" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="#7fcccccc" android:dividerHeight="1.0dip" />
-    <View android:background="#ffcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kmq" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip">
+        <ImageView android:id="@id/km9" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_margin="10.0dip" android:layout_marginRight="7.0dip" />
+        <TextView android:textColor="@color/bp" android:id="@id/kmt" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kks" android:background="#33000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="11.0dip" android:layout_alignParentRight="true">
+        <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" android:text="广告" />
+        <ImageView android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_margin="2.0dip" android:src="@drawable/i98" android:scaleType="centerCrop" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kls" android:layout_width="fill_parent" android:layout_height="57.0dip" android:layout_below="@id/kmz">
+        <TextView android:textColor="#ff222222" android:id="@id/koa" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0" android:lineSpacingExtra="5.0dip" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/klr" android:background="@drawable/e7a" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginRight="10.0dip" android:minWidth="97.0dip" />
+    </LinearLayout>
+</RelativeLayout>

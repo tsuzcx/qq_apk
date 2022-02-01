@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class WSVideoPluginInstall$SDKInstallListener
   implements IWSPlayerSdkMgr.InstallListener
 {
-  private Handler a;
+  private final Handler a;
   
   WSVideoPluginInstall$SDKInstallListener(Handler paramHandler)
   {
@@ -18,55 +18,65 @@ class WSVideoPluginInstall$SDKInstallListener
   
   public void a()
   {
+    WSLog.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledSuccess]");
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.5.5");
-      if (this.a != null) {
-        this.a.sendEmptyMessage(0);
-      }
-      return;
+      localJSONObject.put("version", "8.7.0");
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        WSLog.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledSuccess] JSONException: " + localJSONException.getLocalizedMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[WSVideoPluginInstall.java][onInstalledSuccess] JSONException: ");
+      localStringBuilder.append(localJSONException.getLocalizedMessage());
+      WSLog.d("WS_VIDEO_WSVideoPluginInstall", localStringBuilder.toString());
+    }
+    Handler localHandler = this.a;
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(0);
     }
   }
   
   public void a(float paramFloat)
   {
-    if (this.a != null) {
-      this.a.sendEmptyMessage(2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSVideoPluginInstall.java][onInstallProgress] percent:");
+    ((StringBuilder)localObject).append(paramFloat);
+    WSLog.e("WS_VIDEO_WSVideoPluginInstall", ((StringBuilder)localObject).toString());
+    localObject = this.a;
+    if (localObject != null) {
+      ((Handler)localObject).sendEmptyMessage(2);
     }
   }
   
   public void a(int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSVideoPluginInstall.java][onInstalledFailed] errorCode:");
+    ((StringBuilder)localObject).append(paramInt);
+    WSLog.d("WS_VIDEO_WSVideoPluginInstall", ((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.5.5");
-      localJSONObject.put("error_code", paramInt);
-      if (this.a != null) {
-        this.a.sendEmptyMessage(1);
-      }
-      return;
+      ((JSONObject)localObject).put("version", "8.7.0");
+      ((JSONObject)localObject).put("error_code", paramInt);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        WSLog.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledFailed] JSONException: " + localException.getLocalizedMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[WSVideoPluginInstall.java][onInstalledFailed] JSONException: ");
+      localStringBuilder.append(localException.getLocalizedMessage());
+      WSLog.d("WS_VIDEO_WSVideoPluginInstall", localStringBuilder.toString());
+    }
+    Handler localHandler = this.a;
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPluginInstall.SDKInstallListener
  * JD-Core Version:    0.7.0.1
  */

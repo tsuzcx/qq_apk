@@ -123,58 +123,71 @@ public final class s_user
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.nickname != null) {
-      paramJceOutputStream.write(this.nickname, 1);
+    String str = this.nickname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.from, 2);
     paramJceOutputStream.write(this.vtime, 3);
-    if (this.uinkey != null) {
-      paramJceOutputStream.write(this.uinkey, 4);
+    str = this.uinkey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.dateval != null) {
-      paramJceOutputStream.write(this.dateval, 5);
+    str = this.dateval;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.is_send, 6);
     paramJceOutputStream.write(this.comm_friend_num, 7);
-    if (this.profile_url != null) {
-      paramJceOutputStream.write(this.profile_url, 8);
+    str = this.profile_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.is_lunar, 9);
-    if (this.birthday_time != null) {
-      paramJceOutputStream.write(this.birthday_time, 10);
+    str = this.birthday_time;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.question != null) {
-      paramJceOutputStream.write(this.question, 11);
+    str = this.question;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.answer != null) {
-      paramJceOutputStream.write(this.answer, 12);
+    str = this.answer;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
     paramJceOutputStream.write(this.is_qq_friend, 13);
-    if (this.visit_info != null) {
-      paramJceOutputStream.write(this.visit_info, 14);
+    str = this.visit_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
     paramJceOutputStream.write(this.is_new_visitor, 15);
     paramJceOutputStream.write(this.isFamousQzone, 16);
     paramJceOutputStream.write(this.fans_num, 17);
-    if (this.fans_num_express != null) {
-      paramJceOutputStream.write(this.fans_num_express, 18);
+    str = this.fans_num_express;
+    if (str != null) {
+      paramJceOutputStream.write(str, 18);
     }
     paramJceOutputStream.write(this.is_concerned, 19);
     paramJceOutputStream.write(this.visit_mod, 20);
-    if (this.reason != null) {
-      paramJceOutputStream.write(this.reason, 21);
+    str = this.reason;
+    if (str != null) {
+      paramJceOutputStream.write(str, 21);
     }
     paramJceOutputStream.write(this.is_new_birthday_friend, 22);
     paramJceOutputStream.write(this.relat_days, 23);
     paramJceOutputStream.write(this.appid, 24);
-    if (this.ugc_content_id != null) {
-      paramJceOutputStream.write(this.ugc_content_id, 25);
+    str = this.ugc_content_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 25);
     }
-    if (this.visit_info_prefix != null) {
-      paramJceOutputStream.write(this.visit_info_prefix, 26);
+    str = this.visit_info_prefix;
+    if (str != null) {
+      paramJceOutputStream.write(str, 26);
     }
-    if (this.visit_info_content != null) {
-      paramJceOutputStream.write(this.visit_info_content, 27);
+    str = this.visit_info_content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 27);
     }
     paramJceOutputStream.write(this.is_in_hidelist, 28);
     paramJceOutputStream.write(this.is_in_fromhidelist, 29);
@@ -186,7 +199,7 @@ public final class s_user
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_user
  * JD-Core Version:    0.7.0.1
  */

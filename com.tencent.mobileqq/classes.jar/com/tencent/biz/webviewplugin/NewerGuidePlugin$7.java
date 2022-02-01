@@ -19,50 +19,50 @@ class NewerGuidePlugin$7
     if (QLog.isColorLevel()) {
       QLog.d("NewerGuidePlugin", 2, String.format("onDismissOperations year=%s month=%s day=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }));
     }
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if ((localObject != null) && (((ActionSheet)localObject).isShowing())) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
-    JSONObject localJSONObject = new JSONObject();
+    localObject = new JSONObject();
     try
     {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("year", i);
-      localJSONObject.put("month", j);
-      localJSONObject.put("date", k);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respDatePicker", new String[] { localJSONObject.toString() });
-      return;
+      ((JSONObject)localObject).put("result", 1);
+      ((JSONObject)localObject).put("year", i);
+      ((JSONObject)localObject).put("month", j);
+      ((JSONObject)localObject).put("date", k);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendDatePickerResp fail", localException);
-      }
+      QLog.e("NewerGuidePlugin", 1, "sendDatePickerResp fail", localException);
     }
+    this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respDatePicker", new String[] { ((JSONObject)localObject).toString() });
   }
   
   public void onItemSelected(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 == 2) {
+          NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+        }
       }
-      return;
+      else {
+        NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+      }
+    }
+    else {
       NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
-      continue;
-      NewerGuidePlugin.d(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.7
  * JD-Core Version:    0.7.0.1
  */

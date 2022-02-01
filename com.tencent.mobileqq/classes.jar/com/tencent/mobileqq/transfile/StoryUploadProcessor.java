@@ -11,6 +11,7 @@ import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.utils.NetworkUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.mobileqq.highway.config.HwServlet;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
 import com.tencent.mobileqq.highway.transaction.Transaction;
@@ -22,6 +23,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pic.UpCallBack;
 import com.tencent.mobileqq.pic.UpCallBack.SendResult;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.wstt.SSCM.SSCM;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
@@ -50,7 +52,10 @@ public class StoryUploadProcessor
     this.file.processor = this;
     this.file.bdhExtendInfo = paramTransferRequest.mExtentionInfo;
     this.mStartWaitTime = System.currentTimeMillis();
-    TAG = this.mTag + ".StoryUploadProcessor";
+    paramBaseTransFileController = new StringBuilder();
+    paramBaseTransFileController.append(this.mTag);
+    paramBaseTransFileController.append(".StoryUploadProcessor");
+    TAG = paramBaseTransFileController.toString();
   }
   
   public static void checkUploadSessionKey()
@@ -60,50 +65,44 @@ public class StoryUploadProcessor
   
   private String getSdcardInfo()
   {
-    return String.format("sdcard free size:%d, upload dir exist:%b ", new Object[] { Long.valueOf(com.tencent.biz.qqstory.utils.FileUtils.a()), Boolean.valueOf(com.tencent.mobileqq.utils.FileUtils.a(QQStoryConstant.e)) });
+    return String.format("sdcard free size:%d, upload dir exist:%b ", new Object[] { Long.valueOf(com.tencent.biz.qqstory.utils.FileUtils.a()), Boolean.valueOf(com.tencent.mobileqq.utils.FileUtils.fileExists(QQStoryConstant.f)) });
   }
   
   public static int makeStoryErrorCoder(int paramInt)
   {
-    return 95000000 + paramInt;
+    return paramInt + 95000000;
   }
   
   private int thisFileRemoveByOtherSoftWareErrorCode(String paramString)
   {
     String str = com.tencent.biz.qqstory.utils.FileUtils.a(paramString);
-    long l1 = 0L;
+    long l1;
     try
     {
-      l2 = Long.valueOf(str.substring(0, str.indexOf("_"))).longValue();
-      l1 = l2;
+      l1 = Long.valueOf(str.substring(0, str.indexOf("_"))).longValue();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        SLog.c(TAG, "exception", localException);
-      }
-      if (l1 <= 0L) {
-        break label173;
-      }
-      long l2 = (System.currentTimeMillis() - l1) / 24L / 60L / 60L / 1000L;
-      l1 = l2;
-      if (l2 <= 30L) {
-        break label166;
-      }
-      l1 = 30L;
-      return (int)(l1 + 999000L);
+      SLog.c(TAG, "exception", localException);
+      l1 = 0L;
     }
-    l2 = com.tencent.biz.qqstory.utils.FileUtils.b(QQStoryConstant.e);
+    long l2 = com.tencent.biz.qqstory.utils.FileUtils.b(QQStoryConstant.f);
     SLog.e(TAG, "orig file create time:%d, flag file create time:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
-    if ((l2 == 0L) || ((l1 > 0L) && (l2 > l1)))
+    if ((l2 != 0L) && ((l1 <= 0L) || (l2 <= l1)))
     {
-      SLog.e(TAG, "your file delete by software %s", new Object[] { paramString });
-      return 940017;
+      if (l1 > 0L)
+      {
+        l2 = (System.currentTimeMillis() - l1) / 24L / 60L / 60L / 1000L;
+        l1 = l2;
+        if (l2 > 30L) {
+          l1 = 30L;
+        }
+        return (int)(l1 + 999000L);
+      }
+      return 9071;
     }
-    label166:
-    label173:
-    return 9071;
+    SLog.e(TAG, "your file delete by software %s", new Object[] { paramString });
+    return 940017;
   }
   
   public void cancelTask()
@@ -115,33 +114,51 @@ public class StoryUploadProcessor
   
   public int checkParam()
   {
-    String str = this.mUiRequest.mLocalPath;
-    if (TextUtils.isEmpty(str))
+    Object localObject1 = this.mUiRequest.mLocalPath;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      setError(9302, getExpStackString(new Exception("filePath null")));
+      this.mProcessorReport.setError(9302, getExpStackString(new Exception("filePath null")), null, null);
       onError();
       return -1;
     }
-    File localFile = new File(str);
-    if (!localFile.exists())
+    Object localObject2 = new File((String)localObject1);
+    int i;
+    StringBuilder localStringBuilder;
+    if (!((File)localObject2).exists())
     {
-      setError(thisFileRemoveByOtherSoftWareErrorCode(str), getSdcardInfo() + "sendFile not exist " + str);
+      localObject2 = this.mProcessorReport;
+      i = thisFileRemoveByOtherSoftWareErrorCode((String)localObject1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getSdcardInfo());
+      localStringBuilder.append("sendFile not exist ");
+      localStringBuilder.append((String)localObject1);
+      ((ProcessorReport)localObject2).setError(i, localStringBuilder.toString(), null, null);
       onError();
       return -1;
     }
-    if (!localFile.canRead())
+    if (!((File)localObject2).canRead())
     {
-      setError(9070, getExpStackString(new Exception("sendFile not readable " + this.file.filePath)));
+      localObject1 = this.mProcessorReport;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("sendFile not readable ");
+      ((StringBuilder)localObject2).append(this.file.filePath);
+      ((ProcessorReport)localObject1).setError(9070, getExpStackString(new Exception(((StringBuilder)localObject2).toString())), null, null);
       onError();
       return -1;
     }
-    long l = localFile.length();
+    long l = ((File)localObject2).length();
     this.file.fileSize = l;
     this.mFileSize = l;
-    SLog.a(TAG, "upload file size %d, file %s", Long.valueOf(this.mFileSize), str);
+    SLog.a(TAG, "upload file size %d, file %s", Long.valueOf(this.mFileSize), localObject1);
     if (l <= 0L)
     {
-      setError(thisFileRemoveByOtherSoftWareErrorCode(str), getSdcardInfo() + "sendFile size empty " + str);
+      localObject2 = this.mProcessorReport;
+      i = thisFileRemoveByOtherSoftWareErrorCode((String)localObject1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getSdcardInfo());
+      localStringBuilder.append("sendFile size empty ");
+      localStringBuilder.append((String)localObject1);
+      ((ProcessorReport)localObject2).setError(i, localStringBuilder.toString(), null, null);
       onError();
       return -1;
     }
@@ -150,77 +167,71 @@ public class StoryUploadProcessor
   
   protected void doReport(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (RichMediaStrategy.noReportByErrorCode(this.errCode))) {
-      break label14;
-    }
-    label14:
-    while ((this.mIsOldDbRec) || ((paramBoolean) && ((this.mReportedFlag & 0x2) > 0)) || ((!paramBoolean) && ((this.mReportedFlag & 0x1) > 0))) {
+    if ((!paramBoolean) && (RichMediaStrategy.noReportByErrorCode(this.mProcessorReport.errCode))) {
       return;
     }
-    int j = this.mReportedFlag;
-    int i;
-    label59:
-    String str;
-    label84:
-    long l;
-    if (paramBoolean)
+    if ((!this.mProcessorReport.mIsOldDbRec) && ((!paramBoolean) || ((this.mProcessorReport.mReportedFlag & 0x2) <= 0)))
     {
-      i = 2;
-      this.mReportedFlag = (i | j);
-      if (this.file.fileType != 196610) {
-        break label228;
+      if ((!paramBoolean) && ((this.mProcessorReport.mReportedFlag & 0x1) > 0)) {
+        return;
       }
-      str = "actStoryPicUpload";
-      this.mEndTime = System.currentTimeMillis();
-      l = (System.nanoTime() - this.mStartTime) / 1000000L;
-      this.mReportInfo.put("param_sessionKey", "null");
-      if (!paramBoolean) {
-        break label301;
-      }
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, l, this.mFileSize, this.mReportInfo, "");
-      if (this.file.fileType != 196609) {
-        break label249;
-      }
-      StoryReportor.b("publish_story", "publish_video", 0, 0, new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), StoryReportor.a(BaseApplication.getContext()), this.mVideoUrl });
-    }
-    for (;;)
-    {
-      setReportFlag();
-      return;
-      i = 1;
-      break label59;
-      label228:
-      if (this.file.fileType != 196609) {
-        break;
-      }
-      str = "actStoryVideoUpload";
-      break label84;
-      label249:
-      StoryReportor.b("publish_story", "publish_thumbnail", 0, 0, new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), StoryReportor.a(BaseApplication.getContext()) });
-      continue;
-      label301:
-      if (this.errCode != -9527) {
-        this.mReportInfo.remove("param_rspHeader");
-      }
-      this.mReportInfo.put("param_FailCode", String.valueOf(this.errCode));
-      this.mReportInfo.put("param_errorDesc", this.errDesc);
-      this.mReportInfo.put("param_picSize", String.valueOf(this.mFileSize));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, false, l, this.mFileSize, this.mReportInfo, "");
-      if (this.file.fileType == 196609) {
-        StoryReportor.b("publish_story", "publish_video", 0, makeStoryErrorCoder(this.errCode), new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), StoryReportor.a(BaseApplication.getContext()), this.errDesc });
+      Object localObject = this.mProcessorReport;
+      int j = this.mProcessorReport.mReportedFlag;
+      int i;
+      if (paramBoolean) {
+        i = 2;
       } else {
-        StoryReportor.b("publish_story", "publish_thumbnail", 0, makeStoryErrorCoder(this.errCode), new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mEndTime - this.mStartUploadTime), StoryReportor.a(BaseApplication.getContext()), this.errDesc });
+        i = 1;
       }
+      ((ProcessorReport)localObject).mReportedFlag = (j | i);
+      if (this.file.fileType == 196610) {}
+      for (localObject = "actStoryPicUpload";; localObject = "actStoryVideoUpload")
+      {
+        break;
+        if (this.file.fileType != 196609) {
+          return;
+        }
+      }
+      this.mProcessorReport.mEndTime = System.currentTimeMillis();
+      long l = (System.nanoTime() - this.mProcessorReport.mStartTime) / 1000000L;
+      this.mProcessorReport.mReportInfo.put("param_sessionKey", "null");
+      if (paramBoolean)
+      {
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject, true, l, this.mFileSize, this.mProcessorReport.mReportInfo, "");
+        if (this.file.fileType == 196609) {
+          StoryReportor.b("publish_story", "publish_video", 0, 0, new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mProcessorReport.mEndTime - this.mStartUploadTime), StoryReportor.a(BaseApplication.getContext()), this.mVideoUrl });
+        } else {
+          StoryReportor.b("publish_story", "publish_thumbnail", 0, 0, new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mProcessorReport.mEndTime - this.mStartUploadTime), StoryReportor.a(BaseApplication.getContext()) });
+        }
+      }
+      else
+      {
+        if (this.mProcessorReport.errCode != -9527) {
+          this.mProcessorReport.mReportInfo.remove("param_rspHeader");
+        }
+        this.mProcessorReport.mReportInfo.put("param_FailCode", String.valueOf(this.mProcessorReport.errCode));
+        this.mProcessorReport.mReportInfo.put("param_errorDesc", this.mProcessorReport.errDesc);
+        this.mProcessorReport.mReportInfo.put("param_picSize", String.valueOf(this.mFileSize));
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, (String)localObject, false, l, this.mFileSize, this.mProcessorReport.mReportInfo, "");
+        if (this.file.fileType == 196609) {
+          StoryReportor.b("publish_story", "publish_video", 0, makeStoryErrorCoder(this.mProcessorReport.errCode), new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mProcessorReport.mEndTime - this.mStartUploadTime), StoryReportor.a(BaseApplication.getContext()), this.mProcessorReport.errDesc });
+        } else {
+          StoryReportor.b("publish_story", "publish_thumbnail", 0, makeStoryErrorCoder(this.mProcessorReport.errCode), new String[] { String.valueOf(this.mFileSize), String.valueOf(this.mProcessorReport.mEndTime - this.mStartUploadTime), StoryReportor.a(BaseApplication.getContext()), this.mProcessorReport.errDesc });
+        }
+      }
+      setReportFlag();
     }
   }
   
   protected long getBlockSize(long paramLong)
   {
     paramLong = this.mFileSize - paramLong;
-    if (!this.mSSCMSpanned) {}
-    for (paramLong = Math.min(paramLong, this.sscmObject.a(BaseApplication.getContext(), this.mFileSize, this.mTransferedSize, -1));; paramLong = Math.min(paramLong, 14600L)) {
-      return Math.min(paramLong, 131072L);
+    if (!this.mSSCMSpanned) {
+      paramLong = Math.min(paramLong, this.sscmObject.a(BaseApplication.getContext(), this.mFileSize, this.mTransferedSize, -1));
+    } else {
+      paramLong = Math.min(paramLong, 14600L);
     }
+    return Math.min(paramLong, 131072L);
   }
   
   byte[] getStreamData(int paramInt1, int paramInt2)
@@ -232,13 +243,13 @@ public class StoryUploadProcessor
   {
     super.onError();
     sendMessageToUpdate(1005);
-    SLog.d(TAG, "error errCode:%d,errDesc:%s, %s", new Object[] { Integer.valueOf(this.errCode), this.errDesc, this.mUiRequest.mLocalPath });
+    SLog.d(TAG, "error errCode:%d,errDesc:%s, %s", new Object[] { Integer.valueOf(this.mProcessorReport.errCode), this.mProcessorReport.errDesc, this.mUiRequest.mLocalPath });
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
       localSendResult.jdField_a_of_type_Int = -1;
-      localSendResult.jdField_b_of_type_Int = makeStoryErrorCoder(this.errCode);
-      localSendResult.jdField_a_of_type_JavaLangString = this.errDesc;
+      localSendResult.jdField_b_of_type_Int = makeStoryErrorCoder(this.mProcessorReport.errCode);
+      localSendResult.jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
@@ -253,21 +264,20 @@ public class StoryUploadProcessor
     super.onSuccess();
     sendMessageToUpdate(1003);
     SLog.d(TAG, "success path:%s", new Object[] { this.mUiRequest.mLocalPath });
-    UpCallBack.SendResult localSendResult;
     if (this.mUiRequest.mUpCallBack != null)
     {
-      localSendResult = new UpCallBack.SendResult();
+      UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
       localSendResult.jdField_a_of_type_Int = 0;
-      if (this.file.fileType != 196610) {
-        break label92;
+      if (this.file.fileType == 196610)
+      {
+        localSendResult.jdField_b_of_type_JavaLangString = this.mPhotoUrl;
       }
-    }
-    for (localSendResult.jdField_b_of_type_JavaLangString = this.mPhotoUrl;; localSendResult.jdField_b_of_type_JavaLangString = this.mVideoUrl)
-    {
+      else
+      {
+        localSendResult.c = this.mVid;
+        localSendResult.jdField_b_of_type_JavaLangString = this.mVideoUrl;
+      }
       this.mUiRequest.mUpCallBack.b(localSendResult);
-      return;
-      label92:
-      localSendResult.c = this.mVid;
     }
   }
   
@@ -280,56 +290,84 @@ public class StoryUploadProcessor
   public void sendFile()
   {
     SLog.d(TAG, "send file %s", new Object[] { this.mUiRequest.mLocalPath });
-    this.mStepTrans.logStartTime();
-    StoryUploadProcessor.1 local1 = new StoryUploadProcessor.1(this, SystemClock.uptimeMillis());
-    int i = -1;
+    this.mProcessorReport.mStepTrans.logStartTime();
+    Object localObject1 = new StoryUploadProcessor.1(this, SystemClock.uptimeMillis());
+    int i;
+    Object localObject3;
     if (this.file.fileType == 196610)
     {
       i = 34;
-      qqstory_bhd_upload_pic.ReqStoryPic localReqStoryPic = new qqstory_bhd_upload_pic.ReqStoryPic();
-      localReqStoryPic.platform.set(2);
-      localReqStoryPic.tojpg.set(0);
-      localReqStoryPic.version.set(ByteStringMicro.copyFromUtf8("8.5.5"));
-      this.file.bdhExtendInfo = localReqStoryPic.toByteArray();
+      localObject3 = new qqstory_bhd_upload_pic.ReqStoryPic();
+      ((qqstory_bhd_upload_pic.ReqStoryPic)localObject3).platform.set(2);
+      ((qqstory_bhd_upload_pic.ReqStoryPic)localObject3).tojpg.set(0);
+      ((qqstory_bhd_upload_pic.ReqStoryPic)localObject3).version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+      this.file.bdhExtendInfo = ((qqstory_bhd_upload_pic.ReqStoryPic)localObject3).toByteArray();
     }
-    for (;;)
+    else if (this.file.fileType == 196609)
     {
-      this.file.commandId = i;
-      try
-      {
-        if (SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session() != null)
-        {
-          j = SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session().length;
-          this.mSigSession = new byte[j];
-          System.arraycopy(SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session(), 0, this.mSigSession, 0, j);
-        }
-        if (SessionInfo.getInstance(this.mUiRequest.mSelfUin).getSessionKey() != null)
-        {
-          j = SessionInfo.getInstance(this.mUiRequest.mSelfUin).getSessionKey().length;
-          this.mSessionKey = new byte[j];
-          System.arraycopy(SessionInfo.getInstance(this.mUiRequest.mSelfUin).getSessionKey(), 0, this.mSessionKey, 0, j);
-        }
-        if ((this.mSigSession == null) || (this.mSigSession.length == 0) || (this.mSessionKey == null) || (this.mSessionKey.length == 0)) {
-          HwServlet.getConfig(this.app, this.mUiRequest.mSelfUin);
-        }
-        this.trans = new Transaction(this.app.getCurrentAccountUin(), i, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mLocalMd5, local1, this.file.bdhExtendInfo, false);
-        this.trans.setVideoSegmentMode(true);
-        int j = this.app.getHwEngine().submitTransactionTask(this.trans);
-        SLog.c(TAG, "Transaction submit RetCode:" + j + " T_ID:" + this.trans.getTransationId() + " UniSeq:" + this.mUiRequest.mUniseq + " MD5:" + this.mMd5Str + " uuid:" + this.mUuid + " Path:" + this.trans.filePath + " Cmd:" + i);
-        if (j != 0)
-        {
-          setError(j, "SubmitError.", "", this.mStepTrans);
-          onError();
-        }
-        return;
-      }
-      finally {}
-      if (this.file.fileType == 196609) {
-        i = 37;
-      } else if (this.file.fileType == 327681) {
-        i = 57;
-      }
+      i = 37;
     }
+    else if (this.file.fileType == 327681)
+    {
+      i = 57;
+    }
+    else
+    {
+      i = -1;
+    }
+    this.file.commandId = i;
+    try
+    {
+      if (SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session() != null)
+      {
+        j = SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session().length;
+        this.mSigSession = new byte[j];
+        System.arraycopy(SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session(), 0, this.mSigSession, 0, j);
+      }
+      if (SessionInfo.getInstance(this.mUiRequest.mSelfUin).getSessionKey() != null)
+      {
+        j = SessionInfo.getInstance(this.mUiRequest.mSelfUin).getSessionKey().length;
+        this.mSessionKey = new byte[j];
+        System.arraycopy(SessionInfo.getInstance(this.mUiRequest.mSelfUin).getSessionKey(), 0, this.mSessionKey, 0, j);
+      }
+      localObject3 = this.mSigSession;
+      if ((localObject3 != null) && (localObject3.length != 0))
+      {
+        localObject3 = this.mSessionKey;
+        if ((localObject3 != null) && (localObject3.length != 0)) {}
+      }
+      else
+      {
+        HwServlet.getConfig(this.app, this.mUiRequest.mSelfUin);
+      }
+      this.trans = new Transaction(this.app.getCurrentAccountUin(), i, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mLocalMd5, (ITransactionCallback)localObject1, this.file.bdhExtendInfo, false);
+      this.trans.setVideoSegmentMode(true);
+      int j = this.app.getHwEngine().submitTransactionTask(this.trans);
+      localObject1 = TAG;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("Transaction submit RetCode:");
+      ((StringBuilder)localObject3).append(j);
+      ((StringBuilder)localObject3).append(" T_ID:");
+      ((StringBuilder)localObject3).append(this.trans.getTransationId());
+      ((StringBuilder)localObject3).append(" UniSeq:");
+      ((StringBuilder)localObject3).append(this.mUiRequest.mUniseq);
+      ((StringBuilder)localObject3).append(" MD5:");
+      ((StringBuilder)localObject3).append(this.mMd5Str);
+      ((StringBuilder)localObject3).append(" uuid:");
+      ((StringBuilder)localObject3).append(this.mUuid);
+      ((StringBuilder)localObject3).append(" Path:");
+      ((StringBuilder)localObject3).append(this.trans.filePath);
+      ((StringBuilder)localObject3).append(" Cmd:");
+      ((StringBuilder)localObject3).append(i);
+      SLog.c((String)localObject1, ((StringBuilder)localObject3).toString());
+      if (j != 0)
+      {
+        this.mProcessorReport.setError(j, "SubmitError.", "", this.mProcessorReport.mStepTrans);
+        onError();
+      }
+      return;
+    }
+    finally {}
   }
   
   public void start()
@@ -338,13 +376,13 @@ public class StoryUploadProcessor
     SLog.d(TAG, "start upload %s", new Object[] { this.mUiRequest.mLocalPath });
     if ((this.mLocalMd5 == null) && (!getMd5()))
     {
-      setError(940006, "make md5 fail");
+      this.mProcessorReport.setError(940006, "make md5 fail", null, null);
       onError();
       return;
     }
     if (!NetworkUtils.a(QQStoryContext.a().a()))
     {
-      setError(880001, "no network");
+      this.mProcessorReport.setError(880001, "no network", null, null);
       onError();
       return;
     }
@@ -353,7 +391,7 @@ public class StoryUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StoryUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

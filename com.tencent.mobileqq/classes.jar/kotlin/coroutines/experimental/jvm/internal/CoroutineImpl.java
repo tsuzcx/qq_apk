@@ -29,23 +29,19 @@ public abstract class CoroutineImpl
   {
     super(paramInt);
     this.completion = paramContinuation;
-    if (this.completion != null)
-    {
+    if (this.completion != null) {
       paramInt = 0;
-      this.label = paramInt;
-      paramContinuation = this.completion;
-      if (paramContinuation == null) {
-        break label51;
-      }
-    }
-    label51:
-    for (paramContinuation = paramContinuation.getContext();; paramContinuation = null)
-    {
-      this._context = paramContinuation;
-      return;
+    } else {
       paramInt = -1;
-      break;
     }
+    this.label = paramInt;
+    paramContinuation = this.completion;
+    if (paramContinuation != null) {
+      paramContinuation = paramContinuation.getContext();
+    } else {
+      paramContinuation = null;
+    }
+    this._context = paramContinuation;
   }
   
   @NotNull
@@ -104,8 +100,10 @@ public abstract class CoroutineImpl
       paramObject = doResume(paramObject, null);
       if (paramObject != IntrinsicsKt.getCOROUTINE_SUSPENDED())
       {
-        if (localContinuation != null) {
-          break label49;
+        if (localContinuation != null)
+        {
+          localContinuation.resume(paramObject);
+          return;
         }
         throw new TypeCastException("null cannot be cast to non-null type kotlin.coroutines.experimental.Continuation<kotlin.Any?>");
       }
@@ -114,9 +112,6 @@ public abstract class CoroutineImpl
     {
       localContinuation.resumeWithException(paramObject);
     }
-    return;
-    label49:
-    localContinuation.resume(paramObject);
   }
   
   public void resumeWithException(@NotNull Throwable paramThrowable)
@@ -131,8 +126,10 @@ public abstract class CoroutineImpl
       paramThrowable = doResume(null, paramThrowable);
       if (paramThrowable != IntrinsicsKt.getCOROUTINE_SUSPENDED())
       {
-        if (localContinuation != null) {
-          break label55;
+        if (localContinuation != null)
+        {
+          localContinuation.resume(paramThrowable);
+          return;
         }
         throw new TypeCastException("null cannot be cast to non-null type kotlin.coroutines.experimental.Continuation<kotlin.Any?>");
       }
@@ -141,14 +138,11 @@ public abstract class CoroutineImpl
     {
       localContinuation.resumeWithException(paramThrowable);
     }
-    return;
-    label55:
-    localContinuation.resume(paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.experimental.jvm.internal.CoroutineImpl
  * JD-Core Version:    0.7.0.1
  */

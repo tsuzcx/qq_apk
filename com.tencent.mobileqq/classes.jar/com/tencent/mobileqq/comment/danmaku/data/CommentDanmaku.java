@@ -31,17 +31,24 @@ public class CommentDanmaku
   public String a()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = this.d;; str = this.jdField_b_of_type_JavaLangString) {
-      return str + " : " + this.jdField_c_of_type_JavaLangString;
+    String str;
+    if (this.jdField_a_of_type_Boolean) {
+      str = this.d;
+    } else {
+      str = this.jdField_b_of_type_JavaLangString;
     }
+    localStringBuffer.append(str);
+    localStringBuffer.append(" : ");
+    localStringBuffer.append(this.jdField_c_of_type_JavaLangString);
+    return localStringBuffer.toString();
   }
   
   public boolean equals(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof CommentDanmaku;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof CommentDanmaku))
+    if (bool3)
     {
       paramObject = (CommentDanmaku)paramObject;
       bool1 = bool2;
@@ -79,7 +86,7 @@ public class CommentDanmaku
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.comment.danmaku.data.CommentDanmaku
  * JD-Core Version:    0.7.0.1
  */

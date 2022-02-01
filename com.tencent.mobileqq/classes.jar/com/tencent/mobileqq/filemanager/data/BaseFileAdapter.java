@@ -36,26 +36,24 @@ public class BaseFileAdapter
   
   public boolean a(int paramInt, View paramView, ShaderAnimLayout paramShaderAnimLayout, Button paramButton, Object paramObject)
   {
-    boolean bool = false;
     if (paramShaderAnimLayout != null)
     {
-      if ((this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_a_of_type_JavaLangObject.equals(paramObject)))
+      Object localObject = this.jdField_a_of_type_JavaLangObject;
+      if ((localObject != null) && (localObject.equals(paramObject)))
       {
-        bool = true;
         paramShaderAnimLayout.a();
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter != null) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter.setMotionView(paramView, paramInt);
+        paramShaderAnimLayout = this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter;
+        if (paramShaderAnimLayout != null) {
+          paramShaderAnimLayout.setMotionView(paramView, paramInt);
         }
         paramButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         paramButton.setTag(Integer.valueOf(paramInt));
+        return true;
       }
+      paramShaderAnimLayout.d();
+      paramButton.setOnClickListener(null);
+      paramButton.setTag(null);
     }
-    else {
-      return bool;
-    }
-    paramShaderAnimLayout.d();
-    paramButton.setOnClickListener(null);
-    paramButton.setTag(null);
     return false;
   }
   
@@ -82,7 +80,7 @@ public class BaseFileAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.BaseFileAdapter
  * JD-Core Version:    0.7.0.1
  */

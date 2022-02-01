@@ -39,7 +39,7 @@ public class BlockContainer$MergeItemDecorationDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.block.BlockContainer.MergeItemDecorationDelegate
  * JD-Core Version:    0.7.0.1
  */

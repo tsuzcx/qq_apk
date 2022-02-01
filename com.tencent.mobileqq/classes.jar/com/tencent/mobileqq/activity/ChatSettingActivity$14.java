@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.SVIPObserver;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 import com.tencent.qphone.base.util.QLog;
 
 class ChatSettingActivity$14
@@ -23,50 +23,49 @@ class ChatSettingActivity$14
     if (this.a.a == null) {
       return;
     }
-    Object localObject1;
     Object localObject2;
-    if ((paramBoolean) && (paramGetRoamToastRsp != null) && (!TextUtils.isEmpty(paramGetRoamToastRsp.sToast)) && (((SVIPHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramGetRoamToastRsp)))
+    Object localObject1;
+    if ((paramBoolean) && (paramGetRoamToastRsp != null) && (!TextUtils.isEmpty(paramGetRoamToastRsp.sToast)) && (((ISVIPHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(paramGetRoamToastRsp)))
     {
-      localObject1 = paramGetRoamToastRsp.sToast;
-      int i = ((String)localObject1).indexOf('#');
-      if (i < 0) {
-        break label307;
-      }
-      int j = ((String)localObject1).indexOf('#', i + 1);
-      if (j < 0) {
-        break label307;
-      }
-      localObject2 = new SpannableStringBuilder();
-      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, 0, i);
-      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, i + 1, j);
-      ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1, j + 1, ((String)localObject1).length());
-      ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(-12541697), i, j - 1, 33);
+      localObject2 = paramGetRoamToastRsp.sToast;
+      int i = ((String)localObject2).indexOf('#');
       localObject1 = localObject2;
-    }
-    label299:
-    label307:
-    for (;;)
-    {
+      if (i >= 0)
+      {
+        int j = i + 1;
+        int k = ((String)localObject2).indexOf('#', j);
+        localObject1 = localObject2;
+        if (k >= 0)
+        {
+          localObject1 = new SpannableStringBuilder();
+          ((SpannableStringBuilder)localObject1).append((CharSequence)localObject2, 0, i);
+          ((SpannableStringBuilder)localObject1).append((CharSequence)localObject2, j, k);
+          ((SpannableStringBuilder)localObject1).append((CharSequence)localObject2, k + 1, ((String)localObject2).length());
+          ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(-12541697), i, k - 1, 33);
+        }
+      }
       this.a.d.setText((CharSequence)localObject1);
       this.a.a.setTag(paramGetRoamToastRsp);
       this.a.a.setVisibility(0);
       ReportController.b(this.a.app, "dc00898", "", "", "0X8009E31", "0X8009E31", 0, 0, "", "", "", "");
       return;
-      if (QLog.isColorLevel())
-      {
-        localObject1 = ChatSettingActivity.c(this.a);
-        localObject2 = new StringBuilder().append("onGetRoamToast: ").append(paramBoolean).append(",");
-        if (paramGetRoamToastRsp != null) {
-          break label299;
-        }
-      }
-      for (paramGetRoamToastRsp = "null";; paramGetRoamToastRsp = paramGetRoamToastRsp.sToast)
-      {
-        QLog.d((String)localObject1, 2, paramGetRoamToastRsp);
-        this.a.a.setVisibility(8);
-        return;
-      }
     }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = ChatSettingActivity.c(this.a);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onGetRoamToast: ");
+      ((StringBuilder)localObject2).append(paramBoolean);
+      ((StringBuilder)localObject2).append(",");
+      if (paramGetRoamToastRsp == null) {
+        paramGetRoamToastRsp = "null";
+      } else {
+        paramGetRoamToastRsp = paramGetRoamToastRsp.sToast;
+      }
+      ((StringBuilder)localObject2).append(paramGetRoamToastRsp);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    this.a.a.setVisibility(8);
   }
   
   public void onGetRoamType(String paramString, int paramInt)
@@ -76,7 +75,7 @@ class ChatSettingActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.14
  * JD-Core Version:    0.7.0.1
  */

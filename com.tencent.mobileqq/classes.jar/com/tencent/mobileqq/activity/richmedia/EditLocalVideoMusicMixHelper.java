@@ -2,8 +2,9 @@ package com.tencent.mobileqq.activity.richmedia;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.utils.IQzoneVideoHelper;
 import cooperation.qzone.util.QZLog;
-import cooperation.qzone.video.QZoneVideoCompressor;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +14,16 @@ import java.util.UUID;
 
 public class EditLocalVideoMusicMixHelper
 {
-  private static final String a = EditLocalVideoActivity.a + File.separator + "silent.m4a";
+  private static final String a;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(EditLocalVideoActivity.a);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("silent.m4a");
+    a = localStringBuilder.toString();
+  }
   
   private static String a(long paramLong)
   {
@@ -22,24 +32,26 @@ public class EditLocalVideoMusicMixHelper
   
   public static String a(long paramLong1, long paramLong2, String paramString)
   {
-    String str = paramString;
-    if (!TextUtils.isEmpty(paramString))
+    if ((!TextUtils.isEmpty(paramString)) && (new File(paramString).exists()))
     {
-      str = paramString;
-      if (new File(paramString).exists())
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(EditLocalVideoActivity.a);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append("clipped.");
+      ((StringBuilder)localObject).append(a(paramString, "m4a"));
+      localObject = ((StringBuilder)localObject).toString();
+      int i = ((IQzoneVideoHelper)QRoute.api(IQzoneVideoHelper.class)).trimByFFmpeg(new String[] { "-y", "-i", paramString, "-ss", a(paramLong1), "-t", a(paramLong2), "-c", "copy", localObject });
+      if (i != 0)
       {
-        str = EditLocalVideoActivity.a + File.separator + "clipped." + a(paramString, "m4a");
-        int i = QZoneVideoCompressor.trimByFFmpeg(new String[] { "-y", "-i", paramString, "-ss", a(paramLong1), "-t", a(paramLong2), "-c", "copy", str });
-        if (i == 0) {
-          break label182;
-        }
-        QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { "ffmpegClipAudio: FFmpeg run failed with " + i });
-        str = null;
+        paramString = new StringBuilder();
+        paramString.append("ffmpegClipAudio: FFmpeg run failed with ");
+        paramString.append(i);
+        QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { paramString.toString() });
+        return null;
       }
+      return localObject;
     }
-    return str;
-    label182:
-    return str;
+    return paramString;
   }
   
   /* Error */
@@ -49,264 +61,322 @@ public class EditLocalVideoMusicMixHelper
     //   0: new 10	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   7: getstatic 17	com/tencent/mobileqq/activity/richmedia/EditLocalVideoActivity:a	Ljava/lang/String;
-    //   10: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   13: getstatic 26	java/io/File:separator	Ljava/lang/String;
-    //   16: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: ldc 118
-    //   21: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   27: astore 10
-    //   29: lload_0
-    //   30: lload_3
-    //   31: ldiv
-    //   32: lconst_1
-    //   33: ladd
-    //   34: l2i
-    //   35: istore 6
-    //   37: new 120	java/io/BufferedWriter
-    //   40: dup
-    //   41: new 122	java/io/OutputStreamWriter
-    //   44: dup
-    //   45: new 124	java/io/FileOutputStream
-    //   48: dup
-    //   49: aload 10
-    //   51: invokespecial 125	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   54: invokespecial 128	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
-    //   57: invokespecial 131	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   60: astore 8
-    //   62: iconst_0
-    //   63: istore 5
-    //   65: iload 5
-    //   67: iload 6
-    //   69: if_icmpge +64 -> 133
-    //   72: aload 8
-    //   74: astore 7
-    //   76: aload 8
-    //   78: new 10	java/lang/StringBuilder
-    //   81: dup
-    //   82: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   85: ldc 133
-    //   87: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: new 23	java/io/File
-    //   93: dup
-    //   94: aload_2
-    //   95: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
-    //   98: invokevirtual 136	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   101: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: ldc 138
+    //   7: astore 7
+    //   9: aload 7
+    //   11: getstatic 17	com/tencent/mobileqq/activity/richmedia/EditLocalVideoActivity:a	Ljava/lang/String;
+    //   14: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: pop
+    //   18: aload 7
+    //   20: getstatic 26	java/io/File:separator	Ljava/lang/String;
+    //   23: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: pop
+    //   27: aload 7
+    //   29: ldc 124
+    //   31: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: pop
+    //   35: aload 7
+    //   37: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: astore 9
+    //   42: lload_0
+    //   43: lload_3
+    //   44: ldiv
+    //   45: lconst_1
+    //   46: ladd
+    //   47: l2i
+    //   48: istore 6
+    //   50: new 126	java/io/BufferedWriter
+    //   53: dup
+    //   54: new 128	java/io/OutputStreamWriter
+    //   57: dup
+    //   58: new 130	java/io/FileOutputStream
+    //   61: dup
+    //   62: aload 9
+    //   64: invokespecial 131	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   67: invokespecial 134	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
+    //   70: invokespecial 137	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   73: astore 8
+    //   75: iconst_0
+    //   76: istore 5
+    //   78: iload 5
+    //   80: iload 6
+    //   82: if_icmpge +93 -> 175
+    //   85: aload 8
+    //   87: astore 7
+    //   89: new 10	java/lang/StringBuilder
+    //   92: dup
+    //   93: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   96: astore 10
+    //   98: aload 8
+    //   100: astore 7
+    //   102: aload 10
+    //   104: ldc 139
     //   106: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokevirtual 141	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   115: aload 8
-    //   117: astore 7
-    //   119: aload 8
-    //   121: invokevirtual 144	java/io/BufferedWriter:newLine	()V
-    //   124: iload 5
-    //   126: iconst_1
-    //   127: iadd
-    //   128: istore 5
-    //   130: goto -65 -> 65
-    //   133: aload 8
-    //   135: astore 7
-    //   137: aload 8
-    //   139: invokevirtual 147	java/io/BufferedWriter:flush	()V
-    //   142: aload 8
-    //   144: ifnull +8 -> 152
+    //   109: pop
+    //   110: aload 8
+    //   112: astore 7
+    //   114: aload 10
+    //   116: new 23	java/io/File
+    //   119: dup
+    //   120: aload_2
+    //   121: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
+    //   124: invokevirtual 142	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   127: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: pop
+    //   131: aload 8
+    //   133: astore 7
+    //   135: aload 10
+    //   137: ldc 144
+    //   139: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: pop
+    //   143: aload 8
+    //   145: astore 7
     //   147: aload 8
-    //   149: invokevirtual 150	java/io/BufferedWriter:close	()V
-    //   152: bipush 12
-    //   154: anewarray 53	java/lang/String
-    //   157: dup
-    //   158: iconst_0
-    //   159: ldc 80
-    //   161: aastore
-    //   162: dup
-    //   163: iconst_1
-    //   164: ldc 152
-    //   166: aastore
-    //   167: dup
-    //   168: iconst_2
-    //   169: ldc 154
-    //   171: aastore
-    //   172: dup
-    //   173: iconst_3
-    //   174: ldc 156
-    //   176: aastore
-    //   177: dup
-    //   178: iconst_4
-    //   179: ldc 158
-    //   181: aastore
-    //   182: dup
-    //   183: iconst_5
-    //   184: ldc 82
-    //   186: aastore
-    //   187: dup
-    //   188: bipush 6
-    //   190: aload 10
-    //   192: aastore
-    //   193: dup
-    //   194: bipush 7
-    //   196: ldc 88
-    //   198: aastore
-    //   199: dup
-    //   200: bipush 8
-    //   202: lload_0
-    //   203: invokestatic 86	com/tencent/mobileqq/activity/richmedia/EditLocalVideoMusicMixHelper:a	(J)Ljava/lang/String;
-    //   206: aastore
-    //   207: dup
-    //   208: bipush 9
-    //   210: ldc 90
-    //   212: aastore
-    //   213: dup
-    //   214: bipush 10
-    //   216: ldc 92
-    //   218: aastore
-    //   219: dup
-    //   220: bipush 11
-    //   222: getstatic 33	com/tencent/mobileqq/activity/richmedia/EditLocalVideoMusicMixHelper:a	Ljava/lang/String;
-    //   225: aastore
-    //   226: invokestatic 98	cooperation/qzone/video/QZoneVideoCompressor:trimByFFmpeg	([Ljava/lang/String;)I
-    //   229: istore 5
-    //   231: new 23	java/io/File
-    //   234: dup
-    //   235: aload 10
-    //   237: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
-    //   240: invokevirtual 161	java/io/File:delete	()Z
-    //   243: ifeq +29 -> 272
-    //   246: ldc 100
-    //   248: iconst_2
-    //   249: new 10	java/lang/StringBuilder
-    //   252: dup
-    //   253: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   256: ldc 163
-    //   258: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   261: aload 10
-    //   263: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   269: invokestatic 167	cooperation/qzone/util/QZLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   272: iload 5
-    //   274: ifeq +131 -> 405
-    //   277: ldc 100
-    //   279: iconst_2
-    //   280: iconst_1
-    //   281: anewarray 4	java/lang/Object
-    //   284: dup
-    //   285: iconst_0
-    //   286: new 10	java/lang/StringBuilder
-    //   289: dup
-    //   290: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   293: ldc 169
-    //   295: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   298: iload 5
-    //   300: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   303: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   306: aastore
-    //   307: invokestatic 111	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   310: aconst_null
-    //   311: areturn
-    //   312: astore_2
-    //   313: ldc 100
-    //   315: iconst_2
-    //   316: aload_2
-    //   317: iconst_0
-    //   318: anewarray 4	java/lang/Object
-    //   321: invokestatic 172	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   324: goto -172 -> 152
-    //   327: astore 9
-    //   329: aconst_null
-    //   330: astore_2
-    //   331: aload_2
-    //   332: astore 7
-    //   334: ldc 100
-    //   336: iconst_2
-    //   337: aload 9
-    //   339: iconst_0
-    //   340: anewarray 4	java/lang/Object
-    //   343: invokestatic 172	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   346: aload_2
-    //   347: ifnull -195 -> 152
-    //   350: aload_2
-    //   351: invokevirtual 150	java/io/BufferedWriter:close	()V
-    //   354: goto -202 -> 152
-    //   357: astore_2
-    //   358: ldc 100
-    //   360: iconst_2
-    //   361: aload_2
-    //   362: iconst_0
-    //   363: anewarray 4	java/lang/Object
-    //   366: invokestatic 172	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   369: goto -217 -> 152
-    //   372: astore_2
-    //   373: aconst_null
-    //   374: astore 7
-    //   376: aload 7
-    //   378: ifnull +8 -> 386
-    //   381: aload 7
-    //   383: invokevirtual 150	java/io/BufferedWriter:close	()V
-    //   386: aload_2
-    //   387: athrow
-    //   388: astore 7
-    //   390: ldc 100
-    //   392: iconst_2
-    //   393: aload 7
-    //   395: iconst_0
-    //   396: anewarray 4	java/lang/Object
-    //   399: invokestatic 172	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   402: goto -16 -> 386
-    //   405: getstatic 33	com/tencent/mobileqq/activity/richmedia/EditLocalVideoMusicMixHelper:a	Ljava/lang/String;
-    //   408: areturn
-    //   409: astore_2
-    //   410: goto -34 -> 376
-    //   413: astore 9
-    //   415: aload 8
-    //   417: astore_2
-    //   418: goto -87 -> 331
+    //   149: aload 10
+    //   151: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   154: invokevirtual 147	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   157: aload 8
+    //   159: astore 7
+    //   161: aload 8
+    //   163: invokevirtual 150	java/io/BufferedWriter:newLine	()V
+    //   166: iload 5
+    //   168: iconst_1
+    //   169: iadd
+    //   170: istore 5
+    //   172: goto -94 -> 78
+    //   175: aload 8
+    //   177: astore 7
+    //   179: aload 8
+    //   181: invokevirtual 153	java/io/BufferedWriter:flush	()V
+    //   184: aload 8
+    //   186: invokevirtual 156	java/io/BufferedWriter:close	()V
+    //   189: goto +79 -> 268
+    //   192: astore_2
+    //   193: ldc 111
+    //   195: iconst_2
+    //   196: aload_2
+    //   197: iconst_0
+    //   198: anewarray 4	java/lang/Object
+    //   201: invokestatic 159	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   204: goto +64 -> 268
+    //   207: astore 7
+    //   209: aload 8
+    //   211: astore_2
+    //   212: aload 7
+    //   214: astore 8
+    //   216: goto +14 -> 230
+    //   219: astore_2
+    //   220: aconst_null
+    //   221: astore 7
+    //   223: goto +232 -> 455
+    //   226: astore 8
+    //   228: aconst_null
+    //   229: astore_2
+    //   230: aload_2
+    //   231: astore 7
+    //   233: ldc 111
+    //   235: iconst_2
+    //   236: aload 8
+    //   238: iconst_0
+    //   239: anewarray 4	java/lang/Object
+    //   242: invokestatic 159	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   245: aload_2
+    //   246: ifnull +22 -> 268
+    //   249: aload_2
+    //   250: invokevirtual 156	java/io/BufferedWriter:close	()V
+    //   253: goto +15 -> 268
+    //   256: astore_2
+    //   257: ldc 111
+    //   259: iconst_2
+    //   260: aload_2
+    //   261: iconst_0
+    //   262: anewarray 4	java/lang/Object
+    //   265: invokestatic 159	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   268: ldc 80
+    //   270: invokestatic 86	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   273: checkcast 80	com/tencent/qzonehub/api/utils/IQzoneVideoHelper
+    //   276: bipush 12
+    //   278: anewarray 53	java/lang/String
+    //   281: dup
+    //   282: iconst_0
+    //   283: ldc 88
+    //   285: aastore
+    //   286: dup
+    //   287: iconst_1
+    //   288: ldc 161
+    //   290: aastore
+    //   291: dup
+    //   292: iconst_2
+    //   293: ldc 163
+    //   295: aastore
+    //   296: dup
+    //   297: iconst_3
+    //   298: ldc 165
+    //   300: aastore
+    //   301: dup
+    //   302: iconst_4
+    //   303: ldc 167
+    //   305: aastore
+    //   306: dup
+    //   307: iconst_5
+    //   308: ldc 90
+    //   310: aastore
+    //   311: dup
+    //   312: bipush 6
+    //   314: aload 9
+    //   316: aastore
+    //   317: dup
+    //   318: bipush 7
+    //   320: ldc 96
+    //   322: aastore
+    //   323: dup
+    //   324: bipush 8
+    //   326: lload_0
+    //   327: invokestatic 94	com/tencent/mobileqq/activity/richmedia/EditLocalVideoMusicMixHelper:a	(J)Ljava/lang/String;
+    //   330: aastore
+    //   331: dup
+    //   332: bipush 9
+    //   334: ldc 98
+    //   336: aastore
+    //   337: dup
+    //   338: bipush 10
+    //   340: ldc 100
+    //   342: aastore
+    //   343: dup
+    //   344: bipush 11
+    //   346: getstatic 33	com/tencent/mobileqq/activity/richmedia/EditLocalVideoMusicMixHelper:a	Ljava/lang/String;
+    //   349: aastore
+    //   350: invokeinterface 104 2 0
+    //   355: istore 5
+    //   357: new 23	java/io/File
+    //   360: dup
+    //   361: aload 9
+    //   363: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
+    //   366: invokevirtual 170	java/io/File:delete	()Z
+    //   369: ifeq +35 -> 404
+    //   372: new 10	java/lang/StringBuilder
+    //   375: dup
+    //   376: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   379: astore_2
+    //   380: aload_2
+    //   381: ldc 172
+    //   383: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   386: pop
+    //   387: aload_2
+    //   388: aload 9
+    //   390: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   393: pop
+    //   394: ldc 111
+    //   396: iconst_2
+    //   397: aload_2
+    //   398: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   401: invokestatic 176	cooperation/qzone/util/QZLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   404: iload 5
+    //   406: ifeq +44 -> 450
+    //   409: new 10	java/lang/StringBuilder
+    //   412: dup
+    //   413: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   416: astore_2
+    //   417: aload_2
+    //   418: ldc 178
+    //   420: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   423: pop
+    //   424: aload_2
+    //   425: iload 5
+    //   427: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   430: pop
+    //   431: ldc 111
+    //   433: iconst_2
+    //   434: iconst_1
+    //   435: anewarray 4	java/lang/Object
+    //   438: dup
+    //   439: iconst_0
+    //   440: aload_2
+    //   441: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   444: aastore
+    //   445: invokestatic 117	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   448: aconst_null
+    //   449: areturn
+    //   450: getstatic 33	com/tencent/mobileqq/activity/richmedia/EditLocalVideoMusicMixHelper:a	Ljava/lang/String;
+    //   453: areturn
+    //   454: astore_2
+    //   455: aload 7
+    //   457: ifnull +25 -> 482
+    //   460: aload 7
+    //   462: invokevirtual 156	java/io/BufferedWriter:close	()V
+    //   465: goto +17 -> 482
+    //   468: astore 7
+    //   470: ldc 111
+    //   472: iconst_2
+    //   473: aload 7
+    //   475: iconst_0
+    //   476: anewarray 4	java/lang/Object
+    //   479: invokestatic 159	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   482: goto +5 -> 487
+    //   485: aload_2
+    //   486: athrow
+    //   487: goto -2 -> 485
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	421	0	paramLong1	long
-    //   0	421	2	paramString	String
-    //   0	421	3	paramLong2	long
-    //   63	236	5	i	int
-    //   35	35	6	j	int
-    //   74	308	7	localObject	Object
-    //   388	6	7	localIOException	java.io.IOException
-    //   60	356	8	localBufferedWriter	java.io.BufferedWriter
-    //   327	11	9	localException1	java.lang.Exception
-    //   413	1	9	localException2	java.lang.Exception
-    //   27	235	10	str	String
+    //   0	490	0	paramLong1	long
+    //   0	490	2	paramString	String
+    //   0	490	3	paramLong2	long
+    //   76	350	5	i	int
+    //   48	35	6	j	int
+    //   7	171	7	localObject1	Object
+    //   207	6	7	localException1	java.lang.Exception
+    //   221	240	7	str1	String
+    //   468	6	7	localIOException	java.io.IOException
+    //   73	142	8	localObject2	Object
+    //   226	11	8	localException2	java.lang.Exception
+    //   40	349	9	str2	String
+    //   96	54	10	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   147	152	312	java/io/IOException
-    //   37	62	327	java/lang/Exception
-    //   350	354	357	java/io/IOException
-    //   37	62	372	finally
-    //   381	386	388	java/io/IOException
-    //   76	115	409	finally
-    //   119	124	409	finally
-    //   137	142	409	finally
-    //   334	346	409	finally
-    //   76	115	413	java/lang/Exception
-    //   119	124	413	java/lang/Exception
-    //   137	142	413	java/lang/Exception
+    //   184	189	192	java/io/IOException
+    //   89	98	207	java/lang/Exception
+    //   102	110	207	java/lang/Exception
+    //   114	131	207	java/lang/Exception
+    //   135	143	207	java/lang/Exception
+    //   147	157	207	java/lang/Exception
+    //   161	166	207	java/lang/Exception
+    //   179	184	207	java/lang/Exception
+    //   50	75	219	finally
+    //   50	75	226	java/lang/Exception
+    //   249	253	256	java/io/IOException
+    //   89	98	454	finally
+    //   102	110	454	finally
+    //   114	131	454	finally
+    //   135	143	454	finally
+    //   147	157	454	finally
+    //   161	166	454	finally
+    //   179	184	454	finally
+    //   233	245	454	finally
+    //   460	465	468	java/io/IOException
   }
   
   public static String a(String paramString)
   {
-    String str;
     if ((!TextUtils.isEmpty(paramString)) && (new File(paramString).exists()))
     {
-      str = EditLocalVideoActivity.a + File.separator + UUID.randomUUID().toString() + "_an." + a(paramString, "mp4");
-      int i = QZoneVideoCompressor.trimByFFmpeg(new String[] { "-y", "-i", paramString, "-an", "-c", "copy", str });
-      if (i != 0) {
-        QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { "ffmpegRemoveAudioTrack: FFmpeg run failed with code " + i });
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(EditLocalVideoActivity.a);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(UUID.randomUUID().toString());
+      ((StringBuilder)localObject).append("_an.");
+      ((StringBuilder)localObject).append(a(paramString, "mp4"));
+      localObject = ((StringBuilder)localObject).toString();
+      int i = ((IQzoneVideoHelper)QRoute.api(IQzoneVideoHelper.class)).trimByFFmpeg(new String[] { "-y", "-i", paramString, "-an", "-c", "copy", localObject });
+      if (i != 0)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("ffmpegRemoveAudioTrack: FFmpeg run failed with code ");
+        ((StringBuilder)localObject).append(i);
+        QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { ((StringBuilder)localObject).toString() });
+        return paramString;
       }
+      return localObject;
     }
-    else
-    {
-      return paramString;
-    }
-    return str;
+    return paramString;
   }
   
   public static String a(String paramString, int paramInt)
@@ -340,7 +410,13 @@ public class EditLocalVideoMusicMixHelper
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      String str = EditLocalVideoActivity.a + File.separator + "merged_" + UUID.randomUUID().toString() + ".mp4";
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(EditLocalVideoActivity.a);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append("merged_");
+      ((StringBuilder)localObject).append(UUID.randomUUID().toString());
+      ((StringBuilder)localObject).append(".mp4");
+      localObject = ((StringBuilder)localObject).toString();
       String[] arrayOfString = new String[14];
       arrayOfString[0] = "-y";
       arrayOfString[1] = "-i";
@@ -355,17 +431,28 @@ public class EditLocalVideoMusicMixHelper
       arrayOfString[10] = "0:v:0";
       arrayOfString[11] = "-map";
       arrayOfString[12] = "1:a";
-      arrayOfString[13] = str;
-      QZLog.d("EditLocalVideoMusicMixH", 2, "ffmpegMergeVideoAndAudio: " + Arrays.toString(arrayOfString));
-      int i = QZoneVideoCompressor.trimByFFmpeg(arrayOfString);
+      arrayOfString[13] = localObject;
+      paramString1 = new StringBuilder();
+      paramString1.append("ffmpegMergeVideoAndAudio: ");
+      paramString1.append(Arrays.toString(arrayOfString));
+      QZLog.d("EditLocalVideoMusicMixH", 2, paramString1.toString());
+      int i = ((IQzoneVideoHelper)QRoute.api(IQzoneVideoHelper.class)).trimByFFmpeg(arrayOfString);
       if (i != 0)
       {
-        QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { "ffmpegMergeVideoAndAudio: FFmpeg run failed with code " + i });
+        paramString1 = new StringBuilder();
+        paramString1.append("ffmpegMergeVideoAndAudio: FFmpeg run failed with code ");
+        paramString1.append(i);
+        QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { paramString1.toString() });
         return null;
       }
-      return str;
+      return localObject;
     }
-    QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { "ffmpegMergeVideoAndAudio: input video/audio is empty " + paramString1 + " " + paramString2 });
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ffmpegMergeVideoAndAudio: input video/audio is empty ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" ");
+    ((StringBuilder)localObject).append(paramString2);
+    QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { ((StringBuilder)localObject).toString() });
     return null;
   }
   
@@ -374,286 +461,339 @@ public class EditLocalVideoMusicMixHelper
   {
     // Byte code:
     //   0: aload_0
-    //   1: ifnull +423 -> 424
+    //   1: ifnull +484 -> 485
     //   4: aload_0
-    //   5: invokeinterface 241 1 0
+    //   5: invokeinterface 247 1 0
     //   10: iconst_1
-    //   11: if_icmpne +16 -> 27
+    //   11: if_icmpne +14 -> 25
     //   14: aload_0
     //   15: iconst_0
-    //   16: invokeinterface 245 2 0
+    //   16: invokeinterface 251 2 0
     //   21: checkcast 53	java/lang/String
-    //   24: astore_0
-    //   25: aload_0
-    //   26: areturn
-    //   27: new 10	java/lang/StringBuilder
-    //   30: dup
-    //   31: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   24: areturn
+    //   25: new 10	java/lang/StringBuilder
+    //   28: dup
+    //   29: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   32: astore_2
+    //   33: aload_2
     //   34: getstatic 17	com/tencent/mobileqq/activity/richmedia/EditLocalVideoActivity:a	Ljava/lang/String;
     //   37: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: getstatic 26	java/io/File:separator	Ljava/lang/String;
-    //   43: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: ldc 247
-    //   48: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   54: astore 4
-    //   56: new 120	java/io/BufferedWriter
-    //   59: dup
-    //   60: new 122	java/io/OutputStreamWriter
-    //   63: dup
-    //   64: new 124	java/io/FileOutputStream
-    //   67: dup
-    //   68: aload 4
-    //   70: invokespecial 125	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   73: invokespecial 128	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
-    //   76: invokespecial 131	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   79: astore_3
-    //   80: aload_3
-    //   81: astore_2
-    //   82: aload_0
-    //   83: invokeinterface 251 1 0
-    //   88: astore_0
-    //   89: aload_3
-    //   90: astore_2
-    //   91: aload_0
-    //   92: invokeinterface 256 1 0
-    //   97: ifeq +252 -> 349
-    //   100: aload_3
-    //   101: astore_2
-    //   102: aload_0
-    //   103: invokeinterface 260 1 0
-    //   108: checkcast 53	java/lang/String
-    //   111: astore 5
-    //   113: aload_3
-    //   114: astore_2
-    //   115: aload_3
-    //   116: new 10	java/lang/StringBuilder
-    //   119: dup
-    //   120: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   123: ldc 133
-    //   125: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: new 23	java/io/File
-    //   131: dup
-    //   132: aload 5
-    //   134: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
-    //   137: invokevirtual 136	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   140: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: ldc 138
-    //   145: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokevirtual 141	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   154: aload_3
-    //   155: astore_2
-    //   156: aload_3
-    //   157: invokevirtual 144	java/io/BufferedWriter:newLine	()V
-    //   160: goto -71 -> 89
-    //   163: astore_2
-    //   164: aload_3
-    //   165: astore_0
-    //   166: aload_2
-    //   167: astore_3
-    //   168: aload_0
-    //   169: astore_2
-    //   170: ldc 100
-    //   172: iconst_2
-    //   173: aload_3
-    //   174: iconst_0
-    //   175: anewarray 4	java/lang/Object
-    //   178: invokestatic 172	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   181: aload_0
-    //   182: ifnull +7 -> 189
-    //   185: aload_0
-    //   186: invokevirtual 150	java/io/BufferedWriter:close	()V
-    //   189: new 10	java/lang/StringBuilder
-    //   192: dup
-    //   193: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   196: getstatic 17	com/tencent/mobileqq/activity/richmedia/EditLocalVideoActivity:a	Ljava/lang/String;
-    //   199: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: getstatic 26	java/io/File:separator	Ljava/lang/String;
-    //   205: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   208: invokestatic 179	java/util/UUID:randomUUID	()Ljava/util/UUID;
-    //   211: invokevirtual 263	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   214: ldc_w 265
-    //   217: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   220: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   223: astore_0
-    //   224: bipush 10
-    //   226: anewarray 53	java/lang/String
-    //   229: dup
-    //   230: iconst_0
-    //   231: ldc 80
-    //   233: aastore
-    //   234: dup
-    //   235: iconst_1
-    //   236: ldc 152
-    //   238: aastore
-    //   239: dup
-    //   240: iconst_2
-    //   241: ldc 154
-    //   243: aastore
-    //   244: dup
-    //   245: iconst_3
-    //   246: ldc 156
-    //   248: aastore
-    //   249: dup
-    //   250: iconst_4
-    //   251: ldc 158
-    //   253: aastore
-    //   254: dup
-    //   255: iconst_5
-    //   256: ldc 82
-    //   258: aastore
-    //   259: dup
-    //   260: bipush 6
-    //   262: aload 4
-    //   264: aastore
-    //   265: dup
-    //   266: bipush 7
-    //   268: ldc 90
-    //   270: aastore
-    //   271: dup
-    //   272: bipush 8
-    //   274: ldc 92
-    //   276: aastore
-    //   277: dup
-    //   278: bipush 9
-    //   280: aload_0
-    //   281: aastore
-    //   282: invokestatic 98	cooperation/qzone/video/QZoneVideoCompressor:trimByFFmpeg	([Ljava/lang/String;)I
-    //   285: istore_1
-    //   286: new 23	java/io/File
-    //   289: dup
-    //   290: aload 4
-    //   292: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
-    //   295: invokevirtual 161	java/io/File:delete	()Z
-    //   298: ifeq +12 -> 310
-    //   301: ldc 100
-    //   303: ldc_w 267
-    //   306: invokestatic 272	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   309: pop
-    //   310: iload_1
-    //   311: ifeq -286 -> 25
-    //   314: ldc 100
-    //   316: iconst_2
-    //   317: iconst_1
-    //   318: anewarray 4	java/lang/Object
-    //   321: dup
-    //   322: iconst_0
-    //   323: new 10	java/lang/StringBuilder
-    //   326: dup
-    //   327: invokespecial 13	java/lang/StringBuilder:<init>	()V
-    //   330: ldc_w 274
-    //   333: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   336: iload_1
-    //   337: invokevirtual 105	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   340: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: pop
+    //   41: aload_2
+    //   42: getstatic 26	java/io/File:separator	Ljava/lang/String;
+    //   45: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: aload_2
+    //   50: ldc 253
+    //   52: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: pop
+    //   56: aload_2
+    //   57: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: astore 4
+    //   62: new 126	java/io/BufferedWriter
+    //   65: dup
+    //   66: new 128	java/io/OutputStreamWriter
+    //   69: dup
+    //   70: new 130	java/io/FileOutputStream
+    //   73: dup
+    //   74: aload 4
+    //   76: invokespecial 131	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   79: invokespecial 134	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
+    //   82: invokespecial 137	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   85: astore_3
+    //   86: aload_3
+    //   87: astore_2
+    //   88: aload_0
+    //   89: invokeinterface 257 1 0
+    //   94: astore_0
+    //   95: aload_3
+    //   96: astore_2
+    //   97: aload_0
+    //   98: invokeinterface 262 1 0
+    //   103: ifeq +87 -> 190
+    //   106: aload_3
+    //   107: astore_2
+    //   108: aload_0
+    //   109: invokeinterface 266 1 0
+    //   114: checkcast 53	java/lang/String
+    //   117: astore 5
+    //   119: aload_3
+    //   120: astore_2
+    //   121: new 10	java/lang/StringBuilder
+    //   124: dup
+    //   125: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   128: astore 6
+    //   130: aload_3
+    //   131: astore_2
+    //   132: aload 6
+    //   134: ldc 139
+    //   136: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: pop
+    //   140: aload_3
+    //   141: astore_2
+    //   142: aload 6
+    //   144: new 23	java/io/File
+    //   147: dup
+    //   148: aload 5
+    //   150: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
+    //   153: invokevirtual 142	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   156: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: pop
+    //   160: aload_3
+    //   161: astore_2
+    //   162: aload 6
+    //   164: ldc 144
+    //   166: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: pop
+    //   170: aload_3
+    //   171: astore_2
+    //   172: aload_3
+    //   173: aload 6
+    //   175: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   178: invokevirtual 147	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   181: aload_3
+    //   182: astore_2
+    //   183: aload_3
+    //   184: invokevirtual 150	java/io/BufferedWriter:newLine	()V
+    //   187: goto -92 -> 95
+    //   190: aload_3
+    //   191: astore_2
+    //   192: aload_3
+    //   193: invokevirtual 153	java/io/BufferedWriter:flush	()V
+    //   196: aload_3
+    //   197: invokevirtual 156	java/io/BufferedWriter:close	()V
+    //   200: goto +71 -> 271
+    //   203: astore_0
+    //   204: ldc 111
+    //   206: iconst_2
+    //   207: aload_0
+    //   208: iconst_0
+    //   209: anewarray 4	java/lang/Object
+    //   212: invokestatic 159	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   215: goto +56 -> 271
+    //   218: astore_2
+    //   219: aload_3
+    //   220: astore_0
+    //   221: aload_2
+    //   222: astore_3
+    //   223: goto +12 -> 235
+    //   226: astore_0
+    //   227: aconst_null
+    //   228: astore_2
+    //   229: goto +231 -> 460
+    //   232: astore_3
+    //   233: aconst_null
+    //   234: astore_0
+    //   235: aload_0
+    //   236: astore_2
+    //   237: ldc 111
+    //   239: iconst_2
+    //   240: aload_3
+    //   241: iconst_0
+    //   242: anewarray 4	java/lang/Object
+    //   245: invokestatic 159	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   248: aload_0
+    //   249: ifnull +22 -> 271
+    //   252: aload_0
+    //   253: invokevirtual 156	java/io/BufferedWriter:close	()V
+    //   256: goto +15 -> 271
+    //   259: astore_0
+    //   260: ldc 111
+    //   262: iconst_2
+    //   263: aload_0
+    //   264: iconst_0
+    //   265: anewarray 4	java/lang/Object
+    //   268: invokestatic 159	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   271: new 10	java/lang/StringBuilder
+    //   274: dup
+    //   275: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   278: astore_0
+    //   279: aload_0
+    //   280: getstatic 17	com/tencent/mobileqq/activity/richmedia/EditLocalVideoActivity:a	Ljava/lang/String;
+    //   283: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   286: pop
+    //   287: aload_0
+    //   288: getstatic 26	java/io/File:separator	Ljava/lang/String;
+    //   291: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: pop
+    //   295: aload_0
+    //   296: invokestatic 185	java/util/UUID:randomUUID	()Ljava/util/UUID;
+    //   299: invokevirtual 269	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   302: pop
+    //   303: aload_0
+    //   304: ldc_w 271
+    //   307: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: pop
+    //   311: aload_0
+    //   312: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   315: astore_0
+    //   316: ldc 80
+    //   318: invokestatic 86	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   321: checkcast 80	com/tencent/qzonehub/api/utils/IQzoneVideoHelper
+    //   324: bipush 10
+    //   326: anewarray 53	java/lang/String
+    //   329: dup
+    //   330: iconst_0
+    //   331: ldc 88
+    //   333: aastore
+    //   334: dup
+    //   335: iconst_1
+    //   336: ldc 161
+    //   338: aastore
+    //   339: dup
+    //   340: iconst_2
+    //   341: ldc 163
     //   343: aastore
-    //   344: invokestatic 111	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   347: aconst_null
-    //   348: areturn
-    //   349: aload_3
-    //   350: astore_2
-    //   351: aload_3
-    //   352: invokevirtual 147	java/io/BufferedWriter:flush	()V
-    //   355: aload_3
-    //   356: ifnull -167 -> 189
-    //   359: aload_3
-    //   360: invokevirtual 150	java/io/BufferedWriter:close	()V
-    //   363: goto -174 -> 189
-    //   366: astore_0
-    //   367: ldc 100
-    //   369: iconst_2
-    //   370: aload_0
-    //   371: iconst_0
-    //   372: anewarray 4	java/lang/Object
-    //   375: invokestatic 172	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   378: goto -189 -> 189
-    //   381: astore_0
-    //   382: ldc 100
-    //   384: iconst_2
-    //   385: aload_0
-    //   386: iconst_0
-    //   387: anewarray 4	java/lang/Object
-    //   390: invokestatic 172	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   393: goto -204 -> 189
-    //   396: astore_0
-    //   397: aconst_null
-    //   398: astore_2
-    //   399: aload_2
-    //   400: ifnull +7 -> 407
-    //   403: aload_2
-    //   404: invokevirtual 150	java/io/BufferedWriter:close	()V
-    //   407: aload_0
-    //   408: athrow
-    //   409: astore_2
-    //   410: ldc 100
-    //   412: iconst_2
-    //   413: aload_2
-    //   414: iconst_0
-    //   415: anewarray 4	java/lang/Object
-    //   418: invokestatic 172	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   421: goto -14 -> 407
-    //   424: aconst_null
-    //   425: areturn
-    //   426: astore_0
-    //   427: goto -28 -> 399
-    //   430: astore_3
-    //   431: aconst_null
-    //   432: astore_0
-    //   433: goto -265 -> 168
+    //   344: dup
+    //   345: iconst_3
+    //   346: ldc 165
+    //   348: aastore
+    //   349: dup
+    //   350: iconst_4
+    //   351: ldc 167
+    //   353: aastore
+    //   354: dup
+    //   355: iconst_5
+    //   356: ldc 90
+    //   358: aastore
+    //   359: dup
+    //   360: bipush 6
+    //   362: aload 4
+    //   364: aastore
+    //   365: dup
+    //   366: bipush 7
+    //   368: ldc 98
+    //   370: aastore
+    //   371: dup
+    //   372: bipush 8
+    //   374: ldc 100
+    //   376: aastore
+    //   377: dup
+    //   378: bipush 9
+    //   380: aload_0
+    //   381: aastore
+    //   382: invokeinterface 104 2 0
+    //   387: istore_1
+    //   388: new 23	java/io/File
+    //   391: dup
+    //   392: aload 4
+    //   394: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
+    //   397: invokevirtual 170	java/io/File:delete	()Z
+    //   400: ifeq +12 -> 412
+    //   403: ldc 111
+    //   405: ldc_w 273
+    //   408: invokestatic 278	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   411: pop
+    //   412: iload_1
+    //   413: ifeq +44 -> 457
+    //   416: new 10	java/lang/StringBuilder
+    //   419: dup
+    //   420: invokespecial 13	java/lang/StringBuilder:<init>	()V
+    //   423: astore_0
+    //   424: aload_0
+    //   425: ldc_w 280
+    //   428: invokevirtual 21	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   431: pop
+    //   432: aload_0
+    //   433: iload_1
+    //   434: invokevirtual 109	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   437: pop
+    //   438: ldc 111
+    //   440: iconst_2
+    //   441: iconst_1
+    //   442: anewarray 4	java/lang/Object
+    //   445: dup
+    //   446: iconst_0
+    //   447: aload_0
+    //   448: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   451: aastore
+    //   452: invokestatic 117	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   455: aconst_null
+    //   456: areturn
+    //   457: aload_0
+    //   458: areturn
+    //   459: astore_0
+    //   460: aload_2
+    //   461: ifnull +22 -> 483
+    //   464: aload_2
+    //   465: invokevirtual 156	java/io/BufferedWriter:close	()V
+    //   468: goto +15 -> 483
+    //   471: astore_2
+    //   472: ldc 111
+    //   474: iconst_2
+    //   475: aload_2
+    //   476: iconst_0
+    //   477: anewarray 4	java/lang/Object
+    //   480: invokestatic 159	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   483: aload_0
+    //   484: athrow
+    //   485: aconst_null
+    //   486: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	436	0	paramList	List<String>
-    //   285	52	1	i	int
-    //   81	75	2	localObject1	Object
-    //   163	4	2	localException1	java.lang.Exception
-    //   169	235	2	localObject2	Object
-    //   409	5	2	localIOException	java.io.IOException
-    //   79	281	3	localObject3	Object
-    //   430	1	3	localException2	java.lang.Exception
-    //   54	237	4	str1	String
-    //   111	22	5	str2	String
+    //   0	487	0	paramList	List<String>
+    //   387	47	1	i	int
+    //   32	160	2	localObject1	Object
+    //   218	4	2	localException1	java.lang.Exception
+    //   228	237	2	localList	List<String>
+    //   471	5	2	localIOException	java.io.IOException
+    //   85	138	3	localObject2	Object
+    //   232	9	3	localException2	java.lang.Exception
+    //   60	333	4	str1	String
+    //   117	32	5	str2	String
+    //   128	46	6	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   82	89	163	java/lang/Exception
-    //   91	100	163	java/lang/Exception
-    //   102	113	163	java/lang/Exception
-    //   115	154	163	java/lang/Exception
-    //   156	160	163	java/lang/Exception
-    //   351	355	163	java/lang/Exception
-    //   359	363	366	java/io/IOException
-    //   185	189	381	java/io/IOException
-    //   56	80	396	finally
-    //   403	407	409	java/io/IOException
-    //   82	89	426	finally
-    //   91	100	426	finally
-    //   102	113	426	finally
-    //   115	154	426	finally
-    //   156	160	426	finally
-    //   170	181	426	finally
-    //   351	355	426	finally
-    //   56	80	430	java/lang/Exception
+    //   196	200	203	java/io/IOException
+    //   88	95	218	java/lang/Exception
+    //   97	106	218	java/lang/Exception
+    //   108	119	218	java/lang/Exception
+    //   121	130	218	java/lang/Exception
+    //   132	140	218	java/lang/Exception
+    //   142	160	218	java/lang/Exception
+    //   162	170	218	java/lang/Exception
+    //   172	181	218	java/lang/Exception
+    //   183	187	218	java/lang/Exception
+    //   192	196	218	java/lang/Exception
+    //   62	86	226	finally
+    //   62	86	232	java/lang/Exception
+    //   252	256	259	java/io/IOException
+    //   88	95	459	finally
+    //   97	106	459	finally
+    //   108	119	459	finally
+    //   121	130	459	finally
+    //   132	140	459	finally
+    //   142	160	459	finally
+    //   162	170	459	finally
+    //   172	181	459	finally
+    //   183	187	459	finally
+    //   192	196	459	finally
+    //   237	248	459	finally
+    //   464	468	471	java/io/IOException
   }
   
   public static String b(String paramString)
   {
-    String str = paramString;
-    if (paramString != null)
+    if ((paramString != null) && (new File(paramString).exists()))
     {
-      str = paramString;
-      if (new File(paramString).exists())
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(EditLocalVideoActivity.a);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append("converted_no_video.");
+      ((StringBuilder)localObject).append(a(paramString, "m4a"));
+      localObject = ((StringBuilder)localObject).toString();
+      int i = ((IQzoneVideoHelper)QRoute.api(IQzoneVideoHelper.class)).trimByFFmpeg(new String[] { "-y", "-i", paramString, "-vn", "-c", "copy", "-map", "0:a:0", localObject });
+      if (i != 0)
       {
-        str = EditLocalVideoActivity.a + File.separator + "converted_no_video." + a(paramString, "m4a");
-        int i = QZoneVideoCompressor.trimByFFmpeg(new String[] { "-y", "-i", paramString, "-vn", "-c", "copy", "-map", "0:a:0", str });
-        if (i == 0) {
-          return str;
-        }
-        QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { "ffmpegRemoveVideoTrack: FFmpeg run failed with " + i });
-        str = null;
+        paramString = new StringBuilder();
+        paramString.append("ffmpegRemoveVideoTrack: FFmpeg run failed with ");
+        paramString.append(i);
+        QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { paramString.toString() });
+        return null;
       }
+      return localObject;
     }
-    return str;
-    return str;
+    return paramString;
   }
   
   public static String c(String paramString)
@@ -663,21 +803,28 @@ public class EditLocalVideoMusicMixHelper
       if (paramString.endsWith("m4a")) {
         return paramString;
       }
-      String str = EditLocalVideoActivity.a + File.separator + "converted.m4a";
-      int i = QZoneVideoCompressor.trimByFFmpeg(new String[] { "-y", "-i", paramString, "-c:a", "aac", str });
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(EditLocalVideoActivity.a);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append("converted.m4a");
+      localObject = ((StringBuilder)localObject).toString();
+      int i = ((IQzoneVideoHelper)QRoute.api(IQzoneVideoHelper.class)).trimByFFmpeg(new String[] { "-y", "-i", paramString, "-c:a", "aac", localObject });
       if (i != 0)
       {
-        QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { "ffmpegConvert2AAC: FFmpeg run failed with " + i });
+        paramString = new StringBuilder();
+        paramString.append("ffmpegConvert2AAC: FFmpeg run failed with ");
+        paramString.append(i);
+        QZLog.e("EditLocalVideoMusicMixH", 2, new Object[] { paramString.toString() });
         return null;
       }
-      return str;
+      return localObject;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoMusicMixHelper
  * JD-Core Version:    0.7.0.1
  */

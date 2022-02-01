@@ -1,79 +1,53 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import com.tencent.mobileqq.app.StrangerObserver;
-import com.tencent.mobileqq.data.Stranger;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 
 class TroopActivity$8
-  extends StrangerObserver
+  implements View.OnClickListener
 {
   TroopActivity$8(TroopActivity paramTroopActivity) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    switch (paramView.getId())
     {
-      if (paramPBRepeatMessageField != null)
+    default: 
+      this.a.b();
+      break;
+    case 2131369216: 
+      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
+      if (this.a.a())
       {
-        paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
-        while (paramPBRepeatMessageField.hasNext())
-        {
-          oidb_0x5d4.DelResult localDelResult = (oidb_0x5d4.DelResult)paramPBRepeatMessageField.next();
-          QLog.d("TroopActivity", 2, "ondelete: uin " + localDelResult.uin.get());
-          if (this.a.a != null)
-          {
-            int i = 0;
-            while (i < this.a.a.size())
-            {
-              Stranger localStranger = (Stranger)this.a.a.get(i);
-              if (localStranger.uin.equals(String.valueOf(localDelResult.uin.get()))) {
-                this.a.a.remove(localStranger);
-              }
-              i += 1;
-            }
-          }
-        }
+        this.a.b();
       }
-    }
-    else if (QLog.isColorLevel()) {
-      QLog.d("TroopActivity", 2, "onDelete is failed");
-    }
-  }
-  
-  public void a(boolean paramBoolean, List<Stranger> paramList)
-  {
-    if (paramBoolean) {
-      if (paramList != null)
+      else
       {
-        this.a.a.clear();
-        this.a.a.addAll(paramList);
-        QLog.d("TroopActivity", 2, "onGetListRemote :" + this.a.a.size());
+        ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Clk_grplist_plus", 0, 0, "", "", "", "");
+        this.a.a();
       }
+      break;
+    case 2131369202: 
+    case 2131369563: 
+    case 2131379476: 
+      if (this.a.a != null)
+      {
+        Intent localIntent = new Intent();
+        localIntent.putExtra("isDataChanged", this.a.a.isEmpty() ^ true);
+        this.a.setResult(-1, localIntent);
+      }
+      this.a.onBackPressed();
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TroopActivity", 2, "onGetListRemote is failed");
-  }
-  
-  public void b(boolean paramBoolean, List<Stranger> paramList)
-  {
-    if ((paramBoolean) && (paramList != null))
-    {
-      this.a.a.clear();
-      this.a.a.addAll(paramList);
-      QLog.d("TroopActivity", 2, "onGetListLocal :" + this.a.a.size());
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.8
  * JD-Core Version:    0.7.0.1
  */

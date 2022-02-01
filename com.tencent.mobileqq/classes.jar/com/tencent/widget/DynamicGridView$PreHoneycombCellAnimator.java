@@ -14,13 +14,15 @@ class DynamicGridView$PreHoneycombCellAnimator
   
   public void a(int paramInt1, int paramInt2)
   {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
-    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
+    DynamicGridView localDynamicGridView = this.jdField_a_of_type_ComTencentWidgetDynamicGridView;
+    DynamicGridView.a(localDynamicGridView, DynamicGridView.a(localDynamicGridView) + this.jdField_a_of_type_Int);
+    localDynamicGridView = this.jdField_a_of_type_ComTencentWidgetDynamicGridView;
+    DynamicGridView.b(localDynamicGridView, DynamicGridView.b(localDynamicGridView) + this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.DynamicGridView.PreHoneycombCellAnimator
  * JD-Core Version:    0.7.0.1
  */

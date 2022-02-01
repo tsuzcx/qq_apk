@@ -15,8 +15,12 @@ public class VidUtil
     synchronized (sVidSimpleDateFormat)
     {
       int i = new Random().nextInt(10000);
-      String str = sVidSimpleDateFormat.format(new Date()) + "_" + i;
-      return str;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(sVidSimpleDateFormat.format(new Date()));
+      ((StringBuilder)localObject1).append("_");
+      ((StringBuilder)localObject1).append(i);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      return localObject1;
     }
   }
   
@@ -30,7 +34,7 @@ public class VidUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.VidUtil
  * JD-Core Version:    0.7.0.1
  */

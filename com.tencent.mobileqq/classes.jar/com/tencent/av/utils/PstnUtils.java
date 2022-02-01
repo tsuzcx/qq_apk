@@ -12,10 +12,10 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.data.QCallRecent;
-import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.qcall.QCallFacade;
 import com.tencent.mobileqq.util.PhoneContactFaceDrawable;
 import com.tencent.mobileqq.utils.ContactUtils;
@@ -32,103 +32,67 @@ import tencent.im.oidb.cmd0xa02.cmd0xa02.TinyID2UserAccInfo;
 @Deprecated
 public class PstnUtils
 {
-  public static int a(String paramString, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return -1;
-    }
-    String str = paramString.replace("-", "").replace(" ", "");
-    if (str.length() <= 6) {
-      return 5;
-    }
-    if (str.length() > 16) {
-      return 4;
-    }
-    paramString = str;
-    if (paramBoolean) {
-      if ((!str.startsWith("00")) && (!str.startsWith("+")))
-      {
-        paramString = str;
-        if (!str.startsWith("86")) {}
-      }
-      else
-      {
-        if (!str.startsWith("0086")) {
-          break label117;
-        }
-        paramString = str.substring(4);
-      }
-    }
-    while ((paramString.startsWith("400")) || (paramString.startsWith("800")))
-    {
-      return 2;
-      label117:
-      if (str.startsWith("+86")) {
-        paramString = str.substring(3);
-      } else if (str.startsWith("86")) {
-        paramString = str.substring(2);
-      } else {
-        return 1;
-      }
-    }
-    if ((!paramString.startsWith("0")) && (paramString.length() <= 9)) {
-      return 3;
-    }
-    if ((paramString.length() == 11) || (paramString.length() == 12)) {
-      return 0;
-    }
-    return 6;
-  }
-  
   private static Bitmap a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject2 = ((PhoneContactManager)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).b(paramString);
-    Object localObject1 = null;
-    if (localObject2 != null) {
-      localObject1 = ContactUtils.b(((PhoneContact)localObject2).name);
+    Object localObject1 = ((IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).queryPhoneContactByMobile(paramString);
+    if (localObject1 != null) {
+      localObject1 = ContactUtils.b(((PhoneContact)localObject1).name);
+    } else {
+      localObject1 = null;
     }
-    localObject2 = localObject1;
+    Object localObject2 = localObject1;
     if (localObject1 == null) {
       localObject2 = ContactUtils.b(paramString);
     }
     paramString = new PhoneContactFaceDrawable(paramQQAppInterface.getApp(), (String)localObject2);
     int i = paramString.getIntrinsicWidth();
     int j = paramString.getIntrinsicHeight();
-    if (paramString.getOpacity() != -1) {}
-    for (paramQQAppInterface = Bitmap.Config.ARGB_8888;; paramQQAppInterface = Bitmap.Config.RGB_565)
-    {
-      paramQQAppInterface = Bitmap.createBitmap(i, j, paramQQAppInterface);
-      localObject1 = new Canvas(paramQQAppInterface);
-      paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), paramString.getIntrinsicHeight());
-      paramString.draw((Canvas)localObject1);
-      return paramQQAppInterface;
+    if (paramString.getOpacity() != -1) {
+      paramQQAppInterface = Bitmap.Config.ARGB_8888;
+    } else {
+      paramQQAppInterface = Bitmap.Config.RGB_565;
     }
+    paramQQAppInterface = Bitmap.createBitmap(i, j, paramQQAppInterface);
+    localObject1 = new Canvas(paramQQAppInterface);
+    paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), paramString.getIntrinsicHeight());
+    paramString.draw((Canvas)localObject1);
+    return paramQQAppInterface;
   }
   
   public static String a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PstnUtils", 2, "getPstnInfoFromQCallRecent --> uin = " + paramString + " ,uinType = " + paramInt);
-    }
-    if ((paramQQAppInterface == null) || (paramString == null)) {
-      paramQQAppInterface = null;
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      return paramQQAppInterface;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPstnInfoFromQCallRecent --> uin = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ,uinType = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("PstnUtils", 2, localStringBuilder.toString());
+    }
+    if (paramQQAppInterface != null)
+    {
+      if (paramString == null) {
+        return null;
+      }
       paramQQAppInterface = (QCallFacade)paramQQAppInterface.getManager(QQManagerFactory.RECENT_CALL_FACADE);
-      if (paramQQAppInterface == null) {
-        break;
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface = paramQQAppInterface.a(paramString, paramInt);
+        if (paramQQAppInterface != null)
+        {
+          paramQQAppInterface = paramQQAppInterface.pstnInfo;
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("getPstnInfoFromQCallRecent --> value = ");
+            paramString.append(paramQQAppInterface);
+            QLog.d("PstnUtils", 2, paramString.toString());
+          }
+          return paramQQAppInterface;
+        }
       }
-      paramQQAppInterface = paramQQAppInterface.a(paramString, paramInt);
-      if (paramQQAppInterface == null) {
-        break;
-      }
-      paramString = paramQQAppInterface.pstnInfo;
-      paramQQAppInterface = paramString;
-    } while (!QLog.isColorLevel());
-    QLog.d("PstnUtils", 2, "getPstnInfoFromQCallRecent --> value = " + paramString);
-    return paramString;
+    }
     return null;
   }
   
@@ -139,25 +103,25 @@ public class PstnUtils
       if (QLog.isColorLevel()) {
         QLog.d("PstnUtils", 2, "hideCharacterInPhoneNumbe--> phoneNumber is null");
       }
-      str = null;
+      return null;
     }
-    do
+    if (paramString.length() < paramInt)
     {
-      do
-      {
-        return str;
-        if (paramString.length() >= paramInt) {
-          break;
-        }
-        str = paramString;
-      } while (!QLog.isColorLevel());
-      QLog.d("PstnUtils", 2, "hideCharacterInPhoneNumbe--> phoneNumber less ncount");
+      if (QLog.isColorLevel()) {
+        QLog.d("PstnUtils", 2, "hideCharacterInPhoneNumbe--> phoneNumber less ncount");
+      }
       return paramString;
-      str = paramString;
-    } while (paramString.length() < "***".length() + paramInt);
+    }
+    if (paramString.length() < paramInt + 3) {
+      return paramString;
+    }
     String str = paramString.substring(paramString.length() - 2, paramString.length());
     paramString = paramString.substring(0, 3);
-    return paramString + "***" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("***");
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   public static String a(ArrayList<AVPhoneUserInfo> paramArrayList)
@@ -193,74 +157,72 @@ public class PstnUtils
   
   public static ArrayList<AVPhoneUserInfo> a(String paramString)
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      try
+      paramString = new JSONArray(paramString);
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramString.length())
       {
-        JSONArray localJSONArray = new JSONArray(paramString);
-        ArrayList localArrayList = new ArrayList();
-        paramString = localArrayList;
-        if (i < localJSONArray.length())
-        {
-          paramString = localJSONArray.getJSONObject(i);
-          JSONObject localJSONObject = paramString.optJSONObject("ti");
-          AVPhoneUserInfo localAVPhoneUserInfo = new AVPhoneUserInfo();
-          localAVPhoneUserInfo.account = paramString.optLong("a", 0L);
-          localAVPhoneUserInfo.accountType = paramString.optInt("at", -1);
-          localAVPhoneUserInfo.telInfo.mobile = localJSONObject.optString("m", "");
-          localAVPhoneUserInfo.telInfo.nation = localJSONObject.optString("n", "");
-          localAVPhoneUserInfo.telInfo.prefix = localJSONObject.optString("p", "");
-          localAVPhoneUserInfo.telInfo.nationState = localJSONObject.optInt("ns", 0);
-          if (-1 == localAVPhoneUserInfo.accountType) {
-            break label175;
-          }
+        JSONObject localJSONObject1 = paramString.getJSONObject(i);
+        JSONObject localJSONObject2 = localJSONObject1.optJSONObject("ti");
+        AVPhoneUserInfo localAVPhoneUserInfo = new AVPhoneUserInfo();
+        localAVPhoneUserInfo.account = localJSONObject1.optLong("a", 0L);
+        localAVPhoneUserInfo.accountType = localJSONObject1.optInt("at", -1);
+        localAVPhoneUserInfo.telInfo.mobile = localJSONObject2.optString("m", "");
+        localAVPhoneUserInfo.telInfo.nation = localJSONObject2.optString("n", "");
+        localAVPhoneUserInfo.telInfo.prefix = localJSONObject2.optString("p", "");
+        localAVPhoneUserInfo.telInfo.nationState = localJSONObject2.optInt("ns", 0);
+        if (-1 != localAVPhoneUserInfo.accountType) {
           localArrayList.add(localAVPhoneUserInfo);
         }
+        i += 1;
       }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
-      return paramString;
-      label175:
-      i += 1;
+      return localArrayList;
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
   }
   
   public static ArrayList<AVPhoneUserInfo> a(List<cmd0xa02.TinyID2UserAccInfo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return localArrayList;
-    }
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    if (paramList != null)
     {
-      paramList = (cmd0xa02.TinyID2UserAccInfo)localIterator.next();
-      AVPhoneUserInfo localAVPhoneUserInfo = new AVPhoneUserInfo();
-      localAVPhoneUserInfo.account = paramList.uint64_tinyid.get();
-      localAVPhoneUserInfo.accountType = paramList.uint32_useracctype.get();
-      paramList = paramList.str_useracc_identifier.get();
-      if ((!TextUtils.isEmpty(paramList)) && (paramList.length() >= 5))
+      if (paramList.size() == 0) {
+        return localArrayList;
+      }
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        String str;
-        if (paramList.contains("-"))
+        paramList = (cmd0xa02.TinyID2UserAccInfo)localIterator.next();
+        AVPhoneUserInfo localAVPhoneUserInfo = new AVPhoneUserInfo();
+        localAVPhoneUserInfo.account = paramList.uint64_tinyid.get();
+        localAVPhoneUserInfo.accountType = paramList.uint32_useracctype.get();
+        paramList = paramList.str_useracc_identifier.get();
+        if ((!TextUtils.isEmpty(paramList)) && (paramList.length() >= 5))
         {
-          paramList = paramList.split("-");
-          str = paramList[0];
-        }
-        for (paramList = paramList[1];; paramList = paramList.substring(4, paramList.length()))
-        {
+          String str;
+          if (paramList.contains("-"))
+          {
+            paramList = paramList.split("-");
+            str = paramList[0];
+            paramList = paramList[1];
+          }
+          else
+          {
+            str = paramList.substring(0, 4);
+            paramList = paramList.substring(4, paramList.length());
+          }
           localAVPhoneUserInfo.telInfo.nation = str;
           localAVPhoneUserInfo.telInfo.mobile = paramList;
           if (!TextUtils.isEmpty(localAVPhoneUserInfo.telInfo.nation)) {
             localAVPhoneUserInfo.telInfo.nationState = 1;
           }
           localArrayList.add(localAVPhoneUserInfo);
-          break;
-          str = paramList.substring(0, 4);
         }
       }
     }
@@ -270,127 +232,144 @@ public class PstnUtils
   public static List<AVPhoneUserInfo> a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
     Object localObject1 = a(paramQQAppInterface, paramString, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("PstnUtils", 2, " ==== getRealAVPhoneUserInfo === pstnInfo : " + (String)localObject1);
-    }
-    if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
-      return null;
-    }
-    Object localObject2 = a((String)localObject1);
-    if ((localObject2 == null) || (((ArrayList)localObject2).size() == 0)) {
-      return null;
-    }
-    localObject1 = (DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-    if (localObject1 == null) {
-      return null;
-    }
-    paramString = ((DiscussionManager)localObject1).a(paramString);
-    localObject1 = (PhoneContactManager)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-    ArrayList localArrayList = new ArrayList();
-    localObject2 = ((ArrayList)localObject2).iterator();
-    AVPhoneUserInfo localAVPhoneUserInfo;
-    while (((Iterator)localObject2).hasNext())
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      localAVPhoneUserInfo = (AVPhoneUserInfo)((Iterator)localObject2).next();
-      paramQQAppInterface = localAVPhoneUserInfo.telInfo.mobile;
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" ==== getRealAVPhoneUserInfo === pstnInfo : ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.i("PstnUtils", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (localObject1 != null)
+    {
+      if (((String)localObject1).length() == 0) {
+        return null;
+      }
+      Object localObject3 = a((String)localObject1);
+      if (localObject3 != null)
       {
-        paramQQAppInterface = ((PhoneContactManager)localObject1).b(paramQQAppInterface);
-        if (paramQQAppInterface == null) {
-          break label268;
+        if (((ArrayList)localObject3).size() == 0) {
+          return null;
         }
+        localObject1 = (DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+        if (localObject1 == null) {
+          return null;
+        }
+        paramString = ((DiscussionManager)localObject1).a(paramString);
+        localObject2 = (IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+        localObject1 = new ArrayList();
+        localObject3 = ((ArrayList)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          AVPhoneUserInfo localAVPhoneUserInfo = (AVPhoneUserInfo)((Iterator)localObject3).next();
+          paramQQAppInterface = localAVPhoneUserInfo.telInfo.mobile;
+          if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
+          {
+            paramQQAppInterface = ((IPhoneContactService)localObject2).queryPhoneContactByMobile(paramQQAppInterface);
+            if (paramQQAppInterface != null) {
+              paramQQAppInterface = paramQQAppInterface.uin;
+            } else {
+              paramQQAppInterface = null;
+            }
+            if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
+            {
+              if ((paramString == null) || (!paramString.containsKey(paramQQAppInterface))) {
+                ((ArrayList)localObject1).add(localAVPhoneUserInfo);
+              }
+            }
+            else {
+              ((ArrayList)localObject1).add(localAVPhoneUserInfo);
+            }
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append(" ==== getRealAVPhoneUserInfo === list : ");
+          paramQQAppInterface.append(((ArrayList)localObject1).toString());
+          QLog.i("PstnUtils", 2, paramQQAppInterface.toString());
+        }
+        return localObject1;
       }
     }
-    label268:
-    for (paramQQAppInterface = paramQQAppInterface.uin;; paramQQAppInterface = null)
-    {
-      if ((paramQQAppInterface == null) || (paramQQAppInterface.length() == 0))
-      {
-        localArrayList.add(localAVPhoneUserInfo);
-        break;
-      }
-      if ((paramString != null) && (paramString.containsKey(paramQQAppInterface))) {
-        break;
-      }
-      localArrayList.add(localAVPhoneUserInfo);
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.i("PstnUtils", 2, " ==== getRealAVPhoneUserInfo === list : " + localArrayList.toString());
-      }
-      return localArrayList;
-    }
+    return null;
   }
   
   public static List<Bitmap> a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject = a(paramQQAppInterface, paramString, paramInt1);
-    QLog.i("PstnUtils", 2, " ==== getRealAVPhoneBitmap === pstnInfo : " + (String)localObject);
-    if ((localObject == null) || (((String)localObject).length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList1 = a((String)localObject);
-    if ((localArrayList1 == null) || (localArrayList1.size() == 0)) {
-      return null;
-    }
-    localObject = (DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-    if (localObject == null) {
-      return null;
-    }
-    Map localMap = ((DiscussionManager)localObject).a(paramString);
-    PhoneContactManager localPhoneContactManager = (PhoneContactManager)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-    ArrayList localArrayList2 = new ArrayList();
-    paramInt2 = Math.min(paramInt2, localArrayList1.size());
-    paramInt1 = 0;
-    if (paramInt1 < paramInt2)
+    Object localObject1 = a(paramQQAppInterface, paramString, paramInt1);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(" ==== getRealAVPhoneBitmap === pstnInfo : ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QLog.i("PstnUtils", 2, ((StringBuilder)localObject2).toString());
+    if (localObject1 != null)
     {
-      localObject = (AVPhoneUserInfo)localArrayList1.get(paramInt1);
-      String str = ((AVPhoneUserInfo)localObject).telInfo.mobile;
-      if ((str == null) || (str.length() == 0)) {}
-      for (;;)
+      if (((String)localObject1).length() == 0) {
+        return null;
+      }
+      localObject2 = a((String)localObject1);
+      if (localObject2 != null)
       {
-        paramInt1 += 1;
-        break;
-        PhoneContact localPhoneContact = localPhoneContactManager.b(str);
-        paramString = null;
-        if (localPhoneContact != null) {
-          paramString = localPhoneContact.uin;
+        if (((ArrayList)localObject2).size() == 0) {
+          return null;
         }
-        if ((paramString == null) || (paramString.length() == 0))
-        {
-          localArrayList2.add(a(paramQQAppInterface, str));
+        localObject1 = (DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+        if (localObject1 == null) {
+          return null;
         }
-        else if ((localMap == null) || (!localMap.containsKey(paramString)))
+        Map localMap = ((DiscussionManager)localObject1).a(paramString);
+        IPhoneContactService localIPhoneContactService = (IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+        ArrayList localArrayList = new ArrayList();
+        paramInt2 = Math.min(paramInt2, ((ArrayList)localObject2).size());
+        paramInt1 = 0;
+        while (paramInt1 < paramInt2)
         {
-          localObject = paramQQAppInterface.getFaceBitmap(11, ((AVPhoneUserInfo)localObject).telInfo.nation + str, (byte)3, true, 0);
-          paramString = (String)localObject;
-          if (localObject == null) {
-            paramString = a(paramQQAppInterface, str);
+          localObject1 = (AVPhoneUserInfo)((ArrayList)localObject2).get(paramInt1);
+          String str = ((AVPhoneUserInfo)localObject1).telInfo.mobile;
+          if ((str != null) && (str.length() != 0))
+          {
+            paramString = localIPhoneContactService.queryPhoneContactByMobile(str);
+            if (paramString != null) {
+              paramString = paramString.uin;
+            } else {
+              paramString = null;
+            }
+            if ((paramString != null) && (paramString.length() != 0))
+            {
+              if ((localMap == null) || (!localMap.containsKey(paramString)))
+              {
+                paramString = new StringBuilder();
+                paramString.append(((AVPhoneUserInfo)localObject1).telInfo.nation);
+                paramString.append(str);
+                localObject1 = paramQQAppInterface.getFaceBitmap(11, paramString.toString(), (byte)3, true, 0);
+                paramString = (String)localObject1;
+                if (localObject1 == null) {
+                  paramString = a(paramQQAppInterface, str);
+                }
+                localArrayList.add(paramString);
+              }
+            }
+            else {
+              localArrayList.add(a(paramQQAppInterface, str));
+            }
           }
-          localArrayList2.add(paramString);
+          paramInt1 += 1;
         }
+        return localArrayList;
       }
     }
-    return localArrayList2;
+    return null;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
     paramQQAppInterface = a(paramQQAppInterface, paramString, paramInt);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramQQAppInterface != null)
-    {
-      bool1 = bool2;
-      if (paramQQAppInterface.size() > 0) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (paramQQAppInterface != null) && (paramQQAppInterface.size() > 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.PstnUtils
  * JD-Core Version:    0.7.0.1
  */

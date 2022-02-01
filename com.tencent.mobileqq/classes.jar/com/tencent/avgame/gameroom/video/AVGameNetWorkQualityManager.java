@@ -5,8 +5,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.avgame.business.observer.ObserverCenter;
+import com.tencent.avgame.gameroom.GameRoomViewLayoutParamsDef;
 import com.tencent.avgame.qav.AVGameBusinessCtrl;
 import com.tencent.avgame.ui.AVGameHandler;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
@@ -33,44 +35,57 @@ public class AVGameNetWorkQualityManager
   
   public AVGameNetWorkQualityManager(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363162);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373978));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363102);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131373550));
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_b_of_type_AndroidOsHandler = new Handler();
     this.jdField_a_of_type_AndroidOsHandler = AVGameHandler.a().a();
     this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager$UpdateNetWorkStatusRunnable = new AVGameNetWorkQualityManager.UpdateNetWorkStatusRunnable(this, null);
-    d();
+    e();
   }
   
   public static int a()
   {
-    int i = -1;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
+    boolean bool = AppNetConnInfo.isWifiConn();
+    int i = 4;
+    if (bool) {
+      return 1;
     }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return i;
-    }
-    switch (AppNetConnInfo.getMobileInfo())
+    if (AppNetConnInfo.isMobileConn())
     {
-    default: 
-      return -1;
-    case 1: 
-      return 2;
-    case 2: 
-      return 3;
-    case 3: 
-      return 4;
+      int j = AppNetConnInfo.getMobileInfo();
+      if (j != 1)
+      {
+        if (j != 2)
+        {
+          if (j == 3) {
+            return i;
+          }
+          if (j == 4) {
+            return 5;
+          }
+        }
+        else
+        {
+          return 3;
+        }
+      }
+      else {
+        return 2;
+      }
     }
-    return 5;
+    i = -1;
+    return i;
   }
   
   private int a(int paramInt)
   {
-    if ((paramInt >= this.jdField_a_of_type_ArrayOfInt[0]) && (paramInt <= this.jdField_a_of_type_ArrayOfInt[1])) {
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    if ((paramInt >= arrayOfInt[0]) && (paramInt <= arrayOfInt[1])) {
       return 1;
     }
-    if ((paramInt > this.jdField_a_of_type_ArrayOfInt[1]) && (paramInt <= this.jdField_a_of_type_ArrayOfInt[2])) {
+    arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    if ((paramInt > arrayOfInt[1]) && (paramInt <= arrayOfInt[2])) {
       return 2;
     }
     return 3;
@@ -84,66 +99,72 @@ public class AVGameNetWorkQualityManager
   private void a(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 1) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838857));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838644));
+    } else if (paramInt1 == 2) {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838643));
+    } else if (paramInt1 == 3) {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838642));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt2 + "ms");
-      return;
-      if (paramInt1 == 2) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838855));
-      } else if (paramInt1 == 3) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838853));
-      }
-    }
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("ms");
+    localTextView.setText(localStringBuilder.toString());
   }
   
   private boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVGameNetWorkQualityManager", 2, "verifyRTTInfo value:=" + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("verifyRTTInfo value:=");
+      localStringBuilder.append(paramString);
+      QLog.d("AVGameNetWorkQualityManager", 2, localStringBuilder.toString());
+    }
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      paramString = paramString.split("\\|");
-    } while ((paramString == null) || (paramString.length < 2));
-    this.jdField_b_of_type_Int = this.c;
-    this.jdField_a_of_type_Long = this.c;
-    try
-    {
-      this.c = Integer.valueOf(paramString[0]).intValue();
-      this.jdField_b_of_type_Long = Long.parseLong(paramString[1]);
-      return true;
     }
-    catch (Exception paramString)
+    paramString = paramString.split("\\|");
+    if (paramString != null)
     {
-      for (;;)
+      if (paramString.length < 2) {
+        return false;
+      }
+      int i = this.c;
+      this.jdField_b_of_type_Int = i;
+      this.jdField_a_of_type_Long = i;
+      try
+      {
+        this.c = Integer.valueOf(paramString[0]).intValue();
+        this.jdField_b_of_type_Long = Long.parseLong(paramString[1]);
+        return true;
+      }
+      catch (Exception paramString)
       {
         paramString.printStackTrace();
+        return true;
       }
     }
+    return false;
   }
   
   private void b(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 1) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838861));
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838647));
+    } else if (paramInt1 == 2) {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838646));
+    } else if (paramInt1 == 3) {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838645));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt2 + "ms");
-      return;
-      if (paramInt1 == 2) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838860));
-      } else if (paramInt1 == 3) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838859));
-      }
-    }
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("ms");
+    localTextView.setText(localStringBuilder.toString());
   }
   
-  private void d()
+  private void e()
   {
     if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager$MyNetObserver == null)
     {
@@ -152,7 +173,7 @@ public class AVGameNetWorkQualityManager
     }
   }
   
-  private void e()
+  private void f()
   {
     this.jdField_a_of_type_JavaLangString = AVGameBusinessCtrl.b().a();
     if (!a(this.jdField_a_of_type_JavaLangString)) {
@@ -162,51 +183,67 @@ public class AVGameNetWorkQualityManager
     this.jdField_b_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameNetWorkQualityManager$UpdateNetWorkStatusRunnable);
   }
   
-  private void f()
+  private void g()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVGameNetWorkQualityManager", 2, "mCurrentNetWorkStatus, [" + this.jdField_a_of_type_Int + "<--mCurrentRTTValue>" + this.c + "]");
-    }
-    if ((!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
-      return;
-    }
-    int j = a(this.c);
-    int i;
-    if (this.c >= 0)
+    if (QLog.isColorLevel())
     {
-      i = Math.min(this.c, 999);
-      if ((this.jdField_a_of_type_Long <= 0L) || (this.jdField_b_of_type_Long <= 0L) || (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long >= 1000L)) {
-        break label202;
-      }
-      j = 3;
-      i = 999;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mCurrentNetWorkStatus, [");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("<--mCurrentRTTValue>");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("]");
+      QLog.d("AVGameNetWorkQualityManager", 2, localStringBuilder.toString());
     }
-    label202:
-    for (;;)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Int = a();
-      if (this.jdField_a_of_type_Int == -1) {
-        g();
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (!this.jdField_b_of_type_Boolean) {
         return;
+      }
+      int m = a(this.c);
+      int i = this.c;
+      if (i >= 0) {
+        i = Math.min(i, 999);
+      } else {
         i = 999;
-        break;
-        if (this.jdField_a_of_type_Int == 1) {
-          b(j, i);
-        } else if (this.jdField_a_of_type_Int >= 2) {
-          a(j, i);
+      }
+      long l1 = this.jdField_a_of_type_Long;
+      int k = m;
+      int j = i;
+      if (l1 > 0L)
+      {
+        long l2 = this.jdField_b_of_type_Long;
+        k = m;
+        j = i;
+        if (l2 > 0L)
+        {
+          k = m;
+          j = i;
+          if (l2 - l1 < 1000L)
+          {
+            k = 3;
+            j = 999;
+          }
         }
       }
+      this.jdField_a_of_type_Int = a();
+      i = this.jdField_a_of_type_Int;
+      if (i == -1) {
+        h();
+      } else if (i == 1) {
+        b(k, j);
+      } else if (i >= 2) {
+        a(k, j);
+      }
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
   
-  private void g()
+  private void h()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidWidgetTextView.getResources().getString(2131690478));
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838852));
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    localTextView.setText(localTextView.getResources().getString(2131690402));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(a(2130838641));
   }
   
   public void a()
@@ -249,10 +286,22 @@ public class AVGameNetWorkQualityManager
     }
     this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
+  
+  public void d()
+  {
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.leftMargin = GameRoomViewLayoutParamsDef.f;
+    localLayoutParams.bottomMargin = GameRoomViewLayoutParamsDef.f;
+    localLayoutParams.width = GameRoomViewLayoutParamsDef.m;
+    localLayoutParams.height = GameRoomViewLayoutParamsDef.e;
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(GameRoomViewLayoutParamsDef.l);
+    this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().height = GameRoomViewLayoutParamsDef.o;
+    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, GameRoomViewLayoutParamsDef.n, 0, 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameNetWorkQualityManager
  * JD-Core Version:    0.7.0.1
  */

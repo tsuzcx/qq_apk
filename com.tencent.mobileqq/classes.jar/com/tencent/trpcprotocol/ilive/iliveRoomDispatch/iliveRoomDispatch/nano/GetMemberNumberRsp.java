@@ -27,43 +27,49 @@ public final class GetMemberNumberRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      if (i == 0) {
+        break;
+      }
+      if (i != 10)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+          return this;
         }
-      case 0: 
-        return this;
       }
-      if (this.a == null) {
-        this.a = new RoomUserNumInfo();
+      else
+      {
+        if (this.a == null) {
+          this.a = new RoomUserNumInfo();
+        }
+        paramCodedInputByteBufferNano.readMessage(this.a);
       }
-      paramCodedInputByteBufferNano.readMessage(this.a);
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    RoomUserNumInfo localRoomUserNumInfo = this.a;
     int i = j;
-    if (this.a != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(1, this.a);
+    if (localRoomUserNumInfo != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(1, localRoomUserNumInfo);
     }
     return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.a != null) {
-      paramCodedOutputByteBufferNano.writeMessage(1, this.a);
+    RoomUserNumInfo localRoomUserNumInfo = this.a;
+    if (localRoomUserNumInfo != null) {
+      paramCodedOutputByteBufferNano.writeMessage(1, localRoomUserNumInfo);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.GetMemberNumberRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -16,38 +16,71 @@ public class TxLibSoLoader
   {
     try
     {
-      if (VcSystemInfo.getCpuArchitecture() > 2) {}
-      for (paramString = "/txlib/lib" + paramString + "-v7a.so";; paramString = "/txlib/lib" + paramString + "-armeabi.so")
+      int i = VcSystemInfo.getCpuArchitecture();
+      if (i > 2)
       {
-        paramString = BaseApplicationImpl.getContext().getFilesDir().getParent() + paramString;
-        if (!TextUtils.isEmpty(paramString)) {
-          break;
-        }
-        QLog.i("TxLibSoLoader", 1, "[MiniEng]loadLibrary " + paramString + " failed, file not exists!");
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("/txlib/lib");
+        localStringBuilder1.append(paramString);
+        localStringBuilder1.append("-v7a.so");
+        paramString = localStringBuilder1.toString();
+      }
+      else
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("/txlib/lib");
+        localStringBuilder1.append(paramString);
+        localStringBuilder1.append("-armeabi.so");
+        paramString = localStringBuilder1.toString();
+      }
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(BaseApplicationImpl.getContext().getFilesDir().getParent());
+      localStringBuilder1.append(paramString);
+      paramString = localStringBuilder1.toString();
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (bool)
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("[MiniEng]loadLibrary ");
+        localStringBuilder1.append(paramString);
+        localStringBuilder1.append(" failed, file not exists!");
+        QLog.i("TxLibSoLoader", 1, localStringBuilder1.toString());
         return false;
       }
       try
       {
         System.load(paramString);
-        QLog.i("TxLibSoLoader", 1, "[MiniEng]loadLibrary " + paramString + " success ");
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("[MiniEng]loadLibrary ");
+        localStringBuilder1.append(paramString);
+        localStringBuilder1.append(" success ");
+        QLog.i("TxLibSoLoader", 1, localStringBuilder1.toString());
         return true;
       }
       catch (Throwable localThrowable)
       {
-        QLog.w("TxLibSoLoader", 1, "[MiniEng]loadTxLibSo error " + paramString + DebugUtil.getPrintableStackTrace(localThrowable));
+        StringBuilder localStringBuilder3 = new StringBuilder();
+        localStringBuilder3.append("[MiniEng]loadTxLibSo error ");
+        localStringBuilder3.append(paramString);
+        localStringBuilder3.append(DebugUtil.getPrintableStackTrace(localThrowable));
+        QLog.w("TxLibSoLoader", 1, localStringBuilder3.toString());
         return false;
       }
+      StringBuilder localStringBuilder2;
       return false;
     }
     catch (Exception paramString)
     {
-      QLog.w("TxLibSoLoader", 1, "[MiniEng]loadTxLibSo exception " + DebugUtil.getPrintableStackTrace(paramString));
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("[MiniEng]loadTxLibSo exception ");
+      localStringBuilder2.append(DebugUtil.getPrintableStackTrace(paramString));
+      QLog.w("TxLibSoLoader", 1, localStringBuilder2.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.TxLibSoLoader
  * JD-Core Version:    0.7.0.1
  */

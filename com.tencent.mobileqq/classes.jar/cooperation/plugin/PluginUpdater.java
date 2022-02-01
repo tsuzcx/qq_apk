@@ -17,6 +17,7 @@ import com.tencent.mobileqq.pluginsdk.PluginBaseInfoHelper.PluginInfoParser;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -40,51 +41,52 @@ public class PluginUpdater
   private PluginUpdater.OnPluginInfoUpdateListener jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener;
   private Map<String, PluginInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_a_of_type_Boolean;
+  private final Map<String, PluginInfo> b = new HashMap();
   
   public PluginUpdater(Context paramContext, Handler paramHandler)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(paramHandler.getLooper(), this);
-    paramContext = a(paramContext);
+    paramContext = b(paramContext);
     boolean bool = PluginInfoUtil.a(paramContext);
     paramHandler = PluginInfoUtil.a(paramContext);
     if (paramHandler != null)
     {
       int j = paramHandler.length;
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         File localFile = paramHandler[i];
-        if (localFile.isFile())
-        {
-          if (!bool) {
-            break label99;
-          }
-          localFile.delete();
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label99:
-          PluginInfo localPluginInfo = PluginInfoUtil.a(localFile);
-          if (localPluginInfo != null) {
-            this.jdField_a_of_type_JavaUtilMap.put(localPluginInfo.mID, localPluginInfo);
-          } else {
+        if (localFile.isFile()) {
+          if (bool)
+          {
             localFile.delete();
           }
+          else
+          {
+            PluginInfo localPluginInfo = PluginInfoUtil.a(localFile);
+            if (localPluginInfo != null) {
+              this.jdField_a_of_type_JavaUtilMap.put(localPluginInfo.mID, localPluginInfo);
+            } else {
+              localFile.delete();
+            }
+          }
         }
+        i += 1;
       }
     }
     if (bool) {
       PluginInfoUtil.a(paramContext);
     }
-    QLog.d("plugin_tag", 1, "init plugin updater :" + this.jdField_a_of_type_JavaUtilMap.size());
+    paramContext = new StringBuilder();
+    paramContext.append("init plugin updater :");
+    paramContext.append(this.jdField_a_of_type_JavaUtilMap.size());
+    QLog.d("plugin_tag", 1, paramContext.toString());
   }
   
   static File a(Context paramContext)
   {
-    return paramContext.getDir("plugin_info", 0);
+    return paramContext.getDir("debug_plugin_info", 0);
   }
   
   private void a(ResourceConfig.GetResourceRespV2 paramGetResourceRespV2)
@@ -92,46 +94,63 @@ public class PluginUpdater
     if (QLog.isColorLevel()) {
       QLog.d("plugin_tag", 2, "doOnGetPluginConfig");
     }
-    Object localObject3;
     Object localObject1;
     Object localObject2;
+    Object localObject3;
     HashMap localHashMap;
     Object localObject4;
+    int i;
     Object localObject5;
     Object localObject6;
     if (paramGetResourceRespV2 != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "onGetPluginConfig GetResourceRespV2: " + paramGetResourceRespV2 + "[add: " + paramGetResourceRespV2.addedResInfo.size() + ", remove: " + paramGetResourceRespV2.deletedResInfo.size() + ", update: " + paramGetResourceRespV2.updatedResInfo.size() + "]");
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onGetPluginConfig GetResourceRespV2: ");
+        ((StringBuilder)localObject1).append(paramGetResourceRespV2);
+        ((StringBuilder)localObject1).append("[add: ");
+        ((StringBuilder)localObject1).append(paramGetResourceRespV2.addedResInfo.size());
+        ((StringBuilder)localObject1).append(", remove: ");
+        ((StringBuilder)localObject1).append(paramGetResourceRespV2.deletedResInfo.size());
+        ((StringBuilder)localObject1).append(", update: ");
+        ((StringBuilder)localObject1).append(paramGetResourceRespV2.updatedResInfo.size());
+        ((StringBuilder)localObject1).append("]");
+        QLog.d("plugin_tag", 2, ((StringBuilder)localObject1).toString());
       }
-      localObject3 = new PluginBaseInfoHelper.PluginInfoParser();
-      ((PluginBaseInfoHelper.PluginInfoParser)localObject3).setResultClass(PluginInfo.class);
+      localObject2 = new PluginBaseInfoHelper.PluginInfoParser();
+      ((PluginBaseInfoHelper.PluginInfoParser)localObject2).setResultClass(PluginInfo.class);
       localObject1 = new ArrayList();
-      localObject2 = new HashMap();
+      localObject3 = new HashMap();
       localHashMap = new HashMap();
       localObject4 = paramGetResourceRespV2.deletedResInfo.get().iterator();
       while (((Iterator)localObject4).hasNext()) {
         ((List)localObject1).add(((ResourceConfig.GetResourceRespInfoV2)((Iterator)localObject4).next()).pkgName.get());
       }
       localObject4 = paramGetResourceRespV2.addedResInfo.get().iterator();
-      while (((Iterator)localObject4).hasNext())
+      for (;;)
       {
+        boolean bool = ((Iterator)localObject4).hasNext();
+        i = 0;
+        if (!bool) {
+          break;
+        }
         localObject5 = (ResourceConfig.GetResourceRespInfoV2)((Iterator)localObject4).next();
-        localObject6 = (PluginInfo)PluginBaseInfoHelper.parseConfig(((ResourceConfig.GetResourceRespInfoV2)localObject5).resConf.get(), (PluginBaseInfoHelper.PluginInfoParser)localObject3);
+        localObject6 = (PluginInfo)PluginBaseInfoHelper.parseConfig(((ResourceConfig.GetResourceRespInfoV2)localObject5).resConf.get(), (PluginBaseInfoHelper.PluginInfoParser)localObject2);
         if (localObject6 != null)
         {
           ((PluginInfo)localObject6).mType = ((ResourceConfig.GetResourceRespInfoV2)localObject5).resSubType.get();
           ((PluginInfo)localObject6).mPackageName = ((ResourceConfig.GetResourceRespInfoV2)localObject5).pkgName.get();
           ((PluginInfo)localObject6).mCurVersion = ((ResourceConfig.GetResourceRespInfoV2)localObject5).newVer.get();
           ((PluginInfo)localObject6).mState = 0;
-          ((HashMap)localObject2).put(((PluginInfo)localObject6).mID, localObject6);
+          ((HashMap)localObject3).put(((PluginInfo)localObject6).mID, localObject6);
         }
       }
       localObject4 = paramGetResourceRespV2.updatedResInfo.get().iterator();
       while (((Iterator)localObject4).hasNext())
       {
         localObject5 = (ResourceConfig.GetResourceRespInfoV2)((Iterator)localObject4).next();
-        localObject6 = (PluginInfo)PluginBaseInfoHelper.parseConfig(((ResourceConfig.GetResourceRespInfoV2)localObject5).resConf.get(), (PluginBaseInfoHelper.PluginInfoParser)localObject3);
+        localObject6 = (PluginInfo)PluginBaseInfoHelper.parseConfig(((ResourceConfig.GetResourceRespInfoV2)localObject5).resConf.get(), (PluginBaseInfoHelper.PluginInfoParser)localObject2);
         if (localObject6 != null)
         {
           ((PluginInfo)localObject6).mType = ((ResourceConfig.GetResourceRespInfoV2)localObject5).resSubType.get();
@@ -142,139 +161,167 @@ public class PluginUpdater
         }
       }
     }
-    label1153:
-    label1158:
-    label1161:
-    label1164:
-    label1169:
-    label1172:
-    label1177:
-    label1179:
-    label1182:
     for (;;)
     {
       try
       {
-        localObject3 = this.jdField_a_of_type_JavaUtilMap;
-        localObject4 = ((List)localObject1).iterator();
-        i = 0;
-        if (((Iterator)localObject4).hasNext())
+        localObject4 = this.jdField_a_of_type_JavaUtilMap;
+        localObject5 = ((List)localObject1).iterator();
+        if (((Iterator)localObject5).hasNext())
         {
-          localObject5 = (String)((Iterator)localObject4).next();
-          localObject6 = ((Map)localObject3).values().iterator();
-          if (!((Iterator)localObject6).hasNext()) {
-            break label1164;
-          }
-          localObject1 = (PluginInfo)((Iterator)localObject6).next();
-          if (!((PluginInfo)localObject1).mPackageName.equals(localObject5)) {
-            continue;
+          localObject6 = (String)((Iterator)localObject5).next();
+          localObject2 = null;
+          Iterator localIterator = ((Map)localObject4).values().iterator();
+          localObject1 = localObject2;
+          if (localIterator.hasNext())
+          {
+            localObject1 = (PluginInfo)localIterator.next();
+            if (!((PluginInfo)localObject1).mPackageName.equals(localObject6)) {
+              continue;
+            }
           }
           if (localObject1 == null) {
-            break label1161;
+            continue;
           }
-          if (((HashMap)localObject2).containsKey(((PluginInfo)localObject1).mID))
+          if (((HashMap)localObject3).containsKey(((PluginInfo)localObject1).mID))
           {
-            localObject5 = (PluginInfo)((HashMap)localObject2).get(((PluginInfo)localObject1).mID);
-            ((HashMap)localObject2).remove(((PluginInfo)localObject1).mID);
-            localHashMap.put(((PluginInfo)localObject1).mID, localObject5);
-            break label1169;
+            localObject2 = (PluginInfo)((HashMap)localObject3).get(((PluginInfo)localObject1).mID);
+            ((HashMap)localObject3).remove(((PluginInfo)localObject1).mID);
+            localHashMap.put(((PluginInfo)localObject1).mID, localObject2);
+            continue;
           }
           if ((this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener == null) || (!this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a((PluginInfo)localObject1))) {
-            break label1161;
+            continue;
           }
-          ((Map)localObject3).remove(((PluginInfo)localObject1).mID);
+          ((Map)localObject4).remove(((PluginInfo)localObject1).mID);
           if (!QLog.isColorLevel()) {
-            break label1172;
+            break label1271;
           }
-          QLog.d("plugin_tag", 2, "remove PluginInfo: " + localObject1);
-          break label1172;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("remove PluginInfo: ");
+          ((StringBuilder)localObject2).append(localObject1);
+          QLog.d("plugin_tag", 2, ((StringBuilder)localObject2).toString());
+          break label1271;
         }
-        localObject1 = ((HashMap)localObject2).keySet().iterator();
+        localObject1 = ((HashMap)localObject3).keySet().iterator();
         if (((Iterator)localObject1).hasNext())
         {
-          localObject4 = (PluginInfo)((HashMap)localObject2).get((String)((Iterator)localObject1).next());
-          localObject5 = (PluginInfo)((Map)localObject3).get(((PluginInfo)localObject4).mID);
-          if ((localObject5 != null) && (((PluginInfo)localObject5).mMD5 != null) && (((PluginInfo)localObject5).mMD5.equals(((PluginInfo)localObject4).mMD5)) && ((((PluginInfo)localObject5).mURL == null) || (((PluginInfo)localObject4).mForceUrl <= 0) || (((PluginInfo)localObject5).mURL.equals(((PluginInfo)localObject4).mURL)))) {
-            break label1158;
+          localObject2 = (PluginInfo)((HashMap)localObject3).get((String)((Iterator)localObject1).next());
+          localObject5 = (PluginInfo)((Map)localObject4).get(((PluginInfo)localObject2).mID);
+          if ((localObject5 != null) && (((PluginInfo)localObject5).mMD5 != null) && (((PluginInfo)localObject5).mMD5.equals(((PluginInfo)localObject2).mMD5)) && ((((PluginInfo)localObject5).mURL == null) || (((PluginInfo)localObject2).mForceUrl <= 0) || (((PluginInfo)localObject5).mURL.equals(((PluginInfo)localObject2).mURL)))) {
+            continue;
           }
-          ((Map)localObject3).put(((PluginInfo)localObject4).mID, localObject4);
+          ((Map)localObject4).put(((PluginInfo)localObject2).mID, localObject2);
           if (!QLog.isColorLevel()) {
-            break label1177;
+            break label1276;
           }
-          QLog.d("plugin_tag", 2, "add PluginInfo: " + localObject4);
-          break label1177;
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("add PluginInfo: ");
+          ((StringBuilder)localObject5).append(localObject2);
+          QLog.d("plugin_tag", 2, ((StringBuilder)localObject5).toString());
+          break label1276;
         }
         localObject1 = localHashMap.keySet().iterator();
         if (((Iterator)localObject1).hasNext())
         {
           localObject2 = (PluginInfo)localHashMap.get((String)((Iterator)localObject1).next());
-          localObject4 = (PluginInfo)((Map)localObject3).get(((PluginInfo)localObject2).mID);
-          if ((localObject4 == null) || (((PluginInfo)localObject4).mMD5 == null) || (!((PluginInfo)localObject4).mMD5.equals(((PluginInfo)localObject2).mMD5)) || ((((PluginInfo)localObject4).mURL != null) && (((PluginInfo)localObject2).mForceUrl > 0) && (!((PluginInfo)localObject4).mURL.equals(((PluginInfo)localObject2).mURL))))
+          localObject3 = (PluginInfo)((Map)localObject4).get(((PluginInfo)localObject2).mID);
+          if ((localObject3 != null) && (((PluginInfo)localObject3).mMD5 != null) && (((PluginInfo)localObject3).mMD5.equals(((PluginInfo)localObject2).mMD5)) && ((((PluginInfo)localObject3).mURL == null) || (((PluginInfo)localObject2).mForceUrl <= 0) || (((PluginInfo)localObject3).mURL.equals(((PluginInfo)localObject2).mURL))))
           {
-            ((Map)localObject3).put(((PluginInfo)localObject2).mID, localObject2);
-            if (!QLog.isColorLevel()) {
-              break label1153;
+            if ((((PluginInfo)localObject3).mMD5.equals(((PluginInfo)localObject2).mMD5)) && (((PluginInfo)localObject3).mURL != null) && (((PluginInfo)localObject2).mForceUrl <= 0) && (!((PluginInfo)localObject3).mURL.equals(((PluginInfo)localObject2).mURL)))
+            {
+              ((PluginInfo)localObject3).mPackageName = ((PluginInfo)localObject2).mPackageName;
+              ((PluginInfo)localObject3).mCurVersion = ((PluginInfo)localObject2).mCurVersion;
+              ((PluginInfo)localObject3).mURL = ((PluginInfo)localObject2).mURL;
+              break label1281;
             }
-            QLog.d("plugin_tag", 2, "update PluginInfo: " + localObject2);
-            i = 1;
-            break label1182;
+            if (((PluginInfo)localObject3).mCurVersion == ((PluginInfo)localObject2).mCurVersion) {
+              continue;
+            }
+            ((PluginInfo)localObject3).mCurVersion = ((PluginInfo)localObject2).mCurVersion;
+            break label1281;
           }
-          if ((((PluginInfo)localObject4).mMD5.equals(((PluginInfo)localObject2).mMD5)) && (((PluginInfo)localObject4).mURL != null) && (((PluginInfo)localObject2).mForceUrl <= 0) && (!((PluginInfo)localObject4).mURL.equals(((PluginInfo)localObject2).mURL)))
-          {
-            ((PluginInfo)localObject4).mPackageName = ((PluginInfo)localObject2).mPackageName;
-            ((PluginInfo)localObject4).mCurVersion = ((PluginInfo)localObject2).mCurVersion;
-            ((PluginInfo)localObject4).mURL = ((PluginInfo)localObject2).mURL;
-            i = 1;
-            break label1182;
+          ((Map)localObject4).put(((PluginInfo)localObject2).mID, localObject2);
+          if (!QLog.isColorLevel()) {
+            break label1281;
           }
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("update PluginInfo: ");
+          ((StringBuilder)localObject3).append(localObject2);
+          QLog.d("plugin_tag", 2, ((StringBuilder)localObject3).toString());
+          break label1281;
         }
-        else
+        localObject1 = this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener;
+        if (localObject1 != null) {
+          ((PluginUpdater.OnPluginInfoUpdateListener)localObject1).a(true);
+        }
+        if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
         {
-          if (this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener != null) {
-            this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a(true);
-          }
-          if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
-          {
-            localObject1 = new HashMap();
-            StatisticCollector.fillFailCode((Map)localObject1, AppSetting.a());
-            StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext).collectPerformance(String.valueOf(paramGetResourceRespV2.uin), "pluginUpdateEmpty", false, 0L, 0L, (HashMap)localObject1, "");
-          }
-          if (i != 0) {
-            a();
-          }
+          localObject1 = new HashMap();
+          StatisticCollector.fillFailCode((Map)localObject1, AppSetting.a());
+          StatisticCollector.getInstance(this.jdField_a_of_type_AndroidContentContext).collectPerformance(String.valueOf(paramGetResourceRespV2.uin), "pluginUpdateEmpty", false, 0L, 0L, (HashMap)localObject1, "");
+        }
+        if (i != 0)
+        {
+          a();
           return;
         }
       }
       finally {}
-      break label1182;
-      int i = 1;
-      break label1182;
-      break label1179;
-      break label1169;
-      localObject1 = null;
+      return;
+      label1271:
+      i = 1;
       continue;
-      for (;;)
-      {
-        break;
-        i = 1;
-      }
+      label1276:
+      i = 1;
+      continue;
+      label1281:
       i = 1;
     }
   }
   
-  public PluginInfo a(String paramString)
+  public static void a(boolean paramBoolean, Context paramContext)
   {
-    PluginInfo localPluginInfo2 = (PluginInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    PluginInfo localPluginInfo1 = localPluginInfo2;
-    if (localPluginInfo2 == null) {
-      localPluginInfo1 = BuiltinPluginManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
+    paramContext = new File(a(paramContext), "enableDebug");
+    if (paramBoolean)
+    {
+      if (paramContext.exists()) {
+        return;
+      }
+      try
+      {
+        paramContext.createNewFile();
+        return;
+      }
+      catch (IOException paramContext)
+      {
+        QLog.e("plugin_tag", 4, "debug tag create failed! ", paramContext);
+        return;
+      }
     }
-    return localPluginInfo1;
+    if (paramContext.exists()) {
+      paramContext.delete();
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return new File(a(paramContext), "enableDebug").exists();
+  }
+  
+  static File b(Context paramContext)
+  {
+    return paramContext.getDir("plugin_info", 0);
+  }
+  
+  PluginInfo a(String paramString)
+  {
+    return (PluginInfo)this.b.get(paramString);
   }
   
   public void a()
   {
-    File localFile = a(this.jdField_a_of_type_AndroidContentContext);
+    File localFile = b(this.jdField_a_of_type_AndroidContentContext);
     Object localObject = PluginInfoUtil.a(localFile);
     if (localObject != null)
     {
@@ -309,15 +356,19 @@ public class PluginUpdater
     while (((Iterator)localObject2).hasNext())
     {
       PluginInfo localPluginInfo = (PluginInfo)((Iterator)localObject2).next();
-      ResourceConfig.GetResourceReqInfoV2 localGetResourceReqInfoV2 = new ResourceConfig.GetResourceReqInfoV2();
-      localGetResourceReqInfoV2.state.set(0);
-      localGetResourceReqInfoV2.lanType.set(1);
-      localGetResourceReqInfoV2.resSubType.set(localPluginInfo.mType);
-      localGetResourceReqInfoV2.pkgName.set(localPluginInfo.mPackageName);
-      localGetResourceReqInfoV2.curVer.set(localPluginInfo.mCurVersion);
-      ((ArrayList)localObject1).add(localGetResourceReqInfoV2);
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "getPluginList Add: " + localPluginInfo.mID);
+      Object localObject3 = new ResourceConfig.GetResourceReqInfoV2();
+      ((ResourceConfig.GetResourceReqInfoV2)localObject3).state.set(0);
+      ((ResourceConfig.GetResourceReqInfoV2)localObject3).lanType.set(1);
+      ((ResourceConfig.GetResourceReqInfoV2)localObject3).resSubType.set(localPluginInfo.mType);
+      ((ResourceConfig.GetResourceReqInfoV2)localObject3).pkgName.set(localPluginInfo.mPackageName);
+      ((ResourceConfig.GetResourceReqInfoV2)localObject3).curVer.set(localPluginInfo.mCurVersion);
+      ((ArrayList)localObject1).add(localObject3);
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("getPluginList Add: ");
+        ((StringBuilder)localObject3).append(localPluginInfo.mID);
+        QLog.d("plugin_tag", 2, ((StringBuilder)localObject3).toString());
       }
     }
     if (QLog.isColorLevel()) {
@@ -328,12 +379,19 @@ public class PluginUpdater
     ((ResourceConfig.GetResourceReqV2)localObject2).pluginType.set(128);
     ((ResourceConfig.GetResourceReqV2)localObject2).reqVer.set(1);
     ((ResourceConfig.GetResourceReqV2)localObject2).resReqInfo.set((List)localObject1);
-    ((ResourceConfig.GetResourceReqV2)localObject2).revision.set("de12fadd");
+    ((ResourceConfig.GetResourceReqV2)localObject2).revision.set("01328a87");
     localObject1 = new NewIntent(BaseApplicationImpl.getApplication(), ProtoServlet.class);
     ((NewIntent)localObject1).putExtra("cmd", "ResourceConfig.ClientReqV2");
     ((NewIntent)localObject1).putExtra("data", ((ResourceConfig.GetResourceReqV2)localObject2).toByteArray());
     ((NewIntent)localObject1).setObserver(new PluginUpdater.1(this));
     paramQQAppInterface.startServlet((NewIntent)localObject1);
+  }
+  
+  void a(PluginInfo paramPluginInfo)
+  {
+    if (paramPluginInfo != null) {
+      PluginInfoUtil.a(paramPluginInfo, a(this.jdField_a_of_type_AndroidContentContext));
+    }
   }
   
   public void a(PluginUpdater.OnPluginInfoUpdateListener paramOnPluginInfoUpdateListener)
@@ -343,90 +401,107 @@ public class PluginUpdater
   
   public void a(boolean paramBoolean, int paramInt, ResourceConfig.GetResourceRespV2 paramGetResourceRespV2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onGetPluginConfig: " + paramBoolean);
-    }
-    if (paramInt != 128) {
-      if (this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener != null) {
-        this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a(false);
-      }
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      if ((paramBoolean) && (paramGetResourceRespV2 != null)) {
-        break;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetPluginConfig: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
+    }
+    if (paramInt != 128)
+    {
+      paramGetResourceRespV2 = this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener;
+      if (paramGetResourceRespV2 != null) {
+        paramGetResourceRespV2.a(false);
       }
-    } while (this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener == null);
-    this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener.a(false);
-    return;
-    a(paramGetResourceRespV2);
-    this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    if ((paramBoolean) && (paramGetResourceRespV2 != null))
+    {
+      a(paramGetResourceRespV2);
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    paramGetResourceRespV2 = this.jdField_a_of_type_CooperationPluginPluginUpdater$OnPluginInfoUpdateListener;
+    if (paramGetResourceRespV2 != null) {
+      paramGetResourceRespV2.a(false);
+    }
   }
   
   public boolean a(PluginInfo paramPluginInfo)
   {
-    Object localObject2 = null;
+    boolean bool2 = false;
     if (paramPluginInfo == null) {
       return false;
     }
-    PluginInfo localPluginInfo = a(paramPluginInfo.mID);
-    Object localObject1;
+    PluginInfo localPluginInfo = b(paramPluginInfo.mID);
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("pre: ");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pre: ");
+      Object localObject2 = null;
+      if (paramPluginInfo != null) {
+        localObject1 = paramPluginInfo.mMD5;
+      } else {
+        localObject1 = null;
+      }
+      localStringBuilder.append((String)localObject1);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("new: ");
+      Object localObject1 = localObject2;
+      if (localPluginInfo != null) {
+        localObject1 = localPluginInfo.mMD5;
+      }
+      localStringBuilder.append((String)localObject1);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
+    }
+    boolean bool1 = bool2;
+    if (localPluginInfo != null)
+    {
+      bool1 = bool2;
       if (paramPluginInfo != null)
       {
-        localObject1 = paramPluginInfo.mMD5;
-        QLog.d("plugin_tag", 2, (String)localObject1);
-        localStringBuilder = new StringBuilder().append("new: ");
-        localObject1 = localObject2;
-        if (localPluginInfo != null) {
-          localObject1 = localPluginInfo.mMD5;
+        bool1 = bool2;
+        if (localPluginInfo.mMD5.equals(paramPluginInfo.mMD5)) {
+          bool1 = true;
         }
-        QLog.d("plugin_tag", 2, (String)localObject1);
       }
     }
-    else
-    {
-      if ((localPluginInfo == null) || (paramPluginInfo == null) || (!localPluginInfo.mMD5.equals(paramPluginInfo.mMD5))) {
-        break label141;
-      }
+    return bool1;
+  }
+  
+  public PluginInfo b(String paramString)
+  {
+    PluginInfo localPluginInfo1 = (PluginInfo)this.b.get(paramString);
+    if ((!a(this.jdField_a_of_type_AndroidContentContext)) || (localPluginInfo1 == null)) {
+      localPluginInfo1 = (PluginInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString);
     }
-    label141:
-    for (boolean bool = true;; bool = false)
-    {
-      return bool;
-      localObject1 = null;
-      break;
+    PluginInfo localPluginInfo2 = localPluginInfo1;
+    if (localPluginInfo1 == null) {
+      localPluginInfo2 = BuiltinPluginManager.a(this.jdField_a_of_type_AndroidContentContext).a(paramString);
     }
+    return localPluginInfo2;
   }
   
   public void b(boolean paramBoolean, int paramInt, ResourceConfig.GetResourceRespV2 paramGetResourceRespV2)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      Message.obtain(localHandler, 2, paramInt, i, paramGetResourceRespV2).sendToTarget();
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 2) {
       return false;
     }
     int i = paramMessage.arg1;
-    if (paramMessage.arg2 == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool, i, (ResourceConfig.GetResourceRespV2)paramMessage.obj);
-      return false;
+    int j = paramMessage.arg2;
+    boolean bool = true;
+    if (j != 1) {
+      bool = false;
     }
+    a(bool, i, (ResourceConfig.GetResourceRespV2)paramMessage.obj);
+    return false;
   }
   
   public void run()
@@ -438,7 +513,7 @@ public class PluginUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginUpdater
  * JD-Core Version:    0.7.0.1
  */

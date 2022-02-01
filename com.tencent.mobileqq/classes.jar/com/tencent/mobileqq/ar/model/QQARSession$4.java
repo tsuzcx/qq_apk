@@ -9,16 +9,23 @@ class QQARSession$4
   
   public void run()
   {
-    QLog.i("AREngine_QQARSession", 1, "uninit run. mIsInited = " + QQARSession.b(this.this$0));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uninit run. mIsInited = ");
+    ((StringBuilder)localObject).append(QQARSession.b(this.this$0));
+    QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
     QQARSession.a(this.this$0);
-    this.this$0.a = 5;
-    QQARSession.a(this.this$0, false);
-    QLog.i("AREngine_QQARSession", 1, "uninit end. mIsInited = " + QQARSession.b(this.this$0));
+    localObject = this.this$0;
+    ((QQARSession)localObject).a = 5;
+    QQARSession.a((QQARSession)localObject, false);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uninit end. mIsInited = ");
+    ((StringBuilder)localObject).append(QQARSession.b(this.this$0));
+    QLog.i("AREngine_QQARSession", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.4
  * JD-Core Version:    0.7.0.1
  */

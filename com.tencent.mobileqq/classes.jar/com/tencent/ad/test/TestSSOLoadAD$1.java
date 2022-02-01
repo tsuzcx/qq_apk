@@ -16,7 +16,10 @@ final class TestSSOLoadAD$1
   public void a(Bundle paramBundle)
   {
     paramBundle = paramBundle.getString("sso_GdtLoadAd_rsp_json");
-    GdtLog.b("GdtSSOLoadAD", "Observer onReceive " + paramBundle);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Observer onReceive ");
+    localStringBuilder.append(paramBundle);
+    GdtLog.b("GdtSSOLoadAD", localStringBuilder.toString());
     QQToast.a(this.a, "onSucess SSoLoadBusinessObserver", 0).a();
   }
 }

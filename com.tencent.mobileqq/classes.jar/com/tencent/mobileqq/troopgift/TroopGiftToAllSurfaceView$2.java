@@ -10,22 +10,25 @@ class TroopGiftToAllSurfaceView$2
   
   public void a()
   {
-    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
-      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
-    }
-    for (;;)
+    TroopGiftToAllSurfaceView localTroopGiftToAllSurfaceView;
+    if (TroopGiftToAllSurfaceView.a(this.a).d == 0)
     {
-      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
-        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
-      }
-      return;
-      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
+      localTroopGiftToAllSurfaceView = this.a;
+      localTroopGiftToAllSurfaceView.a(1, TroopGiftToAllSurfaceView.a(localTroopGiftToAllSurfaceView));
+    }
+    else
+    {
+      localTroopGiftToAllSurfaceView = this.a;
+      localTroopGiftToAllSurfaceView.a(0, TroopGiftToAllSurfaceView.a(localTroopGiftToAllSurfaceView));
+    }
+    if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
+      ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.2
  * JD-Core Version:    0.7.0.1
  */

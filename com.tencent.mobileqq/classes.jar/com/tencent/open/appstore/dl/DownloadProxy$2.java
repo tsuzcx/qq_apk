@@ -25,37 +25,40 @@ class DownloadProxy$2
         i = 0;
         if (i < j)
         {
-          DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (DownloadManagerV2.a().b(localDownloadInfo))
-          {
-            LogUtility.b("DownloadResolver", "[queryByDownloadManagerV2] refreshDownloadInfo true " + localDownloadInfo);
-            localArrayList.add(localDownloadInfo);
+          localObject = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+          if (!DownloadManagerV2.a().b((DownloadInfo)localObject)) {
+            break label162;
           }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[queryByDownloadManagerV2] refreshDownloadInfo true ");
+          localStringBuilder.append(localObject);
+          LogUtility.b("DownloadResolver", localStringBuilder.toString());
+          localArrayList.add(localObject);
+          break label162;
         }
-        else
+        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null)
         {
-          if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
-            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(localArrayList);
-          }
+          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(localArrayList);
           return;
         }
       }
       catch (Exception localException)
       {
         LogUtility.c("DownloadResolver", "[queryByDownloadManagerV2] Exception>>>", localException);
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null) {
-          continue;
+        Object localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener;
+        if (localObject != null) {
+          ((DownloadQueryListener)localObject).a(-1, localException.getMessage());
         }
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
-        return;
       }
+      return;
+      label162:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadProxy.2
  * JD-Core Version:    0.7.0.1
  */

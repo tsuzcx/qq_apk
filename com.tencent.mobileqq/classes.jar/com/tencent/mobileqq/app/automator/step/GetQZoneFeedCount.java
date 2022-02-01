@@ -12,39 +12,38 @@ import com.tencent.qphone.base.util.QLog;
 public class GetQZoneFeedCount
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    QZoneManager localQZoneManager;
-    if ((this.a != null) && (this.a.a != null))
+    if ((this.mAutomator != null) && (this.mAutomator.a != null))
     {
-      localQZoneManager = (QZoneManager)this.a.a.getManager(QQManagerFactory.QZONE_MANAGER);
+      QZoneManager localQZoneManager = (QZoneManager)this.mAutomator.a.getManager(QQManagerFactory.QZONE_MANAGER);
       if (localQZoneManager != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("GetQZoneFeedCount", 2, "GetQZoneFeedCount isFirstGetUnread:" + localQZoneManager.a() + ",isBackground_Pause:" + this.a.a.isBackgroundPause);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("GetQZoneFeedCount isFirstGetUnread:");
+          localStringBuilder.append(localQZoneManager.a());
+          localStringBuilder.append(",isBackground_Pause:");
+          localStringBuilder.append(this.mAutomator.a.isBackgroundPause);
+          QLog.d("GetQZoneFeedCount", 2, localStringBuilder.toString());
         }
-        if (!localQZoneManager.a()) {
-          break label139;
+        if (localQZoneManager.a()) {
+          localQZoneManager.a(this.mAutomator.a.getAccount(), null);
+        } else if (this.mAutomator.a.isBackgroundPause) {
+          localQZoneManager.b(6);
+        } else {
+          localQZoneManager.a(5);
         }
-        localQZoneManager.a(this.a.a.getAccount(), null);
       }
+      QCircleUtils.a().requestWhiteList(this.mAutomator.a.getCurrentUin());
     }
-    for (;;)
-    {
-      QCircleUtils.a().requestWhiteList(this.a.a.getCurrentUin());
-      return 7;
-      label139:
-      if (this.a.a.isBackgroundPause) {
-        localQZoneManager.b(6);
-      } else {
-        localQZoneManager.a(5);
-      }
-    }
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetQZoneFeedCount
  * JD-Core Version:    0.7.0.1
  */

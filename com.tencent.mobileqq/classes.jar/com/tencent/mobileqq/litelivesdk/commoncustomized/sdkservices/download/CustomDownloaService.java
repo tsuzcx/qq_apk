@@ -19,10 +19,15 @@ public class CustomDownloaService
   
   public void cancel(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a(false, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.cancelTask(false, paramString);
   }
   
   public void clearEventOutput() {}
+  
+  public int getDownloaderState(String paramString)
+  {
+    return 0;
+  }
   
   public void init(DownLoaderInterface.DownLoaderComponentAdapter paramDownLoaderComponentAdapter)
   {
@@ -36,27 +41,39 @@ public class CustomDownloaService
   
   public void pause(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a(paramString).d();
+    paramString = this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.getTask(paramString);
+    if (paramString != null) {
+      paramString.d();
+    }
   }
   
   public void resume(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a(paramString).c();
+    paramString = this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.getTask(paramString);
+    if (paramString != null) {
+      paramString.c();
+    }
   }
   
   public void start(String paramString1, String paramString2, int paramInt1, int paramInt2, IDownLoaderListener paramIDownLoaderListener)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiDownloaderDownLoaderInterface$DownLoaderComponentAdapter.getLog().i("CustomDownloaService", "startDownload-----url = " + paramString1 + ", filePath = " + paramString2, new Object[0]);
+    LogInterface localLogInterface = this.jdField_a_of_type_ComTencentFalcoBaseLibapiDownloaderDownLoaderInterface$DownLoaderComponentAdapter.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startDownload-----url = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", filePath = ");
+    localStringBuilder.append(paramString2);
+    localLogInterface.i("CustomDownloaService", localStringBuilder.toString(), new Object[0]);
     paramString2 = new DownloadTask(paramString1, new File(paramString2));
     paramString2.g = 3;
     paramString2.a = paramString1;
     paramString1 = new Bundle();
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a(paramString2, new CustomDownloaService.1(this, paramIDownLoaderListener), paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.startDownload(paramString2, new CustomDownloaService.1(this, paramIDownLoaderListener), paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.download.CustomDownloaService
  * JD-Core Version:    0.7.0.1
  */

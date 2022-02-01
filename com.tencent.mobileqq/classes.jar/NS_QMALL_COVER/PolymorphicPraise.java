@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class PolymorphicPraise
   extends JceStruct
@@ -42,18 +43,20 @@ public final class PolymorphicPraise
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.vecEmotionPraise != null) {
-      paramJceOutputStream.write(this.vecEmotionPraise, 1);
+    Object localObject = this.vecEmotionPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.stOperationPraise != null) {
-      paramJceOutputStream.write(this.stOperationPraise, 2);
+    localObject = this.stOperationPraise;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
     paramJceOutputStream.write(this.iGuideToUse, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.PolymorphicPraise
  * JD-Core Version:    0.7.0.1
  */

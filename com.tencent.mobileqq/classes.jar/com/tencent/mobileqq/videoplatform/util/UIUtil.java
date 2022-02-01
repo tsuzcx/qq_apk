@@ -10,7 +10,7 @@ public class UIUtil
     if (paramFloat == 0.0F) {
       return 0;
     }
-    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
   }
   
   public static String stringForTime(long paramLong)
@@ -27,7 +27,7 @@ public class UIUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.util.UIUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -57,21 +57,22 @@ public class LpReportInfo_dc02880
   
   public static void report(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      Uri localUri = Uri.parse(paramString);
-      String str = localUri.getQueryParameter("hydtgzh");
-      if (!TextUtils.isEmpty(str))
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        report(paramString, str, localUri.getQueryParameter("reserves6"));
-        QZoneLoginReportHelper.reportLoginFromMQQPublicAccount(str);
+        Uri localUri = Uri.parse(paramString);
+        String str = localUri.getQueryParameter("hydtgzh");
+        if (!TextUtils.isEmpty(str))
+        {
+          report(paramString, str, localUri.getQueryParameter("reserves6"));
+          QZoneLoginReportHelper.reportLoginFromMQQPublicAccount(str);
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QZLog.e(TAG, "", paramString);
+      catch (Exception paramString)
+      {
+        QZLog.e(TAG, "", paramString);
+      }
     }
   }
   
@@ -97,26 +98,29 @@ public class LpReportInfo_dc02880
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-    if (this.uin == 0L) {}
-    for (String str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();; str = String.valueOf(this.uin))
-    {
-      localHashMap.put("uin", str);
-      localHashMap.put("actiontype", String.valueOf(this.actiontype));
-      localHashMap.put("subactiontype", String.valueOf(this.subactiontype));
-      LpReportUtils.safePut(localHashMap, "item_type", this.item_type);
-      LpReportUtils.safePut(localHashMap, "reserves3", this.reserves3);
-      LpReportUtils.safePut(localHashMap, "reserves6", this.reserves6);
-      LpReportUtils.safePut(localHashMap, "reserves8", this.reserves8);
-      if (!TextUtils.isEmpty(this.url)) {
-        localHashMap.put("url", URLEncoder.encode(this.url));
-      }
-      return localHashMap;
+    long l = this.uin;
+    String str;
+    if (l == 0L) {
+      str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    } else {
+      str = String.valueOf(l);
     }
+    localHashMap.put("uin", str);
+    localHashMap.put("actiontype", String.valueOf(this.actiontype));
+    localHashMap.put("subactiontype", String.valueOf(this.subactiontype));
+    LpReportUtils.safePut(localHashMap, "item_type", this.item_type);
+    LpReportUtils.safePut(localHashMap, "reserves3", this.reserves3);
+    LpReportUtils.safePut(localHashMap, "reserves6", this.reserves6);
+    LpReportUtils.safePut(localHashMap, "reserves8", this.reserves8);
+    if (!TextUtils.isEmpty(this.url)) {
+      localHashMap.put("url", URLEncoder.encode(this.url));
+    }
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc02880
  * JD-Core Version:    0.7.0.1
  */

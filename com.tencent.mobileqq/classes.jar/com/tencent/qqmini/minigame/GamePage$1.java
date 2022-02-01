@@ -36,11 +36,12 @@ class GamePage$1
           localObject2 = new ActivityManager.TaskDescription(this.val$miniInfo.name, ImageUtil.drawableToBitmap((Drawable)localObject2));
           GamePage.access$000(this.this$0).setTaskDescription((ActivityManager.TaskDescription)localObject2);
         }
-        if (!((Bitmap)localObject1).isRecycled()) {
+        if (!((Bitmap)localObject1).isRecycled())
+        {
           ((Bitmap)localObject1).recycle();
+          return;
         }
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -50,7 +51,7 @@ class GamePage$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GamePage.1
  * JD-Core Version:    0.7.0.1
  */

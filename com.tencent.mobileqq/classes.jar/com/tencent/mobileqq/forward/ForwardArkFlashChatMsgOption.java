@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.data.ArkFlashChatMessage;
+import com.tencent.mobileqq.selectmember.ResultRecord;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -85,7 +85,7 @@ public class ForwardArkFlashChatMsgOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardArkFlashChatMsgOption
  * JD-Core Version:    0.7.0.1
  */

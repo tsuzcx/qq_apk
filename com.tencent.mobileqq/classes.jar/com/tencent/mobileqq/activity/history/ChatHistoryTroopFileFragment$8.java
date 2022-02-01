@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class ChatHistoryTroopFileFragment$8
   implements Runnable
@@ -9,17 +9,20 @@ class ChatHistoryTroopFileFragment$8
   
   public void run()
   {
-    if ((this.this$0.getActivity() == null) || (this.this$0.getActivity().isFinishing())) {
-      return;
+    if (this.this$0.getBaseActivity() != null)
+    {
+      if (this.this$0.getBaseActivity().isFinishing()) {
+        return;
+      }
+      ChatHistoryTroopFileFragment.a(this.this$0, this.a);
+      ChatHistoryTroopFileFragment.b(this.this$0, this.b);
+      ChatHistoryTroopFileFragment.a(this.this$0);
     }
-    ChatHistoryTroopFileFragment.a(this.this$0, this.a);
-    ChatHistoryTroopFileFragment.b(this.this$0, this.b);
-    ChatHistoryTroopFileFragment.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.8
  * JD-Core Version:    0.7.0.1
  */

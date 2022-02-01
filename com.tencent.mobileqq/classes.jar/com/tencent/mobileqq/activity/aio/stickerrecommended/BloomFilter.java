@@ -19,9 +19,13 @@ public class BloomFilter
   public BloomFilter()
   {
     int i = 0;
-    while (i < this.seeds.length)
+    for (;;)
     {
-      this.func[i] = new BloomFilter.SimpleHash(4194304, this.seeds[i]);
+      int[] arrayOfInt = this.seeds;
+      if (i >= arrayOfInt.length) {
+        break;
+      }
+      this.func[i] = new BloomFilter.SimpleHash(4194304, arrayOfInt[i]);
       i += 1;
     }
   }
@@ -42,20 +46,18 @@ public class BloomFilter
   
   public void add(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      paramString = a(paramString);
-      BloomFilter.SimpleHash[] arrayOfSimpleHash = this.func;
-      int j = arrayOfSimpleHash.length;
-      int i = 0;
-      while (i < j)
-      {
-        BloomFilter.SimpleHash localSimpleHash = arrayOfSimpleHash[i];
-        this.bits.set(localSimpleHash.hash(paramString), true);
-        i += 1;
-      }
+    }
+    paramString = a(paramString);
+    BloomFilter.SimpleHash[] arrayOfSimpleHash = this.func;
+    int j = arrayOfSimpleHash.length;
+    int i = 0;
+    while (i < j)
+    {
+      BloomFilter.SimpleHash localSimpleHash = arrayOfSimpleHash[i];
+      this.bits.set(localSimpleHash.hash(paramString), true);
+      i += 1;
     }
   }
   
@@ -69,22 +71,22 @@ public class BloomFilter
     int j = arrayOfSimpleHash.length;
     int i = 0;
     boolean bool = true;
-    if (i < j)
+    while (i < j)
     {
       BloomFilter.SimpleHash localSimpleHash = arrayOfSimpleHash[i];
-      if ((bool) && (this.bits.get(localSimpleHash.hash(paramString)))) {}
-      for (bool = true;; bool = false)
-      {
-        i += 1;
-        break;
+      if ((bool) && (this.bits.get(localSimpleHash.hash(paramString)))) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      i += 1;
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.BloomFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -17,89 +17,107 @@ class MiniMsgTabFragment$1
     int i = paramActionSheetItem.action;
     int j = paramActionSheetItem.uinType;
     paramActionSheetItem = paramActionSheetItem.uin;
-    switch (i)
+    if (i != 2)
     {
-    default: 
-      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick with invalid case:" + i);
-    case 2: 
-    case 73: 
-    case 3: 
-    case 9: 
-    case 10: 
-    case 70: 
-    case 82: 
-    case 76: 
-    case 77: 
-    case 14: 
-    case 78: 
-      do
+      if (i != 3) {
+        if (i != 6) {
+          if (i != 14) {
+            if (i != 26) {
+              if (i != 70) {
+                if (i != 128) {
+                  if (i != 151) {
+                    if (i != 9) {
+                      if (i != 10) {
+                        if (i != 158) {
+                          if (i == 159) {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      switch (i)
       {
+      default: 
+        paramActionSheetItem = new StringBuilder();
+        paramActionSheetItem.append("handleShareChatItemClick with invalid case:");
+        paramActionSheetItem.append(i);
+        QLog.e("MiniMsgTabFragment", 1, paramActionSheetItem.toString());
         return;
-        MiniMsgTabFragment.a(this.a, 1, null);
+      case 83: 
+        if (this.a.getBaseActivity() != null)
+        {
+          ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchPermissionSettingFragmentForResult(this.a.getBaseActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.b(this.a), 5);
+          return;
+        }
+        QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick getActivity is null when ACTION_SETTING");
         return;
-        MiniMsgTabFragment.a(this.a, 5, null);
+      case 81: 
+        MiniMsgTabFragment.a(this.a, 9, null);
         return;
-        MiniMsgTabFragment.a(this.a, 6, null);
+      case 79: 
+      case 80: 
+        MiniMsgTabFragment.a(this.a, 3, null);
+        return;
+      case 78: 
+        if (MiniMsgTabFragment.a(this.a) == -1) {
+          break;
+        }
+        if (MiniMsgTabFragment.a(this.a))
+        {
+          ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMainPageFragmentForMiniGame(this.a.getBaseActivity(), MiniMsgTabFragment.a(this.a), 1, true);
+          return;
+        }
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMainPageFragment(this.a.getBaseActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.a(this.a));
+        return;
+      case 76: 
+      case 77: 
+        MiniMsgTabFragment.a(this.a, 8, null);
+        return;
+      case 74: 
+      case 75: 
+        MiniMsgTabFragment.a(this.a, 2, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 16, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 15, null);
         return;
         MiniMsgTabFragment.a(this.a, 7, null);
         return;
+        MiniMsgTabFragment.a(this.a, 6, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 11, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 14, null);
+        return;
+      case 82: 
         MiniMsgTabFragment.a(this.a, 13, null);
         return;
-        MiniMsgTabFragment.a(this.a, 8, null);
+        paramActionSheetItem = "3636666661";
+      case 72: 
+        MiniMsgTabFragment.a(this.a, paramActionSheetItem, j);
         return;
         MiniMsgTabFragment.a(this.a, 10, null);
         return;
-      } while (MiniMsgTabFragment.a(this.a) == -1);
-      if (MiniMsgTabFragment.a(this.a))
-      {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMainPageFragmentForMiniGame(this.a.getActivity(), MiniMsgTabFragment.a(this.a), 1, true);
+        MiniMsgTabFragment.a(this.a, 17, null);
+        return;
+        MiniMsgTabFragment.a(this.a, 5, null);
         return;
       }
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMainPageFragment(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.a(this.a));
-      return;
-    case 151: 
-      MiniMsgTabFragment.a(this.a, 11, null);
-      return;
-    case 74: 
-    case 75: 
-      MiniMsgTabFragment.a(this.a, 2, null);
-      return;
-    case 79: 
-    case 80: 
-      MiniMsgTabFragment.a(this.a, 3, null);
-      return;
-    case 26: 
-      paramActionSheetItem = "3636666661";
-    case 72: 
-      MiniMsgTabFragment.a(this.a, paramActionSheetItem, j);
-      return;
-    case 81: 
-      MiniMsgTabFragment.a(this.a, 9, null);
-      return;
-    case 83: 
-      if (this.a.getActivity() != null)
-      {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchPermissionSettingFragmentForResult(this.a.getActivity(), MiniMsgTabFragment.a(this.a), MiniMsgTabFragment.b(this.a), 5);
-        return;
-      }
-      QLog.e("MiniMsgTabFragment", 1, "handleShareChatItemClick getActivity is null when ACTION_SETTING");
-      return;
-    case 128: 
-      MiniMsgTabFragment.a(this.a, 14, null);
-      return;
-    case 158: 
-      MiniMsgTabFragment.a(this.a, 15, null);
-      return;
-    case 159: 
-      MiniMsgTabFragment.a(this.a, 16, null);
-      return;
     }
-    MiniMsgTabFragment.a(this.a, 17, null);
+    else
+    {
+      MiniMsgTabFragment.a(this.a, 1, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment.1
  * JD-Core Version:    0.7.0.1
  */

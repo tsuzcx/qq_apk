@@ -19,8 +19,13 @@ public class QQLevelACCObserver
       if (paramBundle.containsKey("key_qqlevelacc")) {
         paramInt = paramBundle.getInt("key_qqlevelacc");
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "onReceive:--speed=" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        paramBundle = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onReceive:--speed=");
+        localStringBuilder.append(paramInt);
+        QLog.d(paramBundle, 2, localStringBuilder.toString());
       }
       a(paramBoolean, paramInt);
     }
@@ -28,7 +33,7 @@ public class QQLevelACCObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.observer.QQLevelACCObserver
  * JD-Core Version:    0.7.0.1
  */

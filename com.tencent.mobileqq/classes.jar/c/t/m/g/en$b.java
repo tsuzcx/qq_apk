@@ -47,76 +47,66 @@ final class en$b
   
   public final void onServiceStateChanged(ServiceState paramServiceState)
   {
-    int j = 1;
-    int m = 0;
     super.onServiceStateChanged(paramServiceState);
-    if (paramServiceState == null) {}
+    if (paramServiceState == null) {
+      return;
+    }
     for (;;)
     {
-      return;
+      boolean bool;
       try
       {
         Object localObject = this.a.e;
-        if ((localObject != null) && (((ServiceState)localObject).getState() == paramServiceState.getState())) {
-          continue;
-        }
-        this.a.e = paramServiceState;
-        paramServiceState = this.a;
-        if (!paramServiceState.a) {
-          continue;
-        }
-        int i;
-        boolean bool;
-        if (paramServiceState.e != null) {
-          if (paramServiceState.e.getState() == 0)
+        if ((localObject == null) || (((ServiceState)localObject).getState() != paramServiceState.getState()))
+        {
+          this.a.e = paramServiceState;
+          paramServiceState = this.a;
+          if (paramServiceState.a)
           {
-            i = 1;
+            localObject = paramServiceState.e;
+            j = 1;
+            if (localObject == null) {
+              break label181;
+            }
+            if (paramServiceState.e.getState() == 0)
+            {
+              i = 1;
+            }
+            else
+            {
+              if (paramServiceState.e.getState() != 1) {
+                break label181;
+              }
+              i = 0;
+            }
             localObject = paramServiceState.c.f;
             bool = fj.a(paramServiceState.c.a);
-            if (localObject == null) {
-              break label194;
+            if ((localObject == null) || (((TelephonyManager)localObject).getSimState() != 5)) {
+              break label186;
             }
-            if (((TelephonyManager)localObject).getSimState() != 5) {
-              break label183;
-            }
-            break label196;
+            break label188;
+            localObject = new Message();
+            ((Message)localObject).what = 12999;
+            ((Message)localObject).arg1 = 12003;
+            ((Message)localObject).arg2 = i;
+            paramServiceState.c.b(localObject);
           }
-        }
-        for (;;)
-        {
-          localObject = new Message();
-          ((Message)localObject).what = 12999;
-          ((Message)localObject).arg1 = 12003;
-          ((Message)localObject).arg2 = k;
-          paramServiceState.c.b(localObject);
-          return;
-          i = paramServiceState.e.getState();
-          if (i == 1)
-          {
-            i = 0;
-            break;
-          }
-          i = -1;
-          break;
-          label183:
-          j = 0;
-          label194:
-          label196:
-          do
-          {
-            k = i;
-            break;
-            j = 0;
-            k = m;
-            if (bool) {
-              break;
-            }
-          } while (j != 0);
-          int k = m;
         }
         return;
       }
-      catch (Throwable paramServiceState) {}
+      catch (Throwable paramServiceState)
+      {
+        return;
+      }
+      label181:
+      int i = -1;
+      continue;
+      label186:
+      int j = 0;
+      label188:
+      if ((bool) || (j == 0)) {
+        i = 0;
+      }
     }
   }
   
@@ -128,7 +118,7 @@ final class en$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.en.b
  * JD-Core Version:    0.7.0.1
  */

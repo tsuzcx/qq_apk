@@ -10,95 +10,94 @@ import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.ViewUtils;
 
 public class CustomWidgetUtil
+  implements CustomWidgetConstants
 {
   public static void a(Context paramContext, TextView paramTextView, int paramInt, boolean paramBoolean)
   {
-    if ((paramTextView == null) || (paramInt == 0)) {}
-    do
+    if (paramTextView != null)
     {
-      return;
-      int i = paramContext.getResources().getDimensionPixelSize(2131297137);
-      int j = paramContext.getResources().getDimensionPixelSize(2131297135);
+      if (paramInt == 0) {
+        return;
+      }
+      int j = paramContext.getResources().getDimensionPixelSize(2131297119);
+      int i = paramContext.getResources().getDimensionPixelSize(2131297117);
+      int k;
       switch (paramInt)
       {
       case 4: 
       case 6: 
       default: 
         paramInt = j;
-      case 1: 
-      case 7: 
-      case 3: 
-      case 9: 
-      case 8: 
-      case 2: 
-      case 5: 
-        for (;;)
+        break;
+      case 10: 
+        if ((paramTextView.getLayoutParams() instanceof RelativeLayout.LayoutParams))
         {
-          paramContext = (ViewGroup.MarginLayoutParams)paramTextView.getLayoutParams();
-          if ((paramContext == null) || ((paramContext.leftMargin == i) && (paramContext.bottomMargin == paramInt))) {
-            break;
-          }
-          paramContext.setMargins(i, 0, 0, paramInt);
-          return;
-          i = paramContext.getResources().getDimensionPixelSize(2131297137);
-          paramInt = paramContext.getResources().getDimensionPixelSize(2131297135);
-          paramTextView.measure(0, 0);
-          int k = paramTextView.getMeasuredWidth();
-          j = paramTextView.getMeasuredHeight();
-          k /= 2;
-          j /= 2;
-          i -= k;
-          paramInt -= j;
-          continue;
-          i = paramContext.getResources().getDimensionPixelSize(2131297137);
-          paramInt = paramContext.getResources().getDimensionPixelSize(2131297135);
-          paramTextView.measure(0, 0);
-          k = paramTextView.getMeasuredWidth();
-          j = paramTextView.getMeasuredHeight();
-          k /= 2;
-          j /= 2;
-          i -= k;
-          paramInt -= j;
-          continue;
-          i = paramContext.getResources().getDimensionPixelSize(2131297140);
-          paramInt = paramContext.getResources().getDimensionPixelSize(2131297138);
-          continue;
-          i = paramContext.getResources().getDimensionPixelSize(2131297141);
-          paramInt = paramContext.getResources().getDimensionPixelSize(2131297139);
-          continue;
-          k = paramContext.getResources().getDimensionPixelSize(2131297137);
-          i = paramContext.getResources().getDimensionPixelSize(2131297136);
-          paramInt = i;
-          if (paramBoolean) {
-            paramInt = i + ViewUtils.a(8.0F);
-          }
-          paramTextView.measure(0, 0);
-          i = paramTextView.getMeasuredWidth();
-          j = paramTextView.getMeasuredHeight();
-          if (i > j) {
-            j = i;
-          }
-          for (;;)
-          {
-            paramTextView.setWidth(j);
-            paramTextView.setHeight(i);
-            j = k - j / 2;
-            paramInt -= i / 2;
-            i = j;
-            break;
-            i = j;
-          }
-          i = paramContext.getResources().getDimensionPixelSize(2131297140);
-          paramInt = paramContext.getResources().getDimensionPixelSize(2131297138);
-          continue;
-          i = paramContext.getResources().getDimensionPixelSize(2131297140);
-          paramInt = paramContext.getResources().getDimensionPixelSize(2131297138);
+          paramTextView = (RelativeLayout.LayoutParams)paramTextView.getLayoutParams();
+          paramTextView.addRule(15, -1);
+          paramTextView.setMargins(0, 0, paramContext.getResources().getDimensionPixelSize(2131297124), 0);
         }
+        return;
+      case 9: 
+        paramInt = paramContext.getResources().getDimensionPixelSize(2131297123);
+        i = paramContext.getResources().getDimensionPixelSize(2131297121);
+        break;
+      case 8: 
+        k = paramContext.getResources().getDimensionPixelSize(2131297119);
+        i = paramContext.getResources().getDimensionPixelSize(2131297118);
+        paramInt = i;
+        if (paramBoolean) {
+          paramInt = i + ViewUtils.a(8.0F);
+        }
+        paramTextView.measure(0, 0);
+        i = paramTextView.getMeasuredWidth();
+        j = paramTextView.getMeasuredHeight();
+        if (i <= j) {
+          i = j;
+        }
+        paramTextView.setWidth(i);
+        paramTextView.setHeight(i);
+        j = i / 2;
+        i = k - j;
+        j = paramInt - j;
+        paramInt = i;
+        i = j;
+        break;
+      case 7: 
+        paramInt = paramContext.getResources().getDimensionPixelSize(2131297119);
+        j = paramContext.getResources().getDimensionPixelSize(2131297117);
+        paramTextView.measure(0, 0);
+        k = paramTextView.getMeasuredWidth();
+        i = paramTextView.getMeasuredHeight();
+        paramInt -= k / 2;
+        i /= 2;
+        break;
+      case 5: 
+        paramInt = paramContext.getResources().getDimensionPixelSize(2131297122);
+        i = paramContext.getResources().getDimensionPixelSize(2131297120);
+        break;
+      case 3: 
+        paramInt = paramContext.getResources().getDimensionPixelSize(2131297122);
+        i = paramContext.getResources().getDimensionPixelSize(2131297120);
+        break;
+      case 2: 
+        paramInt = paramContext.getResources().getDimensionPixelSize(2131297122);
+        i = paramContext.getResources().getDimensionPixelSize(2131297120);
+        break;
+      case 1: 
+        paramInt = paramContext.getResources().getDimensionPixelSize(2131297119);
+        j = paramContext.getResources().getDimensionPixelSize(2131297117);
+        paramTextView.measure(0, 0);
+        k = paramTextView.getMeasuredWidth();
+        i = paramTextView.getMeasuredHeight();
+        paramInt -= k / 2;
+        i /= 2;
       }
-    } while (!(paramTextView.getLayoutParams() instanceof RelativeLayout.LayoutParams));
-    paramTextView = (RelativeLayout.LayoutParams)paramTextView.getLayoutParams();
-    paramTextView.addRule(15, -1);
-    paramTextView.setMargins(0, 0, paramContext.getResources().getDimensionPixelSize(2131297142), 0);
+      i = j - i;
+      paramContext = (ViewGroup.MarginLayoutParams)paramTextView.getLayoutParams();
+      if ((paramContext != null) && ((paramContext.leftMargin != paramInt) || (paramContext.bottomMargin != i))) {
+        paramContext.setMargins(paramInt, 0, 0, i);
+      }
+    }
   }
   
   public static void a(TextView paramTextView, int paramInt1, int paramInt2, int paramInt3)
@@ -113,138 +112,135 @@ public class CustomWidgetUtil
     }
     switch (paramInt1)
     {
+    case 10: 
     default: 
-      paramString = "";
-      paramInt2 = 0;
+      localObject = "";
       paramInt1 = 0;
-      if (paramString == null) {
-        paramString = "";
-      }
-      break;
-    }
-    for (;;)
-    {
-      if ((TextUtils.isEmpty(paramString)) && (paramInt1 == 0) && (paramInt2 == 0))
-      {
-        paramTextView.setVisibility(8);
-        return;
-        if (paramInt3 > 0)
-        {
-          paramString = "";
-          paramInt1 = paramInt3;
-          paramInt2 = 0;
-          break;
-        }
-        paramString = "";
-        paramInt1 = 2130850830;
-        paramInt2 = 0;
-        break;
-        if (paramInt3 > 0) {}
-        for (paramInt2 = paramInt3;; paramInt2 = 2130850834)
-        {
-          paramString = "NEW";
-          paramInt1 = 0;
-          break;
-        }
-        if (paramInt3 > 0)
-        {
-          paramString = "";
-          paramInt1 = paramInt3;
-          paramInt2 = 0;
-          break;
-        }
-        paramString = "";
-        paramInt1 = 2130850833;
-        paramInt2 = 0;
-        break;
-        if (paramInt3 > 0) {}
-        for (;;)
-        {
-          if (paramInt2 <= paramInt4) {
-            break label219;
-          }
-          paramString = String.valueOf(paramInt4) + "+";
-          paramInt1 = 0;
-          paramInt2 = paramInt3;
-          break;
-          paramInt3 = 2130850834;
-        }
-        label219:
-        paramString = String.valueOf(paramInt2);
-        paramInt1 = 0;
-        paramInt2 = paramInt3;
-        break;
-        if (paramInt3 > 0) {}
-        for (;;)
-        {
-          if (paramInt2 <= 99) {
-            break label259;
-          }
-          paramString = "";
-          paramInt1 = 0;
-          paramInt2 = paramInt3;
-          break;
-          paramInt3 = 2130850834;
-        }
-        label259:
-        paramString = String.valueOf(paramInt2);
-        paramInt1 = 0;
-        paramInt2 = paramInt3;
-        break;
-        if (paramInt3 > 0) {}
-        for (;;)
-        {
-          if (paramInt2 <= paramInt4) {
-            break label320;
-          }
-          paramString = String.valueOf(paramInt4) + "+";
-          paramInt1 = 0;
-          paramInt2 = paramInt3;
-          break;
-          paramInt3 = 2130850834;
-        }
-        label320:
-        paramString = String.valueOf(paramInt2);
-        paramInt1 = 0;
-        paramInt2 = paramInt3;
-        break;
-        if (paramInt3 > 0) {}
-        for (paramInt2 = paramInt3;; paramInt2 = 2130850834)
-        {
-          if (!TextUtils.isEmpty(paramString)) {
-            break label362;
-          }
-          paramString = "";
-          paramInt1 = 0;
-          break;
-        }
-        label362:
-        paramInt1 = 0;
-        break;
-      }
-      Object localObject = paramTextView.getTag(2131380944);
-      if (((localObject == null) && (paramInt1 == 0)) || (((localObject instanceof Integer)) && (((Integer)localObject).intValue() == paramInt1))) {}
+    case 11: 
+    case 7: 
+    case 6: 
+    case 5: 
+    case 4: 
+    case 3: 
+    case 9: 
+    case 2: 
+      label310:
       for (;;)
       {
-        paramTextView.setBackgroundResource(paramInt2);
-        if (!Utils.a(paramTextView.getText().toString(), paramString))
-        {
-          paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-          paramTextView.setText(paramString);
+        paramInt3 = 0;
+        break label329;
+        if (paramInt3 > 0) {
+          break;
         }
-        paramTextView.setVisibility(0);
-        return;
-        paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt1, 0, 0, 0);
-        paramTextView.setTag(2131380944, Integer.valueOf(paramInt1));
-        paramTextView.setText(paramString);
-        paramTextView.setPadding(0, 0, 0, 0);
+        paramInt3 = 2130850775;
+        break;
+        if (paramInt3 > 0) {
+          paramInt1 = paramInt3;
+        } else {
+          paramInt1 = 2130850770;
+        }
+        if (paramInt2 > paramInt4)
+        {
+          paramString = new StringBuilder();
+          paramString.append(String.valueOf(paramInt4));
+          paramString.append("+");
+          localObject = paramString.toString();
+        }
+        else
+        {
+          localObject = String.valueOf(paramInt2);
+          break label310;
+          if (paramInt3 > 0) {
+            break;
+          }
+          paramInt3 = 2130850769;
+          break;
+          if (paramInt3 <= 0) {
+            paramInt3 = 2130850770;
+          }
+          paramInt1 = paramInt3;
+          localObject = paramString;
+          if (TextUtils.isEmpty(paramString))
+          {
+            paramInt1 = paramInt3;
+            break label213;
+            if (paramInt3 > 0) {
+              paramInt1 = paramInt3;
+            } else {
+              paramInt1 = 2130850770;
+            }
+            if (paramInt2 > 99)
+            {
+              label213:
+              localObject = "";
+            }
+            else
+            {
+              localObject = String.valueOf(paramInt2);
+              break label310;
+              if (paramInt3 > 0) {
+                paramInt1 = paramInt3;
+              } else {
+                paramInt1 = 2130850770;
+              }
+              if (paramInt2 > paramInt4)
+              {
+                paramString = new StringBuilder();
+                paramString.append(String.valueOf(paramInt4));
+                paramString.append("+");
+                localObject = paramString.toString();
+              }
+              else
+              {
+                localObject = String.valueOf(paramInt2);
+                break label310;
+                if (paramInt3 > 0) {
+                  paramInt1 = paramInt3;
+                } else {
+                  paramInt1 = 2130850770;
+                }
+                localObject = "NEW";
+              }
+            }
+          }
+        }
       }
     }
+    if (paramInt3 <= 0) {
+      paramInt3 = 2130850766;
+    }
+    Object localObject = "";
+    paramInt1 = 0;
+    label329:
+    paramString = (String)localObject;
+    if (localObject == null) {
+      paramString = "";
+    }
+    if ((TextUtils.isEmpty(paramString)) && (paramInt3 == 0) && (paramInt1 == 0))
+    {
+      paramTextView.setVisibility(8);
+      return;
+    }
+    localObject = paramTextView.getTag(2131380210);
+    if (((localObject != null) || (paramInt3 != 0)) && ((!(localObject instanceof Integer)) || (((Integer)localObject).intValue() != paramInt3)))
+    {
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt3, 0, 0, 0);
+      paramTextView.setTag(2131380210, Integer.valueOf(paramInt3));
+      paramTextView.setText(paramString);
+      paramTextView.setPadding(0, 0, 0, 0);
+    }
+    paramTextView.setBackgroundResource(paramInt1);
+    if (!Utils.a(paramTextView.getText().toString(), paramString))
+    {
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      paramTextView.setText(paramString);
+    }
+    paramTextView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.CustomWidgetUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -33,14 +33,18 @@ public class FloatViewBuilder
   
   public static void a(HeartLayout paramHeartLayout)
   {
-    if ((paramHeartLayout == null) || (paramHeartLayout.a() == null)) {}
-    do
+    if (paramHeartLayout != null)
     {
-      return;
+      if (paramHeartLayout.a() == null) {
+        return;
+      }
       paramHeartLayout = paramHeartLayout.a();
-    } while (paramHeartLayout == null);
-    paramHeartLayout.j = 2400;
-    com.tencent.mobileqq.hotchat.anim.HeartAnimator.Config.b = 0.05F;
+      if (paramHeartLayout != null)
+      {
+        paramHeartLayout.j = 2400;
+        com.tencent.mobileqq.hotchat.anim.HeartAnimator.Config.b = 0.05F;
+      }
+    }
   }
   
   public Bitmap a()
@@ -55,25 +59,25 @@ public class FloatViewBuilder
     try
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-      Bitmap localBitmap1;
-      Bitmap localBitmap2;
-      do
-      {
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
         return null;
-        if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-          this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(3);
-        }
-        if (this.jdField_a_of_type_AndroidGraphicsCanvas == null) {
-          this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-        }
-        localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-        localBitmap2 = HeartView.a(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      } while (localBitmap2 == null);
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
+        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(3);
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsCanvas == null) {
+        this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+      }
+      Bitmap localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      Bitmap localBitmap2 = HeartView.a(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      if (localBitmap2 == null) {
+        return null;
+      }
       Canvas localCanvas = this.jdField_a_of_type_AndroidGraphicsCanvas;
       localCanvas.setBitmap(localBitmap2);
       Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-      localPaint.setColorFilter(new PorterDuffColorFilter(this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_ArrayOfInt.length)], PorterDuff.Mode.SRC_ATOP));
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      localPaint.setColorFilter(new PorterDuffColorFilter(arrayOfInt[this.jdField_a_of_type_JavaUtilRandom.nextInt(arrayOfInt.length)], PorterDuff.Mode.SRC_ATOP));
       localCanvas.drawBitmap(localBitmap1, 0.0F, 0.0F, localPaint);
       localPaint.setColorFilter(null);
       if (Build.VERSION.SDK_INT >= 11) {
@@ -87,7 +91,7 @@ public class FloatViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.FloatViewBuilder
  * JD-Core Version:    0.7.0.1
  */

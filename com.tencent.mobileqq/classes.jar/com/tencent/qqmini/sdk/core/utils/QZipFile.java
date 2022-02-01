@@ -25,15 +25,15 @@ public class QZipFile
   
   public InputStream getInputStream(ZipEntry paramZipEntry)
   {
-    if (QZipIOException.isInvalidEntry(paramZipEntry)) {
-      throw new QZipIOException();
+    if (!QZipIOException.isInvalidEntry(paramZipEntry)) {
+      return super.getInputStream(paramZipEntry);
     }
-    return super.getInputStream(paramZipEntry);
+    throw new QZipIOException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.QZipFile
  * JD-Core Version:    0.7.0.1
  */

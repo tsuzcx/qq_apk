@@ -15,20 +15,26 @@ public class StrictHostnameVerifier
     try
     {
       paramSSLSession = (X509Certificate)paramSSLSession.getPeerCertificates()[0];
-      g.b("", "verify: certificate is : " + paramSSLSession.getSubjectDN().getName());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("verify: certificate is : ");
+      localStringBuilder.append(paramSSLSession.getSubjectDN().getName());
+      g.a("", localStringBuilder.toString());
       b.a(paramString, paramSSLSession, true);
       return true;
     }
     catch (SSLException paramString)
     {
-      g.e("", "SSLException : " + paramString.getMessage());
+      paramSSLSession = new StringBuilder();
+      paramSSLSession.append("SSLException : ");
+      paramSSLSession.append(paramString.getMessage());
+      g.b("", paramSSLSession.toString());
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.ssl.hostname.StrictHostnameVerifier
  * JD-Core Version:    0.7.0.1
  */

@@ -16,11 +16,11 @@ class LeftAppShortcutBarPanel$3
   {
     if ((LeftAppShortcutBarPanel.a(this.a) != null) && (LeftAppShortcutBarPanel.a(this.a) != null))
     {
-      Object localObject = (ImageView)LeftAppShortcutBarPanel.a(this.a).findViewById(2131378047);
+      Object localObject = (ImageView)LeftAppShortcutBarPanel.a(this.a).findViewById(2131377472);
       if (localObject != null)
       {
-        ((ImageView)localObject).setImageResource(2130846530);
-        localObject = (TextView)LeftAppShortcutBarPanel.a(this.a).findViewById(2131378034);
+        ((ImageView)localObject).setImageResource(2130846405);
+        localObject = (TextView)LeftAppShortcutBarPanel.a(this.a).findViewById(2131377459);
         if (localObject != null) {
           ((TextView)localObject).setVisibility(0);
         }
@@ -32,7 +32,7 @@ class LeftAppShortcutBarPanel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.LeftAppShortcutBarPanel.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,24 +10,31 @@ class XPanelContainer$1
   
   public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
+    boolean bool;
+    if (paramInt == 0) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    if (XPanelContainer.b != bool)
     {
-      if (XPanelContainer.b != bool)
-      {
-        XPanelContainer.a(this.a, true);
-        XPanelContainer.b = bool;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "onSystemUiVisibilityChange..visibility =  " + paramInt + " context = " + this.a.getContext().getClass().getName());
-      }
-      return;
+      XPanelContainer.a(this.a, true);
+      XPanelContainer.b = bool;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSystemUiVisibilityChange..visibility =  ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" context = ");
+      localStringBuilder.append(this.a.getContext().getClass().getName());
+      QLog.d("XPanelContainer", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.XPanelContainer.1
  * JD-Core Version:    0.7.0.1
  */

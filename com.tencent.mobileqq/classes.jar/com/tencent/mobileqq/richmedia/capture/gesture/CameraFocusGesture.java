@@ -32,39 +32,47 @@ public class CameraFocusGesture
     this.jdField_c_of_type_Int = 300;
     this.jdField_d_of_type_Int = paramContext.getScaledTouchSlop();
     this.jdField_a_of_type_Int = paramContext.getScaledDoubleTapSlop();
-    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_a_of_type_Int);
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = (i * i);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraFocusGesture$FocusGestureListener = paramFocusGestureListener;
   }
   
   private void a(MotionEvent paramMotionEvent, GLSurfaceView paramGLSurfaceView)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (i != 0)
     {
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getY();
-      return;
+      if (i != 1) {
+        return;
+      }
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       this.jdField_c_of_type_Float = paramMotionEvent.getX();
       this.jdField_d_of_type_Float = paramMotionEvent.getY();
-    } while ((a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Float)) || (!a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long)));
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraFocusGesture$FocusGestureListener != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraFocusGesture$FocusGestureListener.a(paramMotionEvent);
-      return;
+      if ((!a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Float)) && (a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long)))
+      {
+        CameraFocusGesture.FocusGestureListener localFocusGestureListener = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraFocusGesture$FocusGestureListener;
+        if (localFocusGestureListener != null)
+        {
+          localFocusGestureListener.a(paramMotionEvent);
+          return;
+        }
+        b(paramMotionEvent, paramGLSurfaceView);
+      }
     }
-    b(paramMotionEvent, paramGLSurfaceView);
+    else
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.jdField_b_of_type_Float = paramMotionEvent.getY();
+    }
   }
   
   private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     int i = (int)paramFloat3 - (int)paramFloat1;
     int j = (int)paramFloat4 - (int)paramFloat2;
-    return i * i + j * j > this.jdField_d_of_type_Int * this.jdField_d_of_type_Int;
+    int k = this.jdField_d_of_type_Int;
+    return i * i + j * j > k * k;
   }
   
   private boolean a(long paramLong1, long paramLong2)
@@ -74,67 +82,77 @@ public class CameraFocusGesture
   
   private boolean a(MotionEvent paramMotionEvent, GLSurfaceView paramGLSurfaceView)
   {
-    boolean bool = true;
     int[] arrayOfInt = new int[2];
     paramGLSurfaceView.getLocationOnScreen(arrayOfInt);
     int i = arrayOfInt[0];
     int j = arrayOfInt[1];
     int k = paramGLSurfaceView.getWidth();
     int m = paramGLSurfaceView.getHeight();
-    if ((paramMotionEvent.getRawX() < i) || (paramMotionEvent.getRawX() > i + k) || (paramMotionEvent.getRawY() < j) || (paramMotionEvent.getRawY() > j + m)) {
-      bool = false;
+    if ((paramMotionEvent.getRawX() >= i) && (paramMotionEvent.getRawX() <= i + k) && (paramMotionEvent.getRawY() >= j)) {
+      return paramMotionEvent.getRawY() <= j + m;
     }
-    return bool;
+    return false;
   }
   
   private void b(MotionEvent paramMotionEvent, GLSurfaceView paramGLSurfaceView)
   {
-    if (((paramGLSurfaceView instanceof CameraCaptureView)) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView != null) && (((CameraCaptureView)paramGLSurfaceView).a() != 1))
+    if (((paramGLSurfaceView instanceof CameraCaptureView)) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView != null))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView.a(paramMotionEvent);
-      a((CameraCaptureView)paramGLSurfaceView, paramMotionEvent.getX(), paramMotionEvent.getY());
-      if (QLog.isColorLevel()) {
-        QLog.d("GLGestureListener", 2, new Object[] { "", "CameraFocusGesture isRecording == false" });
+      paramGLSurfaceView = (CameraCaptureView)paramGLSurfaceView;
+      if (paramGLSurfaceView.a() != 1)
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView.a(paramMotionEvent);
+        a(paramGLSurfaceView, paramMotionEvent.getX(), paramMotionEvent.getY());
+        if (QLog.isColorLevel()) {
+          QLog.d("GLGestureListener", 2, new Object[] { "", "CameraFocusGesture isRecording == false" });
+        }
       }
     }
   }
   
   private void c(MotionEvent paramMotionEvent, GLSurfaceView paramGLSurfaceView)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (i != 5)
     {
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Float = paramMotionEvent.getX(1);
-      this.jdField_b_of_type_Float = paramMotionEvent.getY(1);
-      return;
+      if (i != 6) {
+        return;
+      }
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       this.jdField_c_of_type_Float = paramMotionEvent.getX(1);
       this.jdField_d_of_type_Float = paramMotionEvent.getY(1);
-    } while ((a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Float)) || (!a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long)));
-    paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraFocusGesture$FocusGestureListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraFocusGesture$FocusGestureListener.a(paramMotionEvent);
+      if ((!a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Float)) && (a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long)))
+      {
+        paramMotionEvent = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
+        CameraFocusGesture.FocusGestureListener localFocusGestureListener = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureCameraFocusGesture$FocusGestureListener;
+        if (localFocusGestureListener != null) {
+          localFocusGestureListener.a(paramMotionEvent);
+        } else {
+          d(paramMotionEvent, paramGLSurfaceView);
+        }
+        paramMotionEvent.recycle();
+      }
     }
-    for (;;)
+    else
     {
-      paramMotionEvent.recycle();
-      return;
-      d(paramMotionEvent, paramGLSurfaceView);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Float = paramMotionEvent.getX(1);
+      this.jdField_b_of_type_Float = paramMotionEvent.getY(1);
     }
   }
   
   private void d(MotionEvent paramMotionEvent, GLSurfaceView paramGLSurfaceView)
   {
-    if (((paramGLSurfaceView instanceof CameraCaptureView)) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView != null) && (((CameraCaptureView)paramGLSurfaceView).a() != 1))
+    if (((paramGLSurfaceView instanceof CameraCaptureView)) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView != null))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView.a(paramMotionEvent);
-      a((CameraCaptureView)paramGLSurfaceView, paramMotionEvent.getX(), paramMotionEvent.getY());
-      if (QLog.isColorLevel()) {
-        QLog.d("GLGestureListener", 2, new Object[] { "", "CameraFocusGesture isRecording == true" });
+      paramGLSurfaceView = (CameraCaptureView)paramGLSurfaceView;
+      if (paramGLSurfaceView.a() != 1)
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView.a(paramMotionEvent);
+        a(paramGLSurfaceView, paramMotionEvent.getX(), paramMotionEvent.getY());
+        if (QLog.isColorLevel()) {
+          QLog.d("GLGestureListener", 2, new Object[] { "", "CameraFocusGesture isRecording == true" });
+        }
       }
     }
     paramMotionEvent.recycle();
@@ -142,8 +160,9 @@ public class CameraFocusGesture
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView.a();
+    CameraFocusView localCameraFocusView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView;
+    if (localCameraFocusView != null) {
+      localCameraFocusView.a();
     }
   }
   
@@ -161,21 +180,21 @@ public class CameraFocusGesture
   {
     int i = paramMotionEvent.getPointerCount();
     GLSurfaceView localGLSurfaceView = GLGestureProxy.getInstance().getGLSurfaceView();
-    if (!a(paramMotionEvent, localGLSurfaceView)) {}
-    do
-    {
+    if (!a(paramMotionEvent, localGLSurfaceView)) {
       return false;
-      if ((!paramBoolean) && (i == 1)) {
-        a(paramMotionEvent, localGLSurfaceView);
-      }
-    } while ((!paramBoolean) || (i != 2));
-    c(paramMotionEvent, localGLSurfaceView);
+    }
+    if ((!paramBoolean) && (i == 1)) {
+      a(paramMotionEvent, localGLSurfaceView);
+    }
+    if ((paramBoolean) && (i == 2)) {
+      c(paramMotionEvent, localGLSurfaceView);
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.gesture.CameraFocusGesture
  * JD-Core Version:    0.7.0.1
  */

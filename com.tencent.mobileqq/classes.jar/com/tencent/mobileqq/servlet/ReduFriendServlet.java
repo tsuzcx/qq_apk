@@ -36,124 +36,168 @@ public class ReduFriendServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    boolean bool1 = paramFromServiceMsg.isSuccess();
-    if (QLog.isColorLevel()) {
-      QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive() is called, isSuccess is:" + bool1);
+    boolean bool2 = paramFromServiceMsg.isSuccess();
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("ReduFriendServlet onReceive() is called, isSuccess is:");
+      ((StringBuilder)localObject1).append(bool2);
+      QLog.d("ReduFriendServlet", 2, ((StringBuilder)localObject1).toString());
     }
     Bundle localBundle = new Bundle();
-    Object localObject1;
-    if (bool1) {
-      localObject1 = new ArrayList();
-    }
-    label539:
-    label689:
-    label694:
-    for (;;)
+    boolean bool1 = bool2;
+    int i;
+    int k;
+    if (bool2)
     {
-      int j;
-      Object localObject2;
-      int k;
-      try
+      Object localObject2 = new ArrayList();
+      for (;;)
       {
-        i = paramFromServiceMsg.getResultCode();
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        j = paramFromServiceMsg.getInt();
-        localObject2 = new byte[j - 4];
-        paramFromServiceMsg.get((byte[])localObject2);
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject2);
-        k = paramFromServiceMsg.uint32_result.get();
-        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-        int m = paramFromServiceMsg.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,result is:" + k + ",response.lenth is:" + j + ",sso.RespResult is:" + i + ",cCount is:" + m);
-        }
-        if (k == 0) {
-          continue;
-        }
-        bool1 = false;
-      }
-      catch (Exception paramFromServiceMsg)
-      {
-        boolean bool2 = false;
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive occurs exception,error msg is:" + paramFromServiceMsg.getMessage(), paramFromServiceMsg);
-        bool1 = bool2;
-        continue;
-        localBundle.putStringArrayList("redu_list", (ArrayList)localObject1);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,reduList is:" + localObject1);
-        if (paramIntent == null) {
-          break label539;
-        }
-      }
-      int i = 0;
-      if (paramIntent != null) {
-        i = paramIntent.getIntExtra("action", 0);
-      }
-      notifyObserver(paramIntent, i, bool1, localBundle, ReduFriendObserver.class);
-      return;
-      long l;
-      if (paramFromServiceMsg.position() < paramFromServiceMsg.capacity())
-      {
-        localObject2 = new byte[4];
-        paramFromServiceMsg.get((byte[])localObject2, 0, localObject2.length);
-        l = PkgTools.getLongData((byte[])localObject2, 0);
-        i = paramFromServiceMsg.getShort();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,uin is:" + l + ",redu is:" + i);
-        }
-        ((ArrayList)localObject1).add(String.valueOf(l));
-      }
-      else
-      {
-        for (paramFromServiceMsg = paramIntent.getStringExtra("k_uin");; paramFromServiceMsg = null)
+        try
         {
+          i = paramFromServiceMsg.getResultCode();
+          paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+          j = paramFromServiceMsg.getInt();
+          localObject1 = new byte[j - 4];
+          paramFromServiceMsg.get((byte[])localObject1);
+          paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject1);
+          k = paramFromServiceMsg.uint32_result.get();
+          paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+          int m = paramFromServiceMsg.get();
+          if (!QLog.isColorLevel()) {
+            break label790;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("ReduFriendServlet onReceive,result is:");
+          ((StringBuilder)localObject1).append(k);
+          ((StringBuilder)localObject1).append(",response.lenth is:");
+          ((StringBuilder)localObject1).append(j);
+          ((StringBuilder)localObject1).append(",sso.RespResult is:");
+          ((StringBuilder)localObject1).append(i);
+          ((StringBuilder)localObject1).append(",cCount is:");
+          ((StringBuilder)localObject1).append(m);
+          QLog.d("ReduFriendServlet", 2, ((StringBuilder)localObject1).toString());
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          int j;
+          long l;
+          SharedPreferences.Editor localEditor;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("ReduFriendServlet onReceive occurs exception,error msg is:");
+          ((StringBuilder)localObject1).append(paramFromServiceMsg.getMessage());
+          QLog.d("ReduFriendServlet", 2, ((StringBuilder)localObject1).toString(), paramFromServiceMsg);
+          bool1 = false;
+          break label758;
+        }
+        if (paramFromServiceMsg.position() < paramFromServiceMsg.capacity())
+        {
+          localObject1 = new byte[4];
+          paramFromServiceMsg.get((byte[])localObject1, 0, localObject1.length);
+          l = PkgTools.getLongData((byte[])localObject1, 0);
+          i = paramFromServiceMsg.getShort();
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("ReduFriendServlet onReceive,uin is:");
+            ((StringBuilder)localObject1).append(l);
+            ((StringBuilder)localObject1).append(",redu is:");
+            ((StringBuilder)localObject1).append(i);
+            QLog.d("ReduFriendServlet", 2, ((StringBuilder)localObject1).toString());
+          }
+          ((ArrayList)localObject2).add(String.valueOf(l));
+        }
+        else
+        {
+          localBundle.putStringArrayList("redu_list", (ArrayList)localObject2);
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("ReduFriendServlet onReceive,reduList is:");
+            paramFromServiceMsg.append(localObject2);
+            QLog.d("ReduFriendServlet", 2, paramFromServiceMsg.toString());
+          }
+          localObject1 = null;
+          if (paramIntent != null)
+          {
+            paramFromServiceMsg = paramIntent.getStringExtra("k_uin");
+          }
+          else
+          {
+            paramFromServiceMsg = (FromServiceMsg)localObject1;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,qq has exception,request is null");
+              paramFromServiceMsg = (FromServiceMsg)localObject1;
+            }
+          }
           if (paramFromServiceMsg != null)
           {
             l = MessageCache.a();
-            SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("free_call", 0).edit();
+            localEditor = BaseApplication.getContext().getSharedPreferences("free_call", 0).edit();
             localEditor.putString(FriendHotTipsBar.b(paramFromServiceMsg), String.valueOf(l));
-            j = ((ArrayList)localObject1).size();
-            localObject2 = new StringBuilder();
+            j = ((ArrayList)localObject2).size();
+            localObject1 = new StringBuilder();
             k = Math.min(j, 100);
             i = 0;
             while (i < k)
             {
-              ((StringBuilder)localObject2).append((String)((ArrayList)localObject1).get(i));
-              ((StringBuilder)localObject2).append("|");
+              ((StringBuilder)localObject1).append((String)((ArrayList)localObject2).get(i));
+              ((StringBuilder)localObject1).append("|");
               i += 1;
-              continue;
-              if (!QLog.isColorLevel()) {
-                break label689;
-              }
-              QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,qq has exception,request is null");
-              break label689;
             }
-            localObject2 = ((StringBuilder)localObject2).toString();
+            localObject2 = ((StringBuilder)localObject1).toString();
             localObject1 = localObject2;
             if (j > 0) {
               localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
             }
             localEditor.putString(FriendHotTipsBar.c(paramFromServiceMsg), (String)localObject1);
             localEditor.commit();
-            if (!QLog.isColorLevel()) {
-              break label694;
+            bool1 = bool2;
+            if (QLog.isColorLevel())
+            {
+              paramFromServiceMsg = new StringBuilder();
+              paramFromServiceMsg.append("reduSize is:");
+              paramFromServiceMsg.append(j);
+              paramFromServiceMsg.append(",curTime is:");
+              paramFromServiceMsg.append(l);
+              paramFromServiceMsg.append(",allReduFriend is:");
+              paramFromServiceMsg.append((String)localObject1);
+              QLog.d("ReduFriendServlet", 2, paramFromServiceMsg.toString());
+              bool1 = bool2;
             }
-            QLog.d("ReduFriendServlet", 2, "reduSize is:" + j + ",curTime is:" + l + ",allReduFriend is:" + (String)localObject1);
-            break label694;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,please pass uin,uin is empty");
+          else
+          {
+            bool1 = bool2;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,please pass uin,uin is empty");
+              bool1 = bool2;
+            }
           }
-          break;
-          break;
         }
       }
+    }
+    for (;;)
+    {
+      label758:
+      if (paramIntent != null) {
+        i = paramIntent.getIntExtra("action", 0);
+      } else {
+        i = 0;
+      }
+      notifyObserver(paramIntent, i, bool1, localBundle, ReduFriendObserver.class);
+      return;
+      label790:
+      if (k == 0) {
+        break;
+      }
+      bool1 = false;
     }
   }
   
@@ -168,7 +212,7 @@ public class ReduFriendServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.ReduFriendServlet
  * JD-Core Version:    0.7.0.1
  */

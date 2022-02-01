@@ -4,13 +4,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialCareManager;
 import com.tencent.mobileqq.chat.MessageNotificationSettingManager;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.permission.PermissionChecker;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.stranger.api.IStrangerService;
 import com.tencent.mobileqq.utils.SharedPreferencesHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -31,15 +31,16 @@ public class FriendQIPCModule
   
   public static FriendQIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new FriendQIPCModule("FriendQIPCModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new FriendQIPCModule("FriendQIPCModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   private EIPCResult a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
@@ -47,59 +48,22 @@ public class FriendQIPCModule
     paramBundle = paramBundle.getString("KEY_UIN");
     paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     Bundle localBundle = new Bundle();
-    if (paramQQAppInterface != null) {}
-    for (boolean bool = paramQQAppInterface.b(paramBundle);; bool = false)
-    {
-      localBundle.putBoolean("KEY_IS_FRIEND", bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendQIPCModule", 2, String.format("onCall uin: %s, isFriend: %s", new Object[] { paramBundle, Boolean.valueOf(bool) }));
-      }
-      return EIPCResult.createSuccessResult(localBundle);
+    boolean bool;
+    if (paramQQAppInterface != null) {
+      bool = paramQQAppInterface.b(paramBundle);
+    } else {
+      bool = false;
     }
+    localBundle.putBoolean("KEY_IS_FRIEND", bool);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendQIPCModule", 2, String.format("onCall uin: %s, isFriend: %s", new Object[] { paramBundle, Boolean.valueOf(bool) }));
+    }
+    return EIPCResult.createSuccessResult(localBundle);
   }
   
   private void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
-    int i = 1;
-    String str = paramBundle.getString("KEY_UIN");
-    int j = paramBundle.getInt("KEY_SCF_SWITCH_TYPE");
-    boolean bool = paramBundle.getBoolean("KEY_SCF_SWITCH_STATUS");
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendQIPCModule", 2, String.format("SCP set switch, switchType: %s, switchStatus", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) }));
-    }
-    paramBundle = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (j == 1) {
-      if (bool)
-      {
-        paramBundle.e(str);
-        SpecialCareInfo localSpecialCareInfo = new SpecialCareInfo();
-        localSpecialCareInfo.globalSwitch = 1;
-        localSpecialCareInfo.specialRingSwitch = 1;
-        localSpecialCareInfo.friendRingId = 1;
-        localSpecialCareInfo.qzoneSwitch = 1;
-        localSpecialCareInfo.uin = str;
-        paramBundle.a(localSpecialCareInfo);
-        QvipSpecialCareManager.a(str, "1", paramQQAppInterface);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        paramBundle.e(str);
-        return;
-      } while (j != 2);
-      paramQQAppInterface = paramBundle.a(str);
-    } while (paramQQAppInterface == null);
-    if (bool) {}
-    for (;;)
-    {
-      paramQQAppInterface.qzoneSwitch = i;
-      paramBundle.a(paramQQAppInterface);
-      return;
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private EIPCResult b(QQAppInterface paramQQAppInterface, Bundle paramBundle)
@@ -108,36 +72,35 @@ public class FriendQIPCModule
     FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     Bundle localBundle = new Bundle();
     boolean bool;
-    if (localFriendsManager != null)
-    {
+    if (localFriendsManager != null) {
       bool = localFriendsManager.b(paramBundle);
-      if (!bool) {
-        break label159;
-      }
-      paramQQAppInterface = (PhoneContactManagerImp)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-      if (paramQQAppInterface == null) {
-        break label159;
-      }
-      int i = paramQQAppInterface.d();
-      if (((i != 9) && (i != 8) && (i != 4) && (i != 2)) || (!paramQQAppInterface.m())) {
-        break label159;
-      }
-      paramQQAppInterface = paramQQAppInterface.a(paramBundle);
-      if (paramQQAppInterface == null) {
-        break label159;
-      }
-    }
-    label159:
-    for (paramQQAppInterface = paramQQAppInterface.unifiedCode;; paramQQAppInterface = null)
-    {
-      localBundle.putString("PHONE_NUMBER", paramQQAppInterface);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendQIPCModule", 2, String.format("onCall uin: %s, phoneNumber: %s", new Object[] { paramBundle, paramQQAppInterface }));
-      }
-      return EIPCResult.createSuccessResult(localBundle);
+    } else {
       bool = false;
-      break;
     }
+    if (bool)
+    {
+      paramQQAppInterface = (IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+      if (paramQQAppInterface != null)
+      {
+        int i = paramQQAppInterface.getSelfBindState();
+        if (((i == 9) || (i == 8) || (i == 4) || (i == 2)) && (PermissionChecker.a().c()))
+        {
+          paramQQAppInterface = paramQQAppInterface.queryPhoneContactByUin(paramBundle);
+          if (paramQQAppInterface != null)
+          {
+            paramQQAppInterface = paramQQAppInterface.unifiedCode;
+            break label128;
+          }
+        }
+      }
+    }
+    paramQQAppInterface = null;
+    label128:
+    localBundle.putString("PHONE_NUMBER", paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendQIPCModule", 2, String.format("onCall uin: %s, phoneNumber: %s", new Object[] { paramBundle, paramQQAppInterface }));
+    }
+    return EIPCResult.createSuccessResult(localBundle);
   }
   
   private EIPCResult c(QQAppInterface paramQQAppInterface, Bundle paramBundle)
@@ -150,7 +113,10 @@ public class FriendQIPCModule
       QLog.d("FriendQIPCModule", 2, String.format("getSCFInfo: %s", new Object[] { paramBundle }));
     }
     SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    String str2 = "special_care_voice_red_dot" + paramQQAppInterface.getCurrentAccountUin();
+    paramBundle = new StringBuilder();
+    paramBundle.append("special_care_voice_red_dot");
+    paramBundle.append(paramQQAppInterface.getCurrentAccountUin());
+    String str2 = paramBundle.toString();
     paramBundle = SharedPreferencesHandler.a(localSharedPreferences, str2, null);
     paramQQAppInterface = paramBundle;
     if (paramBundle == null) {
@@ -163,36 +129,45 @@ public class FriendQIPCModule
       SharedPreferencesHandler.a(paramBundle, str2, paramQQAppInterface.toArray());
       paramBundle.commit();
     }
-    for (;;)
+    else
     {
-      return EIPCResult.createSuccessResult(localBundle);
       localBundle.putBoolean("KEY_SCF_VOICE_NEW_FLAG", false);
     }
+    return EIPCResult.createSuccessResult(localBundle);
   }
   
   private EIPCResult d(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
     paramBundle = paramBundle.getString("KEY_UIN");
     ExtensionInfo localExtensionInfo = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramBundle, false);
-    if (localExtensionInfo != null) {}
-    for (int i = localExtensionInfo.friendRingId;; i = 0)
-    {
-      paramQQAppInterface = MessageNotificationSettingManager.a(paramQQAppInterface).a(i, paramBundle, 0);
-      paramBundle = new Bundle();
-      paramBundle.putString("KEY_SCF_RING_NAME", paramQQAppInterface);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendQIPCModule", 2, String.format("SCP getRingName, ringId: %s, ringName: %s", new Object[] { Integer.valueOf(i), paramQQAppInterface }));
-      }
-      return EIPCResult.createSuccessResult(paramBundle);
+    int i;
+    if (localExtensionInfo != null) {
+      i = localExtensionInfo.friendRingId;
+    } else {
+      i = 0;
     }
+    paramQQAppInterface = MessageNotificationSettingManager.a(paramQQAppInterface).a(i, paramBundle, 0);
+    paramBundle = new Bundle();
+    paramBundle.putString("KEY_SCF_RING_NAME", paramQQAppInterface);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendQIPCModule", 2, String.format("SCP getRingName, ringId: %s, ringName: %s", new Object[] { Integer.valueOf(i), paramQQAppInterface }));
+    }
+    return EIPCResult.createSuccessResult(paramBundle);
   }
   
   private EIPCResult e(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
     paramBundle = paramBundle.getStringArrayList("KEY_BE_DELETE_SINGLE_WAY_FRIENDS");
-    QLog.d("FriendQIPCModule", 1, "delete single way friends: " + paramBundle);
-    if ((paramBundle != null) && (!paramBundle.isEmpty())) {
-      ((StrangerHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.STRANGER_HANDLER)).notifyUI(5, true, paramBundle);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("delete single way friends: ");
+    localStringBuilder.append(paramBundle);
+    QLog.d("FriendQIPCModule", 1, localStringBuilder.toString());
+    if ((paramBundle != null) && (!paramBundle.isEmpty()))
+    {
+      paramQQAppInterface = (IStrangerService)paramQQAppInterface.getRuntimeService(IStrangerService.class, "all");
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.notifyUI(4, true, paramBundle);
+      }
     }
     return EIPCResult.createSuccessResult(null);
   }
@@ -216,18 +191,20 @@ public class FriendQIPCModule
     if ("ACTION_GET_SCF_RING_NAME".equals(paramString)) {
       return d((QQAppInterface)localObject, paramBundle);
     }
-    if ("ACTION_SET_SAVE_SWITCH".equals(paramString)) {
+    if ("ACTION_SET_SAVE_SWITCH".equals(paramString))
+    {
       a((QQAppInterface)localObject, paramBundle);
-    }
-    while (!"ACTION_DELETE_SINGLE_WAY_FRIENDS".equals(paramString)) {
       return null;
     }
-    return e((QQAppInterface)localObject, paramBundle);
+    if ("ACTION_DELETE_SINGLE_WAY_FRIENDS".equals(paramString)) {
+      return e((QQAppInterface)localObject, paramBundle);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendQIPCModule
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,17 @@ class ShowExternalTroopListAdapter$2
   public void onClick(View paramView)
   {
     Object localObject = paramView.getTag();
-    if (!(localObject instanceof NearbyTroops.CustomViewHolder)) {}
-    for (;;)
+    if ((localObject instanceof NearbyTroops.CustomViewHolder))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       localObject = (NearbyTroops.CustomViewHolder)localObject;
       this.a.a.a(((NearbyTroops.CustomViewHolder)localObject).a);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

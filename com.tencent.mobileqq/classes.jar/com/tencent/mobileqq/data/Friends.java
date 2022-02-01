@@ -72,6 +72,8 @@ public class Friends
   public String constellationDateStr;
   public String constellationIconUrl;
   public String constellationJumpUrl;
+  public String constellationLuckyColor;
+  public String constellationLuckyNumber;
   public String constellationTodayTrend;
   public String constellationTomorrowTrend;
   public String customModel = "";
@@ -154,6 +156,7 @@ public class Friends
   public long uExtOnlineStatus = 0L;
   @unique
   public String uin;
+  public String weatherDecs;
   @defaultValue(defaultInteger=1)
   public int weatherFlag;
   public String weatherTip;
@@ -185,21 +188,23 @@ public class Friends
   {
     try
     {
-      localObject = super.clone();
+      Object localObject = super.clone();
       return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        Object localObject = this;
-      } while (!QLog.isColorLevel());
-      QLog.d("FriendsManager", 2, "Friends clone failed." + localCloneNotSupportedException.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Friends clone failed.");
+        localStringBuilder.append(localCloneNotSupportedException.toString());
+        QLog.d("FriendsManager", 2, localStringBuilder.toString());
+      }
     }
     return this;
   }
   
-  public boolean entityByCursor(Cursor paramCursor)
+  protected boolean entityByCursor(Cursor paramCursor)
   {
     this.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
     this.remark = paramCursor.getString(paramCursor.getColumnIndex("remark"));
@@ -247,6 +252,8 @@ public class Friends
     this.constellationIconUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationIconUrl"));
     this.constellationJumpUrl = paramCursor.getString(paramCursor.getColumnIndex("constellationJumpUrl"));
     this.constellationDateStr = paramCursor.getString(paramCursor.getColumnIndex("constellationDateStr"));
+    this.constellationLuckyColor = paramCursor.getString(paramCursor.getColumnIndex("constellationLuckyColor"));
+    this.constellationLuckyNumber = paramCursor.getString(paramCursor.getColumnIndex("constellationLuckyNumber"));
     this.temper = paramCursor.getString(paramCursor.getColumnIndex("temper"));
     this.weatherType = paramCursor.getString(paramCursor.getColumnIndex("weatherType"));
     this.weatherTypeId = paramCursor.getString(paramCursor.getColumnIndex("weatherTypeId"));
@@ -256,9 +263,16 @@ public class Friends
     this.area = paramCursor.getString(paramCursor.getColumnIndex("area"));
     this.weatherUpdateTime = paramCursor.getLong(paramCursor.getColumnIndex("weatherUpdateTime"));
     this.weatherFlag = paramCursor.getInt(paramCursor.getColumnIndex("weatherFlag"));
+    this.weatherDecs = paramCursor.getString(paramCursor.getColumnIndex("weatherDecs"));
     this.autoStatusUpdateSecond = paramCursor.getLong(paramCursor.getColumnIndex("autoStatusUpdateSecond"));
-    if (QLog.isColorLevel()) {
-      QLog.i("Friends", 2, "entityByCursor uin=" + this.uin + ", cSpecialFlag=" + this.cSpecialFlag);
+    if (QLog.isColorLevel())
+    {
+      paramCursor = new StringBuilder();
+      paramCursor.append("entityByCursor uin=");
+      paramCursor.append(this.uin);
+      paramCursor.append(", cSpecialFlag=");
+      paramCursor.append(this.cSpecialFlag);
+      QLog.i("Friends", 2, paramCursor.toString());
     }
     return true;
   }
@@ -307,60 +321,81 @@ public class Friends
   
   public String getFriendNickWithoutUin()
   {
-    String str = "";
     if (!TextUtils.isEmpty(this.remark)) {
-      str = this.remark;
+      return this.remark;
     }
-    while (TextUtils.isEmpty(this.name)) {
-      return str;
+    if (!TextUtils.isEmpty(this.name)) {
+      return this.name;
     }
-    return this.name;
+    return "";
   }
   
   public long getLastLoginType()
   {
-    if (this.lastLoginType == 0L) {
-      return 10L;
+    long l2 = this.lastLoginType;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = 10L;
     }
-    return this.lastLoginType;
+    return l1;
   }
   
   public int getServiceLevel(EVIPSPEC paramEVIPSPEC)
   {
-    switch (paramEVIPSPEC.value())
+    int i = paramEVIPSPEC.value();
+    if (i != 1)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    default: 
-      return 0;
-    case 1: 
-      return this.qqVipInfo & 0xFFFF;
-    case 2: 
-      return this.superQqInfo & 0xFFFF;
-    case 3: 
-      return this.superVipInfo & 0xFFFF;
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 7) {
+            return 0;
+          }
+          i = this.bigClubInfo;
+        }
+        else
+        {
+          i = this.superVipInfo;
+        }
+      }
+      else {
+        i = this.superQqInfo;
+      }
     }
-    return this.bigClubInfo & 0xFFFF;
+    else {
+      i = this.qqVipInfo;
+    }
+    return i & 0xFFFF;
   }
   
   public int getServiceType(EVIPSPEC paramEVIPSPEC)
   {
-    switch (paramEVIPSPEC.value())
+    int i = paramEVIPSPEC.value();
+    if (i != 1)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    default: 
-      return 0;
-    case 1: 
-      return (this.qqVipInfo & 0xFF0000) >>> 16;
-    case 2: 
-      return (this.superQqInfo & 0xFF0000) >>> 16;
-    case 3: 
-      return (this.superVipInfo & 0xFF0000) >>> 16;
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 7) {
+            return 0;
+          }
+          i = this.bigClubInfo;
+        }
+        else
+        {
+          i = this.superVipInfo;
+        }
+      }
+      else {
+        i = this.superQqInfo;
+      }
     }
-    return (this.bigClubInfo & 0xFF0000) >>> 16;
+    else {
+      i = this.qqVipInfo;
+    }
+    return (i & 0xFF0000) >>> 16;
   }
   
   public boolean isBatteryCharging()
@@ -375,31 +410,34 @@ public class Friends
   
   public boolean isServiceEnabled(EVIPSPEC paramEVIPSPEC)
   {
-    boolean bool = true;
-    switch (paramEVIPSPEC.value())
-    {
-    case 4: 
-    case 5: 
-    case 6: 
-    default: 
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        do
+    int i = paramEVIPSPEC.value();
+    if (i != 1) {
+      if (i != 2) {
+        if (i != 3)
         {
-          do
-          {
-            return bool;
-          } while ((this.qqVipInfo & 0xFF000000) != 0);
-          return false;
-        } while ((this.superQqInfo & 0xFF000000) != 0);
-        return false;
-      } while ((this.superVipInfo & 0xFF000000) != 0);
-      return false;
-    } while ((this.bigClubInfo & 0xFF000000) != 0);
+          if (i != 7) {
+            return false;
+          }
+          if ((this.bigClubInfo & 0xFF000000) == 0) {
+            break label83;
+          }
+        }
+      }
+    }
+    while ((this.qqVipInfo & 0xFF000000) != 0) {
+      for (;;)
+      {
+        return true;
+        if ((this.superVipInfo & 0xFF000000) == 0) {
+          break;
+        }
+        continue;
+        if ((this.superQqInfo & 0xFF000000) == 0) {
+          break;
+        }
+      }
+    }
+    label83:
     return false;
   }
   
@@ -420,12 +458,28 @@ public class Friends
   
   public String toString()
   {
-    return "Friends{uin='" + this.uin + '\'' + ", remark='" + this.remark + '\'' + ", name='" + this.name + '\'' + ", groupid=" + this.groupid + '\'' + ", gathtertype=" + this.gathtertype + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Friends{uin='");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", remark='");
+    localStringBuilder.append(this.remark);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", groupid=");
+    localStringBuilder.append(this.groupid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", gathtertype=");
+    localStringBuilder.append(this.gathtertype);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.Friends
  * JD-Core Version:    0.7.0.1
  */

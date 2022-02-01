@@ -36,21 +36,22 @@ public final class FragmentContainerView
   public FragmentContainerView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    if (!isInEditMode()) {
-      throw new UnsupportedOperationException("FragmentContainerView must be within a FragmentActivity to be instantiated from XML.");
+    if (isInEditMode()) {
+      return;
     }
+    throw new UnsupportedOperationException("FragmentContainerView must be within a FragmentActivity to be instantiated from XML.");
   }
   
   FragmentContainerView(@NonNull Context paramContext, @NonNull AttributeSet paramAttributeSet, @NonNull FragmentManager paramFragmentManager)
   {
     super(paramContext, paramAttributeSet);
     String str = paramAttributeSet.getClassAttribute();
-    Object localObject2 = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.jdField_e_of_type_ArrayOfInt);
+    Object localObject2 = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FragmentContainerView);
     Object localObject1 = str;
     if (str == null) {
-      localObject1 = ((TypedArray)localObject2).getString(R.styleable.d);
+      localObject1 = ((TypedArray)localObject2).getString(R.styleable.FragmentContainerView_android_name);
     }
-    str = ((TypedArray)localObject2).getString(R.styleable.jdField_e_of_type_Int);
+    str = ((TypedArray)localObject2).getString(R.styleable.FragmentContainerView_android_tag);
     ((TypedArray)localObject2).recycle();
     int i = getId();
     localObject2 = paramFragmentManager.findFragmentById(i);
@@ -58,10 +59,22 @@ public final class FragmentContainerView
     {
       if (i <= 0)
       {
-        if (str != null) {}
-        for (paramContext = " with tag " + str;; paramContext = "") {
-          throw new IllegalStateException("FragmentContainerView must have an android:id to add Fragment " + (String)localObject1 + paramContext);
+        if (str != null)
+        {
+          paramContext = new StringBuilder();
+          paramContext.append(" with tag ");
+          paramContext.append(str);
+          paramContext = paramContext.toString();
         }
+        else
+        {
+          paramContext = "";
+        }
+        paramAttributeSet = new StringBuilder();
+        paramAttributeSet.append("FragmentContainerView must have an android:id to add Fragment ");
+        paramAttributeSet.append((String)localObject1);
+        paramAttributeSet.append(paramContext);
+        throw new IllegalStateException(paramAttributeSet.toString());
       }
       localObject1 = paramFragmentManager.getFragmentFactory().instantiate(paramContext.getClassLoader(), (String)localObject1);
       ((Fragment)localObject1).onInflate(paramContext, paramAttributeSet, null);
@@ -71,7 +84,12 @@ public final class FragmentContainerView
   
   private void addDisappearingFragmentView(@NonNull View paramView)
   {
-    if ((paramView.getAnimation() != null) || ((this.mTransitioningFragmentViews != null) && (this.mTransitioningFragmentViews.contains(paramView))))
+    if (paramView.getAnimation() == null)
+    {
+      ArrayList localArrayList = this.mTransitioningFragmentViews;
+      if ((localArrayList == null) || (!localArrayList.contains(paramView))) {}
+    }
+    else
     {
       if (this.mDisappearingFragmentChildren == null) {
         this.mDisappearingFragmentChildren = new ArrayList();
@@ -82,21 +100,31 @@ public final class FragmentContainerView
   
   public void addView(@NonNull View paramView, int paramInt, @Nullable ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (FragmentManager.getViewFragment(paramView) == null) {
-      throw new IllegalStateException("Views added to a FragmentContainerView must be associated with a Fragment. View " + paramView + " is not associated with a Fragment.");
+    if (FragmentManager.getViewFragment(paramView) != null)
+    {
+      super.addView(paramView, paramInt, paramLayoutParams);
+      return;
     }
-    super.addView(paramView, paramInt, paramLayoutParams);
+    paramLayoutParams = new StringBuilder();
+    paramLayoutParams.append("Views added to a FragmentContainerView must be associated with a Fragment. View ");
+    paramLayoutParams.append(paramView);
+    paramLayoutParams.append(" is not associated with a Fragment.");
+    throw new IllegalStateException(paramLayoutParams.toString());
   }
   
-  public boolean addViewInLayout(@NonNull View paramView, int paramInt, @Nullable ViewGroup.LayoutParams paramLayoutParams, boolean paramBoolean)
+  protected boolean addViewInLayout(@NonNull View paramView, int paramInt, @Nullable ViewGroup.LayoutParams paramLayoutParams, boolean paramBoolean)
   {
-    if (FragmentManager.getViewFragment(paramView) == null) {
-      throw new IllegalStateException("Views added to a FragmentContainerView must be associated with a Fragment. View " + paramView + " is not associated with a Fragment.");
+    if (FragmentManager.getViewFragment(paramView) != null) {
+      return super.addViewInLayout(paramView, paramInt, paramLayoutParams, paramBoolean);
     }
-    return super.addViewInLayout(paramView, paramInt, paramLayoutParams, paramBoolean);
+    paramLayoutParams = new StringBuilder();
+    paramLayoutParams.append("Views added to a FragmentContainerView must be associated with a Fragment. View ");
+    paramLayoutParams.append(paramView);
+    paramLayoutParams.append(" is not associated with a Fragment.");
+    throw new IllegalStateException(paramLayoutParams.toString());
   }
   
-  public void dispatchDraw(@NonNull Canvas paramCanvas)
+  protected void dispatchDraw(@NonNull Canvas paramCanvas)
   {
     if ((this.mDrawDisappearingViewsFirst) && (this.mDisappearingFragmentChildren != null))
     {
@@ -110,20 +138,26 @@ public final class FragmentContainerView
     super.dispatchDraw(paramCanvas);
   }
   
-  public boolean drawChild(@NonNull Canvas paramCanvas, @NonNull View paramView, long paramLong)
+  protected boolean drawChild(@NonNull Canvas paramCanvas, @NonNull View paramView, long paramLong)
   {
-    if ((this.mDrawDisappearingViewsFirst) && (this.mDisappearingFragmentChildren != null) && (this.mDisappearingFragmentChildren.size() > 0) && (this.mDisappearingFragmentChildren.contains(paramView))) {
-      return false;
+    if (this.mDrawDisappearingViewsFirst)
+    {
+      ArrayList localArrayList = this.mDisappearingFragmentChildren;
+      if ((localArrayList != null) && (localArrayList.size() > 0) && (this.mDisappearingFragmentChildren.contains(paramView))) {
+        return false;
+      }
     }
     return super.drawChild(paramCanvas, paramView, paramLong);
   }
   
   public void endViewTransition(@NonNull View paramView)
   {
-    if (this.mTransitioningFragmentViews != null)
+    ArrayList localArrayList = this.mTransitioningFragmentViews;
+    if (localArrayList != null)
     {
-      this.mTransitioningFragmentViews.remove(paramView);
-      if ((this.mDisappearingFragmentChildren != null) && (this.mDisappearingFragmentChildren.remove(paramView))) {
+      localArrayList.remove(paramView);
+      localArrayList = this.mDisappearingFragmentChildren;
+      if ((localArrayList != null) && (localArrayList.remove(paramView))) {
         this.mDrawDisappearingViewsFirst = true;
       }
     }
@@ -154,7 +188,7 @@ public final class FragmentContainerView
     super.removeAllViewsInLayout();
   }
   
-  public void removeDetachedView(@NonNull View paramView, boolean paramBoolean)
+  protected void removeDetachedView(@NonNull View paramView, boolean paramBoolean)
   {
     if (paramBoolean) {
       addDisappearingFragmentView(paramView);
@@ -231,7 +265,7 @@ public final class FragmentContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentContainerView
  * JD-Core Version:    0.7.0.1
  */

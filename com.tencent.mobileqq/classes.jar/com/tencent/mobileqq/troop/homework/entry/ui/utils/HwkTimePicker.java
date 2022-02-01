@@ -38,12 +38,12 @@ public class HwkTimePicker
   {
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561289, null));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561132, null));
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter);
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.createMenuSheet(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setCloseAutoRead(true);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setActionContentView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
-      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131361983);
+      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131361999);
       ((DispatchActionMoveScrollView)localObject).a = true;
       ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
       if (Build.VERSION.SDK_INT >= 11)
@@ -72,20 +72,24 @@ public class HwkTimePicker
   
   public void a(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(paramInt1, paramInt2);
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 == 2) {
+          this.c = paramInt2;
+        }
       }
-      return;
+      else {
+        this.jdField_b_of_type_Int = paramInt2;
+      }
+    }
+    else {
       this.jdField_a_of_type_Int = paramInt2;
-      continue;
-      this.jdField_b_of_type_Int = paramInt2;
-      continue;
-      this.c = paramInt2;
+    }
+    IphonePickerView localIphonePickerView = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
+    if (localIphonePickerView != null) {
+      localIphonePickerView.setSelection(paramInt1, paramInt2);
     }
   }
   
@@ -101,14 +105,15 @@ public class HwkTimePicker
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+    ActionSheet localActionSheet = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if ((localActionSheet != null) && (localActionSheet.isShowing())) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.utils.HwkTimePicker
  * JD-Core Version:    0.7.0.1
  */

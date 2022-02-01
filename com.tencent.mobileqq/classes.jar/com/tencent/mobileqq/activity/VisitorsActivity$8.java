@@ -20,13 +20,13 @@ class VisitorsActivity$8
   public void onAnimationStart(Animation paramAnimation)
   {
     if (paramAnimation == this.a.a) {
-      this.a.centerView.setText(2131694435);
+      this.a.centerView.setText(2131694400);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.8
  * JD-Core Version:    0.7.0.1
  */

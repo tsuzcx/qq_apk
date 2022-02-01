@@ -32,13 +32,12 @@ public class BlackWhite2Filter
     localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(61));
     localBaseFilter1.addParam(new TextureResParam("inputImageTexture2", "sh/blackwhite2overlay.png", 33986));
     localBaseFilter2.setNextFilter(localBaseFilter1, null);
-    if (paramBoolean) {}
     super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.filter.ttpic.BlackWhite2Filter
  * JD-Core Version:    0.7.0.1
  */

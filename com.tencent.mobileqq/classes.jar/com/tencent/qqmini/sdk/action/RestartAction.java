@@ -30,9 +30,13 @@ public class RestartAction
     if (paramBaseRuntime == null) {
       return Boolean.valueOf(false);
     }
-    QMLog.i("RestartAction", "restart " + paramBaseRuntime.getMiniAppInfo());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("restart ");
+    ((StringBuilder)localObject).append(paramBaseRuntime.getMiniAppInfo());
+    QMLog.i("RestartAction", ((StringBuilder)localObject).toString());
     paramBaseRuntime.setRuntimeLifecycleListener(new RestartAction.1(this));
-    if (paramBaseRuntime.isMiniGame()) {
+    if (paramBaseRuntime.isMiniGame())
+    {
       if (paramBaseRuntime.getMiniAppInfo() != null)
       {
         paramBaseRuntime = paramBaseRuntime.getAttachedActivity();
@@ -41,22 +45,22 @@ public class RestartAction
         }
       }
     }
-    for (;;)
+    else
     {
-      return Boolean.valueOf(true);
-      MiniAppInfo localMiniAppInfo = paramBaseRuntime.getMiniAppInfo();
-      if (localMiniAppInfo != null)
+      localObject = paramBaseRuntime.getMiniAppInfo();
+      if (localObject != null)
       {
         paramBaseRuntime = paramBaseRuntime.getAttachedActivity();
-        localMiniAppInfo.forceReroad = 3;
-        MiniSDK.startMiniApp(paramBaseRuntime, localMiniAppInfo, null, null);
+        ((MiniAppInfo)localObject).forceReroad = 3;
+        MiniSDK.startMiniApp(paramBaseRuntime, (MiniAppInfo)localObject, null, null);
       }
     }
+    return Boolean.valueOf(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.action.RestartAction
  * JD-Core Version:    0.7.0.1
  */

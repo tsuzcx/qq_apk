@@ -20,14 +20,19 @@ class VoiceMainPresenter$2
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("VoiceMainPresenter", 2, "onBack exception = " + localException.getMessage());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onBack exception = ");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("VoiceMainPresenter", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.VoiceMainPresenter.2
  * JD-Core Version:    0.7.0.1
  */

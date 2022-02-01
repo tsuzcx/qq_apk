@@ -13,29 +13,29 @@ class OfflineFileBubbleDownloadHandler$1
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 3) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 0))
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status != 3) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status != 0))
     {
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubbleDownloadHandler.a.getOnlineFileSessionCenter().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubbleDownloadHandler.a.getOnlineFileSessionCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubbleDownloadHandler.a.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubbleDownloadHandler.a.getFileManagerEngine().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubbleDownloadHandler.a.getOnlineFileSessionCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubbleDownloadHandler.a.getOnlineFileSessionCenter().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubbleDownloadHandler.a.getFileManagerEngine().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAioitemOfflineFileBubbleDownloadHandler.a.getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.OfflineFileBubbleDownloadHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,50 +15,51 @@ public class TeamWorkExportObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 2)
       {
-        do
+        if (paramInt != 3)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                } while (paramObject.length != 2);
-                a((String)paramObject[0], (String)paramObject[1]);
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 4);
-            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
+          if (paramInt != 4) {
             return;
-          } while (paramObject == null);
+          }
+          if (paramObject != null)
+          {
+            paramObject = (Object[])paramObject;
+            if (paramObject.length == 1) {
+              a(((Integer)paramObject[0]).intValue());
+            }
+          }
+        }
+        else if (paramObject != null)
+        {
           paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
-        return;
-      } while (paramObject == null);
+          if (paramObject.length == 2) {
+            a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
+          }
+        }
+      }
+      else if (paramObject != null)
+      {
+        paramObject = (Object[])paramObject;
+        if (paramObject.length == 4) {
+          a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
+        }
+      }
+    }
+    else if (paramObject != null)
+    {
       paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
+      if (paramObject.length == 2) {
+        a((String)paramObject[0], (String)paramObject[1]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkExportObserver
  * JD-Core Version:    0.7.0.1
  */

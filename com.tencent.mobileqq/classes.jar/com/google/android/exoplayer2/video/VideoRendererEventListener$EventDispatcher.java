@@ -16,13 +16,13 @@ public final class VideoRendererEventListener$EventDispatcher
   
   public VideoRendererEventListener$EventDispatcher(@Nullable Handler paramHandler, @Nullable VideoRendererEventListener paramVideoRendererEventListener)
   {
-    if (paramVideoRendererEventListener != null) {}
-    for (paramHandler = (Handler)Assertions.checkNotNull(paramHandler);; paramHandler = null)
-    {
-      this.handler = paramHandler;
-      this.listener = paramVideoRendererEventListener;
-      return;
+    if (paramVideoRendererEventListener != null) {
+      paramHandler = (Handler)Assertions.checkNotNull(paramHandler);
+    } else {
+      paramHandler = null;
     }
+    this.handler = paramHandler;
+    this.listener = paramVideoRendererEventListener;
   }
   
   public void decoderInitialized(String paramString, long paramLong1, long paramLong2)
@@ -76,7 +76,7 @@ public final class VideoRendererEventListener$EventDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.video.VideoRendererEventListener.EventDispatcher
  * JD-Core Version:    0.7.0.1
  */

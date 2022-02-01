@@ -15,14 +15,24 @@ class SubscriptFeedsActivity$8
   
   public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("HtmlOffline.checkUpByBusinessId businessId=2278, code=");
+      paramString.append(paramInt);
+      QLog.d("SubscriptFeedsActivity", 2, paramString.toString());
     }
     this.a.app.getApplication();
-    int i = NetworkUtil.a(MobileQQ.getContext());
+    int i = NetworkUtil.getSystemNetwork(MobileQQ.getContext());
     paramString = new HashMap();
-    paramString.put("network", "" + i);
-    paramString.put("status_code", "" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(i);
+    paramString.put("network", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt);
+    paramString.put("status_code", localStringBuilder.toString());
     StatisticCollector.getInstance(this.a).collectPerformance(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
   }
   
@@ -30,7 +40,7 @@ class SubscriptFeedsActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.8
  * JD-Core Version:    0.7.0.1
  */

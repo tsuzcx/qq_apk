@@ -72,54 +72,58 @@ public class PpsController
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
-    int i;
     try
     {
       localParcel1.writeInterfaceToken(PpsBinder.DESCRIPTOR);
       localParcel1.writeString(paramString);
       this.mRemote.transact(2, localParcel1, localParcel2, 0);
-      i = localParcel2.readInt();
-      if (i == 1) {
-        throw new FailedException(localParcel2);
+      int i = localParcel2.readInt();
+      if (i != 1)
+      {
+        if (i == 0) {
+          return;
+        }
+        paramString = new StringBuilder();
+        paramString.append("不认识的Code==");
+        paramString.append(i);
+        throw new RuntimeException(paramString.toString());
       }
+      throw new FailedException(localParcel2);
     }
     finally
     {
       localParcel2.recycle();
       localParcel1.recycle();
     }
-    if (i != 0) {
-      throw new RuntimeException("不认识的Code==" + i);
-    }
-    localParcel2.recycle();
-    localParcel1.recycle();
   }
   
   public void loadRuntime(String paramString)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
-    int i;
     try
     {
       localParcel1.writeInterfaceToken(PpsBinder.DESCRIPTOR);
       localParcel1.writeString(paramString);
       this.mRemote.transact(1, localParcel1, localParcel2, 0);
-      i = localParcel2.readInt();
-      if (i == 1) {
-        throw new FailedException(localParcel2);
+      int i = localParcel2.readInt();
+      if (i != 1)
+      {
+        if (i == 0) {
+          return;
+        }
+        paramString = new StringBuilder();
+        paramString.append("不认识的Code==");
+        paramString.append(i);
+        throw new RuntimeException(paramString.toString());
       }
+      throw new FailedException(localParcel2);
     }
     finally
     {
       localParcel2.recycle();
       localParcel1.recycle();
     }
-    if (i != 0) {
-      throw new RuntimeException("不认识的Code==" + i);
-    }
-    localParcel2.recycle();
-    localParcel1.recycle();
   }
   
   public void setUuidManager(IBinder paramIBinder)
@@ -143,7 +147,7 @@ public class PpsController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.PpsController
  * JD-Core Version:    0.7.0.1
  */

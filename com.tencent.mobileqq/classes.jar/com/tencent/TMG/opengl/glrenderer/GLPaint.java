@@ -24,13 +24,14 @@ public class GLPaint
   
   public void setLineWidth(float paramFloat)
   {
-    if (paramFloat >= 0.0F) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      this.mLineWidth = paramFloat;
-      return;
+    boolean bool;
+    if (paramFloat >= 0.0F) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assert.assertTrue(bool);
+    this.mLineWidth = paramFloat;
   }
 }
 

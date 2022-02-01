@@ -6,33 +6,41 @@ import com.tencent.mobileqq.activity.recent.config.recentlist.IRecentDataConvert
 import com.tencent.mobileqq.activity.recent.data.RecentItemKandianMergeData;
 import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData;
 import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class SpecialConverter
   implements IRecentDataConvertProcessor
 {
   public RecentBaseData a(BaseQQAppInterface paramBaseQQAppInterface, RecentUser paramRecentUser)
   {
-    switch (paramRecentUser.getType())
+    int i = paramRecentUser.getType();
+    if (i != 4000)
     {
-    }
-    do
-    {
-      do
+      if (i != 7220)
       {
-        return null;
-      } while ((paramRecentUser.msg != null) && (!(paramRecentUser.msg instanceof String)));
-      return new RecentItemNewFriendMsgData(paramRecentUser);
-      return new RecentItemMayKnowFriendData(paramRecentUser, paramBaseQQAppInterface.getCurrentAccountUin());
-    } while ((!ReadInJoyHelper.a((QQAppInterface)paramBaseQQAppInterface)) || (ReadInJoyHelper.c()));
-    return new RecentItemKandianMergeData(paramRecentUser);
+        if (i == 8111) {
+          return new RecentItemMayKnowFriendData(paramRecentUser, paramBaseQQAppInterface.getCurrentAccountUin());
+        }
+      }
+      else if ((((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isInReadinjoyFolderMergerStyle()) && (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getRemoveKandianFlag())) {
+        return new RecentItemKandianMergeData(paramRecentUser);
+      }
+    }
+    else {
+      if ((paramRecentUser.msg == null) || ((paramRecentUser.msg instanceof String))) {
+        break label105;
+      }
+    }
+    return null;
+    label105:
+    return new RecentItemNewFriendMsgData(paramRecentUser);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.recentconvert.SpecialConverter
  * JD-Core Version:    0.7.0.1
  */

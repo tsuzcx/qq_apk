@@ -21,16 +21,17 @@ class MusicGeneWebViewPlugin$4
   public void handleMessage(Message paramMessage)
   {
     Object localObject = paramMessage.getData();
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
+    if (localObject != null) {
+      localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");
+    } else {
+      localObject = null;
+    }
+    paramMessage = (Bitmap)paramMessage.obj;
+    if ((paramMessage != null) && (localObject != null))
     {
-      paramMessage = (Bitmap)paramMessage.obj;
-      if ((paramMessage != null) && (localObject != null))
-      {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
       }
       try
       {
@@ -43,14 +44,13 @@ class MusicGeneWebViewPlugin$4
       catch (Exception paramMessage)
       {
         paramMessage.printStackTrace();
-        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.settings.message;
 
 import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.DeleteRecordDialog.OnDeleteRecordDialogClickListener;
@@ -15,7 +15,7 @@ class ChatHistorySettingFragment$3
   public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
     ReportController.a(ChatHistorySettingFragment.a(this.a), "0X800B87A");
-    if (!this.a.getActivity().isFinishing()) {
+    if (!this.a.getBaseActivity().isFinishing()) {
       ChatHistorySettingFragment.a(this.a, true);
     }
     ThreadManagerV2.excute(new ChatHistorySettingFragment.3.1(this), 64, null, true);
@@ -23,7 +23,7 @@ class ChatHistorySettingFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.ChatHistorySettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

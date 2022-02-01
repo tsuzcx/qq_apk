@@ -12,15 +12,17 @@ public final class RendererConfiguration
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (RendererConfiguration)paramObject;
-    } while (this.tunnelingAudioSessionId == paramObject.tunnelingAudioSessionId);
+      return this.tunnelingAudioSessionId == paramObject.tunnelingAudioSessionId;
+    }
     return false;
   }
   
@@ -31,7 +33,7 @@ public final class RendererConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.RendererConfiguration
  * JD-Core Version:    0.7.0.1
  */

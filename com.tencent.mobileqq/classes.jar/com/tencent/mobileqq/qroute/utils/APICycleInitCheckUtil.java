@@ -11,11 +11,12 @@ public class APICycleInitCheckUtil
   
   public static void checkAndRemove(@NonNull String paramString)
   {
-    if (!QRoute.getConfig().isForceCheck()) {}
-    while ((API_CYCLE_CHECK.get() == null) || (((ArrayList)API_CYCLE_CHECK.get()).isEmpty()) || (paramString.compareTo((String)((ArrayList)API_CYCLE_CHECK.get()).get(0)) != 0)) {
+    if (!QRoute.getConfig().isForceCheck()) {
       return;
     }
-    API_CYCLE_CHECK.remove();
+    if ((API_CYCLE_CHECK.get() != null) && (!((ArrayList)API_CYCLE_CHECK.get()).isEmpty()) && (paramString.compareTo((String)((ArrayList)API_CYCLE_CHECK.get()).get(0)) == 0)) {
+      API_CYCLE_CHECK.remove();
+    }
   }
   
   public static boolean checkAndSet(@NonNull String paramString)
@@ -28,29 +29,28 @@ public class APICycleInitCheckUtil
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(paramString);
       API_CYCLE_CHECK.set(localArrayList);
-    }
-    for (;;)
-    {
       return true;
-      if (((ArrayList)API_CYCLE_CHECK.get()).contains(paramString)) {
-        return false;
-      }
-      ((ArrayList)API_CYCLE_CHECK.get()).add(paramString);
     }
+    if (((ArrayList)API_CYCLE_CHECK.get()).contains(paramString)) {
+      return false;
+    }
+    ((ArrayList)API_CYCLE_CHECK.get()).add(paramString);
+    return true;
   }
   
   public static void removeOnException()
   {
-    if (!QRoute.getConfig().isForceCheck()) {}
-    while (API_CYCLE_CHECK.get() == null) {
+    if (!QRoute.getConfig().isForceCheck()) {
       return;
     }
-    API_CYCLE_CHECK.remove();
+    if (API_CYCLE_CHECK.get() != null) {
+      API_CYCLE_CHECK.remove();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.utils.APICycleInitCheckUtil
  * JD-Core Version:    0.7.0.1
  */

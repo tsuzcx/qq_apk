@@ -55,16 +55,16 @@ public class TransitionImageView
   {
     if (paramAnimation == this.jdField_b_of_type_AndroidViewAnimationAnimation)
     {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label25;
+      int i = this.jdField_a_of_type_Int;
+      if (i == 1)
+      {
+        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+        return;
       }
-      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+      if (i == 2) {
+        this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+      }
     }
-    label25:
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -89,7 +89,7 @@ public class TransitionImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TransitionImageView
  * JD-Core Version:    0.7.0.1
  */

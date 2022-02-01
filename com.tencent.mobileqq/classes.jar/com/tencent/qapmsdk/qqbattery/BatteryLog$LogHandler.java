@@ -23,110 +23,116 @@ class BatteryLog$LogHandler
   
   public void handleMessage(@NonNull Message paramMessage)
   {
-    Object localObject1;
-    Object localObject2;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      BatteryLog.access$102(BatteryLog.access$200() + BatteryLog.access$300() + "_" + BatteryLog.access$400() + ".log");
-      BatteryLog.access$502(BatteryLog.access$200() + BatteryLog.access$300() + "_" + BatteryLog.access$400() + ".rpt");
-      paramMessage = new File(BatteryLog.access$200());
-      localObject1 = new File(BatteryLog.access$100());
-      localObject2 = new File(BatteryLog.access$500());
-      try
-      {
-        paramMessage.mkdirs();
-        ((File)localObject1).delete();
-        ((File)localObject2).delete();
-        BatteryLog.writeCommonLog(new Object[] { "header", BaseInfo.userMeta.version, BatteryLog.access$600(), "pub", BaseInfo.userMeta.uuid, Build.MANUFACTURER, Build.MODEL, Integer.valueOf(Build.VERSION.SDK_INT), Long.valueOf(BatteryLog.access$400()), "1.3" });
-        Logger.INSTANCE.d(new String[] { "QAPM_battery_BatteryLog", "start LogHandler init" });
-        return;
-      }
-      catch (Throwable paramMessage)
-      {
-        for (;;)
-        {
-          Logger.INSTANCE.w(new String[] { "QAPM_battery_BatteryLog", "init LogHandler may be error, ", paramMessage.getMessage() });
-        }
-      }
-    }
-    for (;;)
+    int i = paramMessage.what;
+    if (i != 0)
     {
       int j;
-      try
+      if (i != 1)
       {
-        localObject1 = new File(BatteryLog.access$200()).listFiles();
-        j = localObject1.length;
+        if (i != 2) {
+          return;
+        }
+        if (paramMessage.arg1 == 0) {
+          localObject1 = BatteryLog.access$100();
+        } else {
+          localObject1 = BatteryLog.access$500();
+        }
+        localObject2 = ThreadTool.getReuseStringBuilder();
+        Object[] arrayOfObject = (Object[])paramMessage.obj;
+        int k = arrayOfObject.length;
         i = 0;
-        if (i < j)
+        while (i < k)
         {
-          localObject2 = localObject1[i];
-          try
+          Object localObject3 = arrayOfObject[i];
+          if ((localObject3 instanceof Object[]))
           {
-            long l = FileUtil.getLastModifiedTime((File)localObject2);
-            if ((l != -1L) && (l > ((Long)paramMessage.obj).longValue())) {
-              break label636;
+            localObject3 = (Object[])localObject3;
+            int m = localObject3.length;
+            j = 0;
+            while (j < m)
+            {
+              ((StringBuilder)localObject2).append(localObject3[j]);
+              j += 1;
             }
-            ((File)localObject2).delete();
           }
-          catch (Throwable localThrowable)
-          {
-            Logger.INSTANCE.w(new String[] { "QAPM_battery_BatteryLog", "delete file may be error, file name = ", ((File)localObject2).getName() });
-          }
+          ((StringBuilder)localObject2).append(localObject3);
+          ((StringBuilder)localObject2).append("|");
+          i += 1;
         }
-        if (paramMessage.arg1 != 0) {
-          break label549;
-        }
-      }
-      catch (Throwable paramMessage)
-      {
-        Logger.INSTANCE.w(new String[] { "QAPM_battery_BatteryLog", "clean log file may be error" });
-        Logger.INSTANCE.d(new String[] { "QAPM_battery_BatteryLog", "start MSG_CLEAN" });
+        ((StringBuilder)localObject2).append("\r\n");
+        FileUtil.writeFile((String)localObject1, ((StringBuilder)localObject2).toString(), true);
+        Logger.INSTANCE.i(new String[] { "QAPM_battery_BatteryLog", " start MSG_WRITE ", String.valueOf(paramMessage.arg1), ((StringBuilder)localObject2).toString() });
         return;
       }
-      localObject1 = BatteryLog.access$100();
-      localObject2 = ThreadTool.getReuseStringBuilder();
-      Object[] arrayOfObject = (Object[])paramMessage.obj;
-      int k = arrayOfObject.length;
-      int i = 0;
       for (;;)
       {
-        if (i >= k) {
-          break label577;
-        }
-        Object localObject3 = arrayOfObject[i];
-        if ((localObject3 instanceof Object[]))
+        try
         {
-          localObject3 = (Object[])localObject3;
-          int m = localObject3.length;
-          j = 0;
-          while (j < m)
-          {
-            ((StringBuilder)localObject2).append(localObject3[j]);
-            j += 1;
+          localObject1 = new File(BatteryLog.access$200()).listFiles();
+          j = localObject1.length;
+          i = 0;
+          if (i < j) {
+            localObject2 = localObject1[i];
           }
-          label549:
-          localObject1 = BatteryLog.access$500();
-          break;
         }
-        ((StringBuilder)localObject2).append(localObject3).append("|");
+        catch (Throwable paramMessage)
+        {
+          long l;
+          continue;
+        }
+        try
+        {
+          l = FileUtil.getLastModifiedTime((File)localObject2);
+          if ((l != -1L) && (l > ((Long)paramMessage.obj).longValue())) {
+            continue;
+          }
+          ((File)localObject2).delete();
+        }
+        catch (Throwable localThrowable)
+        {
+          continue;
+        }
+        Logger.INSTANCE.w(new String[] { "QAPM_battery_BatteryLog", "delete file may be error, file name = ", ((File)localObject2).getName() });
         i += 1;
       }
-      label577:
-      ((StringBuilder)localObject2).append("\r\n");
-      FileUtil.writeFile((String)localObject1, ((StringBuilder)localObject2).toString(), true);
-      Logger.INSTANCE.i(new String[] { "QAPM_battery_BatteryLog", " start MSG_WRITE ", String.valueOf(paramMessage.arg1), ((StringBuilder)localObject2).toString() });
+      Logger.INSTANCE.w(new String[] { "QAPM_battery_BatteryLog", "clean log file may be error" });
+      Logger.INSTANCE.d(new String[] { "QAPM_battery_BatteryLog", "start MSG_CLEAN" });
       return;
-      label636:
-      i += 1;
     }
+    paramMessage = new StringBuilder();
+    paramMessage.append(BatteryLog.access$200());
+    paramMessage.append(BatteryLog.access$300());
+    paramMessage.append("_");
+    paramMessage.append(BatteryLog.access$400());
+    paramMessage.append(".log");
+    BatteryLog.access$102(paramMessage.toString());
+    paramMessage = new StringBuilder();
+    paramMessage.append(BatteryLog.access$200());
+    paramMessage.append(BatteryLog.access$300());
+    paramMessage.append("_");
+    paramMessage.append(BatteryLog.access$400());
+    paramMessage.append(".rpt");
+    BatteryLog.access$502(paramMessage.toString());
+    paramMessage = new File(BatteryLog.access$200());
+    Object localObject1 = new File(BatteryLog.access$100());
+    Object localObject2 = new File(BatteryLog.access$500());
+    try
+    {
+      paramMessage.mkdirs();
+      ((File)localObject1).delete();
+      ((File)localObject2).delete();
+      BatteryLog.writeCommonLog(new Object[] { "header", BaseInfo.userMeta.version, BatteryLog.access$600(), "pub", BaseInfo.userMeta.uuid, Build.MANUFACTURER, Build.MODEL, Integer.valueOf(Build.VERSION.SDK_INT), Long.valueOf(BatteryLog.access$400()), "1.3" });
+    }
+    catch (Throwable paramMessage)
+    {
+      Logger.INSTANCE.w(new String[] { "QAPM_battery_BatteryLog", "init LogHandler may be error, ", paramMessage.getMessage() });
+    }
+    Logger.INSTANCE.d(new String[] { "QAPM_battery_BatteryLog", "start LogHandler init" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.BatteryLog.LogHandler
  * JD-Core Version:    0.7.0.1
  */

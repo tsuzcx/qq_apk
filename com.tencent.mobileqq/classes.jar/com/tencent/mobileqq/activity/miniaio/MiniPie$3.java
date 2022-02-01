@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseAIOUtils;
 
 class MiniPie$3
   implements Runnable
@@ -9,12 +9,12 @@ class MiniPie$3
   
   public void run()
   {
-    AIOUtils.a(this.this$0.a);
+    BaseAIOUtils.a(this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.3
  * JD-Core Version:    0.7.0.1
  */

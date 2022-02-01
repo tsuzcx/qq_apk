@@ -40,7 +40,7 @@ public final class UNumbersKt
   @InlineOnly
   private static final int countLeadingZeroBits-xj2QHRw(short paramShort)
   {
-    return Integer.numberOfLeadingZeros(0xFFFF & paramShort) - 16;
+    return Integer.numberOfLeadingZeros(paramShort & 0xFFFF) - 16;
   }
   
   @ExperimentalStdlibApi
@@ -76,7 +76,7 @@ public final class UNumbersKt
   @InlineOnly
   private static final int countOneBits-xj2QHRw(short paramShort)
   {
-    return Integer.bitCount(UInt.constructor-impl(0xFFFF & paramShort));
+    return Integer.bitCount(UInt.constructor-impl(paramShort & 0xFFFF));
   }
   
   @ExperimentalStdlibApi
@@ -112,7 +112,7 @@ public final class UNumbersKt
   @InlineOnly
   private static final int countTrailingZeroBits-xj2QHRw(short paramShort)
   {
-    return Integer.numberOfTrailingZeros(0x10000 | paramShort);
+    return Integer.numberOfTrailingZeros(paramShort | 0x10000);
   }
   
   @ExperimentalStdlibApi
@@ -220,7 +220,7 @@ public final class UNumbersKt
   @InlineOnly
   private static final short takeHighestOneBit-xj2QHRw(short paramShort)
   {
-    return UShort.constructor-impl((short)Integer.highestOneBit(0xFFFF & paramShort));
+    return UShort.constructor-impl((short)Integer.highestOneBit(paramShort & 0xFFFF));
   }
   
   @ExperimentalStdlibApi
@@ -256,12 +256,12 @@ public final class UNumbersKt
   @InlineOnly
   private static final short takeLowestOneBit-xj2QHRw(short paramShort)
   {
-    return UShort.constructor-impl((short)Integer.lowestOneBit(0xFFFF & paramShort));
+    return UShort.constructor-impl((short)Integer.lowestOneBit(paramShort & 0xFFFF));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.UNumbersKt
  * JD-Core Version:    0.7.0.1
  */

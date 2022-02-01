@@ -2,6 +2,7 @@ package com.tencent.mobileqq.qzonestatus;
 
 import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
@@ -42,29 +43,37 @@ public class QzoneContactsFeedManager
   
   private SharedPreferences a()
   {
-    String str = SecurityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) + "GetQZoneFeeds";
-    return BaseApplication.getContext().getSharedPreferences(str, 0);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(SecurityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    ((StringBuilder)localObject).append("GetQZoneFeeds");
+    localObject = ((StringBuilder)localObject).toString();
+    return BaseApplication.getContext().getSharedPreferences((String)localObject, 0);
   }
   
   private void a(ArrayList<Long> paramArrayList, int paramInt)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty()) || (paramInt >= paramArrayList.size()))
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()) && (paramInt < paramArrayList.size()))
     {
-      e();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("refreshAllInner(");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(")...");
+        QLog.d("QzoneContactsFeedManager", 2, ((StringBuilder)localObject).toString());
+      }
+      int j = c() + paramInt;
+      int i = j;
+      if (j >= paramArrayList.size()) {
+        i = paramArrayList.size();
+      }
+      Object localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QzoneContactsFeedServlet.class);
+      paramArrayList = new ArrayList(paramArrayList.subList(paramInt, i));
+      QzoneContactsFeedUtils.a((Intent)localObject, QzoneContactsFeedUtils.a(1, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), paramArrayList, 0L, null));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "refreshAllInner(" + paramInt + ")...");
-    }
-    int j = c() + paramInt;
-    int i = j;
-    if (j >= paramArrayList.size()) {
-      i = paramArrayList.size();
-    }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QzoneContactsFeedServlet.class);
-    paramArrayList = new ArrayList(paramArrayList.subList(paramInt, i));
-    QzoneContactsFeedUtils.a(localNewIntent, QzoneContactsFeedUtils.a(1, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), paramArrayList, 0L, null));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    e();
   }
   
   @TargetApi(9)
@@ -130,12 +139,14 @@ public class QzoneContactsFeedManager
   @TargetApi(9)
   public void a()
   {
-    if (!GetQZoneFeeds.a) {
+    if (!GetQZoneFeeds.a)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("QzoneContactsFeedManager", 2, "GetQZoneFeeds 此step尚未执行，此次调用就此返回，等待自动机中GetQZoneFeeds执行此方法");
       }
+      return;
     }
-    while (!NetworkUtil.g(BaseApplication.getContext())) {
+    if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext())) {
       return;
     }
     ThreadManager.getSubThreadHandler().post(new QzoneContactsFeedManager.1(this));
@@ -143,8 +154,13 @@ public class QzoneContactsFeedManager
   
   public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "updateFriend(" + this.e + ")...");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateFriend(");
+      localStringBuilder.append(this.e);
+      localStringBuilder.append(")...");
+      QLog.d("QzoneContactsFeedManager", 2, localStringBuilder.toString());
     }
     if (this.e != 0) {
       return;
@@ -158,8 +174,13 @@ public class QzoneContactsFeedManager
   
   public void a(long paramLong, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "updateAll(" + this.e + ")...");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateAll(");
+      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(")...");
+      QLog.d("QzoneContactsFeedManager", 2, ((StringBuilder)localObject).toString());
     }
     if (this.e != 0) {
       return;
@@ -167,47 +188,64 @@ public class QzoneContactsFeedManager
     this.e = 2;
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaLangString = paramString;
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QzoneContactsFeedServlet.class);
-    QzoneContactsFeedUtils.a(localNewIntent, QzoneContactsFeedUtils.a(2, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), null, paramLong, paramString));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    Object localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QzoneContactsFeedServlet.class);
+    QzoneContactsFeedUtils.a((Intent)localObject, QzoneContactsFeedUtils.a(2, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), null, paramLong, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
   }
   
   public void a(newest_feeds_rsp paramnewest_feeds_rsp)
   {
-    if (paramnewest_feeds_rsp == null) {}
-    while ((this.e == 3) || (((this.e != 1) || (this.f != 0)) && (this.e != 2))) {
+    if (paramnewest_feeds_rsp == null) {
       return;
     }
-    b(paramnewest_feeds_rsp.last_feed_time, paramnewest_feeds_rsp.str_attach);
+    int i = this.e;
+    if (i == 3) {
+      return;
+    }
+    if (((i == 1) && (this.f == 0)) || (this.e == 2)) {
+      b(paramnewest_feeds_rsp.last_feed_time, paramnewest_feeds_rsp.str_attach);
+    }
   }
   
   public void b()
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "refreshAll(" + this.e + ")...");
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("refreshAll(");
+      ((StringBuilder)localObject).append(this.e);
+      ((StringBuilder)localObject).append(")...");
+      QLog.d("QzoneContactsFeedManager", 2, ((StringBuilder)localObject).toString());
     }
     if (this.e != 0) {
       return;
     }
     this.e = 1;
+    int i = 0;
     this.f = 0;
     this.jdField_a_of_type_JavaUtilArrayList = QzoneContactsFeedUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (QLog.isColorLevel())
     {
-      FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      if (localArrayList != null) {
+        i = localArrayList.size();
       }
-      QLog.d("QzoneContactsFeedManager", 2, new Object[] { "allFriends.size:", Integer.valueOf(i), ",getAllFreindsCount:", Integer.valueOf(localFriendsManager.a()) });
+      QLog.d("QzoneContactsFeedManager", 2, new Object[] { "allFriends.size:", Integer.valueOf(i), ",getAllFreindsCount:", Integer.valueOf(((FriendsManager)localObject).a()) });
     }
     a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
   }
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "retry(" + this.g + ")...");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("retry(");
+      localStringBuilder.append(this.g);
+      localStringBuilder.append(")...");
+      QLog.d("QzoneContactsFeedManager", 2, localStringBuilder.toString());
     }
     this.g += 1;
     if (this.g >= d())
@@ -219,26 +257,33 @@ public class QzoneContactsFeedManager
       d();
       return;
     }
-    if ((this.e == 1) || (this.e == 3))
+    int i = this.e;
+    if ((i != 1) && (i != 3))
     {
-      a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+      if (i == 2)
+      {
+        this.e = 0;
+        a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      e();
       return;
     }
-    if (this.e == 2)
-    {
-      this.e = 0;
-      a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    e();
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
   }
   
   public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "doNextRequest(" + this.f + ")...");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doNextRequest(");
+      localStringBuilder.append(this.f);
+      localStringBuilder.append(")...");
+      QLog.d("QzoneContactsFeedManager", 2, localStringBuilder.toString());
     }
-    if ((this.e != 1) && (this.e != 3))
+    int i = this.e;
+    if ((i != 1) && (i != 3))
     {
       e();
       return;
@@ -269,7 +314,7 @@ public class QzoneContactsFeedManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager
  * JD-Core Version:    0.7.0.1
  */

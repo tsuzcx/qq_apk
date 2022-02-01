@@ -57,27 +57,22 @@ public class DefaultDrmSessionManager<T extends ExoMediaCrypto>
   {
     Assertions.checkNotNull(paramUUID);
     Assertions.checkNotNull(paramExoMediaDrm);
-    if (!C.COMMON_PSSH_UUID.equals(paramUUID)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool, "Use C.CLEARKEY_UUID instead");
-      this.uuid = paramUUID;
-      this.mediaDrm = paramExoMediaDrm;
-      this.callback = paramMediaDrmCallback;
-      this.optionalKeyRequestParameters = paramHashMap;
-      this.eventHandler = paramHandler;
-      this.eventListener = paramEventListener;
-      this.multiSession = paramBoolean;
-      this.initialDrmRequestRetryCount = paramInt;
-      this.mode = 0;
-      this.sessions = new ArrayList();
-      this.provisioningSessions = new ArrayList();
-      if (paramBoolean) {
-        paramExoMediaDrm.setPropertyString("sessionSharing", "enable");
-      }
-      paramExoMediaDrm.setOnEventListener(new DefaultDrmSessionManager.MediaDrmEventListener(this, null));
-      return;
+    Assertions.checkArgument(C.COMMON_PSSH_UUID.equals(paramUUID) ^ true, "Use C.CLEARKEY_UUID instead");
+    this.uuid = paramUUID;
+    this.mediaDrm = paramExoMediaDrm;
+    this.callback = paramMediaDrmCallback;
+    this.optionalKeyRequestParameters = paramHashMap;
+    this.eventHandler = paramHandler;
+    this.eventListener = paramEventListener;
+    this.multiSession = paramBoolean;
+    this.initialDrmRequestRetryCount = paramInt;
+    this.mode = 0;
+    this.sessions = new ArrayList();
+    this.provisioningSessions = new ArrayList();
+    if (paramBoolean) {
+      paramExoMediaDrm.setPropertyString("sessionSharing", "enable");
     }
+    paramExoMediaDrm.setOnEventListener(new DefaultDrmSessionManager.MediaDrmEventListener(this, null));
   }
   
   private static DrmInitData.SchemeData getSchemeData(DrmInitData paramDrmInitData, UUID paramUUID, boolean paramBoolean)
@@ -85,51 +80,48 @@ public class DefaultDrmSessionManager<T extends ExoMediaCrypto>
     ArrayList localArrayList = new ArrayList(paramDrmInitData.schemeDataCount);
     int i = 0;
     int j;
-    if (i < paramDrmInitData.schemeDataCount)
+    for (;;)
     {
-      DrmInitData.SchemeData localSchemeData = paramDrmInitData.get(i);
-      if ((localSchemeData.matches(paramUUID)) || ((C.CLEARKEY_UUID.equals(paramUUID)) && (localSchemeData.matches(C.COMMON_PSSH_UUID)))) {}
-      for (j = 1;; j = 0)
-      {
-        if ((j != 0) && ((localSchemeData.data != null) || (paramBoolean))) {
-          localArrayList.add(localSchemeData);
-        }
-        i += 1;
+      j = paramDrmInitData.schemeDataCount;
+      int k = 1;
+      if (i >= j) {
         break;
       }
+      DrmInitData.SchemeData localSchemeData = paramDrmInitData.get(i);
+      j = k;
+      if (!localSchemeData.matches(paramUUID)) {
+        if ((C.CLEARKEY_UUID.equals(paramUUID)) && (localSchemeData.matches(C.COMMON_PSSH_UUID))) {
+          j = k;
+        } else {
+          j = 0;
+        }
+      }
+      if ((j != 0) && ((localSchemeData.data != null) || (paramBoolean))) {
+        localArrayList.add(localSchemeData);
+      }
+      i += 1;
     }
-    if (localArrayList.isEmpty())
-    {
-      paramDrmInitData = null;
-      return paramDrmInitData;
+    if (localArrayList.isEmpty()) {
+      return null;
     }
     if (C.WIDEVINE_UUID.equals(paramUUID))
     {
       i = 0;
-      label129:
-      if (i < localArrayList.size())
+      while (i < localArrayList.size())
       {
-        paramUUID = (DrmInitData.SchemeData)localArrayList.get(i);
-        if (paramUUID.hasData()) {}
-        for (j = PsshAtomUtil.parseVersion(paramUUID.data);; j = -1)
-        {
-          if (Util.SDK_INT < 23)
-          {
-            paramDrmInitData = paramUUID;
-            if (j == 0) {
-              break;
-            }
-          }
-          if (Util.SDK_INT >= 23)
-          {
-            paramDrmInitData = paramUUID;
-            if (j == 1) {
-              break;
-            }
-          }
-          i += 1;
-          break label129;
+        paramDrmInitData = (DrmInitData.SchemeData)localArrayList.get(i);
+        if (paramDrmInitData.hasData()) {
+          j = PsshAtomUtil.parseVersion(paramDrmInitData.data);
+        } else {
+          j = -1;
         }
+        if ((Util.SDK_INT < 23) && (j == 0)) {
+          return paramDrmInitData;
+        }
+        if ((Util.SDK_INT >= 23) && (j == 1)) {
+          return paramDrmInitData;
+        }
+        i += 1;
       }
     }
     return (DrmInitData.SchemeData)localArrayList.get(0);
@@ -137,17 +129,16 @@ public class DefaultDrmSessionManager<T extends ExoMediaCrypto>
   
   private static byte[] getSchemeInitData(DrmInitData.SchemeData paramSchemeData, UUID paramUUID)
   {
-    paramSchemeData = paramSchemeData.data;
+    byte[] arrayOfByte = paramSchemeData.data;
+    paramSchemeData = arrayOfByte;
     if (Util.SDK_INT < 21)
     {
-      paramUUID = PsshAtomUtil.parseSchemeSpecificData(paramSchemeData, paramUUID);
-      if (paramUUID != null) {}
+      paramSchemeData = PsshAtomUtil.parseSchemeSpecificData(arrayOfByte, paramUUID);
+      if (paramSchemeData == null) {
+        return arrayOfByte;
+      }
     }
-    else
-    {
-      return paramSchemeData;
-    }
-    return paramUUID;
+    return paramSchemeData;
   }
   
   private static String getSchemeMimeType(DrmInitData.SchemeData paramSchemeData, UUID paramUUID)
@@ -179,15 +170,17 @@ public class DefaultDrmSessionManager<T extends ExoMediaCrypto>
   
   public static DefaultDrmSessionManager<FrameworkMediaCrypto> newPlayReadyInstance(MediaDrmCallback paramMediaDrmCallback, String paramString, Handler paramHandler, DefaultDrmSessionManager.EventListener paramEventListener)
   {
-    HashMap localHashMap;
     if (!TextUtils.isEmpty(paramString))
     {
-      localHashMap = new HashMap();
+      HashMap localHashMap = new HashMap();
       localHashMap.put("PRCustomData", paramString);
+      paramString = localHashMap;
     }
-    for (paramString = localHashMap;; paramString = null) {
-      return newFrameworkInstance(C.PLAYREADY_UUID, paramMediaDrmCallback, paramString, paramHandler, paramEventListener);
+    else
+    {
+      paramString = null;
     }
+    return newFrameworkInstance(C.PLAYREADY_UUID, paramMediaDrmCallback, paramString, paramHandler, paramEventListener);
   }
   
   public static DefaultDrmSessionManager<FrameworkMediaCrypto> newWidevineInstance(MediaDrmCallback paramMediaDrmCallback, HashMap<String, String> paramHashMap, Handler paramHandler, DefaultDrmSessionManager.EventListener paramEventListener)
@@ -197,84 +190,108 @@ public class DefaultDrmSessionManager<T extends ExoMediaCrypto>
   
   public DrmSession<T> acquireSession(Looper paramLooper, DrmInitData paramDrmInitData)
   {
-    if ((this.playbackLooper == null) || (this.playbackLooper == paramLooper)) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject1 = this.playbackLooper;
+    boolean bool;
+    if ((localObject1 != null) && (localObject1 != paramLooper)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    Assertions.checkState(bool);
+    if (this.sessions.isEmpty())
     {
-      Assertions.checkState(bool);
-      if (this.sessions.isEmpty())
-      {
-        this.playbackLooper = paramLooper;
-        if (this.mediaDrmHandler == null) {
-          this.mediaDrmHandler = new DefaultDrmSessionManager.MediaDrmHandler(this, paramLooper);
-        }
+      this.playbackLooper = paramLooper;
+      if (this.mediaDrmHandler == null) {
+        this.mediaDrmHandler = new DefaultDrmSessionManager.MediaDrmHandler(this, paramLooper);
       }
-      arrayOfByte = null;
-      str = null;
-      if (this.offlineLicenseKeySetId != null) {
-        break label170;
-      }
+    }
+    localObject1 = this.offlineLicenseKeySetId;
+    Object localObject3 = null;
+    Object localObject2;
+    if (localObject1 == null)
+    {
       paramDrmInitData = getSchemeData(paramDrmInitData, this.uuid, false);
-      if (paramDrmInitData != null) {
-        break;
-      }
-      paramLooper = new DefaultDrmSessionManager.MissingSchemeDataException(this.uuid, null);
-      if ((this.eventHandler != null) && (this.eventListener != null)) {
-        this.eventHandler.post(new DefaultDrmSessionManager.1(this, paramLooper));
-      }
-      return new ErrorStateDrmSession(new DrmSession.DrmSessionException(paramLooper));
-    }
-    byte[] arrayOfByte = getSchemeInitData(paramDrmInitData, this.uuid);
-    String str = getSchemeMimeType(paramDrmInitData, this.uuid);
-    label170:
-    if (!this.multiSession) {
-      if (this.sessions.isEmpty()) {
-        paramDrmInitData = null;
-      }
-    }
-    for (;;)
-    {
-      Object localObject = paramDrmInitData;
       if (paramDrmInitData == null)
       {
-        localObject = new DefaultDrmSession(this.uuid, this.mediaDrm, this, arrayOfByte, str, this.mode, this.offlineLicenseKeySetId, this.optionalKeyRequestParameters, this.callback, paramLooper, this.eventHandler, this.eventListener, this.initialDrmRequestRetryCount);
-        this.sessions.add(localObject);
-      }
-      ((DefaultDrmSession)localObject).acquire();
-      return localObject;
-      paramDrmInitData = (DefaultDrmSession)this.sessions.get(0);
-      continue;
-      localObject = this.sessions.iterator();
-      for (;;)
-      {
-        if (((Iterator)localObject).hasNext())
-        {
-          paramDrmInitData = (DefaultDrmSession)((Iterator)localObject).next();
-          if (paramDrmInitData.hasInitData(arrayOfByte)) {
-            break;
-          }
+        paramLooper = new DefaultDrmSessionManager.MissingSchemeDataException(this.uuid, null);
+        paramDrmInitData = this.eventHandler;
+        if ((paramDrmInitData != null) && (this.eventListener != null)) {
+          paramDrmInitData.post(new DefaultDrmSessionManager.1(this, paramLooper));
         }
+        return new ErrorStateDrmSession(new DrmSession.DrmSessionException(paramLooper));
       }
-      paramDrmInitData = null;
+      localObject1 = getSchemeInitData(paramDrmInitData, this.uuid);
+      localObject2 = getSchemeMimeType(paramDrmInitData, this.uuid);
     }
+    else
+    {
+      localObject1 = null;
+      localObject2 = localObject1;
+    }
+    if (!this.multiSession)
+    {
+      if (this.sessions.isEmpty()) {
+        paramDrmInitData = localObject3;
+      } else {
+        paramDrmInitData = (DefaultDrmSession)this.sessions.get(0);
+      }
+    }
+    else
+    {
+      Iterator localIterator = this.sessions.iterator();
+      do
+      {
+        paramDrmInitData = localObject3;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramDrmInitData = (DefaultDrmSession)localIterator.next();
+      } while (!paramDrmInitData.hasInitData((byte[])localObject1));
+    }
+    if (paramDrmInitData == null)
+    {
+      paramDrmInitData = new DefaultDrmSession(this.uuid, this.mediaDrm, this, (byte[])localObject1, (String)localObject2, this.mode, this.offlineLicenseKeySetId, this.optionalKeyRequestParameters, this.callback, paramLooper, this.eventHandler, this.eventListener, this.initialDrmRequestRetryCount);
+      this.sessions.add(paramDrmInitData);
+    }
+    paramDrmInitData.acquire();
+    return paramDrmInitData;
   }
   
   public boolean canAcquireSession(@NonNull DrmInitData paramDrmInitData)
   {
-    if (this.offlineLicenseKeySetId != null) {}
-    do
-    {
+    Object localObject = this.offlineLicenseKeySetId;
+    boolean bool = true;
+    if (localObject != null) {
       return true;
-      if (getSchemeData(paramDrmInitData, this.uuid, true) == null)
+    }
+    if (getSchemeData(paramDrmInitData, this.uuid, true) == null) {
+      if ((paramDrmInitData.schemeDataCount == 1) && (paramDrmInitData.get(0).matches(C.COMMON_PSSH_UUID)))
       {
-        if ((paramDrmInitData.schemeDataCount != 1) || (!paramDrmInitData.get(0).matches(C.COMMON_PSSH_UUID))) {
-          break;
-        }
-        Log.w("DefaultDrmSessionMgr", "DrmInitData only contains common PSSH SchemeData. Assuming support for: " + this.uuid);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("DrmInitData only contains common PSSH SchemeData. Assuming support for: ");
+        ((StringBuilder)localObject).append(this.uuid);
+        Log.w("DefaultDrmSessionMgr", ((StringBuilder)localObject).toString());
       }
-      paramDrmInitData = paramDrmInitData.schemeType;
-    } while ((paramDrmInitData == null) || ("cenc".equals(paramDrmInitData)) || ((!"cbc1".equals(paramDrmInitData)) && (!"cbcs".equals(paramDrmInitData)) && (!"cens".equals(paramDrmInitData))) || (Util.SDK_INT >= 24));
-    return false;
-    return false;
+      else
+      {
+        return false;
+      }
+    }
+    paramDrmInitData = paramDrmInitData.schemeType;
+    if (paramDrmInitData != null)
+    {
+      if ("cenc".equals(paramDrmInitData)) {
+        return true;
+      }
+      if ((!"cbc1".equals(paramDrmInitData)) && (!"cbcs".equals(paramDrmInitData)) && (!"cens".equals(paramDrmInitData))) {
+        return true;
+      }
+      if (Util.SDK_INT >= 24) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public final byte[] getPropertyByteArray(String paramString)
@@ -315,17 +332,18 @@ public class DefaultDrmSessionManager<T extends ExoMediaCrypto>
   
   public void releaseSession(DrmSession<T> paramDrmSession)
   {
-    if ((paramDrmSession instanceof ErrorStateDrmSession)) {}
-    do
-    {
+    if ((paramDrmSession instanceof ErrorStateDrmSession)) {
       return;
-      paramDrmSession = (DefaultDrmSession)paramDrmSession;
-    } while (!paramDrmSession.release());
-    this.sessions.remove(paramDrmSession);
-    if ((this.provisioningSessions.size() > 1) && (this.provisioningSessions.get(0) == paramDrmSession)) {
-      ((DefaultDrmSession)this.provisioningSessions.get(1)).provision();
     }
-    this.provisioningSessions.remove(paramDrmSession);
+    paramDrmSession = (DefaultDrmSession)paramDrmSession;
+    if (paramDrmSession.release())
+    {
+      this.sessions.remove(paramDrmSession);
+      if ((this.provisioningSessions.size() > 1) && (this.provisioningSessions.get(0) == paramDrmSession)) {
+        ((DefaultDrmSession)this.provisioningSessions.get(1)).provision();
+      }
+      this.provisioningSessions.remove(paramDrmSession);
+    }
   }
   
   public void setMode(int paramInt, byte[] paramArrayOfByte)
@@ -350,7 +368,7 @@ public class DefaultDrmSessionManager<T extends ExoMediaCrypto>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.DefaultDrmSessionManager
  * JD-Core Version:    0.7.0.1
  */

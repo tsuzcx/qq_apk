@@ -19,31 +19,45 @@ public class SDKDowngradeAction
     if (paramMiniAppControlInfo.data.containsKey("downgrade"))
     {
       int i = Integer.parseInt((String)paramMiniAppControlInfo.data.get("downgrade"));
-      if (i == 1) {}
-      for (boolean bool = true;; bool = false)
+      boolean bool;
+      if (i == 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      paramMiniAppControlInfo = Boolean.valueOf(bool);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SDKDowngradeAction downgrade:");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("SDKDowngradeAction", 1, ((StringBuilder)localObject).toString());
+      if (MiniSdkUtil.a() != paramMiniAppControlInfo.booleanValue())
       {
-        paramMiniAppControlInfo = Boolean.valueOf(bool);
-        QLog.d("SDKDowngradeAction", 1, "SDKDowngradeAction downgrade:" + i);
-        if (MiniSdkUtil.a() == paramMiniAppControlInfo.booleanValue()) {
-          break;
-        }
-        QLog.d("SDKDowngradeAction", 1, "SDKDowngradeAction do downgrade:" + i);
-        Intent localIntent = new Intent("com.tencent.mobile.mini.process.exit");
-        localIntent.setPackage("com.tencent.mobileqq");
-        BaseApplication.getContext().sendBroadcast(localIntent);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("SDKDowngradeAction do downgrade:");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("SDKDowngradeAction", 1, ((StringBuilder)localObject).toString());
+        localObject = new Intent("com.tencent.mobile.mini.process.exit");
+        ((Intent)localObject).setPackage("com.tencent.mobileqq");
+        BaseApplication.getContext().sendBroadcast((Intent)localObject);
         MiniSdkUtil.a(paramMiniAppControlInfo.booleanValue());
         ThreadManager.getSubThreadHandler().postDelayed(new SDKDowngradeAction.1(this), 3000L);
         return;
       }
-      QLog.d("SDKDowngradeAction", 1, "SDKDowngradeAction not do downgrade:" + i);
+      paramMiniAppControlInfo = new StringBuilder();
+      paramMiniAppControlInfo.append("SDKDowngradeAction not do downgrade:");
+      paramMiniAppControlInfo.append(i);
+      QLog.d("SDKDowngradeAction", 1, paramMiniAppControlInfo.toString());
       return;
     }
-    QLog.d("SDKDowngradeAction", 1, "UploadLogAction has no appid parameter! " + paramMiniAppControlInfo);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("UploadLogAction has no appid parameter! ");
+    ((StringBuilder)localObject).append(paramMiniAppControlInfo);
+    QLog.d("SDKDowngradeAction", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.push.SDKDowngradeAction
  * JD-Core Version:    0.7.0.1
  */

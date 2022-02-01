@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -23,8 +22,8 @@ import com.tencent.av.business.manager.EffectOperateManager;
 import com.tencent.av.business.manager.filter.EffectFilterTools;
 import com.tencent.av.business.manager.filter.FilterItem;
 import com.tencent.av.ui.AVActivity.AnimationTrigger;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 public class EffectFilterPanel
@@ -61,19 +60,28 @@ public class EffectFilterPanel
   
   public void a(long paramLong, FilterItem paramFilterItem)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onItemSelectedChanged, seq[").append(paramLong).append("], mFilterPager[");
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.w("EffectFilterPanel", 1, bool + "], current[" + paramFilterItem + "]");
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager != null) {
-        this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setCurrentFilter(paramFilterItem);
-      }
-      paramFilterItem = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
-      if ((paramFilterItem != null) && (paramFilterItem.a())) {
-        paramFilterItem.c(false);
-      }
-      return;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onItemSelectedChanged, seq[");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("], mFilterPager[");
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((StringBuilder)localObject).append(bool);
+    ((StringBuilder)localObject).append("], current[");
+    ((StringBuilder)localObject).append(paramFilterItem);
+    ((StringBuilder)localObject).append("]");
+    QLog.w("EffectFilterPanel", 1, ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager;
+    if (localObject != null) {
+      ((EffectFilterTextPager)localObject).setCurrentFilter(paramFilterItem);
+    }
+    paramFilterItem = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
+    if ((paramFilterItem != null) && (paramFilterItem.a())) {
+      paramFilterItem.c(false);
     }
   }
   
@@ -82,9 +90,9 @@ public class EffectFilterPanel
   void a(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
     long l = AudioHelper.b();
-    paramContext = (ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131559906, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131373814));
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager = ((EffectFilterTextPager)paramContext.findViewById(2131381324));
+    paramContext = (ViewGroup)((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131559777, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131373386));
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager = ((EffectFilterTextPager)paramContext.findViewById(2131380581));
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setApp(paramVideoAppInterface);
     setOnFilterListenner(null);
     paramContext = (FilterItem)this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools.a();
@@ -99,58 +107,77 @@ public class EffectFilterPanel
   @TargetApi(11)
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AVLog.printColorLog("EffectFilterPanel", "changeLayoutStyle: " + this.jdField_a_of_type_Boolean + "|" + paramBoolean1 + "|" + paramBoolean2);
-    Object localObject;
-    int i;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("changeLayoutStyle: ");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject1).append("|");
+    ((StringBuilder)localObject1).append(paramBoolean1);
+    ((StringBuilder)localObject1).append("|");
+    ((StringBuilder)localObject1).append(paramBoolean2);
+    AVLog.printColorLog("EffectFilterPanel", ((StringBuilder)localObject1).toString());
     if (this.jdField_a_of_type_Boolean != paramBoolean1)
     {
       this.jdField_a_of_type_Boolean = paramBoolean1;
-      if (!paramBoolean1) {
-        break label243;
+      if (paramBoolean1)
+      {
+        localObject1 = getContext().getResources().getDisplayMetrics();
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("changeLayoutStyle 22: ");
+        ((StringBuilder)localObject2).append(((DisplayMetrics)localObject1).widthPixels);
+        AVLog.printColorLog("EffectFilterPanel", ((StringBuilder)localObject2).toString());
+        localObject2 = new RelativeLayout.LayoutParams(((DisplayMetrics)localObject1).widthPixels / 2, -1);
+        int j = 11;
+        int i;
+        if (paramBoolean2) {
+          i = 11;
+        } else {
+          i = 9;
+        }
+        ((RelativeLayout.LayoutParams)localObject2).addRule(i);
+        this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        localObject1 = new RelativeLayout.LayoutParams(((DisplayMetrics)localObject1).widthPixels / 2, -1);
+        if (paramBoolean2) {
+          i = j;
+        } else {
+          i = 9;
+        }
+        ((RelativeLayout.LayoutParams)localObject1).addRule(i);
+        ((RelativeLayout.LayoutParams)localObject1).setMargins(0, -(int)getContext().getResources().getDimension(2131297767), 0, 0);
+        this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(0.9F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(0.9F);
       }
-      localObject = getContext().getResources().getDisplayMetrics();
-      AVLog.printColorLog("EffectFilterPanel", "changeLayoutStyle 22: " + ((DisplayMetrics)localObject).widthPixels);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(((DisplayMetrics)localObject).widthPixels / 2, -1);
-      if (!paramBoolean2) {
-        break label231;
+      else
+      {
+        localObject1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject1).width = -1;
+        ((RelativeLayout.LayoutParams)localObject1).height = -1;
+        this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+        ((RelativeLayout.LayoutParams)localObject1).setMargins(0, (int)getContext().getResources().getDimension(2131297766), 0, 0);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(14);
+        this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
       }
-      i = 11;
-      localLayoutParams.addRule(i);
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setLayoutParams(localLayoutParams);
-      localObject = new RelativeLayout.LayoutParams(((DisplayMetrics)localObject).widthPixels / 2, -1);
-      if (!paramBoolean2) {
-        break label237;
-      }
-      i = 11;
-      label165:
-      ((RelativeLayout.LayoutParams)localObject).addRule(i);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, -(int)getContext().getResources().getDimension(2131297776), 0, 0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(0.9F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(0.9F);
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a(paramBoolean1);
-      return;
-      label231:
-      i = 9;
-      break;
-      label237:
-      i = 9;
-      break label165;
-      label243:
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).width = -1;
-      ((RelativeLayout.LayoutParams)localObject).height = -1;
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, (int)getContext().getResources().getDimension(2131297775), 0, 0);
-      ((RelativeLayout.LayoutParams)localObject).addRule(14);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
     }
+  }
+  
+  public void b()
+  {
+    int i = VideoController.a().a().E;
+    if ((i != 1) && (i != 2)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0) {
+      i = 2;
+    } else {
+      i = 1;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800BC06", "0X800BC06", i, 0, "", "", "", "");
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -158,7 +185,10 @@ public class EffectFilterPanel
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.dispatchTouchEvent(paramMotionEvent);
-      AVLog.printColorLog("EffectFilterPanel", "onTouchEvent: " + paramMotionEvent.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onTouchEvent: ");
+      localStringBuilder.append(paramMotionEvent.toString());
+      AVLog.printColorLog("EffectFilterPanel", localStringBuilder.toString());
       return true;
     }
     return false;
@@ -171,39 +201,31 @@ public class EffectFilterPanel
   
   public void setOnFilterListenner(EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyOnEffectFilterChangeListener == null) {
+    EffectFilterPanel.MyOnEffectFilterChangeListener localMyOnEffectFilterChangeListener = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyOnEffectFilterChangeListener;
+    if (localMyOnEffectFilterChangeListener == null) {
       this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyOnEffectFilterChangeListener = new EffectFilterPanel.MyOnEffectFilterChangeListener(this, paramOnEffectFilterChangeListener);
+    } else {
+      localMyOnEffectFilterChangeListener.a(paramOnEffectFilterChangeListener);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setOnFilterListenner(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyOnEffectFilterChangeListener);
-      return;
-      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyOnEffectFilterChangeListener.a(paramOnEffectFilterChangeListener);
-    }
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setOnFilterListenner(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyOnEffectFilterChangeListener);
   }
   
   public void setVisibility(int paramInt)
   {
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.setVisibility(paramInt);
     SessionInfo localSessionInfo = VideoController.a().a();
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = localSessionInfo.a;
-    if ((localPtvTemplateInfo != null) && (!TextUtils.isEmpty(localPtvTemplateInfo.filtername))) {}
-    for (int i = 1;; i = 0)
+    if (localSessionInfo.am)
     {
-      if ((localSessionInfo.ay) && (i == 0))
-      {
-        localSessionInfo.ay = false;
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyScroolTextDispearRunnable, 4000L);
-      }
-      super.setVisibility(paramInt);
-      return;
+      localSessionInfo.am = false;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterPanel$MyScroolTextDispearRunnable, 4000L);
     }
+    super.setVisibility(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterPanel
  * JD-Core Version:    0.7.0.1
  */

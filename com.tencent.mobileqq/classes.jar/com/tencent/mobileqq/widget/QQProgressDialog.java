@@ -45,22 +45,22 @@ public class QQProgressDialog
   
   public QQProgressDialog(Context paramContext, int paramInt)
   {
-    this(paramContext, paramInt, 2131561553, 48);
+    this(paramContext, paramInt, 2131561394, 48);
   }
   
   public QQProgressDialog(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramContext, 2131755842);
+    super(paramContext, 2131756189);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt2, null);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363734));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371913));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363664));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371534));
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt3;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379427));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379428));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378779));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378780));
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_b_of_type_AndroidWidgetImageView.getDrawable());
   }
   
@@ -86,15 +86,16 @@ public class QQProgressDialog
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localImageView == null) {
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localImageView.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    localImageView.setVisibility(8);
   }
   
   public void b(int paramInt)
@@ -133,10 +134,11 @@ public class QQProgressDialog
   
   public void d(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localImageView == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    localImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramInt);
   }
   
@@ -152,21 +154,19 @@ public class QQProgressDialog
     //   9: astore_1
     //   10: aload_0
     //   11: invokestatic 159	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   14: return
-    //   15: astore_1
-    //   16: aload_0
-    //   17: invokestatic 159	com/tencent/qqperf/monitor/memory/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
-    //   20: aload_1
-    //   21: athrow
+    //   14: aload_1
+    //   15: athrow
+    //   16: astore_1
+    //   17: goto -13 -> 4
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	22	0	this	QQProgressDialog
-    //   9	1	1	localException	java.lang.Exception
-    //   15	6	1	localObject	java.lang.Object
+    //   0	20	0	this	QQProgressDialog
+    //   9	6	1	localObject	java.lang.Object
+    //   16	1	1	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   0	4	9	java/lang/Exception
-    //   0	4	15	finally
+    //   0	4	9	finally
+    //   0	4	16	java/lang/Exception
   }
   
   public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
@@ -193,8 +193,9 @@ public class QQProgressDialog
   public void onBackPressed()
   {
     super.onBackPressed();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog$Callback.a();
+    QQProgressDialog.Callback localCallback = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog$Callback;
+    if (localCallback != null) {
+      localCallback.a();
     }
   }
   
@@ -218,7 +219,7 @@ public class QQProgressDialog
     super.onStart();
   }
   
-  public void onStop()
+  protected void onStop()
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.isRunning()) {
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
@@ -228,7 +229,7 @@ public class QQProgressDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQProgressDialog
  * JD-Core Version:    0.7.0.1
  */

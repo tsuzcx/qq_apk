@@ -11,44 +11,42 @@ import com.tencent.mobileqq.vas.VasApngIPCModule;
 class PersonalityLabelGalleryActivity$3
   extends URLDrawableParams
 {
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  protected ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
   {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
-    {
-      if (BaseApplicationImpl.sProcessId == 1) {}
-      for (;;)
-      {
-        return new HttpDownloader(bool, paramObject);
-        bool = false;
-      }
+    if ((!"http".equals(paramString)) && (!"https".equals(paramString))) {
+      return null;
     }
-    return null;
+    int i = BaseApplicationImpl.sProcessId;
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
+    }
+    return new HttpDownloader(bool, paramObject);
   }
   
-  public String doGetLocalFilePath(String paramString)
+  protected String doGetLocalFilePath(String paramString)
   {
     return null;
   }
   
-  public ApngSoLoader getApngSoLoader()
+  protected ApngSoLoader getApngSoLoader()
   {
     return VasApngIPCModule.a();
   }
   
-  public Drawable getDefaultLoadingDrawable()
+  protected Drawable getDefaultLoadingDrawable()
   {
     return null;
   }
   
-  public Drawable getDefualtFailedDrawable()
+  protected Drawable getDefualtFailedDrawable()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,19 @@ public class RundownProtection
     do
     {
       i = this.a.get();
-      if ((i & 0xFFFFFFFE) == 0) {}
-      do
-      {
+      if ((i & 0xFFFFFFFE) == 0) {
         return;
-        if ((i & 0x1) == 0) {
+      }
+      if ((i & 0x1) != 0)
+      {
+        if ((this.a.addAndGet(-2) & 0xFFFFFFFE) != 0) {
           break;
         }
-      } while ((this.a.addAndGet(-2) & 0xFFFFFFFE) != 0);
-      synchronized (this.a)
-      {
-        this.a.notifyAll();
-        return;
+        synchronized (this.a)
+        {
+          this.a.notifyAll();
+          return;
+        }
       }
     } while (!this.a.compareAndSet(i, i - 2));
   }
@@ -43,8 +44,10 @@ public class RundownProtection
   
   public void b()
   {
-    if (this.a.compareAndSet(0, 1)) {}
-    while (this.a.compareAndSet(1, 1)) {
+    if (this.a.compareAndSet(0, 1)) {
+      return;
+    }
+    if (this.a.compareAndSet(1, 1)) {
       return;
     }
     int i;
@@ -57,21 +60,22 @@ public class RundownProtection
       synchronized (this.a)
       {
         this.a.wait();
-        return;
       }
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+      localInterruptedException.printStackTrace();
+      return;
+    }
+    for (;;)
+    {
+      throw localInterruptedException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.RundownProtection
  * JD-Core Version:    0.7.0.1
  */

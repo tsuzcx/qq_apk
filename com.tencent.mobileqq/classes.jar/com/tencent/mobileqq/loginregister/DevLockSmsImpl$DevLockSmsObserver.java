@@ -3,9 +3,9 @@ package com.tencent.mobileqq.loginregister;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.GatewayLoginNewDevHelper;
 import com.tencent.mobileqq.app.QBaseActivity;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.phonecontact.util.ContactSyncUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -43,9 +43,18 @@ class DevLockSmsImpl$DevLockSmsObserver
     {
       if (QLog.isColorLevel())
       {
-        QLog.d("DevLockSmsImpl", 2, "onRecvVerifyCode uin:" + paramString + " seq=" + paramInt1);
-        if (paramDevlockInfo != null) {
-          QLog.d("DevLockSmsImpl", 2, "onRecvVerifyCode info.TimeLimit:" + paramDevlockInfo.TimeLimit);
+        paramErrMsg = new StringBuilder();
+        paramErrMsg.append("onRecvVerifyCode uin:");
+        paramErrMsg.append(paramString);
+        paramErrMsg.append(" seq=");
+        paramErrMsg.append(paramInt1);
+        QLog.d("DevLockSmsImpl", 2, paramErrMsg.toString());
+        if (paramDevlockInfo != null)
+        {
+          paramString = new StringBuilder();
+          paramString.append("onRecvVerifyCode info.TimeLimit:");
+          paramString.append(paramDevlockInfo.TimeLimit);
+          QLog.d("DevLockSmsImpl", 2, paramString.toString());
         }
       }
       setSeq(paramInt1);
@@ -63,9 +72,20 @@ class DevLockSmsImpl$DevLockSmsObserver
     }
     if (QLog.isColorLevel())
     {
-      QLog.d("DevLockSmsImpl", 2, "onRecvVerifyCode ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("DevLockSmsImpl", 2, "onRecvVerifyCode  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
+      paramString = new StringBuilder();
+      paramString.append("onRecvVerifyCode ret = ");
+      paramString.append(paramInt2);
+      paramString.append(" seq=");
+      paramString.append(paramInt1);
+      QLog.d("DevLockSmsImpl", 2, paramString.toString());
+      if (paramErrMsg != null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("onRecvVerifyCode  errMsg:");
+        paramString.append(paramErrMsg.getMessage());
+        paramString.append(" seq=");
+        paramString.append(paramInt1);
+        QLog.d("DevLockSmsImpl", 2, paramString.toString());
       }
     }
     if ((paramInt2 == 9) || (paramInt2 == 155))
@@ -78,7 +98,7 @@ class DevLockSmsImpl$DevLockSmsObserver
       QQToast.a(localQBaseActivity, 1, paramErrMsg.getMessage(), 0).a();
       return;
     }
-    QQToast.a(localQBaseActivity, 1, localQBaseActivity.getString(2131716956), 0).a();
+    QQToast.a(localQBaseActivity, 1, localQBaseActivity.getString(2131716609), 0).a();
   }
   
   private void b(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
@@ -93,17 +113,34 @@ class DevLockSmsImpl$DevLockSmsObserver
     localICommonSmsView.dismissDialog();
     if (paramInt2 == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DevLockSmsImpl", 2, "onRecvCheckSMSResult uin:" + paramString + " seq=" + paramInt1);
+      if (QLog.isColorLevel())
+      {
+        paramErrMsg = new StringBuilder();
+        paramErrMsg.append("onRecvCheckSMSResult uin:");
+        paramErrMsg.append(paramString);
+        paramErrMsg.append(" seq=");
+        paramErrMsg.append(paramInt1);
+        QLog.d("DevLockSmsImpl", 2, paramErrMsg.toString());
       }
       setSeq(paramInt1);
       return;
     }
     if (QLog.isColorLevel())
     {
-      QLog.d("DevLockSmsImpl", 2, "onRecvCheckSMSResult ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("DevLockSmsImpl", 2, "onRecvCheckSMSResult  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
+      paramString = new StringBuilder();
+      paramString.append("onRecvCheckSMSResult ret = ");
+      paramString.append(paramInt2);
+      paramString.append(" seq=");
+      paramString.append(paramInt1);
+      QLog.d("DevLockSmsImpl", 2, paramString.toString());
+      if (paramErrMsg != null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("onRecvCheckSMSResult  errMsg:");
+        paramString.append(paramErrMsg.getMessage());
+        paramString.append(" seq=");
+        paramString.append(paramInt1);
+        QLog.d("DevLockSmsImpl", 2, paramString.toString());
       }
     }
     if ((paramInt2 == 9) || (paramInt2 == 155))
@@ -111,25 +148,36 @@ class DevLockSmsImpl$DevLockSmsObserver
       paramDevlockInfo.setResult(-1);
       paramDevlockInfo.finish();
     }
+    if (a(paramDevlockInfo, localICommonSmsView))
+    {
+      QLog.e("DevLockSmsImpl", 1, "onRecvCheckSMSResult failed, but context is invalid, do nothing");
+      return;
+    }
+    localICommonSmsView.clearWrongCode();
     if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
     {
       QQToast.a(paramDevlockInfo, 1, paramErrMsg.getMessage(), 0).a();
       return;
     }
-    QQToast.a(paramDevlockInfo, 1, paramDevlockInfo.getString(2131716956), 0).a();
+    QQToast.a(paramDevlockInfo, 1, paramDevlockInfo.getString(2131716609), 0).a();
   }
   
   public boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView)
   {
-    if ((paramQBaseActivity == null) || (paramICommonSmsView == null)) {
-      return true;
+    if ((paramQBaseActivity != null) && (paramICommonSmsView != null)) {
+      return paramQBaseActivity.isFinishing();
     }
-    return paramQBaseActivity.isFinishing();
+    return true;
   }
   
   public void onRecvNotice(int paramInt1, int paramInt2, String paramString, int paramInt3, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
   {
-    QLog.d("DevLockSmsImpl", 1, "onRecvNotice uin:" + paramString + " seq=" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRecvNotice uin:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" seq=");
+    localStringBuilder.append(paramInt2);
+    QLog.d("DevLockSmsImpl", 1, localStringBuilder.toString());
     if (a((QBaseActivity)this.a.get(), (ICommonSmsView)this.b.get()))
     {
       QLog.e("DevLockSmsImpl", 1, "onRecvNotice, context is invalid");
@@ -145,18 +193,26 @@ class DevLockSmsImpl$DevLockSmsObserver
   
   public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
   {
-    QLog.i("DevLockSmsImpl", 1, "onVerifyClose ret = " + paramInt2);
-    if (paramErrMsg != null) {
-      QLog.d("DevLockSmsImpl", 1, "onVerifyClose  errMsg:" + paramErrMsg.getMessage());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onVerifyClose ret = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    QLog.i("DevLockSmsImpl", 1, ((StringBuilder)localObject).toString());
+    if (paramErrMsg != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onVerifyClose  errMsg:");
+      ((StringBuilder)localObject).append(paramErrMsg.getMessage());
+      QLog.d("DevLockSmsImpl", 1, ((StringBuilder)localObject).toString());
     }
     paramErrMsg = (QBaseActivity)this.a.get();
-    ICommonSmsView localICommonSmsView = (ICommonSmsView)this.b.get();
-    if (a(paramErrMsg, localICommonSmsView))
+    localObject = (ICommonSmsView)this.b.get();
+    if (a(paramErrMsg, (ICommonSmsView)localObject))
     {
       QLog.e("DevLockSmsImpl", 1, "onVerifyClose, context is invalid");
       return;
     }
-    localICommonSmsView.dismissDialog();
+    ((ICommonSmsView)localObject).dismissDialog();
+    ((ICommonSmsView)localObject).loginSuccessCallBack();
     paramErrMsg.setResult(-1);
     paramErrMsg.finish();
     EquipmentLockImpl.a().a(paramErrMsg.getAppRuntime(), paramErrMsg, paramString, true);
@@ -165,14 +221,23 @@ class DevLockSmsImpl$DevLockSmsObserver
   public void onVerifySuccess(String paramString, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     boolean bool = GatewayLoginNewDevHelper.a();
-    QLog.i("DevLockSmsImpl", 1, "gateway_login_new_dev onVerifySuccess isGateWayFlow=" + bool + ",uin=" + ContactSyncManager.b(paramString));
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("gateway_login_new_dev onVerifySuccess isGateWayFlow=");
+    paramToServiceMsg.append(bool);
+    paramToServiceMsg.append(",uin=");
+    paramToServiceMsg.append(ContactSyncUtils.a(paramString));
+    QLog.i("DevLockSmsImpl", 1, paramToServiceMsg.toString());
     if (bool)
     {
       GatewayLoginNewDevHelper.a(2);
       if (!TextUtils.isEmpty(paramString))
       {
         MsfSdkUtils.addLoginSimpleAccount(paramString, true);
-        MobileQQ.sMobileQQ.setProperty(Constants.PropertiesKey.uinDisplayName.toString() + paramString, paramString);
+        paramToServiceMsg = MobileQQ.sMobileQQ;
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append(Constants.PropertiesKey.uinDisplayName.toString());
+        paramFromServiceMsg.append(paramString);
+        paramToServiceMsg.setProperty(paramFromServiceMsg.toString(), paramString);
         MobileQQ.sMobileQQ.setSortAccountList(MsfSdkUtils.getLoginedAccountList());
       }
     }
@@ -180,7 +245,7 @@ class DevLockSmsImpl$DevLockSmsObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.DevLockSmsImpl.DevLockSmsObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -43,23 +43,27 @@ public class AppletAccountCache
     }
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("doInit size = ");
-      if (localList != null) {
-        break label118;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doInit size = ");
+      int i;
+      if (localList == null) {
+        i = 0;
+      } else {
+        i = localList.size();
       }
-    }
-    label118:
-    for (int i = 0;; i = localList.size())
-    {
-      QLog.d("AppletAccountCache", 2, i);
-      return;
+      ((StringBuilder)localObject).append(i);
+      QLog.d("AppletAccountCache", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a(AppletsAccountInfo paramAppletsAccountInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletAccountCache", 2, "saveAppletsAccount AppletsAccount = " + paramAppletsAccountInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveAppletsAccount AppletsAccount = ");
+      localStringBuilder.append(paramAppletsAccountInfo);
+      QLog.d("AppletAccountCache", 2, localStringBuilder.toString());
     }
     addCache(paramAppletsAccountInfo);
     this.proxyManager.transSaveToDatabase();
@@ -70,16 +74,16 @@ public class AppletAccountCache
     this.cacheMap.clear();
   }
   
-  public void destroy() {}
+  protected void destroy() {}
   
-  public String getKey(Entity paramEntity)
+  protected String getKey(Entity paramEntity)
   {
     return ((AppletsAccountInfo)paramEntity).uin;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.asyncdb.cache.AppletAccountCache
  * JD-Core Version:    0.7.0.1
  */

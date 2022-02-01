@@ -1,10 +1,14 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
+import com.tencent.biz.pubaccount.api.IPublicAccountDetailTopGestureLayoutProxy.OnFlingListener;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
@@ -16,6 +20,7 @@ public class AccountDetailTopGestureLayout
   extends TopGestureLayout
 {
   private int jdField_a_of_type_Int;
+  private IPublicAccountDetailTopGestureLayoutProxy.OnFlingListener jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDetailTopGestureLayoutProxy$OnFlingListener;
   private HashMap<Integer, WeakReference<View>> jdField_a_of_type_JavaUtilHashMap;
   
   public AccountDetailTopGestureLayout(Context paramContext)
@@ -31,23 +36,53 @@ public class AccountDetailTopGestureLayout
     paramView.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
     paramView.getLocalVisibleRect(localRect);
-    int k = arrayOfInt[0] + localRect.left;
-    int m = localRect.width();
+    boolean bool2 = false;
+    int m = arrayOfInt[0] + localRect.left;
+    int n = localRect.width();
     int j = arrayOfInt[1] + localRect.top;
-    int n = localRect.height();
+    int i1 = localRect.height();
+    int k = this.jdField_a_of_type_Int;
     int i = j;
-    if (this.jdField_a_of_type_Int > 0)
+    if (k > 0)
     {
       i = j;
       if (j >= 0)
       {
         i = j;
-        if (j <= this.jdField_a_of_type_Int) {
-          i = this.jdField_a_of_type_Int;
+        if (j <= k) {
+          i = k;
         }
       }
     }
-    return (k < paramFloat1) && (paramFloat1 < m + k) && (i < paramFloat2) && (paramFloat2 < n + j);
+    boolean bool1 = bool2;
+    if (m < paramFloat1)
+    {
+      bool1 = bool2;
+      if (paramFloat1 < n + m)
+      {
+        bool1 = bool2;
+        if (i < paramFloat2)
+        {
+          bool1 = bool2;
+          if (paramFloat2 < i1 + j) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public GestureDetector.OnGestureListener a(Context paramContext, IPublicAccountDetailTopGestureLayoutProxy.OnFlingListener paramOnFlingListener)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountDetailTopGestureLayoutProxy$OnFlingListener = paramOnFlingListener;
+    this.gestureListener = new AccountDetailTopGestureLayout.PublicAccountTopGestureDetector(this, paramContext);
+    return this.gestureListener;
+  }
+  
+  public TopGestureLayout.OnGestureListener a()
+  {
+    return this.mOnFlingGesture;
   }
   
   public void a(View paramView)
@@ -79,16 +114,22 @@ public class AccountDetailTopGestureLayout
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramView.hashCode()), new WeakReference(paramView));
   }
   
+  public boolean isInTwoFingerMode()
+  {
+    return super.isInTwoFingerMode();
+  }
+  
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.size() > 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    if ((localObject != null) && (((HashMap)localObject).size() > 0))
     {
       float f1 = paramMotionEvent.getRawX();
       float f2 = paramMotionEvent.getRawY();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        View localView = (View)((WeakReference)localIterator.next()).get();
+        View localView = (View)((WeakReference)((Iterator)localObject).next()).get();
         if ((localView != null) && (localView.getVisibility() == 0) && (a(localView, f1, f2))) {
           return false;
         }
@@ -97,16 +138,26 @@ public class AccountDetailTopGestureLayout
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
+  public void setDefaultDetector(GestureDetector paramGestureDetector)
+  {
+    this.defaultGestureDetector = paramGestureDetector;
+  }
+  
   public void setTitleHeight(int paramInt)
   {
     if (paramInt > 0) {
       this.jdField_a_of_type_Int = paramInt;
     }
   }
+  
+  public void setTopGestureDetector(GestureDetector paramGestureDetector)
+  {
+    this.mTopGestureDetector = paramGestureDetector;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailTopGestureLayout
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

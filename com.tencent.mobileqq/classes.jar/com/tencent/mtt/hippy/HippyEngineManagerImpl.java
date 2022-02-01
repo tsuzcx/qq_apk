@@ -9,11 +9,12 @@ import com.tencent.mtt.hippy.a.n;
 import com.tencent.mtt.hippy.adapter.exception.HippyExceptionHandlerAdapter;
 import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorAdapter;
 import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorEvent;
-import com.tencent.mtt.hippy.adapter.sharedpreferences.HippySharedPreferencesAdapter;
 import com.tencent.mtt.hippy.adapter.thirdparty.HippyThirdPartyAdapter;
+import com.tencent.mtt.hippy.bridge.a;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyAssetBundleLoader;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyBundleLoader;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyFileBundleLoader;
+import com.tencent.mtt.hippy.bridge.bundleloader.HippyRemoteBundleLoader;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.common.ThreadExecutor;
 import com.tencent.mtt.hippy.common.ThreadExecutor.UncaughtExceptionHandler;
@@ -26,6 +27,7 @@ import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.utils.TimeMonitor;
 import com.tencent.mtt.hippy.utils.UIThreadUtils;
 import java.io.File;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -45,7 +47,6 @@ public abstract class HippyEngineManagerImpl
   boolean mEnableHippyBuffer = false;
   HippyEngineManagerImpl.HippyEngineContextImpl mEngineContext;
   HippyGlobalConfigs mGlobalConfigs;
-  private int mGroupId;
   Handler mHandler = new HippyEngineManagerImpl.1(this, Looper.getMainLooper());
   boolean mHasReportEngineLoadResult = false;
   final CopyOnWriteArrayList<HippyRootView> mInstances = new CopyOnWriteArrayList();
@@ -57,113 +58,94 @@ public abstract class HippyEngineManagerImpl
   
   HippyEngineManagerImpl(HippyEngine.EngineInitParams paramEngineInitParams, HippyBundleLoader paramHippyBundleLoader)
   {
-    Object localObject1 = null;
-    Object localObject2;
-    if (!TextUtils.isEmpty(paramEngineInitParams.coreJSAssetsPath))
-    {
-      localObject1 = paramEngineInitParams.context;
-      localObject2 = paramEngineInitParams.coreJSAssetsPath;
-      if (!TextUtils.isEmpty(paramEngineInitParams.codeCacheTag))
-      {
-        bool1 = true;
-        localObject1 = new HippyAssetBundleLoader((Context)localObject1, (String)localObject2, bool1, paramEngineInitParams.codeCacheTag);
-        label103:
-        localObject2 = new HippyGlobalConfigs(paramEngineInitParams);
-        this.mGlobalConfigs = ((HippyGlobalConfigs)localObject2);
-        this.mCoreBundleLoader = ((HippyBundleLoader)localObject1);
-        this.mPreloadBundleLoader = paramHippyBundleLoader;
-        this.mAPIProviders = paramEngineInitParams.providers;
-        this.mDebugMode = paramEngineInitParams.debugMode;
-        if (!paramEngineInitParams.debugMode) {
-          break label298;
-        }
-        paramHippyBundleLoader = paramEngineInitParams.debugBundleName;
-        label158:
-        this.mServerBundleName = paramHippyBundleLoader;
-        if (paramEngineInitParams.debugMode) {
-          break label304;
-        }
-      }
+    Object localObject;
+    if (!TextUtils.isEmpty(paramEngineInitParams.coreJSAssetsPath)) {
+      localObject = new HippyAssetBundleLoader(paramEngineInitParams.context, paramEngineInitParams.coreJSAssetsPath, TextUtils.isEmpty(paramEngineInitParams.codeCacheTag) ^ true, paramEngineInitParams.codeCacheTag);
+    } else if (!TextUtils.isEmpty(paramEngineInitParams.coreJSFilePath)) {
+      localObject = new HippyFileBundleLoader(paramEngineInitParams.coreJSFilePath, TextUtils.isEmpty(paramEngineInitParams.codeCacheTag) ^ true, paramEngineInitParams.codeCacheTag);
+    } else {
+      localObject = null;
     }
-    label298:
-    label304:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.mStartTimeMonitor = new TimeMonitor(bool1);
-      this.mEnableHippyBuffer = paramEngineInitParams.enableBuffer;
-      this.mServerHost = paramEngineInitParams.debugServerHost;
-      this.mGroupId = paramEngineInitParams.groupId;
-      this.mThirdPartyAdapter = paramEngineInitParams.thirdPartyAdapter;
-      com.tencent.mtt.hippy.bridge.a.a.a(((HippyGlobalConfigs)localObject2).getContext(), ((HippyGlobalConfigs)localObject2).getSharedPreferencesAdapter().getSharedPreferences(), ((HippyGlobalConfigs)localObject2).getSoLoaderAdapter());
-      return;
-      bool1 = false;
-      break;
-      if (TextUtils.isEmpty(paramEngineInitParams.coreJSFilePath)) {
-        break label103;
-      }
-      localObject1 = paramEngineInitParams.coreJSFilePath;
-      if (!TextUtils.isEmpty(paramEngineInitParams.codeCacheTag)) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        localObject1 = new HippyFileBundleLoader((String)localObject1, bool1, paramEngineInitParams.codeCacheTag);
-        break;
-      }
+    this.mGlobalConfigs = new HippyGlobalConfigs(paramEngineInitParams);
+    this.mCoreBundleLoader = ((HippyBundleLoader)localObject);
+    this.mPreloadBundleLoader = paramHippyBundleLoader;
+    this.mAPIProviders = paramEngineInitParams.providers;
+    this.mDebugMode = paramEngineInitParams.debugMode;
+    if (paramEngineInitParams.debugMode) {
+      paramHippyBundleLoader = paramEngineInitParams.debugBundleName;
+    } else {
       paramHippyBundleLoader = "";
-      break label158;
     }
+    this.mServerBundleName = paramHippyBundleLoader;
+    this.mStartTimeMonitor = new TimeMonitor(paramEngineInitParams.debugMode ^ true);
+    this.mEnableHippyBuffer = paramEngineInitParams.enableBuffer;
+    this.mServerHost = paramEngineInitParams.debugServerHost;
+    this.mGroupId = paramEngineInitParams.groupId;
+    this.mThirdPartyAdapter = paramEngineInitParams.thirdPartyAdapter;
   }
   
   private void internalLoadInstance(HippyRootView paramHippyRootView)
   {
-    if ((this.mEngineContext == null) || (paramHippyRootView == null)) {
-      notifyModuleLoaded(-500, "load module error. mEngineContext=" + this.mEngineContext + ", HippyRootView instance=" + paramHippyRootView, paramHippyRootView);
-    }
-    do
+    Object localObject1;
+    if ((this.mEngineContext != null) && (paramHippyRootView != null))
     {
-      return;
       LogUtils.d("HippyEngineManagerImpl", "in internalLoadInstance");
       if (this.mEngineContext.mInstanceLifecycleEventListeners != null)
       {
-        localObject = this.mEngineContext.mInstanceLifecycleEventListeners.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((HippyInstanceLifecycleEventListener)((Iterator)localObject).next()).onInstanceLoad(paramHippyRootView.getId());
+        localObject1 = this.mEngineContext.mInstanceLifecycleEventListeners.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          ((HippyInstanceLifecycleEventListener)((Iterator)localObject1).next()).onInstanceLoad(paramHippyRootView.getId());
         }
       }
       paramHippyRootView.attachToEngine(this.mEngineContext);
-      Object localObject = paramHippyRootView.getLaunchParams();
-      HippyBundleLoader localHippyBundleLoader = ((HippyInstanceContext)paramHippyRootView.getContext()).getBundleLoader();
-      if ((!this.mDebugMode) && (localHippyBundleLoader != null))
-      {
-        if (localHippyBundleLoader == null) {
-          break;
+      localObject1 = paramHippyRootView.getLaunchParams();
+      localObject2 = ((HippyInstanceContext)paramHippyRootView.getContext()).getBundleLoader();
+      if ((!this.mDebugMode) && (localObject2 != null)) {
+        if (localObject2 != null)
+        {
+          paramHippyRootView.getTimeMonitor().startEvent(HippyEngineMonitorEvent.MODULE_LOAD_EVENT_WAIT_LOAD_BUNDLE);
+          this.mEngineContext.getBridgeManager().a(paramHippyRootView.getId(), (HippyBundleLoader)localObject2, this.mModuleListener, paramHippyRootView);
         }
-        paramHippyRootView.getTimeMonitor().startEvent(HippyEngineMonitorEvent.MODULE_LOAD_EVENT_WAIT_LOAD_BUNDLE);
-        this.mEngineContext.getBridgeManager().a(paramHippyRootView.getId(), localHippyBundleLoader, this.mModuleListener, paramHippyRootView);
-      }
-      LogUtils.d("HippyEngineManagerImpl", "in internalLoadInstance before loadInstance");
-      this.mEngineContext.getBridgeManager().a(paramHippyRootView.getName(), paramHippyRootView.getId(), (HippyMap)localObject);
-    } while (!this.mDebugMode);
-    notifyModuleLoaded(0, null, paramHippyRootView);
-    return;
-    notifyModuleLoaded(-500, "load module error. loader null", paramHippyRootView);
-  }
-  
-  private void notifyModuleLoaded(int paramInt, String paramString, HippyRootView paramHippyRootView)
-  {
-    if (this.mModuleListener != null)
-    {
-      if (!UIThreadUtils.isOnUiThread()) {
-        break label38;
-      }
-      if (this.mModuleListener != null)
-      {
-        this.mModuleListener.onInitialized(paramInt, paramString, paramHippyRootView);
-        this.mModuleListener = null;
+        else
+        {
+          localObject1 = HippyEngine.ModuleLoadStatus.STATUS_VARIABLE_NULL;
+        }
       }
     }
-    return;
-    label38:
-    UIThreadUtils.runOnUiThread(new HippyEngineManagerImpl.3(this, paramInt, paramString, paramHippyRootView));
+    for (Object localObject2 = "load module error. loader==null";; localObject2 = ((StringBuilder)localObject2).toString())
+    {
+      notifyModuleLoaded((HippyEngine.ModuleLoadStatus)localObject1, (String)localObject2, paramHippyRootView);
+      return;
+      LogUtils.d("HippyEngineManagerImpl", "in internalLoadInstance before loadInstance");
+      this.mEngineContext.getBridgeManager().a(paramHippyRootView.getName(), paramHippyRootView.getId(), (HippyMap)localObject1);
+      if (this.mDebugMode) {
+        notifyModuleLoaded(HippyEngine.ModuleLoadStatus.STATUS_OK, null, paramHippyRootView);
+      }
+      return;
+      localObject1 = HippyEngine.ModuleLoadStatus.STATUS_VARIABLE_NULL;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("load module error. mEngineContext=");
+      ((StringBuilder)localObject2).append(this.mEngineContext);
+      ((StringBuilder)localObject2).append(", HippyRootView instance=");
+      ((StringBuilder)localObject2).append(paramHippyRootView);
+    }
+  }
+  
+  private void notifyModuleLoaded(HippyEngine.ModuleLoadStatus paramModuleLoadStatus, String paramString, HippyRootView paramHippyRootView)
+  {
+    if (this.mModuleListener != null) {
+      if (UIThreadUtils.isOnUiThread())
+      {
+        if (this.mModuleListener != null)
+        {
+          this.mModuleListener.onLoadCompleted(paramModuleLoadStatus, paramString, paramHippyRootView);
+          this.mModuleListener = null;
+        }
+      }
+      else {
+        UIThreadUtils.runOnUiThread(new HippyEngineManagerImpl.4(this, paramModuleLoadStatus, paramString, paramHippyRootView));
+      }
+    }
   }
   
   private void reportEngineLoadResult(int paramInt, Throwable paramThrowable)
@@ -178,134 +160,76 @@ public abstract class HippyEngineManagerImpl
   
   private void resetEngine()
   {
-    if (this.mEngineContext != null) {
-      this.mEngineContext.destroy();
+    HippyEngineManagerImpl.HippyEngineContextImpl localHippyEngineContextImpl = this.mEngineContext;
+    if (localHippyEngineContextImpl != null) {
+      localHippyEngineContextImpl.destroy();
     }
   }
   
-  /* Error */
   private void restartEngineInBackground()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 365	com/tencent/mtt/hippy/HippyEngineManagerImpl:mCurrentState	Lcom/tencent/mtt/hippy/HippyEngine$EngineState;
-    //   6: getstatic 370	com/tencent/mtt/hippy/HippyEngine$EngineState:DESTROYED	Lcom/tencent/mtt/hippy/HippyEngine$EngineState;
-    //   9: if_acmpne +52 -> 61
-    //   12: new 206	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 207	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 372
-    //   22: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: aload_0
-    //   26: getfield 365	com/tencent/mtt/hippy/HippyEngineManagerImpl:mCurrentState	Lcom/tencent/mtt/hippy/HippyEngine$EngineState;
-    //   29: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   32: invokevirtual 222	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: astore_1
-    //   36: ldc 19
-    //   38: aload_1
-    //   39: invokestatic 375	com/tencent/mtt/hippy/utils/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   42: pop
-    //   43: aload_0
-    //   44: sipush -150
-    //   47: new 377	java/lang/Throwable
-    //   50: dup
-    //   51: aload_1
-    //   52: invokespecial 379	java/lang/Throwable:<init>	(Ljava/lang/String;)V
-    //   55: invokevirtual 382	com/tencent/mtt/hippy/HippyEngineManagerImpl:notifyEngineInitialized	(ILjava/lang/Throwable;)V
-    //   58: aload_0
-    //   59: monitorexit
-    //   60: return
-    //   61: aload_0
-    //   62: getfield 133	com/tencent/mtt/hippy/HippyEngineManagerImpl:mStartTimeMonitor	Lcom/tencent/mtt/hippy/utils/TimeMonitor;
-    //   65: invokevirtual 385	com/tencent/mtt/hippy/utils/TimeMonitor:begine	()V
-    //   68: aload_0
-    //   69: getfield 133	com/tencent/mtt/hippy/HippyEngineManagerImpl:mStartTimeMonitor	Lcom/tencent/mtt/hippy/utils/TimeMonitor;
-    //   72: getstatic 388	com/tencent/mtt/hippy/adapter/monitor/HippyEngineMonitorEvent:ENGINE_LOAD_EVENT_INIT_INSTANCE	Ljava/lang/String;
-    //   75: invokevirtual 293	com/tencent/mtt/hippy/utils/TimeMonitor:startEvent	(Ljava/lang/String;)V
-    //   78: aload_0
-    //   79: getfield 365	com/tencent/mtt/hippy/HippyEngineManagerImpl:mCurrentState	Lcom/tencent/mtt/hippy/HippyEngine$EngineState;
-    //   82: getstatic 391	com/tencent/mtt/hippy/HippyEngine$EngineState:INITING	Lcom/tencent/mtt/hippy/HippyEngine$EngineState;
-    //   85: if_acmpeq +10 -> 95
-    //   88: aload_0
-    //   89: getstatic 394	com/tencent/mtt/hippy/HippyEngine$EngineState:ONRESTART	Lcom/tencent/mtt/hippy/HippyEngine$EngineState;
-    //   92: putfield 365	com/tencent/mtt/hippy/HippyEngineManagerImpl:mCurrentState	Lcom/tencent/mtt/hippy/HippyEngine$EngineState;
-    //   95: aload_0
-    //   96: invokespecial 396	com/tencent/mtt/hippy/HippyEngineManagerImpl:resetEngine	()V
-    //   99: aload_0
-    //   100: new 236	com/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl
-    //   103: dup
-    //   104: aload_0
-    //   105: aload_0
-    //   106: getfield 121	com/tencent/mtt/hippy/HippyEngineManagerImpl:mDebugMode	Z
-    //   109: aload_0
-    //   110: getfield 141	com/tencent/mtt/hippy/HippyEngineManagerImpl:mServerHost	Ljava/lang/String;
-    //   113: invokespecial 399	com/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl:<init>	(Lcom/tencent/mtt/hippy/HippyEngineManagerImpl;ZLjava/lang/String;)V
-    //   116: putfield 204	com/tencent/mtt/hippy/HippyEngineManagerImpl:mEngineContext	Lcom/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl;
-    //   119: aload_0
-    //   120: getfield 204	com/tencent/mtt/hippy/HippyEngineManagerImpl:mEngineContext	Lcom/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl;
-    //   123: invokevirtual 297	com/tencent/mtt/hippy/HippyEngineManagerImpl$HippyEngineContextImpl:getBridgeManager	()Lcom/tencent/mtt/hippy/bridge/a;
-    //   126: new 401	com/tencent/mtt/hippy/HippyEngineManagerImpl$5
-    //   129: dup
-    //   130: aload_0
-    //   131: invokespecial 404	com/tencent/mtt/hippy/HippyEngineManagerImpl$5:<init>	(Lcom/tencent/mtt/hippy/HippyEngineManagerImpl;)V
-    //   134: invokeinterface 407 2 0
-    //   139: goto -81 -> 58
-    //   142: astore_1
-    //   143: aload_0
-    //   144: monitorexit
-    //   145: aload_1
-    //   146: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	147	0	this	HippyEngineManagerImpl
-    //   35	17	1	str	String
-    //   142	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	58	142	finally
-    //   61	95	142	finally
-    //   95	139	142	finally
+    try
+    {
+      if (this.mCurrentState == HippyEngine.EngineState.DESTROYED)
+      {
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("restartEngineInBackground... error STATUS_WRONG_STATE, state=");
+        ((StringBuilder)localObject1).append(this.mCurrentState);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        LogUtils.e("HippyEngineManagerImpl", (String)localObject1);
+        notifyEngineInitialized(HippyEngine.EngineInitStatus.STATUS_WRONG_STATE, new Throwable((String)localObject1));
+        return;
+      }
+      this.mStartTimeMonitor.begine();
+      this.mStartTimeMonitor.startEvent(HippyEngineMonitorEvent.ENGINE_LOAD_EVENT_INIT_INSTANCE);
+      if (this.mCurrentState != HippyEngine.EngineState.INITING) {
+        this.mCurrentState = HippyEngine.EngineState.ONRESTART;
+      }
+      resetEngine();
+      this.mEngineContext = new HippyEngineManagerImpl.HippyEngineContextImpl(this, this.mDebugMode, this.mServerHost);
+      this.mEngineContext.getBridgeManager().a(new HippyEngineManagerImpl.6(this));
+      return;
+    }
+    finally {}
   }
   
   public void destroyEngine()
   {
-    this.mCurrentState = HippyEngine.EngineState.DESTROYED;
-    Iterator localIterator = this.mInstances.iterator();
-    while (localIterator.hasNext()) {
-      destroyInstance((HippyRootView)localIterator.next());
+    HippyEngineManagerImpl.HippyEngineContextImpl localHippyEngineContextImpl = this.mEngineContext;
+    if (localHippyEngineContextImpl == null) {
+      return;
     }
-    this.mEventListeners.clear();
-    resetEngine();
-    if (this.mGlobalConfigs != null) {
-      this.mGlobalConfigs.destroyIfNeed();
-    }
-    this.mExtendDatas.clear();
+    localHippyEngineContextImpl.destroyBridge(new HippyEngineManagerImpl.2(this));
   }
   
   public void destroyModule(HippyRootView paramHippyRootView)
   {
-    if ((paramHippyRootView == null) || (!this.mInstances.contains(paramHippyRootView))) {
-      return;
-    }
-    paramHippyRootView.setOnResumeAndPauseListener(null);
-    paramHippyRootView.setOnSizeChangedListener(null);
-    if (this.mDevSupportManager != null) {
-      this.mDevSupportManager.b(paramHippyRootView);
-    }
-    if ((this.mEngineContext != null) && (this.mEngineContext.getBridgeManager() != null)) {
-      this.mEngineContext.getBridgeManager().c(paramHippyRootView.getId());
-    }
-    if ((this.mEngineContext != null) && (this.mEngineContext.mInstanceLifecycleEventListeners != null))
+    if (paramHippyRootView != null)
     {
-      Iterator localIterator = this.mEngineContext.mInstanceLifecycleEventListeners.iterator();
-      while (localIterator.hasNext()) {
-        ((HippyInstanceLifecycleEventListener)localIterator.next()).onInstanceDestroy(paramHippyRootView.getId());
+      if (!this.mInstances.contains(paramHippyRootView)) {
+        return;
       }
+      paramHippyRootView.setOnResumeAndPauseListener(null);
+      paramHippyRootView.setOnSizeChangedListener(null);
+      Object localObject = this.mDevSupportManager;
+      if (localObject != null) {
+        ((n)localObject).b(paramHippyRootView);
+      }
+      localObject = this.mEngineContext;
+      if ((localObject != null) && (((HippyEngineManagerImpl.HippyEngineContextImpl)localObject).getBridgeManager() != null)) {
+        this.mEngineContext.getBridgeManager().c(paramHippyRootView.getId());
+      }
+      localObject = this.mEngineContext;
+      if ((localObject != null) && (((HippyEngineManagerImpl.HippyEngineContextImpl)localObject).mInstanceLifecycleEventListeners != null))
+      {
+        localObject = this.mEngineContext.mInstanceLifecycleEventListeners.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((HippyInstanceLifecycleEventListener)((Iterator)localObject).next()).onInstanceDestroy(paramHippyRootView.getId());
+        }
+      }
+      paramHippyRootView.destroy();
+      this.mInstances.remove(paramHippyRootView);
     }
-    paramHippyRootView.destroy();
-    this.mInstances.remove(paramHippyRootView);
   }
   
   public abstract int getBridgeType();
@@ -323,12 +247,16 @@ public abstract class HippyEngineManagerImpl
   
   public abstract ThreadExecutor getThreadExecutor();
   
-  public void handleThreadUncaughtException(Thread paramThread, Throwable paramThrowable)
+  public void handleThreadUncaughtException(Thread paramThread, Throwable paramThrowable, Integer paramInteger)
   {
-    if ((this.mDebugMode) && (this.mDevSupportManager != null))
+    if (this.mDebugMode)
     {
-      this.mDevSupportManager.a(paramThrowable);
-      return;
+      paramThread = this.mDevSupportManager;
+      if (paramThread != null)
+      {
+        paramThread.a(paramThrowable);
+        return;
+      }
     }
     this.mGlobalConfigs.getExceptionHandler().handleNativeException(new RuntimeException(paramThrowable), false);
   }
@@ -355,17 +283,18 @@ public abstract class HippyEngineManagerImpl
       if (this.mDebugMode)
       {
         this.mDevSupportManager.a(null);
-        return;
+        this.mCoreBundleLoader = new HippyRemoteBundleLoader(this.mDevSupportManager.a(this.mServerBundleName));
+        ((HippyRemoteBundleLoader)this.mCoreBundleLoader).setIsDebugMode(true);
       }
+      LogUtils.d("HippyEngineManagerImpl", "start restartEngineInBackground...");
+      restartEngineInBackground();
+      return;
     }
     catch (Throwable paramEngineListener)
     {
       this.mCurrentState = HippyEngine.EngineState.INITERRORED;
-      notifyEngineInitialized(-200, paramEngineListener);
-      return;
+      notifyEngineInitialized(HippyEngine.EngineInitStatus.STATUS_INIT_EXCEPTION, paramEngineListener);
     }
-    LogUtils.d("HippyEngineManagerImpl", "start restartEngineInBackground...");
-    restartEngineInBackground();
   }
   
   public boolean isDebugMode()
@@ -394,18 +323,14 @@ public abstract class HippyEngineManagerImpl
     HippyBundleLoader localHippyBundleLoader = paramHippyRootViewParams.getBundleLoader();
     if ((localHippyBundleLoader instanceof HippyAssetBundleLoader)) {
       localModuleLoadParams.jsAssetsPath = paramHippyRootViewParams.getBundleLoader().getRawPath();
+    } else if ((localHippyBundleLoader instanceof HippyFileBundleLoader)) {
+      localModuleLoadParams.jsFilePath = paramHippyRootViewParams.getBundleLoader().getRawPath();
     }
-    for (;;)
-    {
-      localModuleLoadParams.jsParams = paramHippyRootViewParams.getLaunchParams();
-      localModuleLoadParams.nativeParams = paramHippyRootViewParams.getNativeParams();
-      localModuleLoadParams.hippyContext = paramHippyRootViewParams.getInstanceContext();
-      localModuleLoadParams.bundleLoader = paramHippyRootViewParams.getBundleLoader();
-      return loadModule(localModuleLoadParams, paramModuleListener, paramOnLoadCompleteListener);
-      if ((localHippyBundleLoader instanceof HippyFileBundleLoader)) {
-        localModuleLoadParams.jsFilePath = paramHippyRootViewParams.getBundleLoader().getRawPath();
-      }
-    }
+    localModuleLoadParams.jsParams = paramHippyRootViewParams.getLaunchParams();
+    localModuleLoadParams.nativeParams = paramHippyRootViewParams.getNativeParams();
+    localModuleLoadParams.hippyContext = paramHippyRootViewParams.getInstanceContext();
+    localModuleLoadParams.bundleLoader = paramHippyRootViewParams.getBundleLoader();
+    return loadModule(localModuleLoadParams, paramModuleListener, paramOnLoadCompleteListener);
   }
   
   public HippyRootView loadModule(HippyEngine.ModuleLoadParams paramModuleLoadParams)
@@ -420,70 +345,72 @@ public abstract class HippyEngineManagerImpl
   
   public HippyRootView loadModule(HippyEngine.ModuleLoadParams paramModuleLoadParams, HippyEngine.ModuleListener paramModuleListener, HippyRootView.OnLoadCompleteListener paramOnLoadCompleteListener)
   {
-    if (paramModuleLoadParams == null) {
-      throw new RuntimeException("Hippy: loadModule loadParams must no be null");
-    }
-    if (paramModuleLoadParams.context == null) {
+    if (paramModuleLoadParams != null)
+    {
+      if (paramModuleLoadParams.context != null)
+      {
+        if ((!this.mDebugMode) && (TextUtils.isEmpty(paramModuleLoadParams.jsAssetsPath)) && (TextUtils.isEmpty(paramModuleLoadParams.jsFilePath))) {
+          throw new RuntimeException("Hippy: loadModule debugMode=true, loadParams.jsAssetsPath and jsFilePath both null!");
+        }
+        if (paramModuleLoadParams.jsParams == null) {
+          paramModuleLoadParams.jsParams = new HippyMap();
+        }
+        if (paramModuleLoadParams.hippyContext != null) {
+          paramModuleLoadParams.hippyContext.setModuleParams(paramModuleLoadParams);
+        }
+        HippyMap localHippyMap;
+        String str;
+        if (!TextUtils.isEmpty(paramModuleLoadParams.jsAssetsPath))
+        {
+          localHippyMap = paramModuleLoadParams.jsParams;
+          str = paramModuleLoadParams.jsAssetsPath;
+        }
+        else
+        {
+          localHippyMap = paramModuleLoadParams.jsParams;
+          str = paramModuleLoadParams.jsFilePath;
+        }
+        localHippyMap.pushString("sourcePath", str);
+        this.mModuleListener = paramModuleListener;
+        paramModuleLoadParams = new HippyRootView(paramModuleLoadParams);
+        if (this.mCurrentState == HippyEngine.EngineState.DESTROYED)
+        {
+          notifyModuleLoaded(HippyEngine.ModuleLoadStatus.STATUS_ENGINE_UNINIT, "load module error wrong state, Engine destroyed", paramModuleLoadParams);
+          return paramModuleLoadParams;
+        }
+        if (paramOnLoadCompleteListener != null) {
+          paramModuleLoadParams.setOnLoadCompleteListener(paramOnLoadCompleteListener);
+        }
+        paramModuleLoadParams.setTimeMonitor(new TimeMonitor(this.mDebugMode ^ true));
+        paramModuleLoadParams.getTimeMonitor().begine();
+        paramModuleLoadParams.getTimeMonitor().startEvent(HippyEngineMonitorEvent.MODULE_LOAD_EVENT_WAIT_ENGINE);
+        paramModuleLoadParams.setOnResumeAndPauseListener(this);
+        paramModuleLoadParams.setOnSizeChangedListener(this);
+        paramModuleLoadParams.attachEngineManager(this);
+        this.mInstances.add(paramModuleLoadParams);
+        this.mDevSupportManager.a(paramModuleLoadParams);
+        if ((!this.mDevManagerInited) && (this.mDebugMode)) {
+          this.mDevManagerInited = true;
+        }
+        LogUtils.d("HippyEngineManagerImpl", "internalLoadInstance start...");
+        if (this.mCurrentState == HippyEngine.EngineState.INITED)
+        {
+          internalLoadInstance(paramModuleLoadParams);
+          return paramModuleLoadParams;
+        }
+        paramModuleListener = HippyEngine.ModuleLoadStatus.STATUS_ENGINE_UNINIT;
+        paramOnLoadCompleteListener = new StringBuilder();
+        paramOnLoadCompleteListener.append("error wrong state, Engine state not INITED, state:");
+        paramOnLoadCompleteListener.append(this.mCurrentState);
+        notifyModuleLoaded(paramModuleListener, paramOnLoadCompleteListener.toString(), paramModuleLoadParams);
+        return paramModuleLoadParams;
+      }
       throw new RuntimeException("Hippy: loadModule loadParams.context must no be null");
     }
-    if ((!this.mDebugMode) && (TextUtils.isEmpty(paramModuleLoadParams.jsAssetsPath)) && (TextUtils.isEmpty(paramModuleLoadParams.jsFilePath))) {
-      throw new RuntimeException("Hippy: loadModule debugMode=true, loadParams.jsAssetsPath and jsFilePath both null!");
-    }
-    if (paramModuleLoadParams.jsParams == null) {
-      paramModuleLoadParams.jsParams = new HippyMap();
-    }
-    if (paramModuleLoadParams.hippyContext != null) {
-      paramModuleLoadParams.hippyContext.setModuleParams(paramModuleLoadParams);
-    }
-    if (!TextUtils.isEmpty(paramModuleLoadParams.jsAssetsPath)) {
-      paramModuleLoadParams.jsParams.pushString("sourcePath", paramModuleLoadParams.jsAssetsPath);
-    }
-    for (;;)
-    {
-      this.mModuleListener = paramModuleListener;
-      paramModuleLoadParams = new HippyRootView(paramModuleLoadParams);
-      if (this.mCurrentState != HippyEngine.EngineState.DESTROYED) {
-        break;
-      }
-      notifyModuleLoaded(-150, "load module error wrong state, Engine destroyed", paramModuleLoadParams);
-      return paramModuleLoadParams;
-      paramModuleLoadParams.jsParams.pushString("sourcePath", paramModuleLoadParams.jsFilePath);
-    }
-    if (paramOnLoadCompleteListener != null) {
-      paramModuleLoadParams.setOnLoadCompleteListener(paramOnLoadCompleteListener);
-    }
-    boolean bool;
-    if (!this.mDebugMode)
-    {
-      bool = true;
-      paramModuleLoadParams.setTimeMonitor(new TimeMonitor(bool));
-      paramModuleLoadParams.getTimeMonitor().begine();
-      paramModuleLoadParams.getTimeMonitor().startEvent(HippyEngineMonitorEvent.MODULE_LOAD_EVENT_WAIT_ENGINE);
-      paramModuleLoadParams.setOnResumeAndPauseListener(this);
-      paramModuleLoadParams.setOnSizeChangedListener(this);
-      paramModuleLoadParams.attachEngineManager(this);
-      this.mInstances.add(paramModuleLoadParams);
-      this.mDevSupportManager.a(paramModuleLoadParams);
-      if ((!this.mDevManagerInited) && (this.mDebugMode)) {
-        this.mDevManagerInited = true;
-      }
-      LogUtils.d("HippyEngineManagerImpl", "internalLoadInstance start...");
-      if (this.mCurrentState != HippyEngine.EngineState.INITED) {
-        break label314;
-      }
-      internalLoadInstance(paramModuleLoadParams);
-    }
-    for (;;)
-    {
-      return paramModuleLoadParams;
-      bool = false;
-      break;
-      label314:
-      notifyModuleLoaded(-150, "error wrong state, Engine state not INITED, state:" + this.mCurrentState, paramModuleLoadParams);
-    }
+    throw new RuntimeException("Hippy: loadModule loadParams must no be null");
   }
   
-  void notifyEngineInitialized(int paramInt, Throwable paramThrowable)
+  void notifyEngineInitialized(HippyEngine.EngineInitStatus paramEngineInitStatus, Throwable paramThrowable)
   {
     this.mHandler.removeMessages(100);
     if (this.mPreloadBundleLoader != null)
@@ -495,60 +422,80 @@ public abstract class HippyEngineManagerImpl
     {
       this.mStartTimeMonitor.end();
       int i;
-      label73:
-      HippyEngine.EngineListener localEngineListener;
-      if (this.mCurrentState == HippyEngine.EngineState.INITED)
-      {
+      if (this.mCurrentState == HippyEngine.EngineState.INITED) {
         i = 0;
-        reportEngineLoadResult(i, paramThrowable);
-        Iterator localIterator = this.mEventListeners.iterator();
-        if (!localIterator.hasNext()) {
-          break label129;
-        }
-        localEngineListener = (HippyEngine.EngineListener)localIterator.next();
-        if (paramThrowable != null) {
-          break label120;
-        }
-      }
-      label120:
-      for (String str = null;; str = paramThrowable.toString())
-      {
-        localEngineListener.onInitialized(paramInt, str);
-        break label73;
+      } else {
         i = 1;
-        break;
       }
-      label129:
+      reportEngineLoadResult(i, paramThrowable);
+      Iterator localIterator = this.mEventListeners.iterator();
+      while (localIterator.hasNext())
+      {
+        HippyEngine.EngineListener localEngineListener = (HippyEngine.EngineListener)localIterator.next();
+        String str;
+        if (paramThrowable == null) {
+          str = null;
+        } else {
+          str = paramThrowable.toString();
+        }
+        localEngineListener.onInitialized(paramEngineInitStatus, str);
+      }
       this.mEventListeners.clear();
       return;
     }
-    UIThreadUtils.runOnUiThread(new HippyEngineManagerImpl.4(this, paramThrowable, paramInt));
+    UIThreadUtils.runOnUiThread(new HippyEngineManagerImpl.5(this, paramThrowable, paramEngineInitStatus));
   }
   
   public boolean onBackPress(DeviceEventModule.InvokeDefaultBackPress paramInvokeDefaultBackPress)
   {
-    return onBackPressed(new HippyEngineManagerImpl.2(this, paramInvokeDefaultBackPress));
+    return onBackPressed(new HippyEngineManagerImpl.3(this, paramInvokeDefaultBackPress));
   }
   
   public boolean onBackPressed(HippyEngine.BackPressHandler paramBackPressHandler)
   {
-    if ((this.mEngineContext != null) && (this.mEngineContext.getModuleManager().getNativeModule(DeviceEventModule.class) != null)) {
+    HippyEngineManagerImpl.HippyEngineContextImpl localHippyEngineContextImpl = this.mEngineContext;
+    if ((localHippyEngineContextImpl != null) && (localHippyEngineContextImpl.getModuleManager().getNativeModule(DeviceEventModule.class) != null)) {
       return ((DeviceEventModule)this.mEngineContext.getModuleManager().getNativeModule(DeviceEventModule.class)).onBackPressed(paramBackPressHandler);
     }
     return false;
   }
   
+  protected void onDestroy()
+  {
+    this.mCurrentState = HippyEngine.EngineState.DESTROYED;
+    Object localObject = this.mInstances.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      destroyInstance((HippyRootView)((Iterator)localObject).next());
+    }
+    this.mEventListeners.clear();
+    resetEngine();
+    localObject = this.mGlobalConfigs;
+    if (localObject != null) {
+      ((HippyGlobalConfigs)localObject).destroyIfNeed();
+    }
+    this.mExtendDatas.clear();
+  }
+  
   public void onDevBundleLoadReady(File paramFile)
   {
     this.mCoreBundleLoader = new HippyFileBundleLoader(paramFile.getAbsolutePath());
+    ((HippyFileBundleLoader)this.mCoreBundleLoader).setIsDebugMode(true);
+    restartEngineInBackground();
+  }
+  
+  public void onDevBundleLoadReady(InputStream paramInputStream) {}
+  
+  public void onDevBundleReLoad()
+  {
     restartEngineInBackground();
   }
   
   public void onEnginePause()
   {
-    if ((this.mEngineContext != null) && (this.mEngineContext.mEngineLifecycleEventListeners != null))
+    Object localObject = this.mEngineContext;
+    if ((localObject != null) && (((HippyEngineManagerImpl.HippyEngineContextImpl)localObject).mEngineLifecycleEventListeners != null))
     {
-      Object localObject = this.mInstances.iterator();
+      localObject = this.mInstances.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((HippyRootView)((Iterator)localObject).next()).onPause();
       }
@@ -569,9 +516,10 @@ public abstract class HippyEngineManagerImpl
   
   public void onEngineResume()
   {
-    if ((this.mEngineContext != null) && (this.mEngineContext.mEngineLifecycleEventListeners != null))
+    Object localObject = this.mEngineContext;
+    if ((localObject != null) && (((HippyEngineManagerImpl.HippyEngineContextImpl)localObject).mEngineLifecycleEventListeners != null))
     {
-      Object localObject = this.mInstances.iterator();
+      localObject = this.mInstances.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((HippyRootView)((Iterator)localObject).next()).onResume();
       }
@@ -594,46 +542,48 @@ public abstract class HippyEngineManagerImpl
   {
     this.mCurrentState = HippyEngine.EngineState.INITED;
     this.mDevManagerInited = false;
-    notifyEngineInitialized(-100, paramThrowable);
+    notifyEngineInitialized(HippyEngine.EngineInitStatus.STATUS_ERR_DEVSERVER, paramThrowable);
   }
   
   public void onInstancePause(int paramInt)
   {
-    if (this.mEngineContext == null) {}
-    do
-    {
+    Object localObject = this.mEngineContext;
+    if (localObject == null) {
       return;
-      if (this.mEngineContext.mInstanceLifecycleEventListeners != null)
-      {
-        Iterator localIterator = this.mEngineContext.mInstanceLifecycleEventListeners.iterator();
-        while (localIterator.hasNext()) {
-          ((HippyInstanceLifecycleEventListener)localIterator.next()).onInstancePause(paramInt);
-        }
+    }
+    if (((HippyEngineManagerImpl.HippyEngineContextImpl)localObject).mInstanceLifecycleEventListeners != null)
+    {
+      localObject = this.mEngineContext.mInstanceLifecycleEventListeners.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((HippyInstanceLifecycleEventListener)((Iterator)localObject).next()).onInstancePause(paramInt);
       }
-    } while (this.mEngineContext.getBridgeManager() == null);
-    this.mEngineContext.getBridgeManager().b(paramInt);
+    }
+    if (this.mEngineContext.getBridgeManager() != null) {
+      this.mEngineContext.getBridgeManager().b(paramInt);
+    }
   }
   
   public void onInstanceResume(int paramInt)
   {
-    if (this.mEngineContext == null) {}
-    do
-    {
+    Object localObject = this.mEngineContext;
+    if (localObject == null) {
       return;
-      if (this.mEngineContext.mInstanceLifecycleEventListeners != null)
-      {
-        Iterator localIterator = this.mEngineContext.mInstanceLifecycleEventListeners.iterator();
-        while (localIterator.hasNext()) {
-          ((HippyInstanceLifecycleEventListener)localIterator.next()).onInstanceResume(paramInt);
-        }
+    }
+    if (((HippyEngineManagerImpl.HippyEngineContextImpl)localObject).mInstanceLifecycleEventListeners != null)
+    {
+      localObject = this.mEngineContext.mInstanceLifecycleEventListeners.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((HippyInstanceLifecycleEventListener)((Iterator)localObject).next()).onInstanceResume(paramInt);
       }
-    } while (this.mEngineContext.getBridgeManager() == null);
-    this.mEngineContext.getBridgeManager().a(paramInt);
+    }
+    if (this.mEngineContext.getBridgeManager() != null) {
+      this.mEngineContext.getBridgeManager().a(paramInt);
+    }
   }
   
   public void onSizeChanged(HippyRootView paramHippyRootView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    getThreadExecutor().postOnDomThread(new HippyEngineManagerImpl.6(this, paramHippyRootView, paramInt1, paramInt2));
+    getThreadExecutor().postOnDomThread(new HippyEngineManagerImpl.7(this, paramHippyRootView, paramInt1, paramInt2));
   }
   
   public HippyInstanceContext preCreateInstanceContext(Context paramContext)
@@ -643,21 +593,23 @@ public abstract class HippyEngineManagerImpl
   
   public void preloadModule(HippyBundleLoader paramHippyBundleLoader)
   {
-    if ((this.mEngineContext != null) && (this.mEngineContext.getBridgeManager() != null)) {
+    HippyEngineManagerImpl.HippyEngineContextImpl localHippyEngineContextImpl = this.mEngineContext;
+    if ((localHippyEngineContextImpl != null) && (localHippyEngineContextImpl.getBridgeManager() != null)) {
       this.mEngineContext.getBridgeManager().a(-1, paramHippyBundleLoader, null, null);
     }
   }
   
   public void sendEvent(String paramString, Object paramObject)
   {
-    if ((this.mEngineContext != null) && (this.mEngineContext.getModuleManager() != null)) {
+    HippyEngineManagerImpl.HippyEngineContextImpl localHippyEngineContextImpl = this.mEngineContext;
+    if ((localHippyEngineContextImpl != null) && (localHippyEngineContextImpl.getModuleManager() != null)) {
       ((EventDispatcher)this.mEngineContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent(paramString, paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngineManagerImpl
  * JD-Core Version:    0.7.0.1
  */

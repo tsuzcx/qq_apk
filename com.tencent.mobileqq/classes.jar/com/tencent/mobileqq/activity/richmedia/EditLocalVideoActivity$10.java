@@ -17,12 +17,12 @@ class EditLocalVideoActivity$10
   
   public void b()
   {
-    QQToast.a(this.a, 2131694873, 1).a();
+    QQToast.a(this.a, 2131694860, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.10
  * JD-Core Version:    0.7.0.1
  */

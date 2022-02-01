@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:orientation="vertical" android:id="@id/root" android:background="@color/aiu" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/b8q" android:background="@drawable/ea9" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/h48" />
-        <TextView android:textSize="13.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/mdl" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:text="深圳大学" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/n_l" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/h4c" android:scaleType="centerInside" />
-    </LinearLayout>
+    <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="wrap_content" android:layout_height="0.0dip" />
 </FrameLayout>

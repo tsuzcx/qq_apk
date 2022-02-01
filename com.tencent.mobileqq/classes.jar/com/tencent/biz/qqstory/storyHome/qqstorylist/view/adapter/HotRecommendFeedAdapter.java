@@ -37,97 +37,96 @@ public class HotRecommendFeedAdapter
     super(paramContext, paramActivity, paramInt);
   }
   
-  public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
+  protected View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
     paramBaseViewHolder.b = paramInt;
     paramBaseViewHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener);
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size()))
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()))
     {
-      SLog.e("HotRecommendFeedAdapter", "bind view failed because of invalidate data.");
-      return paramBaseViewHolder.a();
-    }
-    paramViewGroup = paramBaseViewHolder.a(2131365433);
-    paramViewGroup.setVisibility(8);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131380619);
-    localTextView1.setVisibility(4);
-    localTextView1.setOnClickListener(null);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131380554);
-    localTextView2.setVisibility(4);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131381687);
-    localStoryUserBadgeView.setVisibility(8);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131380475);
-    localTextView3.setVisibility(8);
-    Object localObject = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131374989);
-    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localStoryVideoItem != null)
-    {
-      ((QQStoryAutoPlayView)localObject).setItemData(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, localStoryVideoItem, paramInt);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager != null) {
-        ((QQStoryAutoPlayView)localObject).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager);
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener != null) {
-        ((QQStoryAutoPlayView)localObject).setStoryCoverClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener);
-      }
-      FeedSegment.a(localStoryVideoItem, (QQStoryAutoPlayView)localObject, "QQStory_feed_min", UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 100.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 178.0F));
-      if (!TextUtils.isEmpty(localStoryVideoItem.mOwnerUid))
+      Object localObject1 = paramBaseViewHolder.a(2131365298);
+      ((View)localObject1).setVisibility(8);
+      TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131379896);
+      localTextView1.setVisibility(4);
+      localTextView1.setOnClickListener(null);
+      TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131379839);
+      localTextView2.setVisibility(4);
+      StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131380921);
+      localStoryUserBadgeView.setVisibility(8);
+      TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131379778);
+      localTextView3.setVisibility(8);
+      Object localObject2 = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131374520);
+      paramViewGroup = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (paramViewGroup != null)
       {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(localStoryVideoItem.mOwnerUid);
-        if (localObject != null)
+        ((QQStoryAutoPlayView)localObject2).setItemData(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramViewGroup, paramInt);
+        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager != null) {
+          ((QQStoryAutoPlayView)localObject2).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager);
+        }
+        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener != null) {
+          ((QQStoryAutoPlayView)localObject2).setStoryCoverClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener);
+        }
+        FeedSegment.a(paramViewGroup, (QQStoryAutoPlayView)localObject2, "QQStory_feed_min", UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 100.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 178.0F));
+        if (!TextUtils.isEmpty(paramViewGroup.mOwnerUid))
         {
-          localTextView3.setVisibility(0);
-          if (!TextUtils.isEmpty(((QQUserUIItem)localObject).remark)) {
-            break label464;
-          }
-          localTextView3.setText(((QQUserUIItem)localObject).nickName);
-          if (!TextUtils.isEmpty(((QQUserUIItem)localObject).getUnionId()))
+          localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(paramViewGroup.mOwnerUid);
+          if (localObject2 != null)
           {
-            localStoryUserBadgeView.setVisibility(0);
-            localStoryUserBadgeView.setUnionID(((QQUserUIItem)localObject).getUnionId(), 1);
+            localTextView3.setVisibility(0);
+            if (TextUtils.isEmpty(((QQUserUIItem)localObject2).remark)) {
+              localTextView3.setText(((QQUserUIItem)localObject2).nickName);
+            } else {
+              localTextView3.setText(((QQUserUIItem)localObject2).remark);
+            }
+            if (!TextUtils.isEmpty(((QQUserUIItem)localObject2).getUnionId()))
+            {
+              localStoryUserBadgeView.setVisibility(0);
+              localStoryUserBadgeView.setUnionID(((QQUserUIItem)localObject2).getUnionId(), 1);
+            }
+            if (!TextUtils.isEmpty(paramViewGroup.mRecommendWording))
+            {
+              localTextView2.setVisibility(0);
+              localTextView2.setText(paramViewGroup.mRecommendWording);
+            }
+            if ((((QQUserUIItem)localObject2).isVip()) && (!((QQUserUIItem)localObject2).isMe()) && (!((QQUserUIItem)localObject2).isFriend()))
+            {
+              localTextView1.setVisibility(0);
+              if (((QQUserUIItem)localObject2).isSubscribe())
+              {
+                localTextView1.setText(HardCodeUtil.a(2131705704));
+                localTextView1.setTextColor(Color.parseColor("#80FFFFFF"));
+                localTextView1.setBackgroundDrawable(null);
+                localTextView1.setOnClickListener(null);
+                localTextView1.setClickable(false);
+                ((View)localObject1).setVisibility(0);
+              }
+              else
+              {
+                localTextView1.setText(HardCodeUtil.a(2131705703));
+                localTextView1.setTextColor(Color.parseColor("#FFFFFF"));
+                localTextView1.setBackgroundResource(2130847134);
+                localTextView1.setOnClickListener(paramBaseViewHolder);
+              }
+            }
+            else if (QLog.isColorLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("这个里显示不出关注按钮了，打个log \n");
+              ((StringBuilder)localObject1).append(localObject2);
+              QLog.w("HotRecommendFeedAdapter", 2, ((StringBuilder)localObject1).toString());
+            }
           }
-          if (!TextUtils.isEmpty(localStoryVideoItem.mRecommendWording))
-          {
-            localTextView2.setVisibility(0);
-            localTextView2.setText(localStoryVideoItem.mRecommendWording);
-          }
-          if ((!((QQUserUIItem)localObject).isVip()) || (((QQUserUIItem)localObject).isMe()) || (((QQUserUIItem)localObject).isFriend())) {
-            break label513;
-          }
-          localTextView1.setVisibility(0);
-          if (!((QQUserUIItem)localObject).isSubscribe()) {
-            break label477;
-          }
-          localTextView1.setText(HardCodeUtil.a(2131705638));
-          localTextView1.setTextColor(Color.parseColor("#80FFFFFF"));
-          localTextView1.setBackgroundDrawable(null);
-          localTextView1.setOnClickListener(null);
-          localTextView1.setClickable(false);
-          paramViewGroup.setVisibility(0);
+          StoryReportor.a("home_page", "multi_card_exp", 0, 0, new String[] { paramViewGroup.mOwnerUid, paramViewGroup.mVid });
         }
       }
-    }
-    for (;;)
-    {
-      StoryReportor.a("home_page", "multi_card_exp", 0, 0, new String[] { localStoryVideoItem.mOwnerUid, localStoryVideoItem.mVid });
       return paramBaseViewHolder.a();
-      label464:
-      localTextView3.setText(((QQUserUIItem)localObject).remark);
-      break;
-      label477:
-      localTextView1.setText(HardCodeUtil.a(2131705637));
-      localTextView1.setTextColor(Color.parseColor("#FFFFFF"));
-      localTextView1.setBackgroundResource(2130847266);
-      localTextView1.setOnClickListener(paramBaseViewHolder);
-      continue;
-      label513:
-      if (QLog.isColorLevel()) {
-        QLog.w("HotRecommendFeedAdapter", 2, "这个里显示不出关注按钮了，打个log \n" + localObject);
-      }
     }
+    SLog.e("HotRecommendFeedAdapter", "bind view failed because of invalidate data.");
+    return paramBaseViewHolder.a();
   }
   
-  public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
+  protected BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561834, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561686, paramViewGroup, false));
   }
   
   public void a(HotRecommendFeedAdapter.OnSubscribeClickListener paramOnSubscribeClickListener)
@@ -137,7 +136,7 @@ public class HotRecommendFeedAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.adapter.HotRecommendFeedAdapter
  * JD-Core Version:    0.7.0.1
  */

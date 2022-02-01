@@ -15,16 +15,6 @@ public final class ReqTmpChatPicDownload
   public long lUIN = 0L;
   public String strFlieKey = "";
   
-  static
-  {
-    if (!ReqTmpChatPicDownload.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public ReqTmpChatPicDownload() {}
   
   public ReqTmpChatPicDownload(long paramLong1, long paramLong2, String paramString, byte paramByte)
@@ -37,18 +27,17 @@ public final class ReqTmpChatPicDownload
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -62,13 +51,28 @@ public final class ReqTmpChatPicDownload
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ReqTmpChatPicDownload)paramObject;
-    } while ((!JceUtil.equals(this.lUIN, paramObject.lUIN)) || (!JceUtil.equals(this.lSeq, paramObject.lSeq)) || (!JceUtil.equals(this.strFlieKey, paramObject.strFlieKey)) || (!JceUtil.equals(this.getPicSize, paramObject.getPicSize)));
-    return true;
+    }
+    paramObject = (ReqTmpChatPicDownload)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.lUIN, paramObject.lUIN))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.lSeq, paramObject.lSeq))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.strFlieKey, paramObject.strFlieKey))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.getPicSize, paramObject.getPicSize)) {
+            bool1 = true;
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -102,7 +106,7 @@ public final class ReqTmpChatPicDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.ReqTmpChatPicDownload
  * JD-Core Version:    0.7.0.1
  */

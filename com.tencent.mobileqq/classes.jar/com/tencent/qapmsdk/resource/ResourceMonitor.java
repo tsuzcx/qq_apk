@@ -107,15 +107,16 @@ public class ResourceMonitor
   
   public static ResourceMonitor getInstance()
   {
-    if (perfCollector == null) {}
-    try
-    {
-      if (perfCollector == null) {
-        perfCollector = new ResourceMonitor();
+    if (perfCollector == null) {
+      try
+      {
+        if (perfCollector == null) {
+          perfCollector = new ResourceMonitor();
+        }
       }
-      return perfCollector;
+      finally {}
     }
-    finally {}
+    return perfCollector;
   }
   
   private void initializeItem(@NonNull PerfItem paramPerfItem)
@@ -155,129 +156,126 @@ public class ResourceMonitor
   
   private void tidyCpuItem(@NonNull PerfItem paramPerfItem)
   {
-    double d2 = 0.0D;
-    double d1;
     if (lastPerfItem != null)
     {
-      if ((lastPerfItem.cpuJiffies == 9223372036854775807L) || (lastPerfItem.cpuSysJiffies == 9223372036854775807L) || (lastPerfItem.cpuSysUsedJiffies == 9223372036854775807L)) {
-        break label205;
-      }
-      long l1 = paramPerfItem.cpuJiffies;
-      long l2 = lastPerfItem.cpuJiffies;
-      long l3 = paramPerfItem.cpuSysJiffies - lastPerfItem.cpuSysJiffies;
-      long l4 = paramPerfItem.cpuSysUsedJiffies;
-      long l5 = lastPerfItem.cpuSysUsedJiffies;
-      if (l3 > 0L)
+      if ((lastPerfItem.cpuJiffies != 9223372036854775807L) && (lastPerfItem.cpuSysJiffies != 9223372036854775807L) && (lastPerfItem.cpuSysUsedJiffies != 9223372036854775807L))
       {
-        paramPerfItem.cpuRate = ((l1 - l2) * 1.0D / l3);
-        paramPerfItem.sysCpuRate = ((l4 - l5) * 1.0D / l3);
+        long l1 = paramPerfItem.cpuJiffies;
+        long l2 = lastPerfItem.cpuJiffies;
+        long l3 = paramPerfItem.cpuSysJiffies - lastPerfItem.cpuSysJiffies;
+        long l4 = paramPerfItem.cpuSysUsedJiffies;
+        long l5 = lastPerfItem.cpuSysUsedJiffies;
+        if (l3 > 0L)
+        {
+          d2 = l1 - l2;
+          Double.isNaN(d2);
+          d1 = l3;
+          Double.isNaN(d1);
+          paramPerfItem.cpuRate = (d2 * 1.0D / d1);
+          d2 = l4 - l5;
+          Double.isNaN(d2);
+          Double.isNaN(d1);
+          paramPerfItem.sysCpuRate = (d2 * 1.0D / d1);
+        }
+        double d1 = paramPerfItem.cpuRate;
+        double d2 = 0.0D;
+        if (d1 > 0.0D) {
+          d1 = paramPerfItem.cpuRate;
+        } else {
+          d1 = 0.0D;
+        }
+        paramPerfItem.cpuRate = d1;
+        d1 = d2;
+        if (paramPerfItem.sysCpuRate > 0.0D) {
+          d1 = paramPerfItem.sysCpuRate;
+        }
+        paramPerfItem.sysCpuRate = d1;
       }
-      if (paramPerfItem.cpuRate <= 0.0D) {
-        break label200;
+      else
+      {
+        ArrayList localArrayList = this.dataCollector.collectAppCpuByTop(pid);
+        paramPerfItem.sysCpuRate = ((Double)localArrayList.get(0)).doubleValue();
+        paramPerfItem.cpuRate = ((Double)localArrayList.get(1)).doubleValue();
       }
-      d1 = paramPerfItem.cpuRate;
-      paramPerfItem.cpuRate = d1;
-      d1 = d2;
-      if (paramPerfItem.sysCpuRate > 0.0D) {
-        d1 = paramPerfItem.sysCpuRate;
-      }
-      paramPerfItem.sysCpuRate = d1;
-    }
-    for (;;)
-    {
       lastPerfItem.cpuJiffies = paramPerfItem.cpuJiffies;
       lastPerfItem.cpuSysJiffies = paramPerfItem.cpuSysJiffies;
       lastPerfItem.cpuSysUsedJiffies = paramPerfItem.cpuSysUsedJiffies;
-      return;
-      label200:
-      d1 = 0.0D;
-      break;
-      label205:
-      ArrayList localArrayList = this.dataCollector.collectAppCpuByTop(pid);
-      paramPerfItem.sysCpuRate = ((Double)localArrayList.get(0)).doubleValue();
-      paramPerfItem.cpuRate = ((Double)localArrayList.get(1)).doubleValue();
     }
   }
   
   private void tidyIoItem(@NonNull PerfItem paramPerfItem)
   {
-    long l2 = 0L;
-    long[] arrayOfLong;
     if (lastPerfItem != null)
     {
-      arrayOfLong = this.ioModule.getIoStatusProxy();
+      long[] arrayOfLong = this.ioModule.getIoStatusProxy();
       if ((arrayOfLong != null) && (arrayOfLong.length == 2))
       {
         paramPerfItem.ioCount = (arrayOfLong[0] - lastPerfItem.ioCount);
         paramPerfItem.ioBytes = (arrayOfLong[1] - lastPerfItem.ioBytes);
-        if (paramPerfItem.ioCount <= 0L) {
-          break label122;
+        long l1 = paramPerfItem.ioCount;
+        long l2 = 0L;
+        if (l1 > 0L) {
+          l1 = paramPerfItem.ioCount;
+        } else {
+          l1 = 0L;
         }
+        paramPerfItem.ioCount = l1;
+        l1 = l2;
+        if (paramPerfItem.ioBytes > 0L) {
+          l1 = paramPerfItem.ioBytes;
+        }
+        paramPerfItem.ioBytes = l1;
+        lastPerfItem.ioCount = arrayOfLong[0];
+        lastPerfItem.ioBytes = arrayOfLong[1];
       }
-    }
-    label122:
-    for (long l1 = paramPerfItem.ioCount;; l1 = 0L)
-    {
-      paramPerfItem.ioCount = l1;
-      l1 = l2;
-      if (paramPerfItem.ioBytes > 0L) {
-        l1 = paramPerfItem.ioBytes;
-      }
-      paramPerfItem.ioBytes = l1;
-      lastPerfItem.ioCount = arrayOfLong[0];
-      lastPerfItem.ioBytes = arrayOfLong[1];
-      return;
     }
   }
   
   private void tidyNetFlowItem(@NonNull PerfItem paramPerfItem)
   {
-    long l2 = 0L;
-    NetFlow localNetFlow;
     if (lastPerfItem != null)
     {
-      localNetFlow = this.dataCollector.collectorNetFollow(true);
-      if ((9223372036854775807L != lastPerfItem.netFlowReceiverBytes) && (9223372036854775807L != lastPerfItem.netFlowSendBytes)) {
-        break label107;
+      NetFlow localNetFlow = this.dataCollector.collectorNetFollow(true);
+      long l1 = lastPerfItem.netFlowReceiverBytes;
+      long l2 = 0L;
+      if ((9223372036854775807L != l1) && (9223372036854775807L != lastPerfItem.netFlowSendBytes))
+      {
+        paramPerfItem.netFlowReceiverBytes = (localNetFlow.rxBytes - lastPerfItem.netFlowReceiverBytes);
+        paramPerfItem.netFlowSendBytes = (localNetFlow.txBytes - lastPerfItem.netFlowSendBytes);
+        if (paramPerfItem.netFlowReceiverBytes > 0L) {
+          l1 = paramPerfItem.netFlowReceiverBytes;
+        } else {
+          l1 = 0L;
+        }
+        paramPerfItem.netFlowReceiverBytes = l1;
+        if (paramPerfItem.netFlowSendBytes > 0L) {
+          l1 = paramPerfItem.netFlowSendBytes;
+        } else {
+          l1 = 0L;
+        }
+        paramPerfItem.netFlowSendBytes = l1;
       }
-      paramPerfItem.netFlowReceiverBytes = 0L;
-      paramPerfItem.netFlowSendBytes = 0L;
-      if ((9223372036854775807L != localNetFlow.rxPackets) && (9223372036854775807L != localNetFlow.txPackets)) {
-        break label190;
+      else
+      {
+        paramPerfItem.netFlowReceiverBytes = 0L;
+        paramPerfItem.netFlowSendBytes = 0L;
       }
-    }
-    for (paramPerfItem.netFlowPackets = 0L;; lastPerfItem.netFlowPackets = (localNetFlow.rxPackets + localNetFlow.txPackets))
-    {
+      if ((9223372036854775807L != localNetFlow.rxPackets) && (9223372036854775807L != localNetFlow.txPackets))
+      {
+        paramPerfItem.netFlowPackets = (localNetFlow.rxPackets + localNetFlow.txPackets - lastPerfItem.netFlowPackets);
+        l1 = l2;
+        if (paramPerfItem.netFlowPackets > 0L) {
+          l1 = paramPerfItem.netFlowPackets;
+        }
+        paramPerfItem.netFlowPackets = l1;
+        lastPerfItem.netFlowPackets = (localNetFlow.rxPackets + localNetFlow.txPackets);
+      }
+      else
+      {
+        paramPerfItem.netFlowPackets = 0L;
+      }
       lastPerfItem.netFlowReceiverBytes = localNetFlow.rxBytes;
       lastPerfItem.netFlowSendBytes = localNetFlow.txBytes;
-      return;
-      label107:
-      paramPerfItem.netFlowReceiverBytes = (localNetFlow.rxBytes - lastPerfItem.netFlowReceiverBytes);
-      paramPerfItem.netFlowSendBytes = (localNetFlow.txBytes - lastPerfItem.netFlowSendBytes);
-      if (paramPerfItem.netFlowReceiverBytes > 0L)
-      {
-        l1 = paramPerfItem.netFlowReceiverBytes;
-        label153:
-        paramPerfItem.netFlowReceiverBytes = l1;
-        if (paramPerfItem.netFlowSendBytes <= 0L) {
-          break label185;
-        }
-      }
-      label185:
-      for (long l1 = paramPerfItem.netFlowSendBytes;; l1 = 0L)
-      {
-        paramPerfItem.netFlowSendBytes = l1;
-        break;
-        l1 = 0L;
-        break label153;
-      }
-      label190:
-      paramPerfItem.netFlowPackets = (localNetFlow.rxPackets + localNetFlow.txPackets - lastPerfItem.netFlowPackets);
-      l1 = l2;
-      if (paramPerfItem.netFlowPackets > 0L) {
-        l1 = paramPerfItem.netFlowPackets;
-      }
-      paramPerfItem.netFlowPackets = l1;
     }
   }
   
@@ -286,70 +284,61 @@ public class ResourceMonitor
     Object localObject = this.dataCollector.collectorNetFollow(false);
     paramTagItem.netFlowRecvBytes = ((NetFlow)localObject).rxBytes;
     paramTagItem.netFlowSendBytes = ((NetFlow)localObject).txBytes;
-    if ((9223372036854775807L == ((NetFlow)localObject).rxPackets) || (9223372036854775807L == ((NetFlow)localObject).txPackets)) {}
-    long l;
-    for (paramTagItem.netFlowPackets = 9223372036854775807L;; paramTagItem.netFlowPackets = (((NetFlow)localObject).txPackets + l))
+    if ((9223372036854775807L != ((NetFlow)localObject).rxPackets) && (9223372036854775807L != ((NetFlow)localObject).txPackets)) {
+      paramTagItem.netFlowPackets = (((NetFlow)localObject).rxPackets + ((NetFlow)localObject).txPackets);
+    } else {
+      paramTagItem.netFlowPackets = 9223372036854775807L;
+    }
+    localObject = this.ioModule.getIoStatusProxy();
+    if ((localObject != null) && (localObject.length == 2))
     {
-      localObject = this.ioModule.getIoStatusProxy();
-      if ((localObject != null) && (localObject.length == 2))
-      {
-        paramTagItem.ioCount = localObject[0];
-        paramTagItem.ioBytes = localObject[1];
-      }
-      return;
-      l = ((NetFlow)localObject).rxPackets;
+      paramTagItem.ioCount = localObject[0];
+      paramTagItem.ioBytes = localObject[1];
     }
   }
   
   private void tidyStatInfo(@NonNull PerfItem paramPerfItem)
   {
-    long l2 = 9223372036854775807L;
     StatInfo localStatInfo = this.dataCollector.collectStatInfo();
-    if (localStatInfo.cpuJiffies > 0L)
-    {
+    long l1 = localStatInfo.cpuJiffies;
+    long l2 = 9223372036854775807L;
+    if (l1 > 0L) {
       l1 = localStatInfo.cpuJiffies;
-      paramPerfItem.cpuJiffies = l1;
-      if (localStatInfo.cpuSysJiffies <= 0L) {
-        break label144;
-      }
+    } else {
+      l1 = 9223372036854775807L;
+    }
+    paramPerfItem.cpuJiffies = l1;
+    if (localStatInfo.cpuSysJiffies > 0L) {
       l1 = localStatInfo.cpuSysJiffies;
-      label51:
-      paramPerfItem.cpuSysJiffies = l1;
-      if (localStatInfo.cpuSysUsedJiffies <= 0L) {
-        break label151;
-      }
+    } else {
+      l1 = 9223372036854775807L;
     }
-    label144:
-    label151:
-    for (long l1 = localStatInfo.cpuSysUsedJiffies;; l1 = 9223372036854775807L)
+    paramPerfItem.cpuSysJiffies = l1;
+    if (localStatInfo.cpuSysUsedJiffies > 0L) {
+      l1 = localStatInfo.cpuSysUsedJiffies;
+    } else {
+      l1 = 9223372036854775807L;
+    }
+    paramPerfItem.cpuSysUsedJiffies = l1;
+    l1 = l2;
+    if (memPageSize != 0L)
     {
-      paramPerfItem.cpuSysUsedJiffies = l1;
       l1 = l2;
-      if (memPageSize != 0L)
-      {
-        l1 = l2;
-        if (localStatInfo.memory != 9223372036854775807L)
-        {
-          l1 = localStatInfo.memory;
-          l1 = memPageSize * l1;
-        }
+      if (localStatInfo.memory != 9223372036854775807L) {
+        l1 = localStatInfo.memory * memPageSize;
       }
-      paramPerfItem.memory = l1;
-      paramPerfItem.thread = localStatInfo.threadNum;
-      paramPerfItem.temperature = TemperatureCollector.getTemperature();
-      return;
-      l1 = 9223372036854775807L;
-      break;
-      l1 = 9223372036854775807L;
-      break label51;
     }
+    paramPerfItem.memory = l1;
+    paramPerfItem.thread = localStatInfo.threadNum;
+    paramPerfItem.temperature = TemperatureCollector.getTemperature();
   }
   
   private void tidyStopTagItem(@NonNull TagItem paramTagItem1, @NonNull TagItem paramTagItem2)
   {
-    paramTagItem2.eventTime = (System.currentTimeMillis() / 1000.0D);
+    double d = System.currentTimeMillis();
+    Double.isNaN(d);
+    paramTagItem2.eventTime = (d / 1000.0D);
     paramTagItem2.duringTime = ((paramTagItem2.eventTime - paramTagItem1.eventTime) * 1000.0D);
-    Object localObject;
     if ((paramTagItem1.netFlowSendBytes != 9223372036854775807L) && (paramTagItem1.netFlowRecvBytes != 9223372036854775807L))
     {
       localObject = this.dataCollector.collectorNetFollow(false);
@@ -359,36 +348,32 @@ public class ResourceMonitor
         paramTagItem2.netFlowSendBytes = (((NetFlow)localObject).txBytes - paramTagItem1.netFlowSendBytes);
       }
       if ((9223372036854775807L != ((NetFlow)localObject).rxPackets) && (9223372036854775807L != ((NetFlow)localObject).txPackets)) {
-        break label192;
+        paramTagItem2.netFlowPackets = (((NetFlow)localObject).rxPackets + ((NetFlow)localObject).txPackets - paramTagItem1.netFlowPackets);
+      } else {
+        paramTagItem2.netFlowPackets = 9223372036854775807L;
       }
     }
-    label192:
-    long l;
-    for (paramTagItem2.netFlowPackets = 9223372036854775807L;; paramTagItem2.netFlowPackets = (((NetFlow)localObject).txPackets + l - paramTagItem1.netFlowPackets))
+    Object localObject = this.ioModule.getIoStatusProxy();
+    if ((localObject != null) && (localObject.length == 2))
     {
-      localObject = this.ioModule.getIoStatusProxy();
-      if ((localObject != null) && (localObject.length == 2))
-      {
-        paramTagItem2.ioCount = (localObject[0] - paramTagItem1.ioCount);
-        paramTagItem2.ioBytes = (localObject[1] - paramTagItem1.ioBytes);
-      }
-      return;
-      l = ((NetFlow)localObject).rxPackets;
+      paramTagItem2.ioCount = (localObject[0] - paramTagItem1.ioCount);
+      paramTagItem2.ioBytes = (localObject[1] - paramTagItem1.ioBytes);
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
+      if (i == 2) {
+        endSceneInMonitorThread(paramMessage);
+      }
     }
-    for (;;)
-    {
-      return false;
+    else {
       startSceneInMonitorThread(paramMessage);
-      continue;
-      endSceneInMonitorThread(paramMessage);
     }
+    return false;
   }
   
   @NonNull
@@ -396,7 +381,9 @@ public class ResourceMonitor
   {
     paramPerfItem.stage = currentStage;
     paramPerfItem.extraInfo = currentExtraInfo;
-    paramPerfItem.eventTime = (System.currentTimeMillis() / 1000.0D);
+    double d = System.currentTimeMillis();
+    Double.isNaN(d);
+    paramPerfItem.eventTime = (d / 1000.0D);
     tidyStatInfo(paramPerfItem);
     if ((lastPerfItem != null) && (paramPerfItem.eventTime - lastPerfItem.eventTime < 5.0D))
     {
@@ -408,7 +395,11 @@ public class ResourceMonitor
         tidyIoItem(paramPerfItem);
       }
     }
-    while (RunTimeEnv.isTagMode())
+    else
+    {
+      initializeItem(paramPerfItem);
+    }
+    if (RunTimeEnv.isTagMode())
     {
       Iterator localIterator = this.tagInfoCache.keySet().iterator();
       while (localIterator.hasNext())
@@ -421,7 +412,6 @@ public class ResourceMonitor
           ((TagItem)localObject).sceneMeta.memory = Math.max(((TagItem)localObject).sceneMeta.memory, paramPerfItem.memory);
         }
       }
-      initializeItem(paramPerfItem);
     }
     return paramPerfItem;
   }
@@ -467,23 +457,31 @@ public class ResourceMonitor
   public void start(String paramString1, String paramString2)
   {
     long l = System.currentTimeMillis();
-    if ((TextUtils.isEmpty(paramString1)) || ((!PluginController.INSTANCE.canCollect(PluginCombination.resourcePlugin.plugin)) && (!"QAPM_APPLAUNCH".equals(paramString1)))) {
-      return;
-    }
-    if ("QAPM_APPLAUNCH".equals(paramString1))
+    if (!TextUtils.isEmpty(paramString1))
     {
-      this.traceModule.pushProxy(paramString1, paramString2, l);
-      return;
+      if ((!PluginController.INSTANCE.canCollect(PluginCombination.resourcePlugin.plugin)) && (!"QAPM_APPLAUNCH".equals(paramString1))) {
+        return;
+      }
+      if ("QAPM_APPLAUNCH".equals(paramString1))
+      {
+        this.traceModule.pushProxy(paramString1, paramString2, l);
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(paramString2);
+      localObject = ((StringBuilder)localObject).toString();
+      TagItem localTagItem = new TagItem();
+      localTagItem.tagKey = ((String)localObject);
+      double d = l;
+      Double.isNaN(d);
+      localTagItem.eventTime = (d / 1000.0D);
+      localTagItem.stage = paramString1;
+      localTagItem.extraInfo = paramString2;
+      localTagItem.tagId = l;
+      localTagItem.type = 0;
+      Message.obtain(this.innerHandler, 1, localTagItem).sendToTarget();
     }
-    String str = paramString1 + paramString2;
-    TagItem localTagItem = new TagItem();
-    localTagItem.tagKey = str;
-    localTagItem.eventTime = (l / 1000.0D);
-    localTagItem.stage = paramString1;
-    localTagItem.extraInfo = paramString2;
-    localTagItem.tagId = l;
-    localTagItem.type = 0;
-    Message.obtain(this.innerHandler, 1, localTagItem).sendToTarget();
   }
   
   public void stop()
@@ -509,28 +507,30 @@ public class ResourceMonitor
   
   public void stop(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) && (!"QAPM_APPLAUNCH".equals(paramString1))) {}
-    String str;
-    TagItem localTagItem1;
-    do
-    {
+    if ((TextUtils.isEmpty(paramString1)) && (!"QAPM_APPLAUNCH".equals(paramString1))) {
       return;
-      if (("QAPM_APPLAUNCH".equals(paramString1)) && ("QAPM_APPLAUNCH_END".equals(paramString2)))
-      {
-        this.traceModule.endProxy();
-        return;
-      }
-      if ("QAPM_APPLAUNCH".equals(paramString1))
-      {
-        this.traceModule.popProxy();
-        return;
-      }
-      str = paramString1 + paramString2;
-      localTagItem1 = (TagItem)this.tagInfoCache.get(str);
-    } while (localTagItem1 == null);
+    }
+    if (("QAPM_APPLAUNCH".equals(paramString1)) && ("QAPM_APPLAUNCH_END".equals(paramString2)))
+    {
+      this.traceModule.endProxy();
+      return;
+    }
+    if ("QAPM_APPLAUNCH".equals(paramString1))
+    {
+      this.traceModule.popProxy();
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(paramString2);
+    localObject = ((StringBuilder)localObject).toString();
+    TagItem localTagItem1 = (TagItem)this.tagInfoCache.get(localObject);
+    if (localTagItem1 == null) {
+      return;
+    }
     TagItem localTagItem2 = new TagItem();
     localTagItem2.matchTagItem = localTagItem1;
-    localTagItem2.tagKey = str;
+    localTagItem2.tagKey = ((String)localObject);
     localTagItem2.stage = paramString1;
     localTagItem2.extraInfo = paramString2;
     localTagItem2.tagId = localTagItem1.tagId;
@@ -540,7 +540,7 @@ public class ResourceMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.resource.ResourceMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,34 @@ class OfflineVideoThumbDownLoader$1
 {
   OfflineVideoThumbDownLoader$1(OfflineVideoThumbDownLoader paramOfflineVideoThumbDownLoader) {}
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, long paramLong, Bundle paramBundle)
+  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, long paramLong, Bundle paramBundle)
   {
-    QLog.i("OfflineVideoThumbDownLoader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] OnGetOfflineVideoThumbInfo, bSuccess[" + paramBoolean + " retCode:" + paramInt1 + " downloadIp:" + paramString4 + " downloadDomain:" + paramString5 + " port:" + paramInt2 + " url:" + paramString6);
-    OfflineVideoThumbDownLoader.VideoSession localVideoSession = OfflineVideoThumbDownLoader.a(this.a, paramLong, false);
+    paramString1 = new StringBuilder();
+    paramString1.append("[downloadThumb]  ID[");
+    paramString1.append(paramLong);
+    paramString1.append("] OnGetOfflineVideoThumbInfo, bSuccess[");
+    paramString1.append(paramBoolean);
+    paramString1.append(" retCode:");
+    paramString1.append(paramInt1);
+    paramString1.append(" downloadIp:");
+    paramString1.append(paramString4);
+    paramString1.append(" downloadDomain:");
+    paramString1.append(paramString5);
+    paramString1.append(" port:");
+    paramString1.append(paramInt2);
+    paramString1.append(" url:");
+    paramString1.append(paramString6);
+    QLog.i("OfflineVideoThumbDownLoader<FileAssistant>", 1, paramString1.toString());
+    paramString1 = this.a;
+    short s = 0;
+    OfflineVideoThumbDownLoader.VideoSession localVideoSession = OfflineVideoThumbDownLoader.a(paramString1, paramLong, false);
     if (localVideoSession == null)
     {
-      QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetOfflineVideoThumbInfo no this session");
+      paramString1 = new StringBuilder();
+      paramString1.append("[downloadThumb]  ID[");
+      paramString1.append(paramLong);
+      paramString1.append("] OnGetOfflineVideoThumbInfo no this session");
+      QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 2, paramString1.toString());
       this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
       return;
     }
@@ -32,70 +53,77 @@ class OfflineVideoThumbDownLoader$1
     }
     if ((paramString6 != null) && (paramString6.length() > 0))
     {
-      QLog.w("OfflineVideoThumbDownLoader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetOfflineVideoThumbInfo url=null");
+      paramString1 = new StringBuilder();
+      paramString1.append("[downloadThumb]  ID[");
+      paramString1.append(paramLong);
+      paramString1.append("] OnGetOfflineVideoThumbInfo url=null");
+      QLog.w("OfflineVideoThumbDownLoader<FileAssistant>", 2, paramString1.toString());
       this.a.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
       this.a.a(paramLong);
       this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
       return;
     }
-    paramString6 = null;
     if ((paramString4 != null) && (paramString4.length() > 0)) {
       paramString1 = paramString4;
+    } else if ((paramString5 != null) && (paramString5.length() > 0)) {
+      paramString1 = paramString5;
+    } else {
+      paramString1 = null;
     }
-    while ((paramString1 == null) || (paramString1.length() < 0))
+    if ((paramString1 != null) && (paramString1.length() >= 0))
     {
-      this.a.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
-      this.a.a(paramLong);
-      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
-      return;
-      paramString1 = paramString6;
-      if (paramString5 != null)
+      if ((paramString3 == null) || (paramString3.length() < 0))
       {
-        paramString1 = paramString6;
-        if (paramString5.length() > 0) {
-          paramString1 = paramString5;
-        }
+        paramString4 = new StringBuilder();
+        paramString4.append("[downloadThumb]  ID[");
+        paramString4.append(paramLong);
+        paramString4.append("] OnGetOfflineVideoThumbInfo downloadKey invaild");
+        QLog.w("OfflineVideoThumbDownLoader<FileAssistant>", 2, paramString4.toString());
       }
-    }
-    if ((paramString3 == null) || (paramString3.length() < 0)) {
-      QLog.w("OfflineVideoThumbDownLoader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetOfflineVideoThumbInfo downloadKey invaild");
-    }
-    paramString5 = "/ftn_video_pic/rkey=" + paramString3 + "&filetype=" + localVideoSession.b + "&size=" + this.a.a(localVideoSession.jdField_a_of_type_Int) + "&";
-    paramBoolean = false;
-    short s1 = 0;
-    if ((((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsThumb4C2C(this.a.a)) && (paramBundle != null))
-    {
-      paramString4 = paramBundle.getString("strHttpsDomain");
-      if (!TextUtils.isEmpty(paramString4))
+      paramString4 = new StringBuilder();
+      paramString4.append("/ftn_video_pic/rkey=");
+      paramString4.append(paramString3);
+      paramString4.append("&filetype=");
+      paramString4.append(localVideoSession.b);
+      paramString4.append("&size=");
+      paramString4.append(this.a.a(localVideoSession.jdField_a_of_type_Int));
+      paramString4.append("&");
+      paramString5 = paramString4.toString();
+      if ((((IFMConfig)QRoute.api(IFMConfig.class)).isEnableHttpsThumb4C2C(this.a.a)) && (paramBundle != null))
       {
-        boolean bool = true;
-        short s2 = paramBundle.getShort("httpsPort", (short)0);
-        paramBoolean = bool;
-        paramString3 = paramString4;
-        s1 = s2;
-        if (s2 == 0)
+        paramString3 = paramBundle.getString("strHttpsDomain");
+        if (!TextUtils.isEmpty(paramString3))
         {
-          s1 = 443;
-          paramString3 = paramString4;
-          paramBoolean = bool;
+          s = paramBundle.getShort("httpsPort", (short)0);
+          if (s == 0)
+          {
+            paramBoolean = true;
+            s = 443;
+            break label644;
+          }
+          paramBoolean = true;
+          break label644;
         }
       }
-    }
-    for (;;)
-    {
-      paramString4 = "";
+      paramString3 = null;
+      paramBoolean = false;
+      label644:
       if (paramBundle != null) {
         paramString4 = paramBundle.getString("IPv6Dns");
+      } else {
+        paramString4 = "";
       }
-      this.a.a(paramLong, true, paramString1, paramInt2, paramString5, null, paramString2, paramBoolean, paramString3, s1, paramString4);
+      this.a.a(paramLong, true, paramString1, paramInt2, paramString5, null, paramString2, paramBoolean, paramString3, s, paramString4);
       return;
-      paramString3 = null;
     }
+    this.a.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+    this.a.a(paramLong);
+    this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OfflineVideoThumbDownLoader.1
  * JD-Core Version:    0.7.0.1
  */

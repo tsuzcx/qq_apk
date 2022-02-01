@@ -26,25 +26,29 @@ class WSGridDataManager$1
     WSGridDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataWSGridDataManager, paramWSGridRspModel.a());
     if ((paramWSGridRspModel.a() != null) && (paramWSGridRspModel.a().size() > 0))
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataIWSGridRspListener != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataIWSGridRspListener.a(WSGridDataManager.WSGridRspModel.a(paramWSGridRspModel), this.jdField_a_of_type_Boolean, this.b, this.c, this.jdField_a_of_type_Long);
+      IWSGridRspListener localIWSGridRspListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataIWSGridRspListener;
+      if (localIWSGridRspListener != null) {
+        localIWSGridRspListener.a(WSGridDataManager.WSGridRspModel.a(paramWSGridRspModel), this.jdField_a_of_type_Boolean, this.b, this.c, this.jdField_a_of_type_Long);
       }
-      return;
     }
-    b(new WSServiceErrorInfo(0, HardCodeUtil.a(2131716830)));
+    else
+    {
+      b(new WSServiceErrorInfo(0, HardCodeUtil.a(2131716480)));
+    }
   }
   
   public void b(WSServiceErrorInfo paramWSServiceErrorInfo)
   {
     super.b(paramWSServiceErrorInfo);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataIWSGridRspListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataIWSGridRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a(), this.jdField_a_of_type_Boolean, this.b);
+    IWSGridRspListener localIWSGridRspListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataIWSGridRspListener;
+    if (localIWSGridRspListener != null) {
+      localIWSGridRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a(), this.jdField_a_of_type_Boolean, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSGridDataManager.1
  * JD-Core Version:    0.7.0.1
  */

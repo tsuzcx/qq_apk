@@ -22,9 +22,8 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.api.IBizTroopMemberInfoService;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -47,7 +46,6 @@ public class LinkAdapter
   private ArrayMap<String, Boolean> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
   private final ChatHistoryBaseFragment jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseFragment;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
   private SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat;
   @NonNull
   private List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -67,7 +65,7 @@ public class LinkAdapter
   public static void a(ImageView paramImageView, String paramString)
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.context;
-    Drawable localDrawable = localBaseApplication.getResources().getDrawable(2130838812);
+    Drawable localDrawable = localBaseApplication.getResources().getDrawable(2130838632);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mFailedDrawable = localDrawable;
     localURLDrawableOptions.mLoadingDrawable = localDrawable;
@@ -78,38 +76,38 @@ public class LinkAdapter
     {
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
       paramString.setTag(URLDrawableDecodeHandler.b(localLayoutParams.width, localLayoutParams.height, UIUtils.a(localBaseApplication, 6.0F)));
-      paramString.setDecodeHandler(URLDrawableDecodeHandler.j);
+      paramString.setDecodeHandler(URLDrawableDecodeHandler.i);
       paramImageView.setImageDrawable(paramString);
       return;
     }
     catch (Throwable paramString)
     {
-      paramImageView.setImageDrawable(localDrawable);
+      label100:
+      break label100;
     }
+    paramImageView.setImageDrawable(localDrawable);
   }
   
   private void a(LinkAdapter.ViewHolder paramViewHolder, TroopLinkElement paramTroopLinkElement)
   {
-    if (!TextUtils.isEmpty(paramTroopLinkElement.iconUrl))
-    {
+    if (!TextUtils.isEmpty(paramTroopLinkElement.iconUrl)) {
       a(LinkAdapter.ViewHolder.a(paramViewHolder), paramTroopLinkElement.iconUrl);
-      if (TextUtils.isEmpty(paramTroopLinkElement.title)) {
-        break label248;
-      }
-      LinkAdapter.ViewHolder.a(paramViewHolder).setText(paramTroopLinkElement.title);
+    } else {
+      LinkAdapter.ViewHolder.a(paramViewHolder).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850832));
     }
-    for (;;)
+    if (!TextUtils.isEmpty(paramTroopLinkElement.title)) {
+      LinkAdapter.ViewHolder.a(paramViewHolder).setText(paramTroopLinkElement.title);
+    } else {
+      LinkAdapter.ViewHolder.a(paramViewHolder).setText(paramTroopLinkElement.url);
+    }
+    Object localObject = new Date(Long.parseLong(paramTroopLinkElement.timeSecond) * 1000L);
+    localObject = this.jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject);
+    LinkAdapter.ViewHolder.b(paramViewHolder).setText((CharSequence)localObject);
+    localObject = ((IBizTroopMemberInfoService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IBizTroopMemberInfoService.class, "")).getTroopMemberNickNoEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseFragment.a(), paramTroopLinkElement.uin);
+    LinkAdapter.ViewHolder.c(paramViewHolder).setText((CharSequence)localObject);
+    LinkAdapter.ViewHolder.a(paramViewHolder).setOnClickListener(new LinkAdapter.2(this, paramTroopLinkElement, paramViewHolder));
+    if (this.jdField_a_of_type_Boolean)
     {
-      Object localObject = new Date(Long.parseLong(paramTroopLinkElement.timeSecond) * 1000L);
-      localObject = this.jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject);
-      LinkAdapter.ViewHolder.b(paramViewHolder).setText((CharSequence)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryBaseFragment.a(), paramTroopLinkElement.uin);
-      LinkAdapter.ViewHolder.c(paramViewHolder).setText((CharSequence)localObject);
-      LinkAdapter.ViewHolder.a(paramViewHolder).setOnClickListener(new LinkAdapter.2(this, paramTroopLinkElement, paramViewHolder));
-      if (!this.jdField_a_of_type_Boolean) {
-        break label262;
-      }
       LinkAdapter.ViewHolder.a(paramViewHolder).setVisibility(0);
       boolean bool = this.b.contains(paramTroopLinkElement);
       LinkAdapter.ViewHolder.a(paramViewHolder).setChecked(bool);
@@ -117,12 +115,7 @@ public class LinkAdapter
       paramTroopLinkElement.setMargins(paramTroopLinkElement.leftMargin, paramTroopLinkElement.topMargin, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), paramTroopLinkElement.bottomMargin);
       LinkAdapter.ViewHolder.a(paramViewHolder).setLayoutParams(paramTroopLinkElement);
       return;
-      LinkAdapter.ViewHolder.a(paramViewHolder).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130850895));
-      break;
-      label248:
-      LinkAdapter.ViewHolder.a(paramViewHolder).setText(paramTroopLinkElement.url);
     }
-    label262:
     LinkAdapter.ViewHolder.a(paramViewHolder).setVisibility(8);
     paramTroopLinkElement = (LinearLayout.LayoutParams)LinkAdapter.ViewHolder.a(paramViewHolder).getLayoutParams();
     paramTroopLinkElement.setMargins(paramTroopLinkElement.leftMargin, paramTroopLinkElement.topMargin, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 50.0F), paramTroopLinkElement.bottomMargin);
@@ -131,29 +124,26 @@ public class LinkAdapter
   
   private void a(String paramString)
   {
-    boolean bool1 = false;
-    if ((!this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramString)) || (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
-      return;
-    }
-    boolean bool2 = ((Boolean)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString)).booleanValue();
-    Object localObject = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (bool2)
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramString))
     {
-      int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-      this.jdField_a_of_type_JavaUtilList.addAll(i + 1, (Collection)localObject);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC87", "0X800AC87", 5, 0, "2", "2", "", "");
-    }
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap;
-      if (!bool2) {
-        bool1 = true;
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+        return;
       }
-      ((ArrayMap)localObject).put(paramString, Boolean.valueOf(bool1));
+      boolean bool = ((Boolean)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString)).booleanValue();
+      ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if (bool)
+      {
+        int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+        this.jdField_a_of_type_JavaUtilList.addAll(i + 1, localArrayList);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC87", "0X800AC87", 5, 0, "2", "2", "", "");
+      }
+      else
+      {
+        this.jdField_a_of_type_JavaUtilList.removeAll(localArrayList);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC87", "0X800AC87", 5, 0, "2", "1", "", "");
+      }
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramString, Boolean.valueOf(bool ^ true));
       notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_JavaUtilList.removeAll((Collection)localObject);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC87", "0X800AC87", 5, 0, "2", "1", "", "");
     }
   }
   
@@ -170,26 +160,37 @@ public class LinkAdapter
   
   public void a(Map<String, ArrayList<TroopLinkElement>> paramMap)
   {
-    if ((paramMap == null) || (paramMap.isEmpty())) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
-    this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    paramMap = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    while (paramMap.hasNext())
+    if (paramMap != null)
     {
-      Object localObject = (Map.Entry)paramMap.next();
-      String str = (String)((Map.Entry)localObject).getKey();
-      localObject = (ArrayList)((Map.Entry)localObject).getValue();
-      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(str, Boolean.valueOf(false));
-      this.jdField_a_of_type_JavaUtilList.add(str);
-      this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+      if (paramMap.isEmpty()) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilMap = paramMap;
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.clear();
+      this.jdField_a_of_type_JavaUtilList.clear();
+      paramMap = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Object localObject = (Map.Entry)paramMap.next();
+        String str = (String)((Map.Entry)localObject).getKey();
+        localObject = (ArrayList)((Map.Entry)localObject).getValue();
+        this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(str, Boolean.valueOf(false));
+        this.jdField_a_of_type_JavaUtilList.add(str);
+        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramMap = new StringBuilder();
+        paramMap.append("[setElements]data size: ");
+        paramMap.append(this.jdField_a_of_type_JavaUtilMap.size());
+        paramMap.append(" header size: ");
+        paramMap.append(this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size());
+        paramMap.append(" elements size: ");
+        paramMap.append(this.jdField_a_of_type_JavaUtilList.size());
+        QLog.d("LinkAdapter", 2, paramMap.toString());
+      }
+      notifyDataSetChanged();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LinkAdapter", 2, "[setElements]data size: " + this.jdField_a_of_type_JavaUtilMap.size() + " header size: " + this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size() + " elements size: " + this.jdField_a_of_type_JavaUtilList.size());
-    }
-    notifyDataSetChanged();
   }
   
   public void a(boolean paramBoolean)
@@ -200,8 +201,16 @@ public class LinkAdapter
   
   public int getCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LinkAdapter", 2, "[getCount]data size: " + this.jdField_a_of_type_JavaUtilMap.size() + " header size: " + this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size() + " elements size: " + this.jdField_a_of_type_JavaUtilList.size());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getCount]data size: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilMap.size());
+      localStringBuilder.append(" header size: ");
+      localStringBuilder.append(this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size());
+      localStringBuilder.append(" elements size: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+      QLog.d("LinkAdapter", 2, localStringBuilder.toString());
     }
     return this.jdField_a_of_type_JavaUtilList.size();
   }
@@ -219,58 +228,53 @@ public class LinkAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject2 = getItem(paramInt);
+    Object localObject1;
     if ((localObject2 instanceof TroopLinkElement))
     {
       localObject2 = (TroopLinkElement)localObject2;
-      if ((paramView != null) && ((paramView.getTag() instanceof LinkAdapter.ViewHolder))) {
+      if ((paramView != null) && ((paramView.getTag() instanceof LinkAdapter.ViewHolder)))
+      {
         localObject1 = (LinkAdapter.ViewHolder)paramView.getTag();
       }
-      for (;;)
+      else
       {
-        a((LinkAdapter.ViewHolder)localObject1, (TroopLinkElement)localObject2);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558896, null);
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558794, null);
         localObject1 = new LinkAdapter.ViewHolder(paramView);
         paramView.setTag(localObject1);
       }
-    }
-    Object localObject1 = paramView;
-    label137:
-    CheckBox localCheckBox;
-    if ((localObject2 instanceof String))
-    {
-      if ((paramView == null) || (!(paramView.getTag() instanceof LinkAdapter.DividerViewHolder))) {
-        break label194;
-      }
-      localObject1 = (LinkAdapter.DividerViewHolder)paramView.getTag();
-      localCheckBox = ((LinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox;
-      if (((Boolean)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject2)).booleanValue()) {
-        break label271;
-      }
-    }
-    label271:
-    for (boolean bool = true;; bool = false)
-    {
-      localCheckBox.setChecked(bool);
-      ((LinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText((String)localObject2);
+      a((LinkAdapter.ViewHolder)localObject1, (TroopLinkElement)localObject2);
       localObject1 = paramView;
-      paramView = (View)localObject1;
-      break;
-      label194:
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558895, null);
-      localObject1 = new LinkAdapter.DividerViewHolder();
-      ((LinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369653));
-      ((LinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379254));
-      paramView.setTag(localObject1);
-      paramView.setOnClickListener(new LinkAdapter.1(this, (LinkAdapter.DividerViewHolder)localObject1));
-      break label137;
     }
+    else
+    {
+      localObject1 = paramView;
+      if ((localObject2 instanceof String))
+      {
+        if ((paramView != null) && ((paramView.getTag() instanceof LinkAdapter.DividerViewHolder)))
+        {
+          localObject1 = (LinkAdapter.DividerViewHolder)paramView.getTag();
+        }
+        else
+        {
+          paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558793, null);
+          localObject1 = new LinkAdapter.DividerViewHolder();
+          ((LinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369353));
+          ((LinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378615));
+          paramView.setTag(localObject1);
+          paramView.setOnClickListener(new LinkAdapter.1(this, (LinkAdapter.DividerViewHolder)localObject1));
+        }
+        ((LinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(((Boolean)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject2)).booleanValue() ^ true);
+        ((LinkAdapter.DividerViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText((String)localObject2);
+        localObject1 = paramView;
+      }
+    }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.LinkAdapter
  * JD-Core Version:    0.7.0.1
  */

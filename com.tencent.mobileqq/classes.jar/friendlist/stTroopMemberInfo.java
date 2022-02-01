@@ -159,24 +159,30 @@ public final class stTroopMemberInfo
     paramJceOutputStream.write(this.Gender, 3);
     paramJceOutputStream.write(this.Nick, 4);
     paramJceOutputStream.write(this.Status, 5);
-    if (this.sShowName != null) {
-      paramJceOutputStream.write(this.sShowName, 6);
+    Object localObject = this.sShowName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.sName != null) {
-      paramJceOutputStream.write(this.sName, 8);
+    localObject = this.sName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.cGender, 9);
-    if (this.sPhone != null) {
-      paramJceOutputStream.write(this.sPhone, 10);
+    localObject = this.sPhone;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.sEmail != null) {
-      paramJceOutputStream.write(this.sEmail, 11);
+    localObject = this.sEmail;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.sMemo != null) {
-      paramJceOutputStream.write(this.sMemo, 12);
+    localObject = this.sMemo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.strAutoRemark != null) {
-      paramJceOutputStream.write(this.strAutoRemark, 13);
+    localObject = this.strAutoRemark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
     paramJceOutputStream.write(this.dwMemberLevel, 14);
     paramJceOutputStream.write(this.dwJoinTime, 15);
@@ -187,12 +193,14 @@ public final class stTroopMemberInfo
     paramJceOutputStream.write(this.dwPoint, 20);
     paramJceOutputStream.write(this.cConcerned, 21);
     paramJceOutputStream.write(this.cShielded, 22);
-    if (this.sSpecialTitle != null) {
-      paramJceOutputStream.write(this.sSpecialTitle, 23);
+    localObject = this.sSpecialTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
     paramJceOutputStream.write(this.dwSpecialTitleExpireTime, 24);
-    if (this.bytes_job != null) {
-      paramJceOutputStream.write(this.bytes_job, 25);
+    localObject = this.bytes_job;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 25);
     }
     paramJceOutputStream.write(this.cApolloFlag, 26);
     paramJceOutputStream.write(this.dwApolloTimestamp, 27);
@@ -200,8 +208,9 @@ public final class stTroopMemberInfo
     paramJceOutputStream.write(this.dwTitleId, 29);
     paramJceOutputStream.write(this.dwShutupTimestap, 30);
     paramJceOutputStream.write(this.dwGlobalGroupPoint, 31);
-    if (this.qzusrinfo != null) {
-      paramJceOutputStream.write(this.qzusrinfo, 32);
+    localObject = this.qzusrinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 32);
     }
     paramJceOutputStream.write(this.cRichCardNameVer, 33);
     paramJceOutputStream.write(this.dwVipType, 34);
@@ -209,18 +218,20 @@ public final class stTroopMemberInfo
     paramJceOutputStream.write(this.dwBigClubLevel, 36);
     paramJceOutputStream.write(this.dwBigClubFlag, 37);
     paramJceOutputStream.write(this.dwNameplate, 38);
-    if (this.vecGroupHonor != null) {
-      paramJceOutputStream.write(this.vecGroupHonor, 39);
+    localObject = this.vecGroupHonor;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 39);
     }
-    if (this.vecName != null) {
-      paramJceOutputStream.write(this.vecName, 40);
+    localObject = this.vecName;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 40);
     }
     paramJceOutputStream.write(this.cRichFlag, 41);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.stTroopMemberInfo
  * JD-Core Version:    0.7.0.1
  */

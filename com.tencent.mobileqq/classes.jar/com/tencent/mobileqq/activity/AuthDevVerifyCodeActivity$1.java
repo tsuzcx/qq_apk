@@ -12,19 +12,27 @@ class AuthDevVerifyCodeActivity$1
   {
     if (AuthDevVerifyCodeActivity.mSecond <= 1)
     {
-      AuthDevVerifyCodeActivity.access$000(this.this$0).setText(2131716973);
+      AuthDevVerifyCodeActivity.access$000(this.this$0).setText(2131716626);
+      AuthDevVerifyCodeActivity.access$000(this.this$0).setTextColor(-11692801);
       AuthDevVerifyCodeActivity.access$000(this.this$0).setEnabled(true);
       AuthDevVerifyCodeActivity.access$000(this.this$0).setClickable(true);
       return;
     }
     AuthDevVerifyCodeActivity.mSecond -= 1;
-    AuthDevVerifyCodeActivity.access$000(this.this$0).setText(this.this$0.getString(2131716973) + "(" + AuthDevVerifyCodeActivity.mSecond + ")");
+    TextView localTextView = AuthDevVerifyCodeActivity.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.this$0.getString(2131716626));
+    localStringBuilder.append(" (");
+    localStringBuilder.append(AuthDevVerifyCodeActivity.mSecond);
+    localStringBuilder.append("s)");
+    localTextView.setText(localStringBuilder.toString());
+    AuthDevVerifyCodeActivity.access$000(this.this$0).setTextColor(-7894119);
     this.this$0.mHandler.postDelayed(this, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity.1
  * JD-Core Version:    0.7.0.1
  */

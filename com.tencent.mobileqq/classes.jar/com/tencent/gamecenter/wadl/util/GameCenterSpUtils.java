@@ -17,18 +17,24 @@ public class GameCenterSpUtils
     if (TextUtils.isEmpty(paramString)) {
       return 0L;
     }
-    try
+    for (;;)
     {
-      Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (localObject != null) {}
-      for (localObject = ((AppRuntime)localObject).getAccount();; localObject = "") {
-        return MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).getLong(paramString, 0L);
+      try
+      {
+        localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+        if (localObject != null)
+        {
+          localObject = ((AppRuntime)localObject).getAccount();
+          long l = MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).getLong(paramString, 0L);
+          return l;
+        }
       }
-      return 0L;
-    }
-    catch (Throwable paramString)
-    {
-      WLog.b("GameCenterSpUtils", "readFromSpLong exception", paramString);
+      catch (Throwable paramString)
+      {
+        QLog.i("Wadl_GameCenterSpUtils", 1, "readFromSpLong exception", paramString);
+        return 0L;
+      }
+      Object localObject = "";
     }
   }
   
@@ -38,22 +44,36 @@ public class GameCenterSpUtils
       return null;
     }
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null) {}
-    for (localObject = ((AppRuntime)localObject).getAccount();; localObject = "") {
-      return MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).getString(paramString, "");
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getAccount();
+    } else {
+      localObject = "";
     }
+    return MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).getString(paramString, "");
   }
   
   public static String a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      WLog.a("GameCenterSpUtils", "getStringOutAccount fail, group=" + paramString1 + ",key=" + paramString2);
-      return "";
+      localObject = MobileQQ.sMobileQQ.getSharedPreferences(paramString1, 4).getString(paramString2, "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getStringOutAccount group=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",key=");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",value=");
+      localStringBuilder.append((String)localObject);
+      QLog.i("Wadl_GameCenterSpUtils", 1, localStringBuilder.toString());
+      return localObject;
     }
-    String str = MobileQQ.sMobileQQ.getSharedPreferences(paramString1, 4).getString(paramString2, "");
-    WLog.c("GameCenterSpUtils", "getStringOutAccount group=" + paramString1 + ",key=" + paramString2 + ",value=" + str);
-    return str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getStringOutAccount fail, group=");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(",key=");
+    ((StringBuilder)localObject).append(paramString2);
+    QLog.w("Wadl_GameCenterSpUtils", 1, ((StringBuilder)localObject).toString());
+    return "";
   }
   
   public static void a(String paramString, long paramLong)
@@ -71,14 +91,19 @@ public class GameCenterSpUtils
           localObject = ((AppRuntime)localObject).getAccount();
           localObject = MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).edit();
           ((SharedPreferences.Editor)localObject).putLong(paramString, paramLong);
-          WLog.c("GameCenterSpUtils", "writeToSpLong " + paramString + " :" + paramLong);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("writeToSpLong ");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" :");
+          localStringBuilder.append(paramLong);
+          QLog.i("Wadl_GameCenterSpUtils", 1, localStringBuilder.toString());
           ((SharedPreferences.Editor)localObject).commit();
           return;
         }
       }
       catch (Throwable paramString)
       {
-        WLog.b("GameCenterSpUtils", "writeToSpLong exception", paramString);
+        QLog.e("Wadl_GameCenterSpUtils", 1, "writeToSpLong exception", paramString);
         return;
       }
       Object localObject = "";
@@ -87,62 +112,77 @@ public class GameCenterSpUtils
   
   public static void a(String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      WLog.a("GameCenterSpUtils", "setStringOutAccount fail, group=" + paramString1 + ",key=" + paramString2 + ",value=" + paramString3);
+      boolean bool = MobileQQ.sMobileQQ.getSharedPreferences(paramString1, 4).edit().putString(paramString2, paramString3).commit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setStringOutAccount group=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",key=");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",value=");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append(",ret=");
+      localStringBuilder.append(bool);
+      QLog.i("Wadl_GameCenterSpUtils", 1, localStringBuilder.toString());
       return;
     }
-    boolean bool = MobileQQ.sMobileQQ.getSharedPreferences(paramString1, 4).edit().putString(paramString2, paramString3).commit();
-    WLog.c("GameCenterSpUtils", "setStringOutAccount group=" + paramString1 + ",key=" + paramString2 + ",value=" + paramString3 + ",ret=" + bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setStringOutAccount fail, group=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",key=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",value=");
+    localStringBuilder.append(paramString3);
+    QLog.w("Wadl_GameCenterSpUtils", 1, localStringBuilder.toString());
   }
   
   public static void a(String paramString, JSONObject paramJSONObject)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramJSONObject == null)) {}
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
-      localObject = MobileQQ.sMobileQQ;
-    } while (localObject == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterSpUtils", 2, new Object[] { "saveTipInfo: ", paramJSONObject.toString() });
-    }
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = ((Context)localObject).getSharedPreferences("wadl_TipInfo", 4).edit();
-    try
-    {
-      JSONObject localJSONObject2 = paramJSONObject.optJSONObject("install_bartips");
-      if ((localJSONObject2 != null) && (localJSONObject2.optBoolean("valid", false))) {
-        localJSONObject1.put("install_bartips", localJSONObject2);
+      if (paramJSONObject == null) {
+        return;
       }
-      localJSONObject2 = paramJSONObject.optJSONObject("register_bartips");
-      if ((localJSONObject2 != null) && (localJSONObject2.optBoolean("valid", false))) {
-        localJSONObject1.put("register_bartips", localJSONObject2);
+      Object localObject = MobileQQ.sMobileQQ;
+      if (localObject == null) {
+        return;
       }
-      if (paramJSONObject.has("app_icon")) {
-        localJSONObject1.put("app_icon", paramJSONObject.optString("app_icon"));
-      }
-      if (paramJSONObject.has("install_tips_gray")) {
-        localJSONObject1.put("install_tips_gray", paramJSONObject.optString("install_tips_gray"));
-      }
-      if (paramJSONObject.has("default_install_bartips_text")) {
-        ((SharedPreferences.Editor)localObject).putString("default_install_bartips_text", paramJSONObject.optString("default_install_bartips_text"));
-      }
-      if (paramJSONObject.has("default_register_bartips_text")) {
-        ((SharedPreferences.Editor)localObject).putString("default_register_bartips_text", paramJSONObject.optString("default_register_bartips_text"));
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      for (;;)
+      QLog.d("Wadl_GameCenterSpUtils", 1, new Object[] { "saveTipInfo: ", paramJSONObject.toString() });
+      JSONObject localJSONObject1 = new JSONObject();
+      localObject = ((Context)localObject).getSharedPreferences("wadl_TipInfo", 4).edit();
+      try
       {
-        QLog.e("GameCenterSpUtils", 1, paramJSONObject, new Object[0]);
+        JSONObject localJSONObject2 = paramJSONObject.optJSONObject("install_bartips");
+        if ((localJSONObject2 != null) && (localJSONObject2.optBoolean("valid", false))) {
+          localJSONObject1.put("install_bartips", localJSONObject2);
+        }
+        localJSONObject2 = paramJSONObject.optJSONObject("register_bartips");
+        if ((localJSONObject2 != null) && (localJSONObject2.optBoolean("valid", false))) {
+          localJSONObject1.put("register_bartips", localJSONObject2);
+        }
+        if (paramJSONObject.has("app_icon")) {
+          localJSONObject1.put("app_icon", paramJSONObject.optString("app_icon"));
+        }
+        if (paramJSONObject.has("install_tips_gray")) {
+          localJSONObject1.put("install_tips_gray", paramJSONObject.optString("install_tips_gray"));
+        }
+        if (paramJSONObject.has("default_install_bartips_text")) {
+          ((SharedPreferences.Editor)localObject).putString("default_install_bartips_text", paramJSONObject.optString("default_install_bartips_text"));
+        }
+        if (paramJSONObject.has("default_register_bartips_text")) {
+          ((SharedPreferences.Editor)localObject).putString("default_register_bartips_text", paramJSONObject.optString("default_register_bartips_text"));
+        }
       }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("Wadl_GameCenterSpUtils", 1, paramJSONObject, new Object[0]);
+      }
+      if (localJSONObject1.length() > 0) {
+        ((SharedPreferences.Editor)localObject).putString(paramString.trim(), localJSONObject1.toString());
+      }
+      ((SharedPreferences.Editor)localObject).commit();
     }
-    if (localJSONObject1.length() > 0) {
-      ((SharedPreferences.Editor)localObject).putString(paramString.trim(), localJSONObject1.toString());
-    }
-    ((SharedPreferences.Editor)localObject).commit();
   }
   
   public static boolean a(String paramString)
@@ -151,10 +191,12 @@ public class GameCenterSpUtils
       return false;
     }
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null) {}
-    for (localObject = ((AppRuntime)localObject).getAccount();; localObject = "") {
-      return MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).getBoolean(paramString, false);
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getAccount();
+    } else {
+      localObject = "";
     }
+    return MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).getBoolean(paramString, false);
   }
   
   public static boolean a(String paramString1, String paramString2)
@@ -163,14 +205,20 @@ public class GameCenterSpUtils
       return false;
     }
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null) {}
-    for (localObject = ((AppRuntime)localObject).getAccount();; localObject = "")
-    {
-      localObject = MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).edit();
-      ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
-      WLog.c("GameCenterSpUtils", "writeToSp " + paramString1 + " :" + paramString2);
-      return ((SharedPreferences.Editor)localObject).commit();
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getAccount();
+    } else {
+      localObject = "";
     }
+    localObject = MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).edit();
+    ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("writeToSp ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" :");
+    localStringBuilder.append(paramString2);
+    QLog.i("Wadl_GameCenterSpUtils", 1, localStringBuilder.toString());
+    return ((SharedPreferences.Editor)localObject).commit();
   }
   
   public static boolean a(String paramString, boolean paramBoolean)
@@ -179,14 +227,20 @@ public class GameCenterSpUtils
       return false;
     }
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject != null) {}
-    for (localObject = ((AppRuntime)localObject).getAccount();; localObject = "")
-    {
-      localObject = MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean(paramString, paramBoolean);
-      WLog.c("GameCenterSpUtils", "writeToSp " + paramString + " :" + paramBoolean);
-      return ((SharedPreferences.Editor)localObject).commit();
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getAccount();
+    } else {
+      localObject = "";
     }
+    localObject = MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).edit();
+    ((SharedPreferences.Editor)localObject).putBoolean(paramString, paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("writeToSp ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" :");
+    localStringBuilder.append(paramBoolean);
+    QLog.i("Wadl_GameCenterSpUtils", 1, localStringBuilder.toString());
+    return ((SharedPreferences.Editor)localObject).commit();
   }
   
   public static boolean a(String... paramVarArgs)
@@ -195,16 +249,17 @@ public class GameCenterSpUtils
     if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
       Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (localObject != null) {}
-      for (localObject = ((AppRuntime)localObject).getAccount();; localObject = "")
+      if (localObject != null) {
+        localObject = ((AppRuntime)localObject).getAccount();
+      } else {
+        localObject = "";
+      }
+      localObject = MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).edit();
+      int j = paramVarArgs.length;
+      while (i < j)
       {
-        localObject = MobileQQ.sMobileQQ.getSharedPreferences(b((String)localObject), 4).edit();
-        int j = paramVarArgs.length;
-        while (i < j)
-        {
-          ((SharedPreferences.Editor)localObject).remove(paramVarArgs[i]);
-          i += 1;
-        }
+        ((SharedPreferences.Editor)localObject).remove(paramVarArgs[i]);
+        i += 1;
       }
       return ((SharedPreferences.Editor)localObject).commit();
     }
@@ -213,12 +268,15 @@ public class GameCenterSpUtils
   
   public static String b(String paramString)
   {
-    return paramString + "_appoint";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_appoint");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.util.GameCenterSpUtils
  * JD-Core Version:    0.7.0.1
  */

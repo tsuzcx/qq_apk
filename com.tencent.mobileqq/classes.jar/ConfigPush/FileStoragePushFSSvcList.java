@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class FileStoragePushFSSvcList
   extends JceStruct
@@ -124,38 +125,47 @@ public final class FileStoragePushFSSvcList
   {
     paramJceOutputStream.write(this.vUpLoadList, 0);
     paramJceOutputStream.write(this.vPicDownLoadList, 1);
-    if (this.vGPicDownLoadList != null) {
-      paramJceOutputStream.write(this.vGPicDownLoadList, 2);
+    Object localObject = this.vGPicDownLoadList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.vQzoneProxyServiceList != null) {
-      paramJceOutputStream.write(this.vQzoneProxyServiceList, 3);
+    localObject = this.vQzoneProxyServiceList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.vUrlEncodeServiceList != null) {
-      paramJceOutputStream.write(this.vUrlEncodeServiceList, 4);
+    localObject = this.vUrlEncodeServiceList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.bigDataChannel != null) {
-      paramJceOutputStream.write(this.bigDataChannel, 5);
+    localObject = this.bigDataChannel;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.vVipEmotionList != null) {
-      paramJceOutputStream.write(this.vVipEmotionList, 6);
+    localObject = this.vVipEmotionList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
-    if (this.vC2CPicDownList != null) {
-      paramJceOutputStream.write(this.vC2CPicDownList, 7);
+    localObject = this.vC2CPicDownList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
-    if (this.fmtIPInfo != null) {
-      paramJceOutputStream.write(this.fmtIPInfo, 8);
+    localObject = this.fmtIPInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.domainIpChannel != null) {
-      paramJceOutputStream.write(this.domainIpChannel, 9);
+    localObject = this.domainIpChannel;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.pttlist != null) {
-      paramJceOutputStream.write(this.pttlist, 10);
+    localObject = this.pttlist;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ConfigPush.FileStoragePushFSSvcList
  * JD-Core Version:    0.7.0.1
  */

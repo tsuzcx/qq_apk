@@ -2,9 +2,9 @@ package com.tencent.mobileqq.earlydownload;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.earlydownload.api.IEarlyDownloadService;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.app.QQBroadcastReceiver;
 
 public class EarlyDownloadReceiver
@@ -12,28 +12,25 @@ public class EarlyDownloadReceiver
 {
   public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
   {
-    if ((paramAppRuntime instanceof QQAppInterface))
+    if (MobileQQ.sProcessId == 1)
     {
-      paramAppRuntime = (QQAppInterface)paramAppRuntime;
-      if (paramAppRuntime.isLogin()) {
-        ((EarlyDownloadManager)paramAppRuntime.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER)).a(paramIntent);
+      if (paramAppRuntime.isLogin())
+      {
+        ((IEarlyDownloadService)paramAppRuntime.getRuntimeService(IEarlyDownloadService.class, "")).handleBroadcastReq(paramIntent);
+        return;
       }
+      paramAppRuntime = new Intent(paramIntent.getAction().replace("req.", "resp."));
+      paramAppRuntime.putExtra("strResName", paramIntent.getStringExtra("strResName"));
+      paramAppRuntime.putExtra("strPkgName", paramIntent.getStringExtra("strPkgName"));
+      paramAppRuntime.putExtra("reqResult", false);
+      paramAppRuntime.putExtra("resultReason", "app is not login.");
+      paramContext.sendBroadcast(paramAppRuntime);
     }
-    else
-    {
-      return;
-    }
-    paramAppRuntime = new Intent(paramIntent.getAction().replace("req.", "resp."));
-    paramAppRuntime.putExtra("strResName", paramIntent.getStringExtra("strResName"));
-    paramAppRuntime.putExtra("strPkgName", paramIntent.getStringExtra("strPkgName"));
-    paramAppRuntime.putExtra("reqResult", false);
-    paramAppRuntime.putExtra("resultReason", "app is not login.");
-    paramContext.sendBroadcast(paramAppRuntime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.EarlyDownloadReceiver
  * JD-Core Version:    0.7.0.1
  */

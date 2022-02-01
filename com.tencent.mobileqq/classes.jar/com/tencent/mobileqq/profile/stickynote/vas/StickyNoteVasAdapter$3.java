@@ -16,23 +16,22 @@ class StickyNoteVasAdapter$3
     String str;
     if (StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter).a == 1) {
       str = "&g_ch=suixintie&actId=460973&isAskFriendPay=0";
+    } else if (StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter).a == 2) {
+      str = "&g_ch=扩列装扮&actId=466499&isAskFriendPay=0";
+    } else {
+      str = "";
     }
-    for (;;)
-    {
-      VasH5PayUtil.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + str, this.b, this.c, 0);
-      paramDialogInterface.dismiss();
-      return;
-      if (StickyNoteVasAdapter.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteVasAdapter).a == 2) {
-        str = "&g_ch=扩列装扮&actId=466499&isAskFriendPay=0";
-      } else {
-        str = "";
-      }
-    }
+    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(str);
+    VasH5PayUtil.a(localActivity, localStringBuilder.toString(), this.b, this.c, 0);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteVasAdapter.3
  * JD-Core Version:    0.7.0.1
  */

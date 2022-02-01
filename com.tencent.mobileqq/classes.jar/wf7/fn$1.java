@@ -1,6 +1,5 @@
 package wf7;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -15,70 +14,12 @@ class fn$1
   
   public void handleMessage(Message paramMessage)
   {
-    int j = 1;
-    int i = 2;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    Object localObject1 = fq.cr();
-    paramMessage = fd.dD();
-    ag localag = new ag();
-    Object localObject2 = new ai();
-    ((ai)localObject2).cG = 2;
-    ((ai)localObject2).cH = 201;
-    localag.ct = ((ai)localObject2);
-    localObject2 = new al();
-    String str = gr.A(gv.dE());
-    ((al)localObject2).d = str;
-    ((al)localObject2).db = "D8F0AABC489AE12F";
-    ((al)localObject2).h = "102769";
-    ((al)localObject2).dc = gz.V(gr.eZ());
-    ((al)localObject2).cA = 70;
-    ((al)localObject2).de = new aj();
-    Object localObject3 = "5.3.2".trim().split("[\\.]");
-    if (localObject3.length >= 3)
-    {
-      ((al)localObject2).de.cI = Integer.parseInt(localObject3[0]);
-      ((al)localObject2).de.cJ = Integer.parseInt(localObject3[1]);
-      ((al)localObject2).de.cK = Integer.parseInt(localObject3[2]);
-    }
-    localObject3 = gz.V(gr.B((Context)localObject1));
-    ((al)localObject2).aX = ("V2;" + str + ";" + (String)localObject3);
-    ((al)localObject2).df = gz.V(gr.k((Context)localObject1));
-    if (gp.x((Context)localObject1) == 2)
-    {
-      ((al)localObject2).dd = i;
-      if (!gj.t((Context)localObject1)) {
-        break label397;
-      }
-    }
-    label397:
-    for (i = j;; i = 0)
-    {
-      ((al)localObject2).cB = i;
-      ((al)localObject2).dh = dk.bJ();
-      ((al)localObject2).ba = 10000;
-      localObject1 = eo.da();
-      if (localObject1 != null) {
-        ((al)localObject2).dm = ((eo)localObject1).cC();
-      }
-      localag.cu = ((al)localObject2);
-      localObject1 = new ah();
-      ((ah)localObject1).cz = "102769";
-      ((ah)localObject1).cA = 70;
-      localag.cv = ((ah)localObject1);
-      paramMessage.a(553, localag, null, 0, new fn.1.1(this));
-      return;
-      i = 1;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fn.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,19 +23,19 @@ class AIOTianShuTraceInfoHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 6 };
+    return new int[] { 7 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    if ((6 == paramInt) && (!(this.a instanceof PublicAccountChatPie))) {
+    if ((7 == paramInt) && (!(this.a instanceof PublicAccountChatPie))) {
       TianShuManager.setLastClickAdTraceInfo("", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOTianShuTraceInfoHelper
  * JD-Core Version:    0.7.0.1
  */

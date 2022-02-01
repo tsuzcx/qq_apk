@@ -47,70 +47,72 @@ public class ReqSystemMsgNewItem
       this.a.getPreferences().edit().putBoolean("SP_VERSION_UPDATE", true);
     }
     PBUInt64Field localPBUInt64Field = ((structmsg.ReqSystemMsgNew)localObject1).latest_friend_seq;
-    if (bool) {}
-    for (long l = ((MessageHandler)localObject2).a().e("last_friend_seq_47");; l = 0L)
-    {
-      localPBUInt64Field.set(l);
-      ((structmsg.ReqSystemMsgNew)localObject1).latest_group_seq.set(0L);
-      ((structmsg.ReqSystemMsgNew)localObject1).version.set(1000);
-      ((structmsg.ReqSystemMsgNew)localObject1).is_get_grp_ribbon.set(false);
-      ((structmsg.ReqSystemMsgNew)localObject1).friend_msg_type_flag.set(1L);
-      localObject2 = new structmsg.FlagInfo();
-      ((structmsg.FlagInfo)localObject2).GrpMsg_Kick_Admin.set(1);
-      ((structmsg.FlagInfo)localObject2).GrpMsg_WordingDown.set(1);
-      ((structmsg.FlagInfo)localObject2).GrpMsg_GetOfficialAccount.set(1);
-      ((structmsg.FlagInfo)localObject2).FrdMsg_GetBusiCard.set(1);
-      ((structmsg.FlagInfo)localObject2).GrpMsg_GetPayInGroup.set(1);
-      ((structmsg.FlagInfo)localObject2).FrdMsg_Discuss2ManyChat.set(1);
-      ((structmsg.FlagInfo)localObject2).FrdMsg_NeedWaitingMsg.set(1);
-      ((structmsg.FlagInfo)localObject2).GrpMsg_NotAllowJoinGrp_InviteNotFrd.set(1);
-      ((structmsg.FlagInfo)localObject2).FrdMsg_uint32_need_all_unread_msg.set(1);
-      ((structmsg.FlagInfo)localObject2).GrpMsg_get_transfer_group_msg_flag.set(1);
-      ((structmsg.FlagInfo)localObject2).GrpMsg_NeedAutoAdminWording.set(1);
-      ((structmsg.FlagInfo)localObject2).GrpMsg_get_quit_pay_group_msg_flag.set(1);
-      ((structmsg.FlagInfo)localObject2).GrpMsg_GetC2cInviteJoinGroup.set(1);
-      ((structmsg.ReqSystemMsgNew)localObject1).flag.set((MessageMicro)localObject2);
-      ((structmsg.ReqSystemMsgNew)localObject1).is_get_frd_ribbon.set(false);
-      localObject1 = ((structmsg.ReqSystemMsgNew)localObject1).toByteArray();
-      localObject2 = new byte[localObject1.length + 4];
-      PkgTools.DWord2Byte((byte[])localObject2, 0, localObject1.length + 4);
-      PkgTools.copyData((byte[])localObject2, 4, (byte[])localObject1, localObject1.length);
-      localReqItem.vecParam = ((byte[])localObject2);
-      return localReqItem;
+    long l;
+    if (bool) {
+      l = ((MessageHandler)localObject2).a().e("last_friend_seq_47");
+    } else {
+      l = 0L;
     }
+    localPBUInt64Field.set(l);
+    ((structmsg.ReqSystemMsgNew)localObject1).latest_group_seq.set(0L);
+    ((structmsg.ReqSystemMsgNew)localObject1).version.set(1000);
+    ((structmsg.ReqSystemMsgNew)localObject1).is_get_grp_ribbon.set(false);
+    ((structmsg.ReqSystemMsgNew)localObject1).friend_msg_type_flag.set(1L);
+    localObject2 = new structmsg.FlagInfo();
+    ((structmsg.FlagInfo)localObject2).GrpMsg_Kick_Admin.set(1);
+    ((structmsg.FlagInfo)localObject2).GrpMsg_WordingDown.set(1);
+    ((structmsg.FlagInfo)localObject2).GrpMsg_GetOfficialAccount.set(1);
+    ((structmsg.FlagInfo)localObject2).FrdMsg_GetBusiCard.set(1);
+    ((structmsg.FlagInfo)localObject2).GrpMsg_GetPayInGroup.set(1);
+    ((structmsg.FlagInfo)localObject2).FrdMsg_Discuss2ManyChat.set(1);
+    ((structmsg.FlagInfo)localObject2).FrdMsg_NeedWaitingMsg.set(1);
+    ((structmsg.FlagInfo)localObject2).GrpMsg_NotAllowJoinGrp_InviteNotFrd.set(1);
+    ((structmsg.FlagInfo)localObject2).FrdMsg_uint32_need_all_unread_msg.set(1);
+    ((structmsg.FlagInfo)localObject2).GrpMsg_get_transfer_group_msg_flag.set(1);
+    ((structmsg.FlagInfo)localObject2).GrpMsg_NeedAutoAdminWording.set(1);
+    ((structmsg.FlagInfo)localObject2).GrpMsg_get_quit_pay_group_msg_flag.set(1);
+    ((structmsg.FlagInfo)localObject2).GrpMsg_GetC2cInviteJoinGroup.set(1);
+    ((structmsg.ReqSystemMsgNew)localObject1).flag.set((MessageMicro)localObject2);
+    ((structmsg.ReqSystemMsgNew)localObject1).is_get_frd_ribbon.set(false);
+    localObject1 = ((structmsg.ReqSystemMsgNew)localObject1).toByteArray();
+    localObject2 = new byte[localObject1.length + 4];
+    PkgTools.dWord2Byte((byte[])localObject2, 0, localObject1.length + 4);
+    PkgTools.copyData((byte[])localObject2, 4, (byte[])localObject1, localObject1.length);
+    localReqItem.vecParam = ((byte[])localObject2);
+    return localReqItem;
   }
   
   public void a(RespItem paramRespItem)
   {
     if (paramRespItem.eServiceID == 114)
     {
-      if (paramRespItem.cResult != 2) {
-        break label106;
-      }
-      localObject = paramRespItem.vecUpdate;
-      i = localObject.length - 4;
-      paramRespItem = new byte[i];
-      System.arraycopy(localObject, 4, paramRespItem, 0, i);
-      localObject = new ToServiceMsg("mobileqq.service", this.a.getAccount(), "ProfileService.Pb.ReqSystemMsgNew");
-      localFromServiceMsg = new FromServiceMsg(this.a.getAccount(), "ProfileService.Pb.ReqSystemMsgNew");
-      localFromServiceMsg.setServiceCmd("ProfileService.Pb.ReqSystemMsgNew");
-      localFromServiceMsg.setMsgSuccess();
-      ((QQAppInterface)this.a).getMsgHandler().onReceive((ToServiceMsg)localObject, localFromServiceMsg, paramRespItem);
-    }
-    label106:
-    while (!QLog.isColorLevel())
-    {
       Object localObject;
-      int i;
-      FromServiceMsg localFromServiceMsg;
-      return;
+      if (paramRespItem.cResult == 2)
+      {
+        localObject = paramRespItem.vecUpdate;
+        int i = localObject.length - 4;
+        paramRespItem = new byte[i];
+        System.arraycopy(localObject, 4, paramRespItem, 0, i);
+        localObject = new ToServiceMsg("mobileqq.service", this.a.getAccount(), "ProfileService.Pb.ReqSystemMsgNew");
+        FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.a.getAccount(), "ProfileService.Pb.ReqSystemMsgNew");
+        localFromServiceMsg.setServiceCmd("ProfileService.Pb.ReqSystemMsgNew");
+        localFromServiceMsg.setMsgSuccess();
+        ((QQAppInterface)this.a).getMsgHandler().onReceive((ToServiceMsg)localObject, localFromServiceMsg, paramRespItem);
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("error happend item.cResult = ");
+        ((StringBuilder)localObject).append(paramRespItem.cResult);
+        QLog.d("ReqSystemMsgNewItem", 2, ((StringBuilder)localObject).toString());
+      }
     }
-    QLog.d("ReqSystemMsgNewItem", 2, "error happend item.cResult = " + paramRespItem.cResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ReqSystemMsgNewItem
  * JD-Core Version:    0.7.0.1
  */

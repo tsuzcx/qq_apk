@@ -35,18 +35,20 @@ public final class UploadVideoInfoRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sVid != null) {
-      paramJceOutputStream.write(this.sVid, 0);
+    Object localObject = this.sVid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.iBusiNessType, 1);
-    if (this.vBusiNessData != null) {
-      paramJceOutputStream.write(this.vBusiNessData, 2);
+    localObject = this.vBusiNessData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.UploadVideoInfoRsp
  * JD-Core Version:    0.7.0.1
  */

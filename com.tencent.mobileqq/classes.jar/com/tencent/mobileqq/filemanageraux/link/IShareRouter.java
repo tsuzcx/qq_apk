@@ -10,8 +10,6 @@ abstract interface IShareRouter
   
   public abstract long a();
   
-  public abstract BaseActivity a();
-  
   public abstract FileManagerEntity a();
   
   public abstract IShareRouter.ShareOptions a();
@@ -29,10 +27,12 @@ abstract interface IShareRouter
   public abstract void b();
   
   public abstract String c();
+  
+  public abstract BaseActivity getBaseActivity();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.link.IShareRouter
  * JD-Core Version:    0.7.0.1
  */

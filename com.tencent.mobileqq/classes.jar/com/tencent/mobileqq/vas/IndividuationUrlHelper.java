@@ -6,15 +6,20 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.api.IVasCommonAdapter;
+import com.tencent.mobileqq.vas.api.IVasSingedApi;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.IVipStatusManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.SoftReference;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -48,7 +53,7 @@ public final class IndividuationUrlHelper
   private static final String jdField_a_of_type_JavaLangString;
   public static HashMap<String, IndividuationUrlHelper.MarketParams> a;
   private static List<SoftReference<IndividuationUrlHelper.IconExtendData>> jdField_a_of_type_JavaUtilList;
-  private static Map<String, String> jdField_a_of_type_JavaUtilMap;
+  public static Map<String, String> a;
   private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private static boolean jdField_a_of_type_Boolean;
   private static final String jdField_b_of_type_JavaLangString;
@@ -82,35 +87,76 @@ public final class IndividuationUrlHelper
   static
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("uin=[uin]").append("&client=androidQQ").append("&version=").append("8.5.5.5105").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]");
+    ((StringBuilder)localObject).append("uin=[uin]");
+    ((StringBuilder)localObject).append("&client=androidQQ");
+    ((StringBuilder)localObject).append("&version=");
+    ((StringBuilder)localObject).append("8.7.0.5295");
+    ((StringBuilder)localObject).append("&platformId=2");
+    ((StringBuilder)localObject).append("&device=");
+    ((StringBuilder)localObject).append(Build.DEVICE);
+    ((StringBuilder)localObject).append("&system=");
+    ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject).append("&density=[density]");
     I = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/sonic/theme");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=16782337").append("&asyncMode=3");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=16782337");
+    ((StringBuilder)localObject).append("&asyncMode=3");
     jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/theme/detail");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=16782337").append("&id=[id]");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=16782337");
+    ((StringBuilder)localObject).append("&id=[id]");
     jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/sonic/bubble");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=16778243&_wwv=64&_nav_txtclr=ffffff&_nav_titleclr=ffffff").append("&asyncMode=3");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=16778243&_wwv=64&_nav_txtclr=ffffff&_nav_titleclr=ffffff");
+    ((StringBuilder)localObject).append("&asyncMode=3");
     jdField_c_of_type_JavaLangString = ((StringBuilder)localObject).toString();
     d = "https://zb.vip.qq.com/collection/aio?_wv=1027&id=[id]&_preload=1&type=bubble";
     localObject = new StringBuilder("https://zb.vip.qq.com/bubble");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=1027").append("&asyncMode=3");
-    e = "&show_type=dialog&id=[id]";
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=1027");
+    ((StringBuilder)localObject).append("&asyncMode=3");
+    ((StringBuilder)localObject).append("&show_type=dialog&id=[id]");
+    e = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/sonic/emoji");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=16778243").append("&asyncMode=3");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=16778243");
+    ((StringBuilder)localObject).append("&asyncMode=3");
     f = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://gxh.vip.qq.com/club/themes/mobile/bq/html/detail.html");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=16778241").append("&_bid=102").append("&type=view").append("&id=[id]").append("&_lv=0");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=16778241");
+    ((StringBuilder)localObject).append("&_bid=102");
+    ((StringBuilder)localObject).append("&type=view");
+    ((StringBuilder)localObject).append("&id=[id]");
+    ((StringBuilder)localObject).append("&_lv=0");
     g = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://imgcache.qq.com/club/themes/mobile/bq/html/author.html");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=3").append("&_bid=102").append("&type=view").append("&id=[id]");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=3");
+    ((StringBuilder)localObject).append("&_bid=102");
+    ((StringBuilder)localObject).append("&type=view");
+    ((StringBuilder)localObject).append("&id=[id]");
     h = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/sonic/widget");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=3").append("&asyncMode=3");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=3");
+    ((StringBuilder)localObject).append("&asyncMode=3");
     i = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("https://zb.vip.qq.com/sonic/widget/home?").append(I).append("&adtag=index.h5&_wv=16778243&sharefri=[sharefri]");
+    ((StringBuilder)localObject).append("https://zb.vip.qq.com/sonic/widget/home?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&adtag=index.h5&_wv=16778243&sharefri=[sharefri]");
     j = ((StringBuilder)localObject).toString();
     ((StringBuilder)localObject).setLength(0);
     ((StringBuilder)localObject).append("https://zb.vip.qq.com/widget/diyEditor?_wv=16778243&sharefri=[sharefri]");
@@ -123,56 +169,128 @@ public final class IndividuationUrlHelper
     p = "https://gxh.vip.qq.com/xydata/bubble/item/[id]/250x300_0.png";
     o = "https://zb.vip.qq.com/face/category?_wv=16778243&_wvx=3&id=14";
     localObject = new StringBuilder("https://imgcache.qq.com/club/themes/mobile/head_pendant/html/index.html");
-    ((StringBuilder)localObject).append("?").append(I).append("&_bid=160").append("&_wv=3").append("&asyncMode=1");
-    q = "&show_type=dialog&id=[id]";
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_bid=160");
+    ((StringBuilder)localObject).append("&_wv=3");
+    ((StringBuilder)localObject).append("&asyncMode=1");
+    ((StringBuilder)localObject).append("&show_type=dialog&id=[id]");
+    q = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/sonic/font");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=16778243").append("&asyncMode=3");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=16778243");
+    ((StringBuilder)localObject).append("&asyncMode=3");
     s = ((StringBuilder)localObject).toString();
-    t = "&show_type=dialog&id=[id]";
+    ((StringBuilder)localObject).append("&show_type=dialog&id=[id]");
+    t = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://imgcache.qq.com/club/themes/mobile/font/index.html");
-    ((StringBuilder)localObject).append("?").append(I).append("&_bid=182").append("&_wv=1027").append("&asyncMode=1");
-    u = "&show_type=dialog&id=[id]";
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_bid=182");
+    ((StringBuilder)localObject).append("&_wv=1027");
+    ((StringBuilder)localObject).append("&asyncMode=1");
+    ((StringBuilder)localObject).append("&show_type=dialog&id=[id]");
+    u = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://gxh.vip.qq.com/club/themes/mobile/suit/index.html");
-    ((StringBuilder)localObject).append("?").append(I).append("&_bid=239").append("&_wv=5123");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_bid=239");
+    ((StringBuilder)localObject).append("&_wv=5123");
     v = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://gxh.vip.qq.com/club/themes/mobile/suit/detail.html");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=5123").append("&_bid=239").append("&suitid=[id]").append("&suittitle=[title]");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=5123");
+    ((StringBuilder)localObject).append("&_bid=239");
+    ((StringBuilder)localObject).append("&suitid=[id]");
+    ((StringBuilder)localObject).append("&suittitle=[title]");
     w = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/sonic/funcall");
-    ((StringBuilder)localObject).append("?").append(I).append("&asyncMode=3").append("&_wv=16778243");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&asyncMode=3");
+    ((StringBuilder)localObject).append("&_wv=16778243");
     x = ((StringBuilder)localObject).toString();
-    y = "&id=[id]";
+    ((StringBuilder)localObject).append("&id=[id]");
+    y = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/redpack/index");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=16778243&_wwv=64&_nav_txtclr=ffffff&_nav_titleclr=ffffff&from=[from]");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=16778243&_wwv=64&_nav_txtclr=ffffff&_nav_titleclr=ffffff&from=[from]");
     z = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/sonic/chatbg");
-    ((StringBuilder)localObject).append("?").append(I).append("&asyncMode=3").append("&_wv=1027");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&asyncMode=3");
+    ((StringBuilder)localObject).append("&_wv=1027");
     A = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/chatbg/preview");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=16782337").append("&bgId=[id]");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=16782337");
+    ((StringBuilder)localObject).append("&bgId=[id]");
     B = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/sonic/funcall");
-    ((StringBuilder)localObject).append("?").append(I).append("&asyncMode=3").append("&_wv=16778243");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&asyncMode=3");
+    ((StringBuilder)localObject).append("&_wv=16778243");
     C = ((StringBuilder)localObject).toString();
-    D = "&id=[id]";
+    ((StringBuilder)localObject).append("&id=[id]");
+    D = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/sonic/card");
-    ((StringBuilder)localObject).append("?").append(I).append("&_wv=16782337").append("&asyncMode=3");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&_wv=16782337");
+    ((StringBuilder)localObject).append("&asyncMode=3");
     E = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://gxh.vip.qq.com/club/themes/mobile/card/html/detail.html");
-    ((StringBuilder)localObject).append("?").append(I).append("&cardItemId=[id]").append("&_wv=16782337");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append(I);
+    ((StringBuilder)localObject).append("&cardItemId=[id]");
+    ((StringBuilder)localObject).append("&_wv=16782337");
     F = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://gxh.vip.qq.com/club/themes/mobile/bq/html/category.html?");
-    ((StringBuilder)localObject).append("adtag=vip.gongneng.mobile.biaoqing.index").append("&_bid=102&_lv=0").append("&key=012").append("&name=%E5%B0%8F%E8%A1%A8%E6%83%85").append("&src=category_list&_wv=1027");
+    ((StringBuilder)localObject).append("adtag=vip.gongneng.mobile.biaoqing.index");
+    ((StringBuilder)localObject).append("&_bid=102&_lv=0");
+    ((StringBuilder)localObject).append("&key=012");
+    ((StringBuilder)localObject).append("&name=%E5%B0%8F%E8%A1%A8%E6%83%85");
+    ((StringBuilder)localObject).append("&src=category_list&_wv=1027");
     J = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://zb.vip.qq.com/like");
-    ((StringBuilder)localObject).append("?").append("_wv=16778243");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append("_wv=16778243");
     K = ((StringBuilder)localObject).toString();
     G = "https://zb.vip.qq.com/card/setting?_wv=16778243";
     localObject = new StringBuilder("https://imgcache.qq.com/club/themes/mobile/my_dress/index.html");
-    ((StringBuilder)localObject).append("?uin=[uin]").append("&client=androidQQ").append("&version=").append("8.5.5.5105").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]").append("&_bid=182").append("&_wv=3");
+    ((StringBuilder)localObject).append("?uin=[uin]");
+    ((StringBuilder)localObject).append("&client=androidQQ");
+    ((StringBuilder)localObject).append("&version=");
+    ((StringBuilder)localObject).append("8.7.0.5295");
+    ((StringBuilder)localObject).append("&platformId=2");
+    ((StringBuilder)localObject).append("&device=");
+    ((StringBuilder)localObject).append(Build.DEVICE);
+    ((StringBuilder)localObject).append("&system=");
+    ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject).append("&density=[density]");
+    ((StringBuilder)localObject).append("&_bid=182");
+    ((StringBuilder)localObject).append("&_wv=3");
     L = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder("https://imgcache.qq.com/club/themes/mobile/search/html/index.html");
-    ((StringBuilder)localObject).append("?uin=[uin]").append("&client=androidQQ").append("&version=").append("8.5.5.5105").append("&platformId=2").append("&device=").append(Build.DEVICE).append("&system=").append(Build.VERSION.RELEASE).append("&density=[density]").append("&adtag=mvip.gxh.android.search").append("&_bid=2229").append("&_wv=1027");
+    ((StringBuilder)localObject).append("?uin=[uin]");
+    ((StringBuilder)localObject).append("&client=androidQQ");
+    ((StringBuilder)localObject).append("&version=");
+    ((StringBuilder)localObject).append("8.7.0.5295");
+    ((StringBuilder)localObject).append("&platformId=2");
+    ((StringBuilder)localObject).append("&device=");
+    ((StringBuilder)localObject).append(Build.DEVICE);
+    ((StringBuilder)localObject).append("&system=");
+    ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject).append("&density=[density]");
+    ((StringBuilder)localObject).append("&adtag=mvip.gxh.android.search");
+    ((StringBuilder)localObject).append("&_bid=2229");
+    ((StringBuilder)localObject).append("&_wv=1027");
     M = ((StringBuilder)localObject).toString();
     jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
     jdField_b_of_type_JavaUtilMap = new HashMap();
@@ -247,6 +365,7 @@ public final class IndividuationUrlHelper
     jdField_c_of_type_JavaUtilMap.put("NameplateClickDefault", "https://m.vip.qq.com/freedom/freedom_svipicon.html?_nav_alpha=0");
     jdField_c_of_type_JavaUtilMap.put("NameplateClickSvip", "https://h5.vip.qq.com/p/mc/cardv2/other?_wv=1031");
     jdField_c_of_type_JavaUtilMap.put("kuoliePersonalCardMaster", "https://club.vip.qq.com/card?_wvx=3&_nav_anim=true&_nav_alpha=0");
+    jdField_c_of_type_JavaUtilMap.put("themepatch", "https://gxh.material.qq.com/patch/little_world/android/[id].zip");
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
     localObject = new IndividuationUrlHelper.MarketParams("2034", "1027");
     jdField_a_of_type_JavaUtilHashMap.put("theme", localObject);
@@ -298,6 +417,11 @@ public final class IndividuationUrlHelper
     return b(paramContext, a(paramString1), paramString2);
   }
   
+  public static String a(Context paramContext, String paramString1, String paramString2, IndividuationUrlHelper.UrlCallback paramUrlCallback)
+  {
+    return b(paramContext, a(paramString1, paramUrlCallback), paramString2);
+  }
+  
   public static String a(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     return b(paramContext, a(paramString1), paramString2, paramString3);
@@ -310,20 +434,26 @@ public final class IndividuationUrlHelper
   
   public static String a(String paramString, ImageView paramImageView)
   {
-    Object localObject = null;
     if (!jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_JavaUtilList.add(new SoftReference(new IndividuationUrlHelper.IconExtendData(paramString, paramImageView)));
-      paramImageView = localObject;
       if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        paramImageView = a(paramString, jdField_a_of_type_ComTencentMobileqqVasIndividuationUrlHelper$UrlCallback);
+        paramString = a(paramString, jdField_a_of_type_ComTencentMobileqqVasIndividuationUrlHelper$UrlCallback);
+      } else {
+        paramString = null;
       }
-      if (!TextUtils.isEmpty(paramImageView)) {
+      paramImageView = paramString;
+      if (!TextUtils.isEmpty(paramString))
+      {
         jdField_a_of_type_JavaUtilList.clear();
+        return paramString;
       }
-      return paramImageView;
     }
-    return (String)jdField_a_of_type_JavaUtilMap.get(paramString);
+    else
+    {
+      paramImageView = (String)jdField_a_of_type_JavaUtilMap.get(paramString);
+    }
+    return paramImageView;
   }
   
   public static String a(String paramString, IndividuationUrlHelper.UrlCallback paramUrlCallback)
@@ -331,504 +461,414 @@ public final class IndividuationUrlHelper
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    Object localObject1;
+    Object localObject2;
     if (jdField_a_of_type_JavaUtilMap.containsKey(paramString))
     {
       localObject1 = (String)jdField_a_of_type_JavaUtilMap.get(paramString);
       localObject2 = localObject1;
-      if (QLog.isColorLevel()) {
-        QLog.d("IndividuationUrlHelper", 2, "getUrl, from config, id=" + paramString + ", url=" + (String)localObject1);
-      }
-    }
-    for (Object localObject2 = localObject1;; localObject2 = null)
-    {
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty(localObject2)) {
-        if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("IndividuationUrlHelper", 2, "getUrl start parseJson");
-          }
-          if (Looper.myLooper() != Looper.getMainLooper()) {
-            break label279;
-          }
-          ThreadManager.post(new IndividuationUrlHelper.2(paramUrlCallback), 5, null, true);
-        }
-      }
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        paramUrlCallback = (String)jdField_b_of_type_JavaUtilMap.get(paramString);
-        localObject1 = paramUrlCallback;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("IndividuationUrlHelper", 2, "getUrl, from default, id=" + paramString + ", url=" + paramUrlCallback);
-          localObject1 = paramUrlCallback;
-        }
-        paramUrlCallback = (IndividuationUrlHelper.UrlCallback)localObject1;
-        if (TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          localObject1 = a(BaseApplicationImpl.sApplication.getRuntime(), (String)jdField_c_of_type_JavaUtilMap.get(paramString), paramString);
-          paramUrlCallback = (IndividuationUrlHelper.UrlCallback)localObject1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("IndividuationUrlHelper", 2, "getUrl, from raw default, id=" + paramString + ", url=" + (String)localObject1);
-            paramUrlCallback = (IndividuationUrlHelper.UrlCallback)localObject1;
-          }
-        }
-        return paramUrlCallback;
-        label279:
-        a(BaseApplicationImpl.sApplication.getRuntime());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getUrl, from config, id=");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(", url=");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("IndividuationUrlHelper", 2, ((StringBuilder)localObject2).toString());
+        localObject2 = localObject1;
       }
     }
+    else
+    {
+      localObject2 = null;
+    }
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+          ThreadManager.post(new IndividuationUrlHelper.2(paramUrlCallback), 5, null, true);
+        } else {
+          a(MobileQQ.sMobileQQ.peekAppRuntime());
+        }
+      }
+      paramUrlCallback = (String)jdField_b_of_type_JavaUtilMap.get(paramString);
+      localObject1 = paramUrlCallback;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getUrl, from default, id=");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(", url=");
+        ((StringBuilder)localObject1).append(paramUrlCallback);
+        QLog.d("IndividuationUrlHelper", 2, ((StringBuilder)localObject1).toString());
+        localObject1 = paramUrlCallback;
+      }
+    }
+    paramUrlCallback = (IndividuationUrlHelper.UrlCallback)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject1 = a(MobileQQ.sMobileQQ.peekAppRuntime(), (String)jdField_c_of_type_JavaUtilMap.get(paramString), paramString);
+      paramUrlCallback = (IndividuationUrlHelper.UrlCallback)localObject1;
+      if (QLog.isColorLevel())
+      {
+        paramUrlCallback = new StringBuilder();
+        paramUrlCallback.append("getUrl, from raw default, id=");
+        paramUrlCallback.append(paramString);
+        paramUrlCallback.append(", url=");
+        paramUrlCallback.append((String)localObject1);
+        QLog.d("IndividuationUrlHelper", 2, paramUrlCallback.toString());
+        paramUrlCallback = (IndividuationUrlHelper.UrlCallback)localObject1;
+      }
+    }
+    return paramUrlCallback;
   }
   
-  /* Error */
+  public static String a(String paramString, Map<String, String> paramMap)
+  {
+    paramString = a(paramString, null);
+    String str = paramString;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramMap != null)
+      {
+        Iterator localIterator = paramMap.keySet().iterator();
+        for (;;)
+        {
+          str = paramString;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          str = (String)localIterator.next();
+          paramString = paramString.replace(str, (CharSequence)paramMap.get(str));
+        }
+      }
+    }
+    return str;
+  }
+  
   public static String a(AppRuntime paramAppRuntime, String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokestatic 633	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifeq +5 -> 9
-    //   7: aload_1
-    //   8: areturn
-    //   9: aload_1
-    //   10: astore_3
-    //   11: aload_1
-    //   12: ldc_w 704
-    //   15: ldc_w 706
-    //   18: invokevirtual 710	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   21: astore_1
-    //   22: aload_1
-    //   23: astore_3
-    //   24: aload_1
-    //   25: ldc_w 712
-    //   28: ldc 79
-    //   30: invokevirtual 710	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   33: astore_1
-    //   34: aload_1
-    //   35: astore_3
-    //   36: aload_1
-    //   37: ldc_w 714
-    //   40: ldc_w 716
-    //   43: invokevirtual 710	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   46: astore_1
-    //   47: aload_1
-    //   48: astore_3
-    //   49: aload_1
-    //   50: ldc_w 718
-    //   53: getstatic 88	android/os/Build:DEVICE	Ljava/lang/String;
-    //   56: ldc_w 720
-    //   59: invokestatic 726	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   62: invokevirtual 710	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   65: astore_1
-    //   66: aload_1
-    //   67: astore_3
-    //   68: aload_1
-    //   69: ldc_w 728
-    //   72: getstatic 95	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
-    //   75: ldc_w 720
-    //   78: invokestatic 726	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   81: invokevirtual 710	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   84: astore_1
-    //   85: aload_0
-    //   86: astore 4
-    //   88: aload_0
-    //   89: ifnonnull +11 -> 100
-    //   92: getstatic 688	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   95: invokevirtual 692	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   98: astore 4
-    //   100: aload 4
-    //   102: ifnull +36 -> 138
-    //   105: aload_1
-    //   106: ldc_w 730
-    //   109: aload 4
-    //   111: invokevirtual 735	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   114: invokevirtual 710	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   117: astore_0
-    //   118: aload_0
-    //   119: astore_3
-    //   120: aload_0
-    //   121: ldc_w 737
-    //   124: aload 4
-    //   126: invokevirtual 741	mqq/app/AppRuntime:getApplication	()Lmqq/app/MobileQQ;
-    //   129: invokestatic 747	com/tencent/mobileqq/theme/ThemeUtil:getThemeDensity	(Landroid/content/Context;)Ljava/lang/String;
-    //   132: invokevirtual 710	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   135: astore_1
-    //   136: aload_1
-    //   137: areturn
-    //   138: ldc_w 651
-    //   141: iconst_1
-    //   142: ldc_w 749
-    //   145: iconst_2
-    //   146: anewarray 4	java/lang/Object
-    //   149: dup
-    //   150: iconst_0
-    //   151: aload_1
-    //   152: aastore
-    //   153: dup
-    //   154: iconst_1
-    //   155: aload_2
-    //   156: aastore
-    //   157: invokestatic 753	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   160: invokestatic 755	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   163: goto -27 -> 136
-    //   166: astore_0
-    //   167: ldc_w 651
-    //   170: iconst_1
-    //   171: ldc_w 757
-    //   174: iconst_3
-    //   175: anewarray 4	java/lang/Object
-    //   178: dup
-    //   179: iconst_0
-    //   180: aload_1
-    //   181: aastore
-    //   182: dup
-    //   183: iconst_1
-    //   184: aload_2
-    //   185: aastore
-    //   186: dup
-    //   187: iconst_2
-    //   188: aload_0
-    //   189: invokestatic 763	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   192: aastore
-    //   193: invokestatic 753	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   196: invokestatic 755	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   199: goto -63 -> 136
-    //   202: astore_0
-    //   203: aload_3
-    //   204: astore_1
-    //   205: goto -38 -> 167
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	208	0	paramAppRuntime	AppRuntime
-    //   0	208	1	paramString1	String
-    //   0	208	2	paramString2	String
-    //   10	194	3	localObject	Object
-    //   86	39	4	localAppRuntime	AppRuntime
-    // Exception table:
-    //   from	to	target	type
-    //   92	100	166	java/lang/Exception
-    //   105	118	166	java/lang/Exception
-    //   138	163	166	java/lang/Exception
-    //   11	22	202	java/lang/Exception
-    //   24	34	202	java/lang/Exception
-    //   36	47	202	java/lang/Exception
-    //   49	66	202	java/lang/Exception
-    //   68	85	202	java/lang/Exception
-    //   120	136	202	java/lang/Exception
-  }
-  
-  public static Map<String, String> a()
-  {
-    return jdField_a_of_type_JavaUtilMap;
+    if (TextUtils.isEmpty(paramString1)) {
+      return paramString1;
+    }
+    Object localObject = paramString1;
+    try
+    {
+      paramString1 = paramString1.replace("[client]", "androidQQ");
+      localObject = paramString1;
+      paramString1 = paramString1.replace("[version]", "8.7.0.5295");
+      localObject = paramString1;
+      paramString1 = paramString1.replace("[platformId]", "2");
+      localObject = paramString1;
+      paramString1 = paramString1.replace("[device]", URLEncoder.encode(Build.DEVICE, "UTF-8"));
+      localObject = paramString1;
+      String str = paramString1.replace("[system]", URLEncoder.encode(Build.VERSION.RELEASE, "UTF-8"));
+      paramString1 = paramAppRuntime;
+      if (paramAppRuntime == null)
+      {
+        localObject = str;
+        paramString1 = MobileQQ.sMobileQQ.peekAppRuntime();
+      }
+      if (paramString1 != null)
+      {
+        localObject = str;
+        paramAppRuntime = str.replace("[uin]", paramString1.getAccount());
+        localObject = paramAppRuntime;
+        return paramAppRuntime.replace("[density]", ThemeUtil.getThemeDensity(paramString1.getApplication()));
+      }
+      localObject = str;
+      QLog.e("IndividuationUrlHelper", 1, String.format("replaceCommonParams null == app, url=%s, urlId=%s", new Object[] { str, paramString2 }));
+      return str;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("IndividuationUrlHelper", 1, String.format("replaceCommonParams, url=%s, urlId=%s, exception=%s", new Object[] { localObject, paramString2, MsfSdkUtils.getStackTraceString(paramAppRuntime) }));
+    }
+    return localObject;
   }
   
   public static void a(AppRuntime paramAppRuntime)
   {
     if (paramAppRuntime == null) {}
-    long l1;
-    for (;;)
+    try
     {
-      try
-      {
-        QLog.e("IndividuationUrlHelper", 1, "parseJson, app null");
-        return;
-      }
-      finally {}
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-      {
-        l1 = System.currentTimeMillis();
-        jdField_a_of_type_JavaUtilMap.clear();
-        jdField_b_of_type_JavaUtilMap.clear();
-        localObject1 = jdField_c_of_type_JavaUtilMap.entrySet().iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-          String str = (String)((Map.Entry)localObject2).getKey();
-          localObject2 = a(paramAppRuntime, (String)((Map.Entry)localObject2).getValue(), str);
-          jdField_b_of_type_JavaUtilMap.put(str, localObject2);
-        }
-      }
+      QLog.e("IndividuationUrlHelper", 1, "parseJson, app null");
+      return;
     }
-    Object localObject1 = VasUpdateUtil.a(paramAppRuntime, 1000L, "vipData_individuation_url.android.json", paramAppRuntime.getApplication().getFilesDir() + File.separator + "vipData_individuation_url.android.json", true, null);
-    if (localObject1 != null)
+    finally
     {
-      boolean bool = ((File)localObject1).exists();
+      boolean bool;
+      long l1;
+      Object localObject1;
+      break label301;
+    }
+    bool = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+    if (!bool) {
+      return;
+    }
+    l1 = System.currentTimeMillis();
+    jdField_a_of_type_JavaUtilMap.clear();
+    jdField_b_of_type_JavaUtilMap.clear();
+    localObject1 = jdField_c_of_type_JavaUtilMap.entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      String str = (String)((Map.Entry)localObject2).getKey();
+      localObject2 = a(paramAppRuntime, (String)((Map.Entry)localObject2).getValue(), str);
+      jdField_b_of_type_JavaUtilMap.put(str, localObject2);
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramAppRuntime.getApplication().getFilesDir());
+    ((StringBuilder)localObject1).append(File.separator);
+    ((StringBuilder)localObject1).append("vipData_individuation_url.android.json");
+    localObject1 = VasUpdateUtil.a(paramAppRuntime, 1000L, "vipData_individuation_url.android.json", ((StringBuilder)localObject1).toString(), true, null);
+    if ((localObject1 != null) && (((File)localObject1).exists()))
+    {
+      bool = a(paramAppRuntime, (File)localObject1);
       if (!bool) {}
     }
+    else
+    {
+      QLog.e("IndividuationUrlHelper", 1, "parseJson, no json file");
+    }
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (QLog.isColorLevel())
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("parseJson, duration=");
+      paramAppRuntime.append(System.currentTimeMillis() - l1);
+      QLog.d("IndividuationUrlHelper", 2, paramAppRuntime.toString());
+    }
+    return;
+    label301:
     for (;;)
     {
-      int i1;
-      try
-      {
-        localObject1 = FileUtils.a((File)localObject1);
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label404;
-        }
-        localObject1 = new JSONArray((String)localObject1);
-        if ((localObject1 == null) || (((JSONArray)localObject1).length() < 1)) {
-          QLog.e("IndividuationUrlHelper", 1, "parseJson, no IndividuationAddress element");
-        }
-      }
-      catch (Exception paramAppRuntime)
-      {
-        QLog.e("IndividuationUrlHelper", 1, "parseJson, exception=" + MsfSdkUtils.getStackTraceString(paramAppRuntime));
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("IndividuationUrlHelper", 2, "parseJson, duration=" + (System.currentTimeMillis() - l1));
-        break;
-        i1 = VipUtils.a(paramAppRuntime, null);
-        if ((i1 & 0x4) != 0)
-        {
-          i1 = 4;
-          a(paramAppRuntime, (JSONArray)localObject1, i1);
-          continue;
-        }
-      }
-      catch (OutOfMemoryError paramAppRuntime)
-      {
-        QLog.e("IndividuationUrlHelper", 1, "parseJson, oom=" + MsfSdkUtils.getStackTraceString(paramAppRuntime));
-        continue;
-      }
-      if ((i1 & 0x2) != 0)
-      {
-        i1 = 2;
-        continue;
-        label404:
-        QLog.e("IndividuationUrlHelper", 1, "parseJson, jsonStr null");
-        continue;
-        QLog.e("IndividuationUrlHelper", 1, "parseJson, no json file");
-      }
-      else
-      {
-        i1 = 1;
-      }
+      throw paramAppRuntime;
     }
   }
   
   private static void a(AppRuntime paramAppRuntime, JSONArray paramJSONArray, int paramInt)
   {
-    int i4 = paramJSONArray.length();
-    int i2 = 0;
-    if (i2 < i4) {}
+    int i3 = paramJSONArray.length();
+    int i1 = 0;
+    if (i1 < i3) {}
     for (;;)
     {
-      Object localObject;
-      int i3;
-      label115:
-      int i5;
       try
       {
-        localObject = paramJSONArray.getJSONObject(i2);
-        str1 = ((JSONObject)localObject).optString("business");
-        str2 = ((JSONObject)localObject).optString("url");
-        if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
+        JSONObject localJSONObject = paramJSONArray.getJSONObject(i1);
+        Object localObject = localJSONObject.optString("business");
+        String str = localJSONObject.optString("url");
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str)))
         {
-          QLog.e("IndividuationUrlHelper", 1, "parseJson, config error, no business or url, config=" + localObject);
-          break label473;
+          if (!localJSONObject.has("userType")) {
+            break label177;
+          }
+          i2 = localJSONObject.getInt("userType");
+          break label180;
+          if ((i2 != 0) && (a(localJSONObject))) {
+            a(paramAppRuntime, localJSONObject, (String)localObject, str, paramAppRuntime.getAccount());
+          }
         }
-        if (!((JSONObject)localObject).has("userType")) {
-          break label388;
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("parseJson, config error, no business or url, config=");
+          ((StringBuilder)localObject).append(localJSONObject);
+          QLog.e("IndividuationUrlHelper", 1, ((StringBuilder)localObject).toString());
         }
-        i3 = ((JSONObject)localObject).getInt("userType");
       }
       catch (Exception localException)
       {
-        String str1;
-        String str2;
-        String str3;
-        long l1;
-        long l2;
-        long l3;
         QLog.e("IndividuationUrlHelper", 1, "parseJson, exception", localException);
-        break label473;
       }
-      if (i1 != 0)
-      {
-        i3 = 1;
-        i1 = i3;
-        if (((JSONObject)localObject).has("minVersion"))
-        {
-          str3 = ((JSONObject)localObject).getString("minVersion");
-          i1 = i3;
-          if (!TextUtils.isEmpty(str3))
-          {
-            i1 = i3;
-            if (!a(str3, "8.5.5")) {
-              i1 = 0;
-            }
-          }
-        }
-        i3 = i1;
-        if (i1 != 0)
-        {
-          i3 = i1;
-          if (((JSONObject)localObject).has("maxVersion"))
-          {
-            str3 = ((JSONObject)localObject).getString("maxVersion");
-            i3 = i1;
-            if (!TextUtils.isEmpty(str3))
-            {
-              i3 = i1;
-              if (!a("8.5.5", str3)) {
-                i3 = 0;
-              }
-            }
-          }
-        }
-        if (i3 != 0)
-        {
-          str3 = paramAppRuntime.getAccount();
-          i1 = ((JSONObject)localObject).optInt("startIndex");
-          i3 = ((JSONObject)localObject).optInt("endIndex");
-          if (i1 >= i3)
-          {
-            i5 = str3.length();
-            if ((i5 >= i1) && (i5 >= i3))
-            {
-              l1 = Long.parseLong(str3.substring(i5 - i1, i5 - i3 + 1));
-              l2 = ((JSONObject)localObject).optLong("min");
-              l3 = ((JSONObject)localObject).optLong("max");
-              if ((l1 < l2) || (l1 > l3)) {
-                break label473;
-              }
-              localObject = a(paramAppRuntime, str2, str1);
-              jdField_a_of_type_JavaUtilMap.put(str1, localObject);
-              break label473;
-              label388:
-              i3 = -1;
-              break label482;
-            }
-          }
-        }
+      i1 += 1;
+      break;
+      return;
+      label177:
+      int i2 = -1;
+      label180:
+      if ((i2 != -1) && ((i2 & paramInt) != paramInt)) {
+        i2 = 0;
+      } else {
+        i2 = 1;
       }
-      label473:
-      label482:
-      do
-      {
-        i1 = 0;
-        break label115;
-        QLog.e("IndividuationUrlHelper", 1, "parseJson, index config error, uin length=" + i5 + ", config=" + localObject);
-        break label473;
-        QLog.e("IndividuationUrlHelper", 1, "parseJson, startIndex < endIndex, element=" + localObject);
-        break label473;
-        return;
-        i2 += 1;
-        break;
-        i1 = 1;
-        if (i3 == -1) {
-          break label115;
-        }
-      } while ((paramInt & i3) != paramInt);
-      int i1 = 1;
     }
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  private static void a(AppRuntime paramAppRuntime, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return false;
-    }
-    paramString1 = paramString1.split("\\.");
-    paramString2 = paramString2.split("\\.");
-    int i4 = Math.min(paramString1.length, paramString2.length);
-    int i3 = 0;
-    label44:
-    if (i3 < i4) {
-      if (i3 >= paramString1.length) {
-        break label144;
+    int i1 = paramJSONObject.optInt("startIndex");
+    int i2 = paramJSONObject.optInt("endIndex");
+    if (i1 >= i2)
+    {
+      int i3 = paramString3.length();
+      if ((i3 >= i1) && (i3 >= i2))
+      {
+        long l1 = Long.parseLong(paramString3.substring(i3 - i1, i3 - i2 + 1));
+        long l2 = paramJSONObject.optLong("min");
+        long l3 = paramJSONObject.optLong("max");
+        if ((l1 >= l2) && (l1 <= l3))
+        {
+          paramAppRuntime = a(paramAppRuntime, paramString2, paramString1);
+          jdField_a_of_type_JavaUtilMap.put(paramString1, paramAppRuntime);
+        }
+      }
+      else
+      {
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append("parseJson, index config error, uin length=");
+        paramAppRuntime.append(i3);
+        paramAppRuntime.append(", config=");
+        paramAppRuntime.append(paramJSONObject);
+        QLog.e("IndividuationUrlHelper", 1, paramAppRuntime.toString());
       }
     }
+    else
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("parseJson, startIndex < endIndex, element=");
+      paramAppRuntime.append(paramJSONObject);
+      QLog.e("IndividuationUrlHelper", 1, paramAppRuntime.toString());
+    }
+  }
+  
+  private static boolean a(AppRuntime paramAppRuntime, File paramFile)
+  {
     for (;;)
     {
+      int i1;
       try
       {
-        i1 = Integer.parseInt(paramString1[i3]);
-        if (i3 >= paramString2.length) {
-          break label139;
-        }
-      }
-      catch (Exception localException1)
-      {
-        try
+        paramFile = FileUtils.readFileContent(paramFile);
+        if (!TextUtils.isEmpty(paramFile))
         {
-          i2 = Integer.parseInt(paramString2[i3]);
-          if (i3 == i4 - 1) {
-            break label125;
-          }
-          if (i2 > i1)
+          paramFile = new JSONArray(paramFile);
+          if (paramFile.length() < 1)
           {
+            QLog.e("IndividuationUrlHelper", 1, "parseJson, no IndividuationAddress element");
             return true;
-            localException1 = localException1;
-            i1 = 0;
+          }
+          i1 = VasUtil.a(paramAppRuntime).getVipStatus().getPrivilegeFlags(null);
+          if ((i1 & 0x4) == 0) {
+            break label169;
+          }
+          i1 = 4;
+          a(paramAppRuntime, paramFile, i1);
+        }
+        else
+        {
+          QLog.e("IndividuationUrlHelper", 1, "parseJson, jsonStr null");
+        }
+      }
+      catch (OutOfMemoryError paramAppRuntime)
+      {
+        paramFile = new StringBuilder();
+        paramFile.append("parseJson, oom=");
+        paramFile.append(MsfSdkUtils.getStackTraceString(paramAppRuntime));
+        QLog.e("IndividuationUrlHelper", 1, paramFile.toString());
+      }
+      catch (Exception paramAppRuntime)
+      {
+        paramFile = new StringBuilder();
+        paramFile.append("parseJson, exception=");
+        paramFile.append(MsfSdkUtils.getStackTraceString(paramAppRuntime));
+        QLog.e("IndividuationUrlHelper", 1, paramFile.toString());
+      }
+      return false;
+      label169:
+      if ((i1 & 0x2) != 0) {
+        i1 = 2;
+      } else {
+        i1 = 1;
+      }
+    }
+  }
+  
+  private static boolean a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("minVersion"))
+    {
+      String str = paramJSONObject.getString("minVersion");
+      if ((!TextUtils.isEmpty(str)) && (!((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).isLaterVersionByUrlConfig(str, "8.7.0")))
+      {
+        bool1 = false;
+        break label53;
+      }
+    }
+    boolean bool1 = true;
+    label53:
+    boolean bool2 = bool1;
+    if (bool1)
+    {
+      bool2 = bool1;
+      if (paramJSONObject.has("maxVersion"))
+      {
+        paramJSONObject = paramJSONObject.getString("maxVersion");
+        bool2 = bool1;
+        if (!TextUtils.isEmpty(paramJSONObject))
+        {
+          bool2 = bool1;
+          if (!((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).isLaterVersionByUrlConfig("8.7.0", paramJSONObject)) {
+            bool2 = false;
           }
         }
-        catch (Exception localException2)
-        {
-          i2 = 0;
-          continue;
-        }
       }
-      if (i2 < i1) {
-        break;
-      }
-      label125:
-      do
-      {
-        i3 += 1;
-        break label44;
-        break;
-        if (i2 >= i1) {
-          return true;
-        }
-      } while (i2 >= i1);
-      return false;
-      label139:
-      int i2 = 0;
-      continue;
-      label144:
-      int i1 = 0;
     }
+    return bool2;
   }
   
   private static String b(Context paramContext, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("IndividuationUrlHelper", 2, "decodeMarketUrl:" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("decodeMarketUrl:");
+      paramContext.append(paramString1);
+      QLog.i("IndividuationUrlHelper", 2, paramContext.toString());
     }
     if (TextUtils.isEmpty(paramString1)) {
-      paramContext = null;
+      return null;
     }
-    do
+    paramContext = paramString1;
+    if (!TextUtils.isEmpty(paramString2))
     {
-      return paramContext;
-      paramContext = paramString1;
-    } while (TextUtils.isEmpty(paramString2));
-    return paramString1 + "&adtag=" + paramString2;
+      paramContext = new StringBuilder();
+      paramContext.append(paramString1);
+      paramContext.append("&adtag=");
+      paramContext.append(paramString2);
+      paramContext = paramContext.toString();
+    }
+    return paramContext;
   }
   
   private static String b(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      paramContext = null;
-    }
-    do
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      return paramContext;
-      if (QLog.isColorLevel()) {
-        QLog.i("IndividuationUrlHelper", 2, "decodeMarketDetailUrl:" + paramString1 + ", id=" + paramString2);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decodeMarketDetailUrl:");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(", id=");
+        localStringBuilder.append(paramString2);
+        QLog.i("IndividuationUrlHelper", 2, localStringBuilder.toString());
       }
       paramString1 = b(paramContext, paramString1, paramString3);
       paramContext = paramString1;
-    } while (TextUtils.isEmpty(paramString1));
-    return paramString1.replace("[id]", paramString2);
+      if (!TextUtils.isEmpty(paramString1)) {
+        paramContext = paramString1.replace("[id]", paramString2);
+      }
+      return paramContext;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividuationUrlHelper
  * JD-Core Version:    0.7.0.1
  */

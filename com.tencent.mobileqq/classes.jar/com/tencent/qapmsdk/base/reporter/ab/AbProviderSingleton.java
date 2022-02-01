@@ -28,66 +28,65 @@ public final class AbProviderSingleton
   
   private final String getAbParam(ArrayList<Integer> paramArrayList)
   {
-    int k = 0;
     StringBuilder localStringBuilder = new StringBuilder();
     Class[] arrayOfClass = abTypeArr;
     int m = arrayOfClass.length;
-    int j = 0;
+    int k = 0;
     int i = 0;
-    Object localObject;
-    if (j < m)
+    int j = 0;
+    while (i < m)
     {
-      localObject = arrayOfClass[j];
-      localObject = INSTANCE.getAbType((Class)localObject);
-      Iterator localIterator = ((Iterable)paramArrayList).iterator();
-      boolean bool = false;
-      if (localIterator.hasNext())
+      Object localObject1 = arrayOfClass[i];
+      Object localObject2 = INSTANCE.getAbType((Class)localObject1);
+      localObject1 = ((Iterable)paramArrayList).iterator();
+      int n;
+      for (boolean bool = false;; bool = ((AbType)localObject2).canReportWith(n))
       {
-        int n = ((Number)localIterator.next()).intValue();
-        if (localObject != null) {}
-        for (bool = ((AbType)localObject).canReportWith(n);; bool = false)
-        {
-          if (bool) {}
+        if (!((Iterator)localObject1).hasNext()) {
+          break label104;
+        }
+        n = ((Number)((Iterator)localObject1).next()).intValue();
+        if (localObject2 == null) {
           break;
         }
       }
-      if (!bool) {
-        break label217;
-      }
-      if (localObject != null)
+      label104:
+      String str = "";
+      localObject1 = str;
+      if (bool)
       {
-        localObject = ((AbType)localObject).getValue();
-        if (localObject == null) {}
+        localObject1 = str;
+        if (localObject2 != null)
+        {
+          localObject2 = ((AbType)localObject2).getValue();
+          localObject1 = str;
+          if (localObject2 != null) {
+            localObject1 = localObject2;
+          }
+        }
       }
-    }
-    for (;;)
-    {
-      if (i == 1) {
+      if (j == 1) {
         localStringBuilder.append(";");
       }
-      localStringBuilder.append((String)localObject);
+      localStringBuilder.append((String)localObject1);
       j += 1;
       i += 1;
-      break;
-      localObject = "";
-      continue;
-      paramArrayList = localStringBuilder.toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramArrayList, "sb.toString()");
-      i = k;
-      if (((CharSequence)paramArrayList).length() == 0) {
-        i = 1;
-      }
-      if (i != 0) {
-        return null;
-      }
-      return localStringBuilder.toString();
-      label217:
-      localObject = "";
     }
+    paramArrayList = localStringBuilder.toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramArrayList, "sb.toString()");
+    i = k;
+    if (((CharSequence)paramArrayList).length() == 0) {
+      i = 1;
+    }
+    if (i != 0) {
+      return null;
+    }
+    return localStringBuilder.toString();
   }
   
   public final void addAbToParams(@Nullable JSONObject paramJSONObject)
   {
+    String str = "newplugin";
     if (paramJSONObject == null) {
       return;
     }
@@ -95,13 +94,13 @@ public final class AbProviderSingleton
     {
       try
       {
-        if (paramJSONObject.has("newplugin"))
+        if (!paramJSONObject.has("newplugin")) {
+          break label61;
+        }
+        int i = paramJSONObject.getInt(str);
+        str = getAbFactors(i);
+        if (str != null)
         {
-          i = paramJSONObject.getInt("newplugin");
-          String str = getAbFactors(i);
-          if (str == null) {
-            break;
-          }
           paramJSONObject.put("abfactor", str);
           return;
         }
@@ -109,117 +108,121 @@ public final class AbProviderSingleton
       catch (JSONException paramJSONObject)
       {
         Logger.INSTANCE.exception("QAPM_base_AbFactorManger", "addFactorToAPM", (Throwable)paramJSONObject);
-        return;
       }
-      int i = paramJSONObject.getInt("plugin");
+      return;
+      label61:
+      str = "plugin";
     }
   }
   
   @Nullable
   public final String getAbFactors(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramInt == PluginCombination.dropFramePlugin.plugin) {
-      localArrayList.add(Integer.valueOf(2));
-    }
-    String str;
-    for (;;)
+    Object localObject1 = new ArrayList();
+    int i = PluginCombination.dropFramePlugin.plugin;
+    Object localObject2 = Integer.valueOf(2);
+    if (paramInt == i)
     {
-      str = (String)null;
-      Object localObject = str;
-      try
-      {
-        if (localArrayList.size() > 0) {
-          localObject = getAbParam(localArrayList);
-        }
-        return localObject;
-      }
-      catch (Exception localException)
-      {
-        Logger.INSTANCE.exception("QAPM_base_AbFactorManger", "addFactorToAPM", (Throwable)localException);
-      }
-      if (paramInt == PluginCombination.loopStackPlugin.plugin)
-      {
-        localArrayList.add(Integer.valueOf(2));
-      }
-      else
-      {
-        if (paramInt == PluginCombination.ceilingValuePlugin.plugin) {}
-        while (paramInt == PluginCombination.ceilingHprofPlugin.plugin)
-        {
-          localArrayList.add(Integer.valueOf(4));
-          break;
-        }
-        if (paramInt == PluginCombination.resourcePlugin.plugin)
-        {
-          localArrayList.add(Integer.valueOf(4));
-          localArrayList.add(Integer.valueOf(1));
-          localArrayList.add(Integer.valueOf(2));
-        }
-        else
-        {
-          localObject = callback;
-          if (localObject != null) {
-            ((IAbCallback)localObject).addType(paramInt, localArrayList);
-          }
-        }
+      ((ArrayList)localObject1).add(localObject2);
+    }
+    else if (paramInt == PluginCombination.loopStackPlugin.plugin)
+    {
+      ((ArrayList)localObject1).add(localObject2);
+    }
+    else if ((paramInt == PluginCombination.ceilingValuePlugin.plugin) || (paramInt == PluginCombination.ceilingHprofPlugin.plugin))
+    {
+      ((ArrayList)localObject1).add(Integer.valueOf(4));
+    }
+    else if (paramInt == PluginCombination.resourcePlugin.plugin)
+    {
+      ((ArrayList)localObject1).add(Integer.valueOf(4));
+      ((ArrayList)localObject1).add(Integer.valueOf(1));
+      ((ArrayList)localObject1).add(localObject2);
+    }
+    else
+    {
+      localObject2 = callback;
+      if (localObject2 != null) {
+        ((IAbCallback)localObject2).addType(paramInt, (ArrayList)localObject1);
       }
     }
-    return str;
+    localObject2 = (String)null;
+    try
+    {
+      if (((ArrayList)localObject1).size() > 0)
+      {
+        localObject1 = getAbParam((ArrayList)localObject1);
+        return localObject1;
+      }
+    }
+    catch (Exception localException)
+    {
+      Logger.INSTANCE.exception("QAPM_base_AbFactorManger", "addFactorToAPM", (Throwable)localException);
+    }
+    return localObject2;
   }
   
   @Nullable
   public final AbType getAbType(@NotNull Class<?> paramClass)
   {
     Intrinsics.checkParameterIsNotNull(paramClass, "clazz");
-    AbType localAbType2 = (AbType)abTypeCache.get(paramClass);
-    localObject1 = localAbType2;
-    if (localAbType2 == null)
-    {
-      localConcurrentHashMap = abTypeCache;
-      localObject1 = localAbType2;
-      localAbType1 = localAbType2;
-    }
+    AbType localAbType = (AbType)abTypeCache.get(paramClass);
+    if (localAbType == null) {}
     try
     {
-      Object localObject3 = paramClass.newInstance();
-      Object localObject2 = localObject3;
-      localObject1 = localAbType2;
-      localAbType1 = localAbType2;
-      if (!(localObject3 instanceof AbType)) {
-        localObject2 = null;
-      }
-      localObject1 = localAbType2;
-      localAbType1 = localAbType2;
-      localAbType2 = (AbType)localObject2;
-      localObject1 = localAbType2;
-      if (localAbType2 != null)
+      try
       {
-        localObject1 = localAbType2;
-        localAbType1 = localAbType2;
-        paramClass = (AbType)abTypeCache.put(paramClass, localAbType2);
-        localObject1 = localAbType2;
+        synchronized (abTypeCache)
+        {
+          Object localObject2 = paramClass.newInstance();
+          Object localObject1 = localObject2;
+          if (!(localObject2 instanceof AbType)) {
+            localObject1 = null;
+          }
+          localObject1 = (AbType)localObject1;
+          if (localObject1 != null) {
+            try
+            {
+              paramClass = (AbType)abTypeCache.put(paramClass, localObject1);
+            }
+            catch (InstantiationException localInstantiationException2)
+            {
+              paramClass = (Class<?>)localObject1;
+              localObject1 = localInstantiationException2;
+              break label100;
+            }
+            catch (IllegalAccessException localIllegalAccessException2)
+            {
+              paramClass = (Class<?>)localObject1;
+              localObject1 = localIllegalAccessException2;
+              break label119;
+            }
+          }
+          paramClass = (Class<?>)localObject1;
+        }
+        label100:
+        Logger.INSTANCE.exception("QAPM_base_AbFactorManger", (Throwable)localUnit);
+      }
+      catch (InstantiationException localInstantiationException1)
+      {
+        paramClass = localIllegalAccessException2;
+        Logger.INSTANCE.exception("QAPM_base_AbFactorManger", (Throwable)localInstantiationException1);
+        localUnit = Unit.INSTANCE;
       }
     }
-    catch (IllegalAccessException paramClass)
+    catch (IllegalAccessException localIllegalAccessException1)
     {
       for (;;)
       {
-        Logger.INSTANCE.exception("QAPM_base_AbFactorManger", (Throwable)paramClass);
-        paramClass = Unit.INSTANCE;
+        Unit localUnit;
+        label119:
+        paramClass = localIllegalAccessException2;
       }
     }
-    catch (InstantiationException paramClass)
-    {
-      for (;;)
-      {
-        Logger.INSTANCE.exception("QAPM_base_AbFactorManger", (Throwable)paramClass);
-        paramClass = Unit.INSTANCE;
-        localObject1 = localAbType1;
-      }
-    }
-    finally {}
-    return localObject1;
+    localUnit = Unit.INSTANCE;
+    return paramClass;
+    throw paramClass;
+    return localIllegalAccessException2;
   }
   
   @NotNull
@@ -247,7 +250,7 @@ public final class AbProviderSingleton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.ab.AbProviderSingleton
  * JD-Core Version:    0.7.0.1
  */

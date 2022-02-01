@@ -28,23 +28,22 @@ class ProfileFeedPresenter$1
     SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
     paramGetProfileYearNodeListRequest = new ProfileFeedPresenter.GetYearNodeListEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter, paramErrorMessage);
     paramGetProfileYearNodeListRequest.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if ((??? == null) || (paramErrorMessage.isFail()))
+    if ((??? != null) && (!paramErrorMessage.isFail()))
     {
-      StoryDispatcher.a().dispatch(paramGetProfileYearNodeListRequest);
-      return;
+      paramGetProfileYearNodeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
+      ((MemoryManager)SuperManager.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
+      synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter)
+      {
+        StoryDispatcher.a().dispatch(paramGetProfileYearNodeListRequest);
+        return;
+      }
     }
-    paramGetProfileYearNodeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    ((MemoryManager)SuperManager.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter)
-    {
-      StoryDispatcher.a().dispatch(paramGetProfileYearNodeListRequest);
-      return;
-    }
+    StoryDispatcher.a().dispatch(paramGetProfileYearNodeListRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter.1
  * JD-Core Version:    0.7.0.1
  */

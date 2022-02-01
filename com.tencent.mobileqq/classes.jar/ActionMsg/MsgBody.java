@@ -35,8 +35,9 @@ public final class MsgBody
     paramJceOutputStream.write(this.msg, 0);
     paramJceOutputStream.write(this.action, 1);
     paramJceOutputStream.write(this.shareAppID, 2);
-    if (this.actMsgContentValue != null) {
-      paramJceOutputStream.write(this.actMsgContentValue, 3);
+    String str = this.actMsgContentValue;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

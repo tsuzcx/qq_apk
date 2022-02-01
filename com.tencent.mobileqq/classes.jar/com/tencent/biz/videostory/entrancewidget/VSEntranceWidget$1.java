@@ -18,25 +18,28 @@ class VSEntranceWidget$1
   
   public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
   {
-    if ((paramDrawable != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    if (paramDrawable != null)
     {
-      if (!(this.jdField_a_of_type_AndroidViewView instanceof FrameLayout)) {
-        break label39;
+      paramString = this.jdField_a_of_type_AndroidViewView;
+      if (paramString != null)
+      {
+        if ((paramString instanceof FrameLayout))
+        {
+          paramString.post(new VSEntranceWidget.1.1(this, paramDrawable));
+          return;
+        }
+        if ((paramString instanceof ImageView)) {
+          paramString.post(new VSEntranceWidget.1.2(this, paramDrawable));
+        }
       }
-      this.jdField_a_of_type_AndroidViewView.post(new VSEntranceWidget.1.1(this, paramDrawable));
     }
-    label39:
-    while (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.post(new VSEntranceWidget.1.2(this, paramDrawable));
   }
   
   public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidget.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.ilive.commonpages.room;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,8 +15,13 @@ import com.tencent.ilive.base.bizmodule.BizModuleContext;
 import com.tencent.ilive.base.bizmodule.BootBizModules;
 import com.tencent.ilive.base.page.fragment.LiveTemplateFragment;
 import com.tencent.ilive.config.PageConfigInterface;
+import com.tencent.ilive.enginemanager.BizEngineMgr;
 import com.tencent.ilive.pages.room.RoomBizContext;
 import com.tencent.ilive.pages.room.RoomBootBizModules;
+import com.tencent.livesdk.liveengine.FloatRoomManager;
+import com.tencent.livesdk.liveengine.FloatRoomManager.Room;
+import com.tencent.livesdk.liveengine.FloatRoomManager.RoomEventInterceptor;
+import com.tencent.livesdk.liveengine.LiveEngine;
 import com.tencent.livesdk.roomengine.RoomEngine;
 import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import java.util.Iterator;
@@ -23,7 +29,9 @@ import java.util.List;
 
 public abstract class RoomBaseFragment
   extends LiveTemplateFragment
+  implements FloatRoomManager.Room
 {
+  public static final String TAG = "RoomBaseFragment";
   protected RoomBizContext roomBizContext;
   protected RoomBootBizModules roomBootBizModules;
   protected RoomEngine roomEngine;
@@ -48,6 +56,40 @@ public abstract class RoomBaseFragment
   
   public abstract RoomBootBizModules createRooBootBizModules();
   
+  public void destroyRoomAuto()
+  {
+    if (BizEngineMgr.getInstance().getLiveEngine() != null)
+    {
+      localObject = BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().a(this);
+      if (localObject != null)
+      {
+        if (((FloatRoomManager.RoomEventInterceptor)localObject).a()) {
+          return;
+        }
+        BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().a(null);
+        BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().a(null);
+      }
+    }
+    super.destroyRoomAuto();
+    Object localObject = this.roomEngine;
+    if (localObject != null)
+    {
+      ((RoomEngine)localObject).unint();
+      this.roomEngine = null;
+    }
+  }
+  
+  public void destroyRoomByHand()
+  {
+    super.destroyRoomAuto();
+    RoomEngine localRoomEngine = this.roomEngine;
+    if (localRoomEngine != null)
+    {
+      localRoomEngine.unint();
+      this.roomEngine = null;
+    }
+  }
+  
   public abstract PageConfigInterface getPageUIConfig();
   
   public RoomEngine getRoomEngine()
@@ -56,6 +98,11 @@ public abstract class RoomBaseFragment
   }
   
   public abstract void initBizContextRoomInfo();
+  
+  public void onActivityCreated(Bundle paramBundle)
+  {
+    super.onActivityCreated(paramBundle);
+  }
   
   public void onActivityResult(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
   {
@@ -68,6 +115,16 @@ public abstract class RoomBaseFragment
         localFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
       }
     }
+  }
+  
+  public void onAttach(Context paramContext)
+  {
+    super.onAttach(paramContext);
+  }
+  
+  public void onAttachFragment(Fragment paramFragment)
+  {
+    super.onAttachFragment(paramFragment);
   }
   
   public boolean onBackPressed()
@@ -83,32 +140,45 @@ public abstract class RoomBaseFragment
   @Nullable
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    if (this.roomBootBizModules == null) {
+    paramLayoutInflater = this.roomBootBizModules;
+    if (paramLayoutInflater == null)
+    {
       if (getActivity() != null) {
         getActivity().finish();
       }
+      paramLayoutInflater = null;
     }
-    for (paramLayoutInflater = null;; paramLayoutInflater = this.roomBootBizModules.getLayout())
+    else
     {
-      AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
-      this.roomBootBizModules.onCreateView();
+      paramLayoutInflater.onCreateView();
+      paramLayoutInflater = this.roomBootBizModules.getLayout();
     }
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    this.roomBootBizModules = null;
-    this.roomBizContext = null;
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.roomBootBizModules != null) {
-      this.roomBootBizModules.getLayout().removeAllViews();
+    RoomBootBizModules localRoomBootBizModules = this.roomBootBizModules;
+    if (localRoomBootBizModules != null) {
+      localRoomBootBizModules.getLayout().removeAllViews();
     }
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+  }
+  
+  public void onViewCreated(@NonNull View paramView, @Nullable Bundle paramBundle)
+  {
+    super.onViewCreated(paramView, paramBundle);
   }
   
   public void setRoomEngine(RoomEngine paramRoomEngine)
@@ -118,7 +188,7 @@ public abstract class RoomBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.commonpages.room.RoomBaseFragment
  * JD-Core Version:    0.7.0.1
  */

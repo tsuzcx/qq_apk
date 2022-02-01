@@ -14,8 +14,9 @@ class StoryPlayerGroupHolder$3
   {
     SLog.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
     int i = this.a.b;
-    this.a.b = paramInt;
-    Object localObject = this.a.a();
+    Object localObject = this.a;
+    ((StoryPlayerGroupHolder)localObject).b = paramInt;
+    localObject = ((StoryPlayerGroupHolder)localObject).a();
     if (localObject != null)
     {
       localObject = (VideoPauseVideoHolder)((VideoHolderBase)localObject).a(VideoPauseVideoHolder.class);
@@ -49,11 +50,14 @@ class StoryPlayerGroupHolder$3
     if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
     {
       ((LoadingMoreWidget)this.a.b(LoadingMoreWidget.class)).d();
-      SLog.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("Q.qqstory.weishi");
+      SLog.a(((StringBuilder)localObject).toString(), "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
     }
-    LoadingMoreWidget localLoadingMoreWidget = (LoadingMoreWidget)this.a.b(LoadingMoreWidget.class);
-    if (localLoadingMoreWidget != null) {
-      localLoadingMoreWidget.a().b(paramInt);
+    Object localObject = (LoadingMoreWidget)this.a.b(LoadingMoreWidget.class);
+    if (localObject != null) {
+      ((LoadingMoreWidget)localObject).a().b(paramInt);
     }
     if (StoryPlayerGroupHolder.a(this.a) != null) {
       StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
@@ -73,7 +77,7 @@ class StoryPlayerGroupHolder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder.3
  * JD-Core Version:    0.7.0.1
  */

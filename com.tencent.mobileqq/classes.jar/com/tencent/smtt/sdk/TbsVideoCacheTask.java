@@ -32,7 +32,6 @@ public class TbsVideoCacheTask
   
   private void a(Bundle paramBundle)
   {
-    Object localObject;
     if (this.d == null)
     {
       f.a(true).a(this.a, false, false, null);
@@ -40,66 +39,74 @@ public class TbsVideoCacheTask
       if (localObject != null)
       {
         localObject = ((v)localObject).b();
-        if (localObject == null) {
-          break label119;
-        }
-        this.d = new r((DexLoader)localObject);
       }
+      else
+      {
+        this.b.onVideoDownloadError(this, -1, "init engine error!", null);
+        localObject = null;
+      }
+      if (localObject != null) {
+        this.d = new r((DexLoader)localObject);
+      } else {
+        this.b.onVideoDownloadError(this, -1, "Java dexloader invalid!", null);
+      }
+    }
+    Object localObject = this.d;
+    if (localObject != null)
+    {
+      this.g = ((r)localObject).a(this.a, this, paramBundle);
+      if (this.g != null) {
+        return;
+      }
+      localObject = this.b;
+      paramBundle = "init task error!";
     }
     else
     {
-      label54:
-      if (this.d == null) {
-        break label136;
+      localObject = this.b;
+      if (localObject == null) {
+        return;
       }
-      this.g = this.d.a(this.a, this, paramBundle);
-      if (this.g == null) {
-        this.b.onVideoDownloadError(this, -1, "init task error!", null);
-      }
+      paramBundle = "init error!";
     }
-    label119:
-    while (this.b == null)
-    {
-      return;
-      this.b.onVideoDownloadError(this, -1, "init engine error!", null);
-      localObject = null;
-      break;
-      this.b.onVideoDownloadError(this, -1, "Java dexloader invalid!", null);
-      break label54;
-    }
-    label136:
-    this.b.onVideoDownloadError(this, -1, "init error!", null);
+    ((TbsVideoCacheListener)localObject).onVideoDownloadError(this, -1, paramBundle, null);
   }
   
   public long getContentLength()
   {
-    if ((this.d != null) && (this.g != null)) {
-      return this.d.d();
+    Object localObject = this.d;
+    if ((localObject != null) && (this.g != null)) {
+      return ((r)localObject).d();
     }
-    if (this.b != null) {
-      this.b.onVideoDownloadError(this, -1, "getContentLength failed, init uncompleted!", null);
+    localObject = this.b;
+    if (localObject != null) {
+      ((TbsVideoCacheListener)localObject).onVideoDownloadError(this, -1, "getContentLength failed, init uncompleted!", null);
     }
     return 0L;
   }
   
   public int getDownloadedSize()
   {
-    if ((this.d != null) && (this.g != null)) {
-      return this.d.e();
+    Object localObject = this.d;
+    if ((localObject != null) && (this.g != null)) {
+      return ((r)localObject).e();
     }
-    if (this.b != null) {
-      this.b.onVideoDownloadError(this, -1, "getDownloadedSize failed, init uncompleted!", null);
+    localObject = this.b;
+    if (localObject != null) {
+      ((TbsVideoCacheListener)localObject).onVideoDownloadError(this, -1, "getDownloadedSize failed, init uncompleted!", null);
     }
     return 0;
   }
   
   public int getProgress()
   {
-    if ((this.d != null) && (this.g != null)) {
-      return this.d.f();
+    Object localObject = this.d;
+    if ((localObject != null) && (this.g != null)) {
+      return ((r)localObject).f();
     }
-    if (this.b != null) {
-      this.b.onVideoDownloadError(this, -1, "getProgress failed, init uncompleted!", null);
+    localObject = this.b;
+    if (localObject != null) {
+      ((TbsVideoCacheListener)localObject).onVideoDownloadError(this, -1, "getProgress failed, init uncompleted!", null);
     }
     return 0;
   }
@@ -116,51 +123,63 @@ public class TbsVideoCacheTask
   
   public void pauseTask()
   {
-    if ((this.d != null) && (this.g != null)) {
-      this.d.a();
-    }
-    while (this.b == null) {
+    Object localObject = this.d;
+    if ((localObject != null) && (this.g != null))
+    {
+      ((r)localObject).a();
       return;
     }
-    this.b.onVideoDownloadError(this, -1, "pauseTask failed, init uncompleted!", null);
+    localObject = this.b;
+    if (localObject != null) {
+      ((TbsVideoCacheListener)localObject).onVideoDownloadError(this, -1, "pauseTask failed, init uncompleted!", null);
+    }
   }
   
   public void removeTask(boolean paramBoolean)
   {
-    if ((this.d != null) && (this.g != null)) {
-      this.d.a(paramBoolean);
-    }
-    while (this.b == null) {
+    Object localObject = this.d;
+    if ((localObject != null) && (this.g != null))
+    {
+      ((r)localObject).a(paramBoolean);
       return;
     }
-    this.b.onVideoDownloadError(this, -1, "removeTask failed, init uncompleted!", null);
+    localObject = this.b;
+    if (localObject != null) {
+      ((TbsVideoCacheListener)localObject).onVideoDownloadError(this, -1, "removeTask failed, init uncompleted!", null);
+    }
   }
   
   public void resumeTask()
   {
-    if ((this.d != null) && (this.g != null)) {
-      this.d.b();
-    }
-    while (this.b == null) {
+    Object localObject = this.d;
+    if ((localObject != null) && (this.g != null))
+    {
+      ((r)localObject).b();
       return;
     }
-    this.b.onVideoDownloadError(this, -1, "resumeTask failed, init uncompleted!", null);
+    localObject = this.b;
+    if (localObject != null) {
+      ((TbsVideoCacheListener)localObject).onVideoDownloadError(this, -1, "resumeTask failed, init uncompleted!", null);
+    }
   }
   
   public void stopTask()
   {
-    if ((this.d != null) && (this.g != null)) {
-      this.d.c();
-    }
-    while (this.b == null) {
+    Object localObject = this.d;
+    if ((localObject != null) && (this.g != null))
+    {
+      ((r)localObject).c();
       return;
     }
-    this.b.onVideoDownloadError(this, -1, "stopTask failed, init uncompleted!", null);
+    localObject = this.b;
+    if (localObject != null) {
+      ((TbsVideoCacheListener)localObject).onVideoDownloadError(this, -1, "stopTask failed, init uncompleted!", null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsVideoCacheTask
  * JD-Core Version:    0.7.0.1
  */

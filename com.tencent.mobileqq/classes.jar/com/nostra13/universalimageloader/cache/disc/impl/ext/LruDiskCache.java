@@ -34,34 +34,33 @@ public class LruDiskCache
   
   public LruDiskCache(File paramFile1, File paramFile2, FileNameGenerator paramFileNameGenerator, long paramLong, int paramInt)
   {
-    if (paramFile1 == null) {
-      throw new IllegalArgumentException("cacheDir argument must be not null");
-    }
-    if (paramLong < 0L) {
+    if (paramFile1 != null)
+    {
+      if (paramLong >= 0L)
+      {
+        if (paramInt >= 0)
+        {
+          if (paramFileNameGenerator != null)
+          {
+            long l = paramLong;
+            if (paramLong == 0L) {
+              l = 9223372036854775807L;
+            }
+            if (paramInt == 0) {
+              paramInt = 2147483647;
+            }
+            this.reserveCacheDir = paramFile2;
+            this.fileNameGenerator = paramFileNameGenerator;
+            initCache(paramFile1, paramFile2, l, paramInt);
+            return;
+          }
+          throw new IllegalArgumentException("fileNameGenerator argument must be not null");
+        }
+        throw new IllegalArgumentException("cacheMaxFileCount argument must be positive number");
+      }
       throw new IllegalArgumentException("cacheMaxSize argument must be positive number");
     }
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("cacheMaxFileCount argument must be positive number");
-    }
-    if (paramFileNameGenerator == null) {
-      throw new IllegalArgumentException("fileNameGenerator argument must be not null");
-    }
-    if (paramLong == 0L) {
-      paramLong = 9223372036854775807L;
-    }
-    for (;;)
-    {
-      if (paramInt == 0) {
-        paramInt = 2147483647;
-      }
-      for (;;)
-      {
-        this.reserveCacheDir = paramFile2;
-        this.fileNameGenerator = paramFileNameGenerator;
-        initCache(paramFile1, paramFile2, paramLong, paramInt);
-        return;
-      }
-    }
+    throw new IllegalArgumentException("cacheDir argument must be not null");
   }
   
   private String getKey(String paramString)
@@ -78,13 +77,13 @@ public class LruDiskCache
     }
     catch (IOException paramFile1)
     {
-      do
-      {
-        L.e(paramFile1);
-        if (paramFile2 != null) {
-          initCache(paramFile2, null, paramLong, paramInt);
-        }
-      } while (this.cache != null);
+      L.e(paramFile1);
+      if (paramFile2 != null) {
+        initCache(paramFile2, null, paramLong, paramInt);
+      }
+      if (this.cache != null) {
+        return;
+      }
       throw paramFile1;
     }
   }
@@ -97,20 +96,16 @@ public class LruDiskCache
     }
     catch (IOException localIOException1)
     {
-      for (;;)
-      {
-        try
-        {
-          initCache(this.cache.getDirectory(), this.reserveCacheDir, this.cache.getMaxSize(), this.cache.getMaxFileCount());
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          L.e(localIOException2);
-        }
-        localIOException1 = localIOException1;
-        L.e(localIOException1);
-      }
+      L.e(localIOException1);
+    }
+    try
+    {
+      initCache(this.cache.getDirectory(), this.reserveCacheDir, this.cache.getMaxSize(), this.cache.getMaxFileCount());
+      return;
+    }
+    catch (IOException localIOException2)
+    {
+      L.e(localIOException2);
     }
   }
   
@@ -119,16 +114,12 @@ public class LruDiskCache
     try
     {
       this.cache.close();
-      this.cache = null;
-      return;
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        L.e(localIOException);
-      }
+      L.e(localIOException);
     }
+    this.cache = null;
   }
   
   /* Error */
@@ -136,82 +127,80 @@ public class LruDiskCache
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_2
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore 4
     //   5: aload_0
     //   6: getfield 93	com/nostra13/universalimageloader/cache/disc/impl/ext/LruDiskCache:cache	Lcom/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache;
     //   9: aload_0
     //   10: aload_1
     //   11: invokespecial 122	com/nostra13/universalimageloader/cache/disc/impl/ext/LruDiskCache:getKey	(Ljava/lang/String;)Ljava/lang/String;
     //   14: invokevirtual 125	com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache:get	(Ljava/lang/String;)Lcom/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot;
-    //   17: astore_1
-    //   18: aload_1
-    //   19: ifnonnull +17 -> 36
-    //   22: aload_2
-    //   23: astore_3
-    //   24: aload_1
-    //   25: ifnull +9 -> 34
-    //   28: aload_1
-    //   29: invokevirtual 128	com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot:close	()V
-    //   32: aload_2
-    //   33: astore_3
-    //   34: aload_3
-    //   35: areturn
-    //   36: aload_1
-    //   37: astore_2
-    //   38: aload_1
-    //   39: iconst_0
-    //   40: invokevirtual 132	com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot:getFile	(I)Ljava/io/File;
-    //   43: astore_3
-    //   44: aload_3
-    //   45: astore_2
-    //   46: goto -24 -> 22
-    //   49: astore_3
-    //   50: aconst_null
-    //   51: astore_1
-    //   52: aload_1
-    //   53: astore_2
-    //   54: aload_3
-    //   55: invokestatic 99	com/nostra13/universalimageloader/utils/L:e	(Ljava/lang/Throwable;)V
-    //   58: aload 4
-    //   60: astore_3
-    //   61: aload_1
-    //   62: ifnull -28 -> 34
-    //   65: aload_1
-    //   66: invokevirtual 128	com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot:close	()V
-    //   69: aconst_null
-    //   70: areturn
-    //   71: astore_1
-    //   72: aconst_null
-    //   73: astore_2
-    //   74: aload_2
-    //   75: ifnull +7 -> 82
-    //   78: aload_2
-    //   79: invokevirtual 128	com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot:close	()V
+    //   17: astore_2
+    //   18: aload_2
+    //   19: ifnonnull +9 -> 28
+    //   22: aload 4
+    //   24: astore_1
+    //   25: goto +13 -> 38
+    //   28: aload_2
+    //   29: astore_1
+    //   30: aload_2
+    //   31: iconst_0
+    //   32: invokevirtual 131	com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot:getFile	(I)Ljava/io/File;
+    //   35: astore_3
+    //   36: aload_3
+    //   37: astore_1
+    //   38: aload_2
+    //   39: ifnull +7 -> 46
+    //   42: aload_2
+    //   43: invokevirtual 132	com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot:close	()V
+    //   46: aload_1
+    //   47: areturn
+    //   48: astore_3
+    //   49: goto +12 -> 61
+    //   52: astore_2
+    //   53: aload_3
+    //   54: astore_1
+    //   55: goto +23 -> 78
+    //   58: astore_3
+    //   59: aconst_null
+    //   60: astore_2
+    //   61: aload_2
+    //   62: astore_1
+    //   63: aload_3
+    //   64: invokestatic 99	com/nostra13/universalimageloader/utils/L:e	(Ljava/lang/Throwable;)V
+    //   67: aload_2
+    //   68: ifnull +7 -> 75
+    //   71: aload_2
+    //   72: invokevirtual 132	com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot:close	()V
+    //   75: aconst_null
+    //   76: areturn
+    //   77: astore_2
+    //   78: aload_1
+    //   79: ifnull +7 -> 86
     //   82: aload_1
-    //   83: athrow
-    //   84: astore_1
-    //   85: goto -11 -> 74
-    //   88: astore_3
-    //   89: goto -37 -> 52
+    //   83: invokevirtual 132	com/nostra13/universalimageloader/cache/disc/impl/ext/DiskLruCache$Snapshot:close	()V
+    //   86: aload_2
+    //   87: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	92	0	this	LruDiskCache
-    //   0	92	1	paramString	String
-    //   4	75	2	localObject1	Object
-    //   23	22	3	localObject2	Object
-    //   49	6	3	localIOException1	IOException
-    //   60	1	3	localObject3	Object
-    //   88	1	3	localIOException2	IOException
-    //   1	58	4	localObject4	Object
+    //   0	88	0	this	LruDiskCache
+    //   0	88	1	paramString	String
+    //   17	26	2	localSnapshot	DiskLruCache.Snapshot
+    //   52	1	2	localObject1	Object
+    //   60	12	2	localObject2	Object
+    //   77	10	2	localObject3	Object
+    //   1	36	3	localFile	File
+    //   48	6	3	localIOException1	IOException
+    //   58	6	3	localIOException2	IOException
+    //   3	20	4	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   5	18	49	java/io/IOException
-    //   5	18	71	finally
-    //   38	44	84	finally
-    //   54	58	84	finally
-    //   38	44	88	java/io/IOException
+    //   30	36	48	java/io/IOException
+    //   5	18	52	finally
+    //   5	18	58	java/io/IOException
+    //   30	36	77	finally
+    //   63	67	77	finally
   }
   
   public File getDirectory()
@@ -240,23 +229,22 @@ public class LruDiskCache
       return false;
     }
     paramString = new BufferedOutputStream(localEditor.newOutputStream(0), this.bufferSize);
-    boolean bool;
     try
     {
-      bool = paramBitmap.compress(this.compressFormat, this.compressQuality, paramString);
+      boolean bool = paramBitmap.compress(this.compressFormat, this.compressQuality, paramString);
       IoUtils.closeSilently(paramString);
       if (bool)
       {
         localEditor.commit();
         return bool;
       }
+      localEditor.abort();
+      return bool;
     }
     finally
     {
       IoUtils.closeSilently(paramString);
     }
-    localEditor.abort();
-    return bool;
   }
   
   public boolean save(String paramString, InputStream paramInputStream, IoUtils.CopyListener paramCopyListener)
@@ -302,7 +290,7 @@ public class LruDiskCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiskCache
  * JD-Core Version:    0.7.0.1
  */

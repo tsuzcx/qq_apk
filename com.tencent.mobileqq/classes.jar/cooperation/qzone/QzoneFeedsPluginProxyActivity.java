@@ -18,33 +18,34 @@ public class QzoneFeedsPluginProxyActivity
   
   private static boolean isDebugTrace()
   {
-    File localFile = new File(Environment.getExternalStorageDirectory().getPath(), "traceview_switch");
     boolean bool;
-    if ((localFile != null) && (localFile.exists()))
-    {
+    if (new File(Environment.getExternalStorageDirectory().getPath(), "traceview_switch").exists()) {
       bool = true;
-      if (bool)
-      {
-        localFile = new File(VFSAssistantUtils.getSDKPrivatePath("qzonetrace"));
-        if (!localFile.exists()) {
-          break label103;
-        }
-        if (localFile.isFile()) {
-          localFile.delete();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("traceview", 2, "isDebugTrace:" + bool);
-      }
-      return bool;
+    } else {
       bool = false;
-      break;
-      label103:
-      localFile.mkdirs();
     }
+    Object localObject;
+    if (bool)
+    {
+      localObject = new File(VFSAssistantUtils.getSDKPrivatePath("qzonetrace"));
+      if (((File)localObject).exists())
+      {
+        if (((File)localObject).isFile()) {
+          ((File)localObject).delete();
+        }
+      }
+      else {
+        ((File)localObject).mkdirs();
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isDebugTrace:");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("traceview", 2, ((StringBuilder)localObject).toString());
+    }
+    return bool;
   }
   
   @Override
@@ -63,12 +64,12 @@ public class QzoneFeedsPluginProxyActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     if (getIntent().getIntExtra("hc_code", 0) != 0) {
@@ -83,7 +84,7 @@ public class QzoneFeedsPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzoneFeedsPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

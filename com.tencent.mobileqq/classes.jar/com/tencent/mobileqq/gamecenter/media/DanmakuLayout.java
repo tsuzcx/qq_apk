@@ -63,17 +63,21 @@ public class DanmakuLayout
   
   private boolean b()
   {
-    int i = 0;
     long l = SystemClock.uptimeMillis();
+    int i = 0;
     boolean bool2;
-    for (boolean bool1 = false; i < this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track.length; bool1 = bool2)
+    for (boolean bool1 = false;; bool1 = bool2)
     {
-      DanmakuLayout.Track localTrack = this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track[i];
+      Object localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject = localObject[i];
       bool2 = bool1;
-      if (localTrack.a())
+      if (((DanmakuLayout.Track)localObject).a())
       {
         this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track[i].a(l);
-        bool2 = bool1 | localTrack.a();
+        bool2 = bool1 | ((DanmakuLayout.Track)localObject).a();
       }
       i += 1;
     }
@@ -84,18 +88,22 @@ public class DanmakuLayout
   {
     b();
     this.c = (getWidth() - getPaddingLeft() - getPaddingRight());
-    DanmakuLayout.DrawItem localDrawItem = a();
-    localDrawItem.a(new DanmakuHost.Item("", 0.0D));
-    DanmakuLayout.DrawItem.a(localDrawItem);
-    this.b = localDrawItem.c;
-    localDrawItem.a();
+    Object localObject = a();
+    ((DanmakuLayout.DrawItem)localObject).a(new DanmakuHost.Item("", 0.0D));
+    DanmakuLayout.DrawItem.a((DanmakuLayout.DrawItem)localObject);
+    this.b = ((DanmakuLayout.DrawItem)localObject).c;
+    ((DanmakuLayout.DrawItem)localObject).a();
     this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track = new DanmakuLayout.Track[(getHeight() - getPaddingTop() - getPaddingBottom()) / (this.b + this.jdField_a_of_type_Int)];
     int j = getPaddingTop();
     int k = getPaddingLeft();
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track.length)
+    for (;;)
     {
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track[i] = new DanmakuLayout.Track(this);
+      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject[i] = new DanmakuLayout.Track(this);
       this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track[i].a(k, j, getWidth() - getPaddingRight(), this.b + j);
       j += this.b + this.jdField_a_of_type_Int;
       i += 1;
@@ -116,33 +124,32 @@ public class DanmakuLayout
       return;
     }
     int i = 0;
-    if (i < paramVarArgs.length)
+    while (i < paramVarArgs.length)
     {
       DanmakuHost.Item localItem = paramVarArgs[i];
       int j = 0;
-      for (;;)
-      {
-        if ((j >= this.jdField_a_of_type_JavaUtilList.size()) || (localItem.jdField_a_of_type_Long < ((DanmakuHost.Item)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_a_of_type_Long))
-        {
-          this.jdField_a_of_type_JavaUtilList.add(j, localItem);
-          i += 1;
-          break;
-        }
+      while ((j < this.jdField_a_of_type_JavaUtilList.size()) && (localItem.jdField_a_of_type_Long >= ((DanmakuHost.Item)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_a_of_type_Long)) {
         j += 1;
       }
+      this.jdField_a_of_type_JavaUtilList.add(j, localItem);
+      i += 1;
     }
     a(this.jdField_a_of_type_Long);
   }
   
   public void b()
   {
-    int i = 0;
     if (a())
     {
+      int i = 0;
       boolean bool = false;
-      while (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track.length)
+      for (;;)
       {
-        bool |= this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track[i].b();
+        DanmakuLayout.Track[] arrayOfTrack = this.jdField_a_of_type_ArrayOfComTencentMobileqqGamecenterMediaDanmakuLayout$Track;
+        if (i >= arrayOfTrack.length) {
+          break;
+        }
+        bool |= arrayOfTrack[i].b();
         i += 1;
       }
       if (bool) {
@@ -151,28 +158,27 @@ public class DanmakuLayout
     }
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (!a()) {}
-    boolean bool;
-    do
-    {
+    if (!a()) {
       return;
-      bool = b();
-      super.dispatchDraw(paramCanvas);
-    } while (!bool);
-    invalidate();
+    }
+    boolean bool = b();
+    super.dispatchDraw(paramCanvas);
+    if (bool) {
+      invalidate();
+    }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     c();
   }
@@ -182,39 +188,41 @@ public class DanmakuLayout
     if (paramInt < 0) {
       return;
     }
-    if (this.jdField_a_of_type_Int != paramInt) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      if ((i == 0) || (!a())) {
-        break;
-      }
+    int i;
+    if (this.jdField_a_of_type_Int != paramInt) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    if ((i != 0) && (a())) {
       c();
-      return;
     }
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt2 != getPaddingTop()) || (paramInt4 != getPaddingBottom())) {}
-    for (int i = 1;; i = 0)
-    {
-      super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
-      if ((i != 0) && (a())) {
-        c();
-      }
-      return;
+    int i;
+    if ((paramInt2 == getPaddingTop()) && (paramInt4 == getPaddingBottom())) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
+    if ((i != 0) && (a())) {
+      c();
     }
   }
   
   public void setShown(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    setVisibility(i);
   }
   
   public void setTextSize(float paramFloat)
@@ -222,30 +230,32 @@ public class DanmakuLayout
     if (paramFloat <= 0.0F) {
       return;
     }
-    if (this.jdField_a_of_type_Float != paramFloat) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_a_of_type_Float = paramFloat;
-      if ((i == 0) || (!a())) {
-        break;
-      }
+    int i;
+    if (this.jdField_a_of_type_Float != paramFloat) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    this.jdField_a_of_type_Float = paramFloat;
+    if ((i != 0) && (a())) {
       c();
-      return;
     }
   }
   
   public void setTimeSupplier(DanmakuHost.TimeSupplier paramTimeSupplier, long paramLong)
   {
-    if (paramTimeSupplier == null) {
-      throw new NullPointerException("timeSupplier must not be null");
+    if (paramTimeSupplier != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$TimeSupplier = paramTimeSupplier;
+      this.jdField_a_of_type_Long = paramLong;
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaDanmakuHost$TimeSupplier = paramTimeSupplier;
-    this.jdField_a_of_type_Long = paramLong;
+    throw new NullPointerException("timeSupplier must not be null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.media.DanmakuLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,22 @@ public class ChongdieEffect
   
   protected String getFragmentShaderCode(TAVTextureInfo paramTAVTextureInfo)
   {
-    if (paramTAVTextureInfo.textureType == 36197) {
-      return " #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES " + FRAGMENT_SHADER_CODE;
+    if (paramTAVTextureInfo.textureType == 36197)
+    {
+      paramTAVTextureInfo = new StringBuilder();
+      paramTAVTextureInfo.append(" #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES ");
+      paramTAVTextureInfo.append(FRAGMENT_SHADER_CODE);
+      return paramTAVTextureInfo.toString();
     }
-    return "uniform sampler2D " + FRAGMENT_SHADER_CODE;
+    paramTAVTextureInfo = new StringBuilder();
+    paramTAVTextureInfo.append("uniform sampler2D ");
+    paramTAVTextureInfo.append(FRAGMENT_SHADER_CODE);
+    return paramTAVTextureInfo.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.taveffect.effects.ChongdieEffect
  * JD-Core Version:    0.7.0.1
  */

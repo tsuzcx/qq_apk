@@ -17,7 +17,7 @@ public class DownloadInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<DownloadInfo> CREATOR = new DownloadInfo.1();
-  protected static final String a;
+  protected static final String a = "com.tencent.open.downloadnew.DownloadInfo";
   public int a;
   public long a;
   public Intent a;
@@ -51,25 +51,20 @@ public class DownloadInfo
   public String j;
   public int k;
   public String k;
-  public String l = "";
-  public String m = "";
-  public String n = "";
-  public String o = null;
-  public String p = "";
-  public String q = "";
-  public String r = "";
-  public String s = "";
-  public String t = "6000";
-  public String u = "0";
-  public String v = "0";
+  public String l;
+  public String m;
+  public String n;
+  public String o;
+  public String p;
+  public String q;
+  public String r;
+  public String s;
+  public String t;
+  public String u;
+  public String v;
   public String w;
   public String x;
   public String y;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = DownloadInfo.class.getName();
-  }
   
   public DownloadInfo()
   {
@@ -78,6 +73,8 @@ public class DownloadInfo
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
     this.jdField_d_of_type_Int = 1;
+    this.l = "";
+    this.m = "";
     this.jdField_e_of_type_Int = 1;
     this.jdField_f_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
@@ -85,11 +82,20 @@ public class DownloadInfo
     this.jdField_b_of_type_Long = 0L;
     this.jdField_h_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = true;
+    this.n = "";
     this.jdField_i_of_type_Int = 0;
     this.jdField_j_of_type_Int = -1;
     this.jdField_c_of_type_Long = 0L;
+    this.o = null;
     this.jdField_d_of_type_Boolean = false;
+    this.p = "";
     this.jdField_d_of_type_Long = 0L;
+    this.q = "";
+    this.r = "";
+    this.s = "";
+    this.t = "6000";
+    this.u = "0";
+    this.v = "0";
     this.jdField_e_of_type_Boolean = false;
     this.jdField_f_of_type_Boolean = false;
   }
@@ -97,10 +103,13 @@ public class DownloadInfo
   protected DownloadInfo(Parcel paramParcel)
   {
     this.jdField_g_of_type_JavaLangString = "";
+    boolean bool2 = false;
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
     this.jdField_d_of_type_Int = 1;
+    this.l = "";
+    this.m = "";
     this.jdField_e_of_type_Int = 1;
     this.jdField_f_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
@@ -108,11 +117,20 @@ public class DownloadInfo
     this.jdField_b_of_type_Long = 0L;
     this.jdField_h_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = true;
+    this.n = "";
     this.jdField_i_of_type_Int = 0;
     this.jdField_j_of_type_Int = -1;
     this.jdField_c_of_type_Long = 0L;
+    this.o = null;
     this.jdField_d_of_type_Boolean = false;
+    this.p = "";
     this.jdField_d_of_type_Long = 0L;
+    this.q = "";
+    this.r = "";
+    this.s = "";
+    this.t = "6000";
+    this.u = "0";
+    this.v = "0";
     this.jdField_e_of_type_Boolean = false;
     this.jdField_f_of_type_Boolean = false;
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
@@ -136,68 +154,54 @@ public class DownloadInfo
     this.jdField_f_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_AndroidContentIntent = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
     this.jdField_g_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readByte() != 0)
-    {
+    if (paramParcel.readByte() != 0) {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label571;
-      }
-      bool1 = true;
-      label366:
-      this.jdField_b_of_type_Boolean = bool1;
-      this.jdField_b_of_type_Long = paramParcel.readLong();
-      this.jdField_h_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label576;
-      }
-      bool1 = true;
-      label396:
-      this.jdField_c_of_type_Boolean = bool1;
-      this.n = paramParcel.readString();
-      this.jdField_i_of_type_Int = paramParcel.readInt();
-      this.jdField_j_of_type_Int = paramParcel.readInt();
-      this.jdField_c_of_type_Long = paramParcel.readLong();
-      this.o = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label581;
-      }
-      bool1 = true;
-      label450:
-      this.jdField_d_of_type_Boolean = bool1;
-      this.p = paramParcel.readString();
-      this.jdField_d_of_type_Long = paramParcel.readLong();
-      this.q = paramParcel.readString();
-      this.r = paramParcel.readString();
-      this.s = paramParcel.readString();
-      this.t = paramParcel.readString();
-      this.u = paramParcel.readString();
-      this.v = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label586;
-      }
+    } else {
+      bool1 = false;
     }
-    label571:
-    label576:
-    label581:
-    label586:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_e_of_type_Boolean = bool1;
-      this.jdField_k_of_type_Int = paramParcel.readInt();
-      this.w = paramParcel.readString();
-      this.x = paramParcel.readString();
-      this.y = paramParcel.readString();
-      return;
+    this.jdField_a_of_type_Boolean = bool1;
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
       bool1 = false;
-      break;
-      bool1 = false;
-      break label366;
-      bool1 = false;
-      break label396;
-      bool1 = false;
-      break label450;
     }
+    this.jdField_b_of_type_Boolean = bool1;
+    this.jdField_b_of_type_Long = paramParcel.readLong();
+    this.jdField_h_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.jdField_c_of_type_Boolean = bool1;
+    this.n = paramParcel.readString();
+    this.jdField_i_of_type_Int = paramParcel.readInt();
+    this.jdField_j_of_type_Int = paramParcel.readInt();
+    this.jdField_c_of_type_Long = paramParcel.readLong();
+    this.o = paramParcel.readString();
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.jdField_d_of_type_Boolean = bool1;
+    this.p = paramParcel.readString();
+    this.jdField_d_of_type_Long = paramParcel.readLong();
+    this.q = paramParcel.readString();
+    this.r = paramParcel.readString();
+    this.s = paramParcel.readString();
+    this.t = paramParcel.readString();
+    this.u = paramParcel.readString();
+    this.v = paramParcel.readString();
+    boolean bool1 = bool2;
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    }
+    this.jdField_e_of_type_Boolean = bool1;
+    this.jdField_k_of_type_Int = paramParcel.readInt();
+    this.w = paramParcel.readString();
+    this.x = paramParcel.readString();
+    this.y = paramParcel.readString();
   }
   
   public DownloadInfo(String paramString1, String paramString2)
@@ -207,6 +211,8 @@ public class DownloadInfo
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
     this.jdField_d_of_type_Int = 1;
+    this.l = "";
+    this.m = "";
     this.jdField_e_of_type_Int = 1;
     this.jdField_f_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
@@ -214,11 +220,20 @@ public class DownloadInfo
     this.jdField_b_of_type_Long = 0L;
     this.jdField_h_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = true;
+    this.n = "";
     this.jdField_i_of_type_Int = 0;
     this.jdField_j_of_type_Int = -1;
     this.jdField_c_of_type_Long = 0L;
+    this.o = null;
     this.jdField_d_of_type_Boolean = false;
+    this.p = "";
     this.jdField_d_of_type_Long = 0L;
+    this.q = "";
+    this.r = "";
+    this.s = "";
+    this.t = "6000";
+    this.u = "0";
+    this.v = "0";
     this.jdField_e_of_type_Boolean = false;
     this.jdField_f_of_type_Boolean = false;
     this.jdField_c_of_type_JavaLangString = paramString1;
@@ -232,6 +247,8 @@ public class DownloadInfo
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
     this.jdField_d_of_type_Int = 1;
+    this.l = "";
+    this.m = "";
     this.jdField_e_of_type_Int = 1;
     this.jdField_f_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
@@ -239,11 +256,20 @@ public class DownloadInfo
     this.jdField_b_of_type_Long = 0L;
     this.jdField_h_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = true;
+    this.n = "";
     this.jdField_i_of_type_Int = 0;
     this.jdField_j_of_type_Int = -1;
     this.jdField_c_of_type_Long = 0L;
+    this.o = null;
     this.jdField_d_of_type_Boolean = false;
+    this.p = "";
     this.jdField_d_of_type_Long = 0L;
+    this.q = "";
+    this.r = "";
+    this.s = "";
+    this.t = "6000";
+    this.u = "0";
+    this.v = "0";
     this.jdField_e_of_type_Boolean = false;
     this.jdField_f_of_type_Boolean = false;
     this.jdField_c_of_type_JavaLangString = paramString1;
@@ -280,6 +306,8 @@ public class DownloadInfo
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
     this.jdField_d_of_type_Int = 1;
+    this.l = "";
+    this.m = "";
     this.jdField_e_of_type_Int = 1;
     this.jdField_f_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = true;
@@ -287,29 +315,47 @@ public class DownloadInfo
     this.jdField_b_of_type_Long = 0L;
     this.jdField_h_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = true;
+    this.n = "";
     this.jdField_i_of_type_Int = 0;
     this.jdField_j_of_type_Int = -1;
     this.jdField_c_of_type_Long = 0L;
+    this.o = null;
     this.jdField_d_of_type_Boolean = false;
+    this.p = "";
     this.jdField_d_of_type_Long = 0L;
+    this.q = "";
+    this.r = "";
+    this.s = "";
+    this.t = "6000";
+    this.u = "0";
+    this.v = "0";
     this.jdField_e_of_type_Boolean = false;
     this.jdField_f_of_type_Boolean = false;
     this.jdField_c_of_type_JavaLangString = paramString1;
     this.jdField_d_of_type_JavaLangString = paramString2;
     this.jdField_e_of_type_JavaLangString = paramString3;
     this.jdField_f_of_type_JavaLangString = paramString4;
-    if (TextUtils.isEmpty(paramString2)) {}
-    for (this.jdField_g_of_type_JavaLangString = ("_" + paramString1);; this.jdField_g_of_type_JavaLangString = ("_" + GlobalUtil.calcMD5AsString(paramString2)))
+    if (TextUtils.isEmpty(paramString2))
     {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_e_of_type_Int = 1;
-      this.jdField_h_of_type_JavaLangString = paramString5;
-      this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      this.jdField_b_of_type_Long = 0L;
-      this.m = paramString6;
-      this.jdField_c_of_type_Boolean = paramBoolean;
-      return;
+      paramString2 = new StringBuilder();
+      paramString2.append("_");
+      paramString2.append(paramString1);
+      this.jdField_g_of_type_JavaLangString = paramString2.toString();
     }
+    else
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("_");
+      paramString1.append(GlobalUtil.calcMD5AsString(paramString2));
+      this.jdField_g_of_type_JavaLangString = paramString1.toString();
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_e_of_type_Int = 1;
+    this.jdField_h_of_type_JavaLangString = paramString5;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_b_of_type_Long = 0L;
+    this.m = paramString6;
+    this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
   public static String a(String paramString, int paramInt)
@@ -317,7 +363,11 @@ public class DownloadInfo
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    return paramString + "_" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public static String b(String paramString)
@@ -332,13 +382,30 @@ public class DownloadInfo
   {
     try
     {
-      paramString = "" + CommonDataAdapter.a().a() + DeviceInfoUtil.a() + System.currentTimeMillis() + paramString;
-      LogUtility.b(jdField_a_of_type_JavaLangString, ">genUniqueId ori=" + paramString);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(CommonDataAdapter.a().a());
+      ((StringBuilder)localObject).append(DeviceInfoUtil.a());
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      ((StringBuilder)localObject).append(paramString);
+      paramString = ((StringBuilder)localObject).toString();
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(">genUniqueId ori=");
+      localStringBuilder.append(paramString);
+      LogUtility.b((String)localObject, localStringBuilder.toString());
       paramString = MD5.a(paramString);
       return paramString;
     }
-    catch (Throwable paramString) {}
-    return "" + System.currentTimeMillis();
+    catch (Throwable paramString)
+    {
+      label93:
+      break label93;
+    }
+    paramString = new StringBuilder();
+    paramString.append("");
+    paramString.append(System.currentTimeMillis());
+    return paramString.toString();
   }
   
   private void c()
@@ -364,30 +431,41 @@ public class DownloadInfo
   
   public String a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.y)))
-    {
-      LogUtility.b(jdField_a_of_type_JavaLangString, ">getExtParam empty params:" + paramString + "|" + this.y);
-      return "";
+    boolean bool = TextUtils.isEmpty(paramString);
+    String str = "";
+    if ((!bool) && (!TextUtils.isEmpty(this.y))) {
+      localObject1 = null;
     }
     try
     {
-      Object localObject = new JSONObject(this.y);
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).optString(paramString);
-        LogUtility.b(jdField_a_of_type_JavaLangString, ">getExtParam " + paramString + "=" + (String)localObject);
-        return localObject;
-      }
+      localObject2 = new JSONObject(this.y);
+      localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        String str = null;
-        continue;
-        str = "";
-      }
+      Object localObject2;
+      label45:
+      break label45;
     }
+    if (localObject1 != null) {
+      str = ((JSONObject)localObject1).optString(paramString);
+    }
+    Object localObject1 = jdField_a_of_type_JavaLangString;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(">getExtParam ");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append("=");
+    ((StringBuilder)localObject2).append(str);
+    LogUtility.b((String)localObject1, ((StringBuilder)localObject2).toString());
+    return str;
+    str = jdField_a_of_type_JavaLangString;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(">getExtParam empty params:");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("|");
+    ((StringBuilder)localObject1).append(this.y);
+    LogUtility.b(str, ((StringBuilder)localObject1).toString());
+    return "";
   }
   
   public JSONObject a()
@@ -412,27 +490,24 @@ public class DownloadInfo
     }
     catch (JSONException localJSONException)
     {
-      LogUtility.c(jdField_a_of_type_JavaLangString, "onNetworkConnect " + localJSONException.getMessage(), localJSONException);
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onNetworkConnect ");
+      localStringBuilder.append(localJSONException.getMessage());
+      LogUtility.c(str, localStringBuilder.toString(), localJSONException);
     }
     return localJSONObject;
   }
   
   public void a()
   {
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-    {
-      if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-        break label45;
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
+      {
+        this.jdField_b_of_type_JavaLangString = b(this.jdField_d_of_type_JavaLangString);
+        LogUtility.b(jdField_a_of_type_JavaLangString, "gen ticket by urlStr");
       }
-      this.jdField_b_of_type_JavaLangString = b(this.jdField_d_of_type_JavaLangString);
-      LogUtility.b(jdField_a_of_type_JavaLangString, "gen ticket by urlStr");
-    }
-    for (;;)
-    {
-      c();
-      return;
-      label45:
-      if (!TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString))
+      else if (!TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString))
       {
         this.jdField_b_of_type_JavaLangString = b(this.jdField_i_of_type_JavaLangString);
         LogUtility.b(jdField_a_of_type_JavaLangString, "gen ticket by urlPatch");
@@ -447,6 +522,7 @@ public class DownloadInfo
         LogUtility.e(jdField_a_of_type_JavaLangString, "bad download INFO!!!");
       }
     }
+    c();
   }
   
   public void a(int paramInt)
@@ -465,36 +541,42 @@ public class DownloadInfo
   
   public boolean a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return false;
-    }
-    JSONObject localJSONObject1;
-    if (TextUtils.isEmpty(this.y)) {
-      localJSONObject1 = new JSONObject();
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString1))
     {
-      try
-      {
-        localJSONObject1.put(paramString1, paramString2);
-        LogUtility.b(jdField_a_of_type_JavaLangString, ">setExtParam " + paramString1 + "=" + paramString2);
-        this.y = localJSONObject1.toString();
-        return true;
+      if (TextUtils.isEmpty(paramString2)) {
+        return false;
       }
-      catch (Exception paramString1)
-      {
-        JSONObject localJSONObject2;
-        LogUtility.c(jdField_a_of_type_JavaLangString, ">setExtParam failed:", paramString1);
+      if (TextUtils.isEmpty(this.y)) {
+        localJSONObject = new JSONObject();
       }
-      try
-      {
-        localJSONObject1 = new JSONObject(this.y);
-      }
-      catch (JSONException localJSONException)
-      {
-        this.y = "";
-        localJSONObject2 = new JSONObject();
-      }
+    }
+    try
+    {
+      localJSONObject = new JSONObject(this.y);
+    }
+    catch (JSONException localJSONException)
+    {
+      label52:
+      break label52;
+    }
+    this.y = "";
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put(paramString1, paramString2);
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(">setExtParam ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("=");
+      localStringBuilder.append(paramString2);
+      LogUtility.b(str, localStringBuilder.toString());
+      this.y = localJSONObject.toString();
+      return true;
+    }
+    catch (Exception paramString1)
+    {
+      LogUtility.c(jdField_a_of_type_JavaLangString, ">setExtParam failed:", paramString1);
     }
     return false;
   }
@@ -512,100 +594,77 @@ public class DownloadInfo
   
   public String toString()
   {
-    return "DownloadInfo [ticket=" + this.jdField_b_of_type_JavaLangString + ", source =" + this.m + ", uniqueId=" + this.x + ", state=" + this.jdField_e_of_type_Int + ", urlStr=" + this.jdField_d_of_type_JavaLangString + ", urlPatch=" + this.jdField_i_of_type_JavaLangString + ", packageName=" + this.jdField_e_of_type_JavaLangString + ", versionCode=" + this.jdField_b_of_type_Int + ", fileSize =" + this.jdField_d_of_type_Long + ", totalDataLength =" + this.jdField_c_of_type_Long + ", progress=" + this.jdField_f_of_type_Int + ", isAutoInstallBySDK =" + this.jdField_d_of_type_Boolean + ", isAutoInstall=" + this.jdField_a_of_type_Boolean + ", filePath=" + this.l + ", appId=" + this.jdField_c_of_type_JavaLangString + ", push_title=" + this.jdField_f_of_type_JavaLangString + ", sendTime=" + this.jdField_g_of_type_JavaLangString + ", time=" + this.jdField_a_of_type_Long + ", updateType=" + this.jdField_a_of_type_Int + ", myAppId=" + this.jdField_j_of_type_JavaLangString + ", apkId=" + this.jdField_k_of_type_JavaLangString + ", lastDownloadSize=" + this.jdField_b_of_type_Long + ", isApk=" + this.jdField_c_of_type_Boolean + ", iconUrl=" + this.n + ", isShowNotification=" + this.jdField_i_of_type_Int + ", writeCodeState=" + this.jdField_j_of_type_Int + ", extraInfo =" + this.o + ", fileMd5 =" + this.p + ", recommendId =" + this.q + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DownloadInfo [ticket=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", source =");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(", uniqueId=");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", state=");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(", urlStr=");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(", urlPatch=");
+    localStringBuilder.append(this.jdField_i_of_type_JavaLangString);
+    localStringBuilder.append(", packageName=");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(", versionCode=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", fileSize =");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(", totalDataLength =");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", progress=");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(", isAutoInstallBySDK =");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(", isAutoInstall=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", filePath=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(", appId=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", push_title=");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(", sendTime=");
+    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append(", time=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", updateType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", myAppId=");
+    localStringBuilder.append(this.jdField_j_of_type_JavaLangString);
+    localStringBuilder.append(", apkId=");
+    localStringBuilder.append(this.jdField_k_of_type_JavaLangString);
+    localStringBuilder.append(", lastDownloadSize=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", isApk=");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(", iconUrl=");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(", isShowNotification=");
+    localStringBuilder.append(this.jdField_i_of_type_Int);
+    localStringBuilder.append(", writeCodeState=");
+    localStringBuilder.append(this.jdField_j_of_type_Int);
+    localStringBuilder.append(", extraInfo =");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append(", fileMd5 =");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append(", recommendId =");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    byte b2 = 1;
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_i_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_k_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeString(this.l);
-    paramParcel.writeString(this.m);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeInt(this.jdField_f_of_type_Int);
-    paramParcel.writeParcelable(this.jdField_a_of_type_AndroidContentIntent, paramInt);
-    paramParcel.writeInt(this.jdField_g_of_type_Int);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      b1 = 1;
-      paramParcel.writeByte(b1);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label401;
-      }
-      b1 = 1;
-      label195:
-      paramParcel.writeByte(b1);
-      paramParcel.writeLong(this.jdField_b_of_type_Long);
-      paramParcel.writeInt(this.jdField_h_of_type_Int);
-      if (!this.jdField_c_of_type_Boolean) {
-        break label406;
-      }
-      b1 = 1;
-      label225:
-      paramParcel.writeByte(b1);
-      paramParcel.writeString(this.n);
-      paramParcel.writeInt(this.jdField_i_of_type_Int);
-      paramParcel.writeInt(this.jdField_j_of_type_Int);
-      paramParcel.writeLong(this.jdField_c_of_type_Long);
-      paramParcel.writeString(this.o);
-      if (!this.jdField_d_of_type_Boolean) {
-        break label411;
-      }
-      b1 = 1;
-      label279:
-      paramParcel.writeByte(b1);
-      paramParcel.writeString(this.p);
-      paramParcel.writeLong(this.jdField_d_of_type_Long);
-      paramParcel.writeString(this.q);
-      paramParcel.writeString(this.r);
-      paramParcel.writeString(this.s);
-      paramParcel.writeString(this.t);
-      paramParcel.writeString(this.u);
-      paramParcel.writeString(this.v);
-      if (!this.jdField_e_of_type_Boolean) {
-        break label416;
-      }
-    }
-    label401:
-    label406:
-    label411:
-    label416:
-    for (byte b1 = b2;; b1 = 0)
-    {
-      paramParcel.writeByte(b1);
-      paramParcel.writeInt(this.jdField_k_of_type_Int);
-      paramParcel.writeString(this.w);
-      paramParcel.writeString(this.x);
-      paramParcel.writeString(this.y);
-      return;
-      b1 = 0;
-      break;
-      b1 = 0;
-      break label195;
-      b1 = 0;
-      break label225;
-      b1 = 0;
-      break label279;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

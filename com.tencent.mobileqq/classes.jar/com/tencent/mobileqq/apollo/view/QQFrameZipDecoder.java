@@ -14,20 +14,25 @@ public class QQFrameZipDecoder
   extends SimpleFrameZipDecoder
   implements SimpleFrameZipDecoder.IDownloadable
 {
-  public QQFrameZipDecoder(SimpleFrameZipDecoder.onFrameDecodeListener paramonFrameDecodeListener)
+  public QQFrameZipDecoder(SimpleFrameZipDecoder.OnFrameDecodeListener paramOnFrameDecodeListener)
   {
-    super(null, paramonFrameDecodeListener);
+    super(null, paramOnFrameDecodeListener);
     this.jdField_a_of_type_ComTencentMobileqqApolloViewSimpleFrameZipDecoder$IDownloadable = this;
   }
   
   public static String a(String paramString)
   {
     paramString = Utils.Crc64String(paramString);
-    return "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/" + paramString + ".zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/image_cache/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".zip");
+    return localStringBuilder.toString();
   }
   
   public void a(SimpleFrameZipDecoder paramSimpleFrameZipDecoder, String paramString1, String paramString2, String paramString3)
   {
+    int j = 1;
     this.jdField_a_of_type_Int = 1;
     DownloadTask localDownloadTask = new DownloadTask(paramString1, new File(paramString2));
     localDownloadTask.p = true;
@@ -41,34 +46,38 @@ public class QQFrameZipDecoder
     if (paramSimpleFrameZipDecoder != null)
     {
       paramSimpleFrameZipDecoder = paramSimpleFrameZipDecoder.getRuntime();
-      if (!(paramSimpleFrameZipDecoder instanceof QQAppInterface)) {}
+      if ((paramSimpleFrameZipDecoder instanceof QQAppInterface))
+      {
+        paramSimpleFrameZipDecoder = (QQAppInterface)paramSimpleFrameZipDecoder;
+        break label110;
+      }
     }
-    for (paramSimpleFrameZipDecoder = (QQAppInterface)paramSimpleFrameZipDecoder;; paramSimpleFrameZipDecoder = null)
+    paramSimpleFrameZipDecoder = null;
+    label110:
+    int i = j;
+    if (paramSimpleFrameZipDecoder != null)
     {
+      paramSimpleFrameZipDecoder = (DownloaderFactory)paramSimpleFrameZipDecoder.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
+      i = j;
       if (paramSimpleFrameZipDecoder != null)
       {
-        paramSimpleFrameZipDecoder = (DownloaderFactory)paramSimpleFrameZipDecoder.getManager(QQManagerFactory.DOWNLOADER_FACTORY);
+        paramSimpleFrameZipDecoder = paramSimpleFrameZipDecoder.a(3);
+        i = j;
         if (paramSimpleFrameZipDecoder != null)
         {
-          paramSimpleFrameZipDecoder = paramSimpleFrameZipDecoder.a(3);
-          if (paramSimpleFrameZipDecoder != null) {
-            paramSimpleFrameZipDecoder.a(localDownloadTask, localDownloadTask.a(), null);
-          }
+          paramSimpleFrameZipDecoder.startDownload(localDownloadTask, localDownloadTask.a(), null);
+          i = 0;
         }
       }
-      for (int i = 0;; i = 1)
-      {
-        if (i != 0) {
-          ThreadManager.executeOnNetWorkThread(new QQFrameZipDecoder.2(this, localDownloadTask));
-        }
-        return;
-      }
+    }
+    if (i != 0) {
+      ThreadManager.executeOnNetWorkThread(new QQFrameZipDecoder.2(this, localDownloadTask));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.QQFrameZipDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -23,10 +23,13 @@ public class WriteTogetherWebSocketEngine
   
   public void a()
   {
-    QLog.d("WriteTogether.WriteTogetherWebSocketEngine", 1, "openWebSocketConn, url = " + "wss://writetogether.3g.qq.com/websocket");
-    Request localRequest = new Request.Builder().url("wss://writetogether.3g.qq.com/websocket").build().newBuilder().build();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("openWebSocketConn, url = ");
+    ((StringBuilder)localObject).append("wss://writetogether.3g.qq.com/websocket");
+    QLog.d("WriteTogether.WriteTogetherWebSocketEngine", 1, ((StringBuilder)localObject).toString());
+    localObject = new Request.Builder().url("wss://writetogether.3g.qq.com/websocket").build().newBuilder().build();
     this.jdField_a_of_type_Okhttp3OkHttpClient = new OkHttpClient().newBuilder().connectTimeout(30L, TimeUnit.SECONDS).writeTimeout(30L, TimeUnit.SECONDS).readTimeout(30L, TimeUnit.SECONDS).build();
-    this.jdField_a_of_type_Okhttp3OkHttpClient.newWebSocket(localRequest, new WriteTogetherWebSocketEngine.1(this));
+    this.jdField_a_of_type_Okhttp3OkHttpClient.newWebSocket((Request)localObject, new WriteTogetherWebSocketEngine.1(this));
   }
   
   public void a(BaseToWriteTogetherMsg paramBaseToWriteTogetherMsg)
@@ -56,16 +59,17 @@ public class WriteTogetherWebSocketEngine
   
   public void b()
   {
-    if (this.jdField_a_of_type_Okhttp3WebSocket != null)
+    WebSocket localWebSocket = this.jdField_a_of_type_Okhttp3WebSocket;
+    if (localWebSocket != null)
     {
-      this.jdField_a_of_type_Okhttp3WebSocket.close(1000, null);
+      localWebSocket.close(1000, null);
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.WriteTogetherWebSocketEngine
  * JD-Core Version:    0.7.0.1
  */

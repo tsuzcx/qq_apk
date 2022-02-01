@@ -3,7 +3,7 @@ package com.tencent.mobileqq.miniapp;
 import java.util.Map;
 
 class MiniAppManager$GetAppInfoCallback
-  extends MiniAppInfoManager.MiniAppInfoCallback<MiniAppManager>
+  extends MiniAppInfoCallback<MiniAppManager>
 {
   public MiniAppManager$GetAppInfoCallback(MiniAppManager paramMiniAppManager)
   {
@@ -25,7 +25,7 @@ class MiniAppManager$GetAppInfoCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppManager.GetAppInfoCallback
  * JD-Core Version:    0.7.0.1
  */

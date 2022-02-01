@@ -16,7 +16,7 @@ import android.util.SparseArray;
 import com.qflutter.resource_loader.NinePatchChunk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mvvm.BaseRepository;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinData;
@@ -35,47 +35,42 @@ class ResourceGrabRepository
   
   private Bitmap a(Bitmap paramBitmap, String paramString)
   {
-    Bitmap localBitmap = paramBitmap;
-    if (paramString.endsWith(".9.png"))
+    if ((paramString.endsWith(".9.png")) && (NinePatch.isNinePatchChunk(paramBitmap.getNinePatchChunk())))
     {
-      localBitmap = paramBitmap;
-      if (NinePatch.isNinePatchChunk(paramBitmap.getNinePatchChunk()))
+      paramString = NinePatchChunk.deserialize(paramBitmap.getNinePatchChunk());
+      if (paramString != null)
       {
-        paramString = NinePatchChunk.deserialize(paramBitmap.getNinePatchChunk());
-        localBitmap = paramBitmap;
-        if (paramString != null)
+        int j = paramBitmap.getWidth() + 2;
+        int k = paramBitmap.getHeight() + 2;
+        Bitmap localBitmap = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_8888);
+        Canvas localCanvas = new Canvas(localBitmap);
+        localCanvas.translate(1.0F, 1.0F);
+        localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, new Paint());
+        int m = paramString.mPaddings.left;
+        int n = paramString.mPaddings.right;
+        int i1 = paramString.mPaddings.top;
+        int i2 = paramString.mPaddings.bottom;
+        int i = 1;
+        while (i < Math.max(k, j) - 1)
         {
-          int j = paramBitmap.getWidth() + 2;
-          int k = paramBitmap.getHeight() + 2;
-          localBitmap = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_8888);
-          Canvas localCanvas = new Canvas(localBitmap);
-          localCanvas.translate(1.0F, 1.0F);
-          localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, new Paint());
-          int m = paramString.mPaddings.left;
-          int n = paramString.mPaddings.right;
-          int i1 = paramString.mPaddings.top;
-          int i2 = paramString.mPaddings.bottom;
-          int i = 1;
-          while (i < Math.max(k, j) - 1)
-          {
-            if (a(paramString, i, true)) {
-              localBitmap.setPixel(i, 0, -16777216);
-            }
-            if ((i > m) && (i < j - 1 - n)) {
-              localBitmap.setPixel(i, k - 1, -16777216);
-            }
-            if (a(paramString, i, false)) {
-              localBitmap.setPixel(0, i, -16777216);
-            }
-            if ((i > i1) && (i < k - 1 - i2)) {
-              localBitmap.setPixel(j - 1, i, -16777216);
-            }
-            i += 1;
+          if (a(paramString, i, true)) {
+            localBitmap.setPixel(i, 0, -16777216);
           }
+          if ((i > m) && (i < j - 1 - n)) {
+            localBitmap.setPixel(i, k - 1, -16777216);
+          }
+          if (a(paramString, i, false)) {
+            localBitmap.setPixel(0, i, -16777216);
+          }
+          if ((i > i1) && (i < k - 1 - i2)) {
+            localBitmap.setPixel(j - 1, i, -16777216);
+          }
+          i += 1;
         }
+        return localBitmap;
       }
     }
-    return localBitmap;
+    return paramBitmap;
   }
   
   private Bitmap a(ResourceGrabSkinData paramResourceGrabSkinData)
@@ -108,7 +103,11 @@ class ResourceGrabRepository
   
   private File a(String paramString)
   {
-    return new File(BaseApplicationImpl.getContext().getExternalCacheDir(), "bitmapResource/" + paramString);
+    File localFile = BaseApplicationImpl.getContext().getExternalCacheDir();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bitmapResource/");
+    localStringBuilder.append(paramString);
+    return new File(localFile, localStringBuilder.toString());
   }
   
   private void a(ResourceGrabSkinData paramResourceGrabSkinData, HashSet<String> paramHashSet)
@@ -127,201 +126,197 @@ class ResourceGrabRepository
     // Byte code:
     //   0: aload_1
     //   1: invokestatic 144	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifne +141 -> 145
+    //   4: ifne +243 -> 247
     //   7: invokestatic 149	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   10: ifeq +28 -> 38
-    //   13: ldc 151
-    //   15: iconst_2
-    //   16: new 218	java/lang/StringBuilder
-    //   19: dup
-    //   20: invokespecial 219	java/lang/StringBuilder:<init>	()V
-    //   23: ldc 249
-    //   25: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: aload_1
-    //   29: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: invokevirtual 228	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   38: aload_0
-    //   39: aload_3
-    //   40: invokespecial 251	com/tencent/mobileqq/resourcesgrab/ResourceGrabRepository:b	(Ljava/lang/String;)Ljava/io/File;
-    //   43: astore 5
-    //   45: aload_2
-    //   46: aload 5
-    //   48: invokevirtual 254	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   51: invokevirtual 260	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   54: pop
-    //   55: aconst_null
-    //   56: astore_3
-    //   57: aconst_null
-    //   58: astore 4
-    //   60: aload_3
-    //   61: astore_2
-    //   62: aload 5
-    //   64: invokevirtual 263	java/io/File:exists	()Z
-    //   67: ifne +35 -> 102
+    //   10: ifeq +38 -> 48
+    //   13: new 216	java/lang/StringBuilder
+    //   16: dup
+    //   17: invokespecial 217	java/lang/StringBuilder:<init>	()V
+    //   20: astore 4
+    //   22: aload 4
+    //   24: ldc 249
+    //   26: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: pop
+    //   30: aload 4
+    //   32: aload_1
+    //   33: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: pop
+    //   37: ldc 151
+    //   39: iconst_2
+    //   40: aload 4
+    //   42: invokevirtual 228	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   45: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   48: aload_0
+    //   49: aload_3
+    //   50: invokespecial 251	com/tencent/mobileqq/resourcesgrab/ResourceGrabRepository:b	(Ljava/lang/String;)Ljava/io/File;
+    //   53: astore 5
+    //   55: aload_2
+    //   56: aload 5
+    //   58: invokevirtual 254	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   61: invokevirtual 260	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   64: pop
+    //   65: aconst_null
+    //   66: astore 4
+    //   68: aconst_null
+    //   69: astore_3
     //   70: aload_3
     //   71: astore_2
     //   72: aload 5
-    //   74: invokevirtual 266	java/io/File:getParentFile	()Ljava/io/File;
-    //   77: invokevirtual 263	java/io/File:exists	()Z
-    //   80: ifne +14 -> 94
-    //   83: aload_3
-    //   84: astore_2
-    //   85: aload 5
-    //   87: invokevirtual 266	java/io/File:getParentFile	()Ljava/io/File;
-    //   90: invokevirtual 269	java/io/File:mkdir	()Z
-    //   93: pop
-    //   94: aload_3
-    //   95: astore_2
-    //   96: aload 5
-    //   98: invokevirtual 272	java/io/File:createNewFile	()Z
-    //   101: pop
-    //   102: aload_3
-    //   103: astore_2
-    //   104: new 274	java/io/OutputStreamWriter
-    //   107: dup
-    //   108: new 276	java/io/FileOutputStream
-    //   111: dup
-    //   112: aload 5
-    //   114: invokespecial 279	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   117: ldc_w 281
-    //   120: invokespecial 284	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
-    //   123: astore_3
-    //   124: aload_3
-    //   125: aload_1
-    //   126: invokevirtual 288	java/io/OutputStreamWriter:write	(Ljava/lang/String;)V
-    //   129: aload_3
-    //   130: invokevirtual 291	java/io/OutputStreamWriter:flush	()V
-    //   133: aload_3
-    //   134: invokevirtual 294	java/io/OutputStreamWriter:close	()V
-    //   137: aload_3
-    //   138: ifnull +7 -> 145
-    //   141: aload_3
-    //   142: invokevirtual 294	java/io/OutputStreamWriter:close	()V
-    //   145: return
-    //   146: astore_1
-    //   147: ldc 151
-    //   149: iconst_1
-    //   150: aload_1
-    //   151: iconst_0
-    //   152: anewarray 296	java/lang/Object
-    //   155: invokestatic 299	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   158: return
-    //   159: astore_3
-    //   160: aload 4
-    //   162: astore_1
-    //   163: aload_1
-    //   164: astore_2
-    //   165: ldc 151
-    //   167: iconst_1
-    //   168: aload_3
-    //   169: iconst_0
-    //   170: anewarray 296	java/lang/Object
-    //   173: invokestatic 299	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   176: aload_1
-    //   177: ifnull -32 -> 145
-    //   180: aload_1
-    //   181: invokevirtual 294	java/io/OutputStreamWriter:close	()V
-    //   184: return
-    //   185: astore_1
-    //   186: ldc 151
-    //   188: iconst_1
-    //   189: aload_1
-    //   190: iconst_0
-    //   191: anewarray 296	java/lang/Object
-    //   194: invokestatic 299	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   197: return
-    //   198: astore_1
-    //   199: aload_2
-    //   200: ifnull +7 -> 207
-    //   203: aload_2
-    //   204: invokevirtual 294	java/io/OutputStreamWriter:close	()V
-    //   207: aload_1
-    //   208: athrow
-    //   209: astore_2
+    //   74: invokevirtual 263	java/io/File:exists	()Z
+    //   77: ifne +35 -> 112
+    //   80: aload_3
+    //   81: astore_2
+    //   82: aload 5
+    //   84: invokevirtual 266	java/io/File:getParentFile	()Ljava/io/File;
+    //   87: invokevirtual 263	java/io/File:exists	()Z
+    //   90: ifne +14 -> 104
+    //   93: aload_3
+    //   94: astore_2
+    //   95: aload 5
+    //   97: invokevirtual 266	java/io/File:getParentFile	()Ljava/io/File;
+    //   100: invokevirtual 269	java/io/File:mkdir	()Z
+    //   103: pop
+    //   104: aload_3
+    //   105: astore_2
+    //   106: aload 5
+    //   108: invokevirtual 272	java/io/File:createNewFile	()Z
+    //   111: pop
+    //   112: aload_3
+    //   113: astore_2
+    //   114: new 274	java/io/OutputStreamWriter
+    //   117: dup
+    //   118: new 276	java/io/FileOutputStream
+    //   121: dup
+    //   122: aload 5
+    //   124: invokespecial 279	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   127: ldc_w 281
+    //   130: invokespecial 284	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   133: astore_3
+    //   134: aload_3
+    //   135: aload_1
+    //   136: invokevirtual 288	java/io/OutputStreamWriter:write	(Ljava/lang/String;)V
+    //   139: aload_3
+    //   140: invokevirtual 291	java/io/OutputStreamWriter:flush	()V
+    //   143: aload_3
+    //   144: invokevirtual 294	java/io/OutputStreamWriter:close	()V
+    //   147: aload_3
+    //   148: invokevirtual 294	java/io/OutputStreamWriter:close	()V
+    //   151: return
+    //   152: astore_1
+    //   153: ldc 151
+    //   155: iconst_1
+    //   156: aload_1
+    //   157: iconst_0
+    //   158: anewarray 296	java/lang/Object
+    //   161: invokestatic 299	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   164: return
+    //   165: astore_1
+    //   166: aload_3
+    //   167: astore_2
+    //   168: goto +54 -> 222
+    //   171: astore_2
+    //   172: aload_3
+    //   173: astore_1
+    //   174: aload_2
+    //   175: astore_3
+    //   176: goto +11 -> 187
+    //   179: astore_1
+    //   180: goto +42 -> 222
+    //   183: astore_3
+    //   184: aload 4
+    //   186: astore_1
+    //   187: aload_1
+    //   188: astore_2
+    //   189: ldc 151
+    //   191: iconst_1
+    //   192: aload_3
+    //   193: iconst_0
+    //   194: anewarray 296	java/lang/Object
+    //   197: invokestatic 299	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   200: aload_1
+    //   201: ifnull +46 -> 247
+    //   204: aload_1
+    //   205: invokevirtual 294	java/io/OutputStreamWriter:close	()V
+    //   208: return
+    //   209: astore_1
     //   210: ldc 151
     //   212: iconst_1
-    //   213: aload_2
+    //   213: aload_1
     //   214: iconst_0
     //   215: anewarray 296	java/lang/Object
     //   218: invokestatic 299	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   221: goto -14 -> 207
-    //   224: astore_1
-    //   225: aload_3
-    //   226: astore_2
-    //   227: goto -28 -> 199
-    //   230: astore_2
-    //   231: aload_3
-    //   232: astore_1
-    //   233: aload_2
-    //   234: astore_3
-    //   235: goto -72 -> 163
+    //   221: return
+    //   222: aload_2
+    //   223: ifnull +22 -> 245
+    //   226: aload_2
+    //   227: invokevirtual 294	java/io/OutputStreamWriter:close	()V
+    //   230: goto +15 -> 245
+    //   233: astore_2
+    //   234: ldc 151
+    //   236: iconst_1
+    //   237: aload_2
+    //   238: iconst_0
+    //   239: anewarray 296	java/lang/Object
+    //   242: invokestatic 299	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   245: aload_1
+    //   246: athrow
+    //   247: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	238	0	this	ResourceGrabRepository
-    //   0	238	1	paramString1	String
-    //   0	238	2	paramHashSet	HashSet<String>
-    //   0	238	3	paramString2	String
-    //   58	103	4	localObject	Object
-    //   43	70	5	localFile	File
+    //   0	248	0	this	ResourceGrabRepository
+    //   0	248	1	paramString1	String
+    //   0	248	2	paramHashSet	HashSet<String>
+    //   0	248	3	paramString2	String
+    //   20	165	4	localStringBuilder	StringBuilder
+    //   53	70	5	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   141	145	146	java/lang/Exception
-    //   62	70	159	java/lang/Exception
-    //   72	83	159	java/lang/Exception
-    //   85	94	159	java/lang/Exception
-    //   96	102	159	java/lang/Exception
-    //   104	124	159	java/lang/Exception
-    //   180	184	185	java/lang/Exception
-    //   62	70	198	finally
-    //   72	83	198	finally
-    //   85	94	198	finally
-    //   96	102	198	finally
-    //   104	124	198	finally
-    //   165	176	198	finally
-    //   203	207	209	java/lang/Exception
-    //   124	137	224	finally
-    //   124	137	230	java/lang/Exception
+    //   147	151	152	java/lang/Exception
+    //   134	147	165	finally
+    //   134	147	171	java/lang/Exception
+    //   72	80	179	finally
+    //   82	93	179	finally
+    //   95	104	179	finally
+    //   106	112	179	finally
+    //   114	134	179	finally
+    //   189	200	179	finally
+    //   72	80	183	java/lang/Exception
+    //   82	93	183	java/lang/Exception
+    //   95	104	183	java/lang/Exception
+    //   106	112	183	java/lang/Exception
+    //   114	134	183	java/lang/Exception
+    //   204	208	209	java/lang/Exception
+    //   226	230	233	java/lang/Exception
   }
   
   private boolean a(NinePatchChunk paramNinePatchChunk, int paramInt, boolean paramBoolean)
   {
-    boolean bool = false;
-    int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       paramNinePatchChunk = paramNinePatchChunk.mDivX;
-      paramBoolean = bool;
-      if (paramNinePatchChunk != null)
-      {
-        paramBoolean = bool;
-        if (paramNinePatchChunk.length > 0) {
-          i = 0;
-        }
-      }
+    } else {
+      paramNinePatchChunk = paramNinePatchChunk.mDivY;
     }
-    for (;;)
+    if ((paramNinePatchChunk != null) && (paramNinePatchChunk.length > 0))
     {
-      paramBoolean = bool;
-      if (i < paramNinePatchChunk.length - 1)
+      int i = 0;
+      while (i < paramNinePatchChunk.length - 1)
       {
         if ((paramInt > paramNinePatchChunk[i]) && (paramInt <= paramNinePatchChunk[(i + 1)])) {
-          paramBoolean = true;
+          return true;
         }
+        i += 2;
       }
-      else
-      {
-        return paramBoolean;
-        paramNinePatchChunk = paramNinePatchChunk.mDivY;
-        break;
-      }
-      i += 2;
     }
+    return false;
   }
   
   private File b(String paramString)
   {
-    return new File(BaseApplicationImpl.getContext().getExternalCacheDir(), "xmlResource/" + paramString);
+    File localFile = BaseApplicationImpl.getContext().getExternalCacheDir();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("xmlResource/");
+    localStringBuilder.append(paramString);
+    return new File(localFile, localStringBuilder.toString());
   }
   
   private void b(ResourceGrabSkinData paramResourceGrabSkinData, HashSet<String> paramHashSet)
@@ -340,13 +335,18 @@ class ResourceGrabRepository
         {
           int k = paramResourceGrabSkinData.jdField_a_of_type_Array2dOfInt[i][j];
           String str = (String)this.a.get(k);
-          if (!TextUtils.isEmpty(str)) {
-            localStringBuilder.append(str).append(" ");
+          if (!TextUtils.isEmpty(str))
+          {
+            localStringBuilder.append(str);
+            localStringBuilder.append(" ");
           }
           j += 1;
         }
         j = paramResourceGrabSkinData.jdField_a_of_type_ArrayOfInt[i];
-        localStringBuilder.append("android:color=\"").append("#").append(Integer.toHexString(j).toUpperCase()).append("\"");
+        localStringBuilder.append("android:color=\"");
+        localStringBuilder.append("#");
+        localStringBuilder.append(Integer.toHexString(j).toUpperCase());
+        localStringBuilder.append("\"");
         localStringBuilder.append(" />\n");
         i += 1;
       }
@@ -363,25 +363,25 @@ class ResourceGrabRepository
       localBitmap = a(localBitmap, paramResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName);
       paramResourceGrabSkinData = a(paramResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName);
       paramHashSet.add(paramResourceGrabSkinData.getAbsolutePath());
-    }
-    try
-    {
-      if (!paramResourceGrabSkinData.exists())
+      try
       {
-        if (!paramResourceGrabSkinData.getParentFile().exists()) {
-          paramResourceGrabSkinData.getParentFile().mkdir();
+        if (!paramResourceGrabSkinData.exists())
+        {
+          if (!paramResourceGrabSkinData.getParentFile().exists()) {
+            paramResourceGrabSkinData.getParentFile().mkdir();
+          }
+          paramResourceGrabSkinData.createNewFile();
         }
-        paramResourceGrabSkinData.createNewFile();
+        paramResourceGrabSkinData = new FileOutputStream(paramResourceGrabSkinData);
+        localBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramResourceGrabSkinData);
+        paramResourceGrabSkinData.flush();
+        paramResourceGrabSkinData.close();
+        return;
       }
-      paramResourceGrabSkinData = new FileOutputStream(paramResourceGrabSkinData);
-      localBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramResourceGrabSkinData);
-      paramResourceGrabSkinData.flush();
-      paramResourceGrabSkinData.close();
-      return;
-    }
-    catch (Exception paramResourceGrabSkinData)
-    {
-      QLog.d("ResourceGrabModel", 1, paramResourceGrabSkinData, new Object[0]);
+      catch (Exception paramResourceGrabSkinData)
+      {
+        QLog.d("ResourceGrabModel", 1, paramResourceGrabSkinData, new Object[0]);
+      }
     }
   }
   
@@ -436,7 +436,7 @@ class ResourceGrabRepository
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabRepository
  * JD-Core Version:    0.7.0.1
  */

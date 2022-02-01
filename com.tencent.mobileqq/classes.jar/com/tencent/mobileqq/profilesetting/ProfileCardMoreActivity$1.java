@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profilesetting;
 
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.mutualmark.MutualMarkDataCenter;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
 
 class ProfileCardMoreActivity$1
   implements Runnable
@@ -11,12 +11,13 @@ class ProfileCardMoreActivity$1
   public void run()
   {
     this.this$0.h();
-    this.this$0.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(MutualMarkDataCenter.a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, true));
+    ProfileCardMoreActivity localProfileCardMoreActivity = this.this$0;
+    localProfileCardMoreActivity.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(MutualMarkDataCenter.a(localProfileCardMoreActivity.app, this.this$0.jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne.uin, true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,41 +13,57 @@ class VideoForDisc$1
 {
   VideoForDisc$1(VideoForDisc paramVideoForDisc, FileVideoDownloadManager.FileVideoManagerCallback paramFileVideoManagerCallback) {}
   
-  public void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
   {
-    QLog.i("VideoForDisc<QFile>", 2, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDisc.a.nSessionId + "],[getOnlinePlay Url]  ID[" + paramLong2 + "] OnDiscDownloadInfo");
-    if (paramLong1 == -100001L) {}
-    while ((paramString3 == null) || (paramString3.length() == 0))
+    paramString1 = new StringBuilder();
+    paramString1.append("[");
+    paramString1.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDisc.a.nSessionId);
+    paramString1.append("],[getOnlinePlay Url]  ID[");
+    paramString1.append(paramLong2);
+    paramString1.append("] OnDiscDownloadInfo");
+    QLog.i("VideoForDisc<QFile>", 2, paramString1.toString());
+    if (paramLong1 != -100001L)
     {
-      paramLong2 = 9360L;
-      if (paramLong1 == 0L) {
-        paramLong2 = 9048L;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((int)paramLong2, BaseApplication.getContext().getResources().getString(2131691044));
-      return;
-      if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDisc.a(true);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((int)paramLong1, BaseApplication.getContext().getResources().getString(2131692793));
-        return;
+      if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L)) {
+        break label292;
       }
       if (!paramBoolean)
       {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDisc.a(false);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((int)0L, BaseApplication.getContext().getResources().getString(2131691044));
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((int)0L, BaseApplication.getContext().getResources().getString(2131690964));
         return;
       }
     }
-    paramString1 = "http://" + paramString3 + ":" + String.valueOf(paramInt1) + "/ftn_handler/" + paramString4;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoForDisc<QFile>", 1, paramString1);
+    if ((paramString3 != null) && (paramString3.length() != 0))
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("http://");
+      paramString1.append(paramString3);
+      paramString1.append(":");
+      paramString1.append(String.valueOf(paramInt1));
+      paramString1.append("/ftn_handler/");
+      paramString1.append(paramString4);
+      paramString1 = paramString1.toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoForDisc<QFile>", 1, paramString1);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a(paramString1, paramString5);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a(paramString1, paramString5);
+    paramLong2 = 9360L;
+    if (paramLong1 == 0L) {
+      paramLong2 = 9048L;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((int)paramLong2, BaseApplication.getContext().getResources().getString(2131690964));
+    return;
+    label292:
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDisc.a(true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((int)paramLong1, BaseApplication.getContext().getResources().getString(2131692751));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.VideoForDisc.1
  * JD-Core Version:    0.7.0.1
  */

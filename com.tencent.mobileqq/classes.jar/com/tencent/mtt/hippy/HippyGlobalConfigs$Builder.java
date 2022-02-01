@@ -41,43 +41,46 @@ public class HippyGlobalConfigs$Builder
   @Deprecated
   public HippyGlobalConfigs build()
   {
-    if (this.mContext == null) {
-      throw new IllegalArgumentException("HippyGlobalConfigs Context must is not null!");
-    }
-    if (this.mSharedPreferencesAdapter == null) {
-      this.mSharedPreferencesAdapter = new DefaultSharedPreferencesAdapter(this.mContext);
-    }
-    if (this.mExceptionHandler == null) {
-      this.mExceptionHandler = new DefaultExceptionHandler();
-    }
-    if (this.mHttpAdapter == null) {
-      this.mHttpAdapter = new DefaultHttpAdapter();
-    }
-    if (this.mExecutorSupplierAdapter == null) {
-      this.mExecutorSupplierAdapter = new DefaultExecutorSupplierAdapter();
-    }
-    if (this.mStorageAdapter == null) {
-      this.mStorageAdapter = new DefaultStorageAdapter(this.mContext, this.mExecutorSupplierAdapter.getDBExecutor());
-    }
-    if (this.mEngineMonitorAdapter == null) {
-      this.mEngineMonitorAdapter = new DefaultEngineMonitorAdapter();
-    }
-    if (this.mFontScaleAdapter == null) {
-      this.mFontScaleAdapter = new DefaultFontScaleAdapter();
-    }
-    if (this.mSoLoaderAdapter == null) {
-      this.mSoLoaderAdapter = new DefaultSoLoaderAdapter();
-    }
-    if (this.mDeviceAdapter == null) {
-      this.mDeviceAdapter = new DefaultDeviceAdapter();
-    }
-    if (this.mLogAdapter == null) {
-      this.mLogAdapter = new DefaultLogAdapter();
-    }
-    if (this.mImageLoaderAdapter == null) {
+    Object localObject = this.mContext;
+    if (localObject != null)
+    {
+      if (this.mSharedPreferencesAdapter == null) {
+        this.mSharedPreferencesAdapter = new DefaultSharedPreferencesAdapter((Context)localObject);
+      }
+      if (this.mExceptionHandler == null) {
+        this.mExceptionHandler = new DefaultExceptionHandler();
+      }
+      if (this.mHttpAdapter == null) {
+        this.mHttpAdapter = new DefaultHttpAdapter();
+      }
+      if (this.mExecutorSupplierAdapter == null) {
+        this.mExecutorSupplierAdapter = new DefaultExecutorSupplierAdapter();
+      }
+      if (this.mStorageAdapter == null) {
+        this.mStorageAdapter = new DefaultStorageAdapter(this.mContext, this.mExecutorSupplierAdapter.getDBExecutor());
+      }
+      if (this.mEngineMonitorAdapter == null) {
+        this.mEngineMonitorAdapter = new DefaultEngineMonitorAdapter();
+      }
+      if (this.mFontScaleAdapter == null) {
+        this.mFontScaleAdapter = new DefaultFontScaleAdapter();
+      }
+      if (this.mSoLoaderAdapter == null) {
+        this.mSoLoaderAdapter = new DefaultSoLoaderAdapter();
+      }
+      if (this.mDeviceAdapter == null) {
+        this.mDeviceAdapter = new DefaultDeviceAdapter();
+      }
+      if (this.mLogAdapter == null) {
+        this.mLogAdapter = new DefaultLogAdapter();
+      }
+      localObject = this.mImageLoaderAdapter;
+      if (localObject != null) {
+        return new HippyGlobalConfigs(this.mContext, this.mSharedPreferencesAdapter, this.mExceptionHandler, this.mHttpAdapter, (HippyImageLoader)localObject, this.mExecutorSupplierAdapter, this.mStorageAdapter, this.mEngineMonitorAdapter, this.mFontScaleAdapter, this.mSoLoaderAdapter, this.mDeviceAdapter, this.mLogAdapter, null);
+      }
       throw new IllegalArgumentException("HippyGlobalConfigs ImageLoaderAdapter must is not null!");
     }
-    return new HippyGlobalConfigs(this.mContext, this.mSharedPreferencesAdapter, this.mExceptionHandler, this.mHttpAdapter, this.mImageLoaderAdapter, this.mExecutorSupplierAdapter, this.mStorageAdapter, this.mEngineMonitorAdapter, this.mFontScaleAdapter, this.mSoLoaderAdapter, this.mDeviceAdapter, this.mLogAdapter, null);
+    throw new IllegalArgumentException("HippyGlobalConfigs Context must is not null!");
   }
   
   public HippyLogAdapter getLogAdapter()
@@ -159,7 +162,7 @@ public class HippyGlobalConfigs$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyGlobalConfigs.Builder
  * JD-Core Version:    0.7.0.1
  */

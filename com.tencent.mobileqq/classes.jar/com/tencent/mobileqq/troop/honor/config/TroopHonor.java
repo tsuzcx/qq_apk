@@ -18,10 +18,12 @@ public class TroopHonor
   
   public int a(TroopHonor paramTroopHonor)
   {
-    if (this.jdField_b_of_type_Int < paramTroopHonor.jdField_b_of_type_Int) {
+    int i = this.jdField_b_of_type_Int;
+    int j = paramTroopHonor.jdField_b_of_type_Int;
+    if (i < j) {
       return -1;
     }
-    if (this.jdField_b_of_type_Int > paramTroopHonor.jdField_b_of_type_Int) {
+    if (i > j) {
       return 1;
     }
     return 0;
@@ -29,12 +31,25 @@ public class TroopHonor
   
   public String toString()
   {
-    return "TroopHonor{id=" + this.jdField_a_of_type_Int + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", priority='" + this.jdField_b_of_type_Int + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopHonor{id=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", iconUrl='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", priority='");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.config.TroopHonor
  * JD-Core Version:    0.7.0.1
  */

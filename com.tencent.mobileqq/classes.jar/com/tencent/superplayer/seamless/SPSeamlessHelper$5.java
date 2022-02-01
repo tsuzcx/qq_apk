@@ -18,15 +18,16 @@ class SPSeamlessHelper$5
     this.val$videoView.setX(0.0F);
     this.val$videoView.setY(0.0F);
     this.this$0.attachVideoView(this.val$parent, this.val$videoView, this.val$seamlessParam.layoutParams, this.val$seamlessParam.viewIndex);
-    if (this.val$animatorListener != null) {
-      this.val$animatorListener.onAnimationEnd(this.val$animation);
+    Animator.AnimatorListener localAnimatorListener = this.val$animatorListener;
+    if (localAnimatorListener != null) {
+      localAnimatorListener.onAnimationEnd(this.val$animation);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.seamless.SPSeamlessHelper.5
  * JD-Core Version:    0.7.0.1
  */

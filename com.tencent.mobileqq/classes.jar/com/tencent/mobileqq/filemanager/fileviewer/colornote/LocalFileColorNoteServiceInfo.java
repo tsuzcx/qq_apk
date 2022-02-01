@@ -21,7 +21,7 @@ public class LocalFileColorNoteServiceInfo
   public LocalFileColorNoteServiceInfo(String paramString)
   {
     this.a = paramString;
-    if (FileUtils.b(this.a)) {
+    if (FileUtils.fileExistsAndNotEmpty(this.a)) {
       this.a = new File(this.a).getAbsolutePath();
     }
   }
@@ -35,39 +35,51 @@ public class LocalFileColorNoteServiceInfo
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }
-    catch (JSONException localJSONException) {}
+    catch (JSONException localJSONException)
+    {
+      label26:
+      break label26;
+    }
     return "";
   }
   
   public ColorNote getColorNote()
   {
-    if (!FileUtils.b(this.a))
+    if (!FileUtils.fileExistsAndNotEmpty(this.a))
     {
       QLog.i("LocalFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
       return null;
     }
     ColorNote.Builder localBuilder = new ColorNote.Builder();
     localBuilder.a(17039360);
-    String str = QFileUtils.b(5, this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("LocalFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    Object localObject = QFileUtils.a(5, this.a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getColorNote: file colorNote key [");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("]");
+      QLog.i("LocalFileColorNoteServiceInfo", 2, localStringBuilder.toString());
     }
-    localBuilder.a(str);
-    str = FileManagerUtil.a(this.a);
-    localBuilder.b(str);
+    localBuilder.a((String)localObject);
+    localObject = FileManagerUtil.a(this.a);
+    localBuilder.b((String)localObject);
     localBuilder.c(FileUtil.a(FileManagerUtil.a(this.a)));
-    int i = FileManagerUtil.a(FileManagerUtil.a(str));
-    localBuilder.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localBuilder.a(str.getBytes());
+    int i = FileManagerUtil.a(FileManagerUtil.a((String)localObject));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("resdrawable://");
+    ((StringBuilder)localObject).append(i);
+    localBuilder.d(((StringBuilder)localObject).toString());
+    localObject = a();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localBuilder.a(((String)localObject).getBytes());
     }
     return localBuilder.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.colornote.LocalFileColorNoteServiceInfo
  * JD-Core Version:    0.7.0.1
  */

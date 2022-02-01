@@ -26,115 +26,74 @@ final class OperatorBufferWithTime$InexactSubscriber
   
   void emitChunk(List<T> paramList)
   {
-    for (;;)
+    try
+    {
+      if (this.done) {
+        return;
+      }
+      Iterator localIterator = this.chunks.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      } while ((List)localIterator.next() != paramList);
+      localIterator.remove();
+      i = 1;
+    }
+    finally
+    {
+      for (;;)
+      {
+        for (;;)
+        {
+          throw paramList;
+        }
+        int i = 0;
+      }
+    }
+    if (i != 0) {
+      try
+      {
+        this.child.onNext(paramList);
+        return;
+      }
+      catch (Throwable paramList)
+      {
+        Exceptions.throwOrReport(paramList, this);
+      }
+    }
+  }
+  
+  public void onCompleted()
+  {
+    try
     {
       try
       {
         if (this.done) {
           return;
         }
-        Iterator localIterator = this.chunks.iterator();
-        if (localIterator.hasNext())
+        this.done = true;
+        Object localObject1 = new LinkedList(this.chunks);
+        this.chunks.clear();
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          if ((List)localIterator.next() != paramList) {
-            continue;
-          }
-          localIterator.remove();
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          try
-          {
-            this.child.onNext(paramList);
-            return;
-          }
-          catch (Throwable paramList)
-          {
-            Exceptions.throwOrReport(paramList, this);
-            return;
-          }
+          List localList = (List)((Iterator)localObject1).next();
+          this.child.onNext(localList);
         }
-        int i = 0;
+        this.child.onCompleted();
+        unsubscribe();
+        return;
       }
       finally {}
+      return;
     }
-  }
-  
-  /* Error */
-  public void onCompleted()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 42	rx/internal/operators/OperatorBufferWithTime$InexactSubscriber:done	Z
-    //   6: ifeq +6 -> 12
-    //   9: aload_0
-    //   10: monitorexit
-    //   11: return
-    //   12: aload_0
-    //   13: iconst_1
-    //   14: putfield 42	rx/internal/operators/OperatorBufferWithTime$InexactSubscriber:done	Z
-    //   17: new 30	java/util/LinkedList
-    //   20: dup
-    //   21: aload_0
-    //   22: getfield 33	rx/internal/operators/OperatorBufferWithTime$InexactSubscriber:chunks	Ljava/util/List;
-    //   25: invokespecial 76	java/util/LinkedList:<init>	(Ljava/util/Collection;)V
-    //   28: astore_1
-    //   29: aload_0
-    //   30: getfield 33	rx/internal/operators/OperatorBufferWithTime$InexactSubscriber:chunks	Ljava/util/List;
-    //   33: invokeinterface 79 1 0
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: aload_1
-    //   41: invokeinterface 48 1 0
-    //   46: astore_1
-    //   47: aload_1
-    //   48: invokeinterface 54 1 0
-    //   53: ifeq +39 -> 92
-    //   56: aload_1
-    //   57: invokeinterface 58 1 0
-    //   62: checkcast 44	java/util/List
-    //   65: astore_2
-    //   66: aload_0
-    //   67: getfield 26	rx/internal/operators/OperatorBufferWithTime$InexactSubscriber:child	Lrx/Subscriber;
-    //   70: aload_2
-    //   71: invokevirtual 65	rx/Subscriber:onNext	(Ljava/lang/Object;)V
-    //   74: goto -27 -> 47
-    //   77: astore_1
-    //   78: aload_1
-    //   79: aload_0
-    //   80: getfield 26	rx/internal/operators/OperatorBufferWithTime$InexactSubscriber:child	Lrx/Subscriber;
-    //   83: invokestatic 71	rx/exceptions/Exceptions:throwOrReport	(Ljava/lang/Throwable;Lrx/Observer;)V
-    //   86: return
-    //   87: astore_1
-    //   88: aload_0
-    //   89: monitorexit
-    //   90: aload_1
-    //   91: athrow
-    //   92: aload_0
-    //   93: getfield 26	rx/internal/operators/OperatorBufferWithTime$InexactSubscriber:child	Lrx/Subscriber;
-    //   96: invokevirtual 81	rx/Subscriber:onCompleted	()V
-    //   99: aload_0
-    //   100: invokevirtual 84	rx/internal/operators/OperatorBufferWithTime$InexactSubscriber:unsubscribe	()V
-    //   103: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	104	0	this	InexactSubscriber
-    //   28	29	1	localObject1	Object
-    //   77	2	1	localThrowable	Throwable
-    //   87	4	1	localObject2	Object
-    //   65	6	2	localList	List
-    // Exception table:
-    //   from	to	target	type
-    //   0	2	77	java/lang/Throwable
-    //   40	47	77	java/lang/Throwable
-    //   47	74	77	java/lang/Throwable
-    //   90	92	77	java/lang/Throwable
-    //   2	11	87	finally
-    //   12	40	87	finally
-    //   88	90	87	finally
+    catch (Throwable localThrowable)
+    {
+      Exceptions.throwOrReport(localThrowable, this.child);
+    }
   }
   
   public void onError(Throwable paramThrowable)
@@ -155,48 +114,43 @@ final class OperatorBufferWithTime$InexactSubscriber
   
   public void onNext(T paramT)
   {
-    Object localObject1 = null;
-    for (;;)
+    try
     {
-      Object localObject2;
-      try
+      if (this.done) {
+        return;
+      }
+      Iterator localIterator = this.chunks.iterator();
+      Object localObject1 = null;
+      while (localIterator.hasNext())
       {
-        if (this.done) {
-          return;
-        }
-        Iterator localIterator = this.chunks.iterator();
-        if (localIterator.hasNext())
+        List localList = (List)localIterator.next();
+        localList.add(paramT);
+        if (localList.size() == this.this$0.count)
         {
-          List localList = (List)localIterator.next();
-          localList.add(paramT);
-          localObject2 = localObject1;
-          if (localList.size() == this.this$0.count)
-          {
-            localIterator.remove();
-            localObject2 = localObject1;
-            if (localObject1 == null) {
-              localObject2 = new LinkedList();
-            }
-            ((List)localObject2).add(localList);
+          localIterator.remove();
+          Object localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new LinkedList();
           }
-        }
-        else
-        {
-          if (localObject1 != null)
-          {
-            paramT = ((List)localObject1).iterator();
-            if (paramT.hasNext())
-            {
-              localObject1 = (List)paramT.next();
-              this.child.onNext(localObject1);
-              continue;
-            }
-          }
-          return;
+          ((List)localObject2).add(localList);
+          localObject1 = localObject2;
         }
       }
-      finally {}
-      localObject1 = localObject2;
+      if (localObject1 != null)
+      {
+        paramT = ((List)localObject1).iterator();
+        while (paramT.hasNext())
+        {
+          localObject1 = (List)paramT.next();
+          this.child.onNext(localObject1);
+        }
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramT;
     }
   }
   
@@ -222,7 +176,7 @@ final class OperatorBufferWithTime$InexactSubscriber
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorBufferWithTime.InexactSubscriber
  * JD-Core Version:    0.7.0.1
  */

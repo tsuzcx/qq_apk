@@ -21,7 +21,7 @@ public class HuayangPluginContainer$URLDrawableFactory
     super(paramMobileQQ);
   }
   
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  protected ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
   {
     if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
       this.a = new HttpDownloader();
@@ -29,29 +29,29 @@ public class HuayangPluginContainer$URLDrawableFactory
     return this.a;
   }
   
-  public String doGetLocalFilePath(String paramString)
+  protected String doGetLocalFilePath(String paramString)
   {
     return null;
   }
   
-  public ApngSoLoader getApngSoLoader()
+  protected ApngSoLoader getApngSoLoader()
   {
     return VasApngIPCModule.a();
   }
   
-  public Drawable getDefaultLoadingDrawable()
+  protected Drawable getDefaultLoadingDrawable()
   {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130848203);
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130848074);
   }
   
-  public Drawable getDefualtFailedDrawable()
+  protected Drawable getDefualtFailedDrawable()
   {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130848203);
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130848074);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.HuayangPluginContainer.URLDrawableFactory
  * JD-Core Version:    0.7.0.1
  */

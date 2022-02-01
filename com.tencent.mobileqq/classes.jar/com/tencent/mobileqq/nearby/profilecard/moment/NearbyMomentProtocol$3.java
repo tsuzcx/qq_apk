@@ -10,15 +10,19 @@ final class NearbyMomentProtocol$3
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$DeleteFeedCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$DeleteFeedCallback.a(false, this.jdField_a_of_type_JavaLangString);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("deleteMomentFeed error, errorCode =");
+    paramArrayOfByte.append(paramInt);
+    QLog.i("NearbyMomentProtocol", 1, paramArrayOfByte.toString());
+    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentProtocol$DeleteFeedCallback;
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.a(false, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.3
  * JD-Core Version:    0.7.0.1
  */

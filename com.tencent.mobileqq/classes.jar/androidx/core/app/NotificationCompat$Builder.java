@@ -60,6 +60,7 @@ public class NotificationCompat$Builder
   CharSequence[] mRemoteInputHistory;
   String mShortcutId;
   boolean mShowWhen = true;
+  boolean mSilent;
   String mSortKey;
   NotificationCompat.Style mStyle;
   CharSequence mSubText;
@@ -87,27 +88,48 @@ public class NotificationCompat$Builder
   
   protected static CharSequence limitCharSequenceLength(CharSequence paramCharSequence)
   {
-    if (paramCharSequence == null) {}
-    while (paramCharSequence.length() <= 5120) {
+    if (paramCharSequence == null) {
       return paramCharSequence;
     }
-    return paramCharSequence.subSequence(0, 5120);
+    CharSequence localCharSequence = paramCharSequence;
+    if (paramCharSequence.length() > 5120) {
+      localCharSequence = paramCharSequence.subSequence(0, 5120);
+    }
+    return localCharSequence;
   }
   
   private Bitmap reduceLargeIconSize(Bitmap paramBitmap)
   {
-    if ((paramBitmap == null) || (Build.VERSION.SDK_INT >= 27)) {}
-    int i;
-    int j;
-    do
+    Object localObject = paramBitmap;
+    if (paramBitmap != null)
     {
-      return paramBitmap;
-      Resources localResources = this.mContext.getResources();
-      i = localResources.getDimensionPixelSize(2131296828);
-      j = localResources.getDimensionPixelSize(2131296827);
-    } while ((paramBitmap.getWidth() <= i) && (paramBitmap.getHeight() <= j));
-    double d = Math.min(i / Math.max(1, paramBitmap.getWidth()), j / Math.max(1, paramBitmap.getHeight()));
-    return Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d), (int)Math.ceil(d * paramBitmap.getHeight()), true);
+      if (Build.VERSION.SDK_INT >= 27) {
+        return paramBitmap;
+      }
+      localObject = this.mContext.getResources();
+      int i = ((Resources)localObject).getDimensionPixelSize(2131296808);
+      int j = ((Resources)localObject).getDimensionPixelSize(2131296807);
+      if ((paramBitmap.getWidth() <= i) && (paramBitmap.getHeight() <= j)) {
+        return paramBitmap;
+      }
+      double d1 = i;
+      double d2 = Math.max(1, paramBitmap.getWidth());
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      d1 /= d2;
+      d2 = j;
+      double d3 = Math.max(1, paramBitmap.getHeight());
+      Double.isNaN(d2);
+      Double.isNaN(d3);
+      d1 = Math.min(d1, d2 / d3);
+      d2 = paramBitmap.getWidth();
+      Double.isNaN(d2);
+      i = (int)Math.ceil(d2 * d1);
+      d2 = paramBitmap.getHeight();
+      Double.isNaN(d2);
+      localObject = Bitmap.createScaledBitmap(paramBitmap, i, (int)Math.ceil(d2 * d1), true);
+    }
+    return localObject;
   }
   
   private void setFlag(int paramInt, boolean paramBoolean)
@@ -115,11 +137,11 @@ public class NotificationCompat$Builder
     if (paramBoolean)
     {
       localNotification = this.mNotification;
-      localNotification.flags |= paramInt;
+      localNotification.flags = (paramInt | localNotification.flags);
       return;
     }
     Notification localNotification = this.mNotification;
-    localNotification.flags &= (paramInt ^ 0xFFFFFFFF);
+    localNotification.flags = ((paramInt ^ 0xFFFFFFFF) & localNotification.flags);
   }
   
   public Builder addAction(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent)
@@ -138,14 +160,14 @@ public class NotificationCompat$Builder
   {
     if (paramBundle != null)
     {
-      if (this.mExtras == null) {
+      Bundle localBundle = this.mExtras;
+      if (localBundle == null)
+      {
         this.mExtras = new Bundle(paramBundle);
+        return this;
       }
+      localBundle.putAll(paramBundle);
     }
-    else {
-      return this;
-    }
-    this.mExtras.putAll(paramBundle);
     return this;
   }
   
@@ -349,10 +371,9 @@ public class NotificationCompat$Builder
   
   public Builder setDefaults(int paramInt)
   {
-    this.mNotification.defaults = paramInt;
-    if ((paramInt & 0x4) != 0)
-    {
-      Notification localNotification = this.mNotification;
+    Notification localNotification = this.mNotification;
+    localNotification.defaults = paramInt;
+    if ((paramInt & 0x4) != 0) {
       localNotification.flags |= 0x1;
     }
     return this;
@@ -403,33 +424,30 @@ public class NotificationCompat$Builder
   
   public Builder setLights(@ColorInt int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 1;
-    this.mNotification.ledARGB = paramInt1;
-    this.mNotification.ledOnMS = paramInt2;
-    this.mNotification.ledOffMS = paramInt3;
-    Notification localNotification;
-    if ((this.mNotification.ledOnMS != 0) && (this.mNotification.ledOffMS != 0))
-    {
+    Notification localNotification = this.mNotification;
+    localNotification.ledARGB = paramInt1;
+    localNotification.ledOnMS = paramInt2;
+    localNotification.ledOffMS = paramInt3;
+    if ((localNotification.ledOnMS != 0) && (this.mNotification.ledOffMS != 0)) {
       paramInt1 = 1;
-      localNotification = this.mNotification;
-      paramInt2 = this.mNotification.flags;
-      if (paramInt1 == 0) {
-        break label88;
-      }
-    }
-    label88:
-    for (paramInt1 = i;; paramInt1 = 0)
-    {
-      localNotification.flags = (paramInt2 & 0xFFFFFFFE | paramInt1);
-      return this;
+    } else {
       paramInt1 = 0;
-      break;
     }
+    localNotification = this.mNotification;
+    localNotification.flags = (paramInt1 | localNotification.flags & 0xFFFFFFFE);
+    return this;
   }
   
   public Builder setLocalOnly(boolean paramBoolean)
   {
     this.mLocalOnly = paramBoolean;
+    return this;
+  }
+  
+  @NonNull
+  public Builder setNotificationSilent()
+  {
+    this.mSilent = true;
     return this;
   }
   
@@ -497,8 +515,9 @@ public class NotificationCompat$Builder
   
   public Builder setSmallIcon(int paramInt1, int paramInt2)
   {
-    this.mNotification.icon = paramInt1;
-    this.mNotification.iconLevel = paramInt2;
+    Notification localNotification = this.mNotification;
+    localNotification.icon = paramInt1;
+    localNotification.iconLevel = paramInt2;
     return this;
   }
   
@@ -510,8 +529,9 @@ public class NotificationCompat$Builder
   
   public Builder setSound(Uri paramUri)
   {
-    this.mNotification.sound = paramUri;
-    this.mNotification.audioStreamType = -1;
+    Notification localNotification = this.mNotification;
+    localNotification.sound = paramUri;
+    localNotification.audioStreamType = -1;
     if (Build.VERSION.SDK_INT >= 21) {
       this.mNotification.audioAttributes = new AudioAttributes.Builder().setContentType(4).setUsage(5).build();
     }
@@ -520,8 +540,9 @@ public class NotificationCompat$Builder
   
   public Builder setSound(Uri paramUri, int paramInt)
   {
-    this.mNotification.sound = paramUri;
-    this.mNotification.audioStreamType = paramInt;
+    Notification localNotification = this.mNotification;
+    localNotification.sound = paramUri;
+    localNotification.audioStreamType = paramInt;
     if (Build.VERSION.SDK_INT >= 21) {
       this.mNotification.audioAttributes = new AudioAttributes.Builder().setContentType(4).setLegacyStreamType(paramInt).build();
     }
@@ -533,8 +554,9 @@ public class NotificationCompat$Builder
     if (this.mStyle != paramStyle)
     {
       this.mStyle = paramStyle;
-      if (this.mStyle != null) {
-        this.mStyle.setBuilder(this);
+      paramStyle = this.mStyle;
+      if (paramStyle != null) {
+        paramStyle.setBuilder(this);
       }
     }
     return this;
@@ -591,7 +613,7 @@ public class NotificationCompat$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -7,30 +7,12 @@ import android.util.Log;
 import android.webkit.URLUtil;
 import com.huawei.secure.android.common.util.LogsUtil;
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 
 public class UriUtil
 {
   private static final String TAG = "UriUtil";
-  
-  private static String e(String paramString)
-  {
-    String str;
-    if (TextUtils.isEmpty(paramString))
-    {
-      LogsUtil.i("UriUtil", "whiteListUrl is null");
-      str = null;
-    }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (!URLUtil.isNetworkUrl(paramString));
-    return getHostByURI(paramString);
-  }
   
   @TargetApi(9)
   public static String getHostByURI(String paramString)
@@ -45,36 +27,38 @@ public class UriUtil
       if (!URLUtil.isNetworkUrl(paramString))
       {
         LogsUtil.e("UriUtil", "url don't starts with http or https");
-        return null;
+        return "";
       }
-      if ((paramString.contains("{")) || (paramString.contains("}")) || (paramString.contains("[")) || (paramString.contains("]"))) {
-        return new URL(paramString.replaceAll("[\\\\#]", "/")).getHost();
-      }
-      paramString = new URI(paramString).getHost();
+      paramString = new URL(paramString.replaceAll("[\\\\#]", "/")).getHost();
       return paramString;
-    }
-    catch (URISyntaxException paramString)
-    {
-      LogsUtil.e("UriUtil", "getHostByURI error : " + paramString.getMessage());
-      return null;
     }
     catch (MalformedURLException paramString)
     {
-      for (;;)
-      {
-        LogsUtil.e("UriUtil", "getHostByURI error  MalformedURLException : " + paramString.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getHostByURI error  MalformedURLException : ");
+      localStringBuilder.append(paramString.getMessage());
+      LogsUtil.e("UriUtil", localStringBuilder.toString());
     }
+    return "";
+  }
+  
+  private static String i(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      LogsUtil.i("UriUtil", "whiteListUrl is null");
+      return null;
+    }
+    if (!URLUtil.isNetworkUrl(paramString)) {
+      return paramString;
+    }
+    return getHostByURI(paramString);
   }
   
   public static boolean isUrlHostAndPathInWhitelist(String paramString, String[] paramArrayOfString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      LogsUtil.e("UriUtil", "whitelist is null");
-    }
-    for (;;)
+    if ((paramArrayOfString != null) && (paramArrayOfString.length != 0))
     {
-      return false;
       int j = paramArrayOfString.length;
       int i = 0;
       while (i < j)
@@ -84,40 +68,55 @@ public class UriUtil
         }
         i += 1;
       }
+      return false;
     }
+    LogsUtil.e("UriUtil", "whitelist is null");
+    return false;
   }
   
   public static boolean isUrlHostAndPathMatchWhitelist(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    List localList;
-    do
+    if (!TextUtils.isEmpty(paramString1))
     {
-      do
-      {
+      if (TextUtils.isEmpty(paramString2)) {
         return false;
-        if ((paramString1.contains("..")) || (paramString1.contains("@")))
+      }
+      if ((!paramString1.contains("..")) && (!paramString1.contains("@")))
+      {
+        if (!paramString2.equals(paramString1))
         {
-          Log.e("UriUtil", "url contains unsafe char");
-          return false;
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString2);
+          ((StringBuilder)localObject).append("?");
+          if (!paramString1.startsWith(((StringBuilder)localObject).toString()))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString2);
+            ((StringBuilder)localObject).append("#");
+            if (paramString1.startsWith(((StringBuilder)localObject).toString())) {
+              return true;
+            }
+            if (!paramString2.endsWith("/")) {
+              return false;
+            }
+            localObject = Uri.parse(paramString2).getPathSegments();
+            if (Uri.parse(paramString1).getPathSegments().size() - ((List)localObject).size() != 1) {
+              return false;
+            }
+            return paramString1.startsWith(paramString2);
+          }
         }
-        if ((paramString2.equals(paramString1)) || (paramString1.startsWith(paramString2 + "?")) || (paramString1.startsWith(paramString2 + "#"))) {
-          return true;
-        }
-      } while (!paramString2.endsWith("/"));
-      localList = Uri.parse(paramString2).getPathSegments();
-    } while (Uri.parse(paramString1).getPathSegments().size() - localList.size() != 1);
-    return paramString1.startsWith(paramString2);
+        return true;
+      }
+      Log.e("UriUtil", "url contains unsafe char");
+    }
+    return false;
   }
   
   public static boolean isUrlHostInWhitelist(String paramString, String[] paramArrayOfString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      LogsUtil.e("UriUtil", "whitelist is null");
-    }
-    for (;;)
+    if ((paramArrayOfString != null) && (paramArrayOfString.length != 0))
     {
-      return false;
       int j = paramArrayOfString.length;
       int i = 0;
       while (i < j)
@@ -127,19 +126,18 @@ public class UriUtil
         }
         i += 1;
       }
+      return false;
     }
+    LogsUtil.e("UriUtil", "whitelist is null");
+    return false;
   }
   
   public static boolean isUrlHostMatchWhitelist(String paramString1, String paramString2)
   {
     paramString1 = getHostByURI(paramString1);
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      LogsUtil.e("UriUtil", "url or whitelist is null");
-    }
-    for (;;)
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      return false;
-      paramString2 = e(paramString2);
+      paramString2 = i(paramString2);
       if (TextUtils.isEmpty(paramString2))
       {
         Log.e("UriUtil", "whitelist host is null");
@@ -152,44 +150,47 @@ public class UriUtil
         try
         {
           paramString1 = paramString1.substring(0, paramString1.length() - paramString2.length());
-          if (paramString1.endsWith("."))
-          {
-            boolean bool = paramString1.matches("^[A-Za-z0-9.-]+$");
-            return bool;
+          if (!paramString1.endsWith(".")) {
+            return false;
           }
-        }
-        catch (IndexOutOfBoundsException paramString1)
-        {
-          LogsUtil.e("UriUtil", "IndexOutOfBoundsException" + paramString1.getMessage());
-          return false;
+          boolean bool = paramString1.matches("^[A-Za-z0-9.-]+$");
+          return bool;
         }
         catch (Exception paramString1)
         {
-          LogsUtil.e("UriUtil", "Exception : " + paramString1.getMessage());
+          paramString2 = new StringBuilder();
+          paramString2.append("Exception : ");
+          paramString2.append(paramString1.getMessage());
+          LogsUtil.e("UriUtil", paramString2.toString());
+          return false;
+        }
+        catch (IndexOutOfBoundsException paramString1)
+        {
+          paramString2 = new StringBuilder();
+          paramString2.append("IndexOutOfBoundsException");
+          paramString2.append(paramString1.getMessage());
+          LogsUtil.e("UriUtil", paramString2.toString());
         }
       }
+      return false;
     }
+    LogsUtil.e("UriUtil", "url or whitelist is null");
     return false;
   }
   
   public static boolean isUrlHostSameWhitelist(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      Log.e("UriUtil", "isUrlHostSameWhitelist: url or host is null");
-      return false;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      return TextUtils.equals(getHostByURI(paramString1), i(paramString2));
     }
-    return TextUtils.equals(getHostByURI(paramString1), e(paramString2));
+    Log.e("UriUtil", "isUrlHostSameWhitelist: url or host is null");
+    return false;
   }
   
   public static boolean isUrlHostSameWhitelist(String paramString, String[] paramArrayOfString)
   {
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
-      LogsUtil.e("UriUtil", "whitelist is null");
-    }
-    for (;;)
+    if ((paramArrayOfString != null) && (paramArrayOfString.length != 0))
     {
-      return false;
       int j = paramArrayOfString.length;
       int i = 0;
       while (i < j)
@@ -199,12 +200,15 @@ public class UriUtil
         }
         i += 1;
       }
+      return false;
     }
+    LogsUtil.e("UriUtil", "whitelist is null");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.webview.UriUtil
  * JD-Core Version:    0.7.0.1
  */

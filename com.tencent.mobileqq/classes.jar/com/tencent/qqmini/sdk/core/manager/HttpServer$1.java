@@ -15,9 +15,15 @@ final class HttpServer$1
   
   public void onRequestFailed(int paramInt, String paramString)
   {
-    QMLog.i("HttpServer", "code = " + paramInt + ", errorMsg = " + paramString);
-    if (this.val$listener != null) {
-      this.val$listener.onReply(paramInt, null, paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("code = ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", errorMsg = ");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.i("HttpServer", ((StringBuilder)localObject).toString());
+    localObject = this.val$listener;
+    if (localObject != null) {
+      ((MiniAppProxy.SenderListener)localObject).onReply(paramInt, null, paramString);
     }
   }
   
@@ -33,23 +39,20 @@ final class HttpServer$1
     try
     {
       paramMap.mergeFrom(paramArrayOfByte);
-      if (this.val$listener != null) {
-        this.val$listener.onReply(i, paramMap.toByteArray(), null);
-      }
-      return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
+    }
+    paramArrayOfByte = this.val$listener;
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.onReply(i, paramMap.toByteArray(), null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.HttpServer.1
  * JD-Core Version:    0.7.0.1
  */

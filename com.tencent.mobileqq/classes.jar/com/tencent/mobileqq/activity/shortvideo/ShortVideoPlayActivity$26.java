@@ -9,12 +9,12 @@ class ShortVideoPlayActivity$26
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    this.this$0.innerOnError(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.26
  * JD-Core Version:    0.7.0.1
  */

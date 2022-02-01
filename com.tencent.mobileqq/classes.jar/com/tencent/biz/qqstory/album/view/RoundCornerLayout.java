@@ -37,12 +37,13 @@ public class RoundCornerLayout
   {
     jdField_a_of_type_ArrayOfFloat = new float[] { 7.0F, 9.0F, 0.0F, 6.0F, 2.5F, 9.0F, 5.5F, 15.0F, 0.5F, 13.0F };
     String str = Build.MODEL.toUpperCase();
-    if ((str.contains("BV0720")) || (str.contains("M821")) || ((Build.VERSION.SDK_INT == 21) && ((str.contains("NX511J")) || (str.contains("MI 5")) || (str.contains("GT-I9508")) || (str.contains("X9077")) || (str.contains("COOLPAD 8675-A"))))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_b_of_type_Boolean = bool;
-      return;
+    boolean bool;
+    if ((!str.contains("BV0720")) && (!str.contains("M821")) && ((Build.VERSION.SDK_INT != 21) || ((!str.contains("NX511J")) && (!str.contains("MI 5")) && (!str.contains("GT-I9508")) && (!str.contains("X9077")) && (!str.contains("COOLPAD 8675-A"))))) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    jdField_b_of_type_Boolean = bool;
   }
   
   public RoundCornerLayout(Context paramContext)
@@ -111,7 +112,7 @@ public class RoundCornerLayout
     paramCanvas.restoreToCount(i);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (this.jdField_a_of_type_Boolean)
@@ -122,13 +123,13 @@ public class RoundCornerLayout
     setLayerType(2, null);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     setLayerType(0, null);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean) {
@@ -139,14 +140,15 @@ public class RoundCornerLayout
   public void setRadius(float paramFloat)
   {
     this.jdField_a_of_type_Float = a(paramFloat, this.jdField_a_of_type_AndroidContentResResources);
-    if (this.jdField_b_of_type_ArrayOfFloat != null) {
-      Arrays.fill(this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_Float);
+    float[] arrayOfFloat = this.jdField_b_of_type_ArrayOfFloat;
+    if (arrayOfFloat != null) {
+      Arrays.fill(arrayOfFloat, this.jdField_a_of_type_Float);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.RoundCornerLayout
  * JD-Core Version:    0.7.0.1
  */

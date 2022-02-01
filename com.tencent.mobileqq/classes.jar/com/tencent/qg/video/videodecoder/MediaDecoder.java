@@ -31,9 +31,10 @@ public class MediaDecoder
   {
     SLog.b("Q.qqstory.mediadecoderMediaDecoder", "stopDecode");
     this.e = false;
-    if (this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable != null)
+    MediaDecoder.DecodeRunnable localDecodeRunnable = this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable;
+    if (localDecodeRunnable != null)
     {
-      this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable.jdField_a_of_type_Boolean = true;
+      localDecodeRunnable.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentQgVideoVideodecoderMediaDecoder$DecodeRunnable = null;
     }
   }
@@ -84,7 +85,7 @@ public class MediaDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.video.videodecoder.MediaDecoder
  * JD-Core Version:    0.7.0.1
  */

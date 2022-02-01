@@ -37,10 +37,12 @@ public class NotificationCompat$MessagingStyle
   
   public NotificationCompat$MessagingStyle(@NonNull Person paramPerson)
   {
-    if (TextUtils.isEmpty(paramPerson.getName())) {
-      throw new IllegalArgumentException("User's name must not be empty.");
+    if (!TextUtils.isEmpty(paramPerson.getName()))
+    {
+      this.mUser = paramPerson;
+      return;
     }
-    this.mUser = paramPerson;
+    throw new IllegalArgumentException("User's name must not be empty.");
   }
   
   @Deprecated
@@ -70,16 +72,19 @@ public class NotificationCompat$MessagingStyle
   private NotificationCompat.MessagingStyle.Message findLatestIncomingMessage()
   {
     int i = this.mMessages.size() - 1;
+    Object localObject;
     while (i >= 0)
     {
-      NotificationCompat.MessagingStyle.Message localMessage = (NotificationCompat.MessagingStyle.Message)this.mMessages.get(i);
-      if ((localMessage.getPerson() != null) && (!TextUtils.isEmpty(localMessage.getPerson().getName()))) {
-        return localMessage;
+      localObject = (NotificationCompat.MessagingStyle.Message)this.mMessages.get(i);
+      if ((((NotificationCompat.MessagingStyle.Message)localObject).getPerson() != null) && (!TextUtils.isEmpty(((NotificationCompat.MessagingStyle.Message)localObject).getPerson().getName()))) {
+        return localObject;
       }
       i -= 1;
     }
-    if (!this.mMessages.isEmpty()) {
-      return (NotificationCompat.MessagingStyle.Message)this.mMessages.get(this.mMessages.size() - 1);
+    if (!this.mMessages.isEmpty())
+    {
+      localObject = this.mMessages;
+      return (NotificationCompat.MessagingStyle.Message)((List)localObject).get(((List)localObject).size() - 1);
     }
     return null;
   }
@@ -109,60 +114,52 @@ public class NotificationCompat$MessagingStyle
     BidiFormatter localBidiFormatter = BidiFormatter.getInstance();
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     int j;
-    int i;
-    label31:
-    Object localObject1;
-    if (Build.VERSION.SDK_INT >= 21)
-    {
+    if (Build.VERSION.SDK_INT >= 21) {
       j = 1;
-      if (j == 0) {
-        break label190;
-      }
+    } else {
+      j = 0;
+    }
+    int i;
+    if (j != 0) {
       i = -16777216;
-      if (paramMessage.getPerson() != null) {
-        break label195;
-      }
+    } else {
+      i = -1;
+    }
+    Object localObject1 = paramMessage.getPerson();
+    String str = "";
+    if (localObject1 == null) {
       localObject1 = "";
-      label42:
-      int k = i;
-      Object localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+    } else {
+      localObject1 = paramMessage.getPerson().getName();
+    }
+    int k = i;
+    Object localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject1 = this.mUser.getName();
+      k = i;
+      localObject2 = localObject1;
+      if (j != 0)
       {
-        localObject1 = this.mUser.getName();
         k = i;
         localObject2 = localObject1;
-        if (j != 0)
+        if (this.mBuilder.getColor() != 0)
         {
-          k = i;
+          k = this.mBuilder.getColor();
           localObject2 = localObject1;
-          if (this.mBuilder.getColor() != 0)
-          {
-            k = this.mBuilder.getColor();
-            localObject2 = localObject1;
-          }
         }
       }
-      localObject1 = localBidiFormatter.unicodeWrap(localObject2);
-      localSpannableStringBuilder.append((CharSequence)localObject1);
-      localSpannableStringBuilder.setSpan(makeFontColorSpan(k), localSpannableStringBuilder.length() - ((CharSequence)localObject1).length(), localSpannableStringBuilder.length(), 33);
-      if (paramMessage.getText() != null) {
-        break label207;
-      }
     }
-    label190:
-    label195:
-    label207:
-    for (paramMessage = "";; paramMessage = paramMessage.getText())
-    {
-      localSpannableStringBuilder.append("  ").append(localBidiFormatter.unicodeWrap(paramMessage));
-      return localSpannableStringBuilder;
-      j = 0;
-      break;
-      i = -1;
-      break label31;
-      localObject1 = paramMessage.getPerson().getName();
-      break label42;
+    localObject1 = localBidiFormatter.unicodeWrap(localObject2);
+    localSpannableStringBuilder.append((CharSequence)localObject1);
+    localSpannableStringBuilder.setSpan(makeFontColorSpan(k), localSpannableStringBuilder.length() - ((CharSequence)localObject1).length(), localSpannableStringBuilder.length(), 33);
+    if (paramMessage.getText() == null) {
+      paramMessage = str;
+    } else {
+      paramMessage = paramMessage.getText();
     }
+    localSpannableStringBuilder.append("  ").append(localBidiFormatter.unicodeWrap(paramMessage));
+    return localSpannableStringBuilder;
   }
   
   public void addCompatExtras(Bundle paramBundle)
@@ -177,8 +174,9 @@ public class NotificationCompat$MessagingStyle
     if (!this.mMessages.isEmpty()) {
       paramBundle.putParcelableArray("android.messages", NotificationCompat.MessagingStyle.Message.getBundleArrayForMessages(this.mMessages));
     }
-    if (this.mIsGroupConversation != null) {
-      paramBundle.putBoolean("android.isGroupConversation", this.mIsGroupConversation.booleanValue());
+    Boolean localBoolean = this.mIsGroupConversation;
+    if (localBoolean != null) {
+      paramBundle.putBoolean("android.isGroupConversation", localBoolean.booleanValue());
     }
   }
   
@@ -211,122 +209,100 @@ public class NotificationCompat$MessagingStyle
   public void apply(NotificationBuilderWithBuilderAccessor paramNotificationBuilderWithBuilderAccessor)
   {
     setGroupConversation(isGroupConversation());
-    Object localObject1;
-    label101:
-    NotificationCompat.MessagingStyle.Message localMessage;
+    Object localObject2;
     if (Build.VERSION.SDK_INT >= 24)
     {
-      CharSequence localCharSequence;
-      long l;
-      if (Build.VERSION.SDK_INT >= 28)
-      {
+      if (Build.VERSION.SDK_INT >= 28) {
         localObject1 = new Notification.MessagingStyle(this.mUser.toAndroidPerson());
-        if ((this.mIsGroupConversation.booleanValue()) || (Build.VERSION.SDK_INT >= 28)) {
-          ((Notification.MessagingStyle)localObject1).setConversationTitle(this.mConversationTitle);
-        }
-        if (Build.VERSION.SDK_INT >= 28) {
-          ((Notification.MessagingStyle)localObject1).setGroupConversation(this.mIsGroupConversation.booleanValue());
-        }
-        Iterator localIterator = this.mMessages.iterator();
-        if (!localIterator.hasNext()) {
-          break label281;
-        }
-        localMessage = (NotificationCompat.MessagingStyle.Message)localIterator.next();
-        if (Build.VERSION.SDK_INT < 28) {
-          break label239;
-        }
-        localObject2 = localMessage.getPerson();
-        localCharSequence = localMessage.getText();
-        l = localMessage.getTimestamp();
-        if (localObject2 != null) {
-          break label229;
-        }
+      } else {
+        localObject1 = new Notification.MessagingStyle(this.mUser.getName());
       }
-      label229:
-      for (localObject2 = null;; localObject2 = ((Person)localObject2).toAndroidPerson())
+      if ((this.mIsGroupConversation.booleanValue()) || (Build.VERSION.SDK_INT >= 28)) {
+        ((Notification.MessagingStyle)localObject1).setConversationTitle(this.mConversationTitle);
+      }
+      if (Build.VERSION.SDK_INT >= 28) {
+        ((Notification.MessagingStyle)localObject1).setGroupConversation(this.mIsGroupConversation.booleanValue());
+      }
+      Iterator localIterator = this.mMessages.iterator();
+      while (localIterator.hasNext())
       {
-        localObject2 = new Notification.MessagingStyle.Message(localCharSequence, l, (android.app.Person)localObject2);
+        NotificationCompat.MessagingStyle.Message localMessage = (NotificationCompat.MessagingStyle.Message)localIterator.next();
+        if (Build.VERSION.SDK_INT >= 28)
+        {
+          localObject2 = localMessage.getPerson();
+          CharSequence localCharSequence = localMessage.getText();
+          long l = localMessage.getTimestamp();
+          if (localObject2 == null) {
+            localObject2 = null;
+          } else {
+            localObject2 = ((Person)localObject2).toAndroidPerson();
+          }
+          localObject2 = new Notification.MessagingStyle.Message(localCharSequence, l, (android.app.Person)localObject2);
+        }
+        else
+        {
+          if (localMessage.getPerson() != null) {
+            localObject2 = localMessage.getPerson().getName();
+          } else {
+            localObject2 = null;
+          }
+          localObject2 = new Notification.MessagingStyle.Message(localMessage.getText(), localMessage.getTimestamp(), (CharSequence)localObject2);
+        }
         if (localMessage.getDataMimeType() != null) {
           ((Notification.MessagingStyle.Message)localObject2).setData(localMessage.getDataMimeType(), localMessage.getDataUri());
         }
         ((Notification.MessagingStyle)localObject1).addMessage((Notification.MessagingStyle.Message)localObject2);
-        break label101;
-        localObject1 = new Notification.MessagingStyle(this.mUser.getName());
-        break;
       }
-      label239:
-      if (localMessage.getPerson() == null) {
-        break label578;
+      ((Notification.MessagingStyle)localObject1).setBuilder(paramNotificationBuilderWithBuilderAccessor.getBuilder());
+      return;
+    }
+    Object localObject1 = findLatestIncomingMessage();
+    if ((this.mConversationTitle != null) && (this.mIsGroupConversation.booleanValue()))
+    {
+      paramNotificationBuilderWithBuilderAccessor.getBuilder().setContentTitle(this.mConversationTitle);
+    }
+    else if (localObject1 != null)
+    {
+      paramNotificationBuilderWithBuilderAccessor.getBuilder().setContentTitle("");
+      if (((NotificationCompat.MessagingStyle.Message)localObject1).getPerson() != null) {
+        paramNotificationBuilderWithBuilderAccessor.getBuilder().setContentTitle(((NotificationCompat.MessagingStyle.Message)localObject1).getPerson().getName());
       }
     }
-    label281:
-    label411:
-    label544:
-    label554:
-    label578:
-    for (Object localObject2 = localMessage.getPerson().getName();; localObject2 = null)
+    if (localObject1 != null)
     {
-      localObject2 = new Notification.MessagingStyle.Message(localMessage.getText(), localMessage.getTimestamp(), (CharSequence)localObject2);
-      break;
-      ((Notification.MessagingStyle)localObject1).setBuilder(paramNotificationBuilderWithBuilderAccessor.getBuilder());
-      label358:
-      do
-      {
-        return;
-        localObject1 = findLatestIncomingMessage();
-        if ((this.mConversationTitle == null) || (!this.mIsGroupConversation.booleanValue())) {
-          break;
-        }
-        paramNotificationBuilderWithBuilderAccessor.getBuilder().setContentTitle(this.mConversationTitle);
-        if (localObject1 != null)
-        {
-          localObject2 = paramNotificationBuilderWithBuilderAccessor.getBuilder();
-          if (this.mConversationTitle == null) {
-            break label529;
-          }
-          localObject1 = makeMessageLine((NotificationCompat.MessagingStyle.Message)localObject1);
-          ((Notification.Builder)localObject2).setContentText((CharSequence)localObject1);
-        }
-      } while (Build.VERSION.SDK_INT < 16);
+      localObject2 = paramNotificationBuilderWithBuilderAccessor.getBuilder();
+      if (this.mConversationTitle != null) {
+        localObject1 = makeMessageLine((NotificationCompat.MessagingStyle.Message)localObject1);
+      } else {
+        localObject1 = ((NotificationCompat.MessagingStyle.Message)localObject1).getText();
+      }
+      ((Notification.Builder)localObject2).setContentText((CharSequence)localObject1);
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
       localObject2 = new SpannableStringBuilder();
       int i;
-      int j;
-      if ((this.mConversationTitle != null) || (hasMessagesWithoutSender()))
-      {
+      if ((this.mConversationTitle == null) && (!hasMessagesWithoutSender())) {
+        i = 0;
+      } else {
         i = 1;
-        j = this.mMessages.size() - 1;
-        if (j < 0) {
-          break label554;
-        }
-        localObject1 = (NotificationCompat.MessagingStyle.Message)this.mMessages.get(j);
-        if (i == 0) {
-          break label544;
-        }
       }
-      for (localObject1 = makeMessageLine((NotificationCompat.MessagingStyle.Message)localObject1);; localObject1 = ((NotificationCompat.MessagingStyle.Message)localObject1).getText())
+      int j = this.mMessages.size() - 1;
+      while (j >= 0)
       {
+        localObject1 = (NotificationCompat.MessagingStyle.Message)this.mMessages.get(j);
+        if (i != 0) {
+          localObject1 = makeMessageLine((NotificationCompat.MessagingStyle.Message)localObject1);
+        } else {
+          localObject1 = ((NotificationCompat.MessagingStyle.Message)localObject1).getText();
+        }
         if (j != this.mMessages.size() - 1) {
           ((SpannableStringBuilder)localObject2).insert(0, "\n");
         }
         ((SpannableStringBuilder)localObject2).insert(0, (CharSequence)localObject1);
         j -= 1;
-        break label411;
-        if (localObject1 == null) {
-          break;
-        }
-        paramNotificationBuilderWithBuilderAccessor.getBuilder().setContentTitle("");
-        if (((NotificationCompat.MessagingStyle.Message)localObject1).getPerson() == null) {
-          break;
-        }
-        paramNotificationBuilderWithBuilderAccessor.getBuilder().setContentTitle(((NotificationCompat.MessagingStyle.Message)localObject1).getPerson().getName());
-        break;
-        localObject1 = ((NotificationCompat.MessagingStyle.Message)localObject1).getText();
-        break label358;
-        i = 0;
-        break label399;
       }
       new Notification.BigTextStyle(paramNotificationBuilderWithBuilderAccessor.getBuilder()).setBigContentTitle(null).bigText((CharSequence)localObject2);
-      return;
     }
   }
   
@@ -354,37 +330,43 @@ public class NotificationCompat$MessagingStyle
   
   public boolean isGroupConversation()
   {
-    boolean bool = false;
-    if ((this.mBuilder != null) && (this.mBuilder.mContext.getApplicationInfo().targetSdkVersion < 28) && (this.mIsGroupConversation == null)) {
+    Object localObject = this.mBuilder;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if ((localObject != null) && (this.mBuilder.mContext.getApplicationInfo().targetSdkVersion < 28) && (this.mIsGroupConversation == null))
+    {
       if (this.mConversationTitle != null) {
-        bool = true;
+        bool1 = true;
       }
+      return bool1;
     }
-    while (this.mIsGroupConversation == null) {
-      return bool;
+    localObject = this.mIsGroupConversation;
+    bool1 = bool2;
+    if (localObject != null) {
+      bool1 = ((Boolean)localObject).booleanValue();
     }
-    return this.mIsGroupConversation.booleanValue();
+    return bool1;
   }
   
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   protected void restoreFromCompatExtras(Bundle paramBundle)
   {
     this.mMessages.clear();
-    if (paramBundle.containsKey("android.messagingStyleUser")) {}
-    for (this.mUser = Person.fromBundle(paramBundle.getBundle("android.messagingStyleUser"));; this.mUser = new Person.Builder().setName(paramBundle.getString("android.selfDisplayName")).build())
-    {
-      this.mConversationTitle = paramBundle.getCharSequence("android.conversationTitle");
-      if (this.mConversationTitle == null) {
-        this.mConversationTitle = paramBundle.getCharSequence("android.hiddenConversationTitle");
-      }
-      Parcelable[] arrayOfParcelable = paramBundle.getParcelableArray("android.messages");
-      if (arrayOfParcelable != null) {
-        this.mMessages.addAll(NotificationCompat.MessagingStyle.Message.getMessagesFromBundleArray(arrayOfParcelable));
-      }
-      if (paramBundle.containsKey("android.isGroupConversation")) {
-        this.mIsGroupConversation = Boolean.valueOf(paramBundle.getBoolean("android.isGroupConversation"));
-      }
-      return;
+    if (paramBundle.containsKey("android.messagingStyleUser")) {
+      this.mUser = Person.fromBundle(paramBundle.getBundle("android.messagingStyleUser"));
+    } else {
+      this.mUser = new Person.Builder().setName(paramBundle.getString("android.selfDisplayName")).build();
+    }
+    this.mConversationTitle = paramBundle.getCharSequence("android.conversationTitle");
+    if (this.mConversationTitle == null) {
+      this.mConversationTitle = paramBundle.getCharSequence("android.hiddenConversationTitle");
+    }
+    Parcelable[] arrayOfParcelable = paramBundle.getParcelableArray("android.messages");
+    if (arrayOfParcelable != null) {
+      this.mMessages.addAll(NotificationCompat.MessagingStyle.Message.getMessagesFromBundleArray(arrayOfParcelable));
+    }
+    if (paramBundle.containsKey("android.isGroupConversation")) {
+      this.mIsGroupConversation = Boolean.valueOf(paramBundle.getBoolean("android.isGroupConversation"));
     }
   }
   
@@ -402,7 +384,7 @@ public class NotificationCompat$MessagingStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.MessagingStyle
  * JD-Core Version:    0.7.0.1
  */

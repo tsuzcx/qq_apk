@@ -19,10 +19,11 @@ class RelativeAreaLayout$DependencyGraph
   {
     Object localObject = this.mKeyNodes;
     ArrayList localArrayList = this.mNodes;
-    int k = localArrayList.size();
+    int m = localArrayList.size();
+    int k = 0;
     int i = 0;
     RelativeAreaLayout.DependencyGraph.Node localNode1;
-    while (i < k)
+    while (i < m)
     {
       localNode1 = (RelativeAreaLayout.DependencyGraph.Node)localArrayList.get(i);
       localNode1.dependents.clear();
@@ -30,38 +31,32 @@ class RelativeAreaLayout$DependencyGraph
       i += 1;
     }
     i = 0;
-    while (i < k)
+    while (i < m)
     {
       localNode1 = (RelativeAreaLayout.DependencyGraph.Node)localArrayList.get(i);
       Map localMap = localNode1.area.getLayoutAttr().mAttrs;
-      int m = paramArrayOfString.length;
+      int n = paramArrayOfString.length;
       int j = 0;
-      if (j < m)
+      while (j < n)
       {
         String str = (String)localMap.get(paramArrayOfString[j]);
-        RelativeAreaLayout.DependencyGraph.Node localNode2;
         if (str != null)
         {
-          localNode2 = (RelativeAreaLayout.DependencyGraph.Node)((Map)localObject).get(str);
-          if ((localNode2 != null) && (localNode2 != localNode1)) {
-            break label162;
+          RelativeAreaLayout.DependencyGraph.Node localNode2 = (RelativeAreaLayout.DependencyGraph.Node)((Map)localObject).get(str);
+          if ((localNode2 != null) && (localNode2 != localNode1))
+          {
+            localNode2.dependents.put(localNode1, this);
+            localNode1.dependencies.put(str, localNode2);
           }
         }
-        for (;;)
-        {
-          j += 1;
-          break;
-          label162:
-          localNode2.dependents.put(localNode1, this);
-          localNode1.dependencies.put(str, localNode2);
-        }
+        j += 1;
       }
       i += 1;
     }
     paramArrayOfString = this.mRoots;
     paramArrayOfString.clear();
-    i = 0;
-    while (i < k)
+    i = k;
+    while (i < m)
     {
       localObject = (RelativeAreaLayout.DependencyGraph.Node)localArrayList.get(i);
       if (((RelativeAreaLayout.DependencyGraph.Node)localObject).dependencies.size() == 0) {
@@ -122,14 +117,19 @@ class RelativeAreaLayout$DependencyGraph
       }
       i += 1;
     }
-    if (i < paramArrayOfDittoArea.length) {
-      throw new IllegalStateException("Circular dependencies cannot exist in RelativeLayout");
+    if (i >= paramArrayOfDittoArea.length) {
+      return;
+    }
+    paramArrayOfDittoArea = new IllegalStateException("Circular dependencies cannot exist in RelativeLayout");
+    for (;;)
+    {
+      throw paramArrayOfDittoArea;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.widget.RelativeAreaLayout.DependencyGraph
  * JD-Core Version:    0.7.0.1
  */

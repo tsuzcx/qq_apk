@@ -13,33 +13,68 @@ public class ProcessFrameInfo
   
   void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, boolean paramBoolean, long paramLong2)
   {
-    StringBuilder localStringBuilder;
-    if ((paramArrayOfByte == null) || (this.jdField_a_of_type_Int == 0) || (this.b == 0) || (this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.d != paramInt4) || (this.jdField_a_of_type_Long != paramLong1) || (this.jdField_a_of_type_Boolean != paramBoolean)) {
-      if (QLog.isColorLevel())
+    if (paramArrayOfByte != null)
+    {
+      int i = this.jdField_a_of_type_Int;
+      if (i != 0)
       {
-        localStringBuilder = new StringBuilder().append("onProcessFrame, data[");
-        if (paramArrayOfByte == null) {
-          break label294;
+        int j = this.b;
+        if ((j != 0) && (i == paramInt1) && (j == paramInt2) && (this.c == paramInt3) && (this.d == paramInt4) && (this.jdField_a_of_type_Long == paramLong1) && (this.jdField_a_of_type_Boolean == paramBoolean)) {
+          return;
         }
       }
     }
-    label294:
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel())
     {
-      QLog.d("ProcessFrameInfo", 1, bool + "], frameIndex[" + paramLong2 + "], width[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], height[" + this.b + "->" + paramInt2 + "], format[" + this.c + "->" + paramInt3 + "], angle[" + this.d + "->" + paramInt4 + "], FPS[" + this.jdField_a_of_type_Long + "->" + paramLong1 + "], isFront[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "]");
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      this.c = paramInt3;
-      this.d = paramInt4;
-      this.jdField_a_of_type_Long = paramLong1;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onProcessFrame, data[");
+      boolean bool;
+      if (paramArrayOfByte != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localStringBuilder.append(bool);
+      localStringBuilder.append("], frameIndex[");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append("], width[");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("], height[");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("], format[");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append("], angle[");
+      localStringBuilder.append(this.d);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append("], FPS[");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("], isFront[");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("]");
+      QLog.d("ProcessFrameInfo", 1, localStringBuilder.toString());
     }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.ProcessFrameInfo
  * JD-Core Version:    0.7.0.1
  */

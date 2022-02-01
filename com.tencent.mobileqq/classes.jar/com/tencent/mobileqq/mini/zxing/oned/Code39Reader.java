@@ -42,95 +42,101 @@ public final class Code39Reader
   
   private static String decodeExtended(CharSequence paramCharSequence)
   {
-    int j = paramCharSequence.length();
-    StringBuilder localStringBuilder = new StringBuilder(j);
+    int k = paramCharSequence.length();
+    StringBuilder localStringBuilder = new StringBuilder(k);
     int i = 0;
-    if (i < j)
+    while (i < k)
     {
       char c = paramCharSequence.charAt(i);
-      int k;
-      if ((c == '+') || (c == '$') || (c == '%') || (c == '/'))
+      if ((c != '+') && (c != '$') && (c != '%') && (c != '/'))
       {
-        k = paramCharSequence.charAt(i + 1);
-        switch (c)
-        {
-        default: 
-          c = '\000';
-          label114:
-          localStringBuilder.append(c);
-          i += 1;
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((k >= 65) && (k <= 90))
-        {
-          c = (char)(k + 32);
-          break label114;
-        }
-        throw FormatException.getFormatInstance();
-        if ((k >= 65) && (k <= 90))
-        {
-          c = (char)(k - 64);
-          break label114;
-        }
-        throw FormatException.getFormatInstance();
-        if ((k >= 65) && (k <= 69))
-        {
-          c = (char)(k - 38);
-          break label114;
-        }
-        if ((k >= 70) && (k <= 74))
-        {
-          c = (char)(k - 11);
-          break label114;
-        }
-        if ((k >= 75) && (k <= 79))
-        {
-          c = (char)(k + 16);
-          break label114;
-        }
-        if ((k >= 80) && (k <= 84))
-        {
-          c = (char)(k + 43);
-          break label114;
-        }
-        if (k == 85)
-        {
-          c = '\000';
-          break label114;
-        }
-        if (k == 86)
-        {
-          c = '@';
-          break label114;
-        }
-        if (k == 87)
-        {
-          c = '`';
-          break label114;
-        }
-        if ((k == 88) || (k == 89) || (k == 90))
-        {
-          c = '';
-          break label114;
-        }
-        throw FormatException.getFormatInstance();
-        if ((k >= 65) && (k <= 79))
-        {
-          c = (char)(k - 32);
-          break label114;
-        }
-        if (k == 90)
-        {
-          c = ':';
-          break label114;
-        }
-        throw FormatException.getFormatInstance();
         localStringBuilder.append(c);
       }
+      else
+      {
+        int j = i + 1;
+        i = paramCharSequence.charAt(j);
+        if (c != '$')
+        {
+          if (c != '%') {
+            if (c != '+') {
+              if (c == '/') {}
+            }
+          }
+          do
+          {
+            c = '\000';
+            break label337;
+            if ((i >= 65) && (i <= 79))
+            {
+              i -= 32;
+              break;
+            }
+            if (i == 90)
+            {
+              c = ':';
+              break label337;
+            }
+            throw FormatException.getFormatInstance();
+            if ((i >= 65) && (i <= 90))
+            {
+              i += 32;
+              break;
+            }
+            throw FormatException.getFormatInstance();
+            if ((i >= 65) && (i <= 69))
+            {
+              i -= 38;
+              break;
+            }
+            if ((i >= 70) && (i <= 74))
+            {
+              i -= 11;
+              break;
+            }
+            if ((i >= 75) && (i <= 79))
+            {
+              i += 16;
+              break;
+            }
+            if ((i >= 80) && (i <= 84))
+            {
+              i += 43;
+              break;
+            }
+          } while (i == 85);
+          if (i == 86)
+          {
+            c = '@';
+          }
+          else if (i == 87)
+          {
+            c = '`';
+          }
+          else
+          {
+            if ((i != 88) && (i != 89) && (i != 90)) {
+              throw FormatException.getFormatInstance();
+            }
+            c = '';
+          }
+        }
+        else
+        {
+          if ((i < 65) || (i > 90)) {
+            break label353;
+          }
+          i -= 64;
+          c = (char)i;
+        }
+        label337:
+        localStringBuilder.append(c);
+        i = j;
+      }
+      i += 1;
+      continue;
+      label353:
+      throw FormatException.getFormatInstance();
     }
     return localStringBuilder.toString();
   }
@@ -138,65 +144,65 @@ public final class Code39Reader
   private static int[] findAsteriskPattern(BitArray paramBitArray, int[] paramArrayOfInt)
   {
     int n = paramBitArray.getSize();
-    int i = paramBitArray.getNextSet(0);
+    int k = paramBitArray.getNextSet(0);
     int i1 = paramArrayOfInt.length;
-    int k = i;
+    int i = k;
     int i2 = 0;
     int j = 0;
-    if (k < n)
+    while (k < n)
     {
       int m;
       if (paramBitArray.get(k) != i2)
       {
         paramArrayOfInt[j] += 1;
-        m = j;
-        j = i;
+        m = i;
       }
-      for (;;)
+      else
       {
-        k += 1;
-        i = j;
-        j = m;
-        break;
         if (j == i1 - 1)
         {
           if ((toNarrowWidePattern(paramArrayOfInt) == 148) && (paramBitArray.isRange(Math.max(0, i - (k - i) / 2), i, false))) {
             return new int[] { i, k };
           }
           m = i + (paramArrayOfInt[0] + paramArrayOfInt[1]);
-          System.arraycopy(paramArrayOfInt, 2, paramArrayOfInt, 0, j - 1);
-          paramArrayOfInt[(j - 1)] = 0;
+          i = j - 1;
+          System.arraycopy(paramArrayOfInt, 2, paramArrayOfInt, 0, i);
+          paramArrayOfInt[i] = 0;
           paramArrayOfInt[j] = 0;
           i = j - 1;
           j = m;
         }
-        for (;;)
+        else
         {
-          paramArrayOfInt[i] = 1;
-          if (i2 != 0) {
-            break label190;
-          }
-          i2 = 1;
-          m = i;
-          break;
           m = j + 1;
           j = i;
           i = m;
         }
-        label190:
-        i2 = 0;
-        m = i;
+        paramArrayOfInt[i] = 1;
+        i2 ^= 0x1;
+        m = j;
+        j = i;
       }
+      k += 1;
+      i = m;
     }
-    throw NotFoundException.getNotFoundInstance();
+    paramBitArray = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramBitArray;
+    }
   }
   
   private static char patternToChar(int paramInt)
   {
     int i = 0;
-    while (i < CHARACTER_ENCODINGS.length)
+    for (;;)
     {
-      if (CHARACTER_ENCODINGS[i] == paramInt) {
+      localObject = CHARACTER_ENCODINGS;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (localObject[i] == paramInt) {
         return "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%".charAt(i);
       }
       i += 1;
@@ -204,19 +210,23 @@ public final class Code39Reader
     if (paramInt == 148) {
       return '*';
     }
-    throw NotFoundException.getNotFoundInstance();
+    Object localObject = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   private static int toNarrowWidePattern(int[] paramArrayOfInt)
   {
-    int i4 = paramArrayOfInt.length;
+    int i5 = paramArrayOfInt.length;
+    int i4 = 0;
     int i;
     for (int j = 0;; j = i)
     {
-      i = 2147483647;
       int i1 = paramArrayOfInt.length;
       int k = 0;
-      while (k < i1)
+      for (i = 2147483647; k < i1; i = m)
       {
         n = paramArrayOfInt[k];
         m = i;
@@ -228,59 +238,48 @@ public final class Code39Reader
           }
         }
         k += 1;
-        i = m;
       }
       int n = 0;
       j = 0;
       int m = 0;
       int i2;
-      for (k = 0; n < i4; k = i1)
+      for (k = 0; n < i5; k = i1)
       {
-        int i5 = paramArrayOfInt[n];
+        int i6 = paramArrayOfInt[n];
         int i3 = j;
         i2 = m;
         i1 = k;
-        if (i5 > i)
+        if (i6 > i)
         {
-          i3 = j | 1 << i4 - 1 - n;
-          i1 = k + 1;
-          i2 = m + i5;
+          i2 = m | 1 << i5 - 1 - n;
+          i3 = j + 1;
+          i1 = k + i6;
         }
         n += 1;
         j = i3;
         m = i2;
       }
-      if (k == 3)
+      if (j == 3)
       {
-        n = k;
-        k = 0;
-        for (;;)
+        n = j;
+        j = i4;
+        while ((j < i5) && (n > 0))
         {
-          i1 = j;
-          if (k < i4)
+          i2 = paramArrayOfInt[j];
+          i1 = n;
+          if (i2 > i)
           {
-            i1 = j;
-            if (n > 0)
-            {
-              i2 = paramArrayOfInt[k];
-              i1 = n;
-              if (i2 <= i) {
-                break label204;
-              }
-              i1 = n - 1;
-              if (i2 * 2 < m) {
-                break label204;
-              }
-              i1 = -1;
+            i1 = n - 1;
+            if (i2 * 2 >= k) {
+              return -1;
             }
           }
-          return i1;
-          label204:
-          k += 1;
+          j += 1;
           n = i1;
         }
+        return m;
       }
-      if (k <= 3) {
+      if (j <= 3) {
         return -1;
       }
     }
@@ -300,13 +299,13 @@ public final class Code39Reader
       recordPattern(paramBitArray, i, (int[])localObject1);
       int j = toNarrowWidePattern((int[])localObject1);
       if (j < 0) {
-        throw NotFoundException.getNotFoundInstance();
+        break;
       }
       char c = patternToChar(j);
       ((StringBuilder)localObject2).append(c);
       int m = localObject1.length;
-      j = 0;
       int k = i;
+      j = 0;
       while (j < m)
       {
         k += localObject1[j];
@@ -316,9 +315,9 @@ public final class Code39Reader
       if (c == '*')
       {
         ((StringBuilder)localObject2).setLength(((StringBuilder)localObject2).length() - 1);
-        j = 0;
         int i1 = localObject1.length;
         k = 0;
+        j = 0;
         while (k < i1)
         {
           j += localObject1[k];
@@ -330,40 +329,49 @@ public final class Code39Reader
         if (this.usingCheckDigit)
         {
           n = ((StringBuilder)localObject2).length() - 1;
-          m = 0;
           k = 0;
+          m = 0;
           while (k < n)
           {
             m += "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%".indexOf(this.decodeRowResult.charAt(k));
             k += 1;
           }
-          if (((StringBuilder)localObject2).charAt(n) != "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%".charAt(m % 43)) {
+          if (((StringBuilder)localObject2).charAt(n) == "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%".charAt(m % 43)) {
+            ((StringBuilder)localObject2).setLength(n);
+          } else {
             throw ChecksumException.getChecksumInstance();
           }
-          ((StringBuilder)localObject2).setLength(n);
         }
-        if (((StringBuilder)localObject2).length() == 0) {
-          throw NotFoundException.getNotFoundInstance();
-        }
-        if (this.extendedMode) {}
-        for (paramBitArray = decodeExtended((CharSequence)localObject2);; paramBitArray = ((StringBuilder)localObject2).toString())
+        if (((StringBuilder)localObject2).length() != 0)
         {
+          if (this.extendedMode) {
+            paramBitArray = decodeExtended((CharSequence)localObject2);
+          } else {
+            paramBitArray = ((StringBuilder)localObject2).toString();
+          }
           float f1 = (paramMap[1] + paramMap[0]) / 2.0F;
           float f2 = i;
           float f3 = j / 2.0F;
-          paramMap = new ResultPoint(f1, paramInt);
-          localObject1 = new ResultPoint(f2 + f3, paramInt);
+          float f4 = paramInt;
+          paramMap = new ResultPoint(f1, f4);
+          localObject1 = new ResultPoint(f2 + f3, f4);
           localObject2 = BarcodeFormat.CODE_39;
           return new Result(paramBitArray, null, new ResultPoint[] { paramMap, localObject1 }, (BarcodeFormat)localObject2);
         }
+        throw NotFoundException.getNotFoundInstance();
       }
       i = m;
+    }
+    paramBitArray = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramBitArray;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.Code39Reader
  * JD-Core Version:    0.7.0.1
  */

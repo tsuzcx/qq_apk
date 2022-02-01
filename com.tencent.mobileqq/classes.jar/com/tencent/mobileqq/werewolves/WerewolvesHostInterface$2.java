@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.werewolves;
 
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController.OnBindCallback;
+import com.tencent.mobileqq.nearby.gameroom.IGameRoomAVControllerDelegate;
+import com.tencent.mobileqq.nearby.gameroom.OnBindCallback;
 
 class WerewolvesHostInterface$2
-  implements GameRoomAVController.OnBindCallback
+  implements OnBindCallback
 {
   WerewolvesHostInterface$2(WerewolvesHostInterface paramWerewolvesHostInterface, boolean paramBoolean) {}
   
-  public void bn()
+  public void at()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.mGameRoomAVController.a(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.gameRoomAVControllerDelegate.setSoundEnable(this.jdField_a_of_type_Boolean);
   }
   
-  public void bo() {}
+  public void au() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHostInterface.2
  * JD-Core Version:    0.7.0.1
  */

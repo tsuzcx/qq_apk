@@ -69,30 +69,29 @@ public final class IoUtils
     //   13: istore_1
     //   14: iload_1
     //   15: iconst_m1
-    //   16: if_icmpne -11 -> 5
-    //   19: aload_0
-    //   20: invokestatic 59	com/nostra13/universalimageloader/utils/IoUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   23: return
-    //   24: astore_2
-    //   25: aload_0
-    //   26: invokestatic 59	com/nostra13/universalimageloader/utils/IoUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   29: return
-    //   30: astore_2
-    //   31: aload_0
-    //   32: invokestatic 59	com/nostra13/universalimageloader/utils/IoUtils:closeSilently	(Ljava/io/Closeable;)V
-    //   35: aload_2
-    //   36: athrow
+    //   16: if_icmpeq +13 -> 29
+    //   19: goto -14 -> 5
+    //   22: astore_2
+    //   23: aload_0
+    //   24: invokestatic 59	com/nostra13/universalimageloader/utils/IoUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   27: aload_2
+    //   28: athrow
+    //   29: aload_0
+    //   30: invokestatic 59	com/nostra13/universalimageloader/utils/IoUtils:closeSilently	(Ljava/io/Closeable;)V
+    //   33: return
+    //   34: astore_2
+    //   35: goto -6 -> 29
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	37	0	paramInputStream	InputStream
+    //   0	38	0	paramInputStream	InputStream
     //   13	4	1	i	int
     //   4	3	2	arrayOfByte	byte[]
-    //   24	1	2	localIOException	java.io.IOException
-    //   30	6	2	localObject	Object
+    //   22	6	2	localObject	Object
+    //   34	1	2	localIOException	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   5	14	24	java/io/IOException
-    //   5	14	30	finally
+    //   5	14	22	finally
+    //   5	14	34	java/io/IOException
   }
   
   private static boolean shouldStopLoading(IoUtils.CopyListener paramCopyListener, int paramInt1, int paramInt2)
@@ -102,7 +101,7 @@ public final class IoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.utils.IoUtils
  * JD-Core Version:    0.7.0.1
  */

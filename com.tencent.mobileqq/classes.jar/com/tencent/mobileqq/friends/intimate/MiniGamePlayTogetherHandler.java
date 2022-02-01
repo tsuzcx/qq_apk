@@ -18,41 +18,41 @@ public class MiniGamePlayTogetherHandler
 {
   public static void a(Context paramContext, INTERFACE.StApiAppInfo paramStApiAppInfo, String paramString, int paramInt, boolean paramBoolean)
   {
-    if ((paramContext != null) && (paramStApiAppInfo != null) && (!TextUtils.isEmpty(paramStApiAppInfo.appId.get()))) {
+    if ((paramContext != null) && (paramStApiAppInfo != null) && (!TextUtils.isEmpty(paramStApiAppInfo.appId.get())))
+    {
       if (paramBoolean)
       {
         ((IMiniAppService)QRoute.api(IMiniAppService.class)).createUpdatableMsg(paramStApiAppInfo.appId.get(), "657667B4D8C04B3F84E4AAA3D046A903", 1, 1, -1, paramString, 0, null, new MiniGamePlayTogetherHandler.1(paramContext, paramString));
-        paramContext = "page_view";
-        if (paramInt != 2064) {}
-      }
-    }
-    do
-    {
-      paramContext = "c2close";
-      for (;;)
-      {
+        if (paramInt == 2064) {
+          paramContext = "c2close";
+        } else if (paramInt == 2062) {
+          paramContext = "id_card";
+        } else {
+          paramContext = "page_view";
+        }
         paramStApiAppInfo = new SimpleMiniAppConfig(SimpleMiniAppConfig.SimpleMiniAppInfo.from(paramStApiAppInfo));
         paramStApiAppInfo.launchParam.scene = paramInt;
         ((IMiniAppService)QRoute.api(IMiniAppService.class)).report4239Async(paramStApiAppInfo, paramContext, "click", null, null);
         return;
-        if (paramInt == 2062) {
-          paramContext = "id_card";
-        }
       }
       ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById(paramContext, paramStApiAppInfo.appId.get(), null, null, null, null, paramInt, null);
       return;
-      QLog.e("MiniGamePlayTogetherHandler", 1, new Object[] { "onPlayClick param error context:", paramContext, ", appInfo=", paramStApiAppInfo });
-    } while (paramContext == null);
-    paramContext = (Activity)paramContext;
-    paramContext.runOnUiThread(new MiniGamePlayTogetherHandler.2(paramContext));
+    }
+    QLog.e("MiniGamePlayTogetherHandler", 1, new Object[] { "onPlayClick param error context:", paramContext, ", appInfo=", paramStApiAppInfo });
+    if (paramContext != null)
+    {
+      paramContext = (Activity)paramContext;
+      paramContext.runOnUiThread(new MiniGamePlayTogetherHandler.2(paramContext));
+    }
   }
   
   public static boolean a(INTERFACE.StApiAppInfo paramStApiAppInfo)
   {
-    if ((paramStApiAppInfo == null) || (paramStApiAppInfo.extInfo == null) || (paramStApiAppInfo.extInfo.mapInfo == null)) {}
-    for (;;)
+    if ((paramStApiAppInfo != null) && (paramStApiAppInfo.extInfo != null))
     {
-      return false;
+      if (paramStApiAppInfo.extInfo.mapInfo == null) {
+        return false;
+      }
       int i = 0;
       while (i < paramStApiAppInfo.extInfo.mapInfo.size())
       {
@@ -63,11 +63,12 @@ public class MiniGamePlayTogetherHandler
         i += 1;
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.MiniGamePlayTogetherHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,23 +53,27 @@ public final class PicExtendInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iEffect, 0);
-    if (this.vQuanInfo != null) {
-      paramJceOutputStream.write(this.vQuanInfo, 1);
+    Object localObject = this.vQuanInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.mapExif != null) {
-      paramJceOutputStream.write(this.mapExif, 2);
+    localObject = this.mapExif;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.sUserDefineSource != null) {
-      paramJceOutputStream.write(this.sUserDefineSource, 3);
+    localObject = this.sUserDefineSource;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.mapParams != null) {
-      paramJceOutputStream.write(this.mapParams, 4);
+    localObject = this.mapParams;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.PicExtendInfo
  * JD-Core Version:    0.7.0.1
  */

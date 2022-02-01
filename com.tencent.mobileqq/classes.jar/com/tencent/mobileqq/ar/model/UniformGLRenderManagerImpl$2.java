@@ -28,20 +28,21 @@ class UniformGLRenderManagerImpl$2
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender == null) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2048L))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a();
-      this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a(bool, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.c();
-      this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
-      return;
+    boolean bool;
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2048L))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a();
+    this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a(bool, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.c();
+    this.this$0.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.UniformGLRenderManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

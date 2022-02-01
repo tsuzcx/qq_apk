@@ -2,9 +2,12 @@ package com.tencent.mobileqq.nearby.gameroom;
 
 import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
 import com.tencent.qphone.base.util.QLog;
@@ -20,24 +23,24 @@ class GameRoomTransActivity$5
     if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
       String str = paramRspBody.string_invite_id.get().toStringUtf8();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = GameRoomUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str, paramRspBody.uint32_max_member_num.get(), this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog = ((IGameRoomUtilsDelegate)QRoute.api(IGameRoomUtilsDelegate.class)).showMyInviteDialog(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str, paramRspBody.uint32_max_member_num.get(), this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.dialog.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.disMissListener);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("qqBaseActivity", 2, "invitedId empty");
     }
-    paramRspBody = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, GameRoomInviteActivity.class);
+    paramRspBody = new Intent();
     paramRspBody.putExtra("roomNum", this.jdField_a_of_type_Int);
     paramRspBody.putExtra("zoneId", this.b);
     paramRspBody.putExtra("gc", this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.startActivity(paramRspBody);
+    RouteUtils.a(BaseApplicationImpl.getContext(), paramRspBody, "/nearby/gameroom/invite");
     this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity.5
  * JD-Core Version:    0.7.0.1
  */

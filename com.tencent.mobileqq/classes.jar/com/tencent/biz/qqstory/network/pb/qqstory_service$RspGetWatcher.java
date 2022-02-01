@@ -24,13 +24,14 @@ public final class qqstory_service$RspGetWatcher
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48, 56, 64, 72 }, new String[] { "result", "user_list", "is_end", "next_cookie", "view_total_num", "stranger_view_total_num", "like_total_num", "stranger_like_total_num", "view_total_time" }, new Object[] { null, null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RspGetWatcher.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48, 56, 64, 72 }, new String[] { "result", "user_list", "is_end", "next_cookie", "view_total_num", "stranger_view_total_num", "like_total_num", "stranger_like_total_num", "view_total_time" }, new Object[] { null, null, localInteger, localByteStringMicro, localInteger, localInteger, localInteger, localInteger, localInteger }, RspGetWatcher.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWatcher
  * JD-Core Version:    0.7.0.1
  */

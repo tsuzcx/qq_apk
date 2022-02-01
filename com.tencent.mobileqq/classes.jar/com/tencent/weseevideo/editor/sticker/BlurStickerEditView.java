@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import com.tencent.autotemplate.filter.GaosiBlurFilter;
 import com.tencent.autotemplate.filter.ScaleTextureFilter;
 import com.tencent.tav.coremedia.CGRect;
@@ -29,6 +30,7 @@ import com.tencent.tavkit.ciimage.TAVGLUtils;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
 import com.tencent.tavkit.composition.video.RenderInfo;
 import com.tencent.tavsticker.model.TAVSticker;
+import com.tencent.tavsticker.model.TAVStickerMode;
 import com.tencent.tavsticker.utils.TAVStickerUtil;
 import com.tencent.weseevideo.composition.effectnode.WSOverLayBlurManager;
 import com.tencent.weseevideo.composition.effectnode.WSOverLayBlurManager.SourceImageObserver;
@@ -70,13 +72,14 @@ class BlurStickerEditView
     super(paramContext, paramTAVSticker, paramStickerEditViewIconConfig);
     initBlurBgPaint();
     this.pagView.setVisibility(4);
+    this.eventType = 13;
   }
   
   private void drawBlurBgTexture(Canvas paramCanvas)
   {
     try
     {
-      Object localObject = getStickerRectF();
+      localObject = getStickerRectF();
       if (this.bgBitmap != null)
       {
         BitmapShader localBitmapShader = new BitmapShader(this.bgBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
@@ -100,7 +103,10 @@ class BlurStickerEditView
     }
     catch (Exception paramCanvas)
     {
-      Log.e("BlurStickerEditView", "updateBgPaint: " + paramCanvas.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateBgPaint: ");
+      ((StringBuilder)localObject).append(paramCanvas.toString());
+      Log.e("BlurStickerEditView", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -111,18 +117,23 @@ class BlurStickerEditView
   
   private TextureInfo getCacheTextureInfo(int paramInt1, int paramInt2)
   {
-    String str = paramInt1 + "_" + paramInt2;
-    TextureInfo localTextureInfo1 = null;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramInt1);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(paramInt2);
+    String str = ((StringBuilder)localObject1).toString();
     if (this.textureMap.containsKey(str)) {
-      localTextureInfo1 = (TextureInfo)this.textureMap.get(str);
+      localObject1 = (TextureInfo)this.textureMap.get(str);
+    } else {
+      localObject1 = null;
     }
-    TextureInfo localTextureInfo2 = localTextureInfo1;
-    if (localTextureInfo1 == null)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localTextureInfo2 = CIContext.newTextureInfo(paramInt1, paramInt2);
-      this.textureMap.put(str, localTextureInfo2);
+      localObject2 = CIContext.newTextureInfo(paramInt1, paramInt2);
+      this.textureMap.put(str, localObject2);
     }
-    return localTextureInfo2;
+    return localObject2;
   }
   
   @NotNull
@@ -138,20 +149,22 @@ class BlurStickerEditView
   
   private float handleScaleXLimit(float paramFloat)
   {
-    float f = paramFloat;
-    if (this.xScaleMin > 0.0F)
+    float f2 = this.xScaleMin;
+    float f1 = paramFloat;
+    if (f2 > 0.0F)
     {
-      f = paramFloat;
-      if (paramFloat < this.xScaleMin) {
-        f = this.xScaleMin;
+      f1 = paramFloat;
+      if (paramFloat < f2) {
+        f1 = f2;
       }
     }
-    paramFloat = f;
-    if (this.xScaleMax > 0.0F)
+    f2 = this.xScaleMax;
+    paramFloat = f1;
+    if (f2 > 0.0F)
     {
-      paramFloat = f;
-      if (f > this.xScaleMax) {
-        paramFloat = this.xScaleMax;
+      paramFloat = f1;
+      if (f1 > f2) {
+        paramFloat = f2;
       }
     }
     return paramFloat;
@@ -159,20 +172,22 @@ class BlurStickerEditView
   
   private float handleScaleYLimit(float paramFloat)
   {
-    float f = paramFloat;
-    if (this.yScaleMin > 0.0F)
+    float f2 = this.yScaleMin;
+    float f1 = paramFloat;
+    if (f2 > 0.0F)
     {
-      f = paramFloat;
-      if (paramFloat < this.yScaleMin) {
-        f = this.yScaleMin;
+      f1 = paramFloat;
+      if (paramFloat < f2) {
+        f1 = f2;
       }
     }
-    paramFloat = f;
-    if (this.yScaleMax > 0.0F)
+    f2 = this.yScaleMax;
+    paramFloat = f1;
+    if (f2 > 0.0F)
     {
-      paramFloat = f;
-      if (f > this.yScaleMax) {
-        paramFloat = this.yScaleMax;
+      paramFloat = f1;
+      if (f1 > f2) {
+        paramFloat = f2;
       }
     }
     return paramFloat;
@@ -186,26 +201,36 @@ class BlurStickerEditView
     this.blurTextPaint.setAntiAlias(true);
   }
   
-  public void drawBorder(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
+  {
+    Object localObject = getOriginalVertexPoints();
+    if (localObject != null) {
+      this.stickerBorderRect.set(localObject[0].x, localObject[0].y, localObject[2].x, localObject[3].y);
+    }
+    localObject = this.texturePngPath;
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
+      drawBlurBgTexture(paramCanvas);
+    }
+    super.dispatchDraw(paramCanvas);
+  }
+  
+  protected void drawBorder(Canvas paramCanvas)
   {
     PointF[] arrayOfPointF = getOriginalVertexPoints();
-    if (arrayOfPointF == null) {}
-    do
-    {
+    if (arrayOfPointF == null) {
       return;
-      if ((this.texturePngPath != null) && (this.texturePngPath.length() > 0)) {
-        drawBlurBgTexture(paramCanvas);
-      }
-    } while (arrayOfPointF.length < 4);
-    paramCanvas.save();
-    this.stickerMatrix.reset();
-    this.stickerMatrix.postTranslate(this.centerX - this.originalCenterX, this.centerY - this.originalCenterY);
-    this.stickerMatrix.postRotate(getSticker().getRotate(), this.centerX, this.centerY);
-    if (this.sticker.getExtraBundle().getBoolean("key_sticker_lock_ratio")) {
-      this.stickerMatrix.postScale(this.sticker.getScale(), this.sticker.getScale(), this.centerX, this.centerY);
     }
-    for (;;)
+    if (arrayOfPointF.length >= 4)
     {
+      paramCanvas.save();
+      this.stickerMatrix.reset();
+      this.stickerMatrix.postTranslate(this.centerX - this.originalCenterX, this.centerY - this.originalCenterY);
+      this.stickerMatrix.postRotate(getSticker().getRotate(), this.centerX, this.centerY);
+      if (this.sticker.getExtraBundle().getBoolean("key_sticker_lock_ratio")) {
+        this.stickerMatrix.postScale(this.sticker.getScale(), this.sticker.getScale(), this.centerX, this.centerY);
+      } else {
+        this.stickerMatrix.postScale(TAVStickerExKt.getStickerScaleX(this.sticker), TAVStickerExKt.getStickerScaleY(this.sticker), this.centerX, this.centerY);
+      }
       paramCanvas.concat(this.stickerMatrix);
       this.stickerBorderRect.set(arrayOfPointF[0].x, arrayOfPointF[0].y, arrayOfPointF[2].x, arrayOfPointF[3].y);
       Path localPath = new Path();
@@ -224,22 +249,22 @@ class BlurStickerEditView
       this.borderPaint.setStrokeWidth(this.DEFAULT_BORDER_STROKE_WIDTH / this.xScale);
       paramCanvas.drawPath(localPath, this.borderPaint);
       paramCanvas.restore();
-      return;
-      this.stickerMatrix.postScale(TAVStickerExKt.getStickerScaleX(this.sticker), TAVStickerExKt.getStickerScaleY(this.sticker), this.centerX, this.centerY);
     }
   }
   
-  public void drawDeleteBtn(Canvas paramCanvas)
+  protected void drawDeleteBtn(Canvas paramCanvas)
   {
+    Object localObject = getOriginalVertexPoints();
+    if (localObject == null) {
+      return;
+    }
     paramCanvas.save();
-    Object localObject = this.vertexPoints;
     if ((localObject != null) && (localObject.length >= 4))
     {
       float f1 = localObject[0].x;
       float f2 = localObject[0].y;
-      f2 = getStickerRectF().top;
-      paramCanvas.rotate(getSticker().getRotate(), f1, f2);
-      paramCanvas.scale(this.OPERATION_BUTTON_SCALE, this.OPERATION_BUTTON_SCALE, f1, f2);
+      paramCanvas.concat(this.stickerMatrix);
+      paramCanvas.scale(this.OPERATION_BUTTON_SCALE / TAVStickerExKt.getStickerScaleX(this.sticker), this.OPERATION_BUTTON_SCALE / TAVStickerExKt.getStickerScaleY(this.sticker), f1, f2);
       localObject = new Rect(0, 0, this.bmpDelete.getWidth(), this.bmpDelete.getHeight());
       this.deleteBtnRect = new RectF(f1 - this.bmpDelete.getWidth(), f2 - this.bmpDelete.getHeight(), f1 + this.bmpDelete.getWidth(), f2 + this.bmpDelete.getHeight());
       paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
@@ -249,12 +274,35 @@ class BlurStickerEditView
     paramCanvas.restore();
   }
   
-  public View.OnTouchListener getStickerTouchListener()
+  protected void drawZoomBtn(Canvas paramCanvas)
+  {
+    Object localObject = getOriginalVertexPoints();
+    if (localObject == null) {
+      return;
+    }
+    paramCanvas.save();
+    if ((localObject != null) && (localObject.length >= 4))
+    {
+      float f1 = localObject[2].x;
+      float f2 = localObject[2].y;
+      paramCanvas.concat(this.stickerMatrix);
+      paramCanvas.scale(this.OPERATION_BUTTON_SCALE / TAVStickerExKt.getStickerScaleX(this.sticker), this.OPERATION_BUTTON_SCALE / TAVStickerExKt.getStickerScaleY(this.sticker), f1, f2);
+      localObject = new Rect(0, 0, this.bmpZoom.getWidth(), this.bmpZoom.getHeight());
+      this.zoomBtnRect = new RectF(f1 - this.bmpZoom.getWidth(), f2 - this.bmpZoom.getHeight(), f1 + this.bmpZoom.getWidth(), f2 + this.bmpZoom.getHeight());
+      setSingleZoomRotateRect(this.zoomBtnRect);
+      paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
+      paramCanvas.drawBitmap(this.bmpZoom, (Rect)localObject, this.zoomBtnRect, null);
+    }
+    paramCanvas.getMatrix().mapRect(this.zoomBtnRect);
+    paramCanvas.restore();
+  }
+  
+  protected View.OnTouchListener getStickerTouchListener()
   {
     return new BlurStickerEditView.TavStickerTouchListener(this);
   }
   
-  public void initScaleData()
+  protected void initScaleData()
   {
     this.xScale = TAVStickerExKt.getStickerScaleX(this.sticker);
     this.yScale = TAVStickerExKt.getStickerScaleY(this.sticker);
@@ -267,32 +315,37 @@ class BlurStickerEditView
       f1 = this.moveRegionWidth * 1.0F / this.stickerWidth;
     }
     this.xScaleMax = f1;
-    if (f2 <= 0.0F) {}
-    for (f1 = this.moveRegionHeight * 1.0F / this.stickerHeight;; f1 = f2)
-    {
-      this.yScaleMax = f1;
-      this.yScaleMin = Math.max(f4, 0.0F);
-      this.xScaleMin = Math.max(f5, 0.0F);
-      if ((this.xScaleMax > 0.0F) && (this.xScale > this.xScaleMax)) {
-        this.xScale = this.xScaleMax;
-      }
-      if ((this.yScaleMax > 0.0F) && (this.yScale > this.yScaleMax)) {
-        this.yScale = this.yScaleMax;
-      }
-      if (this.xScale < this.xScaleMin) {
-        this.xScale = this.xScaleMin;
-      }
-      if (this.yScale < this.yScaleMin) {
-        this.yScale = this.yScaleMin;
-      }
-      TAVStickerExKt.setStickerScaleY(this.sticker, this.yScale);
-      TAVStickerExKt.setStickerScaleX(this.sticker, this.xScale);
-      super.initScaleData();
-      return;
+    f1 = f2;
+    if (f2 <= 0.0F) {
+      f1 = this.moveRegionHeight * 1.0F / this.stickerHeight;
     }
+    this.yScaleMax = f1;
+    this.yScaleMin = Math.max(f4, 0.0F);
+    this.xScaleMin = Math.max(f5, 0.0F);
+    f1 = this.xScaleMax;
+    if ((f1 > 0.0F) && (this.xScale > f1)) {
+      this.xScale = f1;
+    }
+    f1 = this.yScaleMax;
+    if ((f1 > 0.0F) && (this.yScale > f1)) {
+      this.yScale = f1;
+    }
+    f1 = this.xScale;
+    f2 = this.xScaleMin;
+    if (f1 < f2) {
+      this.xScale = f2;
+    }
+    f1 = this.yScale;
+    f2 = this.yScaleMin;
+    if (f1 < f2) {
+      this.yScale = f2;
+    }
+    TAVStickerExKt.setStickerScaleY(this.sticker, this.yScale);
+    TAVStickerExKt.setStickerScaleX(this.sticker, this.xScale);
+    super.initScaleData();
   }
   
-  public void initStickerData()
+  protected void initStickerData()
   {
     this.xScale = this.sticker.getExtraBundle().getFloat("key_sticker_scale_x", 1.0F);
     this.yScale = this.sticker.getExtraBundle().getFloat("key_sticker_scale_y", 1.0F);
@@ -303,34 +356,54 @@ class BlurStickerEditView
   
   public void onSourceImageUpdated(CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
-    paramCIImage = extractTextureInfoFromCIImage(paramCIImage, paramRenderInfo);
-    int i = paramCIImage.preferRotation;
-    paramCIImage = new CIImage(WSOverLayBlurManager.getBlurredTextureInfo(paramCIImage, getWidth(), getHeight(), i, 10, 0.25F, this.hBlurFilter, this.vBlurFilter, this.scaleSmallTextureFilter, this.scaleBigTextureFilter).clone());
-    paramCIImage.applyPreferRotation(0);
-    paramCIImage.applyFillInFrame(new CGRect(new PointF(0.0F, 0.0F), new CGSize(getWidth(), getHeight())), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
-    paramCIImage.applyFlip(false, true);
-    paramCIImage = extractTextureInfoFromCIImage(paramCIImage, paramRenderInfo);
-    if (this.playerThreadHandler == null) {
-      this.playerThreadHandler = new Handler();
-    }
-    Log.d("BlurStickerEditView", "Thread Name1: " + Thread.currentThread().getName());
-    if (this.lock.tryLock())
+    try
     {
-      this.bgBitmap = TAVGLUtils.saveBitmap(paramCIImage);
-      postInvalidate();
+      paramCIImage = extractTextureInfoFromCIImage(paramCIImage, paramRenderInfo);
+      int i = paramCIImage.preferRotation;
+      paramCIImage = new CIImage(WSOverLayBlurManager.getBlurredTextureInfo(paramCIImage, getWidth(), getHeight(), i, 10, 0.25F, this.hBlurFilter, this.vBlurFilter, this.scaleSmallTextureFilter, this.scaleBigTextureFilter).clone());
+      paramCIImage.applyPreferRotation(0);
+      paramCIImage.applyFillInFrame(new CGRect(new PointF(0.0F, 0.0F), new CGSize(getWidth(), getHeight())), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
+      paramCIImage.applyFlip(false, true);
+      paramCIImage = extractTextureInfoFromCIImage(paramCIImage, paramRenderInfo);
+      if (this.playerThreadHandler == null) {
+        this.playerThreadHandler = new Handler();
+      }
+      paramRenderInfo = new StringBuilder();
+      paramRenderInfo.append("Thread Name1: ");
+      paramRenderInfo.append(Thread.currentThread().getName());
+      Log.d("BlurStickerEditView", paramRenderInfo.toString());
+      if (this.lock.tryLock())
+      {
+        this.bgBitmap = TAVGLUtils.saveBitmap(paramCIImage);
+        postInvalidate();
+        return;
+      }
+    }
+    catch (Exception paramCIImage)
+    {
+      paramCIImage.printStackTrace();
     }
   }
   
-  public void setScale(float paramFloat)
+  public void setMode(TAVStickerMode paramTAVStickerMode)
+  {
+    super.setMode(paramTAVStickerMode);
+    if ((paramTAVStickerMode != TAVStickerMode.ACTIVE) && (getParent() != null)) {
+      ((ViewGroup)getParent()).removeView(this);
+    }
+  }
+  
+  protected void setScale(float paramFloat)
   {
     if (TAVStickerExKt.isLockRatio(this.sticker))
     {
       super.setScale(paramFloat);
       return;
     }
-    if ((this.xScale != -1.0F) && (this.yScale != -1.0F))
+    paramFloat = this.xScale;
+    if ((paramFloat != -1.0F) && (this.yScale != -1.0F))
     {
-      this.xScale = handleScaleXLimit(this.xScale);
+      this.xScale = handleScaleXLimit(paramFloat);
       this.yScale = handleScaleYLimit(this.yScale);
       this.pagView.setScaleX(this.xScale);
       this.pagView.setScaleY(this.yScale);
@@ -344,54 +417,60 @@ class BlurStickerEditView
     this.yScale = TAVStickerExKt.getStickerScaleY(this.sticker);
   }
   
-  public void updateBorderPaint()
+  protected void updateBorderPaint()
   {
     if (0.0F != getSticker().getScale()) {
       this.borderPaint.setStrokeWidth(Math.min(this.DEFAULT_BORDER_STROKE_WIDTH / this.xScale, this.DEFAULT_BORDER_STROKE_WIDTH / this.yScale));
     }
   }
   
-  public void updateStickerOnAdjustLocation(float paramFloat1, float paramFloat2)
+  protected void updateStickerOnAdjustLocation(float paramFloat1, float paramFloat2)
   {
     this.sticker.setCenterX(paramFloat1).setCenterY(paramFloat2);
-    if (!TAVStickerExKt.isLockRatio(this.sticker)) {
-      if (this.xScale != -1.0F)
-      {
+    if (!TAVStickerExKt.isLockRatio(this.sticker))
+    {
+      if (this.xScale != -1.0F) {
         this.sticker.getExtraBundle().putFloat("key_sticker_scale_x", this.xScale);
-        if (this.yScale == -1.0F) {
-          break label114;
-        }
+      } else {
+        this.xScale = TAVStickerExKt.getStickerScaleX(this.sticker);
+      }
+      if (this.yScale != -1.0F) {
         this.sticker.getExtraBundle().putFloat("key_sticker_scale_y", this.yScale);
+      } else {
+        this.yScale = TAVStickerExKt.getStickerScaleY(this.sticker);
       }
     }
-    for (;;)
+    else
     {
-      if (TAVStickerExKt.isRotateEnable(this.sticker)) {
-        this.sticker.setRotate(this.rotate);
-      }
-      return;
-      this.xScale = TAVStickerExKt.getStickerScaleX(this.sticker);
-      break;
-      label114:
-      this.yScale = TAVStickerExKt.getStickerScaleY(this.sticker);
-      continue;
       this.sticker.setScale(this.scale);
+    }
+    if (TAVStickerExKt.isRotateEnable(this.sticker)) {
+      this.sticker.setRotate(this.rotate);
     }
   }
   
-  public void updateVertexPoints()
+  protected void updateVertexPoints()
   {
-    PointF[] arrayOfPointF = TAVStickerUtil.computeRectanglePoints(this.pagView.getMatrix(), this.stickerWidth, this.stickerHeight);
-    this.vertexPoints[0] = arrayOfPointF[0];
-    this.vertexPoints[1] = arrayOfPointF[1];
-    this.vertexPoints[2] = arrayOfPointF[2];
-    this.vertexPoints[3] = arrayOfPointF[3];
-    Log.d("btn_pos", "updateVertexPoints: " + this.vertexPoints[0].toString() + " " + this.vertexPoints[1].toString() + " " + this.vertexPoints[2].toString() + " " + this.vertexPoints[3].toString());
+    Object localObject = TAVStickerUtil.computeRectanglePoints(this.pagView.getMatrix(), this.stickerWidth, this.stickerHeight);
+    this.vertexPoints[0] = localObject[0];
+    this.vertexPoints[1] = localObject[1];
+    this.vertexPoints[2] = localObject[2];
+    this.vertexPoints[3] = localObject[3];
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateVertexPoints: ");
+    ((StringBuilder)localObject).append(this.vertexPoints[0].toString());
+    ((StringBuilder)localObject).append(" ");
+    ((StringBuilder)localObject).append(this.vertexPoints[1].toString());
+    ((StringBuilder)localObject).append(" ");
+    ((StringBuilder)localObject).append(this.vertexPoints[2].toString());
+    ((StringBuilder)localObject).append(" ");
+    ((StringBuilder)localObject).append(this.vertexPoints[3].toString());
+    Log.d("btn_pos", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.BlurStickerEditView
  * JD-Core Version:    0.7.0.1
  */

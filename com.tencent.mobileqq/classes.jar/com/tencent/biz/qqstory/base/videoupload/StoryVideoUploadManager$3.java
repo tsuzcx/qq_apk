@@ -17,13 +17,16 @@ final class StoryVideoUploadManager$3
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
     int i = StoryVideoUploadManager.a();
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
+    paramJobContext = new StringBuilder();
+    paramJobContext.append(this.a);
+    paramJobContext.append(" : fireCreateStoryVideo count = %d");
+    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", paramJobContext.toString(), new Object[] { Integer.valueOf(i) });
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.3
  * JD-Core Version:    0.7.0.1
  */

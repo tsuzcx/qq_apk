@@ -38,15 +38,12 @@ public class BatchGetFriendStoryFeedInfoRequest
     try
     {
       localRspStoryFeed.mergeFrom(paramArrayOfByte);
-      return new BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp(localRspStoryFeed);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp(localRspStoryFeed);
   }
   
   public String a()
@@ -54,9 +51,9 @@ public class BatchGetFriendStoryFeedInfoRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
-    qqstory_service.ReqStoryFeed localReqStoryFeed = new qqstory_service.ReqStoryFeed();
+    Object localObject = new qqstory_service.ReqStoryFeed();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
@@ -70,16 +67,21 @@ public class BatchGetFriendStoryFeedInfoRequest
         }
       }
     }
-    if (localArrayList.size() == 0) {
-      throw new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
+    if (localArrayList.size() != 0)
+    {
+      ((qqstory_service.ReqStoryFeed)localObject).feed_id_list.set(localArrayList);
+      return ((qqstory_service.ReqStoryFeed)localObject).toByteArray();
     }
-    localReqStoryFeed.feed_id_list.set(localArrayList);
-    return localReqStoryFeed.toByteArray();
+    localObject = new QQStoryCmdHandler.IllegalUinException("feed id seq is null");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.BatchGetFriendStoryFeedInfoRequest
  * JD-Core Version:    0.7.0.1
  */

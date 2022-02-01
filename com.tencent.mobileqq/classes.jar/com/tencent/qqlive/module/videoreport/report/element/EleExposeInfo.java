@@ -41,12 +41,20 @@ public class EleExposeInfo
   
   public String toString()
   {
-    return "EleExposeInfo{mExposeTime=" + this.mExposeTime + "reportOverTime=" + reportOverTime() + "mHasReport=" + this.mHasReport + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EleExposeInfo{mExposeTime=");
+    localStringBuilder.append(this.mExposeTime);
+    localStringBuilder.append("reportOverTime=");
+    localStringBuilder.append(reportOverTime());
+    localStringBuilder.append("mHasReport=");
+    localStringBuilder.append(this.mHasReport);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.EleExposeInfo
  * JD-Core Version:    0.7.0.1
  */

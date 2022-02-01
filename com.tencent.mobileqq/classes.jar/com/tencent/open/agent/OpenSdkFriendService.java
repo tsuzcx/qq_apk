@@ -28,11 +28,6 @@ public class OpenSdkFriendService
   protected String c;
   protected String d;
   
-  static
-  {
-    jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService = null;
-  }
-  
   public static OpenSdkFriendService a()
   {
     try
@@ -48,49 +43,42 @@ public class OpenSdkFriendService
   
   public ArrayList<FriendGroup> a()
   {
+    Object localObject = this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheManager;
     int i = 0;
-    if (this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheManager == null) {
+    if (localObject == null) {
       return new ArrayList(0);
     }
-    int j = this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheManager.a();
-    ArrayList localArrayList = new ArrayList(j);
+    int j = ((DbCacheManager)localObject).a();
+    localObject = new ArrayList(j);
     while (i < j)
     {
-      localArrayList.add((FriendGroup)this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheManager.a(i));
+      ((ArrayList)localObject).add((FriendGroup)this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheManager.a(i));
       i += 1;
     }
-    return localArrayList;
+    return localObject;
   }
   
   public void a()
   {
     this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$CheckAvatarUpdateListener = null;
-    if (this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask != null) {
-      this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a();
+    HttpCgiAsyncTask localHttpCgiAsyncTask = this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask;
+    if (localHttpCgiAsyncTask != null) {
+      localHttpCgiAsyncTask.a();
     }
   }
   
   public void a(Bundle paramBundle, OpenSdkFriendService.GetFriendInfoListener paramGetFriendInfoListener, String paramString)
   {
-    if ((paramBundle == null) || (paramGetFriendInfoListener == null))
+    if ((paramBundle != null) && (paramGetFriendInfoListener != null))
     {
-      LogUtility.e("OpenSdkFriendService", "getFriendListAsync params error. params=" + paramBundle + "; listener=" + paramGetFriendInfoListener);
-      return;
-    }
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.d = paramString;
-    if ("action_invite".equals(paramString))
-    {
-      paramString = ServerSetting.a().a("https://fusion.qq.com/cgi-bin/qzapps/mappinvite_getqqlist.cgi");
-      paramBundle.putString("md5str", OpensdkPreference.a(CommonDataAdapter.a().a(), "invite_friend_list_md5").getString(this.b, ""));
-    }
-    for (;;)
-    {
-      this.c = paramString;
-      this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask = new HttpCgiAsyncTask(paramString, "GET", new OpenSdkFriendService.GetFriendListCallback(this, paramGetFriendInfoListener), true);
-      this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a(paramBundle);
-      return;
-      if ("action_story".equals(paramString))
+      this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+      this.d = paramString;
+      if ("action_invite".equals(paramString))
+      {
+        paramString = ServerSetting.a().a("https://fusion.qq.com/cgi-bin/qzapps/mappinvite_getqqlist.cgi");
+        paramBundle.putString("md5str", OpensdkPreference.a(CommonDataAdapter.a().a(), "invite_friend_list_md5").getString(this.b, ""));
+      }
+      else if ("action_story".equals(paramString))
       {
         paramString = ServerSetting.a().a("https://fusion.qq.com/cgi-bin/appstage/mapp_getqqlist.cgi");
         paramBundle.putString("needhttpcache", "nothing");
@@ -107,7 +95,17 @@ public class OpenSdkFriendService
       {
         paramString = ServerSetting.a().a("https://appic.qq.com/cgi-bin/appstage/mapp_friendslist.cgi");
       }
+      this.c = paramString;
+      this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask = new HttpCgiAsyncTask(paramString, "GET", new OpenSdkFriendService.GetFriendListCallback(this, paramGetFriendInfoListener), true);
+      this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a(paramBundle);
+      return;
     }
+    paramString = new StringBuilder();
+    paramString.append("getFriendListAsync params error. params=");
+    paramString.append(paramBundle);
+    paramString.append("; listener=");
+    paramString.append(paramGetFriendInfoListener);
+    LogUtility.e("OpenSdkFriendService", paramString.toString());
   }
   
   protected void a(String paramString)
@@ -129,27 +127,34 @@ public class OpenSdkFriendService
   
   public void a(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {}
-    for (;;)
+    if ((paramString1 != null) && (paramString2 != null)) {}
+    try
     {
-      try
-      {
-        LogUtility.e("OpenSdkFriendService", "initData error. appid=" + paramString1 + "; openid=" + paramString2);
-        return;
-      }
-      finally {}
       this.jdField_a_of_type_Long = Long.parseLong(OpensdkPreference.a(CommonDataAdapter.a().a(), "uin_openid_store").getString(paramString2, ""));
       this.jdField_a_of_type_JavaLangString = paramString1;
       this.b = paramString2;
       try
       {
-        this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheManager = CacheManager.a().a(FriendGroup.class, this.jdField_a_of_type_Long, "invite_friend_list_" + this.b);
+        paramString1 = CacheManager.a();
+        long l = this.jdField_a_of_type_Long;
+        paramString2 = new StringBuilder();
+        paramString2.append("invite_friend_list_");
+        paramString2.append(this.b);
+        this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheManager = paramString1.a(FriendGroup.class, l, paramString2.toString());
       }
       catch (Exception paramString1)
       {
         paramString1.printStackTrace();
       }
+      return;
     }
+    finally {}
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initData error. appid=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("; openid=");
+    localStringBuilder.append(paramString2);
+    LogUtility.e("OpenSdkFriendService", localStringBuilder.toString());
   }
   
   public void a(List<FriendGroup> paramList)
@@ -164,7 +169,7 @@ public class OpenSdkFriendService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.OpenSdkFriendService
  * JD-Core Version:    0.7.0.1
  */

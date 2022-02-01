@@ -30,7 +30,17 @@ public class AudioControlEvent$AudioControlParam
   
   public String toString()
   {
-    return "AudioControlParam{uid=" + this.jdField_a_of_type_Long + ", tinyid=" + this.jdField_b_of_type_Long + ", status=" + this.jdField_a_of_type_Int + ", type=" + this.jdField_b_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioControlParam{uid=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", tinyid=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -43,7 +53,7 @@ public class AudioControlEvent$AudioControlParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.event.AudioControlEvent.AudioControlParam
  * JD-Core Version:    0.7.0.1
  */

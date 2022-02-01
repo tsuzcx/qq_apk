@@ -20,29 +20,29 @@ public class StoryDetailPresenter$FeedVideoCookieUpdate
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull FeedVideoManager.FeedVideoInfoUpdate paramFeedVideoInfoUpdate)
   {
-    if ((paramFeedVideoInfoUpdate.jdField_a_of_type_Int == 2) || (!paramFeedVideoInfoUpdate.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null))
+    if ((paramFeedVideoInfoUpdate.jdField_a_of_type_Int != 2) && (paramFeedVideoInfoUpdate.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
     {
-      SLog.b(this.TAG, "ignore this video cookie change event. %s.", paramFeedVideoInfoUpdate.toString());
+      if (!StoryDetailPresenter.a(paramStoryDetailPresenter).c())
+      {
+        SLog.e(this.TAG, "this feed does not support video list. ignore this video cookie change event. %s.", new Object[] { paramFeedVideoInfoUpdate.toString() });
+        return;
+      }
+      paramFeedVideoInfoUpdate = StoryDetailPresenter.a(paramStoryDetailPresenter).a(StoryDetailPresenter.a(paramStoryDetailPresenter), StoryDetailPresenter.a(paramStoryDetailPresenter).a().mVideoPullType);
+      if (paramFeedVideoInfoUpdate == null)
+      {
+        SLog.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { StoryDetailPresenter.a(paramStoryDetailPresenter), Integer.valueOf(StoryDetailPresenter.a(paramStoryDetailPresenter).a().mVideoPullType) });
+        return;
+      }
+      SLog.a(this.TAG, "receive video cookie change event. %s.", paramFeedVideoInfoUpdate.toString());
+      StoryDetailPresenter.a(paramStoryDetailPresenter).a().updateVideoInfo(paramFeedVideoInfoUpdate);
+      StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramFeedVideoInfoUpdate.mVideoItemList, true);
+      if (StoryDetailPresenter.a(paramStoryDetailPresenter) != null) {
+        StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramFeedVideoInfoUpdate.mVideoPullType, paramFeedVideoInfoUpdate.mVideoNextCookie, paramFeedVideoInfoUpdate.mVideoSeq);
+      }
+      StoryDetailPresenter.a(paramStoryDetailPresenter).c();
       return;
     }
-    if (!StoryDetailPresenter.a(paramStoryDetailPresenter).c())
-    {
-      SLog.e(this.TAG, "this feed does not support video list. ignore this video cookie change event. %s.", new Object[] { paramFeedVideoInfoUpdate.toString() });
-      return;
-    }
-    paramFeedVideoInfoUpdate = StoryDetailPresenter.a(paramStoryDetailPresenter).a(StoryDetailPresenter.a(paramStoryDetailPresenter), StoryDetailPresenter.a(paramStoryDetailPresenter).a().mVideoPullType);
-    if (paramFeedVideoInfoUpdate == null)
-    {
-      SLog.e(this.TAG, "can't find video info for feedId:%s, pullType:%d.", new Object[] { StoryDetailPresenter.a(paramStoryDetailPresenter), Integer.valueOf(StoryDetailPresenter.a(paramStoryDetailPresenter).a().mVideoPullType) });
-      return;
-    }
-    SLog.a(this.TAG, "receive video cookie change event. %s.", paramFeedVideoInfoUpdate.toString());
-    StoryDetailPresenter.a(paramStoryDetailPresenter).a().updateVideoInfo(paramFeedVideoInfoUpdate);
-    StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramFeedVideoInfoUpdate.mVideoItemList, true);
-    if (StoryDetailPresenter.a(paramStoryDetailPresenter) != null) {
-      StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramFeedVideoInfoUpdate.mVideoPullType, paramFeedVideoInfoUpdate.mVideoNextCookie, paramFeedVideoInfoUpdate.mVideoSeq);
-    }
-    StoryDetailPresenter.a(paramStoryDetailPresenter).c();
+    SLog.b(this.TAG, "ignore this video cookie change event. %s.", paramFeedVideoInfoUpdate.toString());
   }
   
   public Class acceptEventClass()
@@ -54,7 +54,7 @@ public class StoryDetailPresenter$FeedVideoCookieUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter.FeedVideoCookieUpdate
  * JD-Core Version:    0.7.0.1
  */

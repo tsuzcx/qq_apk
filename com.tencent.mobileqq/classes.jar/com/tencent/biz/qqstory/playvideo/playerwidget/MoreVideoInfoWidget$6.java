@@ -12,17 +12,26 @@ class MoreVideoInfoWidget$6
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.b, 2, "[az]isResumeVideoPlaySelf === >" + this.jdField_a_of_type_ArrayOfJavaLangBoolean);
+    if (QLog.isDevelopLevel())
+    {
+      paramDialogInterface = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[az]isResumeVideoPlaySelf === >");
+      localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangBoolean);
+      QLog.i(paramDialogInterface, 2, localStringBuilder.toString());
     }
-    if ((!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    if (!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue())
+    {
+      paramDialogInterface = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder;
+      if (paramDialogInterface != null) {
+        paramDialogInterface.c(false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.MoreVideoInfoWidget.6
  * JD-Core Version:    0.7.0.1
  */

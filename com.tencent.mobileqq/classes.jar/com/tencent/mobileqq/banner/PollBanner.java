@@ -20,26 +20,32 @@ public class PollBanner
   public void a()
   {
     int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (QLog.isColorLevel()) {
-      QLog.d("PollBanner", 2, "startAnim mBannerList = " + this.jdField_a_of_type_JavaUtilList + ", size = " + i);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startAnim mBannerList = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList);
+      ((StringBuilder)localObject).append(", size = ");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("PollBanner", 2, ((StringBuilder)localObject).toString());
     }
     if (i <= 1) {
       return;
     }
-    Banner localBanner1 = (Banner)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int % i);
-    Banner localBanner2 = (Banner)this.jdField_a_of_type_JavaUtilList.get((this.jdField_a_of_type_Int + 1) % i);
-    if (this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.indexOfChild(localBanner1.a) == -1)
+    Object localObject = (Banner)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int % i);
+    Banner localBanner = (Banner)this.jdField_a_of_type_JavaUtilList.get((this.jdField_a_of_type_Int + 1) % i);
+    if (this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.indexOfChild(((Banner)localObject).a) == -1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.addView(localBanner1.a);
-      localBanner1.a.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.addView(((Banner)localObject).a);
+      ((Banner)localObject).a.setVisibility(0);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.indexOfChild(localBanner2.a) == -1)
+    if (this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.indexOfChild(localBanner.a) == -1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.addView(localBanner2.a);
-      localBanner2.a.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.addView(localBanner.a);
+      localBanner.a.setVisibility(8);
     }
-    localBanner1.a.startAnimation(this.b);
-    localBanner2.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    ((Banner)localObject).a.startAnimation(this.b);
+    localBanner.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
     int j = this.jdField_a_of_type_Int + 1;
     this.jdField_a_of_type_Int = j;
     this.jdField_a_of_type_Int = (j % i);
@@ -55,28 +61,24 @@ public class PollBanner
     if (i > 2)
     {
       paramAnimation = ((Banner)this.jdField_a_of_type_JavaUtilList.get((this.jdField_a_of_type_Int + 1) % i)).a;
-      if (this.jdField_a_of_type_Int == 0)
-      {
+      int j = this.jdField_a_of_type_Int;
+      if (j == 0) {
         this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.removeViewAt(i - 1);
-        this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.addView(paramAnimation);
-        paramAnimation.setVisibility(8);
-        ((Banner)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).a.setVisibility(0);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.removeViewAt(j - 1);
       }
+      this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.addView(paramAnimation);
+      paramAnimation.setVisibility(8);
+      ((Banner)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).a.setVisibility(0);
     }
-    for (;;)
+    else if (i > 0)
     {
-      if (i > 0) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqBannerBannerFrameLayout.removeViewAt(this.jdField_a_of_type_Int - 1);
-      break;
-      if (i > 0)
-      {
-        paramAnimation = ((Banner)this.jdField_a_of_type_JavaUtilList.get((this.jdField_a_of_type_Int + 1) % i)).a;
-        ((Banner)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).a.setVisibility(0);
-        paramAnimation.setVisibility(8);
-      }
+      paramAnimation = ((Banner)this.jdField_a_of_type_JavaUtilList.get((this.jdField_a_of_type_Int + 1) % i)).a;
+      ((Banner)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).a.setVisibility(0);
+      paramAnimation.setVisibility(8);
+    }
+    if (i > 0) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
     }
   }
   
@@ -92,7 +94,7 @@ public class PollBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.banner.PollBanner
  * JD-Core Version:    0.7.0.1
  */

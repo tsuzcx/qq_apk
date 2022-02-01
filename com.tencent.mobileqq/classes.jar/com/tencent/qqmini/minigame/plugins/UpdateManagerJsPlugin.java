@@ -30,43 +30,58 @@ public class UpdateManagerJsPlugin
   
   private void registerUpdateObserver()
   {
-    BaseRuntimeLoader localBaseRuntimeLoader = AppRuntimeLoaderManager.g().queryAppRunTimeLoader(this.mMiniAppInfo);
-    if (localBaseRuntimeLoader == null) {
+    Object localObject = AppRuntimeLoaderManager.g().queryAppRunTimeLoader(this.mMiniAppInfo);
+    if (localObject == null) {
       return;
     }
     this.mObserver = new UpdateManagerJsPlugin.1(this);
-    localBaseRuntimeLoader.addRuntimeStateObserver(this.mObserver);
-    QMLog.d("UpdateManagerJsPlugin", "addAppEventObserver " + this.mObserver);
+    ((BaseRuntimeLoader)localObject).addRuntimeStateObserver(this.mObserver);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("addAppEventObserver ");
+    ((StringBuilder)localObject).append(this.mObserver);
+    QMLog.d("UpdateManagerJsPlugin", ((StringBuilder)localObject).toString());
   }
   
   @JsEvent({"getUpdateManager"})
   public void getUpdateManager(RequestEvent paramRequestEvent)
   {
-    boolean bool2 = false;
-    QMLog.d("UpdateManagerJsPlugin", "handleNativeRequest for " + paramRequestEvent.event);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleNativeRequest for ");
+    ((StringBuilder)localObject).append(paramRequestEvent.event);
+    QMLog.d("UpdateManagerJsPlugin", ((StringBuilder)localObject).toString());
     this.mJsService = paramRequestEvent.jsService;
     paramRequestEvent.ok();
-    try
+    for (;;)
     {
-      Object localObject = new StringBuilder().append("handleUpdateCheckResult() called with:  hasUpdate = [");
-      if (this.mHasUpdateCache != null) {}
-      for (boolean bool1 = this.mHasUpdateCache.booleanValue();; bool1 = false)
+      try
       {
-        QMLog.d("UpdateManagerJsPlugin", bool1 + "]");
-        localObject = new JSONObject();
-        bool1 = bool2;
-        if (this.mHasUpdateCache != null) {
-          bool1 = this.mHasUpdateCache.booleanValue();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleUpdateCheckResult() called with:  hasUpdate = [");
+        if (this.mHasUpdateCache != null)
+        {
+          bool = this.mHasUpdateCache.booleanValue();
+          ((StringBuilder)localObject).append(bool);
+          ((StringBuilder)localObject).append("]");
+          QMLog.d("UpdateManagerJsPlugin", ((StringBuilder)localObject).toString());
+          localObject = new JSONObject();
+          if (this.mHasUpdateCache == null) {
+            break label167;
+          }
+          bool = this.mHasUpdateCache.booleanValue();
+          ((JSONObject)localObject).put("hasUpdate", bool);
+          paramRequestEvent.jsService.evaluateSubscribeJS("onUpdateCheckResult", ((JSONObject)localObject).toString(), 0);
+          return;
         }
-        ((JSONObject)localObject).put("hasUpdate", bool1);
-        paramRequestEvent.jsService.evaluateSubscribeJS("onUpdateCheckResult", ((JSONObject)localObject).toString(), 0);
+      }
+      catch (JSONException paramRequestEvent)
+      {
+        QMLog.e("UpdateManagerJsPlugin", "handleNativeRequest", paramRequestEvent);
         return;
       }
-      return;
-    }
-    catch (JSONException paramRequestEvent)
-    {
-      QMLog.e("UpdateManagerJsPlugin", "handleNativeRequest", paramRequestEvent);
+      boolean bool = false;
+      continue;
+      label167:
+      bool = false;
     }
   }
   
@@ -80,33 +95,48 @@ public class UpdateManagerJsPlugin
   {
     super.onDestroy();
     BaseRuntimeLoader localBaseRuntimeLoader = AppRuntimeLoaderManager.g().queryAppRunTimeLoader(this.mMiniAppInfo);
-    if ((localBaseRuntimeLoader != null) && (this.mObserver != null)) {
-      localBaseRuntimeLoader.removeRuntimeStateObserver(this.mObserver);
+    if (localBaseRuntimeLoader != null)
+    {
+      AppRuntimeEventCenter.RuntimeStateObserver localRuntimeStateObserver = this.mObserver;
+      if (localRuntimeStateObserver != null) {
+        localBaseRuntimeLoader.removeRuntimeStateObserver(localRuntimeStateObserver);
+      }
     }
   }
   
   @JsEvent({"onUpdateCheckResult"})
   public void onUpdateCheckResult(RequestEvent paramRequestEvent)
   {
-    QMLog.w("UpdateManagerJsPlugin", "handleNativeRequest " + paramRequestEvent.event + " should not send from JS");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleNativeRequest ");
+    localStringBuilder.append(paramRequestEvent.event);
+    localStringBuilder.append(" should not send from JS");
+    QMLog.w("UpdateManagerJsPlugin", localStringBuilder.toString());
   }
   
   @JsEvent({"onUpdateDownloadResult"})
   public void onUpdateDownloadResult(RequestEvent paramRequestEvent)
   {
-    QMLog.w("UpdateManagerJsPlugin", "handleNativeRequest " + paramRequestEvent.event + " should not send from JS");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleNativeRequest ");
+    localStringBuilder.append(paramRequestEvent.event);
+    localStringBuilder.append(" should not send from JS");
+    QMLog.w("UpdateManagerJsPlugin", localStringBuilder.toString());
   }
   
   @JsEvent({"updateApp"})
   public void updateApp(RequestEvent paramRequestEvent)
   {
     JsApiUpdateManager.handleUpdateApp();
-    QMLog.d("UpdateManagerJsPlugin", "handleNativeRequest " + paramRequestEvent.event);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleNativeRequest ");
+    localStringBuilder.append(paramRequestEvent.event);
+    QMLog.d("UpdateManagerJsPlugin", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.UpdateManagerJsPlugin
  * JD-Core Version:    0.7.0.1
  */

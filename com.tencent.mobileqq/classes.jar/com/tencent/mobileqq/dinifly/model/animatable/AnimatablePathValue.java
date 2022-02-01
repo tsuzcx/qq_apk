@@ -38,12 +38,22 @@ public class AnimatablePathValue
   
   public boolean isStatic()
   {
-    return (this.keyframes.size() == 1) && (((Keyframe)this.keyframes.get(0)).isStatic());
+    int i = this.keyframes.size();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i == 1)
+    {
+      bool1 = bool2;
+      if (((Keyframe)this.keyframes.get(0)).isStatic()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.animatable.AnimatablePathValue
  * JD-Core Version:    0.7.0.1
  */

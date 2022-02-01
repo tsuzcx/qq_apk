@@ -23,14 +23,13 @@ public class LightTestCase
     }
     long l = 0L;
     if (paramEGLContext != EGL14.EGL_NO_CONTEXT) {
-      if (Build.VERSION.SDK_INT < 21) {
-        break label49;
+      if (Build.VERSION.SDK_INT >= 21) {
+        l = paramEGLContext.getNativeHandle();
+      } else {
+        l = paramEGLContext.getHandle();
       }
     }
-    label49:
-    for (l = paramEGLContext.getNativeHandle();; l = paramEGLContext.getHandle()) {
-      return Make(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramFloat, l);
-    }
+    return Make(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2, paramFloat, l);
   }
   
   private native void nativeFinalize();
@@ -60,7 +59,7 @@ public class LightTestCase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.LightTestCase
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,6 @@ import mqq.os.MqqHandler;
 final class PlayModeUtils$10
   implements GetShareGroupInfoHandler.OnGetShareGroupInfoCallback
 {
-  PlayModeUtils$10(GetShareGroupInfoHandler.OnGetShareGroupInfoCallback paramOnGetShareGroupInfoCallback) {}
-  
   public void a(GetShareGroupInfoHandler.GetShareGroupInfoEvent paramGetShareGroupInfoEvent)
   {
     ThreadManager.getUIHandler().post(new PlayModeUtils.10.1(this, paramGetShareGroupInfoEvent));
@@ -17,7 +15,7 @@ final class PlayModeUtils$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.10
  * JD-Core Version:    0.7.0.1
  */

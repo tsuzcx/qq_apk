@@ -16,16 +16,17 @@ class TroopMemberListActivity$30
   {
     if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a.setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mSearchDialog.show();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mRootView.setAnimation(null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mTitleBar.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_b_of_type_AndroidWidgetLinearLayout.requestLayout();
+    if (paramAnimation == this.b)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mRootView.setAnimation(null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mRootView.offsetTopAndBottom(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.mRootView.requestLayout();
+    }
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -34,7 +35,7 @@ class TroopMemberListActivity$30
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.30
  * JD-Core Version:    0.7.0.1
  */

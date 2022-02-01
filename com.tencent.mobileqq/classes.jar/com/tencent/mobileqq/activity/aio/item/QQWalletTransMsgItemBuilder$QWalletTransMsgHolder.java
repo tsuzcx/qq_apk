@@ -4,7 +4,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.qwallet.QQWalletTransferBubbleView;
+import com.tencent.mobileqq.qwallet.widget.QQWalletTransferBubbleView;
 
 public class QQWalletTransMsgItemBuilder$QWalletTransMsgHolder
   extends BaseBubbleBuilder.ViewHolder
@@ -25,7 +25,7 @@ public class QQWalletTransMsgItemBuilder$QWalletTransMsgHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQWalletTransMsgItemBuilder.QWalletTransMsgHolder
  * JD-Core Version:    0.7.0.1
  */

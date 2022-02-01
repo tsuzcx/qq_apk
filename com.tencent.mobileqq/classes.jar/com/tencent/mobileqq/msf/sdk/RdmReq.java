@@ -68,7 +68,31 @@ public final class RdmReq
   
   public String toString()
   {
-    return "RdmReq{reportType=" + this.reportType + ", eventName='" + this.eventName + '\'' + ", isSucceed=" + this.isSucceed + ", elapse=" + this.elapse + ", size=" + this.size + ", params=" + this.params + ", isRealTime=" + this.isRealTime + ", isMerge=" + this.isMerge + ", appKey='" + this.appKey + '\'' + ", isImmediatelyUpload=" + this.isImmediatelyUpload + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RdmReq{reportType=");
+    localStringBuilder.append(this.reportType);
+    localStringBuilder.append(", eventName='");
+    localStringBuilder.append(this.eventName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isSucceed=");
+    localStringBuilder.append(this.isSucceed);
+    localStringBuilder.append(", elapse=");
+    localStringBuilder.append(this.elapse);
+    localStringBuilder.append(", size=");
+    localStringBuilder.append(this.size);
+    localStringBuilder.append(", params=");
+    localStringBuilder.append(this.params);
+    localStringBuilder.append(", isRealTime=");
+    localStringBuilder.append(this.isRealTime);
+    localStringBuilder.append(", isMerge=");
+    localStringBuilder.append(this.isMerge);
+    localStringBuilder.append(", appKey='");
+    localStringBuilder.append(this.appKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isImmediatelyUpload=");
+    localStringBuilder.append(this.isImmediatelyUpload);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -81,15 +105,16 @@ public final class RdmReq
     paramJceOutputStream.write(this.params, 6);
     paramJceOutputStream.write(this.isRealTime, 7);
     paramJceOutputStream.write(this.isMerge, 8);
-    if (this.appKey != null) {
-      paramJceOutputStream.write(this.appKey, 9);
+    String str = this.appKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
     paramJceOutputStream.write(this.isImmediatelyUpload, 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.RdmReq
  * JD-Core Version:    0.7.0.1
  */

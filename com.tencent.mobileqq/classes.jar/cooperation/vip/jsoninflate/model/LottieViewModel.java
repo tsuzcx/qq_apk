@@ -32,34 +32,33 @@ public class LottieViewModel
   
   protected void a(String paramString1, String paramString2)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {}
-    do
-    {
+    if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {
       return;
-      if ("content".equals(paramString1))
-      {
-        this.jdField_a_of_type_JavaLangString = paramString2;
-        return;
-      }
-      if ("loop".equals(paramString1))
-      {
-        if (Integer.parseInt(paramString2) == 1) {}
-        for (;;)
-        {
-          this.jdField_a_of_type_Boolean = bool1;
-          return;
-          bool1 = false;
-        }
-      }
-    } while (!"auto_play".equals(paramString1));
-    if (Integer.parseInt(paramString2) == 1) {}
-    for (bool1 = bool2;; bool1 = false)
+    }
+    if ("content".equals(paramString1))
     {
+      this.jdField_a_of_type_JavaLangString = paramString2;
+      return;
+    }
+    boolean bool3 = "loop".equals(paramString1);
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (bool3)
+    {
+      if (Integer.parseInt(paramString2) == 1) {
+        bool1 = true;
+      }
+      this.jdField_a_of_type_Boolean = bool1;
+      return;
+    }
+    if ("auto_play".equals(paramString1))
+    {
+      bool1 = bool2;
+      if (Integer.parseInt(paramString2) == 1) {
+        bool1 = true;
+      }
       this.b = bool1;
-      return;
     }
   }
   
@@ -74,21 +73,26 @@ public class LottieViewModel
     }
     ((DiniFlyAnimationView)this.jdField_a_of_type_AndroidViewView).loop(this.jdField_a_of_type_Boolean);
     ((DiniFlyAnimationView)this.jdField_a_of_type_AndroidViewView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-    if (QLog.isColorLevel()) {
-      QLog.i("JsonInflateViewModel", 0, " lottie url = " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" lottie url = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      QLog.i("JsonInflateViewModel", 0, ((StringBuilder)localObject).toString());
     }
-    LottieLoader localLottieLoader1 = this.jdField_a_of_type_ComTencentMobileqqVasWidgetLottieLottieLoader;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasWidgetLottieLottieLoader;
     DiniFlyAnimationView localDiniFlyAnimationView = (DiniFlyAnimationView)this.jdField_a_of_type_AndroidViewView;
     String str = this.jdField_a_of_type_JavaLangString;
-    LottieLoader localLottieLoader2 = this.jdField_a_of_type_ComTencentMobileqqVasWidgetLottieLottieLoader;
-    localLottieLoader1.fromNetworkWithCacheBitmap(localDiniFlyAnimationView, str, LottieLoader.makeApolloZipPath(this.jdField_a_of_type_JavaLangString), this.b);
+    LottieLoader localLottieLoader = this.jdField_a_of_type_ComTencentMobileqqVasWidgetLottieLottieLoader;
+    ((LottieLoader)localObject).fromNetworkWithCacheBitmap(localDiniFlyAnimationView, str, LottieLoader.makeApolloZipPath(str), this.b);
   }
   
   public void c()
   {
     super.c();
-    if (this.jdField_a_of_type_ComTencentMobileqqVasWidgetLottieLottieLoader != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasWidgetLottieLottieLoader.destroy();
+    LottieLoader localLottieLoader = this.jdField_a_of_type_ComTencentMobileqqVasWidgetLottieLottieLoader;
+    if (localLottieLoader != null) {
+      localLottieLoader.destroy();
     }
   }
   
@@ -110,7 +114,7 @@ public class LottieViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.jsoninflate.model.LottieViewModel
  * JD-Core Version:    0.7.0.1
  */

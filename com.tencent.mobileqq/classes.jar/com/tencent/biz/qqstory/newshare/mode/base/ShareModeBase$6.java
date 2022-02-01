@@ -1,26 +1,24 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddInteractViewJob;
-import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
+import com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob;
 
 class ShareModeBase$6
-  extends AddInteractViewJob
+  extends UrlDrawableDownloadJob
 {
-  ShareModeBase$6(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareWeChatData paramShareWeChatData)
+  ShareModeBase$6(ShareModeBase paramShareModeBase, String paramString)
   {
-    super(paramStoryVideoItem);
+    super(paramString);
   }
   
   public boolean b()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.e = ((String)a("result"));
+    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.6
  * JD-Core Version:    0.7.0.1
  */

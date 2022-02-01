@@ -12,7 +12,7 @@ import com.tencent.qconn.protofile.appType.PassData;
 public final class SdkAuthorize$AuthorizeResponse
   extends MessageMicro<AuthorizeResponse>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 74, 82, 90, 96, 106, 114, 122, 130, 138, 146 }, new String[] { "ret", "msg", "access_token", "expires_in", "openid", "pay_token", "encrytoken", "pf", "pfkey", "encrykey", "md5key", "sendinstall", "installwording", "passDataResp", "signQQkey", "md5QQkey", "callbackURL", "universalLink" }, new Object[] { Integer.valueOf(0), "", "", Long.valueOf(0L), "", "", "", "", "", "", "", Integer.valueOf(0), "", null, "", "", "", "" }, AuthorizeResponse.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField access_token = PBField.initString("");
   public final PBStringField callbackURL = PBField.initString("");
   public final PBStringField encrykey = PBField.initString("");
@@ -31,10 +31,16 @@ public final class SdkAuthorize$AuthorizeResponse
   public final PBUInt32Field sendinstall = PBField.initUInt32(0);
   public final PBStringField signQQkey = PBField.initString("");
   public final PBStringField universalLink = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 74, 82, 90, 96, 106, 114, 122, 130, 138, 146 }, new String[] { "ret", "msg", "access_token", "expires_in", "openid", "pay_token", "encrytoken", "pf", "pfkey", "encrykey", "md5key", "sendinstall", "installwording", "passDataResp", "signQQkey", "md5QQkey", "callbackURL", "universalLink" }, new Object[] { localInteger, "", "", Long.valueOf(0L), "", "", "", "", "", "", "", localInteger, "", null, "", "", "", "" }, AuthorizeResponse.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse
  * JD-Core Version:    0.7.0.1
  */

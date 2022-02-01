@@ -16,13 +16,28 @@ public class ARCloudOcrResult$YoutuOcrResult
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",session_id:").append(this.c).append(",content:").append(this.d).append(",language").append(this.e).append(",ocr_language_list").append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append("ssoErrCode:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",ssoErrMsg:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",errCode:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",errMsg:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",session_id:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",content:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",language");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",ocr_language_list");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.ARCloudOcrResult.YoutuOcrResult
  * JD-Core Version:    0.7.0.1
  */

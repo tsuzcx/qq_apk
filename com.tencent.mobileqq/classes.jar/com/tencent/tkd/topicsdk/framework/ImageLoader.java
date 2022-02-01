@@ -35,13 +35,6 @@ public final class ImageLoader
   }
   
   @NotNull
-  public final ImageLoader a()
-  {
-    this.c = -1;
-    return this;
-  }
-  
-  @NotNull
   public final ImageLoader a(int paramInt)
   {
     this.c = paramInt;
@@ -86,7 +79,7 @@ public final class ImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.ImageLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -68,131 +68,124 @@ public class LiveInfoProvider
     localObject1 = new LiveWatchMediaInfo();
     if (paramEnterRoomReply.sdkInfo != null)
     {
-      Object localObject2;
-      Object localObject3;
-      int k;
-      int i;
       switch (paramEnterRoomReply.sdkInfo.videoStatus)
       {
       default: 
         ((LiveWatchMediaInfo)localObject1).mVideoStatus = LiveVideoStatus.Unknown;
-        ((LiveWatchMediaInfo)localObject1).mRtmp_url = "";
-        ((LiveWatchMediaInfo)localObject1).mRtmp_url_high = "";
-        ((LiveWatchMediaInfo)localObject1).mRtmp_url_low = "";
-        ((LiveWatchMediaInfo)localObject1).mRtmp_url_lowest = "";
-        if (paramEnterRoomReply.sdkInfo.rtmp != null)
-        {
-          ((LiveWatchMediaInfo)localObject1).mRtmp_url = paramEnterRoomReply.sdkInfo.rtmp.raw;
-          ((LiveWatchMediaInfo)localObject1).mRtmp_url_high = paramEnterRoomReply.sdkInfo.rtmp.hd;
-          ((LiveWatchMediaInfo)localObject1).mRtmp_url_low = paramEnterRoomReply.sdkInfo.rtmp.sd;
-          ((LiveWatchMediaInfo)localObject1).mRtmp_url_lowest = paramEnterRoomReply.sdkInfo.rtmp.ld;
-        }
-        if (paramEnterRoomReply.sdkInfo.hls != null) {
-          ((LiveWatchMediaInfo)localObject1).mHLS_url = paramEnterRoomReply.sdkInfo.hls.raw;
-        }
-        if (paramEnterRoomReply.sdkInfo.flv != null)
-        {
-          ((LiveWatchMediaInfo)localObject1).mFlv_url = paramEnterRoomReply.sdkInfo.flv.raw;
-          ((LiveWatchMediaInfo)localObject1).mFlv_url_high = paramEnterRoomReply.sdkInfo.flv.hd;
-          ((LiveWatchMediaInfo)localObject1).mFlv_url_low = paramEnterRoomReply.sdkInfo.flv.sd;
-          ((LiveWatchMediaInfo)localObject1).mFlv_url_lowest = paramEnterRoomReply.sdkInfo.flv.ld;
-        }
-        ((LiveWatchMediaInfo)localObject1).sig = paramEnterRoomReply.sdkInfo.sig;
-        ((LiveWatchMediaInfo)localObject1).sigTimeOut = paramEnterRoomReply.sdkInfo.time;
-        ((LiveWatchMediaInfo)localObject1).mSdkType = paramEnterRoomReply.sdkInfo.mode;
-        if (paramEnterRoomReply.sdkInfo.streamInfo == null) {
-          break label995;
-        }
-        localObject2 = paramEnterRoomReply.sdkInfo.streamInfo;
-        ((LiveWatchMediaInfo)localObject1).sugLevel = ((DesignatedStreamInfo)localObject2).sugLevel;
-        if ((((DesignatedStreamInfo)localObject2).streams == null) || (((DesignatedStreamInfo)localObject2).streams.length <= 0)) {
-          break label861;
-        }
-        localObject3 = localObject2.streams[0];
-        if (localObject3 == null) {
-          break label1109;
-        }
-        localObject2 = new ServiceStreamInfo();
-        ((ServiceStreamInfo)localObject2).name = ((Stream)localObject3).name;
-        ((ServiceStreamInfo)localObject2).rawLevel = ((Stream)localObject3).rawLevel;
-        ((LiveWatchMediaInfo)localObject1).mLevel = ((ServiceStreamInfo)localObject2).rawLevel;
-        if (((Stream)localObject3).frames != null)
-        {
-          localObject3 = ((Stream)localObject3).frames;
-          k = localObject3.length;
-          i = 0;
-        }
+        break;
+      case 4: 
+        ((LiveWatchMediaInfo)localObject1).mVideoStatus = LiveVideoStatus.Stuck;
+        break;
+      case 3: 
+        ((LiveWatchMediaInfo)localObject1).mVideoStatus = LiveVideoStatus.Pause;
+        break;
+      case 2: 
+        ((LiveWatchMediaInfo)localObject1).mVideoStatus = LiveVideoStatus.Stop;
         break;
       case 1: 
       case 5: 
       case 6: 
       case 7: 
-      case 2: 
-      case 3: 
-      case 4: 
-        for (;;)
+        ((LiveWatchMediaInfo)localObject1).mVideoStatus = LiveVideoStatus.Start;
+      }
+      ((LiveWatchMediaInfo)localObject1).mRtmp_url = "";
+      ((LiveWatchMediaInfo)localObject1).mRtmp_url_high = "";
+      ((LiveWatchMediaInfo)localObject1).mRtmp_url_low = "";
+      ((LiveWatchMediaInfo)localObject1).mRtmp_url_lowest = "";
+      if (paramEnterRoomReply.sdkInfo.rtmp != null)
+      {
+        ((LiveWatchMediaInfo)localObject1).mRtmp_url = paramEnterRoomReply.sdkInfo.rtmp.raw;
+        ((LiveWatchMediaInfo)localObject1).mRtmp_url_high = paramEnterRoomReply.sdkInfo.rtmp.hd;
+        ((LiveWatchMediaInfo)localObject1).mRtmp_url_low = paramEnterRoomReply.sdkInfo.rtmp.sd;
+        ((LiveWatchMediaInfo)localObject1).mRtmp_url_lowest = paramEnterRoomReply.sdkInfo.rtmp.ld;
+      }
+      if (paramEnterRoomReply.sdkInfo.hls != null) {
+        ((LiveWatchMediaInfo)localObject1).mHLS_url = paramEnterRoomReply.sdkInfo.hls.raw;
+      }
+      if (paramEnterRoomReply.sdkInfo.flv != null)
+      {
+        ((LiveWatchMediaInfo)localObject1).mFlv_url = paramEnterRoomReply.sdkInfo.flv.raw;
+        ((LiveWatchMediaInfo)localObject1).mFlv_url_high = paramEnterRoomReply.sdkInfo.flv.hd;
+        ((LiveWatchMediaInfo)localObject1).mFlv_url_low = paramEnterRoomReply.sdkInfo.flv.sd;
+        ((LiveWatchMediaInfo)localObject1).mFlv_url_lowest = paramEnterRoomReply.sdkInfo.flv.ld;
+      }
+      ((LiveWatchMediaInfo)localObject1).sig = paramEnterRoomReply.sdkInfo.sig;
+      ((LiveWatchMediaInfo)localObject1).sigTimeOut = paramEnterRoomReply.sdkInfo.time;
+      ((LiveWatchMediaInfo)localObject1).mSdkType = paramEnterRoomReply.sdkInfo.mode;
+      if (paramEnterRoomReply.sdkInfo.streamInfo != null)
+      {
+        Object localObject2 = paramEnterRoomReply.sdkInfo.streamInfo;
+        ((LiveWatchMediaInfo)localObject1).sugLevel = ((DesignatedStreamInfo)localObject2).sugLevel;
+        if ((((DesignatedStreamInfo)localObject2).streams != null) && (((DesignatedStreamInfo)localObject2).streams.length > 0))
         {
-          if (i >= k) {
-            break label854;
-          }
-          Address[] arrayOfAddress = localObject3[i];
-          ServiceFrameInfo localServiceFrameInfo = new ServiceFrameInfo();
-          localServiceFrameInfo.level = arrayOfAddress.level;
-          if (arrayOfAddress.addresses != null)
+          Object localObject3 = localObject2.streams[0];
+          if (localObject3 != null)
           {
-            arrayOfAddress = arrayOfAddress.addresses;
-            int m = arrayOfAddress.length;
-            int j = 0;
-            for (;;)
+            localObject2 = new ServiceStreamInfo();
+            ((ServiceStreamInfo)localObject2).name = ((Stream)localObject3).name;
+            ((ServiceStreamInfo)localObject2).rawLevel = ((Stream)localObject3).rawLevel;
+            ((LiveWatchMediaInfo)localObject1).mLevel = ((ServiceStreamInfo)localObject2).rawLevel;
+            if (((Stream)localObject3).frames != null)
             {
-              if (j < m)
+              localObject3 = ((Stream)localObject3).frames;
+              int k = localObject3.length;
+              int i = 0;
+              while (i < k)
               {
-                Address localAddress = arrayOfAddress[j];
-                ServiceAddressInfo localServiceAddressInfo = new ServiceAddressInfo();
-                localServiceAddressInfo.bitrate = localAddress.bitrate;
-                localServiceAddressInfo.url = localAddress.url;
-                localServiceFrameInfo.addresses.add(localServiceAddressInfo);
-                j += 1;
-                continue;
-                ((LiveWatchMediaInfo)localObject1).mVideoStatus = LiveVideoStatus.Start;
-                break;
-                ((LiveWatchMediaInfo)localObject1).mVideoStatus = LiveVideoStatus.Stop;
-                break;
-                ((LiveWatchMediaInfo)localObject1).mVideoStatus = LiveVideoStatus.Pause;
-                break;
-                ((LiveWatchMediaInfo)localObject1).mVideoStatus = LiveVideoStatus.Stuck;
-                break;
+                Address[] arrayOfAddress = localObject3[i];
+                ServiceFrameInfo localServiceFrameInfo = new ServiceFrameInfo();
+                localServiceFrameInfo.level = arrayOfAddress.level;
+                localServiceFrameInfo.word = arrayOfAddress.definition;
+                if (arrayOfAddress.addresses != null)
+                {
+                  arrayOfAddress = arrayOfAddress.addresses;
+                  int m = arrayOfAddress.length;
+                  int j = 0;
+                  while (j < m)
+                  {
+                    Address localAddress = arrayOfAddress[j];
+                    ServiceAddressInfo localServiceAddressInfo = new ServiceAddressInfo();
+                    localServiceAddressInfo.bitrate = localAddress.bitrate;
+                    localServiceAddressInfo.url = localAddress.url;
+                    localServiceFrameInfo.addresses.add(localServiceAddressInfo);
+                    j += 1;
+                  }
+                }
+                if (localServiceFrameInfo.level == ((LiveWatchMediaInfo)localObject1).sugLevel) {
+                  ((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo = localServiceFrameInfo;
+                }
+                ((ServiceStreamInfo)localObject2).frames.add(localServiceFrameInfo);
+                i += 1;
               }
             }
+            ((LiveWatchMediaInfo)localObject1).serviceStreamInfo = ((ServiceStreamInfo)localObject2);
           }
-          if (localServiceFrameInfo.level == ((LiveWatchMediaInfo)localObject1).sugLevel) {
-            ((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo = localServiceFrameInfo;
+          else if (paramLogInterface != null)
+          {
+            paramLogInterface.e("LiveInfoProvider", "stream = null!!", new Object[0]);
           }
-          ((ServiceStreamInfo)localObject2).frames.add(localServiceFrameInfo);
-          i += 1;
+        }
+        if (((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo != null)
+        {
+          if (((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo.addresses.size() > 0)
+          {
+            ((LiveWatchMediaInfo)localObject1).mUrl = ((ServiceAddressInfo)((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo.addresses.get(0)).url;
+            ((LiveWatchMediaInfo)localObject1).mUrlHigh = ((ServiceAddressInfo)((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo.addresses.get(0)).url;
+            ((LiveWatchMediaInfo)localObject1).mUrlLow = ((ServiceAddressInfo)((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo.addresses.get(0)).url;
+            ((LiveWatchMediaInfo)localObject1).mUrlLowest = ((ServiceAddressInfo)((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo.addresses.get(0)).url;
+          }
+          else if (paramLogInterface != null)
+          {
+            paramLogInterface.e("LiveInfoProvider", "liveWatchMediaInfo.sugFrameInfo.addresses.size() == 0", new Object[0]);
+          }
+        }
+        else if (paramLogInterface != null) {
+          paramLogInterface.e("LiveInfoProvider", "liveWatchMediaInfo.sugFrameInfo = null!!", new Object[0]);
+        }
+        if (paramEnterRoomReply.sdkInfo.streamInfo.switch_ == 1) {
+          ((LiveWatchMediaInfo)localObject1).forceSwitch = true;
         }
       }
-      label854:
-      ((LiveWatchMediaInfo)localObject1).serviceStreamInfo = ((ServiceStreamInfo)localObject2);
-      label861:
-      if (((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo == null) {
-        break label1153;
-      }
-      if (((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo.addresses.size() <= 0) {
-        break label1131;
-      }
-      ((LiveWatchMediaInfo)localObject1).mUrl = ((ServiceAddressInfo)((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo.addresses.get(0)).url;
-      ((LiveWatchMediaInfo)localObject1).mUrlHigh = ((ServiceAddressInfo)((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo.addresses.get(0)).url;
-      ((LiveWatchMediaInfo)localObject1).mUrlLow = ((ServiceAddressInfo)((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo.addresses.get(0)).url;
-      ((LiveWatchMediaInfo)localObject1).mUrlLowest = ((ServiceAddressInfo)((LiveWatchMediaInfo)localObject1).sugServiceFrameInfo.addresses.get(0)).url;
-    }
-    label1153:
-    for (;;)
-    {
-      if (paramEnterRoomReply.sdkInfo.streamInfo.switch_ == 1) {
-        ((LiveWatchMediaInfo)localObject1).forceSwitch = true;
-      }
-      label995:
       if ((paramEnterRoomReply.sdkInfo.rtmp != null) && (TextUtils.isEmpty(((LiveWatchMediaInfo)localObject1).mUrl)))
       {
         ((LiveWatchMediaInfo)localObject1).mUrl = paramEnterRoomReply.sdkInfo.rtmp.raw;
@@ -204,24 +197,9 @@ public class LiveInfoProvider
           paramLogInterface.e("LiveInfoProvider", "liveWatchMediaInfo.mLevel = -1;", new Object[0]);
         }
       }
-      paramEnterRoomInfo.watchMediaInfo = ((LiveWatchMediaInfo)localObject1);
-      return paramEnterRoomInfo;
-      label1109:
-      if (paramLogInterface == null) {
-        break;
-      }
-      paramLogInterface.e("LiveInfoProvider", "stream = null!!", new Object[0]);
-      break;
-      label1131:
-      if (paramLogInterface != null)
-      {
-        paramLogInterface.e("LiveInfoProvider", "liveWatchMediaInfo.sugFrameInfo.addresses.size() == 0", new Object[0]);
-        continue;
-        if (paramLogInterface != null) {
-          paramLogInterface.e("LiveInfoProvider", "liveWatchMediaInfo.sugFrameInfo = null!!", new Object[0]);
-        }
-      }
     }
+    paramEnterRoomInfo.watchMediaInfo = ((LiveWatchMediaInfo)localObject1);
+    return paramEnterRoomInfo;
   }
   
   public static LiveInfo parseLiveInfo(EnterRsp paramEnterRsp, EnterRoomInfo paramEnterRoomInfo)
@@ -269,7 +247,7 @@ public class LiveInfoProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice.LiveInfoProvider
  * JD-Core Version:    0.7.0.1
  */

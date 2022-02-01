@@ -14,8 +14,9 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class qq_ad_get$QQAdGetRsp$AdInfo$Ext
   extends MessageMicro<Ext>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50, 56, 66, 74, 80, 90, 98, 104 }, new String[] { "mini_program_preload", "no_clkcgi_jump", "landing_page_style", "market_deep_link", "disable_auto_download", "market_package_name", "render_pos_type", "exp_map", "xj_offline", "relation_target", "screenshot_url_list", "sk_ad_network", "is_app_preorder" }, new Object[] { Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), "", Boolean.valueOf(false), "", Integer.valueOf(0), null, null, Integer.valueOf(0), "", null, Boolean.valueOf(false) }, Ext.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField disable_auto_download = PBField.initBool(false);
+  public final PBBoolField disable_video_on_top = PBField.initBool(false);
   public final PBRepeatMessageField<qq_ad_get.QQAdGetRsp.AdInfo.ExpParam> exp_map = PBField.initRepeatMessage(qq_ad_get.QQAdGetRsp.AdInfo.ExpParam.class);
   public final PBBoolField is_app_preorder = PBField.initBool(false);
   public final PBInt32Field landing_page_style = PBField.initInt32(0);
@@ -28,10 +29,17 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$Ext
   public final PBRepeatField<String> screenshot_url_list = PBField.initRepeat(PBStringField.__repeatHelper__);
   public qq_ad_get.QQAdGetRsp.AdInfo.SkAdNetwork sk_ad_network = new qq_ad_get.QQAdGetRsp.AdInfo.SkAdNetwork();
   public qq_ad_get.QQAdGetRsp.AdInfo.OfflinePageInfo xj_offline = new qq_ad_get.QQAdGetRsp.AdInfo.OfflinePageInfo();
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 50, 56, 66, 74, 80, 90, 98, 104, 112 }, new String[] { "mini_program_preload", "no_clkcgi_jump", "landing_page_style", "market_deep_link", "disable_auto_download", "market_package_name", "render_pos_type", "exp_map", "xj_offline", "relation_target", "screenshot_url_list", "sk_ad_network", "is_app_preorder", "disable_video_on_top" }, new Object[] { localInteger, localBoolean, localInteger, "", localBoolean, "", localInteger, null, null, localInteger, "", null, localBoolean, localBoolean }, Ext.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext
  * JD-Core Version:    0.7.0.1
  */

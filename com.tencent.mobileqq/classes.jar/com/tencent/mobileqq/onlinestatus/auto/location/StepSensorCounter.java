@@ -35,15 +35,21 @@ public class StepSensorCounter
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] initRecord hasStepCount:", Integer.valueOf(this.d) });
       }
-      return;
     }
-    i -= this.d;
-    int j = i - this.e;
-    if (this.f == 0) {
-      this.c = System.currentTimeMillis();
-    }
-    for (this.f = 1;; this.f += j)
+    else
     {
+      i -= this.d;
+      int j = i - this.e;
+      int k = this.f;
+      if (k == 0)
+      {
+        this.c = System.currentTimeMillis();
+        this.f = 1;
+      }
+      else
+      {
+        this.f = (k + j);
+      }
       a(j);
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] thisStepCount:", Integer.valueOf(i), " thisStep:", Integer.valueOf(j), " sampleStepCount:", Integer.valueOf(this.f) });
@@ -52,8 +58,12 @@ public class StepSensorCounter
       if (this.f >= Constant.B)
       {
         long l = System.currentTimeMillis() - this.c;
-        if ((l > 0L) && (this.f > 0)) {
-          a(l / this.f);
+        if (l > 0L)
+        {
+          i = this.f;
+          if (i > 0) {
+            a(l / i);
+          }
         }
         if (QLog.isColorLevel()) {
           QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] duration:", Long.valueOf(l), " sampleStepStartTime:", Long.valueOf(this.c) });
@@ -62,13 +72,12 @@ public class StepSensorCounter
         this.c = 0L;
       }
       this.jdField_a_of_type_Double = System.currentTimeMillis();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.StepSensorCounter
  * JD-Core Version:    0.7.0.1
  */

@@ -32,24 +32,24 @@ class PagAudioItem
   {
     int j = paramByteBuffer.capacity();
     if (j <= 0) {
-      localObject = "";
+      return "";
     }
-    int i;
-    do
+    int i = 0;
+    paramByteBuffer.position(0);
+    while (i < j)
     {
-      return localObject;
-      i = 0;
-      paramByteBuffer.position(0);
-      localObject = paramString;
-    } while (i >= j);
-    if (j - i > 8192) {}
-    for (Object localObject = new byte[8192];; localObject = new byte[j - i])
-    {
-      paramByteBuffer.get((byte[])localObject);
+      i = j - i;
+      byte[] arrayOfByte;
+      if (i > 8192) {
+        arrayOfByte = new byte[8192];
+      } else {
+        arrayOfByte = new byte[i];
+      }
+      paramByteBuffer.get(arrayOfByte);
       i = paramByteBuffer.position();
-      FileIoUtils.writeFileFromBytesByStream(paramString, (byte[])localObject, true);
-      break;
+      FileIoUtils.writeFileFromBytesByStream(paramString, arrayOfByte, true);
     }
+    return paramString;
   }
   
   CMTime a()
@@ -69,7 +69,7 @@ class PagAudioItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.PagAudioItem
  * JD-Core Version:    0.7.0.1
  */

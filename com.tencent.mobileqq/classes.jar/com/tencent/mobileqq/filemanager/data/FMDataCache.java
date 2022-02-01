@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -20,11 +21,10 @@ public class FMDataCache
   public static int a;
   private static long jdField_a_of_type_Long;
   private static ArrayList<WeiYunFileInfo> jdField_a_of_type_JavaUtilArrayList;
-  private static Map<String, WeiYunFileInfo> jdField_a_of_type_JavaUtilMap;
+  private static Map<String, FMDataCache.TmpSignature> jdField_a_of_type_JavaUtilMap = new HashMap();
   private static Set<FileInfo> jdField_a_of_type_JavaUtilSet = new HashSet();
   public static int b;
-  private static ArrayList<OfflineFileInfo> jdField_b_of_type_JavaUtilArrayList;
-  private static Map<String, FMDataCache.TmpSignature> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private static ArrayList<OfflineFileInfo> b;
   private static int jdField_c_of_type_Int;
   private static ArrayList<FileManagerEntity> jdField_c_of_type_JavaUtilArrayList;
   private static int jdField_d_of_type_Int;
@@ -42,7 +42,6 @@ public class FMDataCache
     jdField_a_of_type_Long = 0L;
     e = new ArrayList();
     f = new ArrayList();
-    jdField_a_of_type_JavaUtilMap = new HashMap();
     jdField_d_of_type_Int = 0;
     jdField_a_of_type_Int = 2;
     jdField_b_of_type_Int = 4;
@@ -51,11 +50,6 @@ public class FMDataCache
   public static long a()
   {
     return jdField_a_of_type_Long;
-  }
-  
-  public static WeiYunFileInfo a(String paramString)
-  {
-    return (WeiYunFileInfo)jdField_a_of_type_JavaUtilMap.remove(paramString);
   }
   
   public static ArrayList<FileInfo> a()
@@ -93,8 +87,10 @@ public class FMDataCache
   
   public static void a(FileInfo paramFileInfo)
   {
-    if (!a(paramFileInfo.a())) {}
-    while (jdField_a_of_type_JavaUtilSet.contains(paramFileInfo)) {
+    if (!a(paramFileInfo.a())) {
+      return;
+    }
+    if (jdField_a_of_type_JavaUtilSet.contains(paramFileInfo)) {
       return;
     }
     jdField_a_of_type_JavaUtilSet.add(paramFileInfo);
@@ -116,17 +112,12 @@ public class FMDataCache
     jdField_a_of_type_JavaUtilArrayList.add(paramWeiYunFileInfo);
   }
   
-  public static void a(String paramString, WeiYunFileInfo paramWeiYunFileInfo)
-  {
-    jdField_a_of_type_JavaUtilMap.put(paramString, paramWeiYunFileInfo);
-  }
-  
   public static void a(String paramString, byte[] paramArrayOfByte)
   {
     FMDataCache.TmpSignature localTmpSignature = new FMDataCache.TmpSignature();
     localTmpSignature.jdField_a_of_type_JavaLangString = paramString;
     localTmpSignature.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    jdField_b_of_type_JavaUtilMap.put(paramString, localTmpSignature);
+    jdField_a_of_type_JavaUtilMap.put(paramString, localTmpSignature);
   }
   
   public static void a(ArrayList<FileInfo> paramArrayList)
@@ -160,13 +151,16 @@ public class FMDataCache
   {
     if ((jdField_c_of_type_Int > 0) && (b() >= jdField_c_of_type_Int))
     {
-      FMToastUtil.a(0, String.format(BaseApplicationImpl.getApplication().getResources().getString(2131692599), new Object[] { Integer.valueOf(jdField_c_of_type_Int) }), 0);
+      FMToastUtil.d(String.format(BaseApplication.getContext().getResources().getString(2131692551), new Object[] { Integer.valueOf(jdField_c_of_type_Int) }));
       return false;
     }
     if ((jdField_a_of_type_Long > 0L) && (d() + paramLong > jdField_a_of_type_Long))
     {
-      String str = BaseApplicationImpl.getApplication().getResources().getString(2131692606);
-      FMToastUtil.a(0, str + FileUtil.a(jdField_a_of_type_Long), 0);
+      String str = BaseApplication.getContext().getResources().getString(2131692558);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(FileUtil.a(jdField_a_of_type_Long));
+      FMToastUtil.d(localStringBuilder.toString());
       return false;
     }
     return true;
@@ -204,11 +198,6 @@ public class FMDataCache
     return false;
   }
   
-  public static boolean a(String paramString)
-  {
-    return jdField_a_of_type_JavaUtilMap.containsKey(paramString);
-  }
-  
   public static long b()
   {
     return jdField_a_of_type_JavaUtilSet.size() + jdField_c_of_type_JavaUtilArrayList.size() + jdField_b_of_type_JavaUtilArrayList.size() + jdField_a_of_type_JavaUtilArrayList.size() + jdField_d_of_type_JavaUtilArrayList.size();
@@ -231,7 +220,7 @@ public class FMDataCache
   
   public static void b(int paramInt)
   {
-    jdField_d_of_type_Int |= paramInt;
+    jdField_d_of_type_Int = paramInt | jdField_d_of_type_Int;
   }
   
   public static void b(long paramLong)
@@ -289,27 +278,43 @@ public class FMDataCache
       return false;
     }
     Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-    String str;
+    Object localObject;
     while (localIterator.hasNext())
     {
-      str = FileUtil.a(((FileInfo)localIterator.next()).d());
-      if ((str == null) || (str.length() == 0)) {
-        return false;
+      localObject = (FileInfo)localIterator.next();
+      localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExtension(((FileInfo)localObject).d());
+      if (localObject != null)
+      {
+        if (((String)localObject).length() == 0) {
+          return false;
+        }
+        localObject = ((String)localObject).toLowerCase();
+        if (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsFile((String)localObject)) {
+          break;
+        }
       }
-      str = str.toLowerCase();
-      if (!TeamWorkUtils.jdField_a_of_type_JavaLangString.contains(str)) {
+      else
+      {
         return false;
       }
     }
     localIterator = jdField_c_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      str = FileUtil.a(((FileManagerEntity)localIterator.next()).fileName);
-      if ((str == null) || (str.length() == 0)) {
-        return false;
+      localObject = (FileManagerEntity)localIterator.next();
+      localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExtension(((FileManagerEntity)localObject).fileName);
+      if (localObject != null)
+      {
+        if (((String)localObject).length() == 0) {
+          return false;
+        }
+        localObject = ((String)localObject).toLowerCase();
+        if (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsFile((String)localObject)) {
+          break;
+        }
       }
-      str = str.toLowerCase();
-      if (!TeamWorkUtils.jdField_a_of_type_JavaLangString.contains(str)) {
+      else
+      {
         return false;
       }
     }
@@ -318,38 +323,43 @@ public class FMDataCache
   
   public static boolean b(FileInfo paramFileInfo)
   {
-    paramFileInfo = FileUtil.a(paramFileInfo.d());
-    if ((paramFileInfo == null) || (paramFileInfo.length() == 0)) {}
-    do
+    paramFileInfo = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExtension(paramFileInfo.d());
+    if (paramFileInfo != null)
     {
-      return false;
+      if (paramFileInfo.length() == 0) {
+        return false;
+      }
       paramFileInfo = paramFileInfo.toLowerCase();
-    } while (!TeamWorkUtils.jdField_a_of_type_JavaLangString.contains(paramFileInfo));
-    return true;
+      return ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsFile(paramFileInfo);
+    }
+    return false;
   }
   
   public static boolean b(FileManagerEntity paramFileManagerEntity)
   {
-    paramFileManagerEntity = FileUtil.a(paramFileManagerEntity.fileName);
-    if ((paramFileManagerEntity == null) || (paramFileManagerEntity.length() == 0)) {}
-    do
+    paramFileManagerEntity = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExtension(paramFileManagerEntity.fileName);
+    if (paramFileManagerEntity != null)
     {
-      return false;
+      if (paramFileManagerEntity.length() == 0) {
+        return false;
+      }
       paramFileManagerEntity = paramFileManagerEntity.toLowerCase();
-    } while (!TeamWorkUtils.jdField_a_of_type_JavaLangString.contains(paramFileManagerEntity));
-    return true;
+      return ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsFile(paramFileManagerEntity);
+    }
+    return false;
   }
   
   public static long c()
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((FileInfo)localIterator.next()).a() + l) {}
-    localIterator = jdField_c_of_type_JavaUtilArrayList.iterator();
+    Object localObject = jdField_a_of_type_JavaUtilSet.iterator();
+    for (long l = 0L; ((Iterator)localObject).hasNext(); l += ((FileInfo)((Iterator)localObject).next()).a()) {}
+    localObject = (IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class);
+    Iterator localIterator = jdField_c_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (FileModel.a(localFileManagerEntity).a(false)) {
-        l += FileUtil.a(localFileManagerEntity.getFilePath());
+      if (((IQQFileTempUtils)localObject).bShowFlowDialog(localFileManagerEntity, false)) {
+        l += ((IQQFileTempUtils)localObject).getFileSize(localFileManagerEntity.getFilePath());
       }
     }
     return l;
@@ -388,7 +398,7 @@ public class FMDataCache
   public static long d()
   {
     Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((FileInfo)localIterator.next()).a() + l) {}
+    for (long l = 0L; localIterator.hasNext(); l += ((FileInfo)localIterator.next()).a()) {}
     localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
       l += ((WeiYunFileInfo)localIterator.next()).jdField_a_of_type_Long;
@@ -416,7 +426,7 @@ public class FMDataCache
   public static long e()
   {
     Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((WeiYunFileInfo)localIterator.next()).jdField_a_of_type_Long + l) {}
+    for (long l = 0L; localIterator.hasNext(); l += ((WeiYunFileInfo)localIterator.next()).jdField_a_of_type_Long) {}
     localIterator = jdField_b_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext()) {
       l += ((OfflineFileInfo)localIterator.next()).jdField_b_of_type_Long;
@@ -425,12 +435,8 @@ public class FMDataCache
     while (localIterator.hasNext())
     {
       FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      switch (localFileManagerEntity.getCloudType())
-      {
-      default: 
-        break;
-      case 1: 
-      case 2: 
+      int i = localFileManagerEntity.getCloudType();
+      if ((i == 1) || (i == 2)) {
         l += localFileManagerEntity.fileSize;
       }
     }
@@ -444,7 +450,7 @@ public class FMDataCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FMDataCache
  * JD-Core Version:    0.7.0.1
  */

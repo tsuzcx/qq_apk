@@ -86,7 +86,6 @@ public final class h
       this.z = "";
       this.A = "";
       this.E = false;
-      if (!paramBoolean) {}
       return;
     }
     catch (Exception localException)
@@ -97,8 +96,12 @@ public final class h
   
   private void a(com.tencent.qapmsdk.impl.a.a.a parama)
   {
-    if ((parama != null) && (this.d != null)) {
-      a(com.tencent.qapmsdk.impl.g.a.c(this.d), parama);
+    if (parama != null)
+    {
+      String str = this.d;
+      if (str != null) {
+        a(com.tencent.qapmsdk.impl.g.a.c(str), parama);
+      }
     }
   }
   
@@ -123,11 +126,14 @@ public final class h
   
   private boolean b(com.tencent.qapmsdk.impl.a.a.a parama)
   {
-    if (parama == null) {}
-    while (parama.e() + parama.d() + parama.f() + parama.c() < parama.j()) {
+    boolean bool = false;
+    if (parama == null) {
       return false;
     }
-    return true;
+    if (parama.e() + parama.d() + parama.f() + parama.c() >= parama.j()) {
+      bool = true;
+    }
+    return bool;
   }
   
   private com.tencent.qapmsdk.impl.a.a.a l()
@@ -135,13 +141,17 @@ public final class h
     if (!f()) {
       Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMTransactionState", "toTransactionData() called on incomplete TransactionState" });
     }
-    if (this.d == null)
+    String str1 = this.d;
+    if (str1 == null)
     {
       Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMTransactionState", "Attempted to convert a TransactionState instance with no URL into a TransactionData" });
       return null;
     }
-    if (this.p == null) {
-      this.p = new com.tencent.qapmsdk.impl.a.a.a(this.d, this.m, this.j, (int)(this.k - this.j), this.f, this.g, this.h, this.i, this.l, this.r, this.s, this.w, this.x, this.y, this.A, this.B, this.D, this.C, this.F, this.o, this.G, this.H, this.K, this.I);
+    if (this.p == null)
+    {
+      String str2 = this.m;
+      long l1 = this.j;
+      this.p = new com.tencent.qapmsdk.impl.a.a.a(str1, str2, l1, (int)(this.k - l1), this.f, this.g, this.h, this.i, this.l, this.r, this.s, this.w, this.x, this.y, this.A, this.B, this.D, this.C, this.F, this.o, this.G, this.H, this.K, this.I);
     }
     a(this.p);
     return this.p;
@@ -166,8 +176,9 @@ public final class h
       Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMTransactionState", "errorCode:", String.valueOf(this.g), ", errorInfo:", this.q });
       return;
     }
-    if (this.p != null) {
-      this.p.e(paramInt);
+    paramString = this.p;
+    if (paramString != null) {
+      paramString.e(paramInt);
     }
     Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMTransactionState", "setErrorCode(...) called on TransactionState in ", this.n.toString(), " state" });
   }
@@ -232,10 +243,12 @@ public final class h
       if (paramInt == 200) {
         Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMTransactionState", "set status code:", String.valueOf(paramInt) });
       }
-      return;
     }
-    this.f = paramInt;
-    Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMTransactionState", "setStatusCode(...) called on TransactionState in ", this.n.toString(), " state" });
+    else
+    {
+      this.f = paramInt;
+      Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMTransactionState", "setStatusCode(...) called on TransactionState in ", this.n.toString(), " state" });
+    }
   }
   
   public void c(long paramLong)
@@ -276,10 +289,12 @@ public final class h
     if (!f())
     {
       this.l = paramString;
-      if ("".equals(paramString)) {}
-      return;
+      if (!"".equals(paramString)) {}
     }
-    Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMTransactionState", "setAppData(...) called on TransactionState in ", this.n.toString(), " state" });
+    else
+    {
+      Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMTransactionState", "setAppData(...) called on TransactionState in ", this.n.toString(), " state" });
+    }
   }
   
   public void e(String paramString)
@@ -305,15 +320,13 @@ public final class h
           paramString = str.substring(0, 1024);
         }
       }
-      if (!e()) {
+      if (!e())
+      {
         this.d = paramString;
+        return;
       }
+      Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMTransactionState", "setUrl(...) called on TransactionState in ", this.n.toString(), " state" });
     }
-    else
-    {
-      return;
-    }
-    Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMTransactionState", "setUrl(...) called on TransactionState in ", this.n.toString(), " state" });
   }
   
   public boolean f()
@@ -333,7 +346,8 @@ public final class h
   
   public boolean h()
   {
-    return (this.f >= 400) || (this.f == -1);
+    int i1 = this.f;
+    return (i1 >= 400) || (i1 == -1);
   }
   
   public long i()
@@ -358,33 +372,83 @@ public final class h
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("url:" + this.d);
-    localStringBuilder.append("statusCode:" + this.f);
-    localStringBuilder.append("errorCode:" + this.g);
-    localStringBuilder.append("bytesSent:" + this.h);
-    localStringBuilder.append("bytesReceived:" + this.i);
-    localStringBuilder.append("startTime:" + this.j);
-    localStringBuilder.append("endTime:" + this.k);
-    localStringBuilder.append("appData:" + this.l);
-    localStringBuilder.append("carrier:" + this.m);
-    localStringBuilder.append("state:" + this.n.ordinal());
-    localStringBuilder.append("contentType:" + this.o);
-    if (this.p != null) {
-      localStringBuilder.append("trancastionData:" + this.p.toString());
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("url:");
+    localStringBuilder2.append(this.d);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("statusCode:");
+    localStringBuilder2.append(this.f);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("errorCode:");
+    localStringBuilder2.append(this.g);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("bytesSent:");
+    localStringBuilder2.append(this.h);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("bytesReceived:");
+    localStringBuilder2.append(this.i);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("startTime:");
+    localStringBuilder2.append(this.j);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("endTime:");
+    localStringBuilder2.append(this.k);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("appData:");
+    localStringBuilder2.append(this.l);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("carrier:");
+    localStringBuilder2.append(this.m);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("state:");
+    localStringBuilder2.append(this.n.ordinal());
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("contentType:");
+    localStringBuilder2.append(this.o);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    if (this.p != null)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("trancastionData:");
+      localStringBuilder2.append(this.p.toString());
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (this.r != null) {
-      localStringBuilder.append("formattedUrlParams:" + this.r);
+    if (this.r != null)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("formattedUrlParams:");
+      localStringBuilder2.append(this.r);
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    localStringBuilder.append("Requestmethodtype:" + this.w);
-    localStringBuilder.append("httplibType:" + this.x);
-    localStringBuilder.append("urlBuilder:" + this.t);
-    return localStringBuilder.toString();
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("Requestmethodtype:");
+    localStringBuilder2.append(this.w);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("httplibType:");
+    localStringBuilder2.append(this.x);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("urlBuilder:");
+    localStringBuilder2.append(this.t);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.h
  * JD-Core Version:    0.7.0.1
  */

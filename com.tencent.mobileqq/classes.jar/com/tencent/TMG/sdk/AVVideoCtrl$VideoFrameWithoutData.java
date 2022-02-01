@@ -1,6 +1,6 @@
 package com.tencent.TMG.sdk;
 
-public class AVVideoCtrl$VideoFrameWithoutData
+class AVVideoCtrl$VideoFrameWithoutData
 {
   public int dataLen;
   public int height;

@@ -10,8 +10,12 @@ class ObjectSurfaceView$5
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ObjectSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onContentClick wikiurl = ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
+      QLog.d("ObjectSurfaceView", 2, localStringBuilder.toString());
     }
     ObjectSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
   }
@@ -23,7 +27,7 @@ class ObjectSurfaceView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ObjectSurfaceView.5
  * JD-Core Version:    0.7.0.1
  */

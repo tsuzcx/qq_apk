@@ -37,17 +37,19 @@ public final class cell_share_card
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.content_buf != null) {
-      paramJceOutputStream.write(this.content_buf, 0);
+    Object localObject = this.content_buf;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 0);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 1);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_share_card
  * JD-Core Version:    0.7.0.1
  */

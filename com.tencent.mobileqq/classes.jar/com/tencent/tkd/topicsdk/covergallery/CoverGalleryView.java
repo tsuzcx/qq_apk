@@ -8,27 +8,38 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import com.tencent.tkd.R.id;
 import com.tencent.tkd.R.layout;
+import com.tencent.tkd.topicsdk.TopicSDK;
+import com.tencent.tkd.topicsdk.TopicSDK.Companion;
+import com.tencent.tkd.topicsdk.TopicSDKConfig;
 import com.tencent.tkd.topicsdk.bean.Media;
 import com.tencent.tkd.topicsdk.framework.TLog;
 import com.tencent.tkd.topicsdk.framework.ThreadManagerKt;
+import com.tencent.tkd.topicsdk.framework.eventdispatch.DispatchManager;
+import com.tencent.tkd.topicsdk.framework.eventdispatch.IEvent;
+import com.tencent.tkd.topicsdk.framework.eventdispatch.report.ReportEventElement;
+import com.tencent.tkd.topicsdk.framework.eventdispatch.report.ReportEventKey;
+import com.tencent.tkd.topicsdk.framework.eventdispatch.report.ReportEventPage;
+import com.tencent.tkd.topicsdk.framework.events.UserActionEvent;
 import com.tencent.tkd.topicsdk.interfaces.IPermission.ISimpleCallback;
+import com.tencent.tkd.topicsdk.interfaces.IStorageConfig;
 import com.tencent.tkd.topicsdk.mediaselector.IMediaContract.IModel;
 import com.tencent.tkd.topicsdk.mediaselector.IMediaContract.IPresenter.DefaultImpls;
 import com.tencent.tkd.topicsdk.mediaselector.IMediaContract.IView;
 import com.tencent.tkd.topicsdk.mediaselector.MediaPresenter;
 import com.tencent.tkd.topicsdk.mediaselector.PanelType;
 import com.tencent.tkd.topicsdk.mediaselector.SelectMediaModel;
+import com.tencent.tkd.topicsdk.ucrop.callback.BitmapCropCallback;
+import com.tencent.tkd.topicsdk.ucrop.view.GestureCropImageView;
+import com.tencent.tkd.topicsdk.ucrop.view.UCropView;
 import com.tencent.tkd.topicsdk.videoprocess.videocapture.OutputPicListener;
 import com.tencent.tkd.topicsdk.widget.AlbumPermissionView;
-import com.tencent.tkd.topicsdk.widget.ucrop.GestureCropImageView;
-import com.tencent.tkd.topicsdk.widget.ucrop.UCropView;
-import com.tencent.tkd.topicsdk.widget.ucrop.callback.CropCallback;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -42,7 +53,7 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/covergallery/CoverGalleryView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/tkd/topicsdk/mediaselector/IMediaContract$IView;", "context", "Landroid/content/Context;", "videoWidth", "", "videoHeight", "coverPath", "", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;IILjava/lang/String;Landroid/util/AttributeSet;)V", "adapter", "Lcom/tencent/tkd/topicsdk/covergallery/CoverGalleryView$GalleryGridAdapter;", "albumPermissionView", "Lcom/tencent/tkd/topicsdk/widget/AlbumPermissionView;", "candidateCover", "Lcom/tencent/tkd/topicsdk/widget/ucrop/UCropView;", "dataContentView", "Landroid/view/View;", "emptyView", "gridView", "Landroid/widget/GridView;", "mediaList", "", "Lcom/tencent/tkd/topicsdk/bean/Media;", "mediaPresenter", "Lcom/tencent/tkd/topicsdk/mediaselector/MediaPresenter;", "checkAndLoadImageList", "", "confirmClick", "outputPicListener", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/OutputPicListener;", "detachViewFromParent", "child", "initView", "loadCandidateImage", "selectMediaInfo", "path", "loadImageList", "loadPlaceHolderImage", "resetCropImageView", "setBitmapOnUiThread", "bitmap", "Landroid/graphics/Bitmap;", "showDataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "mediaMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "updateEmptyView", "isVisible", "", "updatePlaceHolderBitmap", "Companion", "GalleryGridAdapter", "GalleryGridHolder", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/covergallery/CoverGalleryView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/tkd/topicsdk/mediaselector/IMediaContract$IView;", "context", "Landroid/content/Context;", "videoWidth", "", "videoHeight", "coverPath", "", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;IILjava/lang/String;Landroid/util/AttributeSet;)V", "adapter", "Lcom/tencent/tkd/topicsdk/covergallery/CoverGalleryView$GalleryGridAdapter;", "albumPermissionView", "Lcom/tencent/tkd/topicsdk/widget/AlbumPermissionView;", "candidateCover", "Lcom/tencent/tkd/topicsdk/ucrop/view/UCropView;", "dataContentView", "Landroid/view/View;", "emptyView", "gridView", "Landroid/widget/GridView;", "mediaList", "", "Lcom/tencent/tkd/topicsdk/bean/Media;", "mediaPresenter", "Lcom/tencent/tkd/topicsdk/mediaselector/MediaPresenter;", "checkAndLoadImageList", "", "confirmClick", "outputPicListener", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/OutputPicListener;", "detachViewFromParent", "child", "initView", "loadCandidateImage", "selectMediaInfo", "path", "loadImageList", "loadPlaceHolderImage", "reportGalleryCoverAdjusted", "resetCropImageView", "setBitmapOnUiThread", "bitmap", "Landroid/graphics/Bitmap;", "showDataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "mediaMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "updateEmptyView", "isVisible", "", "updatePlaceHolderBitmap", "Companion", "GalleryGridAdapter", "GalleryGridHolder", "topicsdk_release"}, k=1, mv={1, 1, 16})
 @SuppressLint({"ViewConstructor"})
 public final class CoverGalleryView
   extends LinearLayout
@@ -54,8 +65,8 @@ public final class CoverGalleryView
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private CoverGalleryView.GalleryGridAdapter jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter;
   private final MediaPresenter jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaPresenter;
+  private UCropView jdField_a_of_type_ComTencentTkdTopicsdkUcropViewUCropView;
   private AlbumPermissionView jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView;
-  private UCropView jdField_a_of_type_ComTencentTkdTopicsdkWidgetUcropUCropView;
   private String jdField_a_of_type_JavaLangString;
   private List<Media> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int;
@@ -82,16 +93,16 @@ public final class CoverGalleryView
   private final void a()
   {
     this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaPresenter.a((IMediaContract.IView)this);
-    Object localObject = findViewById(R.id.ac);
+    Object localObject = findViewById(R.id.N);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.gv_gallery)");
     this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)localObject);
-    localObject = findViewById(R.id.d);
+    localObject = findViewById(R.id.jdField_a_of_type_Int);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.album_empty_layout)");
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
-    localObject = findViewById(R.id.aq);
+    localObject = findViewById(R.id.ab);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.iv_gallery_cover)");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetUcropUCropView = ((UCropView)localObject);
-    localObject = findViewById(R.id.e);
+    this.jdField_a_of_type_ComTencentTkdTopicsdkUcropViewUCropView = ((UCropView)localObject);
+    localObject = findViewById(R.id.jdField_b_of_type_Int);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.album_permission_view)");
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView = ((AlbumPermissionView)localObject);
     localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView;
@@ -99,7 +110,7 @@ public final class CoverGalleryView
       Intrinsics.throwUninitializedPropertyAccessException("albumPermissionView");
     }
     ((AlbumPermissionView)localObject).setOnPermissionCallback((IPermission.ISimpleCallback)new CoverGalleryView.initView.1(this));
-    localObject = findViewById(R.id.ay);
+    localObject = findViewById(R.id.af);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.ll_content_view)");
     this.jdField_b_of_type_AndroidViewView = ((View)localObject);
     this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a((Function1)new CoverGalleryView.initView.2(this));
@@ -109,8 +120,8 @@ public final class CoverGalleryView
     }
     ((GridView)localObject).setAdapter((ListAdapter)this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter);
     b();
-    c();
     d();
+    e();
   }
   
   private final void a(Media paramMedia)
@@ -136,27 +147,32 @@ public final class CoverGalleryView
   
   private final void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetUcropUCropView;
+    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkUcropViewUCropView;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("candidateCover");
     }
     ((UCropView)localObject).a();
     if ((this.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Int != 0))
     {
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetUcropUCropView;
+      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkUcropViewUCropView;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("candidateCover");
       }
       localObject = ((UCropView)localObject).a();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "candidateCover.cropImageView");
-      ((GestureCropImageView)localObject).setMaxScale(2.0F);
-      ((GestureCropImageView)localObject).setIsDoubleTapEnabled(false);
+      ((GestureCropImageView)localObject).setOnTouchListener((View.OnTouchListener)new CoverGalleryView.resetCropImageView.1(this));
+      ((GestureCropImageView)localObject).setRotateEnabled(false);
       ((GestureCropImageView)localObject).setMaxResultImageSizeX(this.jdField_a_of_type_Int);
       ((GestureCropImageView)localObject).setMaxResultImageSizeY(this.jdField_b_of_type_Int);
       ((GestureCropImageView)localObject).setTargetAspectRatio(this.jdField_a_of_type_Int / this.jdField_b_of_type_Int);
       return;
     }
-    TLog.d("CoverGalleryView", "setAspectRatio error mVideoWidth:" + this.jdField_a_of_type_Int + "mVideoHeight" + this.jdField_b_of_type_Int);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setAspectRatio error mVideoWidth:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(", mVideoHeight");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    TLog.d("CoverGalleryView", ((StringBuilder)localObject).toString());
   }
   
   private final void b(Bitmap paramBitmap)
@@ -169,10 +185,18 @@ public final class CoverGalleryView
   
   private final void c()
   {
-    a(this.jdField_a_of_type_JavaLangString);
+    DispatchManager localDispatchManager = DispatchManager.a;
+    ReportEventKey localReportEventKey = ReportEventKey.EVENT_DRAG;
+    ReportEventElement localReportEventElement = ReportEventElement.WIDGET_UCROP;
+    localDispatchManager.a((IEvent)new UserActionEvent(null, localReportEventKey, ReportEventPage.PAGE_SELECT_VIDEO_COVER, localReportEventElement, null, null, null, 113, null));
   }
   
   private final void d()
+  {
+    a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  private final void e()
   {
     Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView;
     if (localObject == null) {
@@ -180,7 +204,7 @@ public final class CoverGalleryView
     }
     if (((AlbumPermissionView)localObject).a())
     {
-      e();
+      f();
       return;
     }
     localObject = this.jdField_b_of_type_AndroidViewView;
@@ -195,31 +219,33 @@ public final class CoverGalleryView
     ((AlbumPermissionView)localObject).setVisibility(0);
   }
   
-  private final void e()
+  private final void f()
   {
     IMediaContract.IPresenter.DefaultImpls.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaPresenter, PanelType.PHOTO, null, 2, null);
   }
   
   public final void a(@Nullable Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a() >= 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) && (i == 0)) {
-        b(paramBitmap);
-      }
-      return;
+    int i;
+    if (this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView$GalleryGridAdapter.a() >= 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) && (i == 0)) {
+      b(paramBitmap);
     }
   }
   
   public final void a(@NotNull OutputPicListener paramOutputPicListener)
   {
     Intrinsics.checkParameterIsNotNull(paramOutputPicListener, "outputPicListener");
-    UCropView localUCropView = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetUcropUCropView;
+    String str = TopicSDK.a.a().a().a().c();
+    UCropView localUCropView = this.jdField_a_of_type_ComTencentTkdTopicsdkUcropViewUCropView;
     if (localUCropView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("candidateCover");
     }
-    localUCropView.a().a(Bitmap.CompressFormat.JPEG, 90, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, (CropCallback)new CoverGalleryView.confirmClick.1(this, paramOutputPicListener));
+    localUCropView.a().a(Bitmap.CompressFormat.JPEG, 90, str, (BitmapCropCallback)new CoverGalleryView.confirmClick.1(this, paramOutputPicListener));
   }
   
   public void a(@NotNull ArrayList<Media> paramArrayList, @NotNull HashMap<String, ArrayList<Media>> paramHashMap)
@@ -229,18 +255,11 @@ public final class CoverGalleryView
     paramHashMap = (Iterable)paramArrayList;
     paramArrayList = (Collection)new ArrayList();
     paramHashMap = paramHashMap.iterator();
-    label95:
     while (paramHashMap.hasNext())
     {
       Object localObject = paramHashMap.next();
-      if (!StringsKt.endsWith$default(((Media)localObject).getFilePath(), ".gif", false, 2, null)) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label95;
-        }
+      if ((StringsKt.endsWith$default(((Media)localObject).getFilePath(), ".gif", false, 2, null) ^ true)) {
         paramArrayList.add(localObject);
-        break;
       }
     }
     this.jdField_a_of_type_JavaUtilList = ((List)paramArrayList);
@@ -253,15 +272,16 @@ public final class CoverGalleryView
     if (localView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("emptyView");
     }
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localView.setVisibility(i);
   }
   
-  public void detachViewFromParent(@Nullable View paramView)
+  protected void detachViewFromParent(@Nullable View paramView)
   {
     this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorMediaPresenter.a();
     super.detachViewFromParent(paramView);
@@ -269,7 +289,7 @@ public final class CoverGalleryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView
  * JD-Core Version:    0.7.0.1
  */

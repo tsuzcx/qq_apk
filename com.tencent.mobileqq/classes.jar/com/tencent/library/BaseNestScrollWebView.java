@@ -4,9 +4,10 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.webkit.WebView;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtWebView;
 
 public abstract class BaseNestScrollWebView
-  extends WebView
+  extends DtWebView
 {
   public int a;
   private IHeaderView jdField_a_of_type_ComTencentLibraryIHeaderView;
@@ -42,16 +43,22 @@ public abstract class BaseNestScrollWebView
   public void loadUrl(String paramString)
   {
     super.loadUrl(paramString);
-    if (((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) && (this.jdField_a_of_type_ComTencentLibraryILoadingView != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentLibraryILoadingView.a(this);
+    if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+    {
+      paramString = this.jdField_a_of_type_ComTencentLibraryILoadingView;
+      if ((paramString != null) && (this.jdField_a_of_type_Boolean)) {
+        paramString.a(this);
+      }
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool = false;
+    boolean bool;
     if (paramInt == 4) {
       bool = a();
+    } else {
+      bool = false;
     }
     if (bool) {
       return true;
@@ -59,10 +66,11 @@ public abstract class BaseNestScrollWebView
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_ComTencentLibraryIHeaderView != null) && (!this.jdField_a_of_type_ComTencentLibraryIHeaderView.a())) {
+    IHeaderView localIHeaderView = this.jdField_a_of_type_ComTencentLibraryIHeaderView;
+    if ((localIHeaderView != null) && (!localIHeaderView.a())) {
       this.jdField_a_of_type_ComTencentLibraryIHeaderView.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
     this.jdField_a_of_type_Int = paramInt2;
@@ -70,27 +78,39 @@ public abstract class BaseNestScrollWebView
   
   public void setLoadingView(ILoadingView paramILoadingView)
   {
-    if (((paramILoadingView == null) || (!this.jdField_a_of_type_Boolean)) && (this.jdField_a_of_type_ComTencentLibraryILoadingView != null)) {
-      this.jdField_a_of_type_ComTencentLibraryILoadingView.b(this);
+    if ((paramILoadingView == null) || (!this.jdField_a_of_type_Boolean))
+    {
+      ILoadingView localILoadingView = this.jdField_a_of_type_ComTencentLibraryILoadingView;
+      if (localILoadingView != null) {
+        localILoadingView.b(this);
+      }
     }
     if (this.jdField_a_of_type_ComTencentLibraryILoadingView == null) {
       this.jdField_a_of_type_ComTencentLibraryILoadingView = paramILoadingView;
     }
-    if (this.jdField_a_of_type_ComTencentLibraryILoadingView != null) {
-      this.jdField_a_of_type_ComTencentLibraryILoadingView.a(this);
+    paramILoadingView = this.jdField_a_of_type_ComTencentLibraryILoadingView;
+    if (paramILoadingView != null) {
+      paramILoadingView.a(this);
     }
     this.jdField_a_of_type_Boolean = false;
   }
   
   public void setPaddingTop(int paramInt)
   {
-    String str = "if (document.body && document.body.style) {document.body.style.paddingTop='" + UIUtil.a(getContext(), paramInt, this.jdField_a_of_type_ComTencentLibraryIHeaderView) + "px';} void 0";
-    loadUrl("javascript:" + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("if (document.body && document.body.style) {document.body.style.paddingTop='");
+    ((StringBuilder)localObject).append(UIUtil.a(getContext(), paramInt, this.jdField_a_of_type_ComTencentLibraryIHeaderView));
+    ((StringBuilder)localObject).append("px';} void 0");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("javascript:");
+    localStringBuilder.append((String)localObject);
+    loadUrl(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.library.BaseNestScrollWebView
  * JD-Core Version:    0.7.0.1
  */

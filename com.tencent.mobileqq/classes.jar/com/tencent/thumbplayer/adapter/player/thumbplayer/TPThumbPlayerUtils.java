@@ -1,10 +1,24 @@
 package com.tencent.thumbplayer.adapter.player.thumbplayer;
 
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapAudioSampleFormat;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapCodecType;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapDrmType;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapMediaType;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapPixelFormat;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapSubtitleFontStyle;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapSubtitleFormat;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapSubtitleRenderParams;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapVideoH264SeiType;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapVideoHevcSeiType;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMapUtil;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaDrmInfo;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPVideoCropInfo;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPVideoSeiInfo;
 import com.tencent.thumbplayer.api.TPPostProcessFrameBuffer;
 import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
+import com.tencent.thumbplayer.api.TPSubtitleRenderModel;
 import com.tencent.thumbplayer.api.TPSurfaceRenderInfo;
 import com.tencent.thumbplayer.api.TPSurfaceRenderInfo.TPVideoCropInfo;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
@@ -13,18 +27,25 @@ import com.tencent.thumbplayer.core.common.TPPostProcessFrame;
 import com.tencent.thumbplayer.core.common.TPSubtitleFrame;
 import com.tencent.thumbplayer.core.common.TPVideoFrame;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.MediaCodecInfo;
+import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.MediaDrmInfo;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.VideoCropInfo;
+import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.VideoSeiInfo;
 import com.tencent.thumbplayer.core.player.TPNativePlayerSurfaceRenderInfo;
 import com.tencent.thumbplayer.core.player.TPNativePlayerSurfaceRenderInfo.TPVideoCropInfo;
-import com.tencent.thumbplayer.utils.TPEnumUtils;
-import com.tencent.thumbplayer.utils.TPLogUtil;
+import com.tencent.thumbplayer.core.subtitle.TPNativeSubtitleRenderParams;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class TPThumbPlayerUtils
 {
   public static final int OPTIONAL_ID_TYPE_BOOL = 3;
   public static final int OPTIONAL_ID_TYPE_FLOAT = 7;
+  public static final int OPTIONAL_ID_TYPE_ILLEGAL = -1;
   public static final int OPTIONAL_ID_TYPE_INT = 4;
   public static final int OPTIONAL_ID_TYPE_LONG = 1;
+  public static final int OPTIONAL_ID_TYPE_OBJECT = 8;
   public static final int OPTIONAL_ID_TYPE_QUEUE_INT = 5;
   public static final int OPTIONAL_ID_TYPE_QUEUE_STRING = 6;
   public static final int OPTIONAL_ID_TYPE_STRING = 2;
@@ -36,7 +57,7 @@ public class TPThumbPlayerUtils
       return null;
     }
     TPAudioFrameBuffer localTPAudioFrameBuffer = new TPAudioFrameBuffer();
-    localTPAudioFrameBuffer.format = TPEnumUtils.convertAudioFrameFormat2Outter(paramTPAudioFrame.format);
+    localTPAudioFrameBuffer.format = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapAudioSampleFormat.class, paramTPAudioFrame.format);
     localTPAudioFrameBuffer.data = paramTPAudioFrame.data;
     localTPAudioFrameBuffer.size = paramTPAudioFrame.linesize;
     localTPAudioFrameBuffer.sampleRate = paramTPAudioFrame.sampleRate;
@@ -47,52 +68,101 @@ public class TPThumbPlayerUtils
     return localTPAudioFrameBuffer;
   }
   
-  public static int convert2TPDecoderType(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      TPLogUtil.e(TAG, "decoderType: " + paramInt + " not recognition, return -1");
-      return -1;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 101: 
-      return 101;
-    }
-    return 102;
-  }
-  
   public static TPPlayerMsg.TPMediaCodecInfo convert2TPMediaCodecInfo(ITPNativePlayerMessageCallback.MediaCodecInfo paramMediaCodecInfo)
   {
     if (paramMediaCodecInfo == null) {
       return null;
     }
     TPPlayerMsg.TPMediaCodecInfo localTPMediaCodecInfo = new TPPlayerMsg.TPMediaCodecInfo();
-    switch (paramMediaCodecInfo.mediaType)
+    int i = paramMediaCodecInfo.mediaType;
+    if (i != 0)
     {
-    default: 
-      localTPMediaCodecInfo.mediaType = TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_UNKNOWN;
-      switch (paramMediaCodecInfo.infoType)
-      {
-      default: 
-        localTPMediaCodecInfo.infoType = TPPlayerMsg.TPMediaCodecInfo.TP_INFO_UNKNOWN;
+      if (i != 1) {
+        localTPMediaCodecInfo.mediaType = TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_UNKNOWN;
+      } else {
+        localTPMediaCodecInfo.mediaType = TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_AUDIO;
       }
-      break;
     }
-    for (;;)
-    {
-      localTPMediaCodecInfo.msg = paramMediaCodecInfo.msg;
-      return localTPMediaCodecInfo;
+    else {
       localTPMediaCodecInfo.mediaType = TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_VIDEO;
-      break;
-      localTPMediaCodecInfo.mediaType = TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_AUDIO;
-      break;
-      localTPMediaCodecInfo.infoType = TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_READY;
-      continue;
-      localTPMediaCodecInfo.infoType = TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_EXCEPTION;
     }
+    i = paramMediaCodecInfo.infoType;
+    if (i != 0)
+    {
+      if (i != 1) {
+        localTPMediaCodecInfo.infoType = TPPlayerMsg.TPMediaCodecInfo.TP_INFO_UNKNOWN;
+      } else {
+        localTPMediaCodecInfo.infoType = TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_EXCEPTION;
+      }
+    }
+    else {
+      localTPMediaCodecInfo.infoType = TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_READY;
+    }
+    localTPMediaCodecInfo.msg = paramMediaCodecInfo.msg;
+    return localTPMediaCodecInfo;
+  }
+  
+  public static TPPlayerMsg.TPMediaDrmInfo convert2TPMediaDrmInfo(ITPNativePlayerMessageCallback.MediaDrmInfo paramMediaDrmInfo)
+  {
+    if (paramMediaDrmInfo == null) {
+      return null;
+    }
+    TPPlayerMsg.TPMediaDrmInfo localTPMediaDrmInfo = new TPPlayerMsg.TPMediaDrmInfo();
+    localTPMediaDrmInfo.supportSecureDecoder = paramMediaDrmInfo.supportSecureDecoder;
+    localTPMediaDrmInfo.supportSecureDecrypt = paramMediaDrmInfo.supportSecureDecrypt;
+    localTPMediaDrmInfo.componentName = paramMediaDrmInfo.componentName;
+    localTPMediaDrmInfo.drmType = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapDrmType.class, paramMediaDrmInfo.drmType);
+    return localTPMediaDrmInfo;
+  }
+  
+  private static int convert2TPNativeFontStyleFlags(long paramLong)
+  {
+    Iterator localIterator = TPNativeKeyMapUtil.getEntrySetOfMap(TPNativeKeyMap.MapSubtitleFontStyle.class).iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if ((((Number)localEntry.getKey()).intValue() & paramLong) > 0L) {
+        i |= ((Number)localEntry.getValue()).intValue();
+      }
+    }
+    return i;
+  }
+  
+  private static long convert2TPNativeSubtitleParamsFlags(long paramLong)
+  {
+    Iterator localIterator = TPNativeKeyMapUtil.getEntrySetOfMap(TPNativeKeyMap.MapSubtitleRenderParams.class).iterator();
+    long l = 0L;
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if ((((Number)localEntry.getKey()).longValue() & paramLong) > 0L) {
+        l |= ((Number)localEntry.getValue()).longValue();
+      }
+    }
+    return l;
+  }
+  
+  public static TPNativeSubtitleRenderParams convert2TPNativeSubtitleRenderParams(TPSubtitleRenderModel paramTPSubtitleRenderModel)
+  {
+    if (paramTPSubtitleRenderModel == null) {
+      return null;
+    }
+    TPNativeSubtitleRenderParams localTPNativeSubtitleRenderParams = new TPNativeSubtitleRenderParams();
+    localTPNativeSubtitleRenderParams.canvasWidth = paramTPSubtitleRenderModel.canvasWidth;
+    localTPNativeSubtitleRenderParams.canvasHeight = paramTPSubtitleRenderModel.canvasHeight;
+    localTPNativeSubtitleRenderParams.paramFlags = convert2TPNativeSubtitleParamsFlags(paramTPSubtitleRenderModel.paramFlags);
+    localTPNativeSubtitleRenderParams.familyName = paramTPSubtitleRenderModel.familyName;
+    localTPNativeSubtitleRenderParams.fontSize = paramTPSubtitleRenderModel.fontSize;
+    localTPNativeSubtitleRenderParams.fontColor = paramTPSubtitleRenderModel.fontColor;
+    localTPNativeSubtitleRenderParams.fontStyleFlags = convert2TPNativeFontStyleFlags(paramTPSubtitleRenderModel.fontStyleFlags);
+    localTPNativeSubtitleRenderParams.outlineWidth = paramTPSubtitleRenderModel.outlineWidth;
+    localTPNativeSubtitleRenderParams.outlineColor = paramTPSubtitleRenderModel.outlineColor;
+    localTPNativeSubtitleRenderParams.lineSpace = paramTPSubtitleRenderModel.lineSpace;
+    localTPNativeSubtitleRenderParams.startMargin = paramTPSubtitleRenderModel.startMargin;
+    localTPNativeSubtitleRenderParams.endMargin = paramTPSubtitleRenderModel.endMargin;
+    localTPNativeSubtitleRenderParams.verticalMargin = paramTPSubtitleRenderModel.verticalMargin;
+    return localTPNativeSubtitleRenderParams;
   }
   
   public static TPSurfaceRenderInfo convert2TPPlayerSurfaceRenderInfo(TPNativePlayerSurfaceRenderInfo paramTPNativePlayerSurfaceRenderInfo)
@@ -113,30 +183,26 @@ public class TPThumbPlayerUtils
       return null;
     }
     TPPostProcessFrame localTPPostProcessFrame = new TPPostProcessFrame();
-    localTPPostProcessFrame.mediaType = TPEnumUtils.convertMediaType2Inner(paramTPPostProcessFrameBuffer.mediaType);
+    localTPPostProcessFrame.mediaType = TPNativeKeyMapUtil.toNativeIntValue(TPNativeKeyMap.MapMediaType.class, paramTPPostProcessFrameBuffer.mediaType);
     if (localTPPostProcessFrame.mediaType == 0) {
-      localTPPostProcessFrame.format = TPEnumUtils.convertVideoFrameFormat2Inner(paramTPPostProcessFrameBuffer.format);
+      localTPPostProcessFrame.format = TPNativeKeyMapUtil.toNativeIntValue(TPNativeKeyMap.MapPixelFormat.class, paramTPPostProcessFrameBuffer.format);
+    } else if (localTPPostProcessFrame.mediaType == 1) {
+      localTPPostProcessFrame.format = TPNativeKeyMapUtil.toNativeIntValue(TPNativeKeyMap.MapAudioSampleFormat.class, paramTPPostProcessFrameBuffer.format);
     }
-    for (;;)
-    {
-      localTPPostProcessFrame.data = paramTPPostProcessFrameBuffer.data;
-      localTPPostProcessFrame.linesize = paramTPPostProcessFrameBuffer.size;
-      localTPPostProcessFrame.sampleRate = paramTPPostProcessFrameBuffer.sampleRate;
-      localTPPostProcessFrame.channelLayout = paramTPPostProcessFrameBuffer.channelLayout;
-      localTPPostProcessFrame.ptsUs = (paramTPPostProcessFrameBuffer.ptsMs * 1000L);
-      localTPPostProcessFrame.nbSamples = paramTPPostProcessFrameBuffer.nbSamples;
-      localTPPostProcessFrame.channels = paramTPPostProcessFrameBuffer.channels;
-      localTPPostProcessFrame.width = paramTPPostProcessFrameBuffer.width;
-      localTPPostProcessFrame.height = paramTPPostProcessFrameBuffer.height;
-      localTPPostProcessFrame.sampleAspectRatioNum = paramTPPostProcessFrameBuffer.sampleAspectRatioNum;
-      localTPPostProcessFrame.sampleAspectRatioDen = paramTPPostProcessFrameBuffer.sampleAspectRatioDen;
-      localTPPostProcessFrame.rotation = paramTPPostProcessFrameBuffer.rotation;
-      localTPPostProcessFrame.perfData = paramTPPostProcessFrameBuffer.perfData;
-      return localTPPostProcessFrame;
-      if (localTPPostProcessFrame.mediaType == 1) {
-        localTPPostProcessFrame.format = TPEnumUtils.convertAudioFrameFormat2Inner(paramTPPostProcessFrameBuffer.format);
-      }
-    }
+    localTPPostProcessFrame.data = paramTPPostProcessFrameBuffer.data;
+    localTPPostProcessFrame.linesize = paramTPPostProcessFrameBuffer.size;
+    localTPPostProcessFrame.sampleRate = paramTPPostProcessFrameBuffer.sampleRate;
+    localTPPostProcessFrame.channelLayout = paramTPPostProcessFrameBuffer.channelLayout;
+    localTPPostProcessFrame.ptsUs = (paramTPPostProcessFrameBuffer.ptsMs * 1000L);
+    localTPPostProcessFrame.nbSamples = paramTPPostProcessFrameBuffer.nbSamples;
+    localTPPostProcessFrame.channels = paramTPPostProcessFrameBuffer.channels;
+    localTPPostProcessFrame.width = paramTPPostProcessFrameBuffer.width;
+    localTPPostProcessFrame.height = paramTPPostProcessFrameBuffer.height;
+    localTPPostProcessFrame.sampleAspectRatioNum = paramTPPostProcessFrameBuffer.sampleAspectRatioNum;
+    localTPPostProcessFrame.sampleAspectRatioDen = paramTPPostProcessFrameBuffer.sampleAspectRatioDen;
+    localTPPostProcessFrame.rotation = paramTPPostProcessFrameBuffer.rotation;
+    localTPPostProcessFrame.perfData = paramTPPostProcessFrameBuffer.perfData;
+    return localTPPostProcessFrame;
   }
   
   public static TPPostProcessFrameBuffer convert2TPPostProcessFrameBuffer(TPPostProcessFrame paramTPPostProcessFrame)
@@ -145,30 +211,26 @@ public class TPThumbPlayerUtils
       return null;
     }
     TPPostProcessFrameBuffer localTPPostProcessFrameBuffer = new TPPostProcessFrameBuffer();
-    localTPPostProcessFrameBuffer.mediaType = TPEnumUtils.convertMediaType2Outer(paramTPPostProcessFrame.mediaType);
+    localTPPostProcessFrameBuffer.mediaType = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapMediaType.class, paramTPPostProcessFrame.mediaType);
     if (localTPPostProcessFrameBuffer.mediaType == 0) {
-      localTPPostProcessFrameBuffer.format = TPEnumUtils.convertVideoFrameFormat2Outter(paramTPPostProcessFrame.format);
+      localTPPostProcessFrameBuffer.format = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapPixelFormat.class, paramTPPostProcessFrame.format);
+    } else if (localTPPostProcessFrameBuffer.mediaType == 1) {
+      localTPPostProcessFrameBuffer.format = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapAudioSampleFormat.class, paramTPPostProcessFrame.format);
     }
-    for (;;)
-    {
-      localTPPostProcessFrameBuffer.data = paramTPPostProcessFrame.data;
-      localTPPostProcessFrameBuffer.size = paramTPPostProcessFrame.linesize;
-      localTPPostProcessFrameBuffer.sampleRate = paramTPPostProcessFrame.sampleRate;
-      localTPPostProcessFrameBuffer.channelLayout = paramTPPostProcessFrame.channelLayout;
-      localTPPostProcessFrameBuffer.ptsMs = (paramTPPostProcessFrame.ptsUs / 1000L);
-      localTPPostProcessFrameBuffer.nbSamples = paramTPPostProcessFrame.nbSamples;
-      localTPPostProcessFrameBuffer.channels = paramTPPostProcessFrame.channels;
-      localTPPostProcessFrameBuffer.width = paramTPPostProcessFrame.width;
-      localTPPostProcessFrameBuffer.height = paramTPPostProcessFrame.height;
-      localTPPostProcessFrameBuffer.sampleAspectRatioNum = paramTPPostProcessFrame.sampleAspectRatioNum;
-      localTPPostProcessFrameBuffer.sampleAspectRatioDen = paramTPPostProcessFrame.sampleAspectRatioDen;
-      localTPPostProcessFrameBuffer.rotation = paramTPPostProcessFrame.rotation;
-      localTPPostProcessFrameBuffer.perfData = paramTPPostProcessFrame.perfData;
-      return localTPPostProcessFrameBuffer;
-      if (localTPPostProcessFrameBuffer.mediaType == 1) {
-        localTPPostProcessFrameBuffer.format = TPEnumUtils.convertAudioFrameFormat2Outter(paramTPPostProcessFrame.format);
-      }
-    }
+    localTPPostProcessFrameBuffer.data = paramTPPostProcessFrame.data;
+    localTPPostProcessFrameBuffer.size = paramTPPostProcessFrame.linesize;
+    localTPPostProcessFrameBuffer.sampleRate = paramTPPostProcessFrame.sampleRate;
+    localTPPostProcessFrameBuffer.channelLayout = paramTPPostProcessFrame.channelLayout;
+    localTPPostProcessFrameBuffer.ptsMs = (paramTPPostProcessFrame.ptsUs / 1000L);
+    localTPPostProcessFrameBuffer.nbSamples = paramTPPostProcessFrame.nbSamples;
+    localTPPostProcessFrameBuffer.channels = paramTPPostProcessFrame.channels;
+    localTPPostProcessFrameBuffer.width = paramTPPostProcessFrame.width;
+    localTPPostProcessFrameBuffer.height = paramTPPostProcessFrame.height;
+    localTPPostProcessFrameBuffer.sampleAspectRatioNum = paramTPPostProcessFrame.sampleAspectRatioNum;
+    localTPPostProcessFrameBuffer.sampleAspectRatioDen = paramTPPostProcessFrame.sampleAspectRatioDen;
+    localTPPostProcessFrameBuffer.rotation = paramTPPostProcessFrame.rotation;
+    localTPPostProcessFrameBuffer.perfData = paramTPPostProcessFrame.perfData;
+    return localTPPostProcessFrameBuffer;
   }
   
   public static TPSubtitleFrameBuffer convert2TPSubtitleFrameBuffer(TPSubtitleFrame paramTPSubtitleFrame)
@@ -179,7 +241,7 @@ public class TPThumbPlayerUtils
     TPSubtitleFrameBuffer localTPSubtitleFrameBuffer = new TPSubtitleFrameBuffer();
     localTPSubtitleFrameBuffer.data = paramTPSubtitleFrame.data;
     localTPSubtitleFrameBuffer.lineSize = paramTPSubtitleFrame.linesize;
-    localTPSubtitleFrameBuffer.format = TPEnumUtils.convertSubtitleFrameFormat2Outer(paramTPSubtitleFrame.format);
+    localTPSubtitleFrameBuffer.format = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapSubtitleFormat.class, paramTPSubtitleFrame.format);
     localTPSubtitleFrameBuffer.srcHeight = paramTPSubtitleFrame.height;
     localTPSubtitleFrameBuffer.srcWidth = paramTPSubtitleFrame.width;
     localTPSubtitleFrameBuffer.dstHeight = paramTPSubtitleFrame.height;
@@ -224,7 +286,7 @@ public class TPThumbPlayerUtils
     TPVideoFrameBuffer localTPVideoFrameBuffer = new TPVideoFrameBuffer();
     localTPVideoFrameBuffer.data = paramTPVideoFrame.data;
     localTPVideoFrameBuffer.lineSize = paramTPVideoFrame.linesize;
-    localTPVideoFrameBuffer.format = TPEnumUtils.convertVideoFrameFormat2Outter(paramTPVideoFrame.format);
+    localTPVideoFrameBuffer.format = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapPixelFormat.class, paramTPVideoFrame.format);
     localTPVideoFrameBuffer.srcHeight = paramTPVideoFrame.height;
     localTPVideoFrameBuffer.srcWidth = paramTPVideoFrame.width;
     localTPVideoFrameBuffer.dstHeight = paramTPVideoFrame.height;
@@ -236,10 +298,27 @@ public class TPThumbPlayerUtils
     localTPVideoFrameBuffer.ptsMs = (paramTPVideoFrame.ptsUs / 1000L);
     return localTPVideoFrameBuffer;
   }
+  
+  public static TPPlayerMsg.TPVideoSeiInfo convert2TPVideoSeiInfo(ITPNativePlayerMessageCallback.VideoSeiInfo paramVideoSeiInfo)
+  {
+    if (paramVideoSeiInfo == null) {
+      return null;
+    }
+    TPPlayerMsg.TPVideoSeiInfo localTPVideoSeiInfo = new TPPlayerMsg.TPVideoSeiInfo();
+    localTPVideoSeiInfo.videoCodecType = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapCodecType.class, paramVideoSeiInfo.videoCodecType);
+    if (localTPVideoSeiInfo.videoCodecType == 26) {
+      localTPVideoSeiInfo.videoSeiType = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapVideoH264SeiType.class, paramVideoSeiInfo.videoSeiType);
+    } else if (localTPVideoSeiInfo.videoCodecType == 172) {
+      localTPVideoSeiInfo.videoSeiType = TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapVideoHevcSeiType.class, paramVideoSeiInfo.videoSeiType);
+    }
+    localTPVideoSeiInfo.seiDataSize = paramVideoSeiInfo.dataSize;
+    localTPVideoSeiInfo.seiData = Arrays.copyOf(paramVideoSeiInfo.data, paramVideoSeiInfo.dataSize);
+    return localTPVideoSeiInfo;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.thumbplayer.TPThumbPlayerUtils
  * JD-Core Version:    0.7.0.1
  */

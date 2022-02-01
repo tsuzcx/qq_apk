@@ -15,8 +15,9 @@ public class EmosmRandomAccessFile
   
   public int read()
   {
+    int j = read(this.a, 0, 1);
     int i = -1;
-    if (read(this.a, 0, 1) != -1) {
+    if (j != -1) {
       i = this.a[0] & 0xFF;
     }
     return i;
@@ -39,7 +40,7 @@ public class EmosmRandomAccessFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.EmosmRandomAccessFile
  * JD-Core Version:    0.7.0.1
  */

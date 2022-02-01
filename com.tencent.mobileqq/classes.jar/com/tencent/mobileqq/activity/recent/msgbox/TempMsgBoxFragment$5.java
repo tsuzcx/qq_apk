@@ -7,12 +7,12 @@ class TempMsgBoxFragment$5
   
   public void run()
   {
-    TempMsgBoxFragment.c(this.this$0);
+    TempMsgBoxFragment.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxFragment.5
  * JD-Core Version:    0.7.0.1
  */

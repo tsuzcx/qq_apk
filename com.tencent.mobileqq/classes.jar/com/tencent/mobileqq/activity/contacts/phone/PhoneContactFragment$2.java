@@ -21,7 +21,8 @@ class PhoneContactFragment$2
     {
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter == null)
       {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter = new PhoneContactAdapter(PhoneContactFragment.a(this.this$0), PhoneContactFragment.d(this.this$0), this.this$0.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.this$0);
+        PhoneContactFragment localPhoneContactFragment = this.this$0;
+        localPhoneContactFragment.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter = new PhoneContactAdapter(PhoneContactFragment.a(localPhoneContactFragment), PhoneContactFragment.d(this.this$0), this.this$0.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.this$0);
         this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter);
       }
       this.this$0.jdField_a_of_type_ComTencentMobileqqActivityContactsPhonePhoneContactAdapter.a(PhoneContactFragment.e(this.this$0));
@@ -31,7 +32,7 @@ class PhoneContactFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment.2
  * JD-Core Version:    0.7.0.1
  */

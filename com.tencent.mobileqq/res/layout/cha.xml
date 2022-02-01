@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/n35" android:background="@drawable/bl8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="125.0dip" />
-    <com.tencent.avgame.gameroom.stage.util.CountDownClockView android:id="@id/msu" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginBottom="20.5dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-    <RelativeLayout android:id="@id/ne9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginBottom="20.5dip" android:layout_toRightOf="@id/msu" android:layout_alignParentBottom="true">
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerHorizontal="true">
-            <com.tencent.avgame.ui.AVGameText android:id="@id/oc7" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <com.tencent.avgame.ui.AVGameText android:id="@id/oc8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/oc7" />
-        </RelativeLayout>
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <com.tencent.avgame.ui.AVGameSplitNumberView android:id="@id/nd7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/nd6" android:layout_width="125.0dip" android:layout_height="30.0dip" android:layout_marginTop="-4.0dip" android:layout_below="@id/nd7" android:layout_centerHorizontal="true" />
     </RelativeLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/o_u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <TextView android:textSize="25.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/o_r" android:paddingLeft="3.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:text="@string/wms" android:layout_weight="0.27" />
-        <TextView android:textSize="30.0dip" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/o_p" android:paddingLeft="16.0dip" android:paddingRight="19.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:maxLines="2" android:layout_weight="0.73" />
-    </LinearLayout>
-    <ImageView android:id="@id/o7o" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="20.5dip" android:src="@drawable/bla" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</merge>
+    <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/oi8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="33.0dip" android:text="" android:maxLines="2" android:shadowColor="#33000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/oi9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:singleLine="true" android:shadowColor="#33000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_above="@id/oi8" android:layout_centerHorizontal="true" />
+</RelativeLayout>

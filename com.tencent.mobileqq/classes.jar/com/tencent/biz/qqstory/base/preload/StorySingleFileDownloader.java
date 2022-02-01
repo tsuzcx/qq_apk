@@ -39,13 +39,14 @@ public class StorySingleFileDownloader
   
   private void b(DownloadTask paramDownloadTask, ErrorMessage paramErrorMessage)
   {
-    int i = 1;
-    SLog.d("Q.qqstory.download:StorySingleFileDownloader", "on download resp , key: %s , error: %d", new Object[] { paramDownloadTask.jdField_a_of_type_JavaLangString, Integer.valueOf(paramErrorMessage.errorCode) });
-    if (paramErrorMessage.errorCode == 0)
+    Object localObject = paramDownloadTask.jdField_a_of_type_JavaLangString;
+    int i = 0;
+    SLog.d("Q.qqstory.download:StorySingleFileDownloader", "on download resp , key: %s , error: %d", new Object[] { localObject, Integer.valueOf(paramErrorMessage.errorCode) });
+    if (paramErrorMessage.errorCode == 0) {
+      i = 1;
+    }
+    if (i != 0)
     {
-      if (i == 0) {
-        break label147;
-      }
       paramDownloadTask.jdField_b_of_type_Int = 3;
       ((DownloadUrlManager)SuperManager.a(28)).b(paramDownloadTask.jdField_b_of_type_JavaLangString, paramDownloadTask.jdField_a_of_type_Int);
       paramErrorMessage = ((StoryManager)SuperManager.a(5)).a(paramDownloadTask.jdField_b_of_type_JavaLangString);
@@ -57,16 +58,13 @@ public class StorySingleFileDownloader
         a(paramDownloadTask.jdField_b_of_type_JavaLangString, paramDownloadTask.jdField_a_of_type_Int, (StorySingleFileDownloader.FileDownloadListener)paramErrorMessage);
       }
     }
-    label147:
-    Object localObject;
-    do
+    else
     {
-      return;
-      i = 0;
-      break;
       localObject = paramDownloadTask.jdField_a_of_type_JavaUtilMap.get("DOWNLOAD_TASK_KEY_LISTENER");
-    } while ((localObject == null) || (!(localObject instanceof StorySingleFileDownloader.FileDownloadListener)));
-    a(paramDownloadTask.jdField_b_of_type_JavaLangString, paramDownloadTask.jdField_a_of_type_Int, paramErrorMessage, (StorySingleFileDownloader.FileDownloadListener)localObject);
+      if ((localObject != null) && ((localObject instanceof StorySingleFileDownloader.FileDownloadListener))) {
+        a(paramDownloadTask.jdField_b_of_type_JavaLangString, paramDownloadTask.jdField_a_of_type_Int, paramErrorMessage, (StorySingleFileDownloader.FileDownloadListener)localObject);
+      }
+    }
   }
   
   private void b(String paramString, int paramInt, StorySingleFileDownloader.FileDownloadListener paramFileDownloadListener)
@@ -99,7 +97,7 @@ public class StorySingleFileDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.StorySingleFileDownloader
  * JD-Core Version:    0.7.0.1
  */

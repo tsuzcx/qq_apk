@@ -28,7 +28,7 @@ class TroopRedTouchHandler$3
         Object localObject = paramBundle.getByteArray("data");
         paramBundle = new oidb_sso.OIDBSSOPkg();
         paramBundle.mergeFrom((byte[])localObject);
-        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
+        if ((paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
         {
           if (paramBundle.bytes_bodybuffer.get() == null) {
             return;
@@ -43,15 +43,22 @@ class TroopRedTouchHandler$3
             while (((Iterator)localObject).hasNext())
             {
               long l = ((Long)((Iterator)localObject).next()).longValue();
-              paramBundle = paramBundle + String.valueOf(l) + ",";
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append(paramBundle);
+              localStringBuilder.append(String.valueOf(l));
+              localStringBuilder.append(",");
+              paramBundle = localStringBuilder.toString();
             }
             if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
             {
-              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "reportRedTouchHasClick failed result is:" + paramBundle);
-              return;
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("reportRedTouchHasClick failed result is:");
+              ((StringBuilder)localObject).append(paramBundle);
+              QLog.d("SplashActivityQ.qqstory.redPoint", 2, ((StringBuilder)localObject).toString());
             }
           }
         }
+        else {}
       }
       catch (InvalidProtocolBufferMicroException paramBundle)
       {
@@ -62,7 +69,7 @@ class TroopRedTouchHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchHandler.3
  * JD-Core Version:    0.7.0.1
  */

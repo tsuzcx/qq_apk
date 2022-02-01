@@ -1,7 +1,6 @@
 package com.tencent.qqmini.sdk.utils;
 
 import android.os.Handler;
-import android.text.TextUtils;
 import android.util.LruCache;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.utils.FileUtils;
@@ -53,21 +52,22 @@ public class MiniLog
   
   private static Integer getLastLogNum(String paramString, Integer paramInteger, File paramFile)
   {
+    localObject = paramInteger;
     if (paramInteger == null)
     {
       paramInteger = Integer.valueOf(1);
-      Integer localInteger = paramInteger;
+      localObject = paramInteger;
       try
       {
         File[] arrayOfFile = paramFile.listFiles();
         paramFile = paramInteger;
         if (arrayOfFile != null)
         {
-          localInteger = paramInteger;
+          localObject = paramInteger;
           paramFile = paramInteger;
           if (arrayOfFile.length > 0)
           {
-            localInteger = paramInteger;
+            localObject = paramInteger;
             int j = arrayOfFile.length;
             int i = 0;
             for (;;)
@@ -76,23 +76,23 @@ public class MiniLog
               if (i >= j) {
                 break;
               }
-              localInteger = paramInteger;
+              localObject = paramInteger;
               String str = arrayOfFile[i].getName();
               paramFile = paramInteger;
-              localInteger = paramInteger;
+              localObject = paramInteger;
               if (str.contains("log"))
               {
-                localInteger = paramInteger;
+                localObject = paramInteger;
                 str = str.substring(str.lastIndexOf("log") + 1);
                 paramFile = paramInteger;
-                localInteger = paramInteger;
+                localObject = paramInteger;
                 if (isInteger(str))
                 {
                   paramFile = paramInteger;
-                  localInteger = paramInteger;
+                  localObject = paramInteger;
                   if (Integer.valueOf(str).intValue() > paramInteger.intValue())
                   {
-                    localInteger = paramInteger;
+                    localObject = paramInteger;
                     paramFile = Integer.valueOf(str);
                   }
                 }
@@ -102,15 +102,15 @@ public class MiniLog
             }
           }
         }
-        return paramFile;
+        return localObject;
       }
       catch (Exception paramInteger)
       {
         QMLog.e("MiniLog", paramString, paramInteger);
-        paramFile = localInteger;
+        paramFile = (File)localObject;
+        localObject = paramFile;
       }
     }
-    return paramInteger;
   }
   
   public static String getMiniLogFolderPath()
@@ -121,86 +121,132 @@ public class MiniLog
   public static String getMiniLogFolderPath(String paramString)
   {
     String str = LoginManager.getInstance().getAccount();
-    return MiniSDKConst.getMiniCacheFilePath() + MD5Utils.toMD5(paramString) + "/" + str + "/miniprogramLog/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MiniSDKConst.getMiniCacheFilePath());
+    localStringBuilder.append(MD5Utils.toMD5(paramString));
+    localStringBuilder.append("/");
+    localStringBuilder.append(str);
+    localStringBuilder.append("/miniprogramLog/");
+    return localStringBuilder.toString();
   }
   
   private static String getMiniLogPath(String paramString)
   {
     String str = getMiniLogFolderPath(paramString);
-    localObject1 = (Integer)mLastNumCache.get(paramString);
-    localObject2 = new File(str);
+    Integer localInteger1 = (Integer)mLastNumCache.get(paramString);
+    Object localObject2 = new File(str);
     if (!((File)localObject2).exists()) {
       ((File)localObject2).mkdirs();
     }
-    localObject1 = getLastLogNum(paramString, (Integer)localObject1, (File)localObject2);
-    localObject2 = localObject1;
+    localInteger1 = getLastLogNum(paramString, localInteger1, (File)localObject2);
+    localObject2 = localInteger1;
     if (System.currentTimeMillis() - lastCheckLogSizeTime > 60000L)
     {
       lastCheckLogSizeTime = System.currentTimeMillis();
-      localObject2 = localObject1;
-      localObject3 = localObject1;
-    }
-    label179:
-    do
-    {
+      Integer localInteger2 = localInteger1;
       try
       {
-        if (FileUtils.createFile(str + "log" + localObject1).length() > MAX_MINI_LOG_SIZE)
+        Object localObject3 = new StringBuilder();
+        localInteger2 = localInteger1;
+        ((StringBuilder)localObject3).append(str);
+        localInteger2 = localInteger1;
+        ((StringBuilder)localObject3).append("log");
+        localInteger2 = localInteger1;
+        ((StringBuilder)localObject3).append(localInteger1);
+        localInteger2 = localInteger1;
+        localObject2 = localInteger1;
+        if (FileUtils.createFile(((StringBuilder)localObject3).toString()).length() > MAX_MINI_LOG_SIZE)
         {
-          localObject3 = localObject1;
-          if (((Integer)localObject1).intValue() >= 5) {
-            break label179;
+          localInteger2 = localInteger1;
+          if (localInteger1.intValue() < 5)
+          {
+            localInteger2 = localInteger1;
+            localObject2 = Integer.valueOf(localInteger1.intValue() + 1);
           }
-          localObject3 = localObject1;
-          i = ((Integer)localObject1).intValue();
-          localObject2 = Integer.valueOf(i + 1);
+          else
+          {
+            localInteger2 = localInteger1;
+            localObject2 = new StringBuilder();
+            localInteger2 = localInteger1;
+            ((StringBuilder)localObject2).append(str);
+            localInteger2 = localInteger1;
+            ((StringBuilder)localObject2).append("log");
+            localInteger2 = localInteger1;
+            ((StringBuilder)localObject2).append(1);
+            localInteger2 = localInteger1;
+            new File(((StringBuilder)localObject2).toString()).delete();
+            localInteger2 = localInteger1;
+            localInteger1 = Integer.valueOf(1);
+            int i = 2;
+            for (;;)
+            {
+              localObject2 = localInteger1;
+              if (i > 5) {
+                break label463;
+              }
+              localInteger2 = localInteger1;
+              localObject2 = new StringBuilder();
+              localInteger2 = localInteger1;
+              ((StringBuilder)localObject2).append(str);
+              localInteger2 = localInteger1;
+              ((StringBuilder)localObject2).append("log");
+              localInteger2 = localInteger1;
+              ((StringBuilder)localObject2).append(i);
+              localInteger2 = localInteger1;
+              localObject3 = new File(((StringBuilder)localObject2).toString());
+              localObject2 = localInteger1;
+              localInteger2 = localInteger1;
+              if (((File)localObject3).exists())
+              {
+                localInteger2 = localInteger1;
+                localObject2 = new StringBuilder();
+                localInteger2 = localInteger1;
+                ((StringBuilder)localObject2).append("rename from file:log");
+                localInteger2 = localInteger1;
+                ((StringBuilder)localObject2).append(i);
+                localInteger2 = localInteger1;
+                ((StringBuilder)localObject2).append(" to file:");
+                localInteger2 = localInteger1;
+                ((StringBuilder)localObject2).append(localInteger1);
+                localInteger2 = localInteger1;
+                QMLog.i("MiniLog", ((StringBuilder)localObject2).toString());
+                localInteger2 = localInteger1;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localInteger2 = localInteger1;
+                localStringBuilder.append(str);
+                localInteger2 = localInteger1;
+                localStringBuilder.append("log");
+                localInteger2 = localInteger1;
+                localObject2 = Integer.valueOf(localInteger1.intValue() + 1);
+                try
+                {
+                  localStringBuilder.append(localInteger1);
+                  ((File)localObject3).renameTo(new File(localStringBuilder.toString()));
+                }
+                catch (Exception localException1)
+                {
+                  break;
+                }
+              }
+              i += 1;
+              Object localObject1 = localObject2;
+            }
+          }
         }
+        mLastNumCache.put(paramString, localObject2);
       }
-      catch (Exception localException1)
+      catch (Exception localException2)
       {
-        for (;;)
-        {
-          try
-          {
-            int i;
-            File localFile;
-            StringBuilder localStringBuilder;
-            int j;
-            localFile.renameTo(new File(localObject1));
-            localObject1 = localObject2;
-            i += 1;
-          }
-          catch (Exception localException2)
-          {
-            continue;
-          }
-          localException1 = localException1;
-          localObject2 = localObject3;
-          localException1.printStackTrace();
-        }
+        localObject2 = localInteger2;
+        localException2.printStackTrace();
       }
-      mLastNumCache.put(paramString, localObject2);
-      return str + "log" + localObject2;
-      localObject3 = localObject1;
-      new File(str + "log" + 1).delete();
-      localObject3 = localObject1;
-      localObject1 = Integer.valueOf(1);
-      i = 2;
-      localObject2 = localObject1;
-    } while (i > 5);
-    localObject3 = localObject1;
-    localFile = new File(str + "log" + i);
-    localObject3 = localObject1;
-    if (localFile.exists())
-    {
-      localObject3 = localObject1;
-      QMLog.i("MiniLog", "rename from file:log" + i + " to file:" + localObject1);
-      localObject3 = localObject1;
-      localStringBuilder = new StringBuilder().append(str).append("log");
-      localObject3 = localObject1;
-      j = ((Integer)localObject1).intValue();
-      localObject2 = Integer.valueOf(j + 1);
     }
+    label463:
+    paramString = new StringBuilder();
+    paramString.append(str);
+    paramString.append("log");
+    paramString.append(localObject2);
+    return paramString.toString();
   }
   
   private static void initWriteHandler()
@@ -248,69 +294,138 @@ public class MiniLog
     addMiniLogItem(getMiniLogPath(paramString1), paramString2);
   }
   
+  /* Error */
   private static void writeMiniLogToFile()
   {
-    for (;;)
-    {
-      try
-      {
-        if (miniQueue.isEmpty()) {
-          break label186;
-        }
-        localMiniItem = (MiniLog.MiniItem)miniQueue.poll();
-        if ((localMiniItem == null) || (TextUtils.isEmpty(localMiniItem.filePath))) {
-          continue;
-        }
-        str = localMiniItem.filePath;
-        localFile = new File(str);
-        if (localFile.exists()) {
-          continue;
-        }
-        FileUtils.createFile(str);
-        localBufferedWriter1 = new BufferedWriter(new MiniLogWriter(localFile, true), 8192);
-      }
-      catch (Throwable localThrowable)
-      {
-        MiniLog.MiniItem localMiniItem;
-        String str;
-        File localFile;
-        BufferedWriter localBufferedWriter1;
-        if (localThrowable.getMessage() == null) {
-          continue;
-        }
-        QMLog.e("MiniLog", localThrowable.getMessage());
-        try
-        {
-          return;
-        }
-        finally {}
-        localBufferedWriter2 = (BufferedWriter)miniFlushMap.get(str);
-        localObject1 = localBufferedWriter2;
-        if (localBufferedWriter2 != null) {
-          continue;
-        }
-        localObject1 = new BufferedWriter(new MiniLogWriter(localFile, true), 8192);
-        continue;
-      }
-      finally
-      {
-        miniFlushAndClean();
-      }
-      localBufferedWriter1.write(localMiniItem.msg);
-      miniFlushMap.put(str, localBufferedWriter1);
-    }
-    for (;;)
-    {
-      BufferedWriter localBufferedWriter2;
-      Object localObject1;
-      label186:
-      miniFlushAndClean();
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 50	com/tencent/qqmini/sdk/utils/MiniLog:miniQueue	Ljava/util/concurrent/LinkedBlockingQueue;
+    //   6: invokevirtual 324	java/util/concurrent/LinkedBlockingQueue:isEmpty	()Z
+    //   9: ifne +144 -> 153
+    //   12: getstatic 50	com/tencent/qqmini/sdk/utils/MiniLog:miniQueue	Ljava/util/concurrent/LinkedBlockingQueue;
+    //   15: invokevirtual 327	java/util/concurrent/LinkedBlockingQueue:poll	()Ljava/lang/Object;
+    //   18: checkcast 73	com/tencent/qqmini/sdk/utils/MiniLog$MiniItem
+    //   21: astore_2
+    //   22: aload_2
+    //   23: ifnull -20 -> 3
+    //   26: aload_2
+    //   27: getfield 80	com/tencent/qqmini/sdk/utils/MiniLog$MiniItem:filePath	Ljava/lang/String;
+    //   30: invokestatic 331	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   33: ifeq +6 -> 39
+    //   36: goto -33 -> 3
+    //   39: aload_2
+    //   40: getfield 80	com/tencent/qqmini/sdk/utils/MiniLog$MiniItem:filePath	Ljava/lang/String;
+    //   43: astore_3
+    //   44: new 112	java/io/File
+    //   47: dup
+    //   48: aload_3
+    //   49: invokespecial 196	java/io/File:<init>	(Ljava/lang/String;)V
+    //   52: astore 4
+    //   54: aload 4
+    //   56: invokevirtual 200	java/io/File:exists	()Z
+    //   59: ifne +32 -> 91
+    //   62: aload_3
+    //   63: invokestatic 222	com/tencent/qqmini/sdk/core/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   66: pop
+    //   67: new 305	java/io/BufferedWriter
+    //   70: dup
+    //   71: new 333	com/tencent/qqmini/sdk/utils/MiniLogWriter
+    //   74: dup
+    //   75: aload 4
+    //   77: iconst_1
+    //   78: invokespecial 336	com/tencent/qqmini/sdk/utils/MiniLogWriter:<init>	(Ljava/io/File;Z)V
+    //   81: sipush 8192
+    //   84: invokespecial 339	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   87: astore_0
+    //   88: goto +43 -> 131
+    //   91: getstatic 43	com/tencent/qqmini/sdk/utils/MiniLog:miniFlushMap	Ljava/util/Map;
+    //   94: aload_3
+    //   95: invokeinterface 340 2 0
+    //   100: checkcast 305	java/io/BufferedWriter
+    //   103: astore_1
+    //   104: aload_1
+    //   105: astore_0
+    //   106: aload_1
+    //   107: ifnonnull +24 -> 131
+    //   110: new 305	java/io/BufferedWriter
+    //   113: dup
+    //   114: new 333	com/tencent/qqmini/sdk/utils/MiniLogWriter
+    //   117: dup
+    //   118: aload 4
+    //   120: iconst_1
+    //   121: invokespecial 336	com/tencent/qqmini/sdk/utils/MiniLogWriter:<init>	(Ljava/io/File;Z)V
+    //   124: sipush 8192
+    //   127: invokespecial 339	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   130: astore_0
+    //   131: aload_0
+    //   132: aload_2
+    //   133: getfield 77	com/tencent/qqmini/sdk/utils/MiniLog$MiniItem:msg	Ljava/lang/String;
+    //   136: invokevirtual 343	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   139: getstatic 43	com/tencent/qqmini/sdk/utils/MiniLog:miniFlushMap	Ljava/util/Map;
+    //   142: aload_3
+    //   143: aload_0
+    //   144: invokeinterface 344 3 0
+    //   149: pop
+    //   150: goto -147 -> 3
+    //   153: invokestatic 346	com/tencent/qqmini/sdk/utils/MiniLog:miniFlushAndClean	()V
+    //   156: goto +27 -> 183
+    //   159: astore_0
+    //   160: goto +27 -> 187
+    //   163: astore_0
+    //   164: aload_0
+    //   165: invokevirtual 349	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   168: ifnull -15 -> 153
+    //   171: ldc 18
+    //   173: aload_0
+    //   174: invokevirtual 349	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   177: invokestatic 351	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   180: goto -27 -> 153
+    //   183: ldc 2
+    //   185: monitorexit
+    //   186: return
+    //   187: invokestatic 346	com/tencent/qqmini/sdk/utils/MiniLog:miniFlushAndClean	()V
+    //   190: aload_0
+    //   191: athrow
+    //   192: astore_0
+    //   193: ldc 2
+    //   195: monitorexit
+    //   196: goto +5 -> 201
+    //   199: aload_0
+    //   200: athrow
+    //   201: goto -2 -> 199
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   87	57	0	localObject1	Object
+    //   159	1	0	localObject2	Object
+    //   163	28	0	localThrowable	java.lang.Throwable
+    //   192	8	0	localObject3	Object
+    //   103	4	1	localBufferedWriter	BufferedWriter
+    //   21	112	2	localMiniItem	MiniLog.MiniItem
+    //   43	100	3	str	String
+    //   52	67	4	localFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   3	22	159	finally
+    //   26	36	159	finally
+    //   39	88	159	finally
+    //   91	104	159	finally
+    //   110	131	159	finally
+    //   131	150	159	finally
+    //   164	180	159	finally
+    //   3	22	163	java/lang/Throwable
+    //   26	36	163	java/lang/Throwable
+    //   39	88	163	java/lang/Throwable
+    //   91	104	163	java/lang/Throwable
+    //   110	131	163	java/lang/Throwable
+    //   131	150	163	java/lang/Throwable
+    //   153	156	192	finally
+    //   187	192	192	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniLog
  * JD-Core Version:    0.7.0.1
  */

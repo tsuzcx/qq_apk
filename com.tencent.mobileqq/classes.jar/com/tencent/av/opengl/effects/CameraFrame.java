@@ -85,14 +85,25 @@ public class CameraFrame
   
   public static boolean a(SurfaceTexture paramSurfaceTexture)
   {
-    if (jdField_d_of_type_Long == jdField_e_of_type_Long) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SurfaceTag", 2, "checkFrameDealRight, count[" + jdField_d_of_type_Long + "," + jdField_e_of_type_Long + "], surfaceTexture[" + paramSurfaceTexture + "]");
-      }
-      return bool;
+    boolean bool;
+    if (jdField_d_of_type_Long == jdField_e_of_type_Long) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkFrameDealRight, count[");
+      localStringBuilder.append(jdField_d_of_type_Long);
+      localStringBuilder.append(",");
+      localStringBuilder.append(jdField_e_of_type_Long);
+      localStringBuilder.append("], surfaceTexture[");
+      localStringBuilder.append(paramSurfaceTexture);
+      localStringBuilder.append("]");
+      QLog.i("SurfaceTag", 2, localStringBuilder.toString());
+    }
+    return bool;
   }
   
   public static void b(SurfaceTexture paramSurfaceTexture)
@@ -104,35 +115,43 @@ public class CameraFrame
   {
     jdField_d_of_type_Long = 0L;
     jdField_e_of_type_Long = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.i("SurfaceTag", 2, "clearFrameCount, count[" + jdField_d_of_type_Long + "," + jdField_e_of_type_Long + "], surfaceTexture[" + paramSurfaceTexture + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearFrameCount, count[");
+      localStringBuilder.append(jdField_d_of_type_Long);
+      localStringBuilder.append(",");
+      localStringBuilder.append(jdField_e_of_type_Long);
+      localStringBuilder.append("], surfaceTexture[");
+      localStringBuilder.append(paramSurfaceTexture);
+      localStringBuilder.append("]");
+      QLog.i("SurfaceTag", 2, localStringBuilder.toString());
     }
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null) {
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if (arrayOfByte == null) {
       return 0;
     }
-    return this.jdField_a_of_type_ArrayOfByte.length;
+    return arrayOfByte.length;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (!this.jdField_b_of_type_Boolean)) {}
-    try
+    if ((this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (!this.jdField_b_of_type_Boolean))
     {
-      a(null);
-      if (QLog.isColorLevel()) {
-        QLog.i("SurfaceTag", 2, "checkAfterFilterRender, not deal by filter render.");
+      try
+      {
+        a(null);
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         QLog.i("SurfaceTag", 1, "checkAfterFilterRender", localThrowable);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SurfaceTag", 2, "checkAfterFilterRender, not deal by filter render.");
       }
     }
   }
@@ -177,9 +196,10 @@ public class CameraFrame
   
   public void a(float[] paramArrayOfFloat)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+    SurfaceTexture localSurfaceTexture = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    if (localSurfaceTexture != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+      localSurfaceTexture.updateTexImage();
       if (paramArrayOfFloat != null) {
         this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(paramArrayOfFloat);
       }
@@ -195,46 +215,44 @@ public class CameraFrame
   
   public void b()
   {
-    long l;
     if ((QLog.isDevelopLevel()) && (this.jdField_f_of_type_Long != 0L))
     {
-      l = SystemClock.elapsedRealtime() - this.jdField_f_of_type_Long;
+      long l = SystemClock.elapsedRealtime() - this.jdField_f_of_type_Long;
       i += 1;
-      if (i != 1) {
-        break label135;
+      if (i == 1) {
+        jdField_g_of_type_Long = l;
+      } else {
+        jdField_g_of_type_Long = (jdField_g_of_type_Long + l) / 2L;
       }
-      jdField_g_of_type_Long = l;
     }
-    for (;;)
+    if ((this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (!this.jdField_b_of_type_Boolean) && (QLog.isColorLevel())) {
+      QLog.i("SurfaceTag", 2, "recycle when tex not updated.");
+    }
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_b_of_type_Boolean = false;
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (!this.jdField_b_of_type_Boolean) && (QLog.isColorLevel())) {
-        QLog.i("SurfaceTag", 2, "recycle when tex not updated.");
-      }
-      this.jdField_a_of_type_ArrayOfByte = null;
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_c_of_type_Long = 0L;
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_f_of_type_Long = 0L;
-      this.jdField_b_of_type_Boolean = false;
-      synchronized (jdField_a_of_type_JavaLangObject)
+      if (this.jdField_c_of_type_Boolean)
       {
-        if (this.jdField_c_of_type_Boolean) {
-          QLog.i("SurfaceTag", 2, "recycle, error.");
-        }
-        label135:
-        do
-        {
-          return;
-          jdField_g_of_type_Long = (l + jdField_g_of_type_Long) / 2L;
-          break;
-          this.jdField_c_of_type_Boolean = true;
-        } while (h >= 4);
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsCameraFrame = jdField_b_of_type_ComTencentAvOpenglEffectsCameraFrame;
-        jdField_b_of_type_ComTencentAvOpenglEffectsCameraFrame = this;
-        h += 1;
+        QLog.i("SurfaceTag", 2, "recycle, error.");
       }
+      else
+      {
+        this.jdField_c_of_type_Boolean = true;
+        if (h < 4)
+        {
+          this.jdField_a_of_type_ComTencentAvOpenglEffectsCameraFrame = jdField_b_of_type_ComTencentAvOpenglEffectsCameraFrame;
+          jdField_b_of_type_ComTencentAvOpenglEffectsCameraFrame = this;
+          h += 1;
+        }
+      }
+      return;
     }
   }
   
@@ -245,7 +263,7 @@ public class CameraFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.CameraFrame
  * JD-Core Version:    0.7.0.1
  */

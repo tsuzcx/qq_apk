@@ -10,7 +10,7 @@ public class MD5
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_2
+    //   1: astore_1
     //   2: new 17	java/io/FileInputStream
     //   5: dup
     //   6: aload_0
@@ -19,68 +19,65 @@ public class MD5
     //   11: aload_0
     //   12: invokestatic 24	com/tencent/hippy/qq/update/sign/MD5:streamToMD5	(Ljava/io/InputStream;)Ljava/lang/String;
     //   15: astore_1
-    //   16: aload_1
-    //   17: astore_2
-    //   18: aload_0
-    //   19: ifnull +9 -> 28
-    //   22: aload_0
-    //   23: invokevirtual 29	java/io/InputStream:close	()V
-    //   26: aload_1
-    //   27: astore_2
-    //   28: aload_2
-    //   29: areturn
-    //   30: astore_0
-    //   31: aload_0
-    //   32: invokevirtual 32	java/io/IOException:printStackTrace	()V
-    //   35: aload_1
-    //   36: areturn
-    //   37: astore_0
-    //   38: aconst_null
-    //   39: astore_0
-    //   40: aload_0
-    //   41: ifnull -13 -> 28
-    //   44: aload_0
-    //   45: invokevirtual 29	java/io/InputStream:close	()V
-    //   48: aconst_null
-    //   49: areturn
-    //   50: astore_0
-    //   51: aload_0
-    //   52: invokevirtual 32	java/io/IOException:printStackTrace	()V
-    //   55: aconst_null
-    //   56: areturn
-    //   57: astore_1
-    //   58: aconst_null
-    //   59: astore_0
-    //   60: aload_0
-    //   61: ifnull +7 -> 68
-    //   64: aload_0
-    //   65: invokevirtual 29	java/io/InputStream:close	()V
-    //   68: aload_1
-    //   69: athrow
-    //   70: astore_0
-    //   71: aload_0
-    //   72: invokevirtual 32	java/io/IOException:printStackTrace	()V
-    //   75: goto -7 -> 68
-    //   78: astore_1
-    //   79: goto -19 -> 60
+    //   16: aload_0
+    //   17: invokevirtual 29	java/io/InputStream:close	()V
+    //   20: aload_1
+    //   21: areturn
+    //   22: astore_0
+    //   23: aload_0
+    //   24: invokevirtual 32	java/io/IOException:printStackTrace	()V
+    //   27: aload_1
+    //   28: areturn
+    //   29: astore_2
+    //   30: aload_0
+    //   31: astore_1
+    //   32: aload_2
+    //   33: astore_0
+    //   34: goto +7 -> 41
+    //   37: goto +24 -> 61
+    //   40: astore_0
+    //   41: aload_1
+    //   42: ifnull +15 -> 57
+    //   45: aload_1
+    //   46: invokevirtual 29	java/io/InputStream:close	()V
+    //   49: goto +8 -> 57
+    //   52: astore_1
+    //   53: aload_1
+    //   54: invokevirtual 32	java/io/IOException:printStackTrace	()V
+    //   57: aload_0
+    //   58: athrow
+    //   59: aconst_null
+    //   60: astore_0
+    //   61: aload_0
+    //   62: ifnull +14 -> 76
+    //   65: aload_0
+    //   66: invokevirtual 29	java/io/InputStream:close	()V
+    //   69: aconst_null
+    //   70: areturn
+    //   71: astore_0
+    //   72: aload_0
+    //   73: invokevirtual 32	java/io/IOException:printStackTrace	()V
+    //   76: aconst_null
+    //   77: areturn
+    //   78: astore_0
+    //   79: goto -20 -> 59
     //   82: astore_1
-    //   83: goto -43 -> 40
+    //   83: goto -46 -> 37
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	86	0	paramString	String
-    //   15	21	1	str	String
-    //   57	12	1	localObject1	Object
-    //   78	1	1	localObject2	Object
+    //   1	45	1	str	String
+    //   52	2	1	localIOException	java.io.IOException
     //   82	1	1	localException	Exception
-    //   1	28	2	localObject3	Object
+    //   29	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   22	26	30	java/io/IOException
-    //   2	11	37	java/lang/Exception
-    //   44	48	50	java/io/IOException
-    //   2	11	57	finally
-    //   64	68	70	java/io/IOException
-    //   11	16	78	finally
+    //   16	20	22	java/io/IOException
+    //   11	16	29	finally
+    //   2	11	40	finally
+    //   45	49	52	java/io/IOException
+    //   65	69	71	java/io/IOException
+    //   2	11	78	java/lang/Exception
     //   11	16	82	java/lang/Exception
   }
   
@@ -101,7 +98,11 @@ public class MD5
       paramInputStream = toHexString(localMessageDigest.digest());
       return paramInputStream;
     }
-    catch (Exception paramInputStream) {}
+    catch (Exception paramInputStream)
+    {
+      label42:
+      break label42;
+    }
     return null;
   }
   
@@ -115,7 +116,11 @@ public class MD5
       paramString = toHexString(localMessageDigest.digest());
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label26:
+      break label26;
+    }
     return null;
   }
   
@@ -161,8 +166,9 @@ public class MD5
     while (i < j)
     {
       int k = paramArrayOfByte[i];
-      arrayOfChar2[(i * 2)] = arrayOfChar1[(k >>> 4 & 0xF)];
-      arrayOfChar2[(i * 2 + 1)] = arrayOfChar1[(k & 0xF)];
+      int m = i * 2;
+      arrayOfChar2[m] = arrayOfChar1[(k >>> 4 & 0xF)];
+      arrayOfChar2[(m + 1)] = arrayOfChar1[(k & 0xF)];
       i += 1;
     }
     return new String(arrayOfChar2);
@@ -170,7 +176,7 @@ public class MD5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.update.sign.MD5
  * JD-Core Version:    0.7.0.1
  */

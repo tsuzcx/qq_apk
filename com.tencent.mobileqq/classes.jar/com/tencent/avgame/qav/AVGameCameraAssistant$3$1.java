@@ -10,8 +10,15 @@ class AVGameCameraAssistant$3$1
   
   public void a(int paramInt, boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameCameraAssistant", 2, "notifyEvent, id[" + paramInt + "], result[" + paramBoolean + "]");
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("notifyEvent, id[");
+      paramString.append(paramInt);
+      paramString.append("], result[");
+      paramString.append(paramBoolean);
+      paramString.append("]");
+      QLog.i("AVGameCameraAssistant", 2, paramString.toString());
     }
     if ((paramInt == 1) && (paramBoolean))
     {
@@ -24,7 +31,7 @@ class AVGameCameraAssistant$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.AVGameCameraAssistant.3.1
  * JD-Core Version:    0.7.0.1
  */

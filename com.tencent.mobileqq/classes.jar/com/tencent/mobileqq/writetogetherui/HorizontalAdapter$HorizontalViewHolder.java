@@ -13,12 +13,12 @@ public class HorizontalAdapter$HorizontalViewHolder
   public HorizontalAdapter$HorizontalViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131379526));
+    this.a = ((TextView)paramView.findViewById(2131378875));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.HorizontalAdapter.HorizontalViewHolder
  * JD-Core Version:    0.7.0.1
  */

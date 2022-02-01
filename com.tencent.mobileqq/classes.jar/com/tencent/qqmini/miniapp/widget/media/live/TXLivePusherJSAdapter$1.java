@@ -1,24 +1,42 @@
 package com.tencent.qqmini.miniapp.widget.media.live;
 
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import com.tencent.qqmini.sdk.launcher.core.proxy.TXLivePushListenerReflect.ITXSnapshotListener;
 
 class TXLivePusherJSAdapter$1
-  implements Runnable
+  implements TXLivePushListenerReflect.ITXSnapshotListener
 {
-  TXLivePusherJSAdapter$1(TXLivePusherJSAdapter paramTXLivePusherJSAdapter, int paramInt) {}
+  TXLivePusherJSAdapter$1(TXLivePusherJSAdapter paramTXLivePusherJSAdapter, TXLivePushListenerReflect.ITXSnapshotListener paramITXSnapshotListener, boolean paramBoolean) {}
   
-  public void run()
+  public void onSnapshot(Bitmap paramBitmap)
   {
-    TXLivePusherJSAdapter.access$002(this.this$0, this.val$angle);
-    if (QMLog.isColorLevel()) {
-      QMLog.d("TXLivePusherJSAdapter", "notifyOrientationChanged, angle:" + this.val$angle + ", orientation:" + TXLivePusherJSAdapter.access$100(this.this$0));
+    Object localObject = this.val$listener;
+    if (localObject != null)
+    {
+      if (this.val$needCompress)
+      {
+        if (paramBitmap != null)
+        {
+          int i = paramBitmap.getWidth();
+          int j = paramBitmap.getHeight();
+          localObject = new Matrix();
+          ((Matrix)localObject).setScale(0.5F, 0.5F);
+          localObject = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, (Matrix)localObject, false);
+          this.val$listener.onSnapshot((Bitmap)localObject);
+          TXLivePusherJSAdapter.access$000(this.this$0, paramBitmap);
+          return;
+        }
+        ((TXLivePushListenerReflect.ITXSnapshotListener)localObject).onSnapshot(paramBitmap);
+        return;
+      }
+      ((TXLivePushListenerReflect.ITXSnapshotListener)localObject).onSnapshot(paramBitmap);
     }
-    TXLivePusherJSAdapter.access$200(this.this$0, this.val$angle, TXLivePusherJSAdapter.access$100(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.live.TXLivePusherJSAdapter.1
  * JD-Core Version:    0.7.0.1
  */

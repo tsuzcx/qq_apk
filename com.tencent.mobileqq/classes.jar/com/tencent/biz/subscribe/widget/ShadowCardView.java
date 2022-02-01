@@ -46,8 +46,8 @@ public class ShadowCardView
   {
     try
     {
-      int k = getResources().getColor(2131167374);
-      int m = getResources().getColor(2131166991);
+      int k = getResources().getColor(2131167394);
+      int m = getResources().getColor(2131167014);
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.shadowCardView);
       this.a = paramContext.getDimensionPixelSize(8, 0);
       this.b = paramContext.getColor(5, m);
@@ -60,21 +60,19 @@ public class ShadowCardView
       this.f = paramContext.getDimensionPixelSize(3, 0);
       this.d = paramContext.getDimensionPixelSize(0, 10);
       paramContext.recycle();
-      setPadding(this.h, this.g, this.i, this.j);
-      setWillNotDraw(false);
-      setLayerType(1, null);
-      return;
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        SLog.e("ShadowCardView", "init ShadowCardView catch exception");
-      }
+      label143:
+      break label143;
     }
+    SLog.e("ShadowCardView", "init ShadowCardView catch exception");
+    setPadding(this.h, this.g, this.i, this.j);
+    setWillNotDraw(false);
+    setLayerType(1, null);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     int k = getPaddingLeft();
     int m = getPaddingTop();
@@ -87,18 +85,20 @@ public class ShadowCardView
     localPaint.setAntiAlias(true);
     localPaint.setColor(this.c);
     localPaint.setShadowLayer(this.d, this.f, this.e, this.b);
-    paramCanvas.drawRoundRect(new RectF(k, m, n - i1, i2 - i3), this.a, this.a, localPaint);
+    RectF localRectF = new RectF(k, m, n - i1, i2 - i3);
+    k = this.a;
+    paramCanvas.drawRoundRect(localRectF, k, k, localPaint);
     super.onDraw(paramCanvas);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.ShadowCardView
  * JD-Core Version:    0.7.0.1
  */

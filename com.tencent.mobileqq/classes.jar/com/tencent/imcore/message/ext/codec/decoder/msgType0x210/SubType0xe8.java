@@ -11,7 +11,7 @@ import tencent.im.apollo_push_msgInfo.STPushMsgElem;
 import tencent.im.s2c.msgtype0x210.submsgtype0xe8.submsgtype0xe8.MsgBody;
 
 public class SubType0xe8
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
   {
@@ -30,26 +30,29 @@ public class SubType0xe8
           paramQQAppInterface.onReceiveDrawerHirePush(paramMsgType0x210);
           paramQQAppInterface.onReceiveAioPush(paramMsgType0x210);
           paramQQAppInterface.onReceiveApolloPush(paramMsgType0x210);
+          return;
         }
       }
-      return;
     }
     catch (Exception paramQQAppInterface)
     {
       paramQQAppInterface.printStackTrace();
-      QLog.e("ApolloPushManager", 1, "[msg0x210.uSubMsgType == 0xe8], errInfo->" + paramQQAppInterface.getMessage());
+      paramMsgType0x210 = new StringBuilder();
+      paramMsgType0x210.append("[msg0x210.uSubMsgType == 0xe8], errInfo->");
+      paramMsgType0x210.append(paramQQAppInterface.getMessage());
+      QLog.e("ApolloPushManager", 1, paramMsgType0x210.toString());
     }
   }
   
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    a(paramOnLinePushMessageProcessor.a(), paramMsgType0x210);
+    a((QQAppInterface)paramOnLinePushMessageProcessor.a(), paramMsgType0x210);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xe8
  * JD-Core Version:    0.7.0.1
  */

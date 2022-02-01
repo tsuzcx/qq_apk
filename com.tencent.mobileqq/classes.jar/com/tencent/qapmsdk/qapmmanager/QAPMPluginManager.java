@@ -111,12 +111,13 @@ public final class QAPMPluginManager
     BIG_BITMAP_PLUGIN = PluginCombination.bigBitmapPlugin;
     QQ_BATTERY_PLUGIN = PluginCombination.qqBatteryPlugin;
     Collection localCollection = (Collection)CollectionsKt.listOf(new DefaultPluginConfig[] { IO_PLUGIN, DB_PLUGIN, BREAD_CRUMB_PLUGIN, CRASH_PLUGIN, ANR_PLUGIN, DEVICE_PLUGIN, DROP_FRAME_PLUGIN, JS_ERROR_PLUGIN, LOOP_STACK_PLUGIN, CELLING_PLUGIN, LEAK_PLUGIN, RESOURCE_PLUGIN, WEB_VIEW_PLUGIN, HTTP_PLUGIN, BIG_BITMAP_PLUGIN });
-    if (!SDKConfig.PURE_QAPM) {}
-    for (List localList = CollectionsKt.listOf(QQ_BATTERY_PLUGIN);; localList = CollectionsKt.emptyList())
-    {
-      ALL_PLUGIN = CollectionsKt.plus(localCollection, (Iterable)localList);
-      return;
+    List localList;
+    if (!SDKConfig.PURE_QAPM) {
+      localList = CollectionsKt.listOf(QQ_BATTERY_PLUGIN);
+    } else {
+      localList = CollectionsKt.emptyList();
     }
+    ALL_PLUGIN = CollectionsKt.plus(localCollection, (Iterable)localList);
   }
   
   private final List<QAPMMonitorPlugin> allPlugins()
@@ -145,66 +146,79 @@ public final class QAPMPluginManager
   {
     Intrinsics.checkParameterIsNotNull(paramDefaultPluginConfig, "pluginConfig");
     if (!this.plugins.containsKey(paramDefaultPluginConfig.pluginName)) {
-      for (;;)
+      try
       {
+        Class localClass = Class.forName(paramDefaultPluginConfig.entrance);
+        localObject4 = null;
         try
         {
-          localClass = Class.forName(paramDefaultPluginConfig.entrance);
+          Object localObject1 = localClass.getDeclaredMethod("getInstance", new Class[0]);
+          localObject6 = (Map)this.plugins;
+          localObject7 = paramDefaultPluginConfig.pluginName;
+          localObject5 = ((Method)localObject1).invoke(null, new Object[0]);
+          localObject1 = localObject5;
+          if (!(localObject5 instanceof QAPMMonitorPlugin)) {
+            localObject1 = null;
+          }
+          ((Map)localObject6).put(localObject7, (QAPMMonitorPlugin)localObject1);
+        }
+        catch (Exception localException1)
+        {
+          Object localObject7;
+          localObject5 = Logger.INSTANCE;
+          Object localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append(localException1);
+          ((StringBuilder)localObject6).append(": not found method getInstance for ");
+          Intrinsics.checkExpressionValueIsNotNull(localClass, "clazz");
+          ((StringBuilder)localObject6).append(localClass.getName());
+          ((Logger)localObject5).d(new String[] { "QAPM_manager_QAPMPluginManager", ((StringBuilder)localObject6).toString() });
           try
           {
-            localObject1 = localClass.getDeclaredMethod("getInstance", new Class[0]);
             localObject5 = (Map)this.plugins;
-            String str = paramDefaultPluginConfig.pluginName;
-            Object localObject3 = ((Method)localObject1).invoke(null, new Object[0]);
-            localObject1 = localObject3;
-            if (!(localObject3 instanceof QAPMMonitorPlugin)) {
-              localObject1 = null;
+            localObject6 = paramDefaultPluginConfig.pluginName;
+            Object localObject2 = localObject4;
+            if (localClass != null)
+            {
+              localObject7 = localClass.getConstructor(new Class[0]);
+              localObject2 = localObject4;
+              if (localObject7 != null) {
+                localObject2 = (QAPMMonitorPlugin)((Constructor)localObject7).newInstance(new Object[0]);
+              }
             }
-            ((Map)localObject5).put(str, (QAPMMonitorPlugin)localObject1);
+            ((Map)localObject5).put(localObject6, localObject2);
           }
           catch (Exception localException2)
           {
-            Object localObject5;
-            Object localObject1 = Logger.INSTANCE;
-            Object localObject4 = new StringBuilder().append(localException2).append(": not found method getInstance for ");
-            Intrinsics.checkExpressionValueIsNotNull(localClass, "clazz");
-            ((Logger)localObject1).d(new String[] { "QAPM_manager_QAPMPluginManager", localClass.getName() });
-            try
-            {
-              localObject4 = (Map)this.plugins;
-              localObject5 = paramDefaultPluginConfig.pluginName;
-              if (localClass == null) {
-                break label384;
-              }
-              localObject1 = localClass.getConstructor(new Class[0]);
-              if (localObject1 == null) {
-                break label384;
-              }
-              localObject1 = (QAPMMonitorPlugin)((Constructor)localObject1).newInstance(new Object[0]);
-              ((Map)localObject4).put(localObject5, localObject1);
-            }
-            catch (Exception localException1)
-            {
-              Logger.INSTANCE.e(new String[] { "QAPM_manager_QAPMPluginManager", localException1 + ": can not new a Instance for " + localClass.getName() });
-            }
-            continue;
+            localObject4 = Logger.INSTANCE;
+            localObject5 = new StringBuilder();
+            ((StringBuilder)localObject5).append(localException2);
+            ((StringBuilder)localObject5).append(": can not new a Instance for ");
+            ((StringBuilder)localObject5).append(localClass.getName());
+            ((Logger)localObject4).e(new String[] { "QAPM_manager_QAPMPluginManager", ((StringBuilder)localObject5).toString() });
           }
-          localObject1 = (QAPMMonitorPlugin)this.plugins.get(paramDefaultPluginConfig.pluginName);
-          if (localObject1 == null) {
-            break;
-          }
-          ((QAPMMonitorPlugin)localObject1).setPluginConfig(paramDefaultPluginConfig);
-          Logger.INSTANCE.i(new String[] { "QAPM_manager_QAPMPluginManager", "register module " + paramDefaultPluginConfig.pluginName + " success." });
-          return;
         }
-        catch (ClassNotFoundException localClassNotFoundException)
+        Object localObject3 = (QAPMMonitorPlugin)this.plugins.get(paramDefaultPluginConfig.pluginName);
+        if (localObject3 != null)
         {
-          Class localClass;
-          Logger.INSTANCE.e(new String[] { "QAPM_manager_QAPMPluginManager", localClassNotFoundException + ": can not find class " + paramDefaultPluginConfig.entrance + '.' });
+          ((QAPMMonitorPlugin)localObject3).setPluginConfig(paramDefaultPluginConfig);
+          localObject3 = Logger.INSTANCE;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("register module ");
+          ((StringBuilder)localObject4).append(paramDefaultPluginConfig.pluginName);
+          ((StringBuilder)localObject4).append(" success.");
+          ((Logger)localObject3).i(new String[] { "QAPM_manager_QAPMPluginManager", ((StringBuilder)localObject4).toString() });
           return;
         }
-        label384:
-        Object localObject2 = null;
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        Object localObject4 = Logger.INSTANCE;
+        Object localObject5 = new StringBuilder();
+        ((StringBuilder)localObject5).append(localClassNotFoundException);
+        ((StringBuilder)localObject5).append(": can not find class ");
+        ((StringBuilder)localObject5).append(paramDefaultPluginConfig.entrance);
+        ((StringBuilder)localObject5).append('.');
+        ((Logger)localObject4).e(new String[] { "QAPM_manager_QAPMPluginManager", ((StringBuilder)localObject5).toString() });
       }
     }
   }
@@ -227,53 +241,46 @@ public final class QAPMPluginManager
     }
     StringBuffer localStringBuffer = new StringBuffer(256);
     Object localObject3 = ((Iterable)allPlugins()).iterator();
-    if (((Iterator)localObject3).hasNext())
+    while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (QAPMMonitorPlugin)((Iterator)localObject3).next();
       DefaultPluginConfig localDefaultPluginConfig = ((QAPMMonitorPlugin)localObject4).getPluginConfig();
-      if (localDefaultPluginConfig != null)
-      {
-        if ((localDefaultPluginConfig.mode != 0) && (((PluginController.startedPluginMode & localDefaultPluginConfig.mode) > 0) || ((localDefaultPluginConfig.mode & paramInt) <= 0))) {
-          break label270;
-        }
-        PluginController.startedPluginMode |= localDefaultPluginConfig.mode;
-        StringsKt.append((Appendable)localStringBuffer, new CharSequence[] { (CharSequence)localDefaultPluginConfig.pluginName, (CharSequence)": true, " });
-        if (localDefaultPluginConfig.mode != PluginCombination.resourcePlugin.mode) {
-          break label222;
-        }
-        if ((DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_RESOURCE.getValue() & SDKConfig.RES_TYPE) != 0) {
-          break label196;
-        }
-        ((QAPMMonitorPlugin)localObject4).stop();
-      }
-      label270:
-      for (;;)
-      {
-        break;
-        label196:
-        if ((DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_AUTO.getValue() == SDKConfig.RES_TYPE) && (RuntimeConfig.globalMonitorCount <= 0))
+      if (localDefaultPluginConfig != null) {
+        if ((localDefaultPluginConfig.mode != 0) && (((PluginController.startedPluginMode & localDefaultPluginConfig.mode) > 0) || ((localDefaultPluginConfig.mode & paramInt) <= 0)))
         {
-          ((QAPMMonitorPlugin)localObject4).start();
+          if ((PluginController.startedPluginMode & localDefaultPluginConfig.mode) > 0) {
+            StringsKt.append((Appendable)localStringBuffer, new CharSequence[] { (CharSequence)localDefaultPluginConfig.pluginName, (CharSequence)": true, " });
+          } else {
+            StringsKt.append((Appendable)localStringBuffer, new CharSequence[] { (CharSequence)localDefaultPluginConfig.pluginName, (CharSequence)": false, " });
+          }
         }
         else
         {
+          PluginController.startedPluginMode |= localDefaultPluginConfig.mode;
+          StringsKt.append((Appendable)localStringBuffer, new CharSequence[] { (CharSequence)localDefaultPluginConfig.pluginName, (CharSequence)": true, " });
+          if (localDefaultPluginConfig.mode == PluginCombination.resourcePlugin.mode)
+          {
+            if ((DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_RESOURCE.getValue() & SDKConfig.RES_TYPE) == 0)
+            {
+              ((QAPMMonitorPlugin)localObject4).stop();
+              continue;
+            }
+            if ((DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_AUTO.getValue() == SDKConfig.RES_TYPE) && (RuntimeConfig.globalMonitorCount <= 0))
+            {
+              ((QAPMMonitorPlugin)localObject4).start();
+              continue;
+            }
+          }
           try
           {
-            label222:
             if (!this.startedPlugin.contains(localObject4))
             {
               ((QAPMMonitorPlugin)localObject4).start();
               this.startedPlugin.add(localObject4);
             }
             localObject4 = Unit.INSTANCE;
-            continue;
           }
           finally {}
-          if ((PluginController.startedPluginMode & localDefaultPluginConfig.mode) > 0) {
-            StringsKt.append((Appendable)localObject1, new CharSequence[] { (CharSequence)localDefaultPluginConfig.pluginName, (CharSequence)": true, " });
-          } else {
-            StringsKt.append((Appendable)localObject1, new CharSequence[] { (CharSequence)localDefaultPluginConfig.pluginName, (CharSequence)": false, " });
-          }
         }
       }
     }
@@ -314,7 +321,7 @@ public final class QAPMPluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qapmmanager.QAPMPluginManager
  * JD-Core Version:    0.7.0.1
  */

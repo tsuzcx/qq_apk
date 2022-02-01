@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.vas.ipc;
 
 import android.os.Bundle;
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -54,7 +56,7 @@ public class VasLiveIPCModule
     try
     {
       Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      localObject = ContactUtils.h((QQAppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin());
+      localObject = ContactUtils.e((AppInterface)localObject, ((QQAppInterface)localObject).getCurrentAccountUin());
       return localObject;
     }
     catch (Throwable localThrowable)
@@ -89,13 +91,14 @@ public class VasLiveIPCModule
   {
     paramBundle = paramBundle.getString("groupUin");
     TroopManager localTroopManager = (TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.TROOP_MANAGER);
-    if ((localTroopManager != null) && (localTroopManager.b(paramBundle) != null)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      IliveEnterGroupHost.joinGroup(bool, paramBundle, "");
-      callbackResult(paramInt, EIPCResult.createResult(0, null));
-      return;
+    boolean bool;
+    if ((localTroopManager != null) && (localTroopManager.b(paramBundle) != null)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    IliveEnterGroupHost.joinGroup(bool, paramBundle, "");
+    callbackResult(paramInt, EIPCResult.createResult(0, null));
   }
   
   private void handleFollowAccountAction(int paramInt, Bundle paramBundle)
@@ -103,25 +106,31 @@ public class VasLiveIPCModule
     if (paramBundle == null) {
       return;
     }
-    String str;
     try
     {
-      str = paramBundle.getString("anchorUin");
+      localObject = paramBundle.getString("anchorUin");
       int i = paramBundle.getInt("followType");
       paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       if (i == 1)
       {
-        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).followUin(paramBundle, BaseApplicationImpl.getContext(), str, new VasLiveIPCModule.2(this, paramInt), false, 0, true);
+        localIPublicAccountObserver = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
+        localIPublicAccountObserver.setOnCallback(new VasLiveIPCModule.2(this, paramInt));
+        ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).followUin(paramBundle, BaseApplicationImpl.getContext(), (String)localObject, localIPublicAccountObserver, false, 0, true);
         return;
       }
+      IPublicAccountObserver localIPublicAccountObserver = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
+      localIPublicAccountObserver.setOnCallback(new VasLiveIPCModule.3(this, paramInt));
+      ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).unfollowUin(paramBundle, BaseApplicationImpl.getContext(), (String)localObject, false, localIPublicAccountObserver, true);
+      return;
     }
     catch (Throwable paramBundle)
     {
       paramBundle.printStackTrace();
-      QLog.e("VasLiveIPCModule", 1, "handleFollowAccountAction exception = " + paramBundle.getMessage());
-      return;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleFollowAccountAction exception = ");
+      ((StringBuilder)localObject).append(paramBundle.getMessage());
+      QLog.e("VasLiveIPCModule", 1, ((StringBuilder)localObject).toString());
     }
-    ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).unfollowUin(paramBundle, BaseApplicationImpl.getContext(), str, false, new VasLiveIPCModule.3(this, paramInt), true);
   }
   
   private void handleStayTimeInfo(int paramInt, Bundle paramBundle)
@@ -136,8 +145,12 @@ public class VasLiveIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VasLiveIPCModule", 2, "action:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("action:");
+      localStringBuilder.append(paramString);
+      QLog.i("VasLiveIPCModule", 2, localStringBuilder.toString());
     }
     if ("action_get_nick_name".equals(paramString))
     {
@@ -177,7 +190,7 @@ public class VasLiveIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.VasLiveIPCModule
  * JD-Core Version:    0.7.0.1
  */

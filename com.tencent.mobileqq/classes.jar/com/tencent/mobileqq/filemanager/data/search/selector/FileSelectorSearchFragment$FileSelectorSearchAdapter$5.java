@@ -9,12 +9,12 @@ class FileSelectorSearchFragment$FileSelectorSearchAdapter$5
   
   public void run()
   {
-    FileSelectorSearchFragment.d(this.a.a).findViewById(2131368336).setVisibility(8);
+    FileSelectorSearchFragment.d(this.a.a).findViewById(2131368087).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.5
  * JD-Core Version:    0.7.0.1
  */

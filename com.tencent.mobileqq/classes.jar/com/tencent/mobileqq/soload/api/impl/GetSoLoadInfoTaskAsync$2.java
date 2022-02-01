@@ -22,8 +22,9 @@ class GetSoLoadInfoTaskAsync$2
     }
     if ((TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplGetSoLoadInfoTaskAsync.a.ver, this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqSoloadEntitySoCrashInfo.b()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplGetSoLoadInfoTaskAsync.c = "runcrash";
-      GetSoLoadInfoTaskAsync.a(this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplGetSoLoadInfoTaskAsync, 8);
+      paramSoInfo = this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplGetSoLoadInfoTaskAsync;
+      paramSoInfo.c = "runcrash";
+      GetSoLoadInfoTaskAsync.a(paramSoInfo, 8);
       return;
     }
     SoLoadUtils.c(this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam$LoadItem.name);
@@ -32,7 +33,7 @@ class GetSoLoadInfoTaskAsync$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.GetSoLoadInfoTaskAsync.2
  * JD-Core Version:    0.7.0.1
  */

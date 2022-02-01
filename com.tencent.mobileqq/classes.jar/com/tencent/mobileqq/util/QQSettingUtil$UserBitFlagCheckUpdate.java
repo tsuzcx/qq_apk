@@ -9,10 +9,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.profile.CheckUpdateItemInterface;
-import com.tencent.mobileqq.stt.SttManager;
+import com.tencent.mobileqq.stt.ISttManagerApi;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class QQSettingUtil$UserBitFlagCheckUpdate
   implements CheckUpdateItemInterface
@@ -48,7 +50,6 @@ public class QQSettingUtil$UserBitFlagCheckUpdate
   
   public void a(RespItem paramRespItem)
   {
-    boolean bool = true;
     if (QLog.isColorLevel()) {
       QLog.d("QQSetting", 2, "handleCheckUpdateItemData");
     }
@@ -59,30 +60,39 @@ public class QQSettingUtil$UserBitFlagCheckUpdate
       int i = localUserBitFlagRes.cEmotionMall;
       int j = localUserBitFlagRes.cMyWallet;
       int k = localUserBitFlagRes.cAccout2Dis;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSetting", 2, "vEmotion=" + i + ",cMyWallet=" + j + ",cPtt2Text=" + localUserBitFlagRes.cPtt2Text + " ,cAccout2Dis=" + k);
-      }
-      if (this.a != null)
+      if (QLog.isColorLevel())
       {
-        this.a.getApp().getApplicationContext().getSharedPreferences(this.a.getCurrentAccountUin(), 0).edit().putInt("mywallet_flag", j).putInt("select_member_contacts_flag", k).commit();
-        paramRespItem = this.a;
-        if (localUserBitFlagRes.cPtt2Text != 1) {
-          break label211;
-        }
+        paramRespItem = new StringBuilder();
+        paramRespItem.append("vEmotion=");
+        paramRespItem.append(i);
+        paramRespItem.append(",cMyWallet=");
+        paramRespItem.append(j);
+        paramRespItem.append(",cPtt2Text=");
+        paramRespItem.append(localUserBitFlagRes.cPtt2Text);
+        paramRespItem.append(" ,cAccout2Dis=");
+        paramRespItem.append(k);
+        QLog.d("QQSetting", 2, paramRespItem.toString());
       }
-    }
-    for (;;)
-    {
-      SttManager.a(paramRespItem, bool);
-      return;
-      label211:
-      bool = false;
+      paramRespItem = this.a;
+      if (paramRespItem != null)
+      {
+        paramRespItem = paramRespItem.getApp().getApplicationContext();
+        Object localObject = this.a.getCurrentAccountUin();
+        boolean bool = false;
+        paramRespItem.getSharedPreferences((String)localObject, 0).edit().putInt("mywallet_flag", j).putInt("select_member_contacts_flag", k).commit();
+        paramRespItem = (ISttManagerApi)QRoute.api(ISttManagerApi.class);
+        localObject = this.a;
+        if (localUserBitFlagRes.cPtt2Text == 1) {
+          bool = true;
+        }
+        paramRespItem.setSttAbility((AppRuntime)localObject, bool);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQSettingUtil.UserBitFlagCheckUpdate
  * JD-Core Version:    0.7.0.1
  */

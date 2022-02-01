@@ -8,8 +8,9 @@ public class QQTextProxy
   
   public static AbsQQText a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    if (a != null) {
-      return a.a(paramCharSequence, paramInt1, paramInt2);
+    QQTextProxy.Proxy localProxy = a;
+    if (localProxy != null) {
+      return localProxy.a(paramCharSequence, paramInt1, paramInt2);
     }
     return null;
   }
@@ -21,7 +22,7 @@ public class QQTextProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.msg.QQTextProxy
  * JD-Core Version:    0.7.0.1
  */

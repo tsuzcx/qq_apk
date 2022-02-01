@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio.rebuild.msglist;
 import android.os.Bundle;
 import android.os.Message;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.msglist.IReadConfirmCallback;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,14 +33,22 @@ public class GrayTipsReadConfirmCallback
         localObject = (MessageForUniteGrayTip)localObject;
         if (((MessageForUniteGrayTip)localObject).tipParam != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendReactive", 2, "graytips lgraymr.hasRead=" + ((MessageForUniteGrayTip)localObject).hasRead + "grayTipId=" + ((MessageForUniteGrayTip)localObject).tipParam.b + "subtype = " + ((MessageForUniteGrayTip)localObject).subType);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("graytips lgraymr.hasRead=");
+            localStringBuilder.append(((MessageForUniteGrayTip)localObject).hasRead);
+            localStringBuilder.append("grayTipId=");
+            localStringBuilder.append(((MessageForUniteGrayTip)localObject).tipParam.b);
+            localStringBuilder.append("subtype = ");
+            localStringBuilder.append(((MessageForUniteGrayTip)localObject).subType);
+            QLog.d("FriendReactive", 2, localStringBuilder.toString());
           }
           if ((((MessageForUniteGrayTip)localObject).tipParam.b == 2097153) && (((MessageForUniteGrayTip)localObject).hasRead == 0))
           {
-            OldMutualMarkLogicHelper.a(paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForUniteGrayTip)localObject, paramAIOContext.a(), paramAIOContext.a(), ((MessageForUniteGrayTip)localObject).subType);
+            OldMutualMarkLogicHelper.a(paramAIOContext.a(), paramAIOContext.a(), (MessageForUniteGrayTip)localObject, paramAIOContext.a(), paramAIOContext.a(), ((MessageForUniteGrayTip)localObject).subType);
             ((MessageForUniteGrayTip)localObject).hasRead = 1;
-            ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsgData(paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsgData(paramAIOContext.a());
           }
         }
       }
@@ -49,15 +57,15 @@ public class GrayTipsReadConfirmCallback
   
   public void b(AIOContext paramAIOContext)
   {
-    Object localObject1 = paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    localObject1 = paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((SessionInfo)localObject1).jdField_a_of_type_JavaLangString, ((SessionInfo)localObject1).jdField_a_of_type_Int).iterator();
+    Object localObject1 = paramAIOContext.a();
+    localObject1 = paramAIOContext.a().getMessageFacade().b(((BaseSessionInfo)localObject1).jdField_a_of_type_JavaLangString, ((BaseSessionInfo)localObject1).jdField_a_of_type_Int).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (ChatMessage)((Iterator)localObject1).next();
       if ((localObject2 instanceof MessageForUniteGrayTip))
       {
         localObject2 = (MessageForUniteGrayTip)localObject2;
-        if (UniteGrayTipUtil.a((MessageForUniteGrayTip)localObject2, paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+        if (UniteGrayTipUtil.a((MessageForUniteGrayTip)localObject2, paramAIOContext.a()))
         {
           Message localMessage = new Message();
           Bundle localBundle = new Bundle();
@@ -73,7 +81,7 @@ public class GrayTipsReadConfirmCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.GrayTipsReadConfirmCallback
  * JD-Core Version:    0.7.0.1
  */

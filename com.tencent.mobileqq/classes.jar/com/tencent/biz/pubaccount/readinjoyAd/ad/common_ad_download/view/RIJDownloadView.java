@@ -16,39 +16,33 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.NativeAd.report.AdReportManager;
 import com.tencent.biz.pubaccount.NativeAd.report.constant.AdClickPos;
 import com.tencent.biz.pubaccount.NativeAd.util.ParseUtil;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.report_action.GameComponentReport;
+import com.tencent.biz.pubaccount.readinjoy.video.playfeeds.GameAdComData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.AdDownloadScene;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.RIJAdDownloadCache;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.data.AdDownloadInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.IDownloadEngine;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadLifeEvent;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateHandler;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.DownloadClickState;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.HorizontalProgressStyle;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.IDownloadStyle;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadExKt;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadReport;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadStateUtil;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdDownloadUtil;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.util.RIJAdGameGiftUtil;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementSoftInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
 import com.tencent.gamecenter.wadl.biz.entity.WadlResult;
 import com.tencent.gamecenter.wadl.biz.listener.WadlProxyServiceCallBackInterface;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdDownloadService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUIService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
@@ -60,10 +54,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
+import mqq.app.MobileQQ;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/open/downloadnew/DownloadListener;", "Lcom/tencent/gamecenter/wadl/biz/listener/WadlProxyServiceCallBackInterface;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "activity", "Ljava/lang/ref/SoftReference;", "Landroid/app/Activity;", "getActivity", "()Ljava/lang/ref/SoftReference;", "setActivity", "(Ljava/lang/ref/SoftReference;)V", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "data", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "dialog", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/view/GiftPackageDialog;", "getDialog", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/view/GiftPackageDialog;", "setDialog", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/view/GiftPackageDialog;)V", "downloadBtn", "Landroid/widget/TextView;", "getDownloadBtn", "()Landroid/widget/TextView;", "setDownloadBtn", "(Landroid/widget/TextView;)V", "downloadContainer", "getDownloadContainer", "()Landroid/widget/FrameLayout;", "setDownloadContainer", "(Landroid/widget/FrameLayout;)V", "downloadScene", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;", "getDownloadScene", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;", "setDownloadScene", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;)V", "downloadStyle", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "getDownloadStyle", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "setDownloadStyle", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;)V", "hasRefreshBtn", "Ljava/util/concurrent/atomic/AtomicBoolean;", "horizontalProgress", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJHorizontalProgress;", "getHorizontalProgress", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJHorizontalProgress;", "setHorizontalProgress", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJHorizontalProgress;)V", "imageIcon", "Landroid/widget/ImageView;", "getImageIcon", "()Landroid/widget/ImageView;", "setImageIcon", "(Landroid/widget/ImageView;)V", "inFloatingBar", "", "getInFloatingBar", "()Z", "setInFloatingBar", "(Z)V", "inPtsCard", "getInPtsCard", "setInPtsCard", "needCallInit", "roundProgress", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJRoundProgressBar;", "getRoundProgress", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJRoundProgressBar;", "setRoundProgress", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJRoundProgressBar;)V", "viewRoot", "Landroid/view/View;", "getViewRoot", "()Landroid/view/View;", "setViewRoot", "(Landroid/view/View;)V", "changeToHighLightBtn", "", "clickBtnForDownloadAd", "doNotCallDownloadInit", "getAdInfo", "getDownloadData", "getEx5", "", "getGamePkgName", "getProgressView", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/IProgressView;", "inDownloadingState", "initBtnText", "installSucceed", "appid", "packageName", "needRlForDownload", "onAttachedToWindow", "onBtnCLickEvent", "onDetachedFromWindow", "onDownloadCancel", "info", "Lcom/tencent/open/downloadnew/DownloadInfo;", "onDownloadClickEvent", "adClickPos", "Lcom/tencent/biz/pubaccount/NativeAd/report/constant/AdClickPos;", "clickPos", "", "onDownloadError", "errorCode", "errorMsg", "state", "onDownloadFinish", "onDownloadPause", "onDownloadUpdate", "infos", "", "onDownloadWait", "onPause", "onProgressClickEvent", "onQueryCallback", "wadlResults", "Ljava/util/ArrayList;", "Lcom/tencent/gamecenter/wadl/biz/entity/WadlResult;", "onQueryCallbackVia", "onReceiveYYBInstall", "url", "sourceId", "onResult", "isSuccess", "advertisementInfo", "pkgName", "onResume", "onWadlTaskStatusChanged", "wadlResult", "packageReplaced", "realSetDownloadData", "downloadData", "refreshBtnText", "force", "setAdvertisementInfo", "setDownloadData", "setHorizontalProgressStyle", "iDownloadStyle", "setProgressStyle", "setRoundProgressStyle", "shouldShowStartImageIcon", "showButton", "showCenterImageIconWhenShowProgress", "showProgress", "showCenterImageIcon", "showStartImageIcon", "showTwoBtnText", "uninstallSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJDownloadView;", "Landroid/widget/FrameLayout;", "Lcom/tencent/open/downloadnew/DownloadListener;", "Lcom/tencent/gamecenter/wadl/biz/listener/WadlProxyServiceCallBackInterface;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "activity", "Ljava/lang/ref/SoftReference;", "Landroid/app/Activity;", "getActivity", "()Ljava/lang/ref/SoftReference;", "setActivity", "(Ljava/lang/ref/SoftReference;)V", "adInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;", "data", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/ADVideoAppDownloadData;", "dialog", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/view/GiftPackageDialog;", "getDialog", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/view/GiftPackageDialog;", "setDialog", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/view/GiftPackageDialog;)V", "downloadBtn", "Landroid/widget/TextView;", "getDownloadBtn", "()Landroid/widget/TextView;", "setDownloadBtn", "(Landroid/widget/TextView;)V", "downloadContainer", "getDownloadContainer", "()Landroid/widget/FrameLayout;", "setDownloadContainer", "(Landroid/widget/FrameLayout;)V", "downloadScene", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;", "getDownloadScene", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;", "setDownloadScene", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/AdDownloadScene;)V", "downloadStyle", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "getDownloadStyle", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;", "setDownloadStyle", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/IDownloadStyle;)V", "hasRefreshBtn", "Ljava/util/concurrent/atomic/AtomicBoolean;", "horizontalProgress", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJHorizontalProgress;", "getHorizontalProgress", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJHorizontalProgress;", "setHorizontalProgress", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJHorizontalProgress;)V", "imageIcon", "Landroid/widget/ImageView;", "getImageIcon", "()Landroid/widget/ImageView;", "setImageIcon", "(Landroid/widget/ImageView;)V", "inFloatingBar", "", "getInFloatingBar", "()Z", "setInFloatingBar", "(Z)V", "inPtsCard", "getInPtsCard", "setInPtsCard", "needCallInit", "roundProgress", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJRoundProgressBar;", "getRoundProgress", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJRoundProgressBar;", "setRoundProgress", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/RIJRoundProgressBar;)V", "viewRoot", "Landroid/view/View;", "getViewRoot", "()Landroid/view/View;", "setViewRoot", "(Landroid/view/View;)V", "changeToHighLightBtn", "", "clickBtnForDownloadAd", "doNotCallDownloadInit", "getAdInfo", "getDownloadData", "getEx5", "", "getGamePkgName", "getProgressView", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/view/IProgressView;", "inDownloadingState", "initBtnText", "installSucceed", "appid", "packageName", "needRlForDownload", "onAttachedToWindow", "onBtnCLickEvent", "onDetachedFromWindow", "onDownloadCancel", "info", "Lcom/tencent/open/downloadnew/DownloadInfo;", "onDownloadClickEvent", "adClickPos", "Lcom/tencent/biz/pubaccount/NativeAd/report/constant/AdClickPos;", "clickPos", "", "onDownloadError", "errorCode", "errorMsg", "state", "onDownloadFinish", "onDownloadPause", "onDownloadUpdate", "infos", "", "onDownloadWait", "onPause", "onProgressClickEvent", "onQueryCallback", "wadlResults", "Ljava/util/ArrayList;", "Lcom/tencent/gamecenter/wadl/biz/entity/WadlResult;", "onQueryCallbackVia", "onResult", "isSuccess", "advertisementInfo", "pkgName", "onResume", "onWadlTaskStatusChanged", "wadlResult", "packageReplaced", "realSetDownloadData", "downloadData", "refreshBtnText", "force", "setAdvertisementInfo", "setDownloadData", "setHorizontalProgressStyle", "iDownloadStyle", "setProgressStyle", "setRoundProgressStyle", "shouldShowStartImageIcon", "showButton", "showCenterImageIconWhenShowProgress", "showProgress", "showCenterImageIcon", "showStartImageIcon", "showTwoBtnText", "uninstallSucceed", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public final class RIJDownloadView
   extends FrameLayout
   implements WadlProxyServiceCallBackInterface, DownloadListener
@@ -98,82 +93,84 @@ public final class RIJDownloadView
   public RIJDownloadView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = paramContext.getSystemService("layout_inflater");
-    paramContext = paramAttributeSet;
-    if (!(paramAttributeSet instanceof LayoutInflater)) {
+    paramContext = paramContext.getSystemService("layout_inflater");
+    boolean bool = paramContext instanceof LayoutInflater;
+    paramAttributeSet = null;
+    if (!bool) {
       paramContext = null;
     }
-    paramAttributeSet = (LayoutInflater)paramContext;
-    paramContext = localObject;
-    if (paramAttributeSet != null) {
-      paramContext = paramAttributeSet.inflate(2131560177, (ViewGroup)this);
+    LayoutInflater localLayoutInflater = (LayoutInflater)paramContext;
+    paramContext = paramAttributeSet;
+    if (localLayoutInflater != null) {
+      paramContext = localLayoutInflater.inflate(2131560064, (ViewGroup)this);
     }
     this.jdField_a_of_type_AndroidViewView = paramContext;
     paramContext = this.jdField_a_of_type_AndroidViewView;
     if (paramContext != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362864));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJHorizontalProgress = ((RIJHorizontalProgress)paramContext.findViewById(2131368526));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJRoundProgressBar = ((RIJRoundProgressBar)paramContext.findViewById(2131377394));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramContext.findViewById(2131370889));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368810));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362816));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJHorizontalProgress = ((RIJHorizontalProgress)paramContext.findViewById(2131368271));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJRoundProgressBar = ((RIJRoundProgressBar)paramContext.findViewById(2131376844));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramContext.findViewById(2131370523));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131368538));
     }
   }
   
   private final void a(IDownloadStyle paramIDownloadStyle)
   {
+    Object localObject = paramIDownloadStyle;
     if (!(paramIDownloadStyle instanceof HorizontalProgressStyle)) {
-      paramIDownloadStyle = null;
+      localObject = null;
     }
-    for (;;)
+    paramIDownloadStyle = (HorizontalProgressStyle)localObject;
+    if (paramIDownloadStyle == null) {
+      paramIDownloadStyle = HorizontalProgressStyle.DefaultHorizontalStyle;
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setTextSize(paramIDownloadStyle.getBtnTextSize());
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setTextColor(ParseUtil.a(paramIDownloadStyle.getBtnTextColor(), "#FF12B7F5"));
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null)
     {
-      paramIDownloadStyle = (HorizontalProgressStyle)paramIDownloadStyle;
-      if (paramIDownloadStyle != null) {}
-      for (;;)
-      {
-        Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (localObject != null) {
-          ((TextView)localObject).setTextSize(paramIDownloadStyle.getBtnTextSize());
-        }
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (localObject != null) {
-          ((TextView)localObject).setTextColor(ParseUtil.a(paramIDownloadStyle.getBtnTextColor(), "#FF12B7F5"));
-        }
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (localObject != null)
-        {
-          GradientDrawable localGradientDrawable = new GradientDrawable();
-          localGradientDrawable.setColor(ParseUtil.a(paramIDownloadStyle.getBtnDrawableNormalColor(), "#00000000"));
-          float f = paramIDownloadStyle.getBtnDrawableNormalRadius();
-          Context localContext = getContext();
-          Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-          localGradientDrawable.setCornerRadius(AIOUtils.a(f, localContext.getResources()));
-          ((TextView)localObject).setBackgroundDrawable((Drawable)localGradientDrawable);
-        }
-        localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJHorizontalProgress;
-        if (localObject != null) {
-          ((RIJHorizontalProgress)localObject).setProgressStyle((IDownloadStyle)paramIDownloadStyle);
-        }
-        return;
-        paramIDownloadStyle = HorizontalProgressStyle.DefaultHorizontalStyle;
-      }
+      GradientDrawable localGradientDrawable = new GradientDrawable();
+      localGradientDrawable.setColor(ParseUtil.a(paramIDownloadStyle.getBtnDrawableNormalColor(), "#00000000"));
+      IRIJAdUIService localIRIJAdUIService = (IRIJAdUIService)QRoute.api(IRIJAdUIService.class);
+      float f = paramIDownloadStyle.getBtnDrawableNormalRadius();
+      Context localContext = getContext();
+      Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
+      localGradientDrawable.setCornerRadius(localIRIJAdUIService.dp2px(f, localContext.getResources()));
+      ((TextView)localObject).setBackgroundDrawable((Drawable)localGradientDrawable);
+    }
+    localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJHorizontalProgress;
+    if (localObject != null) {
+      ((RIJHorizontalProgress)localObject).setProgressStyle((IDownloadStyle)paramIDownloadStyle);
     }
   }
   
   private final void a(ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    ADVideoAppDownloadData localADVideoAppDownloadData = RIJAdDownloadCache.a.a(paramADVideoAppDownloadData.d);
-    if (localADVideoAppDownloadData != null) {
-      b(localADVideoAppDownloadData);
-    }
-    for (;;)
+    Object localObject = ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).getDownloadCache(paramADVideoAppDownloadData.d);
+    if (localObject != null)
     {
-      QLog.d("AD_DOWNLOAD_TAG", 1, "setDownloadData: packageName = " + paramADVideoAppDownloadData.d + " view = " + hashCode());
-      onAttachedToWindow();
-      return;
-      b(paramADVideoAppDownloadData);
-      RIJAdDownloadCache.a.a(paramADVideoAppDownloadData);
+      b((ADVideoAppDownloadData)localObject);
     }
+    else
+    {
+      b(paramADVideoAppDownloadData);
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).addDownloadCache(paramADVideoAppDownloadData);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setDownloadData: packageName = ");
+    ((StringBuilder)localObject).append(paramADVideoAppDownloadData.d);
+    ((StringBuilder)localObject).append(" view = ");
+    ((StringBuilder)localObject).append(hashCode());
+    QLog.d("AD_DOWNLOAD_TAG", 1, ((StringBuilder)localObject).toString());
+    onAttachedToWindow();
   }
   
   private final boolean a(AdvertisementInfo paramAdvertisementInfo)
@@ -186,9 +183,9 @@ public final class RIJDownloadView
       i = 1;
     }
     if (i != 0) {
-      return AdReportManager.a().b();
+      return ((IRIJAdService)QRoute.api(IRIJAdService.class)).needReportSoftNew();
     }
-    return AdReportManager.a().a();
+    return ((IRIJAdService)QRoute.api(IRIJAdService.class)).needReportNew();
   }
   
   private final String b()
@@ -201,62 +198,58 @@ public final class RIJDownloadView
   
   private final void b(IDownloadStyle paramIDownloadStyle)
   {
+    Object localObject = paramIDownloadStyle;
     if (!(paramIDownloadStyle instanceof RoundProgressStyle)) {
-      paramIDownloadStyle = null;
+      localObject = null;
     }
-    for (;;)
+    paramIDownloadStyle = (RoundProgressStyle)localObject;
+    if (paramIDownloadStyle == null) {
+      paramIDownloadStyle = RoundProgressStyle.DefaultRoundStyle;
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setTextSize(paramIDownloadStyle.getBtnTextSize());
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setTextColor(ParseUtil.a(paramIDownloadStyle.getBtnTextColor(), "#FF12B7F5"));
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null)
     {
-      paramIDownloadStyle = (RoundProgressStyle)paramIDownloadStyle;
-      if (paramIDownloadStyle != null) {}
-      for (;;)
-      {
-        Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (localObject != null) {
-          ((TextView)localObject).setTextSize(paramIDownloadStyle.getBtnTextSize());
-        }
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (localObject != null) {
-          ((TextView)localObject).setTextColor(ParseUtil.a(paramIDownloadStyle.getBtnTextColor(), "#FF12B7F5"));
-        }
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (localObject != null)
-        {
-          GradientDrawable localGradientDrawable = new GradientDrawable();
-          localGradientDrawable.setColor(ParseUtil.a(paramIDownloadStyle.getBtnDrawableNormalColor(), "#00000000"));
-          float f = paramIDownloadStyle.getBtnDrawableNormalRadius();
-          Context localContext = getContext();
-          Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-          localGradientDrawable.setCornerRadius(AIOUtils.a(f, localContext.getResources()));
-          ((TextView)localObject).setBackgroundDrawable((Drawable)localGradientDrawable);
-        }
-        localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJRoundProgressBar;
-        if (localObject != null) {
-          ((RIJRoundProgressBar)localObject).setProgressStyle((IDownloadStyle)paramIDownloadStyle);
-        }
-        i = AIOUtils.a(paramIDownloadStyle.getRoundSize(), getResources());
-        paramIDownloadStyle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJRoundProgressBar;
-        if (paramIDownloadStyle != null)
-        {
-          localObject = new FrameLayout.LayoutParams(i, i);
-          ((FrameLayout.LayoutParams)localObject).gravity = 17;
-          paramIDownloadStyle.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        i = (int)(0.5F * i);
-        paramIDownloadStyle = this.jdField_a_of_type_AndroidWidgetImageView;
-        if (paramIDownloadStyle != null)
-        {
-          localObject = new FrameLayout.LayoutParams(i, i);
-          ((FrameLayout.LayoutParams)localObject).gravity = 17;
-          paramIDownloadStyle.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        paramIDownloadStyle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-        if (paramIDownloadStyle != null) {
-          break;
-        }
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
-        paramIDownloadStyle = RoundProgressStyle.DefaultRoundStyle;
-      }
-      int i = ((RoundProgressStyle)paramIDownloadStyle).getBtnResource();
+      GradientDrawable localGradientDrawable = new GradientDrawable();
+      localGradientDrawable.setColor(ParseUtil.a(paramIDownloadStyle.getBtnDrawableNormalColor(), "#00000000"));
+      IRIJAdUIService localIRIJAdUIService = (IRIJAdUIService)QRoute.api(IRIJAdUIService.class);
+      float f = paramIDownloadStyle.getBtnDrawableNormalRadius();
+      Context localContext = getContext();
+      Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
+      localGradientDrawable.setCornerRadius(localIRIJAdUIService.dp2px(f, localContext.getResources()));
+      ((TextView)localObject).setBackgroundDrawable((Drawable)localGradientDrawable);
+    }
+    localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJRoundProgressBar;
+    if (localObject != null) {
+      ((RIJRoundProgressBar)localObject).setProgressStyle((IDownloadStyle)paramIDownloadStyle);
+    }
+    int i = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(paramIDownloadStyle.getRoundSize(), getResources());
+    paramIDownloadStyle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJRoundProgressBar;
+    if (paramIDownloadStyle != null)
+    {
+      localObject = new FrameLayout.LayoutParams(i, i);
+      ((FrameLayout.LayoutParams)localObject).gravity = 17;
+      paramIDownloadStyle.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    i = (int)(i * 0.5F);
+    paramIDownloadStyle = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (paramIDownloadStyle != null)
+    {
+      localObject = new FrameLayout.LayoutParams(i, i);
+      ((FrameLayout.LayoutParams)localObject).gravity = 17;
+      paramIDownloadStyle.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    paramIDownloadStyle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
+    if (paramIDownloadStyle != null)
+    {
+      i = ((RoundProgressStyle)paramIDownloadStyle).getBtnResource();
       if (i != -1)
       {
         paramIDownloadStyle = this.jdField_a_of_type_AndroidWidgetImageView;
@@ -266,293 +259,221 @@ public final class RIJDownloadView
       }
       return;
     }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
   }
   
   private final void b(ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    String str = null;
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData == null)
     {
-      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", "data = null , so setNewDownloadData");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AD_DOWNLOAD_TAG", "data = null , so setNewDownloadData");
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData = paramADVideoAppDownloadData;
       return;
     }
     Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-    if (localObject != null) {}
-    for (localObject = ((ADVideoAppDownloadData)localObject).d;; localObject = null)
+    String str = null;
+    if (localObject != null) {
+      localObject = ((ADVideoAppDownloadData)localObject).d;
+    } else {
+      localObject = null;
+    }
+    if (paramADVideoAppDownloadData != null) {
+      str = paramADVideoAppDownloadData.d;
+    }
+    if ((Intrinsics.areEqual(localObject, str) ^ true))
     {
-      if (paramADVideoAppDownloadData != null) {
-        str = paramADVideoAppDownloadData.d;
-      }
-      if (!(Intrinsics.areEqual(localObject, str) ^ true)) {
-        break;
-      }
-      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", "data packageName is not same , so setNewDownloadData");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AD_DOWNLOAD_TAG", "data packageName is not same , so setNewDownloadData");
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData = paramADVideoAppDownloadData;
-      return;
     }
   }
   
   private final void g()
   {
-    TextView localTextView;
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null)
     {
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
       if (localTextView != null)
       {
-        if (!c()) {
-          break label36;
+        if (c()) {
+          localObject = (CharSequence)"查看";
+        } else {
+          localObject = (CharSequence)"查看详情";
         }
-        localObject = (CharSequence)"查看";
         localTextView.setText((CharSequence)localObject);
       }
+      return;
     }
-    label36:
-    label93:
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+    if (localObject != null) {
+      localObject = ((AdvertisementInfo)localObject).mAdBtnTxt;
+    } else {
+      localObject = null;
+    }
+    localObject = (CharSequence)localObject;
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      return;
-      localObject = (CharSequence)"查看详情";
-      break;
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-      if (localObject != null) {}
-      for (localObject = ((AdvertisementInfo)localObject).mAdBtnTxt;; localObject = null)
-      {
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label93;
-        }
-        localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (localTextView == null) {
-          break;
-        }
-        localTextView.setText((CharSequence)localObject);
-        return;
-      }
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    } while (localTextView == null);
-    if (c()) {}
-    for (Object localObject = (CharSequence)"查看";; localObject = (CharSequence)"查看详情")
-    {
-      localTextView.setText((CharSequence)localObject);
+      if (localTextView != null) {
+        localTextView.setText((CharSequence)localObject);
+      }
       return;
+    }
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
+    {
+      if (c()) {
+        localObject = (CharSequence)"查看";
+      } else {
+        localObject = (CharSequence)"查看详情";
+      }
+      localTextView.setText((CharSequence)localObject);
     }
   }
   
   private final void h()
   {
-    Object localObject2 = new StringBuilder().append("clickBtn : packageName = ");
+    Object localObject3 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("clickBtn : packageName = ");
     Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-    if (localObject1 != null)
-    {
+    Object localObject2 = null;
+    if (localObject1 != null) {
       localObject1 = ((ADVideoAppDownloadData)localObject1).d;
-      localObject2 = ((StringBuilder)localObject2).append((String)localObject1).append(" currentState = ");
-      localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-      if (localObject1 == null) {
-        break label95;
-      }
-      localObject1 = Integer.valueOf(((ADVideoAppDownloadData)localObject1).jdField_a_of_type_Int);
-      label60:
-      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", localObject1);
-      if (!RIJAdDownloadExKt.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) {
-        break label100;
-      }
-      i();
-    }
-    label95:
-    label100:
-    while ((RIJAdDownloadExKt.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) || (!RIJAdDownloadExKt.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)))
-    {
-      return;
+    } else {
       localObject1 = null;
-      break;
-      localObject1 = null;
-      break label60;
     }
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(" currentState = ");
     localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-    if ((localObject1 != null) && (((ADVideoAppDownloadData)localObject1).jdField_b_of_type_Boolean == true))
+    if (localObject1 != null) {
+      localObject1 = Integer.valueOf(((ADVideoAppDownloadData)localObject1).jdField_a_of_type_Int);
+    } else {
+      localObject1 = null;
+    }
+    localStringBuilder.append(localObject1);
+    ((IRIJAdLogService)localObject3).d("AD_DOWNLOAD_TAG", localStringBuilder.toString());
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isDownloadAd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
     {
-      localObject2 = RIJAdDownloadUtil.a;
+      i();
+      return;
+    }
+    if ((!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameSubscribeAd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) && (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameGiftAd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)))
+    {
       localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-      boolean bool2;
-      if (localObject1 != null)
+      if ((localObject1 != null) && (((ADVideoAppDownloadData)localObject1).jdField_b_of_type_Boolean == true))
       {
-        localObject1 = ((ADVideoAppDownloadData)localObject1).d;
-        bool2 = ((RIJAdDownloadUtil)localObject2).a((String)localObject1);
+        localObject3 = (IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class);
         localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-        if (localObject1 == null) {
-          break label265;
+        if (localObject1 != null) {
+          localObject1 = ((ADVideoAppDownloadData)localObject1).d;
+        } else {
+          localObject1 = null;
         }
-        localObject1 = RIJAdDownloadExKt.a((ADVideoAppDownloadData)localObject1);
-        if (localObject1 == null) {
-          break label265;
+        boolean bool2 = ((IRIJAdUtilService)localObject3).isAppInstall((String)localObject1);
+        localObject1 = ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).getDownloadEngine(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
+        boolean bool1;
+        if (localObject1 != null) {
+          bool1 = ((IDownloadEngine)localObject1).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
+        } else {
+          bool1 = false;
         }
-      }
-      label265:
-      for (boolean bool1 = ((IDownloadEngine)localObject1).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);; bool1 = false)
-      {
-        if ((bool2) || (!bool1)) {
-          break label270;
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-        if (localObject1 != null)
+        if ((!bool2) && (bool1))
         {
-          localObject1 = RIJAdDownloadExKt.a((ADVideoAppDownloadData)localObject1);
+          localObject1 = ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).getDownloadEngine(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
           if (localObject1 != null) {
             ((IDownloadEngine)localObject1).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
           }
+          ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).reportAdDownloadClick(getContext(), DownloadClickState.INSTALL_APP, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+          return;
         }
-        localObject1 = RIJAdDownloadReport.a;
-        localObject2 = getContext();
-        Intrinsics.checkExpressionValueIsNotNull(localObject2, "context");
-        RIJAdDownloadReport.a((RIJAdDownloadReport)localObject1, (Context)localObject2, DownloadClickState.INSTALL_APP, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, null, 8, null);
-        return;
-        localObject1 = null;
-        break;
+        ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AD_DOWNLOAD_TAG", "do not found local game pkg file");
       }
-      label270:
-      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", "do not found local game pkg file");
-    }
-    if ((getContext() instanceof Activity))
-    {
-      localObject1 = getContext();
-      if (localObject1 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
+      if ((getContext() instanceof Activity))
+      {
+        localObject1 = getContext();
+        if (localObject1 == null) {
+          throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
+        }
+      }
+      else
+      {
+        localObject3 = this.jdField_a_of_type_JavaLangRefSoftReference;
+        localObject1 = localObject2;
+        if (localObject3 == null) {
+          break label416;
+        }
+        localObject1 = ((SoftReference)localObject3).get();
       }
       localObject1 = (Activity)localObject1;
-    }
-    for (;;)
-    {
-      RIJAdGameGiftUtil.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, (Context)localObject1, this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
-      GameComponentReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, -1, b());
-      return;
-      localObject1 = this.jdField_a_of_type_JavaLangRefSoftReference;
-      if (localObject1 != null) {
-        localObject1 = (Activity)((SoftReference)localObject1).get();
-      } else {
-        localObject1 = null;
-      }
+      label416:
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).showGiftDialog(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, (Context)localObject1, this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportGameGiftClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, -1, b());
     }
   }
   
   private final void i()
   {
-    Context localContext = null;
-    Object localObject2 = RIJAdDownloadUtil.a;
+    Object localObject2 = (IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class);
     Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+    AdvertisementInfo localAdvertisementInfo = null;
     if (localObject1 != null) {
       localObject1 = ((ADVideoAppDownloadData)localObject1).d;
-    }
-    int i;
-    for (;;)
-    {
-      if (((RIJAdDownloadUtil)localObject2).a((String)localObject1)) {
-        if ((getContext() instanceof Activity))
-        {
-          localObject1 = getContext();
-          if (localObject1 == null)
-          {
-            throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
-            localObject1 = null;
-            continue;
-          }
-          localObject1 = (Activity)localObject1;
-          localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-          if (localObject2 == null) {
-            break label176;
-          }
-          i = ((AdvertisementInfo)localObject2).clickPos;
-          label88:
-          if (!RIJAdDownloadUtil.a.a((Activity)localObject1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) {
-            break label182;
-          }
-          localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-          if (localObject1 != null) {
-            ((AdvertisementInfo)localObject1).clickPos = i;
-          }
-          localObject1 = RIJAdDownloadReport.a;
-          localContext = getContext();
-          Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-          ((RIJAdDownloadReport)localObject1).a(localContext, DownloadClickState.OPEN_APP, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, b());
-        }
-      }
-    }
-    for (;;)
-    {
-      return;
-      localObject1 = this.jdField_a_of_type_JavaLangRefSoftReference;
-      if (localObject1 != null)
-      {
-        localObject1 = (Activity)((SoftReference)localObject1).get();
-        break;
-      }
-      localObject1 = null;
-      break;
-      label176:
-      i = 8;
-      break label88;
-      label182:
-      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-      localObject1 = localContext;
-      if (localObject2 != null) {
-        localObject1 = RIJAdDownloadExKt.a((ADVideoAppDownloadData)localObject2);
-      }
-      if ((localObject1 != null) && (((IDownloadEngine)localObject1).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData) == true) && (((IDownloadEngine)localObject1).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData)))
-      {
-        localObject1 = RIJAdDownloadReport.a;
-        localContext = getContext();
-        Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-        ((RIJAdDownloadReport)localObject1).a(localContext, DownloadClickState.INSTALL_APP, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, b());
-        return;
-      }
-      boolean bool;
-      if (RIJAdDownloadExKt.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) {
-        bool = RIJAdDownloadUtil.a.a(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
-      }
-      while (bool)
-      {
-        localObject1 = RIJAdDownloadReport.a;
-        localContext = getContext();
-        Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-        ((RIJAdDownloadReport)localObject1).a(localContext, DownloadClickState.START_DOWNLOAD, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, b());
-        return;
-        if (RIJAdDownloadExKt.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) {
-          bool = RIJAdDownloadUtil.a.b(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
-        } else {
-          bool = RIJAdDownloadUtil.a.c(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
-        }
-      }
-    }
-  }
-  
-  private final void j()
-  {
-    Object localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (localObject1 != null) {
-      ((ImageView)localObject1).setVisibility(0);
-    }
-    Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof RoundProgressStyle)) {
+    } else {
       localObject1 = null;
     }
-    localObject1 = (RoundProgressStyle)localObject1;
-    if (localObject1 != null) {}
-    for (float f = ((RoundProgressStyle)localObject1).getRoundSize();; f = 28.0F)
+    if (((IRIJAdUtilService)localObject2).isAppInstall((String)localObject1))
     {
-      int i = (int)(AIOUtils.a(f, getResources()) * 0.5F);
-      localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (localObject1 != null)
+      if ((getContext() instanceof Activity))
       {
-        localObject2 = new FrameLayout.LayoutParams(i, i);
-        ((FrameLayout.LayoutParams)localObject2).gravity = 17;
-        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        localObject1 = getContext();
+        if (localObject1 == null) {
+          throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
+        }
       }
-      localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (localObject1 != null) {
-        ((ImageView)localObject1).setAlpha(0.5F);
+      else
+      {
+        localObject2 = this.jdField_a_of_type_JavaLangRefSoftReference;
+        localObject1 = localAdvertisementInfo;
+        if (localObject2 == null) {
+          break label102;
+        }
+        localObject1 = ((SoftReference)localObject2).get();
       }
+      localObject1 = (Activity)localObject1;
+      label102:
+      localAdvertisementInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+      int i;
+      if (localAdvertisementInfo != null) {
+        i = localAdvertisementInfo.clickPos;
+      } else {
+        i = 8;
+      }
+      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).openApp((Activity)localObject1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo))
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+        if (localObject1 != null) {
+          ((AdvertisementInfo)localObject1).clickPos = i;
+        }
+        ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).reportAdDownloadClick(getContext(), DownloadClickState.OPEN_APP, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, b());
+        return;
+      }
+    }
+    localObject1 = ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).getDownloadEngine(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
+    if ((localObject1 != null) && (((IDownloadEngine)localObject1).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData) == true) && (((IDownloadEngine)localObject1).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData)))
+    {
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).reportAdDownloadClick(getContext(), DownloadClickState.INSTALL_APP, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, b());
       return;
+    }
+    boolean bool;
+    if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameDownloadAd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) {
+      bool = ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).doGameDownload(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
+    } else if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isSoftDownloadAd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo)) {
+      bool = ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).doSoftAppDownload(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
+    } else {
+      bool = ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).doNormalAppDownload(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData);
+    }
+    if (bool) {
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).reportAdDownloadClick(getContext(), DownloadClickState.START_DOWNLOAD, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, b());
     }
   }
   
@@ -575,16 +496,6 @@ public final class RIJDownloadView
   }
   
   @Nullable
-  public final IProgressView a()
-  {
-    IDownloadStyle localIDownloadStyle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-    if ((localIDownloadStyle != null) && (localIDownloadStyle.getStyleType() == 2)) {
-      return (IProgressView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJRoundProgressBar;
-    }
-    return (IProgressView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJHorizontalProgress;
-  }
-  
-  @Nullable
   public final ADVideoAppDownloadData a()
   {
     return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
@@ -599,20 +510,25 @@ public final class RIJDownloadView
   @Nullable
   protected final String a()
   {
-    return ReadInJoyAdUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+    return ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getGamePkgName(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
   }
   
   public final void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onResume : packageName = ");
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onResume : packageName = ");
     Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-    if (localObject != null) {}
-    for (localObject = ((ADVideoAppDownloadData)localObject).d;; localObject = null)
-    {
-      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", (String)localObject + " view = " + hashCode());
-      a(this, false, 1, null);
-      return;
+    if (localObject != null) {
+      localObject = ((ADVideoAppDownloadData)localObject).d;
+    } else {
+      localObject = null;
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" view = ");
+    localStringBuilder.append(hashCode());
+    localIRIJAdLogService.d("AD_DOWNLOAD_TAG", localStringBuilder.toString());
+    a(this, false, 1, null);
   }
   
   public final void a(int paramInt)
@@ -633,13 +549,231 @@ public final class RIJDownloadView
     h();
   }
   
+  public void a(@Nullable WadlResult paramWadlResult)
+  {
+    Object localObject3 = null;
+    WadlParams localWadlParams = null;
+    Object localObject4 = null;
+    Object localObject5 = null;
+    Object localObject6 = null;
+    AdDownloadInfo localAdDownloadInfo = null;
+    if (paramWadlResult != null)
+    {
+      localObject1 = paramWadlResult.a;
+      if (localObject1 != null)
+      {
+        localObject1 = ((WadlParams)localObject1).f;
+        break label41;
+      }
+    }
+    Object localObject1 = null;
+    label41:
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+      if (localObject2 != null) {
+        localObject2 = ((ADVideoAppDownloadData)localObject2).d;
+      } else {
+        localObject2 = null;
+      }
+      if ((Intrinsics.areEqual(localObject1, localObject2) ^ true)) {
+        return;
+      }
+      if (paramWadlResult != null) {
+        localObject2 = Integer.valueOf(paramWadlResult.jdField_b_of_type_Int);
+      } else {
+        localObject2 = null;
+      }
+      if ((localObject2 != null) && (((Integer)localObject2).intValue() == 4))
+      {
+        localObject2 = AdDownloadStateHandler.OnProgressUpdate;
+        localObject3 = new AdDownloadInfo();
+        ((AdDownloadInfo)localObject3).a((String)localObject1);
+        localWadlParams = paramWadlResult.a;
+        localObject1 = localAdDownloadInfo;
+        if (localWadlParams != null) {
+          localObject1 = localWadlParams.jdField_a_of_type_JavaLangString;
+        }
+        ((AdDownloadInfo)localObject3).c((String)localObject1);
+        ((AdDownloadInfo)localObject3).a(((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).convertToDownloadState(paramWadlResult));
+        ((AdDownloadInfo)localObject3).b(paramWadlResult.d);
+        ((AdDownloadStateHandler)localObject2).doCallBack(this, (AdDownloadInfo)localObject3);
+        return;
+      }
+      if ((localObject2 != null) && (((Integer)localObject2).intValue() == 6))
+      {
+        localObject2 = AdDownloadStateHandler.OnSuccessDownload;
+        localAdDownloadInfo = new AdDownloadInfo();
+        localAdDownloadInfo.a((String)localObject1);
+        localWadlParams = paramWadlResult.a;
+        localObject1 = localObject3;
+        if (localWadlParams != null) {
+          localObject1 = localWadlParams.jdField_a_of_type_JavaLangString;
+        }
+        localAdDownloadInfo.c((String)localObject1);
+        ((AdDownloadStateHandler)localObject2).doCallBack(this, localAdDownloadInfo);
+        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+        if (localObject1 != null) {
+          ((ADVideoAppDownloadData)localObject1).i = paramWadlResult.jdField_b_of_type_JavaLangString;
+        }
+      }
+      else
+      {
+        if ((localObject2 != null) && (((Integer)localObject2).intValue() == 5))
+        {
+          localObject2 = AdDownloadStateHandler.OnPauseDownload;
+          localAdDownloadInfo = new AdDownloadInfo();
+          localAdDownloadInfo.a((String)localObject1);
+          localObject1 = paramWadlResult.a;
+          paramWadlResult = localWadlParams;
+          if (localObject1 != null) {
+            paramWadlResult = ((WadlParams)localObject1).jdField_a_of_type_JavaLangString;
+          }
+          localAdDownloadInfo.c(paramWadlResult);
+          ((AdDownloadStateHandler)localObject2).doCallBack(this, localAdDownloadInfo);
+          return;
+        }
+        if ((localObject2 != null) && (((Integer)localObject2).intValue() == 9))
+        {
+          localObject2 = AdDownloadStateHandler.OnInstallSucceed;
+          localAdDownloadInfo = new AdDownloadInfo();
+          localAdDownloadInfo.a((String)localObject1);
+          localObject1 = paramWadlResult.a;
+          paramWadlResult = localObject4;
+          if (localObject1 != null) {
+            paramWadlResult = ((WadlParams)localObject1).jdField_a_of_type_JavaLangString;
+          }
+          localAdDownloadInfo.c(paramWadlResult);
+          ((AdDownloadStateHandler)localObject2).doCallBack(this, localAdDownloadInfo);
+          return;
+        }
+        if ((localObject2 != null) && (((Integer)localObject2).intValue() == 10))
+        {
+          localObject2 = AdDownloadStateHandler.OnInstallSucceed;
+          localAdDownloadInfo = new AdDownloadInfo();
+          localAdDownloadInfo.a((String)localObject1);
+          localObject1 = paramWadlResult.a;
+          paramWadlResult = localObject5;
+          if (localObject1 != null) {
+            paramWadlResult = ((WadlParams)localObject1).jdField_a_of_type_JavaLangString;
+          }
+          localAdDownloadInfo.c(paramWadlResult);
+          ((AdDownloadStateHandler)localObject2).doCallBack(this, localAdDownloadInfo);
+          return;
+        }
+        if (localObject2 == null) {
+          return;
+        }
+        if (((Integer)localObject2).intValue() == 7)
+        {
+          localObject2 = AdDownloadStateHandler.OnErrorDownload;
+          localAdDownloadInfo = new AdDownloadInfo();
+          localAdDownloadInfo.a((String)localObject1);
+          localObject3 = paramWadlResult.a;
+          localObject1 = localObject6;
+          if (localObject3 != null) {
+            localObject1 = ((WadlParams)localObject3).jdField_a_of_type_JavaLangString;
+          }
+          localAdDownloadInfo.c((String)localObject1);
+          localAdDownloadInfo.c(paramWadlResult.c);
+          ((AdDownloadStateHandler)localObject2).doCallBack(this, localAdDownloadInfo);
+        }
+      }
+    }
+  }
+  
+  public void a(@Nullable ArrayList<WadlResult> paramArrayList)
+  {
+    AdDownloadStateHandler localAdDownloadStateHandler = null;
+    AdDownloadInfo localAdDownloadInfo = null;
+    Object localObject3;
+    if (paramArrayList != null)
+    {
+      localObject3 = ((Iterable)paramArrayList).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject2 = ((Iterator)localObject3).next();
+        paramArrayList = ((WadlResult)localObject2).a;
+        if (paramArrayList != null) {
+          paramArrayList = paramArrayList.e;
+        } else {
+          paramArrayList = null;
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+        if (localObject1 != null) {
+          localObject1 = ((ADVideoAppDownloadData)localObject1).c;
+        } else {
+          localObject1 = null;
+        }
+        if (Intrinsics.areEqual(paramArrayList, localObject1))
+        {
+          paramArrayList = (ArrayList<WadlResult>)localObject2;
+          break label104;
+        }
+      }
+      paramArrayList = null;
+      label104:
+      paramArrayList = (WadlResult)paramArrayList;
+    }
+    else
+    {
+      paramArrayList = null;
+    }
+    if (paramArrayList != null)
+    {
+      localObject1 = paramArrayList.a.f;
+      int i = ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).convertToDownloadState(paramArrayList);
+      int j = paramArrayList.d;
+      localAdDownloadStateHandler = AdDownloadStateHandler.OnQueryResult;
+      localObject2 = new AdDownloadInfo();
+      ((AdDownloadInfo)localObject2).a((String)localObject1);
+      localObject3 = paramArrayList.a;
+      localObject1 = localAdDownloadInfo;
+      if (localObject3 != null) {
+        localObject1 = ((WadlParams)localObject3).jdField_a_of_type_JavaLangString;
+      }
+      ((AdDownloadInfo)localObject2).c((String)localObject1);
+      ((AdDownloadInfo)localObject2).a(i);
+      ((AdDownloadInfo)localObject2).b(j);
+      ((AdDownloadInfo)localObject2).d(paramArrayList.jdField_b_of_type_JavaLangString);
+      ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).checkRealState((AdDownloadInfo)localObject2);
+      localAdDownloadStateHandler.doCallBack(this, (AdDownloadInfo)localObject2);
+      return;
+    }
+    Object localObject1 = AdDownloadStateHandler.OnQueryResult;
+    localAdDownloadInfo = new AdDownloadInfo();
+    paramArrayList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+    if (paramArrayList != null) {
+      paramArrayList = paramArrayList.d;
+    } else {
+      paramArrayList = null;
+    }
+    localAdDownloadInfo.a(paramArrayList);
+    paramArrayList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+    if (paramArrayList != null) {
+      paramArrayList = paramArrayList.jdField_a_of_type_JavaLangString;
+    } else {
+      paramArrayList = null;
+    }
+    localAdDownloadInfo.c(paramArrayList);
+    localAdDownloadInfo.a(0);
+    localAdDownloadInfo.b(0);
+    Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+    paramArrayList = localAdDownloadStateHandler;
+    if (localObject2 != null) {
+      paramArrayList = ((ADVideoAppDownloadData)localObject2).i;
+    }
+    localAdDownloadInfo.d(paramArrayList);
+    ((AdDownloadStateHandler)localObject1).doCallBack(this, localAdDownloadInfo);
+  }
+  
   public final void a(boolean paramBoolean)
   {
     if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) || (paramBoolean))
     {
       ADVideoAppDownloadData localADVideoAppDownloadData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
       if (localADVideoAppDownloadData != null) {
-        RIJAdDownloadExKt.a(localADVideoAppDownloadData).a(this, localADVideoAppDownloadData);
+        ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).getDownloadEngine(localADVideoAppDownloadData).a(this, localADVideoAppDownloadData);
       }
     }
   }
@@ -650,9 +784,11 @@ public final class RIJDownloadView
     if ((paramAdvertisementInfo != null) && (!TextUtils.isEmpty((CharSequence)paramString)) && (Intrinsics.areEqual(paramString, a()))) {}
     try
     {
-      paramAdvertisementInfo = BaseApplicationImpl.getContext();
-      Intrinsics.checkExpressionValueIsNotNull(paramAdvertisementInfo, "BaseApplicationImpl.getContext()");
-      paramAdvertisementInfo = paramAdvertisementInfo.getResources().getString(2131718254);
+      paramAdvertisementInfo = QRoute.api(IRIJAdUtilService.class);
+      Intrinsics.checkExpressionValueIsNotNull(paramAdvertisementInfo, "QRoute.api(IRIJAdUtilService::class.java)");
+      paramAdvertisementInfo = ((IRIJAdUtilService)paramAdvertisementInfo).getApplication();
+      Intrinsics.checkExpressionValueIsNotNull(paramAdvertisementInfo, "QRoute.api(IRIJAdUtilSer…::class.java).application");
+      paramAdvertisementInfo = paramAdvertisementInfo.getResources().getString(2131717919);
       paramString = this.jdField_a_of_type_AndroidWidgetTextView;
       if (paramString != null) {
         paramString.setText((CharSequence)paramAdvertisementInfo);
@@ -680,70 +816,27 @@ public final class RIJDownloadView
   
   public final void b()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onPause : packageName = ");
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPause : packageName = ");
     Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-    if (localObject != null) {}
-    for (localObject = ((ADVideoAppDownloadData)localObject).d;; localObject = null)
-    {
-      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", (String)localObject + " view = " + hashCode());
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog;
-      if (localObject != null) {
-        ((GiftPackageDialog)localObject).dismiss();
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
-      return;
+    if (localObject != null) {
+      localObject = ((ADVideoAppDownloadData)localObject).d;
+    } else {
+      localObject = null;
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" view = ");
+    localStringBuilder.append(hashCode());
+    localIRIJAdLogService.d("AD_DOWNLOAD_TAG", localStringBuilder.toString());
+    localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog;
+    if (localObject != null) {
+      ((GiftPackageDialog)localObject).dismiss();
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
   }
   
-  public final void b(boolean paramBoolean)
-  {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localObject != null) {
-      ((TextView)localObject).setVisibility(8);
-    }
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-    if ((localObject != null) && (((IDownloadStyle)localObject).getStyleType() == 2))
-    {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJRoundProgressBar;
-      if (localObject != null) {
-        ((RIJRoundProgressBar)localObject).setVisibility(0);
-      }
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJHorizontalProgress;
-      if (localObject != null) {
-        ((RIJHorizontalProgress)localObject).setVisibility(8);
-      }
-      if (((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle instanceof RoundProgressStyle)) && (paramBoolean))
-      {
-        localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-        if (localObject == null) {
-          throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
-        }
-        if (((RoundProgressStyle)localObject).getBtnResource() != -1) {
-          j();
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-      } while (localObject == null);
-      ((ImageView)localObject).setVisibility(8);
-      return;
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJHorizontalProgress;
-      if (localObject != null) {
-        ((RIJHorizontalProgress)localObject).setVisibility(0);
-      }
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJRoundProgressBar;
-      if (localObject != null) {
-        ((RIJRoundProgressBar)localObject).setVisibility(8);
-      }
-      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    } while (localObject == null);
-    ((ImageView)localObject).setVisibility(8);
-  }
+  public void b(@Nullable ArrayList<WadlResult> paramArrayList) {}
   
   public final boolean b()
   {
@@ -765,10 +858,11 @@ public final class RIJDownloadView
       {
         localObject2 = new GradientDrawable();
         ((GradientDrawable)localObject2).setColor(Color.parseColor(((HorizontalProgressStyle)localObject3).getBtnDrawableActiveColor()));
+        IRIJAdUIService localIRIJAdUIService = (IRIJAdUIService)QRoute.api(IRIJAdUIService.class);
         float f = ((HorizontalProgressStyle)localObject3).getBtnDrawableActiveRadius();
         localObject3 = getContext();
         Intrinsics.checkExpressionValueIsNotNull(localObject3, "context");
-        ((GradientDrawable)localObject2).setCornerRadius(AIOUtils.a(f, ((Context)localObject3).getResources()));
+        ((GradientDrawable)localObject2).setCornerRadius(localIRIJAdUIService.dp2px(f, ((Context)localObject3).getResources()));
         ((TextView)localObject1).setBackgroundDrawable((Drawable)localObject2);
       }
     }
@@ -776,16 +870,18 @@ public final class RIJDownloadView
   
   public final boolean c()
   {
-    boolean bool = false;
     IDownloadStyle localIDownloadStyle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-    if (localIDownloadStyle != null) {}
-    for (int i = localIDownloadStyle.getBtnTextLength();; i = 0)
-    {
-      if (i < 4) {
-        bool = true;
-      }
-      return bool;
+    boolean bool = false;
+    int i;
+    if (localIDownloadStyle != null) {
+      i = localIDownloadStyle.getBtnTextLength();
+    } else {
+      i = 0;
     }
+    if (i < 4) {
+      bool = true;
+    }
+    return bool;
   }
   
   public final void d()
@@ -806,58 +902,58 @@ public final class RIJDownloadView
     if (localObject1 != null) {
       ((ImageView)localObject1).setVisibility(0);
     }
+    IRIJAdUIService localIRIJAdUIService = (IRIJAdUIService)QRoute.api(IRIJAdUIService.class);
     Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
     localObject1 = localObject2;
     if (!(localObject2 instanceof RoundProgressStyle)) {
       localObject1 = null;
     }
     localObject1 = (RoundProgressStyle)localObject1;
-    int i;
+    float f;
+    if (localObject1 != null) {
+      f = ((RoundProgressStyle)localObject1).getImageIconWidth();
+    } else {
+      f = 14.0F;
+    }
+    int i = localIRIJAdUIService.dp2px(f, getResources());
+    localIRIJAdUIService = (IRIJAdUIService)QRoute.api(IRIJAdUIService.class);
+    localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
+    localObject1 = localObject2;
+    if (!(localObject2 instanceof RoundProgressStyle)) {
+      localObject1 = null;
+    }
+    localObject1 = (RoundProgressStyle)localObject1;
+    if (localObject1 != null) {
+      f = ((RoundProgressStyle)localObject1).getImageIconHeight();
+    } else {
+      f = 16.0F;
+    }
+    int j = localIRIJAdUIService.dp2px(f, getResources());
+    localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
     if (localObject1 != null)
     {
-      f = ((RoundProgressStyle)localObject1).getImageIconWidth();
-      i = AIOUtils.a(f, getResources());
-      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-      localObject1 = localObject2;
-      if (!(localObject2 instanceof RoundProgressStyle)) {
-        localObject1 = null;
-      }
-      localObject1 = (RoundProgressStyle)localObject1;
-      if (localObject1 == null) {
-        break label231;
-      }
+      localObject2 = new FrameLayout.LayoutParams(i, j);
+      ((FrameLayout.LayoutParams)localObject2).gravity = 17;
+      ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
-    label231:
-    for (float f = ((RoundProgressStyle)localObject1).getImageIconHeight();; f = 16.0F)
-    {
-      int j = AIOUtils.a(f, getResources());
-      localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (localObject1 != null)
-      {
-        localObject2 = new FrameLayout.LayoutParams(i, j);
-        ((FrameLayout.LayoutParams)localObject2).gravity = 17;
-        ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      }
-      localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (localObject1 != null) {
-        ((ImageView)localObject1).setAlpha(1.0F);
-      }
-      return;
-      f = 14.0F;
-      break;
+    localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localObject1 != null) {
+      ((ImageView)localObject1).setAlpha(1.0F);
     }
   }
   
   public final boolean d()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle instanceof RoundProgressStyle))
-    {
-      IDownloadStyle localIDownloadStyle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
-      if (localIDownloadStyle == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
+    IDownloadStyle localIDownloadStyle = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadStyleIDownloadStyle;
+    if ((localIDownloadStyle instanceof RoundProgressStyle)) {
+      if (localIDownloadStyle != null)
+      {
+        if (((RoundProgressStyle)localIDownloadStyle).getBtnResource() != -1) {
+          return true;
+        }
       }
-      if (((RoundProgressStyle)localIDownloadStyle).getBtnResource() != -1) {
-        return true;
+      else {
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle");
       }
     }
     return false;
@@ -885,8 +981,8 @@ public final class RIJDownloadView
   
   public final boolean e()
   {
-    boolean bool2 = false;
     ADVideoAppDownloadData localADVideoAppDownloadData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (localADVideoAppDownloadData != null)
     {
@@ -918,10 +1014,10 @@ public final class RIJDownloadView
     localAdDownloadStateHandler.doCallBack(this, localAdDownloadInfo);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    AdDownloadLifeEvent.OnAttachedToWindow.onEvent(this);
+    ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).downloadEventOnAttachedToWindow(this);
     a(this, false, 1, null);
     GiftPackageDialog localGiftPackageDialog = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog;
     if (localGiftPackageDialog != null) {
@@ -929,24 +1025,28 @@ public final class RIJDownloadView
     }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    AdDownloadLifeEvent.OnDetachedFromWindow.onEvent(this);
+    ((IRIJAdDownloadService)QRoute.api(IRIJAdDownloadService.class)).downloadEventOnDetachedFromWindow(this);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
   }
   
   public void onDownloadCancel(@Nullable DownloadInfo paramDownloadInfo)
   {
+    Object localObject3 = (IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class);
     Object localObject2 = null;
-    Object localObject3 = RIJAdDownloadUtil.a;
-    if (paramDownloadInfo != null) {}
-    for (Object localObject1 = paramDownloadInfo.e; ((RIJAdDownloadUtil)localObject3).a((String)localObject1); localObject1 = null) {
+    if (paramDownloadInfo != null) {
+      localObject1 = paramDownloadInfo.e;
+    } else {
+      localObject1 = null;
+    }
+    if (((IRIJAdUtilService)localObject3).isAppInstall((String)localObject1)) {
       return;
     }
     localObject3 = AdDownloadStateHandler.OnCancelDownload;
     AdDownloadInfo localAdDownloadInfo = new AdDownloadInfo();
-    localObject1 = localObject2;
+    Object localObject1 = localObject2;
     if (paramDownloadInfo != null) {
       localObject1 = paramDownloadInfo.e;
     }
@@ -960,112 +1060,108 @@ public final class RIJDownloadView
     AdDownloadStateHandler localAdDownloadStateHandler = AdDownloadStateHandler.OnErrorDownload;
     AdDownloadInfo localAdDownloadInfo = new AdDownloadInfo();
     String str;
-    if (paramDownloadInfo != null)
-    {
+    if (paramDownloadInfo != null) {
       str = paramDownloadInfo.e;
-      localAdDownloadInfo.a(str);
-      localAdDownloadInfo.c(localAdDownloadInfo.c());
-      if (paramDownloadInfo == null) {
-        break label85;
-      }
-    }
-    label85:
-    for (paramInt2 = paramDownloadInfo.f;; paramInt2 = 0)
-    {
-      localAdDownloadInfo.b(paramInt2);
-      localAdDownloadInfo.c(paramInt1);
-      localAdDownloadInfo.b(paramString);
-      localAdDownloadStateHandler.doCallBack(this, localAdDownloadInfo);
-      return;
+    } else {
       str = null;
-      break;
     }
+    localAdDownloadInfo.a(str);
+    localAdDownloadInfo.c(localAdDownloadInfo.c());
+    if (paramDownloadInfo != null) {
+      paramInt2 = paramDownloadInfo.f;
+    } else {
+      paramInt2 = 0;
+    }
+    localAdDownloadInfo.b(paramInt2);
+    localAdDownloadInfo.c(paramInt1);
+    localAdDownloadInfo.b(paramString);
+    localAdDownloadStateHandler.doCallBack(this, localAdDownloadInfo);
   }
   
   public void onDownloadFinish(@Nullable DownloadInfo paramDownloadInfo)
   {
-    Object localObject2 = null;
     Object localObject3 = AdDownloadStateHandler.OnSuccessDownload;
     AdDownloadInfo localAdDownloadInfo = new AdDownloadInfo();
-    if (paramDownloadInfo != null) {}
-    for (Object localObject1 = paramDownloadInfo.e;; localObject1 = null)
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramDownloadInfo != null) {
+      localObject1 = paramDownloadInfo.e;
+    } else {
+      localObject1 = null;
+    }
+    localAdDownloadInfo.a((String)localObject1);
+    localAdDownloadInfo.c(localAdDownloadInfo.c());
+    ((AdDownloadStateHandler)localObject3).doCallBack(this, localAdDownloadInfo);
+    localObject3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+    if (localObject3 != null)
     {
-      localAdDownloadInfo.a((String)localObject1);
-      localAdDownloadInfo.c(localAdDownloadInfo.c());
-      ((AdDownloadStateHandler)localObject3).doCallBack(this, localAdDownloadInfo);
-      localObject3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-      if (localObject3 != null)
-      {
-        localObject1 = localObject2;
-        if (paramDownloadInfo != null) {
-          localObject1 = paramDownloadInfo.l;
-        }
-        ((ADVideoAppDownloadData)localObject3).i = ((String)localObject1);
+      localObject1 = localObject2;
+      if (paramDownloadInfo != null) {
+        localObject1 = paramDownloadInfo.l;
       }
-      return;
+      ((ADVideoAppDownloadData)localObject3).i = ((String)localObject1);
     }
   }
   
   public void onDownloadPause(@Nullable DownloadInfo paramDownloadInfo)
   {
-    Object localObject2 = null;
     AdDownloadStateHandler localAdDownloadStateHandler = AdDownloadStateHandler.OnPauseDownload;
     AdDownloadInfo localAdDownloadInfo = new AdDownloadInfo();
-    StringBuilder localStringBuilder;
-    if (paramDownloadInfo != null)
-    {
+    Object localObject2 = null;
+    if (paramDownloadInfo != null) {
       localObject1 = paramDownloadInfo.e;
-      localAdDownloadInfo.a((String)localObject1);
-      localAdDownloadInfo.c(localAdDownloadInfo.c());
-      localStringBuilder = new StringBuilder().append("urlStr = ");
-      if (paramDownloadInfo == null) {
-        break label135;
-      }
-    }
-    label135:
-    for (Object localObject1 = paramDownloadInfo.d;; localObject1 = null)
-    {
-      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", (String)localObject1);
-      localStringBuilder = new StringBuilder().append("urlPath = ");
-      localObject1 = localObject2;
-      if (paramDownloadInfo != null) {
-        localObject1 = paramDownloadInfo.i;
-      }
-      ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", (String)localObject1);
-      localAdDownloadStateHandler.doCallBack(this, localAdDownloadInfo);
-      return;
+    } else {
       localObject1 = null;
-      break;
     }
+    localAdDownloadInfo.a((String)localObject1);
+    localAdDownloadInfo.c(localAdDownloadInfo.c());
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("urlStr = ");
+    if (paramDownloadInfo != null) {
+      localObject1 = paramDownloadInfo.d;
+    } else {
+      localObject1 = null;
+    }
+    localStringBuilder.append((String)localObject1);
+    localIRIJAdLogService.d("AD_DOWNLOAD_TAG", localStringBuilder.toString());
+    localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("urlPath = ");
+    Object localObject1 = localObject2;
+    if (paramDownloadInfo != null) {
+      localObject1 = paramDownloadInfo.i;
+    }
+    localStringBuilder.append((String)localObject1);
+    localIRIJAdLogService.d("AD_DOWNLOAD_TAG", localStringBuilder.toString());
+    localAdDownloadStateHandler.doCallBack(this, localAdDownloadInfo);
   }
   
   public void onDownloadUpdate(@Nullable List<DownloadInfo> paramList)
   {
-    Object localObject2;
-    Object localObject1;
     if (paramList != null)
     {
-      localObject2 = ((Iterable)paramList).iterator();
-      if (!((Iterator)localObject2).hasNext()) {
-        break label141;
-      }
-      localObject1 = ((Iterator)localObject2).next();
-      String str = ((DownloadInfo)localObject1).d;
-      paramList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-      if (paramList == null) {
-        break label136;
-      }
-      paramList = paramList.c;
-      label53:
-      if (!Intrinsics.areEqual(str, paramList)) {
-        break label139;
-      }
-    }
-    label136:
-    label139:
-    label141:
-    for (paramList = (List<DownloadInfo>)localObject1;; paramList = null)
-    {
+      Object localObject2 = ((Iterable)paramList).iterator();
+      Object localObject1;
+      String str;
+      do
+      {
+        boolean bool = ((Iterator)localObject2).hasNext();
+        paramList = null;
+        if (!bool) {
+          break;
+        }
+        localObject1 = ((Iterator)localObject2).next();
+        str = ((DownloadInfo)localObject1).d;
+        ADVideoAppDownloadData localADVideoAppDownloadData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+        if (localADVideoAppDownloadData != null) {
+          paramList = localADVideoAppDownloadData.c;
+        }
+      } while (!Intrinsics.areEqual(str, paramList));
+      paramList = (List<DownloadInfo>)localObject1;
+      break label79;
+      paramList = null;
+      label79:
       paramList = (DownloadInfo)paramList;
       if (paramList != null)
       {
@@ -1080,274 +1176,10 @@ public final class RIJDownloadView
         }
         ((AdDownloadStateHandler)localObject1).doCallBack(this, (AdDownloadInfo)localObject2);
       }
-      return;
-      paramList = null;
-      break label53;
-      break;
     }
   }
   
   public void onDownloadWait(@Nullable DownloadInfo paramDownloadInfo) {}
-  
-  public void onQueryCallback(@Nullable ArrayList<WadlResult> paramArrayList)
-  {
-    AdDownloadStateHandler localAdDownloadStateHandler = null;
-    AdDownloadInfo localAdDownloadInfo = null;
-    Object localObject3;
-    Object localObject2;
-    if (paramArrayList != null)
-    {
-      localObject3 = ((Iterable)paramArrayList).iterator();
-      if (((Iterator)localObject3).hasNext())
-      {
-        localObject2 = ((Iterator)localObject3).next();
-        paramArrayList = ((WadlResult)localObject2).a;
-        if (paramArrayList != null)
-        {
-          paramArrayList = paramArrayList.e;
-          label58:
-          localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-          if (localObject1 == null) {
-            break label209;
-          }
-          localObject1 = ((ADVideoAppDownloadData)localObject1).c;
-          label76:
-          if (!Intrinsics.areEqual(paramArrayList, localObject1)) {
-            break label213;
-          }
-          paramArrayList = (ArrayList<WadlResult>)localObject2;
-        }
-      }
-    }
-    label88:
-    for (paramArrayList = (WadlResult)paramArrayList;; paramArrayList = null)
-    {
-      if (paramArrayList == null) {
-        break label225;
-      }
-      localObject1 = paramArrayList.a.f;
-      int i = RIJAdDownloadStateUtil.a.a(paramArrayList);
-      int j = paramArrayList.d;
-      localAdDownloadStateHandler = AdDownloadStateHandler.OnQueryResult;
-      localObject2 = new AdDownloadInfo();
-      ((AdDownloadInfo)localObject2).a((String)localObject1);
-      localObject3 = paramArrayList.a;
-      localObject1 = localAdDownloadInfo;
-      if (localObject3 != null) {
-        localObject1 = ((WadlParams)localObject3).jdField_a_of_type_JavaLangString;
-      }
-      ((AdDownloadInfo)localObject2).c((String)localObject1);
-      ((AdDownloadInfo)localObject2).a(i);
-      ((AdDownloadInfo)localObject2).b(j);
-      ((AdDownloadInfo)localObject2).d(paramArrayList.jdField_b_of_type_JavaLangString);
-      RIJAdDownloadExKt.a((AdDownloadInfo)localObject2);
-      localAdDownloadStateHandler.doCallBack(this, (AdDownloadInfo)localObject2);
-      return;
-      paramArrayList = null;
-      break label58;
-      localObject1 = null;
-      break label76;
-      break;
-      paramArrayList = null;
-      break label88;
-    }
-    label209:
-    label213:
-    label225:
-    Object localObject1 = AdDownloadStateHandler.OnQueryResult;
-    localAdDownloadInfo = new AdDownloadInfo();
-    paramArrayList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-    if (paramArrayList != null)
-    {
-      paramArrayList = paramArrayList.d;
-      localAdDownloadInfo.a(paramArrayList);
-      paramArrayList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-      if (paramArrayList == null) {
-        break label331;
-      }
-    }
-    label331:
-    for (paramArrayList = paramArrayList.jdField_a_of_type_JavaLangString;; paramArrayList = null)
-    {
-      localAdDownloadInfo.c(paramArrayList);
-      localAdDownloadInfo.a(0);
-      localAdDownloadInfo.b(0);
-      localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-      paramArrayList = localAdDownloadStateHandler;
-      if (localObject2 != null) {
-        paramArrayList = ((ADVideoAppDownloadData)localObject2).i;
-      }
-      localAdDownloadInfo.d(paramArrayList);
-      ((AdDownloadStateHandler)localObject1).doCallBack(this, localAdDownloadInfo);
-      return;
-      paramArrayList = null;
-      break;
-    }
-  }
-  
-  public void onQueryCallbackVia(@Nullable ArrayList<WadlResult> paramArrayList) {}
-  
-  public void onWadlTaskStatusChanged(@Nullable WadlResult paramWadlResult)
-  {
-    Object localObject3 = null;
-    WadlParams localWadlParams = null;
-    Object localObject4 = null;
-    Object localObject5 = null;
-    Object localObject6 = null;
-    AdDownloadInfo localAdDownloadInfo = null;
-    if (paramWadlResult != null)
-    {
-      localObject1 = paramWadlResult.a;
-      if (localObject1 != null)
-      {
-        localObject1 = ((WadlParams)localObject1).f;
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-          if (localObject2 == null) {
-            break label76;
-          }
-          localObject2 = ((ADVideoAppDownloadData)localObject2).d;
-          label60:
-          if (!(Intrinsics.areEqual(localObject1, localObject2) ^ true)) {
-            break label81;
-          }
-        }
-      }
-    }
-    label76:
-    label81:
-    label93:
-    label97:
-    label101:
-    label105:
-    label113:
-    do
-    {
-      return;
-      break label113;
-      localObject1 = null;
-      break;
-      localObject2 = null;
-      break label60;
-      if (paramWadlResult != null)
-      {
-        localObject2 = Integer.valueOf(paramWadlResult.jdField_b_of_type_Int);
-        if (localObject2 != null) {
-          break label193;
-        }
-        if (localObject2 != null) {
-          break label275;
-        }
-        if (localObject2 != null) {
-          break label354;
-        }
-        if (localObject2 != null) {
-          break label412;
-        }
-      }
-      for (;;)
-      {
-        if (localObject2 == null)
-        {
-          if ((localObject2 == null) || (((Integer)localObject2).intValue() != 7)) {
-            break;
-          }
-          localObject2 = AdDownloadStateHandler.OnErrorDownload;
-          localObject3 = new AdDownloadInfo();
-          ((AdDownloadInfo)localObject3).a((String)localObject1);
-          localWadlParams = paramWadlResult.a;
-          localObject1 = localAdDownloadInfo;
-          if (localWadlParams != null) {
-            localObject1 = localWadlParams.jdField_a_of_type_JavaLangString;
-          }
-          ((AdDownloadInfo)localObject3).c((String)localObject1);
-          ((AdDownloadInfo)localObject3).c(paramWadlResult.c);
-          ((AdDownloadStateHandler)localObject2).doCallBack(this, (AdDownloadInfo)localObject3);
-          return;
-          localObject2 = null;
-          break label93;
-          if (((Integer)localObject2).intValue() != 4) {
-            break label97;
-          }
-          localObject2 = AdDownloadStateHandler.OnProgressUpdate;
-          localAdDownloadInfo = new AdDownloadInfo();
-          localAdDownloadInfo.a((String)localObject1);
-          localWadlParams = paramWadlResult.a;
-          localObject1 = localObject3;
-          if (localWadlParams != null) {
-            localObject1 = localWadlParams.jdField_a_of_type_JavaLangString;
-          }
-          localAdDownloadInfo.c((String)localObject1);
-          localAdDownloadInfo.a(RIJAdDownloadStateUtil.a.a(paramWadlResult));
-          localAdDownloadInfo.b(paramWadlResult.d);
-          ((AdDownloadStateHandler)localObject2).doCallBack(this, localAdDownloadInfo);
-          return;
-          if (((Integer)localObject2).intValue() != 6) {
-            break label101;
-          }
-          localObject2 = AdDownloadStateHandler.OnSuccessDownload;
-          localAdDownloadInfo = new AdDownloadInfo();
-          localAdDownloadInfo.a((String)localObject1);
-          localObject3 = paramWadlResult.a;
-          localObject1 = localWadlParams;
-          if (localObject3 != null) {
-            localObject1 = ((WadlParams)localObject3).jdField_a_of_type_JavaLangString;
-          }
-          localAdDownloadInfo.c((String)localObject1);
-          ((AdDownloadStateHandler)localObject2).doCallBack(this, localAdDownloadInfo);
-          localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-          if (localObject1 == null) {
-            break;
-          }
-          ((ADVideoAppDownloadData)localObject1).i = paramWadlResult.jdField_b_of_type_JavaLangString;
-          return;
-          if (((Integer)localObject2).intValue() != 5) {
-            break label105;
-          }
-          localObject2 = AdDownloadStateHandler.OnPauseDownload;
-          localAdDownloadInfo = new AdDownloadInfo();
-          localAdDownloadInfo.a((String)localObject1);
-          localObject1 = paramWadlResult.a;
-          paramWadlResult = localObject4;
-          if (localObject1 != null) {
-            paramWadlResult = ((WadlParams)localObject1).jdField_a_of_type_JavaLangString;
-          }
-          localAdDownloadInfo.c(paramWadlResult);
-          ((AdDownloadStateHandler)localObject2).doCallBack(this, localAdDownloadInfo);
-          return;
-          if (((Integer)localObject2).intValue() == 9)
-          {
-            localObject2 = AdDownloadStateHandler.OnInstallSucceed;
-            localAdDownloadInfo = new AdDownloadInfo();
-            localAdDownloadInfo.a((String)localObject1);
-            localObject1 = paramWadlResult.a;
-            paramWadlResult = localObject5;
-            if (localObject1 != null) {
-              paramWadlResult = ((WadlParams)localObject1).jdField_a_of_type_JavaLangString;
-            }
-            localAdDownloadInfo.c(paramWadlResult);
-            ((AdDownloadStateHandler)localObject2).doCallBack(this, localAdDownloadInfo);
-            return;
-          }
-        }
-      }
-    } while (((Integer)localObject2).intValue() != 10);
-    label193:
-    label354:
-    Object localObject2 = AdDownloadStateHandler.OnInstallSucceed;
-    label275:
-    label412:
-    localAdDownloadInfo = new AdDownloadInfo();
-    localAdDownloadInfo.a((String)localObject1);
-    Object localObject1 = paramWadlResult.a;
-    paramWadlResult = localObject6;
-    if (localObject1 != null) {
-      paramWadlResult = ((WadlParams)localObject1).jdField_a_of_type_JavaLangString;
-    }
-    localAdDownloadInfo.c(paramWadlResult);
-    ((AdDownloadStateHandler)localObject2).doCallBack(this, localAdDownloadInfo);
-  }
   
   public void packageReplaced(@Nullable String paramString1, @Nullable String paramString2) {}
   
@@ -1360,37 +1192,29 @@ public final class RIJDownloadView
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
     g();
-    FrameLayout localFrameLayout = this.jdField_a_of_type_AndroidWidgetFrameLayout;
-    if (localFrameLayout != null) {
-      localFrameLayout.setVisibility(0);
+    Object localObject1 = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    if (localObject1 != null) {
+      ((FrameLayout)localObject1).setVisibility(0);
     }
-    if ((paramAdvertisementInfo != null) && (RIJAdDownloadExKt.d(paramAdvertisementInfo) == true))
+    boolean bool = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isSoftDownloadAd(paramAdvertisementInfo);
+    Object localObject2 = null;
+    localObject1 = null;
+    if (bool)
     {
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadAdDownloadScene == AdDownloadScene.PTSCard) {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadAdDownloadScene = AdDownloadScene.SoftButton;
       }
-      paramAdvertisementInfo = ADVideoAppDownloadData.a(paramAdvertisementInfo.mAdvertisementSoftInfo, 0);
+      if (paramAdvertisementInfo != null) {
+        localObject1 = paramAdvertisementInfo.mAdvertisementSoftInfo;
+      }
+      paramAdvertisementInfo = ADVideoAppDownloadData.a((AdvertisementSoftInfo)localObject1, 0);
       if (paramAdvertisementInfo != null) {
         a(paramAdvertisementInfo);
       }
     }
-    for (;;)
+    else if ((!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameDownloadAd(paramAdvertisementInfo)) && (!((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameGiftAd(paramAdvertisementInfo)))
     {
-      if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        AdDownloadStateHandler.OnInitDownload.doCallBack(this, new AdDownloadInfo());
-      }
-      return;
-      if (((paramAdvertisementInfo != null) && (RIJAdDownloadExKt.e(paramAdvertisementInfo) == true)) || ((paramAdvertisementInfo != null) && (RIJAdDownloadExKt.g(paramAdvertisementInfo) == true)))
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadAdDownloadScene == AdDownloadScene.PTSCard) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadAdDownloadScene = AdDownloadScene.GameButton;
-        }
-        paramAdvertisementInfo = ADVideoAppDownloadData.a(paramAdvertisementInfo.gameAdComData);
-        if (paramAdvertisementInfo != null) {
-          a(paramAdvertisementInfo);
-        }
-      }
-      else if (AdvertisementInfo.isAppAdvertisementInfo((BaseArticleInfo)paramAdvertisementInfo))
+      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAppAdvertisementInfo((AbsBaseArticleInfo)paramAdvertisementInfo))
       {
         paramAdvertisementInfo = ADVideoAppDownloadData.a(paramAdvertisementInfo, a(paramAdvertisementInfo));
         if (paramAdvertisementInfo != null) {
@@ -1401,6 +1225,23 @@ public final class RIJDownloadView
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData = ((ADVideoAppDownloadData)null);
       }
+    }
+    else
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadAdDownloadScene == AdDownloadScene.PTSCard) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadAdDownloadScene = AdDownloadScene.GameButton;
+      }
+      localObject1 = localObject2;
+      if (paramAdvertisementInfo != null) {
+        localObject1 = paramAdvertisementInfo.gameAdComData;
+      }
+      paramAdvertisementInfo = ADVideoAppDownloadData.a((GameAdComData)localObject1);
+      if (paramAdvertisementInfo != null) {
+        a(paramAdvertisementInfo);
+      }
+    }
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      AdDownloadStateHandler.OnInitDownload.doCallBack(this, new AdDownloadInfo());
     }
   }
   
@@ -1485,7 +1326,7 @@ public final class RIJDownloadView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView
  * JD-Core Version:    0.7.0.1
  */

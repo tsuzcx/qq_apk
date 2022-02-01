@@ -38,20 +38,24 @@ public class LbsManagerService
   
   public static SosoLbsInfo getCachedLbsInfo(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SOSO.LBS.LbsManagerService", 2, "getCachedLbsInfo business id: " + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCachedLbsInfo business id: ");
+      localStringBuilder.append(paramString);
+      QLog.i("SOSO.LBS.LbsManagerService", 2, localStringBuilder.toString());
+    }
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      paramString = getBusinessInfo(paramString);
-      if (paramString != null) {
-        break;
+    }
+    paramString = getBusinessInfo(paramString);
+    if (paramString == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("SOSO.LBS.LbsManagerService", 2, "getCachedLbsInfo business info is null.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("SOSO.LBS.LbsManagerService", 2, "getCachedLbsInfo business info is null.");
-    return null;
+      return null;
+    }
     if (paramString.reqRawData) {
       return SosoInterface.getRawSosoInfo(paramString.reqLonAndLat);
     }
@@ -83,13 +87,16 @@ public class LbsManagerService
   
   private static SosoLbsInfo handleLbsInfo(SosoLbsInfo paramSosoLbsInfo, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    Object localObject;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      localObject = getBusinessInfo(paramString);
-    } while ((localObject == null) || (paramSosoLbsInfo == null));
+    }
+    Object localObject = getBusinessInfo(paramString);
+    if (localObject == null) {
+      return null;
+    }
+    if (paramSosoLbsInfo == null) {
+      return null;
+    }
     if (((LbsManagerService.BusinessInfo)localObject).reqRawData)
     {
       paramString = new SosoLbsInfo();
@@ -127,22 +134,23 @@ public class LbsManagerService
   
   private static SosoInterfaceOnLocationListener makeSosoOnLocationListener(LbsManagerServiceOnLocationChangeListener paramLbsManagerServiceOnLocationChangeListener)
   {
-    LbsManagerService.BusinessInfo localBusinessInfo = getBusinessInfo(paramLbsManagerServiceOnLocationChangeListener.businessId);
-    if (localBusinessInfo == null)
+    Object localObject = getBusinessInfo(paramLbsManagerServiceOnLocationChangeListener.businessId);
+    if (localObject == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LBS.LbsManagerService", 2, "makeSososOnLocationListener business info is null, business id: " + paramLbsManagerServiceOnLocationChangeListener.businessId);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("makeSososOnLocationListener business info is null, business id: ");
+        ((StringBuilder)localObject).append(paramLbsManagerServiceOnLocationChangeListener.businessId);
+        QLog.i("SOSO.LBS.LbsManagerService", 2, ((StringBuilder)localObject).toString());
       }
       return null;
     }
-    int i = localBusinessInfo.canUseMaxCacheInterval();
-    int j = localBusinessInfo.requestDataLevel;
-    boolean bool2 = localBusinessInfo.reqGoon;
-    boolean bool3 = localBusinessInfo.canUseGps;
-    if (!localBusinessInfo.reqRawData) {}
-    for (boolean bool1 = true;; bool1 = false) {
-      return new LbsManagerService.1(j, bool1, bool3, i, paramLbsManagerServiceOnLocationChangeListener.observerOnUiThread, bool2, paramLbsManagerServiceOnLocationChangeListener.businessId, paramLbsManagerServiceOnLocationChangeListener);
-    }
+    int i = ((LbsManagerService.BusinessInfo)localObject).canUseMaxCacheInterval();
+    int j = ((LbsManagerService.BusinessInfo)localObject).requestDataLevel;
+    boolean bool1 = ((LbsManagerService.BusinessInfo)localObject).reqGoon;
+    boolean bool2 = ((LbsManagerService.BusinessInfo)localObject).canUseGps;
+    return new LbsManagerService.1(j, ((LbsManagerService.BusinessInfo)localObject).reqRawData ^ true, bool2, i, paramLbsManagerServiceOnLocationChangeListener.observerOnUiThread, bool1, paramLbsManagerServiceOnLocationChangeListener.businessId, paramLbsManagerServiceOnLocationChangeListener);
   }
   
   public static void onDestroy()
@@ -230,37 +238,33 @@ public class LbsManagerService
     if (paramLbsManagerServiceOnLocationChangeListener == null) {
       return;
     }
-    for (;;)
+    SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener = null;
+    synchronized (sListenerMap)
     {
-      synchronized (sListenerMap)
+      if (sListenerMap.containsKey(paramLbsManagerServiceOnLocationChangeListener))
       {
-        if (!sListenerMap.containsKey(paramLbsManagerServiceOnLocationChangeListener)) {
-          break label120;
-        }
         localSosoInterfaceOnLocationListener = (SosoInterfaceOnLocationListener)sListenerMap.remove(paramLbsManagerServiceOnLocationChangeListener);
         sReverseListenerMap.remove(localSosoInterfaceOnLocationListener);
-        if (QLog.isColorLevel())
-        {
-          paramLbsManagerServiceOnLocationChangeListener = new StringBuilder().append("removeListener business id is: ").append(paramLbsManagerServiceOnLocationChangeListener.businessId).append(" sosoLocationListener is null: ");
-          if (localSosoInterfaceOnLocationListener == null)
-          {
-            bool = true;
-            QLog.i("SOSO.LBS.LbsManagerService", 2, bool);
-          }
-        }
-        else
-        {
-          if (localSosoInterfaceOnLocationListener == null) {
-            break;
-          }
-          SosoInterface.removeOnLocationListener(localSosoInterfaceOnLocationListener);
-          return;
-        }
       }
-      boolean bool = false;
-      continue;
-      label120:
-      SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener = null;
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("removeListener business id is: ");
+        ((StringBuilder)???).append(paramLbsManagerServiceOnLocationChangeListener.businessId);
+        ((StringBuilder)???).append(" sosoLocationListener is null: ");
+        boolean bool;
+        if (localSosoInterfaceOnLocationListener == null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        ((StringBuilder)???).append(bool);
+        QLog.i("SOSO.LBS.LbsManagerService", 2, ((StringBuilder)???).toString());
+      }
+      if (localSosoInterfaceOnLocationListener != null) {
+        SosoInterface.removeOnLocationListener(localSosoInterfaceOnLocationListener);
+      }
+      return;
     }
   }
   
@@ -269,49 +273,46 @@ public class LbsManagerService
     if (paramLbsManagerServiceOnLocationChangeListener == null) {
       return;
     }
-    label131:
-    label136:
-    for (;;)
+    Object localObject1 = null;
+    synchronized (sListenerMap)
     {
-      synchronized (sListenerMap)
+      Object localObject2;
+      if (!sListenerMap.containsKey(paramLbsManagerServiceOnLocationChangeListener))
       {
-        if (sListenerMap.containsKey(paramLbsManagerServiceOnLocationChangeListener)) {
-          break label131;
-        }
-        localSosoInterfaceOnLocationListener = makeSosoOnLocationListener(paramLbsManagerServiceOnLocationChangeListener);
-        if (localSosoInterfaceOnLocationListener == null) {
-          break label136;
-        }
-        sListenerMap.put(paramLbsManagerServiceOnLocationChangeListener, localSosoInterfaceOnLocationListener);
-        sReverseListenerMap.put(localSosoInterfaceOnLocationListener, paramLbsManagerServiceOnLocationChangeListener);
-        break label136;
-        if (QLog.isColorLevel())
+        localObject2 = makeSosoOnLocationListener(paramLbsManagerServiceOnLocationChangeListener);
+        localObject1 = localObject2;
+        if (localObject2 != null)
         {
-          ??? = new StringBuilder().append("startLocation sosoLocationListener is null : ");
-          if (localSosoInterfaceOnLocationListener == null)
-          {
-            bool = true;
-            QLog.i("SOSO.LBS.LbsManagerService", 2, bool + " business id: " + paramLbsManagerServiceOnLocationChangeListener.businessId);
-          }
-        }
-        else
-        {
-          if (localSosoInterfaceOnLocationListener == null) {
-            break;
-          }
-          SosoInterface.startLocation(localSosoInterfaceOnLocationListener);
-          return;
+          sListenerMap.put(paramLbsManagerServiceOnLocationChangeListener, localObject2);
+          sReverseListenerMap.put(localObject2, paramLbsManagerServiceOnLocationChangeListener);
+          localObject1 = localObject2;
         }
       }
-      boolean bool = false;
-      continue;
-      SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener = null;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("startLocation sosoLocationListener is null : ");
+        boolean bool;
+        if (localObject1 == null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        ((StringBuilder)localObject2).append(bool);
+        ((StringBuilder)localObject2).append(" business id: ");
+        ((StringBuilder)localObject2).append(paramLbsManagerServiceOnLocationChangeListener.businessId);
+        QLog.i("SOSO.LBS.LbsManagerService", 2, ((StringBuilder)localObject2).toString());
+      }
+      if (localObject1 != null) {
+        SosoInterface.startLocation(localObject1);
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.LbsManagerService
  * JD-Core Version:    0.7.0.1
  */

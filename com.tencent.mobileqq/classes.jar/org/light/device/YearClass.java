@@ -9,51 +9,43 @@ public class YearClass
   public static final int CLASS_UNKNOWN = -1;
   private static final String TAG = "Phone_year";
   private static long mCPUMaxFreq = 0L;
-  private static int mCoreNum;
+  private static int mCoreNum = 0;
   private static long mTotalMem = 0L;
   private static volatile Integer mYearCategory;
-  private static int sBaseYear;
+  private static int sBaseYear = 2012;
   private static float sCpuRate = 0.5F;
-  
-  static
-  {
-    sBaseYear = 2012;
-    mCoreNum = 0;
-  }
   
   private static int categorizeByYear(Context paramContext)
   {
-    int i = -1;
     int j = getClockSpeedYear();
     int k = getRamYear(paramContext);
-    if ((j == -1) && (-1 == k))
+    int i = -1;
+    if ((j != -1) || (-1 != k))
     {
-      LightLogUtil.i("Phone_year", "手机配置所属年份为：" + i + ",cpuYear:" + j + ",ramYear:" + k);
-      return i;
-    }
-    float f;
-    if (j >= sBaseYear)
-    {
-      f = j * sCpuRate;
-      label82:
-      if (f > 0.0F) {
-        break label106;
+      float f;
+      if (j >= sBaseYear) {
+        f = j * sCpuRate;
+      } else {
+        f = 0.0F;
       }
-      f = k;
-    }
-    for (;;)
-    {
-      i = (int)(f + 0.5F);
-      break;
-      f = 0.0F;
-      break label82;
-      label106:
-      if (k >= sBaseYear) {
+      if (f <= 0.0F) {
+        f = k;
+      } else if (k >= sBaseYear) {
         f += k * (1.0F - sCpuRate);
       } else {
         f = j;
       }
+      i = (int)(f + 0.5F);
     }
+    paramContext = new StringBuilder();
+    paramContext.append("手机配置所属年份为：");
+    paramContext.append(i);
+    paramContext.append(",cpuYear:");
+    paramContext.append(j);
+    paramContext.append(",ramYear:");
+    paramContext.append(k);
+    LightLogUtil.i("Phone_year", paramContext.toString());
+    return i;
   }
   
   private static void conditionallyAdd(ArrayList<Integer> paramArrayList, int paramInt)
@@ -65,48 +57,66 @@ public class YearClass
   
   public static int get(Context paramContext)
   {
-    if (mYearCategory == null) {
+    if (mYearCategory == null)
+    {
       if (paramContext == null) {
         return -1;
       }
-    }
-    try
-    {
-      if (mYearCategory == null) {
-        mYearCategory = Integer.valueOf(categorizeByYear(paramContext));
+      try
+      {
+        if (mYearCategory == null) {
+          mYearCategory = Integer.valueOf(categorizeByYear(paramContext));
+        }
       }
-      return mYearCategory.intValue();
+      finally {}
     }
-    finally {}
+    return mYearCategory.intValue();
   }
   
   private static int getClockSpeedYear()
   {
     mCPUMaxFreq = LightDeviceUtils.getMaxCpuFreq();
-    LightLogUtil.i("Phone_year", "cpuMaxHZ:" + mCPUMaxFreq);
-    if (mCPUMaxFreq <= 0L) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cpuMaxHZ:");
+    localStringBuilder.append(mCPUMaxFreq);
+    LightLogUtil.i("Phone_year", localStringBuilder.toString());
+    long l = mCPUMaxFreq;
+    if (l <= 0L) {
       return -1;
     }
-    return CPUYearList.getCPUOclock(mCPUMaxFreq);
+    return CPUYearList.getCPUOclock(l);
   }
   
   private static int getNumCoresYear()
   {
     mCoreNum = LightDeviceUtils.getNumCores();
-    LightLogUtil.i("Phone_year", "corenum:" + mCoreNum);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("corenum:");
+    localStringBuilder.append(mCoreNum);
+    LightLogUtil.i("Phone_year", localStringBuilder.toString());
     return CPUYearList.getCoreNumYear(mCoreNum);
   }
   
   public static String getPhonHWInfo()
   {
-    return "CPU core num:" + mCoreNum + ",CPU max freq:" + mCPUMaxFreq + ",total memory:" + mTotalMem;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CPU core num:");
+    localStringBuilder.append(mCoreNum);
+    localStringBuilder.append(",CPU max freq:");
+    localStringBuilder.append(mCPUMaxFreq);
+    localStringBuilder.append(",total memory:");
+    localStringBuilder.append(mTotalMem);
+    return localStringBuilder.toString();
   }
   
   private static int getRamYear(Context paramContext)
   {
     long l = LightDeviceUtils.getTotalRamMemory(paramContext);
     mTotalMem = l;
-    LightLogUtil.i("Phone_year", "ramSize:" + mTotalMem);
+    paramContext = new StringBuilder();
+    paramContext.append("ramSize:");
+    paramContext.append(mTotalMem);
+    LightLogUtil.i("Phone_year", paramContext.toString());
     if (mTotalMem <= 0L) {
       return -1;
     }
@@ -115,7 +125,7 @@ public class YearClass
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.device.YearClass
  * JD-Core Version:    0.7.0.1
  */

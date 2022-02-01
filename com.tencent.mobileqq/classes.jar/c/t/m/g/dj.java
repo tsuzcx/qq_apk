@@ -20,35 +20,37 @@ public abstract class dj
         return -1;
       }
       this.a = true;
-    }
-    try
-    {
-      if (co.e())
+      try
       {
-        c();
-        co.a("startup()");
-      }
-      if (paramLooper == null)
-      {
-        this.c = new HandlerThread("th_" + c());
-        this.c.start();
-      }
-      for (this.d = new dj.a(this, this.c.getLooper());; this.d = new dj.a(this, paramLooper))
-      {
+        if (co.e())
+        {
+          c();
+          co.a("startup()");
+        }
+        if (paramLooper == null)
+        {
+          paramLooper = new StringBuilder("th_");
+          paramLooper.append(c());
+          this.c = new HandlerThread(paramLooper.toString());
+          this.c.start();
+          this.d = new dj.a(this, this.c.getLooper());
+        }
+        else
+        {
+          this.d = new dj.a(this, paramLooper);
+        }
         this.d.getLooper();
         int i = a();
         return i;
-        paramLooper = finally;
-        throw paramLooper;
       }
-      return -1;
-    }
-    catch (Throwable paramLooper)
-    {
-      if (co.e())
+      catch (Throwable paramLooper)
       {
-        c();
-        co.a("startup error.", paramLooper);
+        if (co.e())
+        {
+          c();
+          co.a("startup error.", paramLooper);
+        }
+        return -1;
       }
     }
   }
@@ -75,51 +77,45 @@ public abstract class dj
   
   public final void d()
   {
-    for (;;)
+    try
     {
-      try
+      synchronized (this.b)
       {
-        synchronized (this.b)
+        boolean bool = this.a;
+        if (!bool) {
+          return;
+        }
+        if (co.e())
         {
-          boolean bool = this.a;
-          if (!bool) {
-            return;
-          }
+          c();
+          co.a("shutdown()");
+        }
+        b();
+        try
+        {
+          dt.a(this.c, this.d, 100L);
+          this.c = null;
+          this.d = null;
+        }
+        catch (Throwable localThrowable1)
+        {
           if (co.e())
           {
             c();
-            co.a("shutdown()");
+            co.a("shutdown thread error.", localThrowable1);
           }
-          b();
         }
+        this.a = false;
       }
-      catch (Throwable localThrowable2)
+    }
+    catch (Throwable localThrowable2)
+    {
+      if (co.e())
       {
-        if (!co.e()) {
-          continue;
-        }
         c();
         co.a("shutdown error.", localThrowable2);
-        continue;
       }
-      try
-      {
-        dt.a(this.c, this.d, 100L);
-        this.c = null;
-        this.d = null;
-        this.a = false;
-        return;
-        localObject = finally;
-        throw localObject;
-      }
-      catch (Throwable localThrowable1)
-      {
-        if (!co.e()) {
-          continue;
-        }
-        c();
-        co.a("shutdown thread error.", localThrowable1);
-      }
+      return;
     }
   }
   
@@ -134,7 +130,7 @@ public abstract class dj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dj
  * JD-Core Version:    0.7.0.1
  */

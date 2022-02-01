@@ -27,118 +27,113 @@ import java.util.List;
 import msf.msgsvc.msg_svc.TransSvrInfo;
 
 public class MessageObserver
-  implements BusinessObserver
+  extends BaseMessageObserver
 {
-  private HashMap<Integer, HandleUpdateType> mMap = new HashMap();
+  private static HashMap<Integer, HandleUpdateType> sMap = new HashMap();
   
-  public MessageObserver()
+  static
   {
-    registerMsgType();
-  }
-  
-  private void registerMsgType()
-  {
-    this.mMap.put(Integer.valueOf(999), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(1000), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(1003), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(1004), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(1005), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(2000), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(1002), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(2001), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(2002), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(3012), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(3011), new TransserviceRoamRefreshCommenMsg());
-    this.mMap.put(Integer.valueOf(4003), new GetMsgFin());
-    this.mMap.put(Integer.valueOf(4005), new GetMsgFin());
-    this.mMap.put(Integer.valueOf(4006), new GetMsgFin());
-    this.mMap.put(Integer.valueOf(4011), new GetMsgFin());
-    this.mMap.put(Integer.valueOf(4012), new GetMsgFin());
-    this.mMap.put(Integer.valueOf(4001), new GetMsgFin());
-    this.mMap.put(Integer.valueOf(4004), new GetMsgFin());
-    this.mMap.put(Integer.valueOf(4002), new GetMsgFin());
-    this.mMap.put(Integer.valueOf(4013), new GetMsgFin());
-    this.mMap.put(Integer.valueOf(3021), new GetMsgFin());
-    this.mMap.put(Integer.valueOf(3001), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(3002), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(3013), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(3008), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(6000), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(6009), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8002), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(7000), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8006), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8005), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(6010), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(6012), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(6013), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8010), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8012), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8014), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8028), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8032), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8042), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8043), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8044), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8045), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8037), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8040), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(8041), new SendErrorRsp());
-    this.mMap.put(Integer.valueOf(4019), new GetOfflineMsgSigFin());
-    this.mMap.put(Integer.valueOf(4016), new GetOfflineMsgSigFin());
-    this.mMap.put(Integer.valueOf(4017), new GetOfflineMsgSigFin());
-    this.mMap.put(Integer.valueOf(4018), new GetOfflineMsgSigFin());
-    this.mMap.put(Integer.valueOf(5002), new GetOfflineMsgSigFin());
-    this.mMap.put(Integer.valueOf(5003), new GetOfflineMsgSigFin());
-    this.mMap.put(Integer.valueOf(5004), new GetOfflineMsgSigFin());
-    this.mMap.put(Integer.valueOf(5005), new GetOfflineMsgSigFin());
-    this.mMap.put(Integer.valueOf(4014), new GetOfflineMsgSigFin());
-    this.mMap.put(Integer.valueOf(4015), new GetOfflineMsgSigFin());
-    this.mMap.put(Integer.valueOf(6005), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(6004), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(6006), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(6003), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(6001), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(6002), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(6007), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(5006), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(5012), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(5010), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(8047), new BlacklistStatus());
-    this.mMap.put(Integer.valueOf(6008), new SubaccountMsgStatus());
-    this.mMap.put(Integer.valueOf(8015), new SubaccountMsgStatus());
-    this.mMap.put(Integer.valueOf(6014), new SubaccountMsgStatus());
-    this.mMap.put(Integer.valueOf(6016), new SubaccountMsgStatus());
-    this.mMap.put(Integer.valueOf(8003), new SubaccountMsgStatus());
-    this.mMap.put(Integer.valueOf(8011), new SubaccountMsgStatus());
-    this.mMap.put(Integer.valueOf(8004), new SubaccountMsgStatus());
-    this.mMap.put(Integer.valueOf(8007), new SubaccountMsgStatus());
-    this.mMap.put(Integer.valueOf(8013), new SubaccountMsgStatus());
-    this.mMap.put(Integer.valueOf(6015), new SubaccountMsgStatus());
-    this.mMap.put(Integer.valueOf(8017), new ReqBlessMsgAddedSending());
-    this.mMap.put(Integer.valueOf(8024), new ReqBlessMsgAddedSending());
-    this.mMap.put(Integer.valueOf(8016), new ReqBlessMsgAddedSending());
-    this.mMap.put(Integer.valueOf(8018), new ReqBlessMsgAddedSending());
-    this.mMap.put(Integer.valueOf(8019), new ReqBlessMsgAddedSending());
-    this.mMap.put(Integer.valueOf(8020), new ReqBlessMsgAddedSending());
-    this.mMap.put(Integer.valueOf(8022), new ReqBlessMsgAddedSending());
-    this.mMap.put(Integer.valueOf(8023), new ReqBlessMsgAddedSending());
-    this.mMap.put(Integer.valueOf(8030), new ReqBlessMsgAddedSending());
-    this.mMap.put(Integer.valueOf(8031), new ReqBlessMsgAddedSending());
-    this.mMap.put(Integer.valueOf(8033), new SpecialMsgDevStatus());
-    this.mMap.put(Integer.valueOf(8038), new SpecialMsgDevStatus());
-    this.mMap.put(Integer.valueOf(8034), new SpecialMsgDevStatus());
-    this.mMap.put(Integer.valueOf(8035), new SpecialMsgDevStatus());
-    this.mMap.put(Integer.valueOf(8036), new SpecialMsgDevStatus());
-    this.mMap.put(Integer.valueOf(8039), new SpecialMsgDevStatus());
-    this.mMap.put(Integer.valueOf(8046), new SpecialMsgDevStatus());
-  }
-  
-  public void addFriendByContact(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramBoolean) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1)) {
-      onAddFriendByContact((String)paramArrayOfObject[0]);
-    }
+    Object localObject = new TransserviceRoamRefreshCommenMsg();
+    sMap.put(Integer.valueOf(999), localObject);
+    sMap.put(Integer.valueOf(1000), localObject);
+    sMap.put(Integer.valueOf(1003), localObject);
+    sMap.put(Integer.valueOf(1004), localObject);
+    sMap.put(Integer.valueOf(1005), localObject);
+    sMap.put(Integer.valueOf(2000), localObject);
+    sMap.put(Integer.valueOf(1002), localObject);
+    sMap.put(Integer.valueOf(2001), localObject);
+    sMap.put(Integer.valueOf(2002), localObject);
+    sMap.put(Integer.valueOf(3012), localObject);
+    sMap.put(Integer.valueOf(3011), localObject);
+    localObject = new GetMsgFin();
+    sMap.put(Integer.valueOf(4003), localObject);
+    sMap.put(Integer.valueOf(4005), localObject);
+    sMap.put(Integer.valueOf(4006), localObject);
+    sMap.put(Integer.valueOf(4011), localObject);
+    sMap.put(Integer.valueOf(4012), localObject);
+    sMap.put(Integer.valueOf(4001), localObject);
+    sMap.put(Integer.valueOf(4004), localObject);
+    sMap.put(Integer.valueOf(4002), localObject);
+    sMap.put(Integer.valueOf(4013), localObject);
+    sMap.put(Integer.valueOf(3021), localObject);
+    localObject = new SendErrorRsp();
+    sMap.put(Integer.valueOf(3001), localObject);
+    sMap.put(Integer.valueOf(3002), localObject);
+    sMap.put(Integer.valueOf(3013), localObject);
+    sMap.put(Integer.valueOf(3008), localObject);
+    sMap.put(Integer.valueOf(6000), localObject);
+    sMap.put(Integer.valueOf(6009), localObject);
+    sMap.put(Integer.valueOf(8002), localObject);
+    sMap.put(Integer.valueOf(7000), localObject);
+    sMap.put(Integer.valueOf(8006), localObject);
+    sMap.put(Integer.valueOf(8005), localObject);
+    sMap.put(Integer.valueOf(6010), localObject);
+    sMap.put(Integer.valueOf(6012), localObject);
+    sMap.put(Integer.valueOf(6013), localObject);
+    sMap.put(Integer.valueOf(8010), localObject);
+    sMap.put(Integer.valueOf(8012), localObject);
+    sMap.put(Integer.valueOf(8014), localObject);
+    sMap.put(Integer.valueOf(8028), localObject);
+    sMap.put(Integer.valueOf(8032), localObject);
+    sMap.put(Integer.valueOf(8042), localObject);
+    sMap.put(Integer.valueOf(8043), localObject);
+    sMap.put(Integer.valueOf(8044), localObject);
+    sMap.put(Integer.valueOf(8045), localObject);
+    sMap.put(Integer.valueOf(8037), localObject);
+    sMap.put(Integer.valueOf(8040), localObject);
+    sMap.put(Integer.valueOf(8041), localObject);
+    localObject = new GetOfflineMsgSigFin();
+    sMap.put(Integer.valueOf(4019), localObject);
+    sMap.put(Integer.valueOf(4016), localObject);
+    sMap.put(Integer.valueOf(4017), localObject);
+    sMap.put(Integer.valueOf(4018), localObject);
+    sMap.put(Integer.valueOf(5002), localObject);
+    sMap.put(Integer.valueOf(5003), localObject);
+    sMap.put(Integer.valueOf(5004), localObject);
+    sMap.put(Integer.valueOf(5005), localObject);
+    sMap.put(Integer.valueOf(4014), localObject);
+    sMap.put(Integer.valueOf(4015), localObject);
+    localObject = new BlacklistStatus();
+    sMap.put(Integer.valueOf(6005), localObject);
+    sMap.put(Integer.valueOf(6004), localObject);
+    sMap.put(Integer.valueOf(6006), localObject);
+    sMap.put(Integer.valueOf(6003), localObject);
+    sMap.put(Integer.valueOf(6001), localObject);
+    sMap.put(Integer.valueOf(6002), localObject);
+    sMap.put(Integer.valueOf(6007), localObject);
+    sMap.put(Integer.valueOf(5006), localObject);
+    sMap.put(Integer.valueOf(5012), localObject);
+    sMap.put(Integer.valueOf(5010), localObject);
+    sMap.put(Integer.valueOf(8047), localObject);
+    localObject = new SubaccountMsgStatus();
+    sMap.put(Integer.valueOf(6008), localObject);
+    sMap.put(Integer.valueOf(8015), localObject);
+    sMap.put(Integer.valueOf(6014), localObject);
+    sMap.put(Integer.valueOf(6016), localObject);
+    sMap.put(Integer.valueOf(8003), localObject);
+    sMap.put(Integer.valueOf(8011), localObject);
+    sMap.put(Integer.valueOf(8004), localObject);
+    sMap.put(Integer.valueOf(8007), localObject);
+    sMap.put(Integer.valueOf(8013), localObject);
+    sMap.put(Integer.valueOf(6015), localObject);
+    localObject = new ReqBlessMsgAddedSending();
+    sMap.put(Integer.valueOf(8017), localObject);
+    sMap.put(Integer.valueOf(8024), localObject);
+    sMap.put(Integer.valueOf(8016), localObject);
+    sMap.put(Integer.valueOf(8018), localObject);
+    sMap.put(Integer.valueOf(8019), localObject);
+    sMap.put(Integer.valueOf(8020), localObject);
+    sMap.put(Integer.valueOf(8022), localObject);
+    sMap.put(Integer.valueOf(8023), localObject);
+    sMap.put(Integer.valueOf(8031), localObject);
+    localObject = new SpecialMsgDevStatus();
+    sMap.put(Integer.valueOf(8033), localObject);
+    sMap.put(Integer.valueOf(8038), localObject);
+    sMap.put(Integer.valueOf(8034), localObject);
+    sMap.put(Integer.valueOf(8035), localObject);
+    sMap.put(Integer.valueOf(8036), localObject);
+    sMap.put(Integer.valueOf(8039), localObject);
+    sMap.put(Integer.valueOf(8046), localObject);
   }
   
   public void c2cOnlineFile(boolean paramBoolean, Object[] paramArrayOfObject)
@@ -275,21 +270,21 @@ public class MessageObserver
   
   public void handle_NOTIFY_TYPE_CONFESS_TMP(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (paramBoolean) {
-      if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 8)) {
+    if (paramBoolean)
+    {
+      if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 8))
+      {
         onUpdateSendMsgError_confess((String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Integer)paramArrayOfObject[2]).intValue(), (SendMessageHandler)paramArrayOfObject[3], ((Long)paramArrayOfObject[4]).longValue(), ((Long)paramArrayOfObject[5]).longValue(), (String)paramArrayOfObject[6], ((Integer)paramArrayOfObject[7]).intValue());
+        return;
+      }
+      if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 4)) {
+        onSendResult_confess(true, (String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Long)paramArrayOfObject[2]).longValue(), ((Integer)paramArrayOfObject[3]).intValue());
       }
     }
-    while ((paramArrayOfObject == null) || (paramArrayOfObject.length < 8))
+    else if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 8))
     {
-      do
-      {
-        return;
-      } while ((paramArrayOfObject == null) || (paramArrayOfObject.length < 4));
-      onSendResult_confess(true, (String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Long)paramArrayOfObject[2]).longValue(), ((Integer)paramArrayOfObject[3]).intValue());
-      return;
+      onUpdateSendMsgError_confess((String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Integer)paramArrayOfObject[2]).intValue(), (SendMessageHandler)paramArrayOfObject[3], ((Long)paramArrayOfObject[4]).longValue(), ((Long)paramArrayOfObject[5]).longValue(), (String)paramArrayOfObject[6], ((Integer)paramArrayOfObject[7]).intValue());
     }
-    onUpdateSendMsgError_confess((String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Integer)paramArrayOfObject[2]).intValue(), (SendMessageHandler)paramArrayOfObject[3], ((Long)paramArrayOfObject[4]).longValue(), ((Long)paramArrayOfObject[5]).longValue(), (String)paramArrayOfObject[6], ((Integer)paramArrayOfObject[7]).intValue());
   }
   
   public void hiboomAuth(Object[] paramArrayOfObject)
@@ -322,20 +317,18 @@ public class MessageObserver
   
   public void msgRevokeRsp(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    boolean bool;
+    boolean bool = true;
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
     {
       List localList = (List)paramArrayOfObject[0];
       bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
       paramArrayOfObject = localList;
     }
-    for (;;)
+    else
     {
-      onMsgRevokeNotice(paramBoolean, paramArrayOfObject, bool);
-      return;
       paramArrayOfObject = null;
-      bool = true;
     }
+    onMsgRevokeNotice(paramBoolean, paramArrayOfObject, bool);
   }
   
   public void msgStartSendingUI(Object[] paramArrayOfObject)
@@ -356,8 +349,6 @@ public class MessageObserver
   {
     onNewRegisterProxyFin(paramBoolean);
   }
-  
-  public void onAddFriendByContact(String paramString) {}
   
   public void onBlessDirtyTextCheck(boolean paramBoolean, int paramInt) {}
   
@@ -451,7 +442,7 @@ public class MessageObserver
   
   protected void onSendResult(boolean paramBoolean, String paramString, long paramLong) {}
   
-  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong, MessageHandler.MsgSendCostParams paramMsgSendCostParams) {}
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong, MessageHandlerConstants.MsgSendCostParams paramMsgSendCostParams) {}
   
   protected void onSendResultWithTransInfo(boolean paramBoolean, msg_svc.TransSvrInfo paramTransSvrInfo) {}
   
@@ -467,14 +458,15 @@ public class MessageObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramObject instanceof Object[])) {}
-    for (Object[] arrayOfObject = (Object[])paramObject;; arrayOfObject = null)
-    {
-      HandleUpdateType localHandleUpdateType = (HandleUpdateType)this.mMap.get(Integer.valueOf(paramInt));
-      if (localHandleUpdateType != null) {
-        localHandleUpdateType.a(this, paramInt, paramBoolean, paramObject, arrayOfObject, null);
-      }
-      return;
+    Object[] arrayOfObject;
+    if ((paramObject instanceof Object[])) {
+      arrayOfObject = (Object[])paramObject;
+    } else {
+      arrayOfObject = null;
+    }
+    HandleUpdateType localHandleUpdateType = (HandleUpdateType)sMap.get(Integer.valueOf(paramInt));
+    if (localHandleUpdateType != null) {
+      localHandleUpdateType.a(this, paramInt, paramBoolean, paramObject, arrayOfObject, null);
     }
   }
   
@@ -641,12 +633,11 @@ public class MessageObserver
       l = ((Long)paramArrayOfObject[0]).longValue();
       paramStatictisInfo = (StatictisInfo)paramArrayOfObject[1];
     }
-    for (;;)
+    else
     {
-      onNotifyResultAfterSendRich(paramBoolean, l, paramStatictisInfo);
-      return;
       l = 0L;
     }
+    onNotifyResultAfterSendRich(paramBoolean, l, paramStatictisInfo);
   }
   
   public void roamMessageSearchInCloud(boolean paramBoolean, Object paramObject)
@@ -696,33 +687,32 @@ public class MessageObserver
   
   public void sendMsgError(Object[] paramArrayOfObject)
   {
-    String str2;
-    int i;
-    int j;
-    SendMessageHandler localSendMessageHandler;
-    long l1;
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 2))
     {
-      str2 = (String)paramArrayOfObject[0];
-      i = ((Integer)paramArrayOfObject[1]).intValue();
-      j = ((Integer)paramArrayOfObject[2]).intValue();
-      if (paramArrayOfObject.length < 6) {
-        break label112;
+      String str = (String)paramArrayOfObject[0];
+      int i = ((Integer)paramArrayOfObject[1]).intValue();
+      int j = ((Integer)paramArrayOfObject[2]).intValue();
+      SendMessageHandler localSendMessageHandler;
+      long l1;
+      long l2;
+      if (paramArrayOfObject.length >= 6)
+      {
+        localSendMessageHandler = (SendMessageHandler)paramArrayOfObject[3];
+        l1 = ((Long)paramArrayOfObject[4]).longValue();
+        l2 = ((Long)paramArrayOfObject[5]).longValue();
       }
-      localSendMessageHandler = (SendMessageHandler)paramArrayOfObject[3];
-      l1 = ((Long)paramArrayOfObject[4]).longValue();
-    }
-    for (long l2 = ((Long)paramArrayOfObject[5]).longValue();; l2 = 0L)
-    {
-      String str1 = "";
+      else
+      {
+        localSendMessageHandler = null;
+        l1 = 96000L;
+        l2 = 0L;
+      }
       if (paramArrayOfObject.length >= 7) {
-        str1 = (String)paramArrayOfObject[6];
+        paramArrayOfObject = (String)paramArrayOfObject[6];
+      } else {
+        paramArrayOfObject = "";
       }
-      onUpdateSendMsgError(str2, i, j, localSendMessageHandler, l1, l2, str1);
-      return;
-      label112:
-      localSendMessageHandler = null;
-      l1 = 96000L;
+      onUpdateSendMsgError(str, i, j, localSendMessageHandler, l1, l2, paramArrayOfObject);
     }
   }
   
@@ -766,7 +756,7 @@ public class MessageObserver
     if (paramArrayOfObject != null)
     {
       if (paramArrayOfObject.length >= 3) {
-        onSendResult(paramBoolean, (String)paramArrayOfObject[0], Long.parseLong((String)paramArrayOfObject[1]), (MessageHandler.MsgSendCostParams)paramArrayOfObject[2]);
+        onSendResult(paramBoolean, (String)paramArrayOfObject[0], Long.parseLong((String)paramArrayOfObject[1]), (MessageHandlerConstants.MsgSendCostParams)paramArrayOfObject[2]);
       }
       onSendResult(paramBoolean, (String)paramArrayOfObject[0], Long.parseLong((String)paramArrayOfObject[1]));
     }
@@ -786,30 +776,47 @@ public class MessageObserver
   
   public void sendSystemMsgActionFin(boolean paramBoolean, ToServiceMsg paramToServiceMsg)
   {
-    String str2 = (String)paramToServiceMsg.getAttribute("_tag_LOGSTR");
+    String str3 = (String)paramToServiceMsg.getAttribute("_tag_LOGSTR");
     int i = paramToServiceMsg.extraData.getInt("system_msg_action_type");
-    Object localObject1 = paramToServiceMsg.extraData.getString("system_msg_action_resp_key");
-    Object localObject2 = paramToServiceMsg.extraData.getString("system_msg_action_resp_error_key");
+    Object localObject = paramToServiceMsg.extraData.getString("system_msg_action_resp_key");
+    String str1 = paramToServiceMsg.extraData.getString("system_msg_action_resp_error_key");
     int j = paramToServiceMsg.extraData.getInt("system_msg_action_resp_result_code_key");
     int k = paramToServiceMsg.extraData.getInt("system_msg_action_resp_type_key");
-    String str1 = paramToServiceMsg.extraData.getString("system_msg_action_resp_invalid_decided_key");
+    String str2 = paramToServiceMsg.extraData.getString("system_msg_action_resp_invalid_decided_key");
     int m = paramToServiceMsg.extraData.getInt("system_msg_action_resp_remark_result_key");
-    paramToServiceMsg = (ToServiceMsg)localObject1;
-    if (localObject1 == null) {
+    if (localObject == null) {
       paramToServiceMsg = "";
+    } else {
+      paramToServiceMsg = (ToServiceMsg)localObject;
     }
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "";
-    }
-    localObject2 = str1;
     if (str1 == null) {
-      localObject2 = "";
+      str1 = "";
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageObserver", 2, "sendSystemMsgActionResult logStr=" + str2 + ";actionType=" + i + ";msgDetail=" + paramToServiceMsg + ";resultCode=" + j + ";respType=" + k + ";msgFail=" + (String)localObject1 + ";msgInvalidDecided=" + (String)localObject2 + ";remarkRet=" + m);
+    if (str2 == null) {
+      str2 = "";
     }
-    onSendSystemMsgActionFin(paramBoolean, str2, i, paramToServiceMsg, j, k, (String)localObject1, (String)localObject2, m);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendSystemMsgActionResult logStr=");
+      ((StringBuilder)localObject).append(str3);
+      ((StringBuilder)localObject).append(";actionType=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(";msgDetail=");
+      ((StringBuilder)localObject).append(paramToServiceMsg);
+      ((StringBuilder)localObject).append(";resultCode=");
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(";respType=");
+      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(";msgFail=");
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append(";msgInvalidDecided=");
+      ((StringBuilder)localObject).append(str2);
+      ((StringBuilder)localObject).append(";remarkRet=");
+      ((StringBuilder)localObject).append(m);
+      QLog.d("MessageObserver", 2, ((StringBuilder)localObject).toString());
+    }
+    onSendSystemMsgActionFin(paramBoolean, str3, i, paramToServiceMsg, j, k, str1, str2, m);
   }
   
   public void setOfflineFileState(boolean paramBoolean, Object[] paramArrayOfObject)
@@ -850,45 +857,56 @@ public class MessageObserver
   
   public void subaccountMsgNumReadedConfirm(boolean paramBoolean, Object paramObject)
   {
-    Object localObject1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageObserver", 2, "onUpdate NOTIFY_TYPE_SUBACCOUNT_MSG_NUM_READED_CONFIRM isSucc=" + paramBoolean + " data=" + String.valueOf(paramObject));
-    }
-    if ((paramObject instanceof String[]))
+    if (QLog.isColorLevel())
     {
-      paramObject = (String[])paramObject;
-      if (paramObject.length == 2)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onUpdate NOTIFY_TYPE_SUBACCOUNT_MSG_NUM_READED_CONFIRM isSucc=");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      ((StringBuilder)localObject1).append(" data=");
+      ((StringBuilder)localObject1).append(String.valueOf(paramObject));
+      QLog.d("MessageObserver", 2, ((StringBuilder)localObject1).toString());
+    }
+    boolean bool = paramObject instanceof String[];
+    Object localObject2 = null;
+    if (bool)
+    {
+      localObject1 = (String[])paramObject;
+      if (localObject1.length == 2)
       {
-        localObject1 = paramObject[0];
-        paramObject = paramObject[1];
+        paramObject = localObject1[0];
+        localObject1 = localObject1[1];
+        break label110;
       }
     }
-    for (;;)
-    {
-      onSubAccountMsgNumConfirm(paramBoolean, (String)localObject1, paramObject);
-      return;
-      Object localObject2 = null;
-      paramObject = localObject1;
-      localObject1 = localObject2;
-    }
+    Object localObject1 = null;
+    paramObject = localObject2;
+    label110:
+    onSubAccountMsgNumConfirm(paramBoolean, paramObject, (String)localObject1);
   }
   
   public void subaccountPushMsg(boolean paramBoolean, Object paramObject)
   {
-    if (paramObject != null) {
-      onPushSubAccountMsg(paramBoolean, ((SubAccountBackProtocData)paramObject).c, (SubAccountBackProtocData)paramObject);
+    if (paramObject != null)
+    {
+      paramObject = (SubAccountBackProtocData)paramObject;
+      onPushSubAccountMsg(paramBoolean, paramObject.c, paramObject);
     }
   }
   
   public void transserviceC2CUploadStreamPtt(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 1)) {
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 1))
+    {
       onUpdateUploadStreamFinished(paramBoolean, (MessageFactoryReceiver.UploadStreamStruct)paramArrayOfObject[0]);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("streamptt.send", 2, "Stream ptt:UploadStreamStruct : arrayLength:" + Arrays.toString(paramArrayOfObject));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Stream ptt:UploadStreamStruct : arrayLength:");
+      localStringBuilder.append(Arrays.toString(paramArrayOfObject));
+      QLog.d("streamptt.send", 2, localStringBuilder.toString());
+    }
   }
   
   public void transserviceTempChatDownloadPic(boolean paramBoolean, Object[] paramArrayOfObject)
@@ -937,7 +955,7 @@ public class MessageObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageObserver
  * JD-Core Version:    0.7.0.1
  */

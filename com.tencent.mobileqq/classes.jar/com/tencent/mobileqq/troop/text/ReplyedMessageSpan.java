@@ -28,7 +28,7 @@ import org.json.JSONObject;
 public class ReplyedMessageSpan
   extends DynamicDrawableSpan
 {
-  private static String c;
+  private static String c = "startPos";
   public int a;
   public long a;
   protected Context a;
@@ -40,11 +40,6 @@ public class ReplyedMessageSpan
   public String b;
   public long c;
   public long d;
-  
-  static
-  {
-    jdField_c_of_type_JavaLangString = "startPos";
-  }
   
   private ReplyedMessageSpan(Context paramContext, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, int paramInt, Paint paramPaint, View.OnClickListener paramOnClickListener)
   {
@@ -66,29 +61,35 @@ public class ReplyedMessageSpan
   
   public static ReplyedMessageSpan a(QQAppInterface paramQQAppInterface, Context paramContext, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, int paramInt, Paint paramPaint, View.OnClickListener paramOnClickListener)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSourceMsgInfo == null) || (paramInt <= 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("ReplyedMessageSpan", 2, "create reply message span failed: source=" + paramSourceMsgInfo + ", width=" + paramInt);
-      }
-      return null;
+    if ((paramQQAppInterface != null) && (paramContext != null) && (paramSourceMsgInfo != null) && (paramInt > 0)) {
+      return new ReplyedMessageSpan(paramContext, paramSourceMsgInfo, paramInt, paramPaint, paramOnClickListener);
     }
-    return new ReplyedMessageSpan(paramContext, paramSourceMsgInfo, paramInt, paramPaint, paramOnClickListener);
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("create reply message span failed: source=");
+      paramQQAppInterface.append(paramSourceMsgInfo);
+      paramQQAppInterface.append(", width=");
+      paramQQAppInterface.append(paramInt);
+      QLog.w("ReplyedMessageSpan", 2, paramQQAppInterface.toString());
+    }
+    return null;
   }
   
   public static String a(long paramLong, String paramString)
   {
-    int j = 0;
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    try
+    for (;;)
     {
-      Object localObject = new JSONArray(paramString);
-      JSONArray localJSONArray = new JSONArray();
-      int i = 0;
-      for (;;)
+      int i;
+      try
       {
+        Object localObject = new JSONArray(paramString);
+        JSONArray localJSONArray = new JSONArray();
+        i = 0;
+        int j = 0;
         if (i < ((JSONArray)localObject).length())
         {
           JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
@@ -117,55 +118,56 @@ public class ReplyedMessageSpan
           localObject = localJSONArray.toString();
           return localObject;
         }
-        i += 1;
       }
-      return paramString;
+      catch (JSONException localJSONException)
+      {
+        return paramString;
+      }
+      i += 1;
     }
-    catch (JSONException localJSONException) {}
   }
   
   private void a(Paint paramPaint)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramPaint = new SpannableStringBuilder();
-        paramPaint.append(ColorNickManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, ChatTextSizeSettingActivity.a(), null, 7));
-        localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
-        ((TextView)localObject).setSingleLine();
-        ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
-        ((TextView)localObject).setBackgroundDrawable(((TextView)localObject).getResources().getDrawable(2130838377));
-        ((TextView)localObject).setGravity(16);
-        i = ((TextView)localObject).getResources().getColor(2131167133);
-        ((TextView)localObject).setTextColor(Color.argb(230, (0xFF0000 & i) >> 16, (0xFF00 & i) >> 8, i & 0xFF));
-        ((TextView)localObject).setText(paramPaint);
-        ((TextView)localObject).setTextSize(1, 13.0F);
-        i = (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-        j = (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 23.0F);
-        ((TextView)localObject).setPadding(i, 0, i, 0);
-        ((TextView)localObject).setMaxWidth(this.jdField_b_of_type_Int);
-        ((TextView)localObject).setWidth(this.jdField_b_of_type_Int);
-        ((TextView)localObject).setHeight(j);
-        ((TextView)localObject).setTypeface(VasShieldFont.a(Long.toString(this.jdField_b_of_type_Long)));
-        ((TextView)localObject).measure(this.jdField_b_of_type_Int, View.MeasureSpec.makeMeasureSpec(0, 0));
-        ((TextView)localObject).layout(0, 0, ((TextView)localObject).getMeasuredWidth(), ((TextView)localObject).getMeasuredHeight());
-        ((TextView)localObject).setDrawingCacheEnabled(true);
-        paramPaint = ((TextView)localObject).getDrawingCache();
-      } while (paramPaint == null);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramPaint);
-    } while (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null);
-    int i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int j = paramPaint.getWidth();
-    if (i > 0) {}
-    for (;;)
-    {
-      ((Drawable)localObject).setBounds(0, 0, j, i);
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       return;
-      i = 0;
+    }
+    paramPaint = new SpannableStringBuilder();
+    paramPaint.append(ColorNickManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, ChatTextSizeSettingActivity.a(), null, 7));
+    Object localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    ((TextView)localObject).setSingleLine();
+    ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
+    ((TextView)localObject).setBackgroundDrawable(((TextView)localObject).getResources().getDrawable(2130838206));
+    ((TextView)localObject).setGravity(16);
+    int i = ((TextView)localObject).getResources().getColor(2131167158);
+    ((TextView)localObject).setTextColor(Color.argb(230, (0xFF0000 & i) >> 16, (0xFF00 & i) >> 8, i & 0xFF));
+    ((TextView)localObject).setText(paramPaint);
+    ((TextView)localObject).setTextSize(1, 13.0F);
+    i = (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+    int j = (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 23.0F);
+    ((TextView)localObject).setPadding(i, 0, i, 0);
+    ((TextView)localObject).setMaxWidth(this.jdField_b_of_type_Int);
+    ((TextView)localObject).setWidth(this.jdField_b_of_type_Int);
+    ((TextView)localObject).setHeight(j);
+    ((TextView)localObject).setTypeface(VasShieldFont.a(Long.toString(this.jdField_b_of_type_Long)));
+    ((TextView)localObject).measure(this.jdField_b_of_type_Int, View.MeasureSpec.makeMeasureSpec(0, 0));
+    ((TextView)localObject).layout(0, 0, ((TextView)localObject).getMeasuredWidth(), ((TextView)localObject).getMeasuredHeight());
+    ((TextView)localObject).setDrawingCacheEnabled(true);
+    paramPaint = ((TextView)localObject).getDrawingCache();
+    if (paramPaint != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramPaint);
+      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (localObject != null)
+      {
+        i = ((Drawable)localObject).getIntrinsicHeight();
+        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        j = paramPaint.getWidth();
+        if (i <= 0) {
+          i = 0;
+        }
+        ((Drawable)localObject).setBounds(0, 0, j, i);
+      }
     }
   }
   
@@ -176,8 +178,9 @@ public class ReplyedMessageSpan
   
   public void a(TextView paramTextView)
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramTextView);
+    View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramTextView);
     }
   }
   
@@ -188,7 +191,7 @@ public class ReplyedMessageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.text.ReplyedMessageSpan
  * JD-Core Version:    0.7.0.1
  */

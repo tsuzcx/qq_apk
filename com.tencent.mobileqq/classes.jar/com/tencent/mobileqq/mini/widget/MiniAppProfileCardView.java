@@ -45,8 +45,8 @@ public class MiniAppProfileCardView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131561510, this, true);
-    this.mListView = ((HorizontalListView)findViewById(2131373544));
+    this.mLayoutInflater.inflate(2131561351, this, true);
+    this.mListView = ((HorizontalListView)findViewById(2131373122));
     this.mAdapter = new MiniAppProfileCardView.HorzionAdapter(this);
     this.mListView.setAdapter(this.mAdapter);
     this.mListView.setVisibility(0);
@@ -54,22 +54,26 @@ public class MiniAppProfileCardView
   
   public void setData(ArrayList<MiniAppInfo> paramArrayList)
   {
-    if (this.mAdapter != null) {
-      this.mAdapter.setData(paramArrayList);
+    MiniAppProfileCardView.HorzionAdapter localHorzionAdapter = this.mAdapter;
+    if (localHorzionAdapter != null) {
+      localHorzionAdapter.setData(paramArrayList);
     }
   }
   
   public void setData(List<INTERFACE.StApiAppInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        localArrayList.add(MiniAppInfo.from((INTERFACE.StApiAppInfo)paramList.next()));
+      }
+      setData(localArrayList);
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(MiniAppInfo.from((INTERFACE.StApiAppInfo)paramList.next()));
-    }
-    setData(localArrayList);
   }
   
   public void setTextColor(int paramInt)
@@ -86,7 +90,7 @@ public class MiniAppProfileCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppProfileCardView
  * JD-Core Version:    0.7.0.1
  */

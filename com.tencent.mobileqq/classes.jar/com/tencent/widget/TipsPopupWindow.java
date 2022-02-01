@@ -22,14 +22,16 @@ public class TipsPopupWindow
   
   private void c()
   {
-    if (this.c) {
+    if (this.c)
+    {
       this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_ComTencentWidgetTipsPopupWindow$DismissRunnable, 1000L);
-    }
-    while ((!this.jdField_a_of_type_Boolean) || (this.d)) {
       return;
     }
-    this.d = true;
-    e();
+    if ((this.jdField_a_of_type_Boolean) && (!this.d))
+    {
+      this.d = true;
+      e();
+    }
   }
   
   private void d()
@@ -97,7 +99,7 @@ public class TipsPopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.TipsPopupWindow
  * JD-Core Version:    0.7.0.1
  */

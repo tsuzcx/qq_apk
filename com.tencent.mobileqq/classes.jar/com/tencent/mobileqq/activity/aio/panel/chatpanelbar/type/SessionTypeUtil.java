@@ -9,18 +9,17 @@ public class SessionTypeUtil
 {
   public static String a(SessionInfo paramSessionInfo)
   {
-    String str = "";
-    if ((paramSessionInfo.jdField_a_of_type_Int == 0) || (paramSessionInfo.jdField_a_of_type_Int == 1000) || (paramSessionInfo.jdField_a_of_type_Int == 1004) || (paramSessionInfo.jdField_a_of_type_Int == 10008)) {
-      str = "entrance.click.c2c.quick";
-    }
-    do
+    if ((paramSessionInfo.jdField_a_of_type_Int != 0) && (paramSessionInfo.jdField_a_of_type_Int != 1000) && (paramSessionInfo.jdField_a_of_type_Int != 1004) && (paramSessionInfo.jdField_a_of_type_Int != 10008))
     {
-      return str;
       if (paramSessionInfo.jdField_a_of_type_Int == 3000) {
         return "entrance.click.group.quick";
       }
-    } while (paramSessionInfo.jdField_a_of_type_Int != 1);
-    return "entrance.click.chatgroup.quick";
+      if (paramSessionInfo.jdField_a_of_type_Int == 1) {
+        return "entrance.click.chatgroup.quick";
+      }
+      return "";
+    }
+    return "entrance.click.c2c.quick";
   }
   
   public static boolean a(int paramInt)
@@ -55,7 +54,7 @@ public class SessionTypeUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.type.SessionTypeUtil
  * JD-Core Version:    0.7.0.1
  */

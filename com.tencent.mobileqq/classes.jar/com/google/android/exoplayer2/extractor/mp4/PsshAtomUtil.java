@@ -18,38 +18,35 @@ public final class PsshAtomUtil
   {
     int m = 0;
     int j;
-    int i;
-    label17:
-    ByteBuffer localByteBuffer;
-    if (paramArrayOfUUID != null)
-    {
+    if (paramArrayOfUUID != null) {
       j = 1;
-      if (paramArrayOfByte == null) {
-        break label173;
-      }
-      i = paramArrayOfByte.length;
-      int n = i + 32;
-      k = n;
-      if (j != 0) {
-        k = n + (paramArrayOfUUID.length * 16 + 4);
-      }
-      localByteBuffer = ByteBuffer.allocate(k);
-      localByteBuffer.putInt(k);
-      localByteBuffer.putInt(Atom.TYPE_pssh);
-      if (j == 0) {
-        break label178;
-      }
+    } else {
+      j = 0;
     }
-    label173:
-    label178:
-    for (int k = 16777216;; k = 0)
+    int i;
+    if (paramArrayOfByte != null) {
+      i = paramArrayOfByte.length;
+    } else {
+      i = 0;
+    }
+    int n = i + 32;
+    int k = n;
+    if (j != 0) {
+      k = n + (paramArrayOfUUID.length * 16 + 4);
+    }
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(k);
+    localByteBuffer.putInt(k);
+    localByteBuffer.putInt(Atom.TYPE_pssh);
+    if (j != 0) {
+      k = 16777216;
+    } else {
+      k = 0;
+    }
+    localByteBuffer.putInt(k);
+    localByteBuffer.putLong(paramUUID.getMostSignificantBits());
+    localByteBuffer.putLong(paramUUID.getLeastSignificantBits());
+    if (j != 0)
     {
-      localByteBuffer.putInt(k);
-      localByteBuffer.putLong(paramUUID.getMostSignificantBits());
-      localByteBuffer.putLong(paramUUID.getLeastSignificantBits());
-      if (j == 0) {
-        break label184;
-      }
       localByteBuffer.putInt(paramArrayOfUUID.length);
       k = paramArrayOfUUID.length;
       j = m;
@@ -60,12 +57,7 @@ public final class PsshAtomUtil
         localByteBuffer.putLong(paramUUID.getLeastSignificantBits());
         j += 1;
       }
-      j = 0;
-      break;
-      i = 0;
-      break label17;
     }
-    label184:
     if (i != 0)
     {
       localByteBuffer.putInt(paramArrayOfByte.length);
@@ -77,29 +69,33 @@ public final class PsshAtomUtil
   private static PsshAtomUtil.PsshAtom parsePsshAtom(byte[] paramArrayOfByte)
   {
     paramArrayOfByte = new ParsableByteArray(paramArrayOfByte);
-    if (paramArrayOfByte.limit() < 32) {}
-    int i;
-    UUID localUUID;
-    int j;
-    do
+    if (paramArrayOfByte.limit() < 32) {
+      return null;
+    }
+    paramArrayOfByte.setPosition(0);
+    if (paramArrayOfByte.readInt() != paramArrayOfByte.bytesLeft() + 4) {
+      return null;
+    }
+    if (paramArrayOfByte.readInt() != Atom.TYPE_pssh) {
+      return null;
+    }
+    int i = Atom.parseFullAtomVersion(paramArrayOfByte.readInt());
+    if (i > 1)
     {
-      do
-      {
-        return null;
-        paramArrayOfByte.setPosition(0);
-      } while ((paramArrayOfByte.readInt() != paramArrayOfByte.bytesLeft() + 4) || (paramArrayOfByte.readInt() != Atom.TYPE_pssh));
-      i = Atom.parseFullAtomVersion(paramArrayOfByte.readInt());
-      if (i > 1)
-      {
-        Log.w("PsshAtomUtil", "Unsupported pssh version: " + i);
-        return null;
-      }
-      localUUID = new UUID(paramArrayOfByte.readLong(), paramArrayOfByte.readLong());
-      if (i == 1) {
-        paramArrayOfByte.skipBytes(paramArrayOfByte.readUnsignedIntToInt() * 16);
-      }
-      j = paramArrayOfByte.readUnsignedIntToInt();
-    } while (j != paramArrayOfByte.bytesLeft());
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("Unsupported pssh version: ");
+      paramArrayOfByte.append(i);
+      Log.w("PsshAtomUtil", paramArrayOfByte.toString());
+      return null;
+    }
+    UUID localUUID = new UUID(paramArrayOfByte.readLong(), paramArrayOfByte.readLong());
+    if (i == 1) {
+      paramArrayOfByte.skipBytes(paramArrayOfByte.readUnsignedIntToInt() * 16);
+    }
+    int j = paramArrayOfByte.readUnsignedIntToInt();
+    if (j != paramArrayOfByte.bytesLeft()) {
+      return null;
+    }
     byte[] arrayOfByte = new byte[j];
     paramArrayOfByte.readBytes(arrayOfByte, 0, j);
     return new PsshAtomUtil.PsshAtom(localUUID, i, arrayOfByte);
@@ -113,7 +109,13 @@ public final class PsshAtomUtil
     }
     if ((paramUUID != null) && (!paramUUID.equals(PsshAtomUtil.PsshAtom.access$000(paramArrayOfByte))))
     {
-      Log.w("PsshAtomUtil", "UUID mismatch. Expected: " + paramUUID + ", got: " + PsshAtomUtil.PsshAtom.access$000(paramArrayOfByte) + ".");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("UUID mismatch. Expected: ");
+      localStringBuilder.append(paramUUID);
+      localStringBuilder.append(", got: ");
+      localStringBuilder.append(PsshAtomUtil.PsshAtom.access$000(paramArrayOfByte));
+      localStringBuilder.append(".");
+      Log.w("PsshAtomUtil", localStringBuilder.toString());
       return null;
     }
     return PsshAtomUtil.PsshAtom.access$200(paramArrayOfByte);
@@ -139,7 +141,7 @@ public final class PsshAtomUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp4.PsshAtomUtil
  * JD-Core Version:    0.7.0.1
  */

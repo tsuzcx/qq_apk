@@ -15,13 +15,13 @@ class VideoThumbProviderManager$VideoThumbLruCache
   protected void entryRemoved(boolean paramBoolean, @NonNull BaseVideoThumbAssetCache.LRUKey paramLRUKey, @NonNull Integer paramInteger1, @Nullable Integer paramInteger2)
   {
     super.entryRemoved(paramBoolean, paramLRUKey, paramInteger1, paramInteger2);
-    if (!paramBoolean) {}
-    do
-    {
+    if (!paramBoolean) {
       return;
-      paramInteger1 = VideoThumbProviderManager.access$400(this.this$0, paramLRUKey.assetId, VideoThumbProviderManager.access$200(this.this$0));
-    } while (paramInteger1 == null);
-    paramInteger1.releaseBitmap(paramLRUKey.time);
+    }
+    paramInteger1 = VideoThumbProviderManager.access$400(this.this$0, paramLRUKey.assetId, VideoThumbProviderManager.access$200(this.this$0));
+    if (paramInteger1 != null) {
+      paramInteger1.releaseBitmap(paramLRUKey.time);
+    }
   }
   
   protected int sizeOf(@NonNull BaseVideoThumbAssetCache.LRUKey paramLRUKey, @NonNull Integer paramInteger)
@@ -31,7 +31,7 @@ class VideoThumbProviderManager$VideoThumbLruCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager.VideoThumbLruCache
  * JD-Core Version:    0.7.0.1
  */

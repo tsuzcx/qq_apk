@@ -98,86 +98,77 @@ public class VoIPJsPlugin
         try
         {
           ((JSONObject)localObject).put("errCode", -5);
-          paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "invalid parameters").toString());
-          return "";
         }
         catch (JSONException localJSONException1)
         {
-          for (;;)
-          {
-            QMLog.e("[mini] VoIPJsPlugin", "JSONException", localJSONException1);
-          }
+          QMLog.e("[mini] VoIPJsPlugin", "JSONException", localJSONException1);
         }
+        paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "invalid parameters").toString());
+        return "";
       }
-      try
-      {
-        JSONObject localJSONObject;
-        localJSONObject.put("errCode", -1000);
-        paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, ApiUtil.wrapCallbackFail(paramRequestEvent.event, localJSONObject, "internal error").toString());
-        for (;;)
-        {
-          return "";
-          transForRoodId(paramRequestEvent, localJSONObject, localJSONObject.groupId);
-        }
-      }
-      catch (JSONException localJSONException2)
-      {
-        for (;;)
-        {
-          QMLog.e("[mini] VoIPJsPlugin", "JSONException", localJSONException2);
-        }
-      }
+      transForRoodId(paramRequestEvent, localJSONException1, localJSONException1.groupId);
+      return "";
     }
     catch (Throwable localThrowable)
     {
       QMLog.e("[mini] VoIPJsPlugin", "joinVoIPChat internal error", localThrowable);
-      localJSONObject = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("errCode", -1000);
+      }
+      catch (JSONException localJSONException2)
+      {
+        QMLog.e("[mini] VoIPJsPlugin", "JSONException", localJSONException2);
+      }
+      paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, ApiUtil.wrapCallbackFail(paramRequestEvent.event, localJSONObject, "internal error").toString());
     }
+    return "";
   }
   
   public void onPause()
   {
-    JSONObject localJSONObject;
-    if (VoIPManager.getInstance().isInRoom()) {
-      localJSONObject = new JSONObject();
-    }
-    try
+    if (VoIPManager.getInstance().isInRoom())
     {
-      localJSONObject.put("errCode", 2);
-      localJSONObject.put("errMsg", "进入后台或关闭");
-      sendSubscribeEvent("onVoIPChatInterrupted", localJSONObject.toString());
-      ThreadManager.getSubThreadHandler().post(new VoIPJsPlugin.4(this));
-      super.onPause();
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("errCode", 2);
+        localJSONObject.put("errMsg", "进入后台或关闭");
+      }
+      catch (JSONException localJSONException)
       {
         QMLog.e("[mini] VoIPJsPlugin", "JSONException", localJSONException);
       }
+      sendSubscribeEvent("onVoIPChatInterrupted", localJSONObject.toString());
     }
+    ThreadManager.getSubThreadHandler().post(new VoIPJsPlugin.4(this));
+    super.onPause();
   }
   
   @JsEvent({"updateVoIPChatMuteConfig"})
   public String updateVoIPChatMuteConfig(RequestEvent paramRequestEvent)
   {
-    VoIPManager.RoomConfig localRoomConfig = parseRoomConfig(paramRequestEvent.jsonParams);
+    Object localObject = parseRoomConfig(paramRequestEvent.jsonParams);
     JSONObject localJSONObject = new JSONObject();
-    if ((localRoomConfig != null) && (localRoomConfig.muteConfig != null)) {
-      VoIPManager.getInstance().updateMuteConfig(localRoomConfig.muteConfig, new VoIPJsPlugin.1(this, localJSONObject, paramRequestEvent));
-    }
-    for (;;)
+    if ((localObject != null) && (((VoIPManager.RoomConfig)localObject).muteConfig != null))
     {
-      return "";
-      paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, ApiUtil.wrapCallbackFail(paramRequestEvent.event, localJSONObject, "参数错误").toString());
-      QMLog.e("[mini] VoIPJsPlugin", "参数错误 " + paramRequestEvent.jsonParams);
+      VoIPManager.getInstance().updateMuteConfig(((VoIPManager.RoomConfig)localObject).muteConfig, new VoIPJsPlugin.1(this, localJSONObject, paramRequestEvent));
     }
+    else
+    {
+      paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, ApiUtil.wrapCallbackFail(paramRequestEvent.event, localJSONObject, "参数错误").toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("参数错误 ");
+      ((StringBuilder)localObject).append(paramRequestEvent.jsonParams);
+      QMLog.e("[mini] VoIPJsPlugin", ((StringBuilder)localObject).toString());
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.VoIPJsPlugin
  * JD-Core Version:    0.7.0.1
  */

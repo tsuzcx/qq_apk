@@ -23,9 +23,9 @@ public final class CutExtKt
     Intrinsics.checkParameterIsNotNull(paramList1, "transitions");
     Intrinsics.checkParameterIsNotNull(paramString, "clipUuid");
     Iterator localIterator1 = ((Iterable)paramList).iterator();
-    long l = 0L;
+    long l1 = 0L;
     int i = 0;
-    if (localIterator1.hasNext())
+    while (localIterator1.hasNext())
     {
       paramList = localIterator1.next();
       if (i < 0) {
@@ -33,42 +33,31 @@ public final class CutExtKt
       }
       paramList = (CutModelKt)paramList;
       if (Intrinsics.areEqual(paramList.getUuid(), paramString)) {
-        return l;
+        return l1;
       }
-      l += paramList.getResource().getScaleDuration();
+      long l2 = l1 + paramList.getResource().getScaleDuration();
       Iterator localIterator2 = ((Iterable)paramList1).iterator();
-      label101:
-      int j;
-      if (localIterator2.hasNext())
+      while (localIterator2.hasNext())
       {
         paramList = localIterator2.next();
-        if (((VideoTransitionModel)paramList).getTransitionPosition() == i)
-        {
+        int j;
+        if (((VideoTransitionModel)paramList).getTransitionPosition() == i) {
           j = 1;
-          label133:
-          if (j == 0) {
-            break label174;
-          }
-          label138:
-          paramList = (VideoTransitionModel)paramList;
-          if (paramList == null) {
-            break label181;
-          }
-          l -= (int)(paramList.getOverlapTime() / paramList.getSpeed());
+        } else {
+          j = 0;
+        }
+        if (j != 0) {
+          break label149;
         }
       }
-      label174:
-      label181:
-      for (;;)
-      {
-        i += 1;
-        break;
-        j = 0;
-        break label133;
-        break label101;
-        paramList = null;
-        break label138;
+      paramList = null;
+      label149:
+      paramList = (VideoTransitionModel)paramList;
+      l1 = l2;
+      if (paramList != null) {
+        l1 = l2 - (int)(paramList.getOverlapTime() / paramList.getSpeed());
       }
+      i += 1;
     }
     return -1L;
   }
@@ -79,71 +68,51 @@ public final class CutExtKt
     Intrinsics.checkParameterIsNotNull(paramList1, "transitions");
     Intrinsics.checkParameterIsNotNull(paramString, "deleteUuid");
     Object localObject = (CutModelKt)CollectionsKt.lastOrNull(paramList);
-    long l2;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       localObject = ((CutModelKt)localObject).getUuid();
-      if (!Intrinsics.areEqual(localObject, paramString)) {
-        break label62;
-      }
-      l2 = -1L;
-    }
-    label62:
-    long l1;
-    int i;
-    do
-    {
-      return l2;
+    } else {
       localObject = null;
-      break;
-      localObject = ((Iterable)paramList).iterator();
-      l1 = 0L;
-      i = 0;
-      if (!((Iterator)localObject).hasNext()) {
-        break label229;
-      }
+    }
+    if (Intrinsics.areEqual(localObject, paramString)) {
+      return -1L;
+    }
+    localObject = ((Iterable)paramList).iterator();
+    long l1 = 0L;
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
+    {
       paramList = ((Iterator)localObject).next();
       if (i < 0) {
         CollectionsKt.throwIndexOverflow();
       }
       paramList = (CutModelKt)paramList;
-      l2 = l1;
-    } while (Intrinsics.areEqual(paramList.getUuid(), paramString));
-    l1 += paramList.getResource().getScaleDuration();
-    Iterator localIterator = ((Iterable)paramList1).iterator();
-    label146:
-    int j;
-    if (localIterator.hasNext())
-    {
-      paramList = localIterator.next();
-      if (((VideoTransitionModel)paramList).getTransitionPosition() == i)
-      {
-        j = 1;
-        label178:
-        if (j == 0) {
-          break label219;
-        }
-        label183:
-        paramList = (VideoTransitionModel)paramList;
-        if (paramList == null) {
-          break label226;
-        }
-        l1 -= (int)(paramList.getOverlapTime() / paramList.getSpeed());
+      if (Intrinsics.areEqual(paramList.getUuid(), paramString)) {
+        return l1;
       }
-    }
-    label219:
-    label226:
-    for (;;)
-    {
-      i += 1;
-      break;
-      j = 0;
-      break label178;
-      break label146;
+      long l2 = l1 + paramList.getResource().getScaleDuration();
+      Iterator localIterator = ((Iterable)paramList1).iterator();
+      while (localIterator.hasNext())
+      {
+        paramList = localIterator.next();
+        int j;
+        if (((VideoTransitionModel)paramList).getTransitionPosition() == i) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        if (j != 0) {
+          break label189;
+        }
+      }
       paramList = null;
-      break label183;
+      label189:
+      paramList = (VideoTransitionModel)paramList;
+      l1 = l2;
+      if (paramList != null) {
+        l1 = l2 - (int)(paramList.getOverlapTime() / paramList.getSpeed());
+      }
+      i += 1;
     }
-    label229:
     return -1L;
   }
   
@@ -154,66 +123,49 @@ public final class CutExtKt
     Intrinsics.checkParameterIsNotNull(paramString, "uuid");
     Object localObject = paramList.iterator();
     int i = 0;
-    label59:
-    label68:
-    label111:
-    CutModelKt localCutModelKt;
-    if (((Iterator)localObject).hasNext()) {
-      if (Intrinsics.areEqual(((CutModelKt)((Iterator)localObject).next()).getUuid(), paramString))
+    while (((Iterator)localObject).hasNext())
+    {
+      if (Intrinsics.areEqual(((CutModelKt)((Iterator)localObject).next()).getUuid(), paramString)) {
+        break label74;
+      }
+      i += 1;
+    }
+    i = -1;
+    label74:
+    if (i < paramInt) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    paramList = (Iterable)paramList.subList(0, paramInt + i);
+    localObject = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault(paramList, 10));
+    Iterator localIterator1 = paramList.iterator();
+    paramInt = 0;
+    while (localIterator1.hasNext())
+    {
+      paramList = localIterator1.next();
+      if (paramInt < 0) {
+        CollectionsKt.throwIndexOverflow();
+      }
+      CutModelKt localCutModelKt = (CutModelKt)paramList;
+      Iterator localIterator2 = ((Iterable)paramList1).iterator();
+      while (localIterator2.hasNext())
       {
-        if (i >= paramInt) {
-          break label230;
-        }
-        i = 1;
-        paramList = (Iterable)paramList.subList(0, i + paramInt);
-        localObject = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault(paramList, 10));
-        Iterator localIterator1 = paramList.iterator();
-        paramInt = 0;
-        if (!localIterator1.hasNext()) {
-          break label247;
-        }
-        paramList = localIterator1.next();
-        if (paramInt < 0) {
-          CollectionsKt.throwIndexOverflow();
-        }
-        localCutModelKt = (CutModelKt)paramList;
-        Iterator localIterator2 = ((Iterable)paramList1).iterator();
-        label153:
-        if (!localIterator2.hasNext()) {
-          break label242;
-        }
         paramList = localIterator2.next();
-        if (((VideoTransitionModel)paramList).getTransitionPosition() != paramInt) {
-          break label236;
+        if (((VideoTransitionModel)paramList).getTransitionPosition() == paramInt) {
+          i = 1;
+        } else {
+          i = 0;
         }
-        i = 1;
-        label185:
-        if (i == 0) {
-          break label240;
+        if (i != 0) {
+          break label222;
         }
       }
-    }
-    for (;;)
-    {
+      paramList = null;
+      label222:
       ((Collection)localObject).add(new Pair(localCutModelKt, paramList));
       paramInt += 1;
-      break label111;
-      i += 1;
-      break;
-      i = -1;
-      break label59;
-      label230:
-      i = 0;
-      break label68;
-      label236:
-      i = 0;
-      break label185;
-      label240:
-      break label153;
-      label242:
-      paramList = null;
     }
-    label247:
     paramList1 = (Iterable)localObject;
     paramList = (Collection)new ArrayList();
     paramList1 = paramList1.iterator();
@@ -225,16 +177,15 @@ public final class CutExtKt
       }
     }
     paramList = ((Iterable)paramList).iterator();
-    long l1 = 0L;
-    if (paramList.hasNext())
+    long l2;
+    for (long l1 = 0L; paramList.hasNext(); l1 = l1 + ((CutModelKt)paramList1.getFirst()).getResource().getScaleDuration() - l2)
     {
       paramList1 = (Pair)paramList.next();
       paramString = (VideoTransitionModel)paramList1.getSecond();
-      if (paramString != null) {}
-      for (long l2 = (paramString.getOverlapTime() / paramString.getSpeed());; l2 = 0L)
-      {
-        l1 = ((CutModelKt)paramList1.getFirst()).getResource().getScaleDuration() + l1 - l2;
-        break;
+      if (paramString != null) {
+        l2 = (paramString.getOverlapTime() / paramString.getSpeed());
+      } else {
+        l2 = 0L;
       }
     }
     return l1;
@@ -246,9 +197,9 @@ public final class CutExtKt
     Intrinsics.checkParameterIsNotNull(paramList1, "transitions");
     Intrinsics.checkParameterIsNotNull(paramString, "speedUuid");
     Iterator localIterator1 = ((Iterable)paramList).iterator();
-    long l = 0L;
+    long l1 = 0L;
     int i = 0;
-    if (localIterator1.hasNext())
+    while (localIterator1.hasNext())
     {
       paramList = localIterator1.next();
       if (i < 0) {
@@ -256,42 +207,31 @@ public final class CutExtKt
       }
       paramList = (CutModelKt)paramList;
       if (Intrinsics.areEqual(paramList.getUuid(), paramString)) {
-        return l;
+        return l1;
       }
-      l += paramList.getResource().getScaleDuration();
+      long l2 = l1 + paramList.getResource().getScaleDuration();
       Iterator localIterator2 = ((Iterable)paramList1).iterator();
-      label101:
-      int j;
-      if (localIterator2.hasNext())
+      while (localIterator2.hasNext())
       {
         paramList = localIterator2.next();
-        if (((VideoTransitionModel)paramList).getTransitionPosition() == i)
-        {
+        int j;
+        if (((VideoTransitionModel)paramList).getTransitionPosition() == i) {
           j = 1;
-          label133:
-          if (j == 0) {
-            break label174;
-          }
-          label138:
-          paramList = (VideoTransitionModel)paramList;
-          if (paramList == null) {
-            break label181;
-          }
-          l -= (int)(paramList.getOverlapTime() / paramList.getSpeed());
+        } else {
+          j = 0;
+        }
+        if (j != 0) {
+          break label149;
         }
       }
-      label174:
-      label181:
-      for (;;)
-      {
-        i += 1;
-        break;
-        j = 0;
-        break label133;
-        break label101;
-        paramList = null;
-        break label138;
+      paramList = null;
+      label149:
+      paramList = (VideoTransitionModel)paramList;
+      l1 = l2;
+      if (paramList != null) {
+        l1 = l2 - (int)(paramList.getOverlapTime() / paramList.getSpeed());
       }
+      i += 1;
     }
     return -1L;
   }
@@ -301,28 +241,22 @@ public final class CutExtKt
   {
     Intrinsics.checkParameterIsNotNull(paramList, "transitions");
     Iterator localIterator = ((Iterable)paramList).iterator();
-    int i;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       paramList = localIterator.next();
-      if (((VideoTransitionModel)paramList).getTransitionPosition() == paramInt)
-      {
+      int i;
+      if (((VideoTransitionModel)paramList).getTransitionPosition() == paramInt) {
         i = 1;
-        label45:
-        if (i == 0) {
-          break label57;
-        }
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
+        break label59;
       }
     }
-    for (;;)
-    {
-      return (VideoTransitionModel)paramList;
-      i = 0;
-      break label45;
-      label57:
-      break;
-      paramList = null;
-    }
+    paramList = null;
+    label59:
+    return (VideoTransitionModel)paramList;
   }
   
   @Nullable
@@ -332,8 +266,13 @@ public final class CutExtKt
     Intrinsics.checkParameterIsNotNull(paramList1, "transitions");
     Iterator localIterator1 = ((Iterable)paramList).iterator();
     int i = 0;
-    while (localIterator1.hasNext())
+    for (;;)
     {
+      boolean bool = localIterator1.hasNext();
+      Object localObject = null;
+      if (!bool) {
+        break;
+      }
       paramList = localIterator1.next();
       if (i < 0) {
         CollectionsKt.throwIndexOverflow();
@@ -341,37 +280,27 @@ public final class CutExtKt
       CutModelKt localCutModelKt = (CutModelKt)paramList;
       Iterator localIterator2 = ((Iterable)paramList1).iterator();
       int j;
-      if (localIterator2.hasNext())
+      do
       {
+        paramList = localObject;
+        if (!localIterator2.hasNext()) {
+          break;
+        }
         paramList = localIterator2.next();
-        if (((VideoTransitionModel)paramList).getTransitionPosition() == i)
-        {
+        if (((VideoTransitionModel)paramList).getTransitionPosition() == i) {
           j = 1;
-          label102:
-          if (j == 0) {
-            break label155;
-          }
+        } else {
+          j = 0;
         }
+      } while (j == 0);
+      paramList = (VideoTransitionModel)paramList;
+      long l = paramLong;
+      if (paramList != null) {
+        l = paramLong + (int)(paramList.getOverlapTime() / paramList.getSpeed());
       }
-      long l;
-      for (;;)
-      {
-        paramList = (VideoTransitionModel)paramList;
-        l = paramLong;
-        if (paramList != null) {
-          l = paramLong + (int)(paramList.getOverlapTime() / paramList.getSpeed());
-        }
-        if (localCutModelKt.getResource().getScaleDuration() < l) {
-          break label162;
-        }
+      if (localCutModelKt.getResource().getScaleDuration() >= l) {
         return localCutModelKt;
-        j = 0;
-        break label102;
-        label155:
-        break;
-        paramList = null;
       }
-      label162:
       paramLong = l - localCutModelKt.getResource().getScaleDuration();
       i += 1;
     }
@@ -380,7 +309,7 @@ public final class CutExtKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.cut.CutExtKt
  * JD-Core Version:    0.7.0.1
  */

@@ -28,9 +28,9 @@ class RelativeMultiPicHeadItemView$1
     return "";
   }
   
-  public View a(View paramView, Object paramObject)
+  protected View a(View paramView, Object paramObject)
   {
-    String str = a(paramObject);
+    Object localObject = a(paramObject);
     if (((paramObject instanceof CertifiedAccountMeta.StImage)) && (RelativeMultiPicHeadItemView.a(this.a) != 0))
     {
       paramObject = (CertifiedAccountMeta.StImage)paramObject;
@@ -47,10 +47,10 @@ class RelativeMultiPicHeadItemView$1
         paramObject.height = RelativeMultiPicHeadItemView.a(this.a);
       }
     }
-    if (str != null) {
+    if (localObject != null) {
       try
       {
-        paramObject = TransitionAnimHelper.a(str);
+        paramObject = TransitionAnimHelper.a((String)localObject);
         if (!TextUtils.isEmpty(paramObject))
         {
           paramObject = new File(paramObject);
@@ -60,17 +60,23 @@ class RelativeMultiPicHeadItemView$1
             return paramView;
           }
         }
-        SubImageLoader.a(str, (URLImageView)paramView);
-        return paramView;
-      }
-      catch (Exception paramObject)
-      {
-        QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!exception:" + paramObject);
+        SubImageLoader.a((String)localObject, (URLImageView)paramView);
         return paramView;
       }
       catch (Error paramObject)
       {
-        QLog.d("RelativeMultiPicHeadItemView", 1, "bindItemView set local image path error!error:" + paramObject.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("bindItemView set local image path error!error:");
+        ((StringBuilder)localObject).append(paramObject.getMessage());
+        QLog.d("RelativeMultiPicHeadItemView", 1, ((StringBuilder)localObject).toString());
+        return paramView;
+      }
+      catch (Exception paramObject)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("bindItemView set local image path error!exception:");
+        ((StringBuilder)localObject).append(paramObject);
+        QLog.d("RelativeMultiPicHeadItemView", 1, ((StringBuilder)localObject).toString());
       }
     }
     return paramView;
@@ -79,17 +85,19 @@ class RelativeMultiPicHeadItemView$1
   protected URLImageView a(ViewGroup paramViewGroup)
   {
     paramViewGroup = new URLImageView(paramViewGroup.getContext());
-    if (RelativeMultiPicHeadItemView.a(this.a) == 0) {}
-    for (int i = -1;; i = RelativeMultiPicHeadItemView.a(this.a))
-    {
-      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, i));
-      return paramViewGroup;
+    int i;
+    if (RelativeMultiPicHeadItemView.a(this.a) == 0) {
+      i = -1;
+    } else {
+      i = RelativeMultiPicHeadItemView.a(this.a);
     }
+    paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, i));
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativeMultiPicHeadItemView.1
  * JD-Core Version:    0.7.0.1
  */

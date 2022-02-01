@@ -17,21 +17,20 @@ class LiteActivity$SendVideoAsyncTask
   protected Void a(Bundle... paramVarArgs)
   {
     Object localObject = paramVarArgs[0].getStringArrayList("PhotoConst.PHOTO_PATHS");
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return null;
-      paramVarArgs = (DataLineHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-        localDataLineMsgRecord.path = str;
-        localDataLineMsgRecord.msgtype = -2009;
-        paramVarArgs.a(localDataLineMsgRecord, false);
-      }
     }
+    paramVarArgs = (DataLineHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      String str = (String)((Iterator)localObject).next();
+      DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
+      localDataLineMsgRecord.path = str;
+      localDataLineMsgRecord.msgtype = -2009;
+      paramVarArgs.a(localDataLineMsgRecord, false);
+    }
+    return null;
   }
   
   protected void a(Void paramVoid)
@@ -41,7 +40,7 @@ class LiteActivity$SendVideoAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.SendVideoAsyncTask
  * JD-Core Version:    0.7.0.1
  */

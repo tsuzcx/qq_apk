@@ -44,17 +44,12 @@ class TraeHelper$ActionSheetCustomAdapter
   {
     int j = getCount();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      TraeHelper.SoundOutputRes.IconAndName localIconAndName = (TraeHelper.SoundOutputRes.IconAndName)getItem(i);
+      if ((localIconAndName != null) && (localIconAndName.jdField_a_of_type_JavaLangString != null) && (localIconAndName.jdField_a_of_type_JavaLangString.equals(paramString)))
       {
-        TraeHelper.SoundOutputRes.IconAndName localIconAndName = (TraeHelper.SoundOutputRes.IconAndName)getItem(i);
-        if ((localIconAndName != null) && (localIconAndName.jdField_a_of_type_JavaLangString != null) && (localIconAndName.jdField_a_of_type_JavaLangString.equals(paramString))) {
-          a(i);
-        }
-      }
-      else
-      {
+        a(i);
         return;
       }
       i += 1;
@@ -63,8 +58,9 @@ class TraeHelper$ActionSheetCustomAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes != null) {
-      return this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes.a();
+    TraeHelper.SoundOutputRes localSoundOutputRes = this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes;
+    if (localSoundOutputRes != null) {
+      return localSoundOutputRes.a();
     }
     return 0;
   }
@@ -81,33 +77,37 @@ class TraeHelper$ActionSheetCustomAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject = (TraeHelper.SoundOutputRes.IconAndName)getItem(paramInt);
-    if (localObject != null) {
+    TraeHelper.SoundOutputRes.IconAndName localIconAndName = (TraeHelper.SoundOutputRes.IconAndName)getItem(paramInt);
+    Object localObject = paramView;
+    if (localIconAndName != null) {
       if (paramView == null)
       {
-        paramView = new TraeHelper.ActionSheetCustomView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((TraeHelper.SoundOutputRes.IconAndName)localObject).jdField_a_of_type_Int, ((TraeHelper.SoundOutputRes.IconAndName)localObject).b);
+        localObject = new TraeHelper.ActionSheetCustomView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localIconAndName.jdField_a_of_type_Int, localIconAndName.b);
+      }
+      else
+      {
         localObject = (TraeHelper.ActionSheetCustomView)paramView;
-        if (paramInt != this.jdField_a_of_type_Int) {
-          break label123;
-        }
+        ((TraeHelper.ActionSheetCustomView)localObject).a(localIconAndName.b);
+        paramView.setContentDescription(localIconAndName.b);
+        ((TraeHelper.ActionSheetCustomView)localObject).a(localIconAndName.jdField_a_of_type_Int);
+        localObject = paramView;
       }
     }
-    label123:
-    for (boolean bool = true;; bool = false)
-    {
-      ((TraeHelper.ActionSheetCustomView)localObject).a(bool);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      ((TraeHelper.ActionSheetCustomView)paramView).a(((TraeHelper.SoundOutputRes.IconAndName)localObject).b);
-      paramView.setContentDescription(((TraeHelper.SoundOutputRes.IconAndName)localObject).b);
-      ((TraeHelper.ActionSheetCustomView)paramView).a(((TraeHelper.SoundOutputRes.IconAndName)localObject).jdField_a_of_type_Int);
-      break;
+    paramView = (TraeHelper.ActionSheetCustomView)localObject;
+    boolean bool;
+    if (paramInt == this.jdField_a_of_type_Int) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramView.a(bool);
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.TraeHelper.ActionSheetCustomAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -33,17 +33,17 @@ public class RectangleClipLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidGraphicsPath.isEmpty()))
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_AndroidGraphicsPath.isEmpty()))
     {
+      paramCanvas.save();
+      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
       super.dispatchDraw(paramCanvas);
+      paramCanvas.restore();
       return;
     }
-    paramCanvas.save();
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
     super.dispatchDraw(paramCanvas);
-    paramCanvas.restore();
   }
   
   public void setClipRect(RectF paramRectF, float paramFloat)
@@ -58,13 +58,16 @@ public class RectangleClipLayout
     this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRectF);
     this.jdField_a_of_type_Float = paramFloat;
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
+    paramRectF = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    paramFloat = this.jdField_a_of_type_Float;
+    paramRectF.addRoundRect(localRectF, paramFloat, paramFloat, Path.Direction.CW);
     this.jdField_a_of_type_AndroidGraphicsPath.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.widget.circularreveal.RectangleClipLayout
  * JD-Core Version:    0.7.0.1
  */

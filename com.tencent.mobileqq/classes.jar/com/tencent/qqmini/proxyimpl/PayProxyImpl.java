@@ -23,17 +23,22 @@ public class PayProxyImpl
   
   public void callJs(String paramString, View paramView)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!(paramView instanceof PayForFriendView)))
+    if ((!TextUtils.isEmpty(paramString)) && ((paramView instanceof PayForFriendView)))
     {
-      QLog.d("[minigame] PayForFriendView", 1, "PayProxyImpl callJs: param error");
+      ((PayForFriendView)paramView).callJs(paramString);
       return;
     }
-    ((PayForFriendView)paramView).callJs(paramString);
+    QLog.d("[minigame] PayForFriendView", 1, "PayProxyImpl callJs: param error");
   }
   
   public View getPayForFriendView(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    QLog.d("[minigame] PayForFriendView", 1, "PayProxyImpl getPayForFriendView: prepayId:" + paramString1 + " appId:" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PayProxyImpl getPayForFriendView: prepayId:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" appId:");
+    localStringBuilder.append(paramString2);
+    QLog.d("[minigame] PayForFriendView", 1, localStringBuilder.toString());
     paramContext = new PayForFriendView(paramContext);
     if (paramContext.setUrl(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt)) {
       return paramContext;
@@ -43,28 +48,32 @@ public class PayProxyImpl
   
   public Bundle midasPay(Activity paramActivity, String paramString, PayProxy.IPayResultCallBack paramIPayResultCallBack, Bundle paramBundle)
   {
-    if ((paramActivity == null) || (paramBundle == null))
+    if ((paramActivity != null) && (paramBundle != null))
     {
-      QLog.d(this.a, 1, "goMidasPay error, params is null");
-      paramActivity = new Bundle();
-      paramActivity.putInt("retCode", -1);
-      return paramActivity;
+      int i = paramBundle.getInt("payparmas_request_code", 0);
+      if (i == 0)
+      {
+        QLog.d(this.a, 1, "goMidasPay error, requestSource is empty");
+        paramActivity = new Bundle();
+        paramActivity.putInt("retCode", -1);
+        return paramActivity;
+      }
+      paramString = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("goMidasPay requestSource = ");
+      localStringBuilder.append(i);
+      QLog.d(paramString, 1, localStringBuilder.toString());
+      return PayBridgeActivity.newPay(AppLoaderFactory.getMiniAppInterface(), paramActivity, new PayProxyImpl.1(this, new Handler(Looper.getMainLooper()), paramIPayResultCallBack), i, paramBundle);
     }
-    int i = paramBundle.getInt("payparmas_request_code", 0);
-    if (i == 0)
-    {
-      QLog.d(this.a, 1, "goMidasPay error, requestSource is empty");
-      paramActivity = new Bundle();
-      paramActivity.putInt("retCode", -1);
-      return paramActivity;
-    }
-    QLog.d(this.a, 1, "goMidasPay requestSource = " + i);
-    return PayBridgeActivity.newPay(AppLoaderFactory.getMiniAppInterface(), paramActivity, new PayProxyImpl.1(this, new Handler(Looper.getMainLooper()), paramIPayResultCallBack), i, paramBundle);
+    QLog.d(this.a, 1, "goMidasPay error, params is null");
+    paramActivity = new Bundle();
+    paramActivity.putInt("retCode", -1);
+    return paramActivity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.PayProxyImpl
  * JD-Core Version:    0.7.0.1
  */

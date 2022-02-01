@@ -21,105 +21,99 @@ public class EllipsizeLayout
     super(paramContext, paramAttributeSet);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i1 = 1;
-    int n = 0;
-    Object localObject1;
-    int i2;
-    int k;
-    int j;
-    int i;
-    label129:
-    int m;
     if ((getOrientation() == 0) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
     {
-      localObject1 = null;
       int i3 = getChildCount();
-      i2 = View.MeasureSpec.getSize(paramInt1);
+      int i2 = View.MeasureSpec.getSize(paramInt1);
       int i4 = View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt1), 0);
-      k = 0;
-      j = 0;
-      i = 0;
-      if ((k < i3) && (j == 0))
+      Object localObject1 = null;
+      int m = 0;
+      int i = 0;
+      int n;
+      for (int k = 0;; k = n)
       {
-        View localView = getChildAt(k);
-        if ((localView == null) || (localView.getVisibility() == 8)) {
-          break label304;
+        n = 1;
+        int i1 = 1;
+        if ((m >= i3) || (i != 0)) {
+          break;
         }
-        if (!(localView instanceof TextView)) {
-          break label301;
-        }
-        Object localObject2 = (TextView)localView;
-        if (((TextView)localObject2).getEllipsize() == null) {
-          break label301;
-        }
-        if (localObject1 == null)
+        View localView = getChildAt(m);
+        j = i;
+        Object localObject2 = localObject1;
+        n = k;
+        if (localView != null)
         {
-          ((TextView)localObject2).setMaxWidth(2147483647);
-          localObject1 = localObject2;
-          measureChildWithMargins(localView, i4, 0, paramInt2, 0);
-          localObject2 = (LinearLayout.LayoutParams)localView.getLayoutParams();
-          if (localObject2 == null) {
-            break label224;
+          j = i;
+          localObject2 = localObject1;
+          n = k;
+          if (localView.getVisibility() != 8)
+          {
+            if ((localView instanceof TextView))
+            {
+              localObject2 = (TextView)localView;
+              if (((TextView)localObject2).getEllipsize() != null) {
+                if (localObject1 == null)
+                {
+                  ((TextView)localObject2).setMaxWidth(2147483647);
+                  localObject1 = localObject2;
+                }
+                else
+                {
+                  i = 1;
+                }
+              }
+            }
+            measureChildWithMargins(localView, i4, 0, paramInt2, 0);
+            localObject2 = (LinearLayout.LayoutParams)localView.getLayoutParams();
+            if (localObject2 != null)
+            {
+              if (((LinearLayout.LayoutParams)localObject2).weight > 0.0F) {
+                j = i1;
+              } else {
+                j = 0;
+              }
+              n = k + (localView.getMeasuredWidth() + ((LinearLayout.LayoutParams)localObject2).leftMargin + ((LinearLayout.LayoutParams)localObject2).rightMargin);
+              j = i | j;
+              localObject2 = localObject1;
+            }
+            else
+            {
+              j = 1;
+              n = k;
+              localObject2 = localObject1;
+            }
           }
-          if (((LinearLayout.LayoutParams)localObject2).weight <= 0.0F) {
-            break label218;
-          }
-          m = 1;
-          label168:
-          j |= m;
-          m = localView.getMeasuredWidth();
-          int i5 = ((LinearLayout.LayoutParams)localObject2).leftMargin;
-          i = ((LinearLayout.LayoutParams)localObject2).rightMargin + (m + i5) + i;
+        }
+        m += 1;
+        i = j;
+        localObject1 = localObject2;
+      }
+      int j = n;
+      if (localObject1 != null) {
+        if (k == 0) {
+          j = n;
+        } else {
+          j = 0;
         }
       }
-    }
-    label298:
-    label301:
-    label304:
-    for (;;)
-    {
-      k += 1;
-      break;
-      j = 1;
-      break label129;
-      label218:
-      m = 0;
-      break label168;
-      label224:
-      j = 1;
-      continue;
-      k = i1;
-      if (localObject1 != null)
+      if (((i | j) == 0) && (k > i2))
       {
-        if (i == 0) {
-          k = i1;
+        j = localObject1.getMeasuredWidth() - (k - i2);
+        i = j;
+        if (j < 0) {
+          i = 0;
         }
-      }
-      else if (((j | k) == 0) && (i > i2))
-      {
-        i = localObject1.getMeasuredWidth() - (i - i2);
-        if (i >= 0) {
-          break label298;
-        }
-        i = n;
-      }
-      for (;;)
-      {
         localObject1.setMaxWidth(i);
-        super.onMeasure(paramInt1, paramInt2);
-        return;
-        k = 0;
-        break;
       }
-      break label129;
     }
+    super.onMeasure(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.EllipsizeLayout
  * JD-Core Version:    0.7.0.1
  */

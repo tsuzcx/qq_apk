@@ -18,30 +18,29 @@ class EmbeddedLivePusherJsPlugin$4
   public Void perform(BaseRuntime paramBaseRuntime)
   {
     paramBaseRuntime = paramBaseRuntime.getPage();
-    if (!(paramBaseRuntime instanceof AppBrandPageContainer)) {
-      QMLog.d("Action", "Page is invalid");
-    }
-    int i;
-    do
+    if (!(paramBaseRuntime instanceof AppBrandPageContainer))
     {
-      do
-      {
-        return null;
-        i = ((AppBrandPageContainer)paramBaseRuntime).getShowingPage().getNavBar().getStatusNavigationBarTextStyle();
-        if (i != -1) {
-          break;
-        }
-      } while (this.val$activityRef.get() == null);
-      ImmersiveUtils.setStatusTextColor(false, ((Activity)this.val$activityRef.get()).getWindow());
+      QMLog.d("Action", "Page is invalid");
       return null;
-    } while ((i != -16777216) || (this.val$activityRef.get() == null));
-    ImmersiveUtils.setStatusTextColor(true, ((Activity)this.val$activityRef.get()).getWindow());
+    }
+    int i = ((AppBrandPageContainer)paramBaseRuntime).getShowingPage().getNavBar().getStatusNavigationBarTextStyle();
+    if (i == -1)
+    {
+      if (this.val$activityRef.get() != null)
+      {
+        ImmersiveUtils.setStatusTextColor(false, ((Activity)this.val$activityRef.get()).getWindow());
+        return null;
+      }
+    }
+    else if ((i == -16777216) && (this.val$activityRef.get() != null)) {
+      ImmersiveUtils.setStatusTextColor(true, ((Activity)this.val$activityRef.get()).getWindow());
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.EmbeddedLivePusherJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

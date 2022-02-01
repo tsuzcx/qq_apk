@@ -13,23 +13,23 @@ class MiniToast$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     if (paramMotionEvent.getAction() == 0)
     {
       QMLog.d("QQToast", "start to cancel toast");
       this.val$toast.cancel();
       MiniToast.access$102(this.this$0, true);
-      if (this.val$touchListener != null) {
-        bool = this.val$touchListener.onTouch(paramView, paramMotionEvent);
+      View.OnTouchListener localOnTouchListener = this.val$touchListener;
+      if (localOnTouchListener != null) {
+        return localOnTouchListener.onTouch(paramView, paramMotionEvent);
       }
-      return bool;
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniToast.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,10 +23,15 @@ public class NearByFaceDrawable
   
   public void cancel()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    FaceObserver localFaceObserver = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver;
+    if (localFaceObserver != null)
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver = null;
+      AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      if (localAppInterface != null)
+      {
+        localAppInterface.removeObserver(localFaceObserver);
+        this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver = null;
+      }
     }
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     super.cancel();
@@ -48,16 +53,25 @@ public class NearByFaceDrawable
   
   protected void onNeedDownload()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.mFaceInfo);
-    }
-    Bitmap localBitmap = getBitmapFromCache();
-    if (localBitmap != null)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onNeedDownload.faceInfo=" + this.mFaceInfo + ",bitmap is already in cache...");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onNeedDownload.faceInfo=");
+      ((StringBuilder)localObject).append(this.mFaceInfo);
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = getBitmapFromCache();
+    if (localObject != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onNeedDownload.faceInfo=");
+        localStringBuilder.append(this.mFaceInfo);
+        localStringBuilder.append(",bitmap is already in cache...");
+        QLog.i("Q.qqhead.NearByFaceDrawable", 2, localStringBuilder.toString());
       }
-      onDecodeTaskCompleted(this.mFaceInfo, localBitmap);
+      onDecodeTaskCompleted(this.mFaceInfo, (Bitmap)localObject);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver == null)
@@ -70,8 +84,12 @@ public class NearByFaceDrawable
   
   protected boolean requestDecode()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "requestDecode.faceInfo=" + this.mFaceInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("requestDecode.faceInfo=");
+      localStringBuilder.append(this.mFaceInfo);
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, localStringBuilder.toString());
     }
     if (this.mFaceInfo == null) {
       return false;
@@ -87,7 +105,7 @@ public class NearByFaceDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.NearByFaceDrawable
  * JD-Core Version:    0.7.0.1
  */

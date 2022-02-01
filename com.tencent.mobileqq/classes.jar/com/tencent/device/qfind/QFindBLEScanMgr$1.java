@@ -26,47 +26,55 @@ class QFindBLEScanMgr$1
       QFind.DeviceInfo localDeviceInfo = (QFind.DeviceInfo)this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.c.get(this.jdField_a_of_type_JavaLangString);
       BlePeerInfo localBlePeerInfo = (BlePeerInfo)this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.a.remove(this.jdField_a_of_type_JavaLangString);
       localBlePeerInfo.a = paramSosoLbsInfo;
-      byte[] arrayOfByte;
+      Object localObject;
+      if (localDeviceInfo.bytes_sig.has()) {
+        localObject = localDeviceInfo.bytes_sig.get().toByteArray();
+      } else {
+        localObject = null;
+      }
+      localBlePeerInfo.jdField_b_of_type_ArrayOfByte = ((byte[])localObject);
+      localBlePeerInfo.d = localDeviceInfo.uint32_need_verify_dev.get();
       boolean bool;
-      if (localDeviceInfo.bytes_sig.has())
-      {
-        arrayOfByte = localDeviceInfo.bytes_sig.get().toByteArray();
-        localBlePeerInfo.jdField_b_of_type_ArrayOfByte = arrayOfByte;
-        localBlePeerInfo.d = localDeviceInfo.uint32_need_verify_dev.get();
-        if ((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L) - localDeviceInfo.timestamp.get() <= localDeviceInfo.uint32_verify_dev_interval.get()) {
-          break label246;
-        }
+      if ((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L) - localDeviceInfo.timestamp.get() > localDeviceInfo.uint32_verify_dev_interval.get()) {
         bool = true;
-        label122:
-        if (QLog.isColorLevel()) {
-          QLog.i("QFindBLE", 2, "reportDevWithLoc get location errorCode=" + paramInt + " ; needVerify = " + localBlePeerInfo.d + " ; exceedVerifyInterval= " + bool + " ; peerInfo.ble_id = " + localBlePeerInfo.c);
-        }
-        if ((localBlePeerInfo.d <= 0) || (!bool)) {
-          break label251;
-        }
+      } else {
+        bool = false;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("reportDevWithLoc get location errorCode=");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(" ; needVerify = ");
+        ((StringBuilder)localObject).append(localBlePeerInfo.d);
+        ((StringBuilder)localObject).append(" ; exceedVerifyInterval= ");
+        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append(" ; peerInfo.ble_id = ");
+        ((StringBuilder)localObject).append(localBlePeerInfo.c);
+        QLog.i("QFindBLE", 2, ((StringBuilder)localObject).toString());
+      }
+      if ((localBlePeerInfo.d > 0) && (bool))
+      {
         localBlePeerInfo.jdField_b_of_type_Boolean = true;
         QFindGattManager.a().a(this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.a(localBlePeerInfo));
       }
-      for (;;)
+      else
       {
-        this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.a.put(this.jdField_a_of_type_JavaLangString, localBlePeerInfo);
-        return;
-        arrayOfByte = null;
-        break;
-        label246:
-        bool = false;
-        break label122;
-        label251:
         localBlePeerInfo.jdField_b_of_type_Boolean = false;
         QFindBLEScanMgr.a(this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr, localBlePeerInfo, paramSosoLbsInfo, false);
       }
+      this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr.a.put(this.jdField_a_of_type_JavaLangString, localBlePeerInfo);
+      return;
     }
-    QLog.e("QFindBLE", 1, "reportDevWithLoc get location failed errorCode=" + paramInt);
+    paramSosoLbsInfo = new StringBuilder();
+    paramSosoLbsInfo.append("reportDevWithLoc get location failed errorCode=");
+    paramSosoLbsInfo.append(paramInt);
+    QLog.e("QFindBLE", 1, paramSosoLbsInfo.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.qfind.QFindBLEScanMgr.1
  * JD-Core Version:    0.7.0.1
  */

@@ -66,23 +66,26 @@ public final class ReqHead
     paramJceOutputStream.write(this.phoneGuid, 2);
     paramJceOutputStream.write(this.qua, 3);
     paramJceOutputStream.write(this.encryptWithPack, 4);
-    if (this.terminal != null) {
-      paramJceOutputStream.write(this.terminal, 5);
+    Object localObject = this.terminal;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.assistantAPILevel, 6);
     paramJceOutputStream.write(this.assistantVersionCode, 7);
-    if (this.net != null) {
-      paramJceOutputStream.write(this.net, 8);
+    localObject = this.net;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.hostPackageName != null) {
-      paramJceOutputStream.write(this.hostPackageName, 9);
+    localObject = this.hostPackageName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
     paramJceOutputStream.write(this.hostVersionCode, 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.apkupdate.logic.protocol.jce.ReqHead
  * JD-Core Version:    0.7.0.1
  */

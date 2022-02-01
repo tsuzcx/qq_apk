@@ -25,9 +25,7 @@ public class ExportErrorStatus
   public static final int WRITE_VIDEO_SAMPLE_ERROR_INSUFFICIENT_RESOURCE = -1211100;
   public static final int WRITE_VIDEO_SAMPLE_ERROR_RECLAIMED = -1211101;
   public int code;
-  @Nullable
-  public String msg;
-  @Nullable
+  public String msg = "";
   public Throwable throwable;
   
   public ExportErrorStatus(int paramInt)
@@ -40,21 +38,30 @@ public class ExportErrorStatus
     this(paramInt, paramThrowable, null);
   }
   
-  public ExportErrorStatus(int paramInt, @Nullable Throwable paramThrowable, String paramString)
+  public ExportErrorStatus(int paramInt, Throwable paramThrowable, String paramString)
   {
     this.code = paramInt;
     this.throwable = paramThrowable;
-    this.msg = paramString;
+    appendMsg(paramString);
   }
   
   public ExportErrorStatus(@NonNull CMSampleState paramCMSampleState)
   {
     this((int)paramCMSampleState.getStateCode(), paramCMSampleState.getThrowable(), paramCMSampleState.getMsg());
   }
+  
+  public void appendMsg(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.msg);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(";\n");
+    this.msg = localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.ExportErrorStatus
  * JD-Core Version:    0.7.0.1
  */

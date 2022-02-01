@@ -10,12 +10,24 @@ public class QAVFunCallConfig$FCItem
   
   public String toString()
   {
-    return "fcid[" + this.fcid + "], begin[" + this.begin + "], end[" + this.end + "], media[" + this.media + "], edownloadStatusnd[" + this.downloadStatus + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fcid[");
+    localStringBuilder.append(this.fcid);
+    localStringBuilder.append("], begin[");
+    localStringBuilder.append(this.begin);
+    localStringBuilder.append("], end[");
+    localStringBuilder.append(this.end);
+    localStringBuilder.append("], media[");
+    localStringBuilder.append(this.media);
+    localStringBuilder.append("], edownloadStatusnd[");
+    localStringBuilder.append(this.downloadStatus);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig.FCItem
  * JD-Core Version:    0.7.0.1
  */

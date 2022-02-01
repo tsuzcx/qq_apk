@@ -74,19 +74,12 @@ public class MsgBackupTransportProcessor
   {
     paramConcurrentHashMap = paramConcurrentHashMap.values().iterator();
     int i = 0;
-    if (paramConcurrentHashMap.hasNext())
-    {
-      if (!((MsgBackupSessionInfo)paramConcurrentHashMap.next()).jdField_c_of_type_Boolean) {
-        break label45;
+    while (paramConcurrentHashMap.hasNext()) {
+      if (((MsgBackupSessionInfo)paramConcurrentHashMap.next()).jdField_c_of_type_Boolean) {
+        i += 1;
       }
-      i += 1;
     }
-    label45:
-    for (;;)
-    {
-      break;
-      return i;
-    }
+    return i;
   }
   
   private MsgBackupJniProxy a(Context paramContext)
@@ -99,90 +92,100 @@ public class MsgBackupTransportProcessor
   
   public static MsgBackupTransportProcessor a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor == null) {
-        jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor = new MsgBackupTransportProcessor();
+    if (jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor == null) {
+          jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor = new MsgBackupTransportProcessor();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupTransportProcessor;
   }
   
   private String a(long paramLong, int paramInt)
   {
     int i = MsgBackupManager.jdField_b_of_type_Int;
-    Object localObject3 = MsgBackupManager.a().jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
-    ((ConcurrentHashMap)localObject3).size();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "getSessionJsonRsp, fid = " + paramLong + ", mServerReadyMList.size = " + ((ConcurrentHashMap)localObject3).size() + ", mDataCache = " + i + ", from = " + paramInt);
+    Object localObject4 = MsgBackupManager.a().jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ((ConcurrentHashMap)localObject4).size();
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getSessionJsonRsp, fid = ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(", mServerReadyMList.size = ");
+      ((StringBuilder)localObject1).append(((ConcurrentHashMap)localObject4).size());
+      ((StringBuilder)localObject1).append(", mDataCache = ");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(", from = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject1).toString());
     }
-    JSONArray localJSONArray = new JSONArray();
+    Object localObject1 = new JSONArray();
     ??? = new JSONObject();
-    int j;
     try
     {
-      if (((ConcurrentHashMap)localObject3).size() <= 0) {
-        break label349;
-      }
-      ((JSONObject)???).put("cmd", "chat_list_count");
-      ((JSONObject)???).put("listCount", i);
-      localJSONArray.put(???);
-      j = 0;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if (((ConcurrentHashMap)localObject4).size() > 0)
       {
-        localObject3 = ((ConcurrentHashMap)localObject3).values().iterator();
-        while (((Iterator)localObject3).hasNext())
+        ((JSONObject)???).put("cmd", "chat_list_count");
+        ((JSONObject)???).put("listCount", i);
+        ((JSONArray)localObject1).put(???);
+        int j = 0;
+        synchronized (this.jdField_a_of_type_JavaLangObject)
         {
-          MsgBackupSessionInfo localMsgBackupSessionInfo = (MsgBackupSessionInfo)((Iterator)localObject3).next();
-          i = j;
-          if (localMsgBackupSessionInfo.jdField_c_of_type_Boolean) {
-            i = j + 1;
-          }
-          j = i;
-          if (!localMsgBackupSessionInfo.jdField_a_of_type_Boolean)
+          localObject4 = ((ConcurrentHashMap)localObject4).values().iterator();
+          while (((Iterator)localObject4).hasNext())
           {
-            JSONObject localJSONObject = new JSONObject();
-            String str2 = localMsgBackupSessionInfo.jdField_a_of_type_JavaLangString;
-            j = localMsgBackupSessionInfo.jdField_a_of_type_Int;
-            localJSONObject.put("cmd", "chat_ready");
-            localJSONObject.put("chatUin", str2);
-            localJSONObject.put("chatType", MsgBackupUtil.b(j));
-            localJSONObject.put("dbSize", localMsgBackupSessionInfo.jdField_a_of_type_Long);
-            localJSONArray.put(localJSONObject);
-            localMsgBackupSessionInfo.jdField_a_of_type_Boolean = true;
+            MsgBackupSessionInfo localMsgBackupSessionInfo = (MsgBackupSessionInfo)((Iterator)localObject4).next();
+            i = j;
+            if (localMsgBackupSessionInfo.jdField_c_of_type_Boolean) {
+              i = j + 1;
+            }
             j = i;
+            if (!localMsgBackupSessionInfo.jdField_a_of_type_Boolean)
+            {
+              JSONObject localJSONObject = new JSONObject();
+              String str2 = localMsgBackupSessionInfo.jdField_a_of_type_JavaLangString;
+              j = localMsgBackupSessionInfo.jdField_a_of_type_Int;
+              localJSONObject.put("cmd", "chat_ready");
+              localJSONObject.put("chatUin", str2);
+              localJSONObject.put("chatType", MsgBackupUtil.b(j));
+              localJSONObject.put("dbSize", localMsgBackupSessionInfo.jdField_a_of_type_Long);
+              ((JSONArray)localObject1).put(localJSONObject);
+              localMsgBackupSessionInfo.jdField_a_of_type_Boolean = true;
+              j = i;
+            }
+          }
+          if ((3 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null)) {
+            this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(j, MsgBackupManager.jdField_b_of_type_Int);
           }
         }
       }
+      String str1 = localObject2.toString();
+      return str1;
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-      return "[]";
     }
-    if ((3 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(j, MsgBackupManager.jdField_b_of_type_Int);
-    }
-    label349:
-    String str1 = localJSONException.toString();
-    return str1;
+    return "[]";
   }
   
   private String a(byte[] paramArrayOfByte)
   {
-    String str = "";
     if (paramArrayOfByte != null) {}
     try
     {
-      str = new String(paramArrayOfByte, "utf-8");
-      return str;
+      paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
+      return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      MsgBackupUtil.b("MsgBackup", "receivedCompleted String byte transport string error!!!", new Object[0]);
+      label17:
+      break label17;
     }
+    MsgBackupUtil.b("MsgBackup", "receivedCompleted String byte transport string error!!!", new Object[0]);
     return "";
   }
   
@@ -200,8 +203,12 @@ public class MsgBackupTransportProcessor
       ((MsgBackupReportData.FileError)localObject).jdField_c_of_type_Int = 0;
       ((MsgBackupReportData.FileError)localObject).jdField_a_of_type_Int = paramInt;
       MsgBackupReporter.a.a.add(localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "dbMList receivedCompleted  called not success, so again task = " + paramMsgBackupSessionTask);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("dbMList receivedCompleted  called not success, so again task = ");
+        ((StringBuilder)localObject).append(paramMsgBackupSessionTask);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
       }
       if ((!TextUtils.isEmpty(paramMsgBackupSessionTask.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramMsgBackupSessionTask.c))) {
         a(paramLong, paramMsgBackupSessionTask, paramConcurrentHashMap, paramMsgBackupSessionInfo, paramConcurrentHashMap1);
@@ -222,8 +229,16 @@ public class MsgBackupTransportProcessor
   private void a(long paramLong, int paramInt, ConcurrentHashMap<String, MsgBackupSessionInfo> paramConcurrentHashMap, MsgBackupSessionInfo paramMsgBackupSessionInfo, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap1, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap2)
   {
     MsgBackupSessionTask localMsgBackupSessionTask = (MsgBackupSessionTask)paramConcurrentHashMap2.get(Long.valueOf(paramLong));
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "ResReq receivedCompleted  called  task = " + localMsgBackupSessionTask + ", resMList.size = " + paramConcurrentHashMap2.size() + ", errCode = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ResReq receivedCompleted  called  task = ");
+      localStringBuilder.append(localMsgBackupSessionTask);
+      localStringBuilder.append(", resMList.size = ");
+      localStringBuilder.append(paramConcurrentHashMap2.size());
+      localStringBuilder.append(", errCode = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
     }
     if (localMsgBackupSessionTask != null) {
       a(paramLong, paramInt, paramConcurrentHashMap, paramMsgBackupSessionInfo, paramConcurrentHashMap1, paramConcurrentHashMap2, localMsgBackupSessionTask);
@@ -258,25 +273,38 @@ public class MsgBackupTransportProcessor
   
   private void a(long paramLong, String paramString)
   {
-    if (a()) {
-      MsgBackupUtil.b("http get reached! but can not understand this request! session is valid........", new Object[0]);
-    }
-    do
+    if (a())
     {
+      MsgBackupUtil.b("http get reached! but can not understand this request! session is valid........", new Object[0]);
       return;
-      paramString = (String)MsgBackupUtil.a(paramString).get("fid");
-    } while (TextUtils.isEmpty(paramString));
-    long l = Long.parseLong(paramString);
-    MsgBackupUtil.b("http get reached! but can not understand this request! session is valid........", new Object[0]);
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.refuseFileRequest(this.jdField_a_of_type_Long, paramLong, l, "404");
+    }
+    paramString = (String)MsgBackupUtil.a(paramString).get("fid");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      long l = Long.parseLong(paramString);
+      MsgBackupUtil.b("http get reached! but can not understand this request! session is valid........", new Object[0]);
+      this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.refuseFileRequest(this.jdField_a_of_type_Long, paramLong, l, "404");
+    }
   }
   
   private void a(long paramLong1, String paramString1, int paramInt, long paramLong2, ConcurrentHashMap<String, MsgBackupSessionInfo> paramConcurrentHashMap, String paramString2)
   {
     if (!TextUtils.isEmpty(paramString2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted, fid = " + paramLong1 + ", url = " + paramString1 + ", errCode = " + paramInt + ", context = " + paramLong2 + ", recvBuf = " + paramString2);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("receivedCompleted, fid = ");
+        localStringBuilder.append(paramLong1);
+        localStringBuilder.append(", url = ");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(", errCode = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", context = ");
+        localStringBuilder.append(paramLong2);
+        localStringBuilder.append(", recvBuf = ");
+        localStringBuilder.append(paramString2);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
       }
       try
       {
@@ -292,16 +320,16 @@ public class MsgBackupTransportProcessor
           a(paramConcurrentHashMap, paramString1);
           return;
         }
+        if ((paramConcurrentHashMap.size() < MsgBackupManager.jdField_b_of_type_Int) || (MsgBackupManager.jdField_b_of_type_Int <= 0))
+        {
+          MsgBackupUtil.b("client cache is deal completedly! so get next session!", new Object[0]);
+          j(3);
+          return;
+        }
       }
       catch (JSONException paramString1)
       {
         QLog.e("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted parse json error!", paramString1);
-        return;
-      }
-      if ((paramConcurrentHashMap.size() < MsgBackupManager.jdField_b_of_type_Int) || (MsgBackupManager.jdField_b_of_type_Int <= 0))
-      {
-        MsgBackupUtil.b("client cache is deal completedly! so get next session!", new Object[0]);
-        j(3);
       }
     }
   }
@@ -311,110 +339,156 @@ public class MsgBackupTransportProcessor
     paramConcurrentHashMap.remove(Long.valueOf(paramLong1));
     if ((this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null) && (TextUtils.isEmpty(paramString2)))
     {
-      if (a()) {
+      if (a())
+      {
         MsgBackupUtil.b("getRecvBuffer called operator is closed! please clear handler msg!........", new Object[0]);
+        return;
       }
+      a(paramLong1, paramString1, paramInt, paramLong2, paramConcurrentHashMap1, a(paramArrayOfByte));
     }
-    else {
-      return;
-    }
-    a(paramLong1, paramString1, paramInt, paramLong2, paramConcurrentHashMap1, a(paramArrayOfByte));
   }
   
   private void a(long paramLong, String paramString, int paramInt, boolean paramBoolean)
   {
-    if (a()) {
+    if (a())
+    {
       MsgBackupUtil.b("requestFromFile called------> operator is closed! please clear handler msg!........", new Object[0]);
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy == null) {
       return;
     }
-    long l = MsgBackupUtil.a();
-    String str1 = MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue());
-    String str2 = "getmsg?fid=" + l + "&chatUin=" + paramString + "&chatType=" + MsgBackupUtil.b(paramInt);
-    str1 = str1 + MsgBackupUtil.b(str2, this.jdField_a_of_type_JavaLangString);
-    str2 = MsgBackupUtil.a(paramString, MsgBackupUtil.b(paramInt), null);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestFromFile fid = " + l + ", url = " + str1 + ", path = " + str2);
-    }
-    MsgBackupSessionTask localMsgBackupSessionTask = new MsgBackupSessionTask();
-    localMsgBackupSessionTask.jdField_a_of_type_Boolean = true;
-    localMsgBackupSessionTask.jdField_a_of_type_Short = 0;
-    localMsgBackupSessionTask.jdField_b_of_type_JavaLangString = str2;
-    localMsgBackupSessionTask.c = str1;
-    paramString = MsgBackupUtil.b(paramString, MsgBackupUtil.b(paramInt));
-    ConcurrentHashMap localConcurrentHashMap = MsgBackupManager.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
-    MsgBackupReporter.a();
-    Object localObject = MsgBackupReporter.a;
-    ((MsgBackupReportData)localObject).m += 1L;
-    localObject = (MsgBackupSessionInfo)localConcurrentHashMap.get(paramString);
-    if (localObject != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null)
     {
-      ((MsgBackupSessionInfo)localObject).jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(l), localMsgBackupSessionTask);
-      localMsgBackupSessionTask.jdField_b_of_type_Long = ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Long;
-      localMsgBackupSessionTask.jdField_b_of_type_Boolean = MsgBackupUtil.a(((MsgBackupSessionInfo)localObject).jdField_a_of_type_Long);
-      MsgBackupReportData localMsgBackupReportData = MsgBackupReporter.a;
-      localMsgBackupReportData.f += localMsgBackupSessionTask.jdField_b_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestFromFile , sessionInfo.dbMList = " + ((MsgBackupSessionInfo)localObject).jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap + ". sessionInfo.hashcode = " + localObject.hashCode() + ", task.isSmallerFile = " + localMsgBackupSessionTask.jdField_b_of_type_Boolean);
+      long l = MsgBackupUtil.a();
+      String str = MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue());
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getmsg?fid=");
+      ((StringBuilder)localObject1).append(l);
+      ((StringBuilder)localObject1).append("&chatUin=");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("&chatType=");
+      ((StringBuilder)localObject1).append(MsgBackupUtil.b(paramInt));
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(str);
+      ((StringBuilder)localObject2).append(MsgBackupUtil.b((String)localObject1, this.jdField_a_of_type_JavaLangString));
+      str = ((StringBuilder)localObject2).toString();
+      localObject1 = MsgBackupUtil.a(paramString, MsgBackupUtil.b(paramInt), null);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("requestFromFile fid = ");
+        ((StringBuilder)localObject2).append(l);
+        ((StringBuilder)localObject2).append(", url = ");
+        ((StringBuilder)localObject2).append(str);
+        ((StringBuilder)localObject2).append(", path = ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject2).toString());
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestFromFile fid = " + l + ", mClientCanRecvMList = " + localConcurrentHashMap + ", keyFromUin = " + paramString + ", task.isSmallerFile = " + localMsgBackupSessionTask.jdField_b_of_type_Boolean);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(paramLong, l, str1, str2, localMsgBackupSessionTask.jdField_b_of_type_Boolean, localMsgBackupSessionTask.jdField_b_of_type_Long, false);
-    boolean bool = this.jdField_a_of_type_Boolean;
-    if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
+      localObject2 = new MsgBackupSessionTask();
+      ((MsgBackupSessionTask)localObject2).jdField_a_of_type_Boolean = true;
+      ((MsgBackupSessionTask)localObject2).jdField_a_of_type_Short = 0;
+      ((MsgBackupSessionTask)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1);
+      ((MsgBackupSessionTask)localObject2).c = str;
+      paramString = MsgBackupUtil.b(paramString, MsgBackupUtil.b(paramInt));
+      ConcurrentHashMap localConcurrentHashMap = MsgBackupManager.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
+      MsgBackupReporter.a();
+      Object localObject3 = MsgBackupReporter.a;
+      ((MsgBackupReportData)localObject3).m += 1L;
+      localObject3 = (MsgBackupSessionInfo)localConcurrentHashMap.get(paramString);
+      if (localObject3 != null)
+      {
+        ((MsgBackupSessionInfo)localObject3).jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(l), localObject2);
+        ((MsgBackupSessionTask)localObject2).jdField_b_of_type_Long = ((MsgBackupSessionInfo)localObject3).jdField_a_of_type_Long;
+        ((MsgBackupSessionTask)localObject2).jdField_b_of_type_Boolean = MsgBackupUtil.a(((MsgBackupSessionInfo)localObject3).jdField_a_of_type_Long);
+        Object localObject4 = MsgBackupReporter.a;
+        ((MsgBackupReportData)localObject4).f += ((MsgBackupSessionTask)localObject2).jdField_b_of_type_Long;
+        if (QLog.isColorLevel())
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("requestFromFile , sessionInfo.dbMList = ");
+          ((StringBuilder)localObject4).append(((MsgBackupSessionInfo)localObject3).jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap);
+          ((StringBuilder)localObject4).append(". sessionInfo.hashcode = ");
+          ((StringBuilder)localObject4).append(localObject3.hashCode());
+          ((StringBuilder)localObject4).append(", task.isSmallerFile = ");
+          ((StringBuilder)localObject4).append(((MsgBackupSessionTask)localObject2).jdField_b_of_type_Boolean);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject4).toString());
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("requestFromFile fid = ");
+        ((StringBuilder)localObject3).append(l);
+        ((StringBuilder)localObject3).append(", mClientCanRecvMList = ");
+        ((StringBuilder)localObject3).append(localConcurrentHashMap);
+        ((StringBuilder)localObject3).append(", keyFromUin = ");
+        ((StringBuilder)localObject3).append(paramString);
+        ((StringBuilder)localObject3).append(", task.isSmallerFile = ");
+        ((StringBuilder)localObject3).append(((MsgBackupSessionTask)localObject2).jdField_b_of_type_Boolean);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject3).toString());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(paramLong, l, str, (String)localObject1, ((MsgBackupSessionTask)localObject2).jdField_b_of_type_Boolean, ((MsgBackupSessionTask)localObject2).jdField_b_of_type_Long, false);
+      boolean bool = this.jdField_a_of_type_Boolean;
+      paramBoolean = false;
+      if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
+        paramBoolean = true;
+      }
       MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "requestFromFile isTransportStart = %b, mCallBack is not null = %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
-      if ((this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback == null) || (this.jdField_a_of_type_Boolean)) {
-        break;
+      paramString = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+      if ((paramString != null) && (!this.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        paramString.c(true);
       }
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.c(true);
-      return;
     }
   }
   
   private void a(long paramLong, String paramString, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached success, url = " + paramString);
-    }
-    if (a()) {
-      MsgBackupUtil.b("getres onSendComplete operator is closed! please clear handler msg!........", new Object[0]);
-    }
-    Object localObject;
-    do
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("httpGetReached success, url = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
+    }
+    if (a())
+    {
+      MsgBackupUtil.b("getres onSendComplete operator is closed! please clear handler msg!........", new Object[0]);
       return;
-      localObject = MsgBackupReporter.a;
-      ((MsgBackupReportData)localObject).jdField_d_of_type_Long += 1L;
-      localObject = MsgBackupReporter.a;
-      ((MsgBackupReportData)localObject).g += 1L;
-      paramString = MsgBackupUtil.a(paramString);
-      long l = Long.parseLong((String)paramString.get("fid"));
-      localObject = (String)paramString.get("filepath");
-      MsgBackupUtil.b("res url parse fid = %d,filepath = %s", new Object[] { Long.valueOf(l), localObject });
-      paramString = (String)localObject;
-      if (MsgBackupUtil.jdField_c_of_type_Boolean) {
-        paramString = Uri.decode((String)localObject);
-      }
-      MsgBackupUtil.b("res url parse fid = %d,filepath = %s", new Object[] { Long.valueOf(l), paramString });
-      localObject = new MsgBackupReportData.ServerFileDetail();
-      ((MsgBackupReportData.ServerFileDetail)localObject).jdField_a_of_type_Boolean = false;
-      ((MsgBackupReportData.ServerFileDetail)localObject).jdField_a_of_type_Long = 0L;
-      MsgBackupManager.a().e.put(Long.valueOf(l), localObject);
-      localObject = new MsgBackupSessionTask();
-      ((MsgBackupSessionTask)localObject).jdField_a_of_type_Short = 0;
-      ((MsgBackupSessionTask)localObject).jdField_a_of_type_Boolean = true;
-      ((MsgBackupSessionTask)localObject).jdField_b_of_type_JavaLangString = MsgBackupUtil.a(paramString);
-      ((MsgBackupSessionTask)localObject).jdField_a_of_type_Long = paramLong;
-      paramConcurrentHashMap.put(Long.valueOf(l), localObject);
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramLong, l, ((MsgBackupSessionTask)localObject).jdField_b_of_type_JavaLangString);
-    } while (!QLog.isColorLevel());
-    QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onHttpRequest, send res file, fileRes path = " + ((MsgBackupSessionTask)localObject).jdField_b_of_type_JavaLangString + ", mFidMList.size = " + paramConcurrentHashMap.size());
+    }
+    Object localObject = MsgBackupReporter.a;
+    ((MsgBackupReportData)localObject).jdField_d_of_type_Long += 1L;
+    localObject = MsgBackupReporter.a;
+    ((MsgBackupReportData)localObject).g += 1L;
+    paramString = MsgBackupUtil.a(paramString);
+    long l = Long.parseLong((String)paramString.get("fid"));
+    localObject = (String)paramString.get("filepath");
+    MsgBackupUtil.b("res url parse fid = %d,filepath = %s", new Object[] { Long.valueOf(l), localObject });
+    paramString = (String)localObject;
+    if (MsgBackupUtil.jdField_c_of_type_Boolean) {
+      paramString = Uri.decode((String)localObject);
+    }
+    MsgBackupUtil.b("res url parse fid = %d,filepath = %s", new Object[] { Long.valueOf(l), paramString });
+    localObject = new MsgBackupReportData.ServerFileDetail();
+    ((MsgBackupReportData.ServerFileDetail)localObject).jdField_a_of_type_Boolean = false;
+    ((MsgBackupReportData.ServerFileDetail)localObject).jdField_a_of_type_Long = 0L;
+    MsgBackupManager.a().e.put(Long.valueOf(l), localObject);
+    localObject = new MsgBackupSessionTask();
+    ((MsgBackupSessionTask)localObject).jdField_a_of_type_Short = 0;
+    ((MsgBackupSessionTask)localObject).jdField_a_of_type_Boolean = true;
+    ((MsgBackupSessionTask)localObject).jdField_b_of_type_JavaLangString = MsgBackupUtil.a(paramString);
+    ((MsgBackupSessionTask)localObject).jdField_a_of_type_Long = paramLong;
+    paramConcurrentHashMap.put(Long.valueOf(l), localObject);
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramLong, l, ((MsgBackupSessionTask)localObject).jdField_b_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("onHttpRequest, send res file, fileRes path = ");
+      paramString.append(((MsgBackupSessionTask)localObject).jdField_b_of_type_JavaLangString);
+      paramString.append(", mFidMList.size = ");
+      paramString.append(paramConcurrentHashMap.size());
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramString.toString());
+    }
   }
   
   private void a(long paramLong, String paramString, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap1, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap2)
@@ -422,12 +496,24 @@ public class MsgBackupTransportProcessor
     paramConcurrentHashMap1.remove(Long.valueOf(paramLong));
     if (paramString.endsWith(".db"))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted db success, path = " + paramString + ", dbMList.size = " + paramConcurrentHashMap1.size() + ", resMList.size = " + paramConcurrentHashMap2.size());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("receivedCompleted db success, path = ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(", dbMList.size = ");
+        localStringBuilder.append(paramConcurrentHashMap1.size());
+        localStringBuilder.append(", resMList.size = ");
+        localStringBuilder.append(paramConcurrentHashMap2.size());
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
       }
       paramConcurrentHashMap1 = paramString.substring(paramString.lastIndexOf("/") + 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted db success, dbName = " + paramConcurrentHashMap1);
+      if (QLog.isColorLevel())
+      {
+        paramConcurrentHashMap2 = new StringBuilder();
+        paramConcurrentHashMap2.append("receivedCompleted db success, dbName = ");
+        paramConcurrentHashMap2.append(paramConcurrentHashMap1);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap2.toString());
       }
       paramConcurrentHashMap1 = new MsgBackupRequest();
       paramConcurrentHashMap1.jdField_a_of_type_Int = 1;
@@ -443,8 +529,14 @@ public class MsgBackupTransportProcessor
     localMsgBackupSessionTask.jdField_a_of_type_Boolean = false;
     localMsgBackupSessionTask.jdField_a_of_type_JavaLangString = paramString;
     localMsgBackupSessionTask.jdField_a_of_type_Long = paramLong1;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "sendPreparedSession  postinfo httpGetReached, client request server's already session, fid = " + paramLong2 + ", msg = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendPreparedSession  postinfo httpGetReached, client request server's already session, fid = ");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(", msg = ");
+      localStringBuilder.append(paramString);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
     }
     paramConcurrentHashMap.put(Long.valueOf(paramLong2), localMsgBackupSessionTask);
     this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.b(this.jdField_a_of_type_Long, paramLong1, paramLong2, paramString);
@@ -452,7 +544,14 @@ public class MsgBackupTransportProcessor
   
   private void a(long paramLong, ConcurrentHashMap<String, MsgBackupSessionInfo> paramConcurrentHashMap, MsgBackupSessionInfo arg4, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap1, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap2, MsgBackupSessionTask paramMsgBackupSessionTask)
   {
-    QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "isTcpDetected = " + this.jdField_d_of_type_Boolean + ", isResRequestAllFinished" + ???.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", resReq fileTask receivedCompleted retry over time task = " + paramMsgBackupSessionTask);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isTcpDetected = ");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(", isResRequestAllFinished");
+    localStringBuilder.append(???.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+    localStringBuilder.append(", resReq fileTask receivedCompleted retry over time task = ");
+    localStringBuilder.append(paramMsgBackupSessionTask);
+    QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
     paramConcurrentHashMap2.remove(Long.valueOf(paramLong));
     int i = paramConcurrentHashMap2.size();
     int j = paramConcurrentHashMap1.size();
@@ -460,89 +559,111 @@ public class MsgBackupTransportProcessor
     {
       ???.jdField_c_of_type_Boolean = true;
       a(???);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "last session transport completed!, uin = " + MsgBackupManager.jdField_d_of_type_JavaLangString + ", uintype = " + MsgBackupManager.jdField_c_of_type_Int + ", task = " + paramMsgBackupSessionTask);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ???.append("last session transport completed!, uin = ");
+        ???.append(MsgBackupManager.jdField_d_of_type_JavaLangString);
+        ???.append(", uintype = ");
+        ???.append(MsgBackupManager.jdField_c_of_type_Int);
+        ???.append(", task = ");
+        ???.append(paramMsgBackupSessionTask);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ???.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "mclient will get db mClientCanRecvMList.size = " + paramConcurrentHashMap.size());
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ???.append("mclient will get db mClientCanRecvMList.size = ");
+        ???.append(paramConcurrentHashMap.size());
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ???.toString());
       }
-    }
-    label324:
-    for (;;)
-    {
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         paramConcurrentHashMap = paramConcurrentHashMap.values().iterator();
         i = 0;
-        if (paramConcurrentHashMap.hasNext())
-        {
-          if (!((MsgBackupSessionInfo)paramConcurrentHashMap.next()).jdField_c_of_type_Boolean) {
-            break label324;
+        while (paramConcurrentHashMap.hasNext()) {
+          if (((MsgBackupSessionInfo)paramConcurrentHashMap.next()).jdField_c_of_type_Boolean) {
+            i += 1;
           }
-          i += 1;
-          break label324;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
+        paramConcurrentHashMap = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+        if (paramConcurrentHashMap != null) {
+          paramConcurrentHashMap.a(i, MsgBackupManager.jdField_b_of_type_Int);
         }
         if (i == MsgBackupManager.jdField_b_of_type_Int) {
           return;
         }
-      }
-      if (!a(2))
-      {
-        MsgBackupUtil.b("this session res has received! over time  so get next session!", new Object[0]);
-        j(3);
-        return;
+        if (!a(2))
+        {
+          MsgBackupUtil.b("this session res has received! over time  so get next session!", new Object[0]);
+          j(3);
+          return;
+        }
       }
     }
   }
   
   private void a(long paramLong, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap, MsgBackupSessionTask paramMsgBackupSessionTask)
   {
+    StringBuilder localStringBuilder;
     if (paramMsgBackupSessionTask.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "mfidMlist fileTask receivedCompleted  called not success, so again task = " + paramMsgBackupSessionTask);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mfidMlist fileTask receivedCompleted  called not success, so again task = ");
+        localStringBuilder.append(paramMsgBackupSessionTask);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
       }
       if ((!TextUtils.isEmpty(paramMsgBackupSessionTask.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramMsgBackupSessionTask.c)))
       {
-        if (paramMsgBackupSessionTask.jdField_a_of_type_Short <= 3) {
-          break label109;
+        if (paramMsgBackupSessionTask.jdField_a_of_type_Short > 3)
+        {
+          paramConcurrentHashMap.remove(Long.valueOf(paramLong));
+          paramConcurrentHashMap = new StringBuilder();
+          paramConcurrentHashMap.append(" mfidMlist fileTask receivedCompleted retry over time task = ");
+          paramConcurrentHashMap.append(paramMsgBackupSessionTask);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap.toString());
+          return;
         }
-        paramConcurrentHashMap.remove(Long.valueOf(paramLong));
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, " mfidMlist fileTask receivedCompleted retry over time task = " + paramMsgBackupSessionTask);
+        if (a())
+        {
+          MsgBackupUtil.b("recvFile panic error! mfidMlist fileTask receivedCompleted", new Object[0]);
+          return;
+        }
+        paramMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(paramMsgBackupSessionTask.jdField_a_of_type_Short + 1));
+        this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramLong, paramMsgBackupSessionTask.c, paramMsgBackupSessionTask.jdField_b_of_type_JavaLangString, paramMsgBackupSessionTask.jdField_b_of_type_Boolean, paramMsgBackupSessionTask.jdField_b_of_type_Long, true);
       }
     }
-    label109:
-    do
+    else
     {
-      return;
-      if (a())
+      if (QLog.isColorLevel())
       {
-        MsgBackupUtil.b("recvFile panic error! mfidMlist fileTask receivedCompleted", new Object[0]);
-        return;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("receivedCompleted mfidMlist called not success, so again task = ");
+        localStringBuilder.append(paramMsgBackupSessionTask);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
       }
-      paramMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(paramMsgBackupSessionTask.jdField_a_of_type_Short + 1));
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramLong, paramMsgBackupSessionTask.c, paramMsgBackupSessionTask.jdField_b_of_type_JavaLangString, paramMsgBackupSessionTask.jdField_b_of_type_Boolean, paramMsgBackupSessionTask.jdField_b_of_type_Long, true);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted mfidMlist called not success, so again task = " + paramMsgBackupSessionTask);
+      if (!TextUtils.isEmpty(paramMsgBackupSessionTask.c))
+      {
+        if (paramMsgBackupSessionTask.jdField_a_of_type_Short > 3)
+        {
+          paramConcurrentHashMap.remove(Long.valueOf(paramLong));
+          paramConcurrentHashMap = new StringBuilder();
+          paramConcurrentHashMap.append("receivedCompleted mfidMlist retry over time task = ");
+          paramConcurrentHashMap.append(paramMsgBackupSessionTask);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap.toString());
+          return;
+        }
+        if (a())
+        {
+          MsgBackupUtil.b("receivedCompleted mfidMlist  operator is closed! please clear handler msg!........", new Object[0]);
+          return;
+        }
+        paramMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(paramMsgBackupSessionTask.jdField_a_of_type_Short + 1));
+        this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramLong, paramMsgBackupSessionTask.c);
       }
-    } while (TextUtils.isEmpty(paramMsgBackupSessionTask.c));
-    if (paramMsgBackupSessionTask.jdField_a_of_type_Short > 3)
-    {
-      paramConcurrentHashMap.remove(Long.valueOf(paramLong));
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted mfidMlist retry over time task = " + paramMsgBackupSessionTask);
-      return;
     }
-    if (a())
-    {
-      MsgBackupUtil.b("receivedCompleted mfidMlist  operator is closed! please clear handler msg!........", new Object[0]);
-      return;
-    }
-    paramMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(paramMsgBackupSessionTask.jdField_a_of_type_Short + 1));
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramLong, paramMsgBackupSessionTask.c);
   }
   
   private void a(long paramLong, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap, Map<String, String> paramMap)
@@ -560,52 +681,64 @@ public class MsgBackupTransportProcessor
   {
     if (???.size() >= 3)
     {
-      if (a()) {
-        MsgBackupUtil.b("httpGetReached postinfo operator is closed! please clear handler msg!........", new Object[0]);
-      }
-    }
-    else {
-      return;
-    }
-    long l = Long.parseLong((String)???.get("fid"));
-    String str = (String)???.get("chatUin");
-    int i = Integer.parseInt((String)???.get("chatType"));
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached: client report 会话 uin =" + str + " 接收完成, chatType = " + i + "：mServerReadyMList.size = " + paramConcurrentHashMap1.size());
-    }
-    ??? = (MsgBackupSessionInfo)paramConcurrentHashMap1.get(MsgBackupUtil.b(str, i));
-    if (??? != null)
-    {
-      ???.jdField_c_of_type_Boolean = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback == null) {}
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      boolean bool = a();
+      int i = 0;
+      if (bool)
       {
-        paramConcurrentHashMap1 = paramConcurrentHashMap1.values().iterator();
-        i = 0;
-        if (paramConcurrentHashMap1.hasNext())
-        {
-          if (((MsgBackupSessionInfo)paramConcurrentHashMap1.next()).jdField_c_of_type_Boolean) {
-            i += 1;
+        MsgBackupUtil.b("httpGetReached postinfo operator is closed! please clear handler msg!........", new Object[0]);
+        return;
+      }
+      long l = Long.parseLong((String)???.get("fid"));
+      String str = (String)???.get("chatUin");
+      int j = Integer.parseInt((String)???.get("chatType"));
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ???.append("httpGetReached: client report 会话 uin =");
+        ???.append(str);
+        ???.append(" 接收完成, chatType = ");
+        ???.append(j);
+        ???.append("：mServerReadyMList.size = ");
+        ???.append(paramConcurrentHashMap1.size());
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ???.toString());
+      }
+      ??? = (MsgBackupSessionInfo)paramConcurrentHashMap1.get(MsgBackupUtil.b(str, j));
+      if (??? != null)
+      {
+        ???.jdField_c_of_type_Boolean = true;
+        if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
+          synchronized (this.jdField_a_of_type_JavaLangObject)
+          {
+            paramConcurrentHashMap1 = paramConcurrentHashMap1.values().iterator();
+            while (paramConcurrentHashMap1.hasNext()) {
+              if (((MsgBackupSessionInfo)paramConcurrentHashMap1.next()).jdField_c_of_type_Boolean) {
+                i += 1;
+              }
+            }
+            if (QLog.isColorLevel())
+            {
+              paramConcurrentHashMap1 = new StringBuilder();
+              paramConcurrentHashMap1.append("httpGetReached: client report session completed! hasCompletedCount = ");
+              paramConcurrentHashMap1.append(i);
+              QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap1.toString());
+            }
+            paramConcurrentHashMap1 = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+            if (paramConcurrentHashMap1 != null) {
+              paramConcurrentHashMap1.a(i, MsgBackupManager.jdField_b_of_type_Int);
+            }
+            i = MsgBackupManager.jdField_b_of_type_Int;
           }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached: client report session completed! hasCompletedCount = " + i);
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-            this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
-          }
-          if ((i != MsgBackupManager.jdField_b_of_type_Int) || (QLog.isColorLevel())) {
-            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached, client report session transport completed! fid = " + l + ", msg = []");
-          }
-          a(paramLong, paramConcurrentHashMap, l, a(l, 3));
-          return;
         }
       }
+      if (QLog.isColorLevel())
+      {
+        paramConcurrentHashMap1 = new StringBuilder();
+        paramConcurrentHashMap1.append("httpGetReached, client report session transport completed! fid = ");
+        paramConcurrentHashMap1.append(l);
+        paramConcurrentHashMap1.append(", msg = []");
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap1.toString());
+      }
+      a(paramLong, paramConcurrentHashMap, l, a(l, 3));
     }
   }
   
@@ -636,8 +769,16 @@ public class MsgBackupTransportProcessor
         ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Long = l;
         ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Int = MsgBackupUtil.c(j);
         paramConcurrentHashMap.put(MsgBackupUtil.b(((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaLangString, j), localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted  会话 uin =" + str + ", uintype = " + ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Int + "：mClientCanRecvMList.size = " + paramConcurrentHashMap.size());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("receivedCompleted  会话 uin =");
+          localStringBuilder.append(str);
+          localStringBuilder.append(", uintype = ");
+          localStringBuilder.append(((MsgBackupSessionInfo)localObject).jdField_a_of_type_Int);
+          localStringBuilder.append("：mClientCanRecvMList.size = ");
+          localStringBuilder.append(paramConcurrentHashMap.size());
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
         }
       }
       i += 1;
@@ -650,29 +791,41 @@ public class MsgBackupTransportProcessor
     MsgBackupManager.jdField_b_of_type_Int = paramJSONObject.optInt("listCount");
     MsgBackupReporter.a();
     MsgBackupReporter.a.jdField_b_of_type_Long = MsgBackupManager.jdField_b_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted, 会话总个数：MsgBackupManager.sessionCount = " + MsgBackupManager.jdField_b_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("receivedCompleted, 会话总个数：MsgBackupManager.sessionCount = ");
+      paramJSONObject.append(MsgBackupManager.jdField_b_of_type_Int);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramJSONObject.toString());
     }
     int i = 1;
     while (i < paramJSONArray.length())
     {
-      Object localObject = (JSONObject)paramJSONArray.get(i);
-      if ("chat_ready".equals(((JSONObject)localObject).optString("cmd")))
+      Object localObject1 = (JSONObject)paramJSONArray.get(i);
+      if ("chat_ready".equals(((JSONObject)localObject1).optString("cmd")))
       {
-        paramJSONObject = ((JSONObject)localObject).optString("chatUin");
-        int j = ((JSONObject)localObject).optInt("chatType");
-        long l = ((JSONObject)localObject).optLong("dbSize");
-        localObject = new MsgBackupSessionInfo();
-        ((MsgBackupSessionInfo)localObject).jdField_b_of_type_Boolean = false;
-        ((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaLangString = paramJSONObject;
-        ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Int = MsgBackupUtil.c(j);
-        ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Long = l;
-        String str = MsgBackupUtil.b(((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaLangString, j);
-        if (paramConcurrentHashMap.get(str) == null) {
-          paramConcurrentHashMap.put(str, localObject);
+        paramJSONObject = ((JSONObject)localObject1).optString("chatUin");
+        int j = ((JSONObject)localObject1).optInt("chatType");
+        long l = ((JSONObject)localObject1).optLong("dbSize");
+        localObject1 = new MsgBackupSessionInfo();
+        ((MsgBackupSessionInfo)localObject1).jdField_b_of_type_Boolean = false;
+        ((MsgBackupSessionInfo)localObject1).jdField_a_of_type_JavaLangString = paramJSONObject;
+        ((MsgBackupSessionInfo)localObject1).jdField_a_of_type_Int = MsgBackupUtil.c(j);
+        ((MsgBackupSessionInfo)localObject1).jdField_a_of_type_Long = l;
+        Object localObject2 = MsgBackupUtil.b(((MsgBackupSessionInfo)localObject1).jdField_a_of_type_JavaLangString, j);
+        if (paramConcurrentHashMap.get(localObject2) == null) {
+          paramConcurrentHashMap.put(localObject2, localObject1);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted  会话 uin =" + paramJSONObject + ", uintype = " + ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Int + "：mClientCanRecvMList= " + paramConcurrentHashMap);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("receivedCompleted  会话 uin =");
+          ((StringBuilder)localObject2).append(paramJSONObject);
+          ((StringBuilder)localObject2).append(", uintype = ");
+          ((StringBuilder)localObject2).append(((MsgBackupSessionInfo)localObject1).jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append("：mClientCanRecvMList= ");
+          ((StringBuilder)localObject2).append(paramConcurrentHashMap);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject2).toString());
         }
       }
       i += 1;
@@ -690,8 +843,14 @@ public class MsgBackupTransportProcessor
       paramMap.jdField_a_of_type_Boolean = false;
       paramMap.jdField_a_of_type_JavaLangString = "[]";
       paramMap.jdField_a_of_type_Long = paramLong;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached, postinfo ui is not ready!" + l + ", msg = " + "[]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("httpGetReached, postinfo ui is not ready!");
+        localStringBuilder.append(l);
+        localStringBuilder.append(", msg = ");
+        localStringBuilder.append("[]");
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
       }
       paramConcurrentHashMap.put(Long.valueOf(l), paramMap);
       this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.b(this.jdField_a_of_type_Long, paramLong, l, "[]");
@@ -704,111 +863,141 @@ public class MsgBackupTransportProcessor
   {
     Iterator localIterator = paramConcurrentHashMap.values().iterator();
     int i = 0;
-    MsgBackupSessionInfo localMsgBackupSessionInfo;
-    for (;;)
+    boolean bool1;
+    int j;
+    Object localObject;
+    do
     {
-      if (localIterator.hasNext())
+      do
       {
-        localMsgBackupSessionInfo = (MsgBackupSessionInfo)localIterator.next();
-        if (!localMsgBackupSessionInfo.jdField_b_of_type_Boolean) {
-          if (localMsgBackupSessionInfo.jdField_a_of_type_Long <= 0L)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, " requestNextSessionDb !, curDealUin is not null! dbsize 等于 0 ！客户端不会去请求了，只是通知server端，该会话已经接受完成了！uin = " + localMsgBackupSessionInfo.jdField_a_of_type_JavaLangString + ", uintype = " + localMsgBackupSessionInfo.jdField_a_of_type_Int + ", dbsize = " + localMsgBackupSessionInfo.jdField_a_of_type_Long);
-            }
-            localMsgBackupSessionInfo.jdField_c_of_type_Boolean = true;
-            localMsgBackupSessionInfo.jdField_b_of_type_Boolean = true;
-            a(localMsgBackupSessionInfo);
-            if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback == null) {
-              continue;
-            }
-            i = a(paramConcurrentHashMap);
-            if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-              this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
-            }
-            if (i == MsgBackupManager.jdField_b_of_type_Int) {
-              MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "curDealUin is not null! session transport completed! dbSize is 0!------------->", new Object[0]);
-            }
+        do
+        {
+          boolean bool2 = localIterator.hasNext();
+          bool1 = true;
+          j = i;
+          if (!bool2) {
+            break;
           }
+          localObject = (MsgBackupSessionInfo)localIterator.next();
+        } while (((MsgBackupSessionInfo)localObject).jdField_b_of_type_Boolean);
+        if (((MsgBackupSessionInfo)localObject).jdField_a_of_type_Long > 0L) {
+          break;
         }
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" requestNextSessionDb !, curDealUin is not null! dbsize 等于 0 ！客户端不会去请求了，只是通知server端，该会话已经接受完成了！uin = ");
+          localStringBuilder.append(((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(", uintype = ");
+          localStringBuilder.append(((MsgBackupSessionInfo)localObject).jdField_a_of_type_Int);
+          localStringBuilder.append(", dbsize = ");
+          localStringBuilder.append(((MsgBackupSessionInfo)localObject).jdField_a_of_type_Long);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+        }
+        ((MsgBackupSessionInfo)localObject).jdField_c_of_type_Boolean = true;
+        ((MsgBackupSessionInfo)localObject).jdField_b_of_type_Boolean = true;
+        a((MsgBackupSessionInfo)localObject);
+      } while (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback == null);
+      j = a(paramConcurrentHashMap);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+      if (localObject != null) {
+        ((IMsgBackupUICallback)localObject).a(j, MsgBackupManager.jdField_b_of_type_Int);
       }
+      i = j;
+    } while (j != MsgBackupManager.jdField_b_of_type_Int);
+    MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "curDealUin is not null! session transport completed! dbSize is 0!------------->", new Object[0]);
+    break label398;
+    i = a(paramConcurrentHashMap);
+    paramConcurrentHashMap = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+    if (paramConcurrentHashMap != null) {
+      paramConcurrentHashMap.a(i, MsgBackupManager.jdField_b_of_type_Int);
+    }
+    if (i == MsgBackupManager.jdField_b_of_type_Int) {
+      MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "curDealUin is not null! session transport completed!------------->", new Object[0]);
     }
     for (;;)
     {
-      if ((!paramBoolean) && (i != MsgBackupManager.jdField_b_of_type_Int))
-      {
-        j(5);
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestNextSessionDb called with warning step2 , , hasFinishedC = " + i);
-        }
-      }
-      return paramBoolean;
       break;
-      i = a(paramConcurrentHashMap);
-      if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
-      }
-      if (i == MsgBackupManager.jdField_b_of_type_Int)
+      ((MsgBackupSessionInfo)localObject).jdField_b_of_type_Boolean = true;
+      MsgBackupManager.jdField_d_of_type_JavaLangString = ((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaLangString;
+      MsgBackupManager.jdField_c_of_type_Int = ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Int;
+      if (QLog.isColorLevel())
       {
-        MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "curDealUin is not null! session transport completed!------------->", new Object[0]);
+        paramConcurrentHashMap = new StringBuilder();
+        paramConcurrentHashMap.append(" requestNextSessionDb !, current uin = ");
+        paramConcurrentHashMap.append(MsgBackupManager.jdField_d_of_type_JavaLangString);
+        paramConcurrentHashMap.append(", uintype = ");
+        paramConcurrentHashMap.append(MsgBackupManager.jdField_c_of_type_Int);
+        paramConcurrentHashMap.append(", dbsize = ");
+        paramConcurrentHashMap.append(((MsgBackupSessionInfo)localObject).jdField_a_of_type_Long);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap.toString());
       }
-      else
+      a(this.jdField_a_of_type_Long, ((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaLangString, ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Int, false);
+      paramBoolean = bool1;
+    }
+    label398:
+    i = j;
+    if ((!paramBoolean) && (i != MsgBackupManager.jdField_b_of_type_Int))
+    {
+      j(5);
+      if (QLog.isColorLevel())
       {
-        localMsgBackupSessionInfo.jdField_b_of_type_Boolean = true;
-        MsgBackupManager.jdField_d_of_type_JavaLangString = localMsgBackupSessionInfo.jdField_a_of_type_JavaLangString;
-        MsgBackupManager.jdField_c_of_type_Int = localMsgBackupSessionInfo.jdField_a_of_type_Int;
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, " requestNextSessionDb !, current uin = " + MsgBackupManager.jdField_d_of_type_JavaLangString + ", uintype = " + MsgBackupManager.jdField_c_of_type_Int + ", dbsize = " + localMsgBackupSessionInfo.jdField_a_of_type_Long);
-        }
-        a(this.jdField_a_of_type_Long, localMsgBackupSessionInfo.jdField_a_of_type_JavaLangString, localMsgBackupSessionInfo.jdField_a_of_type_Int, false);
-        paramBoolean = true;
+        paramConcurrentHashMap = new StringBuilder();
+        paramConcurrentHashMap.append("requestNextSessionDb called with warning step2 , , hasFinishedC = ");
+        paramConcurrentHashMap.append(i);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap.toString());
       }
     }
+    return paramBoolean;
   }
   
   private void b(long paramLong, int paramInt, ConcurrentHashMap<String, MsgBackupSessionInfo> paramConcurrentHashMap, MsgBackupSessionInfo paramMsgBackupSessionInfo, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap1, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap2, MsgBackupSessionTask paramMsgBackupSessionTask)
   {
-    Object localObject;
     if (paramMsgBackupSessionTask.jdField_a_of_type_Boolean)
     {
       MsgBackupReporter.a();
-      localObject = MsgBackupReporter.a;
+      Object localObject = MsgBackupReporter.a;
       ((MsgBackupReportData)localObject).h += 1L;
       localObject = MsgBackupReporter.a;
       ((MsgBackupReportData)localObject).r += 1L;
       localObject = new MsgBackupReportData.FileError();
-      if (!MsgBackupManager.a().jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(Long.valueOf(paramLong))) {
-        break label218;
+      if (MsgBackupManager.a().jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.contains(Long.valueOf(paramLong)))
+      {
+        MsgBackupReportData localMsgBackupReportData = MsgBackupReporter.a;
+        localMsgBackupReportData.k += 1L;
+        MsgBackupManager.a().jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(Long.valueOf(paramLong));
+        ((MsgBackupReportData.FileError)localObject).jdField_c_of_type_Int = 2;
       }
-      MsgBackupReportData localMsgBackupReportData = MsgBackupReporter.a;
-      localMsgBackupReportData.k += 1L;
-      MsgBackupManager.a().jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(Long.valueOf(paramLong));
-    }
-    label218:
-    for (((MsgBackupReportData.FileError)localObject).jdField_c_of_type_Int = 2;; ((MsgBackupReportData.FileError)localObject).jdField_c_of_type_Int = 1)
-    {
+      else
+      {
+        ((MsgBackupReportData.FileError)localObject).jdField_c_of_type_Int = 1;
+      }
       ((MsgBackupReportData.FileError)localObject).jdField_b_of_type_Int = 2;
       ((MsgBackupReportData.FileError)localObject).jdField_a_of_type_Int = paramInt;
       MsgBackupReporter.a.a.add(localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "resReq fileTask receivedCompleted  called not success, so again task = " + paramMsgBackupSessionTask);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("resReq fileTask receivedCompleted  called not success, so again task = ");
+        ((StringBuilder)localObject).append(paramMsgBackupSessionTask);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
       }
       if ((!TextUtils.isEmpty(paramMsgBackupSessionTask.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramMsgBackupSessionTask.c)))
       {
-        if ((paramMsgBackupSessionTask.jdField_a_of_type_Short <= 3) || (!this.jdField_d_of_type_Boolean)) {
-          break;
+        if ((paramMsgBackupSessionTask.jdField_a_of_type_Short > 3) && (this.jdField_d_of_type_Boolean))
+        {
+          a(paramLong, paramConcurrentHashMap, paramMsgBackupSessionInfo, paramConcurrentHashMap1, paramConcurrentHashMap2, paramMsgBackupSessionTask);
+          return;
         }
-        a(paramLong, paramConcurrentHashMap, paramMsgBackupSessionInfo, paramConcurrentHashMap1, paramConcurrentHashMap2, paramMsgBackupSessionTask);
+        if (a())
+        {
+          MsgBackupUtil.b("recvFile panic error! resReq fileTask receivedCompleted", new Object[0]);
+          return;
+        }
+        paramMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(paramMsgBackupSessionTask.jdField_a_of_type_Short + 1));
+        this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramLong, paramMsgBackupSessionTask.c, paramMsgBackupSessionTask.jdField_b_of_type_JavaLangString, paramMsgBackupSessionTask.jdField_b_of_type_Boolean, paramMsgBackupSessionTask.jdField_b_of_type_Long, true);
       }
-      return;
     }
-    if (a())
-    {
-      MsgBackupUtil.b("recvFile panic error! resReq fileTask receivedCompleted", new Object[0]);
-      return;
-    }
-    paramMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(paramMsgBackupSessionTask.jdField_a_of_type_Short + 1));
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramLong, paramMsgBackupSessionTask.c, paramMsgBackupSessionTask.jdField_b_of_type_JavaLangString, paramMsgBackupSessionTask.jdField_b_of_type_Boolean, paramMsgBackupSessionTask.jdField_b_of_type_Long, true);
   }
   
   private void b(long paramLong, MsgBackupSessionTask arg3, ConcurrentHashMap<String, MsgBackupSessionInfo> paramConcurrentHashMap, MsgBackupSessionInfo paramMsgBackupSessionInfo, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap1)
@@ -816,61 +1005,73 @@ public class MsgBackupTransportProcessor
     MsgBackupManager.jdField_a_of_type_Int += 1;
     MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "MsgBackup_Manager skipSessionCount = %d", new Object[] { Integer.valueOf(MsgBackupManager.jdField_a_of_type_Int) });
     paramConcurrentHashMap1.remove(Long.valueOf(paramLong));
-    QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "isTcpDetected = " + this.jdField_d_of_type_Boolean + ", 此会话db一直失败，扔掉，通知对端dbMList receivedCompleted retry over time task = " + ???);
+    paramConcurrentHashMap1 = new StringBuilder();
+    paramConcurrentHashMap1.append("isTcpDetected = ");
+    paramConcurrentHashMap1.append(this.jdField_d_of_type_Boolean);
+    paramConcurrentHashMap1.append(", 此会话db一直失败，扔掉，通知对端dbMList receivedCompleted retry over time task = ");
+    paramConcurrentHashMap1.append(???);
+    QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap1.toString());
     paramMsgBackupSessionInfo.jdField_c_of_type_Boolean = true;
     a(paramMsgBackupSessionInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup", 2, "getdb failed !  mclient will get db mClientCanRecvMList.size = " + paramConcurrentHashMap.size());
-    }
-    label246:
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        paramConcurrentHashMap = paramConcurrentHashMap.values().iterator();
-        int i = 0;
-        if (paramConcurrentHashMap.hasNext())
-        {
-          if (!((MsgBackupSessionInfo)paramConcurrentHashMap.next()).jdField_c_of_type_Boolean) {
-            break label246;
-          }
+      ??? = new StringBuilder();
+      ???.append("getdb failed !  mclient will get db mClientCanRecvMList.size = ");
+      ???.append(paramConcurrentHashMap.size());
+      QLog.d("MsgBackup", 2, ???.toString());
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      paramConcurrentHashMap = paramConcurrentHashMap.values().iterator();
+      int i = 0;
+      while (paramConcurrentHashMap.hasNext()) {
+        if (((MsgBackupSessionInfo)paramConcurrentHashMap.next()).jdField_c_of_type_Boolean) {
           i += 1;
-          break label246;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
-        }
-        if (i == MsgBackupManager.jdField_b_of_type_Int) {
-          return;
-        }
+      }
+      ??? = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+      if (??? != null) {
+        ???.a(i, MsgBackupManager.jdField_b_of_type_Int);
+      }
+      if (i == MsgBackupManager.jdField_b_of_type_Int) {
+        return;
       }
       if (!a(2))
       {
         MsgBackupUtil.b("this session db has received error! so get next session!", new Object[0]);
         j(3);
-        return;
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramConcurrentHashMap;
     }
   }
   
   private void b(long paramLong, String paramString1, int paramInt, String paramString2)
   {
-    if (MsgBackupUtil.jdField_b_of_type_Boolean) {}
-    for (paramString1 = MsgBackupUtil.a(paramString2, this.jdField_a_of_type_JavaLangString);; paramString1 = paramString2)
+    paramString1 = paramString2;
+    if (MsgBackupUtil.jdField_b_of_type_Boolean) {
+      paramString1 = MsgBackupUtil.a(paramString2, this.jdField_a_of_type_JavaLangString);
+    }
+    MsgBackupReporter.a();
+    paramString2 = MsgBackupManager.a().g;
+    ConcurrentHashMap localConcurrentHashMap = MsgBackupManager.a().jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (QLog.isColorLevel())
     {
-      MsgBackupReporter.a();
-      paramString2 = MsgBackupManager.a().g;
-      ConcurrentHashMap localConcurrentHashMap = MsgBackupManager.a().jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached, MsgBackupManager.curDealType = " + MsgBackupManager.jdField_d_of_type_JavaLangString + ", MsgBackupManager.curDealType = " + MsgBackupManager.jdField_c_of_type_Int);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null) && (paramString1 != null))
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("httpGetReached, MsgBackupManager.curDealType = ");
+      localStringBuilder.append(MsgBackupManager.jdField_d_of_type_JavaLangString);
+      localStringBuilder.append(", MsgBackupManager.curDealType = ");
+      localStringBuilder.append(MsgBackupManager.jdField_c_of_type_Int);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null) && (paramString1 != null))
+    {
+      if (paramString1.contains("/postinfo?"))
       {
-        if (paramString1.contains("/postinfo?")) {
-          c(paramLong, paramString1, paramString2, localConcurrentHashMap);
-        }
-      }
-      else {
+        c(paramLong, paramString1, paramString2, localConcurrentHashMap);
         return;
       }
       if (paramString1.contains("/getmsg?"))
@@ -884,7 +1085,6 @@ public class MsgBackupTransportProcessor
         return;
       }
       a(paramLong, paramString1);
-      return;
     }
   }
   
@@ -893,79 +1093,129 @@ public class MsgBackupTransportProcessor
     if (MsgBackupUtil.jdField_b_of_type_Boolean) {
       paramString1 = MsgBackupUtil.b(paramString1, this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue(), this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
+    Object localObject = MsgBackupManager.a().g;
+    MsgBackupSessionTask localMsgBackupSessionTask = (MsgBackupSessionTask)((ConcurrentHashMap)localObject).get(Long.valueOf(paramLong1));
+    ConcurrentHashMap localConcurrentHashMap = MsgBackupManager.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      ConcurrentHashMap localConcurrentHashMap2 = MsgBackupManager.a().g;
-      MsgBackupSessionTask localMsgBackupSessionTask = (MsgBackupSessionTask)localConcurrentHashMap2.get(Long.valueOf(paramLong1));
-      ConcurrentHashMap localConcurrentHashMap1 = MsgBackupManager.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted called! mfidMlist.size = " + localConcurrentHashMap2.size() + ", mClientCanRecvMList.size = " + localConcurrentHashMap1.size() + ", path = " + paramString2 + ",url = " + paramString1 + ", fid = " + paramLong1 + ",errorCode = " + paramInt1 + ", task = " + localMsgBackupSessionTask + "，mFidMList " + localConcurrentHashMap2.toString() + ", MsgBackupManager.sessionCount = " + MsgBackupManager.jdField_b_of_type_Int);
-      }
-      if (localMsgBackupSessionTask != null) {
-        if (paramInt1 == 0) {
-          a(paramLong1, paramString1, paramInt1, paramString2, paramArrayOfByte, paramLong2, localConcurrentHashMap2, localConcurrentHashMap1);
-        }
-      }
-      do
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("receivedCompleted called! mfidMlist.size = ");
+      localStringBuilder.append(((ConcurrentHashMap)localObject).size());
+      localStringBuilder.append(", mClientCanRecvMList.size = ");
+      localStringBuilder.append(localConcurrentHashMap.size());
+      localStringBuilder.append(", path = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",url = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", fid = ");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(",errorCode = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", task = ");
+      localStringBuilder.append(localMsgBackupSessionTask);
+      localStringBuilder.append("，mFidMList ");
+      localStringBuilder.append(((ConcurrentHashMap)localObject).toString());
+      localStringBuilder.append(", MsgBackupManager.sessionCount = ");
+      localStringBuilder.append(MsgBackupManager.jdField_b_of_type_Int);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+    }
+    if (localMsgBackupSessionTask != null)
+    {
+      if (paramInt1 == 0)
       {
+        a(paramLong1, paramString1, paramInt1, paramString2, paramArrayOfByte, paramLong2, (ConcurrentHashMap)localObject, localConcurrentHashMap);
         return;
-        a(paramLong1, localConcurrentHashMap2, localMsgBackupSessionTask);
-        return;
-        paramArrayOfByte = MsgBackupUtil.b(MsgBackupManager.jdField_d_of_type_JavaLangString, MsgBackupUtil.b(MsgBackupManager.jdField_c_of_type_Int));
-        paramString1 = (MsgBackupSessionInfo)localConcurrentHashMap1.get(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted key = " + paramArrayOfByte + ", mClientCanRecvMList = " + localConcurrentHashMap1 + ", sessionInfo = " + paramString1 + ", errCode = " + paramInt1);
-        }
-      } while (paramString1 == null);
+      }
+      a(paramLong1, (ConcurrentHashMap)localObject, localMsgBackupSessionTask);
+      return;
+    }
+    paramArrayOfByte = MsgBackupUtil.b(MsgBackupManager.jdField_d_of_type_JavaLangString, MsgBackupUtil.b(MsgBackupManager.jdField_c_of_type_Int));
+    paramString1 = (MsgBackupSessionInfo)localConcurrentHashMap.get(paramArrayOfByte);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("receivedCompleted key = ");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      ((StringBuilder)localObject).append(", mClientCanRecvMList = ");
+      ((StringBuilder)localObject).append(localConcurrentHashMap);
+      ((StringBuilder)localObject).append(", sessionInfo = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", errCode = ");
+      ((StringBuilder)localObject).append(paramInt1);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramString1 != null)
+    {
       paramArrayOfByte = paramString1.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
-      localConcurrentHashMap2 = paramString1.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      localObject = paramString1.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
       localMsgBackupSessionTask = (MsgBackupSessionTask)paramArrayOfByte.get(Long.valueOf(paramLong1));
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "receivedCompleted  dbMList task = " + localMsgBackupSessionTask + ", dbMList = " + paramArrayOfByte.toString() + ". sessionInfo.hashcode = " + paramString1.hashCode());
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("receivedCompleted  dbMList task = ");
+        localStringBuilder.append(localMsgBackupSessionTask);
+        localStringBuilder.append(", dbMList = ");
+        localStringBuilder.append(paramArrayOfByte.toString());
+        localStringBuilder.append(". sessionInfo.hashcode = ");
+        localStringBuilder.append(paramString1.hashCode());
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
       }
       if (localMsgBackupSessionTask != null)
       {
-        a(paramLong1, paramInt1, paramString2, localMsgBackupSessionTask, localConcurrentHashMap1, paramString1, paramArrayOfByte, localConcurrentHashMap2);
+        a(paramLong1, paramInt1, paramString2, localMsgBackupSessionTask, localConcurrentHashMap, paramString1, paramArrayOfByte, (ConcurrentHashMap)localObject);
         return;
       }
-      a(paramLong1, paramInt1, localConcurrentHashMap1, paramString1, paramArrayOfByte, localConcurrentHashMap2);
-      return;
+      a(paramLong1, paramInt1, localConcurrentHashMap, paramString1, paramArrayOfByte, (ConcurrentHashMap)localObject);
     }
   }
   
   private void b(long paramLong, String paramString, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap, ConcurrentHashMap<String, MsgBackupSessionInfo> paramConcurrentHashMap1)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached success, url = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("httpGetReached success, url = ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject1).toString());
     }
-    if (a())
+    boolean bool1 = a();
+    int i = 0;
+    if (bool1)
     {
       MsgBackupUtil.b("getmsg onSendComplete operator is closed! please clear handler msg!........", new Object[0]);
       return;
     }
     boolean bool2 = this.jdField_a_of_type_Boolean;
-    if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {}
-    long l;
-    for (boolean bool1 = true;; bool1 = false)
+    if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "getmsg isTransportStart = %b, mCallBack is not null = %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+    if ((localObject1 != null) && (!this.jdField_a_of_type_Boolean))
     {
-      MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "getmsg isTransportStart = %b, mCallBack is not null = %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      if ((this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) && (!this.jdField_a_of_type_Boolean))
-      {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.c(true);
-      }
-      localObject1 = MsgBackupUtil.a(paramString);
-      l = Long.parseLong((String)((Map)localObject1).get("fid"));
-      if (MsgBackupManager.jdField_f_of_type_Boolean) {
-        break;
-      }
+      this.jdField_a_of_type_Boolean = true;
+      ((IMsgBackupUICallback)localObject1).c(true);
+    }
+    localObject1 = MsgBackupUtil.a(paramString);
+    long l = Long.parseLong((String)((Map)localObject1).get("fid"));
+    if (!MsgBackupManager.jdField_f_of_type_Boolean)
+    {
       paramString = new MsgBackupSessionTask();
       paramString.jdField_a_of_type_Short = 0;
       paramString.jdField_a_of_type_Boolean = false;
       paramString.jdField_a_of_type_JavaLangString = "[]";
       paramString.jdField_a_of_type_Long = paramLong;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached, getmsg ui is not ready!" + l + ", msg = " + "[]");
+      if (QLog.isColorLevel())
+      {
+        paramConcurrentHashMap1 = new StringBuilder();
+        paramConcurrentHashMap1.append("httpGetReached, getmsg ui is not ready!");
+        paramConcurrentHashMap1.append(l);
+        paramConcurrentHashMap1.append(", msg = ");
+        paramConcurrentHashMap1.append("[]");
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap1.toString());
       }
       paramConcurrentHashMap.put(Long.valueOf(l), paramString);
       this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.b(this.jdField_a_of_type_Long, paramLong, l, "[]");
@@ -977,38 +1227,46 @@ public class MsgBackupTransportProcessor
     MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(l), paramString);
     paramString = (String)((Map)localObject1).get("chatUin");
     int j = Integer.parseInt((String)((Map)localObject1).get("chatType"));
-    Object localObject1 = MsgBackupUtil.a(paramString, j, null);
+    localObject1 = MsgBackupUtil.a(paramString, j, null);
     ??? = new MsgBackupSessionTask();
     ((MsgBackupSessionTask)???).jdField_a_of_type_Short = 0;
     ((MsgBackupSessionTask)???).jdField_a_of_type_Boolean = true;
     ((MsgBackupSessionTask)???).jdField_a_of_type_Long = paramLong;
     ((MsgBackupSessionTask)???).jdField_b_of_type_JavaLangString = ((String)localObject1);
     paramConcurrentHashMap.put(Long.valueOf(l), ???);
-    int i = 0;
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        paramConcurrentHashMap1 = paramConcurrentHashMap1.values().iterator();
-        if (paramConcurrentHashMap1.hasNext())
-        {
-          if (((MsgBackupSessionInfo)paramConcurrentHashMap1.next()).jdField_c_of_type_Boolean) {
-            i += 1;
-          }
-        }
-        else
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-            this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramLong, l, (String)localObject1);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onHttpRequest, send db uin = " + paramString + ", uinType = " + MsgBackupUtil.c(j) + ", dbpath = " + (String)localObject1 + ", fid = " + l + ", mFidMList.size = " + paramConcurrentHashMap.size());
-          return;
+      paramConcurrentHashMap1 = paramConcurrentHashMap1.values().iterator();
+      while (paramConcurrentHashMap1.hasNext()) {
+        if (((MsgBackupSessionInfo)paramConcurrentHashMap1.next()).jdField_c_of_type_Boolean) {
+          i += 1;
         }
       }
+      paramConcurrentHashMap1 = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+      if (paramConcurrentHashMap1 != null) {
+        paramConcurrentHashMap1.a(i, MsgBackupManager.jdField_b_of_type_Int);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramLong, l, (String)localObject1);
+      if (QLog.isColorLevel())
+      {
+        paramConcurrentHashMap1 = new StringBuilder();
+        paramConcurrentHashMap1.append("onHttpRequest, send db uin = ");
+        paramConcurrentHashMap1.append(paramString);
+        paramConcurrentHashMap1.append(", uinType = ");
+        paramConcurrentHashMap1.append(MsgBackupUtil.c(j));
+        paramConcurrentHashMap1.append(", dbpath = ");
+        paramConcurrentHashMap1.append((String)localObject1);
+        paramConcurrentHashMap1.append(", fid = ");
+        paramConcurrentHashMap1.append(l);
+        paramConcurrentHashMap1.append(", mFidMList.size = ");
+        paramConcurrentHashMap1.append(paramConcurrentHashMap.size());
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap1.toString());
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -1017,47 +1275,61 @@ public class MsgBackupTransportProcessor
     paramConcurrentHashMap2.remove(Long.valueOf(paramLong));
     int i = paramConcurrentHashMap2.size();
     int j = paramConcurrentHashMap1.size();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "ResReq receivedCompleted  called success, isResRequestAllFinished " + ???.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", task = " + paramMsgBackupSessionTask + ", resMList.size = " + i);
+    if (QLog.isColorLevel())
+    {
+      paramConcurrentHashMap1 = new StringBuilder();
+      paramConcurrentHashMap1.append("ResReq receivedCompleted  called success, isResRequestAllFinished ");
+      paramConcurrentHashMap1.append(???.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      paramConcurrentHashMap1.append(", task = ");
+      paramConcurrentHashMap1.append(paramMsgBackupSessionTask);
+      paramConcurrentHashMap1.append(", resMList.size = ");
+      paramConcurrentHashMap1.append(i);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap1.toString());
     }
     if ((i == 0) && (j == 0) && (???.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()))
     {
       ???.jdField_c_of_type_Boolean = true;
       a(???);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "last session transport completed!, uin = " + MsgBackupManager.jdField_d_of_type_JavaLangString + ", uintype = " + MsgBackupManager.jdField_c_of_type_Int + ", task = " + paramMsgBackupSessionTask);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ???.append("last session transport completed!, uin = ");
+        ???.append(MsgBackupManager.jdField_d_of_type_JavaLangString);
+        ???.append(", uintype = ");
+        ???.append(MsgBackupManager.jdField_c_of_type_Int);
+        ???.append(", task = ");
+        ???.append(paramMsgBackupSessionTask);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ???.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup", 2, "mclient will get db mClientCanRecvMList.size = " + paramConcurrentHashMap.size());
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ???.append("mclient will get db mClientCanRecvMList.size = ");
+        ???.append(paramConcurrentHashMap.size());
+        QLog.d("MsgBackup", 2, ???.toString());
       }
-    }
-    label328:
-    for (;;)
-    {
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         paramConcurrentHashMap = paramConcurrentHashMap.values().iterator();
         i = 0;
-        if (paramConcurrentHashMap.hasNext())
-        {
-          if (!((MsgBackupSessionInfo)paramConcurrentHashMap.next()).jdField_c_of_type_Boolean) {
-            break label328;
+        while (paramConcurrentHashMap.hasNext()) {
+          if (((MsgBackupSessionInfo)paramConcurrentHashMap.next()).jdField_c_of_type_Boolean) {
+            i += 1;
           }
-          i += 1;
-          break label328;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
+        paramConcurrentHashMap = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+        if (paramConcurrentHashMap != null) {
+          paramConcurrentHashMap.a(i, MsgBackupManager.jdField_b_of_type_Int);
         }
         if (i == MsgBackupManager.jdField_b_of_type_Int) {
           return;
         }
-      }
-      if (!a(2))
-      {
-        MsgBackupUtil.b("this session res has received! so get next session!", new Object[0]);
-        j(3);
-        return;
+        if (!a(2))
+        {
+          MsgBackupUtil.b("this session res has received! so get next session!", new Object[0]);
+          j(3);
+          return;
+        }
       }
     }
   }
@@ -1080,33 +1352,52 @@ public class MsgBackupTransportProcessor
       this.jdField_a_of_type_ArrayOfJavaLangString[0] = ((String)paramMap.get("ip"));
       this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(Integer.parseInt((String)paramMap.get("tcpport")));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached, client report its port and ipv4, fid = " + l + ", msg = []");
+    if (QLog.isColorLevel())
+    {
+      paramMap = new StringBuilder();
+      paramMap.append("httpGetReached, client report its port and ipv4, fid = ");
+      paramMap.append(l);
+      paramMap.append(", msg = []");
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramMap.toString());
     }
     a(paramLong, paramConcurrentHashMap, l, a(l, 2));
   }
   
   private void b(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "recvMessageUdp udpdetected = " + this.jdField_c_of_type_Boolean + ", ip = " + paramString1 + ", port = " + paramInt1 + ", cmd = " + paramInt2 + ", cookie = " + paramLong + ", data = " + paramString2);
-    }
-    if (paramInt2 == 256) {}
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recvMessageUdp udpdetected = ");
+      localStringBuilder.append(this.jdField_c_of_type_Boolean);
+      localStringBuilder.append(", ip = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", port = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", cmd = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", cookie = ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(", data = ");
+      localStringBuilder.append(paramString2);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+    }
+    if (paramInt2 == 256) {
       return;
-      if (paramInt2 == 257)
-      {
-        g(paramString2);
-        return;
-      }
-      if (paramInt2 == 258)
-      {
-        f(paramString2);
-        return;
-      }
-    } while (paramInt2 != 259);
-    e(paramString2);
+    }
+    if (paramInt2 == 257)
+    {
+      g(paramString2);
+      return;
+    }
+    if (paramInt2 == 258)
+    {
+      f(paramString2);
+      return;
+    }
+    if (paramInt2 == 259) {
+      e(paramString2);
+    }
   }
   
   private String c()
@@ -1118,30 +1409,32 @@ public class MsgBackupTransportProcessor
       localJSONObject.put("cmd", "exit");
       localJSONObject.put("sig", MsgBackupAuthProcessor.a().a());
       localJSONArray.put(localJSONObject);
-      return localJSONArray.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONArray.toString();
   }
   
   private void c(long paramLong, String paramString, ConcurrentHashMap<Long, MsgBackupSessionTask> paramConcurrentHashMap, ConcurrentHashMap<String, MsgBackupSessionInfo> paramConcurrentHashMap1)
   {
-    if (a()) {
-      MsgBackupUtil.b("httpGetReached postinfo operator is closed! please clear handler msg!........", new Object[0]);
-    }
-    do
+    if (a())
     {
+      MsgBackupUtil.b("httpGetReached postinfo operator is closed! please clear handler msg!........", new Object[0]);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached success, url = " + paramString);
-      }
-      paramString = MsgBackupUtil.a(paramString);
-    } while (a(paramLong, paramConcurrentHashMap, paramString));
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("httpGetReached success, url = ");
+      localStringBuilder.append(paramString);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+    }
+    paramString = MsgBackupUtil.a(paramString);
+    if (a(paramLong, paramConcurrentHashMap, paramString)) {
+      return;
+    }
     if (paramString.size() == 1)
     {
       a(paramLong, paramConcurrentHashMap, paramString);
@@ -1168,16 +1461,26 @@ public class MsgBackupTransportProcessor
       return;
     }
     long l = Long.parseLong((String)paramMap.get("fid"));
-    if ((!TextUtils.isEmpty((String)paramMap.get("exit"))) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.b(true);
+    if (!TextUtils.isEmpty((String)paramMap.get("exit")))
+    {
+      paramMap = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+      if (paramMap != null) {
+        paramMap.h_(true);
+      }
     }
     paramMap = new MsgBackupSessionTask();
     paramMap.jdField_a_of_type_Short = 0;
     paramMap.jdField_a_of_type_Boolean = false;
     paramMap.jdField_a_of_type_JavaLangString = "[]";
     paramMap.jdField_a_of_type_Long = paramLong;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "httpGetReached, notify has exit!, fid = " + l + ", msg = " + "[]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("httpGetReached, notify has exit!, fid = ");
+      localStringBuilder.append(l);
+      localStringBuilder.append(", msg = ");
+      localStringBuilder.append("[]");
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
     }
     paramConcurrentHashMap.put(Long.valueOf(l), paramMap);
     this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.b(this.jdField_a_of_type_Long, paramLong, l, "[]");
@@ -1197,12 +1500,13 @@ public class MsgBackupTransportProcessor
           if (QLog.isColorLevel()) {
             QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "-------------------exit-------------------");
           }
-          if ((TextUtils.equals(paramString, MsgBackupAuthProcessor.a().a())) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.b(true);
+          if ((TextUtils.equals(paramString, MsgBackupAuthProcessor.a().a())) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.h_(true);
+            return;
           }
         }
       }
-      return;
     }
     catch (JSONException paramString)
     {
@@ -1220,75 +1524,87 @@ public class MsgBackupTransportProcessor
   
   private void f(String arg1)
   {
-    int j = 0;
-    Object localObject1;
-    int i;
-    try
-    {
-      localObject1 = MsgBackupManager.a().jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
-      ??? = new JSONArray(???);
-      if (???.length() < 1) {
-        break label258;
-      }
-      i = 0;
-      if (i >= ???.length()) {
-        break label258;
-      }
-      Object localObject3 = (JSONObject)???.get(i);
-      ((JSONObject)localObject3).optString("cmd");
-      String str = ((JSONObject)localObject3).optString("chatUin");
-      int k = ((JSONObject)localObject3).optInt("chatType");
-      localObject3 = MsgBackupUtil.b(str, k);
-      MsgBackupSessionInfo localMsgBackupSessionInfo = (MsgBackupSessionInfo)((ConcurrentHashMap)localObject1).get(localObject3);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "client notify this session has received success! keyFromUin = " + (String)localObject3 + ", mMList = " + localObject1);
-      }
-      if (localMsgBackupSessionInfo != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "udp 通知 此会话接受完成 chatUin = " + str + ", uinType = " + MsgBackupUtil.c(k));
-        }
-        localMsgBackupSessionInfo.jdField_c_of_type_Boolean = true;
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "client notify this session has received success! chatUin = " + str + ", chatType = " + k);
-      }
-    }
-    catch (JSONException ???)
-    {
-      QLog.e("MsgBackup_MsgBackupTransportProcessor", 2, "MBR_UDP_CMD_SYNC_RECV_DONE parse json error!", ???);
-    }
-    label257:
-    return;
-    label258:
-    label352:
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      int i;
+      try
       {
-        localObject1 = ((ConcurrentHashMap)localObject1).values().iterator();
-        i = j;
-        if (((Iterator)localObject1).hasNext())
+        Object localObject1 = MsgBackupManager.a().jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+        ??? = new JSONArray(???);
+        i = ???.length();
+        int j = 0;
+        if (i >= 1)
         {
-          if (((MsgBackupSessionInfo)((Iterator)localObject1).next()).jdField_c_of_type_Boolean)
+          i = 0;
+          if (i < ???.length())
           {
-            i += 1;
-            break label352;
+            Object localObject3 = (JSONObject)???.get(i);
+            ((JSONObject)localObject3).optString("cmd");
+            String str = ((JSONObject)localObject3).optString("chatUin");
+            int k = ((JSONObject)localObject3).optInt("chatType");
+            Object localObject4 = MsgBackupUtil.b(str, k);
+            localObject3 = (MsgBackupSessionInfo)((ConcurrentHashMap)localObject1).get(localObject4);
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("client notify this session has received success! keyFromUin = ");
+              localStringBuilder.append((String)localObject4);
+              localStringBuilder.append(", mMList = ");
+              localStringBuilder.append(localObject1);
+              QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+            }
+            if (localObject3 != null)
+            {
+              if (QLog.isColorLevel())
+              {
+                localObject4 = new StringBuilder();
+                ((StringBuilder)localObject4).append("udp 通知 此会话接受完成 chatUin = ");
+                ((StringBuilder)localObject4).append(str);
+                ((StringBuilder)localObject4).append(", uinType = ");
+                ((StringBuilder)localObject4).append(MsgBackupUtil.c(k));
+                QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject4).toString());
+              }
+              ((MsgBackupSessionInfo)localObject3).jdField_c_of_type_Boolean = true;
+              break label392;
+            }
+            if (!QLog.isColorLevel()) {
+              break label392;
+            }
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("client notify this session has received success! chatUin = ");
+            ((StringBuilder)localObject3).append(str);
+            ((StringBuilder)localObject3).append(", chatType = ");
+            ((StringBuilder)localObject3).append(k);
+            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject3).toString());
+            break label392;
           }
         }
-        else
+        synchronized (this.jdField_a_of_type_JavaLangObject)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback == null) {
-            break label257;
+          localObject1 = ((ConcurrentHashMap)localObject1).values().iterator();
+          i = j;
+          if (((Iterator)localObject1).hasNext())
+          {
+            if (!((MsgBackupSessionInfo)((Iterator)localObject1).next()).jdField_c_of_type_Boolean) {
+              continue;
+            }
+            i += 1;
+            continue;
           }
-          this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
-          return;
+          if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
+            return;
+          }
         }
+        return;
       }
-      break label352;
+      catch (JSONException ???)
+      {
+        QLog.e("MsgBackup_MsgBackupTransportProcessor", 2, "MBR_UDP_CMD_SYNC_RECV_DONE parse json error!", ???);
+      }
+      label392:
       i += 1;
-      break;
     }
   }
   
@@ -1314,38 +1630,35 @@ public class MsgBackupTransportProcessor
               MsgBackupReporter.a();
               MsgBackupReporter.a.jdField_b_of_type_Long = MsgBackupManager.jdField_b_of_type_Int;
             }
-            if ("chat_ready".equals(str))
-            {
-              str = ((JSONObject)localObject).optString("chatUin");
-              int j = ((JSONObject)localObject).optInt("chatType");
-              long l = ((JSONObject)localObject).optLong("dbSize");
-              localObject = new MsgBackupSessionInfo();
-              ((MsgBackupSessionInfo)localObject).jdField_c_of_type_Boolean = false;
-              ((MsgBackupSessionInfo)localObject).jdField_b_of_type_Boolean = false;
-              ((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaLangString = str;
-              ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Int = MsgBackupUtil.c(j);
-              ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Long = l;
-              str = MsgBackupUtil.b(((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaLangString, j);
-              if (localConcurrentHashMap.get(str) == null) {
-                localConcurrentHashMap.put(str, localObject);
-              }
+            if (!"chat_ready".equals(str)) {
+              break label220;
             }
+            str = ((JSONObject)localObject).optString("chatUin");
+            int j = ((JSONObject)localObject).optInt("chatType");
+            long l = ((JSONObject)localObject).optLong("dbSize");
+            localObject = new MsgBackupSessionInfo();
+            ((MsgBackupSessionInfo)localObject).jdField_c_of_type_Boolean = false;
+            ((MsgBackupSessionInfo)localObject).jdField_b_of_type_Boolean = false;
+            ((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaLangString = str;
+            ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Int = MsgBackupUtil.c(j);
+            ((MsgBackupSessionInfo)localObject).jdField_a_of_type_Long = l;
+            str = MsgBackupUtil.b(((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaLangString, j);
+            if (localConcurrentHashMap.get(str) != null) {
+              break label220;
+            }
+            localConcurrentHashMap.put(str, localObject);
+            break label220;
           }
-          else
-          {
-            a(3);
-          }
-        }
-        else
-        {
+          a(3);
           return;
         }
       }
       catch (JSONException paramString)
       {
         QLog.e("MsgBackup_MsgBackupTransportProcessor", 2, "MBR_UDP_CMD_SYNC_RECV_DONE parse json error!", paramString);
-        return;
       }
+      return;
+      label220:
       i += 1;
     }
   }
@@ -1362,122 +1675,133 @@ public class MsgBackupTransportProcessor
   
   public String a(int paramInt, long paramLong)
   {
-    int j = 0;
     Object localObject1 = new JSONArray();
-    if (paramInt == 256) {}
+    if ((paramInt == 256) || (paramInt == 257)) {}
     for (;;)
     {
-      Object localObject3;
       try
-      {
-        ??? = ((JSONArray)localObject1).toString();
-        localObject1 = MsgBackupManager.a().jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap;
-        localObject3 = new MsgBackupSessionTask();
-        ((MsgBackupSessionTask)localObject3).jdField_a_of_type_JavaLangString = ((String)???);
-        ((MsgBackupSessionTask)localObject3).jdField_a_of_type_Int = paramInt;
-        ((MsgBackupSessionTask)localObject3).jdField_a_of_type_Short = 0;
-        ((ConcurrentHashMap)localObject1).put(Long.valueOf(paramLong), localObject3);
-        localObject1 = ???;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "getSessionJson, cookie = " + paramLong + ", msg = " + (String)???);
-        return ???;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        return "[]";
-      }
-      int i;
-      Object localObject4;
-      Object localObject5;
-      if (paramInt == 257)
       {
         if (!MsgBackupManager.jdField_f_of_type_Boolean)
         {
-          ??? = ((JSONArray)localObject1).toString();
-          localObject1 = MsgBackupManager.a().jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap;
-          localObject3 = new MsgBackupSessionTask();
-          ((MsgBackupSessionTask)localObject3).jdField_a_of_type_JavaLangString = ((String)???);
-          ((MsgBackupSessionTask)localObject3).jdField_a_of_type_Int = paramInt;
-          ((MsgBackupSessionTask)localObject3).jdField_a_of_type_Short = 0;
-          ((ConcurrentHashMap)localObject1).put(Long.valueOf(paramLong), localObject3);
-          localObject1 = ???;
+          localObject1 = ((JSONArray)localObject1).toString();
+          ??? = MsgBackupManager.a().jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap;
+          localObject4 = new MsgBackupSessionTask();
+          ((MsgBackupSessionTask)localObject4).jdField_a_of_type_JavaLangString = ((String)localObject1);
+          ((MsgBackupSessionTask)localObject4).jdField_a_of_type_Int = paramInt;
+          ((MsgBackupSessionTask)localObject4).jdField_a_of_type_Short = 0;
+          ((ConcurrentHashMap)???).put(Long.valueOf(paramLong), localObject4);
           if (!QLog.isColorLevel()) {
-            break;
+            continue;
           }
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "MsgBackupManager.sUIReady = " + MsgBackupManager.jdField_f_of_type_Boolean + ", getSessionJson is called! cookie = " + paramLong + ", msg = " + (String)???);
-          return ???;
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("MsgBackupManager.sUIReady = ");
+          ((StringBuilder)???).append(MsgBackupManager.jdField_f_of_type_Boolean);
+          ((StringBuilder)???).append(", getSessionJson is called! cookie = ");
+          ((StringBuilder)???).append(paramLong);
+          ((StringBuilder)???).append(", msg = ");
+          ((StringBuilder)???).append((String)localObject1);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)???).toString());
+          return localObject1;
         }
         ??? = MsgBackupManager.a().jdField_a_of_type_JavaUtilHashSet;
-        localObject3 = MsgBackupManager.a().jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+        Object localObject4 = MsgBackupManager.a().jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
         i = MsgBackupManager.jdField_b_of_type_Int;
-        if (((ConcurrentHashMap)localObject3).size() > 0)
+        if (((ConcurrentHashMap)localObject4).size() > 0)
         {
           ??? = new JSONObject();
           ((JSONObject)???).put("cmd", "chat_list_count");
           ((JSONObject)???).put("listCount", i);
-          localJSONException.put(???);
+          ((JSONArray)localObject1).put(???);
+          Object localObject5;
+          Object localObject6;
           synchronized (this.jdField_a_of_type_JavaLangObject)
           {
-            localObject3 = ((ConcurrentHashMap)localObject3).values().iterator();
-            while (((Iterator)localObject3).hasNext())
+            localObject4 = ((ConcurrentHashMap)localObject4).values().iterator();
+            j = 0;
+            if (((Iterator)localObject4).hasNext())
             {
-              localObject4 = (MsgBackupSessionInfo)((Iterator)localObject3).next();
+              localObject5 = (MsgBackupSessionInfo)((Iterator)localObject4).next();
               i = j;
-              if (((MsgBackupSessionInfo)localObject4).jdField_c_of_type_Boolean) {
+              if (((MsgBackupSessionInfo)localObject5).jdField_c_of_type_Boolean) {
                 i = j + 1;
               }
-              j = i;
-              if (!((MsgBackupSessionInfo)localObject4).jdField_a_of_type_Boolean)
-              {
-                localObject5 = ((MsgBackupSessionInfo)localObject4).jdField_a_of_type_JavaLangString;
-                j = ((MsgBackupSessionInfo)localObject4).jdField_a_of_type_Int;
-                JSONObject localJSONObject = new JSONObject();
-                localJSONObject.put("cmd", "chat_ready");
-                localJSONObject.put("chatUin", localObject5);
-                localJSONObject.put("chatType", MsgBackupUtil.b(j));
-                localJSONObject.put("dbSize", ((MsgBackupSessionInfo)localObject4).jdField_a_of_type_Long);
-                localJSONException.put(localJSONObject);
-                ((MsgBackupSessionInfo)localObject4).jdField_a_of_type_Boolean = true;
-                j = i;
+              if (((MsgBackupSessionInfo)localObject5).jdField_a_of_type_Boolean) {
+                continue;
               }
+              localObject6 = ((MsgBackupSessionInfo)localObject5).jdField_a_of_type_JavaLangString;
+              j = ((MsgBackupSessionInfo)localObject5).jdField_a_of_type_Int;
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("cmd", "chat_ready");
+              localJSONObject.put("chatUin", localObject6);
+              localJSONObject.put("chatType", MsgBackupUtil.b(j));
+              localJSONObject.put("dbSize", ((MsgBackupSessionInfo)localObject5).jdField_a_of_type_Long);
+              ((JSONArray)localObject1).put(localJSONObject);
+              ((MsgBackupSessionInfo)localObject5).jdField_a_of_type_Boolean = true;
+              continue;
             }
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
+            if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback == null) {
+              continue;
+            }
             this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(j, MsgBackupManager.jdField_b_of_type_Int);
           }
-        }
-      }
-      else if (paramInt == 258)
-      {
-        ??? = MsgBackupManager.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-        while (((Iterator)???).hasNext())
-        {
-          localObject3 = (MsgBackupSessionInfo)((Iterator)???).next();
-          if ((!((MsgBackupSessionInfo)localObject3).jdField_d_of_type_Boolean) && (((MsgBackupSessionInfo)localObject3).jdField_c_of_type_Boolean))
+          if (paramInt == 258)
           {
-            localObject4 = ((MsgBackupSessionInfo)localObject3).jdField_a_of_type_JavaLangString;
-            i = ((MsgBackupSessionInfo)localObject3).jdField_a_of_type_Int;
-            localObject5 = new JSONObject();
-            ((JSONObject)localObject5).put("cmd", "chat_transfer_complete");
-            ((JSONObject)localObject5).put("chatUin", localObject4);
-            ((JSONObject)localObject5).put("chatType", MsgBackupUtil.b(i));
-            str.put(localObject5);
-            ((MsgBackupSessionInfo)localObject3).jdField_d_of_type_Boolean = true;
+            ??? = MsgBackupManager.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+            if (((Iterator)???).hasNext())
+            {
+              localObject4 = (MsgBackupSessionInfo)((Iterator)???).next();
+              if ((((MsgBackupSessionInfo)localObject4).jdField_d_of_type_Boolean) || (!((MsgBackupSessionInfo)localObject4).jdField_c_of_type_Boolean)) {
+                continue;
+              }
+              localObject5 = ((MsgBackupSessionInfo)localObject4).jdField_a_of_type_JavaLangString;
+              i = ((MsgBackupSessionInfo)localObject4).jdField_a_of_type_Int;
+              localObject6 = new JSONObject();
+              ((JSONObject)localObject6).put("cmd", "chat_transfer_complete");
+              ((JSONObject)localObject6).put("chatUin", localObject5);
+              ((JSONObject)localObject6).put("chatType", MsgBackupUtil.b(i));
+              localObject2.put(localObject6);
+              ((MsgBackupSessionInfo)localObject4).jdField_d_of_type_Boolean = true;
+              continue;
+            }
+          }
+          else if (paramInt == 259)
+          {
+            ??? = new JSONObject();
+            ((JSONObject)???).put("cmd", "exit");
+            ((JSONObject)???).put("sig", MsgBackupAuthProcessor.a().a());
+            localObject2.put(???);
           }
         }
+        str = localObject2.toString();
+        ??? = MsgBackupManager.a().jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap;
+        localObject4 = new MsgBackupSessionTask();
+        ((MsgBackupSessionTask)localObject4).jdField_a_of_type_JavaLangString = str;
+        ((MsgBackupSessionTask)localObject4).jdField_a_of_type_Int = paramInt;
+        ((MsgBackupSessionTask)localObject4).jdField_a_of_type_Short = 0;
+        ((ConcurrentHashMap)???).put(Long.valueOf(paramLong), localObject4);
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("getSessionJson, cookie = ");
+          ((StringBuilder)???).append(paramLong);
+          ((StringBuilder)???).append(", msg = ");
+          ((StringBuilder)???).append(str);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)???).toString());
+        }
+        return str;
       }
-      else if (paramInt == 259)
+      catch (JSONException localJSONException)
       {
-        ??? = new JSONObject();
-        ((JSONObject)???).put("cmd", "exit");
-        ((JSONObject)???).put("sig", MsgBackupAuthProcessor.a().a());
-        str.put(???);
+        int i;
+        int j;
+        String str;
+        continue;
       }
+      str.printStackTrace();
+      return "[]";
+      return str;
+      j = i;
     }
-    return str;
   }
   
   public String a(String paramString)
@@ -1507,11 +1831,13 @@ public class MsgBackupTransportProcessor
       paramLong2 = SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long;
       if (paramLong2 > 1500L)
       {
-        paramLong3 = this.jdField_c_of_type_Long + paramLong3;
-        if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null)
+        long l = this.jdField_c_of_type_Long;
+        IMsgBackupUICallback localIMsgBackupUICallback = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+        if (localIMsgBackupUICallback != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(1000L * paramLong3 / paramLong2);
-          MsgBackupTimeStats.b(paramLong1, paramLong3 * 1000L / paramLong2);
+          paramLong2 = (paramLong3 + l) * 1000L / paramLong2;
+          localIMsgBackupUICallback.a(paramLong2);
+          MsgBackupTimeStats.b(paramLong1, paramLong2);
         }
         this.jdField_c_of_type_Long = 0L;
         this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
@@ -1553,37 +1879,36 @@ public class MsgBackupTransportProcessor
         paramString.e += paramLong3;
       }
     }
-    while (this.jdField_b_of_type_Long > 0L)
+    else if (MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong1)))
+    {
+      paramString = (MsgBackupReportData.ServerFileDetail)MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong1));
+      if ((paramString != null) && (!paramString.jdField_a_of_type_Boolean))
+      {
+        paramString.jdField_a_of_type_Boolean = true;
+        paramString.jdField_a_of_type_Long = paramLong3;
+        paramString = MsgBackupReporter.a;
+        paramString.f += paramLong3;
+      }
+    }
+    if (this.jdField_b_of_type_Long > 0L)
     {
       paramLong2 = SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long;
       if (paramLong2 > 1500L)
       {
-        paramLong3 = this.jdField_c_of_type_Long + paramLong4;
-        if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null)
+        paramLong3 = this.jdField_c_of_type_Long;
+        paramString = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+        if (paramString != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(1000L * paramLong3 / paramLong2);
-          MsgBackupTimeStats.b(paramLong1, paramLong3 * 1000L / paramLong2);
+          paramLong2 = (paramLong4 + paramLong3) * 1000L / paramLong2;
+          paramString.a(paramLong2);
+          MsgBackupTimeStats.b(paramLong1, paramLong2);
         }
         this.jdField_c_of_type_Long = 0L;
         this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
         return;
-        if (MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong1)))
-        {
-          paramString = (MsgBackupReportData.ServerFileDetail)MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong1));
-          if ((paramString != null) && (!paramString.jdField_a_of_type_Boolean))
-          {
-            paramString.jdField_a_of_type_Boolean = true;
-            paramString.jdField_a_of_type_Long = paramLong3;
-            paramString = MsgBackupReporter.a;
-            paramString.f += paramLong3;
-          }
-        }
       }
-      else
-      {
-        this.jdField_c_of_type_Long += paramLong4;
-        return;
-      }
+      this.jdField_c_of_type_Long += paramLong4;
+      return;
     }
     this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
     this.jdField_c_of_type_Long += paramLong4;
@@ -1595,9 +1920,6 @@ public class MsgBackupTransportProcessor
   {
     MsgBackupTimeStats.a(paramLong1);
     MsgBackupReporter.a();
-    Object localObject;
-    label184:
-    MsgBackupSessionTask localMsgBackupSessionTask;
     if (MsgBackupManager.a().e.containsKey(Long.valueOf(paramLong1)))
     {
       localObject = (MsgBackupReportData.ServerFileDetail)MsgBackupManager.a().e.get(Long.valueOf(paramLong1));
@@ -1615,10 +1937,11 @@ public class MsgBackupTransportProcessor
           ((MsgBackupReportData)localObject).r += 1L;
           localObject = new MsgBackupReportData.FileError();
           ((MsgBackupReportData.FileError)localObject).jdField_b_of_type_Int = 2;
-          if (!bool) {
-            break label273;
+          if (bool) {
+            paramInt2 = 2;
+          } else {
+            paramInt2 = 1;
           }
-          paramInt2 = 2;
           ((MsgBackupReportData.FileError)localObject).jdField_c_of_type_Int = paramInt2;
           ((MsgBackupReportData.FileError)localObject).jdField_a_of_type_Int = paramInt1;
           MsgBackupReporter.a.a.add(localObject);
@@ -1630,152 +1953,213 @@ public class MsgBackupTransportProcessor
         }
       }
       MsgBackupManager.a().e.remove(Long.valueOf(paramLong1));
-      localObject = MsgBackupManager.a().g;
-      localMsgBackupSessionTask = (MsgBackupSessionTask)((ConcurrentHashMap)localObject).get(Long.valueOf(paramLong1));
-      if (localMsgBackupSessionTask == null) {
-        break label724;
-      }
-      if (!paramBoolean) {
-        break label426;
-      }
-      ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendComplete  task = " + localMsgBackupSessionTask + ", mFidMList.size = " + ((ConcurrentHashMap)localObject).size());
-      }
     }
-    label273:
-    label426:
-    label579:
-    label724:
-    while (!QLog.isColorLevel())
+    else if (MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong1)))
     {
-      do
+      if ((MsgBackupReportData.ServerFileDetail)MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong1)) != null)
       {
-        do
+        localObject = MsgBackupReporter.a;
+        ((MsgBackupReportData)localObject).m += 1L;
+        if (!paramBoolean)
         {
-          return;
-          paramInt2 = 1;
-          break;
-          if (!MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong1))) {
-            break label184;
-          }
-          if ((MsgBackupReportData.ServerFileDetail)MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong1)) != null)
-          {
-            localObject = MsgBackupReporter.a;
-            ((MsgBackupReportData)localObject).m += 1L;
-            if (!paramBoolean)
-            {
-              localObject = MsgBackupReporter.a;
-              ((MsgBackupReportData)localObject).n += 1L;
-              localObject = MsgBackupReporter.a;
-              ((MsgBackupReportData)localObject).r += 1L;
-              localObject = new MsgBackupReportData.FileError();
-              ((MsgBackupReportData.FileError)localObject).jdField_b_of_type_Int = 1;
-              ((MsgBackupReportData.FileError)localObject).jdField_c_of_type_Int = 0;
-              ((MsgBackupReportData.FileError)localObject).jdField_a_of_type_Int = paramInt1;
-              MsgBackupReporter.a.a.add(localObject);
-            }
-          }
-          MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong1));
-          break label184;
-          if (!localMsgBackupSessionTask.jdField_a_of_type_Boolean) {
-            break label579;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "fileTask onSendComplete  called not success, so again  task = " + localMsgBackupSessionTask);
-          }
-        } while (TextUtils.isEmpty(localMsgBackupSessionTask.jdField_b_of_type_JavaLangString));
-        if (localMsgBackupSessionTask.jdField_a_of_type_Short > 3)
-        {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendComplete fileTask  retry over time task = " + localMsgBackupSessionTask);
-          ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
-          return;
+          localObject = MsgBackupReporter.a;
+          ((MsgBackupReportData)localObject).n += 1L;
+          localObject = MsgBackupReporter.a;
+          ((MsgBackupReportData)localObject).r += 1L;
+          localObject = new MsgBackupReportData.FileError();
+          ((MsgBackupReportData.FileError)localObject).jdField_b_of_type_Int = 1;
+          ((MsgBackupReportData.FileError)localObject).jdField_c_of_type_Int = 0;
+          ((MsgBackupReportData.FileError)localObject).jdField_a_of_type_Int = paramInt1;
+          MsgBackupReporter.a.a.add(localObject);
         }
-        if (a())
-        {
-          MsgBackupUtil.b("fileTask onSendComplete operator is closed! please clear handler msg!........", new Object[0]);
-          return;
-        }
-        localMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(localMsgBackupSessionTask.jdField_a_of_type_Short + 1));
-        this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, localMsgBackupSessionTask.jdField_a_of_type_Long, paramLong1, localMsgBackupSessionTask.jdField_b_of_type_JavaLangString);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendComplete  called not success, so again task = " + localMsgBackupSessionTask);
-        }
-      } while (TextUtils.isEmpty(localMsgBackupSessionTask.jdField_a_of_type_JavaLangString));
-      if (localMsgBackupSessionTask.jdField_a_of_type_Short > 3)
-      {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendComplete retry over time task = " + localMsgBackupSessionTask);
-        ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
-        return;
       }
-      if (a())
-      {
-        MsgBackupUtil.b("onSendComplete operator is closed! please clear handler msg!........", new Object[0]);
-        return;
-      }
-      localMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(localMsgBackupSessionTask.jdField_a_of_type_Short + 1));
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.b(this.jdField_a_of_type_Long, localMsgBackupSessionTask.jdField_a_of_type_Long, paramLong1, localMsgBackupSessionTask.jdField_a_of_type_JavaLangString);
-      return;
+      MsgBackupManager.a().jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong1));
     }
-    QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendComplete  called, please check your mFidMList whether contains this task, before execute, should add in mFidMList!, path = " + paramString + ", fid = " + paramLong1);
+    Object localObject = MsgBackupManager.a().g;
+    MsgBackupSessionTask localMsgBackupSessionTask = (MsgBackupSessionTask)((ConcurrentHashMap)localObject).get(Long.valueOf(paramLong1));
+    if (localMsgBackupSessionTask != null)
+    {
+      if (paramBoolean)
+      {
+        ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("onSendComplete  task = ");
+          paramString.append(localMsgBackupSessionTask);
+          paramString.append(", mFidMList.size = ");
+          paramString.append(((ConcurrentHashMap)localObject).size());
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramString.toString());
+        }
+      }
+      else if (localMsgBackupSessionTask.jdField_a_of_type_Boolean)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("fileTask onSendComplete  called not success, so again  task = ");
+          paramString.append(localMsgBackupSessionTask);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramString.toString());
+        }
+        if (!TextUtils.isEmpty(localMsgBackupSessionTask.jdField_b_of_type_JavaLangString))
+        {
+          if (localMsgBackupSessionTask.jdField_a_of_type_Short > 3)
+          {
+            paramString = new StringBuilder();
+            paramString.append("onSendComplete fileTask  retry over time task = ");
+            paramString.append(localMsgBackupSessionTask);
+            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramString.toString());
+            ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
+            return;
+          }
+          if (a())
+          {
+            MsgBackupUtil.b("fileTask onSendComplete operator is closed! please clear handler msg!........", new Object[0]);
+            return;
+          }
+          localMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(localMsgBackupSessionTask.jdField_a_of_type_Short + 1));
+          this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, localMsgBackupSessionTask.jdField_a_of_type_Long, paramLong1, localMsgBackupSessionTask.jdField_b_of_type_JavaLangString);
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("onSendComplete  called not success, so again task = ");
+          paramString.append(localMsgBackupSessionTask);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramString.toString());
+        }
+        if (!TextUtils.isEmpty(localMsgBackupSessionTask.jdField_a_of_type_JavaLangString))
+        {
+          if (localMsgBackupSessionTask.jdField_a_of_type_Short > 3)
+          {
+            paramString = new StringBuilder();
+            paramString.append("onSendComplete retry over time task = ");
+            paramString.append(localMsgBackupSessionTask);
+            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramString.toString());
+            ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
+            return;
+          }
+          if (a())
+          {
+            MsgBackupUtil.b("onSendComplete operator is closed! please clear handler msg!........", new Object[0]);
+            return;
+          }
+          localMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(localMsgBackupSessionTask.jdField_a_of_type_Short + 1));
+          this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.b(this.jdField_a_of_type_Long, localMsgBackupSessionTask.jdField_a_of_type_Long, paramLong1, localMsgBackupSessionTask.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSendComplete  called, please check your mFidMList whether contains this task, before execute, should add in mFidMList!, path = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", fid = ");
+      ((StringBuilder)localObject).append(paramLong1);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public void a(long paramLong, boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((this.jdField_d_of_type_JavaLangInteger.intValue() == 0) || (this.jdField_c_of_type_JavaLangInteger.intValue() == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestNotifyServer server ip and port is not set! this method will be called in processConfirmRsp!");
-      }
-    }
-    for (;;)
+    if ((this.jdField_d_of_type_JavaLangInteger.intValue() != 0) && (this.jdField_c_of_type_JavaLangInteger.intValue() != 0))
     {
+      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_d_of_type_Boolean))
+      {
+        if (a())
+        {
+          MsgBackupUtil.b("requestNotifyServer called------>MBRROLE_CLIENT  operator is closed! please clear handler msg!........", new Object[0]);
+          return;
+        }
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("requestNotifyServer, isTcpDetected = ");
+          ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
+        }
+        long l = MsgBackupUtil.a();
+        if (!TextUtils.isEmpty(paramString))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("postinfo?fid=");
+          ((StringBuilder)localObject).append(l);
+          ((StringBuilder)localObject).append("&chatUin=");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("&chatType=");
+          ((StringBuilder)localObject).append(MsgBackupUtil.b(paramInt));
+          paramString = ((StringBuilder)localObject).toString();
+          MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", paramString, new Object[0]);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue()));
+          ((StringBuilder)localObject).append(MsgBackupUtil.b(paramString, this.jdField_a_of_type_JavaLangString));
+          paramString = ((StringBuilder)localObject).toString();
+        }
+        for (;;)
+        {
+          break;
+          if (paramBoolean)
+          {
+            paramString = new StringBuilder();
+            paramString.append("postinfo?fid=");
+            paramString.append(l);
+            paramString.append("&ip=");
+            paramString.append(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+            paramString.append("&tcpport=");
+            paramString.append(this.jdField_b_of_type_JavaLangInteger);
+            paramString.append("&udpport=");
+            paramString.append(this.jdField_a_of_type_JavaLangInteger);
+            paramString = paramString.toString();
+            MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", paramString, new Object[0]);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue()));
+            ((StringBuilder)localObject).append(MsgBackupUtil.b(paramString, this.jdField_a_of_type_JavaLangString));
+            paramString = ((StringBuilder)localObject).toString();
+          }
+          else
+          {
+            paramString = new StringBuilder();
+            paramString.append("postinfo?fid=");
+            paramString.append(l);
+            paramString = paramString.toString();
+            MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", paramString, new Object[0]);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue()));
+            ((StringBuilder)localObject).append(MsgBackupUtil.b(paramString, this.jdField_a_of_type_JavaLangString));
+            paramString = ((StringBuilder)localObject).toString();
+          }
+        }
+        if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null))
+        {
+          localObject = new MsgBackupSessionTask();
+          ((MsgBackupSessionTask)localObject).jdField_a_of_type_Short = 0;
+          ((MsgBackupSessionTask)localObject).jdField_a_of_type_Boolean = false;
+          ((MsgBackupSessionTask)localObject).c = paramString;
+          MsgBackupManager.a().g.put(Long.valueOf(l), localObject);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("requestNotifyServer fid = ");
+            ((StringBuilder)localObject).append(l);
+            ((StringBuilder)localObject).append(", url = ");
+            ((StringBuilder)localObject).append(paramString);
+            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
+          }
+          this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(paramLong, l, paramString);
+        }
+      }
+      else
+      {
+        MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "requestNotifyServer is called error!", new Object[0]);
+      }
       return;
-      if ((this.jdField_a_of_type_Int != 1) || (!this.jdField_d_of_type_Boolean)) {
-        break;
-      }
-      if (a())
-      {
-        MsgBackupUtil.b("requestNotifyServer called------>MBRROLE_CLIENT  operator is closed! please clear handler msg!........", new Object[0]);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestNotifyServer, isTcpDetected = " + this.jdField_d_of_type_Boolean);
-      }
-      long l = MsgBackupUtil.a();
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = "postinfo?fid=" + l + "&chatUin=" + paramString + "&chatType=" + MsgBackupUtil.b(paramInt);
-        MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", paramString, new Object[0]);
-        paramString = MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue()) + MsgBackupUtil.b(paramString, this.jdField_a_of_type_JavaLangString);
-      }
-      while ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null))
-      {
-        MsgBackupSessionTask localMsgBackupSessionTask = new MsgBackupSessionTask();
-        localMsgBackupSessionTask.jdField_a_of_type_Short = 0;
-        localMsgBackupSessionTask.jdField_a_of_type_Boolean = false;
-        localMsgBackupSessionTask.c = paramString;
-        MsgBackupManager.a().g.put(Long.valueOf(l), localMsgBackupSessionTask);
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestNotifyServer fid = " + l + ", url = " + paramString);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(paramLong, l, paramString);
-        return;
-        if (paramBoolean)
-        {
-          paramString = "postinfo?fid=" + l + "&ip=" + this.jdField_a_of_type_ArrayOfJavaLangString[0] + "&tcpport=" + this.jdField_b_of_type_JavaLangInteger + "&udpport=" + this.jdField_a_of_type_JavaLangInteger;
-          MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", paramString, new Object[0]);
-          paramString = MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue()) + MsgBackupUtil.b(paramString, this.jdField_a_of_type_JavaLangString);
-        }
-        else
-        {
-          paramString = "postinfo?fid=" + l;
-          MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", paramString, new Object[0]);
-          paramString = MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue()) + MsgBackupUtil.b(paramString, this.jdField_a_of_type_JavaLangString);
-        }
-      }
     }
-    MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "requestNotifyServer is called error!", new Object[0]);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestNotifyServer server ip and port is not set! this method will be called in processConfirmRsp!");
+    }
   }
   
   public void a(IMsgBackupUICallback paramIMsgBackupUICallback)
@@ -1801,15 +2185,16 @@ public class MsgBackupTransportProcessor
   
   public void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Int == 1) {
+    int i = this.jdField_a_of_type_Int;
+    if (i == 1)
+    {
       if (this.jdField_a_of_type_JavaLangInteger.intValue() != 0) {
         this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt);
       }
     }
-    while ((this.jdField_a_of_type_Int != 2) || (this.jdField_c_of_type_JavaLangInteger.intValue() == 0)) {
-      return;
+    else if ((i == 2) && (this.jdField_c_of_type_JavaLangInteger.intValue() != 0)) {
+      this.jdField_c_of_type_JavaLangInteger = Integer.valueOf(paramInt);
     }
-    this.jdField_c_of_type_JavaLangInteger = Integer.valueOf(paramInt);
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong)
@@ -1843,46 +2228,50 @@ public class MsgBackupTransportProcessor
   
   public void a(String paramString1, String paramString2, long paramLong)
   {
-    if (a()) {
-      MsgBackupUtil.b("clientGetResFile called---> operator is closed! please clear handler msg!........", new Object[0]);
-    }
-    do
+    if (a())
     {
+      MsgBackupUtil.b("clientGetResFile called---> operator is closed! please clear handler msg!........", new Object[0]);
       return;
-      MsgBackupReporter.a();
-      localObject = MsgBackupReporter.a;
-      ((MsgBackupReportData)localObject).g += 1L;
-      localObject = MsgBackupManager.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
-      if ((paramString1 != null) || (paramString2 != null)) {
-        break;
-      }
-      MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "clientGetResFile MsgBackupManager.curDealUin = %s, MsgBackupManager.curDealType = %d", new Object[] { MsgBackupManager.jdField_d_of_type_JavaLangString, Integer.valueOf(MsgBackupManager.jdField_c_of_type_Int) });
-      paramString1 = (MsgBackupSessionInfo)((ConcurrentHashMap)localObject).get(MsgBackupUtil.b(MsgBackupManager.jdField_d_of_type_JavaLangString, MsgBackupUtil.b(MsgBackupManager.jdField_c_of_type_Int)));
-    } while (paramString1 == null);
-    MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "clientGetResFile sessionInfo is not null reslist size = %d, dbsize = %d", new Object[] { Integer.valueOf(paramString1.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size()), Integer.valueOf(paramString1.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size()) });
-    if ((paramString1.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0) && (paramString1.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0)) {
-      a(6);
     }
-    paramString1.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    return;
+    MsgBackupReporter.a();
+    Object localObject1 = MsgBackupReporter.a;
+    ((MsgBackupReportData)localObject1).g += 1L;
+    localObject1 = MsgBackupManager.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if ((paramString1 == null) && (paramString2 == null))
+    {
+      MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "clientGetResFile MsgBackupManager.curDealUin = %s, MsgBackupManager.curDealType = %d", new Object[] { MsgBackupManager.jdField_d_of_type_JavaLangString, Integer.valueOf(MsgBackupManager.jdField_c_of_type_Int) });
+      paramString1 = (MsgBackupSessionInfo)((ConcurrentHashMap)localObject1).get(MsgBackupUtil.b(MsgBackupManager.jdField_d_of_type_JavaLangString, MsgBackupUtil.b(MsgBackupManager.jdField_c_of_type_Int)));
+      if (paramString1 != null)
+      {
+        MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "clientGetResFile sessionInfo is not null reslist size = %d, dbsize = %d", new Object[] { Integer.valueOf(paramString1.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size()), Integer.valueOf(paramString1.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size()) });
+        if ((paramString1.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0) && (paramString1.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0)) {
+          a(6);
+        }
+        paramString1.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      }
+      return;
+    }
     new File(paramString2).getParentFile().mkdirs();
     long l = MsgBackupUtil.a();
     paramString1 = MsgBackupUtil.b(String.format("getres?fid=%d&filepath=%s", new Object[] { Long.valueOf(l), paramString1 }), this.jdField_a_of_type_JavaLangString);
-    paramString1 = MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue()) + paramString1;
-    MsgBackupSessionTask localMsgBackupSessionTask = new MsgBackupSessionTask();
-    localMsgBackupSessionTask.jdField_a_of_type_Short = 0;
-    localMsgBackupSessionTask.jdField_a_of_type_Boolean = true;
-    localMsgBackupSessionTask.jdField_b_of_type_JavaLangString = paramString2;
-    localMsgBackupSessionTask.c = paramString1;
-    localMsgBackupSessionTask.jdField_b_of_type_Boolean = MsgBackupUtil.a(paramLong);
-    localMsgBackupSessionTask.jdField_b_of_type_Long = paramLong;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue()));
+    ((StringBuilder)localObject2).append(paramString1);
+    paramString1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new MsgBackupSessionTask();
+    ((MsgBackupSessionTask)localObject2).jdField_a_of_type_Short = 0;
+    ((MsgBackupSessionTask)localObject2).jdField_a_of_type_Boolean = true;
+    ((MsgBackupSessionTask)localObject2).jdField_b_of_type_JavaLangString = paramString2;
+    ((MsgBackupSessionTask)localObject2).c = paramString1;
+    ((MsgBackupSessionTask)localObject2).jdField_b_of_type_Boolean = MsgBackupUtil.a(paramLong);
+    ((MsgBackupSessionTask)localObject2).jdField_b_of_type_Long = paramLong;
     MsgBackupReportData localMsgBackupReportData = MsgBackupReporter.a;
     localMsgBackupReportData.e += paramLong;
-    Object localObject = (MsgBackupSessionInfo)((ConcurrentHashMap)localObject).get(MsgBackupUtil.b(MsgBackupManager.jdField_d_of_type_JavaLangString, MsgBackupUtil.b(MsgBackupManager.jdField_c_of_type_Int)));
-    if (localObject != null) {
-      ((MsgBackupSessionInfo)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(l), localMsgBackupSessionTask);
+    localObject1 = (MsgBackupSessionInfo)((ConcurrentHashMap)localObject1).get(MsgBackupUtil.b(MsgBackupManager.jdField_d_of_type_JavaLangString, MsgBackupUtil.b(MsgBackupManager.jdField_c_of_type_Int)));
+    if (localObject1 != null) {
+      ((MsgBackupSessionInfo)localObject1).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(l), localObject2);
     }
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, l, paramString1, paramString2, localMsgBackupSessionTask.jdField_b_of_type_Boolean, localMsgBackupSessionTask.jdField_b_of_type_Long, true);
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, l, paramString1, paramString2, ((MsgBackupSessionTask)localObject2).jdField_b_of_type_Boolean, ((MsgBackupSessionTask)localObject2).jdField_b_of_type_Long, true);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -1909,10 +2298,13 @@ public class MsgBackupTransportProcessor
         if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null)
         {
           int i = a(paramConcurrentHashMap);
-          if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-            this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
+          paramConcurrentHashMap = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+          if (paramConcurrentHashMap != null) {
+            paramConcurrentHashMap.a(i, MsgBackupManager.jdField_b_of_type_Int);
           }
-          if ((i != MsgBackupManager.jdField_b_of_type_Int) || (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback == null)) {}
+          if (i == MsgBackupManager.jdField_b_of_type_Int) {
+            paramConcurrentHashMap = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+          }
         }
       }
     }
@@ -1927,90 +2319,113 @@ public class MsgBackupTransportProcessor
   
   public void a(boolean paramBoolean, long paramLong1, long paramLong2)
   {
+    int i = this.jdField_a_of_type_Int;
     Object localObject;
     MsgBackupSessionTask localMsgBackupSessionTask;
-    if (2 == this.jdField_a_of_type_Int)
+    StringBuilder localStringBuilder;
+    if (2 == i)
     {
       localObject = MsgBackupManager.a().jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap;
       localMsgBackupSessionTask = (MsgBackupSessionTask)((ConcurrentHashMap)localObject).get(Long.valueOf(paramLong1));
       if (localMsgBackupSessionTask != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendMessage, success = " + paramBoolean + ", cookie = " + paramLong1 + ", role = MBRROLE_SERVER");
-        }
-        if (!paramBoolean) {
-          break label98;
-        }
-        ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
-      }
-    }
-    label98:
-    int i;
-    do
-    {
-      do
-      {
-        do
+        if (QLog.isColorLevel())
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (!a()) {
-                  break;
-                }
-              } while (!QLog.isColorLevel());
-              QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendMessage role = MBRROLE_CLIENT: panic error!");
-              return;
-              if (localMsgBackupSessionTask.jdField_a_of_type_Short > 3)
-              {
-                ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
-                QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, " mfidMlist fileTask receivedCompleted retry over time task = " + localMsgBackupSessionTask);
-                return;
-              }
-              localMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(localMsgBackupSessionTask.jdField_a_of_type_Short + 1));
-              localObject = localMsgBackupSessionTask.jdField_a_of_type_JavaLangString;
-              i = localMsgBackupSessionTask.jdField_a_of_type_Int;
-              if (QLog.isColorLevel()) {
-                QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendMessage role = MBRROLE_CLIENT: " + localMsgBackupSessionTask);
-              }
-            } while (TextUtils.isEmpty((CharSequence)localObject));
-            this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, i, (String)localObject, paramLong1);
-            return;
-          } while (1 != this.jdField_a_of_type_Int);
-          localObject = MsgBackupManager.a().jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap;
-          localMsgBackupSessionTask = (MsgBackupSessionTask)((ConcurrentHashMap)localObject).get(Long.valueOf(paramLong1));
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendMessage, success = " + paramBoolean + ", cookie = " + paramLong1 + ", role = MBRROLE_CLIENT");
-          }
-        } while (localMsgBackupSessionTask == null);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onSendMessage, success = ");
+          localStringBuilder.append(paramBoolean);
+          localStringBuilder.append(", cookie = ");
+          localStringBuilder.append(paramLong1);
+          localStringBuilder.append(", role = MBRROLE_SERVER");
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+        }
         if (paramBoolean)
         {
           ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
           return;
         }
-        if (!a()) {
-          break;
+        if (a())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendMessage role = MBRROLE_CLIENT: panic error!");
+          }
+          return;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendMessage role = MBRROLE_CLIENT: panic error!");
-      return;
-      if (localMsgBackupSessionTask.jdField_a_of_type_Short > 3)
+        if (localMsgBackupSessionTask.jdField_a_of_type_Short > 3)
+        {
+          ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" mfidMlist fileTask receivedCompleted retry over time task = ");
+          ((StringBuilder)localObject).append(localMsgBackupSessionTask);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
+          return;
+        }
+        localMsgBackupSessionTask.jdField_a_of_type_Short = ((short)(localMsgBackupSessionTask.jdField_a_of_type_Short + 1));
+        localObject = localMsgBackupSessionTask.jdField_a_of_type_JavaLangString;
+        i = localMsgBackupSessionTask.jdField_a_of_type_Int;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onSendMessage role = MBRROLE_CLIENT: ");
+          localStringBuilder.append(localMsgBackupSessionTask);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, i, (String)localObject, paramLong1);
+        }
+      }
+    }
+    else if (1 == i)
+    {
+      localObject = MsgBackupManager.a().jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap;
+      localMsgBackupSessionTask = (MsgBackupSessionTask)((ConcurrentHashMap)localObject).get(Long.valueOf(paramLong1));
+      if (QLog.isColorLevel())
       {
-        ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, " mfidMlist fileTask receivedCompleted retry over time task = " + localMsgBackupSessionTask);
-        return;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onSendMessage, success = ");
+        localStringBuilder.append(paramBoolean);
+        localStringBuilder.append(", cookie = ");
+        localStringBuilder.append(paramLong1);
+        localStringBuilder.append(", role = MBRROLE_CLIENT");
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
       }
-      localObject = localMsgBackupSessionTask.jdField_a_of_type_JavaLangString;
-      i = localMsgBackupSessionTask.jdField_a_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendMessage  role = MBRROLE_CLIENT: " + localMsgBackupSessionTask);
+      if (localMsgBackupSessionTask != null)
+      {
+        if (paramBoolean)
+        {
+          ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
+          return;
+        }
+        if (a())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onSendMessage role = MBRROLE_CLIENT: panic error!");
+          }
+          return;
+        }
+        if (localMsgBackupSessionTask.jdField_a_of_type_Short > 3)
+        {
+          ((ConcurrentHashMap)localObject).remove(Long.valueOf(paramLong1));
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" mfidMlist fileTask receivedCompleted retry over time task = ");
+          ((StringBuilder)localObject).append(localMsgBackupSessionTask);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
+          return;
+        }
+        localObject = localMsgBackupSessionTask.jdField_a_of_type_JavaLangString;
+        i = localMsgBackupSessionTask.jdField_a_of_type_Int;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onSendMessage  role = MBRROLE_CLIENT: ");
+          localStringBuilder.append(localMsgBackupSessionTask);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, i, (String)localObject, paramLong1);
+        }
       }
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, i, (String)localObject, paramLong1);
+    }
   }
   
   protected boolean a()
@@ -2020,65 +2435,80 @@ public class MsgBackupTransportProcessor
   
   public boolean a(int paramInt)
   {
-    boolean bool2 = false;
-    for (;;)
+    try
     {
-      try
+      if ((!this.jdField_d_of_type_Boolean) && (paramInt == 3))
       {
-        if ((!this.jdField_d_of_type_Boolean) && (paramInt == 3))
-        {
-          this.e = true;
-          MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "requestNextSessionDb tcp is disconnect!", new Object[0]);
-          return bool2;
-        }
+        this.e = true;
+        MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "requestNextSessionDb tcp is disconnect!", new Object[0]);
+        return false;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" requestNextSessionDb !, from = ");
+        ((StringBuilder)localObject1).append(paramInt);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject1).toString());
+      }
+      Object localObject1 = MsgBackupManager.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
+      if ((paramInt == 1) || (paramInt == 6)) {
+        a((ConcurrentHashMap)localObject1);
+      }
+      boolean bool;
+      if (!TextUtils.isEmpty(MsgBackupManager.jdField_d_of_type_JavaLangString)) {
+        bool = a((ConcurrentHashMap)localObject1);
+      } else {
+        bool = b((ConcurrentHashMap)localObject1);
+      }
+      if ((((ConcurrentHashMap)localObject1).size() == 0) || (TextUtils.isEmpty(MsgBackupManager.jdField_d_of_type_JavaLangString)))
+      {
+        j(5);
         if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, " requestNextSessionDb !, from = " + paramInt);
-        }
-        ConcurrentHashMap localConcurrentHashMap1 = MsgBackupManager.a().jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
-        if ((paramInt == 1) || (paramInt == 6)) {
-          a(localConcurrentHashMap1);
-        }
-        boolean bool1;
-        if (!TextUtils.isEmpty(MsgBackupManager.jdField_d_of_type_JavaLangString))
-        {
-          bool1 = a(localConcurrentHashMap1);
-          if ((localConcurrentHashMap1.size() == 0) || (TextUtils.isEmpty(MsgBackupManager.jdField_d_of_type_JavaLangString)))
-          {
-            j(5);
-            if (QLog.isColorLevel()) {
-              QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestNextSessionDb called with warning step1");
-            }
-          }
-          bool2 = bool1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestNextSessionDb called with from = " + paramInt + ", ret = " + bool1 + ", sessionCount = " + MsgBackupManager.jdField_b_of_type_Int);
-            bool2 = bool1;
-          }
-        }
-        else
-        {
-          bool1 = b(localConcurrentHashMap2);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestNextSessionDb called with warning step1");
         }
       }
-      finally {}
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("requestNextSessionDb called with from = ");
+        ((StringBuilder)localObject1).append(paramInt);
+        ((StringBuilder)localObject1).append(", ret = ");
+        ((StringBuilder)localObject1).append(bool);
+        ((StringBuilder)localObject1).append(", sessionCount = ");
+        ((StringBuilder)localObject1).append(MsgBackupManager.jdField_b_of_type_Int);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject1).toString());
+      }
+      return bool;
     }
+    finally {}
   }
   
   protected boolean a(ConcurrentHashMap<String, MsgBackupSessionInfo> paramConcurrentHashMap)
   {
-    MsgBackupSessionInfo localMsgBackupSessionInfo = (MsgBackupSessionInfo)paramConcurrentHashMap.get(MsgBackupUtil.b(MsgBackupManager.jdField_d_of_type_JavaLangString, MsgBackupUtil.b(MsgBackupManager.jdField_c_of_type_Int)));
-    if (localMsgBackupSessionInfo != null)
+    Object localObject = (MsgBackupSessionInfo)paramConcurrentHashMap.get(MsgBackupUtil.b(MsgBackupManager.jdField_d_of_type_JavaLangString, MsgBackupUtil.b(MsgBackupManager.jdField_c_of_type_Int)));
+    if (localObject != null)
     {
-      if (localMsgBackupSessionInfo.jdField_c_of_type_Boolean)
+      if (((MsgBackupSessionInfo)localObject).jdField_c_of_type_Boolean)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, " requestNextSessionDb !, last uin = " + MsgBackupManager.jdField_d_of_type_JavaLangString + ", uintype = " + MsgBackupManager.jdField_c_of_type_Int);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" requestNextSessionDb !, last uin = ");
+          ((StringBuilder)localObject).append(MsgBackupManager.jdField_d_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(", uintype = ");
+          ((StringBuilder)localObject).append(MsgBackupManager.jdField_c_of_type_Int);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
         }
         return a(paramConcurrentHashMap, false);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "current session not completed! requestNextSessionDb !, current uin = " + MsgBackupManager.jdField_d_of_type_JavaLangString + ", uintype = " + MsgBackupManager.jdField_c_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        paramConcurrentHashMap = new StringBuilder();
+        paramConcurrentHashMap.append("current session not completed! requestNextSessionDb !, current uin = ");
+        paramConcurrentHashMap.append(MsgBackupManager.jdField_d_of_type_JavaLangString);
+        paramConcurrentHashMap.append(", uintype = ");
+        paramConcurrentHashMap.append(MsgBackupManager.jdField_c_of_type_Int);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, paramConcurrentHashMap.toString());
       }
     }
     return false;
@@ -2096,8 +2526,12 @@ public class MsgBackupTransportProcessor
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "onDestroy called! operator = " + this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDestroy called! operator = ");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
     }
     a();
     e(2);
@@ -2117,8 +2551,9 @@ public class MsgBackupTransportProcessor
   
   public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.b(paramBoolean);
+    IMsgBackupUICallback localIMsgBackupUICallback = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+    if (localIMsgBackupUICallback != null) {
+      localIMsgBackupUICallback.h_(paramBoolean);
     }
   }
   
@@ -2129,66 +2564,95 @@ public class MsgBackupTransportProcessor
   
   protected boolean b(ConcurrentHashMap<String, MsgBackupSessionInfo> paramConcurrentHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, " requestNextSessionDb !, last uin = " + MsgBackupManager.jdField_d_of_type_JavaLangString + ", uintype = " + MsgBackupManager.jdField_c_of_type_Int);
-    }
-    Iterator localIterator = paramConcurrentHashMap.values().iterator();
-    MsgBackupSessionInfo localMsgBackupSessionInfo;
-    while (localIterator.hasNext())
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      localMsgBackupSessionInfo = (MsgBackupSessionInfo)localIterator.next();
-      if (!localMsgBackupSessionInfo.jdField_b_of_type_Boolean)
-      {
-        if (localMsgBackupSessionInfo.jdField_a_of_type_Long > 0L) {
-          break label266;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, " requestNextSessionDb !,  curDealUin  null! dbsize 等于 0 ！客户端不会去请求了，只是通知server端，该会话已经接受完成了！uin = " + localMsgBackupSessionInfo.jdField_a_of_type_JavaLangString + ", uintype = " + localMsgBackupSessionInfo.jdField_a_of_type_Int + ", dbSize = " + localMsgBackupSessionInfo.jdField_a_of_type_Long);
-        }
-        localMsgBackupSessionInfo.jdField_c_of_type_Boolean = true;
-        localMsgBackupSessionInfo.jdField_b_of_type_Boolean = true;
-        a(localMsgBackupSessionInfo);
-        if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null)
-        {
-          i = a(paramConcurrentHashMap);
-          if ((this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) && (!this.jdField_a_of_type_Boolean))
-          {
-            this.jdField_a_of_type_Boolean = true;
-            this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.c(true);
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-            this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
-          }
-          if ((i == MsgBackupManager.jdField_b_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null)) {
-            MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "session transport completed! dbSize is 0------------->", new Object[0]);
-          }
-        }
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(" requestNextSessionDb !, last uin = ");
+      ((StringBuilder)localObject1).append(MsgBackupManager.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(", uintype = ");
+      ((StringBuilder)localObject1).append(MsgBackupManager.jdField_c_of_type_Int);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject1).toString());
     }
+    Object localObject2 = paramConcurrentHashMap.values().iterator();
+    do
+    {
+      do
+      {
+        do
+        {
+          boolean bool2 = ((Iterator)localObject2).hasNext();
+          bool1 = false;
+          if (!bool2) {
+            break;
+          }
+          localObject1 = (MsgBackupSessionInfo)((Iterator)localObject2).next();
+        } while (((MsgBackupSessionInfo)localObject1).jdField_b_of_type_Boolean);
+        if (((MsgBackupSessionInfo)localObject1).jdField_a_of_type_Long > 0L) {
+          break;
+        }
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" requestNextSessionDb !,  curDealUin  null! dbsize 等于 0 ！客户端不会去请求了，只是通知server端，该会话已经接受完成了！uin = ");
+          localStringBuilder.append(((MsgBackupSessionInfo)localObject1).jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(", uintype = ");
+          localStringBuilder.append(((MsgBackupSessionInfo)localObject1).jdField_a_of_type_Int);
+          localStringBuilder.append(", dbSize = ");
+          localStringBuilder.append(((MsgBackupSessionInfo)localObject1).jdField_a_of_type_Long);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+        }
+        ((MsgBackupSessionInfo)localObject1).jdField_c_of_type_Boolean = true;
+        ((MsgBackupSessionInfo)localObject1).jdField_b_of_type_Boolean = true;
+        a((MsgBackupSessionInfo)localObject1);
+      } while (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback == null);
+      i = a(paramConcurrentHashMap);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+      if ((localObject1 != null) && (!this.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        ((IMsgBackupUICallback)localObject1).c(true);
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+      if (localObject1 != null) {
+        ((IMsgBackupUICallback)localObject1).a(i, MsgBackupManager.jdField_b_of_type_Int);
+      }
+    } while ((i != MsgBackupManager.jdField_b_of_type_Int) || (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback == null));
+    MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "session transport completed! dbSize is 0------------->", new Object[0]);
     return false;
-    label266:
-    localMsgBackupSessionInfo.jdField_b_of_type_Boolean = true;
-    MsgBackupManager.jdField_d_of_type_JavaLangString = localMsgBackupSessionInfo.jdField_a_of_type_JavaLangString;
-    MsgBackupManager.jdField_c_of_type_Int = localMsgBackupSessionInfo.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, " requestNextSessionDb !, uin = " + MsgBackupManager.jdField_d_of_type_JavaLangString + ", uintype = " + MsgBackupManager.jdField_c_of_type_Int + ", dbsize = " + localMsgBackupSessionInfo.jdField_a_of_type_Long);
+    ((MsgBackupSessionInfo)localObject1).jdField_b_of_type_Boolean = true;
+    MsgBackupManager.jdField_d_of_type_JavaLangString = ((MsgBackupSessionInfo)localObject1).jdField_a_of_type_JavaLangString;
+    MsgBackupManager.jdField_c_of_type_Int = ((MsgBackupSessionInfo)localObject1).jdField_a_of_type_Int;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" requestNextSessionDb !, uin = ");
+      ((StringBuilder)localObject2).append(MsgBackupManager.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(", uintype = ");
+      ((StringBuilder)localObject2).append(MsgBackupManager.jdField_c_of_type_Int);
+      ((StringBuilder)localObject2).append(", dbsize = ");
+      ((StringBuilder)localObject2).append(((MsgBackupSessionInfo)localObject1).jdField_a_of_type_Long);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject2).toString());
     }
     int i = a(paramConcurrentHashMap);
-    if ((this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) && (!this.jdField_a_of_type_Boolean))
+    paramConcurrentHashMap = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+    if ((paramConcurrentHashMap != null) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.c(true);
+      paramConcurrentHashMap.c(true);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(i, MsgBackupManager.jdField_b_of_type_Int);
+    paramConcurrentHashMap = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+    if (paramConcurrentHashMap != null) {
+      paramConcurrentHashMap.a(i, MsgBackupManager.jdField_b_of_type_Int);
     }
     if (i == MsgBackupManager.jdField_b_of_type_Int)
     {
       MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "session transport completed!------------->", new Object[0]);
       return false;
     }
-    a(this.jdField_a_of_type_Long, localMsgBackupSessionInfo.jdField_a_of_type_JavaLangString, localMsgBackupSessionInfo.jdField_a_of_type_Int, false);
-    return true;
+    a(this.jdField_a_of_type_Long, ((MsgBackupSessionInfo)localObject1).jdField_a_of_type_JavaLangString, ((MsgBackupSessionInfo)localObject1).jdField_a_of_type_Int, false);
+    boolean bool1 = true;
+    return bool1;
   }
   
   public int c()
@@ -2199,8 +2663,12 @@ public class MsgBackupTransportProcessor
   public void c()
   {
     int i = MsgBackupAuthProcessor.a().a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "exit ---------> bizType = " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("exit ---------> bizType = ");
+      localStringBuilder.append(i);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
     }
     if (i == 3)
     {
@@ -2234,57 +2702,76 @@ public class MsgBackupTransportProcessor
   
   public void d()
   {
-    String str = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "exitUdpNotify create exit : " + str + ", isUdpDetected = " + this.jdField_c_of_type_Boolean);
-    }
-    if (this.jdField_c_of_type_Boolean) {
-      i(259);
-    }
-    label64:
-    long l;
-    do
+    Object localObject1 = c();
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        do
-        {
-          break label64;
-          do
-          {
-            return;
-          } while (this.jdField_a_of_type_Int != 1);
-          if ((this.jdField_d_of_type_JavaLangInteger.intValue() != 0) && (this.jdField_c_of_type_JavaLangInteger.intValue() != 0)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "exitForTcp called- for client-------------->>>");
-        return;
-      } while (!this.jdField_d_of_type_Boolean);
-      if (a())
-      {
-        MsgBackupUtil.b("exiNotifyForTransfer called------> operator is closed! please clear handler msg!........", new Object[0]);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "exitForTcp, isTcpDetected = " + this.jdField_d_of_type_Boolean);
-      }
-      l = MsgBackupUtil.a();
-      str = MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue());
-      localObject = "postinfo?fid=" + l + "&exit=1";
-      MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", (String)localObject, new Object[0]);
-      localObject = MsgBackupUtil.b((String)localObject, this.jdField_a_of_type_JavaLangString);
-      str = str + (String)localObject;
-    } while ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy == null));
-    Object localObject = new MsgBackupSessionTask();
-    ((MsgBackupSessionTask)localObject).jdField_a_of_type_Short = 0;
-    ((MsgBackupSessionTask)localObject).jdField_a_of_type_Boolean = false;
-    ((MsgBackupSessionTask)localObject).c = str;
-    MsgBackupManager.a().g.put(Long.valueOf(l), localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "exitForTcp fid = " + l + ", url = " + str);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("exitUdpNotify create exit : ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(", isUdpDetected = ");
+      ((StringBuilder)localObject2).append(this.jdField_c_of_type_Boolean);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject2).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, l, str);
+    if (this.jdField_c_of_type_Boolean)
+    {
+      i(259);
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 1) {
+      if ((this.jdField_d_of_type_JavaLangInteger.intValue() != 0) && (this.jdField_c_of_type_JavaLangInteger.intValue() != 0))
+      {
+        if (this.jdField_d_of_type_Boolean)
+        {
+          if (a())
+          {
+            MsgBackupUtil.b("exiNotifyForTransfer called------> operator is closed! please clear handler msg!........", new Object[0]);
+            return;
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("exitForTcp, isTcpDetected = ");
+            ((StringBuilder)localObject1).append(this.jdField_d_of_type_Boolean);
+            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject1).toString());
+          }
+          long l = MsgBackupUtil.a();
+          localObject1 = MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("postinfo?fid=");
+          ((StringBuilder)localObject2).append(l);
+          ((StringBuilder)localObject2).append("&exit=1");
+          localObject2 = ((StringBuilder)localObject2).toString();
+          MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", (String)localObject2, new Object[0]);
+          localObject2 = MsgBackupUtil.b((String)localObject2, this.jdField_a_of_type_JavaLangString);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append((String)localObject2);
+          localObject1 = localStringBuilder.toString();
+          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null))
+          {
+            localObject2 = new MsgBackupSessionTask();
+            ((MsgBackupSessionTask)localObject2).jdField_a_of_type_Short = 0;
+            ((MsgBackupSessionTask)localObject2).jdField_a_of_type_Boolean = false;
+            ((MsgBackupSessionTask)localObject2).c = ((String)localObject1);
+            MsgBackupManager.a().g.put(Long.valueOf(l), localObject2);
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("exitForTcp fid = ");
+              ((StringBuilder)localObject2).append(l);
+              ((StringBuilder)localObject2).append(", url = ");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject2).toString());
+            }
+            this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, l, (String)localObject1);
+          }
+        }
+      }
+      else if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "exitForTcp called- for client-------------->>>");
+      }
+    }
   }
   
   public void d(int paramInt)
@@ -2306,226 +2793,298 @@ public class MsgBackupTransportProcessor
   
   public void e()
   {
-    Object localObject = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "exitUdpNotify create exit : " + (String)localObject);
+    Object localObject1 = c();
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("exitUdpNotify create exit : ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject2).toString());
     }
     if (this.jdField_c_of_type_Boolean)
     {
       i(259);
       return;
     }
-    localObject = new JSONArray();
-    JSONObject localJSONObject = new JSONObject();
+    localObject1 = new JSONArray();
+    Object localObject2 = new JSONObject();
     try
     {
-      localJSONObject.put("cmd", "exit");
-      localJSONObject.put("sig", MsgBackupAuthProcessor.a().a());
-      ((JSONArray)localObject).put(localJSONObject);
-      MsgBackupPushHandler.a().a(((JSONArray)localObject).toString());
-      return;
+      ((JSONObject)localObject2).put("cmd", "exit");
+      ((JSONObject)localObject2).put("sig", MsgBackupAuthProcessor.a().a());
+      ((JSONArray)localObject1).put(localObject2);
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    MsgBackupPushHandler.a().a(((JSONArray)localObject1).toString());
   }
   
   public void e(int paramInt)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null) && (!a()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "stop called! operator = " + this.jdField_a_of_type_Long + ". from = " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("stop called! operator = ");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(". from = ");
+        localStringBuilder.append(paramInt);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
       }
       MsgBackupManager.a().b();
-      if (Looper.getMainLooper() == Looper.myLooper()) {
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
         ThreadManager.getSubThreadHandler().post(new MsgBackupTransportProcessor.5(this));
+        return;
       }
+      f();
     }
-    else
-    {
-      return;
-    }
-    f();
   }
   
   public void f(int paramInt)
   {
-    if (a()) {
+    if (a())
+    {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setPeekPoint start panic error!");
       }
-    }
-    for (;;)
-    {
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null)
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null)
+    {
+      StringBuilder localStringBuilder;
+      if (paramInt == 2)
       {
-        if (paramInt == 2)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setPeekPoint start for MBRROLE_SERVER");
-          }
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setPeekPoint clientIP = " + a() + ", clientUdpPort = " + this.jdField_a_of_type_JavaLangInteger + ", clientTcpPort = " + this.jdField_b_of_type_JavaLangInteger);
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setPeekPoint serverIP = " + b() + ", serverUdpPort = " + this.jdField_c_of_type_JavaLangInteger + ", serverTcpPort = " + this.jdField_d_of_type_JavaLangInteger);
-          this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.setPeerEndpoint(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue());
+        if (QLog.isColorLevel()) {
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setPeekPoint start for MBRROLE_SERVER");
         }
-        while (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setPeekPoint end， operator = " + this.jdField_a_of_type_Long);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setPeekPoint start for MBRROLE_CLIENT");
-          }
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setPeekPoint clientIP = " + a() + ", clientUdpPort = " + this.jdField_a_of_type_JavaLangInteger + ", clientTcpPort = " + this.jdField_b_of_type_JavaLangInteger);
-          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setPeekPoint serverIP = " + b() + ", serverUdpPort = " + this.jdField_c_of_type_JavaLangInteger + ", serverTcpPort = " + this.jdField_d_of_type_JavaLangInteger);
-          this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.setPeerEndpoint(this.jdField_a_of_type_Long, this.jdField_b_of_type_ArrayOfJavaLangString, this.jdField_c_of_type_JavaLangInteger.intValue(), this.jdField_d_of_type_JavaLangInteger.intValue());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setPeekPoint clientIP = ");
+        localStringBuilder.append(a());
+        localStringBuilder.append(", clientUdpPort = ");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangInteger);
+        localStringBuilder.append(", clientTcpPort = ");
+        localStringBuilder.append(this.jdField_b_of_type_JavaLangInteger);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setPeekPoint serverIP = ");
+        localStringBuilder.append(b());
+        localStringBuilder.append(", serverUdpPort = ");
+        localStringBuilder.append(this.jdField_c_of_type_JavaLangInteger);
+        localStringBuilder.append(", serverTcpPort = ");
+        localStringBuilder.append(this.jdField_d_of_type_JavaLangInteger);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+        this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.setPeerEndpoint(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_JavaLangInteger.intValue(), this.jdField_b_of_type_JavaLangInteger.intValue());
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setPeekPoint start for MBRROLE_CLIENT");
         }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setPeekPoint clientIP = ");
+        localStringBuilder.append(a());
+        localStringBuilder.append(", clientUdpPort = ");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangInteger);
+        localStringBuilder.append(", clientTcpPort = ");
+        localStringBuilder.append(this.jdField_b_of_type_JavaLangInteger);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setPeekPoint serverIP = ");
+        localStringBuilder.append(b());
+        localStringBuilder.append(", serverUdpPort = ");
+        localStringBuilder.append(this.jdField_c_of_type_JavaLangInteger);
+        localStringBuilder.append(", serverTcpPort = ");
+        localStringBuilder.append(this.jdField_d_of_type_JavaLangInteger);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
+        this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.setPeerEndpoint(this.jdField_a_of_type_Long, this.jdField_b_of_type_ArrayOfJavaLangString, this.jdField_c_of_type_JavaLangInteger.intValue(), this.jdField_d_of_type_JavaLangInteger.intValue());
+      }
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setPeekPoint end， operator = ");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
       }
     }
   }
   
   public void g(int paramInt)
   {
-    if (a()) {
+    if (a())
+    {
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setEncryptKey panic error!");
       }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy == null) {
       return;
     }
-    if (paramInt == 2) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setEncryptKey start for MBRROLE_SERVER");
-      }
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-      if (!QLog.isColorLevel()) {
-        break;
+      if (paramInt == 2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setEncryptKey start for MBRROLE_SERVER");
+        }
       }
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setEncryptKey end， session = " + this.jdField_a_of_type_Long + ", encryptkey = " + this.jdField_a_of_type_JavaLangString);
-      return;
-      if (QLog.isColorLevel()) {
+      else if (QLog.isColorLevel()) {
         QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "setEncryptKey start for MBRROLE_CLIENT");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setEncryptKey end， session = ");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(", encryptkey = ");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, localStringBuilder.toString());
       }
     }
   }
   
   public void h(int paramInt)
   {
-    if (paramInt != 0) {}
-    for (this.jdField_d_of_type_Boolean = true;; this.jdField_d_of_type_Boolean = false)
-    {
-      if (this.jdField_d_of_type_Boolean) {
-        MsgBackupTimeStats.a("cost_connect_total", null);
-      }
-      MsgBackupReporter.a();
-      MsgBackupReporter.a.jdField_d_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback.a(this.jdField_d_of_type_Boolean);
-      }
-      if ((this.jdField_d_of_type_Boolean) && (this.e))
-      {
-        this.e = false;
-        MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "tcp is disconnect!, before has cached this request msg, so request again!", new Object[0]);
-        a(3);
-      }
-      j(2);
-      return;
+    if (paramInt != 0) {
+      this.jdField_d_of_type_Boolean = true;
+    } else {
+      this.jdField_d_of_type_Boolean = false;
     }
+    if (this.jdField_d_of_type_Boolean) {
+      MsgBackupTimeStats.a("cost_connect_total", null);
+    }
+    MsgBackupReporter.a();
+    MsgBackupReporter.a.jdField_d_of_type_Int = paramInt;
+    IMsgBackupUICallback localIMsgBackupUICallback = this.jdField_a_of_type_ComTencentMobileqqMsgbackupControllerIMsgBackupUICallback;
+    if (localIMsgBackupUICallback != null) {
+      localIMsgBackupUICallback.a(this.jdField_d_of_type_Boolean);
+    }
+    if ((this.jdField_d_of_type_Boolean) && (this.e))
+    {
+      this.e = false;
+      MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", "tcp is disconnect!, before has cached this request msg, so request again!", new Object[0]);
+      a(3);
+    }
+    j(2);
   }
   
   public void i(int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null)
     {
-      if (!this.jdField_c_of_type_Boolean) {
-        break label120;
-      }
-      if (!a()) {
-        break label37;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "sendMessageUdp panic error!");
-      }
-    }
-    label37:
-    label120:
-    while (!QLog.isColorLevel())
-    {
-      long l;
-      do
+      Object localObject;
+      if (this.jdField_c_of_type_Boolean)
       {
-        return;
-        l = MsgBackupUtil.a();
-        String str = a(paramInt, l);
-        this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramInt, str, l);
-      } while (!QLog.isColorLevel());
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "sendMessageUdp udpdetected = " + this.jdField_c_of_type_Boolean + ", cmd = " + paramInt + ", cookieIndex = " + l);
-      return;
+        if (a())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "sendMessageUdp panic error!");
+          }
+          return;
+        }
+        long l = MsgBackupUtil.a();
+        localObject = a(paramInt, l);
+        this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, paramInt, (String)localObject, l);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("sendMessageUdp udpdetected = ");
+          ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
+          ((StringBuilder)localObject).append(", cmd = ");
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append(", cookieIndex = ");
+          ((StringBuilder)localObject).append(l);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("sendMessageUdp is error! please use tcp get! udpdetected = ");
+        ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
+        ((StringBuilder)localObject).append(", cmd = ");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject).toString());
+      }
     }
-    QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "sendMessageUdp is error! please use tcp get! udpdetected = " + this.jdField_c_of_type_Boolean + ", cmd = " + paramInt);
   }
   
   public void j(int paramInt)
   {
-    if ((this.jdField_d_of_type_JavaLangInteger.intValue() == 0) || (this.jdField_c_of_type_JavaLangInteger.intValue() == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestNotifyServer server ip and port is not set! this method will be called in processConfirmRsp!");
-      }
-    }
-    long l;
-    String str;
-    do
+    if ((this.jdField_d_of_type_JavaLangInteger.intValue() != 0) && (this.jdField_c_of_type_JavaLangInteger.intValue() != 0))
     {
-      do
+      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_d_of_type_Boolean))
       {
-        return;
-      } while ((this.jdField_a_of_type_Int != 1) || (!this.jdField_d_of_type_Boolean));
-      if (a())
-      {
-        MsgBackupUtil.b("requestSessionList called------>MBRROLE_CLIENT  operator is closed! please clear handler msg!........", new Object[0]);
-        return;
+        if (a())
+        {
+          MsgBackupUtil.b("requestSessionList called------>MBRROLE_CLIENT  operator is closed! please clear handler msg!........", new Object[0]);
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("requestSessionList is called! isTcpDetected = ");
+          ((StringBuilder)localObject1).append(this.jdField_d_of_type_Boolean);
+          ((StringBuilder)localObject1).append(", from = ");
+          ((StringBuilder)localObject1).append(paramInt);
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject1).toString());
+        }
+        if (!this.jdField_b_of_type_Boolean)
+        {
+          this.jdField_b_of_type_Boolean = true;
+          a(this.jdField_a_of_type_Long, true, "", 0);
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("requestSessionList, isTcpDetected = ");
+          ((StringBuilder)localObject1).append(this.jdField_d_of_type_Boolean);
+          ((StringBuilder)localObject1).append(", client will get ready session list from server------>");
+          QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject1).toString());
+        }
+        long l = MsgBackupUtil.a();
+        Object localObject1 = MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue());
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("postinfo?fid=");
+        ((StringBuilder)localObject2).append(l);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", (String)localObject2, new Object[0]);
+        localObject2 = MsgBackupUtil.b((String)localObject2, this.jdField_a_of_type_JavaLangString);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append((String)localObject2);
+        localObject1 = localStringBuilder.toString();
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy != null))
+        {
+          localObject2 = new MsgBackupSessionTask();
+          ((MsgBackupSessionTask)localObject2).jdField_a_of_type_Boolean = false;
+          ((MsgBackupSessionTask)localObject2).jdField_a_of_type_Short = 0;
+          ((MsgBackupSessionTask)localObject2).c = ((String)localObject1);
+          MsgBackupManager.a().g.put(Long.valueOf(l), localObject2);
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("requestSessionList fid = ");
+            ((StringBuilder)localObject2).append(l);
+            ((StringBuilder)localObject2).append(", url = ");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, ((StringBuilder)localObject2).toString());
+          }
+          this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, l, (String)localObject1);
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestSessionList is called! isTcpDetected = " + this.jdField_d_of_type_Boolean + ", from = " + paramInt);
-      }
-      if (!this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_b_of_type_Boolean = true;
-        a(this.jdField_a_of_type_Long, true, "", 0);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestSessionList, isTcpDetected = " + this.jdField_d_of_type_Boolean + ", client will get ready session list from server------>");
-      }
-      l = MsgBackupUtil.a();
-      str = MsgBackupUtil.a(this.jdField_b_of_type_ArrayOfJavaLangString[0], this.jdField_d_of_type_JavaLangInteger.intValue());
-      localObject = "postinfo?fid=" + l;
-      MsgBackupUtil.b("MsgBackup_MsgBackupTransportProcessor", (String)localObject, new Object[0]);
-      localObject = MsgBackupUtil.b((String)localObject, this.jdField_a_of_type_JavaLangString);
-      str = str + (String)localObject;
-    } while ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy == null));
-    Object localObject = new MsgBackupSessionTask();
-    ((MsgBackupSessionTask)localObject).jdField_a_of_type_Boolean = false;
-    ((MsgBackupSessionTask)localObject).jdField_a_of_type_Short = 0;
-    ((MsgBackupSessionTask)localObject).c = str;
-    MsgBackupManager.a().g.put(Long.valueOf(l), localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestSessionList fid = " + l + ", url = " + str);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupTransportMsgBackupJniProxy.a(this.jdField_a_of_type_Long, l, str);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup_MsgBackupTransportProcessor", 2, "requestNotifyServer server ip and port is not set! this method will be called in processConfirmRsp!");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.profilecard.vas.component.header;
 
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.template.ProfileTemplateApi;
 import com.tencent.mobileqq.profilecard.vas.view.VasProfilePhotoView;
 
 public class VasProfileHeaderPhotoComponent
@@ -25,13 +26,13 @@ public class VasProfileHeaderPhotoComponent
     return true;
   }
   
-  public void initHeaderView()
+  protected void initHeaderView()
   {
     if (this.mHeaderView == null)
     {
       VasProfilePhotoView localVasProfilePhotoView = new VasProfilePhotoView(this.mActivity, (ProfileCardInfo)this.mData);
       localVasProfilePhotoView.setClickListener(this);
-      localVasProfilePhotoView.onInit();
+      localVasProfilePhotoView.onInit(ProfileTemplateApi.getTemplateUtils(this.mComponentCenter));
       this.mHeaderView = localVasProfilePhotoView;
       ((FrameLayout)this.mViewContainer).removeAllViews();
       ((FrameLayout)this.mViewContainer).addView(this.mHeaderView);
@@ -40,7 +41,7 @@ public class VasProfileHeaderPhotoComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.header.VasProfileHeaderPhotoComponent
  * JD-Core Version:    0.7.0.1
  */

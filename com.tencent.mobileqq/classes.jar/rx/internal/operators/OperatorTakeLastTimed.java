@@ -15,12 +15,14 @@ public final class OperatorTakeLastTimed<T>
   
   public OperatorTakeLastTimed(int paramInt, long paramLong, TimeUnit paramTimeUnit, Scheduler paramScheduler)
   {
-    if (paramInt < 0) {
-      throw new IndexOutOfBoundsException("count could not be negative");
+    if (paramInt >= 0)
+    {
+      this.ageMillis = paramTimeUnit.toMillis(paramLong);
+      this.scheduler = paramScheduler;
+      this.count = paramInt;
+      return;
     }
-    this.ageMillis = paramTimeUnit.toMillis(paramLong);
-    this.scheduler = paramScheduler;
-    this.count = paramInt;
+    throw new IndexOutOfBoundsException("count could not be negative");
   }
   
   public OperatorTakeLastTimed(long paramLong, TimeUnit paramTimeUnit, Scheduler paramScheduler)
@@ -42,7 +44,7 @@ public final class OperatorTakeLastTimed<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorTakeLastTimed
  * JD-Core Version:    0.7.0.1
  */

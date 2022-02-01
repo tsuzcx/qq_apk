@@ -1,6 +1,8 @@
 package com.tencent.tkd.weibo.tweetTopic;
 
-import com.tencent.tkd.weibo.tweetTopic.recentTopic.RecentTopicLayout;
+import com.tencent.tkd.topicsdk.widget.RecentTopicLayout;
+import com.tencent.tkd.weibo.UiComponentSdk;
+import com.tencent.tkd.weibo.UiComponentSdk.Companion;
 import java.util.Collection;
 import java.util.List;
 import kotlin.Metadata;
@@ -13,13 +15,13 @@ final class TweetTopicView$loadRecentTopic$1$1
   
   public final void run()
   {
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_JavaUtilList != null))
+    if (this.jdField_a_of_type_Int == 0)
     {
-      if (!((Collection)this.jdField_a_of_type_JavaUtilList).isEmpty()) {}
-      for (int i = 1; i != 0; i = 0)
+      List localList = this.jdField_a_of_type_JavaUtilList;
+      if ((localList != null) && ((((Collection)localList).isEmpty() ^ true)))
       {
         TweetTopicView.a(this.this$0.this$0).setVisibility(0);
-        TweetTopicView.a(this.this$0.this$0).a(this.jdField_a_of_type_JavaUtilList);
+        TweetTopicView.a(this.this$0.this$0).a(this.jdField_a_of_type_JavaUtilList, UiComponentSdk.a.a().a());
         return;
       }
     }
@@ -28,7 +30,7 @@ final class TweetTopicView$loadRecentTopic$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.TweetTopicView.loadRecentTopic.1.1
  * JD-Core Version:    0.7.0.1
  */

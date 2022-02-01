@@ -48,18 +48,18 @@ public final class LyricPlayStrategy$LyricAnimation
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof LyricAnimation))
       {
         paramObject = (LyricAnimation)paramObject;
-        if ((this.loopStart != paramObject.loopStart) || (this.loopEnd != paramObject.loopEnd) || (this.duration != paramObject.duration) || (this.type != paramObject.type)) {}
+        if ((this.loopStart == paramObject.loopStart) && (this.loopEnd == paramObject.loopEnd) && (this.duration == paramObject.duration) && (this.type == paramObject.type)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -71,7 +71,8 @@ public final class LyricPlayStrategy$LyricAnimation
     if (this.loopStart <= 0L) {
       this.loopStart = 0L;
     }
-    if ((this.loopEnd == 0L) || (this.loopEnd > this.duration)) {
+    long l = this.loopEnd;
+    if ((l == 0L) || (l > this.duration)) {
       this.loopEnd = this.duration;
     }
     return this;
@@ -140,12 +141,22 @@ public final class LyricPlayStrategy$LyricAnimation
   @NotNull
   public String toString()
   {
-    return "LyricAnimation(loopStart=" + this.loopStart + ", loopEnd=" + this.loopEnd + ", duration=" + this.duration + ", type=" + this.type + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LyricAnimation(loopStart=");
+    localStringBuilder.append(this.loopStart);
+    localStringBuilder.append(", loopEnd=");
+    localStringBuilder.append(this.loopEnd);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.duration);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.music.LyricPlayStrategy.LyricAnimation
  * JD-Core Version:    0.7.0.1
  */

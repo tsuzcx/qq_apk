@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.qcircle.api.impl;
 
+import com.tencent.biz.qcircleshadow.handler.QCircleHandler;
 import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.mobileqq.qcircle.api.IQCircleRedPointService;
@@ -64,7 +65,16 @@ public class QCircleRedPointServiceImpl
     boolean bool2 = QCircleConfig.isQQCircleUseEeveeRedPoint();
     this.mCurrentRedPointManagerDelegate = this.mEeveeRedPointManagerDelegate;
     mIsQQCircleCurrentUseEeveeRedPoint = true;
-    RFLog.e("QCircleRedPointManager", RFLog.USR, "isQQCircleCurrentUseEeveeRedPoint: " + mIsQQCircleCurrentUseEeveeRedPoint + ", ( isEeveeSysTemPolling: " + bool1 + ", isQQCircleUseEeveeRedPoint: " + bool2 + " )");
+    int i = RFLog.USR;
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("isQQCircleCurrentUseEeveeRedPoint: ");
+    paramAppRuntime.append(mIsQQCircleCurrentUseEeveeRedPoint);
+    paramAppRuntime.append(", ( isEeveeSysTemPolling: ");
+    paramAppRuntime.append(bool1);
+    paramAppRuntime.append(", isQQCircleUseEeveeRedPoint: ");
+    paramAppRuntime.append(bool2);
+    paramAppRuntime.append(" )");
+    RFLog.e("QCircleRedPointManager", i, paramAppRuntime.toString());
   }
   
   public void onDestroy()
@@ -117,10 +127,17 @@ public class QCircleRedPointServiceImpl
   {
     this.mEeveeRedPointManagerDelegate.setSmallRedPointReaded(paramString);
   }
+  
+  public void updateRedPoint()
+  {
+    if (QCircleHandler.a() != null) {
+      QCircleHandler.a().b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleRedPointServiceImpl
  * JD-Core Version:    0.7.0.1
  */

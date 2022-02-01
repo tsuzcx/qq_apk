@@ -1,88 +1,39 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.config.business.MutualMarkConfBean;
-import com.tencent.mobileqq.config.business.MutualMarkConfProcessor;
-import com.tencent.mobileqq.mutualmark.MutualMarkBusinessLogicHelper;
-import com.tencent.mobileqq.mutualmark.info.MutualMarkForDisplayInfo;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.coreui.pluspanel.PlusPanel;
+import com.tencent.mobileqq.activity.aio.helper.AddFriendHelper;
+import com.tencent.mobileqq.activity.aio.helper.HelperProvider;
+import com.tencent.mobileqq.activity.aio.panel.PanelManager;
+import com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarHelper;
+import com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendHelper.OneWayFriendListener;
 
 class FriendChatPie$22
-  implements View.OnTouchListener
+  implements OneWayFriendHelper.OneWayFriendListener
 {
-  long jdField_a_of_type_Long = 0L;
-  
   FriendChatPie$22(FriendChatPie paramFriendChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.G) || (!(paramView instanceof ImageView))) {
-      return false;
+    FriendChatPie.a(this.a, paramBoolean);
+    ((AddFriendHelper)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioHelperHelperProvider.a(113)).e();
+    paramString = (PlusPanel)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager.b(8);
+    if (paramString != null) {
+      paramString.setOneWayFriend(FriendChatPie.a(this.a));
     }
-    Object localObject = (ImageView)paramView;
-    int i = paramMotionEvent.getAction();
-    localObject = null;
-    paramMotionEvent = (MotionEvent)localObject;
-    if (paramView.getTag() != null)
+    if (FriendChatPie.a(this.a))
     {
-      paramMotionEvent = (MotionEvent)localObject;
-      if ((paramView.getTag() instanceof MutualMarkForDisplayInfo)) {
-        paramMotionEvent = (MutualMarkForDisplayInfo)paramView.getTag();
-      }
-    }
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (paramMotionEvent != null)
-      {
-        paramView.setAlpha(paramMotionEvent.a() * 0.5F);
-      }
-      else
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (paramMotionEvent != null) {
-          paramView.setAlpha(paramMotionEvent.a());
-        }
-        while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
-        {
-          return true;
-          paramView.setAlpha(1.0F);
-        }
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-        localObject = MutualMarkConfProcessor.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        MutualMarkBusinessLogicHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramMotionEvent);
-        paramView.putExtra("url", (String)localObject);
-        paramView.putExtra("finish_animation_out_to_right", true);
-        paramView.putExtra("is_wrap_content", true);
-        paramView.putExtra("hide_left_button", false);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          } else {
-            paramView.setAlpha(1.0F);
-          }
-        }
+      ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      paramString = (AIOShortcutBarHelper)this.a.a(52);
+      if (paramString != null) {
+        paramString.c(11);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.22
  * JD-Core Version:    0.7.0.1
  */

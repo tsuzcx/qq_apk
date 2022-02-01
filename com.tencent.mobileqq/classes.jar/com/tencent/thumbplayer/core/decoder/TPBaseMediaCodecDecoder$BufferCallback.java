@@ -3,8 +3,8 @@ package com.tencent.thumbplayer.core.decoder;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodec.CodecException;
 import android.media.MediaFormat;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import com.tencent.thumbplayer.core.common.TPNativeLog;
 import com.tencent.tmediacodec.TMediaCodec;
 import com.tencent.tmediacodec.TMediaCodec.Callback;
@@ -18,7 +18,11 @@ class TPBaseMediaCodecDecoder$BufferCallback
   
   public void onError(@NonNull TMediaCodec paramTMediaCodec, @NonNull MediaCodec.CodecException paramCodecException)
   {
-    TPNativeLog.printLog(4, this.this$0.getLogTag(), "onError: " + this.this$0.getStackTrace(paramCodecException));
+    paramTMediaCodec = this.this$0.getLogTag();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onError: ");
+    localStringBuilder.append(this.this$0.getStackTrace(paramCodecException));
+    TPNativeLog.printLog(4, paramTMediaCodec, localStringBuilder.toString());
     TPBaseMediaCodecDecoder.access$300(this.this$0);
   }
   
@@ -60,7 +64,7 @@ class TPBaseMediaCodecDecoder$BufferCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPBaseMediaCodecDecoder.BufferCallback
  * JD-Core Version:    0.7.0.1
  */

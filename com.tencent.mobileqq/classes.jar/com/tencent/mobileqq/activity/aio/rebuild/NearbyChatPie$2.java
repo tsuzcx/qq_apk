@@ -15,13 +15,13 @@ class NearbyChatPie$2
   {
     NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().find(NearbyPeopleCard.class, "uin=?", new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a });
     if (localNearbyPeopleCard != null) {
-      this.this$0.l = localNearbyPeopleCard.gender;
+      this.this$0.h = localNearbyPeopleCard.gender;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.2
  * JD-Core Version:    0.7.0.1
  */

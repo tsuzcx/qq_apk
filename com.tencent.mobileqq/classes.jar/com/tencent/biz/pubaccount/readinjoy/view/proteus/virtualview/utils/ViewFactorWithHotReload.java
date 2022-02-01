@@ -41,18 +41,22 @@ public class ViewFactorWithHotReload
     if (paramTemplateBean == null) {
       return;
     }
-    if (LogUtils.shouldLog()) {
-      LogUtils.d("ViewFactorWithHotReload", "[inflate] " + paramTemplateBean.getStyleName());
-    }
-    if (paramContainerWithHotReload == null)
+    if (LogUtils.shouldLog())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[inflate] ");
+      localStringBuilder.append(paramTemplateBean.getStyleName());
+      LogUtils.d("ViewFactorWithHotReload", localStringBuilder.toString());
+    }
+    if (paramContainerWithHotReload == null) {
       paramContainerWithHotReload = (ContainerWithHotReload)onCreateContainer(paramVafContext);
-      label51:
-      paramContainerWithHotReload.setTemplateBean(paramTemplateBean);
-      paramVafContext = constructViewBaseTree(paramVafContext, null, paramTemplateBean.getViewBean(), paramContainerWithHotReload.getViewIdMapping());
-      if (paramVafContext == null) {
-        break label126;
-      }
+    } else {
+      paramContainerWithHotReload.removeAllViews();
+    }
+    paramContainerWithHotReload.setTemplateBean(paramTemplateBean);
+    paramVafContext = constructViewBaseTree(paramVafContext, null, paramTemplateBean.getViewBean(), paramContainerWithHotReload.getViewIdMapping());
+    if (paramVafContext != null)
+    {
       paramContainerWithHotReload.setVirtualView(paramVafContext);
       paramContainerWithHotReload.attachViews();
       if (LogUtils.shouldLog())
@@ -61,24 +65,19 @@ public class ViewFactorWithHotReload
         LogUtils.logViewBaseHierarchy(paramVafContext, "ViewFactorWithHotReload");
       }
     }
-    for (;;)
+    else
     {
-      paramVafContext = paramContainerWithHotReload.getOnReflateListener();
-      if (paramVafContext == null) {
-        break;
-      }
-      paramVafContext.onReflate();
-      return;
-      paramContainerWithHotReload.removeAllViews();
-      break label51;
-      label126:
       LogUtil.QLog.d("ViewFactorWithHotReload", 2, "inflate: fail to inflate, vb is null");
+    }
+    paramVafContext = paramContainerWithHotReload.getOnReflateListener();
+    if (paramVafContext != null) {
+      paramVafContext.onReflate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactorWithHotReload
  * JD-Core Version:    0.7.0.1
  */

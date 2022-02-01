@@ -11,8 +11,8 @@ import java.util.Set;
 
 public class byte
 {
-  public ByteBuffer i;
-  public String j = "GBK";
+  public ByteBuffer n;
+  public String o = "GBK";
   
   public byte()
   {
@@ -21,232 +21,215 @@ public class byte
   
   public byte(int paramInt)
   {
-    this.i = ByteBuffer.allocate(paramInt);
+    this.n = ByteBuffer.allocate(paramInt);
   }
   
   public void a(byte paramByte, int paramInt)
   {
-    b(3);
+    c(3);
     if (paramByte == 0)
     {
       b((byte)12, paramInt);
       return;
     }
     b((byte)0, paramInt);
-    this.i.put(paramByte);
+    this.n.put(paramByte);
   }
   
   public void a(double paramDouble, int paramInt)
   {
-    b(10);
+    c(10);
     b((byte)5, paramInt);
-    this.i.putDouble(paramDouble);
+    this.n.putDouble(paramDouble);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(float paramFloat, int paramInt)
   {
-    b(6);
-    if ((paramInt1 >= -32768) && (paramInt1 <= 32767))
-    {
-      a((short)paramInt1, paramInt2);
-      return;
-    }
-    b((byte)2, paramInt2);
-    this.i.putInt(paramInt1);
+    c(6);
+    b((byte)4, paramInt);
+    this.n.putFloat(paramFloat);
   }
   
   public void a(long paramLong, int paramInt)
   {
-    b(10);
+    c(10);
     if ((paramLong >= -2147483648L) && (paramLong <= 2147483647L))
     {
-      a((int)paramLong, paramInt);
+      b((int)paramLong, paramInt);
       return;
     }
     b((byte)3, paramInt);
-    this.i.putLong(paramLong);
+    this.n.putLong(paramLong);
   }
   
   public void a(case paramcase, int paramInt)
   {
-    b(2);
+    c(2);
     b((byte)10, paramInt);
     paramcase.a(this);
-    b(2);
+    c(2);
     b((byte)11, 0);
   }
   
   public void a(Object paramObject, int paramInt)
   {
-    if ((paramObject instanceof Byte)) {
-      a(((Byte)paramObject).byteValue(), paramInt);
-    }
-    for (;;)
+    if ((paramObject instanceof Byte))
     {
+      a(((Byte)paramObject).byteValue(), paramInt);
       return;
-      if ((paramObject instanceof Boolean))
+    }
+    if ((paramObject instanceof Boolean))
+    {
+      a(((Boolean)paramObject).booleanValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Short))
+    {
+      a(((Short)paramObject).shortValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Integer))
+    {
+      b(((Integer)paramObject).intValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Long))
+    {
+      a(((Long)paramObject).longValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Float))
+    {
+      a(((Float)paramObject).floatValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof Double))
+    {
+      a(((Double)paramObject).doubleValue(), paramInt);
+      return;
+    }
+    if ((paramObject instanceof String))
+    {
+      b((String)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof Map))
+    {
+      a((Map)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof List))
+    {
+      a((List)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof case))
+    {
+      a((case)paramObject, paramInt);
+      return;
+    }
+    if ((paramObject instanceof byte[]))
+    {
+      a((byte[])paramObject, paramInt);
+      return;
+    }
+    int i;
+    if ((paramObject instanceof boolean[]))
+    {
+      paramObject = (boolean[])paramObject;
+      c(8);
+      b((byte)9, paramInt);
+      b(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Boolean)paramObject).booleanValue(), paramInt);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof Short))
+    }
+    if ((paramObject instanceof short[]))
+    {
+      paramObject = (short[])paramObject;
+      c(8);
+      b((byte)9, paramInt);
+      b(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Short)paramObject).shortValue(), paramInt);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof Integer))
+    }
+    if ((paramObject instanceof int[]))
+    {
+      paramObject = (int[])paramObject;
+      c(8);
+      b((byte)9, paramInt);
+      b(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Integer)paramObject).intValue(), paramInt);
-        return;
+        b(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof Long))
+    }
+    if ((paramObject instanceof long[]))
+    {
+      paramObject = (long[])paramObject;
+      c(8);
+      b((byte)9, paramInt);
+      b(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Long)paramObject).longValue(), paramInt);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      float f;
-      if ((paramObject instanceof Float))
+    }
+    if ((paramObject instanceof float[]))
+    {
+      paramObject = (float[])paramObject;
+      c(8);
+      b((byte)9, paramInt);
+      b(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        f = ((Float)paramObject).floatValue();
-        b(6);
-        b((byte)4, paramInt);
-        this.i.putFloat(f);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof Double))
+    }
+    if ((paramObject instanceof double[]))
+    {
+      paramObject = (double[])paramObject;
+      c(8);
+      b((byte)9, paramInt);
+      b(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        a(((Double)paramObject).doubleValue(), paramInt);
-        return;
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
-      if ((paramObject instanceof String))
+    }
+    if (paramObject.getClass().isArray())
+    {
+      paramObject = (Object[])paramObject;
+      c(8);
+      b((byte)9, paramInt);
+      b(paramObject.length, 0);
+      i = paramObject.length;
+      paramInt = 0;
+      while (paramInt < i)
       {
-        b((String)paramObject, paramInt);
-        return;
-      }
-      if ((paramObject instanceof Map))
-      {
-        a((Map)paramObject, paramInt);
-        return;
-      }
-      if ((paramObject instanceof List))
-      {
-        a((List)paramObject, paramInt);
-        return;
-      }
-      if ((paramObject instanceof case))
-      {
-        a((case)paramObject, paramInt);
-        return;
-      }
-      if ((paramObject instanceof byte[]))
-      {
-        a((byte[])paramObject, paramInt);
-        return;
-      }
-      int k;
-      if ((paramObject instanceof boolean[]))
-      {
-        paramObject = (boolean[])paramObject;
-        b(8);
-        b((byte)9, paramInt);
-        a(paramObject.length, 0);
-        k = paramObject.length;
-        paramInt = 0;
-        while (paramInt < k)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else if ((paramObject instanceof short[]))
-      {
-        paramObject = (short[])paramObject;
-        b(8);
-        b((byte)9, paramInt);
-        a(paramObject.length, 0);
-        k = paramObject.length;
-        paramInt = 0;
-        while (paramInt < k)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else if ((paramObject instanceof int[]))
-      {
-        paramObject = (int[])paramObject;
-        b(8);
-        b((byte)9, paramInt);
-        a(paramObject.length, 0);
-        k = paramObject.length;
-        paramInt = 0;
-        while (paramInt < k)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else if ((paramObject instanceof long[]))
-      {
-        paramObject = (long[])paramObject;
-        b(8);
-        b((byte)9, paramInt);
-        a(paramObject.length, 0);
-        k = paramObject.length;
-        paramInt = 0;
-        while (paramInt < k)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else if ((paramObject instanceof float[]))
-      {
-        paramObject = (float[])paramObject;
-        b(8);
-        b((byte)9, paramInt);
-        a(paramObject.length, 0);
-        k = paramObject.length;
-        paramInt = 0;
-        while (paramInt < k)
-        {
-          f = paramObject[paramInt];
-          b(6);
-          b((byte)4, 0);
-          this.i.putFloat(f);
-          paramInt += 1;
-        }
-      }
-      else if ((paramObject instanceof double[]))
-      {
-        paramObject = (double[])paramObject;
-        b(8);
-        b((byte)9, paramInt);
-        a(paramObject.length, 0);
-        k = paramObject.length;
-        paramInt = 0;
-        while (paramInt < k)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
-      }
-      else
-      {
-        if (!paramObject.getClass().isArray()) {
-          break;
-        }
-        paramObject = (Object[])paramObject;
-        b(8);
-        b((byte)9, paramInt);
-        a(paramObject.length, 0);
-        k = paramObject.length;
-        paramInt = 0;
-        while (paramInt < k)
-        {
-          a(paramObject[paramInt], 0);
-          paramInt += 1;
-        }
+        a(paramObject[paramInt], 0);
+        paramInt += 1;
       }
     }
     if ((paramObject instanceof Collection))
@@ -254,20 +237,27 @@ public class byte
       a((Collection)paramObject, paramInt);
       return;
     }
-    throw new new(paramObject.getClass());
+    StringBuilder localStringBuilder = do.b("write object error: unsupport type. ");
+    localStringBuilder.append(paramObject.getClass());
+    paramObject = new new(localStringBuilder.toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public <T> void a(Collection<T> paramCollection, int paramInt)
   {
-    b(8);
+    c(8);
     b((byte)9, paramInt);
-    if (paramCollection == null) {}
-    for (paramInt = 0;; paramInt = paramCollection.size())
+    if (paramCollection == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramCollection.size();
+    }
+    b(paramInt, 0);
+    if (paramCollection != null)
     {
-      a(paramInt, 0);
-      if (paramCollection == null) {
-        break;
-      }
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext()) {
         a(paramCollection.next(), 0);
@@ -277,15 +267,16 @@ public class byte
   
   public <K, V> void a(Map<K, V> paramMap, int paramInt)
   {
-    b(8);
+    c(8);
     b((byte)8, paramInt);
-    if (paramMap == null) {}
-    for (paramInt = 0;; paramInt = paramMap.size())
+    if (paramMap == null) {
+      paramInt = 0;
+    } else {
+      paramInt = paramMap.size();
+    }
+    b(paramInt, 0);
+    if (paramMap != null)
     {
-      a(paramInt, 0);
-      if (paramMap == null) {
-        break;
-      }
       paramMap = paramMap.entrySet().iterator();
       while (paramMap.hasNext())
       {
@@ -298,14 +289,14 @@ public class byte
   
   public void a(short paramShort, int paramInt)
   {
-    b(4);
+    c(4);
     if ((paramShort >= -128) && (paramShort <= 127))
     {
       a((byte)paramShort, paramInt);
       return;
     }
     b((byte)1, paramInt);
-    this.i.putShort(paramShort);
+    this.n.putShort(paramShort);
   }
   
   public void a(boolean paramBoolean, int paramInt)
@@ -315,17 +306,11 @@ public class byte
   
   public void a(byte[] paramArrayOfByte, int paramInt)
   {
-    b(paramArrayOfByte.length + 8);
+    c(paramArrayOfByte.length + 8);
     b((byte)13, paramInt);
     b((byte)0, 0);
-    a(paramArrayOfByte.length, 0);
-    this.i.put(paramArrayOfByte);
-  }
-  
-  public int b(String paramString)
-  {
-    this.j = paramString;
-    return 0;
+    b(paramArrayOfByte.length, 0);
+    this.n.put(paramArrayOfByte);
   }
   
   public void b(byte paramByte, int paramInt)
@@ -333,67 +318,84 @@ public class byte
     byte b;
     if (paramInt < 15)
     {
-      b = (byte)(paramInt << 4 | paramByte);
-      this.i.put(b);
+      b = (byte)(paramByte | paramInt << 4);
+      this.n.put(b);
       return;
     }
     if (paramInt < 256)
     {
       b = (byte)(paramByte | 0xF0);
-      this.i.put(b);
-      this.i.put((byte)paramInt);
+      this.n.put(b);
+      this.n.put((byte)paramInt);
       return;
     }
     throw new new(do.a("tag is too large: ", paramInt));
   }
   
-  public void b(int paramInt)
+  public void b(int paramInt1, int paramInt2)
   {
-    if (this.i.remaining() < paramInt)
+    c(6);
+    if ((paramInt1 >= -32768) && (paramInt1 <= 32767))
     {
-      ByteBuffer localByteBuffer = ByteBuffer.allocate((this.i.capacity() + paramInt) * 2);
-      localByteBuffer.put(this.i.array(), 0, this.i.position());
-      this.i = localByteBuffer;
+      a((short)paramInt1, paramInt2);
+      return;
     }
+    b((byte)2, paramInt2);
+    this.n.putInt(paramInt1);
   }
   
   public void b(String paramString, int paramInt)
   {
     try
     {
-      byte[] arrayOfByte = paramString.getBytes(this.j);
+      byte[] arrayOfByte = paramString.getBytes(this.o);
       paramString = arrayOfByte;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        paramString = paramString.getBytes();
-      }
-      b((byte)6, paramInt);
-      this.i.put((byte)paramString.length);
-      this.i.put(paramString);
+      label14:
+      break label14;
     }
-    b(paramString.length + 10);
+    paramString = paramString.getBytes();
+    c(paramString.length + 10);
     if (paramString.length > 255)
     {
       b((byte)7, paramInt);
-      this.i.putInt(paramString.length);
-      this.i.put(paramString);
+      this.n.putInt(paramString.length);
+      this.n.put(paramString);
       return;
+    }
+    b((byte)6, paramInt);
+    this.n.put((byte)paramString.length);
+    this.n.put(paramString);
+  }
+  
+  public int c(String paramString)
+  {
+    this.o = paramString;
+    return 0;
+  }
+  
+  public void c(int paramInt)
+  {
+    if (this.n.remaining() < paramInt)
+    {
+      ByteBuffer localByteBuffer = ByteBuffer.allocate((this.n.capacity() + paramInt) * 2);
+      localByteBuffer.put(this.n.array(), 0, this.n.position());
+      this.n = localByteBuffer;
     }
   }
   
   public byte[] toByteArray()
   {
-    byte[] arrayOfByte = new byte[this.i.position()];
-    System.arraycopy(this.i.array(), 0, arrayOfByte, 0, this.i.position());
+    byte[] arrayOfByte = new byte[this.n.position()];
+    System.arraycopy(this.n.array(), 0, arrayOfByte, 0, this.n.position());
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.byte
  * JD-Core Version:    0.7.0.1
  */

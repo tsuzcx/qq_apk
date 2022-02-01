@@ -100,7 +100,11 @@ public class MediaCodecUtil
     }
     catch (Exception paramMediaCodecInfo)
     {
-      ConvertLog.e(TAG, 1, "getCodecCapabilities error, mime:" + paramString, paramMediaCodecInfo);
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCodecCapabilities error, mime:");
+      localStringBuilder.append(paramString);
+      ConvertLog.e(str, 1, localStringBuilder.toString(), paramMediaCodecInfo);
     }
     return null;
   }
@@ -118,66 +122,67 @@ public class MediaCodecUtil
           MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
           if ((!localMediaCodecInfo.isEncoder()) && ((!paramBoolean) || ((!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))))
           {
-            String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-            int m = arrayOfString.length;
+            localObject = localMediaCodecInfo.getSupportedTypes();
+            int m = localObject.length;
             int j = 0;
             while (j < m)
             {
-              if (arrayOfString[j].equalsIgnoreCase(paramString)) {
+              if (localObject[j].equalsIgnoreCase(paramString)) {
                 localArrayList.add(localMediaCodecInfo);
               }
               j += 1;
-              continue;
-              return localArrayList;
             }
           }
+          i += 1;
         }
         catch (Throwable localThrowable)
         {
-          ConvertLog.e(TAG, 1, "getDecoderInfoList error, mime:" + paramString, localThrowable);
+          Object localObject = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getDecoderInfoList error, mime:");
+          localStringBuilder.append(paramString);
+          ConvertLog.e((String)localObject, 1, localStringBuilder.toString(), localThrowable);
         }
       }
-      i += 1;
     }
+    return localArrayList;
   }
   
   public static List<MediaCodecInfo> getEncoderInfoList(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    for (;;)
+    localArrayList = new ArrayList();
+    try
     {
-      int i;
-      try
+      int k = MediaCodecList.getCodecCount();
+      int i = 0;
+      Object localObject;
+      while (i < k)
       {
-        int k = MediaCodecList.getCodecCount();
-        i = 0;
-        if (i < k)
+        MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
+        if ((localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
         {
-          MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-          if ((localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
+          localObject = localMediaCodecInfo.getSupportedTypes();
+          int j = 0;
+          while (j < localObject.length)
           {
-            String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-            int j = 0;
-            if (j < arrayOfString.length)
-            {
-              if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-                localArrayList.add(localMediaCodecInfo);
-              }
-              j += 1;
-              continue;
+            if (localObject[j].equalsIgnoreCase(paramString)) {
+              localArrayList.add(localMediaCodecInfo);
             }
+            j += 1;
           }
         }
-        else
-        {
-          return localArrayList;
-        }
+        i += 1;
       }
-      catch (Throwable localThrowable)
-      {
-        ConvertLog.e(TAG, 1, "getEncoderInfoList error, mime:" + paramString, localThrowable);
-      }
-      i += 1;
+      StringBuilder localStringBuilder;
+      return localArrayList;
+    }
+    catch (Throwable localThrowable)
+    {
+      localObject = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getEncoderInfoList error, mime:");
+      localStringBuilder.append(paramString);
+      ConvertLog.e((String)localObject, 1, localStringBuilder.toString(), localThrowable);
     }
   }
   
@@ -185,14 +190,11 @@ public class MediaCodecUtil
   {
     int k = MediaCodecList.getCodecCount();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (!localMediaCodecInfo.isEncoder()) {}
-      for (;;)
+      if (localMediaCodecInfo.isEncoder())
       {
-        i += 1;
-        break;
         String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
         int m = arrayOfString.length;
         int j = 0;
@@ -204,13 +206,14 @@ public class MediaCodecUtil
           j += 1;
         }
       }
+      i += 1;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmedia.videocompress.mediacodec.MediaCodecUtil
  * JD-Core Version:    0.7.0.1
  */

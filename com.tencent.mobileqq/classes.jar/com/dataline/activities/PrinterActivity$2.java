@@ -7,7 +7,7 @@ class PrinterActivity$2
 {
   PrinterActivity$2(PrinterActivity paramPrinterActivity) {}
   
-  public void a(Object paramObject, boolean paramBoolean)
+  protected void a(Object paramObject, boolean paramBoolean)
   {
     if ((paramBoolean) && (PrinterActivity.a(this.a))) {
       PrinterActivity.a(this.a, paramObject);
@@ -16,7 +16,7 @@ class PrinterActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.PrinterActivity.2
  * JD-Core Version:    0.7.0.1
  */

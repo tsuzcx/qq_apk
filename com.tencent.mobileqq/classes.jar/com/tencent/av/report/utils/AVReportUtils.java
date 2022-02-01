@@ -21,30 +21,45 @@ public class AVReportUtils
       if (paramContext != null)
       {
         paramContext = paramContext.getActiveNetworkInfo();
-        if ((paramContext != null) && (paramContext.isConnected())) {
-          switch (paramContext.getType())
+        if ((paramContext != null) && (paramContext.isConnected()))
+        {
+          int i = paramContext.getType();
+          if (i != 0)
           {
-          case 0: 
-            int i = paramContext.getSubtype();
-            switch (i)
-            {
+            if (i == 1) {
+              break label130;
             }
+            return 4;
+          }
+          i = paramContext.getSubtype();
+          switch (i)
+          {
+          case 7: 
+          case 10: 
+          case 11: 
+          default: 
             break;
+          case 3: 
+          case 5: 
+          case 6: 
+          case 8: 
+          case 9: 
+          case 12: 
+            return 3;
+          case 1: 
+          case 2: 
+          case 4: 
+            return 2;
           }
         }
       }
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
-      return 4;
+      paramContext.printStackTrace();
     }
     return 0;
-    return 2;
-    return 3;
+    label130:
     return 1;
   }
   
@@ -55,7 +70,7 @@ public class AVReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.utils.AVReportUtils
  * JD-Core Version:    0.7.0.1
  */

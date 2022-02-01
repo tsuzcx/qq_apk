@@ -11,22 +11,33 @@ final class GamePreConnectManager$2
   
   public void run()
   {
-    if (GamePreConnectManager.access$000()) {}
-    String str;
-    do
+    if (GamePreConnectManager.access$000()) {
+      return;
+    }
+    if (GamePreConnectManager.access$100().size() >= GamePreConnectManager.access$200()) {
+      return;
+    }
+    int i = this.val$returnCode;
+    if (i >= 200)
     {
-      do
-      {
+      if (i > 300) {
         return;
-      } while ((GamePreConnectManager.access$100().size() >= GamePreConnectManager.access$200()) || (this.val$returnCode < 200) || (this.val$returnCode > 300));
-      str = GamePreConnectManager.access$300(this.val$url);
-    } while ((TextUtils.isEmpty(str)) || (!GamePreConnectManager.access$100().add(str)));
-    GameLog.getInstance().i("GamePreConnectManager", "insert host: " + str);
+      }
+      String str = GamePreConnectManager.access$300(this.val$url);
+      if ((!TextUtils.isEmpty(str)) && (GamePreConnectManager.access$100().add(str)))
+      {
+        GameLog localGameLog = GameLog.getInstance();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("insert host: ");
+        localStringBuilder.append(str);
+        localGameLog.i("GamePreConnectManager", localStringBuilder.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GamePreConnectManager.2
  * JD-Core Version:    0.7.0.1
  */

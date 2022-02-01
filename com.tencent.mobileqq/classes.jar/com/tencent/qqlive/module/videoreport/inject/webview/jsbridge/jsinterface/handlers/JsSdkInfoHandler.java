@@ -1,5 +1,6 @@
 package com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.jsinterface.handlers;
 
+import android.text.TextUtils;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.entityformatter.entity.JsSdkVersionEntity;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.jsinterface.IJsObjectHandler;
 import java.lang.ref.WeakReference;
@@ -16,17 +17,21 @@ public class JsSdkInfoHandler
   
   private int getSdkVersion()
   {
-    return 1808;
+    return 2200;
   }
   
   public void handle(String paramString, JSONObject paramJSONObject)
   {
-    callback("getSdkVersion", "0", "success", new JsSdkVersionEntity(getSdkVersion()));
+    paramString = new JsSdkVersionEntity(getSdkVersion());
+    paramJSONObject = getCallbackId(paramJSONObject);
+    if (!TextUtils.isEmpty(paramJSONObject)) {
+      callback(paramJSONObject, "0", "success", paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.jsinterface.handlers.JsSdkInfoHandler
  * JD-Core Version:    0.7.0.1
  */

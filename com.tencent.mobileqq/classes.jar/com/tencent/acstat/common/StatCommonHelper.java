@@ -18,6 +18,8 @@ import android.content.pm.ResolveInfo;
 import android.content.pm.Signature;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Proxy;
@@ -55,31 +57,31 @@ import org.json.JSONObject;
 
 public class StatCommonHelper
 {
-  private static String a = null;
-  private static String b = null;
-  private static String c = null;
-  private static String d = null;
-  private static Random e = null;
-  private static DisplayMetrics f = null;
-  private static String g = null;
+  private static String a;
+  private static String b;
+  private static String c;
+  private static String d;
+  private static Random e;
+  private static DisplayMetrics f;
+  private static String g;
   private static String h = "";
   private static String i = "";
   private static volatile int j = -1;
-  private static StatLogger k = null;
-  private static String l = null;
-  private static String m = null;
+  private static StatLogger k;
+  private static String l;
+  private static String m;
   private static volatile int n = -1;
-  private static String o = null;
-  private static String p = null;
+  private static String o;
+  private static String p;
   private static long q = -1L;
   private static String r = "";
-  private static k s = null;
+  private static k s;
   private static String t = "__MTA_FIRST_ACTIVATE__";
   private static int u = -1;
   private static long v = -1L;
   private static int w = 0;
   private static String x = "";
-  private static volatile String y = null;
+  private static volatile String y;
   
   static String a(Context paramContext)
   {
@@ -129,8 +131,9 @@ public class StatCommonHelper
   
   private static long c()
   {
-    if (q > 0L) {
-      return q;
+    l1 = q;
+    if (l1 > 0L) {
+      return l1;
     }
     long l3 = 1L;
     l2 = l3;
@@ -153,7 +156,7 @@ public class StatCommonHelper
     {
       for (;;)
       {
-        long l1 = l2;
+        l1 = l2;
       }
     }
     q = l1;
@@ -188,37 +191,39 @@ public class StatCommonHelper
   
   public static Long convertStringToLong(String paramString1, String paramString2, int paramInt1, int paramInt2, Long paramLong)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {}
-    do
+    if (paramString1 != null)
     {
-      return paramLong;
-      String str;
+      if (paramString2 == null) {
+        return paramLong;
+      }
+      Object localObject;
       if (!paramString2.equalsIgnoreCase("."))
       {
-        str = paramString2;
+        localObject = paramString2;
         if (!paramString2.equalsIgnoreCase("|")) {}
       }
       else
       {
-        str = "\\" + paramString2;
+        localObject = new StringBuilder("\\");
+        ((StringBuilder)localObject).append(paramString2);
+        localObject = ((StringBuilder)localObject).toString();
       }
-      paramString2 = paramString1.split(str);
-    } while (paramString2.length != paramInt2);
+      paramString2 = paramString1.split((String)localObject);
+      if (paramString2.length != paramInt2) {}
+    }
     try
     {
       paramString1 = Long.valueOf(0L);
       paramInt2 = 0;
       while (paramInt2 < paramString2.length)
       {
-        long l1 = paramInt1;
-        long l2 = paramString1.longValue();
-        long l3 = Long.valueOf(paramString2[paramInt2]).longValue();
+        paramString1 = Long.valueOf(paramInt1 * (paramString1.longValue() + Long.valueOf(paramString2[paramInt2]).longValue()));
         paramInt2 += 1;
-        paramString1 = Long.valueOf(l1 * (l2 + l3));
       }
       return paramString1;
     }
     catch (NumberFormatException paramString1) {}
+    return paramLong;
     return paramLong;
   }
   
@@ -256,42 +261,39 @@ public class StatCommonHelper
     if (isStringValid(r)) {
       return r;
     }
-    try
+    for (;;)
     {
-      paramContext = (SensorManager)paramContext.getSystemService("sensor");
-      if (paramContext == null) {
-        break label115;
-      }
-      paramContext = paramContext.getSensorList(-1);
-      if (paramContext == null) {
-        break label115;
-      }
-      localStringBuilder = new StringBuilder(paramContext.size() * 10);
-      i1 = 0;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
+      int i1;
+      try
       {
-        StringBuilder localStringBuilder;
-        int i1;
-        label115:
+        paramContext = (SensorManager)paramContext.getSystemService("sensor");
+        if (paramContext != null)
+        {
+          paramContext = paramContext.getSensorList(-1);
+          if (paramContext != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder(paramContext.size() * 10);
+            i1 = 0;
+            if (i1 < paramContext.size())
+            {
+              localStringBuilder.append(((Sensor)paramContext.get(i1)).getType());
+              if (i1 == paramContext.size() - 1) {
+                break label130;
+              }
+              localStringBuilder.append(",");
+              break label130;
+            }
+            r = localStringBuilder.toString();
+          }
+        }
+      }
+      catch (Throwable paramContext)
+      {
         k.e(paramContext);
-        continue;
-        i1 += 1;
       }
-    }
-    if (i1 < paramContext.size())
-    {
-      localStringBuilder.append(((Sensor)paramContext.get(i1)).getType());
-      if (i1 != paramContext.size() - 1) {
-        localStringBuilder.append(",");
-      }
-    }
-    else
-    {
-      r = localStringBuilder.toString();
       return r;
+      label130:
+      i1 += 1;
     }
   }
   
@@ -302,78 +304,76 @@ public class StatCommonHelper
   
   public static String getAppKey(Context paramContext)
   {
-    if (b != null) {
-      return b;
+    String str = b;
+    if (str != null) {
+      return str;
     }
     try
     {
       paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
+      if (paramContext == null) {
+        break label71;
+      }
+      paramContext = paramContext.metaData.getString("TA_APPKEY");
       if (paramContext != null)
       {
-        paramContext = paramContext.metaData.getString("TA_APPKEY");
-        if (paramContext == null) {
-          break label62;
-        }
         b = paramContext;
         return paramContext;
       }
+      k.i("Could not read APPKEY meta-data from AndroidManifest.xml");
     }
     catch (Throwable paramContext)
     {
-      k.i("Could not read APPKEY meta-data from AndroidManifest.xml");
-    }
-    for (;;)
-    {
-      return null;
       label62:
-      k.i("Could not read APPKEY meta-data from AndroidManifest.xml");
+      label71:
+      break label62;
     }
+    k.i("Could not read APPKEY meta-data from AndroidManifest.xml");
+    return null;
   }
   
   public static String getAppSHA1(Context paramContext)
   {
-    int i1 = 0;
     if (!TextUtils.isEmpty(y)) {
       return y;
     }
-    try
+    for (;;)
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures[0].toByteArray();
-      paramContext = MessageDigest.getInstance("SHA1").digest(paramContext);
-      StringBuffer localStringBuffer = new StringBuffer();
-      int i2 = paramContext.length;
-      if (i1 < i2)
+      int i1;
+      try
       {
-        String str = Integer.toHexString(paramContext[i1] & 0xFF).toUpperCase();
-        if (str.length() == 1) {
-          localStringBuffer.append("0");
-        }
-        localStringBuffer.append(str);
-        if (i1 != i2 - 1) {
+        paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures;
+        i1 = 0;
+        paramContext = paramContext[0].toByteArray();
+        paramContext = MessageDigest.getInstance("SHA1").digest(paramContext);
+        StringBuffer localStringBuffer = new StringBuffer();
+        int i2 = paramContext.length;
+        if (i1 < i2)
+        {
+          String str = Integer.toHexString(paramContext[i1] & 0xFF).toUpperCase();
+          if (str.length() == 1) {
+            localStringBuffer.append("0");
+          }
+          localStringBuffer.append(str);
+          if (i1 == i2 - 1) {
+            break label150;
+          }
           localStringBuffer.append(":");
+          break label150;
         }
-      }
-      else
-      {
         y = localStringBuffer.toString();
-        return y;
       }
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      for (;;)
+      catch (Throwable paramContext)
       {
         paramContext.printStackTrace();
       }
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
+      catch (PackageManager.NameNotFoundException paramContext)
       {
         paramContext.printStackTrace();
-        continue;
-        i1 += 1;
       }
+      return y;
+      label150:
+      i1 += 1;
     }
   }
   
@@ -433,10 +433,11 @@ public class StatCommonHelper
         paramContext.put("fx", i1 / 1000000);
       }
       i1 = i.c();
-      if (i1 > 0) {
+      if (i1 > 0)
+      {
         paramContext.put("fn", i1 / 1000000);
+        return paramContext;
       }
-      return paramContext;
     }
     catch (Throwable localThrowable)
     {
@@ -452,10 +453,7 @@ public class StatCommonHelper
     }
     if (Build.CPU_ABI.equalsIgnoreCase("x86")) {
       o = "Intel";
-    }
-    for (;;)
-    {
-      return o;
+    } else {
       try
       {
         Object localObject = new byte[1024];
@@ -464,48 +462,82 @@ public class StatCommonHelper
         localRandomAccessFile.close();
         localObject = new String((byte[])localObject);
         int i1 = ((String)localObject).indexOf(0);
-        if (i1 == -1) {
-          break label108;
+        if (i1 != -1) {
+          o = ((String)localObject).substring(0, i1);
+        } else {
+          o = (String)localObject;
         }
-        o = ((String)localObject).substring(0, i1);
       }
       catch (Throwable localThrowable)
       {
         k.e(localThrowable);
       }
-      continue;
-      label108:
-      o = localThrowable;
     }
+    return o;
   }
   
   public static String getCpuType()
   {
-    String str2 = getCpuString();
-    String str1;
-    if (str2.contains("ARMv5")) {
-      str1 = "armv5";
-    }
-    while (str2.contains("neon"))
+    Object localObject2 = getCpuString();
+    Object localObject1;
+    if (((String)localObject2).contains("ARMv5"))
     {
-      return str1 + "_neon";
-      if (str2.contains("ARMv6")) {
-        str1 = "armv6";
-      } else if (str2.contains("ARMv7")) {
-        str1 = "armv7";
-      } else if (str2.contains("Intel")) {
-        str1 = "x86";
-      } else {
-        return "unknown";
+      localObject1 = "armv5";
+    }
+    else if (((String)localObject2).contains("ARMv6"))
+    {
+      localObject1 = "armv6";
+    }
+    else if (((String)localObject2).contains("ARMv7"))
+    {
+      localObject1 = "armv7";
+    }
+    else
+    {
+      if (!((String)localObject2).contains("Intel")) {
+        break label205;
+      }
+      localObject1 = "x86";
+    }
+    Object localObject3;
+    if (((String)localObject2).contains("neon"))
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      localObject2 = "_neon";
+      localObject1 = localObject3;
+    }
+    for (;;)
+    {
+      ((StringBuilder)localObject1).append((String)localObject2);
+      return ((StringBuilder)localObject1).toString();
+      if (((String)localObject2).contains("vfpv3"))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject3 = "_vfpv3";
+        localObject1 = localObject2;
+        localObject2 = localObject3;
+      }
+      else if (((String)localObject2).contains(" vfp"))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject3 = "_vfp";
+        localObject1 = localObject2;
+        localObject2 = localObject3;
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject3 = "_none";
+        localObject1 = localObject2;
+        localObject2 = localObject3;
       }
     }
-    if (str2.contains("vfpv3")) {
-      return str1 + "_vfpv3";
-    }
-    if (str2.contains(" vfp")) {
-      return str1 + "_vfp";
-    }
-    return str1 + "_none";
+    label205:
+    return "unknown";
   }
   
   public static String getCurAppVersion(Context paramContext)
@@ -578,23 +610,31 @@ public class StatCommonHelper
     }
     try
     {
-      if (!Util.checkPermission(paramContext, "android.permission.WRITE_EXTERNAL_STORAGE")) {
-        break label142;
-      }
-      paramContext = Environment.getExternalStorageState();
-      if ((paramContext != null) && (paramContext.equals("mounted")))
+      if (Util.checkPermission(paramContext, "android.permission.WRITE_EXTERNAL_STORAGE"))
       {
-        paramContext = Environment.getExternalStorageDirectory().getPath();
-        if (paramContext != null)
+        paramContext = Environment.getExternalStorageState();
+        if ((paramContext != null) && (paramContext.equals("mounted")))
         {
-          paramContext = new StatFs(paramContext);
-          long l1 = paramContext.getBlockCount() * paramContext.getBlockSize() / 1000000L;
-          long l2 = paramContext.getAvailableBlocks();
-          l2 = paramContext.getBlockSize() * l2 / 1000000L;
-          paramContext = String.valueOf(l2) + "/" + String.valueOf(l1);
-          l = paramContext;
-          return paramContext;
+          paramContext = Environment.getExternalStorageDirectory().getPath();
+          if (paramContext != null)
+          {
+            paramContext = new StatFs(paramContext);
+            long l1 = paramContext.getBlockCount() * paramContext.getBlockSize() / 1000000L;
+            long l2 = paramContext.getAvailableBlocks() * paramContext.getBlockSize() / 1000000L;
+            paramContext = new StringBuilder();
+            paramContext.append(String.valueOf(l2));
+            paramContext.append("/");
+            paramContext.append(String.valueOf(l1));
+            paramContext = paramContext.toString();
+            l = paramContext;
+            return paramContext;
+          }
         }
+      }
+      else
+      {
+        k.warn("can not get the permission of android.permission.WRITE_EXTERNAL_STORAGE");
+        return null;
       }
     }
     catch (Throwable paramContext)
@@ -602,67 +642,46 @@ public class StatCommonHelper
       k.e(paramContext);
     }
     return null;
-    label142:
-    k.warn("can not get the permission of android.permission.WRITE_EXTERNAL_STORAGE");
-    return null;
   }
   
-  /* Error */
-  public static android.location.Location getGPSLocation(Context paramContext)
+  public static Location getGPSLocation(Context paramContext)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ldc_w 681
-    //   4: invokestatic 634	com/tencent/acstat/common/Util:checkPermission	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   7: ifeq +82 -> 89
-    //   10: getstatic 62	com/tencent/acstat/common/StatCommonHelper:k	Lcom/tencent/acstat/common/StatLogger;
-    //   13: ldc_w 682
-    //   16: invokevirtual 684	com/tencent/acstat/common/StatLogger:e	(Ljava/lang/Object;)V
-    //   19: aload_0
-    //   20: ldc_w 686
-    //   23: invokevirtual 116	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   26: checkcast 688	android/location/LocationManager
-    //   29: astore_0
-    //   30: aload_0
-    //   31: ldc_w 690
-    //   34: invokevirtual 693	android/location/LocationManager:isProviderEnabled	(Ljava/lang/String;)Z
-    //   37: ifeq +52 -> 89
-    //   40: aload_0
-    //   41: ldc_w 690
-    //   44: invokevirtual 697	android/location/LocationManager:getLastKnownLocation	(Ljava/lang/String;)Landroid/location/Location;
-    //   47: astore_0
-    //   48: getstatic 62	com/tencent/acstat/common/StatCommonHelper:k	Lcom/tencent/acstat/common/StatLogger;
-    //   51: new 259	java/lang/StringBuilder
-    //   54: dup
-    //   55: ldc_w 699
-    //   58: invokespecial 262	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   61: aload_0
-    //   62: invokevirtual 702	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   65: invokevirtual 269	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   68: invokevirtual 684	com/tencent/acstat/common/StatLogger:e	(Ljava/lang/Object;)V
-    //   71: aload_0
-    //   72: areturn
-    //   73: astore_1
-    //   74: aconst_null
-    //   75: astore_0
-    //   76: getstatic 62	com/tencent/acstat/common/StatCommonHelper:k	Lcom/tencent/acstat/common/StatLogger;
-    //   79: aload_1
-    //   80: invokevirtual 357	com/tencent/acstat/common/StatLogger:e	(Ljava/lang/Throwable;)V
-    //   83: aload_0
-    //   84: areturn
-    //   85: astore_1
-    //   86: goto -10 -> 76
-    //   89: aconst_null
-    //   90: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	91	0	paramContext	Context
-    //   73	7	1	localThrowable1	Throwable
-    //   85	1	1	localThrowable2	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   0	48	73	java/lang/Throwable
-    //   48	71	85	java/lang/Throwable
+    Object localObject3 = null;
+    StringBuilder localStringBuilder = null;
+    Object localObject1 = localStringBuilder;
+    Object localObject2 = localObject3;
+    try
+    {
+      if (Util.checkPermission(paramContext, "android.permission.ACCESS_FINE_LOCATION"))
+      {
+        localObject1 = localStringBuilder;
+        k.e("getGPSLocation");
+        localObject1 = localStringBuilder;
+        paramContext = (LocationManager)paramContext.getSystemService("location");
+        localObject1 = localStringBuilder;
+        localObject2 = localObject3;
+        if (paramContext.isProviderEnabled("gps"))
+        {
+          localObject1 = localStringBuilder;
+          paramContext = paramContext.getLastKnownLocation("gps");
+          localObject1 = paramContext;
+          localObject2 = k;
+          localObject1 = paramContext;
+          localStringBuilder = new StringBuilder("getGPSLocation location:");
+          localObject1 = paramContext;
+          localStringBuilder.append(paramContext);
+          localObject1 = paramContext;
+          ((StatLogger)localObject2).e(localStringBuilder.toString());
+          return paramContext;
+        }
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      k.e(paramContext);
+      localObject2 = localObject1;
+    }
+    return localObject2;
   }
   
   public static HttpHost getHttpProxy(Context paramContext)
@@ -670,42 +689,43 @@ public class StatCommonHelper
     if (paramContext == null) {
       return null;
     }
-    do
+    try
     {
-      try
-      {
-        if (paramContext.getPackageManager().checkPermission("android.permission.ACCESS_NETWORK_STATE", paramContext.getPackageName()) != 0) {
-          return null;
-        }
-        paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-        if (paramContext == null) {
-          return null;
-        }
-        if ((paramContext.getTypeName() != null) && (paramContext.getTypeName().equalsIgnoreCase("WIFI"))) {
-          return null;
-        }
-        paramContext = paramContext.getExtraInfo();
-        if (paramContext == null) {
-          return null;
-        }
-        if ((paramContext.equals("cmwap")) || (paramContext.equals("3gwap")) || (paramContext.equals("uniwap")))
-        {
-          paramContext = new HttpHost("10.0.0.172", 80);
-          return paramContext;
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        k.e(paramContext);
+      if (paramContext.getPackageManager().checkPermission("android.permission.ACCESS_NETWORK_STATE", paramContext.getPackageName()) != 0) {
         return null;
       }
-      if (paramContext.equals("ctwap")) {
-        return new HttpHost("10.0.0.200", 80);
+      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      if (paramContext == null) {
+        return null;
       }
-      paramContext = Proxy.getDefaultHost();
-    } while ((paramContext == null) || (paramContext.trim().length() <= 0));
-    paramContext = new HttpHost(paramContext, Proxy.getDefaultPort());
-    return paramContext;
+      if ((paramContext.getTypeName() != null) && (paramContext.getTypeName().equalsIgnoreCase("WIFI"))) {
+        return null;
+      }
+      paramContext = paramContext.getExtraInfo();
+      if (paramContext == null) {
+        return null;
+      }
+      if ((!paramContext.equals("cmwap")) && (!paramContext.equals("3gwap")) && (!paramContext.equals("uniwap")))
+      {
+        if (paramContext.equals("ctwap")) {
+          return new HttpHost("10.0.0.200", 80);
+        }
+        paramContext = Proxy.getDefaultHost();
+        if ((paramContext != null) && (paramContext.trim().length() > 0)) {
+          return new HttpHost(paramContext, Proxy.getDefaultPort());
+        }
+      }
+      else
+      {
+        paramContext = new HttpHost("10.0.0.172", 80);
+        return paramContext;
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      k.e(paramContext);
+    }
+    return null;
   }
   
   public static String getInstallChannel(Context paramContext)
@@ -713,73 +733,72 @@ public class StatCommonHelper
     try
     {
       paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
-      if (paramContext != null)
-      {
-        paramContext = paramContext.metaData.get("InstallChannel");
-        if (paramContext != null) {
-          return paramContext.toString();
-        }
-        k.w("Could not read InstallChannel meta-data from AndroidManifest.xml");
+      if (paramContext == null) {
+        break label60;
       }
+      paramContext = paramContext.metaData.get("InstallChannel");
+      if (paramContext != null) {
+        return paramContext.toString();
+      }
+      k.w("Could not read InstallChannel meta-data from AndroidManifest.xml");
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        k.e("Could not read InstallChannel meta-data from AndroidManifest.xml");
-      }
+      label51:
+      label60:
+      break label51;
     }
+    k.e("Could not read InstallChannel meta-data from AndroidManifest.xml");
     return null;
   }
   
   public static String getLauncherPackageName(Context paramContext)
   {
-    if (paramContext == null) {}
-    do
-    {
+    if (paramContext == null) {
       return null;
-      Intent localIntent = new Intent("android.intent.action.MAIN");
-      localIntent.addCategory("android.intent.category.HOME");
-      paramContext = paramContext.getPackageManager().resolveActivity(localIntent, 0);
-    } while ((paramContext.activityInfo == null) || (paramContext.activityInfo.packageName.equals("android")));
+    }
+    Intent localIntent = new Intent("android.intent.action.MAIN");
+    localIntent.addCategory("android.intent.category.HOME");
+    paramContext = paramContext.getPackageManager().resolveActivity(localIntent, 0);
+    if (paramContext.activityInfo == null) {
+      return null;
+    }
+    if (paramContext.activityInfo.packageName.equals("android")) {
+      return null;
+    }
     return paramContext.activityInfo.packageName;
   }
   
   public static String getLinkedWay(Context paramContext)
   {
+    Object localObject;
     try
     {
-      if ((Util.checkPermission(paramContext, "android.permission.INTERNET")) && (Util.checkPermission(paramContext, "android.permission.ACCESS_NETWORK_STATE")))
+      boolean bool = Util.checkPermission(paramContext, "android.permission.INTERNET");
+      if ((bool) && (Util.checkPermission(paramContext, "android.permission.ACCESS_NETWORK_STATE")))
       {
-        paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-        if ((paramContext == null) || (!paramContext.isConnected())) {
-          break label146;
-        }
-        String str1 = paramContext.getTypeName();
-        String str2 = paramContext.getExtraInfo();
-        if (str1 == null) {
-          break label146;
-        }
-        if (str1.equalsIgnoreCase("WIFI")) {
-          return "WIFI";
-        }
-        if (str1.equalsIgnoreCase("MOBILE"))
+        localObject = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+        if ((localObject != null) && (((NetworkInfo)localObject).isConnected()))
         {
-          if ((str2 != null) && (str2.trim().length() > 0)) {
-            return str2;
+          paramContext = ((NetworkInfo)localObject).getTypeName();
+          localObject = ((NetworkInfo)localObject).getExtraInfo();
+          if (paramContext != null)
+          {
+            if (paramContext.equalsIgnoreCase("WIFI")) {
+              return "WIFI";
+            }
+            if (paramContext.equalsIgnoreCase("MOBILE"))
+            {
+              if ((localObject == null) || (((String)localObject).trim().length() <= 0)) {
+                break label142;
+              }
+              break label146;
+            }
+            if ((localObject == null) || (((String)localObject).trim().length() <= 0)) {
+              return paramContext;
+            }
+            break label146;
           }
-        }
-        else
-        {
-          paramContext = str1;
-          if (str2 == null) {
-            return paramContext;
-          }
-          paramContext = str1;
-          if (str2.trim().length() <= 0) {
-            return paramContext;
-          }
-          return str2;
         }
       }
       else
@@ -791,11 +810,12 @@ public class StatCommonHelper
     catch (Throwable paramContext)
     {
       k.e(paramContext);
-      return "";
     }
+    return "";
+    label142:
     return "MOBILE";
     label146:
-    paramContext = "";
+    return localObject;
     return paramContext;
   }
   
@@ -828,109 +848,83 @@ public class StatCommonHelper
     finally {}
   }
   
-  /* Error */
-  public static android.location.Location getNetworkLocation(Context paramContext)
+  public static Location getNetworkLocation(Context paramContext)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ldc_w 814
-    //   4: invokestatic 634	com/tencent/acstat/common/Util:checkPermission	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   7: ifne +13 -> 20
-    //   10: aload_0
-    //   11: ldc_w 681
-    //   14: invokestatic 634	com/tencent/acstat/common/Util:checkPermission	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   17: ifeq +87 -> 104
-    //   20: getstatic 62	com/tencent/acstat/common/StatCommonHelper:k	Lcom/tencent/acstat/common/StatLogger;
-    //   23: ldc_w 815
-    //   26: invokevirtual 684	com/tencent/acstat/common/StatLogger:e	(Ljava/lang/Object;)V
-    //   29: aload_0
-    //   30: ldc_w 686
-    //   33: invokevirtual 116	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   36: checkcast 688	android/location/LocationManager
-    //   39: astore_0
-    //   40: aload_0
-    //   41: ldc_w 817
-    //   44: invokevirtual 693	android/location/LocationManager:isProviderEnabled	(Ljava/lang/String;)Z
-    //   47: ifeq +52 -> 99
-    //   50: aload_0
-    //   51: ldc_w 817
-    //   54: invokevirtual 697	android/location/LocationManager:getLastKnownLocation	(Ljava/lang/String;)Landroid/location/Location;
-    //   57: astore_0
-    //   58: getstatic 62	com/tencent/acstat/common/StatCommonHelper:k	Lcom/tencent/acstat/common/StatLogger;
-    //   61: new 259	java/lang/StringBuilder
-    //   64: dup
-    //   65: ldc_w 819
-    //   68: invokespecial 262	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   71: aload_0
-    //   72: invokevirtual 702	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 269	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokevirtual 684	com/tencent/acstat/common/StatLogger:e	(Ljava/lang/Object;)V
-    //   81: aload_0
-    //   82: areturn
-    //   83: astore_1
-    //   84: aconst_null
-    //   85: astore_0
-    //   86: getstatic 62	com/tencent/acstat/common/StatCommonHelper:k	Lcom/tencent/acstat/common/StatLogger;
-    //   89: aload_1
-    //   90: invokevirtual 357	com/tencent/acstat/common/StatLogger:e	(Ljava/lang/Throwable;)V
-    //   93: aload_0
-    //   94: areturn
-    //   95: astore_1
-    //   96: goto -10 -> 86
-    //   99: aconst_null
-    //   100: astore_0
-    //   101: goto -43 -> 58
-    //   104: aconst_null
-    //   105: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	106	0	paramContext	Context
-    //   83	7	1	localThrowable1	Throwable
-    //   95	1	1	localThrowable2	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   0	20	83	java/lang/Throwable
-    //   20	58	83	java/lang/Throwable
-    //   58	81	95	java/lang/Throwable
+    StringBuilder localStringBuilder = null;
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = localStringBuilder;
+    try
+    {
+      if (!Util.checkPermission(paramContext, "android.permission.ACCESS_COARSE_LOCATION"))
+      {
+        localObject1 = localStringBuilder;
+        if (!Util.checkPermission(paramContext, "android.permission.ACCESS_FINE_LOCATION")) {}
+      }
+      else
+      {
+        localObject1 = localStringBuilder;
+        k.e("getNetworkLocation");
+        localObject1 = localStringBuilder;
+        localObject2 = (LocationManager)paramContext.getSystemService("location");
+        paramContext = localObject3;
+        localObject1 = localStringBuilder;
+        if (((LocationManager)localObject2).isProviderEnabled("network"))
+        {
+          localObject1 = localStringBuilder;
+          paramContext = ((LocationManager)localObject2).getLastKnownLocation("network");
+        }
+        localObject1 = paramContext;
+        localObject2 = k;
+        localObject1 = paramContext;
+        localStringBuilder = new StringBuilder("getNetworkLocation location:");
+        localObject1 = paramContext;
+        localStringBuilder.append(paramContext);
+        localObject1 = paramContext;
+        ((StatLogger)localObject2).e(localStringBuilder.toString());
+        return paramContext;
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      k.e(paramContext);
+      localObject2 = localObject1;
+    }
+    return localObject2;
   }
   
   public static Integer getNextEventIndexNo(Context paramContext)
   {
-    int i1 = 0;
-    for (;;)
+    try
     {
-      int i2;
-      try
+      if (n > 0)
       {
-        if (n > 0)
-        {
-          i2 = n;
-          if (i2 % 1000 == 0) {}
+        i1 = n;
+        if (i1 % 1000 == 0) {
           try
           {
-            i2 = n;
-            if (n < 2147383647) {
-              break label107;
+            i1 = n + 1000;
+            if (n >= 2147383647) {
+              i1 = 0;
             }
             StatPreferences.putInt(paramContext, "MTA_EVENT_INDEX", i1);
           }
           catch (Throwable paramContext)
           {
             k.w(paramContext);
-            continue;
           }
-          i1 = n + 1;
-          n = i1;
-          return Integer.valueOf(i1);
         }
       }
-      finally {}
-      n = StatPreferences.getInt(paramContext, "MTA_EVENT_INDEX", 0);
-      StatPreferences.putInt(paramContext, "MTA_EVENT_INDEX", n + 1000);
-      continue;
-      label107:
-      i1 = i2 + 1000;
+      else
+      {
+        n = StatPreferences.getInt(paramContext, "MTA_EVENT_INDEX", 0);
+        StatPreferences.putInt(paramContext, "MTA_EVENT_INDEX", n + 1000);
+      }
+      int i1 = n + 1;
+      n = i1;
+      return Integer.valueOf(i1);
     }
+    finally {}
   }
   
   public static int getNextSessionID()
@@ -974,9 +968,12 @@ public class StatCommonHelper
     }
     long l1 = getTotalInternalMemorySize() / 1000000L;
     Object localObject = new StatFs(Environment.getDataDirectory().getPath());
-    long l2 = ((StatFs)localObject).getBlockSize();
-    l2 = ((StatFs)localObject).getAvailableBlocks() * l2 / 1000000L;
-    localObject = String.valueOf(l2) + "/" + String.valueOf(l1);
+    long l2 = ((StatFs)localObject).getBlockSize() * ((StatFs)localObject).getAvailableBlocks() / 1000000L;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(String.valueOf(l2));
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(String.valueOf(l1));
+    localObject = ((StringBuilder)localObject).toString();
     p = (String)localObject;
     return localObject;
   }
@@ -988,16 +985,14 @@ public class StatCommonHelper
   
   public static String getSimOperator(Context paramContext)
   {
-    if (g != null) {
-      return g;
+    String str = g;
+    if (str != null) {
+      return str;
     }
-    for (;;)
+    try
     {
-      try
+      if (Util.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
       {
-        if (!Util.checkPermission(paramContext, "android.permission.READ_PHONE_STATE")) {
-          continue;
-        }
         if (checkPhoneState(paramContext))
         {
           paramContext = (TelephonyManager)paramContext.getSystemService("phone");
@@ -1006,14 +1001,15 @@ public class StatCommonHelper
           }
         }
       }
-      catch (Throwable paramContext)
-      {
-        k.e(paramContext);
-        continue;
+      else {
+        k.e("Could not get permission of android.permission.READ_PHONE_STATE");
       }
-      return g;
-      k.e("Could not get permission of android.permission.READ_PHONE_STATE");
     }
+    catch (Throwable paramContext)
+    {
+      k.e(paramContext);
+    }
+    return g;
   }
   
   public static StatReportStrategy getStatSendStrategy(Context paramContext)
@@ -1027,7 +1023,11 @@ public class StatCommonHelper
     {
       long l1 = b(paramContext) / 1000000L;
       long l2 = c() / 1000000L;
-      paramContext = String.valueOf(l1) + "/" + String.valueOf(l2);
+      paramContext = new StringBuilder();
+      paramContext.append(String.valueOf(l1));
+      paramContext.append("/");
+      paramContext.append(String.valueOf(l2));
+      paramContext = paramContext.toString();
       return paramContext;
     }
     catch (Throwable paramContext)
@@ -1039,18 +1039,21 @@ public class StatCommonHelper
   
   public static String getTagForConcurrentProcess(Context paramContext, String paramString)
   {
-    String str = paramString;
     if (StatConfig.isEnableConcurrentProcess() == true)
     {
       if (m == null) {
         m = a(paramContext);
       }
-      str = paramString;
-      if (m != null) {
-        str = paramString + "_" + m;
+      if (m != null)
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(paramString);
+        paramContext.append("_");
+        paramContext.append(m);
+        return paramContext.toString();
       }
     }
-    return str;
+    return paramString;
   }
   
   public static Integer getTelephonyNetworkType(Context paramContext)
@@ -1064,7 +1067,11 @@ public class StatCommonHelper
         return Integer.valueOf(i1);
       }
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label25:
+      break label25;
+    }
     return null;
   }
   
@@ -1094,78 +1101,66 @@ public class StatCommonHelper
     return localStatFs.getBlockCount() * l1;
   }
   
-  /* Error */
   public static String getUserID(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 40	com/tencent/acstat/common/StatCommonHelper:a	Ljava/lang/String;
-    //   6: ifnull +24 -> 30
-    //   9: getstatic 40	com/tencent/acstat/common/StatCommonHelper:a	Ljava/lang/String;
-    //   12: invokevirtual 749	java/lang/String:trim	()Ljava/lang/String;
-    //   15: invokevirtual 427	java/lang/String:length	()I
-    //   18: ifeq +12 -> 30
-    //   21: getstatic 40	com/tencent/acstat/common/StatCommonHelper:a	Ljava/lang/String;
-    //   24: astore_0
-    //   25: ldc 2
-    //   27: monitorexit
-    //   28: aload_0
-    //   29: areturn
-    //   30: aload_0
-    //   31: invokestatic 914	com/tencent/acstat/common/Util:getDeviceID	(Landroid/content/Context;)Ljava/lang/String;
-    //   34: putstatic 40	com/tencent/acstat/common/StatCommonHelper:a	Ljava/lang/String;
-    //   37: getstatic 40	com/tencent/acstat/common/StatCommonHelper:a	Ljava/lang/String;
-    //   40: ifnull +15 -> 55
-    //   43: getstatic 40	com/tencent/acstat/common/StatCommonHelper:a	Ljava/lang/String;
-    //   46: invokevirtual 749	java/lang/String:trim	()Ljava/lang/String;
-    //   49: invokevirtual 427	java/lang/String:length	()I
-    //   52: ifne +18 -> 70
-    //   55: invokestatic 830	com/tencent/acstat/common/StatCommonHelper:b	()Ljava/util/Random;
-    //   58: ldc_w 831
-    //   61: invokevirtual 834	java/util/Random:nextInt	(I)I
-    //   64: invokestatic 916	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   67: putstatic 40	com/tencent/acstat/common/StatCommonHelper:a	Ljava/lang/String;
-    //   70: getstatic 40	com/tencent/acstat/common/StatCommonHelper:a	Ljava/lang/String;
-    //   73: astore_0
-    //   74: goto -49 -> 25
-    //   77: astore_0
-    //   78: ldc 2
-    //   80: monitorexit
-    //   81: aload_0
-    //   82: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	83	0	paramContext	Context
-    // Exception table:
-    //   from	to	target	type
-    //   3	25	77	finally
-    //   30	55	77	finally
-    //   55	70	77	finally
-    //   70	74	77	finally
-  }
-  
-  public static int hasRootAccess(Context paramContext)
-  {
-    if (j >= 0) {
-      return j;
-    }
-    j = 0;
     try
     {
-      if (l.a()) {
-        j = 1;
-      }
-      return j;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
+      if ((a != null) && (a.trim().length() != 0))
       {
-        k.e(paramContext);
+        paramContext = a;
+        return paramContext;
       }
+      a = Util.getDeviceID(paramContext);
+      if ((a == null) || (a.trim().length() == 0)) {
+        a = Integer.toString(b().nextInt(2147483647));
+      }
+      paramContext = a;
+      return paramContext;
     }
     finally {}
+  }
+  
+  /* Error */
+  public static int hasRootAccess(Context paramContext)
+  {
+    // Byte code:
+    //   0: getstatic 917	com/tencent/acstat/common/StatCommonHelper:j	I
+    //   3: iflt +7 -> 10
+    //   6: getstatic 917	com/tencent/acstat/common/StatCommonHelper:j	I
+    //   9: ireturn
+    //   10: iconst_0
+    //   11: putstatic 917	com/tencent/acstat/common/StatCommonHelper:j	I
+    //   14: ldc 2
+    //   16: monitorenter
+    //   17: invokestatic 921	com/tencent/acstat/common/l:a	()Z
+    //   20: ifeq +22 -> 42
+    //   23: iconst_1
+    //   24: putstatic 917	com/tencent/acstat/common/StatCommonHelper:j	I
+    //   27: goto +15 -> 42
+    //   30: astore_0
+    //   31: goto +18 -> 49
+    //   34: astore_0
+    //   35: getstatic 53	com/tencent/acstat/common/StatCommonHelper:k	Lcom/tencent/acstat/common/StatLogger;
+    //   38: aload_0
+    //   39: invokevirtual 323	com/tencent/acstat/common/StatLogger:e	(Ljava/lang/Throwable;)V
+    //   42: ldc 2
+    //   44: monitorexit
+    //   45: getstatic 917	com/tencent/acstat/common/StatCommonHelper:j	I
+    //   48: ireturn
+    //   49: ldc 2
+    //   51: monitorexit
+    //   52: aload_0
+    //   53: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	54	0	paramContext	Context
+    // Exception table:
+    //   from	to	target	type
+    //   17	27	30	finally
+    //   35	42	30	finally
+    //   42	45	30	finally
+    //   49	52	30	finally
+    //   17	27	34	java/lang/Throwable
   }
   
   public static boolean haveGravity(Context paramContext)
@@ -1184,20 +1179,26 @@ public class StatCommonHelper
   
   public static boolean isBackground(Context paramContext)
   {
-    Iterator localIterator = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
-    while (localIterator.hasNext())
+    Object localObject = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
       if (localRunningAppProcessInfo.processName.equalsIgnoreCase(paramContext.getPackageName()))
       {
-        k.i("isBackground processName:" + localRunningAppProcessInfo.processName + ", importance:" + localRunningAppProcessInfo.importance);
-        if ((localRunningAppProcessInfo.importance == 400) || (localRunningAppProcessInfo.importance == 130)) {
-          return true;
-        }
-        if ((localRunningAppProcessInfo.importance == 100) || (localRunningAppProcessInfo.importance == 200)) {
+        localObject = k;
+        StringBuilder localStringBuilder = new StringBuilder("isBackground processName:");
+        localStringBuilder.append(localRunningAppProcessInfo.processName);
+        localStringBuilder.append(", importance:");
+        localStringBuilder.append(localRunningAppProcessInfo.importance);
+        ((StatLogger)localObject).i(localStringBuilder.toString());
+        if ((localRunningAppProcessInfo.importance != 400) && (localRunningAppProcessInfo.importance != 130))
+        {
+          if ((localRunningAppProcessInfo.importance != 100) && (localRunningAppProcessInfo.importance != 200)) {
+            return false;
+          }
           return isLockScreenOn(paramContext);
         }
-        return false;
+        return true;
       }
     }
     return false;
@@ -1218,7 +1219,9 @@ public class StatCommonHelper
     {
       ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
       if (localRunningAppProcessInfo.processName.startsWith(paramContext)) {
-        return localRunningAppProcessInfo.importance == 400;
+        if (localRunningAppProcessInfo.importance == 400) {
+          return true;
+        }
       }
     }
     return false;
@@ -1242,78 +1245,60 @@ public class StatCommonHelper
     return (paramString != null) && (paramString.trim().length() != 0);
   }
   
-  /* Error */
   public static int isTheFirstTimeActivate(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 86	com/tencent/acstat/common/StatCommonHelper:u	I
-    //   6: iconst_m1
-    //   7: if_icmpeq +12 -> 19
-    //   10: getstatic 86	com/tencent/acstat/common/StatCommonHelper:u	I
-    //   13: istore_1
-    //   14: ldc 2
-    //   16: monitorexit
-    //   17: iload_1
-    //   18: ireturn
-    //   19: aload_0
-    //   20: invokestatic 956	com/tencent/acstat/common/StatCommonHelper:checkFirstTimeActivate	(Landroid/content/Context;)V
-    //   23: getstatic 86	com/tencent/acstat/common/StatCommonHelper:u	I
-    //   26: istore_1
-    //   27: goto -13 -> 14
-    //   30: astore_0
-    //   31: ldc 2
-    //   33: monitorexit
-    //   34: aload_0
-    //   35: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	36	0	paramContext	Context
-    //   13	14	1	i1	int
-    // Exception table:
-    //   from	to	target	type
-    //   3	14	30	finally
-    //   19	27	30	finally
+    try
+    {
+      if (u != -1)
+      {
+        i1 = u;
+        return i1;
+      }
+      checkFirstTimeActivate(paramContext);
+      int i1 = u;
+      return i1;
+    }
+    finally {}
   }
   
   public static boolean isWiFiActive(Context paramContext)
   {
-    try
+    for (;;)
     {
-      if (!Util.checkPermission(paramContext, "android.permission.ACCESS_WIFI_STATE")) {
-        break label71;
-      }
-      paramContext = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
-      if (paramContext == null) {
-        break label100;
-      }
-      paramContext = paramContext.getAllNetworkInfo();
-      if (paramContext == null) {
-        break label100;
-      }
-      i1 = 0;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
+      int i1;
+      try
       {
-        int i1;
-        label71:
+        if (Util.checkPermission(paramContext, "android.permission.ACCESS_WIFI_STATE"))
+        {
+          paramContext = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
+          if (paramContext == null) {
+            break;
+          }
+          paramContext = paramContext.getAllNetworkInfo();
+          if (paramContext == null) {
+            break;
+          }
+          i1 = 0;
+          if (i1 >= paramContext.length) {
+            break;
+          }
+          if ((paramContext[i1].getTypeName().equalsIgnoreCase("WIFI")) && (paramContext[i1].isConnected())) {
+            return true;
+          }
+        }
+        else
+        {
+          k.warn("can not get the permission of android.permission.ACCESS_WIFI_STATE");
+          return false;
+        }
+      }
+      catch (Throwable paramContext)
+      {
         k.e(paramContext);
-        continue;
-        i1 += 1;
-      }
-    }
-    if (i1 < paramContext.length) {
-      if ((paramContext[i1].getTypeName().equalsIgnoreCase("WIFI")) && (paramContext[i1].isConnected()))
-      {
-        return true;
-        k.warn("can not get the permission of android.permission.ACCESS_WIFI_STATE");
         return false;
       }
+      i1 += 1;
     }
-    label100:
     return false;
   }
   

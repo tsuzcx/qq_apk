@@ -21,13 +21,19 @@ public class WSGzipCompressInfo
   public void a(float paramFloat)
   {
     this.jdField_a_of_type_Float = paramFloat;
-    WSLog.e("[WSService][GzipCompressInfo]", "[WSGzipCompressInfo.java][setRadio] radio:" + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGzipCompressInfo.java][setRadio] radio:");
+    localStringBuilder.append(paramFloat);
+    WSLog.e("[WSService][GzipCompressInfo]", localStringBuilder.toString());
   }
   
   public void a(long paramLong)
   {
     this.jdField_a_of_type_Long = paramLong;
-    WSLog.e("[WSService][GzipCompressInfo]", "[WSGzipCompressInfo.java][setCompressSize] compressSize:" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGzipCompressInfo.java][setCompressSize] compressSize:");
+    localStringBuilder.append(paramLong);
+    WSLog.e("[WSService][GzipCompressInfo]", localStringBuilder.toString());
   }
   
   public long b()
@@ -38,12 +44,15 @@ public class WSGzipCompressInfo
   public void b(long paramLong)
   {
     this.b = paramLong;
-    WSLog.e("[WSService][GzipCompressInfo]", "[WSGzipCompressInfo.java][decompressSize] decompressSize:" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGzipCompressInfo.java][decompressSize] decompressSize:");
+    localStringBuilder.append(paramLong);
+    WSLog.e("[WSService][GzipCompressInfo]", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSGzipCompressInfo
  * JD-Core Version:    0.7.0.1
  */

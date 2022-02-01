@@ -16,87 +16,94 @@ public class WSReportDC898Vertical
   public static Map<String, String> a(WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
   {
     Object localObject = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
-    HashMap localHashMap;
-    if (localObject == null)
-    {
+    if (localObject == null) {
       localObject = "0";
-      paramWSPlayerParam = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo;
-      localHashMap = new HashMap();
-      localHashMap.put("video_total_time", String.valueOf(paramWSPlayerParam.c));
-      localHashMap.put("video_play_time", localObject);
-      localHashMap.put("videoid", paramWSPlayerParam.a);
-      localHashMap.put("feedid", paramWSPlayerParam.a);
-      localHashMap.put("author_uin", paramWSPlayerParam.jdField_e_of_type_JavaLangString);
-      if (NetworkState.g().getNetworkType() != 1) {
-        break label154;
-      }
-    }
-    label154:
-    for (int i = 1;; i = 2)
-    {
-      localHashMap.put("network", String.valueOf(i));
-      localHashMap.put("video_type", String.valueOf(paramWSPlayerParam.jdField_e_of_type_Int));
-      return localHashMap;
+    } else {
       localObject = String.valueOf(((WSPlayerWrapper)localObject).a(paramBoolean));
-      break;
     }
+    paramWSPlayerParam = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("video_total_time", String.valueOf(paramWSPlayerParam.c));
+    localHashMap.put("video_play_time", localObject);
+    localHashMap.put("videoid", paramWSPlayerParam.a);
+    localHashMap.put("feedid", paramWSPlayerParam.a);
+    localHashMap.put("author_uin", paramWSPlayerParam.jdField_e_of_type_JavaLangString);
+    int j = NetworkState.g().getNetworkType();
+    int i = 1;
+    if (j != 1) {
+      i = 2;
+    }
+    localHashMap.put("network", String.valueOf(i));
+    localHashMap.put("video_type", String.valueOf(paramWSPlayerParam.jdField_e_of_type_Int));
+    return localHashMap;
   }
   
   public static void a()
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.d();
+    localWSReportDC898Base.d();
   }
   
   public static void a(int paramInt)
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.a(paramInt);
+    localWSReportDC898Base.a(paramInt);
   }
   
   public static void a(int paramInt1, int paramInt2)
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.a(paramInt1, paramInt2);
+    localWSReportDC898Base.a(paramInt1, paramInt2);
   }
   
   public static void a(WSPlayerParam paramWSPlayerParam, boolean paramBoolean)
   {
-    if (a == null) {}
-    while ((paramWSPlayerParam == null) || (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null)) {
+    if (a == null) {
       return;
     }
-    paramWSPlayerParam = a(paramWSPlayerParam, paramBoolean);
-    a.a(paramWSPlayerParam);
+    if (paramWSPlayerParam != null)
+    {
+      if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null) {
+        return;
+      }
+      paramWSPlayerParam = a(paramWSPlayerParam, paramBoolean);
+      a.a(paramWSPlayerParam);
+    }
   }
   
   public static void a(String paramString)
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.c(paramString);
+    localWSReportDC898Base.c(paramString);
   }
   
   public static void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.a(paramString, paramInt1, paramInt2);
+    localWSReportDC898Base.a(paramString, paramInt1, paramInt2);
   }
   
   public static void a(String paramString1, String paramString2)
   {
-    if (a != null)
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base != null)
     {
-      a.b(paramString2);
+      localWSReportDC898Base.b(paramString2);
       a.a(paramString1);
     }
   }
@@ -109,71 +116,79 @@ public class WSReportDC898Vertical
   
   public static void b()
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.a();
+    localWSReportDC898Base.a();
   }
   
   public static void b(int paramInt)
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.b(paramInt);
+    localWSReportDC898Base.b(paramInt);
   }
   
   public static void b(String paramString, int paramInt1, int paramInt2)
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.b(paramString, paramInt1, paramInt2);
+    localWSReportDC898Base.b(paramString, paramInt1, paramInt2);
   }
   
   public static void c()
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.b();
+    localWSReportDC898Base.b();
   }
   
   public static void c(String paramString, int paramInt1, int paramInt2)
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.c(paramString, paramInt1, paramInt2);
+    localWSReportDC898Base.c(paramString, paramInt1, paramInt2);
   }
   
   public static void d()
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.c();
+    localWSReportDC898Base.c();
   }
   
   public static void e()
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.e();
+    localWSReportDC898Base.e();
   }
   
   public static void f()
   {
-    if (a == null) {
+    WSReportDC898Base localWSReportDC898Base = a;
+    if (localWSReportDC898Base == null) {
       return;
     }
-    a.f();
+    localWSReportDC898Base.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.dc898.WSReportDC898Vertical
  * JD-Core Version:    0.7.0.1
  */

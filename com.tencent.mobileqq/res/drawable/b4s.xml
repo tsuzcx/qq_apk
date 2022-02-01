@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#00000000" android:endColor="#80000000" />
-</shape>
+    <item android:id="@android:id/background" android:drawable="@drawable/fqg" />
+    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/fqj" />
+    <item android:id="@android:id/progress">
+        <bitmap android:src="@drawable/fqg" />
+    </item>
+</layer-list>

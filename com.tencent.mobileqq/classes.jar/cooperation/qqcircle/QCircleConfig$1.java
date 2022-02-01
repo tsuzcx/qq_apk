@@ -15,21 +15,31 @@ class QCircleConfig$1
   
   public void onRspCallback(boolean paramBoolean, String paramString)
   {
-    RFLog.d("QCircleConfig", RFLog.USR, "tryGetSplashVideoAsync onRspCallback " + paramBoolean + ", " + paramString);
+    int i = RFLog.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tryGetSplashVideoAsync onRspCallback ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramString);
+    RFLog.d("QCircleConfig", i, localStringBuilder.toString());
     if (paramBoolean)
     {
       paramString = new File(paramString);
       if ((paramString.exists()) && (paramString.length() > 0L))
       {
         QCircleConfig.access$002(FileProvider.getUriForFile(MobileQQ.getContext(), "com.tencent.mobileqq.fileprovider", paramString));
-        RFLog.d("QCircleConfig", RFLog.USR, "tryGetSplashVideoAsync splashVideoPath: " + QCircleConfig.access$000());
+        i = RFLog.USR;
+        paramString = new StringBuilder();
+        paramString.append("tryGetSplashVideoAsync splashVideoPath: ");
+        paramString.append(QCircleConfig.access$000());
+        RFLog.d("QCircleConfig", i, paramString.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.QCircleConfig.1
  * JD-Core Version:    0.7.0.1
  */

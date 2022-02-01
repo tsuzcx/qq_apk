@@ -33,26 +33,34 @@ public class ChnToSpell
   public static ChnToSpell.CharSpelling a(char paramChar)
   {
     ChnToSpell.CharSpelling localCharSpelling = new ChnToSpell.CharSpelling();
-    switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, paramChar))
+    int i = Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, paramChar);
+    if (i != -14)
     {
-    default: 
-      localCharSpelling.jdField_a_of_type_Int = 6;
-      localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      return localCharSpelling;
-    case -12: 
+      if (i != -12)
+      {
+        if (i != -7)
+        {
+          if (i != -5)
+          {
+            if (i != -3)
+            {
+              localCharSpelling.jdField_a_of_type_Int = 6;
+              localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+              return localCharSpelling;
+            }
+            localCharSpelling.jdField_a_of_type_Int = 4;
+            localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+            return localCharSpelling;
+          }
+          localCharSpelling.jdField_a_of_type_Int = 2;
+          localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+          return localCharSpelling;
+        }
+        localCharSpelling.jdField_a_of_type_Int = 3;
+        localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+        return localCharSpelling;
+      }
       localCharSpelling.jdField_a_of_type_Int = 1;
-      localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      return localCharSpelling;
-    case -5: 
-      localCharSpelling.jdField_a_of_type_Int = 2;
-      localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      return localCharSpelling;
-    case -7: 
-      localCharSpelling.jdField_a_of_type_Int = 3;
-      localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      return localCharSpelling;
-    case -3: 
-      localCharSpelling.jdField_a_of_type_Int = 4;
       localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
       return localCharSpelling;
     }
@@ -85,414 +93,460 @@ public class ChnToSpell
         return localCharSpelling;
       }
     }
-    switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, paramChar))
+    paramInt = Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, paramChar);
+    if (paramInt != -14)
     {
-    default: 
-      if (Character.isHighSurrogate(paramChar))
+      if (paramInt != -12)
       {
-        localCharSpelling.jdField_a_of_type_Int = 0;
-        localCharSpelling.jdField_a_of_type_JavaLangString = "??";
+        if (paramInt != -9)
+        {
+          if (paramInt != -7)
+          {
+            if (paramInt != -5)
+            {
+              if (paramInt != 7)
+              {
+                if (Character.isHighSurrogate(paramChar))
+                {
+                  localCharSpelling.jdField_a_of_type_Int = 0;
+                  localCharSpelling.jdField_a_of_type_JavaLangString = "??";
+                  return localCharSpelling;
+                }
+                localCharSpelling.jdField_a_of_type_Int = 0;
+                localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+                return localCharSpelling;
+              }
+              localCharSpelling.jdField_a_of_type_Int = 2;
+              localCharSpelling.jdField_a_of_type_JavaLangString = "ling";
+              return localCharSpelling;
+            }
+            localCharSpelling.jdField_a_of_type_Int = 4;
+            localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+            return localCharSpelling;
+          }
+          localCharSpelling.jdField_a_of_type_Int = 3;
+          localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+          return localCharSpelling;
+        }
+        int i = paramChar - 'Ⅰ';
+        String[] arrayOfString = jdField_c_of_type_ArrayOfJavaLangString;
+        paramInt = i;
+        if (i >= arrayOfString.length) {
+          paramInt = i - arrayOfString.length;
+        }
+        localCharSpelling.jdField_a_of_type_Int = 1;
+        localCharSpelling.jdField_a_of_type_JavaLangString = jdField_c_of_type_ArrayOfJavaLangString[paramInt];
+        return localCharSpelling;
       }
-      break;
-    }
-    for (;;)
-    {
-      return localCharSpelling;
-      int i = paramChar - 'Ⅰ';
-      paramInt = i;
-      if (i >= jdField_c_of_type_ArrayOfJavaLangString.length) {
-        paramInt = i - jdField_c_of_type_ArrayOfJavaLangString.length;
-      }
-      localCharSpelling.jdField_a_of_type_Int = 1;
-      localCharSpelling.jdField_a_of_type_JavaLangString = jdField_c_of_type_ArrayOfJavaLangString[paramInt];
-      continue;
-      localCharSpelling.jdField_a_of_type_Int = 2;
-      localCharSpelling.jdField_a_of_type_JavaLangString = "ling";
-      continue;
-      localCharSpelling.jdField_a_of_type_Int = 4;
-      localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      continue;
-      localCharSpelling.jdField_a_of_type_Int = 3;
-      localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
-      continue;
       localCharSpelling.jdField_a_of_type_Int = 5;
       localCharSpelling.jdField_a_of_type_JavaLangString = jdField_a_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[(paramChar - '一')]];
-      continue;
-      localCharSpelling.jdField_a_of_type_Int = 6;
-      localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(Character.toLowerCase((char)(paramChar - 65248)));
-      continue;
-      localCharSpelling.jdField_a_of_type_Int = 0;
-      localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(paramChar);
+      return localCharSpelling;
     }
+    localCharSpelling.jdField_a_of_type_Int = 6;
+    localCharSpelling.jdField_a_of_type_JavaLangString = String.valueOf(Character.toLowerCase((char)(paramChar - 65248)));
+    return localCharSpelling;
   }
   
   public static ChnToSpell.ChnSpelling a(String paramString, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() == 0))
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      localObject1 = new ChnToSpell.ChnSpelling();
-      ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_Int = paramInt;
-      ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
-      ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaLangString = "";
-    }
-    do
-    {
-      return localObject1;
-      if (paramInt != 1) {
-        break;
-      }
-      localObject2 = (ChnToSpell.ChnSpelling)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    Object localObject1 = new ChnToSpell.ChnSpelling();
-    ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_Int = paramInt;
-    ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (jdField_a_of_type_ArrayOfShort == null) {
-      b();
-    }
-    Object localObject2 = new StringBuilder();
-    int n = paramString.length();
-    int j = paramString.charAt(0);
-    if (j == 21333) {
       if (paramInt == 1)
       {
-        ((StringBuilder)localObject2).append("shan");
-        label153:
-        ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-        j = 1;
+        localChnSpelling = (ChnToSpell.ChnSpelling)jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+        if (localChnSpelling != null) {
+          return localChnSpelling;
+        }
       }
-    }
-    for (;;)
-    {
-      label170:
-      if (j < n)
+      else if (paramInt == 2)
       {
-        int i = paramString.charAt(j);
-        ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
-        switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, i))
-        {
-        default: 
-          if (Character.isHighSurrogate(i))
-          {
-            ((StringBuilder)localObject2).append('?');
-            ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
-            ((StringBuilder)localObject2).append('?');
-            j += 1;
-          }
-          break;
-        }
-        for (;;)
-        {
-          j += 1;
-          break label170;
-          if (paramInt != 2) {
-            break;
-          }
-          localObject1 = (ChnToSpell.ChnSpelling)jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-          if (localObject1 == null) {
-            break;
-          }
-          return localObject1;
-          if (paramInt != 2) {
-            break label153;
-          }
-          ((StringBuilder)localObject2).append('s');
-          break label153;
-          if (j == 20167)
-          {
-            if (paramInt == 1) {
-              ((StringBuilder)localObject2).append("qiu");
-            }
-            for (;;)
-            {
-              ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-              j = 1;
-              break;
-              if (paramInt == 2) {
-                ((StringBuilder)localObject2).append('q');
-              }
-            }
-          }
-          if (j == 26366)
-          {
-            if (paramInt == 1) {
-              ((StringBuilder)localObject2).append("zeng");
-            }
-            for (;;)
-            {
-              ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-              j = 1;
-              break;
-              if (paramInt == 2) {
-                ((StringBuilder)localObject2).append('z');
-              }
-            }
-          }
-          if (j == 19975)
-          {
-            if ((paramString.length() <= 1) || (paramString.charAt(1) != '俟')) {
-              break label1076;
-            }
-            if (paramInt == 1)
-            {
-              ((StringBuilder)localObject2).append("moqi");
-              ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-              ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(2));
-            }
-            for (;;)
-            {
-              j = 2;
-              break;
-              if (paramInt == 2)
-              {
-                ((StringBuilder)localObject2).append("mq");
-                ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-                ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
-              }
-            }
-          }
-          if (j == 37325)
-          {
-            if (paramString.length() <= 1) {
-              break label1076;
-            }
-            if (paramString.charAt(1) == '庆') {
-              if (paramInt == 1)
-              {
-                ((StringBuilder)localObject2).append("chongqing");
-                ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-                ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(5));
-              }
-            }
-            for (;;)
-            {
-              j = 2;
-              break;
-              if (paramInt == 2)
-              {
-                ((StringBuilder)localObject2).append("cq");
-                ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-                ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
-                continue;
-                ((StringBuilder)localObject2).append("z");
-              }
-            }
-          }
-          if ((j != 38271) || (paramString.length() <= 1) || (paramString.charAt(1) != '沙')) {
-            break label1076;
-          }
-          if (paramInt == 1)
-          {
-            ((StringBuilder)localObject2).append("changsha");
-            ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-            ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(5));
-          }
-          for (;;)
-          {
-            j = 2;
-            break;
-            if (paramInt == 2)
-            {
-              ((StringBuilder)localObject2).append("cs");
-              ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
-              ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
-            }
-          }
-          int m = i - 8544;
-          int k = m;
-          if (m >= jdField_c_of_type_ArrayOfJavaLangString.length) {
-            k = m - jdField_c_of_type_ArrayOfJavaLangString.length;
-          }
-          ((StringBuilder)localObject2).append(jdField_c_of_type_ArrayOfJavaLangString[k]);
-          continue;
-          if (paramInt == 1)
-          {
-            ((StringBuilder)localObject2).append("ling");
-          }
-          else
-          {
-            ((StringBuilder)localObject2).append('l');
-            continue;
-            ((StringBuilder)localObject2).append(Character.toLowerCase(i));
-            continue;
-            ((StringBuilder)localObject2).append(i);
-            continue;
-            if (paramInt == 1)
-            {
-              ((StringBuilder)localObject2).append(jdField_a_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[(i - 19968)]]);
-            }
-            else
-            {
-              ((StringBuilder)localObject2).append(jdField_a_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[(i - 19968)]].charAt(0));
-              continue;
-              ((StringBuilder)localObject2).append(Character.toLowerCase((char)(i - 65248)));
-              continue;
-              ((StringBuilder)localObject2).append(i);
-            }
-          }
+        localChnSpelling = (ChnToSpell.ChnSpelling)jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+        if (localChnSpelling != null) {
+          return localChnSpelling;
         }
       }
-      ((ChnToSpell.ChnSpelling)localObject1).jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-      if (paramInt == 1) {
-        jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, localObject1);
+      ChnToSpell.ChnSpelling localChnSpelling = new ChnToSpell.ChnSpelling();
+      localChnSpelling.jdField_a_of_type_Int = paramInt;
+      localChnSpelling.jdField_a_of_type_JavaUtilList = new ArrayList();
+      if (jdField_a_of_type_ArrayOfShort == null) {
+        b();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      int n = paramString.length();
+      int j = paramString.charAt(0);
+      if (j == 21333)
+      {
+        if (paramInt == 1) {
+          localStringBuilder.append("shan");
+        } else if (paramInt == 2) {
+          localStringBuilder.append('s');
+        }
+        localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
       }
       for (;;)
       {
-        return localObject1;
-        if (paramInt == 2) {
-          jdField_b_of_type_AndroidSupportV4UtilLruCache.put(paramString, localObject1);
+        j = 1;
+        break label664;
+        if (j == 20167)
+        {
+          if (paramInt == 1) {
+            localStringBuilder.append("qiu");
+          } else if (paramInt == 2) {
+            localStringBuilder.append('q');
+          }
+          localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+        }
+        else
+        {
+          if (j != 26366) {
+            break;
+          }
+          if (paramInt == 1) {
+            localStringBuilder.append("zeng");
+          } else if (paramInt == 2) {
+            localStringBuilder.append('z');
+          }
+          localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
         }
       }
-      label1076:
+      if (j == 19975)
+      {
+        if ((paramString.length() <= 1) || (paramString.charAt(1) != '俟')) {
+          break label662;
+        }
+        if (paramInt == 1)
+        {
+          localStringBuilder.append("moqi");
+          localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+          localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(2));
+        }
+        else if (paramInt == 2)
+        {
+          localStringBuilder.append("mq");
+          localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+          localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
+        }
+      }
+      else
+      {
+        if (j != 37325) {
+          break label542;
+        }
+        if (paramString.length() <= 1) {
+          break label662;
+        }
+        if (paramString.charAt(1) == '庆')
+        {
+          if (paramInt == 1)
+          {
+            localStringBuilder.append("chongqing");
+            localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+            localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(5));
+          }
+          else if (paramInt == 2)
+          {
+            localStringBuilder.append("cq");
+            localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+            localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
+          }
+        }
+        else {
+          localStringBuilder.append("z");
+        }
+      }
+      for (;;)
+      {
+        j = 2;
+        break label664;
+        label542:
+        if ((j != 38271) || (paramString.length() <= 1) || (paramString.charAt(1) != '沙')) {
+          break;
+        }
+        if (paramInt == 1)
+        {
+          localStringBuilder.append("changsha");
+          localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+          localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(5));
+        }
+        else if (paramInt == 2)
+        {
+          localStringBuilder.append("cs");
+          localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(0));
+          localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
+        }
+      }
+      label662:
       j = 0;
+      label664:
+      while (j < n)
+      {
+        int i = paramString.charAt(j);
+        localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder.length()));
+        int k = Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, i);
+        if (k != -14)
+        {
+          if (k != -12)
+          {
+            if (k != -9)
+            {
+              if (k != -7)
+              {
+                if (k != -5)
+                {
+                  if (k != 7)
+                  {
+                    if (Character.isHighSurrogate(i))
+                    {
+                      localStringBuilder.append('?');
+                      localChnSpelling.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder.length()));
+                      localStringBuilder.append('?');
+                      j += 1;
+                    }
+                    else
+                    {
+                      localStringBuilder.append(i);
+                    }
+                  }
+                  else if (paramInt == 1) {
+                    localStringBuilder.append("ling");
+                  } else {
+                    localStringBuilder.append('l');
+                  }
+                }
+                else {
+                  localStringBuilder.append(Character.toLowerCase(i));
+                }
+              }
+              else {
+                localStringBuilder.append(i);
+              }
+            }
+            else
+            {
+              int m = i - 8544;
+              String[] arrayOfString = jdField_c_of_type_ArrayOfJavaLangString;
+              k = m;
+              if (m >= arrayOfString.length) {
+                k = m - arrayOfString.length;
+              }
+              localStringBuilder.append(jdField_c_of_type_ArrayOfJavaLangString[k]);
+            }
+          }
+          else if (paramInt == 1) {
+            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[(i - 19968)]]);
+          } else {
+            localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[(i - 19968)]].charAt(0));
+          }
+        }
+        else {
+          localStringBuilder.append(Character.toLowerCase((char)(i - 65248)));
+        }
+        j += 1;
+      }
+      localChnSpelling.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      if (paramInt == 1)
+      {
+        jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, localChnSpelling);
+        return localChnSpelling;
+      }
+      if (paramInt == 2) {
+        jdField_b_of_type_AndroidSupportV4UtilLruCache.put(paramString, localChnSpelling);
+      }
+      return localChnSpelling;
     }
+    paramString = new ChnToSpell.ChnSpelling();
+    paramString.jdField_a_of_type_Int = paramInt;
+    paramString.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramString.jdField_a_of_type_JavaLangString = "";
+    return paramString;
   }
   
   public static ChnToSpell.ChnSpellingAll a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      localObject1 = null;
-    }
-    do
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      return localObject1;
-      localObject2 = (ChnToSpell.ChnSpellingAll)jdField_c_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    Object localObject1 = new ChnToSpell.ChnSpellingAll();
-    ((ChnToSpell.ChnSpellingAll)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
-    ((ChnToSpell.ChnSpellingAll)localObject1).jdField_b_of_type_JavaUtilList = new ArrayList();
-    ((ChnToSpell.ChnSpellingAll)localObject1).jdField_c_of_type_JavaUtilList = new ArrayList();
-    ((ChnToSpell.ChnSpellingAll)localObject1).jdField_d_of_type_JavaUtilList = new ArrayList();
-    if (jdField_a_of_type_ArrayOfShort == null) {
-      b();
-    }
-    Object localObject2 = new StringBuilder();
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    int n = paramString.length();
-    int j = paramString.charAt(0);
-    if (j == 21333)
-    {
-      ((StringBuilder)localObject2).append("shan");
-      localStringBuilder1.append('s');
-      localStringBuilder2.append("sh-an").append("#");
-      ((ChnToSpell.ChnSpellingAll)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
-      ((ChnToSpell.ChnSpellingAll)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
-      ((ChnToSpell.ChnSpellingAll)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
-      j = 1;
-    }
-    for (;;)
-    {
-      if (j < n)
+      ChnToSpell.ChnSpellingAll localChnSpellingAll = (ChnToSpell.ChnSpellingAll)jdField_c_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+      if (localChnSpellingAll != null) {
+        return localChnSpellingAll;
+      }
+      localChnSpellingAll = new ChnToSpell.ChnSpellingAll();
+      localChnSpellingAll.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localChnSpellingAll.jdField_b_of_type_JavaUtilList = new ArrayList();
+      localChnSpellingAll.jdField_c_of_type_JavaUtilList = new ArrayList();
+      localChnSpellingAll.jdField_d_of_type_JavaUtilList = new ArrayList();
+      if (jdField_a_of_type_ArrayOfShort == null) {
+        b();
+      }
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      StringBuilder localStringBuilder3 = new StringBuilder();
+      int n = paramString.length();
+      int j = paramString.charAt(0);
+      if (j == 21333)
+      {
+        localStringBuilder1.append("shan");
+        localStringBuilder2.append('s');
+        localStringBuilder3.append("sh-an");
+        localStringBuilder3.append("#");
+        localChnSpellingAll.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
+        localChnSpellingAll.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
+        localChnSpellingAll.jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
+      }
+      for (;;)
+      {
+        j = 1;
+        break label413;
+        if (j == 20167)
+        {
+          localStringBuilder1.append("qiu");
+          localStringBuilder2.append('q');
+          localStringBuilder3.append("q-iu");
+          localStringBuilder3.append("#");
+          localChnSpellingAll.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
+          localChnSpellingAll.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
+          localChnSpellingAll.jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
+        }
+        else
+        {
+          if (j != 26366) {
+            break;
+          }
+          localStringBuilder1.append("zeng");
+          localStringBuilder2.append('z');
+          localStringBuilder3.append("z-eng");
+          localStringBuilder3.append("#");
+          localChnSpellingAll.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
+          localChnSpellingAll.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
+          localChnSpellingAll.jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
+        }
+      }
+      j = 0;
+      label413:
+      while (j < n)
       {
         int i = paramString.charAt(j);
-        ((ChnToSpell.ChnSpellingAll)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
-        ((ChnToSpell.ChnSpellingAll)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder1.length()));
-        ((ChnToSpell.ChnSpellingAll)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder2.length()));
-        if ((i == 45) || (i == 35))
+        localChnSpellingAll.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder1.length()));
+        localChnSpellingAll.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder2.length()));
+        localChnSpellingAll.jdField_d_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder3.length()));
+        char c1;
+        if ((i != 45) && (i != 35))
         {
-          ((StringBuilder)localObject2).append(i);
-          localStringBuilder1.append(i);
-          localStringBuilder2.append('0').append("#");
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          if (j == 20167)
+          int k = Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, i);
+          if (k != -14)
           {
-            ((StringBuilder)localObject2).append("qiu");
-            localStringBuilder1.append('q');
-            localStringBuilder2.append("q-iu").append("#");
-            ((ChnToSpell.ChnSpellingAll)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
-            ((ChnToSpell.ChnSpellingAll)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
-            ((ChnToSpell.ChnSpellingAll)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
-            j = 1;
-            break;
-          }
-          if (j != 26366) {
-            break label1133;
-          }
-          ((StringBuilder)localObject2).append("zeng");
-          localStringBuilder1.append('z');
-          localStringBuilder2.append("z-eng").append("#");
-          ((ChnToSpell.ChnSpellingAll)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(0));
-          ((ChnToSpell.ChnSpellingAll)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(0));
-          ((ChnToSpell.ChnSpellingAll)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(0));
-          j = 1;
-          break;
-          switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, i))
-          {
-          default: 
-            if (Character.isHighSurrogate(i))
+            String[] arrayOfString;
+            if (k != -12)
             {
-              ((StringBuilder)localObject2).append('?');
-              localStringBuilder1.append('?');
-              localStringBuilder2.append('?').append("#");
-              ((ChnToSpell.ChnSpellingAll)localObject1).jdField_b_of_type_JavaUtilList.add(Integer.valueOf(((StringBuilder)localObject2).length()));
-              ((ChnToSpell.ChnSpellingAll)localObject1).jdField_c_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder1.length()));
-              ((ChnToSpell.ChnSpellingAll)localObject1).jdField_d_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder2.length()));
-              ((StringBuilder)localObject2).append('?');
-              localStringBuilder1.append('?');
-              localStringBuilder2.append('?').append("#");
-              j += 1;
+              if (k != -9)
+              {
+                if (k != -7)
+                {
+                  if (k != -5)
+                  {
+                    if (k != 7)
+                    {
+                      if (Character.isHighSurrogate(i))
+                      {
+                        localStringBuilder1.append('?');
+                        localStringBuilder2.append('?');
+                        localStringBuilder3.append('?');
+                        localStringBuilder3.append("#");
+                        localChnSpellingAll.jdField_b_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder1.length()));
+                        localChnSpellingAll.jdField_c_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder2.length()));
+                        localChnSpellingAll.jdField_d_of_type_JavaUtilList.add(Integer.valueOf(localStringBuilder3.length()));
+                        localStringBuilder1.append('?');
+                        localStringBuilder2.append('?');
+                        localStringBuilder3.append('?');
+                        localStringBuilder3.append("#");
+                        j += 1;
+                      }
+                      else
+                      {
+                        localStringBuilder1.append('?');
+                        localStringBuilder2.append('?');
+                        localStringBuilder3.append('?');
+                        localStringBuilder3.append("#");
+                      }
+                    }
+                    else
+                    {
+                      localStringBuilder1.append("ling");
+                      localStringBuilder2.append('l');
+                      localStringBuilder3.append("l-ing");
+                      localStringBuilder3.append("#");
+                    }
+                  }
+                  else
+                  {
+                    localStringBuilder1.append(Character.toLowerCase(i));
+                    localStringBuilder2.append(Character.toLowerCase(i));
+                    localStringBuilder3.append(Character.toLowerCase(i));
+                    localStringBuilder3.append("#");
+                  }
+                }
+                else
+                {
+                  localStringBuilder1.append(i);
+                  localStringBuilder2.append(i);
+                  localStringBuilder3.append(i);
+                  localStringBuilder3.append("#");
+                }
+              }
+              else
+              {
+                int m = i - 8544;
+                arrayOfString = jdField_c_of_type_ArrayOfJavaLangString;
+                k = m;
+                if (m >= arrayOfString.length) {
+                  k = m - arrayOfString.length;
+                }
+                localStringBuilder1.append(jdField_c_of_type_ArrayOfJavaLangString[k]);
+                localStringBuilder2.append(jdField_c_of_type_ArrayOfJavaLangString[k]);
+                localStringBuilder3.append(jdField_c_of_type_ArrayOfJavaLangString[k]);
+                localStringBuilder3.append("#");
+              }
             }
-            break;
-          case -9: 
-            int m = i - 8544;
-            int k = m;
-            if (m >= jdField_c_of_type_ArrayOfJavaLangString.length) {
-              k = m - jdField_c_of_type_ArrayOfJavaLangString.length;
+            else
+            {
+              arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+              short[] arrayOfShort = jdField_a_of_type_ArrayOfShort;
+              k = i - 19968;
+              localStringBuilder1.append(arrayOfString[arrayOfShort[k]]);
+              localStringBuilder2.append(jdField_a_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[k]].charAt(0));
+              localStringBuilder3.append(jdField_b_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[k]]);
+              localStringBuilder3.append("#");
             }
-            ((StringBuilder)localObject2).append(jdField_c_of_type_ArrayOfJavaLangString[k]);
-            localStringBuilder1.append(jdField_c_of_type_ArrayOfJavaLangString[k]);
-            localStringBuilder2.append(jdField_c_of_type_ArrayOfJavaLangString[k]).append("#");
-            break;
-          case 7: 
-            ((StringBuilder)localObject2).append("ling");
-            localStringBuilder1.append('l');
-            localStringBuilder2.append("l-ing").append("#");
-            break;
-          case -5: 
-            ((StringBuilder)localObject2).append(Character.toLowerCase(i));
-            localStringBuilder1.append(Character.toLowerCase(i));
-            localStringBuilder2.append(Character.toLowerCase(i)).append("#");
-            break;
-          case -7: 
-            ((StringBuilder)localObject2).append(i);
-            localStringBuilder1.append(i);
-            localStringBuilder2.append(i).append("#");
-            break;
-          case -12: 
-            ((StringBuilder)localObject2).append(jdField_a_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[(i - 19968)]]);
-            localStringBuilder1.append(jdField_a_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[(i - 19968)]].charAt(0));
-            localStringBuilder2.append(jdField_b_of_type_ArrayOfJavaLangString[jdField_a_of_type_ArrayOfShort[(i - 19968)]]).append("#");
-            break;
-          case -14: 
-            ((StringBuilder)localObject2).append(Character.toLowerCase((char)(i - 65248)));
-            localStringBuilder1.append(Character.toLowerCase((char)(i - 65248)));
-            localStringBuilder2.append(Character.toLowerCase((char)(i - 65248))).append("#");
-            continue;
-            ((StringBuilder)localObject2).append('?');
-            localStringBuilder1.append('?');
-            localStringBuilder2.append('?').append("#");
+          }
+          else
+          {
+            c1 = (char)(i - 65248);
+            localStringBuilder1.append(Character.toLowerCase(c1));
+            localStringBuilder2.append(Character.toLowerCase(c1));
+            localStringBuilder3.append(Character.toLowerCase(c1));
+            localStringBuilder3.append("#");
           }
         }
+        else
+        {
+          localStringBuilder1.append(c1);
+          localStringBuilder2.append(c1);
+          localStringBuilder3.append('0');
+          localStringBuilder3.append("#");
+        }
+        j += 1;
       }
-      if (localStringBuilder2.length() > 0) {
-        localStringBuilder2.deleteCharAt(localStringBuilder2.length() - 1);
+      if (localStringBuilder3.length() > 0) {
+        localStringBuilder3.deleteCharAt(localStringBuilder3.length() - 1);
       }
-      ((ChnToSpell.ChnSpellingAll)localObject1).jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-      ((ChnToSpell.ChnSpellingAll)localObject1).jdField_a_of_type_JavaUtilList = ((ChnToSpell.ChnSpellingAll)localObject1).jdField_b_of_type_JavaUtilList;
-      ((ChnToSpell.ChnSpellingAll)localObject1).jdField_b_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-      ((ChnToSpell.ChnSpellingAll)localObject1).jdField_c_of_type_JavaLangString = localStringBuilder1.toString();
-      ((ChnToSpell.ChnSpellingAll)localObject1).jdField_d_of_type_JavaLangString = localStringBuilder2.toString();
-      jdField_c_of_type_AndroidSupportV4UtilLruCache.put(paramString, localObject1);
-      return localObject1;
-      label1133:
-      j = 0;
+      localChnSpellingAll.jdField_a_of_type_JavaLangString = localStringBuilder1.toString();
+      localChnSpellingAll.jdField_a_of_type_JavaUtilList = localChnSpellingAll.jdField_b_of_type_JavaUtilList;
+      localChnSpellingAll.jdField_b_of_type_JavaLangString = localStringBuilder1.toString();
+      localChnSpellingAll.jdField_c_of_type_JavaLangString = localStringBuilder2.toString();
+      localChnSpellingAll.jdField_d_of_type_JavaLangString = localStringBuilder3.toString();
+      jdField_c_of_type_AndroidSupportV4UtilLruCache.put(paramString, localChnSpellingAll);
+      return localChnSpellingAll;
     }
+    return null;
   }
   
   public static String a(String paramString, int paramInt)
@@ -649,270 +703,264 @@ public class ChnToSpell
     //   18: putstatic 1710	com/tencent/mobileqq/utils/ChnToSpell:jdField_a_of_type_ArrayOfShort	[S
     //   21: sipush 2048
     //   24: newarray byte
-    //   26: astore 8
+    //   26: astore 9
     //   28: iconst_0
-    //   29: istore_1
-    //   30: invokestatic 2079	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   33: invokevirtual 2083	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
-    //   36: invokevirtual 2089	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
-    //   39: ldc_w 2091
-    //   42: invokevirtual 2097	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   45: astore_3
-    //   46: aload 8
-    //   48: invokestatic 2103	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
-    //   51: astore 7
-    //   53: new 2105	java/io/BufferedInputStream
-    //   56: dup
-    //   57: aload_3
-    //   58: invokespecial 2108	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   61: astore 4
-    //   63: aload 4
-    //   65: astore 6
-    //   67: aload_3
-    //   68: astore 5
-    //   70: aload 4
-    //   72: aload 8
-    //   74: iconst_0
-    //   75: sipush 2048
-    //   78: invokevirtual 2112	java/io/BufferedInputStream:read	([BII)I
-    //   81: iconst_2
-    //   82: idiv
-    //   83: istore_2
-    //   84: iconst_0
-    //   85: istore_0
-    //   86: iload_2
-    //   87: ifeq +83 -> 170
-    //   90: iload_0
-    //   91: iload_2
-    //   92: iadd
-    //   93: sipush 20902
-    //   96: if_icmpgt +74 -> 170
-    //   99: aload 4
-    //   101: astore 6
-    //   103: aload_3
-    //   104: astore 5
-    //   106: aload 7
-    //   108: iconst_0
-    //   109: invokevirtual 2116	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
-    //   112: pop
-    //   113: aload 4
-    //   115: astore 6
-    //   117: aload_3
-    //   118: astore 5
-    //   120: aload 7
-    //   122: invokevirtual 2120	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
-    //   125: getstatic 1710	com/tencent/mobileqq/utils/ChnToSpell:jdField_a_of_type_ArrayOfShort	[S
-    //   128: iload_0
-    //   129: iload_2
-    //   130: sipush 20902
-    //   133: iload_0
-    //   134: isub
-    //   135: invokestatic 2125	java/lang/Math:min	(II)I
-    //   138: invokevirtual 2130	java/nio/ShortBuffer:get	([SII)Ljava/nio/ShortBuffer;
-    //   141: pop
-    //   142: iload_0
-    //   143: iload_2
-    //   144: iadd
-    //   145: istore_0
-    //   146: aload 4
-    //   148: astore 6
-    //   150: aload_3
-    //   151: astore 5
-    //   153: aload 4
-    //   155: aload 8
-    //   157: iconst_0
-    //   158: sipush 2048
-    //   161: invokevirtual 2112	java/io/BufferedInputStream:read	([BII)I
-    //   164: iconst_2
-    //   165: idiv
-    //   166: istore_2
-    //   167: goto -81 -> 86
-    //   170: aload 4
-    //   172: ifnull +8 -> 180
-    //   175: aload 4
-    //   177: invokevirtual 2133	java/io/BufferedInputStream:close	()V
-    //   180: aload_3
-    //   181: ifnull +196 -> 377
-    //   184: aload_3
-    //   185: invokevirtual 2136	java/io/InputStream:close	()V
-    //   188: iconst_3
-    //   189: istore_0
-    //   190: iload_0
-    //   191: iconst_1
-    //   192: iadd
-    //   193: istore_0
-    //   194: iload_0
-    //   195: istore_1
-    //   196: iload_0
-    //   197: iconst_3
-    //   198: if_icmplt -168 -> 30
-    //   201: ldc 2
-    //   203: monitorexit
-    //   204: return
-    //   205: astore_3
-    //   206: ldc 2
-    //   208: monitorexit
-    //   209: aload_3
-    //   210: athrow
-    //   211: astore 4
-    //   213: aload 4
-    //   215: invokevirtual 2139	java/io/IOException:printStackTrace	()V
-    //   218: goto -38 -> 180
-    //   221: astore_3
-    //   222: aload_3
-    //   223: invokevirtual 2139	java/io/IOException:printStackTrace	()V
-    //   226: iconst_3
-    //   227: istore_0
-    //   228: goto -38 -> 190
+    //   29: istore_0
+    //   30: aconst_null
+    //   31: astore 7
+    //   33: aconst_null
+    //   34: astore 6
+    //   36: aconst_null
+    //   37: astore 8
+    //   39: invokestatic 2079	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   42: invokevirtual 2083	com/tencent/qphone/base/util/BaseApplication:getResources	()Landroid/content/res/Resources;
+    //   45: invokevirtual 2089	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   48: ldc_w 2091
+    //   51: invokevirtual 2097	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   54: astore 4
+    //   56: aload 7
+    //   58: astore 5
+    //   60: aload 4
+    //   62: astore 6
+    //   64: aload 9
+    //   66: invokestatic 2103	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   69: astore 10
+    //   71: aload 7
+    //   73: astore 5
+    //   75: aload 4
+    //   77: astore 6
+    //   79: new 2105	java/io/BufferedInputStream
+    //   82: dup
+    //   83: aload 4
+    //   85: invokespecial 2108	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   88: astore 7
+    //   90: aload 7
+    //   92: aload 9
+    //   94: iconst_0
+    //   95: sipush 2048
+    //   98: invokevirtual 2112	java/io/BufferedInputStream:read	([BII)I
+    //   101: iconst_2
+    //   102: idiv
+    //   103: istore_1
+    //   104: iconst_0
+    //   105: istore_2
+    //   106: iload_1
+    //   107: ifeq +62 -> 169
+    //   110: iload_2
+    //   111: iload_1
+    //   112: iadd
+    //   113: istore_3
+    //   114: iload_3
+    //   115: sipush 20902
+    //   118: if_icmpgt +51 -> 169
+    //   121: aload 10
+    //   123: iconst_0
+    //   124: invokevirtual 2116	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   127: pop
+    //   128: aload 10
+    //   130: invokevirtual 2120	java/nio/ByteBuffer:asShortBuffer	()Ljava/nio/ShortBuffer;
+    //   133: getstatic 1710	com/tencent/mobileqq/utils/ChnToSpell:jdField_a_of_type_ArrayOfShort	[S
+    //   136: iload_2
+    //   137: iload_1
+    //   138: sipush 20902
+    //   141: iload_2
+    //   142: isub
+    //   143: invokestatic 2125	java/lang/Math:min	(II)I
+    //   146: invokevirtual 2130	java/nio/ShortBuffer:get	([SII)Ljava/nio/ShortBuffer;
+    //   149: pop
+    //   150: aload 7
+    //   152: aload 9
+    //   154: iconst_0
+    //   155: sipush 2048
+    //   158: invokevirtual 2112	java/io/BufferedInputStream:read	([BII)I
+    //   161: iconst_2
+    //   162: idiv
+    //   163: istore_1
+    //   164: iload_3
+    //   165: istore_2
+    //   166: goto -60 -> 106
+    //   169: aload 7
+    //   171: invokevirtual 2133	java/io/BufferedInputStream:close	()V
+    //   174: goto +10 -> 184
+    //   177: astore 5
+    //   179: aload 5
+    //   181: invokevirtual 2136	java/io/IOException:printStackTrace	()V
+    //   184: aload 4
+    //   186: ifnull +18 -> 204
+    //   189: aload 4
+    //   191: invokevirtual 2139	java/io/InputStream:close	()V
+    //   194: goto +10 -> 204
+    //   197: astore 4
+    //   199: aload 4
+    //   201: invokevirtual 2136	java/io/IOException:printStackTrace	()V
+    //   204: iconst_3
+    //   205: istore_1
+    //   206: goto +109 -> 315
+    //   209: astore 5
+    //   211: aload 7
+    //   213: astore 6
+    //   215: goto +129 -> 344
+    //   218: astore 5
+    //   220: aload 7
+    //   222: astore 8
+    //   224: aload 5
+    //   226: astore 7
+    //   228: goto +21 -> 249
     //   231: astore 7
-    //   233: aconst_null
-    //   234: astore 4
-    //   236: aconst_null
-    //   237: astore_3
-    //   238: aload 4
-    //   240: astore 6
-    //   242: aload_3
-    //   243: astore 5
-    //   245: ldc_w 2141
-    //   248: iconst_1
-    //   249: ldc_w 1727
-    //   252: aload 7
-    //   254: invokestatic 2146	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   257: aload 4
-    //   259: ifnull +8 -> 267
-    //   262: aload 4
-    //   264: invokevirtual 2133	java/io/BufferedInputStream:close	()V
-    //   267: iload_1
-    //   268: istore_0
-    //   269: aload_3
-    //   270: ifnull -80 -> 190
-    //   273: aload_3
-    //   274: invokevirtual 2136	java/io/InputStream:close	()V
-    //   277: iload_1
-    //   278: istore_0
-    //   279: goto -89 -> 190
-    //   282: astore_3
-    //   283: aload_3
-    //   284: invokevirtual 2139	java/io/IOException:printStackTrace	()V
-    //   287: iload_1
-    //   288: istore_0
-    //   289: goto -99 -> 190
-    //   292: astore 4
-    //   294: aload 4
-    //   296: invokevirtual 2139	java/io/IOException:printStackTrace	()V
-    //   299: goto -32 -> 267
-    //   302: astore 4
-    //   304: aconst_null
-    //   305: astore 6
-    //   307: aconst_null
-    //   308: astore_3
-    //   309: aload 6
-    //   311: ifnull +8 -> 319
-    //   314: aload 6
-    //   316: invokevirtual 2133	java/io/BufferedInputStream:close	()V
-    //   319: aload_3
-    //   320: ifnull +7 -> 327
-    //   323: aload_3
-    //   324: invokevirtual 2136	java/io/InputStream:close	()V
-    //   327: aload 4
-    //   329: athrow
-    //   330: astore 5
-    //   332: aload 5
-    //   334: invokevirtual 2139	java/io/IOException:printStackTrace	()V
-    //   337: goto -18 -> 319
-    //   340: astore_3
-    //   341: aload_3
-    //   342: invokevirtual 2139	java/io/IOException:printStackTrace	()V
-    //   345: goto -18 -> 327
-    //   348: astore 4
-    //   350: aconst_null
-    //   351: astore 6
-    //   353: goto -44 -> 309
-    //   356: astore 4
-    //   358: aload 5
-    //   360: astore_3
-    //   361: goto -52 -> 309
-    //   364: astore 7
-    //   366: aconst_null
-    //   367: astore 4
-    //   369: goto -131 -> 238
-    //   372: astore 7
-    //   374: goto -136 -> 238
-    //   377: iconst_3
-    //   378: istore_0
-    //   379: goto -189 -> 190
+    //   233: goto +16 -> 249
+    //   236: astore 5
+    //   238: aconst_null
+    //   239: astore 4
+    //   241: goto +103 -> 344
+    //   244: astore 7
+    //   246: aconst_null
+    //   247: astore 4
+    //   249: aload 8
+    //   251: astore 5
+    //   253: aload 4
+    //   255: astore 6
+    //   257: ldc_w 2141
+    //   260: iconst_1
+    //   261: ldc_w 1784
+    //   264: aload 7
+    //   266: invokestatic 2146	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   269: aload 8
+    //   271: ifnull +18 -> 289
+    //   274: aload 8
+    //   276: invokevirtual 2133	java/io/BufferedInputStream:close	()V
+    //   279: goto +10 -> 289
+    //   282: astore 5
+    //   284: aload 5
+    //   286: invokevirtual 2136	java/io/IOException:printStackTrace	()V
+    //   289: iload_0
+    //   290: istore_1
+    //   291: aload 4
+    //   293: ifnull +22 -> 315
+    //   296: aload 4
+    //   298: invokevirtual 2139	java/io/InputStream:close	()V
+    //   301: iload_0
+    //   302: istore_1
+    //   303: goto +12 -> 315
+    //   306: astore 4
+    //   308: aload 4
+    //   310: invokevirtual 2136	java/io/IOException:printStackTrace	()V
+    //   313: iload_0
+    //   314: istore_1
+    //   315: iload_1
+    //   316: iconst_1
+    //   317: iadd
+    //   318: istore_1
+    //   319: iload_1
+    //   320: istore_0
+    //   321: iload_1
+    //   322: iconst_3
+    //   323: if_icmplt -293 -> 30
+    //   326: ldc 2
+    //   328: monitorexit
+    //   329: return
+    //   330: astore 7
+    //   332: aload 6
+    //   334: astore 4
+    //   336: aload 5
+    //   338: astore 6
+    //   340: aload 7
+    //   342: astore 5
+    //   344: aload 6
+    //   346: ifnull +18 -> 364
+    //   349: aload 6
+    //   351: invokevirtual 2133	java/io/BufferedInputStream:close	()V
+    //   354: goto +10 -> 364
+    //   357: astore 6
+    //   359: aload 6
+    //   361: invokevirtual 2136	java/io/IOException:printStackTrace	()V
+    //   364: aload 4
+    //   366: ifnull +18 -> 384
+    //   369: aload 4
+    //   371: invokevirtual 2139	java/io/InputStream:close	()V
+    //   374: goto +10 -> 384
+    //   377: astore 4
+    //   379: aload 4
+    //   381: invokevirtual 2136	java/io/IOException:printStackTrace	()V
+    //   384: aload 5
+    //   386: athrow
+    //   387: astore 4
+    //   389: ldc 2
+    //   391: monitorexit
+    //   392: goto +6 -> 398
+    //   395: aload 4
+    //   397: athrow
+    //   398: goto -3 -> 395
     // Local variable table:
     //   start	length	slot	name	signature
-    //   85	294	0	i	int
-    //   29	259	1	j	int
-    //   83	84	2	k	int
-    //   45	140	3	localInputStream	java.io.InputStream
-    //   205	5	3	localObject1	Object
-    //   221	2	3	localIOException1	java.io.IOException
-    //   237	37	3	localObject2	Object
-    //   282	2	3	localIOException2	java.io.IOException
-    //   308	16	3	localObject3	Object
-    //   340	2	3	localIOException3	java.io.IOException
-    //   360	1	3	localObject4	Object
-    //   61	115	4	localBufferedInputStream	java.io.BufferedInputStream
-    //   211	3	4	localIOException4	java.io.IOException
-    //   234	29	4	localObject5	Object
-    //   292	3	4	localIOException5	java.io.IOException
-    //   302	26	4	localObject6	Object
-    //   348	1	4	localObject7	Object
-    //   356	1	4	localObject8	Object
-    //   367	1	4	localObject9	Object
-    //   68	176	5	localObject10	Object
-    //   330	29	5	localIOException6	java.io.IOException
-    //   65	287	6	localObject11	Object
-    //   51	70	7	localByteBuffer	java.nio.ByteBuffer
-    //   231	22	7	localException1	java.lang.Exception
-    //   364	1	7	localException2	java.lang.Exception
-    //   372	1	7	localException3	java.lang.Exception
-    //   26	130	8	arrayOfByte	byte[]
+    //   29	292	0	i	int
+    //   103	221	1	j	int
+    //   105	61	2	k	int
+    //   113	52	3	m	int
+    //   54	136	4	localInputStream	java.io.InputStream
+    //   197	3	4	localIOException1	java.io.IOException
+    //   239	58	4	localObject1	Object
+    //   306	3	4	localIOException2	java.io.IOException
+    //   334	36	4	localObject2	Object
+    //   377	3	4	localIOException3	java.io.IOException
+    //   387	9	4	localObject3	Object
+    //   58	16	5	localObject4	Object
+    //   177	3	5	localIOException4	java.io.IOException
+    //   209	1	5	localObject5	Object
+    //   218	7	5	localException1	java.lang.Exception
+    //   236	1	5	localObject6	Object
+    //   251	1	5	localObject7	Object
+    //   282	55	5	localIOException5	java.io.IOException
+    //   342	43	5	localObject8	Object
+    //   34	316	6	localObject9	Object
+    //   357	3	6	localIOException6	java.io.IOException
+    //   31	196	7	localObject10	Object
+    //   231	1	7	localException2	java.lang.Exception
+    //   244	21	7	localException3	java.lang.Exception
+    //   330	11	7	localObject11	Object
+    //   37	238	8	localObject12	Object
+    //   26	127	9	arrayOfByte	byte[]
+    //   69	60	10	localByteBuffer	java.nio.ByteBuffer
     // Exception table:
     //   from	to	target	type
-    //   3	12	205	finally
-    //   13	28	205	finally
-    //   175	180	205	finally
-    //   184	188	205	finally
-    //   201	204	205	finally
-    //   206	209	205	finally
-    //   213	218	205	finally
-    //   222	226	205	finally
-    //   262	267	205	finally
-    //   273	277	205	finally
-    //   283	287	205	finally
-    //   294	299	205	finally
-    //   314	319	205	finally
-    //   323	327	205	finally
-    //   327	330	205	finally
-    //   332	337	205	finally
-    //   341	345	205	finally
-    //   175	180	211	java/io/IOException
-    //   184	188	221	java/io/IOException
-    //   30	46	231	java/lang/Exception
-    //   273	277	282	java/io/IOException
-    //   262	267	292	java/io/IOException
-    //   30	46	302	finally
-    //   314	319	330	java/io/IOException
-    //   323	327	340	java/io/IOException
-    //   46	63	348	finally
-    //   70	84	356	finally
-    //   106	113	356	finally
-    //   120	142	356	finally
-    //   153	167	356	finally
-    //   245	257	356	finally
-    //   46	63	364	java/lang/Exception
-    //   70	84	372	java/lang/Exception
-    //   106	113	372	java/lang/Exception
-    //   120	142	372	java/lang/Exception
-    //   153	167	372	java/lang/Exception
+    //   169	174	177	java/io/IOException
+    //   189	194	197	java/io/IOException
+    //   90	104	209	finally
+    //   121	164	209	finally
+    //   90	104	218	java/lang/Exception
+    //   121	164	218	java/lang/Exception
+    //   64	71	231	java/lang/Exception
+    //   79	90	231	java/lang/Exception
+    //   39	56	236	finally
+    //   39	56	244	java/lang/Exception
+    //   274	279	282	java/io/IOException
+    //   296	301	306	java/io/IOException
+    //   64	71	330	finally
+    //   79	90	330	finally
+    //   257	269	330	finally
+    //   349	354	357	java/io/IOException
+    //   369	374	377	java/io/IOException
+    //   3	12	387	finally
+    //   13	28	387	finally
+    //   169	174	387	finally
+    //   179	184	387	finally
+    //   189	194	387	finally
+    //   199	204	387	finally
+    //   274	279	387	finally
+    //   284	289	387	finally
+    //   296	301	387	finally
+    //   308	313	387	finally
+    //   326	329	387	finally
+    //   349	354	387	finally
+    //   359	364	387	finally
+    //   369	374	387	finally
+    //   379	384	387	finally
+    //   384	387	387	finally
+    //   389	392	387	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ChnToSpell
  * JD-Core Version:    0.7.0.1
  */

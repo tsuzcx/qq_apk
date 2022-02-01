@@ -10,7 +10,7 @@ public class tlv_t10b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t10b
  * JD-Core Version:    0.7.0.1
  */

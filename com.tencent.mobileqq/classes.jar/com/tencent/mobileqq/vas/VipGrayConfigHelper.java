@@ -5,15 +5,14 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.model.CommercialDrainageManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.api.IVasDepTemp;
 import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
+import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -25,6 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
 import org.json.JSONArray;
@@ -76,104 +76,94 @@ public class VipGrayConfigHelper
   public static void a()
   {
     int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    if ((i < 0) || (i >= jdField_a_of_type_JavaUtilList.size())) {}
-    Object localObject;
-    do
+    if (i >= 0)
     {
-      return;
-      localObject = (String)jdField_a_of_type_JavaUtilList.get(i);
+      if (i >= jdField_a_of_type_JavaUtilList.size()) {
+        return;
+      }
+      Object localObject = (String)jdField_a_of_type_JavaUtilList.get(i);
       localObject = (AtomicLong)jdField_d_of_type_JavaUtilMap.get(localObject);
-    } while (localObject == null);
-    ThreadManager.getSubThreadHandler().removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-    ThreadManager.getSubThreadHandler().postDelayed(jdField_a_of_type_JavaLangRunnable, ((AtomicLong)localObject).get());
+      if (localObject != null)
+      {
+        ThreadManager.getSubThreadHandler().removeCallbacks(jdField_a_of_type_JavaLangRunnable);
+        ThreadManager.getSubThreadHandler().postDelayed(jdField_a_of_type_JavaLangRunnable, ((AtomicLong)localObject).get());
+      }
+    }
   }
   
   private void a(AppRuntime paramAppRuntime, JSONArray paramJSONArray, boolean paramBoolean)
   {
-    if ((paramAppRuntime == null) || (paramJSONArray == null) || (paramJSONArray.length() < 0))
+    if ((paramAppRuntime != null) && (paramJSONArray != null) && (paramJSONArray.length() >= 0))
     {
-      QLog.e("VipGrayConfigHelper", 1, "parseVipGrayConfig app = null or configList = null or len < 0");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGrayConfigHelper", 2, "parseVipGrayConfig begin config = " + paramJSONArray.toString());
-    }
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("vipGrayConfigSp", 0);
-    if (paramBoolean)
-    {
-      jdField_a_of_type_JavaUtilList.clear();
-      jdField_a_of_type_JavaUtilMap.clear();
-      jdField_b_of_type_JavaUtilMap.clear();
-      jdField_d_of_type_JavaUtilMap.clear();
-      jdField_c_of_type_JavaUtilMap.clear();
-      localSharedPreferences.edit().clear().apply();
-    }
-    for (;;)
-    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parseVipGrayConfig begin config = ");
+        ((StringBuilder)localObject).append(paramJSONArray.toString());
+        QLog.d("VipGrayConfigHelper", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = MobileQQ.getContext().getSharedPreferences("vipGrayConfigSp", 0);
+      if (paramBoolean)
+      {
+        jdField_a_of_type_JavaUtilList.clear();
+        jdField_a_of_type_JavaUtilMap.clear();
+        jdField_b_of_type_JavaUtilMap.clear();
+        jdField_d_of_type_JavaUtilMap.clear();
+        jdField_c_of_type_JavaUtilMap.clear();
+        ((SharedPreferences)localObject).edit().clear().apply();
+      }
+      else if (jdField_a_of_type_JavaUtilList.isEmpty())
+      {
+        paramBoolean = true;
+      }
       if (paramBoolean) {
         jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
       }
-      a(paramAppRuntime, paramJSONArray, paramBoolean, localSharedPreferences);
+      a(paramAppRuntime, paramJSONArray, paramBoolean, (SharedPreferences)localObject);
       a();
       return;
-      if (jdField_a_of_type_JavaUtilList.isEmpty()) {
-        paramBoolean = true;
-      }
     }
+    QLog.e("VipGrayConfigHelper", 1, "parseVipGrayConfig app = null or configList = null or len < 0");
   }
   
   private void a(AppRuntime paramAppRuntime, JSONArray paramJSONArray, boolean paramBoolean, SharedPreferences paramSharedPreferences)
   {
-    for (;;)
+    try
     {
-      int i;
-      JSONObject localJSONObject;
-      String str;
-      try
+      int j = paramJSONArray.length();
+      int i = 0;
+      while (i < j)
       {
-        int j = paramJSONArray.length();
-        i = 0;
-        if (i < j)
+        Object localObject = paramJSONArray.getJSONObject(i);
+        String str = ((JSONObject)localObject).optString("business");
+        if ("vipEnterText".equals(str))
         {
-          localJSONObject = paramJSONArray.getJSONObject(i);
-          str = localJSONObject.optString("business");
-          if ("vipEnterText".equals(str))
-          {
-            a(paramAppRuntime, localJSONObject);
-          }
-          else if (("backgroundWebView".equals(str)) && (paramBoolean))
-          {
-            if (!a(paramAppRuntime, paramSharedPreferences, localJSONObject)) {}
-          }
-          else if ("gameIcon".equals(str))
-          {
-            if (!a(paramAppRuntime, localJSONObject)) {
-              break label264;
-            }
-            this.e = localJSONObject.optString("baseUrl", "");
-            this.jdField_a_of_type_Int = localJSONObject.optInt("expireDay", 0);
-            if (!QLog.isColorLevel()) {
-              break label264;
-            }
-            QLog.d("VipGrayConfigHelper", 2, "king info, url = " + this.e + ",expireDay = " + this.jdField_a_of_type_Int);
-          }
+          b(paramAppRuntime, (JSONObject)localObject);
         }
-      }
-      catch (Exception paramAppRuntime)
-      {
-        QLog.e("VipGrayConfigHelper", 1, "parseVipGrayConfig exception", paramAppRuntime);
+        else if (("backgroundWebView".equals(str)) && (paramBoolean))
+        {
+          a(paramAppRuntime, paramSharedPreferences, (JSONObject)localObject);
+        }
+        else if ("gameIcon".equals(str))
+        {
+          a(paramAppRuntime, (JSONObject)localObject);
+        }
+        else if (("ipStackConfigDic".equals(str)) && (a(paramAppRuntime, (JSONObject)localObject)))
+        {
+          long l = ((JSONObject)localObject).optLong("ipStackTimeInterval");
+          ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).updateDisPlayInteval(l);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("ipsite interval = ");
+          ((StringBuilder)localObject).append(l);
+          QLog.d("VipGrayConfigHelper", 2, ((StringBuilder)localObject).toString());
+        }
+        i += 1;
       }
       return;
-      if (("ipStackConfigDic".equals(str)) && (a(paramAppRuntime, localJSONObject)))
-      {
-        long l = localJSONObject.optLong("ipStackTimeInterval");
-        ((CommercialDrainageManager)paramAppRuntime.getManager(QQManagerFactory.COMMERCIAL_DRAINAGE_MANAGER)).a(l);
-        if (QLog.isColorLevel()) {
-          QLog.d("VipGrayConfigHelper", 2, "ipsite interval = " + l);
-        }
-      }
-      label264:
-      i += 1;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("VipGrayConfigHelper", 1, "parseVipGrayConfig exception", paramAppRuntime);
     }
   }
   
@@ -181,12 +171,16 @@ public class VipGrayConfigHelper
   {
     if (a(paramAppRuntime, paramJSONObject))
     {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("notVip");
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("outdatedVip");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("vip");
-      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("svip");
-      if (QLog.isColorLevel()) {
-        QLog.d("VipGrayConfigHelper", 2, "parse vipEnterText notvip = " + this.jdField_a_of_type_JavaLangString + ", outdatevip = " + this.jdField_c_of_type_JavaLangString + ", vipstr= " + this.jdField_b_of_type_JavaLangString + ", svip = " + this.jdField_d_of_type_JavaLangString);
+      this.e = paramJSONObject.optString("baseUrl", "");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("expireDay", 0);
+      if (QLog.isColorLevel())
+      {
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append("king info, url = ");
+        paramAppRuntime.append(this.e);
+        paramAppRuntime.append(",expireDay = ");
+        paramAppRuntime.append(this.jdField_a_of_type_Int);
+        QLog.d("VipGrayConfigHelper", 2, paramAppRuntime.toString());
       }
     }
   }
@@ -194,6 +188,93 @@ public class VipGrayConfigHelper
   private boolean a(AppRuntime paramAppRuntime, SharedPreferences paramSharedPreferences, JSONObject paramJSONObject)
   {
     return false;
+  }
+  
+  private boolean a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.has("minVersion"))
+    {
+      String str = paramJSONObject.getString("minVersion");
+      if ((!TextUtils.isEmpty(str)) && (!IndividuationConfigInfo.a(str, "8.7.0.5295")))
+      {
+        bool1 = false;
+        break label45;
+      }
+    }
+    boolean bool1 = true;
+    label45:
+    boolean bool2 = bool1;
+    if (bool1)
+    {
+      bool2 = bool1;
+      if (paramJSONObject.has("maxVersion"))
+      {
+        paramJSONObject = paramJSONObject.getString("maxVersion");
+        bool2 = bool1;
+        if (!TextUtils.isEmpty(paramJSONObject))
+        {
+          bool2 = bool1;
+          if (!IndividuationConfigInfo.a("8.7.0.5295", paramJSONObject)) {
+            bool2 = false;
+          }
+        }
+      }
+    }
+    return bool2;
+  }
+  
+  private boolean a(JSONObject paramJSONObject, String paramString, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 >= paramInt2)
+    {
+      int i = paramString.length();
+      if ((i >= paramInt1) && (i >= paramInt2))
+      {
+        long l1 = Long.parseLong(paramString.substring(i - paramInt1, i - paramInt2 + 1));
+        long l2 = paramJSONObject.optLong("min");
+        long l3 = paramJSONObject.optLong("max");
+        if ((l1 >= l2) && (l1 <= l3)) {
+          return true;
+        }
+      }
+      else
+      {
+        paramString = new StringBuilder();
+        paramString.append("parseJson, index config error, uin length=");
+        paramString.append(i);
+        paramString.append(", config=");
+        paramString.append(paramJSONObject.toString());
+        QLog.e("VipGrayConfigHelper", 1, paramString.toString());
+      }
+    }
+    else
+    {
+      paramString = new StringBuilder();
+      paramString.append("parseJson, startIndex < endIndex, element=");
+      paramString.append(paramJSONObject);
+      QLog.e("VipGrayConfigHelper", 1, paramString.toString());
+    }
+    return false;
+  }
+  
+  private boolean a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
+  {
+    if (paramBoolean4) {
+      if (paramBoolean5)
+      {
+        if (paramBoolean3) {
+          break label31;
+        }
+        if (paramBoolean2) {
+          return true;
+        }
+      }
+    }
+    while ((!paramBoolean5) || (!paramBoolean1)) {
+      return false;
+    }
+    label31:
+    return true;
   }
   
   private void b()
@@ -216,6 +297,34 @@ public class VipGrayConfigHelper
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
+  }
+  
+  private void b(AppRuntime paramAppRuntime, JSONObject paramJSONObject)
+  {
+    if (a(paramAppRuntime, paramJSONObject))
+    {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("notVip");
+      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("outdatedVip");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("vip");
+      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("svip");
+      if (QLog.isColorLevel())
+      {
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append("parse vipEnterText notvip = ");
+        paramAppRuntime.append(this.jdField_a_of_type_JavaLangString);
+        paramAppRuntime.append(", outdatevip = ");
+        paramAppRuntime.append(this.jdField_c_of_type_JavaLangString);
+        paramAppRuntime.append(", vipstr= ");
+        paramAppRuntime.append(this.jdField_b_of_type_JavaLangString);
+        paramAppRuntime.append(", svip = ");
+        paramAppRuntime.append(this.jdField_d_of_type_JavaLangString);
+        QLog.d("VipGrayConfigHelper", 2, paramAppRuntime.toString());
+      }
+    }
   }
   
   private void c()
@@ -235,158 +344,116 @@ public class VipGrayConfigHelper
   
   public String a(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int k = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("VipGrayConfigHelper", 2, "getNamePlateOfKingUrl, gameAppId = " + paramLong + " dan = " + paramInt + " danSwitch = " + paramBoolean1 + " isSetting = " + paramBoolean2);
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    int j;
-    SharedPreferences localSharedPreferences;
-    int i;
-    if ((!TextUtils.isEmpty(this.e)) && (paramLong != 0L))
+    if (QLog.isColorLevel())
     {
-      j = 1;
-      if (!(localObject instanceof QQAppInterface)) {
-        break label385;
-      }
-      localObject = (QQAppInterface)localObject;
-      localSharedPreferences = ((QQAppInterface)localObject).getApp().getSharedPreferences("sp_plate_of_king", 0);
-      if ((TextUtils.isEmpty(paramString)) || (!((QQAppInterface)localObject).getCurrentUin().equals(paramString))) {
-        break label255;
-      }
-      i = 1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getNamePlateOfKingUrl, gameAppId = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" dan = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" danSwitch = ");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(" isSetting = ");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      QLog.i("VipGrayConfigHelper", 2, ((StringBuilder)localObject).toString());
     }
-    label146:
-    for (boolean bool = localSharedPreferences.getBoolean("plate_of_king_display_switch_" + ((QQAppInterface)localObject).getCurrentUin(), true);; bool = true)
+    Object localObject = VasUtil.a();
+    boolean bool1;
+    if ((!TextUtils.isEmpty(this.e)) && (paramLong != 0L)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    SharedPreferences localSharedPreferences = ((AppRuntime)localObject).getApp().getSharedPreferences("sp_plate_of_king", 0);
+    boolean bool2;
+    if ((!TextUtils.isEmpty(paramString)) && (((AppRuntime)localObject).getCurrentUin().equals(paramString))) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    paramString = new StringBuilder();
+    paramString.append("plate_of_king_display_switch_");
+    paramString.append(((AppRuntime)localObject).getCurrentUin());
+    boolean bool3 = localSharedPreferences.getBoolean(paramString.toString(), true);
+    if (a(paramBoolean1, paramBoolean2, bool3, bool2, bool1))
     {
-      if (i != 0)
+      if (paramInt == 0)
       {
-        i = k;
-        if (j != 0) {
-          if (!bool)
-          {
-            i = k;
-            if (!paramBoolean2) {}
-          }
-          else
-          {
-            i = 1;
-          }
-        }
+        paramString = new StringBuilder();
+        paramString.append(this.e);
+        paramString.append(paramLong);
       }
-      for (;;)
+      else
       {
-        if (i != 0)
-        {
-          if (paramInt == 0)
-          {
-            return this.e + paramLong + ".png";
-            j = 0;
-            break;
-            label255:
-            i = 0;
-            break label146;
-            i = k;
-            if (j == 0) {
-              continue;
-            }
-            i = k;
-            if (!paramBoolean1) {
-              continue;
-            }
-            i = 1;
-            continue;
-          }
-          return this.e + paramLong + "_" + paramInt + ".png";
-        }
+        paramString = new StringBuilder();
+        paramString.append(this.e);
+        paramString.append(paramLong);
+        paramString.append("_");
+        paramString.append(paramInt);
       }
-      QLog.e("VipGrayConfigHelper", 1, "getNamePlateOfKingUrl namePlateOfKingUrl = null gameAppId= " + paramLong + " dan= " + paramInt + " danSwitch= " + paramBoolean1 + " localSwitch = " + bool);
-      return null;
-      i = 0;
+      paramString.append(".png");
+      return paramString.toString();
     }
+    paramString = new StringBuilder();
+    paramString.append("getNamePlateOfKingUrl namePlateOfKingUrl = null gameAppId= ");
+    paramString.append(paramLong);
+    paramString.append(" dan= ");
+    paramString.append(paramInt);
+    paramString.append(" danSwitch= ");
+    paramString.append(paramBoolean1);
+    paramString.append(" localSwitch = ");
+    paramString.append(bool3);
+    QLog.e("VipGrayConfigHelper", 1, paramString.toString());
+    return null;
   }
   
   public void a(URLImageView paramURLImageView, boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean2, String paramString)
   {
-    if (paramURLImageView == null) {}
-    do
-    {
-      return;
-      paramURLImageView.setVisibility(8);
-    } while (!a(paramBoolean1, paramLong1));
-    paramURLImageView.setVisibility(0);
-    paramString = a(paramString, paramLong2, paramInt, paramBoolean2);
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramURLImageView.setVisibility(8);
+    if (paramURLImageView == null) {
       return;
     }
-    URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, new ColorDrawable(), new ColorDrawable());
-    if (localURLDrawable.getStatus() != 1) {
-      localURLDrawable.restartDownload();
+    paramURLImageView.setVisibility(8);
+    if (a(paramBoolean1, paramLong1))
+    {
+      paramURLImageView.setVisibility(0);
+      paramString = a(paramString, paramLong2, paramInt, paramBoolean2);
+      if (TextUtils.isEmpty(paramString))
+      {
+        paramURLImageView.setVisibility(8);
+        return;
+      }
+      URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, new ColorDrawable(), new ColorDrawable());
+      if (localURLDrawable.getStatus() != 1) {
+        localURLDrawable.restartDownload();
+      }
+      paramURLImageView.setBackgroundDrawable(localURLDrawable);
+      paramURLImageView.setURLDrawableDownListener(new VipGrayConfigHelper.2(this, paramString, paramURLImageView));
     }
-    paramURLImageView.setBackgroundDrawable(localURLDrawable);
-    paramURLImageView.setURLDrawableDownListener(new VipGrayConfigHelper.2(this, paramString, paramURLImageView));
   }
   
-  /* Error */
   public void a(VipGrayConfigHelper.VipGrayConfigListener paramVipGrayConfigListener)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: iconst_0
-    //   3: istore_2
-    //   4: iload_2
-    //   5: aload_0
-    //   6: getfield 73	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   9: invokeinterface 89 1 0
-    //   14: if_icmpge +38 -> 52
-    //   17: aload_0
-    //   18: getfield 73	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   21: iload_2
-    //   22: invokeinterface 92 2 0
-    //   27: checkcast 298	mqq/util/WeakReference
-    //   30: invokevirtual 301	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   33: checkcast 303	com/tencent/mobileqq/vas/VipGrayConfigHelper$VipGrayConfigListener
-    //   36: astore_3
-    //   37: aload_3
-    //   38: aload_1
-    //   39: if_acmpne +6 -> 45
-    //   42: aload_0
-    //   43: monitorexit
-    //   44: return
-    //   45: iload_2
-    //   46: iconst_1
-    //   47: iadd
-    //   48: istore_2
-    //   49: goto -45 -> 4
-    //   52: aload_1
-    //   53: ifnull -11 -> 42
-    //   56: aload_0
-    //   57: getfield 73	com/tencent/mobileqq/vas/VipGrayConfigHelper:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   60: new 298	mqq/util/WeakReference
-    //   63: dup
-    //   64: aload_1
-    //   65: invokespecial 406	mqq/util/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   68: invokeinterface 409 2 0
-    //   73: pop
-    //   74: goto -32 -> 42
-    //   77: astore_1
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: aload_1
-    //   81: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	82	0	this	VipGrayConfigHelper
-    //   0	82	1	paramVipGrayConfigListener	VipGrayConfigHelper.VipGrayConfigListener
-    //   3	46	2	i	int
-    //   36	2	3	localVipGrayConfigListener	VipGrayConfigHelper.VipGrayConfigListener
-    // Exception table:
-    //   from	to	target	type
-    //   4	37	77	finally
-    //   56	74	77	finally
+    int i = 0;
+    try
+    {
+      while (i < this.jdField_b_of_type_JavaUtilList.size())
+      {
+        VipGrayConfigHelper.VipGrayConfigListener localVipGrayConfigListener = (VipGrayConfigHelper.VipGrayConfigListener)((WeakReference)this.jdField_b_of_type_JavaUtilList.get(i)).get();
+        if (localVipGrayConfigListener == paramVipGrayConfigListener) {
+          return;
+        }
+        i += 1;
+      }
+      if (paramVipGrayConfigListener != null) {
+        this.jdField_b_of_type_JavaUtilList.add(new WeakReference(paramVipGrayConfigListener));
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramVipGrayConfigListener;
+    }
   }
   
   public void a(AppRuntime paramAppRuntime)
@@ -396,37 +463,26 @@ public class VipGrayConfigHelper
   
   public void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    if (paramAppRuntime == null) {
+    if (paramAppRuntime == null)
+    {
       QLog.e("VipGrayConfigHelper", 1, "parsejson error, app = null");
-    }
-    Object localObject;
-    for (;;)
-    {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VipGrayConfigHelper", 2, "parsejson, begin");
-      }
-      c();
-      try
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGrayConfigHelper", 2, "parsejson, begin");
+    }
+    c();
+    try
+    {
+      Object localObject = VasUpdateUtil.a(paramAppRuntime, "vip_personal_card.json", true, null);
+      if (localObject == null)
       {
-        localObject = VasUpdateUtil.a(paramAppRuntime, "vip_personal_card.json", true, null);
-        if (localObject == null)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("VipGrayConfigHelper", 2, "parsejson file not exists");
+        if (!QLog.isColorLevel()) {
+          return;
         }
+        QLog.d("VipGrayConfigHelper", 2, "parsejson file not exists");
+        return;
       }
-      catch (Exception paramAppRuntime)
-      {
-        QLog.e("VipGrayConfigHelper", 1, "parseJson exception", paramAppRuntime);
-      }
-    }
-    for (;;)
-    {
-      b();
-      return;
       localObject = ((JSONObject)localObject).optJSONArray("vipGrayConfig");
       if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
         a(paramAppRuntime, (JSONArray)localObject, paramBoolean);
@@ -434,117 +490,71 @@ public class VipGrayConfigHelper
         QLog.e("VipGrayConfigHelper", 1, "parsejson configList = null or len < 0");
       }
     }
+    catch (Exception paramAppRuntime)
+    {
+      QLog.e("VipGrayConfigHelper", 1, "parseJson exception", paramAppRuntime);
+    }
+    b();
+    return;
   }
   
   public boolean a(AppRuntime paramAppRuntime, JSONObject paramJSONObject)
   {
-    bool3 = false;
-    bool1 = false;
-    boolean bool2 = true;
-    if ((paramAppRuntime == null) || (paramJSONObject == null))
+    boolean bool2 = false;
+    if ((paramAppRuntime != null) && (paramJSONObject != null))
     {
-      QLog.e("VipGrayConfigHelper", 1, "isConfigValid app = null || config = null");
-      bool2 = bool1;
-      return bool2;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGrayConfigHelper", 2, "isConfigValid config = " + paramJSONObject.toString());
-    }
-    try
-    {
-      i = paramJSONObject.optInt("platformId");
-      if (i != 0)
+      if (QLog.isColorLevel())
       {
-        bool1 = bool3;
-        if (i != 2) {
-          break label300;
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isConfigValid config = ");
+        localStringBuilder.append(paramJSONObject.toString());
+        QLog.d("VipGrayConfigHelper", 2, localStringBuilder.toString());
       }
-      if (!paramJSONObject.has("minVersion")) {
-        break label434;
-      }
-      str = paramJSONObject.getString("minVersion");
-      if ((TextUtils.isEmpty(str)) || (IndividuationConfigInfo.a(str, "8.5.5.5105"))) {
-        break label434;
-      }
-      i = 0;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      for (;;)
+      boolean bool1;
+      try
       {
-        String str;
-        int j;
-        int k;
-        long l1;
-        long l2;
-        long l3;
-        label300:
-        label340:
-        label383:
-        QLog.e("VipGrayConfigHelper", 1, "isConfigValid exception", paramAppRuntime);
-        bool1 = bool3;
-        continue;
-        int i = 1;
-        continue;
-        bool1 = false;
-      }
-    }
-    j = i;
-    if (i != 0)
-    {
-      j = i;
-      if (paramJSONObject.has("maxVersion"))
-      {
-        str = paramJSONObject.getString("maxVersion");
-        j = i;
-        if (!TextUtils.isEmpty(str))
+        int i = paramJSONObject.optInt("platformId");
+        if (i != 0)
         {
-          j = i;
-          if (!IndividuationConfigInfo.a("8.5.5.5105", str)) {
-            j = 0;
+          bool1 = bool2;
+          if (i != 2) {}
+        }
+        else
+        {
+          bool1 = bool2;
+          if (a(paramJSONObject)) {
+            bool1 = a(paramJSONObject, paramAppRuntime.getAccount(), paramJSONObject.optInt("startIndex"), paramJSONObject.optInt("endIndex"));
           }
         }
       }
-    }
-    bool1 = bool3;
-    if (j != 0)
-    {
-      paramAppRuntime = paramAppRuntime.getAccount();
-      i = paramJSONObject.optInt("startIndex");
-      j = paramJSONObject.optInt("endIndex");
-      if (i < j) {
-        break label383;
+      catch (Exception paramAppRuntime)
+      {
+        QLog.e("VipGrayConfigHelper", 1, "isConfigValid exception", paramAppRuntime);
+        bool1 = bool2;
       }
-      k = paramAppRuntime.length();
-      if ((k < i) || (k < j)) {
-        break label340;
+      if (QLog.isColorLevel())
+      {
+        paramAppRuntime = new StringBuilder();
+        paramAppRuntime.append("isConfigValid valid = ");
+        paramAppRuntime.append(bool1);
+        QLog.d("VipGrayConfigHelper", 2, paramAppRuntime.toString());
       }
-      l1 = Long.parseLong(paramAppRuntime.substring(k - i, k - j + 1));
-      l2 = paramJSONObject.optLong("min");
-      l3 = paramJSONObject.optLong("max");
-      if ((l1 < l2) || (l1 > l3)) {
-        break label439;
-      }
-    }
-    for (bool1 = bool2;; bool1 = bool3)
-    {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("VipGrayConfigHelper", 2, "isConfigValid valid = " + bool1);
       return bool1;
-      QLog.e("VipGrayConfigHelper", 1, "parseJson, index config error, uin length=" + k + ", config=" + paramJSONObject.toString());
-      break label439;
-      QLog.e("VipGrayConfigHelper", 1, "parseJson, startIndex < endIndex, element=" + paramJSONObject);
     }
+    QLog.e("VipGrayConfigHelper", 1, "isConfigValid app = null || config = null");
+    return false;
   }
   
   public boolean a(boolean paramBoolean, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGrayConfigHelper", 2, "showNamePlateOfKing, isSuperVip = " + paramBoolean + ", lastLoginTime = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showNamePlateOfKing, isSuperVip = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", lastLoginTime = ");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("VipGrayConfigHelper", 2, ((StringBuilder)localObject).toString());
     }
     if (!paramBoolean) {
       return false;
@@ -554,44 +564,49 @@ public class VipGrayConfigHelper
       l = 0L;
     }
     paramLong = NetConnInfoCenter.getServerTime();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong * 1000L);
-    int i = localCalendar.get(6);
-    localCalendar.setTimeInMillis(l * 1000L);
-    return i - localCalendar.get(6) <= this.jdField_a_of_type_Int;
+    Object localObject = Calendar.getInstance();
+    ((Calendar)localObject).setTimeInMillis(paramLong * 1000L);
+    int i = ((Calendar)localObject).get(6);
+    ((Calendar)localObject).setTimeInMillis(l * 1000L);
+    return i - ((Calendar)localObject).get(6) <= this.jdField_a_of_type_Int;
   }
   
   public void b(VipGrayConfigHelper.VipGrayConfigListener paramVipGrayConfigListener)
   {
+    Object localObject2 = null;
     int i = 0;
     for (;;)
     {
+      Object localObject1 = localObject2;
       try
       {
         if (i < this.jdField_b_of_type_JavaUtilList.size())
         {
-          if ((VipGrayConfigHelper.VipGrayConfigListener)((WeakReference)this.jdField_b_of_type_JavaUtilList.get(i)).get() == paramVipGrayConfigListener)
-          {
-            paramVipGrayConfigListener = this.jdField_b_of_type_JavaUtilList.get(i);
-            if (paramVipGrayConfigListener != null) {
-              this.jdField_b_of_type_JavaUtilList.remove(paramVipGrayConfigListener);
-            }
-            return;
+          if ((VipGrayConfigHelper.VipGrayConfigListener)((WeakReference)this.jdField_b_of_type_JavaUtilList.get(i)).get() != paramVipGrayConfigListener) {
+            break label89;
           }
-          i += 1;
+          localObject1 = this.jdField_b_of_type_JavaUtilList.get(i);
         }
-        else
-        {
-          paramVipGrayConfigListener = null;
+        if (localObject1 != null) {
+          this.jdField_b_of_type_JavaUtilList.remove(localObject1);
         }
+        return;
       }
-      finally {}
+      finally
+      {
+        for (;;)
+        {
+          throw paramVipGrayConfigListener;
+        }
+        label89:
+        i += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VipGrayConfigHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,15 @@ class RecommendAnchorDataManager$1
     if (RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager).size() == 0) {
       this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager$RecommendAnchorDataCallback, true);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager), 2, "Focus cmd:1718 sub cmd:100 errCode:" + paramInt + " msg:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      String str = RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Focus cmd:1718 sub cmd:100 errCode:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" msg:");
+      localStringBuilder.append(paramString);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
   }
   
@@ -35,14 +42,20 @@ class RecommendAnchorDataManager$1
     }
     catch (Exception paramArrayOfByte)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager), 2, "Focus cmd:1718 sub cmd:100 Exception:" + paramArrayOfByte.getMessage());
+      if (QLog.isColorLevel())
+      {
+        String str = RecommendAnchorDataManager.a(this.jdField_a_of_type_ComTencentMobileqqNowRecommendRecommendAnchorDataManager);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Focus cmd:1718 sub cmd:100 Exception:");
+        localStringBuilder.append(paramArrayOfByte.getMessage());
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.recommend.RecommendAnchorDataManager.1
  * JD-Core Version:    0.7.0.1
  */

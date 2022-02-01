@@ -14,29 +14,23 @@ final class aj
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1000) {
       return;
     }
     try
     {
       ai.a();
-      ai.b().sendEmptyMessageDelayed(1000, 3600000L);
-      return;
     }
     catch (Throwable paramMessage)
     {
-      for (;;)
-      {
-        paramMessage.printStackTrace();
-      }
+      paramMessage.printStackTrace();
     }
+    ai.b().sendEmptyMessageDelayed(1000, 3600000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.aj
  * JD-Core Version:    0.7.0.1
  */

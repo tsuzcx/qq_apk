@@ -24,7 +24,22 @@ public class ForwardApiImpl
   
   public int REQ_DIRECT_SHOW_DIALOG()
   {
-    return ForwardRecentActivity.f;
+    return 1;
+  }
+  
+  public String SELECTION_MODE()
+  {
+    return "selection_mode";
+  }
+  
+  public int SELECTION_MODE_MULTI()
+  {
+    return 2;
+  }
+  
+  public int SEND_ASK_ANONYMOUSLY_ARK_MSG()
+  {
+    return 46;
   }
   
   public Class getForwardRecentActivityClass()
@@ -39,7 +54,7 @@ public class ForwardApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.api.impl.ForwardApiImpl
  * JD-Core Version:    0.7.0.1
  */

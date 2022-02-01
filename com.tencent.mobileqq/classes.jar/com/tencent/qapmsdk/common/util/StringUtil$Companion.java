@@ -21,58 +21,56 @@ public final class StringUtil$Companion
   @NotNull
   public final String bytes2HexStr(@Nullable byte[] paramArrayOfByte)
   {
-    int j = 0;
-    if (paramArrayOfByte != null) {
-      if (paramArrayOfByte.length != 0) {
-        break label20;
+    if (paramArrayOfByte != null)
+    {
+      int i = paramArrayOfByte.length;
+      int j = 0;
+      if (i == 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i == 0)
+      {
+        char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
+        int k = paramArrayOfByte.length;
+        i = j;
+        while (i < k)
+        {
+          int m = paramArrayOfByte[i];
+          j = i * 2;
+          arrayOfChar[(j + 1)] = StringUtil.access$getDigits$cp()[(m & 0xF)];
+          m = (byte)(m >>> 4);
+          arrayOfChar[j] = StringUtil.access$getDigits$cp()[(m & 0xF)];
+          i += 1;
+        }
+        return new String(arrayOfChar);
       }
     }
-    label20:
-    for (int i = 1; i != 0; i = 0) {
-      return "";
-    }
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int k = paramArrayOfByte.length;
-    i = j;
-    while (i < k)
-    {
-      j = paramArrayOfByte[i];
-      arrayOfChar[(i * 2 + 1)] = StringUtil.access$getDigits$cp()[(j & 0xF)];
-      j = (byte)(j >>> 4);
-      arrayOfChar[(i * 2)] = StringUtil.access$getDigits$cp()[(j & 0xF)];
-      i += 1;
-    }
-    return new String(arrayOfChar);
+    return "";
   }
   
   @JvmStatic
   @NotNull
   public final String getMD5(@Nullable String paramString)
   {
-    if (paramString != null)
-    {
-      MessageDigest localMessageDigest;
-      Charset localCharset;
+    if (paramString != null) {
       try
       {
-        localMessageDigest = MessageDigest.getInstance("MD5");
-        localCharset = Charsets.UTF_8;
-        if (paramString == null) {
-          throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+        MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+        Charset localCharset = Charsets.UTF_8;
+        if (paramString != null)
+        {
+          paramString = paramString.getBytes(localCharset);
+          Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).getBytes(charset)");
+          localMessageDigest.update(paramString);
+          return StringUtil.Companion.bytes2HexStr(localMessageDigest.digest());
         }
+        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
       }
       catch (NoSuchAlgorithmException paramString)
       {
         Logger.INSTANCE.exception("QAPM_common_StringUtil", (Throwable)paramString);
-        paramString = "";
-      }
-      for (;;)
-      {
-        return paramString;
-        paramString = paramString.getBytes(localCharset);
-        Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).getBytes(charset)");
-        localMessageDigest.update(paramString);
-        paramString = StringUtil.Companion.bytes2HexStr(localMessageDigest.digest());
       }
     }
     return "";
@@ -81,7 +79,15 @@ public final class StringUtil$Companion
   @JvmStatic
   public final boolean isNullOrNil(@Nullable String paramString)
   {
-    return (paramString == null) || (((CharSequence)paramString).length() == 0);
+    boolean bool = true;
+    if (paramString != null)
+    {
+      if (((CharSequence)paramString).length() == 0) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   @JvmStatic
@@ -103,7 +109,11 @@ public final class StringUtil$Companion
       long l = Long.parseLong(paramString, 16);
       return l;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label15:
+      break label15;
+    }
     return 0L;
   }
   
@@ -122,7 +132,7 @@ public final class StringUtil$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.StringUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

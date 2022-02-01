@@ -21,7 +21,7 @@ class SavingAnimView$5
       SavingAnimView.a(this.a, true);
     }
     f2 = f3;
-    if (f3 + 1.0E-005F >= 1.0F) {
+    if (1.0E-005F + f3 >= 1.0F) {
       f2 = 1.0F;
     }
     if (!SavingAnimView.a(this.a)) {
@@ -33,7 +33,7 @@ class SavingAnimView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.SavingAnimView.5
  * JD-Core Version:    0.7.0.1
  */

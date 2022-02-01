@@ -84,26 +84,26 @@ public class PublicRecommendAccountInfo
   
   public static List<PublicRecommendAccountInfo> createPublicRecommendAccountInfoList(List<publicaccount_recommend.BusinessRecommend> paramList)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramList != null)
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      localObject1 = localObject2;
-      if (paramList.size() > 0)
+      ArrayList localArrayList = new ArrayList(paramList.size());
+      Iterator localIterator = paramList.iterator();
+      for (;;)
       {
-        localObject1 = new ArrayList(paramList.size());
-        paramList = paramList.iterator();
-        while (paramList.hasNext()) {
-          ((List)localObject1).add(createPublicRecommendAccountInfo((publicaccount_recommend.BusinessRecommend)paramList.next()));
+        paramList = localArrayList;
+        if (!localIterator.hasNext()) {
+          break;
         }
+        localArrayList.add(createPublicRecommendAccountInfo((publicaccount_recommend.BusinessRecommend)localIterator.next()));
       }
     }
-    return localObject1;
+    paramList = null;
+    return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.PublicRecommendAccountInfo
  * JD-Core Version:    0.7.0.1
  */

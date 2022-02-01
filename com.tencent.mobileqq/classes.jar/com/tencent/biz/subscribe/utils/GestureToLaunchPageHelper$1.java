@@ -16,31 +16,28 @@ class GestureToLaunchPageHelper$1
   
   public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramMotionEvent.getAction() == 0)
     {
-    }
-    int i;
-    int j;
-    do
-    {
-      while (!paramMotionEvent.hasNext())
+      int i = (int)(paramMotionEvent.getX() + 0.5F);
+      int j = (int)(paramMotionEvent.getY() + 0.5F);
+      if (GestureToLaunchPageHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeUtilsGestureToLaunchPageHelper) != null)
       {
-        do
-        {
-          return true;
-          i = (int)(paramMotionEvent.getX() + 0.5F);
-          j = (int)(paramMotionEvent.getY() + 0.5F);
-        } while (GestureToLaunchPageHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeUtilsGestureToLaunchPageHelper) == null);
         paramMotionEvent = GestureToLaunchPageHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeUtilsGestureToLaunchPageHelper).iterator();
+        while (paramMotionEvent.hasNext())
+        {
+          ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
+          if (this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j)) {
+            return false;
+          }
+        }
       }
-      ((View)paramMotionEvent.next()).getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-    } while (!this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j));
-    return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.GestureToLaunchPageHelper.1
  * JD-Core Version:    0.7.0.1
  */

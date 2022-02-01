@@ -14,25 +14,23 @@ class AssociatedAccountManageActivity$6
   
   public void onClick(View paramView)
   {
-    if (paramView.getParent() == null) {}
-    for (;;)
+    if (paramView.getParent() != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       View localView = (View)paramView.getParent().getParent();
       if ((localView != null) && (localView.getTag() != null))
       {
         ReportController.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
         if ((localView.getTag() instanceof SimpleAccount)) {
-          this.a.a((SimpleAccount)localView.getTag());
+          this.a.showMenuDialog((SimpleAccount)localView.getTag());
         }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.6
  * JD-Core Version:    0.7.0.1
  */

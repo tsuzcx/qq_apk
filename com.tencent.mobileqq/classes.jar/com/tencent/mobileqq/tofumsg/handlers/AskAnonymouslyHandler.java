@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.tofumsg.handlers;
 
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.BeancurdManager;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
@@ -12,9 +13,9 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.profilecard.base.config.ProfileConfig;
 import com.tencent.mobileqq.tofumsg.TofuDataBaseHandler;
 import com.tencent.mobileqq.tofumsg.TofuItem;
-import com.tencent.mobileqq.widget.ProfileConfigHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +24,6 @@ import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.StringCompanionObject;
 import kotlin.text.StringsKt;
-import mqq.manager.Manager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
@@ -50,25 +50,23 @@ public final class AskAnonymouslyHandler
   private final String a(String paramString)
   {
     if (TextUtils.isEmpty((CharSequence)paramString)) {
-      paramString = "";
+      return "";
     }
-    for (;;)
+    try
     {
+      paramString = new JSONObject(paramString).optString("key_question_id", "");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQuestId result: ");
+        localStringBuilder.append(paramString);
+        QLog.i("MessageForTofuAskAnonymously", 2, localStringBuilder.toString());
+      }
       return paramString;
-      try
-      {
-        String str = new JSONObject(paramString).optString("key_question_id", "");
-        paramString = str;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("MessageForTofuAskAnonymously", 2, "getQuestId result: " + str);
-          return str;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("MessageForTofuAskAnonymously", 1, "getQuestId exception: ", (Throwable)paramString);
-      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MessageForTofuAskAnonymously", 1, "getQuestId exception: ", (Throwable)paramString);
     }
     return "";
   }
@@ -89,75 +87,89 @@ public final class AskAnonymouslyHandler
       QLog.e("AskAnonymouslyHandler", 1, "constructAskAnonymousJSONObj error: rspBody.has() = false");
       return null;
     }
-    if ((!paramRspBody.uint32_ret.has()) || (paramRspBody.uint32_ret.get() != 0))
+    boolean bool = paramRspBody.uint32_ret.has();
+    Object localObject = "";
+    if ((bool) && (paramRspBody.uint32_ret.get() == 0))
     {
-      localObject = new StringBuilder().append("constructAskAnonymousJSONObj error: rspBody.uint32_ret.has() = ").append(paramRspBody.uint32_ret.has());
-      if (paramRspBody.uint32_ret.has()) {}
-      for (paramRspBody = "{rspBody.uint32_ret + " + paramRspBody.uint32_ret.get();; paramRspBody = "")
+      if ((paramRspBody.msg_quest.has()) && (paramRspBody.msg_quest.get().size() > 0))
       {
-        QLog.e("AskAnonymouslyHandler", 1, paramRspBody);
+        localObject = new JSONObject();
+        paramRspBody = (oidb_0xec4.Quest)paramRspBody.msg_quest.get().get(0);
+        if (paramRspBody.has())
+        {
+          if (paramRspBody.str_id.has()) {
+            ((JSONObject)localObject).put("key_question_id", paramRspBody.str_id.get());
+          }
+          if (paramRspBody.str_quest.has()) {
+            ((JSONObject)localObject).put("key_question_str", paramRspBody.str_quest.get());
+          }
+          if (paramRspBody.uint64_quest_uin.has()) {
+            ((JSONObject)localObject).put("key_question_uin", paramRspBody.uint64_quest_uin.get());
+          }
+          if (paramRspBody.uint64_time.has()) {
+            ((JSONObject)localObject).put("key_question_time", paramRspBody.uint64_time.get());
+          }
+          if (paramRspBody.str_ans.has()) {
+            ((JSONObject)localObject).put("key_answer_str", paramRspBody.str_ans.get());
+          }
+          if (paramRspBody.uint64_ans_time.has()) {
+            ((JSONObject)localObject).put("key_answer_time", paramRspBody.uint64_ans_time.get());
+          }
+          if (paramRspBody.str_like_key.has()) {
+            ((JSONObject)localObject).put("key_praise_key", paramRspBody.str_like_key.get());
+          }
+          if (paramRspBody.uint64_been_praised.has()) {
+            ((JSONObject)localObject).put("key_been_praise", paramRspBody.uint64_been_praised.get());
+          }
+          if (paramRspBody.uint64_praise_num.has()) {
+            ((JSONObject)localObject).put("key_praise_num", paramRspBody.uint64_praise_num.get());
+          }
+          if (paramRspBody.uint64_comment_num.has()) {
+            ((JSONObject)localObject).put("key_comment_num", paramRspBody.uint64_comment_num.get());
+          }
+          if (paramRspBody.uint64_show_times.has()) {
+            ((JSONObject)localObject).put("key_show_times", paramRspBody.uint64_show_times.get());
+          }
+          if (QLog.isColorLevel())
+          {
+            paramRspBody = StringCompanionObject.INSTANCE;
+            paramRspBody = new Object[1];
+            paramRspBody[0] = localObject;
+            paramRspBody = String.format("constructAskAnonymousJSONObj json = %s", Arrays.copyOf(paramRspBody, paramRspBody.length));
+            Intrinsics.checkExpressionValueIsNotNull(paramRspBody, "java.lang.String.format(format, *args)");
+            QLog.i("AskAnonymouslyHandler", 2, paramRspBody);
+          }
+          return localObject;
+        }
+        QLog.e("AskAnonymouslyHandler", 1, "constructAskAnonymousJSONObj error: quest.has() = false");
         return null;
       }
-    }
-    if ((!paramRspBody.msg_quest.has()) || (paramRspBody.msg_quest.get().size() <= 0))
-    {
-      localObject = new StringBuilder().append("constructAskAnonymousJSONObj error: rspBody.msg_quest.has() = ").append(paramRspBody.msg_quest.has());
-      if (paramRspBody.msg_quest.has()) {}
-      for (paramRspBody = "{rspBody.msg_quest.get().size + " + paramRspBody.msg_quest.get().size();; paramRspBody = "")
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("constructAskAnonymousJSONObj error: rspBody.msg_quest.has() = ");
+      localStringBuilder.append(paramRspBody.msg_quest.has());
+      if (paramRspBody.msg_quest.has())
       {
-        QLog.e("AskAnonymouslyHandler", 1, paramRspBody);
-        return null;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("{rspBody.msg_quest.get().size + ");
+        ((StringBuilder)localObject).append(paramRspBody.msg_quest.get().size());
+        localObject = ((StringBuilder)localObject).toString();
       }
+      localStringBuilder.append((String)localObject);
+      QLog.e("AskAnonymouslyHandler", 1, localStringBuilder.toString());
+      return null;
     }
-    Object localObject = new JSONObject();
-    paramRspBody = (oidb_0xec4.Quest)paramRspBody.msg_quest.get().get(0);
-    if (paramRspBody.has())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("constructAskAnonymousJSONObj error: rspBody.uint32_ret.has() = ");
+    localStringBuilder.append(paramRspBody.uint32_ret.has());
+    if (paramRspBody.uint32_ret.has())
     {
-      if (paramRspBody.str_id.has()) {
-        ((JSONObject)localObject).put("key_question_id", paramRspBody.str_id.get());
-      }
-      if (paramRspBody.str_quest.has()) {
-        ((JSONObject)localObject).put("key_question_str", paramRspBody.str_quest.get());
-      }
-      if (paramRspBody.uint64_quest_uin.has()) {
-        ((JSONObject)localObject).put("key_question_uin", paramRspBody.uint64_quest_uin.get());
-      }
-      if (paramRspBody.uint64_time.has()) {
-        ((JSONObject)localObject).put("key_question_time", paramRspBody.uint64_time.get());
-      }
-      if (paramRspBody.str_ans.has()) {
-        ((JSONObject)localObject).put("key_answer_str", paramRspBody.str_ans.get());
-      }
-      if (paramRspBody.uint64_ans_time.has()) {
-        ((JSONObject)localObject).put("key_answer_time", paramRspBody.uint64_ans_time.get());
-      }
-      if (paramRspBody.str_like_key.has()) {
-        ((JSONObject)localObject).put("key_praise_key", paramRspBody.str_like_key.get());
-      }
-      if (paramRspBody.uint64_been_praised.has()) {
-        ((JSONObject)localObject).put("key_been_praise", paramRspBody.uint64_been_praised.get());
-      }
-      if (paramRspBody.uint64_praise_num.has()) {
-        ((JSONObject)localObject).put("key_praise_num", paramRspBody.uint64_praise_num.get());
-      }
-      if (paramRspBody.uint64_comment_num.has()) {
-        ((JSONObject)localObject).put("key_comment_num", paramRspBody.uint64_comment_num.get());
-      }
-      if (paramRspBody.uint64_show_times.has()) {
-        ((JSONObject)localObject).put("key_show_times", paramRspBody.uint64_show_times.get());
-      }
-      if (QLog.isColorLevel())
-      {
-        paramRspBody = StringCompanionObject.INSTANCE;
-        paramRspBody = new Object[1];
-        paramRspBody[0] = localObject;
-        paramRspBody = String.format("constructAskAnonymousJSONObj json = %s", Arrays.copyOf(paramRspBody, paramRspBody.length));
-        Intrinsics.checkExpressionValueIsNotNull(paramRspBody, "java.lang.String.format(format, *args)");
-        QLog.i("AskAnonymouslyHandler", 2, paramRspBody);
-      }
-      return localObject;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("{rspBody.uint32_ret + ");
+      ((StringBuilder)localObject).append(paramRspBody.uint32_ret.get());
+      localObject = ((StringBuilder)localObject).toString();
     }
-    QLog.e("AskAnonymouslyHandler", 1, "constructAskAnonymousJSONObj error: quest.has() = false");
+    localStringBuilder.append((String)localObject);
+    QLog.e("AskAnonymouslyHandler", 1, localStringBuilder.toString());
     return null;
   }
   
@@ -169,65 +181,72 @@ public final class AskAnonymouslyHandler
   @Nullable
   public String a(@Nullable TofuItem paramTofuItem)
   {
-    if (!new ProfileConfigHelper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null).a(13)) {}
-    while (paramTofuItem == null) {
+    Object localObject = (AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    String str = null;
+    if (!new ProfileConfig((AppInterface)localObject, null).isSwitchEnable(13)) {
       return null;
-    }
-    String str = (String)null;
-    if (paramTofuItem.bytesFromServer != null)
-    {
-      Object localObject = paramTofuItem.bytesFromServer;
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "oldItem.bytesFromServer");
-      if (localObject.length == 0)
-      {
-        i = 1;
-        if (i != 0) {
-          break label103;
-        }
-      }
-      label103:
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label144;
-        }
-        localObject = new oidb_0xec4.RspBody();
-        try
-        {
-          ((oidb_0xec4.RspBody)localObject).mergeFrom(paramTofuItem.bytesFromServer);
-          paramTofuItem = a((oidb_0xec4.RspBody)localObject);
-          return paramTofuItem;
-        }
-        catch (InvalidProtocolBufferMicroException paramTofuItem)
-        {
-          QLog.e("AskAnonymouslyHandler", 1, "getBusDataFromRspBytes exception=" + paramTofuItem.getMessage(), (Throwable)paramTofuItem);
-          return str;
-        }
-        i = 0;
-        break;
-      }
-    }
-    label144:
-    if (paramTofuItem.bytesFromServer == null) {}
-    for (int i = -1;; i = paramTofuItem.bytesFromServer.length)
-    {
-      QLog.d("AskAnonymouslyHandler", 1, new Object[] { "getBusDataFromRsp bytesFromServer size=", Integer.valueOf(i) });
-      return str;
-    }
-  }
-  
-  public void a(@Nullable TofuItem paramTofuItem)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AskAnonymouslyHandler", 2, "handleEmptyMsg tofuItem = " + paramTofuItem);
     }
     if (paramTofuItem != null)
     {
-      Manager localManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
-      if (localManager == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.activity.aio.BeancurdManager");
+      str = (String)null;
+      int i;
+      if (paramTofuItem.bytesFromServer != null)
+      {
+        localObject = paramTofuItem.bytesFromServer;
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "oldItem.bytesFromServer");
+        if (localObject.length == 0) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if ((i ^ 0x1) != 0)
+        {
+          localObject = new oidb_0xec4.RspBody();
+          try
+          {
+            ((oidb_0xec4.RspBody)localObject).mergeFrom(paramTofuItem.bytesFromServer);
+            paramTofuItem = a((oidb_0xec4.RspBody)localObject);
+            return paramTofuItem;
+          }
+          catch (InvalidProtocolBufferMicroException paramTofuItem)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("getBusDataFromRspBytes exception=");
+            ((StringBuilder)localObject).append(paramTofuItem.getMessage());
+            QLog.e("AskAnonymouslyHandler", 1, ((StringBuilder)localObject).toString(), (Throwable)paramTofuItem);
+            return str;
+          }
+        }
       }
-      ((BeancurdManager)localManager).a(String.valueOf(paramTofuItem.frdUin), 0, a());
+      if (paramTofuItem.bytesFromServer == null) {
+        i = -1;
+      } else {
+        i = paramTofuItem.bytesFromServer.length;
+      }
+      QLog.d("AskAnonymouslyHandler", 1, new Object[] { "getBusDataFromRsp bytesFromServer size=", Integer.valueOf(i) });
+    }
+    return str;
+  }
+  
+  protected void a(@Nullable TofuItem paramTofuItem)
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleEmptyMsg tofuItem = ");
+      ((StringBuilder)localObject).append(paramTofuItem);
+      QLog.i("AskAnonymouslyHandler", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramTofuItem != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
+      if (localObject != null)
+      {
+        ((BeancurdManager)localObject).a(String.valueOf(paramTofuItem.frdUin), 0, a());
+        return;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.activity.aio.BeancurdManager");
     }
   }
   
@@ -239,12 +258,8 @@ public final class AskAnonymouslyHandler
   public boolean a(@NotNull BeancurdMsg paramBeancurdMsg)
   {
     Intrinsics.checkParameterIsNotNull(paramBeancurdMsg, "msg");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.activity.aio.BeancurdManager");
-    }
-    int i = ((BeancurdManager)localObject).a(13);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    int i = BeancurdManager.a(13);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     Intrinsics.checkExpressionValueIsNotNull(localObject, "app");
     localObject = ((QQAppInterface)localObject).getMessageFacade().a(paramBeancurdMsg.frienduin, 0, new int[] { i });
     if ((localObject != null) && (((List)localObject).size() > 0))
@@ -252,10 +267,18 @@ public final class AskAnonymouslyHandler
       localObject = (MessageRecord)((List)localObject).get(((List)localObject).size() - 1);
       String str = a(((MessageRecord)localObject).msg);
       paramBeancurdMsg = a(paramBeancurdMsg.buffer);
-      if (QLog.isColorLevel()) {
-        QLog.i("AskAnonymouslyHandler", 2, "isRepeat oldMsgQuestId = " + str + " and newMsgQuestId = " + paramBeancurdMsg);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isRepeat oldMsgQuestId = ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(" and newMsgQuestId = ");
+        localStringBuilder.append(paramBeancurdMsg);
+        QLog.i("AskAnonymouslyHandler", 2, localStringBuilder.toString());
       }
-      return (localObject != null) && (StringsKt.equals$default(str, paramBeancurdMsg, false, 2, null));
+      if ((localObject != null) && (StringsKt.equals$default(str, paramBeancurdMsg, false, 2, null))) {
+        return true;
+      }
     }
     return false;
   }
@@ -278,7 +301,7 @@ public final class AskAnonymouslyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.handlers.AskAnonymouslyHandler
  * JD-Core Version:    0.7.0.1
  */

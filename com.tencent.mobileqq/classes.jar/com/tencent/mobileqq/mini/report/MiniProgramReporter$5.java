@@ -13,18 +13,15 @@ class MiniProgramReporter$5
   {
     if (this.val$singleDcData.dcid.get() == 7) {
       MiniProgramReporter.access$500(this.this$0).add(this.val$singleDcData);
-    }
-    for (;;)
-    {
-      MiniProgramReporter.access$400(this.this$0);
-      return;
+    } else {
       MiniProgramReporter.access$600(this.this$0).add(this.val$singleDcData);
     }
+    MiniProgramReporter.access$400(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramReporter.5
  * JD-Core Version:    0.7.0.1
  */

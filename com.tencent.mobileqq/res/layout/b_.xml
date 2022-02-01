@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mobileqq.doutu.DoutuEmotionLayout android:orientation="vertical" android:id="@id/bom" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.doutu.DoutuEmotionTransParendView android:background="@drawable/b70" android:layout_width="fill_parent" android:layout_height="44.0dip" />
+    <com.tencent.mobileqq.doutu.DoutuEmotionTransParendView android:background="#00000000" android:layout_width="fill_parent" android:layout_height="44.0dip" />
     <com.tencent.mobileqq.doutu.DoutuEmotionHorizonListView android:orientation="horizontal" android:id="@id/bop" android:background="@drawable/fnt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" />
 </com.tencent.mobileqq.doutu.DoutuEmotionLayout>

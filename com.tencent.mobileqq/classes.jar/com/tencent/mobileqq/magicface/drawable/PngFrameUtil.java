@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.magicface.drawable;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.emoticonview.EmotionPanelConstans;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -22,105 +22,105 @@ public class PngFrameUtil
   
   public static int a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      do
-      {
-        return -1;
-      } while (!paramString.contains("rscType"));
-      i = paramString.indexOf("rscType") + "rscType".length() + 1;
-    } while (i + 1 >= paramString.length());
-    paramString = paramString.substring(i, i + 1);
-    try
-    {
-      i = Integer.parseInt(paramString);
-      return i;
+    if (TextUtils.isEmpty(paramString)) {
+      return -1;
     }
-    catch (NumberFormatException paramString)
+    if (paramString.contains("rscType"))
     {
-      paramString.printStackTrace();
+      int i = paramString.indexOf("rscType") + 7 + 1;
+      int j = i + 1;
+      if (j < paramString.length())
+      {
+        paramString = paramString.substring(i, j);
+        try
+        {
+          i = Integer.parseInt(paramString);
+          return i;
+        }
+        catch (NumberFormatException paramString)
+        {
+          paramString.printStackTrace();
+        }
+      }
     }
     return -1;
   }
   
   private PngPlayParam a(String paramString1, String paramString2)
   {
-    int j = 0;
     if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = null;
+      return null;
     }
-    for (;;)
+    localPngPlayParam = new PngPlayParam();
+    try
     {
-      return paramString1;
-      localPngPlayParam = new PngPlayParam();
-      try
+      paramString1 = new JSONObject(paramString1);
+      if (paramString1.has("num")) {
+        localPngPlayParam.jdField_a_of_type_Int = paramString1.getInt("num");
+      }
+      boolean bool = paramString1.has("process_frame");
+      int j = 0;
+      Object localObject1;
+      int i;
+      Object localObject2;
+      if (bool)
       {
-        paramString1 = new JSONObject(paramString1);
-        if (paramString1.has("num")) {
-          localPngPlayParam.jdField_a_of_type_Int = paramString1.getInt("num");
+        localObject1 = paramString1.getJSONObject("process_frame");
+        if (((JSONObject)localObject1).has("repeat")) {
+          localPngPlayParam.jdField_b_of_type_Int = ((JSONObject)localObject1).getInt("repeat");
         }
-        if (paramString1.has("process_frame"))
+        if (((JSONObject)localObject1).has("frame_delay")) {
+          localPngPlayParam.c = ((JSONObject)localObject1).getInt("frame_delay");
+        }
+        localObject1 = ((JSONObject)localObject1).getJSONArray("seq_array");
+        if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
         {
-          localObject = paramString1.getJSONObject("process_frame");
-          if (((JSONObject)localObject).has("repeat")) {
-            localPngPlayParam.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("repeat");
-          }
-          if (((JSONObject)localObject).has("frame_delay")) {
-            localPngPlayParam.c = ((JSONObject)localObject).getInt("frame_delay");
-          }
-          localObject = ((JSONObject)localObject).getJSONArray("seq_array");
-          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+          localPngPlayParam.jdField_a_of_type_ArrayOfJavaLangString = new String[((JSONArray)localObject1).length()];
+          i = 0;
+          while (i < ((JSONArray)localObject1).length())
           {
-            localPngPlayParam.jdField_a_of_type_ArrayOfJavaLangString = new String[((JSONArray)localObject).length()];
-            i = 0;
-            while (i < ((JSONArray)localObject).length())
-            {
-              localPngPlayParam.jdField_a_of_type_ArrayOfJavaLangString[i] = (EmoticonUtils.pngFramePath.replace("[epId]", paramString2) + ((JSONArray)localObject).getString(i));
-              i += 1;
-            }
+            localObject2 = localPngPlayParam.jdField_a_of_type_ArrayOfJavaLangString;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString2));
+            localStringBuilder.append(((JSONArray)localObject1).getString(i));
+            localObject2[i] = localStringBuilder.toString();
+            i += 1;
           }
         }
-        Object localObject = paramString1.getJSONArray("result_frame");
-        paramString1 = localPngPlayParam;
-        if (localObject == null) {
-          continue;
-        }
-        paramString1 = localPngPlayParam;
-        if (((JSONArray)localObject).length() <= 0) {
-          continue;
-        }
-        localPngPlayParam.jdField_b_of_type_ArrayOfJavaLangString = new String[((JSONArray)localObject).length()];
-        int i = j;
-        for (;;)
+      }
+      paramString1 = paramString1.getJSONArray("result_frame");
+      if ((paramString1 != null) && (paramString1.length() > 0))
+      {
+        localPngPlayParam.jdField_b_of_type_ArrayOfJavaLangString = new String[paramString1.length()];
+        i = j;
+        while (i < paramString1.length())
         {
-          paramString1 = localPngPlayParam;
-          if (i >= ((JSONArray)localObject).length()) {
-            break;
-          }
-          localPngPlayParam.jdField_b_of_type_ArrayOfJavaLangString[i] = (EmoticonUtils.pngFramePath.replace("[epId]", paramString2) + ((JSONArray)localObject).getString(i));
+          localObject1 = localPngPlayParam.jdField_b_of_type_ArrayOfJavaLangString;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString2));
+          ((StringBuilder)localObject2).append(paramString1.getString(i));
+          localObject1[i] = ((StringBuilder)localObject2).toString();
           i += 1;
         }
-        return localPngPlayParam;
       }
-      catch (JSONException paramString1)
-      {
-        paramString1.printStackTrace();
-      }
+      return localPngPlayParam;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
     }
   }
   
   private String a(String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(EmoticonUtils.pngFramePath.replace("[epId]", paramString));
+    localStringBuffer.append(EmotionPanelConstans.pngFramePath.replace("[epId]", paramString));
     localStringBuffer.append("config.json");
     paramString = new File(localStringBuffer.toString());
     if (!paramString.exists()) {
       return null;
     }
-    return FileUtils.a(paramString);
+    return FileUtils.readFileContent(paramString);
   }
   
   public static boolean a(String paramString)
@@ -131,16 +131,26 @@ public class PngFrameUtil
     paramString = new File(paramString);
     if (!paramString.exists())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PngFrameUtil", 2, "func checkRandomPngExist, file NOT exist.[" + paramString.getAbsolutePath() + "].");
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("func checkRandomPngExist, file NOT exist.[");
+        ((StringBuilder)localObject1).append(paramString.getAbsolutePath());
+        ((StringBuilder)localObject1).append("].");
+        QLog.d("PngFrameUtil", 2, ((StringBuilder)localObject1).toString());
       }
       return false;
     }
     Object localObject1 = new File(paramString, "config.json");
     if (!((File)localObject1).exists())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PngFrameUtil", 2, "func checkRandomPngExist, file NOT exist.[" + ((File)localObject1).getAbsolutePath() + "].");
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("func checkRandomPngExist, file NOT exist.[");
+        paramString.append(((File)localObject1).getAbsolutePath());
+        paramString.append("].");
+        QLog.d("PngFrameUtil", 2, paramString.toString());
       }
       return false;
     }
@@ -149,39 +159,48 @@ public class PngFrameUtil
       int i;
       try
       {
-        localObject1 = new JSONObject(FileUtils.a((File)localObject1));
+        localObject1 = new JSONObject(FileUtils.readFileContent((File)localObject1));
         Object localObject2 = ((JSONObject)localObject1).getJSONObject("process_frame");
         if (((JSONObject)localObject2).has("seq_array"))
         {
-          localObject2 = ((JSONObject)localObject2).getJSONArray("seq_array");
-          if (((JSONArray)localObject2).length() > 0)
+          JSONArray localJSONArray = ((JSONObject)localObject2).getJSONArray("seq_array");
+          if (localJSONArray.length() > 0)
           {
             i = 0;
-            if (i < ((JSONArray)localObject2).length())
+            if (i < localJSONArray.length())
             {
-              File localFile = new File(paramString, (String)((JSONArray)localObject2).get(i));
-              if (localFile.exists()) {
-                break label383;
+              localObject2 = new File(paramString, (String)localJSONArray.get(i));
+              if (((File)localObject2).exists()) {
+                break label421;
               }
               if (!QLog.isColorLevel()) {
-                break label381;
+                break label419;
               }
-              QLog.d("PngFrameUtil", 2, "func checkRandomPngExist, file NOT exist.[" + localFile.getAbsolutePath() + "].");
-              break label381;
+              paramString = new StringBuilder();
+              paramString.append("func checkRandomPngExist, file NOT exist.[");
+              paramString.append(((File)localObject2).getAbsolutePath());
+              paramString.append("].");
+              QLog.d("PngFrameUtil", 2, paramString.toString());
+              return false;
             }
           }
         }
-        localObject1 = ((JSONObject)localObject1).getJSONArray("result_frame");
-        if (((JSONArray)localObject1).length() > 0)
+        localObject2 = ((JSONObject)localObject1).getJSONArray("result_frame");
+        if (((JSONArray)localObject2).length() > 0)
         {
           i = 0;
-          if (i < ((JSONArray)localObject1).length())
+          if (i < ((JSONArray)localObject2).length())
           {
-            localObject2 = new File(paramString, (String)((JSONArray)localObject1).get(i));
-            if (!((File)localObject2).exists())
+            localObject1 = new File(paramString, (String)((JSONArray)localObject2).get(i));
+            if (!((File)localObject1).exists())
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("PngFrameUtil", 2, "func checkRandomPngExist, file NOT exist.[" + ((File)localObject2).getAbsolutePath() + "].");
+              if (QLog.isColorLevel())
+              {
+                paramString = new StringBuilder();
+                paramString.append("func checkRandomPngExist, file NOT exist.[");
+                paramString.append(((File)localObject1).getAbsolutePath());
+                paramString.append("].");
+                QLog.d("PngFrameUtil", 2, paramString.toString());
               }
               return false;
             }
@@ -193,46 +212,50 @@ public class PngFrameUtil
       }
       catch (Exception paramString)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("PngFrameUtil", 2, "func checkRandomPngExist, exception:" + paramString.getMessage());
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("func checkRandomPngExist, exception:");
+          ((StringBuilder)localObject1).append(paramString.getMessage());
+          QLog.w("PngFrameUtil", 2, ((StringBuilder)localObject1).toString());
         }
         return false;
       }
-      label381:
+      label419:
       return false;
-      label383:
+      label421:
       i += 1;
     }
   }
   
   public static int b(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
-      do
-      {
-        return 0;
-      } while (!paramString.contains("value"));
-      i = paramString.indexOf("value") + "value".length() + 1;
-    } while (i >= paramString.length());
-    paramString = paramString.substring(i);
-    try
-    {
-      i = Integer.parseInt(paramString);
-      return i;
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
     }
-    catch (NumberFormatException paramString)
+    if (paramString.contains("value"))
     {
-      paramString.printStackTrace();
+      int i = paramString.indexOf("value") + 5 + 1;
+      if (i < paramString.length())
+      {
+        paramString = paramString.substring(i);
+        try
+        {
+          i = Integer.parseInt(paramString);
+          return i;
+        }
+        catch (NumberFormatException paramString)
+        {
+          paramString.printStackTrace();
+        }
+      }
     }
     return 0;
   }
   
   public int a(File paramFile)
   {
-    paramFile = FileUtils.a(paramFile);
+    paramFile = FileUtils.readFileContent(paramFile);
     if (!TextUtils.isEmpty(paramFile)) {
       try
       {
@@ -240,8 +263,12 @@ public class PngFrameUtil
         if (paramFile.has("rscType"))
         {
           int i = paramFile.getInt("rscType");
-          if (QLog.isColorLevel()) {
-            QLog.d("PngFrameUtil", 2, "func getRscType(from local json file),type:" + i);
+          if (QLog.isColorLevel())
+          {
+            paramFile = new StringBuilder();
+            paramFile.append("func getRscType(from local json file),type:");
+            paramFile.append(i);
+            QLog.d("PngFrameUtil", 2, paramFile.toString());
           }
           return i;
         }
@@ -262,7 +289,7 @@ public class PngFrameUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameUtil
  * JD-Core Version:    0.7.0.1
  */

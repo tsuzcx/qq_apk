@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -43,8 +43,8 @@ public class FriendClueApiPlugin
   
   void a(String paramString)
   {
-    paramString = new ProfileActivity.AllInOne(paramString, 1);
-    startActivityForResult(new Intent(this.jdField_a_of_type_AndroidContentContext, MoveToGroupActivity.class).putExtra("friendUin", paramString.a), (byte)0);
+    paramString = new AllInOne(paramString, 1);
+    startActivityForResult(new Intent(this.jdField_a_of_type_AndroidContentContext, MoveToGroupActivity.class).putExtra("friendUin", paramString.uin), (byte)0);
   }
   
   void b(String paramString)
@@ -63,10 +63,9 @@ public class FriendClueApiPlugin
     localEIPCClient.callServer("CommonModule", "jumpToCommonGroup", localBundle);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ("recallFriend".equals(paramString2))
-    {
+    if ("recallFriend".equals(paramString2)) {
       try
       {
         if (QLog.isColorLevel()) {
@@ -74,7 +73,8 @@ public class FriendClueApiPlugin
         }
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
         paramString1 = paramJsBridgeListener.optString("opType");
-        if ("move_to_newgroup".equals(paramString1))
+        boolean bool = "move_to_newgroup".equals(paramString1);
+        if (bool)
         {
           a(paramJsBridgeListener.optString("uin"));
           return false;
@@ -84,20 +84,21 @@ public class FriendClueApiPlugin
           b(paramJsBridgeListener.optString("uin"));
           return false;
         }
+        if ("common_group".equals(paramString1))
+        {
+          c(paramJsBridgeListener.optString("uin"));
+          return false;
+        }
       }
       catch (Exception paramJsBridgeListener)
       {
         QLog.e("ClueApiPlugin", 1, "handleJsRequest fail.", paramJsBridgeListener);
-        return false;
-      }
-      if ("common_group".equals(paramString1)) {
-        c(paramJsBridgeListener.optString("uin"));
       }
     }
     return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.jdField_a_of_type_AndroidContentContext = a();
@@ -106,7 +107,7 @@ public class FriendClueApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueApiPlugin
  * JD-Core Version:    0.7.0.1
  */

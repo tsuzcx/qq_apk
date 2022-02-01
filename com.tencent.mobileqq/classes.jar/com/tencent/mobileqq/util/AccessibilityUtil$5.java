@@ -11,14 +11,18 @@ final class AccessibilityUtil$5
   public void sendAccessibilityEvent(View paramView, int paramInt)
   {
     super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.a != null)) {
-      this.a.onClick(paramView);
+    if (paramInt == 1)
+    {
+      AccessibilityUtil.ViewOnClickListener localViewOnClickListener = this.a;
+      if (localViewOnClickListener != null) {
+        localViewOnClickListener.onClick(paramView);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.AccessibilityUtil.5
  * JD-Core Version:    0.7.0.1
  */

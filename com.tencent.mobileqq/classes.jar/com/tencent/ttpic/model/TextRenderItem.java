@@ -53,16 +53,27 @@ public class TextRenderItem
   public void init()
   {
     this.randomDirection = (new Random().nextFloat() * 2.0F - 1.0F);
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.tex = arrayOfInt[0];
-    this.renderParam.texture = this.tex;
-    this.renderParam.texCords = GlUtil.ORIGIN_TEX_COORDS_TRIANGLES;
+    Object localObject = new int[1];
+    GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
+    this.tex = localObject[0];
+    localObject = this.renderParam;
+    ((RenderParam)localObject).texture = this.tex;
+    ((RenderParam)localObject).texCords = GlUtil.ORIGIN_TEX_COORDS_TRIANGLES;
   }
   
   public boolean isOutOfCanvas()
   {
-    return (this.positionX + this.itemWidth / 2 < 0) || (this.positionX - this.itemWidth / 2 > this.canvasWidth) || (this.positionY + this.itemHeight / 2 < 0) || (this.positionY - this.itemHeight / 2 > this.canvasHeight);
+    int i = this.positionX;
+    int j = this.itemWidth;
+    if ((j / 2 + i >= 0) && (i - j / 2 <= this.canvasWidth))
+    {
+      i = this.positionY;
+      j = this.itemHeight;
+      if ((j / 2 + i >= 0) && (i - j / 2 <= this.canvasHeight)) {
+        return false;
+      }
+    }
+    return true;
   }
   
   public void setText(String paramString)
@@ -81,24 +92,32 @@ public class TextRenderItem
   
   public void update()
   {
-    this.positionX = ((int)(this.positionX + 5.0F * this.randomDirection));
+    this.positionX = ((int)(this.positionX + this.randomDirection * 5.0F));
     this.positionY -= 7;
-    float f1 = this.positionX - this.itemWidth / 2;
-    float f2 = this.positionY - this.itemHeight / 2;
-    float f3 = this.itemWidth;
-    float f4 = this.itemHeight;
-    this.renderParam.position = AlgoUtils.calPositionsTriangles(f1, f4 + f2, f1 + f3, f2, this.canvasWidth, this.canvasHeight);
+    int j = this.positionX;
+    int i = this.itemWidth;
+    float f1 = j - i / 2;
+    j = this.positionY;
+    int k = this.itemHeight;
+    float f2 = j - k / 2;
+    float f3 = i;
+    float f4 = k;
+    this.renderParam.position = AlgoUtils.calPositionsTriangles(f1, f2 + f4, f1 + f3, f2, this.canvasWidth, this.canvasHeight);
   }
   
   public void updatePosition(float paramFloat1, float paramFloat2)
   {
     this.positionX = ((int)paramFloat1);
     this.positionY = ((int)paramFloat2);
-    paramFloat1 = this.positionX - this.itemWidth / 2;
-    paramFloat2 = this.positionY - this.itemHeight / 2;
-    float f1 = this.itemWidth;
-    float f2 = this.itemHeight;
-    this.renderParam.position = AlgoUtils.calPositionsTriangles(paramFloat1, f2 + paramFloat2, paramFloat1 + f1, paramFloat2, this.canvasWidth, this.canvasHeight);
+    int j = this.positionX;
+    int i = this.itemWidth;
+    paramFloat1 = j - i / 2;
+    j = this.positionY;
+    int k = this.itemHeight;
+    paramFloat2 = j - k / 2;
+    float f1 = i;
+    float f2 = k;
+    this.renderParam.position = AlgoUtils.calPositionsTriangles(paramFloat1, paramFloat2 + f2, paramFloat1 + f1, paramFloat2, this.canvasWidth, this.canvasHeight);
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2)
@@ -115,7 +134,7 @@ public class TextRenderItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.model.TextRenderItem
  * JD-Core Version:    0.7.0.1
  */

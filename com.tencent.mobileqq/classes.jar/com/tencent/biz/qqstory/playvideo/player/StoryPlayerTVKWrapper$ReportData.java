@@ -90,12 +90,39 @@ public class StoryPlayerTVKWrapper$ReportData
   
   public String toString()
   {
-    return " " + this.jdField_a_of_type_JavaLangString + " " + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_Int + " " + this.jdField_b_of_type_Int + " " + this.jdField_b_of_type_Long + " " + this.jdField_a_of_type_Boolean + " " + c() + " " + b() + " " + a() + " " + this.jdField_b_of_type_JavaLangString + " " + this.jdField_c_of_type_JavaLangString + " " + this.jdField_c_of_type_Long + " " + this.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(c());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(b());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(a());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.ReportData
  * JD-Core Version:    0.7.0.1
  */

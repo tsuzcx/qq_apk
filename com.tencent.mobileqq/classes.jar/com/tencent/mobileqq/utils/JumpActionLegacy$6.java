@@ -1,0 +1,21 @@
+package com.tencent.mobileqq.utils;
+
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+
+class JumpActionLegacy$6
+  implements Runnable
+{
+  JumpActionLegacy$6(JumpActionLegacy paramJumpActionLegacy) {}
+  
+  public void run()
+  {
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131699364, 0).a();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.6
+ * JD-Core Version:    0.7.0.1
+ */

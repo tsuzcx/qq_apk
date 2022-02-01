@@ -43,7 +43,7 @@ public class StrokeTextView
   {
     this.jdField_a_of_type_AndroidTextTextPaint = getPaint();
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = AIOUtils.a(2.0F, getResources());
+    this.jdField_c_of_type_Int = AIOUtils.b(2.0F, getResources());
     if (Build.VERSION.SDK_INT > 11) {
       setLayerType(1, null);
     }
@@ -51,6 +51,8 @@ public class StrokeTextView
   
   private void a(int paramInt)
   {
+    int j = 1;
+    int i;
     try
     {
       Field localField = TextView.class.getDeclaredField("mCurTextColor");
@@ -61,28 +63,29 @@ public class StrokeTextView
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
+      i = j;
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("StrokeTextView", 2, "innerSetTextColor, exception=" + localThrowable.getMessage());
-          localThrowable.printStackTrace();
-        }
-        int i = 1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("innerSetTextColor, exception=");
+        localStringBuilder.append(localThrowable.getMessage());
+        QLog.d("StrokeTextView", 2, localStringBuilder.toString());
+        localThrowable.printStackTrace();
+        i = j;
       }
-      this.jdField_a_of_type_Boolean = false;
-      setTextColor(this.jdField_a_of_type_Int);
-      setShadowLayer(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.d);
-      invalidate();
     }
     if (i == 0)
     {
       this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt);
       return;
     }
+    this.jdField_a_of_type_Boolean = false;
+    setTextColor(this.jdField_a_of_type_Int);
+    setShadowLayer(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.d);
+    invalidate();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_Boolean)
     {
@@ -141,7 +144,7 @@ public class StrokeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.StrokeTextView
  * JD-Core Version:    0.7.0.1
  */

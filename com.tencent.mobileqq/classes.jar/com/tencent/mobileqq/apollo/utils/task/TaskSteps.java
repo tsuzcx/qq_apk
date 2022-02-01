@@ -4,7 +4,7 @@ import java.util.List;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/utils/task/TaskSteps;", "", "containerTask", "Lcom/tencent/mobileqq/apollo/utils/task/BaseTask;", "subTasks", "", "(Lcom/tencent/mobileqq/apollo/utils/task/BaseTask;Ljava/util/List;)V", "currentStep", "getCurrentStep", "()Lcom/tencent/mobileqq/apollo/utils/task/BaseTask;", "currentStepIndex", "", "isExecuting", "", "()Z", "executeNextStep", "", "getStepExecutionStatics", "Lcom/tencent/mobileqq/apollo/utils/task/TaskExecutionStatics;", "onStepDone", "task", "start", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/utils/task/TaskSteps;", "", "containerTask", "Lcom/tencent/mobileqq/apollo/utils/task/BaseTask;", "subTasks", "", "(Lcom/tencent/mobileqq/apollo/utils/task/BaseTask;Ljava/util/List;)V", "currentStep", "getCurrentStep", "()Lcom/tencent/mobileqq/apollo/utils/task/BaseTask;", "currentStepIndex", "", "isExecuting", "", "()Z", "executeNextStep", "", "getStepExecutionStatics", "Lcom/tencent/mobileqq/apollo/utils/task/TaskExecutionStatics;", "onStepDone", "task", "start", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class TaskSteps
 {
   private int jdField_a_of_type_Int;
@@ -41,15 +41,21 @@ public final class TaskSteps
   
   public final void a()
   {
-    if (this.jdField_a_of_type_Int != -1) {
-      throw ((Throwable)new IllegalStateException("already executing " + a() + '!'));
+    if (this.jdField_a_of_type_Int == -1)
+    {
+      b();
+      return;
     }
-    b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("already executing ");
+    localStringBuilder.append(a());
+    localStringBuilder.append('!');
+    throw ((Throwable)new IllegalStateException(localStringBuilder.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.TaskSteps
  * JD-Core Version:    0.7.0.1
  */

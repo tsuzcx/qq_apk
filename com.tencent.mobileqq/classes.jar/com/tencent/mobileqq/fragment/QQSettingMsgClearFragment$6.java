@@ -18,15 +18,29 @@ class QQSettingMsgClearFragment$6
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("QQSettingMsgClearFragment", 2, "qq onDownloadCancel info = " + paramDownloadInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qq onDownloadCancel info = ");
+      localStringBuilder.append(paramDownloadInfo);
+      QLog.w("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
     }
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingMsgClearFragment", 2, "qq onDownloadError errorCode = " + paramInt1 + "errorMsg = " + paramString + ", state = " + paramInt2 + ", info = " + paramDownloadInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qq onDownloadError errorCode = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("errorMsg = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", state = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", info = ");
+      localStringBuilder.append(paramDownloadInfo);
+      QLog.e("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
     }
   }
   
@@ -37,8 +51,12 @@ class QQSettingMsgClearFragment$6
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingMsgClearFragment", 2, "qq onDownloadPause info = " + paramDownloadInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qq onDownloadPause info = ");
+      localStringBuilder.append(paramDownloadInfo);
+      QLog.e("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
     }
   }
   
@@ -50,35 +68,56 @@ class QQSettingMsgClearFragment$6
       while (paramList.hasNext())
       {
         DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        QLog.w("QQSettingMsgClearFragment", 2, "qq onDownloadUpdate progress = " + localDownloadInfo.f + ", url = " + localDownloadInfo.d);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("qq onDownloadUpdate progress = ");
+        localStringBuilder.append(localDownloadInfo.f);
+        localStringBuilder.append(", url = ");
+        localStringBuilder.append(localDownloadInfo.d);
+        QLog.w("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
       }
     }
   }
   
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingMsgClearFragment", 2, "qq onDownloadWait info = " + paramDownloadInfo);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qq onDownloadWait info = ");
+      localStringBuilder.append(paramDownloadInfo);
+      QLog.e("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
     }
   }
   
   public void packageReplaced(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingMsgClearFragment", 2, "qq packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qq packageReplaced appid = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", packageName = ");
+      localStringBuilder.append(paramString2);
+      QLog.e("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
     }
   }
   
   public void uninstallSucceed(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QQSettingMsgClearFragment", 2, "qq uninstallSucceed appid = " + paramString1 + ", packageName = " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qq uninstallSucceed appid = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", packageName = ");
+      localStringBuilder.append(paramString2);
+      QLog.e("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingMsgClearFragment.6
  * JD-Core Version:    0.7.0.1
  */

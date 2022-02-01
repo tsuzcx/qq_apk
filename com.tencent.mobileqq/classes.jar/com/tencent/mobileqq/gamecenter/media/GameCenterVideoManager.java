@@ -25,9 +25,10 @@ public class GameCenterVideoManager
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null)
+    GameCenterVideoViewController localGameCenterVideoViewController = this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
+    if (localGameCenterVideoViewController != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.stop();
+      localGameCenterVideoViewController.stop();
       this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.release();
       this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = null;
     }
@@ -35,9 +36,10 @@ public class GameCenterVideoManager
   
   public void a(GameCenterVideoViewController paramGameCenterVideoViewController)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != paramGameCenterVideoViewController) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null))
+    GameCenterVideoViewController localGameCenterVideoViewController = this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
+    if ((localGameCenterVideoViewController != null) && (localGameCenterVideoViewController != null) && (localGameCenterVideoViewController != paramGameCenterVideoViewController) && (localGameCenterVideoViewController != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.stop();
+      localGameCenterVideoViewController.stop();
       this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.release();
     }
     this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
@@ -45,7 +47,7 @@ public class GameCenterVideoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.media.GameCenterVideoManager
  * JD-Core Version:    0.7.0.1
  */

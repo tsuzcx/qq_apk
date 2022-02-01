@@ -35,15 +35,16 @@ public class EntryModel
     this.type = paramParcel.readInt();
     this.uin = paramParcel.readLong();
     this.name = paramParcel.readString();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isAdmin = bool;
-      this.entryDataHash = paramParcel.readString();
-      this.dwGroupClassExt = paramParcel.readLong();
-      this.reportData = paramParcel.readString();
-      return;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.isAdmin = bool;
+    this.entryDataHash = paramParcel.readString();
+    this.dwGroupClassExt = paramParcel.readLong();
+    this.reportData = paramParcel.readString();
   }
   
   public int describeContents()
@@ -61,20 +62,15 @@ public class EntryModel
     paramParcel.writeInt(this.type);
     paramParcel.writeLong(this.uin);
     paramParcel.writeString(this.name);
-    if (this.isAdmin) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.entryDataHash);
-      paramParcel.writeLong(this.dwGroupClassExt);
-      paramParcel.writeString(this.reportData);
-      return;
-    }
+    paramParcel.writeByte((byte)this.isAdmin);
+    paramParcel.writeString(this.entryDataHash);
+    paramParcel.writeLong(this.dwGroupClassExt);
+    paramParcel.writeString(this.reportData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.EntryModel
  * JD-Core Version:    0.7.0.1
  */

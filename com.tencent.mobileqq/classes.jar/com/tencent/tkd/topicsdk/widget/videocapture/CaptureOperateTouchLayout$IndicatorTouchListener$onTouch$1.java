@@ -18,17 +18,19 @@ final class CaptureOperateTouchLayout$IndicatorTouchListener$onTouch$1
   {
     Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "animation");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
+    if (paramValueAnimator != null)
+    {
+      float f = ((Float)paramValueAnimator).floatValue();
+      this.jdField_a_of_type_AndroidViewView.setX(f);
+      CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$IndicatorTouchListener.a).setX(f);
+      return;
     }
-    float f = ((Float)paramValueAnimator).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setX(f);
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$IndicatorTouchListener.a).setX(f);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocapture.CaptureOperateTouchLayout.IndicatorTouchListener.onTouch.1
  * JD-Core Version:    0.7.0.1
  */

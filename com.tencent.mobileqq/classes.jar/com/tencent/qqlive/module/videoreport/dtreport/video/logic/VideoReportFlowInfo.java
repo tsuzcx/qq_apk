@@ -9,7 +9,7 @@ public class VideoReportFlowInfo
   private int reportManager;
   private long startPosition;
   private VideoSession videoSession;
-  private int videoState;
+  private volatile int videoState;
   
   public int getPlayerObject()
   {
@@ -77,7 +77,7 @@ public class VideoReportFlowInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoReportFlowInfo
  * JD-Core Version:    0.7.0.1
  */

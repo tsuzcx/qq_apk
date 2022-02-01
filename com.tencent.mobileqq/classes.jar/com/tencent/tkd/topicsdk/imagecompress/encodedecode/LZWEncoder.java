@@ -38,12 +38,13 @@ class LZWEncoder
   
   private int a()
   {
-    if (this.p == 0) {
+    int i1 = this.p;
+    if (i1 == 0) {
       return -1;
     }
-    this.p -= 1;
+    this.p = (i1 - 1);
     byte[] arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
-    int i1 = this.q;
+    i1 = this.q;
     this.q = (i1 + 1);
     return arrayOfByte[i1] & 0xFF;
   }
@@ -76,14 +77,15 @@ class LZWEncoder
   
   void a(int paramInt, OutputStream paramOutputStream)
   {
-    int i2 = 0;
     this.g = paramInt;
+    int i2 = 0;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Int = this.g;
     this.jdField_c_of_type_Int = a(this.jdField_a_of_type_Int);
     this.h = (1 << paramInt - 1);
-    this.i = (this.h + 1);
-    this.f = (this.h + 2);
+    paramInt = this.h;
+    this.i = (paramInt + 1);
+    this.f = (paramInt + 2);
     this.l = 0;
     paramInt = this.e;
     while (paramInt < 65536)
@@ -97,59 +99,60 @@ class LZWEncoder
     paramInt = a();
     for (;;)
     {
-      int i3 = a();
-      if (i3 == -1) {
+      int i5 = a();
+      if (i5 == -1) {
         break;
       }
-      int i7 = (i3 << this.jdField_b_of_type_Int) + paramInt;
-      int i1 = i3 << 8 - i2 ^ paramInt;
-      if (this.jdField_a_of_type_ArrayOfInt[i1] == i7)
+      int i7 = (i5 << this.jdField_b_of_type_Int) + paramInt;
+      int i1 = i5 << 8 - i2 ^ paramInt;
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      if (arrayOfInt[i1] == i7)
       {
         paramInt = this.jdField_b_of_type_ArrayOfInt[i1];
       }
       else
       {
-        int i4 = i1;
-        if (this.jdField_a_of_type_ArrayOfInt[i1] >= 0)
+        int i3 = i1;
+        if (arrayOfInt[i1] >= 0)
         {
-          i4 = i6 - i1;
-          int i5 = i1;
+          i3 = i6 - i1;
+          int i4 = i1;
           if (i1 == 0)
           {
-            i4 = 1;
-            i5 = i1;
+            i3 = 1;
+            i4 = i1;
           }
           do
           {
-            i5 -= i4;
-            i1 = i5;
-            if (i5 < 0) {
-              i1 = i5 + i6;
+            i4 -= i3;
+            i1 = i4;
+            if (i4 < 0) {
+              i1 = i4 + i6;
             }
-            if (this.jdField_a_of_type_ArrayOfInt[i1] == i7)
+            arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+            if (arrayOfInt[i1] == i7)
             {
               paramInt = this.jdField_b_of_type_ArrayOfInt[i1];
               break;
             }
-            i5 = i1;
-          } while (this.jdField_a_of_type_ArrayOfInt[i1] >= 0);
-          i4 = i1;
+            i4 = i1;
+          } while (arrayOfInt[i1] >= 0);
+          i3 = i1;
         }
         b(paramInt, paramOutputStream);
-        if (this.f < this.d)
+        paramInt = this.f;
+        if (paramInt < this.d)
         {
-          int[] arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
-          paramInt = this.f;
+          arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
           this.f = (paramInt + 1);
-          arrayOfInt[i4] = paramInt;
-          this.jdField_a_of_type_ArrayOfInt[i4] = i7;
-          paramInt = i3;
+          arrayOfInt[i3] = paramInt;
+          this.jdField_a_of_type_ArrayOfInt[i3] = i7;
         }
         else
         {
           a(paramOutputStream);
-          paramInt = i3;
         }
+        paramInt = i5;
       }
     }
     b(paramInt, paramOutputStream);
@@ -159,52 +162,54 @@ class LZWEncoder
   void a(OutputStream paramOutputStream)
   {
     a(this.e);
-    this.f = (this.h + 2);
+    int i1 = this.h;
+    this.f = (i1 + 2);
     this.jdField_a_of_type_Boolean = true;
-    b(this.h, paramOutputStream);
+    b(i1, paramOutputStream);
   }
   
   void b(int paramInt, OutputStream paramOutputStream)
   {
-    this.j &= this.jdField_c_of_type_ArrayOfInt[this.k];
-    if (this.k > 0) {}
-    for (this.j |= paramInt << this.k;; this.j = paramInt) {
-      for (this.k += this.jdField_a_of_type_Int; this.k >= 8; this.k -= 8)
+    int i1 = this.j;
+    int[] arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
+    int i2 = this.k;
+    this.j = (i1 & arrayOfInt[i2]);
+    if (i2 > 0) {
+      this.j |= paramInt << i2;
+    } else {
+      this.j = paramInt;
+    }
+    for (this.k += this.jdField_a_of_type_Int; this.k >= 8; this.k -= 8)
+    {
+      a((byte)(this.j & 0xFF), paramOutputStream);
+      this.j >>= 8;
+    }
+    if ((this.f > this.jdField_c_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        i1 = this.g;
+        this.jdField_a_of_type_Int = i1;
+        this.jdField_c_of_type_Int = a(i1);
+        this.jdField_a_of_type_Boolean = false;
+      }
+      else
+      {
+        this.jdField_a_of_type_Int += 1;
+        i1 = this.jdField_a_of_type_Int;
+        if (i1 == this.jdField_b_of_type_Int) {
+          this.jdField_c_of_type_Int = this.d;
+        } else {
+          this.jdField_c_of_type_Int = a(i1);
+        }
+      }
+    }
+    if (paramInt == this.i)
+    {
+      while (this.k > 0)
       {
         a((byte)(this.j & 0xFF), paramOutputStream);
         this.j >>= 8;
-      }
-    }
-    if ((this.f > this.jdField_c_of_type_Int) || (this.jdField_a_of_type_Boolean))
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label212;
-      }
-      int i1 = this.g;
-      this.jdField_a_of_type_Int = i1;
-      this.jdField_c_of_type_Int = a(i1);
-      this.jdField_a_of_type_Boolean = false;
-    }
-    while (paramInt == this.i)
-    {
-      for (;;)
-      {
-        if (this.k > 0)
-        {
-          a((byte)(this.j & 0xFF), paramOutputStream);
-          this.j >>= 8;
-          this.k -= 8;
-          continue;
-          label212:
-          this.jdField_a_of_type_Int += 1;
-          if (this.jdField_a_of_type_Int == this.jdField_b_of_type_Int)
-          {
-            this.jdField_c_of_type_Int = this.d;
-            break;
-          }
-          this.jdField_c_of_type_Int = a(this.jdField_a_of_type_Int);
-          break;
-        }
+        this.k -= 8;
       }
       c(paramOutputStream);
     }
@@ -221,9 +226,10 @@ class LZWEncoder
   
   void c(OutputStream paramOutputStream)
   {
-    if (this.l > 0)
+    int i1 = this.l;
+    if (i1 > 0)
     {
-      paramOutputStream.write(this.l);
+      paramOutputStream.write(i1);
       paramOutputStream.write(this.jdField_a_of_type_ArrayOfByte, 0, this.l);
       this.l = 0;
     }
@@ -231,7 +237,7 @@ class LZWEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.LZWEncoder
  * JD-Core Version:    0.7.0.1
  */

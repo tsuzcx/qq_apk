@@ -19,14 +19,15 @@ public final class im_msg$MsgSendReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42 }, new String[] { "msg", "bu_msg", "msg_tail_id", "conn_msg_flag", "bytes_cookie" }, new Object[] { null, localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, MsgSendReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42 }, new String[] { "msg", "bu_msg", "msg_tail_id", "conn_msg_flag", "bytes_cookie" }, new Object[] { null, localByteStringMicro1, localInteger, localInteger, localByteStringMicro2 }, MsgSendReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.msg.im_msg.MsgSendReq
  * JD-Core Version:    0.7.0.1
  */

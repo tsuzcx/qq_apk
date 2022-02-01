@@ -12,14 +12,14 @@ public class c
   private Map<String, d> c = new HashMap(16);
   private List<b> d = new ArrayList(16);
   
-  public String a()
+  public d a(String paramString)
   {
-    return this.a;
+    return (d)this.c.get(paramString);
   }
   
-  public void a(String paramString)
+  public List<b> a()
   {
-    this.a = paramString;
+    return this.d;
   }
   
   public void a(String paramString, d paramd)
@@ -32,19 +32,14 @@ public class c
     this.d = paramList;
   }
   
-  public d b(String paramString)
-  {
-    return (d)this.c.get(paramString);
-  }
-  
   public String b()
   {
     return this.b;
   }
   
-  public List<b> c()
+  public void b(String paramString)
   {
-    return this.d;
+    this.a = paramString;
   }
   
   public void c(String paramString)
@@ -54,7 +49,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.local.model.c
  * JD-Core Version:    0.7.0.1
  */

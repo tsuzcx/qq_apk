@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class HippyModuleANRMonitor
 {
   static final int ANR_TIME = 100;
-  static int MONITOR_ID = 0;
+  static int MONITOR_ID;
   static final int MONITOR_ID_NAN = 0;
   HippyEngineContext mContext;
   HippyEngineMonitorAdapter mEngineMonitorAdapter;
@@ -22,9 +22,10 @@ public class HippyModuleANRMonitor
   public HippyModuleANRMonitor(HippyEngineContext paramHippyEngineContext)
   {
     this.mContext = paramHippyEngineContext;
-    if (this.mContext != null)
+    paramHippyEngineContext = this.mContext;
+    if (paramHippyEngineContext != null)
     {
-      this.mEngineMonitorAdapter = this.mContext.getGlobalConfigs().getEngineMonitorAdapter();
+      this.mEngineMonitorAdapter = paramHippyEngineContext.getGlobalConfigs().getEngineMonitorAdapter();
       this.mNeedReportBridgeANR = this.mEngineMonitorAdapter.needReportBridgeANR();
       if (this.mNeedReportBridgeANR) {
         this.mMonitorMessages = new ConcurrentHashMap();
@@ -34,38 +35,52 @@ public class HippyModuleANRMonitor
   
   public void checkMonitor()
   {
-    if (this.mMonitorMessages == null) {}
-    for (;;)
-    {
+    Object localObject = this.mMonitorMessages;
+    if (localObject == null) {
       return;
-      Iterator localIterator = this.mMonitorMessages.entrySet().iterator();
-      while (localIterator.hasNext())
+    }
+    localObject = ((ConcurrentHashMap)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      HippyModuleANRMonitor.MonitorMessage localMonitorMessage = (HippyModuleANRMonitor.MonitorMessage)localEntry.getValue();
+      if ((localMonitorMessage != null) && (SystemClock.elapsedRealtime() - localMonitorMessage.startTime > 100L))
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        HippyModuleANRMonitor.MonitorMessage localMonitorMessage = (HippyModuleANRMonitor.MonitorMessage)localEntry.getValue();
-        if ((localMonitorMessage != null) && (SystemClock.elapsedRealtime() - localMonitorMessage.startTime > 100L))
+        HippyEngineMonitorAdapter localHippyEngineMonitorAdapter = this.mEngineMonitorAdapter;
+        if (localHippyEngineMonitorAdapter != null)
         {
-          if (this.mEngineMonitorAdapter != null) {
-            this.mEngineMonitorAdapter.reportBridgeANR(localMonitorMessage.param1 + " | " + localMonitorMessage.param2);
-          }
-          this.mMonitorMessages.remove(localEntry.getKey());
-          localMonitorMessage.onDispose();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localMonitorMessage.param1);
+          localStringBuilder.append(" | ");
+          localStringBuilder.append(localMonitorMessage.param2);
+          localHippyEngineMonitorAdapter.reportBridgeANR(localStringBuilder.toString());
         }
+        this.mMonitorMessages.remove(localEntry.getKey());
+        localMonitorMessage.onDispose();
       }
     }
   }
   
   public void endMonitor(int paramInt)
   {
-    if (!this.mNeedReportBridgeANR) {}
-    HippyModuleANRMonitor.MonitorMessage localMonitorMessage;
-    do
-    {
+    if (!this.mNeedReportBridgeANR) {
       return;
-      localMonitorMessage = (HippyModuleANRMonitor.MonitorMessage)this.mMonitorMessages.get(Integer.valueOf(paramInt));
-    } while (localMonitorMessage == null);
-    if ((SystemClock.elapsedRealtime() - localMonitorMessage.startTime > 100L) && (this.mEngineMonitorAdapter != null)) {
-      this.mEngineMonitorAdapter.reportBridgeANR(localMonitorMessage.param1 + " | " + localMonitorMessage.param2);
+    }
+    HippyModuleANRMonitor.MonitorMessage localMonitorMessage = (HippyModuleANRMonitor.MonitorMessage)this.mMonitorMessages.get(Integer.valueOf(paramInt));
+    if (localMonitorMessage == null) {
+      return;
+    }
+    if (SystemClock.elapsedRealtime() - localMonitorMessage.startTime > 100L)
+    {
+      HippyEngineMonitorAdapter localHippyEngineMonitorAdapter = this.mEngineMonitorAdapter;
+      if (localHippyEngineMonitorAdapter != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localMonitorMessage.param1);
+        localStringBuilder.append(" | ");
+        localStringBuilder.append(localMonitorMessage.param2);
+        localHippyEngineMonitorAdapter.reportBridgeANR(localStringBuilder.toString());
+      }
     }
     this.mMonitorMessages.remove(Integer.valueOf(paramInt));
     localMonitorMessage.onDispose();
@@ -91,7 +106,7 @@ public class HippyModuleANRMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.HippyModuleANRMonitor
  * JD-Core Version:    0.7.0.1
  */

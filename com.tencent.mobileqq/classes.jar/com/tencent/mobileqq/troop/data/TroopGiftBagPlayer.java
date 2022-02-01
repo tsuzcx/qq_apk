@@ -47,15 +47,16 @@ public class TroopGiftBagPlayer
       localJSONObject.put("amount", this.jdField_a_of_type_Int);
       localJSONObject.put("index", this.jdField_b_of_type_Int);
       localJSONObject.put("tips", this.jdField_a_of_type_JavaLangString);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " toJson error. e=" + localJSONException);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" toJson error. e=");
+      localStringBuilder.append(localJSONException);
+      QLog.e(".troop.send_gift", 2, localStringBuilder.toString());
     }
+    return localJSONObject.toString();
   }
   
   public void a(String paramString)
@@ -73,13 +74,17 @@ public class TroopGiftBagPlayer
     }
     catch (JSONException paramString)
     {
-      QLog.e(".troop.send_gift", 2, getClass().getSimpleName() + " fromJson error. e=" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" fromJson error. e=");
+      localStringBuilder.append(paramString);
+      QLog.e(".troop.send_gift", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopGiftBagPlayer
  * JD-Core Version:    0.7.0.1
  */

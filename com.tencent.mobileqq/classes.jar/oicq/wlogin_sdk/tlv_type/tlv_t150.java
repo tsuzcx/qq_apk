@@ -24,12 +24,14 @@ public class tlv_t150
   
   public Boolean verify()
   {
-    if (this._body_len < 7) {
-      return Boolean.valueOf(false);
+    int i = this._body_len;
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (i < 7) {
+      return localBoolean;
     }
-    int i = util.buf_to_int16(this._buf, this._head_len + 5);
+    i = util.buf_to_int16(this._buf, this._head_len + 5);
     if (this._body_len < i + 7) {
-      return Boolean.valueOf(false);
+      return localBoolean;
     }
     this._other_len = i;
     return Boolean.valueOf(true);
@@ -37,7 +39,7 @@ public class tlv_t150
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t150
  * JD-Core Version:    0.7.0.1
  */

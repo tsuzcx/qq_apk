@@ -23,6 +23,7 @@ public final class BadgeController
   
   private static String getCurLauncherPackageName()
   {
+    String str = null;
     try
     {
       Object localObject = new Intent("android.intent.action.MAIN");
@@ -33,12 +34,12 @@ public final class BadgeController
         if (((ResolveInfo)localObject).activityInfo == null) {
           return null;
         }
-        if (!((ResolveInfo)localObject).activityInfo.packageName.equals("android"))
-        {
-          localObject = ((ResolveInfo)localObject).activityInfo.packageName;
-          return localObject;
+        if (((ResolveInfo)localObject).activityInfo.packageName.equals("android")) {
+          return null;
         }
+        str = ((ResolveInfo)localObject).activityInfo.packageName;
       }
+      return str;
     }
     catch (Exception localException) {}
     return null;
@@ -46,42 +47,45 @@ public final class BadgeController
   
   public static void init(Context paramContext)
   {
-    int k = 0;
     sApplication = paramContext.getApplicationContext();
     paramContext = getCurLauncherPackageName();
     String[] arrayOfString = LAUNCHER_WHITE_LIST;
     int m = arrayOfString.length;
+    int k = 0;
     int i = 0;
-    int j = k;
-    if (i < m)
+    int j;
+    for (;;)
     {
-      if (arrayOfString[i].equalsIgnoreCase(paramContext)) {
-        j = 1;
+      j = k;
+      if (i >= m) {
+        break;
       }
-    }
-    else
-    {
-      if (sDebug) {
-        break label106;
-      }
-      if (j == 0) {}
-    }
-    label106:
-    for (sCurLauncherPackageName = paramContext;; sCurLauncherPackageName = paramContext)
-    {
-      if (sCurLauncherPackageName != null) {}
-      try
+      if (arrayOfString[i].equalsIgnoreCase(paramContext))
       {
-        paramContext = sApplication.getPackageManager().getApplicationInfo(sCurLauncherPackageName, 128);
-        if (paramContext != null) {
-          sCurBadgeProviderAuthorities = paramContext.metaData.getString("badge_provider");
-        }
-        return;
+        j = 1;
+        break;
       }
-      catch (Exception paramContext) {}
       i += 1;
-      break;
     }
+    if (!sDebug)
+    {
+      if (j != 0) {
+        sCurLauncherPackageName = paramContext;
+      }
+    }
+    else {
+      sCurLauncherPackageName = paramContext;
+    }
+    if (sCurLauncherPackageName != null) {}
+    try
+    {
+      paramContext = sApplication.getPackageManager().getApplicationInfo(sCurLauncherPackageName, 128);
+      if (paramContext != null) {
+        sCurBadgeProviderAuthorities = paramContext.metaData.getString("badge_provider");
+      }
+      return;
+    }
+    catch (Exception paramContext) {}
   }
   
   public static boolean isSupport(Context paramContext)
@@ -103,31 +107,32 @@ public final class BadgeController
   
   public static boolean setBadge(int paramInt)
   {
-    if (!sResumed)
-    {
+    if (!sResumed) {
       sNextCount = Integer.valueOf(paramInt);
-      if (sCurBadgeProviderAuthorities != null) {
-        break label28;
-      }
-    }
-    label28:
-    Object localObject;
-    do
-    {
-      return false;
+    } else {
       sNextCount = null;
-      break;
-      localObject = Uri.parse("content://" + sCurBadgeProviderAuthorities + "/badge");
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("count", paramInt);
-      localObject = sApplication.getContentResolver().call((Uri)localObject, "setBadge", "", localBundle);
-    } while (localObject == null);
-    return ((Bundle)localObject).getBoolean("result");
+    }
+    boolean bool = false;
+    if (sCurBadgeProviderAuthorities == null) {
+      return false;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("content://");
+    ((StringBuilder)localObject).append(sCurBadgeProviderAuthorities);
+    ((StringBuilder)localObject).append("/badge");
+    localObject = Uri.parse(((StringBuilder)localObject).toString());
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("count", paramInt);
+    localObject = sApplication.getContentResolver().call((Uri)localObject, "setBadge", "", localBundle);
+    if (localObject != null) {
+      bool = ((Bundle)localObject).getBoolean("result");
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.commonsdk.badge.BadgeController
  * JD-Core Version:    0.7.0.1
  */

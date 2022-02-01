@@ -10,15 +10,21 @@ class ScreenShotFragment$1
   
   public void a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotInnerAdapter OnItemClickListener : position = " + paramInt + ", view = " + paramView);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ScreenShotInnerAdapter OnItemClickListener : position = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", view = ");
+      localStringBuilder.append(paramView);
+      QLog.d("ScreenShotFragment", 2, localStringBuilder.toString());
     }
     ScreenShotFragment.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotFragment.1
  * JD-Core Version:    0.7.0.1
  */

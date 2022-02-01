@@ -24,12 +24,12 @@ public abstract class QzoneExternalRequest
   private String refer;
   private RetryInfo retryInfo;
   
-  public static JceStruct decode(byte[] paramArrayOfByte, String paramString)
+  protected static JceStruct decode(byte[] paramArrayOfByte, String paramString)
   {
     return ProtocolUtils.decode(paramArrayOfByte, paramString);
   }
   
-  public static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt)
+  protected static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt)
   {
     return ProtocolUtils.decode(paramArrayOfByte, paramString, paramArrayOfInt);
   }
@@ -151,7 +151,7 @@ public abstract class QzoneExternalRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzoneExternalRequest
  * JD-Core Version:    0.7.0.1
  */

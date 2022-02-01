@@ -25,7 +25,14 @@ public abstract class MagicfaceData
   
   public MagicfaceData(String paramString1, String paramString2, String paramString3)
   {
-    AVLog.printColorLog("AVMagicfaceData", "init|config=" + paramString2 + "|" + paramString3 + "|" + paramString1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init|config=");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(paramString1);
+    AVLog.printColorLog("AVMagicfaceData", ((StringBuilder)localObject).toString());
     this.jdField_a_of_type_JavaLangString = paramString2;
     this.jdField_b_of_type_JavaLangString = paramString3;
     try
@@ -33,8 +40,10 @@ public abstract class MagicfaceData
       paramString1 = new JSONObject(paramString1);
       paramString2 = paramString1.getJSONObject("video");
       this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason = ((MagicfaceDataVideoJason)JSONUtils.a(paramString2, MagicfaceDataVideoJason.class));
+      localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+      int j = 0;
       int i;
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason != null)
+      if (localObject != null)
       {
         if (!"voicesticker".equals(paramString3))
         {
@@ -85,7 +94,10 @@ public abstract class MagicfaceData
           paramString2 = (MagicfaceDataPendantJason)JSONUtils.a((JSONObject)paramString1.get(i), MagicfaceDataPendantJason.class);
           if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.name)))
           {
-            AVLog.printErrorLog("AVMagicfaceData", "Pendant: " + paramString2.toString());
+            paramString3 = new StringBuilder();
+            paramString3.append("Pendant: ");
+            paramString3.append(paramString2.toString());
+            AVLog.printErrorLog("AVMagicfaceData", paramString3.toString());
             paramString2.duration *= 1000;
             this.jdField_a_of_type_JavaUtilMap.put(paramString2.name, paramString2);
           }
@@ -107,13 +119,17 @@ public abstract class MagicfaceData
       }
       if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.persistent)
       {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.repeat_count = 50000;
-        if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count == 0) {
+        paramString1 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+        paramString1.repeat_count = 50000;
+        if (paramString1.frame_count == 0) {
           this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count = 3;
         }
         this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataAudioJason.is_repeat = true;
       }
-      AVLog.printErrorLog("AVMagicfaceData", "MagicfaceData:: " + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.toString());
+      paramString1 = new StringBuilder();
+      paramString1.append("MagicfaceData:: ");
+      paramString1.append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.toString());
+      AVLog.printErrorLog("AVMagicfaceData", paramString1.toString());
       this.c = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.frame_count;
       paramString1 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.getLocation(-1);
       this.jdField_b_of_type_AndroidGraphicsRect = new Rect(paramString1.x, paramString1.y, paramString1.x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width, paramString1.y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height);
@@ -124,11 +140,12 @@ public abstract class MagicfaceData
   
   int a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason;
+    if (localObject == null) {
       return paramInt;
     }
-    Point localPoint = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.getLocation(paramInt);
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect(localPoint.x, localPoint.y, localPoint.x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width, localPoint.y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height);
+    localObject = ((MagicfaceDataVideoJason)localObject).getLocation(paramInt);
+    this.jdField_b_of_type_AndroidGraphicsRect = new Rect(((Point)localObject).x, ((Point)localObject).y, ((Point)localObject).x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.width, ((Point)localObject).y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.height);
     return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.lastLocationIndex;
   }
   
@@ -182,12 +199,18 @@ public abstract class MagicfaceData
   
   public String toString()
   {
-    return "Id[" + this.jdField_a_of_type_JavaLangString + "], type[" + this.jdField_b_of_type_JavaLangString + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Id[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("], type[");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfaceData
  * JD-Core Version:    0.7.0.1
  */

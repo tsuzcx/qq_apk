@@ -24,30 +24,35 @@ public class QZonePublishSecretShuoShuoH5Plugin
   public static final int NOTIFY_H5_OK = 1;
   public static final int NOTIFY_RIGHT_BTN = 2;
   public static final String TAG = "QZonePublishSecretShuoShuoH5Plugin";
-  public static QZonePublishSecretShuoShuoH5Plugin my = null;
+  public static QZonePublishSecretShuoShuoH5Plugin my;
   private BroadcastReceiver msgBrocastReceiver = new QZonePublishSecretShuoShuoH5Plugin.1(this);
   
   private void dispatchTasks(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 5: 
-    default: 
-      return;
-    case 1: 
-      onNotifyH5RecordOk();
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 6) {
+              return;
+            }
+            onNotifyH5RecordCancel();
+            return;
+          }
+          onEditRightButtonClick();
+          return;
+        }
+        onEditLeftButtonClick();
+        return;
+      }
       onRightButtonClick();
       return;
-    case 3: 
-      onEditLeftButtonClick();
-      return;
-    case 4: 
-      onEditRightButtonClick();
-      return;
     }
-    onNotifyH5RecordCancel();
+    onNotifyH5RecordOk();
   }
   
   private void registerReceiver()
@@ -66,105 +71,66 @@ public class QZonePublishSecretShuoShuoH5Plugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    int k = 0;
+    boolean bool = paramString2.equals("Qzone");
     int j = 0;
-    if ((!paramString2.equals("Qzone")) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {}
-    do
+    int i = 0;
+    if ((bool) && (this.parentPlugin != null))
     {
-      return false;
-      if (paramString3.equalsIgnoreCase("updateFeedsAndPopup"))
-      {
-        paramJsBridgeListener = this.parentPlugin.mRuntime.a();
-        if ((paramJsBridgeListener instanceof QzonePublishSecretShuoShuoH5PluginInterface)) {
-          ((QzonePublishSecretShuoShuoH5PluginInterface)paramJsBridgeListener).updateFeedAndPopup();
-        }
-        return true;
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
       }
-      if (paramString3.equalsIgnoreCase("editTitleButtons"))
+      bool = paramString3.equalsIgnoreCase("getMoodVoiceRecordTime");
+      paramJsBridgeListener = "";
+      if (bool)
       {
-        paramJsBridgeListener = this.parentPlugin.mRuntime.a();
-        if ((paramJsBridgeListener instanceof QzonePublishSecretShuoShuoH5PluginInterface)) {
-          ((QzonePublishSecretShuoShuoH5PluginInterface)paramJsBridgeListener).editTitleButtons();
-        }
-        return true;
-      }
-      if (paramString3.equalsIgnoreCase("getMoodVoiceRecordTime"))
-      {
-        paramString1 = "";
         try
         {
-          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramString1 = new JSONObject(paramVarArgs[0]).optString("callback");
           paramJsBridgeListener = paramString1;
-          if (paramString2 != null) {
-            paramJsBridgeListener = paramString2.optString("callback");
-          }
         }
-        catch (JSONException paramJsBridgeListener)
+        catch (JSONException paramString1)
         {
-          for (;;)
-          {
-            paramJsBridgeListener.printStackTrace();
-            paramJsBridgeListener = paramString1;
-          }
+          paramString1.printStackTrace();
         }
         RecordAndChangeVoiceService.getInstance().getMoodVoiceRecordTime(paramJsBridgeListener, this);
         return true;
       }
-      int i;
       if (paramString3.equalsIgnoreCase("playMoodVoice"))
       {
-        paramString1 = "";
-        paramJsBridgeListener = paramString1;
+        paramString1 = paramJsBridgeListener;
         try
         {
           paramString2 = new JSONObject(paramVarArgs[0]);
+          paramString1 = paramJsBridgeListener;
+          paramJsBridgeListener = paramString2.optString("callback");
+          paramString1 = paramJsBridgeListener;
+          j = paramString2.optInt("voiceID");
           i = j;
-          paramJsBridgeListener = paramString1;
-          if (paramString2 != null)
-          {
-            paramJsBridgeListener = paramString1;
-            paramString1 = paramString2.optString("callback");
-            paramJsBridgeListener = paramString1;
-            i = paramString2.optInt("voiceID");
-            paramJsBridgeListener = paramString1;
-          }
         }
-        catch (JSONException paramString1)
+        catch (JSONException paramJsBridgeListener)
         {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-            i = j;
-          }
+          paramJsBridgeListener.printStackTrace();
+          paramJsBridgeListener = paramString1;
         }
         RecordAndChangeVoiceService.getInstance().playMoodVoice(paramJsBridgeListener, i, this);
         return true;
       }
       if (paramString3.equalsIgnoreCase("getMoodVoiceData"))
       {
-        paramString1 = "";
-        paramJsBridgeListener = paramString1;
+        paramString1 = paramJsBridgeListener;
         try
         {
           paramString2 = new JSONObject(paramVarArgs[0]);
-          i = k;
-          paramJsBridgeListener = paramString1;
-          if (paramString2 != null)
-          {
-            paramJsBridgeListener = paramString1;
-            paramString1 = paramString2.optString("callback");
-            paramJsBridgeListener = paramString1;
-            i = paramString2.optInt("voiceID");
-            paramJsBridgeListener = paramString1;
-          }
+          paramString1 = paramJsBridgeListener;
+          paramJsBridgeListener = paramString2.optString("callback");
+          paramString1 = paramJsBridgeListener;
+          i = paramString2.optInt("voiceID");
         }
-        catch (JSONException paramString1)
+        catch (JSONException paramJsBridgeListener)
         {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-            i = k;
-          }
+          paramJsBridgeListener.printStackTrace();
+          i = j;
+          paramJsBridgeListener = paramString1;
         }
         RecordAndChangeVoiceService.getInstance().getMoodVoiceData(paramJsBridgeListener, i, this);
         return true;
@@ -174,12 +140,16 @@ public class QZonePublishSecretShuoShuoH5Plugin
         RecordAndChangeVoiceService.getInstance().stopPlayingMoodVoice();
         return true;
       }
-    } while (!paramString3.equalsIgnoreCase("didPublishMoodVoice"));
-    paramJsBridgeListener = this.parentPlugin.mRuntime.a();
-    if ((paramJsBridgeListener instanceof QZonePublishVoiceShuoShuoH5PluginInterface)) {
-      ((QZonePublishVoiceShuoShuoH5PluginInterface)paramJsBridgeListener).didPushMoodVoice();
+      if (paramString3.equalsIgnoreCase("didPublishMoodVoice"))
+      {
+        paramJsBridgeListener = this.parentPlugin.mRuntime.a();
+        if ((paramJsBridgeListener instanceof QZonePublishVoiceShuoShuoH5PluginInterface)) {
+          ((QZonePublishVoiceShuoShuoH5PluginInterface)paramJsBridgeListener).didPushMoodVoice();
+        }
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   public void initRuntime(WebViewPlugin paramWebViewPlugin)
@@ -191,9 +161,7 @@ public class QZonePublishSecretShuoShuoH5Plugin
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
     super.onActivityResult(paramIntent, paramByte, paramInt);
-    switch (paramByte)
-    {
-    default: 
+    if (paramByte != 6) {
       return;
     }
     if (paramInt == -1)
@@ -247,83 +215,77 @@ public class QZonePublishSecretShuoShuoH5Plugin
   
   public void onReplyGetMoodVoiceData(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
-    }
-    for (;;)
+    if (TextUtils.isEmpty(paramString1))
     {
+      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
       return;
-      JSONObject localJSONObject = new JSONObject();
-      try
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("ret", 0);
+      localJSONObject.put("voiceData", paramString2);
+      localJSONObject.put("voiceFormat", "amr");
+      paramString2 = localJSONObject.toString();
+      if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null))
       {
-        localJSONObject.put("ret", 0);
-        localJSONObject.put("voiceData", paramString2);
-        localJSONObject.put("voiceFormat", "amr");
-        paramString2 = localJSONObject.toString();
-        if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null))
-        {
-          this.parentPlugin.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
-          return;
-        }
+        this.parentPlugin.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
+        return;
       }
-      catch (Exception paramString1)
-      {
-        QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString1.getMessage());
-      }
+    }
+    catch (Exception paramString1)
+    {
+      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString1.getMessage());
     }
   }
   
   public void onReplyGetMoodVoiceRecordTime(String paramString, long paramLong)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
-    }
-    for (;;)
+    if (TextUtils.isEmpty(paramString))
     {
+      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
       return;
-      Object localObject = new JSONObject();
-      try
+    }
+    Object localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("ret", 0);
+      ((JSONObject)localObject).put("voiceTime", paramLong);
+      localObject = ((JSONObject)localObject).toString();
+      if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null))
       {
-        ((JSONObject)localObject).put("ret", 0);
-        ((JSONObject)localObject).put("voiceTime", paramLong);
-        localObject = ((JSONObject)localObject).toString();
-        if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null))
-        {
-          this.parentPlugin.mRuntime.a().callJs(paramString, new String[] { localObject });
-          return;
-        }
+        this.parentPlugin.mRuntime.a().callJs(paramString, new String[] { localObject });
+        return;
       }
-      catch (Exception paramString)
-      {
-        QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString.getMessage());
-      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString.getMessage());
     }
   }
   
   public void onReplyPlayMoodVoice(String paramString, long paramLong)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
-    }
-    for (;;)
+    if (TextUtils.isEmpty(paramString))
     {
+      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
       return;
-      Object localObject = new JSONObject();
-      try
+    }
+    Object localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("ret", 0);
+      ((JSONObject)localObject).put("voiceTime", paramLong);
+      localObject = ((JSONObject)localObject).toString();
+      if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null))
       {
-        ((JSONObject)localObject).put("ret", 0);
-        ((JSONObject)localObject).put("voiceTime", paramLong);
-        localObject = ((JSONObject)localObject).toString();
-        if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null))
-        {
-          this.parentPlugin.mRuntime.a().callJs(paramString, new String[] { localObject });
-          return;
-        }
+        this.parentPlugin.mRuntime.a().callJs(paramString, new String[] { localObject });
+        return;
       }
-      catch (Exception paramString)
-      {
-        QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString.getMessage());
-      }
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString.getMessage());
     }
   }
   
@@ -336,7 +298,7 @@ public class QZonePublishSecretShuoShuoH5Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZonePublishSecretShuoShuoH5Plugin
  * JD-Core Version:    0.7.0.1
  */

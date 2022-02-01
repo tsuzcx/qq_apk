@@ -14,22 +14,22 @@ class VoiceTextSttQueryController$2
   public void run()
   {
     List localList = VoiceTextSttQueryController.b(this.this$0);
-    if ((localList == null) || (localList.isEmpty()))
+    if ((localList != null) && (!localList.isEmpty()))
     {
-      if (VoiceTextSttQueryController.a(this.this$0) != null) {
-        VoiceTextSttQueryController.a(this.this$0).c();
-      }
-      VoiceTextSttQueryController.a(this.this$0).set(true);
+      VoiceTextSttQueryController.a(this.this$0).set(localList.size());
+      VoiceTextSttQueryController.a(this.this$0, new SttResultBean[localList.size()]);
+      VoiceTextSttQueryController.a(this.this$0, this.a, localList);
       return;
     }
-    VoiceTextSttQueryController.a(this.this$0).set(localList.size());
-    VoiceTextSttQueryController.a(this.this$0, new SttResultBean[localList.size()]);
-    VoiceTextSttQueryController.a(this.this$0, this.a, localList);
+    if (VoiceTextSttQueryController.a(this.this$0) != null) {
+      VoiceTextSttQueryController.a(this.this$0).c();
+    }
+    VoiceTextSttQueryController.a(this.this$0).set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttQueryController.2
  * JD-Core Version:    0.7.0.1
  */

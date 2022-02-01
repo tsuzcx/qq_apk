@@ -58,125 +58,108 @@ public final class MiniGamePackageManager
       Intrinsics.throwNpe();
     }
     GamePackage.Orientation localOrientation;
-    label82:
-    Object localObject1;
-    HashMap localHashMap;
-    Object localObject2;
-    Object localObject3;
-    boolean bool;
-    label440:
-    String str1;
-    Object localObject4;
-    if (Intrinsics.areEqual(localMiniGamePkg.mGameConfigJson.optString("deviceOrientation"), "landscape"))
-    {
+    if (Intrinsics.areEqual(localMiniGamePkg.mGameConfigJson.optString("deviceOrientation"), "landscape")) {
       localOrientation = GamePackage.Orientation.LANDSCAPE;
-      paramIMiniAppContext = localMiniAppInfo.getVerTypeStr();
-      if (paramIMiniAppContext != null) {
-        break label670;
-      }
-      paramIMiniAppContext = GamePackage.Environment.RELEASE;
-      localObject1 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      localHashMap = new HashMap();
-      ((Map)localHashMap).put("accountInfo", MapsKt.mapOf(new Pair[] { TuplesKt.to("appId", localMiniAppInfo.appId), TuplesKt.to("icon", localMiniAppInfo.iconUrl) }));
-      localObject2 = (Map)localHashMap;
-      localObject3 = MiniAppEnv.g();
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "MiniAppEnv.g()");
-      localObject3 = QUAUtil.getSimpleDeviceInfo(((MiniAppEnv)localObject3).getContext());
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "QUAUtil.getSimpleDeviceI…o(MiniAppEnv.g().context)");
-      ((Map)localObject2).put("deviceinfo", localObject3);
-      localObject2 = (Map)localHashMap;
-      localObject3 = localMiniAppInfo.version;
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "info.version");
-      ((Map)localObject2).put("miniapp_version", localObject3);
-      localObject2 = (Map)localHashMap;
-      localObject3 = QUAUtil.getQUA();
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "QUAUtil.getQUA()");
-      ((Map)localObject2).put("sdk_version", localObject3);
-      localObject2 = (Map)localHashMap;
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "proxy");
-      localObject3 = ((MiniAppProxy)localObject1).getAppName();
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "proxy.appName");
-      ((Map)localObject2).put("source_app", localObject3);
-      localObject2 = (Map)localHashMap;
-      localObject3 = LoginManager.getInstance();
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "LoginManager.getInstance()");
-      localObject3 = ((LoginManager)localObject3).getAccount();
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "LoginManager.getInstance().account");
-      ((Map)localObject2).put("source_uin", localObject3);
-      localObject2 = (Map)localHashMap;
-      localObject1 = ((MiniAppProxy)localObject1).getAppVersion();
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "proxy.appVersion");
-      ((Map)localObject2).put("source_version", localObject1);
-      localObject1 = (Map)localHashMap;
-      localObject2 = QUAUtil.getLoginType();
-      Intrinsics.checkExpressionValueIsNotNull(localObject2, "QUAUtil.getLoginType()");
-      ((Map)localObject1).put("source_uin_platform", localObject2);
-      localObject1 = (Map)localHashMap;
-      if ((localMiniAppInfo.debugInfo == null) || (!localMiniAppInfo.debugInfo.valid()) || (localMiniAppInfo.launchParam.scene != 1011)) {
-        break label737;
-      }
-      bool = true;
-      ((Map)localObject1).put("enableFrameProfile", Boolean.valueOf(bool));
-      localObject1 = localMiniAppInfo.miniGamePluginInfo;
-      if (localObject1 == null) {
-        break label742;
-      }
-      localObject2 = GamePluginPackage.Companion;
-      localObject3 = ((MiniGamePluginInfo)localObject1).name;
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "it.name");
-      str1 = ((MiniGamePluginInfo)localObject1).id;
-      Intrinsics.checkExpressionValueIsNotNull(str1, "it.id");
-      localObject4 = ((MiniGamePluginInfo)localObject1).version;
-      Intrinsics.checkExpressionValueIsNotNull(localObject4, "it.version");
-      localObject1 = CollectionsKt.listOf(((GamePluginPackage.Companion)localObject2).create((String)localObject3, str1, (String)localObject4, new File(ApkgManager.getGpkgPluginFolderPath((MiniGamePluginInfo)localObject1))));
-      if (localObject1 == null) {
-        break label742;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = GamePackage.Companion;
-      localObject3 = localMiniAppInfo.appId;
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "info.appId");
-      str1 = localMiniAppInfo.name;
-      Intrinsics.checkExpressionValueIsNotNull(str1, "info.name");
-      localObject4 = new File(ApkgManager.getApkgFolderPath(localMiniAppInfo));
-      String str2 = localMiniGamePkg.mConfigStr;
-      Intrinsics.checkExpressionValueIsNotNull(str2, "pkg.mConfigStr");
-      String str3 = localMiniAppInfo.version;
-      Intrinsics.checkExpressionValueIsNotNull(str3, "info.version");
-      return new MiniGamePackage(((GamePackage.Companion)localObject2).create((String)localObject3, str1, (File)localObject4, str2, localOrientation, str3, paramIMiniAppContext, (Map)localHashMap, (List)localObject1, (Function2)new MiniGamePackageManager.createGamePackage.gamePackage.1(localMiniGamePkg, localMiniAppInfo)));
+    } else {
       localOrientation = GamePackage.Orientation.PORTRAIT;
-      break;
-      label670:
-      switch (paramIMiniAppContext.hashCode())
+    }
+    paramIMiniAppContext = localMiniAppInfo.getVerTypeStr();
+    if (paramIMiniAppContext != null)
+    {
+      int i = paramIMiniAppContext.hashCode();
+      if (i != 110628630)
       {
-      default: 
-        break;
-      case 110628630: 
-        if (!paramIMiniAppContext.equals("trial")) {
-          break;
+        if ((i == 1559690845) && (paramIMiniAppContext.equals("develop")))
+        {
+          paramIMiniAppContext = GamePackage.Environment.DEVELOP;
+          break label146;
         }
+      }
+      else if (paramIMiniAppContext.equals("trial"))
+      {
         paramIMiniAppContext = GamePackage.Environment.TRIAL;
-        break;
-      case 1559690845: 
-        if (!paramIMiniAppContext.equals("develop")) {
-          break;
-        }
-        paramIMiniAppContext = GamePackage.Environment.DEVELOP;
-        break label82;
-        label737:
-        bool = false;
-        break label440;
-        label742:
-        localObject1 = CollectionsKt.emptyList();
+        break label146;
       }
     }
+    paramIMiniAppContext = GamePackage.Environment.RELEASE;
+    label146:
+    Object localObject1 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    Map localMap = (Map)new HashMap();
+    Object localObject2 = TuplesKt.to("appId", localMiniAppInfo.appId);
+    boolean bool2 = false;
+    localMap.put("accountInfo", MapsKt.mapOf(new Pair[] { localObject2, TuplesKt.to("icon", localMiniAppInfo.iconUrl) }));
+    localObject2 = MiniAppEnv.g();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "MiniAppEnv.g()");
+    localObject2 = QUAUtil.getSimpleDeviceInfo(((MiniAppEnv)localObject2).getContext());
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "QUAUtil.getSimpleDeviceI…o(MiniAppEnv.g().context)");
+    localMap.put("deviceinfo", localObject2);
+    localObject2 = localMiniAppInfo.version;
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "info.version");
+    localMap.put("miniapp_version", localObject2);
+    localObject2 = QUAUtil.getQUA();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "QUAUtil.getQUA()");
+    localMap.put("sdk_version", localObject2);
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "proxy");
+    localObject2 = ((MiniAppProxy)localObject1).getAppName();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "proxy.appName");
+    localMap.put("source_app", localObject2);
+    localObject2 = LoginManager.getInstance();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "LoginManager.getInstance()");
+    localObject2 = ((LoginManager)localObject2).getAccount();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "LoginManager.getInstance().account");
+    localMap.put("source_uin", localObject2);
+    localObject1 = ((MiniAppProxy)localObject1).getAppVersion();
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "proxy.appVersion");
+    localMap.put("source_version", localObject1);
+    localObject1 = QUAUtil.getLoginType();
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "QUAUtil.getLoginType()");
+    localMap.put("source_uin_platform", localObject1);
+    boolean bool1 = bool2;
+    if (localMiniAppInfo.debugInfo != null)
+    {
+      bool1 = bool2;
+      if (localMiniAppInfo.debugInfo.valid())
+      {
+        bool1 = bool2;
+        if (localMiniAppInfo.launchParam.scene == 1011) {
+          bool1 = true;
+        }
+      }
+    }
+    localMap.put("enableFrameProfile", Boolean.valueOf(bool1));
+    localObject1 = localMiniAppInfo.miniGamePluginInfo;
+    if (localObject1 != null)
+    {
+      localObject2 = GamePluginPackage.Companion;
+      str1 = ((MiniGamePluginInfo)localObject1).name;
+      Intrinsics.checkExpressionValueIsNotNull(str1, "it.name");
+      str2 = ((MiniGamePluginInfo)localObject1).id;
+      Intrinsics.checkExpressionValueIsNotNull(str2, "it.id");
+      localObject3 = ((MiniGamePluginInfo)localObject1).version;
+      Intrinsics.checkExpressionValueIsNotNull(localObject3, "it.version");
+      localObject1 = CollectionsKt.listOf(((GamePluginPackage.Companion)localObject2).create(str1, str2, (String)localObject3, new File(ApkgManager.getGpkgPluginFolderPath((MiniGamePluginInfo)localObject1))));
+      if (localObject1 != null) {}
+    }
+    else
+    {
+      localObject1 = CollectionsKt.emptyList();
+    }
+    localObject2 = GamePackage.Companion;
+    String str1 = localMiniAppInfo.appId;
+    Intrinsics.checkExpressionValueIsNotNull(str1, "info.appId");
+    String str2 = localMiniAppInfo.name;
+    Intrinsics.checkExpressionValueIsNotNull(str2, "info.name");
+    Object localObject3 = new File(ApkgManager.getApkgFolderPath(localMiniAppInfo));
+    String str3 = localMiniGamePkg.mConfigStr;
+    Intrinsics.checkExpressionValueIsNotNull(str3, "pkg.mConfigStr");
+    String str4 = localMiniAppInfo.version;
+    Intrinsics.checkExpressionValueIsNotNull(str4, "info.version");
+    return new MiniGamePackage(((GamePackage.Companion)localObject2).create(str1, str2, (File)localObject3, str3, localOrientation, str4, paramIMiniAppContext, localMap, (List)localObject1, (Function2)new MiniGamePackageManager.createGamePackage.gamePackage.1(localMiniGamePkg, localMiniAppInfo)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.api.MiniGamePackageManager
  * JD-Core Version:    0.7.0.1
  */

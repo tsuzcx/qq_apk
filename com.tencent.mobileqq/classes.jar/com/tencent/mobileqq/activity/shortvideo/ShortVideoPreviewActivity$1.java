@@ -18,20 +18,21 @@ class ShortVideoPreviewActivity$1
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
       }
-      this.a.d();
-    }
-    while (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+      this.a.pause();
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "ACTION_START_VIDEO_CHAT == >>");
+    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_START_VIDEO_CHAT == >>");
+      }
+      this.a.pause();
     }
-    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.1
  * JD-Core Version:    0.7.0.1
  */

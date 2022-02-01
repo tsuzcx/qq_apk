@@ -15,24 +15,25 @@ public abstract class ReportConst
   
   public static MiniAppInfo miniAppConfigForPreload()
   {
-    if (MINI_APP_CONFIG_FOR_PRELOAD == null) {}
-    try
-    {
-      if (MINI_APP_CONFIG_FOR_PRELOAD == null)
+    if (MINI_APP_CONFIG_FOR_PRELOAD == null) {
+      try
       {
-        MiniAppInfo localMiniAppInfo = new MiniAppInfo();
-        localMiniAppInfo.appId = "0000000000";
-        localMiniAppInfo.launchParam.miniAppId = "0000000000";
-        MINI_APP_CONFIG_FOR_PRELOAD = localMiniAppInfo;
+        if (MINI_APP_CONFIG_FOR_PRELOAD == null)
+        {
+          MiniAppInfo localMiniAppInfo = new MiniAppInfo();
+          localMiniAppInfo.appId = "0000000000";
+          localMiniAppInfo.launchParam.miniAppId = "0000000000";
+          MINI_APP_CONFIG_FOR_PRELOAD = localMiniAppInfo;
+        }
       }
-      return MINI_APP_CONFIG_FOR_PRELOAD;
+      finally {}
     }
-    finally {}
+    return MINI_APP_CONFIG_FOR_PRELOAD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.ReportConst
  * JD-Core Version:    0.7.0.1
  */

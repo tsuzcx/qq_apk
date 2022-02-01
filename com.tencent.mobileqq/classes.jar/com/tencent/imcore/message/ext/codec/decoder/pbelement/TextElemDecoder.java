@@ -21,20 +21,20 @@ public class TextElemDecoder
 {
   public static Boolean a(im_msg_body.Elem paramElem)
   {
-    boolean bool = true;
-    if ((paramElem.text.has()) || (paramElem.face.has()) || (paramElem.small_emoji.has()) || (paramElem.online_image.has()) || (paramElem.bankcode_ctrl_info.has())) {
-      return Boolean.valueOf(true);
-    }
-    if (paramElem.common_elem.has())
+    boolean bool2 = paramElem.text.has();
+    boolean bool1 = true;
+    if ((!bool2) && (!paramElem.face.has()) && (!paramElem.small_emoji.has()) && (!paramElem.online_image.has()) && (!paramElem.bankcode_ctrl_info.has()))
     {
-      if (33 == paramElem.common_elem.uint32_service_type.get()) {}
-      for (;;)
+      if (paramElem.common_elem.has())
       {
-        return Boolean.valueOf(bool);
-        bool = false;
+        if (33 != paramElem.common_elem.uint32_service_type.get()) {
+          bool1 = false;
+        }
+        return Boolean.valueOf(bool1);
       }
+      return Boolean.valueOf(false);
     }
-    return Boolean.valueOf(false);
+    return Boolean.valueOf(true);
   }
   
   public int a()
@@ -44,7 +44,7 @@ public class TextElemDecoder
   
   public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, MessageInfo paramMessageInfo, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    new MessagePBElemDecoder().i(paramList, paramList1, paramStringBuilder, paramMsg, paramMessageInfo);
+    new MessagePBElemDecoder().h(paramList, paramList1, paramStringBuilder, paramMsg, paramMessageInfo);
     return true;
   }
   
@@ -55,7 +55,7 @@ public class TextElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.TextElemDecoder
  * JD-Core Version:    0.7.0.1
  */

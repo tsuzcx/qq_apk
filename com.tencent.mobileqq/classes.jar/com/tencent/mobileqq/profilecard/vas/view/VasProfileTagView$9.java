@@ -2,9 +2,9 @@ package com.tencent.mobileqq.profilecard.vas.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 
 class VasProfileTagView$9
   extends AnimatorListenerAdapter
@@ -13,10 +13,12 @@ class VasProfileTagView$9
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.val$needAddPraise) && (VasProfileTagView.access$1700(this.this$0).a.a != 0) && (this.val$tagView.getTag(2131375420) != null) && (this.val$tagView.getTag(2131375420).equals(Boolean.valueOf(true))))
+    if ((this.val$needAddPraise) && (VasProfileTagView.access$1600(this.this$0).allInOne.pa != 0) && (this.val$tagView.getTag(2131374938) != null) && (this.val$tagView.getTag(2131374938).equals(Boolean.valueOf(true))))
     {
-      this.val$tagView.setTag(2131375420, Boolean.valueOf(false));
-      this.this$0.addLike(this.val$tagView, ((Long)this.val$tagView.getTag(2131375422)).longValue());
+      this.val$tagView.setTag(2131374938, Boolean.valueOf(false));
+      paramAnimator = this.this$0;
+      VipTagView localVipTagView = this.val$tagView;
+      paramAnimator.addLike(localVipTagView, ((Long)localVipTagView.getTag(2131374940)).longValue());
       return;
     }
     this.val$tagView.setShakingState(true);
@@ -24,7 +26,7 @@ class VasProfileTagView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView.9
  * JD-Core Version:    0.7.0.1
  */

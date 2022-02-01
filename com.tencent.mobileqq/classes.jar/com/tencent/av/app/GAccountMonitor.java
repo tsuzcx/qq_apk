@@ -6,15 +6,10 @@ import mqq.app.MobileQQ;
 
 class GAccountMonitor
 {
-  public static String a;
+  public static String a = "AccountReceiver";
   GAccountMonitor.AccountReceiver jdField_a_of_type_ComTencentAvAppGAccountMonitor$AccountReceiver;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   boolean jdField_a_of_type_Boolean = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "AccountReceiver";
-  }
   
   public GAccountMonitor(VideoAppInterface paramVideoAppInterface)
   {
@@ -38,7 +33,10 @@ class GAccountMonitor
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
-    localIntentFilter.addAction("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mqq.intent.action.EXIT_");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
+    localIntentFilter.addAction(localStringBuilder.toString());
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
     localIntentFilter.addAction("tencent.video.q2v.membersChange");
@@ -50,7 +48,7 @@ class GAccountMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GAccountMonitor
  * JD-Core Version:    0.7.0.1
  */

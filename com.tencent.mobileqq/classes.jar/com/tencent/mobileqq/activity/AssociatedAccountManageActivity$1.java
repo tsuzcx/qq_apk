@@ -14,45 +14,51 @@ class AssociatedAccountManageActivity$1
   
   public void handleMessage(Message paramMessage)
   {
+    AssociatedAccountManageActivity localAssociatedAccountManageActivity;
     switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (AssociatedAccountManageActivity.a(this.a) == null) {
-        AssociatedAccountManageActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
+    default: 
+      break;
+    case 8195: 
+      if (AssociatedAccountManageActivity.access$100(this.a) != null) {
+        AssociatedAccountManageActivity.access$100(this.a).cancel();
       }
-      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
+      localAssociatedAccountManageActivity = this.a;
+      AssociatedAccountManageActivity.access$102(localAssociatedAccountManageActivity, QQToast.a(localAssociatedAccountManageActivity, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
+      break;
+    case 8194: 
+      if ((AssociatedAccountManageActivity.access$000(this.a) != null) && (AssociatedAccountManageActivity.access$000(this.a).isShowing()))
       {
+        AssociatedAccountManageActivity.access$000(this.a).dismiss();
+        AssociatedAccountManageActivity.access$002(this.a, null);
+      }
+      break;
+    case 8193: 
+      if (AssociatedAccountManageActivity.access$000(this.a) == null)
+      {
+        localAssociatedAccountManageActivity = this.a;
+        AssociatedAccountManageActivity.access$002(localAssociatedAccountManageActivity, new QQProgressDialog(localAssociatedAccountManageActivity, localAssociatedAccountManageActivity.getTitleBarHeight()));
+      }
+      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.access$000(this.a).isShowing())) {
         try
         {
-          AssociatedAccountManageActivity.a(this.a).show();
+          AssociatedAccountManageActivity.access$000(this.a).show();
         }
-        catch (Exception localException) {}
-        if (QLog.isColorLevel())
+        catch (Exception localException)
         {
-          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
-          continue;
-          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
-          {
-            AssociatedAccountManageActivity.a(this.a).dismiss();
-            AssociatedAccountManageActivity.a(this.a, null);
-            continue;
-            if (AssociatedAccountManageActivity.a(this.a) != null) {
-              AssociatedAccountManageActivity.a(this.a).cancel();
-            }
-            AssociatedAccountManageActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
+          if (QLog.isColorLevel()) {
+            QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
           }
         }
       }
+      break;
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.1
  * JD-Core Version:    0.7.0.1
  */

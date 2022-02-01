@@ -49,14 +49,9 @@ public class DateKmeans
   {
     int i = b();
     if (i > 0) {
-      if (paramLong / i >= 1500L) {}
+      return paramLong / i < 1500L;
     }
-    while (paramLong < 200L)
-    {
-      return true;
-      return false;
-    }
-    return false;
+    return paramLong < 200L;
   }
   
   protected boolean a(StoryAlbum.PicInfo paramPicInfo1, StoryAlbum.PicInfo paramPicInfo2)
@@ -66,7 +61,7 @@ public class DateKmeans
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.kmeans.DateKmeans
  * JD-Core Version:    0.7.0.1
  */

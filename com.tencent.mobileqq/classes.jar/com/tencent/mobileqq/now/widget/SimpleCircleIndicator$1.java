@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.now.widget;
 
 import android.database.DataSetObserver;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 
 class SimpleCircleIndicator$1
   extends DataSetObserver
@@ -11,12 +11,12 @@ class SimpleCircleIndicator$1
   public void onChanged()
   {
     super.onChanged();
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setCurrentItem(this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem());
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setCurrentItem(this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager.getCurrentItem());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.widget.SimpleCircleIndicator.1
  * JD-Core Version:    0.7.0.1
  */

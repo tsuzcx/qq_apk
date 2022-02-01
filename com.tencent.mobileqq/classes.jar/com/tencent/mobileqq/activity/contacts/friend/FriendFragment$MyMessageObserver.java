@@ -7,7 +7,7 @@ class FriendFragment$MyMessageObserver
 {
   private FriendFragment$MyMessageObserver(FriendFragment paramFriendFragment) {}
   
-  public void onUpdateFriendsList()
+  protected void onUpdateFriendsList()
   {
     if (FriendFragment.b(this.a)) {
       FriendFragment.a(this.a, 1400L, true);
@@ -16,7 +16,7 @@ class FriendFragment$MyMessageObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.FriendFragment.MyMessageObserver
  * JD-Core Version:    0.7.0.1
  */

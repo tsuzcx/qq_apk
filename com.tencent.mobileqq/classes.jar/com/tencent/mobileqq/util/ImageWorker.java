@@ -36,27 +36,23 @@ public class ImageWorker
   
   public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
-    int k = paramOptions.outHeight;
-    int m = paramOptions.outWidth;
-    int j = 1;
-    if ((k > paramInt2) || (m > paramInt1))
-    {
-      if (m > k) {}
-      for (int i = Math.round(k / paramInt2);; i = Math.round(m / paramInt1))
-      {
-        float f1 = k * m;
-        float f2 = paramInt1 * paramInt2 * 2;
-        for (;;)
-        {
-          j = i;
-          if (f1 / (i * i) <= f2) {
-            break;
-          }
-          i += 1;
-        }
-      }
+    int j = paramOptions.outHeight;
+    int k = paramOptions.outWidth;
+    if ((j <= paramInt2) && (k <= paramInt1)) {
+      return 1;
     }
-    return j;
+    int i;
+    if (k > j) {
+      i = Math.round(j / paramInt2);
+    } else {
+      i = Math.round(k / paramInt1);
+    }
+    float f1 = k * j;
+    float f2 = paramInt1 * paramInt2 * 2;
+    while (f1 / (i * i) > f2) {
+      i += 1;
+    }
+    return i;
   }
   
   public static Bitmap a(String paramString, int paramInt1, int paramInt2)
@@ -89,15 +85,13 @@ public class ImageWorker
       ImageWorker.Tag localTag = (ImageWorker.Tag)this.jdField_a_of_type_JavaUtilMap.get(paramView);
       if (localTag != null) {
         paramView = localTag.jdField_a_of_type_ComTencentMobileqqUtilImageWorker$AsyncDrawable;
+      } else if ((paramView instanceof ImageView)) {
+        paramView = ((ImageView)paramView).getDrawable();
+      } else {
+        paramView = paramView.getBackground();
       }
-      while ((paramView instanceof ImageWorker.AsyncDrawable))
-      {
+      if ((paramView instanceof ImageWorker.AsyncDrawable)) {
         return ((ImageWorker.AsyncDrawable)paramView).a();
-        if ((paramView instanceof ImageView)) {
-          paramView = ((ImageView)paramView).getDrawable();
-        } else {
-          paramView = paramView.getBackground();
-        }
       }
     }
     return null;
@@ -105,52 +99,39 @@ public class ImageWorker
   
   private void a(boolean paramBoolean, View paramView, Drawable paramDrawable, ImageWorker.Tag paramTag)
   {
-    Object localObject = paramDrawable;
-    if (this.jdField_b_of_type_Boolean)
+    if ((this.jdField_b_of_type_Boolean) && (paramBoolean) && (!(paramDrawable instanceof AnimationDrawable)) && (paramDrawable != null))
     {
-      localObject = paramDrawable;
-      if (paramBoolean)
-      {
-        localObject = paramDrawable;
-        if (!(paramDrawable instanceof AnimationDrawable))
-        {
-          localObject = paramDrawable;
-          if (paramDrawable != null)
-          {
-            localObject = new TransitionDrawable(new Drawable[] { new ColorDrawable(17170445), paramDrawable });
-            ((TransitionDrawable)localObject).startTransition(200);
-          }
-        }
-      }
+      paramDrawable = new TransitionDrawable(new Drawable[] { new ColorDrawable(17170445), paramDrawable });
+      paramDrawable.startTransition(200);
     }
-    paramDrawable = null;
+    ImageLoader localImageLoader = null;
     if (paramTag != null) {
-      paramDrawable = paramTag.jdField_a_of_type_ComTencentMobileqqUtilImageLoader;
+      localImageLoader = paramTag.jdField_a_of_type_ComTencentMobileqqUtilImageLoader;
     }
-    if (paramDrawable != null)
+    if (localImageLoader != null)
     {
-      paramDrawable.a(paramView, (Drawable)localObject);
+      localImageLoader.a(paramView, paramDrawable);
       return;
     }
     if ((paramView instanceof ImageView))
     {
-      ((ImageView)paramView).setImageDrawable((Drawable)localObject);
+      ((ImageView)paramView).setImageDrawable(paramDrawable);
       return;
     }
-    paramView.setBackgroundDrawable((Drawable)localObject);
+    paramView.setBackgroundDrawable(paramDrawable);
   }
   
   public final Drawable a(String paramString)
   {
-    BitmapDrawable localBitmapDrawable = null;
-    if ((this.jdField_a_of_type_Int > 0) || (this.jdField_b_of_type_Int > 0)) {}
-    for (paramString = a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);; paramString = BitmapManager.a(paramString))
-    {
-      if (paramString != null) {
-        localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramString);
-      }
-      return localBitmapDrawable;
+    if ((this.jdField_a_of_type_Int <= 0) && (this.jdField_b_of_type_Int <= 0)) {
+      paramString = BitmapManager.a(paramString);
+    } else {
+      paramString = a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     }
+    if (paramString != null) {
+      return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramString);
+    }
+    return null;
   }
   
   public ImageCache a()
@@ -166,7 +147,7 @@ public class ImageWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ImageWorker
  * JD-Core Version:    0.7.0.1
  */

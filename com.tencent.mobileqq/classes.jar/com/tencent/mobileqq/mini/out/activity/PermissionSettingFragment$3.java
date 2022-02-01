@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import android.support.v4.app.FragmentActivity;
 import android.widget.CompoundButton;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.app.AuthorizeCenter;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -14,54 +14,32 @@ class PermissionSettingFragment$3
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    boolean bool = true;
-    QLog.e(PermissionSettingFragment.access$000(), 1, "onCheckedChanged, setAuthorize:" + paramBoolean + ",ret" + paramJSONObject);
-    long l = -1L;
+    String str = PermissionSettingFragment.access$000();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCheckedChanged, setAuthorize:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(",ret");
+    localStringBuilder.append(paramJSONObject);
+    QLog.e(str, 1, localStringBuilder.toString());
+    long l;
     if (paramJSONObject != null) {
       l = paramJSONObject.optLong("retCode");
+    } else {
+      l = -1L;
     }
-    String str;
     if ((!paramBoolean) || (l == -101510007L))
     {
-      this.this$0.getActivity().runOnUiThread(new PermissionSettingFragment.3.1(this, l));
-      paramJSONObject = PermissionSettingFragment.access$300(this.this$0);
-      str = this.val$scopeName;
-      if (this.val$isChecked) {
-        break label176;
-      }
-      paramBoolean = true;
-      paramJSONObject.changeChecked(str, paramBoolean);
+      this.this$0.getBaseActivity().runOnUiThread(new PermissionSettingFragment.3.1(this, l));
+      PermissionSettingFragment.access$300(this.this$0).changeChecked(this.val$scopeName, this.val$isChecked ^ true);
       PermissionSettingFragment.access$402(this.this$0, true);
-      paramJSONObject = this.val$buttonView;
-      if (this.val$isChecked) {
-        break label181;
-      }
-      paramBoolean = true;
-      label140:
-      paramJSONObject.setChecked(paramBoolean);
-      paramJSONObject = this.this$0.authorizeCenter;
-      str = this.val$scopeName;
-      if (this.val$isChecked) {
-        break label186;
-      }
-    }
-    label176:
-    label181:
-    label186:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramJSONObject.setAuthorize(str, paramBoolean);
-      return;
-      paramBoolean = false;
-      break;
-      paramBoolean = false;
-      break label140;
+      this.val$buttonView.setChecked(this.val$isChecked ^ true);
+      this.this$0.authorizeCenter.setAuthorize(this.val$scopeName, this.val$isChecked ^ true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionSettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

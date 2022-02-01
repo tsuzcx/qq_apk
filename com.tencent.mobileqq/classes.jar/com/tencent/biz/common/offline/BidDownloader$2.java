@@ -12,12 +12,12 @@ class BidDownloader$2
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("Accept-Encoding", "gzip");
-    BidDownloader.jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.this$0.c, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_b_of_type_ComTencentBizCommonOfflineAsyncBack, localHashMap);
+    BidDownloader.jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader.a(BidDownloader.jdField_a_of_type_AndroidContentContext, this.this$0.c, this.this$0.jdField_a_of_type_JavaLangString, this.this$0.b, this.this$0.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack, localHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.offline.BidDownloader.2
  * JD-Core Version:    0.7.0.1
  */

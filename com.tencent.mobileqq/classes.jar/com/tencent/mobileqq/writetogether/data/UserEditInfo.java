@@ -34,13 +34,21 @@ public class UserEditInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.c).append(",").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.UserEditInfo
  * JD-Core Version:    0.7.0.1
  */

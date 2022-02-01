@@ -11,24 +11,23 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profilecard.base.component.AbsProfileContentComponent;
+import com.tencent.mobileqq.profilecard.base.component.AbsQQProfileContentComponent;
 import com.tencent.mobileqq.profilecard.base.component.IProfileActivityDelegate;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
-import com.tencent.mobileqq.profilecard.vas.misc.DiyMoreInfoViewHelper;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.troop.fans.api.ITroopFansHandler;
+import com.tencent.mobileqq.troop.fans.api.TroopFansObserver;
+import com.tencent.mobileqq.troop.fans.data.TroopFansInfo;
+import com.tencent.mobileqq.troop.fans.data.TroopFansInfo.IdolItem;
 import com.tencent.mobileqq.troop.utils.FansTroopUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -41,7 +40,7 @@ import tencent.im.oidb.cmd0xef6.oidb_0xef6.IdolInfo;
 import tencent.im.oidb.cmd0xef6.oidb_0xef6.RspBody;
 
 public class ProfileTroopFansInfoComponent
-  extends AbsProfileContentComponent
+  extends AbsQQProfileContentComponent
   implements IdolAdapter.IdolAdapterCallBack, AbsListView.OnScrollListener
 {
   private static final String TAG = "ProfileTroopFansInfoComponent";
@@ -51,7 +50,8 @@ public class ProfileTroopFansInfoComponent
   private boolean mHasScrollToTroopFans;
   protected IdolAdapter mIdolAdapter;
   private boolean mScrollToTroopFans;
-  protected BizTroopObserver mbizTroopObserver = new ProfileTroopFansInfoComponent.1(this);
+  private TroopFansInfo mTroopFansInfo;
+  protected TroopFansObserver mTroopFansObserver = new ProfileTroopFansInfoComponent.1(this);
   
   public ProfileTroopFansInfoComponent(IComponentCenter paramIComponentCenter, ProfileCardInfo paramProfileCardInfo)
   {
@@ -73,80 +73,83 @@ public class ProfileTroopFansInfoComponent
         oidb_0xef6.IdolInfo localIdolInfo = (oidb_0xef6.IdolInfo)paramRspBody.get(i);
         TroopFansInfo.IdolItem localIdolItem = new TroopFansInfo.IdolItem();
         if (localIdolInfo.idol_id.has()) {
-          localIdolItem.idolid = localIdolInfo.idol_id.get();
+          localIdolItem.jdField_a_of_type_Int = localIdolInfo.idol_id.get();
         }
         if (localIdolInfo.avatar.has()) {
-          localIdolItem.avatar = localIdolInfo.avatar.get();
+          localIdolItem.jdField_b_of_type_JavaLangString = localIdolInfo.avatar.get();
         }
         if (localIdolInfo.pic.has()) {
-          localIdolItem.pic = localIdolInfo.pic.get();
+          localIdolItem.c = localIdolInfo.pic.get();
         }
         if (localIdolInfo.name.has()) {
-          localIdolItem.name = localIdolInfo.name.get();
+          localIdolItem.jdField_a_of_type_JavaLangString = localIdolInfo.name.get();
         }
         if (localIdolInfo.rank.has()) {
-          localIdolItem.rank = localIdolInfo.rank.get();
+          localIdolItem.jdField_a_of_type_Long = localIdolInfo.rank.get();
         }
         if (localIdolInfo.score.has()) {
-          localIdolItem.qScore = localIdolInfo.score.get();
+          localIdolItem.jdField_b_of_type_Long = localIdolInfo.score.get();
         }
         localArrayList.add(localIdolItem);
         i += 1;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileTroopFansInfoComponent", 2, "convSvrRsp idolItems:" + localArrayList.toString());
+    if (QLog.isColorLevel())
+    {
+      paramRspBody = new StringBuilder();
+      paramRspBody.append("convSvrRsp idolItems:");
+      paramRspBody.append(localArrayList.toString());
+      QLog.i("ProfileTroopFansInfoComponent", 2, paramRspBody.toString());
     }
     return localArrayList;
   }
   
   private void handleGetIdolInfoOfCard(boolean paramBoolean, long paramLong, Object paramObject, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileTroopFansInfoComponent", 2, "handleGetIdolInfoOfCard isSuccess:" + paramBoolean + " memberUin:" + paramLong + " errCode:" + paramInt);
-    }
-    if ((this.mData == null) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) || (!String.valueOf(paramLong).equals(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {}
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleGetIdolInfoOfCard isSuccess:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" memberUin:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" errCode:");
+      localStringBuilder.append(paramInt);
+      QLog.i("ProfileTroopFansInfoComponent", 2, localStringBuilder.toString());
+    }
+    if ((this.mData != null) && (((ProfileCardInfo)this.mData).allInOne != null) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).allInOne.uin)))
+    {
+      if (!String.valueOf(paramLong).equals(((ProfileCardInfo)this.mData).allInOne.uin)) {
         return;
-      } while ((!paramBoolean) || (paramObject == null) || (!(paramObject instanceof oidb_0xef6.RspBody)));
-      paramObject = convSvrRsp((oidb_0xef6.RspBody)paramObject);
-    } while (this.mData == null);
-    ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqProfilecardBussinessTroopFansinfoTroopFansInfo = new TroopFansInfo();
-    ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqProfilecardBussinessTroopFansinfoTroopFansInfo.idolList = paramObject;
-    notifyUpdateUI();
+      }
+      if ((paramBoolean) && (paramObject != null))
+      {
+        if (!(paramObject instanceof oidb_0xef6.RspBody)) {
+          return;
+        }
+        paramObject = convSvrRsp((oidb_0xef6.RspBody)paramObject);
+        this.mTroopFansInfo = new TroopFansInfo();
+        this.mTroopFansInfo.a = paramObject;
+        notifyUpdateUI();
+      }
+    }
   }
   
   private boolean makeOrRefreshIdolList(ProfileCardInfo paramProfileCardInfo)
   {
+    boolean bool3 = FansTroopUtils.a();
+    boolean bool1 = true;
     boolean bool2 = true;
-    if ((!FansTroopUtils.a()) || (paramProfileCardInfo == null) || (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessTroopFansinfoTroopFansInfo == null) || (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessTroopFansinfoTroopFansInfo.idolList.size() == 0))
+    if ((bool3) && (paramProfileCardInfo != null))
     {
-      if (this.mViewContainer == null) {
-        break label354;
-      }
-      this.mViewContainer = null;
-    }
-    label354:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ProfileTroopFansInfoComponent", 2, "makeOrRefreshIdolList remove panel!");
-      }
-      bool2 = bool1;
-      return bool2;
-      Object localObject1;
-      label108:
-      Object localObject2;
-      if (this.mViewContainer == null)
+      Object localObject1 = this.mTroopFansInfo;
+      if ((localObject1 != null) && (((TroopFansInfo)localObject1).a.size() != 0))
       {
-        localObject1 = this.mDiyHelper.getDiyView(getProfileContentKey());
-        if (localObject1 == null)
+        Object localObject2;
+        if (this.mViewContainer == null)
         {
-          this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131559700, null);
-          localObject1 = (RecyclerView)((View)this.mViewContainer).findViewById(2131368580);
+          this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131559576, null);
+          localObject1 = (RecyclerView)((View)this.mViewContainer).findViewById(2131368321);
           if (localObject1 != null)
           {
             localObject2 = new LinearLayoutManager(this.mActivity, 0, false);
@@ -154,38 +157,48 @@ public class ProfileTroopFansInfoComponent
             ((RecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)localObject2);
             ((RecyclerView)localObject1).addItemDecoration(new ProfileTroopFansInfoComponent.SpacesItemDecoration(ViewUtils.b(8.0F)));
             if (this.mIdolAdapter == null) {
-              this.mIdolAdapter = new IdolAdapter(this.mActivity, paramProfileCardInfo.jdField_a_of_type_JavaLangString, this);
+              this.mIdolAdapter = new IdolAdapter(this.mActivity, paramProfileCardInfo.troopUin, this);
             }
             ((RecyclerView)localObject1).setAdapter(this.mIdolAdapter);
             recyclerViewEventListener((RecyclerView)localObject1);
             reportExposure();
           }
           bool1 = bool2;
-          if (QLog.isColorLevel()) {
+          if (QLog.isColorLevel())
+          {
             QLog.i("ProfileTroopFansInfoComponent", 2, "makeOrRefreshIdolList show panel!");
+            bool1 = bool2;
           }
         }
-      }
-      for (bool1 = bool2;; bool1 = false)
-      {
-        if (this.mIdolAdapter != null) {
-          this.mIdolAdapter.setList(paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessTroopFansinfoTroopFansInfo.idolList);
+        else
+        {
+          bool1 = false;
         }
-        bool2 = bool1;
-        if (this.mViewContainer == null) {
-          break;
+        localObject1 = this.mIdolAdapter;
+        if (localObject1 != null) {
+          ((IdolAdapter)localObject1).setList(this.mTroopFansInfo.a);
         }
-        localObject1 = ((View)this.mViewContainer).findViewById(2131365147);
-        localObject2 = (TextView)((View)localObject1).findViewById(2131379248);
-        ((View)localObject1).findViewById(2131368603);
-        ((TextView)localObject2).setText(getTitleText(paramProfileCardInfo));
-        ((View)localObject1).setContentDescription(getTitleText(paramProfileCardInfo));
-        updateItemTheme(null, (TextView)localObject2, null, null);
+        if (this.mViewContainer != null)
+        {
+          localObject1 = ((View)this.mViewContainer).findViewById(2131365027);
+          localObject2 = (TextView)((View)localObject1).findViewById(2131378609);
+          ((View)localObject1).findViewById(2131368343);
+          ((TextView)localObject2).setText(getTitleText(paramProfileCardInfo));
+          ((View)localObject1).setContentDescription(getTitleText(paramProfileCardInfo));
+          updateItemTheme(null, (TextView)localObject2, null, null);
+        }
         return bool1;
-        this.mViewContainer = localObject1;
-        break label108;
       }
     }
+    if (this.mViewContainer != null) {
+      this.mViewContainer = null;
+    } else {
+      bool1 = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ProfileTroopFansInfoComponent", 2, "makeOrRefreshIdolList remove panel!");
+    }
+    return bool1;
   }
   
   private void notifyUpdateUI()
@@ -208,13 +221,20 @@ public class ProfileTroopFansInfoComponent
   
   private void reqFansInfo()
   {
-    if (!FansTroopUtils.a()) {}
-    while ((!NetworkUtil.g(this.mActivity)) || (this.mData == null) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null)) {
+    if (!FansTroopUtils.a()) {
       return;
+    }
+    if (!NetworkUtil.isNetworkAvailable(this.mActivity)) {
+      return;
+    }
+    if (this.mData != null) {
+      if (((ProfileCardInfo)this.mData).allInOne == null) {
+        return;
+      }
     }
     try
     {
-      ((BizTroopHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.BIZ_TROOP_HANDLER)).b(Long.parseLong(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
+      ((ITroopFansHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.TROOP_FANS_HANDLER)).a(Long.parseLong(((ProfileCardInfo)this.mData).allInOne.uin));
       return;
     }
     catch (Exception localException) {}
@@ -222,8 +242,9 @@ public class ProfileTroopFansInfoComponent
   
   private void scrollToTroopFans()
   {
-    if (this.mHandler != null) {
-      this.mHandler.postDelayed(new ProfileTroopFansInfoComponent.4(this), 1000L);
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.postDelayed(new ProfileTroopFansInfoComponent.4(this), 1000L);
     }
   }
   
@@ -239,22 +260,22 @@ public class ProfileTroopFansInfoComponent
   
   protected String getGenderName(ProfileCardInfo paramProfileCardInfo)
   {
-    String str2 = this.mActivity.getString(2131699374);
-    String str1 = str2;
+    String str = this.mActivity.getString(2131699479);
+    Object localObject = str;
     if (paramProfileCardInfo != null)
     {
-      str1 = str2;
-      if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+      localObject = str;
+      if (paramProfileCardInfo.card != null)
       {
-        if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.shGender != 1) {
-          break label50;
+        if (paramProfileCardInfo.card.shGender == 1) {
+          paramProfileCardInfo = this.mActivity.getString(2131699478);
+        } else {
+          paramProfileCardInfo = this.mActivity.getString(2131699479);
         }
-        str1 = this.mActivity.getString(2131699373);
+        localObject = paramProfileCardInfo;
       }
     }
-    return str1;
-    label50:
-    return this.mActivity.getString(2131699374);
+    return localObject;
   }
   
   public String getProfileContentKey()
@@ -264,15 +285,15 @@ public class ProfileTroopFansInfoComponent
   
   protected String getTitleText(ProfileCardInfo paramProfileCardInfo)
   {
-    if ((this.mData != null) && (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) && (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.mApp.getCurrentUin()))) {
-      return this.mActivity.getString(2131699377);
+    if ((this.mData != null) && (((ProfileCardInfo)this.mData).allInOne != null) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).allInOne.uin)) && (((ProfileCardInfo)this.mData).allInOne.uin.equals(this.mApp.getCurrentUin()))) {
+      return this.mActivity.getString(2131699482);
     }
-    return String.format(this.mActivity.getString(2131699378), new Object[] { getGenderName(paramProfileCardInfo) });
+    return String.format(this.mActivity.getString(2131699483), new Object[] { getGenderName(paramProfileCardInfo) });
   }
   
   public void gotoWeb()
   {
-    if ((this.mData != null) && (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) && (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.mApp.getCurrentUin()))) {
+    if ((this.mData != null) && (((ProfileCardInfo)this.mData).allInOne != null) && (!TextUtils.isEmpty(((ProfileCardInfo)this.mData).allInOne.uin)) && (((ProfileCardInfo)this.mData).allInOne.uin.equals(this.mApp.getCurrentUin()))) {
       this.bEnterWeb = true;
     }
   }
@@ -285,16 +306,16 @@ public class ProfileTroopFansInfoComponent
     }
   }
   
-  public void onCreate(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
+  public void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
-    super.onCreate(paramBaseActivity, paramBundle);
-    this.mActivity.addObserver(this.mbizTroopObserver);
+    super.onCreate(paramQBaseActivity, paramBundle);
+    this.mActivity.addObserver(this.mTroopFansObserver);
     if (this.mDelegate != null) {
       this.mDelegate.addProfileScrollListener(this);
     }
-    paramBaseActivity = this.mActivity.getIntent();
-    if (paramBaseActivity != null) {
-      this.mScrollToTroopFans = paramBaseActivity.getBooleanExtra("profile_scroll_to_troop_fans", false);
+    paramQBaseActivity = this.mActivity.getIntent();
+    if (paramQBaseActivity != null) {
+      this.mScrollToTroopFans = paramQBaseActivity.getBooleanExtra("profile_scroll_to_troop_fans", false);
     }
     this.mHandler = new Handler(Looper.getMainLooper());
     reqFansInfo();
@@ -302,19 +323,19 @@ public class ProfileTroopFansInfoComponent
   
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
-    boolean bool = super.onDataUpdate(paramProfileCardInfo);
-    return makeOrRefreshIdolList((ProfileCardInfo)this.mData) | bool;
+    return super.onDataUpdate(paramProfileCardInfo) | makeOrRefreshIdolList((ProfileCardInfo)this.mData);
   }
   
   public void onDestroy()
   {
-    if (this.mHandler != null)
+    Handler localHandler = this.mHandler;
+    if (localHandler != null)
     {
-      this.mHandler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       this.mHandler = null;
     }
     if (this.mActivity != null) {
-      this.mActivity.removeObserver(this.mbizTroopObserver);
+      this.mActivity.removeObserver(this.mTroopFansObserver);
     }
     if (this.mDelegate != null) {
       this.mDelegate.removeProfileScrollListener(this);
@@ -360,7 +381,7 @@ public class ProfileTroopFansInfoComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.ProfileTroopFansInfoComponent
  * JD-Core Version:    0.7.0.1
  */

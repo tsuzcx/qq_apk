@@ -11,20 +11,23 @@ class TroopFileSearchEngine$2
   
   public void run()
   {
-    TroopFileSearchManager localTroopFileSearchManager = TroopFileSearchManager.a();
-    TroopFileSearchEngine.a(this.this$0, localTroopFileSearchManager.a(TroopFileSearchEngine.a(this.this$0), TroopFileSearchEngine.a(this.this$0), 0));
+    Object localObject = TroopFileSearchManager.a();
+    TroopFileSearchEngine localTroopFileSearchEngine = this.this$0;
+    TroopFileSearchEngine.a(localTroopFileSearchEngine, ((TroopFileSearchManager)localObject).a(TroopFileSearchEngine.a(localTroopFileSearchEngine), TroopFileSearchEngine.a(this.this$0), 0));
     if (TroopFileSearchEngine.b(this.this$0))
     {
       QLog.i("TroopFileSearchEngine<QFile>", 4, "collectContactInfos. need do search. execSearch.");
       TroopFileSearchEngine.a(this.this$0);
-      TroopFileSearchEngine.a(this.this$0, TroopFileSearchEngine.a(this.this$0).b());
-      TroopFileSearchEngine.a(this.this$0, TroopFileSearchEngine.a(this.this$0));
+      localObject = this.this$0;
+      TroopFileSearchEngine.a((TroopFileSearchEngine)localObject, TroopFileSearchEngine.a((TroopFileSearchEngine)localObject).c());
+      localObject = this.this$0;
+      TroopFileSearchEngine.a((TroopFileSearchEngine)localObject, TroopFileSearchEngine.a((TroopFileSearchEngine)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchEngine.2
  * JD-Core Version:    0.7.0.1
  */

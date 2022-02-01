@@ -2,10 +2,10 @@ package com.tencent.mobileqq.forward;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.profilecard.bussiness.anonymous.utils.AskAnonymouslyUtil;
-import com.tencent.mobileqq.profilecard.bussiness.anonymous.utils.AskAnonymouslyUtil.Companion;
+import com.tencent.mobileqq.profilecard.api.IProfileCardApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.open.sdk.report.SdkShareReporter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 import kotlin.Metadata;
@@ -31,25 +31,23 @@ public final class ForwardAskAnonymouslyMsgOption
   protected void a()
   {
     super.a();
-    String str = ForwardUtils.b(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"));
-    if (str == null) {}
-    do
+    String str = SdkShareReporter.c(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"));
+    if (str != null)
     {
-      do
+      int i = str.hashCode();
+      if (i != 49)
       {
-        for (;;)
-        {
-          QLog.e("ForwardAskAnonymouslyMsgOption", 2, "forwardOnConfirm no friend or troop type");
-          return;
-          switch (str.hashCode())
-          {
-          }
+        if ((i == 50) && (str.equals("2"))) {
+          ReportController.b(null, "dc00898", "", "", "0X800B470", "0X800B470", 0, 0, "", "", "", "");
         }
-      } while (!str.equals("1"));
-      ReportController.b(null, "dc00898", "", "", "0X800B46F", "0X800B46F", 0, 0, "", "", "", "");
-      return;
-    } while (!str.equals("2"));
-    ReportController.b(null, "dc00898", "", "", "0X800B470", "0X800B470", 0, 0, "", "", "", "");
+      }
+      else if (str.equals("1"))
+      {
+        ReportController.b(null, "dc00898", "", "", "0X800B46F", "0X800B46F", 0, 0, "", "", "", "");
+        return;
+      }
+    }
+    QLog.e("ForwardAskAnonymouslyMsgOption", 2, "forwardOnConfirm no friend or troop type");
   }
   
   public boolean a()
@@ -82,13 +80,13 @@ public final class ForwardAskAnonymouslyMsgOption
   
   public boolean f()
   {
-    AskAnonymouslyUtil.Companion.shareInviteToQZone(this.jdField_a_of_type_AndroidAppActivity);
+    ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).shareInviteToQZone(this.jdField_a_of_type_AndroidAppActivity);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardAskAnonymouslyMsgOption
  * JD-Core Version:    0.7.0.1
  */

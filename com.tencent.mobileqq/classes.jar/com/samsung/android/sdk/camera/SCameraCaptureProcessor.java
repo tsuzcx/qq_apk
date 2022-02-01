@@ -33,7 +33,7 @@ public class SCameraCaptureProcessor
   public static final int IMAGE_FORMAT_NV21 = 17;
   public static final SCameraCaptureProcessor.ProcessorParameter<Boolean> PARAMETER_ENABLE_FACE_BEAUTY = new SCameraCaptureProcessor.ProcessorParameter("beauty_parameter");
   public static final SCameraCaptureProcessor.ProcessorParameter<Integer> PARAMETER_IMAGE_FORMAT = new SCameraCaptureProcessor.ProcessorParameter("image_format");
-  private static final String TAG = SCameraCaptureProcessor.class.getSimpleName();
+  private static final String TAG = "SCameraCaptureProcessor";
   private static SCameraCaptureProcessor mSCameraCaptureProcessor;
   private volatile boolean isSCameraProcessorInitialized = false;
   private SCameraCaptureProcessor.CaptureCallback mAppCaptureCallback = null;
@@ -48,11 +48,11 @@ public class SCameraCaptureProcessor
   
   private void checkIsSCameraProcessorInitialized()
   {
-    if (!this.isSCameraProcessorInitialized)
-    {
-      Log.i(TAG, "checkIsSCameraProcessorInitialized: sdk not initialized");
-      throw new IllegalStateException("SCameraCaptureProcessor not initialized");
+    if (this.isSCameraProcessorInitialized) {
+      return;
     }
+    Log.i(TAG, "checkIsSCameraProcessorInitialized: sdk not initialized");
+    throw new IllegalStateException("SCameraCaptureProcessor not initialized");
   }
   
   public static SCameraCaptureProcessor getInstance()
@@ -71,26 +71,37 @@ public class SCameraCaptureProcessor
   private AbstractSemCameraCaptureProcessor getSemCameraCaptureProcessor()
   {
     if ((this.mSemCameraCaptureProcessor != null) || (AbstractSemCamera.getSepPlatformVersion(this.mContext) >= 100100)) {}
-    for (;;)
+    try
     {
-      try
-      {
-        String str = AbstractSemCamera.getSEPClientVersion();
-        Log.i(TAG, "getSemCameraCaptureProcessor semVersion : " + str);
-        if (SsdkVersionCheck.compareVersion(str, "2.0.1") >= 0) {
-          this.mSemCameraCaptureProcessor = new SemCameraCaptureProcessor10_2();
-        }
-        Log.i(TAG, "getSemCameraCaptureProcessor  " + this.mSemCameraCaptureProcessor);
-        return this.mSemCameraCaptureProcessor;
+      str = AbstractSemCamera.getSEPClientVersion();
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSemCameraCaptureProcessor semVersion : ");
+      localStringBuilder.append(str);
+      Log.i((String)localObject, localStringBuilder.toString());
+      if (SsdkVersionCheck.compareVersion(str, "2.0.1") < 0) {
+        break label114;
       }
-      catch (Throwable localThrowable)
-      {
-        Log.i(TAG, "getSemCameraCaptureProcessor semVersion : SEP_VERSION_10_1 in caught Error:");
-        this.mSemCameraCaptureProcessor = new SemCameraCaptureProcessor10_1();
-        continue;
-      }
-      this.mSemCameraCaptureProcessor = new SemCameraCaptureProcessorDefault();
+      this.mSemCameraCaptureProcessor = new SemCameraCaptureProcessor10_2();
     }
+    catch (Throwable localThrowable)
+    {
+      String str;
+      Object localObject;
+      label80:
+      break label80;
+    }
+    Log.i(TAG, "getSemCameraCaptureProcessor semVersion : SEP_VERSION_10_1 in caught Error:");
+    this.mSemCameraCaptureProcessor = new SemCameraCaptureProcessor10_1();
+    break label114;
+    this.mSemCameraCaptureProcessor = new SemCameraCaptureProcessorDefault();
+    label114:
+    str = TAG;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getSemCameraCaptureProcessor  ");
+    ((StringBuilder)localObject).append(this.mSemCameraCaptureProcessor);
+    Log.i(str, ((StringBuilder)localObject).toString());
+    return this.mSemCameraCaptureProcessor;
   }
   
   private List<AbstractSemCameraCaptureProcessor.CaptureParameter> getSemParameters(List<SCameraCaptureProcessor.CaptureParameter> paramList)
@@ -113,7 +124,11 @@ public class SCameraCaptureProcessor
   {
     try
     {
-      Log.i(TAG, "buildCaptureRequest  : builder " + paramBuilder);
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("buildCaptureRequest  : builder ");
+      localStringBuilder.append(paramBuilder);
+      Log.i(str, localStringBuilder.toString());
       checkIsSCameraProcessorInitialized();
       paramBuilder = getSemCameraCaptureProcessor().buildCaptureRequest(paramBuilder);
       return paramBuilder;
@@ -234,77 +249,67 @@ public class SCameraCaptureProcessor
     return Collections.unmodifiableList(this.mParameterList);
   }
   
-  /* Error */
   public <T> T getProcessorParameter(SCameraCaptureProcessor.ProcessorParameter<T> paramProcessorParameter)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: getstatic 62	com/samsung/android/sdk/camera/SCameraCaptureProcessor:PARAMETER_ENABLE_FACE_BEAUTY	Lcom/samsung/android/sdk/camera/SCameraCaptureProcessor$ProcessorParameter;
-    //   6: if_acmpne +18 -> 24
-    //   9: aload_0
-    //   10: invokespecial 206	com/samsung/android/sdk/camera/SCameraCaptureProcessor:getSemCameraCaptureProcessor	()Lcom/samsung/android/sdk/camera/delegator/AbstractSemCameraCaptureProcessor;
-    //   13: getstatic 251	com/samsung/android/sdk/camera/delegator/AbstractSemCameraCaptureProcessor:PARAMETER_ENABLE_FACE_BEAUTY	Lcom/samsung/android/sdk/camera/delegator/AbstractSemCameraCaptureProcessor$ProcessorParameter;
-    //   16: invokevirtual 264	com/samsung/android/sdk/camera/delegator/AbstractSemCameraCaptureProcessor:getProcessorParameter	(Lcom/samsung/android/sdk/camera/delegator/AbstractSemCameraCaptureProcessor$ProcessorParameter;)Ljava/lang/Object;
-    //   19: astore_1
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: aload_1
-    //   23: areturn
-    //   24: aload_1
-    //   25: getstatic 66	com/samsung/android/sdk/camera/SCameraCaptureProcessor:PARAMETER_IMAGE_FORMAT	Lcom/samsung/android/sdk/camera/SCameraCaptureProcessor$ProcessorParameter;
-    //   28: if_acmpne +17 -> 45
-    //   31: aload_0
-    //   32: invokespecial 206	com/samsung/android/sdk/camera/SCameraCaptureProcessor:getSemCameraCaptureProcessor	()Lcom/samsung/android/sdk/camera/delegator/AbstractSemCameraCaptureProcessor;
-    //   35: getstatic 253	com/samsung/android/sdk/camera/delegator/AbstractSemCameraCaptureProcessor:PARAMETER_IMAGE_FORMAT	Lcom/samsung/android/sdk/camera/delegator/AbstractSemCameraCaptureProcessor$ProcessorParameter;
-    //   38: invokevirtual 264	com/samsung/android/sdk/camera/delegator/AbstractSemCameraCaptureProcessor:getProcessorParameter	(Lcom/samsung/android/sdk/camera/delegator/AbstractSemCameraCaptureProcessor$ProcessorParameter;)Ljava/lang/Object;
-    //   41: astore_1
-    //   42: goto -22 -> 20
-    //   45: aconst_null
-    //   46: astore_1
-    //   47: goto -27 -> 20
-    //   50: astore_1
-    //   51: aload_0
-    //   52: monitorexit
-    //   53: aload_1
-    //   54: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	55	0	this	SCameraCaptureProcessor
-    //   0	55	1	paramProcessorParameter	SCameraCaptureProcessor.ProcessorParameter<T>
-    // Exception table:
-    //   from	to	target	type
-    //   2	20	50	finally
-    //   24	42	50	finally
+    try
+    {
+      if (paramProcessorParameter == PARAMETER_ENABLE_FACE_BEAUTY)
+      {
+        paramProcessorParameter = getSemCameraCaptureProcessor().getProcessorParameter(AbstractSemCameraCaptureProcessor.PARAMETER_ENABLE_FACE_BEAUTY);
+        return paramProcessorParameter;
+      }
+      if (paramProcessorParameter == PARAMETER_IMAGE_FORMAT)
+      {
+        paramProcessorParameter = getSemCameraCaptureProcessor().getProcessorParameter(AbstractSemCameraCaptureProcessor.PARAMETER_IMAGE_FORMAT);
+        return paramProcessorParameter;
+      }
+      return null;
+    }
+    finally {}
   }
   
   public void initialize(Context paramContext, String paramString, Size paramSize)
   {
+    String str;
+    Object localObject;
+    StringBuilder localStringBuilder;
+    label153:
     try
     {
-      Log.i(TAG, "initialize: cameraId - " + paramString + ", pictureSize - " + paramSize);
-      if (SCamera.getInstance().checkAvailability(paramContext) != 0) {
-        throw new UnsupportedOperationException("CameraSdk not supported");
-      }
+      str = TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initialize: cameraId - ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", pictureSize - ");
+      ((StringBuilder)localObject).append(paramSize);
+      Log.i(str, ((StringBuilder)localObject).toString());
+      int i = SCamera.getInstance().checkAvailability(paramContext);
+      if (i != 0) {}
     }
     finally {}
     try
     {
-      String str = AbstractSemCamera.getSEPClientVersion();
-      Log.i(TAG, "getSemCameraCaptureProcessor semVersion : " + str);
+      str = AbstractSemCamera.getSEPClientVersion();
+      localObject = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSemCameraCaptureProcessor semVersion : ");
+      localStringBuilder.append(str);
+      Log.i((String)localObject, localStringBuilder.toString());
       if ((SsdkVersionCheck.compareVersion(str, "2.0.2") == 0) && (paramString.equals("2"))) {
         throw new IllegalArgumentException("cameraId unsupported by SDK");
       }
     }
     catch (NoSuchMethodError localNoSuchMethodError)
     {
-      this.mContext = paramContext;
-      getSemCameraCaptureProcessor().initialize(paramContext, paramString, paramSize);
-      this.mPreviewCaptureCallback = new SCameraCaptureProcessor.PreviewCaptureCallback(this, null);
-      this.mSemCaptureCallBack = new SCameraCaptureProcessor.SemCaptureCallBack(this, null);
-      this.isSCameraProcessorInitialized = true;
+      break label153;
     }
+    this.mContext = paramContext;
+    getSemCameraCaptureProcessor().initialize(paramContext, paramString, paramSize);
+    this.mPreviewCaptureCallback = new SCameraCaptureProcessor.PreviewCaptureCallback(this, null);
+    this.mSemCaptureCallBack = new SCameraCaptureProcessor.SemCaptureCallBack(this, null);
+    this.isSCameraProcessorInitialized = true;
+    return;
+    throw new UnsupportedOperationException("CameraSdk not supported");
   }
   
   public boolean isInitialized()
@@ -323,31 +328,27 @@ public class SCameraCaptureProcessor
   
   public <T> void setProcessorParameter(SCameraCaptureProcessor.ProcessorParameter<T> paramProcessorParameter, T paramT)
   {
-    for (;;)
+    try
     {
-      try
+      checkIsSCameraProcessorInitialized();
+      if (paramProcessorParameter == PARAMETER_ENABLE_FACE_BEAUTY)
       {
-        checkIsSCameraProcessorInitialized();
-        if (paramProcessorParameter == PARAMETER_ENABLE_FACE_BEAUTY)
-        {
-          if ((paramT instanceof Boolean))
-          {
-            getSemCameraCaptureProcessor().setProcessorParameter(AbstractSemCameraCaptureProcessor.PARAMETER_ENABLE_FACE_BEAUTY, (Boolean)paramT);
-            return;
-          }
+        if ((paramT instanceof Boolean)) {
+          getSemCameraCaptureProcessor().setProcessorParameter(AbstractSemCameraCaptureProcessor.PARAMETER_ENABLE_FACE_BEAUTY, (Boolean)paramT);
+        } else {
           throw new IllegalArgumentException("argument for PARAMETER_ENABLE_FACE_BEAUTY should be of type Boolean");
         }
       }
-      finally {}
-      if (paramProcessorParameter == PARAMETER_IMAGE_FORMAT)
-      {
-        if (!(paramT instanceof Integer)) {
-          break;
+      else if (paramProcessorParameter == PARAMETER_IMAGE_FORMAT) {
+        if ((paramT instanceof Integer)) {
+          getSemCameraCaptureProcessor().setProcessorParameter(AbstractSemCameraCaptureProcessor.PARAMETER_IMAGE_FORMAT, (Integer)paramT);
+        } else {
+          throw new IllegalArgumentException("argument for PARAMETER_IMAGE_FORMAT should be of type Integer");
         }
-        getSemCameraCaptureProcessor().setProcessorParameter(AbstractSemCameraCaptureProcessor.PARAMETER_IMAGE_FORMAT, (Integer)paramT);
       }
+      return;
     }
-    throw new IllegalArgumentException("argument for PARAMETER_IMAGE_FORMAT should be of type Integer");
+    finally {}
   }
 }
 

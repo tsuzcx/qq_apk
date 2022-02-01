@@ -17,8 +17,14 @@ class PreloadPlayerMgr$1
   
   public void run()
   {
-    Object localObject1 = CommonUtil.a() + "-PreLoading";
-    Object localObject3 = new HandlerThread("SuperPlayer-" + (String)localObject1);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(CommonUtil.a());
+    ((StringBuilder)localObject1).append("-PreLoading");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("SuperPlayer-");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    localObject3 = new HandlerThread(((StringBuilder)localObject3).toString());
     ((HandlerThread)localObject3).start();
     localObject3 = ((HandlerThread)localObject3).getLooper();
     localObject1 = new SuperPlayerWrapper(this.val$activity.getApplicationContext(), this.val$sceneId, (String)localObject1, (Looper)localObject3);
@@ -45,7 +51,7 @@ class PreloadPlayerMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.preload.PreloadPlayerMgr.1
  * JD-Core Version:    0.7.0.1
  */

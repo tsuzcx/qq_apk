@@ -17,7 +17,7 @@ public class ReshapeCombineFilter
   public static final int YCOORD_NUM = 128;
   private static float[] mFullscreenVerticesPortrait;
   private static float[] mInitTextureCoordinatesPortrait;
-  private static float[] positionArray = null;
+  private static float[] positionArray;
   private int eyeMaskTex = 0;
   private float[] size = { 1.0F, 1.0F };
   private float[] vectorMapSize = { 1.0F, 1.0F };
@@ -57,19 +57,22 @@ public class ReshapeCombineFilter
   
   public void setParam(Map<String, Object> paramMap)
   {
-    if ((paramMap == null) || (paramMap.isEmpty())) {
-      return;
+    if (paramMap != null)
+    {
+      if (paramMap.isEmpty()) {
+        return;
+      }
+      if (paramMap.containsKey("inputImageTexture2")) {
+        this.eyeMaskTex = ((Integer)paramMap.get("inputImageTexture2")).intValue();
+      }
+      if (paramMap.containsKey("size")) {
+        this.size = ((float[])paramMap.get("size"));
+      }
+      if (paramMap.containsKey("vectorMapSize")) {
+        this.vectorMapSize = ((float[])paramMap.get("vectorMapSize"));
+      }
+      initParams();
     }
-    if (paramMap.containsKey("inputImageTexture2")) {
-      this.eyeMaskTex = ((Integer)paramMap.get("inputImageTexture2")).intValue();
-    }
-    if (paramMap.containsKey("size")) {
-      this.size = ((float[])paramMap.get("size"));
-    }
-    if (paramMap.containsKey("vectorMapSize")) {
-      this.vectorMapSize = ((float[])paramMap.get("vectorMapSize"));
-    }
-    initParams();
   }
   
   public void updateSize(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -83,7 +86,7 @@ public class ReshapeCombineFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.ReshapeCombineFilter
  * JD-Core Version:    0.7.0.1
  */

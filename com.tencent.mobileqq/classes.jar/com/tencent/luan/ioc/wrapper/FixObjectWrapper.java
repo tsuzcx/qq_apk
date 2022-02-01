@@ -23,10 +23,10 @@ public class FixObjectWrapper<T>
   
   public ObjectHolder<T> createObjectIfAbsent(Injector paramInjector)
   {
-    if (this.node.hasNext()) {
-      throw new IllegalStateException("fix object wrapper has more than one object");
+    if (!this.node.hasNext()) {
+      return new ObjectHolder(this.node.getValue(), false);
     }
-    return new ObjectHolder(this.node.getValue(), false);
+    throw new IllegalStateException("fix object wrapper has more than one object");
   }
   
   public boolean needCache()
@@ -36,7 +36,7 @@ public class FixObjectWrapper<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.luan.ioc.wrapper.FixObjectWrapper
  * JD-Core Version:    0.7.0.1
  */

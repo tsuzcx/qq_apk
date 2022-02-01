@@ -34,13 +34,15 @@ public final class oidb_0x6d8$GetFileListRspBody
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 56, 64, 88, 96, 104, 114, 120, 128 }, new String[] { "int32_ret_code", "str_ret_msg", "str_client_wording", "bool_is_end", "rpt_item_list", "msg_max_timestamp", "uint32_all_file_count", "uint32_filter_code", "bool_safe_check_flag", "uint32_safe_check_res", "uint32_next_index", "bytes_context", "uint32_role", "uint32_open_flag" }, new Object[] { Integer.valueOf(0), "", "", Boolean.valueOf(false), null, null, Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, GetFileListRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 56, 64, 88, 96, 104, 114, 120, 128 }, new String[] { "int32_ret_code", "str_ret_msg", "str_client_wording", "bool_is_end", "rpt_item_list", "msg_max_timestamp", "uint32_all_file_count", "uint32_filter_code", "bool_safe_check_flag", "uint32_safe_check_res", "uint32_next_index", "bytes_context", "uint32_role", "uint32_open_flag" }, new Object[] { localInteger, "", "", localBoolean, null, null, localInteger, localInteger, localBoolean, localInteger, localInteger, localByteStringMicro, localInteger, localInteger }, GetFileListRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody
  * JD-Core Version:    0.7.0.1
  */

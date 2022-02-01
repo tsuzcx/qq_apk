@@ -48,42 +48,49 @@ public class VLoopAbleSliderAdapter
   
   private void createAndBindHostView(VComponent paramVComponent, DomObject paramDomObject)
   {
-    if ((paramVComponent == null) || (paramDomObject == null)) {
-      return;
+    if (paramVComponent != null)
+    {
+      if (paramDomObject == null) {
+        return;
+      }
+      paramVComponent.createView();
+      paramVComponent.applyLayout();
+      paramVComponent.applyEvents();
+      paramVComponent.bindData(paramDomObject);
     }
-    paramVComponent.createView();
-    paramVComponent.applyLayout();
-    paramVComponent.applyEvents();
-    paramVComponent.bindData(paramDomObject);
   }
   
   private void initCellScale(int paramInt, View paramView, VComponent paramVComponent)
   {
-    if ((this.mSliderView == null) || (paramView == null) || (paramVComponent == null)) {}
-    int i;
-    do
+    VSliderView localVSliderView = this.mSliderView;
+    if ((localVSliderView != null) && (paramView != null))
     {
-      return;
-      i = this.mSliderView.getCurrentItem();
-    } while (this.mMinScale == -1.0F);
-    if (i - 1 == paramInt)
-    {
-      paramView.setPivotX(this.mCellExactlyWidth);
-      paramView.setPivotY(paramVComponent.getDomObject().getLayoutHeight() / 2.0F);
-      paramView.setScaleX(this.mMinScale);
-      paramView.setScaleY(this.mMinScale);
-      return;
+      if (paramVComponent == null) {
+        return;
+      }
+      int i = localVSliderView.getCurrentItem();
+      if (this.mMinScale != -1.0F)
+      {
+        if (i - 1 == paramInt)
+        {
+          paramView.setPivotX(this.mCellExactlyWidth);
+          paramView.setPivotY(paramVComponent.getDomObject().getLayoutHeight() / 2.0F);
+          paramView.setScaleX(this.mMinScale);
+          paramView.setScaleY(this.mMinScale);
+          return;
+        }
+        if (i + 1 == paramInt)
+        {
+          paramView.setPivotX(0.0F);
+          paramView.setPivotY(paramVComponent.getDomObject().getLayoutHeight() / 2.0F);
+          paramView.setScaleX(this.mMinScale);
+          paramView.setScaleY(this.mMinScale);
+          return;
+        }
+        paramView.setScaleX(1.0F);
+        paramView.setScaleY(1.0F);
+      }
     }
-    if (i + 1 == paramInt)
-    {
-      paramView.setPivotX(0.0F);
-      paramView.setPivotY(paramVComponent.getDomObject().getLayoutHeight() / 2.0F);
-      paramView.setScaleX(this.mMinScale);
-      paramView.setScaleY(this.mMinScale);
-      return;
-    }
-    paramView.setScaleX(1.0F);
-    paramView.setScaleY(1.0F);
   }
   
   private void setAdapterData(ArrayList<VComponent> paramArrayList)
@@ -115,12 +122,11 @@ public class VLoopAbleSliderAdapter
   
   public int getInitPosition()
   {
-    int i = 15000;
     if (this.mLoopDisable) {
-      i = 0;
+      return 0;
     }
-    while (this.mVComponents.isEmpty()) {
-      return i;
+    if (this.mVComponents.isEmpty()) {
+      return 15000;
     }
     return 15000 - 15000 % this.mVComponents.size();
   }
@@ -144,41 +150,42 @@ public class VLoopAbleSliderAdapter
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     int i = getRealPosition(paramInt);
-    if ((i >= this.mVComponents.size()) || (i < 0)) {
-      return null;
-    }
-    Object localObject1 = (VComponent)this.mVComponents.get(i);
-    Object localObject2 = ((VComponent)this.mVComponents.get(i)).getHostView();
-    if ((localObject2 != null) && (((View)localObject2).getParent() == null))
+    if ((i < this.mVComponents.size()) && (i >= 0))
     {
-      paramViewGroup.addView((View)localObject2);
-      ((VComponent)localObject1).applyEvents();
-      ((VComponent)localObject1).applyLayout();
-      ((VComponent)localObject1).bindData();
-    }
-    for (;;)
-    {
-      initCellScale(paramInt, (View)localObject2, (VComponent)localObject1);
-      return localObject2;
-      localObject2 = ((VComponent)localObject1).mDomObj;
-      VComponent localVComponent = copyComponent((VComponent)localObject1);
-      createAndBindHostView(localVComponent, (DomObject)localObject2);
-      this.mVComponents.set(i, localVComponent);
-      View localView = localVComponent.getHostView();
-      localObject2 = localView;
-      localObject1 = localVComponent;
-      if (localView != null)
+      Object localObject1 = (VComponent)this.mVComponents.get(i);
+      Object localObject2 = ((VComponent)this.mVComponents.get(i)).getHostView();
+      if ((localObject2 != null) && (((View)localObject2).getParent() == null))
       {
-        localObject2 = localView;
+        paramViewGroup.addView((View)localObject2);
+        ((VComponent)localObject1).applyEvents();
+        ((VComponent)localObject1).applyLayout();
+        ((VComponent)localObject1).bindData();
+      }
+      else
+      {
+        localObject2 = ((VComponent)localObject1).mDomObj;
+        VComponent localVComponent = copyComponent((VComponent)localObject1);
+        createAndBindHostView(localVComponent, (DomObject)localObject2);
+        this.mVComponents.set(i, localVComponent);
+        View localView = localVComponent.getHostView();
         localObject1 = localVComponent;
-        if (localView.getParent() == null)
+        localObject2 = localView;
+        if (localView != null)
         {
-          paramViewGroup.addView(localView);
-          localObject2 = localView;
           localObject1 = localVComponent;
+          localObject2 = localView;
+          if (localView.getParent() == null)
+          {
+            paramViewGroup.addView(localView);
+            localObject2 = localView;
+            localObject1 = localVComponent;
+          }
         }
       }
+      initCellScale(paramInt, (View)localObject2, (VComponent)localObject1);
+      return localObject2;
     }
+    return null;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -203,7 +210,7 @@ public class VLoopAbleSliderAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.adapter.VLoopAbleSliderAdapter
  * JD-Core Version:    0.7.0.1
  */

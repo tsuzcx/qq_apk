@@ -36,14 +36,15 @@ public final class GetBigShowRecommendRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.Code, 0);
-    if (this.Materials != null) {
-      paramJceOutputStream.write(this.Materials, 1);
+    ArrayList localArrayList = this.Materials;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.SHADOW_BACKEND_INTERFACE.GetBigShowRecommendRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,8 +13,8 @@ public final class stNotificationRsp
 {
   static stGlobalConfig cache_config;
   static Map<String, String> cache_map_ext;
-  static ArrayList<stSimpleMetaPerson> cache_persons;
-  static int cache_type = 0;
+  static ArrayList<stSimpleMetaPerson> cache_persons = new ArrayList();
+  static int cache_type;
   static ArrayList<String> cache_vtFeedid;
   public int cid = 0;
   public stGlobalConfig config = null;
@@ -30,7 +31,6 @@ public final class stNotificationRsp
   
   static
   {
-    cache_persons = new ArrayList();
     stSimpleMetaPerson localstSimpleMetaPerson = new stSimpleMetaPerson();
     cache_persons.add(localstSimpleMetaPerson);
     cache_vtFeedid = new ArrayList();
@@ -77,42 +77,52 @@ public final class stNotificationRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.imgurl != null) {
-      paramJceOutputStream.write(this.imgurl, 1);
+    Object localObject = this.imgurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 2);
+    localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.persons != null) {
-      paramJceOutputStream.write(this.persons, 3);
+    localObject = this.persons;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.jump_url != null) {
-      paramJceOutputStream.write(this.jump_url, 4);
+    localObject = this.jump_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.vtFeedid != null) {
-      paramJceOutputStream.write(this.vtFeedid, 5);
+    localObject = this.vtFeedid;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.config != null) {
-      paramJceOutputStream.write(this.config, 6);
+    localObject = this.config;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.h5Url != null) {
-      paramJceOutputStream.write(this.h5Url, 7);
+    localObject = this.h5Url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.scheme_url != null) {
-      paramJceOutputStream.write(this.scheme_url, 8);
+    localObject = this.scheme_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.cid, 9);
-    if (this.trace_id != null) {
-      paramJceOutputStream.write(this.trace_id, 10);
+    localObject = this.trace_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 11);
+    localObject = this.map_ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stNotificationRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,10 @@ public final class HippyNativeModuleInfo
   private final Class mClass;
   private boolean mInit = false;
   private HippyNativeModuleBase mInstance;
+  private boolean mIsDestroyed = false;
   private Map<String, HippyNativeModuleInfo.HippyNativeMethod> mMethods;
   private final String mName;
+  private final String[] mNames;
   private final Provider<? extends HippyNativeModuleBase> mProvider;
   private final HippyNativeModule.Thread mThread;
   
@@ -23,6 +25,7 @@ public final class HippyNativeModuleInfo
   {
     HippyNativeModule localHippyNativeModule = (HippyNativeModule)paramClass.getAnnotation(HippyNativeModule.class);
     this.mName = localHippyNativeModule.name();
+    this.mNames = localHippyNativeModule.names();
     this.mClass = paramClass;
     this.mThread = localHippyNativeModule.thread();
     this.mProvider = paramProvider;
@@ -31,31 +34,34 @@ public final class HippyNativeModuleInfo
   
   private void initImmediately(HippyNativeModule paramHippyNativeModule)
   {
-    if (paramHippyNativeModule.init()) {}
-    try
-    {
-      initialize();
-      return;
-    }
-    catch (Throwable paramHippyNativeModule)
-    {
-      paramHippyNativeModule.printStackTrace();
+    if (paramHippyNativeModule.init()) {
+      try
+      {
+        initialize();
+        return;
+      }
+      catch (Throwable paramHippyNativeModule)
+      {
+        paramHippyNativeModule.printStackTrace();
+      }
     }
   }
   
   public void destroy()
   {
-    if (this.mInstance != null) {
-      this.mInstance.destroy();
+    HippyNativeModuleBase localHippyNativeModuleBase = this.mInstance;
+    if (localHippyNativeModuleBase != null) {
+      localHippyNativeModuleBase.destroy();
     }
   }
   
   public HippyNativeModuleInfo.HippyNativeMethod findMethod(String paramString)
   {
-    if (this.mMethods == null) {
+    Map localMap = this.mMethods;
+    if (localMap == null) {
       return null;
     }
-    return (HippyNativeModuleInfo.HippyNativeMethod)this.mMethods.get(paramString);
+    return (HippyNativeModuleInfo.HippyNativeMethod)localMap.get(paramString);
   }
   
   public HippyNativeModuleBase getInstance()
@@ -66,6 +72,11 @@ public final class HippyNativeModuleInfo
   public String getName()
   {
     return this.mName;
+  }
+  
+  public String[] getNames()
+  {
+    return this.mNames;
   }
   
   public HippyNativeModule.Thread getThread()
@@ -85,18 +96,27 @@ public final class HippyNativeModuleInfo
     while (i < j)
     {
       Method localMethod = arrayOfMethod[i];
-      Object localObject = (HippyMethod)localMethod.getAnnotation(HippyMethod.class);
-      if (localObject != null)
+      Object localObject1 = (HippyMethod)localMethod.getAnnotation(HippyMethod.class);
+      if (localObject1 != null)
       {
-        String str = ((HippyMethod)localObject).name();
-        localObject = str;
-        if (TextUtils.isEmpty(str)) {
-          localObject = localMethod.getName();
+        Object localObject2 = ((HippyMethod)localObject1).name();
+        localObject1 = localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          localObject1 = localMethod.getName();
         }
-        if (this.mMethods.containsKey(localObject)) {
-          throw new RuntimeException("Java Module " + this.mName + " method name already registered: " + (String)localObject);
+        if (!this.mMethods.containsKey(localObject1))
+        {
+          this.mMethods.put(localObject1, new HippyNativeModuleInfo.HippyNativeMethod(this, localMethod));
         }
-        this.mMethods.put(localObject, new HippyNativeModuleInfo.HippyNativeMethod(this, localMethod));
+        else
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Java Module ");
+          ((StringBuilder)localObject2).append(this.mName);
+          ((StringBuilder)localObject2).append(" method name already registered: ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          throw new RuntimeException(((StringBuilder)localObject2).toString());
+        }
       }
       i += 1;
     }
@@ -104,10 +124,20 @@ public final class HippyNativeModuleInfo
     this.mInstance.initialize();
     this.mInit = true;
   }
+  
+  public void onDestroy()
+  {
+    this.mIsDestroyed = true;
+  }
+  
+  public boolean shouldDestroy()
+  {
+    return this.mIsDestroyed ^ true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleInfo
  * JD-Core Version:    0.7.0.1
  */

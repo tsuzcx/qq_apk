@@ -23,6 +23,7 @@ public class LoginProxy
   
   static
   {
+    jdField_a_of_type_JavaUtilArrayList.add(QCircleLoginAction.class);
     jdField_a_of_type_JavaUtilArrayList.add(AlbumLoginAction.class);
     jdField_a_of_type_JavaUtilArrayList.add(QZoneLoginAction.class);
     jdField_a_of_type_JavaUtilArrayList.add(NotifyLoginAction.class);
@@ -31,12 +32,15 @@ public class LoginProxy
     jdField_a_of_type_JavaUtilArrayList.add(UpdateLoginAction.class);
     jdField_a_of_type_JavaUtilArrayList.add(MessageLoginAction.class);
     jdField_a_of_type_JavaUtilArrayList.add(KandianLoginAction.class);
+    jdField_a_of_type_JavaUtilArrayList.add(AlphaLoginAction.class);
     jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     jdField_b_of_type_JavaUtilArrayList.add(AccountLoginResult.class);
     jdField_b_of_type_JavaUtilArrayList.add(MiniLoginResult.class);
     jdField_b_of_type_JavaUtilArrayList.add(JumpLoginResult.class);
     jdField_b_of_type_JavaUtilArrayList.add(InitLoginResult.class);
     jdField_b_of_type_JavaUtilArrayList.add(PatternLockResult.class);
+    jdField_b_of_type_JavaUtilArrayList.add(MessageLoginResult.class);
+    jdField_b_of_type_JavaUtilArrayList.add(DefaultLogoutResult.class);
   }
   
   public LoginProxy()
@@ -94,6 +98,14 @@ public class LoginProxy
     Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
       ((ILoginResult)localIterator.next()).a(paramActivity, paramString);
+    }
+  }
+  
+  public void a(Activity paramActivity, AppRuntime paramAppRuntime)
+  {
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((ILoginResult)localIterator.next()).a(paramActivity, paramAppRuntime);
     }
   }
   
@@ -156,20 +168,26 @@ public class LoginProxy
   public boolean a(AppRuntime paramAppRuntime, Activity paramActivity, String paramString)
   {
     Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    for (boolean bool = true; localIterator.hasNext(); bool = ((ILoginResult)localIterator.next()).a(paramAppRuntime, paramActivity, paramString) & bool) {}
+    boolean bool = true;
+    while (localIterator.hasNext()) {
+      bool &= ((ILoginResult)localIterator.next()).a(paramAppRuntime, paramActivity, paramString);
+    }
     return bool;
   }
   
   public boolean a(AppRuntime paramAppRuntime, Class<?> paramClass, long paramLong)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((ILoginAction)localIterator.next()).a(paramAppRuntime, paramClass, paramLong) | bool) {}
+    boolean bool = false;
+    while (localIterator.hasNext()) {
+      bool |= ((ILoginAction)localIterator.next()).a(paramAppRuntime, paramClass, paramLong);
+    }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.LoginProxy
  * JD-Core Version:    0.7.0.1
  */

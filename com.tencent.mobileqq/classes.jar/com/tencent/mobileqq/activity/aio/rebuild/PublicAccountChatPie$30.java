@@ -1,26 +1,44 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
+import com.tencent.biz.pubaccount.api.IPublicAccountHandler;
+import com.tencent.biz.pubaccount.api.IPublicAccountManager;
+import com.tencent.biz.pubaccount.util.api.IPublicAccountUtil;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class PublicAccountChatPie$30
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  PublicAccountChatPie$30(PublicAccountChatPie paramPublicAccountChatPie) {}
+  PublicAccountChatPie$30(PublicAccountChatPie paramPublicAccountChatPie, IPublicAccountDetail paramIPublicAccountDetail) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    PublicAccountChatPie.d(this.a).post(new PublicAccountChatPie.30.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d(this.this$0.b, 2, "updateUnfollowInfo");
+    }
+    if (this.this$0.K)
+    {
+      int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getAccountType(this.a.getAccountFlag());
+      if ((i == -3) || (i == -4)) {
+        ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).removeMsgID(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.getUin());
+      }
+    }
+    if (this.this$0.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler != null) {
+      this.this$0.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler.onUnfollowPublicAccount(this.a);
+    }
+    PublicAccountChatPie.b(this.this$0, this.a);
+    PublicAccountChatPie.a(this.this$0).post(new PublicAccountChatPie.30.1(this));
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.30
  * JD-Core Version:    0.7.0.1
  */

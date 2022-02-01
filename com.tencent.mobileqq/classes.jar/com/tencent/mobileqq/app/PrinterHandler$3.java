@@ -12,16 +12,17 @@ class PrinterHandler$3
   
   protected void a(Session paramSession)
   {
-    if (paramSession.isFileAssist) {}
-    do
-    {
+    if (paramSession.isFileAssist) {
       return;
-      this.a.a(3, paramSession, 0.0D, false);
-    } while (this.a.a == null);
-    this.a.a.c();
-    this.a.a.notifyDataSetChanged();
-    LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
-    LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+    }
+    this.a.a(3, paramSession, 0.0D, false);
+    if (this.a.a != null)
+    {
+      this.a.a.c();
+      this.a.a.notifyDataSetChanged();
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+    }
   }
   
   protected void a(Session paramSession, float paramFloat)
@@ -50,18 +51,18 @@ class PrinterHandler$3
   
   protected void b(Session paramSession)
   {
-    if (paramSession.isFileAssist) {}
-    do
-    {
+    if (paramSession.isFileAssist) {
       return;
-      this.a.a(0, paramSession, 0.0D, false);
-    } while (this.a.a == null);
-    this.a.a.notifyDataSetChanged();
+    }
+    this.a.a(0, paramSession, 0.0D, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.PrinterHandler.3
  * JD-Core Version:    0.7.0.1
  */

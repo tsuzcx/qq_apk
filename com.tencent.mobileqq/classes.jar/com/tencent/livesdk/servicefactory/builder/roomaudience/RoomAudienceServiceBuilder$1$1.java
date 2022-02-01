@@ -33,20 +33,28 @@ class RoomAudienceServiceBuilder$1$1
   
   public void onSuccess(List<UserInfo> paramList)
   {
-    this.this$1.getLogger().i("RoomAudienceServiceBuilder", "batchQueryUserInfos size: " + paramList.size(), new Object[0]);
-    Iterator localIterator = this.val$users.iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = this.this$1.getLogger();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("batchQueryUserInfos size: ");
+    ((StringBuilder)localObject2).append(paramList.size());
+    ((LogInterface)localObject1).i("RoomAudienceServiceBuilder", ((StringBuilder)localObject2).toString(), new Object[0]);
+    localObject1 = this.val$users.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      UserServer localUserServer = (UserServer)localIterator.next();
-      UserInfo localUserInfo = getUserInfoById(paramList, localUserServer.uin);
+      localObject2 = (UserServer)((Iterator)localObject1).next();
+      UserInfo localUserInfo = getUserInfoById(paramList, ((UserServer)localObject2).uin);
       if (localUserInfo != null)
       {
-        this.this$1.getLogger().i("RoomAudienceServiceBuilder", "batchQueryUserInfos info: " + localUserInfo, new Object[0]);
-        localUserServer.uin = localUserInfo.uid;
-        localUserServer.faceUrl = localUserInfo.headUrl;
-        localUserServer.nickName = localUserInfo.nick;
-        localUserServer.logoFullUrl = localUserInfo.headUrl;
-        localUserServer.businessUid = localUserInfo.businessUid;
+        LogInterface localLogInterface = this.this$1.getLogger();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("batchQueryUserInfos info: ");
+        localStringBuilder.append(localUserInfo);
+        localLogInterface.i("RoomAudienceServiceBuilder", localStringBuilder.toString(), new Object[0]);
+        ((UserServer)localObject2).uin = localUserInfo.uid;
+        ((UserServer)localObject2).faceUrl = localUserInfo.headUrl;
+        ((UserServer)localObject2).nickName = localUserInfo.nick;
+        ((UserServer)localObject2).logoFullUrl = localUserInfo.headUrl;
+        ((UserServer)localObject2).businessUid = localUserInfo.businessUid;
       }
     }
     this.val$callBack.onSuccess(this.val$users);
@@ -54,7 +62,7 @@ class RoomAudienceServiceBuilder$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.roomaudience.RoomAudienceServiceBuilder.1.1
  * JD-Core Version:    0.7.0.1
  */

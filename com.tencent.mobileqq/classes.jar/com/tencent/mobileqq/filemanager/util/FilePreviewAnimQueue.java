@@ -32,24 +32,28 @@ public class FilePreviewAnimQueue
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-        continue;
-      }
-      synchronized (this.jdField_a_of_type_ArrayOfInt)
-      {
-        FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = (FilePreviewAnimQueue.FilePreviewAnim)this.jdField_a_of_type_JavaUtilList.get(0);
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        if ((localFilePreviewAnim == null) || ((localFilePreviewAnim.jdField_a_of_type_Boolean == true) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) || ((!localFilePreviewAnim.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) || (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4)))) {
-          continue;
-        }
-        this.jdField_a_of_type_AndroidViewView.setAnimation((Animation)localFilePreviewAnim.jdField_a_of_type_JavaLangObject);
-        this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localFilePreviewAnim.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_ArrayOfInt)
+    {
+      FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = (FilePreviewAnimQueue.FilePreviewAnim)this.jdField_a_of_type_JavaUtilList.get(0);
+      this.jdField_a_of_type_JavaUtilList.remove(0);
+      if (localFilePreviewAnim == null) {
         return;
       }
+      if ((localFilePreviewAnim.jdField_a_of_type_Boolean == true) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
+        return;
+      }
+      if ((!localFilePreviewAnim.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) || (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4))) {
+        return;
+      }
+      this.jdField_a_of_type_AndroidViewView.setAnimation((Animation)localFilePreviewAnim.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localFilePreviewAnim.jdField_a_of_type_JavaLangObject);
+      return;
     }
   }
   
@@ -80,14 +84,11 @@ public class FilePreviewAnimQueue
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue$FilePreviewAnim.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      a();
-      return;
+    } else {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
+    this.jdField_a_of_type_Boolean = false;
+    a();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -99,7 +100,7 @@ public class FilePreviewAnimQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue
  * JD-Core Version:    0.7.0.1
  */

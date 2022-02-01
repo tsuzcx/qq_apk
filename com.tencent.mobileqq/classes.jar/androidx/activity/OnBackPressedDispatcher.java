@@ -68,25 +68,25 @@ public final class OnBackPressedDispatcher
   @MainThread
   public void onBackPressed()
   {
-    Iterator localIterator = this.mOnBackPressedCallbacks.descendingIterator();
-    while (localIterator.hasNext())
+    Object localObject = this.mOnBackPressedCallbacks.descendingIterator();
+    while (((Iterator)localObject).hasNext())
     {
-      localOnBackPressedCallback = (OnBackPressedCallback)localIterator.next();
-      if (localOnBackPressedCallback.isEnabled()) {
+      OnBackPressedCallback localOnBackPressedCallback = (OnBackPressedCallback)((Iterator)localObject).next();
+      if (localOnBackPressedCallback.isEnabled())
+      {
         localOnBackPressedCallback.handleOnBackPressed();
+        return;
       }
     }
-    while (this.mFallbackOnBackPressed == null)
-    {
-      OnBackPressedCallback localOnBackPressedCallback;
-      return;
+    localObject = this.mFallbackOnBackPressed;
+    if (localObject != null) {
+      ((Runnable)localObject).run();
     }
-    this.mFallbackOnBackPressed.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.activity.OnBackPressedDispatcher
  * JD-Core Version:    0.7.0.1
  */

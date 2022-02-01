@@ -10,37 +10,53 @@ class ARTransferPromotionRenderable$13
   
   public void run()
   {
-    QLog.d("ARTransferPromotionRenderable", 2, "switchGameStatus run status " + this.a);
-    switch (this.a)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("switchGameStatus run status ");
+    ((StringBuilder)localObject).append(this.a);
+    QLog.d("ARTransferPromotionRenderable", 2, ((StringBuilder)localObject).toString());
+    int i = this.a;
+    if ((i != 1) && (i != 2))
     {
-    }
-    for (;;)
-    {
-      ARTransferPromotionRenderable.e(this.this$0);
-      return;
-      if ((this.a == 1) && (ARTransferPromotionRenderable.a(this.this$0) != null) && (ARTransferPromotionRenderable.a(this.this$0).a.booleanValue())) {
-        ARTransferPromotionRenderable.a(this.this$0).b(0, 1);
+      if (i == 3) {
+        break label243;
       }
-      if (ARTransferPromotionRenderable.a(this.this$0) != null)
+      if (i != 4)
       {
-        ARTransferPromotionRenderable.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
-        continue;
+        if ((i != 6) && (i != 8)) {
+          break label243;
+        }
+      }
+      else
+      {
         if (this.this$0.b == 3)
         {
-          if (ARTransferPromotionRenderable.a(this.this$0) != null) {
-            ARTransferPromotionRenderable.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+          if (ARTransferPromotionRenderable.a(this.this$0) == null) {
+            break label243;
           }
+          ARTransferPromotionRenderable.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+          break label243;
         }
-        else {
-          ARTransferPromotionRenderable.a(this.this$0, 4, ARTransferPromotionRenderable.a(this.this$0).c + "360Video.mp4", false, ARTransferPromotionRenderable.a(this.this$0).d, false);
-        }
+        localObject = this.this$0;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(ARTransferPromotionRenderable.a(this.this$0).c);
+        localStringBuilder.append("360Video.mp4");
+        ARTransferPromotionRenderable.a((ARTransferPromotionRenderable)localObject, 4, localStringBuilder.toString(), false, ARTransferPromotionRenderable.a(this.this$0).d, false);
+        break label243;
       }
     }
+    if ((this.a == 1) && (ARTransferPromotionRenderable.a(this.this$0) != null) && (ARTransferPromotionRenderable.a(this.this$0).a.booleanValue())) {
+      ARTransferPromotionRenderable.a(this.this$0).b(0, 1);
+    }
+    if (ARTransferPromotionRenderable.a(this.this$0) != null) {
+      ARTransferPromotionRenderable.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+    }
+    label243:
+    ARTransferPromotionRenderable.e(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.13
  * JD-Core Version:    0.7.0.1
  */

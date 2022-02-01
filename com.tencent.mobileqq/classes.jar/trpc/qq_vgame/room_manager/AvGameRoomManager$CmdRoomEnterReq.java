@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class AvGameRoomManager$CmdRoomEnterReq
   extends MessageMicro<CmdRoomEnterReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64 }, new String[] { "from", "roomid", "uin", "invitor_uin", "init_status", "scene", "pk_opponent_uin", "trans_mod" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, CmdRoomEnterReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField from = PBField.initEnum(0);
   public final PBUInt32Field init_status = PBField.initUInt32(0);
   public final PBUInt64Field invitor_uin = PBField.initUInt64(0L);
@@ -19,10 +19,17 @@ public final class AvGameRoomManager$CmdRoomEnterReq
   public final PBEnumField scene = PBField.initEnum(0);
   public final PBUInt32Field trans_mod = PBField.initUInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64 }, new String[] { "from", "roomid", "uin", "invitor_uin", "init_status", "scene", "pk_opponent_uin", "trans_mod" }, new Object[] { localInteger, localLong, localLong, localLong, localInteger, localInteger, localLong, localInteger }, CmdRoomEnterReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trpc.qq_vgame.room_manager.AvGameRoomManager.CmdRoomEnterReq
  * JD-Core Version:    0.7.0.1
  */

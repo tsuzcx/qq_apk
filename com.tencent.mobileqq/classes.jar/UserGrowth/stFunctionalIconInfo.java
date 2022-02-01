@@ -30,20 +30,23 @@ public final class stFunctionalIconInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.jump != null) {
-      paramJceOutputStream.write(this.jump, 0);
+    Object localObject = this.jump;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 1);
+    localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.imgUrl != null) {
-      paramJceOutputStream.write(this.imgUrl, 2);
+    localObject = this.imgUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stFunctionalIconInfo
  * JD-Core Version:    0.7.0.1
  */

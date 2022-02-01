@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.onlinestatus;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.data.AutoReplyText;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -21,14 +21,14 @@ class AutoReplyEditActivity$3
     if (AutoReplyEditActivity.a(this.a) != null) {
       localIntent.putExtra("AutoReplyEditActivity:text", new AutoReplyText(AutoReplyText.trimRawString(String.valueOf(AutoReplyEditActivity.a(this.a).getText()), false), AutoReplyEditActivity.a(this.a).getTextId()));
     }
-    this.a.getActivity().setResult(325, localIntent);
-    this.a.getActivity().finish();
+    this.a.getQBaseActivity().setResult(325, localIntent);
+    this.a.getQBaseActivity().finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.3
  * JD-Core Version:    0.7.0.1
  */

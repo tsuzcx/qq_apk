@@ -15,36 +15,42 @@ class TroopStoryMemoriesListAdapter$EmptyItemHolder
   public TroopStoryMemoriesListAdapter$EmptyItemHolder(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131370380);
+    this.b = paramView.findViewById(2131370041);
   }
   
   public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
   {
     Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
     float f = 0.0F;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
+      i = ((TroopStoryItemInfo)localIterator.next()).itemType;
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        break;
-        if ((DateUtils.b(paramTroopStoryItemInfo.publishTime)) || (DateUtils.d(paramTroopStoryItemInfo.publishTime)))
+        if (i != 1)
         {
-          f = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
+          if (i != 2)
+          {
+            if (i != 3) {
+              continue;
+            }
+            i = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F);
+          }
+          else
+          {
+            i = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F);
+          }
         }
-        else
-        {
-          f = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
-          continue;
-          f = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
-          continue;
-          f = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
-          continue;
-          f = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
+        else if ((!DateUtils.b(paramTroopStoryItemInfo.publishTime)) && (!DateUtils.c(paramTroopStoryItemInfo.publishTime))) {
+          i = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F);
+        } else {
+          i = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F);
         }
       }
+      else {
+        i = UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F);
+      }
+      f += i;
     }
     int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
     paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
@@ -62,7 +68,7 @@ class TroopStoryMemoriesListAdapter$EmptyItemHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.EmptyItemHolder
  * JD-Core Version:    0.7.0.1
  */

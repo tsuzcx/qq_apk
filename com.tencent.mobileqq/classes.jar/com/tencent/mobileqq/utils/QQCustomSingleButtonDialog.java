@@ -90,7 +90,7 @@ public class QQCustomSingleButtonDialog
       this.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText(paramString, 5, 24));
       this.b.setContentDescription(paramString);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {}
+      paramString = this.jdField_a_of_type_ArrayOfJavaLangString;
       return this;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -153,20 +153,20 @@ public class QQCustomSingleButtonDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365811));
-    this.b = ((TextView)findViewById(2131365807));
-    this.c = ((TextView)findViewById(2131365784));
-    this.e = ((TextView)findViewById(2131365785));
-    this.g = ((TextView)findViewById(2131366077));
-    this.f = ((TextView)findViewById(2131373455));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367459));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367458);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365796));
-    this.d = ((TextView)findViewById(2131365802));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365648));
+    this.b = ((TextView)findViewById(2131365644));
+    this.c = ((TextView)findViewById(2131365621));
+    this.e = ((TextView)findViewById(2131365622));
+    this.g = ((TextView)findViewById(2131365994));
+    this.f = ((TextView)findViewById(2131373032));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367217));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367216);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365633));
+    this.d = ((TextView)findViewById(2131365639));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363757));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370452));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363688));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131370110));
   }
   
   public void setTitle(int paramInt)
@@ -178,7 +178,7 @@ public class QQCustomSingleButtonDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomSingleButtonDialog
  * JD-Core Version:    0.7.0.1
  */

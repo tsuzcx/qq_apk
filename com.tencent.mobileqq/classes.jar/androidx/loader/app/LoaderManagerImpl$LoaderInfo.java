@@ -40,21 +40,25 @@ public class LoaderManagerImpl$LoaderInfo<D>
   @MainThread
   Loader<D> destroy(boolean paramBoolean)
   {
-    if (LoaderManagerImpl.DEBUG) {
-      Log.v("LoaderManager", "  Destroying: " + this);
+    if (LoaderManagerImpl.DEBUG)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("  Destroying: ");
+      ((StringBuilder)localObject).append(this);
+      Log.v("LoaderManager", ((StringBuilder)localObject).toString());
     }
     this.mLoader.cancelLoad();
     this.mLoader.abandon();
-    LoaderManagerImpl.LoaderObserver localLoaderObserver = this.mObserver;
-    if (localLoaderObserver != null)
+    Object localObject = this.mObserver;
+    if (localObject != null)
     {
-      removeObserver(localLoaderObserver);
+      removeObserver((Observer)localObject);
       if (paramBoolean) {
-        localLoaderObserver.reset();
+        ((LoaderManagerImpl.LoaderObserver)localObject).reset();
       }
     }
     this.mLoader.unregisterListener(this);
-    if (((localLoaderObserver != null) && (!localLoaderObserver.hasDeliveredData())) || (paramBoolean))
+    if (((localObject != null) && (!((LoaderManagerImpl.LoaderObserver)localObject).hasDeliveredData())) || (paramBoolean))
     {
       this.mLoader.reset();
       return this.mPriorLoader;
@@ -72,13 +76,21 @@ public class LoaderManagerImpl$LoaderInfo<D>
     paramPrintWriter.print(paramString);
     paramPrintWriter.print("mLoader=");
     paramPrintWriter.println(this.mLoader);
-    this.mLoader.dump(paramString + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+    Loader localLoader = this.mLoader;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("  ");
+    localLoader.dump(localStringBuilder.toString(), paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     if (this.mObserver != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mCallbacks=");
       paramPrintWriter.println(this.mObserver);
-      this.mObserver.dump(paramString + "  ", paramPrintWriter);
+      paramFileDescriptor = this.mObserver;
+      paramArrayOfString = new StringBuilder();
+      paramArrayOfString.append(paramString);
+      paramArrayOfString.append("  ");
+      paramFileDescriptor.dump(paramArrayOfString.toString(), paramPrintWriter);
     }
     paramPrintWriter.print(paramString);
     paramPrintWriter.print("mData=");
@@ -96,11 +108,21 @@ public class LoaderManagerImpl$LoaderInfo<D>
   
   boolean isCallbackWaitingForData()
   {
-    if (!hasActiveObservers()) {}
-    while ((this.mObserver == null) || (this.mObserver.hasDeliveredData())) {
+    boolean bool1 = hasActiveObservers();
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
-    return true;
+    LoaderManagerImpl.LoaderObserver localLoaderObserver = this.mObserver;
+    bool1 = bool2;
+    if (localLoaderObserver != null)
+    {
+      bool1 = bool2;
+      if (!localLoaderObserver.hasDeliveredData()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   void markForRedelivery()
@@ -114,26 +136,38 @@ public class LoaderManagerImpl$LoaderInfo<D>
     }
   }
   
-  public void onActive()
+  protected void onActive()
   {
-    if (LoaderManagerImpl.DEBUG) {
-      Log.v("LoaderManager", "  Starting: " + this);
+    if (LoaderManagerImpl.DEBUG)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("  Starting: ");
+      localStringBuilder.append(this);
+      Log.v("LoaderManager", localStringBuilder.toString());
     }
     this.mLoader.startLoading();
   }
   
-  public void onInactive()
+  protected void onInactive()
   {
-    if (LoaderManagerImpl.DEBUG) {
-      Log.v("LoaderManager", "  Stopping: " + this);
+    if (LoaderManagerImpl.DEBUG)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("  Stopping: ");
+      localStringBuilder.append(this);
+      Log.v("LoaderManager", localStringBuilder.toString());
     }
     this.mLoader.stopLoading();
   }
   
   public void onLoadComplete(@NonNull Loader<D> paramLoader, @Nullable D paramD)
   {
-    if (LoaderManagerImpl.DEBUG) {
-      Log.v("LoaderManager", "onLoadComplete: " + this);
+    if (LoaderManagerImpl.DEBUG)
+    {
+      paramLoader = new StringBuilder();
+      paramLoader.append("onLoadComplete: ");
+      paramLoader.append(this);
+      Log.v("LoaderManager", paramLoader.toString());
     }
     if (Looper.myLooper() == Looper.getMainLooper())
     {
@@ -159,8 +193,9 @@ public class LoaderManagerImpl$LoaderInfo<D>
   {
     paramLoaderCallbacks = new LoaderManagerImpl.LoaderObserver(this.mLoader, paramLoaderCallbacks);
     observe(paramLifecycleOwner, paramLoaderCallbacks);
-    if (this.mObserver != null) {
-      removeObserver(this.mObserver);
+    LoaderManagerImpl.LoaderObserver localLoaderObserver = this.mObserver;
+    if (localLoaderObserver != null) {
+      removeObserver(localLoaderObserver);
     }
     this.mLifecycleOwner = paramLifecycleOwner;
     this.mObserver = paramLoaderCallbacks;
@@ -170,9 +205,10 @@ public class LoaderManagerImpl$LoaderInfo<D>
   public void setValue(D paramD)
   {
     super.setValue(paramD);
-    if (this.mPriorLoader != null)
+    paramD = this.mPriorLoader;
+    if (paramD != null)
     {
-      this.mPriorLoader.reset();
+      paramD.reset();
       this.mPriorLoader = null;
     }
   }
@@ -192,7 +228,7 @@ public class LoaderManagerImpl$LoaderInfo<D>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.loader.app.LoaderManagerImpl.LoaderInfo
  * JD-Core Version:    0.7.0.1
  */

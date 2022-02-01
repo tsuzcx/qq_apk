@@ -1,21 +1,18 @@
 package com.tencent.open.agent.authority;
 
 import android.os.Bundle;
-import android.os.SystemClock;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.report.ReportCenter;
+import com.tencent.open.agent.util.AuthReporter;
 import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.open.business.cgireport.ReportManager;
-import com.tencent.open.business.viareport.OpenSdkStatic;
+import com.tencent.open.agent.util.SSOLog;
+import com.tencent.open.appcommon.OpensdkBusinessObserver;
 import com.tencent.open.model.AccountInfo;
 import com.tencent.open.virtual.OpenSdkVirtualUtil;
 import com.tencent.qconn.protofile.auth.AuthResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 class ProxyAuthManager$1
-  implements BusinessObserver
+  implements OpensdkBusinessObserver
 {
   ProxyAuthManager$1(ProxyAuthManager paramProxyAuthManager, long paramLong, AccountInfo paramAccountInfo, String paramString1, AuthCallback paramAuthCallback, boolean paramBoolean, String paramString2, String paramString3) {}
   
@@ -24,129 +21,118 @@ class ProxyAuthManager$1
     long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     Object localObject1 = paramBundle.getString("ssoAccount");
     int i = paramBundle.getInt("code");
-    QLog.d("SDK_LOGIN.ProxyAuthManager", 1, "ProxyAuth.doAuthorize.onReceive:  ssoAccount: " + AuthorityUtil.a((String)localObject1) + ", uin=*" + AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString) + ", timeCost=" + l1 + ", isSuccess=" + paramBoolean + ", code=" + i + ", cmd=" + this.jdField_a_of_type_JavaLangString);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("ProxyAuth.doAuthorize.onReceive:  ssoAccount: ");
+    ((StringBuilder)localObject2).append(AuthorityUtil.a((String)localObject1));
+    ((StringBuilder)localObject2).append(", uin=*");
+    ((StringBuilder)localObject2).append(AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString));
+    ((StringBuilder)localObject2).append(", timeCost=");
+    ((StringBuilder)localObject2).append(l1);
+    ((StringBuilder)localObject2).append(", isSuccess=");
+    ((StringBuilder)localObject2).append(paramBoolean);
+    ((StringBuilder)localObject2).append(", code=");
+    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append(", cmd=");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    SSOLog.a("ProxyAuthManager", new Object[] { ((StringBuilder)localObject2).toString() });
     if (!this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString.equals(localObject1))
     {
       this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, -1, null);
       return;
     }
-    Object localObject2;
     if (paramBoolean)
     {
-      paramInt = 0;
-      localObject1 = new auth.AuthResponse();
-      localObject2 = localObject1;
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        try
-        {
-          byte[] arrayOfByte2 = paramBundle.getByteArray("data");
-          byte[] arrayOfByte1 = arrayOfByte2;
-          localObject2 = localObject1;
-          if (this.jdField_a_of_type_Boolean)
-          {
-            localObject2 = localObject1;
-            arrayOfByte1 = OpenSdkVirtualUtil.b(arrayOfByte2, this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
-          }
-          if (arrayOfByte1 == null) {
-            break label789;
-          }
-          localObject2 = localObject1;
-          l2 = arrayOfByte1.length;
-          localObject2 = localObject1;
-          localObject1 = (auth.AuthResponse)((auth.AuthResponse)localObject1).mergeFrom(arrayOfByte1);
-          localObject2 = localObject1;
-          j = ((auth.AuthResponse)localObject1).ret.get();
-          i = j;
-        }
-        catch (Exception paramBundle)
-        {
-          long l2;
-          int j;
-          long l3;
-          localObject1 = localObject2;
-        }
-        try
-        {
-          localObject2 = ((auth.AuthResponse)localObject1).state.get();
-          QLog.d("SDK_LOGIN.ProxyAuthManager", 1, new Object[] { "code=", Integer.valueOf(i), ", respState=", localObject2, ", reqState=", this.b });
-          if ((i != 0) || (!this.b.equals(localObject2))) {
-            break label784;
-          }
-          this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(true, i, AuthResponse.a((auth.AuthResponse)localObject1));
-          paramInt = 1;
-        }
-        catch (Exception paramBundle)
-        {
-          break label616;
-          paramInt = 0;
-          continue;
-        }
-        try
-        {
-          l3 = ((auth.AuthResponse)localObject1).toByteArray().length;
-          j = ((auth.AuthResponse)localObject1).ret.get();
-          localObject2 = new Bundle();
-          ((Bundle)localObject2).putString("report_type", "103");
-          ((Bundle)localObject2).putString("act_type", "13");
-          if (paramBundle.getBoolean("isShort", false))
-          {
-            paramBundle = "2";
-            ((Bundle)localObject2).putString("intext_3", paramBundle);
-            ((Bundle)localObject2).putString("stringext_1", this.jdField_a_of_type_JavaLangString);
-            ((Bundle)localObject2).putString("intext_2", "" + j);
-            ((Bundle)localObject2).putString("intext_5", "" + l1);
-            ReportCenter.a().a((Bundle)localObject2, this.c, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, false, true);
-            ReportManager.a().a("agent_authority", this.jdField_a_of_type_Long, l2, l3, 0, Long.parseLong(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString), "1000069", "ret: " + j, true);
-            OpenSdkStatic.a().a(0, "LOGIN_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, this.c, null, Long.valueOf(SystemClock.elapsedRealtime()), j, 1, null);
-            if (paramInt != 0) {
-              break;
-            }
-            this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, i, AuthResponse.a((auth.AuthResponse)localObject1));
-            return;
-          }
-          paramBundle = "1";
-          continue;
-          try
-          {
-            QLog.d("SDK_LOGIN.ProxyAuthManager", 1, "-->success report exception cmd: agent_authority", paramBundle);
-          }
-          catch (Exception paramBundle)
-          {
-            break label616;
-          }
-        }
-        catch (Exception paramBundle) {}
-      }
-      label616:
-      QLog.d("SDK_LOGIN.ProxyAuthManager", 1, "-->exception catch", paramBundle);
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, i, null);
-      continue;
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, i, null);
+      localObject2 = new auth.AuthResponse();
       try
       {
-        ReportManager.a().a("agent_authority", this.jdField_a_of_type_Long, 0L, 0L, i, Long.parseLong(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString), "1000069", "", true);
-        OpenSdkStatic.a().a(1, "LOGIN_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, this.c, null, Long.valueOf(SystemClock.elapsedRealtime()), 3002, 1, "");
-        ReportCenter.a().a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, "", this.c, "1", "6", "" + 3002, false, true);
-        return;
+        localObject1 = paramBundle.getByteArray("data");
+        Object localObject3 = localObject1;
+        if (this.jdField_a_of_type_Boolean) {
+          localObject3 = OpenSdkVirtualUtil.a((byte[])localObject1, this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
+        }
+        if (localObject3 != null)
+        {
+          localObject1 = (auth.AuthResponse)((auth.AuthResponse)localObject2).mergeFrom((byte[])localObject3);
+          paramInt = i;
+          try
+          {
+            i = ((auth.AuthResponse)localObject1).ret.get();
+            paramInt = i;
+            localObject2 = ((auth.AuthResponse)localObject1).state.get();
+            paramInt = i;
+            SSOLog.a("ProxyAuthManager", new Object[] { "code=", Integer.valueOf(i), ", respState=", localObject2, ", reqState=", this.b });
+            if (i == 0)
+            {
+              paramInt = i;
+              if (this.b.equals(localObject2))
+              {
+                paramInt = i;
+                this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(true, i, AuthResponse.a((auth.AuthResponse)localObject1));
+                paramInt = 1;
+                break label369;
+              }
+            }
+            paramInt = 0;
+            try
+            {
+              label369:
+              j = ((auth.AuthResponse)localObject1).ret.get();
+              AuthReporter.a(paramBundle, l1, j, 13, this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
+              l1 = this.jdField_a_of_type_Long;
+              long l2 = localObject3.length;
+              long l3 = ((auth.AuthResponse)localObject1).toByteArray().length;
+              paramBundle = this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("ret: ");
+              ((StringBuilder)localObject2).append(j);
+              AuthReporter.a("agent_authority", l1, l2, l3, 0, paramBundle, ((StringBuilder)localObject2).toString());
+              AuthReporter.a(0, "LOGIN_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, this.c, j, null);
+            }
+            catch (Exception paramBundle)
+            {
+              break label533;
+            }
+            localObject1 = localObject2;
+          }
+          catch (Exception paramBundle) {}
+        }
+        else
+        {
+          paramInt = 0;
+        }
       }
       catch (Exception paramBundle)
       {
-        QLog.d("SDK_LOGIN.ProxyAuthManager", 1, "-->failed report exception cmd: agent_authority", paramBundle);
-        return;
+        localObject1 = localObject2;
+        paramInt = i;
+        int j = 0;
+        i = paramInt;
+        paramInt = j;
+        label533:
+        SSOLog.a("ProxyAuthManager", "-->exception catch", paramBundle);
+        this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, i, null);
       }
-      label784:
-      label789:
-      paramInt = 0;
+      if (paramInt == 0) {
+        this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, i, AuthResponse.a((auth.AuthResponse)localObject1));
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, i, null);
+      AuthReporter.a("agent_authority", this.jdField_a_of_type_Long, 0L, 0L, i, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, "");
+      AuthReporter.a(1, "LOGIN_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, this.c, 3002, "");
+      paramBundle = this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString;
+      localObject1 = this.c;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(3002);
+      AuthReporter.a(paramBundle, (String)localObject1, "6", ((StringBuilder)localObject2).toString(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.authority.ProxyAuthManager.1
  * JD-Core Version:    0.7.0.1
  */

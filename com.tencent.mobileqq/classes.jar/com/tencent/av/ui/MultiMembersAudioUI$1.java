@@ -14,11 +14,8 @@ class MultiMembersAudioUI$1
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener == null) {}
-    for (;;)
+    if (this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       MultiMembersUI.Holder localHolder = (MultiMembersUI.Holder)paramView.getTag();
       if (localHolder == null)
       {
@@ -28,24 +25,25 @@ class MultiMembersAudioUI$1
       }
       else
       {
-        if (localHolder.c) {}
-        for (int i = 7;; i = this.a.a(localHolder.jdField_a_of_type_Long))
-        {
-          if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 8) || ((this.a.jdField_a_of_type_Int != 1) && (this.a.jdField_a_of_type_Int != 2))) {
-            break label134;
-          }
-          this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(localHolder.jdField_a_of_type_Long, localHolder.jdField_a_of_type_Int, i, true);
-          break;
+        int i;
+        if (localHolder.c) {
+          i = 7;
+        } else {
+          i = this.a.a(localHolder.jdField_a_of_type_Long);
         }
-        label134:
-        this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(localHolder.jdField_a_of_type_Long, localHolder.jdField_a_of_type_Int, i, false);
+        if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 8) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2))) {
+          this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(localHolder.jdField_a_of_type_Long, localHolder.jdField_a_of_type_Int, i, true);
+        } else {
+          this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(localHolder.jdField_a_of_type_Long, localHolder.jdField_a_of_type_Int, i, false);
+        }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiMembersAudioUI.1
  * JD-Core Version:    0.7.0.1
  */

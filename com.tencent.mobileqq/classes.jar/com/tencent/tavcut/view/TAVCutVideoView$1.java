@@ -19,7 +19,8 @@ class TAVCutVideoView$1
       if (TAVCutVideoView.access$000(this.this$0).getParent() != null) {
         ((ViewGroup)TAVCutVideoView.access$000(this.this$0).getParent()).removeView(TAVCutVideoView.access$000(this.this$0));
       }
-      this.this$0.addView(TAVCutVideoView.access$000(this.this$0), localLayoutParams);
+      localTAVCutVideoView = this.this$0;
+      localTAVCutVideoView.addView(TAVCutVideoView.access$000(localTAVCutVideoView), localLayoutParams);
       return;
     }
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.this$0.getWidth(), (int)(this.this$0.getWidth() / (this.val$videoSize.getWidth() * 1.0F / this.val$videoSize.getHeight())));
@@ -27,12 +28,13 @@ class TAVCutVideoView$1
     if (TAVCutVideoView.access$000(this.this$0).getParent() != null) {
       ((ViewGroup)TAVCutVideoView.access$000(this.this$0).getParent()).removeView(TAVCutVideoView.access$000(this.this$0));
     }
-    this.this$0.addView(TAVCutVideoView.access$000(this.this$0), localLayoutParams);
+    TAVCutVideoView localTAVCutVideoView = this.this$0;
+    localTAVCutVideoView.addView(TAVCutVideoView.access$000(localTAVCutVideoView), localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.view.TAVCutVideoView.1
  * JD-Core Version:    0.7.0.1
  */

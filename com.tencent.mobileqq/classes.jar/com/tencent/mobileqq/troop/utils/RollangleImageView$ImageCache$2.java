@@ -16,23 +16,21 @@ class RollangleImageView$ImageCache$2
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if (this.a.a) {}
-    Object localObject;
-    String str;
-    do
-    {
+    if (this.a.a) {
       return;
-      localObject = (Object[])paramMessage.obj;
-      paramMessage = (RollangleImageView)localObject[0];
-      str = (String)localObject[1];
-      localObject = (Bitmap)localObject[2];
-    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
-    paramMessage.setImageBitmap((Bitmap)localObject);
+    }
+    Object localObject = (Object[])paramMessage.obj;
+    paramMessage = (RollangleImageView)localObject[0];
+    String str = (String)localObject[1];
+    localObject = (Bitmap)localObject[2];
+    if ((paramMessage != null) && (str != null) && (localObject != null) && (str.equals(paramMessage.b))) {
+      paramMessage.setImageBitmap((Bitmap)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RollangleImageView.ImageCache.2
  * JD-Core Version:    0.7.0.1
  */

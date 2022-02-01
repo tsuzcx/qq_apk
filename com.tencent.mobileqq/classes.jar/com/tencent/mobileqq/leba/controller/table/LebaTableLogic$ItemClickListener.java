@@ -24,36 +24,34 @@ public class LebaTableLogic$ItemClickListener
   public void onClick(View paramView)
   {
     LebaTableLogic localLebaTableLogic = (LebaTableLogic)this.a.get();
-    if (localLebaTableLogic == null) {
+    if (localLebaTableLogic == null)
+    {
       QLog.i("Q.lebatab.LebaTableLogic", 1, "logic == null");
     }
-    for (;;)
+    else if (LebaTableLogic.a(localLebaTableLogic) != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (LebaTableLogic.a(localLebaTableLogic) != null)
+      LebaViewItem localLebaViewItem = localLebaTableLogic.a(paramView);
+      if ((localLebaViewItem != null) && (localLebaTableLogic.a != null))
       {
-        LebaViewItem localLebaViewItem = localLebaTableLogic.a(paramView);
-        if ((localLebaViewItem != null) && (localLebaTableLogic.a != null))
+        LebaClickReportInfo localLebaClickReportInfo = new LebaClickReportInfo();
+        localLebaClickReportInfo.jdField_a_of_type_Boolean = true;
+        localLebaClickReportInfo.jdField_a_of_type_Long = localLebaViewItem.jdField_a_of_type_Long;
+        localLebaClickReportInfo.jdField_a_of_type_Int = (paramView.getId() + 1);
+        if ((paramView instanceof RedTouch))
         {
-          LebaClickReportInfo localLebaClickReportInfo = new LebaClickReportInfo();
-          localLebaClickReportInfo.jdField_a_of_type_Boolean = true;
-          localLebaClickReportInfo.jdField_a_of_type_Long = localLebaViewItem.jdField_a_of_type_Long;
-          localLebaClickReportInfo.jdField_a_of_type_Int = (paramView.getId() + 1);
-          if ((paramView instanceof RedTouch))
-          {
-            localLebaClickReportInfo.b = LebaConstant.a((RedTouch)paramView);
-            localLebaClickReportInfo.c = LebaConstant.b((RedTouch)paramView);
-          }
-          localLebaTableLogic.a.a(paramView, localLebaViewItem, localLebaClickReportInfo);
+          RedTouch localRedTouch = (RedTouch)paramView;
+          localLebaClickReportInfo.b = LebaConstant.a(localRedTouch);
+          localLebaClickReportInfo.c = LebaConstant.b(localRedTouch);
         }
+        localLebaTableLogic.a.a(paramView, localLebaViewItem, localLebaClickReportInfo);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.controller.table.LebaTableLogic.ItemClickListener
  * JD-Core Version:    0.7.0.1
  */

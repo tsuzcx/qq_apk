@@ -16,17 +16,19 @@ public class CommonViewHolder
   
   public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a(getPosition(), paramView);
+    CommonViewHolder.ItemClickListener localItemClickListener = this.a;
+    if (localItemClickListener != null) {
+      localItemClickListener.a(getPosition(), paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onLongClick(View paramView)
   {
-    if (this.a != null)
+    CommonViewHolder.ItemClickListener localItemClickListener = this.a;
+    if (localItemClickListener != null)
     {
-      this.a.b(getPosition(), paramView);
+      localItemClickListener.b(getPosition(), paramView);
       return true;
     }
     return false;
@@ -34,7 +36,7 @@ public class CommonViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.widget.CommonViewHolder
  * JD-Core Version:    0.7.0.1
  */

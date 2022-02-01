@@ -4,59 +4,75 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.utils.H5HbUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.hb.IH5HbUtil;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
 import org.json.JSONObject;
 
 public class QWalletPayJsPlugin$QWalletPayJsPluginResultReceiver
   extends ResultReceiver
 {
-  protected WeakReference<QWalletPayJsPlugin> mJsPluginRef;
+  protected QWalletPayJsPlugin mJsPlugin;
   
   public QWalletPayJsPlugin$QWalletPayJsPluginResultReceiver(QWalletPayJsPlugin paramQWalletPayJsPlugin, Handler paramHandler)
   {
     super(paramHandler);
-    this.mJsPluginRef = new WeakReference(paramQWalletPayJsPlugin);
+    this.mJsPlugin = paramQWalletPayJsPlugin;
+  }
+  
+  protected void onDestroy()
+  {
+    this.mJsPlugin = null;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletPayJsHandler", 2, "resultCode = " + paramInt + " resultData = " + paramBundle);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("resultCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" resultData = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.i("QWalletPayJsHandler", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.mJsPluginRef == null) {}
-    QWalletPayJsPlugin localQWalletPayJsPlugin;
-    Activity localActivity;
-    do
+    Object localObject = this.mJsPlugin;
+    if (localObject != null)
     {
-      do
-      {
+      if (paramBundle == null) {
         return;
-        localQWalletPayJsPlugin = (QWalletPayJsPlugin)this.mJsPluginRef.get();
-      } while ((localQWalletPayJsPlugin == null) || (paramBundle == null));
-      localActivity = QWalletPayJsPlugin.access$000(localQWalletPayJsPlugin);
-      if (localActivity == null) {
-        break;
       }
-      QLog.d("QWalletPayJsHandler", 4, "activity.isFinishing():" + localActivity.isFinishing());
-      paramBundle = H5HbUtil.a(paramInt, paramBundle, localActivity);
-    } while (paramBundle == null);
-    QWalletPayJsPlugin.access$100(localQWalletPayJsPlugin, paramBundle.toString());
-    return;
-    paramBundle = new StringBuilder().append("activity==null:");
-    if (localActivity == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("QWalletPayJsHandler", 1, bool);
-      return;
+      if (QWalletPayJsPlugin.access$000((QWalletPayJsPlugin)localObject) != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("activity.isFinishing():");
+        ((StringBuilder)localObject).append(QWalletPayJsPlugin.access$000(this.mJsPlugin).isFinishing());
+        QLog.d("QWalletPayJsHandler", 4, ((StringBuilder)localObject).toString());
+        paramBundle = ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getGrapHbResult(paramInt, paramBundle, QWalletPayJsPlugin.access$000(this.mJsPlugin));
+        if (paramBundle != null) {
+          QWalletPayJsPlugin.access$100(this.mJsPlugin, paramBundle.toString());
+        }
+      }
+      else
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("mJsPlugin.mActivity == null:");
+        boolean bool;
+        if (QWalletPayJsPlugin.access$000(this.mJsPlugin) == null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        paramBundle.append(bool);
+        QLog.i("QWalletPayJsHandler", 1, paramBundle.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin.QWalletPayJsPluginResultReceiver
  * JD-Core Version:    0.7.0.1
  */

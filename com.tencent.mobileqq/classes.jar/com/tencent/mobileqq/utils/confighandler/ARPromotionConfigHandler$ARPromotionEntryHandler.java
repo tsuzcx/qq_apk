@@ -10,7 +10,7 @@ public class ARPromotionConfigHandler$ARPromotionEntryHandler
 {
   public ARPromotionConfigHandler$ARPromotionEntryHandler(String paramString)
   {
-    super(PromotionUtil.a + 365, paramString, "config_qq.android.ar_", "config", "ver");
+    super(localStringBuilder.toString(), paramString, "config_qq.android.ar_", "config", "ver");
   }
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, PromotionConfigInfo paramPromotionConfigInfo)
@@ -20,7 +20,7 @@ public class ARPromotionConfigHandler$ARPromotionEntryHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.ARPromotionConfigHandler.ARPromotionEntryHandler
  * JD-Core Version:    0.7.0.1
  */

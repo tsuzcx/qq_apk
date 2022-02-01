@@ -16,7 +16,15 @@ public class NinePatchRefDrawable
   private Resources res;
   private String srcName;
   
-  public NinePatchRefDrawable(Resources paramResources, BitmapReference paramBitmapReference, byte[] paramArrayOfByte, Rect paramRect, String paramString) {}
+  public NinePatchRefDrawable(Resources paramResources, BitmapReference paramBitmapReference, byte[] paramArrayOfByte, Rect paramRect, String paramString)
+  {
+    super(paramResources, localBitmap, paramArrayOfByte, paramRect, paramString);
+    this.mBitmapRef = paramBitmapReference;
+    this.res = paramResources;
+    this.chunk = paramArrayOfByte;
+    this.padding = paramRect;
+    this.srcName = paramString;
+  }
   
   public BitmapReference getBitmapRef()
   {
@@ -25,8 +33,9 @@ public class NinePatchRefDrawable
   
   public boolean isMulible()
   {
-    if (this.mBitmapRef != null) {
-      return this.mBitmapRef.isMutable();
+    BitmapReference localBitmapReference = this.mBitmapRef;
+    if (localBitmapReference != null) {
+      return localBitmapReference.isMutable();
     }
     return false;
   }
@@ -47,7 +56,7 @@ public class NinePatchRefDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.NinePatchRefDrawable
  * JD-Core Version:    0.7.0.1
  */

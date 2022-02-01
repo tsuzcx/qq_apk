@@ -5,27 +5,26 @@ import Wallet.ResInfo;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.QWalletCommonServlet;
-import com.tencent.mobileqq.activity.qwallet.QWalletSetting;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.IQWalletPreferenceApi;
+import com.tencent.mobileqq.qwallet.config.IQWalletConfigService;
+import com.tencent.mobileqq.qwallet.impl.QWalletCommonServlet;
+import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 import com.tencent.mobileqq.qwallet.preload.DownloadParam;
 import com.tencent.mobileqq.qwallet.preload.IPreloadModule;
 import com.tencent.mobileqq.qwallet.preload.IPreloadResource;
 import com.tencent.mobileqq.qwallet.preload.IPreloadService;
 import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
 import com.tencent.mobileqq.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.soload.util.SoDataUtil;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -34,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
 public class PreloadResourceImpl
@@ -113,62 +113,44 @@ public class PreloadResourceImpl
     return (PreloadStaticApi.a(paramString2, this.type)) && (!isFolderPathValid(getFolderPath(paramString2, paramString1)));
   }
   
-  /* Error */
   public static boolean checkFolderAndUnzip(String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_1
-    //   4: invokestatic 141	com/tencent/mobileqq/qwallet/preload/impl/PreloadResourceImpl:isFolderPathValid	(Ljava/lang/String;)Z
-    //   7: istore_2
-    //   8: iload_2
-    //   9: ifeq +10 -> 19
-    //   12: iconst_1
-    //   13: istore_2
-    //   14: ldc 2
-    //   16: monitorexit
-    //   17: iload_2
-    //   18: ireturn
-    //   19: aload_0
-    //   20: aload_1
-    //   21: invokestatic 151	com/tencent/mobileqq/qwallet/preload/PreloadStaticApi:a	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   24: istore_2
-    //   25: goto -11 -> 14
-    //   28: astore_0
-    //   29: ldc 2
-    //   31: monitorexit
-    //   32: aload_0
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	paramString1	String
-    //   0	34	1	paramString2	String
-    //   7	18	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   3	8	28	finally
-    //   19	25	28	finally
+    try
+    {
+      boolean bool = isFolderPathValid(paramString2);
+      if (bool) {
+        return true;
+      }
+      bool = PreloadStaticApi.a(paramString1, paramString2);
+      return bool;
+    }
+    finally {}
   }
   
   public static String getFolderPathByMD5AndUrl(String paramString1, String paramString2, int paramInt)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      paramString1 = MD5.toMD5(paramString2 + paramString1);
-      return PreloadStaticApi.a(paramInt) + paramString1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(paramString1);
+      paramString1 = MD5.toMD5(localStringBuilder.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append(PreloadStaticApi.a(paramInt));
+      paramString2.append(paramString1);
+      return paramString2.toString();
     }
     return null;
   }
   
   public static boolean isFolderPathValid(String paramString)
   {
-    return (!TextUtils.isEmpty(paramString)) && (new File(paramString).exists()) && (FileUtils.b(paramString) > 0L);
+    return (!TextUtils.isEmpty(paramString)) && (new File(paramString).exists()) && (FileUtils.getFileOrFolderSize(paramString) > 0L);
   }
   
   public static boolean isPreloadRetryProtectTestOpen()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("envSwitch", 4).getBoolean("qwalley_key_preload_retry_protect", false);
+    return MobileQQ.getContext().getSharedPreferences("envSwitch", 4).getBoolean("qwalley_key_preload_retry_protect", false);
   }
   
   public static boolean isValidToReport(long paramLong1, long paramLong2)
@@ -178,7 +160,6 @@ public class PreloadResourceImpl
   
   public static PreloadResourceImpl parsePreloadResource(JSONObject paramJSONObject, PreloadModuleImpl paramPreloadModuleImpl, boolean paramBoolean, int paramInt)
   {
-    boolean bool2 = true;
     PreloadResourceImpl localPreloadResourceImpl = new PreloadResourceImpl();
     for (;;)
     {
@@ -192,23 +173,25 @@ public class PreloadResourceImpl
         localPreloadResourceImpl.mInvalidTime = paramJSONObject.optString("invalid_time");
         localPreloadResourceImpl.netType = paramJSONObject.optString("net_type");
         localPreloadResourceImpl.size = paramJSONObject.optInt("size");
-        if (paramJSONObject.optInt("flow_control") == 1)
+        int i = paramJSONObject.optInt("flow_control");
+        boolean bool2 = true;
+        if (i == 1)
         {
           bool1 = true;
           localPreloadResourceImpl.mFlowControl = bool1;
           localPreloadResourceImpl.mIsFromLocal = paramBoolean;
           if (paramJSONObject.optInt("is_temp") != 1) {
-            break label278;
+            break label295;
           }
           paramBoolean = true;
           localPreloadResourceImpl.mIsTemp = paramBoolean;
           if (paramJSONObject.optInt("is_need_unzip") != 1) {
-            break label283;
+            break label300;
           }
           paramBoolean = true;
           localPreloadResourceImpl.mIsNeedUnzip = paramBoolean;
           if (paramJSONObject.optInt("is_unzip_inside") != 1) {
-            break label288;
+            break label305;
           }
           paramBoolean = bool2;
           localPreloadResourceImpl.mIsUnzipInside = paramBoolean;
@@ -233,91 +216,54 @@ public class PreloadResourceImpl
       }
       boolean bool1 = false;
       continue;
-      label278:
+      label295:
       paramBoolean = false;
       continue;
-      label283:
+      label300:
       paramBoolean = false;
       continue;
-      label288:
+      label305:
       paramBoolean = false;
     }
   }
   
-  /* Error */
   public static boolean unzipToCustomPath(String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: iload_3
-    //   6: istore_2
-    //   7: aload_0
-    //   8: invokestatic 159	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   11: ifne +14 -> 25
-    //   14: aload_1
-    //   15: invokestatic 159	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   18: istore_2
-    //   19: iload_2
-    //   20: ifeq +10 -> 30
-    //   23: iload_3
-    //   24: istore_2
-    //   25: ldc 2
-    //   27: monitorexit
-    //   28: iload_2
-    //   29: ireturn
-    //   30: iload_3
-    //   31: istore_2
-    //   32: aload_1
-    //   33: invokestatic 273	com/tencent/mobileqq/qwallet/preload/PreloadStaticApi:a	(Ljava/lang/String;)Z
-    //   36: ifeq -11 -> 25
-    //   39: aload_0
-    //   40: aload_1
-    //   41: iconst_1
-    //   42: invokestatic 278	com/tencent/mobileqq/activity/qwallet/utils/QWalletTools:a	(Ljava/lang/String;Ljava/lang/String;Z)Z
-    //   45: istore_2
-    //   46: goto -21 -> 25
-    //   49: astore_0
-    //   50: ldc 2
-    //   52: monitorexit
-    //   53: aload_0
-    //   54: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	55	0	paramString1	String
-    //   0	55	1	paramString2	String
-    //   6	40	2	bool1	boolean
-    //   1	30	3	bool2	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   7	19	49	finally
-    //   32	46	49	finally
+    try
+    {
+      if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+      {
+        if (PreloadStaticApi.a(paramString2))
+        {
+          boolean bool = QWalletTools.a(paramString1, paramString2, true);
+          return bool;
+        }
+        return false;
+      }
+      return false;
+    }
+    finally {}
   }
   
   public void deleteResFile(PreloadModuleImpl paramPreloadModuleImpl, PreloadServiceImpl paramPreloadServiceImpl, int paramInt)
   {
-    FileUtils.e(PreloadFlowControlConfig.getConfigPath(this.mResId, paramPreloadServiceImpl.mApp));
+    FileUtils.deleteFile(PreloadFlowControlConfig.getConfigPath(this.mResId, paramPreloadServiceImpl.mApp));
     paramPreloadModuleImpl = getResDownloadUrl(paramPreloadModuleImpl);
     paramPreloadServiceImpl = PreloadStaticApi.b(paramPreloadModuleImpl, getFilePos());
     if (paramInt == 9) {
       ResDownRecordUtil.a(paramPreloadModuleImpl, getFilePos());
-    }
-    for (;;)
-    {
-      if (PreloadStaticApi.a(paramPreloadModuleImpl, this.type))
-      {
-        String str = getFolderPath(this.url, paramPreloadServiceImpl);
-        if (!TextUtils.isEmpty(str)) {
-          FileUtils.a(str, false);
-        }
-      }
-      FileUtils.e(paramPreloadServiceImpl);
-      ResUtil.b(paramPreloadModuleImpl, getFilePos());
-      return;
+    } else {
       ResDownRecordUtil.a(paramPreloadModuleImpl, paramInt, getFilePos());
     }
+    if (PreloadStaticApi.a(paramPreloadModuleImpl, this.type))
+    {
+      String str = getFolderPath(this.url, paramPreloadServiceImpl);
+      if (!TextUtils.isEmpty(str)) {
+        FileUtils.delete(str, false);
+      }
+    }
+    FileUtils.deleteFile(paramPreloadServiceImpl);
+    ResUtil.b(paramPreloadModuleImpl, getFilePos());
   }
   
   public boolean equals(Object paramObject)
@@ -373,17 +319,14 @@ public class PreloadResourceImpl
     try
     {
       localResInfo.sResId = this.mResId;
-      localResInfo.iSize = paramInt;
-      localArrayList.add(localResInfo);
-      return localArrayList;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    localResInfo.iSize = paramInt;
+    localArrayList.add(localResInfo);
+    return localArrayList;
   }
   
   public String getResDownloadUrl(IPreloadModule paramIPreloadModule)
@@ -391,7 +334,11 @@ public class PreloadResourceImpl
     if (!TextUtils.isEmpty(this.url)) {
       return this.url;
     }
-    return paramIPreloadModule.getBaseUrl() + "/" + this.urlPath;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramIPreloadModule.getBaseUrl());
+    localStringBuilder.append("/");
+    localStringBuilder.append(this.urlPath);
+    return localStringBuilder.toString();
   }
   
   public String getResId()
@@ -401,15 +348,10 @@ public class PreloadResourceImpl
   
   public ResourceInfo getResInfo(PreloadModuleImpl paramPreloadModuleImpl)
   {
-    paramPreloadModuleImpl = getResDownloadUrl(paramPreloadModuleImpl);
-    if (!this.mIsNeedUnzip) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramPreloadModuleImpl = ResUtil.a(paramPreloadModuleImpl, bool, this.type, getFilePos());
-      paramPreloadModuleImpl.type = this.type;
-      paramPreloadModuleImpl.resId = this.mResId;
-      return paramPreloadModuleImpl;
-    }
+    paramPreloadModuleImpl = ResUtil.a(getResDownloadUrl(paramPreloadModuleImpl), this.mIsNeedUnzip ^ true, this.type, getFilePos());
+    paramPreloadModuleImpl.type = this.type;
+    paramPreloadModuleImpl.resId = this.mResId;
+    return paramPreloadModuleImpl;
   }
   
   public String getUrl()
@@ -421,8 +363,20 @@ public class PreloadResourceImpl
   {
     int i = ResUtil.a(getResDownloadUrl(paramPreloadModuleImpl), getFilePos());
     long l = ResUtil.a(getResDownloadUrl(paramPreloadModuleImpl), getFilePos());
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadResource", 2, "[handleAbnormalRetry]:" + this.url + "|" + i + "|" + l + "|" + paramPreloadModuleImpl.mRetryTimeInterval + "|" + paramPreloadModuleImpl.mRetryCount);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[handleAbnormalRetry]:");
+      localStringBuilder.append(this.url);
+      localStringBuilder.append("|");
+      localStringBuilder.append(i);
+      localStringBuilder.append("|");
+      localStringBuilder.append(l);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramPreloadModuleImpl.mRetryTimeInterval);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramPreloadModuleImpl.mRetryCount);
+      QLog.d("PreloadResource", 2, localStringBuilder.toString());
     }
     if (isRetryProtectOpen()) {
       if (i > paramPreloadModuleImpl.mRetryCount)
@@ -434,8 +388,12 @@ public class PreloadResourceImpl
       else if ((i >= 1) && (Math.abs(NetConnInfoCenter.getServerTimeMillis() - l) < paramPreloadModuleImpl.mRetryTimeInterval * 60 * 60 * 1000))
       {
         this.jdField_a_of_type_Boolean = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadResource", 2, "ignore set to true for" + this.mResId);
+        if (QLog.isColorLevel())
+        {
+          paramPreloadModuleImpl = new StringBuilder();
+          paramPreloadModuleImpl.append("ignore set to true for");
+          paramPreloadModuleImpl.append(this.mResId);
+          QLog.d("PreloadResource", 2, paramPreloadModuleImpl.toString());
         }
         return false;
       }
@@ -461,8 +419,13 @@ public class PreloadResourceImpl
     if (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig == null) {
       this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig = PreloadFlowControlConfig.getFlowControlConfig(this.mResId, localPreloadServiceImpl.mApp);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadResource", 2, this.mResId + "handleFlowConfig:" + this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mDownloadStatus);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ???.append(this.mResId);
+      ???.append("handleFlowConfig:");
+      ???.append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mDownloadStatus);
+      QLog.d("PreloadResource", 2, ???.toString());
     }
     long l1 = localPreloadServiceImpl.mApp.getLongAccountUin();
     String str1 = DeviceInfoUtil.i();
@@ -471,48 +434,38 @@ public class PreloadResourceImpl
     float f2 = (float)DeviceInfoUtil.c();
     int i = DeviceInfoUtil.b();
     long l2 = DeviceInfoUtil.a() / 1024L;
-    for (;;)
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig)
     {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig)
-      {
-        switch (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mDownloadStatus)
-        {
-        case -1: 
-          localPreloadServiceImpl.notifyResFlowCheckNext();
-          return;
-        }
-      }
-      startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, paramPreloadModuleImpl, paramDownloadListener);
-      continue;
-      long l3 = NetConnInfoCenter.getServerTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadResource", 2, this.mResId + "STATUS_NOW_DOWNLOAD|" + l3 + "|" + this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mValidDownloadTime);
-      }
-      if (l3 < this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mValidDownloadTime)
-      {
-        if (isTimeToDownload(localPreloadServiceImpl))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PreloadResource", 2, this.mResId + "begin download");
-          }
-          startDownloadRes(paramPreloadModuleImpl, localPreloadServiceImpl, getFlowControlDownloadListener(l1, paramDownloadListener, localPreloadServiceImpl, this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mRetryDownloadTimes), true);
-        }
-        else
-        {
-          localPreloadServiceImpl.notifyResFlowCheckNext();
-          if (paramDownloadListener != null) {
-            notifyListenerDownloadFailInFlowControl(paramDownloadListener, paramPreloadModuleImpl, localPreloadServiceImpl);
+      int j = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mDownloadStatus;
+      long l3;
+      Object localObject1;
+      if (j != -1) {
+        if (j != 0) {
+          if (j != 1)
+          {
+            if (j != 2)
+            {
+              localPreloadServiceImpl.notifyResFlowCheckNext();
+              break label1030;
+            }
+            l3 = NetConnInfoCenter.getServerTimeMillis();
+            if (!QLog.isColorLevel()) {
+              break label1033;
+            }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(this.mResId);
+            ((StringBuilder)localObject1).append(" STATUS_NOT_DOWNLOAD|");
+            ((StringBuilder)localObject1).append(l3);
+            ((StringBuilder)localObject1).append("|");
+            ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mNextCanReqTime);
+            QLog.d("PreloadResource", 2, ((StringBuilder)localObject1).toString());
           }
         }
       }
-      else
+      label1030:
+      label1033:
+      for (;;)
       {
-        startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, paramPreloadModuleImpl, paramDownloadListener);
-        continue;
-        l3 = NetConnInfoCenter.getServerTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadResource", 2, this.mResId + " STATUS_NOT_DOWNLOAD|" + l3 + "|" + this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mNextCanReqTime);
-        }
         if (l3 > this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mNextCanReqTime)
         {
           startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, paramPreloadModuleImpl, paramDownloadListener);
@@ -523,33 +476,129 @@ public class PreloadResourceImpl
           if (paramDownloadListener != null)
           {
             notifyListenerDownloadFailInFlowControl(paramDownloadListener, paramPreloadModuleImpl, localPreloadServiceImpl);
-            continue;
+            break label1030;
             l3 = NetConnInfoCenter.getServerTimeMillis();
-            long l4 = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mNextRetryReqTime - l3;
-            if (QLog.isColorLevel()) {
-              QLog.d("PreloadResource", 2, this.mResId + "STATUS_WAIT_TO_REQ|" + l3 + "|" + this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mNextRetryReqTime + "|" + l4);
+            if (!QLog.isColorLevel()) {
+              break;
             }
-            if (l4 <= 0L)
-            {
-              ArrayList localArrayList = getMyResInfos();
-              PreloadFlowControlConfig localPreloadFlowControlConfig = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig;
-              int j = localPreloadFlowControlConfig.mRetryReqTimes + 1;
-              localPreloadFlowControlConfig.mRetryReqTimes = j;
-              startFlowControlReq(JudgeDownloadReq.createReq(localArrayList, l1, j, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, paramPreloadModuleImpl, paramDownloadListener);
-            }
-            else
-            {
-              if ((this.mReqTask == null) || (this.mReqTask.a()))
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(this.mResId);
+            ((StringBuilder)localObject1).append("STATUS_NOW_DOWNLOAD|");
+            ((StringBuilder)localObject1).append(l3);
+            ((StringBuilder)localObject1).append("|");
+            ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mValidDownloadTime);
+            QLog.d("PreloadResource", 2, ((StringBuilder)localObject1).toString());
+            if (l3 < this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mValidDownloadTime) {
+              if (isTimeToDownload(localPreloadServiceImpl))
               {
-                this.mReqTask = new PreloadResourceImpl.1(this, new WeakReference(localPreloadServiceImpl), paramPreloadModuleImpl);
-                ThreadManager.getTimer().schedule(this.mReqTask, l4);
-              }
-              localPreloadServiceImpl.notifyResFlowCheckNext();
-              if (paramDownloadListener != null) {
-                notifyListenerDownloadFailInFlowControl(paramDownloadListener, paramPreloadModuleImpl, localPreloadServiceImpl);
+                if (QLog.isColorLevel())
+                {
+                  localObject1 = new StringBuilder();
+                  ((StringBuilder)localObject1).append(this.mResId);
+                  ((StringBuilder)localObject1).append("begin download");
+                  QLog.d("PreloadResource", 2, ((StringBuilder)localObject1).toString());
+                }
+                i = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mRetryDownloadTimes;
+                localObject1 = ???;
               }
             }
           }
+        }
+        for (;;)
+        {
+          try
+          {
+            startDownloadRes(paramPreloadModuleImpl, localPreloadServiceImpl, getFlowControlDownloadListener(l1, paramDownloadListener, localPreloadServiceImpl, i), true);
+            continue;
+            IPreloadService localIPreloadService = ???;
+            localObject1 = localIPreloadService;
+            localPreloadServiceImpl.notifyResFlowCheckNext();
+            if (paramDownloadListener != null)
+            {
+              localObject1 = localIPreloadService;
+              notifyListenerDownloadFailInFlowControl(paramDownloadListener, paramPreloadModuleImpl, localPreloadServiceImpl);
+              continue;
+              localObject1 = ???;
+              startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, paramPreloadModuleImpl, paramDownloadListener);
+              continue;
+              localIPreloadService = ???;
+              localObject1 = localIPreloadService;
+              l3 = NetConnInfoCenter.getServerTimeMillis();
+              localObject1 = localIPreloadService;
+              long l4 = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mNextRetryReqTime - l3;
+              localObject1 = localIPreloadService;
+              Object localObject2;
+              if (QLog.isColorLevel())
+              {
+                localObject1 = localIPreloadService;
+                localObject2 = new StringBuilder();
+                localObject1 = localIPreloadService;
+                ((StringBuilder)localObject2).append(this.mResId);
+                localObject1 = localIPreloadService;
+                ((StringBuilder)localObject2).append("STATUS_WAIT_TO_REQ|");
+                localObject1 = localIPreloadService;
+                ((StringBuilder)localObject2).append(l3);
+                localObject1 = localIPreloadService;
+                ((StringBuilder)localObject2).append("|");
+                localObject1 = localIPreloadService;
+                ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig.mNextRetryReqTime);
+                localObject1 = localIPreloadService;
+                ((StringBuilder)localObject2).append("|");
+                localObject1 = localIPreloadService;
+                ((StringBuilder)localObject2).append(l4);
+                localObject1 = localIPreloadService;
+                QLog.d("PreloadResource", 2, ((StringBuilder)localObject2).toString());
+              }
+              if (l4 <= 0L)
+              {
+                localObject1 = localIPreloadService;
+                localObject2 = getMyResInfos();
+                localObject1 = localIPreloadService;
+                PreloadFlowControlConfig localPreloadFlowControlConfig = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadFlowControlConfig;
+                localObject1 = localIPreloadService;
+                j = localPreloadFlowControlConfig.mRetryReqTimes + 1;
+                localObject1 = localIPreloadService;
+                localPreloadFlowControlConfig.mRetryReqTimes = j;
+                localObject1 = localIPreloadService;
+                startFlowControlReq(JudgeDownloadReq.createReq((ArrayList)localObject2, l1, j, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, paramPreloadModuleImpl, paramDownloadListener);
+              }
+              else
+              {
+                localObject1 = localIPreloadService;
+                if (this.mReqTask != null)
+                {
+                  localObject1 = localIPreloadService;
+                  if (!this.mReqTask.a()) {}
+                }
+                else
+                {
+                  localObject1 = localIPreloadService;
+                  this.mReqTask = new PreloadResourceImpl.1(this, new WeakReference(localPreloadServiceImpl), paramPreloadModuleImpl);
+                  localObject1 = localIPreloadService;
+                  ThreadManager.getTimer().schedule(this.mReqTask, l4);
+                }
+                localObject1 = localIPreloadService;
+                localPreloadServiceImpl.notifyResFlowCheckNext();
+                if (paramDownloadListener != null)
+                {
+                  localObject1 = localIPreloadService;
+                  notifyListenerDownloadFailInFlowControl(paramDownloadListener, paramPreloadModuleImpl, localPreloadServiceImpl);
+                  continue;
+                  localObject1 = ???;
+                  startFlowControlReq(JudgeDownloadReq.createReq(getMyResInfos(), l1, 0, str1, str2, f1, f2, i, l2), localPreloadServiceImpl, paramPreloadModuleImpl, paramDownloadListener);
+                }
+              }
+            }
+            localObject1 = ???;
+            return;
+          }
+          finally
+          {
+            paramPreloadModuleImpl = (PreloadModuleImpl)localObject1;
+            continue;
+          }
+          localObject1 = paramPreloadModuleImpl;
+          throw ???;
         }
       }
     }
@@ -563,44 +612,49 @@ public class PreloadResourceImpl
     String[] arrayOfString = this.mAbi.split("\\|");
     int j = arrayOfString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label79;
-      }
       String str = arrayOfString[i];
-      if ((("32".equals(str)) && (!SoDataUtil.a())) || (("64".equals(str)) && (SoDataUtil.a()))) {
-        break;
+      if (("32".equals(str)) && (!SoDataUtil.a())) {
+        return true;
+      }
+      if (("64".equals(str)) && (SoDataUtil.a())) {
+        return true;
       }
       i += 1;
     }
-    label79:
     return false;
   }
   
   public boolean isChosenToReport()
   {
+    Object localObject = QWalletTools.a();
+    if (localObject == null) {
+      return false;
+    }
+    IQWalletConfigService localIQWalletConfigService = (IQWalletConfigService)((AppRuntime)localObject).getRuntimeService(IQWalletConfigService.class, "");
     int i = 10000;
-    QQAppInterface localQQAppInterface = QWalletTools.a();
-    if (localQQAppInterface == null) {
+    if (localIQWalletConfigService != null) {
+      i = localIQWalletConfigService.getInt("report", 10000, new String[] { "preDownSampleBase" });
+    }
+    if (i == 0) {
       return false;
     }
-    QWalletConfigManager localQWalletConfigManager = (QWalletConfigManager)localQQAppInterface.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
-    if (localQWalletConfigManager == null) {}
-    while (i == 0)
-    {
-      return false;
-      i = localQWalletConfigManager.a("report", 10000, new String[] { "preDownSampleBase" });
-    }
-    int k = QWalletSetting.a(localQQAppInterface.getCurrentUin(), "download_report_random", 0);
+    int k = ((IQWalletPreferenceApi)QRoute.api(IQWalletPreferenceApi.class)).getInt(((AppRuntime)localObject).getCurrentUin(), "download_report_random", 0);
     int j = k;
     if (k == 0)
     {
-      j = new Random(localQQAppInterface.getLongAccountUin()).nextInt();
-      QWalletSetting.a(localQQAppInterface.getCurrentUin(), "download_report_random", j);
+      j = new Random(((AppRuntime)localObject).getLongAccountUin()).nextInt();
+      ((IQWalletPreferenceApi)QRoute.api(IQWalletPreferenceApi.class)).putInt(((AppRuntime)localObject).getCurrentUin(), "download_report_random", j);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadResource", 2, "isChosenToReport|" + j + "|" + i);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isChosenToReport|");
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append("|");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("PreloadResource", 2, ((StringBuilder)localObject).toString());
     }
     return j % i == 0;
   }
@@ -611,8 +665,12 @@ public class PreloadResourceImpl
     long l2 = NetConnInfoCenter.getServerTimeMillis();
     if ((l1 != -1L) && (l1 < l2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadResource", 2, this.mResId + " out of date");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mResId);
+        localStringBuilder.append(" out of date");
+        QLog.d("PreloadResource", 2, localStringBuilder.toString());
       }
       return false;
     }
@@ -621,17 +679,17 @@ public class PreloadResourceImpl
   
   public boolean isNeedDeleteOldFileWhenUpdate(PreloadModuleImpl paramPreloadModuleImpl, PreloadResourceImpl paramPreloadResourceImpl, PreloadServiceImpl paramPreloadServiceImpl)
   {
-    if (getFilePos() != paramPreloadResourceImpl.getFilePos()) {}
-    do
-    {
+    if (getFilePos() != paramPreloadResourceImpl.getFilePos()) {
       return true;
-      if (this.md5.equalsIgnoreCase(paramPreloadResourceImpl.md5)) {
-        break;
-      }
+    }
+    if (!this.md5.equalsIgnoreCase(paramPreloadResourceImpl.md5))
+    {
       paramPreloadModuleImpl = getResDownloadUrl(paramPreloadModuleImpl);
       paramPreloadServiceImpl = PreloadStaticApi.b(paramPreloadModuleImpl, getFilePos());
-    } while ((!TextUtils.isEmpty(paramPreloadResourceImpl.md5)) && (!paramPreloadResourceImpl.md5.equalsIgnoreCase(ResUtil.b(paramPreloadModuleImpl, paramPreloadServiceImpl, getFilePos()))));
-    return false;
+      if ((!TextUtils.isEmpty(paramPreloadResourceImpl.md5)) && (!paramPreloadResourceImpl.md5.equalsIgnoreCase(ResUtil.b(paramPreloadModuleImpl, paramPreloadServiceImpl, getFilePos())))) {
+        return true;
+      }
+    }
     return false;
   }
   
@@ -646,15 +704,15 @@ public class PreloadResourceImpl
     Object localObject1 = QWalletTools.a();
     if (localObject1 != null)
     {
-      Object localObject2 = (QWalletConfigManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER);
+      Object localObject2 = (IQWalletConfigService)((AppRuntime)localObject1).getRuntimeService(IQWalletConfigService.class, "");
       if (localObject2 != null)
       {
-        localObject2 = ((QWalletConfigManager)localObject2).a("preload");
+        localObject2 = ((IQWalletConfigService)localObject2).getConfig("preload");
         if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).contains(paramString))) {
           return true;
         }
       }
-      localObject1 = PreloadStaticApi.d(((QQAppInterface)localObject1).getCurrentUin());
+      localObject1 = PreloadStaticApi.d(((AppRuntime)localObject1).getCurrentUin());
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).contains(paramString))) {
         return true;
       }
@@ -672,25 +730,91 @@ public class PreloadResourceImpl
   
   public boolean isResChange(PreloadResourceImpl paramPreloadResourceImpl)
   {
-    if (!QWalletTools.c(this.url, paramPreloadResourceImpl.url)) {}
-    while ((!QWalletTools.c(this.urlPath, paramPreloadResourceImpl.urlPath)) || (this.type != paramPreloadResourceImpl.type) || (!QWalletTools.c(this.md5, paramPreloadResourceImpl.md5)) || (!QWalletTools.c(this.mDownloadTime, paramPreloadResourceImpl.mDownloadTime)) || (!QWalletTools.c(this.mInvalidTime, paramPreloadResourceImpl.mInvalidTime)) || (!QWalletTools.c(this.netType, paramPreloadResourceImpl.netType)) || (this.size != paramPreloadResourceImpl.size) || (this.mFlowControl != paramPreloadResourceImpl.mFlowControl) || (!QWalletTools.c(this.mResId, paramPreloadResourceImpl.mResId)) || (this.mIsFromLocal != paramPreloadResourceImpl.mIsFromLocal) || (this.mIsTemp != paramPreloadResourceImpl.mIsTemp) || (this.mRetryTime != paramPreloadResourceImpl.mRetryTime) || (this.mIsNeedUnzip != paramPreloadResourceImpl.mIsNeedUnzip) || (this.mIsUnzipInside != paramPreloadResourceImpl.mIsUnzipInside) || (!QWalletTools.c(this.mUnzipPrefix, paramPreloadResourceImpl.mUnzipPrefix)) || (this.mHasUnzip != paramPreloadResourceImpl.mHasUnzip) || (this.mFromType != paramPreloadResourceImpl.mFromType) || (this.mFilePos != paramPreloadResourceImpl.mFilePos) || (!TextUtils.equals(this.mAbi, paramPreloadResourceImpl.mAbi))) {
+    if (!QWalletTools.c(this.url, paramPreloadResourceImpl.url)) {
       return true;
     }
-    return false;
+    if (!QWalletTools.c(this.urlPath, paramPreloadResourceImpl.urlPath)) {
+      return true;
+    }
+    if (this.type != paramPreloadResourceImpl.type) {
+      return true;
+    }
+    if (!QWalletTools.c(this.md5, paramPreloadResourceImpl.md5)) {
+      return true;
+    }
+    if (!QWalletTools.c(this.mDownloadTime, paramPreloadResourceImpl.mDownloadTime)) {
+      return true;
+    }
+    if (!QWalletTools.c(this.mInvalidTime, paramPreloadResourceImpl.mInvalidTime)) {
+      return true;
+    }
+    if (!QWalletTools.c(this.netType, paramPreloadResourceImpl.netType)) {
+      return true;
+    }
+    if (this.size != paramPreloadResourceImpl.size) {
+      return true;
+    }
+    if (this.mFlowControl != paramPreloadResourceImpl.mFlowControl) {
+      return true;
+    }
+    if (!QWalletTools.c(this.mResId, paramPreloadResourceImpl.mResId)) {
+      return true;
+    }
+    if (this.mIsFromLocal != paramPreloadResourceImpl.mIsFromLocal) {
+      return true;
+    }
+    if (this.mIsTemp != paramPreloadResourceImpl.mIsTemp) {
+      return true;
+    }
+    if (this.mRetryTime != paramPreloadResourceImpl.mRetryTime) {
+      return true;
+    }
+    if (this.mIsNeedUnzip != paramPreloadResourceImpl.mIsNeedUnzip) {
+      return true;
+    }
+    if (this.mIsUnzipInside != paramPreloadResourceImpl.mIsUnzipInside) {
+      return true;
+    }
+    if (!QWalletTools.c(this.mUnzipPrefix, paramPreloadResourceImpl.mUnzipPrefix)) {
+      return true;
+    }
+    if (this.mHasUnzip != paramPreloadResourceImpl.mHasUnzip) {
+      return true;
+    }
+    if (this.mFromType != paramPreloadResourceImpl.mFromType) {
+      return true;
+    }
+    if (this.mFilePos != paramPreloadResourceImpl.mFilePos) {
+      return true;
+    }
+    return !TextUtils.equals(this.mAbi, paramPreloadResourceImpl.mAbi);
   }
   
   public boolean isResFileExist(IPreloadModule paramIPreloadModule)
   {
     paramIPreloadModule = getResDownloadUrl(paramIPreloadModule);
+    StringBuilder localStringBuilder;
     if (new File(PreloadStaticApi.b(paramIPreloadModule, getFilePos())).exists())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadResource", 2, "ResFileExist|" + this.mResId + "|" + paramIPreloadModule);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ResFileExist|");
+        localStringBuilder.append(this.mResId);
+        localStringBuilder.append("|");
+        localStringBuilder.append(paramIPreloadModule);
+        QLog.d("PreloadResource", 2, localStringBuilder.toString());
       }
       return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadResource", 2, "ResFileNotExist|" + this.mResId + "|" + paramIPreloadModule);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ResFileNotExist|");
+      localStringBuilder.append(this.mResId);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramIPreloadModule);
+      QLog.d("PreloadResource", 2, localStringBuilder.toString());
     }
     return false;
   }
@@ -702,16 +826,12 @@ public class PreloadResourceImpl
   
   public boolean isTimeToDownload(PreloadServiceImpl paramPreloadServiceImpl)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    long l1;
-    long l2;
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return false;
-      l1 = NetConnInfoCenter.getServerTimeMillis();
-      l2 = QWalletTools.a(this.mDownloadTime);
-    } while (((l2 != -1L) && (l2 >= l1)) || (!paramPreloadServiceImpl.isNetValidToDownload(this.netType)));
-    return true;
+    }
+    long l1 = NetConnInfoCenter.getServerTimeMillis();
+    long l2 = QWalletTools.a(this.mDownloadTime);
+    return ((l2 == -1L) || (l2 < l1)) && (paramPreloadServiceImpl.isNetValidToDownload(this.netType));
   }
   
   public void notifyListenerDownloadFailInFlowControl(DownloadListener paramDownloadListener, PreloadModuleImpl paramPreloadModuleImpl, PreloadServiceImpl paramPreloadServiceImpl)
@@ -731,24 +851,25 @@ public class PreloadResourceImpl
     if (isValidToReport(this.jdField_a_of_type_Long, System.currentTimeMillis()))
     {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (paramInt != 0) {
-        break label102;
+      if (paramInt == 0) {
+        paramInt = 0;
+      } else {
+        paramInt = 1;
       }
-      paramInt = 0;
-      if (paramPreloadModuleImpl != null) {
-        break label107;
+      if (paramPreloadModuleImpl == null) {
+        paramPreloadModuleImpl = "";
+      } else {
+        paramPreloadModuleImpl = paramPreloadModuleImpl.mid;
       }
-    }
-    label102:
-    label107:
-    for (paramPreloadModuleImpl = "";; paramPreloadModuleImpl = paramPreloadModuleImpl.mid)
-    {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramInt).append("|").append(paramPreloadModuleImpl).append("|").append(this.mResId).append("|").append(paramString);
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramPreloadModuleImpl);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.mResId);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramString);
       VACDReportUtil.a(localStringBuilder.toString(), "QWalletStat", "downloadReport", null, null, 0, null);
-      return;
-      paramInt = 1;
-      break;
     }
   }
   
@@ -773,8 +894,9 @@ public class PreloadResourceImpl
         unzip(str2, str1);
       }
       a(paramDownloadListener, paramPreloadModuleImpl, paramPreloadServiceImpl);
+      return;
     }
-    while (TextUtils.isEmpty(str1)) {
+    if (TextUtils.isEmpty(str1)) {
       return;
     }
     paramPreloadModuleImpl = new DownloadParam();
@@ -791,7 +913,29 @@ public class PreloadResourceImpl
   
   public String toString()
   {
-    return "Res [" + this.mResId + "|" + this.mFlowControl + "|" + this.mIsFromLocal + "|" + this.mIsNeedUnzip + "|" + this.mIsUnzipInside + "|" + this.mUnzipPrefix + "|" + this.mHasUnzip + "|" + this.mFromType + "|" + this.mFilePos + "|" + this.mAbi + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Res [");
+    localStringBuilder.append(this.mResId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mFlowControl);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mIsFromLocal);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mIsNeedUnzip);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mIsUnzipInside);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mUnzipPrefix);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mHasUnzip);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mFromType);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mFilePos);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.mAbi);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void unzip(String paramString1, String paramString2)
@@ -804,7 +948,7 @@ public class PreloadResourceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadResourceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -50,8 +50,8 @@ public class QCallRecent
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = true;
     boolean bool3 = false;
+    boolean bool2 = false;
     boolean bool1 = bool3;
     if (paramObject != null)
     {
@@ -59,38 +59,39 @@ public class QCallRecent
       if ((paramObject instanceof QCallRecent))
       {
         paramObject = (QCallRecent)paramObject;
-        if (this.uin != null) {
-          break label61;
+        String str = this.uin;
+        if (str == null)
+        {
+          bool1 = bool2;
+          if (paramObject.uin == null)
+          {
+            bool1 = bool2;
+            if (this.type == paramObject.type) {
+              bool1 = true;
+            }
+          }
+          return bool1;
         }
-        if ((paramObject.uin != null) || (this.type != paramObject.type)) {
-          break label56;
+        if ((!str.equals(paramObject.uin)) || (this.type != paramObject.type))
+        {
+          bool1 = bool3;
+          if (this.uin.equals(paramObject.uin))
+          {
+            bool1 = bool3;
+            if (UinTypeUtil.b(this.type))
+            {
+              bool1 = bool3;
+              if (!UinTypeUtil.b(paramObject.type)) {}
+            }
+          }
         }
-        bool1 = bool2;
+        else
+        {
+          bool1 = true;
+        }
       }
     }
-    label56:
-    label61:
-    do
-    {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return bool1;
-            bool1 = false;
-          }
-          if ((this.uin.equals(paramObject.uin)) && (this.type == paramObject.type)) {
-            break;
-          }
-          bool1 = bool3;
-        } while (!this.uin.equals(paramObject.uin));
-        bool1 = bool3;
-      } while (!UinTypeUtil.b(this.type));
-      bool1 = bool3;
-    } while (!UinTypeUtil.b(paramObject.type));
-    return true;
+    return bool1;
   }
   
   public int getState(QQAppInterface paramQQAppInterface)
@@ -120,12 +121,42 @@ public class QCallRecent
   
   public String toString()
   {
-    return "RecentCall(" + "uin:" + this.uin + ",type:" + this.type + ",troopUin" + this.troopUin + ",sendFlag:" + this.sendFlag + ",missedCallCount:" + this.missedCallCount + ",isVideo:" + this.isVideo + ",displayName:" + this.displayName + ",lastCallTime:" + this.lastCallTime + ",lastCallMsg:" + this.lastCallMsg + ",readTime:" + this.readTime + ",extraType:" + this.extraType + ",bindType:" + this.bindType + ",bindId:" + this.bindId + ",callType:" + this.callType + ")";
+    StringBuffer localStringBuffer = new StringBuffer("RecentCall(");
+    localStringBuffer.append("uin:");
+    localStringBuffer.append(this.uin);
+    localStringBuffer.append(",type:");
+    localStringBuffer.append(this.type);
+    localStringBuffer.append(",troopUin");
+    localStringBuffer.append(this.troopUin);
+    localStringBuffer.append(",sendFlag:");
+    localStringBuffer.append(this.sendFlag);
+    localStringBuffer.append(",missedCallCount:");
+    localStringBuffer.append(this.missedCallCount);
+    localStringBuffer.append(",isVideo:");
+    localStringBuffer.append(this.isVideo);
+    localStringBuffer.append(",displayName:");
+    localStringBuffer.append(this.displayName);
+    localStringBuffer.append(",lastCallTime:");
+    localStringBuffer.append(this.lastCallTime);
+    localStringBuffer.append(",lastCallMsg:");
+    localStringBuffer.append(this.lastCallMsg);
+    localStringBuffer.append(",readTime:");
+    localStringBuffer.append(this.readTime);
+    localStringBuffer.append(",extraType:");
+    localStringBuffer.append(this.extraType);
+    localStringBuffer.append(",bindType:");
+    localStringBuffer.append(this.bindType);
+    localStringBuffer.append(",bindId:");
+    localStringBuffer.append(this.bindId);
+    localStringBuffer.append(",callType:");
+    localStringBuffer.append(this.callType);
+    localStringBuffer.append(")");
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.QCallRecent
  * JD-Core Version:    0.7.0.1
  */

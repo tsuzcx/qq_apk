@@ -24,15 +24,16 @@ public final class LottieResult<V>
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof LottieResult)) {
-        return false;
-      }
-      paramObject = (LottieResult)paramObject;
-    } while ((getValue() != null) && (getValue().equals(paramObject.getValue())));
+    }
+    if (!(paramObject instanceof LottieResult)) {
+      return false;
+    }
+    paramObject = (LottieResult)paramObject;
+    if ((getValue() != null) && (getValue().equals(paramObject.getValue()))) {
+      return true;
+    }
     if ((getException() != null) && (paramObject.getException() != null)) {
       return getException().toString().equals(getException().toString());
     }
@@ -58,7 +59,7 @@ public final class LottieResult<V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieResult
  * JD-Core Version:    0.7.0.1
  */

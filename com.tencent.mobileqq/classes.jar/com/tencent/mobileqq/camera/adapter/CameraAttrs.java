@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class CameraAttrs
 {
-  private static CameraAttrs jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs = null;
+  private static CameraAttrs jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs;
   public int a;
   public String a;
   private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -49,15 +49,16 @@ public class CameraAttrs
   
   public static CameraAttrs a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs == null) {
-        jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs = new CameraAttrs();
+    if (jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs == null) {
+          jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs = new CameraAttrs();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqCameraAdapterCameraAttrs;
   }
   
   private void a(SharedPreferences paramSharedPreferences)
@@ -160,7 +161,7 @@ public class CameraAttrs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.camera.adapter.CameraAttrs
  * JD-Core Version:    0.7.0.1
  */

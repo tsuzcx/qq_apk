@@ -28,11 +28,15 @@ public final class Debug
       if (i >= paramArrayOfByte.length) {
         return localStringBuffer.toString();
       }
-      if (i % 8 == 0) {
-        localStringBuffer.append(addrHex(i + paramLong)).append(":");
+      int j = i % 8;
+      if (j == 0)
+      {
+        localStringBuffer.append(addrHex(i + paramLong));
+        localStringBuffer.append(":");
       }
-      localStringBuffer.append(byteHex(paramArrayOfByte[i])).append(" ");
-      if (i % 8 == 7) {
+      localStringBuffer.append(byteHex(paramArrayOfByte[i]));
+      localStringBuffer.append(" ");
+      if (j == 7) {
         localStringBuffer.append("\n");
       }
       i += 1;
@@ -44,101 +48,92 @@ public final class Debug
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_0
-    //   2: new 65	java/io/BufferedReader
-    //   5: dup
-    //   6: new 67	java/io/FileReader
-    //   9: dup
-    //   10: ldc 69
-    //   12: invokespecial 72	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   15: invokespecial 75	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   18: astore_1
-    //   19: aload_1
-    //   20: astore_0
+    //   1: astore_2
+    //   2: aconst_null
+    //   3: astore_0
+    //   4: new 65	java/io/BufferedReader
+    //   7: dup
+    //   8: new 67	java/io/FileReader
+    //   11: dup
+    //   12: ldc 69
+    //   14: invokespecial 72	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   17: invokespecial 75	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   20: astore_1
     //   21: aload_1
     //   22: invokevirtual 78	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   25: astore_2
-    //   26: aload_2
-    //   27: ifnonnull +12 -> 39
+    //   25: astore_0
+    //   26: aload_0
+    //   27: ifnonnull +8 -> 35
     //   30: aload_1
-    //   31: ifnull +7 -> 38
-    //   34: aload_1
-    //   35: invokevirtual 81	java/io/BufferedReader:close	()V
-    //   38: return
-    //   39: aload_1
-    //   40: astore_0
-    //   41: ldc 14
-    //   43: aload_2
-    //   44: invokestatic 87	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   47: pop
-    //   48: goto -29 -> 19
-    //   51: astore_0
-    //   52: aload_1
-    //   53: astore_0
-    //   54: ldc 14
-    //   56: ldc 89
-    //   58: invokestatic 92	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   61: pop
-    //   62: aload_1
-    //   63: ifnull -25 -> 38
-    //   66: aload_1
-    //   67: invokevirtual 81	java/io/BufferedReader:close	()V
-    //   70: return
-    //   71: astore_0
-    //   72: return
-    //   73: astore_2
-    //   74: aload_0
-    //   75: astore_1
-    //   76: aload_2
-    //   77: astore_0
-    //   78: aload_1
-    //   79: ifnull +7 -> 86
-    //   82: aload_1
-    //   83: invokevirtual 81	java/io/BufferedReader:close	()V
-    //   86: aload_0
-    //   87: athrow
-    //   88: astore_1
-    //   89: goto -3 -> 86
-    //   92: astore_0
-    //   93: return
-    //   94: astore_2
-    //   95: aload_0
-    //   96: astore_1
-    //   97: aload_2
-    //   98: astore_0
-    //   99: goto -21 -> 78
-    //   102: astore_0
-    //   103: aconst_null
-    //   104: astore_1
-    //   105: goto -53 -> 52
+    //   31: invokevirtual 81	java/io/BufferedReader:close	()V
+    //   34: return
+    //   35: ldc 14
+    //   37: aload_0
+    //   38: invokestatic 87	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   41: pop
+    //   42: goto -21 -> 21
+    //   45: astore_2
+    //   46: aload_1
+    //   47: astore_0
+    //   48: aload_2
+    //   49: astore_1
+    //   50: goto +29 -> 79
+    //   53: goto +7 -> 60
+    //   56: astore_1
+    //   57: goto +22 -> 79
+    //   60: aload_1
+    //   61: astore_0
+    //   62: ldc 14
+    //   64: ldc 89
+    //   66: invokestatic 92	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   69: pop
+    //   70: aload_1
+    //   71: ifnull +7 -> 78
+    //   74: aload_1
+    //   75: invokevirtual 81	java/io/BufferedReader:close	()V
+    //   78: return
+    //   79: aload_0
+    //   80: ifnull +7 -> 87
+    //   83: aload_0
+    //   84: invokevirtual 81	java/io/BufferedReader:close	()V
+    //   87: goto +5 -> 92
+    //   90: aload_1
+    //   91: athrow
+    //   92: goto -2 -> 90
+    //   95: astore_0
+    //   96: aload_2
+    //   97: astore_1
+    //   98: goto -38 -> 60
+    //   101: astore_0
+    //   102: goto -49 -> 53
+    //   105: astore_0
+    //   106: return
+    //   107: astore_0
+    //   108: goto -21 -> 87
     // Local variable table:
     //   start	length	slot	name	signature
-    //   1	40	0	localObject1	Object
-    //   51	1	0	localIOException1	java.io.IOException
-    //   53	1	0	localObject2	Object
-    //   71	4	0	localIOException2	java.io.IOException
-    //   77	10	0	localObject3	Object
-    //   92	4	0	localIOException3	java.io.IOException
-    //   98	1	0	localObject4	Object
-    //   102	1	0	localIOException4	java.io.IOException
-    //   18	65	1	localObject5	Object
-    //   88	1	1	localIOException5	java.io.IOException
-    //   96	9	1	localIOException6	java.io.IOException
-    //   25	19	2	str	String
-    //   73	4	2	localObject6	Object
-    //   94	4	2	localObject7	Object
+    //   3	81	0	localObject1	Object
+    //   95	1	0	localIOException1	java.io.IOException
+    //   101	1	0	localIOException2	java.io.IOException
+    //   105	1	0	localIOException3	java.io.IOException
+    //   107	1	0	localIOException4	java.io.IOException
+    //   20	30	1	localObject2	Object
+    //   56	35	1	localObject3	Object
+    //   97	1	1	localObject4	Object
+    //   1	1	2	localObject5	Object
+    //   45	52	2	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   21	26	51	java/io/IOException
-    //   41	48	51	java/io/IOException
-    //   66	70	71	java/io/IOException
-    //   2	19	73	finally
-    //   82	86	88	java/io/IOException
-    //   34	38	92	java/io/IOException
-    //   21	26	94	finally
-    //   41	48	94	finally
-    //   54	62	94	finally
-    //   2	19	102	java/io/IOException
+    //   21	26	45	finally
+    //   35	42	45	finally
+    //   4	21	56	finally
+    //   62	70	56	finally
+    //   4	21	95	java/io/IOException
+    //   21	26	101	java/io/IOException
+    //   35	42	101	java/io/IOException
+    //   30	34	105	java/io/IOException
+    //   74	78	105	java/io/IOException
+    //   83	87	107	java/io/IOException
   }
   
   public static String hexdump(byte[] paramArrayOfByte, long paramLong)
@@ -158,7 +153,14 @@ public final class Debug
   
   public static String methodDescription(Method paramMethod)
   {
-    return paramMethod.getDeclaringClass().getName() + "->" + paramMethod.getName() + " @" + addrHex(ArtMethod.of(paramMethod).getEntryPointFromQuickCompiledCode()) + " +" + addrHex(ArtMethod.of(paramMethod).getAddress());
+    StringBuilder localStringBuilder = new StringBuilder(String.valueOf(paramMethod.getDeclaringClass().getName()));
+    localStringBuilder.append("->");
+    localStringBuilder.append(paramMethod.getName());
+    localStringBuilder.append(" @");
+    localStringBuilder.append(addrHex(ArtMethod.of(paramMethod).getEntryPointFromQuickCompiledCode()));
+    localStringBuilder.append(" +");
+    localStringBuilder.append(addrHex(ArtMethod.of(paramMethod).getAddress()));
+    return localStringBuilder.toString();
   }
 }
 

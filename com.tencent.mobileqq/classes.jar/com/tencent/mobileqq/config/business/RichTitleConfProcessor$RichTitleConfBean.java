@@ -15,7 +15,7 @@ public class RichTitleConfProcessor$RichTitleConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.RichTitleConfProcessor.RichTitleConfBean
  * JD-Core Version:    0.7.0.1
  */

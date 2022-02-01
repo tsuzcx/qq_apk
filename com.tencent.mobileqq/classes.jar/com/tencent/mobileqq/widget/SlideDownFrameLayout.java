@@ -28,25 +28,27 @@ public class SlideDownFrameLayout
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener;
+    if (localObject == null) {
       return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener.a().getY(), 0.0F });
-    localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new SlideDownFrameLayout.1(this));
-    localValueAnimator.start();
+    localObject = ValueAnimator.ofFloat(new float[] { ((SlideDownFrameLayout.OnSlideListener)localObject).a().getY(), 0.0F });
+    ((ValueAnimator)localObject).setDuration(250L);
+    ((ValueAnimator)localObject).addUpdateListener(new SlideDownFrameLayout.1(this));
+    ((ValueAnimator)localObject).start();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener == null) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener;
+    if (localObject == null) {
       return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener.a().getY(), this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener.a().getHeight() });
-    localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new SlideDownFrameLayout.2(this));
-    localValueAnimator.addListener(new SlideDownFrameLayout.3(this));
-    localValueAnimator.start();
+    localObject = ValueAnimator.ofFloat(new float[] { ((SlideDownFrameLayout.OnSlideListener)localObject).a().getY(), this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener.a().getHeight() });
+    ((ValueAnimator)localObject).setDuration(250L);
+    ((ValueAnimator)localObject).addUpdateListener(new SlideDownFrameLayout.2(this));
+    ((ValueAnimator)localObject).addListener(new SlideDownFrameLayout.3(this));
+    ((ValueAnimator)localObject).start();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -104,50 +106,56 @@ public class SlideDownFrameLayout
   {
     int i = paramMotionEvent.getAction();
     this.b = paramMotionEvent.getY();
-    if (i == 0) {
+    if (i == 0)
+    {
       this.jdField_a_of_type_Float = this.b;
     }
-    do
+    else
     {
-      do
+      Object localObject;
+      if (i == 2)
       {
-        return super.onTouchEvent(paramMotionEvent);
-        if (i != 2) {
-          break;
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener;
+          if (localObject != null)
+          {
+            ((SlideDownFrameLayout.OnSlideListener)localObject).a().setY(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F));
+            this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener.a(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F), this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener.a().getHeight());
+          }
+          if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
+            this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+          }
+          this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+          return true;
         }
-      } while (this.jdField_a_of_type_Int != 1);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener != null)
+      }
+      else if ((i == 1) || (i == 3))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener.a().setY(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener.a(Math.max(this.b - this.jdField_a_of_type_Float, 0.0F), this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener.a().getHeight());
+        if (this.jdField_a_of_type_Int != 0)
+        {
+          localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener;
+          if ((localObject != null) && (this.jdField_a_of_type_AndroidViewVelocityTracker != null))
+          {
+            float f = ((SlideDownFrameLayout.OnSlideListener)localObject).a().getY();
+            this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
+            if ((f <= DisplayUtil.a(getContext(), 100.0F)) && ((f <= DisplayUtil.a(getContext(), 30.0F)) || (this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity() <= 1000.0F))) {
+              a();
+            } else {
+              b();
+            }
+          }
+        }
+        this.jdField_a_of_type_Int = 0;
+        localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
+        if (localObject != null)
+        {
+          ((VelocityTracker)localObject).recycle();
+          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+        }
       }
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-        this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-      }
-      this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-      return true;
-    } while ((i != 1) && (i != 3));
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener != null) && (this.jdField_a_of_type_AndroidViewVelocityTracker != null))
-    {
-      float f = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout$OnSlideListener.a().getY();
-      this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-      if ((f <= DisplayUtil.a(getContext(), 100.0F)) && ((f <= DisplayUtil.a(getContext(), 30.0F)) || (this.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity() <= 1000.0F))) {
-        break label262;
-      }
-      b();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = 0;
-      if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-        break;
-      }
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-      break;
-      label262:
-      a();
-    }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setOnSlideListener(SlideDownFrameLayout.OnSlideListener paramOnSlideListener)
@@ -157,7 +165,7 @@ public class SlideDownFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideDownFrameLayout
  * JD-Core Version:    0.7.0.1
  */

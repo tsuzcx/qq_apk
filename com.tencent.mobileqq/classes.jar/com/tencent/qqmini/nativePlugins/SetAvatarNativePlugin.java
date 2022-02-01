@@ -21,13 +21,19 @@ public class SetAvatarNativePlugin
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
-      QLog.e("SetAvatarNativePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
+      Object localObject;
+      label14:
+      break label14;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Failed to parse jsonParams=");
+    ((StringBuilder)localObject).append(paramRequestEvent.jsonParams);
+    QLog.e("SetAvatarNativePlugin", 1, ((StringBuilder)localObject).toString());
     return null;
   }
   
@@ -36,20 +42,23 @@ public class SetAvatarNativePlugin
   {
     try
     {
-      Object localObject = a(paramRequestEvent);
-      QLog.i("SetAvatarNativePlugin", 1, "onInvoke, param=" + localObject);
-      localObject = ((JSONObject)localObject).optJSONObject("data");
-      if (localObject == null)
+      Object localObject1 = a(paramRequestEvent);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onInvoke, param=");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.i("SetAvatarNativePlugin", 1, ((StringBuilder)localObject2).toString());
+      localObject1 = ((JSONObject)localObject1).optJSONObject("data");
+      if (localObject1 == null)
       {
         paramRequestEvent.fail(new JSONObject("empty data"), "empty data");
         return;
       }
-      localObject = ((JSONObject)localObject).optString("path", null);
-      localObject = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath((String)localObject);
-      QLog.d("SetAvatarNativePlugin", 1, (String)localObject);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("param_avatar_path", (String)localObject);
-      QIPCClientHelper.getInstance().getClient().callServer("CommonModule", "set_avatar", localBundle, new SetAvatarNativePlugin.AvatarResultCallback(this, paramRequestEvent));
+      localObject1 = ((JSONObject)localObject1).optString("path", null);
+      localObject1 = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath((String)localObject1);
+      QLog.d("SetAvatarNativePlugin", 1, (String)localObject1);
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("param_avatar_path", (String)localObject1);
+      QIPCClientHelper.getInstance().getClient().callServer("CommonModule", "set_avatar", (Bundle)localObject2, new SetAvatarNativePlugin.AvatarResultCallback(this, paramRequestEvent));
       return;
     }
     catch (Throwable paramRequestEvent)
@@ -60,7 +69,7 @@ public class SetAvatarNativePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.SetAvatarNativePlugin
  * JD-Core Version:    0.7.0.1
  */

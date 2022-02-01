@@ -6,7 +6,6 @@ import android.view.View.OnClickListener;
 import com.tencent.biz.troopgift.GiftConfigManager.TextEntryItem;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class NearbyProfileFragment$5
   implements View.OnClickListener
@@ -15,22 +14,22 @@ class NearbyProfileFragment$5
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftGiftConfigManager$TextEntryItem != null) {}
-    for (String str = this.jdField_a_of_type_ComTencentBizTroopgiftGiftConfigManager$TextEntryItem.b;; str = "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501")
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      localIntent.putExtra("url", str);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(localIntent);
-      ReportController.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    paramView = this.jdField_a_of_type_ComTencentBizTroopgiftGiftConfigManager$TextEntryItem;
+    if (paramView != null) {
+      paramView = paramView.b;
+    } else {
+      paramView = "https://imgcache.qq.com/club/client/flower/release/html/points.html?source=501";
     }
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramView);
+    localIntent.putExtra("url", paramView);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(localIntent);
+    ReportController.b(null, "dc00899", "grp_lbs", "", "rank_data", "clk_gift", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.5
  * JD-Core Version:    0.7.0.1
  */

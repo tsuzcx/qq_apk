@@ -37,11 +37,26 @@ public class PokePanelAdapter
   
   private int a()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {}
-    while ((this.jdField_a_of_type_JavaUtilArrayList.size() <= 3) || ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (this.jdField_a_of_type_JavaUtilArrayList.size() <= 6)) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 6)) {
-      return 3;
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    int j = 3;
+    int i = j;
+    if (localArrayList != null)
+    {
+      if (localArrayList.size() == 0) {
+        return 3;
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 3) {
+        return 3;
+      }
+      if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (this.jdField_a_of_type_JavaUtilArrayList.size() <= 6)) {
+        return 3;
+      }
+      i = j;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 6) {
+        i = 4;
+      }
     }
-    return 4;
+    return i;
   }
   
   public ArrayList<PokePanel.PokeData> a()
@@ -62,27 +77,19 @@ public class PokePanelAdapter
   public void a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      PokePanel.PokeData localPokeData;
-      if (localIterator.hasNext())
+      PokePanel.PokeData localPokeData = (PokePanel.PokeData)localIterator.next();
+      if (paramString.equals("poke.item.effect."))
       {
-        localPokeData = (PokePanel.PokeData)localIterator.next();
-        if (!paramString.equals("poke.item.effect.")) {
-          break label63;
-        }
-        if (localPokeData.jdField_b_of_type_Int == paramInt) {
+        if (localPokeData.jdField_b_of_type_Int == paramInt)
+        {
           localPokeData.jdField_c_of_type_Boolean = paramBoolean1;
+          return;
         }
+        notifyDataSetChanged();
       }
-      else
-      {
-        return;
-      }
-      notifyDataSetChanged();
-      continue;
-      label63:
-      if (paramString.equals("poke.item.res."))
+      else if (paramString.equals("poke.item.res."))
       {
         if (localPokeData.jdField_b_of_type_Int == paramInt)
         {
@@ -113,7 +120,8 @@ public class PokePanelAdapter
   
   public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)) {
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (localArrayList.size() > paramInt)) {
       return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
     return null;
@@ -128,60 +136,51 @@ public class PokePanelAdapter
   {
     int j = a();
     Object localObject2;
-    int i;
-    Object localObject1;
+    Object localObject3;
     if (paramView == null)
     {
       localObject2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
       ((LinearLayout)localObject2).setOrientation(0);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
       i = 0;
-      localObject1 = localObject2;
-      if (i >= j) {
-        break label225;
-      }
-      localObject1 = new LinearLayout.LayoutParams(-1, -2);
-      ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
-      if (paramView != null) {
-        break label1009;
-      }
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    }
-    label225:
-    label613:
-    label875:
-    label1009:
-    for (;;)
-    {
-      Object localObject3 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558945, null);
-      ((LinearLayout)localObject2).addView((View)localObject3, (ViewGroup.LayoutParams)localObject1);
-      localObject1 = new PokePanelAdapter.ViewHolder(this);
-      ((PokePanelAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject3).findViewById(2131368755));
-      ((PokePanelAdapter.ViewHolder)localObject1).b = ((ImageView)((View)localObject3).findViewById(2131367117));
-      ((PokePanelAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject3).findViewById(2131379106));
-      ((PokePanelAdapter.ViewHolder)localObject1).c = ((ImageView)((View)localObject3).findViewById(2131366645));
-      ((PokePanelAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)((View)localObject3).findViewById(2131370743));
-      ((PokePanelAdapter.ViewHolder)localObject1).d = ((ImageView)((View)localObject3).findViewById(2131366010));
-      ((View)localObject3).setTag(localObject1);
-      i += 1;
-      break;
-      localObject1 = paramView;
-      paramView = (ViewGroup)localObject1;
-      PokePanel.PokeData localPokeData;
-      if (paramInt == 0)
+      while (i < j)
       {
-        paramView.setPadding(AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-        i = 0;
-        if (i >= j) {
-          break label979;
+        localObject3 = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject3).weight = 1.0F;
+        paramView = (View)localObject1;
+        if (localObject1 == null) {
+          paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
         }
-        int k = j * paramInt + i;
-        localObject2 = paramView.getChildAt(i);
-        localObject3 = (PokePanelAdapter.ViewHolder)((View)localObject2).getTag();
-        if (k >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break label888;
-        }
-        localPokeData = (PokePanel.PokeData)this.jdField_a_of_type_JavaUtilArrayList.get(k);
+        localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558843, null);
+        ((LinearLayout)localObject2).addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
+        localObject3 = new PokePanelAdapter.ViewHolder(this);
+        ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131368487));
+        ((PokePanelAdapter.ViewHolder)localObject3).b = ((ImageView)((View)localObject1).findViewById(2131366954));
+        ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject1).findViewById(2131378476));
+        ((PokePanelAdapter.ViewHolder)localObject3).c = ((ImageView)((View)localObject1).findViewById(2131366515));
+        ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)((View)localObject1).findViewById(2131370379));
+        ((PokePanelAdapter.ViewHolder)localObject3).d = ((ImageView)((View)localObject1).findViewById(2131365843));
+        ((View)localObject1).setTag(localObject3);
+        i += 1;
+        localObject1 = paramView;
+      }
+      paramView = (View)localObject2;
+    }
+    Object localObject1 = (ViewGroup)paramView;
+    if (paramInt == 0) {
+      ((ViewGroup)localObject1).setPadding(AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    } else {
+      ((ViewGroup)localObject1).setPadding(AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    }
+    int i = 0;
+    while (i < j)
+    {
+      int k = j * paramInt + i;
+      localObject2 = ((ViewGroup)localObject1).getChildAt(i);
+      localObject3 = (PokePanelAdapter.ViewHolder)((View)localObject2).getTag();
+      if (k < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        PokePanel.PokeData localPokeData = (PokePanel.PokeData)this.jdField_a_of_type_JavaUtilArrayList.get(k);
         ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
         ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         ((ClickedWaveView)((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView).setCustomDrawable(localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -195,65 +194,58 @@ public class PokePanelAdapter
         ((Bundle)localObject4).putString("minVersion", localPokeData.jdField_c_of_type_JavaLangString);
         ((ClickedWaveView)((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView).setExtraInfo((Bundle)localObject4);
         ((ClickedWaveView)((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView).setOnTouchReceive(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel);
-        if (!(localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) {
-          break label759;
+        if ((localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable))
+        {
+          localObject4 = (URLDrawable)localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+          if (((URLDrawable)localObject4).getStatus() == 2) {
+            ((URLDrawable)localObject4).restartDownload();
+          }
         }
-        localObject4 = (URLDrawable)localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        if (((URLDrawable)localObject4).getStatus() == 2) {
-          ((URLDrawable)localObject4).restartDownload();
+        else if ((localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable))
+        {
+          ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+          ((CustomFrameAnimationDrawable)localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable).c();
         }
         ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetTextView.setText(localPokeData.jdField_a_of_type_JavaLangString);
-        if (!localPokeData.jdField_a_of_type_Boolean) {
-          break label794;
+        if (localPokeData.jdField_a_of_type_Boolean) {
+          ((PokePanelAdapter.ViewHolder)localObject3).b.setVisibility(0);
+        } else {
+          ((PokePanelAdapter.ViewHolder)localObject3).b.setVisibility(8);
         }
-        ((PokePanelAdapter.ViewHolder)localObject3).b.setVisibility(0);
-        if (localPokeData.jdField_c_of_type_Int != 4) {
-          break label807;
+        if (localPokeData.jdField_c_of_type_Int == 4)
+        {
+          ((PokePanelAdapter.ViewHolder)localObject3).c.setVisibility(0);
+          ((PokePanelAdapter.ViewHolder)localObject3).c.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847639));
         }
-        ((PokePanelAdapter.ViewHolder)localObject3).c.setVisibility(0);
-        ((PokePanelAdapter.ViewHolder)localObject3).c.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847772));
-        if (!localPokeData.jdField_b_of_type_Boolean) {
-          break label862;
+        else if (localPokeData.jdField_c_of_type_Int == 5)
+        {
+          ((PokePanelAdapter.ViewHolder)localObject3).c.setVisibility(0);
+          ((PokePanelAdapter.ViewHolder)localObject3).c.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847638));
         }
-        ((PokePanelAdapter.ViewHolder)localObject3).d.setVisibility(0);
-        ((PokePanelAdapter.ViewHolder)localObject3).d.setTag(Integer.valueOf(localPokeData.jdField_b_of_type_Int));
-        if (!localPokeData.jdField_c_of_type_Boolean) {
-          break label875;
+        else
+        {
+          ((PokePanelAdapter.ViewHolder)localObject3).c.setVisibility(8);
         }
-        ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        if (localPokeData.jdField_b_of_type_Boolean)
+        {
+          ((PokePanelAdapter.ViewHolder)localObject3).d.setVisibility(0);
+          ((PokePanelAdapter.ViewHolder)localObject3).d.setTag(Integer.valueOf(localPokeData.jdField_b_of_type_Int));
+        }
+        else
+        {
+          ((PokePanelAdapter.ViewHolder)localObject3).d.setVisibility(8);
+        }
+        if (localPokeData.jdField_c_of_type_Boolean) {
+          ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        } else {
+          ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+        }
         ((View)localObject2).setContentDescription(localPokeData.jdField_a_of_type_JavaLangString);
         ((View)localObject2).setEnabled(true);
         AccessibilityUtil.a((View)localObject2, true);
       }
-      for (;;)
+      else
       {
-        AccessibilityUtil.a(((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetTextView, false);
-        i += 1;
-        break label290;
-        paramView.setPadding(AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-        break;
-        label759:
-        if (!(localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable)) {
-          break label544;
-        }
-        ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        ((CustomFrameAnimationDrawable)localPokeData.jdField_a_of_type_AndroidGraphicsDrawableDrawable).c();
-        break label544;
-        ((PokePanelAdapter.ViewHolder)localObject3).b.setVisibility(8);
-        break label574;
-        if (localPokeData.jdField_c_of_type_Int == 5)
-        {
-          ((PokePanelAdapter.ViewHolder)localObject3).c.setVisibility(0);
-          ((PokePanelAdapter.ViewHolder)localObject3).c.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847771));
-          break label613;
-        }
-        ((PokePanelAdapter.ViewHolder)localObject3).c.setVisibility(8);
-        break label613;
-        ((PokePanelAdapter.ViewHolder)localObject3).d.setVisibility(8);
-        break label646;
-        ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        break label663;
-        label888:
         ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
         ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
         ((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetTextView.setText(null);
@@ -265,16 +257,18 @@ public class PokePanelAdapter
         ((View)localObject2).setEnabled(false);
         AccessibilityUtil.a((View)localObject2, false);
       }
-      ((View)localObject1).setOnLongClickListener(null);
-      AccessibilityUtil.a((View)localObject1, false);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
+      AccessibilityUtil.a(((PokePanelAdapter.ViewHolder)localObject3).jdField_a_of_type_AndroidWidgetTextView, false);
+      i += 1;
     }
+    paramView.setOnLongClickListener(null);
+    AccessibilityUtil.a(paramView, false);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PokePanelAdapter
  * JD-Core Version:    0.7.0.1
  */

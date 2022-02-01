@@ -2,10 +2,10 @@ package com.tencent.mobileqq.troop.createNewTroop;
 
 import android.widget.CheckBox;
 import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.adapter.FacePreloadHolder.ViewHolder;
 
 public class ContactListAdapter$ViewTag
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends FacePreloadHolder.ViewHolder
 {
   public CheckBox a;
   public Object a;
@@ -14,7 +14,7 @@ public class ContactListAdapter$ViewTag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.ViewTag
  * JD-Core Version:    0.7.0.1
  */

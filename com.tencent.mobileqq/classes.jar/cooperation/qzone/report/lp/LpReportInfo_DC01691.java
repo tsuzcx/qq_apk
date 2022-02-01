@@ -52,27 +52,28 @@ public class LpReportInfo_DC01691
     this.latitude = paramString2;
     this.longitude = paramString3;
     this.networkType = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getnetworkType();
-    if (this.networkType == 1)
+    paramInt1 = this.networkType;
+    if (paramInt1 == 1)
     {
       this.networkType = 1;
       return;
     }
-    if (this.networkType == 2)
+    if (paramInt1 == 2)
     {
       this.networkType = 2;
       return;
     }
-    if (this.networkType == 3)
+    if (paramInt1 == 3)
     {
       this.networkType = 3;
       return;
     }
-    if (this.networkType == 4)
+    if (paramInt1 == 4)
     {
       this.networkType = 4;
       return;
     }
-    if (this.networkType == 5)
+    if (paramInt1 == 5)
     {
       this.networkType = 5;
       return;
@@ -82,12 +83,19 @@ public class LpReportInfo_DC01691
   
   public String getSimpleInfo()
   {
-    return "DC01691:" + this.actionType + "," + this.subactionType + "," + this.reserves;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DC01691:");
+    localStringBuilder.append(this.actionType);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.subactionType);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.reserves);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
   {
-    HashMap localHashMap = new HashMap();
+    localHashMap = new HashMap();
     localHashMap.put("qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
     localHashMap.put("uin", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount());
     localHashMap.put("to_uin", String.valueOf(this.toUin));
@@ -111,41 +119,37 @@ public class LpReportInfo_DC01691
     }
     LpReportUtils.safePut(localHashMap, "uin_lbs_x", this.longitude);
     LpReportUtils.safePut(localHashMap, "uin_lbs_y", this.latitude);
-    for (;;)
+    try
     {
-      try
+      JSONObject localJSONObject;
+      if (!TextUtils.isEmpty(this.extraInfo)) {
+        localJSONObject = new JSONObject(this.extraInfo);
+      } else {
+        localJSONObject = new JSONObject();
+      }
+      if (localJSONObject.length() > 0)
       {
-        if (!TextUtils.isEmpty(this.extraInfo))
+        Iterator localIterator = localJSONObject.keys();
+        while (localIterator.hasNext())
         {
-          JSONObject localJSONObject1 = new JSONObject(this.extraInfo);
-          if (localJSONObject1.length() > 0)
-          {
-            Iterator localIterator = localJSONObject1.keys();
-            if (localIterator.hasNext())
-            {
-              String str1 = (String)localIterator.next();
-              String str2 = localJSONObject1.getString(str1);
-              if (TextUtils.isEmpty(str2)) {
-                continue;
-              }
-              localHashMap.put(str1, str2);
-              continue;
-            }
+          String str1 = (String)localIterator.next();
+          String str2 = localJSONObject.getString(str1);
+          if (!TextUtils.isEmpty(str2)) {
+            localHashMap.put(str1, str2);
           }
-          return localHashMap;
         }
       }
-      catch (Exception localException)
-      {
-        QLog.e(TAG, 1, localException, new Object[0]);
-      }
-      JSONObject localJSONObject2 = new JSONObject();
+      return localHashMap;
+    }
+    catch (Exception localException)
+    {
+      QLog.e(TAG, 1, localException, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC01691
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,18 @@ import com.qq.taf.jce.JceStruct;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vip.JceProtocol;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.api.IJce;
+import com.tencent.mobileqq.vas.api.IJce.Util;
+import com.tencent.mobileqq.vas.api.IVasSingedApi;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.IVipStatusManager;
 import java.util.ArrayList;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.JvmStatic;
 import kotlin.jvm.internal.Intrinsics;
+import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,10 +42,10 @@ public final class TroopNickAuthRequest
       paramAuthListener.a(true, null);
       return;
     }
-    JceProtocol localJceProtocol = new JceProtocol("QC.UniBusinessLogicServer.UniBusinessLogicObj", "QCUniBusinessLogic.uniCheck", "stReq", "rsp");
+    IJce localIJce = ((IJce)QRoute.api(IJce.class)).build("QC.UniBusinessLogicServer.UniBusinessLogicObj", "QCUniBusinessLogic.uniCheck", "stReq", "rsp");
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new UniBusinessItem(paramInt1, paramInt2, ""));
-    localJceProtocol.a("uniCheck", (JceStruct)new UniCheckReq(JceProtocol.a(), localArrayList), (JceStruct)new UniCheckRsp(), (BusinessObserver)new TroopNickAuthRequest.requestAuth.1(paramAuthListener), false);
+    localIJce.request("uniCheck", (JceStruct)new UniCheckReq(IJce.Util.a(), localArrayList), (JceStruct)new UniCheckRsp(), (BusinessObserver)new TroopNickAuthRequest.requestAuth.1(paramAuthListener), false);
   }
   
   public boolean a(int paramInt)
@@ -48,28 +53,30 @@ public final class TroopNickAuthRequest
     Object localObject = BaseApplicationImpl.getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
     localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-    }
-    localObject = (QQAppInterface)localObject;
-    switch (paramInt)
+    if (localObject != null)
     {
-    default: 
-      return false;
-    case 0: 
-    case 1: 
+      localObject = (QQAppInterface)localObject;
+      if ((paramInt != 0) && (paramInt != 1))
+      {
+        if (paramInt != 4)
+        {
+          if (paramInt != 5)
+          {
+            if ((paramInt != 6) && (paramInt != 21) && (paramInt != 22)) {}
+            return false;
+          }
+          return VasUtil.a((AppRuntime)localObject).getVipStatus().isSVip();
+        }
+        return VasUtil.a((AppRuntime)localObject).getVipStatus().isVip();
+      }
       return true;
-    case 4: 
-      return VipUtils.c((QQAppInterface)localObject);
-    case 5: 
-      return VipUtils.b((QQAppInterface)localObject);
     }
-    return false;
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.adapter.TroopNickAuthRequest
  * JD-Core Version:    0.7.0.1
  */

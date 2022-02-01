@@ -12,19 +12,17 @@ class ShortVideoCommentsView$17
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      ShortVideoCommentsView.a(this.a).setTextColor(2130706432);
+    if ((paramMotionEvent.getAction() != 0) && (paramMotionEvent.getAction() != 2)) {
+      ShortVideoCommentsView.access$2300(this.a).setTextColor(-16777216);
+    } else {
+      ShortVideoCommentsView.access$2300(this.a).setTextColor(2130706432);
     }
-    for (;;)
-    {
-      return false;
-      ShortVideoCommentsView.a(this.a).setTextColor(-16777216);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.17
  * JD-Core Version:    0.7.0.1
  */

@@ -36,14 +36,15 @@ public class RemoteHandleManager
   
   public static RemoteHandleManager getInstance()
   {
-    if (mInstance == null) {}
-    synchronized (lock)
-    {
-      if (mInstance == null) {
-        mInstance = new RemoteHandleManager();
+    if (mInstance == null) {
+      synchronized (lock)
+      {
+        if (mInstance == null) {
+          mInstance = new RemoteHandleManager();
+        }
       }
-      return mInstance;
     }
+    return mInstance;
   }
   
   public void addWebEventListener(WebEventListener paramWebEventListener)
@@ -73,8 +74,9 @@ public class RemoteHandleManager
     if (QLog.isColorLevel()) {
       QLog.d("RemoteHandleManager", 2, "----destroy----");
     }
-    if (this.serviceProxy != null) {
-      this.serviceProxy.unbindBaseService();
+    RemoteServiceProxy localRemoteServiceProxy = this.serviceProxy;
+    if (localRemoteServiceProxy != null) {
+      localRemoteServiceProxy.unbindBaseService();
     }
   }
   
@@ -88,8 +90,9 @@ public class RemoteHandleManager
   
   public RemoteServiceProxy getServiceProxy()
   {
-    if (this.serviceProxy != null) {
-      return this.serviceProxy;
+    ??? = this.serviceProxy;
+    if (??? != null) {
+      return ???;
     }
     synchronized (serviceLock)
     {
@@ -109,22 +112,20 @@ public class RemoteHandleManager
   
   public void removeWebEventListener(WebEventListener paramWebEventListener)
   {
-    if (paramWebEventListener == null) {}
-    for (;;)
-    {
+    if (paramWebEventListener == null) {
       return;
-      Iterator localIterator = this.mWebEventListeners.iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = this.mWebEventListeners.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (WeakReference)localIterator.next();
+      if (localObject != null)
       {
-        Object localObject = (WeakReference)localIterator.next();
-        if (localObject != null)
-        {
-          localObject = (WebEventListener)((WeakReference)localObject).get();
-          if (localObject == null) {
-            localIterator.remove();
-          } else if (localObject == paramWebEventListener) {
-            localIterator.remove();
-          }
+        localObject = (WebEventListener)((WeakReference)localObject).get();
+        if (localObject == null) {
+          localIterator.remove();
+        } else if (localObject == paramWebEventListener) {
+          localIterator.remove();
         }
       }
     }
@@ -182,7 +183,7 @@ public class RemoteHandleManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.remote.logic.RemoteHandleManager
  * JD-Core Version:    0.7.0.1
  */

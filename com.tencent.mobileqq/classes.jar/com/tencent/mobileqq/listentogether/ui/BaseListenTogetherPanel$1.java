@@ -7,16 +7,18 @@ class BaseListenTogetherPanel$1
 {
   BaseListenTogetherPanel$1(BaseListenTogetherPanel paramBaseListenTogetherPanel) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (paramString != null) && (paramString.equalsIgnoreCase(this.a.a.c))) {
-      this.a.a(this.a.a);
+    if ((paramBoolean) && (paramString != null) && (paramString.equalsIgnoreCase(this.a.a.c)))
+    {
+      paramString = this.a;
+      paramString.a(paramString.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.1
  * JD-Core Version:    0.7.0.1
  */

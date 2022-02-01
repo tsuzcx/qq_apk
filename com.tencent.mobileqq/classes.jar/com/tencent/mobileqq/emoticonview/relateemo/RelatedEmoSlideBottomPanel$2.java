@@ -12,13 +12,14 @@ class RelatedEmoSlideBottomPanel$2
   public void onClick(View paramView)
   {
     RelatedEmoSlideBottomPanel.access$002(this.this$0, 2);
-    RelatedEmoSlideBottomPanel.access$100(this.this$0, this.this$0.getMeasuredHeight());
+    RelatedEmoSlideBottomPanel localRelatedEmoSlideBottomPanel = this.this$0;
+    RelatedEmoSlideBottomPanel.access$100(localRelatedEmoSlideBottomPanel, localRelatedEmoSlideBottomPanel.getMeasuredHeight());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel.2
  * JD-Core Version:    0.7.0.1
  */

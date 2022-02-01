@@ -29,38 +29,75 @@ public class AverageSampler
   public void a(double paramDouble)
   {
     long l = System.currentTimeMillis();
-    if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int - 1)
+    int i = this.jdField_b_of_type_Int;
+    Object localObject;
+    if (i < this.jdField_a_of_type_Int - 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[status][sampler] ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(" sample. count: ");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject).append(" value: ");
+        ((StringBuilder)localObject).append(paramDouble);
+        ((StringBuilder)localObject).append(" total: ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Double);
+        QLog.d("TimeSampler", 2, ((StringBuilder)localObject).toString());
       }
       this.jdField_a_of_type_Double += paramDouble;
       this.jdField_b_of_type_Double = Math.max(this.jdField_b_of_type_Double, paramDouble);
       this.jdField_b_of_type_Int += 1;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Long = l;
-      return;
       this.jdField_a_of_type_Double += paramDouble;
       if (l - this.jdField_a_of_type_Long < 30L)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. batch mode count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[status][sampler] ");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(" sample. batch mode count: ");
+          ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(" value: ");
+          ((StringBuilder)localObject).append(paramDouble);
+          ((StringBuilder)localObject).append(" total: ");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_Double);
+          QLog.d("TimeSampler", 2, ((StringBuilder)localObject).toString());
         }
         this.jdField_b_of_type_Double = Math.max(this.jdField_b_of_type_Double, paramDouble);
         this.jdField_b_of_type_Int += 1;
         return;
       }
-      double d = this.jdField_a_of_type_Double / (this.jdField_b_of_type_Int + 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("TimeSampler", 2, "[status][sampler] " + this.jdField_a_of_type_JavaLangString + " sample. triggered count: " + this.jdField_b_of_type_Int + " value: " + paramDouble + " total: " + this.jdField_a_of_type_Double + " ave: " + d);
+      double d1 = this.jdField_a_of_type_Double;
+      double d2 = i + 1;
+      Double.isNaN(d2);
+      d1 /= d2;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[status][sampler] ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(" sample. triggered count: ");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject).append(" value: ");
+        ((StringBuilder)localObject).append(paramDouble);
+        ((StringBuilder)localObject).append(" total: ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Double);
+        ((StringBuilder)localObject).append(" ave: ");
+        ((StringBuilder)localObject).append(d1);
+        QLog.d("TimeSampler", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAverageSampler$OnSamplerTriggerListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAverageSampler$OnSamplerTriggerListener.a(d, this.jdField_b_of_type_Double);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAverageSampler$OnSamplerTriggerListener;
+      if (localObject != null) {
+        ((AverageSampler.OnSamplerTriggerListener)localObject).a(d1, this.jdField_b_of_type_Double);
       }
       a();
     }
+    this.jdField_a_of_type_Long = l;
   }
   
   void a(AverageSampler.OnSamplerTriggerListener paramOnSamplerTriggerListener)
@@ -70,7 +107,7 @@ public class AverageSampler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.AverageSampler
  * JD-Core Version:    0.7.0.1
  */

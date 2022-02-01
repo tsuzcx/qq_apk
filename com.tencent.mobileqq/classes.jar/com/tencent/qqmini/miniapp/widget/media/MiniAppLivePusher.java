@@ -100,79 +100,77 @@ public class MiniAppLivePusher
     {
       paramJSONObject.put("BGMPosition", paramJSONObject.getInt("position") * 1000);
       this.livePusherJSAdapter.operateLivePusher(paramString, paramJSONObject);
-      paramString = ApiUtil.wrapCallbackOk("operateLivePusher", null);
-      paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, paramString.toString());
-      return;
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        QMLog.e("MiniAppLivePusher", "setBGMPosition - JSONException:" + paramString);
-      }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("setBGMPosition - JSONException:");
+      paramJSONObject.append(paramString);
+      QMLog.e("MiniAppLivePusher", paramJSONObject.toString());
     }
+    paramString = ApiUtil.wrapCallbackOk("operateLivePusher", null);
+    paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, paramString.toString());
   }
   
   private void doSnapShot(RequestEvent paramRequestEvent, JSONObject paramJSONObject)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (paramJSONObject != null)
     {
       paramJSONObject = paramJSONObject.optString("quality");
-      bool1 = bool2;
-      if (paramJSONObject != null)
+      if ((paramJSONObject != null) && (paramJSONObject.equalsIgnoreCase("compressed")))
       {
-        bool1 = bool2;
-        if (paramJSONObject.equalsIgnoreCase("compressed")) {
-          bool1 = true;
-        }
+        bool = true;
+        break label33;
       }
     }
-    takePhoto("operateLivePusher", bool1, paramRequestEvent);
+    boolean bool = false;
+    label33:
+    takePhoto("operateLivePusher", bool, paramRequestEvent);
   }
   
   private void doStartAudioRecord(RequestEvent paramRequestEvent, JSONObject paramJSONObject)
   {
-    Object localObject = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPath("pcm");
+    String str = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPath("pcm");
     long l = paramJSONObject.optLong("maxDuration");
-    QMLog.d("MiniAppLivePusher", "recordFile:" + (String)localObject);
-    int i = this.livePusherJSAdapter.startDumpAudioData((String)localObject);
-    QMLog.d("MiniAppLivePusher", "recordResult:" + i);
-    JSONObject localJSONObject;
-    if (i == 0) {
-      localJSONObject = new JSONObject();
-    }
-    for (;;)
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("recordFile:");
+    paramJSONObject.append(str);
+    QMLog.d("MiniAppLivePusher", paramJSONObject.toString());
+    int i = this.livePusherJSAdapter.startDumpAudioData(str);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("recordResult:");
+    paramJSONObject.append(i);
+    QMLog.d("MiniAppLivePusher", paramJSONObject.toString());
+    if (i == 0)
     {
+      JSONObject localJSONObject = new JSONObject();
+      paramJSONObject = str;
       try
       {
-        paramJSONObject = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getWxFilePath((String)localObject);
-        ((JSONException)localObject).printStackTrace();
+        str = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getWxFilePath(str);
+        paramJSONObject = str;
+        StringBuilder localStringBuilder = new StringBuilder();
+        paramJSONObject = str;
+        localStringBuilder.append("recordFile transformed:");
+        paramJSONObject = str;
+        localStringBuilder.append(str);
+        paramJSONObject = str;
+        QMLog.d("MiniAppLivePusher", localStringBuilder.toString());
+        paramJSONObject = str;
+        localJSONObject.put("tempFilePath", str);
+        paramJSONObject = str;
       }
-      catch (JSONException localJSONException2)
+      catch (JSONException localJSONException)
       {
-        try
-        {
-          QMLog.d("MiniAppLivePusher", "recordFile transformed:" + paramJSONObject);
-          localJSONObject.put("tempFilePath", paramJSONObject);
-          this.tempAudioFilePath = paramJSONObject;
-          paramJSONObject = ApiUtil.wrapCallbackOk("operateLivePusher", localJSONObject);
-          paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, paramJSONObject.toString());
-          this.handler.postDelayed(this.stopDumpRunnable, l);
-          QMLog.d("MiniAppLivePusher", "recordResult:" + i);
-          return;
-        }
-        catch (JSONException localJSONException1)
-        {
-          break label239;
-        }
-        localJSONException2 = localJSONException2;
-        paramJSONObject = (JSONObject)localObject;
-        localObject = localJSONException2;
+        localJSONException.printStackTrace();
       }
-      label239:
-      continue;
+      this.tempAudioFilePath = paramJSONObject;
+      paramJSONObject = ApiUtil.wrapCallbackOk("operateLivePusher", localJSONObject);
+      paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, paramJSONObject.toString());
+      this.handler.postDelayed(this.stopDumpRunnable, l);
+    }
+    else
+    {
       if (i == -1)
       {
         paramJSONObject = ApiUtil.wrapCallbackFail("operateLivePusher", null, "LivePusher is recording");
@@ -195,6 +193,10 @@ public class MiniAppLivePusher
         paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, paramJSONObject.toString());
       }
     }
+    paramRequestEvent = new StringBuilder();
+    paramRequestEvent.append("recordResult:");
+    paramRequestEvent.append(i);
+    QMLog.d("MiniAppLivePusher", paramRequestEvent.toString());
   }
   
   private void doStopAudioRecord(RequestEvent paramRequestEvent)
@@ -205,26 +207,23 @@ public class MiniAppLivePusher
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      if (!TextUtils.isEmpty(this.tempAudioFilePath))
+      boolean bool = TextUtils.isEmpty(this.tempAudioFilePath);
+      if (!bool)
       {
         localJSONObject.put("tempFilePath", this.tempAudioFilePath);
         this.tempAudioFilePath = null;
       }
-      for (;;)
+      else
       {
-        localJSONObject = ApiUtil.wrapCallbackOk("operateLivePusher", localJSONObject);
-        paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, localJSONObject.toString());
-        return;
         localJSONObject.put("tempFilePath", "");
       }
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    localJSONObject = ApiUtil.wrapCallbackOk("operateLivePusher", localJSONObject);
+    paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, localJSONObject.toString());
   }
   
   private void doStopBGM(String paramString, RequestEvent paramRequestEvent, JSONObject paramJSONObject)
@@ -237,14 +236,19 @@ public class MiniAppLivePusher
   
   private void initPusher(RequestEvent paramRequestEvent, JSONObject paramJSONObject)
   {
-    if ((QMLog.isColorLevel()) && (paramJSONObject != null)) {
-      QMLog.d("MiniAppLivePusher", "initLivePusher params = " + paramJSONObject.toString());
+    if ((QMLog.isColorLevel()) && (paramJSONObject != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initLivePusher params = ");
+      localStringBuilder.append(paramJSONObject.toString());
+      QMLog.d("MiniAppLivePusher", localStringBuilder.toString());
     }
     initPusherKeyList();
     this.livePusherJSAdapter = new TXLivePusherJSAdapter(getContext());
     this.livePusherJSAdapter.initLivePusher(this.tXCloudVideoView, paramJSONObject);
     setBGMNotifyListener(paramRequestEvent);
     setPushListener(paramRequestEvent);
+    this.livePusherJSAdapter.updateHomeOrientation(this.mMiniAppContext);
   }
   
   private void initPusherKeyList()
@@ -311,82 +315,117 @@ public class MiniAppLivePusher
   
   private void onDownloadSucceed(String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject, String paramString5)
   {
-    label334:
-    for (;;)
+    try
     {
-      try
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("playBGM - download onDownloadSucceed:");
+      ((StringBuilder)localObject1).append(paramString2);
+      QMLog.e("MiniAppLivePusher", ((StringBuilder)localObject1).toString());
+      if (this.needToStopDownloadBGM)
       {
-        QMLog.e("MiniAppLivePusher", "playBGM - download onDownloadSucceed:" + paramString2);
-        if (this.needToStopDownloadBGM)
-        {
-          QMLog.e("MiniAppLivePusher", "playBGM - download onDownloadSucceed but needToStopDownloadBGM");
-          return;
-        }
-        if (TextUtils.isEmpty(paramString3)) {
-          break;
-        }
-        paramString2 = new File(paramString3);
-        if ((paramString2.exists()) || (TextUtils.isEmpty(paramString1))) {
-          break label334;
-        }
-        QMLog.e("MiniAppLivePusher", "file no exists, try to copy again.");
-      }
-      catch (JSONException paramString1)
-      {
-        File localFile;
-        label248:
-        paramString1.printStackTrace();
+        QMLog.e("MiniAppLivePusher", "playBGM - download onDownloadSucceed but needToStopDownloadBGM");
         return;
       }
-      for (;;)
+      if (!TextUtils.isEmpty(paramString3))
       {
-        try
+        Object localObject2 = new File(paramString3);
+        localObject1 = localObject2;
+        String str;
+        if (!((File)localObject2).exists())
         {
-          localFile = new File(paramString1);
-          localObject = paramString2;
-          if (localFile.exists())
+          localObject1 = localObject2;
+          if (!TextUtils.isEmpty(paramString1))
           {
-            localObject = paramString2;
-            if (localFile.isFile())
+            QMLog.e("MiniAppLivePusher", "file no exists, try to copy again.");
+            paramString2 = (String)localObject2;
+            try
             {
-              localObject = paramString2;
-              if (localFile.length() > 0L)
+              File localFile = new File(paramString1);
+              paramString2 = (String)localObject2;
+              localObject1 = localObject2;
+              if (localFile.exists())
               {
-                QMLog.w("MiniAppLivePusher", "download Succeed but target file not exists, try copy from download tmp file:" + paramString1 + ", length:" + localFile.length() + ", to:" + paramString3);
-                localObject = FileUtils.createFile(paramString3);
-                paramString2 = (String)localObject;
+                paramString2 = (String)localObject2;
+                localObject1 = localObject2;
+                if (localFile.isFile())
+                {
+                  paramString2 = (String)localObject2;
+                  localObject1 = localObject2;
+                  if (localFile.length() > 0L)
+                  {
+                    paramString2 = (String)localObject2;
+                    localObject1 = new StringBuilder();
+                    paramString2 = (String)localObject2;
+                    ((StringBuilder)localObject1).append("download Succeed but target file not exists, try copy from download tmp file:");
+                    paramString2 = (String)localObject2;
+                    ((StringBuilder)localObject1).append(paramString1);
+                    paramString2 = (String)localObject2;
+                    ((StringBuilder)localObject1).append(", length:");
+                    paramString2 = (String)localObject2;
+                    ((StringBuilder)localObject1).append(localFile.length());
+                    paramString2 = (String)localObject2;
+                    ((StringBuilder)localObject1).append(", to:");
+                    paramString2 = (String)localObject2;
+                    ((StringBuilder)localObject1).append(paramString3);
+                    paramString2 = (String)localObject2;
+                    QMLog.w("MiniAppLivePusher", ((StringBuilder)localObject1).toString());
+                    paramString2 = (String)localObject2;
+                    localObject2 = FileUtils.createFile(paramString3);
+                    paramString2 = (String)localObject2;
+                    if (FileUtils.copyFile(localFile, (File)localObject2))
+                    {
+                      paramString2 = (String)localObject2;
+                      if (((File)localObject2).exists())
+                      {
+                        paramString2 = (String)localObject2;
+                        if (((File)localObject2).length() == localFile.length())
+                        {
+                          paramString2 = (String)localObject2;
+                          localObject1 = new StringBuilder();
+                          paramString2 = (String)localObject2;
+                          ((StringBuilder)localObject1).append("copy from download tmp file:");
+                          paramString2 = (String)localObject2;
+                          ((StringBuilder)localObject1).append(paramString1);
+                          paramString2 = (String)localObject2;
+                          ((StringBuilder)localObject1).append(" success");
+                          paramString2 = (String)localObject2;
+                          QMLog.i("MiniAppLivePusher", ((StringBuilder)localObject1).toString());
+                          localObject1 = localObject2;
+                          break label443;
+                        }
+                      }
+                    }
+                    paramString2 = (String)localObject2;
+                    localObject1 = localObject2;
+                    if (((File)localObject2).exists())
+                    {
+                      paramString2 = (String)localObject2;
+                      ((File)localObject2).delete();
+                      localObject1 = localObject2;
+                    }
+                  }
+                }
               }
+            }
+            catch (Throwable localThrowable)
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("try copy from download tmp file exception! tmp file:");
+              ((StringBuilder)localObject2).append(paramString1);
+              QMLog.e("MiniAppLivePusher", ((StringBuilder)localObject2).toString(), localThrowable);
+              str = paramString2;
             }
           }
         }
-        catch (Throwable localThrowable2)
-        {
-          continue;
-        }
-        try
-        {
-          if ((!FileUtils.copyFile(localFile, paramString2)) || (!paramString2.exists()) || (paramString2.length() != localFile.length())) {
-            continue;
-          }
-          QMLog.i("MiniAppLivePusher", "copy from download tmp file:" + paramString1 + " success");
-          localObject = paramString2;
-          paramString2 = (String)localObject;
-        }
-        catch (Throwable localThrowable1)
-        {
-          QMLog.e("MiniAppLivePusher", "try copy from download tmp file exception! tmp file:" + paramString1, localThrowable1);
-          break label248;
-        }
+        label443:
+        this.downloadMap.remove(paramString4);
+        operateLivePusher(paramString1, paramString3, paramJSONObject, paramString5, str);
+        return;
       }
-      this.downloadMap.remove(paramString4);
-      operateLivePusher(paramString1, paramString3, paramJSONObject, paramString5, paramString2);
-      return;
-      Object localObject = paramString2;
-      if (paramString2.exists())
-      {
-        paramString2.delete();
-        localObject = paramString2;
-      }
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
     }
   }
   
@@ -394,68 +433,76 @@ public class MiniAppLivePusher
   {
     if ((paramFile.exists()) && (paramFile.canRead()))
     {
-      if (QMLog.isColorLevel()) {
-        QMLog.d("MiniAppLivePusher", "download success BGMFilePath:" + paramString2);
+      if (QMLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("download success BGMFilePath:");
+        paramString1.append(paramString2);
+        QMLog.d("MiniAppLivePusher", paramString1.toString());
       }
       paramJSONObject.put("BGMFilePath", paramString2);
       this.livePusherJSAdapter.operateLivePusher(paramString3, paramJSONObject);
       return;
     }
-    QMLog.d("MiniAppLivePusher", "download failed, filepath not exists, tmpFile:" + paramString1);
+    paramString2 = new StringBuilder();
+    paramString2.append("download failed, filepath not exists, tmpFile:");
+    paramString2.append(paramString1);
+    QMLog.d("MiniAppLivePusher", paramString2.toString());
   }
   
   /* Error */
   private static void saveJpeg(android.graphics.Bitmap paramBitmap, File paramFile)
   {
     // Byte code:
-    //   0: new 597	java/io/BufferedOutputStream
-    //   3: dup
-    //   4: new 599	java/io/FileOutputStream
-    //   7: dup
-    //   8: aload_1
-    //   9: invokespecial 602	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 605	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   15: astore_1
-    //   16: aload_0
-    //   17: getstatic 611	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   20: bipush 100
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: new 600	java/io/BufferedOutputStream
+    //   5: dup
+    //   6: new 602	java/io/FileOutputStream
+    //   9: dup
+    //   10: aload_1
+    //   11: invokespecial 605	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   14: invokespecial 608	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   17: astore_1
+    //   18: aload_0
+    //   19: getstatic 614	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   22: bipush 100
-    //   24: invokestatic 617	java/lang/Math:min	(II)I
-    //   27: aload_1
-    //   28: invokevirtual 623	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   31: pop
-    //   32: aload_1
-    //   33: invokevirtual 626	java/io/BufferedOutputStream:flush	()V
-    //   36: aload_1
-    //   37: ifnull +7 -> 44
-    //   40: aload_1
-    //   41: invokevirtual 629	java/io/BufferedOutputStream:close	()V
-    //   44: return
-    //   45: astore_0
-    //   46: aconst_null
-    //   47: astore_1
-    //   48: aload_1
-    //   49: ifnull +7 -> 56
-    //   52: aload_1
-    //   53: invokevirtual 629	java/io/BufferedOutputStream:close	()V
-    //   56: aload_0
-    //   57: athrow
-    //   58: astore_0
-    //   59: return
-    //   60: astore_1
-    //   61: goto -5 -> 56
-    //   64: astore_0
-    //   65: goto -17 -> 48
+    //   24: bipush 100
+    //   26: invokestatic 620	java/lang/Math:min	(II)I
+    //   29: aload_1
+    //   30: invokevirtual 626	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   33: pop
+    //   34: aload_1
+    //   35: invokevirtual 629	java/io/BufferedOutputStream:flush	()V
+    //   38: aload_1
+    //   39: invokevirtual 632	java/io/BufferedOutputStream:close	()V
+    //   42: return
+    //   43: astore_0
+    //   44: goto +6 -> 50
+    //   47: astore_0
+    //   48: aload_2
+    //   49: astore_1
+    //   50: aload_1
+    //   51: ifnull +7 -> 58
+    //   54: aload_1
+    //   55: invokevirtual 632	java/io/BufferedOutputStream:close	()V
+    //   58: aload_0
+    //   59: athrow
+    //   60: astore_0
+    //   61: return
+    //   62: astore_1
+    //   63: goto -5 -> 58
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	68	0	paramBitmap	android.graphics.Bitmap
-    //   0	68	1	paramFile	File
+    //   0	66	0	paramBitmap	android.graphics.Bitmap
+    //   0	66	1	paramFile	File
+    //   1	48	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   0	16	45	finally
-    //   40	44	58	java/lang/Exception
-    //   52	56	60	java/lang/Exception
-    //   16	36	64	finally
+    //   18	38	43	finally
+    //   2	18	47	finally
+    //   38	42	60	java/lang/Exception
+    //   54	58	62	java/lang/Exception
   }
   
   private void setBGMNotifyListener(RequestEvent paramRequestEvent)
@@ -486,8 +533,9 @@ public class MiniAppLivePusher
     if (QMLog.isColorLevel()) {
       QMLog.d("MiniAppLivePusher", "enterBackground");
     }
-    if (this.livePusherJSAdapter != null) {
-      this.livePusherJSAdapter.enterBackground(false);
+    TXLivePusherJSAdapter localTXLivePusherJSAdapter = this.livePusherJSAdapter;
+    if (localTXLivePusherJSAdapter != null) {
+      localTXLivePusherJSAdapter.enterBackground(false);
     }
     return true;
   }
@@ -497,16 +545,21 @@ public class MiniAppLivePusher
     if (QMLog.isColorLevel()) {
       QMLog.d("MiniAppLivePusher", "enterForeground");
     }
-    if (this.livePusherJSAdapter != null) {
-      this.livePusherJSAdapter.enterForeground();
+    TXLivePusherJSAdapter localTXLivePusherJSAdapter = this.livePusherJSAdapter;
+    if (localTXLivePusherJSAdapter != null) {
+      localTXLivePusherJSAdapter.enterForeground();
     }
     return true;
   }
   
   public void initLivePusherSettings(RequestEvent paramRequestEvent, JSONObject paramJSONObject)
   {
-    if ((QMLog.isColorLevel()) && (paramJSONObject != null)) {
-      QMLog.d("MiniAppLivePusher", "initLivePusherSettings json: " + paramJSONObject.toString());
+    if ((QMLog.isColorLevel()) && (paramJSONObject != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initLivePusherSettings json: ");
+      localStringBuilder.append(paramJSONObject.toString());
+      QMLog.d("MiniAppLivePusher", localStringBuilder.toString());
     }
     initPusherView();
     initPusher(paramRequestEvent, paramJSONObject);
@@ -514,51 +567,54 @@ public class MiniAppLivePusher
   
   public void operateLivePusher(String paramString, RequestEvent paramRequestEvent, JSONObject paramJSONObject)
   {
-    QMLog.d("MiniAppLivePusher", "operateLivePusher json: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("operateLivePusher json: ");
+    localStringBuilder.append(paramString);
+    QMLog.d("MiniAppLivePusher", localStringBuilder.toString());
     if (this.livePusherJSAdapter != null)
     {
-      if ("playBGM".equals(paramString)) {
+      if ("playBGM".equals(paramString))
+      {
         doPlayBGM(paramString, paramRequestEvent, paramJSONObject);
+        return;
       }
+      if ("stopBGM".equals(paramString))
+      {
+        doStopBGM(paramString, paramRequestEvent, paramJSONObject);
+        return;
+      }
+      if ("setBGMPosition".equals(paramString))
+      {
+        doSetBGMPosition(paramString, paramRequestEvent, paramJSONObject);
+        return;
+      }
+      if ("snapshot".equals(paramString))
+      {
+        doSnapShot(paramRequestEvent, paramJSONObject);
+        return;
+      }
+      if (paramString.equalsIgnoreCase("startAudioRecord"))
+      {
+        doStartAudioRecord(paramRequestEvent, paramJSONObject);
+        return;
+      }
+      if (paramString.equalsIgnoreCase("stopAudioRecord"))
+      {
+        doStopAudioRecord(paramRequestEvent);
+        return;
+      }
+      this.livePusherJSAdapter.operateLivePusher(paramString, paramJSONObject);
+      paramString = ApiUtil.wrapCallbackOk("operateLivePusher", null);
+      paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, paramString.toString());
     }
-    else {
-      return;
-    }
-    if ("stopBGM".equals(paramString))
-    {
-      doStopBGM(paramString, paramRequestEvent, paramJSONObject);
-      return;
-    }
-    if ("setBGMPosition".equals(paramString))
-    {
-      doSetBGMPosition(paramString, paramRequestEvent, paramJSONObject);
-      return;
-    }
-    if ("snapshot".equals(paramString))
-    {
-      doSnapShot(paramRequestEvent, paramJSONObject);
-      return;
-    }
-    if (paramString.equalsIgnoreCase("startAudioRecord"))
-    {
-      doStartAudioRecord(paramRequestEvent, paramJSONObject);
-      return;
-    }
-    if (paramString.equalsIgnoreCase("stopAudioRecord"))
-    {
-      doStopAudioRecord(paramRequestEvent);
-      return;
-    }
-    this.livePusherJSAdapter.operateLivePusher(paramString, paramJSONObject);
-    paramString = ApiUtil.wrapCallbackOk("operateLivePusher", null);
-    paramRequestEvent.jsService.evaluateCallbackJs(paramRequestEvent.callbackId, paramString.toString());
   }
   
   public void release()
   {
     this.handler.removeCallbacks(this.stopDumpRunnable);
-    if (this.livePusherJSAdapter != null) {
-      this.livePusherJSAdapter.unInitLivePusher();
+    TXLivePusherJSAdapter localTXLivePusherJSAdapter = this.livePusherJSAdapter;
+    if (localTXLivePusherJSAdapter != null) {
+      localTXLivePusherJSAdapter.unInitLivePusher();
     }
     ScreenOffOnListener.getInstance().unRegistListener();
   }
@@ -570,25 +626,31 @@ public class MiniAppLivePusher
   
   public void takePhoto(String paramString, boolean paramBoolean, RequestEvent paramRequestEvent)
   {
-    if (this.livePusherJSAdapter == null) {
+    TXLivePusherJSAdapter localTXLivePusherJSAdapter = this.livePusherJSAdapter;
+    if (localTXLivePusherJSAdapter == null) {
       return;
     }
-    this.livePusherJSAdapter.takePhoto(paramBoolean, new MiniAppLivePusher.4(this, paramString, paramRequestEvent));
+    localTXLivePusherJSAdapter.takePhoto(paramBoolean, new MiniAppLivePusher.4(this, paramString, paramRequestEvent));
   }
   
   public void updateLivePusherSetting(JSONObject paramJSONObject)
   {
-    if ((QMLog.isColorLevel()) && (paramJSONObject != null)) {
-      QMLog.d("MiniAppLivePusher", "updateLivePusherSetting params = " + paramJSONObject.toString());
+    if ((QMLog.isColorLevel()) && (paramJSONObject != null))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateLivePusherSetting params = ");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QMLog.d("MiniAppLivePusher", ((StringBuilder)localObject).toString());
     }
-    if (this.livePusherJSAdapter != null) {
-      this.livePusherJSAdapter.updateLivePusher(paramJSONObject);
+    Object localObject = this.livePusherJSAdapter;
+    if (localObject != null) {
+      ((TXLivePusherJSAdapter)localObject).updateLivePusher(paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppLivePusher
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,9 @@ public abstract class BaseFragmentImpl
   
   protected Bundle getArguments()
   {
-    if (this.tn != null) {
-      return this.tn.getArguments();
+    Fragment localFragment = this.tn;
+    if (localFragment != null) {
+      return localFragment.getArguments();
     }
     return null;
   }
@@ -59,7 +60,7 @@ public abstract class BaseFragmentImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.wifisdk.ui.fragments.BaseFragmentImpl
  * JD-Core Version:    0.7.0.1
  */

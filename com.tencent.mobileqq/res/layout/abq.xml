@@ -7,7 +7,7 @@
         <ImageView android:id="@id/jpw" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/d8k" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/content" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jqf">
-        <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView android:id="@id/ec1" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" tencent:showFooterView="true" tencent:showHeaderView="true" />
+        <com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyXListView android:id="@id/ec1" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" tencent:showFooterView="true" tencent:showHeaderView="true" />
         <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/abp" />
         <ViewStub android:id="@id/f7f" android:layout="@layout/a8o" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/gf4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">

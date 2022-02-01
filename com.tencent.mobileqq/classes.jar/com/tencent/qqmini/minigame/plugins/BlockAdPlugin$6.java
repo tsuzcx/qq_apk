@@ -13,26 +13,27 @@ class BlockAdPlugin$6
   
   public void run()
   {
-    if (BlockAdPlugin.access$600(this.this$0, this.val$compId)) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("state", "resize");
-      localJSONObject.put("compId", this.val$currentPosInfo.getCompId());
-      localJSONObject.put("width", this.val$currentPosInfo.getRealWidth());
-      localJSONObject.put("height", this.val$currentPosInfo.getRealHeight());
-      BlockAdPlugin.access$200(this.this$0, this.val$req, localJSONObject, "onBlockAdStateChange");
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      QMLog.e("BlockAdPlugin", "updateBannerAd informJs error", localJSONException);
+    if (BlockAdPlugin.access$600(this.this$0, this.val$compId)) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("state", "resize");
+        localJSONObject.put("compId", this.val$currentPosInfo.getCompId());
+        localJSONObject.put("width", this.val$currentPosInfo.getRealWidth());
+        localJSONObject.put("height", this.val$currentPosInfo.getRealHeight());
+        BlockAdPlugin.access$200(this.this$0, this.val$req, localJSONObject, "onBlockAdStateChange");
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        QMLog.e("BlockAdPlugin", "updateBannerAd informJs error", localJSONException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.BlockAdPlugin.6
  * JD-Core Version:    0.7.0.1
  */

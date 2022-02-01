@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
-
 public abstract class FilePreViewControllerBase
 {
-  public FilePreviewActivity.ControlerCallback a;
+  public ControlerCallback a;
   
   public abstract int a();
   
   public abstract void a();
   
-  public void a(FilePreviewActivity.ControlerCallback paramControlerCallback)
+  public void a(ControlerCallback paramControlerCallback)
   {
     this.a = paramControlerCallback;
   }
@@ -19,7 +17,7 @@ public abstract class FilePreViewControllerBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FilePreViewControllerBase
  * JD-Core Version:    0.7.0.1
  */

@@ -18,23 +18,30 @@ class SDKEmotionSettingManager$1
   
   protected void a(ArrayList<String> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      QLog.e("SDKEmotionSettingManager", 1, " openSetEmotion error pathList = " + paramArrayList);
-      SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager, SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager), Long.valueOf(SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager)).longValue(), false, "");
-      SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager);
+      int i = paramArrayList.size();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i);
+      localStringBuilder.append("");
+      ReportController.b(null, "dc00898", "", "", "0X8009DC8", "0X8009DC8", 0, 0, localStringBuilder.toString(), "", "", "");
+      SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).clear();
+      SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).addAll(paramArrayList);
+      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager.a(paramArrayList);
       return;
     }
-    int i = paramArrayList.size();
-    ReportController.b(null, "dc00898", "", "", "0X8009DC8", "0X8009DC8", 0, 0, i + "", "", "", "");
-    SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).clear();
-    SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager).addAll(paramArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager.a(paramArrayList);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" openSetEmotion error pathList = ");
+    localStringBuilder.append(paramArrayList);
+    QLog.e("SDKEmotionSettingManager", 1, localStringBuilder.toString());
+    paramArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager;
+    SDKEmotionSettingManager.a(paramArrayList, SDKEmotionSettingManager.a(paramArrayList), Long.valueOf(SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager)).longValue(), false, "");
+    SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.1
  * JD-Core Version:    0.7.0.1
  */

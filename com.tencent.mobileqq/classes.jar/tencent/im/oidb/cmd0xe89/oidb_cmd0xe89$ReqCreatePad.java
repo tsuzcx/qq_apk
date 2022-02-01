@@ -21,13 +21,14 @@ public final class oidb_cmd0xe89$ReqCreatePad
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40 }, new String[] { "uint32_doc_type", "bytes_title", "msg_atext", "uint64_uin", "uint32_src_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, Long.valueOf(0L), Integer.valueOf(0) }, ReqCreatePad.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40 }, new String[] { "uint32_doc_type", "bytes_title", "msg_atext", "uint64_uin", "uint32_src_type" }, new Object[] { localInteger, localByteStringMicro, null, Long.valueOf(0L), localInteger }, ReqCreatePad.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe89.oidb_cmd0xe89.ReqCreatePad
  * JD-Core Version:    0.7.0.1
  */

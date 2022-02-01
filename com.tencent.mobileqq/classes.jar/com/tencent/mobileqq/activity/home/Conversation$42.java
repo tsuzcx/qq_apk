@@ -1,24 +1,36 @@
 package com.tencent.mobileqq.activity.home;
 
-import android.os.Message;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.observer.ProfileCardObserver;
+import com.tencent.mobileqq.util.Utils;
 
-final class Conversation$42
-  implements Runnable
+class Conversation$42
+  extends ProfileCardObserver
 {
-  Conversation$42(MqqHandler paramMqqHandler) {}
+  Conversation$42(Conversation paramConversation) {}
   
-  public void run()
+  protected void onGetProfileCard(boolean paramBoolean, Object paramObject)
   {
-    this.a.removeMessages(1134065);
-    Message localMessage = this.a.obtainMessage(1134065);
-    localMessage.arg1 = 0;
-    this.a.sendMessage(localMessage);
+    if ((paramObject instanceof Card)) {
+      paramObject = (Card)paramObject;
+    } else {
+      paramObject = null;
+    }
+    if ((paramBoolean) && (paramObject != null))
+    {
+      if (!Utils.a(paramObject.uin, this.a.a().getCurrentAccountUin()))
+      {
+        this.a.a(8, paramObject.uin, -2147483648);
+        return;
+      }
+      Conversation.c(this.a, "onCardDownload");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.42
  * JD-Core Version:    0.7.0.1
  */

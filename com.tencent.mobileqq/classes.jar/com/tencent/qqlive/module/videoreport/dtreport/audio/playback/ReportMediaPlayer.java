@@ -33,7 +33,10 @@ public class ReportMediaPlayer
   
   public final String getPlayerId__()
   {
-    return "MediaPlayer_" + hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MediaPlayer_");
+    localStringBuilder.append(hashCode());
+    return localStringBuilder.toString();
   }
   
   public final int getPlayerType__()
@@ -104,7 +107,7 @@ public class ReportMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

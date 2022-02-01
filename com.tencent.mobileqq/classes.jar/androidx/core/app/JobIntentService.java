@@ -39,16 +39,16 @@ public abstract class JobIntentService
   
   public static void enqueueWork(@NonNull Context paramContext, @NonNull ComponentName paramComponentName, int paramInt, @NonNull Intent paramIntent)
   {
-    if (paramIntent == null) {
-      throw new IllegalArgumentException("work must not be null");
+    if (paramIntent != null) {
+      synchronized (sLock)
+      {
+        paramContext = getWorkEnqueuer(paramContext, paramComponentName, true, paramInt);
+        paramContext.ensureJobId(paramInt);
+        paramContext.enqueueWork(paramIntent);
+        return;
+      }
     }
-    synchronized (sLock)
-    {
-      paramContext = getWorkEnqueuer(paramContext, paramComponentName, true, paramInt);
-      paramContext.ensureJobId(paramInt);
-      paramContext.enqueueWork(paramIntent);
-      return;
-    }
+    throw new IllegalArgumentException("work must not be null");
   }
   
   public static void enqueueWork(@NonNull Context paramContext, @NonNull Class<?> paramClass, int paramInt, @NonNull Intent paramIntent)
@@ -62,26 +62,28 @@ public abstract class JobIntentService
     Object localObject = localWorkEnqueuer;
     if (localWorkEnqueuer == null)
     {
-      if (Build.VERSION.SDK_INT < 26) {
-        break label69;
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        if (paramBoolean) {
+          paramContext = new JobIntentService.JobWorkEnqueuer(paramContext, paramComponentName, paramInt);
+        } else {
+          throw new IllegalArgumentException("Can't be here without a job id");
+        }
       }
-      if (!paramBoolean) {
-        throw new IllegalArgumentException("Can't be here without a job id");
+      else {
+        paramContext = new JobIntentService.CompatWorkEnqueuer(paramContext, paramComponentName);
       }
-    }
-    label69:
-    for (paramContext = new JobIntentService.JobWorkEnqueuer(paramContext, paramComponentName, paramInt);; paramContext = new JobIntentService.CompatWorkEnqueuer(paramContext, paramComponentName))
-    {
       sClassWorkEnqueuer.put(paramComponentName, paramContext);
       localObject = paramContext;
-      return localObject;
     }
+    return localObject;
   }
   
   JobIntentService.GenericWorkItem dequeueWork()
   {
-    if (this.mJobImpl != null) {
-      return this.mJobImpl.dequeueWork();
+    ??? = this.mJobImpl;
+    if (??? != null) {
+      return ((JobIntentService.CompatJobEngine)???).dequeueWork();
     }
     synchronized (this.mCompatQueue)
     {
@@ -90,14 +92,15 @@ public abstract class JobIntentService
         JobIntentService.GenericWorkItem localGenericWorkItem = (JobIntentService.GenericWorkItem)this.mCompatQueue.remove(0);
         return localGenericWorkItem;
       }
+      return null;
     }
-    return null;
   }
   
   boolean doStopCurrentWork()
   {
-    if (this.mCurProcessor != null) {
-      this.mCurProcessor.cancel(this.mInterruptIfStopped);
+    JobIntentService.CommandProcessor localCommandProcessor = this.mCurProcessor;
+    if (localCommandProcessor != null) {
+      localCommandProcessor.cancel(this.mInterruptIfStopped);
     }
     this.mStopped = true;
     return onStopCurrentWork();
@@ -108,8 +111,9 @@ public abstract class JobIntentService
     if (this.mCurProcessor == null)
     {
       this.mCurProcessor = new JobIntentService.CommandProcessor(this);
-      if ((this.mCompatWorkEnqueuer != null) && (paramBoolean)) {
-        this.mCompatWorkEnqueuer.serviceProcessingStarted();
+      JobIntentService.WorkEnqueuer localWorkEnqueuer = this.mCompatWorkEnqueuer;
+      if ((localWorkEnqueuer != null) && (paramBoolean)) {
+        localWorkEnqueuer.serviceProcessingStarted();
       }
       this.mCurProcessor.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
     }
@@ -122,8 +126,9 @@ public abstract class JobIntentService
   
   public IBinder onBind(@NonNull Intent paramIntent)
   {
-    if (this.mJobImpl != null) {
-      return this.mJobImpl.compatGetBinder();
+    paramIntent = this.mJobImpl;
+    if (paramIntent != null) {
+      return paramIntent.compatGetBinder();
     }
     return null;
   }
@@ -144,13 +149,15 @@ public abstract class JobIntentService
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.mCompatQueue != null) {
-      synchronized (this.mCompatQueue)
+    ArrayList localArrayList = this.mCompatQueue;
+    if (localArrayList != null) {
+      try
       {
         this.mDestroyed = true;
         this.mCompatWorkEnqueuer.serviceProcessingFinished();
         return;
       }
+      finally {}
     }
   }
   
@@ -164,13 +171,12 @@ public abstract class JobIntentService
       synchronized (this.mCompatQueue)
       {
         ArrayList localArrayList2 = this.mCompatQueue;
-        if (paramIntent != null)
-        {
-          localArrayList2.add(new JobIntentService.CompatWorkItem(this, paramIntent, paramInt2));
-          ensureProcessorRunningLocked(true);
-          return 3;
+        if (paramIntent == null) {
+          paramIntent = new Intent();
         }
-        paramIntent = new Intent();
+        localArrayList2.add(new JobIntentService.CompatWorkItem(this, paramIntent, paramInt2));
+        ensureProcessorRunningLocked(true);
+        return 3;
       }
     }
     return 2;
@@ -183,18 +189,19 @@ public abstract class JobIntentService
   
   void processorFinished()
   {
-    if (this.mCompatQueue != null) {
-      synchronized (this.mCompatQueue)
+    ArrayList localArrayList = this.mCompatQueue;
+    if (localArrayList != null) {
+      try
       {
         this.mCurProcessor = null;
         if ((this.mCompatQueue != null) && (this.mCompatQueue.size() > 0)) {
           ensureProcessorRunningLocked(false);
+        } else if (!this.mDestroyed) {
+          this.mCompatWorkEnqueuer.serviceProcessingFinished();
         }
-        while (this.mDestroyed) {
-          return;
-        }
-        this.mCompatWorkEnqueuer.serviceProcessingFinished();
+        return;
       }
+      finally {}
     }
   }
   
@@ -205,7 +212,7 @@ public abstract class JobIntentService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.JobIntentService
  * JD-Core Version:    0.7.0.1
  */

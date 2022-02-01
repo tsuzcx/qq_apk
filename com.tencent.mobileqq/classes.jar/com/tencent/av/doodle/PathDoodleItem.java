@@ -30,7 +30,7 @@ public abstract class PathDoodleItem
   
   public void b(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (this.jdField_a_of_type_AndroidGraphicsPointF.x + paramFloat1) / 2.0F, (this.jdField_a_of_type_AndroidGraphicsPointF.y + paramFloat2) / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (paramFloat1 + this.jdField_a_of_type_AndroidGraphicsPointF.x) / 2.0F, (paramFloat2 + this.jdField_a_of_type_AndroidGraphicsPointF.y) / 2.0F);
     this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
     a();
   }
@@ -46,7 +46,7 @@ public abstract class PathDoodleItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.PathDoodleItem
  * JD-Core Version:    0.7.0.1
  */

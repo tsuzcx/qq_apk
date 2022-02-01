@@ -16,22 +16,34 @@ public class FaceDrawableImpl$InternalGroupObserver
   
   public void onUpdateGroupFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (paramBoolean2) {
-      this.this$0.onUpdateHead(paramBoolean1, 113, paramString, this.this$0.mGroupObserver);
-    }
-    for (;;)
+    Object localObject;
+    if (paramBoolean2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + 113);
-      }
-      return;
+      localObject = this.this$0;
+      ((FaceDrawableImpl)localObject).onUpdateHead(paramBoolean1, 113, paramString, ((FaceDrawableImpl)localObject).mGroupObserver);
+    }
+    else
+    {
       this.this$0.onUpdateHead(paramBoolean1, 113, paramString, null);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("====faceDrawableImpl onUpdateGroupFaceIcon === isSuccess: ");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(", isComplete: ");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      ((StringBuilder)localObject).append(",disUin: ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",type: ");
+      ((StringBuilder)localObject).append(113);
+      QLog.i("Q.qqhead.FaceDrawableImpl", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDrawableImpl.InternalGroupObserver
  * JD-Core Version:    0.7.0.1
  */

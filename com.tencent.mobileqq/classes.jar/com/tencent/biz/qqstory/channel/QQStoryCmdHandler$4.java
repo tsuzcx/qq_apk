@@ -21,39 +21,36 @@ class QQStoryCmdHandler$4
     super(paramString);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    for (;;)
+    try
     {
-      NewIntent localNewIntent;
-      try
+      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a();
+      paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).getAndIncrement());
+      AppInterface localAppInterface = QQStoryContext.a();
+      NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), StoryMsfServlet.class);
+      localNewIntent.putExtra("storySeq", paramArrayOfObject);
+      localNewIntent.putExtra("cmd", this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a());
+      localNewIntent.putExtra("data", paramJobContext);
+      localNewIntent.putExtra("start_time", System.currentTimeMillis());
+      if (this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a.contains(Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.b())))
       {
-        paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a();
-        paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).getAndIncrement());
-        AppInterface localAppInterface = QQStoryContext.a();
-        localNewIntent = new NewIntent(localAppInterface.getApp(), StoryMsfServlet.class);
-        localNewIntent.putExtra("storySeq", paramArrayOfObject);
-        localNewIntent.putExtra("cmd", this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a());
-        localNewIntent.putExtra("data", paramJobContext);
-        localNewIntent.putExtra("start_time", System.currentTimeMillis());
-        if (this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a.contains(Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.b())))
-        {
-          localNewIntent.putExtra("timeout", 10000L);
-          localNewIntent.putExtra("support_retry", true);
-          QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).put(paramArrayOfObject, this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest);
-          localAppInterface.startServlet(localNewIntent);
-          return null;
-        }
+        localNewIntent.putExtra("timeout", 10000L);
+        localNewIntent.putExtra("support_retry", true);
       }
-      catch (QQStoryCmdHandler.IllegalUinException paramJobContext)
+      else if (this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a > 0L)
       {
-        Bosses.get().scheduleJobDelayed(new QQStoryCmdHandler.4.1(this, "Q.qqstory.net:QQStoryCmdHandler", paramJobContext), 100);
-        return null;
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a > 0L) {
         localNewIntent.putExtra("timeout", this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a);
       }
+      QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).put(paramArrayOfObject, this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest);
+      localAppInterface.startServlet(localNewIntent);
+      return null;
     }
+    catch (QQStoryCmdHandler.IllegalUinException paramJobContext)
+    {
+      Bosses.get().scheduleJobDelayed(new QQStoryCmdHandler.4.1(this, "Q.qqstory.net:QQStoryCmdHandler", paramJobContext), 100);
+    }
+    return null;
   }
   
   public int getJobType()
@@ -63,7 +60,7 @@ class QQStoryCmdHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdHandler.4
  * JD-Core Version:    0.7.0.1
  */

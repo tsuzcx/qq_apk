@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.troop.troopfriend.api.ITroopBatchAddFriendService;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -16,32 +15,40 @@ class TroopChatPie$InputOnGlobalLayoutListener$1
   
   public void run()
   {
-    String str1 = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((TroopHandler)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a();
-    Object localObject = localTroopBatchAddFriendMgr.a(str1);
+    String str = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((ITroopBatchAddFriendService)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopBatchAddFriendService.class, "")).getTroopBatchAddFriendMgr();
+    Object localObject1 = localTroopBatchAddFriendMgr.a(str);
     ArrayList localArrayList = new ArrayList();
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    Object localObject2;
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
     {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        String str2 = (String)((Iterator)localObject).next();
-        if (this.a.a.a(str2)) {
-          localArrayList.add(str2);
+        localObject2 = (String)((Iterator)localObject1).next();
+        if (this.a.a.a((String)localObject2)) {
+          localArrayList.add(localObject2);
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.b, 2, "CheckNewMemberDataWhenEnterAIO visibleUins size = " + localArrayList.size() + ",visibleUins = " + localArrayList);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = this.a.a.b;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("CheckNewMemberDataWhenEnterAIO visibleUins size = ");
+      ((StringBuilder)localObject2).append(localArrayList.size());
+      ((StringBuilder)localObject2).append(",visibleUins = ");
+      ((StringBuilder)localObject2).append(localArrayList);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
     if (localArrayList.size() > 0) {
-      localTroopBatchAddFriendMgr.a(str1, localArrayList, 4);
+      localTroopBatchAddFriendMgr.a(str, localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.InputOnGlobalLayoutListener.1
  * JD-Core Version:    0.7.0.1
  */

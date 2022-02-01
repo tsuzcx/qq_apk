@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
@@ -41,31 +41,27 @@ class EmoticonPanelHotPicSearchHelper$LabelFlowAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView = paramView;
     if (paramView == null) {
-      paramView = View.inflate(this.mContext, 2131559207, null);
+      localView = View.inflate(this.mContext, 2131561599, null);
     }
-    for (;;)
-    {
-      Button localButton = (Button)paramView.findViewById(2131364161);
-      localButton.setText((CharSequence)this.mDatas.get(paramInt));
-      localButton.setContentDescription((CharSequence)this.mDatas.get(paramInt));
-      localButton.setBackgroundDrawable(this.this$0.getShapeDrawable(12));
-      if (ThemeUtil.isNowThemeIsNight(this.this$0.getApp().getAppRuntime(), false, null)) {
-        localButton.setTextColor(Color.parseColor("#B0B3BF"));
-      }
-      for (;;)
-      {
-        localButton.setOnClickListener(new EmoticonPanelHotPicSearchHelper.LabelFlowAdapter.1(this, localButton));
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localButton.setTextColor(Color.parseColor("#03081A"));
-      }
+    paramView = (Button)localView.findViewById(2131364082);
+    paramView.setText((CharSequence)this.mDatas.get(paramInt));
+    paramView.setContentDescription((CharSequence)this.mDatas.get(paramInt));
+    paramView.setBackgroundDrawable(this.this$0.getShapeDrawable(12));
+    if (ThemeUtil.isNowThemeIsNight(this.this$0.getApp().getAppRuntime(), false, null)) {
+      paramView.setTextColor(Color.parseColor("#B0B3BF"));
+    } else {
+      paramView.setTextColor(Color.parseColor("#03081A"));
     }
+    paramView.setOnClickListener(new EmoticonPanelHotPicSearchHelper.LabelFlowAdapter.1(this, paramView));
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelHotPicSearchHelper.LabelFlowAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -39,14 +39,15 @@ public final class stGetNewestFeedReqInner
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.cache_update_time, 1);
-    if (this.mapExtern != null) {
-      paramJceOutputStream.write(this.mapExtern, 2);
+    Map localMap = this.mapExtern;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_WEISHI_QQ_PROFILE.stGetNewestFeedReqInner
  * JD-Core Version:    0.7.0.1
  */

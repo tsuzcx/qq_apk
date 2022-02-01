@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,10 +21,11 @@ public final class BatchGetFacadeReq
   
   static
   {
-    cache_uins.add(Long.valueOf(0L));
+    Long localLong = Long.valueOf(0L);
+    cache_uins.add(localLong);
     cache_ext = new HashMap();
     GetFacadeReqExt localGetFacadeReqExt = new GetFacadeReqExt();
-    cache_ext.put(Long.valueOf(0L), localGetFacadeReqExt);
+    cache_ext.put(localLong, localGetFacadeReqExt);
   }
   
   public BatchGetFacadeReq() {}
@@ -48,22 +50,25 @@ public final class BatchGetFacadeReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.uins != null) {
-      paramJceOutputStream.write(this.uins, 0);
+    Object localObject = this.uins;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.qua != null) {
-      paramJceOutputStream.write(this.qua, 1);
+    localObject = this.qua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.needElementInfo, 2);
-    if (this.ext != null) {
-      paramJceOutputStream.write(this.ext, 3);
+    localObject = this.ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
     paramJceOutputStream.write(this.loginUin, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FACADE_DIY.BatchGetFacadeReq
  * JD-Core Version:    0.7.0.1
  */

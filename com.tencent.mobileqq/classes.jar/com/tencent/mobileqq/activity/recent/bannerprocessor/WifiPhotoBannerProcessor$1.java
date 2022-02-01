@@ -13,13 +13,8 @@ class WifiPhotoBannerProcessor$1
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131381140)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("string_from", false);
       localBundle.putBoolean("string_uin", true);
@@ -27,11 +22,12 @@ class WifiPhotoBannerProcessor$1
       localBundle.putInt("sTitleID", 0);
       QQProxyForDataline.a(WifiPhotoBannerProcessor.a(this.a), localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.WifiPhotoBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

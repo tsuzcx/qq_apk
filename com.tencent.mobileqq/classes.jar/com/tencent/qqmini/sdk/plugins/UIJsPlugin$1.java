@@ -1,6 +1,7 @@
 package com.tencent.qqmini.sdk.plugins;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.ViewGroup;
 import com.tencent.qqmini.sdk.action.PageAction;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -15,30 +16,37 @@ class UIJsPlugin$1
   
   public void run()
   {
-    Activity localActivity = UIJsPlugin.access$000(this.this$0).getAttachedActivity();
-    if ((localActivity == null) || (localActivity.isFinishing()))
+    Object localObject = UIJsPlugin.access$000(this.this$0).getAttachedActivity();
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      QMLog.w("UIJsPlugin", "showToast(). Do nothing, activity is null or finishing");
+      UIJsPlugin localUIJsPlugin = this.this$0;
+      if (UIJsPlugin.access$200(localUIJsPlugin, UIJsPlugin.access$100(localUIJsPlugin))) {
+        UIJsPlugin.access$300(this.this$0);
+      }
+      localUIJsPlugin = this.this$0;
+      UIJsPlugin.access$102(localUIJsPlugin, PageAction.obtain(UIJsPlugin.access$400(localUIJsPlugin)).getPageUrl());
+      localUIJsPlugin = this.this$0;
+      if (UIJsPlugin.access$200(localUIJsPlugin, UIJsPlugin.access$100(localUIJsPlugin)))
+      {
+        UIJsPlugin.access$502(this.this$0, new ToastView((Context)localObject, (ViewGroup)((Activity)localObject).findViewById(16908290)));
+        UIJsPlugin.access$500(this.this$0).show(0, this.val$icon, this.val$imagePath, this.val$title, this.val$duration, this.val$mask);
+        this.val$req.ok();
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showToast event=");
+      ((StringBuilder)localObject).append(this.val$req.event);
+      ((StringBuilder)localObject).append("， top page not found");
+      QMLog.w("UIJsPlugin", ((StringBuilder)localObject).toString());
+      this.val$req.fail();
       return;
     }
-    if (UIJsPlugin.access$200(this.this$0, UIJsPlugin.access$100(this.this$0))) {
-      UIJsPlugin.access$300(this.this$0);
-    }
-    UIJsPlugin.access$102(this.this$0, PageAction.obtain(UIJsPlugin.access$400(this.this$0)).getPageUrl());
-    if (UIJsPlugin.access$200(this.this$0, UIJsPlugin.access$100(this.this$0)))
-    {
-      UIJsPlugin.access$502(this.this$0, new ToastView(localActivity, (ViewGroup)localActivity.findViewById(16908290)));
-      UIJsPlugin.access$500(this.this$0).show(0, this.val$icon, this.val$imagePath, this.val$title, this.val$duration, this.val$mask);
-      this.val$req.ok();
-      return;
-    }
-    QMLog.w("UIJsPlugin", "showToast event=" + this.val$req.event + "， top page not found");
-    this.val$req.fail();
+    QMLog.w("UIJsPlugin", "showToast(). Do nothing, activity is null or finishing");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.UIJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

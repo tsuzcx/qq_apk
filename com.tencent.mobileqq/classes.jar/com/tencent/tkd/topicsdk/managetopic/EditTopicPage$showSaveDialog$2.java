@@ -21,12 +21,12 @@ public final class EditTopicPage$showSaveDialog$2
     this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicEditTopicPage.a().c();
     this.jdField_a_of_type_AndroidAppActivity.finish();
     TopicEventDispatcher.a.b(EditTopicPage.a(this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicEditTopicPage));
-    DispatchManager.a.a((IEvent)new UserActionEvent(ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_EDIT_COLUMN_DRAFT_DIALOG, ReportEventElement.BUTTON_CANCEL, this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicEditTopicPage.a(), this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicEditTopicPage.a()));
+    DispatchManager.a.a((IEvent)new UserActionEvent(null, ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_EDIT_COLUMN_DRAFT_DIALOG, ReportEventElement.BUTTON_CANCEL, this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicEditTopicPage.a(), this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicEditTopicPage.a(), null, 65, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.managetopic.EditTopicPage.showSaveDialog.2
  * JD-Core Version:    0.7.0.1
  */

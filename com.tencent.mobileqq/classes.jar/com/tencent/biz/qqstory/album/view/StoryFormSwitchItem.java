@@ -50,8 +50,8 @@ public class StoryFormSwitchItem
   public StoryFormSwitchItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int m = getResources().getDimensionPixelSize(2131298280);
-    int n = getResources().getDimensionPixelSize(2131296786);
+    int m = getResources().getDimensionPixelSize(2131298275);
+    int n = getResources().getDimensionPixelSize(2131296766);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FormItem);
     this.h = paramContext.getDimensionPixelSize(2, m);
     this.g = paramContext.getDimensionPixelSize(1, n);
@@ -78,14 +78,14 @@ public class StoryFormSwitchItem
   private void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367395);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367177);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-    int m = getContext().getResources().getDimensionPixelSize(2131296784);
+    int m = getContext().getResources().getDimensionPixelSize(2131296764);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, m);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167033));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167056));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.i, this.j);
@@ -105,7 +105,7 @@ public class StoryFormSwitchItem
         setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setId(2131367394);
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setId(2131367176);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.rightMargin = this.h;
     localLayoutParams.addRule(11);
@@ -118,7 +118,8 @@ public class StoryFormSwitchItem
   public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-    if ((this.jdField_a_of_type_ComTencentWidgetSwitch != null) && (this.jdField_a_of_type_ComTencentWidgetSwitch.getVisibility() != 8))
+    Switch localSwitch = this.jdField_a_of_type_ComTencentWidgetSwitch;
+    if ((localSwitch != null) && (localSwitch.getVisibility() != 8))
     {
       paramAccessibilityNodeInfo.setCheckable(true);
       paramAccessibilityNodeInfo.setChecked(this.jdField_a_of_type_ComTencentWidgetSwitch.isChecked());
@@ -146,19 +147,21 @@ public class StoryFormSwitchItem
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((AppSetting.d) && (this.jdField_a_of_type_ComTencentWidgetSwitch != null) && (this.jdField_a_of_type_ComTencentWidgetSwitch.getVisibility() == 0))
+    if (AppSetting.d)
     {
-      if (paramMotionEvent.getAction() == 0) {
-        super.onTouchEvent(paramMotionEvent);
-      }
-      while (paramMotionEvent.getAction() != 1) {
-        return true;
-      }
-      paramMotionEvent = this.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (!this.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
-      for (boolean bool = true;; bool = false)
+      Switch localSwitch = this.jdField_a_of_type_ComTencentWidgetSwitch;
+      if ((localSwitch != null) && (localSwitch.getVisibility() == 0))
       {
-        paramMotionEvent.setChecked(bool);
+        if (paramMotionEvent.getAction() == 0)
+        {
+          super.onTouchEvent(paramMotionEvent);
+          return true;
+        }
+        if (paramMotionEvent.getAction() == 1)
+        {
+          paramMotionEvent = this.jdField_a_of_type_ComTencentWidgetSwitch;
+          paramMotionEvent.setChecked(paramMotionEvent.isChecked() ^ true);
+        }
         return true;
       }
     }
@@ -176,9 +179,10 @@ public class StoryFormSwitchItem
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetSwitch != null)
+    Switch localSwitch = this.jdField_a_of_type_ComTencentWidgetSwitch;
+    if (localSwitch != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(paramBoolean);
+      localSwitch.setChecked(paramBoolean);
       sendAccessibilityEvent(1);
     }
   }
@@ -195,46 +199,47 @@ public class StoryFormSwitchItem
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(false);
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(paramBoolean);
+    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setEnabled(paramBoolean);
     }
-    if (this.jdField_a_of_type_ComTencentWidgetSwitch != null) {
-      this.jdField_a_of_type_ComTencentWidgetSwitch.setEnabled(paramBoolean);
+    localObject = this.jdField_a_of_type_ComTencentWidgetSwitch;
+    if (localObject != null) {
+      ((Switch)localObject).setEnabled(paramBoolean);
     }
   }
   
   public void setLeftIcon(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      if (paramDrawable == null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      if (paramDrawable == null)
+      {
+        localTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    if (paramDrawable.getIntrinsicHeight() > this.g)
-    {
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.g);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
-    }
-    for (;;)
-    {
+      if (paramDrawable.getIntrinsicHeight() > this.g)
+      {
+        paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.g);
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramDrawable, null, null, null);
+      }
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(this.h);
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramDrawable, null, null, null);
     }
   }
   
   public void setLeftIcon(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if ((paramDrawable == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (paramInt1 < 0) || (paramInt2 < 0)) {}
-    do
+    if ((paramDrawable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (paramInt1 >= 0))
     {
-      return;
+      if (paramInt2 < 0) {
+        return;
+      }
       if ((paramInt1 > 0) && (paramInt2 > 0))
       {
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
@@ -245,49 +250,51 @@ public class StoryFormSwitchItem
         this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(this.h);
         return;
       }
-    } while ((paramInt1 != 0) && (paramInt2 != 0));
-    setRightIcon(paramDrawable);
+      if ((paramInt1 == 0) || (paramInt2 == 0)) {
+        setRightIcon(paramDrawable);
+      }
+    }
   }
   
   public void setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetSwitch != null) {
-      this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(paramOnCheckedChangeListener);
+    Switch localSwitch = this.jdField_a_of_type_ComTencentWidgetSwitch;
+    if (localSwitch != null) {
+      localSwitch.setOnCheckedChangeListener(paramOnCheckedChangeListener);
     }
   }
   
   public void setRightIcon(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
     {
       this.b = paramDrawable;
-      if (paramDrawable == null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      if (paramDrawable == null)
+      {
+        localTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    if (paramDrawable.getIntrinsicHeight() > this.g)
-    {
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.g);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, paramDrawable, null);
-    }
-    for (;;)
-    {
+      if (paramDrawable.getIntrinsicHeight() > this.g)
+      {
+        paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), this.g);
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, paramDrawable, null);
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramDrawable, null);
+      }
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(this.h);
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramDrawable, null);
     }
   }
   
   public void setRightIcon(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    if ((paramDrawable == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (paramInt1 < 0) || (paramInt2 < 0)) {}
-    do
+    if ((paramDrawable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null) && (paramInt1 >= 0))
     {
-      return;
+      if (paramInt2 < 0) {
+        return;
+      }
       if ((paramInt1 > 0) && (paramInt2 > 0))
       {
         this.b = paramDrawable;
@@ -298,8 +305,10 @@ public class StoryFormSwitchItem
         this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(this.h);
         return;
       }
-    } while ((paramInt1 != 0) && (paramInt2 != 0));
-    setRightIcon(paramDrawable);
+      if ((paramInt1 == 0) || (paramInt2 == 0)) {
+        setRightIcon(paramDrawable);
+      }
+    }
   }
   
   public void setText(CharSequence paramCharSequence)
@@ -310,18 +319,16 @@ public class StoryFormSwitchItem
       {
         this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167033));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167056));
+        return;
       }
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.view.StoryFormSwitchItem
  * JD-Core Version:    0.7.0.1
  */

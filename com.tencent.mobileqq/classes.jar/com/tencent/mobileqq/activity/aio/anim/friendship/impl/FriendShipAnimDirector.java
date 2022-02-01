@@ -17,6 +17,7 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import mqq.os.MqqHandler;
 
 public class FriendShipAnimDirector
@@ -39,9 +40,10 @@ public class FriendShipAnimDirector
   private void a(LottieComposition paramLottieComposition)
   {
     QLog.i("FriendShipAnimDirector", 1, "decode json success");
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (paramLottieComposition != null))
+    LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if ((localLottieDrawable != null) && (paramLottieComposition != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setComposition(paramLottieComposition);
+      localLottieDrawable.setComposition(paramLottieComposition);
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.loop(false);
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.addAnimatorListener(this);
       if (this.jdField_a_of_type_AndroidWidgetImageView != null)
@@ -69,13 +71,24 @@ public class FriendShipAnimDirector
     while (i < j)
     {
       String str = arrayOfString[i];
-      str = paramString + str;
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendShipAnimDirector", 2, "checkRes: " + str);
-      }
-      if (!FileUtils.a(str))
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(str);
+      str = localStringBuilder.toString();
+      if (QLog.isColorLevel())
       {
-        QLog.e("FriendShipAnimDirector", 1, "checkRes failed, " + str + " is not exist");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkRes: ");
+        localStringBuilder.append(str);
+        QLog.d("FriendShipAnimDirector", 2, localStringBuilder.toString());
+      }
+      if (!FileUtils.fileExists(str))
+      {
+        paramString = new StringBuilder();
+        paramString.append("checkRes failed, ");
+        paramString.append(str);
+        paramString.append(" is not exist");
+        QLog.e("FriendShipAnimDirector", 1, paramString.toString());
         return false;
       }
       i += 1;
@@ -114,20 +127,21 @@ public class FriendShipAnimDirector
     }
     try
     {
-      FileInputStream localFileInputStream = new FileInputStream(this.jdField_a_of_type_JavaLangString + "data.json");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("data.json");
+      localObject = new FileInputStream(((StringBuilder)localObject).toString());
       QLog.i("FriendShipAnimDirector", 1, "decode anim async");
-      LottieComposition.Factory.fromInputStream(a(), localFileInputStream, new FriendShipAnimDirector.3(this));
-      super.a(paramOnDirectorPrepared);
-      paramOnDirectorPrepared.a(bool);
-      return;
+      LottieComposition.Factory.fromInputStream(a(), (InputStream)localObject, new FriendShipAnimDirector.3(this));
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        QLog.e("FriendShipAnimDirector", 1, "Decode anim json error");
-      }
+      label142:
+      break label142;
     }
+    QLog.e("FriendShipAnimDirector", 1, "Decode anim json error");
+    super.a(paramOnDirectorPrepared);
+    paramOnDirectorPrepared.a(bool);
   }
   
   public void b()
@@ -135,14 +149,16 @@ public class FriendShipAnimDirector
     if (QLog.isColorLevel()) {
       QLog.d("FriendShipAnimDirector", 2, "cancel");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
+      ((LottieDrawable)localObject).cancelAnimation();
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController.b();
+      ((AdditionalAnimController)localObject).b();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController.c();
     }
     a(8);
@@ -154,10 +170,12 @@ public class FriendShipAnimDirector
     if (QLog.isColorLevel()) {
       QLog.d("FriendShipAnimDirector", 2, "doOnPause");
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating())) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if ((localObject != null) && (((LottieDrawable)localObject).isAnimating())) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController.a())) {
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController;
+    if ((localObject != null) && (((AdditionalAnimController)localObject).a())) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController.d();
     }
   }
@@ -167,10 +185,12 @@ public class FriendShipAnimDirector
     if (QLog.isColorLevel()) {
       QLog.d("FriendShipAnimDirector", 2, "doOnResume");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.resumeAnimation();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if (localObject != null) {
+      ((LottieDrawable)localObject).resumeAnimation();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController.a())) {
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController;
+    if ((localObject != null) && (((AdditionalAnimController)localObject).a())) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController.e();
     }
   }
@@ -180,14 +200,16 @@ public class FriendShipAnimDirector
     if (QLog.isColorLevel()) {
       QLog.d("FriendShipAnimDirector", 2, "doOnDestroy");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
+      ((LottieDrawable)localObject).cancelAnimation();
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController.b();
+      ((AdditionalAnimController)localObject).b();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendshipImplFriendshipAdditionalAnimController.c();
     }
     this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
@@ -201,13 +223,23 @@ public class FriendShipAnimDirector
     b();
   }
   
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
+  }
+  
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.FriendShipAnimDirector
  * JD-Core Version:    0.7.0.1
  */

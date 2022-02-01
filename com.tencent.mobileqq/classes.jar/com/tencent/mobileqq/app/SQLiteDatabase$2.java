@@ -10,12 +10,17 @@ class SQLiteDatabase$2
   
   public void run()
   {
-    Toast.makeText(BaseApplication.getContext(), "进程：" + BaseApplication.processName + "DB读写异常，请联系 williscao", 1).show();
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("进程：");
+    localStringBuilder.append(BaseApplication.processName);
+    localStringBuilder.append("DB读写异常，请联系 williscao");
+    Toast.makeText(localBaseApplication, localStringBuilder.toString(), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SQLiteDatabase.2
  * JD-Core Version:    0.7.0.1
  */

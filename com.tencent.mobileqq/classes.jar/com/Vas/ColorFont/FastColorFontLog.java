@@ -14,7 +14,15 @@ public class FastColorFontLog
       return;
     }
     float f = (float)(System.nanoTime() - paramLong) / 1000000.0F;
-    a(paramString1, paramString2 + "  绘制耗时：" + f + "ms\n  手机型号：" + a + "  " + b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("  绘制耗时：");
+    localStringBuilder.append(f);
+    localStringBuilder.append("ms\n  手机型号：");
+    localStringBuilder.append(a);
+    localStringBuilder.append("  ");
+    localStringBuilder.append(b);
+    a(paramString1, localStringBuilder.toString());
   }
   
   public static void a(String paramString1, String paramString2)
@@ -31,7 +39,7 @@ public class FastColorFontLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.Vas.ColorFont.FastColorFontLog
  * JD-Core Version:    0.7.0.1
  */

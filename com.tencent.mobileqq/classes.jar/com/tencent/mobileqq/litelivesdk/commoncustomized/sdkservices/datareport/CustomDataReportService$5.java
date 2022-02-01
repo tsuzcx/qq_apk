@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport;
 
-import com.tencent.beacon.BeaconAdapter;
-import com.tencent.falco.base.libapi.datareport.DataReportInterface.DataReportAdapter;
+import com.tencent.mobileqq.statistics.QQBeaconReport;
 
 class CustomDataReportService$5
   implements Runnable
@@ -10,13 +9,13 @@ class CustomDataReportService$5
   
   public void run()
   {
-    BeaconAdapter.registerTunnel(this.this$0.a.getAppKey(), this.this$0.a.getAppVersion(), this.this$0.a.getChannelId());
+    QQBeaconReport.a();
     CustomDataReportService.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport.CustomDataReportService.5
  * JD-Core Version:    0.7.0.1
  */

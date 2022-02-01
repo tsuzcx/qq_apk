@@ -34,6 +34,7 @@ public class IPluginManager$PluginParams
   public String e;
   public int f = 0;
   public String f;
+  public int g;
   public String g;
   
   public IPluginManager$PluginParams(int paramInt)
@@ -59,18 +60,35 @@ public class IPluginManager$PluginParams
   {
     if ((this.jdField_a_of_type_AndroidContentIntent != null) && (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo != null))
     {
-      QLog.d("plugin_tag", 1, "pluginStartupAttachInfo dex2Oat " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat + "lib " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib + "download " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload + "apk " + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("pluginStartupAttachInfo dex2Oat ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat);
+      ((StringBuilder)localObject).append("lib ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib);
+      ((StringBuilder)localObject).append("download ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload);
+      ((StringBuilder)localObject).append("apk ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk);
+      QLog.d("plugin_tag", 1, ((StringBuilder)localObject).toString());
       if ((this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat != 0L) || (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib != 0L) || (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload != 0L) || (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk != 0L))
       {
         this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginOatCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat);
         this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginLibCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib);
         this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginDownloadCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload);
         this.jdField_a_of_type_AndroidContentIntent.putExtra("pluginApkCost", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk);
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDex2Oat = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costLib = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costDownload = 0L;
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.costApk = 0L;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo;
+        ((PluginBaseInfo)localObject).costDex2Oat = 0L;
+        ((PluginBaseInfo)localObject).costLib = 0L;
+        ((PluginBaseInfo)localObject).costDownload = 0L;
+        ((PluginBaseInfo)localObject).costApk = 0L;
       }
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo;
+    if (localObject != null)
+    {
+      ((PluginBaseInfo)localObject).downloadDuration = 0L;
+      ((PluginBaseInfo)localObject).costDex2Oat = 0L;
+      ((PluginBaseInfo)localObject).installCode = 0;
     }
   }
   
@@ -81,7 +99,7 @@ public class IPluginManager$PluginParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.PluginParams
  * JD-Core Version:    0.7.0.1
  */

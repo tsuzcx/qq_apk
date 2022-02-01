@@ -42,17 +42,26 @@ public class AVGameLobbyRandomMatchContentInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("titleUrl:").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("backgroudUrl:").append(this.jdField_b_of_type_JavaLangString).append("|");
-    localStringBuilder.append("playersNum:").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("playerList:").append(this.jdField_a_of_type_JavaUtilList).append("|");
-    localStringBuilder.append("itemType:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("titleUrl:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("backgroudUrl:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("playersNum:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append("playerList:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append("|");
+    localStringBuilder.append("itemType:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.data.AVGameLobbyRandomMatchContentInfo
  * JD-Core Version:    0.7.0.1
  */

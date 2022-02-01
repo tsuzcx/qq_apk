@@ -45,16 +45,22 @@ public abstract class MagicfaceDecoder
   public void d()
   {
     f();
-    if (!this.jdField_a_of_type_Boolean) {}
-    try
-    {
-      new Thread(new MagicfaceDecoder.1(this)).start();
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MagicfaceDecoder", 2, "startDecoder err:" + localOutOfMemoryError.getMessage());
+    if (!this.jdField_a_of_type_Boolean) {
+      try
+      {
+        new Thread(new MagicfaceDecoder.1(this)).start();
+        return;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("startDecoder err:");
+          localStringBuilder.append(localOutOfMemoryError.getMessage());
+          QLog.d("MagicfaceDecoder", 2, localStringBuilder.toString());
+        }
+      }
     }
   }
   
@@ -72,7 +78,7 @@ public abstract class MagicfaceDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.model.MagicfaceDecoder
  * JD-Core Version:    0.7.0.1
  */

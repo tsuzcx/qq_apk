@@ -18,12 +18,16 @@ final class NearbyTroops$1
       return;
     }
     String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataNearbyTroops$CustomViewHolder.c.setText(new QQText(HttpUtil.unEscape(HttpUtil.removeHtmlTags(str + "...")), 3, 14));
+    TextView localTextView = this.jdField_a_of_type_ComTencentMobileqqTroopDataNearbyTroops$CustomViewHolder.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("...");
+    localTextView.setText(new QQText(HttpUtil.unEscape(HttpUtil.removeHtmlTags(localStringBuilder.toString())), 3, 14));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.NearbyTroops.1
  * JD-Core Version:    0.7.0.1
  */

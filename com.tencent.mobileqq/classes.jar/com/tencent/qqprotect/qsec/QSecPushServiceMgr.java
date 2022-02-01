@@ -34,39 +34,39 @@ public class QSecPushServiceMgr
   
   private QSecPushServiceMgr.PushCmdData a(byte[] paramArrayOfByte)
   {
-    int j = -1;
-    boolean bool = true;
     int i;
     try
     {
       localQSecPushSeriveBody = new QSecPushSeriveMsg.QSecPushSeriveBody();
       localQSecPushSeriveBody.mergeFrom(paramArrayOfByte);
-      if ((localQSecPushSeriveBody.ver == null) || (!localQSecPushSeriveBody.ver.has())) {
-        break label411;
+      paramArrayOfByte = localQSecPushSeriveBody.ver;
+      bool = false;
+      if ((paramArrayOfByte == null) || (!localQSecPushSeriveBody.ver.has())) {
+        break label409;
       }
       i = localQSecPushSeriveBody.ver.get();
     }
     catch (Exception paramArrayOfByte)
     {
       QSecPushSeriveMsg.QSecPushSeriveBody localQSecPushSeriveBody;
-      label80:
+      boolean bool;
+      label83:
+      int j;
+      label118:
       paramArrayOfByte.printStackTrace();
       return null;
     }
     if ((localQSecPushSeriveBody.platform != null) && (localQSecPushSeriveBody.platform.has()))
     {
       i = localQSecPushSeriveBody.platform.get();
-      if ((i & 0x1) == 0) {
-        break label418;
+      break label420;
+      paramArrayOfByte = localQSecPushSeriveBody.qsecJavaVer;
+      j = -1;
+      if ((paramArrayOfByte == null) || (!localQSecPushSeriveBody.qsecJavaVer.has())) {
+        break label428;
       }
-      if ((localQSecPushSeriveBody.qsecJavaVer != null) && (localQSecPushSeriveBody.qsecJavaVer.has()))
-      {
-        i = localQSecPushSeriveBody.qsecJavaVer.get();
-        break label420;
-      }
-    }
-    for (;;)
-    {
+      i = localQSecPushSeriveBody.qsecJavaVer.get();
+      break label430;
       i = j;
       if (localQSecPushSeriveBody.qsecNativeVer != null)
       {
@@ -75,66 +75,74 @@ public class QSecPushServiceMgr
           i = localQSecPushSeriveBody.qsecNativeVer.get();
         }
       }
-      if ((i == 0) || (i == QSecFramework.a().a()))
+      if ((i != 0) && (i != QSecFramework.a().a())) {
+        return null;
+      }
+      if ((localQSecPushSeriveBody.packageName == null) || (!localQSecPushSeriveBody.packageName.has())) {
+        break label442;
+      }
+      paramArrayOfByte = localQSecPushSeriveBody.packageName.get();
+    }
+    for (;;)
+    {
+      if ((!TextUtils.isEmpty(paramArrayOfByte)) && (!paramArrayOfByte.equalsIgnoreCase(QPMiscUtils.a()))) {
+        return null;
+      }
+      paramArrayOfByte = new QSecPushServiceMgr.PushCmdData(null);
+      if (localQSecPushSeriveBody.pluginId != null)
       {
-        if ((localQSecPushSeriveBody.packageName != null) && (localQSecPushSeriveBody.packageName.has())) {
-          paramArrayOfByte = localQSecPushSeriveBody.packageName.get();
+        if (!localQSecPushSeriveBody.pluginId.has()) {
+          return null;
         }
-        for (;;)
+        paramArrayOfByte.jdField_a_of_type_Int = localQSecPushSeriveBody.pluginId.get();
+        if (localQSecPushSeriveBody.pluginCmd != null)
         {
-          if ((TextUtils.isEmpty(paramArrayOfByte)) || (paramArrayOfByte.equalsIgnoreCase(QPMiscUtils.c())))
+          if (!localQSecPushSeriveBody.pluginCmd.has()) {
+            return null;
+          }
+          paramArrayOfByte.c = localQSecPushSeriveBody.pluginCmd.get();
+          if (localQSecPushSeriveBody.pluginVer != null)
           {
-            paramArrayOfByte = new QSecPushServiceMgr.PushCmdData(null);
-            if ((localQSecPushSeriveBody.pluginId != null) && (localQSecPushSeriveBody.pluginId.has()))
-            {
-              paramArrayOfByte.jdField_a_of_type_Int = localQSecPushSeriveBody.pluginId.get();
-              if ((localQSecPushSeriveBody.pluginCmd != null) && (localQSecPushSeriveBody.pluginCmd.has()))
-              {
-                paramArrayOfByte.c = localQSecPushSeriveBody.pluginCmd.get();
-                if ((localQSecPushSeriveBody.pluginVer != null) && (localQSecPushSeriveBody.pluginVer.has()))
-                {
-                  paramArrayOfByte.b = localQSecPushSeriveBody.pluginVer.get();
-                  if ((localQSecPushSeriveBody.canCache != null) && (localQSecPushSeriveBody.canCache.has())) {
-                    if (localQSecPushSeriveBody.canCache.get() != 1) {
-                      break label383;
-                    }
-                  }
-                  for (;;)
-                  {
-                    paramArrayOfByte.jdField_a_of_type_Boolean = bool;
-                    if ((localQSecPushSeriveBody.extraInfo != null) && (localQSecPushSeriveBody.extraInfo.has())) {
-                      paramArrayOfByte.jdField_a_of_type_ArrayOfByte = localQSecPushSeriveBody.extraInfo.get().toByteArray();
-                    }
-                    return paramArrayOfByte;
-                    label383:
-                    bool = false;
-                  }
-                  paramArrayOfByte = null;
-                  continue;
-                  i = -1;
-                  break label420;
-                  i = 0;
-                  break label80;
-                  label411:
-                  i = 0;
-                  if (i == 1) {
-                    break;
-                  }
-                }
-              }
+            if (!localQSecPushSeriveBody.pluginVer.has()) {
+              return null;
             }
+            paramArrayOfByte.b = localQSecPushSeriveBody.pluginVer.get();
+            if ((localQSecPushSeriveBody.canCache != null) && (localQSecPushSeriveBody.canCache.has()))
+            {
+              if (localQSecPushSeriveBody.canCache.get() == 1) {
+                bool = true;
+              }
+              paramArrayOfByte.jdField_a_of_type_Boolean = bool;
+            }
+            if ((localQSecPushSeriveBody.extraInfo != null) && (localQSecPushSeriveBody.extraInfo.has())) {
+              paramArrayOfByte.jdField_a_of_type_ArrayOfByte = localQSecPushSeriveBody.extraInfo.get().toByteArray();
+            }
+            return paramArrayOfByte;
           }
         }
       }
-      label418:
+      return null;
+      label409:
+      i = 0;
+      if (i == 1) {
+        break;
+      }
+      return null;
+      i = 0;
       label420:
-      do
-      {
-        return null;
-        if (i == 0) {
-          break;
-        }
-      } while (i != 33751040);
+      if ((i & 0x1) != 0) {
+        break label83;
+      }
+      return null;
+      label428:
+      i = -1;
+      label430:
+      if ((i == 0) || (i == 33751040)) {
+        break label118;
+      }
+      return null;
+      label442:
+      paramArrayOfByte = null;
     }
   }
   
@@ -173,33 +181,34 @@ public class QSecPushServiceMgr
   
   private void c(QSecPushServiceMgr.PushCmdData paramPushCmdData)
   {
-    switch (paramPushCmdData.c)
-    {
-    }
-    do
-    {
-      for (;;)
+    int i = paramPushCmdData.c;
+    if (i != 1) {
+      if (i != 2)
       {
-        return;
-        this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr.a(true);
-        return;
-        try
-        {
-          paramPushCmdData = (QQAppInterface)BaseApplicationImpl.sMobileQQ.waitAppRuntime(null);
-          if (paramPushCmdData != null)
-          {
-            ((QPUpdateManager)paramPushCmdData.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).b(0);
-            return;
-          }
-        }
-        catch (Exception paramPushCmdData)
-        {
+        if (i != 3) {
           return;
         }
+        paramPushCmdData = paramPushCmdData.jdField_a_of_type_ArrayOfByte;
+        if (!FilterManager.a().a(paramPushCmdData)) {
+          break label81;
+        }
+        FilterManager.a().a();
+        return;
       }
-      paramPushCmdData = paramPushCmdData.jdField_a_of_type_ArrayOfByte;
-    } while (!FilterManager.a().a(paramPushCmdData));
-    FilterManager.a().a();
+    }
+    try
+    {
+      paramPushCmdData = (QQAppInterface)BaseApplicationImpl.sMobileQQ.waitAppRuntime(null);
+      if (paramPushCmdData != null)
+      {
+        ((QPUpdateManager)paramPushCmdData.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).b(0);
+        return;
+        this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr.a(true);
+      }
+      label81:
+      return;
+    }
+    catch (Exception paramPushCmdData) {}
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -212,7 +221,7 @@ public class QSecPushServiceMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecPushServiceMgr
  * JD-Core Version:    0.7.0.1
  */

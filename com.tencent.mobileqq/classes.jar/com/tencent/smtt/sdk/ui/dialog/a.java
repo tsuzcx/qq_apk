@@ -59,17 +59,17 @@ public class a
     a(paramListView);
     this.g = paramb1;
     this.c = paramIntent;
-    if (("com.tencent.rtxlite".equalsIgnoreCase(paramContext.getApplicationContext().getPackageName())) || (MttLoader.isBrowserInstalled(paramContext))) {}
-    for (this.f = null;; this.f = this.g)
-    {
-      this.h = paramList;
-      this.i = new a.1(this);
-      this.j = new String[2];
-      this.j[0] = e.b("x5_tbs_activity_picker_recommend_to_trim");
-      this.j[1] = e.b("x5_tbs_activity_picker_recommend_with_chinese_brace_to_trim");
-      a(paramContext, paramb2);
-      return;
+    if ((!"com.tencent.rtxlite".equalsIgnoreCase(paramContext.getApplicationContext().getPackageName())) && (!MttLoader.isBrowserInstalled(paramContext))) {
+      this.f = this.g;
+    } else {
+      this.f = null;
     }
+    this.h = paramList;
+    this.i = new a.1(this);
+    this.j = new String[2];
+    this.j[0] = e.b("x5_tbs_activity_picker_recommend_to_trim");
+    this.j[1] = e.b("x5_tbs_activity_picker_recommend_with_chinese_brace_to_trim");
+    a(paramContext, paramb2);
   }
   
   private View a(Context paramContext)
@@ -131,84 +131,93 @@ public class a
   
   private void a(b paramb, View paramView)
   {
-    if ((paramView == null) || (paramb == null)) {
-      return;
-    }
-    Object localObject1 = (ImageView)paramView.findViewById(101);
-    TextView localTextView1 = (TextView)paramView.findViewById(102);
-    TextView localTextView2 = (TextView)paramView.findViewById(103);
-    ImageView localImageView = (ImageView)paramView.findViewById(104);
-    View localView1 = paramView.findViewById(105);
-    View localView2 = paramView.findViewById(106);
-    ((ImageView)localObject1).setImageDrawable(paramb.a());
-    localObject1 = paramb.b().trim().replaceAll(' ' + "", "");
-    String[] arrayOfString = this.j;
-    int m = arrayOfString.length;
-    int k = 0;
-    while (k < m)
+    if (paramView != null)
     {
-      String str = arrayOfString[k];
-      Object localObject2 = localObject1;
-      if (str != null)
-      {
-        localObject2 = localObject1;
-        if (str.length() > 0) {
-          localObject2 = ((String)localObject1).replaceAll(str, "");
-        }
+      if (paramb == null) {
+        return;
       }
-      k += 1;
-      localObject1 = localObject2;
-    }
-    localTextView1.setText((CharSequence)localObject1);
-    if (paramb.c() == null) {
-      paramb.a(a(paramb));
-    }
-    localView1.setOnClickListener(new a.2(this));
-    if ("com.tencent.mtt".equals(paramb.d()))
-    {
-      localTextView2.setVisibility(0);
-      localTextView2.setText(paramb.h());
+      Object localObject1 = (ImageView)paramView.findViewById(101);
+      TextView localTextView1 = (TextView)paramView.findViewById(102);
+      TextView localTextView2 = (TextView)paramView.findViewById(103);
+      ImageView localImageView = (ImageView)paramView.findViewById(104);
+      View localView1 = paramView.findViewById(105);
+      View localView2 = paramView.findViewById(106);
+      ((ImageView)localObject1).setImageDrawable(paramb.a());
+      localObject1 = paramb.b().trim();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(' ');
+      ((StringBuilder)localObject2).append("");
+      localObject1 = ((String)localObject1).replaceAll(((StringBuilder)localObject2).toString(), "");
+      String[] arrayOfString = this.j;
+      int m = arrayOfString.length;
+      int k = 0;
+      while (k < m)
+      {
+        String str = arrayOfString[k];
+        localObject2 = localObject1;
+        if (str != null)
+        {
+          localObject2 = localObject1;
+          if (str.length() > 0) {
+            localObject2 = ((String)localObject1).replaceAll(str, "");
+          }
+        }
+        k += 1;
+        localObject1 = localObject2;
+      }
+      localTextView1.setText((CharSequence)localObject1);
+      if (paramb.c() == null) {
+        paramb.a(a(paramb));
+      }
+      localView1.setOnClickListener(new a.2(this));
+      if ("com.tencent.mtt".equals(paramb.d()))
+      {
+        localTextView2.setVisibility(0);
+        localTextView2.setText(paramb.h());
+      }
+      else
+      {
+        localTextView2.setVisibility(8);
+      }
       localView1.setClickable(false);
       localView1.setEnabled(false);
-      if (paramb != this.b) {
-        break label306;
+      if (paramb == this.b)
+      {
+        localImageView.setVisibility(0);
+        if (localView2 != null) {
+          localView2.setVisibility(0);
+        }
       }
-      localImageView.setVisibility(0);
-      if (localView2 != null) {
-        localView2.setVisibility(0);
+      else
+      {
+        localImageView.setVisibility(8);
+        if (localView2 != null) {
+          localView2.setVisibility(8);
+        }
       }
-    }
-    for (;;)
-    {
       paramView.setTag(paramb);
       paramView.setOnClickListener(this);
-      return;
-      localTextView2.setVisibility(8);
-      break;
-      label306:
-      localImageView.setVisibility(8);
-      if (localView2 != null) {
-        localView2.setVisibility(8);
-      }
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    if (this.e == null) {}
-    d locald;
-    do
-    {
+    Object localObject = this.e;
+    if (localObject == null) {
       return;
-      locald = (d)this.e.get();
-    } while (locald == null);
-    locald.a(paramBoolean);
+    }
+    localObject = (d)((WeakReference)localObject).get();
+    if (localObject != null) {
+      ((d)localObject).a(paramBoolean);
+    }
   }
   
   public static boolean a(Context paramContext, String paramString)
   {
-    if ((paramString == null) || ("".equals(paramString))) {
-      return false;
+    if (paramString != null) {
+      if ("".equals(paramString)) {
+        return false;
+      }
     }
     try
     {
@@ -217,33 +226,39 @@ public class a
     }
     catch (PackageManager.NameNotFoundException paramContext) {}
     return false;
+    return false;
   }
   
   private void b(Context paramContext, b paramb)
   {
     this.b = paramb;
-    if (this.b == null) {
+    paramb = this.b;
+    if (paramb == null) {
       return;
     }
-    if ((this.b.e()) || (this.b.f()))
-    {
-      a(true);
-      return;
+    boolean bool;
+    if ((!paramb.e()) && (!this.b.f())) {
+      bool = a(paramContext, this.b.d());
+    } else {
+      bool = true;
     }
-    a(a(paramContext, this.b.d()));
+    a(bool);
   }
   
   public ResolveInfo a(b paramb)
   {
-    if ((paramb == null) || (TextUtils.isEmpty(paramb.d()))) {
-      return null;
-    }
-    Iterator localIterator = getContext().getPackageManager().queryIntentActivities(this.c, 65536).iterator();
-    while (localIterator.hasNext())
+    if (paramb != null)
     {
-      ResolveInfo localResolveInfo = (ResolveInfo)localIterator.next();
-      if (paramb.d().equals(localResolveInfo.activityInfo.packageName)) {
-        return localResolveInfo;
+      if (TextUtils.isEmpty(paramb.d())) {
+        return null;
+      }
+      Iterator localIterator = getContext().getPackageManager().queryIntentActivities(this.c, 65536).iterator();
+      while (localIterator.hasNext())
+      {
+        ResolveInfo localResolveInfo = (ResolveInfo)localIterator.next();
+        if (paramb.d().equals(localResolveInfo.activityInfo.packageName)) {
+          return localResolveInfo;
+        }
       }
     }
     return null;
@@ -256,72 +271,81 @@ public class a
   
   public b a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.a.size())) {
-      return null;
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (b)this.a.get(paramInt);
     }
-    return (b)this.a.get(paramInt);
+    return null;
   }
   
   void a(Context paramContext, b paramb)
   {
     this.a = new ArrayList();
-    if ((this.h != null) && (this.h.size() != 0)) {
+    Object localObject1 = this.h;
+    if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
       this.a.addAll(this.h);
     }
-    Iterator localIterator = paramContext.getPackageManager().queryIntentActivities(this.c, 65536).iterator();
-    int k = 0;
+    localObject1 = paramContext.getPackageManager().queryIntentActivities(this.c, 65536).iterator();
     int m = 0;
-    ResolveInfo localResolveInfo;
-    b localb;
-    for (;;)
+    int k = 0;
+    while (((Iterator)localObject1).hasNext())
     {
-      if (localIterator.hasNext())
+      Object localObject2 = (ResolveInfo)((Iterator)localObject1).next();
+      if ((b.a(paramContext, ((ResolveInfo)localObject2).activityInfo.packageName) != null) || (((ResolveInfo)localObject2).loadIcon(paramContext.getPackageManager()) != null))
       {
-        localResolveInfo = (ResolveInfo)localIterator.next();
-        if ((b.a(paramContext, localResolveInfo.activityInfo.packageName) != null) || (localResolveInfo.loadIcon(paramContext.getPackageManager()) != null))
+        b localb1 = new b(paramContext, (ResolveInfo)localObject2);
+        b localb2 = this.f;
+        int n;
+        if ((localb2 != null) && (localb2.d().equals(((ResolveInfo)localObject2).activityInfo.packageName)))
         {
-          localb = new b(paramContext, localResolveInfo);
-          if ((this.f != null) && (this.f.d().equals(localResolveInfo.activityInfo.packageName)))
+          localb1.a(this.f.f());
+          localb1.a(this.f.h());
+          localb1.a(this.f.a());
+          this.a.add(0, localb1);
+          n = 1;
+        }
+        else if ("com.tencent.mtt".equals(((ResolveInfo)localObject2).activityInfo.packageName))
+        {
+          localObject2 = this.g;
+          if (localObject2 != null)
           {
-            localb.a(this.f.f());
-            localb.a(this.f.h());
-            localb.a(this.f.a());
-            this.a.add(0, localb);
-            m = 1;
-            label206:
-            if ((k != 0) || (paramb == null) || (!localb.d().equals(paramb.d()))) {
-              break label382;
+            localb1.a(((b)localObject2).f());
+            localb1.a(this.g.h());
+            localb1.a(this.g.a());
+          }
+          this.a.add(0, localb1);
+          n = m;
+        }
+        else
+        {
+          this.a.add(localb1);
+          n = m;
+        }
+        m = n;
+        if (k == 0)
+        {
+          m = n;
+          if (paramb != null)
+          {
+            m = n;
+            if (localb1.d().equals(paramb.d()))
+            {
+              b(paramContext, localb1);
+              k = 1;
+              m = n;
             }
-            b(paramContext, localb);
-            k = 1;
           }
         }
       }
     }
-    label382:
-    for (;;)
+    if (m == 0)
     {
-      break;
-      if ("com.tencent.mtt".equals(localResolveInfo.activityInfo.packageName))
-      {
-        if (this.g != null)
-        {
-          localb.a(this.g.f());
-          localb.a(this.g.h());
-          localb.a(this.g.a());
-        }
-        this.a.add(0, localb);
-        break label206;
+      paramb = this.f;
+      if (paramb != null) {
+        this.a.add(0, paramb);
       }
-      this.a.add(localb);
-      break label206;
-      if ((m == 0) && (this.f != null)) {
-        this.a.add(0, this.f);
-      }
-      if ((k == 0) && (this.a.size() > 0)) {
-        b(paramContext, (b)this.a.get(0));
-      }
-      return;
+    }
+    if ((k == 0) && (this.a.size() > 0)) {
+      b(paramContext, (b)this.a.get(0));
     }
   }
   
@@ -337,20 +361,19 @@ public class a
   
   public void b()
   {
-    if (Looper.myLooper() != Looper.getMainLooper()) {
-      this.i.obtainMessage(1).sendToTarget();
-    }
-    Object localObject;
-    do
+    if (Looper.myLooper() != Looper.getMainLooper())
     {
-      do
-      {
-        return;
-        localObject = (ListView)this.d.get();
-      } while (localObject == null);
-      localObject = ((ListView)localObject).findViewWithTag(this.f);
-    } while (localObject == null);
-    a(this.f, (View)localObject);
+      this.i.obtainMessage(1).sendToTarget();
+      return;
+    }
+    Object localObject = (ListView)this.d.get();
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((ListView)localObject).findViewWithTag(this.f);
+    if (localObject != null) {
+      a(this.f, (View)localObject);
+    }
   }
   
   public int getCount()
@@ -361,49 +384,49 @@ public class a
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     b localb = a(paramInt);
+    View localView;
     if (localb == null)
     {
       localView = null;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
     }
-    if (paramView != null) {}
-    for (View localView = paramView;; localView = a(getContext()))
+    else
     {
+      if (paramView != null) {
+        localView = paramView;
+      } else {
+        localView = a(getContext());
+      }
       a(localb, localView);
-      break;
     }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag();
-    b localb1;
-    if ((localObject != null) && ((localObject instanceof b)))
+    Object localObject1 = paramView.getTag();
+    if ((localObject1 != null) && ((localObject1 instanceof b)))
     {
-      localb1 = (b)localObject;
-      if (localb1 != this.b) {}
+      b localb = (b)localObject1;
+      if (localb != this.b)
+      {
+        Object localObject2 = paramView.getParent();
+        localObject1 = null;
+        if ((localObject2 instanceof View)) {
+          localObject1 = (View)localObject2;
+        }
+        localObject2 = this.b;
+        b(paramView.getContext(), localb);
+        a((b)localObject2, ((View)localObject1).findViewWithTag(localObject2));
+        a(this.b, paramView);
+      }
     }
-    else
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    localObject = paramView.getParent();
-    if ((localObject instanceof View)) {}
-    for (localObject = (View)localObject;; localObject = null)
-    {
-      b localb2 = this.b;
-      b(paramView.getContext(), localb1);
-      a(localb2, ((View)localObject).findViewWithTag(localb2));
-      a(this.b, paramView);
-      break;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.a
  * JD-Core Version:    0.7.0.1
  */

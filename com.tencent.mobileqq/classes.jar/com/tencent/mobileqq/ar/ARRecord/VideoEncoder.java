@@ -5,7 +5,7 @@ import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.view.Surface;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
+import com.tencent.mobileqq.videocodec.mediacodec.encoder.EncodeConfig;
 import com.tencent.qphone.base.util.QLog;
 
 public class VideoEncoder
@@ -19,91 +19,99 @@ public class VideoEncoder
   private void b()
   {
     QLog.d("VideoEncoder", 2, "handleStopRecording");
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
-    try
+    VideoEncoderCore localVideoEncoderCore = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore;
+    if (localVideoEncoderCore != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a();
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore = null;
-      if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+      try
       {
-        this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-        this.jdField_a_of_type_AndroidOsHandlerThread = null;
+        localVideoEncoderCore.a();
       }
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        this.jdField_a_of_type_AndroidOsHandler = null;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback.c();
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback = null;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         QLog.e("VideoEncoder", 1, "handleStopRecording stop encoder fail.", localException);
-        if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback.a(2);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback;
+        if (localObject != null) {
+          ((VideoEncoder.VideoEncoderCallback)localObject).a(2);
         }
       }
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore = null;
+    }
+    Object localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if (localObject != null)
+    {
+      ((HandlerThread)localObject).quit();
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+    }
+    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null)
+    {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback;
+    if (localObject != null)
+    {
+      ((VideoEncoder.VideoEncoderCallback)localObject).c();
+      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback = null;
     }
   }
   
   private void b(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(paramLong);
-      return;
-    }
-    catch (Exception localException)
-    {
-      do
+    VideoEncoderCore localVideoEncoderCore = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore;
+    if (localVideoEncoderCore != null) {
+      try
+      {
+        localVideoEncoderCore.a(paramLong);
+        return;
+      }
+      catch (Exception localException)
       {
         QLog.e("VideoEncoder", 1, "handleVideoFrameAvailable encode video fail.", localException);
-      } while (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback == null);
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback.a(4);
+        VideoEncoder.VideoEncoderCallback localVideoEncoderCallback = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback;
+        if (localVideoEncoderCallback != null) {
+          localVideoEncoderCallback.a(4);
+        }
+      }
     }
   }
   
   private void b(byte[] paramArrayOfByte, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(paramArrayOfByte, paramLong);
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      do
+    VideoEncoderCore localVideoEncoderCore = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore;
+    if (localVideoEncoderCore != null) {
+      try
+      {
+        localVideoEncoderCore.a(paramArrayOfByte, paramLong);
+        return;
+      }
+      catch (Exception paramArrayOfByte)
       {
         QLog.e("VideoEncoder", 1, "handleAudioFrameAvailable encode audio fail.", paramArrayOfByte);
-      } while (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback == null);
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback.a(3);
+        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback;
+        if (paramArrayOfByte != null) {
+          paramArrayOfByte.a(3);
+        }
+      }
     }
   }
   
   public Surface a()
   {
-    Surface localSurface = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore != null) {
-      localSurface = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a();
+    VideoEncoderCore localVideoEncoderCore = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore;
+    if (localVideoEncoderCore != null) {
+      return localVideoEncoderCore.a();
     }
-    return localSurface;
+    return null;
   }
   
   public void a()
   {
     QLog.d("VideoEncoder", 2, "stopRecording");
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
     }
   }
@@ -128,24 +136,24 @@ public class VideoEncoder
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
       this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {}
-    try
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore = new VideoEncoderCore();
-      this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(paramEncodeConfig, paramVideoEncoderCallback);
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback.a();
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore = new VideoEncoderCore();
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoderCore.a(paramEncodeConfig, paramVideoEncoderCallback);
       }
-      return;
-    }
-    catch (Exception paramEncodeConfig)
-    {
-      for (;;)
+      catch (Exception paramEncodeConfig)
       {
         QLog.e("VideoEncoder", 1, "startRecording start encoder fail.", paramEncodeConfig);
-        if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback.a(1);
+        paramEncodeConfig = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback;
+        if (paramEncodeConfig != null) {
+          paramEncodeConfig.a(1);
         }
+      }
+      paramEncodeConfig = this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoEncoder$VideoEncoderCallback;
+      if (paramEncodeConfig != null) {
+        paramEncodeConfig.a();
       }
     }
   }
@@ -161,25 +169,28 @@ public class VideoEncoder
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 2)
     {
-    default: 
-      return true;
-    case 2: 
-      b();
-      return true;
-    case 3: 
+      if (i != 3)
+      {
+        if (i != 4) {
+          return true;
+        }
+        b(((Long)paramMessage.obj).longValue());
+        return true;
+      }
       paramMessage = (Object[])paramMessage.obj;
       b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
       return true;
     }
-    b(((Long)paramMessage.obj).longValue());
+    b();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.VideoEncoder
  * JD-Core Version:    0.7.0.1
  */

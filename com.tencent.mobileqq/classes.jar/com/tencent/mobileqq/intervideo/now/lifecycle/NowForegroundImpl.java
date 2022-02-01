@@ -28,7 +28,10 @@ public class NowForegroundImpl
   
   public void onCreate(Context paramContext)
   {
-    QLog.d("NowForegroundImpl", 2, "onCreate context = " + paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCreate context = ");
+    localStringBuilder.append(paramContext);
+    QLog.d("NowForegroundImpl", 2, localStringBuilder.toString());
     Foreground.updateRuntimeState(this.jdField_a_of_type_MqqAppAppRuntime);
     if ((paramContext instanceof Activity)) {
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)paramContext);
@@ -37,7 +40,10 @@ public class NowForegroundImpl
   
   public void onDestroy()
   {
-    QLog.d("NowForegroundImpl", 2, "onDestroy mRuntime = " + this.jdField_a_of_type_MqqAppAppRuntime);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDestroy mRuntime = ");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime);
+    QLog.d("NowForegroundImpl", 2, localStringBuilder.toString());
   }
   
   public void onPause() {}
@@ -46,17 +52,23 @@ public class NowForegroundImpl
   
   public void onStart()
   {
-    QLog.d("NowForegroundImpl", 2, "onStart mActivity = " + this.jdField_a_of_type_JavaLangRefWeakReference);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStart mActivity = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangRefWeakReference);
+    QLog.d("NowForegroundImpl", 2, localStringBuilder.toString());
   }
   
   public void onStop()
   {
-    QLog.d("NowForegroundImpl", 2, "onStop mRuntime = " + this.jdField_a_of_type_MqqAppAppRuntime);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStop mRuntime = ");
+    localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime);
+    QLog.d("NowForegroundImpl", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.lifecycle.NowForegroundImpl
  * JD-Core Version:    0.7.0.1
  */

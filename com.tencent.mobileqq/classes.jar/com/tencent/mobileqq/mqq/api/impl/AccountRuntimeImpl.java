@@ -16,15 +16,16 @@ public class AccountRuntimeImpl
   public String getA2()
   {
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if ((localAppRuntime == null) || (TextUtils.isEmpty(localAppRuntime.getAccount())))
+    String str = "";
+    if ((localAppRuntime != null) && (!TextUtils.isEmpty(localAppRuntime.getAccount())))
     {
-      QLog.d("AccountRuntimeImpl", 1, "appruntime or account is null");
-      return "";
+      TicketManager localTicketManager = (TicketManager)localAppRuntime.getManager(2);
+      if (localTicketManager != null) {
+        str = localTicketManager.getA2(localAppRuntime.getAccount());
+      }
+      return str;
     }
-    TicketManager localTicketManager = (TicketManager)localAppRuntime.getManager(2);
-    if (localTicketManager != null) {
-      return localTicketManager.getA2(localAppRuntime.getAccount());
-    }
+    QLog.d("AccountRuntimeImpl", 1, "appruntime or account is null");
     return "";
   }
   
@@ -40,7 +41,7 @@ public class AccountRuntimeImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mqq.api.impl.AccountRuntimeImpl
  * JD-Core Version:    0.7.0.1
  */

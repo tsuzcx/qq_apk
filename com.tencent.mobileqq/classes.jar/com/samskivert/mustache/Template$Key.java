@@ -24,7 +24,11 @@ public class Template$Key
   
   public String toString()
   {
-    return this.cclass.getName() + ":" + this.name;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.cclass.getName());
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.name);
+    return localStringBuilder.toString();
   }
 }
 

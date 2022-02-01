@@ -20,23 +20,29 @@ class TroopFileModel$3
   public void a(FileBrowserModelBase.ImageFileInfo paramImageFileInfo)
   {
     paramImageFileInfo = ((DefaultImageInfo)paramImageFileInfo).a();
-    if (paramImageFileInfo == null) {}
-    Object localObject;
-    do
+    if (paramImageFileInfo == null) {
+      return;
+    }
+    if ((FileManagerUtil.a(paramImageFileInfo.a()) == 0) && (!TextUtils.isEmpty(paramImageFileInfo.a())) && (TextUtils.isEmpty(paramImageFileInfo.g())))
     {
-      do
-      {
-        return;
-      } while ((FileManagerUtil.a(paramImageFileInfo.a()) != 0) || (TextUtils.isEmpty(paramImageFileInfo.a())) || (!TextUtils.isEmpty(paramImageFileInfo.g())));
       FileManagerEntity localFileManagerEntity = paramImageFileInfo.a();
       if (localFileManagerEntity == null)
       {
         QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : can not get the troop file entity, return.");
         return;
       }
-      localObject = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.strTroopFileID, localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId);
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : troopUin[" + localFileManagerEntity.TroopUin + "] troopFileId[" + localFileManagerEntity.strTroopFileID + "] troopFilePath[" + localFileManagerEntity.strTroopFilePath + "]");
+      Object localObject = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.strTroopFileID, localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("downloadThumb : troopUin[");
+        localStringBuilder.append(localFileManagerEntity.TroopUin);
+        localStringBuilder.append("] troopFileId[");
+        localStringBuilder.append(localFileManagerEntity.strTroopFileID);
+        localStringBuilder.append("] troopFilePath[");
+        localStringBuilder.append(localFileManagerEntity.strTroopFilePath);
+        localStringBuilder.append("]");
+        QLog.i("TroopFileModel<FileAssistant>", 2, localStringBuilder.toString());
       }
       if (TextUtils.isEmpty(((TroopFileStatusInfo)localObject).c))
       {
@@ -55,13 +61,15 @@ class TroopFileModel$3
       if (QLog.isColorLevel()) {
         QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can find local thumb file, refresh the picture browser.");
       }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(((TroopFileStatusInfo)localObject).e, ((TroopFileStatusInfo)localObject).c);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(((TroopFileStatusInfo)localObject).e, ((TroopFileStatusInfo)localObject).c);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.3
  * JD-Core Version:    0.7.0.1
  */

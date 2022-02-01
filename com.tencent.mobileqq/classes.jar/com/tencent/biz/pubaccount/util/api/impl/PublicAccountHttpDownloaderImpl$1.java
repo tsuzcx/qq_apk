@@ -17,10 +17,11 @@ class PublicAccountHttpDownloaderImpl$1
     try
     {
       PublicAccountHttpDownloaderImpl.access$601(this.this$0, this.jdField_a_of_type_JavaIoOutputStream, this.jdField_a_of_type_ComTencentImageDownloadParams, this.jdField_a_of_type_ComTencentImageURLDrawableHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_JavaIoOutputStream != null) {
+      if (this.jdField_a_of_type_JavaIoOutputStream != null)
+      {
         this.jdField_a_of_type_JavaIoOutputStream.close();
+        return;
       }
-      return;
     }
     catch (IOException localIOException)
     {
@@ -31,7 +32,7 @@ class PublicAccountHttpDownloaderImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountHttpDownloaderImpl.1
  * JD-Core Version:    0.7.0.1
  */

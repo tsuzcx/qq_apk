@@ -1,6 +1,7 @@
 package com.tencent.gdtad.jsbridge;
 
-import com.tencent.gdtad.api.motivevideo.GdtADFlyingStreamingReportHelper;
+import com.tencent.gdtad.IGdtAPI;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Arrays;
 import org.json.JSONObject;
@@ -12,33 +13,37 @@ class GdtWebReportFlyingStreamingHandler
   
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if (paramGdtAdWebPlugin != null) {}
-    for (paramString = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (paramString == null); paramString = null)
-    {
-      QLog.i("WebGdtWebReportFlyingStreamingHandler", 1, "webPlugin == null || activity == null");
-      return true;
+    if (paramGdtAdWebPlugin != null) {
+      paramString = paramGdtAdWebPlugin.a();
+    } else {
+      paramString = null;
     }
-    QLog.i("WebGdtWebReportFlyingStreamingHandler", 1, "args=" + Arrays.toString(paramVarArgs));
-    long l1 = -1L;
-    try
+    if ((paramGdtAdWebPlugin != null) && (paramString != null))
     {
-      long l2 = new JSONObject(paramVarArgs[0]).optLong("event_code");
-      l1 = l2;
-    }
-    catch (Throwable paramGdtAdWebPlugin)
-    {
-      for (;;)
+      paramGdtAdWebPlugin = new StringBuilder();
+      paramGdtAdWebPlugin.append("args=");
+      paramGdtAdWebPlugin.append(Arrays.toString(paramVarArgs));
+      QLog.i("WebGdtWebReportFlyingStreamingHandler", 1, paramGdtAdWebPlugin.toString());
+      long l1 = -1L;
+      try
+      {
+        long l2 = new JSONObject(paramVarArgs[0]).optLong("event_code");
+        l1 = l2;
+      }
+      catch (Throwable paramGdtAdWebPlugin)
       {
         QLog.e("WebGdtWebReportFlyingStreamingHandler", 1, "json", paramGdtAdWebPlugin);
       }
+      ((IGdtAPI)QRoute.api(IGdtAPI.class)).reportADFlyingStreaming(l1);
+      return true;
     }
-    GdtADFlyingStreamingReportHelper.a().a(l1);
+    QLog.i("WebGdtWebReportFlyingStreamingHandler", 1, "webPlugin == null || activity == null");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtWebReportFlyingStreamingHandler
  * JD-Core Version:    0.7.0.1
  */

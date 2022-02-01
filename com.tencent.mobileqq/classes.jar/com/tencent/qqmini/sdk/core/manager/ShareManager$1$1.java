@@ -12,17 +12,18 @@ class ShareManager$1$1
   
   public void run()
   {
-    if ((this.val$finalErrCode == -100070004L) || (this.val$finalErrCode == -1000710003L))
+    long l = this.val$finalErrCode;
+    if ((l != -100070004L) && (l != -1000710003L))
     {
-      DialogUtil.createCustomDialog(this.this$1.val$shareData.fromActivity, 230, "分享失败", this.val$finalErrMsg, new ShareManager.1.1.1(this), null).show();
+      MiniToast.makeText(this.this$1.val$shareData.fromActivity, 1, "小程序分享失败，参数错误", 1).show();
       return;
     }
-    MiniToast.makeText(this.this$1.val$shareData.fromActivity, 1, "小程序分享失败，参数错误", 1).show();
+    DialogUtil.createCustomDialog(this.this$1.val$shareData.fromActivity, 230, "分享失败", this.val$finalErrMsg, new ShareManager.1.1.1(this), null).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.ShareManager.1.1
  * JD-Core Version:    0.7.0.1
  */

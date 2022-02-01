@@ -24,73 +24,77 @@ class TraeAudioManager$bluetoothHeadsetSwitchThread
   
   public void _run()
   {
-    if ((TraeAudioManager.IsMusicScene) || (!TraeAudioManager.IsUpdateSceneFlag))
+    if ((!TraeAudioManager.IsMusicScene) && (TraeAudioManager.IsUpdateSceneFlag)) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "connect bluetoothHeadset: do nothing, IsMusicScene:" + TraeAudioManager.IsMusicScene + " ,IsUpdateSceneFlag:" + TraeAudioManager.IsUpdateSceneFlag);
-      }
-      updateStatus();
-    }
-    for (;;)
-    {
-      return;
-      try
+      Thread.sleep(1000L);
+      _startBluetoothSco();
+      i = 0;
+      if (this._running == true)
       {
-        Thread.sleep(1000L);
-        label67:
-        _startBluetoothSco();
-        int i = 0;
-        for (;;)
+        j = i + 1;
+        if (i < 10)
         {
-          int j;
-          StringBuilder localStringBuilder;
-          if (this._running == true)
+          if (QLog.isColorLevel())
           {
-            j = i + 1;
-            if (i < 10) {
-              if (QLog.isColorLevel())
-              {
-                localStringBuilder = new StringBuilder().append("bluetoothHeadsetSwitchThread i:").append(j).append(" sco:");
-                if (!this.this$0._am.isBluetoothScoOn()) {
-                  break label243;
-                }
-              }
-            }
-          }
-          label243:
-          for (String str = "Y";; str = "N")
-          {
-            QLog.w("TRAE", 0, str + " :" + this.this$0._deviceConfigManager.getBluetoothName());
-            if (!this.this$0._am.isBluetoothScoOn()) {
-              break label249;
-            }
-            updateStatus();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("bluetoothHeadsetSwitchThread i:");
+            localStringBuilder.append(j);
+            localStringBuilder.append(" sco:");
             if (this.this$0._am.isBluetoothScoOn()) {
-              break;
+              localObject = "Y";
+            } else {
+              localObject = "N";
             }
-            if (QLog.isColorLevel()) {
-              QLog.e("TRAE", 0, "bluetoothHeadsetSwitchThread sco fail,remove btheadset");
-            }
-            this.this$0._deviceConfigManager.setVisible(getDeviceName(), false);
-            processDeviceConnectRes(10);
-            this.this$0.checkAutoDeviceListUpdate();
-            return;
+            localStringBuilder.append((String)localObject);
+            localStringBuilder.append(" :");
+            localStringBuilder.append(this.this$0._deviceConfigManager.getBluetoothName());
+            QLog.w("TRAE", 0, localStringBuilder.toString());
           }
-          try
-          {
-            label249:
-            Thread.sleep(1000L);
-            i = j;
-          }
-          catch (InterruptedException localInterruptedException1)
-          {
-            i = j;
+          if (this.this$0._am.isBluetoothScoOn()) {
+            updateStatus();
           }
         }
       }
+    }
+    catch (InterruptedException localInterruptedException1)
+    {
+      try
+      {
+        Object localObject;
+        for (;;)
+        {
+          int j;
+          Thread.sleep(1000L);
+          label173:
+          int i = j;
+        }
+        if (!this.this$0._am.isBluetoothScoOn())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TRAE", 0, "bluetoothHeadsetSwitchThread sco fail,remove btheadset");
+          }
+          this.this$0._deviceConfigManager.setVisible(getDeviceName(), false);
+          processDeviceConnectRes(10);
+          this.this$0.checkAutoDeviceListUpdate();
+        }
+        return;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("connect bluetoothHeadset: do nothing, IsMusicScene:");
+          ((StringBuilder)localObject).append(TraeAudioManager.IsMusicScene);
+          ((StringBuilder)localObject).append(" ,IsUpdateSceneFlag:");
+          ((StringBuilder)localObject).append(TraeAudioManager.IsUpdateSceneFlag);
+          QLog.w("TRAE", 0, ((StringBuilder)localObject).toString());
+        }
+        updateStatus();
+        return;
+        localInterruptedException1 = localInterruptedException1;
+      }
       catch (InterruptedException localInterruptedException2)
       {
-        break label67;
+        break label173;
       }
     }
   }

@@ -12,7 +12,7 @@ import java.io.File;
 public class b
   implements Handler.Callback
 {
-  private static b a = null;
+  private static b a;
   private static final Object c = new Object();
   private static StringBuilder d = new StringBuilder();
   private static StringBuilder e = new StringBuilder();
@@ -40,33 +40,48 @@ public class b
   
   public static void a(Context arg0, String paramString1, String paramString2)
   {
-    if ((??? == null) || (paramString2 == null)) {
-      return;
-    }
-    if (a == null) {
-      a = new b(???);
-    }
-    synchronized (c)
+    if (??? != null)
     {
-      if (e.length() > 40960)
-      {
-        e.delete(0, e.length() / 2);
-        e.append("log has been cut len ").append(e.length()).append("\n");
+      if (paramString2 == null) {
+        return;
       }
-    }
-    try
-    {
-      e.append(util.getDate()).append(util.getCurrentPid()).append(util.getThreadId()).append(util.getLineInfo(3)).append(util.getUser(paramString1)).append(paramString2).append("\n");
-      return;
-      paramString1 = finally;
-      throw paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
+      if (a == null) {
+        a = new b(???);
+      }
+      synchronized (c)
       {
+        StringBuilder localStringBuilder;
+        if (e.length() > 40960)
+        {
+          e.delete(0, e.length() / 2);
+          localStringBuilder = e;
+          localStringBuilder.append("log has been cut len ");
+          localStringBuilder.append(e.length());
+          localStringBuilder.append("\n");
+        }
+        try
+        {
+          localStringBuilder = e;
+          localStringBuilder.append(util.getDate());
+          localStringBuilder.append(util.getCurrentPid());
+          localStringBuilder.append(util.getThreadId());
+          localStringBuilder.append(util.getLineInfo(3));
+          localStringBuilder.append(util.getUser(paramString1));
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append("\n");
+        }
+        catch (Exception paramString1)
+        {
+          label150:
+          break label150;
+        }
         e = new StringBuilder();
+        return;
       }
+    }
+    else
+    {
+      return;
     }
   }
   
@@ -82,8 +97,10 @@ public class b
   
   private void c()
   {
-    if (Thread.currentThread() != this.g) {}
-    while (this.b) {
+    if (Thread.currentThread() != this.g) {
+      return;
+    }
+    if (this.b) {
       return;
     }
     this.b = true;
@@ -109,9 +126,9 @@ public class b
           util.int32_to_buf(arrayOfByte2, 0, arrayOfByte1.length);
           System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 4, arrayOfByte1.length);
           util.writeFile(util.getLogFileName(this.f, util.getCurrentDay()), arrayOfByte2);
-          return;
         }
       }
+      return;
     }
     catch (Error localError) {}
   }
@@ -122,24 +139,36 @@ public class b
     {
       if (util.ExistSDCard())
       {
-        Object localObject = Environment.getExternalStorageDirectory();
-        localObject = ((File)localObject).getAbsolutePath() + "/" + "tencent/wtlogin" + "/" + this.f.getPackageName();
-        util.LOGI("oldPath:" + (String)localObject, "");
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists())
+        Object localObject1 = Environment.getExternalStorageDirectory();
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
+        ((StringBuilder)localObject2).append("/");
+        ((StringBuilder)localObject2).append("tencent/wtlogin");
+        ((StringBuilder)localObject2).append("/");
+        ((StringBuilder)localObject2).append(this.f.getPackageName());
+        localObject1 = ((StringBuilder)localObject2).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("oldPath:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        util.LOGI(((StringBuilder)localObject2).toString(), "");
+        localObject1 = new File((String)localObject1);
+        if (((File)localObject1).exists())
         {
-          File[] arrayOfFile = ((File)localObject).listFiles();
-          if ((arrayOfFile != null) && (arrayOfFile.length > 0))
+          localObject2 = ((File)localObject1).listFiles();
+          if ((localObject2 != null) && (localObject2.length > 0))
           {
-            util.LOGI("oldPath delete " + arrayOfFile.length, "");
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("oldPath delete ");
+            localStringBuilder.append(localObject2.length);
+            util.LOGI(localStringBuilder.toString(), "");
             int i = 0;
-            while (i < arrayOfFile.length)
+            while (i < localObject2.length)
             {
-              arrayOfFile[i].delete();
+              localObject2[i].delete();
               i += 1;
             }
           }
-          ((File)localObject).delete();
+          ((File)localObject1).delete();
           return;
         }
         util.LOGI("oldPath not exist", "");
@@ -154,22 +183,24 @@ public class b
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1024)
     {
+      if (i == 1025) {
+        a();
+      }
     }
-    for (;;)
+    else
     {
-      return true;
       c();
       b();
-      continue;
-      a();
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tools.b
  * JD-Core Version:    0.7.0.1
  */

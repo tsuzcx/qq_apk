@@ -2,12 +2,10 @@ package com.tencent.mobileqq.intervideo.od;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
@@ -18,7 +16,6 @@ import com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVCommonInterfaceIm
 import com.tencent.mobileqq.intervideo.huayang.Monitor;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Field;
 import java.util.concurrent.ExecutorService;
 
@@ -39,7 +36,7 @@ public class ODLoadingActivity
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, 40);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131707805));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131707828));
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
@@ -47,8 +44,9 @@ public class ODLoadingActivity
   private void d()
   {
     this.b = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if (localQQProgressDialog != null) {
+      localQQProgressDialog.dismiss();
     }
   }
   
@@ -74,15 +72,6 @@ public class ODLoadingActivity
     Monitor.b("33669911");
   }
   
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
-  }
-  
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
@@ -100,13 +89,6 @@ public class ODLoadingActivity
     }
   }
   
-  @Override
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    super.onConfigurationChanged(paramConfiguration);
-    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
-  }
-  
   protected void onCreate(Bundle paramBundle)
   {
     if (getIntent().getBooleanExtra("show_status_bar", false)) {
@@ -115,39 +97,37 @@ public class ODLoadingActivity
     super.onCreate(paramBundle);
     paramBundle = new Bundle(getIntent().getExtras());
     String str = paramBundle.getString("fromId");
-    long l = 0L;
+    long l1 = 0L;
     if (str != null) {}
     try
     {
-      l = Long.parseLong(str);
-      for (;;)
-      {
-        str = paramBundle.getString("bizType");
-        paramBundle.putString("qqVersion", "8.5.5");
-        paramBundle.putBoolean("isGooglePlayVersion", false);
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(str).d1(String.valueOf(l));
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("enterLoading").report();
-        Monitor.b("33669907");
-        this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        setContentView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-        findViewById(16908290).setVisibility(8);
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ODLoadingActivity.1(this), 1000L);
-        ExecutorService localExecutorService = ThreadManagerExecutor.getExecutorService(192);
-        localExecutorService.submit(new ODLoadingActivity.3(this, localExecutorService.submit(new ODLoadingActivity.2(this, str)), l, paramBundle));
-        return;
-        QLog.e("ODLoadingActivity", 2, "not have fromId");
-      }
+      long l2 = Long.parseLong(str);
+      l1 = l2;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        QLog.e("ODLoadingActivity", 2, "fromId not long");
-        l = 0L;
-      }
+      ExecutorService localExecutorService;
+      break label78;
     }
+    QLog.e("ODLoadingActivity", 2, "not have fromId");
+    break label86;
+    label78:
+    QLog.e("ODLoadingActivity", 2, "fromId not long");
+    label86:
+    str = paramBundle.getString("bizType");
+    paramBundle.putString("qqVersion", "8.7.0");
+    paramBundle.putBoolean("isGooglePlayVersion", false);
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(str).d1(String.valueOf(l1));
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("enterLoading").report();
+    Monitor.b("33669907");
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    setContentView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    findViewById(16908290).setVisibility(8);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ODLoadingActivity.1(this), 1000L);
+    localExecutorService = ThreadManagerExecutor.getExecutorService(192);
+    localExecutorService.submit(new ODLoadingActivity.3(this, localExecutorService.submit(new ODLoadingActivity.2(this, str)), l1, paramBundle));
   }
   
   protected void onDestroy()
@@ -202,7 +182,7 @@ public class ODLoadingActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODLoadingActivity
  * JD-Core Version:    0.7.0.1
  */

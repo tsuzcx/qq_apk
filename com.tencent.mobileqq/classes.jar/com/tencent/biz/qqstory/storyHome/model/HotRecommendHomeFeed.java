@@ -46,7 +46,7 @@ public class HotRecommendHomeFeed
       localStoryVideoItem.mOwnerName = ((QQUserUIItem)localObject2).getDisplayName();
     }
     c(localArrayList, true);
-    return !localArrayList.isEmpty();
+    return true ^ localArrayList.isEmpty();
   }
   
   public void b()
@@ -68,7 +68,7 @@ public class HotRecommendHomeFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HotRecommendHomeFeed
  * JD-Core Version:    0.7.0.1
  */

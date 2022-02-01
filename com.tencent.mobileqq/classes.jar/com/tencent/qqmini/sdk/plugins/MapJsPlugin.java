@@ -1,5 +1,7 @@
 package com.tencent.qqmini.sdk.plugins;
 
+import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
@@ -28,7 +30,12 @@ public class MapJsPlugin
   {
     if (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).chooseLocation(this.mMiniAppContext.getAttachedActivity(), new MapJsPlugin.2(this, paramRequestEvent)))
     {
-      MiniToast.makeText(this.mMiniAppContext.getAttachedActivity(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中选择定位", 1);
+      Activity localActivity = this.mMiniAppContext.getAttachedActivity();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("暂不支持在");
+      localStringBuilder.append(QUAUtil.getApplicationName(this.mContext));
+      localStringBuilder.append("中选择定位");
+      MiniToast.makeText(localActivity, 0, localStringBuilder.toString(), 1);
       paramRequestEvent.fail("app not implement");
     }
   }
@@ -44,7 +51,10 @@ public class MapJsPlugin
     }
     catch (Exception localException)
     {
-      QMLog.e("MapJsPlugin", paramRequestEvent.event + " error, ", localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error, ");
+      QMLog.e("MapJsPlugin", localStringBuilder.toString(), localException);
       paramRequestEvent.fail();
     }
   }
@@ -55,22 +65,23 @@ public class MapJsPlugin
     {
       QMLog.e("MapJsPlugin", "getLocationJsonObject type is not support.");
       paramRequestEvent.fail("invalid data,type error");
-    }
-    for (;;)
-    {
       return;
-      if (((this.mMiniAppContext instanceof BaseRuntime)) && (!((BaseRuntime)this.mMiniAppContext).isForground()))
-      {
-        paramRequestEvent.fail("app is not in the forground.");
-        return;
-      }
-      if (!TextUtils.isEmpty(paramString2)) {}
-      for (boolean bool = true; !((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getLocation(this.mMiniAppContext.getAttachedActivity(), paramString1, bool, new MapJsPlugin.3(this, paramOnLocationFinish, paramRequestEvent)); bool = false)
-      {
-        MiniToast.makeText(this.mMiniAppContext.getAttachedActivity(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中定位", 1);
-        paramRequestEvent.fail("app not implement");
-        return;
-      }
+    }
+    if (((this.mMiniAppContext instanceof BaseRuntime)) && (!((BaseRuntime)this.mMiniAppContext).isForground()))
+    {
+      paramRequestEvent.fail("app is not in the forground.");
+      return;
+    }
+    boolean bool = TextUtils.isEmpty(paramString2);
+    if (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getLocation(this.mMiniAppContext.getAttachedActivity(), paramString1, bool ^ true, new MapJsPlugin.3(this, paramOnLocationFinish, paramRequestEvent)))
+    {
+      paramString1 = this.mMiniAppContext.getAttachedActivity();
+      paramString2 = new StringBuilder();
+      paramString2.append("暂不支持在");
+      paramString2.append(QUAUtil.getApplicationName(this.mContext));
+      paramString2.append("中定位");
+      MiniToast.makeText(paramString1, 0, paramString2.toString(), 1);
+      paramRequestEvent.fail("app not implement");
     }
   }
   
@@ -79,15 +90,20 @@ public class MapJsPlugin
   {
     try
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      double d1 = ((JSONObject)localObject).optDouble("latitude");
-      double d2 = ((JSONObject)localObject).optDouble("longitude");
-      int i = ((JSONObject)localObject).optInt("scale", 18);
-      String str = ((JSONObject)localObject).optString("name");
-      localObject = ((JSONObject)localObject).optString("address");
-      if (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openLocation(this.mMiniAppContext.getAttachedActivity(), d1, d2, i, str, (String)localObject))
+      localObject2 = new JSONObject(paramRequestEvent.jsonParams);
+      double d1 = ((JSONObject)localObject2).optDouble("latitude");
+      double d2 = ((JSONObject)localObject2).optDouble("longitude");
+      int i = ((JSONObject)localObject2).optInt("scale", 18);
+      Object localObject1 = ((JSONObject)localObject2).optString("name");
+      localObject2 = ((JSONObject)localObject2).optString("address");
+      if (!((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openLocation(this.mMiniAppContext.getAttachedActivity(), d1, d2, i, (String)localObject1, (String)localObject2))
       {
-        MiniToast.makeText(this.mMiniAppContext.getAttachedActivity(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中打开地图", 1);
+        localObject1 = this.mMiniAppContext.getAttachedActivity();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("暂不支持在");
+        ((StringBuilder)localObject2).append(QUAUtil.getApplicationName(this.mContext));
+        ((StringBuilder)localObject2).append("中打开地图");
+        MiniToast.makeText((Context)localObject1, 0, ((StringBuilder)localObject2).toString(), 1);
         paramRequestEvent.fail("app not implement");
         return;
       }
@@ -96,14 +112,17 @@ public class MapJsPlugin
     }
     catch (Exception localException)
     {
-      QMLog.e("MapJsPlugin", paramRequestEvent.event + " error, ", localException);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramRequestEvent.event);
+      ((StringBuilder)localObject2).append(" error, ");
+      QMLog.e("MapJsPlugin", ((StringBuilder)localObject2).toString(), localException);
       paramRequestEvent.fail();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.MapJsPlugin
  * JD-Core Version:    0.7.0.1
  */

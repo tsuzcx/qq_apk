@@ -38,7 +38,7 @@ import java.util.Map;
 
 public class ActivityLeakSolutionInner
 {
-  static Field jdField_a_of_type_JavaLangReflectField = null;
+  static Field jdField_a_of_type_JavaLangReflectField;
   static boolean jdField_a_of_type_Boolean = false;
   private static boolean b = false;
   private static boolean c = false;
@@ -62,29 +62,35 @@ public class ActivityLeakSolutionInner
       }
       return;
     }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.e("MagnifierSDK.QAPM.ActivityLeakSolution", 2, "e", localIllegalAccessException);
+        return;
+      }
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.e("MagnifierSDK.QAPM.ActivityLeakSolution", 2, "e", localIllegalArgumentException);
+        return;
+      }
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.e("MagnifierSDK.QAPM.ActivityLeakSolution", 2, "e", localNoSuchFieldException);
+        return;
+      }
+    }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       if (QLog.isColorLevel()) {
         QLog.e("MagnifierSDK.QAPM.ActivityLeakSolution", 2, "e", localClassNotFoundException);
       }
-      return;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MagnifierSDK.QAPM.ActivityLeakSolution", 2, "e", localNoSuchFieldException);
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MagnifierSDK.QAPM.ActivityLeakSolution", 2, "e", localIllegalArgumentException);
-      return;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MagnifierSDK.QAPM.ActivityLeakSolution", 2, "e", localIllegalAccessException);
     }
   }
   
@@ -108,41 +114,36 @@ public class ActivityLeakSolutionInner
   
   private static void a(Activity paramActivity, View paramView)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
+    if (paramView == null) {
       return;
-      a(paramView);
-      if ((paramView instanceof ImageView))
-      {
-        a(paramActivity, (ImageView)paramView);
-        return;
-      }
-      if ((paramView instanceof TextView))
-      {
-        b((TextView)paramView);
-        return;
-      }
-      if ((paramView instanceof ProgressBar))
-      {
-        a((ProgressBar)paramView);
-        return;
-      }
-      if ((paramView instanceof android.widget.ListView)) {
-        a((android.widget.ListView)paramView);
-      }
-      while ((paramView instanceof ViewGroup))
-      {
-        a(paramActivity, (ViewGroup)paramView);
-        return;
-        if ((paramView instanceof com.tencent.widget.ListView)) {
-          a((com.tencent.widget.ListView)paramView);
-        } else if ((paramView instanceof FrameLayout)) {
-          a((FrameLayout)paramView);
-        } else if ((paramView instanceof LinearLayout)) {
-          a((LinearLayout)paramView);
-        }
-      }
+    }
+    a(paramView);
+    if ((paramView instanceof ImageView))
+    {
+      a(paramActivity, (ImageView)paramView);
+      return;
+    }
+    if ((paramView instanceof TextView))
+    {
+      b((TextView)paramView);
+      return;
+    }
+    if ((paramView instanceof ProgressBar))
+    {
+      a((ProgressBar)paramView);
+      return;
+    }
+    if ((paramView instanceof android.widget.ListView)) {
+      a((android.widget.ListView)paramView);
+    } else if ((paramView instanceof com.tencent.widget.ListView)) {
+      a((com.tencent.widget.ListView)paramView);
+    } else if ((paramView instanceof FrameLayout)) {
+      a((FrameLayout)paramView);
+    } else if ((paramView instanceof LinearLayout)) {
+      a((LinearLayout)paramView);
+    }
+    if ((paramView instanceof ViewGroup)) {
+      a(paramActivity, (ViewGroup)paramView);
     }
   }
   
@@ -159,134 +160,144 @@ public class ActivityLeakSolutionInner
   
   private static void a(Activity paramActivity, ImageView paramImageView)
   {
-    if (paramImageView == null) {}
-    for (;;)
-    {
+    if (paramImageView == null) {
       return;
-      Object localObject = paramImageView.getDrawable();
-      if (localObject != null) {
-        ((Drawable)localObject).setCallback(null);
-      }
-      if ((localObject instanceof FaceDrawable)) {
-        ((FaceDrawable)localObject).cancel();
-      }
-      paramImageView.setImageDrawable(null);
-      if (localObject == null) {
-        continue;
-      }
-      try
+    }
+    Object localObject = paramImageView.getDrawable();
+    if (localObject != null) {
+      ((Drawable)localObject).setCallback(null);
+    }
+    if ((localObject instanceof FaceDrawable)) {
+      ((FaceDrawable)localObject).cancel();
+    }
+    paramImageView.setImageDrawable(null);
+    if (localObject != null) {}
+    try
+    {
+      if (((localObject instanceof BitmapDrawable)) && (UnifiedMonitor.a().whetherReportDuringThisStartup(3)))
       {
-        if ((!(localObject instanceof BitmapDrawable)) || (!UnifiedMonitor.a().whetherReportDuringThisStartup(3))) {
-          continue;
-        }
         localObject = ((BitmapDrawable)localObject).getBitmap();
         int j = ((Bitmap)localObject).getWidth();
         int k = ((Bitmap)localObject).getHeight();
-        if ((j <= 0) || (k <= 0)) {
-          continue;
-        }
-        int m = paramImageView.getWidth();
-        int n = paramImageView.getHeight();
-        if ((m <= 0) || (n <= 0)) {
-          continue;
-        }
-        int i = Math.max(Math.round(j / m), Math.round(k / n));
-        if (i >= 2) {}
-        for (i = (i * i - 1) * (m * n); (i > 0) && (UnifiedMonitor.a().whetherReportThisTime(3)); i = 0)
+        if ((j > 0) && (k > 0))
         {
-          int i1 = i * 4 / 1024;
-          localObject = new StringBuffer(100);
-          ((StringBuffer)localObject).append(paramActivity.getClass().getName());
-          if (((paramActivity instanceof SplashActivity)) && ((paramActivity instanceof SplashActivity)))
+          int m = paramImageView.getWidth();
+          int n = paramImageView.getHeight();
+          int i = 0;
+          if ((m > 0) && (n > 0))
           {
-            if (SplashActivity.currentFragment != 1) {
-              break label323;
+            int i1 = Math.max(Math.round(j / m), Math.round(k / n));
+            if (i1 >= 2) {
+              i = m * n * (i1 * i1 - 1);
             }
-            ((StringBuffer)localObject).append("-").append(((SplashActivity)paramActivity).getCurrentTab());
-          }
-          for (;;)
-          {
-            i = paramImageView.getId();
-            ((StringBuffer)localObject).append("-->").append(i);
-            if (i != -1) {
-              break;
-            }
-            for (paramActivity = paramImageView.getParent(); (i == -1) && (paramActivity != null) && ((paramActivity instanceof ViewGroup)); paramActivity = paramActivity.getParent())
+            if ((i > 0) && (UnifiedMonitor.a().whetherReportThisTime(3)))
             {
-              i = ((ViewGroup)paramActivity).getId();
-              ((StringBuffer)localObject).append('_');
+              i1 = i * 4 / 1024;
+              localObject = new StringBuffer(100);
+              ((StringBuffer)localObject).append(paramActivity.getClass().getName());
+              if (((paramActivity instanceof SplashActivity)) && ((paramActivity instanceof SplashActivity))) {
+                if (SplashActivity.currentFragment == 1)
+                {
+                  ((StringBuffer)localObject).append("-");
+                  ((StringBuffer)localObject).append(((SplashActivity)paramActivity).getCurrentTab());
+                }
+                else
+                {
+                  ((StringBuffer)localObject).append(".ChatFragment");
+                }
+              }
+              i = paramImageView.getId();
+              ((StringBuffer)localObject).append("-->");
               ((StringBuffer)localObject).append(i);
+              if (i == -1) {
+                for (paramActivity = paramImageView.getParent(); (i == -1) && (paramActivity != null) && ((paramActivity instanceof ViewGroup)); paramActivity = paramActivity.getParent())
+                {
+                  i = ((ViewGroup)paramActivity).getId();
+                  ((StringBuffer)localObject).append('_');
+                  ((StringBuffer)localObject).append(i);
+                }
+              }
+              paramActivity = new HashMap(8);
+              paramImageView = new StringBuilder();
+              paramImageView.append("(");
+              paramImageView.append(m);
+              paramImageView.append(",");
+              paramImageView.append(n);
+              paramImageView.append(")");
+              paramActivity.put("viewsize", paramImageView.toString());
+              paramImageView = new StringBuilder();
+              paramImageView.append("(");
+              paramImageView.append(j);
+              paramImageView.append(",");
+              paramImageView.append(k);
+              paramImageView.append(")");
+              paramActivity.put("picsize", paramImageView.toString());
+              UnifiedMonitor.a().addEvent(3, ((StringBuffer)localObject).toString(), i1, 0, paramActivity);
             }
-            label323:
-            ((StringBuffer)localObject).append(".ChatFragment");
           }
-          paramActivity = new HashMap(8);
-          paramActivity.put("viewsize", "(" + m + "," + n + ")");
-          paramActivity.put("picsize", "(" + j + "," + k + ")");
-          UnifiedMonitor.a().addEvent(3, ((StringBuffer)localObject).toString(), i1, 0, paramActivity);
-          return;
         }
-        return;
       }
-      catch (Throwable paramActivity) {}
+      return;
     }
+    catch (Throwable paramActivity) {}
   }
   
   private static void a(Context paramContext)
   {
-    if (paramContext == null) {}
-    label207:
-    for (;;)
-    {
+    if (paramContext == null) {
       return;
-      InputMethodManager localInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
-      if (localInputMethodManager != null)
+    }
+    InputMethodManager localInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
+    if (localInputMethodManager == null) {
+      return;
+    }
+    String[] arrayOfString = new String[4];
+    int i = 0;
+    arrayOfString[0] = "mCurRootView";
+    arrayOfString[1] = "mServedView";
+    arrayOfString[2] = "mNextServedView";
+    arrayOfString[3] = "mLastSrvView";
+    while (i < arrayOfString.length)
+    {
+      String str = arrayOfString[i];
+      try
       {
-        String[] arrayOfString = new String[4];
-        arrayOfString[0] = "mCurRootView";
-        arrayOfString[1] = "mServedView";
-        arrayOfString[2] = "mNextServedView";
-        arrayOfString[3] = "mLastSrvView";
-        int i = 0;
-        for (;;)
+        Object localObject1 = localInputMethodManager.getClass().getDeclaredField(str);
+        if (!((Field)localObject1).isAccessible()) {
+          ((Field)localObject1).setAccessible(true);
+        }
+        Object localObject2 = ((Field)localObject1).get(localInputMethodManager);
+        if ((localObject2 != null) && ((localObject2 instanceof View)))
         {
-          for (;;)
+          localObject2 = (View)localObject2;
+          if (((View)localObject2).getContext() == paramContext)
           {
-            if (i >= arrayOfString.length) {
-              break label207;
+            ((Field)localObject1).set(localInputMethodManager, null);
+          }
+          else
+          {
+            if (!QLog.isColorLevel()) {
+              break;
             }
-            String str = arrayOfString[i];
-            try
-            {
-              Field localField = localInputMethodManager.getClass().getDeclaredField(str);
-              if (!localField.isAccessible()) {
-                localField.setAccessible(true);
-              }
-              Object localObject = localField.get(localInputMethodManager);
-              if ((localObject != null) && ((localObject instanceof View)))
-              {
-                localObject = (View)localObject;
-                if (((View)localObject).getContext() == paramContext)
-                {
-                  localField.set(localInputMethodManager, null);
-                }
-                else
-                {
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("MagnifierSDK.QAPM.ActivityLeakSolution", 2, "fixInputMethodManagerLeak break, context is not suitable, v=" + localObject + " view.getContext=" + ((View)localObject).getContext() + " context=" + paramContext + " params=" + str);
-                  return;
-                }
-              }
-            }
-            catch (Throwable localThrowable)
-            {
-              i += 1;
-            }
+            localObject1 = new StringBuilder("fixInputMethodManagerLeak break, context is not suitable, v=");
+            ((StringBuilder)localObject1).append(localObject2);
+            ((StringBuilder)localObject1).append(" view.getContext=");
+            ((StringBuilder)localObject1).append(((View)localObject2).getContext());
+            ((StringBuilder)localObject1).append(" context=");
+            ((StringBuilder)localObject1).append(paramContext);
+            ((StringBuilder)localObject1).append(" params=");
+            ((StringBuilder)localObject1).append(str);
+            QLog.d("MagnifierSDK.QAPM.ActivityLeakSolution", 2, ((StringBuilder)localObject1).toString());
+            return;
           }
         }
       }
+      catch (Throwable localThrowable)
+      {
+        label226:
+        break label226;
+      }
+      i += 1;
     }
   }
   
@@ -299,156 +310,156 @@ public class ActivityLeakSolutionInner
     //   4: return
     //   5: aload_0
     //   6: aconst_null
-    //   7: invokevirtual 366	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   7: invokevirtual 359	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   10: aload_0
     //   11: aconst_null
-    //   12: invokevirtual 370	android/view/View:setOnCreateContextMenuListener	(Landroid/view/View$OnCreateContextMenuListener;)V
+    //   12: invokevirtual 363	android/view/View:setOnCreateContextMenuListener	(Landroid/view/View$OnCreateContextMenuListener;)V
     //   15: aload_0
     //   16: aconst_null
-    //   17: invokevirtual 374	android/view/View:setOnFocusChangeListener	(Landroid/view/View$OnFocusChangeListener;)V
+    //   17: invokevirtual 367	android/view/View:setOnFocusChangeListener	(Landroid/view/View$OnFocusChangeListener;)V
     //   20: aload_0
     //   21: aconst_null
-    //   22: invokevirtual 378	android/view/View:setOnKeyListener	(Landroid/view/View$OnKeyListener;)V
+    //   22: invokevirtual 371	android/view/View:setOnKeyListener	(Landroid/view/View$OnKeyListener;)V
     //   25: aload_0
     //   26: aconst_null
-    //   27: invokevirtual 382	android/view/View:setOnLongClickListener	(Landroid/view/View$OnLongClickListener;)V
+    //   27: invokevirtual 375	android/view/View:setOnLongClickListener	(Landroid/view/View$OnLongClickListener;)V
     //   30: aload_0
     //   31: aconst_null
-    //   32: invokevirtual 366	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   32: invokevirtual 359	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   35: aload_0
     //   36: aconst_null
-    //   37: invokevirtual 386	android/view/View:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
+    //   37: invokevirtual 379	android/view/View:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
     //   40: aload_0
-    //   41: invokevirtual 389	android/view/View:getBackground	()Landroid/graphics/drawable/Drawable;
+    //   41: invokevirtual 382	android/view/View:getBackground	()Landroid/graphics/drawable/Drawable;
     //   44: astore_1
     //   45: aload_1
     //   46: ifnull +27 -> 73
     //   49: aload_1
     //   50: aconst_null
-    //   51: invokevirtual 179	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
+    //   51: invokevirtual 172	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
     //   54: aload_1
-    //   55: instanceof 181
+    //   55: instanceof 174
     //   58: ifeq +10 -> 68
     //   61: aload_1
-    //   62: checkcast 181	com/tencent/mobileqq/app/face/FaceDrawable
-    //   65: invokevirtual 184	com/tencent/mobileqq/app/face/FaceDrawable:cancel	()V
+    //   62: checkcast 174	com/tencent/mobileqq/app/face/FaceDrawable
+    //   65: invokevirtual 177	com/tencent/mobileqq/app/face/FaceDrawable:cancel	()V
     //   68: aload_0
     //   69: aconst_null
-    //   70: invokevirtual 392	android/view/View:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   70: invokevirtual 385	android/view/View:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
     //   73: aload_0
-    //   74: invokevirtual 395	android/view/View:destroyDrawingCache	()V
+    //   74: invokevirtual 388	android/view/View:destroyDrawingCache	()V
     //   77: return
     //   78: astore_0
-    //   79: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   79: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   82: ifeq +12 -> 94
-    //   85: ldc 73
+    //   85: ldc 66
     //   87: iconst_2
-    //   88: ldc_w 397
-    //   91: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   94: new 362	java/lang/IncompatibleClassChangeError
+    //   88: ldc_w 390
+    //   91: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   94: new 355	java/lang/IncompatibleClassChangeError
     //   97: dup
-    //   98: ldc_w 397
-    //   101: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   98: ldc_w 390
+    //   101: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   104: aload_0
-    //   105: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   108: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   111: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   105: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   108: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   111: checkcast 355	java/lang/IncompatibleClassChangeError
     //   114: athrow
     //   115: astore_0
-    //   116: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   116: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   119: ifeq +12 -> 131
-    //   122: ldc 73
+    //   122: ldc 66
     //   124: iconst_2
-    //   125: ldc_w 397
-    //   128: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: new 362	java/lang/IncompatibleClassChangeError
+    //   125: ldc_w 390
+    //   128: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   131: new 355	java/lang/IncompatibleClassChangeError
     //   134: dup
-    //   135: ldc_w 397
-    //   138: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   135: ldc_w 390
+    //   138: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   141: aload_0
-    //   142: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   145: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   148: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   142: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   145: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   148: checkcast 355	java/lang/IncompatibleClassChangeError
     //   151: athrow
     //   152: astore_0
-    //   153: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   153: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   156: ifeq +12 -> 168
-    //   159: ldc 73
+    //   159: ldc 66
     //   161: iconst_2
-    //   162: ldc_w 397
-    //   165: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   168: new 362	java/lang/IncompatibleClassChangeError
+    //   162: ldc_w 390
+    //   165: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   168: new 355	java/lang/IncompatibleClassChangeError
     //   171: dup
-    //   172: ldc_w 397
-    //   175: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   172: ldc_w 390
+    //   175: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   178: aload_0
-    //   179: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   182: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   185: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   179: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   182: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   185: checkcast 355	java/lang/IncompatibleClassChangeError
     //   188: athrow
     //   189: astore_0
-    //   190: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   190: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   193: ifeq +12 -> 205
-    //   196: ldc 73
+    //   196: ldc 66
     //   198: iconst_2
-    //   199: ldc_w 397
-    //   202: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   205: new 362	java/lang/IncompatibleClassChangeError
+    //   199: ldc_w 390
+    //   202: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   205: new 355	java/lang/IncompatibleClassChangeError
     //   208: dup
-    //   209: ldc_w 397
-    //   212: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   209: ldc_w 390
+    //   212: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   215: aload_0
-    //   216: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   219: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   222: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   216: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   219: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   222: checkcast 355	java/lang/IncompatibleClassChangeError
     //   225: athrow
     //   226: astore_0
-    //   227: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   227: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   230: ifeq +12 -> 242
-    //   233: ldc 73
+    //   233: ldc 66
     //   235: iconst_2
-    //   236: ldc_w 397
-    //   239: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   242: new 362	java/lang/IncompatibleClassChangeError
+    //   236: ldc_w 390
+    //   239: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   242: new 355	java/lang/IncompatibleClassChangeError
     //   245: dup
-    //   246: ldc_w 397
-    //   249: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   246: ldc_w 390
+    //   249: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   252: aload_0
-    //   253: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   256: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   259: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   253: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   256: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   259: checkcast 355	java/lang/IncompatibleClassChangeError
     //   262: athrow
     //   263: astore_0
-    //   264: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   264: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   267: ifeq +12 -> 279
-    //   270: ldc 73
+    //   270: ldc 66
     //   272: iconst_2
-    //   273: ldc_w 397
-    //   276: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   279: new 362	java/lang/IncompatibleClassChangeError
+    //   273: ldc_w 390
+    //   276: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   279: new 355	java/lang/IncompatibleClassChangeError
     //   282: dup
-    //   283: ldc_w 397
-    //   286: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   283: ldc_w 390
+    //   286: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   289: aload_0
-    //   290: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   293: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   296: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   290: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   293: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   296: checkcast 355	java/lang/IncompatibleClassChangeError
     //   299: athrow
     //   300: astore_0
-    //   301: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   301: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   304: ifeq +12 -> 316
-    //   307: ldc 73
+    //   307: ldc 66
     //   309: iconst_2
-    //   310: ldc_w 397
-    //   313: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   316: new 362	java/lang/IncompatibleClassChangeError
+    //   310: ldc_w 390
+    //   313: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   316: new 355	java/lang/IncompatibleClassChangeError
     //   319: dup
-    //   320: ldc_w 397
-    //   323: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   320: ldc_w 390
+    //   323: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   326: aload_0
-    //   327: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   330: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   333: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   327: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   330: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   333: checkcast 355	java/lang/IncompatibleClassChangeError
     //   336: athrow
     //   337: astore_1
     //   338: goto -328 -> 10
@@ -477,13 +488,13 @@ public class ActivityLeakSolutionInner
     //   361	1	1	localThrowable7	Throwable
     // Exception table:
     //   from	to	target	type
-    //   5	10	78	java/lang/IncompatibleClassChangeError
-    //   10	15	115	java/lang/IncompatibleClassChangeError
-    //   15	20	152	java/lang/IncompatibleClassChangeError
+    //   35	40	78	java/lang/IncompatibleClassChangeError
+    //   30	35	115	java/lang/IncompatibleClassChangeError
+    //   25	30	152	java/lang/IncompatibleClassChangeError
     //   20	25	189	java/lang/IncompatibleClassChangeError
-    //   25	30	226	java/lang/IncompatibleClassChangeError
-    //   30	35	263	java/lang/IncompatibleClassChangeError
-    //   35	40	300	java/lang/IncompatibleClassChangeError
+    //   15	20	226	java/lang/IncompatibleClassChangeError
+    //   10	15	263	java/lang/IncompatibleClassChangeError
+    //   5	10	300	java/lang/IncompatibleClassChangeError
     //   5	10	337	java/lang/Throwable
     //   10	15	341	java/lang/Throwable
     //   15	20	345	java/lang/Throwable
@@ -509,43 +520,43 @@ public class ActivityLeakSolutionInner
   @TargetApi(16)
   private static void a(LinearLayout paramLinearLayout)
   {
-    if (paramLinearLayout == null) {}
-    for (;;)
-    {
+    if (paramLinearLayout == null) {
       return;
-      if (11 <= Build.VERSION.SDK_INT)
+    }
+    if (11 <= Build.VERSION.SDK_INT)
+    {
+      Object localObject1;
+      Object localObject2;
+      if (16 <= Build.VERSION.SDK_INT)
       {
-        Object localObject1;
-        if (16 <= Build.VERSION.SDK_INT) {
-          localObject1 = paramLinearLayout.getDividerDrawable();
-        }
-        while (localObject1 != null)
+        localObject1 = paramLinearLayout.getDividerDrawable();
+      }
+      else
+      {
+        try
         {
-          ((Drawable)localObject1).setCallback(null);
-          paramLinearLayout.setDividerDrawable(null);
-          return;
-          try
-          {
-            localObject1 = paramLinearLayout.getClass().getDeclaredField("mDivider");
-            ((Field)localObject1).setAccessible(true);
-            localObject1 = (Drawable)((Field)localObject1).get(paramLinearLayout);
-          }
-          catch (NoSuchFieldException localNoSuchFieldException)
-          {
-            localNoSuchFieldException.printStackTrace();
-            Object localObject2 = null;
-          }
-          catch (IllegalArgumentException localIllegalArgumentException)
-          {
-            localIllegalArgumentException.printStackTrace();
-            Object localObject3 = null;
-          }
-          catch (IllegalAccessException localIllegalAccessException)
-          {
-            localIllegalAccessException.printStackTrace();
-            Object localObject4 = null;
-          }
+          localObject1 = paramLinearLayout.getClass().getDeclaredField("mDivider");
+          ((Field)localObject1).setAccessible(true);
+          localObject1 = (Drawable)((Field)localObject1).get(paramLinearLayout);
         }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          localIllegalAccessException.printStackTrace();
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          localIllegalArgumentException.printStackTrace();
+        }
+        catch (NoSuchFieldException localNoSuchFieldException)
+        {
+          localNoSuchFieldException.printStackTrace();
+        }
+        localObject2 = null;
+      }
+      if (localObject2 != null)
+      {
+        localObject2.setCallback(null);
+        paramLinearLayout.setDividerDrawable(null);
       }
     }
   }
@@ -555,122 +566,122 @@ public class ActivityLeakSolutionInner
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 435	android/widget/ListView:getSelector	()Landroid/graphics/drawable/Drawable;
+    //   1: invokevirtual 428	android/widget/ListView:getSelector	()Landroid/graphics/drawable/Drawable;
     //   4: astore_1
     //   5: aload_1
     //   6: ifnull +8 -> 14
     //   9: aload_1
     //   10: aconst_null
-    //   11: invokevirtual 179	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
+    //   11: invokevirtual 172	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
     //   14: aload_0
-    //   15: invokevirtual 439	android/widget/ListView:getAdapter	()Landroid/widget/ListAdapter;
+    //   15: invokevirtual 432	android/widget/ListView:getAdapter	()Landroid/widget/ListAdapter;
     //   18: ifnull +8 -> 26
     //   21: aload_0
     //   22: aconst_null
-    //   23: invokevirtual 443	android/widget/ListView:setAdapter	(Landroid/widget/ListAdapter;)V
+    //   23: invokevirtual 436	android/widget/ListView:setAdapter	(Landroid/widget/ListAdapter;)V
     //   26: aload_0
     //   27: aconst_null
-    //   28: invokevirtual 447	android/widget/ListView:setOnScrollListener	(Landroid/widget/AbsListView$OnScrollListener;)V
+    //   28: invokevirtual 440	android/widget/ListView:setOnScrollListener	(Landroid/widget/AbsListView$OnScrollListener;)V
     //   31: aload_0
     //   32: aconst_null
-    //   33: invokevirtual 451	android/widget/ListView:setOnItemClickListener	(Landroid/widget/AdapterView$OnItemClickListener;)V
+    //   33: invokevirtual 444	android/widget/ListView:setOnItemClickListener	(Landroid/widget/AdapterView$OnItemClickListener;)V
     //   36: aload_0
     //   37: aconst_null
-    //   38: invokevirtual 455	android/widget/ListView:setOnItemLongClickListener	(Landroid/widget/AdapterView$OnItemLongClickListener;)V
+    //   38: invokevirtual 448	android/widget/ListView:setOnItemLongClickListener	(Landroid/widget/AdapterView$OnItemLongClickListener;)V
     //   41: aload_0
     //   42: aconst_null
-    //   43: invokevirtual 459	android/widget/ListView:setOnItemSelectedListener	(Landroid/widget/AdapterView$OnItemSelectedListener;)V
+    //   43: invokevirtual 452	android/widget/ListView:setOnItemSelectedListener	(Landroid/widget/AdapterView$OnItemSelectedListener;)V
     //   46: return
     //   47: astore_0
-    //   48: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   48: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   51: ifeq +12 -> 63
-    //   54: ldc 73
+    //   54: ldc 66
     //   56: iconst_2
-    //   57: ldc_w 397
-    //   60: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   63: new 362	java/lang/IncompatibleClassChangeError
+    //   57: ldc_w 390
+    //   60: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   63: new 355	java/lang/IncompatibleClassChangeError
     //   66: dup
-    //   67: ldc_w 397
-    //   70: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   67: ldc_w 390
+    //   70: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   73: aload_0
-    //   74: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   77: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   80: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   74: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   77: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   80: checkcast 355	java/lang/IncompatibleClassChangeError
     //   83: athrow
     //   84: astore_0
-    //   85: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   85: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   88: ifeq +12 -> 100
-    //   91: ldc 73
+    //   91: ldc 66
     //   93: iconst_2
-    //   94: ldc_w 397
-    //   97: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   100: new 362	java/lang/IncompatibleClassChangeError
+    //   94: ldc_w 390
+    //   97: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   100: new 355	java/lang/IncompatibleClassChangeError
     //   103: dup
-    //   104: ldc_w 397
-    //   107: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   104: ldc_w 390
+    //   107: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   110: aload_0
-    //   111: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   114: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   117: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   111: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   114: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   117: checkcast 355	java/lang/IncompatibleClassChangeError
     //   120: athrow
     //   121: astore_0
-    //   122: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   122: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   125: ifeq +12 -> 137
-    //   128: ldc 73
+    //   128: ldc 66
     //   130: iconst_2
-    //   131: ldc_w 397
-    //   134: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   137: new 362	java/lang/IncompatibleClassChangeError
+    //   131: ldc_w 390
+    //   134: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   137: new 355	java/lang/IncompatibleClassChangeError
     //   140: dup
-    //   141: ldc_w 397
-    //   144: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   141: ldc_w 390
+    //   144: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   147: aload_0
-    //   148: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   151: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   154: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   148: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   151: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   154: checkcast 355	java/lang/IncompatibleClassChangeError
     //   157: athrow
     //   158: astore_0
-    //   159: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   159: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   162: ifeq +12 -> 174
-    //   165: ldc 73
+    //   165: ldc 66
     //   167: iconst_2
-    //   168: ldc_w 397
-    //   171: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   174: new 362	java/lang/IncompatibleClassChangeError
+    //   168: ldc_w 390
+    //   171: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   174: new 355	java/lang/IncompatibleClassChangeError
     //   177: dup
-    //   178: ldc_w 397
-    //   181: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   178: ldc_w 390
+    //   181: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   184: aload_0
-    //   185: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   188: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   191: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   185: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   188: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   191: checkcast 355	java/lang/IncompatibleClassChangeError
     //   194: athrow
     //   195: astore_0
-    //   196: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   196: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   199: ifeq +12 -> 211
-    //   202: ldc 73
+    //   202: ldc 66
     //   204: iconst_2
-    //   205: ldc_w 397
-    //   208: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   211: new 362	java/lang/IncompatibleClassChangeError
+    //   205: ldc_w 390
+    //   208: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   211: new 355	java/lang/IncompatibleClassChangeError
     //   214: dup
-    //   215: ldc_w 397
-    //   218: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   215: ldc_w 390
+    //   218: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   221: aload_0
-    //   222: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   225: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   228: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   222: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   225: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   228: checkcast 355	java/lang/IncompatibleClassChangeError
     //   231: athrow
     //   232: astore_1
-    //   233: goto -202 -> 31
+    //   233: goto -207 -> 26
     //   236: astore_1
-    //   237: goto -201 -> 36
+    //   237: goto -206 -> 31
     //   240: astore_1
-    //   241: goto -200 -> 41
-    //   244: astore_0
-    //   245: return
-    //   246: astore_1
-    //   247: goto -221 -> 26
+    //   241: goto -205 -> 36
+    //   244: astore_1
+    //   245: goto -204 -> 41
+    //   248: astore_0
+    //   249: return
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	250	0	paramListView	android.widget.ListView
@@ -678,19 +689,19 @@ public class ActivityLeakSolutionInner
     //   232	1	1	localThrowable1	Throwable
     //   236	1	1	localThrowable2	Throwable
     //   240	1	1	localThrowable3	Throwable
-    //   246	1	1	localThrowable4	Throwable
+    //   244	1	1	localThrowable4	Throwable
     // Exception table:
     //   from	to	target	type
-    //   14	26	47	java/lang/IncompatibleClassChangeError
-    //   26	31	84	java/lang/IncompatibleClassChangeError
+    //   41	46	47	java/lang/IncompatibleClassChangeError
+    //   36	41	84	java/lang/IncompatibleClassChangeError
     //   31	36	121	java/lang/IncompatibleClassChangeError
-    //   36	41	158	java/lang/IncompatibleClassChangeError
-    //   41	46	195	java/lang/IncompatibleClassChangeError
-    //   26	31	232	java/lang/Throwable
-    //   31	36	236	java/lang/Throwable
-    //   36	41	240	java/lang/Throwable
-    //   41	46	244	java/lang/Throwable
-    //   14	26	246	java/lang/Throwable
+    //   26	31	158	java/lang/IncompatibleClassChangeError
+    //   14	26	195	java/lang/IncompatibleClassChangeError
+    //   14	26	232	java/lang/Throwable
+    //   26	31	236	java/lang/Throwable
+    //   31	36	240	java/lang/Throwable
+    //   36	41	244	java/lang/Throwable
+    //   41	46	248	java/lang/Throwable
   }
   
   private static void a(ProgressBar paramProgressBar)
@@ -711,13 +722,13 @@ public class ActivityLeakSolutionInner
   
   private static void a(TextView paramTextView)
   {
-    if (paramTextView == null) {}
-    do
-    {
+    if (paramTextView == null) {
       return;
-      paramTextView = paramTextView.getText();
-    } while (!(paramTextView instanceof SpannableStringBuilder));
-    ((SpannableStringBuilder)paramTextView).clearSpans();
+    }
+    paramTextView = paramTextView.getText();
+    if ((paramTextView instanceof SpannableStringBuilder)) {
+      ((SpannableStringBuilder)paramTextView).clearSpans();
+    }
   }
   
   /* Error */
@@ -725,122 +736,122 @@ public class ActivityLeakSolutionInner
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 481	com/tencent/widget/ListView:getSelector	()Landroid/graphics/drawable/Drawable;
+    //   1: invokevirtual 474	com/tencent/widget/ListView:getSelector	()Landroid/graphics/drawable/Drawable;
     //   4: astore_1
     //   5: aload_1
     //   6: ifnull +8 -> 14
     //   9: aload_1
     //   10: aconst_null
-    //   11: invokevirtual 179	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
+    //   11: invokevirtual 172	android/graphics/drawable/Drawable:setCallback	(Landroid/graphics/drawable/Drawable$Callback;)V
     //   14: aload_0
-    //   15: invokevirtual 482	com/tencent/widget/ListView:getAdapter	()Landroid/widget/ListAdapter;
+    //   15: invokevirtual 475	com/tencent/widget/ListView:getAdapter	()Landroid/widget/ListAdapter;
     //   18: ifnull +8 -> 26
     //   21: aload_0
     //   22: aconst_null
-    //   23: invokevirtual 483	com/tencent/widget/ListView:setAdapter	(Landroid/widget/ListAdapter;)V
+    //   23: invokevirtual 476	com/tencent/widget/ListView:setAdapter	(Landroid/widget/ListAdapter;)V
     //   26: aload_0
     //   27: aconst_null
-    //   28: invokevirtual 486	com/tencent/widget/ListView:setOnScrollListener	(Lcom/tencent/widget/AbsListView$OnScrollListener;)V
+    //   28: invokevirtual 479	com/tencent/widget/ListView:setOnScrollListener	(Lcom/tencent/widget/AbsListView$OnScrollListener;)V
     //   31: aload_0
     //   32: aconst_null
-    //   33: invokevirtual 489	com/tencent/widget/ListView:setOnItemClickListener	(Lcom/tencent/widget/AdapterView$OnItemClickListener;)V
+    //   33: invokevirtual 482	com/tencent/widget/ListView:setOnItemClickListener	(Lcom/tencent/widget/AdapterView$OnItemClickListener;)V
     //   36: aload_0
     //   37: aconst_null
-    //   38: invokevirtual 492	com/tencent/widget/ListView:setOnItemLongClickListener	(Lcom/tencent/widget/AdapterView$OnItemLongClickListener;)V
+    //   38: invokevirtual 485	com/tencent/widget/ListView:setOnItemLongClickListener	(Lcom/tencent/widget/AdapterView$OnItemLongClickListener;)V
     //   41: aload_0
     //   42: aconst_null
-    //   43: invokevirtual 495	com/tencent/widget/ListView:setOnItemSelectedListener	(Lcom/tencent/widget/AdapterView$OnItemSelectedListener;)V
+    //   43: invokevirtual 488	com/tencent/widget/ListView:setOnItemSelectedListener	(Lcom/tencent/widget/AdapterView$OnItemSelectedListener;)V
     //   46: return
     //   47: astore_0
-    //   48: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   48: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   51: ifeq +12 -> 63
-    //   54: ldc 73
+    //   54: ldc 66
     //   56: iconst_2
-    //   57: ldc_w 397
-    //   60: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   63: new 362	java/lang/IncompatibleClassChangeError
+    //   57: ldc_w 390
+    //   60: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   63: new 355	java/lang/IncompatibleClassChangeError
     //   66: dup
-    //   67: ldc_w 397
-    //   70: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   67: ldc_w 390
+    //   70: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   73: aload_0
-    //   74: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   77: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   80: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   74: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   77: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   80: checkcast 355	java/lang/IncompatibleClassChangeError
     //   83: athrow
     //   84: astore_0
-    //   85: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   85: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   88: ifeq +12 -> 100
-    //   91: ldc 73
+    //   91: ldc 66
     //   93: iconst_2
-    //   94: ldc_w 397
-    //   97: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   100: new 362	java/lang/IncompatibleClassChangeError
+    //   94: ldc_w 390
+    //   97: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   100: new 355	java/lang/IncompatibleClassChangeError
     //   103: dup
-    //   104: ldc_w 397
-    //   107: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   104: ldc_w 390
+    //   107: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   110: aload_0
-    //   111: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   114: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   117: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   111: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   114: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   117: checkcast 355	java/lang/IncompatibleClassChangeError
     //   120: athrow
     //   121: astore_0
-    //   122: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   122: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   125: ifeq +12 -> 137
-    //   128: ldc 73
+    //   128: ldc 66
     //   130: iconst_2
-    //   131: ldc_w 397
-    //   134: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   137: new 362	java/lang/IncompatibleClassChangeError
+    //   131: ldc_w 390
+    //   134: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   137: new 355	java/lang/IncompatibleClassChangeError
     //   140: dup
-    //   141: ldc_w 397
-    //   144: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   141: ldc_w 390
+    //   144: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   147: aload_0
-    //   148: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   151: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   154: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   148: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   151: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   154: checkcast 355	java/lang/IncompatibleClassChangeError
     //   157: athrow
     //   158: astore_0
-    //   159: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   159: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   162: ifeq +12 -> 174
-    //   165: ldc 73
+    //   165: ldc 66
     //   167: iconst_2
-    //   168: ldc_w 397
-    //   171: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   174: new 362	java/lang/IncompatibleClassChangeError
+    //   168: ldc_w 390
+    //   171: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   174: new 355	java/lang/IncompatibleClassChangeError
     //   177: dup
-    //   178: ldc_w 397
-    //   181: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   178: ldc_w 390
+    //   181: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   184: aload_0
-    //   185: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   188: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   191: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   185: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   188: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   191: checkcast 355	java/lang/IncompatibleClassChangeError
     //   194: athrow
     //   195: astore_0
-    //   196: invokestatic 71	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   196: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   199: ifeq +12 -> 211
-    //   202: ldc 73
+    //   202: ldc 66
     //   204: iconst_2
-    //   205: ldc_w 397
-    //   208: invokestatic 399	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   211: new 362	java/lang/IncompatibleClassChangeError
+    //   205: ldc_w 390
+    //   208: invokestatic 392	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   211: new 355	java/lang/IncompatibleClassChangeError
     //   214: dup
-    //   215: ldc_w 397
-    //   218: invokespecial 400	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+    //   215: ldc_w 390
+    //   218: invokespecial 393	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
     //   221: aload_0
-    //   222: invokevirtual 404	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-    //   225: checkcast 362	java/lang/IncompatibleClassChangeError
-    //   228: checkcast 362	java/lang/IncompatibleClassChangeError
+    //   222: invokevirtual 397	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   225: checkcast 355	java/lang/IncompatibleClassChangeError
+    //   228: checkcast 355	java/lang/IncompatibleClassChangeError
     //   231: athrow
     //   232: astore_1
-    //   233: goto -202 -> 31
+    //   233: goto -207 -> 26
     //   236: astore_1
-    //   237: goto -201 -> 36
+    //   237: goto -206 -> 31
     //   240: astore_1
-    //   241: goto -200 -> 41
-    //   244: astore_0
-    //   245: return
-    //   246: astore_1
-    //   247: goto -221 -> 26
+    //   241: goto -205 -> 36
+    //   244: astore_1
+    //   245: goto -204 -> 41
+    //   248: astore_0
+    //   249: return
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	250	0	paramListView	com.tencent.widget.ListView
@@ -848,105 +859,105 @@ public class ActivityLeakSolutionInner
     //   232	1	1	localThrowable1	Throwable
     //   236	1	1	localThrowable2	Throwable
     //   240	1	1	localThrowable3	Throwable
-    //   246	1	1	localThrowable4	Throwable
+    //   244	1	1	localThrowable4	Throwable
     // Exception table:
     //   from	to	target	type
-    //   14	26	47	java/lang/IncompatibleClassChangeError
-    //   26	31	84	java/lang/IncompatibleClassChangeError
+    //   41	46	47	java/lang/IncompatibleClassChangeError
+    //   36	41	84	java/lang/IncompatibleClassChangeError
     //   31	36	121	java/lang/IncompatibleClassChangeError
-    //   36	41	158	java/lang/IncompatibleClassChangeError
-    //   41	46	195	java/lang/IncompatibleClassChangeError
-    //   26	31	232	java/lang/Throwable
-    //   31	36	236	java/lang/Throwable
-    //   36	41	240	java/lang/Throwable
-    //   41	46	244	java/lang/Throwable
-    //   14	26	246	java/lang/Throwable
+    //   26	31	158	java/lang/IncompatibleClassChangeError
+    //   14	26	195	java/lang/IncompatibleClassChangeError
+    //   14	26	232	java/lang/Throwable
+    //   26	31	236	java/lang/Throwable
+    //   31	36	240	java/lang/Throwable
+    //   36	41	244	java/lang/Throwable
+    //   41	46	248	java/lang/Throwable
   }
   
   public static void b(Activity paramActivity)
   {
-    if (!Build.MANUFACTURER.toUpperCase().equals("XIAOMI")) {}
-    for (;;)
-    {
+    if (!Build.MANUFACTURER.toUpperCase().equals("XIAOMI")) {
       return;
-      Object localObject1 = paramActivity.getWindow();
-      if (localObject1 != null)
-      {
-        localObject1 = ((Window)localObject1).getDecorView();
-        if (localObject1 != null) {
-          try
-          {
-            Field localField1 = Class.forName("com.android.internal.policy.DecorView").getDeclaredField("mDecorCaptionView");
-            localField1.setAccessible(true);
-            localObject1 = localField1.get(localObject1);
-            if (localObject1 != null)
-            {
-              localField1 = Class.forName("com.android.internal.widget.DecorCaptionView").getDeclaredField("mContent");
-              localField1.setAccessible(true);
-              Object localObject2 = localField1.get(localObject1);
-              Field localField2 = Class.forName("com.android.internal.widget.MiuiDecorCaptionView").getDeclaredField("mContent");
-              localField2.setAccessible(true);
-              Object localObject3 = localField2.get(localObject1);
-              Field localField3 = Class.forName("android.view.ViewGroup").getDeclaredField("mFocused");
-              localField3.setAccessible(true);
-              Object localObject4 = localField3.get(localObject1);
-              Field localField4 = Class.forName("android.view.View").getDeclaredField("mContext");
-              localField4.setAccessible(true);
-              if ((localObject2 != null) && (localField4.get(localObject2) == paramActivity)) {
-                localField1.set(localObject1, null);
-              }
-              if ((localObject3 != null) && (localField4.get(localObject3) == paramActivity)) {
-                localField2.set(localObject1, null);
-              }
-              if ((localObject4 != null) && (localField4.get(localObject4) == paramActivity))
-              {
-                localField3.set(localObject1, null);
-                return;
-              }
-            }
-          }
-          catch (Throwable paramActivity)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("MagnifierSDK.QAPM.ActivityLeakSolution", 2, paramActivity, new Object[0]);
-            }
-            TripleGraySwitchUtil.a(BaseApplicationImpl.sApplication, false, "KEY_ENABLE_MEMORY_LEAK", paramActivity);
-          }
-        }
+    }
+    Object localObject1 = paramActivity.getWindow();
+    if (localObject1 == null) {
+      return;
+    }
+    localObject1 = ((Window)localObject1).getDecorView();
+    if (localObject1 == null) {
+      return;
+    }
+    try
+    {
+      Field localField1 = Class.forName("com.android.internal.policy.DecorView").getDeclaredField("mDecorCaptionView");
+      localField1.setAccessible(true);
+      localObject1 = localField1.get(localObject1);
+      if (localObject1 == null) {
+        return;
       }
+      localField1 = Class.forName("com.android.internal.widget.DecorCaptionView").getDeclaredField("mContent");
+      localField1.setAccessible(true);
+      Object localObject2 = localField1.get(localObject1);
+      Field localField2 = Class.forName("com.android.internal.widget.MiuiDecorCaptionView").getDeclaredField("mContent");
+      localField2.setAccessible(true);
+      Object localObject3 = localField2.get(localObject1);
+      Field localField3 = Class.forName("android.view.ViewGroup").getDeclaredField("mFocused");
+      localField3.setAccessible(true);
+      Object localObject4 = localField3.get(localObject1);
+      Field localField4 = Class.forName("android.view.View").getDeclaredField("mContext");
+      localField4.setAccessible(true);
+      if ((localObject2 != null) && (localField4.get(localObject2) == paramActivity)) {
+        localField1.set(localObject1, null);
+      }
+      if ((localObject3 != null) && (localField4.get(localObject3) == paramActivity)) {
+        localField2.set(localObject1, null);
+      }
+      if ((localObject4 != null) && (localField4.get(localObject4) == paramActivity))
+      {
+        localField3.set(localObject1, null);
+        return;
+      }
+    }
+    catch (Throwable paramActivity)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MagnifierSDK.QAPM.ActivityLeakSolution", 2, paramActivity, new Object[0]);
+      }
+      TripleGraySwitchUtil.a(BaseApplicationImpl.sApplication, false, "KEY_ENABLE_MEMORY_LEAK", paramActivity);
     }
   }
   
   private static void b(Context paramContext)
   {
-    if (!b) {
+    if (!b)
+    {
       b = true;
-    }
-    try
-    {
-      Method localMethod = Class.forName("android.sec.clipboard.ClipboardUIManager").getDeclaredMethod("getInstance", new Class[] { Context.class });
-      localMethod.setAccessible(true);
-      localMethod.invoke(null, new Object[] { paramContext.getApplicationContext() });
-      return;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      paramContext.printStackTrace();
-      return;
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      paramContext.printStackTrace();
-      return;
-    }
-    catch (IllegalAccessException paramContext)
-    {
-      paramContext.printStackTrace();
-      return;
-    }
-    catch (InvocationTargetException paramContext)
-    {
-      paramContext.printStackTrace();
+      try
+      {
+        Method localMethod = Class.forName("android.sec.clipboard.ClipboardUIManager").getDeclaredMethod("getInstance", new Class[] { Context.class });
+        localMethod.setAccessible(true);
+        localMethod.invoke(null, new Object[] { paramContext.getApplicationContext() });
+        return;
+      }
+      catch (InvocationTargetException paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      catch (IllegalAccessException paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      catch (NoSuchMethodException paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      catch (ClassNotFoundException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
   }
   
@@ -992,79 +1003,79 @@ public class ActivityLeakSolutionInner
     }
     catch (NoSuchFieldException paramContext)
     {
-      c = true;
-      return;
+      label44:
+      break label44;
     }
-    catch (IllegalAccessException paramContext) {}catch (IllegalArgumentException paramContext) {}
+    catch (IllegalArgumentException|IllegalAccessException paramContext) {}
+    c = true;
+    return;
   }
   
   @TargetApi(16)
   private static void d(Activity paramActivity)
   {
-    if (Build.VERSION.SDK_INT < 16) {}
-    for (;;)
-    {
+    if (Build.VERSION.SDK_INT < 16) {
       return;
-      if ((jdField_a_of_type_JavaLangReflectField == null) && (!jdField_a_of_type_Boolean)) {}
-      try
-      {
-        jdField_a_of_type_Boolean = true;
-        jdField_a_of_type_JavaLangReflectField = Choreographer.class.getDeclaredField("mContext");
-        jdField_a_of_type_JavaLangReflectField.setAccessible(true);
-        label44:
-        if (jdField_a_of_type_JavaLangReflectField == null) {
-          continue;
-        }
-        paramActivity.runOnUiThread(new ActivityLeakSolutionInner.1(paramActivity));
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        break label44;
-      }
+    }
+    if ((jdField_a_of_type_JavaLangReflectField == null) && (!jdField_a_of_type_Boolean)) {}
+    try
+    {
+      jdField_a_of_type_Boolean = true;
+      jdField_a_of_type_JavaLangReflectField = Choreographer.class.getDeclaredField("mContext");
+      jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+    }
+    catch (Throwable localThrowable)
+    {
+      label47:
+      break label47;
+    }
+    if (jdField_a_of_type_JavaLangReflectField != null) {
+      paramActivity.runOnUiThread(new ActivityLeakSolutionInner.1(paramActivity));
     }
   }
   
   private static void e(Activity paramActivity)
   {
-    if ((paramActivity == null) || (paramActivity.getWindow() == null) || (paramActivity.getWindow().peekDecorView() == null)) {
-      return;
-    }
-    try
+    if ((paramActivity != null) && (paramActivity.getWindow() != null))
     {
-      a(paramActivity, paramActivity.getWindow().peekDecorView().getRootView());
-      return;
-    }
-    catch (Throwable paramActivity)
-    {
-      paramActivity.printStackTrace();
+      if (paramActivity.getWindow().peekDecorView() == null) {
+        return;
+      }
+      try
+      {
+        a(paramActivity, paramActivity.getWindow().peekDecorView().getRootView());
+        return;
+      }
+      catch (Throwable paramActivity)
+      {
+        paramActivity.printStackTrace();
+      }
     }
   }
   
   private static void f(Activity paramActivity)
   {
-    if ((Build.VERSION.SDK_INT < 19) || (Build.VERSION.SDK_INT >= 28) || (paramActivity == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Object localObject2 = Class.forName("android.app.ActivityThread");
-        Object localObject1 = ((Class)localObject2).getMethod("currentActivityThread", new Class[0]).invoke(localObject2, new Object[0]);
-        if (localObject1 != null)
-        {
-          localObject2 = ((Class)localObject2).getDeclaredField("mOnPauseListeners");
-          ((Field)localObject2).setAccessible(true);
-          localObject1 = ((Field)localObject2).get(localObject1);
-          if ((localObject1 instanceof ArrayMap))
-          {
-            ((ArrayMap)localObject1).remove(paramActivity);
-            return;
-          }
-        }
+    if ((Build.VERSION.SDK_INT >= 19) && (Build.VERSION.SDK_INT < 28)) {
+      if (paramActivity == null) {
+        return;
       }
-      catch (Exception paramActivity) {}
     }
+    try
+    {
+      Object localObject2 = Class.forName("android.app.ActivityThread");
+      Object localObject1 = ((Class)localObject2).getMethod("currentActivityThread", new Class[0]).invoke(localObject2, new Object[0]);
+      if (localObject1 == null) {
+        return;
+      }
+      localObject2 = ((Class)localObject2).getDeclaredField("mOnPauseListeners");
+      ((Field)localObject2).setAccessible(true);
+      localObject1 = ((Field)localObject2).get(localObject1);
+      if ((localObject1 instanceof ArrayMap)) {
+        ((ArrayMap)localObject1).remove(paramActivity);
+      }
+      return;
+    }
+    catch (Exception paramActivity) {}
   }
   
   private static void g(Activity paramActivity)
@@ -1085,32 +1096,39 @@ public class ActivityLeakSolutionInner
         if ((i | 0x8) == i)
         {
           localField.setAccessible(true);
-          if (localField.get(localObject) == paramActivity) {
+          if (localField.get(localObject) == paramActivity)
+          {
             localField.set(localObject, null);
+            return;
           }
         }
       }
-      return;
-    }
-    catch (ClassNotFoundException paramActivity)
-    {
-      while (!QLog.isColorLevel()) {}
-      paramActivity.printStackTrace();
-      QLog.i("MagnifierSDK.QAPM.ActivityLeakSolution", 2, paramActivity.getMessage());
-      return;
-    }
-    catch (NoSuchFieldException paramActivity)
-    {
-      while (!QLog.isColorLevel()) {}
-      paramActivity.printStackTrace();
-      QLog.i("MagnifierSDK.QAPM.ActivityLeakSolution", 2, paramActivity.getMessage());
-      return;
     }
     catch (Throwable paramActivity)
     {
-      while (!QLog.isColorLevel()) {}
-      paramActivity.printStackTrace();
-      QLog.i("MagnifierSDK.QAPM.ActivityLeakSolution", 2, paramActivity.getMessage());
+      if (QLog.isColorLevel())
+      {
+        paramActivity.printStackTrace();
+        QLog.i("MagnifierSDK.QAPM.ActivityLeakSolution", 2, paramActivity.getMessage());
+        return;
+      }
+    }
+    catch (NoSuchFieldException paramActivity)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramActivity.printStackTrace();
+        QLog.i("MagnifierSDK.QAPM.ActivityLeakSolution", 2, paramActivity.getMessage());
+        return;
+      }
+    }
+    catch (ClassNotFoundException paramActivity)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramActivity.printStackTrace();
+        QLog.i("MagnifierSDK.QAPM.ActivityLeakSolution", 2, paramActivity.getMessage());
+      }
     }
   }
   
@@ -1132,7 +1150,7 @@ public class ActivityLeakSolutionInner
       }
       return;
     }
-    catch (Throwable paramActivity) {}catch (IllegalAccessException paramActivity) {}catch (NoSuchFieldException paramActivity) {}catch (ClassNotFoundException paramActivity) {}
+    catch (ClassNotFoundException|NoSuchFieldException|IllegalAccessException|Throwable paramActivity) {}
   }
   
   private static void i(Activity paramActivity)
@@ -1182,7 +1200,7 @@ public class ActivityLeakSolutionInner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mfsdk.impls.memory.ActivityLeakSolutionInner
  * JD-Core Version:    0.7.0.1
  */

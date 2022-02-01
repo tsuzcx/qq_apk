@@ -11,18 +11,20 @@ class AVReportCenter$3
   
   public void run()
   {
-    if (AVReportCenter.access$200(this.this$0) == null) {
-      AVReportCenter.access$202(this.this$0, new Reporter(new File(AVReportCenter.access$000(this.this$0)), AVReportCenter.access$300(this.this$0)));
+    if (AVReportCenter.access$200(this.this$0) == null)
+    {
+      localObject = this.this$0;
+      AVReportCenter.access$202((AVReportCenter)localObject, new Reporter(new File(AVReportCenter.access$000((AVReportCenter)localObject)), AVReportCenter.access$300(this.this$0)));
     }
-    HashMap localHashMap = new HashMap();
-    AVReportCenter.access$400(this.this$0, localHashMap);
-    localHashMap.putAll(this.val$data);
-    AVReportCenter.access$500(this.this$0, localHashMap);
+    Object localObject = new HashMap();
+    AVReportCenter.access$400(this.this$0, (Map)localObject);
+    ((Map)localObject).putAll(this.val$data);
+    AVReportCenter.access$500(this.this$0, (Map)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.camerasdk.avreporter.AVReportCenter.3
  * JD-Core Version:    0.7.0.1
  */

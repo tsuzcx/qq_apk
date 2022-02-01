@@ -10,18 +10,21 @@ class DoubleVideoMeetingCtrlUI$7
   
   public void run()
   {
-    if (this.this$0.a == null) {}
-    while (!this.this$0.a.a().aJ) {
+    if (this.this$0.a == null) {
       return;
     }
-    this.this$0.a.a(this.a, 4, false, false);
-    this.this$0.c = true;
-    this.this$0.a.k();
+    if (this.this$0.a.a().aw)
+    {
+      this.this$0.a.a(this.a, 4, false, false);
+      DoubleVideoMeetingCtrlUI localDoubleVideoMeetingCtrlUI = this.this$0;
+      localDoubleVideoMeetingCtrlUI.c = true;
+      localDoubleVideoMeetingCtrlUI.a.l();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoMeetingCtrlUI.7
  * JD-Core Version:    0.7.0.1
  */

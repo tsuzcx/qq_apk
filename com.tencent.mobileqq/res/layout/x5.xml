@@ -2,5 +2,5 @@
 <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/g86"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/gaz" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/a8c" android:src="@drawable/dd_" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/s4" android:ellipsize="marquee" android:gravity="center_horizontal" android:id="@id/gd3" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:onClick="BtnOnClick" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:ellipsize="marquee" android:gravity="center_horizontal" android:id="@id/gd3" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:onClick="BtnOnClick" />
 </LinearLayout>

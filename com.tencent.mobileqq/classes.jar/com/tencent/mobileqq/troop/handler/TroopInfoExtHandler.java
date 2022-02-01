@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.handler;
 
+import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopInfoExt;
@@ -14,8 +14,9 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.service.troop.TroopNotificationConstants;
 import com.tencent.mobileqq.troop.api.ITroopInfoService;
+import com.tencent.mobileqq.troop.api.handler.ITroopInfoExtHandler;
+import com.tencent.mobileqq.troop.api.handler.ITroopListHandler;
 import com.tencent.mobileqq.troop.api.observer.TroopObserver;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -32,26 +33,80 @@ import tencent.im.oidb.cmd0xef0.oidb_0xef0.RspBody;
 import tencent.im.oidb.cmd0xef0.oidb_0xef0.RspDetail;
 
 public class TroopInfoExtHandler
-  extends BusinessHandler
+  extends TroopBaseHandler
+  implements ITroopInfoExtHandler
 {
   public TroopInfoExtHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
   }
   
-  private void a(ToServiceMsg paramToServiceMsg)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (paramToServiceMsg == null)
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
+      Object localObject1 = new oidb_0xef0.RspBody();
+      int i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject1);
+      if (i != 0)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("handleGetTroopInfoExtBy0xef0 result = ");
+          paramToServiceMsg.append(i);
+          QLog.d("TroopInfoExtHandler", 2, paramToServiceMsg.toString());
+        }
+        return;
+      }
+      paramToServiceMsg = (ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "");
+      paramFromServiceMsg = ((oidb_0xef0.RspBody)localObject1).rpt_msg_rsp_detail.get();
+      if ((paramFromServiceMsg != null) && (!paramFromServiceMsg.isEmpty()))
+      {
+        paramFromServiceMsg = paramFromServiceMsg.iterator();
+        label123:
+        boolean bool2;
+        for (boolean bool1 = false; paramFromServiceMsg.hasNext(); bool1 = bool2)
+        {
+          Object localObject2 = (oidb_0xef0.RspDetail)paramFromServiceMsg.next();
+          if ((localObject2 == null) || (((oidb_0xef0.RspDetail)localObject2).int32_result.get() != 0)) {
+            break label123;
+          }
+          paramObject = String.valueOf(((oidb_0xef0.RspDetail)localObject2).uint64_group_code.get());
+          localObject1 = paramToServiceMsg.findTroopInfo(paramObject);
+          if ((localObject1 == null) || (!((oidb_0xef0.RspDetail)localObject2).msg_group_info_ext.has())) {
+            break label123;
+          }
+          TroopInfoExt localTroopInfoExt = ((TroopInfo)localObject1).mTroopInfoExtObj;
+          ((TroopInfo)localObject1).mTroopInfoExtObj = TroopInfoExt.parseFromGroupInfoExt((oidb_0xef0.GroupInfoExt)((oidb_0xef0.RspDetail)localObject2).msg_group_info_ext.get());
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("handleGetTroopInfoExtBy0xef0 troopUin:");
+            ((StringBuilder)localObject2).append(paramObject);
+            ((StringBuilder)localObject2).append(" uint32_group_info_ext_seq:");
+            ((StringBuilder)localObject2).append(((TroopInfo)localObject1).mTroopInfoExtObj.groupInfoExtSeq);
+            QLog.i("TroopInfoExtHandler", 2, ((StringBuilder)localObject2).toString());
+          }
+          paramToServiceMsg.saveTroopInfo((TroopInfo)localObject1);
+          bool2 = bool1;
+          if (!bool1) {
+            bool2 = a(localTroopInfoExt, ((TroopInfo)localObject1).mTroopInfoExtObj);
+          }
+          notifyUI(TroopObserver.TYPE_GET_TROOP_INFO_EXT_COMPLETE, true, new Object[] { paramObject, localTroopInfoExt });
+        }
+        if (bool1) {
+          ((ITroopListHandler)this.appRuntime.getBusinessHandler(TroopListHandler.class.getName())).a(TroopObserver.TYPE_NOTIFY_UPDATE_RECENT_LIST, true, null);
+        }
+        return;
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("TroopInfoExtHandler", 2, "sendPbRequest. request is null.");
+        QLog.d("TroopInfoExtHandler", 2, "handleGetTroopInfoExtBy0xef0 rspDetails empty");
       }
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("TroopInfoExtHandler", 2, "sendPbRequest. cmd=" + paramToServiceMsg.getServiceCmd());
+      QLog.d("TroopInfoExtHandler", 2, "handleGetTroopInfoExtBy0xef0 resp == null || res == null");
     }
-    super.sendPbReq(paramToServiceMsg);
   }
   
   public static void a(oidb_0x88d.GroupInfo paramGroupInfo)
@@ -79,79 +134,19 @@ public class TroopInfoExtHandler
   
   private boolean a(TroopInfoExt paramTroopInfoExt1, TroopInfoExt paramTroopInfoExt2)
   {
-    if ((paramTroopInfoExt1 == null) || (paramTroopInfoExt2 == null)) {}
-    while ((paramTroopInfoExt1.luckyWordId == paramTroopInfoExt2.luckyWordId) && (paramTroopInfoExt1.lightCharNum == paramTroopInfoExt2.lightCharNum)) {
-      return false;
+    if (paramTroopInfoExt1 != null)
+    {
+      if (paramTroopInfoExt2 == null) {
+        return false;
+      }
+      return (paramTroopInfoExt1.luckyWordId != paramTroopInfoExt2.luckyWordId) || (paramTroopInfoExt1.lightCharNum != paramTroopInfoExt2.lightCharNum);
     }
-    return true;
+    return false;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  protected String a()
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInfoExtHandler", 2, "handleGetTroopInfoExtBy0xef0 resp == null || res == null");
-      }
-    }
-    boolean bool1;
-    label141:
-    do
-    {
-      Object localObject;
-      do
-      {
-        int i;
-        do
-        {
-          return;
-          localObject = new oidb_0xef0.RspBody();
-          i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-          if (i == 0) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopInfoExtHandler", 2, "handleGetTroopInfoExtBy0xef0 result = " + i);
-        return;
-        paramToServiceMsg = (ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "");
-        paramFromServiceMsg = ((oidb_0xef0.RspBody)localObject).rpt_msg_rsp_detail.get();
-        if ((paramFromServiceMsg != null) && (!paramFromServiceMsg.isEmpty())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopInfoExtHandler", 2, "handleGetTroopInfoExtBy0xef0 rspDetails empty");
-      return;
-      paramFromServiceMsg = paramFromServiceMsg.iterator();
-      boolean bool2;
-      for (bool1 = false; paramFromServiceMsg.hasNext(); bool1 = bool2)
-      {
-        paramObject = (oidb_0xef0.RspDetail)paramFromServiceMsg.next();
-        if ((paramObject == null) || (paramObject.int32_result.get() != 0)) {
-          break label141;
-        }
-        localObject = String.valueOf(paramObject.uint64_group_code.get());
-        TroopInfo localTroopInfo = paramToServiceMsg.findTroopInfo((String)localObject);
-        bool2 = bool1;
-        if (localTroopInfo != null)
-        {
-          bool2 = bool1;
-          if (paramObject.msg_group_info_ext.has())
-          {
-            TroopInfoExt localTroopInfoExt = localTroopInfo.mTroopInfoExtObj;
-            localTroopInfo.mTroopInfoExtObj = TroopInfoExt.parseFromGroupInfoExt((oidb_0xef0.GroupInfoExt)paramObject.msg_group_info_ext.get());
-            if (QLog.isColorLevel()) {
-              QLog.i("TroopInfoExtHandler", 2, "handleGetTroopInfoExtBy0xef0 troopUin:" + (String)localObject + " uint32_group_info_ext_seq:" + localTroopInfo.mTroopInfoExtObj.groupInfoExtSeq);
-            }
-            paramToServiceMsg.saveTroopInfo(localTroopInfo);
-            bool2 = bool1;
-            if (!bool1) {
-              bool2 = a(localTroopInfoExt, localTroopInfo.mTroopInfoExtObj);
-            }
-            notifyUI(TroopNotificationConstants.cj, true, new Object[] { localObject, localTroopInfoExt });
-          }
-        }
-      }
-    } while (!bool1);
-    notifyUI(TroopNotificationConstants.aC, true, null);
+    return "TroopInfoExtHandler";
   }
   
   public void a(String paramString)
@@ -166,18 +161,25 @@ public class TroopInfoExtHandler
   
   public void a(List<Long> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getTroopInfoExtBy0xef0 + troopUinList = ");
+        ((StringBuilder)localObject).append(paramList.toString());
+        QLog.d("TroopInfoExtHandler", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = new oidb_0xef0.GroupInfoExt();
+      a((oidb_0xef0.GroupInfoExt)localObject);
+      oidb_0xef0.ReqBody localReqBody = new oidb_0xef0.ReqBody();
+      localReqBody.msg_group_info_ext.set((MessageMicro)localObject);
+      localReqBody.rpt_uint64_group_code.set(paramList);
+      a(makeOIDBPkg("OidbSvc.0xef0_1", 3824, 1, localReqBody.toByteArray(), 30000L));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInfoExtHandler", 2, "getTroopInfoExtBy0xef0 + troopUinList = " + paramList.toString());
-    }
-    oidb_0xef0.GroupInfoExt localGroupInfoExt = new oidb_0xef0.GroupInfoExt();
-    a(localGroupInfoExt);
-    oidb_0xef0.ReqBody localReqBody = new oidb_0xef0.ReqBody();
-    localReqBody.msg_group_info_ext.set(localGroupInfoExt);
-    localReqBody.rpt_uint64_group_code.set(paramList);
-    a(makeOIDBPkg("OidbSvc.0xef0_1", 3824, 1, localReqBody.toByteArray(), 30000L));
   }
   
   public Set<String> getCommandList()
@@ -190,38 +192,51 @@ public class TroopInfoExtHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return TroopObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (paramFromServiceMsg == null) {
+    if (paramFromServiceMsg == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("TroopInfoExtHandler", 2, "onReceive,resp == null");
       }
-    }
-    do
-    {
-      String str;
-      do
-      {
-        return;
-        str = paramFromServiceMsg.getServiceCmd();
-        if (!msgCmdFilter(str)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopInfoExtHandler", 2, "cmdfilter error=" + str);
       return;
-    } while (!"OidbSvc.0xef0_1".equals(paramFromServiceMsg.getServiceCmd()));
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    String str = paramFromServiceMsg.getServiceCmd();
+    if (msgCmdFilter(str))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("cmdfilter error=");
+        paramToServiceMsg.append(str);
+        QLog.d("TroopInfoExtHandler", 2, paramToServiceMsg.toString());
+      }
+      return;
+    }
+    if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("REQ_TAG doesn't match. cmd:  ");
+        paramToServiceMsg.append(str);
+        QLog.d("TroopInfoExtHandler", 2, paramToServiceMsg.toString());
+      }
+      return;
+    }
+    if ("OidbSvc.0xef0_1".equals(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopInfoExtHandler
  * JD-Core Version:    0.7.0.1
  */

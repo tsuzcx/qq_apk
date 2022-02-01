@@ -12,12 +12,13 @@ public abstract interface AutoSizeableTextView
   
   static
   {
-    if (Build.VERSION.SDK_INT >= 27) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PLATFORM_SUPPORTS_AUTOSIZE = bool;
-      return;
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 27) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    PLATFORM_SUPPORTS_AUTOSIZE = bool;
   }
   
   public abstract int getAutoSizeMaxTextSize();
@@ -38,7 +39,7 @@ public abstract interface AutoSizeableTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.widget.AutoSizeableTextView
  * JD-Core Version:    0.7.0.1
  */

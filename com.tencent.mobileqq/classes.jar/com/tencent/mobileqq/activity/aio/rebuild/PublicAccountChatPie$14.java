@@ -1,29 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.widget.RelativeLayout;
 
 class PublicAccountChatPie$14
-  implements Animator.AnimatorListener
+  implements Runnable
 {
   PublicAccountChatPie$14(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.a.a.removeHeaderView(PublicAccountChatPie.a(this.a));
-    PublicAccountChatPie.a(this.a, true);
+    PublicAccountChatPie.a(this.this$0).removeView(this.this$0.g);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.14
  * JD-Core Version:    0.7.0.1
  */

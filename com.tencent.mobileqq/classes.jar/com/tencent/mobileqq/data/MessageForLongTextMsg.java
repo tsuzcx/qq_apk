@@ -34,19 +34,19 @@ public class MessageForLongTextMsg
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForLongTextMsg
  * JD-Core Version:    0.7.0.1
  */

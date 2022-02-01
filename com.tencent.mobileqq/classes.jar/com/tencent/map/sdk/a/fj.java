@@ -20,58 +20,52 @@ public final class fj
   static String a(String paramString, fn paramfn)
   {
     if (paramString == null) {
-      localObject = null;
+      return null;
     }
-    do
+    try
     {
-      do
+      Object localObject1 = new URL(URLDecoder.decode(paramString, "UTF-8"));
+      localObject1 = new URI(((URL)localObject1).getProtocol(), ((URL)localObject1).getUserInfo(), ((URL)localObject1).getHost(), ((URL)localObject1).getPort(), ((URL)localObject1).getPath(), ((URL)localObject1).getQuery(), ((URL)localObject1).getRef()).toASCIIString();
+      paramString = (String)localObject1;
+    }
+    catch (URISyntaxException localURISyntaxException)
+    {
+      localURISyntaxException.printStackTrace();
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      localMalformedURLException.printStackTrace();
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      localUnsupportedEncodingException.printStackTrace();
+    }
+    Object localObject2 = paramString;
+    if (paramfn != null)
+    {
+      String str = Uri.encode(paramfn.toString(), "=&").trim();
+      localObject2 = paramString;
+      if (!str.equals(""))
       {
-        do
+        paramfn = "?";
+        localObject2 = paramString;
+        if (!str.equals("?"))
         {
-          return localObject;
-          try
-          {
-            localObject = new URL(URLDecoder.decode(paramString, "UTF-8"));
-            localObject = new URI(((URL)localObject).getProtocol(), ((URL)localObject).getUserInfo(), ((URL)localObject).getHost(), ((URL)localObject).getPort(), ((URL)localObject).getPath(), ((URL)localObject).getQuery(), ((URL)localObject).getRef()).toASCIIString();
-            paramString = (String)localObject;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(paramString);
+          if (paramString.contains("?")) {
+            paramfn = "&";
           }
-          catch (UnsupportedEncodingException localUnsupportedEncodingException)
-          {
-            for (;;)
-            {
-              localUnsupportedEncodingException.printStackTrace();
-            }
-          }
-          catch (MalformedURLException localMalformedURLException)
-          {
-            for (;;)
-            {
-              localMalformedURLException.printStackTrace();
-            }
-          }
-          catch (URISyntaxException localURISyntaxException)
-          {
-            for (;;)
-            {
-              localURISyntaxException.printStackTrace();
-              continue;
-              paramString = "?";
-            }
-          }
-          localObject = paramString;
-        } while (paramfn == null);
-        paramfn = Uri.encode(paramfn.toString(), "=&").trim();
-        localObject = paramString;
-      } while (paramfn.equals(""));
-      localObject = paramString;
-    } while (paramfn.equals("?"));
-    Object localObject = new StringBuilder().append(paramString);
-    if (paramString.contains("?"))
-    {
-      paramString = "&";
-      paramString = paramString;
-      return paramString + paramfn;
+          ((StringBuilder)localObject2).append(paramfn);
+          paramString = ((StringBuilder)localObject2).toString();
+          paramfn = new StringBuilder();
+          paramfn.append(paramString);
+          paramfn.append(str);
+          localObject2 = paramfn.toString();
+        }
+      }
     }
+    return localObject2;
   }
   
   public static <T extends BaseObject> void a(Context paramContext, String paramString, fn paramfn, Class<T> paramClass, HttpResponseListener<T> paramHttpResponseListener)
@@ -89,7 +83,7 @@ public final class fj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.fj
  * JD-Core Version:    0.7.0.1
  */

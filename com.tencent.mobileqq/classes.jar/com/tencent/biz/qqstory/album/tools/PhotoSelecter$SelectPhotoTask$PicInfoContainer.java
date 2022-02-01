@@ -21,28 +21,25 @@ class PhotoSelecter$SelectPhotoTask$PicInfoContainer
   
   public Bitmap a(Context paramContext)
   {
-    BitmapFactory.Options localOptions;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      localOptions = new BitmapFactory.Options();
-    }
-    try
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum$PicInfo.a(paramContext, 1, localOptions);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = PhotoSimilar.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      try
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum$PicInfo.a(paramContext, 1, localOptions);
+        this.jdField_a_of_type_AndroidGraphicsBitmap = PhotoSimilar.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+      catch (Exception paramContext)
       {
         SLog.c(PhotoSelecter.a, "get thumbnail failed!", paramContext);
       }
     }
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.PhotoSelecter.SelectPhotoTask.PicInfoContainer
  * JD-Core Version:    0.7.0.1
  */

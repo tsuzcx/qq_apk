@@ -21,29 +21,38 @@ final class RockDownloader$3
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
-      return;
+    if (paramDownloadInfo.e != null)
+    {
+      if (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName())) {
+        return;
+      }
+      RockDownloader.a(paramDownloadInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+      DownloadManagerV2.a().b(this);
     }
-    RockDownloader.a(paramDownloadInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
-    DownloadManagerV2.a().b(this);
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
-      return;
+    if (paramDownloadInfo.e != null)
+    {
+      if (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName())) {
+        return;
+      }
+      RockDownloader.a(paramDownloadInfo, paramInt1, paramString, paramInt2, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+      DownloadManagerV2.a().b(this);
     }
-    RockDownloader.a(paramDownloadInfo, paramInt1, paramString, paramInt2, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
-    DownloadManagerV2.a().b(this);
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
-      return;
+    if (paramDownloadInfo.e != null)
+    {
+      if (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName())) {
+        return;
+      }
+      RockDownloader.a(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, paramDownloadInfo, this.jdField_a_of_type_Boolean);
+      DownloadManagerV2.a().b(this);
     }
-    RockDownloader.a(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, paramDownloadInfo, this.jdField_a_of_type_Boolean);
-    DownloadManagerV2.a().b(this);
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
@@ -77,7 +86,7 @@ final class RockDownloader$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloader.3
  * JD-Core Version:    0.7.0.1
  */

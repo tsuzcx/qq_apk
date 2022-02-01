@@ -1,35 +1,32 @@
 package com.tencent.mtt.hippy.dom.node;
 
 import android.text.TextPaint;
-import android.text.style.MetricAffectingSpan;
+import android.text.style.CharacterStyle;
 
 public class g
-  extends MetricAffectingSpan
+  extends CharacterStyle
 {
-  private final int a;
-  private final int b;
-  private final String c;
+  private final float a;
+  private final float b;
+  private final float c;
+  private final int d;
   
-  public g(int paramInt1, int paramInt2, String paramString)
+  public g(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramString;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramInt;
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    TypeFaceUtil.apply(paramTextPaint, this.a, this.b, this.c);
-  }
-  
-  public void updateMeasureState(TextPaint paramTextPaint)
-  {
-    TypeFaceUtil.apply(paramTextPaint, this.a, this.b, this.c);
+    paramTextPaint.setShadowLayer(this.c, this.a, this.b, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.g
  * JD-Core Version:    0.7.0.1
  */

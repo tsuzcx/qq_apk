@@ -30,15 +30,24 @@ class AIOImageProviderService$3
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramShortVideoResult.b);
       return;
     }
-    if (localIAIOImageProviderCallBack != null) {
-      localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 2, "step:" + paramShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.a + ", desc:" + paramShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b, false);
+    if (localIAIOImageProviderCallBack != null)
+    {
+      long l = this.jdField_a_of_type_Long;
+      paramInt = this.jdField_a_of_type_Int;
+      int i = this.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("step:");
+      localStringBuilder.append(paramShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.a);
+      localStringBuilder.append(", desc:");
+      localStringBuilder.append(paramShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b);
+      localIAIOImageProviderCallBack.a(l, paramInt, i, 2, localStringBuilder.toString(), false);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.3
  * JD-Core Version:    0.7.0.1
  */

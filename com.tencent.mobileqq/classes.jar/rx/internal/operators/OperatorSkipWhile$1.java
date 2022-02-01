@@ -44,18 +44,18 @@ class OperatorSkipWhile$1
         this.val$child.onNext(paramT);
         return;
       }
+      request(1L);
+      return;
     }
     catch (Throwable localThrowable)
     {
       Exceptions.throwOrReport(localThrowable, this.val$child, paramT);
-      return;
     }
-    request(1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorSkipWhile.1
  * JD-Core Version:    0.7.0.1
  */

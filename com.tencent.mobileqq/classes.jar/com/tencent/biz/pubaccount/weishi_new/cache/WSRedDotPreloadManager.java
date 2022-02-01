@@ -33,18 +33,20 @@ public class WSRedDotPreloadManager
   @NotNull
   private WSFeedsPreloadStrategy a()
   {
-    if (WSExpPreloadABTestManager.a().a()) {}
-    for (int i = 13;; i = 8)
-    {
-      WSFeedsPreloadStrategy localWSFeedsPreloadStrategy2 = (WSFeedsPreloadStrategy)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-      WSFeedsPreloadStrategy localWSFeedsPreloadStrategy1 = localWSFeedsPreloadStrategy2;
-      if (localWSFeedsPreloadStrategy2 == null)
-      {
-        localWSFeedsPreloadStrategy1 = new WSFeedsPreloadStrategy(i);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localWSFeedsPreloadStrategy1);
-      }
-      return localWSFeedsPreloadStrategy1;
+    int i;
+    if (WSExpPreloadABTestManager.a().a()) {
+      i = 13;
+    } else {
+      i = 8;
     }
+    WSFeedsPreloadStrategy localWSFeedsPreloadStrategy2 = (WSFeedsPreloadStrategy)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    WSFeedsPreloadStrategy localWSFeedsPreloadStrategy1 = localWSFeedsPreloadStrategy2;
+    if (localWSFeedsPreloadStrategy2 == null)
+    {
+      localWSFeedsPreloadStrategy1 = new WSFeedsPreloadStrategy(i);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localWSFeedsPreloadStrategy1);
+    }
+    return localWSFeedsPreloadStrategy1;
   }
   
   public static WSRedDotPreloadManager a()
@@ -55,36 +57,40 @@ public class WSRedDotPreloadManager
   private void d()
   {
     WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] start");
-    if (!WSExpPreloadABTestManager.a().b()) {}
-    Object localObject2;
-    do
-    {
-      return;
-      WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] hit preloadBigImage exp");
-      localObject1 = WeishiUtils.a();
-      if (localObject1 == null)
-      {
-        WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] wsPushMsgData: null");
-        return;
-      }
-      localObject2 = WSSharePreferencesUtil.a("key_preload_msg_uin", "");
-      String str = ((WSRedDotPushMsg)localObject1).mFeedIds;
-      if (TextUtils.equals((CharSequence)localObject2, str))
-      {
-        WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] has preloaded this feed");
-        return;
-      }
-      WSSharePreferencesUtil.a("key_preload_msg_uin", str);
-      localObject2 = ((WSRedDotPushMsg)localObject1).mStrategyInfo;
-    } while (TextUtils.isEmpty(((WSRedDotPushMsg)localObject1).mFeedIds));
-    if ((localObject2 == null) || (((IWSPushBaseStrategy)localObject2).getType() == 2) || (((WSPushStrategyInfo)localObject2).mWSPushVideoModel == null))
-    {
-      WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] invalid info");
+    if (!WSExpPreloadABTestManager.a().b()) {
       return;
     }
-    Object localObject1 = ((WSPushStrategyInfo)localObject2).mWSPushVideoModel;
-    WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] async loadImage");
-    ThreadManager.executeOnSubThread(new WSRedDotPreloadManager.1(this, (WSPushVideoModel)localObject1));
+    WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] hit preloadBigImage exp");
+    Object localObject1 = WeishiUtils.a();
+    if (localObject1 == null)
+    {
+      WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] wsPushMsgData: null");
+      return;
+    }
+    Object localObject2 = WSSharePreferencesUtil.a("key_preload_msg_uin", "");
+    String str = ((WSRedDotPushMsg)localObject1).mFeedIds;
+    if (TextUtils.equals((CharSequence)localObject2, str))
+    {
+      WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] has preloaded this feed");
+      return;
+    }
+    WSSharePreferencesUtil.a("key_preload_msg_uin", str);
+    localObject2 = ((WSRedDotPushMsg)localObject1).mStrategyInfo;
+    if (TextUtils.isEmpty(((WSRedDotPushMsg)localObject1).mFeedIds)) {
+      return;
+    }
+    if ((localObject2 != null) && (((IWSPushBaseStrategy)localObject2).getType() != 2))
+    {
+      localObject1 = (WSPushStrategyInfo)localObject2;
+      if (((WSPushStrategyInfo)localObject1).mWSPushVideoModel != null)
+      {
+        localObject1 = ((WSPushStrategyInfo)localObject1).mWSPushVideoModel;
+        WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] async loadImage");
+        ThreadManager.executeOnSubThread(new WSRedDotPreloadManager.1(this, (WSPushVideoModel)localObject1));
+        return;
+      }
+    }
+    WSLog.d("WSRedDotPreloadManager", "[preloadVideoCover] invalid info");
   }
   
   public ArrayList<Class<WSExpEvent>> a()
@@ -109,16 +115,12 @@ public class WSRedDotPreloadManager
       return;
     }
     paramWSSimpleBaseEvent = ((WSExpEvent)paramWSSimpleBaseEvent).getPolicyEntities();
-    if (!WSExpPreloadABTestManager.a().a(paramWSSimpleBaseEvent)) {}
-    for (int i = 1;; i = 0)
-    {
-      WSExpPreloadABTestManager.a().a(paramWSSimpleBaseEvent);
-      if (i != 0) {
-        a().b();
-      }
-      c();
-      return;
+    boolean bool = WSExpPreloadABTestManager.a().a(paramWSSimpleBaseEvent);
+    WSExpPreloadABTestManager.a().a(paramWSSimpleBaseEvent);
+    if ((bool ^ true)) {
+      a().b();
     }
+    c();
   }
   
   public void b()
@@ -140,14 +142,17 @@ public class WSRedDotPreloadManager
     d();
     WSFeedsPreloadStrategy localWSFeedsPreloadStrategy = a();
     String str = WeishiUtils.e();
-    WSLog.e("WSRedDotPreloadManager", "[preloadData] preloadFeedId:" + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[preloadData] preloadFeedId:");
+    localStringBuilder.append(str);
+    WSLog.e("WSRedDotPreloadManager", localStringBuilder.toString());
     localWSFeedsPreloadStrategy.a(str);
     WSQQConnectAuthManager.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.cache.WSRedDotPreloadManager
  * JD-Core Version:    0.7.0.1
  */

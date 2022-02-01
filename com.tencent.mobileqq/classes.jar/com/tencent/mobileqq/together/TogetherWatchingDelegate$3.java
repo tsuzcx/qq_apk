@@ -12,18 +12,19 @@ class TogetherWatchingDelegate$3
   {
     TogetherWatchingDelegate localTogetherWatchingDelegate = this.jdField_a_of_type_ComTencentMobileqqTogetherTogetherWatchingDelegate;
     String str2 = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 8) {}
-    for (String str1 = "clk_openframe_cancel";; str1 = "clk_joinbar_cancel")
-    {
-      TogetherWatchingDelegate.a(localTogetherWatchingDelegate, str2, str1);
-      paramDialogInterface.dismiss();
-      return;
+    String str1;
+    if (this.jdField_a_of_type_Int == 8) {
+      str1 = "clk_openframe_cancel";
+    } else {
+      str1 = "clk_joinbar_cancel";
     }
+    TogetherWatchingDelegate.a(localTogetherWatchingDelegate, str2, str1);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherWatchingDelegate.3
  * JD-Core Version:    0.7.0.1
  */

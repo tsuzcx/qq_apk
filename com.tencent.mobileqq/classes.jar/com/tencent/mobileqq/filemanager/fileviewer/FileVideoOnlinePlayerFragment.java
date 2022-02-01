@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.qqvideoplatform.api.QQVideoViewFactory;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
 import com.tencent.mobileqq.videoplatform.view.QQVideoPlayView;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -31,46 +31,44 @@ public class FileVideoOnlinePlayerFragment
       getTitleBarView().setBackgroundResource(0);
       getTitleBarView().setBackgroundColor(-16777216);
     }
-    FragmentActivity localFragmentActivity = getActivity();
-    SystemBarCompact localSystemBarCompact;
-    if ((localFragmentActivity != null) && ((localFragmentActivity instanceof PublicFragmentActivity)))
+    BaseActivity localBaseActivity = getBaseActivity();
+    if ((localBaseActivity != null) && ((localBaseActivity instanceof PublicFragmentActivity)))
     {
-      localSystemBarCompact = ((PublicFragmentActivity)localFragmentActivity).mSystemBarComp;
+      PublicFragmentActivity localPublicFragmentActivity = (PublicFragmentActivity)localBaseActivity;
+      SystemBarCompact localSystemBarCompact = localPublicFragmentActivity.mSystemBarComp;
       if ((localSystemBarCompact != null) && (needImmersive()) && (needStatusTrans()) && (ImmersiveUtils.isSupporImmersive() == 1))
       {
-        if (!ThemeUtil.isInNightMode(((PublicFragmentActivity)localFragmentActivity).app)) {
-          break label115;
+        if (ThemeUtil.isInNightMode(localPublicFragmentActivity.app))
+        {
+          if ((!SystemUtil.b()) && (!SystemUtil.d()))
+          {
+            localSystemBarCompact.setStatusBarColor(0);
+            return;
+          }
+          localSystemBarCompact.setStatusBarColor(0);
+          localSystemBarCompact.setStatusBarDarkMode(true);
+          return;
         }
-        if ((SystemUtil.b()) || (SystemUtil.d())) {
-          break label104;
+        if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
+        {
+          localBaseActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
+          localSystemBarCompact.setStatusBarColor(0);
+          return;
+        }
+        if (!SystemUtil.d())
+        {
+          localSystemBarCompact.setStatusBarColor(0);
+          return;
         }
         localSystemBarCompact.setStatusBarColor(0);
+        localSystemBarCompact.setStatusBarDarkMode(true);
       }
     }
-    return;
-    label104:
-    localSystemBarCompact.setStatusBarColor(0);
-    localSystemBarCompact.setStatusBarDarkMode(true);
-    return;
-    label115:
-    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
-    {
-      localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
-      localSystemBarCompact.setStatusBarColor(0);
-      return;
-    }
-    if (!SystemUtil.d())
-    {
-      localSystemBarCompact.setStatusBarColor(0);
-      return;
-    }
-    localSystemBarCompact.setStatusBarColor(0);
-    localSystemBarCompact.setStatusBarDarkMode(true);
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131560944;
+    return 2131560819;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -102,8 +100,8 @@ public class FileVideoOnlinePlayerFragment
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131377357);
-    Object localObject = getActivity().getIntent();
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131376810);
+    Object localObject = getBaseActivity().getIntent();
     String str1 = ((Intent)localObject).getStringExtra("fileid");
     String str2 = ((Intent)localObject).getStringExtra("url");
     localObject = ((Intent)localObject).getStringExtra("cookie");
@@ -116,7 +114,7 @@ public class FileVideoOnlinePlayerFragment
     localVideoPlayParam.mIsLocal = false;
     localVideoPlayParam.mIsLoop = false;
     localVideoPlayParam.mSceneId = 109;
-    this.a = ((QQVideoPlayView)QQVideoViewFactory.a(getActivity(), 109L, localVideoPlayParam, null));
+    this.a = ((QQVideoPlayView)QQVideoViewFactory.a(getBaseActivity(), 109L, localVideoPlayParam, null));
     localRelativeLayout.addView(this.a, -1, -1);
     this.a.play();
     super.onViewCreated(paramView, paramBundle);
@@ -124,7 +122,7 @@ public class FileVideoOnlinePlayerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileVideoOnlinePlayerFragment
  * JD-Core Version:    0.7.0.1
  */

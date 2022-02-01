@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GroupArea
   extends JceStruct
@@ -56,19 +57,21 @@ public final class GroupArea
     paramJceOutputStream.write(this.iLat, 1);
     paramJceOutputStream.write(this.iLon, 2);
     paramJceOutputStream.write(this.dwGroupStartIdx, 3);
-    if (this.vGroupInfo != null) {
-      paramJceOutputStream.write(this.vGroupInfo, 4);
+    Object localObject = this.vGroupInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
     paramJceOutputStream.write(this.dwGroupTotalCnt, 5);
     paramJceOutputStream.write(this.dwDistance, 6);
-    if (this.strStreet != null) {
-      paramJceOutputStream.write(this.strStreet, 7);
+    localObject = this.strStreet;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.GroupArea
  * JD-Core Version:    0.7.0.1
  */

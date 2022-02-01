@@ -8,7 +8,7 @@ class TroopTransferActivity$3
 {
   TroopTransferActivity$3(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
       this.a.a.notifyDataSetChanged();
@@ -17,7 +17,7 @@ class TroopTransferActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.3
  * JD-Core Version:    0.7.0.1
  */

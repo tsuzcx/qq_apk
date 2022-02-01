@@ -20,20 +20,27 @@ class AddRequestActivity$9$1$1
       AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity$9$1.a.a).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity$9$1.a.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.get());
       AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity$9$1.a.a).setVisibility(0);
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.AddRequestActivity", 2, "Card find Uin :" + this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity$9$1.a.a.jdField_a_of_type_JavaLangString + "age:" + this.jdField_a_of_type_ComTencentMobileqqDataCard.age + "gender:" + this.jdField_a_of_type_ComTencentMobileqqDataCard.shGender);
-      }
-      return;
       AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity$9$1.a.a).setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity$9$1.a.a.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Card find Uin :");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity$9$1.a.a.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("age:");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataCard.age);
+      localStringBuilder.append("gender:");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataCard.shGender);
+      QLog.d("Q.systemmsg.AddRequestActivity", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.9.1.1
  * JD-Core Version:    0.7.0.1
  */

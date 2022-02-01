@@ -17,38 +17,45 @@ public class MTV1VideoLayerRender
   public void onSurfaceChanged(int paramInt1, int paramInt2)
   {
     super.onSurfaceChanged(paramInt1, paramInt2);
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return;
-    }
-    this.mShapeRender.onSurfaceChanged(paramInt1, paramInt2);
-    if (this.mRenderFBO != null)
+    if (paramInt1 != 0)
     {
-      releaseRenderBuffer(this.mRenderFBO);
-      this.mRenderFBO = null;
+      if (paramInt2 == 0) {
+        return;
+      }
+      this.mShapeRender.onSurfaceChanged(paramInt1, paramInt2);
+      Object localObject = this.mRenderFBO;
+      if (localObject != null)
+      {
+        releaseRenderBuffer((RenderBuffer)localObject);
+        this.mRenderFBO = null;
+      }
+      this.mRenderFBO = new RenderBuffer(paramInt1, paramInt2, 33984);
+      localObject = this.mColoramaFilter;
+      if (localObject != null)
+      {
+        ((ColoramaFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+        return;
+      }
+      this.mColoramaFilter = new ColoramaFilter();
+      this.mColoramaFilter.init();
+      this.mColoramaFilter.onOutputSizeChanged(this.mWidth, this.mHeight);
     }
-    this.mRenderFBO = new RenderBuffer(paramInt1, paramInt2, 33984);
-    if (this.mColoramaFilter != null)
-    {
-      this.mColoramaFilter.onOutputSizeChanged(paramInt1, paramInt2);
-      return;
-    }
-    this.mColoramaFilter = new ColoramaFilter();
-    this.mColoramaFilter.init();
-    this.mColoramaFilter.onOutputSizeChanged(this.mWidth, this.mHeight);
   }
   
   public void onSurfaceDestroy()
   {
     super.onSurfaceDestroy();
     this.mShapeRender.onSurfaceDestroy();
-    if (this.mRenderFBO != null)
+    Object localObject = this.mRenderFBO;
+    if (localObject != null)
     {
-      releaseRenderBuffer(this.mRenderFBO);
+      releaseRenderBuffer((RenderBuffer)localObject);
       this.mRenderFBO = null;
     }
-    if (this.mColoramaFilter != null)
+    localObject = this.mColoramaFilter;
+    if (localObject != null)
     {
-      this.mColoramaFilter.destroy();
+      ((ColoramaFilter)localObject).destroy();
       this.mColoramaFilter = null;
     }
     this.mShapePoints = null;
@@ -62,36 +69,39 @@ public class MTV1VideoLayerRender
       i = paramInt;
       if (this.mColoramaFilter != null)
       {
+        Object localObject = this.mRenderFBO;
         i = paramInt;
-        if (this.mRenderFBO != null)
+        if (localObject != null)
         {
-          clearColorBuffer(this.mRenderFBO, 0);
-          RectF localRectF = getMaterialArea(this.mPaletteID);
+          clearColorBuffer((RenderBuffer)localObject, 0);
+          localObject = getMaterialArea(this.mPaletteID);
           i = paramInt;
-          if (localRectF != null)
+          if (localObject != null)
           {
             this.mRenderFBO.bind();
-            this.mColoramaFilter.process(paramInt, getMaterialTextureID(), localRectF, localRectF.left, localRectF.width(), 1.0F, paramArrayOfFloat1, paramArrayOfFloat2);
+            this.mColoramaFilter.process(paramInt, getMaterialTextureID(), (RectF)localObject, ((RectF)localObject).left, ((RectF)localObject).width(), 1.0F, paramArrayOfFloat1, paramArrayOfFloat2);
             this.mRenderFBO.unbind();
             i = this.mRenderFBO.getTexId();
           }
         }
       }
     }
-    if ((this.mShapePoints != null) && (this.mShapePoints.length > 2)) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      int j = i;
-      if (paramInt != 0)
-      {
-        this.mShapeRender.setShapeData(1, this.mShapePoints);
-        this.mShapeRender.begin();
-        j = this.mShapeRender.shape(paramRenderBuffer, i);
-        this.mShapeRender.end();
-        this.mShapeRender.setShapeData(0, null);
-      }
-      return j;
+    paramArrayOfFloat1 = this.mShapePoints;
+    if ((paramArrayOfFloat1 != null) && (paramArrayOfFloat1.length > 2)) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
     }
+    if (paramInt != 0)
+    {
+      this.mShapeRender.setShapeData(1, this.mShapePoints);
+      this.mShapeRender.begin();
+      paramInt = this.mShapeRender.shape(paramRenderBuffer, i);
+      this.mShapeRender.end();
+      this.mShapeRender.setShapeData(0, null);
+      return paramInt;
+    }
+    return i;
   }
   
   public void updateData(float[] paramArrayOfFloat, int paramInt)
@@ -102,7 +112,7 @@ public class MTV1VideoLayerRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.MTV1VideoLayerRender
  * JD-Core Version:    0.7.0.1
  */

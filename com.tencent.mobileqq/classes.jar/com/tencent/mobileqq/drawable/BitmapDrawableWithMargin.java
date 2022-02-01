@@ -23,32 +23,37 @@ public class BitmapDrawableWithMargin
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
-    this.jdField_a_of_type_Float = (12.0F * (paramResources.getDisplayMetrics().densityDpi / 160.0F));
+    this.jdField_a_of_type_Float = (paramResources.getDisplayMetrics().densityDpi / 160.0F * 12.0F);
     super.setGravity(17);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.c >>> 24 != 0)
+    int i = this.c;
+    if (i >>> 24 != 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-      paramCanvas.drawRoundRect(new RectF(getBounds()), this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
+      RectF localRectF = new RectF(getBounds());
+      float f = this.jdField_a_of_type_Float;
+      paramCanvas.drawRoundRect(localRectF, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     super.draw(paramCanvas);
   }
   
   public int getIntrinsicHeight()
   {
-    if (this.b > 0) {
-      return this.b;
+    int i = this.b;
+    if (i > 0) {
+      return i;
     }
     return super.getIntrinsicHeight();
   }
   
   public int getIntrinsicWidth()
   {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.jdField_a_of_type_Int;
+    int i = this.jdField_a_of_type_Int;
+    if (i > 0) {
+      return i;
     }
     return super.getIntrinsicWidth();
   }
@@ -63,13 +68,13 @@ public class BitmapDrawableWithMargin
   
   public void setTargetDensity(int paramInt)
   {
-    this.jdField_a_of_type_Float = (12.0F * (paramInt / 160.0F));
+    this.jdField_a_of_type_Float = (paramInt / 160.0F * 12.0F);
     super.setTargetDensity(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.drawable.BitmapDrawableWithMargin
  * JD-Core Version:    0.7.0.1
  */

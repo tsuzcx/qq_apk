@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector android:exitFadeDuration="@android:integer/config_mediumAnimTime"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/f3x" />
-    <item android:state_pressed="false" android:drawable="@drawable/f3w" />
-</selector>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#00000000" />
+            <corners android:radius="8.0dip" />
+        </shape>
+    </item>
+</layer-list>

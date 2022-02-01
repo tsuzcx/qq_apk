@@ -17,25 +17,27 @@ class TroopNickAdapter$2
     }
     synchronized (TroopNickAdapter.a(this.this$0))
     {
-      String[] arrayOfString1 = this.this$0.a(this.jdField_a_of_type_JavaLangString);
-      if ((arrayOfString1 == null) || (arrayOfString1.length == 0) || (TroopNickAdapter.a(this.this$0) == null)) {
+      String[] arrayOfString = this.this$0.a(this.jdField_a_of_type_JavaLangString);
+      if ((arrayOfString != null) && (arrayOfString.length != 0) && (TroopNickAdapter.a(this.this$0) != null))
+      {
+        Message localMessage = TroopNickAdapter.a(this.this$0).a().obtainMessage();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("type", 1);
+        localBundle.putStringArray("pngs", arrayOfString);
+        localBundle.putInt("interval", this.jdField_a_of_type_Int);
+        localBundle.putInt("repeatTimes", this.b);
+        localMessage.setData(localBundle);
+        localMessage.what = 10001;
+        TroopNickAdapter.a(this.this$0).a().sendMessage(localMessage);
         return;
       }
+      return;
     }
-    Message localMessage = TroopNickAdapter.a(this.this$0).a().obtainMessage();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 1);
-    localBundle.putStringArray("pngs", arrayOfString2);
-    localBundle.putInt("interval", this.jdField_a_of_type_Int);
-    localBundle.putInt("repeatTimes", this.b);
-    localMessage.setData(localBundle);
-    localMessage.what = 10001;
-    TroopNickAdapter.a(this.this$0).a().sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickAdapter.2
  * JD-Core Version:    0.7.0.1
  */

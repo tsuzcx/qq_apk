@@ -14,9 +14,18 @@ class StoryBoss$StoryQueueExecutor$1
   public void onPostRun()
   {
     StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor).decrementAndGet();
-    SLog.b(StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor), "threshold after running current task is " + StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor).get());
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      SLog.b(StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
+    String str = StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("threshold after running current task is ");
+    localStringBuilder.append(StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor).get());
+    SLog.b(str, localStringBuilder.toString());
+    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    {
+      str = StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("threshold after running current task is:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangRunnable.hashCode());
+      SLog.b(str, localStringBuilder.toString());
     }
   }
   
@@ -24,14 +33,19 @@ class StoryBoss$StoryQueueExecutor$1
   {
     StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor).incrementAndGet();
     SLog.a(StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      SLog.b(StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
+    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    {
+      String str = StoryBoss.StoryQueueExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryBoss$StoryQueueExecutor);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("execute hashcode:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangRunnable.hashCode());
+      SLog.b(str, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.StoryBoss.StoryQueueExecutor.1
  * JD-Core Version:    0.7.0.1
  */

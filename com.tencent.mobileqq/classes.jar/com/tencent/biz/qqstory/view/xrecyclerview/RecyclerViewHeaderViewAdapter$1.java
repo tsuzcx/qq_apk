@@ -18,7 +18,8 @@ class RecyclerViewHeaderViewAdapter$1
   
   public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    this.a.notifyItemRangeChanged(RecyclerViewHeaderViewAdapter.a(this.a).size() + paramInt1, paramInt2);
+    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = this.a;
+    localRecyclerViewHeaderViewAdapter.notifyItemRangeChanged(paramInt1 + RecyclerViewHeaderViewAdapter.a(localRecyclerViewHeaderViewAdapter).size(), paramInt2);
     if (RecyclerViewHeaderViewAdapter.a(this.a) != null) {
       RecyclerViewHeaderViewAdapter.a(this.a).a(RecyclerViewHeaderViewAdapter.a(this.a));
     }
@@ -26,7 +27,8 @@ class RecyclerViewHeaderViewAdapter$1
   
   public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    this.a.notifyItemRangeInserted(RecyclerViewHeaderViewAdapter.a(this.a).size() + paramInt1, paramInt2);
+    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = this.a;
+    localRecyclerViewHeaderViewAdapter.notifyItemRangeInserted(paramInt1 + RecyclerViewHeaderViewAdapter.a(localRecyclerViewHeaderViewAdapter).size(), paramInt2);
     if (RecyclerViewHeaderViewAdapter.a(this.a) != null) {
       RecyclerViewHeaderViewAdapter.a(this.a).a(RecyclerViewHeaderViewAdapter.a(this.a));
     }
@@ -34,7 +36,8 @@ class RecyclerViewHeaderViewAdapter$1
   
   public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.notifyItemMoved(RecyclerViewHeaderViewAdapter.a(this.a).size() + paramInt1, RecyclerViewHeaderViewAdapter.a(this.a).size() + paramInt2);
+    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = this.a;
+    localRecyclerViewHeaderViewAdapter.notifyItemMoved(paramInt1 + RecyclerViewHeaderViewAdapter.a(localRecyclerViewHeaderViewAdapter).size(), paramInt2 + RecyclerViewHeaderViewAdapter.a(this.a).size());
     if (RecyclerViewHeaderViewAdapter.a(this.a) != null) {
       RecyclerViewHeaderViewAdapter.a(this.a).a(RecyclerViewHeaderViewAdapter.a(this.a));
     }
@@ -42,7 +45,8 @@ class RecyclerViewHeaderViewAdapter$1
   
   public void onItemRangeRemoved(int paramInt1, int paramInt2)
   {
-    this.a.notifyItemRangeRemoved(RecyclerViewHeaderViewAdapter.a(this.a).size() + paramInt1, paramInt2);
+    RecyclerViewHeaderViewAdapter localRecyclerViewHeaderViewAdapter = this.a;
+    localRecyclerViewHeaderViewAdapter.notifyItemRangeRemoved(paramInt1 + RecyclerViewHeaderViewAdapter.a(localRecyclerViewHeaderViewAdapter).size(), paramInt2);
     if (RecyclerViewHeaderViewAdapter.a(this.a) != null) {
       RecyclerViewHeaderViewAdapter.a(this.a).a(RecyclerViewHeaderViewAdapter.a(this.a));
     }
@@ -50,7 +54,7 @@ class RecyclerViewHeaderViewAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewHeaderViewAdapter.1
  * JD-Core Version:    0.7.0.1
  */

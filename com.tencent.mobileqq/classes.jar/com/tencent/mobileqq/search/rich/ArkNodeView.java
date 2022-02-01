@@ -28,9 +28,9 @@ public class ArkNodeView
   
   public View a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561577, null, false);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561418, null, false);
     this.jdField_a_of_type_AndroidViewView = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = ((ArkAppView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363013));
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = ((ArkAppView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362961));
     this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
     ((ArkAppRootLayout)paramContext).setDisableParentReturn(false);
     return this.jdField_a_of_type_AndroidViewView;
@@ -40,32 +40,39 @@ public class ArkNodeView
   {
     this.b = false;
     a(1);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(0);
     }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localObject != null) {
+      ((LinearLayout)localObject).setVisibility(8);
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    IArkNodeViewEvent localIArkNodeViewEvent;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
       return;
-      localIArkNodeViewEvent = (IArkNodeViewEvent)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localIArkNodeViewEvent == null);
-    localIArkNodeViewEvent.a(paramInt);
+    }
+    localObject = (IArkNodeViewEvent)((WeakReference)localObject).get();
+    if (localObject == null) {
+      return;
+    }
+    ((IArkNodeViewEvent)localObject).a(paramInt);
   }
   
   public void a(ArkNodeContainer paramArkNodeContainer)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView == null) || (paramArkNodeContainer == null)) {
-      return;
+    ArkAppView localArkAppView = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
+    if (localArkAppView != null)
+    {
+      if (paramArkNodeContainer == null) {
+        return;
+      }
+      localArkAppView.a(paramArkNodeContainer, this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView.a(paramArkNodeContainer, this);
   }
   
   public void a(IArkNodeViewEvent paramIArkNodeViewEvent)
@@ -77,46 +84,42 @@ public class ArkNodeView
   {
     this.b = true;
     a(1);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {}
-    TextView localTextView;
-    label124:
-    do
-    {
+    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localObject == null) {
       return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkNodeView", 2, "onLoadFailed, show no result");
-        }
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        a(false);
-        return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkNodeView", 2, "onLoadFailed, show no result");
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      if (!paramBoolean) {
-        break;
-      }
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      a(false);
+      return;
+    }
+    ((LinearLayout)localObject).setVisibility(0);
+    if (paramBoolean) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ArkNodeView.1(this));
-      localTextView = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376858);
-      if (localTextView != null)
-      {
-        if (paramString != null) {
-          break label169;
-        }
-        localTextView.setText(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext().getResources().getString(2131690251));
-      }
-      paramString = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376851);
-    } while (paramString == null);
-    if (paramBoolean) {}
-    for (paramInt = 2130838791;; paramInt = 2130838783)
-    {
-      paramString.setBackgroundDrawable(paramString.getResources().getDrawable(paramInt));
-      return;
+    } else {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
-      break;
-      label169:
-      localTextView.setText(paramString);
-      break label124;
+    }
+    localObject = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376349);
+    if (localObject != null) {
+      if (paramString == null) {
+        ((TextView)localObject).setText(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext().getResources().getString(2131690168));
+      } else {
+        ((TextView)localObject).setText(paramString);
+      }
+    }
+    paramString = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376342);
+    if (paramString != null)
+    {
+      if (paramBoolean) {
+        paramInt = 2130838629;
+      } else {
+        paramInt = 2130838628;
+      }
+      paramString.setBackgroundDrawable(paramString.getResources().getDrawable(paramInt));
     }
   }
   
@@ -144,8 +147,9 @@ public class ArkNodeView
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localLinearLayout != null) {
+      localLinearLayout.setVisibility(0);
     }
   }
   
@@ -154,9 +158,10 @@ public class ArkNodeView
   public void d()
   {
     this.jdField_a_of_type_AndroidViewView = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView != null)
+    ArkAppView localArkAppView = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
+    if (localArkAppView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView.a();
+      localArkAppView.a();
       this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = null;
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
@@ -167,7 +172,7 @@ public class ArkNodeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkNodeView
  * JD-Core Version:    0.7.0.1
  */

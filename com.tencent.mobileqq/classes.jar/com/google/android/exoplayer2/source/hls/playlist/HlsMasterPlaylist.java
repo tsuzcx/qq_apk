@@ -21,12 +21,12 @@ public final class HlsMasterPlaylist
     this.audios = Collections.unmodifiableList(paramList2);
     this.subtitles = Collections.unmodifiableList(paramList3);
     this.muxedAudioFormat = paramFormat;
-    if (paramList4 != null) {}
-    for (paramString = Collections.unmodifiableList(paramList4);; paramString = null)
-    {
-      this.muxedCaptionFormats = paramString;
-      return;
+    if (paramList4 != null) {
+      paramString = Collections.unmodifiableList(paramList4);
+    } else {
+      paramString = null;
     }
+    this.muxedCaptionFormats = paramString;
   }
   
   private static List<HlsMasterPlaylist.HlsUrl> copyRenditionsList(List<HlsMasterPlaylist.HlsUrl> paramList, List<String> paramList1)
@@ -58,7 +58,7 @@ public final class HlsMasterPlaylist
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.playlist.HlsMasterPlaylist
  * JD-Core Version:    0.7.0.1
  */

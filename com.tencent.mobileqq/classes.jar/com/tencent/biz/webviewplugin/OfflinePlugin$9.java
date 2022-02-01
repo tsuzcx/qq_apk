@@ -2,7 +2,6 @@ package com.tencent.biz.webviewplugin;
 
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
 import java.util.HashMap;
 
 class OfflinePlugin$9
@@ -30,7 +29,7 @@ class OfflinePlugin$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.9
  * JD-Core Version:    0.7.0.1
  */

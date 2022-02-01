@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/g54" />
-    <item android:state_selected="false" android:drawable="@drawable/g4z" />
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ff00cafc" />
+            <corners android:radius="5.0dip" />
+        </shape>
+    </item>
 </selector>

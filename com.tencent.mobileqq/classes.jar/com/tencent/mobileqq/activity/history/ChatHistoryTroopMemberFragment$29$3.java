@@ -20,7 +20,7 @@ class ChatHistoryTroopMemberFragment$29$3
     }
     this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131369487));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131369202));
     this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
     this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
     if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ListAdapter != null) {
@@ -31,7 +31,7 @@ class ChatHistoryTroopMemberFragment$29$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.3
  * JD-Core Version:    0.7.0.1
  */

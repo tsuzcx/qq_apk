@@ -14,17 +14,19 @@ class AIOGalleryScene$28
     localAIOGalleryScene.h += this.this$0.i;
     if (this.this$0.h > 99)
     {
-      this.this$0.h = 99;
-      this.this$0.d(this.this$0.h);
+      localAIOGalleryScene = this.this$0;
+      localAIOGalleryScene.h = 99;
+      localAIOGalleryScene.b(localAIOGalleryScene.h);
       return;
     }
-    this.this$0.d(this.this$0.h);
+    localAIOGalleryScene = this.this$0;
+    localAIOGalleryScene.b(localAIOGalleryScene.h);
     this.this$0.A();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.28
  * JD-Core Version:    0.7.0.1
  */

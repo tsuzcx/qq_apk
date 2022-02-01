@@ -22,7 +22,7 @@ public class ScaleFilter
     super.onDestroy();
   }
   
-  public void onInitialized()
+  protected void onInitialized()
   {
     super.onInitialized();
     int i = getProgram();
@@ -37,23 +37,29 @@ public class ScaleFilter
   
   public boolean process(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if ((paramInt < 0) || (paramFloat3 == 1.0F)) {}
-    while (!processBegin(paramArrayOfFloat1, paramArrayOfFloat2)) {
-      return false;
+    if (paramInt >= 0)
+    {
+      if (paramFloat3 == 1.0F) {
+        return false;
+      }
+      if (!processBegin(paramArrayOfFloat1, paramArrayOfFloat2)) {
+        return false;
+      }
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(this.mTextureType, paramInt);
+      GLES20.glUniform1i(this.mUniInputTexture, 0);
+      GLES20.glUniform2f(this.mUniInputTextureSize, this.mOutputWidth, this.mOutputHeight);
+      GLES20.glUniform2f(this.mUniScaleCenter, paramFloat1, paramFloat2);
+      GLES20.glUniform1f(this.mUniScaleRate, paramFloat3);
+      processEnd(false, new int[] { 33984 });
+      return true;
     }
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(this.mTextureType, paramInt);
-    GLES20.glUniform1i(this.mUniInputTexture, 0);
-    GLES20.glUniform2f(this.mUniInputTextureSize, this.mOutputWidth, this.mOutputHeight);
-    GLES20.glUniform2f(this.mUniScaleCenter, paramFloat1, paramFloat2);
-    GLES20.glUniform1f(this.mUniScaleRate, paramFloat3);
-    processEnd(false, new int[] { 33984 });
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.ScaleFilter
  * JD-Core Version:    0.7.0.1
  */

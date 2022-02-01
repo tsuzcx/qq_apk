@@ -18,53 +18,58 @@ final class QQFriendJsPlugin$1
   {
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      i = paramJSONObject.optInt("authState", -1);
+      int i = paramJSONObject.optInt("authState", -1);
       paramJSONObject = paramJSONObject.optString("settingItem", "");
-      if ((i != 1) || (!"setting.addFriend".equals(paramJSONObject))) {}
-    }
-    while (this.val$addFriendCallBack == null)
-    {
-      do
+      if ((i == 1) && ("setting.addFriend".equals(paramJSONObject)))
       {
         try
         {
-          int i;
           paramJSONObject = new Bundle();
           paramJSONObject.putString("openId", this.val$openId);
           paramJSONObject.putString("appId", this.val$appId);
           if (!this.val$channelProxy.startAddFriendActivity(this.val$context, this.val$appId, this.val$openId))
           {
-            MiniToast.makeText(this.val$context, 0, "暂不支持在" + QUAUtil.getApplicationName(this.val$context) + "中添加好友", 1);
+            paramJSONObject = this.val$context;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("暂不支持在");
+            localStringBuilder.append(QUAUtil.getApplicationName(this.val$context));
+            localStringBuilder.append("中添加好友");
+            MiniToast.makeText(paramJSONObject, 0, localStringBuilder.toString(), 1);
             if (this.val$addFriendCallBack != null)
             {
               QMLog.e("QQFriendJsPlugin", "app not implement");
               this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "app not implement");
             }
           }
-          if (this.val$addFriendCallBack != null) {
-            this.val$addFriendCallBack.onAddFriendCallBack("addFriend", true, null);
-          }
-          return;
         }
         catch (NumberFormatException paramJSONObject)
         {
-          for (;;)
-          {
-            QMLog.d("QQFriendJsPlugin", " doAddFriend() exception e = " + paramJSONObject);
-          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" doAddFriend() exception e = ");
+          localStringBuilder.append(paramJSONObject);
+          QMLog.d("QQFriendJsPlugin", localStringBuilder.toString());
         }
-      } while (this.val$addFriendCallBack == null);
-      QMLog.e("QQFriendJsPlugin", "getSettingByOpenId failed");
-      this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "auth deny");
-      return;
+        paramJSONObject = this.val$addFriendCallBack;
+        if (paramJSONObject != null) {
+          paramJSONObject.onAddFriendCallBack("addFriend", true, null);
+        }
+      }
+      else if (this.val$addFriendCallBack != null)
+      {
+        QMLog.e("QQFriendJsPlugin", "getSettingByOpenId failed");
+        this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "auth deny");
+      }
     }
-    QMLog.e("QQFriendJsPlugin", "getUserSetting failed");
-    this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "network err");
+    else if (this.val$addFriendCallBack != null)
+    {
+      QMLog.e("QQFriendJsPlugin", "getUserSetting failed");
+      this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "network err");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.QQFriendJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -40,10 +40,13 @@ public class FilePreviewDataReporter
   private HashMap<String, String> a()
   {
     HashMap localHashMap = new HashMap();
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
       this.jdField_d_of_type_JavaLangString = String.valueOf(9004);
-      this.h += "_NotNetWork";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.h);
+      localStringBuilder.append("_NotNetWork");
+      this.h = localStringBuilder.toString();
     }
     localHashMap.put("param_serverip", String.valueOf(this.jdField_b_of_type_JavaLangString));
     localHashMap.put("param_uuid", String.valueOf(this.jdField_c_of_type_JavaLangString));
@@ -68,25 +71,49 @@ public class FilePreviewDataReporter
     HashMap localHashMap = a();
     if (QLog.isDevelopLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("doReport:bSuccess[" + this.jdField_a_of_type_Boolean + "],");
-      localStringBuilder.append("strReportUin[" + this.l + "],");
-      localStringBuilder.append("startTime[" + this.jdField_e_of_type_Long + "],");
-      localStringBuilder.append("endTime[" + this.jdField_f_of_type_Long + "],");
-      Iterator localIterator = localHashMap.keySet().iterator();
-      while (localIterator.hasNext())
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doReport:bSuccess[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append("],");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("strReportUin[");
+      ((StringBuilder)localObject).append(this.l);
+      ((StringBuilder)localObject).append("],");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startTime[");
+      ((StringBuilder)localObject).append(this.jdField_e_of_type_Long);
+      ((StringBuilder)localObject).append("],");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("endTime[");
+      ((StringBuilder)localObject).append(this.jdField_f_of_type_Long);
+      ((StringBuilder)localObject).append("],");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
+      localObject = localHashMap.keySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        String str = (String)localIterator.next();
-        localStringBuilder.append(str + "[" + (String)localHashMap.get(str) + "]");
+        String str = (String)((Iterator)localObject).next();
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(str);
+        localStringBuilder2.append("[");
+        localStringBuilder2.append((String)localHashMap.get(str));
+        localStringBuilder2.append("]");
+        localStringBuilder1.append(localStringBuilder2.toString());
       }
-      QLog.i("FilePreviewDataReporter<FileAssistant>", 4, "doReport:" + localStringBuilder.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doReport:");
+      ((StringBuilder)localObject).append(localStringBuilder1.toString());
+      QLog.i("FilePreviewDataReporter<FileAssistant>", 4, ((StringBuilder)localObject).toString());
     }
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.l, "actFilePreview", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FilePreviewDataReporter
  * JD-Core Version:    0.7.0.1
  */

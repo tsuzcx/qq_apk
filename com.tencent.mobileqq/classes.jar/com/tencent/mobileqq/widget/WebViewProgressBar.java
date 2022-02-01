@@ -44,45 +44,47 @@ public class WebViewProgressBar
   public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int j;
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a() != 6))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController;
+    if ((localObject != null) && (((WebViewProgressBarController)localObject).a() != 6))
     {
-      if ((this.c == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        break label164;
-      }
-      j = (int)this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a();
-      if (j >= this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()) {
-        break label324;
-      }
-      i = j - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-      j = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-    }
-    for (;;)
-    {
-      if (i + j > 0)
+      int i;
+      if ((this.c != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
       {
-        this.c.setBounds(0, 0, getWidth(), getHeight());
-        this.c.draw(paramCanvas);
-        if (this.b != null)
+        j = (int)this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a();
+        if (j < this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth())
         {
-          this.b.setBounds(0, 0, getWidth(), getHeight());
-          this.b.draw(paramCanvas);
+          i = j - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+          j = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
         }
+        else
+        {
+          i = 0;
+        }
+        j += i;
+        if (j > 0)
+        {
+          this.c.setBounds(0, 0, getWidth(), getHeight());
+          this.c.draw(paramCanvas);
+          localObject = this.b;
+          if (localObject != null)
+          {
+            ((Drawable)localObject).setBounds(0, 0, getWidth(), getHeight());
+            this.b.draw(paramCanvas);
+          }
+        }
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, 0, j, getHeight());
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        return;
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, 0, j + i, getHeight());
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      return;
-      label164:
       if (this.b == null) {
-        this.b = getContext().getResources().getDrawable(2130850484);
+        this.b = getContext().getResources().getDrawable(2130850411);
       }
       this.b.setBounds(0, 0, getWidth(), getHeight());
       this.b.draw(paramCanvas);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130850485);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130850412);
       }
-      j = (int)this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a();
+      int j = (int)this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a();
       if (this.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a());
       }
@@ -91,38 +93,38 @@ public class WebViewProgressBar
         i = j - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
         j = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
       }
-      for (;;)
+      else
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, 0, j + i, getHeight());
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-        return;
         i = 0;
       }
-      label324:
-      i = 0;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, 0, j + i, getHeight());
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a(getWidth());
+    WebViewProgressBarController localWebViewProgressBarController = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController;
+    if (localWebViewProgressBarController != null) {
+      localWebViewProgressBarController.a(getWidth());
     }
   }
   
   public void setController(WebViewProgressBarController paramWebViewProgressBarController)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController == paramWebViewProgressBarController) {
+    WebViewProgressBarController localWebViewProgressBarController = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController;
+    if (localWebViewProgressBarController == paramWebViewProgressBarController) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a(null);
+    if (localWebViewProgressBarController != null) {
+      localWebViewProgressBarController.a(null);
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController = paramWebViewProgressBarController;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController != null)
+    paramWebViewProgressBarController = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController;
+    if (paramWebViewProgressBarController != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a(this);
+      paramWebViewProgressBarController.a(this);
       this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a(getWidth());
     }
     invalidate();
@@ -130,18 +132,23 @@ public class WebViewProgressBar
   
   public void setCustomColor(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewProgressBar", 2, "setCustomColor color=" + Integer.toHexString(paramInt));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setCustomColor color=");
+      localStringBuilder.append(Integer.toHexString(paramInt));
+      QLog.d("WebViewProgressBar", 2, localStringBuilder.toString());
     }
     this.c = new ColorDrawable(-1);
-    this.b = new ColorDrawable(paramInt & 0x7FFFFFFF);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramInt & 0x7FFFFFFF);
+    paramInt &= 0x7FFFFFFF;
+    this.b = new ColorDrawable(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(paramInt);
     this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WebViewProgressBar
  * JD-Core Version:    0.7.0.1
  */

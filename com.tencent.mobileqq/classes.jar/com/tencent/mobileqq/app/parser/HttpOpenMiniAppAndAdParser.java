@@ -1,23 +1,25 @@
 package com.tencent.mobileqq.app.parser;
 
 import android.content.Context;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpAction;
 
 public class HttpOpenMiniAppAndAdParser
   extends JumpParserBase
 {
-  public JumpActionBase a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
+  public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
-    paramQQAppInterface = new HttpOpenMiniAppAndAdAction(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "miniapp";
-    paramQQAppInterface.c = "open";
-    return paramQQAppInterface;
+    paramBaseQQAppInterface = new HttpOpenMiniAppAndAdAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
+    paramBaseQQAppInterface.a = paramString;
+    paramBaseQQAppInterface.b = "miniapp";
+    paramBaseQQAppInterface.c = "open";
+    return paramBaseQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.HttpOpenMiniAppAndAdParser
  * JD-Core Version:    0.7.0.1
  */

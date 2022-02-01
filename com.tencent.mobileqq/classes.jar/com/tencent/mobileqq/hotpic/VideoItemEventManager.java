@@ -24,15 +24,16 @@ public class VideoItemEventManager
   
   public static VideoItemEventManager a(Context paramContext)
   {
-    if (jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager == null) {
-        jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager = new VideoItemEventManager(paramContext);
+    if (jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager == null) {
+          jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager = new VideoItemEventManager(paramContext);
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager;
   }
   
   public void a(VideoItemEventManager.onVideoItemEventListener paramonVideoItemEventListener)
@@ -67,11 +68,15 @@ public class VideoItemEventManager
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    boolean bool = false;
+    if (localArrayList == null) {
       return false;
     }
-    return true;
+    if (localArrayList.size() > 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void b(VideoItemEventManager.onVideoItemEventListener paramonVideoItemEventListener)
@@ -83,7 +88,7 @@ public class VideoItemEventManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoItemEventManager
  * JD-Core Version:    0.7.0.1
  */

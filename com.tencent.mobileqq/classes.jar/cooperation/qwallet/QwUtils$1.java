@@ -15,8 +15,9 @@ final class QwUtils$1
     if (QLog.isColorLevel()) {
       QLog.i("QWalletUtils", 2, "get pskey async success!");
     }
-    if (this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener != null) {
-      this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener.a(0, new String[] { QwUtils.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
+    QwUtils.AnsyListener localAnsyListener = this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener;
+    if (localAnsyListener != null) {
+      localAnsyListener.a(0, new String[] { QwUtils.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
     }
   }
   
@@ -25,8 +26,9 @@ final class QwUtils$1
     if (QLog.isColorLevel()) {
       QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
     }
-    if (this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener != null) {
-      this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener.a(-1, new String[] { paramErrMsg.getMessage() });
+    QwUtils.AnsyListener localAnsyListener = this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener;
+    if (localAnsyListener != null) {
+      localAnsyListener.a(-1, new String[] { paramErrMsg.getMessage() });
     }
   }
   
@@ -35,14 +37,15 @@ final class QwUtils$1
     if (QLog.isColorLevel()) {
       QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
     }
-    if (this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener != null) {
-      this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener.a(-1, new String[] { paramErrMsg.getMessage() });
+    QwUtils.AnsyListener localAnsyListener = this.jdField_a_of_type_CooperationQwalletQwUtils$AnsyListener;
+    if (localAnsyListener != null) {
+      localAnsyListener.a(-1, new String[] { paramErrMsg.getMessage() });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     cooperation.qwallet.QwUtils.1
  * JD-Core Version:    0.7.0.1
  */

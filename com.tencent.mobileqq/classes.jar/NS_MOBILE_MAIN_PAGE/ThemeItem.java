@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ThemeItem
   extends JceStruct
@@ -69,45 +70,55 @@ public final class ThemeItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strThemeId != null) {
-      paramJceOutputStream.write(this.strThemeId, 0);
+    Object localObject = this.strThemeId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.strThemeName != null) {
-      paramJceOutputStream.write(this.strThemeName, 1);
+    localObject = this.strThemeName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.strMd5 != null) {
-      paramJceOutputStream.write(this.strMd5, 2);
+    localObject = this.strMd5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.strVer != null) {
-      paramJceOutputStream.write(this.strVer, 3);
+    localObject = this.strVer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.uIsVip, 4);
     paramJceOutputStream.write(this.uIsFree, 5);
     paramJceOutputStream.write(this.uSize, 6);
-    if (this.vecPreUrls != null) {
-      paramJceOutputStream.write(this.vecPreUrls, 7);
+    localObject = this.vecPreUrls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
-    if (this.strPackageUrl != null) {
-      paramJceOutputStream.write(this.strPackageUrl, 8);
+    localObject = this.strPackageUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.strThumbUrl != null) {
-      paramJceOutputStream.write(this.strThumbUrl, 9);
+    localObject = this.strThumbUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.strSubThumbUrl != null) {
-      paramJceOutputStream.write(this.strSubThumbUrl, 10);
+    localObject = this.strSubThumbUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.uIsNew, 11);
-    if (this.strH5 != null) {
-      paramJceOutputStream.write(this.strH5, 12);
+    localObject = this.strH5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.strDescription != null) {
-      paramJceOutputStream.write(this.strDescription, 13);
+    localObject = this.strDescription;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.ThemeItem
  * JD-Core Version:    0.7.0.1
  */

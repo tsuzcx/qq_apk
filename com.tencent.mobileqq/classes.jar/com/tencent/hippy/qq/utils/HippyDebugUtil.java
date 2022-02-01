@@ -4,27 +4,27 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.hippy.qq.api.IHippyLibrary;
+import com.tencent.hippy.qq.api.OpenHippyInfo;
 import com.tencent.hippy.qq.app.HippyQQEngine;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 import org.json.JSONArray;
 
 public class HippyDebugUtil
 {
   public static final int DEBUG_VERSION = 2147483646;
   public static String KEY_ENV_SWITCH = "envSwitch";
-  public static String KEY_HIPPY_DEBUG;
+  public static String KEY_HIPPY_DEBUG = "key_extra_hippy_debug";
   public static String KEY_HIPPY_EXTRA_BUNDLE_NAME = "key_extra_bundle_name";
   public static String KEY_HIPPY_SERVER_HOST = "key_extra_serve_host";
   
-  static
-  {
-    KEY_HIPPY_DEBUG = "key_extra_hippy_debug";
-  }
-  
   public static boolean deleteModule(String paramString, int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
+    TextUtils.isEmpty(paramString);
     return false;
   }
   
@@ -46,7 +46,7 @@ public class HippyDebugUtil
   
   private static SharedPreferences.Editor getEditor()
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences(KEY_ENV_SWITCH, 4).edit();
+    return MobileQQ.getContext().getSharedPreferences(KEY_ENV_SWITCH, 4).edit();
   }
   
   public static String getHippyBundleName()
@@ -64,6 +64,11 @@ public class HippyDebugUtil
     return "localhost:38989";
   }
   
+  public static HashMap<String, String> getLibraryVersions()
+  {
+    return ((IHippyLibrary)QRoute.api(IHippyLibrary.class)).getLibraryVersions();
+  }
+  
   public static JSONArray getModuleInfo(String paramString)
   {
     return new JSONArray();
@@ -74,7 +79,7 @@ public class HippyDebugUtil
     HippyMap localHippyMap = new HippyMap();
     localHippyMap.pushString("bundleName", "DebugTool");
     localHippyMap.pushString("url", "qb://hippy?debug&framework=react");
-    new HippyAccessHelper.OpenHippyInfo(localHippyMap).openHippy(paramContext);
+    new OpenHippyInfo(localHippyMap).openHippy(paramContext);
   }
   
   public static boolean isHippyDebug()
@@ -84,7 +89,7 @@ public class HippyDebugUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.utils.HippyDebugUtil
  * JD-Core Version:    0.7.0.1
  */

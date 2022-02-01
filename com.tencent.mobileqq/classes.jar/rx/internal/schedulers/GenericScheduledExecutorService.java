@@ -46,74 +46,72 @@ public final class GenericScheduledExecutorService
   
   public void shutdown()
   {
-    ScheduledExecutorService[] arrayOfScheduledExecutorService = (ScheduledExecutorService[])this.executor.get();
-    if (arrayOfScheduledExecutorService == NONE) {}
-    for (;;)
+    ScheduledExecutorService[] arrayOfScheduledExecutorService;
+    Object localObject;
+    do
     {
-      return;
-      if (!this.executor.compareAndSet(arrayOfScheduledExecutorService, NONE)) {
-        break;
+      arrayOfScheduledExecutorService = (ScheduledExecutorService[])this.executor.get();
+      localObject = NONE;
+      if (arrayOfScheduledExecutorService == localObject) {
+        return;
       }
-      int j = arrayOfScheduledExecutorService.length;
-      int i = 0;
-      while (i < j)
-      {
-        ScheduledExecutorService localScheduledExecutorService = arrayOfScheduledExecutorService[i];
-        NewThreadWorker.deregisterExecutor(localScheduledExecutorService);
-        localScheduledExecutorService.shutdownNow();
-        i += 1;
-      }
+    } while (!this.executor.compareAndSet(arrayOfScheduledExecutorService, localObject));
+    int j = arrayOfScheduledExecutorService.length;
+    int i = 0;
+    while (i < j)
+    {
+      localObject = arrayOfScheduledExecutorService[i];
+      NewThreadWorker.deregisterExecutor((ScheduledExecutorService)localObject);
+      ((ScheduledExecutorService)localObject).shutdownNow();
+      i += 1;
     }
   }
   
   public void start()
   {
-    int j = 8;
-    int k = 0;
-    int m = Runtime.getRuntime().availableProcessors();
-    int i = m;
-    if (m > 4) {
-      i = m / 2;
+    int j = Runtime.getRuntime().availableProcessors();
+    int i = j;
+    if (j > 4) {
+      i = j / 2;
     }
+    j = i;
     if (i > 8) {
-      i = j;
+      j = 8;
     }
-    for (;;)
+    ScheduledExecutorService[] arrayOfScheduledExecutorService = new ScheduledExecutorService[j];
+    int m = 0;
+    int k = 0;
+    i = 0;
+    while (i < j)
     {
-      ScheduledExecutorService[] arrayOfScheduledExecutorService = new ScheduledExecutorService[i];
-      j = 0;
-      while (j < i)
-      {
-        arrayOfScheduledExecutorService[j] = Executors.newScheduledThreadPool(1, THREAD_FACTORY);
-        j += 1;
-      }
-      if (this.executor.compareAndSet(NONE, arrayOfScheduledExecutorService))
-      {
-        j = arrayOfScheduledExecutorService.length;
-        i = k;
-        while (i < j)
-        {
-          ScheduledExecutorService localScheduledExecutorService = arrayOfScheduledExecutorService[i];
-          if ((!NewThreadWorker.tryEnableCancelPolicy(localScheduledExecutorService)) && ((localScheduledExecutorService instanceof ScheduledThreadPoolExecutor))) {
-            NewThreadWorker.registerExecutor((ScheduledThreadPoolExecutor)localScheduledExecutorService);
-          }
-          i += 1;
-        }
-      }
+      arrayOfScheduledExecutorService[i] = Executors.newScheduledThreadPool(1, THREAD_FACTORY);
+      i += 1;
+    }
+    if (this.executor.compareAndSet(NONE, arrayOfScheduledExecutorService))
+    {
       j = arrayOfScheduledExecutorService.length;
-      i = 0;
+      i = k;
       while (i < j)
       {
-        arrayOfScheduledExecutorService[i].shutdownNow();
+        ScheduledExecutorService localScheduledExecutorService = arrayOfScheduledExecutorService[i];
+        if ((!NewThreadWorker.tryEnableCancelPolicy(localScheduledExecutorService)) && ((localScheduledExecutorService instanceof ScheduledThreadPoolExecutor))) {
+          NewThreadWorker.registerExecutor((ScheduledThreadPoolExecutor)localScheduledExecutorService);
+        }
         i += 1;
       }
-      return;
+    }
+    j = arrayOfScheduledExecutorService.length;
+    i = m;
+    while (i < j)
+    {
+      arrayOfScheduledExecutorService[i].shutdownNow();
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.schedulers.GenericScheduledExecutorService
  * JD-Core Version:    0.7.0.1
  */

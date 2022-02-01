@@ -54,101 +54,109 @@ public class DataJsPlugin
   
   private void advertReport(RequestEvent paramRequestEvent)
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject2 = new JSONObject(paramRequestEvent.jsonParams);
+      int i = ((JSONObject)localObject2).getJSONObject("data").getJSONObject("data").getInt("report_type");
+      localObject1 = ((JSONObject)localObject2).getJSONObject("data").getJSONObject("data").get("ads_info").toString();
+      localObject2 = ((JSONObject)localObject2).getJSONObject("data").getJSONObject("data").get("pos_id").toString();
+      Object localObject3 = (AdProxy)ProxyManager.get(AdProxy.class);
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (localObject3 != null)
       {
-        Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-        int i = ((JSONObject)localObject).getJSONObject("data").getJSONObject("data").getInt("report_type");
-        String str = ((JSONObject)localObject).getJSONObject("data").getJSONObject("data").get("ads_info").toString();
-        localObject = ((JSONObject)localObject).getJSONObject("data").getJSONObject("data").get("pos_id").toString();
-        AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
-        if ((localAdProxy != null) && (i == 0))
-        {
-          bool = localAdProxy.adExposure(this.mMiniAppContext.getAttachedActivity(), str, (String)localObject);
-          if (bool)
-          {
-            paramRequestEvent.ok();
-            QMLog.i("DataJsPlugin", "advertExposure " + str + ", posId = " + (String)localObject);
-            return;
-          }
-          paramRequestEvent.fail();
-          continue;
+        bool1 = bool2;
+        if (i == 0) {
+          bool1 = ((AdProxy)localObject3).adExposure(this.mMiniAppContext.getAttachedActivity(), (String)localObject1, (String)localObject2);
         }
-        boolean bool = false;
       }
-      catch (Exception localException)
-      {
+      if (bool1) {
+        paramRequestEvent.ok();
+      } else {
         paramRequestEvent.fail();
-        QMLog.e("DataJsPlugin", "advertExposure, data is wrong " + paramRequestEvent.jsonParams);
-        return;
       }
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("advertExposure ");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append(", posId = ");
+      ((StringBuilder)localObject3).append((String)localObject2);
+      QMLog.i("DataJsPlugin", ((StringBuilder)localObject3).toString());
+      return;
     }
+    catch (Exception localException)
+    {
+      Object localObject1;
+      label191:
+      break label191;
+    }
+    paramRequestEvent.fail();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("advertExposure, data is wrong ");
+    ((StringBuilder)localObject1).append(paramRequestEvent.jsonParams);
+    QMLog.e("DataJsPlugin", ((StringBuilder)localObject1).toString());
   }
   
   private void advertTap(RequestEvent paramRequestEvent)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        new JSONObject(paramRequestEvent.jsonParams);
-        AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
-        if (localAdProxy != null)
-        {
-          bool = localAdProxy.adClick(this.mMiniAppContext.getAttachedActivity(), paramRequestEvent.jsonParams, "");
-          if (bool)
-          {
-            paramRequestEvent.ok();
-            return;
-          }
-          paramRequestEvent.fail();
-          return;
-        }
+      new JSONObject(paramRequestEvent.jsonParams);
+      localObject = (AdProxy)ProxyManager.get(AdProxy.class);
+      boolean bool = false;
+      if (localObject != null) {
+        bool = ((AdProxy)localObject).adClick(this.mMiniAppContext.getAttachedActivity(), paramRequestEvent.jsonParams, "");
       }
-      catch (Exception localException)
+      if (bool)
       {
-        paramRequestEvent.fail();
-        QMLog.e("DataJsPlugin", "advert_tap, data is wrong " + paramRequestEvent.jsonParams);
+        paramRequestEvent.ok();
         return;
       }
-      boolean bool = false;
+      paramRequestEvent.fail();
+      return;
     }
+    catch (Exception localException)
+    {
+      Object localObject;
+      label63:
+      break label63;
+    }
+    paramRequestEvent.fail();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("advert_tap, data is wrong ");
+    ((StringBuilder)localObject).append(paramRequestEvent.jsonParams);
+    QMLog.e("DataJsPlugin", ((StringBuilder)localObject).toString());
   }
   
   private Typeface getFont(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if ("normal".equals(paramString1)) {
+    if ("normal".equals(paramString1))
+    {
       if ("normal".equals(paramString2)) {
-        localObject1 = Typeface.create(paramString3, 0);
+        return Typeface.create(paramString3, 0);
+      }
+      if ("bold".equals(paramString2)) {
+        return Typeface.create(paramString3, 1);
       }
     }
-    do
+    else if ("italic".equals(paramString1))
     {
-      do
-      {
-        do
-        {
-          return localObject1;
-          localObject1 = localObject2;
-        } while (!"bold".equals(paramString2));
-        return Typeface.create(paramString3, 1);
-        localObject1 = localObject2;
-      } while (!"italic".equals(paramString1));
       if ("normal".equals(paramString2)) {
         return Typeface.create(paramString3, 2);
       }
-      localObject1 = localObject2;
-    } while (!"bold".equals(paramString2));
-    return Typeface.create(paramString3, 3);
+      if ("bold".equals(paramString2)) {
+        return Typeface.create(paramString3, 3);
+      }
+    }
+    return null;
   }
   
   private void getUserInfo(RequestEvent paramRequestEvent, String paramString1, boolean paramBoolean, String paramString2)
   {
     String str = this.mApkgInfo.appId;
-    QMLog.d("DataJsPlugin", "getUserInfo appID:" + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getUserInfo appID:");
+    localStringBuilder.append(str);
+    QMLog.d("DataJsPlugin", localStringBuilder.toString());
     this.mChannelProxy.getUserInfo(str, paramBoolean, paramString2, new DataJsPlugin.14(this, paramString1, paramRequestEvent));
   }
   
@@ -157,18 +165,18 @@ public class DataJsPlugin
   {
     try
     {
-      Object localObject2 = new JSONObject(paramRequestEvent.jsonParams);
-      Object localObject1 = ((JSONObject)localObject2).optString("fontStyle");
-      String str2 = ((JSONObject)localObject2).optString("fontWeight");
-      String str3 = ((JSONObject)localObject2).optString("fontFamily");
-      String str1 = ((JSONObject)localObject2).optString("text");
-      int i = ((JSONObject)localObject2).getInt("fontSize");
-      if ((!"normal".equals(str2)) && (!"bold".equals(str2)))
+      Object localObject3 = new JSONObject(paramRequestEvent.jsonParams);
+      Object localObject2 = ((JSONObject)localObject3).optString("fontStyle");
+      String str1 = ((JSONObject)localObject3).optString("fontWeight");
+      String str2 = ((JSONObject)localObject3).optString("fontFamily");
+      Object localObject1 = ((JSONObject)localObject3).optString("text");
+      int i = ((JSONObject)localObject3).getInt("fontSize");
+      if ((!"normal".equals(str1)) && (!"bold".equals(str1)))
       {
         paramRequestEvent.fail("fontWeight is illegal");
         return "";
       }
-      if ((!"normal".equals(localObject1)) && (!"italic".equals(localObject1)))
+      if ((!"normal".equals(localObject2)) && (!"italic".equals(localObject2)))
       {
         paramRequestEvent.fail("fontStyle is illegal");
         return "";
@@ -178,28 +186,33 @@ public class DataJsPlugin
         paramRequestEvent.fail("jsPluginEngine is illegal");
         return "";
       }
-      if (TextUtils.isEmpty(str1))
+      if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         paramRequestEvent.fail("text is empty");
         return "";
       }
-      localObject2 = new Paint();
-      ((Paint)localObject2).setTextSize(i);
-      if (getFont((String)localObject1, str2, str3) == null)
+      localObject3 = new Paint();
+      ((Paint)localObject3).setTextSize(i);
+      if (getFont((String)localObject2, str1, str2) == null)
       {
         paramRequestEvent.fail("cannot create this font");
         return "";
       }
-      localObject1 = new Rect();
-      ((Paint)localObject2).getTextBounds(str1, 0, str1.length(), (Rect)localObject1);
+      localObject2 = new Rect();
+      ((Paint)localObject3).getTextBounds((String)localObject1, 0, ((String)localObject1).length(), (Rect)localObject2);
       paramRequestEvent.ok();
-      str1 = "" + ((Rect)localObject1).height();
-      return str1;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(((Rect)localObject2).height());
+      localObject1 = ((StringBuilder)localObject1).toString();
+      return localObject1;
     }
     catch (JSONException localJSONException)
     {
-      paramRequestEvent.fail("json exception");
+      label245:
+      break label245;
     }
+    paramRequestEvent.fail("json exception");
     return "";
   }
   
@@ -211,91 +224,99 @@ public class DataJsPlugin
   private boolean onRequestAdInfoResult(boolean paramBoolean, JSONObject paramJSONObject, RequestEvent paramRequestEvent, int paramInt)
   {
     int j;
+    Object localObject2;
+    String str2;
+    JSONObject localJSONObject;
     if (paramBoolean)
     {
       j = paramJSONObject.getInt("retCode");
-      String str1 = paramJSONObject.getString("errMsg");
-      String str2 = paramJSONObject.getString("response");
-      String str3 = paramJSONObject.optString("adClass");
-      String str4 = paramJSONObject.optString("fromSDK");
+      localObject1 = paramJSONObject.getString("errMsg");
+      String str1 = paramJSONObject.getString("response");
+      localObject2 = paramJSONObject.optString("adClass");
+      str2 = paramJSONObject.optString("fromSDK");
       paramJSONObject = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      QMLog.d("DataJsPlugin", "requestAdInfo. retCode = " + j);
+      localJSONObject = new JSONObject();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("requestAdInfo. retCode = ");
+      localStringBuilder.append(j);
+      QMLog.d("DataJsPlugin", localStringBuilder.toString());
       int i;
       if (WnsConfig.getConfig("qqminiapp", "miniappadusetranscoding", 0) == 0) {
         i = 1;
+      } else {
+        i = 0;
       }
-      for (;;)
+      if ((j != 0) && (i != 0))
       {
-        if ((j != 0) && (i != 0))
-        {
-          paramInt = MiniSDKConst.AdConst.getRetCodeByServerResult(j);
-          try
-          {
-            localJSONObject2.put("ret", paramInt);
-            paramJSONObject.put("data", localJSONObject2.toString());
-            if (paramInt != -1)
-            {
-              paramRequestEvent.fail(paramJSONObject, (String)MiniSDKConst.AdConst.CODE_MSG_MAP.get(Integer.valueOf(paramInt)));
-              return true;
-              i = 0;
-            }
-          }
-          catch (JSONException localJSONException2)
-          {
-            for (;;)
-            {
-              QMLog.e("DataJsPlugin", "JSONException: " + Log.getStackTraceString(localJSONException2));
-              continue;
-              paramRequestEvent.fail(paramJSONObject, str1);
-            }
-          }
-        }
-      }
-      try
-      {
-        localJSONObject2.put("data", localJSONException2);
-        localJSONObject2.put("ret", j);
-        localJSONObject2.put("adClass", str3);
-        if (!TextUtils.isEmpty(str4)) {
-          localJSONObject2.put("fromSDK", str4);
-        }
-        paramJSONObject.put("data", localJSONObject2.toString());
-      }
-      catch (JSONException localJSONException1)
-      {
-        for (;;)
-        {
-          QMLog.i("DataJsPlugin", "requestAdInfo. retCode = " + j);
-        }
-      }
-      paramRequestEvent.ok(paramJSONObject);
-      saveAdCookie(localJSONException2, paramInt);
-    }
-    for (;;)
-    {
-      return false;
-      if (paramJSONObject != null)
-      {
-        paramInt = paramJSONObject.getInt("retCode");
-        paramJSONObject = paramJSONObject.getString("errMsg");
-        JSONObject localJSONObject1 = new JSONObject();
+        paramInt = MiniSDKConst.AdConst.getRetCodeByServerResult(j);
         try
         {
-          localJSONObject1.put("ret", paramInt);
-          localJSONObject1.put("errMsg", paramJSONObject);
-          paramRequestEvent.fail(localJSONObject1, "");
+          localJSONObject.put("ret", paramInt);
+          paramJSONObject.put("data", localJSONObject.toString());
         }
-        catch (JSONException paramJSONObject)
+        catch (JSONException localJSONException2)
         {
-          QMLog.e("DataJsPlugin", "requestAdInfo. retCode = " + paramInt);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("JSONException: ");
+          ((StringBuilder)localObject2).append(Log.getStackTraceString(localJSONException2));
+          QMLog.e("DataJsPlugin", ((StringBuilder)localObject2).toString());
         }
-      }
-      else
-      {
-        paramRequestEvent.fail();
+        if (paramInt != -1)
+        {
+          paramRequestEvent.fail(paramJSONObject, (String)MiniSDKConst.AdConst.CODE_MSG_MAP.get(Integer.valueOf(paramInt)));
+          return true;
+        }
+        paramRequestEvent.fail(paramJSONObject, (String)localObject1);
+        return true;
       }
     }
+    try
+    {
+      localJSONObject.put("data", localJSONException2);
+      localJSONObject.put("ret", j);
+      localJSONObject.put("adClass", localObject2);
+      if (!TextUtils.isEmpty(str2)) {
+        localJSONObject.put("fromSDK", str2);
+      }
+      paramJSONObject.put("data", localJSONObject.toString());
+    }
+    catch (JSONException localJSONException1)
+    {
+      label312:
+      break label312;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("requestAdInfo. retCode = ");
+    ((StringBuilder)localObject1).append(j);
+    QMLog.i("DataJsPlugin", ((StringBuilder)localObject1).toString());
+    paramRequestEvent.ok(paramJSONObject);
+    saveAdCookie(localJSONException2, paramInt);
+    break label468;
+    if (paramJSONObject != null)
+    {
+      paramInt = paramJSONObject.getInt("retCode");
+      paramJSONObject = paramJSONObject.getString("errMsg");
+      localObject1 = new JSONObject();
+    }
+    try
+    {
+      ((JSONObject)localObject1).put("ret", paramInt);
+      ((JSONObject)localObject1).put("errMsg", paramJSONObject);
+      paramRequestEvent.fail((JSONObject)localObject1, "");
+    }
+    catch (JSONException paramJSONObject)
+    {
+      label428:
+      break label428;
+    }
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("requestAdInfo. retCode = ");
+    paramJSONObject.append(paramInt);
+    QMLog.e("DataJsPlugin", paramJSONObject.toString());
+    break label468;
+    paramRequestEvent.fail();
+    label468:
+    return false;
   }
   
   private void operateGetShareInfo(String paramString, int paramInt, RequestEvent paramRequestEvent)
@@ -322,13 +343,18 @@ public class DataJsPlugin
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).addPublicAccount(LoginManager.getInstance().getAccount(), localJSONObject.optString("mpid"), new DataJsPlugin.3(this, paramRequestEvent)))
+      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).addPublicAccount(LoginManager.getInstance().getAccount(), ((JSONObject)localObject).optString("mpid"), new DataJsPlugin.3(this, paramRequestEvent)))
       {
-        MiniToast.makeText(this.mMiniAppContext.getAttachedActivity(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中关注公众号", 1);
+        localObject = this.mMiniAppContext.getAttachedActivity();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("暂不支持在");
+        localStringBuilder.append(QUAUtil.getApplicationName(this.mContext));
+        localStringBuilder.append("中关注公众号");
+        MiniToast.makeText((Context)localObject, 0, localStringBuilder.toString(), 1);
         paramRequestEvent.fail();
+        return;
       }
-      return;
     }
     catch (JSONException paramRequestEvent)
     {
@@ -339,66 +365,55 @@ public class DataJsPlugin
   private void requestAdInfo(RequestEvent paramRequestEvent, String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2)
   {
     String str2 = AdUtil.getSpAdGdtCookie(paramInt1);
-    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
-    String str1 = "";
-    Object localObject4 = "";
-    Object localObject5 = "";
-    Object localObject3 = str1;
-    Object localObject2 = localObject4;
-    Object localObject1 = localObject5;
-    if (localMiniAppInfo != null)
+    Object localObject4 = this.mMiniAppInfo;
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    String str1;
+    if ((localObject4 != null) && (((MiniAppInfo)localObject4).launchParam != null))
     {
-      localObject3 = str1;
-      localObject2 = localObject4;
-      localObject1 = localObject5;
-      if (localMiniAppInfo.launchParam != null)
-      {
-        if (localMiniAppInfo.launchParam.entryPath == null) {
-          break label213;
-        }
-        localObject1 = localMiniAppInfo.launchParam.entryPath;
+      if (((MiniAppInfo)localObject4).launchParam.entryPath != null) {
+        localObject1 = ((MiniAppInfo)localObject4).launchParam.entryPath;
+      } else {
+        localObject1 = "";
       }
+      localObject2 = ((MiniAppInfo)localObject4).launchParam.reportData;
+      int i = ((MiniAppInfo)localObject4).launchParam.scene;
+      localObject3 = String.valueOf(i);
     }
-    for (;;)
+    else
     {
-      localObject2 = localMiniAppInfo.launchParam.reportData;
-      str1 = String.valueOf(localMiniAppInfo.launchParam.scene);
-      localObject3 = localObject1;
+      str1 = "";
       localObject1 = str1;
-      if ((localMiniAppInfo != null) && (localMiniAppInfo.via != null))
+      localObject3 = localObject1;
+      localObject2 = localObject1;
+      localObject1 = str1;
+    }
+    if ((localObject4 != null) && (((MiniAppInfo)localObject4).via != null)) {
+      str1 = ((MiniAppInfo)localObject4).via;
+    } else {
+      str1 = "";
+    }
+    AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
+    if (localAdProxy != null) {
+      try
       {
-        str1 = localMiniAppInfo.via;
-        label133:
-        localObject5 = (AdProxy)ProxyManager.get(AdProxy.class);
-        if (localObject5 == null) {
-          break;
+        if (this.mMiniAppContext.getAttachedActivity() != null) {
+          localObject4 = this.mMiniAppContext.getAttachedActivity();
+        } else {
+          localObject4 = MiniAppEnv.g().getContext();
         }
+        localAdProxy.requestAdInfo((Context)localObject4, String.valueOf(paramLong), paramString1, paramString2, 53, paramInt1, 0, str2, (String)localObject1, (String)localObject2, (String)localObject3, str1, paramInt2, new DataJsPlugin.13(this, paramRequestEvent, paramInt1));
+        return;
       }
-      else
+      catch (Throwable paramString1)
       {
-        try
-        {
-          if (this.mMiniAppContext.getAttachedActivity() != null) {}
-          for (localObject4 = this.mMiniAppContext.getAttachedActivity();; localObject4 = MiniAppEnv.g().getContext())
-          {
-            ((AdProxy)localObject5).requestAdInfo((Context)localObject4, String.valueOf(paramLong), paramString1, paramString2, 53, paramInt1, 0, str2, (String)localObject3, (String)localObject2, (String)localObject1, str1, paramInt2, new DataJsPlugin.13(this, paramRequestEvent, paramInt1));
-            return;
-            label213:
-            localObject1 = "";
-            break;
-            str1 = "";
-            break label133;
-          }
-          paramRequestEvent.fail();
-        }
-        catch (Throwable paramString1)
-        {
-          paramRequestEvent.fail();
-          QMLog.e("DataJsPlugin", "requestAdInfo. error", paramString1);
-          return;
-        }
+        paramRequestEvent.fail();
+        QMLog.e("DataJsPlugin", "requestAdInfo. error", paramString1);
+        return;
       }
     }
+    paramRequestEvent.fail();
   }
   
   private void saveAdCookie(String paramString, int paramInt)
@@ -413,13 +428,21 @@ public class DataJsPlugin
           return;
         }
         AdUtil.putSpAdGdtCookie(paramInt, (String)localObject);
-        QMLog.i("DataJsPlugin", "parseAndSaveCookie save key success, adType = " + paramInt + ", value = " + (String)localObject);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parseAndSaveCookie save key success, adType = ");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(", value = ");
+        localStringBuilder.append((String)localObject);
+        QMLog.i("DataJsPlugin", localStringBuilder.toString());
         return;
       }
     }
     catch (Exception localException)
     {
-      QMLog.i("DataJsPlugin", "parseAndSaveCookie error" + paramString, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseAndSaveCookie error");
+      localStringBuilder.append(paramString);
+      QMLog.i("DataJsPlugin", localStringBuilder.toString(), localException);
     }
   }
   
@@ -427,7 +450,12 @@ public class DataJsPlugin
   {
     if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openGroup(this.mMiniAppContext.getAttachedActivity(), paramString, new DataJsPlugin.17(this, paramRequestEvent)))
     {
-      MiniToast.makeText(this.mContext, 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中打开QQ群", 1);
+      paramString = this.mContext;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("暂不支持在");
+      localStringBuilder.append(QUAUtil.getApplicationName(this.mContext));
+      localStringBuilder.append("中打开QQ群");
+      MiniToast.makeText(paramString, 0, localStringBuilder.toString(), 1);
       paramRequestEvent.fail("app not implement");
     }
   }
@@ -450,16 +478,13 @@ public class DataJsPlugin
       {
         localJSONObject.put("data", "{\"action_code\":1,\"skip_local_check\":1,\"wording\":\"\"}");
         paramJSONObject.put("respData", localJSONObject);
-        paramRequestEvent.ok(paramJSONObject);
-        return;
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
+        localJSONException.printStackTrace();
       }
+      paramRequestEvent.ok(paramJSONObject);
+      return;
     }
     this.mChannelProxy.checkNavigateRight(this.mApkgInfo.appId, paramJSONObject, new DataJsPlugin.10(this, paramRequestEvent));
   }
@@ -532,8 +557,10 @@ public class DataJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      paramRequestEvent.fail("batchGetContact failed.");
+      label90:
+      break label90;
     }
+    paramRequestEvent.fail("batchGetContact failed.");
   }
   
   @JsEvent({"getCloudTicket"})
@@ -544,10 +571,11 @@ public class DataJsPlugin
       Object localObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = this.mApkgInfo.appId;
       localObject = ((JSONObject)localObject).optString("envId");
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
         this.mChannelProxy.getTcbTicket(str, (String)localObject, new DataJsPlugin.5(this, paramRequestEvent));
+        return;
       }
-      return;
     }
     catch (Throwable paramRequestEvent)
     {
@@ -578,10 +606,7 @@ public class DataJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
     paramRequestEvent.ok(localJSONObject);
   }
@@ -629,13 +654,13 @@ public class DataJsPlugin
   @JsEvent({"getNativeUserInfo"})
   public void getNativeUserInfo(RequestEvent paramRequestEvent)
   {
-    if ((MiniAppEnv.g().getAuthSate(this.mMiniAppContext.getMiniAppInfo().appId).isPermissionGranted("scope.userInfo")) || (AuthFilterList.isAppInWhiteList(this.mMiniAppContext.getMiniAppInfo().appId)) || (AuthFilterList.apiAuthoritySilent(this.mMiniAppContext.getMiniAppInfo())))
+    if ((!MiniAppEnv.g().getAuthSate(this.mMiniAppContext.getMiniAppInfo().appId).isPermissionGranted("scope.userInfo")) && (!AuthFilterList.isAppInWhiteList(this.mMiniAppContext.getMiniAppInfo().appId)) && (!AuthFilterList.apiAuthoritySilent(this.mMiniAppContext.getMiniAppInfo())))
     {
-      paramRequestEvent.evaluateCallbackJs(ApiUtil.wrapCallbackOk("getUserInfo", null).toString());
+      QMLog.e("DataJsPlugin", "getUserInfo已弃用，请使用createUserInfoButton");
+      paramRequestEvent.evaluateCallbackJs(ApiUtil.wrapCallbackFail("getUserInfo", null, "getUserInfo已弃用，请使用createUserInfoButton").toString());
       return;
     }
-    QMLog.e("DataJsPlugin", "getUserInfo已弃用，请使用createUserInfoButton");
-    paramRequestEvent.evaluateCallbackJs(ApiUtil.wrapCallbackFail("getUserInfo", null, "getUserInfo已弃用，请使用createUserInfoButton").toString());
+    paramRequestEvent.evaluateCallbackJs(ApiUtil.wrapCallbackOk("getUserInfo", null).toString());
   }
   
   @JsEvent({"getNativeWeRunData", "openWeRunSetting"})
@@ -651,16 +676,12 @@ public class DataJsPlugin
     try
     {
       localJSONObject.put("ret", MiniReportManager.getLaunchPerformance(this.mMiniAppInfo.appId));
-      paramRequestEvent.ok(localJSONObject);
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    paramRequestEvent.ok(localJSONObject);
   }
   
   @JsEvent({"getShareInfo"})
@@ -700,10 +721,11 @@ public class DataJsPlugin
       Object localObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = ((JSONObject)localObject).optString("entryDataHash");
       localObject = ((JSONObject)localObject).optString("url");
-      if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.launchParam != null) && (this.mMiniAppInfo.launchParam.entryModel != null) && (str != null) && (str.equals(this.mMiniAppInfo.launchParam.entryModel.getEntryHash())) && (this.mMiniAppInfo.launchParam.entryModel.isAdmin) && (localObject != null) && (((String)localObject).contains("{{gid}}"))) {
+      if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.launchParam != null) && (this.mMiniAppInfo.launchParam.entryModel != null) && (str != null) && (str.equals(this.mMiniAppInfo.launchParam.entryModel.getEntryHash())) && (this.mMiniAppInfo.launchParam.entryModel.isAdmin) && (localObject != null) && (((String)localObject).contains("{{gid}}")))
+      {
         startGroupBrowserActivity(((String)localObject).replace("{{gid}}", String.valueOf(this.mMiniAppInfo.launchParam.entryModel.uin)), paramRequestEvent);
+        return;
       }
-      return;
     }
     catch (JSONException paramRequestEvent)
     {
@@ -711,14 +733,23 @@ public class DataJsPlugin
     }
   }
   
+  public void onResume()
+  {
+    super.onResume();
+    if ((this.mMiniAppContext != null) && (this.mMiniAppContext.getMiniAppInfo() != null))
+    {
+      this.mMiniAppInfo = this.mMiniAppContext.getMiniAppInfo();
+      this.mApkgInfo = ((ApkgInfo)this.mMiniAppInfo.apkgInfo);
+    }
+  }
+  
   @JsEvent({"operateAppAdData"})
   public void operateAppAdData(RequestEvent paramRequestEvent)
   {
-    String str;
     try
     {
       JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      str = localJSONObject.optString("api_name");
+      String str = localJSONObject.optString("api_name");
       if ("getBannerAd".equals(str))
       {
         webapiGetadvert(paramRequestEvent, localJSONObject, 2);
@@ -729,121 +760,134 @@ public class DataJsPlugin
         webapiGetadvert(paramRequestEvent, localJSONObject, 12);
         return;
       }
-    }
-    catch (JSONException localJSONException)
-    {
-      paramRequestEvent.fail("json exception");
-      QMLog.d("DataJsPlugin", "operateAppAdData. Exception: " + Log.getStackTraceString(localJSONException));
-      return;
-    }
-    if ("getCardAd".equals(str))
-    {
-      webapiGetadvert(paramRequestEvent, localJSONException, 5);
-      return;
-    }
-    if ("getFeedsAd".equals(str))
-    {
-      webapiGetadvert(paramRequestEvent, localJSONException, 6);
-      return;
-    }
-    if ("getInterstitialAd".equals(str))
-    {
-      webapiGetadvert(paramRequestEvent, localJSONException, 10);
-      return;
-    }
-    if ("advert_tap".equals(str)) {
-      advertTap(paramRequestEvent);
-    }
-  }
-  
-  @JsEvent({"operateWXData"})
-  public void operateWXData(RequestEvent paramRequestEvent)
-  {
-    Object localObject2;
-    String str;
-    try
-    {
-      localObject2 = new JSONObject(paramRequestEvent.jsonParams);
-      Object localObject1 = ((JSONObject)localObject2).optJSONObject("data");
-      str = ((JSONObject)localObject1).optString("api_name");
-      QMLog.d("DataJsPlugin", "operateWXData apiName: " + str);
-      if (("webapi_getuserinfo".equals(str)) || ("webapi_getuserinfo_opendata".equals(str)))
+      if ("getCardAd".equals(str))
       {
-        boolean bool = ((JSONObject)localObject1).optBoolean("with_credentials");
-        localObject2 = ((JSONObject)localObject1).optString("lang", null);
-        localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-        if (localObject1 != null) {
-          localObject1 = ((JSONObject)localObject1).optString("lang", "en");
-        }
-        for (;;)
-        {
-          getUserInfo(paramRequestEvent, str, bool, (String)localObject1);
-          return;
-          localObject1 = localObject2;
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            localObject1 = "en";
-          }
-        }
+        webapiGetadvert(paramRequestEvent, localJSONObject, 5);
+        return;
       }
-      if ("webapi_wxa_subscribe_biz".equals(str))
+      if ("getFeedsAd".equals(str))
       {
-        QMLog.e("DataJsPlugin", "webapi_wxa_subscribe_biz IN DEVELOPMENT");
+        webapiGetadvert(paramRequestEvent, localJSONObject, 6);
+        return;
+      }
+      if ("getInterstitialAd".equals(str))
+      {
+        webapiGetadvert(paramRequestEvent, localJSONObject, 10);
+        return;
+      }
+      if ("advert_tap".equals(str))
+      {
+        advertTap(paramRequestEvent);
         return;
       }
     }
     catch (JSONException localJSONException)
     {
       paramRequestEvent.fail("json exception");
-      return;
+      paramRequestEvent = new StringBuilder();
+      paramRequestEvent.append("operateAppAdData. Exception: ");
+      paramRequestEvent.append(Log.getStackTraceString(localJSONException));
+      QMLog.d("DataJsPlugin", paramRequestEvent.toString());
     }
-    if ("webapi_plugin_setauth".equals(str))
+  }
+  
+  @JsEvent({"operateWXData"})
+  public void operateWXData(RequestEvent paramRequestEvent)
+  {
+    try
     {
-      webapiPluginSetAuth(paramRequestEvent, localJSONException);
-      return;
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("data");
+      str2 = localJSONObject.optString("api_name");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("operateWXData apiName: ");
+      localStringBuilder.append(str2);
+      QMLog.d("DataJsPlugin", localStringBuilder.toString());
+      if ((!"webapi_getuserinfo".equals(str2)) && (!"webapi_getuserinfo_opendata".equals(str2)))
+      {
+        if ("webapi_wxa_subscribe_biz".equals(str2))
+        {
+          QMLog.e("DataJsPlugin", "webapi_wxa_subscribe_biz IN DEVELOPMENT");
+          return;
+        }
+        if ("webapi_plugin_setauth".equals(str2))
+        {
+          webapiPluginSetAuth(paramRequestEvent, localJSONObject);
+          return;
+        }
+        if ("webapi_plugin_login".equals(str2))
+        {
+          webapiPluginLogin(paramRequestEvent, localJSONObject);
+          return;
+        }
+        if ("webapi_plugin_getuserinfo".equals(str2))
+        {
+          webapiPluginGetUserInfo(paramRequestEvent, localJSONObject);
+          return;
+        }
+        if ("webapi_getnavigatewxaappinfo".equals(str2))
+        {
+          webapiGetnavigateWxaappinfo(paramRequestEvent, (JSONObject)localObject);
+          return;
+        }
+        if ("webapi_getadvert".equals(str2))
+        {
+          webapiGetadvert(paramRequestEvent, localJSONObject, 2);
+          return;
+        }
+        if ("advert_tap".equals(str2))
+        {
+          advertTap(paramRequestEvent);
+          return;
+        }
+        if ("advert_report".equals(str2))
+        {
+          advertReport(paramRequestEvent);
+          return;
+        }
+        if ("getBlockAd".equals(str2))
+        {
+          webapiGetadvert(paramRequestEvent, localJSONObject, 12);
+          return;
+        }
+        if ("webapi_getshareinfo".equals(str2))
+        {
+          operateGetShareInfo(localJSONObject.optJSONObject("data").optString("shareTicket"), localJSONObject.optJSONObject("data").optInt("timeout", 0), paramRequestEvent);
+          return;
+        }
+        if (!"webapi_getwerunstep_history".equals(str2)) {
+          break label398;
+        }
+        webapiGetWerunStepHistory(paramRequestEvent);
+        return;
+      }
+      bool = localJSONObject.optBoolean("with_credentials");
+      localObject = localJSONObject.optString("lang", null);
+      localJSONObject = localJSONObject.optJSONObject("data");
+      if (localJSONObject != null) {
+        localObject = localJSONObject.optString("lang", "en");
+      } else {
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label403;
+        }
+      }
     }
-    if ("webapi_plugin_login".equals(str))
+    catch (JSONException localJSONException)
     {
-      webapiPluginLogin(paramRequestEvent, localJSONException);
-      return;
+      for (;;)
+      {
+        Object localObject;
+        String str2;
+        boolean bool;
+        label398:
+        continue;
+        label403:
+        String str1 = "en";
+      }
     }
-    if ("webapi_plugin_getuserinfo".equals(str))
-    {
-      webapiPluginGetUserInfo(paramRequestEvent, localJSONException);
-      return;
-    }
-    if ("webapi_getnavigatewxaappinfo".equals(str))
-    {
-      webapiGetnavigateWxaappinfo(paramRequestEvent, (JSONObject)localObject2);
-      return;
-    }
-    if ("webapi_getadvert".equals(str))
-    {
-      webapiGetadvert(paramRequestEvent, localJSONException, 2);
-      return;
-    }
-    if ("advert_tap".equals(str))
-    {
-      advertTap(paramRequestEvent);
-      return;
-    }
-    if ("advert_report".equals(str))
-    {
-      advertReport(paramRequestEvent);
-      return;
-    }
-    if ("getBlockAd".equals(str))
-    {
-      webapiGetadvert(paramRequestEvent, localJSONException, 12);
-      return;
-    }
-    if ("webapi_getshareinfo".equals(str))
-    {
-      operateGetShareInfo(localJSONException.optJSONObject("data").optString("shareTicket"), localJSONException.optJSONObject("data").optInt("timeout", 0), paramRequestEvent);
-      return;
-    }
-    if ("webapi_getwerunstep_history".equals(str)) {
-      webapiGetWerunStepHistory(paramRequestEvent);
-    }
+    getUserInfo(paramRequestEvent, str2, bool, (String)localObject);
+    return;
+    paramRequestEvent.fail("json exception");
   }
   
   @JsEvent({"profile"})
@@ -852,11 +896,20 @@ public class DataJsPlugin
     try
     {
       paramRequestEvent = new JSONObject(paramRequestEvent.jsonParams);
-      QMLog.d("DataJsPlugin", "查看公众号: " + paramRequestEvent);
-      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).jump2PublicAccount(this.mMiniAppContext.getAttachedActivity(), paramRequestEvent.optString("uin"), paramRequestEvent.optString("pubName"))) {
-        MiniToast.makeText(this.mMiniAppContext.getAttachedActivity(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中打开公众号", 1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("查看公众号: ");
+      localStringBuilder.append(paramRequestEvent);
+      QMLog.d("DataJsPlugin", localStringBuilder.toString());
+      if (!((ChannelProxy)ProxyManager.get(ChannelProxy.class)).jump2PublicAccount(this.mMiniAppContext.getAttachedActivity(), paramRequestEvent.optString("uin"), paramRequestEvent.optString("pubName")))
+      {
+        paramRequestEvent = this.mMiniAppContext.getAttachedActivity();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("暂不支持在");
+        localStringBuilder.append(QUAUtil.getApplicationName(this.mContext));
+        localStringBuilder.append("中打开公众号");
+        MiniToast.makeText(paramRequestEvent, 0, localStringBuilder.toString(), 1);
+        return;
       }
-      return;
     }
     catch (JSONException paramRequestEvent)
     {
@@ -877,10 +930,15 @@ public class DataJsPlugin
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      if (!this.mMiniAppProxy.enterQRCode(this.mMiniAppContext.getAttachedActivity(), localJSONObject.optBoolean("onlyFromCamera", false), new DataJsPlugin.1(this, paramRequestEvent)))
+      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+      if (!this.mMiniAppProxy.enterQRCode(this.mMiniAppContext.getAttachedActivity(), ((JSONObject)localObject).optBoolean("onlyFromCamera", false), new DataJsPlugin.1(this, paramRequestEvent)))
       {
-        MiniToast.makeText(this.mMiniAppContext.getAttachedActivity(), 0, "暂不支持在" + QUAUtil.getApplicationName(this.mContext) + "中扫码二维码", 1);
+        localObject = this.mMiniAppContext.getAttachedActivity();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("暂不支持在");
+        localStringBuilder.append(QUAUtil.getApplicationName(this.mContext));
+        localStringBuilder.append("中扫码二维码");
+        MiniToast.makeText((Context)localObject, 0, localStringBuilder.toString(), 1);
         paramRequestEvent.fail();
       }
       return;
@@ -914,8 +972,10 @@ public class DataJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      paramRequestEvent.fail("verifyPlugin failed.");
+      label147:
+      break label147;
     }
+    paramRequestEvent.fail("verifyPlugin failed.");
   }
   
   public void webapiGetadvert(RequestEvent paramRequestEvent, JSONObject paramJSONObject, int paramInt)
@@ -925,34 +985,45 @@ public class DataJsPlugin
       try
       {
         String str = paramJSONObject.optJSONObject("data").optString("pos_id");
-        if (paramJSONObject.optJSONObject("data").has("adType"))
+        if (!paramJSONObject.optJSONObject("data").has("adType")) {
+          break label174;
+        }
+        paramInt = paramJSONObject.optJSONObject("data").optInt("adType");
+        if (!paramJSONObject.optJSONObject("data").has("size")) {
+          break label177;
+        }
+        i = paramJSONObject.optJSONObject("data").optInt("size");
+        long l = Long.valueOf(LoginManager.getInstance().getAccount()).longValue();
+        try
         {
-          paramInt = paramJSONObject.optJSONObject("data").optInt("adType");
-          int i = 1;
-          if (paramJSONObject.optJSONObject("data").has("size")) {
-            i = paramJSONObject.optJSONObject("data").optInt("size");
-          }
-          long l = Long.valueOf(LoginManager.getInstance().getAccount()).longValue();
           paramJSONObject = this.mMiniAppInfo.appId;
-          QMLog.d("DataJsPlugin", "webapi_getadvert getAppid = " + paramJSONObject);
-          if (!TextUtils.isEmpty(paramJSONObject)) {
-            requestAdInfo(paramRequestEvent, str, paramInt, i, l, paramJSONObject);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("webapi_getadvert getAppid = ");
+          localStringBuilder.append(paramJSONObject);
+          QMLog.d("DataJsPlugin", localStringBuilder.toString());
+          if (TextUtils.isEmpty(paramJSONObject)) {
+            break label173;
           }
+          requestAdInfo(paramRequestEvent, str, paramInt, i, l, paramJSONObject);
           return;
         }
-      }
-      catch (Exception paramJSONObject)
-      {
+        catch (Exception paramJSONObject) {}
         paramRequestEvent.fail();
-        QMLog.e("DataJsPlugin", "webapiGetadvert. error", paramJSONObject);
-        return;
       }
+      catch (Exception paramJSONObject) {}
+      QMLog.e("DataJsPlugin", "webapiGetadvert. error", paramJSONObject);
+      label173:
+      return;
+      label174:
+      continue;
+      label177:
+      int i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -40,8 +40,19 @@ public final class ReuseHelper
       localReusePolicy.initHeight = j;
     }
     int k = Math.max(0, TUtils.getCodecMaxInputSize(paramFormatWrapper.sampleMimeType, i, j, false));
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("ReuseHelper", "initFormatWrapper initWidth:" + i + " initHeight:" + j + " initMaxInputSize:" + k + ' ' + "reusePolicy:" + localReusePolicy);
+    if (LogUtils.isLogEnable())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initFormatWrapper initWidth:");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" initHeight:");
+      localStringBuilder.append(j);
+      localStringBuilder.append(" initMaxInputSize:");
+      localStringBuilder.append(k);
+      localStringBuilder.append(' ');
+      localStringBuilder.append("reusePolicy:");
+      localStringBuilder.append(localReusePolicy);
+      LogUtils.d("ReuseHelper", localStringBuilder.toString());
     }
     paramFormatWrapper.maxWidth = i;
     paramFormatWrapper.maxHeight = j;
@@ -62,20 +73,34 @@ public final class ReuseHelper
   public static boolean isSeamlessAdaptationSupported(@NonNull ReuseCodecWrapper paramReuseCodecWrapper, @NonNull FormatWrapper paramFormatWrapper, boolean paramBoolean)
   {
     FormatWrapper localFormatWrapper = paramReuseCodecWrapper.format;
-    if ((paramReuseCodecWrapper instanceof VideoCodecWrapper)) {
-      if ((!TextUtils.equals(localFormatWrapper.sampleMimeType, paramFormatWrapper.sampleMimeType)) || (localFormatWrapper.rotationDegrees != paramFormatWrapper.rotationDegrees) || ((!paramReuseCodecWrapper.adaptive) && ((localFormatWrapper.width != paramFormatWrapper.width) || (localFormatWrapper.height != paramFormatWrapper.height)))) {}
-    }
-    while (!(paramReuseCodecWrapper instanceof AudioCodecWrapper))
+    boolean bool = paramReuseCodecWrapper instanceof VideoCodecWrapper;
+    paramBoolean = true;
+    if (bool)
     {
-      return true;
+      if ((TextUtils.equals(localFormatWrapper.sampleMimeType, paramFormatWrapper.sampleMimeType)) && (localFormatWrapper.rotationDegrees == paramFormatWrapper.rotationDegrees))
+      {
+        if (paramReuseCodecWrapper.adaptive) {
+          break label79;
+        }
+        if ((localFormatWrapper.width == paramFormatWrapper.width) && (localFormatWrapper.height == paramFormatWrapper.height)) {
+          return true;
+        }
+      }
+      paramBoolean = false;
+      label79:
+      return paramBoolean;
+    }
+    if ((paramReuseCodecWrapper instanceof AudioCodecWrapper))
+    {
+      if ((TextUtils.equals("audio/mp4a-latm", localFormatWrapper.sampleMimeType)) && (TextUtils.equals(localFormatWrapper.sampleMimeType, paramFormatWrapper.sampleMimeType)) && (localFormatWrapper.channelCount == paramFormatWrapper.channelCount) && (localFormatWrapper.sampleRate != paramFormatWrapper.sampleRate)) {}
       return false;
     }
-    return (TextUtils.equals("audio/mp4a-latm", localFormatWrapper.sampleMimeType)) && (TextUtils.equals(localFormatWrapper.sampleMimeType, paramFormatWrapper.sampleMimeType)) && (localFormatWrapper.channelCount == paramFormatWrapper.channelCount) && (localFormatWrapper.sampleRate == paramFormatWrapper.sampleRate);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.reuse.ReuseHelper
  * JD-Core Version:    0.7.0.1
  */

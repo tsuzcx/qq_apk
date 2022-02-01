@@ -44,6 +44,14 @@ public class XEditTextEx
     super(paramContext, paramAttributeSet);
   }
   
+  public void a()
+  {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      localList.clear();
+    }
+  }
+  
   public void a(View.OnClickListener paramOnClickListener)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
@@ -59,7 +67,8 @@ public class XEditTextEx
   
   public boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return (paramFloat1 >= -paramFloat3) && (paramFloat2 >= -paramFloat3) && (paramFloat1 < getRight() - getLeft() + paramFloat3) && (paramFloat2 < getBottom() - getTop() + paramFloat3);
+    float f = -paramFloat3;
+    return (paramFloat1 >= f) && (paramFloat2 >= f) && (paramFloat1 < getRight() - getLeft() + paramFloat3) && (paramFloat2 < getBottom() - getTop() + paramFloat3);
   }
   
   public void b(@Nullable XEditTextEx.TextMenuListener paramTextMenuListener)
@@ -69,7 +78,8 @@ public class XEditTextEx
   
   public boolean dispatchKeyEventPreIme(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyEventPreImeListener != null) && (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyEventPreImeListener.a(paramKeyEvent))) {
+    XEditTextEx.OnKeyEventPreImeListener localOnKeyEventPreImeListener = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyEventPreImeListener;
+    if ((localOnKeyEventPreImeListener != null) && (localOnKeyEventPreImeListener.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEventPreIme(paramKeyEvent);
@@ -77,8 +87,9 @@ public class XEditTextEx
   
   public boolean onCheckIsTextEditor()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener != null) {
-      return this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener.a();
+    XEditTextEx.OnKeyboardShowListener localOnKeyboardShowListener = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener;
+    if (localOnKeyboardShowListener != null) {
+      return localOnKeyboardShowListener.a();
     }
     return super.onCheckIsTextEditor();
   }
@@ -94,115 +105,132 @@ public class XEditTextEx
   
   public boolean onPrivateIMECommand(String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("XEditTextEx", 1, "onPrivateIMECommand(), action:" + paramString + " data:" + paramBundle);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPrivateIMECommand(), action:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" data:");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.d("XEditTextEx", 1, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener != null) {
-      return this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener.a(paramString, paramBundle);
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnPrivateIMECommandListener;
+    if (localObject != null) {
+      return ((XEditTextEx.OnPrivateIMECommandListener)localObject).a(paramString, paramBundle);
     }
     return super.onPrivateIMECommand(paramString, paramBundle);
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      boolean bool;
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-        if (!localIterator.hasNext()) {
-          continue;
-        }
-        localTextMenuListener = (XEditTextEx.TextMenuListener)localIterator.next();
+        XEditTextEx.TextMenuListener localTextMenuListener = (XEditTextEx.TextMenuListener)localIterator.next();
         switch (paramInt)
         {
-        case 16908320: 
-          if (!localTextMenuListener.b()) {
-            continue;
+        case 16908322: 
+          if (localTextMenuListener.c()) {
+            return true;
           }
-          return true;
+          break;
+        case 16908321: 
+          if (localTextMenuListener.a()) {
+            return true;
+          }
+          break;
+        case 16908320: 
+          bool = localTextMenuListener.b();
+          if (bool) {
+            return true;
+          }
+          break;
         }
       }
-      catch (Throwable localThrowable)
+      try
       {
-        try
-        {
-          XEditTextEx.TextMenuListener localTextMenuListener;
-          boolean bool = super.onTextContextMenuItem(paramInt);
-          return bool;
+        bool = super.onTextContextMenuItem(paramInt);
+        return bool;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("XEditTextEx", 2, "onTextContextMenuItem has exception,", localException);
         }
-        catch (Exception localException)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-        }
-        QLog.d("XEditTextEx", 2, "onTextContextMenuItem has exception,", localException);
         return false;
       }
-      if (localTextMenuListener.a())
-      {
-        return true;
-        bool = localTextMenuListener.c();
-        if (bool) {
-          return true;
-        }
-      }
     }
-    return false;
+    catch (Throwable localThrowable)
+    {
+      for (;;) {}
+    }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!paramView.isClickable()) {}
-    float f1;
-    float f2;
-    long l;
-    do
-    {
+    if (!paramView.isClickable()) {
       return false;
-      f1 = paramMotionEvent.getX();
-      f2 = paramMotionEvent.getY();
-      int i = paramMotionEvent.getAction();
-      l = System.currentTimeMillis();
-      if (this.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-      }
-      if (this.jdField_b_of_type_Int == 0) {
-        this.jdField_b_of_type_Int = ViewConfiguration.getLongPressTimeout();
-      }
-      switch (i)
+    }
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    int i = paramMotionEvent.getAction();
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    }
+    if (this.jdField_b_of_type_Int == 0) {
+      this.jdField_b_of_type_Int = ViewConfiguration.getLongPressTimeout();
+    }
+    if (i != 0)
+    {
+      if (i != 1)
       {
-      default: 
-        return false;
-      case 0: 
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = new XEditTextEx.PerformClick(this, paramView, l);
-        return false;
-      case 3: 
+        if (i != 2)
+        {
+          if (i != 3) {
+            return false;
+          }
+          this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = null;
+          return false;
+        }
+        if (!a(f1, f2, this.jdField_a_of_type_Int))
+        {
+          this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = null;
+          return false;
+        }
+      }
+      else
+      {
+        paramView = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick;
+        if ((paramView != null) && (Math.abs(l - paramView.a) < this.jdField_b_of_type_Int)) {
+          post(this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick);
+        }
         this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = null;
         return false;
       }
-    } while (a(f1, f2, this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = null;
-    return false;
-    if ((this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick != null) && (Math.abs(l - this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick.a) < this.jdField_b_of_type_Int)) {
-      post(this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick);
     }
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = null;
+    else {
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx$PerformClick = new XEditTextEx.PerformClick(this, paramView, l);
+    }
     return false;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnWindowFocusChangedListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnWindowFocusChangedListener.a(paramBoolean);
+    XEditTextEx.OnWindowFocusChangedListener localOnWindowFocusChangedListener = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnWindowFocusChangedListener;
+    if (localOnWindowFocusChangedListener != null) {
+      localOnWindowFocusChangedListener.a(paramBoolean);
     }
   }
   
   public void scrollTo(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener == null) || (this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener.a())) {
+    XEditTextEx.OnKeyboardShowListener localOnKeyboardShowListener = this.jdField_a_of_type_ComTencentWidgetXEditTextEx$OnKeyboardShowListener;
+    if ((localOnKeyboardShowListener == null) || (localOnKeyboardShowListener.a())) {
       super.scrollTo(paramInt1, paramInt2);
     }
   }
@@ -229,7 +257,7 @@ public class XEditTextEx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.XEditTextEx
  * JD-Core Version:    0.7.0.1
  */

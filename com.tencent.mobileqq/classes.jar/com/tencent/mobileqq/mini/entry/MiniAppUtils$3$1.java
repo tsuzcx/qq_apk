@@ -13,10 +13,16 @@ class MiniAppUtils$3$1
   {
     try
     {
-      String str = this.this$0.val$filePath + "__temp";
-      FileUtils.writeFile(str, this.val$cgiState.d);
-      FileUtils.moveFile(str, this.this$0.val$filePath);
-      QLog.d("MiniAppUtils", 1, "--- prefetch cache data finished :" + this.this$0.val$requestUrl);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.this$0.val$filePath);
+      ((StringBuilder)localObject).append("__temp");
+      localObject = ((StringBuilder)localObject).toString();
+      FileUtils.writeFile((String)localObject, this.val$cgiState.d);
+      FileUtils.moveFile((String)localObject, this.this$0.val$filePath);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("--- prefetch cache data finished :");
+      ((StringBuilder)localObject).append(this.this$0.val$requestUrl);
+      QLog.d("MiniAppUtils", 1, ((StringBuilder)localObject).toString());
       return;
     }
     catch (Exception localException)
@@ -27,7 +33,7 @@ class MiniAppUtils$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.3.1
  * JD-Core Version:    0.7.0.1
  */

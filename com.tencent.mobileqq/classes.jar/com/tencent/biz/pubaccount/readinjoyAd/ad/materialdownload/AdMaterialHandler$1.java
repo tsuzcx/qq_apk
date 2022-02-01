@@ -14,9 +14,10 @@ class AdMaterialHandler$1
 {
   AdMaterialHandler$1(AdMaterialHandler paramAdMaterialHandler) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    for (boolean bool = true;; bool = false) {
+    for (;;)
+    {
       try
       {
         paramBundle = new oidb_0x6cf.RspBody();
@@ -27,17 +28,31 @@ class AdMaterialHandler$1
         if ((paramInt == 0) && (paramArrayOfByte != null)) {
           paramBundle.mergeFrom(paramArrayOfByte);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info.has = " + paramBundle.bytes_ad_user_info.has());
+        bool = QLog.isColorLevel();
+        if (bool)
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("errorCode = ");
+          paramArrayOfByte.append(paramInt);
+          paramArrayOfByte.append(", rspBody.bytes_ad_user_info.has = ");
+          paramArrayOfByte.append(paramBundle.bytes_ad_user_info.has());
+          QLog.d("AdMaterialHandler", 2, paramArrayOfByte.toString());
         }
         if ((paramBundle != null) && (paramBundle.bytes_ad_user_info.has()))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("AdMaterialHandler", 2, "errorCode = " + paramInt + ", rspBody.bytes_ad_user_info = " + paramBundle.bytes_ad_user_info.get().toStringUtf8());
+          if (QLog.isColorLevel())
+          {
+            paramArrayOfByte = new StringBuilder();
+            paramArrayOfByte.append("errorCode = ");
+            paramArrayOfByte.append(paramInt);
+            paramArrayOfByte.append(", rspBody.bytes_ad_user_info = ");
+            paramArrayOfByte.append(paramBundle.bytes_ad_user_info.get().toStringUtf8());
+            QLog.d("AdMaterialHandler", 2, paramArrayOfByte.toString());
           }
           paramArrayOfByte = this.a;
           if (paramInt == 0)
           {
+            bool = true;
             paramArrayOfByte.notifyUI(1, bool, paramBundle.bytes_ad_user_info.get().toStringUtf8());
             SuperMaskReportMgr.a.a("", "requestSuccess", 1);
           }
@@ -50,17 +65,22 @@ class AdMaterialHandler$1
       }
       catch (Exception paramArrayOfByte)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdMaterialHandler", 2, "Exception error" + QLog.getStackTraceString(paramArrayOfByte));
+        if (QLog.isColorLevel())
+        {
+          paramBundle = new StringBuilder();
+          paramBundle.append("Exception error");
+          paramBundle.append(QLog.getStackTraceString(paramArrayOfByte));
+          QLog.d("AdMaterialHandler", 2, paramBundle.toString());
         }
         return;
       }
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialHandler.1
  * JD-Core Version:    0.7.0.1
  */

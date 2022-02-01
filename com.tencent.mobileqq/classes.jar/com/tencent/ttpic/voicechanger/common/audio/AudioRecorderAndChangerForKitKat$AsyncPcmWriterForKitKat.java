@@ -18,7 +18,7 @@ public class AudioRecorderAndChangerForKitKat$AsyncPcmWriterForKitKat
   
   public AudioRecorderAndChangerForKitKat$AsyncPcmWriterForKitKat(AudioRecorderAndChangerForKitKat paramAudioRecorderAndChangerForKitKat, String paramString, int paramInt)
   {
-    super("AsyncPcmWriterForKitKat-" + System.currentTimeMillis());
+    super(paramAudioRecorderAndChangerForKitKat.toString());
     FileUtils.delete(paramString);
     this.perBufSize = paramInt;
     this.mMicfile = new RandomAccessFile(paramString, "rw");
@@ -40,15 +40,19 @@ public class AudioRecorderAndChangerForKitKat$AsyncPcmWriterForKitKat
     }
     synchronized (this.fileBuffers)
     {
+      byte[] arrayOfByte;
       if (this.fileBuffers.size() > 0)
       {
         arrayOfByte = (byte[])this.fileBuffers.peek();
         this.fileBuffers.remove();
-        System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt);
-        this.mHandler.post(new AudioRecorderAndChangerForKitKat.AsyncPcmWriterForKitKat.1(this, paramInt, arrayOfByte));
-        return;
       }
-      byte[] arrayOfByte = new byte[this.perBufSize];
+      else
+      {
+        arrayOfByte = new byte[this.perBufSize];
+      }
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt);
+      this.mHandler.post(new AudioRecorderAndChangerForKitKat.AsyncPcmWriterForKitKat.1(this, paramInt, arrayOfByte));
+      return;
     }
   }
   
@@ -59,7 +63,7 @@ public class AudioRecorderAndChangerForKitKat$AsyncPcmWriterForKitKat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.AudioRecorderAndChangerForKitKat.AsyncPcmWriterForKitKat
  * JD-Core Version:    0.7.0.1
  */

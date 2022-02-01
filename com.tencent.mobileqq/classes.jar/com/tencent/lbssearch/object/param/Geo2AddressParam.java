@@ -20,18 +20,25 @@ public class Geo2AddressParam
   public fn buildParameters()
   {
     fn localfn = new fn();
-    if (this.a != null) {
-      localfn.b("location", this.a.latitude + "," + this.a.longitude);
-    }
-    if (this.c) {}
-    for (String str = "1";; str = "0")
+    if (this.a != null)
     {
-      localfn.b("get_poi", str);
-      if (this.b != null) {
-        localfn.b("poi_options", this.b.toString());
-      }
-      return localfn;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.a.latitude);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(this.a.longitude);
+      localfn.b("location", ((StringBuilder)localObject).toString());
     }
+    if (this.c) {
+      localObject = "1";
+    } else {
+      localObject = "0";
+    }
+    localfn.b("get_poi", (String)localObject);
+    Object localObject = this.b;
+    if (localObject != null) {
+      localfn.b("poi_options", ((Geo2AddressParam.PoiOptions)localObject).toString());
+    }
+    return localfn;
   }
   
   public boolean checkParams()
@@ -70,7 +77,7 @@ public class Geo2AddressParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.Geo2AddressParam
  * JD-Core Version:    0.7.0.1
  */

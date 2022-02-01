@@ -38,7 +38,7 @@ public class UrlDrawableDownloadJob
     this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
   }
   
-  public void a(Map<String, Object> paramMap)
+  protected void a(Map<String, Object> paramMap)
   {
     if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UrlDrawableDownloadJob_iiu"))) {
       this.jdField_a_of_type_JavaLangString = ((String)ShareUtils.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "UrlDrawableDownloadJob_iiu", this.jdField_a_of_type_JavaLangString));
@@ -55,7 +55,7 @@ public class UrlDrawableDownloadJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob
  * JD-Core Version:    0.7.0.1
  */

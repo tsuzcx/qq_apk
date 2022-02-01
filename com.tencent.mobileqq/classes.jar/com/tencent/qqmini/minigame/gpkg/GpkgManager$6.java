@@ -19,10 +19,17 @@ final class GpkgManager$6
   public void onDownloadFailed(int paramInt, String paramString)
   {
     MiniReportManager.reportEventType(this.val$gameInfo, 614, null, null, null, paramInt, "1", 0L, null);
-    if (this.val$listener != null)
+    Object localObject = this.val$listener;
+    if (localObject != null)
     {
-      this.val$listener.onInitGpkgInfo(2010, null, "download sub pkg fail", null);
-      QMLog.d("[minigame] GpkgManager", "onDownloadFailed() called with: s = [" + paramInt + "], downloadResult = [" + paramString + "]");
+      ((GpkgManager.OnInitGpkgListener)localObject).onInitGpkgInfo(2010, null, "download sub pkg fail", null);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadFailed() called with: s = [");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], downloadResult = [");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QMLog.d("[minigame] GpkgManager", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -36,11 +43,12 @@ final class GpkgManager$6
       long l = paramLong2;
       if (paramLong2 == 0L)
       {
+        int i = this.val$fileSize;
         f = paramFloat;
         l = paramLong2;
-        if (this.val$fileSize > 0)
+        if (i > 0)
         {
-          paramLong2 = this.val$fileSize;
+          paramLong2 = i;
           f = paramFloat;
           l = paramLong2;
           if (paramLong2 > paramLong1)
@@ -62,32 +70,34 @@ final class GpkgManager$6
     paramDownloadResult = new File(paramDownloadResult);
     MiniReportManager.reportEventType(this.val$gameInfo, 615, "1");
     boolean bool = WxapkgUnpacker.unpackSync(paramDownloadResult.getAbsolutePath(), paramString, this.val$subRoot, true);
-    paramDownloadResult = this.val$gameInfo;
+    MiniReportManager.reportEventType(this.val$gameInfo, 616, null, null, null, bool ^ true, "1", 0L, null);
+    paramDownloadResult = new StringBuilder();
+    paramDownloadResult.append("downloadSubPack | getResPath :hasUnpack=");
+    paramDownloadResult.append(bool);
+    paramDownloadResult.append("; folderPath=");
+    paramDownloadResult.append(paramString);
+    paramDownloadResult.append("; subRoot=");
+    paramDownloadResult.append(this.val$subRoot);
+    QMLog.d("[minigame] GpkgManager", paramDownloadResult.toString());
     if (bool)
     {
-      paramInt = 0;
-      MiniReportManager.reportEventType(paramDownloadResult, 616, null, null, null, paramInt, "1", 0L, null);
-      QMLog.d("[minigame] GpkgManager", "downloadSubPack | getResPath :hasUnpack=" + bool + "; folderPath=" + paramString + "; subRoot=" + this.val$subRoot);
-      if (!bool) {
-        break label172;
-      }
-      if (this.val$listener != null) {
-        this.val$listener.onInitGpkgInfo(0, this.val$miniGamePkg, "download sub pkg and unpack succeed", null);
+      paramString = this.val$listener;
+      if (paramString != null) {
+        paramString.onInitGpkgInfo(0, this.val$miniGamePkg, "download sub pkg and unpack succeed", null);
       }
     }
-    label172:
-    while (this.val$listener == null)
+    else
     {
-      return;
-      paramInt = 1;
-      break;
+      paramString = this.val$listener;
+      if (paramString != null) {
+        paramString.onInitGpkgInfo(2011, null, "download sub pkg succeed, but unpack sub pkg fail", null);
+      }
     }
-    this.val$listener.onInitGpkgInfo(2011, null, "download sub pkg succeed, but unpack sub pkg fail", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.GpkgManager.6
  * JD-Core Version:    0.7.0.1
  */

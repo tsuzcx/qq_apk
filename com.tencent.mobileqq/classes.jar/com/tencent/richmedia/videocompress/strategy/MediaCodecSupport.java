@@ -27,29 +27,19 @@ public class MediaCodecSupport
   
   private static boolean checkDecoderSupportColorFormat(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    return (paramInt == 19) || (paramInt == 21) || (paramInt == 2130706944) || (paramInt == 2141391876);
   }
   
   private static boolean checkEncoderSupportColorFormat(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 20: 
-    default: 
-      return false;
-    }
-    return true;
+    return (paramInt == 19) || (paramInt == 21);
   }
   
   public static int checkSupportMediaCodecFeature(Context paramContext)
   {
-    if (mMediaCodecFeature >= 0) {
-      return mMediaCodecFeature;
+    int i = mMediaCodecFeature;
+    if (i >= 0) {
+      return i;
     }
     mMediaCodecFeature = 0;
     if (paramContext == null) {
@@ -78,69 +68,52 @@ public class MediaCodecSupport
   
   private static boolean isAVCDecSupportColorFormats()
   {
-    boolean bool2 = false;
     Iterator localIterator = MediaCodecUtil.getDecoderInfoList(AVC_CODEC_MIME, false).iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      boolean bool1 = bool2;
-      MediaCodecInfo.CodecCapabilities localCodecCapabilities;
-      int i;
-      if (localIterator.hasNext())
+      MediaCodecInfo.CodecCapabilities localCodecCapabilities = MediaCodecUtil.getCodecCapabilities((MediaCodecInfo)localIterator.next(), AVC_CODEC_MIME);
+      if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null))
       {
-        localCodecCapabilities = MediaCodecUtil.getCodecCapabilities((MediaCodecInfo)localIterator.next(), AVC_CODEC_MIME);
-        if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {
-          i = 0;
-        }
-      }
-      else
-      {
+        int i = 0;
         while (i < localCodecCapabilities.colorFormats.length)
         {
-          if (checkDecoderSupportColorFormat(localCodecCapabilities.colorFormats[i]))
-          {
-            bool1 = true;
-            return bool1;
+          if (checkDecoderSupportColorFormat(localCodecCapabilities.colorFormats[i])) {
+            return true;
           }
           i += 1;
         }
       }
     }
+    return false;
   }
   
   private static boolean isAVCEncSupportColorFormats()
   {
-    boolean bool2 = false;
     Iterator localIterator = MediaCodecUtil.getEncoderInfoList(AVC_CODEC_MIME).iterator();
     for (;;)
     {
-      boolean bool1 = bool2;
-      MediaCodecInfo.CodecCapabilities localCodecCapabilities;
-      int i;
-      if (localIterator.hasNext())
-      {
-        localCodecCapabilities = MediaCodecUtil.getCodecCapabilities((MediaCodecInfo)localIterator.next(), AVC_CODEC_MIME);
-        if (localCodecCapabilities != null) {
-          i = 0;
-        }
+      boolean bool = localIterator.hasNext();
+      int i = 0;
+      if (!bool) {
+        break;
       }
-      else
-      {
+      MediaCodecInfo.CodecCapabilities localCodecCapabilities = MediaCodecUtil.getCodecCapabilities((MediaCodecInfo)localIterator.next(), AVC_CODEC_MIME);
+      if (localCodecCapabilities != null) {
         while (i < localCodecCapabilities.colorFormats.length)
         {
-          if (checkEncoderSupportColorFormat(localCodecCapabilities.colorFormats[i]))
-          {
-            bool1 = true;
-            return bool1;
+          if (checkEncoderSupportColorFormat(localCodecCapabilities.colorFormats[i])) {
+            return true;
           }
           i += 1;
         }
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmedia.videocompress.strategy.MediaCodecSupport
  * JD-Core Version:    0.7.0.1
  */

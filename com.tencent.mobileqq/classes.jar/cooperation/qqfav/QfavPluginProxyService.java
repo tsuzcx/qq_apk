@@ -14,33 +14,35 @@ import mqq.app.AppRuntime;
 public class QfavPluginProxyService
   extends PluginProxyService
 {
-  private static FavoritesRemoteCommand jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand = null;
-  private static QfavRemoteProxyForQQ jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ = null;
+  private static FavoritesRemoteCommand jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand;
+  private static QfavRemoteProxyForQQ jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ;
   
   public static FavoritesRemoteCommand a()
   {
-    if (jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand == null) {
-        jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand = new FavoritesRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
+    if (jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand == null) {
+          jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand = new FavoritesRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
+        }
       }
-      return jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationQqfavIpcFavoritesRemoteCommand;
   }
   
   public static QfavRemoteProxyForQQ a()
   {
-    if (jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ == null) {
-        jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ = new QfavRemoteProxyForQQ(BaseApplicationImpl.getApplication().getRuntime());
+    if (jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ == null) {
+          jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ = new QfavRemoteProxyForQQ(BaseApplicationImpl.getApplication().getRuntime());
+        }
       }
-      return jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationQqfavIpcQfavRemoteProxyForQQ;
   }
   
   public static void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection, String paramString)
@@ -70,7 +72,7 @@ public class QfavPluginProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.QfavPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

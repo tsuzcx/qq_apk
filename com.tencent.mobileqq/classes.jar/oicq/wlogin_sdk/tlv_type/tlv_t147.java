@@ -26,10 +26,9 @@ public class tlv_t147
     util.int64_to_buf32(paramArrayOfByte2, 0, paramLong);
     util.int16_to_buf(paramArrayOfByte2, 4, j);
     System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, 6, j);
-    j += 6;
+    j = 6 + j;
     util.int16_to_buf(paramArrayOfByte2, j, i);
-    j += 2;
-    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, j, i);
+    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, j + 2, i);
     fill_head(this._cmd);
     fill_body(paramArrayOfByte2, paramArrayOfByte2.length);
     set_length();
@@ -38,7 +37,7 @@ public class tlv_t147
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t147
  * JD-Core Version:    0.7.0.1
  */

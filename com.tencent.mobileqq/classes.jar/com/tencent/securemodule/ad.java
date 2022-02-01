@@ -37,18 +37,18 @@ public class ad
   
   protected void a(int paramInt, Bundle paramBundle)
   {
-    if (this.b != null)
+    ad.a locala = this.b;
+    if (locala != null)
     {
-      if (paramInt != 1) {
-        break label23;
+      if (paramInt == 1)
+      {
+        locala.b(paramBundle);
+        return;
       }
-      this.b.b(paramBundle);
+      if (paramInt == 2) {
+        locala.a(paramBundle);
+      }
     }
-    label23:
-    while (paramInt != 2) {
-      return;
-    }
-    this.b.a(paramBundle);
   }
   
   public void a(ad.a parama)
@@ -69,7 +69,7 @@ public class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.ad
  * JD-Core Version:    0.7.0.1
  */

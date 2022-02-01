@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.FavEmoRoamingHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.AsyncStep;
-import com.tencent.mobileqq.app.automator.IResultListener;
-import com.tencent.mobileqq.app.automator.LinearGroup;
 import com.tencent.mobileqq.data.CameraEmotionData;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.IFavEmoRoamingHandler;
+import com.tencent.mobileqq.emosm.control.EmoAsyncStep;
+import com.tencent.mobileqq.emosm.control.EmoLinearGroup;
+import com.tencent.mobileqq.emosm.control.IEmoResultListener;
 import com.tencent.mobileqq.emosm.favroaming.FavEmoSingleSend;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.CaptureContext;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class CameraEmoAllSend
-  extends LinearGroup
-  implements IResultListener
+  extends EmoLinearGroup
+  implements IEmoResultListener
 {
-  public static boolean a;
+  public static boolean a = false;
   public static boolean b = false;
   private List<CustomEmotionBase> a;
   private boolean c = false;
@@ -28,69 +28,75 @@ public class CameraEmoAllSend
   private int g;
   private int h;
   
-  static
+  protected int a()
   {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public int a()
-  {
-    Iterator localIterator;
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    }
-    for (;;)
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      if (localIterator.hasNext())
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        localObject = (CustomEmotionBase)localIterator.next();
-        if (this.jdField_a_of_type_Int != 8) {
-          break label126;
-        }
-        if (QLog.isColorLevel()) {
+        Object localObject = (CustomEmotionBase)localIterator.next();
+        if (this.jdField_a_of_type_Int == 8)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
           QLog.d("CameraEmoAllSend", 1, new Object[] { "doStep interrupted, index:", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.indexOf(localObject)) });
+          break;
+        }
+        localObject = a((CustomEmotionBase)localObject);
+        if (localObject != null) {
+          ((EmoAsyncStep)localObject).run();
         }
       }
       if (this.c) {
         a(this.d, this.jdField_a_of_type_JavaUtilList.size(), this.f, this.g, this.h);
       }
-      return 7;
-      label126:
-      Object localObject = a((CustomEmotionBase)localObject);
-      if (localObject != null) {
-        ((AsyncStep)localObject).run();
-      }
     }
+    return 7;
   }
   
-  public AsyncStep a(CustomEmotionBase paramCustomEmotionBase)
+  public EmoAsyncStep a(CustomEmotionBase paramCustomEmotionBase)
   {
-    CameraEmoSingleSend localCameraEmoSingleSend = null;
     if ((paramCustomEmotionBase instanceof CameraEmotionData)) {
-      localCameraEmoSingleSend = new CameraEmoSingleSend((CameraEmotionData)paramCustomEmotionBase, false);
+      return new CameraEmoSingleSend((CameraEmotionData)paramCustomEmotionBase, false);
     }
-    while (!(paramCustomEmotionBase instanceof CustomEmotionData)) {
-      return localCameraEmoSingleSend;
+    if ((paramCustomEmotionBase instanceof CustomEmotionData))
+    {
+      paramCustomEmotionBase = new FavEmoSingleSend((CustomEmotionData)paramCustomEmotionBase, false);
+      paramCustomEmotionBase.a = this;
+      return paramCustomEmotionBase;
     }
-    paramCustomEmotionBase = new FavEmoSingleSend((CustomEmotionData)paramCustomEmotionBase, false);
-    paramCustomEmotionBase.a = this;
-    return paramCustomEmotionBase;
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList = ((List)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      if ((this.jdField_a_of_type_JavaUtilList.get(0) instanceof CameraEmotionData))
+      {
+        jdField_a_of_type_Boolean = false;
+      }
+      else if ((this.jdField_a_of_type_JavaUtilList.get(0) instanceof CustomEmotionData))
+      {
+        b = false;
+        this.c = true;
+        this.d = ((Integer)this.jdField_a_of_type_ArrayOfJavaLangObject[1]).intValue();
+        this.g = ((Integer)this.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue();
+        this.h = ((Integer)this.jdField_a_of_type_ArrayOfJavaLangObject[3]).intValue();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraEmoAllSend", 1, new Object[] { "onCreate, size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
+    }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    FavEmoRoamingHandler localFavEmoRoamingHandler = (FavEmoRoamingHandler)((QQAppInterface)CaptureContext.a()).getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER);
-    if ((paramInt3 < paramInt2) || ((paramInt4 > 0) && (paramInt5 > 0))) {
-      if (paramInt3 == 0) {
-        paramInt1 = 5;
-      }
-    }
-    for (;;)
+    IFavEmoRoamingHandler localIFavEmoRoamingHandler = (IFavEmoRoamingHandler)((BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(FavEmoRoamingHandler.a);
+    if ((paramInt3 >= paramInt2) && ((paramInt4 <= 0) || (paramInt5 <= 0)))
     {
-      localFavEmoRoamingHandler.notifyUI(2, false, Integer.valueOf(paramInt1));
-      return;
-      paramInt1 = 6;
-      continue;
       if (paramInt4 > 0)
       {
         if (paramInt4 == paramInt1) {
@@ -111,46 +117,24 @@ public class CameraEmoAllSend
         paramInt1 = 0;
       }
     }
+    else if (paramInt3 == 0) {
+      paramInt1 = 5;
+    } else {
+      paramInt1 = 6;
+    }
+    localIFavEmoRoamingHandler.notifyUI(2, false, Integer.valueOf(paramInt1));
   }
   
-  public void a(AsyncStep paramAsyncStep, int paramInt)
+  public void a(EmoAsyncStep paramEmoAsyncStep, int paramInt)
   {
-    if ((this.c) && ((paramAsyncStep instanceof FavEmoSingleSend)) && (((FavEmoSingleSend)paramAsyncStep).jdField_a_of_type_Boolean)) {
+    if ((this.c) && ((paramEmoAsyncStep instanceof FavEmoSingleSend)) && (((FavEmoSingleSend)paramEmoAsyncStep).jdField_a_of_type_Boolean)) {
       this.f += 1;
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilList = ((List)this.jdField_a_of_type_ArrayOfJavaLangObject[0]);
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      if (!(this.jdField_a_of_type_JavaUtilList.get(0) instanceof CameraEmotionData)) {
-        break label82;
-      }
-      jdField_a_of_type_Boolean = false;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraEmoAllSend", 1, new Object[] { "onCreate, size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
-      }
-      return;
-      label82:
-      if ((this.jdField_a_of_type_JavaUtilList.get(0) instanceof CustomEmotionData))
-      {
-        b = false;
-        this.c = true;
-        this.d = ((Integer)this.jdField_a_of_type_ArrayOfJavaLangObject[1]).intValue();
-        this.g = ((Integer)this.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue();
-        this.h = ((Integer)this.jdField_a_of_type_ArrayOfJavaLangObject[3]).intValue();
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend
  * JD-Core Version:    0.7.0.1
  */

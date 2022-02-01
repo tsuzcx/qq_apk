@@ -12,41 +12,42 @@ class UrlListToBitmapListSegment$InnerCallBack
   
   public boolean handleMessage(Message paramMessage)
   {
+    int i = paramMessage.what;
     int k = 0;
-    switch (paramMessage.what)
+    if (i != 0)
     {
-    default: 
-      return false;
-    case 1: 
+      if (i != 1) {
+        return false;
+      }
       UrlListToBitmapListSegment.a(this.a, new Error((Throwable)paramMessage.obj));
       return true;
     }
     paramMessage = (Bitmap[])paramMessage.obj;
     int m = paramMessage.length;
-    int i = 0;
+    i = 0;
+    int j;
     for (;;)
     {
-      int j = k;
-      if (i < m)
-      {
-        if (paramMessage[i] == null) {
-          j = 1;
-        }
+      j = k;
+      if (i >= m) {
+        break;
       }
-      else
+      if (paramMessage[i] == null)
       {
-        if (j == 0) {
-          UrlListToBitmapListSegment.a(this.a, Arrays.asList(paramMessage));
-        }
-        return true;
+        j = 1;
+        break;
       }
       i += 1;
     }
+    if (j == 0) {
+      UrlListToBitmapListSegment.a(this.a, Arrays.asList(paramMessage));
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.icon.UrlListToBitmapListSegment.InnerCallBack
  * JD-Core Version:    0.7.0.1
  */

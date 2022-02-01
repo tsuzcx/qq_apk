@@ -6,9 +6,8 @@ import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.nearby.business.INearbyCardHandler;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileCardConstants;
 
 class NearbyGuideActivity$10
   implements View.OnClickListener
@@ -17,23 +16,25 @@ class NearbyGuideActivity$10
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
+    if ((this.a.mPromptDialog != null) && (!this.a.isFinishing()))
     {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-      this.a.d(HardCodeUtil.a(2131707193));
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler = ((NearbyCardHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER));
+      this.a.mPromptDialog.dismiss();
+      paramView = this.a;
+      paramView.mPromptDialog = null;
+      paramView.showProcessDialog(HardCodeUtil.a(2131707218));
+      if (this.a.mCardHandler == null)
+      {
+        paramView = this.a;
+        paramView.mCardHandler = ((INearbyCardHandler)paramView.app.getBusinessHandler(BusinessHandlerFactory.NEARBY_CARD_HANDLER));
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(NearbyPeopleProfileActivity.c, 5);
-      this.a.e("0X8005909");
+      this.a.mCardHandler.a(NearbyProfileCardConstants.a, 5);
+      this.a.doClickReport("0X8005909");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.guide.NearbyGuideActivity.10
  * JD-Core Version:    0.7.0.1
  */

@@ -25,15 +25,16 @@ public class AvatarServerIPCModule
   
   public static AvatarServerIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new AvatarServerIPCModule("AvatarServerIPCModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new AvatarServerIPCModule("AvatarServerIPCModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public EIPCResult a(AppInterface paramAppInterface)
@@ -109,37 +110,28 @@ public class AvatarServerIPCModule
     }
     localObject = (AppInterface)localObject;
     if ("action_get_chose_ip".equals(paramString)) {
-      paramString = a((AppInterface)localObject);
+      return a((AppInterface)localObject);
     }
-    for (;;)
+    if ("action_get_stranger_group_ip".equals(paramString)) {
+      return b((AppInterface)localObject);
+    }
+    if ("action_get_face_setting".equals(paramString)) {
+      return a(paramBundle.getString("key_face_setting_key"), (AppInterface)localObject);
+    }
+    if ("action_update_face_setting".equals(paramString))
     {
-      return paramString;
-      if ("action_get_stranger_group_ip".equals(paramString))
-      {
-        paramString = b((AppInterface)localObject);
-      }
-      else if ("action_get_face_setting".equals(paramString))
-      {
-        paramString = a(paramBundle.getString("key_face_setting_key"), (AppInterface)localObject);
-      }
-      else if ("action_update_face_setting".equals(paramString))
-      {
-        a((Setting)paramBundle.getParcelable("key_face_setting"), (AppInterface)localObject);
-        paramString = null;
-      }
-      else
-      {
-        if ("action_update_setting_timestamp".equals(paramString)) {
-          a(paramBundle.getStringArrayList("key_key_list"), paramBundle.getLong("key_update_time", 0L), (AppInterface)localObject);
-        }
-        paramString = null;
-      }
+      a((Setting)paramBundle.getParcelable("key_face_setting"), (AppInterface)localObject);
+      return null;
     }
+    if ("action_update_setting_timestamp".equals(paramString)) {
+      a(paramBundle.getStringArrayList("key_key_list"), paramBundle.getLong("key_update_time", 0L), (AppInterface)localObject);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.ipc.AvatarServerIPCModule
  * JD-Core Version:    0.7.0.1
  */

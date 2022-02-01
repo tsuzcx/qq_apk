@@ -76,9 +76,9 @@ public class GroupManagerActivity
   {
     c();
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.setMainTitle(2131693135);
-    localActionSheet.addButton(2131693128, 3);
-    localActionSheet.addCancelButton(2131693130);
+    localActionSheet.setMainTitle(2131693095);
+    localActionSheet.addButton(2131693088, 3);
+    localActionSheet.addCancelButton(2131693090);
     localActionSheet.setOnDismissListener(new GroupManagerActivity.9(this));
     localActionSheet.setOnButtonClickListener(new GroupManagerActivity.10(this, paramByte));
     this.jdField_a_of_type_AndroidAppDialog = localActionSheet;
@@ -88,14 +88,14 @@ public class GroupManagerActivity
   public static void a(Activity paramActivity)
   {
     paramActivity.startActivity(new Intent(paramActivity, GroupManagerActivity.class));
-    paramActivity.overridePendingTransition(2130771981, 2130771982);
+    paramActivity.overridePendingTransition(2130771993, 2130771994);
   }
   
   private void d()
   {
     this.leftView.setVisibility(8);
-    setRightButton(2131693132, new GroupManagerActivity.1(this));
-    setTitle(2131693131);
+    setRightButton(2131693092, new GroupManagerActivity.1(this));
+    setTitle(2131693091);
   }
   
   private void e()
@@ -110,19 +110,19 @@ public class GroupManagerActivity
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setOnItemClickListener(new GroupManagerActivity.2(this, (GroupManagerInputTextWatcher)localObject));
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setLeftEventListener(new GroupManagerActivity.3(this));
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setVerticalScrollBarEnabled(false);
-    View localView = getLayoutInflater().inflate(2131559331, null);
+    View localView = getLayoutInflater().inflate(2131559208, null);
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addHeaderView(localView);
-    localView.findViewById(2131368098).setOnClickListener(new GroupManagerActivity.4(this, (GroupManagerInputTextWatcher)localObject));
+    localView.findViewById(2131367851).setOnClickListener(new GroupManagerActivity.4(this, (GroupManagerInputTextWatcher)localObject));
     localObject = new View(getActivity());
-    ((View)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, (int)(10.0F * getResources().getDisplayMetrics().density)));
+    ((View)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, (int)(getResources().getDisplayMetrics().density * 10.0F)));
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addFooterView((View)localObject);
   }
   
   public DragSortController a(DragSortListView paramDragSortListView)
   {
     paramDragSortListView = new DragSortController(paramDragSortListView);
-    paramDragSortListView.d(2131366057);
-    paramDragSortListView.e(2131364798);
+    paramDragSortListView.d(2131365886);
+    paramDragSortListView.e(2131364686);
     paramDragSortListView.b(true);
     paramDragSortListView.a(true);
     paramDragSortListView.a(0);
@@ -136,44 +136,55 @@ public class GroupManagerActivity
       QLog.d("GroupManagerActivity", 2, "/************************Start Refresh:");
     }
     this.jdField_a_of_type_JavaUtilList.clear();
-    Object localObject = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localObject != null) {}
-    for (localObject = ((FriendsManager)localObject).d();; localObject = null)
+    Object localObject2 = (FriendsManager)this.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject1 = null;
+    if (localObject2 != null) {
+      localObject1 = ((FriendsManager)localObject2).d();
+    }
+    if (localObject1 != null)
     {
-      if (localObject != null)
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          Groups localGroups = (Groups)((Iterator)localObject).next();
-          this.jdField_a_of_type_JavaUtilList.add(localGroups);
-        }
+        localObject2 = (Groups)((Iterator)localObject1).next();
+        this.jdField_a_of_type_JavaUtilList.add(localObject2);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAdapterGroupEditeDragSortAdapter == null)
+    }
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAdapterGroupEditeDragSortAdapter;
+    if (localObject1 == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAdapterGroupEditeDragSortAdapter = new GroupEditeDragSortAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterGroupEditeDragSortAdapter);
+    }
+    else
+    {
+      ((GroupEditeDragSortAdapter)localObject1).notifyDataSetChanged();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("End Refresh************************ size = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+      QLog.d("GroupManagerActivity", 2, ((StringBuilder)localObject1).toString());
+      int i = 0;
+      localObject1 = "[";
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        this.jdField_a_of_type_ComTencentMobileqqAdapterGroupEditeDragSortAdapter = new GroupEditeDragSortAdapter(this, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqAdapterGroupEditeDragSortAdapter);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append((byte)((Groups)this.jdField_a_of_type_JavaUtilList.get(i)).group_id);
+        ((StringBuilder)localObject2).append("   ");
+        localObject1 = ((StringBuilder)localObject2).toString();
+        i += 1;
       }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("GroupManagerActivity", 2, "End Refresh************************ size = " + this.jdField_a_of_type_JavaUtilList.size());
-        localObject = "[";
-        int i = 0;
-        for (;;)
-        {
-          if (i < this.jdField_a_of_type_JavaUtilList.size())
-          {
-            localObject = (String)localObject + (byte)((Groups)this.jdField_a_of_type_JavaUtilList.get(i)).group_id + "   ";
-            i += 1;
-            continue;
-            this.jdField_a_of_type_ComTencentMobileqqAdapterGroupEditeDragSortAdapter.notifyDataSetChanged();
-            break;
-          }
-        }
-        localObject = (String)localObject + "]";
-        QLog.d("GroupManagerActivity", 2, "End Refresh************************ s = " + (String)localObject);
-      }
-      return;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("]");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("End Refresh************************ s = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("GroupManagerActivity", 2, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -183,14 +194,15 @@ public class GroupManagerActivity
       QLog.d("GroupManagerActivity", 2, "showWaitingDialog");
     }
     a(false);
-    if ((this.jdField_b_of_type_AndroidAppDialog != null) && (this.jdField_b_of_type_AndroidAppDialog.isShowing()))
+    Object localObject = this.jdField_b_of_type_AndroidAppDialog;
+    if ((localObject != null) && (((Dialog)localObject).isShowing()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("GroupManagerActivity", 2, "WatingDialog is showing already!");
       }
       return;
     }
-    Object localObject = new QQProgressDialog(this, this.jdField_a_of_type_Int);
+    localObject = new QQProgressDialog(this, this.jdField_a_of_type_Int);
     ((QQProgressDialog)localObject).c(paramInt);
     this.jdField_b_of_type_AndroidAppDialog = ((Dialog)localObject);
     this.jdField_b_of_type_AndroidAppDialog.setOnDismissListener(new GroupManagerActivity.12(this));
@@ -203,99 +215,121 @@ public class GroupManagerActivity
   
   void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "dismissWaitingDialog delayPassed = " + this.c);
-    }
-    if ((this.c) && (this.jdField_b_of_type_AndroidAppDialog != null))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      if (this.jdField_b_of_type_AndroidAppDialog.isShowing()) {
-        this.jdField_b_of_type_AndroidAppDialog.dismiss();
-      }
-      this.jdField_b_of_type_AndroidAppDialog = null;
-      if (paramBoolean) {
-        a();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dismissWaitingDialog delayPassed = ");
+      ((StringBuilder)localObject).append(this.c);
+      QLog.d("GroupManagerActivity", 2, ((StringBuilder)localObject).toString());
+    }
+    if (this.c)
+    {
+      localObject = this.jdField_b_of_type_AndroidAppDialog;
+      if (localObject != null)
+      {
+        if (((Dialog)localObject).isShowing()) {
+          this.jdField_b_of_type_AndroidAppDialog.dismiss();
+        }
+        this.jdField_b_of_type_AndroidAppDialog = null;
+        if (paramBoolean) {
+          a();
+        }
       }
     }
   }
   
   public boolean a(byte paramByte)
   {
-    if (!NetworkUtil.d(getApplication()))
+    boolean bool2 = NetworkUtil.isNetSupport(getApplication());
+    boolean bool1 = false;
+    if (!bool2)
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694457, 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694422, 0).a();
       return false;
     }
     FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-    if (localFriendListHandler != null) {
+    if (localFriendListHandler != null)
+    {
       localFriendListHandler.deleteFriendGroup(paramByte);
+      bool1 = true;
     }
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return bool1;
   }
   
   public boolean a(byte paramByte, String paramString)
   {
-    if (!NetworkUtil.d(getApplication()))
+    boolean bool2 = NetworkUtil.isNetSupport(getApplication());
+    boolean bool1 = false;
+    if (!bool2)
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694457, 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694422, 0).a();
       return false;
     }
     FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-    if (localFriendListHandler != null) {
+    if (localFriendListHandler != null)
+    {
       localFriendListHandler.addFriendGroup(paramByte, paramString);
+      bool1 = true;
     }
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return bool1;
   }
   
   public boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (!NetworkUtil.d(getApplication()))
+    boolean bool2 = NetworkUtil.isNetSupport(getApplication());
+    boolean bool1 = false;
+    if (!bool2)
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694457, 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694422, 0).a();
       return false;
     }
     FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-    if (localFriendListHandler != null) {
+    if (localFriendListHandler != null)
+    {
       localFriendListHandler.resortFriendGroup(paramArrayOfByte1, paramArrayOfByte2);
+      bool1 = true;
     }
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return bool1;
   }
   
   @SuppressLint({"NewApi"})
   void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "scrollToBottom:" + this.jdField_a_of_type_JavaUtilList.size());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("scrollToBottom:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+      QLog.d("GroupManagerActivity", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.smoothScrollToPosition(this.jdField_a_of_type_JavaUtilList.size());
   }
   
   public boolean b(byte paramByte, String paramString)
   {
-    if (!NetworkUtil.d(getApplication()))
+    boolean bool2 = NetworkUtil.isNetSupport(getApplication());
+    boolean bool1 = false;
+    if (!bool2)
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131694457, 0).a();
+      QQToast.a(BaseApplicationImpl.sApplication, 2131694422, 0).a();
       return false;
     }
     FriendListHandler localFriendListHandler = (FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-    if (localFriendListHandler != null) {
+    if (localFriendListHandler != null)
+    {
       localFriendListHandler.renameFriendGroup(paramByte, paramString);
+      bool1 = true;
     }
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return bool1;
   }
   
   void c()
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null)
+    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+    if (localDialog != null)
     {
-      if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+      if (localDialog.isShowing()) {
         this.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
       this.jdField_a_of_type_AndroidAppDialog = null;
@@ -311,14 +345,14 @@ public class GroupManagerActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("GroupManagerActivity", 2, "onCreate");
     }
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131299166);
-    super.setContentView(2131561264);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131299168);
+    super.setContentView(2131561108);
     d();
     e();
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
@@ -327,7 +361,7 @@ public class GroupManagerActivity
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     if (QLog.isColorLevel()) {
       QLog.d("GroupManagerActivity", 2, "onDestroy");
@@ -340,27 +374,23 @@ public class GroupManagerActivity
   public void finish()
   {
     super.finish();
-    overridePendingTransition(2130771979, 2130771980);
+    overridePendingTransition(2130771991, 2130771992);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     if (456 == paramMessage.what) {
       a();
+    } else if (457 == paramMessage.what) {
+      b();
     }
-    for (;;)
-    {
-      return false;
-      if (457 == paramMessage.what) {
-        b();
-      }
-    }
+    return false;
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     boolean bool = super.onBackEvent();
-    overridePendingTransition(2130771979, 2130771980);
+    overridePendingTransition(2130771991, 2130771992);
     return bool;
   }
   
@@ -373,7 +403,7 @@ public class GroupManagerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GroupManagerActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -27,14 +27,15 @@ public final class stPlusRecomInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.status, 0);
-    if (this.strMinProgramJson != null) {
-      paramJceOutputStream.write(this.strMinProgramJson, 1);
+    String str = this.strMinProgramJson;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.stPlusRecomInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -14,24 +14,28 @@ public class EncodeInputSurface
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidViewSurface != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewSurface;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewSurface.release();
+      ((Surface)localObject).release();
       this.jdField_a_of_type_AndroidViewSurface = null;
     }
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase != null)
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase.a();
+      ((EglSurfaceBase)localObject).a();
       this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglSurfaceBase = null;
     }
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore != null)
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore.a();
+      ((EglCore)localObject).a();
       this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore = null;
     }
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicTextureRender != null)
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicTextureRender;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicTextureRender.a();
+      ((TextureRender)localObject).a();
       this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicTextureRender = null;
     }
   }
@@ -55,7 +59,7 @@ public class EncodeInputSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.encoder.EncodeInputSurface
  * JD-Core Version:    0.7.0.1
  */

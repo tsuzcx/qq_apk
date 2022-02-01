@@ -18,11 +18,11 @@ import com.tencent.mobileqq.activity.aio.voicetextpanel.model.VoiceTextStateMode
 import com.tencent.mobileqq.activity.aio.voicetextpanel.model.VoiceTextSttState;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 public class VoiceTextEditViewHelper
   extends VoiceTextBaseViewHelpr
@@ -34,9 +34,9 @@ public class VoiceTextEditViewHelper
   TextView.OnEditorActionListener jdField_a_of_type_AndroidWidgetTextView$OnEditorActionListener = new VoiceTextEditViewHelper.2(this);
   private VoiceTextShowAnimator jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator;
   
-  public VoiceTextEditViewHelper(VoiceTextStateModel paramVoiceTextStateModel, QQAppInterface paramQQAppInterface, Handler paramHandler)
+  public VoiceTextEditViewHelper(VoiceTextStateModel paramVoiceTextStateModel, AppRuntime paramAppRuntime, Handler paramHandler)
   {
-    super(paramQQAppInterface, paramVoiceTextStateModel);
+    super(paramAppRuntime, paramVoiceTextStateModel);
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator = new VoiceTextShowAnimator();
   }
@@ -48,24 +48,23 @@ public class VoiceTextEditViewHelper
     {
       localSpannableString = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a();
       this.jdField_a_of_type_AndroidWidgetEditText.setText(localSpannableString);
-    }
-    do
-    {
       return;
-      if (a().b())
-      {
-        localSpannableString = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a(a().b());
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(localSpannableString);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a());
-        return;
-      }
-    } while (!a().c());
-    k();
+    }
+    if (a().b())
+    {
+      localSpannableString = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a(a().b());
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(localSpannableString);
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a());
+      return;
+    }
+    if (a().c()) {
+      k();
+    }
   }
   
   private void j()
   {
-    if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null))
+    if (QQTheme.a())
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(Color.parseColor("#777777"));
       return;
@@ -82,7 +81,7 @@ public class VoiceTextEditViewHelper
       a().a(5);
       this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.b();
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131716678), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299166));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131716330), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a((String)localObject))
@@ -113,13 +112,13 @@ public class VoiceTextEditViewHelper
   public void a(VoiceTextUserOpListener paramVoiceTextUserOpListener)
   {
     super.a(paramVoiceTextUserOpListener);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131167117), this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelAnimVoiceTextShowAnimator.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131167142), this);
   }
   
   public void a(VoiceTextPanel paramVoiceTextPanel)
   {
     super.a(paramVoiceTextPanel);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramVoiceTextPanel.findViewById(2131366110));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramVoiceTextPanel.findViewById(2131366027));
     this.jdField_a_of_type_AndroidWidgetEditText.setHorizontallyScrolling(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setLines(100);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
@@ -169,14 +168,14 @@ public class VoiceTextEditViewHelper
   public void onClick(View paramView)
   {
     if ((a().a()) || (a().b())) {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131716685), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299166));
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131716336), 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextEditViewHelper
  * JD-Core Version:    0.7.0.1
  */

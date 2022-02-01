@@ -32,12 +32,17 @@ public class PlusPanelUtil
     int i = 0;
     while (i < paramList.size())
     {
-      if ((((AIOPanelIconItem)paramList.get(i)).jdField_d_of_type_Int == 5) || (((AIOPanelIconItem)paramList.get(i)).jdField_d_of_type_Int == 6)) {
+      j = i;
+      if (((AIOPanelIconItem)paramList.get(i)).jdField_d_of_type_Int == 5) {
+        return j;
+      }
+      if (((AIOPanelIconItem)paramList.get(i)).jdField_d_of_type_Int == 6) {
         return i;
       }
       i += 1;
     }
-    return -1;
+    int j = -1;
+    return j;
   }
   
   public static AIOPanelIconItem a(int paramInt)
@@ -47,46 +52,38 @@ public class PlusPanelUtil
   
   public static AIOPanelIconItem a(int paramInt, boolean paramBoolean)
   {
-    Object localObject;
     if (paramBoolean) {
-      localObject = (AIOPanelIconItem)b.get(paramInt);
+      return (AIOPanelIconItem)b.get(paramInt);
     }
-    for (;;)
+    try
     {
-      return localObject;
-      try
+      Object localObject = (AIOPanelIconConfigProcessor.Config)QConfigManager.a().a(496);
+      if (localObject != null)
       {
-        localObject = (AIOPanelIconConfigProcessor.Config)QConfigManager.a().a(496);
-        if (localObject != null)
+        localObject = ((AIOPanelIconConfigProcessor.Config)localObject).a;
+        if (((List)localObject).size() > 0)
         {
-          List localList = ((AIOPanelIconConfigProcessor.Config)localObject).a;
-          if (localList.size() > 0)
+          int i = 0;
+          while (i < ((List)localObject).size())
           {
-            int i = 0;
-            for (;;)
+            AIOPanelIconItem localAIOPanelIconItem = (AIOPanelIconItem)((List)localObject).get(i);
+            int[] arrayOfInt = (int[])a.get(localAIOPanelIconItem.jdField_a_of_type_Int);
+            if (arrayOfInt != null)
             {
-              if (i >= localList.size()) {
-                break label133;
+              int j = arrayOfInt[0];
+              if (paramInt == j) {
+                return localAIOPanelIconItem;
               }
-              localObject = (AIOPanelIconItem)localList.get(i);
-              int[] arrayOfInt = (int[])a.get(((AIOPanelIconItem)localObject).jdField_a_of_type_Int);
-              if (arrayOfInt != null)
-              {
-                int j = arrayOfInt[0];
-                if (paramInt == j) {
-                  break;
-                }
-              }
-              i += 1;
             }
+            i += 1;
           }
         }
-        return null;
       }
-      catch (Exception localException)
-      {
-        QLog.e("PlusPanelUtil", 1, localException, new Object[0]);
-      }
+      return null;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("PlusPanelUtil", 1, localException, new Object[0]);
     }
   }
   
@@ -110,19 +107,19 @@ public class PlusPanelUtil
               AIOPanelIconItem localAIOPanelIconItem = (AIOPanelIconItem)((List)localObject).get(i);
               arrayOfInt = (int[])a.get(localAIOPanelIconItem.jdField_a_of_type_Int);
               if (arrayOfInt != null) {
-                break label213;
+                break label222;
               }
               b.put(localAIOPanelIconItem.jdField_a_of_type_Int, localAIOPanelIconItem);
               j = 1;
               if (j == 0) {
-                break label218;
+                break label227;
               }
               k = localAIOPanelIconItem.jdField_a_of_type_Int;
               localAIOPanelIconItem.jdField_d_of_type_Int = k;
               localAIOPanelIconItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localAIOPanelIconItem.a();
               localAIOPanelIconItem.b = localAIOPanelIconItem.b();
               if (j == 0) {
-                break label226;
+                break label235;
               }
               j = 0;
               localAIOPanelIconItem.e = j;
@@ -142,13 +139,13 @@ public class PlusPanelUtil
         QLog.e("PlusPanelUtil", 1, paramContext, new Object[0]);
       }
       return new ArrayList();
-      label213:
+      label222:
       int j = 0;
       continue;
-      label218:
+      label227:
       int k = arrayOfInt[0];
       continue;
-      label226:
+      label235:
       j = arrayOfInt[3];
     }
   }
@@ -187,15 +184,16 @@ public class PlusPanelUtil
   
   public static int[] a(int paramInt)
   {
-    if (a != null) {
-      return (int[])a.get(paramInt);
+    SparseArray localSparseArray = a;
+    if (localSparseArray != null) {
+      return (int[])localSparseArray.get(paramInt);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.PlusPanelUtil
  * JD-Core Version:    0.7.0.1
  */

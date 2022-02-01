@@ -36,12 +36,20 @@ public final class TouchPoint
   
   public String toString()
   {
-    return "TouchPoint{mTime=" + this.jdField_a_of_type_Long + ", mPoint=" + this.jdField_a_of_type_AndroidGraphicsPoint + ", mDistanceOfError=" + this.jdField_a_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TouchPoint{mTime=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mPoint=");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsPoint);
+    localStringBuilder.append(", mDistanceOfError=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.tool.TouchPoint
  * JD-Core Version:    0.7.0.1
  */

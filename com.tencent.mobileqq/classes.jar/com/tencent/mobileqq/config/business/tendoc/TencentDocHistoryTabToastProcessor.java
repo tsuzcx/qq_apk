@@ -4,11 +4,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class TencentDocHistoryTabToastProcessor
   extends IQConfigProcessor<TencentDocHistoryTabToastBean>
@@ -35,7 +35,7 @@ public class TencentDocHistoryTabToastProcessor
   
   public void a(TencentDocHistoryTabToastBean paramTencentDocHistoryTabToastBean)
   {
-    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("key_tencent_doc_history_tab_tips_count", 0).apply();
+    MobileQQ.sMobileQQ.waitAppRuntime(null).getPreferences().edit().putInt("key_tencent_doc_history_tab_tips_count", 0).apply();
   }
   
   public Class<TencentDocHistoryTabToastBean> clazz()
@@ -67,7 +67,7 @@ public class TencentDocHistoryTabToastProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocHistoryTabToastProcessor
  * JD-Core Version:    0.7.0.1
  */

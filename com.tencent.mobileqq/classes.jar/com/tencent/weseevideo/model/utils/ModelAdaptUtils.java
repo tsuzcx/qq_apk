@@ -39,14 +39,14 @@ public class ModelAdaptUtils
   
   private static TAVVideoConfiguration.TAVVideoConfigurationContentMode getContentMode(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFit;
-    case 1: 
-      return TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill;
+      if (paramInt != 2) {
+        return TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFit;
+      }
+      return TAVVideoConfiguration.TAVVideoConfigurationContentMode.scaleToFit;
     }
-    return TAVVideoConfiguration.TAVVideoConfigurationContentMode.scaleToFit;
+    return TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill;
   }
   
   public static TAVSticker stickerModelToTAVSticker(@NonNull StickerModel paramStickerModel, @NonNull CGSize paramCGSize)
@@ -66,19 +66,9 @@ public class ModelAdaptUtils
   
   public static TAVResource transformToTAVResource(@NonNull VideoResourceModel paramVideoResourceModel)
   {
-    Object localObject = null;
-    if ((paramVideoResourceModel.getType() == 1) || (paramVideoResourceModel.getType() == 3)) {
-      localObject = new TAVAssetTrackResource(new URLAsset(paramVideoResourceModel.getPath()));
-    }
-    for (;;)
+    Object localObject;
+    if ((paramVideoResourceModel.getType() != 1) && (paramVideoResourceModel.getType() != 3))
     {
-      if (localObject != null)
-      {
-        ((TAVResource)localObject).setSourceTimeRange(new CMTimeRange(new CMTime(paramVideoResourceModel.getSourceTimeStart() + paramVideoResourceModel.getSelectTimeStart(), 1000), new CMTime(paramVideoResourceModel.getSelectTimeDuration(), 1000)));
-        Log.d("lingeng_time", "transformToTAVResource:  \nvideoResourceModel.getSourceTimeStart()" + paramVideoResourceModel.getSourceTimeStart() + "\nvideoResourceModel.getSelectTimeStart()" + paramVideoResourceModel.getSelectTimeStart() + "\nvideoResourceModel.getSelectTimeDuration()" + paramVideoResourceModel.getSelectTimeDuration() + "\nvideoResourceModel.getScaleDuration()" + paramVideoResourceModel.getScaleDuration());
-        ((TAVResource)localObject).setScaledDuration(new CMTime(paramVideoResourceModel.getScaleDuration(), 1000));
-      }
-      return localObject;
       if (paramVideoResourceModel.getType() == 2)
       {
         localObject = new TAVImageTrackResource(paramVideoResourceModel.getPath(), new CMTime((float)paramVideoResourceModel.getSourceTimeDuration() / 1000.0F));
@@ -88,7 +78,30 @@ public class ModelAdaptUtils
         localObject = new CGSize(paramVideoResourceModel.getWidth(), paramVideoResourceModel.getHeight());
         localObject = new TAVImageResource(new CIImage(paramVideoResourceModel.getPath(), (CGSize)localObject), new CMTime((float)paramVideoResourceModel.getSourceTimeDuration() / 1000.0F));
       }
+      else
+      {
+        localObject = null;
+      }
     }
+    else {
+      localObject = new TAVAssetTrackResource(new URLAsset(paramVideoResourceModel.getPath()));
+    }
+    if (localObject != null)
+    {
+      ((TAVResource)localObject).setSourceTimeRange(new CMTimeRange(new CMTime(paramVideoResourceModel.getSourceTimeStart() + paramVideoResourceModel.getSelectTimeStart(), 1000), new CMTime(paramVideoResourceModel.getSelectTimeDuration(), 1000)));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("transformToTAVResource:  \nvideoResourceModel.getSourceTimeStart()");
+      localStringBuilder.append(paramVideoResourceModel.getSourceTimeStart());
+      localStringBuilder.append("\nvideoResourceModel.getSelectTimeStart()");
+      localStringBuilder.append(paramVideoResourceModel.getSelectTimeStart());
+      localStringBuilder.append("\nvideoResourceModel.getSelectTimeDuration()");
+      localStringBuilder.append(paramVideoResourceModel.getSelectTimeDuration());
+      localStringBuilder.append("\nvideoResourceModel.getScaleDuration()");
+      localStringBuilder.append(paramVideoResourceModel.getScaleDuration());
+      Log.d("lingeng_time", localStringBuilder.toString());
+      ((TAVResource)localObject).setScaledDuration(new CMTime(paramVideoResourceModel.getScaleDuration(), 1000));
+    }
+    return localObject;
   }
   
   public static TAVMovieVideoConfiguration transformToTAVVideoConfiguration(@NonNull VideoConfigurationModel paramVideoConfigurationModel)
@@ -161,7 +174,7 @@ public class ModelAdaptUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.utils.ModelAdaptUtils
  * JD-Core Version:    0.7.0.1
  */

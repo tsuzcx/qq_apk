@@ -26,14 +26,14 @@ final class OperatorScan$InitialProducer<R>
   public OperatorScan$InitialProducer(R paramR, Subscriber<? super R> paramSubscriber)
   {
     this.child = paramSubscriber;
-    if (UnsafeAccess.isUnsafeAvailable()) {}
-    for (paramSubscriber = new SpscLinkedQueue();; paramSubscriber = new SpscLinkedAtomicQueue())
-    {
-      this.queue = paramSubscriber;
-      paramSubscriber.offer(NotificationLite.instance().next(paramR));
-      this.requested = new AtomicLong();
-      return;
+    if (UnsafeAccess.isUnsafeAvailable()) {
+      paramSubscriber = new SpscLinkedQueue();
+    } else {
+      paramSubscriber = new SpscLinkedAtomicQueue();
     }
+    this.queue = paramSubscriber;
+    paramSubscriber.offer(NotificationLite.instance().next(paramR));
+    this.requested = new AtomicLong();
   }
   
   boolean checkTerminated(boolean paramBoolean1, boolean paramBoolean2, Subscriber<? super R> paramSubscriber)
@@ -81,71 +81,70 @@ final class OperatorScan$InitialProducer<R>
     NotificationLite localNotificationLite = NotificationLite.instance();
     AtomicLong localAtomicLong = this.requested;
     long l1 = localAtomicLong.get();
-    if (l1 == 9223372036854775807L) {}
-    for (int i = 1; checkTerminated(this.done, localQueue.isEmpty(), localSubscriber); i = 0) {
-      return;
-    }
-    long l2 = 0L;
-    Object localObject;
-    boolean bool1;
-    if (l1 != 0L)
-    {
-      boolean bool2 = this.done;
-      localObject = localQueue.poll();
-      if (localObject == null)
-      {
-        bool1 = true;
-        label97:
-        if (checkTerminated(bool2, bool1, localSubscriber)) {
-          break label162;
-        }
-        if (!bool1) {
-          break label164;
-        }
-      }
-    }
-    else
-    {
-      if ((l2 == 0L) || (i != 0)) {
-        break label215;
-      }
-      l1 = localAtomicLong.addAndGet(l2);
-    }
-    label162:
-    label164:
-    label205:
-    label215:
     for (;;)
     {
-      for (;;)
+      int i;
+      if (l1 == 9223372036854775807L) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (checkTerminated(this.done, localQueue.isEmpty(), localSubscriber)) {
+        return;
+      }
+      long l3 = 0L;
+      while (l1 != 0L)
       {
-        try
+        boolean bool2 = this.done;
+        Object localObject2 = localQueue.poll();
+        boolean bool1;
+        if (localObject2 == null) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        if (checkTerminated(bool2, bool1, localSubscriber)) {
+          return;
+        }
+        if (!bool1)
         {
-          if (this.missed) {
-            break label205;
+          localObject2 = localNotificationLite.getValue(localObject2);
+          try
+          {
+            localSubscriber.onNext(localObject2);
+            l1 -= 1L;
+            l3 -= 1L;
           }
+          catch (Throwable localThrowable)
+          {
+            Exceptions.throwOrReport(localThrowable, localSubscriber, localObject2);
+            return;
+          }
+        }
+      }
+      long l2 = l1;
+      if (l3 != 0L)
+      {
+        l2 = l1;
+        if (i == 0) {
+          l2 = localAtomicLong.addAndGet(l3);
+        }
+      }
+      try
+      {
+        if (!this.missed)
+        {
           this.emitting = false;
           return;
         }
-        finally {}
-        bool1 = false;
-        break label97;
-        break;
-        localObject = localNotificationLite.getValue(localObject);
-        try
-        {
-          localObserver.onNext(localObject);
-          l2 -= 1L;
-          l1 -= 1L;
-        }
-        catch (Throwable localThrowable)
-        {
-          Exceptions.throwOrReport(localThrowable, localObserver, localObject);
-          return;
-        }
+        this.missed = false;
+        l1 = l2;
       }
-      this.missed = false;
-      break;
+      finally {}
+    }
+    for (;;)
+    {
+      throw localObject1;
     }
   }
   
@@ -170,58 +169,64 @@ final class OperatorScan$InitialProducer<R>
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= required but it was " + paramLong);
-    }
-    Object localObject1;
-    if (paramLong != 0L)
+    if (paramLong >= 0L)
     {
-      BackpressureUtils.getAndAddRequest(this.requested, paramLong);
-      ??? = this.producer;
-      localObject1 = ???;
-      if (??? != null) {}
-    }
-    synchronized (this.requested)
-    {
-      localObject1 = this.producer;
-      if (localObject1 == null) {
-        this.missedRequested = BackpressureUtils.addCap(this.missedRequested, paramLong);
+      if (paramLong != 0L)
+      {
+        BackpressureUtils.getAndAddRequest(this.requested, paramLong);
+        ??? = this.producer;
+        Object localObject1 = ???;
+        if (??? == null) {
+          synchronized (this.requested)
+          {
+            localObject1 = this.producer;
+            if (localObject1 == null) {
+              this.missedRequested = BackpressureUtils.addCap(this.missedRequested, paramLong);
+            }
+          }
+        }
+        if (localObject2 != null) {
+          localObject2.request(paramLong);
+        }
+        emit();
       }
-      if (localObject1 != null) {
-        ((Producer)localObject1).request(paramLong);
-      }
-      emit();
       return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("n >= required but it was ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void setProducer(Producer paramProducer)
   {
-    if (paramProducer == null) {
-      throw new NullPointerException();
-    }
-    synchronized (this.requested)
-    {
-      if (this.producer != null) {
+    if (paramProducer != null) {
+      synchronized (this.requested)
+      {
+        if (this.producer == null)
+        {
+          long l2 = this.missedRequested;
+          long l1 = l2;
+          if (l2 != 9223372036854775807L) {
+            l1 = l2 - 1L;
+          }
+          this.missedRequested = 0L;
+          this.producer = paramProducer;
+          if (l1 > 0L) {
+            paramProducer.request(l1);
+          }
+          emit();
+          return;
+        }
         throw new IllegalStateException("Can't set more than one Producer!");
       }
     }
-    long l2 = this.missedRequested;
-    long l1 = l2;
-    if (l2 != 9223372036854775807L) {
-      l1 = l2 - 1L;
-    }
-    this.missedRequested = 0L;
-    this.producer = paramProducer;
-    if (l1 > 0L) {
-      paramProducer.request(l1);
-    }
-    emit();
+    throw new NullPointerException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorScan.InitialProducer
  * JD-Core Version:    0.7.0.1
  */

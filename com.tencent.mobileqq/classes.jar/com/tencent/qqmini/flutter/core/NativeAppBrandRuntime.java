@@ -68,77 +68,82 @@ public class NativeAppBrandRuntime
       Integer localInteger1 = (Integer)((Map)localObject).get("renderTimeCost");
       if (localInteger3 != null)
       {
-        if (getMiniAppInfo() != null) {
-          break label187;
+        if (getMiniAppInfo() == null) {
+          paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
+        } else {
+          paramMap = getMiniAppInfo();
         }
-        paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
         MiniReportManager.reportEventType(paramMap, 217, "0", localInteger3.intValue());
       }
       if (localInteger2 != null)
       {
-        if (getMiniAppInfo() != null) {
-          break label195;
+        if (getMiniAppInfo() == null) {
+          paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
+        } else {
+          paramMap = getMiniAppInfo();
         }
-        paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
-        label101:
         MiniReportManager.reportEventType(paramMap, 218, "0", localInteger2.intValue());
       }
       if (localInteger1 != null)
       {
-        if (getMiniAppInfo() != null) {
-          break label203;
+        if (getMiniAppInfo() == null) {
+          paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
+        } else {
+          paramMap = getMiniAppInfo();
         }
-        paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
-        label131:
         MiniReportManager.reportEventType(paramMap, 219, "0", localInteger1.intValue());
       }
       localObject = (Integer)((Map)localObject).get("totalTimeCost");
-      if (localObject != null) {
-        if (getMiniAppInfo() != null) {
-          break label211;
+      if (localObject != null)
+      {
+        if (getMiniAppInfo() == null) {
+          paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
+        } else {
+          paramMap = getMiniAppInfo();
         }
+        MiniReportManager.reportEventType(paramMap, 220, "0", ((Integer)localObject).intValue());
       }
-    }
-    label187:
-    label195:
-    label203:
-    label211:
-    for (paramMap = MiniProgramReportHelper.miniAppConfigForPreload();; paramMap = getMiniAppInfo())
-    {
-      MiniReportManager.reportEventType(paramMap, 220, "0", ((Integer)localObject).intValue());
-      return;
-      paramMap = getMiniAppInfo();
-      break;
-      paramMap = getMiniAppInfo();
-      break label101;
-      paramMap = getMiniAppInfo();
-      break label131;
     }
   }
   
   private void onViewDidAppear(Map paramMap)
   {
     performAction(AppStateEvent.obtain(11));
-    if ((paramMap.containsKey("data")) && ((paramMap.get("data") instanceof Map)))
+    Integer localInteger2 = Integer.valueOf(0);
+    Integer localInteger1 = localInteger2;
+    if (paramMap.containsKey("data"))
     {
-      paramMap = (Map)paramMap.get("data");
-      if ((!paramMap.containsKey("pageID")) || (!(paramMap.get("pageID") instanceof Integer))) {}
-    }
-    for (paramMap = (Integer)paramMap.get("pageID");; paramMap = Integer.valueOf(0))
-    {
-      QMLog.w("miniapp-start-TISSUE", "flutter page " + paramMap + " shown" + System.currentTimeMillis() + "runtime: " + hashCode());
-      if (!this.firstPageShown) {
-        if (getMiniAppInfo() != null) {
-          break label164;
+      localInteger1 = localInteger2;
+      if ((paramMap.get("data") instanceof Map))
+      {
+        paramMap = (Map)paramMap.get("data");
+        localInteger1 = localInteger2;
+        if (paramMap.containsKey("pageID"))
+        {
+          localInteger1 = localInteger2;
+          if ((paramMap.get("pageID") instanceof Integer)) {
+            localInteger1 = (Integer)paramMap.get("pageID");
+          }
         }
       }
-      label164:
-      for (paramMap = MiniProgramReportHelper.miniAppConfigForPreload();; paramMap = getMiniAppInfo())
-      {
-        MiniAppReportManager2.reportLaunchPiecewise(216, "", paramMap);
-        this.firstPageShown = true;
-        return;
+    }
+    paramMap = new StringBuilder();
+    paramMap.append("flutter page ");
+    paramMap.append(localInteger1);
+    paramMap.append(" shown");
+    paramMap.append(System.currentTimeMillis());
+    paramMap.append("runtime: ");
+    paramMap.append(hashCode());
+    QMLog.w("miniapp-start-TISSUE", paramMap.toString());
+    if (!this.firstPageShown)
+    {
+      if (getMiniAppInfo() == null) {
+        paramMap = MiniProgramReportHelper.miniAppConfigForPreload();
+      } else {
+        paramMap = getMiniAppInfo();
       }
+      MiniAppReportManager2.reportLaunchPiecewise(216, "", paramMap);
+      this.firstPageShown = true;
     }
   }
   
@@ -193,7 +198,12 @@ public class NativeAppBrandRuntime
   public void onLoadMiniAppInfo(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, String paramString)
   {
     QMLog.i("AppBrandRuntime", " [MiniLifecycle] onLoadMiniAppInfo");
-    QMLog.i("AppBrandRuntime", "onLoadMiniAppInfo miniAppInfo=" + paramMiniAppInfo + ",fromReload=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onLoadMiniAppInfo miniAppInfo=");
+    localStringBuilder.append(paramMiniAppInfo);
+    localStringBuilder.append(",fromReload=");
+    localStringBuilder.append(paramBoolean);
+    QMLog.i("AppBrandRuntime", localStringBuilder.toString());
     this.mMiniAppInfo = paramMiniAppInfo;
     this.jsPluginEngine.onCreate(this);
     this.appBrandService.setApkgInfo((ApkgInfo)paramMiniAppInfo.apkgInfo);
@@ -206,15 +216,16 @@ public class NativeAppBrandRuntime
   public void onRuntimeDetachActivity(Activity paramActivity)
   {
     super.onRuntimeDetachActivity(paramActivity);
-    if (this.nativeView.getPluginRegistry().getPlatformViewsController() != null) {}
-    try
-    {
-      this.nativeView.detachFromFlutterView();
-      return;
-    }
-    catch (Throwable paramActivity)
-    {
-      QMLog.e("AppBrandRuntime", "nativeView.detachFromFlutterView err, ", paramActivity);
+    if (this.nativeView.getPluginRegistry().getPlatformViewsController() != null) {
+      try
+      {
+        this.nativeView.detachFromFlutterView();
+        return;
+      }
+      catch (Throwable paramActivity)
+      {
+        QMLog.e("AppBrandRuntime", "nativeView.detachFromFlutterView err, ", paramActivity);
+      }
     }
   }
   
@@ -270,7 +281,7 @@ public class NativeAppBrandRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.NativeAppBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

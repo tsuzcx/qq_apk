@@ -15,17 +15,17 @@ class RequestJsPlugin$3
   {
     try
     {
-      JSONObject localJSONObject2 = new JSONObject(this.val$req.jsonParams);
-      JSONObject localJSONObject1 = localJSONObject2.optJSONObject("header");
-      Object localObject = localJSONObject1;
-      if (localJSONObject1 == null) {
-        localObject = new JSONObject();
+      JSONObject localJSONObject = new JSONObject(this.val$req.jsonParams);
+      localObject2 = localJSONObject.optJSONObject("header");
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new JSONObject();
       }
-      ((JSONObject)localObject).put("Referer", RequestJsPlugin.access$1000(this.this$0));
-      localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      if (localObject != null)
+      ((JSONObject)localObject1).put("Referer", RequestJsPlugin.access$1000(this.this$0));
+      localObject1 = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+      if (localObject1 != null)
       {
-        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.3.1(this));
+        ((ChannelProxy)localObject1).wnsCgiRequest(localJSONObject, new RequestJsPlugin.3.1(this));
         return;
       }
       RequestJsPlugin.access$1200(this.this$0, this.val$req, null, "do not support wnsRequest");
@@ -33,13 +33,16 @@ class RequestJsPlugin$3
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("[mini] http.RequestJsPlugin", this.val$req.event + " exception:", localThrowable);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.val$req.event);
+      ((StringBuilder)localObject2).append(" exception:");
+      QMLog.e("[mini] http.RequestJsPlugin", ((StringBuilder)localObject2).toString(), localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RequestJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

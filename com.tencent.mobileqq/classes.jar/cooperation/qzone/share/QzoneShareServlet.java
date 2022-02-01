@@ -47,13 +47,16 @@ public class QzoneShareServlet
       paramIntent = new byte[4];
     }
     paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + ((QzoneShareRequest)localObject2).uniKey());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("SQQzoneSvc.");
+    ((StringBuilder)localObject1).append(((QzoneShareRequest)localObject2).uniKey());
+    paramPacket.setSSOCommand(((StringBuilder)localObject1).toString());
     paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.share.QzoneShareServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -37,18 +37,27 @@ final class ConstantBitrateSeeker
   
   public SeekMap.SeekPoints getSeekPoints(long paramLong)
   {
-    if (this.dataSize == -1L) {
+    long l1 = this.dataSize;
+    if (l1 == -1L) {
       return new SeekMap.SeekPoints(new SeekPoint(0L, this.firstFramePosition));
     }
-    long l1 = Util.constrainValue(this.bitrate * paramLong / 8000000L / this.frameSize * this.frameSize, 0L, this.dataSize - this.frameSize);
-    long l2 = this.firstFramePosition + l1;
+    long l2 = this.bitrate * paramLong / 8000000L;
+    int i = this.frameSize;
+    l1 = Util.constrainValue(l2 / i * i, 0L, l1 - i);
+    l2 = this.firstFramePosition + l1;
     long l3 = getTimeUs(l2);
     SeekPoint localSeekPoint = new SeekPoint(l3, l2);
-    if ((l3 >= paramLong) || (l1 == this.dataSize - this.frameSize)) {
-      return new SeekMap.SeekPoints(localSeekPoint);
+    if (l3 < paramLong)
+    {
+      paramLong = this.dataSize;
+      i = this.frameSize;
+      if (l1 != paramLong - i)
+      {
+        paramLong = l2 + i;
+        return new SeekMap.SeekPoints(localSeekPoint, new SeekPoint(getTimeUs(paramLong), paramLong));
+      }
     }
-    paramLong = this.frameSize + l2;
-    return new SeekMap.SeekPoints(localSeekPoint, new SeekPoint(getTimeUs(paramLong), paramLong));
+    return new SeekMap.SeekPoints(localSeekPoint);
   }
   
   public long getTimeUs(long paramLong)
@@ -63,7 +72,7 @@ final class ConstantBitrateSeeker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp3.ConstantBitrateSeeker
  * JD-Core Version:    0.7.0.1
  */

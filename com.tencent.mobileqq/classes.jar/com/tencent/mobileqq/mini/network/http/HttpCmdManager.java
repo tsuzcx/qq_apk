@@ -22,53 +22,65 @@ public class HttpCmdManager
   
   private void sendRequest(String paramString, HttpProtoBufRequest paramHttpProtoBufRequest, HttpCmdResult paramHttpCmdResult)
   {
+    Object localObject1;
     try
     {
-      byte[] arrayOfByte1 = paramHttpProtoBufRequest.encode();
-      byte[] arrayOfByte2 = arrayOfByte1;
-      if (arrayOfByte1 == null) {
-        arrayOfByte2 = new byte[4];
-      }
-      MiniappHttpUtil.httpPostV2(paramString, WupUtil.a(arrayOfByte2), null, new HttpCmdManager.1(this, paramHttpCmdResult, paramHttpProtoBufRequest), null);
-      return;
+      byte[] arrayOfByte = paramHttpProtoBufRequest.encode();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("HttpCmdManager", 1, "handleRequest Exception: " + Log.getStackTraceString(localException));
-        Object localObject = null;
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("handleRequest Exception: ");
+      ((StringBuilder)localObject2).append(Log.getStackTraceString(localException));
+      QLog.e("HttpCmdManager", 1, ((StringBuilder)localObject2).toString());
+      localObject1 = null;
     }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = new byte[4];
+    }
+    MiniappHttpUtil.httpPostV2(paramString, WupUtil.a((byte[])localObject2), null, new HttpCmdManager.1(this, paramHttpCmdResult, paramHttpProtoBufRequest), null);
   }
   
   public void checkNavigateRight(String paramString1, String paramString2, String paramString3, HttpCmdResult paramHttpCmdResult)
   {
     paramString1 = new HttpCheckNavigateRightRequest(paramString1, paramString2);
-    sendRequest("https://q.qq.com/security/bypass_channel?forbid_token=" + paramString3, paramString1, paramHttpCmdResult);
+    paramString2 = new StringBuilder();
+    paramString2.append("https://q.qq.com/security/bypass_channel?forbid_token=");
+    paramString2.append(paramString3);
+    sendRequest(paramString2.toString(), paramString1, paramHttpCmdResult);
   }
   
   public void getAppInfoById(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, HttpCmdResult paramHttpCmdResult)
   {
     paramStCommonExt = new HttpGetAppInfoByIdRequest(paramStCommonExt, paramString1, 1, 0, paramString2, paramString3, paramString5);
-    sendRequest("https://q.qq.com/security/bypass_channel?forbid_token=" + paramString4, paramStCommonExt, paramHttpCmdResult);
+    paramString1 = new StringBuilder();
+    paramString1.append("https://q.qq.com/security/bypass_channel?forbid_token=");
+    paramString1.append(paramString4);
+    sendRequest(paramString1.toString(), paramStCommonExt, paramHttpCmdResult);
   }
   
   public void getAppInfoByLink(String paramString1, int paramInt, String paramString2, HttpCmdResult paramHttpCmdResult)
   {
     paramString1 = new HttpGetAppInfoByLinkRequest(paramString1, paramInt);
-    sendRequest("https://q.qq.com/security/bypass_channel?forbid_token=" + paramString2, paramString1, paramHttpCmdResult);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://q.qq.com/security/bypass_channel?forbid_token=");
+    localStringBuilder.append(paramString2);
+    sendRequest(localStringBuilder.toString(), paramString1, paramHttpCmdResult);
   }
   
   public void getCode(String paramString1, String paramString2, HttpCmdResult paramHttpCmdResult)
   {
     paramString1 = new HttpGetCodeRequest(paramString1);
-    sendRequest("https://q.qq.com/security/bypass_channel?forbid_token=" + paramString2, paramString1, paramHttpCmdResult);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://q.qq.com/security/bypass_channel?forbid_token=");
+    localStringBuilder.append(paramString2);
+    sendRequest(localStringBuilder.toString(), paramString1, paramHttpCmdResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.network.http.HttpCmdManager
  * JD-Core Version:    0.7.0.1
  */

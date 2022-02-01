@@ -37,32 +37,31 @@ class QQReminderDataServiceImpl$5
       this.jdField_a_of_type_JavaUtilList.add(((ReminderEntity)localObject2).getAcsMsg());
       continue;
       localObject1 = QQReminderDataServiceImpl.access$500(this.this$0, NetConnInfoCenter.getServerTimeMillis());
-      if (localObject1 == null) {
+      if (localObject1 == null)
+      {
         if (QLog.isColorLevel()) {
           QLog.d("ReminderDataManagerNew", 1, "async from db, msg list is null");
         }
       }
-      while ((!QQReminderDataServiceImpl.access$600(this.this$0).get()) || (this.jdField_a_of_type_Boolean))
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReminderDataManagerNew", 1, new Object[] { "async from db, msg count: ", Integer.valueOf(((List)localObject1).size()) });
+        }
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (ReminderEntity)((Iterator)localObject1).next();
+          this.jdField_a_of_type_JavaUtilList.add(((ReminderEntity)localObject2).getAcsMsg());
+        }
+      }
+      if ((!QQReminderDataServiceImpl.access$600(this.this$0).get()) || (this.jdField_a_of_type_Boolean))
       {
         localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-        for (;;)
+        while (((Iterator)localObject1).hasNext())
         {
-          if (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (AcsMsg)((Iterator)localObject1).next();
-            QQReminderDataServiceImpl.access$700(this.this$0, (AcsMsg)localObject2, 1);
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.d("ReminderDataManagerNew", 1, new Object[] { "async from db, msg count: ", Integer.valueOf(((List)localObject1).size()) });
-            }
-            localObject1 = ((List)localObject1).iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (ReminderEntity)((Iterator)localObject1).next();
-              this.jdField_a_of_type_JavaUtilList.add(((ReminderEntity)localObject2).getAcsMsg());
-            }
-            break;
-          }
+          localObject2 = (AcsMsg)((Iterator)localObject1).next();
+          QQReminderDataServiceImpl.access$700(this.this$0, (AcsMsg)localObject2, 1);
         }
         QQReminderDataServiceImpl.access$600(this.this$0).set(true);
         QQReminderDataServiceImpl.access$800(this.this$0).edit().putString("sp_key_cache_list_time", QQReminderUtil.a(NetConnInfoCenter.getServerTimeMillis(), "yyyyMMdd")).apply();
@@ -73,7 +72,7 @@ class QQReminderDataServiceImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQReminderDataServiceImpl.5
  * JD-Core Version:    0.7.0.1
  */

@@ -17,16 +17,6 @@ public final class h
   public ArrayList c = null;
   public byte d = 0;
   
-  static
-  {
-    if (!h.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      g = bool;
-      return;
-    }
-  }
-  
   public h() {}
   
   public h(ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, byte paramByte)
@@ -39,18 +29,20 @@ public final class h
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (g) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (g) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -96,7 +88,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.e.h
  * JD-Core Version:    0.7.0.1
  */

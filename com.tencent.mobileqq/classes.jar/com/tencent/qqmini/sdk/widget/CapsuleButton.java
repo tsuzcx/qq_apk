@@ -155,19 +155,22 @@ public class CapsuleButton
   
   public void onClick(View paramView)
   {
-    if (paramView == this.mMoreView) {
-      if (this.mListener != null) {
-        this.mListener.onMoreClick();
-      }
-    }
-    for (;;)
+    CapsuleButton.CapsuleBtnClickListener localCapsuleBtnClickListener;
+    if (paramView == this.mMoreView)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((paramView == this.mCloseView) && (this.mListener != null)) {
-        this.mListener.onCloseClick();
+      localCapsuleBtnClickListener = this.mListener;
+      if (localCapsuleBtnClickListener != null) {
+        localCapsuleBtnClickListener.onMoreClick();
       }
     }
+    else if (paramView == this.mCloseView)
+    {
+      localCapsuleBtnClickListener = this.mListener;
+      if (localCapsuleBtnClickListener != null) {
+        localCapsuleBtnClickListener.onCloseClick();
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public CapsuleButton setListener(CapsuleButton.CapsuleBtnClickListener paramCapsuleBtnClickListener)
@@ -178,16 +181,29 @@ public class CapsuleButton
   
   public void setUnReadCount(int paramInt, boolean paramBoolean)
   {
+    StringBuilder localStringBuilder;
     if (paramBoolean)
     {
       unReadCount = paramInt;
-      if (QMLog.isColorLevel()) {
-        QMLog.d("CapsuleButton", "forceUpdate : " + paramBoolean + "; setUnReadCount : " + paramInt);
+      if (QMLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("forceUpdate : ");
+        localStringBuilder.append(paramBoolean);
+        localStringBuilder.append("; setUnReadCount : ");
+        localStringBuilder.append(paramInt);
+        QMLog.d("CapsuleButton", localStringBuilder.toString());
       }
     }
     unReadCount = paramInt;
-    if (QMLog.isColorLevel()) {
-      QMLog.d("CapsuleButton", "forceUpdate : " + paramBoolean + "; setUnReadCount : " + paramInt);
+    if (QMLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("forceUpdate : ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("; setUnReadCount : ");
+      localStringBuilder.append(paramInt);
+      QMLog.d("CapsuleButton", localStringBuilder.toString());
     }
     updateRedDotVisible();
   }
@@ -199,26 +215,25 @@ public class CapsuleButton
   
   public void updateStyle(int paramInt)
   {
-    if ((this.mMoreView != null) && (this.mCloseView != null) && (this.mSplider != null))
+    ImageView localImageView = this.mMoreView;
+    if ((localImageView != null) && (this.mCloseView != null) && (this.mSplider != null))
     {
       if (paramInt == -1)
       {
-        this.mMoreView.setImageResource(R.drawable.mini_sdk_top_btns_more_white_bg);
+        localImageView.setImageResource(R.drawable.mini_sdk_top_btns_more_white_bg);
         this.mCloseView.setImageResource(R.drawable.mini_sdk_top_btns_close_white_bg);
         this.mSplider.setBackgroundColor(Color.parseColor("#4DFFFFFF"));
+        return;
       }
+      localImageView.setImageResource(R.drawable.mini_sdk_top_btns_more_bg);
+      this.mCloseView.setImageResource(R.drawable.mini_sdk_top_btns_close_bg);
+      this.mSplider.setBackgroundColor(Color.parseColor("#1A000000"));
     }
-    else {
-      return;
-    }
-    this.mMoreView.setImageResource(R.drawable.mini_sdk_top_btns_more_bg);
-    this.mCloseView.setImageResource(R.drawable.mini_sdk_top_btns_close_bg);
-    this.mSplider.setBackgroundColor(Color.parseColor("#1A000000"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.CapsuleButton
  * JD-Core Version:    0.7.0.1
  */

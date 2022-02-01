@@ -11,7 +11,7 @@ import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
 import com.tencent.mobileqq.Doraemon.DoraemonAPIModule;
 import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.troop.troopcreate.ui.TroopCreateLogicActivity;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
@@ -33,26 +33,28 @@ public class ShareModule
   private void a(JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
     paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
-    if ((paramJSONObject instanceof BaseActivity)) {}
-    for (int i = ((BaseActivity)paramJSONObject).getTitleBarHeight();; i = 0)
+    int i;
+    if ((paramJSONObject instanceof BaseActivity)) {
+      i = ((BaseActivity)paramJSONObject).getTitleBarHeight();
+    } else {
+      i = 0;
+    }
+    paramAPICallback = new ShareModule.1(this, i, paramAPICallback);
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
     {
-      paramAPICallback = new ShareModule.1(this, i, paramAPICallback);
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(paramJSONObject);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(paramJSONObject.getString(2131719311));
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(paramJSONObject));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(paramAPICallback);
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        QLog.e("DoraemonApi.ShareModule", 2, "actionSheet.show failed!", paramJSONObject);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(paramJSONObject);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(paramJSONObject.getString(2131719029));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(paramJSONObject));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener(paramAPICallback);
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.e("DoraemonApi.ShareModule", 2, "actionSheet.show failed!", paramJSONObject);
     }
   }
   
@@ -60,28 +62,28 @@ public class ShareModule
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696380);
-    localActionSheetItem.icon = 2130839214;
+    localActionSheetItem.label = paramContext.getString(2131696399);
+    localActionSheetItem.icon = 2130839067;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696394);
-    localActionSheetItem.icon = 2130839215;
+    localActionSheetItem.label = paramContext.getString(2131696413);
+    localActionSheetItem.icon = 2130839068;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696401);
-    localActionSheetItem.icon = 2130839218;
+    localActionSheetItem.label = paramContext.getString(2131696420);
+    localActionSheetItem.icon = 2130839071;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696383);
-    localActionSheetItem.icon = 2130839212;
+    localActionSheetItem.label = paramContext.getString(2131696402);
+    localActionSheetItem.icon = 2130839065;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
@@ -92,7 +94,7 @@ public class ShareModule
   {
     int i = paramJSONObject.optInt("shareChanel", 0);
     Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
-    if (!NetworkUtil.g(BaseApplicationImpl.getContext()))
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
     {
       DoraemonUtil.a(paramAPICallback, -1, "net work not available");
       return;
@@ -107,25 +109,23 @@ public class ShareModule
   
   public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    switch (paramInt)
+    if (paramInt != 27)
     {
-    case 28: 
-    case 29: 
-    default: 
-      return false;
-    case 30: 
+      if (paramInt != 30) {
+        return false;
+      }
       a(paramJSONObject, paramAPICallback);
     }
-    for (;;)
+    else
     {
-      return true;
       b(paramJSONObject, paramAPICallback);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.ShareModule
  * JD-Core Version:    0.7.0.1
  */

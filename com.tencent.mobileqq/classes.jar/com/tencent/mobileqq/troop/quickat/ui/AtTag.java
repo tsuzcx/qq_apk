@@ -15,45 +15,54 @@ class AtTag
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (AtTag)paramObject;
       if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
         return false;
       }
-      if (this.jdField_a_of_type_AndroidTextSpannableString != null) {
-        return this.jdField_a_of_type_AndroidTextSpannableString.equals(paramObject.jdField_a_of_type_AndroidTextSpannableString);
+      SpannableString localSpannableString = this.jdField_a_of_type_AndroidTextSpannableString;
+      if (localSpannableString != null) {
+        return localSpannableString.equals(paramObject.jdField_a_of_type_AndroidTextSpannableString);
       }
-    } while (paramObject.jdField_a_of_type_AndroidTextSpannableString == null);
+      return paramObject.jdField_a_of_type_AndroidTextSpannableString == null;
+    }
     return false;
   }
   
   public int hashCode()
   {
     int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_AndroidTextSpannableString != null) {}
-    for (int i = this.jdField_a_of_type_AndroidTextSpannableString.hashCode();; i = 0) {
-      return i + j * 31;
+    SpannableString localSpannableString = this.jdField_a_of_type_AndroidTextSpannableString;
+    int i;
+    if (localSpannableString != null) {
+      i = localSpannableString.hashCode();
+    } else {
+      i = 0;
     }
+    return j * 31 + i;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("AtTag{");
-    localStringBuilder.append("startIndex=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", atSpan=").append(this.jdField_a_of_type_AndroidTextSpannableString);
+    localStringBuilder.append("startIndex=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", atSpan=");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidTextSpannableString);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AtTag
  * JD-Core Version:    0.7.0.1
  */

@@ -23,8 +23,9 @@ public class DragContainerLayout
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.onLongClick(null);
+    paramMotionEvent = this.a;
+    if (paramMotionEvent != null) {
+      paramMotionEvent.onLongClick(null);
     }
   }
   
@@ -35,7 +36,7 @@ public class DragContainerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.DragContainerLayout
  * JD-Core Version:    0.7.0.1
  */

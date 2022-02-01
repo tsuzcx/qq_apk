@@ -11,7 +11,7 @@ public class SVHwVideoFpsSmooth
   
   public long a(float paramFloat)
   {
-    this.jdField_b_of_type_Long += (1000.0F * paramFloat);
+    this.jdField_b_of_type_Long += (paramFloat * 1000.0F);
     return this.jdField_b_of_type_Long;
   }
   
@@ -19,8 +19,9 @@ public class SVHwVideoFpsSmooth
   {
     if (this.jdField_a_of_type_Long == 0L)
     {
-      this.jdField_a_of_type_Long = (paramLong * 1000L);
-      this.jdField_b_of_type_Long = (paramLong * 1000L);
+      long l = paramLong * 1000L;
+      this.jdField_a_of_type_Long = l;
+      this.jdField_b_of_type_Long = l;
       this.jdField_c_of_type_Long = paramLong;
     }
     return paramLong * 1000L;
@@ -38,14 +39,17 @@ public class SVHwVideoFpsSmooth
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = ((float)(1000.0D / paramFloat));
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 0.3F);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float - 0.7F);
+    double d = paramFloat;
+    Double.isNaN(d);
+    this.jdField_a_of_type_Float = ((float)(1000.0D / d));
+    paramFloat = this.jdField_a_of_type_Float;
+    this.jdField_b_of_type_Float = (0.3F + paramFloat);
+    this.jdField_c_of_type_Float = (paramFloat - 0.7F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.hwcodec.SVHwVideoFpsSmooth
  * JD-Core Version:    0.7.0.1
  */

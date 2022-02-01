@@ -15,12 +15,12 @@ class SettingActivity2$2
   public void OnClick(View paramView, int paramInt)
   {
     this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, HardCodeUtil.a(2131713807), HardCodeUtil.a(2131713804), HardCodeUtil.a(2131713805), HardCodeUtil.a(2131713803), new SettingActivity2.2.1(this), new SettingActivity2.2.2(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, HardCodeUtil.a(2131713735), HardCodeUtil.a(2131713732), HardCodeUtil.a(2131713733), HardCodeUtil.a(2131713731), new SettingActivity2.2.1(this), new SettingActivity2.2.2(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.SettingActivity2.2
  * JD-Core Version:    0.7.0.1
  */

@@ -46,12 +46,13 @@ final class SingleSampleMediaPeriod
   
   public boolean continueLoading(long paramLong)
   {
-    if ((this.loadingFinished) || (this.loader.isLoading())) {
-      return false;
+    if ((!this.loadingFinished) && (!this.loader.isLoading()))
+    {
+      paramLong = this.loader.startLoading(new SingleSampleMediaPeriod.SourceLoadable(this.dataSpec, this.dataSourceFactory.createDataSource()), this, this.minLoadableRetryCount);
+      this.eventDispatcher.loadStarted(this.dataSpec, 1, -1, this.format, 0, null, 0L, this.durationUs, paramLong);
+      return true;
     }
-    paramLong = this.loader.startLoading(new SingleSampleMediaPeriod.SourceLoadable(this.dataSpec, this.dataSourceFactory.createDataSource()), this, this.minLoadableRetryCount);
-    this.eventDispatcher.loadStarted(this.dataSpec, 1, -1, this.format, 0, null, 0L, this.durationUs, paramLong);
-    return true;
+    return false;
   }
   
   public void discardBuffer(long paramLong, boolean paramBoolean) {}
@@ -71,10 +72,10 @@ final class SingleSampleMediaPeriod
   
   public long getNextLoadPositionUs()
   {
-    if ((this.loadingFinished) || (this.loader.isLoading())) {
-      return -9223372036854775808L;
+    if ((!this.loadingFinished) && (!this.loader.isLoading())) {
+      return 0L;
     }
-    return 0L;
+    return -9223372036854775808L;
   }
   
   public TrackGroupArray getTrackGroups()
@@ -101,13 +102,15 @@ final class SingleSampleMediaPeriod
   public int onLoadError(SingleSampleMediaPeriod.SourceLoadable paramSourceLoadable, long paramLong1, long paramLong2, IOException paramIOException)
   {
     this.errorCount += 1;
-    if ((this.treatLoadErrorsAsEndOfStream) && (this.errorCount >= this.minLoadableRetryCount)) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((this.treatLoadErrorsAsEndOfStream) && (this.errorCount >= this.minLoadableRetryCount)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.eventDispatcher.loadError(paramSourceLoadable.dataSpec, 1, -1, this.format, 0, null, 0L, this.durationUs, paramLong1, paramLong2, SingleSampleMediaPeriod.SourceLoadable.access$100(paramSourceLoadable), paramIOException, bool);
+    if (bool)
     {
-      this.eventDispatcher.loadError(paramSourceLoadable.dataSpec, 1, -1, this.format, 0, null, 0L, this.durationUs, paramLong1, paramLong2, SingleSampleMediaPeriod.SourceLoadable.access$100(paramSourceLoadable), paramIOException, bool);
-      if (!bool) {
-        break;
-      }
       this.loadingFinished = true;
       return 2;
     }
@@ -166,7 +169,7 @@ final class SingleSampleMediaPeriod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.SingleSampleMediaPeriod
  * JD-Core Version:    0.7.0.1
  */

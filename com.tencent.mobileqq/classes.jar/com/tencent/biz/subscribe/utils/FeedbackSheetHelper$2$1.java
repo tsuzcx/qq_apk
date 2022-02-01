@@ -16,28 +16,27 @@ class FeedbackSheetHelper$2$1
     if (paramLong == 0L)
     {
       QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest success");
-      if (this.a.a != null)
-      {
-        paramBaseRequest = this.a.a;
-        if (paramLong != 0L) {
-          break label76;
-        }
-      }
     }
-    for (;;)
+    else
     {
+      paramBaseRequest = new StringBuilder();
+      paramBaseRequest.append("DoTipOffRequest failed retCode:");
+      paramBaseRequest.append(paramLong);
+      QLog.w("FeedbackSheetHelper", 1, paramBaseRequest.toString());
+    }
+    if (this.a.a != null)
+    {
+      paramBaseRequest = this.a.a;
+      if (paramLong != 0L) {
+        paramBoolean = false;
+      }
       paramBaseRequest.a(paramBoolean);
-      return;
-      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest failed retCode:" + paramLong);
-      break;
-      label76:
-      paramBoolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.FeedbackSheetHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

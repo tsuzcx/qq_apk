@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="95.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.tavcut.view.TAVCutImageView android:id="@id/o8j" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <com.tencent.widget.RoundRectURLImageView android:id="@id/a4j" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/eb" android:scaleType="fitXY" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n30" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="11.0dip">
+        <com.tencent.widget.RoundRectURLImageView android:id="@id/n2z" android:layout_width="28.0dip" android:layout_height="28.0dip" android:scaleType="centerCrop" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.5dip" android:layout_toRightOf="@id/n2z" android:layout_centerVertical="true">
+            <TextView android:textSize="12.0dip" android:textColor="@android:color/white" android:ellipsize="end" android:id="@id/n34" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <ImageView android:id="@id/n38" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_marginTop="1.0dip" android:src="@drawable/gez" android:layout_below="@id/n34" />
+            <TextView android:textSize="11.0dip" android:textColor="@android:color/white" android:ellipsize="end" android:id="@id/ns6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginTop="0.5dip" android:singleLine="true" android:layout_toRightOf="@id/n38" android:layout_below="@id/n34" />
+        </RelativeLayout>
+    </LinearLayout>
+    <TextView android:textSize="13.0dip" android:textColor="@android:color/black" android:gravity="center" android:id="@id/c6" android:background="@drawable/hin" android:paddingLeft="14.0dip" android:paddingRight="14.0dip" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginTop="13.0dip" android:layout_marginBottom="12.0dip" android:text="发起对战" android:layout_below="@id/n30" android:layout_alignLeft="@id/n30" />
+    <com.tencent.widget.RoundRectURLImageView android:id="@id/mt7" android:layout_width="26.5dip" android:layout_height="23.0dip" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
 </RelativeLayout>

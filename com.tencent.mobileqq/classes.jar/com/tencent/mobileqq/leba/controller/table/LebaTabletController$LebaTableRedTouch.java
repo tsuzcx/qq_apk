@@ -14,20 +14,13 @@ class LebaTabletController$LebaTableRedTouch
   public BusinessInfoCheckUpdate.AppInfo a(AppRuntime paramAppRuntime, String paramString)
   {
     if ((!TextUtils.isEmpty(paramString)) && (String.valueOf(1130).equals(paramString))) {
-      paramAppRuntime = null;
+      return null;
     }
-    do
-    {
-      do
-      {
-        return paramAppRuntime;
-        paramString = ((IRedTouchManager)paramAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(0, paramString);
-        paramAppRuntime = paramString;
-      } while (!RedTouch.a(paramString));
-      paramAppRuntime = paramString;
-    } while (paramString.type.get() == 5);
-    RedTouch.d(paramString);
-    return paramString;
+    paramAppRuntime = ((IRedTouchManager)paramAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(0, paramString);
+    if ((RedTouch.a(paramAppRuntime)) && (paramAppRuntime.type.get() != 5)) {
+      RedTouch.d(paramAppRuntime);
+    }
+    return paramAppRuntime;
   }
   
   public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
@@ -37,7 +30,7 @@ class LebaTabletController$LebaTableRedTouch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.controller.table.LebaTabletController.LebaTableRedTouch
  * JD-Core Version:    0.7.0.1
  */

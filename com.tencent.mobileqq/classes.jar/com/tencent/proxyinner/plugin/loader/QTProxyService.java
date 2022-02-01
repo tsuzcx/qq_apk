@@ -32,17 +32,18 @@ public class QTProxyService
   {
     super.onDestroy();
     Process.killProcess(Process.myPid());
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController != null) {}
+    PpsController localPpsController = this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController;
+    if (localPpsController != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController.exit();
-      label24:
+      localPpsController.exit();
+      label23:
       this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController = null;
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      break label24;
+      break label23;
     }
   }
   
@@ -55,10 +56,11 @@ public class QTProxyService
       return;
     }
     QLog.i("QTProxyService", 2, "onTaskRemoved");
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController != null) {
+    paramIntent = this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController;
+    if (paramIntent != null) {
       try
       {
-        this.jdField_a_of_type_ComTencentShadowDynamicHostPpsController.exit();
+        paramIntent.exit();
         return;
       }
       catch (RemoteException paramIntent)
@@ -72,7 +74,7 @@ public class QTProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.proxyinner.plugin.loader.QTProxyService
  * JD-Core Version:    0.7.0.1
  */

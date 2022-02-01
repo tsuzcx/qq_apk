@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.tencent.tkd.comment.publisher.qq.QQPublishCommentManager;
 import com.tencent.tkd.comment.publisher.qq.bridge.QQUrlImageBridge;
 import com.tencent.tkd.comment.publisher.qq.bridge.QQUrlImageBridge.Callback;
 
@@ -13,6 +12,8 @@ public class TkdQQUrlImageView
   extends ImageView
   implements QQUrlImageBridge.Callback
 {
+  public QQUrlImageBridge urlImageBridge;
+  
   public TkdQQUrlImageView(Context paramContext)
   {
     super(paramContext);
@@ -48,12 +49,15 @@ public class TkdQQUrlImageView
     if (paramInt2 == 0) {
       paramInt1 = getMeasuredHeight();
     }
-    QQPublishCommentManager.getInstance().getUrlImageBridge().loadUrlImage(paramString, i, paramInt1, this);
+    QQUrlImageBridge localQQUrlImageBridge = this.urlImageBridge;
+    if (localQQUrlImageBridge != null) {
+      localQQUrlImageBridge.loadUrlImage(paramString, i, paramInt1, this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TkdQQUrlImageView
  * JD-Core Version:    0.7.0.1
  */

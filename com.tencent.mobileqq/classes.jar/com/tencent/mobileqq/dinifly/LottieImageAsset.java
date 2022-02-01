@@ -41,12 +41,18 @@ public class LottieImageAsset
   {
     if (paramMQLruCache == null)
     {
-      Log.e("LottieImageAsset", "image cache is null" + paramString1);
+      paramMQLruCache = new StringBuilder();
+      paramMQLruCache.append("image cache is null");
+      paramMQLruCache.append(paramString1);
+      Log.e("LottieImageAsset", paramMQLruCache.toString());
       return;
     }
     if (paramMQLruCache.get(paramString1) != null)
     {
-      Log.d("LottieImageAsset", "cache has this bitmap: " + paramString1);
+      paramMQLruCache = new StringBuilder();
+      paramMQLruCache.append("cache has this bitmap: ");
+      paramMQLruCache.append(paramString1);
+      Log.d("LottieImageAsset", paramMQLruCache.toString());
       return;
     }
     paramMQLruCache.put(paramString1, decodeStream(paramString2));
@@ -54,9 +60,10 @@ public class LottieImageAsset
   
   public static Bitmap decodeStream(String paramString)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     Object localObject3 = null;
     Object localObject1 = null;
-    if (TextUtils.isEmpty(paramString)) {
+    if (bool) {
       return null;
     }
     Object localObject4 = new BitmapFactory.Options();
@@ -65,51 +72,57 @@ public class LottieImageAsset
     localObject2 = localObject3;
     try
     {
-      localFileInputStream = new FileInputStream(paramString);
+      FileInputStream localFileInputStream = new FileInputStream(paramString);
       localObject2 = localObject3;
+      try
+      {
+        localObject4 = BitmapFactory.decodeStream(new BufferedInputStream(localFileInputStream), null, (BitmapFactory.Options)localObject4);
+        localObject1 = localObject4;
+      }
+      catch (Exception localException)
+      {
+        localObject2 = localObject3;
+        localStringBuilder2 = new StringBuilder();
+        localObject2 = localObject3;
+        localStringBuilder2.append("lottie, IllegalArgumentException= ");
+        localObject2 = localObject3;
+        localStringBuilder2.append(localException.getMessage());
+        localObject2 = localObject3;
+        Log.e("LottieImageAsset", localStringBuilder2.toString());
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        localObject2 = localObject3;
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localObject2 = localObject3;
+        localStringBuilder2.append("lottie, oom ");
+        localObject2 = localObject3;
+        localStringBuilder2.append(localOutOfMemoryError.getMessage());
+        localObject2 = localObject3;
+        Log.e("LottieImageAsset", localStringBuilder2.toString());
+      }
+      localObject2 = localObject1;
+      try
+      {
+        localFileInputStream.close();
+        return localObject1;
+      }
+      catch (IOException localIOException)
+      {
+        localObject2 = localObject1;
+        localIOException.printStackTrace();
+        return localObject1;
+      }
+      StringBuilder localStringBuilder1;
+      return localObject2;
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      FileInputStream localFileInputStream;
-      label72:
-      Log.e("LottieImageAsset", "lottie, file not found -> " + paramString);
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("lottie, file not found -> ");
+      localStringBuilder1.append(paramString);
+      Log.e("LottieImageAsset", localStringBuilder1.toString());
       localFileNotFoundException.printStackTrace();
-      return localObject2;
-    }
-    try
-    {
-      localObject4 = BitmapFactory.decodeStream(new BufferedInputStream(localFileInputStream), null, (BitmapFactory.Options)localObject4);
-      localObject1 = localObject4;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localObject2 = localIOException;
-      Log.e("LottieImageAsset", "lottie, oom " + localOutOfMemoryError.getMessage());
-      break label72;
-    }
-    catch (Exception localException)
-    {
-      localObject2 = localIOException;
-      Log.e("LottieImageAsset", "lottie, IllegalArgumentException= " + localException.getMessage());
-      if (0 == 0) {
-        break label72;
-      }
-      localObject2 = localIOException;
-      new StringBuilder().append("lottie, bitmap width=");
-      localObject2 = localIOException;
-      throw new NullPointerException();
-    }
-    localObject2 = localObject1;
-    try
-    {
-      localFileInputStream.close();
-      return localObject1;
-    }
-    catch (IOException localIOException)
-    {
-      localObject2 = localObject1;
-      localIOException.printStackTrace();
-      return localObject1;
     }
   }
   
@@ -151,7 +164,7 @@ public class LottieImageAsset
   
   public boolean hasCache()
   {
-    return !TextUtils.isEmpty(this.id);
+    return TextUtils.isEmpty(this.id) ^ true;
   }
   
   public void setBitmap(@Nullable Bitmap paramBitmap)
@@ -166,7 +179,7 @@ public class LottieImageAsset
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieImageAsset
  * JD-Core Version:    0.7.0.1
  */

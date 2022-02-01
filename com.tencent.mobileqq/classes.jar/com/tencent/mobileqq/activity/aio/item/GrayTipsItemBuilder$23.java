@@ -21,28 +21,24 @@ class GrayTipsItemBuilder$23
   
   public void onClick(View paramView)
   {
-    Intent localIntent;
     if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, EditActivity.class);
+      Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, EditActivity.class);
       paramView = ((DiscussionManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((paramView == null) || (!paramView.hasRenamed())) {
-        break label194;
+      if ((paramView != null) && (paramView.hasRenamed())) {
+        paramView = paramView.discussionName;
+      } else {
+        paramView = "";
       }
-    }
-    label194:
-    for (paramView = paramView.discussionName;; paramView = "")
-    {
-      localIntent.putExtra("title", 2131691870);
+      localIntent.putExtra("title", 2131691792);
       localIntent.putExtra("action", 102);
       localIntent.putExtra("limit", 48);
       localIntent.putExtra("current", paramView);
       localIntent.putExtra("canPostNull", false);
       localIntent.putExtra("multiLine", false);
-      localIntent.putExtra("selfSet_leftViewText", this.a.jdField_a_of_type_AndroidContentContext.getString(2131690601));
+      localIntent.putExtra("selfSet_leftViewText", this.a.jdField_a_of_type_AndroidContentContext.getString(2131690529));
       ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 6002);
       ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800666A", "0X800666A", 0, 0, "", "", "", "");
-      return;
     }
   }
   
@@ -53,7 +49,7 @@ class GrayTipsItemBuilder$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.23
  * JD-Core Version:    0.7.0.1
  */

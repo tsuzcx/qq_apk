@@ -24,14 +24,15 @@ public final class hd_video_voip_2$CmdPhoneBindReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 58, 66 }, new String[] { "uint32_from_flag", "msg_from_tel", "msg_to_tel", "uint32_call_policy", "msg_speed_test_info", "uint64_prvt_id", "bytes_prvt_session", "bytes_last_call_id" }, new Object[] { Integer.valueOf(0), null, null, Integer.valueOf(0), null, Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2 }, CmdPhoneBindReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 58, 66 }, new String[] { "uint32_from_flag", "msg_from_tel", "msg_to_tel", "uint32_call_policy", "msg_speed_test_info", "uint64_prvt_id", "bytes_prvt_session", "bytes_last_call_id" }, new Object[] { localInteger, null, null, localInteger, null, Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2 }, CmdPhoneBindReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.voip.hd_video_voip_2.CmdPhoneBindReqBody
  * JD-Core Version:    0.7.0.1
  */

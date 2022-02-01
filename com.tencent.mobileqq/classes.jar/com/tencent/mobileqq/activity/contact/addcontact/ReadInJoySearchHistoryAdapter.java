@@ -32,17 +32,17 @@ public class ReadInJoySearchHistoryAdapter
   
   private void b(List<ReadInJoySearchHistoryEntity> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0))
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      this.jdField_a_of_type_JavaUtilList = null;
+      if (paramList.size() < 6)
+      {
+        this.jdField_a_of_type_JavaUtilList = paramList;
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilList = paramList.subList(0, 5);
       return;
     }
-    if (paramList.size() < 6)
-    {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList = paramList.subList(0, 5);
+    this.jdField_a_of_type_JavaUtilList = null;
   }
   
   public void a(List<ReadInJoySearchHistoryEntity> paramList)
@@ -53,16 +53,17 @@ public class ReadInJoySearchHistoryAdapter
   
   public int getCount()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() != 0)) {
+      return this.jdField_a_of_type_JavaUtilList.size() + 1;
     }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    return 0;
   }
   
   public Object getItem(int paramInt)
   {
     if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
@@ -74,78 +75,74 @@ public class ReadInJoySearchHistoryAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    View localView;
-    if (localObject == null)
+    Object localObject1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject1 == null)
     {
-      localView = null;
-      localObject = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
-      return localView;
+      Object localObject2 = null;
+      localObject1 = paramView;
+      paramView = localObject2;
     }
-    if (paramView == null)
+    else
     {
-      paramView = LayoutInflater.from((Context)localObject).inflate(2131559929, null);
-      localObject = new ReadInJoySearchHistoryAdapter.ViewHolder(this);
-      ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368445));
-      ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369990));
-      ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364783));
-      paramView.setTag(localObject);
-      paramView.setOnClickListener(this);
-      label120:
-      ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_Int = paramInt;
-      if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label203;
-      }
-      ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt)).keyWord);
-    }
-    for (;;)
-    {
-      localObject = paramView;
-      localView = paramView;
-      break;
-      localObject = (ReadInJoySearchHistoryAdapter.ViewHolder)paramView.getTag();
-      break label120;
-      label203:
-      if (paramInt == this.jdField_a_of_type_JavaUtilList.size())
+      if (paramView == null)
       {
-        ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        paramView = LayoutInflater.from((Context)localObject1).inflate(2131559799, null);
+        localObject1 = new ReadInJoySearchHistoryAdapter.ViewHolder(this);
+        ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368195));
+        ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369675));
+        ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364671));
+        paramView.setTag(localObject1);
+        paramView.setOnClickListener(this);
       }
+      else
+      {
+        localObject1 = (ReadInJoySearchHistoryAdapter.ViewHolder)paramView.getTag();
+      }
+      ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject1).jdField_a_of_type_Int = paramInt;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt)).keyWord);
+      }
+      else if (paramInt == this.jdField_a_of_type_JavaUtilList.size())
+      {
+        ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        ((ReadInJoySearchHistoryAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      }
+      localObject1 = paramView;
     }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public void onClick(View paramView)
   {
-    Object localObject;
     if ((paramView.getTag() instanceof ReadInJoySearchHistoryAdapter.ViewHolder))
     {
-      localObject = (ReadInJoySearchHistoryAdapter.ViewHolder)paramView.getTag();
-      if (((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label76;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter$OnItemClickObserver != null)
+      Object localObject = (ReadInJoySearchHistoryAdapter.ViewHolder)paramView.getTag();
+      if (((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size())
       {
-        localObject = (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter$OnItemClickObserver.a((ReadInJoySearchHistoryEntity)localObject);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter$OnItemClickObserver != null)
+        {
+          localObject = (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_Int);
+          this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter$OnItemClickObserver.a((ReadInJoySearchHistoryEntity)localObject);
+        }
+      }
+      else if (((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter$OnItemClickObserver;
+        if (localObject != null) {
+          ((ReadInJoySearchHistoryAdapter.OnItemClickObserver)localObject).a();
+        }
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label76:
-      if ((((ReadInJoySearchHistoryAdapter.ViewHolder)localObject).jdField_a_of_type_Int == this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter$OnItemClickObserver != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactReadInJoySearchHistoryAdapter$OnItemClickObserver.a();
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ReadInJoySearchHistoryAdapter
  * JD-Core Version:    0.7.0.1
  */

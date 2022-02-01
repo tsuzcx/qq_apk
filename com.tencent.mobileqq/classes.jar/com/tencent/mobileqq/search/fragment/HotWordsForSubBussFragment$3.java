@@ -13,8 +13,15 @@ class HotWordsForSubBussFragment$3
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
+    if (QLog.isColorLevel())
+    {
+      String str = HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unify handleBusiHotWordError code=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" errorMsg;");
+      localStringBuilder.append(paramString);
+      QLog.w(str, 2, localStringBuilder.toString());
     }
   }
   
@@ -22,14 +29,19 @@ class HotWordsForSubBussFragment$3
   {
     HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
     HotWordsForSubBussFragment.a(this.a, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      paramList = HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unify handleTabSearchResult expireTime;");
+      localStringBuilder.append(HotWordsForSubBussFragment.jdField_a_of_type_Int);
+      QLog.i(paramList, 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment.3
  * JD-Core Version:    0.7.0.1
  */

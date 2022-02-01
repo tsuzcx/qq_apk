@@ -31,13 +31,14 @@ public final class lq
   {
     this.a = ((pn)paramIMapRenderView.getVectorMapDelegate());
     this.c = paramBaseMapView;
-    if (this.a == null) {}
-    do
-    {
+    paramBaseMapView = this.a;
+    if (paramBaseMapView == null) {
       return;
-      this.a.t = this.f;
-    } while (this.a.a(ms.class) != null);
-    this.a.a(ms.class, this);
+    }
+    paramBaseMapView.t = this.f;
+    if (paramBaseMapView.a(ms.class) == null) {
+      this.a.a(ms.class, this);
+    }
   }
   
   private ms p(String paramString)
@@ -70,66 +71,58 @@ public final class lq
     paramkm = new Marker(paramMarkerOptions, paramkm, ((mu)localObject).L);
     ((ms)localObject).G = paramkm;
     paramMarkerOptions = this.a;
-    hr localhr;
-    String str;
-    int i;
     if (paramMarkerOptions.av != null)
     {
-      localhr = paramMarkerOptions.av;
-      str = ((ms)localObject).G.getContentDescription();
+      hr localhr = paramMarkerOptions.av;
+      String str = ((ms)localObject).G.getContentDescription();
       if (!nl.a(str))
       {
         paramMarkerOptions = ((ms)localObject).g();
-        i = ((ms)localObject).F.getWidth();
+        int i = ((ms)localObject).F.getWidth();
         int j = ((ms)localObject).F.getHeight();
-        if ((paramMarkerOptions.left < 0) || (paramMarkerOptions.top < 0) || (paramMarkerOptions.right > i) || (paramMarkerOptions.bottom > j)) {
-          break label296;
+        if ((paramMarkerOptions.left >= 0) && (paramMarkerOptions.top >= 0) && (paramMarkerOptions.right <= i) && (paramMarkerOptions.bottom <= j)) {
+          i = 1;
+        } else {
+          i = 0;
         }
-        i = 1;
         if (i != 0)
         {
           localObject = new hs(localhr.d, (ms)localObject);
-          if (localhr.a.size() <= 0) {
-            break label383;
+          if (localhr.a.size() > 0)
+          {
+            paramMarkerOptions = (hq)localhr.a.get(localhr.a.size() - 1);
+            if ((paramMarkerOptions != null) && ((paramMarkerOptions instanceof hs))) {}
           }
-          paramMarkerOptions = (hq)localhr.a.get(localhr.a.size() - 1);
-          if ((paramMarkerOptions == null) || (!(paramMarkerOptions instanceof hs))) {
-            break label383;
+          else
+          {
+            paramMarkerOptions = null;
+          }
+          if (str.startsWith("我的位置"))
+          {
+            localhr.a.add(localObject);
+            return paramkm;
+          }
+          localhr.a.clear();
+          localhr.b.add(localObject);
+          Collections.sort(localhr.b);
+          localhr.a.addAll(localhr.b);
+          localhr.a.addAll(localhr.c);
+          if (paramMarkerOptions != null) {
+            localhr.a.add(paramMarkerOptions);
           }
         }
       }
     }
-    for (;;)
-    {
-      if (str.startsWith("我的位置")) {
-        localhr.a.add(localObject);
-      }
-      for (;;)
-      {
-        return paramkm;
-        label296:
-        i = 0;
-        break;
-        localhr.a.clear();
-        localhr.b.add(localObject);
-        Collections.sort(localhr.b);
-        localhr.a.addAll(localhr.b);
-        localhr.a.addAll(localhr.c);
-        if (paramMarkerOptions != null) {
-          localhr.a.add(paramMarkerOptions);
-        }
-      }
-      label383:
-      paramMarkerOptions = null;
-    }
+    return paramkm;
   }
   
   public final void a()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return;
     }
-    this.a.az.b.k();
+    localpn.az.b.k();
   }
   
   public final void a(TencentMap.InfoWindowAdapter paramInfoWindowAdapter)
@@ -144,138 +137,150 @@ public final class lq
   
   public final void a(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    mu localmu;
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
-      localmu = this.a.a(paramString, false);
+      mu localmu = this.a.a(paramString, false);
       if (!(localmu instanceof ms)) {
         return;
       }
+      localmu.h();
+      if (paramString.equals(this.a.g())) {
+        this.a.a("");
+      }
+      this.a.az.b.k();
+      return;
     }
-    localmu.h();
-    if (paramString.equals(this.a.g())) {
-      this.a.a("");
-    }
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, float paramFloat)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      ((ms)paramString).c(paramFloat);
+      this.a.az.b.k();
       return;
     }
-    ((ms)paramString).c(paramFloat);
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, float paramFloat1, float paramFloat2)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      ((ms)paramString).b(paramFloat1, paramFloat2);
+      this.a.az.b.k();
       return;
     }
-    ((ms)paramString).b(paramFloat1, paramFloat2);
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, int paramInt)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      ((ms)paramString).d(paramInt);
+      this.a.az.b.k();
       return;
     }
-    ((ms)paramString).d(paramInt);
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      paramString = (ms)paramString;
+      paramString.D = paramInt1;
+      paramString.E = paramInt2;
+      if (paramString.H != null)
+      {
+        paramString.a(true);
+        GeoPoint localGeoPoint = new GeoPoint(paramString.E, paramString.D);
+        paramString.H.a(localGeoPoint);
+      }
+      if (paramString.J != null) {
+        paramString.J.a(paramInt1, paramInt2);
+      }
       return;
-    }
-    paramString = (ms)paramString;
-    paramString.D = paramInt1;
-    paramString.E = paramInt2;
-    if (paramString.H != null)
-    {
-      paramString.a(true);
-      GeoPoint localGeoPoint = new GeoPoint(paramString.E, paramString.D);
-      paramString.H.a(localGeoPoint);
-    }
-    if (paramString.J != null) {
-      paramString.J.a(paramInt1, paramInt2);
     }
   }
   
   public final void a(String paramString, Animation paramAnimation)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      paramString = (ms)paramString;
+      paramString.I = paramAnimation.glAnimation;
+      if (paramString.I != null) {
+        paramString.I.setAnimationProperty(paramString.K);
+      }
       return;
-    }
-    paramString = (ms)paramString;
-    paramString.I = paramAnimation.glAnimation;
-    if (paramString.I != null) {
-      paramString.I.setAnimationProperty(paramString.K);
     }
   }
   
   public final void a(String paramString, BitmapDescriptor paramBitmapDescriptor)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = p(paramString);
       if (paramString != null) {
@@ -288,300 +293,308 @@ public final class lq
   
   public final void a(String paramString, LatLng paramLatLng)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      ((ms)paramString).a(fz.a(paramLatLng));
+      this.a.az.b.k();
       return;
     }
-    ((ms)paramString).a(fz.a(paramLatLng));
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, MarkerOptions paramMarkerOptions)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      ((ms)paramString).a(paramMarkerOptions);
+      this.a.az.b.k();
       return;
     }
-    ((ms)paramString).a(paramMarkerOptions);
-    this.a.az.b.k();
   }
   
   public final void a(String paramString, boolean paramBoolean)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
+      paramString.c(paramBoolean);
+      this.a.az.b.k();
+      return;
     }
-    paramString.c(paramBoolean);
-    this.a.az.b.k();
   }
   
   public final boolean a(mu parammu, GeoPoint paramGeoPoint)
   {
-    boolean bool2 = false;
+    paramGeoPoint = this.a;
     int j = 0;
-    boolean bool3 = true;
-    boolean bool1;
-    if ((this.a == null) || (parammu == null)) {
-      bool1 = false;
-    }
-    do
+    if (paramGeoPoint != null)
     {
-      do
+      if (parammu == null) {
+        return false;
+      }
+      parammu = (ms)parammu;
+      paramGeoPoint = parammu.L;
+      if (parammu.G == null)
       {
-        return bool1;
-        parammu = (ms)parammu;
-        paramGeoPoint = parammu.L;
-        if (parammu.G == null)
-        {
-          this.a.a("");
-          return true;
-        }
-        if (this.a.z == null) {
-          break;
-        }
-        bool1 = bool3;
-      } while (this.a.z.onMarkerClick(parammu.G));
-      bool1 = bool3;
-    } while (!parammu.G.isInfoWindowEnable());
-    if (!this.a.as)
-    {
-      if (this.a.at == null)
-      {
-        parammu.o();
-        this.a.at = parammu;
+        this.a.a("");
         return true;
       }
-      if (this.a.at == parammu)
+      if ((this.a.z != null) && (this.a.z.onMarkerClick(parammu.G))) {
+        return true;
+      }
+      if (!parammu.G.isInfoWindowEnable()) {
+        return true;
+      }
+      if (!this.a.as)
       {
-        int i = j;
-        if (parammu.J != null)
+        if (this.a.at == null)
         {
-          i = j;
-          if (parammu.J.e()) {
-            i = 1;
+          parammu.o();
+          this.a.at = parammu;
+          return true;
+        }
+        if (this.a.at == parammu)
+        {
+          int i = j;
+          if (parammu.J != null)
+          {
+            i = j;
+            if (parammu.J.e()) {
+              i = 1;
+            }
           }
-        }
-        if (i != 0)
-        {
-          parammu.n();
-          this.a.at = null;
+          if (i != 0)
+          {
+            parammu.n();
+            this.a.at = null;
+            return true;
+          }
+          parammu.o();
+          this.a.at = parammu;
           return true;
         }
+        this.a.at.n();
         parammu.o();
         this.a.at = parammu;
         return true;
       }
-      this.a.at.n();
-      parammu.o();
-      this.a.at = parammu;
-      return true;
-    }
-    if (parammu.J == null) {
-      parammu.o();
-    }
-    for (;;)
-    {
+      if (parammu.J == null)
+      {
+        parammu.o();
+      }
+      else
+      {
+        boolean bool = parammu.J.e();
+        parammu.J.a(bool ^ true);
+        if (!bool) {
+          this.a.at = parammu;
+        }
+      }
       this.a.a(paramGeoPoint);
       return true;
-      bool3 = parammu.J.e();
-      gj localgj = parammu.J;
-      bool1 = bool2;
-      if (!bool3) {
-        bool1 = true;
-      }
-      localgj.a(bool1);
-      if (!bool3) {
-        this.a.at = parammu;
-      }
     }
+    return false;
   }
   
   public final void b()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return;
     }
-    this.a.c(ms.class);
+    localpn.c(ms.class);
     this.a.a("");
     this.f.a();
   }
   
   public final void b(String paramString)
   {
-    if (this.a == null) {}
-    do
-    {
+    if (this.a == null) {
       return;
-      paramString = p(paramString);
-    } while ((paramString == null) || (paramString.J == null));
-    paramString.J.f();
+    }
+    paramString = p(paramString);
+    if ((paramString != null) && (paramString.J != null)) {
+      paramString.J.f();
+    }
   }
   
   public final void b(String paramString, float paramFloat)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      ((ms)paramString).d(paramFloat);
+      this.a.az.b.k();
       return;
     }
-    ((ms)paramString).d(paramFloat);
-    this.a.az.b.k();
   }
   
   public final void b(String paramString, boolean paramBoolean)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      ((ms)paramString).A = paramBoolean;
+      this.a.az.b.k();
       return;
     }
-    ((ms)paramString).A = paramBoolean;
-    this.a.az.b.k();
   }
   
   public final void c(String paramString)
   {
-    if (this.a == null) {}
-    do
-    {
+    if (this.a == null) {
       return;
-      paramString = p(paramString);
-    } while ((paramString == null) || (paramString.J == null));
-    paramString.J.f();
+    }
+    paramString = p(paramString);
+    if ((paramString != null) && (paramString.J != null)) {
+      paramString.J.f();
+    }
   }
   
   public final void c(String paramString, float paramFloat)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.a(paramString, false);
       if (paramString == null) {
         return;
       }
+      paramString.b(paramFloat);
+      this.a.a(paramString);
+      this.a.az.b.k();
+      return;
     }
-    paramString.b(paramFloat);
-    this.a.a(paramString);
-    this.a.az.b.k();
   }
   
   public final void c(String paramString, boolean paramBoolean)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      ((ms)paramString).B = paramBoolean;
+      this.a.az.b.k();
       return;
     }
-    ((ms)paramString).B = paramBoolean;
-    this.a.az.b.k();
   }
   
   public final LatLng d(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    Object localObject1 = null;
+    if (??? == null) {
       return null;
     }
-    for (;;)
+    synchronized (((pn)???).a)
     {
-      synchronized (this.a.a)
-      {
-        paramString = this.a.c(paramString);
-        if (paramString == null) {
-          return null;
-        }
-        if (!(paramString instanceof ms)) {
-          return null;
-        }
-        paramString = ((ms)paramString).e();
-        if (paramString != null)
-        {
-          paramString = fz.a(paramString);
-          return paramString;
-        }
+      paramString = this.a.c(paramString);
+      if (paramString == null) {
+        return null;
       }
-      paramString = null;
+      if (!(paramString instanceof ms)) {
+        return null;
+      }
+      GeoPoint localGeoPoint = ((ms)paramString).e();
+      paramString = localObject1;
+      if (localGeoPoint != null) {
+        paramString = fz.a(localGeoPoint);
+      }
+      return paramString;
     }
   }
   
   public final void d(String paramString, boolean paramBoolean)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      paramString = (ms)paramString;
+      paramString.a(paramBoolean);
+      if (!paramBoolean) {
+        paramString.a(paramString.e());
+      }
       return;
-    }
-    paramString = (ms)paramString;
-    paramString.a(paramBoolean);
-    if (!paramBoolean) {
-      paramString.a(paramString.e());
     }
   }
   
   public final boolean e(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return false;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
@@ -609,10 +622,11 @@ public final class lq
   
   public final boolean f(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return false;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
@@ -628,35 +642,38 @@ public final class lq
   
   public final void g(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      paramString = (ms)paramString;
+      if (!paramString.G.isInfoWindowEnable()) {
+        return;
+      }
+      if ((paramString.J != null) && (paramString.J.e())) {
+        paramString.J.f();
+      }
+      this.a.az.b.k();
       return;
     }
-    paramString = (ms)paramString;
-    if (!paramString.G.isInfoWindowEnable()) {
-      return;
-    }
-    if ((paramString.J != null) && (paramString.J.e())) {
-      paramString.J.f();
-    }
-    this.a.az.b.k();
   }
   
   public final boolean h(String paramString)
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return false;
     }
-    paramString = this.a.c(paramString);
+    paramString = localpn.c(paramString);
     if (paramString == null) {
       return false;
     }
@@ -669,10 +686,11 @@ public final class lq
   
   public final float i(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return 0.0F;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
@@ -688,10 +706,11 @@ public final class lq
   
   public final boolean j(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return false;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
@@ -708,10 +727,11 @@ public final class lq
   
   public final boolean k(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return false;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
@@ -727,10 +747,11 @@ public final class lq
   
   public final boolean l(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return false;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
@@ -746,10 +767,11 @@ public final class lq
   
   public final List<gg> m(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return null;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
@@ -771,48 +793,55 @@ public final class lq
   
   public final void n(String paramString)
   {
-    if (this.a == null) {
+    ??? = this.a;
+    if (??? == null) {
       return;
     }
-    synchronized (this.a.a)
+    synchronized (((pn)???).a)
     {
       paramString = this.a.c(paramString);
       if (paramString == null) {
         return;
       }
-    }
-    if (!(paramString instanceof ms)) {
+      if (!(paramString instanceof ms)) {
+        return;
+      }
+      paramString = (ms)paramString;
+      if (paramString.H != null) {
+        paramString.H.c();
+      }
+      this.a.az.b.k();
       return;
     }
-    paramString = (ms)paramString;
-    if (paramString.H != null) {
-      paramString.H.c();
-    }
-    this.a.az.b.k();
   }
   
   final Marker o(String paramString)
   {
-    if ((paramString == null) || (paramString.equals("")) || (this.a == null)) {
-      return null;
-    }
-    synchronized (this.a.a)
+    if ((paramString != null) && (!paramString.equals("")))
     {
-      paramString = this.a.c(paramString);
-      if (paramString == null) {
+      ??? = this.a;
+      if (??? == null) {
         return null;
       }
-      if (!(paramString instanceof ms)) {
-        return null;
+      synchronized (((pn)???).a)
+      {
+        paramString = this.a.c(paramString);
+        if (paramString == null) {
+          return null;
+        }
+        if (!(paramString instanceof ms)) {
+          return null;
+        }
+        paramString = ((ms)paramString).G;
+        return paramString;
       }
-      paramString = ((ms)paramString).G;
-      return paramString;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.lq
  * JD-Core Version:    0.7.0.1
  */

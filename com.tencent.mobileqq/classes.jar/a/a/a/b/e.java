@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 public class e
 {
-  public void a(long paramLong, String paramString1, b paramb, String paramString2)
+  public void a(String paramString1, String paramString2)
   {
     try
     {
@@ -17,7 +17,7 @@ public class e
       if (i == 0)
       {
         ReportLogHelper.report(3, 0);
-        ByteData.getInstance().getCode(0L, 0L, paramLong, l, paramString2, paramb.g, paramb.d, null, paramString1);
+        ByteData.getInstance().getCode(0L, 0L, 0L, l, paramString2, null, null, null, paramString1);
         return;
       }
       ReportLogHelper.report(3, 1);

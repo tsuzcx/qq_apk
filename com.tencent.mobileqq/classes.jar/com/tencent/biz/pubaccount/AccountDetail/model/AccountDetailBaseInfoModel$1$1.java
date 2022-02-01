@@ -1,12 +1,12 @@
-package com.tencent.biz.pubaccount.AccountDetail.model;
+package com.tencent.biz.pubaccount.accountdetail.model;
 
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.biz.pubaccount.accountdetail.api.impl.PublicAccountDetailImpl;
 import com.tencent.qphone.base.util.QLog;
 
 class AccountDetailBaseInfoModel$1$1
   implements Runnable
 {
-  AccountDetailBaseInfoModel$1$1(AccountDetailBaseInfoModel.1 param1, AccountDetail paramAccountDetail) {}
+  AccountDetailBaseInfoModel$1$1(AccountDetailBaseInfoModel.1 param1, PublicAccountDetailImpl paramPublicAccountDetailImpl) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ class AccountDetailBaseInfoModel$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailBaseInfoModel.1.1
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailBaseInfoModel.1.1
  * JD-Core Version:    0.7.0.1
  */

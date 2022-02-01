@@ -31,7 +31,7 @@ public class QavWTAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839289;
+    return 2130839144;
   }
   
   public int getAppID()
@@ -60,40 +60,33 @@ public class QavWTAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698491);
+    return BaseApplicationImpl.getContext().getString(2131698557);
   }
   
-  public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  protected void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (paramBaseChatPie.a.getAVNotifyCenter().a(paramBaseChatPie.a(), 4, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) {}
-    do
-    {
+    if (paramBaseChatPie.a.getAVNotifyCenter().a(paramBaseChatPie.a(), 4, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)) {
       return;
-      int i;
-      if (!AppNetConnInfo.isNetSupport())
-      {
-        paramPlusPanelViewModel = BaseApplicationImpl.getContext();
-        i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299166);
-        QQToast.a(paramPlusPanelViewModel, -1, paramPlusPanelViewModel.getString(2131695982), 0).b(i);
-        return;
-      }
-      if (!WTogetherUtil.a())
-      {
-        paramPlusPanelViewModel = BaseApplicationImpl.getContext();
-        i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299166);
-        QQToast.a(paramPlusPanelViewModel, -1, paramPlusPanelViewModel.getString(2131696000), 0).b(i);
-        return;
-      }
-      if ((paramBaseChatPie.a.isVideoChatting()) || (paramBaseChatPie.a.getAVNotifyCenter().b()))
-      {
-        paramPlusPanelViewModel = BaseApplicationImpl.getContext();
-        i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299166);
-        QQToast.a(paramPlusPanelViewModel, 2131695981, 1).b(i);
-        return;
-      }
+    }
+    if (!AppNetConnInfo.isNetSupport())
+    {
+      paramPlusPanelViewModel = BaseApplicationImpl.getContext();
+      i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299168);
+      QQToast.a(paramPlusPanelViewModel, -1, paramPlusPanelViewModel.getString(2131695997), 0).b(i);
+      return;
+    }
+    if (!WTogetherUtil.a())
+    {
+      paramPlusPanelViewModel = BaseApplicationImpl.getContext();
+      i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299168);
+      QQToast.a(paramPlusPanelViewModel, -1, paramPlusPanelViewModel.getString(2131696015), 0).b(i);
+      return;
+    }
+    if ((!paramBaseChatPie.a.isVideoChatting()) && (!paramBaseChatPie.a.getAVNotifyCenter().b()))
+    {
       if (paramSessionInfo.jdField_a_of_type_Int == 0)
       {
-        paramBaseChatPie.an();
+        paramBaseChatPie.Q();
         paramPlusPanelViewModel.b(paramBaseChatPie);
         ChooseFileAssistant.a().a(paramSessionInfo);
         WTEntranceHelper.a(paramBaseChatPie.a(), 1, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString);
@@ -101,13 +94,24 @@ public class QavWTAppInfo
         ReportController.b(paramBaseChatPie.a, "dc00898", "", "", "0X800B61B", "0X800B61B", 0, 0, "", "", "", "");
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("QavWTAppInfo", 2, "clickToolQavWatchTogether, not support chat, [" + paramSessionInfo.jdField_a_of_type_Int + "]");
+      if (QLog.isColorLevel())
+      {
+        paramPlusPanelViewModel = new StringBuilder();
+        paramPlusPanelViewModel.append("clickToolQavWatchTogether, not support chat, [");
+        paramPlusPanelViewModel.append(paramSessionInfo.jdField_a_of_type_Int);
+        paramPlusPanelViewModel.append("]");
+        QLog.i("QavWTAppInfo", 2, paramPlusPanelViewModel.toString());
+      }
+      return;
+    }
+    paramPlusPanelViewModel = BaseApplicationImpl.getContext();
+    int i = paramPlusPanelViewModel.getResources().getDimensionPixelSize(2131299168);
+    QQToast.a(paramPlusPanelViewModel, 2131695996, 1).b(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.QavWTAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,9 @@ class DynamicNowManager$7$1
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginIBizLoginObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginIBizLoginObserver.a(paramInt, paramString);
+    IBizLoginObserver localIBizLoginObserver = this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginIBizLoginObserver;
+    if (localIBizLoginObserver != null) {
+      localIBizLoginObserver.a(paramInt, paramString);
     }
   }
   
@@ -35,7 +36,7 @@ class DynamicNowManager$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager.7.1
  * JD-Core Version:    0.7.0.1
  */

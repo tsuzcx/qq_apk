@@ -18,8 +18,20 @@ public class VipReporterManager
   
   public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QZLog.isColorLevel()) {
-      QZLog.i(paramString, 2, "reportToPf00064 actiontype = " + paramInt1 + " subactionType = " + paramInt2 + " reserves = " + paramInt3 + " isNeedSample = " + paramBoolean1 + " isReportNow = " + paramBoolean2);
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportToPf00064 actiontype = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" subactionType = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" reserves = ");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(" isNeedSample = ");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(" isReportNow = ");
+      localStringBuilder.append(paramBoolean2);
+      QZLog.i(paramString, 2, localStringBuilder.toString());
     }
     paramString = new LpReportInfo_pf00064(paramInt1, paramInt2, paramInt3);
     LpReportManager.getInstance().reportToPF00064(paramString, paramBoolean1, paramBoolean2);
@@ -32,7 +44,7 @@ public class VipReporterManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.VipReporterManager
  * JD-Core Version:    0.7.0.1
  */

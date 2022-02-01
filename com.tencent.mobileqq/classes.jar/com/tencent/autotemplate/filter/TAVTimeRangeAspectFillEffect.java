@@ -11,26 +11,40 @@ public class TAVTimeRangeAspectFillEffect
   extends TAVAspectFillEffect
   implements TAVAttachTimeRangeSourceEffect
 {
-  private final String TAG = "TAVTimeRangeAspectFillE@" + Integer.toHexString(hashCode());
+  private final String TAG;
   private CMTimeRange timeRange;
   
   public TAVTimeRangeAspectFillEffect(CGSize paramCGSize)
   {
     super(paramCGSize);
+    paramCGSize = new StringBuilder();
+    paramCGSize.append("TAVTimeRangeAspectFillE@");
+    paramCGSize.append(Integer.toHexString(hashCode()));
+    this.TAG = paramCGSize.toString();
   }
   
   private TAVVideoEffect.Filter createSuperFilter()
   {
     TAVVideoEffect.Filter localFilter = super.createFilter();
-    Logger.d(this.TAG, "createSuperFilter() called filter = " + localFilter);
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("createSuperFilter() called filter = ");
+    localStringBuilder.append(localFilter);
+    Logger.d(str, localStringBuilder.toString());
     return localFilter;
   }
   
   public void attachTimeRange(CMTimeRange paramCMTimeRange)
   {
     this.timeRange = paramCMTimeRange;
-    if (paramCMTimeRange != null) {
-      Logger.d(this.TAG, "attachTimeRange() called with: timeRange = [" + paramCMTimeRange.toSimpleString() + "]");
+    if (paramCMTimeRange != null)
+    {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("attachTimeRange() called with: timeRange = [");
+      localStringBuilder.append(paramCMTimeRange.toSimpleString());
+      localStringBuilder.append("]");
+      Logger.d(str, localStringBuilder.toString());
     }
   }
   
@@ -42,7 +56,10 @@ public class TAVTimeRangeAspectFillEffect
   @NonNull
   public String effectId()
   {
-    return "TAVTimeRangeAspectFillEffect" + Integer.toHexString(hashCode());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVTimeRangeAspectFillEffect");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    return localStringBuilder.toString();
   }
 }
 

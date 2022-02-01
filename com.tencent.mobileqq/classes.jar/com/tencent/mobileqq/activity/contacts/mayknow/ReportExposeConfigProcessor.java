@@ -23,12 +23,16 @@ public class ReportExposeConfigProcessor
   @Nullable
   public ContactReportUtils.ReportExposeIntervalConfig a(QConfItem[] paramArrayOfQConfItem)
   {
+    Object localObject1;
     int j;
     int i;
-    Object localObject1;
+    Object localObject2;
     if (QLog.isColorLevel())
     {
-      QLog.d("ReportExposeConfigProcessor", 2, "onParsed :" + paramArrayOfQConfItem);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onParsed :");
+      ((StringBuilder)localObject1).append(paramArrayOfQConfItem);
+      QLog.d("ReportExposeConfigProcessor", 2, ((StringBuilder)localObject1).toString());
       if (paramArrayOfQConfItem != null)
       {
         j = paramArrayOfQConfItem.length;
@@ -36,8 +40,12 @@ public class ReportExposeConfigProcessor
         while (i < j)
         {
           localObject1 = paramArrayOfQConfItem[i];
-          if (localObject1 != null) {
-            QLog.d("ReportExposeConfigProcessor", 2, "onParsed item: " + ((QConfItem)localObject1).a);
+          if (localObject1 != null)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("onParsed item: ");
+            ((StringBuilder)localObject2).append(((QConfItem)localObject1).a);
+            QLog.d("ReportExposeConfigProcessor", 2, ((StringBuilder)localObject2).toString());
           }
           i += 1;
         }
@@ -49,7 +57,7 @@ public class ReportExposeConfigProcessor
       i = 0;
       while (i < j)
       {
-        Object localObject2 = paramArrayOfQConfItem[i];
+        localObject2 = paramArrayOfQConfItem[i];
         if ((localObject2 != null) && (!TextUtils.isEmpty(((QConfItem)localObject2).a))) {
           try
           {
@@ -109,8 +117,12 @@ public class ReportExposeConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed, code = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("ReportExposeConfigProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -121,7 +133,7 @@ public class ReportExposeConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.ReportExposeConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

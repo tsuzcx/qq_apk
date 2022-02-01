@@ -9,12 +9,16 @@ public class ARCloudRecogReqFaceInfo
   
   public String toString()
   {
-    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARCloudRecogReqFaceInfo{timeout = ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudRecogReqFaceInfo
  * JD-Core Version:    0.7.0.1
  */

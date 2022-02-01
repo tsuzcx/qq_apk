@@ -39,42 +39,56 @@ public class LoginManager
   public static LoginRequest a(BizLoginRequest paramBizLoginRequest)
   {
     LoginRequest localLoginRequest = new LoginRequest();
-    String str1 = paramBizLoginRequest.g;
-    String str2 = paramBizLoginRequest.f;
-    localLoginRequest.id = str1;
-    localLoginRequest.token = str2;
+    Object localObject1 = paramBizLoginRequest.g;
+    Object localObject2 = paramBizLoginRequest.f;
+    localLoginRequest.id = ((String)localObject1);
+    localLoginRequest.token = ((String)localObject2);
     localLoginRequest.appid = String.valueOf(paramBizLoginRequest.b);
-    switch (paramBizLoginRequest.jdField_a_of_type_Int)
+    int i = paramBizLoginRequest.jdField_a_of_type_Int;
+    if (i != 0)
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      LogFactory.a().b("LoginManager", "do NowLive login, type is unknow:" + paramBizLoginRequest.jdField_a_of_type_Int);
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 8)
+          {
+            localObject1 = LogFactory.a();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("do NowLive login, type is unknow:");
+            ((StringBuilder)localObject2).append(paramBizLoginRequest.jdField_a_of_type_Int);
+            ((LogInterface)localObject1).b("LoginManager", ((StringBuilder)localObject2).toString());
+          }
+          else
+          {
+            LogFactory.a().b("LoginManager", "do NowLive login, type is qq_connect");
+            localLoginRequest.loginType = LoginType.QQ;
+            localLoginRequest.customExtData = "18";
+          }
+        }
+        else
+        {
+          localLoginRequest.loginType = LoginType.GUEST;
+          localLoginRequest.customExtData = "2";
+        }
+      }
+      else
+      {
+        LogFactory.a().b("LoginManager", "do NowLive login, type is wx");
+        localLoginRequest.loginType = LoginType.WX;
+        localLoginRequest.customExtData = "9";
+      }
     }
-    for (;;)
+    else
     {
-      localLoginRequest.initOpenSDK = false;
-      return localLoginRequest;
       LogFactory.a().b("LoginManager", "do NowLive login, type is wt");
       localLoginRequest.loginType = LoginType.QQ;
       localLoginRequest.id = paramBizLoginRequest.c;
       localLoginRequest.token = paramBizLoginRequest.d;
       localLoginRequest.customExtData = "0";
-      continue;
-      LogFactory.a().b("LoginManager", "do NowLive login, type is qq_connect");
-      localLoginRequest.loginType = LoginType.QQ;
-      localLoginRequest.customExtData = "18";
-      continue;
-      LogFactory.a().b("LoginManager", "do NowLive login, type is wx");
-      localLoginRequest.loginType = LoginType.WX;
-      localLoginRequest.customExtData = "9";
-      continue;
-      localLoginRequest.loginType = LoginType.GUEST;
-      localLoginRequest.customExtData = "2";
     }
+    localLoginRequest.initOpenSDK = false;
+    return localLoginRequest;
   }
   
   private LoginResult a(LoginInfo paramLoginInfo)
@@ -145,16 +159,16 @@ public class LoginManager
   
   public void a(LoginRequest paramLoginRequest)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginStatus == LoginStatus.Logined) || (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginStatus == LoginStatus.Logining))
+    if ((this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginStatus != LoginStatus.Logined) && (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginStatus != LoginStatus.Logining))
     {
-      LogFactory.a().e("LoginManager", "loginToLiveSDK-----already logined or Logining, will Return");
-      a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginLoginResult);
+      LogFactory.a().e("LoginManager", "loginToLiveSDK-----Start Login");
+      this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginRequest = paramLoginRequest;
+      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginStatus = LoginStatus.Logining;
+      LiveSDK.login(paramLoginRequest, new LoginManager.2(this, paramLoginRequest));
       return;
     }
-    LogFactory.a().e("LoginManager", "loginToLiveSDK-----Start Login");
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLoginLoginRequest = paramLoginRequest;
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginStatus = LoginStatus.Logining;
-    LiveSDK.login(paramLoginRequest, new LoginManager.2(this, paramLoginRequest));
+    LogFactory.a().e("LoginManager", "loginToLiveSDK-----already logined or Logining, will Return");
+    a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkApiLoginLoginResult);
   }
   
   public void a(String paramString, ILiveLoginTicketListener paramILiveLoginTicketListener)
@@ -192,7 +206,7 @@ public class LoginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.login.LoginManager
  * JD-Core Version:    0.7.0.1
  */

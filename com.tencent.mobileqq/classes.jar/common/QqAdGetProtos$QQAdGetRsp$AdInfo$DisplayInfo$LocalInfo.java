@@ -9,17 +9,23 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class QqAdGetProtos$QQAdGetRsp$AdInfo$DisplayInfo$LocalInfo
   extends MessageMicro<LocalInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 41, 49 }, new String[] { "distance_description", "store_name", "store_url", "store_address", "store_longitude", "store_latitude" }, new Object[] { "", "", "", "", Double.valueOf(0.0D), Double.valueOf(0.0D) }, LocalInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField distance_description = PBField.initString("");
   public final PBStringField store_address = PBField.initString("");
   public final PBDoubleField store_latitude = PBField.initDouble(0.0D);
   public final PBDoubleField store_longitude = PBField.initDouble(0.0D);
   public final PBStringField store_name = PBField.initString("");
   public final PBStringField store_url = PBField.initString("");
+  
+  static
+  {
+    Double localDouble = Double.valueOf(0.0D);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 41, 49 }, new String[] { "distance_description", "store_name", "store_url", "store_address", "store_longitude", "store_latitude" }, new Object[] { "", "", "", "", localDouble, localDouble }, LocalInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     common.QqAdGetProtos.QQAdGetRsp.AdInfo.DisplayInfo.LocalInfo
  * JD-Core Version:    0.7.0.1
  */

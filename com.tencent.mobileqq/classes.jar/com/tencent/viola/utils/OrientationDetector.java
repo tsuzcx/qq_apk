@@ -39,25 +39,19 @@ public class OrientationDetector
   {
     if ((paramInt >= 70) && (paramInt <= 110)) {
       paramInt = 1;
+    } else if ((paramInt >= 250) && (paramInt <= 290)) {
+      paramInt = 2;
+    } else {
+      paramInt = 0;
     }
-    for (;;)
+    long l = System.currentTimeMillis();
+    this.mOrientationEventMap.put(Integer.valueOf(paramInt), Long.valueOf(l));
+    Iterator localIterator = this.mOrientationEventMap.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      long l = System.currentTimeMillis();
-      this.mOrientationEventMap.put(Integer.valueOf(paramInt), Long.valueOf(l));
-      Iterator localIterator = this.mOrientationEventMap.entrySet().iterator();
-      Map.Entry localEntry;
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localEntry = (Map.Entry)localIterator.next();
-      } while ((((Integer)localEntry.getKey()).intValue() == paramInt) || (l - ((Long)localEntry.getValue()).longValue() >= 200L));
-      return false;
-      if ((paramInt >= 250) && (paramInt <= 290)) {
-        paramInt = 2;
-      } else {
-        paramInt = 0;
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if ((((Integer)localEntry.getKey()).intValue() != paramInt) && (l - ((Long)localEntry.getValue()).longValue() < 200L)) {
+        return false;
       }
     }
     return true;
@@ -100,8 +94,9 @@ public class OrientationDetector
   
   public Context getContext()
   {
-    if (this.mContextRef != null) {
-      return (Context)this.mContextRef.get();
+    WeakReference localWeakReference = this.mContextRef;
+    if (localWeakReference != null) {
+      return (Context)localWeakReference.get();
     }
     return null;
   }
@@ -118,7 +113,7 @@ public class OrientationDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.utils.OrientationDetector
  * JD-Core Version:    0.7.0.1
  */

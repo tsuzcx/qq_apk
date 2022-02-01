@@ -2,7 +2,7 @@ package com.tencent.biz.apiproxy;
 
 import android.os.Bundle;
 import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 
 public class QQMusicClient
 {
@@ -30,22 +30,20 @@ public class QQMusicClient
   
   public void a(Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    TroopMemberApiClient.Callback localCallback;
-    do
+    if (paramBundle == null) {
+      return;
+    }
+    int i = paramBundle.getInt("seq", -1);
+    if (i != -1)
     {
-      int i;
-      do
-      {
-        return;
-        i = paramBundle.getInt("seq", -1);
-      } while (i == -1);
-      localCallback = this.a.a(i);
-    } while (localCallback == null);
-    localCallback.callback(paramBundle);
+      ITroopMemberApiClientApi.Callback localCallback = this.a.a(i);
+      if (localCallback != null) {
+        localCallback.callback(paramBundle);
+      }
+    }
   }
   
-  public void a(TroopMemberApiClient.Callback paramCallback)
+  public void a(ITroopMemberApiClientApi.Callback paramCallback)
   {
     if (paramCallback == null) {
       return;
@@ -71,7 +69,7 @@ public class QQMusicClient
     this.a.a(8, localBundle);
   }
   
-  public void b(TroopMemberApiClient.Callback paramCallback)
+  public void b(ITroopMemberApiClientApi.Callback paramCallback)
   {
     if (paramCallback == null) {
       return;
@@ -89,7 +87,7 @@ public class QQMusicClient
     this.a.a(8, localBundle);
   }
   
-  public void c(TroopMemberApiClient.Callback paramCallback)
+  public void c(ITroopMemberApiClientApi.Callback paramCallback)
   {
     if (paramCallback == null) {
       return;
@@ -102,7 +100,7 @@ public class QQMusicClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.apiproxy.QQMusicClient
  * JD-Core Version:    0.7.0.1
  */

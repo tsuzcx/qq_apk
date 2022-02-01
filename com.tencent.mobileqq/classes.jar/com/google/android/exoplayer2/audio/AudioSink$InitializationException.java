@@ -7,13 +7,13 @@ public final class AudioSink$InitializationException
   
   public AudioSink$InitializationException(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super("AudioTrack init failed: " + paramInt1 + ", Config(" + paramInt2 + ", " + paramInt3 + ", " + paramInt4 + ")");
+    super(localStringBuilder.toString());
     this.audioTrackState = paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.AudioSink.InitializationException
  * JD-Core Version:    0.7.0.1
  */

@@ -16,22 +16,30 @@ class NotificationActivity$21
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      if (this.jdField_a_of_type_Boolean != bool) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
+      try
+      {
+        boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
+        if (this.jdField_a_of_type_Boolean != bool) {
+          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
+        }
+        MemoryManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.class, 10);
       }
-      MemoryManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.class, 10);
-      return;
+      finally
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      }
     }
-    catch (Exception paramDialogInterface) {}finally
+    catch (Exception paramDialogInterface)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      label66:
+      break label66;
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.21
  * JD-Core Version:    0.7.0.1
  */

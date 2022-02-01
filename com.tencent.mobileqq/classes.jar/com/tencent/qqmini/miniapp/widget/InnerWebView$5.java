@@ -19,7 +19,10 @@ class InnerWebView$5
   
   public void doUpdateVisitedHistory(WebView paramWebView, String paramString, boolean paramBoolean)
   {
-    QMLog.d("InnerWebView", "doUpdateVisitedHistory " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doUpdateVisitedHistory ");
+    localStringBuilder.append(paramString);
+    QMLog.d("InnerWebView", localStringBuilder.toString());
     if ((InnerWebView.access$600(this.this$0) != null) && (paramString != null) && (!paramString.equals("about:blank"))) {
       InnerWebView.access$600(this.this$0).performAction(new InnerWebView.5.1(this, paramString));
     }
@@ -29,8 +32,12 @@ class InnerWebView$5
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    QMLog.d("InnerWebView", "onPageFinished " + paramString);
-    this.this$0.evaluateJavascript(InnerWebView.access$1200(this.this$0), new InnerWebView.5.2(this));
+    paramWebView = new StringBuilder();
+    paramWebView.append("onPageFinished ");
+    paramWebView.append(paramString);
+    QMLog.d("InnerWebView", paramWebView.toString());
+    paramWebView = this.this$0;
+    paramWebView.evaluateJavascript(InnerWebView.access$1200(paramWebView), new InnerWebView.5.2(this));
     InnerWebView.access$1300(this.this$0, paramString);
   }
   
@@ -38,21 +45,35 @@ class InnerWebView$5
   {
     JsInjector.getInstance().onPageStarted(paramWebView);
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    QMLog.d("InnerWebView", "onPageStarted " + paramString);
+    paramWebView = new StringBuilder();
+    paramWebView.append("onPageStarted ");
+    paramWebView.append(paramString);
+    QMLog.d("InnerWebView", paramWebView.toString());
   }
   
   public void onReceivedError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
   {
     super.onReceivedError(paramWebView, paramWebResourceRequest, paramWebResourceError);
     paramWebResourceRequest = paramWebView.getUrl();
-    StringBuilder localStringBuilder = new StringBuilder().append("onReceivedError ").append(paramWebResourceRequest).append("; webResourceError : ");
-    if (paramWebResourceError != null) {}
-    for (paramWebView = paramWebResourceError.getDescription() + " " + paramWebResourceError.getErrorCode();; paramWebView = null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceivedError ");
+    localStringBuilder.append(paramWebResourceRequest);
+    localStringBuilder.append("; webResourceError : ");
+    if (paramWebResourceError != null)
     {
-      QMLog.d("InnerWebView", paramWebView);
-      InnerWebView.access$1400(this.this$0, paramWebResourceRequest);
-      return;
+      paramWebView = new StringBuilder();
+      paramWebView.append(paramWebResourceError.getDescription());
+      paramWebView.append(" ");
+      paramWebView.append(paramWebResourceError.getErrorCode());
+      paramWebView = paramWebView.toString();
     }
+    else
+    {
+      paramWebView = null;
+    }
+    localStringBuilder.append(paramWebView);
+    QMLog.d("InnerWebView", localStringBuilder.toString());
+    InnerWebView.access$1400(this.this$0, paramWebResourceRequest);
   }
   
   public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
@@ -69,8 +90,10 @@ class InnerWebView$5
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if (InnerWebView.access$900(this.this$0, paramString)) {}
-    while (InnerWebView.access$1000(this.this$0, paramString)) {
+    if (InnerWebView.access$900(this.this$0, paramString)) {
+      return true;
+    }
+    if (InnerWebView.access$1000(this.this$0, paramString)) {
       return true;
     }
     return super.shouldOverrideUrlLoading(paramWebView, paramString);
@@ -78,7 +101,7 @@ class InnerWebView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.InnerWebView.5
  * JD-Core Version:    0.7.0.1
  */

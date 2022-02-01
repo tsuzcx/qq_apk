@@ -6,8 +6,8 @@ import android.graphics.PointF;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
 import java.util.List;
 
@@ -18,7 +18,7 @@ class VasProfileTagView$11
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    VasProfileTagView.access$1806(this.this$0);
+    VasProfileTagView.access$1706(this.this$0);
     paramAnimator = (RatioLayout.LayoutParams)this.val$child.getLayoutParams();
     if (paramAnimator != null)
     {
@@ -32,41 +32,38 @@ class VasProfileTagView$11
         this.val$child.setLayoutParams(paramAnimator);
         this.val$child.setTranslationX(0.0F);
         this.val$child.setTranslationY(0.0F);
-        if ((this.val$child instanceof VipTagView)) {
-          ((VipTagView)this.val$child).setShakingState(true);
+        paramAnimator = this.val$child;
+        if ((paramAnimator instanceof VipTagView)) {
+          ((VipTagView)paramAnimator).setShakingState(true);
         }
       }
-      VasProfileTagView.access$402(this.this$0, false);
-      if (VasProfileTagView.access$1800(this.this$0) == 0) {
+      VasProfileTagView.access$202(this.this$0, false);
+      if (VasProfileTagView.access$1700(this.this$0) == 0)
+      {
         if (!this.this$0.checkTagUpdateFlag())
         {
-          paramAnimator = VasProfileTagView.access$1900(this.this$0).a.getLabelList();
-          if (paramAnimator != null)
-          {
-            if ((VasProfileTagView.access$500(this.this$0)[(VasProfileTagView.access$300().length - 1)] == null) || (paramAnimator.size() != 0)) {
-              break label255;
+          paramAnimator = VasProfileTagView.access$1800(this.this$0).card.getLabelList();
+          if (paramAnimator != null) {
+            if ((VasProfileTagView.access$300(this.this$0)[(VasProfileTagView.access$100().length - 1)] != null) && (paramAnimator.size() == 0)) {
+              VasProfileTagView.access$400(this.this$0).setVisibility(0);
+            } else {
+              VasProfileTagView.access$400(this.this$0).setVisibility(4);
             }
-            VasProfileTagView.access$600(this.this$0).setVisibility(0);
           }
         }
+        if (VasProfileTagView.access$1900(this.this$0))
+        {
+          paramAnimator = this.this$0;
+          paramAnimator.updateJueban(VasProfileTagView.access$2000(paramAnimator));
+          VasProfileTagView.access$1902(this.this$0, false);
+        }
       }
-    }
-    for (;;)
-    {
-      if (VasProfileTagView.access$2000(this.this$0))
-      {
-        this.this$0.updateJueban(VasProfileTagView.access$2100(this.this$0));
-        VasProfileTagView.access$2002(this.this$0, false);
-      }
-      return;
-      label255:
-      VasProfileTagView.access$600(this.this$0).setVisibility(4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView.11
  * JD-Core Version:    0.7.0.1
  */

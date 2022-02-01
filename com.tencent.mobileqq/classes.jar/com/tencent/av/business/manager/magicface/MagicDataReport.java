@@ -18,6 +18,7 @@ public class MagicDataReport
   static String jdField_a_of_type_JavaLangString = "";
   static String b = "";
   static String c = "";
+  static String d = "";
   
   public static void a(int paramInt)
   {
@@ -33,8 +34,8 @@ public class MagicDataReport
   public static void a(int paramInt, String paramString)
   {
     g(paramString);
-    if (!TextUtils.isEmpty(b)) {
-      a("0X8008025", b);
+    if (!TextUtils.isEmpty(c)) {
+      a("0X8008025", c);
     }
   }
   
@@ -45,15 +46,13 @@ public class MagicDataReport
       g(paramString);
       paramVideoAppInterface = (EffectSupportManager)paramVideoAppInterface.a(5);
       boolean bool = paramVideoAppInterface.a(3, "normal");
-      if ((paramVideoAppInterface.a(3, "interact")) || (bool)) {
-        a("0X8008026", null);
+      if ((!paramVideoAppInterface.a(3, "interact")) && (!bool))
+      {
+        a("0X8008027", null);
+        return;
       }
+      a("0X8008026", null);
     }
-    else
-    {
-      return;
-    }
-    a("0X8008027", null);
   }
   
   public static void a(String paramString)
@@ -64,60 +63,67 @@ public class MagicDataReport
   
   public static void a(String paramString, int paramInt)
   {
-    if ((paramInt == 1) || (paramInt == 3))
+    if ((paramInt != 1) && (paramInt != 3))
     {
-      a(paramString, 10L, paramInt);
+      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!paramString.equals(jdField_a_of_type_JavaLangString)))
+      {
+        long l = System.currentTimeMillis();
+        a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
+      }
+      jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_Int = paramInt;
+      jdField_a_of_type_Long = System.currentTimeMillis();
       return;
     }
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!paramString.equals(jdField_a_of_type_JavaLangString)))
-    {
-      long l = System.currentTimeMillis();
-      a(jdField_a_of_type_JavaLangString, (l - jdField_a_of_type_Long) / 1000L, jdField_a_of_type_Int);
-    }
-    jdField_a_of_type_JavaLangString = paramString;
-    jdField_a_of_type_Int = paramInt;
-    jdField_a_of_type_Long = System.currentTimeMillis();
+    a(paramString, 10L, paramInt);
   }
   
   public static void a(String paramString1, int paramInt, String paramString2)
   {
     g(paramString2);
-    b = paramString1;
+    c = paramString1;
   }
   
   public static void a(String paramString, long paramLong, int paramInt)
   {
-    AVLog.printColorLog("MagicDataReport", "DOUBLE SCREEN DataReport onStateReport: |" + paramString + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("activeName", paramString);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatFace", true, -1L, -1L, localHashMap, true);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("DOUBLE SCREEN DataReport onStateReport: |");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(paramLong);
+    AVLog.printColorLog("MagicDataReport", ((StringBuilder)localObject).toString());
+    localObject = new HashMap();
+    ((Map)localObject).put("activeName", paramString);
+    ((Map)localObject).put("duration", String.valueOf(paramLong));
+    UserAction.onUserAction("actAVFunChatFace", true, -1L, -1L, (Map)localObject, true);
     try
     {
       UserAction.flushObjectsToDB(true);
-      int i = 0;
-      switch (paramInt)
-      {
-      default: 
-        paramInt = i;
-        if (paramInt != 0) {
-          b(paramInt, paramString);
-        }
-        return;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
+      AVLog.printErrorLog("MagicDataReport", localException.getMessage());
+    }
+    int i = 0;
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
       {
-        AVLog.printErrorLog("MagicDataReport", localException.getMessage());
-        continue;
-        paramInt = 3;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 5;
+        if (paramInt != 3) {
+          paramInt = i;
+        } else {
+          paramInt = 5;
+        }
       }
+      else {
+        paramInt = 4;
+      }
+    }
+    else {
+      paramInt = 3;
+    }
+    if (paramInt != 0) {
+      c(paramInt, paramString);
     }
   }
   
@@ -128,17 +134,68 @@ public class MagicDataReport
   
   public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    AVLog.printColorLog("MagicDataReport", "reportClickEvent key = " + paramString2 + ", fromType = " + paramInt + ", value = " + paramString3 + ", mRoomId = " + c);
-    ReportController.b(null, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", c, paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reportClickEvent key = ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(", fromType = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", value = ");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(", mRoomId = ");
+    localStringBuilder.append(d);
+    AVLog.printColorLog("MagicDataReport", localStringBuilder.toString());
+    ReportController.b(null, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", d, paramString3);
   }
   
   public static void b(int paramInt, String paramString)
   {
-    AVLog.printColorLog("MagicDataReport", "WL_DEBUG reportChangeFace fromType = " + paramInt + ", id = " + paramString);
-    if ((TextUtils.isEmpty(c)) || (c.equals("0")))
+    if (paramInt != 1)
+    {
+      if (paramInt != 2) {
+        paramInt = 0;
+      } else {
+        paramInt = 4;
+      }
+    }
+    else {
+      paramInt = 3;
+    }
+    if ((TextUtils.isEmpty(d)) || (d.equals("0")))
     {
       VideoController localVideoController = VideoController.a();
-      c = localVideoController.a(localVideoController.a().d) + "";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localVideoController.a(localVideoController.a().c));
+      localStringBuilder.append("");
+      d = localStringBuilder.toString();
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramString)) && (!paramString.equals(b)))
+    {
+      a("dc00898", "0X800BB5E", paramInt, paramString);
+      b = paramString;
+    }
+  }
+  
+  public static void b(String paramString)
+  {
+    g(paramString);
+    a("0X800812F", null);
+  }
+  
+  public static void c(int paramInt, String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("WL_DEBUG reportChangeFace fromType = ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", id = ");
+    ((StringBuilder)localObject).append(paramString);
+    AVLog.printColorLog("MagicDataReport", ((StringBuilder)localObject).toString());
+    if ((TextUtils.isEmpty(d)) || (d.equals("0")))
+    {
+      localObject = VideoController.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((VideoController)localObject).a(((VideoController)localObject).a().c));
+      localStringBuilder.append("");
+      d = localStringBuilder.toString();
     }
     if (paramInt == 5)
     {
@@ -146,12 +203,6 @@ public class MagicDataReport
       return;
     }
     a("dc00898", "0X80088B3", paramInt, paramString);
-  }
-  
-  public static void b(String paramString)
-  {
-    g(paramString);
-    a("0X800812F", null);
   }
   
   public static void c(String paramString)
@@ -181,13 +232,13 @@ public class MagicDataReport
   static void g(String paramString)
   {
     if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("0"))) {
-      c = paramString;
+      d = paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicDataReport
  * JD-Core Version:    0.7.0.1
  */

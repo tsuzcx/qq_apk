@@ -2,7 +2,6 @@ package com.tencent.mobileqq.filemanager.core;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
 import com.tencent.mobileqq.filemanager.app.FMObserver;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
@@ -21,8 +20,12 @@ public class OfflinePreviewController
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("OfflinePreviewController<FileAssistant>", 1, " init OfflinePreviewController error,uuid is null,stack:" + FileManagerUtil.a());
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append(" init OfflinePreviewController error,uuid is null,stack:");
+      paramQQAppInterface.append(FileManagerUtil.a());
+      QLog.e("OfflinePreviewController<FileAssistant>", 1, paramQQAppInterface.toString());
     }
     b();
   }
@@ -43,9 +46,12 @@ public class OfflinePreviewController
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      QLog.e("OfflinePreviewController<FileAssistant>", 1, " init OfflinePreviewController error,uuid is null,stack:" + FileManagerUtil.a());
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback.a(false, "", "", -100005L, "", "", null, this.jdField_a_of_type_JavaLangString, null);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" init OfflinePreviewController error,uuid is null,stack:");
+      localStringBuilder.append(FileManagerUtil.a());
+      QLog.e("OfflinePreviewController<FileAssistant>", 1, localStringBuilder.toString());
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreControlerCallback.a(false, "", "", -100005L, "", "", null, this.jdField_a_of_type_JavaLangString, null);
       }
       return false;
     }
@@ -61,7 +67,7 @@ public class OfflinePreviewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OfflinePreviewController
  * JD-Core Version:    0.7.0.1
  */

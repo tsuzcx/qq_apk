@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.search.util;
 
+import addcontacts.AccountSearchPb.record;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.search.business.addcontact.model.SearchResult;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModel;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
 import com.tencent.mobileqq.search.model.IModel;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.mobileqq.search.model.PublicAccountSearchResultModel;
 import java.util.ArrayList;
-import java.util.ArrayList<Lcom.tencent.mobileqq.activity.contact.addcontact.SearchResult;>;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,121 +19,190 @@ public class ReportUtil
   public static int a;
   public static String a;
   public static long[] a;
-  public static String b = null;
-  
-  static
-  {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_ArrayOfLong = null;
-    jdField_a_of_type_JavaLangString = null;
-  }
+  public static String b;
   
   public static int a(ArrayList<SearchResult> paramArrayList, String paramString)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return 2;
-    }
-    int i = 2;
-    Object localObject1 = "";
-    Iterator localIterator1 = paramArrayList.iterator();
-    paramArrayList = (ArrayList<SearchResult>)localObject1;
-    while (localIterator1.hasNext())
+    if (paramArrayList != null)
     {
-      localObject1 = (SearchResult)localIterator1.next();
-      if (localObject1 != null)
+      if (paramArrayList.size() == 0) {
+        return 2;
+      }
+      Iterator localIterator1 = paramArrayList.iterator();
+      paramArrayList = "";
+      int i = 2;
+      while (localIterator1.hasNext())
       {
-        int j = i;
-        if (((SearchResult)localObject1).jdField_a_of_type_Int == 80000001)
+        Object localObject1 = (SearchResult)localIterator1.next();
+        if (localObject1 != null)
         {
-          j = i;
-          if (((SearchResult)localObject1).b != null)
+          int j = i;
+          if (((SearchResult)localObject1).jdField_a_of_type_Int == 80000001)
           {
             j = i;
-            if (((SearchResult)localObject1).b.size() > 0)
+            if (((SearchResult)localObject1).b != null)
             {
-              Iterator localIterator2 = ((SearchResult)localObject1).b.iterator();
-              do
+              j = i;
+              if (((SearchResult)localObject1).b.size() > 0)
               {
-                j = i;
-                if (!localIterator2.hasNext()) {
-                  break;
+                Iterator localIterator2 = ((SearchResult)localObject1).b.iterator();
+                for (;;)
+                {
+                  j = i;
+                  if (!localIterator2.hasNext()) {
+                    break;
+                  }
+                  Object localObject2 = (AccountSearchPb.record)localIterator2.next();
+                  if (localObject2 != null)
+                  {
+                    localObject2 = String.valueOf(((AccountSearchPb.record)localObject2).code.get());
+                    if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals(paramString))) {
+                      i = 1;
+                    } else {
+                      i = 2;
+                    }
+                    SearchUtils.a("add_page", "all_result", "exp_grp", 0, i, new String[] { localObject2, "", paramString, "" });
+                  }
                 }
-                localObject2 = (AccountSearchPb.record)localIterator2.next();
-              } while (localObject2 == null);
-              Object localObject2 = String.valueOf(((AccountSearchPb.record)localObject2).code.get());
-              if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals(paramString))) {}
-              for (i = 1;; i = 2)
-              {
-                SearchUtils.a("add_page", "all_result", "exp_grp", 0, i, new String[] { localObject2, "", paramString, "" });
-                break;
               }
             }
           }
-        }
-        switch (((SearchResult)localObject1).jdField_a_of_type_Int)
-        {
-        }
-        for (;;)
-        {
-          i = j;
-          break;
-          if (TextUtils.isEmpty(paramArrayList))
+          switch (((SearchResult)localObject1).jdField_a_of_type_Int)
           {
-            paramArrayList = "1";
-          }
-          else
-          {
-            paramArrayList = paramArrayList + "::1";
-            continue;
+          default: 
+            i = j;
+            break;
+          case 80000003: 
             if (TextUtils.isEmpty(paramArrayList))
             {
-              paramArrayList = "2";
+              paramArrayList = "4";
+              i = j;
             }
             else
             {
-              paramArrayList = paramArrayList + "::2";
-              continue;
-              if (TextUtils.isEmpty(paramArrayList))
-              {
-                paramArrayList = "3";
-              }
-              else
-              {
-                paramArrayList = paramArrayList + "::3";
-                continue;
-                if (TextUtils.isEmpty(paramArrayList)) {
-                  paramArrayList = "4";
-                } else {
-                  paramArrayList = paramArrayList + "::4";
-                }
-              }
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(paramArrayList);
+              ((StringBuilder)localObject1).append("::4");
+              paramArrayList = ((StringBuilder)localObject1).toString();
+              i = j;
             }
+            break;
+          case 80000002: 
+            if (TextUtils.isEmpty(paramArrayList))
+            {
+              paramArrayList = "3";
+              i = j;
+            }
+            else
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(paramArrayList);
+              ((StringBuilder)localObject1).append("::3");
+              paramArrayList = ((StringBuilder)localObject1).toString();
+              i = j;
+            }
+            break;
+          case 80000001: 
+            if (TextUtils.isEmpty(paramArrayList))
+            {
+              paramArrayList = "2";
+              i = j;
+            }
+            else
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(paramArrayList);
+              ((StringBuilder)localObject1).append("::2");
+              paramArrayList = ((StringBuilder)localObject1).toString();
+              i = j;
+            }
+            break;
+          case 80000000: 
+            if (TextUtils.isEmpty(paramArrayList))
+            {
+              paramArrayList = "1";
+              i = j;
+            }
+            else
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(paramArrayList);
+              ((StringBuilder)localObject1).append("::1");
+              paramArrayList = ((StringBuilder)localObject1).toString();
+              i = j;
+            }
+            break;
           }
         }
       }
+      SearchUtils.a("add_page", "all_result", "exp", 0, i, new String[] { "", paramArrayList, paramString, "" });
+      return i;
     }
-    SearchUtils.a("add_page", "all_result", "exp", 0, i, new String[] { "", paramArrayList, paramString, "" });
-    return i;
+    return 2;
   }
   
   public static int a(List<ISearchResultModel> paramList, String paramString)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return 2;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    int j = 2;
+    int i = j;
+    if (paramList != null)
     {
-      Object localObject = (ISearchResultModel)paramList.next();
-      if ((localObject instanceof GroupBaseNetSearchModelItem))
-      {
-        localObject = (GroupBaseNetSearchModelItem)localObject;
-        if ((((GroupBaseNetSearchModelItem)localObject).d() == 1002) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(((GroupBaseNetSearchModelItem)localObject).b()))) {
-          return 1;
-        }
+      if (paramList.size() == 0) {
+        return 2;
       }
+      paramList = paramList.iterator();
+      Object localObject;
+      do
+      {
+        do
+        {
+          i = j;
+          if (!paramList.hasNext()) {
+            break;
+          }
+          localObject = (ISearchResultModel)paramList.next();
+        } while (!(localObject instanceof GroupBaseNetSearchModelItem));
+        localObject = (GroupBaseNetSearchModelItem)localObject;
+      } while ((((GroupBaseNetSearchModelItem)localObject).d() != 1002) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(((GroupBaseNetSearchModelItem)localObject).a())));
+      i = 1;
     }
-    return 2;
+    return i;
+  }
+  
+  public static String a(List<ISearchResultModel> paramList, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      int i = Math.min(paramList.size(), paramInt);
+      if (i <= 0) {
+        return localStringBuilder.toString();
+      }
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        ISearchResultModel localISearchResultModel = (ISearchResultModel)paramList.get(paramInt);
+        if (localISearchResultModel != null)
+        {
+          String str = null;
+          if ((localISearchResultModel instanceof GroupBaseNetSearchModelItem)) {
+            str = ((GroupBaseNetSearchModelItem)localISearchResultModel).b;
+          } else if ((localISearchResultModel instanceof PublicAccountSearchResultModel)) {
+            str = ((PublicAccountSearchResultModel)localISearchResultModel).a();
+          }
+          if (!TextUtils.isEmpty(str))
+          {
+            if (localStringBuilder.length() != 0) {
+              localStringBuilder.append("，");
+            }
+            localStringBuilder.append(str);
+          }
+        }
+        paramInt += 1;
+      }
+      return localStringBuilder.toString();
+    }
+    return localStringBuilder.toString();
   }
   
   public static void a()
@@ -154,221 +223,238 @@ public class ReportUtil
   
   public static void a(GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem)
   {
-    if ((paramGroupBaseNetSearchModelItem == null) || (paramGroupBaseNetSearchModelItem.d() != 1002)) {}
-    String str1;
-    String str2;
-    String str3;
-    int i;
-    long[] arrayOfLong;
-    do
+    if (paramGroupBaseNetSearchModelItem != null)
     {
-      return;
-      str1 = paramGroupBaseNetSearchModelItem.a();
-      str2 = paramGroupBaseNetSearchModelItem.b();
-      str3 = paramGroupBaseNetSearchModelItem.d();
-      i = paramGroupBaseNetSearchModelItem.k;
-      paramGroupBaseNetSearchModelItem = i + 1 + "";
-      if ((!TextUtils.isEmpty(str1)) && (str1.equals(str2))) {}
-      for (i = 1;; i = 2)
+      if (paramGroupBaseNetSearchModelItem.d() != 1002) {
+        return;
+      }
+      String str1 = paramGroupBaseNetSearchModelItem.b();
+      String str2 = paramGroupBaseNetSearchModelItem.a();
+      String str3 = paramGroupBaseNetSearchModelItem.d();
+      int i = paramGroupBaseNetSearchModelItem.k;
+      paramGroupBaseNetSearchModelItem = new StringBuilder();
+      paramGroupBaseNetSearchModelItem.append(i + 1);
+      paramGroupBaseNetSearchModelItem.append("");
+      paramGroupBaseNetSearchModelItem = paramGroupBaseNetSearchModelItem.toString();
+      if ((!TextUtils.isEmpty(str1)) && (str1.equals(str2))) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      long[] arrayOfLong = jdField_a_of_type_ArrayOfLong;
+      if ((arrayOfLong != null) && (arrayOfLong.length == 2) && (arrayOfLong[0] == 1001L) && (arrayOfLong[1] == 1002L))
       {
-        arrayOfLong = jdField_a_of_type_ArrayOfLong;
-        if ((arrayOfLong == null) || (arrayOfLong.length != 2) || (arrayOfLong[0] != 1001L) || (arrayOfLong[1] != 1002L)) {
-          break;
-        }
         SearchUtils.a("all_search", "user_grp", "clk_grp", 0, i, new String[] { str2, paramGroupBaseNetSearchModelItem, str1, str3 });
         return;
       }
-    } while ((arrayOfLong == null) || (arrayOfLong.length != 1) || (arrayOfLong[0] != 1002L));
-    SearchUtils.a("all_search", "more_grp", "clk_grp", 0, i, new String[] { str2, paramGroupBaseNetSearchModelItem, str1, str3 });
+      if ((arrayOfLong != null) && (arrayOfLong.length == 1) && (arrayOfLong[0] == 1002L)) {
+        SearchUtils.a("all_search", "more_grp", "clk_grp", 0, i, new String[] { str2, paramGroupBaseNetSearchModelItem, str1, str3 });
+      }
+    }
   }
   
   public static void a(List<ISearchResultModel> paramList, String paramString)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    long[] arrayOfLong;
-    do
+    if (paramList != null)
     {
-      return;
-      arrayOfLong = jdField_a_of_type_ArrayOfLong;
-    } while ((arrayOfLong == null) || (arrayOfLong.length != 2) || (arrayOfLong[0] != 1001L) || (arrayOfLong[1] != 1002L));
-    SearchUtils.a("all_search", "user_grp", "clk_more_grp", 0, a(paramList, paramString), new String[] { "", "", paramString, "" });
+      if (paramList.size() == 0) {
+        return;
+      }
+      long[] arrayOfLong = jdField_a_of_type_ArrayOfLong;
+      if ((arrayOfLong != null) && (arrayOfLong.length == 2) && (arrayOfLong[0] == 1001L) && (arrayOfLong[1] == 1002L)) {
+        SearchUtils.a("all_search", "user_grp", "clk_more_grp", 0, a(paramList, paramString), new String[] { "", "", paramString, "" });
+      }
+    }
   }
   
   public static void a(List<IModel> paramList, List<ISearchResultGroupModel> paramList1, boolean paramBoolean, long[] paramArrayOfLong, String paramString1, String paramString2)
   {
-    int j = 2;
-    if ((paramList1 != null) && (paramList1.size() > 0)) {}
-    String str;
-    for (paramString1 = "1";; paramString1 = "2")
-    {
-      str = "";
-      if ((paramArrayOfLong == null) || (paramArrayOfLong.length != 2) || (paramArrayOfLong[0] != 1001L) || (paramArrayOfLong[1] != 1002L)) {
-        break label418;
-      }
-      if (!paramBoolean) {
-        break;
-      }
-      return;
+    if ((paramList1 != null) && (paramList1.size() > 0)) {
+      paramString1 = "1";
+    } else {
+      paramString1 = "2";
     }
-    paramArrayOfLong = str;
-    int i = j;
-    if (paramList1 != null)
+    int i;
+    int j;
+    if ((paramArrayOfLong != null) && (paramArrayOfLong.length == 2) && (paramArrayOfLong[0] == 1001L) && (paramArrayOfLong[1] == 1002L))
     {
-      paramArrayOfLong = str;
-      i = j;
-      if (paramList1.size() > 0)
-      {
-        paramList1 = paramList1.iterator();
-        paramList = str;
-        label103:
-        paramArrayOfLong = paramList;
-        i = j;
-        if (paramList1.hasNext())
-        {
-          paramArrayOfLong = (ISearchResultGroupModel)paramList1.next();
-          if ((!(paramArrayOfLong instanceof GroupBaseNetSearchModel)) || (paramArrayOfLong.a() == null)) {
-            break label823;
-          }
-          paramArrayOfLong = (GroupBaseNetSearchModel)paramArrayOfLong;
-          if (paramArrayOfLong.a == 1001L) {
-            if (TextUtils.isEmpty(paramList)) {
-              paramList = "1";
-            }
-          }
-        }
-      }
-    }
-    label418:
-    label814:
-    label823:
-    for (;;)
-    {
-      break label103;
-      paramList = paramList + "::1";
-      continue;
-      if (paramArrayOfLong.a == 1002L)
-      {
-        if (TextUtils.isEmpty(paramList)) {}
-        for (paramList = "2";; paramList = paramList + "::2")
-        {
-          paramArrayOfLong = paramArrayOfLong.a();
-          j = a(paramArrayOfLong, paramString2);
-          paramArrayOfLong = paramArrayOfLong.iterator();
-          while (paramArrayOfLong.hasNext())
-          {
-            paramString1 = (ISearchResultModel)paramArrayOfLong.next();
-            if ((paramString1 instanceof GroupBaseNetSearchModelItem))
-            {
-              paramString1 = (GroupBaseNetSearchModelItem)paramString1;
-              if (paramString1.d() == 1002)
-              {
-                i = paramString1.k;
-                str = i + 1 + "";
-                SearchUtils.a("all_search", "user_grp", "exp_grp", 0, j, new String[] { paramString1.b(), str, paramString2, paramString1.d() });
-              }
-            }
-          }
-        }
-        SearchUtils.a("all_search", "user_grp", "exp", 0, i, new String[] { "", paramArrayOfLong, paramString2, "" });
+      if (paramBoolean) {
         return;
-        if ((paramArrayOfLong == null) || (paramArrayOfLong.length != 1) || (paramArrayOfLong[0] != 1002L)) {
-          break;
-        }
-        if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
+      }
+      if ((paramList1 != null) && (paramList1.size() > 0))
+      {
+        paramArrayOfLong = paramList1.iterator();
+        paramList1 = "";
+        for (i = 2; paramArrayOfLong.hasNext(); i = j)
         {
-          paramList = paramList.iterator();
-          i = 0;
-          while (paramList.hasNext())
+          paramString1 = (ISearchResultGroupModel)paramArrayOfLong.next();
+          paramList = paramList1;
+          j = i;
+          if ((paramString1 instanceof GroupBaseNetSearchModel))
           {
-            if (!((IModel)paramList.next() instanceof GroupBaseNetSearchModelItem)) {
-              break label814;
-            }
-            i += 1;
-          }
-        }
-        for (;;)
-        {
-          int k = j;
-          if (paramList1 != null)
-          {
-            k = j;
-            if (paramList1.size() > 0)
+            paramList = paramList1;
+            j = i;
+            if (paramString1.a() != null)
             {
-              paramList = paramList1.iterator();
-              do
+              paramString1 = (GroupBaseNetSearchModel)paramString1;
+              if (paramString1.a == 1001L)
               {
-                do
+                if (TextUtils.isEmpty(paramList1))
                 {
-                  k = j;
-                  if (!paramList.hasNext()) {
-                    break;
-                  }
-                  paramList1 = (ISearchResultGroupModel)paramList.next();
-                } while ((!(paramList1 instanceof GroupBaseNetSearchModel)) || (paramList1.a() == null));
-                paramList1 = (GroupBaseNetSearchModel)paramList1;
-              } while (paramList1.a != 1002L);
-              paramList = paramList1.a();
-              j = a(paramList, paramString2);
-              k = j;
-              if (paramList != null)
+                  paramList = "1";
+                  j = i;
+                }
+                else
+                {
+                  paramList = new StringBuilder();
+                  paramList.append(paramList1);
+                  paramList.append("::1");
+                  paramList = paramList.toString();
+                  j = i;
+                }
+              }
+              else
               {
-                paramList = paramList.iterator();
-                for (;;)
+                paramList = paramList1;
+                j = i;
+                if (paramString1.a == 1002L)
                 {
-                  k = j;
-                  if (!paramList.hasNext()) {
-                    break;
-                  }
-                  paramList1 = (ISearchResultModel)paramList.next();
-                  if ((paramList1 instanceof GroupBaseNetSearchModelItem))
+                  if (TextUtils.isEmpty(paramList1))
                   {
-                    paramList1 = (GroupBaseNetSearchModelItem)paramList1;
-                    if (paramList1.d() == 1002)
+                    paramList = "2";
+                  }
+                  else
+                  {
+                    paramList = new StringBuilder();
+                    paramList.append(paramList1);
+                    paramList.append("::2");
+                    paramList = paramList.toString();
+                  }
+                  paramList1 = paramString1.a();
+                  j = a(paramList1, paramString2);
+                  paramList1 = paramList1.iterator();
+                  while (paramList1.hasNext())
+                  {
+                    paramString1 = (ISearchResultModel)paramList1.next();
+                    if ((paramString1 instanceof GroupBaseNetSearchModelItem))
                     {
-                      paramList1.k += i;
-                      k = paramList1.k;
-                      paramArrayOfLong = k + 1 + "";
-                      SearchUtils.a("all_search", "more_grp", "exp_grp", 0, j, new String[] { paramList1.b(), paramArrayOfLong, paramString2, paramList1.d() });
+                      paramString1 = (GroupBaseNetSearchModelItem)paramString1;
+                      if (paramString1.d() == 1002)
+                      {
+                        i = paramString1.k;
+                        Object localObject = new StringBuilder();
+                        ((StringBuilder)localObject).append(i + 1);
+                        ((StringBuilder)localObject).append("");
+                        localObject = ((StringBuilder)localObject).toString();
+                        SearchUtils.a("all_search", "user_grp", "exp_grp", 0, j, new String[] { paramString1.a(), localObject, paramString2, paramString1.d() });
+                      }
                     }
                   }
                 }
               }
             }
           }
-          if (paramBoolean)
-          {
-            SearchUtils.a("all_search", "more_grp", "load_more", 0, k, new String[] { paramString1, "", paramString2, "" });
-            return;
-          }
-          SearchUtils.a("all_search", "more_grp", "exp", 0, k, new String[] { paramString1, "", paramString2, "" });
-          return;
-          break;
-          i = 0;
+          paramList1 = paramList;
         }
       }
+      else
+      {
+        paramList1 = "";
+        i = 2;
+      }
+      SearchUtils.a("all_search", "user_grp", "exp", 0, i, new String[] { "", paramList1, paramString2, "" });
+      return;
+    }
+    if ((paramArrayOfLong != null) && (paramArrayOfLong.length == 1) && (paramArrayOfLong[0] == 1002L))
+    {
+      if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
+      {
+        paramList = paramList.iterator();
+        i = 0;
+        for (;;)
+        {
+          j = i;
+          if (!paramList.hasNext()) {
+            break;
+          }
+          if (((IModel)paramList.next() instanceof GroupBaseNetSearchModelItem)) {
+            i += 1;
+          }
+        }
+      }
+      j = 0;
+      if ((paramList1 != null) && (paramList1.size() > 0))
+      {
+        paramList = paramList1.iterator();
+        while (paramList.hasNext())
+        {
+          paramList1 = (ISearchResultGroupModel)paramList.next();
+          if (((paramList1 instanceof GroupBaseNetSearchModel)) && (paramList1.a() != null))
+          {
+            paramList1 = (GroupBaseNetSearchModel)paramList1;
+            if (paramList1.a == 1002L)
+            {
+              paramList = paramList1.a();
+              i = a(paramList, paramString2);
+              if (paramList != null)
+              {
+                paramList = paramList.iterator();
+                while (paramList.hasNext())
+                {
+                  paramList1 = (ISearchResultModel)paramList.next();
+                  if ((paramList1 instanceof GroupBaseNetSearchModelItem))
+                  {
+                    paramList1 = (GroupBaseNetSearchModelItem)paramList1;
+                    if (paramList1.d() == 1002)
+                    {
+                      paramList1.k += j;
+                      int k = paramList1.k;
+                      paramArrayOfLong = new StringBuilder();
+                      paramArrayOfLong.append(k + 1);
+                      paramArrayOfLong.append("");
+                      paramArrayOfLong = paramArrayOfLong.toString();
+                      SearchUtils.a("all_search", "more_grp", "exp_grp", 0, i, new String[] { paramList1.a(), paramArrayOfLong, paramString2, paramList1.d() });
+                    }
+                  }
+                }
+              }
+              break label785;
+            }
+          }
+        }
+      }
+      i = 2;
+      label785:
+      if (paramBoolean)
+      {
+        SearchUtils.a("all_search", "more_grp", "load_more", 0, i, new String[] { paramString1, "", paramString2, "" });
+        return;
+      }
+      SearchUtils.a("all_search", "more_grp", "exp", 0, i, new String[] { paramString1, "", paramString2, "" });
     }
   }
   
   public static void b(int paramInt, long[] paramArrayOfLong, String paramString1, String paramString2)
   {
     a(paramInt, paramArrayOfLong, paramString1, paramString2);
-    if (paramInt == 2) {}
-    for (paramString1 = "2";; paramString1 = "1")
+    if (paramInt == 2) {
+      paramString1 = "2";
+    } else {
+      paramString1 = "1";
+    }
+    if ((paramArrayOfLong != null) && (paramArrayOfLong.length == 2) && (paramArrayOfLong[0] == 1001L) && (paramArrayOfLong[1] == 1002L))
     {
-      if ((paramArrayOfLong != null) && (paramArrayOfLong.length == 2) && (paramArrayOfLong[0] == 1001L) && (paramArrayOfLong[1] == 1002L)) {
-        SearchUtils.a("all_search", "user_grp", "search_cnt", 0, 0, new String[] { "", paramString1, paramString2, "" });
-      }
-      while ((paramArrayOfLong == null) || (paramArrayOfLong.length != 1) || (paramArrayOfLong[0] != 1002L)) {
-        return;
-      }
-      SearchUtils.a("all_search", "more_grp", "search_cnt", 0, 0, new String[] { "", paramString1, paramString2, "" });
+      SearchUtils.a("all_search", "user_grp", "search_cnt", 0, 0, new String[] { "", paramString1, paramString2, "" });
       return;
+    }
+    if ((paramArrayOfLong != null) && (paramArrayOfLong.length == 1) && (paramArrayOfLong[0] == 1002L)) {
+      SearchUtils.a("all_search", "more_grp", "search_cnt", 0, 0, new String[] { "", paramString1, paramString2, "" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.ReportUtil
  * JD-Core Version:    0.7.0.1
  */

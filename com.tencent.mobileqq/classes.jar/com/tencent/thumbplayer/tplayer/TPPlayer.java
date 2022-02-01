@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.tencent.qqlive.module.videoreport.dtreport.video.playback.ReportThumbPlayer;
 import com.tencent.thumbplayer.adapter.ITPPlayerAdapter;
 import com.tencent.thumbplayer.adapter.TPPlayerAdapter;
@@ -34,19 +35,17 @@ import com.tencent.thumbplayer.api.TPCaptureParams;
 import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamBoolean;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPAudioTrackInfo;
-import com.tencent.thumbplayer.api.TPPlayerMsg.TPCDNURLInfo;
-import com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo;
-import com.tencent.thumbplayer.api.TPPlayerMsg.TPProtocolInfo;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaDrmInfo;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.TPVideoInfo;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 import com.tencent.thumbplayer.api.composition.ITPMediaDRMAsset;
 import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
-import com.tencent.thumbplayer.api.proxy.ITPPlayerProxyListener;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.api.report.ITPBusinessReportManager;
 import com.tencent.thumbplayer.api.resourceloader.ITPAssetResourceLoaderListener;
+import com.tencent.thumbplayer.api.richmedia.ITPRichMediaSynchronizer;
 import com.tencent.thumbplayer.config.TPPlayerConfig;
 import com.tencent.thumbplayer.datatransport.ITPPlayManager;
 import com.tencent.thumbplayer.datatransport.TPPlayManagerImpl;
@@ -62,7 +61,8 @@ import com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager;
 import com.tencent.thumbplayer.tplayer.plugins.report.TPReportPlugin;
 import com.tencent.thumbplayer.utils.TPCommonUtils;
 import com.tencent.thumbplayer.utils.TPHashMapBuilder;
-import com.tencent.thumbplayer.utils.TPLogUtil;
+import com.tencent.thumbplayer.utils.TPThreadAnnotations.ThreadSwitch;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +70,7 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TPPlayer
-  implements ITPPlayer, TPPlayerInternal.ITPPlayerSwitchThreadListener
+  implements ITPPlayer
 {
   private static String LOG_API_CALL_PREFIX = "api call:";
   private static final int MSG_INDEX = 256;
@@ -98,7 +98,7 @@ public class TPPlayer
   private static final int MSG_ON_VIDEOFRAMEOUT = 266;
   private static final int MSG_ON_VIDEO_SIZE_CHANGE = 264;
   private static AtomicInteger sLifeCycleId = new AtomicInteger(1000);
-  private static int sPlayId = 0;
+  private static int sPlayId;
   private String TAG = "TPPlayer";
   private ITPAssetResourceLoader mAssetResourceLoader;
   private Context mContext;
@@ -110,11 +110,11 @@ public class TPPlayer
   private ITPPlayManager mPlayProxyManager;
   private AtomicInteger mPlayTaskId = new AtomicInteger(1000);
   private ITPPlayerAdapter mPlayerAdapter;
-  private TPPlayerInternal mPlayerInternal;
   private TPPlayerListeners mPlayerListeners;
   private int mProxyStatus = -1;
   private TPReportManager mReportManager;
   private ITPPluginManager mTPPluginManager;
+  private Looper mThreadLooper;
   private long mTotalFileSizeByte;
   private TPPlayer.EventHandler mTransformCallbackHandler;
   private String mUrl = null;
@@ -139,75 +139,85 @@ public class TPPlayer
   
   public TPPlayer(Context paramContext, Looper paramLooper1, Looper paramLooper2, TPLoggerContext paramTPLoggerContext)
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.TAG);
+    ((StringBuilder)localObject).append(", playId:");
+    ((StringBuilder)localObject).append(sPlayId);
+    this.TAG = ((StringBuilder)localObject).toString();
     sPlayId += 1;
-    TPLoggerContext localTPLoggerContext;
     if (paramTPLoggerContext != null)
     {
-      localTPLoggerContext = new TPLoggerContext(paramTPLoggerContext, this.TAG);
-      this.mLogger = new TPBaseLogger(localTPLoggerContext);
-      this.mLogger.info("create TPPlayer");
-      this.mContext = paramContext.getApplicationContext();
-      this.mTPPluginManager = new TPPluginManager();
-      if (paramLooper1 != null)
-      {
-        paramTPLoggerContext = paramLooper1;
-        if (paramLooper1 != Looper.getMainLooper()) {}
-      }
-      else
-      {
-        this.mHandlerThread = new HandlerThread("TP-workthread");
-        this.mHandlerThread.start();
-        paramTPLoggerContext = this.mHandlerThread.getLooper();
-      }
-      this.mReportManager = new TPReportManager(this.mContext, paramTPLoggerContext);
-      this.mTPPluginManager.addPlugin(this.mReportManager);
-      pushEvent(100, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).build());
-      if (paramLooper2 != null) {
-        break label648;
-      }
+      localObject = new TPLoggerContext(paramTPLoggerContext, this.TAG);
     }
-    label648:
-    for (this.mTransformCallbackHandler = new TPPlayer.EventHandler(this, this);; this.mTransformCallbackHandler = new TPPlayer.EventHandler(this, this, paramLooper2))
+    else
     {
-      paramLooper2 = new TPPlayer.InnerPlayerListener(this);
-      this.mPlayerListeners = new TPPlayerListeners(this.mLogger.getTag());
-      this.mPlayerAdapter = new TPPlayerAdapter(this.mContext, localTPLoggerContext);
-      this.mPlayerAdapter.setOnPreparedListener(paramLooper2);
-      this.mPlayerAdapter.setOnCompletionListener(paramLooper2);
-      this.mPlayerAdapter.setOnInfoListener(paramLooper2);
-      this.mPlayerAdapter.setOnVideoSizeChangedListener(paramLooper2);
-      this.mPlayerAdapter.setOnErrorListener(paramLooper2);
-      this.mPlayerAdapter.setOnSeekCompleteListener(paramLooper2);
-      this.mPlayerAdapter.setOnVideoSizeChangedListener(paramLooper2);
-      this.mPlayerAdapter.setOnSubtitleDataListener(paramLooper2);
-      this.mPlayerAdapter.setOnSubtitleFrameOutListener(paramLooper2);
-      this.mPlayerAdapter.setOnAudioPcmOutputListener(paramLooper2);
-      this.mPlayerAdapter.setOnVideoFrameOutListener(paramLooper2);
-      this.mPlayerAdapter.setOnVideoProcessOutputListener(paramLooper2);
-      this.mPlayerAdapter.setOnAudioProcessOutputListener(paramLooper2);
-      this.mPlayerAdapter.setOnPlayerStateChangeListener(paramLooper2);
-      if (paramTPLoggerContext != null)
-      {
-        paramLooper1 = paramTPLoggerContext;
-        if (paramTPLoggerContext != Looper.getMainLooper()) {}
-      }
-      else
-      {
-        this.mHandlerThread = new HandlerThread("TP-workthread");
-        this.mHandlerThread.start();
-        paramLooper1 = this.mHandlerThread.getLooper();
-      }
-      this.mPlayerInternal = new TPPlayerInternal(this.mContext, paramLooper1, this);
-      pushEvent(101, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).build());
-      this.mPlayProxyManager = new TPPlayManagerImpl(paramContext);
-      this.mPlayProxyManager.setPlayListener(paramLooper2);
-      this.mTPPluginManager.addPlugin(new TPReportPlugin()).addPlugin(new TPLogPlugin());
-      this.proxyTrackUrls = new ArrayList();
-      return;
-      localTPLoggerContext = new TPLoggerContext("ThumbPlayer", String.valueOf(sLifeCycleId.incrementAndGet()), String.valueOf(this.mPlayTaskId.incrementAndGet()), this.TAG);
+      localObject = new TPLoggerContext("ThumbPlayer", String.valueOf(sLifeCycleId.incrementAndGet()), String.valueOf(this.mPlayTaskId.incrementAndGet()), this.TAG);
       this.mUsingDefaultLogContext = true;
-      break;
     }
+    this.mLogger = new TPBaseLogger((TPLoggerContext)localObject);
+    this.mLogger.info("create TPPlayer");
+    this.mContext = paramContext.getApplicationContext();
+    this.mTPPluginManager = new TPPluginManager();
+    if (paramLooper1 != null)
+    {
+      paramTPLoggerContext = paramLooper1;
+      if (paramLooper1 != Looper.getMainLooper()) {}
+    }
+    else
+    {
+      this.mHandlerThread = new HandlerThread("TP-workthread");
+      this.mHandlerThread.start();
+      paramTPLoggerContext = this.mHandlerThread.getLooper();
+    }
+    this.mReportManager = new TPReportManager(this.mContext, paramTPLoggerContext);
+    this.mTPPluginManager.addPlugin(this.mReportManager);
+    pushEvent(100, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).build());
+    TPPlayer.InnerPlayerListener localInnerPlayerListener = new TPPlayer.InnerPlayerListener(this);
+    this.mPlayerListeners = new TPPlayerListeners(this.mLogger.getTag());
+    this.mPlayerAdapter = new TPPlayerAdapter(this.mContext, (TPLoggerContext)localObject);
+    this.mPlayerAdapter.setOnPreparedListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnCompletionListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnInfoListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnVideoSizeChangedListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnErrorListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnSeekCompleteListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnVideoSizeChangedListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnSubtitleDataListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnSubtitleFrameOutListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnAudioPcmOutputListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnVideoFrameOutListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnVideoProcessOutputListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnAudioProcessOutputListener(localInnerPlayerListener);
+    this.mPlayerAdapter.setOnPlayerStateChangeListener(localInnerPlayerListener);
+    if (paramTPLoggerContext != null)
+    {
+      paramLooper1 = paramTPLoggerContext;
+      if (paramTPLoggerContext != Looper.getMainLooper()) {}
+    }
+    else
+    {
+      this.mHandlerThread = new HandlerThread("TP-workthread");
+      this.mHandlerThread.start();
+      paramLooper1 = this.mHandlerThread.getLooper();
+    }
+    this.mThreadLooper = paramLooper1;
+    if (paramLooper2 == null)
+    {
+      if (Looper.myLooper() == null) {
+        this.mTransformCallbackHandler = new TPPlayer.EventHandler(this, this, this.mThreadLooper);
+      } else {
+        this.mTransformCallbackHandler = new TPPlayer.EventHandler(this, this);
+      }
+    }
+    else {
+      this.mTransformCallbackHandler = new TPPlayer.EventHandler(this, this, paramLooper2);
+    }
+    pushEvent(101, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).build());
+    this.mPlayProxyManager = new TPPlayManagerImpl(paramContext, this.mThreadLooper);
+    this.mPlayProxyManager.setPlayListener(localInnerPlayerListener);
+    this.mTPPluginManager.addPlugin(new TPReportPlugin());
+    this.mTPPluginManager.addPlugin(new TPLogPlugin());
+    this.proxyTrackUrls = new ArrayList();
   }
   
   private void handleAudioTrackProxy(Object paramObject)
@@ -223,7 +233,12 @@ public class TPPlayer
   
   private void handleOnError(int paramInt1, int paramInt2)
   {
-    pushEvent(108, paramInt1, paramInt2, "", new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).put("reason", Integer.valueOf(3)).put("code", paramInt1 + "." + paramInt2).build());
+    TPHashMapBuilder localTPHashMapBuilder = new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).put("reason", Integer.valueOf(3));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt2);
+    pushEvent(108, paramInt1, paramInt2, "", localTPHashMapBuilder.put("code", localStringBuilder.toString()).build());
     this.mPlayProxyManager.setProxyPlayState(3);
     this.mPlayProxyManager.pauseDownload();
   }
@@ -233,7 +248,7 @@ public class TPPlayer
     if (paramInt == 200)
     {
       this.mPlayProxyManager.setProxyPlayState(4);
-      pushEvent(114, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).put("format", Integer.valueOf(0)).put("ptime", Long.valueOf(handleGetCurrentPositionMs())).put("url", this.mUrl).build());
+      pushEvent(114, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).put("format", Integer.valueOf(0)).put("ptime", Long.valueOf(getCurrentPositionMs())).put("url", this.mUrl).build());
       return;
     }
     if (paramInt == 201)
@@ -242,72 +257,101 @@ public class TPPlayer
       pushEvent(115, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).build());
       return;
     }
-    if (paramInt == 3) {
-      if (!(paramObject instanceof Long)) {
-        break label442;
-      }
-    }
-    label442:
-    for (paramLong1 = ((Long)paramObject).longValue();; paramLong1 = -1L)
+    Object localObject;
+    if (paramInt == 3)
     {
-      this.mLogger.info("switch definition finish defId:" + paramLong1);
+      paramLong1 = -1L;
+      if ((paramObject instanceof Long)) {
+        paramLong1 = ((Long)paramObject).longValue();
+      }
+      paramObject = this.mLogger;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("switch definition finish defId:");
+      ((StringBuilder)localObject).append(paramLong1);
+      paramObject.info(((StringBuilder)localObject).toString());
       if (paramLong1 > 0L) {
         this.mPlayProxyManager.playerSwitchDefComplete(paramLong1);
       }
-      pushEvent(121, 0, 0, null, new TPHashMapBuilder().put("switch", paramLong1 + "").build());
+      paramObject = new TPHashMapBuilder();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append("");
+      pushEvent(121, 0, 0, null, paramObject.put("switch", ((StringBuilder)localObject).toString()).build());
       return;
-      if (paramInt == 106)
-      {
-        pushEvent(105, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).build());
-        return;
-      }
-      if (paramInt == 501)
-      {
-        pushEvent(117, 0, 0, null, paramObject);
-        return;
-      }
-      if (paramInt == 107)
-      {
-        pushEvent(119, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).build());
-        return;
-      }
-      if (paramInt == 4)
-      {
-        pushEvent(123, 0, 0, null, new TPHashMapBuilder().put("opaque", paramObject).put("etime", Long.valueOf(System.currentTimeMillis())).put("code", paramLong1 + "." + paramLong2).build());
-        return;
-      }
-      if (paramInt != 101) {
-        break;
-      }
+    }
+    if (paramInt == 106)
+    {
+      pushEvent(105, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).build());
+      return;
+    }
+    if (paramInt == 501)
+    {
+      pushEvent(117, 0, 0, null, paramObject);
+      return;
+    }
+    if (paramInt == 107)
+    {
+      pushEvent(119, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).build());
+      return;
+    }
+    if (paramInt == 4)
+    {
+      paramObject = new TPHashMapBuilder().put("opaque", paramObject).put("etime", Long.valueOf(System.currentTimeMillis()));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(".");
+      ((StringBuilder)localObject).append(paramLong2);
+      pushEvent(123, 0, 0, null, paramObject.put("code", ((StringBuilder)localObject).toString()).build());
+      return;
+    }
+    if (paramInt == 101)
+    {
       pushEvent(124, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).build());
       return;
+    }
+    if ((paramInt == 505) && ((paramObject instanceof TPPlayerMsg.TPMediaDrmInfo)))
+    {
+      paramObject = (TPPlayerMsg.TPMediaDrmInfo)paramObject;
+      localObject = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TPMediaDrmInfo secureDecoder:");
+      localStringBuilder.append(paramObject.supportSecureDecoder);
+      localStringBuilder.append(" secureDecrypt:");
+      localStringBuilder.append(paramObject.supportSecureDecrypt);
+      localStringBuilder.append(" componentName:");
+      localStringBuilder.append(paramObject.componentName);
+      localStringBuilder.append(" drmType:");
+      localStringBuilder.append(paramObject.drmType);
+      ((TPBaseLogger)localObject).info(localStringBuilder.toString());
     }
   }
   
   private void handlePlayerCallback(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    if (this.mTransformCallbackHandler != null)
+    Object localObject = this.mTransformCallbackHandler;
+    if (localObject != null)
     {
-      Message localMessage = this.mTransformCallbackHandler.obtainMessage();
-      localMessage.what = paramInt1;
-      localMessage.arg1 = paramInt2;
-      localMessage.arg2 = paramInt3;
-      localMessage.obj = paramObject;
-      this.mTransformCallbackHandler.sendMessage(localMessage);
+      localObject = ((TPPlayer.EventHandler)localObject).obtainMessage();
+      ((Message)localObject).what = paramInt1;
+      ((Message)localObject).arg1 = paramInt2;
+      ((Message)localObject).arg2 = paramInt3;
+      ((Message)localObject).obj = paramObject;
+      this.mTransformCallbackHandler.sendMessage((Message)localObject);
     }
   }
   
   private void handlePlayerCallbackDelay(int paramInt1, int paramInt2, int paramInt3, Object paramObject, long paramLong)
   {
-    if (this.mTransformCallbackHandler != null)
+    Object localObject = this.mTransformCallbackHandler;
+    if (localObject != null)
     {
-      Message localMessage = this.mTransformCallbackHandler.obtainMessage();
-      localMessage.what = paramInt1;
-      localMessage.arg1 = paramInt2;
-      localMessage.arg2 = paramInt3;
-      localMessage.obj = paramObject;
+      localObject = ((TPPlayer.EventHandler)localObject).obtainMessage();
+      ((Message)localObject).what = paramInt1;
+      ((Message)localObject).arg1 = paramInt2;
+      ((Message)localObject).arg2 = paramInt3;
+      ((Message)localObject).obj = paramObject;
       this.mTransformCallbackHandler.removeMessages(paramInt1);
-      this.mTransformCallbackHandler.sendMessageDelayed(localMessage, paramLong);
+      this.mTransformCallbackHandler.sendMessageDelayed((Message)localObject, paramLong);
     }
   }
   
@@ -317,7 +361,11 @@ public class TPPlayer
       return;
     }
     paramObject = (TPPlayerMsg.TPAudioTrackInfo)paramObject;
-    this.mLogger.info("handleSelectAudioTrack, audioTrack url:" + paramObject.audioTrackUrl);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleSelectAudioTrack, audioTrack url:");
+    localStringBuilder.append(paramObject.audioTrackUrl);
+    localTPBaseLogger.info(localStringBuilder.toString());
     if (!TextUtils.isEmpty(paramObject.audioTrackUrl)) {
       try
       {
@@ -343,41 +391,40 @@ public class TPPlayer
   
   private void internalStop()
   {
-    try
-    {
-      this.mPlayerAdapter.stop();
-      pushEvent(107, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).put("reason", Integer.valueOf(1)).build());
-      this.mPlayProxyManager.setProxyPlayState(5);
-      this.mPlayProxyManager.pauseDownload();
-      this.mDownloadPlayableDurationMs = -1L;
-      this.mCurrentDownloadSizeByte = -1L;
-      this.mTotalFileSizeByte = -1L;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        this.mLogger.printException(localException);
-      }
-    }
+    this.mPlayerAdapter.stop();
+    pushEvent(107, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).put("reason", Integer.valueOf(1)).build());
+    this.mPlayProxyManager.setProxyPlayState(5);
+    this.mPlayProxyManager.pauseDownload();
+    this.mDownloadPlayableDurationMs = -1L;
+    this.mCurrentDownloadSizeByte = -1L;
+    this.mTotalFileSizeByte = -1L;
   }
   
   private boolean isUseProxyEnable()
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isUseProxyEnable, mPlayProxyManager.isEnable()=");
+    localStringBuilder.append(this.mPlayProxyManager.isEnable());
+    localStringBuilder.append(" TPPlayerConfig.isUseP2P()=");
+    localStringBuilder.append(TPPlayerConfig.isUseP2P());
+    localStringBuilder.append(" mUseProxy=");
+    localStringBuilder.append(this.mUseProxy);
+    localTPBaseLogger.info(localStringBuilder.toString());
     return (this.mPlayProxyManager.isEnable()) && (TPPlayerConfig.isUseP2P()) && (this.mUseProxy);
   }
   
   private void notifyIsUseProxyInfo()
   {
     TPThreadSwitchCommons.TPSwitchCommonParams localTPSwitchCommonParams = new TPThreadSwitchCommons.TPSwitchCommonParams();
-    if (isUseProxyEnable()) {}
-    for (long l = 1L;; l = 0L)
-    {
-      localTPSwitchCommonParams.arg1 = l;
-      handlePlayerCallback(261, 1009, 0, localTPSwitchCommonParams);
-      return;
+    long l;
+    if (isUseProxyEnable()) {
+      l = 1L;
+    } else {
+      l = 0L;
     }
+    localTPSwitchCommonParams.arg1 = l;
+    handlePlayerCallback(261, 1009, 0, localTPSwitchCommonParams);
   }
   
   private void pushEvent(int paramInt)
@@ -389,10 +436,11 @@ public class TPPlayer
   {
     try
     {
-      if (this.mTPPluginManager != null) {
+      if (this.mTPPluginManager != null)
+      {
         this.mTPPluginManager.onEvent(paramInt1, paramInt2, paramInt3, paramString, paramObject);
+        return;
       }
-      return;
     }
     catch (Exception paramString)
     {
@@ -402,73 +450,219 @@ public class TPPlayer
   
   private void removePlayerCallback(int paramInt)
   {
-    if (this.mTransformCallbackHandler != null) {
-      this.mTransformCallbackHandler.removeMessages(paramInt);
+    TPPlayer.EventHandler localEventHandler = this.mTransformCallbackHandler;
+    if (localEventHandler != null) {
+      localEventHandler.removeMessages(paramInt);
     }
   }
   
   private void setProxyStatePlayingOrPause()
   {
-    if (this.mPlayerAdapter.isPlaying()) {}
-    for (int i = 0;; i = 5)
-    {
-      this.mPlayProxyManager.setProxyPlayState(i);
-      return;
+    int i;
+    if (this.mPlayerAdapter.isPlaying()) {
+      i = 0;
+    } else {
+      i = 5;
     }
+    this.mPlayProxyManager.setProxyPlayState(i);
   }
   
+  private boolean validCallSwitchDef()
+  {
+    int i = this.mPlayerAdapter.getCurrentState();
+    return (i == 4) || (i == 5) || (i == 6) || (i == 7);
+  }
+  
+  private boolean validStateCall(int paramInt)
+  {
+    int i = this.mPlayerAdapter.getCurrentState();
+    if (paramInt == 2)
+    {
+      if (i == 1) {
+        return true;
+      }
+    }
+    else
+    {
+      if ((paramInt != 17) || (i == 4) || (i == 5) || (i == 6)) {
+        break label54;
+      }
+      if (i == 7) {
+        return true;
+      }
+    }
+    return false;
+    label54:
+    return true;
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch
   public void addAudioTrackSource(String paramString1, String paramString2)
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "addAudioTrackSource, url:" + paramString1 + ", name:" + paramString2);
-    this.mPlayerInternal.addAudioTrackSource(paramString1, paramString2, null);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("addAudioTrackSource, url:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", name:");
+    localStringBuilder.append(paramString2);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    addAudioTrackSource(paramString1, paramString2, null);
   }
   
+  @TPThreadAnnotations.ThreadSwitch
   public void addAudioTrackSource(String paramString1, String paramString2, TPDownloadParamData paramTPDownloadParamData)
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "addAudioTrackSource, url:" + paramString1 + ", name:" + paramString2 + ", downloadParamData:" + paramTPDownloadParamData);
-    this.mPlayerInternal.addAudioTrackSource(paramString1, paramString2, paramTPDownloadParamData);
+    Object localObject1 = this.mLogger;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(LOG_API_CALL_PREFIX);
+    ((StringBuilder)localObject2).append("addAudioTrackSource, url:");
+    ((StringBuilder)localObject2).append(paramString1);
+    ((StringBuilder)localObject2).append(", name:");
+    ((StringBuilder)localObject2).append(paramString2);
+    ((StringBuilder)localObject2).append(", downloadParamData:");
+    ((StringBuilder)localObject2).append(paramTPDownloadParamData);
+    ((TPBaseLogger)localObject1).info(((StringBuilder)localObject2).toString());
+    if (!isUseProxyEnable())
+    {
+      this.mLogger.error("handleAddAudioSource, proxy is not enable.");
+      return;
+    }
+    if ((!TextUtils.isEmpty(paramString2)) && (TPCommonUtils.isUrl(paramString1))) {
+      try
+      {
+        localObject1 = new ArrayList();
+        localObject2 = new TPOptionalParam();
+        if (paramTPDownloadParamData != null) {
+          ((TPOptionalParam)localObject2).buildString(6, paramTPDownloadParamData.getAudioTrackKeyId());
+        }
+        ((List)localObject1).add(localObject2);
+        this.mPlayerAdapter.addAudioTrackSource(paramString1, paramString2, (List)localObject1);
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        this.mLogger.printException(paramString1);
+        return;
+      }
+    }
+    this.mLogger.error("handleAddAudioSource, illegal argument.");
   }
   
   public ITPPluginManager addPlugin(ITPPluginBase paramITPPluginBase)
   {
-    if (this.mTPPluginManager != null) {
-      this.mTPPluginManager.addPlugin(paramITPPluginBase);
+    ITPPluginManager localITPPluginManager = this.mTPPluginManager;
+    if (localITPPluginManager != null) {
+      localITPPluginManager.addPlugin(paramITPPluginBase);
     }
     return null;
   }
   
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true)
   public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "addSubtitleSource, url:" + paramString1 + ", mimeType:" + paramString2 + ", name:" + paramString3);
-    this.mPlayerInternal.addSubtitleSource(paramString1, paramString2, paramString3, null);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("addSubtitleSource, url:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", mimeType:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(", name:");
+    localStringBuilder.append(paramString3);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    addSubtitleSource(paramString1, paramString2, paramString3, null);
   }
   
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true)
   public void addSubtitleSource(@NonNull String paramString1, String paramString2, @NonNull String paramString3, TPDownloadParamData paramTPDownloadParamData)
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "addSubtitleSource, url:" + paramString1 + ", name:" + paramString3 + ", downloadParamData:" + paramTPDownloadParamData);
-    this.mPlayerInternal.addSubtitleSource(paramString1, paramString2, paramString3, paramTPDownloadParamData);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("addSubtitleSource, url:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", name:");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(", downloadParamData:");
+    localStringBuilder.append(paramTPDownloadParamData);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    try
+    {
+      long l = System.currentTimeMillis();
+      if ((isUseProxyEnable()) && (TPCommonUtils.isUrl(paramString1)))
+      {
+        paramTPDownloadParamData = this.mPlayProxyManager.startDownLoadTrackUrl(3, paramString1, paramTPDownloadParamData);
+        this.proxyTrackUrls.add(paramTPDownloadParamData);
+        this.mPlayerAdapter.addSubtitleSource(paramTPDownloadParamData, paramString2, paramString3);
+      }
+      else
+      {
+        this.mPlayerAdapter.addSubtitleSource(paramString1, paramString2, paramString3);
+      }
+      pushEvent(118, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(l)).put("etime", Long.valueOf(System.currentTimeMillis())).put("url", paramString1).put("name", paramString3).build());
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      this.mLogger.printException(paramString1);
+    }
   }
   
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
   public void captureVideo(TPCaptureParams paramTPCaptureParams, TPCaptureCallBack paramTPCaptureCallBack)
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "captureVideo, params:" + paramTPCaptureParams + ", captureCallBack:" + paramTPCaptureCallBack);
-    this.mPlayerInternal.captureVideo(paramTPCaptureParams, paramTPCaptureCallBack);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("captureVideo, params:");
+    localStringBuilder.append(paramTPCaptureParams);
+    localStringBuilder.append(", captureCallBack:");
+    localStringBuilder.append(paramTPCaptureCallBack);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    try
+    {
+      this.mPlayerAdapter.captureVideo(paramTPCaptureParams, paramTPCaptureCallBack);
+      return;
+    }
+    catch (Exception paramTPCaptureParams)
+    {
+      this.mLogger.printException(paramTPCaptureParams);
+    }
   }
   
+  @TPThreadAnnotations.ThreadSwitch
   public void deselectTrack(int paramInt, long paramLong)
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "deselectTrack, trackIndex:" + paramInt + ", opaque:" + paramLong);
-    this.mPlayerInternal.deselectTrack(paramInt, paramLong);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("deselectTrack, trackIndex:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", opaque:");
+    localStringBuilder.append(paramLong);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    try
+    {
+      this.mPlayerAdapter.deselectTrack(paramInt, paramLong);
+      return;
+    }
+    catch (Exception localException)
+    {
+      this.mLogger.printException(localException);
+    }
   }
   
+  @TPThreadAnnotations.ThreadSwitch
   public void enableTPAssetResourceLoader(ITPAssetResourceLoaderListener paramITPAssetResourceLoaderListener, Looper paramLooper)
   {
     if (paramITPAssetResourceLoaderListener != null)
     {
       this.mPlayProxyManager.setIsUseResourceLoader(true);
-      if (this.mAssetResourceLoader != null)
+      ITPAssetResourceLoader localITPAssetResourceLoader = this.mAssetResourceLoader;
+      if (localITPAssetResourceLoader != null)
       {
-        this.mAssetResourceLoader.release();
+        localITPAssetResourceLoader.release();
         this.mAssetResourceLoader = null;
       }
       this.mAssetResourceLoader = new TPAssetResourceLoader(this.mContext, paramLooper);
@@ -481,32 +675,61 @@ public class TPPlayer
   
   public int getBufferPercent()
   {
-    return this.mPlayerInternal.getBufferPercent();
+    if (this.mPlayerAdapter.getDurationMs() == 0L) {
+      return 0;
+    }
+    return (int)((float)(this.mPlayerAdapter.getPlayableDurationMs() - this.mPlayerAdapter.getCurrentPositionMs()) * 100.0F / (float)this.mPlayerAdapter.getDurationMs());
   }
   
   public long getCurrentPositionMs()
   {
-    return this.mPlayerInternal.getCurrentPositionMs();
+    return this.mPlayerAdapter.getCurrentPositionMs();
   }
   
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
   public int getCurrentState()
   {
-    return this.mPlayerInternal.getCurrentState();
+    return this.mPlayerAdapter.getCurrentState();
   }
   
   public long getDurationMs()
   {
-    return this.mPlayerInternal.getDurationMs();
+    return this.mPlayerAdapter.getDurationMs();
   }
   
   public long getFileSizeBytes()
   {
-    return this.mPlayerInternal.getFileSizeBytes();
+    return this.mTotalFileSizeByte;
+  }
+  
+  public Looper getLooper()
+  {
+    return this.mThreadLooper;
   }
   
   public long getPlayableDurationMs()
   {
-    return this.mPlayerInternal.getPlayableDurationMs();
+    if (isUseProxyEnable())
+    {
+      long l1 = this.mCurrentDownloadSizeByte;
+      if (l1 > 0L)
+      {
+        long l2 = this.mTotalFileSizeByte;
+        if (l2 > 0L)
+        {
+          double d1 = l1;
+          Double.isNaN(d1);
+          double d2 = l2;
+          Double.isNaN(d2);
+          d1 = d1 * 1.0D / d2;
+          d2 = this.mPlayerAdapter.getDurationMs();
+          Double.isNaN(d2);
+          return (d1 * d2);
+        }
+      }
+      return this.mDownloadPlayableDurationMs;
+    }
+    return this.mPlayerAdapter.getPlayableDurationMs();
   }
   
   public ITPPlayerProxy getPlayerProxy()
@@ -514,28 +737,50 @@ public class TPPlayer
     return this.mPlayProxyManager;
   }
   
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
   public int getPlayerType()
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "getPlayerType");
-    return this.mPlayerInternal.getPlayerType();
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("getPlayerType");
+    localTPBaseLogger.info(localStringBuilder.toString());
+    return this.mPlayerAdapter.getPlayerType();
   }
   
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
   public TPProgramInfo[] getProgramInfo()
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "getProgramInfo");
-    return this.mPlayerInternal.getProgramInfo();
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("getProgramInfo");
+    localTPBaseLogger.info(localStringBuilder.toString());
+    return this.mPlayerAdapter.getProgramInfo();
   }
   
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
   public long getPropertyLong(int paramInt)
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "getPropertyLong, paramId:" + paramInt);
-    return this.mPlayerInternal.getPropertyLong(paramInt);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("getPropertyLong, paramId:");
+    localStringBuilder.append(paramInt);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    return this.mPlayerAdapter.getPropertyLong(paramInt);
   }
   
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
   public String getPropertyString(int paramInt)
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "getPropertyString, paramId:" + paramInt);
-    return this.mPlayerInternal.getPropertyString(paramInt);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("getPropertyString, paramId:");
+    localStringBuilder.append(paramInt);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    return this.mPlayerAdapter.getPropertyString(paramInt);
   }
   
   public ITPBusinessReportManager getReportManager()
@@ -545,346 +790,56 @@ public class TPPlayer
     return localTPReportManager;
   }
   
+  public String getTag()
+  {
+    return this.mLogger.getTag();
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
   public TPTrackInfo[] getTrackInfo()
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "getTrackInfo");
-    return this.mPlayerInternal.getTrackInfo();
-  }
-  
-  public int getVideoHeight()
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "getVideoHeight");
-    return this.mPlayerInternal.getVideoHeight();
-  }
-  
-  public int getVideoWidth()
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "getVideoWidth");
-    return this.mPlayerInternal.getVideoWidth();
-  }
-  
-  public void handleAddAudioSource(String paramString1, String paramString2, TPDownloadParamData paramTPDownloadParamData)
-  {
-    if (!isUseProxyEnable())
-    {
-      this.mLogger.error("handleAddAudioSource, proxy is not enable.");
-      return;
-    }
-    if ((TextUtils.isEmpty(paramString2)) || (!TPCommonUtils.isUrl(paramString1)))
-    {
-      this.mLogger.error("handleAddAudioSource, illegal argument.");
-      return;
-    }
-    try
-    {
-      ArrayList localArrayList = new ArrayList();
-      TPOptionalParam localTPOptionalParam = new TPOptionalParam();
-      if (paramTPDownloadParamData != null) {
-        localTPOptionalParam.buildString(6, paramTPDownloadParamData.getAudioTrackKeyId());
-      }
-      localArrayList.add(localTPOptionalParam);
-      this.mPlayerAdapter.addAudioTrackSource(paramString1, paramString2, localArrayList);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      this.mLogger.printException(paramString1);
-    }
-  }
-  
-  public void handleAddSubTitle(String paramString1, String paramString2, String paramString3, TPDownloadParamData paramTPDownloadParamData)
-  {
-    try
-    {
-      long l = System.currentTimeMillis();
-      if ((isUseProxyEnable()) && (TPCommonUtils.isUrl(paramString1)))
-      {
-        paramTPDownloadParamData = this.mPlayProxyManager.startDownLoadTrackUrl(3, paramString1, paramTPDownloadParamData);
-        this.proxyTrackUrls.add(paramTPDownloadParamData);
-        this.mPlayerAdapter.addSubtitleSource(paramTPDownloadParamData, paramString2, paramString3);
-      }
-      for (;;)
-      {
-        pushEvent(118, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(l)).put("etime", Long.valueOf(System.currentTimeMillis())).put("url", paramString1).build());
-        return;
-        this.mPlayerAdapter.addSubtitleSource(paramString1, paramString2, paramString3);
-      }
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      this.mLogger.printException(paramString1);
-    }
-  }
-  
-  public void handleDeselectTrack(int paramInt, long paramLong)
-  {
-    try
-    {
-      this.mPlayerAdapter.deselectTrack(paramInt, paramLong);
-      return;
-    }
-    catch (Exception localException)
-    {
-      this.mLogger.printException(localException);
-    }
-  }
-  
-  public long handleGetAdvRemainTime()
-  {
-    ITPPlayerProxyListener localITPPlayerProxyListener = this.mPlayProxyManager.getTPPlayerProxyListener();
-    if (localITPPlayerProxyListener != null) {
-      return localITPPlayerProxyListener.getAdvRemainTimeMs();
-    }
-    return -1L;
-  }
-  
-  public int handleGetBufferPercent()
-  {
-    if (this.mPlayerAdapter.getDurationMs() == 0L) {
-      return 0;
-    }
-    return (int)(100.0F * (float)(this.mPlayerAdapter.getPlayableDurationMs() - this.mPlayerAdapter.getCurrentPositionMs()) / (float)this.mPlayerAdapter.getDurationMs());
-  }
-  
-  public String handleGetContentType(int paramInt, String paramString)
-  {
-    if (this.mAssetResourceLoader == null)
-    {
-      this.mLogger.error("mAssetResourceLoader not set");
-      return "";
-    }
-    return this.mAssetResourceLoader.getContentType(paramInt, paramString);
-  }
-  
-  public int handleGetCurrentPlayClipNo()
-  {
-    ITPPlayerAdapter localITPPlayerAdapter = this.mPlayerAdapter;
-    if (localITPPlayerAdapter != null) {
-      return localITPPlayerAdapter.getCurrentPlayClipNo();
-    }
-    return 0;
-  }
-  
-  public long handleGetCurrentPositionMs()
-  {
-    return this.mPlayerAdapter.getCurrentPositionMs();
-  }
-  
-  public int handleGetCurrentState()
-  {
-    return this.mPlayerAdapter.getCurrentState();
-  }
-  
-  public String handleGetDataFilePath(int paramInt, String paramString)
-  {
-    if (this.mAssetResourceLoader == null)
-    {
-      this.mLogger.error("mAssetResourceLoader not set");
-      return "";
-    }
-    return this.mAssetResourceLoader.getDataFilePath(paramInt, paramString);
-  }
-  
-  public long handleGetDataTotalSize(int paramInt, String paramString)
-  {
-    if (this.mAssetResourceLoader == null)
-    {
-      this.mLogger.error("mAssetResourceLoader not set");
-      return -1L;
-    }
-    return this.mAssetResourceLoader.getDataTotalSize(paramInt, paramString);
-  }
-  
-  public long handleGetDurationMs()
-  {
-    return this.mPlayerAdapter.getDurationMs();
-  }
-  
-  public long handleGetFileSizeBytes()
-  {
-    return this.mTotalFileSizeByte;
-  }
-  
-  public Object handleGetPlayInfo(long paramLong)
-  {
-    return null;
-  }
-  
-  public Object handleGetPlayInfo(String paramString)
-  {
-    return null;
-  }
-  
-  public long handleGetPlayableDurationMs()
-  {
-    if (isUseProxyEnable())
-    {
-      if ((this.mCurrentDownloadSizeByte > 0L) && (this.mTotalFileSizeByte > 0L)) {
-        return (this.mCurrentDownloadSizeByte * 1.0D / this.mTotalFileSizeByte * this.mPlayerAdapter.getDurationMs());
-      }
-      return this.mDownloadPlayableDurationMs;
-    }
-    return this.mPlayerAdapter.getPlayableDurationMs();
-  }
-  
-  public long handleGetPlayerBufferLength()
-  {
-    ITPPlayerAdapter localITPPlayerAdapter = this.mPlayerAdapter;
-    if (localITPPlayerAdapter != null) {
-      return localITPPlayerAdapter.getPlayableDurationMs() - this.mPlayerAdapter.getCurrentPositionMs();
-    }
-    return 0L;
-  }
-  
-  public int handleGetPlayerType()
-  {
-    return this.mPlayerAdapter.getPlayerType();
-  }
-  
-  public TPProgramInfo[] handleGetProgramInfo()
-  {
-    return this.mPlayerAdapter.getProgramInfo();
-  }
-  
-  public long handleGetPropertyLong(int paramInt)
-  {
-    try
-    {
-      long l = this.mPlayerAdapter.getPropertyLong(paramInt);
-      return l;
-    }
-    catch (Exception localException)
-    {
-      this.mLogger.printException(localException);
-    }
-    return 0L;
-  }
-  
-  public String handleGetPropertyString(int paramInt)
-  {
-    try
-    {
-      String str = this.mPlayerAdapter.getPropertyString(paramInt);
-      return str;
-    }
-    catch (Exception localException)
-    {
-      this.mLogger.printException(localException);
-    }
-    return null;
-  }
-  
-  public TPTrackInfo[] handleGetTrackInfo()
-  {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("getTrackInfo");
+    localTPBaseLogger.info(localStringBuilder.toString());
     return this.mPlayerAdapter.getTrackInfo();
   }
   
-  public int handleGetVideoHeight()
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
+  public int getVideoHeight()
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("getVideoHeight");
+    localTPBaseLogger.info(localStringBuilder.toString());
     return this.mPlayerAdapter.getVideoHeight();
   }
   
-  public int handleGetVideoWidth()
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
+  public int getVideoWidth()
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("getVideoWidth");
+    localTPBaseLogger.info(localStringBuilder.toString());
     return this.mPlayerAdapter.getVideoWidth();
   }
   
-  public void handleOnDownloadCdnUrlExpired(Map<String, String> paramMap)
+  @TPThreadAnnotations.ThreadSwitch
+  public void pause()
   {
-    this.mLogger.info("onDownloadCdnUrlExpired");
-    handlePlayerCallback(275, 0, 0, paramMap);
-  }
-  
-  public void handleOnDownloadCdnUrlInfoUpdate(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    paramString4 = new TPPlayerMsg.TPCDNURLInfo();
-    paramString4.url = paramString1;
-    paramString4.cdnIp = paramString2;
-    paramString4.uIp = paramString3;
-    pushEvent(201, 0, 0, null, new TPHashMapBuilder().put("url", paramString1).put("cdnip", paramString2).put("cdnuip", paramString3).build());
-    handlePlayerCallback(270, 0, 0, paramString4);
-  }
-  
-  public void handleOnDownloadCdnUrlUpdate(String paramString)
-  {
-    this.mLogger.info("handleOnDownloadCdnUrlUpdate, url:" + paramString);
-    handlePlayerCallback(269, 0, 0, paramString);
-  }
-  
-  public void handleOnDownloadError(int paramInt1, int paramInt2, String paramString)
-  {
-    this.mLogger.info("handleOnDownloadError, moduleID:" + paramInt1 + ", errorCode:" + paramInt2 + ", extInfo:" + paramString);
-    handleOnError(paramInt1, paramInt2);
-    handlePlayerCallback(268, paramInt1, paramInt2, paramString);
-  }
-  
-  public void handleOnDownloadFinish()
-  {
-    this.mLogger.info("onDownloadFinish");
-    handlePlayerCallback(271, 0, 0, Integer.valueOf(0));
-  }
-  
-  public void handleOnDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
-  {
-    this.mDownloadPlayableDurationMs = paramInt1;
-    this.mCurrentDownloadSizeByte = paramLong1;
-    this.mTotalFileSizeByte = paramLong2;
-    TPPlayerMsg.TPDownLoadProgressInfo localTPDownLoadProgressInfo = new TPPlayerMsg.TPDownLoadProgressInfo();
-    localTPDownLoadProgressInfo.playableDurationMS = paramInt1;
-    localTPDownLoadProgressInfo.downloadSpeedKBps = paramInt2;
-    localTPDownLoadProgressInfo.currentDownloadSize = paramLong1;
-    localTPDownLoadProgressInfo.totalFileSize = paramLong2;
-    localTPDownLoadProgressInfo.extraInfo = paramString;
-    this.mLogger.info("handleOnDownloadProgressUpdate");
-    pushEvent(200, 0, 0, null, new TPHashMapBuilder().put("speed", Integer.valueOf(paramInt2)).put("spanId", paramString).build());
-    handlePlayerCallback(274, 0, 0, localTPDownLoadProgressInfo);
-  }
-  
-  public void handleOnDownloadProtocolUpdate(String paramString1, String paramString2)
-  {
-    this.mLogger.info("onDownloadProtocolUpdate, protocol:" + paramString1 + ", protocolVer:" + paramString2);
-    TPPlayerMsg.TPProtocolInfo localTPProtocolInfo = new TPPlayerMsg.TPProtocolInfo();
-    localTPProtocolInfo.protocolVersion = paramString2;
-    localTPProtocolInfo.protocolName = paramString1;
-    handlePlayerCallback(273, 0, 0, localTPProtocolInfo);
-  }
-  
-  public void handleOnDownloadQuicStatusUpdate(String paramString)
-  {
-    handlePlayerCallback(281, 0, 0, paramString);
-  }
-  
-  public void handleOnDownloadStatusUpdate(int paramInt)
-  {
-    handlePlayerCallback(272, paramInt, 0, null);
-  }
-  
-  public Object handleOnPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      this.mLogger.info("onDownloadNoMoreData");
-      handlePlayerCallback(276, 0, 0, paramObject1);
-      return null;
-    }
-    if (!(paramObject3 instanceof Integer))
-    {
-      this.mLogger.info("MESSAGE_NOTIFY_PLAYER_SWITCH_DEFINITION, err ext3.");
-      return null;
-    }
-    handlePlayerCallback(278, ((Integer)paramObject3).intValue(), 0, null);
-    return null;
-  }
-  
-  public void handlePause()
-  {
+    ReportThumbPlayer.getInstance().pause(this);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("pause");
+    localTPBaseLogger.info(localStringBuilder.toString());
+    this.mPlayerAdapter.pause();
     try
     {
-      this.mPlayerAdapter.pause();
       pushEvent(106, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).build());
       this.mPlayProxyManager.setProxyPlayState(5);
       return;
@@ -895,32 +850,53 @@ public class TPPlayer
     }
   }
   
-  public void handlePauseDownload()
+  @TPThreadAnnotations.ThreadSwitch
+  public void pauseDownload()
   {
-    TPOptionalParam localTPOptionalParam = new TPOptionalParam().buildLong(502, 0L);
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("pauseDownload");
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    localObject = new TPOptionalParam().buildLong(502, 0L);
     try
     {
-      this.mPlayerAdapter.setPlayerOptionalParam(localTPOptionalParam);
-      this.mPlayProxyManager.pauseDownload();
-      return;
+      this.mPlayerAdapter.setPlayerOptionalParam((TPOptionalParam)localObject);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        this.mLogger.printException(localException);
-      }
+      this.mLogger.printException(localException);
     }
+    this.mPlayProxyManager.pauseDownload();
   }
   
-  public void handlePrepareAsync()
+  @TPThreadAnnotations.ThreadSwitch
+  public void prepareAsync()
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(LOG_API_CALL_PREFIX);
+    localStringBuilder2.append("prepareAsync");
+    localTPBaseLogger.info(localStringBuilder2.toString());
     try
     {
       this.mPlayProxyManager.resumeDownload();
       this.mPlayerAdapter.prepareAsync();
-      if (TextUtils.isEmpty(this.mFlowId)) {
-        this.mFlowId = (UUID.randomUUID().toString() + System.nanoTime() + "_" + TPPlayerConfig.getPlatform());
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      this.mLogger.printException(localRuntimeException);
+    }
+    try
+    {
+      if (TextUtils.isEmpty(this.mFlowId))
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append(UUID.randomUUID().toString());
+        localStringBuilder1.append(System.nanoTime());
+        localStringBuilder1.append("_");
+        localStringBuilder1.append(TPPlayerConfig.getPlatform());
+        this.mFlowId = localStringBuilder1.toString();
       }
       pushEvent(102, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).put("url", this.mUrl).put("p2p", Boolean.valueOf(isUseProxyEnable())).put("flowid", this.mFlowId).build());
       pushEvent(501, this.mPlayerAdapter.getNativePlayerId(), 0, null, null);
@@ -933,53 +909,72 @@ public class TPPlayer
     }
   }
   
-  public int handleReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
+  public void release()
   {
-    if (this.mAssetResourceLoader == null)
-    {
-      this.mLogger.error("mAssetResourceLoader not set");
-      return -1;
-    }
-    return this.mAssetResourceLoader.onReadData(paramInt, paramString, paramLong1, paramLong2);
-  }
-  
-  public void handleRelease()
-  {
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("release");
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
     this.mPlayerAdapter.release();
     pushEvent(112, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).put("reason", Integer.valueOf(1)).build());
-    if (this.mTransformCallbackHandler != null)
+    localObject = this.mTransformCallbackHandler;
+    if (localObject != null)
     {
-      this.mTransformCallbackHandler.removeCallbacksAndMessages(null);
+      ((TPPlayer.EventHandler)localObject).removeCallbacksAndMessages(null);
       this.mTransformCallbackHandler = null;
     }
     this.mPlayerListeners.clear();
     this.mPlayerListeners = null;
     this.mPlayProxyManager.release();
     this.proxyTrackUrls.clear();
-    if (this.mAssetResourceLoader != null)
+    localObject = this.mAssetResourceLoader;
+    if (localObject != null)
     {
-      this.mAssetResourceLoader.release();
+      ((ITPAssetResourceLoader)localObject).release();
       this.mAssetResourceLoader = null;
     }
     this.mDownloadPlayableDurationMs = -1L;
     this.mCurrentDownloadSizeByte = -1L;
     this.mTotalFileSizeByte = -1L;
-    if (this.mHandlerThread != null)
+    localObject = this.mHandlerThread;
+    if (localObject != null)
     {
-      this.mHandlerThread.quit();
+      ((HandlerThread)localObject).quit();
       this.mHandlerThread = null;
     }
+    this.mTPPluginManager.release();
+    ReportThumbPlayer.getInstance().release(this);
   }
   
-  public void handleReset()
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
+  public void reset()
   {
+    ReportThumbPlayer.getInstance().reset(this);
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("reset");
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+    if (this.mUsingDefaultLogContext)
+    {
+      this.mLogger.updateTaskId(String.valueOf(this.mPlayTaskId.incrementAndGet()));
+      this.mPlayerAdapter.updateLoggerContext(this.mLogger.getTPLoggerContext());
+      this.mPlayerListeners.updateTag(this.mLogger.getTPLoggerContext().getTag());
+    }
     this.mPlayerAdapter.reset();
     pushEvent(113, 0, 0, null, new TPHashMapBuilder().put("etime", Long.valueOf(System.currentTimeMillis())).put("reason", Integer.valueOf(1)).build());
     this.mPlayProxyManager.stopDownload();
     this.mProxyStatus = -1;
     this.proxyTrackUrls.clear();
-    if (this.mAssetResourceLoader != null) {
-      this.mAssetResourceLoader.reset();
+    localObject = this.mAssetResourceLoader;
+    if (localObject != null) {
+      ((ITPAssetResourceLoader)localObject).reset();
+    }
+    localObject = this.mTransformCallbackHandler;
+    if (localObject != null) {
+      ((TPPlayer.EventHandler)localObject).removeCallbacksAndMessages(null);
     }
     this.mDownloadPlayableDurationMs = -1L;
     this.mCurrentDownloadSizeByte = -1L;
@@ -987,13 +982,19 @@ public class TPPlayer
     this.mFlowId = null;
   }
   
-  public void handleResumeDownload()
+  @TPThreadAnnotations.ThreadSwitch
+  public void resumeDownload()
   {
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("resumeDownload");
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
     this.mPlayProxyManager.resumeDownload();
-    TPOptionalParam localTPOptionalParam = new TPOptionalParam().buildLong(502, 1L);
+    localObject = new TPOptionalParam().buildLong(502, 1L);
     try
     {
-      this.mPlayerAdapter.setPlayerOptionalParam(localTPOptionalParam);
+      this.mPlayerAdapter.setPlayerOptionalParam((TPOptionalParam)localObject);
       return;
     }
     catch (Exception localException)
@@ -1002,31 +1003,51 @@ public class TPPlayer
     }
   }
   
-  public void handleSeekTo(int paramInt1, int paramInt2)
+  @TPThreadAnnotations.ThreadSwitch
+  public void seekTo(int paramInt)
   {
-    pushEvent(109, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).put("format", Integer.valueOf(0)).put("pstime", Long.valueOf(handleGetCurrentPositionMs())).build());
-    if (paramInt2 > 0) {}
-    try
-    {
-      this.mPlayerAdapter.seekTo(paramInt1, paramInt2);
-      for (;;)
-      {
-        this.mPlayProxyManager.setProxyPlayState(1);
-        return;
-        this.mPlayerAdapter.seekTo(paramInt1);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        this.mLogger.printException(localException);
-      }
-    }
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("seekTo, positionMs:");
+    localStringBuilder.append(paramInt);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    this.mPlayerAdapter.seekTo(paramInt);
+    this.mPlayProxyManager.setProxyPlayState(1);
+    pushEvent(109, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).put("format", Integer.valueOf(0)).put("pstime", Long.valueOf(getCurrentPositionMs())).build());
   }
   
-  public void handleSelectProgram(int paramInt, long paramLong)
+  @TPThreadAnnotations.ThreadSwitch
+  public void seekTo(int paramInt1, int paramInt2)
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("seekTo, positionMs:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", mode:");
+    localStringBuilder.append(paramInt2);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    if (paramInt2 > 0) {
+      this.mPlayerAdapter.seekTo(paramInt1, paramInt2);
+    } else {
+      this.mPlayerAdapter.seekTo(paramInt1);
+    }
+    this.mPlayProxyManager.setProxyPlayState(1);
+    pushEvent(109, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).put("format", Integer.valueOf(0)).put("pstime", Long.valueOf(getCurrentPositionMs())).build());
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch
+  public void selectProgram(int paramInt, long paramLong)
+  {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("selectProgram, programIndex:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", opaque:");
+    localStringBuilder.append(paramLong);
+    localTPBaseLogger.info(localStringBuilder.toString());
     try
     {
       this.mPlayerAdapter.selectProgram(paramInt, paramLong);
@@ -1038,13 +1059,22 @@ public class TPPlayer
     }
   }
   
-  public void handleSelectTrack(int paramInt, long paramLong)
+  @TPThreadAnnotations.ThreadSwitch
+  public void selectTrack(int paramInt, long paramLong)
   {
+    Object localObject = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("selectTrack, trackIndex:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", opaque:");
+    localStringBuilder.append(paramLong);
+    ((TPBaseLogger)localObject).info(localStringBuilder.toString());
     try
     {
-      TPTrackInfo[] arrayOfTPTrackInfo = this.mPlayerAdapter.getTrackInfo();
-      if ((arrayOfTPTrackInfo != null) && (arrayOfTPTrackInfo.length > paramInt)) {
-        pushEvent(122, 0, 0, null, new TPHashMapBuilder().put("opaque", Long.valueOf(paramLong)).put("tracktype", Integer.valueOf(arrayOfTPTrackInfo[paramInt].getTrackType())).put("stime", Long.valueOf(System.currentTimeMillis())).build());
+      localObject = this.mPlayerAdapter.getTrackInfo();
+      if ((localObject != null) && (localObject.length > paramInt)) {
+        pushEvent(122, 0, 0, null, new TPHashMapBuilder().put("opaque", Long.valueOf(paramLong)).put("tracktype", Integer.valueOf(localObject[paramInt].getTrackType())).put("name", localObject[paramInt].getName()).put("stime", Long.valueOf(System.currentTimeMillis())).build());
       }
       this.mPlayerAdapter.selectTrack(paramInt, paramLong);
       return;
@@ -1055,8 +1085,15 @@ public class TPPlayer
     }
   }
   
-  public void handleSetAudioGainRatio(float paramFloat)
+  @TPThreadAnnotations.ThreadSwitch(removeRepeat=true)
+  public void setAudioGainRatio(float paramFloat)
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("setAudioGainRatio, gainRatio:");
+    localStringBuilder.append(paramFloat);
+    localTPBaseLogger.info(localStringBuilder.toString());
     try
     {
       this.mPlayerAdapter.setAudioGainRatio(paramFloat);
@@ -1068,8 +1105,15 @@ public class TPPlayer
     }
   }
   
-  public void handleSetAudioNormalizeVolumeParams(String paramString)
+  @TPThreadAnnotations.ThreadSwitch(removeRepeat=true)
+  public void setAudioNormalizeVolumeParams(String paramString)
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("setAudioNormalizeVolumeParams, audioNormalizeVolumeParams:");
+    localStringBuilder.append(paramString);
+    localTPBaseLogger.info(localStringBuilder.toString());
     try
     {
       this.mPlayerAdapter.setAudioNormalizeVolumeParams(paramString);
@@ -1081,58 +1125,226 @@ public class TPPlayer
     }
   }
   
-  public void handleSetDataSource(TPThreadSwitchCommons.TPDataSourceParams paramTPDataSourceParams)
+  public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (paramTPDataSourceParams != null)
+    this.mPlayProxyManager.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch
+  public void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
+  {
+    if (paramParcelFileDescriptor != null)
     {
-      try
+      if (this.mPlayerAdapter.getCurrentState() == 1)
       {
-        if (!TextUtils.isEmpty(paramTPDataSourceParams.url))
+        TPBaseLogger localTPBaseLogger = this.mLogger;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(LOG_API_CALL_PREFIX);
+        localStringBuilder.append("setDataSource, ParcelFileDescriptor");
+        localTPBaseLogger.info(localStringBuilder.toString());
+        try
         {
-          this.mUrl = paramTPDataSourceParams.url;
-          TPUrlDataSource localTPUrlDataSource = new TPUrlDataSource(paramTPDataSourceParams.url);
-          this.mLogger.info("handleSetDataSource originalUrl=" + paramTPDataSourceParams.url);
-          if (isUseProxyEnable())
-          {
-            localTPUrlDataSource = this.mPlayProxyManager.startDownloadPlay(paramTPDataSourceParams.url);
-            this.mLogger.info("handleSetDataSource selfPlayerUrl=" + localTPUrlDataSource.getSelfPlayerUrl());
-            this.mLogger.info("handleSetDataSource systemPlayerUrl=" + localTPUrlDataSource.getSystemPlayerUrl());
-            TPLogUtil.d("SuperPlayer", "日志过滤(DataTransport)：【" + TPCommonUtils.getTaskIdFromDataTransportUrl(localTPUrlDataSource.getSelfPlayerUrl()) + "】, playId:" + (sPlayId - 1) + " , originalUrl=" + paramTPDataSourceParams.url + ", localUrl=" + localTPUrlDataSource.getSelfPlayerUrl());
-          }
-          if (paramTPDataSourceParams.httpHeader != null)
-          {
-            this.mPlayerAdapter.setDataSource(localTPUrlDataSource, paramTPDataSourceParams.httpHeader);
-            return;
-          }
-          this.mPlayerAdapter.setDataSource(localTPUrlDataSource);
+          this.mPlayerAdapter.setDataSource(paramParcelFileDescriptor);
+          return;
+        }
+        catch (SecurityException paramParcelFileDescriptor)
+        {
+          this.mLogger.printException(paramParcelFileDescriptor);
+          return;
+        }
+        catch (IOException paramParcelFileDescriptor)
+        {
+          this.mLogger.printException(paramParcelFileDescriptor);
           return;
         }
       }
-      catch (Exception paramTPDataSourceParams)
-      {
-        this.mLogger.printException(paramTPDataSourceParams);
-        return;
-      }
-      if (paramTPDataSourceParams.mediaAsset != null)
-      {
-        if (isUseProxyEnable()) {
-          paramTPDataSourceParams.mediaAsset = this.mPlayProxyManager.startDownloadPlayByAsset(paramTPDataSourceParams.mediaAsset);
-        }
-        if (paramTPDataSourceParams.mediaAsset != null)
-        {
-          this.mLogger.info("handleSetDataSource mediaAsset=" + paramTPDataSourceParams.mediaAsset.getUrl());
-          this.mPlayerAdapter.setDataSource(paramTPDataSourceParams.mediaAsset);
-        }
-      }
-      else
-      {
-        this.mPlayerAdapter.setDataSource(paramTPDataSourceParams.pfd);
-      }
+      throw new IllegalStateException("error : setDataSource , state invalid");
     }
+    throw new IllegalArgumentException("error : setDataSource , param is null");
   }
   
-  public void handleSetLoopback(boolean paramBoolean)
+  @TPThreadAnnotations.ThreadSwitch
+  public void setDataSource(ITPMediaAsset paramITPMediaAsset)
   {
+    if (paramITPMediaAsset != null)
+    {
+      Object localObject;
+      if ((paramITPMediaAsset instanceof ITPMediaDRMAsset)) {
+        if (!TextUtils.isEmpty(paramITPMediaAsset.getUrl()))
+        {
+          localObject = (ITPMediaDRMAsset)paramITPMediaAsset;
+          if ((((ITPMediaDRMAsset)localObject).getDrmAllProperties() != null) && (!((ITPMediaDRMAsset)localObject).getDrmAllProperties().isEmpty())) {}
+        }
+        else
+        {
+          throw new IllegalArgumentException("error : setDataSource , drm asset url is null or drm property is null");
+        }
+      }
+      if (this.mPlayerAdapter.getCurrentState() == 1)
+      {
+        localObject = this.mLogger;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(LOG_API_CALL_PREFIX);
+        localStringBuilder.append("setDataSource, ITPMediaAsset");
+        ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+        if (paramITPMediaAsset != null)
+        {
+          localObject = paramITPMediaAsset;
+          try
+          {
+            if (isUseProxyEnable()) {
+              localObject = this.mPlayProxyManager.startDownloadPlayByAsset(paramITPMediaAsset);
+            }
+            if (localObject != null)
+            {
+              paramITPMediaAsset = this.mLogger;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("handleSetDataSource mediaAsset=");
+              localStringBuilder.append(((ITPMediaAsset)localObject).getUrl());
+              paramITPMediaAsset.info(localStringBuilder.toString());
+              this.mPlayerAdapter.setDataSource((ITPMediaAsset)localObject);
+              return;
+            }
+          }
+          catch (SecurityException paramITPMediaAsset)
+          {
+            this.mLogger.printException(paramITPMediaAsset);
+            return;
+          }
+          catch (IOException paramITPMediaAsset)
+          {
+            this.mLogger.printException(paramITPMediaAsset);
+          }
+        }
+        return;
+      }
+      throw new IllegalStateException("error : setDataSource , state invalid");
+    }
+    throw new IllegalArgumentException("error : setDataSource , param is null");
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch
+  public void setDataSource(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (this.mPlayerAdapter.getCurrentState() == 1)
+      {
+        Object localObject1 = this.mLogger;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(LOG_API_CALL_PREFIX);
+        ((StringBuilder)localObject2).append("setDataSource, url:");
+        ((StringBuilder)localObject2).append(paramString);
+        ((TPBaseLogger)localObject1).info(((StringBuilder)localObject2).toString());
+        if (!TextUtils.isEmpty(paramString))
+        {
+          this.mUrl = paramString;
+          localObject1 = new TPUrlDataSource(paramString);
+          localObject2 = this.mLogger;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleSetDataSource originalUrl=");
+          localStringBuilder.append(paramString);
+          ((TPBaseLogger)localObject2).info(localStringBuilder.toString());
+          try
+          {
+            if (isUseProxyEnable())
+            {
+              localObject1 = this.mPlayProxyManager.startDownloadPlay(paramString, null);
+              paramString = this.mLogger;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("handleSetDataSource selfPlayerUrl=");
+              ((StringBuilder)localObject2).append(((TPUrlDataSource)localObject1).getSelfPlayerUrl());
+              paramString.info(((StringBuilder)localObject2).toString());
+              paramString = this.mLogger;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("handleSetDataSource systemPlayerUrl=");
+              ((StringBuilder)localObject2).append(((TPUrlDataSource)localObject1).getSystemPlayerUrl());
+              paramString.info(((StringBuilder)localObject2).toString());
+            }
+            this.mPlayerAdapter.setDataSource((TPUrlDataSource)localObject1);
+            return;
+          }
+          catch (Exception paramString)
+          {
+            this.mLogger.printException(paramString);
+          }
+        }
+        return;
+      }
+      throw new IllegalStateException("error : setDataSource , state invalid");
+    }
+    throw new IllegalArgumentException("error : setDataSource , param is invalid");
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch
+  public void setDataSource(String paramString, Map<String, String> paramMap)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (this.mPlayerAdapter.getCurrentState() == 1)
+      {
+        Object localObject1 = this.mLogger;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(LOG_API_CALL_PREFIX);
+        ((StringBuilder)localObject2).append("setDataSource, url:");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(", httpHeader:");
+        ((StringBuilder)localObject2).append(paramMap);
+        ((TPBaseLogger)localObject1).info(((StringBuilder)localObject2).toString());
+        if (!TextUtils.isEmpty(paramString))
+        {
+          this.mUrl = paramString;
+          localObject1 = new TPUrlDataSource(paramString);
+          localObject2 = this.mLogger;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleSetDataSource originalUrl=");
+          localStringBuilder.append(paramString);
+          ((TPBaseLogger)localObject2).info(localStringBuilder.toString());
+          try
+          {
+            if (isUseProxyEnable())
+            {
+              localObject1 = this.mPlayProxyManager.startDownloadPlay(paramString, null);
+              paramString = this.mLogger;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("handleSetDataSource selfPlayerUrl=");
+              ((StringBuilder)localObject2).append(((TPUrlDataSource)localObject1).getSelfPlayerUrl());
+              paramString.info(((StringBuilder)localObject2).toString());
+              paramString = this.mLogger;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("handleSetDataSource systemPlayerUrl=");
+              ((StringBuilder)localObject2).append(((TPUrlDataSource)localObject1).getSystemPlayerUrl());
+              paramString.info(((StringBuilder)localObject2).toString());
+            }
+            this.mPlayerAdapter.setDataSource((TPUrlDataSource)localObject1, paramMap);
+            return;
+          }
+          catch (Exception paramString)
+          {
+            this.mLogger.printException(paramString);
+          }
+        }
+        return;
+      }
+      throw new IllegalStateException("error : setDataSource , state invalid");
+    }
+    throw new IllegalArgumentException("error : setDataSource , param is invalid");
+  }
+  
+  public void setIsActive(boolean paramBoolean)
+  {
+    this.mPlayProxyManager.setIsActive(paramBoolean);
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true, removeRepeat=true)
+  public void setLoopback(boolean paramBoolean)
+  {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("setLoopback, isLoopback:");
+    localStringBuilder.append(paramBoolean);
+    localTPBaseLogger.info(localStringBuilder.toString());
     try
     {
       this.mPlayerAdapter.setLoopback(paramBoolean);
@@ -1144,8 +1356,19 @@ public class TPPlayer
     }
   }
   
-  public void handleSetLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true, removeRepeat=true)
+  public void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("setLoopback, isLoopback:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", loopStartPositionMs:");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", loopEndPositionMs:");
+    localStringBuilder.append(paramLong2);
+    localTPBaseLogger.info(localStringBuilder.toString());
     try
     {
       this.mPlayerAdapter.setLoopback(paramBoolean, paramLong1, paramLong2);
@@ -1157,8 +1380,127 @@ public class TPPlayer
     }
   }
   
-  public void handleSetOutputMute(boolean paramBoolean)
+  public void setOnAudioFrameOutputListener(ITPPlayerListener.IOnAudioFrameOutputListener paramIOnAudioFrameOutputListener)
   {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnAudioPcmOutputListener(paramIOnAudioFrameOutputListener);
+    }
+  }
+  
+  public void setOnAudioProcessFrameOutputListener(ITPPlayerListener.IOnAudioProcessFrameOutputListener paramIOnAudioProcessFrameOutputListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnAudioProcessOutputListener(paramIOnAudioProcessFrameOutputListener);
+    }
+  }
+  
+  public void setOnCompletionListener(ITPPlayerListener.IOnCompletionListener paramIOnCompletionListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnCompletionListener(paramIOnCompletionListener);
+    }
+  }
+  
+  public void setOnErrorListener(ITPPlayerListener.IOnErrorListener paramIOnErrorListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnErrorListener(paramIOnErrorListener);
+    }
+  }
+  
+  public void setOnInfoListener(ITPPlayerListener.IOnInfoListener paramIOnInfoListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnInfoListener(paramIOnInfoListener);
+    }
+  }
+  
+  public void setOnPlayerStateChangeListener(ITPPlayerListener.IOnStateChangeListener paramIOnStateChangeListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnPlayerStateChangeListener(paramIOnStateChangeListener);
+    }
+  }
+  
+  public void setOnPreparedListener(ITPPlayerListener.IOnPreparedListener paramIOnPreparedListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnPreparedListener(paramIOnPreparedListener);
+    }
+  }
+  
+  public void setOnSeekCompleteListener(ITPPlayerListener.IOnSeekCompleteListener paramIOnSeekCompleteListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnSeekCompleteListener(paramIOnSeekCompleteListener);
+    }
+  }
+  
+  public void setOnStopAsyncCompleteListener(ITPPlayerListener.IOnStopAsyncCompleteListener paramIOnStopAsyncCompleteListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnStopAsyncCompleteListener(paramIOnStopAsyncCompleteListener);
+    }
+  }
+  
+  public void setOnSubtitleDataListener(ITPPlayerListener.IOnSubtitleDataListener paramIOnSubtitleDataListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnSubtitleDataListener(paramIOnSubtitleDataListener);
+    }
+  }
+  
+  public void setOnSubtitleFrameOutListener(ITPPlayerListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnSubtitleFrameOutListener(paramIOnSubtitleFrameOutListener);
+    }
+  }
+  
+  public void setOnVideoFrameOutListener(ITPPlayerListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnVideoFrameOutListener(paramIOnVideoFrameOutListener);
+    }
+  }
+  
+  public void setOnVideoProcessFrameOutputListener(ITPPlayerListener.IOnVideoProcessFrameOutputListener paramIOnVideoProcessFrameOutputListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnVideoProcessOutputListener(paramIOnVideoProcessFrameOutputListener);
+    }
+  }
+  
+  public void setOnVideoSizeChangedListener(ITPPlayerListener.IOnVideoSizeChangedListener paramIOnVideoSizeChangedListener)
+  {
+    TPPlayerListeners localTPPlayerListeners = this.mPlayerListeners;
+    if (localTPPlayerListeners != null) {
+      localTPPlayerListeners.setOnVideoSizeChangedListener(paramIOnVideoSizeChangedListener);
+    }
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch(removeRepeat=true)
+  public void setOutputMute(boolean paramBoolean)
+  {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("setOutputMute, isOutputMute:");
+    localStringBuilder.append(paramBoolean);
+    localTPBaseLogger.info(localStringBuilder.toString());
     try
     {
       this.mPlayerAdapter.setOutputMute(paramBoolean);
@@ -1170,28 +1512,38 @@ public class TPPlayer
     }
   }
   
-  public void handleSetPlaySpeedRatio(float paramFloat)
+  @TPThreadAnnotations.ThreadSwitch(removeRepeat=true)
+  public void setPlaySpeedRatio(float paramFloat)
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("setPlaySpeedRatio, speedRatio:");
+    localStringBuilder.append(paramFloat);
+    localTPBaseLogger.info(localStringBuilder.toString());
     try
     {
       this.mPlayerAdapter.setPlaySpeedRatio(paramFloat);
-      pushEvent(116, 0, 0, null, new TPHashMapBuilder().put("scene", Float.valueOf(paramFloat)).build());
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        this.mLogger.printException(localException);
-      }
+      this.mLogger.printException(localException);
     }
+    pushEvent(116, 0, 0, null, new TPHashMapBuilder().put("scene", Float.valueOf(paramFloat)).build());
   }
   
-  public void handleSetPlayerOptionParams(TPOptionalParam paramTPOptionalParam)
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true)
+  public void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam)
   {
+    ReportThumbPlayer.getInstance().setPlayerOptionalParam(this, paramTPOptionalParam);
     if ((paramTPOptionalParam != null) && (paramTPOptionalParam.getKey() == 205))
     {
       this.mUseProxy = paramTPOptionalParam.getParamBoolean().value;
+      paramTPOptionalParam = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setPlayerOptionalParam, use p2p proxy, OPTION_ID_BEFORE_BOOLEAN_USE_PROXY=");
+      localStringBuilder.append(this.mUseProxy);
+      paramTPOptionalParam.info(localStringBuilder.toString());
       return;
     }
     this.mPlayProxyManager.setPlayerOptionalParam(paramTPOptionalParam);
@@ -1206,8 +1558,21 @@ public class TPPlayer
     }
   }
   
-  public void handleSetSurface(Surface paramSurface)
+  @TPThreadAnnotations.ThreadSwitch
+  public void setRichMediaSynchronizer(@Nullable ITPRichMediaSynchronizer paramITPRichMediaSynchronizer)
   {
+    this.mPlayerAdapter.setRichMediaSynchronizer(paramITPRichMediaSynchronizer);
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch
+  public void setSurface(Surface paramSurface)
+  {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("setSurface, surface:");
+    localStringBuilder.append(paramSurface);
+    localTPBaseLogger.info(localStringBuilder.toString());
     try
     {
       this.mPlayerAdapter.setSurface(paramSurface);
@@ -1219,8 +1584,15 @@ public class TPPlayer
     }
   }
   
-  public void handleSetSurfaceHolder(SurfaceHolder paramSurfaceHolder)
+  @TPThreadAnnotations.ThreadSwitch
+  public void setSurfaceHolder(SurfaceHolder paramSurfaceHolder)
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("setSurfaceHolder, SurfaceHolder:");
+    localStringBuilder.append(paramSurfaceHolder);
+    localTPBaseLogger.info(localStringBuilder.toString());
     try
     {
       this.mPlayerAdapter.setSurfaceHolder(paramSurfaceHolder);
@@ -1232,14 +1604,22 @@ public class TPPlayer
     }
   }
   
-  public void handleSetTPSurface(ITPSurface paramITPSurface)
+  @TPThreadAnnotations.ThreadSwitch
+  public void setTPSurface(ITPSurface paramITPSurface)
   {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("setTPSurface, tpSurface:");
+    localStringBuilder.append(paramITPSurface);
+    localTPBaseLogger.info(localStringBuilder.toString());
     try
     {
-      if ((paramITPSurface instanceof TPSurface)) {
+      if ((paramITPSurface instanceof TPSurface))
+      {
         this.mPlayerAdapter.setSurface(((TPSurface)paramITPSurface).getSurface());
+        return;
       }
-      return;
     }
     catch (Exception paramITPSurface)
     {
@@ -1247,11 +1627,39 @@ public class TPPlayer
     }
   }
   
-  public void handleStart()
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true)
+  public void setVideoInfo(TPVideoInfo paramTPVideoInfo)
   {
+    if (paramTPVideoInfo != null) {
+      try
+      {
+        this.mPlayProxyManager.setVideoInfo(paramTPVideoInfo);
+        this.mPlayerAdapter.setVideoInfo(paramTPVideoInfo);
+        if ((paramTPVideoInfo.getDownloadPraramList() != null) && (paramTPVideoInfo.getDownloadPraramList().size() > 0))
+        {
+          this.mFlowId = ((TPDownloadParamData)paramTPVideoInfo.getDownloadPraramList().get(0)).getFlowId();
+          return;
+        }
+      }
+      catch (Exception paramTPVideoInfo)
+      {
+        this.mLogger.printException(paramTPVideoInfo);
+      }
+    }
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch
+  public void start()
+  {
+    ReportThumbPlayer.getInstance().start(this);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("start");
+    localTPBaseLogger.info(localStringBuilder.toString());
+    this.mPlayerAdapter.start();
     try
     {
-      this.mPlayerAdapter.start();
       pushEvent(104, 0, 0, null, new TPHashMapBuilder().put("stime", Long.valueOf(System.currentTimeMillis())).build());
       this.mPlayProxyManager.setProxyPlayState(0);
       return;
@@ -1262,428 +1670,222 @@ public class TPPlayer
     }
   }
   
-  public int handleStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
+  @TPThreadAnnotations.ThreadSwitch(needWait=true)
+  public void stop()
   {
-    if (this.mAssetResourceLoader == null)
-    {
-      this.mLogger.error("mAssetResourceLoader not set");
-      return -1;
-    }
-    return this.mAssetResourceLoader.onStartReadData(paramInt, paramString, paramLong1, paramLong2);
-  }
-  
-  public void handleStop()
-  {
+    ReportThumbPlayer.getInstance().stop(this);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("stop");
+    localTPBaseLogger.info(localStringBuilder.toString());
     internalStop();
   }
   
-  public void handleStopAsync()
+  @TPThreadAnnotations.ThreadSwitch
+  public void stopAsync()
   {
+    ReportThumbPlayer.getInstance().stop(this);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("stopAsync");
+    localTPBaseLogger.info(localStringBuilder.toString());
     internalStop();
     handlePlayerCallback(280, 0, 0, null);
   }
   
-  public int handleStopReadData(int paramInt1, String paramString, int paramInt2)
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true, removeRepeat=true)
+  public void switchDefinition(@NonNull ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo)
   {
-    if (this.mAssetResourceLoader == null)
-    {
-      this.mLogger.error("mAssetResourceLoader not set");
-      return -1;
-    }
-    return this.mAssetResourceLoader.onStopReadData(paramInt1, paramString, paramInt2);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("switchDefinition, mediaAsset:");
+    localStringBuilder.append(paramITPMediaAsset);
+    localStringBuilder.append(", defID:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", videoInfo:");
+    localStringBuilder.append(paramTPVideoInfo);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    switchDefinition(paramITPMediaAsset, paramLong, paramTPVideoInfo, 0);
   }
   
-  public void handleSwitchDef(ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt)
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true, removeRepeat=true)
+  public void switchDefinition(@NonNull ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt)
   {
-    paramITPMediaAsset = this.mPlayProxyManager.startSwitchDefTaskByAsset(paramITPMediaAsset, paramLong, paramTPVideoInfo);
-    if (paramITPMediaAsset != null) {}
-    try
+    if (validCallSwitchDef())
     {
-      this.mLogger.info("handleSwitchDef, proxyMediaAsset:" + paramITPMediaAsset + ", defID:" + paramLong);
-      this.mPlayerAdapter.updateVideoInfo(paramTPVideoInfo);
-      this.mPlayerAdapter.switchDefinition(paramITPMediaAsset, paramInt, paramLong);
-      pushEvent(120, 0, 0, null, new TPHashMapBuilder().put("switch", paramLong + "").build());
-      return;
-    }
-    catch (Exception paramITPMediaAsset)
-    {
-      this.mLogger.printException(paramITPMediaAsset);
-    }
-  }
-  
-  public void handleSwitchDef(String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt)
-  {
-    TPUrlDataSource localTPUrlDataSource = this.mPlayProxyManager.startSwitchDefTask(paramLong, paramString, paramTPVideoInfo);
-    try
-    {
-      this.mLogger.info("handleSwitchDef, proxyUrl:" + paramString + ", defID:" + paramLong);
-      this.mPlayerAdapter.updateVideoInfo(paramTPVideoInfo);
-      this.mPlayerAdapter.switchDefinition(localTPUrlDataSource, paramInt, paramLong);
-      pushEvent(120, 0, 0, null, new TPHashMapBuilder().put("switch", paramLong + "").build());
-      return;
-    }
-    catch (Exception paramString)
-    {
-      this.mLogger.printException(paramString);
-    }
-  }
-  
-  public void handlerCaptureVideo(TPCaptureParams paramTPCaptureParams, TPCaptureCallBack paramTPCaptureCallBack)
-  {
-    try
-    {
-      this.mPlayerAdapter.captureVideo(paramTPCaptureParams, paramTPCaptureCallBack);
-      return;
-    }
-    catch (Exception paramTPCaptureParams)
-    {
-      this.mLogger.printException(paramTPCaptureParams);
-    }
-  }
-  
-  public void handlerSetVideoInfo(TPVideoInfo paramTPVideoInfo)
-  {
-    if (paramTPVideoInfo != null) {}
-    try
-    {
-      this.mPlayProxyManager.setVideoInfo(paramTPVideoInfo);
-      this.mPlayerAdapter.setVideoInfo(paramTPVideoInfo);
-      if ((paramTPVideoInfo.getDownloadPraramList() != null) && (paramTPVideoInfo.getDownloadPraramList().size() > 0)) {
-        this.mFlowId = ((TPDownloadParamData)paramTPVideoInfo.getDownloadPraramList().get(0)).getFlowId();
+      Object localObject = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(LOG_API_CALL_PREFIX);
+      localStringBuilder.append("switchDefinition, mediaAsset:");
+      localStringBuilder.append(paramITPMediaAsset);
+      localStringBuilder.append(", defID:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(", videoInfo:");
+      localStringBuilder.append(paramTPVideoInfo);
+      localStringBuilder.append(", mode:");
+      localStringBuilder.append(paramInt);
+      ((TPBaseLogger)localObject).info(localStringBuilder.toString());
+      localObject = paramITPMediaAsset;
+      if (isUseProxyEnable()) {
+        localObject = this.mPlayProxyManager.startSwitchDefTaskByAsset(paramITPMediaAsset, paramLong, paramTPVideoInfo);
+      }
+      if (localObject != null)
+      {
+        paramITPMediaAsset = this.mLogger;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleSwitchDef, proxyMediaAsset:");
+        localStringBuilder.append(localObject);
+        localStringBuilder.append(", defID:");
+        localStringBuilder.append(paramLong);
+        paramITPMediaAsset.info(localStringBuilder.toString());
+        this.mPlayerAdapter.updateVideoInfo(paramTPVideoInfo);
+        this.mPlayerAdapter.switchDefinition((ITPMediaAsset)localObject, 0, paramLong);
+        paramITPMediaAsset = new TPHashMapBuilder();
+        paramTPVideoInfo = new StringBuilder();
+        paramTPVideoInfo.append(paramLong);
+        paramTPVideoInfo.append("");
+        pushEvent(120, 0, 0, null, paramITPMediaAsset.put("switch", paramTPVideoInfo.toString()).build());
       }
       return;
     }
-    catch (Exception paramTPVideoInfo)
-    {
-      this.mLogger.printException(paramTPVideoInfo);
-    }
+    throw new IllegalStateException("error : switchDefinition , state invalid");
   }
   
-  public void pause()
-  {
-    ReportThumbPlayer.getInstance().pause(this);
-    this.mLogger.info(LOG_API_CALL_PREFIX + "pause");
-    this.mPlayerInternal.pause();
-  }
-  
-  public void pauseDownload()
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "pauseDownload");
-    this.mPlayerInternal.pauseDownload();
-  }
-  
-  public void prepareAsync()
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "prepareAsync");
-    this.mPlayerInternal.prepareAsync();
-  }
-  
-  public void release()
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "release");
-    this.mPlayerInternal.release();
-    this.mTPPluginManager.release();
-    ReportThumbPlayer.getInstance().release(this);
-  }
-  
-  public void reset()
-  {
-    ReportThumbPlayer.getInstance().reset(this);
-    this.mLogger.info(LOG_API_CALL_PREFIX + "reset");
-    if (this.mUsingDefaultLogContext)
-    {
-      this.mLogger.updateTaskId(String.valueOf(this.mPlayTaskId.incrementAndGet()));
-      this.mPlayerAdapter.updateLoggerContext(this.mLogger.getTPLoggerContext());
-      this.mPlayerListeners.updateTag(this.mLogger.getTPLoggerContext().getTag());
-    }
-    this.mPlayerInternal.reset();
-  }
-  
-  public void resumeDownload()
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "resumeDownload");
-    this.mPlayerInternal.resumeDownload();
-  }
-  
-  public void seekTo(int paramInt)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "seekTo, positionMs:" + paramInt);
-    this.mPlayerInternal.seekTo(paramInt);
-  }
-  
-  public void seekTo(int paramInt1, int paramInt2)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "seekTo, positionMs:" + paramInt1 + ", mode:" + paramInt2);
-    this.mPlayerInternal.seekTo(paramInt1, paramInt2);
-  }
-  
-  public void selectProgram(int paramInt, long paramLong)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "selectProgram, programIndex:" + paramInt + ", opaque:" + paramLong);
-    this.mPlayerInternal.selectProgram(paramInt, paramLong);
-  }
-  
-  public void selectTrack(int paramInt, long paramLong)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "selectTrack, trackIndex:" + paramInt + ", opaque:" + paramLong);
-    this.mPlayerInternal.selectTrack(paramInt, paramLong);
-  }
-  
-  public void setAudioGainRatio(float paramFloat)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setAudioGainRatio, gainRatio:" + paramFloat);
-    this.mPlayerInternal.setAudioGainRatio(paramFloat);
-  }
-  
-  public void setAudioNormalizeVolumeParams(String paramString)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setAudioNormalizeVolumeParams, audioNormalizeVolumeParams:" + paramString);
-    this.mPlayerInternal.setAudioNormalizeVolumeParams(paramString);
-  }
-  
-  public void setBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    this.mPlayProxyManager.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
-  }
-  
-  public void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setDataSource, ParcelFileDescriptor");
-    if (paramParcelFileDescriptor == null) {
-      throw new IllegalArgumentException("error : setDataSource , pfd invalid");
-    }
-    this.mPlayerInternal.setDataSource(paramParcelFileDescriptor);
-  }
-  
-  public void setDataSource(ITPMediaAsset paramITPMediaAsset)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setDataSource, ITPMediaAsset");
-    if (paramITPMediaAsset == null) {
-      throw new IllegalArgumentException("asset is null");
-    }
-    if (((paramITPMediaAsset instanceof ITPMediaDRMAsset)) && ((TextUtils.isEmpty(paramITPMediaAsset.getUrl())) || (((ITPMediaDRMAsset)paramITPMediaAsset).getDrmAllProperties() == null) || (((ITPMediaDRMAsset)paramITPMediaAsset).getDrmAllProperties().isEmpty()))) {
-      throw new IllegalArgumentException("drm asset url is null or drm property is null");
-    }
-    this.mPlayerInternal.setDataSource(paramITPMediaAsset);
-  }
-  
-  public void setDataSource(String paramString)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setDataSource, url:" + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("error : setDataSource , data source invalid");
-    }
-    this.mPlayerInternal.setDataSource(paramString);
-  }
-  
-  public void setDataSource(String paramString, Map<String, String> paramMap)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setDataSource, url:" + paramString + ", httpHeader:" + paramMap);
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("error : setDataSource , data source invalid");
-    }
-    this.mPlayerInternal.setDataSource(paramString, paramMap);
-  }
-  
-  public void setIsActive(boolean paramBoolean)
-  {
-    this.mPlayProxyManager.setIsActive(paramBoolean);
-  }
-  
-  public void setLoopback(boolean paramBoolean)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setLoopback, isLoopback:" + paramBoolean);
-    this.mPlayerInternal.setLoopback(paramBoolean);
-  }
-  
-  public void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setLoopback, isLoopback:" + paramBoolean + ", loopStartPositionMs:" + paramLong1 + ", loopEndPositionMs:" + paramLong2);
-    this.mPlayerInternal.setLoopback(paramBoolean, paramLong1, paramLong2);
-  }
-  
-  public void setOnAudioFrameOutputListener(ITPPlayerListener.IOnAudioFrameOutputListener paramIOnAudioFrameOutputListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnAudioPcmOutputListener(paramIOnAudioFrameOutputListener);
-    }
-  }
-  
-  public void setOnAudioProcessFrameOutputListener(ITPPlayerListener.IOnAudioProcessFrameOutputListener paramIOnAudioProcessFrameOutputListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnAudioProcessOutputListener(paramIOnAudioProcessFrameOutputListener);
-    }
-  }
-  
-  public void setOnCompletionListener(ITPPlayerListener.IOnCompletionListener paramIOnCompletionListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnCompletionListener(paramIOnCompletionListener);
-    }
-  }
-  
-  public void setOnErrorListener(ITPPlayerListener.IOnErrorListener paramIOnErrorListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnErrorListener(paramIOnErrorListener);
-    }
-  }
-  
-  public void setOnInfoListener(ITPPlayerListener.IOnInfoListener paramIOnInfoListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnInfoListener(paramIOnInfoListener);
-    }
-  }
-  
-  public void setOnPlayerStateChangeListener(ITPPlayerListener.IOnStateChangeListener paramIOnStateChangeListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnPlayerStateChangeListener(paramIOnStateChangeListener);
-    }
-  }
-  
-  public void setOnPreparedListener(ITPPlayerListener.IOnPreparedListener paramIOnPreparedListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnPreparedListener(paramIOnPreparedListener);
-    }
-  }
-  
-  public void setOnSeekCompleteListener(ITPPlayerListener.IOnSeekCompleteListener paramIOnSeekCompleteListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnSeekCompleteListener(paramIOnSeekCompleteListener);
-    }
-  }
-  
-  public void setOnStopAsyncCompleteListener(ITPPlayerListener.IOnStopAsyncCompleteListener paramIOnStopAsyncCompleteListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnStopAsyncCompleteListener(paramIOnStopAsyncCompleteListener);
-    }
-  }
-  
-  public void setOnSubtitleDataListener(ITPPlayerListener.IOnSubtitleDataListener paramIOnSubtitleDataListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnSubtitleDataListener(paramIOnSubtitleDataListener);
-    }
-  }
-  
-  public void setOnSubtitleFrameOutListener(ITPPlayerListener.IOnSubtitleFrameOutListener paramIOnSubtitleFrameOutListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnSubtitleFrameOutListener(paramIOnSubtitleFrameOutListener);
-    }
-  }
-  
-  public void setOnVideoFrameOutListener(ITPPlayerListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnVideoFrameOutListener(paramIOnVideoFrameOutListener);
-    }
-  }
-  
-  public void setOnVideoProcessFrameOutputListener(ITPPlayerListener.IOnVideoProcessFrameOutputListener paramIOnVideoProcessFrameOutputListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnVideoProcessOutputListener(paramIOnVideoProcessFrameOutputListener);
-    }
-  }
-  
-  public void setOnVideoSizeChangedListener(ITPPlayerListener.IOnVideoSizeChangedListener paramIOnVideoSizeChangedListener)
-  {
-    if (this.mPlayerListeners != null) {
-      this.mPlayerListeners.setOnVideoSizeChangedListener(paramIOnVideoSizeChangedListener);
-    }
-  }
-  
-  public void setOutputMute(boolean paramBoolean)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setOutputMute, isOutputMute:" + paramBoolean);
-    this.mPlayerInternal.setOutputMute(paramBoolean);
-  }
-  
-  public void setPlaySpeedRatio(float paramFloat)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setPlaySpeedRatio, speedRatio:" + paramFloat);
-    this.mPlayerInternal.setPlaySpeedRatio(paramFloat);
-  }
-  
-  public void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam)
-  {
-    ReportThumbPlayer.getInstance().setPlayerOptionalParam(this, paramTPOptionalParam);
-    this.mPlayerInternal.setPlayerOptionalParam(paramTPOptionalParam);
-  }
-  
-  public void setSurface(Surface paramSurface)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setSurface, surface:" + paramSurface);
-    this.mPlayerInternal.setSurface(paramSurface);
-  }
-  
-  public void setSurfaceHolder(SurfaceHolder paramSurfaceHolder)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setSurfaceHolder, SurfaceHolder:" + paramSurfaceHolder);
-    this.mPlayerInternal.setSurfaceHolder(paramSurfaceHolder);
-  }
-  
-  public void setTPSurface(ITPSurface paramITPSurface)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "setTPSurface, tpSurface:" + paramITPSurface);
-    this.mPlayerInternal.setTPSurface(paramITPSurface);
-  }
-  
-  public void setVideoInfo(TPVideoInfo paramTPVideoInfo)
-  {
-    this.mPlayerInternal.setVideoInfo(paramTPVideoInfo);
-  }
-  
-  public void start()
-  {
-    ReportThumbPlayer.getInstance().start(this);
-    this.mLogger.info(LOG_API_CALL_PREFIX + "start");
-    this.mPlayerInternal.start();
-  }
-  
-  public void stop()
-  {
-    ReportThumbPlayer.getInstance().stop(this);
-    this.mLogger.info(LOG_API_CALL_PREFIX + "stop");
-    this.mPlayerInternal.stop();
-  }
-  
-  public void stopAsync()
-  {
-    ReportThumbPlayer.getInstance().stop(this);
-    this.mLogger.info(LOG_API_CALL_PREFIX + "stopAsync");
-    this.mPlayerInternal.stopAsync();
-  }
-  
-  public void switchDefinition(@NonNull ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "switchDefinition, mediaAsset:" + paramITPMediaAsset + ", defID:" + paramLong + ", videoInfo:" + paramTPVideoInfo);
-    this.mPlayerInternal.switchDefinition(paramITPMediaAsset, paramLong, paramTPVideoInfo, 2);
-  }
-  
-  public void switchDefinition(@NonNull ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt)
-  {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "switchDefinition, mediaAsset:" + paramITPMediaAsset + ", defID:" + paramLong + ", videoInfo:" + paramTPVideoInfo + ", mode:" + paramInt);
-    this.mPlayerInternal.switchDefinition(paramITPMediaAsset, paramLong, paramTPVideoInfo, paramInt);
-  }
-  
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true, removeRepeat=true)
   public void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo)
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "switchDefinition, defUrl:" + paramString + ", defID:" + paramLong);
-    this.mPlayerInternal.switchDefinition(paramString, paramLong, paramTPVideoInfo, 2);
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("switchDefinition, defUrl:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", defID:");
+    localStringBuilder.append(paramLong);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    switchDefinition(paramString, paramLong, paramTPVideoInfo, 0);
   }
   
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true, removeRepeat=true)
   public void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt)
   {
-    this.mLogger.info(LOG_API_CALL_PREFIX + "switchDefinition, defUrl:" + paramString + ", defID:" + paramLong + ", mode:" + paramInt);
-    this.mPlayerInternal.switchDefinition(paramString, paramLong, paramTPVideoInfo, paramInt);
+    if (validCallSwitchDef())
+    {
+      Object localObject1 = this.mLogger;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(LOG_API_CALL_PREFIX);
+      ((StringBuilder)localObject2).append("switchDefinition, defUrl:");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(", defID:");
+      ((StringBuilder)localObject2).append(paramLong);
+      ((StringBuilder)localObject2).append(", mode:");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((TPBaseLogger)localObject1).info(((StringBuilder)localObject2).toString());
+      localObject1 = new TPUrlDataSource(paramString);
+      if (isUseProxyEnable())
+      {
+        localObject1 = this.mPlayProxyManager.startSwitchDefTask(paramLong, paramString, paramTPVideoInfo, null);
+        localObject2 = this.mLogger;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("switchDefinition selfPlayerUrl=");
+        localStringBuilder.append(((TPUrlDataSource)localObject1).getSelfPlayerUrl());
+        ((TPBaseLogger)localObject2).info(localStringBuilder.toString());
+        localObject2 = this.mLogger;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("switchDefinition systemPlayerUrl=");
+        localStringBuilder.append(((TPUrlDataSource)localObject1).getSystemPlayerUrl());
+        ((TPBaseLogger)localObject2).info(localStringBuilder.toString());
+      }
+      localObject2 = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("switchDefinition, proxyUrl:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", defID:");
+      localStringBuilder.append(paramLong);
+      ((TPBaseLogger)localObject2).info(localStringBuilder.toString());
+      this.mPlayerAdapter.updateVideoInfo(paramTPVideoInfo);
+      this.mPlayerAdapter.switchDefinition((TPUrlDataSource)localObject1, paramInt, paramLong);
+      paramString = new TPHashMapBuilder();
+      paramTPVideoInfo = new StringBuilder();
+      paramTPVideoInfo.append(paramLong);
+      paramTPVideoInfo.append("");
+      pushEvent(120, 0, 0, null, paramString.put("switch", paramTPVideoInfo.toString()).build());
+      return;
+    }
+    throw new IllegalStateException("error : switchDefinition , state invalid");
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true, removeRepeat=true)
+  public void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, Map<String, String> paramMap)
+  {
+    TPBaseLogger localTPBaseLogger = this.mLogger;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(LOG_API_CALL_PREFIX);
+    localStringBuilder.append("switchDefinition, defUrl:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", defID:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", videoInfo:");
+    localStringBuilder.append(paramTPVideoInfo);
+    localStringBuilder.append(", httpHeader:");
+    localStringBuilder.append(paramMap);
+    localTPBaseLogger.info(localStringBuilder.toString());
+    switchDefinition(paramString, paramLong, paramTPVideoInfo, paramMap, 0);
+  }
+  
+  @TPThreadAnnotations.ThreadSwitch(checkObj=true, removeRepeat=true)
+  public void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, Map<String, String> paramMap, int paramInt)
+  {
+    if (validCallSwitchDef())
+    {
+      Object localObject1 = this.mLogger;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(LOG_API_CALL_PREFIX);
+      ((StringBuilder)localObject2).append("switchDefinition, defUrl:");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(", defID:");
+      ((StringBuilder)localObject2).append(paramLong);
+      ((StringBuilder)localObject2).append(", httpHeader:");
+      ((StringBuilder)localObject2).append(paramMap);
+      ((StringBuilder)localObject2).append(", mode:");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((TPBaseLogger)localObject1).info(((StringBuilder)localObject2).toString());
+      localObject1 = new TPUrlDataSource(paramString);
+      if (isUseProxyEnable())
+      {
+        localObject1 = this.mPlayProxyManager.startSwitchDefTask(paramLong, paramString, paramTPVideoInfo, paramMap);
+        localObject2 = this.mLogger;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("switchDefinition selfPlayerUrl=");
+        localStringBuilder.append(((TPUrlDataSource)localObject1).getSelfPlayerUrl());
+        ((TPBaseLogger)localObject2).info(localStringBuilder.toString());
+        localObject2 = this.mLogger;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("switchDefinition systemPlayerUrl=");
+        localStringBuilder.append(((TPUrlDataSource)localObject1).getSystemPlayerUrl());
+        ((TPBaseLogger)localObject2).info(localStringBuilder.toString());
+      }
+      localObject2 = this.mLogger;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("switchDefinition, proxyUrl:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", defID:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(", httpHeader:");
+      localStringBuilder.append(paramMap);
+      ((TPBaseLogger)localObject2).info(localStringBuilder.toString());
+      this.mPlayerAdapter.updateVideoInfo(paramTPVideoInfo);
+      this.mPlayerAdapter.switchDefinition((TPUrlDataSource)localObject1, paramMap, paramInt, paramLong);
+      paramString = new TPHashMapBuilder();
+      paramTPVideoInfo = new StringBuilder();
+      paramTPVideoInfo.append(paramLong);
+      paramTPVideoInfo.append("");
+      pushEvent(120, 0, 0, null, paramString.put("switch", paramTPVideoInfo.toString()).build());
+      return;
+    }
+    throw new IllegalStateException("error : switchDefinition , state invalid");
   }
   
   public void updateLoggerContext(TPLoggerContext paramTPLoggerContext)
@@ -1699,7 +1901,7 @@ public class TPPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayer
  * JD-Core Version:    0.7.0.1
  */

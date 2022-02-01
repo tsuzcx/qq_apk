@@ -15,7 +15,7 @@ import mqq.app.MobileQQ;
 
 public class ThreadOptimizer
 {
-  private static ThreadOptimizer jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadOptimizer = null;
+  private static ThreadOptimizer jdField_a_of_type_ComTencentQqperfOptThreadpriorityThreadOptimizer;
   private int jdField_a_of_type_Int = -2;
   private Context jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
   private boolean jdField_a_of_type_Boolean = false;
@@ -53,29 +53,33 @@ public class ThreadOptimizer
     if ((this.b) || (this.c)) {}
     for (;;)
     {
-      int i;
       try
       {
         Object localObject = Thread.currentThread().getThreadGroup();
         Thread[] arrayOfThread = new Thread[((ThreadGroup)localObject).activeCount()];
         ((ThreadGroup)localObject).enumerate(arrayOfThread);
         int j = arrayOfThread.length;
-        i = 0;
+        int i = 0;
         if (i < j)
         {
           Thread localThread = arrayOfThread[i];
-          if (localThread == null) {
-            break label216;
+          if (localThread != null)
+          {
+            if (localThread.getName() == null) {
+              break label223;
+            }
+            localObject = localThread.getName();
+            if ((this.b) && ("MSF-Receiver".equals(localObject))) {
+              localThread.setPriority(1);
+            } else if ((this.c) && (("logWriteThread".equals(localObject)) || (((String)localObject).startsWith("GlobalPool")) || (((String)localObject).startsWith("Face")) || (((String)localObject).startsWith("um-stack")) || (((String)localObject).startsWith("QQ_FTS")) || (((String)localObject).startsWith("httpcomm")))) {
+              localThread.setPriority(1);
+            }
           }
-          if (localThread.getName() == null) {
-            break label223;
-          }
-          localObject = localThread.getName();
-          if ((this.b) && ("MSF-Receiver".equals(localObject))) {
-            localThread.setPriority(1);
-          } else if ((this.c) && (("logWriteThread".equals(localObject)) || (((String)localObject).startsWith("GlobalPool")) || (((String)localObject).startsWith("Face")) || (((String)localObject).startsWith("um-stack")) || (((String)localObject).startsWith("QQ_FTS")) || (((String)localObject).startsWith("httpcomm")))) {
-            localThread.setPriority(1);
-          }
+          i += 1;
+        }
+        else
+        {
+          return;
         }
       }
       catch (Exception localException)
@@ -90,10 +94,6 @@ public class ThreadOptimizer
           ThreadManager.getRecentThreadLooper().getThread().setPriority(1);
         }
       }
-      return;
-      label216:
-      i += 1;
-      continue;
       label223:
       String str = "";
     }
@@ -103,38 +103,36 @@ public class ThreadOptimizer
   {
     if (paramArrayOfString.length > 6)
     {
-      if ("1".equals(paramArrayOfString[6])) {
+      if ("1".equals(paramArrayOfString[6]))
+      {
         com.tencent.common.config.AppSetting.f = true;
+        return;
       }
+      com.tencent.common.config.AppSetting.f = false;
     }
-    else {
-      return;
-    }
-    com.tencent.common.config.AppSetting.f = false;
   }
   
   private void c(String[] paramArrayOfString)
   {
-    File localFile;
     if (paramArrayOfString.length > 5)
     {
-      localFile = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "disableSmallLock");
-      if (!"1".equals(paramArrayOfString[5])) {
-        break label47;
+      File localFile = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "disableSmallLock");
+      if ("1".equals(paramArrayOfString[5]))
+      {
+        if (localFile.exists()) {
+          localFile.delete();
+        }
       }
-      if (localFile.exists()) {
-        localFile.delete();
+      else {
+        localFile.createNewFile();
       }
     }
-    return;
-    label47:
-    localFile.createNewFile();
   }
   
   private void d(String[] paramArrayOfString)
   {
     float f = Float.parseFloat(paramArrayOfString[1]);
-    if (1.0F * ((IDPCApi)QRoute.api(IDPCApi.class)).getAbRamdom() / ((IDPCApi)QRoute.api(IDPCApi.class)).getMaxAbRamdom() < f)
+    if (((IDPCApi)QRoute.api(IDPCApi.class)).getAbRamdom() * 1.0F / ((IDPCApi)QRoute.api(IDPCApi.class)).getMaxAbRamdom() < f)
     {
       this.jdField_a_of_type_Int = Integer.valueOf(paramArrayOfString[0]).intValue();
       this.jdField_a_of_type_Boolean = "1".equals(paramArrayOfString[2]);
@@ -153,36 +151,34 @@ public class ThreadOptimizer
   public void a()
   {
     Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.qq_thread_config.name());
-    if (QLog.isColorLevel()) {
-      QLog.d("ThreadManager.Optimizer", 2, "config = " + (String)localObject);
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    for (;;)
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("config = ");
+      localStringBuilder.append((String)localObject);
+      QLog.d("ThreadManager.Optimizer", 2, localStringBuilder.toString());
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
       return;
-      try
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length < 5) {
-          continue;
-        }
-        d((String[])localObject);
-        c((String[])localObject);
-        b((String[])localObject);
-        a((String[])localObject);
-        b();
+    }
+    try
+    {
+      localObject = ((String)localObject).split("\\|");
+      if (localObject.length < 5) {
         return;
       }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ThreadManager.Optimizer", 2, "", localException);
-          }
-        }
+      d((String[])localObject);
+      c((String[])localObject);
+      b((String[])localObject);
+      a((String[])localObject);
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.Optimizer", 2, "", localException);
       }
     }
+    b();
   }
   
   public boolean a()
@@ -202,7 +198,7 @@ public class ThreadOptimizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.threadpriority.ThreadOptimizer
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,17 @@ public class CropEffectNode
   implements TAVVideoEffect
 {
   private CropModel mCropModel;
-  protected String reportKey = "CropEffectNode";
-  private final String sEffectId = "CropEffectNode" + Integer.toHexString(hashCode());
+  protected String reportKey;
+  private final String sEffectId;
+  
+  public CropEffectNode()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CropEffectNode");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.sEffectId = localStringBuilder.toString();
+    this.reportKey = "CropEffectNode";
+  }
   
   public TAVVideoEffect.Filter createFilter()
   {
@@ -38,7 +47,7 @@ public class CropEffectNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.CropEffectNode
  * JD-Core Version:    0.7.0.1
  */

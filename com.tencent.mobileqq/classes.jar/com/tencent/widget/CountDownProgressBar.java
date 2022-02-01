@@ -46,17 +46,19 @@ public class CountDownProgressBar
   public CountDownProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131166401);
-    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131166398);
-    this.c = paramContext.getResources().getColor(2131166402);
-    this.e = paramContext.getResources().getColor(2131165442);
-    this.l = paramContext.getResources().getColor(2131166399);
+    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131166412);
+    this.jdField_b_of_type_Int = paramContext.getResources().getColor(2131166409);
+    this.c = paramContext.getResources().getColor(2131166413);
+    this.e = paramContext.getResources().getColor(2131165418);
+    this.l = paramContext.getResources().getColor(2131166410);
     float f1 = paramContext.getResources().getDisplayMetrics().density;
     this.f = ((int)(21.0F * f1 + 0.5F));
     this.d = ((int)(2.0F * f1 + 0.5F));
     this.g = ((int)(18.0F * f1 + 0.5F));
     this.i = 0;
-    this.k = Math.max(1, (int)(f1 * 0.5D + 0.5D));
+    double d1 = f1;
+    Double.isNaN(d1);
+    this.k = Math.max(1, (int)(d1 * 0.5D + 0.5D));
   }
   
   public void a()
@@ -76,47 +78,48 @@ public class CountDownProgressBar
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (getWidth() > getHeight()) {}
-    for (int i1 = getHeight();; i1 = getWidth())
-    {
-      if (this.g > i1) {
-        this.g = i1;
-      }
-      int i2 = this.g - this.k / 2;
-      int i3 = i2 - this.d / 2;
-      float f1 = i1 / 2;
-      float f2 = i1 / 2;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-      paramCanvas.drawCircle(f1, f2, this.g, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.k);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.l);
-      paramCanvas.drawCircle(f1, f2, i2, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.d);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      paramCanvas.drawCircle(f1, f2, i3, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.f);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-      float f3 = (this.jdField_a_of_type_AndroidGraphicsPaint.descent() + this.jdField_a_of_type_AndroidGraphicsPaint.ascent()) / 2.0F;
-      paramCanvas.drawText(Integer.toString(this.h), f1, f2 - f3, this.jdField_a_of_type_AndroidGraphicsPaint);
-      RectF localRectF = new RectF();
-      f2 = i3;
-      f3 = i3;
-      localRectF.set(f1 - f2, f1 - i3, f3 + f1, i3 + f1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-      paramCanvas.drawArc(localRectF, 270.0F, this.i, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
+    int i1;
+    if (getWidth() > getHeight()) {
+      i1 = getHeight();
+    } else {
+      i1 = getWidth();
     }
+    if (this.g > i1) {
+      this.g = i1;
+    }
+    int i2 = this.g - this.k / 2;
+    int i3 = this.d / 2;
+    float f1 = i1 / 2;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
+    paramCanvas.drawCircle(f1, f1, this.g, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.k);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.l);
+    paramCanvas.drawCircle(f1, f1, i2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.d);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    float f2 = i2 - i3;
+    paramCanvas.drawCircle(f1, f1, f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.f);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
+    float f3 = (this.jdField_a_of_type_AndroidGraphicsPaint.descent() + this.jdField_a_of_type_AndroidGraphicsPaint.ascent()) / 2.0F;
+    paramCanvas.drawText(Integer.toString(this.h), f1, f1 - f3, this.jdField_a_of_type_AndroidGraphicsPaint);
+    RectF localRectF = new RectF();
+    f3 = f1 - f2;
+    f1 += f2;
+    localRectF.set(f3, f3, f1, f1);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+    paramCanvas.drawArc(localRectF, 270.0F, this.i, false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public void setOnCountDownLinstener(CountDownProgressBar.OnCountDownLinstener paramOnCountDownLinstener)
@@ -144,7 +147,7 @@ public class CountDownProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.CountDownProgressBar
  * JD-Core Version:    0.7.0.1
  */

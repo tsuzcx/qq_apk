@@ -7,7 +7,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class TroopRewardTypeSupplier
   implements MessageTypeSupplier
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public int get(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
     if (paramChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin())) {
       return 59;
@@ -17,7 +17,7 @@ public class TroopRewardTypeSupplier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.typesupplier.TroopRewardTypeSupplier
  * JD-Core Version:    0.7.0.1
  */

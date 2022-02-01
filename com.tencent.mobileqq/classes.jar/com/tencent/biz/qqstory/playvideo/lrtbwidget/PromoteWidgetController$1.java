@@ -26,42 +26,43 @@ class PromoteWidgetController$1
       this.this$0.jdField_a_of_type_Long = -1L;
       return;
     }
-    Object localObject = (StoryPromoteTaskManager)SuperManager.a(29);
+    Object localObject1 = (StoryPromoteTaskManager)SuperManager.a(29);
     ArrayList localArrayList = new ArrayList();
     if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-      localArrayList.addAll(((StoryPromoteTaskManager)localObject).a(this.jdField_a_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_Int));
+      localArrayList.addAll(((StoryPromoteTaskManager)localObject1).a(this.jdField_a_of_type_JavaUtilArrayList, this.this$0.jdField_a_of_type_Int));
     }
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localArrayList.addAll(((StoryPromoteTaskManager)localObject).b(this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int));
+      localArrayList.addAll(((StoryPromoteTaskManager)localObject1).b(this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Int));
     }
+    Object localObject2 = null;
     int i = 0;
-    if (i < localArrayList.size())
-    {
-      localObject = (PromoteTaskEntry)localArrayList.get(i);
-      if ((this.jdField_a_of_type_Int < ((PromoteTaskEntry)localObject).minimalVideoCount) || (l > ((PromoteTaskEntry)localObject).expireTime)) {}
-    }
     for (;;)
     {
-      if (localObject == null)
-      {
-        SLog.d("PromoteWidgetController", "checkValidateAsync() didn't find promote task for feedId: %s, unionId: %s, size: %d, now=%s(%d)", new Object[] { this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), DateUtils.a(l), Long.valueOf(l) });
-        this.this$0.jdField_a_of_type_Long = -1L;
-        return;
-        i += 1;
+      localObject1 = localObject2;
+      if (i >= localArrayList.size()) {
         break;
       }
-      SLog.d("PromoteWidgetController", "checkValidateAsync() find the promote task %s", new Object[] { localObject });
-      this.this$0.jdField_a_of_type_Long = ((PromoteTaskEntry)localObject).taskId;
-      this.this$0.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ThreadManager.getUIHandlerV2().post(new PromoteWidgetController.1.1(this));
-      return;
-      localObject = null;
+      localObject1 = (PromoteTaskEntry)localArrayList.get(i);
+      if ((this.jdField_a_of_type_Int >= ((PromoteTaskEntry)localObject1).minimalVideoCount) && (l <= ((PromoteTaskEntry)localObject1).expireTime)) {
+        break;
+      }
+      i += 1;
     }
+    if (localObject1 == null)
+    {
+      SLog.d("PromoteWidgetController", "checkValidateAsync() didn't find promote task for feedId: %s, unionId: %s, size: %d, now=%s(%d)", new Object[] { this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), DateUtils.a(l), Long.valueOf(l) });
+      this.this$0.jdField_a_of_type_Long = -1L;
+      return;
+    }
+    SLog.d("PromoteWidgetController", "checkValidateAsync() find the promote task %s", new Object[] { localObject1 });
+    this.this$0.jdField_a_of_type_Long = ((PromoteTaskEntry)localObject1).taskId;
+    this.this$0.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    ThreadManager.getUIHandlerV2().post(new PromoteWidgetController.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.PromoteWidgetController.1
  * JD-Core Version:    0.7.0.1
  */

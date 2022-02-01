@@ -30,17 +30,27 @@ public class ConfigInfoTips
   
   private void a(View paramView)
   {
-    Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    ((Activity)localObject).findViewById(2131373797).setVisibility(0);
-    paramView = (TextView)((Activity)localObject).findViewById(2131373799);
-    localObject = (TextView)((Activity)localObject).findViewById(2131373798);
+    Object localObject1 = (Activity)this.jdField_a_of_type_AndroidContentContext;
+    ((Activity)localObject1).findViewById(2131373369).setVisibility(0);
+    paramView = (TextView)((Activity)localObject1).findViewById(2131373371);
+    localObject1 = (TextView)((Activity)localObject1).findViewById(2131373370);
     int i = ConfigInfo.getSharpConfigVersionFromFile(this.jdField_a_of_type_AndroidContentContext);
-    String str2 = a(ConfigInfo.getSharpConfigPayloadFromFile(this.jdField_a_of_type_AndroidContentContext));
-    String str1 = ConfigSystemImpl.a(this.jdField_a_of_type_AndroidContentContext);
-    str2 = str2 + "\n----------\n";
-    str1 = str2 + a(str1);
-    paramView.setText(i + "|" + TraeConfigUpdate.a().a("load"));
-    ((TextView)localObject).setText(str1);
+    Object localObject2 = a(ConfigInfo.getSharpConfigPayloadFromFile(this.jdField_a_of_type_AndroidContentContext));
+    String str = ConfigSystemImpl.a(this.jdField_a_of_type_AndroidContentContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append("\n----------\n");
+    localObject2 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append(a(str));
+    str = localStringBuilder.toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(TraeConfigUpdate.a().a("load"));
+    paramView.setText(((StringBuilder)localObject2).toString());
+    ((TextView)localObject1).setText(str);
   }
   
   private void c() {}
@@ -52,19 +62,16 @@ public class ConfigInfoTips
     int n = arrayOfString.length;
     int k = 0;
     int i = 0;
-    String str;
-    int j;
-    if (k < n)
+    while (k < n)
     {
-      str = arrayOfString[k];
-      j = str.length();
-      if (j < 2) {
-        break label172;
+      Object localObject = arrayOfString[k];
+      int j = ((String)localObject).length();
+      int m;
+      if (j >= 2) {
+        m = ((String)localObject).charAt(j - 2);
+      } else {
+        m = 0;
       }
-    }
-    label172:
-    for (int m = str.charAt(j - 2);; m = 0)
-    {
       j = i;
       if (m == 125) {
         j = i - 1;
@@ -72,41 +79,49 @@ public class ConfigInfoTips
       i = 0;
       while (i < j)
       {
-        paramString = paramString + "\t";
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("\t");
+        paramString = localStringBuilder.toString();
         i += 1;
       }
-      paramString = paramString + str;
-      paramString = paramString + "\n";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append((String)localObject);
+      paramString = localStringBuilder.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("\n");
+      paramString = ((StringBuilder)localObject).toString();
       i = j;
       if (m == 123) {
         i = j + 1;
       }
       k += 1;
-      break;
-      return paramString;
     }
+    return paramString;
   }
   
   public void a()
   {
     Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    View localView = ((Activity)localObject).findViewById(2131373796);
+    View localView = ((Activity)localObject).findViewById(2131373368);
     if (localView != null)
     {
       localView.setOnClickListener(this);
       localView.setVisibility(0);
     }
-    localView = ((Activity)localObject).findViewById(2131373798);
+    localView = ((Activity)localObject).findViewById(2131373370);
     if (localView != null) {
       localView.setOnClickListener(this);
     }
-    localObject = ((Activity)localObject).findViewById(2131373797);
+    localObject = ((Activity)localObject).findViewById(2131373369);
     if (localObject != null) {
       ((View)localObject).setOnClickListener(this);
     }
     localObject = new IntentFilter();
-    ((IntentFilter)localObject).addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
-    ((IntentFilter)localObject).addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD");
+    ((IntentFilter)localObject).addAction("com.tencent.av.ui.ConfigTipsConstant.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
+    ((IntentFilter)localObject).addAction("com.tencent.av.ui.ConfigTipsConstant.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD");
     this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
   }
   
@@ -119,25 +134,28 @@ public class ConfigInfoTips
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      System.arraycopy(this.jdField_a_of_type_ArrayOfLong, 1, this.jdField_a_of_type_ArrayOfLong, 0, this.jdField_a_of_type_ArrayOfLong.length - 1);
-      this.jdField_a_of_type_ArrayOfLong[(this.jdField_a_of_type_ArrayOfLong.length - 1)] = SystemClock.uptimeMillis();
-      if (this.jdField_a_of_type_ArrayOfLong[0] >= SystemClock.uptimeMillis() - 2000L)
-      {
+    default: 
+      break;
+    case 2131373369: 
+    case 2131373370: 
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131373369).setVisibility(8);
+      break;
+    case 2131373368: 
+      long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+      System.arraycopy(arrayOfLong, 1, arrayOfLong, 0, arrayOfLong.length - 1);
+      arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+      arrayOfLong[(arrayOfLong.length - 1)] = SystemClock.uptimeMillis();
+      if (this.jdField_a_of_type_ArrayOfLong[0] >= SystemClock.uptimeMillis() - 2000L) {
         a(paramView);
-        continue;
-        ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131373797).setVisibility(8);
       }
+      break;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ConfigInfoTips
  * JD-Core Version:    0.7.0.1
  */

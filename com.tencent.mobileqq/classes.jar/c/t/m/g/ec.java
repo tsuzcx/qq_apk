@@ -26,26 +26,34 @@ final class ec
     int i = paramBundle.getInt("lac");
     int j = paramBundle.getInt("cid");
     paramBundle = (Location)paramBundle.getParcelable("location");
-    if ((i == 0) || (j == 0) || (paramBundle == null)) {
-      return false;
-    }
-    i <<= j + 16;
-    Pair localPair = (Pair)this.a.get(i);
-    if (localPair == null)
+    if ((i != 0) && (j != 0))
     {
-      paramBundle = Pair.create(Double.valueOf(paramBundle.getLatitude()), Double.valueOf(paramBundle.getLongitude()));
-      this.a.put(i, paramBundle);
-      if (this.a.size() > 320) {
-        this.a.delete(this.a.keyAt(0));
+      if (paramBundle == null) {
+        return false;
       }
-      return true;
+      i <<= j + 16;
+      Pair localPair = (Pair)this.a.get(i);
+      if (localPair == null)
+      {
+        paramBundle = Pair.create(Double.valueOf(paramBundle.getLatitude()), Double.valueOf(paramBundle.getLongitude()));
+        this.a.put(i, paramBundle);
+        if (this.a.size() > 320)
+        {
+          paramBundle = this.a;
+          paramBundle.delete(paramBundle.keyAt(0));
+        }
+        return true;
+      }
+      if (fp.a(paramBundle.getLatitude(), paramBundle.getLongitude(), ((Double)localPair.first).doubleValue(), ((Double)localPair.second).doubleValue()) < 6000.0D) {
+        return true;
+      }
     }
-    return fp.a(paramBundle.getLatitude(), paramBundle.getLongitude(), ((Double)localPair.first).doubleValue(), ((Double)localPair.second).doubleValue()) < 6000.0D;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ec
  * JD-Core Version:    0.7.0.1
  */

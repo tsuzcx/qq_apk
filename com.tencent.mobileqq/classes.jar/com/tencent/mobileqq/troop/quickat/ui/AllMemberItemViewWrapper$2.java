@@ -16,20 +16,24 @@ class AllMemberItemViewWrapper$2
   public void onClick(View paramView)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString(VasH5PayUtil.e, HardCodeUtil.a(2131700304));
+    localBundle.putString(VasH5PayUtil.e, HardCodeUtil.a(2131700445));
     localBundle.putString(VasH5PayUtil.f, "CJCLUBT");
     localBundle.putString(VasH5PayUtil.d, "1450000516");
     localBundle.putInt(VasH5PayUtil.b, 3);
-    localBundle.putString(VasH5PayUtil.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
+    String str = VasH5PayUtil.i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://h5.vip.qq.com/p/pay/index?_wv=524289&_fv=0&aid=");
+    localStringBuilder.append("mvip.pt.vipsite.tqtips_chengyuan");
+    localBundle.putString(str, localStringBuilder.toString());
     localBundle.putString(VasH5PayUtil.g, "svip");
     localBundle.putString(VasH5PayUtil.a, AllMemberItemViewWrapper.a(this.a).getCurrentAccountUin());
-    VasH5PayUtil.a(AllMemberItemViewWrapper.a(this.a), AllMemberItemViewWrapper.a(this.a), localBundle);
+    VasH5PayUtil.a(AllMemberItemViewWrapper.a(this.a), localBundle);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AllMemberItemViewWrapper.2
  * JD-Core Version:    0.7.0.1
  */

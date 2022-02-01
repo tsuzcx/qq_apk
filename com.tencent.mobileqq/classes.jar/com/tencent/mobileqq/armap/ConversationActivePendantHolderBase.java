@@ -3,6 +3,7 @@ package com.tencent.mobileqq.armap;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -76,8 +77,9 @@ public class ConversationActivePendantHolderBase
   
   public void a(int paramInt, long paramLong)
   {
-    this.i = this.d;
-    this.h = (this.d + paramInt);
+    int j = this.d;
+    this.i = j;
+    this.h = (j + paramInt);
     this.jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
     this.e = 1;
     a(paramLong);
@@ -87,26 +89,33 @@ public class ConversationActivePendantHolderBase
   
   public boolean a(Canvas paramCanvas)
   {
-    boolean bool2 = false;
     d();
     paramCanvas.save();
     paramCanvas.translate(0.0F, this.g);
     a(paramCanvas);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {}
-    for (boolean bool1 = super.a(paramCanvas);; bool1 = false)
-    {
-      b(paramCanvas);
-      paramCanvas.restore();
-      if ((this.jdField_a_of_type_Boolean) || (bool1)) {
-        bool2 = true;
-      }
-      return bool2;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    boolean bool2 = false;
+    boolean bool1;
+    if (localDrawable != null) {
+      bool1 = super.a(paramCanvas);
+    } else {
+      bool1 = false;
     }
+    b(paramCanvas);
+    paramCanvas.restore();
+    if ((this.jdField_a_of_type_Boolean) || (bool1)) {
+      bool2 = true;
+    }
+    return bool2;
   }
   
   public RectF b(int paramInt)
   {
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.j - 0.0F, this.k - 0.0F - paramInt, this.j + this.l + 0.0F, 0.0F + (this.k + this.m) - paramInt);
+    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    float f1 = this.j;
+    float f2 = this.k;
+    float f3 = paramInt;
+    localRectF.set(f1 - 0.0F, f2 - 0.0F - f3, this.j + this.l + 0.0F, this.k + this.m + 0.0F - f3);
     return this.jdField_b_of_type_AndroidGraphicsRectF;
   }
   
@@ -131,27 +140,30 @@ public class ConversationActivePendantHolderBase
       return;
     }
     float f2 = (float)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long) * 1.0F / (float)this.jdField_b_of_type_Long;
-    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {}
-    for (float f1 = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f2);; f1 = f2)
+    Interpolator localInterpolator = this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+    float f1;
+    if (localInterpolator != null) {
+      f1 = localInterpolator.getInterpolation(f2);
+    } else {
+      f1 = f2;
+    }
+    int j = this.i;
+    a((int)(j + (this.h - j) * f1));
+    if (f2 > 0.99D)
     {
-      float f3 = this.i;
-      a((int)(f1 * (this.h - this.i) + f3));
-      if (f2 <= 0.99D) {
-        break;
-      }
-      switch (this.e)
+      j = this.e;
+      if (j != 1)
       {
-      case 2: 
-      default: 
-        a();
-        return;
-      case 1: 
-        this.e = 3;
-        e();
+        if (j != 3)
+        {
+          a();
+          return;
+        }
+        this.e = 2;
         return;
       }
-      this.e = 2;
-      return;
+      this.e = 3;
+      e();
     }
   }
   
@@ -180,7 +192,7 @@ public class ConversationActivePendantHolderBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ConversationActivePendantHolderBase
  * JD-Core Version:    0.7.0.1
  */

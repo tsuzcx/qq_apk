@@ -2,11 +2,11 @@ package com.tencent.mobileqq.mini.entry;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ListView;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -24,7 +24,7 @@ public class MiniAppEntrySettingFragment
   extends IphoneTitleBarFragment
 {
   private static final String TAG = "MiniAppEntrySettingFragment";
-  private FragmentActivity activity;
+  private BaseActivity activity;
   private BounceScrollView mSettingLayout;
   private ListView mSettingListView;
   private MiniAppEntrySettingFragment.SettingListViewAdapter mSettingListViewAdapter;
@@ -32,9 +32,10 @@ public class MiniAppEntrySettingFragment
   
   private void initData()
   {
-    if (this.activity != null)
+    Object localObject = this.activity;
+    if (localObject != null)
     {
-      Object localObject = this.activity.getAppInterface().getEntityManagerFactory().createEntityManager().query(MiniAppSettingSwitchInfoEntity.class, MiniAppSettingSwitchInfoEntity.class.getSimpleName(), false, null, null, null, null, null, null);
+      localObject = ((BaseActivity)localObject).getAppInterface().getEntityManagerFactory().createEntityManager().query(MiniAppSettingSwitchInfoEntity.class, MiniAppSettingSwitchInfoEntity.class.getSimpleName(), false, null, null, null, null, null, null);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
@@ -52,15 +53,16 @@ public class MiniAppEntrySettingFragment
   
   private void initUI(View paramView)
   {
-    this.mSettingLayout = ((BounceScrollView)paramView.findViewById(2131371479));
+    this.mSettingLayout = ((BounceScrollView)paramView.findViewById(2131371099));
     if (MiniAppUtils.isNightMode()) {
       this.mSettingLayout.setBackgroundColor(-16777216);
     }
-    this.mSettingListView = ((ListView)paramView.findViewById(2131371742));
+    this.mSettingListView = ((ListView)paramView.findViewById(2131371368));
     this.mSettingListViewAdapter = new MiniAppEntrySettingFragment.SettingListViewAdapter(this, paramView.getContext());
     this.mSettingListView.setAdapter(this.mSettingListViewAdapter);
-    if (this.activity != null) {
-      this.activity.runOnUiThread(new MiniAppEntrySettingFragment.1(this));
+    paramView = this.activity;
+    if (paramView != null) {
+      paramView.runOnUiThread(new MiniAppEntrySettingFragment.1(this));
     }
   }
   
@@ -69,101 +71,114 @@ public class MiniAppEntrySettingFragment
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 41	com/tencent/mobileqq/mini/entry/MiniAppEntrySettingFragment:activity	Landroid/support/v4/app/FragmentActivity;
-    //   4: ifnull +53 -> 57
-    //   7: aload_0
-    //   8: getfield 41	com/tencent/mobileqq/mini/entry/MiniAppEntrySettingFragment:activity	Landroid/support/v4/app/FragmentActivity;
-    //   11: getfield 198	android/support/v4/app/FragmentActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   14: astore_2
-    //   15: aload_1
-    //   16: ifnull +16 -> 32
-    //   19: aload_1
-    //   20: invokeinterface 102 1 0
-    //   25: ifeq +7 -> 32
-    //   28: aload_2
-    //   29: ifnonnull +29 -> 58
-    //   32: ldc 8
-    //   34: iconst_2
-    //   35: new 200	java/lang/StringBuilder
-    //   38: dup
-    //   39: invokespecial 201	java/lang/StringBuilder:<init>	()V
-    //   42: ldc 203
-    //   44: invokevirtual 207	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: aload_2
-    //   48: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   51: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   54: invokestatic 219	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   57: return
-    //   58: aload_2
-    //   59: invokevirtual 76	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
-    //   62: invokevirtual 82	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   65: astore_3
-    //   66: aload_3
-    //   67: ifnull -10 -> 57
-    //   70: aload_3
-    //   71: invokevirtual 223	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   74: astore_2
-    //   75: aload_2
-    //   76: invokevirtual 228	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   79: aload_1
-    //   80: invokeinterface 106 1 0
-    //   85: astore_1
-    //   86: aload_1
-    //   87: invokeinterface 112 1 0
-    //   92: ifeq +42 -> 134
-    //   95: aload_0
-    //   96: aload_3
-    //   97: aload_1
-    //   98: invokeinterface 116 1 0
-    //   103: checkcast 84	com/tencent/mobileqq/mini/entry/MiniAppSettingSwitchInfoEntity
-    //   106: invokespecial 57	com/tencent/mobileqq/mini/entry/MiniAppEntrySettingFragment:updateSwitchData	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   109: pop
-    //   110: goto -24 -> 86
-    //   113: astore_1
-    //   114: invokestatic 231	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   117: ifeq +12 -> 129
-    //   120: ldc 8
-    //   122: iconst_2
-    //   123: ldc 233
+    //   1: getfield 41	com/tencent/mobileqq/mini/entry/MiniAppEntrySettingFragment:activity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   4: astore_2
+    //   5: aload_2
+    //   6: ifnull +152 -> 158
+    //   9: aload_2
+    //   10: getfield 198	com/tencent/mobileqq/app/BaseActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   13: astore_2
+    //   14: aload_1
+    //   15: ifnull +112 -> 127
+    //   18: aload_1
+    //   19: invokeinterface 102 1 0
+    //   24: ifeq +103 -> 127
+    //   27: aload_2
+    //   28: ifnonnull +6 -> 34
+    //   31: goto +96 -> 127
+    //   34: aload_2
+    //   35: invokevirtual 76	com/tencent/common/app/AppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/EntityManagerFactory;
+    //   38: invokevirtual 82	com/tencent/mobileqq/persistence/EntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   41: astore_3
+    //   42: aload_3
+    //   43: ifnull +115 -> 158
+    //   46: aload_3
+    //   47: invokevirtual 202	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   50: astore_2
+    //   51: aload_2
+    //   52: invokevirtual 207	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   55: aload_1
+    //   56: invokeinterface 106 1 0
+    //   61: astore_1
+    //   62: aload_1
+    //   63: invokeinterface 112 1 0
+    //   68: ifeq +21 -> 89
+    //   71: aload_0
+    //   72: aload_3
+    //   73: aload_1
+    //   74: invokeinterface 116 1 0
+    //   79: checkcast 84	com/tencent/mobileqq/mini/entry/MiniAppSettingSwitchInfoEntity
+    //   82: invokespecial 57	com/tencent/mobileqq/mini/entry/MiniAppEntrySettingFragment:updateSwitchData	(Lcom/tencent/mobileqq/persistence/EntityManager;Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   85: pop
+    //   86: goto -24 -> 62
+    //   89: aload_2
+    //   90: invokevirtual 210	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   93: goto +23 -> 116
+    //   96: astore_1
+    //   97: goto +24 -> 121
+    //   100: astore_1
+    //   101: invokestatic 215	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   104: ifeq +12 -> 116
+    //   107: ldc 8
+    //   109: iconst_2
+    //   110: ldc 217
+    //   112: aload_1
+    //   113: invokestatic 221	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   116: aload_2
+    //   117: invokevirtual 224	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   120: return
+    //   121: aload_2
+    //   122: invokevirtual 224	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   125: aload_1
-    //   126: invokestatic 237	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   129: aload_2
-    //   130: invokevirtual 240	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   133: return
-    //   134: aload_2
-    //   135: invokevirtual 243	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   138: aload_2
-    //   139: invokevirtual 240	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   142: return
-    //   143: astore_1
-    //   144: aload_2
-    //   145: invokevirtual 240	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   148: aload_1
-    //   149: athrow
+    //   126: athrow
+    //   127: new 226	java/lang/StringBuilder
+    //   130: dup
+    //   131: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   134: astore_1
+    //   135: aload_1
+    //   136: ldc 229
+    //   138: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: pop
+    //   142: aload_1
+    //   143: aload_2
+    //   144: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   147: pop
+    //   148: ldc 8
+    //   150: iconst_2
+    //   151: aload_1
+    //   152: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   155: invokestatic 243	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   158: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	150	0	this	MiniAppEntrySettingFragment
-    //   0	150	1	paramList	List<MiniAppSettingSwitchInfoEntity>
-    //   14	131	2	localObject	Object
-    //   65	32	3	localEntityManager	EntityManager
+    //   0	159	0	this	MiniAppEntrySettingFragment
+    //   0	159	1	paramList	List<MiniAppSettingSwitchInfoEntity>
+    //   4	140	2	localObject	Object
+    //   41	32	3	localEntityManager	EntityManager
     // Exception table:
     //   from	to	target	type
-    //   79	86	113	java/lang/Exception
-    //   86	110	113	java/lang/Exception
-    //   134	138	113	java/lang/Exception
-    //   79	86	143	finally
-    //   86	110	143	finally
-    //   114	129	143	finally
-    //   134	138	143	finally
+    //   55	62	96	finally
+    //   62	86	96	finally
+    //   89	93	96	finally
+    //   101	116	96	finally
+    //   55	62	100	java/lang/Exception
+    //   62	86	100	java/lang/Exception
+    //   89	93	100	java/lang/Exception
   }
   
   private void updateDataToDB(MiniAppSettingSwitchInfoEntity paramMiniAppSettingSwitchInfoEntity)
   {
-    if ((paramMiniAppSettingSwitchInfoEntity == null) || (TextUtils.isEmpty(paramMiniAppSettingSwitchInfoEntity.key))) {
-      return;
+    if (paramMiniAppSettingSwitchInfoEntity != null)
+    {
+      if (TextUtils.isEmpty(paramMiniAppSettingSwitchInfoEntity.key)) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateDataToDB entity.key:");
+      localStringBuilder.append(paramMiniAppSettingSwitchInfoEntity.key);
+      QLog.e("MiniAppEntrySettingFragment", 2, localStringBuilder.toString());
+      ThreadManager.excute(new MiniAppEntrySettingFragment.4(this, paramMiniAppSettingSwitchInfoEntity), 32, null, true);
     }
-    QLog.e("MiniAppEntrySettingFragment", 2, "updateDataToDB entity.key:" + paramMiniAppSettingSwitchInfoEntity.key);
-    ThreadManager.excute(new MiniAppEntrySettingFragment.4(this, paramMiniAppSettingSwitchInfoEntity), 32, null, true);
   }
   
   private void updateLocalSwitchDataList(List<MiniAppSettingSwitchInfoEntity> paramList)
@@ -173,35 +188,37 @@ public class MiniAppEntrySettingFragment
   
   private boolean updateSwitchData(EntityManager paramEntityManager, Entity paramEntity)
   {
-    boolean bool2 = false;
+    boolean bool2 = paramEntityManager.isOpen();
     boolean bool1 = false;
-    if (paramEntityManager.isOpen()) {
+    if (bool2)
+    {
       if (paramEntity.getStatus() == 1000)
       {
         paramEntityManager.persistOrReplace(paramEntity);
         if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
-        paramEntityManager.close();
       }
-    }
-    do
-    {
+      else if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002))
+      {
+        bool1 = paramEntityManager.update(paramEntity);
+      }
+      paramEntityManager.close();
       return bool1;
-      if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
-        break;
-      }
-      bool1 = paramEntityManager.update(paramEntity);
-      break;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniAppEntrySettingFragment", 2, "updateEntity em closed e=" + paramEntity.getTableName());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramEntityManager = new StringBuilder();
+      paramEntityManager.append("updateEntity em closed e=");
+      paramEntityManager.append(paramEntity.getTableName());
+      QLog.d("MiniAppEntrySettingFragment", 2, paramEntityManager.toString());
+    }
     return false;
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131562536;
+    return 2131562372;
   }
   
   public void onAttach(Activity paramActivity)
@@ -218,15 +235,15 @@ public class MiniAppEntrySettingFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.activity = getActivity();
-    setTitle(HardCodeUtil.a(2131706817));
+    this.activity = getBaseActivity();
+    setTitle(HardCodeUtil.a(2131706839));
     initData();
     initUI(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntrySettingFragment
  * JD-Core Version:    0.7.0.1
  */

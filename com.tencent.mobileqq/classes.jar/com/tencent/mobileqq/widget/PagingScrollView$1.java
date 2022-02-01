@@ -18,8 +18,9 @@ class PagingScrollView$1
       int i = paramMotionEvent.getAction();
       if ((i == 1) || (i == 3))
       {
-        this.a.mIsOnSpecialView = false;
-        this.a.getParent().requestDisallowInterceptTouchEvent(false);
+        paramView = this.a;
+        paramView.mIsOnSpecialView = false;
+        paramView.getParent().requestDisallowInterceptTouchEvent(false);
         if (QLog.isDevelopLevel()) {
           QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
         }
@@ -30,7 +31,7 @@ class PagingScrollView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PagingScrollView.1
  * JD-Core Version:    0.7.0.1
  */

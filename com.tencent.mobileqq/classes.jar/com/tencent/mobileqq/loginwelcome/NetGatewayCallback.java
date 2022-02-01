@@ -32,20 +32,21 @@ public class NetGatewayCallback
   
   private boolean a()
   {
-    boolean bool = true;
     for (;;)
     {
       try
       {
-        if (GateWayVerifyManager.a()) {
+        boolean bool2 = GateWayVerifyManager.a();
+        bool1 = true;
+        if (bool2) {
           return true;
         }
         if (!this.jdField_a_of_type_AndroidNetNetwork.equals(GateWayVerifyManager.a().a())) {
-          return bool;
+          return bool1;
         }
       }
       finally {}
-      bool = false;
+      boolean bool1 = false;
     }
   }
   
@@ -93,7 +94,7 @@ public class NetGatewayCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.NetGatewayCallback
  * JD-Core Version:    0.7.0.1
  */

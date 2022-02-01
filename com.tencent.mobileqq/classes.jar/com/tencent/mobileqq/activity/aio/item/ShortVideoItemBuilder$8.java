@@ -14,20 +14,28 @@ class ShortVideoItemBuilder$8
   
   public void run()
   {
+    Object localObject = Calendar.getInstance();
     boolean bool = false;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
+    ((Calendar)localObject).set(11, 0);
+    ((Calendar)localObject).set(12, 0);
+    ((Calendar)localObject).set(13, 0);
+    ((Calendar)localObject).set(14, 0);
     SharedPreferences localSharedPreferences = this.this$0.a.getPreferences();
     long l1 = localSharedPreferences.getLong("key_check_temp", 0L);
-    long l2 = localCalendar.getTimeInMillis();
+    long l2 = ((Calendar)localObject).getTimeInMillis();
     if (l1 < l2) {
       bool = true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "TempCleanTask, lastCheck=" + l1 + ", today:" + l2 + ", needClean : " + bool);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("TempCleanTask, lastCheck=");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append(", today:");
+      ((StringBuilder)localObject).append(l2);
+      ((StringBuilder)localObject).append(", needClean : ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("ShortVideoItemBuilder", 2, ((StringBuilder)localObject).toString());
     }
     if (bool)
     {
@@ -38,7 +46,7 @@ class ShortVideoItemBuilder$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

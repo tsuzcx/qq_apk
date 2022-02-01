@@ -14,7 +14,7 @@ public class ScaleTextureFilter
   private float green = 0.0F;
   private float red = 0.0F;
   
-  public void onDraw(TAVTextureInfo paramTAVTextureInfo)
+  protected void onDraw(TAVTextureInfo paramTAVTextureInfo)
   {
     GLES20.glClearColor(this.red, this.green, this.blue, this.colorAlpha);
     GLES20.glClear(16384);

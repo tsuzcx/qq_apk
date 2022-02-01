@@ -1,115 +1,48 @@
 package com.huawei.hms.push;
 
+import android.annotation.SuppressLint;
+import android.app.AppOpsManager;
 import android.content.Context;
-import android.content.Intent;
-import com.huawei.hms.support.log.HMSLog;
+import android.content.pm.ApplicationInfo;
+import android.os.Build.VERSION;
+import com.huawei.hms.aaid.utils.PushPreferences;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class t
-  extends Thread
 {
-  private Context a;
-  private o b;
-  
-  public t(Context paramContext, o paramo)
+  public static boolean a(Context paramContext)
   {
-    this.a = paramContext;
-    this.b = paramo;
-  }
-  
-  private static Intent a(Context paramContext, o paramo)
-  {
-    if (paramo == null) {
-      return null;
+    if (new PushPreferences(paramContext, "push_notify_flag").getBoolean("notify_msg_enable")) {
+      return false;
     }
-    Intent localIntent1 = u.b(paramContext, paramo.m());
-    if (paramo.g() != null) {}
-    for (;;)
-    {
-      try
-      {
-        localObject = Intent.parseUri(paramo.g(), 0);
-        HMSLog.d("PushSelfShowLog", "Intent.parseUri(msg.intentUri, 0)，" + ((Intent)localObject).getAction());
-        boolean bool = u.a(paramContext, paramo.m(), (Intent)localObject).booleanValue();
-        if (!bool) {
-          break label172;
-        }
-        paramContext = (Context)localObject;
-        return paramContext;
-      }
-      catch (Exception paramContext)
-      {
-        HMSLog.w("PushSelfShowLog", "intentUri error" + paramContext.toString());
-        return localIntent1;
-      }
-      Object localObject = localIntent1;
-      if (paramo.n() != null)
-      {
-        Intent localIntent2 = new Intent(paramo.n());
-        localObject = localIntent1;
-        if (u.a(paramContext, paramo.m(), localIntent2).booleanValue()) {
-          localObject = localIntent2;
-        }
-      }
-      ((Intent)localObject).setPackage(paramo.m());
-      return localObject;
-      label172:
-      paramContext = localIntent1;
+    int i = Build.VERSION.SDK_INT;
+    if (i >= 24) {
+      return b(paramContext);
     }
-  }
-  
-  private boolean a(Context paramContext)
-  {
-    if ("cosa".equals(this.b.j())) {
+    if (i >= 19) {
       return b(paramContext);
     }
     return true;
   }
   
-  private boolean b(Context paramContext)
+  @SuppressLint({"NewApi", "InlinedApi"})
+  public static boolean b(Context paramContext)
   {
-    return u.c(paramContext, this.b.m());
-  }
-  
-  private boolean b(Context paramContext, o paramo)
-  {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if ("cosa".equals(paramo.j()))
-    {
-      paramo = a(paramContext, paramo);
-      bool1 = bool2;
-      if (paramo == null)
-      {
-        HMSLog.d("PushSelfShowLog", "launchCosaApp,intent == null");
-        bool1 = true;
-      }
-      if (!u.a(paramContext, paramo))
-      {
-        HMSLog.i("PushSelfShowLog", "no permission to start activity");
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public void run()
-  {
-    HMSLog.i("PushSelfShowLog", "enter run()");
+    AppOpsManager localAppOpsManager = (AppOpsManager)paramContext.getSystemService("appops");
+    Object localObject = paramContext.getApplicationInfo();
+    paramContext = paramContext.getApplicationContext().getPackageName();
+    int i = ((ApplicationInfo)localObject).uid;
     try
     {
-      if (a(this.a))
-      {
-        if (b(this.a, this.b)) {
-          return;
-        }
-        s.a(this.a, this.b);
-        return;
-      }
+      localObject = Class.forName(AppOpsManager.class.getName());
+      Method localMethod = ((Class)localObject).getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
+      i = ((Integer)localMethod.invoke(localAppOpsManager, new Object[] { Integer.valueOf(((Integer)((Class)localObject).getDeclaredField("OP_POST_NOTIFICATION").get(Integer.class)).intValue()), Integer.valueOf(i), paramContext })).intValue();
+      return i == 0;
     }
-    catch (Exception localException)
-    {
-      HMSLog.e("PushSelfShowLog", localException.toString());
-    }
+    catch (ClassNotFoundException|NoSuchMethodException|NoSuchFieldException|InvocationTargetException|IllegalAccessException|RuntimeException paramContext) {}
+    return true;
   }
 }
 

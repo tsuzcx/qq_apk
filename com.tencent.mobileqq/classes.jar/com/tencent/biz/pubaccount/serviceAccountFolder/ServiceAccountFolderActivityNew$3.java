@@ -2,6 +2,7 @@ package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.content.res.Resources;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
 import com.tencent.biz.qqstory.support.logging.SLog;
@@ -22,7 +23,8 @@ class ServiceAccountFolderActivityNew$3
     localObject = ((CertifiedAccountMeta.StUser)localObject).icon.get();
     if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl((String)localObject)))
     {
-      ServiceAccountFolderActivityNew.a(this.a).setImageResource(2130840738);
+      ServiceAccountFolderActivityNew.a(this.a).setContentDescription(this.a.getResources().getString(2131719361));
+      ServiceAccountFolderActivityNew.a(this.a).setImageResource(2130840613);
       ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new ServiceAccountFolderActivityNew.3.1(this, paramStGetMainPageRsp));
     }
   }
@@ -39,14 +41,21 @@ class ServiceAccountFolderActivityNew$3
         ServiceAccountFolderActivityNew.a(this.a);
         ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
       }
-      return;
     }
-    SLog.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
+    else
+    {
+      paramBaseRequest = new StringBuilder();
+      paramBaseRequest.append("sendRequest GetMainPage error retCode:");
+      paramBaseRequest.append(paramLong);
+      paramBaseRequest.append(",errMsg:");
+      paramBaseRequest.append(paramString);
+      SLog.c("ServiceAccountFolderActivityNew", paramBaseRequest.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew.3
  * JD-Core Version:    0.7.0.1
  */

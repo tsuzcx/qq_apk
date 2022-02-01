@@ -13,14 +13,16 @@ class ConversationActivePendantHolderBase$1
   {
     this.a.b = paramFloat1.floatValue();
     this.a.jdField_a_of_type_Float = (1.1F - (paramFloat1.floatValue() - 1.0F));
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.a((int)(this.a.d * paramFloat1.floatValue()));
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      paramValueAnimation = this.a;
+      paramValueAnimation.a((int)(paramValueAnimation.d * paramFloat1.floatValue()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ConversationActivePendantHolderBase.1
  * JD-Core Version:    0.7.0.1
  */

@@ -68,30 +68,35 @@ public final class tPullADVRequest
   {
     paramJceOutputStream.write(this.l_user, 0);
     paramJceOutputStream.write(this.vec_req_app, 1);
-    if (this.s_req_source != null) {
-      paramJceOutputStream.write(this.s_req_source, 2);
+    Object localObject = this.s_req_source;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.s_phone_qua != null) {
-      paramJceOutputStream.write(this.s_phone_qua, 3);
+    localObject = this.s_phone_qua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.pull_as_expose_oper, 4);
-    if (this.ip_from_pc_user != null) {
-      paramJceOutputStream.write(this.ip_from_pc_user, 5);
+    localObject = this.ip_from_pc_user;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.request_from, 6);
-    if (this.ext_user_info != null) {
-      paramJceOutputStream.write(this.ext_user_info, 7);
+    localObject = this.ext_user_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
     paramJceOutputStream.write(this.i_need_expose_time, 8);
     paramJceOutputStream.write(this.i_req_flag, 9);
-    if (this.idfa != null) {
-      paramJceOutputStream.write(this.idfa, 10);
+    localObject = this.idfa;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     BOSSStrategyCenter.tPullADVRequest
  * JD-Core Version:    0.7.0.1
  */

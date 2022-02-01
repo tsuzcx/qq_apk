@@ -15,9 +15,10 @@ public class HippySettableFuture<T>
   
   private void checkNotSet()
   {
-    if (this.mReadyLatch.getCount() == 0L) {
-      throw new RuntimeException("Result has already been set!");
+    if (this.mReadyLatch.getCount() != 0L) {
+      return;
     }
+    throw new RuntimeException("Result has already been set!");
   }
   
   public boolean cancel(boolean paramBoolean)
@@ -28,21 +29,24 @@ public class HippySettableFuture<T>
   public T get()
   {
     this.mReadyLatch.await();
-    if (this.mException != null) {
-      throw new ExecutionException(this.mException);
+    Exception localException = this.mException;
+    if (localException == null) {
+      return this.mResult;
     }
-    return this.mResult;
+    throw new ExecutionException(localException);
   }
   
   public T get(long paramLong, TimeUnit paramTimeUnit)
   {
-    if (!this.mReadyLatch.await(paramLong, paramTimeUnit)) {
-      throw new TimeoutException("Timed out waiting for result");
+    if (this.mReadyLatch.await(paramLong, paramTimeUnit))
+    {
+      paramTimeUnit = this.mException;
+      if (paramTimeUnit == null) {
+        return this.mResult;
+      }
+      throw new ExecutionException(paramTimeUnit);
     }
-    if (this.mException != null) {
-      throw new ExecutionException(this.mException);
-    }
-    return this.mResult;
+    throw new TimeoutException("Timed out waiting for result");
   }
   
   public boolean isCancelled()
@@ -71,7 +75,7 @@ public class HippySettableFuture<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.HippySettableFuture
  * JD-Core Version:    0.7.0.1
  */

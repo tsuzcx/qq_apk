@@ -25,23 +25,18 @@ public class f
     {
       int i = paramMotionEvent.getActionIndex();
       c.a().a(this.a, paramMotionEvent.getAction(), paramMotionEvent.getPointerId(i), paramMotionEvent.getDownTime(), paramMotionEvent.getEventTime(), paramMotionEvent.getX(i), paramMotionEvent.getY(i), paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
-      if ((this.b != null) && (this.b.onTouchEvent(paramMotionEvent))) {
-        return true;
-      }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
-    return false;
+    TouchDelegate localTouchDelegate = this.b;
+    return (localTouchDelegate != null) && (localTouchDelegate.onTouchEvent(paramMotionEvent));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.f.f
  * JD-Core Version:    0.7.0.1
  */

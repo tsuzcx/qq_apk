@@ -14,8 +14,9 @@ final class PhoneNumQuickLoginManager$7
   public void onClick(View paramView)
   {
     QLog.d("PhoneNumQuickLoginManager", 1, "setQuickLoginView self btn click");
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramView);
     }
     this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(null);
     this.jdField_a_of_type_AndroidAppDialog.dismiss();
@@ -24,7 +25,7 @@ final class PhoneNumQuickLoginManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.7
  * JD-Core Version:    0.7.0.1
  */

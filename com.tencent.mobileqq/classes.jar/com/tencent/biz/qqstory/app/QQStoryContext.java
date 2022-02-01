@@ -3,10 +3,12 @@ package com.tencent.biz.qqstory.app;
 import android.annotation.TargetApi;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.base.StoryBoss;
 import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
 import com.tencent.biz.qqstory.database.QQStoryEntityManagerFactory;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.support.logging.QQStoryLoggingDelegate;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -15,8 +17,9 @@ import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tribe.async.async.Bosses;
 import java.io.File;
 import mqq.app.AppRuntime;
 
@@ -36,7 +39,10 @@ public class QQStoryContext
   
   static
   {
-    jdField_a_of_type_JavaLangString = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append("/testEnv/");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     jdField_b_of_type_JavaLangString = "testserver";
     c = "last_env";
     jdField_a_of_type_Boolean = true;
@@ -45,15 +51,15 @@ public class QQStoryContext
   
   public static QQStoryContext a()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {
       return ((QQStoryManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.QQSTORY_MANAGER)).a;
     }
-    if ((localAppRuntime instanceof ToolAppRuntime))
+    if ((localObject instanceof ToolAppRuntime))
     {
-      localAppRuntime = ((ToolAppRuntime)localAppRuntime).onGetSubRuntime("peak");
-      ((PeakAppInterface)localAppRuntime).a();
-      return ((PeakAppInterface)localAppRuntime).a();
+      localObject = (PeakAppInterface)((ToolAppRuntime)localObject).onGetSubRuntime("peak");
+      ((PeakAppInterface)localObject).a();
+      return ((PeakAppInterface)localObject).a();
     }
     return ((PeakAppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak")).a();
   }
@@ -96,20 +102,20 @@ public class QQStoryContext
   public EntityManagerFactory a()
   {
     Object localObject1 = a();
-    if (localObject1 == null) {
-      throw new IllegalStateException("Can not create a entity factory, the account is null.");
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null)
+    if (localObject1 != null) {
+      try
       {
-        localObject1 = new QQStoryEntityManagerFactory((String)localObject1);
-        ((QQStoryEntityManagerFactory)localObject1).verifyAuthentication();
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = ((EntityManagerFactory)localObject1);
+        if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null)
+        {
+          localObject1 = new QQStoryEntityManagerFactory((String)localObject1);
+          ((QQStoryEntityManagerFactory)localObject1).verifyAuthentication();
+          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = ((EntityManagerFactory)localObject1);
+        }
+        return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
       }
-      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
+      finally {}
     }
-    finally {}
+    throw new IllegalStateException("Can not create a entity factory, the account is null.");
   }
   
   public String a()
@@ -117,60 +123,30 @@ public class QQStoryContext
     return a().getAccount();
   }
   
-  /* Error */
   public void a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 137	com/tencent/biz/qqstory/app/QQStoryContext:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   6: ifnonnull +65 -> 71
-    //   9: iconst_1
-    //   10: istore_1
-    //   11: iload_1
-    //   12: putstatic 61	com/tencent/biz/qqstory/app/QQStoryContext:jdField_a_of_type_Boolean	Z
-    //   15: invokestatic 76	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   18: putstatic 137	com/tencent/biz/qqstory/app/QQStoryContext:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   21: getstatic 61	com/tencent/biz/qqstory/app/QQStoryContext:jdField_a_of_type_Boolean	Z
-    //   24: ifeq +25 -> 49
-    //   27: getstatic 137	com/tencent/biz/qqstory/app/QQStoryContext:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   30: new 160	com/tencent/biz/qqstory/base/StoryBoss
-    //   33: dup
-    //   34: getstatic 137	com/tencent/biz/qqstory/app/QQStoryContext:jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   37: invokespecial 163	com/tencent/biz/qqstory/base/StoryBoss:<init>	(Landroid/content/Context;)V
-    //   40: invokestatic 169	com/tribe/async/async/Bosses:initWithBoss	(Landroid/content/Context;Lcom/tribe/async/async/Boss;)V
-    //   43: invokestatic 174	com/tencent/biz/qqstory/support/logging/QQStoryLoggingDelegate:a	()Lcom/tencent/biz/qqstory/support/logging/QQStoryLoggingDelegate;
-    //   46: invokestatic 179	com/tencent/biz/qqstory/support/logging/SLog:a	(Lcom/tencent/biz/qqstory/support/logging/LoggingDelegate;)V
-    //   49: ldc 2
-    //   51: monitorexit
-    //   52: ldc 181
-    //   54: ldc 183
-    //   56: invokestatic 186	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   59: aload_0
-    //   60: new 188	com/tencent/biz/qqstory/channel/QQStoryCmdHandler
-    //   63: dup
-    //   64: invokespecial 189	com/tencent/biz/qqstory/channel/QQStoryCmdHandler:<init>	()V
-    //   67: putfield 135	com/tencent/biz/qqstory/app/QQStoryContext:jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler	Lcom/tencent/biz/qqstory/channel/QQStoryCmdHandler;
-    //   70: return
-    //   71: iconst_0
-    //   72: istore_1
-    //   73: goto -62 -> 11
-    //   76: astore_2
-    //   77: ldc 2
-    //   79: monitorexit
-    //   80: aload_2
-    //   81: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	82	0	this	QQStoryContext
-    //   10	63	1	bool	boolean
-    //   76	5	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	9	76	finally
-    //   11	49	76	finally
-    //   49	52	76	finally
-    //   77	80	76	finally
+    for (;;)
+    {
+      try
+      {
+        if (jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl == null)
+        {
+          bool = true;
+          jdField_a_of_type_Boolean = bool;
+          jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
+          if (jdField_a_of_type_Boolean)
+          {
+            Bosses.initWithBoss(jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl, new StoryBoss(jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl));
+            SLog.a(QQStoryLoggingDelegate.a());
+          }
+          SLog.b("Q.qqstory.user.QQStoryRuntime", "on create");
+          this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler = new QQStoryCmdHandler();
+          return;
+        }
+      }
+      finally {}
+      boolean bool = false;
+    }
   }
   
   public void a(String paramString)
@@ -214,16 +190,17 @@ public class QQStoryContext
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext$StoryBroadcastReceiver != null)
+    QQStoryContext.StoryBroadcastReceiver localStoryBroadcastReceiver = this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext$StoryBroadcastReceiver;
+    if (localStoryBroadcastReceiver != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext$StoryBroadcastReceiver.b(jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl);
+      localStoryBroadcastReceiver.b(jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl);
       this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext$StoryBroadcastReceiver = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.app.QQStoryContext
  * JD-Core Version:    0.7.0.1
  */

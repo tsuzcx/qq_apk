@@ -24,19 +24,27 @@ class ScreenShareCtrl$ScreenShareListener
   @TargetApi(21)
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVShare", 2, "onMediaProjectionEnd fromType:=" + paramInt);
-    }
-    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl == null) {}
-    while (paramInt != 2) {
-      return;
-    }
-    if (localScreenShareCtrl.a(2) == 1) {}
-    for (paramInt = 2;; paramInt = 3)
+    boolean bool = QLog.isColorLevel();
+    int i = 2;
+    if (bool)
     {
-      ScreenShareCtrl.a(paramInt);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onMediaProjectionEnd fromType:=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("AVShare", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localObject == null) {
       return;
+    }
+    if (paramInt == 2)
+    {
+      if (((ScreenShareCtrl)localObject).a(2) == 1) {
+        paramInt = i;
+      } else {
+        paramInt = 3;
+      }
+      ScreenShareCtrl.a(paramInt);
     }
   }
   
@@ -54,20 +62,20 @@ class ScreenShareCtrl$ScreenShareListener
   public void a(RecordParam paramRecordParam, int paramInt1, int paramInt2)
   {
     ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localScreenShareCtrl == null) {}
-    do
-    {
+    if (localScreenShareCtrl == null) {
       return;
-      localScreenShareCtrl.a(paramRecordParam, paramInt1, paramInt2);
-      if (localScreenShareCtrl.a(1) == 1)
-      {
-        ScreenShareCtrl.a(4);
-        return;
-      }
-      ScreenShareCtrl.a(6);
-      paramRecordParam = VideoController.a().a();
-    } while (paramRecordParam == null);
-    paramRecordParam.a(1);
+    }
+    localScreenShareCtrl.a(paramRecordParam, paramInt1, paramInt2);
+    if (localScreenShareCtrl.a(1) == 1)
+    {
+      ScreenShareCtrl.a(4);
+      return;
+    }
+    ScreenShareCtrl.a(6);
+    paramRecordParam = VideoController.a().a();
+    if (paramRecordParam != null) {
+      paramRecordParam.a(1);
+    }
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, RecordParam paramRecordParam)
@@ -81,14 +89,18 @@ class ScreenShareCtrl$ScreenShareListener
   
   public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVShare", 2, "onMediaProjectionReady errorReason:=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMediaProjectionReady errorReason:=");
+      localStringBuilder.append(paramInt);
+      QLog.i("AVShare", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.screenshare.ScreenShareCtrl.ScreenShareListener
  * JD-Core Version:    0.7.0.1
  */

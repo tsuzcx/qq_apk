@@ -22,13 +22,14 @@ public final class intchk$CheckResult
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_check_item_id", "uint32_check_type", "uint32_memchk_result", "bytes_memreport_result" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, CheckResult.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_check_item_id", "uint32_check_type", "uint32_memchk_result", "bytes_memreport_result" }, new Object[] { localInteger, localInteger, localInteger, localByteStringMicro }, CheckResult.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.intchk.CheckResult
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,15 @@ class VideoController$19
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentAvUtilsTraeHelper.b(this.a);
-    TraeHelper localTraeHelper = this.this$0.jdField_a_of_type_ComTencentAvUtilsTraeHelper;
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvUtilsTraeHelper;
     TraeHelper.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    this.this$0.b(this.this$0.a().d, 50);
+    localObject = this.this$0;
+    ((VideoController)localObject).b(((VideoController)localObject).a().c, 50);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.19
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.presenter.BrowserBasePresenter;
 
 public class ImmersionHelper
 {
@@ -30,89 +31,113 @@ public class ImmersionHelper
   
   private int a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.getSelectedItem();
-    if ((localObject == null) || (((RichMediaBrowserInfo)localObject).baseData == null)) {
-      return -1;
-    }
-    if ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOFilePictureData)) {
-      return 2;
-    }
-    if ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOPictureData))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedItem();
+    int j = -1;
+    int i = j;
+    if (localObject != null)
     {
-      if (!((AIOPictureData)((RichMediaBrowserInfo)localObject).baseData).k) {
-        return 1;
+      if (((RichMediaBrowserInfo)localObject).baseData == null) {
+        return -1;
       }
-      return 5;
-    }
-    if ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOVideoData))
-    {
-      localObject = (AIOVideoData)((RichMediaBrowserInfo)localObject).baseData;
-      if (((AIOVideoData)localObject).d == 0) {
-        return 4;
+      if ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOFilePictureData)) {
+        return 2;
       }
-      if (((AIOVideoData)localObject).d == 1) {
-        return 3;
+      if ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOPictureData))
+      {
+        if (!((AIOPictureData)((RichMediaBrowserInfo)localObject).baseData).i) {
+          return 1;
+        }
       }
+      else
+      {
+        if ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOVideoData))
+        {
+          localObject = (AIOVideoData)((RichMediaBrowserInfo)localObject).baseData;
+          if (((AIOVideoData)localObject).d == 0) {
+            return 4;
+          }
+          i = j;
+          if (((AIOVideoData)localObject).d != 1) {
+            return i;
+          }
+          return 3;
+        }
+        i = j;
+        if (!(((RichMediaBrowserInfo)localObject).baseData instanceof AIOFileVideoData)) {
+          return i;
+        }
+      }
+      i = 5;
     }
-    else if ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOFileVideoData))
-    {
-      return 5;
-    }
-    return -1;
+    return i;
   }
   
   private int a(String paramString)
   {
-    int k = 1;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.getSelectedItem();
-    if ((localObject == null) || (((RichMediaBrowserInfo)localObject).baseData == null)) {}
-    label89:
-    label106:
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedItem();
+    int k = -1;
+    int j = k;
+    if (localObject != null)
     {
-      return -1;
+      if (((RichMediaBrowserInfo)localObject).baseData == null) {
+        return -1;
+      }
       if ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOVideoData))
       {
-        int j;
         int i;
-        if (("0X800A99B".equals(paramString)) || ("0X800A9B5".equals(paramString)))
+        if ((!"0X800A99B".equals(paramString)) && (!"0X800A9B5".equals(paramString))) {
+          i = 0;
+        } else {
+          i = 1;
+        }
+        localObject = (AIOVideoData)((RichMediaBrowserInfo)localObject).baseData;
+        if (((AIOVideoData)localObject).d == 0)
         {
-          j = 1;
-          localObject = (AIOVideoData)((RichMediaBrowserInfo)localObject).baseData;
-          if (((AIOVideoData)localObject).d != 0) {
-            break label106;
+          if (i != 0) {
+            return 2;
           }
-          if (j == 0) {
-            break label89;
+          j = k;
+          if (!"0X8009AA6".equals(paramString)) {
+            return j;
           }
-          i = 2;
+        }
+        else
+        {
+          j = k;
+          if (((AIOVideoData)localObject).d != 1) {
+            return j;
+          }
+          if (i == 0) {
+            break label129;
+          }
         }
         for (;;)
         {
-          return i;
-          j = 0;
-          break;
-          i = k;
-          if (!"0X8009AA6".equals(paramString))
-          {
-            do
-            {
-              do
-              {
-                i = -1;
-                break;
-              } while (((AIOVideoData)localObject).d != 1);
-              i = k;
-              if (j != 0) {
-                break;
-              }
-            } while (!"0X8009AA6".equals(paramString));
-            i = k;
+          return 1;
+          label129:
+          j = k;
+          if (!"0X8009AA6".equals(paramString)) {
+            break;
           }
         }
       }
-    } while ((!(((RichMediaBrowserInfo)localObject).baseData instanceof AIOFileVideoData)) || ((!"0X800A99B".equals(paramString)) && (!"0X800A9B5".equals(paramString))));
-    return 3;
+      else
+      {
+        j = k;
+        if ((((RichMediaBrowserInfo)localObject).baseData instanceof AIOFileVideoData)) {
+          if (!"0X800A99B".equals(paramString))
+          {
+            j = k;
+            if (!"0X800A9B5".equals(paramString)) {}
+          }
+          else
+          {
+            j = 3;
+          }
+        }
+      }
+    }
+    return j;
   }
   
   public void a()
@@ -132,15 +157,16 @@ public class ImmersionHelper
   public void b()
   {
     BrowserLogHelper.getInstance().getGalleryLog().d("ImmersionHelper", 2, "removeImmersionTimer");
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper$ImmersionTimerRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper$ImmersionTimerRunnable);
+    ImmersionHelper.ImmersionTimerRunnable localImmersionTimerRunnable = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper$ImmersionTimerRunnable;
+    if (localImmersionTimerRunnable != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localImmersionTimerRunnable);
     }
     this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserImmersionHelper$ImmersionTimerRunnable = null;
   }
   
   public void c()
   {
-    this.b = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.a.a();
+    this.b = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOBrowserBaseView.a();
     this.c = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.d();
   }
   
@@ -153,22 +179,27 @@ public class ImmersionHelper
   public void e()
   {
     int i = a("0X800A9B5");
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.c()) {}
-    for (String str = "1";; str = "2")
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800A9B5", "0X800A9B5", i, 0, str, "", "", "");
-      return;
+    String str;
+    if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserBasePresenter.c()) {
+      str = "1";
+    } else {
+      str = "2";
     }
+    ReportController.b(null, "dc00898", "", "", "0X800A9B5", "0X800A9B5", i, 0, str, "", "", "");
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 2;; i = 1)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800A99B", "0X800A99B", i, 0, "" + a("0X800A99B"), "", "", "");
-      return;
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      i = 2;
+    } else {
+      i = 1;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(a("0X800A99B"));
+    ReportController.b(null, "dc00898", "", "", "0X800A99B", "0X800A99B", i, 0, localStringBuilder.toString(), "", "", "");
   }
   
   public void g()
@@ -178,7 +209,7 @@ public class ImmersionHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.ImmersionHelper
  * JD-Core Version:    0.7.0.1
  */

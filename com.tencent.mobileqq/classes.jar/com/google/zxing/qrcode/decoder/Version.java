@@ -11,16 +11,15 @@ public final class Version
   {
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ArrayOfComGoogleZxingQrcodeDecoderVersion$ECBlocks = paramVarArgs;
-    int k = paramVarArgs[0].a();
+    paramInt = 0;
+    int j = paramVarArgs[0].a();
     paramArrayOfInt = paramVarArgs[0].a();
-    int m = paramArrayOfInt.length;
+    int k = paramArrayOfInt.length;
     int i = 0;
-    paramInt = j;
-    while (paramInt < m)
+    while (paramInt < k)
     {
       paramVarArgs = paramArrayOfInt[paramInt];
-      j = paramVarArgs.a();
-      i += (paramVarArgs.b() + k) * j;
+      i += paramVarArgs.a() * (paramVarArgs.b() + j);
       paramInt += 1;
     }
     this.b = i;
@@ -28,10 +27,10 @@ public final class Version
   
   public static Version a(int paramInt)
   {
-    if ((paramInt < 1) || (paramInt > 40)) {
-      throw new IllegalArgumentException();
+    if ((paramInt >= 1) && (paramInt <= 40)) {
+      return jdField_a_of_type_ArrayOfComGoogleZxingQrcodeDecoderVersion[(paramInt - 1)];
     }
-    return jdField_a_of_type_ArrayOfComGoogleZxingQrcodeDecoderVersion[(paramInt - 1)];
+    throw new IllegalArgumentException();
   }
   
   private static Version[] a()

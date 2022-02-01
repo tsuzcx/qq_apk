@@ -15,23 +15,29 @@ final class ei$5
       Object localObject = this.a.newInstance(null);
       return localObject;
     }
-    catch (InstantiationException localInstantiationException)
-    {
-      throw new RuntimeException("Failed to invoke " + this.a + " with no args", localInstantiationException);
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      throw new RuntimeException("Failed to invoke " + this.a + " with no args", localInvocationTargetException.getTargetException());
-    }
     catch (IllegalAccessException localIllegalAccessException)
     {
       throw new AssertionError(localIllegalAccessException);
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      localStringBuilder = new StringBuilder("Failed to invoke ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(" with no args");
+      throw new RuntimeException(localStringBuilder.toString(), localInvocationTargetException.getTargetException());
+    }
+    catch (InstantiationException localInstantiationException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("Failed to invoke ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(" with no args");
+      throw new RuntimeException(localStringBuilder.toString(), localInstantiationException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ei.5
  * JD-Core Version:    0.7.0.1
  */

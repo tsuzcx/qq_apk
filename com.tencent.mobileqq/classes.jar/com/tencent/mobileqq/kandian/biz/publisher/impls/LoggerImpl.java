@@ -17,8 +17,12 @@ public final class LoggerImpl
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a + paramString1, 0, paramString2, (Exception)paramThrowable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(paramString1);
+      QLog.d(localStringBuilder.toString(), 0, paramString2, (Exception)paramThrowable);
     }
   }
   
@@ -26,15 +30,22 @@ public final class LoggerImpl
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    QLog.e(this.a + paramString1, 1, paramString2, (Exception)paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(paramString1);
+    QLog.e(localStringBuilder.toString(), 1, paramString2, (Exception)paramThrowable);
   }
   
   public void c(@NotNull String paramString1, @NotNull String paramString2, @Nullable Throwable paramThrowable)
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    if (QLog.isColorLevel()) {
-      QLog.i(this.a + paramString1, 0, paramString2, (Exception)paramThrowable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(paramString1);
+      QLog.i(localStringBuilder.toString(), 0, paramString2, (Exception)paramThrowable);
     }
   }
   
@@ -42,14 +53,18 @@ public final class LoggerImpl
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "tag");
     Intrinsics.checkParameterIsNotNull(paramString2, "msg");
-    if (QLog.isColorLevel()) {
-      QLog.w(this.a + paramString1, 0, paramString2, (Exception)paramThrowable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(paramString1);
+      QLog.w(localStringBuilder.toString(), 0, paramString2, (Exception)paramThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.LoggerImpl
  * JD-Core Version:    0.7.0.1
  */

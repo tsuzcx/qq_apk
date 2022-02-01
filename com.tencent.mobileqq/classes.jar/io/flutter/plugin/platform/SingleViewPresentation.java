@@ -83,7 +83,8 @@ class SingleViewPresentation
     if (SingleViewPresentation.PresentationState.access$100(this.state) == null)
     {
       paramBundle = (WindowManager)getContext().getSystemService("window");
-      SingleViewPresentation.PresentationState.access$102(this.state, new SingleViewPresentation.WindowManagerHandler(paramBundle, SingleViewPresentation.PresentationState.access$000(this.state)));
+      SingleViewPresentation.PresentationState localPresentationState = this.state;
+      SingleViewPresentation.PresentationState.access$102(localPresentationState, new SingleViewPresentation.WindowManagerHandler(paramBundle, SingleViewPresentation.PresentationState.access$000(localPresentationState)));
     }
     this.container = new FrameLayout(getContext());
     paramBundle = new SingleViewPresentation.PresentationContext(getContext(), SingleViewPresentation.PresentationState.access$100(this.state), this.outerContext);
@@ -99,18 +100,15 @@ class SingleViewPresentation
     this.rootView.setFocusableInTouchMode(true);
     if (this.startFocused) {
       paramBundle.requestFocus();
-    }
-    for (;;)
-    {
-      setContentView(this.rootView);
-      return;
+    } else {
       this.rootView.requestFocus();
     }
+    setContentView(this.rootView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation
  * JD-Core Version:    0.7.0.1
  */

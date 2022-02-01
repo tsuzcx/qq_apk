@@ -12,23 +12,19 @@ final class i
     try
     {
       Thread.sleep(180000L);
-      MsfStore.getNativeConfigStore().removeConfig("LOGLEVEL_");
-      MsfStore.getNativeConfigStore().removeConfig("LOGLEVELTIME");
-      QLog.d(b.f, 1, "LogLevel and time has removed");
-      return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+      localInterruptedException.printStackTrace();
     }
+    MsfStore.getNativeConfigStore().removeConfig("LOGLEVEL_");
+    MsfStore.getNativeConfigStore().removeConfig("LOGLEVELTIME");
+    QLog.d(b.f, 1, "LogLevel and time has removed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.a.i
  * JD-Core Version:    0.7.0.1
  */

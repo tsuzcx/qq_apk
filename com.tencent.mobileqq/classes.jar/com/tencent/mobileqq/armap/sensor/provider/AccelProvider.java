@@ -71,20 +71,24 @@ public class AccelProvider
       System.arraycopy(this.d, 0, this.e, 0, 3);
       this.jdField_a_of_type_Boolean = true;
       SensorUtil.a(SensorUtil.a(this.d), this.f);
-      if (this.jdField_a_of_type_Int != 1) {
+      if (this.jdField_a_of_type_Int != 1)
+      {
         super.a(this.f);
+        return;
       }
+      paramSensorEvent = this.d;
+      double d1 = paramSensorEvent[1] * 180.0F;
+      Double.isNaN(d1);
+      f1 = (float)(d1 / 3.141592653589793D);
+      d1 = paramSensorEvent[2] * 180.0F;
+      Double.isNaN(d1);
+      a(0.0F, f1, (float)(d1 / 3.141592653589793D));
     }
-    else
-    {
-      return;
-    }
-    a(0.0F, (float)(this.d[1] * 180.0F / 3.141592653589793D), (float)(this.d[2] * 180.0F / 3.141592653589793D));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.AccelProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -26,17 +26,22 @@ public class WSTabUtils
     if (WeishiUtils.c()) {
       return;
     }
-    if ((paramstTabInfo == null) || (paramContext == null))
+    if ((paramstTabInfo != null) && (paramContext != null))
     {
-      WSLog.d("WSTabUtils", "[WSTabUtils.java][tabImgBtnClick] context or tabInfo is null !!! context:" + paramContext + ", tabInfo:" + paramstTabInfo);
+      new WSStSchemaJumpManager(paramContext).a(paramstTabInfo.schema).a(true).a(a(paramstTabInfo.schema.schema)).a(new WSTabUtils.1(paramInt, paramBoolean)).c();
       return;
     }
-    new WSStSchemaJumpManager(paramContext).a(paramstTabInfo.schema).a(true).a(a(paramstTabInfo.schema.schema)).a(new WSTabUtils.1(paramInt, paramBoolean)).a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSTabUtils.java][tabImgBtnClick] context or tabInfo is null !!! context:");
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(", tabInfo:");
+    localStringBuilder.append(paramstTabInfo);
+    WSLog.d("WSTabUtils", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabUtils
  * JD-Core Version:    0.7.0.1
  */

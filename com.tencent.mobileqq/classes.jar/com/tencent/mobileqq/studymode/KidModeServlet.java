@@ -31,6 +31,7 @@ import tencent.im.oidb.cmd0xed2.oidb_0xed2.RspBody;
 import tencent.im.oidb.oidb_0x87a.ReqBody;
 import tencent.im.oidb.oidb_0x87a.RspBody;
 import tencent.im.oidb.oidb_0x87c.ReqBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class KidModeServlet
@@ -58,15 +59,15 @@ public class KidModeServlet
   
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle)
   {
+    boolean bool3 = paramFromServiceMsg.isSuccess();
     boolean bool2 = false;
     boolean bool1 = false;
-    int i;
-    if (paramFromServiceMsg.isSuccess())
+    if (bool3)
     {
       paramFromServiceMsg = a(paramFromServiceMsg);
       if (paramFromServiceMsg != null)
       {
-        i = paramFromServiceMsg.uint32_result.get();
+        int i = paramFromServiceMsg.uint32_result.get();
         if (i == 0)
         {
           i = paramBundle.getInt("advance_setting_field");
@@ -80,26 +81,33 @@ public class KidModeServlet
           }
           bool1 = true;
         }
+        else
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("respSendSetKidMode, oidb result: ");
+          paramFromServiceMsg.append(i);
+          QLog.d("KidModeServlet", 1, paramFromServiceMsg.toString());
+          bool1 = bool2;
+        }
+      }
+      else
+      {
+        QLog.d("KidModeServlet", 1, "ssoPkg == null");
+        bool1 = bool2;
       }
     }
-    for (;;)
+    else
     {
-      notifyObserver(paramIntent, 1, bool1, paramBundle, KidModeObserver.class);
-      return;
-      QLog.d("KidModeServlet", 1, "respSendSetKidMode, oidb result: " + i);
-      bool1 = bool2;
-      continue;
-      QLog.d("KidModeServlet", 1, "ssoPkg == null");
-      bool1 = bool2;
-      continue;
       QLog.d("KidModeServlet", 1, "respSendSetKidMode fail");
       bool1 = false;
     }
+    notifyObserver(paramIntent, 1, bool1, paramBundle, KidModeObserver.class);
   }
   
   private void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
     boolean bool3 = false;
+    boolean bool4 = false;
     boolean bool2 = false;
     for (;;)
     {
@@ -107,86 +115,94 @@ public class KidModeServlet
       {
         if ((paramFromServiceMsg.isSuccess()) && (paramOIDBSSOPkg != null))
         {
-          i = ((oidb_sso.OIDBSSOPkg)paramOIDBSSOPkg.get()).uint32_result.get();
+          int i = ((oidb_sso.OIDBSSOPkg)paramOIDBSSOPkg.get()).uint32_result.get();
           if (i == 0)
           {
             paramFromServiceMsg = new oidb_0x5eb.RspBody();
             paramFromServiceMsg.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
             bool1 = paramFromServiceMsg.rpt_msg_uin_data.has();
-            if (!bool1) {}
+            if (bool1)
+            {
+              try
+              {
+                paramFromServiceMsg = (oidb_0x5eb.UdcUinData)paramFromServiceMsg.rpt_msg_uin_data.get(0);
+                i = paramFromServiceMsg.uint32_flag_study_mode_switch.get();
+                int j = paramFromServiceMsg.uint32_flag_kid_mode_switch.get();
+                int k = paramFromServiceMsg.uint32_flag_kid_mode_need_phone_verify.get();
+                int m = paramFromServiceMsg.uint32_flag_kid_mode_can_search_friends.get();
+                int n = paramFromServiceMsg.uint32_flag_kid_mode_can_pull_group.get();
+                int i1 = paramFromServiceMsg.uint32_flag_kid_mode_can_search_by_strangers.get();
+                paramBundle.putInt("SIMPLE_MODE_SWITCH", i);
+                paramBundle.putInt("KID_MODE_SWITCH", j);
+                paramBundle.putInt("KID_MODE_NEED_VERIFY", k);
+                paramBundle.putInt("KID_MODE_PULL_GROUP", n);
+                paramBundle.putInt("KID_MODE_SEARCH_FRIENDS", m);
+                paramBundle.putInt("KID_MODE_SEARCH_BY_STRANGERS", i1);
+                if (i1 != 0) {
+                  break label398;
+                }
+                bool1 = true;
+                StudyModeManager.a(16, bool1);
+                if (m != 0) {
+                  break label404;
+                }
+                bool1 = true;
+                StudyModeManager.a(8, bool1);
+                bool1 = bool2;
+                if (n == 0) {
+                  bool1 = true;
+                }
+                StudyModeManager.a(32, bool1);
+                StudyModeManager.a(k);
+                bool1 = true;
+              }
+              catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+              {
+                bool1 = true;
+                continue;
+              }
+            }
+            else
+            {
+              QLog.d("KidModeServlet", 1, "respGetKidModeStatus fail, udc is null");
+              bool1 = bool4;
+              break label386;
+            }
+          }
+          else
+          {
+            QLog.d("KidModeServlet", 1, new Object[] { "respGetKidModeStatus fail, result: ", Integer.valueOf(i) });
+            bool1 = bool4;
+            break label386;
           }
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        int i;
-        int j;
-        int k;
-        int m;
-        int n;
-        int i1;
-        bool1 = bool3;
-      }
-      try
-      {
-        paramFromServiceMsg = (oidb_0x5eb.UdcUinData)paramFromServiceMsg.rpt_msg_uin_data.get(0);
-        i = paramFromServiceMsg.uint32_flag_study_mode_switch.get();
-        j = paramFromServiceMsg.uint32_flag_kid_mode_switch.get();
-        k = paramFromServiceMsg.uint32_flag_kid_mode_need_phone_verify.get();
-        m = paramFromServiceMsg.uint32_flag_kid_mode_can_search_friends.get();
-        n = paramFromServiceMsg.uint32_flag_kid_mode_can_pull_group.get();
-        i1 = paramFromServiceMsg.uint32_flag_kid_mode_can_search_by_strangers.get();
-        paramBundle.putInt("SIMPLE_MODE_SWITCH", i);
-        paramBundle.putInt("KID_MODE_SWITCH", j);
-        paramBundle.putInt("KID_MODE_NEED_VERIFY", k);
-        paramBundle.putInt("KID_MODE_PULL_GROUP", n);
-        paramBundle.putInt("KID_MODE_SEARCH_FRIENDS", m);
-        paramBundle.putInt("KID_MODE_SEARCH_BY_STRANGERS", i1);
-        if (i1 != 0) {
-          continue;
-        }
-        bool1 = true;
-        StudyModeManager.a(16, bool1);
-        if (m != 0) {
-          continue;
-        }
-        bool1 = true;
-        StudyModeManager.a(8, bool1);
-        bool1 = bool2;
-        if (n == 0) {
-          bool1 = true;
-        }
-        StudyModeManager.a(32, bool1);
-        StudyModeManager.a(k);
-        bool1 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        for (;;)
+        else
         {
+          bool2 = paramFromServiceMsg.isSuccess();
+          if (paramOIDBSSOPkg != null) {
+            break label410;
+          }
           bool1 = true;
+          QLog.d("KidModeServlet", 1, new Object[] { "respGetKidModeStatus fail, response isSuccess: ", Boolean.valueOf(bool2), "pkg isNull: ", Boolean.valueOf(bool1) });
+          bool1 = bool4;
         }
-        bool1 = false;
-        continue;
       }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        bool1 = bool3;
+        QLog.e("KidModeServlet", 1, "respGetKidModeStatus get a error: ", paramFromServiceMsg);
+      }
+      label386:
       notifyObserver(paramIntent, 3, bool1, paramBundle, KidModeObserver.class);
       return;
+      label398:
+      boolean bool1 = false;
+      continue;
+      label404:
       bool1 = false;
       continue;
+      label410:
       bool1 = false;
-      continue;
-      QLog.d("KidModeServlet", 1, "respGetKidModeStatus fail, udc is null");
-      break label392;
-      QLog.d("KidModeServlet", 1, new Object[] { "respGetKidModeStatus fail, result: ", Integer.valueOf(i) });
-      break label392;
-      QLog.e("KidModeServlet", 1, "respGetKidModeStatus get a error: ", paramFromServiceMsg);
-    }
-    bool2 = paramFromServiceMsg.isSuccess();
-    if (paramOIDBSSOPkg == null) {}
-    for (bool1 = true;; bool1 = false)
-    {
-      QLog.d("KidModeServlet", 1, new Object[] { "respGetKidModeStatus fail, response isSuccess: ", Boolean.valueOf(bool2), "pkg isNull: ", Boolean.valueOf(bool1) });
-      break;
     }
   }
   
@@ -213,8 +229,14 @@ public class KidModeServlet
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("KidModeServlet", 2, "setAdvanceSettingSwitch mask: " + paramInt1 + ", value: " + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("setAdvanceSettingSwitch mask: ");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append(", value: ");
+      ((StringBuilder)localObject1).append(paramInt2);
+      QLog.d("KidModeServlet", 2, ((StringBuilder)localObject1).toString());
     }
     if (paramQQAppInterface == null)
     {
@@ -222,38 +244,48 @@ public class KidModeServlet
       return;
     }
     Object localObject1 = new oidb_0xed1.ReqBody();
-    switch (paramInt1)
+    if (paramInt1 != 4)
     {
+      if (paramInt1 != 8)
+      {
+        if (paramInt1 != 16)
+        {
+          if (paramInt1 == 32) {
+            ((oidb_0xed1.ReqBody)localObject1).uint32_can_join_group.set(paramInt2);
+          }
+        }
+        else {
+          ((oidb_0xed1.ReqBody)localObject1).uint32_other_can_search.set(paramInt2);
+        }
+      }
+      else {
+        ((oidb_0xed1.ReqBody)localObject1).uint32_can_search.set(paramInt2);
+      }
     }
-    for (;;)
-    {
-      Object localObject2 = ((oidb_0xed1.ReqBody)localObject1).toByteArray();
-      localObject1 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(3793);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(1);
-      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom((byte[])localObject2));
-      localObject2 = new NewIntent(paramQQAppInterface.getApp(), KidModeServlet.class);
-      ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0xed1_1");
-      ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-      ((NewIntent)localObject2).putExtra("advance_setting_field", paramInt1);
-      ((NewIntent)localObject2).putExtra("advance_setting_value", paramInt2);
-      paramQQAppInterface.startServlet((NewIntent)localObject2);
-      return;
+    else {
       ((oidb_0xed1.ReqBody)localObject1).uint32_need_verify.set(paramInt2);
-      continue;
-      ((oidb_0xed1.ReqBody)localObject1).uint32_can_join_group.set(paramInt2);
-      continue;
-      ((oidb_0xed1.ReqBody)localObject1).uint32_other_can_search.set(paramInt2);
-      continue;
-      ((oidb_0xed1.ReqBody)localObject1).uint32_can_search.set(paramInt2);
     }
+    Object localObject2 = ((oidb_0xed1.ReqBody)localObject1).toByteArray();
+    localObject1 = new oidb_sso.OIDBSSOPkg();
+    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(3793);
+    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(1);
+    ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom((byte[])localObject2));
+    localObject2 = new NewIntent(paramQQAppInterface.getApp(), KidModeServlet.class);
+    ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0xed1_1");
+    ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
+    ((NewIntent)localObject2).putExtra("advance_setting_field", paramInt1);
+    ((NewIntent)localObject2).putExtra("advance_setting_value", paramInt2);
+    paramQQAppInterface.startServlet((NewIntent)localObject2);
   }
   
   private static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (paramQQAppInterface == null)
     {
-      QLog.e("KidModeServlet", 1, "sendRequest QQAppInterface is null, command is " + paramString);
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("sendRequest QQAppInterface is null, command is ");
+      paramQQAppInterface.append(paramString);
+      QLog.e("KidModeServlet", 1, paramQQAppInterface.toString());
       return;
     }
     oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
@@ -305,440 +337,352 @@ public class KidModeServlet
   
   private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      try
-      {
-        if ((!paramFromServiceMsg.isSuccess()) || (paramOIDBSSOPkg == null)) {
-          break label148;
-        }
-        i = paramOIDBSSOPkg.uint32_result.get();
-        paramBundle.putInt("REQ_RESULT", i);
-        paramFromServiceMsg = new oidb_0x87a.RspBody();
-        paramFromServiceMsg.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
-        paramBundle.putInt("RESENT_INTERVAL_TIMEOUT", paramFromServiceMsg.uint32_resend_interval.get());
-        if (i != 0) {
-          break label89;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        for (;;)
-        {
-          int i;
-          label89:
-          boolean bool2;
-          label148:
-          QLog.e("KidModeServlet", 1, "respGetSmsCode get a error: ", paramFromServiceMsg);
-          bool1 = false;
-          continue;
-          bool1 = false;
-        }
-      }
-      notifyObserver(paramIntent, 4, bool1, paramBundle, KidModeObserver.class);
-      return;
-      if (paramOIDBSSOPkg.str_error_msg.has()) {
-        paramBundle.putString("REQ_RESULT_MSG", paramOIDBSSOPkg.str_error_msg.get());
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("KidModeServlet", 1, new Object[] { "respGetSmsCode fail, result: ", Integer.valueOf(i) });
-        continue;
-        bool2 = paramFromServiceMsg.isSuccess();
-        if (paramOIDBSSOPkg == null)
-        {
-          bool1 = true;
-          QLog.d("KidModeServlet", 1, new Object[] { "respVerifySmsCode fail, response isSuccess: ", Boolean.valueOf(bool2), "pkg isNull: ", Boolean.valueOf(bool1) });
-        }
-      }
-    }
-  }
-  
-  /* Error */
-  private void c(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore 6
-    //   3: aload_2
-    //   4: invokevirtual 57	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   7: ifeq +125 -> 132
-    //   10: aload 4
-    //   12: ifnull +120 -> 132
-    //   15: aload 4
-    //   17: getfield 63	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   20: invokevirtual 67	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   23: istore 5
-    //   25: iload 5
-    //   27: ifne +78 -> 105
-    //   30: new 435	tencent/im/oidb/oidb_0x87c$RspBody
-    //   33: dup
-    //   34: invokespecial 436	tencent/im/oidb/oidb_0x87c$RspBody:<init>	()V
-    //   37: astore_2
-    //   38: aload_2
-    //   39: aload 4
-    //   41: getfield 121	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   44: invokevirtual 126	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   47: invokevirtual 131	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   50: invokevirtual 437	tencent/im/oidb/oidb_0x87c$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   53: pop
-    //   54: aload_2
-    //   55: getfield 438	tencent/im/oidb/oidb_0x87c$RspBody:bytes_key	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   58: invokevirtual 126	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   61: invokevirtual 131	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   64: astore 4
-    //   66: aload_2
-    //   67: getfield 439	tencent/im/oidb/oidb_0x87c$RspBody:uint32_key_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   70: invokevirtual 67	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   73: istore 5
-    //   75: aload_3
-    //   76: ldc_w 441
-    //   79: aload 4
-    //   81: invokevirtual 445	android/os/Bundle:putByteArray	(Ljava/lang/String;[B)V
-    //   84: aload_3
-    //   85: ldc_w 447
-    //   88: iload 5
-    //   90: invokevirtual 170	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   93: aload_0
-    //   94: aload_1
-    //   95: iconst_5
-    //   96: iload 6
-    //   98: aload_3
-    //   99: ldc 83
-    //   101: invokevirtual 87	com/tencent/mobileqq/studymode/KidModeServlet:notifyObserver	(Landroid/content/Intent;IZLandroid/os/Bundle;Ljava/lang/Class;)V
-    //   104: return
-    //   105: ldc 47
-    //   107: iconst_1
-    //   108: iconst_2
-    //   109: anewarray 187	java/lang/Object
-    //   112: dup
-    //   113: iconst_0
-    //   114: ldc_w 449
-    //   117: aastore
-    //   118: dup
-    //   119: iconst_1
-    //   120: iload 5
-    //   122: invokestatic 195	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   125: aastore
-    //   126: invokestatic 198	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   129: goto +87 -> 216
-    //   132: aload_2
-    //   133: invokevirtual 57	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
-    //   136: istore 7
-    //   138: aload 4
-    //   140: ifnonnull +63 -> 203
-    //   143: iconst_1
-    //   144: istore 6
-    //   146: ldc 47
-    //   148: iconst_1
-    //   149: iconst_4
-    //   150: anewarray 187	java/lang/Object
-    //   153: dup
-    //   154: iconst_0
-    //   155: ldc_w 430
-    //   158: aastore
-    //   159: dup
-    //   160: iconst_1
-    //   161: iload 7
-    //   163: invokestatic 210	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   166: aastore
-    //   167: dup
-    //   168: iconst_2
-    //   169: ldc 212
-    //   171: aastore
-    //   172: dup
-    //   173: iconst_3
-    //   174: iload 6
-    //   176: invokestatic 210	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   179: aastore
-    //   180: invokestatic 198	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   183: goto +33 -> 216
-    //   186: astore_2
-    //   187: iconst_0
-    //   188: istore 6
-    //   190: ldc 47
-    //   192: iconst_1
-    //   193: ldc_w 451
-    //   196: aload_2
-    //   197: invokestatic 203	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   200: goto -107 -> 93
-    //   203: iconst_0
-    //   204: istore 6
-    //   206: goto -60 -> 146
-    //   209: astore_2
-    //   210: iconst_1
-    //   211: istore 6
-    //   213: goto -23 -> 190
-    //   216: iconst_0
-    //   217: istore 6
-    //   219: goto -126 -> 93
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	222	0	this	KidModeServlet
-    //   0	222	1	paramIntent	Intent
-    //   0	222	2	paramFromServiceMsg	FromServiceMsg
-    //   0	222	3	paramBundle	Bundle
-    //   0	222	4	paramOIDBSSOPkg	oidb_sso.OIDBSSOPkg
-    //   23	98	5	i	int
-    //   1	217	6	bool1	boolean
-    //   136	26	7	bool2	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   3	10	186	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   15	25	186	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   105	129	186	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   132	138	186	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   146	183	186	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   30	93	209	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-  }
-  
-  private void d(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      label80:
-      label107:
-      boolean bool2;
-      try
-      {
-        if ((!paramFromServiceMsg.isSuccess()) || (paramOIDBSSOPkg == null)) {
-          break label151;
-        }
-        i = paramOIDBSSOPkg.uint32_result.get();
-        if (i != 0) {
-          break label107;
-        }
-        paramFromServiceMsg = new oidb_0xed2.RspBody();
-        paramFromServiceMsg.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
-        i = paramFromServiceMsg.uint32_result.get();
-        if (i != 0) {
-          break label80;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        for (;;)
-        {
-          int i;
-          QLog.e("KidModeServlet", 1, "respVerifySmsCode get a error: ", paramFromServiceMsg);
-          bool1 = false;
-        }
-        bool2 = paramFromServiceMsg.isSuccess();
-        if (paramOIDBSSOPkg != null) {
-          break label205;
-        }
-      }
-      notifyObserver(paramIntent, 2, bool1, paramBundle, KidModeObserver.class);
-      return;
-      QLog.d("KidModeServlet", 1, new Object[] { "respSendSmsToken fail, uint32_result result: ", Integer.valueOf(i) });
-      continue;
-      QLog.d("KidModeServlet", 1, new Object[] { "respSendSmsToken fail, pkg header result: ", Integer.valueOf(i) });
-      continue;
-      label151:
-      label205:
-      for (bool1 = true;; bool1 = false)
-      {
-        QLog.d("KidModeServlet", 1, new Object[] { "respSendSmsToken fail, response isSuccess: ", Boolean.valueOf(bool2), "pkg isNull: ", Boolean.valueOf(bool1) });
-        break;
-      }
-    }
-  }
-  
-  private void e(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
+    boolean bool2 = false;
     for (;;)
     {
       try
       {
         if ((paramFromServiceMsg.isSuccess()) && (paramOIDBSSOPkg != null))
         {
-          i = ((oidb_sso.OIDBSSOPkg)paramOIDBSSOPkg.get()).uint32_result.get();
+          int i = paramOIDBSSOPkg.uint32_result.get();
+          paramBundle.putInt("REQ_RESULT", i);
+          paramFromServiceMsg = new oidb_0x87a.RspBody();
+          paramFromServiceMsg.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+          paramBundle.putInt("RESENT_INTERVAL_TIMEOUT", paramFromServiceMsg.uint32_resend_interval.get());
+          if (i == 0)
+          {
+            bool1 = true;
+          }
+          else
+          {
+            if (paramOIDBSSOPkg.str_error_msg.has()) {
+              paramBundle.putString("REQ_RESULT_MSG", paramOIDBSSOPkg.str_error_msg.get());
+            }
+            bool1 = bool2;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("KidModeServlet", 1, new Object[] { "respGetSmsCode fail, result: ", Integer.valueOf(i) });
+              bool1 = bool2;
+            }
+          }
+        }
+        else
+        {
+          boolean bool3 = paramFromServiceMsg.isSuccess();
+          if (paramOIDBSSOPkg != null) {
+            break label237;
+          }
+          bool1 = true;
+          QLog.d("KidModeServlet", 1, new Object[] { "respVerifySmsCode fail, response isSuccess: ", Boolean.valueOf(bool3), "pkg isNull: ", Boolean.valueOf(bool1) });
+          bool1 = bool2;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        QLog.e("KidModeServlet", 1, "respGetSmsCode get a error: ", paramFromServiceMsg);
+        bool1 = false;
+      }
+      notifyObserver(paramIntent, 4, bool1, paramBundle, KidModeObserver.class);
+      return;
+      label237:
+      boolean bool1 = false;
+    }
+  }
+  
+  private void c(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    for (;;)
+    {
+      try
+      {
+        if ((paramFromServiceMsg.isSuccess()) && (paramOIDBSSOPkg != null))
+        {
+          int i = paramOIDBSSOPkg.uint32_result.get();
+          if (i == 0)
+          {
+            try
+            {
+              paramFromServiceMsg = new oidb_0x87c.RspBody();
+              paramFromServiceMsg.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+              paramOIDBSSOPkg = paramFromServiceMsg.bytes_key.get().toByteArray();
+              i = paramFromServiceMsg.uint32_key_type.get();
+              paramBundle.putByteArray("SMS_TOKEN", paramOIDBSSOPkg);
+              paramBundle.putInt("SMS_TOKEN_TYPE", i);
+              bool1 = true;
+            }
+            catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+            {
+              bool1 = true;
+              continue;
+            }
+          }
+          else
+          {
+            QLog.d("KidModeServlet", 1, new Object[] { "respVerifySmsCode fail, pkg result: ", Integer.valueOf(i) });
+            bool1 = bool3;
+            break label216;
+          }
+        }
+        else
+        {
+          boolean bool4 = paramFromServiceMsg.isSuccess();
+          if (paramOIDBSSOPkg != null) {
+            break label228;
+          }
+          bool1 = true;
+          QLog.d("KidModeServlet", 1, new Object[] { "respVerifySmsCode fail, response isSuccess: ", Boolean.valueOf(bool4), "pkg isNull: ", Boolean.valueOf(bool1) });
+          bool1 = bool3;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        bool1 = bool2;
+        QLog.e("KidModeServlet", 1, "respVerifySmsCode get a error: ", paramFromServiceMsg);
+      }
+      label216:
+      notifyObserver(paramIntent, 5, bool1, paramBundle, KidModeObserver.class);
+      return;
+      label228:
+      boolean bool1 = false;
+    }
+  }
+  
+  private void d(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    boolean bool2 = false;
+    for (;;)
+    {
+      try
+      {
+        if ((paramFromServiceMsg.isSuccess()) && (paramOIDBSSOPkg != null))
+        {
+          int i = paramOIDBSSOPkg.uint32_result.get();
+          if (i == 0)
+          {
+            paramFromServiceMsg = new oidb_0xed2.RspBody();
+            paramFromServiceMsg.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+            i = paramFromServiceMsg.uint32_result.get();
+            if (i == 0)
+            {
+              bool1 = true;
+            }
+            else
+            {
+              QLog.d("KidModeServlet", 1, new Object[] { "respSendSmsToken fail, uint32_result result: ", Integer.valueOf(i) });
+              bool1 = bool2;
+            }
+          }
+          else
+          {
+            QLog.d("KidModeServlet", 1, new Object[] { "respSendSmsToken fail, pkg header result: ", Integer.valueOf(i) });
+            bool1 = bool2;
+          }
+        }
+        else
+        {
+          boolean bool3 = paramFromServiceMsg.isSuccess();
+          if (paramOIDBSSOPkg != null) {
+            break label223;
+          }
+          bool1 = true;
+          QLog.d("KidModeServlet", 1, new Object[] { "respSendSmsToken fail, response isSuccess: ", Boolean.valueOf(bool3), "pkg isNull: ", Boolean.valueOf(bool1) });
+          bool1 = bool2;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        QLog.e("KidModeServlet", 1, "respVerifySmsCode get a error: ", paramFromServiceMsg);
+        bool1 = false;
+      }
+      notifyObserver(paramIntent, 2, bool1, paramBundle, KidModeObserver.class);
+      return;
+      label223:
+      boolean bool1 = false;
+    }
+  }
+  
+  private void e(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    boolean bool3 = false;
+    boolean bool2 = false;
+    for (;;)
+    {
+      try
+      {
+        boolean bool4;
+        if ((paramFromServiceMsg.isSuccess()) && (paramOIDBSSOPkg != null))
+        {
+          int i = ((oidb_sso.OIDBSSOPkg)paramOIDBSSOPkg.get()).uint32_result.get();
           if (i == 0)
           {
             paramFromServiceMsg = new oidb_0x5eb.RspBody();
             paramFromServiceMsg.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
-            bool1 = paramFromServiceMsg.rpt_msg_uin_data.has();
-            if (!bool1) {
-              break label227;
+            bool4 = paramFromServiceMsg.rpt_msg_uin_data.has();
+            bool1 = bool3;
+            if (!bool4) {
+              break label230;
+            }
+            try
+            {
+              i = ((oidb_0x5eb.UdcUinData)paramFromServiceMsg.rpt_msg_uin_data.get(0)).uint32_flag_kid_mode_need_phone_verify.get();
+              paramBundle.putInt("KID_MODE_NEED_VERIFY", i);
+              StudyModeManager.a(i);
+              bool1 = true;
+            }
+            catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+            {
+              bool1 = true;
+              continue;
             }
           }
+          else
+          {
+            QLog.d("KidModeServlet", 1, new Object[] { "respGetKidModeStatus fail, result: ", Integer.valueOf(i) });
+            bool1 = bool3;
+            break label230;
+          }
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        int i;
-        boolean bool2;
-        bool1 = false;
-      }
-      try
-      {
-        i = ((oidb_0x5eb.UdcUinData)paramFromServiceMsg.rpt_msg_uin_data.get(0)).uint32_flag_kid_mode_need_phone_verify.get();
-        paramBundle.putInt("KID_MODE_NEED_VERIFY", i);
-        StudyModeManager.a(i);
-        bool1 = true;
-        notifyObserver(paramIntent, 6, bool1, paramBundle, KidModeObserver.class);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        for (;;)
+        else
         {
+          bool4 = paramFromServiceMsg.isSuccess();
+          if (paramOIDBSSOPkg != null) {
+            break label243;
+          }
           bool1 = true;
+          QLog.d("KidModeServlet", 1, new Object[] { "respGetKidModeStatus fail, response isSuccess: ", Boolean.valueOf(bool4), "pkg isNull: ", Boolean.valueOf(bool1) });
+          bool1 = bool3;
         }
       }
-      QLog.d("KidModeServlet", 1, new Object[] { "respGetKidModeStatus fail, result: ", Integer.valueOf(i) });
-      break label227;
-      bool2 = paramFromServiceMsg.isSuccess();
-      if (paramOIDBSSOPkg == null)
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
-        bool1 = true;
-        QLog.d("KidModeServlet", 1, new Object[] { "respGetKidModeStatus fail, response isSuccess: ", Boolean.valueOf(bool2), "pkg isNull: ", Boolean.valueOf(bool1) });
-        break label227;
+        bool1 = bool2;
         QLog.e("KidModeServlet", 1, "respGetKidModeStatus get a error: ", paramFromServiceMsg);
       }
-      else
-      {
-        bool1 = false;
-        continue;
-      }
-      label227:
+      label230:
+      notifyObserver(paramIntent, 6, bool1, paramBundle, KidModeObserver.class);
+      return;
+      label243:
       boolean bool1 = false;
     }
   }
   
   private void f(Intent paramIntent, FromServiceMsg paramFromServiceMsg, Bundle paramBundle, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
+    boolean bool1 = false;
     boolean bool2 = false;
-    bool1 = bool2;
-    Object localObject1 = paramBundle;
-    if (paramOIDBSSOPkg != null)
+    int i = 0;
+    if (paramOIDBSSOPkg != null) {}
+    for (;;)
     {
-      bool1 = bool2;
-      localObject1 = paramBundle;
-      for (;;)
+      Bundle localBundle;
+      try
       {
-        try
-        {
-          if (paramFromServiceMsg.isSuccess())
-          {
-            bool1 = bool2;
-            localObject1 = paramBundle;
-            if (paramOIDBSSOPkg.uint32_result.get() == 0)
-            {
-              bool1 = bool2;
-              localObject1 = paramBundle;
-              if (paramOIDBSSOPkg.bytes_bodybuffer.has())
-              {
-                localObject2 = new oidb_0xeb8.RspBody();
-                ((oidb_0xeb8.RspBody)localObject2).mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
-                i = ((oidb_0xeb8.RspBody)localObject2).uint32_check_result.get();
-                bool1 = bool2;
-                localObject1 = paramBundle;
-                if (i <= 0) {}
-              }
-            }
-          }
+        if ((!paramFromServiceMsg.isSuccess()) || (paramOIDBSSOPkg.uint32_result.get() != 0) || (!paramOIDBSSOPkg.bytes_bodybuffer.has())) {
+          break label557;
         }
-        catch (Exception paramOIDBSSOPkg)
-        {
-          Object localObject2;
-          int j;
-          bool1 = false;
-          paramFromServiceMsg = paramBundle;
-          paramBundle = paramOIDBSSOPkg;
-          continue;
+        Object localObject = new oidb_0xeb8.RspBody();
+        ((oidb_0xeb8.RspBody)localObject).mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+        int j = ((oidb_0xeb8.RspBody)localObject).uint32_check_result.get();
+        if (j <= 0) {
+          break label557;
         }
         try
         {
           paramFromServiceMsg = new Bundle();
+          try
+          {
+            if (((oidb_0xeb8.RspBody)localObject).str_mibao_change_url.has()) {
+              paramFromServiceMsg.putString("mibao_change_url", ((oidb_0xeb8.RspBody)localObject).str_mibao_change_url.get());
+            }
+            if (((oidb_0xeb8.RspBody)localObject).str_mibao_set_url.has()) {
+              paramFromServiceMsg.putString("mibao_set_url", ((oidb_0xeb8.RspBody)localObject).str_mibao_set_url.get());
+            }
+            if (((oidb_0xeb8.RspBody)localObject).str_mibao_verify_url.has()) {
+              paramFromServiceMsg.putString("mibao_verify_url", ((oidb_0xeb8.RspBody)localObject).str_mibao_verify_url.get());
+            }
+            if (((oidb_0xeb8.RspBody)localObject).rpt_phone_info.has())
+            {
+              paramBundle = ((oidb_0xeb8.RspBody)localObject).rpt_phone_info.get();
+              paramOIDBSSOPkg = new Bundle[paramBundle.size()];
+              if (i < paramBundle.size())
+              {
+                localObject = (oidb_0xeb8.PhoneInfo)paramBundle.get(i);
+                if (localObject == null) {
+                  break label577;
+                }
+                localBundle = new Bundle();
+                j = -1;
+                if (((oidb_0xeb8.PhoneInfo)localObject).uint32_phone_type.has())
+                {
+                  localBundle.putInt("phone_type", ((oidb_0xeb8.PhoneInfo)localObject).uint32_phone_type.get());
+                  j = ((oidb_0xeb8.PhoneInfo)localObject).uint32_phone_type.get();
+                }
+                if (((oidb_0xeb8.PhoneInfo)localObject).str_country_code.has())
+                {
+                  localBundle.putString("country_code", ((oidb_0xeb8.PhoneInfo)localObject).str_country_code.get());
+                  if (j == 1) {
+                    paramFromServiceMsg.putString("country_code", ((oidb_0xeb8.PhoneInfo)localObject).str_country_code.get());
+                  }
+                }
+                if (((oidb_0xeb8.PhoneInfo)localObject).str_phone.has())
+                {
+                  localBundle.putString("phone", ((oidb_0xeb8.PhoneInfo)localObject).str_phone.get());
+                  if (j == 1) {
+                    paramFromServiceMsg.putString("phone", ((oidb_0xeb8.PhoneInfo)localObject).str_phone.get());
+                  }
+                }
+                if (((oidb_0xeb8.PhoneInfo)localObject).uint32_phone_status.has())
+                {
+                  localBundle.putInt("status", ((oidb_0xeb8.PhoneInfo)localObject).uint32_phone_status.get());
+                  if (j == 1) {
+                    paramFromServiceMsg.putInt("status", ((oidb_0xeb8.PhoneInfo)localObject).uint32_phone_status.get());
+                  }
+                }
+                if (!((oidb_0xeb8.PhoneInfo)localObject).bytes_vas_phone.has()) {
+                  break label570;
+                }
+                localBundle.putByteArray("vaskey", ((oidb_0xeb8.PhoneInfo)localObject).bytes_vas_phone.get().toByteArray());
+                break label570;
+              }
+              paramFromServiceMsg.putParcelableArray("phone_info", paramOIDBSSOPkg);
+            }
+            bool2 = true;
+            paramBundle = paramFromServiceMsg;
+          }
+          catch (Exception paramBundle) {}
+          bool1 = true;
         }
         catch (Exception paramOIDBSSOPkg)
         {
-          bool1 = true;
           paramFromServiceMsg = paramBundle;
           paramBundle = paramOIDBSSOPkg;
-          continue;
-          i += 1;
-          continue;
         }
-        try
-        {
-          if (((oidb_0xeb8.RspBody)localObject2).str_mibao_change_url.has()) {
-            paramFromServiceMsg.putString("mibao_change_url", ((oidb_0xeb8.RspBody)localObject2).str_mibao_change_url.get());
-          }
-          if (((oidb_0xeb8.RspBody)localObject2).str_mibao_set_url.has()) {
-            paramFromServiceMsg.putString("mibao_set_url", ((oidb_0xeb8.RspBody)localObject2).str_mibao_set_url.get());
-          }
-          if (((oidb_0xeb8.RspBody)localObject2).str_mibao_verify_url.has()) {
-            paramFromServiceMsg.putString("mibao_verify_url", ((oidb_0xeb8.RspBody)localObject2).str_mibao_verify_url.get());
-          }
-          if (!((oidb_0xeb8.RspBody)localObject2).rpt_phone_info.has()) {
-            continue;
-          }
-          paramBundle = ((oidb_0xeb8.RspBody)localObject2).rpt_phone_info.get();
-          paramOIDBSSOPkg = new Bundle[paramBundle.size()];
-          i = 0;
-          if (i >= paramBundle.size()) {
-            continue;
-          }
-          localObject1 = (oidb_0xeb8.PhoneInfo)paramBundle.get(i);
-          if (localObject1 == null) {
-            break label617;
-          }
-          localObject2 = new Bundle();
-          j = -1;
-          if (((oidb_0xeb8.PhoneInfo)localObject1).uint32_phone_type.has())
-          {
-            ((Bundle)localObject2).putInt("phone_type", ((oidb_0xeb8.PhoneInfo)localObject1).uint32_phone_type.get());
-            j = ((oidb_0xeb8.PhoneInfo)localObject1).uint32_phone_type.get();
-          }
-          if (((oidb_0xeb8.PhoneInfo)localObject1).str_country_code.has())
-          {
-            ((Bundle)localObject2).putString("country_code", ((oidb_0xeb8.PhoneInfo)localObject1).str_country_code.get());
-            if (j == 1) {
-              paramFromServiceMsg.putString("country_code", ((oidb_0xeb8.PhoneInfo)localObject1).str_country_code.get());
-            }
-          }
-          if (((oidb_0xeb8.PhoneInfo)localObject1).str_phone.has())
-          {
-            ((Bundle)localObject2).putString("phone", ((oidb_0xeb8.PhoneInfo)localObject1).str_phone.get());
-            if (j == 1) {
-              paramFromServiceMsg.putString("phone", ((oidb_0xeb8.PhoneInfo)localObject1).str_phone.get());
-            }
-          }
-          if (((oidb_0xeb8.PhoneInfo)localObject1).uint32_phone_status.has())
-          {
-            ((Bundle)localObject2).putInt("status", ((oidb_0xeb8.PhoneInfo)localObject1).uint32_phone_status.get());
-            if (j == 1) {
-              paramFromServiceMsg.putInt("status", ((oidb_0xeb8.PhoneInfo)localObject1).uint32_phone_status.get());
-            }
-          }
-          if (((oidb_0xeb8.PhoneInfo)localObject1).bytes_vas_phone.has()) {
-            ((Bundle)localObject2).putByteArray("vaskey", ((oidb_0xeb8.PhoneInfo)localObject1).bytes_vas_phone.get().toByteArray());
-          }
-          paramOIDBSSOPkg[i] = localObject2;
-        }
-        catch (Exception paramBundle)
-        {
-          bool1 = true;
-        }
+        paramOIDBSSOPkg = paramBundle;
+      }
+      catch (Exception paramOIDBSSOPkg)
+      {
+        paramFromServiceMsg = paramBundle;
       }
       bool2 = bool1;
-      paramOIDBSSOPkg = paramFromServiceMsg;
+      paramBundle = paramFromServiceMsg;
       if (QLog.isColorLevel())
       {
-        QLog.d("KidModeServlet", 1, "onGetPhoneBindInfo error:" + paramBundle.getMessage());
-        paramOIDBSSOPkg = paramFromServiceMsg;
+        paramBundle = new StringBuilder();
+        paramBundle.append("onGetPhoneBindInfo error:");
+        paramBundle.append(paramOIDBSSOPkg.getMessage());
+        QLog.d("KidModeServlet", 1, paramBundle.toString());
+        bool2 = bool1;
+        paramBundle = paramFromServiceMsg;
       }
-    }
-    for (bool2 = bool1;; bool2 = bool1)
-    {
-      notifyObserver(paramIntent, 7, bool2, paramOIDBSSOPkg, KidModeObserver.class);
+      label557:
+      notifyObserver(paramIntent, 7, bool2, paramBundle, KidModeObserver.class);
       return;
-      paramFromServiceMsg.putParcelableArray("phone_info", paramOIDBSSOPkg);
-      bool1 = true;
-      localObject1 = paramFromServiceMsg;
-      paramOIDBSSOPkg = (oidb_sso.OIDBSSOPkg)localObject1;
+      label570:
+      paramOIDBSSOPkg[i] = localBundle;
+      label577:
+      i += 1;
     }
   }
   
@@ -747,12 +691,12 @@ public class KidModeServlet
     if (QLog.isColorLevel()) {
       QLog.i("KidModeServlet", 2, "onReceive");
     }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    String str;
-    do
+    if (paramIntent != null)
     {
-      return;
-      str = paramFromServiceMsg.getServiceCmd();
+      if (paramFromServiceMsg == null) {
+        return;
+      }
+      String str = paramFromServiceMsg.getServiceCmd();
       Object localObject2 = paramIntent.getExtras();
       Object localObject1 = localObject2;
       if (localObject2 == null) {
@@ -794,8 +738,10 @@ public class KidModeServlet
         f(paramIntent, paramFromServiceMsg, (Bundle)localObject1, (oidb_sso.OIDBSSOPkg)localObject2);
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("KidModeServlet", 1, new Object[] { "KidModeServlet unknown cmd: ", str });
+      if (QLog.isColorLevel()) {
+        QLog.d("KidModeServlet", 1, new Object[] { "KidModeServlet unknown cmd: ", str });
+      }
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -803,7 +749,10 @@ public class KidModeServlet
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
     String str = paramIntent.getStringExtra("cmd");
     long l = paramIntent.getLongExtra("timeout", 30000L);
-    QLog.i("KidModeServlet", 1, "onSend, cmd is " + str);
+    paramIntent = new StringBuilder();
+    paramIntent.append("onSend, cmd is ");
+    paramIntent.append(str);
+    QLog.i("KidModeServlet", 1, paramIntent.toString());
     paramPacket.setSSOCommand(str);
     paramPacket.putSendData(WupUtil.a(arrayOfByte));
     if (l > 0L) {
@@ -816,7 +765,7 @@ public class KidModeServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeServlet
  * JD-Core Version:    0.7.0.1
  */

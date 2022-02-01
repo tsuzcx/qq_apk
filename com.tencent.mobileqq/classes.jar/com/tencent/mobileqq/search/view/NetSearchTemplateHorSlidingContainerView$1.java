@@ -11,15 +11,13 @@ class NetSearchTemplateHorSlidingContainerView$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
+    if (paramMotionEvent.getAction() != 2) {}
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateHorSlidingContainerView.1
  * JD-Core Version:    0.7.0.1
  */

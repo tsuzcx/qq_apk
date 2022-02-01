@@ -134,7 +134,12 @@ public class AVCatonReportParams
   
   public void setResolution(int paramInt1, int paramInt2)
   {
-    this.mResolution = ("" + paramInt1 + "x" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("x");
+    localStringBuilder.append(paramInt2);
+    this.mResolution = localStringBuilder.toString();
   }
   
   public void setResolution(String paramString)
@@ -169,7 +174,7 @@ public class AVCatonReportParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.params.AVCatonReportParams
  * JD-Core Version:    0.7.0.1
  */

@@ -23,8 +23,12 @@ public class AutoScroller
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout.removeCallbacks(this);
-    if ((!this.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback.a();
+    if (!this.b)
+    {
+      AutoScroller.ScrollerCallback localScrollerCallback = this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback;
+      if (localScrollerCallback != null) {
+        localScrollerCallback.a();
+      }
     }
   }
   
@@ -66,29 +70,30 @@ public class AutoScroller
   
   public void run()
   {
-    if ((!this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset()) || (this.jdField_a_of_type_AndroidWidgetScroller.isFinished())) {}
-    int j;
-    int k;
-    for (int i = 1;; i = 0)
+    int i;
+    if ((this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset()) && (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished())) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    int j = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+    int k = this.jdField_a_of_type_Int;
+    if (i != 0)
     {
-      j = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-      k = this.jdField_a_of_type_Int;
-      if (i == 0) {
-        break;
-      }
       b();
       return;
     }
     this.jdField_a_of_type_Int = j;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback.a(j - k);
+    AutoScroller.ScrollerCallback localScrollerCallback = this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshAutoScroller$ScrollerCallback;
+    if (localScrollerCallback != null) {
+      localScrollerCallback.a(j - k);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout.post(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.pullrefresh.AutoScroller
  * JD-Core Version:    0.7.0.1
  */

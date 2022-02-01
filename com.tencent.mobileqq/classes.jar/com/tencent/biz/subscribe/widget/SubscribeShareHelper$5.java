@@ -21,46 +21,48 @@ class SubscribeShareHelper$5
       if (SubscribeShareHelper.a(this.this$0) == null) {
         return;
       }
-      localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), SubscribeShareHelper.a(this.this$0).e(), "GET", null, null);
-      if (localObject == null) {
-        break label132;
+      Object localObject = HttpUtil.openUrlForByte(BaseApplicationImpl.getContext(), SubscribeShareHelper.a(this.this$0).e(), "GET", null, null);
+      if (localObject != null)
+      {
+        Bitmap localBitmap = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
+        if (localBitmap != null)
+        {
+          int j = localBitmap.getWidth();
+          int i = localBitmap.getHeight();
+          int k = j * i;
+          localObject = localBitmap;
+          if (k > 8000)
+          {
+            double d1 = k;
+            Double.isNaN(d1);
+            d1 = 8000.0D / d1;
+            d1 = Math.sqrt(d1);
+            double d2 = j;
+            Double.isNaN(d2);
+            j = (int)(d2 * d1);
+            d2 = i;
+            Double.isNaN(d2);
+            i = (int)(d2 * d1);
+            localObject = Bitmap.createScaledBitmap(localBitmap, j, i, true);
+            localBitmap.recycle();
+          }
+          this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
+        }
       }
-      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-      if (localObject == null) {
-        break label132;
-      }
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j <= 8000) {
-        break label167;
-      }
-      double d = Math.sqrt(8000.0D / (i * j));
-      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-      ((Bitmap)localObject).recycle();
-      localObject = localBitmap;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (IOException|OutOfMemoryError localIOException)
     {
-      Object localObject;
-      break label132;
+      label171:
+      break label171;
     }
-    catch (IOException localIOException)
-    {
-      label132:
-      label167:
-      for (;;) {}
-    }
-    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
-    if (this.this$0.a != null)
-    {
+    if (this.this$0.a != null) {
       this.this$0.a.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeShareHelper.5
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,15 @@ public class BigHeadMaskManager$BGMask
   
   public void destroy()
   {
-    if (this.mTextureId != 0) {
-      GLES20.glDeleteTextures(1, new int[] { this.mTextureId }, 0);
+    int i = this.mTextureId;
+    if (i != 0) {
+      GLES20.glDeleteTextures(1, new int[] { i }, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.bighead.BigHeadMaskManager.BGMask
  * JD-Core Version:    0.7.0.1
  */

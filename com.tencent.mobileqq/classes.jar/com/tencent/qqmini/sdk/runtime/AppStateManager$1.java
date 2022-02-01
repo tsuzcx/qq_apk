@@ -22,8 +22,8 @@ class AppStateManager$1
         localActivity.getWindow().getDecorView();
         ScreenShotUtil.setRuntime(AppStateManager.access$000(this.this$0).getRuntime());
         AppStateManager.access$000(this.this$0).getRuntime().captureImage(new AppStateManager.1.1(this));
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -33,7 +33,7 @@ class AppStateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppStateManager.1
  * JD-Core Version:    0.7.0.1
  */

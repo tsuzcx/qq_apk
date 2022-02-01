@@ -17,7 +17,8 @@ class ScanOcrActivity$7
     ScanOcrActivity.a(this.a, paramSurfaceHolder);
     if (ScanOcrActivity.a(this.a) == null)
     {
-      ScanOcrActivity.a(this.a, new OcrCamera(this.a, this.a.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback, ScanOcrActivity.a(this.a)));
+      paramSurfaceHolder = this.a;
+      ScanOcrActivity.a(paramSurfaceHolder, new OcrCamera(paramSurfaceHolder, paramSurfaceHolder.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback, ScanOcrActivity.a(this.a)));
       ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
       ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
       if (ScanOcrActivity.a(this.a)) {
@@ -30,7 +31,7 @@ class ScanOcrActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanOcrActivity.7
  * JD-Core Version:    0.7.0.1
  */

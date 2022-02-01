@@ -26,8 +26,8 @@ import java.util.List;
 public abstract class QfileBaseFavFileTabView
   extends QfileBaseTabView
 {
-  static String a;
-  static String b;
+  static String a = "QfileBaseFavFileTabView<FileAssistant>";
+  static String b = "FavFileS ";
   protected int a;
   protected LayoutInflater a;
   protected QfileBaseExpandableListAdapter a;
@@ -41,17 +41,11 @@ public abstract class QfileBaseFavFileTabView
   protected volatile boolean a;
   protected volatile boolean b;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "QfileBaseFavFileTabView<FileAssistant>";
-    jdField_b_of_type_JavaLangString = "FavFileS ";
-  }
-  
   public QfileBaseFavFileTabView(Context paramContext, QfileFavFileRecordProvider paramQfileFavFileRecordProvider, QfileBaseFavFileTabView.ITabBarViewProxy paramITabBarViewProxy)
   {
     super(paramContext);
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest = new QfileBaseFavFileTabView.GetMoreRequest(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest = new QfileBaseFavFileTabView.GetMoreRequest();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider$EventObserver = new QfileBaseFavFileTabView.1(this);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
@@ -63,16 +57,16 @@ public abstract class QfileBaseFavFileTabView
   
   private void r()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView = ((QfilePinnedHeaderExpandableListView)findViewById(2131366941));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView = ((QfilePinnedHeaderExpandableListView)findViewById(2131366803));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = new NoFileRelativeLayout(a());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.addHeaderView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout);
     p();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131692357);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131692286);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter = a();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setFocusable(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelector(2131167305);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelector(2131167333);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setTranscriptMode(0);
     int i = 0;
     while (i < this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount())
@@ -112,7 +106,12 @@ public abstract class QfileBaseFavFileTabView
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.jdField_a_of_type_Boolean) {
       return;
     }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, jdField_b_of_type_JavaLangString + "startGetMoreFileRecord. targertCount:" + paramInt);
+    String str = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("startGetMoreFileRecord. targertCount:");
+    localStringBuilder.append(paramInt);
+    QLog.i(str, 1, localStringBuilder.toString());
     a();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.a(this.jdField_a_of_type_Int, paramInt);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider.a();
@@ -130,67 +129,79 @@ public abstract class QfileBaseFavFileTabView
   
   protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    int j = 0;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$ITabBarViewProxy.setRefreshedFavList(true);
     if (getVisibility() != 0) {
       return;
     }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, jdField_b_of_type_JavaLangString + "onFileRecordsRefreshed suc:" + paramBoolean + ". recordType:" + b());
-    List localList = a();
-    if (this.jdField_a_of_type_Int != localList.size())
+    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append("onFileRecordsRefreshed suc:");
+    ((StringBuilder)localObject2).append(paramBoolean);
+    ((StringBuilder)localObject2).append(". recordType:");
+    ((StringBuilder)localObject2).append(b());
+    QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    localObject1 = a();
+    int i = this.jdField_a_of_type_Int;
+    int k = ((List)localObject1).size();
+    int j = 0;
+    StringBuilder localStringBuilder;
+    if (i != k)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, jdField_b_of_type_JavaLangString + "onFileRecordsRefreshed. updateTabView");
-      if (this.jdField_a_of_type_Int != 0) {
-        break label318;
+      localObject2 = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(jdField_b_of_type_JavaLangString);
+      localStringBuilder.append("onFileRecordsRefreshed. updateTabView");
+      QLog.d((String)localObject2, 1, localStringBuilder.toString());
+      if (this.jdField_a_of_type_Int == 0) {
+        i = 0;
+      } else {
+        i = -1;
+      }
+      c(i);
+    }
+    if (paramBundle != null) {
+      paramBundle = paramBundle.getString("delete_favids");
+    } else {
+      paramBundle = "";
+    }
+    localObject2 = new ArrayList();
+    if (!TextUtils.isEmpty(paramBundle))
+    {
+      try
+      {
+        paramBundle = paramBundle.split(",");
+        k = paramBundle.length;
+        i = j;
+        while (i < k)
+        {
+          localStringBuilder = paramBundle[i];
+          if (!TextUtils.isEmpty(localStringBuilder)) {
+            ((ArrayList)localObject2).add(Long.valueOf(Long.valueOf(localStringBuilder).longValue()));
+          }
+          i += 1;
+        }
+        if (((ArrayList)localObject2).size() <= 0) {
+          break label323;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
       }
     }
-    label311:
-    label318:
-    for (int i = 0;; i = -1)
+    else
     {
-      c(i);
-      Object localObject = "";
-      if (paramBundle != null) {
-        localObject = paramBundle.getString("delete_favids");
+      paramBundle = ((ArrayList)localObject2).iterator();
+      while (paramBundle.hasNext()) {
+        FMDataCache.b(((Long)paramBundle.next()).longValue());
       }
-      paramBundle = new ArrayList();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (;;)
-      {
-        try
-        {
-          localObject = ((String)localObject).split(",");
-          int k = localObject.length;
-          i = j;
-          if (i < k)
-          {
-            CharSequence localCharSequence = localObject[i];
-            if (TextUtils.isEmpty(localCharSequence)) {
-              break label311;
-            }
-            paramBundle.add(Long.valueOf(Long.valueOf(localCharSequence).longValue()));
-          }
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-        if (paramBundle.size() > 0)
-        {
-          paramBundle = paramBundle.iterator();
-          while (paramBundle.hasNext()) {
-            FMDataCache.b(((Long)paramBundle.next()).longValue());
-          }
-          w();
-        }
-        if ((localList.size() >= c()) || (b())) {
-          break;
-        }
-        a(c() - localList.size());
-        return;
-        i += 1;
-      }
+      w();
+    }
+    label323:
+    if ((((List)localObject1).size() < c()) && (!b())) {
+      a(c() - ((List)localObject1).size());
     }
   }
   
@@ -199,7 +210,7 @@ public abstract class QfileBaseFavFileTabView
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.jdField_a_of_type_Boolean;
   }
   
-  public void aq_()
+  public void ak_()
   {
     List localList = a();
     if ((localList != null) && (localList.size() > 0))
@@ -227,7 +238,7 @@ public abstract class QfileBaseFavFileTabView
   
   public void b()
   {
-    d(2131560922);
+    d(2131560796);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(a());
     r();
     o();
@@ -236,58 +247,80 @@ public abstract class QfileBaseFavFileTabView
   
   protected void b(int paramInt)
   {
+    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.jdField_a_of_type_Boolean) {
+      return;
+    }
     int j = 0;
     int i = 0;
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.jdField_a_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt == 0) {
-          break;
-        }
-        h();
-      } while (getVisibility() != 0);
-      localList = a();
-    } while (this.jdField_a_of_type_Int == localList.size());
-    QLog.d(jdField_a_of_type_JavaLangString, 1, jdField_b_of_type_JavaLangString + "onGettedFileRecords err. updateTabView");
-    if (this.jdField_a_of_type_Int == 0) {}
-    for (paramInt = i;; paramInt = -1)
-    {
-      c(paramInt);
-      return;
-    }
-    List localList = a();
-    QLog.i(jdField_a_of_type_JavaLangString, 1, jdField_b_of_type_JavaLangString + "onGettedFileRecords. gettedSize:" + localList.size() + " isEnd:" + b() + " curShowSize:" + this.jdField_a_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.a());
-    if ((b()) || (localList.size() - this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.b))
+    if (paramInt != 0)
     {
       h();
-      label216:
-      if ((getVisibility() != 0) || (((this.jdField_a_of_type_Int != 0) || (!b())) && (this.jdField_a_of_type_Int == localList.size()))) {
-        break label373;
+      if (getVisibility() == 0)
+      {
+        localObject1 = a();
+        if (this.jdField_a_of_type_Int != ((List)localObject1).size())
+        {
+          localObject1 = jdField_a_of_type_JavaLangString;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append("onGettedFileRecords err. updateTabView");
+          QLog.d((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+          if (this.jdField_a_of_type_Int == 0) {
+            paramInt = i;
+          } else {
+            paramInt = -1;
+          }
+          c(paramInt);
+        }
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 1, jdField_b_of_type_JavaLangString + "onGettedFileRecords. updateTabView");
-      if (this.jdField_a_of_type_Int != 0) {
-        break label375;
-      }
-    }
-    label373:
-    label375:
-    for (paramInt = j;; paramInt = -1)
-    {
-      c(paramInt);
       return;
+    }
+    Object localObject1 = a();
+    Object localObject2 = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("onGettedFileRecords. gettedSize:");
+    localStringBuilder.append(((List)localObject1).size());
+    localStringBuilder.append(" isEnd:");
+    localStringBuilder.append(b());
+    localStringBuilder.append(" curShowSize:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.a());
+    QLog.i((String)localObject2, 1, localStringBuilder.toString());
+    if ((!b()) && (((List)localObject1).size() - this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.b))
+    {
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.a())
       {
-        QLog.i(jdField_a_of_type_JavaLangString, 1, jdField_b_of_type_JavaLangString + "onGettedFileRecords. continue get." + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.a());
+        localObject2 = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(jdField_b_of_type_JavaLangString);
+        localStringBuilder.append("onGettedFileRecords. continue get.");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.a());
+        QLog.i((String)localObject2, 1, localStringBuilder.toString());
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider.a();
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.a(localList.size());
-        break label216;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$GetMoreRequest.a(((List)localObject1).size());
       }
+      else
+      {
+        h();
+      }
+    }
+    else {
       h();
-      break label216;
-      break;
+    }
+    if ((getVisibility() == 0) && (((this.jdField_a_of_type_Int == 0) && (b())) || (this.jdField_a_of_type_Int != ((List)localObject1).size())))
+    {
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append("onGettedFileRecords. updateTabView");
+      QLog.d((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+      if (this.jdField_a_of_type_Int == 0) {
+        paramInt = j;
+      } else {
+        paramInt = -1;
+      }
+      c(paramInt);
     }
   }
   
@@ -364,20 +397,29 @@ public abstract class QfileBaseFavFileTabView
     }
     this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
     List localList = a();
-    Iterator localIterator = localList.iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = localList.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      FavFileInfo localFavFileInfo = (FavFileInfo)localIterator.next();
-      String str = a(localFavFileInfo);
+      localObject2 = (FavFileInfo)((Iterator)localObject1).next();
+      String str = a((FavFileInfo)localObject2);
       if (!this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
         this.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
       }
-      ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localFavFileInfo);
+      ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localObject2);
     }
     this.jdField_a_of_type_Int = localList.size();
     i();
     setSelect(0);
-    QLog.i(jdField_a_of_type_JavaLangString, 1, jdField_b_of_type_JavaLangString + "-> initGetRecentFileRecords. curSize:" + localList.size() + " OnceShowSize:" + c() + " isEnd:" + b());
+    localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append("-> initGetRecentFileRecords. curSize:");
+    ((StringBuilder)localObject2).append(localList.size());
+    ((StringBuilder)localObject2).append(" OnceShowSize:");
+    ((StringBuilder)localObject2).append(c());
+    ((StringBuilder)localObject2).append(" isEnd:");
+    ((StringBuilder)localObject2).append(b());
+    QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileBaseFavFileTabView$ITabBarViewProxy.a())
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider.a(null);
@@ -398,20 +440,18 @@ public abstract class QfileBaseFavFileTabView
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f());
     List localList = a();
-    if (this.jdField_a_of_type_Int != localList.size()) {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label97;
-      }
-    }
-    label97:
-    for (int i = 0;; i = -1)
+    if (this.jdField_a_of_type_Int != localList.size())
     {
-      c(i);
-      if ((!this.jdField_b_of_type_Boolean) || (localList.size() >= c()) || (b())) {
-        break;
+      int i;
+      if (this.jdField_a_of_type_Int == 0) {
+        i = 0;
+      } else {
+        i = -1;
       }
+      c(i);
+    }
+    if ((this.jdField_b_of_type_Boolean) && (localList.size() < c()) && (!b())) {
       a(c() - localList.size());
-      return;
     }
   }
   
@@ -428,30 +468,38 @@ public abstract class QfileBaseFavFileTabView
   
   protected void q()
   {
-    if ((this.jdField_a_of_type_JavaUtilLinkedHashMap == null) || (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() == 0)) {
-      if (b())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131692366);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setVisible(true);
-      }
-    }
-    for (;;)
+    LinkedHashMap localLinkedHashMap = this.jdField_a_of_type_JavaUtilLinkedHashMap;
+    if ((localLinkedHashMap != null) && (localLinkedHashMap.size() != 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131692357);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setVisible(true);
-      continue;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setGone();
     }
+    else if (b())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131692294);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setVisible(true);
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131692286);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setVisible(true);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.notifyDataSetChanged();
   }
   
   public void setSelect(int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() <= paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "setSelect[" + paramInt + "] faild,becouse GroupCount[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() + "]");
+      if (QLog.isColorLevel())
+      {
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setSelect[");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("] faild,becouse GroupCount[");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount());
+        localStringBuilder.append("]");
+        QLog.e(str, 1, localStringBuilder.toString());
       }
       return;
     }
@@ -460,7 +508,7 @@ public abstract class QfileBaseFavFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView
  * JD-Core Version:    0.7.0.1
  */

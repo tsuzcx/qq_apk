@@ -12,8 +12,8 @@ import com.tencent.falco.base.libapi.login.LoginServiceInterface;
 import com.tencent.falco.base.libapi.login.NoLoginObserver;
 import com.tencent.ilive.audiencepages.room.AudienceRoomActivity;
 import com.tencent.ilive.audiencepages.room.AudienceRoomViewPager;
+import com.tencent.ilive.audiencepages.room.MultiAudienceRoomActivity;
 import com.tencent.ilive.base.ReportInfo.Builder;
-import com.tencent.ilive.base.event.EventManger;
 import com.tencent.ilive.base.page.PageFactory;
 import com.tencent.ilive.base.page.PageFactory.FragmentActionCallback;
 import com.tencent.ilive.base.page.config.ActivityConfig;
@@ -24,7 +24,6 @@ import com.tencent.ilive.config.UIConfig;
 import com.tencent.ilive.enginemanager.BizEngineMgr;
 import com.tencent.ilive.pages.liveprepare.LivePrepareActivity;
 import com.tencent.ilive.pages.liveprepare.activity.AuthWebActivity;
-import com.tencent.ilive.pages.livestart.LiveStartActivity;
 import com.tencent.ilive.sorely.SoRelyCoreEntry;
 import com.tencent.ilive.util.ConfigUtil;
 import com.tencent.ilivesdk.domain.factory.LiveCaseFactory;
@@ -67,13 +66,15 @@ public class LiveSDK
     ((AppGeneralInfoService)liveEngine.getService(AppGeneralInfoService.class)).setSource(paramEnterRoomConfig.source);
     if ((userEngine.getCurrentRoomEngine() != null) && (!userEngine.getCurrentRoomEngine().isUnInit())) {
       ((LogInterface)liveEngine.getService(LogInterface.class)).i("livesdk", "enterLive--has currentRoom", new Object[0]);
-    }
-    for (;;)
-    {
-      AudienceRoomActivity.startAudienceRoom(paramEnterRoomConfig, paramContext);
-      return;
+    } else {
       reportStartEnter(paramEnterRoomConfig);
     }
+    if (paramEnterRoomConfig.mutilRoom)
+    {
+      MultiAudienceRoomActivity.a(paramEnterRoomConfig, paramContext);
+      return;
+    }
+    AudienceRoomActivity.startAudienceRoom(paramEnterRoomConfig, paramContext);
   }
   
   public static String getILiveBeaconKey()
@@ -83,8 +84,9 @@ public class LiveSDK
   
   public static String getILiveDeviceId()
   {
-    if (liveEngine != null) {
-      return ((AppGeneralInfoService)liveEngine.getService(AppGeneralInfoService.class)).getDeviceID();
+    LiveEngine localLiveEngine = liveEngine;
+    if (localLiveEngine != null) {
+      return ((AppGeneralInfoService)localLiveEngine.getService(AppGeneralInfoService.class)).getDeviceID();
     }
     return "";
   }
@@ -103,13 +105,15 @@ public class LiveSDK
   
   public static void init(Context paramContext, LiveConfig paramLiveConfig)
   {
-    if ((liveEngine != null) && (userEngine != null))
+    LiveEngine localLiveEngine = liveEngine;
+    if ((localLiveEngine != null) && (userEngine != null))
     {
-      ((LogInterface)liveEngine.getService(LogInterface.class)).e("livesdk", "iLiveSdk re init", new Object[0]);
+      ((LogInterface)localLiveEngine.getService(LogInterface.class)).e("livesdk", "iLiveSdk re init", new Object[0]);
       return;
     }
     liveConfig = paramLiveConfig;
     Log.i("livesdk", "preInit live sdk...");
+    ServiceFactory.init();
     ServiceFactory.config(liveConfig.serviceConfig);
     LiveCaseFactory.config(liveConfig.liveCaseConfig);
     sdkInit(paramContext);
@@ -125,13 +129,15 @@ public class LiveSDK
   
   public static void initSync(Context paramContext, LiveConfig paramLiveConfig, ICheckResult paramICheckResult)
   {
-    if ((liveEngine != null) && (userEngine != null))
+    LiveEngine localLiveEngine = liveEngine;
+    if ((localLiveEngine != null) && (userEngine != null))
     {
-      ((LogInterface)liveEngine.getService(LogInterface.class)).e("livesdk", "iLiveSdk re init", new Object[0]);
+      ((LogInterface)localLiveEngine.getService(LogInterface.class)).e("livesdk", "iLiveSdk re init", new Object[0]);
       return;
     }
     liveConfig = paramLiveConfig;
     Log.i("livesdk", "preInit live sdk...");
+    ServiceFactory.init();
     ServiceFactory.config(liveConfig.serviceConfig);
     LiveCaseFactory.config(liveConfig.liveCaseConfig);
     SoRelyCoreEntry.checkRely(paramContext.getApplicationContext(), new LiveSDK.1(paramContext, paramICheckResult));
@@ -145,8 +151,9 @@ public class LiveSDK
   
   public static void logout()
   {
-    if (userEngine != null) {
-      userEngine.uninit();
+    UserEngine localUserEngine = userEngine;
+    if (localUserEngine != null) {
+      localUserEngine.uninit();
     }
   }
   
@@ -167,69 +174,55 @@ public class LiveSDK
   
   private static void reportStartEnter(EnterRoomConfig paramEnterRoomConfig)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    Object localObject2 = (QualityReportServiceInterface)liveEngine.getService(QualityReportServiceInterface.class);
+    QualityReportServiceInterface localQualityReportServiceInterface = (QualityReportServiceInterface)liveEngine.getService(QualityReportServiceInterface.class);
     if (paramEnterRoomConfig.extData != null)
     {
       String str = paramEnterRoomConfig.extData.getString("roomProcessState", "0");
-      l = paramEnterRoomConfig.extData.getLong("startEnterTime", System.currentTimeMillis());
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putString("roomProcessState", str);
-      ((Bundle)localObject1).putLong("startEnterTime", l);
-      localObject2 = ((QualityReportServiceInterface)localObject2).getAudQualityReporter();
-      l = paramEnterRoomConfig.roomId;
-      if (!TextUtils.isEmpty(paramEnterRoomConfig.videoUrl)) {}
-      for (;;)
-      {
-        ((AudQualityServiceInterface)localObject2).reportStartEnter(l, bool1, userEngine.loginSuccess(), paramEnterRoomConfig.preloadedVideo, (Bundle)localObject1);
-        return;
-        bool1 = false;
-      }
-    }
-    Object localObject1 = ((QualityReportServiceInterface)localObject2).getAudQualityReporter();
-    long l = paramEnterRoomConfig.roomId;
-    if (!TextUtils.isEmpty(paramEnterRoomConfig.videoUrl)) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      ((AudQualityServiceInterface)localObject1).reportStartEnter(l, bool1, userEngine.loginSuccess(), paramEnterRoomConfig.preloadedVideo, null);
+      long l = paramEnterRoomConfig.extData.getLong("startEnterTime", System.currentTimeMillis());
+      Bundle localBundle = new Bundle();
+      localBundle.putString("roomProcessState", str);
+      localBundle.putLong("startEnterTime", l);
+      localQualityReportServiceInterface.getAudQualityReporter().reportStartEnter(paramEnterRoomConfig.roomId, TextUtils.isEmpty(paramEnterRoomConfig.videoUrl) ^ true, userEngine.loginSuccess(), paramEnterRoomConfig.preloadedVideo, localBundle);
       return;
     }
+    localQualityReportServiceInterface.getAudQualityReporter().reportStartEnter(paramEnterRoomConfig.roomId, TextUtils.isEmpty(paramEnterRoomConfig.videoUrl) ^ true, userEngine.loginSuccess(), paramEnterRoomConfig.preloadedVideo, null);
   }
   
   private static void sdkInit(Context paramContext)
   {
-    if (liveConfig.sdkType != null) {
-      switch (LiveSDK.3.$SwitchMap$com$tencent$ilive$LiveConfig$SDKType[liveConfig.sdkType.ordinal()])
-      {
-      }
-    }
-    for (;;)
+    if (liveConfig.sdkType != null)
     {
-      liveEngine = new LiveEngine(paramContext, ConfigUtil.getEnginConfig(liveConfig));
-      userEngine = liveEngine.createUserEngine();
-      BizEngineMgr.getInstance().setLiveEngine(liveEngine);
-      BizEngineMgr.getInstance().setUserEngine(userEngine);
-      EventManger.init();
-      BizEngineMgr.getInstance().init();
-      return;
-      LiveAnchor.initPageConfig();
-      continue;
-      if (liveConfig.liteSdk)
+      int i = LiveSDK.3.$SwitchMap$com$tencent$ilive$LiveConfig$SDKType[liveConfig.sdkType.ordinal()];
+      if (i != 1)
       {
-        LiveAudienceLite.initPageConfig();
+        if (i != 2)
+        {
+          if (i == 3)
+          {
+            LiveAnchor.initPageConfig();
+            LiveAudienceFull.initPageConfig();
+          }
+        }
+        else if (liveConfig.liteSdk) {
+          LiveAudienceLite.initPageConfig();
+        } else {
+          LiveAudienceFull.initPageConfig();
+        }
       }
-      else
-      {
-        LiveAudienceFull.initPageConfig();
-        continue;
+      else {
         LiveAnchor.initPageConfig();
-        LiveAudienceFull.initPageConfig();
-        continue;
-        LiveAnchor.initPageConfig();
-        LiveAudienceFull.initPageConfig();
       }
     }
+    else
+    {
+      LiveAnchor.initPageConfig();
+      LiveAudienceFull.initPageConfig();
+    }
+    liveEngine = new LiveEngine(paramContext, ConfigUtil.getEnginConfig(liveConfig));
+    userEngine = liveEngine.createUserEngine();
+    BizEngineMgr.getInstance().setLiveEngine(liveEngine);
+    BizEngineMgr.getInstance().setUserEngine(userEngine);
+    BizEngineMgr.getInstance().init();
   }
   
   public static void setNoLoginObserver(NoLoginObserver paramNoLoginObserver)
@@ -261,18 +254,11 @@ public class LiveSDK
     PageFactory.startActivity(paramStartLiveConfig, paramContext, paramInt);
   }
   
-  public static void startLive(Context paramContext, StartLiveConfig paramStartLiveConfig)
-  {
-    paramStartLiveConfig = new Intent();
-    paramStartLiveConfig.putExtra("screen_orientation_landscape", false);
-    paramStartLiveConfig.setFlags(335544320);
-    LiveStartActivity.LiveStartActivity(paramContext, paramStartLiveConfig);
-  }
-  
   public static void unInit()
   {
-    if (liveEngine != null) {
-      liveEngine.unInit();
+    LiveEngine localLiveEngine = liveEngine;
+    if (localLiveEngine != null) {
+      localLiveEngine.unInit();
     }
     ServiceFactory.unInit();
     UIConfig.bizModulesConfigMap.clear();
@@ -290,7 +276,7 @@ public class LiveSDK
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.LiveSDK
  * JD-Core Version:    0.7.0.1
  */

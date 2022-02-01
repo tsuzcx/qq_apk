@@ -35,7 +35,7 @@ public class ChatHistory$HistoryItemOnlongClickListener
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365636) {
+    if (paramView.getId() == 2131365480) {
       this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
     this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
@@ -49,20 +49,21 @@ public class ChatHistory$HistoryItemOnlongClickListener
   
   public boolean onLongClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if ((localObject != null) && (((BubblePopupWindow)localObject).isShowing()))
     {
       a(paramView);
       return false;
     }
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131365636, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690860), 2130839054);
-    if (localQQCustomMenu.a() > 0)
+    localObject = new QQCustomMenu();
+    ((QQCustomMenu)localObject).a(2131365480, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690788), 2130838907);
+    if (((QQCustomMenu)localObject).a() > 0)
     {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((ChatHistory.Holder)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
       int i = (int)this.jdField_a_of_type_AndroidGraphicsPointF.y;
-      int j = AIOUtils.a(10.0F, paramView.getResources());
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, i - j, localQQCustomMenu, this, null);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this);
+      int j = AIOUtils.b(10.0F, paramView.getResources());
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, i - j, (QQCustomMenu)localObject, this, null);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOnDismissListener(this);
       a(paramView);
       return true;
     }
@@ -82,7 +83,7 @@ public class ChatHistory$HistoryItemOnlongClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.HistoryItemOnlongClickListener
  * JD-Core Version:    0.7.0.1
  */

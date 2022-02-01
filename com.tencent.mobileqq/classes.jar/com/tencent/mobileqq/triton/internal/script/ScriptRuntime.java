@@ -68,50 +68,40 @@ public final class ScriptRuntime
   private final ScriptLoadStatistic convertToScriptLoadStatus(String paramString1, ScriptContextType paramScriptContextType, String paramString2, int paramInt, long[] paramArrayOfLong, String[] paramArrayOfString)
   {
     ScriptLoadResult localScriptLoadResult;
-    label53:
-    long l1;
-    long l2;
-    long l3;
-    long l4;
     switch (paramInt)
     {
     default: 
       localScriptLoadResult = ScriptLoadResult.FAIL_INVALID_STATE;
-      if (paramString2 != null)
-      {
-        l1 = paramArrayOfLong[0];
-        l2 = paramArrayOfLong[1];
-        l3 = paramArrayOfLong[2];
-        l4 = paramArrayOfLong[3];
-        paramArrayOfLong = paramArrayOfString[0];
-        if (paramArrayOfLong == null) {
-          break label173;
-        }
-      }
-      break;
     }
     for (;;)
     {
-      return new ScriptLoadStatistic(localScriptLoadResult, paramScriptContextType, paramString1, paramString2, l1, l2, l3, l4, paramArrayOfLong);
-      localScriptLoadResult = ScriptLoadResult.FAIL_INVALID_STATE;
-      break;
-      localScriptLoadResult = ScriptLoadResult.FAIL_EXECUTE;
-      break;
-      localScriptLoadResult = ScriptLoadResult.FAIL_COMPILE;
-      break;
-      localScriptLoadResult = ScriptLoadResult.FAIL_READ_SCRIPT;
-      break;
-      localScriptLoadResult = ScriptLoadResult.SUCCESS_WITH_CACHE;
-      break;
-      localScriptLoadResult = ScriptLoadResult.SUCCESS_WITHOUT_CACHE;
       break;
       localScriptLoadResult = ScriptLoadResult.SUCCESS_BUT_CACHE_REJECTED;
-      break;
+      continue;
+      localScriptLoadResult = ScriptLoadResult.SUCCESS_WITHOUT_CACHE;
+      continue;
+      localScriptLoadResult = ScriptLoadResult.SUCCESS_WITH_CACHE;
+      continue;
+      localScriptLoadResult = ScriptLoadResult.FAIL_READ_SCRIPT;
+      continue;
+      localScriptLoadResult = ScriptLoadResult.FAIL_COMPILE;
+      continue;
+      localScriptLoadResult = ScriptLoadResult.FAIL_EXECUTE;
+      continue;
+      localScriptLoadResult = ScriptLoadResult.FAIL_INVALID_STATE;
+    }
+    if (paramString2 == null) {
       paramString2 = "";
-      break label53;
-      label173:
+    }
+    long l1 = paramArrayOfLong[0];
+    long l2 = paramArrayOfLong[1];
+    long l3 = paramArrayOfLong[2];
+    long l4 = paramArrayOfLong[3];
+    paramArrayOfLong = paramArrayOfString[0];
+    if (paramArrayOfLong == null) {
       paramArrayOfLong = "";
     }
+    return new ScriptLoadStatistic(localScriptLoadResult, paramScriptContextType, paramString1, paramString2, l1, l2, l3, l4, paramArrayOfLong);
   }
   
   private final boolean isScriptThread()
@@ -128,15 +118,15 @@ public final class ScriptRuntime
     try
     {
       i = ScriptRuntime.Companion.access$nativeLoadScriptWithCodeCache(Companion, this.nativeHandle, paramString1, paramString2, paramString3, paramString4, arrayOfLong, arrayOfString);
-      return convertToScriptLoadStatus(paramString3, this.type, paramString1, i, arrayOfLong, arrayOfString);
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        int i = ScriptRuntime.Companion.access$nativeLoadScriptWithCodeCache(Companion, this.nativeHandle, paramString1, paramString2, paramString3, paramString4, arrayOfLong, arrayOfString);
-      }
+      int i;
+      label35:
+      break label35;
     }
+    i = ScriptRuntime.Companion.access$nativeLoadScriptWithCodeCache(Companion, this.nativeHandle, paramString1, paramString2, paramString3, paramString4, arrayOfLong, arrayOfString);
+    return convertToScriptLoadStatus(paramString3, this.type, paramString1, i, arrayOfLong, arrayOfString);
   }
   
   @JvmStatic
@@ -191,31 +181,40 @@ public final class ScriptRuntime
   @NotNull
   public final ScriptLoadStatistic loadScript(@NotNull ScriptFile paramScriptFile)
   {
-    String str1 = null;
     Intrinsics.checkParameterIsNotNull(paramScriptFile, "scriptFile");
-    if (!isScriptThread()) {
-      throw ((Throwable)new IllegalStateException(("loadScript " + paramScriptFile + " not on script thread").toString()));
-    }
-    if ((paramScriptFile instanceof ScriptFile.Path))
+    if (isScriptThread())
     {
-      str1 = ((ScriptFile.Path)paramScriptFile).getPath().getAbsolutePath();
-      Intrinsics.checkExpressionValueIsNotNull(str1, "scriptFile.path.absolutePath");
-      str2 = ((ScriptFile.Path)paramScriptFile).getName();
-      paramScriptFile = ((ScriptFile.Path)paramScriptFile).getCodeCache();
-      if (paramScriptFile != null) {}
-      for (paramScriptFile = paramScriptFile.getAbsolutePath();; paramScriptFile = null) {
+      boolean bool = paramScriptFile instanceof ScriptFile.Path;
+      String str1 = null;
+      localObject = null;
+      if (bool)
+      {
+        paramScriptFile = (ScriptFile.Path)paramScriptFile;
+        str1 = paramScriptFile.getPath().getAbsolutePath();
+        Intrinsics.checkExpressionValueIsNotNull(str1, "scriptFile.path.absolutePath");
+        str2 = paramScriptFile.getName();
+        localFile = paramScriptFile.getCodeCache();
+        paramScriptFile = (ScriptFile)localObject;
+        if (localFile != null) {
+          paramScriptFile = localFile.getAbsolutePath();
+        }
         return loadScript(str1, "", str2, paramScriptFile);
       }
+      paramScriptFile = (ScriptFile.Content)paramScriptFile;
+      localObject = paramScriptFile.getContent();
+      String str2 = paramScriptFile.getName();
+      File localFile = paramScriptFile.getCodeCache();
+      paramScriptFile = str1;
+      if (localFile != null) {
+        paramScriptFile = localFile.getAbsolutePath();
+      }
+      return loadScript("", (String)localObject, str2, paramScriptFile);
     }
-    paramScriptFile = (ScriptFile.Content)paramScriptFile;
-    String str2 = paramScriptFile.getContent();
-    String str3 = paramScriptFile.getName();
-    File localFile = paramScriptFile.getCodeCache();
-    paramScriptFile = str1;
-    if (localFile != null) {
-      paramScriptFile = localFile.getAbsolutePath();
-    }
-    return loadScript("", str2, str3, paramScriptFile);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("loadScript ");
+    ((StringBuilder)localObject).append(paramScriptFile);
+    ((StringBuilder)localObject).append(" not on script thread");
+    throw ((Throwable)new IllegalStateException(((StringBuilder)localObject).toString().toString()));
   }
   
   @NativeMethodProxy
@@ -224,8 +223,6 @@ public final class ScriptRuntime
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "event");
     Intrinsics.checkParameterIsNotNull(paramString2, "params");
-    String str;
-    ErrorCallback localErrorCallback;
     try
     {
       paramString2 = this.scriptPlugin.onCall(paramString1, (Argument)new ScriptRuntime.ScriptArgumentImpl(this, paramString2, paramInt1, paramInt2));
@@ -234,38 +231,41 @@ public final class ScriptRuntime
       }
       return "{}";
     }
-    catch (IllegalArgumentException paramString2)
-    {
-      paramString1 = ApiUtil.wrapCallbackFail(paramString1, null, paramString2.getMessage()).toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramString1, "ApiUtil.wrapCallbackFail…ll, e.message).toString()");
-      return paramString1;
-    }
     catch (Throwable localThrowable)
     {
-      str = "ScriptPlugin handle event " + paramString1 + " failed";
-      localErrorCallback = (ErrorCallback)this.engineContext.getStatisticsManager().getErrorCallback().getValue();
-      if (localErrorCallback == null) {
-        break label157;
+      paramString2 = new StringBuilder();
+      paramString2.append("ScriptPlugin handle event ");
+      paramString2.append(paramString1);
+      paramString2.append(" failed");
+      String str = paramString2.toString();
+      ErrorCallback localErrorCallback = (ErrorCallback)this.engineContext.getStatisticsManager().getErrorCallback().getValue();
+      if (localErrorCallback != null)
+      {
+        ErrorCodes localErrorCodes = ErrorCodes.SCRIPT_PLUGIN_CALL_FAIL;
+        if ((localThrowable instanceof TritonException))
+        {
+          paramString2 = (TritonException)localThrowable;
+        }
+        else
+        {
+          paramString2 = localThrowable.getMessage();
+          if (paramString2 == null) {
+            paramString2 = "";
+          }
+          paramString2 = new TritonException(paramString2, localErrorCodes, localThrowable);
+        }
+        localErrorCallback.onError(str, paramString2);
       }
-    }
-    ErrorCodes localErrorCodes = ErrorCodes.SCRIPT_PLUGIN_CALL_FAIL;
-    if ((localThrowable instanceof TritonException))
-    {
-      paramString2 = (TritonException)localThrowable;
-      localErrorCallback.onError(str, paramString2);
-      label157:
       paramString1 = ApiUtil.wrapCallbackFail(paramString1, null, localThrowable.getMessage()).toString();
       Intrinsics.checkExpressionValueIsNotNull(paramString1, "ApiUtil.wrapCallbackFail…ll, e.message).toString()");
       return paramString1;
     }
-    paramString2 = localThrowable.getMessage();
-    if (paramString2 != null) {}
-    for (;;)
+    catch (IllegalArgumentException paramString2)
     {
-      paramString2 = new TritonException(paramString2, localErrorCodes, localThrowable);
-      break;
-      paramString2 = "";
+      paramString1 = ApiUtil.wrapCallbackFail(paramString1, null, paramString2.getMessage()).toString();
+      Intrinsics.checkExpressionValueIsNotNull(paramString1, "ApiUtil.wrapCallbackFail…ll, e.message).toString()");
     }
+    return paramString1;
   }
   
   public final void runOnScriptThread(@NotNull Runnable paramRunnable)
@@ -279,10 +279,7 @@ public final class ScriptRuntime
     postScriptThread(paramRunnable);
   }
   
-  public final void setInspectorAgent(@Nullable InspectorAgent paramInspectorAgent)
-  {
-    if (paramInspectorAgent != null) {}
-  }
+  public final void setInspectorAgent(@Nullable InspectorAgent paramInspectorAgent) {}
   
   public final boolean subscribe2Script(@NotNull String paramString1, @Nullable String paramString2)
   {
@@ -292,7 +289,7 @@ public final class ScriptRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.ScriptRuntime
  * JD-Core Version:    0.7.0.1
  */

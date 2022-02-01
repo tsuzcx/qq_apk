@@ -16,28 +16,30 @@ class ForwardSdkBaseOption$PreStructViewHolder$1
   
   public void onClick(View paramView)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null) {}
-    for (;;)
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       String str = this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl.trim();
-      if (QLog.isColorLevel()) {
-        QLog.e("ForwardOption.ForwardSdkBaseOption", 2, "gotoWeb " + str);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("gotoWeb ");
+        ((StringBuilder)localObject).append(str);
+        QLog.e("ForwardOption.ForwardSdkBaseOption", 2, ((StringBuilder)localObject).toString());
       }
-      Intent localIntent = new Intent(this.a.a.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("param_force_internal_browser", true);
-      localIntent.putExtra("reqType", 7);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("url", str);
-      WebAccelerator.a(this.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, str);
-      this.a.a.F();
+      Object localObject = new Intent(this.a.a.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
+      ((Intent)localObject).putExtra("param_force_internal_browser", true);
+      ((Intent)localObject).putExtra("reqType", 7);
+      ((Intent)localObject).putExtra("hide_more_button", true);
+      ((Intent)localObject).putExtra("url", str);
+      WebAccelerator.a(this.a.a.jdField_a_of_type_AndroidAppActivity, (Intent)localObject, str);
+      this.a.a.G();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.PreStructViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,25 +37,27 @@ public class ClickableImageSpan
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.beEnable) {}
-    int i;
-    do
-    {
+    if (!this.beEnable) {
       return false;
-      i = paramMotionEvent.getAction();
-    } while (i == 2);
+    }
+    int i = paramMotionEvent.getAction();
+    if (i == 2) {
+      return false;
+    }
     if (i == 0) {
       this.mDrawable.setState(statePressed);
-    }
-    for (;;)
-    {
-      if ((i == 1) && (this.mClickListener != null)) {
-        this.mClickListener.onClick(this);
-      }
-      paramView.invalidate();
-      return true;
+    } else {
       this.mDrawable.setState(StateSet.WILD_CARD);
     }
+    if (i == 1)
+    {
+      paramMotionEvent = this.mClickListener;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.onClick(this);
+      }
+    }
+    paramView.invalidate();
+    return true;
   }
   
   public void setClickListener(ClickableImageSpan.ClickableImageSpanListener paramClickableImageSpanListener)
@@ -82,7 +84,7 @@ public class ClickableImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.ClickableImageSpan
  * JD-Core Version:    0.7.0.1
  */

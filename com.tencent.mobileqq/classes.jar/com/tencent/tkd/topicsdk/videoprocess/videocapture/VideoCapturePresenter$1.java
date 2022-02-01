@@ -1,6 +1,7 @@
 package com.tencent.tkd.topicsdk.videoprocess.videocapture;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -10,21 +11,30 @@ import org.jetbrains.annotations.Nullable;
 public final class VideoCapturePresenter$1
   implements CaptureTask.OnCaptureCallback
 {
-  public void a() {}
+  public void a()
+  {
+    Log.d("VideoCapturePresenter", "onCaptureFailed");
+  }
   
   public void a(@Nullable Bitmap paramBitmap, @NotNull CaptureTask paramCaptureTask)
   {
     Intrinsics.checkParameterIsNotNull(paramCaptureTask, "captureTask");
-    VideoCaptureContract.IVideoCaptureView localIVideoCaptureView = VideoCapturePresenter.a(this.a);
-    if (localIVideoCaptureView != null) {
-      localIVideoCaptureView.a(paramBitmap);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onCaptureSuccess: position: ");
+    ((StringBuilder)localObject).append(paramCaptureTask.a());
+    Log.d("VideoCapturePresenter", ((StringBuilder)localObject).toString());
+    localObject = VideoCapturePresenter.a(this.a);
+    if (localObject != null) {
+      ((VideoCaptureContract.IVideoCaptureView)localObject).a(paramBitmap);
     }
+    this.a.a(paramBitmap);
+    this.a.a(paramCaptureTask.a());
     VideoCapturePresenter.a(this.a, paramBitmap, paramCaptureTask.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCapturePresenter.1
  * JD-Core Version:    0.7.0.1
  */

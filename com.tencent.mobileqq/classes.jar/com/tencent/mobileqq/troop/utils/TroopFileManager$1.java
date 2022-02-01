@@ -22,37 +22,37 @@ class TroopFileManager$1
     {
     default: 
       return;
-    case 1: 
-      paramMessage = (List)arrayOfObject[0];
-      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
-      String str = (String)arrayOfObject[2];
-      long l = ((Long)arrayOfObject[3]).longValue();
-      this.a.a(paramMessage, bool, str, l);
-      return;
-    case 2: 
+    case 6: 
       paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.f(paramMessage);
-      return;
-    case 3: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.g(paramMessage);
-      return;
-    case 4: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.h(paramMessage);
+      this.a.j(paramMessage);
       return;
     case 5: 
       int i = paramMessage.arg1;
       this.a.a(i);
       return;
+    case 4: 
+      paramMessage = (TroopFileInfo)arrayOfObject[0];
+      this.a.h(paramMessage);
+      return;
+    case 3: 
+      paramMessage = (TroopFileInfo)arrayOfObject[0];
+      this.a.g(paramMessage);
+      return;
+    case 2: 
+      paramMessage = (TroopFileInfo)arrayOfObject[0];
+      this.a.f(paramMessage);
+      return;
     }
-    paramMessage = (TroopFileInfo)arrayOfObject[0];
-    this.a.j(paramMessage);
+    paramMessage = (List)arrayOfObject[0];
+    boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
+    String str = (String)arrayOfObject[2];
+    long l = ((Long)arrayOfObject[3]).longValue();
+    this.a.a(paramMessage, bool, str, l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileManager.1
  * JD-Core Version:    0.7.0.1
  */

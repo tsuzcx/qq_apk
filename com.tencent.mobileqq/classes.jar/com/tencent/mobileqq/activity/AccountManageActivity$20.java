@@ -18,33 +18,30 @@ class AccountManageActivity$20
       AccountManageActivity.a(this.a, (ImageView)paramView);
       AccountManageActivity.a(this.a, paramView);
       if (AppSetting.d) {
-        paramView.setContentDescription(this.a.getString(2131691195));
+        paramView.setContentDescription(this.a.getString(2131691116));
       }
     }
-    for (;;)
+    else if (AccountManageActivity.a(this.a) == paramView)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (AccountManageActivity.a(this.a) == paramView)
-      {
-        AccountManageActivity.b(this.a, paramView);
-        AccountManageActivity.a(this.a, null);
-        if (AppSetting.d) {
-          paramView.setContentDescription(this.a.getString(2131691207));
-        }
-      }
-      else
-      {
-        AccountManageActivity.b(this.a, AccountManageActivity.a(this.a));
-        AccountManageActivity.a(this.a, paramView);
-        AccountManageActivity.a(this.a, (ImageView)paramView);
+      AccountManageActivity.b(this.a, paramView);
+      AccountManageActivity.a(this.a, null);
+      if (AppSetting.d) {
+        paramView.setContentDescription(this.a.getString(2131691128));
       }
     }
+    else
+    {
+      AccountManageActivity localAccountManageActivity = this.a;
+      AccountManageActivity.b(localAccountManageActivity, AccountManageActivity.a(localAccountManageActivity));
+      AccountManageActivity.a(this.a, paramView);
+      AccountManageActivity.a(this.a, (ImageView)paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.20
  * JD-Core Version:    0.7.0.1
  */

@@ -25,13 +25,16 @@ class ShareJsPlugin$7
     }
     catch (JSONException paramView)
     {
-      QMLog.e("ShareJsPlugin", this.val$req.event + " error.", paramView);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.val$req.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("ShareJsPlugin", localStringBuilder.toString(), paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ShareJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

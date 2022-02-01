@@ -23,47 +23,49 @@ final class GameFileJsPlugin$downloadWithCache$doDownload$1
   
   public final void run()
   {
-    long l;
     try
     {
       Object localObject1 = new JSONObject(this.$req.jsonParams);
-      l = System.currentTimeMillis();
+      long l = System.currentTimeMillis();
       localObject1 = ((JSONObject)localObject1).optString("url");
-      if (!URLUtil.isValidUrl((String)localObject1))
+      boolean bool = URLUtil.isValidUrl((String)localObject1);
+      if (!bool)
       {
         this.$req.fail("invalid url");
         return;
       }
-      if (!GameFileJsPlugin.access$getMIsMiniGame$p(this.this$0)) {
-        break label125;
+      if (GameFileJsPlugin.access$getMIsMiniGame$p(this.this$0))
+      {
+        localObject2 = this.$req.jsService;
+        if (localObject2 != null)
+        {
+          if ((((GameJsService)localObject2).getContextType() == ScriptContextType.OPEN_DATA) && (!OpenDataDomainUtil.getInstance().isDomainValid((String)localObject1))) {
+            this.$req.fail("invalid url");
+          }
+        }
+        else {
+          throw new TypeCastException("null cannot be cast to non-null type com.tencent.qqmini.minigame.GameJsService");
+        }
       }
-      localObject2 = this.$req.jsService;
+      Object localObject2 = GameFileJsPlugin.access$getFileManager$p(this.this$0);
       if (localObject2 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.qqmini.minigame.GameJsService");
+        Intrinsics.throwNpe();
       }
+      localObject2 = ((MiniAppFileManager)localObject2).getTmpPathByUrl((String)localObject1);
+      ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download((String)localObject1, null, (String)localObject2, 60, (DownloaderProxy.DownloadListener)new GameFileJsPlugin.downloadWithCache.doDownload.1.1(this, l, (String)localObject1, (String)localObject2));
+      return;
     }
     catch (JSONException localJSONException)
     {
-      this.$req.fail("downloadWithCache exception");
-      return;
+      label182:
+      break label182;
     }
-    if ((((GameJsService)localObject2).getContextType() == ScriptContextType.OPEN_DATA) && (!OpenDataDomainUtil.getInstance().isDomainValid(localJSONException)))
-    {
-      this.$req.fail("invalid url");
-      return;
-    }
-    label125:
-    Object localObject2 = GameFileJsPlugin.access$getFileManager$p(this.this$0);
-    if (localObject2 == null) {
-      Intrinsics.throwNpe();
-    }
-    localObject2 = ((MiniAppFileManager)localObject2).getTmpPathByUrl(localJSONException);
-    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(localJSONException, null, (String)localObject2, 60, (DownloaderProxy.DownloadListener)new GameFileJsPlugin.downloadWithCache.doDownload.1.1(this, l, localJSONException, (String)localObject2));
+    this.$req.fail("downloadWithCache exception");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.GameFileJsPlugin.downloadWithCache.doDownload.1
  * JD-Core Version:    0.7.0.1
  */

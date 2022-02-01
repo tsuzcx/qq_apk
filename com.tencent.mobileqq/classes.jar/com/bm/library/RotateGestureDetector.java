@@ -28,29 +28,30 @@ public class RotateGestureDetector
   
   public void a(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getActionMasked())
+    int i = paramMotionEvent.getActionMasked();
+    if (i != 2)
     {
-    }
-    do
-    {
-      do
-      {
+      if ((i != 5) && (i != 6)) {
         return;
-      } while (paramMotionEvent.getPointerCount() != 2);
-      this.jdField_a_of_type_Float = a(paramMotionEvent);
-      return;
-    } while (paramMotionEvent.getPointerCount() <= 1);
-    this.b = a(paramMotionEvent);
-    double d1 = Math.toDegrees(Math.atan(this.b)) - Math.toDegrees(Math.atan(this.jdField_a_of_type_Float));
-    if (Math.abs(d1) <= 120.0D) {
-      this.jdField_a_of_type_ComBmLibraryOnRotateListener.a((float)d1, (this.e + this.c) / 2.0F, (this.f + this.d) / 2.0F);
+      }
+      if (paramMotionEvent.getPointerCount() == 2) {
+        this.jdField_a_of_type_Float = a(paramMotionEvent);
+      }
     }
-    this.jdField_a_of_type_Float = this.b;
+    else if (paramMotionEvent.getPointerCount() > 1)
+    {
+      this.b = a(paramMotionEvent);
+      double d1 = Math.toDegrees(Math.atan(this.b)) - Math.toDegrees(Math.atan(this.jdField_a_of_type_Float));
+      if (Math.abs(d1) <= 120.0D) {
+        this.jdField_a_of_type_ComBmLibraryOnRotateListener.a((float)d1, (this.e + this.c) / 2.0F, (this.f + this.d) / 2.0F);
+      }
+      this.jdField_a_of_type_Float = this.b;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.bm.library.RotateGestureDetector
  * JD-Core Version:    0.7.0.1
  */

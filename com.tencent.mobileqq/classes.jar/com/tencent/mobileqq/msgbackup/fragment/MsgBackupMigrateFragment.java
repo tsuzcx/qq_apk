@@ -2,13 +2,13 @@ package com.tencent.mobileqq.msgbackup.fragment;
 
 import android.content.res.Resources;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
 import com.tencent.mobileqq.msgbackup.util.MsgBackupReporter;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
@@ -18,96 +18,88 @@ import mqq.os.MqqHandler;
 public class MsgBackupMigrateFragment
   extends MsgBackupBaseFragment
 {
-  protected void b()
-  {
-    super.b();
-    setTitle(getActivity().getString(2131690626));
-    this.vg.setOnItemSelectListener(new MsgBackupMigrateFragment.1(this));
-  }
-  
   protected void c()
   {
     super.c();
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131690603);
-    if (AppSetting.d) {
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690603));
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690624));
-    this.c.setVisibility(0);
-    this.jdField_b_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+    a(getActivity().getString(2131690554));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setOnItemSelectListener(new MsgBackupMigrateFragment.1(this));
   }
   
   protected void d()
   {
     super.d();
+    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131690531);
+    if (AppSetting.d) {
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690531));
+    }
+    this.g.setText(getActivity().getString(2131690552));
+    this.c.setVisibility(0);
+    this.b.post(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  protected void e()
+  {
+    super.e();
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    switch (paramMessage.what)
+    if (paramMessage.what == 10012)
     {
-    }
-    for (;;)
-    {
-      return super.handleMessage(paramMessage);
-      if (paramMessage.arg1 == 1) {}
-      for (;;)
-      {
-        if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-          this.jdField_a_of_type_AndroidWidgetButton.setEnabled(bool);
-        }
-        if (bool) {
-          break label141;
-        }
-        if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
-        {
-          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131165877));
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690623));
-        }
-        if ((this.jdField_b_of_type_AndroidWidgetTextView == null) || (isDetached())) {
-          break;
-        }
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690647));
-        break;
+      int i = paramMessage.arg1;
+      boolean bool = true;
+      if (i != 1) {
         bool = false;
       }
-      label141:
-      if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!isDetached()))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167033));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690624));
+      if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+        this.jdField_a_of_type_AndroidWidgetButton.setEnabled(bool);
       }
-      if ((this.jdField_b_of_type_AndroidWidgetTextView != null) && (!isDetached())) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690648));
+      if (!bool)
+      {
+        if ((this.g != null) && (!isDetached()))
+        {
+          this.g.setTextColor(getResources().getColor(2131165880));
+          this.g.setText(getActivity().getString(2131690551));
+        }
+        if ((this.h != null) && (!isDetached())) {
+          this.h.setText(getActivity().getString(2131690575));
+        }
+      }
+      else
+      {
+        if ((this.g != null) && (!isDetached()))
+        {
+          this.g.setTextColor(getResources().getColor(2131167056));
+          this.g.setText(getActivity().getString(2131690552));
+        }
+        if ((this.h != null) && (!isDetached())) {
+          this.h.setText(getActivity().getString(2131690576));
+        }
       }
     }
+    return super.handleMessage(paramMessage);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    if (paramView.getId() == 2131371025)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      PublicFragmentActivity.a(getActivity(), MsgBackupSelectionFragment.class, 1000);
+      QPublicFragmentActivity.startForResult(getActivity(), MsgBackupSelectionFragment.class, 1000);
       if (QLog.isColorLevel()) {
         QLog.d("MsgBackup.MsgBackupMigrateFragment", 2, "migrate_btn onclick");
       }
       MsgBackupReporter.a("0X800A230");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
     if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_b_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.b.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
   }
   
@@ -118,7 +110,7 @@ public class MsgBackupMigrateFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment
  * JD-Core Version:    0.7.0.1
  */

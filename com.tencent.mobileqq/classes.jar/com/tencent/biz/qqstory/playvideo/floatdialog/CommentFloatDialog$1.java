@@ -14,50 +14,41 @@ class CommentFloatDialog$1
   
   public void onClick(View paramView)
   {
-    String str1;
-    if ((CommentFloatDialog.a(this.a) != null) && (CommentFloatDialog.a(this.a).a()))
+    Object localObject = CommentFloatDialog.a(this.a);
+    String str = "2";
+    if ((localObject != null) && (CommentFloatDialog.a(this.a).a()))
     {
       CommentFloatDialog.a(this.a).c();
       int i;
-      if (CommentFloatDialog.a(this.a) != null)
-      {
+      if (CommentFloatDialog.a(this.a) != null) {
         i = StoryReportor.a(CommentFloatDialog.a(this.a).a);
-        if (!this.a.a()) {
-          break label128;
-        }
-      }
-      label128:
-      for (str1 = "1";; str1 = "2")
-      {
-        StoryReportor.a("home_page", "cancel_reply", i, 0, new String[] { str1, StoryReportor.a(CommentFloatDialog.a(this.a)), "5", CommentFloatDialog.a(this.a) });
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
+      } else {
         i = 0;
-        break;
       }
+      if (this.a.a()) {
+        str = "1";
+      }
+      StoryReportor.a("home_page", "cancel_reply", i, 0, new String[] { str, StoryReportor.a(CommentFloatDialog.a(this.a)), "5", CommentFloatDialog.a(this.a) });
     }
-    this.a.a();
-    if (this.a.a())
+    else
     {
-      str1 = "2";
-      label154:
+      this.a.a();
+      if (this.a.a()) {
+        localObject = "2";
+      } else {
+        localObject = "1";
+      }
       if (!this.a.b()) {
-        break label199;
+        str = "1";
       }
+      StoryReportor.a("play_video", "close_reply", 0, 3, new String[] { localObject, str });
     }
-    label199:
-    for (String str2 = "2";; str2 = "1")
-    {
-      StoryReportor.a("play_video", "close_reply", 0, 3, new String[] { str1, str2 });
-      break;
-      str1 = "1";
-      break label154;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.1
  * JD-Core Version:    0.7.0.1
  */

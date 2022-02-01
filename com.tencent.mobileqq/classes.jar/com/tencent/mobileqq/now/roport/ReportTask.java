@@ -45,11 +45,6 @@ public class ReportTask
     ReportCenter.a.a(this.a);
   }
   
-  public ReportTask b(int paramInt)
-  {
-    return a("obj3", paramInt);
-  }
-  
   public ReportTask b(String paramString)
   {
     this.a.putString("action", paramString);
@@ -74,12 +69,16 @@ public class ReportTask
   
   public String toString()
   {
-    return "ReportTask{map=" + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReportTask{map=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.roport.ReportTask
  * JD-Core Version:    0.7.0.1
  */

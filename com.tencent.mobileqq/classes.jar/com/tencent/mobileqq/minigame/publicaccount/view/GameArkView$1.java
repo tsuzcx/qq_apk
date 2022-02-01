@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.publicaccount.view;
 
 import com.tencent.ark.open.ArkView;
-import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
+import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class GameArkView$1
@@ -13,20 +13,24 @@ class GameArkView$1
   {
     try
     {
-      if ((QQGameHelper.a(GameArkView.access$000(this.this$0))) && (GameArkView.access$100(this.this$0)) && (GameArkView.access$200(this.this$0) != null)) {
+      if ((GamePubAccountHelper.a(GameArkView.access$000(this.this$0))) && (GameArkView.access$100(this.this$0)) && (GameArkView.access$200(this.this$0) != null))
+      {
         GameArkView.access$200(this.this$0).onPause();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.d("GameArkView", 4, "-->onLoadState init arkview faile:" + localThrowable.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->onLoadState init arkview faile:");
+      localStringBuilder.append(localThrowable.getMessage());
+      QLog.d("GameArkView", 4, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.view.GameArkView.1
  * JD-Core Version:    0.7.0.1
  */

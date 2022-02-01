@@ -30,7 +30,16 @@ public class DeviceUtil
       if (j > 50) {
         i = 50;
       }
-      QLog.d("getDeviceBenchmarkLevel", 1, "getDeviceBenchmarkLevel coreNum:" + k + " cpuFreq:" + m + " ramSize:" + n + " score:" + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDeviceBenchmarkLevel coreNum:");
+      localStringBuilder.append(k);
+      localStringBuilder.append(" cpuFreq:");
+      localStringBuilder.append(m);
+      localStringBuilder.append(" ramSize:");
+      localStringBuilder.append(n);
+      localStringBuilder.append(" score:");
+      localStringBuilder.append(i);
+      QLog.d("getDeviceBenchmarkLevel", 1, localStringBuilder.toString());
       return i;
     }
     catch (Throwable localThrowable)
@@ -42,7 +51,7 @@ public class DeviceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.DeviceUtil
  * JD-Core Version:    0.7.0.1
  */

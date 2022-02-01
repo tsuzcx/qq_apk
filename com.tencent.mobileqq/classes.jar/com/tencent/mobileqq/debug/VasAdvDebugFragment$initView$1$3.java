@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.tencent.mobileqq.activity.weather.webpage.WeatherWebPageHelperKt;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.weather.api.IWeatherCommApi;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -27,21 +28,24 @@ final class VasAdvDebugFragment$initView$1$3
     localObject2 = ((EditText)localObject2).getText().toString();
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
     {
-      Context localContext = this.jdField_a_of_type_AndroidViewView.getContext();
-      Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-      WeatherWebPageHelperKt.a(localContext, (String)localObject1, (String)localObject2);
+      ((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).openWeatherWebPage(this.jdField_a_of_type_AndroidViewView.getContext(), (String)localObject1, (String)localObject2);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Toast.makeText(this.jdField_a_of_type_AndroidViewView.getContext(), (CharSequence)("Invalid adcode=" + (String)localObject1 + " or businessId=" + (String)localObject2), 1).show();
+      Context localContext = this.jdField_a_of_type_AndroidViewView.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Invalid adcode=");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(" or businessId=");
+      localStringBuilder.append((String)localObject2);
+      Toast.makeText(localContext, (CharSequence)localStringBuilder.toString(), 1).show();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.debug.VasAdvDebugFragment.initView.1.3
  * JD-Core Version:    0.7.0.1
  */

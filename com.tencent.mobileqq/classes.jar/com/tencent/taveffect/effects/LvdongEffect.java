@@ -14,14 +14,13 @@ public class LvdongEffect
   
   protected void beforeDraw(TAVTextureInfo paramTAVTextureInfo)
   {
-    if (this.progress < 1.01F) {
-      this.progress += 0.15F;
-    }
-    for (;;)
+    float f = this.progress;
+    if (f < 1.01F)
     {
-      GLES20.glUniform1f(this.myProgressHandle, this.progress);
-      TAVGLUtils.checkEglError("glUniform1f myProgressHandle");
-      return;
+      this.progress = (f + 0.15F);
+    }
+    else
+    {
       this.delayTime += 0.05F;
       if (this.delayTime > 0.1F)
       {
@@ -29,6 +28,8 @@ public class LvdongEffect
         this.progress = 0.0F;
       }
     }
+    GLES20.glUniform1f(this.myProgressHandle, this.progress);
+    TAVGLUtils.checkEglError("glUniform1f myProgressHandle");
   }
   
   public LvdongEffect clone()
@@ -38,10 +39,17 @@ public class LvdongEffect
   
   protected String getFragmentShaderCode(TAVTextureInfo paramTAVTextureInfo)
   {
-    if (paramTAVTextureInfo.textureType == 36197) {
-      return " #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES " + FRAGMENT_SHADER_CODE;
+    if (paramTAVTextureInfo.textureType == 36197)
+    {
+      paramTAVTextureInfo = new StringBuilder();
+      paramTAVTextureInfo.append(" #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES ");
+      paramTAVTextureInfo.append(FRAGMENT_SHADER_CODE);
+      return paramTAVTextureInfo.toString();
     }
-    return "uniform sampler2D " + FRAGMENT_SHADER_CODE;
+    paramTAVTextureInfo = new StringBuilder();
+    paramTAVTextureInfo.append("uniform sampler2D ");
+    paramTAVTextureInfo.append(FRAGMENT_SHADER_CODE);
+    return paramTAVTextureInfo.toString();
   }
   
   protected void initShader(TAVTextureInfo paramTAVTextureInfo)
@@ -53,7 +61,7 @@ public class LvdongEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.taveffect.effects.LvdongEffect
  * JD-Core Version:    0.7.0.1
  */

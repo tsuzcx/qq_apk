@@ -22,26 +22,41 @@ public final class MmrExtensionsKt
       paramMediaMetadataRetriever.setDataSource(paramString);
       return paramMediaMetadataRetriever;
     }
-    catch (IllegalArgumentException paramMediaMetadataRetriever)
+    catch (IOException paramMediaMetadataRetriever)
     {
-      Log.e("MmrExtensions", "filePath: " + paramString + ", e: " + paramMediaMetadataRetriever);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("filePath: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", e: ");
+      localStringBuilder.append(paramMediaMetadataRetriever);
+      Log.e("MmrExtensions", localStringBuilder.toString());
       return null;
     }
     catch (FileNotFoundException paramMediaMetadataRetriever)
     {
-      Log.e("MmrExtensions", "filePath: " + paramString + ", e: " + paramMediaMetadataRetriever);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("filePath: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", e: ");
+      localStringBuilder.append(paramMediaMetadataRetriever);
+      Log.e("MmrExtensions", localStringBuilder.toString());
       return null;
     }
-    catch (IOException paramMediaMetadataRetriever)
+    catch (IllegalArgumentException paramMediaMetadataRetriever)
     {
-      Log.e("MmrExtensions", "filePath: " + paramString + ", e: " + paramMediaMetadataRetriever);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("filePath: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", e: ");
+      localStringBuilder.append(paramMediaMetadataRetriever);
+      Log.e("MmrExtensions", localStringBuilder.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.MmrExtensionsKt
  * JD-Core Version:    0.7.0.1
  */

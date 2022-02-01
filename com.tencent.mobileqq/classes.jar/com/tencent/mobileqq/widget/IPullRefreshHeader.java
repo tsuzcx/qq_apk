@@ -15,11 +15,11 @@ public abstract interface IPullRefreshHeader
   
   public abstract void a(long paramLong);
   
-  public abstract void ah_();
-  
   public abstract void b(long paramLong);
   
   public abstract void c(long paramLong);
+  
+  public abstract void f();
   
   public abstract void setHeaderBgColor(int paramInt);
   
@@ -31,7 +31,7 @@ public abstract interface IPullRefreshHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IPullRefreshHeader
  * JD-Core Version:    0.7.0.1
  */

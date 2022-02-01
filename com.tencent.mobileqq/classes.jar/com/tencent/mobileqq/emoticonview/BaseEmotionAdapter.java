@@ -35,7 +35,7 @@ public abstract class BaseEmotionAdapter
   protected float density;
   protected int emoticonTextColor;
   protected int emotionType;
-  public Context mContext;
+  protected Context mContext;
   protected int panelType;
   protected Map<Integer, ArrayList<View>> recycleViewMap;
   public int widthPixels;
@@ -49,7 +49,7 @@ public abstract class BaseEmotionAdapter
     this.emotionType = paramInt3;
     this.callback = paramEmoticonCallback;
     this.recycleViewMap = new ConcurrentHashMap();
-    this.emoticonTextColor = this.mContext.getResources().getColor(2131166540);
+    this.emoticonTextColor = this.mContext.getResources().getColor(2131166554);
     this.density = this.mContext.getResources().getDisplayMetrics().density;
   }
   
@@ -79,7 +79,7 @@ public abstract class BaseEmotionAdapter
             if ((localView instanceof EmoticonPanelLinearLayout)) {
               ((EmoticonPanelLinearLayout)localView).setCallBack(null);
             }
-            Integer localInteger = (Integer)localView.getTag(2131378812);
+            Integer localInteger = (Integer)localView.getTag(2131378201);
             if (EmotionPanelViewPool.widthPixels == localInteger.intValue()) {
               EmotionPanelViewPool.getInstance().release(j, localView);
             }
@@ -97,12 +97,14 @@ public abstract class BaseEmotionAdapter
   
   public int getCount()
   {
-    if (this.data != null)
+    List localList = this.data;
+    if (localList != null)
     {
-      int k = this.data.size();
-      int j = k / this.columnNum;
+      int k = localList.size();
+      int m = this.columnNum;
+      int j = k / m;
       int i = j;
-      if (k % this.columnNum > 0) {
+      if (k % m > 0) {
         i = j + 1;
       }
       return i;
@@ -135,13 +137,14 @@ public abstract class BaseEmotionAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramView == null) {}
-    for (Object localObject = newHolder();; localObject = (BaseEmotionAdapter.ViewHolder)paramView.getTag())
-    {
-      localObject = getEmotionView((BaseEmotionAdapter.ViewHolder)localObject, paramInt, paramView, paramViewGroup);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
+    if (paramView == null) {
+      localObject = newHolder();
+    } else {
+      localObject = (BaseEmotionAdapter.ViewHolder)paramView.getTag();
     }
+    Object localObject = getEmotionView((BaseEmotionAdapter.ViewHolder)localObject, paramInt, paramView, paramViewGroup);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
   
   public abstract BaseEmotionAdapter.ViewHolder newHolder();
@@ -150,25 +153,29 @@ public abstract class BaseEmotionAdapter
   
   public void recycleView(int paramInt, View paramView)
   {
-    if (paramView == null) {}
-    ArrayList localArrayList;
-    do
-    {
+    if (paramView == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d(TAG, 2, "recycleView viewType = " + paramInt);
-      }
-      paramView.setTag(2131378812, Integer.valueOf(this.widthPixels));
-      localArrayList = (ArrayList)this.recycleViewMap.get(Integer.valueOf(paramInt));
-      if (localArrayList == null)
-      {
-        localArrayList = new ArrayList();
-        localArrayList.add(paramView);
-        this.recycleViewMap.put(Integer.valueOf(paramInt), localArrayList);
-        return;
-      }
-    } while (localArrayList.contains(paramView));
-    localArrayList.add(paramView);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recycleView viewType = ");
+      localStringBuilder.append(paramInt);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    paramView.setTag(2131378201, Integer.valueOf(this.widthPixels));
+    Object localObject = (ArrayList)this.recycleViewMap.get(Integer.valueOf(paramInt));
+    if (localObject == null)
+    {
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(paramView);
+      this.recycleViewMap.put(Integer.valueOf(paramInt), localObject);
+      return;
+    }
+    if (!((ArrayList)localObject).contains(paramView)) {
+      ((ArrayList)localObject).add(paramView);
+    }
   }
   
   public void refreshPanelData() {}
@@ -186,7 +193,7 @@ public abstract class BaseEmotionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BaseEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

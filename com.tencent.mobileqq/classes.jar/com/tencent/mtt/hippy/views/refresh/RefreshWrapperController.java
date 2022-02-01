@@ -20,7 +20,7 @@ public class RefreshWrapperController
     paramRefreshWrapper.setTime(paramInt);
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new RefreshWrapper(paramContext);
   }
@@ -28,13 +28,14 @@ public class RefreshWrapperController
   public void dispatchFunction(RefreshWrapper paramRefreshWrapper, String paramString, HippyArray paramHippyArray)
   {
     super.dispatchFunction(paramRefreshWrapper, paramString, paramHippyArray);
-    if ("refreshComplected".equals(paramString)) {
+    if ("refreshComplected".equals(paramString))
+    {
       paramRefreshWrapper.refreshComplected();
-    }
-    while (!"startRefresh".equals(paramString)) {
       return;
     }
-    paramRefreshWrapper.startRefresh();
+    if ("startRefresh".equals(paramString)) {
+      paramRefreshWrapper.startRefresh();
+    }
   }
   
   @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onScrollEnable")
@@ -51,7 +52,7 @@ public class RefreshWrapperController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.refresh.RefreshWrapperController
  * JD-Core Version:    0.7.0.1
  */

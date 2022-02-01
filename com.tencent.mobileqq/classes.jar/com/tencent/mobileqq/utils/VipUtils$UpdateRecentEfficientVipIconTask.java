@@ -43,145 +43,136 @@ class VipUtils$UpdateRecentEfficientVipIconTask
     boolean bool = ((FriendsManager)localObject).c;
     Friends localFriends = ((FriendsManager)localObject).e(paramString);
     int i;
-    int j;
-    if ((localFriends != null) && (VipUtils.VipIconUtils.a(localFriends.nameplateVipType)))
-    {
+    if ((localFriends != null) && (VipUtils.VipIconUtils.a(localFriends.nameplateVipType))) {
       i = 1;
-      if (i != 0)
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      if (!VipUtils.VipIconUtils.b(localFriends.grayNameplateFlag))
       {
-        if (VipUtils.VipIconUtils.b(localFriends.grayNameplateFlag)) {
-          break label255;
-        }
         String str = VipUtils.VipIconUtils.a(localQQAppInterface, localFriends.uin, VipUtils.VipIconUtils.NamePlateVipTpye.a(localFriends.nameplateVipType), false);
         SingleLineTextView localSingleLineTextView = paramRecentEfficientItemBuilderHolder.a;
         j = VipUtils.VipIconUtils.a(VipUtils.VipIconUtils.NamePlateVipTpye.a(localFriends.nameplateVipType));
-        if (!VipUtils.a(localFriends.nameplateVipType)) {
-          break label249;
+        if (VipUtils.a(localFriends.nameplateVipType)) {
+          localObject = localFriends;
+        } else {
+          localObject = null;
         }
-        localObject = localFriends;
-        label125:
         VipUtils.a(localSingleLineTextView, paramContext, str, j, (Friends)localObject);
       }
-      label137:
-      j = VipUtils.a(localQQAppInterface, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("VipUtils", 2, "bindView: vip=" + j);
-      }
-      if (j >> 8 != 3) {
-        break label344;
-      }
-      paramString = VipUtils.VipIconUtils.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_BIGCLUB);
-      if ((j & 0xF) != 1) {
-        break label286;
-      }
-      if (!bool) {
-        break label267;
-      }
-      paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167177));
-      label226:
-      if (i == 0) {
-        VipUtils.a(paramRecentEfficientItemBuilderHolder.a, paramContext, paramString, 2130847431, localFriends);
+      else
+      {
+        paramRecentEfficientItemBuilderHolder.a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
       }
     }
-    for (;;)
+    int j = VipUtils.a(localQQAppInterface, paramString);
+    if (QLog.isColorLevel())
     {
-      return;
-      i = 0;
-      break;
-      label249:
-      localObject = null;
-      break label125;
-      label255:
-      paramRecentEfficientItemBuilderHolder.a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
-      break label137;
-      label267:
-      paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167040));
-      break label226;
-      label286:
-      if (bool) {
-        paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167177));
-      }
-      while (i == 0)
-      {
-        VipUtils.a(paramRecentEfficientItemBuilderHolder.a, paramContext, paramString, 2130847429, localFriends);
-        return;
-        paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167040));
-      }
-      continue;
-      label344:
-      if (j >> 8 == 1)
-      {
-        if (bool) {
-          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167177));
-        }
-        for (;;)
-        {
-          paramString = VipUtils.VipIconUtils.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_QQVIP);
-          if (i != 0) {
-            break;
-          }
-          VipUtils.a(paramRecentEfficientItemBuilderHolder.a, paramContext, paramString, 2130847430);
-          return;
-          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167040));
-        }
-      }
-      if (j >> 8 != 2) {
-        break label559;
-      }
-      paramString = VipUtils.VipIconUtils.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_SUPERVIP);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("bindView: vip=");
+      ((StringBuilder)localObject).append(j);
+      QLog.d("VipUtils", 2, ((StringBuilder)localObject).toString());
+    }
+    int k = j >> 8;
+    if (k == 3)
+    {
+      paramString = VipUtils.VipIconUtils.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_BIGCLUB);
       if ((j & 0xF) == 1)
       {
         if (bool) {
-          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167177));
+          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167202));
+        } else {
+          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167063));
         }
-        while (i == 0)
-        {
-          VipUtils.a(paramRecentEfficientItemBuilderHolder.a, paramContext, paramString, 2130847431);
-          return;
-          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167040));
+        if (i == 0) {
+          VipUtils.a(paramRecentEfficientItemBuilderHolder.a, paramContext, paramString, 2130847300, localFriends);
         }
       }
       else
       {
         if (bool) {
-          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167177));
+          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167202));
+        } else {
+          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167063));
         }
-        while (i == 0)
-        {
-          VipUtils.a(paramRecentEfficientItemBuilderHolder.a, paramContext, paramString, 2130847429);
-          return;
-          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167040));
+        if (i == 0) {
+          VipUtils.a(paramRecentEfficientItemBuilderHolder.a, paramContext, paramString, 2130847298, localFriends);
         }
       }
     }
-    label559:
-    paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167040));
-    paramRecentEfficientItemBuilderHolder.a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+    else if (k == 1)
+    {
+      if (bool) {
+        paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167202));
+      } else {
+        paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167063));
+      }
+      paramString = VipUtils.VipIconUtils.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_QQVIP);
+      if (i == 0) {
+        VipUtils.a(paramRecentEfficientItemBuilderHolder.a, paramContext, paramString, 2130847299);
+      }
+    }
+    else if (k == 2)
+    {
+      paramString = VipUtils.VipIconUtils.a(localQQAppInterface, paramString, EVIPSPEC.E_SP_SUPERVIP);
+      if ((j & 0xF) == 1)
+      {
+        if (bool) {
+          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167202));
+        } else {
+          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167063));
+        }
+        if (i == 0) {
+          VipUtils.a(paramRecentEfficientItemBuilderHolder.a, paramContext, paramString, 2130847300);
+        }
+      }
+      else
+      {
+        if (bool) {
+          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167202));
+        } else {
+          paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167063));
+        }
+        if (i == 0) {
+          VipUtils.a(paramRecentEfficientItemBuilderHolder.a, paramContext, paramString, 2130847298);
+        }
+      }
+    }
+    else
+    {
+      paramRecentEfficientItemBuilderHolder.a.setTextColor(paramContext.getResources().getColor(2131167063));
+      paramRecentEfficientItemBuilderHolder.a.setCompoundDrawablesWithIntrinsicBounds(0, 0);
+    }
   }
   
   public void run()
   {
     VipUtils.UpdateRecentEfficientVipIconTask.Manager.b(this);
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Boolean)
+    {
       if (QLog.isColorLevel()) {
         QLog.w("VipUtils", 1, "updateRecentEfficientVipIcon async - not Valid");
       }
-    }
-    do
-    {
       return;
-      Context localContext = (Context)this.b.get();
-      RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder localRecentEfficientItemBuilderHolder = (RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder)this.c.get();
-      if ((localContext != null) && (localRecentEfficientItemBuilderHolder != null)) {
-        a(localContext, this.jdField_a_of_type_JavaLangString, localRecentEfficientItemBuilderHolder);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("VipUtils", 1, "updateRecentEfficientVipIcon async - sucess : " + this.jdField_a_of_type_JavaLangString);
+    }
+    Object localObject = (Context)this.b.get();
+    RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder localRecentEfficientItemBuilderHolder = (RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder)this.c.get();
+    if ((localObject != null) && (localRecentEfficientItemBuilderHolder != null)) {
+      a((Context)localObject, this.jdField_a_of_type_JavaLangString, localRecentEfficientItemBuilderHolder);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateRecentEfficientVipIcon async - sucess : ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      QLog.w("VipUtils", 1, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.UpdateRecentEfficientVipIconTask
  * JD-Core Version:    0.7.0.1
  */

@@ -51,36 +51,44 @@ public final class GetWatchWordShareRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.errmsg != null) {
-      paramJceOutputStream.write(this.errmsg, 1);
+    String str = this.errmsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.itemname != null) {
-      paramJceOutputStream.write(this.itemname, 2);
+    str = this.itemname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.itemtype != null) {
-      paramJceOutputStream.write(this.itemtype, 3);
+    str = this.itemtype;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.shareuinnick != null) {
-      paramJceOutputStream.write(this.shareuinnick, 4);
+    str = this.shareuinnick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.sharemsg != null) {
-      paramJceOutputStream.write(this.sharemsg, 5);
+    str = this.sharemsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.thumbnailurl != null) {
-      paramJceOutputStream.write(this.thumbnailurl, 6);
+    str = this.thumbnailurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.detailurl != null) {
-      paramJceOutputStream.write(this.detailurl, 7);
+    str = this.detailurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.itemmsg != null) {
-      paramJceOutputStream.write(this.itemmsg, 8);
+    str = this.itemmsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.portrait, 9);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.GetWatchWordShareRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -21,17 +21,16 @@ public final class SystemBarTintUtil
   public final int a(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    int i = 0;
-    int j = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getResources().getDimensionPixelSize(j);
+    int i = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
+    if (i > 0) {
+      return paramContext.getResources().getDimensionPixelSize(i);
     }
-    return i;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.SystemBarTintUtil
  * JD-Core Version:    0.7.0.1
  */

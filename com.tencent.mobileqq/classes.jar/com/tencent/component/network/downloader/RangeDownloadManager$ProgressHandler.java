@@ -25,17 +25,17 @@ class RangeDownloadManager$ProgressHandler
     int i = ((Integer)paramMessage.obj).intValue();
     if ((i > 0) && (this.contentLength > 0L))
     {
-      long l = this.totalByteReceive;
-      this.totalByteReceive = (i + l);
-      if ((this.progressListenerWeakReference != null) && (this.progressListenerWeakReference.get() != null)) {
-        ((RangeDownloadManager.ProgressListener)this.progressListenerWeakReference.get()).onReceive(1.0F * (float)this.totalByteReceive / (float)this.contentLength);
+      this.totalByteReceive += i;
+      paramMessage = this.progressListenerWeakReference;
+      if ((paramMessage != null) && (paramMessage.get() != null)) {
+        ((RangeDownloadManager.ProgressListener)this.progressListenerWeakReference.get()).onReceive((float)this.totalByteReceive * 1.0F / (float)this.contentLength);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.RangeDownloadManager.ProgressHandler
  * JD-Core Version:    0.7.0.1
  */

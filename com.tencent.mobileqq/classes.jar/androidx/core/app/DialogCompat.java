@@ -11,21 +11,18 @@ public class DialogCompat
   public static View requireViewById(@NonNull Dialog paramDialog, int paramInt)
   {
     if (Build.VERSION.SDK_INT >= 28) {
-      paramDialog = paramDialog.requireViewById(paramInt);
+      return paramDialog.requireViewById(paramInt);
     }
-    View localView;
-    do
-    {
+    paramDialog = paramDialog.findViewById(paramInt);
+    if (paramDialog != null) {
       return paramDialog;
-      localView = paramDialog.findViewById(paramInt);
-      paramDialog = localView;
-    } while (localView != null);
+    }
     throw new IllegalArgumentException("ID does not reference a View inside this Dialog");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.DialogCompat
  * JD-Core Version:    0.7.0.1
  */

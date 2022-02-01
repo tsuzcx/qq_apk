@@ -21,17 +21,16 @@ public final class g
   {
     try
     {
-      Method localMethod = Throwable.class.getDeclaredMethod("addSuppressed", new Class[] { Throwable.class });
-      e = localMethod;
-      return;
+      localMethod = Throwable.class.getDeclaredMethod("addSuppressed", new Class[] { Throwable.class });
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject = null;
-      }
+      Method localMethod;
+      label102:
+      break label102;
     }
+    localMethod = null;
+    e = localMethod;
   }
   
   public static String a(String paramString, Object... paramVarArgs)
@@ -41,7 +40,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.b.g
  * JD-Core Version:    0.7.0.1
  */

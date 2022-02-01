@@ -9,47 +9,49 @@ class QQARSession$9
   
   public void run()
   {
+    boolean bool = QQARSession.c(this.this$0);
     int j = 0;
-    if (QQARSession.c(this.this$0)) {
+    if (bool)
+    {
       if (QQARSession.a(this.this$0) != null) {
         QQARSession.b(this.this$0, false);
       }
-    }
-    int i;
-    do
-    {
       return;
+    }
+    int i = j;
+    if (QQARSession.a(this.this$0) != null)
+    {
       i = j;
-      if (QQARSession.a(this.this$0) != null)
+      if (QQARSession.a(this.this$0).a != null)
       {
         i = j;
-        if (QQARSession.a(this.this$0).a != null)
+        if (QQARSession.b(this.this$0))
         {
           i = j;
-          if (QQARSession.b(this.this$0))
-          {
-            i = j;
-            if (this.this$0.a == 2) {
-              i = 1;
-            }
+          if (this.this$0.a == 2) {
+            i = 1;
           }
         }
       }
-      if ((this.a) && (i != 0))
-      {
-        QQARSession.a(this.this$0, QQARSession.a(this.this$0).a);
-        return;
-      }
-    } while (i == 0);
-    if (QQARSession.a(this.this$0) != null) {
-      QQARSession.b(this.this$0, true);
     }
-    this.this$0.p();
+    if ((this.a) && (i != 0))
+    {
+      QQARSession localQQARSession = this.this$0;
+      QQARSession.a(localQQARSession, QQARSession.a(localQQARSession).a);
+      return;
+    }
+    if (i != 0)
+    {
+      if (QQARSession.a(this.this$0) != null) {
+        QQARSession.b(this.this$0, true);
+      }
+      this.this$0.p();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.9
  * JD-Core Version:    0.7.0.1
  */

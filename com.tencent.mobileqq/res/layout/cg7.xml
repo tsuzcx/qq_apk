@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/o8k" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <RelativeLayout android:id="@id/o1t" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/dum" android:padding="5.0dip" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="45.0dip" android:src="@drawable/f_z" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <ImageView android:id="@id/n_l" android:padding="5.0dip" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginTop="45.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/aus" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <ImageView android:id="@id/naf" android:padding="5.0dip" android:layout_width="70.0dip" android:layout_height="70.0dip" android:src="@drawable/dhl" android:layout_centerInParent="true" />
-        <TextView android:textSize="@dimen/aw3" android:textColor="@color/al3" android:id="@id/oco" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginBottom="100.0dip" android:text="00:00" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-        <TextView android:textSize="@dimen/aw3" android:textColor="@color/al3" android:id="@id/ofn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_marginBottom="100.0dip" android:text="00:00" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-        <SeekBar android:id="@id/o3j" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="103.0dip" android:maxHeight="1.0dip" android:max="100" android:progress="0" android:minHeight="1.0dip" android:thumbOffset="0.0dip" android:layout_toLeftOf="@id/ofn" android:layout_toRightOf="@id/oco" android:layout_alignParentBottom="true" style="@style/a00" />
+    <View android:id="@id/n5i" android:background="@drawable/bks" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="125.0dip" />
+    <ImageView android:id="@id/mqo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="32.0dip">
+        <com.tencent.avgame.gameroom.stage.util.CountDownClockNumLottieView android:id="@id/och" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="29.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/joq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="#3d000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_centerInParent="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/ocj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:shadowColor="#3d000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
-</FrameLayout>
+    <View android:id="@id/od2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="106.0dip" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/ngm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginBottom="20.5dip" android:layout_above="@id/od2" android:layout_centerHorizontal="true">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/nfd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+                <com.tencent.avgame.ui.AVGameText android:id="@id/ofe" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/nfd">
+                <com.tencent.avgame.ui.AVGameText android:id="@id/ofg" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/od8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:layout_above="@id/od2" android:layout_centerHorizontal="true">
+        <TextView android:textSize="30.0dip" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/od3" android:paddingLeft="16.0dip" android:paddingRight="19.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" android:maxLines="2" android:shadowColor="#33000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_weight="0.73" />
+    </LinearLayout>
+</merge>

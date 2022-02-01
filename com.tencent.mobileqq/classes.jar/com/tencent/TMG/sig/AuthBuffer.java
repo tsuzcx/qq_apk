@@ -7,35 +7,37 @@ public class AuthBuffer
   
   public static AuthBuffer getInstance()
   {
-    if (sAuthBuffer == null) {}
-    try
-    {
-      if (sAuthBuffer == null)
+    if (sAuthBuffer == null) {
+      try
       {
-        loadSo();
-        if (mIsSoLoaded) {
-          sAuthBuffer = new AuthBuffer();
+        if (sAuthBuffer == null)
+        {
+          loadSo();
+          if (mIsSoLoaded) {
+            sAuthBuffer = new AuthBuffer();
+          }
         }
       }
-      return sAuthBuffer;
+      finally {}
     }
-    finally {}
+    return sAuthBuffer;
   }
   
   private static void loadSo()
   {
-    if (!mIsSoLoaded) {}
-    try
-    {
-      System.loadLibrary("stlport_shared");
-      System.loadLibrary("qav_authbuff");
-      mIsSoLoaded = true;
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      mIsSoLoaded = false;
-      localUnsatisfiedLinkError.printStackTrace();
+    if (!mIsSoLoaded) {
+      try
+      {
+        System.loadLibrary("stlport_shared");
+        System.loadLibrary("qav_authbuff");
+        mIsSoLoaded = true;
+        return;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        mIsSoLoaded = false;
+        localUnsatisfiedLinkError.printStackTrace();
+      }
     }
   }
   

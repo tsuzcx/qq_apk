@@ -30,10 +30,12 @@ public class EglSurfaceBase
   
   public void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
+    if (this.jdField_a_of_type_AndroidOpenglEGLSurface == EGL14.EGL_NO_SURFACE)
+    {
+      this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore.a(paramObject);
+      return;
     }
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderEglCore.a(paramObject);
+    throw new IllegalStateException("surface already created");
   }
   
   public boolean a()
@@ -52,7 +54,7 @@ public class EglSurfaceBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.encoder.EglSurfaceBase
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ public class StoryAlbumConfig$ConfigInfo
 {
   public int a;
   public String a;
-  public List<StoryAlbumConfig.RuleConfig> a;
+  public List<RuleConfig> a;
   public boolean a;
   public int b = 500;
   public String b;
@@ -16,7 +16,7 @@ public class StoryAlbumConfig$ConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.StoryAlbumConfig.ConfigInfo
  * JD-Core Version:    0.7.0.1
  */

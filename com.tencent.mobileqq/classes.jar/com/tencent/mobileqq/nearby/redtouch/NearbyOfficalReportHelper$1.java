@@ -4,7 +4,8 @@ import android.util.Log;
 import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 
 class NearbyOfficalReportHelper$1
@@ -15,43 +16,45 @@ class NearbyOfficalReportHelper$1
   public void run()
   {
     Object localObject = ((TroopRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a();
-    String str3;
-    String str1;
-    String str2;
     if (((NearbyRedNum)localObject).b > 0)
     {
-      str3 = String.valueOf(NearbySPUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
-      if (((NearbyRedNum)localObject).d <= 0) {
-        break label168;
+      String str3 = String.valueOf(((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1)));
+      String str1;
+      if (((NearbyRedNum)localObject).d > 0) {
+        str1 = "1";
+      } else {
+        str1 = "0";
       }
-      str1 = "1";
-      if (((NearbyRedNum)localObject).c <= 0) {
-        break label174;
+      String str2;
+      if (((NearbyRedNum)localObject).c > 0) {
+        str2 = "1";
+      } else {
+        str2 = "0";
       }
-      str2 = "1";
-      label65:
-      if (((NearbyRedNum)localObject).a <= 1) {
-        break label180;
+      if (((NearbyRedNum)localObject).a > 1) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-    }
-    label168:
-    label174:
-    label180:
-    for (localObject = "1";; localObject = "0")
-    {
       ReportController.b(null, "dc00899", "grp_lbs", "", this.jdField_a_of_type_JavaLangString, this.b, 0, 0, str3, str1, str2, "");
-      Log.i(" NearbyRecommend", "reportLebaRedDotEvent op_name = " + this.b + " d1 = " + str3 + " d2 = " + str1 + " d3 = " + str2 + " d4 = " + (String)localObject);
-      return;
-      str1 = "0";
-      break;
-      str2 = "0";
-      break label65;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportLebaRedDotEvent op_name = ");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(" d1 = ");
+      localStringBuilder.append(str3);
+      localStringBuilder.append(" d2 = ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" d3 = ");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" d4 = ");
+      localStringBuilder.append((String)localObject);
+      Log.i(" NearbyRecommend", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.NearbyOfficalReportHelper.1
  * JD-Core Version:    0.7.0.1
  */

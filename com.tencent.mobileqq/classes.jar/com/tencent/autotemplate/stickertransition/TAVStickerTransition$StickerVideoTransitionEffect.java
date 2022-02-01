@@ -28,52 +28,54 @@ class TAVStickerTransition$StickerVideoTransitionEffect
   
   public CIImage apply(TAVVideoTransition paramTAVVideoTransition, CIImage paramCIImage1, CIImage paramCIImage2, float paramFloat, RenderInfo paramRenderInfo)
   {
-    if (this.stickerContext == null) {}
-    do
-    {
+    paramTAVVideoTransition = this.stickerContext;
+    if (paramTAVVideoTransition == null) {
       return paramCIImage1;
-      this.stickerContext.setRenderSize(paramRenderInfo.getRenderSize());
-      this.renderContext = paramRenderInfo.getCiContext().getRenderContext();
-      ArrayList localArrayList = new ArrayList();
-      paramTAVVideoTransition = CIContext.newTextureInfo((int)paramCIImage2.getSize().width, (int)paramCIImage2.getSize().height);
-      paramRenderInfo.getCiContext().convertImageToTexture(paramCIImage2, paramTAVVideoTransition);
-      localArrayList.add(new TAVSourceImage(paramTAVVideoTransition, 0));
-      paramCIImage2 = CIContext.newTextureInfo((int)paramCIImage1.getSize().width, (int)paramCIImage1.getSize().height);
-      paramRenderInfo.getCiContext().convertImageToTexture(paramCIImage1, paramCIImage2);
-      localArrayList.add(new TAVSourceImage(paramCIImage2, 1));
-      paramRenderInfo = this.stickerContext.renderSticker(paramFloat, localArrayList, this.renderContext.eglContext());
-      this.renderContext.makeCurrent();
-      if (paramCIImage2 != null) {
-        paramCIImage2.release();
-      }
-      if (paramTAVVideoTransition != null) {
-        paramTAVVideoTransition.release();
-      }
-    } while (paramRenderInfo == null);
-    try
-    {
-      if (paramRenderInfo.isNewFrame()) {
-        this.stickerContext.getStickerTexture().awaitNewImage(1000L);
-      }
-      return new CIImage(paramRenderInfo.getTextureInfo());
     }
-    catch (Exception paramTAVVideoTransition)
+    paramTAVVideoTransition.setRenderSize(paramRenderInfo.getRenderSize());
+    this.renderContext = paramRenderInfo.getCiContext().getRenderContext();
+    ArrayList localArrayList = new ArrayList();
+    paramTAVVideoTransition = CIContext.newTextureInfo((int)paramCIImage2.getSize().width, (int)paramCIImage2.getSize().height);
+    paramRenderInfo.getCiContext().convertImageToTexture(paramCIImage2, paramTAVVideoTransition);
+    localArrayList.add(new TAVSourceImage(paramTAVVideoTransition, 0));
+    paramCIImage2 = CIContext.newTextureInfo((int)paramCIImage1.getSize().width, (int)paramCIImage1.getSize().height);
+    paramRenderInfo.getCiContext().convertImageToTexture(paramCIImage1, paramCIImage2);
+    localArrayList.add(new TAVSourceImage(paramCIImage2, 1));
+    paramRenderInfo = this.stickerContext.renderSticker(paramFloat, localArrayList, this.renderContext.eglContext());
+    this.renderContext.makeCurrent();
+    if (paramCIImage2 != null) {
+      paramCIImage2.release();
+    }
+    if (paramTAVVideoTransition != null) {
+      paramTAVVideoTransition.release();
+    }
+    if (paramRenderInfo != null)
     {
-      for (;;)
+      try
+      {
+        if (paramRenderInfo.isNewFrame()) {
+          this.stickerContext.getStickerTexture().awaitNewImage(1000L);
+        }
+      }
+      catch (Exception paramTAVVideoTransition)
       {
         paramTAVVideoTransition.printStackTrace();
       }
+      paramCIImage1 = new CIImage(paramRenderInfo.getTextureInfo());
     }
+    return paramCIImage1;
   }
   
   public void release()
   {
-    if (this.renderContext != null) {
-      this.renderContext.makeCurrent();
+    Object localObject = this.renderContext;
+    if (localObject != null) {
+      ((RenderContext)localObject).makeCurrent();
     }
-    if (this.stickerContext != null)
+    localObject = this.stickerContext;
+    if (localObject != null)
     {
-      this.stickerContext.release();
+      ((TAVStickerRenderContext)localObject).release();
       this.stickerContext = null;
     }
   }

@@ -31,18 +31,16 @@ class LinearLayoutManager$LayoutState
   {
     int j = this.mScrapList.size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       View localView = ((RecyclerView.ViewHolder)this.mScrapList.get(i)).itemView;
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)localView.getLayoutParams();
-      if (localLayoutParams.isItemRemoved()) {}
-      while (this.mCurrentPosition != localLayoutParams.getViewLayoutPosition())
+      if ((!localLayoutParams.isItemRemoved()) && (this.mCurrentPosition == localLayoutParams.getViewLayoutPosition()))
       {
-        i += 1;
-        break;
+        assignPositionFromScrapList(localView);
+        return localView;
       }
-      assignPositionFromScrapList(localView);
-      return localView;
+      i += 1;
     }
     return null;
   }
@@ -65,12 +63,24 @@ class LinearLayoutManager$LayoutState
   
   boolean hasMore(RecyclerView.State paramState)
   {
-    return (this.mCurrentPosition >= 0) && (this.mCurrentPosition < paramState.getItemCount());
+    int i = this.mCurrentPosition;
+    return (i >= 0) && (i < paramState.getItemCount());
   }
   
   void log()
   {
-    Log.d("LLM#LayoutState", "avail:" + this.mAvailable + ", ind:" + this.mCurrentPosition + ", dir:" + this.mItemDirection + ", offset:" + this.mOffset + ", layoutDir:" + this.mLayoutDirection);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("avail:");
+    localStringBuilder.append(this.mAvailable);
+    localStringBuilder.append(", ind:");
+    localStringBuilder.append(this.mCurrentPosition);
+    localStringBuilder.append(", dir:");
+    localStringBuilder.append(this.mItemDirection);
+    localStringBuilder.append(", offset:");
+    localStringBuilder.append(this.mOffset);
+    localStringBuilder.append(", layoutDir:");
+    localStringBuilder.append(this.mLayoutDirection);
+    Log.d("LLM#LayoutState", localStringBuilder.toString());
   }
   
   View next(RecyclerView.Recycler paramRecycler)
@@ -85,40 +95,55 @@ class LinearLayoutManager$LayoutState
   
   public View nextViewInLimitedList(View paramView)
   {
-    int m = this.mScrapList.size();
-    Object localObject = null;
-    int i = 2147483647;
-    int j = 0;
-    if (j < m)
+    int n = this.mScrapList.size();
+    Object localObject1 = null;
+    int j = 2147483647;
+    int i = 0;
+    while (i < n)
     {
-      View localView = ((RecyclerView.ViewHolder)this.mScrapList.get(j)).itemView;
+      View localView = ((RecyclerView.ViewHolder)this.mScrapList.get(i)).itemView;
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)localView.getLayoutParams();
+      Object localObject2 = localObject1;
+      int k = j;
       if (localView != paramView) {
-        if (!localLayoutParams.isItemRemoved()) {}
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        int k = (localLayoutParams.getViewLayoutPosition() - this.mCurrentPosition) * this.mItemDirection;
-        if (k >= 0) {
-          if (k < i)
+        if (localLayoutParams.isItemRemoved())
+        {
+          localObject2 = localObject1;
+          k = j;
+        }
+        else
+        {
+          int m = (localLayoutParams.getViewLayoutPosition() - this.mCurrentPosition) * this.mItemDirection;
+          if (m < 0)
           {
-            if (k == 0) {
-              return localView;
+            localObject2 = localObject1;
+            k = j;
+          }
+          else
+          {
+            localObject2 = localObject1;
+            k = j;
+            if (m < j)
+            {
+              if (m == 0) {
+                return localView;
+              }
+              localObject2 = localView;
+              k = m;
             }
-            localObject = localView;
-            i = k;
           }
         }
       }
+      i += 1;
+      localObject1 = localObject2;
+      j = k;
     }
-    return localObject;
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.LinearLayoutManager.LayoutState
  * JD-Core Version:    0.7.0.1
  */

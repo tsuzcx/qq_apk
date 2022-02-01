@@ -42,8 +42,9 @@ public class Loader<D>
   
   public void deliverResult(D paramD)
   {
-    if (this.mListener != null) {
-      this.mListener.onLoadComplete(this, paramD);
+    Loader.OnLoadCompleteListener localOnLoadCompleteListener = this.mListener;
+    if (localOnLoadCompleteListener != null) {
+      localOnLoadCompleteListener.onLoadComplete(this, paramD);
     }
   }
   
@@ -126,11 +127,13 @@ public class Loader<D>
   
   public void registerListener(int paramInt, Loader.OnLoadCompleteListener<D> paramOnLoadCompleteListener)
   {
-    if (this.mListener != null) {
-      throw new IllegalStateException("There is already a listener registered");
+    if (this.mListener == null)
+    {
+      this.mListener = paramOnLoadCompleteListener;
+      this.mId = paramInt;
+      return;
     }
-    this.mListener = paramOnLoadCompleteListener;
-    this.mId = paramInt;
+    throw new IllegalStateException("There is already a listener registered");
   }
   
   public void reset()
@@ -184,13 +187,17 @@ public class Loader<D>
   
   public void unregisterListener(Loader.OnLoadCompleteListener<D> paramOnLoadCompleteListener)
   {
-    if (this.mListener == null) {
-      throw new IllegalStateException("No listener register");
-    }
-    if (this.mListener != paramOnLoadCompleteListener) {
+    Loader.OnLoadCompleteListener localOnLoadCompleteListener = this.mListener;
+    if (localOnLoadCompleteListener != null)
+    {
+      if (localOnLoadCompleteListener == paramOnLoadCompleteListener)
+      {
+        this.mListener = null;
+        return;
+      }
       throw new IllegalArgumentException("Attempting to unregister the wrong listener");
     }
-    this.mListener = null;
+    throw new IllegalStateException("No listener register");
   }
 }
 

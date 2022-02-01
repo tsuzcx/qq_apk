@@ -1,6 +1,5 @@
 package com.tencent.component.network.module.report;
 
-import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
@@ -10,11 +9,9 @@ import com.tencent.component.network.downloader.handler.ReportHandler;
 import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
 import com.tencent.component.network.module.base.QDLog;
 import com.tencent.component.network.module.common.NetworkState;
-import com.tencent.component.network.utils.StringUtil;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
@@ -25,7 +22,6 @@ import javax.net.ssl.SSLPeerUnverifiedException;
 import okhttp3.Response;
 import org.apache.http.Header;
 import org.apache.http.HeaderIterator;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.ClientProtocolException;
@@ -40,24 +36,27 @@ public class ImageDownloadReporter
   
   private static String bytes2HexStr(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      int j = paramArrayOfByte[i];
-      arrayOfChar[(i * 2 + 1)] = digits[(j & 0xF)];
-      j = (byte)(j >>> 4);
-      arrayOfChar[(i * 2)] = digits[(j & 0xF)];
-      i += 1;
+      char[] arrayOfChar1 = new char[paramArrayOfByte.length * 2];
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        int j = paramArrayOfByte[i];
+        int k = i * 2;
+        char[] arrayOfChar2 = digits;
+        arrayOfChar1[(k + 1)] = arrayOfChar2[(j & 0xF)];
+        arrayOfChar1[k] = arrayOfChar2[((byte)(j >>> 4) & 0xF)];
+        i += 1;
+      }
+      return new String(arrayOfChar1);
     }
-    return new String(arrayOfChar);
+    return null;
   }
   
   public static int getRetCodeFrom(Throwable paramThrowable, int paramInt)
   {
+    int i = paramInt;
     if (paramThrowable != null)
     {
       if ((paramThrowable instanceof ClientProtocolException)) {
@@ -118,313 +117,333 @@ public class ImageDownloadReporter
       if ((paramThrowable instanceof Exception)) {
         return 4;
       }
+      i = paramInt;
       if ((paramThrowable instanceof OutOfMemoryError)) {
-        return 3;
+        i = 3;
       }
     }
-    return paramInt;
+    return i;
   }
   
   private int getRetCodeFrom(HttpResponse paramHttpResponse, Response paramResponse, int paramInt)
   {
     int i;
-    if (paramHttpResponse != null) {
-      if (paramHttpResponse == null)
-      {
+    if (paramHttpResponse != null)
+    {
+      if (paramHttpResponse == null) {
         paramHttpResponse = null;
-        i = paramInt;
-        if (paramHttpResponse != null) {
-          label17:
-          do
-          {
-            i = paramInt;
-            if (!paramHttpResponse.hasNext()) {
-              break;
-            }
-            paramResponse = paramHttpResponse.nextHeader();
-          } while (paramResponse == null);
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        try
-        {
-          i = Integer.parseInt(paramResponse.getValue());
-          return i;
-        }
-        catch (NumberFormatException paramResponse)
-        {
-          QDLog.w("ImageDownload", "getRetCodeFrom", paramResponse);
-        }
+      } else {
         paramHttpResponse = paramHttpResponse.headerIterator("Retcode");
-        break;
-        break label17;
-        i = paramInt;
-      } while (paramResponse == null);
-      paramHttpResponse = paramResponse.headers("Retcode");
-      i = paramInt;
-    } while (paramHttpResponse == null);
-    paramHttpResponse = paramHttpResponse.iterator();
-    for (;;)
-    {
-      i = paramInt;
-      if (!paramHttpResponse.hasNext()) {
-        break;
       }
-      paramResponse = (String)paramHttpResponse.next();
-      if (paramResponse != null) {
-        try
+      if (paramHttpResponse != null) {
+        while (paramHttpResponse.hasNext())
         {
-          i = Integer.parseInt(paramResponse);
-          return i;
-        }
-        catch (NumberFormatException paramResponse)
-        {
-          QDLog.w("ImageDownload", "getRetCodeFrom", paramResponse);
+          paramResponse = paramHttpResponse.nextHeader();
+          if (paramResponse != null) {
+            try
+            {
+              i = Integer.parseInt(paramResponse.getValue());
+              return i;
+            }
+            catch (NumberFormatException paramResponse)
+            {
+              QDLog.w("ImageDownload", "getRetCodeFrom", paramResponse);
+            }
+          }
         }
       }
     }
+    else if (paramResponse != null)
+    {
+      paramHttpResponse = paramResponse.headers("Retcode");
+      if (paramHttpResponse != null)
+      {
+        paramHttpResponse = paramHttpResponse.iterator();
+        while (paramHttpResponse.hasNext())
+        {
+          paramResponse = (String)paramHttpResponse.next();
+          if (paramResponse != null) {
+            try
+            {
+              i = Integer.parseInt(paramResponse);
+              return i;
+            }
+            catch (NumberFormatException paramResponse)
+            {
+              QDLog.w("ImageDownload", "getRetCodeFrom", paramResponse);
+            }
+          }
+        }
+      }
+    }
+    return paramInt;
   }
   
   /* Error */
   private static byte[] readFromFile(File paramFile, long paramLong, int paramInt)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 11
-    //   3: aconst_null
-    //   4: astore 10
-    //   6: aload 10
-    //   8: astore 9
-    //   10: aload_0
-    //   11: ifnull +25 -> 36
-    //   14: aload 10
-    //   16: astore 9
-    //   18: aload_0
-    //   19: invokevirtual 168	java/io/File:exists	()Z
-    //   22: ifeq +14 -> 36
-    //   25: aload_0
-    //   26: invokevirtual 171	java/io/File:isFile	()Z
-    //   29: ifne +10 -> 39
-    //   32: aload 10
-    //   34: astore 9
-    //   36: aload 9
-    //   38: areturn
-    //   39: aload_0
-    //   40: invokevirtual 175	java/io/File:length	()J
-    //   43: lstore 6
-    //   45: lload_1
-    //   46: lstore 4
-    //   48: lload_1
-    //   49: lconst_0
-    //   50: lcmp
-    //   51: ifge +6 -> 57
-    //   54: lconst_0
-    //   55: lstore 4
-    //   57: aload 10
-    //   59: astore 9
-    //   61: lload 4
-    //   63: lload 6
-    //   65: lcmp
-    //   66: ifge -30 -> 36
-    //   69: aload 10
-    //   71: astore 9
-    //   73: iload_3
-    //   74: ifle -38 -> 36
-    //   77: iload_3
-    //   78: lload 6
-    //   80: lload 4
-    //   82: lsub
-    //   83: l2i
-    //   84: invokestatic 181	java/lang/Math:min	(II)I
-    //   87: istore_3
-    //   88: iload_3
-    //   89: newarray byte
-    //   91: astore 9
-    //   93: new 183	java/io/RandomAccessFile
-    //   96: dup
-    //   97: aload_0
-    //   98: ldc 185
-    //   100: invokespecial 188	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   103: astore 8
-    //   105: aload 8
-    //   107: lload 4
-    //   109: invokevirtual 192	java/io/RandomAccessFile:seek	(J)V
-    //   112: aload 8
-    //   114: aload 9
-    //   116: invokevirtual 196	java/io/RandomAccessFile:read	([B)I
-    //   119: istore_3
+    //   0: aload_0
+    //   1: ifnull +172 -> 173
+    //   4: aload_0
+    //   5: invokevirtual 168	java/io/File:exists	()Z
+    //   8: ifeq +165 -> 173
+    //   11: aload_0
+    //   12: invokevirtual 171	java/io/File:isFile	()Z
+    //   15: ifne +5 -> 20
+    //   18: aconst_null
+    //   19: areturn
+    //   20: aload_0
+    //   21: invokevirtual 175	java/io/File:length	()J
+    //   24: lstore 6
+    //   26: lload_1
+    //   27: lstore 4
+    //   29: lload_1
+    //   30: lconst_0
+    //   31: lcmp
+    //   32: ifge +6 -> 38
+    //   35: lconst_0
+    //   36: lstore 4
+    //   38: lload 4
+    //   40: lload 6
+    //   42: lcmp
+    //   43: ifge +130 -> 173
+    //   46: iload_3
+    //   47: ifgt +5 -> 52
+    //   50: aconst_null
+    //   51: areturn
+    //   52: iload_3
+    //   53: lload 6
+    //   55: lload 4
+    //   57: lsub
+    //   58: l2i
+    //   59: invokestatic 181	java/lang/Math:min	(II)I
+    //   62: istore_3
+    //   63: iload_3
+    //   64: newarray byte
+    //   66: astore 9
+    //   68: new 183	java/io/RandomAccessFile
+    //   71: dup
+    //   72: aload_0
+    //   73: ldc 185
+    //   75: invokespecial 188	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   78: astore 8
+    //   80: aload 8
+    //   82: lload 4
+    //   84: invokevirtual 192	java/io/RandomAccessFile:seek	(J)V
+    //   87: aload 8
+    //   89: aload 9
+    //   91: invokevirtual 196	java/io/RandomAccessFile:read	([B)I
+    //   94: istore_3
+    //   95: iload_3
+    //   96: ifgt +8 -> 104
+    //   99: aconst_null
+    //   100: astore_0
+    //   101: goto +29 -> 130
+    //   104: iload_3
+    //   105: aload 9
+    //   107: arraylength
+    //   108: if_icmpge +19 -> 127
+    //   111: iload_3
+    //   112: newarray byte
+    //   114: astore_0
+    //   115: aload 9
+    //   117: iconst_0
+    //   118: aload_0
+    //   119: iconst_0
     //   120: iload_3
-    //   121: ifgt +25 -> 146
-    //   124: aload 11
-    //   126: astore_0
-    //   127: aload_0
-    //   128: astore 9
+    //   121: invokestatic 202	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   124: goto +6 -> 130
+    //   127: aload 9
+    //   129: astore_0
     //   130: aload 8
-    //   132: ifnull -96 -> 36
-    //   135: aload 8
-    //   137: invokevirtual 199	java/io/RandomAccessFile:close	()V
-    //   140: aload_0
-    //   141: areturn
-    //   142: astore 8
-    //   144: aload_0
-    //   145: areturn
-    //   146: iload_3
-    //   147: aload 9
-    //   149: arraylength
-    //   150: if_icmpge +71 -> 221
-    //   153: iload_3
-    //   154: newarray byte
-    //   156: astore_0
-    //   157: aload 9
-    //   159: iconst_0
-    //   160: aload_0
-    //   161: iconst_0
-    //   162: iload_3
-    //   163: invokestatic 205	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   166: goto -39 -> 127
-    //   169: astore_0
-    //   170: aconst_null
-    //   171: astore_0
-    //   172: aload 10
-    //   174: astore 9
-    //   176: aload_0
-    //   177: ifnull -141 -> 36
-    //   180: aload_0
-    //   181: invokevirtual 199	java/io/RandomAccessFile:close	()V
-    //   184: aconst_null
-    //   185: areturn
-    //   186: astore_0
-    //   187: aconst_null
-    //   188: areturn
-    //   189: astore_0
-    //   190: aconst_null
-    //   191: astore 8
-    //   193: aload 8
-    //   195: ifnull +8 -> 203
-    //   198: aload 8
-    //   200: invokevirtual 199	java/io/RandomAccessFile:close	()V
-    //   203: aload_0
-    //   204: athrow
-    //   205: astore 8
-    //   207: goto -4 -> 203
-    //   210: astore_0
-    //   211: goto -18 -> 193
-    //   214: astore_0
-    //   215: aload 8
-    //   217: astore_0
-    //   218: goto -46 -> 172
-    //   221: aload 9
-    //   223: astore_0
-    //   224: goto -97 -> 127
+    //   132: invokevirtual 205	java/io/RandomAccessFile:close	()V
+    //   135: aload_0
+    //   136: areturn
+    //   137: astore_0
+    //   138: goto +10 -> 148
+    //   141: goto +22 -> 163
+    //   144: astore_0
+    //   145: aconst_null
+    //   146: astore 8
+    //   148: aload 8
+    //   150: ifnull +8 -> 158
+    //   153: aload 8
+    //   155: invokevirtual 205	java/io/RandomAccessFile:close	()V
+    //   158: aload_0
+    //   159: athrow
+    //   160: aconst_null
+    //   161: astore 8
+    //   163: aload 8
+    //   165: ifnull +8 -> 173
+    //   168: aload 8
+    //   170: invokevirtual 205	java/io/RandomAccessFile:close	()V
+    //   173: aconst_null
+    //   174: areturn
+    //   175: astore_0
+    //   176: goto -16 -> 160
+    //   179: astore_0
+    //   180: goto -39 -> 141
+    //   183: astore 8
+    //   185: aload_0
+    //   186: areturn
+    //   187: astore 8
+    //   189: goto -31 -> 158
+    //   192: astore_0
+    //   193: aconst_null
+    //   194: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	227	0	paramFile	File
-    //   0	227	1	paramLong	long
-    //   0	227	3	paramInt	int
-    //   46	62	4	l1	long
-    //   43	36	6	l2	long
-    //   103	33	8	localRandomAccessFile	java.io.RandomAccessFile
-    //   142	1	8	localIOException1	IOException
-    //   191	8	8	localObject1	Object
-    //   205	11	8	localIOException2	IOException
-    //   8	214	9	localObject2	Object
-    //   4	169	10	localObject3	Object
-    //   1	124	11	localObject4	Object
+    //   0	195	0	paramFile	File
+    //   0	195	1	paramLong	long
+    //   0	195	3	paramInt	int
+    //   27	56	4	l1	long
+    //   24	30	6	l2	long
+    //   78	91	8	localRandomAccessFile	java.io.RandomAccessFile
+    //   183	1	8	localIOException1	IOException
+    //   187	1	8	localIOException2	IOException
+    //   66	62	9	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   135	140	142	java/io/IOException
-    //   88	105	169	java/lang/Throwable
-    //   180	184	186	java/io/IOException
-    //   88	105	189	finally
-    //   198	203	205	java/io/IOException
-    //   105	120	210	finally
-    //   146	166	210	finally
-    //   105	120	214	java/lang/Throwable
-    //   146	166	214	java/lang/Throwable
+    //   80	95	137	finally
+    //   104	124	137	finally
+    //   63	80	144	finally
+    //   63	80	175	java/lang/Throwable
+    //   80	95	179	java/lang/Throwable
+    //   104	124	179	java/lang/Throwable
+    //   130	135	183	java/io/IOException
+    //   153	158	187	java/io/IOException
+    //   168	173	192	java/io/IOException
   }
   
+  /* Error */
   public boolean handleContentType(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse)
   {
-    Object localObject1 = paramDownloadResult.getContent().type;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-    Object localObject2;
-    for (;;)
-    {
-      return false;
-      if (StringUtil.startsWithIgnoreCase((String)localObject1, "text/html"))
-      {
-        localObject2 = null;
-        localObject1 = null;
-        try
-        {
-          paramHttpResponse = paramHttpResponse.getEntity().getContent();
-          localObject1 = paramHttpResponse;
-          localObject2 = paramHttpResponse;
-          Object localObject3 = new byte[1024];
-          localObject1 = paramHttpResponse;
-          localObject2 = paramHttpResponse;
-          int i = paramHttpResponse.read((byte[])localObject3);
-          if (i > 0)
-          {
-            localObject1 = paramHttpResponse;
-            localObject2 = paramHttpResponse;
-            localObject3 = new String((byte[])localObject3, 0, i);
-            localObject1 = paramHttpResponse;
-            localObject2 = paramHttpResponse;
-            paramDownloadResult.getContent().content = localObject3;
-          }
-          if (paramHttpResponse != null) {
-            try
-            {
-              paramHttpResponse.close();
-              return false;
-            }
-            catch (IOException paramDownloadResult)
-            {
-              QDLog.w("ImageDownloader", "", paramDownloadResult);
-              return false;
-            }
-          }
-        }
-        catch (IOException paramDownloadResult)
-        {
-          localObject2 = localObject1;
-          QDLog.w("ImageDownloadReporter", "handleContentType", paramDownloadResult);
-          if (localObject1 != null) {
-            try
-            {
-              ((InputStream)localObject1).close();
-              return false;
-            }
-            catch (IOException paramDownloadResult)
-            {
-              QDLog.w("ImageDownloader", "", paramDownloadResult);
-              return false;
-            }
-          }
-        }
-        finally
-        {
-          if (localObject2 == null) {}
-        }
-      }
-    }
-    try
-    {
-      ((InputStream)localObject2).close();
-      throw paramDownloadResult;
-    }
-    catch (IOException paramHttpResponse)
-    {
-      for (;;)
-      {
-        QDLog.w("ImageDownloader", "", paramHttpResponse);
-      }
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: invokevirtual 213	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   4: getfield 218	com/tencent/component/network/downloader/DownloadResult$Content:type	Ljava/lang/String;
+    //   7: astore 4
+    //   9: aload 4
+    //   11: invokestatic 223	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   14: ifeq +5 -> 19
+    //   17: iconst_0
+    //   18: ireturn
+    //   19: aload 4
+    //   21: ldc 10
+    //   23: invokestatic 229	com/tencent/component/network/utils/StringUtil:startsWithIgnoreCase	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   26: ifeq +161 -> 187
+    //   29: aconst_null
+    //   30: astore 5
+    //   32: aconst_null
+    //   33: astore 4
+    //   35: aload_2
+    //   36: invokeinterface 233 1 0
+    //   41: invokeinterface 238 1 0
+    //   46: astore_2
+    //   47: aload_2
+    //   48: astore 4
+    //   50: aload_2
+    //   51: astore 5
+    //   53: sipush 1024
+    //   56: newarray byte
+    //   58: astore 6
+    //   60: aload_2
+    //   61: astore 4
+    //   63: aload_2
+    //   64: astore 5
+    //   66: aload_2
+    //   67: aload 6
+    //   69: invokevirtual 241	java/io/InputStream:read	([B)I
+    //   72: istore_3
+    //   73: iload_3
+    //   74: ifle +37 -> 111
+    //   77: aload_2
+    //   78: astore 4
+    //   80: aload_2
+    //   81: astore 5
+    //   83: new 40	java/lang/String
+    //   86: dup
+    //   87: aload 6
+    //   89: iconst_0
+    //   90: iload_3
+    //   91: invokespecial 244	java/lang/String:<init>	([BII)V
+    //   94: astore 6
+    //   96: aload_2
+    //   97: astore 4
+    //   99: aload_2
+    //   100: astore 5
+    //   102: aload_1
+    //   103: invokevirtual 213	com/tencent/component/network/downloader/DownloadResult:getContent	()Lcom/tencent/component/network/downloader/DownloadResult$Content;
+    //   106: aload 6
+    //   108: putfield 248	com/tencent/component/network/downloader/DownloadResult$Content:content	Ljava/lang/Object;
+    //   111: aload_2
+    //   112: ifnull +75 -> 187
+    //   115: aload_2
+    //   116: invokevirtual 249	java/io/InputStream:close	()V
+    //   119: iconst_0
+    //   120: ireturn
+    //   121: astore_1
+    //   122: goto +40 -> 162
+    //   125: astore_1
+    //   126: aload 5
+    //   128: astore 4
+    //   130: ldc 251
+    //   132: ldc 252
+    //   134: aload_1
+    //   135: invokestatic 140	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   138: aload 5
+    //   140: ifnull +47 -> 187
+    //   143: aload 5
+    //   145: invokevirtual 249	java/io/InputStream:close	()V
+    //   148: iconst_0
+    //   149: ireturn
+    //   150: astore_1
+    //   151: ldc 254
+    //   153: ldc_w 256
+    //   156: aload_1
+    //   157: invokestatic 140	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   160: iconst_0
+    //   161: ireturn
+    //   162: aload 4
+    //   164: ifnull +21 -> 185
+    //   167: aload 4
+    //   169: invokevirtual 249	java/io/InputStream:close	()V
+    //   172: goto +13 -> 185
+    //   175: astore_2
+    //   176: ldc 254
+    //   178: ldc_w 256
+    //   181: aload_2
+    //   182: invokestatic 140	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   185: aload_1
+    //   186: athrow
+    //   187: iconst_0
+    //   188: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	189	0	this	ImageDownloadReporter
+    //   0	189	1	paramDownloadResult	DownloadResult
+    //   0	189	2	paramHttpResponse	HttpResponse
+    //   72	19	3	i	int
+    //   7	161	4	localObject1	Object
+    //   30	114	5	localHttpResponse	HttpResponse
+    //   58	49	6	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   35	47	121	finally
+    //   53	60	121	finally
+    //   66	73	121	finally
+    //   83	96	121	finally
+    //   102	111	121	finally
+    //   130	138	121	finally
+    //   35	47	125	java/io/IOException
+    //   53	60	125	java/io/IOException
+    //   66	73	125	java/io/IOException
+    //   83	96	125	java/io/IOException
+    //   102	111	125	java/io/IOException
+    //   115	119	150	java/io/IOException
+    //   143	148	150	java/io/IOException
+    //   167	172	175	java/io/IOException
   }
   
   public void handleReport(DownloadResult paramDownloadResult, DownloadReport paramDownloadReport)
@@ -466,55 +485,96 @@ public class ImageDownloadReporter
     localDownloadReportObject.isSucceed = paramDownloadReport.isSucceed;
     localDownloadReportObject.domain = paramDownloadReport.domain;
     localDownloadReportObject.strategyId = paramDownloadReport.strategyId;
+    StringBuilder localStringBuilder1;
+    StringBuilder localStringBuilder2;
     if (paramDownloadResult.getStatus().isSucceed())
     {
       if (paramDownloadResult.getContent().noCache)
       {
         localDownloadReportObject.retCode = getRetCodeFrom(paramDownloadReport.response, paramDownloadReport.okResponse, 0);
-        if (localDownloadReportObject.retCode == 0) {
+        if (localDownloadReportObject.retCode == 0)
+        {
           localDownloadReportObject.retCode = -2;
+          return localDownloadReportObject;
         }
-        return localDownloadReportObject;
       }
-      if ((paramDownloadResult.getContent().size != paramDownloadResult.getContent().length) && (!paramDownloadResult.getContent().isGzip))
+      else
       {
-        localDownloadReportObject.retCode = 50008;
-        localDownloadReportObject.errMsg.append(";content-length:" + paramDownloadResult.getContent().length + ";actual-size:" + paramDownloadResult.getContent().size);
-        paramDownloadReport = new File(paramDownloadResult.getPath());
-        paramDownloadResult = bytes2HexStr(readFromFile(paramDownloadReport, 0L, 1024));
-        paramDownloadReport = bytes2HexStr(readFromFile(paramDownloadReport, paramDownloadReport.length() - 1024L, 1024));
-        localDownloadReportObject.errMsg.append(";head-content:" + paramDownloadResult);
-        localDownloadReportObject.errMsg.append(";tail-content:" + paramDownloadReport);
+        if ((paramDownloadResult.getContent().size != paramDownloadResult.getContent().length) && (!paramDownloadResult.getContent().isGzip))
+        {
+          localDownloadReportObject.retCode = 50008;
+          paramDownloadReport = localDownloadReportObject.errMsg;
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append(";content-length:");
+          localStringBuilder1.append(paramDownloadResult.getContent().length);
+          localStringBuilder1.append(";actual-size:");
+          localStringBuilder1.append(paramDownloadResult.getContent().size);
+          paramDownloadReport.append(localStringBuilder1.toString());
+          paramDownloadResult = new File(paramDownloadResult.getPath());
+          paramDownloadReport = bytes2HexStr(readFromFile(paramDownloadResult, 0L, 1024));
+          paramDownloadResult = bytes2HexStr(readFromFile(paramDownloadResult, paramDownloadResult.length() - 1024L, 1024));
+          localStringBuilder1 = localDownloadReportObject.errMsg;
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append(";head-content:");
+          localStringBuilder2.append(paramDownloadReport);
+          localStringBuilder1.append(localStringBuilder2.toString());
+          paramDownloadReport = localDownloadReportObject.errMsg;
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append(";tail-content:");
+          localStringBuilder1.append(paramDownloadResult);
+          paramDownloadReport.append(localStringBuilder1.toString());
+          return localDownloadReportObject;
+        }
+        if ((paramDownloadResult.getContent().realsize > 0L) && (paramDownloadResult.getContent().realsize != paramDownloadResult.getContent().length))
+        {
+          localDownloadReportObject.retCode = 50002;
+          paramDownloadReport = localDownloadReportObject.errMsg;
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append(";content-length:");
+          localStringBuilder1.append(paramDownloadResult.getContent().length);
+          localStringBuilder1.append(";real-size:");
+          localStringBuilder1.append(paramDownloadResult.getContent().realsize);
+          paramDownloadReport.append(localStringBuilder1.toString());
+          return localDownloadReportObject;
+        }
+        localDownloadReportObject.retCode = 0;
         return localDownloadReportObject;
       }
-      if ((paramDownloadResult.getContent().realsize > 0L) && (paramDownloadResult.getContent().realsize != paramDownloadResult.getContent().length))
+    }
+    else
+    {
+      localStringBuilder1 = localDownloadReportObject.errMsg;
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("httpStatus:");
+      localStringBuilder2.append(paramDownloadReport.httpStatus);
+      localStringBuilder2.append("; ");
+      localStringBuilder1.append(localStringBuilder2.toString());
+      if (paramDownloadReport.exception != null)
       {
-        localDownloadReportObject.retCode = 50002;
-        localDownloadReportObject.errMsg.append(";content-length:" + paramDownloadResult.getContent().length + ";real-size:" + paramDownloadResult.getContent().realsize);
+        localDownloadReportObject.retCode = getRetCodeFrom(paramDownloadReport.exception, localDownloadReportObject.retCode);
+        localDownloadReportObject.errMsg.append(Log.getStackTraceString(paramDownloadReport.exception));
         return localDownloadReportObject;
       }
-      localDownloadReportObject.retCode = 0;
-      return localDownloadReportObject;
+      if (paramDownloadResult.getStatus().getFailReason() == 5)
+      {
+        localDownloadReportObject.retCode = -1;
+        paramDownloadReport = localDownloadReportObject.errMsg;
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("content-type:");
+        localStringBuilder1.append(paramDownloadResult.getContent().type);
+        localStringBuilder1.append("; data:");
+        localStringBuilder1.append(paramDownloadResult.getContent().content);
+        localStringBuilder1.append("; ");
+        paramDownloadReport.append(localStringBuilder1.toString());
+        return localDownloadReportObject;
+      }
+      if (paramDownloadReport.response == null)
+      {
+        localDownloadReportObject.retCode = -99997;
+        return localDownloadReportObject;
+      }
+      localDownloadReportObject.retCode = paramDownloadReport.httpStatus;
     }
-    localDownloadReportObject.errMsg.append("httpStatus:" + paramDownloadReport.httpStatus + "; ");
-    if (paramDownloadReport.exception != null)
-    {
-      localDownloadReportObject.retCode = getRetCodeFrom(paramDownloadReport.exception, localDownloadReportObject.retCode);
-      localDownloadReportObject.errMsg.append(Log.getStackTraceString(paramDownloadReport.exception));
-      return localDownloadReportObject;
-    }
-    if (paramDownloadResult.getStatus().getFailReason() == 5)
-    {
-      localDownloadReportObject.retCode = -1;
-      localDownloadReportObject.errMsg.append("content-type:" + paramDownloadResult.getContent().type + "; data:" + paramDownloadResult.getContent().content + "; ");
-      return localDownloadReportObject;
-    }
-    if (paramDownloadReport.response == null)
-    {
-      localDownloadReportObject.retCode = -99997;
-      return localDownloadReportObject;
-    }
-    localDownloadReportObject.retCode = paramDownloadReport.httpStatus;
     return localDownloadReportObject;
   }
   
@@ -528,7 +588,7 @@ public class ImageDownloadReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.report.ImageDownloadReporter
  * JD-Core Version:    0.7.0.1
  */

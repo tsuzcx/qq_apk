@@ -20,15 +20,15 @@ class DoubleVideoMeetingCtrlUI$RequestVideoTimeoutRunnale
       return;
     }
     this.this$0.jdField_a_of_type_ComTencentAvVideoController.a("Meeting_RequestVideoTimeoutRunnale");
-    this.this$0.d(true);
+    this.this$0.e(true);
     TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
     TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
-    this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().a(this.this$0.b, true, true);
+    this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().b(this.this$0.b, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoMeetingCtrlUI.RequestVideoTimeoutRunnale
  * JD-Core Version:    0.7.0.1
  */

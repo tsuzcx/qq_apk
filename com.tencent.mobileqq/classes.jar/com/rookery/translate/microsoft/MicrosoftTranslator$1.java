@@ -34,8 +34,14 @@ class MicrosoftTranslator$1
   public void a(Throwable paramThrowable, String paramString)
   {
     this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "error:" + paramThrowable + "\trequest_time:" + this.jdField_a_of_type_JavaLangLong);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("error:");
+      paramString.append(paramThrowable);
+      paramString.append("\trequest_time:");
+      paramString.append(this.jdField_a_of_type_JavaLangLong);
+      QLog.e("Translator", 2, paramString.toString());
     }
   }
 }

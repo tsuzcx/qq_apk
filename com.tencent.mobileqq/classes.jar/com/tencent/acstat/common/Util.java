@@ -28,14 +28,12 @@ public class Util
 {
   public static boolean checkPermission(Context paramContext, String paramString)
   {
-    boolean bool = false;
     try
     {
       int i = paramContext.getPackageManager().checkPermission(paramString, paramContext.getPackageName());
       if (i == 0) {
-        bool = true;
+        return true;
       }
-      return bool;
     }
     catch (Throwable paramContext)
     {
@@ -46,18 +44,15 @@ public class Util
   
   public static String decode(String paramString)
   {
-    String str;
     if (paramString == null) {
-      str = null;
+      return null;
     }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (Build.VERSION.SDK_INT < 8);
+    if (Build.VERSION.SDK_INT < 8) {
+      return paramString;
+    }
     try
     {
-      str = new String(d.b(e.a(paramString.getBytes("UTF-8"), 0)), "UTF-8");
+      String str = new String(d.b(e.a(paramString.getBytes("UTF-8"), 0)), "UTF-8");
       return str;
     }
     catch (Throwable localThrowable)
@@ -69,18 +64,15 @@ public class Util
   
   public static String encode(String paramString)
   {
-    String str;
     if (paramString == null) {
-      str = null;
+      return null;
     }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (Build.VERSION.SDK_INT < 8);
+    if (Build.VERSION.SDK_INT < 8) {
+      return paramString;
+    }
     try
     {
-      str = new String(e.b(d.a(paramString.getBytes("UTF-8")), 0), "UTF-8");
+      String str = new String(e.b(d.a(paramString.getBytes("UTF-8")), 0), "UTF-8");
       return str;
     }
     catch (Throwable localThrowable)
@@ -93,16 +85,19 @@ public class Util
   public static JSONObject getConnecetedWifiInfo(Context paramContext)
   {
     paramContext = getWifiInfo(paramContext);
-    if (paramContext != null) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("bs", paramContext.getBSSID());
-        localJSONObject.put("ss", paramContext.getSSID());
-        localJSONObject.put("dBm", paramContext.getRssi());
-        return localJSONObject;
-      }
-      catch (Throwable paramContext) {}
+    if (paramContext != null) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("bs", paramContext.getBSSID());
+      localJSONObject.put("ss", paramContext.getSSID());
+      localJSONObject.put("dBm", paramContext.getRssi());
+      return localJSONObject;
+    }
+    catch (Throwable paramContext)
+    {
+      label52:
+      break label52;
     }
     return null;
   }
@@ -111,30 +106,25 @@ public class Util
   {
     String str = StatConfig.getImei(paramContext);
     if (i.b(str)) {
-      paramContext = str;
+      return str;
     }
-    for (;;)
+    try
     {
-      return paramContext;
-      try
+      if (checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
       {
-        if (checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
-        {
-          str = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
-          paramContext = str;
-          if (str != null) {
-            continue;
-          }
-        }
-        else
-        {
-          Log.e("MtaSDK", "Could not get permission of android.permission.READ_PHONE_STATE");
+        paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
+        if (paramContext != null) {
+          return paramContext;
         }
       }
-      catch (Throwable paramContext)
+      else
       {
-        Log.e("MtaSDK", "get device id error", paramContext);
+        Log.e("MtaSDK", "Could not get permission of android.permission.READ_PHONE_STATE");
       }
+    }
+    catch (Throwable paramContext)
+    {
+      Log.e("MtaSDK", "get device id error", paramContext);
     }
     return null;
   }
@@ -165,9 +155,12 @@ public class Util
           {
             paramContext = new StatFs(paramContext);
             long l1 = paramContext.getBlockCount() * paramContext.getBlockSize() / 1000000L;
-            long l2 = paramContext.getAvailableBlocks();
-            l2 = paramContext.getBlockSize() * l2 / 1000000L;
-            return String.valueOf(l2) + "/" + String.valueOf(l1);
+            long l2 = paramContext.getAvailableBlocks() * paramContext.getBlockSize() / 1000000L;
+            paramContext = new StringBuilder();
+            paramContext.append(String.valueOf(l2));
+            paramContext.append("/");
+            paramContext.append(String.valueOf(l1));
+            return paramContext.toString();
           }
         }
       }
@@ -189,25 +182,27 @@ public class Util
     Object localObject;
     try
     {
-      if ((checkPermission(paramContext, "android.permission.INTERNET")) && (checkPermission(paramContext, "android.permission.ACCESS_NETWORK_STATE")))
+      boolean bool = checkPermission(paramContext, "android.permission.INTERNET");
+      if ((bool) && (checkPermission(paramContext, "android.permission.ACCESS_NETWORK_STATE")))
       {
         localObject = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-        if ((localObject == null) || (!((NetworkInfo)localObject).isConnected())) {
-          break label119;
-        }
-        paramContext = ((NetworkInfo)localObject).getTypeName();
-        localObject = ((NetworkInfo)localObject).getExtraInfo();
-        if (paramContext == null) {
-          break label119;
-        }
-        if (paramContext.equalsIgnoreCase("WIFI")) {
-          return "WIFI";
-        }
-        if (!paramContext.equalsIgnoreCase("MOBILE")) {
-          break label113;
-        }
-        if (localObject != null) {
-          return localObject;
+        if ((localObject != null) && (((NetworkInfo)localObject).isConnected()))
+        {
+          paramContext = ((NetworkInfo)localObject).getTypeName();
+          localObject = ((NetworkInfo)localObject).getExtraInfo();
+          if (paramContext != null)
+          {
+            if (paramContext.equalsIgnoreCase("WIFI")) {
+              return "WIFI";
+            }
+            if (!paramContext.equalsIgnoreCase("MOBILE")) {
+              break label116;
+            }
+            if (localObject == null) {
+              break label112;
+            }
+            break label120;
+          }
         }
       }
       else
@@ -219,15 +214,14 @@ public class Util
     catch (Throwable paramContext)
     {
       Log.e("MtaSDK", "", paramContext);
-      return null;
     }
+    return null;
+    label112:
     return "MOBILE";
-    label113:
-    if (localObject != null)
-    {
+    label116:
+    if (localObject != null) {
+      label120:
       return localObject;
-      label119:
-      paramContext = null;
     }
     return paramContext;
   }
@@ -252,10 +246,8 @@ public class Util
     catch (Throwable paramContext)
     {
       Log.e("MtaSDK", "", paramContext);
-      return null;
     }
-    paramContext = null;
-    return paramContext;
+    return null;
   }
   
   public static Integer getTelephonyNetworkType(Context paramContext)
@@ -269,7 +261,11 @@ public class Util
         return Integer.valueOf(i);
       }
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label24:
+      break label24;
+    }
     return null;
   }
   
@@ -379,10 +375,7 @@ public class Util
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        Log.e("MtaSDK", "isWifiNet error", paramContext);
-      }
+      Log.e("MtaSDK", "isWifiNet error", paramContext);
     }
     return null;
     return localJSONArray;
@@ -408,14 +401,12 @@ public class Util
       else
       {
         Log.e("MtaSDK", "can not get the permisson of android.permission.INTERNET");
+        return false;
       }
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        Log.e("MtaSDK", "isNetworkAvailable error", paramContext);
-      }
+      Log.e("MtaSDK", "isNetworkAvailable error", paramContext);
     }
     return false;
   }
@@ -431,7 +422,7 @@ public class Util
         {
           paramContext = paramContext.getActiveNetworkInfo();
           if ((paramContext == null) || (!paramContext.isAvailable()) || (!paramContext.getTypeName().equalsIgnoreCase("WIFI"))) {
-            break label88;
+            break label87;
           }
           return true;
         }
@@ -439,33 +430,33 @@ public class Util
       else
       {
         Log.e("MtaSDK", "can not get the permisson of android.permission.INTERNET");
+        return false;
       }
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        Log.e("MtaSDK", "isWifiNet error", paramContext);
-      }
+      Log.e("MtaSDK", "isWifiNet error", paramContext);
     }
     return false;
-    label88:
+    label87:
     return false;
   }
   
   public static void jsonPut(JSONObject paramJSONObject, String paramString1, String paramString2)
   {
-    if (paramString2 != null) {}
-    try
-    {
-      if (paramString2.length() > 0) {
-        paramJSONObject.put(paramString1, paramString2);
+    if (paramString2 != null) {
+      try
+      {
+        if (paramString2.length() > 0)
+        {
+          paramJSONObject.put(paramString1, paramString2);
+          return;
+        }
       }
-      return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      Log.e("MtaSDK", "jsonPut error", paramJSONObject);
+      catch (Throwable paramJSONObject)
+      {
+        Log.e("MtaSDK", "jsonPut error", paramJSONObject);
+      }
     }
   }
 }

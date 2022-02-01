@@ -20,17 +20,17 @@ final class TypeAdapters$4
   
   public void write(JsonWriter paramJsonWriter, Boolean paramBoolean)
   {
-    if (paramBoolean == null) {}
-    for (paramBoolean = "null";; paramBoolean = paramBoolean.toString())
-    {
-      paramJsonWriter.value(paramBoolean);
-      return;
+    if (paramBoolean == null) {
+      paramBoolean = "null";
+    } else {
+      paramBoolean = paramBoolean.toString();
     }
+    paramJsonWriter.value(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.4
  * JD-Core Version:    0.7.0.1
  */

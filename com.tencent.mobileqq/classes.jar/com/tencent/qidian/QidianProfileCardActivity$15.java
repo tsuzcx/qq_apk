@@ -26,15 +26,15 @@ class QidianProfileCardActivity$15
     int i = paramView.getId();
     this.jdField_a_of_type_JavaLangString = String.valueOf(paramView.getTag());
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(i, HardCodeUtil.a(2131709720));
+    localQQCustomMenu.a(i, HardCodeUtil.a(2131709707));
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new QidianProfileCardActivity.15.DissmissListener(this));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOnDismissListener(new QidianProfileCardActivity.15.DissmissListener(this));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.15
  * JD-Core Version:    0.7.0.1
  */

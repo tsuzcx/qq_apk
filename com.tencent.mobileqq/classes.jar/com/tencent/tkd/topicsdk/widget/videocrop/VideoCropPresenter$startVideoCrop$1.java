@@ -21,19 +21,23 @@ final class VideoCropPresenter$startVideoCrop$1
   
   public final void invoke()
   {
-    String str = TopicSDKHelperKt.b() + System.currentTimeMillis() + "-audio.mp4";
-    Object localObject = VideoCropPresenter.a(this.this$0);
-    if (localObject != null) {}
-    for (localObject = Boolean.valueOf(((VideoTrimmer)localObject).a(this.this$0.a(), str, this.$item.getStartMergeTime(), this.$item.getEndMergeTime(), true, true));; localObject = null)
-    {
-      ThreadManagerKt.a((Function0)new VideoCropPresenter.startVideoCrop.1.1(this, (Boolean)localObject, str));
-      return;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(TopicSDKHelperKt.c());
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append("-audio.mp4");
+    String str = ((StringBuilder)localObject).toString();
+    localObject = VideoCropPresenter.a(this.this$0);
+    if (localObject != null) {
+      localObject = Boolean.valueOf(((VideoTrimmer)localObject).a(this.this$0.a(), str, this.$item.getStartMergeTime(), this.$item.getEndMergeTime(), true, true));
+    } else {
+      localObject = null;
     }
+    ThreadManagerKt.a((Function0)new VideoCropPresenter.startVideoCrop.1.1(this, (Boolean)localObject, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPresenter.startVideoCrop.1
  * JD-Core Version:    0.7.0.1
  */

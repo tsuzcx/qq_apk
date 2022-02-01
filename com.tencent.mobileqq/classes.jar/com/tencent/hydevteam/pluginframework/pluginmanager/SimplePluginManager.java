@@ -32,10 +32,17 @@ public class SimplePluginManager
   public SimplePluginManager(File paramFile, Downloader paramDownloader, VersionChecker paramVersionChecker, String paramString)
   {
     this.b = paramFile;
-    this.c = new File(this.b, "PluginManager_" + paramString);
+    paramFile = this.b;
+    StringBuilder localStringBuilder = new StringBuilder("PluginManager_");
+    localStringBuilder.append(paramString);
+    this.c = new File(paramFile, localStringBuilder.toString());
     this.f = new TargetManager(this.c);
-    if ((this.c.exists()) && (!this.c.isDirectory())) {
-      throw new IllegalArgumentException(this.c.getAbsolutePath() + "已存在且不是目录");
+    if ((this.c.exists()) && (!this.c.isDirectory()))
+    {
+      paramFile = new StringBuilder();
+      paramFile.append(this.c.getAbsolutePath());
+      paramFile.append("已存在且不是目录");
+      throw new IllegalArgumentException(paramFile.toString());
     }
     this.g = new UnpackManager(this.c);
     this.d = paramDownloader;
@@ -44,7 +51,11 @@ public class SimplePluginManager
   
   private boolean a(String paramString)
   {
-    this.j = new File(i, paramString + ".zip");
+    File localFile = i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".zip");
+    this.j = new File(localFile, localStringBuilder.toString());
     return this.j.exists();
   }
   
@@ -52,17 +63,18 @@ public class SimplePluginManager
   public List<InstalledPlugin> getCachedLatestPlugin(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    if (a(paramString)) {}
-    for (paramString = new SimplePluginManager.GetTestPluginTask(this, false);; paramString = new SimplePluginManager.GetPluginTask(this, null, true))
-    {
-      paramString = this.h.submit(paramString);
-      try
-      {
-        localArrayList.add((InstalledPlugin)paramString.get());
-        return localArrayList;
-      }
-      catch (Exception paramString) {}
+    if (a(paramString)) {
+      paramString = new SimplePluginManager.GetTestPluginTask(this, false);
+    } else {
+      paramString = new SimplePluginManager.GetPluginTask(this, null, true);
     }
+    paramString = this.h.submit(paramString);
+    try
+    {
+      localArrayList.add((InstalledPlugin)paramString.get());
+      return localArrayList;
+    }
+    catch (Exception paramString) {}
     return null;
   }
   
@@ -96,7 +108,7 @@ public class SimplePluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginmanager.SimplePluginManager
  * JD-Core Version:    0.7.0.1
  */

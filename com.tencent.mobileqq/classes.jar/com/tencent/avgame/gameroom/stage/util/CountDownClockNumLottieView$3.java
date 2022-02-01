@@ -11,8 +11,12 @@ class CountDownClockNumLottieView$3
   
   public void a(LottieDrawable paramLottieDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CountDownClockNumLottieView", 2, "onLoad lottieDrawable = " + paramLottieDrawable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLoad lottieDrawable = ");
+      localStringBuilder.append(paramLottieDrawable);
+      QLog.d("CountDownClockNumLottieView", 2, localStringBuilder.toString());
     }
     if (paramLottieDrawable != null) {
       this.a.a = paramLottieDrawable;
@@ -21,7 +25,7 @@ class CountDownClockNumLottieView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.util.CountDownClockNumLottieView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,188 +13,154 @@ import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LiuHaiUtils;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class FloatingScreenUtils
 {
   public static int a = 480;
-  private static int b = 0;
+  private static int b;
   
   public static final int a(float paramFloat, Resources paramResources)
   {
     if (paramFloat == 0.0F) {
       return 0;
     }
-    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
   }
   
-  /* Error */
   public static int a(Context paramContext)
   {
-    // Byte code:
-    //   0: new 26	android/util/DisplayMetrics
-    //   3: dup
-    //   4: invokespecial 41	android/util/DisplayMetrics:<init>	()V
-    //   7: astore_2
-    //   8: aload_0
-    //   9: ldc 43
-    //   11: invokevirtual 49	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   14: checkcast 51	android/view/WindowManager
-    //   17: invokeinterface 55 1 0
-    //   22: astore_0
-    //   23: getstatic 60	android/os/Build$VERSION:SDK_INT	I
-    //   26: bipush 17
-    //   28: if_icmplt +13 -> 41
-    //   31: aload_0
-    //   32: aload_2
-    //   33: invokevirtual 66	android/view/Display:getRealMetrics	(Landroid/util/DisplayMetrics;)V
-    //   36: aload_2
-    //   37: getfield 69	android/util/DisplayMetrics:heightPixels	I
-    //   40: ireturn
-    //   41: ldc 62
-    //   43: ldc 71
-    //   45: iconst_0
-    //   46: anewarray 73	java/lang/Class
-    //   49: invokevirtual 77	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   52: astore_2
-    //   53: aload_2
-    //   54: aload_0
-    //   55: iconst_0
-    //   56: anewarray 4	java/lang/Object
-    //   59: invokevirtual 83	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   62: checkcast 85	java/lang/Integer
-    //   65: invokevirtual 89	java/lang/Integer:intValue	()I
-    //   68: istore_1
-    //   69: iload_1
-    //   70: ireturn
-    //   71: astore_0
-    //   72: ldc 91
-    //   74: iconst_2
-    //   75: aload_0
-    //   76: invokevirtual 97	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   79: invokestatic 103	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   82: iconst_m1
-    //   83: ireturn
-    //   84: astore_0
-    //   85: ldc 91
-    //   87: iconst_2
-    //   88: aload_0
-    //   89: invokevirtual 104	java/lang/NoSuchMethodException:getMessage	()Ljava/lang/String;
-    //   92: invokestatic 103	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   95: goto -13 -> 82
-    //   98: astore_0
-    //   99: goto -27 -> 72
-    //   102: astore_0
-    //   103: goto -31 -> 72
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	106	0	paramContext	Context
-    //   68	2	1	i	int
-    //   7	47	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   53	69	71	java/lang/IllegalAccessException
-    //   23	41	84	java/lang/NoSuchMethodException
-    //   41	53	84	java/lang/NoSuchMethodException
-    //   53	69	84	java/lang/NoSuchMethodException
-    //   72	82	84	java/lang/NoSuchMethodException
-    //   53	69	98	java/lang/IllegalArgumentException
-    //   53	69	102	java/lang/reflect/InvocationTargetException
+    Object localObject = new DisplayMetrics();
+    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    int i;
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 17)
+      {
+        paramContext.getRealMetrics((DisplayMetrics)localObject);
+        i = ((DisplayMetrics)localObject).heightPixels;
+      }
+      else
+      {
+        localObject = Display.class.getMethod("getRawHeight", new Class[0]);
+        try
+        {
+          i = ((Integer)((Method)localObject).invoke(paramContext, new Object[0])).intValue();
+        }
+        catch (InvocationTargetException paramContext) {}catch (IllegalAccessException paramContext) {}catch (IllegalArgumentException paramContext) {}
+        QLog.e("FloatingScreenUtils", 2, paramContext.getMessage());
+        return -1;
+      }
+    }
+    catch (NoSuchMethodException paramContext)
+    {
+      QLog.e("FloatingScreenUtils", 2, paramContext.getMessage());
+      return -1;
+    }
+    return i;
   }
   
   public static boolean a(Context paramContext)
   {
-    if (b == 0)
-    {
-      if ((Build.VERSION.SDK_INT < 26) || (Build.VERSION.SDK_INT >= 28) || (!LiuHaiUtils.b(paramContext))) {
-        break label56;
+    if (b == 0) {
+      if ((Build.VERSION.SDK_INT >= 26) && (Build.VERSION.SDK_INT < 28) && (LiuHaiUtils.b(paramContext)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FloatingScreenUtils", 2, "AndroidO With Notch in Screen.");
+        }
+        b = 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("FloatingScreenUtils", 2, "AndroidO With Notch in Screen.");
+      else
+      {
+        b = 2;
       }
     }
-    label56:
-    for (b = 1; b == 1; b = 2) {
-      return true;
-    }
-    return false;
+    return b == 1;
   }
   
   @TargetApi(13)
   public static int b(Context paramContext)
   {
     paramContext = (WindowManager)paramContext.getSystemService("window");
-    Point localPoint;
     if (Build.VERSION.SDK_INT >= 13)
     {
-      localPoint = new Point();
+      Point localPoint = new Point();
       paramContext.getDefaultDisplay().getSize(localPoint);
+      a = localPoint.y;
     }
-    for (a = localPoint.y;; a = paramContext.getDefaultDisplay().getHeight()) {
-      return a;
+    else
+    {
+      a = paramContext.getDefaultDisplay().getHeight();
     }
+    return a;
   }
   
   public static boolean b(Context paramContext)
   {
-    boolean bool2;
-    for (;;)
+    boolean bool1 = false;
+    int i;
+    label156:
+    do
     {
+      Object localObject;
       try
       {
-        Resources localResources = paramContext.getResources();
-        i = localResources.getIdentifier("config_showNavigationBar", "bool", "android");
-        if (i <= 0) {
-          continue;
+        localObject = paramContext.getResources();
+        i = ((Resources)localObject).getIdentifier("config_showNavigationBar", "bool", "android");
+        boolean bool2;
+        if (i > 0)
+        {
+          bool2 = ((Resources)localObject).getBoolean(i);
+          bool1 = bool2;
         }
-        bool1 = localResources.getBoolean(i);
-      }
-      catch (Exception paramContext)
-      {
-        int i;
-        boolean bool1 = false;
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          return bool2;
+        else
+        {
+          bool1 = false;
         }
-        QLog.e("FloatingScreenUtils", 2, "checkNavigationBarShow error: " + paramContext.toString());
+        try
+        {
+          i = Build.VERSION.SDK_INT;
+          if (i < 21) {
+            i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+          } else {
+            i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+          }
+        }
+        catch (Exception paramContext)
+        {
+          break label156;
+        }
+        if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI"))
+        {
+          paramContext = Class.forName("android.os.SystemProperties");
+          paramContext = (String)paramContext.getMethod("get", new Class[] { String.class }).invoke(paramContext, new Object[] { "qemu.hw.mainkeys" });
+          if ("1".equals(paramContext)) {
+            return false;
+          }
+          bool2 = "0".equals(paramContext);
+          if (bool2) {
+            return true;
+          }
+        }
         return bool1;
-        return bool1;
-        bool1 = false;
-        continue;
-        if (i != 1) {
-          continue;
-        }
-        bool2 = false;
-      }
-      try
-      {
-        if (Build.VERSION.SDK_INT < 21) {
-          i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
-        } else {
-          i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
-        }
       }
       catch (Exception paramContext) {}
-    }
-    if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI"))
-    {
-      paramContext = Class.forName("android.os.SystemProperties");
-      paramContext = (String)paramContext.getMethod("get", new Class[] { String.class }).invoke(paramContext, new Object[] { "qemu.hw.mainkeys" });
-      if ("1".equals(paramContext)) {
-        return false;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("checkNavigationBarShow error: ");
+        ((StringBuilder)localObject).append(paramContext.toString());
+        QLog.e("FloatingScreenUtils", 2, ((StringBuilder)localObject).toString());
       }
-      bool2 = "0".equals(paramContext);
-      if (bool2) {
-        return true;
-      }
-    }
-    return bool2;
+      return bool1;
+    } while (i != 1);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenUtils
  * JD-Core Version:    0.7.0.1
  */

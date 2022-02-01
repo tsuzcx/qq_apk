@@ -7,6 +7,7 @@ public final class enum_guiding_feed_type
 {
   public static final int _eGuideLoveReminderType = 8;
   public static final int _eGuidingAnniversaryDay = 9;
+  public static final int _eGuidingBirthdayCardDay = 16;
   public static final int _eGuidingENDEND = 2000;
   public static final int _eGuidingFollow = 2;
   public static final int _eGuidingFriendReminder = 3;
@@ -23,7 +24,7 @@ public final class enum_guiding_feed_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.enum_guiding_feed_type
  * JD-Core Version:    0.7.0.1
  */

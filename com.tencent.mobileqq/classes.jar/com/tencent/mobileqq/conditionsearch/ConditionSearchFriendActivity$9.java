@@ -11,28 +11,38 @@ class ConditionSearchFriendActivity$9
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onGetConfig | mDialogType = " + this.a.j + ", isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetConfig | mDialogType = ");
+      ((StringBuilder)localObject).append(this.a.j);
+      ((StringBuilder)localObject).append(", isSuccess = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", resultCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ConditionSearchFriendActivity", 2, ((StringBuilder)localObject).toString());
     }
     if ((this.a.j == 1) || (this.a.j == 2))
     {
-      if (paramBoolean) {
-        break label110;
+      if (!paramBoolean)
+      {
+        this.a.a();
+        QQToast.a(this.a, 2131691057, 0).b(this.a.getTitleBarHeight());
+        return;
       }
-      this.a.a();
-      QQToast.a(this.a, 2131691137, 0).b(this.a.getTitleBarHeight());
+      if (paramInt == 2)
+      {
+        this.a.a();
+        localObject = this.a;
+        ((ConditionSearchFriendActivity)localObject).a(((ConditionSearchFriendActivity)localObject).j);
+      }
     }
-    label110:
-    while (paramInt != 2) {
-      return;
-    }
-    this.a.a();
-    this.a.a(this.a.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity.9
  * JD-Core Version:    0.7.0.1
  */

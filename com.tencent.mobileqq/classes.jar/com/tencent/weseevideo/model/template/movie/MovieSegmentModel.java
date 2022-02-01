@@ -33,15 +33,30 @@ public class MovieSegmentModel
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (MovieSegmentModel)paramObject;
-    } while (((this.videoResourceModels == paramObject.videoResourceModels) || ((this.videoResourceModels != null) && (this.videoResourceModels.equals(paramObject.videoResourceModels)))) && (this.timeRange != null) && (this.timeRange.equals(paramObject.timeRange)) && (this.minDuration != null) && (this.minDuration.equalsTo(paramObject.minDuration)));
+      Object localObject = this.videoResourceModels;
+      ArrayList localArrayList = paramObject.videoResourceModels;
+      if ((localObject == localArrayList) || ((localObject != null) && (((ArrayList)localObject).equals(localArrayList))))
+      {
+        localObject = this.timeRange;
+        if ((localObject != null) && (((CMTimeRange)localObject).equals(paramObject.timeRange)))
+        {
+          localObject = this.minDuration;
+          if ((localObject != null) && (((CMTime)localObject).equalsTo(paramObject.minDuration))) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
     return false;
   }
   
@@ -78,12 +93,20 @@ public class MovieSegmentModel
   
   public String toString()
   {
-    return "MovieSegmentModel{videoResourceModels=" + this.videoResourceModels + ", timeRange=" + this.timeRange + ", minDuration=" + this.minDuration + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MovieSegmentModel{videoResourceModels=");
+    localStringBuilder.append(this.videoResourceModels);
+    localStringBuilder.append(", timeRange=");
+    localStringBuilder.append(this.timeRange);
+    localStringBuilder.append(", minDuration=");
+    localStringBuilder.append(this.minDuration);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.movie.MovieSegmentModel
  * JD-Core Version:    0.7.0.1
  */

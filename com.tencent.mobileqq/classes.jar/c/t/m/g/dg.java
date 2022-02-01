@@ -9,18 +9,16 @@ public final class dg
   {
     Bundle localBundle = new Bundle();
     paramde = new dg.1(this, localBundle, paramde);
-    if (paramArrayOfByte != null) {}
-    for (;;)
-    {
-      du.a(paramString, paramArrayOfByte, 0, paramde);
-      return localBundle;
+    if (paramArrayOfByte == null) {
       paramArrayOfByte = do.a;
     }
+    du.a(paramString, paramArrayOfByte, 0, paramde);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dg
  * JD-Core Version:    0.7.0.1
  */

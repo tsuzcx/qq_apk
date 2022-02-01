@@ -9,15 +9,21 @@ class GameResultFragment$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GameResultFragment", 2, "onGetGameRankingListFail gameId: " + this.a + ", errMsg: " + this.b);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetGameRankingListFail gameId: ");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append(", errMsg: ");
+      localStringBuilder.append(this.b);
+      QLog.i("GameResultFragment", 2, localStringBuilder.toString());
     }
     GameResultFragment.a(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameresult.GameResultFragment.1
  * JD-Core Version:    0.7.0.1
  */

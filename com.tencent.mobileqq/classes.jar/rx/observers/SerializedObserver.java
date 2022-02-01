@@ -30,23 +30,24 @@ public class SerializedObserver<T>
       if (this.terminated) {
         return;
       }
-    }
-    finally {}
-    this.terminated = true;
-    if (this.emitting)
-    {
-      SerializedObserver.FastList localFastList = this.queue;
-      Object localObject2 = localFastList;
-      if (localFastList == null)
+      this.terminated = true;
+      if (this.emitting)
       {
-        localObject2 = new SerializedObserver.FastList();
-        this.queue = ((SerializedObserver.FastList)localObject2);
+        SerializedObserver.FastList localFastList2 = this.queue;
+        SerializedObserver.FastList localFastList1 = localFastList2;
+        if (localFastList2 == null)
+        {
+          localFastList1 = new SerializedObserver.FastList();
+          this.queue = localFastList1;
+        }
+        localFastList1.add(this.nl.completed());
+        return;
       }
-      ((SerializedObserver.FastList)localObject2).add(this.nl.completed());
+      this.emitting = true;
+      this.actual.onCompleted();
       return;
     }
-    this.emitting = true;
-    this.actual.onCompleted();
+    finally {}
   }
   
   public void onError(Throwable paramThrowable)
@@ -60,23 +61,24 @@ public class SerializedObserver<T>
       if (this.terminated) {
         return;
       }
-    }
-    finally {}
-    this.terminated = true;
-    if (this.emitting)
-    {
-      SerializedObserver.FastList localFastList2 = this.queue;
-      SerializedObserver.FastList localFastList1 = localFastList2;
-      if (localFastList2 == null)
+      this.terminated = true;
+      if (this.emitting)
       {
-        localFastList1 = new SerializedObserver.FastList();
-        this.queue = localFastList1;
+        SerializedObserver.FastList localFastList2 = this.queue;
+        SerializedObserver.FastList localFastList1 = localFastList2;
+        if (localFastList2 == null)
+        {
+          localFastList1 = new SerializedObserver.FastList();
+          this.queue = localFastList1;
+        }
+        localFastList1.add(this.nl.error(paramThrowable));
+        return;
       }
-      localFastList1.add(this.nl.error(paramThrowable));
+      this.emitting = true;
+      this.actual.onError(paramThrowable);
       return;
     }
-    this.emitting = true;
-    this.actual.onError(paramThrowable);
+    finally {}
   }
   
   public void onNext(T paramT)
@@ -89,86 +91,81 @@ public class SerializedObserver<T>
       if (this.terminated) {
         return;
       }
-    }
-    finally {}
-    SerializedObserver.FastList localFastList2;
-    SerializedObserver.FastList localFastList1;
-    if (this.emitting)
-    {
-      localFastList2 = this.queue;
-      localFastList1 = localFastList2;
-      if (localFastList2 == null)
+      SerializedObserver.FastList localFastList;
+      Object localObject;
+      if (this.emitting)
       {
-        localFastList1 = new SerializedObserver.FastList();
-        this.queue = localFastList1;
+        localFastList = this.queue;
+        localObject = localFastList;
+        if (localFastList == null)
+        {
+          localObject = new SerializedObserver.FastList();
+          this.queue = ((SerializedObserver.FastList)localObject);
+        }
+        ((SerializedObserver.FastList)localObject).add(this.nl.next(paramT));
+        return;
       }
-      localFastList1.add(this.nl.next(paramT));
-      return;
-    }
-    this.emitting = true;
-    int i;
-    try
-    {
-      this.actual.onNext(paramT);
-      do
-      {
-        i = 0;
-      } while (i >= 1024);
+      this.emitting = true;
       try
       {
-        localFastList1 = this.queue;
-        if (localFastList1 == null)
-        {
-          this.emitting = false;
-          return;
+        this.actual.onNext(paramT);
+        int i = 0;
+        while (i < 1024) {
+          try
+          {
+            localObject = this.queue;
+            if (localObject == null)
+            {
+              this.emitting = false;
+              return;
+            }
+            this.queue = null;
+            localObject = ((SerializedObserver.FastList)localObject).array;
+            int k = localObject.length;
+            int j = 0;
+            while (j < k)
+            {
+              localFastList = localObject[j];
+              if (localFastList != null) {
+                try
+                {
+                  if (this.nl.accept(this.actual, localFastList))
+                  {
+                    this.terminated = true;
+                    return;
+                  }
+                  j += 1;
+                }
+                catch (Throwable localThrowable1)
+                {
+                  this.terminated = true;
+                  Exceptions.throwIfFatal(localThrowable1);
+                  this.actual.onError(OnErrorThrowable.addValueAsLastCause(localThrowable1, paramT));
+                  return;
+                }
+              }
+            }
+            i += 1;
+          }
+          finally {}
         }
-      }
-      finally {}
-      this.queue = null;
-    }
-    catch (Throwable localThrowable1)
-    {
-      this.terminated = true;
-      Exceptions.throwOrReport(localThrowable1, this.actual, paramT);
-      return;
-    }
-    Object[] arrayOfObject = localThrowable1.array;
-    int k = arrayOfObject.length;
-    int j = 0;
-    for (;;)
-    {
-      if (j < k)
-      {
-        localFastList2 = arrayOfObject[j];
-        if (localFastList2 != null) {}
-      }
-      else
-      {
-        i += 1;
-        break;
-      }
-      try
-      {
-        if (this.nl.accept(this.actual, localFastList2))
-        {
-          this.terminated = true;
-          return;
-        }
+        paramT = finally;
       }
       catch (Throwable localThrowable2)
       {
         this.terminated = true;
-        Exceptions.throwIfFatal(localThrowable2);
-        this.actual.onError(OnErrorThrowable.addValueAsLastCause(localThrowable2, paramT));
+        Exceptions.throwOrReport(localThrowable2, this.actual, paramT);
         return;
       }
-      j += 1;
+      throw paramT;
     }
+    finally {}
+    for (;;) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.observers.SerializedObserver
  * JD-Core Version:    0.7.0.1
  */

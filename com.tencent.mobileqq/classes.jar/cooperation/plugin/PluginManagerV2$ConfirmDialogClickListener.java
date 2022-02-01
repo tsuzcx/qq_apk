@@ -27,48 +27,46 @@ class PluginManagerV2$ConfirmDialogClickListener
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    switch (paramInt)
+    if (paramInt != -2)
     {
-    default: 
-      return;
-    case -1: 
+      if (paramInt != -1) {
+        return;
+      }
       PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2, 1, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      paramInt = i;
-    }
-    for (;;)
-    {
-      PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2, paramInt, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
-      return;
-      paramInt = i;
-      if (this.b)
+    boolean bool = this.jdField_a_of_type_Boolean;
+    int i = 0;
+    if ((!bool) && (this.b)) {
+      if (PluginManagerV2.a())
       {
-        if (PluginManagerV2.a())
-        {
-          boolean bool = Dex2Oat.a(this.jdField_a_of_type_JavaLangString);
-          if (bool) {}
-          for (i = 4;; i = 2)
-          {
-            paramInt = i;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("plugin_tag", 2, "dialog needOTA :" + bool);
-            paramInt = i;
-            break;
-          }
+        bool = Dex2Oat.a(this.jdField_a_of_type_JavaLangString);
+        if (bool) {
+          paramInt = 4;
+        } else {
+          paramInt = 2;
         }
-        paramInt = 2;
+        i = paramInt;
+        if (QLog.isColorLevel())
+        {
+          paramDialogInterface = new StringBuilder();
+          paramDialogInterface.append("dialog needOTA :");
+          paramDialogInterface.append(bool);
+          QLog.d("plugin_tag", 2, paramDialogInterface.toString());
+          i = paramInt;
+        }
+      }
+      else
+      {
+        i = 2;
       }
     }
+    PluginManagerV2.a(this.jdField_a_of_type_CooperationPluginPluginManagerV2, i, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginManagerV2.ConfirmDialogClickListener
  * JD-Core Version:    0.7.0.1
  */

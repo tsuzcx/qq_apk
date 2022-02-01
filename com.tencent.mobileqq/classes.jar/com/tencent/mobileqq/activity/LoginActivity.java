@@ -10,18 +10,19 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
-import android.support.v4.app.QFragmentActivity;
-import android.support.v4.app.QFragmentManager;
-import android.support.v4.app.QFragmentTransaction;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment;
 import com.tencent.mobileqq.activity.registerGuideLogin.GuideBaseFragment.GuideCallBack;
 import com.tencent.mobileqq.activity.registerGuideLogin.GuideHandler;
 import com.tencent.mobileqq.app.GatewayLoginNewDevHelper;
+import com.tencent.mobileqq.app.LoginForbiddenDialogReporter;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.loginregister.LoginProgressClazz;
 import com.tencent.mobileqq.loginregister.LoginProxy;
 import com.tencent.mobileqq.loginregister.LoginUtils;
@@ -41,7 +42,7 @@ import mqq.os.MqqHandler;
 
 @RoutePage(desc="主登录页面", path="/base/login")
 public class LoginActivity
-  extends QFragmentActivity
+  extends QBaseActivity
   implements Handler.Callback, GuideBaseFragment.GuideCallBack
 {
   public static final String FAKE_PASSWORD = "!@#ewaGbhkc$!!=";
@@ -75,18 +76,24 @@ public class LoginActivity
   
   private void doAfterLoginSuccess()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LoginActivity", 2, "only kandian tab switch, login delayTime:" + (NetConnInfoCenter.getServerTimeMillis() - this.startDelayTime));
-    }
-    if (PhoneNumLoginImpl.a().a()) {}
-    do
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("only kandian tab switch, login delayTime:");
+      ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTimeMillis() - this.startDelayTime);
+      QLog.e("LoginActivity", 2, ((StringBuilder)localObject).toString());
+    }
+    if (PhoneNumLoginImpl.a().a()) {
       return;
-      if (this.mLoginProxy.a(this.app, this, this.app.getAccount())) {
-        finish();
-      }
-    } while (isFinishing());
-    dismissDialogById(0);
+    }
+    Object localObject = this.mLoginProxy;
+    AppRuntime localAppRuntime = this.app;
+    if (((LoginProxy)localObject).a(localAppRuntime, this, localAppRuntime.getAccount())) {
+      finish();
+    }
+    if (!isFinishing()) {
+      dismissDialogById(0);
+    }
   }
   
   private boolean isSupportMultiWindow()
@@ -105,41 +112,45 @@ public class LoginActivity
   public void changeGuideBaseView(GuideBaseFragment paramGuideBaseFragment)
   {
     Object localObject = getSupportFragmentManager();
-    QFragmentTransaction localQFragmentTransaction = ((QFragmentManager)localObject).beginTransaction();
-    localObject = ((QFragmentManager)localObject).findFragmentById(2131368153);
-    if ((this.mCurrentView != null) || (localObject != null))
+    FragmentTransaction localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
+    localObject = ((FragmentManager)localObject).findFragmentById(2131367906);
+    if ((this.mCurrentView == null) && (localObject == null))
+    {
+      localFragmentTransaction.add(2131367906, paramGuideBaseFragment);
+      if (VersionUtils.e()) {
+        localFragmentTransaction.commitAllowingStateLoss();
+      } else {
+        localFragmentTransaction.commit();
+      }
+    }
+    else
     {
       if ((this.mCurrentView == null) && (localObject != null) && ((localObject instanceof GuideBaseFragment))) {
         this.mCurrentView = ((GuideBaseFragment)localObject);
       }
-      if (this.mCurrentView != null) {
-        this.mCurrentView.a(null);
+      localObject = this.mCurrentView;
+      if (localObject != null) {
+        ((GuideBaseFragment)localObject).a(null);
       }
-      localQFragmentTransaction.replace(2131368153, paramGuideBaseFragment);
+      localFragmentTransaction.replace(2131367906, paramGuideBaseFragment);
       if (VersionUtils.e()) {
-        localQFragmentTransaction.commitAllowingStateLoss();
-      }
-    }
-    for (;;)
-    {
-      this.mCurrentView = paramGuideBaseFragment;
-      this.mCurrentView.a(this);
-      return;
-      localQFragmentTransaction.commit();
-      continue;
-      localQFragmentTransaction.add(2131368153, paramGuideBaseFragment);
-      if (VersionUtils.e()) {
-        localQFragmentTransaction.commitAllowingStateLoss();
+        localFragmentTransaction.commitAllowingStateLoss();
       } else {
-        localQFragmentTransaction.commit();
+        localFragmentTransaction.commit();
       }
     }
+    this.mCurrentView = paramGuideBaseFragment;
+    this.mCurrentView.a(this);
   }
   
   public void checkUnlockForSpecial()
   {
-    if ((this.isAddAccount) && (this.app != null) && (LoginUtils.a(this, this.app))) {
-      startUnlockActivity();
+    if (this.isAddAccount)
+    {
+      AppRuntime localAppRuntime = this.app;
+      if ((localAppRuntime != null) && (LoginUtils.a(this, localAppRuntime))) {
+        startUnlockActivity();
+      }
     }
   }
   
@@ -152,21 +163,28 @@ public class LoginActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    Window localWindow = getWindow();
-    localWindow.addFlags(1024);
+    Object localObject = getWindow();
+    ((Window)localObject).addFlags(1024);
+    this.app = getAppRuntime();
+    if (this.app == null)
+    {
+      finish();
+      QLog.e("LoginActivity", 1, "app is null, finish");
+      return true;
+    }
     if (Build.VERSION.SDK_INT >= 28)
     {
-      View localView = localWindow.getDecorView();
-      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+      View localView = ((Window)localObject).getDecorView();
+      WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
       localLayoutParams.layoutInDisplayCutoutMode = 1;
-      localWindow.setAttributes(localLayoutParams);
+      ((Window)localObject).setAttributes(localLayoutParams);
       int i = localView.getSystemUiVisibility();
-      localWindow.getDecorView().setSystemUiVisibility(i | 0x400);
+      ((Window)localObject).getDecorView().setSystemUiVisibility(0x400 | i);
     }
     this.isChange = getIntent().getBooleanExtra("is_change_account", false);
     this.isAddAccount = getIntent().getBooleanExtra("IS_ADD_ACCOUNT", false);
@@ -175,89 +193,103 @@ public class LoginActivity
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       SoftInputResizeLayout.assistActivity(this);
     }
-    if (sCurrent != null) {
-      sCurrent.finish();
+    localObject = sCurrent;
+    if (localObject != null) {
+      ((Activity)localObject).finish();
     }
     sCurrent = this;
-    this.app = getAppRuntime();
     LoginUtils.a(this.app, LoginProgressClazz.class, this.mHandler);
     this.mLoginProxy = new LoginProxy();
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity", 2, "LoginActivity app is " + this.app);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("LoginActivity app is ");
+      ((StringBuilder)localObject).append(this.app);
+      QLog.d("LoginActivity", 2, ((StringBuilder)localObject).toString());
     }
     this.mNeedFinishLoginActivity = true;
-    super.setContentView(2131562936);
+    super.setContentView(2131562751);
     if (paramBundle != null)
     {
-      this.mCurrentView = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131368153));
-      if (this.mCurrentView != null) {
-        this.mCurrentView.a(this);
+      this.mCurrentView = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131367906));
+      paramBundle = this.mCurrentView;
+      if (paramBundle != null) {
+        paramBundle.a(this);
       }
-      if ("doOnCreate savedInstanceState != null, mCurrentView isExist:" + this.mCurrentView == null) {
-        break label532;
+      paramBundle = new StringBuilder();
+      paramBundle.append("doOnCreate savedInstanceState != null, mCurrentView isExist:");
+      paramBundle.append(this.mCurrentView);
+      boolean bool;
+      if (paramBundle.toString() != null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label532:
-    for (boolean bool = true;; bool = false)
-    {
       QLog.d("LoginActivity", 1, new Object[] { Boolean.valueOf(bool) });
-      if (this.mCurrentView == null) {
-        changeGuideBaseView(GuideHandler.a(this, this.app));
-      }
-      this.mLoginProxy.a(this, getIntent().getExtras());
-      if ((this.isAddAccount) && (this.isFromAccountManager))
-      {
-        ReportController.b(this.app, "CliOper", "", "", "0X800664D", "0X800664D", 0, 0, "", "", "", "");
-        ReportController.b(this.app, "dc00898", "", "", "0X800735D", "0X800735D", 0, 0, "", "", "", "");
-        ReportController.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
-        ReportController.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 3, 0, "", "", "", "");
-      }
-      return true;
     }
+    if (this.mCurrentView == null) {
+      changeGuideBaseView(GuideHandler.a(this, this.app));
+    }
+    this.mLoginProxy.a(this, getIntent().getExtras());
+    if ((this.isAddAccount) && (this.isFromAccountManager))
+    {
+      ReportController.b(this.app, "CliOper", "", "", "0X800664D", "0X800664D", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "dc00898", "", "", "0X800735D", "0X800735D", 0, 0, "", "", "", "");
+      ReportController.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 0, 0, "", "", "", "");
+      ReportController.a(this.app, "dc00898", "", "", "0X8007360", "0X8007360", 3, 0, "", "", "", "");
+    }
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
+    Object localObject = this.app;
+    if (localObject == null) {
+      return;
+    }
     sCurrent = null;
-    LoginUtils.a(this.app, LoginProgressClazz.class);
+    LoginUtils.a((AppRuntime)localObject, LoginProgressClazz.class);
     if (this.mFirstBitmap != null) {
       this.mFirstBitmap = null;
     }
-    if (this.mHandler != null) {
-      this.mHandler.removeMessages(20140326);
+    localObject = this.mHandler;
+    if (localObject != null) {
+      ((MqqHandler)localObject).removeMessages(2005);
     }
     dismissDialogById(0);
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     this.mNeedFinishLoginActivity = true;
-    if (this.mCurrentView != null) {
-      this.mCurrentView.a(paramIntent);
+    GuideBaseFragment localGuideBaseFragment = this.mCurrentView;
+    if (localGuideBaseFragment != null) {
+      localGuideBaseFragment.a(paramIntent);
     }
     if (QLog.isColorLevel()) {
       QLog.d("LoginActivity", 2, "doOnNewIntent in LoginActivity");
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     setRequestedOrientation(1);
     super.doOnResume();
     GatewayLoginNewDevHelper.a(1);
     QLog.d("LoginActivity", 1, new Object[] { "onResume mNeedShowProgress=", Boolean.valueOf(this.mNeedShowProgress) });
-    if (this.mNeedShowProgress) {}
-    try
-    {
-      showDialog(0);
-      this.mNeedShowProgress = false;
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("LoginActivity", 1, new Object[] { "show progress dialog error : ", localException.getMessage() });
+    if (this.mNeedShowProgress) {
+      try
+      {
+        showDialog(0);
+        this.mNeedShowProgress = false;
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("LoginActivity", 1, new Object[] { "show progress dialog error : ", localException.getMessage() });
+      }
     }
   }
   
@@ -276,70 +308,85 @@ public class LoginActivity
   {
     switch (paramMessage.what)
     {
-    }
-    do
-    {
-      do
-      {
-        return true;
-      } while (isFinishing());
-      dismissDialogById(0);
+    case 2003: 
+    default: 
       return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginActivity", 2, "recv message FINISH_ACTIVITY.. finish activity");
-      }
-      finish();
-      return true;
-      if (this.mHandler != null) {
-        this.mHandler.removeMessages(20140326);
+    case 2005: 
+      paramMessage = this.mHandler;
+      if (paramMessage != null) {
+        paramMessage.removeMessages(2005);
       }
       if (QLog.isColorLevel()) {
         QLog.d("LoginActivity", 2, "handleMessage  LOGIN_DO_NEXT");
       }
       doAfterLoginSuccess();
       return true;
-    } while (isFinishing());
-    this.mNeedShowProgress = true;
+    case 2004: 
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginActivity", 2, "recv message FINISH_ACTIVITY.. finish activity");
+      }
+      finish();
+      return true;
+    case 2002: 
+      if (!isFinishing())
+      {
+        this.mNeedShowProgress = true;
+        return true;
+      }
+      break;
+    case 2001: 
+      if (!isFinishing()) {
+        dismissDialogById(0);
+      }
+      break;
+    }
     return true;
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
   
-  public void onAccountChanged()
+  protected void onAccountChanged()
   {
     super.onAccountChanged();
     QLog.d("login", 1, "LoginActivity onAccountChanged");
     LoginUtils.a(this.app, LoginProgressClazz.class);
     this.app = getAppRuntime();
     LoginUtils.a(this.app, LoginProgressClazz.class, this.mHandler);
-    Object localObject = null;
-    if (this.mCurrentView != null) {
-      localObject = this.mCurrentView.a();
+    Object localObject = this.mCurrentView;
+    if (localObject != null) {
+      localObject = ((GuideBaseFragment)localObject).a();
+    } else {
+      localObject = null;
     }
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       this.mLoginProxy.a(this, this.app, (String)localObject);
     }
     localObject = Message.obtain();
-    ((Message)localObject).what = 20140326;
+    ((Message)localObject).what = 2005;
     this.mHandler.sendMessageDelayed((Message)localObject, 800L);
     this.startDelayTime = System.currentTimeMillis();
     if (!this.mLoginProxy.a(this.app, getClass(), this.startDelayTime))
     {
-      this.mHandler.removeMessages(20140326);
+      this.mHandler.removeMessages(2005);
       doAfterLoginSuccess();
     }
+    else
+    {
+      showDialog(0);
+    }
     ReportController.a(this.app, "dc00898", "", "", "0X800AC0B", "0X800AC0B", 0, 0, "", "", "", "");
+    LoginForbiddenDialogReporter.a(getAppRuntime(), this.app.getAccount(), 1);
   }
   
-  public void onAccoutChangeFailed()
+  protected void onAccoutChangeFailed()
   {
     QLog.d("login", 1, "LoginActivity onAccoutChangeFailed");
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     boolean bool1 = getIntent().getBooleanExtra("is_change_account", false);
     boolean bool2 = getIntent().getBooleanExtra("IS_ADD_ACCOUNT", false);
@@ -348,54 +395,53 @@ public class LoginActivity
     boolean bool5 = getIntent().getBooleanExtra("from_register_choose", false);
     boolean bool6 = getIntent().getBooleanExtra("fromsubaccount", false);
     boolean bool7 = getIntent().getBooleanExtra("is_need_login_with_mask", false);
-    if (bool3) {
-      if (bool2)
-      {
-        moveTaskToBack(true);
-        finish();
-      }
-    }
-    do
+    StringBuilder localStringBuilder;
+    if (bool3)
     {
-      for (;;)
-      {
-        return true;
+      if (bool2) {
+        moveTaskToBack(true);
+      } else {
         try
         {
           this.app.exit(false);
         }
         catch (Exception localException1)
         {
-          QLog.e("LoginActivity", 1, "onBackEvent app exit exception: " + localException1.getMessage());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onBackEvent app exit exception: ");
+          localStringBuilder.append(localException1.getMessage());
+          QLog.e("LoginActivity", 1, localStringBuilder.toString());
           localException1.printStackTrace();
         }
       }
-      break;
-      if ((!bool1) && (!bool2) && (!bool5) && (!bool7)) {
-        break label216;
-      }
-      if ((bool1) && (!bool6)) {
-        setResult(-1);
-      }
-      finish();
-    } while ((!bool2) || (!bool4));
-    overridePendingTransition(2130771992, 2130772003);
-    return true;
-    try
-    {
-      label216:
-      this.app.exit(false);
       finish();
       return true;
     }
-    catch (Exception localException2)
+    if ((!bool1) && (!bool2) && (!bool5) && (!bool7))
     {
-      for (;;)
+      try
       {
-        QLog.e("LoginActivity", 1, "onBackEvent app exit exception: " + localException2.getMessage());
+        this.app.exit(false);
+      }
+      catch (Exception localException2)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onBackEvent app exit exception: ");
+        localStringBuilder.append(localException2.getMessage());
+        QLog.e("LoginActivity", 1, localStringBuilder.toString());
         localException2.printStackTrace();
       }
+      finish();
+      return true;
     }
+    if ((bool1) && (!bool6)) {
+      setResult(-1);
+    }
+    finish();
+    if ((bool2) && (bool4)) {
+      overridePendingTransition(2130772004, 2130772015);
+    }
+    return true;
   }
   
   @Override
@@ -407,28 +453,31 @@ public class LoginActivity
   
   protected Dialog onCreateDialog(int paramInt)
   {
-    Dialog localDialog = null;
-    if (this.mCurrentView != null) {
-      localDialog = this.mCurrentView.a(paramInt);
+    GuideBaseFragment localGuideBaseFragment = this.mCurrentView;
+    if (localGuideBaseFragment != null) {
+      return localGuideBaseFragment.a(paramInt);
     }
-    return localDialog;
+    return null;
   }
   
-  public void onLogout(Constants.LogoutReason paramLogoutReason) {}
+  protected void onLogout(Constants.LogoutReason paramLogoutReason) {}
   
   public void onMultiWindowModeChanged(boolean paramBoolean)
   {
-    if (!isSupportMultiWindow()) {}
-    while (this.mCurrentView == null) {
+    if (!isSupportMultiWindow()) {
       return;
     }
-    this.mCurrentView.a(paramBoolean);
+    GuideBaseFragment localGuideBaseFragment = this.mCurrentView;
+    if (localGuideBaseFragment != null) {
+      localGuideBaseFragment.onMultiWindowModeChanged(paramBoolean);
+    }
   }
   
   protected void onPrepareDialog(int paramInt, Dialog paramDialog)
   {
-    if (this.mCurrentView != null) {
-      this.mCurrentView.a(paramInt, paramDialog);
+    GuideBaseFragment localGuideBaseFragment = this.mCurrentView;
+    if (localGuideBaseFragment != null) {
+      localGuideBaseFragment.a(paramInt, paramDialog);
     }
     super.onPrepareDialog(paramInt, paramDialog);
   }
@@ -436,19 +485,23 @@ public class LoginActivity
   public void receiveScreenOff()
   {
     super.receiveScreenOff();
-    if ((this.isAddAccount) && (this.app != null) && (LoginUtils.a(this, this.app))) {
-      startUnlockActivity();
+    if (this.isAddAccount)
+    {
+      AppRuntime localAppRuntime = this.app;
+      if ((localAppRuntime != null) && (LoginUtils.a(this, localAppRuntime))) {
+        startUnlockActivity();
+      }
     }
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginActivity
  * JD-Core Version:    0.7.0.1
  */

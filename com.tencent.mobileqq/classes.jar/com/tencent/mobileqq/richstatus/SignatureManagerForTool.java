@@ -108,7 +108,12 @@ public class SignatureManagerForTool
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
     }
     this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
-    QLog.d("Signature.TOOL", 2, "updateHandleStatus: tpdId=" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId + " fontId=" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+    paramRichStatus = new StringBuilder();
+    paramRichStatus.append("updateHandleStatus: tpdId=");
+    paramRichStatus.append(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+    paramRichStatus.append(" fontId=");
+    paramRichStatus.append(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+    QLog.d("Signature.TOOL", 2, paramRichStatus.toString());
   }
   
   public void b(RichStatus paramRichStatus)
@@ -120,13 +125,18 @@ public class SignatureManagerForTool
       this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
     }
     this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
-    QLog.d("Signature.TOOL", 2, "updateSaveStatus: tpdId=" + this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.tplId + " fontId=" + this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateSaveStatus: tpdId=");
+    localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+    localStringBuilder.append(" fontId=");
+    localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+    QLog.d("Signature.TOOL", 2, localStringBuilder.toString());
     a(paramRichStatus);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureManagerForTool
  * JD-Core Version:    0.7.0.1
  */

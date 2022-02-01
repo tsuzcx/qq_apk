@@ -34,41 +34,37 @@ class JsonUtils
   
   private static PointF jsonObjectToPoint(JsonReader paramJsonReader, float paramFloat)
   {
-    float f2 = 0.0F;
     paramJsonReader.beginObject();
+    float f2 = 0.0F;
     float f1 = 0.0F;
-    label8:
     while (paramJsonReader.hasNext())
     {
       String str = paramJsonReader.nextName();
       int i = -1;
-      switch (str.hashCode())
+      int j = str.hashCode();
+      if (j != 120)
       {
-      }
-      for (;;)
-      {
-        switch (i)
-        {
-        default: 
-          paramJsonReader.skipValue();
-          break label8;
-          if (str.equals("x"))
-          {
-            i = 0;
-            continue;
-            if (str.equals("y")) {
-              i = 1;
-            }
-          }
-          break;
+        if ((j == 121) && (str.equals("y"))) {
+          i = 1;
         }
       }
-      f1 = valueFromObject(paramJsonReader);
-      continue;
-      f2 = valueFromObject(paramJsonReader);
+      else if (str.equals("x")) {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        if (i != 1) {
+          paramJsonReader.skipValue();
+        } else {
+          f1 = valueFromObject(paramJsonReader);
+        }
+      }
+      else {
+        f2 = valueFromObject(paramJsonReader);
+      }
     }
     paramJsonReader.endObject();
-    return new PointF(f1 * paramFloat, f2 * paramFloat);
+    return new PointF(f2 * paramFloat, f1 * paramFloat);
   }
   
   @ColorInt
@@ -87,16 +83,22 @@ class JsonUtils
   
   static PointF jsonToPoint(JsonReader paramJsonReader, float paramFloat)
   {
-    switch (JsonUtils.1.$SwitchMap$android$util$JsonToken[paramJsonReader.peek().ordinal()])
+    int i = JsonUtils.1.$SwitchMap$android$util$JsonToken[paramJsonReader.peek().ordinal()];
+    if (i != 1)
     {
-    default: 
-      throw new IllegalArgumentException("Unknown point starts with " + paramJsonReader.peek());
-    case 1: 
-      return jsonNumbersToPoint(paramJsonReader, paramFloat);
-    case 2: 
+      if (i != 2)
+      {
+        if (i == 3) {
+          return jsonObjectToPoint(paramJsonReader, paramFloat);
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unknown point starts with ");
+        localStringBuilder.append(paramJsonReader.peek());
+        throw new IllegalArgumentException(localStringBuilder.toString());
+      }
       return jsonArrayToPoint(paramJsonReader, paramFloat);
     }
-    return jsonObjectToPoint(paramJsonReader, paramFloat);
+    return jsonNumbersToPoint(paramJsonReader, paramFloat);
   }
   
   static List<PointF> jsonToPoints(JsonReader paramJsonReader, float paramFloat)
@@ -116,25 +118,30 @@ class JsonUtils
   static float valueFromObject(JsonReader paramJsonReader)
   {
     JsonToken localJsonToken = paramJsonReader.peek();
-    switch (JsonUtils.1.$SwitchMap$android$util$JsonToken[localJsonToken.ordinal()])
+    int i = JsonUtils.1.$SwitchMap$android$util$JsonToken[localJsonToken.ordinal()];
+    if (i != 1)
     {
-    default: 
-      throw new IllegalArgumentException("Unknown value for token of type " + localJsonToken);
-    case 1: 
-      return (float)paramJsonReader.nextDouble();
+      if (i == 2)
+      {
+        paramJsonReader.beginArray();
+        float f = (float)paramJsonReader.nextDouble();
+        while (paramJsonReader.hasNext()) {
+          paramJsonReader.skipValue();
+        }
+        paramJsonReader.endArray();
+        return f;
+      }
+      paramJsonReader = new StringBuilder();
+      paramJsonReader.append("Unknown value for token of type ");
+      paramJsonReader.append(localJsonToken);
+      throw new IllegalArgumentException(paramJsonReader.toString());
     }
-    paramJsonReader.beginArray();
-    float f = (float)paramJsonReader.nextDouble();
-    while (paramJsonReader.hasNext()) {
-      paramJsonReader.skipValue();
-    }
-    paramJsonReader.endArray();
-    return f;
+    return (float)paramJsonReader.nextDouble();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.JsonUtils
  * JD-Core Version:    0.7.0.1
  */

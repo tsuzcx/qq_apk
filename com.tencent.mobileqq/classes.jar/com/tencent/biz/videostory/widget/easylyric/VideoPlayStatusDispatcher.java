@@ -16,22 +16,24 @@ public class VideoPlayStatusDispatcher
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((OnLyricListener)localIterator.next()).b();
+      localObject = ((CopyOnWriteArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((OnLyricListener)((Iterator)localObject).next()).b();
       }
     }
   }
   
   public void a(long paramLong)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_Boolean))
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    if ((localObject != null) && (!this.jdField_a_of_type_Boolean))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((OnLyricListener)localIterator.next()).a(paramLong);
+      localObject = ((CopyOnWriteArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((OnLyricListener)((Iterator)localObject).next()).a(paramLong);
       }
     }
   }
@@ -43,11 +45,12 @@ public class VideoPlayStatusDispatcher
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((OnLyricListener)localIterator.next()).a();
+      localObject = ((CopyOnWriteArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((OnLyricListener)((Iterator)localObject).next()).a();
       }
     }
   }
@@ -59,7 +62,7 @@ public class VideoPlayStatusDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.VideoPlayStatusDispatcher
  * JD-Core Version:    0.7.0.1
  */

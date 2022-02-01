@@ -55,37 +55,39 @@ public final class kf$a
   {
     for (;;)
     {
-      if (this.b)
+      if (!this.b) {
+        break label125;
+      }
+      if (!this.c)
       {
-        if (!this.c)
-        {
-          if (this.a.c != null) {
-            this.a.c.b(nv.p);
-          }
-          if ((this.a.e) && (System.currentTimeMillis() - this.a.d > 500L))
-          {
-            this.a.e = false;
-            if (this.a.f != null) {
-              this.a.f.a();
-            }
-          }
+        if (this.a.c != null) {
+          this.a.c.b(nv.p);
         }
-        try
+        if ((this.a.e) && (System.currentTimeMillis() - this.a.d > 500L))
         {
-          try
-          {
-            wait(this.a.a());
-            continue;
+          kf localkf = this.a;
+          localkf.e = false;
+          if (localkf.f != null) {
+            this.a.f.a();
           }
-          finally {}
-          return;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          Thread.currentThread().interrupt();
         }
       }
+      try
+      {
+        try
+        {
+          wait(this.a.a());
+        }
+        finally {}
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        label119:
+        label125:
+        break label119;
+      }
     }
+    Thread.currentThread().interrupt();
   }
   
   public final void start()
@@ -105,7 +107,7 @@ public final class kf$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.kf.a
  * JD-Core Version:    0.7.0.1
  */

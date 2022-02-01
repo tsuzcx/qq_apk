@@ -10,21 +10,24 @@ class VInput$2
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      this.this$0.inputFireEvent("focus", null);
-    }
-    do
+    if (paramBoolean)
     {
+      this.this$0.inputFireEvent("focus", null);
       return;
-      this.this$0.inputFireEvent("blur", null);
-    } while (VInput.access$000(this.this$0).equals(VInput.access$100(this.this$0)));
-    this.this$0.inputFireEvent("change", VInput.access$000(this.this$0));
-    VInput.access$102(this.this$0, VInput.access$000(this.this$0));
+    }
+    this.this$0.inputFireEvent("blur", null);
+    if (!VInput.access$000(this.this$0).equals(VInput.access$100(this.this$0)))
+    {
+      paramView = this.this$0;
+      paramView.inputFireEvent("change", VInput.access$000(paramView));
+      paramView = this.this$0;
+      VInput.access$102(paramView, VInput.access$000(paramView));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VInput.2
  * JD-Core Version:    0.7.0.1
  */

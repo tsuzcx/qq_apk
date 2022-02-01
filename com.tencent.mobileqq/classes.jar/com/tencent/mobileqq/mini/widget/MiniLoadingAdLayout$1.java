@@ -11,13 +11,14 @@ class MiniLoadingAdLayout$1
   
   public void onClick(View paramView)
   {
-    MiniLoadingAdLayout.report(MiniLoadingAdLayout.access$200(this.this$0, MiniLoadingAdLayout.access$000(this.this$0), MiniLoadingAdLayout.access$100(this.this$0).getUrlForClick(), 9));
+    paramView = this.this$0;
+    MiniLoadingAdLayout.report(MiniLoadingAdLayout.access$200(paramView, MiniLoadingAdLayout.access$000(paramView), MiniLoadingAdLayout.access$100(this.this$0).getUrlForClick(), 9));
     this.this$0.dismiss(true, this.val$onDismissListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.1
  * JD-Core Version:    0.7.0.1
  */

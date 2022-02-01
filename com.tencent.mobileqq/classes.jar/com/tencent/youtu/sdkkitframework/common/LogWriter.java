@@ -15,18 +15,32 @@ public class LogWriter
   public static final String LOGFILE_TAG_NAME = "logfile";
   public static final String LOG_CONFIGFILE_NAME = "log.properties";
   public static LogWriter logWriter;
-  private final String DEFAULT_LOG_FILE_NAME = Environment.getExternalStorageDirectory() + File.separator + "NativeLog" + File.separator + "default.log";
+  private final String DEFAULT_LOG_FILE_NAME;
   private String logDirName;
   private String logFileName;
   private PrintWriter writer;
   
   private LogWriter()
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("NativeLog");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("default.log");
+    this.DEFAULT_LOG_FILE_NAME = localStringBuilder.toString();
     init();
   }
   
   private LogWriter(String paramString1, String paramString2)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("NativeLog");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("default.log");
+    this.DEFAULT_LOG_FILE_NAME = localStringBuilder.toString();
     this.logDirName = paramString2;
     this.logFileName = paramString1;
     init();
@@ -48,11 +62,10 @@ public class LogWriter
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        System.err.println("无法打开属性配置文件: log.properties");
-      }
+      label49:
+      break label49;
     }
+    System.err.println("无法打开属性配置文件: log.properties");
     return null;
   }
   
@@ -85,9 +98,9 @@ public class LogWriter
   private void init()
   {
     YtLogger.d("LogWriter", "init()");
-    File localFile = new File(this.logDirName);
-    if (!localFile.exists()) {
-      localFile.mkdir();
+    Object localObject = new File(this.logDirName);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdir();
     }
     if (this.logFileName == null)
     {
@@ -96,17 +109,27 @@ public class LogWriter
         this.logFileName = this.DEFAULT_LOG_FILE_NAME;
       }
     }
-    YtLogger.d("LogWriter", "logFileName: " + this.logFileName);
-    localFile = new File(this.logFileName);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("logFileName: ");
+    ((StringBuilder)localObject).append(this.logFileName);
+    YtLogger.d("LogWriter", ((StringBuilder)localObject).toString());
+    localObject = new File(this.logFileName);
     try
     {
-      this.writer = new PrintWriter(new FileWriter(localFile, false), true);
-      System.out.println("日志文件的位置：" + localFile.getAbsolutePath());
+      this.writer = new PrintWriter(new FileWriter((File)localObject, false), true);
+      PrintStream localPrintStream = System.out;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("日志文件的位置：");
+      localStringBuilder.append(((File)localObject).getAbsolutePath());
+      localPrintStream.println(localStringBuilder.toString());
       return;
     }
     catch (IOException localIOException)
     {
-      throw new Exception("无法打开日志文件:" + localFile.getAbsolutePath(), localIOException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("无法打开日志文件:");
+      localStringBuilder.append(((File)localObject).getAbsolutePath());
+      throw new Exception(localStringBuilder.toString(), localIOException);
     }
   }
   
@@ -123,14 +146,20 @@ public class LogWriter
       int i = 0;
       while (i < 1000000)
       {
-        ((StringBuffer)localObject).append("tableaA|device_number|13701010").append(i).append(";\n");
+        ((StringBuffer)localObject).append("tableaA|device_number|13701010");
+        ((StringBuffer)localObject).append(i);
+        ((StringBuffer)localObject).append(";\n");
         i += 1;
       }
       localObject = ((StringBuffer)localObject).toString();
       long l1 = System.currentTimeMillis();
       paramArrayOfString.log((String)localObject);
       long l2 = System.currentTimeMillis();
-      System.out.println("总消耗时间：" + (l2 - l1));
+      localObject = System.out;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("总消耗时间：");
+      localStringBuilder.append(l2 - l1);
+      ((PrintStream)localObject).println(localStringBuilder.toString());
       paramArrayOfString.close();
       return;
     }
@@ -143,8 +172,9 @@ public class LogWriter
   public void close()
   {
     logWriter = null;
-    if (this.writer != null) {
-      this.writer.close();
+    PrintWriter localPrintWriter = this.writer;
+    if (localPrintWriter != null) {
+      localPrintWriter.close();
     }
   }
   
@@ -152,7 +182,11 @@ public class LogWriter
   {
     try
     {
-      this.writer.println(new Date() + ": ");
+      PrintWriter localPrintWriter = this.writer;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(new Date());
+      localStringBuilder.append(": ");
+      localPrintWriter.println(localStringBuilder.toString());
       paramException.printStackTrace(this.writer);
       return;
     }
@@ -167,7 +201,12 @@ public class LogWriter
   {
     try
     {
-      this.writer.println(new Date() + ": " + paramString);
+      PrintWriter localPrintWriter = this.writer;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(new Date());
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString);
+      localPrintWriter.println(localStringBuilder.toString());
       return;
     }
     finally
@@ -179,7 +218,7 @@ public class LogWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.LogWriter
  * JD-Core Version:    0.7.0.1
  */

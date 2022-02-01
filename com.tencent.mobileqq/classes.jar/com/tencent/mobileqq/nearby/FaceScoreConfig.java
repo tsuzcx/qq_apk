@@ -37,13 +37,14 @@ public class FaceScoreConfig
   
   public boolean a()
   {
-    long l = NetConnInfoCenter.getServerTime();
-    return (this.jdField_a_of_type_Long <= 0L) || (l > this.jdField_a_of_type_Long);
+    long l1 = NetConnInfoCenter.getServerTime();
+    long l2 = this.jdField_a_of_type_Long;
+    return (l2 <= 0L) || (l1 > l2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.FaceScoreConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -67,21 +67,17 @@ public class VSeekBarView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      if (getParent() != null)
-      {
-        getParent().requestDisallowInterceptTouchEvent(true);
-        continue;
-        if (getParent() != null) {
-          getParent().requestDisallowInterceptTouchEvent(false);
-        }
+      if ((i == 1) && (getParent() != null)) {
+        getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
+    else if (getParent() != null) {
+      getParent().requestDisallowInterceptTouchEvent(true);
+    }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public VSeekBar getComponent()
@@ -116,13 +112,13 @@ public class VSeekBarView
     }
     this.cycleThumbDrawable = new GradientDrawable();
     this.cycleThumbDrawable.setColor(paramInt);
-    if (getComponent() != null) {}
-    for (paramInt = getComponent().getThumbSize();; paramInt = 0)
-    {
-      setThumbSize(paramInt);
-      setThumb(this.cycleThumbDrawable);
-      return;
+    if (getComponent() != null) {
+      paramInt = getComponent().getThumbSize();
+    } else {
+      paramInt = 0;
     }
+    setThumbSize(paramInt);
+    setThumb(this.cycleThumbDrawable);
   }
   
   public void setEnableSeek(boolean paramBoolean)
@@ -157,7 +153,10 @@ public class VSeekBarView
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("VSeekBarView", "[setSeekBarHeight]: " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[setSeekBarHeight]: ");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("VSeekBarView", localStringBuilder.toString());
     }
   }
   
@@ -169,7 +168,7 @@ public class VSeekBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.VSeekBarView
  * JD-Core Version:    0.7.0.1
  */

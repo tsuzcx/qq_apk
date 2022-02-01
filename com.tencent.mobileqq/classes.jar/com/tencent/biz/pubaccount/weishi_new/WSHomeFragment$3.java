@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabItemViewHolder;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -13,47 +13,50 @@ class WSHomeFragment$3
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    if (paramInt == 1) {
+    if (paramInt == 1)
+    {
       WSHomeFragment.c(this.a, true);
-    }
-    while (paramInt != 0) {
       return;
     }
-    ThreadManager.getUIHandler().postDelayed(new WSHomeFragment.3.1(this), 100L);
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().postDelayed(new WSHomeFragment.3.1(this), 100L);
+    }
   }
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    float f2 = 0.0F;
-    float f1 = 0.0F;
-    if ((!WSHomeFragment.a(this.a)) || (WSHomeFragment.a(this.a) == null) || (WSHomeFragment.b(this.a) == null)) {
-      return;
-    }
-    if (this.a.b)
+    if ((WSHomeFragment.a(this.a)) && (WSHomeFragment.a(this.a) != null))
     {
-      localWSTabItemViewHolder = WSHomeFragment.a(this.a);
-      if (WeishiUtils.a(paramFloat, 0.0F)) {}
-      for (;;)
+      if (WSHomeFragment.b(this.a) == null) {
+        return;
+      }
+      boolean bool = this.a.b;
+      float f2 = 0.0F;
+      float f1 = 0.0F;
+      if (bool)
       {
+        localWSTabItemViewHolder = WSHomeFragment.a(this.a);
+        if (!WeishiUtils.a(paramFloat, 0.0F)) {
+          f1 = 1.0F - paramFloat;
+        }
         localWSTabItemViewHolder.a(f1);
         WSHomeFragment.b(this.a).a(paramFloat);
         return;
-        f1 = 1.0F - paramFloat;
       }
-    }
-    if (WSHomeFragment.b(this.a))
-    {
+      if (WSHomeFragment.b(this.a))
+      {
+        WSHomeFragment.a(this.a).b(paramFloat);
+        WSHomeFragment.b(this.a).a(paramFloat);
+        return;
+      }
       WSHomeFragment.a(this.a).b(paramFloat);
-      WSHomeFragment.b(this.a).a(paramFloat);
-      return;
-    }
-    WSHomeFragment.a(this.a).b(paramFloat);
-    WSTabItemViewHolder localWSTabItemViewHolder = WSHomeFragment.b(this.a);
-    if (WeishiUtils.a(paramFloat, 0.0F)) {}
-    for (paramFloat = f2;; paramFloat = 1.0F - paramFloat)
-    {
+      WSTabItemViewHolder localWSTabItemViewHolder = WSHomeFragment.b(this.a);
+      if (WeishiUtils.a(paramFloat, 0.0F)) {
+        paramFloat = f2;
+      } else {
+        paramFloat = 1.0F - paramFloat;
+      }
       localWSTabItemViewHolder.b(paramFloat);
-      return;
     }
   }
   
@@ -70,7 +73,7 @@ class WSHomeFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.3
  * JD-Core Version:    0.7.0.1
  */

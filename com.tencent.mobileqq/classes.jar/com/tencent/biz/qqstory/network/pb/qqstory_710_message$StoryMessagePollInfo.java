@@ -20,14 +20,15 @@ public final class qqstory_710_message$StoryMessagePollInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40 }, new String[] { "oper_uin", "oper_type", "message_text", "choice_text", "push_time" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, StoryMessagePollInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40 }, new String[] { "oper_uin", "oper_type", "message_text", "choice_text", "push_time" }, new Object[] { Long.valueOf(0L), localInteger, localByteStringMicro1, localByteStringMicro2, localInteger }, StoryMessagePollInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessagePollInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -23,24 +23,19 @@ class FloatMapWidget$1
       if (QLog.isColorLevel()) {
         QLog.d("FloatMapWidget", 2, new Object[] { "onMapLoaded: invoked. ", " venue: ", localObject });
       }
-      if ((FloatMapWidget.c(this.a).d().size() != 1) || (localObject != null)) {
-        break label136;
+      if ((FloatMapWidget.c(this.a).d().size() == 1) && (localObject == null)) {
+        this.a.a(false, null);
+      } else {
+        this.a.b();
       }
-      this.a.a(false, null);
     }
-    for (;;)
-    {
-      FloatMapWidget.a(this.a, true);
-      FloatMapWidget.a(this.a);
-      return;
-      label136:
-      this.a.b();
-    }
+    FloatMapWidget.a(this.a, true);
+    FloatMapWidget.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.FloatMapWidget.1
  * JD-Core Version:    0.7.0.1
  */

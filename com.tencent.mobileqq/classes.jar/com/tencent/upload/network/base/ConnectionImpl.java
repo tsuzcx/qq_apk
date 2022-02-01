@@ -23,7 +23,7 @@ public class ConnectionImpl
   private static final String SO_LIB_NETBASE = "networkbase";
   private static final String SO_LIB_UPLOAD = "uploadnetwork";
   private static final String TAG = "ConnectionImpl";
-  private static volatile boolean sIsLibraryPrepared;
+  private static volatile boolean sIsLibraryPrepared = false;
   private IConnectionCallback mCallback = null;
   private final String mId;
   private IMsgCallback mMsgCallback = null;
@@ -31,64 +31,77 @@ public class ConnectionImpl
   
   static
   {
-    boolean bool3 = false;
-    sIsLibraryPrepared = false;
     for (;;)
     {
       boolean bool2;
-      boolean bool5;
+      boolean bool4;
       boolean bool1;
       try
       {
         IUploadSoLoader localIUploadSoLoader = UploadGlobalConfig.getUploadSoLoader();
         if (localIUploadSoLoader == null) {
-          break;
+          break label286;
         }
-        boolean bool4 = localIUploadSoLoader.loadLibrary("c++_shared");
-        String str1;
-        if (localIUploadSoLoader.getSoVersion() != null)
-        {
-          str1 = "_" + localIUploadSoLoader.getSoVersion();
-          String str2 = "networkbase" + str1;
-          str1 = "uploadnetwork" + str1;
-          bool2 = localIUploadSoLoader.loadLibrary(str2);
-          bool5 = localIUploadSoLoader.loadLibrary(str1);
-          bool1 = bool2;
-          if (!bool2)
-          {
-            bool1 = bool2;
-            if (bool5)
-            {
-              bool1 = localIUploadSoLoader.loadLibrary(str2);
-              break label242;
-              sIsLibraryPrepared = bool2;
-              UploadLog.w("ConnectionImpl", "sIsLibraryPrepared = " + sIsLibraryPrepared + " isSharedLoaded = " + bool4 + " isLib1Loaded = " + bool1 + " isLib2Loaded = " + bool5);
-              if (!sIsLibraryPrepared) {
-                break;
-              }
-              native_init();
-            }
-          }
+        bool3 = localIUploadSoLoader.loadLibrary("c++_shared");
+        if (localIUploadSoLoader.getSoVersion() == null) {
+          break label287;
         }
-        else
-        {
-          str1 = "_v1.3";
-          continue;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("_");
+        ((StringBuilder)localObject1).append(localIUploadSoLoader.getSoVersion());
+        localObject1 = ((StringBuilder)localObject1).toString();
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("networkbase");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("uploadnetwork");
+        localStringBuilder.append((String)localObject1);
+        localObject1 = localStringBuilder.toString();
+        bool2 = localIUploadSoLoader.loadLibrary((String)localObject2);
+        bool4 = localIUploadSoLoader.loadLibrary((String)localObject1);
+        bool1 = bool2;
+        if (bool2) {
+          break label294;
         }
-        bool2 = bool3;
+        bool1 = bool2;
+        if (!bool4) {
+          break label294;
+        }
+        bool1 = localIUploadSoLoader.loadLibrary((String)localObject2);
       }
       catch (Throwable localThrowable)
       {
+        boolean bool3;
+        Object localObject1;
         UploadLog.e("ConnectionImpl", localThrowable.toString());
+      }
+      sIsLibraryPrepared = bool2;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("sIsLibraryPrepared = ");
+      ((StringBuilder)localObject1).append(sIsLibraryPrepared);
+      ((StringBuilder)localObject1).append(" isSharedLoaded = ");
+      ((StringBuilder)localObject1).append(bool3);
+      ((StringBuilder)localObject1).append(" isLib1Loaded = ");
+      ((StringBuilder)localObject1).append(bool1);
+      ((StringBuilder)localObject1).append(" isLib2Loaded = ");
+      ((StringBuilder)localObject1).append(bool4);
+      UploadLog.w("ConnectionImpl", ((StringBuilder)localObject1).toString());
+      if (sIsLibraryPrepared)
+      {
+        native_init();
         return;
       }
-      label242:
-      if (bool1)
-      {
-        bool2 = bool3;
-        if (bool5) {
-          bool2 = true;
-        }
+      label286:
+      return;
+      label287:
+      String str = "_v1.3";
+      continue;
+      label294:
+      if ((bool1) && (bool4)) {
+        bool2 = true;
+      } else {
+        bool2 = false;
       }
     }
   }
@@ -97,7 +110,10 @@ public class ConnectionImpl
   {
     this.mId = paramString;
     native_setup2(new WeakReference(this), 1, paramInt, Integer.parseInt(this.mId));
-    UploadLog.d("ConnectionImpl", "ConnectionImpl constructor : id = " + this.mId);
+    paramString = new StringBuilder();
+    paramString.append("ConnectionImpl constructor : id = ");
+    paramString.append(this.mId);
+    UploadLog.d("ConnectionImpl", paramString.toString());
   }
   
   private static final String getActionNameById(int paramInt)
@@ -106,24 +122,24 @@ public class ConnectionImpl
     {
     default: 
       return "unknown msg";
-    case 0: 
-      return "onStart";
-    case 1: 
-      return "onConnect";
-    case 2: 
-      return "onDisconnect";
-    case 3: 
-      return "onError";
-    case 4: 
-      return "onTimeout";
-    case 5: 
-      return "onRecv";
-    case 6: 
-      return "sendBegin";
+    case 8: 
+      return "msgProc";
     case 7: 
       return "sendEnd";
+    case 6: 
+      return "sendBegin";
+    case 5: 
+      return "onRecv";
+    case 4: 
+      return "onTimeout";
+    case 3: 
+      return "onError";
+    case 2: 
+      return "onDisconnect";
+    case 1: 
+      return "onConnect";
     }
-    return "msgProc";
+    return "onStart";
   }
   
   public static native int getIpStack();
@@ -143,64 +159,73 @@ public class ConnectionImpl
   
   private void onConnect(boolean paramBoolean, int paramInt, String paramString)
   {
-    if (this.mCallback != null) {
-      this.mCallback.onConnect(this.mCallback, paramBoolean, paramInt, paramString);
+    IConnectionCallback localIConnectionCallback = this.mCallback;
+    if (localIConnectionCallback != null) {
+      localIConnectionCallback.onConnect(localIConnectionCallback, paramBoolean, paramInt, paramString);
     }
   }
   
   private void onDisconnect()
   {
-    if (this.mCallback != null) {
-      this.mCallback.onDisconnect(this.mCallback);
+    IConnectionCallback localIConnectionCallback = this.mCallback;
+    if (localIConnectionCallback != null) {
+      localIConnectionCallback.onDisconnect(localIConnectionCallback);
     }
   }
   
   private void onError(int paramInt)
   {
-    if (this.mCallback != null) {
-      this.mCallback.onError(this.mCallback, paramInt);
+    IConnectionCallback localIConnectionCallback = this.mCallback;
+    if (localIConnectionCallback != null) {
+      localIConnectionCallback.onError(localIConnectionCallback, paramInt);
     }
   }
   
   private void onMsgProc(int paramInt1, Object paramObject, int paramInt2)
   {
-    if (this.mMsgCallback != null) {
-      this.mMsgCallback.onMsgCallback(this.mMsgCallback, paramInt1, paramObject, paramInt2);
+    IMsgCallback localIMsgCallback = this.mMsgCallback;
+    if (localIMsgCallback != null) {
+      localIMsgCallback.onMsgCallback(localIMsgCallback, paramInt1, paramObject, paramInt2);
     }
   }
   
   private void onRecv(byte[] paramArrayOfByte)
   {
-    if (this.mCallback != null) {
-      this.mCallback.onRecv(this.mCallback, paramArrayOfByte);
+    IConnectionCallback localIConnectionCallback = this.mCallback;
+    if (localIConnectionCallback != null) {
+      localIConnectionCallback.onRecv(localIConnectionCallback, paramArrayOfByte);
     }
   }
   
   private void onSendBegin(int paramInt)
   {
-    if (this.mCallback != null) {
-      this.mCallback.onSendBegin(this.mCallback, paramInt);
+    IConnectionCallback localIConnectionCallback = this.mCallback;
+    if (localIConnectionCallback != null) {
+      localIConnectionCallback.onSendBegin(localIConnectionCallback, paramInt);
     }
   }
   
   private void onSendEnd(int paramInt)
   {
-    if (this.mCallback != null) {
-      this.mCallback.onSendEnd(this.mCallback, paramInt);
+    IConnectionCallback localIConnectionCallback = this.mCallback;
+    if (localIConnectionCallback != null) {
+      localIConnectionCallback.onSendEnd(localIConnectionCallback, paramInt);
     }
   }
   
   private void onStart()
   {
-    if (this.mCallback != null) {
-      this.mCallback.onStart(this.mCallback);
+    IConnectionCallback localIConnectionCallback = this.mCallback;
+    if (localIConnectionCallback != null) {
+      localIConnectionCallback.onStart(localIConnectionCallback);
     }
   }
   
   private void onTimeOut(int paramInt1, int paramInt2)
   {
-    if (this.mCallback != null) {
-      this.mCallback.onSendTimeOut(this.mCallback, paramInt1, paramInt2);
+    IConnectionCallback localIConnectionCallback = this.mCallback;
+    if (localIConnectionCallback != null) {
+      localIConnectionCallback.onSendTimeOut(localIConnectionCallback, paramInt1, paramInt2);
     }
   }
   
@@ -208,53 +233,79 @@ public class ConnectionImpl
   {
     if (!(paramObject1 instanceof WeakReference))
     {
-      UploadLog.w("ConnectionImpl", "fromNative: !(ConnectionImpl_ref instanceof WeakReference<?>) what:" + getActionNameById(paramInt1) + " arg1:" + paramInt2 + " arg2:" + paramInt3);
+      paramObject1 = new StringBuilder();
+      paramObject1.append("fromNative: !(ConnectionImpl_ref instanceof WeakReference<?>) what:");
+      paramObject1.append(getActionNameById(paramInt1));
+      paramObject1.append(" arg1:");
+      paramObject1.append(paramInt2);
+      paramObject1.append(" arg2:");
+      paramObject1.append(paramInt3);
+      UploadLog.w("ConnectionImpl", paramObject1.toString());
       return;
     }
     paramObject1 = ((WeakReference)paramObject1).get();
     if (!(paramObject1 instanceof ConnectionImpl))
     {
-      UploadLog.w("ConnectionImpl", "fromNative: !(ref instanceof ConnectionImpl) what:" + getActionNameById(paramInt1) + " arg1:" + paramInt2 + " arg2:" + paramInt3 + "ref:" + paramObject1);
+      paramObject2 = new StringBuilder();
+      paramObject2.append("fromNative: !(ref instanceof ConnectionImpl) what:");
+      paramObject2.append(getActionNameById(paramInt1));
+      paramObject2.append(" arg1:");
+      paramObject2.append(paramInt2);
+      paramObject2.append(" arg2:");
+      paramObject2.append(paramInt3);
+      paramObject2.append("ref:");
+      paramObject2.append(paramObject1);
+      UploadLog.w("ConnectionImpl", paramObject2.toString());
       return;
     }
-    paramObject1 = (ConnectionImpl)paramObject1;
-    String str = paramObject1.getHashCode();
-    UploadLog.d("ConnectionImpl", str + " fromNative:" + getActionNameById(paramInt1));
+    ConnectionImpl localConnectionImpl = (ConnectionImpl)paramObject1;
+    paramObject1 = localConnectionImpl.getHashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramObject1);
+    localStringBuilder.append(" fromNative:");
+    localStringBuilder.append(getActionNameById(paramInt1));
+    UploadLog.d("ConnectionImpl", localStringBuilder.toString());
     switch (paramInt1)
     {
     default: 
-      UploadLog.e("ConnectionImpl", str + " Unknown message type " + paramInt1);
-      return;
-    case 0: 
-      paramObject1.onStart();
-      return;
-    case 1: 
-      if (paramInt2 != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramObject1.onConnect(bool, paramInt3, (String)paramObject2);
-        return;
-      }
-    case 2: 
-      paramObject1.onDisconnect();
-      return;
-    case 3: 
-      paramObject1.onError(paramInt2);
-      return;
-    case 4: 
-      paramObject1.onTimeOut(paramInt2, paramInt3);
-      return;
-    case 6: 
-      paramObject1.onSendBegin(paramInt2);
-      return;
-    case 7: 
-      paramObject1.onSendEnd(paramInt2);
+      paramObject2 = new StringBuilder();
+      paramObject2.append(paramObject1);
+      paramObject2.append(" Unknown message type ");
+      paramObject2.append(paramInt1);
+      UploadLog.e("ConnectionImpl", paramObject2.toString());
       return;
     case 8: 
-      paramObject1.onMsgProc(paramInt2, paramObject2, paramInt3);
+      localConnectionImpl.onMsgProc(paramInt2, paramObject2, paramInt3);
+      return;
+    case 7: 
+      localConnectionImpl.onSendEnd(paramInt2);
+      return;
+    case 6: 
+      localConnectionImpl.onSendBegin(paramInt2);
+      return;
+    case 5: 
+      localConnectionImpl.onRecv((byte[])paramObject2);
+      return;
+    case 4: 
+      localConnectionImpl.onTimeOut(paramInt2, paramInt3);
+      return;
+    case 3: 
+      localConnectionImpl.onError(paramInt2);
+      return;
+    case 2: 
+      localConnectionImpl.onDisconnect();
+      return;
+    case 1: 
+      boolean bool;
+      if (paramInt2 != 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localConnectionImpl.onConnect(bool, paramInt3, (String)paramObject2);
       return;
     }
-    paramObject1.onRecv((byte[])paramObject2);
+    localConnectionImpl.onStart();
   }
   
   public static void printLog(int paramInt, String paramString)
@@ -272,7 +323,10 @@ public class ConnectionImpl
   
   protected void finalize()
   {
-    UploadLog.w("ConnectionImpl", this.mId + " finalize");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mId);
+    localStringBuilder.append(" finalize");
+    UploadLog.w("ConnectionImpl", localStringBuilder.toString());
     try
     {
       disconnect();
@@ -313,7 +367,7 @@ public class ConnectionImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.network.base.ConnectionImpl
  * JD-Core Version:    0.7.0.1
  */

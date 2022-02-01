@@ -17,32 +17,31 @@ class SubscribeJsPlugin$2
     if (this.a != null)
     {
       int i = 0;
-      for (;;)
+      while (i < this.a.length())
       {
-        if (i < this.a.length()) {
-          try
-          {
-            String str = this.a.getJSONObject(i).getString("uin");
-            Bitmap localBitmap = SubscribeJsPlugin.a(this.this$0).a(str, true, null);
-            QLog.i(this.this$0.TAG, 4, "handleGetAvatar  uin: " + str);
-            SubscribeJsPlugin.a(this.this$0, str, localBitmap);
-            i += 1;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
+        try
+        {
+          String str1 = this.a.getJSONObject(i).getString("uin");
+          Bitmap localBitmap = SubscribeJsPlugin.a(this.this$0).a(str1, true, null);
+          String str2 = this.this$0.TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleGetAvatar  uin: ");
+          localStringBuilder.append(str1);
+          QLog.i(str2, 4, localStringBuilder.toString());
+          SubscribeJsPlugin.a(this.this$0, str1, localBitmap);
         }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

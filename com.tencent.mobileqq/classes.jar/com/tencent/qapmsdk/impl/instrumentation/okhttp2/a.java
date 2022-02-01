@@ -30,10 +30,7 @@ public class a
   
   private Request a(Request paramRequest, OkHttpClient paramOkHttpClient)
   {
-    Request localRequest = paramRequest;
-    if (paramRequest != null) {
-      localRequest = paramRequest;
-    }
+    if (paramRequest != null) {}
     try
     {
       if (com.tencent.qapmsdk.impl.g.b.c())
@@ -43,10 +40,11 @@ public class a
         }
         a(paramOkHttpClient);
         this.a.b(0);
-        localRequest = paramRequest.newBuilder().build();
-        d.a(this.a, localRequest);
+        paramOkHttpClient = paramRequest.newBuilder().build();
+        d.a(this.a, paramOkHttpClient);
+        return paramOkHttpClient;
       }
-      return localRequest;
+      return paramRequest;
     }
     catch (Exception paramOkHttpClient) {}
     return paramRequest;
@@ -100,7 +98,6 @@ public class a
   
   private void a(Exception paramException, Response paramResponse)
   {
-    com.tencent.qapmsdk.impl.a.a.a locala;
     try
     {
       if (!com.tencent.qapmsdk.impl.g.b.c()) {
@@ -108,36 +105,37 @@ public class a
       }
       h localh = a();
       i.a(localh, paramException);
-      if (localh.f()) {
-        return;
-      }
-      locala = localh.j();
-      if (locala == null) {
-        return;
-      }
-      if (paramResponse != null) {
-        localh.g(com.tencent.qapmsdk.impl.g.a.a(paramResponse.header("Content-Type")));
-      }
-      if (localh.h())
+      if (!localh.f())
       {
-        paramException = "";
-        if (localh.k() != null) {
-          paramException = localh.k();
-        }
-        Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMCallExtension", "error message:", paramException });
-        if (!localh.h()) {
+        com.tencent.qapmsdk.impl.a.a.a locala = localh.j();
+        if (locala == null) {
           return;
         }
-        com.tencent.qapmsdk.impl.d.a.a(locala, paramException);
-        return;
+        if (paramResponse != null) {
+          localh.g(com.tencent.qapmsdk.impl.g.a.a(paramResponse.header("Content-Type")));
+        }
+        if (localh.h())
+        {
+          paramException = "";
+          if (localh.k() != null) {
+            paramException = localh.k();
+          }
+          Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMCallExtension", "error message:", paramException });
+          if (localh.h()) {
+            com.tencent.qapmsdk.impl.d.a.a(locala, paramException);
+          }
+        }
+        else
+        {
+          com.tencent.qapmsdk.impl.d.a.a(locala);
+          return;
+        }
       }
     }
     catch (Exception paramException)
     {
       Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMCallExtension", "QAPMCallExtension error() har an error :", paramException.toString() });
-      return;
     }
-    com.tencent.qapmsdk.impl.d.a.a(locala);
   }
   
   public void cancel()
@@ -150,16 +148,12 @@ public class a
     try
     {
       a().a(System.currentTimeMillis());
-      this.c.enqueue(new b(paramCallback, a()));
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMCallExtension", "add enqueue time in ok3 enqueue error:", localException.getMessage() });
-      }
+      Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMCallExtension", "add enqueue time in ok3 enqueue error:", localException.getMessage() });
     }
+    this.c.enqueue(new b(paramCallback, a()));
   }
   
   public Response execute()
@@ -184,7 +178,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.okhttp2.a
  * JD-Core Version:    0.7.0.1
  */

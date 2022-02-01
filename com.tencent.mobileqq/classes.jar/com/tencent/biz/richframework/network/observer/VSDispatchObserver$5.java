@@ -11,12 +11,23 @@ class VSDispatchObserver$5
   public void run()
   {
     VSDispatchObserver.access$100(this.this$0, this.val$request, this.val$cb, -100002L, "网络错误", false, null);
-    RFLog.e("VSNetworkHelper", RFLog.USR, "VSDispatchObserver: ParseException: CmdName:" + this.val$request.getCmdName() + " | TraceId:" + this.val$request.getTraceId() + " | SeqId:" + this.val$request.getCurrentSeq() + " | final dispatch costTime:" + (System.currentTimeMillis() - this.val$dispatchStartTimeStamp) + " | errorMsg:BaseRequest or FromServiceMsg is null!");
+    int i = RFLog.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VSDispatchObserver: ParseException: CmdName:");
+    localStringBuilder.append(this.val$request.getCmdName());
+    localStringBuilder.append(" | TraceId:");
+    localStringBuilder.append(this.val$request.getTraceId());
+    localStringBuilder.append(" | SeqId:");
+    localStringBuilder.append(this.val$request.getCurrentSeq());
+    localStringBuilder.append(" | final dispatch costTime:");
+    localStringBuilder.append(System.currentTimeMillis() - this.val$dispatchStartTimeStamp);
+    localStringBuilder.append(" | errorMsg:BaseRequest or FromServiceMsg is null!");
+    RFLog.e("VSNetworkHelper", i, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.observer.VSDispatchObserver.5
  * JD-Core Version:    0.7.0.1
  */

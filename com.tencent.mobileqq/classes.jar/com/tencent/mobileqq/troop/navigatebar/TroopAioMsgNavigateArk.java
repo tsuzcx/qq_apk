@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.navigatebar;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ark.ArkAppDataReport;
 import com.tencent.mobileqq.ark.ArkTipsManager;
@@ -17,16 +17,16 @@ import java.util.List;
 public class TroopAioMsgNavigateArk
   extends BaseTroopAioMsgNavigateBarDelegate
 {
-  public TroopAioMsgNavigateArk(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public TroopAioMsgNavigateArk(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
     this.jdField_a_of_type_Int = 20;
   }
   
   @Nullable
   public BaseTroopAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
+    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, paramLong1);
     if (((paramList instanceof MessageForArkApp)) && (a(paramList, paramLong2, paramLong3))) {
       return new BaseTroopAioMsgNavigateBarDelegate.Entity(true, ArkTipsManager.a((MessageForArkApp)paramList), TroopAioAgent.Message.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
     }
@@ -35,18 +35,18 @@ public class TroopAioMsgNavigateArk
   
   public void a(int paramInt, Object paramObject, String paramString)
   {
-    if (!(paramObject instanceof TroopAioAgent.Message)) {}
-    do
+    if (!(paramObject instanceof TroopAioAgent.Message)) {
+      return;
+    }
+    paramObject = (TroopAioAgent.Message)paramObject;
+    paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, paramObject.b);
+    if ((paramObject instanceof MessageForArkApp))
     {
-      do
-      {
-        return;
-        paramObject = (TroopAioAgent.Message)paramObject;
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramObject.b);
-      } while (!(paramObject instanceof MessageForArkApp));
       paramObject = ((MessageForArkApp)paramObject).ark_app_message;
-    } while (paramObject == null);
-    ArkAppDataReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.appName, "AIOMsgRemindShow", 0, 0, 0L, 0L, 0L, "", "");
+      if (paramObject != null) {
+        ArkAppDataReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.appName, "AIOMsgRemindShow", 0, 0, 0L, 0L, 0L, "", "");
+      }
+    }
   }
   
   public boolean a(int paramInt)
@@ -61,7 +61,7 @@ public class TroopAioMsgNavigateArk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateArk
  * JD-Core Version:    0.7.0.1
  */

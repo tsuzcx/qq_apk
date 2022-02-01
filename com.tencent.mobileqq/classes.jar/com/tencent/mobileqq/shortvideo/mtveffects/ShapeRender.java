@@ -16,12 +16,16 @@ public class ShapeRender
   
   private void drawShape()
   {
-    if ((this.mType == 1) && (this.mMaskFBO != null))
+    if (this.mType == 1)
     {
-      LayerRenderBase.clearColorBuffer(this.mMaskFBO, 0);
-      this.mMaskFBO.bind();
-      this.mMaskFilter.drawShape(this.mShapePoints, this.mColor, null);
-      this.mMaskFBO.unbind();
+      RenderBuffer localRenderBuffer = this.mMaskFBO;
+      if (localRenderBuffer != null)
+      {
+        LayerRenderBase.clearColorBuffer(localRenderBuffer, 0);
+        this.mMaskFBO.bind();
+        this.mMaskFilter.drawShape(this.mShapePoints, this.mColor, null);
+        this.mMaskFBO.unbind();
+      }
     }
   }
   
@@ -42,51 +46,56 @@ public class ShapeRender
   {
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      if (this.mMaskFilter == null) {
-        break label75;
-      }
-      this.mMaskFilter.onOutputSizeChanged(paramInt1, paramInt2);
-      if (this.mShapeFilter == null) {
-        break label105;
-      }
-      this.mShapeFilter.onOutputSizeChanged(paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      if (this.mMaskFBO != null)
+      Object localObject = this.mMaskFilter;
+      if (localObject != null)
       {
-        LayerRenderBase.releaseRenderBuffer(this.mMaskFBO);
+        ((MaskFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      else
+      {
+        this.mMaskFilter = new MaskFilter();
+        this.mMaskFilter.init();
+        this.mMaskFilter.onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      localObject = this.mShapeFilter;
+      if (localObject != null)
+      {
+        ((ShapeFilter)localObject).onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      else
+      {
+        this.mShapeFilter = new ShapeFilter();
+        this.mShapeFilter.init();
+        this.mShapeFilter.onOutputSizeChanged(paramInt1, paramInt2);
+      }
+      localObject = this.mMaskFBO;
+      if (localObject != null)
+      {
+        LayerRenderBase.releaseRenderBuffer((RenderBuffer)localObject);
         this.mMaskFBO = null;
       }
       this.mMaskFBO = new RenderBuffer(paramInt1, paramInt2, 33984);
-      return;
-      label75:
-      this.mMaskFilter = new MaskFilter();
-      this.mMaskFilter.init();
-      this.mMaskFilter.onOutputSizeChanged(paramInt1, paramInt2);
-      break;
-      label105:
-      this.mShapeFilter = new ShapeFilter();
-      this.mShapeFilter.init();
-      this.mShapeFilter.onOutputSizeChanged(paramInt1, paramInt2);
     }
   }
   
   public void onSurfaceDestroy()
   {
-    if (this.mMaskFilter != null)
+    Object localObject = this.mMaskFilter;
+    if (localObject != null)
     {
-      this.mMaskFilter.destroy();
+      ((MaskFilter)localObject).destroy();
       this.mMaskFilter = null;
     }
-    if (this.mShapeFilter != null)
+    localObject = this.mShapeFilter;
+    if (localObject != null)
     {
-      this.mShapeFilter.destroy();
+      ((ShapeFilter)localObject).destroy();
       this.mShapeFilter = null;
     }
-    if (this.mMaskFBO != null)
+    localObject = this.mMaskFBO;
+    if (localObject != null)
     {
-      LayerRenderBase.releaseRenderBuffer(this.mMaskFBO);
+      LayerRenderBase.releaseRenderBuffer((RenderBuffer)localObject);
       this.mMaskFBO = null;
     }
   }
@@ -99,18 +108,23 @@ public class ShapeRender
   
   public int shape(RenderBuffer paramRenderBuffer, int paramInt)
   {
-    if ((this.mShapeFilter == null) || (this.mMaskFBO == null) || (this.mShapeFilter == null)) {
-      return paramInt;
+    ShapeFilter localShapeFilter = this.mShapeFilter;
+    if ((localShapeFilter != null) && (this.mMaskFBO != null))
+    {
+      if (localShapeFilter == null) {
+        return paramInt;
+      }
+      paramRenderBuffer.bind();
+      this.mShapeFilter.process(paramInt, this.mMaskFBO.getTexId(), null, null);
+      paramRenderBuffer.unbind();
+      return paramRenderBuffer.getTexId();
     }
-    paramRenderBuffer.bind();
-    this.mShapeFilter.process(paramInt, this.mMaskFBO.getTexId(), null, null);
-    paramRenderBuffer.unbind();
-    return paramRenderBuffer.getTexId();
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mtveffects.ShapeRender
  * JD-Core Version:    0.7.0.1
  */

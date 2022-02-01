@@ -8,44 +8,58 @@ public class SubaccountMsgStatus
 {
   public void a(MessageObserver paramMessageObserver, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, StatictisInfo paramStatictisInfo)
   {
-    switch (paramInt)
+    if (paramInt != 6008)
     {
-    default: 
-      return;
-    case 6008: 
-      paramMessageObserver.refreshRecentListFinish(paramBoolean);
-      return;
-    case 8015: 
-      paramMessageObserver.roamMessageSearchInCloud(paramBoolean, paramObject);
-      return;
-    case 6014: 
-      paramMessageObserver.iPadOnlinesStatus(paramArrayOfObject);
-      return;
-    case 6016: 
-      paramMessageObserver.pushUpdateLoginDevStatus(paramArrayOfObject);
-      return;
-    case 8003: 
-      paramMessageObserver.subaccountGetMsg(paramBoolean, paramObject);
-      return;
-    case 8011: 
-      paramMessageObserver.subaccountMsgNumReadedConfirm(paramBoolean, paramObject);
-      return;
-    case 8004: 
-      paramMessageObserver.subaccountPushMsg(paramBoolean, paramObject);
-      return;
-    case 8007: 
+      if (paramInt != 8007)
+      {
+        if (paramInt != 8011)
+        {
+          if (paramInt != 8013)
+          {
+            if (paramInt != 8015)
+            {
+              if (paramInt != 8003)
+              {
+                if (paramInt != 8004)
+                {
+                  switch (paramInt)
+                  {
+                  default: 
+                    return;
+                  case 6016: 
+                    paramMessageObserver.pushUpdateLoginDevStatus(paramArrayOfObject);
+                    return;
+                  case 6015: 
+                    paramMessageObserver.receiptRead((Long[])paramObject);
+                    return;
+                  }
+                  paramMessageObserver.iPadOnlinesStatus(paramArrayOfObject);
+                  return;
+                }
+                paramMessageObserver.subaccountPushMsg(paramBoolean, paramObject);
+                return;
+              }
+              paramMessageObserver.subaccountGetMsg(paramBoolean, paramObject);
+              return;
+            }
+            paramMessageObserver.roamMessageSearchInCloud(paramBoolean, paramObject);
+            return;
+          }
+          paramMessageObserver.pcActiveNotify(paramBoolean, paramArrayOfObject);
+          return;
+        }
+        paramMessageObserver.subaccountMsgNumReadedConfirm(paramBoolean, paramObject);
+        return;
+      }
       paramMessageObserver.recommandDevLock(paramBoolean, paramArrayOfObject);
       return;
-    case 8013: 
-      paramMessageObserver.pcActiveNotify(paramBoolean, paramArrayOfObject);
-      return;
     }
-    paramMessageObserver.receiptRead((Long[])paramObject);
+    paramMessageObserver.refreshRecentListFinish(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.messageobserver.SubaccountMsgStatus
  * JD-Core Version:    0.7.0.1
  */

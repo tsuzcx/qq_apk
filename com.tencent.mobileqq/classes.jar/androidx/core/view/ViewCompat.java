@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
@@ -12,6 +13,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
@@ -50,7 +52,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ViewCompat
 {
-  private static final int[] ACCESSIBILITY_ACTIONS_RESOURCE_IDS = { 2131361824, 2131361825, 2131361836, 2131361847, 2131361850, 2131361851, 2131361852, 2131361853, 2131361854, 2131361855, 2131361826, 2131361827, 2131361828, 2131361829, 2131361830, 2131361831, 2131361832, 2131361833, 2131361834, 2131361835, 2131361837, 2131361838, 2131361839, 2131361840, 2131361841, 2131361842, 2131361843, 2131361844, 2131361845, 2131361846, 2131361848, 2131361849 };
+  private static final int[] ACCESSIBILITY_ACTIONS_RESOURCE_IDS = { 2131361830, 2131361831, 2131361842, 2131361853, 2131361856, 2131361857, 2131361858, 2131361859, 2131361860, 2131361861, 2131361832, 2131361833, 2131361834, 2131361835, 2131361836, 2131361837, 2131361838, 2131361839, 2131361840, 2131361841, 2131361843, 2131361844, 2131361845, 2131361846, 2131361847, 2131361848, 2131361849, 2131361850, 2131361851, 2131361852, 2131361854, 2131361855 };
   public static final int ACCESSIBILITY_LIVE_REGION_ASSERTIVE = 2;
   public static final int ACCESSIBILITY_LIVE_REGION_NONE = 0;
   public static final int ACCESSIBILITY_LIVE_REGION_POLITE = 1;
@@ -117,7 +119,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<Boolean> accessibilityHeadingProperty()
   {
-    return new ViewCompat.5(2131378880, Boolean.class, 28);
+    return new ViewCompat.5(2131378269, Boolean.class, 28);
   }
   
   public static int addAccessibilityAction(@NonNull View paramView, @NonNull CharSequence paramCharSequence, @NonNull AccessibilityViewCommand paramAccessibilityViewCommand)
@@ -149,34 +151,31 @@ public class ViewCompat
   
   public static void addOnUnhandledKeyEventListener(@NonNull View paramView, @NonNull ViewCompat.OnUnhandledKeyEventListenerCompat paramOnUnhandledKeyEventListenerCompat)
   {
-    Object localObject2;
-    Object localObject1;
     if (Build.VERSION.SDK_INT >= 28)
     {
-      localObject2 = (SimpleArrayMap)paramView.getTag(2131378925);
+      localObject2 = (SimpleArrayMap)paramView.getTag(2131378313);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new SimpleArrayMap();
-        paramView.setTag(2131378925, localObject1);
+        paramView.setTag(2131378313, localObject1);
       }
       localObject2 = new ViewCompat.2(paramOnUnhandledKeyEventListenerCompat);
       ((SimpleArrayMap)localObject1).put(paramOnUnhandledKeyEventListenerCompat, localObject2);
       paramView.addOnUnhandledKeyEventListener((View.OnUnhandledKeyEventListener)localObject2);
-    }
-    do
-    {
       return;
-      localObject2 = (ArrayList)paramView.getTag(2131378925);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new ArrayList();
-        paramView.setTag(2131378925, localObject1);
-      }
-      ((ArrayList)localObject1).add(paramOnUnhandledKeyEventListenerCompat);
-    } while (((ArrayList)localObject1).size() != 1);
-    ViewCompat.UnhandledKeyEventManager.registerListeningView(paramView);
+    }
+    Object localObject2 = (ArrayList)paramView.getTag(2131378313);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new ArrayList();
+      paramView.setTag(2131378313, localObject1);
+    }
+    ((ArrayList)localObject1).add(paramOnUnhandledKeyEventListenerCompat);
+    if (((ArrayList)localObject1).size() == 1) {
+      ViewCompat.UnhandledKeyEventManager.registerListeningView(paramView);
+    }
   }
   
   @NonNull
@@ -201,16 +200,12 @@ public class ViewCompat
     {
       sDispatchStartTemporaryDetach = View.class.getDeclaredMethod("dispatchStartTemporaryDetach", new Class[0]);
       sDispatchFinishTemporaryDetach = View.class.getDeclaredMethod("dispatchFinishTemporaryDetach", new Class[0]);
-      sTempDetachBound = true;
-      return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      for (;;)
-      {
-        Log.e("ViewCompat", "Couldn't find method", localNoSuchMethodException);
-      }
+      Log.e("ViewCompat", "Couldn't find method", localNoSuchMethodException);
     }
+    sTempDetachBound = true;
   }
   
   @Deprecated
@@ -264,20 +259,26 @@ public class ViewCompat
     }
   }
   
-  public static WindowInsetsCompat dispatchApplyWindowInsets(@NonNull View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+  @NonNull
+  public static WindowInsetsCompat computeSystemWindowInsets(@NonNull View paramView, @NonNull WindowInsetsCompat paramWindowInsetsCompat, @NonNull Rect paramRect)
   {
-    Object localObject = paramWindowInsetsCompat;
+    if (Build.VERSION.SDK_INT >= 21) {
+      return ViewCompat.Api21Impl.computeSystemWindowInsets(paramView, paramWindowInsetsCompat, paramRect);
+    }
+    return paramWindowInsetsCompat;
+  }
+  
+  @NonNull
+  public static WindowInsetsCompat dispatchApplyWindowInsets(@NonNull View paramView, @NonNull WindowInsetsCompat paramWindowInsetsCompat)
+  {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramWindowInsetsCompat = paramWindowInsetsCompat.toWindowInsets();
-      localObject = paramView.dispatchApplyWindowInsets(paramWindowInsetsCompat);
-      paramView = paramWindowInsetsCompat;
-      if (!((WindowInsets)localObject).equals(paramWindowInsetsCompat)) {
-        paramView = new WindowInsets((WindowInsets)localObject);
+      WindowInsets localWindowInsets = paramWindowInsetsCompat.toWindowInsets();
+      if ((localWindowInsets != null) && (!paramView.dispatchApplyWindowInsets(localWindowInsets).equals(localWindowInsets))) {
+        return WindowInsetsCompat.toWindowInsetsCompat(localWindowInsets);
       }
-      localObject = WindowInsetsCompat.toWindowInsetsCompat(paramView);
     }
-    return localObject;
+    return paramWindowInsetsCompat;
   }
   
   public static void dispatchFinishTemporaryDetach(@NonNull View paramView)
@@ -290,10 +291,11 @@ public class ViewCompat
     if (!sTempDetachBound) {
       bindTempDetach();
     }
-    if (sDispatchFinishTemporaryDetach != null) {
+    Method localMethod = sDispatchFinishTemporaryDetach;
+    if (localMethod != null) {
       try
       {
-        sDispatchFinishTemporaryDetach.invoke(paramView, new Object[0]);
+        localMethod.invoke(paramView, new Object[0]);
         return;
       }
       catch (Exception paramView)
@@ -391,10 +393,11 @@ public class ViewCompat
     if (!sTempDetachBound) {
       bindTempDetach();
     }
-    if (sDispatchStartTemporaryDetach != null) {
+    Method localMethod = sDispatchStartTemporaryDetach;
+    if (localMethod != null) {
       try
       {
-        sDispatchStartTemporaryDetach.invoke(paramView, new Object[0]);
+        localMethod.invoke(paramView, new Object[0]);
         return;
       }
       catch (Exception paramView)
@@ -472,55 +475,42 @@ public class ViewCompat
     return getAccessibilityDelegateThroughReflection(paramView);
   }
   
-  /* Error */
   @Nullable
   private static View.AccessibilityDelegate getAccessibilityDelegateThroughReflection(@NonNull View paramView)
   {
-    // Byte code:
-    //   0: getstatic 94	androidx/core/view/ViewCompat:sAccessibilityDelegateCheckFailed	Z
-    //   3: ifeq +5 -> 8
-    //   6: aconst_null
-    //   7: areturn
-    //   8: getstatic 468	androidx/core/view/ViewCompat:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
-    //   11: ifnonnull +21 -> 32
-    //   14: ldc 199
-    //   16: ldc_w 470
-    //   19: invokevirtual 474	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   22: putstatic 468	androidx/core/view/ViewCompat:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
-    //   25: getstatic 468	androidx/core/view/ViewCompat:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
-    //   28: iconst_1
-    //   29: invokevirtual 480	java/lang/reflect/Field:setAccessible	(Z)V
-    //   32: getstatic 468	androidx/core/view/ViewCompat:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
-    //   35: aload_0
-    //   36: invokevirtual 481	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   39: astore_0
-    //   40: aload_0
-    //   41: instanceof 483
-    //   44: ifeq +17 -> 61
-    //   47: aload_0
-    //   48: checkcast 483	android/view/View$AccessibilityDelegate
-    //   51: astore_0
-    //   52: aload_0
-    //   53: areturn
-    //   54: astore_0
-    //   55: iconst_1
-    //   56: putstatic 94	androidx/core/view/ViewCompat:sAccessibilityDelegateCheckFailed	Z
-    //   59: aconst_null
-    //   60: areturn
-    //   61: aconst_null
-    //   62: areturn
-    //   63: astore_0
-    //   64: iconst_1
-    //   65: putstatic 94	androidx/core/view/ViewCompat:sAccessibilityDelegateCheckFailed	Z
-    //   68: aconst_null
-    //   69: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	70	0	paramView	View
-    // Exception table:
-    //   from	to	target	type
-    //   14	32	54	java/lang/Throwable
-    //   32	52	63	java/lang/Throwable
+    if (sAccessibilityDelegateCheckFailed) {
+      return null;
+    }
+    if (sAccessibilityDelegateField == null) {}
+    try
+    {
+      sAccessibilityDelegateField = View.class.getDeclaredField("mAccessibilityDelegate");
+      sAccessibilityDelegateField.setAccessible(true);
+    }
+    catch (Throwable paramView)
+    {
+      label35:
+      break label35;
+    }
+    sAccessibilityDelegateCheckFailed = true;
+    return null;
+    try
+    {
+      paramView = sAccessibilityDelegateField.get(paramView);
+      if ((paramView instanceof View.AccessibilityDelegate))
+      {
+        paramView = (View.AccessibilityDelegate)paramView;
+        return paramView;
+      }
+      return null;
+    }
+    catch (Throwable paramView)
+    {
+      label65:
+      break label65;
+    }
+    sAccessibilityDelegateCheckFailed = true;
+    return null;
   }
   
   public static int getAccessibilityLiveRegion(@NonNull View paramView)
@@ -551,12 +541,12 @@ public class ViewCompat
   
   private static List<AccessibilityNodeInfoCompat.AccessibilityActionCompat> getActionList(View paramView)
   {
-    ArrayList localArrayList2 = (ArrayList)paramView.getTag(2131378878);
+    ArrayList localArrayList2 = (ArrayList)paramView.getTag(2131378267);
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2 == null)
     {
       localArrayList1 = new ArrayList();
-      paramView.setTag(2131378878, localArrayList1);
+      paramView.setTag(2131378267, localArrayList1);
     }
     return localArrayList1;
   }
@@ -572,20 +562,25 @@ public class ViewCompat
     paramView = getActionList(paramView);
     int i = 0;
     int j = -1;
-    while ((i < ACCESSIBILITY_ACTIONS_RESOURCE_IDS.length) && (j == -1))
+    for (;;)
     {
-      int i1 = ACCESSIBILITY_ACTIONS_RESOURCE_IDS[i];
+      int[] arrayOfInt = ACCESSIBILITY_ACTIONS_RESOURCE_IDS;
+      if ((i >= arrayOfInt.length) || (j != -1)) {
+        break;
+      }
+      int i1 = arrayOfInt[i];
       int m = 0;
       int k = 1;
-      if (m < paramView.size())
+      while (m < paramView.size())
       {
-        if (((AccessibilityNodeInfoCompat.AccessibilityActionCompat)paramView.get(m)).getId() != i1) {}
-        for (int n = 1;; n = 0)
-        {
-          k &= n;
-          m += 1;
-          break;
+        int n;
+        if (((AccessibilityNodeInfoCompat.AccessibilityActionCompat)paramView.get(m)).getId() != i1) {
+          n = 1;
+        } else {
+          n = 0;
         }
+        k &= n;
+        m += 1;
       }
       if (k != 0) {
         j = i1;
@@ -746,13 +741,17 @@ public class ViewCompat
       sMinHeightField.setAccessible(true);
       label37:
       sMinHeightFieldFetched = true;
-      if (sMinHeightField != null) {
-        try
-        {
-          int i = ((Integer)sMinHeightField.get(paramView)).intValue();
-          return i;
-        }
-        catch (Exception paramView) {}
+      Field localField = sMinHeightField;
+      if (localField != null) {}
+      try
+      {
+        int i = ((Integer)localField.get(paramView)).intValue();
+        return i;
+      }
+      catch (Exception paramView)
+      {
+        label63:
+        break label63;
       }
       return 0;
     }
@@ -774,13 +773,17 @@ public class ViewCompat
       sMinWidthField.setAccessible(true);
       label37:
       sMinWidthFieldFetched = true;
-      if (sMinWidthField != null) {
-        try
-        {
-          int i = ((Integer)sMinWidthField.get(paramView)).intValue();
-          return i;
-        }
-        catch (Exception paramView) {}
+      Field localField = sMinWidthField;
+      if (localField != null) {}
+      try
+      {
+        int i = ((Integer)localField.get(paramView)).intValue();
+        return i;
+      }
+      catch (Exception paramView)
+      {
+        label63:
+        break label63;
       }
       return 0;
     }
@@ -853,6 +856,15 @@ public class ViewCompat
     return paramView.getPivotY();
   }
   
+  @Nullable
+  public static WindowInsetsCompat getRootWindowInsets(@NonNull View paramView)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      return WindowInsetsCompat.toWindowInsetsCompat(ViewCompat.Api23Impl.getRootWindowInsets(paramView));
+    }
+    return null;
+  }
+  
   @Deprecated
   public static float getRotation(View paramView)
   {
@@ -906,10 +918,11 @@ public class ViewCompat
     if (Build.VERSION.SDK_INT >= 21) {
       return paramView.getTransitionName();
     }
-    if (sTransitionNameMap == null) {
+    WeakHashMap localWeakHashMap = sTransitionNameMap;
+    if (localWeakHashMap == null) {
       return null;
     }
-    return (String)sTransitionNameMap.get(paramView);
+    return (String)localWeakHashMap.get(paramView);
   }
   
   @Deprecated
@@ -988,11 +1001,10 @@ public class ViewCompat
   {
     if ((paramView instanceof NestedScrollingChild2)) {
       ((NestedScrollingChild2)paramView).hasNestedScrollingParent(paramInt);
+    } else if (paramInt == 0) {
+      return hasNestedScrollingParent(paramView);
     }
-    while (paramInt != 0) {
-      return false;
-    }
-    return hasNestedScrollingParent(paramView);
+    return false;
   }
   
   public static boolean hasOnClickListeners(@NonNull View paramView)
@@ -1145,42 +1157,43 @@ public class ViewCompat
   @RequiresApi(19)
   static void notifyViewAccessibilityStateChangedIfNeeded(View paramView, int paramInt)
   {
-    if (!((AccessibilityManager)paramView.getContext().getSystemService("accessibility")).isEnabled()) {}
-    label79:
-    do
-    {
+    if (!((AccessibilityManager)paramView.getContext().getSystemService("accessibility")).isEnabled()) {
       return;
-      AccessibilityEvent localAccessibilityEvent;
-      if (getAccessibilityPaneTitle(paramView) != null)
-      {
-        i = 1;
-        if ((getAccessibilityLiveRegion(paramView) == 0) && ((i == 0) || (paramView.getVisibility() != 0))) {
-          continue;
-        }
-        localAccessibilityEvent = AccessibilityEvent.obtain();
-        if (i == 0) {
-          break label79;
-        }
-      }
-      for (int i = 32;; i = 2048)
-      {
-        localAccessibilityEvent.setEventType(i);
-        localAccessibilityEvent.setContentChangeTypes(paramInt);
-        paramView.sendAccessibilityEventUnchecked(localAccessibilityEvent);
+    }
+    int i;
+    if (getAccessibilityPaneTitle(paramView) != null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((getAccessibilityLiveRegion(paramView) == 0) && ((i == 0) || (paramView.getVisibility() != 0)))
+    {
+      if (paramView.getParent() == null) {
         return;
-        i = 0;
-        break;
       }
-    } while (paramView.getParent() == null);
-    try
-    {
-      paramView.getParent().notifySubtreeAccessibilityStateChanged(paramView, paramView, paramInt);
-      return;
+      try
+      {
+        paramView.getParent().notifySubtreeAccessibilityStateChanged(paramView, paramView, paramInt);
+        return;
+      }
+      catch (AbstractMethodError localAbstractMethodError)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramView.getParent().getClass().getSimpleName());
+        localStringBuilder.append(" does not fully implement ViewParent");
+        Log.e("ViewCompat", localStringBuilder.toString(), localAbstractMethodError);
+        return;
+      }
     }
-    catch (AbstractMethodError localAbstractMethodError)
-    {
-      Log.e("ViewCompat", paramView.getParent().getClass().getSimpleName() + " does not fully implement ViewParent", localAbstractMethodError);
+    AccessibilityEvent localAccessibilityEvent = AccessibilityEvent.obtain();
+    if (i != 0) {
+      i = 32;
+    } else {
+      i = 2048;
     }
+    localAccessibilityEvent.setEventType(i);
+    localAccessibilityEvent.setContentChangeTypes(paramInt);
+    paramView.sendAccessibilityEventUnchecked(localAccessibilityEvent);
   }
   
   public static void offsetLeftAndRight(@NonNull View paramView, int paramInt)
@@ -1190,36 +1203,25 @@ public class ViewCompat
       paramView.offsetLeftAndRight(paramInt);
       return;
     }
-    Rect localRect;
-    ViewParent localViewParent;
-    int i;
     if (Build.VERSION.SDK_INT >= 21)
     {
-      localRect = getEmptyTempRect();
-      localViewParent = paramView.getParent();
-      if (!(localViewParent instanceof View)) {
-        break label149;
+      Rect localRect = getEmptyTempRect();
+      boolean bool = false;
+      ViewParent localViewParent = paramView.getParent();
+      if ((localViewParent instanceof View))
+      {
+        View localView = (View)localViewParent;
+        localRect.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
+        bool = localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()) ^ true;
       }
-      View localView = (View)localViewParent;
-      localRect.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
-      if (!localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom())) {
-        i = 1;
+      compatOffsetLeftAndRight(paramView, paramInt);
+      if ((bool) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
+        ((View)localViewParent).invalidate(localRect);
       }
     }
-    for (;;)
+    else
     {
       compatOffsetLeftAndRight(paramView, paramInt);
-      if ((i == 0) || (!localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
-        break;
-      }
-      ((View)localViewParent).invalidate(localRect);
-      return;
-      i = 0;
-      continue;
-      compatOffsetLeftAndRight(paramView, paramInt);
-      return;
-      label149:
-      i = 0;
     }
   }
   
@@ -1230,53 +1232,43 @@ public class ViewCompat
       paramView.offsetTopAndBottom(paramInt);
       return;
     }
-    Rect localRect;
-    ViewParent localViewParent;
-    int i;
     if (Build.VERSION.SDK_INT >= 21)
     {
-      localRect = getEmptyTempRect();
-      localViewParent = paramView.getParent();
-      if (!(localViewParent instanceof View)) {
-        break label149;
+      Rect localRect = getEmptyTempRect();
+      boolean bool = false;
+      ViewParent localViewParent = paramView.getParent();
+      if ((localViewParent instanceof View))
+      {
+        View localView = (View)localViewParent;
+        localRect.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
+        bool = localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()) ^ true;
       }
-      View localView = (View)localViewParent;
-      localRect.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
-      if (!localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom())) {
-        i = 1;
+      compatOffsetTopAndBottom(paramView, paramInt);
+      if ((bool) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
+        ((View)localViewParent).invalidate(localRect);
       }
     }
-    for (;;)
+    else
     {
       compatOffsetTopAndBottom(paramView, paramInt);
-      if ((i == 0) || (!localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
-        break;
-      }
-      ((View)localViewParent).invalidate(localRect);
-      return;
-      i = 0;
-      continue;
-      compatOffsetTopAndBottom(paramView, paramInt);
-      return;
-      label149:
-      i = 0;
     }
   }
   
-  public static WindowInsetsCompat onApplyWindowInsets(@NonNull View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+  @NonNull
+  public static WindowInsetsCompat onApplyWindowInsets(@NonNull View paramView, @NonNull WindowInsetsCompat paramWindowInsetsCompat)
   {
-    Object localObject = paramWindowInsetsCompat;
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramWindowInsetsCompat = paramWindowInsetsCompat.toWindowInsets();
-      localObject = paramView.onApplyWindowInsets(paramWindowInsetsCompat);
-      paramView = paramWindowInsetsCompat;
-      if (!((WindowInsets)localObject).equals(paramWindowInsetsCompat)) {
-        paramView = new WindowInsets((WindowInsets)localObject);
+      WindowInsets localWindowInsets = paramWindowInsetsCompat.toWindowInsets();
+      if (localWindowInsets != null)
+      {
+        paramView = paramView.onApplyWindowInsets(localWindowInsets);
+        if (!paramView.equals(localWindowInsets)) {
+          return WindowInsetsCompat.toWindowInsetsCompat(paramView);
+        }
       }
-      localObject = WindowInsetsCompat.toWindowInsetsCompat(paramView);
     }
-    return localObject;
+    return paramWindowInsetsCompat;
   }
   
   @Deprecated
@@ -1298,7 +1290,7 @@ public class ViewCompat
   
   private static ViewCompat.AccessibilityViewProperty<CharSequence> paneTitleProperty()
   {
-    return new ViewCompat.4(2131378881, CharSequence.class, 8, 28);
+    return new ViewCompat.4(2131378270, CharSequence.class, 8, 28);
   }
   
   public static boolean performAccessibilityAction(@NonNull View paramView, int paramInt, Bundle paramBundle)
@@ -1362,15 +1354,11 @@ public class ViewCompat
   {
     paramView = getActionList(paramView);
     int i = 0;
-    for (;;)
+    while (i < paramView.size())
     {
-      if (i < paramView.size())
+      if (((AccessibilityNodeInfoCompat.AccessibilityActionCompat)paramView.get(i)).getId() == paramInt)
       {
-        if (((AccessibilityNodeInfoCompat.AccessibilityActionCompat)paramView.get(i)).getId() == paramInt) {
-          paramView.remove(i);
-        }
-      }
-      else {
+        paramView.remove(i);
         return;
       }
       i += 1;
@@ -1379,28 +1367,26 @@ public class ViewCompat
   
   public static void removeOnUnhandledKeyEventListener(@NonNull View paramView, @NonNull ViewCompat.OnUnhandledKeyEventListenerCompat paramOnUnhandledKeyEventListenerCompat)
   {
-    Object localObject;
     if (Build.VERSION.SDK_INT >= 28)
     {
-      localObject = (SimpleArrayMap)paramView.getTag(2131378925);
-      if (localObject != null) {}
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramOnUnhandledKeyEventListenerCompat = (View.OnUnhandledKeyEventListener)((SimpleArrayMap)localObject).get(paramOnUnhandledKeyEventListenerCompat);
-        } while (paramOnUnhandledKeyEventListenerCompat == null);
-        paramView.removeOnUnhandledKeyEventListener(paramOnUnhandledKeyEventListenerCompat);
+      localObject = (SimpleArrayMap)paramView.getTag(2131378313);
+      if (localObject == null) {
         return;
-        localObject = (ArrayList)paramView.getTag(2131378925);
-      } while (localObject == null);
+      }
+      paramOnUnhandledKeyEventListenerCompat = (View.OnUnhandledKeyEventListener)((SimpleArrayMap)localObject).get(paramOnUnhandledKeyEventListenerCompat);
+      if (paramOnUnhandledKeyEventListenerCompat != null) {
+        paramView.removeOnUnhandledKeyEventListener(paramOnUnhandledKeyEventListenerCompat);
+      }
+      return;
+    }
+    Object localObject = (ArrayList)paramView.getTag(2131378313);
+    if (localObject != null)
+    {
       ((ArrayList)localObject).remove(paramOnUnhandledKeyEventListenerCompat);
-    } while (((ArrayList)localObject).size() != 0);
-    ViewCompat.UnhandledKeyEventManager.unregisterListeningView(paramView);
+      if (((ArrayList)localObject).size() == 0) {
+        ViewCompat.UnhandledKeyEventManager.unregisterListeningView(paramView);
+      }
+    }
   }
   
   public static void replaceAccessibilityAction(@NonNull View paramView, @NonNull AccessibilityNodeInfoCompat.AccessibilityActionCompat paramAccessibilityActionCompat, @Nullable CharSequence paramCharSequence, @Nullable AccessibilityViewCommand paramAccessibilityViewCommand)
@@ -1415,28 +1401,26 @@ public class ViewCompat
   
   public static void requestApplyInsets(@NonNull View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 20) {
+    if (Build.VERSION.SDK_INT >= 20)
+    {
       paramView.requestApplyInsets();
-    }
-    while (Build.VERSION.SDK_INT < 16) {
       return;
     }
-    paramView.requestFitSystemWindows();
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramView.requestFitSystemWindows();
+    }
   }
   
   @NonNull
   public static <T extends View> T requireViewById(@NonNull View paramView, @IdRes int paramInt)
   {
     if (Build.VERSION.SDK_INT >= 28) {
-      paramView = paramView.requireViewById(paramInt);
+      return paramView.requireViewById(paramInt);
     }
-    View localView;
-    do
-    {
+    paramView = paramView.findViewById(paramInt);
+    if (paramView != null) {
       return paramView;
-      localView = paramView.findViewById(paramInt);
-      paramView = localView;
-    } while (localView != null);
+    }
     throw new IllegalArgumentException("ID does not reference a View inside this View");
   }
   
@@ -1454,9 +1438,16 @@ public class ViewCompat
     return paramView.requestFocus();
   }
   
+  public static void saveAttributeDataForStyleable(@NonNull View paramView, @SuppressLint({"ContextFirst"}) @NonNull Context paramContext, @NonNull int[] paramArrayOfInt, @Nullable AttributeSet paramAttributeSet, @NonNull TypedArray paramTypedArray, int paramInt1, int paramInt2)
+  {
+    if (Build.VERSION.SDK_INT >= 29) {
+      ViewCompat.Api29Impl.saveAttributeDataForStyleable(paramView, paramContext, paramArrayOfInt, paramAttributeSet, paramTypedArray, paramInt1, paramInt2);
+    }
+  }
+  
   private static ViewCompat.AccessibilityViewProperty<Boolean> screenReaderFocusableProperty()
   {
-    return new ViewCompat.3(2131378915, Boolean.class, 28);
+    return new ViewCompat.3(2131378303, Boolean.class, 28);
   }
   
   public static void setAccessibilityDelegate(@NonNull View paramView, AccessibilityDelegateCompat paramAccessibilityDelegateCompat)
@@ -1469,12 +1460,12 @@ public class ViewCompat
         localAccessibilityDelegateCompat = new AccessibilityDelegateCompat();
       }
     }
-    if (localAccessibilityDelegateCompat == null) {}
-    for (paramAccessibilityDelegateCompat = null;; paramAccessibilityDelegateCompat = localAccessibilityDelegateCompat.getBridge())
-    {
-      paramView.setAccessibilityDelegate(paramAccessibilityDelegateCompat);
-      return;
+    if (localAccessibilityDelegateCompat == null) {
+      paramAccessibilityDelegateCompat = null;
+    } else {
+      paramAccessibilityDelegateCompat = localAccessibilityDelegateCompat.getBridge();
     }
+    paramView.setAccessibilityDelegate(paramAccessibilityDelegateCompat);
   }
   
   @UiThread
@@ -1496,15 +1487,13 @@ public class ViewCompat
     if (Build.VERSION.SDK_INT >= 19)
     {
       paneTitleProperty().set(paramView, paramCharSequence);
-      if (paramCharSequence != null) {
+      if (paramCharSequence != null)
+      {
         sAccessibilityPaneVisibilityManager.addAccessibilityPane(paramView);
+        return;
       }
+      sAccessibilityPaneVisibilityManager.removeAccessibilityPane(paramView);
     }
-    else
-    {
-      return;
-    }
-    sAccessibilityPaneVisibilityManager.removeAccessibilityPane(paramView);
   }
   
   @Deprecated
@@ -1544,10 +1533,12 @@ public class ViewCompat
       if (Build.VERSION.SDK_INT == 21)
       {
         paramColorStateList = paramView.getBackground();
+        int i;
         if ((paramView.getBackgroundTintList() == null) && (paramView.getBackgroundTintMode() == null)) {
-          break label72;
+          i = 0;
+        } else {
+          i = 1;
         }
-        i = 1;
         if ((paramColorStateList != null) && (i != 0))
         {
           if (paramColorStateList.isStateful()) {
@@ -1557,15 +1548,10 @@ public class ViewCompat
         }
       }
     }
-    label72:
-    while (!(paramView instanceof TintableBackgroundView)) {
-      for (;;)
-      {
-        return;
-        int i = 0;
-      }
+    else if ((paramView instanceof TintableBackgroundView))
+    {
+      ((TintableBackgroundView)paramView).setSupportBackgroundTintList(paramColorStateList);
     }
-    ((TintableBackgroundView)paramView).setSupportBackgroundTintList(paramColorStateList);
   }
   
   public static void setBackgroundTintMode(@NonNull View paramView, PorterDuff.Mode paramMode)
@@ -1576,10 +1562,12 @@ public class ViewCompat
       if (Build.VERSION.SDK_INT == 21)
       {
         paramMode = paramView.getBackground();
+        int i;
         if ((paramView.getBackgroundTintList() == null) && (paramView.getBackgroundTintMode() == null)) {
-          break label72;
+          i = 0;
+        } else {
+          i = 1;
         }
-        i = 1;
         if ((paramMode != null) && (i != 0))
         {
           if (paramMode.isStateful()) {
@@ -1589,52 +1577,45 @@ public class ViewCompat
         }
       }
     }
-    label72:
-    while (!(paramView instanceof TintableBackgroundView)) {
-      for (;;)
-      {
-        return;
-        int i = 0;
-      }
+    else if ((paramView instanceof TintableBackgroundView))
+    {
+      ((TintableBackgroundView)paramView).setSupportBackgroundTintMode(paramMode);
     }
-    ((TintableBackgroundView)paramView).setSupportBackgroundTintMode(paramMode);
   }
   
   @Deprecated
   public static void setChildrenDrawingOrderEnabled(ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    if (sChildrenDrawingOrderMethod == null) {}
-    try
+    if (sChildrenDrawingOrderMethod == null)
     {
-      sChildrenDrawingOrderMethod = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", new Class[] { Boolean.TYPE });
-      sChildrenDrawingOrderMethod.setAccessible(true);
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      for (;;)
+      try
       {
-        try
-        {
-          sChildrenDrawingOrderMethod.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
-          return;
-        }
-        catch (IllegalAccessException paramViewGroup)
-        {
-          Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-          return;
-        }
-        catch (IllegalArgumentException paramViewGroup)
-        {
-          Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-          return;
-        }
-        catch (InvocationTargetException paramViewGroup)
-        {
-          Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-        }
-        localNoSuchMethodException = localNoSuchMethodException;
+        sChildrenDrawingOrderMethod = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", new Class[] { Boolean.TYPE });
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
         Log.e("ViewCompat", "Unable to find childrenDrawingOrderEnabled", localNoSuchMethodException);
       }
+      sChildrenDrawingOrderMethod.setAccessible(true);
+    }
+    try
+    {
+      sChildrenDrawingOrderMethod.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
+      return;
+    }
+    catch (InvocationTargetException paramViewGroup)
+    {
+      Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
+      return;
+    }
+    catch (IllegalArgumentException paramViewGroup)
+    {
+      Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
+      return;
+    }
+    catch (IllegalAccessException paramViewGroup)
+    {
+      Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
     }
   }
   
@@ -1674,17 +1655,19 @@ public class ViewCompat
   
   public static void setImportantForAccessibility(@NonNull View paramView, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 19) {
+    if (Build.VERSION.SDK_INT >= 19)
+    {
       paramView.setImportantForAccessibility(paramInt);
-    }
-    while (Build.VERSION.SDK_INT < 16) {
       return;
     }
-    int i = paramInt;
-    if (paramInt == 4) {
-      i = 2;
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      int i = paramInt;
+      if (paramInt == 4) {
+        i = 2;
+      }
+      paramView.setImportantForAccessibility(i);
     }
-    paramView.setImportantForAccessibility(i);
   }
   
   public static void setImportantForAutofill(@NonNull View paramView, int paramInt)
@@ -1734,13 +1717,14 @@ public class ViewCompat
   
   public static void setNestedScrollingEnabled(@NonNull View paramView, boolean paramBoolean)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       paramView.setNestedScrollingEnabled(paramBoolean);
-    }
-    while (!(paramView instanceof NestedScrollingChild)) {
       return;
     }
-    ((NestedScrollingChild)paramView).setNestedScrollingEnabled(paramBoolean);
+    if ((paramView instanceof NestedScrollingChild)) {
+      ((NestedScrollingChild)paramView).setNestedScrollingEnabled(paramBoolean);
+    }
   }
   
   public static void setNextClusterForwardId(@NonNull View paramView, int paramInt)
@@ -1750,18 +1734,17 @@ public class ViewCompat
     }
   }
   
-  public static void setOnApplyWindowInsetsListener(@NonNull View paramView, OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
+  public static void setOnApplyWindowInsetsListener(@NonNull View paramView, @Nullable OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      if (paramOnApplyWindowInsetsListener == null) {
+      if (paramOnApplyWindowInsetsListener == null)
+      {
         paramView.setOnApplyWindowInsetsListener(null);
+        return;
       }
+      paramView.setOnApplyWindowInsetsListener(new ViewCompat.1(paramOnApplyWindowInsetsListener));
     }
-    else {
-      return;
-    }
-    paramView.setOnApplyWindowInsetsListener(new ViewCompat.1(paramOnApplyWindowInsetsListener));
   }
   
   @Deprecated
@@ -1794,16 +1777,14 @@ public class ViewCompat
   
   public static void setPointerIcon(@NonNull View paramView, PointerIconCompat paramPointerIconCompat)
   {
-    if (Build.VERSION.SDK_INT >= 24) {
-      if (paramPointerIconCompat == null) {
-        break label29;
-      }
-    }
-    label29:
-    for (paramPointerIconCompat = paramPointerIconCompat.getPointerIcon();; paramPointerIconCompat = null)
+    if (Build.VERSION.SDK_INT >= 24)
     {
+      if (paramPointerIconCompat != null) {
+        paramPointerIconCompat = paramPointerIconCompat.getPointerIcon();
+      } else {
+        paramPointerIconCompat = null;
+      }
       paramView.setPointerIcon((PointerIcon)paramPointerIconCompat);
-      return;
     }
   }
   
@@ -1960,24 +1941,26 @@ public class ViewCompat
   
   public static void stopNestedScroll(@NonNull View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       paramView.stopNestedScroll();
-    }
-    while (!(paramView instanceof NestedScrollingChild)) {
       return;
     }
-    ((NestedScrollingChild)paramView).stopNestedScroll();
+    if ((paramView instanceof NestedScrollingChild)) {
+      ((NestedScrollingChild)paramView).stopNestedScroll();
+    }
   }
   
   public static void stopNestedScroll(@NonNull View paramView, int paramInt)
   {
-    if ((paramView instanceof NestedScrollingChild2)) {
+    if ((paramView instanceof NestedScrollingChild2))
+    {
       ((NestedScrollingChild2)paramView).stopNestedScroll(paramInt);
-    }
-    while (paramInt != 0) {
       return;
     }
-    stopNestedScroll(paramView);
+    if (paramInt == 0) {
+      stopNestedScroll(paramView);
+    }
   }
   
   private static void tickleInvalidationFlag(View paramView)
@@ -1996,7 +1979,7 @@ public class ViewCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewCompat
  * JD-Core Version:    0.7.0.1
  */

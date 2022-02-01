@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.qqmini.sdk.MiniSDK;
 import com.tencent.qqmini.sdk.R.id;
 import com.tencent.qqmini.sdk.R.layout;
@@ -55,42 +54,37 @@ public class MiniAppInfoLoadingFragment
   private void doRequestByAppId(String paramString1, String paramString2, String paramString3, LaunchParam paramLaunchParam, String paramString4)
   {
     showLoading();
-    String str = paramString2;
     if (paramString2 == null) {
-      str = "";
-    }
-    paramString2 = paramString3;
-    if (paramString3 == null) {
       paramString2 = "";
     }
-    paramString3 = (MiniAppCacheProxy)ProxyManager.get(MiniAppCacheProxy.class);
-    if ((paramString3 != null) && (paramString3.enableMiniAppCache()) && (checkEnvVersionForCache(paramString2)))
+    if (paramString3 == null) {
+      paramString3 = "";
+    }
+    MiniAppCacheProxy localMiniAppCacheProxy = (MiniAppCacheProxy)ProxyManager.get(MiniAppCacheProxy.class);
+    if ((localMiniAppCacheProxy != null) && (localMiniAppCacheProxy.enableMiniAppCache()) && (checkEnvVersionForCache(paramString3)))
     {
-      byte[] arrayOfByte = paramString3.getIdInfo(paramString1, str);
+      byte[] arrayOfByte = localMiniAppCacheProxy.getIdInfo(paramString1, paramString2);
       if (arrayOfByte != null)
       {
         Object localObject = new INTERFACE.StApiAppInfo();
         try
         {
           ((INTERFACE.StApiAppInfo)localObject).mergeFrom(arrayOfByte);
-          localObject = MiniAppInfo.from((INTERFACE.StApiAppInfo)localObject);
-          QMLog.d("MiniAppInfoLoadingFragment", "start by Id cache.");
-          startByIdMiniAppInfo(0L, "", (MiniAppInfo)localObject, paramLaunchParam, paramString4);
-          MiniReportManager.reportEventType((MiniAppInfo)localObject, 1028, "id_cache", MiniReportManager.getAppType((MiniAppInfo)localObject));
-          getAppInfoById(paramString1, str, paramString2, new MiniAppInfoLoadingFragment.1(this, paramString2, paramString3, paramString1, str));
-          quit();
-          return;
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
-          for (;;)
-          {
-            QMLog.e("MiniAppInfoLoadingFragment", "StApiAppInfo error,", localInvalidProtocolBufferMicroException);
-          }
+          QMLog.e("MiniAppInfoLoadingFragment", "StApiAppInfo error,", localInvalidProtocolBufferMicroException);
         }
+        localObject = MiniAppInfo.from((INTERFACE.StApiAppInfo)localObject);
+        QMLog.d("MiniAppInfoLoadingFragment", "start by Id cache.");
+        startByIdMiniAppInfo(0L, "", (MiniAppInfo)localObject, paramLaunchParam, paramString4);
+        MiniReportManager.reportEventType((MiniAppInfo)localObject, 1028, "id_cache", MiniReportManager.getAppType((MiniAppInfo)localObject));
+        getAppInfoById(paramString1, paramString2, paramString3, new MiniAppInfoLoadingFragment.1(this, paramString3, localMiniAppCacheProxy, paramString1, paramString2));
+        quit();
+        return;
       }
     }
-    getAppInfoById(paramString1, str, paramString2, new MiniAppInfoLoadingFragment.2(this, paramLaunchParam, paramString4, paramString2, paramString3, paramString1, str));
+    getAppInfoById(paramString1, paramString2, paramString3, new MiniAppInfoLoadingFragment.2(this, paramLaunchParam, paramString4, paramString3, localMiniAppCacheProxy, paramString1, paramString2));
   }
   
   private void doRequestByLink(String paramString1, int paramInt, LaunchParam paramLaunchParam, String paramString2)
@@ -106,22 +100,19 @@ public class MiniAppInfoLoadingFragment
         try
         {
           ((INTERFACE.StApiAppInfo)localObject2).mergeFrom(((MiniAppCacheProxy.LinkData)localObject1).appInfo);
-          localObject2 = MiniAppInfo.from((INTERFACE.StApiAppInfo)localObject2);
-          localObject1 = ((MiniAppCacheProxy.LinkData)localObject1).shareTicket;
-          QMLog.d("MiniAppInfoLoadingFragment", "start by Link cache.");
-          startByLinkMiniInfo(0L, "", (MiniAppInfo)localObject2, (String)localObject1, paramLaunchParam, paramString2);
-          MiniReportManager.reportEventType((MiniAppInfo)localObject2, 1028, "link_cache", MiniReportManager.getAppType((MiniAppInfo)localObject2));
-          getAppInfoByLink(paramString1, paramInt, new MiniAppInfoLoadingFragment.6(this, localMiniAppCacheProxy, paramString1, paramInt));
-          quit();
-          return;
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
-          for (;;)
-          {
-            QMLog.e("MiniAppInfoLoadingFragment", "StApiAppInfo error,", localInvalidProtocolBufferMicroException);
-          }
+          QMLog.e("MiniAppInfoLoadingFragment", "StApiAppInfo error,", localInvalidProtocolBufferMicroException);
         }
+        localObject2 = MiniAppInfo.from((INTERFACE.StApiAppInfo)localObject2);
+        localObject1 = ((MiniAppCacheProxy.LinkData)localObject1).shareTicket;
+        QMLog.d("MiniAppInfoLoadingFragment", "start by Link cache.");
+        startByLinkMiniInfo(0L, "", (MiniAppInfo)localObject2, (String)localObject1, paramLaunchParam, paramString2);
+        MiniReportManager.reportEventType((MiniAppInfo)localObject2, 1028, "link_cache", MiniReportManager.getAppType((MiniAppInfo)localObject2));
+        getAppInfoByLink(paramString1, paramInt, new MiniAppInfoLoadingFragment.6(this, localMiniAppCacheProxy, paramString1, paramInt));
+        quit();
+        return;
       }
     }
     getAppInfoByLink(paramString1, paramInt, new MiniAppInfoLoadingFragment.7(this, paramLaunchParam, paramString2, localMiniAppCacheProxy, paramString1, paramInt));
@@ -170,30 +161,26 @@ public class MiniAppInfoLoadingFragment
   
   private void saveIdInfo(JSONObject paramJSONObject, byte[] paramArrayOfByte, String paramString1, MiniAppCacheProxy paramMiniAppCacheProxy, String paramString2, String paramString3)
   {
-    if (checkEnvVersionForCache(paramString1))
-    {
-      if (paramJSONObject == null) {
-        break label65;
-      }
-      paramJSONObject = MiniAppInfo.pbFromJSON(paramJSONObject);
+    if (checkEnvVersionForCache(paramString1)) {
       if (paramJSONObject != null)
       {
+        paramJSONObject = MiniAppInfo.pbFromJSON(paramJSONObject);
+        if (paramJSONObject != null)
+        {
+          QMLog.d("MiniAppInfoLoadingFragment", "saveIdInfo cache.");
+          if (paramMiniAppCacheProxy.saveIdInfo(paramString2, paramString3, ((INTERFACE.StApiAppInfo)paramJSONObject.get()).toByteArray(), System.currentTimeMillis())) {
+            QMLog.d("MiniAppInfoLoadingFragment", "saveIdInfo cache success.");
+          }
+        }
+      }
+      else if (paramArrayOfByte != null)
+      {
         QMLog.d("MiniAppInfoLoadingFragment", "saveIdInfo cache.");
-        if (paramMiniAppCacheProxy.saveIdInfo(paramString2, paramString3, ((INTERFACE.StApiAppInfo)paramJSONObject.get()).toByteArray(), System.currentTimeMillis())) {
+        if (paramMiniAppCacheProxy.saveIdInfo(paramString2, paramString3, paramArrayOfByte, System.currentTimeMillis())) {
           QMLog.d("MiniAppInfoLoadingFragment", "saveIdInfo cache success.");
         }
       }
     }
-    label65:
-    do
-    {
-      do
-      {
-        return;
-      } while (paramArrayOfByte == null);
-      QMLog.d("MiniAppInfoLoadingFragment", "saveIdInfo cache.");
-    } while (!paramMiniAppCacheProxy.saveIdInfo(paramString2, paramString3, paramArrayOfByte, System.currentTimeMillis()));
-    QMLog.d("MiniAppInfoLoadingFragment", "saveIdInfo cache success.");
   }
   
   private void saveLinkInfo(JSONObject paramJSONObject, byte[] paramArrayOfByte, String paramString1, MiniAppCacheProxy paramMiniAppCacheProxy, String paramString2, int paramInt)
@@ -209,15 +196,13 @@ public class MiniAppInfoLoadingFragment
         }
       }
     }
-    do
+    else if (paramArrayOfByte != null)
     {
-      do
-      {
-        return;
-      } while (paramArrayOfByte == null);
       QMLog.d("MiniAppInfoLoadingFragment", "saveLinkInfo cache.");
-    } while (!paramMiniAppCacheProxy.saveLinkInfo(paramString2, paramInt, paramString1, paramArrayOfByte, System.currentTimeMillis()));
-    QMLog.d("MiniAppInfoLoadingFragment", "saveLinkInfo cache success.");
+      if (paramMiniAppCacheProxy.saveLinkInfo(paramString2, paramInt, paramString1, paramArrayOfByte, System.currentTimeMillis())) {
+        QMLog.d("MiniAppInfoLoadingFragment", "saveLinkInfo cache success.");
+      }
+    }
   }
   
   private void setEntryPath(MiniAppInfo paramMiniAppInfo)
@@ -227,20 +212,22 @@ public class MiniAppInfoLoadingFragment
       if (paramMiniAppInfo.firstPage.pagePath.startsWith("/")) {
         paramMiniAppInfo.firstPage.pagePath = paramMiniAppInfo.firstPage.pagePath.substring(1);
       }
-      if (paramMiniAppInfo.firstPage.pagePath.contains(".html")) {
+      if (paramMiniAppInfo.firstPage.pagePath.contains(".html"))
+      {
         paramMiniAppInfo.launchParam.entryPath = paramMiniAppInfo.firstPage.pagePath;
+        return;
       }
+      if (paramMiniAppInfo.firstPage.pagePath.contains("?"))
+      {
+        paramMiniAppInfo.launchParam.entryPath = paramMiniAppInfo.firstPage.pagePath.replaceFirst("\\?", ".html\\?");
+        return;
+      }
+      LaunchParam localLaunchParam = paramMiniAppInfo.launchParam;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMiniAppInfo.firstPage.pagePath);
+      localStringBuilder.append(".html");
+      localLaunchParam.entryPath = localStringBuilder.toString();
     }
-    else
-    {
-      return;
-    }
-    if (paramMiniAppInfo.firstPage.pagePath.contains("?"))
-    {
-      paramMiniAppInfo.launchParam.entryPath = paramMiniAppInfo.firstPage.pagePath.replaceFirst("\\?", ".html\\?");
-      return;
-    }
-    paramMiniAppInfo.launchParam.entryPath = (paramMiniAppInfo.firstPage.pagePath + ".html");
   }
   
   private void showErrorToast(String paramString, long paramLong)
@@ -249,12 +236,22 @@ public class MiniAppInfoLoadingFragment
     {
       if (getActivity() != null)
       {
-        if (DebugUtil.isDebugVersion())
+        boolean bool = DebugUtil.isDebugVersion();
+        if (bool)
         {
-          MiniToast.makeText(getActivity(), 1, "" + paramString + paramLong, 1).show();
+          localFragmentActivity = getActivity();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(paramLong);
+          MiniToast.makeText(localFragmentActivity, 1, localStringBuilder.toString(), 1).show();
           return;
         }
-        MiniToast.makeText(getActivity(), 1, "" + paramString, 1).show();
+        FragmentActivity localFragmentActivity = getActivity();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(paramString);
+        MiniToast.makeText(localFragmentActivity, 1, localStringBuilder.toString(), 1).show();
         return;
       }
     }
@@ -299,15 +296,17 @@ public class MiniAppInfoLoadingFragment
         this.mResultReceiver.send(0, paramMiniAppInfo);
       }
     }
-    do
+    else
     {
-      return;
       ThreadManager.getUIHandler().post(new MiniAppInfoLoadingFragment.3(this, paramLong, paramString1));
-    } while (this.mResultReceiver == null);
-    paramMiniAppInfo = new Bundle();
-    paramMiniAppInfo.putLong("retCode", paramLong);
-    paramMiniAppInfo.putString("errMsg", paramString1);
-    this.mResultReceiver.send(1, paramMiniAppInfo);
+      if (this.mResultReceiver != null)
+      {
+        paramMiniAppInfo = new Bundle();
+        paramMiniAppInfo.putLong("retCode", paramLong);
+        paramMiniAppInfo.putString("errMsg", paramString1);
+        this.mResultReceiver.send(1, paramMiniAppInfo);
+      }
+    }
   }
   
   private void startByLinkMiniInfo(long paramLong, String paramString1, MiniAppInfo paramMiniAppInfo, String paramString2, LaunchParam paramLaunchParam, String paramString3)
@@ -333,32 +332,31 @@ public class MiniAppInfoLoadingFragment
         MiniAppEnv.g().getAuthSate(paramMiniAppInfo.appId).clearAll();
         paramMiniAppInfo.clearAuths = 0;
       }
-      label123:
-      if (paramString3 != null) {
-        paramMiniAppInfo.customInfo = paramString3;
-      }
-      doStartMiniApp(paramMiniAppInfo);
+    }
+    catch (Exception paramString2)
+    {
+      label126:
+      break label126;
+    }
+    if (paramString3 != null) {
+      paramMiniAppInfo.customInfo = paramString3;
+    }
+    doStartMiniApp(paramMiniAppInfo);
+    if (this.mResultReceiver != null)
+    {
+      paramMiniAppInfo = new Bundle();
+      paramMiniAppInfo.putLong("retCode", paramLong);
+      paramMiniAppInfo.putString("errMsg", paramString1);
+      this.mResultReceiver.send(0, paramMiniAppInfo);
+      return;
+      ThreadManager.getUIHandler().post(new MiniAppInfoLoadingFragment.8(this, paramLong, paramString1));
       if (this.mResultReceiver != null)
       {
         paramMiniAppInfo = new Bundle();
         paramMiniAppInfo.putLong("retCode", paramLong);
         paramMiniAppInfo.putString("errMsg", paramString1);
-        this.mResultReceiver.send(0, paramMiniAppInfo);
+        this.mResultReceiver.send(1, paramMiniAppInfo);
       }
-      do
-      {
-        return;
-        ThreadManager.getUIHandler().post(new MiniAppInfoLoadingFragment.8(this, paramLong, paramString1));
-      } while (this.mResultReceiver == null);
-      paramMiniAppInfo = new Bundle();
-      paramMiniAppInfo.putLong("retCode", paramLong);
-      paramMiniAppInfo.putString("errMsg", paramString1);
-      this.mResultReceiver.send(1, paramMiniAppInfo);
-      return;
-    }
-    catch (Exception paramString2)
-    {
-      break label123;
     }
   }
   
@@ -370,13 +368,20 @@ public class MiniAppInfoLoadingFragment
     if (!TextUtils.isEmpty(paramMiniAppInfo.launchParam.shareTicket)) {
       paramMiniAppInfo.launchParam.scene = 1044;
     }
-    if (TextUtils.isEmpty(paramMiniAppInfo.launchParam.reportData)) {
+    if (TextUtils.isEmpty(paramMiniAppInfo.launchParam.reportData))
+    {
       paramMiniAppInfo.launchParam.reportData = paramMiniAppInfo.reportData;
-    }
-    while (TextUtils.isEmpty(paramMiniAppInfo.reportData)) {
       return;
     }
-    paramMiniAppInfo.launchParam.reportData = (paramMiniAppInfo.launchParam.reportData + "&" + paramMiniAppInfo.reportData);
+    if (!TextUtils.isEmpty(paramMiniAppInfo.reportData))
+    {
+      paramLaunchParam = paramMiniAppInfo.launchParam;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMiniAppInfo.launchParam.reportData);
+      localStringBuilder.append("&");
+      localStringBuilder.append(paramMiniAppInfo.reportData);
+      paramLaunchParam.reportData = localStringBuilder.toString();
+    }
   }
   
   @Nullable
@@ -388,9 +393,7 @@ public class MiniAppInfoLoadingFragment
       this.mRootView = LayoutInflater.from(getActivity()).inflate(R.layout.mini_sdk_appinfo_loading_layout, null);
       this.mLoadingView = ((LinearLayout)this.mRootView.findViewById(R.id.loading_layout));
     }
-    paramLayoutInflater = this.mRootView;
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-    return paramLayoutInflater;
+    return this.mRootView;
   }
   
   public void onResume()
@@ -427,7 +430,7 @@ public class MiniAppInfoLoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniAppInfoLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

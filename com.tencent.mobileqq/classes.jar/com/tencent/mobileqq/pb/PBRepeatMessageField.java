@@ -40,13 +40,14 @@ public final class PBRepeatMessageField<T extends MessageMicro<T>>
   protected int computeSizeDirectly(int paramInt, List<T> paramList)
   {
     paramList = paramList.iterator();
-    MessageMicro localMessageMicro;
-    for (int i = 0;; i = localMessageMicro.computeSizeDirectly(paramInt, localMessageMicro) + i)
+    int i = 0;
+    for (;;)
     {
       if (!paramList.hasNext()) {
         return i;
       }
-      localMessageMicro = (MessageMicro)paramList.next();
+      MessageMicro localMessageMicro = (MessageMicro)paramList.next();
+      i += localMessageMicro.computeSizeDirectly(paramInt, localMessageMicro);
     }
   }
   
@@ -59,48 +60,47 @@ public final class PBRepeatMessageField<T extends MessageMicro<T>>
       return;
     }
     List localList = get();
+    int j = 0;
     Class localClass = paramPBField.get(0).getClass();
-    int j = paramPBField.value.size() - localList.size();
-    int i;
-    if (j > 0)
+    int k = paramPBField.value.size() - localList.size();
+    if (k > 0)
     {
       i = 0;
-      if (i < j) {}
-    }
-    for (;;)
-    {
       for (;;)
       {
-        i = 0;
-        while (i < localList.size())
+        if (i >= k)
         {
-          ((MessageMicro)localList.get(i)).copyFrom((MessageMicro)paramPBField.value.get(i));
-          i += 1;
+          i = j;
+          break;
         }
-        break;
         try
         {
           localList.add((MessageMicro)localClass.newInstance());
-          i += 1;
-        }
-        catch (InstantiationException localInstantiationException)
-        {
-          for (;;)
-          {
-            localInstantiationException.printStackTrace();
-          }
         }
         catch (IllegalAccessException localIllegalAccessException)
         {
-          for (;;)
-          {
-            localIllegalAccessException.printStackTrace();
-          }
+          localIllegalAccessException.printStackTrace();
         }
+        catch (InstantiationException localInstantiationException)
+        {
+          localInstantiationException.printStackTrace();
+        }
+        i += 1;
       }
-      if (j < 0) {
-        localList.subList(-j, localList.size()).clear();
+    }
+    int i = j;
+    if (k < 0)
+    {
+      localList.subList(-k, localList.size()).clear();
+      i = j;
+    }
+    for (;;)
+    {
+      if (i >= localList.size()) {
+        return;
       }
+      ((MessageMicro)localList.get(i)).copyFrom((MessageMicro)paramPBField.value.get(i));
+      i += 1;
     }
   }
   
@@ -120,7 +120,7 @@ public final class PBRepeatMessageField<T extends MessageMicro<T>>
   
   public boolean has()
   {
-    return !isEmpty();
+    return isEmpty() ^ true;
   }
   
   public boolean isEmpty()
@@ -137,12 +137,12 @@ public final class PBRepeatMessageField<T extends MessageMicro<T>>
       add(localMessageMicro);
       return;
     }
-    catch (InstantiationException paramCodedInputStreamMicro)
+    catch (IllegalAccessException paramCodedInputStreamMicro)
     {
       paramCodedInputStreamMicro.printStackTrace();
       return;
     }
-    catch (IllegalAccessException paramCodedInputStreamMicro)
+    catch (InstantiationException paramCodedInputStreamMicro)
     {
       paramCodedInputStreamMicro.printStackTrace();
     }
@@ -193,7 +193,7 @@ public final class PBRepeatMessageField<T extends MessageMicro<T>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pb.PBRepeatMessageField
  * JD-Core Version:    0.7.0.1
  */

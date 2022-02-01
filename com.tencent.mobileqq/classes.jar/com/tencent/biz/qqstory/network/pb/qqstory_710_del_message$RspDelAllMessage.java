@@ -9,15 +9,21 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class qqstory_710_del_message$RspDelAllMessage
   extends MessageMicro<RspDelAllMessage>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "errinfo", "remain_num", "image_uid", "last_time" }, new Object[] { null, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, RspDelAllMessage.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public qqstory_710_del_message.ErrorInfo errinfo = new qqstory_710_del_message.ErrorInfo();
   public final PBUInt64Field image_uid = PBField.initUInt64(0L);
   public final PBUInt32Field last_time = PBField.initUInt32(0);
   public final PBUInt32Field remain_num = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "errinfo", "remain_num", "image_uid", "last_time" }, new Object[] { null, localInteger, Long.valueOf(0L), localInteger }, RspDelAllMessage.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelAllMessage
  * JD-Core Version:    0.7.0.1
  */

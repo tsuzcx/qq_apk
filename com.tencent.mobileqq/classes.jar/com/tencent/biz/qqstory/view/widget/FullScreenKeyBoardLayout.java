@@ -29,7 +29,7 @@ public class FullScreenKeyBoardLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
     if ((this.b == 0) && (this.jdField_a_of_type_Int == 0))
@@ -38,7 +38,8 @@ public class FullScreenKeyBoardLayout
       this.jdField_a_of_type_Int = getRootView().getHeight();
     }
     int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (this.jdField_a_of_type_Int - i > this.jdField_a_of_type_Int / 4)
+    int j = this.jdField_a_of_type_Int;
+    if (j - i > j / 4)
     {
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(i, 1073741824));
       return;
@@ -48,7 +49,7 @@ public class FullScreenKeyBoardLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.FullScreenKeyBoardLayout
  * JD-Core Version:    0.7.0.1
  */

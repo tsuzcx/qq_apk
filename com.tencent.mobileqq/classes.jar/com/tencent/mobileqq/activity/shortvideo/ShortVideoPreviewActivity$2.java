@@ -12,17 +12,25 @@ class ShortVideoPreviewActivity$2
   
   public void onGlobalLayout()
   {
-    this.a.e = this.a.a.getWidth();
-    this.a.f = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
+    Object localObject = this.a;
+    ((ShortVideoPreviewActivity)localObject).mSurfaceViewWidth = ((ShortVideoPreviewActivity)localObject).mSurfaceView.getWidth();
+    localObject = this.a;
+    ((ShortVideoPreviewActivity)localObject).mSurfaceViewHeight = ((ShortVideoPreviewActivity)localObject).mSurfaceView.getHeight();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGlobalLayout,mSurfaceViewWidth:");
+      ((StringBuilder)localObject).append(this.a.mSurfaceViewWidth);
+      ((StringBuilder)localObject).append(",mSurfaceViewHeight:");
+      ((StringBuilder)localObject).append(this.a.mSurfaceViewHeight);
+      QLog.d("ShortVideoPreviewActivity", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.mSurfaceView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.2
  * JD-Core Version:    0.7.0.1
  */

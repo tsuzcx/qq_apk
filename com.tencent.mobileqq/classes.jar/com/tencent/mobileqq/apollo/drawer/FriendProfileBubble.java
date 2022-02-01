@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
+import com.tencent.mobileqq.apollo.script.drawerinfo.SpriteDrawerInfoManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
@@ -22,28 +22,34 @@ public class FriendProfileBubble
   
   public void a(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
   {
-    if ((paramSpriteDrawerInfoManager == null) || (paramContext == null) || (paramQQAppInterface == null)) {}
-    SharedPreferences localSharedPreferences;
-    do
+    if ((paramSpriteDrawerInfoManager != null) && (paramContext != null))
     {
-      do
-      {
+      if (paramQQAppInterface == null) {
         return;
-      } while (((IApolloManagerService)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getWhiteListStatus(paramQQAppInterface) == 1);
-      paramContext = "apollo_friend_profile_drawer_first" + paramQQAppInterface.getCurrentAccountUin();
-      localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramContext, true));
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileBubble", 2, "onBubbleShow first");
+      }
+      if (((IApolloManagerService)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getWhiteListStatus() == 1) {
+        return;
+      }
+      paramContext = new StringBuilder();
+      paramContext.append("apollo_friend_profile_drawer_first");
+      paramContext.append(paramQQAppInterface.getCurrentAccountUin());
+      paramContext = paramContext.toString();
+      SharedPreferences localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+      if (localSharedPreferences.getBoolean(paramContext, true))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("[cmshow]FriendProfileBubble", 2, "onBubbleShow first");
+        }
+        SpriteUtil.a(paramSpriteDrawerInfoManager, paramString, 3, 0);
+        localSharedPreferences.edit().putBoolean(paramContext, false).commit();
+        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "Guide_bubbles_show", 0, 0, new String[] { "", "", "", this.a });
+      }
     }
-    SpriteUtil.a(paramSpriteDrawerInfoManager, paramString, 3, 0);
-    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "Guide_bubbles_show", 0, 0, new String[] { "", "", "", this.a });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.drawer.FriendProfileBubble
  * JD-Core Version:    0.7.0.1
  */

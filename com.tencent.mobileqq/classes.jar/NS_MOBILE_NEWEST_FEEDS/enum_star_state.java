@@ -10,7 +10,7 @@ public final class enum_star_state
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_NEWEST_FEEDS.enum_star_state
  * JD-Core Version:    0.7.0.1
  */

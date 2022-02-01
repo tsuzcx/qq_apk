@@ -18,8 +18,9 @@ public final class a
     synchronized (this.c)
     {
       LinkedList localLinkedList = this.b;
-      byte[] arrayOfByte = new byte[(int)paramLong2];
-      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, (int)paramLong2);
+      int i = (int)paramLong2;
+      byte[] arrayOfByte = new byte[i];
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
       localLinkedList.addLast(new b(paramInt, paramLong1, arrayOfByte, paramLong2));
       this.a += paramLong2;
       return;
@@ -47,11 +48,15 @@ public final class a
       while (b() != null) {}
       return;
     }
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.a.a
  * JD-Core Version:    0.7.0.1
  */

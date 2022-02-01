@@ -26,18 +26,21 @@ public class PieceData
   
   public void notifyTextureChange()
   {
-    if (this.orgBitmap == null) {}
-    while (this.textureOrgObjectId > 0) {
+    Bitmap localBitmap = this.orgBitmap;
+    if (localBitmap == null) {
       return;
     }
-    this.textureOrgObjectId = TextureUtil.genTextureId(this.orgBitmap, true);
+    if (this.textureOrgObjectId <= 0) {
+      this.textureOrgObjectId = TextureUtil.genTextureId(localBitmap, true);
+    }
   }
   
   public void recycleOrgTexture()
   {
-    if (this.orgBitmap != null)
+    Bitmap localBitmap = this.orgBitmap;
+    if (localBitmap != null)
     {
-      this.orgBitmap.recycle();
+      localBitmap.recycle();
       this.orgBitmap = null;
     }
     TextureUtil.deleteTexture(this.textureOrgObjectId);
@@ -56,15 +59,16 @@ public class PieceData
   
   public int sizeOf()
   {
-    if (this.orgBitmap != null) {
-      return this.orgBitmap.getByteCount();
+    Bitmap localBitmap = this.orgBitmap;
+    if (localBitmap != null) {
+      return localBitmap.getByteCount();
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.panorama.piece.PieceData
  * JD-Core Version:    0.7.0.1
  */

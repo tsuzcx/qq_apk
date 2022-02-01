@@ -13,22 +13,32 @@ class SLAReporter$1
   {
     try
     {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$path).openConnection();
-      localHttpURLConnection.setConnectTimeout(5000);
-      localHttpURLConnection.setRequestMethod("GET");
-      int i = localHttpURLConnection.getResponseCode();
-      RLog.d("SLAReporter", new Object[] { "report code: " + i + ", path: " + this.val$path });
+      Object localObject = (HttpURLConnection)new URL(this.val$path).openConnection();
+      ((HttpURLConnection)localObject).setConnectTimeout(5000);
+      ((HttpURLConnection)localObject).setRequestMethod("GET");
+      int i = ((HttpURLConnection)localObject).getResponseCode();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("report code: ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", path: ");
+      ((StringBuilder)localObject).append(this.val$path);
+      RLog.d("SLAReporter", new Object[] { ((StringBuilder)localObject).toString() });
       return;
     }
     catch (Exception localException)
     {
-      RLog.w("SLAReporter", new Object[] { "report error: " + localException + ", path: " + this.val$path });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report error: ");
+      localStringBuilder.append(localException);
+      localStringBuilder.append(", path: ");
+      localStringBuilder.append(this.val$path);
+      RLog.w("SLAReporter", new Object[] { localStringBuilder.toString() });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.raftframework.sla.SLAReporter.1
  * JD-Core Version:    0.7.0.1
  */

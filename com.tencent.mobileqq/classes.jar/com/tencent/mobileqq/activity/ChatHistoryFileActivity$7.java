@@ -9,7 +9,7 @@ import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.teamwork.TeamWorkHandler;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -27,23 +27,29 @@ class ChatHistoryFileActivity$7
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
       this.this$0.app.getMessageFacade().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+    } else if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
+      this.this$0.app.getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
     }
-    Object localObject1;
+    Object localObject1 = this.b;
     Object localObject2;
-    while ((this.b != null) && (this.b.size() > 0))
+    Object localObject3;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
       localObject1 = this.b.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
         ((FileManagerEntity)localObject2).bDelInAio = true;
-        if (QLog.isDevelopLevel()) {
-          QLog.d("ChatHistoryFIleActivity", 1, "ChatHistory entity[" + ((FileManagerEntity)localObject2).getId() + "] del File:" + ((FileManagerEntity)localObject2).nSessionId);
+        if (QLog.isDevelopLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("ChatHistory entity[");
+          ((StringBuilder)localObject3).append(((FileManagerEntity)localObject2).getId());
+          ((StringBuilder)localObject3).append("] del File:");
+          ((StringBuilder)localObject3).append(((FileManagerEntity)localObject2).nSessionId);
+          QLog.d("ChatHistoryFIleActivity", 1, ((StringBuilder)localObject3).toString());
         }
         this.this$0.app.getFileManagerEngine().b(((FileManagerEntity)localObject2).nSessionId);
-      }
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.this$0.app.getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
       }
     }
     try
@@ -53,12 +59,20 @@ class ChatHistoryFileActivity$7
         localObject1 = new JSONObject();
         localObject2 = new JSONArray();
         ((JSONObject)localObject1).put("recent_file_list", localObject2);
-        Iterator localIterator = this.c.iterator();
-        while (localIterator.hasNext()) {
-          ((JSONArray)localObject2).put(((TencentDocData)localIterator.next()).translate2JsonObject());
+        localObject3 = this.c.iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((JSONArray)localObject2).put(((TencentDocData)((Iterator)localObject3).next()).translate2JsonObject());
+        }
+        localObject2 = ((ITeamWorkHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).delRecentFilesByHttp((JSONObject)localObject1);
+        if (QLog.isColorLevel()) {
+          QLog.d("ChatHistoryFIleActivity", 1, ((JSONObject)localObject1).toString());
+        }
+        if (((JSONObject)localObject2).getInt("retcode") == 0) {
+          FileManagerReporter.a("0X8009AA0");
+        } else {
+          FMToastUtil.a(((JSONObject)localObject2).getString("msg"));
         }
       }
-      this.this$0.a.sendEmptyMessage(2);
     }
     catch (JSONException localJSONException)
     {
@@ -66,24 +80,12 @@ class ChatHistoryFileActivity$7
         QLog.e("ChatHistoryFIleActivity", 1, localJSONException.getMessage());
       }
     }
-    for (;;)
-    {
-      return;
-      localObject2 = ((TeamWorkHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).a(localJSONException);
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatHistoryFIleActivity", 1, localJSONException.toString());
-      }
-      if (((JSONObject)localObject2).getInt("retcode") == 0) {
-        FileManagerReporter.a("0X8009AA0");
-      } else {
-        FMToastUtil.a(((JSONObject)localObject2).getString("msg"));
-      }
-    }
+    this.this$0.a.sendEmptyMessage(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.7
  * JD-Core Version:    0.7.0.1
  */

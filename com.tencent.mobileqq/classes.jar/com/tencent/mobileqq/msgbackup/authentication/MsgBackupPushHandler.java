@@ -2,16 +2,15 @@ package com.tencent.mobileqq.msgbackup.authentication;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.common.config.AppSetting;
-import com.tencent.litetransfersdk.ProtocolHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.mobileqq.msgbackup.controller.MsgBackupManager;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupConfirmQrRsp.Builder;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupPushData.Builder;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData.Builder;
+import com.tencent.mobileqq.msgbackup.tempapi.IMsgBackupTempApi;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportProcessor;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -21,12 +20,13 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.service.message.MessageProtoCodec;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.mobileqq.service.message.TransMsgContext;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 import msf.msgsvc.msg_svc.PbSendMsgReq;
 import msf.msgsvc.msg_svc.RoutingHead;
 import msf.msgsvc.msg_svc.Trans0x211;
@@ -47,15 +47,16 @@ public class MsgBackupPushHandler
   
   public static MsgBackupPushHandler a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new MsgBackupPushHandler();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new MsgBackupPushHandler();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   private MsgBackupUserData a(submsgtype0x11a.UserData paramUserData)
@@ -88,25 +89,30 @@ public class MsgBackupPushHandler
       localJSONObject.put("cmd", "exit");
       localJSONObject.put("sig", MsgBackupAuthProcessor.a().a());
       ((JSONArray)localObject).put(localJSONObject);
-      localObject = ((JSONArray)localObject).toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupPushHandler", 2, "getExitJsonStr create: " + (String)localObject);
-      }
-      return localObject;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    localObject = ((JSONArray)localObject).toString();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getExitJsonStr create: ");
+      localStringBuilder.append((String)localObject);
+      QLog.d("MsgBackup.MsgBackupPushHandler", 2, localStringBuilder.toString());
+    }
+    return localObject;
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnlinePush0x211 receive: res.getResultCode() = " + paramFromServiceMsg.getResultCode());
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("processOnlinePush0x211 receive: res.getResultCode() = ");
+      paramToServiceMsg.append(paramFromServiceMsg.getResultCode());
+      QLog.d("MsgBackup.MsgBackupPushHandler", 2, paramToServiceMsg.toString());
     }
     if (paramFromServiceMsg.getResultCode() != 1000) {
       a(a());
@@ -115,27 +121,28 @@ public class MsgBackupPushHandler
   
   public void a(String paramString)
   {
-    Object localObject1 = new SubMsgType0x7.MsgBody.GenericSubCmd();
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).uint64_sessionid.set(1L);
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).uint32_size.set(1);
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).uint32_index.set(0);
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).uint32_type.set(7);
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).bytes_buf.set(ByteStringMicro.copyFrom(paramString.getBytes()));
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).uint32_support_auth.set(1);
-    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject1).setHasFlag(true);
-    Object localObject2 = new SubMsgType0x7.MsgBody();
-    ((SubMsgType0x7.MsgBody)localObject2).uint32_sub_cmd.set(4);
-    paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    new ProtocolHelper(paramString, 0).fillMsgHeader(((SubMsgType0x7.MsgBody)localObject2).msg_header, Long.valueOf(paramString.getCurrentAccountUin()).longValue());
-    ((SubMsgType0x7.MsgBody)localObject2).msg_subcmd_0x4_generic.set((MessageMicro)localObject1);
-    ((SubMsgType0x7.MsgBody)localObject2).setHasFlag(true);
-    localObject1 = new TransMsgContext();
-    localObject2 = ((SubMsgType0x7.MsgBody)localObject2).toByteArray();
-    ((TransMsgContext)localObject1).jdField_a_of_type_Int = 7;
-    ((TransMsgContext)localObject1).jdField_a_of_type_ArrayOfByte = ((byte[])localObject2);
-    long l1 = FileManagerUtil.b();
-    long l2 = FileManagerUtil.a();
-    localObject1 = MessageProtoCodec.a(paramString, 13, paramString.getCurrentUin(), (TransMsgContext)localObject1, l2, MessageUtils.b(l1));
+    Object localObject2 = new SubMsgType0x7.MsgBody.GenericSubCmd();
+    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint64_sessionid.set(1L);
+    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint32_size.set(1);
+    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint32_index.set(0);
+    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint32_type.set(7);
+    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).bytes_buf.set(ByteStringMicro.copyFrom(paramString.getBytes()));
+    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint32_support_auth.set(1);
+    ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).setHasFlag(true);
+    Object localObject3 = new SubMsgType0x7.MsgBody();
+    ((SubMsgType0x7.MsgBody)localObject3).uint32_sub_cmd.set(4);
+    paramString = (BaseQQAppInterface)MobileQQ.sMobileQQ.peekAppRuntime();
+    Object localObject1 = (IMsgBackupTempApi)QRoute.api(IMsgBackupTempApi.class);
+    ((IMsgBackupTempApi)localObject1).fillMsgHeader(paramString, ((SubMsgType0x7.MsgBody)localObject3).msg_header, Long.valueOf(paramString.getCurrentAccountUin()));
+    ((SubMsgType0x7.MsgBody)localObject3).msg_subcmd_0x4_generic.set((MessageMicro)localObject2);
+    ((SubMsgType0x7.MsgBody)localObject3).setHasFlag(true);
+    localObject2 = new TransMsgContext();
+    localObject3 = ((SubMsgType0x7.MsgBody)localObject3).toByteArray();
+    ((TransMsgContext)localObject2).jdField_a_of_type_Int = 7;
+    ((TransMsgContext)localObject2).jdField_a_of_type_ArrayOfByte = ((byte[])localObject3);
+    long l1 = QQFileManagerUtil.b();
+    long l2 = QQFileManagerUtil.a();
+    localObject1 = ((IMsgBackupTempApi)localObject1).createPbSendMsgReq(paramString, 13, paramString.getCurrentUin(), (TransMsgContext)localObject2, l2, MessageUtils.b(l1));
     localObject2 = new im_msg_head.InstInfo();
     ((im_msg_head.InstInfo)localObject2).uint32_apppid.set(1);
     ((im_msg_head.InstInfo)localObject2).uint32_instid.set(0);
@@ -158,68 +165,74 @@ public class MsgBackupPushHandler
   
   public void a(submsgtype0x11a.MsgBody paramMsgBody)
   {
-    int i;
     if (paramMsgBody != null)
     {
-      MsgBackupConfirmQrRsp.Builder localBuilder = new MsgBackupConfirmQrRsp.Builder();
+      Object localObject = new MsgBackupConfirmQrRsp.Builder();
       if (paramMsgBody.enum_result.has())
       {
-        i = paramMsgBody.enum_result.get();
-        if (i != 0) {
-          break label180;
+        int i = paramMsgBody.enum_result.get();
+        if (i == 0)
+        {
+          if (paramMsgBody.bytes_token.has()) {
+            ((MsgBackupConfirmQrRsp.Builder)localObject).a(paramMsgBody.bytes_token.get().toStringUtf8());
+          }
+          if (paramMsgBody.bytes_encrypt_key.has()) {
+            ((MsgBackupConfirmQrRsp.Builder)localObject).b(paramMsgBody.bytes_encrypt_key.get().toStringUtf8());
+          }
+          if (paramMsgBody.msg_user_data.has()) {
+            ((MsgBackupConfirmQrRsp.Builder)localObject).a(a((submsgtype0x11a.UserData)paramMsgBody.msg_user_data.get()));
+          }
+          if (paramMsgBody.enum_biz_type.has()) {
+            ((MsgBackupConfirmQrRsp.Builder)localObject).a(paramMsgBody.enum_biz_type.get());
+          }
+          paramMsgBody = ((MsgBackupConfirmQrRsp.Builder)localObject).a();
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("processOnLinePush receive processOnLinePush0x11a response = ");
+            ((StringBuilder)localObject).append(paramMsgBody);
+            QLog.d("MsgBackup.MsgBackupPushHandler", 2, ((StringBuilder)localObject).toString());
+          }
+          MsgBackupManager.a().a(paramMsgBody);
+          return;
         }
-        if (paramMsgBody.bytes_token.has()) {
-          localBuilder.a(paramMsgBody.bytes_token.get().toStringUtf8());
+        if (i == 6)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnLinePush receive 0x210_0x11a， 对端拒绝了！");
+          }
+          MsgBackupManager.a().a(Integer.valueOf(6));
+          return;
         }
-        if (paramMsgBody.bytes_encrypt_key.has()) {
-          localBuilder.b(paramMsgBody.bytes_encrypt_key.get().toStringUtf8());
+        if (i == 20)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnLinePush receive 0x210_0x11a， 内部错误");
+          }
+          MsgBackupManager.a().a(Integer.valueOf(20));
         }
-        if (paramMsgBody.msg_user_data.has()) {
-          localBuilder.a(a((submsgtype0x11a.UserData)paramMsgBody.msg_user_data.get()));
-        }
-        if (paramMsgBody.enum_biz_type.has()) {
-          localBuilder.a(paramMsgBody.enum_biz_type.get());
-        }
-        paramMsgBody = localBuilder.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnLinePush receive processOnLinePush0x11a response = " + paramMsgBody);
-        }
-        MsgBackupManager.a().a(paramMsgBody);
       }
     }
-    label180:
-    do
-    {
-      return;
-      if (i == 6)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnLinePush receive 0x210_0x11a， 对端拒绝了！");
-        }
-        MsgBackupManager.a().a(Integer.valueOf(6));
-        return;
-      }
-    } while (i != 20);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnLinePush receive 0x210_0x11a， 内部错误");
-    }
-    MsgBackupManager.a().a(Integer.valueOf(20));
   }
   
   public void a(submsgtype0x11b.MsgBody paramMsgBody)
   {
     if (paramMsgBody != null)
     {
-      MsgBackupPushData.Builder localBuilder = new MsgBackupPushData.Builder();
+      Object localObject = new MsgBackupPushData.Builder();
       if (paramMsgBody.bytes_qr_sig.has()) {
-        localBuilder.a(paramMsgBody.bytes_qr_sig.get().toStringUtf8());
+        ((MsgBackupPushData.Builder)localObject).a(paramMsgBody.bytes_qr_sig.get().toStringUtf8());
       }
       if (paramMsgBody.enum_biz_type.has()) {
-        localBuilder.a(paramMsgBody.enum_biz_type.get());
+        ((MsgBackupPushData.Builder)localObject).a(paramMsgBody.enum_biz_type.get());
       }
-      paramMsgBody = localBuilder.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processOnLinePush receive processOnLinePush0x11b " + paramMsgBody);
+      paramMsgBody = ((MsgBackupPushData.Builder)localObject).a();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("processOnLinePush receive processOnLinePush0x11b ");
+        ((StringBuilder)localObject).append(paramMsgBody);
+        QLog.d("MsgBackup.MsgBackupPushHandler", 2, ((StringBuilder)localObject).toString());
       }
       MsgBackupManager.a().a(paramMsgBody);
       return;
@@ -235,39 +248,45 @@ public class MsgBackupPushHandler
     if (paramGenericSubCmd.bytes_buf.has())
     {
       paramGenericSubCmd = paramGenericSubCmd.bytes_buf.get().toStringUtf8();
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupPushHandler", 2, "processExit0x7, genericSubCmd: " + paramGenericSubCmd);
-      }
-      if (TextUtils.isEmpty(paramGenericSubCmd)) {}
-    }
-    try
-    {
-      paramGenericSubCmd = new JSONArray(paramGenericSubCmd);
-      if (paramGenericSubCmd.length() == 1)
+      if (QLog.isColorLevel())
       {
-        paramGenericSubCmd = (JSONObject)paramGenericSubCmd.get(0);
-        if ("exit".equals(paramGenericSubCmd.optString("cmd")))
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("processExit0x7, genericSubCmd: ");
+        localStringBuilder.append(paramGenericSubCmd);
+        QLog.d("MsgBackup.MsgBackupPushHandler", 2, localStringBuilder.toString());
+      }
+      if (!TextUtils.isEmpty(paramGenericSubCmd)) {
+        try
         {
-          paramGenericSubCmd = paramGenericSubCmd.optString("sig");
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup.MsgBackupPushHandler", 2, "-------------------exit-------------------");
-          }
-          if (TextUtils.equals(paramGenericSubCmd, MsgBackupAuthProcessor.a().a())) {
-            MsgBackupTransportProcessor.a().b(true);
+          paramGenericSubCmd = new JSONArray(paramGenericSubCmd);
+          if (paramGenericSubCmd.length() == 1)
+          {
+            paramGenericSubCmd = (JSONObject)paramGenericSubCmd.get(0);
+            if ("exit".equals(paramGenericSubCmd.optString("cmd")))
+            {
+              paramGenericSubCmd = paramGenericSubCmd.optString("sig");
+              if (QLog.isColorLevel()) {
+                QLog.d("MsgBackup.MsgBackupPushHandler", 2, "-------------------exit-------------------");
+              }
+              if (TextUtils.equals(paramGenericSubCmd, MsgBackupAuthProcessor.a().a()))
+              {
+                MsgBackupTransportProcessor.a().b(true);
+                return;
+              }
+            }
           }
         }
+        catch (JSONException paramGenericSubCmd)
+        {
+          QLog.e("MsgBackup.MsgBackupPushHandler", 2, "processExit0x7 parse json error!", paramGenericSubCmd);
+        }
       }
-      return;
-    }
-    catch (JSONException paramGenericSubCmd)
-    {
-      QLog.e("MsgBackup.MsgBackupPushHandler", 2, "processExit0x7 parse json error!", paramGenericSubCmd);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.authentication.MsgBackupPushHandler
  * JD-Core Version:    0.7.0.1
  */

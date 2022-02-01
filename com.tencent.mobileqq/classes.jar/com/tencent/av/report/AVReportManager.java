@@ -13,16 +13,19 @@ public class AVReportManager
   
   public static AVReportInterface get(AVReportManager.ReportType paramReportType)
   {
-    switch (AVReportManager.1.$SwitchMap$com$tencent$av$report$AVReportManager$ReportType[paramReportType.ordinal()])
+    int i = AVReportManager.1.$SwitchMap$com$tencent$av$report$AVReportManager$ReportType[paramReportType.ordinal()];
+    if (i != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return new AVCatonReport(mHttpInterface);
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return null;
+        }
+        return new AVLinkMicReport(mHttpInterface);
+      }
       return new AVMonitorReport(mHttpInterface);
     }
-    return new AVLinkMicReport(mHttpInterface);
+    return new AVCatonReport(mHttpInterface);
   }
   
   public static void init(Context paramContext, SimpleCoreHttpImpl paramSimpleCoreHttpImpl)
@@ -38,7 +41,7 @@ public class AVReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.AVReportManager
  * JD-Core Version:    0.7.0.1
  */

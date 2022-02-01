@@ -17,46 +17,58 @@ class UiApiPlugin$7
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject;
     if (paramBoolean)
     {
       paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localObject = new oidb_sso.OIDBSSOPkg();
-      }
-    }
-    try
-    {
-      paramBundle = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
-      paramInt = paramBundle.uint32_result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "handleOidb0x716_48Rsp, resultCode:" + paramInt);
-      }
-      paramBundle = paramBundle.bytes_bodybuffer.get().toByteArray();
-      if (paramInt == 0)
+      if (paramBundle != null)
       {
-        localObject = new byte[4];
-        System.arraycopy(paramBundle, 0, localObject, 0, 4);
-        paramBundle = ByteBuffer.wrap((byte[])localObject).getInt() + "";
-        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a == null)
+        Object localObject = new oidb_sso.OIDBSSOPkg();
+        try
         {
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a = TroopMemberApiClient.a();
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.a();
+          paramBundle = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
+          paramInt = paramBundle.uint32_result.get();
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("handleOidb0x716_48Rsp, resultCode:");
+            ((StringBuilder)localObject).append(paramInt);
+            QLog.d("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, ((StringBuilder)localObject).toString());
+          }
+          localObject = paramBundle.bytes_bodybuffer.get().toByteArray();
+          if (paramInt == 0)
+          {
+            paramBundle = new byte[4];
+            System.arraycopy(localObject, 0, paramBundle, 0, 4);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(ByteBuffer.wrap(paramBundle).getInt());
+            ((StringBuilder)localObject).append("");
+            paramBundle = ((StringBuilder)localObject).toString();
+            if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a == null)
+            {
+              this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a = TroopMemberApiClient.a();
+              this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.a();
+            }
+            this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.a(this.jdField_a_of_type_JavaLangInteger, this.jdField_a_of_type_JavaLangString, this.b, new UiApiPlugin.7.1(this, paramBundle));
+            return;
+          }
         }
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.a(this.jdField_a_of_type_JavaLangInteger, this.jdField_a_of_type_JavaLangString, this.b, new UiApiPlugin.7.1(this, paramBundle));
+        catch (Exception paramBundle)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("pkg.mergeFrom:");
+            ((StringBuilder)localObject).append(paramBundle.toString());
+            QLog.e("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, ((StringBuilder)localObject).toString());
+          }
+        }
       }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "pkg.mergeFrom:" + paramBundle.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.7
  * JD-Core Version:    0.7.0.1
  */

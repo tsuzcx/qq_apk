@@ -21,45 +21,55 @@ public class QQStoryConfigServletHandlerExt
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)QQStoryContext.a();
     StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    boolean bool;
-    if (paramList.isEmpty())
+    boolean bool1 = paramList.isEmpty();
+    boolean bool2 = false;
+    if (bool1)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodeConfigCmd data is null!!!");
       }
       localStoryConfigManager.b("key_story_msg_tab_show", Boolean.valueOf(false));
-      bool = true;
+      bool1 = true;
+    }
+    else
+    {
+      paramList = (String)paramList.get(0);
+      bool1 = bool2;
+      if (paramList != null) {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("config content: ");
+          localStringBuilder.append(paramList);
+          QLog.d("Q.qqstory.infoTabShow", 2, localStringBuilder.toString());
+        }
+      }
     }
     for (;;)
     {
-      ((QQStoryHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1021, true, null);
-      return bool;
-      paramList = (String)paramList.get(0);
-      if (paramList != null)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.infoTabShow", 2, "config content: " + paramList);
+        paramList = new JSONObject(paramList);
+        if (paramList.getInt("StoryShowInMsgTab") == 0) {
+          break label215;
         }
-        try
+        bool1 = true;
+        localStoryConfigManager.b("key_story_msg_tab_show", Boolean.valueOf(bool1));
+        localStoryConfigManager.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(paramList.optInt("StoryAutoExpInMsgTab", 2)));
+      }
+      catch (JSONException paramList)
+      {
+        bool1 = bool2;
+        if (QLog.isColorLevel())
         {
-          paramList = new JSONObject(paramList);
-          if (paramList.getInt("StoryShowInMsgTab") != 0) {}
-          for (bool = true;; bool = false)
-          {
-            localStoryConfigManager.b("key_story_msg_tab_show", Boolean.valueOf(bool));
-            localStoryConfigManager.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(paramList.optInt("StoryAutoExpInMsgTab", 2)));
-            bool = true;
-            break;
-          }
-          bool = false;
-        }
-        catch (JSONException paramList)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
-          }
+          QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
+          bool1 = bool2;
         }
       }
+      ((QQStoryHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1021, true, null);
+      return bool1;
+      label215:
+      bool1 = false;
     }
   }
   
@@ -73,17 +83,22 @@ public class QQStoryConfigServletHandlerExt
       return false;
     }
     paramList = (String)paramList.get(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.infoTabShow", 2, "handleStoryMsgTabNodePreloaderConfigCmd config content: " + paramList);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleStoryMsgTabNodePreloaderConfigCmd config content: ");
+      ((StringBuilder)localObject).append(paramList);
+      QLog.d("Q.qqstory.infoTabShow", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
       paramList = new JSONObject(paramList);
       int i = paramList.getInt("MsgTabPrestrainbNum");
       paramList = paramList.getString("4G");
-      StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-      localStoryConfigManager.b("key_story_msg_tab_node_preload", Integer.valueOf(i));
-      localStoryConfigManager.b("key_story_msg_tab_node_preload_4g", Boolean.valueOf("1".equals(paramList)));
+      localObject = (StoryConfigManager)SuperManager.a(10);
+      ((StoryConfigManager)localObject).b("key_story_msg_tab_node_preload", Integer.valueOf(i));
+      ((StoryConfigManager)localObject).b("key_story_msg_tab_node_preload_4g", Boolean.valueOf("1".equals(paramList)));
       return true;
     }
     catch (JSONException paramList)
@@ -97,19 +112,19 @@ public class QQStoryConfigServletHandlerExt
   
   public boolean a(int paramInt, Intent paramIntent, ConfigurationService.Config paramConfig, List<String> paramList)
   {
-    switch (paramInt)
+    if (paramInt != 243)
     {
-    default: 
-      return false;
-    case 243: 
-      return a(paramList);
+      if (paramInt != 248) {
+        return false;
+      }
+      return b(paramList);
     }
-    return b(paramList);
+    return a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.extension.config.QQStoryConfigServletHandlerExt
  * JD-Core Version:    0.7.0.1
  */

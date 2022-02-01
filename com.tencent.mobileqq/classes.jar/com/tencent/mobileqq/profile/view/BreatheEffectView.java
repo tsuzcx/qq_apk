@@ -65,16 +65,16 @@ public class BreatheEffectView
   
   private void e()
   {
-    jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298631);
-    setBackgroundResource(2130847774);
+    jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298626);
+    setBackgroundResource(2130847641);
     Drawable localDrawable = getBackground();
     if ((localDrawable instanceof LayerDrawable))
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)localDrawable);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[3];
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363586);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363588);
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363578);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363509);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363511);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131363501);
       return;
     }
     throw new RuntimeException("Background is not a layer drawable!");
@@ -121,12 +121,13 @@ public class BreatheEffectView
           ((Rect)localObject2).right = (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i].right + jdField_a_of_type_Int);
           ((Rect)localObject2).bottom = (this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i].bottom + jdField_a_of_type_Int);
           localObject2 = ObjectAnimator.ofObject(localObject1, "bounds", this.jdField_a_of_type_AndroidAnimationTypeEvaluator, new Object[] { this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i], localObject2 });
-          ((ValueAnimator)localObject2).setStartDelay(i * 180);
+          long l = i * 180;
+          ((ValueAnimator)localObject2).setStartDelay(l);
           ((ValueAnimator)localObject2).setDuration(600L);
           ((ValueAnimator)localObject2).setInterpolator(new CycleInterpolator(0.5F));
           localObject1 = ObjectAnimator.ofInt(localObject1, "alpha", new int[] { 0, 255 });
           ((ValueAnimator)localObject1).setInterpolator(new CycleInterpolator(0.5F));
-          ((ValueAnimator)localObject1).setStartDelay(i * 180);
+          ((ValueAnimator)localObject1).setStartDelay(l);
           ((ValueAnimator)localObject1).setDuration(600L);
           this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObject1 });
           if (2 == i) {
@@ -179,28 +180,39 @@ public class BreatheEffectView
   
   public boolean a(float paramFloat1, float paramFloat2)
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
-      bool = this.jdField_a_of_type_AndroidGraphicsRect.contains((int)paramFloat1, (int)paramFloat2);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+    if (localObject != null) {
+      return ((Rect)localObject).contains((int)paramFloat1, (int)paramFloat2);
     }
-    int i;
-    int j;
-    int k;
-    int m;
-    do
+    if (this.b == null)
     {
-      return bool;
-      if (this.b == null)
+      this.b = new int[2];
+      getLocationOnScreen(this.b);
+    }
+    int i = getWidth();
+    localObject = this.b;
+    boolean bool2 = false;
+    int j = localObject[0];
+    int k = getHeight();
+    localObject = this.b;
+    int m = localObject[1];
+    boolean bool1 = bool2;
+    if (paramFloat1 >= localObject[0])
+    {
+      bool1 = bool2;
+      if (paramFloat1 <= i + j)
       {
-        this.b = new int[2];
-        getLocationOnScreen(this.b);
+        bool1 = bool2;
+        if (paramFloat2 >= localObject[1])
+        {
+          bool1 = bool2;
+          if (paramFloat2 <= k + m) {
+            bool1 = true;
+          }
+        }
       }
-      i = getWidth();
-      j = this.b[0];
-      k = getHeight();
-      m = this.b[1];
-    } while ((paramFloat1 >= this.b[0]) && (paramFloat1 <= i + j) && (paramFloat2 >= this.b[1]) && (paramFloat2 <= k + m));
-    return false;
+    }
+    return bool1;
   }
   
   public boolean a(DragAndDropDetector.DragSource paramDragSource, DragAndDropDetector.Draggable paramDraggable, float paramFloat1, float paramFloat2)
@@ -287,13 +299,13 @@ public class BreatheEffectView
     b();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     f();
     super.onDraw(paramCanvas);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -303,24 +315,19 @@ public class BreatheEffectView
     if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null)
     {
       int i = 0;
-      if (i < 3)
+      while (i < 3)
       {
-        int j;
-        if ((this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i] instanceof GradientDrawable))
+        Drawable[] arrayOfDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+        if ((arrayOfDrawable[i] instanceof GradientDrawable))
         {
-          j = jdField_a_of_type_ArrayOfInt[i] << 24 | 0xFFFFFF & paramInt;
-          if (i == 0) {
-            break label65;
+          int j = 0xFFFFFF & paramInt | jdField_a_of_type_ArrayOfInt[i] << 24;
+          if (i != 0) {
+            ((GradientDrawable)arrayOfDrawable[i]).setColor(j);
+          } else {
+            ((GradientDrawable)arrayOfDrawable[i]).setStroke(2, j);
           }
-          ((GradientDrawable)this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i]).setColor(j);
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label65:
-          ((GradientDrawable)this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i]).setStroke(2, j);
-        }
+        i += 1;
       }
     }
   }
@@ -332,7 +339,7 @@ public class BreatheEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.BreatheEffectView
  * JD-Core Version:    0.7.0.1
  */

@@ -24,16 +24,18 @@ final class TweetTopicView$initSearchResultView$$inlined$apply$lambda$2
     if (TweetTopicView.a(this.this$0))
     {
       Object localObject = this.$context$inlined.getSystemService("input_method");
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
+      if (localObject != null)
+      {
+        ((InputMethodManager)localObject).hideSoftInputFromWindow(TweetTopicView.a(this.this$0).getWindowToken(), 0);
+        return;
       }
-      ((InputMethodManager)localObject).hideSoftInputFromWindow(TweetTopicView.a(this.this$0).getWindowToken(), 0);
+      throw new TypeCastException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.TweetTopicView.initSearchResultView..inlined.apply.lambda.2
  * JD-Core Version:    0.7.0.1
  */

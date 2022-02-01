@@ -36,7 +36,11 @@ public abstract class BaseWriteTogetherMsg<H extends BaseHeader, B>
       paramString = (Type)Enum.valueOf(Type.class, new JSONObject(paramString.split("\n", 2)[0]).optString("type"));
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label36:
+      break label36;
+    }
     return localType;
   }
   
@@ -44,12 +48,12 @@ public abstract class BaseWriteTogetherMsg<H extends BaseHeader, B>
   {
     paramString = paramString.split("\n", 2);
     String str = paramString[0];
-    if (paramString.length > 1) {}
-    for (paramString = paramString[1];; paramString = null)
-    {
-      fromJson(str, paramString);
-      return;
+    if (paramString.length > 1) {
+      paramString = paramString[1];
+    } else {
+      paramString = null;
     }
+    fromJson(str, paramString);
   }
   
   public void fromJson(String paramString1, String paramString2)
@@ -63,10 +67,11 @@ public abstract class BaseWriteTogetherMsg<H extends BaseHeader, B>
       }
       localObject = ((GsonBuilder)localObject).disableHtmlEscaping().create();
       this.header = ((BaseHeader)((Gson)localObject).fromJson(paramString1, getHeaderType()));
-      if (paramString2 != null) {
+      if (paramString2 != null)
+      {
         this.body = ((Gson)localObject).fromJson(paramString2, getBodyType());
+        return;
       }
-      return;
     }
     catch (JsonIOException paramString1)
     {
@@ -114,21 +119,28 @@ public abstract class BaseWriteTogetherMsg<H extends BaseHeader, B>
       }
       localObject1 = ((GsonBuilder)localObject1).disableHtmlEscaping().create();
       localObject2 = ((Gson)localObject1).toJson(this.header, getHeaderType());
-      if (this.body == null) {}
-      for (localObject1 = "";; localObject1 = ((Gson)localObject1).toJson(this.body, getBodyType())) {
-        return (String)localObject2 + "\n" + (String)localObject1;
+      if (this.body == null) {
+        localObject1 = "";
+      } else {
+        localObject1 = ((Gson)localObject1).toJson(this.body, getBodyType());
       }
-      return null;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append("\n");
+      localStringBuilder.append((String)localObject1);
+      localObject1 = localStringBuilder.toString();
+      return localObject1;
     }
     catch (JsonIOException localJsonIOException)
     {
       QLog.e("BaseWriteTogetherMsg", 1, localJsonIOException, new Object[0]);
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.msg.BaseWriteTogetherMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -60,30 +60,35 @@ public final class VolumeAutomaticEffect
   @Nullable
   public final TAVAudioConfiguration.VolumeEdge convertToAudioVolumeEdge(long paramLong)
   {
-    TAVAudioConfiguration.VolumeEdge localVolumeEdge = null;
-    long l = this.duration;
-    if ((this.startOffset > -1L) && (this.endOffset == -1L)) {
-      paramLong = this.startOffset;
-    }
-    for (;;)
+    long l1 = this.duration;
+    long l2 = this.startOffset;
+    if ((l2 > -1L) && (this.endOffset == -1L))
     {
-      if (l > 0L) {
-        localVolumeEdge = new TAVAudioConfiguration.VolumeEdge(new CMTimeRange(CMTime.fromMs(paramLong), CMTime.fromMs(l)), this.volumeRange.getStart(), this.volumeRange.getEnd());
-      }
-      return localVolumeEdge;
-      if ((this.startOffset == -1L) && (this.endOffset > -1L))
-      {
-        paramLong -= l;
-      }
-      else
-      {
-        if ((this.startOffset <= -1L) || (this.endOffset <= -1L)) {
-          break;
-        }
-        l = paramLong - this.startOffset - this.endOffset;
-        paramLong = this.startOffset;
-      }
+      paramLong = l2;
     }
+    else if ((this.startOffset == -1L) && (this.endOffset > -1L))
+    {
+      paramLong -= l1;
+    }
+    else
+    {
+      l1 = this.startOffset;
+      if (l1 <= -1L) {
+        break label152;
+      }
+      l2 = this.endOffset;
+      if (l2 <= -1L) {
+        break label152;
+      }
+      l2 = paramLong - l1 - l2;
+      paramLong = l1;
+      l1 = l2;
+    }
+    if (l1 > 0L) {
+      return new TAVAudioConfiguration.VolumeEdge(new CMTimeRange(CMTime.fromMs(paramLong), CMTime.fromMs(l1)), this.volumeRange.getStart(), this.volumeRange.getEnd());
+    }
+    return null;
+    label152:
     Logger.e("VolumeAutomaticEffect", "effect's startOffset and endOffset is wrong.");
     return null;
   }
@@ -102,18 +107,18 @@ public final class VolumeAutomaticEffect
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VolumeAutomaticEffect))
       {
         paramObject = (VolumeAutomaticEffect)paramObject;
-        if ((this.startOffset != paramObject.startOffset) || (this.endOffset != paramObject.endOffset) || (this.duration != paramObject.duration) || (!Intrinsics.areEqual(this.volumeRange, paramObject.volumeRange))) {}
+        if ((this.startOffset == paramObject.startOffset) && (this.endOffset == paramObject.endOffset) && (this.duration == paramObject.duration) && (Intrinsics.areEqual(this.volumeRange, paramObject.volumeRange))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final long getDuration()
@@ -146,16 +151,29 @@ public final class VolumeAutomaticEffect
     l = this.duration;
     int m = (int)(l ^ l >>> 32);
     VolumeRange localVolumeRange = this.volumeRange;
-    if (localVolumeRange != null) {}
-    for (int i = localVolumeRange.hashCode();; i = 0) {
-      return i + ((j * 31 + k) * 31 + m) * 31;
+    int i;
+    if (localVolumeRange != null) {
+      i = localVolumeRange.hashCode();
+    } else {
+      i = 0;
     }
+    return ((j * 31 + k) * 31 + m) * 31 + i;
   }
   
   @NotNull
   public String toString()
   {
-    return "VolumeAutomaticEffect(startOffset=" + this.startOffset + ", endOffset=" + this.endOffset + ", duration=" + this.duration + ", volumeRange=" + this.volumeRange + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VolumeAutomaticEffect(startOffset=");
+    localStringBuilder.append(this.startOffset);
+    localStringBuilder.append(", endOffset=");
+    localStringBuilder.append(this.endOffset);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(this.duration);
+    localStringBuilder.append(", volumeRange=");
+    localStringBuilder.append(this.volumeRange);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
@@ -169,7 +187,7 @@ public final class VolumeAutomaticEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.publisher.data.VolumeAutomaticEffect
  * JD-Core Version:    0.7.0.1
  */

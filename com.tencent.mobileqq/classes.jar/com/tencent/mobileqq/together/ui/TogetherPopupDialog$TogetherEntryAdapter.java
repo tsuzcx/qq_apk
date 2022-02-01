@@ -32,23 +32,26 @@ public class TogetherPopupDialog$TogetherEntryAdapter
   
   public int a()
   {
-    if (this.b == null) {
+    ArrayList localArrayList = this.b;
+    if (localArrayList == null) {
       return 0;
     }
-    return this.b.size();
+    return localArrayList.size();
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (this.c == null)) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localObject != null)
     {
-      return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      Iterator localIterator = this.c.iterator();
-      while (localIterator.hasNext())
+      if (this.c == null) {
+        return;
+      }
+      ((LinearLayout)localObject).removeAllViews();
+      localObject = this.c.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        TogetherPopupDialog.TogetherEntryAdapter.OnStateChangeListener localOnStateChangeListener = (TogetherPopupDialog.TogetherEntryAdapter.OnStateChangeListener)localIterator.next();
+        TogetherPopupDialog.TogetherEntryAdapter.OnStateChangeListener localOnStateChangeListener = (TogetherPopupDialog.TogetherEntryAdapter.OnStateChangeListener)((Iterator)localObject).next();
         if (localOnStateChangeListener != null) {
           localOnStateChangeListener.c();
         }
@@ -57,7 +60,7 @@ public class TogetherPopupDialog$TogetherEntryAdapter
       int j = this.b.size();
       int k = this.b.size() / 2;
       int i = 0;
-      while (i < k + j % 2)
+      while (i < j % 2 + k)
       {
         a(i);
         i += 1;
@@ -68,41 +71,47 @@ public class TogetherPopupDialog$TogetherEntryAdapter
   public void a(int paramInt)
   {
     TogetherPopupDialog.TogetherEntryHolder localTogetherEntryHolder = new TogetherPopupDialog.TogetherEntryHolder();
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561458, null);
+    Object localObject = this.jdField_a_of_type_AndroidViewLayoutInflater;
+    TogetherEntryData localTogetherEntryData = null;
+    View localView = ((LayoutInflater)localObject).inflate(2131561301, null);
     localTogetherEntryHolder.a(localView);
     localTogetherEntryHolder.b(localView);
     this.c.add(new TogetherPopupDialog.TogetherEntryAdapter.1(this, localTogetherEntryHolder));
-    if (paramInt * 2 < this.b.size()) {
-      ((TogetherEntryData)this.b.get(paramInt * 2)).a(TogetherControlManager.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app).a(((TogetherEntryData)this.b.get(paramInt * 2)).b));
-    }
-    for (TogetherEntryData localTogetherEntryData1 = (TogetherEntryData)this.b.get(paramInt * 2);; localTogetherEntryData1 = null)
+    paramInt *= 2;
+    if (paramInt < this.b.size())
     {
-      if (paramInt * 2 + 1 < this.b.size()) {
-        ((TogetherEntryData)this.b.get(paramInt * 2 + 1)).a(TogetherControlManager.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app).a(((TogetherEntryData)this.b.get(paramInt * 2 + 1)).b));
-      }
-      for (TogetherEntryData localTogetherEntryData2 = (TogetherEntryData)this.b.get(paramInt * 2 + 1);; localTogetherEntryData2 = null)
-      {
-        if (localTogetherEntryData1 == null)
-        {
-          localTogetherEntryHolder.a.a.setVisibility(4);
-          if (localTogetherEntryData2 != null) {
-            break label282;
-          }
-          localTogetherEntryHolder.b.a.setVisibility(4);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
-          return;
-          localTogetherEntryHolder.a.a.setVisibility(0);
-          localTogetherEntryHolder.a(localTogetherEntryData1, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidContentContext);
-          break;
-          label282:
-          localTogetherEntryHolder.b.a.setVisibility(0);
-          localTogetherEntryHolder.b(localTogetherEntryData2, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidContentContext);
-        }
-      }
+      ((TogetherEntryData)this.b.get(paramInt)).a(TogetherControlManager.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app).a(((TogetherEntryData)this.b.get(paramInt)).b));
+      localObject = (TogetherEntryData)this.b.get(paramInt);
     }
+    else
+    {
+      localObject = null;
+    }
+    paramInt += 1;
+    if (paramInt < this.b.size())
+    {
+      ((TogetherEntryData)this.b.get(paramInt)).a(TogetherControlManager.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app).a(((TogetherEntryData)this.b.get(paramInt)).b));
+      localTogetherEntryData = (TogetherEntryData)this.b.get(paramInt);
+    }
+    if (localObject == null)
+    {
+      localTogetherEntryHolder.a.a.setVisibility(4);
+    }
+    else
+    {
+      localTogetherEntryHolder.a.a.setVisibility(0);
+      localTogetherEntryHolder.a((TogetherEntryData)localObject, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidContentContext);
+    }
+    if (localTogetherEntryData == null)
+    {
+      localTogetherEntryHolder.b.a.setVisibility(4);
+    }
+    else
+    {
+      localTogetherEntryHolder.b.a.setVisibility(0);
+      localTogetherEntryHolder.b(localTogetherEntryData, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidContentContext);
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
   }
   
   public void a(ArrayList<TogetherEntryData> paramArrayList)
@@ -138,25 +147,26 @@ public class TogetherPopupDialog$TogetherEntryAdapter
   
   public void d()
   {
-    Iterator localIterator = this.c.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      TogetherPopupDialog.TogetherEntryAdapter.OnStateChangeListener localOnStateChangeListener = (TogetherPopupDialog.TogetherEntryAdapter.OnStateChangeListener)localIterator.next();
+      TogetherPopupDialog.TogetherEntryAdapter.OnStateChangeListener localOnStateChangeListener = (TogetherPopupDialog.TogetherEntryAdapter.OnStateChangeListener)((Iterator)localObject).next();
       if (localOnStateChangeListener != null) {
         localOnStateChangeListener.c();
       }
     }
     this.c.clear();
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+      ((LinearLayout)localObject).removeAllViews();
       this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.TogetherPopupDialog.TogetherEntryAdapter
  * JD-Core Version:    0.7.0.1
  */

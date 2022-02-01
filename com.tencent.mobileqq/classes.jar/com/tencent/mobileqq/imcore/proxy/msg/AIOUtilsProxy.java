@@ -6,8 +6,9 @@ public class AIOUtilsProxy
   
   public static boolean getLogcatDBOperation()
   {
-    if (proxy != null) {
-      return proxy.getLogcatDBOperation();
+    AIOUtilsProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      return localProxy.getLogcatDBOperation();
     }
     return false;
   }
@@ -19,7 +20,7 @@ public class AIOUtilsProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.msg.AIOUtilsProxy
  * JD-Core Version:    0.7.0.1
  */

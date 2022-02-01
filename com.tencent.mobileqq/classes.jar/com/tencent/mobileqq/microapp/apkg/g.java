@@ -12,46 +12,73 @@ import java.util.Map;
 
 public class g
 {
-  public static final String a = BaseApplicationImpl.getApplication().getFilesDir().getPath() + "/miniapp/";
+  public static final String a;
   private static volatile g b;
   private String c;
   private String d;
   private String e;
   private String f;
   
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getFilesDir().getPath());
+    localStringBuilder.append("/miniapp/");
+    a = localStringBuilder.toString();
+  }
+  
   public static g a()
   {
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new g();
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new g();
+        }
       }
-      return b;
+      finally {}
     }
-    finally {}
+    return b;
   }
   
   public static String a(ApkgConfig paramApkgConfig)
   {
-    if ((paramApkgConfig == null) || (TextUtils.isEmpty(paramApkgConfig.mini_appid))) {
-      return "";
+    if ((paramApkgConfig != null) && (!TextUtils.isEmpty(paramApkgConfig.mini_appid)))
+    {
+      if (paramApkgConfig.getRuntimeType() == 1)
+      {
+        localStringBuilder = new StringBuilder(a);
+        localStringBuilder.append(paramApkgConfig.mini_appid);
+        localStringBuilder.append("_debug");
+        localStringBuilder.append(MD5.toMD5(paramApkgConfig.qq_qr_code));
+        return localStringBuilder.toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder(a);
+      localStringBuilder.append(MD5.toMD5(paramApkgConfig.mini_appid));
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramApkgConfig.mini_version);
+      return localStringBuilder.toString();
     }
-    if (paramApkgConfig.getRuntimeType() == 1) {
-      return a + paramApkgConfig.mini_appid + "_debug" + MD5.toMD5(paramApkgConfig.qq_qr_code);
-    }
-    return a + MD5.toMD5(paramApkgConfig.mini_appid) + "_" + paramApkgConfig.mini_version;
+    return "";
   }
   
   public void a(c paramc, String paramString, g.a parama)
   {
     String str2 = paramc.d(paramString);
-    String str1 = "";
+    String str1;
     if (paramc.f.config.sub_apkg_urls != null) {
       str1 = (String)paramc.f.config.sub_apkg_urls.get(str2);
+    } else {
+      str1 = "";
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ApkgManager", 1, "downloadSubPack | downPage=" + paramString + "subPackDownloadUrl=" + str1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadSubPack | downPage=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("subPackDownloadUrl=");
+      localStringBuilder.append(str1);
+      QLog.d("ApkgManager", 1, localStringBuilder.toString());
     }
     if (!TextUtils.isEmpty(str1))
     {
@@ -86,7 +113,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.g
  * JD-Core Version:    0.7.0.1
  */

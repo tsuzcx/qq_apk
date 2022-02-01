@@ -14,12 +14,7 @@ public class FlutterSubQIPCModule
   extends QIPCModule
 {
   private static volatile FlutterSubQIPCModule a;
-  public static volatile boolean a;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
+  public static volatile boolean a = false;
   
   private FlutterSubQIPCModule(String paramString)
   {
@@ -28,29 +23,31 @@ public class FlutterSubQIPCModule
   
   public static FlutterSubQIPCModule a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule == null) {
-        jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule = new FlutterSubQIPCModule("FlutterSubQIPCModule");
+    if (jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule == null) {
+          jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule = new FlutterSubQIPCModule("FlutterSubQIPCModule");
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqFlutterIpcFlutterSubQIPCModule;
   }
   
   public static void a()
   {
-    if (!jdField_a_of_type_Boolean) {}
-    try
-    {
-      QIPCClientHelper.getInstance().register(a());
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("FlutterSubQIPCModule", 1, "register", localException);
+    if (!jdField_a_of_type_Boolean) {
+      try
+      {
+        QIPCClientHelper.getInstance().register(a());
+        jdField_a_of_type_Boolean = true;
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("FlutterSubQIPCModule", 1, "register", localException);
+      }
     }
   }
   
@@ -62,8 +59,8 @@ public class FlutterSubQIPCModule
       {
         QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
         jdField_a_of_type_Boolean = false;
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -73,24 +70,25 @@ public class FlutterSubQIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if ("ACTION_INSTALL_RESULT".equals(paramString)) {
+    if ("ACTION_INSTALL_RESULT".equals(paramString))
+    {
       QFlutterLauncher.a().a(QFlutterLauncher.InstallResult.a(paramBundle));
     }
-    for (;;)
+    else if ("ACTION_PREDOWNLOAD_RESULT".equals(paramString))
     {
-      return null;
-      if ("ACTION_PREDOWNLOAD_RESULT".equals(paramString))
-      {
-        boolean bool = paramBundle.getBoolean("KEY_INSTALL_RESULT");
-        QLog.d("FlutterSubQIPCModule", 1, "predownload finish isSuccess=" + bool);
-        LocalMultiProcConfig.putBool("qzone_flutter_predownload_success", bool);
-      }
+      boolean bool = paramBundle.getBoolean("KEY_INSTALL_RESULT");
+      paramString = new StringBuilder();
+      paramString.append("predownload finish isSuccess=");
+      paramString.append(bool);
+      QLog.d("FlutterSubQIPCModule", 1, paramString.toString());
+      LocalMultiProcConfig.putBool("qzone_flutter_predownload_success", bool);
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.ipc.FlutterSubQIPCModule
  * JD-Core Version:    0.7.0.1
  */

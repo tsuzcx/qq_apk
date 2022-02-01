@@ -20,7 +20,10 @@ public abstract class ItemLoader<Params, Result>
   
   static String a(int paramInt1, int paramInt2)
   {
-    return String.valueOf(paramInt1) + String.valueOf(paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(paramInt1));
+    localStringBuilder.append(String.valueOf(paramInt2));
+    return localStringBuilder.toString();
   }
   
   public int a(Adapter paramAdapter, int paramInt)
@@ -51,13 +54,13 @@ public abstract class ItemLoader<Params, Result>
   {
     String str = a(paramInt1, paramInt2);
     ItemLoader.ItemRequest localItemRequest = (ItemLoader.ItemRequest)this.b.get(str);
-    if (localItemRequest == null) {}
-    do
-    {
+    if (localItemRequest == null) {
       return;
-      this.b.remove(str);
-    } while (localItemRequest.jdField_a_of_type_JavaUtilConcurrentFuture == null);
-    localItemRequest.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
+    }
+    this.b.remove(str);
+    if (localItemRequest.jdField_a_of_type_JavaUtilConcurrentFuture != null) {
+      localItemRequest.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
+    }
   }
   
   void a(long paramLong)
@@ -79,43 +82,47 @@ public abstract class ItemLoader<Params, Result>
   
   void a(View paramView)
   {
-    if (paramView == null) {
-      throw new IllegalArgumentException("Null itemContainer in cancelRequestsForContainer");
-    }
-    Iterator localIterator = this.b.values().iterator();
-    while (localIterator.hasNext())
+    if (paramView != null)
     {
-      ItemLoader.ItemRequest localItemRequest = (ItemLoader.ItemRequest)localIterator.next();
-      if ((View)localItemRequest.jdField_a_of_type_JavaLangRefSoftReference.get() == paramView)
+      Iterator localIterator = this.b.values().iterator();
+      while (localIterator.hasNext())
       {
-        if (localItemRequest.jdField_a_of_type_JavaUtilConcurrentFuture != null) {
-          localItemRequest.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
+        ItemLoader.ItemRequest localItemRequest = (ItemLoader.ItemRequest)localIterator.next();
+        if ((View)localItemRequest.jdField_a_of_type_JavaLangRefSoftReference.get() == paramView)
+        {
+          if (localItemRequest.jdField_a_of_type_JavaUtilConcurrentFuture != null) {
+            localItemRequest.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
+          }
+          localIterator.remove();
         }
-        localIterator.remove();
       }
+      return;
+    }
+    paramView = new IllegalArgumentException("Null itemContainer in cancelRequestsForContainer");
+    for (;;)
+    {
+      throw paramView;
     }
   }
   
   void a(View paramView1, View paramView2, Adapter paramAdapter, int paramInt, boolean paramBoolean)
   {
     Object localObject = a(paramAdapter, paramInt);
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      ItemLoader.ItemState localItemState = a(paramView2);
-      localItemState.jdField_a_of_type_JavaLangObject = localObject;
-      localItemState.jdField_a_of_type_Int = paramInt;
-      localItemState.jdField_a_of_type_Boolean = true;
-      int i = a(paramAdapter, paramInt);
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        if ((paramBoolean) || (a(localObject, paramInt))) {
-          a(paramView1, paramView2, localItemState, paramInt, SystemClock.uptimeMillis());
-        }
-        paramInt += 1;
+    }
+    ItemLoader.ItemState localItemState = a(paramView2);
+    localItemState.jdField_a_of_type_JavaLangObject = localObject;
+    localItemState.jdField_a_of_type_Int = paramInt;
+    localItemState.jdField_a_of_type_Boolean = true;
+    int i = a(paramAdapter, paramInt);
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      if ((paramBoolean) || (a(localObject, paramInt))) {
+        a(paramView1, paramView2, localItemState, paramInt, SystemClock.uptimeMillis());
       }
+      paramInt += 1;
     }
   }
   
@@ -130,20 +137,20 @@ public abstract class ItemLoader<Params, Result>
       paramView1 = new ItemLoader.ItemRequest(str, paramView1, paramView2, localObject, i, paramInt, paramLong);
       this.b.put(str, paramView1);
     }
-    for (;;)
+    else
     {
-      paramItemState.jdField_a_of_type_Boolean = false;
-      paramView2 = b(localObject, paramInt);
-      if (paramView2 == null) {
-        break;
-      }
+      localItemRequest.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
+      localItemRequest.b = new SoftReference(paramView2);
+      paramView1 = localItemRequest;
+    }
+    paramItemState.jdField_a_of_type_Boolean = false;
+    paramView2 = b(localObject, paramInt);
+    if (paramView2 != null)
+    {
       a(i, paramInt);
       paramView1.c = new SoftReference(paramView2);
       this.jdField_a_of_type_AndroidOsHandler.post(new ItemLoader.DisplayItemRunnable(this, paramView1, true));
       return;
-      localItemRequest.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      localItemRequest.b = new SoftReference(paramView2);
-      paramView1 = localItemRequest;
     }
     paramView1.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(new ItemLoader.LoadItemRunnable(this, paramView1));
   }
@@ -156,19 +163,12 @@ public abstract class ItemLoader<Params, Result>
     }
     int j = a(paramAdapter, paramInt);
     int i = 0;
-    label25:
-    if (i < j) {
-      if (a(paramAdapter, paramInt, i)) {
-        break label52;
-      }
-    }
-    for (;;)
+    while (i < j)
     {
+      if (a(paramAdapter, paramInt, i)) {
+        a(paramView, localObject, paramAdapter, paramInt, i, SystemClock.uptimeMillis());
+      }
       i += 1;
-      break label25;
-      break;
-      label52:
-      a(paramView, localObject, paramAdapter, paramInt, i, SystemClock.uptimeMillis());
     }
   }
   
@@ -176,26 +176,21 @@ public abstract class ItemLoader<Params, Result>
   {
     ItemLoader.ItemState localItemState = a(paramView2);
     if (!localItemState.jdField_a_of_type_Boolean) {
-      break label15;
-    }
-    for (;;)
-    {
-      label15:
       return;
-      if (localItemState.jdField_a_of_type_JavaLangObject != null)
-      {
-        int i = localItemState.jdField_a_of_type_Int;
-        if (i == -1) {
-          break;
-        }
-        int j = a(paramAdapter, i);
-        i = 0;
-        while (i < j)
-        {
-          a(paramView1, paramView2, localItemState, i, paramLong);
-          i += 1;
-        }
-      }
+    }
+    if (localItemState.jdField_a_of_type_JavaLangObject == null) {
+      return;
+    }
+    int i = localItemState.jdField_a_of_type_Int;
+    if (i == -1) {
+      return;
+    }
+    int j = a(paramAdapter, i);
+    i = 0;
+    while (i < j)
+    {
+      a(paramView1, paramView2, localItemState, i, paramLong);
+      i += 1;
     }
   }
   
@@ -236,7 +231,10 @@ public abstract class ItemLoader<Params, Result>
       return true;
     }
     int i = a(localView).jdField_a_of_type_Int;
-    return (i == -1) || (paramItemRequest.jdField_a_of_type_Int != i);
+    if (i != -1) {
+      return paramItemRequest.jdField_a_of_type_Int != i;
+    }
+    return true;
   }
   
   boolean a(Params paramParams, int paramInt)
@@ -248,7 +246,7 @@ public abstract class ItemLoader<Params, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemLoader
  * JD-Core Version:    0.7.0.1
  */

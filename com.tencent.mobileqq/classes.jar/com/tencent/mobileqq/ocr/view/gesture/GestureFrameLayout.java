@@ -64,7 +64,8 @@ public class GestureFrameLayout
     this.jdField_a_of_type_ArrayOfFloat[1] = paramMotionEvent.getY();
     paramMatrix.mapPoints(this.jdField_a_of_type_ArrayOfFloat);
     paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
-    paramMotionEvent.setLocation(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1]);
+    paramMatrix = this.jdField_a_of_type_ArrayOfFloat;
+    paramMotionEvent.setLocation(paramMatrix[0], paramMatrix[1]);
     return paramMotionEvent;
   }
   
@@ -84,57 +85,60 @@ public class GestureFrameLayout
   {
     int j = paramViewGroup.getChildCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       View localView = paramViewGroup.getChildAt(i);
       if ((localView instanceof ViewGroup)) {
         a((ViewGroup)localView);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localView.invalidate();
       }
+      i += 1;
     }
   }
   
   @TargetApi(16)
   protected void a(State paramState)
   {
-    if ((!isHardwareAccelerated()) || (this.jdField_a_of_type_AndroidViewView == null))
+    if (isHardwareAccelerated())
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramState.a());
-      this.jdField_a_of_type_AndroidGraphicsMatrix.invert(this.b);
-      if (a().a() != null) {
-        a().a().a(this.b);
+      View localView = this.jdField_a_of_type_AndroidViewView;
+      if (localView != null)
+      {
+        localView.setPivotX(0.0F);
+        this.jdField_a_of_type_AndroidViewView.setPivotY(0.0F);
+        this.jdField_a_of_type_AndroidViewView.setScaleX(paramState.c());
+        this.jdField_a_of_type_AndroidViewView.setScaleY(paramState.c());
+        this.jdField_a_of_type_AndroidViewView.setTranslationX(paramState.a());
+        this.jdField_a_of_type_AndroidViewView.setTranslationY(paramState.b());
+        this.c.set(paramState.a());
+        this.c.invert(this.d);
+        if (a().a() == null) {
+          return;
+        }
+        a().a().a(this.d);
+        return;
       }
-      invalidate();
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidViewView.setPivotX(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setPivotY(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setScaleX(paramState.c());
-      this.jdField_a_of_type_AndroidViewView.setScaleY(paramState.c());
-      this.jdField_a_of_type_AndroidViewView.setTranslationX(paramState.a());
-      this.jdField_a_of_type_AndroidViewView.setTranslationY(paramState.b());
-      this.c.set(paramState.a());
-      this.c.invert(this.d);
-    } while (a().a() == null);
-    a().a().a(this.d);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramState.a());
+    this.jdField_a_of_type_AndroidGraphicsMatrix.invert(this.b);
+    if (a().a() != null) {
+      a().a().a(this.b);
+    }
+    invalidate();
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (getChildCount() != 0) {
-      throw new IllegalArgumentException("GestureFrameLayout can contain only one child");
+    if (getChildCount() == 0)
+    {
+      super.addView(paramView, paramInt, paramLayoutParams);
+      return;
     }
-    super.addView(paramView, paramInt, paramLayoutParams);
+    throw new IllegalArgumentException("GestureFrameLayout can contain only one child");
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     paramCanvas.save();
     paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
@@ -163,7 +167,7 @@ public class GestureFrameLayout
     return super.invalidateChildInParent(paramArrayOfInt, paramRect);
   }
   
-  public void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void measureChildWithMargins(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
     int i = getPaddingLeft();
@@ -182,23 +186,24 @@ public class GestureFrameLayout
     return this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a(this, this.jdField_a_of_type_AndroidViewMotionEvent);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (getChildCount() == 0) {}
-    for (View localView = null;; localView = getChildAt(0))
+    View localView;
+    if (getChildCount() == 0) {
+      localView = null;
+    } else {
+      localView = getChildAt(0);
+    }
+    this.jdField_a_of_type_AndroidViewView = localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      this.jdField_a_of_type_AndroidViewView = localView;
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a().b(this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a();
-      }
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a().b(this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a();
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a().a(paramInt1 - getPaddingLeft() - getPaddingRight(), paramInt2 - getPaddingTop() - getPaddingBottom());
@@ -225,7 +230,7 @@ public class GestureFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout
  * JD-Core Version:    0.7.0.1
  */

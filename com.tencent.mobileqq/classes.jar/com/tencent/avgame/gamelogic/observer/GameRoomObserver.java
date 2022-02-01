@@ -34,11 +34,14 @@ public class GameRoomObserver
   
   private void c(boolean paramBoolean, Object paramObject)
   {
-    if ((paramObject != null) && ((paramObject instanceof Object[])) && (((Object[])paramObject).length == 2))
+    if ((paramObject != null) && ((paramObject instanceof Object[])))
     {
       paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], ((Long)paramObject[1]).longValue());
-      return;
+      if (paramObject.length == 2)
+      {
+        a(paramBoolean, (String)paramObject[0], ((Long)paramObject[1]).longValue());
+        return;
+      }
     }
     QLog.e("GameRoomObserver", 2, "handleGetGameShare 参数个数异常");
   }
@@ -79,13 +82,16 @@ public class GameRoomObserver
   
   private void f(boolean paramBoolean, Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof Object[])) || (((Object[])paramObject).length != 5))
+    if ((paramObject != null) && ((paramObject instanceof Object[])))
     {
-      QLog.e("GameRoomObserver", 2, "handleOnGetGameQuestionClass 参数个数异常");
-      return;
+      paramObject = (Object[])paramObject;
+      if (paramObject.length == 5)
+      {
+        a(((Long)paramObject[0]).longValue(), (String)paramObject[1], (List)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
+        return;
+      }
     }
-    paramObject = (Object[])paramObject;
-    a(((Long)paramObject[0]).longValue(), (String)paramObject[1], (List)paramObject[2], (String)paramObject[3], (String)paramObject[4]);
+    QLog.e("GameRoomObserver", 2, "handleOnGetGameQuestionClass 参数个数异常");
   }
   
   private void g(boolean paramBoolean, Object paramObject)
@@ -172,8 +178,11 @@ public class GameRoomObserver
   
   public void a(long paramLong1, long paramLong2, int paramInt, String paramString1, String paramString2, RoomInfo paramRoomInfo)
   {
-    QLog.d("GameRoomObserver", 1, "pushOnRoomEnter " + paramRoomInfo.toString());
-    if (paramRoomInfo.matchStatus == 1) {}
+    paramString1 = new StringBuilder();
+    paramString1.append("pushOnRoomEnter ");
+    paramString1.append(paramRoomInfo.toString());
+    QLog.d("GameRoomObserver", 1, paramString1.toString());
+    paramInt = paramRoomInfo.matchStatus;
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt1, String paramString1, String paramString2, RoomInfo paramRoomInfo, int paramInt2, int paramInt3, String paramString3, String paramString4) {}
@@ -234,106 +243,142 @@ public class GameRoomObserver
   {
     switch (paramInt)
     {
-    }
-    do
-    {
-      do
+    default: 
+    case 29: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
+      return;
+    case 28: 
+      paramObject = (Object[])paramObject;
+      d(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue());
+      return;
+    case 27: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Boolean)paramObject[3]).booleanValue(), (SurvivalPkResultInfo)paramObject[4]);
+      return;
+    case 26: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Boolean)paramObject[1]).booleanValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue(), ((Long)paramObject[4]).longValue());
+      return;
+    case 25: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length > 1))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  d(paramBoolean, paramObject);
-                  return;
-                  e(paramBoolean, paramObject);
-                  return;
-                  g(paramBoolean, paramObject);
-                  return;
-                  h(paramBoolean, paramObject);
-                  return;
-                  i(paramBoolean, paramObject);
-                  return;
-                  a(paramBoolean, paramObject);
-                  return;
-                  j(paramBoolean, paramObject);
-                  return;
-                  k(paramBoolean, paramObject);
-                  return;
-                  l(paramBoolean, paramObject);
-                  return;
-                  m(paramBoolean, paramObject);
-                  return;
-                  n(paramBoolean, paramObject);
-                  return;
-                  b(paramBoolean, paramObject);
-                  return;
-                  c(paramBoolean, paramObject);
-                  return;
-                  f(paramBoolean, paramObject);
-                  return;
-                  paramObject = (Object[])paramObject;
-                  a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (GameActivityCenterEntry)paramObject[2]);
-                  return;
-                  paramObject = (Object[])paramObject;
-                  a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
-                  return;
-                  paramObject = (Object[])paramObject;
-                } while ((paramObject == null) || (paramObject.length <= 3));
-                a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
-                return;
-                paramObject = (Object[])paramObject;
-              } while ((paramObject == null) || (paramObject.length <= 2));
-              a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-              return;
-              paramObject = (Object[])paramObject;
-            } while ((paramObject == null) || (paramObject.length <= 1));
-            b(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
-            return;
-            paramObject = (Object[])paramObject;
-          } while ((paramObject == null) || (paramObject.length <= 5));
-          a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (PkCJOperationData)paramObject[5]);
-          return;
-          paramObject = (Object[])paramObject;
-        } while ((paramObject == null) || (paramObject.length <= 3));
+        b(((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      }
+      break;
+    case 24: 
+      n(paramBoolean, paramObject);
+      return;
+    case 23: 
+      m(paramBoolean, paramObject);
+      return;
+    case 22: 
+      l(paramBoolean, paramObject);
+      return;
+    case 21: 
+      k(paramBoolean, paramObject);
+      return;
+    case 20: 
+      j(paramBoolean, paramObject);
+      return;
+    case 19: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length > 3))
+      {
+        b(paramBoolean, ((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
+        return;
+      }
+      break;
+    case 18: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length > 4))
+      {
+        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), (byte[])paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4]);
+        return;
+      }
+      break;
+    case 17: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length > 3))
+      {
         a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), (List)paramObject[2], ((Boolean)paramObject[3]).booleanValue(), ((Integer)paramObject[4]).intValue(), ((Boolean)paramObject[5]).booleanValue(), ((Integer)paramObject[6]).intValue(), (String)paramObject[7]);
         return;
-        paramObject = (Object[])paramObject;
-        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Boolean)paramObject[1]).booleanValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue(), ((Long)paramObject[4]).longValue());
-        return;
-        paramObject = (Object[])paramObject;
-        a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (RoomInfo)paramObject[2], (byte[])paramObject[3], ((Long)paramObject[4]).longValue());
-        return;
-        paramObject = (Object[])paramObject;
-        b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (RoomInfo)paramObject[2], (byte[])paramObject[3], ((Long)paramObject[4]).longValue());
-        return;
-        paramObject = (Object[])paramObject;
-        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Boolean)paramObject[3]).booleanValue(), (SurvivalPkResultInfo)paramObject[4]);
-        return;
-        paramObject = (Object[])paramObject;
-        d(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue());
-        return;
-        paramObject = (Object[])paramObject;
-        a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
-        return;
-        paramObject = (Object[])paramObject;
-      } while ((paramObject == null) || (paramObject.length <= 4));
-      a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), (byte[])paramObject[2], ((Integer)paramObject[3]).intValue(), (String)paramObject[4]);
-      return;
+      }
+      break;
+    case 16: 
       paramObject = (Object[])paramObject;
-    } while ((paramObject == null) || (paramObject.length <= 3));
-    b(paramBoolean, ((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
+      b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (RoomInfo)paramObject[2], (byte[])paramObject[3], ((Long)paramObject[4]).longValue());
+      return;
+    case 15: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (RoomInfo)paramObject[2], (byte[])paramObject[3], ((Long)paramObject[4]).longValue());
+      return;
+    case 14: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length > 5))
+      {
+        a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (PkCJOperationData)paramObject[5]);
+        return;
+      }
+      break;
+    case 13: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length > 2))
+      {
+        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+        return;
+      }
+      break;
+    case 12: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length > 3))
+      {
+        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
+        return;
+      }
+      break;
+    case 11: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
+      return;
+    case 10: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (GameActivityCenterEntry)paramObject[2]);
+      return;
+    case 9: 
+      f(paramBoolean, paramObject);
+      return;
+    case 8: 
+      c(paramBoolean, paramObject);
+      return;
+    case 7: 
+      b(paramBoolean, paramObject);
+      return;
+    case 6: 
+      a(paramBoolean, paramObject);
+      return;
+    case 5: 
+      i(paramBoolean, paramObject);
+      return;
+    case 4: 
+      h(paramBoolean, paramObject);
+      return;
+    case 3: 
+      g(paramBoolean, paramObject);
+      return;
+    case 2: 
+      e(paramBoolean, paramObject);
+      return;
+    case 1: 
+      d(paramBoolean, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.observer.GameRoomObserver
  * JD-Core Version:    0.7.0.1
  */

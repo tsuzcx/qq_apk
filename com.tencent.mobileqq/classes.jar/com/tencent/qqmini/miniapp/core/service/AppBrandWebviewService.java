@@ -54,8 +54,9 @@ public class AppBrandWebviewService
   
   public static int[] jsStringToJavaIntArray(String paramString)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     int i = 0;
-    if (TextUtils.isEmpty(paramString)) {
+    if (bool) {
       return new int[0];
     }
     paramString = paramString.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
@@ -66,14 +67,14 @@ public class AppBrandWebviewService
       try
       {
         arrayOfInt[i] = Integer.parseInt(paramString[i]);
-        label61:
+        label63:
         i += 1;
         continue;
         return arrayOfInt;
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        break label61;
+        break label63;
       }
     }
   }
@@ -104,17 +105,30 @@ public class AppBrandWebviewService
   {
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      if (this.mWebView != null) {
-        this.mWebView.evaluateJavascript(paramString1, AppBrandUtil.convertValueCallback(paramValueCallback));
+      paramString2 = this.mWebView;
+      if (paramString2 != null) {
+        paramString2.evaluateJavascript(paramString1, AppBrandUtil.convertValueCallback(paramValueCallback));
       }
-      return;
     }
-    this.mMainHandler.post(new AppBrandWebviewService.2(this, paramString1, paramValueCallback));
+    else
+    {
+      this.mMainHandler.post(new AppBrandWebviewService.2(this, paramString1, paramValueCallback));
+    }
   }
   
   public void evaluateSubscribeJS(String paramString1, String paramString2, int paramInt)
   {
-    paramString1 = "WeixinJSBridge.subscribeHandler(\"" + paramString1 + "\"," + paramString2 + "," + paramInt + "," + 0 + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("\",");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",");
+    localStringBuilder.append(0);
+    localStringBuilder.append(")");
+    paramString1 = localStringBuilder.toString();
     if (!isStateSucc())
     {
       QMLog.e("AppBrandWebviewService", "Service is not completd! Add to waiting list");
@@ -129,95 +143,148 @@ public class AppBrandWebviewService
     if (paramApkgInfo == null) {
       return "";
     }
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject3 = new JSONObject();
     try
     {
-      localJSONObject.put("appId", paramApkgInfo.appId);
-      localJSONObject.put("icon", paramApkgInfo.iconUrl);
-      localJSONObject.put("nickname", paramApkgInfo.apkgName);
-      Object localObject2 = "release";
-      Object localObject1 = "";
-      if (paramApkgInfo.mMiniAppInfo != null)
-      {
-        localObject2 = paramApkgInfo.mMiniAppInfo.getVerTypeStr();
-        localObject1 = paramApkgInfo.mMiniAppInfo.version;
-      }
-      localObject2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + (String)localObject2 + "'; __qqConfig.deviceinfo='" + QUAUtil.getSimpleDeviceInfo(AppLoaderFactory.g().getContext()) + "'; __qqConfig.miniapp_version='" + (String)localObject1 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
-      localObject1 = localObject2;
-      if (StorageUtil.getPreference().getBoolean(paramApkgInfo.appId + "_debug", false)) {
-        localObject1 = (String)localObject2 + "__qqConfig.debug=true;";
-      }
-      localObject2 = localObject1;
-      if (this.mEmbeddedState != null)
-      {
-        localObject1 = (String)localObject1 + "__qqConfig.useXWebVideo=" + this.mEmbeddedState.isEnableEmbeddedVideo() + ";";
-        QMLog.d("miniapp-embedded", "system service enableEmbeddedVideo : " + this.mEmbeddedState.isEnableEmbeddedVideo());
-        localObject1 = (String)localObject1 + "__qqConfig.useXWebLive=" + this.mEmbeddedState.isEnableEmbeddedLive() + ";";
-        QMLog.d("miniapp-embedded", "system service enableEmbeddedLive : " + this.mEmbeddedState.isEnableEmbeddedLive());
-        localObject2 = (String)localObject1 + "__qqConfig.useXWebElement=" + this.mEmbeddedState.isEnableEmbeddedElement() + ";";
-        QMLog.d("miniapp-embedded", "system service enableEmbeddedElement : " + this.mEmbeddedState.isEnableEmbeddedElement());
-        if (this.mEmbeddedState.isEnableEmbeddedVideo())
-        {
-          localObject1 = "system_embedded_video";
-          reportEmbeddedStatus(770, (String)localObject1);
-          if (!this.mEmbeddedState.isEnableEmbeddedLive()) {
-            break label576;
-          }
-          localObject1 = "system_embedded_live";
-          reportEmbeddedStatus(771, (String)localObject1);
-          if (!this.mEmbeddedState.isEnableEmbeddedElement()) {
-            break label583;
-          }
-          localObject1 = "system_embedded_element";
-          reportEmbeddedStatus(772, (String)localObject1);
-        }
-      }
-      else
-      {
-        paramApkgInfo = (String)localObject2 + String.format("__qqConfig.adReportInfo=%1$s;", new Object[] { AdReportInfoUtil.getAdReportInfo(paramApkgInfo).toString() });
-        return paramApkgInfo + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};";
-      }
+      ((JSONObject)localObject3).put("appId", paramApkgInfo.appId);
+      ((JSONObject)localObject3).put("icon", paramApkgInfo.iconUrl);
+      ((JSONObject)localObject3).put("nickname", paramApkgInfo.apkgName);
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-        continue;
-        String str = "system_native_video";
-        continue;
-        label576:
-        str = "system_native_live";
-        continue;
-        label583:
-        str = "system_native_element";
-      }
+      localJSONException.printStackTrace();
     }
+    if (paramApkgInfo.mMiniAppInfo != null)
+    {
+      localObject1 = paramApkgInfo.mMiniAppInfo.getVerTypeStr();
+      localObject2 = paramApkgInfo.mMiniAppInfo.version;
+    }
+    else
+    {
+      localObject2 = "";
+      localObject1 = "release";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("'; __qqConfig.deviceinfo='");
+    localStringBuilder.append(QUAUtil.getSimpleDeviceInfo(AppLoaderFactory.g().getContext()));
+    localStringBuilder.append("'; __qqConfig.miniapp_version='");
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append("';");
+    Object localObject2 = String.format(localStringBuilder.toString(), new Object[] { paramApkgInfo.mConfigStr, ((JSONObject)localObject3).toString() });
+    localObject3 = StorageUtil.getPreference();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramApkgInfo.appId);
+    localStringBuilder.append("_debug");
+    Object localObject1 = localObject2;
+    if (((SharedPreferences)localObject3).getBoolean(localStringBuilder.toString(), false))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("__qqConfig.debug=true;");
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    localObject2 = localObject1;
+    if (this.mEmbeddedState != null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("__qqConfig.useXWebVideo=");
+      ((StringBuilder)localObject2).append(this.mEmbeddedState.isEnableEmbeddedVideo());
+      ((StringBuilder)localObject2).append(";");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("system service enableEmbeddedVideo : ");
+      ((StringBuilder)localObject2).append(this.mEmbeddedState.isEnableEmbeddedVideo());
+      QMLog.d("miniapp-embedded", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("__qqConfig.useXWebLive=");
+      ((StringBuilder)localObject2).append(this.mEmbeddedState.isEnableEmbeddedLive());
+      ((StringBuilder)localObject2).append(";");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("system service enableEmbeddedLive : ");
+      ((StringBuilder)localObject2).append(this.mEmbeddedState.isEnableEmbeddedLive());
+      QMLog.d("miniapp-embedded", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("__qqConfig.useXWebElement=");
+      ((StringBuilder)localObject2).append(this.mEmbeddedState.isEnableEmbeddedElement());
+      ((StringBuilder)localObject2).append(";");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("system service enableEmbeddedElement : ");
+      ((StringBuilder)localObject1).append(this.mEmbeddedState.isEnableEmbeddedElement());
+      QMLog.d("miniapp-embedded", ((StringBuilder)localObject1).toString());
+      if (this.mEmbeddedState.isEnableEmbeddedVideo()) {
+        localObject1 = "system_embedded_video";
+      } else {
+        localObject1 = "system_native_video";
+      }
+      reportEmbeddedStatus(770, (String)localObject1);
+      if (this.mEmbeddedState.isEnableEmbeddedLive()) {
+        localObject1 = "system_embedded_live";
+      } else {
+        localObject1 = "system_native_live";
+      }
+      reportEmbeddedStatus(771, (String)localObject1);
+      if (this.mEmbeddedState.isEnableEmbeddedElement()) {
+        localObject1 = "system_embedded_element";
+      } else {
+        localObject1 = "system_native_element";
+      }
+      reportEmbeddedStatus(772, (String)localObject1);
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append((String)localObject2);
+    ((StringBuilder)localObject1).append(String.format("__qqConfig.adReportInfo=%1$s;", new Object[] { AdReportInfoUtil.getAdReportInfo(paramApkgInfo).toString() }));
+    paramApkgInfo = ((StringBuilder)localObject1).toString();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramApkgInfo);
+    ((StringBuilder)localObject1).append("if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};");
+    return ((StringBuilder)localObject1).toString();
   }
   
   public String getJsDefaultConfig(boolean paramBoolean)
   {
-    try
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("USER_DATA_PATH", "qqfile://usr");
-      localJSONObject.put("env", localObject);
-      localJSONObject.put("preload", paramBoolean);
-      int i = WnsConfig.getConfig("qqminiapp", "xprof_api_report", 0);
-      StringBuilder localStringBuilder = new StringBuilder().append("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nvar window = window || {}; window.__webview_engine_version__ = 0.02; if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s');__qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.appContactInfo = {};__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(QUAUtil.getPlatformQUA()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
-      if (i == 0) {}
-      for (localObject = "false";; localObject = "true")
+      try
       {
-        localObject = String.format((String)localObject + ";", new Object[] { localJSONObject });
-        QMLog.d("minisdk-start", "getJsDefaultConfig ServiceWebview String: " + (String)localObject);
-        return localObject;
+        localObject2 = new JSONObject();
+        Object localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("USER_DATA_PATH", "qqfile://usr");
+        ((JSONObject)localObject2).put("env", localObject1);
+        ((JSONObject)localObject2).put("preload", paramBoolean);
+        int i = WnsConfig.getConfig("qqminiapp", "xprof_api_report", 0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nvar window = window || {}; window.__webview_engine_version__ = 0.02; if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s');__qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.appContactInfo = {};__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='");
+        localStringBuilder.append(QUAUtil.getPlatformQUA());
+        localStringBuilder.append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
+        if (i == 0)
+        {
+          localObject1 = "false";
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(";");
+          localObject1 = String.format(localStringBuilder.toString(), new Object[] { localObject2 });
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getJsDefaultConfig ServiceWebview String: ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QMLog.d("minisdk-start", ((StringBuilder)localObject2).toString());
+          return localObject1;
+        }
       }
-      return "";
-    }
-    catch (Exception localException)
-    {
-      QMLog.d("minisdk-start", "getJsDefaultConfig failed: " + localException);
+      catch (Exception localException)
+      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getJsDefaultConfig failed: ");
+        ((StringBuilder)localObject2).append(localException);
+        QMLog.d("minisdk-start", ((StringBuilder)localObject2).toString());
+        return "";
+      }
+      String str = "true";
     }
   }
   
@@ -240,9 +307,15 @@ public class AppBrandWebviewService
   @JavascriptInterface
   public String invokeHandler(String paramString1, String paramString2, int paramInt)
   {
-    QMLog.d("AppBrandWebviewService", "invokeHandler|service: " + paramString1 + " |id:" + paramInt);
-    if (this.mAppBrandEventInterface != null) {
-      return this.mAppBrandEventInterface.onServiceNativeRequest(paramString1, paramString2, paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("invokeHandler|service: ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" |id:");
+    ((StringBuilder)localObject).append(paramInt);
+    QMLog.d("AppBrandWebviewService", ((StringBuilder)localObject).toString());
+    localObject = this.mAppBrandEventInterface;
+    if (localObject != null) {
+      return ((ServiceEventListener)localObject).onServiceNativeRequest(paramString1, paramString2, paramInt);
     }
     return "";
   }
@@ -250,13 +323,19 @@ public class AppBrandWebviewService
   @JavascriptInterface
   public void publishHandler(String paramString1, String paramString2, String paramString3)
   {
-    QMLog.d("AppBrandWebviewService", "publishHandler|service: " + paramString1 + " |webviewIds:" + paramString3);
-    String str = paramString3;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("publishHandler|service: ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" |webviewIds:");
+    ((StringBuilder)localObject).append(paramString3);
+    QMLog.d("AppBrandWebviewService", ((StringBuilder)localObject).toString());
+    localObject = paramString3;
     if ("[]".equals(paramString3)) {
-      str = "";
+      localObject = "";
     }
-    if (this.mAppBrandEventInterface != null) {
-      this.mAppBrandEventInterface.onServiceEvent(paramString1, paramString2, jsStringToJavaIntArray(str));
+    paramString3 = this.mAppBrandEventInterface;
+    if (paramString3 != null) {
+      paramString3.onServiceEvent(paramString1, paramString2, jsStringToJavaIntArray((String)localObject));
     }
   }
   
@@ -276,7 +355,7 @@ public class AppBrandWebviewService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppBrandWebviewService
  * JD-Core Version:    0.7.0.1
  */

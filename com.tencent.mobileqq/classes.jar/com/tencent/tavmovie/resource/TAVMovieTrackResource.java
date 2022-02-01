@@ -42,9 +42,10 @@ public class TAVMovieTrackResource
   
   private void reloadAVAsset()
   {
-    if (this.asset != null)
+    Asset localAsset = this.asset;
+    if (localAsset != null)
     {
-      this.filePath = this.asset.getSourcePath();
+      this.filePath = localAsset.getSourcePath();
       this.timeRange = new CMTimeRange(CMTime.CMTimeZero, this.asset.getDuration());
       this.naturalSize = this.asset.getNaturalSize();
       this.status = TAVMovieResource.TAVMovieResourceStatus.TAVMovieResourceStatusAvailable;
@@ -60,36 +61,31 @@ public class TAVMovieTrackResource
   
   public TAVResource convertToResource()
   {
-    Object localObject;
-    if (this.asset == null) {
-      localObject = null;
+    Object localObject = this.asset;
+    if (localObject == null) {
+      return null;
     }
-    TAVAssetTrackResource localTAVAssetTrackResource;
-    do
+    localObject = new TAVAssetTrackResource((Asset)localObject);
+    if (this.timeRange != null)
     {
-      do
+      if (this.timeRange.getDurationUs() <= 0L) {
+        return localObject;
+      }
+      ((TAVResource)localObject).setSourceTimeRange(this.timeRange);
+      if (this.timeEffect != null)
       {
-        do
+        float f = this.timeEffect.getSpeed();
+        if (f == 0.0F)
         {
+          ((TAVResource)localObject).setSourceTimeRange(this.timeEffect.getSourceTimeRange());
+          ((TAVResource)localObject).setScaledDuration(this.timeEffect.getTimeRange().getDuration());
           return localObject;
-          localTAVAssetTrackResource = new TAVAssetTrackResource(this.asset);
-          localObject = localTAVAssetTrackResource;
-        } while (this.timeRange == null);
-        localObject = localTAVAssetTrackResource;
-      } while (this.timeRange.getDurationUs() <= 0L);
-      localTAVAssetTrackResource.setSourceTimeRange(this.timeRange);
-      localObject = localTAVAssetTrackResource;
-    } while (this.timeEffect == null);
-    float f = this.timeEffect.getSpeed();
-    if (f == 0.0F)
-    {
-      localTAVAssetTrackResource.setSourceTimeRange(this.timeEffect.getSourceTimeRange());
-      localTAVAssetTrackResource.setScaledDuration(this.timeEffect.getTimeRange().getDuration());
-      return localTAVAssetTrackResource;
+        }
+        ((TAVResource)localObject).setSourceTimeRange(getTimeRange());
+        ((TAVResource)localObject).setScaledDuration(getTimeRange().getDuration().divide(f));
+      }
     }
-    localTAVAssetTrackResource.setSourceTimeRange(getTimeRange());
-    localTAVAssetTrackResource.setScaledDuration(getTimeRange().getDuration().divide(f));
-    return localTAVAssetTrackResource;
+    return localObject;
   }
   
   public TAVMovieTrackResource dataClone()
@@ -129,7 +125,7 @@ public class TAVMovieTrackResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavmovie.resource.TAVMovieTrackResource
  * JD-Core Version:    0.7.0.1
  */

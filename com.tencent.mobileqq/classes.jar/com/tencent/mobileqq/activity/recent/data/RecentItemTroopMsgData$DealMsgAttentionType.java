@@ -47,35 +47,42 @@ class RecentItemTroopMsgData$DealMsgAttentionType
   
   private void a(AbstructRecentUserMsg paramAbstructRecentUserMsg, MessageRecord paramMessageRecord)
   {
-    if ((MessageForQQWalletMsg.isRedPacketMsg(paramMessageRecord)) || ((paramMessageRecord instanceof MessageForFuDai)) || ((this.jdField_a_of_type_JavaLangObject instanceof TroopAtAllMsg))) {}
-    do
+    if ((!MessageForQQWalletMsg.isRedPacketMsg(paramMessageRecord)) && (!(paramMessageRecord instanceof MessageForFuDai)))
     {
-      do
-      {
+      if ((this.jdField_a_of_type_JavaLangObject instanceof TroopAtAllMsg)) {
         return;
-        if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.a().msg instanceof TroopNotificationMsg)) {
-          break;
-        }
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.a().msg instanceof TroopNotificationMsg))
+      {
         if (((TroopNotificationMsg)this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.a().msg).c == 1)
         {
-          this.jdField_a_of_type_Int = 2131167117;
+          this.jdField_a_of_type_Int = 2131167142;
           return;
         }
-      } while (!TroopNotificationHelper.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin));
-      this.jdField_a_of_type_Int = 2131167117;
-      return;
-      if (((this.jdField_a_of_type_JavaLangObject instanceof TroopHomeworkSpecialMsg)) && (((TroopHomeworkSpecialMsg)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697428))))
-      {
-        this.jdField_a_of_type_Int = 2131167117;
-        return;
+        if (TroopNotificationHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin)) {
+          this.jdField_a_of_type_Int = 2131167142;
+        }
       }
-      if (((this.jdField_a_of_type_JavaLangObject instanceof TroopNewFileMsg)) && (((TroopNewFileMsg)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697413))))
+      else
       {
-        this.jdField_a_of_type_Int = 2131167117;
-        return;
+        paramAbstructRecentUserMsg = this.jdField_a_of_type_JavaLangObject;
+        if (((paramAbstructRecentUserMsg instanceof TroopHomeworkSpecialMsg)) && (((TroopHomeworkSpecialMsg)paramAbstructRecentUserMsg).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697447))))
+        {
+          this.jdField_a_of_type_Int = 2131167142;
+          return;
+        }
+        paramAbstructRecentUserMsg = this.jdField_a_of_type_JavaLangObject;
+        if (((paramAbstructRecentUserMsg instanceof TroopNewFileMsg)) && (((TroopNewFileMsg)paramAbstructRecentUserMsg).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697432))))
+        {
+          this.jdField_a_of_type_Int = 2131167142;
+          return;
+        }
+        paramAbstructRecentUserMsg = this.jdField_a_of_type_JavaLangObject;
+        if (((paramAbstructRecentUserMsg instanceof TroopGamePartyMsg)) && ((((TroopGamePartyMsg)paramAbstructRecentUserMsg).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697428))) || (((TroopGamePartyMsg)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131692786))))) {
+          this.jdField_a_of_type_Int = 2131167142;
+        }
       }
-    } while ((!(this.jdField_a_of_type_JavaLangObject instanceof TroopGamePartyMsg)) || ((!((TroopGamePartyMsg)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697409))) && (!((TroopGamePartyMsg)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131692832)))));
-    this.jdField_a_of_type_Int = 2131167117;
+    }
   }
   
   private void b(AbstructRecentUserMsg paramAbstructRecentUserMsg, MessageRecord paramMessageRecord)
@@ -84,19 +91,23 @@ class RecentItemTroopMsgData$DealMsgAttentionType
     {
       paramAbstructRecentUserMsg = (MessageForQQWalletMsg)paramMessageRecord;
       if ((paramAbstructRecentUserMsg.messageType == 7) || (paramAbstructRecentUserMsg.messageType == 8)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = this.jdField_a_of_type_AndroidContentContext.getString(2131719041);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = this.jdField_a_of_type_AndroidContentContext.getString(2131718757);
       }
     }
-    do
+    else
     {
-      return;
       if ((paramMessageRecord instanceof MessageForFuDai))
       {
-        ((MessageForFuDai)paramMessageRecord).parse();
-        paramAbstructRecentUserMsg = ((MessageForFuDai)paramMessageRecord).highlightMsg();
+        paramAbstructRecentUserMsg = (MessageForFuDai)paramMessageRecord;
+        paramAbstructRecentUserMsg.parse();
+        paramAbstructRecentUserMsg = paramAbstructRecentUserMsg.highlightMsg();
         if (!TextUtils.isEmpty(paramAbstructRecentUserMsg))
         {
-          paramAbstructRecentUserMsg = HardCodeUtil.a(2131713146) + paramAbstructRecentUserMsg + "]";
+          paramMessageRecord = new StringBuilder();
+          paramMessageRecord.append(HardCodeUtil.a(2131713121));
+          paramMessageRecord.append(paramAbstructRecentUserMsg);
+          paramMessageRecord.append("]");
+          paramAbstructRecentUserMsg = paramMessageRecord.toString();
           this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = paramAbstructRecentUserMsg;
           return;
         }
@@ -109,10 +120,10 @@ class RecentItemTroopMsgData$DealMsgAttentionType
         TroopNotificationFlagMsg localTroopNotificationFlagMsg = TroopNotificationHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin);
         if (paramMessageRecord.c == 1)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = this.jdField_a_of_type_AndroidContentContext.getString(2131697307);
+          this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = this.jdField_a_of_type_AndroidContentContext.getString(2131697326);
           return;
         }
-        if (TroopNotificationHelper.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin))
+        if (TroopNotificationHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin))
         {
           this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = paramAbstructRecentUserMsg.a;
           return;
@@ -130,28 +141,33 @@ class RecentItemTroopMsgData$DealMsgAttentionType
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
         return;
       }
-      if ((this.jdField_a_of_type_JavaLangObject instanceof TroopHasGiftMsg))
+      paramAbstructRecentUserMsg = this.jdField_a_of_type_JavaLangObject;
+      if ((paramAbstructRecentUserMsg instanceof TroopHasGiftMsg))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
         return;
       }
-      if (((this.jdField_a_of_type_JavaLangObject instanceof TroopReceivedFlowsersMsg)) && (((TroopReceivedFlowsersMsg)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697411))))
+      if (((paramAbstructRecentUserMsg instanceof TroopReceivedFlowsersMsg)) && (((TroopReceivedFlowsersMsg)paramAbstructRecentUserMsg).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697430))))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
         return;
       }
-      if (((this.jdField_a_of_type_JavaLangObject instanceof TroopEffectPicMsg)) && (((TroopEffectPicMsg)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697414))))
+      paramAbstructRecentUserMsg = this.jdField_a_of_type_JavaLangObject;
+      if (((paramAbstructRecentUserMsg instanceof TroopEffectPicMsg)) && (((TroopEffectPicMsg)paramAbstructRecentUserMsg).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697433))))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
         return;
       }
-      if (((this.jdField_a_of_type_JavaLangObject instanceof TroopPubAccountMsg)) && (((TroopPubAccountMsg)this.jdField_a_of_type_JavaLangObject).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697416))))
+      paramAbstructRecentUserMsg = this.jdField_a_of_type_JavaLangObject;
+      if (((paramAbstructRecentUserMsg instanceof TroopPubAccountMsg)) && (((TroopPubAccountMsg)paramAbstructRecentUserMsg).a.equalsIgnoreCase(this.jdField_a_of_type_AndroidContentContext.getString(2131697435))))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
         return;
       }
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof TroopKeyWordMsg));
-    this.b = true;
+      if ((this.jdField_a_of_type_JavaLangObject instanceof TroopKeyWordMsg)) {
+        this.b = true;
+      }
+    }
   }
   
   private void c(AbstructRecentUserMsg paramAbstructRecentUserMsg, MessageRecord paramMessageRecord)
@@ -160,33 +176,40 @@ class RecentItemTroopMsgData$DealMsgAttentionType
     {
       paramAbstructRecentUserMsg = (MessageForQQWalletMsg)paramMessageRecord;
       if ((paramAbstructRecentUserMsg.messageType == 7) || (paramAbstructRecentUserMsg.messageType == 8)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = this.jdField_a_of_type_AndroidContentContext.getString(2131719041);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = this.jdField_a_of_type_AndroidContentContext.getString(2131718757);
       }
     }
-    do
+    else
     {
-      return;
       if ((paramMessageRecord instanceof MessageForFuDai))
       {
-        ((MessageForFuDai)paramMessageRecord).parse();
-        paramAbstructRecentUserMsg = ((MessageForFuDai)paramMessageRecord).highlightMsg();
+        paramAbstructRecentUserMsg = (MessageForFuDai)paramMessageRecord;
+        paramAbstructRecentUserMsg.parse();
+        paramAbstructRecentUserMsg = paramAbstructRecentUserMsg.highlightMsg();
         if (!TextUtils.isEmpty(paramAbstructRecentUserMsg))
         {
-          paramAbstructRecentUserMsg = HardCodeUtil.a(2131713146) + paramAbstructRecentUserMsg + "]";
+          paramMessageRecord = new StringBuilder();
+          paramMessageRecord.append(HardCodeUtil.a(2131713121));
+          paramMessageRecord.append(paramAbstructRecentUserMsg);
+          paramMessageRecord.append("]");
+          paramAbstructRecentUserMsg = paramMessageRecord.toString();
           this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = paramAbstructRecentUserMsg;
           return;
         }
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = "";
         return;
       }
-      if ((this.jdField_a_of_type_JavaLangObject instanceof TroopAtAllMsg))
+      paramAbstructRecentUserMsg = this.jdField_a_of_type_JavaLangObject;
+      if ((paramAbstructRecentUserMsg instanceof TroopAtAllMsg))
       {
-        paramAbstructRecentUserMsg = String.format(HardCodeUtil.a(2131713119), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mTitleName });
+        paramAbstructRecentUserMsg = String.format(HardCodeUtil.a(2131713094), new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mTitleName });
         this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = paramAbstructRecentUserMsg;
         return;
       }
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof TroopKeyWordMsg));
-    this.b = true;
+      if ((paramAbstructRecentUserMsg instanceof TroopKeyWordMsg)) {
+        this.b = true;
+      }
+    }
   }
   
   public int a()
@@ -200,26 +223,31 @@ class RecentItemTroopMsgData$DealMsgAttentionType
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUnreadNum == 0) && (!(this.jdField_a_of_type_JavaLangObject instanceof TroopNotificationMsg)))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RecentItemTroopMsgData", 2, "dealMsgAttention, mUnreadNum:" + this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUnreadNum);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("dealMsgAttention, mUnreadNum:");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUnreadNum);
+          QLog.d("RecentItemTroopMsgData", 2, ((StringBuilder)localObject).toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = "";
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = "";
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData;
+        ((RecentItemTroopMsgData)localObject).mMsgExtroInfo = "";
+        ((RecentItemTroopMsgData)localObject).mContentDesc = "";
         this.jdField_a_of_type_Boolean = true;
         return this;
       }
       AbstructRecentUserMsg localAbstructRecentUserMsg = (AbstructRecentUserMsg)this.jdField_a_of_type_JavaLangObject;
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mMsgExtroInfo = localAbstructRecentUserMsg.a;
-      this.jdField_a_of_type_Int = 2131167145;
+      this.jdField_a_of_type_Int = 2131167170;
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mContentDesc = localAbstructRecentUserMsg.b;
       long l = this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioNavigateBarManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin);
-      MessageRecord localMessageRecord = null;
+      Object localObject = null;
       if (l != 0L) {
-        localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().d(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.getType(), l);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().d(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.uin, this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemTroopMsgData.mUser.getType(), l);
       }
-      a(localAbstructRecentUserMsg, localMessageRecord);
-      b(localAbstructRecentUserMsg, localMessageRecord);
-      c(localAbstructRecentUserMsg, localMessageRecord);
+      a(localAbstructRecentUserMsg, (MessageRecord)localObject);
+      b(localAbstructRecentUserMsg, (MessageRecord)localObject);
+      c(localAbstructRecentUserMsg, (MessageRecord)localObject);
     }
     this.jdField_a_of_type_Boolean = false;
     return this;
@@ -237,7 +265,7 @@ class RecentItemTroopMsgData$DealMsgAttentionType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTroopMsgData.DealMsgAttentionType
  * JD-Core Version:    0.7.0.1
  */

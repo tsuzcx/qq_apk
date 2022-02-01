@@ -13,12 +13,21 @@ public class VoIPManager$IdResult
   
   public String toString()
   {
-    return "IdResult{openId='" + this.openId + '\'' + ", tinyId=" + this.tinyId + ", roomId=" + this.roomId + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IdResult{openId='");
+    localStringBuilder.append(this.openId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", tinyId=");
+    localStringBuilder.append(this.tinyId);
+    localStringBuilder.append(", roomId=");
+    localStringBuilder.append(this.roomId);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.VoIPManager.IdResult
  * JD-Core Version:    0.7.0.1
  */

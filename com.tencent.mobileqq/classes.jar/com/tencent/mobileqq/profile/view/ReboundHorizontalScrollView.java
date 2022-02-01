@@ -50,7 +50,7 @@ public class ReboundHorizontalScrollView
   }
   
   @TargetApi(9)
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, this.jdField_a_of_type_Int, paramInt8, paramBoolean);
   }
@@ -62,7 +62,7 @@ public class ReboundHorizontalScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ReboundHorizontalScrollView
  * JD-Core Version:    0.7.0.1
  */

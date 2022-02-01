@@ -76,13 +76,13 @@ public class ChatHistoryStructMsgView
     this.jdField_a_of_type_Int = paramIntent.getIntExtra("uintype", 0);
     this.jdField_c_of_type_JavaLangString = paramIntent.getStringExtra("uinname");
     a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131563048, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366349));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562871, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366237));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378544));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377955));
     this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131563047, null);
+    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562870, null);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
     a(true);
@@ -92,45 +92,37 @@ public class ChatHistoryStructMsgView
   
   public void a(List<ChatMessage> paramList)
   {
-    Iterator localIterator;
-    int i;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       this.jdField_a_of_type_JavaUtilArrayList.removeAll(paramList);
-      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       paramList = null;
-      i = 0;
-    }
-    for (;;)
-    {
-      Object localObject1 = paramList;
-      if (localIterator.hasNext())
+      int i = 0;
+      Object localObject1;
+      int j;
+      do
       {
+        localObject1 = paramList;
+        if (!localIterator.hasNext()) {
+          break label90;
+        }
         Object localObject2 = localIterator.next();
-        if ((localObject2 instanceof String))
-        {
-          localObject1 = paramList;
-          if (i == 0) {
-            localObject1 = localObject2;
-          }
-          int j = i + 1;
-          paramList = (List<ChatMessage>)localObject1;
-          i = j;
-          if (j != 2) {
-            continue;
-          }
+        if (!(localObject2 instanceof String)) {
+          break;
         }
-      }
-      else
-      {
-        if (localObject1 != null) {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localObject1);
+        localObject1 = paramList;
+        if (i == 0) {
+          localObject1 = localObject2;
         }
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
-        return;
+        j = i + 1;
+        i = j;
+        paramList = (List<ChatMessage>)localObject1;
+      } while (j != 2);
+      label90:
+      if (localObject1 != null) {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(localObject1);
       }
-      paramList = null;
-      i = 0;
+      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
     }
   }
   
@@ -158,9 +150,7 @@ public class ChatHistoryStructMsgView
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return false;
     }
     if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
@@ -168,15 +158,15 @@ public class ChatHistoryStructMsgView
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryStructAdapter.notifyDataSetChanged();
-      return false;
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryStructAdapter.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
     }
+    this.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryStructAdapter.notifyDataSetChanged();
+    return false;
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
@@ -193,7 +183,7 @@ public class ChatHistoryStructMsgView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryStructMsgView
  * JD-Core Version:    0.7.0.1
  */

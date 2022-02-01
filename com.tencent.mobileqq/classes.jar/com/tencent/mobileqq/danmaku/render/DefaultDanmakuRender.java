@@ -22,8 +22,7 @@ public class DefaultDanmakuRender
   {
     WindowConfig localWindowConfig = DanmakuContext.a();
     float f1 = DrawUtils.a(localWindowConfig.c(), a(paramBaseDanmaku)) + localWindowConfig.f() + localWindowConfig.f();
-    float f2 = DrawUtils.a(localWindowConfig.c());
-    f2 = localWindowConfig.e() * 2.0F + f2;
+    float f2 = DrawUtils.a(localWindowConfig.c()) + localWindowConfig.e() * 2.0F;
     paramBaseDanmaku.a(f2);
     paramBaseDanmaku.b(f1);
     return new ContentSize(f1, f2);
@@ -39,12 +38,12 @@ public class DefaultDanmakuRender
     paramDanmakuContext = DanmakuContext.a();
     this.a.setTextSize(paramDanmakuContext.c());
     this.a.setColor(-1);
-    paramCanvas.drawText(a(paramBaseDanmaku), paramDanmakuContext.f() + paramFloat1, paramDanmakuContext.e() + paramFloat2 - this.a.ascent(), this.a);
+    paramCanvas.drawText(a(paramBaseDanmaku), paramFloat1 + paramDanmakuContext.f(), paramFloat2 + paramDanmakuContext.e() - this.a.ascent(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.render.DefaultDanmakuRender
  * JD-Core Version:    0.7.0.1
  */

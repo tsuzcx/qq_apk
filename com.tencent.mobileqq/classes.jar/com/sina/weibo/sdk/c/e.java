@@ -50,66 +50,67 @@ public final class e
       ar[i] = ((byte)(i + 52 - 48));
       i += 1;
     }
-    ar[43] = 62;
-    ar[47] = 63;
+    byte[] arrayOfByte = ar;
+    arrayOfByte[43] = 62;
+    arrayOfByte[47] = 63;
   }
   
   public static int a(int paramInt, Context paramContext)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramInt + 0.5F);
+    float f = paramContext.getResources().getDisplayMetrics().density;
+    return (int)(paramInt * f + 0.5F);
   }
   
   public static byte[] b(byte[] paramArrayOfByte)
   {
     byte[] arrayOfByte = new byte[(paramArrayOfByte.length + 2) / 3 * 4];
-    int i = 0;
     int j = 0;
-    int m;
-    if (j < paramArrayOfByte.length)
+    int i = 0;
+    while (j < paramArrayOfByte.length)
     {
-      m = (paramArrayOfByte[j] & 0xFF) << 8;
-      if (j + 1 >= paramArrayOfByte.length) {
-        break label224;
-      }
-      m |= paramArrayOfByte[(j + 1)] & 0xFF;
-    }
-    label209:
-    label224:
-    for (int k = 1;; k = 0)
-    {
-      m <<= 8;
-      if (j + 2 < paramArrayOfByte.length) {
-        m |= paramArrayOfByte[(j + 2)] & 0xFF;
-      }
-      for (int n = 1;; n = 0)
+      int m = (paramArrayOfByte[j] & 0xFF) << 8;
+      int k = j + 1;
+      int i1 = paramArrayOfByte.length;
+      int n = 1;
+      if (k < i1)
       {
-        char[] arrayOfChar = aq;
-        if (n != 0)
-        {
-          n = m & 0x3F;
-          label107:
-          arrayOfByte[(i + 3)] = ((byte)arrayOfChar[n]);
-          m >>= 6;
-          arrayOfChar = aq;
-          if (k == 0) {
-            break label209;
-          }
-        }
-        for (k = m & 0x3F;; k = 64)
-        {
-          arrayOfByte[(i + 2)] = ((byte)arrayOfChar[k]);
-          k = m >> 6;
-          arrayOfByte[(i + 1)] = ((byte)aq[(k & 0x3F)]);
-          arrayOfByte[(i + 0)] = ((byte)aq[(k >> 6 & 0x3F)]);
-          j += 3;
-          i += 4;
-          break;
-          n = 64;
-          break label107;
-        }
-        return arrayOfByte;
+        m |= paramArrayOfByte[k] & 0xFF;
+        k = 1;
       }
+      else
+      {
+        k = 0;
+      }
+      m <<= 8;
+      i1 = j + 2;
+      if (i1 < paramArrayOfByte.length) {
+        m |= paramArrayOfByte[i1] & 0xFF;
+      } else {
+        n = 0;
+      }
+      char[] arrayOfChar = aq;
+      i1 = 64;
+      if (n != 0) {
+        n = m & 0x3F;
+      } else {
+        n = 64;
+      }
+      arrayOfByte[(i + 3)] = ((byte)arrayOfChar[n]);
+      n = m >> 6;
+      arrayOfChar = aq;
+      m = i1;
+      if (k != 0) {
+        m = n & 0x3F;
+      }
+      arrayOfByte[(i + 2)] = ((byte)arrayOfChar[m]);
+      k = n >> 6;
+      arrayOfChar = aq;
+      arrayOfByte[(i + 1)] = ((byte)arrayOfChar[(k & 0x3F)]);
+      arrayOfByte[(i + 0)] = ((byte)arrayOfChar[(k >> 6 & 0x3F)]);
+      j += 3;
+      i += 4;
     }
+    return arrayOfByte;
   }
   
   public static String e(Context paramContext, String paramString)
@@ -127,18 +128,15 @@ public final class e
         }
       }
     }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
     catch (PackageManager.NameNotFoundException paramContext)
     {
       paramContext.printStackTrace();
-      return null;
     }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
-    }
+    return null;
   }
   
   public static Bundle f(String paramString)
@@ -158,17 +156,20 @@ public final class e
   public static String f(Context paramContext, String paramString)
   {
     Object localObject1 = a.b();
-    if (TextUtils.isEmpty(((a)localObject1).c)) {
-      ((a)localObject1).b(paramContext, paramString);
-    }
-    for (localObject1 = "";; localObject1 = ((a)localObject1).c)
+    if (TextUtils.isEmpty(((a)localObject1).c))
     {
-      Object localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = a.b().c(paramContext, paramString);
-      }
-      return localObject2;
+      ((a)localObject1).b(paramContext, paramString);
+      localObject1 = "";
     }
+    else
+    {
+      localObject1 = ((a)localObject1).c;
+    }
+    Object localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = a.b().c(paramContext, paramString);
+    }
+    return localObject2;
   }
   
   public static Bundle g(String paramString)
@@ -188,22 +189,18 @@ public final class e
   private static Bundle h(String paramString)
   {
     Bundle localBundle = new Bundle();
-    int j;
-    int i;
     if (paramString != null)
     {
       paramString = paramString.split("&");
-      j = paramString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < j)
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
         String[] arrayOfString = paramString[i].split("=");
         try
         {
-          if (arrayOfString.length == 2) {
+          int k = arrayOfString.length;
+          if (k == 2) {
             localBundle.putString(URLDecoder.decode(arrayOfString[0], "UTF-8"), URLDecoder.decode(arrayOfString[1], "UTF-8"));
           } else if (arrayOfString.length == 1) {
             localBundle.putString(URLDecoder.decode(arrayOfString[0], "UTF-8"), "");
@@ -213,19 +210,18 @@ public final class e
         {
           localUnsupportedEncodingException.printStackTrace();
         }
+        i += 1;
       }
-      else
-      {
-        return localBundle;
-      }
-      i += 1;
     }
+    return localBundle;
   }
   
   public static String r()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Build.MANUFACTURER).append("-").append(Build.MODEL);
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append("-");
+    localStringBuilder.append(Build.MODEL);
     localStringBuilder.append("_");
     localStringBuilder.append(Build.VERSION.RELEASE);
     localStringBuilder.append("_");

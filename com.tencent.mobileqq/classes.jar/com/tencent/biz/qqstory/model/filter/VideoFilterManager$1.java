@@ -18,7 +18,7 @@ class VideoFilterManager$1
     super(paramDownloader);
   }
   
-  public FileDownloadTask.Output a(FileDownloadTask.Input... paramVarArgs)
+  protected FileDownloadTask.Output a(FileDownloadTask.Input... paramVarArgs)
   {
     FileDownloadTask.Output localOutput = super.a(paramVarArgs);
     paramVarArgs = paramVarArgs[0];
@@ -29,41 +29,41 @@ class VideoFilterManager$1
     try
     {
       FileUtils.d(str);
-      label42:
+      label44:
       int i = ZipUtils.unZipFolder(paramVarArgs.b, str);
       if (i == 0)
       {
-        if (VideoFilterManager.a(str, false)) {
+        if (VideoFilterManager.a(str, false))
+        {
+          paramVarArgs = null;
           try
           {
-            paramVarArgs = this.a.a(new File(str, "config.json"));
-            if (paramVarArgs != null)
-            {
-              SLog.d("FileDownloadTask", "parse config file success !");
-              this.a.a.put(str, paramVarArgs);
-              return localOutput;
-            }
+            PictureFilterConfig localPictureFilterConfig = this.a.a(new File(str, "config.json"));
+            paramVarArgs = localPictureFilterConfig;
           }
-          catch (Exception paramVarArgs)
+          catch (Exception localException1)
           {
-            for (;;)
-            {
-              SLog.c("FileDownloadTask", "parse config failed", paramVarArgs);
-              paramVarArgs = null;
-            }
-            SLog.e("FileDownloadTask", "parse config failed : %s, %s", new Object[] { str, "config.json" });
-            return new FileDownloadTask.Output(localOutput.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input, -1, "illegal config file");
+            SLog.c("FileDownloadTask", "parse config failed", localException1);
           }
+          if (paramVarArgs != null)
+          {
+            SLog.d("FileDownloadTask", "parse config file success !");
+            this.a.a.put(str, paramVarArgs);
+            return localOutput;
+          }
+          SLog.e("FileDownloadTask", "parse config failed : %s, %s", new Object[] { str, "config.json" });
+          return new FileDownloadTask.Output(localOutput.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input, -1, "illegal config file");
         }
         SLog.e("FileDownloadTask", "unzip success, but this is an illegal filter folder : %s", new Object[] { str });
         return new FileDownloadTask.Output(localOutput.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input, -1, "illegal folder");
       }
       SLog.e("FileDownloadTask", "download success, but unzip failed : %d", new Object[] { Integer.valueOf(i) });
       return new FileDownloadTask.Output(localOutput.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input, i, "unzip failed");
+      return localOutput;
     }
-    catch (Exception localException)
+    catch (Exception localException2)
     {
-      break label42;
+      break label44;
     }
   }
   
@@ -72,19 +72,20 @@ class VideoFilterManager$1
     SLog.a("FileDownloadTask", "downloadConfigFile onPostExecute : %s", ???);
     if (???.jdField_a_of_type_Int == 0) {
       SLog.d("FileDownloadTask", "get filter resource success : %s", new Object[] { ???.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input.jdField_a_of_type_JavaLangString });
+    } else {
+      SLog.d("FileDownloadTask", "get filter resource failed : %d : %s : %s", new Object[] { Integer.valueOf(???.jdField_a_of_type_Int), ???.jdField_a_of_type_JavaLangString, ???.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input.jdField_a_of_type_JavaLangString });
     }
     synchronized (this.a.b)
     {
       VideoFilterManager.a(this.a, null);
       this.a.d();
       return;
-      SLog.d("FileDownloadTask", "get filter resource failed : %d : %s : %s", new Object[] { Integer.valueOf(???.jdField_a_of_type_Int), ???.jdField_a_of_type_JavaLangString, ???.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input.jdField_a_of_type_JavaLangString });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.filter.VideoFilterManager.1
  * JD-Core Version:    0.7.0.1
  */

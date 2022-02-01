@@ -21,43 +21,44 @@ public class UinPair
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof UinPair)) {
-        break label123;
-      }
-      if (this.userUin == null)
+    }
+    if ((paramObject instanceof UinPair))
+    {
+      String str = this.userUin;
+      UinPair localUinPair;
+      if (str == null)
       {
-        if (((UinPair)paramObject).userUin != null) {
-          break label123;
-        }
-        if (this.friendUin == null)
+        localUinPair = (UinPair)paramObject;
+        if (localUinPair.userUin == null)
         {
-          if (((UinPair)paramObject).friendUin == null) {}
-          for (boolean bool = true;; bool = false) {
-            return bool;
+          paramObject = this.friendUin;
+          if (paramObject == null) {
+            return localUinPair.friendUin == null;
           }
+          return paramObject.equals(localUinPair.friendUin);
         }
-        return this.friendUin.equals(((UinPair)paramObject).friendUin);
       }
-      if (!this.userUin.equals(((UinPair)paramObject).userUin)) {
-        break label123;
+      else
+      {
+        localUinPair = (UinPair)paramObject;
+        if (str.equals(localUinPair.userUin))
+        {
+          paramObject = this.friendUin;
+          if (paramObject == null) {
+            return localUinPair.friendUin == null;
+          }
+          return paramObject.equals(localUinPair.friendUin);
+        }
       }
-      if (this.friendUin != null) {
-        break;
-      }
-    } while (((UinPair)paramObject).friendUin == null);
-    return false;
-    return this.friendUin.equals(((UinPair)paramObject).friendUin);
-    label123:
+    }
     return super.equals(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.UinPair
  * JD-Core Version:    0.7.0.1
  */

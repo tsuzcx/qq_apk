@@ -27,14 +27,15 @@ public final class s_HighFive
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iCount, 0);
-    if (this.strResourceUrl != null) {
-      paramJceOutputStream.write(this.strResourceUrl, 1);
+    String str = this.strResourceUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_HighFive
  * JD-Core Version:    0.7.0.1
  */

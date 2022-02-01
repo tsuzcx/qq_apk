@@ -8,12 +8,12 @@ class VerifyPwdView$1
 {
   VerifyPwdView$1(VerifyPwdView paramVerifyPwdView) {}
   
-  public void a(int paramInt, String paramString)
+  protected void a(int paramInt, String paramString)
   {
     FMToastUtil.a(paramString);
   }
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean)
   {
     if (!paramBoolean)
     {
@@ -23,20 +23,20 @@ class VerifyPwdView$1
     VerifyPwdView.b(this.a);
   }
   
-  public void b(int paramInt, String paramString)
+  protected void b(int paramInt, String paramString)
   {
     FMToastUtil.a(paramString);
     VerifyPwdView.c(this.a);
   }
   
-  public void e()
+  protected void e()
   {
     VerifyPwdView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.VerifyPwdView.1
  * JD-Core Version:    0.7.0.1
  */

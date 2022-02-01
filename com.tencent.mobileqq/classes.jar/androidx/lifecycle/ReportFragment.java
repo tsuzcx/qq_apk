@@ -18,18 +18,18 @@ public class ReportFragment
   
   static void dispatch(@NonNull Activity paramActivity, @NonNull Lifecycle.Event paramEvent)
   {
-    if ((paramActivity instanceof LifecycleRegistryOwner)) {
-      ((LifecycleRegistryOwner)paramActivity).getLifecycle().handleLifecycleEvent(paramEvent);
-    }
-    do
+    if ((paramActivity instanceof LifecycleRegistryOwner))
     {
-      do
-      {
-        return;
-      } while (!(paramActivity instanceof LifecycleOwner));
+      ((LifecycleRegistryOwner)paramActivity).getLifecycle().handleLifecycleEvent(paramEvent);
+      return;
+    }
+    if ((paramActivity instanceof LifecycleOwner))
+    {
       paramActivity = ((LifecycleOwner)paramActivity).getLifecycle();
-    } while (!(paramActivity instanceof LifecycleRegistry));
-    ((LifecycleRegistry)paramActivity).handleLifecycleEvent(paramEvent);
+      if ((paramActivity instanceof LifecycleRegistry)) {
+        ((LifecycleRegistry)paramActivity).handleLifecycleEvent(paramEvent);
+      }
+    }
   }
   
   private void dispatch(@NonNull Lifecycle.Event paramEvent)
@@ -68,7 +68,7 @@ public class ReportFragment
   public static void injectIfNeededIn(Activity paramActivity)
   {
     if (Build.VERSION.SDK_INT >= 29) {
-      paramActivity.registerActivityLifecycleCallbacks(new ReportFragment.LifecycleCallbacks());
+      ReportFragment.LifecycleCallbacks.registerIn(paramActivity);
     }
     paramActivity = paramActivity.getFragmentManager();
     if (paramActivity.findFragmentByTag("androidx.lifecycle.LifecycleDispatcher.report_fragment_tag") == null)
@@ -125,7 +125,7 @@ public class ReportFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.ReportFragment
  * JD-Core Version:    0.7.0.1
  */

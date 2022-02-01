@@ -27,17 +27,19 @@ public final class GetKuolieFavListReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.commInfo != null) {
-      paramJceOutputStream.write(this.commInfo, 0);
+    Object localObject = this.commInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.userId != null) {
-      paramJceOutputStream.write(this.userId, 1);
+    localObject = this.userId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_KUOLIE_PROTOCOL.GetKuolieFavListReq
  * JD-Core Version:    0.7.0.1
  */

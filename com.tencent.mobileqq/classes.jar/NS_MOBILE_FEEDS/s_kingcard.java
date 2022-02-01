@@ -30,17 +30,19 @@ public final class s_kingcard
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.is_guide, 0);
-    if (this.button_title != null) {
-      paramJceOutputStream.write(this.button_title, 1);
+    String str = this.button_title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.jump_url != null) {
-      paramJceOutputStream.write(this.jump_url, 2);
+    str = this.jump_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_kingcard
  * JD-Core Version:    0.7.0.1
  */

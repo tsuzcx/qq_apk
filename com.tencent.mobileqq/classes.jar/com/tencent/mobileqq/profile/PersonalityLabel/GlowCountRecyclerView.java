@@ -64,13 +64,15 @@ public class GlowCountRecyclerView
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(14.0F * f1);
     this.f = ((int)(f1 * 3.0F));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845954);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845828);
   }
   
   private void c()
   {
     Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length(), (Rect)localObject);
+    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    String str = this.jdField_a_of_type_JavaLangString;
+    localPaint.getTextBounds(str, 0, str.length(), (Rect)localObject);
     this.d = ((Rect)localObject).width();
     localObject = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
     this.e = ((int)(((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top + 0.5F));
@@ -89,11 +91,12 @@ public class GlowCountRecyclerView
   
   public boolean a()
   {
-    boolean bool = false;
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0))) {
-      bool = true;
+    boolean bool2 = this.jdField_a_of_type_Boolean;
+    boolean bool1 = false;
+    if ((bool2) || (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0))) {
+      bool1 = true;
     }
-    return bool;
+    return bool1;
   }
   
   public void draw(Canvas paramCanvas)
@@ -103,31 +106,29 @@ public class GlowCountRecyclerView
     int i;
     if ((localObject instanceof LinearLayoutManager)) {
       i = ((LinearLayoutManager)localObject).findFirstCompletelyVisibleItemPosition();
+    } else if ((localObject instanceof StaggeredGridLayoutManager)) {
+      i = ((StaggeredGridLayoutManager)localObject).findFirstCompletelyVisibleItemPositions(null)[0];
+    } else {
+      i = -1;
     }
-    for (;;)
+    if ((a()) && (i == 0))
     {
-      if ((a()) && (i == 0))
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.d + this.f * 2, this.e + this.f * 2);
-        i = (int)(getPaddingLeft() + 5.0F * getResources().getDisplayMetrics().density);
-        localObject = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-        int j = (int)((getMeasuredHeight() - getPaddingTop() - getPaddingBottom()) * 0.5F - (this.e + this.f * 2) * 0.5F);
-        int k = (int)(j - ((Paint.FontMetrics)localObject).top + this.f);
-        paramCanvas.save();
-        paramCanvas.translate(i, j);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-        paramCanvas.restore();
-        paramCanvas.save();
-        paramCanvas.translate(i + this.f, 0.0F);
-        paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.d * 0.5F, k, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.restore();
-      }
-      return;
-      if ((localObject instanceof StaggeredGridLayoutManager)) {
-        i = ((StaggeredGridLayoutManager)localObject).findFirstCompletelyVisibleItemPositions(null)[0];
-      } else {
-        i = -1;
-      }
+      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      i = this.d;
+      int j = this.f;
+      ((Drawable)localObject).setBounds(0, 0, i + j * 2, this.e + j * 2);
+      i = (int)(getPaddingLeft() + getResources().getDisplayMetrics().density * 5.0F);
+      localObject = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
+      float f1 = (int)((getMeasuredHeight() - getPaddingTop() - getPaddingBottom()) * 0.5F - (this.e + this.f * 2) * 0.5F);
+      j = (int)(f1 - ((Paint.FontMetrics)localObject).top + this.f);
+      paramCanvas.save();
+      paramCanvas.translate(i, f1);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.restore();
+      paramCanvas.save();
+      paramCanvas.translate(i + this.f, 0.0F);
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.d * 0.5F, j, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.restore();
     }
   }
   
@@ -139,7 +140,7 @@ public class GlowCountRecyclerView
     return false;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -148,53 +149,65 @@ public class GlowCountRecyclerView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    case 2: 
-    default: 
-      return bool;
-    case 0: 
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
-      return bool;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 3) {
+          return bool;
+        }
+        a();
+        this.jdField_a_of_type_Int = -1;
+        return bool;
+      }
       a();
       this.jdField_a_of_type_Int = -1;
       return bool;
     }
-    a();
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
     return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
+      if (i != 1)
       {
-        return bool;
-        this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
-        return bool;
-      } while ((this.jdField_a_of_type_Int < 0) || (this.jdField_a_of_type_Boolean));
-      if ((int)(paramMotionEvent.getX() - this.jdField_a_of_type_Int) > this.b) {
-        this.jdField_a_of_type_Boolean = true;
+        if (i != 2)
+        {
+          if (i != 3) {
+            return bool;
+          }
+          a();
+          this.jdField_a_of_type_Int = -1;
+          return bool;
+        }
+        if ((this.jdField_a_of_type_Int >= 0) && (!this.jdField_a_of_type_Boolean))
+        {
+          if ((int)(paramMotionEvent.getX() - this.jdField_a_of_type_Int) > this.b) {
+            this.jdField_a_of_type_Boolean = true;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("GlowCountRecyclerView", 2, "move show");
+          }
+          invalidate();
+          return bool;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("GlowCountRecyclerView", 2, "move show");
+      else
+      {
+        a();
+        this.jdField_a_of_type_Int = -1;
+        return bool;
       }
-      invalidate();
-      return bool;
-    case 1: 
-      a();
-      this.jdField_a_of_type_Int = -1;
-      return bool;
     }
-    a();
-    this.jdField_a_of_type_Int = -1;
+    else {
+      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
+    }
     return bool;
   }
   
@@ -232,7 +245,7 @@ public class GlowCountRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.GlowCountRecyclerView
  * JD-Core Version:    0.7.0.1
  */

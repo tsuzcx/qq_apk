@@ -12,8 +12,13 @@ class QQCustomArkDialog$3
   
   public void run()
   {
-    if (QQCustomArkDialog.a(this.this$0) != null) {}
-    for (Activity localActivity = (Activity)QQCustomArkDialog.a(this.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
+    Activity localActivity;
+    if (QQCustomArkDialog.a(this.this$0) != null) {
+      localActivity = (Activity)QQCustomArkDialog.a(this.this$0).get();
+    } else {
+      localActivity = null;
+    }
+    if ((localActivity != null) && (!localActivity.isFinishing()))
     {
       QQCustomArkDialog.a(this.this$0, this.a);
       return;
@@ -23,7 +28,7 @@ class QQCustomArkDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomArkDialog.3
  * JD-Core Version:    0.7.0.1
  */

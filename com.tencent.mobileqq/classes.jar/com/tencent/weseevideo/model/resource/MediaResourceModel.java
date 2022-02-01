@@ -96,21 +96,22 @@ public final class MediaResourceModel
       while (((Iterator)localObject3).hasNext()) {
         ((Collection)localObject1).add(((MediaClipModel)((Iterator)localObject3).next()).deepCopy());
       }
+      localObject1 = CollectionsKt.toMutableList((Collection)localObject1);
     }
-    int i;
-    for (localObject1 = CollectionsKt.toMutableList((Collection)localObject1);; localObject1 = null)
+    else
     {
-      i = this.smartType;
-      localObject4 = (Iterable)this.recordAudios;
-      localObject3 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject4, 10));
-      localObject4 = ((Iterable)localObject4).iterator();
-      while (((Iterator)localObject4).hasNext()) {
-        ((Collection)localObject3).add(((MediaClipModel)((Iterator)localObject4).next()).deepCopy());
-      }
+      localObject1 = null;
     }
-    Object localObject3 = CollectionsKt.toMutableList((Collection)localObject3);
+    int i = this.smartType;
+    Object localObject4 = (Iterable)this.recordAudios;
+    Object localObject3 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject4, 10));
+    localObject4 = ((Iterable)localObject4).iterator();
+    while (((Iterator)localObject4).hasNext()) {
+      ((Collection)localObject3).add(((MediaClipModel)((Iterator)localObject4).next()).deepCopy());
+    }
+    localObject3 = CollectionsKt.toMutableList((Collection)localObject3);
     Object localObject5 = (Iterable)this.backgroundMusic;
-    Object localObject4 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject5, 10));
+    localObject4 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject5, 10));
     localObject5 = ((Iterable)localObject5).iterator();
     while (((Iterator)localObject5).hasNext()) {
       ((Collection)localObject4).add(((MediaClipModel)((Iterator)localObject5).next()).deepCopy());
@@ -120,18 +121,18 @@ public final class MediaResourceModel
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof MediaResourceModel))
       {
         paramObject = (MediaResourceModel)paramObject;
-        if ((!Intrinsics.areEqual(this.videos, paramObject.videos)) || (!Intrinsics.areEqual(this.backupVideos, paramObject.backupVideos)) || (this.smartType != paramObject.smartType) || (!Intrinsics.areEqual(this.recordAudios, paramObject.recordAudios)) || (!Intrinsics.areEqual(this.backgroundMusic, paramObject.backgroundMusic))) {}
+        if ((Intrinsics.areEqual(this.videos, paramObject.videos)) && (Intrinsics.areEqual(this.backupVideos, paramObject.backupVideos)) && (this.smartType == paramObject.smartType) && (Intrinsics.areEqual(this.recordAudios, paramObject.recordAudios)) && (Intrinsics.areEqual(this.backgroundMusic, paramObject.backgroundMusic))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -165,40 +166,34 @@ public final class MediaResourceModel
   
   public int hashCode()
   {
-    int m = 0;
     List localList = this.videos;
+    int m = 0;
     int i;
-    int j;
-    label37:
-    int n;
-    if (localList != null)
-    {
+    if (localList != null) {
       i = localList.hashCode();
-      localList = this.backupVideos;
-      if (localList == null) {
-        break label107;
-      }
-      j = localList.hashCode();
-      n = this.smartType;
-      localList = this.recordAudios;
-      if (localList == null) {
-        break label112;
-      }
-    }
-    label107:
-    label112:
-    for (int k = localList.hashCode();; k = 0)
-    {
-      localList = this.backgroundMusic;
-      if (localList != null) {
-        m = localList.hashCode();
-      }
-      return (k + ((j + i * 31) * 31 + n) * 31) * 31 + m;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label37;
     }
+    localList = this.backupVideos;
+    int j;
+    if (localList != null) {
+      j = localList.hashCode();
+    } else {
+      j = 0;
+    }
+    int n = this.smartType;
+    localList = this.recordAudios;
+    int k;
+    if (localList != null) {
+      k = localList.hashCode();
+    } else {
+      k = 0;
+    }
+    localList = this.backgroundMusic;
+    if (localList != null) {
+      m = localList.hashCode();
+    }
+    return (((i * 31 + j) * 31 + n) * 31 + k) * 31 + m;
   }
   
   public final void setVideos(@NotNull List<MediaClipModel> paramList)
@@ -210,12 +205,24 @@ public final class MediaResourceModel
   @NotNull
   public String toString()
   {
-    return "MediaResourceModel(videos=" + this.videos + ", backupVideos=" + this.backupVideos + ", smartType=" + this.smartType + ", recordAudios=" + this.recordAudios + ", backgroundMusic=" + this.backgroundMusic + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MediaResourceModel(videos=");
+    localStringBuilder.append(this.videos);
+    localStringBuilder.append(", backupVideos=");
+    localStringBuilder.append(this.backupVideos);
+    localStringBuilder.append(", smartType=");
+    localStringBuilder.append(this.smartType);
+    localStringBuilder.append(", recordAudios=");
+    localStringBuilder.append(this.recordAudios);
+    localStringBuilder.append(", backgroundMusic=");
+    localStringBuilder.append(this.backgroundMusic);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.resource.MediaResourceModel
  * JD-Core Version:    0.7.0.1
  */

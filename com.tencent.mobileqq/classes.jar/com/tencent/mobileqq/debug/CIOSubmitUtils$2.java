@@ -14,54 +14,72 @@ final class CIOSubmitUtils$2
 {
   public void run()
   {
-    String str2;
     try
     {
-      str2 = Environment.getExternalStorageDirectory() + "/cio_mobile_qq";
-      CIOSubmitUtils.a(str2);
-      Object localObject1 = "";
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory());
+      ((StringBuilder)localObject1).append("/cio_mobile_qq");
+      Object localObject2 = ((StringBuilder)localObject1).toString();
+      CIOSubmitUtils.a((String)localObject2);
+      localObject1 = "";
       if (MobileQQ.sProcessId == 1) {
         localObject1 = CIOSubmitUtils.b();
       }
-      CIOSubmitUtils.a(str2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, (String)localObject1, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      str2 = (String)CIOSubmitUtils.a(str2, "com.tencent.mobileqq").second;
-      localObject1 = CIOSubmitUtils.a((String)localObject1, str2, "8.5.5");
-      localObject2 = new StringBuffer(1024);
-      localObject3 = ((JSONObject)localObject1).keys();
-      String str3 = (String)((Iterator)localObject3).next();
-      String str4 = ((JSONObject)localObject1).getString(str3);
-      ((StringBuffer)localObject2).append(str3).append("=").append(URLEncoder.encode(str4, "UTF-8"));
-      while (((Iterator)localObject3).hasNext())
+      CIOSubmitUtils.a((String)localObject2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, (String)localObject1, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      localObject2 = (String)CIOSubmitUtils.a((String)localObject2, "com.tencent.mobileqq").second;
+      localObject1 = CIOSubmitUtils.a((String)localObject1, (String)localObject2, "8.7.0");
+      Object localObject3 = new StringBuffer(1024);
+      Object localObject4 = ((JSONObject)localObject1).keys();
+      String str1 = (String)((Iterator)localObject4).next();
+      String str2 = ((JSONObject)localObject1).getString(str1);
+      ((StringBuffer)localObject3).append(str1);
+      ((StringBuffer)localObject3).append("=");
+      ((StringBuffer)localObject3).append(URLEncoder.encode(str2, "UTF-8"));
+      while (((Iterator)localObject4).hasNext())
       {
-        str3 = (String)((Iterator)localObject3).next();
-        str4 = ((JSONObject)localObject1).getString(str3);
-        ((StringBuffer)localObject2).append("&").append(str3).append("=").append(URLEncoder.encode(str4, "UTF-8"));
+        str1 = (String)((Iterator)localObject4).next();
+        str2 = ((JSONObject)localObject1).getString(str1);
+        ((StringBuffer)localObject3).append("&");
+        ((StringBuffer)localObject3).append(str1);
+        ((StringBuffer)localObject3).append("=");
+        ((StringBuffer)localObject3).append(URLEncoder.encode(str2, "UTF-8"));
       }
-      ((StringBuffer)localObject2).append("&a=1");
+      ((StringBuffer)localObject3).append("&a=1");
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("https://sngapm.qq.com/entrance/1/uploadFile/?");
+      ((StringBuilder)localObject4).append(((StringBuffer)localObject3).toString());
+      localObject3 = ((StringBuilder)localObject4).toString();
+      if (QLog.isColorLevel())
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("[qcloud_report_cio] file url: ");
+        ((StringBuilder)localObject4).append((String)localObject3);
+        QLog.i("CIOSubmitUtils", 2, ((StringBuilder)localObject4).toString());
+      }
+      localObject4 = new CIOSubmitUtils.UploadFileUtil(BaseApplication.getContext());
+      ((CIOSubmitUtils.UploadFileUtil)localObject4).a((String)localObject2);
+      ((CIOSubmitUtils.UploadFileUtil)localObject4).b((String)localObject3);
+      ((CIOSubmitUtils.UploadFileUtil)localObject4).a((JSONObject)localObject1);
+      localObject1 = ((CIOSubmitUtils.UploadFileUtil)localObject4).a();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("submitCIOReportAsyncV2 result:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("CIOSubmitUtils", 2, ((StringBuilder)localObject2).toString());
+      }
+      CIOSubmitUtils.a();
+      return;
     }
     catch (Throwable localThrowable)
     {
       QLog.e("CIOSubmitUtils", 1, "submitCIOReportAsyncV2 ERR", localThrowable);
-      return;
     }
-    Object localObject2 = "https://sngapm.qq.com/entrance/1/uploadFile/?" + ((StringBuffer)localObject2).toString();
-    if (QLog.isColorLevel()) {
-      QLog.i("CIOSubmitUtils", 2, "[qcloud_report_cio] file url: " + (String)localObject2);
-    }
-    Object localObject3 = new CIOSubmitUtils.UploadFileUtil(BaseApplication.getContext());
-    ((CIOSubmitUtils.UploadFileUtil)localObject3).a(str2);
-    ((CIOSubmitUtils.UploadFileUtil)localObject3).b((String)localObject2);
-    ((CIOSubmitUtils.UploadFileUtil)localObject3).a(localThrowable);
-    String str1 = ((CIOSubmitUtils.UploadFileUtil)localObject3).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("CIOSubmitUtils", 2, "submitCIOReportAsyncV2 result:" + str1);
-    }
-    CIOSubmitUtils.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.debug.CIOSubmitUtils.2
  * JD-Core Version:    0.7.0.1
  */

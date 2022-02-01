@@ -27,8 +27,6 @@ public abstract interface IChatPanelBarController
   
   public abstract void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, int[] paramArrayOfInt, int paramInt);
   
-  public abstract void a(List<int[]> paramList);
-  
   public abstract void a(boolean paramBoolean, BaseChatPie paramBaseChatPie);
   
   public abstract boolean a(View paramView);
@@ -39,7 +37,7 @@ public abstract interface IChatPanelBarController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.IChatPanelBarController
  * JD-Core Version:    0.7.0.1
  */

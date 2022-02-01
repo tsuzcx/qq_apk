@@ -22,22 +22,26 @@ final class QAPMUploadProxy$report$1
   
   public final boolean invoke(String paramString)
   {
+    boolean bool2 = false;
     Object localObject = (Iterable)CollectionsKt.listOf(new String[] { "p_id", "version" });
     if (((localObject instanceof Collection)) && (((Collection)localObject).isEmpty())) {
       return false;
     }
     localObject = ((Iterable)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (Intrinsics.areEqual((String)((Iterator)localObject).next(), paramString)) {
-        return true;
+    do
+    {
+      bool1 = bool2;
+      if (!((Iterator)localObject).hasNext()) {
+        break;
       }
-    }
-    return false;
+    } while (!Intrinsics.areEqual((String)((Iterator)localObject).next(), paramString));
+    boolean bool1 = true;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.proxy.QAPMUploadProxy.report.1
  * JD-Core Version:    0.7.0.1
  */

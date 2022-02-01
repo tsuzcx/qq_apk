@@ -34,10 +34,12 @@ public class PlayerProgressBar
   
   private int a(int paramInt)
   {
-    if (this.g == this.c) {
+    int i = this.g;
+    int j = this.c;
+    if (i == j) {
       return paramInt;
     }
-    int i = this.g * paramInt / this.c;
+    i = paramInt * i / j;
     paramInt = i;
     if (i <= 0) {
       paramInt = 1;
@@ -47,10 +49,11 @@ public class PlayerProgressBar
   
   private int a(int paramInt1, int paramInt2)
   {
-    if (paramInt1 == this.jdField_a_of_type_Int) {
+    int i = this.jdField_a_of_type_Int;
+    if (paramInt1 == i) {
       return paramInt2;
     }
-    paramInt2 = paramInt2 * paramInt1 / this.jdField_a_of_type_Int;
+    paramInt2 = paramInt2 * paramInt1 / i;
     paramInt1 = paramInt2;
     if (paramInt2 <= 0) {
       paramInt1 = 1;
@@ -58,52 +61,56 @@ public class PlayerProgressBar
     return paramInt1;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (super.isInEditMode()) {}
-    int j;
-    int i;
-    do
-    {
+    if (super.isInEditMode()) {
       return;
-      if (this.b > this.jdField_a_of_type_Int) {
-        this.b = this.jdField_a_of_type_Int;
-      }
-      j = super.getWidth();
-      int k = super.getHeight();
-      i = a(this.b, j);
-      this.jdField_a_of_type_AndroidGraphicsRect.top = 0;
-      this.jdField_a_of_type_AndroidGraphicsRect.bottom = k;
-      this.jdField_a_of_type_AndroidGraphicsRect.left = i;
-      this.jdField_a_of_type_AndroidGraphicsRect.right = j;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      j = a(i);
-      this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
-      this.jdField_a_of_type_AndroidGraphicsRect.right = j;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-    } while (j >= i);
-    this.jdField_a_of_type_AndroidGraphicsRect.left = j;
-    this.jdField_a_of_type_AndroidGraphicsRect.right = i;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
+    }
+    int i = this.b;
+    int j = this.jdField_a_of_type_Int;
+    if (i > j) {
+      this.b = j;
+    }
+    j = super.getWidth();
+    int k = super.getHeight();
+    i = a(this.b, j);
+    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    localRect.top = 0;
+    localRect.bottom = k;
+    localRect.left = i;
+    localRect.right = j;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
     paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    j = a(i);
+    localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    localRect.left = 0;
+    localRect.right = j;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
+    paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (j < i)
+    {
+      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      localRect.left = j;
+      localRect.right = i;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
+      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
   }
   
   public void setCurrentProgress(int paramInt, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (this.g = this.c;; this.g = paramInt)
-    {
-      super.postInvalidate();
-      return;
+    if (paramBoolean) {
+      this.g = this.c;
+    } else {
+      this.g = paramInt;
     }
+    super.postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.PlayerProgressBar
  * JD-Core Version:    0.7.0.1
  */

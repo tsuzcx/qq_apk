@@ -13,8 +13,9 @@ class HotChatCenterManager$5
   
   public void run()
   {
-    localObject3 = null;
+    Object localObject3 = null;
     Object localObject1 = localObject3;
+    Object localObject2;
     try
     {
       if (this.this$0.jdField_a_of_type_JavaUtilSet != null)
@@ -27,20 +28,17 @@ class HotChatCenterManager$5
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("HotChatCenterManager", 1, localThrowable, new Object[0]);
-        Object localObject2 = localObject3;
-      }
+      QLog.e("HotChatCenterManager", 1, localThrowable, new Object[0]);
+      localObject2 = localObject3;
     }
-    if ((localObject1 != null) && (this.this$0.jdField_a_of_type_AndroidContentSharedPreferences != null)) {
-      SharedPreferencesHandler.a(this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit(), "hotchat_new_unread_list", (Object[])localObject1).commit();
+    if ((localObject2 != null) && (this.this$0.jdField_a_of_type_AndroidContentSharedPreferences != null)) {
+      SharedPreferencesHandler.a(this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit(), "hotchat_new_unread_list", localObject2).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatCenterManager.5
  * JD-Core Version:    0.7.0.1
  */

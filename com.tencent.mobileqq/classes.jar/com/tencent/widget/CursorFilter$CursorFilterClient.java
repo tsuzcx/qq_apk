@@ -4,17 +4,17 @@ import android.database.Cursor;
 
 abstract interface CursorFilter$CursorFilterClient
 {
-  public abstract Cursor a();
+  public abstract void changeCursor(Cursor paramCursor);
   
-  public abstract Cursor a(CharSequence paramCharSequence);
+  public abstract CharSequence convertToString(Cursor paramCursor);
   
-  public abstract CharSequence a(Cursor paramCursor);
+  public abstract Cursor getCursor();
   
-  public abstract void a(Cursor paramCursor);
+  public abstract Cursor runQueryOnBackgroundThread(CharSequence paramCharSequence);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.CursorFilter.CursorFilterClient
  * JD-Core Version:    0.7.0.1
  */

@@ -13,22 +13,23 @@ class VideoPlayerView$3
   
   public void a(IVideoView paramIVideoView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.a();
+    if (this.a.mVideoInfoListener != null) {
+      ((IVideoPlayerView.VideoInfoListener)this.a.mVideoInfoListener).onComplete();
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-    paramIVideoView = VideoPlayerView.a(this.a).a;
-    if (this.a.c()) {}
-    for (int i = 1;; i = 2)
-    {
-      QualityReporter.a(paramIVideoView, i);
-      return;
+    this.a.mHandler.removeMessages(2025);
+    paramIVideoView = VideoPlayerView.access$200(this.a).a;
+    int i;
+    if (this.a.isVideoCached()) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    QualityReporter.a(paramIVideoView, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerView.3
  * JD-Core Version:    0.7.0.1
  */

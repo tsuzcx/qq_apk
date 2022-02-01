@@ -48,16 +48,21 @@ public final class SingleSampleMediaSource
   }
   
   @Deprecated
-  public SingleSampleMediaSource(Uri paramUri, DataSource.Factory paramFactory, Format paramFormat, long paramLong, int paramInt1, Handler paramHandler, SingleSampleMediaSource.EventListener paramEventListener, int paramInt2, boolean paramBoolean) {}
+  public SingleSampleMediaSource(Uri paramUri, DataSource.Factory paramFactory, Format paramFormat, long paramLong, int paramInt1, Handler paramHandler, SingleSampleMediaSource.EventListener paramEventListener, int paramInt2, boolean paramBoolean)
+  {
+    this(paramUri, paramFactory, paramFormat, paramLong, paramInt1, paramHandler, paramEventListener, paramBoolean);
+  }
   
   public MediaPeriod createPeriod(MediaSource.MediaPeriodId paramMediaPeriodId, Allocator paramAllocator)
   {
-    if (paramMediaPeriodId.periodIndex == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkArgument(bool);
-      return new SingleSampleMediaPeriod(this.dataSpec, this.dataSourceFactory, this.format, this.durationUs, this.minLoadableRetryCount, this.eventDispatcher, this.treatLoadErrorsAsEndOfStream);
+    boolean bool;
+    if (paramMediaPeriodId.periodIndex == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkArgument(bool);
+    return new SingleSampleMediaPeriod(this.dataSpec, this.dataSourceFactory, this.format, this.durationUs, this.minLoadableRetryCount, this.eventDispatcher, this.treatLoadErrorsAsEndOfStream);
   }
   
   public void maybeThrowSourceInfoRefreshError() {}
@@ -76,7 +81,7 @@ public final class SingleSampleMediaSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.SingleSampleMediaSource
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/idt" />
-    <item android:state_enabled="false" android:drawable="@drawable/idr" />
-    <item android:drawable="@drawable/ids" />
-</selector>
+    <solid android:color="#ff171717" />
+    <corners android:topLeftRadius="8.0dip" android:topRightRadius="8.0dip" android:bottomLeftRadius="8.0dip" android:bottomRightRadius="8.0dip" />
+</shape>

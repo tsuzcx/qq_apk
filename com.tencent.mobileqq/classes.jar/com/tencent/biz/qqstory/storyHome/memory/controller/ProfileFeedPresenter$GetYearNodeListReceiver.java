@@ -22,11 +22,13 @@ public class ProfileFeedPresenter$GetYearNodeListReceiver
         ProfileFeedPresenter.a(paramProfileFeedPresenter, paramGetYearNodeListEvent.jdField_a_of_type_JavaUtilList, true);
         ProfileFeedPresenter.a(paramProfileFeedPresenter).a(true);
       }
-      return;
     }
-    ProfileFeedPresenter.a(paramProfileFeedPresenter, paramGetYearNodeListEvent);
-    ProfileFeedPresenter.a(paramProfileFeedPresenter).remove(ProfileFeedPresenter.b());
-    ProfileFeedPresenter.a(paramProfileFeedPresenter);
+    else
+    {
+      ProfileFeedPresenter.a(paramProfileFeedPresenter, paramGetYearNodeListEvent);
+      ProfileFeedPresenter.a(paramProfileFeedPresenter).remove(ProfileFeedPresenter.b());
+      ProfileFeedPresenter.a(paramProfileFeedPresenter);
+    }
   }
   
   public Class acceptEventClass()
@@ -36,7 +38,7 @@ public class ProfileFeedPresenter$GetYearNodeListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter.GetYearNodeListReceiver
  * JD-Core Version:    0.7.0.1
  */

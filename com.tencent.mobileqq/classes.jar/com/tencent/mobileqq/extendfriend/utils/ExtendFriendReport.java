@@ -5,10 +5,11 @@ import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
-import com.tencent.mobileqq.extendfriend.bean.StrangerInfo;
-import com.tencent.mobileqq.extendfriend.bean.StrangerInfo.LabelInfo;
-import com.tencent.mobileqq.extendfriend.bean.StrangerInfo.SchoolInfo;
+import com.tencent.mobileqq.qqexpand.bean.feed.StrangerInfo;
+import com.tencent.mobileqq.qqexpand.bean.feed.StrangerInfo.LabelInfo;
+import com.tencent.mobileqq.qqexpand.bean.feed.StrangerInfo.SchoolInfo;
+import com.tencent.mobileqq.qqexpand.manager.IExpandManager;
+import com.tencent.mobileqq.qqexpand.utils.IExpandReportUtils;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.soso.location.api.ISosoInterfaceApi;
 import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
@@ -22,17 +23,11 @@ import java.util.Map;
 public class ExtendFriendReport
 {
   private static int jdField_a_of_type_Int = -1;
-  private static StrangerInfo jdField_a_of_type_ComTencentMobileqqExtendfriendBeanStrangerInfo = null;
   private static ExtendFriendReport jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendReport;
+  private static StrangerInfo jdField_a_of_type_ComTencentMobileqqQqexpandBeanFeedStrangerInfo;
   private static String jdField_a_of_type_JavaLangString;
   private static int jdField_b_of_type_Int = -1;
   private static String jdField_b_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = null;
-    jdField_b_of_type_JavaLangString = null;
-  }
   
   public static int a()
   {
@@ -49,81 +44,83 @@ public class ExtendFriendReport
   
   public static String a()
   {
-    String str = "";
-    if (jdField_b_of_type_Int >= 0) {
-      str = String.valueOf(jdField_b_of_type_Int + 1);
+    int i = jdField_b_of_type_Int;
+    if (i >= 0) {
+      return String.valueOf(i + 1);
     }
-    return str;
+    return "";
   }
   
   public static String a(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = (ExtendFriendManager)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-      if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.jdField_b_of_type_JavaLangString))) {}
-    }
-    for (paramQQAppInterface = paramQQAppInterface.jdField_b_of_type_JavaLangString;; paramQQAppInterface = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendReport", 0, String.format("getRecomTrace1 strRecomTrace=%s", new Object[] { paramQQAppInterface }));
+      paramQQAppInterface = (IExpandManager)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.a())))
+      {
+        paramQQAppInterface = paramQQAppInterface.a();
+        break label44;
       }
-      return paramQQAppInterface;
     }
+    paramQQAppInterface = "";
+    label44:
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendReport", 0, String.format("getRecomTrace1 strRecomTrace=%s", new Object[] { paramQQAppInterface }));
+    }
+    return paramQQAppInterface;
   }
   
   public static String a(StrangerInfo paramStrangerInfo)
   {
-    StrangerInfo.LabelInfo localLabelInfo = null;
-    Object localObject1 = "";
-    if (paramStrangerInfo != null) {
-      if ((paramStrangerInfo.mSchoolInfos == null) || (paramStrangerInfo.mSchoolInfos.isEmpty())) {
-        break label224;
-      }
-    }
-    label224:
-    for (localObject1 = (StrangerInfo.SchoolInfo)paramStrangerInfo.mSchoolInfos.get(0);; localObject1 = null)
+    if (paramStrangerInfo != null)
     {
-      long l;
-      if (localObject1 != null)
-      {
-        l = ((StrangerInfo.SchoolInfo)localObject1).a;
-        localObject1 = ((StrangerInfo.SchoolInfo)localObject1).jdField_b_of_type_JavaLangString;
-      }
-      for (String str = String.valueOf(l);; str = null)
-      {
-        Object localObject2 = localLabelInfo;
-        if (paramStrangerInfo.mLabelInfos != null)
-        {
-          localObject2 = localLabelInfo;
-          if (!paramStrangerInfo.mLabelInfos.isEmpty())
-          {
-            localObject2 = new StringBuilder();
-            paramStrangerInfo = paramStrangerInfo.mLabelInfos.iterator();
-            int i = 1;
-            if (paramStrangerInfo.hasNext())
-            {
-              localLabelInfo = (StrangerInfo.LabelInfo)paramStrangerInfo.next();
-              if (i != 0)
-              {
-                ((StringBuilder)localObject2).append(localLabelInfo.jdField_a_of_type_JavaLangString);
-                i = 0;
-              }
-              for (;;)
-              {
-                break;
-                ((StringBuilder)localObject2).append(",");
-                ((StringBuilder)localObject2).append(localLabelInfo.jdField_a_of_type_JavaLangString);
-              }
-            }
-            localObject2 = ((StringBuilder)localObject2).toString();
-          }
-        }
-        localObject1 = String.format("%s_%s_%s", new Object[] { str, localObject1, localObject2 });
-        return localObject1;
+      Object localObject1 = paramStrangerInfo.mSchoolInfos;
+      StrangerInfo.LabelInfo localLabelInfo = null;
+      if ((localObject1 != null) && (!paramStrangerInfo.mSchoolInfos.isEmpty())) {
+        localObject1 = (StrangerInfo.SchoolInfo)paramStrangerInfo.mSchoolInfos.get(0);
+      } else {
         localObject1 = null;
       }
+      Object localObject2;
+      if (localObject1 != null)
+      {
+        localObject2 = String.valueOf(((StrangerInfo.SchoolInfo)localObject1).a);
+        localObject1 = ((StrangerInfo.SchoolInfo)localObject1).jdField_b_of_type_JavaLangString;
+      }
+      else
+      {
+        localObject1 = null;
+        localObject2 = localObject1;
+      }
+      Object localObject3 = localLabelInfo;
+      if (paramStrangerInfo.mLabelInfos != null)
+      {
+        localObject3 = localLabelInfo;
+        if (!paramStrangerInfo.mLabelInfos.isEmpty())
+        {
+          localObject3 = new StringBuilder();
+          paramStrangerInfo = paramStrangerInfo.mLabelInfos.iterator();
+          int i = 1;
+          while (paramStrangerInfo.hasNext())
+          {
+            localLabelInfo = (StrangerInfo.LabelInfo)paramStrangerInfo.next();
+            if (i != 0)
+            {
+              ((StringBuilder)localObject3).append(localLabelInfo.jdField_a_of_type_JavaLangString);
+              i = 0;
+            }
+            else
+            {
+              ((StringBuilder)localObject3).append(",");
+              ((StringBuilder)localObject3).append(localLabelInfo.jdField_a_of_type_JavaLangString);
+            }
+          }
+          localObject3 = ((StringBuilder)localObject3).toString();
+        }
+      }
+      return String.format("%s_%s_%s", new Object[] { localObject2, localObject1, localObject3 });
     }
+    return "";
   }
   
   public static String a(String paramString)
@@ -137,13 +134,22 @@ public class ExtendFriendReport
     return "";
   }
   
+  public static void a()
+  {
+    jdField_a_of_type_Int = -1;
+    jdField_b_of_type_Int = -1;
+    jdField_a_of_type_JavaLangString = null;
+    jdField_b_of_type_JavaLangString = null;
+    jdField_a_of_type_ComTencentMobileqqQqexpandBeanFeedStrangerInfo = null;
+  }
+  
   public static void a(int paramInt1, int paramInt2, String paramString1, String paramString2, StrangerInfo paramStrangerInfo)
   {
     jdField_a_of_type_Int = paramInt1;
     jdField_b_of_type_Int = paramInt2;
     jdField_a_of_type_JavaLangString = paramString1;
     jdField_b_of_type_JavaLangString = paramString2;
-    jdField_a_of_type_ComTencentMobileqqExtendfriendBeanStrangerInfo = paramStrangerInfo;
+    jdField_a_of_type_ComTencentMobileqqQqexpandBeanFeedStrangerInfo = paramStrangerInfo;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -153,9 +159,9 @@ public class ExtendFriendReport
     }
     if ((!TextUtils.isEmpty(paramString)) && (paramQQAppInterface != null))
     {
-      paramQQAppInterface = (ExtendFriendManager)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      paramQQAppInterface = (IExpandManager)paramQQAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
       if (paramQQAppInterface != null) {
-        paramQQAppInterface.jdField_b_of_type_JavaLangString = paramString;
+        paramQQAppInterface.a(paramString);
       }
     }
   }
@@ -167,37 +173,18 @@ public class ExtendFriendReport
   
   public static String b()
   {
-    String str = "";
     if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      str = jdField_a_of_type_JavaLangString;
+      return jdField_a_of_type_JavaLangString;
     }
-    return str;
-  }
-  
-  public static void b()
-  {
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Int = -1;
-    jdField_a_of_type_JavaLangString = null;
-    jdField_b_of_type_JavaLangString = null;
-    jdField_a_of_type_ComTencentMobileqqExtendfriendBeanStrangerInfo = null;
+    return "";
   }
   
   public static String c()
   {
-    String str = "";
     if (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) {
-      str = jdField_b_of_type_JavaLangString;
+      return jdField_b_of_type_JavaLangString;
     }
-    return str;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, "reportEntry");
-    }
-    a("", "extend_friend_entry", true, 0L, 0L, new HashMap(), "");
+    return "";
   }
   
   public void a(int paramInt)
@@ -224,30 +211,35 @@ public class ExtendFriendReport
     a("", "extend_friend_pre_download", paramBoolean, 0L, 0L, localHashMap, "");
   }
   
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendReport", 0, "reportEntry");
+    }
+    a("", "extend_friend_entry", true, 0L, 0L, new HashMap(), "");
+  }
+  
   public void b(int paramInt)
   {
-    Object localObject2 = "";
-    Object localObject1 = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getSosoInfo();
-    if ((localObject1 != null) && (((SosoLbsInfo)localObject1).mLocation != null))
+    Object localObject2 = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getSosoInfo();
+    Object localObject1 = "";
+    if ((localObject2 != null) && (((SosoLbsInfo)localObject2).mLocation != null))
     {
-      localObject2 = ((SosoLbsInfo)localObject1).mLocation;
-      if (!TextUtils.isEmpty(((SosoLocation)localObject2).city))
-      {
+      localObject2 = ((SosoLbsInfo)localObject2).mLocation;
+      if (!TextUtils.isEmpty(((SosoLocation)localObject2).city)) {
         localObject1 = ((SosoLocation)localObject2).city;
-        localObject2 = String.format("%s;%s", new Object[] { Double.valueOf(((SosoLocation)localObject2).mLat02), Double.valueOf(((SosoLocation)localObject2).mLon02) });
       }
+      localObject2 = String.format("%s;%s", new Object[] { Double.valueOf(((SosoLocation)localObject2).mLat02), Double.valueOf(((SosoLocation)localObject2).mLon02) });
     }
-    for (;;)
+    else
     {
-      ReportController.b(null, "dc00898", "", "", "0X800A68C", "0X800A68C", paramInt, 0, "", "", (String)localObject1, (String)localObject2);
-      localObject1 = new HashMap();
-      ((HashMap)localObject1).put("frompage", String.valueOf(paramInt));
-      ExpandReportUtils.a("expose#chat_tab#view", true, -1L, -1L, (Map)localObject1, true, true);
-      return;
       localObject1 = "";
-      break;
-      localObject1 = "";
+      localObject2 = localObject1;
     }
+    ReportController.b(null, "dc00898", "", "", "0X800A68C", "0X800A68C", paramInt, 0, "", "", (String)localObject1, (String)localObject2);
+    localObject1 = new HashMap();
+    ((HashMap)localObject1).put("frompage", String.valueOf(paramInt));
+    ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).onUserActionToTunnel("expose#chat_tab#view", true, -1L, -1L, (Map)localObject1, true, true);
   }
   
   public void b(boolean paramBoolean, int paramInt)
@@ -282,7 +274,7 @@ public class ExtendFriendReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.utils.ExtendFriendReport
  * JD-Core Version:    0.7.0.1
  */

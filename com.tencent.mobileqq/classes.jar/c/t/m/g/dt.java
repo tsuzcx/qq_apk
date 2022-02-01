@@ -69,13 +69,14 @@ public final class dt
         localHandler = new Handler(Looper.myLooper());
       }
     }
-    if (localHandler == null) {}
-    for (paramHandler = new Timer("th_loc_tmp");; paramHandler = null)
+    if (localHandler == null) {
+      paramHandler = new Timer("th_loc_tmp");
+    } else {
+      paramHandler = null;
+    }
+    paramHandlerThread = new dt.1(paramHandlerThread, localHandler, paramHandler);
+    if (localHandler != null)
     {
-      paramHandlerThread = new dt.1(paramHandlerThread, localHandler, paramHandler);
-      if (localHandler == null) {
-        break;
-      }
       localHandler.postDelayed(paramHandlerThread, paramLong);
       return;
     }
@@ -95,7 +96,7 @@ public final class dt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dt
  * JD-Core Version:    0.7.0.1
  */

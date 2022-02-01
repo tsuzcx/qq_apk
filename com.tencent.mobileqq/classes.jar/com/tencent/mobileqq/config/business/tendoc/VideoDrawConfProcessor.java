@@ -21,18 +21,19 @@ public class VideoDrawConfProcessor
     if (QLog.isColorLevel()) {
       QLog.d("VideoDrawConfProcessor", 2, "onParsed");
     }
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0)) {
-      paramArrayOfQConfItem = null;
-    }
-    String str;
-    do
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" onParsed, content:");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.d("VideoDrawConfProcessor", 2, localStringBuilder.toString());
+      }
       return paramArrayOfQConfItem;
-      str = paramArrayOfQConfItem[0].a;
-      paramArrayOfQConfItem = str;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoDrawConfProcessor", 2, " onParsed, content:" + str);
-    return str;
+    }
+    return null;
   }
   
   public void a(String paramString)
@@ -76,7 +77,7 @@ public class VideoDrawConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.VideoDrawConfProcessor
  * JD-Core Version:    0.7.0.1
  */

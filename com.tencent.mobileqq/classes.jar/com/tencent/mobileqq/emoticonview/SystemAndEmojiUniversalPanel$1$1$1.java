@@ -16,18 +16,18 @@ class SystemAndEmojiUniversalPanel$1$1$1
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) || (paramInt == 2))
+    if ((paramInt != 0) && (paramInt != 2))
     {
-      URLDrawable.resume();
-      SystemAndEmojiUniversalPanel.access$300(this.this$2.this$1.this$0, this.this$2.val$panelData, SystemAndEmojiUniversalPanel.access$200(this.this$2.this$1.this$0));
+      URLDrawable.pause();
       return;
     }
-    URLDrawable.pause();
+    URLDrawable.resume();
+    SystemAndEmojiUniversalPanel.access$300(this.this$2.this$1.this$0, this.this$2.val$panelData, SystemAndEmojiUniversalPanel.access$200(this.this$2.this$1.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel.1.1.1
  * JD-Core Version:    0.7.0.1
  */

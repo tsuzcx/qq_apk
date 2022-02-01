@@ -9,14 +9,15 @@ class TroopGiftToAllSurfaceView$1
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    FrameSprite.OnFrameEndListener localOnFrameEndListener = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener;
+    if (localOnFrameEndListener != null) {
+      localOnFrameEndListener.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.1
  * JD-Core Version:    0.7.0.1
  */

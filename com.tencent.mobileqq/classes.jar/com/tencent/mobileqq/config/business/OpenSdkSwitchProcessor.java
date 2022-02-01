@@ -31,42 +31,49 @@ public class OpenSdkSwitchProcessor
   @Nullable
   public OpenSdkSwitchConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfQConfItem != null)
+    Object localObject = null;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfQConfItem.length > 0)
+      String str = paramArrayOfQConfItem[0].a;
+      if (!TextUtils.isEmpty(str))
       {
-        localObject1 = paramArrayOfQConfItem[0].a;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label125;
+        paramArrayOfQConfItem = new StringBuilder();
+        paramArrayOfQConfItem.append("OpenVirtual.[onParsed] type=");
+        paramArrayOfQConfItem.append(type());
+        paramArrayOfQConfItem.append(", content = ");
+        paramArrayOfQConfItem.append(str);
+        QLog.d("OpenSdkSwitchProcessor", 1, paramArrayOfQConfItem.toString());
+        try
+        {
+          paramArrayOfQConfItem = (OpenSdkSwitchConfBean.OpenSdkSwitchConfig)QStorage.a(str, OpenSdkSwitchConfBean.OpenSdkSwitchConfig.class);
         }
-        QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onParsed] type=" + type() + ", content = " + (String)localObject1);
+        catch (QStorageInstantiateException paramArrayOfQConfItem)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("readJsonOrXml:");
+          localStringBuilder.append(str);
+          localStringBuilder.append("fail");
+          QLog.i("OpenSdkSwitchProcessor", 1, localStringBuilder.toString(), paramArrayOfQConfItem);
+          paramArrayOfQConfItem = localObject;
+        }
+        return new OpenSdkSwitchConfBean(str, paramArrayOfQConfItem);
       }
+      paramArrayOfQConfItem = new StringBuilder();
+      paramArrayOfQConfItem.append("OpenVirtual.[onParsed] content is empty, config type = ");
+      paramArrayOfQConfItem.append(type());
+      QLog.d("OpenSdkSwitchProcessor", 1, paramArrayOfQConfItem.toString());
     }
-    try
-    {
-      paramArrayOfQConfItem = (OpenSdkSwitchConfBean.OpenSdkSwitchConfig)QStorage.a(localObject1, OpenSdkSwitchConfBean.OpenSdkSwitchConfig.class);
-      localObject1 = new OpenSdkSwitchConfBean((String)localObject1, paramArrayOfQConfItem);
-      return localObject1;
-    }
-    catch (QStorageInstantiateException paramArrayOfQConfItem)
-    {
-      for (;;)
-      {
-        QLog.i("OpenSdkSwitchProcessor", 1, "readJsonOrXml:" + (String)localObject1 + "fail", paramArrayOfQConfItem);
-        paramArrayOfQConfItem = null;
-      }
-    }
-    label125:
-    QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onParsed] content is empty, config type = " + type());
     return null;
   }
   
   public void a(OpenSdkSwitchConfBean paramOpenSdkSwitchConfBean)
   {
-    QLog.d("OpenSdkSwitchProcessor", 1, "OpenVirtual.[onUpdate] type=" + type() + ", content = " + paramOpenSdkSwitchConfBean.a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OpenVirtual.[onUpdate] type=");
+    localStringBuilder.append(type());
+    localStringBuilder.append(", content = ");
+    localStringBuilder.append(paramOpenSdkSwitchConfBean.a());
+    QLog.d("OpenSdkSwitchProcessor", 1, localStringBuilder.toString());
   }
   
   public Class<OpenSdkSwitchConfBean> clazz()
@@ -103,7 +110,7 @@ public class OpenSdkSwitchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkSwitchProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -34,12 +34,40 @@ public class ARCloudReqInfo
   
   public String toString()
   {
-    return "ARCloudReqInfo{sessionId = " + this.jdField_a_of_type_JavaLangString + ", fileInfo = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo + ", longitude = " + this.jdField_a_of_type_Int + ", latitude = " + this.jdField_b_of_type_Int + ", recogType = " + this.jdField_a_of_type_Long + ", businessType = " + this.c + ", markerInfo = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqMarkerInfo + ", objectClassifyInfo = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqObjectClassifyInfo + ", preOcrInfo = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqPreOcrInfo + ", sceneRecogInfo = " + this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqSceneRecogInfo + ", ocrInfo = " + this.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo + ", appid = " + this.jdField_b_of_type_JavaLangString + ", uin = " + this.jdField_b_of_type_Long + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARCloudReqInfo{sessionId = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", fileInfo = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo);
+    localStringBuilder.append(", longitude = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", latitude = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", recogType = ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", businessType = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", markerInfo = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqMarkerInfo);
+    localStringBuilder.append(", objectClassifyInfo = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqObjectClassifyInfo);
+    localStringBuilder.append(", preOcrInfo = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqPreOcrInfo);
+    localStringBuilder.append(", sceneRecogInfo = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqSceneRecogInfo);
+    localStringBuilder.append(", ocrInfo = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo);
+    localStringBuilder.append(", appid = ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", uin = ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudReqInfo
  * JD-Core Version:    0.7.0.1
  */

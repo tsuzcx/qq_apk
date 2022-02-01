@@ -48,106 +48,97 @@ public class StructMsgItemAvatar
     Object localObject2 = paramContext.getResources();
     LinearLayout localLinearLayout;
     Object localObject1;
-    Object localObject3;
     if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
       localLinearLayout = (LinearLayout)paramView;
-      localObject1 = (ImageView)localLinearLayout.findViewById(2131380217);
-      paramBundle = (ImageView)localLinearLayout.findViewById(2131380220);
-      paramView = (TextView)localLinearLayout.findViewById(2131380218);
-      localObject3 = ImageUtil.d();
-      localObject2 = localObject3;
-      if ((paramContext instanceof BaseActivity)) {
-        localObject2 = FaceDrawable.getFaceDrawable(((BaseActivity)paramContext).app, 1, this.ac, 3, (Drawable)localObject3, (Drawable)localObject3);
-      }
-      ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
-      if (paramBundle != null)
-      {
-        if (paramInt != 2) {
-          break label594;
-        }
-        paramBundle.setImageResource(2130850886);
-      }
+      paramView = (ImageView)localLinearLayout.findViewById(2131379534);
+      paramBundle = (ImageView)localLinearLayout.findViewById(2131379537);
+      localObject1 = (TextView)localLinearLayout.findViewById(2131379535);
     }
-    for (;;)
+    else
     {
-      if (paramView != null)
-      {
-        paramView.setText(this.ad);
-        paramView.setTextSize(2, 20.0F);
-        paramView.setTextColor(-1);
-        paramView.setSingleLine();
-        paramView.setEllipsize(TextUtils.TruncateAt.END);
-      }
-      return localLinearLayout;
       localLinearLayout = new LinearLayout(paramContext);
-      localLinearLayout.setId(2131380219);
+      localLinearLayout.setId(2131379536);
       localLinearLayout.setOrientation(1);
-      if (this.o == 4)
-      {
+      int i = this.o;
+      int j = 53;
+      if (i == 4) {
         i = 53;
-        label193:
-        if (this.o != 4) {
-          break label406;
-        }
+      } else {
+        i = 180;
       }
-      label406:
-      for (int j = 53;; j = 135)
+      if (this.o != 4) {
+        j = 135;
+      }
+      i = paramBundle.getInt("bundle_args_cover_width", AIOUtils.b(i, (Resources)localObject2));
+      j = paramBundle.getInt("bundle_args_cover_height", AIOUtils.b(j, (Resources)localObject2));
+      localObject1 = new FrameLayout(paramContext);
+      paramView = new LinearLayout.LayoutParams(i, j);
+      paramView.gravity = 1;
+      ((FrameLayout)localObject1).setLayoutParams(paramView);
+      localLinearLayout.addView((View)localObject1);
+      if (paramInt == 4)
       {
-        i = paramBundle.getInt("bundle_args_cover_width", AIOUtils.a(i, (Resources)localObject2));
-        j = paramBundle.getInt("bundle_args_cover_height", AIOUtils.a(j, (Resources)localObject2));
-        paramView = new FrameLayout(paramContext);
-        localObject1 = new LinearLayout.LayoutParams(i, j);
-        ((LinearLayout.LayoutParams)localObject1).gravity = 1;
-        paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localLinearLayout.addView(paramView);
-        if (paramInt != 4) {
-          break label414;
-        }
-        i = paramBundle.getInt("bundle_args_avatar_width", AIOUtils.a(50.0F, (Resources)localObject2));
-        j = paramBundle.getInt("bundle_args_avatar_height", AIOUtils.a(50.0F, (Resources)localObject2));
-        localObject1 = new ImageView(paramContext);
-        ((ImageView)localObject1).setId(2131380217);
+        i = paramBundle.getInt("bundle_args_avatar_width", AIOUtils.b(50.0F, (Resources)localObject2));
+        j = paramBundle.getInt("bundle_args_avatar_height", AIOUtils.b(50.0F, (Resources)localObject2));
+        paramView = new ImageView(paramContext);
+        paramView.setId(2131379534);
         paramBundle = new FrameLayout.LayoutParams(i, j);
         paramBundle.gravity = 17;
-        paramView.addView((View)localObject1, paramBundle);
+        ((FrameLayout)localObject1).addView(paramView, paramBundle);
         paramBundle = new ImageView(paramContext);
-        paramBundle.setId(2131380220);
-        paramView.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
-        paramView = null;
-        break;
-        i = 180;
-        break label193;
+        paramBundle.setId(2131379537);
+        ((FrameLayout)localObject1).addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
+        localObject1 = null;
       }
-      label414:
-      int i = paramBundle.getInt("bundle_args_avatar_width", AIOUtils.a(80.0F, (Resources)localObject2));
-      j = paramBundle.getInt("bundle_args_avatar_height", AIOUtils.a(80.0F, (Resources)localObject2));
-      localObject1 = new ImageView(paramContext);
-      ((ImageView)localObject1).setId(2131380217);
-      paramBundle = new FrameLayout.LayoutParams(i, j);
-      paramBundle.gravity = 17;
-      paramView.addView((View)localObject1, paramBundle);
-      paramBundle = new ImageView(paramContext);
-      paramBundle.setId(2131380220);
-      paramView.addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
-      paramView = new TextView(paramContext);
-      paramView.setId(2131380218);
-      localObject3 = new LinearLayout.LayoutParams(AIOUtils.a(180.0F, (Resources)localObject2), -2);
-      ((LinearLayout.LayoutParams)localObject3).gravity = 1;
-      ((LinearLayout.LayoutParams)localObject3).topMargin = AIOUtils.a(5.0F, (Resources)localObject2);
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-      paramView.setGravity(1);
-      localLinearLayout.addView(paramView);
-      break;
-      label594:
-      if (paramInt == 1) {
-        paramBundle.setImageResource(2130850888);
-      } else if (paramInt == 3) {
-        paramBundle.setImageResource(2130850887);
-      } else if (paramInt == 4) {
-        paramBundle.setImageResource(2130850885);
+      else
+      {
+        i = paramBundle.getInt("bundle_args_avatar_width", AIOUtils.b(80.0F, (Resources)localObject2));
+        j = paramBundle.getInt("bundle_args_avatar_height", AIOUtils.b(80.0F, (Resources)localObject2));
+        paramView = new ImageView(paramContext);
+        paramView.setId(2131379534);
+        paramBundle = new FrameLayout.LayoutParams(i, j);
+        paramBundle.gravity = 17;
+        ((FrameLayout)localObject1).addView(paramView, paramBundle);
+        paramBundle = new ImageView(paramContext);
+        paramBundle.setId(2131379537);
+        ((FrameLayout)localObject1).addView(paramBundle, new FrameLayout.LayoutParams(-1, -1));
+        localObject1 = new TextView(paramContext);
+        ((TextView)localObject1).setId(2131379535);
+        localObject3 = new LinearLayout.LayoutParams(AIOUtils.b(180.0F, (Resources)localObject2), -2);
+        ((LinearLayout.LayoutParams)localObject3).gravity = 1;
+        ((LinearLayout.LayoutParams)localObject3).topMargin = AIOUtils.b(5.0F, (Resources)localObject2);
+        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+        ((TextView)localObject1).setGravity(1);
+        localLinearLayout.addView((View)localObject1);
       }
     }
+    Object localObject3 = ImageUtil.f();
+    localObject2 = localObject3;
+    if ((paramContext instanceof BaseActivity)) {
+      localObject2 = FaceDrawable.getFaceDrawable(((BaseActivity)paramContext).app, 1, this.ac, 3, (Drawable)localObject3, (Drawable)localObject3);
+    }
+    paramView.setImageDrawable((Drawable)localObject2);
+    if (paramBundle != null) {
+      if (paramInt == 2) {
+        paramBundle.setImageResource(2130850823);
+      } else if (paramInt == 1) {
+        paramBundle.setImageResource(2130850825);
+      } else if (paramInt == 3) {
+        paramBundle.setImageResource(2130850824);
+      } else if (paramInt == 4) {
+        paramBundle.setImageResource(2130850822);
+      }
+    }
+    if (localObject1 != null)
+    {
+      ((TextView)localObject1).setText(this.ad);
+      ((TextView)localObject1).setTextSize(2, 20.0F);
+      ((TextView)localObject1).setTextColor(-1);
+      ((TextView)localObject1).setSingleLine();
+      ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
+    }
+    return localLinearLayout;
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
@@ -170,44 +161,36 @@ public class StructMsgItemAvatar
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.ac == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.ad != null) {
-        break label48;
-      }
+    String str2 = this.ac;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    label48:
-    for (String str = "";; str = this.ad)
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
-      str = this.ac;
-      break;
+    paramObjectOutput.writeUTF(str1);
+    str2 = this.ad;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    paramObjectOutput.writeUTF(str1);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
   {
     paramXmlSerializer.startTag(null, "head");
-    if (this.ac == null)
-    {
-      str = "";
-      paramXmlSerializer.attribute(null, "uin", str);
-      if (this.ad != null) {
-        break label71;
-      }
+    String str2 = this.ac;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    label71:
-    for (String str = "";; str = this.ad)
-    {
-      paramXmlSerializer.attribute(null, "nick", str);
-      paramXmlSerializer.endTag(null, "head");
-      return;
-      str = this.ac;
-      break;
+    paramXmlSerializer.attribute(null, "uin", str1);
+    str2 = this.ad;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    paramXmlSerializer.attribute(null, "nick", str1);
+    paramXmlSerializer.endTag(null, "head");
   }
   
   public boolean a(StructMsgNode paramStructMsgNode)
@@ -232,7 +215,7 @@ public class StructMsgItemAvatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemAvatar
  * JD-Core Version:    0.7.0.1
  */

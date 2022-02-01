@@ -28,11 +28,11 @@ public class DatingFilters
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131702888), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131703018), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
     jdField_a_of_type_ArrayOfInt = new int[] { 0, 22, 26, 35, 120 };
     jdField_b_of_type_ArrayOfInt = new int[] { 0, 18, 23, 27, 36 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131702886), HardCodeUtil.a(2131702892), HardCodeUtil.a(2131702891), HardCodeUtil.a(2131702889), HardCodeUtil.a(2131702887) };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131702894), HardCodeUtil.a(2131702896), HardCodeUtil.a(2131702893), HardCodeUtil.a(2131702890), HardCodeUtil.a(2131702885), HardCodeUtil.a(2131702895) };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131703016), HardCodeUtil.a(2131703022), HardCodeUtil.a(2131703021), HardCodeUtil.a(2131703019), HardCodeUtil.a(2131703017) };
+    jdField_c_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131703024), HardCodeUtil.a(2131703026), HardCodeUtil.a(2131703023), HardCodeUtil.a(2131703020), HardCodeUtil.a(2131703015), HardCodeUtil.a(2131703025) };
   }
   
   private DatingFilters(Parcel paramParcel)
@@ -46,11 +46,7 @@ public class DatingFilters
     this.f = paramParcel.readInt();
     this.g = paramParcel.readInt();
     paramParcel = paramParcel.readString();
-    if ((paramParcel == null) || (paramParcel.equals("")))
-    {
-      this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo = null;
-      return;
-    }
+    if ((paramParcel != null) && (!paramParcel.equals(""))) {}
     try
     {
       appoint_define.LocaleInfo localLocaleInfo = new appoint_define.LocaleInfo();
@@ -60,8 +56,12 @@ public class DatingFilters
     }
     catch (Exception paramParcel)
     {
-      this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo = null;
+      label116:
+      break label116;
     }
+    this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo = null;
+    return;
+    this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo = null;
   }
   
   public int describeContents()
@@ -71,34 +71,34 @@ public class DatingFilters
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (DatingFilters)paramObject;
-      if (this.e != paramObject.e) {
-        return false;
-      }
-      if (this.f != paramObject.f) {
-        return false;
-      }
-      if (this.jdField_c_of_type_Int != paramObject.jdField_c_of_type_Int) {
-        return false;
-      }
-      if (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) {
-        return false;
-      }
-      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
-        return false;
-      }
-    } while ((this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo == paramObject.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo) || ((this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo != null) && (paramObject.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo != null) && (this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo.str_name.get().equals(paramObject.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo.str_name.get()))));
-    return false;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (DatingFilters)paramObject;
+    if (this.e != paramObject.e) {
+      return false;
+    }
+    if (this.f != paramObject.f) {
+      return false;
+    }
+    if (this.jdField_c_of_type_Int != paramObject.jdField_c_of_type_Int) {
+      return false;
+    }
+    if (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+      return false;
+    }
+    appoint_define.LocaleInfo localLocaleInfo1 = this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo;
+    appoint_define.LocaleInfo localLocaleInfo2 = paramObject.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo;
+    return (localLocaleInfo1 == localLocaleInfo2) || ((localLocaleInfo1 != null) && (localLocaleInfo2 != null) && (localLocaleInfo1.str_name.get().equals(paramObject.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo.str_name.get())));
   }
   
   public String toString()
@@ -115,13 +115,15 @@ public class DatingFilters
     localStringBuilder.append(", career=");
     localStringBuilder.append(this.f);
     localStringBuilder.append(", dest=");
-    if (this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo == null) {}
-    for (String str = "null";; str = this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo.str_name.get())
-    {
-      localStringBuilder.append(str);
-      localStringBuilder.append("]");
-      return localStringBuilder.toString();
+    Object localObject = this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo;
+    if (localObject == null) {
+      localObject = "null";
+    } else {
+      localObject = ((appoint_define.LocaleInfo)localObject).str_name.get();
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -135,12 +137,13 @@ public class DatingFilters
     paramParcel.writeInt(this.g);
     try
     {
-      if (this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo == null) {}
-      for (String str = "";; str = new String(this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo.toByteArray(), "ISO-8859-1"))
-      {
-        paramParcel.writeString(str);
-        return;
+      String str;
+      if (this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo == null) {
+        str = "";
+      } else {
+        str = new String(this.jdField_a_of_type_AppointDefineAppoint_define$LocaleInfo.toByteArray(), "ISO-8859-1");
       }
+      paramParcel.writeString(str);
       return;
     }
     catch (UnsupportedEncodingException paramParcel)
@@ -151,7 +154,7 @@ public class DatingFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingFilters
  * JD-Core Version:    0.7.0.1
  */

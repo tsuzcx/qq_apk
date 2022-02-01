@@ -15,17 +15,13 @@ class IndexedRingBuffer$IndexSection
   
   IndexSection getNext()
   {
-    Object localObject;
     if (this._next.get() != null) {
-      localObject = (IndexSection)this._next.get();
+      return (IndexSection)this._next.get();
     }
-    IndexSection localIndexSection;
-    do
-    {
-      return localObject;
-      localIndexSection = new IndexSection();
-      localObject = localIndexSection;
-    } while (this._next.compareAndSet(null, localIndexSection));
+    IndexSection localIndexSection = new IndexSection();
+    if (this._next.compareAndSet(null, localIndexSection)) {
+      return localIndexSection;
+    }
     return (IndexSection)this._next.get();
   }
   
@@ -36,7 +32,7 @@ class IndexedRingBuffer$IndexSection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.IndexedRingBuffer.IndexSection
  * JD-Core Version:    0.7.0.1
  */

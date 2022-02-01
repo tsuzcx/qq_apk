@@ -22,16 +22,13 @@ public class ImageAutoProcessor
     }
     int i = paramBitmap.length;
     paramInt = 0;
-    if (paramInt < i)
+    while (paramInt < i)
     {
       Object localObject = paramBitmap[paramInt];
-      if (localObject == null) {}
-      for (;;)
-      {
-        paramInt += 1;
-        break;
+      if (localObject != null) {
         localLinkedList.add(new ImageMainColorData(localObject[0], localObject[1], localObject[2], localObject[3], localObject[4], localObject[5]));
       }
+      paramInt += 1;
     }
     return localLinkedList;
   }
@@ -50,7 +47,7 @@ public class ImageAutoProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.microrapid.opencv.ImageAutoProcessor
  * JD-Core Version:    0.7.0.1
  */

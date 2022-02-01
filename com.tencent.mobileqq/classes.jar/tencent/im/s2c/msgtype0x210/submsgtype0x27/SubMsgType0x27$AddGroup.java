@@ -17,13 +17,14 @@ public final class SubMsgType0x27$AddGroup
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_groupid", "uint32_sortid", "bytes_groupname" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, AddGroup.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_groupid", "uint32_sortid", "bytes_groupname" }, new Object[] { localInteger, localInteger, localByteStringMicro }, AddGroup.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AddGroup
  * JD-Core Version:    0.7.0.1
  */

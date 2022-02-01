@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.multioperate;
 
 import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import com.tencent.mobileqq.wifi.FreeWifiDialogListener;
+import com.tencent.mobileqq.wifi.FreeWifiHelper.FreeWifiDialogListener;
 import java.util.List;
 
 class TroopFileMultiOperate$4
-  implements FreeWifiDialogListener
+  implements FreeWifiHelper.FreeWifiDialogListener
 {
   TroopFileMultiOperate$4(TroopFileMultiOperate paramTroopFileMultiOperate, List paramList) {}
   
@@ -18,7 +18,7 @@ class TroopFileMultiOperate$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.TroopFileMultiOperate.4
  * JD-Core Version:    0.7.0.1
  */

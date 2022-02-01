@@ -1,34 +1,22 @@
 package com.tencent.open.downloadnew;
 
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import mqq.os.MqqHandler;
+import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
+import java.util.ArrayList;
 
 class MyAppApi$11
-  implements TicketUtils.TicketCallback
+  implements Runnable
 {
-  MyAppApi$11(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
+  MyAppApi$11(MyAppApi paramMyAppApi, Context paramContext, ArrayList paramArrayList, int paramInt, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    LogUtility.c("TIME-STATISTIC", "onGetA1Fail");
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.11.2(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.c("TIME-STATISTIC", "onGetA1");
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.11.1(this, paramArrayOfByte, paramString));
+    TMAssistantCallYYB_V2.getInstance().startBatchOperation(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.11
  * JD-Core Version:    0.7.0.1
  */

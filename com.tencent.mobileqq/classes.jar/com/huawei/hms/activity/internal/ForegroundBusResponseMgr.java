@@ -6,12 +6,12 @@ import java.util.Map;
 
 public class ForegroundBusResponseMgr
 {
-  private static final ForegroundBusResponseMgr a = new ForegroundBusResponseMgr();
-  private final Map<String, BusResponseCallback> b = new HashMap();
+  private static final ForegroundBusResponseMgr instance = new ForegroundBusResponseMgr();
+  private final Map<String, BusResponseCallback> callbackMap = new HashMap();
   
   public static ForegroundBusResponseMgr getInstance()
   {
-    return a;
+    return instance;
   }
   
   public BusResponseCallback get(String paramString)
@@ -19,24 +19,27 @@ public class ForegroundBusResponseMgr
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    synchronized (this.b)
+    synchronized (this.callbackMap)
     {
-      paramString = (BusResponseCallback)this.b.get(paramString);
+      paramString = (BusResponseCallback)this.callbackMap.get(paramString);
       return paramString;
     }
   }
   
   public void registerObserver(String paramString, BusResponseCallback paramBusResponseCallback)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBusResponseCallback == null)) {
-      return;
-    }
-    synchronized (this.b)
+    if (!TextUtils.isEmpty(paramString))
     {
-      if (!this.b.containsKey(paramString)) {
-        this.b.put(paramString, paramBusResponseCallback);
+      if (paramBusResponseCallback == null) {
+        return;
       }
-      return;
+      synchronized (this.callbackMap)
+      {
+        if (!this.callbackMap.containsKey(paramString)) {
+          this.callbackMap.put(paramString, paramBusResponseCallback);
+        }
+        return;
+      }
     }
   }
   
@@ -45,16 +48,16 @@ public class ForegroundBusResponseMgr
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    synchronized (this.b)
+    synchronized (this.callbackMap)
     {
-      this.b.remove(paramString);
+      this.callbackMap.remove(paramString);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.activity.internal.ForegroundBusResponseMgr
  * JD-Core Version:    0.7.0.1
  */

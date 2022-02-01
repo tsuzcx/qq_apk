@@ -11,8 +11,12 @@ class LBSDetetor$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("check timeout. reqCookie:");
+      localStringBuilder.append(paramMessage.what);
+      QLog.d("LBSDetetor", 2, localStringBuilder.toString());
     }
     LBSDetetor.a(this.a, false, null, paramMessage.what);
     return false;
@@ -20,7 +24,7 @@ class LBSDetetor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.LBSDetetor.1
  * JD-Core Version:    0.7.0.1
  */

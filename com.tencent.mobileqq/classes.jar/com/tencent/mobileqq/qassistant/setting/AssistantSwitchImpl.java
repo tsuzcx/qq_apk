@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.qassistant.setting;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.profilecommon.handler.ProfileCommonHandler;
@@ -26,41 +25,52 @@ public class AssistantSwitchImpl
   
   public static Boolean a(int paramInt)
   {
-    if (paramInt == 2) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    boolean bool;
+    if (paramInt == 2) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return Boolean.valueOf(bool);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public static void a(AppRuntime paramAppRuntime)
   {
     try
     {
-      paramQQAppInterface = (AssistantSwitchImpl)ProfileCommonUtils.a(AssistantSwitchImpl.class, paramQQAppInterface);
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a();
+      paramAppRuntime = (AssistantSwitchImpl)ProfileCommonUtils.a(AssistantSwitchImpl.class, paramAppRuntime);
+      if (paramAppRuntime != null)
+      {
+        paramAppRuntime.a();
+        return;
       }
-      return;
     }
-    catch (Exception paramQQAppInterface)
+    catch (Exception paramAppRuntime)
     {
-      AssistantUtils.a("HelloQQWake", "AssistantSwitchImpl getSwitch fail." + paramQQAppInterface.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AssistantSwitchImpl getSwitch fail.");
+      localStringBuilder.append(paramAppRuntime.getMessage());
+      AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
     try
     {
-      paramQQAppInterface = (AssistantSwitchImpl)ProfileCommonUtils.a(AssistantSwitchImpl.class, paramQQAppInterface);
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.a(paramBoolean);
+      paramAppRuntime = (AssistantSwitchImpl)ProfileCommonUtils.a(AssistantSwitchImpl.class, paramAppRuntime);
+      if (paramAppRuntime != null)
+      {
+        paramAppRuntime.a(paramBoolean);
+        return;
       }
-      return;
     }
-    catch (Exception paramQQAppInterface)
+    catch (Exception paramAppRuntime)
     {
-      AssistantUtils.a("HelloQQWake", "AssistantSwitchImpl setSwitch fail." + paramQQAppInterface.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AssistantSwitchImpl setSwitch fail.");
+      localStringBuilder.append(paramAppRuntime.getMessage());
+      AssistantUtils.a("HelloQQWake", localStringBuilder.toString());
     }
   }
   
@@ -101,24 +111,21 @@ public class AssistantSwitchImpl
   
   public void onGetProfileDetailResponse(Bundle paramBundle, boolean paramBoolean, oidb_0x5eb.UdcUinData paramUdcUinData)
   {
-    boolean bool;
-    int i;
     if (paramUdcUinData != null)
     {
-      bool = paramUdcUinData.uint32_qq_assistant_switch.has();
-      if (!bool) {
-        break label86;
+      boolean bool = paramUdcUinData.uint32_qq_assistant_switch.has();
+      int i;
+      if (bool)
+      {
+        i = paramUdcUinData.uint32_qq_assistant_switch.get();
+        WakeManager.a().a(a(i).booleanValue());
       }
-      i = paramUdcUinData.uint32_qq_assistant_switch.get();
-      WakeManager.a().a(a(i).booleanValue());
-    }
-    for (;;)
-    {
+      else
+      {
+        i = 0;
+      }
       AssistantUtils.a("HelloQQWake", String.format("onGetProfileDetailResponse hasWeiShiSwitch=%s weiShiSwitchValue=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) }));
       this.handler.notifyUI(2, paramBoolean, a(i));
-      return;
-      label86:
-      i = 0;
     }
   }
   
@@ -129,7 +136,7 @@ public class AssistantSwitchImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.setting.AssistantSwitchImpl
  * JD-Core Version:    0.7.0.1
  */

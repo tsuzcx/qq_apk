@@ -10,7 +10,10 @@ final class cq$2$1
   public final void a(String paramString)
   {
     this.a.a.delete();
-    co.a("upload " + this.a.a.getName() + " succeed, then delete.");
+    paramString = new StringBuilder("upload ");
+    paramString.append(this.a.a.getName());
+    paramString.append(" succeed, then delete.");
+    co.a(paramString.toString());
   }
   
   public final void b(String paramString)
@@ -20,7 +23,7 @@ final class cq$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.cq.2.1
  * JD-Core Version:    0.7.0.1
  */

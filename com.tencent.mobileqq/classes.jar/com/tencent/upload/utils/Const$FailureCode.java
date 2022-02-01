@@ -12,28 +12,35 @@ public final class Const$FailureCode
   
   public static String print(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 3: 
-    default: 
-      return "unknown";
-    case 0: 
-      return "connectionFailed";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5)
+            {
+              if (paramInt != 6) {
+                return "unknown";
+              }
+              return "forceChangeRoute";
+            }
+            return "serverClosed";
+          }
+          return "socketFailed";
+        }
+        return "unpacketFailed";
+      }
       return "handshakeFailed";
-    case 2: 
-      return "unpacketFailed";
-    case 4: 
-      return "socketFailed";
-    case 5: 
-      return "serverClosed";
     }
-    return "forceChangeRoute";
+    return "connectionFailed";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.utils.Const.FailureCode
  * JD-Core Version:    0.7.0.1
  */

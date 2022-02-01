@@ -10,19 +10,19 @@ final class DynamicAnimation$8
     super(paramString, null);
   }
   
-  public float a(View paramView)
+  public float getValue(View paramView)
   {
     return paramView.getRotationY();
   }
   
-  public void a(View paramView, float paramFloat)
+  public void setValue(View paramView, float paramFloat)
   {
     paramView.setRotationY(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.dynamicanimation.animation.DynamicAnimation.8
  * JD-Core Version:    0.7.0.1
  */

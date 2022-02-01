@@ -14,15 +14,16 @@ public final class IOUtil
 {
   public static void close(Closeable paramCloseable)
   {
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (IOException paramCloseable)
-    {
-      paramCloseable.printStackTrace();
+    if (paramCloseable != null) {
+      try
+      {
+        paramCloseable.close();
+        return;
+      }
+      catch (IOException paramCloseable)
+      {
+        paramCloseable.printStackTrace();
+      }
     }
   }
   
@@ -49,53 +50,51 @@ public final class IOUtil
   
   public static byte[] createZeroBytes(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("length must be gt 0");
+    if (paramInt > 0)
+    {
+      byte[] arrayOfByte = new byte[paramInt];
+      Arrays.fill(arrayOfByte, (byte)0);
+      return arrayOfByte;
     }
-    byte[] arrayOfByte = new byte[paramInt];
-    Arrays.fill(arrayOfByte, (byte)0);
-    return arrayOfByte;
+    throw new IllegalArgumentException("length must be gt 0");
   }
   
   public static boolean endWiths(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
   {
-    int i;
-    int j;
     if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null) && (paramInt >= paramArrayOfByte2.length))
     {
-      i = Math.min(paramArrayOfByte1.length, paramInt);
-      j = paramArrayOfByte2.length;
+      int i = Math.min(paramArrayOfByte1.length, paramInt);
+      int j = paramArrayOfByte2.length;
       paramInt = 1;
-    }
-    while (paramInt < j + 1)
-    {
-      if (paramArrayOfByte1[(i - paramInt)] != paramArrayOfByte2[(j - paramInt)]) {
-        return false;
+      while (paramInt < j + 1)
+      {
+        if (paramArrayOfByte1[(i - paramInt)] != paramArrayOfByte2[(j - paramInt)]) {
+          return false;
+        }
+        paramInt += 1;
       }
-      paramInt += 1;
+      return true;
     }
-    return true;
+    return false;
   }
   
   public static boolean endWiths(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    int j;
-    int k;
-    int i;
     if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte1.length >= paramArrayOfByte2.length))
     {
-      j = paramArrayOfByte1.length;
-      k = paramArrayOfByte2.length;
-      i = 1;
-    }
-    while (i < k + 1)
-    {
-      if (paramArrayOfByte1[(j - i)] != paramArrayOfByte2[(k - i)]) {
-        return false;
+      int j = paramArrayOfByte1.length;
+      int k = paramArrayOfByte2.length;
+      int i = 1;
+      while (i < k + 1)
+      {
+        if (paramArrayOfByte1[(j - i)] != paramArrayOfByte2[(k - i)]) {
+          return false;
+        }
+        i += 1;
       }
-      i += 1;
+      return true;
     }
-    return true;
+    return false;
   }
   
   public static long exhaust(InputStream paramInputStream)
@@ -107,33 +106,36 @@ public final class IOUtil
     for (;;)
     {
       int j;
+      int i;
+      Object localObject;
       try
       {
         j = paramInputStream.read(arrayOfByte);
-        if (j == -1)
-        {
-          i = -1;
-          break label60;
-          if (i != -1)
-          {
-            Object localObject;
-            localObject += i;
-            i = paramInputStream.read(arrayOfByte);
-            continue;
-          }
-        }
-        else
-        {
-          i = 0;
+        if (j != -1) {
           break label60;
         }
-        return l;
+        i = -1;
+        break label62;
       }
       finally {}
-      return 0L;
-      label60:
-      long l = i;
-      int i = j;
+      long l2 = localObject;
+      long l1;
+      if (i != -1)
+      {
+        localObject += i;
+        i = paramInputStream.read(arrayOfByte);
+        continue;
+        l2 = 0L;
+      }
+      else
+      {
+        return l2;
+        label60:
+        i = 0;
+        label62:
+        l1 = i;
+        i = j;
+      }
     }
   }
   
@@ -155,61 +157,56 @@ public final class IOUtil
   
   public static int indexOf(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
   {
-    int j;
-    int k;
     if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null))
     {
-      j = paramArrayOfByte1.length;
-      k = paramArrayOfByte2.length;
-      if ((paramInt >= j) || (j - paramInt < k)) {}
-    }
-    while (paramInt <= j - k)
-    {
-      int i = 0;
-      while ((i < k) && (paramArrayOfByte1[(paramInt + i)] == paramArrayOfByte2[i])) {
-        i += 1;
+      int j = paramArrayOfByte1.length;
+      int k = paramArrayOfByte2.length;
+      if ((paramInt < j) && (j - paramInt >= k))
+      {
+        while (paramInt <= j - k)
+        {
+          int i = 0;
+          while ((i < k) && (paramArrayOfByte1[(paramInt + i)] == paramArrayOfByte2[i])) {
+            i += 1;
+          }
+          if (i == k) {
+            return paramInt;
+          }
+          paramInt += 1;
+        }
+        return -1;
       }
-      if (i == k) {
-        return paramInt;
-      }
-      paramInt += 1;
-      continue;
       return -1;
-      throw new NullPointerException("source or target array is null!");
     }
-    return -1;
+    paramArrayOfByte1 = new NullPointerException("source or target array is null!");
+    for (;;)
+    {
+      throw paramArrayOfByte1;
+    }
   }
   
   public static byte[] numberToBytes(long paramLong, int paramInt, boolean paramBoolean)
   {
-    int j = -1;
     byte[] arrayOfByte = new byte[paramInt];
     int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = paramInt - 1;
-      if (paramBoolean) {
-        paramInt = -1;
-      }
-      if (!paramBoolean) {
-        break label66;
-      }
+    } else {
+      i = 0;
     }
-    for (;;)
+    int j = -1;
+    if (paramBoolean) {
+      paramInt = -1;
+    }
+    if (!paramBoolean) {
+      j = 1;
+    }
+    while (i != paramInt)
     {
-      if (i == paramInt) {
-        break label72;
-      }
       arrayOfByte[i] = ((byte)(int)(0xFF & paramLong));
       paramLong >>>= 8;
       i += j;
-      continue;
-      i = 0;
-      break;
-      label66:
-      j = 1;
     }
-    label72:
     return arrayOfByte;
   }
   
@@ -220,13 +217,13 @@ public final class IOUtil
   
   public static long parseNumber(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    long l2;
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0) && (paramArrayOfByte.length - paramInt1 > 0))
     {
       int i = Math.min(paramInt2, paramArrayOfByte.length - paramInt1);
+      long l1 = 0L;
+      long l2;
       if (paramBoolean)
       {
-        l1 = 0L;
         paramInt2 = 0;
         for (;;)
         {
@@ -234,12 +231,10 @@ public final class IOUtil
           if (paramInt2 >= i) {
             break;
           }
-          l2 = paramArrayOfByte[(paramInt2 + paramInt1)] & 0xFF;
+          l1 = l1 << 8 | paramArrayOfByte[(paramInt2 + paramInt1)] & 0xFF;
           paramInt2 += 1;
-          l1 = l2 | l1 << 8;
         }
       }
-      long l1 = 0L;
       paramInt2 = i - 1;
       for (;;)
       {
@@ -247,24 +242,27 @@ public final class IOUtil
         if (paramInt2 < 0) {
           break;
         }
-        l2 = paramArrayOfByte[(paramInt2 + paramInt1)] & 0xFF;
+        l1 = l1 << 8 | paramArrayOfByte[(paramInt2 + paramInt1)] & 0xFF;
         paramInt2 -= 1;
-        l1 = l2 | l1 << 8;
       }
+      return l2;
     }
-    throw new IllegalArgumentException("byte array is null or empty!");
-    return l2;
+    paramArrayOfByte = new IllegalArgumentException("byte array is null or empty!");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   public static long parseNumber(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
-    long l2;
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
       int i = Math.min(paramInt, paramArrayOfByte.length);
+      long l1 = 0L;
+      long l2;
       if (paramBoolean)
       {
-        l1 = 0L;
         paramInt = 0;
         for (;;)
         {
@@ -272,12 +270,10 @@ public final class IOUtil
           if (paramInt >= i) {
             break;
           }
-          l2 = paramArrayOfByte[paramInt] & 0xFF;
+          l1 = l1 << 8 | paramArrayOfByte[paramInt] & 0xFF;
           paramInt += 1;
-          l1 = l2 | l1 << 8;
         }
       }
-      long l1 = 0L;
       paramInt = i - 1;
       for (;;)
       {
@@ -285,13 +281,16 @@ public final class IOUtil
         if (paramInt < 0) {
           break;
         }
-        l2 = paramArrayOfByte[paramInt] & 0xFF;
+        l1 = l1 << 8 | paramArrayOfByte[paramInt] & 0xFF;
         paramInt -= 1;
-        l1 = l2 | l1 << 8;
       }
+      return l2;
     }
-    throw new IllegalArgumentException("byte array is null or empty!");
-    return l2;
+    paramArrayOfByte = new IllegalArgumentException("byte array is null or empty!");
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   public static int parseShort(byte[] paramArrayOfByte, boolean paramBoolean)
@@ -301,30 +300,22 @@ public final class IOUtil
   
   public static byte[] readBytes(InputStream paramInputStream, int paramInt)
   {
-    Object localObject;
     if (paramInt <= 0) {
-      localObject = null;
+      return null;
     }
-    for (;;)
-    {
-      return localObject;
-      int i = 0;
-      byte[] arrayOfByte = new byte[paramInt];
-      localObject = arrayOfByte;
-      if (i >= paramInt) {
-        continue;
-      }
+    int i = 0;
+    byte[] arrayOfByte = new byte[paramInt];
+    while (i < paramInt) {
       try
       {
         int j = paramInputStream.read(arrayOfByte, i, paramInt - i);
-        localObject = arrayOfByte;
-        if (j <= 0) {
-          continue;
+        if (j > 0) {
+          i += j;
         }
-        i += j;
       }
       finally {}
     }
+    return arrayOfByte;
   }
   
   public static byte[] readCLenData(InputStream paramInputStream)
@@ -393,13 +384,17 @@ public final class IOUtil
         localByteArrayOutputStream.write(arrayOfByte, 0, i);
       }
       paramInputStream = localByteArrayOutputStream.toString();
+      localByteArrayOutputStream.close();
+      return paramInputStream;
     }
     finally
     {
       localByteArrayOutputStream.close();
     }
-    localByteArrayOutputStream.close();
-    return paramInputStream;
+    for (;;)
+    {
+      throw paramInputStream;
+    }
   }
   
   public static String readLeft(InputStream paramInputStream, String paramString)
@@ -420,13 +415,17 @@ public final class IOUtil
         localByteArrayOutputStream.write(arrayOfByte, 0, i);
       }
       paramInputStream = localByteArrayOutputStream.toString(paramString);
+      localByteArrayOutputStream.close();
+      return paramInputStream;
     }
     finally
     {
       localByteArrayOutputStream.close();
     }
-    localByteArrayOutputStream.close();
-    return paramInputStream;
+    for (;;)
+    {
+      throw paramInputStream;
+    }
   }
   
   public static byte[] readLeftBytes(InputStream paramInputStream)
@@ -447,56 +446,57 @@ public final class IOUtil
         localByteArrayOutputStream.write(arrayOfByte, 0, i);
       }
       paramInputStream = localByteArrayOutputStream.toByteArray();
+      localByteArrayOutputStream.close();
+      return paramInputStream;
     }
     finally
     {
       localByteArrayOutputStream.close();
     }
-    localByteArrayOutputStream.close();
-    return paramInputStream;
+    for (;;)
+    {
+      throw paramInputStream;
+    }
   }
   
   public static long readNumber(InputStream paramInputStream, int paramInt, boolean paramBoolean)
   {
-    int k = 0;
-    int j = -1;
     if ((paramInt > 0) && (paramInt <= 8))
     {
       byte[] arrayOfByte = new byte[paramInt];
       if (paramInputStream.markSupported()) {
         paramInputStream.mark(paramInt);
       }
+      int j = 0;
       int i = paramInputStream.read(arrayOfByte, 0, paramInt);
       if (i <= 0) {
         return -1L;
       }
-      if (paramBoolean)
-      {
-        paramInt = k;
-        if (!paramBoolean) {
-          break label108;
-        }
-      }
-      long l;
-      for (;;)
-      {
-        if (paramBoolean) {
-          j = 1;
-        }
-        l = 0L;
-        while (paramInt != i)
-        {
-          l = l << 8 | arrayOfByte[paramInt] & 0xFF;
-          paramInt += j;
-        }
+      if (paramBoolean) {
+        paramInt = j;
+      } else {
         paramInt = i - 1;
-        break;
-        label108:
+      }
+      j = -1;
+      if (!paramBoolean) {
         i = -1;
+      }
+      if (paramBoolean) {
+        j = 1;
+      }
+      long l = 0L;
+      while (paramInt != i)
+      {
+        l = l << 8 | arrayOfByte[paramInt] & 0xFF;
+        paramInt += j;
       }
       return l;
     }
-    throw new IllegalArgumentException("length must between 1 and 8.");
+    paramInputStream = new IllegalArgumentException("length must between 1 and 8.");
+    for (;;)
+    {
+      throw paramInputStream;
+    }
   }
   
   public static int readShort(InputStream paramInputStream)
@@ -524,15 +524,22 @@ public final class IOUtil
         {
           localByteArrayOutputStream.write(arrayOfByte, 0, j);
           paramInt -= j;
-          continue;
         }
-        paramInputStream = localByteArrayOutputStream.toString();
-        return paramInputStream;
+        else
+        {
+          paramInputStream = localByteArrayOutputStream.toString();
+          localByteArrayOutputStream.close();
+          return paramInputStream;
+        }
       }
       finally
       {
         localByteArrayOutputStream.close();
       }
+    }
+    for (;;)
+    {
+      throw paramInputStream;
     }
   }
   
@@ -575,36 +582,37 @@ public final class IOUtil
   
   public static void skip(InputStream paramInputStream, int paramInt)
   {
-    byte[] arrayOfByte;
-    if ((paramInputStream != null) && (paramInt > 0)) {
-      arrayOfByte = new byte[512];
-    }
-    int i;
-    do
+    if ((paramInputStream != null) && (paramInt > 0))
     {
-      i = paramInputStream.read(arrayOfByte, 0, Math.min(arrayOfByte.length, paramInt));
-      if (i < 0) {
-        return;
-      }
-      i = paramInt - i;
-      paramInt = i;
-    } while (i > 0);
+      byte[] arrayOfByte = new byte[512];
+      int i;
+      do
+      {
+        i = paramInputStream.read(arrayOfByte, 0, Math.min(arrayOfByte.length, paramInt));
+        if (i < 0) {
+          return;
+        }
+        i = paramInt - i;
+        paramInt = i;
+      } while (i > 0);
+    }
   }
   
   public static boolean startWiths(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    int i;
-    if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte1.length >= paramArrayOfByte2.length)) {
-      i = 0;
-    }
-    while (i < paramArrayOfByte2.length)
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte1.length >= paramArrayOfByte2.length))
     {
-      if (paramArrayOfByte1[i] != paramArrayOfByte2[i]) {
-        return false;
+      int i = 0;
+      while (i < paramArrayOfByte2.length)
+      {
+        if (paramArrayOfByte1[i] != paramArrayOfByte2[i]) {
+          return false;
+        }
+        i += 1;
       }
-      i += 1;
+      return true;
     }
-    return true;
+    return false;
   }
   
   public static void writeCLenData(OutputStream paramOutputStream, byte[] paramArrayOfByte)
@@ -630,20 +638,18 @@ public final class IOUtil
     paramInt -= 1;
     if (paramInt > 0)
     {
-      if (paramInt > paramString.length) {
-        break label37;
+      if (paramInt <= paramString.length)
+      {
+        paramOutputStream.write(paramString, 0, paramInt);
       }
-      paramOutputStream.write(paramString, 0, paramInt);
-    }
-    for (;;)
-    {
+      else
+      {
+        paramOutputStream.write(paramString);
+        paramString = new byte[paramInt - paramString.length];
+        Arrays.fill(paramString, (byte)0);
+        paramOutputStream.write(paramString);
+      }
       paramOutputStream.flush();
-      return;
-      label37:
-      paramOutputStream.write(paramString);
-      paramString = new byte[paramInt - paramString.length];
-      Arrays.fill(paramString, (byte)0);
-      paramOutputStream.write(paramString);
     }
   }
   
@@ -668,20 +674,18 @@ public final class IOUtil
     paramInt -= 1;
     if (paramInt > 0)
     {
-      if (paramInt > paramString1.length) {
-        break label38;
+      if (paramInt <= paramString1.length)
+      {
+        paramOutputStream.write(paramString1, 0, paramInt);
       }
-      paramOutputStream.write(paramString1, 0, paramInt);
-    }
-    for (;;)
-    {
+      else
+      {
+        paramOutputStream.write(paramString1);
+        paramString1 = new byte[paramInt - paramString1.length];
+        Arrays.fill(paramString1, (byte)0);
+        paramOutputStream.write(paramString1);
+      }
       paramOutputStream.flush();
-      return;
-      label38:
-      paramOutputStream.write(paramString1);
-      paramString1 = new byte[paramInt - paramString1.length];
-      Arrays.fill(paramString1, (byte)0);
-      paramOutputStream.write(paramString1);
     }
   }
   
@@ -764,20 +768,18 @@ public final class IOUtil
     paramInt -= 2;
     if (paramInt > 0)
     {
-      if (paramInt > paramString.length) {
-        break label37;
+      if (paramInt <= paramString.length)
+      {
+        paramOutputStream.write(paramString, 0, paramInt);
       }
-      paramOutputStream.write(paramString, 0, paramInt);
-    }
-    for (;;)
-    {
+      else
+      {
+        paramOutputStream.write(paramString);
+        paramString = new byte[paramInt - paramString.length];
+        Arrays.fill(paramString, (byte)0);
+        paramOutputStream.write(paramString);
+      }
       paramOutputStream.flush();
-      return;
-      label37:
-      paramOutputStream.write(paramString);
-      paramString = new byte[paramInt - paramString.length];
-      Arrays.fill(paramString, (byte)0);
-      paramOutputStream.write(paramString);
     }
   }
   
@@ -788,20 +790,18 @@ public final class IOUtil
     paramInt -= 2;
     if (paramInt > 0)
     {
-      if (paramInt > paramString1.length) {
-        break label38;
+      if (paramInt <= paramString1.length)
+      {
+        paramOutputStream.write(paramString1, 0, paramInt);
       }
-      paramOutputStream.write(paramString1, 0, paramInt);
-    }
-    for (;;)
-    {
+      else
+      {
+        paramOutputStream.write(paramString1);
+        paramString1 = new byte[paramInt - paramString1.length];
+        Arrays.fill(paramString1, (byte)0);
+        paramOutputStream.write(paramString1);
+      }
       paramOutputStream.flush();
-      return;
-      label38:
-      paramOutputStream.write(paramString1);
-      paramString1 = new byte[paramInt - paramString1.length];
-      Arrays.fill(paramString1, (byte)0);
-      paramOutputStream.write(paramString1);
     }
   }
   
@@ -821,7 +821,7 @@ public final class IOUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.IOUtil
  * JD-Core Version:    0.7.0.1
  */

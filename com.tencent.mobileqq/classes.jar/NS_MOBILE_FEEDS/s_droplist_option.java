@@ -58,33 +58,39 @@ public final class s_droplist_option
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.iconurl != null) {
-      paramJceOutputStream.write(this.iconurl, 0);
+    Object localObject = this.iconurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.optext != null) {
-      paramJceOutputStream.write(this.optext, 1);
+    localObject = this.optext;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.actiontype, 2);
-    if (this.jumpurl != null) {
-      paramJceOutputStream.write(this.jumpurl, 3);
+    localObject = this.jumpurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.reporttype, 4);
-    if (this.reportattach != null) {
-      paramJceOutputStream.write(this.reportattach, 5);
+    localObject = this.reportattach;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.reporttypeV2, 6);
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 7);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
     paramJceOutputStream.write(this.action_detail, 8);
-    if (this.pattonID != null) {
-      paramJceOutputStream.write(this.pattonID, 9);
+    localObject = this.pattonID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_droplist_option
  * JD-Core Version:    0.7.0.1
  */

@@ -62,32 +62,35 @@ public final class FontPlugin
   {
     Intrinsics.checkParameterIsNotNull(paramString, "eventName");
     Intrinsics.checkParameterIsNotNull(paramArgument, "arguments");
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    Object localObject = null;
+    if (i != -876445634)
     {
-    }
-    JSONObject localJSONObject;
-    do
-    {
-      do
-      {
+      if (i != 1845191253) {
         return null;
-      } while (!paramString.equals("getTextLineHeight"));
-      int i = getTextLineHeight(paramArgument);
-      localJSONObject = new JSONObject();
-      localJSONObject.put("lineHeight", i);
-      paramString = ApiUtil.wrapCallbackOk(paramString, localJSONObject).toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramString, "ApiUtil.wrapCallbackOk(e…tName, resObj).toString()");
-      paramArgument.callback(paramString);
-      return paramString;
-    } while (!paramString.equals("loadFont"));
-    paramArgument = loadFont(paramArgument);
-    if (!TextUtils.isEmpty((CharSequence)paramArgument))
-    {
-      localJSONObject = new JSONObject();
-      localJSONObject.put("familyName", paramArgument);
-      return ApiUtil.wrapCallbackOk(paramString, localJSONObject).toString();
+      }
+      if (paramString.equals("loadFont"))
+      {
+        paramArgument = loadFont(paramArgument);
+        if (!TextUtils.isEmpty((CharSequence)paramArgument))
+        {
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("familyName", paramArgument);
+          return ApiUtil.wrapCallbackOk(paramString, (JSONObject)localObject).toString();
+        }
+        return ApiUtil.wrapCallbackFail(paramString, null).toString();
+      }
     }
-    return ApiUtil.wrapCallbackFail(paramString, null).toString();
+    else if (paramString.equals("getTextLineHeight"))
+    {
+      i = getTextLineHeight(paramArgument);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("lineHeight", i);
+      localObject = ApiUtil.wrapCallbackOk(paramString, (JSONObject)localObject).toString();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "ApiUtil.wrapCallbackOk(e…tName, resObj).toString()");
+      paramArgument.callback((String)localObject);
+    }
+    return localObject;
   }
   
   public void onCreate(@NotNull TritonEngine paramTritonEngine)
@@ -124,7 +127,7 @@ public final class FontPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.plugin.FontPlugin
  * JD-Core Version:    0.7.0.1
  */

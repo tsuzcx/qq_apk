@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.mobileqq.statistics.QZoneReport;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.api.IPublicAccountManager;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class Conversation$25
   implements Runnable
@@ -11,30 +10,12 @@ class Conversation$25
   
   public void run()
   {
-    int i = QZoneReport.a();
-    try
-    {
-      MqqHandler localMqqHandler = this.this$0.a;
-      if ((i >= 0) && (localMqqHandler != null))
-      {
-        localMqqHandler.removeMessages(1134061);
-        localMqqHandler.sendEmptyMessageDelayed(1134061, i * 1000L);
-      }
-      return;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        QLog.e("Q.recent", 1, localNullPointerException, new Object[0]);
-        Object localObject = null;
-      }
-    }
+    ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).preloadWebProcess(this.this$0.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.25
  * JD-Core Version:    0.7.0.1
  */

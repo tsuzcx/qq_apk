@@ -18,19 +18,18 @@ class PPCLoginAuthHandler$1
       localExtensionInfo.commingRingId = 0L;
       localEntityManager.update(localExtensionInfo);
     }
-    for (;;)
+    else
     {
-      localEntityManager.close();
-      return;
       localExtensionInfo = new ExtensionInfo();
       localExtensionInfo.uin = this.this$0.a.getAccount();
       localEntityManager.persist(localExtensionInfo);
     }
+    localEntityManager.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.PPCLoginAuthHandler.1
  * JD-Core Version:    0.7.0.1
  */

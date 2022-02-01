@@ -82,17 +82,18 @@ public class GetCombinInfoRequest
     {
       paramGPS_V2 = new StringBuilder();
       paramInt1 = 0;
-      if (paramInt1 < paramArrayList2.size())
+      while (paramInt1 < paramArrayList2.size())
       {
-        if (paramInt1 != paramArrayList2.size() - 1) {
-          paramGPS_V2.append((String)paramArrayList2.get(paramInt1)).append(",");
-        }
-        for (;;)
+        if (paramInt1 != paramArrayList2.size() - 1)
         {
-          paramInt1 += 1;
-          break;
+          paramGPS_V2.append((String)paramArrayList2.get(paramInt1));
+          paramGPS_V2.append(",");
+        }
+        else
+        {
           paramGPS_V2.append((String)paramArrayList2.get(paramInt1));
         }
+        paramInt1 += 1;
       }
       QLog.d("GetCombinInfoRequest", 1, new Object[] { "GetCombinInfoRequest... label:", paramGPS_V2.toString() });
       localGetLbsCombinReq_V2.map_ext = new HashMap();
@@ -130,7 +131,7 @@ public class GetCombinInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qzonehub.api.protocol.GetCombinInfoRequest
  * JD-Core Version:    0.7.0.1
  */

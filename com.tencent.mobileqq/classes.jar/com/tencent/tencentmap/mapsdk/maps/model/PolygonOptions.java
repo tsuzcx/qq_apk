@@ -123,21 +123,26 @@ public class PolygonOptions
   
   public PolygonOptions level(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
-      return this;
+    if (paramInt >= OverlayLevel.OverlayLevelAboveRoads)
+    {
+      if (paramInt > OverlayLevel.OverlayLevelAboveLabels) {
+        return this;
+      }
+      this.o = paramInt;
     }
-    this.o = paramInt;
     return this;
   }
   
   public void setPoints(Iterable<LatLng> paramIterable)
   {
-    if (this.a == null) {}
-    do
-    {
+    List localList = this.a;
+    if (localList == null) {
       return;
-      this.a.clear();
-    } while (paramIterable == null);
+    }
+    localList.clear();
+    if (paramIterable == null) {
+      return;
+    }
     addAll(paramIterable);
   }
   
@@ -180,7 +185,7 @@ public class PolygonOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.PolygonOptions
  * JD-Core Version:    0.7.0.1
  */

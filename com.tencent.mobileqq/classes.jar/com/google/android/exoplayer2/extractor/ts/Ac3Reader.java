@@ -42,7 +42,7 @@ public final class Ac3Reader
   {
     int i = Math.min(paramParsableByteArray.bytesLeft(), paramInt - this.bytesRead);
     paramParsableByteArray.readBytes(paramArrayOfByte, this.bytesRead, i);
-    this.bytesRead = (i + this.bytesRead);
+    this.bytesRead += i;
     return this.bytesRead == paramInt;
   }
   
@@ -56,33 +56,39 @@ public final class Ac3Reader
       this.output.format(this.format);
     }
     this.sampleSize = localAc3SyncFrameInfo.frameSize;
-    this.sampleDurationUs = (1000000L * localAc3SyncFrameInfo.sampleCount / this.format.sampleRate);
+    this.sampleDurationUs = (localAc3SyncFrameInfo.sampleCount * 1000000L / this.format.sampleRate);
   }
   
   private boolean skipToNextSync(ParsableByteArray paramParsableByteArray)
   {
-    if (paramParsableByteArray.bytesLeft() > 0)
+    for (;;)
     {
+      int i = paramParsableByteArray.bytesLeft();
+      boolean bool2 = false;
+      boolean bool1 = false;
+      if (i <= 0) {
+        break;
+      }
       if (!this.lastByteWas0B)
       {
-        if (paramParsableByteArray.readUnsignedByte() == 11) {}
-        for (bool = true;; bool = false)
-        {
-          this.lastByteWas0B = bool;
-          break;
+        if (paramParsableByteArray.readUnsignedByte() == 11) {
+          bool1 = true;
         }
+        this.lastByteWas0B = bool1;
       }
-      int i = paramParsableByteArray.readUnsignedByte();
-      if (i == 119)
+      else
       {
-        this.lastByteWas0B = false;
-        return true;
-      }
-      if (i == 11) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.lastByteWas0B = bool;
-        break;
+        i = paramParsableByteArray.readUnsignedByte();
+        if (i == 119)
+        {
+          this.lastByteWas0B = false;
+          return true;
+        }
+        bool1 = bool2;
+        if (i == 11) {
+          bool1 = true;
+        }
+        this.lastByteWas0B = bool1;
       }
     }
     return false;
@@ -92,37 +98,40 @@ public final class Ac3Reader
   {
     while (paramParsableByteArray.bytesLeft() > 0)
     {
-      switch (this.state)
+      int i = this.state;
+      if (i != 0)
       {
-      default: 
-        break;
-      case 0: 
-        if (!skipToNextSync(paramParsableByteArray)) {
-          continue;
+        if (i != 1)
+        {
+          if (i == 2)
+          {
+            i = Math.min(paramParsableByteArray.bytesLeft(), this.sampleSize - this.bytesRead);
+            this.output.sampleData(paramParsableByteArray, i);
+            this.bytesRead += i;
+            i = this.bytesRead;
+            int j = this.sampleSize;
+            if (i == j)
+            {
+              this.output.sampleMetadata(this.timeUs, 1, j, 0, null);
+              this.timeUs += this.sampleDurationUs;
+              this.state = 0;
+            }
+          }
         }
+        else if (continueRead(paramParsableByteArray, this.headerScratchBytes.data, 128))
+        {
+          parseHeader();
+          this.headerScratchBytes.setPosition(0);
+          this.output.sampleData(this.headerScratchBytes, 128);
+          this.state = 2;
+        }
+      }
+      else if (skipToNextSync(paramParsableByteArray))
+      {
         this.state = 1;
         this.headerScratchBytes.data[0] = 11;
         this.headerScratchBytes.data[1] = 119;
         this.bytesRead = 2;
-        break;
-      case 1: 
-        if (!continueRead(paramParsableByteArray, this.headerScratchBytes.data, 128)) {
-          continue;
-        }
-        parseHeader();
-        this.headerScratchBytes.setPosition(0);
-        this.output.sampleData(this.headerScratchBytes, 128);
-        this.state = 2;
-        break;
-      }
-      int i = Math.min(paramParsableByteArray.bytesLeft(), this.sampleSize - this.bytesRead);
-      this.output.sampleData(paramParsableByteArray, i);
-      this.bytesRead = (i + this.bytesRead);
-      if (this.bytesRead == this.sampleSize)
-      {
-        this.output.sampleMetadata(this.timeUs, 1, this.sampleSize, 0, null);
-        this.timeUs += this.sampleDurationUs;
-        this.state = 0;
       }
     }
   }
@@ -150,7 +159,7 @@ public final class Ac3Reader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.Ac3Reader
  * JD-Core Version:    0.7.0.1
  */

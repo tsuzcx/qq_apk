@@ -4,6 +4,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
+import com.tencent.mobileqq.emoticonview.IEmoticonMainPanel;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class QQCustomDialogWtihEmoticonInput$11
@@ -14,41 +15,38 @@ class QQCustomDialogWtihEmoticonInput$11
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    if (localOnClickListener != null)
     {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput, 1);
+      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput, 1);
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.c)
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_Boolean) {
-          break label100;
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView());
+        } else {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
         }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.c = false;
       }
     }
-    for (;;)
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.c = false;
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.isShowing()) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.dismiss();
-        }
-        label92:
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        label100:
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.dismiss();
       }
-      catch (Exception localException)
-      {
-        break label92;
-      }
+      label118:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label118;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.11
  * JD-Core Version:    0.7.0.1
  */

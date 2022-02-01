@@ -10,22 +10,33 @@ class TroopGameCardResDownloadManager$1
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopGameCardResDownloadManager", 2, "onGetConfigFinished result:" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetConfigFinished result:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("TroopGameCardResDownloadManager", 2, ((StringBuilder)localObject).toString());
     }
     if (paramInt == 0)
     {
-      String str1 = TroopGameCardConfigProcessor.a().a();
-      String str2 = TroopGameCardConfigProcessor.a().b();
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopGameCardResDownloadManager", 2, "onGetConfigFinished url:" + str1 + " md5:" + str2);
-      }
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
+      localObject = TroopGameCardConfigProcessor.a().a();
+      String str = TroopGameCardConfigProcessor.a().b();
+      if (QLog.isColorLevel())
       {
-        TroopGameCardResDownloadManager.a(this.a).b(110);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onGetConfigFinished url:");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" md5:");
+        localStringBuilder.append(str);
+        QLog.i("TroopGameCardResDownloadManager", 2, localStringBuilder.toString());
+      }
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str)))
+      {
+        this.a.a(new TroopGameCardResDownloadManager.ResInfo((String)localObject, str));
         return;
       }
-      this.a.a(new TroopGameCardResDownloadManager.ResInfo(str1, str2));
+      TroopGameCardResDownloadManager.a(this.a).b(110);
       return;
     }
     TroopGameCardResDownloadManager.a(this.a).b(paramInt);
@@ -33,7 +44,7 @@ class TroopGameCardResDownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardResDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

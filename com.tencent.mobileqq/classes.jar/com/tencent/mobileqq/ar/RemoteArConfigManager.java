@@ -13,7 +13,6 @@ import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 import com.tencent.mobileqq.ar.aidl.IArConfigManager;
 import com.tencent.mobileqq.ar.aidl.IArFaceCallback;
-import com.tencent.mobileqq.ar.aidl.IArMiniCallback;
 import com.tencent.mobileqq.ar.aidl.IArRemoteCallback;
 import com.tencent.mobileqq.ar.aidl.IArSoCallback;
 import com.tencent.qphone.base.util.QLog;
@@ -29,15 +28,13 @@ public class RemoteArConfigManager
   public IArConfigListener a;
   public IArFaceResourceListener a;
   private IArSoListener jdField_a_of_type_ComTencentMobileqqArIArSoListener;
-  public IMiniResourceListener a;
   public ARCommonConfigInfo a;
   public ArConfigInfo a;
   public ArEffectConfig a;
   public IArConfigManager a;
   public IArFaceCallback a;
-  public IArMiniCallback a;
   public IArRemoteCallback a;
-  private IArSoCallback jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new RemoteArConfigManager.5(this);
+  private IArSoCallback jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new RemoteArConfigManager.4(this);
   public boolean a;
   volatile boolean b = false;
   boolean c = false;
@@ -49,130 +46,131 @@ public class RemoteArConfigManager
     this.jdField_a_of_type_AndroidContentServiceConnection = new RemoteArConfigManager.1(this);
     this.jdField_a_of_type_ComTencentMobileqqArAidlIArRemoteCallback = new RemoteArConfigManager.2(this);
     this.jdField_a_of_type_ComTencentMobileqqArAidlIArFaceCallback = new RemoteArConfigManager.3(this);
-    this.jdField_a_of_type_ComTencentMobileqqArAidlIArMiniCallback = new RemoteArConfigManager.4(this);
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
   }
   
   public ARCommonConfigInfo a()
   {
-    Object localObject1;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+    if (localObject1 != null) {
+      return localObject1;
     }
+    ARCommonConfigInfo localARCommonConfigInfo = null;
+    localObject1 = null;
+    IArConfigManager localIArConfigManager = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager;
     Object localObject2;
-    do
+    if (localIArConfigManager != null)
     {
-      do
-      {
-        return localObject1;
-        localObject2 = null;
-        localObject1 = null;
-      } while (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager == null);
       try
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.a();
-        localObject2 = localObject1;
+        localARCommonConfigInfo = localIArConfigManager.a();
+        localObject1 = localARCommonConfigInfo;
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          QLog.d("ArConfig_RemoteArConfigManager", 1, "getARCommonConfigInfo fail!", localException);
-        }
+        QLog.d("ArConfig_RemoteArConfigManager", 1, "getARCommonConfigInfo fail!", localException);
       }
-      localObject1 = localObject2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ArConfig_RemoteArConfigManager", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localObject2 }));
+      localObject2 = localObject1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ArConfig_RemoteArConfigManager", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localObject1 }));
+        localObject2 = localObject1;
+      }
+    }
     return localObject2;
   }
   
   public ArConfigInfo a()
   {
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
+    if (localObject != null) {
+      return localObject;
     }
-    for (;;)
-    {
-      return localObject2;
-      localObject2 = null;
-      Object localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null) {}
+    StringBuilder localStringBuilder = null;
+    IArConfigManager localIArConfigManager = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager;
+    localObject = localStringBuilder;
+    if (localIArConfigManager != null) {
       try
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.a();
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "getArConfig|info=" + localObject1);
-        return localObject1;
+        localObject = localIArConfigManager.a();
       }
       catch (RemoteException localRemoteException)
       {
-        for (;;)
+        localObject = localStringBuilder;
+        if (QLog.isColorLevel())
         {
-          localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArConfig_RemoteArConfigManager", 2, "getArConfig|RemoteException e= " + localRemoteException);
-            localObject1 = localObject2;
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getArConfig|RemoteException e= ");
+          ((StringBuilder)localObject).append(localRemoteException);
+          QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject).toString());
+          localObject = localStringBuilder;
         }
       }
     }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getArConfig|info=");
+      localStringBuilder.append(localObject);
+      QLog.d("ArConfig_RemoteArConfigManager", 2, localStringBuilder.toString());
+    }
+    return localObject;
   }
   
   public ArEffectConfig a()
   {
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
+    if (localObject1 != null) {
+      return localObject1;
     }
-    for (;;)
+    Object localObject2 = null;
+    Object localObject4 = null;
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager;
+    Object localObject3;
+    if (localObject1 != null)
     {
-      return localObject2;
-      Object localObject3 = null;
-      localObject2 = null;
-      if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager == null) {
-        continue;
-      }
       try
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.a();
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "getEffectConfig|info=" + localObject1);
-        return localObject1;
+        localObject1 = ((IArConfigManager)localObject1).a();
       }
       catch (RemoteException localRemoteException)
       {
-        for (;;)
+        localObject1 = localObject4;
+        if (QLog.isColorLevel())
         {
-          Object localObject1 = localObject3;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ArConfig_RemoteArConfigManager", 2, "getEffectConfig|RemoteException e= " + localRemoteException);
-            localObject1 = localObject3;
-          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getEffectConfig|RemoteException e= ");
+          ((StringBuilder)localObject1).append(localRemoteException);
+          QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject1).toString());
+          localObject1 = localObject4;
         }
       }
+      localObject3 = localObject1;
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("getEffectConfig|info=");
+        ((StringBuilder)localObject3).append(localObject1);
+        QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject3).toString());
+        localObject3 = localObject1;
+      }
     }
+    return localObject3;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    Object localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      ((HandlerThread)localObject).quit();
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      ((Handler)localObject).removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
     if (this.jdField_a_of_type_Boolean)
@@ -180,52 +178,57 @@ public class RemoteArConfigManager
       b();
       this.jdField_a_of_type_Boolean = false;
     }
-    if ((!this.b) || (this.jdField_a_of_type_AndroidContentContext != null)) {}
-    try
+    if (this.b)
     {
-      this.jdField_a_of_type_AndroidContentContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+      localObject = this.jdField_a_of_type_AndroidContentContext;
+      if (localObject != null) {
+        try
+        {
+          ((Context)localObject).unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+        }
+      }
       this.b = false;
       this.jdField_a_of_type_AndroidContentContext = null;
-      this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener = null;
-      this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener = null;
-      this.jdField_a_of_type_ComTencentMobileqqArIArSoListener = null;
-      this.jdField_a_of_type_ComTencentMobileqqArIMiniResourceListener = null;
-      return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener = null;
+    this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener = null;
+    this.jdField_a_of_type_ComTencentMobileqqArIArSoListener = null;
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadFaceResources type " + paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("downloadFaceResources type ");
+        localStringBuilder1.append(paramInt);
+        QLog.d("ArConfig_RemoteArConfigManager", 2, localStringBuilder1.toString());
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.a(paramInt);
+        return;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("downloadFaceResources|RemoteException e= ");
+          localStringBuilder2.append(localRemoteException);
+          QLog.d("ArConfig_RemoteArConfigManager", 2, localStringBuilder2.toString());
+        }
       }
     }
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.a(paramInt);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadFaceResources|RemoteException e= " + localRemoteException);
-    }
   }
   
-  public void a(Context paramContext, IArConfigListener paramIArConfigListener, IMiniResourceListener paramIMiniResourceListener)
-  {
-    a(paramContext, false, paramIArConfigListener, null, null, paramIMiniResourceListener);
-  }
-  
-  public void a(Context paramContext, boolean paramBoolean, IArConfigListener paramIArConfigListener, IArFaceResourceListener paramIArFaceResourceListener, IArSoListener paramIArSoListener, IMiniResourceListener paramIMiniResourceListener)
+  public void a(Context paramContext, boolean paramBoolean, IArConfigListener paramIArConfigListener, IArFaceResourceListener paramIArFaceResourceListener, IArSoListener paramIArSoListener)
   {
     if (paramContext == null) {
       return;
@@ -242,67 +245,86 @@ public class RemoteArConfigManager
       this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener = paramIArFaceResourceListener;
     }
     this.jdField_a_of_type_ComTencentMobileqqArIArSoListener = paramIArSoListener;
-    this.jdField_a_of_type_ComTencentMobileqqArIMiniResourceListener = paramIMiniResourceListener;
   }
   
   public boolean a()
   {
+    IArConfigManager localIArConfigManager = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager;
     boolean bool2 = false;
     boolean bool3 = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null) {}
-    try
+    if (localIArConfigManager != null)
     {
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.a();
+      boolean bool1;
+      try
+      {
+        bool1 = localIArConfigManager.a();
+      }
+      catch (RemoteException localRemoteException)
+      {
+        bool1 = bool3;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("isFaceResConfigReady|RemoteException e= ");
+          localStringBuilder2.append(localRemoteException);
+          QLog.d("ArConfig_RemoteArConfigManager", 2, localStringBuilder2.toString());
+          bool1 = bool3;
+        }
+      }
       bool2 = bool1;
       if (QLog.isColorLevel())
       {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "isFaceResConfigReady " + bool1);
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("isFaceResConfigReady ");
+        localStringBuilder1.append(bool1);
+        QLog.d("ArConfig_RemoteArConfigManager", 2, localStringBuilder1.toString());
         bool2 = bool1;
       }
-      return bool2;
     }
-    catch (RemoteException localRemoteException)
+    return bool2;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null)
     {
-      for (;;)
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload");
+      }
+      try
       {
-        boolean bool1 = bool3;
+        this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.b();
+        return;
+      }
+      catch (RemoteException localRemoteException)
+      {
         if (QLog.isColorLevel())
         {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "isFaceResConfigReady|RemoteException e= " + localRemoteException);
-          bool1 = bool3;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("cancelDownload|RemoteException e= ");
+          localStringBuilder.append(localRemoteException);
+          QLog.d("ArConfig_RemoteArConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
   }
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload");
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.b();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "cancelDownload|RemoteException e= " + localRemoteException);
-    }
-  }
-  
   public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onToolScannerActivityStateChanged state:" + paramInt + "  mConfigManager:" + this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onToolScannerActivityStateChanged state:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("  mConfigManager:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager);
+      QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null) {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager;
+    if (localObject != null) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.c(paramInt);
+        ((IArConfigManager)localObject).b(paramInt);
         return;
       }
       catch (RemoteException localRemoteException)
@@ -316,84 +338,36 @@ public class RemoteArConfigManager
   
   public boolean b()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.c();
-      return bool1;
-    }
-    catch (Exception localException)
-    {
-      do
+    IArConfigManager localIArConfigManager = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager;
+    if (localIArConfigManager != null) {
+      try
       {
-        bool1 = bool2;
-      } while (!QLog.isColorLevel());
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "isArSoReady fail!", localException);
+        boolean bool = localIArConfigManager.b();
+        return bool;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "isArSoReady fail!", localException);
+        }
+      }
     }
     return false;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.c();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadArSo fail!", localException);
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadMiniResource type " + paramInt);
-      }
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.b(paramInt);
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadMiniResource|RemoteException e= " + localRemoteException);
-    }
-  }
-  
-  public boolean c()
-  {
-    boolean bool2 = false;
-    boolean bool3 = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null) {}
-    try
-    {
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.b();
-      bool2 = bool1;
-      if (QLog.isColorLevel())
+    IArConfigManager localIArConfigManager = this.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager;
+    if (localIArConfigManager != null) {
+      try
       {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "isMiniResConfigReady " + bool1);
-        bool2 = bool1;
+        localIArConfigManager.c();
+        return;
       }
-      return bool2;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
-        boolean bool1 = bool3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "isMiniResConfigReady|RemoteException e= " + localRemoteException);
-          bool1 = bool3;
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadArSo fail!", localException);
         }
       }
     }
@@ -401,130 +375,145 @@ public class RemoteArConfigManager
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    int j;
+    switch (i)
     {
-    }
-    do
-    {
-      do
+    default: 
+      switch (i)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            for (;;)
-                            {
-                              return false;
-                              if (this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener != null)
-                              {
-                                this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a();
-                                return false;
-                                if (this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener != null)
-                                {
-                                  paramMessage = paramMessage.obj;
-                                  if ((paramMessage instanceof ArConfigInfo))
-                                  {
-                                    this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a((ArConfigInfo)paramMessage);
-                                    return false;
-                                    if (this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener != null)
-                                    {
-                                      paramMessage = paramMessage.obj;
-                                      if ((paramMessage instanceof ArEffectConfig))
-                                      {
-                                        this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a((ArEffectConfig)paramMessage);
-                                        return false;
-                                        if (this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener != null) {
-                                          try
-                                          {
-                                            if ((paramMessage.obj instanceof ARCommonConfigInfo))
-                                            {
-                                              this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a((ARCommonConfigInfo)paramMessage.obj);
-                                              return false;
-                                            }
-                                          }
-                                          catch (Exception paramMessage)
-                                          {
-                                            QLog.e("ArConfig_RemoteArConfigManager", 1, "handleMessage AR_COMMON_CONFIG_UPDATE fail.", paramMessage);
-                                            return false;
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          } while (this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener == null);
-                          this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.b();
-                          this.jdField_a_of_type_Boolean = false;
-                          return false;
-                        } while (this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener == null);
-                        i = paramMessage.arg1;
-                        j = paramMessage.arg2;
-                        this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a(i, j);
-                        return false;
-                      } while ((this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener == null) || (!(paramMessage.obj instanceof Integer)));
-                      this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a(((Integer)paramMessage.obj).intValue());
-                      this.jdField_a_of_type_Boolean = false;
-                      return false;
-                    } while (this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener == null);
-                    i = paramMessage.arg1;
-                    this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener.l_(i);
-                    return false;
-                  } while (this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener == null);
-                  i = paramMessage.arg1;
-                  j = paramMessage.arg2;
-                  this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener.a(i, j);
-                  return false;
-                } while (this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener == null);
-                i = paramMessage.arg1;
-                j = paramMessage.arg2;
-                this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener.b(i, j);
-                return false;
-              } while (this.jdField_a_of_type_ComTencentMobileqqArIArSoListener == null);
-              this.jdField_a_of_type_ComTencentMobileqqArIArSoListener.c();
-              return false;
-            } while (this.jdField_a_of_type_ComTencentMobileqqArIArSoListener == null);
-            this.jdField_a_of_type_ComTencentMobileqqArIArSoListener.d();
-            return false;
-          } while (this.jdField_a_of_type_ComTencentMobileqqArIArSoListener == null);
-          this.jdField_a_of_type_ComTencentMobileqqArIArSoListener.b(paramMessage.arg1);
-          return false;
-        } while (this.jdField_a_of_type_ComTencentMobileqqArIMiniResourceListener == null);
-        i = paramMessage.arg1;
-        this.jdField_a_of_type_ComTencentMobileqqArIMiniResourceListener.a(i);
+      default: 
         return false;
-      } while (this.jdField_a_of_type_ComTencentMobileqqArIMiniResourceListener == null);
-      i = paramMessage.arg1;
-      j = paramMessage.arg2;
-      this.jdField_a_of_type_ComTencentMobileqqArIMiniResourceListener.a(i, j);
-      return false;
-    } while (this.jdField_a_of_type_ComTencentMobileqqArIMiniResourceListener == null);
-    int i = paramMessage.arg1;
-    int j = paramMessage.arg2;
-    this.jdField_a_of_type_ComTencentMobileqqArIMiniResourceListener.b(i, j);
+      case 102: 
+        IArSoListener localIArSoListener = this.jdField_a_of_type_ComTencentMobileqqArIArSoListener;
+        if (localIArSoListener != null)
+        {
+          localIArSoListener.b(paramMessage.arg1);
+          return false;
+        }
+        break;
+      case 101: 
+        paramMessage = this.jdField_a_of_type_ComTencentMobileqqArIArSoListener;
+        if (paramMessage != null)
+        {
+          paramMessage.d();
+          return false;
+        }
+        break;
+      case 100: 
+        paramMessage = this.jdField_a_of_type_ComTencentMobileqqArIArSoListener;
+        if (paramMessage != null)
+        {
+          paramMessage.c();
+          return false;
+        }
+        break;
+      }
+      break;
+    case 9: 
+      if (this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener != null) {
+        try
+        {
+          if ((paramMessage.obj instanceof ARCommonConfigInfo))
+          {
+            this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a((ARCommonConfigInfo)paramMessage.obj);
+            return false;
+          }
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.e("ArConfig_RemoteArConfigManager", 1, "handleMessage AR_COMMON_CONFIG_UPDATE fail.", paramMessage);
+          return false;
+        }
+      }
+      break;
+    case 8: 
+      if (this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener != null)
+      {
+        i = paramMessage.arg1;
+        j = paramMessage.arg2;
+        this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener.b(i, j);
+        return false;
+      }
+      break;
+    case 7: 
+      if (this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener != null)
+      {
+        i = paramMessage.arg1;
+        j = paramMessage.arg2;
+        this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener.a(i, j);
+        return false;
+      }
+      break;
+    case 6: 
+      if (this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener != null)
+      {
+        i = paramMessage.arg1;
+        this.jdField_a_of_type_ComTencentMobileqqArIArFaceResourceListener.h_(i);
+        return false;
+      }
+      break;
+    case 5: 
+      if ((this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener != null) && ((paramMessage.obj instanceof Integer)))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a(((Integer)paramMessage.obj).intValue());
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      }
+      break;
+    case 4: 
+      if (this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener != null)
+      {
+        i = paramMessage.arg1;
+        j = paramMessage.arg2;
+        this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a(i, j);
+        return false;
+      }
+      break;
+    case 3: 
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener;
+      if (paramMessage != null)
+      {
+        paramMessage.b();
+        this.jdField_a_of_type_Boolean = false;
+        return false;
+      }
+      break;
+    case 2: 
+      if (this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener != null)
+      {
+        paramMessage = paramMessage.obj;
+        if ((paramMessage instanceof ArEffectConfig))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a((ArEffectConfig)paramMessage);
+          return false;
+        }
+      }
+      break;
+    case 1: 
+      if (this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener != null)
+      {
+        paramMessage = paramMessage.obj;
+        if ((paramMessage instanceof ArConfigInfo))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener.a((ArConfigInfo)paramMessage);
+          return false;
+        }
+      }
+      break;
+    case 0: 
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqArIArConfigListener;
+      if (paramMessage != null) {
+        paramMessage.a();
+      }
+      break;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.RemoteArConfigManager
  * JD-Core Version:    0.7.0.1
  */

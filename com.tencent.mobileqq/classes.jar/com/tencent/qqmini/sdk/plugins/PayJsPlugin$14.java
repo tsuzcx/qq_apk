@@ -29,24 +29,24 @@ class PayJsPlugin$14
       return;
     }
     localObject = localPayProxy.midasPay(this.val$activity, PayJsPlugin.access$1800(this.this$0, this.val$payJson), PayJsPlugin.access$2000(this.this$0, this.val$req, this.val$toolConsume, this.val$callbackSn), (Bundle)localObject);
-    if (localObject != null) {}
-    for (int i = ((Bundle)localObject).getInt("retCode", 0);; i = 0)
-    {
-      if ((localObject != null) && (i != 0)) {
-        PayJsPlugin.access$700(this.this$0, this.val$req, null, "");
-      }
-      localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      if ((localObject == null) || (!((MiniAppProxy)localObject).isDebugVersion())) {
-        break;
-      }
+    int i;
+    if (localObject != null) {
+      i = ((Bundle)localObject).getInt("retCode", 0);
+    } else {
+      i = 0;
+    }
+    if ((localObject != null) && (i != 0)) {
+      PayJsPlugin.access$700(this.this$0, this.val$req, null, "");
+    }
+    localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    if ((localObject != null) && (((MiniAppProxy)localObject).isDebugVersion())) {
       MiniToast.makeText(this.val$activity, 0, "【仅debug可见】使用native支付", 0).show();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PayJsPlugin.14
  * JD-Core Version:    0.7.0.1
  */

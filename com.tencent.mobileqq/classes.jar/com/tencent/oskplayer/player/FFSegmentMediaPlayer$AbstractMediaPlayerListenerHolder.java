@@ -36,34 +36,35 @@ class FFSegmentMediaPlayer$AbstractMediaPlayerListenerHolder
   public void onCompletion(IMediaPlayer paramIMediaPlayer)
   {
     paramIMediaPlayer = (AbstractMediaPlayer)this.mWeakMediaPlayer.get();
-    if (paramIMediaPlayer == null) {}
-    for (;;)
-    {
+    if (paramIMediaPlayer == null) {
       return;
-      if (FFSegmentMediaPlayer.access$100(this.this$0))
+    }
+    if (FFSegmentMediaPlayer.access$100(this.this$0))
+    {
+      PlayerUtils.log(4, "FFSegmentMediaPlayer", "looping play start");
+      FFSegmentMediaPlayer.access$202(this.this$0, true);
+      FFSegmentMediaPlayer.access$302(this.this$0, true);
+      paramIMediaPlayer.seekTo(0L);
+      try
       {
-        PlayerUtils.log(4, "FFSegmentMediaPlayer", "looping play start");
-        FFSegmentMediaPlayer.access$202(this.this$0, true);
-        FFSegmentMediaPlayer.access$302(this.this$0, true);
-        paramIMediaPlayer.seekTo(0L);
-        try
-        {
-          paramIMediaPlayer.start();
-          if (FFSegmentMediaPlayer.access$400(this.this$0) != null)
-          {
-            FFSegmentMediaPlayer.access$500(this.this$0).onLoopStart(this.this$0);
-            return;
-          }
-        }
-        catch (IMediaPlayer.InternalOperationException paramIMediaPlayer)
-        {
-          PlayerUtils.log(6, "FFSegmentMediaPlayer", paramIMediaPlayer.toString());
+        paramIMediaPlayer.start();
+        if (FFSegmentMediaPlayer.access$400(this.this$0) == null) {
           return;
         }
+        FFSegmentMediaPlayer.access$500(this.this$0).onLoopStart(this.this$0);
+        return;
+      }
+      catch (IMediaPlayer.InternalOperationException paramIMediaPlayer)
+      {
+        PlayerUtils.log(6, "FFSegmentMediaPlayer", paramIMediaPlayer.toString());
+        return;
       }
     }
-    PlayerUtils.log(4, "FFSegmentMediaPlayer", "onCompletion");
-    FFSegmentMediaPlayer.access$600(this.this$0);
+    else
+    {
+      PlayerUtils.log(4, "FFSegmentMediaPlayer", "onCompletion");
+      FFSegmentMediaPlayer.access$600(this.this$0);
+    }
   }
   
   public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
@@ -80,7 +81,12 @@ class FFSegmentMediaPlayer$AbstractMediaPlayerListenerHolder
     if ((AbstractMediaPlayer)this.mWeakMediaPlayer.get() == null) {
       return false;
     }
-    PlayerUtils.log(3, "FFSegmentMediaPlayer", "onInfo what=" + paramInt1 + ",extra=" + paramInt2);
+    paramIMediaPlayer = new StringBuilder();
+    paramIMediaPlayer.append("onInfo what=");
+    paramIMediaPlayer.append(paramInt1);
+    paramIMediaPlayer.append(",extra=");
+    paramIMediaPlayer.append(paramInt2);
+    PlayerUtils.log(3, "FFSegmentMediaPlayer", paramIMediaPlayer.toString());
     if ((FFSegmentMediaPlayer.access$200(this.this$0)) && (paramInt1 == 701)) {
       return false;
     }
@@ -129,7 +135,7 @@ class FFSegmentMediaPlayer$AbstractMediaPlayerListenerHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.player.FFSegmentMediaPlayer.AbstractMediaPlayerListenerHolder
  * JD-Core Version:    0.7.0.1
  */

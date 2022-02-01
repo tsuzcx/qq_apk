@@ -22,14 +22,15 @@ public final class oidb_cmd0x991$Goods
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50 }, new String[] { "int32_product_id", "bytes_goods_name", "int32_goods_price", "bytes_animation_param", "msg_video", "msg_img" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, null, null }, Goods.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50 }, new String[] { "int32_product_id", "bytes_goods_name", "int32_goods_price", "bytes_animation_param", "msg_video", "msg_img" }, new Object[] { localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, null, null }, Goods.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x991.oidb_cmd0x991.Goods
  * JD-Core Version:    0.7.0.1
  */

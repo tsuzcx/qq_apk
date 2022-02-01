@@ -1,16 +1,27 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo.data;
 
+import UserGrowth.stCollection;
 import UserGrowth.stSimpleMetaFeed;
 import UserGrowth.stSimpleMetaGdtAdInfo;
 import com.tencent.biz.pubaccount.weishi_new.commercial.AbsWSRichWidgetData;
+import com.tencent.biz.pubaccount.weishi_new.drama.checkable.Checkable;
 
 public class WSVerticalItemData
+  implements Checkable
 {
+  private stCollection jdField_a_of_type_UserGrowthStCollection;
   private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
   private stSimpleMetaGdtAdInfo jdField_a_of_type_UserGrowthStSimpleMetaGdtAdInfo;
   private AbsWSRichWidgetData jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialAbsWSRichWidgetData;
+  private WSDramaEpisodeInfo jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSDramaEpisodeInfo;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
+  private boolean c;
+  
+  public stCollection a()
+  {
+    return this.jdField_a_of_type_UserGrowthStCollection;
+  }
   
   public stSimpleMetaFeed a()
   {
@@ -25,6 +36,16 @@ public class WSVerticalItemData
   public AbsWSRichWidgetData a()
   {
     return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialAbsWSRichWidgetData;
+  }
+  
+  public WSDramaEpisodeInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSDramaEpisodeInfo;
+  }
+  
+  public void a(stCollection paramstCollection)
+  {
+    this.jdField_a_of_type_UserGrowthStCollection = paramstCollection;
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -42,29 +63,44 @@ public class WSVerticalItemData
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialAbsWSRichWidgetData = paramAbsWSRichWidgetData;
   }
   
+  public void a(WSDramaEpisodeInfo paramWSDramaEpisodeInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoDataWSDramaEpisodeInfo = paramWSDramaEpisodeInfo;
+  }
+  
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean c()
   {
     return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData
  * JD-Core Version:    0.7.0.1
  */

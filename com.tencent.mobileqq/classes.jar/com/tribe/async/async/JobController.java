@@ -37,79 +37,79 @@ public class JobController
   
   public void onDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
   {
+    boolean bool = paramDispatchable instanceof Worker;
     int j = 1;
+    int k = 1;
     int i = 1;
     Job localJob;
     Iterator localIterator;
     JobControlHandler localJobControlHandler;
-    if ((paramDispatchable instanceof Worker))
+    if (bool)
     {
-      localJob = ((Worker)paramDispatchable).getJob();
+      paramDispatchable = (Worker)paramDispatchable;
+      localJob = paramDispatchable.getJob();
       AssertUtils.checkNotNull(localJob);
       localIterator = this.mHandlers.iterator();
       while (localIterator.hasNext())
       {
         localJobControlHandler = (JobControlHandler)localIterator.next();
-        if (localJobControlHandler.accept(localJob)) {
-          localJobControlHandler.handleExecute(this.mBoss.getExecutors(), (Worker)paramDispatchable);
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        this.mDefaultHandler.handleExecute(this.mBoss.getExecutors(), (Worker)paramDispatchable);
-      }
-      label330:
-      for (;;)
-      {
-        return;
-        if ((paramDispatchable instanceof JobController.CancelCommand))
+        if (localJobControlHandler.accept(localJob))
         {
-          paramDispatchable = (JobController.CancelCommand)paramDispatchable;
-          AssertUtils.checkNotNull(paramDispatchable.future);
-          localJob = ((Worker)paramDispatchable.future).getJob();
-          AssertUtils.checkNotNull(localJob);
-          localIterator = this.mHandlers.iterator();
-          while (localIterator.hasNext())
-          {
-            localJobControlHandler = (JobControlHandler)localIterator.next();
-            if (localJobControlHandler.accept(localJob)) {
-              localJobControlHandler.handleCancel(paramDispatchable);
-            }
-          }
-        }
-        for (i = j;; i = 0)
-        {
-          if (i != 0) {
-            break label330;
-          }
-          this.mDefaultHandler.handleCancel(paramDispatchable);
-          return;
-          if (!(paramDispatchable instanceof JobController.DoneEvent)) {
-            break;
-          }
-          paramDispatchable = ((JobController.DoneEvent)paramDispatchable).worker;
-          AssertUtils.checkNotNull(paramDispatchable);
-          localJob = paramDispatchable.getJob();
-          AssertUtils.checkNotNull(localJob);
-          localIterator = this.mHandlers.iterator();
-          while (localIterator.hasNext())
-          {
-            localJobControlHandler = (JobControlHandler)localIterator.next();
-            if (localJobControlHandler.accept(localJob)) {
-              localJobControlHandler.handleDone(paramDispatchable);
-            }
-          }
-          for (i = 1; i == 0; i = 0)
-          {
-            this.mDefaultHandler.handleDone(paramDispatchable);
-            return;
-          }
-          break;
+          localJobControlHandler.handleExecute(this.mBoss.getExecutors(), paramDispatchable);
+          break label100;
         }
       }
       i = 0;
+      label100:
+      if (i == 0) {
+        this.mDefaultHandler.handleExecute(this.mBoss.getExecutors(), paramDispatchable);
+      }
+    }
+    else if ((paramDispatchable instanceof JobController.CancelCommand))
+    {
+      paramDispatchable = (JobController.CancelCommand)paramDispatchable;
+      AssertUtils.checkNotNull(paramDispatchable.future);
+      localJob = ((Worker)paramDispatchable.future).getJob();
+      AssertUtils.checkNotNull(localJob);
+      localIterator = this.mHandlers.iterator();
+      while (localIterator.hasNext())
+      {
+        localJobControlHandler = (JobControlHandler)localIterator.next();
+        if (localJobControlHandler.accept(localJob))
+        {
+          localJobControlHandler.handleCancel(paramDispatchable);
+          i = j;
+          break label220;
+        }
+      }
+      i = 0;
+      label220:
+      if (i == 0) {
+        this.mDefaultHandler.handleCancel(paramDispatchable);
+      }
+    }
+    else if ((paramDispatchable instanceof JobController.DoneEvent))
+    {
+      paramDispatchable = ((JobController.DoneEvent)paramDispatchable).worker;
+      AssertUtils.checkNotNull(paramDispatchable);
+      localJob = paramDispatchable.getJob();
+      AssertUtils.checkNotNull(localJob);
+      localIterator = this.mHandlers.iterator();
+      while (localIterator.hasNext())
+      {
+        localJobControlHandler = (JobControlHandler)localIterator.next();
+        if (localJobControlHandler.accept(localJob))
+        {
+          localJobControlHandler.handleDone(paramDispatchable);
+          i = k;
+          break label326;
+        }
+      }
+      i = 0;
+      label326:
+      if (i == 0) {
+        this.mDefaultHandler.handleDone(paramDispatchable);
+      }
     }
   }
   
@@ -129,7 +129,7 @@ public class JobController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.JobController
  * JD-Core Version:    0.7.0.1
  */

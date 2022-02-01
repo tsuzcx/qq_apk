@@ -10,17 +10,18 @@ class LoginImpl$2
   
   public void run()
   {
-    if (this.val$loginInfo == null)
+    LoginInfo localLoginInfo = this.val$loginInfo;
+    if (localLoginInfo == null)
     {
       this.val$loginCallback.onFail(this.val$code, this.val$msg);
       return;
     }
-    this.val$loginCallback.onSucceed(this.val$loginInfo);
+    this.val$loginCallback.onSucceed(localLoginInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.LoginImpl.2
  * JD-Core Version:    0.7.0.1
  */

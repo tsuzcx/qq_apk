@@ -24,20 +24,24 @@ class ArkFullScreenAppActivity$8$1$1
       if (QLog.isColorLevel()) {
         QLog.i("ArkFullScreenAppActivity", 2, "showActionSheet share: intent == null");
       }
-      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, 230, HardCodeUtil.a(2131700763), HardCodeUtil.a(2131700759), new ArkFullScreenAppActivity.8.1.1.1(this), null).show();
+      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, 230, HardCodeUtil.a(2131700907), HardCodeUtil.a(2131700903), new ArkFullScreenAppActivity.8.1.1.1(this), null).show();
       return;
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkFullScreenAppActivity", 1, "getShareMsg showActionSheet error: " + localException.getMessage());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getShareMsg showActionSheet error: ");
+        localStringBuilder.append(localException.getMessage());
+        QLog.i("ArkFullScreenAppActivity", 1, localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -39,11 +39,13 @@ public class NodeText
   {
     this.id = paramNodeText.id;
     this.relativeID = paramNodeText.relativeID;
-    if (paramNodeText.relativeAnchor != null) {
-      this.relativeAnchor.set(paramNodeText.relativeAnchor);
+    PointF localPointF = paramNodeText.relativeAnchor;
+    if (localPointF != null) {
+      this.relativeAnchor.set(localPointF);
     }
-    if (paramNodeText.anchor != null) {
-      this.anchor.set(paramNodeText.anchor);
+    localPointF = paramNodeText.anchor;
+    if (localPointF != null) {
+      this.anchor.set(localPointF);
     }
     this.offsetX = paramNodeText.offsetX;
     this.offsetY = paramNodeText.offsetY;
@@ -115,7 +117,7 @@ public class NodeText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.edit.NodeText
  * JD-Core Version:    0.7.0.1
  */

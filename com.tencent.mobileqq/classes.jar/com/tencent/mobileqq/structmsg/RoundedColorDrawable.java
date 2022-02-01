@@ -29,12 +29,14 @@ public class RoundedColorDrawable
   public void draw(Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    Rect localRect = getBounds();
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = localRect.top;
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = localRect.left;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = localRect.right;
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = localRect.bottom;
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    Object localObject = getBounds();
+    this.jdField_a_of_type_AndroidGraphicsRectF.top = ((Rect)localObject).top;
+    this.jdField_a_of_type_AndroidGraphicsRectF.left = ((Rect)localObject).left;
+    this.jdField_a_of_type_AndroidGraphicsRectF.right = ((Rect)localObject).right;
+    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = ((Rect)localObject).bottom;
+    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f = this.jdField_a_of_type_Float;
+    paramCanvas.drawRoundRect((RectF)localObject, f, f, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public int getIntrinsicHeight()
@@ -58,7 +60,7 @@ public class RoundedColorDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.RoundedColorDrawable
  * JD-Core Version:    0.7.0.1
  */

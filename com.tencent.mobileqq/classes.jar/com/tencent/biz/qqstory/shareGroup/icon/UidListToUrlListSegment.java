@@ -23,7 +23,15 @@ public class UidListToUrlListSegment
 {
   private String a = "story.icon.UidListToUrlListSegment";
   
-  public UidListToUrlListSegment(String paramString) {}
+  public UidListToUrlListSegment(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    this.a = localStringBuilder.toString();
+  }
   
   private Pair<List<String>, Boolean> a(List<String> paramList)
   {
@@ -31,15 +39,15 @@ public class UidListToUrlListSegment
     UserManager localUserManager = (UserManager)SuperManager.a(2);
     paramList = paramList.iterator();
     boolean bool = true;
-    if (paramList.hasNext())
+    while (paramList.hasNext())
     {
       QQUserUIItem localQQUserUIItem = localUserManager.b((String)paramList.next());
-      if ((localQQUserUIItem != null) && (localQQUserUIItem.headUrl != null)) {
+      if ((localQQUserUIItem != null) && (localQQUserUIItem.headUrl != null))
+      {
         localArrayList.add(localQQUserUIItem.headUrl);
       }
-      for (;;)
+      else
       {
-        break;
         localArrayList.add("stub_url");
         bool = false;
       }
@@ -60,45 +68,51 @@ public class UidListToUrlListSegment
   
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent == null) || (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList == null))
+    if ((paramUpdateUserInfoEvent != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null))
     {
-      IconLog.b(this.a, "refresh user info fail %s", paramUpdateUserInfoEvent);
-      if (paramUpdateUserInfoEvent == null) {}
-      for (paramUpdateUserInfoEvent = new ErrorMessage(-1, "event is null");; paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
-      {
-        notifyError(paramUpdateUserInfoEvent);
-        return;
+      IconLog.a(this.a, "refresh user info success, let's return the new info");
+      ArrayList localArrayList = new ArrayList();
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramUpdateUserInfoEvent.hasNext()) {
+        localArrayList.add(((QQUserUIItem)paramUpdateUserInfoEvent.next()).headUrl);
       }
+      a(localArrayList);
+      return;
     }
-    IconLog.a(this.a, "refresh user info success, let's return the new info");
-    ArrayList localArrayList = new ArrayList();
-    paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramUpdateUserInfoEvent.hasNext()) {
-      localArrayList.add(((QQUserUIItem)paramUpdateUserInfoEvent.next()).headUrl);
+    IconLog.b(this.a, "refresh user info fail %s", paramUpdateUserInfoEvent);
+    if (paramUpdateUserInfoEvent == null) {
+      paramUpdateUserInfoEvent = new ErrorMessage(-1, "event is null");
+    } else {
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
     }
-    a(localArrayList);
+    notifyError(paramUpdateUserInfoEvent);
   }
   
   protected void a(JobContext paramJobContext, List<String> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      notifyError(new ErrorMessage(-1, ""));
-    }
-    do
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      return;
       paramJobContext = Collections.unmodifiableList(paramList);
       paramList = a(paramJobContext);
       IconLog.a(this.a, "getUnionIdListFromCache ok=%s", paramList.second);
       a((List)paramList.first);
-    } while (((Boolean)paramList.second).booleanValue());
-    IconLog.a(this.a, "fireRefreshUserInfo");
-    b(paramJobContext);
+      if (!((Boolean)paramList.second).booleanValue())
+      {
+        IconLog.a(this.a, "fireRefreshUserInfo");
+        b(paramJobContext);
+      }
+      return;
+    }
+    notifyError(new ErrorMessage(-1, ""));
   }
   
   protected void a(List<String> paramList)
   {
-    IconLog.a(this.a, "notifyResult url list : " + new JSONArray(paramList));
+    String str = this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyResult url list : ");
+    localStringBuilder.append(new JSONArray(paramList));
+    IconLog.a(str, localStringBuilder.toString());
     if (paramList.size() == 1)
     {
       IconLog.b(this.a, "add one more default item because of product logic");
@@ -109,7 +123,7 @@ public class UidListToUrlListSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.icon.UidListToUrlListSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -31,49 +31,63 @@ final class VbriSeeker
     }
     int j = paramMpegAudioHeader.sampleRate;
     long l1 = i;
-    if (j >= 32000) {}
-    long l2;
-    int m;
-    long[] arrayOfLong;
-    for (i = 1152;; i = 576)
+    if (j >= 32000) {
+      i = 1152;
+    } else {
+      i = 576;
+    }
+    l1 = Util.scaleLargeTimestamp(l1, 1000000L * i, j);
+    int k = paramParsableByteArray.readUnsignedShort();
+    int m = paramParsableByteArray.readUnsignedShort();
+    int n = paramParsableByteArray.readUnsignedShort();
+    paramParsableByteArray.skipBytes(2);
+    long l2 = paramMpegAudioHeader.frameSize;
+    paramMpegAudioHeader = new long[k];
+    long[] arrayOfLong = new long[k];
+    j = 0;
+    long l3 = paramLong2 + l2;
+    l2 = paramLong2;
+    paramLong2 = l3;
+    while (j < k)
     {
-      l2 = Util.scaleLargeTimestamp(l1, i * 1000000L, j);
-      int k = paramParsableByteArray.readUnsignedShort();
-      m = paramParsableByteArray.readUnsignedShort();
-      int n = paramParsableByteArray.readUnsignedShort();
-      paramParsableByteArray.skipBytes(2);
-      long l3 = paramMpegAudioHeader.frameSize;
-      paramMpegAudioHeader = new long[k];
-      arrayOfLong = new long[k];
-      j = 0;
-      l1 = paramLong2;
-      if (j >= k) {
-        break;
-      }
-      paramMpegAudioHeader[j] = (j * l2 / k);
-      arrayOfLong[j] = Math.max(l1, paramLong2 + l3);
-      switch (n)
+      paramMpegAudioHeader[j] = (j * l1 / k);
+      arrayOfLong[j] = Math.max(l2, paramLong2);
+      if (n != 1)
       {
-      default: 
-        return null;
+        if (n != 2)
+        {
+          if (n != 3)
+          {
+            if (n != 4) {
+              return null;
+            }
+            i = paramParsableByteArray.readUnsignedIntToInt();
+          }
+          else
+          {
+            i = paramParsableByteArray.readUnsignedInt24();
+          }
+        }
+        else {
+          i = paramParsableByteArray.readUnsignedShort();
+        }
       }
-    }
-    i = paramParsableByteArray.readUnsignedByte();
-    for (;;)
-    {
-      l1 += i * m;
+      else {
+        i = paramParsableByteArray.readUnsignedByte();
+      }
+      l2 += i * m;
       j += 1;
-      break;
-      i = paramParsableByteArray.readUnsignedShort();
-      continue;
-      i = paramParsableByteArray.readUnsignedInt24();
-      continue;
-      i = paramParsableByteArray.readUnsignedIntToInt();
     }
-    if ((paramLong1 != -1L) && (paramLong1 != l1)) {
-      Log.w("VbriSeeker", "VBRI data size mismatch: " + paramLong1 + ", " + l1);
+    if ((paramLong1 != -1L) && (paramLong1 != l2))
+    {
+      paramParsableByteArray = new StringBuilder();
+      paramParsableByteArray.append("VBRI data size mismatch: ");
+      paramParsableByteArray.append(paramLong1);
+      paramParsableByteArray.append(", ");
+      paramParsableByteArray.append(l2);
+      Log.w("VbriSeeker", paramParsableByteArray.toString());
     }
-    return new VbriSeeker(paramMpegAudioHeader, arrayOfLong, l2);
+    return new VbriSeeker(paramMpegAudioHeader, arrayOfLong, l1);
   }
   
   public long getDurationUs()
@@ -85,10 +99,16 @@ final class VbriSeeker
   {
     int i = Util.binarySearchFloor(this.timesUs, paramLong, true, true);
     SeekPoint localSeekPoint = new SeekPoint(this.timesUs[i], this.positions[i]);
-    if ((localSeekPoint.timeUs >= paramLong) || (i == this.timesUs.length - 1)) {
-      return new SeekMap.SeekPoints(localSeekPoint);
+    if (localSeekPoint.timeUs < paramLong)
+    {
+      long[] arrayOfLong = this.timesUs;
+      if (i != arrayOfLong.length - 1)
+      {
+        i += 1;
+        return new SeekMap.SeekPoints(localSeekPoint, new SeekPoint(arrayOfLong[i], this.positions[i]));
+      }
     }
-    return new SeekMap.SeekPoints(localSeekPoint, new SeekPoint(this.timesUs[(i + 1)], this.positions[(i + 1)]));
+    return new SeekMap.SeekPoints(localSeekPoint);
   }
   
   public long getTimeUs(long paramLong)
@@ -103,7 +123,7 @@ final class VbriSeeker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp3.VbriSeeker
  * JD-Core Version:    0.7.0.1
  */

@@ -34,9 +34,15 @@ public class NotificationCompat$Action
   boolean mShowsUserInterface = true;
   public CharSequence title;
   
-  public NotificationCompat$Action(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent) {}
+  public NotificationCompat$Action(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent)
+  {
+    this(localIconCompat, paramCharSequence, paramPendingIntent);
+  }
   
-  NotificationCompat$Action(int paramInt1, CharSequence paramCharSequence, PendingIntent paramPendingIntent, Bundle paramBundle, RemoteInput[] paramArrayOfRemoteInput1, RemoteInput[] paramArrayOfRemoteInput2, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3) {}
+  NotificationCompat$Action(int paramInt1, CharSequence paramCharSequence, PendingIntent paramPendingIntent, Bundle paramBundle, RemoteInput[] paramArrayOfRemoteInput1, RemoteInput[] paramArrayOfRemoteInput2, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    this(localIconCompat, paramCharSequence, paramPendingIntent, paramBundle, paramArrayOfRemoteInput1, paramArrayOfRemoteInput2, paramBoolean1, paramInt2, paramBoolean2, paramBoolean3);
+  }
   
   public NotificationCompat$Action(@Nullable IconCompat paramIconCompat, @Nullable CharSequence paramCharSequence, @Nullable PendingIntent paramPendingIntent)
   {
@@ -51,19 +57,16 @@ public class NotificationCompat$Action
     }
     this.title = NotificationCompat.Builder.limitCharSequenceLength(paramCharSequence);
     this.actionIntent = paramPendingIntent;
-    if (paramBundle != null) {}
-    for (;;)
-    {
-      this.mExtras = paramBundle;
-      this.mRemoteInputs = paramArrayOfRemoteInput1;
-      this.mDataOnlyRemoteInputs = paramArrayOfRemoteInput2;
-      this.mAllowGeneratedReplies = paramBoolean1;
-      this.mSemanticAction = paramInt;
-      this.mShowsUserInterface = paramBoolean2;
-      this.mIsContextual = paramBoolean3;
-      return;
+    if (paramBundle == null) {
       paramBundle = new Bundle();
     }
+    this.mExtras = paramBundle;
+    this.mRemoteInputs = paramArrayOfRemoteInput1;
+    this.mDataOnlyRemoteInputs = paramArrayOfRemoteInput2;
+    this.mAllowGeneratedReplies = paramBoolean1;
+    this.mSemanticAction = paramInt;
+    this.mShowsUserInterface = paramBoolean2;
+    this.mIsContextual = paramBoolean3;
   }
   
   public PendingIntent getActionIntent()
@@ -95,8 +98,12 @@ public class NotificationCompat$Action
   @Nullable
   public IconCompat getIconCompat()
   {
-    if ((this.mIcon == null) && (this.icon != 0)) {
-      this.mIcon = IconCompat.createWithResource(null, "", this.icon);
+    if (this.mIcon == null)
+    {
+      int i = this.icon;
+      if (i != 0) {
+        this.mIcon = IconCompat.createWithResource(null, "", i);
+      }
     }
     return this.mIcon;
   }
@@ -128,7 +135,7 @@ public class NotificationCompat$Action
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.Action
  * JD-Core Version:    0.7.0.1
  */

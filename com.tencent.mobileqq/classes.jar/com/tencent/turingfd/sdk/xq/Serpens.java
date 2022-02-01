@@ -1,56 +1,62 @@
 package com.tencent.turingfd.sdk.xq;
 
 public class Serpens
-  implements goto
+  extends case
 {
-  public static final byte[] Wg = new byte[0];
-  public final String Og;
-  public final long Pg;
-  public final String Rg;
-  public final String Sg;
-  public final String Tg;
-  public final String Ug;
-  public Apple Vg;
-  public final int fg;
+  public int Ab = 0;
+  public String rb = "";
+  public int ub = 0;
+  public int vb = 0;
+  public String yb = "";
+  public String zb = "";
   
-  public Serpens(int paramInt, byte[] paramArrayOfByte)
+  public void a(byte parambyte)
   {
-    this.Og = "";
-    this.Pg = 0L;
-    this.fg = paramInt;
-    this.Rg = "";
-    this.Sg = "";
-    this.Tg = "";
-    this.Ug = "";
-    this.Vg = new Apple("");
+    parambyte.b(this.ub, 0);
+    parambyte.b(this.vb, 1);
+    String str = this.yb;
+    if (str != null) {
+      parambyte.b(str, 2);
+    }
+    str = this.zb;
+    if (str != null) {
+      parambyte.b(str, 3);
+    }
+    parambyte.b(this.Ab, 4);
+    str = this.rb;
+    if (str != null) {
+      parambyte.b(str, 5);
+    }
   }
   
-  public Serpens(Serpens.do paramdo)
+  public void a(try paramtry)
   {
-    this.Og = paramdo.Og;
-    this.Pg = paramdo.Pg;
-    this.fg = paramdo.fg;
-    byte[] arrayOfByte = paramdo.Qg;
-    this.Rg = paramdo.Rg;
-    this.Sg = paramdo.Sg;
-    this.Tg = paramdo.Tg;
-    this.Ug = paramdo.Ug;
-    this.Vg = paramdo.Vg;
+    this.ub = paramtry.a(this.ub, 0, true);
+    this.vb = paramtry.a(this.vb, 1, false);
+    this.yb = paramtry.a(2, false);
+    this.zb = paramtry.a(3, false);
+    this.Ab = paramtry.a(this.Ab, 4, false);
+    this.rb = paramtry.a(5, false);
   }
   
-  public static Serpens.do create(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    return new Serpens.do(paramInt, null);
-  }
-  
-  public static Serpens f(int paramInt)
-  {
-    return new Serpens(paramInt, Wg);
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof Serpens)) {
+      return false;
+    }
+    paramObject = (Serpens)paramObject;
+    return (char.equals(this.ub, paramObject.ub)) && (char.equals(this.vb, paramObject.vb)) && (char.equals(this.yb, paramObject.yb)) && (char.equals(this.zb, paramObject.zb)) && (char.equals(this.Ab, paramObject.Ab)) && (char.equals(this.rb, paramObject.rb));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Serpens
  * JD-Core Version:    0.7.0.1
  */

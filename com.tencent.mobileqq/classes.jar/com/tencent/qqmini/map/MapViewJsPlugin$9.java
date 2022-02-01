@@ -12,10 +12,10 @@ class MapViewJsPlugin$9
   
   public void run()
   {
-    int i = 0;
     try
     {
       JSONObject localJSONObject1 = new JSONObject(this.val$req.jsonParams);
+      int i = 0;
       int j = localJSONObject1.optInt("mapId", 0);
       JSONObject localJSONObject2 = new JSONObject();
       MapContext localMapContext = MapViewJsPlugin.access$200(this.this$0, j);
@@ -43,7 +43,7 @@ class MapViewJsPlugin$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.map.MapViewJsPlugin.9
  * JD-Core Version:    0.7.0.1
  */

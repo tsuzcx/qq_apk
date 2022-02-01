@@ -12,18 +12,20 @@ class NearbyPeopleProfileActivity$11
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    NearbyPeopleProfileActivity.a(this.a).removeView(NearbyPeopleProfileActivity.a(this.a));
-    NearbyPeopleProfileActivity.a(this.a).a();
-    NearbyPeopleProfileActivity.a(this.a, null);
-    NearbyPeopleProfileActivity.a(this.a, null);
-    if (NearbyPeopleProfileActivity.a(this.a) == null)
+    NearbyPeopleProfileActivity.access$700(this.a).removeView(NearbyPeopleProfileActivity.access$600(this.a));
+    NearbyPeopleProfileActivity.access$400(this.a).a();
+    NearbyPeopleProfileActivity.access$602(this.a, null);
+    NearbyPeopleProfileActivity.access$402(this.a, null);
+    if (NearbyPeopleProfileActivity.access$500(this.a) == null)
     {
-      NearbyPeopleProfileActivity.a(this.a, this.a.a(this.a.j));
-      NearbyPeopleProfileActivity.b(this.a, NearbyPeopleProfileActivity.a(this.a).a());
-      NearbyPeopleProfileActivity.a(this.a).a();
-      NearbyPeopleProfileActivity.a(this.a).addView(NearbyPeopleProfileActivity.b(this.a), new FrameLayout.LayoutParams(-1, -1));
+      paramAnimation = this.a;
+      NearbyPeopleProfileActivity.access$502(paramAnimation, paramAnimation.createNearbyDisplayPanel(paramAnimation.from));
+      paramAnimation = this.a;
+      NearbyPeopleProfileActivity.access$802(paramAnimation, NearbyPeopleProfileActivity.access$500(paramAnimation).a());
+      NearbyPeopleProfileActivity.access$500(this.a).a();
+      NearbyPeopleProfileActivity.access$700(this.a).addView(NearbyPeopleProfileActivity.access$800(this.a), new FrameLayout.LayoutParams(-1, -1));
     }
-    NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
+    NearbyPeopleProfileActivity.access$500(this.a).a(NearbyPeopleProfileActivity.access$300(this.a));
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -32,7 +34,7 @@ class NearbyPeopleProfileActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.11
  * JD-Core Version:    0.7.0.1
  */

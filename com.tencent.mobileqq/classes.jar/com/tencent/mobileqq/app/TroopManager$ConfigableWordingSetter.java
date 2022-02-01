@@ -20,47 +20,46 @@ public class TroopManager$ConfigableWordingSetter
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, String paramString, int paramInt, ChatMessage paramChatMessage)
   {
-    String str;
     if (paramEditText != null)
     {
-      str = "";
-      if (paramInt != 0) {
-        break label167;
+      if (paramInt == 0)
+      {
+        double d1 = Math.random();
+        double d2 = TroopManager.b.size();
+        Double.isNaN(d2);
+        this.a = ((int)(d1 * d2));
+        if (TroopManager.b.size() == 1)
+        {
+          str = (String)TroopManager.b.get(0);
+          TroopManager.a(paramQQAppInterface);
+          break label162;
+        }
+        if (this.a < TroopManager.b.size())
+        {
+          str = (String)TroopManager.b.get(this.a);
+          TroopManager.b.remove(this.a);
+          break label162;
+        }
       }
-      this.a = ((int)(Math.random() * TroopManager.b.size()));
-      if (TroopManager.b.size() != 1) {
-        break label125;
+      else if (this.b < TroopManager.c.size())
+      {
+        str = (String)TroopManager.c.get(this.b);
+        this.b = ((this.b + 1) % TroopManager.c.size());
+        break label162;
       }
-      str = (String)TroopManager.b.get(0);
-      TroopManager.a(paramQQAppInterface);
-    }
-    label167:
-    for (;;)
-    {
+      String str = "";
+      label162:
       Object localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      localObject = ContactUtils.g(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
+      localObject = ContactUtils.b(paramQQAppInterface, paramChatMessage.frienduin, paramChatMessage.senderuin);
       paramEditText.setText(AtTroopMemberSpan.a(paramQQAppInterface, paramContext, paramString, paramChatMessage.senderuin, (String)localObject, false, paramEditText, true, true));
       paramEditText.append(str);
       paramEditText.setSelection(paramEditText.getText().length());
-      return;
-      label125:
-      if (this.a < TroopManager.b.size())
-      {
-        str = (String)TroopManager.b.get(this.a);
-        TroopManager.b.remove(this.a);
-        continue;
-        if (this.b < TroopManager.c.size())
-        {
-          str = (String)TroopManager.c.get(this.b);
-          this.b = ((this.b + 1) % TroopManager.c.size());
-        }
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.ConfigableWordingSetter
  * JD-Core Version:    0.7.0.1
  */

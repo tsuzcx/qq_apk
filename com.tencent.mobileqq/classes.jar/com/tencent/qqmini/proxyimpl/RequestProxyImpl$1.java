@@ -20,18 +20,20 @@ class RequestProxyImpl$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    QLog.e("RequestProxyImpl", 1, "httpConnect err url:" + this.jdField_a_of_type_JavaLangString, paramIOException);
+    paramCall = new StringBuilder();
+    paramCall.append("httpConnect err url:");
+    paramCall.append(this.jdField_a_of_type_JavaLangString);
+    QLog.e("RequestProxyImpl", 1, paramCall.toString(), paramIOException);
     if ("Canceled".equals(paramIOException.getLocalizedMessage()))
     {
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(-5, "request error:cancel");
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentQqminiProxyimplRequestProxyImpl.a.remove(this.jdField_a_of_type_JavaLangString);
-      return;
       this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestFailed(HttpUtil.a(paramIOException, -1), "request error:network");
     }
+    this.jdField_a_of_type_ComTencentQqminiProxyimplRequestProxyImpl.a.remove(this.jdField_a_of_type_JavaLangString);
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
@@ -50,10 +52,7 @@ class RequestProxyImpl$1
     }
     catch (IOException paramResponse)
     {
-      for (;;)
-      {
-        paramResponse.printStackTrace();
-      }
+      paramResponse.printStackTrace();
     }
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyRequestProxy$RequestListener.onRequestSucceed(i, paramCall, localMap);
     this.jdField_a_of_type_ComTencentQqminiProxyimplRequestProxyImpl.a.remove(this.jdField_a_of_type_JavaLangString);
@@ -61,7 +60,7 @@ class RequestProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.RequestProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

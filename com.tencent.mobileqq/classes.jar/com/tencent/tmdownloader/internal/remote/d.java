@@ -23,7 +23,14 @@ public class d
   
   public void a(int paramInt, String paramString)
   {
-    ab.c("RemoteOpImpl", "<RemoteOpImpl.postReport> process:" + s.e() + ", type = " + paramInt + ", data = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<RemoteOpImpl.postReport> process:");
+    localStringBuilder.append(s.e());
+    localStringBuilder.append(", type = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", data = ");
+    localStringBuilder.append(paramString);
+    ab.c("RemoteOpImpl", localStringBuilder.toString());
     SDKReportManager2.getInstance().postReport(paramInt, paramString);
   }
   
@@ -49,7 +56,14 @@ public class d
   
   public void a(String paramString, byte[] paramArrayOfByte)
   {
-    ab.c("RemoteOpImpl", "<RemoteOpImpl.postReport> process:" + s.e() + ", key = " + paramString + ", valueSize = " + paramArrayOfByte.length);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<RemoteOpImpl.postReport> process:");
+    localStringBuilder.append(s.e());
+    localStringBuilder.append(", key = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", valueSize = ");
+    localStringBuilder.append(paramArrayOfByte.length);
+    ab.c("RemoteOpImpl", localStringBuilder.toString());
     Settings.getInstance().setBlob(paramString, paramArrayOfByte);
   }
   
@@ -95,7 +109,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.d
  * JD-Core Version:    0.7.0.1
  */

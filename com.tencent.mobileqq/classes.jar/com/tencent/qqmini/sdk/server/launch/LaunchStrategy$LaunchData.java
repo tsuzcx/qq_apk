@@ -42,18 +42,18 @@ public final class LaunchStrategy$LaunchData
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof LaunchData))
       {
         paramObject = (LaunchData)paramObject;
-        if ((!Intrinsics.areEqual(this.intent, paramObject.intent)) || (!Intrinsics.areEqual(this.processState, paramObject.processState))) {}
+        if ((Intrinsics.areEqual(this.intent, paramObject.intent)) && (Intrinsics.areEqual(this.processState, paramObject.processState))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -70,28 +70,36 @@ public final class LaunchStrategy$LaunchData
   
   public int hashCode()
   {
-    int j = 0;
     Object localObject = this.intent;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.processState;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      return i * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    localObject = this.processState;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return i * 31 + j;
   }
   
   @NotNull
   public String toString()
   {
-    return "LaunchData(intent=" + this.intent + ", processState=" + this.processState + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LaunchData(intent=");
+    localStringBuilder.append(this.intent);
+    localStringBuilder.append(", processState=");
+    localStringBuilder.append(this.processState);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.LaunchStrategy.LaunchData
  * JD-Core Version:    0.7.0.1
  */

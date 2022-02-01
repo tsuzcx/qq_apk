@@ -29,15 +29,20 @@ class MsgTabNodeListLoader$1$1
     synchronized (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader$1.a.d)
     {
       localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader$1.a.d.iterator();
-      if (((Iterator)localObject2).hasNext()) {
+      while (((Iterator)localObject2).hasNext()) {
         ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)((Iterator)localObject2).next()).a();
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1
  * JD-Core Version:    0.7.0.1
  */

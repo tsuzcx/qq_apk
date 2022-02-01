@@ -1,81 +1,60 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.content.Context;
-import android.os.Process;
-import java.io.File;
-
 public class Bilberry
+  implements goto
 {
-  public static final String FILE_NAME = const.get(const.cf);
-  public static final String nh = const.get(const.bf);
-  public static boolean oh = false;
+  public static final byte[] Mh = new byte[0];
+  public final String Eh;
+  public final long Fh;
+  public final String Hh;
+  public final String Ih;
+  public final String Jh;
+  public final String Kh;
+  public Cherry Lh;
+  public int Nh = 0;
+  public int Oh = 0;
+  public final int zg;
   
-  public static String G(Context paramContext)
+  public Bilberry(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
   {
-    paramContext = paramContext.getDir(nh, 0);
-    if (paramContext == null) {
-      return "";
-    }
-    paramContext = new File(paramContext.getAbsolutePath() + File.separator + "1");
-    if ((!paramContext.exists()) && (!paramContext.mkdirs())) {
-      return "";
-    }
-    return paramContext.getAbsolutePath() + File.separator + FILE_NAME;
+    this.Eh = "";
+    this.Fh = 0L;
+    this.zg = paramInt1;
+    this.Hh = "";
+    this.Ih = "";
+    this.Jh = "";
+    this.Kh = "";
+    this.Lh = new Cherry("");
+    this.Nh = paramInt2;
+    this.Oh = paramInt3;
   }
   
-  public static void b(Context paramContext, Almond paramAlmond)
+  public Bilberry(Bilberry.do paramdo)
   {
-    long l1 = paramAlmond.d(paramContext, "502");
-    long l2 = Process.myUid();
-    if (l1 != l2) {
-      paramAlmond.a(paramContext, "502", "" + l2, false);
-    }
+    this.Eh = paramdo.jdField_a_of_type_JavaLangString;
+    this.Fh = paramdo.jdField_a_of_type_Long;
+    this.zg = paramdo.jdField_a_of_type_Int;
+    byte[] arrayOfByte = paramdo.jdField_a_of_type_ArrayOfByte;
+    this.Hh = paramdo.b;
+    this.Ih = paramdo.c;
+    this.Jh = paramdo.d;
+    this.Kh = paramdo.e;
+    this.Lh = paramdo.jdField_a_of_type_ComTencentTuringfdSdkXqCherry;
   }
   
-  public static void c(Context paramContext, Almond paramAlmond)
+  public static Bilberry.do create(int paramInt)
   {
-    long l = paramAlmond.d(paramContext, "502");
-    int i = Process.myUid();
-    boolean bool = l < 0L;
-    if (!bool)
-    {
-      paramAlmond.e(paramContext, 0L);
-      return;
-    }
-    if ((bool) && (i != l))
-    {
-      paramAlmond.e(paramContext, -1L);
-      return;
-    }
-    paramAlmond.e(paramContext, 1L);
+    return new Bilberry.do(paramInt, null);
   }
   
-  public static void d(Context paramContext, Almond paramAlmond)
+  public static Bilberry g(int paramInt)
   {
-    try
-    {
-      if (oh) {
-        return;
-      }
-      oh = true;
-      long l = paramAlmond.d(paramContext, "502");
-      int i = Process.myUid();
-      if ((l != 0L) && (i != l))
-      {
-        paramAlmond.a(paramContext, "101", "", true);
-        new File(G(paramContext)).delete();
-        return;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    return new Bilberry(paramInt, Mh, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Bilberry
  * JD-Core Version:    0.7.0.1
  */

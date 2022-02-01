@@ -10,10 +10,11 @@ class er$2
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct)
   {
-    if ((paramInt3 != 0) || (paramInt4 != 0) || (paramJceStruct == null)) {}
-    do
+    if ((paramInt3 == 0) && (paramInt4 == 0))
     {
-      return;
+      if (paramJceStruct == null) {
+        return;
+      }
       paramJceStruct = ((ac)paramJceStruct).co;
       if (!TextUtils.isEmpty(paramJceStruct))
       {
@@ -22,13 +23,19 @@ class er$2
         er.a(this.pi).cT().d(paramJceStruct, false);
         return;
       }
-    } while (!ea.ct());
-    throw new RuntimeException("vid is empty: " + paramJceStruct);
+      if (!ea.ct()) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("vid is empty: ");
+      localStringBuilder.append(paramJceStruct);
+      throw new RuntimeException(localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.er.2
  * JD-Core Version:    0.7.0.1
  */

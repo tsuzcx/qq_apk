@@ -45,40 +45,35 @@ public class GameCapsuleButtonClickListener
   private void doClose()
   {
     Object localObject = this.mMiniAppContext.getAttachedActivity();
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
-    {
-      if (!(localObject instanceof InternalMiniActivity)) {
-        break label104;
+    int i;
+    if ((localObject != null) && (!((Activity)localObject).isFinishing())) {
+      if ((localObject instanceof InternalMiniActivity)) {
+        ((Activity)localObject).finish();
+      } else {
+        i = 0;
       }
+    }
+    try
+    {
+      boolean bool = ((Activity)localObject).moveTaskToBack(true);
+      i = bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      label45:
+      break label45;
+    }
+    if (i == 0)
+    {
+      QMLog.e("GameCapsuleButton", "moveTaskToBack failed, finish the activity.");
       ((Activity)localObject).finish();
     }
-    for (;;)
+    this.mMiniAppContext.performAction(AppStateEvent.obtain(60));
+    if (this.mMiniAppContext.isMiniGame())
     {
-      this.mMiniAppContext.performAction(AppStateEvent.obtain(60));
-      if (this.mMiniAppContext.isMiniGame())
-      {
-        localObject = this.mMiniAppContext.getMiniAppInfo();
-        if ((localObject != null) && (((MiniAppInfo)localObject).launchParam != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.fromMiniAppId))) {
-          NavigateBackUtils.writeTagAppid(((MiniAppInfo)localObject).launchParam.fromMiniAppId);
-        }
-      }
-      return;
-      label104:
-      int i = 0;
-      try
-      {
-        boolean bool = ((Activity)localObject).moveTaskToBack(true);
-        i = bool;
-      }
-      catch (Throwable localThrowable)
-      {
-        label114:
-        break label114;
-      }
-      if (i == 0)
-      {
-        QMLog.e("GameCapsuleButton", "moveTaskToBack failed, finish the activity.");
-        ((Activity)localObject).finish();
+      localObject = this.mMiniAppContext.getMiniAppInfo();
+      if ((localObject != null) && (((MiniAppInfo)localObject).launchParam != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject).launchParam.fromMiniAppId))) {
+        NavigateBackUtils.writeTagAppid(((MiniAppInfo)localObject).launchParam.fromMiniAppId);
       }
     }
   }
@@ -87,37 +82,41 @@ public class GameCapsuleButtonClickListener
   {
     Object localObject = paramIMiniAppContext.getAttachedActivity();
     paramIMiniAppContext = paramIMiniAppContext.getMiniAppInfo();
-    if ((localObject == null) || (paramIMiniAppContext == null)) {
-      return false;
-    }
-    paramIMiniAppContext = DialogUtil.createAppCloseDialog((Context)localObject);
-    FrameLayout localFrameLayout = new FrameLayout((Context)localObject);
-    localObject = paramOnAppCloseAction.getContentView((Context)localObject, paramIMiniAppContext);
-    if (localObject != null) {
-      localFrameLayout.addView((View)localObject, ((View)localObject).getLayoutParams());
-    }
-    paramIMiniAppContext.setCancelable(false);
-    paramIMiniAppContext.setTitle(null).addView(localFrameLayout, new LinearLayout.LayoutParams(-1, -2));
-    if (!TextUtils.isEmpty(paramOnAppCloseAction.positiveButtonText))
+    if (localObject != null)
     {
-      SDKMiniProgramLpReportDC04239.report("sdk_popup", "action", "expo", paramOnAppCloseAction.positiveButtonExpoReportStr, null, null, false);
-      paramIMiniAppContext.setPositiveButton(paramOnAppCloseAction.positiveButtonText, paramOnAppCloseAction.positiveButtonColor, new GameCapsuleButtonClickListener.3(paramOnAppCloseAction));
+      if (paramIMiniAppContext == null) {
+        return false;
+      }
+      paramIMiniAppContext = DialogUtil.createAppCloseDialog((Context)localObject);
+      FrameLayout localFrameLayout = new FrameLayout((Context)localObject);
+      localObject = paramOnAppCloseAction.getContentView((Context)localObject, paramIMiniAppContext);
+      if (localObject != null) {
+        localFrameLayout.addView((View)localObject, ((View)localObject).getLayoutParams());
+      }
+      paramIMiniAppContext.setCancelable(false);
+      paramIMiniAppContext.setTitle(null).addView(localFrameLayout, new LinearLayout.LayoutParams(-1, -2));
+      if (!TextUtils.isEmpty(paramOnAppCloseAction.positiveButtonText))
+      {
+        SDKMiniProgramLpReportDC04239.report("sdk_popup", "action", "expo", paramOnAppCloseAction.positiveButtonExpoReportStr, null, null, false);
+        paramIMiniAppContext.setPositiveButton(paramOnAppCloseAction.positiveButtonText, paramOnAppCloseAction.positiveButtonColor, new GameCapsuleButtonClickListener.3(paramOnAppCloseAction));
+      }
+      if (!TextUtils.isEmpty(paramOnAppCloseAction.negativeButtonText))
+      {
+        SDKMiniProgramLpReportDC04239.report("sdk_popup", "close", "expo", paramOnAppCloseAction.negativeButtonExpoReportStr, null, null, false);
+        paramIMiniAppContext.setNegativeButton(paramOnAppCloseAction.negativeButtonText, paramOnAppCloseAction.negativeButtonColor, new GameCapsuleButtonClickListener.4(paramOnAppCloseAction));
+      }
+      if (paramIMiniAppContext.getWindow() != null) {
+        paramIMiniAppContext.getWindow().setLayout(paramOnAppCloseAction.dialogWidth, paramOnAppCloseAction.dialogHeight);
+      }
+      if (paramOnAppCloseAction.appCloseAction != null) {
+        paramOnAppCloseAction.appCloseAction.onAppCloseClicked(paramIMiniAppContext);
+      }
+      if (paramOnAppCloseAction.appCloseActionType == 1) {
+        SDKMiniProgramLpReportDC04239.report("page_view", "expo", "4001", null, null, null, false);
+      }
+      return true;
     }
-    if (!TextUtils.isEmpty(paramOnAppCloseAction.negativeButtonText))
-    {
-      SDKMiniProgramLpReportDC04239.report("sdk_popup", "close", "expo", paramOnAppCloseAction.negativeButtonExpoReportStr, null, null, false);
-      paramIMiniAppContext.setNegativeButton(paramOnAppCloseAction.negativeButtonText, paramOnAppCloseAction.negativeButtonColor, new GameCapsuleButtonClickListener.4(paramOnAppCloseAction));
-    }
-    if (paramIMiniAppContext.getWindow() != null) {
-      paramIMiniAppContext.getWindow().setLayout(paramOnAppCloseAction.dialogWidth, paramOnAppCloseAction.dialogHeight);
-    }
-    if (paramOnAppCloseAction.appCloseAction != null) {
-      paramOnAppCloseAction.appCloseAction.onAppCloseClicked(paramIMiniAppContext);
-    }
-    if (paramOnAppCloseAction.appCloseActionType == 1) {
-      SDKMiniProgramLpReportDC04239.report("page_view", "expo", "4001", null, null, null, false);
-    }
-    return true;
+    return false;
   }
   
   public void onCloseClick()
@@ -129,16 +128,16 @@ public class GameCapsuleButtonClickListener
     {
       SDKMiniProgramLpReportDC04239.report("sdk_popup", "popup", "expo", localOnAppCloseAction.appCloseExpoReportStr, null, null, false);
       showAppCloseDialog(this.mMiniAppContext, localOnAppCloseAction);
-    }
-    while ((GameCloseManager.showAlertViewForBattleGame(this.mMiniAppContext, this.closeListener)) || (this.mMiniAppContext.getMiniAppInfo() == null) || (localMiniAppProxy.onCapsuleButtonCloseClick(this.mMiniAppContext, this.closeListener))) {
       return;
     }
-    doClose();
+    if ((!GameCloseManager.showAlertViewForBattleGame(this.mMiniAppContext, this.closeListener)) && (this.mMiniAppContext.getMiniAppInfo() != null) && (!localMiniAppProxy.onCapsuleButtonCloseClick(this.mMiniAppContext, this.closeListener))) {
+      doClose();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.widget.GameCapsuleButtonClickListener
  * JD-Core Version:    0.7.0.1
  */

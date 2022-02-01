@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ParticleSystem2D
 {
-  private static final String TAG = ParticleSystem2D.class.getSimpleName();
+  private static final String TAG = "ParticleSystem2D";
   private List<ParticleTemplate2D> mClouds = new ArrayList();
   final Context mContext;
   private long mNativeCtx;
@@ -22,18 +22,16 @@ public class ParticleSystem2D
   private void loadFinish()
   {
     int i = 0;
-    int j = 0;
-    int m;
-    for (int k = 0; i < this.mClouds.size(); k = m)
+    int k;
+    for (int j = 0; i < this.mClouds.size(); j = k)
     {
       ParticleTemplate2D localParticleTemplate2D = (ParticleTemplate2D)this.mClouds.get(i);
-      m = k + localParticleTemplate2D.mMaxCount;
+      k = localParticleTemplate2D.mMaxCount;
       k = j;
       if (localParticleTemplate2D.mMaxCount > j) {
         k = localParticleTemplate2D.mMaxCount;
       }
       i += 1;
-      j = k;
     }
     nativeRegisterTemplate(this.mNativeCtx, this.mClouds.toArray());
   }
@@ -87,13 +85,12 @@ public class ParticleSystem2D
         if (localObject != null)
         {
           localObject = new ParticleTemplate2D(((Transition)localObject).particleCountMax, ((Transition)localObject).emissionRate, ((Transition)localObject).life, ((Transition)localObject).positionX, ((Transition)localObject).positionY, ((Transition)localObject).scale, ((Transition)localObject).rotate, ((Transition)localObject).p0, ((Transition)localObject).p1, ((Transition)localObject).p2);
-          if (localObject != null) {
-            this.mClouds.add(localObject);
-          }
+          this.mClouds.add(localObject);
         }
         i += 1;
       }
       loadFinish();
+      return;
     }
   }
   
@@ -104,9 +101,10 @@ public class ParticleSystem2D
   
   public void release()
   {
-    if (this.mNativeCtx != -1L)
+    long l = this.mNativeCtx;
+    if (l != -1L)
     {
-      nativeRelease(this.mNativeCtx);
+      nativeRelease(l);
       this.mNativeCtx = -1L;
     }
   }
@@ -118,7 +116,7 @@ public class ParticleSystem2D
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.particlesystem2d.ParticleSystem2D
  * JD-Core Version:    0.7.0.1
  */

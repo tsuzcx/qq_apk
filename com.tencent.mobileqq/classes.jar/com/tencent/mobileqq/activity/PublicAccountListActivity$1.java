@@ -1,28 +1,36 @@
 package com.tencent.mobileqq.activity;
 
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver.OnCallback;
 
 class PublicAccountListActivity$1
-  implements Handler.Callback
+  extends IPublicAccountObserver.OnCallback
 {
   PublicAccountListActivity$1(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onFollowPublicAccount(int paramInt, Object paramObject)
   {
-    switch (paramMessage.what)
-    {
+    if (paramInt == 0) {
+      this.a.c();
     }
-    for (;;)
-    {
-      return true;
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, Object paramObject)
+  {
+    if (paramInt == 0) {
+      this.a.c();
+    }
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
       this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.1
  * JD-Core Version:    0.7.0.1
  */

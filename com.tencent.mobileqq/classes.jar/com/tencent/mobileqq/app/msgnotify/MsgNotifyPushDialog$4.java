@@ -15,7 +15,6 @@ class MsgNotifyPushDialog$4
   
   public void run()
   {
-    int i = 0;
     AnimationDrawable localAnimationDrawable;
     if (this.this$0.isShowing())
     {
@@ -25,10 +24,14 @@ class MsgNotifyPushDialog$4
     try
     {
       long l1 = System.currentTimeMillis();
+      int i = 0;
       while (i < MsgNotifyPushDialog.jdField_a_of_type_Int)
       {
-        Bitmap localBitmap = BitmapManager.a(String.format(MsgNotifyPushDialog.c + MsgNotifyPushDialog.e, new Object[] { Integer.valueOf(i) }));
-        localAnimationDrawable.addFrame(new BitmapDrawable(MsgNotifyPushDialog.a(this.this$0).getResources(), localBitmap), 1000 / MsgNotifyPushDialog.jdField_a_of_type_Int);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(MsgNotifyPushDialog.c);
+        ((StringBuilder)localObject).append(MsgNotifyPushDialog.e);
+        localObject = BitmapManager.a(String.format(((StringBuilder)localObject).toString(), new Object[] { Integer.valueOf(i) }));
+        localAnimationDrawable.addFrame(new BitmapDrawable(MsgNotifyPushDialog.a(this.this$0).getResources(), (Bitmap)localObject), 1000 / MsgNotifyPushDialog.jdField_a_of_type_Int);
         i += 1;
       }
       localAnimationDrawable.setOneShot(true);
@@ -44,7 +47,7 @@ class MsgNotifyPushDialog$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog.4
  * JD-Core Version:    0.7.0.1
  */

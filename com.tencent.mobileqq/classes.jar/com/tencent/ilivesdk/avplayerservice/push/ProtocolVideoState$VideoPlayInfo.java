@@ -34,13 +34,15 @@ public final class ProtocolVideoState$VideoPlayInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 64 }, new String[] { "video_kind", "sessionid", "RoomID", "RoomType", "VideoInfoList", "session_groupid", "MainRoomID", "FatherRoomID" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), null, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L) }, VideoPlayInfo.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 64 }, new String[] { "video_kind", "sessionid", "RoomID", "RoomType", "VideoInfoList", "session_groupid", "MainRoomID", "FatherRoomID" }, new Object[] { localInteger, localByteStringMicro, localLong, localInteger, null, localInteger, localLong, localLong }, VideoPlayInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.ProtocolVideoState.VideoPlayInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class WSVerticalItemTopController$1
   {
     if (!NetworkUtil.a(WSVerticalItemTopController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemTopController)))
     {
-      ToastUtil.a().a(2131720723);
+      ToastUtil.a().a(2131720447);
       return;
     }
     WSVerticalItemTopController.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemTopController).a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
@@ -28,7 +28,7 @@ class WSVerticalItemTopController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemTopController.1
  * JD-Core Version:    0.7.0.1
  */

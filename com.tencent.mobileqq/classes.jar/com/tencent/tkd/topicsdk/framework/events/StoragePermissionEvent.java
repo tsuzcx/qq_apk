@@ -23,18 +23,18 @@ public final class StoragePermissionEvent
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof StoragePermissionEvent))
       {
         paramObject = (StoragePermissionEvent)paramObject;
-        if (this.a != paramObject.a) {}
+        if (this.a == paramObject.a) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -45,12 +45,16 @@ public final class StoragePermissionEvent
   @NotNull
   public String toString()
   {
-    return "StoragePermissionEvent(isGranted=" + this.a + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("StoragePermissionEvent(isGranted=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.events.StoragePermissionEvent
  * JD-Core Version:    0.7.0.1
  */

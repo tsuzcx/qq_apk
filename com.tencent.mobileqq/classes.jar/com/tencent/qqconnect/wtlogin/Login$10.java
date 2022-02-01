@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.agent.util.SSOLog;
 
 class Login$10
   extends BroadcastReceiver
@@ -15,17 +15,17 @@ class Login$10
   {
     if (paramIntent == null)
     {
-      QLog.d("Login", 1, "mPuzzleVerifyCodeReceiver onReceive null == oldIntent");
+      SSOLog.a("Login", new Object[] { "mPuzzleVerifyCodeReceiver onReceive null == oldIntent" });
       return;
     }
-    QLog.d("Login", 1, "mPuzzleVerifyCodeReceiver onReceive");
+    SSOLog.a("Login", new Object[] { "mPuzzleVerifyCodeReceiver onReceive" });
     AuthorityUtil.a(paramIntent, paramContext);
-    this.a.d();
+    this.a.hideLoginTip();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.10
  * JD-Core Version:    0.7.0.1
  */

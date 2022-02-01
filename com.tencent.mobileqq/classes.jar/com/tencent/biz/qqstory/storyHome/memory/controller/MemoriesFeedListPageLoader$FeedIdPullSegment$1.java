@@ -24,21 +24,21 @@ class MemoriesFeedListPageLoader$FeedIdPullSegment$1
       SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramGetProfileFeedIdListResponse == null))
+    if ((!paramErrorMessage.isFail()) && (paramGetProfileFeedIdListResponse != null))
     {
-      SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
-      MemoriesFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesFeedListPageLoader$FeedIdPullSegment, paramErrorMessage);
+      MemoriesFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesFeedListPageLoader$FeedIdPullSegment).a(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetProfileFeedIdListResponse.jdField_a_of_type_Boolean);
+      ((FeedManager)SuperManager.a(11)).a(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList);
+      paramGetProfileFeedIdListRequest = MemoriesFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesFeedListPageLoader$FeedIdPullSegment).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+      MemoriesFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesFeedListPageLoader$FeedIdPullSegment, paramGetProfileFeedIdListRequest);
       return;
     }
-    MemoriesFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesFeedListPageLoader$FeedIdPullSegment).a(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList, paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaLangString, paramGetProfileFeedIdListResponse.jdField_a_of_type_Boolean);
-    ((FeedManager)SuperManager.a(11)).a(paramGetProfileFeedIdListResponse.jdField_a_of_type_JavaUtilList);
-    paramGetProfileFeedIdListRequest = MemoriesFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesFeedListPageLoader$FeedIdPullSegment).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
-    MemoriesFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesFeedListPageLoader$FeedIdPullSegment, paramGetProfileFeedIdListRequest);
+    SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+    MemoriesFeedListPageLoader.FeedIdPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesFeedListPageLoader$FeedIdPullSegment, paramErrorMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesFeedListPageLoader.FeedIdPullSegment.1
  * JD-Core Version:    0.7.0.1
  */

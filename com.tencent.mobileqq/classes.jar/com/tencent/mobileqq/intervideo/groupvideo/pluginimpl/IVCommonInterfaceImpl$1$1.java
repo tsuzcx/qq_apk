@@ -17,37 +17,37 @@ class IVCommonInterfaceImpl$1$1
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onLocationFinish code : ").append(paramInt).append(" info : ");
-      if (paramSosoLbsInfo != null) {
-        break label186;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLocationFinish code : ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" info : ");
+      if (paramSosoLbsInfo == null) {
+        localObject = null;
+      } else {
+        localObject = paramSosoLbsInfo.mLocation;
       }
+      localStringBuilder.append(localObject);
+      QLog.i("IVCommonInterfaceImpl", 2, localStringBuilder.toString());
     }
-    label186:
-    for (Object localObject = null;; localObject = paramSosoLbsInfo.mLocation)
+    Object localObject = new Bundle();
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-      QLog.i("IVCommonInterfaceImpl", 2, localObject);
-      localObject = new Bundle();
-      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
-      {
-        ((Bundle)localObject).putDouble("lat", paramSosoLbsInfo.mLocation.mLat02);
-        ((Bundle)localObject).putDouble("lon", paramSosoLbsInfo.mLocation.mLon02);
-        ((Bundle)localObject).putString("nation", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.mLocation.nation));
-        ((Bundle)localObject).putString("province", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.mLocation.province));
-        ((Bundle)localObject).putString("city", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.mLocation.city));
-      }
-      ((Bundle)localObject).putInt("code", paramInt);
-      this.val$result[0] = localObject;
-      this.val$latch.countDown();
-      return;
+      ((Bundle)localObject).putDouble("lat", paramSosoLbsInfo.mLocation.mLat02);
+      ((Bundle)localObject).putDouble("lon", paramSosoLbsInfo.mLocation.mLon02);
+      ((Bundle)localObject).putString("nation", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.mLocation.nation));
+      ((Bundle)localObject).putString("province", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.mLocation.province));
+      ((Bundle)localObject).putString("city", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.mLocation.city));
     }
+    ((Bundle)localObject).putInt("code", paramInt);
+    this.val$result[0] = localObject;
+    this.val$latch.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVCommonInterfaceImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

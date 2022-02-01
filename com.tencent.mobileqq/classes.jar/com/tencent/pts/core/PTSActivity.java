@@ -43,15 +43,19 @@ public class PTSActivity
   
   private boolean isParametersAvailable()
   {
-    String[] arrayOfString = parameters;
-    int j = arrayOfString.length;
+    Object localObject = parameters;
+    int j = localObject.length;
     int i = 0;
     while (i < j)
     {
-      String str = arrayOfString[i];
+      String str = localObject[i];
       if (TextUtils.isEmpty(getParameter(str)))
       {
-        PTSLog.e("PTSActivity", "[isParametersAvailable], key = " + str + ", is null.");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[isParametersAvailable], key = ");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(", is null.");
+        PTSLog.e("PTSActivity", ((StringBuilder)localObject).toString());
         return false;
       }
       i += 1;
@@ -61,21 +65,24 @@ public class PTSActivity
   
   public static void startNewPage(Context paramContext, Bundle paramBundle)
   {
-    if ((paramContext == null) || (paramBundle == null)) {
-      return;
-    }
-    Intent localIntent = new Intent(paramContext, PTSActivity.class);
-    String[] arrayOfString = parameters;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    if (paramContext != null)
     {
-      String str = arrayOfString[i];
-      localIntent.putExtra(str, paramBundle.getString(str, ""));
-      i += 1;
+      if (paramBundle == null) {
+        return;
+      }
+      Intent localIntent = new Intent(paramContext, PTSActivity.class);
+      String[] arrayOfString = parameters;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = arrayOfString[i];
+        localIntent.putExtra(str, paramBundle.getString(str, ""));
+        i += 1;
+      }
+      localIntent.setFlags(268435456);
+      paramContext.startActivity(localIntent);
     }
-    localIntent.setFlags(268435456);
-    paramContext.startActivity(localIntent);
   }
   
   @Override
@@ -134,7 +141,7 @@ public class PTSActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSActivity
  * JD-Core Version:    0.7.0.1
  */

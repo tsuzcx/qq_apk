@@ -14,12 +14,7 @@ final class f$a
   {
     a locala = new a();
     Log.d("MicroMsg.SDK.NoopingResult", "star parse NoopingResult");
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
-    {
-      Log.e("MicroMsg.SDK.NoopingResult", "parse fail, buf is null");
-      locala.m = OAuthErrCode.WechatAuth_Err_NetworkErr;
-      return locala;
-    }
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0)) {}
     for (;;)
     {
       try
@@ -30,45 +25,56 @@ final class f$a
           paramArrayOfByte = new JSONObject(paramArrayOfByte);
           locala.v = paramArrayOfByte.getInt("wx_errcode");
           Log.d("MicroMsg.SDK.NoopingResult", String.format("nooping uuidStatusCode = %d", new Object[] { Integer.valueOf(locala.v) }));
-          switch (locala.v)
+          int i = locala.v;
+          if (i != 408) {
+            if (i == 500) {}
+          }
+          switch (i)
           {
           case 405: 
-            locala.m = OAuthErrCode.WechatAuth_Err_NormalErr;
+            paramArrayOfByte = OAuthErrCode.WechatAuth_Err_NormalErr;
+            locala.m = paramArrayOfByte;
             return locala;
+            locala.m = OAuthErrCode.WechatAuth_Err_OK;
+            locala.u = paramArrayOfByte.getString("wx_code");
+            return locala;
+          case 404: 
+            paramArrayOfByte = OAuthErrCode.WechatAuth_Err_OK;
+            break;
+          case 403: 
+            paramArrayOfByte = OAuthErrCode.WechatAuth_Err_Cancel;
+            break;
+          case 402: 
+            paramArrayOfByte = OAuthErrCode.WechatAuth_Err_Timeout;
+            continue;
+            paramArrayOfByte = OAuthErrCode.WechatAuth_Err_NormalErr;
+            continue;
+            paramArrayOfByte = OAuthErrCode.WechatAuth_Err_OK;
+            continue;
+            Log.e("MicroMsg.SDK.NoopingResult", paramArrayOfByte);
           }
         }
         catch (Exception paramArrayOfByte)
         {
-          Log.e("MicroMsg.SDK.NoopingResult", String.format("parse json fail, ex = %s", new Object[] { paramArrayOfByte.getMessage() }));
-          locala.m = OAuthErrCode.WechatAuth_Err_NormalErr;
-          return locala;
+          paramArrayOfByte = String.format("parse json fail, ex = %s", new Object[] { paramArrayOfByte.getMessage() });
         }
-        locala.m = OAuthErrCode.WechatAuth_Err_OK;
       }
       catch (Exception paramArrayOfByte)
       {
-        Log.e("MicroMsg.SDK.NoopingResult", String.format("parse fail, build String fail, ex = %s", new Object[] { paramArrayOfByte.getMessage() }));
-        locala.m = OAuthErrCode.WechatAuth_Err_NormalErr;
-        return locala;
+        paramArrayOfByte = String.format("parse fail, build String fail, ex = %s", new Object[] { paramArrayOfByte.getMessage() });
+        continue;
       }
-      locala.u = paramArrayOfByte.getString("wx_code");
+      paramArrayOfByte = OAuthErrCode.WechatAuth_Err_NormalErr;
+      locala.m = paramArrayOfByte;
       return locala;
-      locala.m = OAuthErrCode.WechatAuth_Err_OK;
-      return locala;
-      locala.m = OAuthErrCode.WechatAuth_Err_OK;
-      return locala;
-      locala.m = OAuthErrCode.WechatAuth_Err_Timeout;
-      return locala;
-      locala.m = OAuthErrCode.WechatAuth_Err_Cancel;
-      return locala;
-      locala.m = OAuthErrCode.WechatAuth_Err_NormalErr;
-      return locala;
+      Log.e("MicroMsg.SDK.NoopingResult", "parse fail, buf is null");
+      paramArrayOfByte = OAuthErrCode.WechatAuth_Err_NetworkErr;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.f.a
  * JD-Core Version:    0.7.0.1
  */

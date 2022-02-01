@@ -47,27 +47,26 @@ public class FlexNode
   private float mTop = (0.0F / 0.0F);
   private float mWidth = (0.0F / 0.0F);
   
-  static
-  {
-    com.tencent.mtt.hippy.bridge.a.a.a("flexbox");
-  }
-  
   public FlexNode()
   {
-    if (this.mNativeFlexNode == 0L) {
-      throw new IllegalStateException("Failed to allocate native memory");
+    long l = this.mNativeFlexNode;
+    if (l != 0L)
+    {
+      this.mFlexNodeStyle = new FlexNodeStyle(l);
+      reset();
+      return;
     }
-    this.mFlexNodeStyle = new FlexNodeStyle(this.mNativeFlexNode);
-    reset();
+    throw new IllegalStateException("Failed to allocate native memory");
   }
   
   private int TotalChildCount()
   {
-    if (this.mChildren == null) {
+    List localList = this.mChildren;
+    int i = 0;
+    if (localList == null) {
       return 0;
     }
     int j = getChildCount();
-    int i = 0;
     while (i < this.mChildren.size())
     {
       j += ((FlexNode)this.mChildren.get(i)).TotalChildCount();
@@ -78,11 +77,12 @@ public class FlexNode
   
   private int TotalDirtyChildCount()
   {
-    if (this.mChildren == null) {
+    List localList = this.mChildren;
+    int i = 0;
+    if (localList == null) {
       return 0;
     }
     int j = getDirtyChildCount();
-    int i = 0;
     while (i < this.mChildren.size())
     {
       j += ((FlexNode)this.mChildren.get(i)).TotalDirtyChildCount();
@@ -201,15 +201,17 @@ public class FlexNode
   
   public void addChildAt(FlexNode paramFlexNode, int paramInt)
   {
-    if (paramFlexNode.mParent != null) {
-      throw new IllegalStateException("Child already has a parent, it must be removed first.");
+    if (paramFlexNode.mParent == null)
+    {
+      if (this.mChildren == null) {
+        this.mChildren = new ArrayList(4);
+      }
+      this.mChildren.add(paramInt, paramFlexNode);
+      paramFlexNode.mParent = this;
+      nativeFlexNodeInsertChild(this.mNativeFlexNode, paramFlexNode.mNativeFlexNode, paramInt);
+      return;
     }
-    if (this.mChildren == null) {
-      this.mChildren = new ArrayList(4);
-    }
-    this.mChildren.add(paramInt, paramFlexNode);
-    paramFlexNode.mParent = this;
-    nativeFlexNodeInsertChild(this.mNativeFlexNode, paramFlexNode.mNativeFlexNode, paramInt);
+    throw new IllegalStateException("Child already has a parent, it must be removed first.");
   }
   
   public void calculateLayout()
@@ -219,9 +221,9 @@ public class FlexNode
   
   public void calculateLayout(float paramFloat1, float paramFloat2, d paramd)
   {
-    int j = 0;
     Object localObject1 = new ArrayList();
     ((ArrayList)localObject1).add(this);
+    int j = 0;
     int i = 0;
     while (i < ((ArrayList)localObject1).size())
     {
@@ -282,16 +284,15 @@ public class FlexNode
     {
     default: 
       return Style().c(FlexNodeStyle.b.a(paramInt)).a();
-    case 1: 
-    case 2: 
-      return this.mBorderLeft;
-    case 3: 
-      return this.mBorderTop;
+    case 6: 
+      return this.mBorderBottom;
     case 4: 
     case 5: 
       return this.mBorderRight;
+    case 3: 
+      return this.mBorderTop;
     }
-    return this.mBorderBottom;
+    return this.mBorderLeft;
   }
   
   public FlexNode getChildAt(int paramInt)
@@ -301,10 +302,11 @@ public class FlexNode
   
   public int getChildCount()
   {
-    if (this.mChildren == null) {
+    List localList = this.mChildren;
+    if (localList == null) {
       return 0;
     }
-    return this.mChildren.size();
+    return localList.size();
   }
   
   public Object getData()
@@ -319,10 +321,11 @@ public class FlexNode
   
   public int getDirtyChildCount()
   {
-    if (this.mChildren == null) {
+    List localList = this.mChildren;
+    int i = 0;
+    if (localList == null) {
       return 0;
     }
-    int i = 0;
     int k;
     for (int j = 0; i < this.mChildren.size(); j = k)
     {
@@ -391,16 +394,15 @@ public class FlexNode
     {
     default: 
       return Style().a(FlexNodeStyle.b.a(paramInt)).a();
-    case 1: 
-    case 2: 
-      return this.mMarginLeft;
-    case 3: 
-      return this.mMarginTop;
+    case 6: 
+      return this.mMarginBottom;
     case 4: 
     case 5: 
       return this.mMarginRight;
+    case 3: 
+      return this.mMarginTop;
     }
-    return this.mMarginBottom;
+    return this.mMarginLeft;
   }
   
   public i getOverflow()
@@ -414,16 +416,15 @@ public class FlexNode
     {
     default: 
       return Style().b(FlexNodeStyle.b.a(paramInt)).a();
-    case 1: 
-    case 2: 
-      return this.mPaddingLeft;
-    case 3: 
-      return this.mPaddingTop;
+    case 6: 
+      return this.mPaddingBottom;
     case 4: 
     case 5: 
       return this.mPaddingRight;
+    case 3: 
+      return this.mPaddingTop;
     }
-    return this.mPaddingBottom;
+    return this.mPaddingLeft;
   }
   
   public FlexNode getParent()
@@ -483,10 +484,11 @@ public class FlexNode
   
   public int indexOf(FlexNode paramFlexNode)
   {
-    if (this.mChildren == null) {
+    List localList = this.mChildren;
+    if (localList == null) {
       return -1;
     }
-    return this.mChildren.indexOf(paramFlexNode);
+    return localList.indexOf(paramFlexNode);
   }
   
   public boolean isDirty()
@@ -507,10 +509,10 @@ public class FlexNode
   
   public final long measure(float paramFloat1, int paramInt1, float paramFloat2, int paramInt2)
   {
-    if (!isMeasureDefined()) {
-      throw new RuntimeException("Measure function isn't defined!");
+    if (isMeasureDefined()) {
+      return this.mMeasureFunction.measure(this, paramFloat1, f.a(paramInt1), paramFloat2, f.a(paramInt2));
     }
-    return this.mMeasureFunction.measure(this, paramFloat1, f.a(paramInt1), paramFloat2, f.a(paramInt2));
+    throw new RuntimeException("Measure function isn't defined!");
   }
   
   public FlexNode removeChildAt(int paramInt)
@@ -523,47 +525,61 @@ public class FlexNode
   
   public void reset()
   {
-    if ((this.mParent != null) || ((this.mChildren != null) && (this.mChildren.size() > 0))) {
-      return;
+    if (this.mParent == null)
+    {
+      List localList = this.mChildren;
+      if ((localList != null) && (localList.size() > 0)) {
+        return;
+      }
+      nativeFlexNodereset(this.mNativeFlexNode);
+      setDirection(d.b);
+      setFlexDirection(b.c);
+      setJustifyContent(e.a);
+      setAlignContent(com.tencent.mtt.hippy.dom.a.a.b);
+      setAlignItems(com.tencent.mtt.hippy.dom.a.a.e);
+      setAlignSelf(com.tencent.mtt.hippy.dom.a.a.a);
+      setPositionType(j.a);
+      setWrap(k.a);
+      setOverflow(i.a);
+      setFlexGrow(0.0F);
+      setFlexShrink(0.0F);
+      setFlexBasis((0.0F / 0.0F));
+      this.mMeasureFunction = null;
+      this.mEdgeSetFlag = 0;
+      this.mHasSetPosition = false;
+      this.mHasNewLayout = true;
+      this.mWidth = (0.0F / 0.0F);
+      this.mHeight = (0.0F / 0.0F);
+      this.mTop = (0.0F / 0.0F);
+      this.mLeft = (0.0F / 0.0F);
+      this.mMarginLeft = 0.0F;
+      this.mMarginTop = 0.0F;
+      this.mMarginRight = 0.0F;
+      this.mMarginBottom = 0.0F;
+      this.mPaddingLeft = 0.0F;
+      this.mPaddingTop = 0.0F;
+      this.mPaddingRight = 0.0F;
+      this.mPaddingBottom = 0.0F;
+      this.mBorderLeft = 0.0F;
+      this.mBorderTop = 0.0F;
+      this.mBorderRight = 0.0F;
+      this.mBorderBottom = 0.0F;
     }
-    nativeFlexNodereset(this.mNativeFlexNode);
-    setDirection(d.b);
-    setFlexDirection(b.c);
-    setJustifyContent(e.a);
-    setAlignContent(com.tencent.mtt.hippy.dom.a.a.b);
-    setAlignItems(com.tencent.mtt.hippy.dom.a.a.e);
-    setAlignSelf(com.tencent.mtt.hippy.dom.a.a.a);
-    setPositionType(j.a);
-    setWrap(k.a);
-    setOverflow(i.a);
-    setFlexGrow(0.0F);
-    setFlexShrink(0.0F);
-    setFlexBasis((0.0F / 0.0F));
-    this.mMeasureFunction = null;
-    this.mEdgeSetFlag = 0;
-    this.mHasSetPosition = false;
-    this.mHasNewLayout = true;
-    this.mWidth = (0.0F / 0.0F);
-    this.mHeight = (0.0F / 0.0F);
-    this.mTop = (0.0F / 0.0F);
-    this.mLeft = (0.0F / 0.0F);
-    this.mMarginLeft = 0.0F;
-    this.mMarginTop = 0.0F;
-    this.mMarginRight = 0.0F;
-    this.mMarginBottom = 0.0F;
-    this.mPaddingLeft = 0.0F;
-    this.mPaddingTop = 0.0F;
-    this.mPaddingRight = 0.0F;
-    this.mPaddingBottom = 0.0F;
-    this.mBorderLeft = 0.0F;
-    this.mBorderTop = 0.0F;
-    this.mBorderRight = 0.0F;
-    this.mBorderBottom = 0.0F;
   }
   
   protected String resultToString()
   {
-    return "layout: {left: " + getLayoutX() + ", top: " + getLayoutY() + ", width: " + getLayoutWidth() + ", height: " + getLayoutHeight() + ", }";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("layout: {left: ");
+    localStringBuilder.append(getLayoutX());
+    localStringBuilder.append(", top: ");
+    localStringBuilder.append(getLayoutY());
+    localStringBuilder.append(", width: ");
+    localStringBuilder.append(getLayoutWidth());
+    localStringBuilder.append(", height: ");
+    localStringBuilder.append(getLayoutHeight());
+    localStringBuilder.append(", }");
+    return localStringBuilder.toString();
   }
   
   public void setAlignContent(com.tencent.mtt.hippy.dom.a.a parama)
@@ -642,12 +658,13 @@ public class FlexNode
   {
     this.mMeasureFunction = parama;
     long l = this.mNativeFlexNode;
-    if (parama != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      nativeFlexNodeNodeSetHasMeasureFunc(l, bool);
-      return;
+    boolean bool;
+    if (parama != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    nativeFlexNodeNodeSetHasMeasureFunc(l, bool);
   }
   
   public void setOverflow(i parami)
@@ -716,15 +733,15 @@ public class FlexNode
   
   protected void toStringWithIndentation(StringBuilder paramStringBuilder, int paramInt)
   {
+    StringBuilder localStringBuilder1 = new StringBuilder();
     int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     while (i < paramInt)
     {
-      localStringBuilder.append("__");
+      localStringBuilder1.append("__");
       i += 1;
     }
-    paramStringBuilder.append(localStringBuilder.toString());
+    paramStringBuilder.append(localStringBuilder1.toString());
     paramStringBuilder.append(this.mFlexNodeStyle.toString());
     paramStringBuilder.append(resultToString());
     if (getChildCount() == 0) {
@@ -738,7 +755,10 @@ public class FlexNode
       paramStringBuilder.append("\n");
       i += 1;
     }
-    paramStringBuilder.append(localStringBuilder + "]");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(localStringBuilder1);
+    localStringBuilder2.append("]");
+    paramStringBuilder.append(localStringBuilder2.toString());
   }
   
   public boolean valuesEqual(float paramFloat1, float paramFloat2)
@@ -748,7 +768,7 @@ public class FlexNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.flexbox.FlexNode
  * JD-Core Version:    0.7.0.1
  */

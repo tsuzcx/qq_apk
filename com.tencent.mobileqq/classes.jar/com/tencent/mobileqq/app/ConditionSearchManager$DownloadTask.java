@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app;
 
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -18,32 +19,35 @@ public class ConditionSearchManager$DownloadTask
     this.jdField_a_of_type_JavaIoFile = paramFile;
   }
   
-  public void realCancel()
+  protected void realCancel()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ConditionSearch.Manager", 2, "DownloadTask realCancel");
     }
   }
   
-  public void realStart()
+  protected void realStart()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ConditionSearch.Manager", 2, "DownloadTask realStart");
     }
     String str = this.key;
-    QQAppInterface localQQAppInterface = this.app;
+    BaseQQAppInterface localBaseQQAppInterface = this.app;
     GetResourceRespInfo localGetResourceRespInfo = this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo;
-    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.jdField_a_of_type_JavaIoFile, localQQAppInterface, localGetResourceRespInfo), 128, null, true);
+    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.jdField_a_of_type_JavaIoFile, localBaseQQAppInterface, localGetResourceRespInfo), 128, null, true);
   }
   
   public String toString()
   {
-    return "[DownloadTask] url=" + this.key;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[DownloadTask] url=");
+    localStringBuilder.append(this.key);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConditionSearchManager.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

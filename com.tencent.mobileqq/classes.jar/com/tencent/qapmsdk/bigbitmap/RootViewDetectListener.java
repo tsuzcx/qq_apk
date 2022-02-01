@@ -30,20 +30,28 @@ class RootViewDetectListener
   
   private void detectView(List<ExceedBitmapInfo> paramList, String paramString1, String paramString2, View paramView)
   {
-    if ((paramView == null) || (paramView.getVisibility() == 8) || (paramView.getWidth() <= 0) || (paramView.getHeight() <= 0)) {}
-    for (;;)
+    if ((paramView != null) && (paramView.getVisibility() != 8) && (paramView.getWidth() > 0))
     {
-      return;
+      if (paramView.getHeight() <= 0) {
+        return;
+      }
       this.detector.detect(paramList, paramString1, paramString2, paramView);
-      if (((paramView instanceof ViewGroup)) && (((ViewGroup)paramView).getChildCount() > 0))
+      if ((paramView instanceof ViewGroup))
       {
         paramView = (ViewGroup)paramView;
-        int i = 0;
-        while (i < paramView.getChildCount())
+        if (paramView.getChildCount() > 0)
         {
-          View localView = paramView.getChildAt(i);
-          detectView(paramList, paramString1, paramString2 + " -> " + ClassUtil.getClassName(localView, Integer.valueOf(i)), localView);
-          i += 1;
+          int i = 0;
+          while (i < paramView.getChildCount())
+          {
+            View localView = paramView.getChildAt(i);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramString2);
+            localStringBuilder.append(" -> ");
+            localStringBuilder.append(ClassUtil.getClassName(localView, Integer.valueOf(i)));
+            detectView(paramList, paramString1, localStringBuilder.toString(), localView);
+            i += 1;
+          }
         }
       }
     }
@@ -57,7 +65,7 @@ class RootViewDetectListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.bigbitmap.RootViewDetectListener
  * JD-Core Version:    0.7.0.1
  */

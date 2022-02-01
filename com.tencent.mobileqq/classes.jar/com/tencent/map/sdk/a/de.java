@@ -7,8 +7,8 @@ import android.location.LocationManager;
 
 public final class de
 {
-  public static String a = null;
-  public static String b = null;
+  public static String a;
+  public static String b;
   public static boolean c = false;
   
   public static boolean a(Context paramContext)
@@ -34,8 +34,12 @@ public final class de
       paramContext = paramContext.getLastKnownLocation((String)localObject);
       if (paramContext != null)
       {
-        b = paramContext.getLatitude();
-        a = paramContext.getLongitude();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramContext.getLatitude());
+        b = ((StringBuilder)localObject).toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramContext.getLongitude());
+        a = ((StringBuilder)localObject).toString();
         c = true;
         return true;
       }
@@ -47,7 +51,7 @@ public final class de
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.de
  * JD-Core Version:    0.7.0.1
  */

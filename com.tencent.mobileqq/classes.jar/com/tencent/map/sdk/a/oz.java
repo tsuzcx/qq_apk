@@ -24,11 +24,11 @@ public final class oz
   
   public final void a()
   {
-    int i = 0;
     try
     {
       this.c.clear();
       oz.a locala = this.b;
+      int i = 0;
       locala.c = 0;
       locala.b = 0;
       while (i < locala.a.length)
@@ -42,11 +42,15 @@ public final class oz
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.oz
  * JD-Core Version:    0.7.0.1
  */

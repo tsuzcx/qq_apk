@@ -38,16 +38,17 @@ public class DoGameRaffleServlet
         paramArrayOfByte.putOpt("state", Integer.valueOf(((GameRaffleInfo.StDoGameRaffleRsp)localObject).state.get()));
         paramArrayOfByte.putOpt("onlinePrizeImg", ((GameRaffleInfo.StDoGameRaffleRsp)localObject).onlinePrizeImg.get());
         paramArrayOfByte.putOpt("active_id", Integer.valueOf(((GameRaffleInfo.StDoGameRaffleRsp)localObject).active_id.get()));
-        localObject = (GameRaffleInfo.Pack)((GameRaffleInfo.StDoGameRaffleRsp)localObject).pack.get();
-        if (localObject != null) {
-          localJSONObject = new JSONObject();
-        }
       }
       catch (Throwable localThrowable2)
       {
+        QLog.i("GetGameRaffleMaterialServlet", 1, "onProcessData", localThrowable2);
+      }
+      localObject = (GameRaffleInfo.Pack)((GameRaffleInfo.StDoGameRaffleRsp)localObject).pack.get();
+      if (localObject != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
         try
         {
-          JSONObject localJSONObject;
           localJSONObject.putOpt("pack_id", ((GameRaffleInfo.Pack)localObject).pack_id.get());
           localJSONObject.putOpt("state", Integer.valueOf(((GameRaffleInfo.Pack)localObject).state.get()));
           localJSONObject.putOpt("type", Integer.valueOf(((GameRaffleInfo.Pack)localObject).type.get()));
@@ -70,20 +71,15 @@ public class DoGameRaffleServlet
           localJSONObject.putOpt("business_video", ((GameRaffleInfo.Pack)localObject).business_video.get());
           localJSONObject.putOpt("business_name_pic", ((GameRaffleInfo.Pack)localObject).business_name_pic.get());
           paramArrayOfByte.putOpt("pack", localJSONObject);
-          paramBundle.putString("key_result_data", paramArrayOfByte.toString());
-          notifyObserver(paramIntent, 1090, true, paramBundle, MiniAppObserver.class);
-          return;
-          localThrowable2 = localThrowable2;
-          QLog.i("GetGameRaffleMaterialServlet", 1, "onProcessData", localThrowable2);
         }
         catch (Throwable localThrowable1)
         {
-          for (;;)
-          {
-            QLog.i("GetGameRaffleMaterialServlet", 1, "onProcessData", localThrowable1);
-          }
+          QLog.i("GetGameRaffleMaterialServlet", 1, "onProcessData", localThrowable1);
         }
       }
+      paramBundle.putString("key_result_data", paramArrayOfByte.toString());
+      notifyObserver(paramIntent, 1090, true, paramBundle, MiniAppObserver.class);
+      return;
     }
     notifyObserver(paramIntent, 1090, false, paramBundle, MiniAppObserver.class);
   }
@@ -106,7 +102,7 @@ public class DoGameRaffleServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.DoGameRaffleServlet
  * JD-Core Version:    0.7.0.1
  */

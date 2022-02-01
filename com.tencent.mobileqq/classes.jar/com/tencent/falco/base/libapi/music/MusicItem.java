@@ -28,16 +28,13 @@ public class MusicItem
     try
     {
       paramString = new JSONObject(URLDecoder.decode(paramString, "UTF-8"));
-      return parse(paramString);
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
+      paramString.printStackTrace();
+      paramString = null;
     }
+    return parse(paramString);
   }
   
   public static MusicItem parse(String paramString1, String paramString2)
@@ -50,40 +47,38 @@ public class MusicItem
   public static MusicItem parse(JSONObject paramJSONObject)
   {
     MusicItem localMusicItem = new MusicItem();
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return localMusicItem;
-      try
-      {
-        if (paramJSONObject.has("singer_name")) {
-          localMusicItem.singerName = paramJSONObject.getString("singer_name");
-        }
-        if (paramJSONObject.has("song_name")) {
-          localMusicItem.songName = paramJSONObject.getString("song_name");
-        }
-        if (paramJSONObject.has("song_id")) {
-          localMusicItem.songId = String.valueOf(paramJSONObject.getLong("song_id"));
-        }
-        if (paramJSONObject.has("mid")) {
-          localMusicItem.mId = paramJSONObject.getString("mid");
-        }
-        if (paramJSONObject.has("play_url")) {
-          localMusicItem.originalUrl = paramJSONObject.getString("play_url");
-        }
-        if (paramJSONObject.has("song_lyric")) {
-          localMusicItem.songLyric = paramJSONObject.getString("song_lyric");
-        }
-        if (paramJSONObject.has("accompany_url"))
-        {
-          localMusicItem.accompanyUrl = paramJSONObject.getString("accompany_url");
-          return localMusicItem;
-        }
+    }
+    try
+    {
+      if (paramJSONObject.has("singer_name")) {
+        localMusicItem.singerName = paramJSONObject.getString("singer_name");
       }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
+      if (paramJSONObject.has("song_name")) {
+        localMusicItem.songName = paramJSONObject.getString("song_name");
       }
+      if (paramJSONObject.has("song_id")) {
+        localMusicItem.songId = String.valueOf(paramJSONObject.getLong("song_id"));
+      }
+      if (paramJSONObject.has("mid")) {
+        localMusicItem.mId = paramJSONObject.getString("mid");
+      }
+      if (paramJSONObject.has("play_url")) {
+        localMusicItem.originalUrl = paramJSONObject.getString("play_url");
+      }
+      if (paramJSONObject.has("song_lyric")) {
+        localMusicItem.songLyric = paramJSONObject.getString("song_lyric");
+      }
+      if (paramJSONObject.has("accompany_url"))
+      {
+        localMusicItem.accompanyUrl = paramJSONObject.getString("accompany_url");
+        return localMusicItem;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
     }
     return localMusicItem;
   }
@@ -104,39 +99,23 @@ public class MusicItem
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (MusicItem)paramObject;
-    } while ((TextUtils.isEmpty(paramObject.songId)) || (!paramObject.songId.equals(this.songId)));
-    return true;
+    }
+    paramObject = (MusicItem)paramObject;
+    return (!TextUtils.isEmpty(paramObject.songId)) && (paramObject.songId.equals(this.songId));
   }
   
   public int getFactor()
   {
-    int j = 1;
-    int i;
     if ((!TextUtils.isEmpty(this.originalUrl)) && (this.originalUrl.startsWith("http")))
     {
-      i = j;
-      if (!TextUtils.isEmpty(this.accompanyUrl))
-      {
-        i = j;
-        if (this.accompanyUrl.startsWith("http")) {
-          i = 2;
-        }
+      if ((!TextUtils.isEmpty(this.accompanyUrl)) && (this.accompanyUrl.startsWith("http"))) {
+        return 2;
       }
+      return 1;
     }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (TextUtils.isEmpty(this.accompanyUrl));
-      i = j;
-    } while (!this.accompanyUrl.startsWith("http"));
+    if ((!TextUtils.isEmpty(this.accompanyUrl)) && (this.accompanyUrl.startsWith("http"))) {}
     return 1;
   }
   
@@ -185,7 +164,7 @@ public class MusicItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.music.MusicItem
  * JD-Core Version:    0.7.0.1
  */

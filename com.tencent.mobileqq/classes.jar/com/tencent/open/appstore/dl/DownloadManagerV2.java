@@ -69,7 +69,7 @@ import mqq.os.MqqHandler;
 public class DownloadManagerV2
   implements ITMAssistantDownloadClientListener
 {
-  private static volatile DownloadManagerV2 jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2 = null;
+  private static volatile DownloadManagerV2 jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2;
   private final int jdField_a_of_type_Int = 1000;
   private long jdField_a_of_type_Long = 0L;
   private NoticeReceiver jdField_a_of_type_ComTencentOpenAppstoreNoticeNoticeReceiver;
@@ -101,12 +101,30 @@ public class DownloadManagerV2
     this.jdField_a_of_type_ComTencentOpenAppstoreNoticeNoticeReceiver = new NoticeReceiver();
     IntentFilter localIntentFilter = new IntentFilter();
     String str = Common.r();
-    str = "." + str.replace(":", ".");
-    localIntentFilter.addAction(IntentFactory.jdField_a_of_type_JavaLangString + str);
-    localIntentFilter.addAction(IntentFactory.jdField_b_of_type_JavaLangString + str);
-    localIntentFilter.addAction(IntentFactory.jdField_c_of_type_JavaLangString + str);
-    localIntentFilter.addAction(IntentFactory.jdField_d_of_type_JavaLangString + str);
-    localIntentFilter.addAction(IntentFactory.e + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(".");
+    localStringBuilder.append(str.replace(":", "."));
+    str = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IntentFactory.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(str);
+    localIntentFilter.addAction(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IntentFactory.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(str);
+    localIntentFilter.addAction(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IntentFactory.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(str);
+    localIntentFilter.addAction(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IntentFactory.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(str);
+    localIntentFilter.addAction(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(IntentFactory.e);
+    localStringBuilder.append(str);
+    localIntentFilter.addAction(localStringBuilder.toString());
     ThreadManager.excute(new DownloadManagerV2.2(this, (IntentFilter)localObject, localIntentFilter), 16, null, true);
     NoticeListener.a().a(ThreadManager.getSubThreadHandler().getLooper());
     a(NoticeListener.a());
@@ -120,8 +138,9 @@ public class DownloadManagerV2
     if (paramDownloadInfo == null) {
       return -30;
     }
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener != null) {
-      return this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener.a(paramDownloadInfo.e, paramDownloadInfo.jdField_b_of_type_Int, paramDownloadInfo.l, null);
+    ApkWriteCodeListener localApkWriteCodeListener = this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener;
+    if (localApkWriteCodeListener != null) {
+      return localApkWriteCodeListener.a(paramDownloadInfo.e, paramDownloadInfo.jdField_b_of_type_Int, paramDownloadInfo.l, null);
     }
     this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener = null;
     return -40;
@@ -129,18 +148,19 @@ public class DownloadManagerV2
   
   public static DownloadManagerV2 a()
   {
-    if (jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2 == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2 == null)
+    if (jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2 == null) {
+      try
       {
-        jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2 = new DownloadManagerV2();
-        jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2.c();
-        jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2.b();
+        if (jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2 == null)
+        {
+          jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2 = new DownloadManagerV2();
+          jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2.c();
+          jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2.b();
+        }
       }
-      return jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentOpenAppstoreDlDownloadManagerV2;
   }
   
   private DownloadInfo a(String paramString, int paramInt)
@@ -168,21 +188,22 @@ public class DownloadManagerV2
   private TMAssistantDownloadClient a()
   {
     TMAssistantDownloadManager.getInstance(CommonDataAdapter.a().a()).getDownloadSDKClient(this.jdField_a_of_type_JavaLangString).registerDownloadTaskListener(this);
-    if (!this.jdField_b_of_type_Boolean) {}
-    try
-    {
-      TMAssistantDownloadSettingClient localTMAssistantDownloadSettingClient = TMAssistantDownloadManager.getInstance(CommonDataAdapter.a().a()).getDownloadSDKSettingClient();
-      if (localTMAssistantDownloadSettingClient != null)
+    if (!this.jdField_b_of_type_Boolean) {
+      try
       {
-        localTMAssistantDownloadSettingClient.setDownloadSDKMaxTaskNum(3);
-        this.jdField_b_of_type_Boolean = true;
+        TMAssistantDownloadSettingClient localTMAssistantDownloadSettingClient = TMAssistantDownloadManager.getInstance(CommonDataAdapter.a().a()).getDownloadSDKSettingClient();
+        if (localTMAssistantDownloadSettingClient != null)
+        {
+          localTMAssistantDownloadSettingClient.setDownloadSDKMaxTaskNum(3);
+          this.jdField_b_of_type_Boolean = true;
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
-        LogUtility.e("DownloadManagerV2", "exception: " + localException.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("exception: ");
+        localStringBuilder.append(localException.toString());
+        LogUtility.e("DownloadManagerV2", localStringBuilder.toString());
       }
     }
     this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(CommonDataAdapter.a().a()).getDownloadSDKClient(this.jdField_a_of_type_JavaLangString);
@@ -191,109 +212,191 @@ public class DownloadManagerV2
   
   private void a(int paramInt1, DownloadInfo paramDownloadInfo, int paramInt2, String paramString)
   {
-    if (paramDownloadInfo == null) {}
-    try
-    {
-      LogUtility.e("DownloadManagerV2", "notifyListener info == null id=" + paramInt1);
-      return;
-    }
-    finally {}
-    switch (paramInt1)
-    {
-    default: 
-      paramInt1 = 1;
-    }
-    while (paramInt1 != 0)
-    {
-      LogUtility.b("DownloadManagerV2", "[notifyListener] Need Save Info:" + paramDownloadInfo);
-      c(paramDownloadInfo);
-      break;
-      LogUtility.b("DownloadManagerV2", "[notifyListener] STATE_WAIT:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-      paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-      for (;;)
+    if (paramDownloadInfo == null) {
+      try
       {
-        if (paramString.hasNext())
+        paramDownloadInfo = new StringBuilder();
+        paramDownloadInfo.append("notifyListener info == null id=");
+        paramDownloadInfo.append(paramInt1);
+        LogUtility.e("DownloadManagerV2", paramDownloadInfo.toString());
+        return;
+      }
+      finally
+      {
+        break label1048;
+      }
+    }
+    int i = 0;
+    if (paramInt1 != -2)
+    {
+      if (paramInt1 != 6)
+      {
+        if (paramInt1 != 13)
         {
-          ((DownloadListener)paramString.next()).onDownloadWait(paramDownloadInfo);
-          continue;
-          LogUtility.b("DownloadManagerV2", "[notifyListener] STATE_PAUSE:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-          paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-          while (paramString.hasNext()) {
-            ((DownloadListener)paramString.next()).onDownloadPause(paramDownloadInfo);
-          }
-          LogUtility.b("DownloadManagerV2", "[notifyListener] STATE_COMPLETE:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-          paramDownloadInfo.jdField_f_of_type_Int = 100;
-          if (paramDownloadInfo.jdField_c_of_type_Int == 0) {
-            AppCenterReporter.e(paramDownloadInfo);
-          }
-          paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-          while (paramString.hasNext()) {
-            ((DownloadListener)paramString.next()).onDownloadFinish(paramDownloadInfo);
-          }
-          DownloadInfoReport.a(12, null, 100, paramDownloadInfo);
-          paramInt1 = 1;
-          break;
-          LogUtility.b("DownloadManagerV2", "[notifyListener] STATE_CANCEL:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-          m(paramDownloadInfo);
-          AppNotificationManager.a().a(paramDownloadInfo.g);
-          paramDownloadInfo.a(10);
-          LogUtility.b("DownloadManagerV2", "downloadInfo.state = " + paramDownloadInfo.a());
-          paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-          while (paramString.hasNext()) {
-            ((DownloadListener)paramString.next()).onDownloadCancel(paramDownloadInfo);
-          }
-          if (paramDownloadInfo.jdField_c_of_type_Int == 0)
+          if (paramInt1 != 20)
           {
-            AppCenterReporter.f(paramDownloadInfo);
-            paramInt1 = 0;
-            break;
-            if ((paramDownloadInfo.jdField_c_of_type_Int == 1) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L))
+            if (paramInt1 != 2)
+            {
+              if (paramInt1 != 3)
+              {
+                if (paramInt1 != 4)
+                {
+                  if (paramInt1 != 9)
+                  {
+                    if (paramInt1 != 10) {
+                      break label1058;
+                    }
+                    paramString = new StringBuilder();
+                    paramString.append("[notifyListener] STATE_CANCEL:");
+                    paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+                    LogUtility.b("DownloadManagerV2", paramString.toString());
+                    m(paramDownloadInfo);
+                    AppNotificationManager.a().a(paramDownloadInfo.g);
+                    paramDownloadInfo.a(10);
+                    paramString = new StringBuilder();
+                    paramString.append("downloadInfo.state = ");
+                    paramString.append(paramDownloadInfo.a());
+                    LogUtility.b("DownloadManagerV2", paramString.toString());
+                    paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+                    while (paramString.hasNext()) {
+                      ((DownloadListener)paramString.next()).onDownloadCancel(paramDownloadInfo);
+                    }
+                    paramInt1 = i;
+                    if (paramDownloadInfo.jdField_c_of_type_Int == 0)
+                    {
+                      AppCenterReporter.f(paramDownloadInfo);
+                      paramInt1 = i;
+                    }
+                  }
+                  else
+                  {
+                    paramString = new StringBuilder();
+                    paramString.append("[notifyListener] PACKAGE_UNINSTALLED:");
+                    paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+                    LogUtility.b("DownloadManagerV2", paramString.toString());
+                    paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+                    while (paramString.hasNext()) {
+                      ((DownloadListener)paramString.next()).uninstallSucceed(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e);
+                    }
+                  }
+                }
+                else
+                {
+                  paramString = new StringBuilder();
+                  paramString.append("[notifyListener] STATE_COMPLETE:");
+                  paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+                  LogUtility.b("DownloadManagerV2", paramString.toString());
+                  paramDownloadInfo.jdField_f_of_type_Int = 100;
+                  if (paramDownloadInfo.jdField_c_of_type_Int == 0) {
+                    AppCenterReporter.e(paramDownloadInfo);
+                  }
+                  paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+                  while (paramString.hasNext()) {
+                    ((DownloadListener)paramString.next()).onDownloadFinish(paramDownloadInfo);
+                  }
+                  DownloadInfoReport.a(12, null, 100, paramDownloadInfo);
+                  break label1058;
+                }
+              }
+              else
+              {
+                paramString = new StringBuilder();
+                paramString.append("[notifyListener] STATE_PAUSE:");
+                paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+                LogUtility.b("DownloadManagerV2", paramString.toString());
+                paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+                while (paramString.hasNext()) {
+                  ((DownloadListener)paramString.next()).onDownloadPause(paramDownloadInfo);
+                }
+              }
+            }
+            else if (paramDownloadInfo.jdField_c_of_type_Int != 1)
+            {
+              paramInt1 = i;
+              if (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1000L) {}
+            }
+            else
             {
               this.jdField_a_of_type_Long = System.currentTimeMillis();
-              LogUtility.b("DownloadManagerV2", "[notifyListener] STATE_DOWNLOADING:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+              paramString = new StringBuilder();
+              paramString.append("[notifyListener] STATE_DOWNLOADING:");
+              paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+              LogUtility.b("DownloadManagerV2", paramString.toString());
               paramString = a(2);
-              LogUtility.a("DownloadManagerV2", "[notifyListener] STATE_DOWNLOADING: infos size= " + paramString.size());
-              Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-              while (localIterator.hasNext())
+              Object localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("[notifyListener] STATE_DOWNLOADING: infos size= ");
+              ((StringBuilder)localObject).append(paramString.size());
+              LogUtility.a("DownloadManagerV2", ((StringBuilder)localObject).toString());
+              localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+              while (((Iterator)localObject).hasNext())
               {
-                DownloadListener localDownloadListener = (DownloadListener)localIterator.next();
-                LogUtility.a("DownloadManagerV2", "[notifyListener] DownloadConstants.STATE_DOWNLOADING: listener name:" + localDownloadListener.getClass().getName());
+                DownloadListener localDownloadListener = (DownloadListener)((Iterator)localObject).next();
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("[notifyListener] DownloadConstants.STATE_DOWNLOADING: listener name:");
+                localStringBuilder.append(localDownloadListener.getClass().getName());
+                LogUtility.a("DownloadManagerV2", localStringBuilder.toString());
                 localDownloadListener.onDownloadUpdate(paramString);
               }
-              a(paramDownloadInfo, paramInt2, paramString);
-              paramInt1 = 1;
-              break;
-              LogUtility.b("DownloadManagerV2", "[notifyListener] PACKAGE_INSTALLED:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-              paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-              while (paramString.hasNext()) {
-                ((DownloadListener)paramString.next()).installSucceed(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e);
-              }
-              LogUtility.b("DownloadManagerV2", "[notifyListener] PACKAGE_REPLACED:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-              paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-              while (paramString.hasNext()) {
-                ((DownloadListener)paramString.next()).packageReplaced(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e);
-              }
-              LogUtility.b("DownloadManagerV2", "[notifyListener] PACKAGE_UNINSTALLED:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-              paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-              while (paramString.hasNext()) {
-                ((DownloadListener)paramString.next()).uninstallSucceed(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e);
-              }
-              paramInt1 = 1;
-              break;
             }
           }
-          paramInt1 = 0;
-          break;
+          else
+          {
+            paramString = new StringBuilder();
+            paramString.append("[notifyListener] STATE_WAIT:");
+            paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+            LogUtility.b("DownloadManagerV2", paramString.toString());
+            paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+            while (paramString.hasNext()) {
+              ((DownloadListener)paramString.next()).onDownloadWait(paramDownloadInfo);
+            }
+          }
+        }
+        else
+        {
+          paramString = new StringBuilder();
+          paramString.append("[notifyListener] PACKAGE_REPLACED:");
+          paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+          LogUtility.b("DownloadManagerV2", paramString.toString());
+          paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+          while (paramString.hasNext()) {
+            ((DownloadListener)paramString.next()).packageReplaced(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e);
+          }
         }
       }
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 1;
-      continue;
+      else
+      {
+        paramString = new StringBuilder();
+        paramString.append("[notifyListener] PACKAGE_INSTALLED:");
+        paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+        LogUtility.b("DownloadManagerV2", paramString.toString());
+        paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+        while (paramString.hasNext()) {
+          ((DownloadListener)paramString.next()).installSucceed(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e);
+        }
+      }
+    }
+    else
+    {
+      a(paramDownloadInfo, paramInt2, paramString);
+      break label1058;
+    }
+    for (;;)
+    {
+      if (paramInt1 != 0)
+      {
+        paramString = new StringBuilder();
+        paramString.append("[notifyListener] Need Save Info:");
+        paramString.append(paramDownloadInfo);
+        LogUtility.b("DownloadManagerV2", paramString.toString());
+        c(paramDownloadInfo);
+      }
+      return;
+      for (;;)
+      {
+        label1048:
+        throw paramDownloadInfo;
+      }
+      label1058:
       paramInt1 = 1;
     }
   }
@@ -314,87 +417,142 @@ public class DownloadManagerV2
     this.jdField_b_of_type_Boolean = false;
     if (paramDownloadInfo == null)
     {
-      LogUtility.b("DownloadManagerV2", "[onDownloadError] info == null code = " + paramInt + " msg = " + paramString);
+      paramDownloadInfo = new StringBuilder();
+      paramDownloadInfo.append("[onDownloadError] info == null code = ");
+      paramDownloadInfo.append(paramInt);
+      paramDownloadInfo.append(" msg = ");
+      paramDownloadInfo.append(paramString);
+      LogUtility.b("DownloadManagerV2", paramDownloadInfo.toString());
       return;
     }
-    LogUtility.b("DownloadManagerV2", "[onDownloadError] errorCode = " + paramInt + " msg = " + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onDownloadError] errorCode = ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" msg = ");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject).toString());
+    int j = 3;
+    int i;
+    if (paramInt != -51)
+    {
+      i = j;
+      localObject = paramString;
+      if (paramInt == -40) {
+        break label628;
+      }
+      i = j;
+      localObject = paramString;
+      if (paramInt == -30) {
+        break label628;
+      }
+      if (paramInt != -24)
+      {
+        i = j;
+        localObject = paramString;
+        if (paramInt == -20) {
+          break label628;
+        }
+        i = j;
+        localObject = paramString;
+        if (paramInt == -10) {
+          break label628;
+        }
+        i = j;
+        localObject = paramString;
+      }
+    }
     switch (paramInt)
     {
-    }
-    for (;;)
-    {
+    default: 
+      switch (paramInt)
+      {
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          switch (paramInt)
+          {
+          }
+          break;
+        }
+        break;
+      }
+    case 4: 
+    case 3: 
+    case 2: 
+    case 1: 
+    case -1: 
       try
       {
-        paramString = CommonDataAdapter.a().a().getString(2131694648);
-        i = 3;
+        localObject = CommonDataAdapter.a().a().getString(2131694616);
+        i = j;
+        break label628;
+        localObject = CommonDataAdapter.a().a().getString(2131694623);
+        i = j;
+        break label628;
+        localObject = CommonDataAdapter.a().a().getString(2131694628);
+        i = j;
+        break label628;
+        localObject = CommonDataAdapter.a().a().getString(2131694625);
+        i = j;
+        break label628;
+        if ((paramDownloadInfo.e != null) && ("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (paramDownloadInfo.jdField_a_of_type_Int != 1) && (a()))
+        {
+          j(paramDownloadInfo);
+          return;
+        }
+        paramDownloadInfo.a(4);
+        if (paramDownloadInfo.jdField_a_of_type_Int == 1)
+        {
+          l(paramDownloadInfo);
+          return;
+        }
+        i(paramDownloadInfo);
+        return;
+        localObject = CommonDataAdapter.a().a().getString(2131694616);
+        i = j;
+        break label628;
+        localObject = CommonDataAdapter.a().a().getString(2131694626);
+        i = j;
+        break label628;
+        localObject = CommonDataAdapter.a().a().getString(2131694621);
+        i = j;
+        break label628;
+        if (paramInt == 712) {
+          localObject = CommonDataAdapter.a().a().getString(2131694618);
+        } else {
+          localObject = CommonDataAdapter.a().a().getString(2131694619);
+        }
+        i = 10;
+        h(paramDownloadInfo);
+        label628:
         paramDownloadInfo.a(i);
-        LogUtility.b("DownloadManagerV2", "[onDownloadError] ListenerSize:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-        if (!localIterator.hasNext()) {
-          break label717;
+        paramString = new StringBuilder();
+        paramString.append("[onDownloadError] ListenerSize:");
+        paramString.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
+        LogUtility.b("DownloadManagerV2", paramString.toString());
+        paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+        while (paramString.hasNext()) {
+          ((DownloadListener)paramString.next()).onDownloadError(paramDownloadInfo, paramInt, (String)localObject, i);
         }
-        ((DownloadListener)localIterator.next()).onDownloadError(paramDownloadInfo, paramInt, paramString, i);
-        continue;
-        if (paramDownloadInfo.e == null) {
-          break label530;
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (paramInt != 6)) {
+          b((String)localObject);
         }
+        if (paramDownloadInfo.jdField_c_of_type_Int == 0)
+        {
+          AppCenterReporter.a(paramDownloadInfo, paramInt, (String)localObject);
+          return;
+        }
+        LogUtility.e("DownloadManagerV2", "[onDownloadError] downloadType=DOWNLOAD_TYPE_MYAPP, shouldn't report!");
+        return;
       }
       catch (Exception paramDownloadInfo)
       {
-        paramDownloadInfo.printStackTrace();
-        return;
+        label755:
+        break label755;
       }
-      if (("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (paramDownloadInfo.jdField_a_of_type_Int != 1) && (a()))
-      {
-        j(paramDownloadInfo);
-        return;
-      }
-      label530:
-      paramDownloadInfo.a(4);
-      if (paramDownloadInfo.jdField_a_of_type_Int == 1)
-      {
-        l(paramDownloadInfo);
-        return;
-      }
-      i(paramDownloadInfo);
+      paramDownloadInfo.printStackTrace();
       return;
-      paramString = CommonDataAdapter.a().a().getString(2131694658);
-      int i = 3;
-      continue;
-      paramString = CommonDataAdapter.a().a().getString(2131694653);
-      i = 3;
-      continue;
-      paramString = CommonDataAdapter.a().a().getString(2131694648);
-      i = 3;
-      continue;
-      paramString = CommonDataAdapter.a().a().getString(2131694660);
-      i = 3;
-      continue;
-      paramString = CommonDataAdapter.a().a().getString(2131694657);
-      i = 3;
-      continue;
-      paramString = CommonDataAdapter.a().a().getString(2131694655);
-      i = 3;
-      continue;
-      if (paramInt == 712) {}
-      for (paramString = CommonDataAdapter.a().a().getString(2131694650);; paramString = CommonDataAdapter.a().a().getString(2131694651))
-      {
-        h(paramDownloadInfo);
-        i = 10;
-        break;
-      }
-      label717:
-      if ((!TextUtils.isEmpty(paramString)) && (paramInt != 6)) {
-        b(paramString);
-      }
-      if (paramDownloadInfo.jdField_c_of_type_Int == 0)
-      {
-        AppCenterReporter.a(paramDownloadInfo, paramInt, paramString);
-        return;
-      }
-      LogUtility.e("DownloadManagerV2", "[onDownloadError] downloadType=DOWNLOAD_TYPE_MYAPP, shouldn't report!");
-      return;
-      i = 3;
     }
   }
   
@@ -404,14 +562,8 @@ public class DownloadManagerV2
     {
       LogUtility.b("DownloadManagerV2", "isAutoInstallBySDK is true");
       if (TextUtils.isEmpty(paramString1)) {
-        break label30;
+        return;
       }
-    }
-    label266:
-    for (;;)
-    {
-      label30:
-      return;
       if (new File(paramString1).exists())
       {
         if (paramBoolean)
@@ -421,34 +573,32 @@ public class DownloadManagerV2
         }
         paramBoolean = AppUtil.a(CommonDataAdapter.a().a(), paramString1, paramDownloadInfo.m, paramDownloadInfo.a("big_brother_ref_source_key"), paramDownloadInfo.a("hideInstallSuccessPage"));
         AppCenterReporter.c(paramDownloadInfo);
-        for (;;)
-        {
-          if ((!paramBoolean) || (!"com.tencent.android.qqdownloader".equals(paramString2)) || (!"1101070898".equals(paramDownloadInfo.jdField_c_of_type_JavaLangString))) {
-            break label266;
-          }
-          LogUtility.a("DownloadManagerV2", "report yyb start install");
-          String str = StaticAnalyz.a(paramDownloadInfo.jdField_h_of_type_JavaLangString, "NEWYYB");
-          MyAppApi.a().b();
-          paramString2 = MyAppApi.a().a();
-          paramString1 = paramString2;
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString1 = paramDownloadInfo.jdField_c_of_type_JavaLangString;
-          }
-          StaticAnalyz.a("311", str, paramString1, paramDownloadInfo.o);
-          paramDownloadInfo = CommonDataAdapter.a().a();
-          if (paramDownloadInfo == null) {
-            break;
-          }
-          StaticAnalyz.a(paramDownloadInfo, "312", str, paramString1);
-          return;
-          if (paramBoolean)
-          {
-            paramDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
-            a(paramDownloadInfo, true);
-          }
-          paramBoolean = AppUtil.a(CommonDataAdapter.a().a(), paramString1, paramDownloadInfo.m, paramDownloadInfo.a("big_brother_ref_source_key"), paramDownloadInfo.a("hideInstallSuccessPage"));
-          AppCenterReporter.c(paramDownloadInfo);
-        }
+      }
+    }
+    else
+    {
+      if (paramBoolean)
+      {
+        paramDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
+        a(paramDownloadInfo, true);
+      }
+      paramBoolean = AppUtil.a(CommonDataAdapter.a().a(), paramString1, paramDownloadInfo.m, paramDownloadInfo.a("big_brother_ref_source_key"), paramDownloadInfo.a("hideInstallSuccessPage"));
+      AppCenterReporter.c(paramDownloadInfo);
+    }
+    if ((paramBoolean) && ("com.tencent.android.qqdownloader".equals(paramString2)) && ("1101070898".equals(paramDownloadInfo.jdField_c_of_type_JavaLangString)))
+    {
+      LogUtility.a("DownloadManagerV2", "report yyb start install");
+      String str = StaticAnalyz.a(paramDownloadInfo.jdField_h_of_type_JavaLangString, "NEWYYB");
+      MyAppApi.a().b();
+      paramString2 = MyAppApi.a().a();
+      paramString1 = paramString2;
+      if (TextUtils.isEmpty(paramString2)) {
+        paramString1 = paramDownloadInfo.jdField_c_of_type_JavaLangString;
+      }
+      StaticAnalyz.a("311", str, paramString1, paramDownloadInfo.o);
+      paramDownloadInfo = CommonDataAdapter.a().a();
+      if (paramDownloadInfo != null) {
+        StaticAnalyz.a(paramDownloadInfo, "312", str, paramString1);
       }
     }
   }
@@ -466,21 +616,22 @@ public class DownloadManagerV2
       LogUtility.d("DownloadManagerV2", "clearDownloadInfo info == null");
       return;
     }
-    LogUtility.a("DownloadManagerV2", "clearDownloadInfo info =" + localDownloadInfo.toString());
-    if (localDownloadInfo.jdField_c_of_type_Int == 0) {
-      if (localDownloadInfo.jdField_a_of_type_Int != 1) {
-        break label113;
-      }
-    }
-    label113:
-    for (paramString = localDownloadInfo.jdField_i_of_type_JavaLangString;; paramString = localDownloadInfo.jdField_d_of_type_JavaLangString)
+    paramString = new StringBuilder();
+    paramString.append("clearDownloadInfo info =");
+    paramString.append(localDownloadInfo.toString());
+    LogUtility.a("DownloadManagerV2", paramString.toString());
+    if (localDownloadInfo.jdField_c_of_type_Int == 0)
     {
+      if (localDownloadInfo.jdField_a_of_type_Int == 1) {
+        paramString = localDownloadInfo.jdField_i_of_type_JavaLangString;
+      } else {
+        paramString = localDownloadInfo.jdField_d_of_type_JavaLangString;
+      }
       if (!TextUtils.isEmpty(paramString)) {
         ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.15(this, paramBoolean, paramString));
       }
-      m(localDownloadInfo);
-      return;
     }
+    m(localDownloadInfo);
   }
   
   private static int b(int paramInt)
@@ -491,18 +642,22 @@ public class DownloadManagerV2
   private int b(String paramString)
   {
     Object localObject = a(paramString);
-    if (localObject != null) {
-      if (((DownloadInfo)localObject).jdField_a_of_type_Int != 1) {
-        break label76;
-      }
-    }
-    label76:
-    for (localObject = ((DownloadInfo)localObject).jdField_i_of_type_JavaLangString;; localObject = ((DownloadInfo)localObject).jdField_d_of_type_JavaLangString)
+    if (localObject != null)
     {
+      if (((DownloadInfo)localObject).jdField_a_of_type_Int == 1) {
+        localObject = ((DownloadInfo)localObject).jdField_i_of_type_JavaLangString;
+      } else {
+        localObject = ((DownloadInfo)localObject).jdField_d_of_type_JavaLangString;
+      }
       ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.14(this, (String)localObject));
-      LogUtility.a("DownloadManagerV2", "pause url=" + (String)localObject + ", ticket=" + paramString);
-      return 0;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pause url=");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(", ticket=");
+      localStringBuilder.append(paramString);
+      LogUtility.a("DownloadManagerV2", localStringBuilder.toString());
     }
+    return 0;
   }
   
   private DownloadInfo b(String paramString, int paramInt)
@@ -530,26 +685,21 @@ public class DownloadManagerV2
     if (localDownloadInfo != null) {
       a(paramString, false);
     }
-    if (localDownloadInfo != null)
-    {
-      if (!paramBoolean) {
-        break label33;
-      }
-      a(10, localDownloadInfo);
-    }
-    for (;;)
-    {
-      return true;
-      try
-      {
-        label33:
-        AppNotificationManager.a().a(localDownloadInfo.g);
-      }
-      catch (Exception paramString)
-      {
-        LogUtility.c("DownloadManagerV2", "downloadSDKClient>>>", paramString);
+    if (localDownloadInfo != null) {
+      if (paramBoolean) {
+        a(10, localDownloadInfo);
+      } else {
+        try
+        {
+          AppNotificationManager.a().a(localDownloadInfo.g);
+        }
+        catch (Exception paramString)
+        {
+          LogUtility.c("DownloadManagerV2", "downloadSDKClient>>>", paramString);
+        }
       }
     }
+    return true;
   }
   
   private DownloadInfo d(String paramString)
@@ -576,21 +726,20 @@ public class DownloadManagerV2
     }
     if (localDownloadInfo != null)
     {
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         a(10, localDownloadInfo);
+        return true;
       }
-    }
-    else {
-      return true;
-    }
-    try
-    {
-      AppNotificationManager.a().a(localDownloadInfo.g);
-      return true;
-    }
-    catch (Exception paramString)
-    {
-      LogUtility.c("DownloadManagerV2", "downloadSDKClient>>>", paramString);
+      try
+      {
+        AppNotificationManager.a().a(localDownloadInfo.g);
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        LogUtility.c("DownloadManagerV2", "downloadSDKClient>>>", paramString);
+      }
     }
     return true;
   }
@@ -602,6 +751,7 @@ public class DownloadManagerV2
   
   private void h(DownloadInfo paramDownloadInfo)
   {
+    Object localObject;
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof AppInterface))
     {
       localObject = ((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getHandler(Conversation.class);
@@ -609,13 +759,13 @@ public class DownloadManagerV2
         ((MqqHandler)localObject).obtainMessage(1134019).sendToTarget();
       }
     }
-    if (paramDownloadInfo.jdField_a_of_type_Int == 1) {}
-    for (Object localObject = paramDownloadInfo.jdField_i_of_type_JavaLangString;; localObject = paramDownloadInfo.jdField_d_of_type_JavaLangString)
-    {
-      if (localObject != null) {
-        ThreadManager.excute(new DownloadManagerV2.8(this, (String)localObject, paramDownloadInfo), 32, null, true);
-      }
-      return;
+    if (paramDownloadInfo.jdField_a_of_type_Int == 1) {
+      localObject = paramDownloadInfo.jdField_i_of_type_JavaLangString;
+    } else {
+      localObject = paramDownloadInfo.jdField_d_of_type_JavaLangString;
+    }
+    if (localObject != null) {
+      ThreadManager.excute(new DownloadManagerV2.8(this, (String)localObject, paramDownloadInfo), 32, null, true);
     }
   }
   
@@ -631,13 +781,19 @@ public class DownloadManagerV2
   
   private void k(DownloadInfo paramDownloadInfo)
   {
-    LogUtility.b("DownloadManagerV2", ">>startDownload downloadInfo:" + paramDownloadInfo);
-    Object localObject1 = a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(">>startDownload downloadInfo:");
+    ((StringBuilder)localObject1).append(paramDownloadInfo);
+    LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject1).toString());
+    localObject1 = a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
     Object localObject2 = localObject1;
     if (localObject1 == null)
     {
       localObject2 = DownloadInfoDB.a().a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-      LogUtility.b("DownloadManagerV2", ">>startDownload get from DB:" + localObject2);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(">>startDownload get from DB:");
+      ((StringBuilder)localObject1).append(localObject2);
+      LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject1).toString());
     }
     localObject1 = localObject2;
     if (localObject2 != null)
@@ -648,7 +804,10 @@ public class DownloadManagerV2
         localObject1 = localObject2;
         if (!new File(((DownloadInfo)localObject2).l).exists())
         {
-          LogUtility.e("DownloadManagerV2", "[startDownload] info succeed, but file is deleted!info=" + localObject2);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("[startDownload] info succeed, but file is deleted!info=");
+          ((StringBuilder)localObject1).append(localObject2);
+          LogUtility.e("DownloadManagerV2", ((StringBuilder)localObject1).toString());
           ((DownloadInfo)localObject2).b();
           localObject1 = null;
         }
@@ -661,45 +820,57 @@ public class DownloadManagerV2
       ((DownloadInfo)localObject1).m = paramDownloadInfo.m;
       ((DownloadInfo)localObject1).jdField_a_of_type_Boolean = paramDownloadInfo.jdField_a_of_type_Boolean;
       ((DownloadInfo)localObject1).y = paramDownloadInfo.y;
-      LogUtility.a("DownloadManagerV2", "startDownload() downloadInfo != null>>>downloadInfo.url=" + ((DownloadInfo)localObject1).jdField_d_of_type_JavaLangString + "downloadInfo.isAutoInstall" + ((DownloadInfo)localObject1).jdField_a_of_type_Boolean + "+++++downloadInfo.downloadType=" + ((DownloadInfo)localObject1).jdField_a_of_type_Int + "  test" + a(((DownloadInfo)localObject1).jdField_b_of_type_JavaLangString));
+      paramDownloadInfo = new StringBuilder();
+      paramDownloadInfo.append("startDownload() downloadInfo != null>>>downloadInfo.url=");
+      paramDownloadInfo.append(((DownloadInfo)localObject1).jdField_d_of_type_JavaLangString);
+      paramDownloadInfo.append("downloadInfo.isAutoInstall");
+      paramDownloadInfo.append(((DownloadInfo)localObject1).jdField_a_of_type_Boolean);
+      paramDownloadInfo.append("+++++downloadInfo.downloadType=");
+      paramDownloadInfo.append(((DownloadInfo)localObject1).jdField_a_of_type_Int);
+      paramDownloadInfo.append("  test");
+      paramDownloadInfo.append(a(((DownloadInfo)localObject1).jdField_b_of_type_JavaLangString));
+      LogUtility.a("DownloadManagerV2", paramDownloadInfo.toString());
       paramDownloadInfo = (DownloadInfo)localObject1;
-      paramDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
-      LogUtility.b("DownloadManagerV2", ">>startDownload record download start process flag:" + paramDownloadInfo.w);
-      a(paramDownloadInfo, true);
-      if (("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (a())) {
-        n(paramDownloadInfo);
-      }
-      if (paramDownloadInfo.jdField_a_of_type_Int != 1) {
-        break label602;
-      }
     }
-    label602:
-    for (localObject2 = paramDownloadInfo.jdField_i_of_type_JavaLangString;; localObject2 = paramDownloadInfo.jdField_d_of_type_JavaLangString)
+    else
     {
-      int i = paramDownloadInfo.jdField_a_of_type_Int;
-      HashMap localHashMap = new HashMap();
-      localHashMap.put(TMAssistantDownloadConst.PARAM_APPID, paramDownloadInfo.jdField_c_of_type_JavaLangString);
-      localHashMap.put(TMAssistantDownloadConst.PARAM_TASK_PACKNAME, paramDownloadInfo.e);
-      localHashMap.put(TMAssistantDownloadConst.PARAM_TASK_VERSION, String.valueOf(paramDownloadInfo.jdField_b_of_type_Int));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_VIA, paramDownloadInfo.jdField_h_of_type_JavaLangString);
-      localHashMap.put(TMAssistantDownloadConst.PARAM_UIN_TYPE, String.valueOf("qqNumber"));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADTYPE, String.valueOf(2));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_ICON_URL, paramDownloadInfo.n);
-      localHashMap.put(TMAssistantDownloadConst.PARAM_APP_NAME, paramDownloadInfo.jdField_f_of_type_JavaLangString);
-      localHashMap.put(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION, String.valueOf(paramDownloadInfo.jdField_i_of_type_Int));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_IS_AUTOINSTALL_BY_SDK, String.valueOf(paramDownloadInfo.jdField_d_of_type_Boolean));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADSIZE, String.valueOf(paramDownloadInfo.jdField_d_of_type_Long));
-      localHashMap.put(TMAssistantDownloadConst.PARAM_QQ_SOURCE_ID, paramDownloadInfo.m);
-      ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.13(this, (String)localObject2, localHashMap, i, paramDownloadInfo, (DownloadInfo)localObject1));
-      try
-      {
-        DownloadInfoReport.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramDownloadInfo);
-        return;
-      }
-      catch (Throwable paramDownloadInfo) {}
       AppCenterReporter.a(paramDownloadInfo);
-      break;
     }
+    paramDownloadInfo.w = BaseApplicationImpl.getApplication().getQQProcessName();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(">>startDownload record download start process flag:");
+    ((StringBuilder)localObject2).append(paramDownloadInfo.w);
+    LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject2).toString());
+    a(paramDownloadInfo, true);
+    if (("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (a())) {
+      n(paramDownloadInfo);
+    }
+    if (paramDownloadInfo.jdField_a_of_type_Int == 1) {
+      localObject2 = paramDownloadInfo.jdField_i_of_type_JavaLangString;
+    } else {
+      localObject2 = paramDownloadInfo.jdField_d_of_type_JavaLangString;
+    }
+    int i = paramDownloadInfo.jdField_a_of_type_Int;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(TMAssistantDownloadConst.PARAM_APPID, paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    localHashMap.put(TMAssistantDownloadConst.PARAM_TASK_PACKNAME, paramDownloadInfo.e);
+    localHashMap.put(TMAssistantDownloadConst.PARAM_TASK_VERSION, String.valueOf(paramDownloadInfo.jdField_b_of_type_Int));
+    localHashMap.put(TMAssistantDownloadConst.PARAM_VIA, paramDownloadInfo.jdField_h_of_type_JavaLangString);
+    localHashMap.put(TMAssistantDownloadConst.PARAM_UIN_TYPE, "qqNumber");
+    localHashMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADTYPE, String.valueOf(2));
+    localHashMap.put(TMAssistantDownloadConst.PARAM_ICON_URL, paramDownloadInfo.n);
+    localHashMap.put(TMAssistantDownloadConst.PARAM_APP_NAME, paramDownloadInfo.jdField_f_of_type_JavaLangString);
+    localHashMap.put(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION, String.valueOf(paramDownloadInfo.jdField_i_of_type_Int));
+    localHashMap.put(TMAssistantDownloadConst.PARAM_IS_AUTOINSTALL_BY_SDK, String.valueOf(paramDownloadInfo.jdField_d_of_type_Boolean));
+    localHashMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADSIZE, String.valueOf(paramDownloadInfo.jdField_d_of_type_Long));
+    localHashMap.put(TMAssistantDownloadConst.PARAM_QQ_SOURCE_ID, paramDownloadInfo.m);
+    ThreadManager.getSubThreadHandler().post(new DownloadManagerV2.13(this, (String)localObject2, localHashMap, i, paramDownloadInfo, (DownloadInfo)localObject1));
+    try
+    {
+      DownloadInfoReport.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramDownloadInfo);
+      return;
+    }
+    catch (Throwable paramDownloadInfo) {}
   }
   
   private void l(DownloadInfo paramDownloadInfo)
@@ -721,9 +892,10 @@ public class DownloadManagerV2
     if (paramDownloadInfo == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener != null)
+    ApkWriteCodeListener localApkWriteCodeListener = this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener;
+    if (localApkWriteCodeListener != null)
     {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener.a(paramDownloadInfo.e, paramDownloadInfo.jdField_b_of_type_Int, null);
+      localApkWriteCodeListener.a(paramDownloadInfo.e, paramDownloadInfo.jdField_b_of_type_Int, null);
       return;
     }
     this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener = null;
@@ -747,20 +919,15 @@ public class DownloadManagerV2
   
   public DownloadInfo a(String paramString)
   {
-    Object localObject;
     if (paramString == null)
     {
       LogUtility.a("DownloadManagerV2", "getDownloadInfoByTicket ticket == null");
-      localObject = null;
+      return null;
     }
-    DownloadInfo localDownloadInfo;
-    do
-    {
-      return localObject;
-      localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      localObject = localDownloadInfo;
-    } while (localDownloadInfo != null);
-    ThreadManager.excute(new DownloadManagerV2.11(this, paramString), 16, null, true);
+    DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localDownloadInfo == null) {
+      ThreadManager.excute(new DownloadManagerV2.11(this, paramString), 16, null, true);
+    }
     return localDownloadInfo;
   }
   
@@ -773,64 +940,115 @@ public class DownloadManagerV2
     localBundle.putString(DownloadConstants.jdField_f_of_type_JavaLangString, paramDownloadInfo.e);
     localBundle.putInt(DownloadConstants.e, paramDownloadInfo.jdField_b_of_type_Int);
     localBundle.putString(DownloadConstants.jdField_i_of_type_JavaLangString, paramDownloadInfo.jdField_h_of_type_JavaLangString);
+    StringBuilder localStringBuilder1 = null;
+    Object localObject = localStringBuilder1;
     try
     {
-      LogUtility.a("DownloadManagerV2", "OpenSDK getTaskInfoFromMyApp param SNGAppId=" + paramDownloadInfo.jdField_c_of_type_JavaLangString + " apkId=" + paramDownloadInfo.k + " taskAppId=" + paramDownloadInfo.jdField_j_of_type_JavaLangString + " packageName=" + paramDownloadInfo.e + " version=" + paramDownloadInfo.jdField_b_of_type_Int + " via=" + paramDownloadInfo.jdField_h_of_type_JavaLangString);
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localObject = localStringBuilder1;
+      localStringBuilder2.append("OpenSDK getTaskInfoFromMyApp param SNGAppId=");
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(paramDownloadInfo.jdField_c_of_type_JavaLangString);
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(" apkId=");
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(paramDownloadInfo.k);
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(" taskAppId=");
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(paramDownloadInfo.jdField_j_of_type_JavaLangString);
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(" packageName=");
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(paramDownloadInfo.e);
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(" version=");
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(paramDownloadInfo.jdField_b_of_type_Int);
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(" via=");
+      localObject = localStringBuilder1;
+      localStringBuilder2.append(paramDownloadInfo.jdField_h_of_type_JavaLangString);
+      localObject = localStringBuilder1;
+      LogUtility.a("DownloadManagerV2", localStringBuilder2.toString());
+      localObject = localStringBuilder1;
       paramDownloadInfo = MyAppApi.a().a(localBundle);
-      if (paramDownloadInfo != null) {}
-      try
+      if (paramDownloadInfo != null)
       {
-        LogUtility.a("DownloadManagerV2", "OpenSDK getTaskInfoFromMyApp result taskInfo path=" + paramDownloadInfo.mSavePath + " state=" + paramDownloadInfo.mState);
+        localObject = paramDownloadInfo;
+        localStringBuilder1 = new StringBuilder();
+        localObject = paramDownloadInfo;
+        localStringBuilder1.append("OpenSDK getTaskInfoFromMyApp result taskInfo path=");
+        localObject = paramDownloadInfo;
+        localStringBuilder1.append(paramDownloadInfo.mSavePath);
+        localObject = paramDownloadInfo;
+        localStringBuilder1.append(" state=");
+        localObject = paramDownloadInfo;
+        localStringBuilder1.append(paramDownloadInfo.mState);
+        localObject = paramDownloadInfo;
+        LogUtility.a("DownloadManagerV2", localStringBuilder1.toString());
         return paramDownloadInfo;
       }
-      catch (Exception localException1) {}
+      localObject = paramDownloadInfo;
       LogUtility.a("DownloadManagerV2", "OpenSDK getTaskInfoFromMyApp result taskInfo is null");
       return paramDownloadInfo;
     }
-    catch (Exception localException2)
+    catch (Exception paramDownloadInfo)
     {
-      for (;;)
-      {
-        paramDownloadInfo = null;
-      }
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("getTaskInfoFromMyApp>>>");
+      localStringBuilder1.append(paramDownloadInfo.getMessage());
+      LogUtility.b("DownloadManagerV2", localStringBuilder1.toString());
     }
-    LogUtility.b("DownloadManagerV2", "getTaskInfoFromMyApp>>>" + localException1.getMessage());
-    return paramDownloadInfo;
+    return localObject;
   }
   
   public TMAssistantDownloadTaskInfo a(String paramString)
   {
-    TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2 = null;
-    TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo1 = null;
-    if (!TextUtils.isEmpty(paramString)) {
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-    }
-    try
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject1 = null;
+    TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = null;
+    if (!bool)
     {
-      long l1 = System.currentTimeMillis();
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-      TMAssistantDownloadClient localTMAssistantDownloadClient = a();
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-      long l2 = System.currentTimeMillis();
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-      localTMAssistantDownloadTaskInfo2 = localTMAssistantDownloadClient.getDownloadTaskState(paramString);
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-      long l3 = System.currentTimeMillis();
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-      LogUtility.e("NEW_QAPP_TIME_COST", "step1=" + (l2 - l1) + ",step2=" + (l3 - l2));
-      localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      localObject1 = localTMAssistantDownloadTaskInfo;
+      try
+      {
+        long l1 = System.currentTimeMillis();
+        localObject1 = localTMAssistantDownloadTaskInfo;
+        Object localObject2 = a();
+        localObject1 = localTMAssistantDownloadTaskInfo;
+        long l2 = System.currentTimeMillis();
+        localObject1 = localTMAssistantDownloadTaskInfo;
+        localTMAssistantDownloadTaskInfo = ((TMAssistantDownloadClient)localObject2).getDownloadTaskState(paramString);
+        localObject1 = localTMAssistantDownloadTaskInfo;
+        long l3 = System.currentTimeMillis();
+        localObject1 = localTMAssistantDownloadTaskInfo;
+        localObject2 = new StringBuilder();
+        localObject1 = localTMAssistantDownloadTaskInfo;
+        ((StringBuilder)localObject2).append("step1=");
+        localObject1 = localTMAssistantDownloadTaskInfo;
+        ((StringBuilder)localObject2).append(l2 - l1);
+        localObject1 = localTMAssistantDownloadTaskInfo;
+        ((StringBuilder)localObject2).append(",step2=");
+        localObject1 = localTMAssistantDownloadTaskInfo;
+        ((StringBuilder)localObject2).append(l3 - l2);
+        localObject1 = localTMAssistantDownloadTaskInfo;
+        LogUtility.e("NEW_QAPP_TIME_COST", ((StringBuilder)localObject2).toString());
+        localObject1 = localTMAssistantDownloadTaskInfo;
+      }
+      catch (Exception localException)
       {
         LogUtility.c("DownloadManagerV2", "downloadSDKClient>>>", localException);
       }
     }
-    if (localTMAssistantDownloadTaskInfo1 == null) {
-      LogUtility.a("DownloadManagerV2", "getTaskInfoFromSDK null url=" + paramString);
+    if (localObject1 == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getTaskInfoFromSDK null url=");
+      localStringBuilder.append(paramString);
+      LogUtility.a("DownloadManagerV2", localStringBuilder.toString());
     }
-    return localTMAssistantDownloadTaskInfo1;
+    return localObject1;
   }
   
   public String a(String paramString)
@@ -847,26 +1065,24 @@ public class DownloadManagerV2
     try
     {
       Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject1 == null) {}
-      try
-      {
-        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof AppInterface))
+      if (localObject1 == null) {
+        try
         {
-          localObject1 = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          if (localObject1 != null) {
-            this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject1);
+          if ((BaseApplicationImpl.getApplication().getRuntime() instanceof AppInterface))
+          {
+            localObject1 = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+            if (localObject1 != null) {
+              this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject1);
+            }
           }
         }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        catch (Exception localException)
         {
           LogUtility.c("DownloadManagerV2", "getQQAppInterface>>>", localException);
         }
       }
-      localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-      return localObject1;
+      WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      return localWeakReference;
     }
     finally {}
   }
@@ -884,9 +1100,13 @@ public class DownloadManagerV2
           localArrayList.add(localDownloadInfo);
         }
       }
+      return localArrayList;
     }
     finally {}
-    return localList;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public List<DownloadInfo> a(String paramString, int paramInt)
@@ -953,25 +1173,30 @@ public class DownloadManagerV2
     if (((localAppRuntime instanceof QQAppInterface)) && ("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (ConfigHandler.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
       paramDownloadInfo.jdField_a_of_type_Boolean = false;
     }
-    LogUtility.b("DownloadManagerV2", "[onDownloadComplete] complete, info = " + paramDownloadInfo.toString());
-    if (paramDownloadInfo.jdField_c_of_type_Int == 0) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onDownloadComplete] complete, info = ");
+    localStringBuilder.append(paramDownloadInfo.toString());
+    LogUtility.b("DownloadManagerV2", localStringBuilder.toString());
+    if (paramDownloadInfo.jdField_c_of_type_Int == 0)
+    {
       if (paramDownloadInfo.jdField_a_of_type_Int == 1) {
         l(paramDownloadInfo);
+      } else {
+        g(paramDownloadInfo);
       }
     }
-    for (;;)
-    {
-      UniteDownloadDbOperator.a().a(localAppRuntime.getAccount(), paramDownloadInfo);
-      break;
-      g(paramDownloadInfo);
-      continue;
+    else {
       ThreadManager.excute(new DownloadManagerV2.6(this, paramDownloadInfo), 32, null, true);
     }
+    UniteDownloadDbOperator.a().a(localAppRuntime.getAccount(), paramDownloadInfo);
   }
   
   public void a(DownloadInfo paramDownloadInfo, int paramInt)
   {
-    LogUtility.b("DownloadManagerV2", "onReveiveInstallIntent info=" + paramDownloadInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReveiveInstallIntent info=");
+    localStringBuilder.append(paramDownloadInfo);
+    LogUtility.b("DownloadManagerV2", localStringBuilder.toString());
     if (paramDownloadInfo.jdField_c_of_type_Int == 0) {
       AppCenterReporter.a(paramDownloadInfo, paramInt);
     }
@@ -983,118 +1208,86 @@ public class DownloadManagerV2
   
   public void a(DownloadInfo paramDownloadInfo, long paramLong)
   {
-    if ((a() == null) || (a().get() == null)) {}
-    while ((AppInterface)a().get() == null) {
-      return;
-    }
-    int i = 14;
-    if ("biz_src_yyb".equals(paramDownloadInfo.m)) {}
-    for (;;)
+    if (a() != null)
     {
-      Bundle localBundle1 = null;
-      if (!TextUtils.isEmpty(paramDownloadInfo.jdField_f_of_type_JavaLangString))
-      {
-        localBundle1 = new Bundle();
-        localBundle1.putString("appname", paramDownloadInfo.jdField_f_of_type_JavaLangString + ".apk");
+      if (a().get() == null) {
+        return;
       }
-      LogUtility.b("DownloadManagerV2", "reportDownloadResult info.packageName = " + paramDownloadInfo.e + ",info.urlStr = " + paramDownloadInfo.jdField_d_of_type_JavaLangString + ",info.filePath = " + paramDownloadInfo.l);
-      Intent localIntent = new Intent("com.opensdk.downloadmanager.renameFilename");
-      Bundle localBundle2 = new Bundle();
-      localBundle2.putString("filePath", paramDownloadInfo.l);
-      localBundle2.putLong("dataLength", paramLong);
-      localBundle2.putInt("fileSourceId", i);
-      localBundle2.putBundle("otherData", localBundle1);
-      localBundle2.putInt("peerType", -1);
-      localIntent.putExtra("extraBundle", localBundle2);
-      CommonDataAdapter.a().a().sendBroadcast(localIntent);
-      return;
-      if ("biz_src_zf_games".equals(paramDownloadInfo.m)) {
-        i = 15;
-      } else if ("biz_src_jc_update".equals(paramDownloadInfo.m)) {
-        i = 17;
-      } else if ("biz_src_news".equals(paramDownloadInfo.m)) {
-        i = 18;
-      } else if ("biz_src_jc_vip".equals(paramDownloadInfo.m)) {
-        i = 40;
-      } else {
-        i = 40;
+      if ((AppInterface)a().get() != null)
+      {
+        int i = 14;
+        if (!"biz_src_yyb".equals(paramDownloadInfo.m)) {
+          if ("biz_src_zf_games".equals(paramDownloadInfo.m))
+          {
+            i = 15;
+          }
+          else if ("biz_src_jc_update".equals(paramDownloadInfo.m))
+          {
+            i = 17;
+          }
+          else if ("biz_src_news".equals(paramDownloadInfo.m))
+          {
+            i = 18;
+          }
+          else
+          {
+            "biz_src_jc_vip".equals(paramDownloadInfo.m);
+            i = 40;
+          }
+        }
+        Bundle localBundle1 = null;
+        if (!TextUtils.isEmpty(paramDownloadInfo.jdField_f_of_type_JavaLangString))
+        {
+          localBundle1 = new Bundle();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramDownloadInfo.jdField_f_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(".apk");
+          localBundle1.putString("appname", ((StringBuilder)localObject).toString());
+        }
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("reportDownloadResult info.packageName = ");
+        ((StringBuilder)localObject).append(paramDownloadInfo.e);
+        ((StringBuilder)localObject).append(",info.urlStr = ");
+        ((StringBuilder)localObject).append(paramDownloadInfo.jdField_d_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(",info.filePath = ");
+        ((StringBuilder)localObject).append(paramDownloadInfo.l);
+        LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject).toString());
+        localObject = new Intent("com.opensdk.downloadmanager.renameFilename");
+        Bundle localBundle2 = new Bundle();
+        localBundle2.putString("filePath", paramDownloadInfo.l);
+        localBundle2.putLong("dataLength", paramLong);
+        localBundle2.putInt("fileSourceId", i);
+        localBundle2.putBundle("otherData", localBundle1);
+        localBundle2.putInt("peerType", -1);
+        ((Intent)localObject).putExtra("extraBundle", localBundle2);
+        CommonDataAdapter.a().a().sendBroadcast((Intent)localObject);
       }
     }
   }
   
-  /* Error */
   public void a(DownloadInfo paramDownloadInfo, boolean paramBoolean)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +19 -> 22
-    //   6: aload_1
-    //   7: invokevirtual 1067	com/tencent/open/downloadnew/DownloadInfo:a	()V
-    //   10: aload_1
-    //   11: getfield 718	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   14: invokestatic 514	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   17: istore_3
-    //   18: iload_3
-    //   19: ifeq +6 -> 25
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: return
-    //   25: ldc 62
-    //   27: new 130	java/lang/StringBuilder
-    //   30: dup
-    //   31: invokespecial 131	java/lang/StringBuilder:<init>	()V
-    //   34: ldc_w 1069
-    //   37: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: aload_1
-    //   41: getfield 429	com/tencent/open/downloadnew/DownloadInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   44: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: ldc_w 1071
-    //   50: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: aload_1
-    //   54: getfield 221	com/tencent/open/downloadnew/DownloadInfo:e	Ljava/lang/String;
-    //   57: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: ldc_w 1024
-    //   63: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: aload_1
-    //   67: getfield 226	com/tencent/open/downloadnew/DownloadInfo:l	Ljava/lang/String;
-    //   70: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokestatic 69	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   79: aload_0
-    //   80: getfield 42	com/tencent/open/appstore/dl/DownloadManagerV2:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   83: aload_1
-    //   84: getfield 718	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   87: aload_1
-    //   88: invokevirtual 1072	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   91: pop
-    //   92: new 1074	com/tencent/open/appstore/dl/DownloadManagerV2$17
-    //   95: dup
-    //   96: aload_0
-    //   97: aload_1
-    //   98: iload_2
-    //   99: invokespecial 1077	com/tencent/open/appstore/dl/DownloadManagerV2$17:<init>	(Lcom/tencent/open/appstore/dl/DownloadManagerV2;Lcom/tencent/open/downloadnew/DownloadInfo;Z)V
-    //   102: bipush 32
-    //   104: aconst_null
-    //   105: iconst_1
-    //   106: invokestatic 173	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   109: goto -87 -> 22
-    //   112: astore_1
-    //   113: aload_0
-    //   114: monitorexit
-    //   115: aload_1
-    //   116: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	117	0	this	DownloadManagerV2
-    //   0	117	1	paramDownloadInfo	DownloadInfo
-    //   0	117	2	paramBoolean	boolean
-    //   17	2	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	18	112	finally
-    //   25	109	112	finally
+    if (paramDownloadInfo != null) {
+      try
+      {
+        paramDownloadInfo.a();
+        boolean bool = TextUtils.isEmpty(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+        if (bool) {
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addDownloadInfo info.appId = ");
+        localStringBuilder.append(paramDownloadInfo.jdField_c_of_type_JavaLangString);
+        localStringBuilder.append(",info.packageName = ");
+        localStringBuilder.append(paramDownloadInfo.e);
+        localStringBuilder.append(",info.filePath = ");
+        localStringBuilder.append(paramDownloadInfo.l);
+        LogUtility.b("DownloadManagerV2", localStringBuilder.toString());
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramDownloadInfo.jdField_b_of_type_JavaLangString, paramDownloadInfo);
+        ThreadManager.excute(new DownloadManagerV2.17(this, paramDownloadInfo, paramBoolean), 32, null, true);
+      }
+      finally {}
+    }
   }
   
   public void a(DownloadListener paramDownloadListener)
@@ -1136,31 +1329,50 @@ public class DownloadManagerV2
       paramTMAssistantCallYYBTaskInfo = MyAppApi.a().a(paramTMAssistantCallYYBParamStruct, null);
       c(paramTMAssistantCallYYBTaskInfo);
       b(paramTMAssistantCallYYBParamStruct.SNGAppId, i);
+      paramTMAssistantCallYYBParamStruct = paramTMAssistantCallYYBTaskInfo;
     }
-    for (paramTMAssistantCallYYBParamStruct = paramTMAssistantCallYYBTaskInfo; paramTMAssistantCallYYBParamStruct != null; paramTMAssistantCallYYBParamStruct = localDownloadInfo) {
-      for (;;)
+    else if (paramInt1 != 2)
+    {
+      paramTMAssistantCallYYBParamStruct = localDownloadInfo;
+      if (paramInt1 != 3) {}
+    }
+    else
+    {
+      paramTMAssistantCallYYBParamStruct = localDownloadInfo;
+      if (MyAppApi.a().e())
       {
-        LogUtility.b("DownloadManagerV2", "onYYBDownloadTaskStateChanged notifyListener localState=" + i + " dlInfo=" + paramTMAssistantCallYYBParamStruct.toString());
-        a(i, paramTMAssistantCallYYBParamStruct, paramInt2, paramString);
-        return;
-        if (((paramInt1 == 2) || (paramInt1 == 3)) && (MyAppApi.a().e()))
-        {
-          if (paramTMAssistantCallYYBTaskInfo != null) {}
+        paramTMAssistantCallYYBParamStruct = localDownloadInfo;
+        if (paramTMAssistantCallYYBTaskInfo != null) {
           try
           {
             long l1 = paramTMAssistantCallYYBTaskInfo.mReceiveDataLen;
             long l2 = paramTMAssistantCallYYBTaskInfo.mTotalDataLen;
             paramInt1 = (int)((float)l1 * 100.0F / (float)l2);
             localDownloadInfo.jdField_f_of_type_Int = paramInt1;
-            LogUtility.b("DownloadManagerV2", "onYYBDownloadTaskStateChanged info progress = " + paramInt1);
+            paramTMAssistantCallYYBParamStruct = new StringBuilder();
+            paramTMAssistantCallYYBParamStruct.append("onYYBDownloadTaskStateChanged info progress = ");
+            paramTMAssistantCallYYBParamStruct.append(paramInt1);
+            LogUtility.b("DownloadManagerV2", paramTMAssistantCallYYBParamStruct.toString());
             paramTMAssistantCallYYBParamStruct = localDownloadInfo;
           }
           catch (Exception paramTMAssistantCallYYBParamStruct)
           {
             LogUtility.c("DownloadManagerV2", "onYYBDownloadTaskStateChanged>>>", paramTMAssistantCallYYBParamStruct);
+            paramTMAssistantCallYYBParamStruct = localDownloadInfo;
           }
         }
       }
+    }
+    if (paramTMAssistantCallYYBParamStruct != null)
+    {
+      paramTMAssistantCallYYBTaskInfo = new StringBuilder();
+      paramTMAssistantCallYYBTaskInfo.append("onYYBDownloadTaskStateChanged notifyListener localState=");
+      paramTMAssistantCallYYBTaskInfo.append(i);
+      paramTMAssistantCallYYBTaskInfo.append(" dlInfo=");
+      paramTMAssistantCallYYBTaskInfo.append(paramTMAssistantCallYYBParamStruct.toString());
+      LogUtility.b("DownloadManagerV2", paramTMAssistantCallYYBTaskInfo.toString());
+      a(i, paramTMAssistantCallYYBParamStruct, paramInt2, paramString);
+      return;
     }
     LogUtility.b("DownloadManagerV2", "onYYBDownloadTaskStateChanged notifyListener error dlInfo == null");
   }
@@ -1174,60 +1386,62 @@ public class DownloadManagerV2
   
   public void a(boolean paramBoolean)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    int i = 0;
+    Object localObject3 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    ArrayList localArrayList = new ArrayList();
     String str = "";
-    Object localObject2 = new ArrayList();
-    if (((Iterator)localObject1).hasNext())
+    Object localObject1 = "";
+    int i = 0;
+    Object localObject2;
+    while (((Iterator)localObject3).hasNext())
     {
-      DownloadInfo localDownloadInfo = (DownloadInfo)((Iterator)localObject1).next();
-      if ((localDownloadInfo == null) || (localDownloadInfo.a() == 4) || (localDownloadInfo.a() == 1) || (localDownloadInfo.jdField_c_of_type_Int != 1)) {
-        break label295;
-      }
-      ((ArrayList)localObject2).add(localDownloadInfo);
-      if ((!TextUtils.isEmpty(str)) || (AppUtil.a(localDownloadInfo.e))) {
-        break label292;
-      }
-      str = localDownloadInfo.jdField_f_of_type_JavaLangString;
-      label118:
-      i += 1;
-    }
-    label274:
-    label292:
-    label295:
-    for (;;)
-    {
-      break;
-      if (((ArrayList)localObject2).size() > 0)
+      DownloadInfo localDownloadInfo = (DownloadInfo)((Iterator)localObject3).next();
+      if ((localDownloadInfo != null) && (localDownloadInfo.a() != 4) && (localDownloadInfo.a() != 1) && (localDownloadInfo.jdField_c_of_type_Int == 1))
       {
-        localObject1 = ((ArrayList)localObject2).iterator();
-        while (((Iterator)localObject1).hasNext())
+        localArrayList.add(localDownloadInfo);
+        localObject2 = localObject1;
+        if (TextUtils.isEmpty((CharSequence)localObject1))
         {
-          localObject2 = (DownloadInfo)((Iterator)localObject1).next();
-          ((DownloadInfo)localObject2).a(10);
-          a(10, (DownloadInfo)localObject2);
+          localObject2 = localObject1;
+          if (!AppUtil.a(localDownloadInfo.e)) {
+            localObject2 = localDownloadInfo.jdField_f_of_type_JavaLangString;
+          }
         }
+        i += 1;
+        localObject1 = localObject2;
       }
-      boolean bool = QAppCenterPluginProxyActivityTools.jdField_a_of_type_Boolean;
-      if ((paramBoolean) && (i > 0))
+    }
+    if (localArrayList.size() > 0)
+    {
+      localObject2 = localArrayList.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        localObject1 = new StringBuilder();
-        if (TextUtils.isEmpty(str)) {
-          break label274;
-        }
+        localObject3 = (DownloadInfo)((Iterator)localObject2).next();
+        ((DownloadInfo)localObject3).a(10);
+        a(10, (DownloadInfo)localObject3);
       }
-      for (str = str + HardCodeUtil.a(2131703533);; str = "")
+    }
+    boolean bool = QAppCenterPluginProxyActivityTools.jdField_a_of_type_Boolean;
+    if ((paramBoolean) && (i > 0))
+    {
+      localObject3 = new StringBuilder();
+      localObject2 = str;
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        str = str + i + HardCodeUtil.a(2131703544);
-        if (!bool) {
-          break;
-        }
-        ToastUtil.a().a(str, 1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131703664));
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      ((StringBuilder)localObject3).append((String)localObject2);
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append(HardCodeUtil.a(2131703675));
+      localObject1 = ((StringBuilder)localObject3).toString();
+      if (bool)
+      {
+        ToastUtil.a().a((String)localObject1, 1);
         return;
       }
-      MyAppApi.a().a(true, str);
-      return;
-      break label118;
+      MyAppApi.a().a(true, (String)localObject1);
     }
   }
   
@@ -1252,7 +1466,6 @@ public class DownloadManagerV2
   
   public boolean a(DownloadInfo paramDownloadInfo, boolean paramBoolean)
   {
-    Object localObject3 = null;
     if (paramDownloadInfo == null)
     {
       LogUtility.a("DownloadManagerV2", "installDownload info == null");
@@ -1263,80 +1476,92 @@ public class DownloadManagerV2
       LogUtility.a("DownloadManagerV2", "installDownload info is not apk");
       return false;
     }
-    Object localObject1 = "";
-    TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo;
-    if (TextUtils.isEmpty(paramDownloadInfo.l)) {
-      if (paramDownloadInfo.jdField_c_of_type_Int == 0)
+    Object localObject1;
+    if (TextUtils.isEmpty(paramDownloadInfo.l))
+    {
+      int i = paramDownloadInfo.jdField_c_of_type_Int;
+      localObject2 = null;
+      if (i == 0)
       {
-        localTMAssistantDownloadTaskInfo = a(paramDownloadInfo.jdField_d_of_type_JavaLangString);
-        localObject2 = localObject1;
-        if (localTMAssistantDownloadTaskInfo != null)
-        {
-          localObject2 = localObject1;
-          if (localTMAssistantDownloadTaskInfo.mState == 4) {
-            localObject2 = localTMAssistantDownloadTaskInfo.mSavePath;
-          }
+        localObject1 = a(paramDownloadInfo.jdField_d_of_type_JavaLangString);
+        if ((localObject1 != null) && (((TMAssistantDownloadTaskInfo)localObject1).mState == 4)) {
+          localObject3 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
+        } else {
+          localObject3 = "";
         }
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2))
+        localObject1 = localObject3;
+        if (TextUtils.isEmpty((CharSequence)localObject3))
         {
-          localTMAssistantDownloadTaskInfo = a(paramDownloadInfo);
-          localObject1 = localObject2;
-          localObject3 = localTMAssistantDownloadTaskInfo;
+          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = a(paramDownloadInfo);
+          localObject1 = localObject3;
+          localObject2 = localTMAssistantDownloadTaskInfo;
           if (localTMAssistantDownloadTaskInfo != null)
           {
             paramDownloadInfo.jdField_c_of_type_Int = 1;
-            localObject3 = localTMAssistantDownloadTaskInfo;
-            localObject1 = localObject2;
+            localObject1 = localObject3;
+            localObject2 = localTMAssistantDownloadTaskInfo;
           }
         }
-        localObject2 = localObject1;
-        if (localObject3 != null)
-        {
-          localObject2 = localObject1;
-          if (((TMAssistantDownloadTaskInfo)localObject3).mState == 4) {
-            localObject2 = ((TMAssistantDownloadTaskInfo)localObject3).mSavePath;
-          }
-        }
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          paramDownloadInfo.l = ((String)localObject2);
-          paramDownloadInfo.a(4);
-          c(paramDownloadInfo);
-        }
       }
-    }
-    for (localObject1 = localObject2;; localObject1 = paramDownloadInfo.l)
-    {
-      if (new File((String)localObject1).canRead()) {
-        break label301;
-      }
-      LogUtility.b("DownloadManagerV2", "can't read apk file. installDownload localAPKPath=" + (String)localObject1);
-      return false;
-      localTMAssistantDownloadTaskInfo = a(paramDownloadInfo);
-      localObject2 = localObject1;
-      if (localTMAssistantDownloadTaskInfo != null)
+      else
       {
-        localObject2 = localObject1;
-        if (localTMAssistantDownloadTaskInfo.mState == 4) {
-          localObject2 = localTMAssistantDownloadTaskInfo.mSavePath;
+        localObject1 = a(paramDownloadInfo);
+        if ((localObject1 != null) && (((TMAssistantDownloadTaskInfo)localObject1).mState == 4)) {
+          localObject3 = ((TMAssistantDownloadTaskInfo)localObject1).mSavePath;
+        } else {
+          localObject3 = "";
+        }
+        localObject1 = localObject3;
+        if (TextUtils.isEmpty((CharSequence)localObject3))
+        {
+          localObject2 = a(paramDownloadInfo.jdField_d_of_type_JavaLangString);
+          localObject1 = localObject3;
         }
       }
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        break;
+      localObject3 = localObject1;
+      if (localObject2 != null)
+      {
+        localObject3 = localObject1;
+        if (((TMAssistantDownloadTaskInfo)localObject2).mState == 4) {
+          localObject3 = ((TMAssistantDownloadTaskInfo)localObject2).mSavePath;
+        }
       }
-      localObject3 = a(paramDownloadInfo.jdField_d_of_type_JavaLangString);
-      localObject1 = localObject2;
-      break;
+      localObject1 = localObject3;
+      if (!TextUtils.isEmpty((CharSequence)localObject3))
+      {
+        paramDownloadInfo.l = ((String)localObject3);
+        paramDownloadInfo.a(4);
+        c(paramDownloadInfo);
+        localObject1 = localObject3;
+      }
     }
-    label301:
+    else
+    {
+      localObject1 = paramDownloadInfo.l;
+    }
+    if (!new File((String)localObject1).canRead())
+    {
+      paramDownloadInfo = new StringBuilder();
+      paramDownloadInfo.append("can't read apk file. installDownload localAPKPath=");
+      paramDownloadInfo.append((String)localObject1);
+      LogUtility.b("DownloadManagerV2", paramDownloadInfo.toString());
+      return false;
+    }
     Object localObject2 = AppUtil.a((String)localObject1);
-    LogUtility.b("DownloadManagerV2", "installDownload localAPKPath=" + (String)localObject1 + ", apkPackageName=" + (String)localObject2 + " updateType=" + paramDownloadInfo.jdField_a_of_type_Int);
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("installDownload localAPKPath=");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append(", apkPackageName=");
+    ((StringBuilder)localObject3).append((String)localObject2);
+    ((StringBuilder)localObject3).append(" updateType=");
+    ((StringBuilder)localObject3).append(paramDownloadInfo.jdField_a_of_type_Int);
+    LogUtility.b("DownloadManagerV2", ((StringBuilder)localObject3).toString());
     if (localObject2 != null)
     {
-      LogUtility.c("DownloadManagerV2", "[installDownload] begin sendCheckDownloadReq pkgname=" + (String)localObject2);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("[installDownload] begin sendCheckDownloadReq pkgname=");
+      ((StringBuilder)localObject3).append((String)localObject2);
+      LogUtility.c("DownloadManagerV2", ((StringBuilder)localObject3).toString());
       a(paramDownloadInfo, (String)localObject1, (String)localObject2, paramBoolean);
       return true;
     }
@@ -1349,13 +1574,13 @@ public class DownloadManagerV2
       if (((File)localObject1).exists()) {
         ((File)localObject1).delete();
       }
-      label434:
+      label494:
       a(-2, paramDownloadInfo, -24, "");
       return false;
     }
     catch (Exception localException)
     {
-      break label434;
+      break label494;
     }
   }
   
@@ -1440,8 +1665,8 @@ public class DownloadManagerV2
       {
         this.jdField_b_of_type_Long = System.currentTimeMillis();
         ToastUtil.a().a(paramString);
+        return;
       }
-      return;
     }
     catch (Exception paramString)
     {
@@ -1451,101 +1676,107 @@ public class DownloadManagerV2
   
   public boolean b(ApkWriteCodeListener paramApkWriteCodeListener)
   {
-    if (paramApkWriteCodeListener == null) {}
-    while ((this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener == null) || (paramApkWriteCodeListener != this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener)) {
+    if (paramApkWriteCodeListener == null) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener = null;
-    return true;
+    ApkWriteCodeListener localApkWriteCodeListener = this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener;
+    if ((localApkWriteCodeListener != null) && (paramApkWriteCodeListener == localApkWriteCodeListener))
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener = null;
+      return true;
+    }
+    return false;
   }
   
   public boolean b(DownloadInfo paramDownloadInfo)
   {
-    LogUtility.a("DownloadManagerV2", "refreshDownloadInfo DownloadInfo=" + paramDownloadInfo);
-    DownloadInfo localDownloadInfo = a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
-    if (localDownloadInfo == null) {
-      localDownloadInfo = c(paramDownloadInfo.e);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("refreshDownloadInfo DownloadInfo=");
+    ((StringBuilder)localObject1).append(paramDownloadInfo);
+    LogUtility.a("DownloadManagerV2", ((StringBuilder)localObject1).toString());
+    Object localObject2 = a(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = c(paramDownloadInfo.e);
     }
-    for (;;)
+    if (localObject1 != null)
     {
-      if (localDownloadInfo != null)
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("refreshDownloadInfo cacheInfo =");
+      ((StringBuilder)localObject2).append(localObject1);
+      LogUtility.a("DownloadManagerV2", ((StringBuilder)localObject2).toString());
+      if (((DownloadInfo)localObject1).jdField_c_of_type_Int == 0)
       {
-        LogUtility.a("DownloadManagerV2", "refreshDownloadInfo cacheInfo =" + localDownloadInfo);
-        Object localObject;
-        if (localDownloadInfo.jdField_c_of_type_Int == 0)
+        LogUtility.a("DownloadManagerV2", "refreshDownloadInfo DownloadInfo.DOWNLOAD_TYPE_DOWNLOADSDK......");
+        paramDownloadInfo.jdField_h_of_type_Int = ((DownloadInfo)localObject1).jdField_h_of_type_Int;
+        if (((DownloadInfo)localObject1).jdField_a_of_type_Int == 1) {
+          localObject2 = ((DownloadInfo)localObject1).jdField_i_of_type_JavaLangString;
+        } else {
+          localObject2 = ((DownloadInfo)localObject1).jdField_d_of_type_JavaLangString;
+        }
+        localObject2 = a().a((String)localObject2);
+        if (localObject2 != null)
         {
-          LogUtility.a("DownloadManagerV2", "refreshDownloadInfo DownloadInfo.DOWNLOAD_TYPE_DOWNLOADSDK......");
-          paramDownloadInfo.jdField_h_of_type_Int = localDownloadInfo.jdField_h_of_type_Int;
-          if (localDownloadInfo.jdField_a_of_type_Int == 1)
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("refreshDownloadInfo sdk getReceiveDataLen=");
+          localStringBuilder.append(((TMAssistantDownloadTaskInfo)localObject2).mReceiveDataLen);
+          localStringBuilder.append(" getTotalDataLen=");
+          localStringBuilder.append(((TMAssistantDownloadTaskInfo)localObject2).mTotalDataLen);
+          LogUtility.a("DownloadManagerV2", localStringBuilder.toString());
+          paramDownloadInfo.jdField_f_of_type_Int = ((int)((float)((TMAssistantDownloadTaskInfo)localObject2).mReceiveDataLen * 100.0F / (float)((TMAssistantDownloadTaskInfo)localObject2).mTotalDataLen));
+          paramDownloadInfo.a(b(((TMAssistantDownloadTaskInfo)localObject2).mState));
+          paramDownloadInfo.jdField_c_of_type_Int = 0;
+          if (((DownloadInfo)localObject1).jdField_a_of_type_Int == 1)
           {
-            localObject = localDownloadInfo.jdField_i_of_type_JavaLangString;
-            localObject = a().a((String)localObject);
-            if (localObject == null) {
-              break label319;
+            if (TextUtils.isEmpty(((DownloadInfo)localObject1).l)) {
+              paramDownloadInfo.l = ((TMAssistantDownloadTaskInfo)localObject2).mSavePath;
+            } else {
+              paramDownloadInfo.l = ((DownloadInfo)localObject1).l;
             }
-            LogUtility.a("DownloadManagerV2", "refreshDownloadInfo sdk getReceiveDataLen=" + ((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen + " getTotalDataLen=" + ((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen);
-            paramDownloadInfo.jdField_f_of_type_Int = ((int)((float)((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen * 100.0F / (float)((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen));
-            paramDownloadInfo.a(b(((TMAssistantDownloadTaskInfo)localObject).mState));
-            paramDownloadInfo.jdField_c_of_type_Int = 0;
-            if (localDownloadInfo.jdField_a_of_type_Int != 1) {
-              break label307;
-            }
-            if (!TextUtils.isEmpty(localDownloadInfo.l)) {
-              break label295;
-            }
-            paramDownloadInfo.l = ((TMAssistantDownloadTaskInfo)localObject).mSavePath;
           }
-          for (;;)
+          else {
+            paramDownloadInfo.l = ((TMAssistantDownloadTaskInfo)localObject2).mSavePath;
+          }
+          if (paramDownloadInfo.a() == 4)
           {
-            if (paramDownloadInfo.a() == 4)
+            paramDownloadInfo.jdField_j_of_type_Int = ((DownloadInfo)localObject1).jdField_j_of_type_Int;
+            if (paramDownloadInfo.jdField_j_of_type_Int != 0)
             {
-              paramDownloadInfo.jdField_j_of_type_Int = localDownloadInfo.jdField_j_of_type_Int;
-              if (paramDownloadInfo.jdField_j_of_type_Int != 0)
-              {
-                paramDownloadInfo.a(3);
-                c(localDownloadInfo);
-              }
+              paramDownloadInfo.a(3);
+              c((DownloadInfo)localObject1);
             }
-            return true;
-            localObject = localDownloadInfo.jdField_d_of_type_JavaLangString;
-            break;
-            label295:
-            paramDownloadInfo.l = localDownloadInfo.l;
-            continue;
-            label307:
-            paramDownloadInfo.l = ((TMAssistantDownloadTaskInfo)localObject).mSavePath;
           }
-          label319:
-          m(localDownloadInfo);
-          paramDownloadInfo.a(-100);
           return true;
         }
-        if (localDownloadInfo.jdField_c_of_type_Int == 1)
-        {
-          localObject = a(localDownloadInfo);
-          if (localObject != null)
-          {
-            int j = b(((TMAssistantDownloadTaskInfo)localObject).mState);
-            int i = j;
-            if (j == -2) {
-              i = 3;
-            }
-            paramDownloadInfo.a(i);
-            paramDownloadInfo.jdField_c_of_type_Int = 1;
-            paramDownloadInfo.l = ((TMAssistantDownloadTaskInfo)localObject).mSavePath;
-            long l1 = ((TMAssistantDownloadTaskInfo)localObject).mReceiveDataLen;
-            long l2 = ((TMAssistantDownloadTaskInfo)localObject).mTotalDataLen;
-            paramDownloadInfo.jdField_f_of_type_Int = ((int)((float)l1 * 100.0F / (float)l2));
-            if (!MyAppApi.a().e()) {
-              paramDownloadInfo.jdField_f_of_type_Int = 0;
-            }
-            return true;
-          }
-          m(localDownloadInfo);
-        }
+        m((DownloadInfo)localObject1);
+        paramDownloadInfo.a(-100);
+        return true;
       }
-      return false;
+      if (((DownloadInfo)localObject1).jdField_c_of_type_Int == 1)
+      {
+        localObject2 = a((DownloadInfo)localObject1);
+        if (localObject2 != null)
+        {
+          int j = b(((TMAssistantDownloadTaskInfo)localObject2).mState);
+          int i = j;
+          if (j == -2) {
+            i = 3;
+          }
+          paramDownloadInfo.a(i);
+          paramDownloadInfo.jdField_c_of_type_Int = 1;
+          paramDownloadInfo.l = ((TMAssistantDownloadTaskInfo)localObject2).mSavePath;
+          long l1 = ((TMAssistantDownloadTaskInfo)localObject2).mReceiveDataLen;
+          long l2 = ((TMAssistantDownloadTaskInfo)localObject2).mTotalDataLen;
+          paramDownloadInfo.jdField_f_of_type_Int = ((int)((float)l1 * 100.0F / (float)l2));
+          if (!MyAppApi.a().e()) {
+            paramDownloadInfo.jdField_f_of_type_Int = 0;
+          }
+          return true;
+        }
+        m((DownloadInfo)localObject1);
+      }
     }
+    return false;
   }
   
   public boolean b(String paramString, boolean paramBoolean)
@@ -1619,7 +1850,7 @@ public class DownloadManagerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2
  * JD-Core Version:    0.7.0.1
  */

@@ -21,25 +21,25 @@ class VideoViewVideoHolder$OnNewGuideDialogDismissListener
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDialogInterface != null)
-    {
-      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
-        break label40;
+    if (paramDialogInterface != null) {
+      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing()))
+      {
+        if (!paramDialogInterface.e())
+        {
+          paramDialogInterface.c(this.jdField_a_of_type_Boolean);
+          paramDialogInterface.d();
+          paramDialogInterface.a = null;
+        }
       }
-      SLog.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
+      else {
+        SLog.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
+      }
     }
-    label40:
-    while (paramDialogInterface.e()) {
-      return;
-    }
-    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
-    paramDialogInterface.d();
-    paramDialogInterface.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.OnNewGuideDialogDismissListener
  * JD-Core Version:    0.7.0.1
  */

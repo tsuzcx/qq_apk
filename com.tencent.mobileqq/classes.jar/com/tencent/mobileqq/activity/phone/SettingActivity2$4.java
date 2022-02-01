@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.phone;
 
 import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 
 class SettingActivity2$4
   implements Runnable
@@ -17,13 +16,13 @@ class SettingActivity2$4
       this.this$0.finish();
       return;
     }
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.this$0.app.getManager(QQManagerFactory.CONTACT_MANAGER);
-    ContactBindedActivity.a(this.this$0.app, 222, localPhoneContactManagerImp.a());
+    IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.this$0.app.getRuntimeService(IPhoneContactService.class, "");
+    ContactBindedActivity.a(this.this$0.app, 222, localIPhoneContactService.generateRandomList());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.SettingActivity2.4
  * JD-Core Version:    0.7.0.1
  */

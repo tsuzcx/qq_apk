@@ -1,6 +1,6 @@
 package com.tencent.avgame.gameroom.video;
 
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 
 class AVGameControlUIImpl$3$4
   implements Runnable
@@ -9,13 +9,13 @@ class AVGameControlUIImpl$3$4
   
   public void run()
   {
-    long l = AudioHelper.b();
+    long l = QQAudioHelper.b();
     this.a.a.a(l, "android.permission.CAMERA");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.4
  * JD-Core Version:    0.7.0.1
  */

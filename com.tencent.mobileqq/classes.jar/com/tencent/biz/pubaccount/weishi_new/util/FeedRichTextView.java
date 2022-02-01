@@ -69,18 +69,20 @@ public class FeedRichTextView
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (paramMessage == null) {}
-    while ((paramMessage.what != 1001) || (!(paramMessage.obj instanceof FeedTextParser.InnerSpannableBuilder))) {
+    if (paramMessage == null) {
       return false;
     }
-    paramMessage = (FeedTextParser.InnerSpannableBuilder)paramMessage.obj;
-    this.jdField_a_of_type_JavaUtilArrayList = paramMessage.a();
-    this.b = paramMessage.b();
-    super.setText(paramMessage, null);
+    if ((paramMessage.what == 1001) && ((paramMessage.obj instanceof FeedTextParser.InnerSpannableBuilder)))
+    {
+      paramMessage = (FeedTextParser.InnerSpannableBuilder)paramMessage.obj;
+      this.jdField_a_of_type_JavaUtilArrayList = paramMessage.a();
+      this.b = paramMessage.b();
+      super.setText(paramMessage, null);
+    }
     return false;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     CharSequence localCharSequence = getText();
@@ -107,17 +109,17 @@ public class FeedRichTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    if ((TextUtils.isEmpty(paramCharSequence)) || ((!TextUtils.isEmpty(paramCharSequence)) && ((paramCharSequence instanceof FeedTextParser.InnerSpannableBuilder))))
+    if ((!TextUtils.isEmpty(paramCharSequence)) && ((TextUtils.isEmpty(paramCharSequence)) || (!(paramCharSequence instanceof FeedTextParser.InnerSpannableBuilder))))
     {
-      super.setText(paramCharSequence, paramBufferType);
+      a(paramCharSequence, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView$OnElementClickListener, null);
       return;
     }
-    a(paramCharSequence, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView$OnElementClickListener, null);
+    super.setText(paramCharSequence, paramBufferType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView
  * JD-Core Version:    0.7.0.1
  */

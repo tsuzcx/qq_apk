@@ -35,7 +35,11 @@ public class SharpPPathDecoder
       int i = parseHeader();
       if (i != 0)
       {
-        ImageManagerEnv.getLogger().e("SharpPPathDecoder", new Object[] { "createDecoder error,res=" + i });
+        ILog localILog = ImageManagerEnv.getLogger();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createDecoder error,res=");
+        localStringBuilder.append(i);
+        localILog.e("SharpPPathDecoder", new Object[] { localStringBuilder.toString() });
         return i;
       }
     }
@@ -52,11 +56,8 @@ public class SharpPPathDecoder
   
   public Bitmap decodeSharpP2GifFrame(long paramLong, int paramInt1, int paramInt2, int paramInt3, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger, Bitmap paramBitmap)
   {
-    Bitmap localBitmap;
-    if ((this.mInfo == null) && (parseHeader() != 0))
-    {
-      localBitmap = null;
-      return localBitmap;
+    if ((this.mInfo == null) && (parseHeader() != 0)) {
+      return null;
     }
     if (this.mInfo.getImageMode() == 4) {
       return this.mDecoder.decodeOneFrameWithAlphaInNative(paramLong, paramInt1, paramInt2, paramInt3, paramWriteableInteger, paramBitmap);
@@ -64,14 +65,10 @@ public class SharpPPathDecoder
     if (paramBitmap == null) {
       paramBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
     }
-    for (;;)
-    {
-      localBitmap = paramBitmap;
-      if (this.mDecoder.decodeOneFrameInNative(paramLong, paramInt1, paramBitmap, paramWriteableInteger) == 0) {
-        break;
-      }
+    if (this.mDecoder.decodeOneFrameInNative(paramLong, paramInt1, paramBitmap, paramWriteableInteger) != 0) {
       return null;
     }
+    return paramBitmap;
   }
   
   public Bitmap decodeSharpP2JPG(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
@@ -105,25 +102,39 @@ public class SharpPPathDecoder
   
   public String getMimeType()
   {
-    if ((this.mInfo == null) && (parseHeader() != 0)) {}
-    while (this.mInfo == null) {
+    Object localObject2 = this.mInfo;
+    Object localObject1 = null;
+    if ((localObject2 == null) && (parseHeader() != 0)) {
       return null;
     }
-    switch (this.mInfo.getImageMode())
+    localObject2 = this.mInfo;
+    if (localObject2 != null)
     {
-    default: 
-      ImageManagerEnv.getLogger().e("SharpPPathDecoder", new Object[] { "-------unknow mimeType:" + this.mInfo.getImageMode() });
-      return null;
-    case 0: 
-      return "image/jpg";
-    case 1: 
-      return "image/png";
-    case 2: 
-      return "image/jpg";
-    case 3: 
-      return "image/gif";
+      int i = ((SharpPDecoderWrapper.SharpPFeatureWrapper)localObject2).getImageMode();
+      if (i != 0) {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if ((i != 3) && (i != 4))
+            {
+              localObject1 = ImageManagerEnv.getLogger();
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("-------unknow mimeType:");
+              ((StringBuilder)localObject2).append(this.mInfo.getImageMode());
+              ((ILog)localObject1).e("SharpPPathDecoder", new Object[] { ((StringBuilder)localObject2).toString() });
+              return null;
+            }
+            return "image/gif";
+          }
+        }
+        else {
+          return "image/png";
+        }
+      }
+      localObject1 = "image/jpg";
     }
-    return "image/gif";
+    return localObject1;
   }
   
   public int parseHeader()
@@ -136,14 +147,18 @@ public class SharpPPathDecoder
     if (i != 0)
     {
       this.mInfo = null;
-      ImageManagerEnv.getLogger().e("SharpPPathDecoder", new Object[] { "parseHeader error,res=" + i });
+      ILog localILog = ImageManagerEnv.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseHeader error,res=");
+      localStringBuilder.append(i);
+      localILog.e("SharpPPathDecoder", new Object[] { localStringBuilder.toString() });
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sharpP.SharpPPathDecoder
  * JD-Core Version:    0.7.0.1
  */

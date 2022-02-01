@@ -31,14 +31,12 @@ public final class $Gson$Types
   {
     if ((paramType instanceof Class))
     {
-      paramType = (Class)paramType;
-      if (paramType.isArray()) {
-        paramType = new .Gson.Types.GenericArrayTypeImpl(canonicalize(paramType.getComponentType()));
+      Class localClass = (Class)paramType;
+      paramType = localClass;
+      if (localClass.isArray()) {
+        paramType = new .Gson.Types.GenericArrayTypeImpl(canonicalize(localClass.getComponentType()));
       }
-      for (;;)
-      {
-        return (Type)paramType;
-      }
+      return (Type)paramType;
     }
     if ((paramType instanceof ParameterizedType))
     {
@@ -58,12 +56,13 @@ public final class $Gson$Types
   
   static void checkNotPrimitive(Type paramType)
   {
-    if ((!(paramType instanceof Class)) || (!((Class)paramType).isPrimitive())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      .Gson.Preconditions.checkArgument(bool);
-      return;
+    boolean bool;
+    if (((paramType instanceof Class)) && (((Class)paramType).isPrimitive())) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    .Gson.Preconditions.checkArgument(bool);
   }
   
   private static Class<?> declaringClassOf(TypeVariable<?> paramTypeVariable)
@@ -82,67 +81,49 @@ public final class $Gson$Types
   
   public static boolean equals(Type paramType1, Type paramType2)
   {
-    boolean bool4 = true;
-    boolean bool5 = true;
-    boolean bool2 = true;
-    boolean bool3 = false;
     if (paramType1 == paramType2) {
-      bool1 = true;
+      return true;
     }
-    do
+    if ((paramType1 instanceof Class)) {
+      return paramType1.equals(paramType2);
+    }
+    if ((paramType1 instanceof ParameterizedType))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              if ((paramType1 instanceof Class)) {
-                return paramType1.equals(paramType2);
-              }
-              if (!(paramType1 instanceof ParameterizedType)) {
-                break;
-              }
-              bool1 = bool3;
-            } while (!(paramType2 instanceof ParameterizedType));
-            paramType1 = (ParameterizedType)paramType1;
-            paramType2 = (ParameterizedType)paramType2;
-            if ((equal(paramType1.getOwnerType(), paramType2.getOwnerType())) && (paramType1.getRawType().equals(paramType2.getRawType())) && (Arrays.equals(paramType1.getActualTypeArguments(), paramType2.getActualTypeArguments()))) {}
-            for (bool1 = bool2;; bool1 = false) {
-              return bool1;
-            }
-            if (!(paramType1 instanceof GenericArrayType)) {
-              break;
-            }
-            bool1 = bool3;
-          } while (!(paramType2 instanceof GenericArrayType));
-          paramType1 = (GenericArrayType)paramType1;
-          paramType2 = (GenericArrayType)paramType2;
-          return equals(paramType1.getGenericComponentType(), paramType2.getGenericComponentType());
-          if (!(paramType1 instanceof WildcardType)) {
-            break;
-          }
-          bool1 = bool3;
-        } while (!(paramType2 instanceof WildcardType));
-        paramType1 = (WildcardType)paramType1;
-        paramType2 = (WildcardType)paramType2;
-        if ((Arrays.equals(paramType1.getUpperBounds(), paramType2.getUpperBounds())) && (Arrays.equals(paramType1.getLowerBounds(), paramType2.getLowerBounds()))) {}
-        for (bool1 = bool4;; bool1 = false) {
-          return bool1;
-        }
-        bool1 = bool3;
-      } while (!(paramType1 instanceof TypeVariable));
-      bool1 = bool3;
-    } while (!(paramType2 instanceof TypeVariable));
-    paramType1 = (TypeVariable)paramType1;
-    paramType2 = (TypeVariable)paramType2;
-    if ((paramType1.getGenericDeclaration() == paramType2.getGenericDeclaration()) && (paramType1.getName().equals(paramType2.getName()))) {}
-    for (boolean bool1 = bool5;; bool1 = false) {
-      return bool1;
+      if (!(paramType2 instanceof ParameterizedType)) {
+        return false;
+      }
+      paramType1 = (ParameterizedType)paramType1;
+      paramType2 = (ParameterizedType)paramType2;
+      return (equal(paramType1.getOwnerType(), paramType2.getOwnerType())) && (paramType1.getRawType().equals(paramType2.getRawType())) && (Arrays.equals(paramType1.getActualTypeArguments(), paramType2.getActualTypeArguments()));
     }
+    if ((paramType1 instanceof GenericArrayType))
+    {
+      if (!(paramType2 instanceof GenericArrayType)) {
+        return false;
+      }
+      paramType1 = (GenericArrayType)paramType1;
+      paramType2 = (GenericArrayType)paramType2;
+      return equals(paramType1.getGenericComponentType(), paramType2.getGenericComponentType());
+    }
+    if ((paramType1 instanceof WildcardType))
+    {
+      if (!(paramType2 instanceof WildcardType)) {
+        return false;
+      }
+      paramType1 = (WildcardType)paramType1;
+      paramType2 = (WildcardType)paramType2;
+      return (Arrays.equals(paramType1.getUpperBounds(), paramType2.getUpperBounds())) && (Arrays.equals(paramType1.getLowerBounds(), paramType2.getLowerBounds()));
+    }
+    if ((paramType1 instanceof TypeVariable))
+    {
+      if (!(paramType2 instanceof TypeVariable)) {
+        return false;
+      }
+      paramType1 = (TypeVariable)paramType1;
+      paramType2 = (TypeVariable)paramType2;
+      return (paramType1.getGenericDeclaration() == paramType2.getGenericDeclaration()) && (paramType1.getName().equals(paramType2.getName()));
+    }
+    return false;
   }
   
   public static Type getArrayComponentType(Type paramType)
@@ -235,10 +216,18 @@ public final class $Gson$Types
     if ((paramType instanceof WildcardType)) {
       return getRawType(((WildcardType)paramType).getUpperBounds()[0]);
     }
-    if (paramType == null) {}
-    for (String str = "null";; str = paramType.getClass().getName()) {
-      throw new IllegalArgumentException("Expected a Class, ParameterizedType, or GenericArrayType, but <" + paramType + "> is of type " + str);
+    String str;
+    if (paramType == null) {
+      str = "null";
+    } else {
+      str = paramType.getClass().getName();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Expected a Class, ParameterizedType, or GenericArrayType, but <");
+    localStringBuilder.append(paramType);
+    localStringBuilder.append("> is of type ");
+    localStringBuilder.append(str);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   static Type getSupertype(Type paramType, Class<?> paramClass1, Class<?> paramClass2)
@@ -257,8 +246,8 @@ public final class $Gson$Types
   
   private static int indexOf(Object[] paramArrayOfObject, Object paramObject)
   {
-    int i = 0;
     int j = paramArrayOfObject.length;
+    int i = 0;
     while (i < j)
     {
       if (paramObject.equals(paramArrayOfObject[i])) {
@@ -266,7 +255,11 @@ public final class $Gson$Types
       }
       i += 1;
     }
-    throw new NoSuchElementException();
+    paramArrayOfObject = new NoSuchElementException();
+    for (;;)
+    {
+      throw paramArrayOfObject;
+    }
   }
   
   public static ParameterizedType newParameterizedTypeWithOwner(Type paramType1, Type paramType2, Type... paramVarArgs)
@@ -281,150 +274,156 @@ public final class $Gson$Types
   
   private static Type resolve(Type paramType1, Class<?> paramClass, Type paramType2, Collection<TypeVariable> paramCollection)
   {
-    Object localObject1 = paramType2;
     Object localObject2;
-    if ((localObject1 instanceof TypeVariable))
+    while ((paramType2 instanceof TypeVariable))
     {
-      localObject2 = (TypeVariable)localObject1;
+      localObject2 = (TypeVariable)paramType2;
       if (paramCollection.contains(localObject2)) {
-        paramType2 = (Type)localObject1;
+        return paramType2;
+      }
+      paramCollection.add(localObject2);
+      localObject1 = resolveTypeVariable(paramType1, paramClass, (TypeVariable)localObject2);
+      paramType2 = (Type)localObject1;
+      if (localObject1 == localObject2) {
+        return localObject1;
       }
     }
-    label113:
-    Object localObject3;
-    label155:
-    label325:
-    do
+    if ((paramType2 instanceof Class))
     {
-      do
+      localObject1 = (Class)paramType2;
+      if (((Class)localObject1).isArray())
       {
-        do
+        paramType2 = ((Class)localObject1).getComponentType();
+        paramType1 = resolve(paramType1, paramClass, paramType2, paramCollection);
+        if (paramType2 == paramType1) {
+          return localObject1;
+        }
+        return arrayOf(paramType1);
+      }
+    }
+    if ((paramType2 instanceof GenericArrayType))
+    {
+      paramType2 = (GenericArrayType)paramType2;
+      localObject1 = paramType2.getGenericComponentType();
+      paramType1 = resolve(paramType1, paramClass, (Type)localObject1, paramCollection);
+      if (localObject1 == paramType1) {
+        return paramType2;
+      }
+      return arrayOf(paramType1);
+    }
+    boolean bool = paramType2 instanceof ParameterizedType;
+    int k = 0;
+    Object localObject3;
+    if (bool)
+    {
+      localObject2 = (ParameterizedType)paramType2;
+      paramType2 = ((ParameterizedType)localObject2).getOwnerType();
+      localObject3 = resolve(paramType1, paramClass, paramType2, paramCollection);
+      int i;
+      if (localObject3 != paramType2) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      paramType2 = ((ParameterizedType)localObject2).getActualTypeArguments();
+      int m = paramType2.length;
+      while (k < m)
+      {
+        Type localType = resolve(paramType1, paramClass, paramType2[k], paramCollection);
+        int j = i;
+        localObject1 = paramType2;
+        if (localType != paramType2[k])
         {
-          do
+          j = i;
+          localObject1 = paramType2;
+          if (i == 0)
           {
-            int i;
-            do
-            {
-              do
-              {
-                do
-                {
-                  return paramType2;
-                  paramCollection.add(localObject2);
-                  paramType2 = resolveTypeVariable(paramType1, paramClass, (TypeVariable)localObject2);
-                  localObject1 = paramType2;
-                  if (paramType2 != localObject2) {
-                    break;
-                  }
-                  return paramType2;
-                  if ((!(localObject1 instanceof Class)) || (!((Class)localObject1).isArray())) {
-                    break label113;
-                  }
-                  paramType2 = (Class)localObject1;
-                  localObject1 = paramType2.getComponentType();
-                  paramType1 = resolve(paramType1, paramClass, (Type)localObject1, paramCollection);
-                } while (localObject1 == paramType1);
-                return arrayOf(paramType1);
-                if (!(localObject1 instanceof GenericArrayType)) {
-                  break label155;
-                }
-                paramType2 = (GenericArrayType)localObject1;
-                localObject1 = paramType2.getGenericComponentType();
-                paramType1 = resolve(paramType1, paramClass, (Type)localObject1, paramCollection);
-              } while (localObject1 == paramType1);
-              return arrayOf(paramType1);
-              if (!(localObject1 instanceof ParameterizedType)) {
-                break label325;
-              }
-              localObject2 = (ParameterizedType)localObject1;
-              paramType2 = ((ParameterizedType)localObject2).getOwnerType();
-              localObject3 = resolve(paramType1, paramClass, paramType2, paramCollection);
-              if (localObject3 != paramType2) {}
-              for (i = 1;; i = 0)
-              {
-                localObject1 = ((ParameterizedType)localObject2).getActualTypeArguments();
-                int m = localObject1.length;
-                int k = 0;
-                while (k < m)
-                {
-                  Type localType = resolve(paramType1, paramClass, localObject1[k], paramCollection);
-                  paramType2 = (Type)localObject1;
-                  int j = i;
-                  if (localType != localObject1[k])
-                  {
-                    paramType2 = (Type)localObject1;
-                    j = i;
-                    if (i == 0)
-                    {
-                      paramType2 = (Type[])((Type[])localObject1).clone();
-                      j = 1;
-                    }
-                    paramType2[k] = localType;
-                  }
-                  k += 1;
-                  localObject1 = paramType2;
-                  i = j;
-                }
-              }
-              paramType2 = (Type)localObject2;
-            } while (i == 0);
-            return newParameterizedTypeWithOwner((Type)localObject3, ((ParameterizedType)localObject2).getRawType(), (Type[])localObject1);
-            paramType2 = (Type)localObject1;
-          } while (!(localObject1 instanceof WildcardType));
-          localObject1 = (WildcardType)localObject1;
-          localObject2 = ((WildcardType)localObject1).getLowerBounds();
-          localObject3 = ((WildcardType)localObject1).getUpperBounds();
-          if (localObject2.length != 1) {
-            break label395;
+            localObject1 = (Type[])paramType2.clone();
+            j = 1;
           }
-          paramType1 = resolve(paramType1, paramClass, localObject2[0], paramCollection);
-          paramType2 = (Type)localObject1;
-        } while (paramType1 == localObject2[0]);
-        return supertypeOf(paramType1);
+          localObject1[k] = localType;
+        }
+        k += 1;
+        i = j;
         paramType2 = (Type)localObject1;
-      } while (localObject3.length != 1);
-      paramType1 = resolve(paramType1, paramClass, localObject3[0], paramCollection);
-      paramType2 = (Type)localObject1;
-    } while (paramType1 == localObject3[0]);
-    label395:
-    return subtypeOf(paramType1);
+      }
+      paramType1 = (Type)localObject2;
+      if (i != 0) {
+        paramType1 = newParameterizedTypeWithOwner((Type)localObject3, ((ParameterizedType)localObject2).getRawType(), paramType2);
+      }
+      return paramType1;
+    }
+    Object localObject1 = paramType2;
+    if ((paramType2 instanceof WildcardType))
+    {
+      paramType2 = (WildcardType)paramType2;
+      localObject3 = paramType2.getLowerBounds();
+      localObject2 = paramType2.getUpperBounds();
+      if (localObject3.length == 1)
+      {
+        paramType1 = resolve(paramType1, paramClass, localObject3[0], paramCollection);
+        localObject1 = paramType2;
+        if (paramType1 != localObject3[0]) {
+          return supertypeOf(paramType1);
+        }
+      }
+      else
+      {
+        localObject1 = paramType2;
+        if (localObject2.length == 1) {
+          localObject1 = localObject2[0];
+        }
+      }
+    }
+    try
+    {
+      paramType1 = resolve(paramType1, paramClass, (Type)localObject1, paramCollection);
+      localObject1 = paramType2;
+      if (paramType1 != localObject2[0]) {
+        return subtypeOf(paramType1);
+      }
+      return localObject1;
+    }
+    catch (Throwable paramType1) {}
+    for (;;)
+    {
+      throw paramType1;
+    }
   }
   
   static Type resolveTypeVariable(Type paramType, Class<?> paramClass, TypeVariable<?> paramTypeVariable)
   {
     Class localClass = declaringClassOf(paramTypeVariable);
-    if (localClass == null) {}
-    do
-    {
+    if (localClass == null) {
       return paramTypeVariable;
-      paramType = getGenericSupertype(paramType, paramClass, localClass);
-    } while (!(paramType instanceof ParameterizedType));
-    int i = indexOf(localClass.getTypeParameters(), paramTypeVariable);
-    return ((ParameterizedType)paramType).getActualTypeArguments()[i];
+    }
+    paramType = getGenericSupertype(paramType, paramClass, localClass);
+    if ((paramType instanceof ParameterizedType))
+    {
+      int i = indexOf(localClass.getTypeParameters(), paramTypeVariable);
+      return ((ParameterizedType)paramType).getActualTypeArguments()[i];
+    }
+    return paramTypeVariable;
   }
   
   public static WildcardType subtypeOf(Type paramType)
   {
-    if ((paramType instanceof WildcardType)) {}
-    Type[] arrayOfType;
-    for (paramType = ((WildcardType)paramType).getUpperBounds();; paramType = arrayOfType)
-    {
-      return new .Gson.Types.WildcardTypeImpl(paramType, EMPTY_TYPE_ARRAY);
-      arrayOfType = new Type[1];
-      arrayOfType[0] = paramType;
+    if ((paramType instanceof WildcardType)) {
+      paramType = ((WildcardType)paramType).getUpperBounds();
+    } else {
+      paramType = new Type[] { paramType };
     }
+    return new .Gson.Types.WildcardTypeImpl(paramType, EMPTY_TYPE_ARRAY);
   }
   
   public static WildcardType supertypeOf(Type paramType)
   {
-    if ((paramType instanceof WildcardType)) {}
-    Type[] arrayOfType;
-    for (paramType = ((WildcardType)paramType).getLowerBounds();; paramType = arrayOfType)
-    {
-      return new .Gson.Types.WildcardTypeImpl(new Type[] { Object.class }, paramType);
-      arrayOfType = new Type[1];
-      arrayOfType[0] = paramType;
+    if ((paramType instanceof WildcardType)) {
+      paramType = ((WildcardType)paramType).getLowerBounds();
+    } else {
+      paramType = new Type[] { paramType };
     }
+    return new .Gson.Types.WildcardTypeImpl(new Type[] { Object.class }, paramType);
   }
   
   public static String typeToString(Type paramType)
@@ -437,7 +436,7 @@ public final class $Gson$Types
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal..Gson.Types
  * JD-Core Version:    0.7.0.1
  */

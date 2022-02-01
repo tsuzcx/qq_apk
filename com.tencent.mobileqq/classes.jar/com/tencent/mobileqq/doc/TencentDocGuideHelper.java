@@ -10,37 +10,51 @@ public class TencentDocGuideHelper
 {
   public static int a(AppInterface paramAppInterface, Context paramContext)
   {
-    int i = 0;
-    if ((paramAppInterface == null) || (paramContext == null)) {
-      QLog.e("TencentDocGuideHelper", 1, "getShownTimes sth is null");
-    }
-    int j;
-    do
+    if ((paramAppInterface != null) && (paramContext != null))
     {
+      paramContext = paramContext.getSharedPreferences("tencent_doc", 4);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("shown_");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      int i = paramContext.getInt(localStringBuilder.toString(), 0);
+      if (QLog.isColorLevel())
+      {
+        paramAppInterface = new StringBuilder();
+        paramAppInterface.append("getShownTimes ");
+        paramAppInterface.append(i);
+        QLog.i("TencentDocGuideHelper", 2, paramAppInterface.toString());
+      }
       return i;
-      j = paramContext.getSharedPreferences("tencent_doc", 4).getInt("shown_" + paramAppInterface.getCurrentAccountUin(), 0);
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.i("TencentDocGuideHelper", 2, "getShownTimes " + j);
-    return j;
+    }
+    QLog.e("TencentDocGuideHelper", 1, "getShownTimes sth is null");
+    return 0;
   }
   
   public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TencentDocGuideHelper", 2, "setShownTimes " + paramInt);
-    }
-    if ((paramAppInterface == null) || (paramContext == null))
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      QLog.e("TencentDocGuideHelper", 1, "setShownTimes sth is null");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setShownTimes ");
+      localStringBuilder.append(paramInt);
+      QLog.i("TencentDocGuideHelper", 2, localStringBuilder.toString());
+    }
+    if ((paramAppInterface != null) && (paramContext != null))
+    {
+      paramContext = paramContext.getSharedPreferences("tencent_doc", 4).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("shown_");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      paramContext.putInt(localStringBuilder.toString(), paramInt).commit();
       return;
     }
-    paramContext.getSharedPreferences("tencent_doc", 4).edit().putInt("shown_" + paramAppInterface.getCurrentAccountUin(), paramInt).commit();
+    QLog.e("TencentDocGuideHelper", 1, "setShownTimes sth is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.doc.TencentDocGuideHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class label_show_info
   extends JceStruct
@@ -33,17 +34,19 @@ public final class label_show_info
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.label != null) {
-      paramJceOutputStream.write(this.label, 0);
+    Object localObject = this.label;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.labelids != null) {
-      paramJceOutputStream.write(this.labelids, 1);
+    localObject = this.labelids;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.label_show_info
  * JD-Core Version:    0.7.0.1
  */

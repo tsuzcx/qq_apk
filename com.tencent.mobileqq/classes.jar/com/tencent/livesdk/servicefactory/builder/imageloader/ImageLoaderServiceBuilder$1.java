@@ -11,19 +11,29 @@ class ImageLoaderServiceBuilder$1
   
   public void onLoadingCancelled(String paramString)
   {
-    ((LogInterface)this.val$serviceManager.getService(LogInterface.class)).e("ImageLoaderServiceBuild", "onLoadingCancelled url = " + paramString, new Object[0]);
+    LogInterface localLogInterface = (LogInterface)this.val$serviceManager.getService(LogInterface.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onLoadingCancelled url = ");
+    localStringBuilder.append(paramString);
+    localLogInterface.e("ImageLoaderServiceBuild", localStringBuilder.toString(), new Object[0]);
   }
   
   public void onLoadingComplete(String paramString) {}
   
   public void onLoadingFailed(String paramString1, String paramString2)
   {
-    ((LogInterface)this.val$serviceManager.getService(LogInterface.class)).e("ImageLoaderServiceBuild", "onLoadingFailed url = " + paramString1 + ", failReason = " + paramString2, new Object[0]);
+    LogInterface localLogInterface = (LogInterface)this.val$serviceManager.getService(LogInterface.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onLoadingFailed url = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", failReason = ");
+    localStringBuilder.append(paramString2);
+    localLogInterface.e("ImageLoaderServiceBuild", localStringBuilder.toString(), new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.imageloader.ImageLoaderServiceBuilder.1
  * JD-Core Version:    0.7.0.1
  */

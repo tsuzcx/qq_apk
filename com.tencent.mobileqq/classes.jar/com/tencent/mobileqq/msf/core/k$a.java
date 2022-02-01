@@ -19,27 +19,26 @@ public class k$a
   
   public boolean a(int paramInt)
   {
-    if (this.a == 0) {
+    int i = this.a;
+    if (i == 0)
+    {
       if (paramInt >= this.c) {
         this.a = paramInt;
       }
     }
-    for (;;)
+    else if (paramInt >= i)
     {
-      return false;
-      if (paramInt >= this.a)
-      {
-        this.a = paramInt;
-        this.b += 1;
-        if (this.b >= 40) {
-          return true;
-        }
-      }
-      else
-      {
-        a();
+      this.a = paramInt;
+      this.b += 1;
+      if (this.b >= 40) {
+        return true;
       }
     }
+    else
+    {
+      a();
+    }
+    return false;
   }
   
   public int b()
@@ -49,7 +48,7 @@ public class k$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.k.a
  * JD-Core Version:    0.7.0.1
  */

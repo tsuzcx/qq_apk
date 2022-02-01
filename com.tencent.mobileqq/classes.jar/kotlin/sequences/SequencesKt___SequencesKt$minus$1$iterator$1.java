@@ -18,9 +18,10 @@ final class SequencesKt___SequencesKt$minus$1$iterator$1
   
   public final boolean invoke(T paramT)
   {
+    boolean bool3 = this.$removed.element;
     boolean bool2 = true;
     boolean bool1 = bool2;
-    if (!this.$removed.element)
+    if (!bool3)
     {
       bool1 = bool2;
       if (Intrinsics.areEqual(paramT, this.this$0.$element))
@@ -34,7 +35,7 @@ final class SequencesKt___SequencesKt$minus$1$iterator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.sequences.SequencesKt___SequencesKt.minus.1.iterator.1
  * JD-Core Version:    0.7.0.1
  */

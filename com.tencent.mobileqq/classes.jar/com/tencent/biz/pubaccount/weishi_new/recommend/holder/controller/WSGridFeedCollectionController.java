@@ -10,13 +10,12 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUI;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
 import com.tencent.biz.pubaccount.weishi_new.recommend.data.collection.WSCollectionItemData;
 import com.tencent.biz.pubaccount.weishi_new.util.WSCollectionJumpUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUIUtil;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class WSGridFeedCollectionController
   extends AbsWsUI<WSCollectionItemData>
@@ -42,16 +41,16 @@ public class WSGridFeedCollectionController
   
   private void a(Context paramContext)
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560535, null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366765));
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560423, null);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366631));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setStrokeWidth(WeishiUIUtil.jdField_a_of_type_Int);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setStrokeColor(c);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366767));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366766));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366633));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131366632));
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
   }
   
-  public void a() {}
+  protected void a() {}
   
   public void a(ViewGroup paramViewGroup)
   {
@@ -75,14 +74,14 @@ public class WSGridFeedCollectionController
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void b()
+  protected void b()
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setText(((WSCollectionItemData)this.jdField_a_of_type_JavaLangObject).b());
     this.jdField_b_of_type_AndroidWidgetTextView.setText(((WSCollectionItemData)this.jdField_a_of_type_JavaLangObject).c());
-    WeishiUtils.a(this.jdField_b_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, ((WSCollectionItemData)this.jdField_a_of_type_JavaLangObject).a());
+    WSPicLoader.a(this.jdField_b_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, ((WSCollectionItemData)this.jdField_a_of_type_JavaLangObject).a());
   }
   
-  public void c() {}
+  protected void c() {}
   
   public void c(int paramInt)
   {
@@ -100,12 +99,11 @@ public class WSGridFeedCollectionController
   public void onClick(View paramView)
   {
     WSCollectionJumpUtil.a(a(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, ((WSCollectionItemData)this.jdField_a_of_type_JavaLangObject).a(), this.jdField_a_of_type_Int, this.d, this.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.controller.WSGridFeedCollectionController
  * JD-Core Version:    0.7.0.1
  */

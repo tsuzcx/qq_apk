@@ -14,7 +14,8 @@ class LangSettingFragment$3
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < LangSettingFragment.a().size()))
+    int i = this.jdField_a_of_type_Int;
+    if ((i >= 0) && (i < LangSettingFragment.a().size()))
     {
       LangSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, this.jdField_a_of_type_Int);
       LangSettingFragment.c(this.jdField_a_of_type_ComTencentMobileqqFragmentLangSettingFragment, ((Integer)LangSettingFragment.a().get(this.jdField_a_of_type_Int)).intValue());
@@ -30,7 +31,7 @@ class LangSettingFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.LangSettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

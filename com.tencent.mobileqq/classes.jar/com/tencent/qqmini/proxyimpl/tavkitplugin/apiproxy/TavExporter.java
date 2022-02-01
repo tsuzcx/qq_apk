@@ -20,12 +20,16 @@ public class TavExporter
   private AssetExportSession jdField_a_of_type_ComTencentTavCoreAssetExportSession;
   private final ExportConfig jdField_a_of_type_ComTencentTavCoreExportConfig;
   private final TAVComposition jdField_a_of_type_ComTencentTavkitCompositionTAVComposition;
-  private final String jdField_a_of_type_JavaLangString = "TavExporter@" + Integer.toHexString(hashCode());
+  private final String jdField_a_of_type_JavaLangString;
   private volatile boolean jdField_a_of_type_Boolean;
   private volatile boolean b;
   
   public TavExporter(TAVComposition paramTAVComposition)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TavExporter@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_ComTencentTavkitCompositionTAVComposition = paramTAVComposition;
     this.jdField_a_of_type_ComTencentTavCoreExportConfig = new ExportConfig(720, 1280);
     this.jdField_a_of_type_ComTencentTavCoreExportConfig.setVideoFrameRate(30);
@@ -35,31 +39,30 @@ public class TavExporter
   private File a(String paramString)
   {
     paramString = new File(paramString);
-    if (paramString.exists()) {}
-    for (;;)
-    {
+    if (paramString.exists()) {
       return paramString;
-      try
-      {
-        if (paramString.createNewFile()) {
-          continue;
-        }
-        throw new RuntimeException("创建输出文件失败");
+    }
+    try
+    {
+      if (paramString.createNewFile()) {
+        return paramString;
       }
-      catch (IOException paramString)
-      {
-        Logger.e(this.jdField_a_of_type_JavaLangString, "export: ", paramString);
-        throw new RuntimeException("创建输出文件失败", paramString);
-      }
+      throw new RuntimeException("创建输出文件失败");
+    }
+    catch (IOException paramString)
+    {
+      Logger.e(this.jdField_a_of_type_JavaLangString, "export: ", paramString);
+      throw new RuntimeException("创建输出文件失败", paramString);
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentTavCoreAssetExportSession != null)
+    AssetExportSession localAssetExportSession = this.jdField_a_of_type_ComTencentTavCoreAssetExportSession;
+    if (localAssetExportSession != null)
     {
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.cancelExport();
+      localAssetExportSession.cancelExport();
     }
     this.b = false;
   }
@@ -81,28 +84,33 @@ public class TavExporter
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentTavCoreAssetExportSession != null)
+    Object localObject1 = this.jdField_a_of_type_ComTencentTavCoreAssetExportSession;
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.cancelExport();
+      ((AssetExportSession)localObject1).cancelExport();
       this.jdField_a_of_type_ComTencentTavCoreAssetExportSession = null;
     }
-    TAVSource localTAVSource = new TAVCompositionBuilder(this.jdField_a_of_type_ComTencentTavkitCompositionTAVComposition).buildSource();
-    Object localObject = localTAVSource.getAsset();
-    this.jdField_a_of_type_ComTencentTavCoreAssetExportSession = new AssetExportSession((Asset)localObject, this.jdField_a_of_type_ComTencentTavCoreExportConfig);
-    this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.setTimeRange(new CMTimeRange(CMTime.CMTimeZero, ((Asset)localObject).getDuration()));
-    this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.setAudioMix(localTAVSource.getAudioMix());
-    Logger.i(this.jdField_a_of_type_JavaLangString, "export composition duration: " + ((Asset)localObject).getDuration());
-    localObject = a(paramString);
-    this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.setOutputFilePath(((File)localObject).getAbsolutePath());
+    localObject1 = new TAVCompositionBuilder(this.jdField_a_of_type_ComTencentTavkitCompositionTAVComposition).buildSource();
+    Object localObject2 = ((TAVSource)localObject1).getAsset();
+    this.jdField_a_of_type_ComTencentTavCoreAssetExportSession = new AssetExportSession((Asset)localObject2, this.jdField_a_of_type_ComTencentTavCoreExportConfig);
+    this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.setTimeRange(new CMTimeRange(CMTime.CMTimeZero, ((Asset)localObject2).getDuration()));
+    this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.setAudioMix(((TAVSource)localObject1).getAudioMix());
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("export composition duration: ");
+    localStringBuilder.append(((Asset)localObject2).getDuration());
+    Logger.i(str, localStringBuilder.toString());
+    localObject2 = a(paramString);
+    this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.setOutputFilePath(((File)localObject2).getAbsolutePath());
     this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.setOutputFileType("mp4");
-    this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.setVideoComposition(localTAVSource.getVideoComposition());
+    this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.setVideoComposition(((TAVSource)localObject1).getVideoComposition());
     this.jdField_a_of_type_ComTencentTavCoreAssetExportSession.exportAsynchronouslyWithCompletionHandler(new TavExporter.MyExportCallbackHandler(this, paramString));
     this.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavExporter
  * JD-Core Version:    0.7.0.1
  */

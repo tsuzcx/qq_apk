@@ -14,91 +14,146 @@ final class VideoNodeManager$1
 {
   public boolean handleMessage(Message paramMessage)
   {
-    Bundle localBundle = paramMessage.getData();
+    Object localObject = paramMessage.getData();
+    long l1;
+    int i;
+    long l2;
+    boolean bool;
     switch (paramMessage.what)
     {
-    }
-    do
-    {
-      do
-      {
-        long l1;
-        int i;
-        long l2;
-        boolean bool;
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (VideoNodeManager.a() == null);
-            VideoNodeManager.c();
-            VideoNodeManager.a(24, VideoNodeManager.b());
-            try
-            {
-              VideoNodeManager.a().sendEmptyMessageDelayed(1, 5000L);
-              return false;
-            }
-            catch (NullPointerException paramMessage)
-            {
-              paramMessage.printStackTrace();
-              return false;
-            }
-            l1 = localBundle.getLong("roomId");
-            i = localBundle.getInt("node");
-            l2 = localBundle.getLong("value");
-            bool = localBundle.getBoolean("isNode");
-            VideoNodeManager.a(i, true);
-          } while (VideoNodeManager.a(i, true, bool));
-          if ((bool) && (VideoNodeManager.a(33, true)))
-          {
-            AVLog.printInfoLog("VideoNodeManager", "--> TempSeesion THE node_session_close has write !!  this node  be rejected !!   node = " + VideoNodeConstant.a(i));
-            return false;
-          }
-          VideoNodeManager.a(i + "", l2 + "", bool);
-          VideoNodeManager.a(i, l2, true);
-          AVLog.printInfoLog("VideoNodeManager", "reportToTempSeesionRecord ,roomId = " + l1 + "  node = " + VideoNodeConstant.a(i) + ", value = " + l2 + "   isNode = " + bool);
-          return false;
-          l1 = localBundle.getLong("roomId");
-          i = localBundle.getInt("node");
-          l2 = localBundle.getLong("value");
-          bool = localBundle.getBoolean("isNode");
-          VideoNodeManager.a(i, false);
-        } while (VideoNodeManager.a(i, false, bool));
-        if ((bool) && (VideoNodeManager.a(33, false)))
-        {
-          AVLog.printInfoLog("VideoNodeManager", "--> THE node_session_close has write !!  this node  be rejected !!   node = " + VideoNodeConstant.a(i));
-          return false;
-        }
-        if (VideoNodeManager.a(i)) {
-          AVLog.printDebugLog("VideoNodeManager", "reportToHandler  roomId = " + l1 + "  node = " + VideoNodeConstant.a(i) + ",  value = " + l2 + "   isNode = " + bool);
-        }
-        VideoNodeManager.b(i + "", l2 + "", bool);
-        VideoNodeManager.a(i, l2, false);
+    default: 
+      return false;
+    case 6: 
+      l1 = ((Bundle)localObject).getLong("roomId");
+      i = ((Bundle)localObject).getInt("node");
+      l2 = ((Bundle)localObject).getLong("value");
+      bool = ((Bundle)localObject).getBoolean("isNode");
+      VideoNodeManager.a(i, true);
+      if (VideoNodeManager.a(i, true, bool)) {
         return false;
-        paramMessage = VideoNodeManager.a();
-        if (!TextUtils.isEmpty(paramMessage))
-        {
-          AVLog.printDebugLog("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TO_SERVER detail = " + paramMessage);
-          DcReportUtil.a(null, "dc03209", paramMessage);
-          VideoNodeManager.e();
-        }
-      } while ((VideoNodeManager.a() == null) || (VideoNodeManager.a().size() == 0));
+      }
+      if ((bool) && (VideoNodeManager.a(33, true)))
+      {
+        paramMessage = new StringBuilder();
+        paramMessage.append("--> TempSeesion THE node_session_close has write !!  this node  be rejected !!   node = ");
+        paramMessage.append(VideoNodeConstant.a(i));
+        AVLog.printInfoLog("VideoNodeManager", paramMessage.toString());
+        return false;
+      }
+      paramMessage = new StringBuilder();
+      paramMessage.append(i);
+      paramMessage.append("");
+      paramMessage = paramMessage.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(l2);
+      ((StringBuilder)localObject).append("");
+      VideoNodeManager.a(paramMessage, ((StringBuilder)localObject).toString(), bool);
+      VideoNodeManager.a(i, l2, true);
+      paramMessage = new StringBuilder();
+      paramMessage.append("reportToTempSeesionRecord ,roomId = ");
+      paramMessage.append(l1);
+      paramMessage.append("  node = ");
+      paramMessage.append(VideoNodeConstant.a(i));
+      paramMessage.append(", value = ");
+      paramMessage.append(l2);
+      paramMessage.append("   isNode = ");
+      paramMessage.append(bool);
+      AVLog.printInfoLog("VideoNodeManager", paramMessage.toString());
+      return false;
+    case 5: 
+      paramMessage = VideoNodeManager.b();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = ");
+      ((StringBuilder)localObject).append(paramMessage);
+      AVLog.printInfoLog("VideoNodeManager", ((StringBuilder)localObject).toString());
+      if (TextUtils.isEmpty(paramMessage)) {
+        break label720;
+      }
+      DcReportUtil.a(null, "dc03209", paramMessage);
+      VideoNodeManager.f();
+      return false;
+    case 3: 
+      paramMessage = VideoNodeManager.a();
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("--> handleMessage() what = MSG_REPORT_TO_SERVER detail = ");
+        ((StringBuilder)localObject).append(paramMessage);
+        AVLog.printDebugLog("VideoNodeManager", ((StringBuilder)localObject).toString());
+        DcReportUtil.a(null, "dc03209", paramMessage);
+        VideoNodeManager.e();
+      }
+      if (VideoNodeManager.a() == null) {
+        break label720;
+      }
+      if (VideoNodeManager.a().size() == 0) {
+        return false;
+      }
+    case 4: 
       VideoNodeManager.j();
       return false;
-      paramMessage = VideoNodeManager.b();
-      AVLog.printInfoLog("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = " + paramMessage);
-    } while (TextUtils.isEmpty(paramMessage));
-    DcReportUtil.a(null, "dc03209", paramMessage);
-    VideoNodeManager.f();
+    case 2: 
+      l1 = ((Bundle)localObject).getLong("roomId");
+      i = ((Bundle)localObject).getInt("node");
+      l2 = ((Bundle)localObject).getLong("value");
+      bool = ((Bundle)localObject).getBoolean("isNode");
+      VideoNodeManager.a(i, false);
+      if (VideoNodeManager.a(i, false, bool)) {
+        return false;
+      }
+      if ((bool) && (VideoNodeManager.a(33, false)))
+      {
+        paramMessage = new StringBuilder();
+        paramMessage.append("--> THE node_session_close has write !!  this node  be rejected !!   node = ");
+        paramMessage.append(VideoNodeConstant.a(i));
+        AVLog.printInfoLog("VideoNodeManager", paramMessage.toString());
+        return false;
+      }
+      if (VideoNodeManager.a(i))
+      {
+        paramMessage = new StringBuilder();
+        paramMessage.append("reportToHandler  roomId = ");
+        paramMessage.append(l1);
+        paramMessage.append("  node = ");
+        paramMessage.append(VideoNodeConstant.a(i));
+        paramMessage.append(",  value = ");
+        paramMessage.append(l2);
+        paramMessage.append("   isNode = ");
+        paramMessage.append(bool);
+        AVLog.printDebugLog("VideoNodeManager", paramMessage.toString());
+      }
+      paramMessage = new StringBuilder();
+      paramMessage.append(i);
+      paramMessage.append("");
+      paramMessage = paramMessage.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(l2);
+      ((StringBuilder)localObject).append("");
+      VideoNodeManager.b(paramMessage, ((StringBuilder)localObject).toString(), bool);
+      VideoNodeManager.a(i, l2, false);
+      return false;
+    }
+    if (VideoNodeManager.a() == null) {
+      return false;
+    }
+    VideoNodeManager.c();
+    VideoNodeManager.a(24, VideoNodeManager.b());
+    try
+    {
+      VideoNodeManager.a().sendEmptyMessageDelayed(1, 5000L);
+      return false;
+    }
+    catch (NullPointerException paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
+    label720:
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.report.VideoNodeManager.1
  * JD-Core Version:    0.7.0.1
  */

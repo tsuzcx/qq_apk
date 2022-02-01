@@ -17,20 +17,20 @@ public class QuickLoginReporter
   {
     HashMap localHashMap = new HashMap();
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject == null) {}
-    for (localObject = "";; localObject = ((AppRuntime)localObject).getAccount())
-    {
-      localHashMap.put("keyUin", localObject);
-      localHashMap.put("keyErrorCode", String.valueOf(paramInt));
-      localHashMap.put("keyQuickLoginResult", paramString1);
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      localHashMap.put("keyErrorMsg", paramString1);
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance((String)localObject, "quickLoginReportEvent", false, 0L, 0L, localHashMap, "");
-      return;
+    if (localObject == null) {
+      localObject = "";
+    } else {
+      localObject = ((AppRuntime)localObject).getAccount();
     }
+    localHashMap.put("keyUin", localObject);
+    localHashMap.put("keyErrorCode", String.valueOf(paramInt));
+    localHashMap.put("keyQuickLoginResult", paramString1);
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    localHashMap.put("keyErrorMsg", paramString1);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance((String)localObject, "quickLoginReportEvent", false, 0L, 0L, localHashMap, "");
   }
   
   public static void b(int paramInt, String paramString)
@@ -45,7 +45,7 @@ public class QuickLoginReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.QuickLoginReporter
  * JD-Core Version:    0.7.0.1
  */

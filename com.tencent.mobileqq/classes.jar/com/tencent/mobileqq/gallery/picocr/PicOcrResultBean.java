@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.gallery.picocr;
 
 import android.graphics.Point;
-import com.tencent.mobileqq.ocr.OCRPerformUtil;
+import com.tencent.mobileqq.ocr.api.IOCR;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 
 public class PicOcrResultBean
@@ -21,25 +22,31 @@ public class PicOcrResultBean
   
   public int a()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return 0;
-    }
-    Point localPoint1 = (Point)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    Point localPoint2 = (Point)this.jdField_a_of_type_JavaUtilArrayList.get(1);
-    int i = localPoint2.x - localPoint1.x;
-    int j = localPoint2.y - localPoint1.y;
-    double d1 = Math.sqrt(i * i + j * j);
-    float f = (float)(Math.asin(j / d1) / 3.141592653589793D * 180.0D);
-    if (localPoint2.x < localPoint1.x) {
-      if (f > 0.0F) {
-        f = 180.0F - f;
-      }
-    }
-    for (;;)
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      return Math.round(f);
-      f = -(180.0F + f);
+      if (((ArrayList)localObject).size() < 2) {
+        return 0;
+      }
+      localObject = (Point)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      Point localPoint = (Point)this.jdField_a_of_type_JavaUtilArrayList.get(1);
+      int i = localPoint.x - ((Point)localObject).x;
+      int j = localPoint.y - ((Point)localObject).y;
+      double d1 = Math.sqrt(i * i + j * j);
+      double d2 = j;
+      Double.isNaN(d2);
+      float f2 = (float)(Math.asin(d2 / d1) / 3.141592653589793D * 180.0D);
+      float f1 = f2;
+      if (localPoint.x < ((Point)localObject).x) {
+        if (f2 > 0.0F) {
+          f1 = 180.0F - f2;
+        } else {
+          f1 = -(f2 + 180.0F);
+        }
+      }
+      return Math.round(f1);
     }
+    return 0;
   }
   
   public int a(float paramFloat)
@@ -69,10 +76,17 @@ public class PicOcrResultBean
   
   public int b()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
-      return 0;
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
+    {
+      if (((ArrayList)localObject).size() < 4) {
+        return 0;
+      }
+      localObject = (Point)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      Point localPoint = (Point)this.jdField_a_of_type_JavaUtilArrayList.get(1);
+      return ((IOCR)QRoute.api(IOCR.class)).takeDistance((Point)localObject, localPoint);
     }
-    return OCRPerformUtil.a((Point)this.jdField_a_of_type_JavaUtilArrayList.get(0), (Point)this.jdField_a_of_type_JavaUtilArrayList.get(1));
+    return 0;
   }
   
   public int b(float paramFloat)
@@ -87,15 +101,22 @@ public class PicOcrResultBean
   
   public int c()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 4)) {
-      return 0;
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
+    {
+      if (((ArrayList)localObject).size() < 4) {
+        return 0;
+      }
+      localObject = (Point)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      Point localPoint = (Point)this.jdField_a_of_type_JavaUtilArrayList.get(3);
+      return ((IOCR)QRoute.api(IOCR.class)).takeDistance((Point)localObject, localPoint);
     }
-    return OCRPerformUtil.a((Point)this.jdField_a_of_type_JavaUtilArrayList.get(0), (Point)this.jdField_a_of_type_JavaUtilArrayList.get(3));
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gallery.picocr.PicOcrResultBean
  * JD-Core Version:    0.7.0.1
  */

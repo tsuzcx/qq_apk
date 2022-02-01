@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class single_feeds_req_info
   extends JceStruct
@@ -49,18 +50,20 @@ public final class single_feeds_req_info
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.appId, 1);
     paramJceOutputStream.write(this.feeds_time, 2);
-    if (this.ugc_key != null) {
-      paramJceOutputStream.write(this.ugc_key, 3);
+    Object localObject = this.ugc_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.all_commont_list != null) {
-      paramJceOutputStream.write(this.all_commont_list, 4);
+    localObject = this.all_commont_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
     paramJceOutputStream.write(this.pullAll, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.single_feeds_req_info
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,10 @@ public class FilterWraper
   
   private void checkavailable()
   {
-    if (!this.available) {
-      throw new RuntimeException("use bad addr");
+    if (this.available) {
+      return;
     }
+    throw new RuntimeException("use bad addr");
   }
   
   private static native void nativeDispose(long paramLong);
@@ -66,7 +67,7 @@ public class FilterWraper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.filter.FilterWraper
  * JD-Core Version:    0.7.0.1
  */

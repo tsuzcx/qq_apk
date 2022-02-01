@@ -17,14 +17,23 @@ public class ThreadManagerInitialler
     if ((!sFlagInited) && (BaseApplicationImpl.sProcessId == 1))
     {
       sFlagInited = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|chance " + paramLong);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("initShotChanceForPublicVersion|chance ");
+        localStringBuilder.append(paramLong);
+        QLog.d("ThreadManager.config", 2, localStringBuilder.toString());
       }
       if (paramLong > 0L)
       {
         sShotChanceForPublicVersion = JobReporter.ramdomReport((int)paramLong);
-        if (QLog.isColorLevel()) {
-          QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|sShotChanceForPublicVersion " + sShotChanceForPublicVersion);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("initShotChanceForPublicVersion|sShotChanceForPublicVersion ");
+          localStringBuilder.append(sShotChanceForPublicVersion);
+          QLog.d("ThreadManager.config", 2, localStringBuilder.toString());
         }
       }
     }
@@ -74,7 +83,7 @@ public class ThreadManagerInitialler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadManagerInitialler
  * JD-Core Version:    0.7.0.1
  */

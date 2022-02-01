@@ -19,7 +19,12 @@ class LebaMgrDataLogic$1
       QLog.i("LebaMgrDataLogic", 1, "handleData AppRuntime error ");
       return;
     }
-    QLog.i("LebaMgrDataLogic", 1, "handlePluginItem name: " + this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strResName + "  cCurFlag:" + this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaViewItem.jdField_a_of_type_Byte);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handlePluginItem name: ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strResName);
+    localStringBuilder.append("  cCurFlag:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaViewItem.jdField_a_of_type_Byte);
+    QLog.i("LebaMgrDataLogic", 1, localStringBuilder.toString());
     long l = NetConnInfoCenter.getServerTimeMillis();
     LebaShowListManager.a().a(this.this$0.a, this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId, this.jdField_a_of_type_Boolean, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
     LebaSettingHandlerApi.a(this.this$0.a, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId), this.jdField_a_of_type_Boolean, l);
@@ -27,7 +32,7 @@ class LebaMgrDataLogic$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.mgr.table.LebaMgrDataLogic.1
  * JD-Core Version:    0.7.0.1
  */

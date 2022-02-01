@@ -27,68 +27,77 @@ public class TeamWorkObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 13)
       {
-        do
+        switch (paramInt)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        return;
-                      } while (paramObject == null);
-                      paramObject = (Object[])paramObject;
-                      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-                      return;
-                    } while (paramObject == null);
-                    paramObject = (Object[])paramObject;
-                    b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                  a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
-                  return;
-                } while (paramObject == null);
-                a(paramBoolean, (Object[])paramObject);
-                return;
-                if (paramObject != null) {
-                  b(paramBoolean, (Object[])paramObject);
-                }
-              } while (paramObject == null);
-              c(paramBoolean, (Object[])paramObject);
-              return;
-            } while (paramObject == null);
-            d(paramBoolean, (Object[])paramObject);
+        default: 
+          return;
+        case 11: 
+          if (paramObject == null) {
             return;
-          } while (paramObject == null);
+          }
+          d(paramBoolean, (Object[])paramObject);
+          return;
+        case 9: 
+          if (paramObject != null) {
+            b(paramBoolean, (Object[])paramObject);
+          }
+        case 10: 
+          if (paramObject == null) {
+            return;
+          }
+          c(paramBoolean, (Object[])paramObject);
+          return;
+        case 8: 
+          if (paramObject == null) {
+            return;
+          }
+          a(paramBoolean, (Object[])paramObject);
+          return;
+        case 7: 
+          if (paramObject == null) {
+            return;
+          }
           paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-        return;
-      } while (paramObject == null);
+          a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
+          return;
+        case 6: 
+          if (paramObject == null) {
+            return;
+          }
+          paramObject = (Object[])paramObject;
+          b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+          return;
+        }
+        if (paramObject != null)
+        {
+          paramObject = (Object[])paramObject;
+          a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+        }
+      }
+      else if (paramObject != null)
+      {
+        paramObject = (Object[])paramObject;
+        if (paramObject.length == 2) {
+          a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+        }
+      }
+    }
+    else if (paramObject != null)
+    {
       paramObject = (Object[])paramObject;
-    } while (paramObject.length != 2);
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      if (paramObject.length == 2) {
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkObserver
  * JD-Core Version:    0.7.0.1
  */

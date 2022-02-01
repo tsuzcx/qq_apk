@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PluginManageHandler
 {
-  public static Handler handler = null;
+  public static Handler handler;
   private static volatile PluginManageHandler sInstance;
   RemotePluginManager mClientProxy;
   private PluginManageHandler.IPluginManagerProvider mManagerProvider;
@@ -23,15 +23,16 @@ public class PluginManageHandler
   
   public static final PluginManageHandler getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new PluginManageHandler();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new PluginManageHandler();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static Handler getPluginIOHandler()
@@ -49,16 +50,19 @@ public class PluginManageHandler
   
   private void notifyReadyToClient()
   {
-    if (this.mClientProxy != null) {}
-    try
-    {
-      this.mClientProxy.setListener(this.mWrapper);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("plugin_tag", 2, "notifyReadyToClient ", localException);
+    RemotePluginManager localRemotePluginManager = this.mClientProxy;
+    if (localRemotePluginManager != null) {
+      try
+      {
+        localRemotePluginManager.setListener(this.mWrapper);
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("plugin_tag", 2, "notifyReadyToClient ", localException);
+        }
+      }
     }
   }
   
@@ -85,7 +89,7 @@ public class PluginManageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginManageHandler
  * JD-Core Version:    0.7.0.1
  */

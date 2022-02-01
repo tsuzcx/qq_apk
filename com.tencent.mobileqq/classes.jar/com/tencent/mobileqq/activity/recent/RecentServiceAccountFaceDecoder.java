@@ -11,52 +11,77 @@ public class RecentServiceAccountFaceDecoder
 {
   public Drawable a(int paramInt, String paramString, boolean paramBoolean)
   {
-    Object localObject1 = a(this.a, paramInt, paramString);
-    int i = ((Integer)((Pair)localObject1).first).intValue();
-    int j = ((Integer)((Pair)localObject1).second).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentFaceDecoder", 2, "getFaceDrawable uintype = " + paramInt + ", uin = " + paramString + ", isGetResFace = " + paramBoolean + ", faceType = " + i + ", faceResId = " + j);
+    Object localObject = a(this.a, paramInt, paramString);
+    int i = ((Integer)((Pair)localObject).first).intValue();
+    int j = ((Integer)((Pair)localObject).second).intValue();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getFaceDrawable uintype = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", uin = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", isGetResFace = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", faceType = ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", faceResId = ");
+      ((StringBuilder)localObject).append(j);
+      QLog.d("RecentFaceDecoder", 2, ((StringBuilder)localObject).toString());
     }
+    StringBuilder localStringBuilder = null;
     if (j == 2147483647) {}
+    label304:
     try
     {
-      localObject1 = a(i, paramString);
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RecentFaceDecoder", 2, "getFaceDrawable faceDrawable = " + localObject1 + ", uin = " + paramString);
-        }
-        return localObject1;
-        if (i != -2147483648)
-        {
-          if (paramInt == 1008) {
-            localObject1 = a(paramString, 115);
-          } else {
-            localObject1 = a(paramString, i);
-          }
-        }
-        else
-        {
-          if ((j == -2147483648) || (!paramBoolean)) {
-            break;
-          }
-          localObject1 = BaseApplication.getContext().getResources().getDrawable(j);
-        }
-      }
+      localObject = a(i, paramString);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        Object localObject2 = null;
+      label235:
+      break label235;
+    }
+    if (i != -2147483648)
+    {
+      if (paramInt == 1008) {
+        localObject = a(paramString, 115);
+      } else {
+        localObject = a(paramString, i);
       }
+    }
+    else
+    {
+      localObject = localStringBuilder;
+      if (j != -2147483648)
+      {
+        localObject = localStringBuilder;
+        if (paramBoolean)
+        {
+          localObject = BaseApplication.getContext().getResources().getDrawable(j);
+          break label304;
+          ((Exception)localObject).printStackTrace();
+          localObject = localStringBuilder;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getFaceDrawable faceDrawable = ");
+        localStringBuilder.append(localObject);
+        localStringBuilder.append(", uin = ");
+        localStringBuilder.append(paramString);
+        QLog.d("RecentFaceDecoder", 2, localStringBuilder.toString());
+      }
+      return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentServiceAccountFaceDecoder
  * JD-Core Version:    0.7.0.1
  */

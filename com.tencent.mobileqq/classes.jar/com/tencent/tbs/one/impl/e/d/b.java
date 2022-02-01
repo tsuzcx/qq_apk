@@ -34,11 +34,12 @@ public final class b
     this.g = paramFile;
   }
   
-  public final void a()
+  protected final void a()
   {
     this.b = new com.tencent.tbs.one.impl.d.a(this.d, this.f);
-    this.b.f = this;
-    this.b.a(new b.1(this));
+    com.tencent.tbs.one.impl.d.a locala = this.b;
+    locala.f = this;
+    locala.a(new b.1(this));
   }
   
   public final void a(int paramInt, Map<String, List<String>> paramMap, InputStream paramInputStream)
@@ -48,57 +49,66 @@ public final class b
     String str2 = this.e;
     File localFile = this.g;
     f.a("[%s] Receiving DEPS response: [%d] %s", new Object[] { str2, Integer.valueOf(paramInt), paramMap });
-    if ((paramInt != 200) || (paramInputStream == null))
+    if ((paramInt == 200) && (paramInputStream != null))
     {
-      a(210, "Invalid DEPS response stream, url: " + str1 + ", statusCode: " + paramInt, null);
-      return;
-    }
-    paramMap = com.tencent.tbs.one.impl.common.a.b(localContext, str2);
-    if (paramMap != null)
-    {
-      paramInt = paramMap.shouldInterceptDEPSResponse(str2, null, paramInputStream, localFile, new b.2(this, str2, localFile));
-      if (paramInt != 0)
+      paramMap = com.tencent.tbs.one.impl.common.a.b(localContext, str2);
+      if (paramMap != null)
       {
-        f.a("[%s] Intercepted DEPS download stream by runtime extension", new Object[] { str2 });
-        this.c = paramInt;
+        paramInt = paramMap.shouldInterceptDEPSResponse(str2, null, paramInputStream, localFile, new b.2(this, str2, localFile));
+        if (paramInt != 0)
+        {
+          f.a("[%s] Intercepted DEPS download stream by runtime extension", new Object[] { str2 });
+          this.c = paramInt;
+          return;
+        }
+      }
+      try
+      {
+        paramMap = d.a(c.a(paramInputStream, "utf-8", localFile));
+        a(e.a(e.a.d, paramMap));
+        return;
+      }
+      catch (TBSOneException paramMap)
+      {
+        a(paramMap.getErrorCode(), paramMap.getMessage(), paramMap.getCause());
+        return;
+      }
+      catch (IOException paramMap)
+      {
+        paramInputStream = new StringBuilder("Failed to download online DEPS from ");
+        paramInputStream.append(str1);
+        paramInputStream.append(" to ");
+        paramInputStream.append(localFile.getAbsolutePath());
+        a(305, paramInputStream.toString(), paramMap);
         return;
       }
     }
-    try
-    {
-      paramMap = d.a(c.a(paramInputStream, "utf-8", localFile));
-      a(e.a(e.a.d, paramMap));
-      return;
-    }
-    catch (IOException paramMap)
-    {
-      a(305, "Failed to download online DEPS from " + str1 + " to " + localFile.getAbsolutePath(), paramMap);
-      return;
-    }
-    catch (TBSOneException paramMap)
-    {
-      a(paramMap.getErrorCode(), paramMap.getMessage(), paramMap.getCause());
-    }
+    paramMap = new StringBuilder("Invalid DEPS response stream, url: ");
+    paramMap.append(str1);
+    paramMap.append(", statusCode: ");
+    paramMap.append(paramInt);
+    a(210, paramMap.toString(), null);
   }
   
   public final void b()
   {
     super.b();
-    if (this.b != null) {
-      this.b.b();
+    Object localObject = this.b;
+    if (localObject != null) {
+      ((com.tencent.tbs.one.impl.d.a)localObject).b();
     }
     if (this.c != 0)
     {
-      TBSOneRuntimeExtension localTBSOneRuntimeExtension = com.tencent.tbs.one.impl.common.a.b(this.d, this.e);
-      if (localTBSOneRuntimeExtension != null) {
-        localTBSOneRuntimeExtension.cancel(this.c);
+      localObject = com.tencent.tbs.one.impl.common.a.b(this.d, this.e);
+      if (localObject != null) {
+        ((TBSOneRuntimeExtension)localObject).cancel(this.c);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,11 @@ public abstract class QFileSaveModel
     if ((paramChatMessage instanceof MessageForDLFile)) {
       return new DatalineFileSaveModel(paramQQAppInterface, paramChatMessage);
     }
-    QLog.e("QFileSaveModel<QFile>", 1, "buildFileSaveModel: message is not support. messageType[" + paramChatMessage.getClass().getName() + "]");
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("buildFileSaveModel: message is not support. messageType[");
+    paramQQAppInterface.append(paramChatMessage.getClass().getName());
+    paramQQAppInterface.append("]");
+    QLog.e("QFileSaveModel<QFile>", 1, paramQQAppInterface.toString());
     return null;
   }
   
@@ -60,7 +64,7 @@ public abstract class QFileSaveModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.QFileSaveModel
  * JD-Core Version:    0.7.0.1
  */

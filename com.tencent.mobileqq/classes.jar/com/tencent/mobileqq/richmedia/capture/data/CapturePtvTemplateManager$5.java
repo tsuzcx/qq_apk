@@ -16,26 +16,31 @@ class CapturePtvTemplateManager$5
   
   public void onResp(NetResp paramNetResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "onResp url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.mHttpCode);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
+    if (QLog.isColorLevel())
     {
-      ZipUtils.unZipFile(new File(CapturePtvTemplateManager.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResp url: ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl);
+      localStringBuilder.append(" resultcode: ");
+      localStringBuilder.append(paramNetResp.mHttpCode);
+      QLog.i("CapturePtvTemplateManager", 2, localStringBuilder.toString());
+    }
+    paramNetResp = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
+    paramNetResp.usable = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a(paramNetResp);
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable)
+    {
+      try
+      {
+        ZipUtils.unZipFile(new File(CapturePtvTemplateManager.b, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5), CapturePtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.md5));
       }
-      return;
-    }
-    catch (IOException paramNetResp)
-    {
-      for (;;)
+      catch (IOException paramNetResp)
       {
         if (QLog.isColorLevel()) {
           paramNetResp.printStackTrace();
         }
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.a.a();
       }
     }
   }
@@ -44,7 +49,7 @@ class CapturePtvTemplateManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.5
  * JD-Core Version:    0.7.0.1
  */

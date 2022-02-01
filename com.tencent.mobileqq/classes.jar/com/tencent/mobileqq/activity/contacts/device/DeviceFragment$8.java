@@ -15,26 +15,45 @@ class DeviceFragment$8
   {
     try
     {
-      int i = new JSONObject(this.a.a).optInt("smart_device_discovery_config_switch", 1);
-      DeviceFragment.a(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1));
-      DeviceFragment.a(this.this$0).obtainMessage(1, i, 0).sendToTarget();
-      return;
+      try
+      {
+        int i = new JSONObject(this.a.a).optInt("smart_device_discovery_config_switch", 1);
+        DeviceFragment.a(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1));
+        Message localMessage1 = DeviceFragment.a(this.this$0).obtainMessage(1, i, 0);
+      }
+      finally
+      {
+        break label97;
+      }
     }
     catch (JSONException localJSONException)
     {
-      localJSONException.printStackTrace();
-      return;
-    }
-    catch (Exception localException) {}finally
-    {
+      for (;;)
+      {
+        Message localMessage2;
+        localJSONException.printStackTrace();
+      }
       DeviceFragment.a(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1));
       DeviceFragment.a(this.this$0).obtainMessage(1, 1, 0).sendToTarget();
+      for (;;)
+      {
+        throw localJSONException;
+      }
     }
+    catch (Exception localException)
+    {
+      label56:
+      label97:
+      break label56;
+    }
+    DeviceFragment.a(this.this$0).removeCallbacksAndMessages(Integer.valueOf(1));
+    localMessage2 = DeviceFragment.a(this.this$0).obtainMessage(1, 1, 0);
+    localMessage2.sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.DeviceFragment.8
  * JD-Core Version:    0.7.0.1
  */

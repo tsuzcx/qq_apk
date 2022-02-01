@@ -20,7 +20,7 @@ public abstract class BaseRomUtils
   
   public static boolean hasPermissionBelowMarshmallow(@NotNull Context paramContext)
   {
-    if (Build.VERSION.SDK_INT >= 19) {
+    if (Build.VERSION.SDK_INT >= 23) {
       return hasPermissionBelowMarshmallow(paramContext, 24);
     }
     return true;
@@ -29,11 +29,15 @@ public abstract class BaseRomUtils
   @RequiresApi(19)
   private static boolean hasPermissionBelowMarshmallow(@NotNull Context paramContext, int paramInt)
   {
+    boolean bool = false;
     try
     {
       AppOpsManager localAppOpsManager = (AppOpsManager)paramContext.getSystemService("appops");
       paramInt = ((Integer)AppOpsManager.class.getMethod("checkOp", new Class[] { Integer.TYPE, Integer.TYPE, String.class }).invoke(localAppOpsManager, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(Binder.getCallingUid()), paramContext.getApplicationContext().getPackageName() })).intValue();
-      return paramInt == 0;
+      if (paramInt == 0) {
+        bool = true;
+      }
+      return bool;
     }
     catch (Exception paramContext)
     {
@@ -45,33 +49,37 @@ public abstract class BaseRomUtils
   @RequiresApi(api=23)
   public static boolean hasPermissionForO(@NotNull Context paramContext)
   {
-    try
+    for (;;)
     {
-      WindowManager localWindowManager = (WindowManager)paramContext.getSystemService("window");
-      if (localWindowManager == null) {
+      try
+      {
+        WindowManager localWindowManager = (WindowManager)paramContext.getSystemService("window");
+        if (localWindowManager == null) {
+          return false;
+        }
+        paramContext = new View(paramContext);
+        if (Build.VERSION.SDK_INT >= 26)
+        {
+          i = 2038;
+          WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(0, 0, i, 24, -2);
+          paramContext.setLayoutParams(localLayoutParams);
+          localWindowManager.addView(paramContext, localLayoutParams);
+          localWindowManager.removeView(paramContext);
+          return true;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        Logger.e("BaseRomUtils", paramContext.toString());
         return false;
       }
-      paramContext = new View(paramContext);
-      if (Build.VERSION.SDK_INT >= 26) {}
-      for (int i = 2038;; i = 2003)
-      {
-        WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(0, 0, i, 24, -2);
-        paramContext.setLayoutParams(localLayoutParams);
-        localWindowManager.addView(paramContext, localLayoutParams);
-        localWindowManager.removeView(paramContext);
-        return true;
-      }
-      return false;
-    }
-    catch (Exception paramContext)
-    {
-      Logger.e("BaseRomUtils", paramContext.toString());
+      int i = 2003;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.permission.romutils.BaseRomUtils
  * JD-Core Version:    0.7.0.1
  */

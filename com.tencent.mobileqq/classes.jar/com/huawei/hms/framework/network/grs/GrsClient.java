@@ -5,14 +5,16 @@ import java.util.Map;
 
 public class GrsClient
 {
-  private c grsClientGlobal;
+  private d grsClientGlobal;
   
   public GrsClient(Context paramContext, GrsBaseInfo paramGrsBaseInfo)
   {
-    if ((paramContext == null) || (paramGrsBaseInfo == null)) {
-      throw new NullPointerException("invalid init params for context is null or GrsBaseInfo instance is null Object.");
+    if ((paramContext != null) && (paramGrsBaseInfo != null))
+    {
+      this.grsClientGlobal = e.a(paramGrsBaseInfo, paramContext);
+      return;
     }
-    this.grsClientGlobal = d.a(paramGrsBaseInfo, paramContext);
+    throw new NullPointerException("invalid init params for context is null or GrsBaseInfo instance is null Object.");
   }
   
   public void ayncGetGrsUrl(String paramString1, String paramString2, IQueryUrlCallBack paramIQueryUrlCallBack)
@@ -32,7 +34,7 @@ public class GrsClient
   
   public boolean forceExpire()
   {
-    return this.grsClientGlobal.a();
+    return this.grsClientGlobal.c();
   }
   
   public String synGetGrsUrl(String paramString1, String paramString2)
@@ -47,7 +49,7 @@ public class GrsClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.network.grs.GrsClient
  * JD-Core Version:    0.7.0.1
  */

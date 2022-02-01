@@ -13,7 +13,7 @@ class AudioFocusListenerModule$3
   public void onChanged(@Nullable FloatWindowStateEvent paramFloatWindowStateEvent)
   {
     AudioFocusListenerModule.access$202(this.this$0, paramFloatWindowStateEvent.showing);
-    if ((!AudioFocusListenerModule.access$300(this.this$0)) && (!AudioFocusListenerModule.access$200(this.this$0)))
+    if ((!AudioFocusListenerModule.access$300(this.this$0)) && (!AudioFocusListenerModule.access$200(this.this$0)) && (paramFloatWindowStateEvent.reason == 9))
     {
       AudioFocusListenerModule.access$402(this.this$0, false);
       if (AudioFocusListenerModule.access$500(this.this$0) != null) {
@@ -24,7 +24,7 @@ class AudioFocusListenerModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.AudioFocusListenerModule.3
  * JD-Core Version:    0.7.0.1
  */

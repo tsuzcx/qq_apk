@@ -11,8 +11,8 @@ public class TroopMemberListActivity$SearchTextWatcher
   
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.c(paramEditable);
+    paramEditable = this.a.searchEditText.getText().toString().trim();
+    this.a.refreshSearchResultList(paramEditable);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -21,7 +21,7 @@ public class TroopMemberListActivity$SearchTextWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.SearchTextWatcher
  * JD-Core Version:    0.7.0.1
  */

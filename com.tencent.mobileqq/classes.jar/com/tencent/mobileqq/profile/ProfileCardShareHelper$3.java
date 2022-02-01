@@ -19,34 +19,33 @@ class ProfileCardShareHelper$3
     try
     {
       Bitmap localBitmap;
-      if (FileUtil.a(this.a))
+      if (FileUtil.b(this.a))
       {
         ProfileCardShareHelper.a(this.this$0, BitmapFactory.decodeFile(ProfileCardShareHelper.b(this.this$0)));
         localBitmap = ProfileCardShareHelper.a(this.this$0);
       }
-      for (;;)
+      else
       {
-        ThreadManager.getUIHandler().post(new ProfileCardShareHelper.3.1(this, localBitmap));
-        return;
-        localBitmap = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130840453);
+        localBitmap = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130840322);
         QLog.d("ProfileCardShareHelper", 2, String.format("decodeFace facePath: %s is not exist", new Object[] { this.a }));
       }
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.d("ProfileCardShareHelper", 1, "decode bitmap oom...", localOutOfMemoryError);
+      ThreadManager.getUIHandler().post(new ProfileCardShareHelper.3.1(this, localBitmap));
       return;
     }
     catch (Exception localException)
     {
       QLog.d("ProfileCardShareHelper", 1, "decode bitmap exception...", localException);
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.d("ProfileCardShareHelper", 1, "decode bitmap oom...", localOutOfMemoryError);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardShareHelper.3
  * JD-Core Version:    0.7.0.1
  */

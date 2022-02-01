@@ -1,7 +1,7 @@
 package com.tencent.av.camera.config;
 
 import android.os.Build.VERSION;
-import com.tencent.av.config.ConfigBaseParser;
+import com.tencent.av.config.api.IConfigParser;
 import com.tencent.qphone.base.util.QLog;
 
 public class CameraConfigParser
@@ -35,7 +35,7 @@ public class CameraConfigParser
   public byte a;
   public int a;
   @Deprecated
-  ConfigBaseParser a;
+  IConfigParser a;
   public byte b;
   public int b;
   public byte c;
@@ -63,84 +63,146 @@ public class CameraConfigParser
   
   static
   {
-    jdField_a_of_type_JavaLangString = null;
-    jdField_b_of_type_JavaLangString = null;
-    jdField_c_of_type_JavaLangString = null;
-    jdField_d_of_type_JavaLangString = null;
-    jdField_e_of_type_JavaLangString = null;
-    jdField_f_of_type_JavaLangString = null;
-    jdField_g_of_type_JavaLangString = null;
-    jdField_h_of_type_JavaLangString = null;
-    jdField_i_of_type_JavaLangString = null;
-    jdField_j_of_type_JavaLangString = null;
-    jdField_k_of_type_JavaLangString = null;
-    jdField_l_of_type_JavaLangString = null;
-    jdField_m_of_type_JavaLangString = null;
-    jdField_n_of_type_JavaLangString = null;
-    jdField_o_of_type_JavaLangString = null;
-    jdField_p_of_type_JavaLangString = null;
-    jdField_q_of_type_JavaLangString = null;
-    jdField_r_of_type_JavaLangString = null;
-    jdField_s_of_type_JavaLangString = null;
-    jdField_t_of_type_JavaLangString = null;
-    jdField_u_of_type_JavaLangString = null;
-    jdField_v_of_type_JavaLangString = null;
-    w = null;
-    x = null;
-    y = null;
-    z = null;
     StringBuilder localStringBuilder = new StringBuilder();
-    jdField_a_of_type_JavaLangString = "sharp/camera_angle/" + "enable";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("enable");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_b_of_type_JavaLangString = "sharp/camera_angle/" + "local/" + "front";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("local/");
+    localStringBuilder.append("front");
+    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_c_of_type_JavaLangString = "sharp/camera_angle/" + "local/" + "back";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("local/");
+    localStringBuilder.append("back");
+    jdField_c_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_d_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "0";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("front/");
+    localStringBuilder.append("0");
+    jdField_d_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_e_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "90";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("front/");
+    localStringBuilder.append("90");
+    jdField_e_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_f_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "180";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("front/");
+    localStringBuilder.append("180");
+    jdField_f_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_g_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "front/" + "270";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("front/");
+    localStringBuilder.append("270");
+    jdField_g_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_h_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "0";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("back/");
+    localStringBuilder.append("0");
+    jdField_h_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_i_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "90";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("back/");
+    localStringBuilder.append("90");
+    jdField_i_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_j_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "180";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("back/");
+    localStringBuilder.append("180");
+    jdField_j_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_k_of_type_JavaLangString = "sharp/camera_angle/" + "remote/" + "back/" + "270";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("back/");
+    localStringBuilder.append("270");
+    jdField_k_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_l_of_type_JavaLangString = "sharp/camera_angle/" + "sensor";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("sensor");
+    jdField_l_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_m_of_type_JavaLangString = "sharp/camera_angle/" + "mini_sdk";
+    localStringBuilder.append("sharp/camera_angle/");
+    localStringBuilder.append("mini_sdk");
+    jdField_m_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_n_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "enable";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("enable");
+    jdField_n_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_o_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "local/" + "front";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("local/");
+    localStringBuilder.append("front");
+    jdField_o_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_p_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "local/" + "back";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("local/");
+    localStringBuilder.append("back");
+    jdField_p_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_q_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "0";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("front/");
+    localStringBuilder.append("0");
+    jdField_q_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_r_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "90";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("front/");
+    localStringBuilder.append("90");
+    jdField_r_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_s_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "180";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("front/");
+    localStringBuilder.append("180");
+    jdField_s_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_t_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "front/" + "270";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("front/");
+    localStringBuilder.append("270");
+    jdField_t_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_u_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "0";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("back/");
+    localStringBuilder.append("0");
+    jdField_u_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    jdField_v_of_type_JavaLangString = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "90";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("back/");
+    localStringBuilder.append("90");
+    jdField_v_of_type_JavaLangString = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    w = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "180";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("back/");
+    localStringBuilder.append("180");
+    w = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    x = "sharp/camera_angle_landscape/" + "remote/" + "back/" + "270";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("remote/");
+    localStringBuilder.append("back/");
+    localStringBuilder.append("270");
+    x = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    y = "sharp/camera_angle_landscape/" + "sensor";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("sensor");
+    y = localStringBuilder.toString();
     localStringBuilder.setLength(0);
-    z = "sharp/camera_angle_landscape/" + "mini_sdk";
+    localStringBuilder.append("sharp/camera_angle_landscape/");
+    localStringBuilder.append("mini_sdk");
+    z = localStringBuilder.toString();
     localStringBuilder.setLength(0);
   }
   
@@ -172,53 +234,67 @@ public class CameraConfigParser
     this.jdField_u_of_type_Byte = 0;
     this.jdField_v_of_type_Byte = 0;
     this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvConfigConfigBaseParser = null;
+    this.jdField_a_of_type_ComTencentAvConfigApiIConfigParser = null;
   }
   
   private byte a(int paramInt)
   {
-    if ((paramInt < -128) || (paramInt > 127)) {
-      throw new IllegalArgumentException(paramInt + " out of the range of byte");
+    if ((paramInt >= -128) && (paramInt <= 127)) {
+      return (byte)paramInt;
     }
-    return (byte)paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" out of the range of byte");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
-  public boolean a(ConfigBaseParser paramConfigBaseParser)
+  public boolean a(IConfigParser paramIConfigParser)
   {
-    return paramConfigBaseParser.a(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) >= 1;
+    return paramIConfigParser.getIntValue(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) >= 1;
   }
   
-  public boolean b(ConfigBaseParser paramConfigBaseParser)
+  public boolean b(IConfigParser paramIConfigParser)
   {
+    boolean bool1 = a(paramIConfigParser);
     boolean bool2 = false;
-    if (a(paramConfigBaseParser)) {}
-    for (;;)
+    if (bool1)
     {
       try
       {
-        this.jdField_b_of_type_Int = paramConfigBaseParser.a(jdField_m_of_type_JavaLangString, this.jdField_b_of_type_Int);
-        if (Build.VERSION.SDK_INT < this.jdField_b_of_type_Int) {
-          continue;
+        this.jdField_b_of_type_Int = paramIConfigParser.getIntValue(jdField_m_of_type_JavaLangString, this.jdField_b_of_type_Int);
+        if (Build.VERSION.SDK_INT >= this.jdField_b_of_type_Int)
+        {
+          this.jdField_a_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Byte));
+          this.jdField_b_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Byte));
+          this.jdField_c_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_d_of_type_JavaLangString, this.jdField_c_of_type_Byte));
+          this.jdField_d_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_e_of_type_JavaLangString, this.jdField_d_of_type_Byte));
+          this.jdField_e_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_f_of_type_JavaLangString, this.jdField_e_of_type_Byte));
+          this.jdField_f_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_g_of_type_JavaLangString, this.jdField_f_of_type_Byte));
+          this.jdField_g_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_h_of_type_JavaLangString, this.jdField_g_of_type_Byte));
+          this.jdField_h_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_i_of_type_JavaLangString, this.jdField_h_of_type_Byte));
+          this.jdField_i_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_j_of_type_JavaLangString, this.jdField_i_of_type_Byte));
+          this.jdField_j_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_k_of_type_JavaLangString, this.jdField_j_of_type_Byte));
+          this.jdField_k_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_l_of_type_JavaLangString, this.jdField_k_of_type_Byte));
+          bool1 = true;
         }
-        this.jdField_a_of_type_Byte = a(paramConfigBaseParser.a(jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Byte));
-        this.jdField_b_of_type_Byte = a(paramConfigBaseParser.a(jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Byte));
-        this.jdField_c_of_type_Byte = a(paramConfigBaseParser.a(jdField_d_of_type_JavaLangString, this.jdField_c_of_type_Byte));
-        this.jdField_d_of_type_Byte = a(paramConfigBaseParser.a(jdField_e_of_type_JavaLangString, this.jdField_d_of_type_Byte));
-        this.jdField_e_of_type_Byte = a(paramConfigBaseParser.a(jdField_f_of_type_JavaLangString, this.jdField_e_of_type_Byte));
-        this.jdField_f_of_type_Byte = a(paramConfigBaseParser.a(jdField_g_of_type_JavaLangString, this.jdField_f_of_type_Byte));
-        this.jdField_g_of_type_Byte = a(paramConfigBaseParser.a(jdField_h_of_type_JavaLangString, this.jdField_g_of_type_Byte));
-        this.jdField_h_of_type_Byte = a(paramConfigBaseParser.a(jdField_i_of_type_JavaLangString, this.jdField_h_of_type_Byte));
-        this.jdField_i_of_type_Byte = a(paramConfigBaseParser.a(jdField_j_of_type_JavaLangString, this.jdField_i_of_type_Byte));
-        this.jdField_j_of_type_Byte = a(paramConfigBaseParser.a(jdField_k_of_type_JavaLangString, this.jdField_j_of_type_Byte));
-        this.jdField_k_of_type_Byte = a(paramConfigBaseParser.a(jdField_l_of_type_JavaLangString, this.jdField_k_of_type_Byte));
-        bool1 = true;
+        else
+        {
+          bool1 = bool2;
+          if (QLog.isColorLevel())
+          {
+            paramIConfigParser = new StringBuilder();
+            paramIConfigParser.append("ignore camera angle config: sdk version not in range, miniSdk:");
+            paramIConfigParser.append(this.jdField_b_of_type_Int);
+            QLog.d("CameraConfigParser", 2, paramIConfigParser.toString());
+            bool1 = bool2;
+          }
+        }
       }
-      catch (Exception paramConfigBaseParser)
+      catch (Exception paramIConfigParser)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("CameraConfigParser", 2, "parse camera angle config error, reset data.", paramIConfigParser);
         }
-        QLog.d("CameraConfigParser", 2, "parse camera angle config error, reset data.", paramConfigBaseParser);
         this.jdField_a_of_type_Byte = 0;
         this.jdField_b_of_type_Byte = 0;
         this.jdField_c_of_type_Byte = 0;
@@ -232,64 +308,96 @@ public class CameraConfigParser
         this.jdField_k_of_type_Byte = 0;
         this.jdField_b_of_type_Int = 0;
         bool1 = bool2;
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraConfigParser", 2, "value_local_front:" + this.jdField_a_of_type_Byte + ", value_local_back:" + this.jdField_b_of_type_Byte + ", value_remote_front_0:" + this.jdField_c_of_type_Byte + ", value_remote_front_90:" + this.jdField_d_of_type_Byte + ", value_remote_front_180:" + this.jdField_e_of_type_Byte + ", value_remote_front_270:" + this.jdField_f_of_type_Byte + ", value_remote_back_0:" + this.jdField_g_of_type_Byte + ", value_remote_back_90:" + this.jdField_h_of_type_Byte + ", value_remote_back_180:" + this.jdField_i_of_type_Byte + ", value_remote_back_270:" + this.jdField_j_of_type_Byte + ", value_sensor:" + this.jdField_k_of_type_Byte + ", value_minisdk:" + this.jdField_b_of_type_Int);
-      }
-      return bool1;
-      boolean bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("CameraConfigParser", 2, "ignore camera angle config: sdk version not in range, miniSdk:" + this.jdField_b_of_type_Int);
-        bool1 = bool2;
-        continue;
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("CameraConfigParser", 2, "camera angle config disable, return");
-          bool1 = bool2;
-        }
       }
     }
+    else
+    {
+      bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("CameraConfigParser", 2, "camera angle config disable, return");
+        bool1 = bool2;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramIConfigParser = new StringBuilder();
+      paramIConfigParser.append("valueLocalFront:");
+      paramIConfigParser.append(this.jdField_a_of_type_Byte);
+      paramIConfigParser.append(", valueLocalBack:");
+      paramIConfigParser.append(this.jdField_b_of_type_Byte);
+      paramIConfigParser.append(", valueRemoteFront0:");
+      paramIConfigParser.append(this.jdField_c_of_type_Byte);
+      paramIConfigParser.append(", valueRemoteFront90:");
+      paramIConfigParser.append(this.jdField_d_of_type_Byte);
+      paramIConfigParser.append(", valueRemoteFront180:");
+      paramIConfigParser.append(this.jdField_e_of_type_Byte);
+      paramIConfigParser.append(", valueRemoteFront270:");
+      paramIConfigParser.append(this.jdField_f_of_type_Byte);
+      paramIConfigParser.append(", valueRemoteBack0:");
+      paramIConfigParser.append(this.jdField_g_of_type_Byte);
+      paramIConfigParser.append(", valueRemoteBack90:");
+      paramIConfigParser.append(this.jdField_h_of_type_Byte);
+      paramIConfigParser.append(", valueRemoteBack180:");
+      paramIConfigParser.append(this.jdField_i_of_type_Byte);
+      paramIConfigParser.append(", valueRemoteBack270:");
+      paramIConfigParser.append(this.jdField_j_of_type_Byte);
+      paramIConfigParser.append(", valueSensor:");
+      paramIConfigParser.append(this.jdField_k_of_type_Byte);
+      paramIConfigParser.append(", valueMiniSdk:");
+      paramIConfigParser.append(this.jdField_b_of_type_Int);
+      QLog.d("CameraConfigParser", 2, paramIConfigParser.toString());
+    }
+    return bool1;
   }
   
-  public boolean c(ConfigBaseParser paramConfigBaseParser)
+  public boolean c(IConfigParser paramIConfigParser)
   {
-    return paramConfigBaseParser.a(jdField_n_of_type_JavaLangString, this.jdField_c_of_type_Int) >= 1;
+    return paramIConfigParser.getIntValue(jdField_n_of_type_JavaLangString, this.jdField_c_of_type_Int) >= 1;
   }
   
-  public boolean d(ConfigBaseParser paramConfigBaseParser)
+  public boolean d(IConfigParser paramIConfigParser)
   {
+    boolean bool1 = c(paramIConfigParser);
     boolean bool2 = false;
-    if (c(paramConfigBaseParser)) {}
-    for (;;)
+    if (bool1)
     {
       try
       {
-        this.jdField_d_of_type_Int = paramConfigBaseParser.a(z, this.jdField_d_of_type_Int);
-        if (Build.VERSION.SDK_INT < this.jdField_d_of_type_Int) {
-          continue;
+        this.jdField_d_of_type_Int = paramIConfigParser.getIntValue(z, this.jdField_d_of_type_Int);
+        if (Build.VERSION.SDK_INT >= this.jdField_d_of_type_Int)
+        {
+          this.jdField_l_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_o_of_type_JavaLangString, this.jdField_l_of_type_Byte));
+          this.jdField_m_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_p_of_type_JavaLangString, this.jdField_m_of_type_Byte));
+          this.jdField_n_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_q_of_type_JavaLangString, this.jdField_n_of_type_Byte));
+          this.jdField_o_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_r_of_type_JavaLangString, this.jdField_o_of_type_Byte));
+          this.jdField_p_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_s_of_type_JavaLangString, this.jdField_p_of_type_Byte));
+          this.jdField_q_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_t_of_type_JavaLangString, this.jdField_q_of_type_Byte));
+          this.jdField_r_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_u_of_type_JavaLangString, this.jdField_r_of_type_Byte));
+          this.jdField_s_of_type_Byte = a(paramIConfigParser.getIntValue(jdField_v_of_type_JavaLangString, this.jdField_s_of_type_Byte));
+          this.jdField_t_of_type_Byte = a(paramIConfigParser.getIntValue(w, this.jdField_t_of_type_Byte));
+          this.jdField_u_of_type_Byte = a(paramIConfigParser.getIntValue(x, this.jdField_u_of_type_Byte));
+          this.jdField_v_of_type_Byte = a(paramIConfigParser.getIntValue(y, this.jdField_v_of_type_Byte));
+          bool1 = true;
         }
-        this.jdField_l_of_type_Byte = a(paramConfigBaseParser.a(jdField_o_of_type_JavaLangString, this.jdField_l_of_type_Byte));
-        this.jdField_m_of_type_Byte = a(paramConfigBaseParser.a(jdField_p_of_type_JavaLangString, this.jdField_m_of_type_Byte));
-        this.jdField_n_of_type_Byte = a(paramConfigBaseParser.a(jdField_q_of_type_JavaLangString, this.jdField_n_of_type_Byte));
-        this.jdField_o_of_type_Byte = a(paramConfigBaseParser.a(jdField_r_of_type_JavaLangString, this.jdField_o_of_type_Byte));
-        this.jdField_p_of_type_Byte = a(paramConfigBaseParser.a(jdField_s_of_type_JavaLangString, this.jdField_p_of_type_Byte));
-        this.jdField_q_of_type_Byte = a(paramConfigBaseParser.a(jdField_t_of_type_JavaLangString, this.jdField_q_of_type_Byte));
-        this.jdField_r_of_type_Byte = a(paramConfigBaseParser.a(jdField_u_of_type_JavaLangString, this.jdField_r_of_type_Byte));
-        this.jdField_s_of_type_Byte = a(paramConfigBaseParser.a(jdField_v_of_type_JavaLangString, this.jdField_s_of_type_Byte));
-        this.jdField_t_of_type_Byte = a(paramConfigBaseParser.a(w, this.jdField_t_of_type_Byte));
-        this.jdField_u_of_type_Byte = a(paramConfigBaseParser.a(x, this.jdField_u_of_type_Byte));
-        this.jdField_v_of_type_Byte = a(paramConfigBaseParser.a(y, this.jdField_v_of_type_Byte));
-        bool1 = true;
+        else
+        {
+          bool1 = bool2;
+          if (QLog.isColorLevel())
+          {
+            paramIConfigParser = new StringBuilder();
+            paramIConfigParser.append("ignore camera landscape angle config: sdk version not in range, miniSdk:");
+            paramIConfigParser.append(this.jdField_d_of_type_Int);
+            QLog.d("CameraConfigParser", 2, paramIConfigParser.toString());
+            bool1 = bool2;
+          }
+        }
       }
-      catch (Exception paramConfigBaseParser)
+      catch (Exception paramIConfigParser)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("CameraConfigParser", 2, "parse camera landscape angle config error, reset data.", paramIConfigParser);
         }
-        QLog.d("CameraConfigParser", 2, "parse camera landscape angle config error, reset data.", paramConfigBaseParser);
         this.jdField_l_of_type_Byte = 0;
         this.jdField_m_of_type_Byte = 0;
         this.jdField_n_of_type_Byte = 0;
@@ -303,31 +411,52 @@ public class CameraConfigParser
         this.jdField_v_of_type_Byte = 0;
         this.jdField_d_of_type_Int = 0;
         bool1 = bool2;
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraConfigParser", 2, "value_landscape_local_front:" + this.jdField_l_of_type_Byte + ", value_landscape_local_back:" + this.jdField_m_of_type_Byte + ", value_landscape_remote_front_0:" + this.jdField_n_of_type_Byte + ", value_landscape_remote_front_90:" + this.jdField_o_of_type_Byte + ", value_landscape_remote_front_180:" + this.jdField_p_of_type_Byte + ", value_landscape_remote_front_270:" + this.jdField_q_of_type_Byte + ", value_landscape_remote_back_0:" + this.jdField_r_of_type_Byte + ", value_landscape_remote_back_90:" + this.jdField_s_of_type_Byte + ", value_landscape_remote_back_180:" + this.jdField_t_of_type_Byte + ", value_landscape_remote_back_270:" + this.jdField_u_of_type_Byte + ", value_landscape_sensor:" + this.jdField_v_of_type_Byte + ", value_landscape_minisdk:" + this.jdField_d_of_type_Int);
-      }
-      return bool1;
-      boolean bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("CameraConfigParser", 2, "ignore camera landscape angle config: sdk version not in range, miniSdk:" + this.jdField_d_of_type_Int);
-        bool1 = bool2;
-        continue;
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("CameraConfigParser", 2, "camera landscape angle config disable");
-          bool1 = bool2;
-        }
       }
     }
+    else
+    {
+      bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("CameraConfigParser", 2, "camera landscape angle config disable");
+        bool1 = bool2;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramIConfigParser = new StringBuilder();
+      paramIConfigParser.append("valueLandscapeLocalFront:");
+      paramIConfigParser.append(this.jdField_l_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeLocalBack:");
+      paramIConfigParser.append(this.jdField_m_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeRemoteFront0:");
+      paramIConfigParser.append(this.jdField_n_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeRemoteFront90:");
+      paramIConfigParser.append(this.jdField_o_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeRemoteFront180:");
+      paramIConfigParser.append(this.jdField_p_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeRemoteFront270:");
+      paramIConfigParser.append(this.jdField_q_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeRemoteBack0:");
+      paramIConfigParser.append(this.jdField_r_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeRemoteBack90:");
+      paramIConfigParser.append(this.jdField_s_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeRemoteBack180:");
+      paramIConfigParser.append(this.jdField_t_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeRemoteBack270:");
+      paramIConfigParser.append(this.jdField_u_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeSensor:");
+      paramIConfigParser.append(this.jdField_v_of_type_Byte);
+      paramIConfigParser.append(", valueLandscapeMiniSdk:");
+      paramIConfigParser.append(this.jdField_d_of_type_Int);
+      QLog.d("CameraConfigParser", 2, paramIConfigParser.toString());
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.camera.config.CameraConfigParser
  * JD-Core Version:    0.7.0.1
  */

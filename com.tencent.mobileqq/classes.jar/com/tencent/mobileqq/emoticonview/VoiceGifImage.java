@@ -22,7 +22,7 @@ public class VoiceGifImage
     super(paramFile, paramBoolean, true, 0, 0, 0.0F);
   }
   
-  public void doApplyNextFrame()
+  protected void doApplyNextFrame()
   {
     if ((QLog.isColorLevel()) && (this.IS_ENABLE_DEBUG_LOG)) {
       QLog.d("VoiceGifImage", 2, "doApplyNextFrame");
@@ -38,7 +38,8 @@ public class VoiceGifImage
   public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
   {
     initHandlerAndRunnable();
-    if ((!this.running) && (this.mFirstFrameBitmap != null)) {
+    if ((!this.running) && (this.mFirstFrameBitmap != null))
+    {
       if (this.mFirstFrameBitmap != null)
       {
         paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
@@ -46,53 +47,41 @@ public class VoiceGifImage
           QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !running ");
         }
       }
-    }
-    label57:
-    do
-    {
-      do
+      else if ((QLog.isColorLevel()) && (this.IS_ENABLE_DEBUG_LOG))
       {
-        do
-        {
-          break label57;
-          break label57;
-          do
-          {
-            return;
-          } while ((!QLog.isColorLevel()) || (!this.IS_ENABLE_DEBUG_LOG));
-          QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !running, mFirstFrameBitmap is null");
-          return;
-          if (!this.restart) {
-            break;
-          }
-          if (this.mFirstFrameBitmap != null) {
-            paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
-          }
-          for (;;)
-          {
-            if (sPaused) {
-              break label161;
-            }
-            executeNewTask();
-            if ((!QLog.isColorLevel()) || (!this.IS_ENABLE_DEBUG_LOG)) {
-              break;
-            }
-            QLog.d("VoiceGifImage", 2, "VoiceGifImage draw restart  !sPaused");
-            return;
-            if ((QLog.isColorLevel()) && (this.IS_ENABLE_DEBUG_LOG)) {
-              QLog.d("VoiceGifImage", 2, "VoiceGifImage draw restart, mFirstFrameBitmap is null");
-            }
-          }
-        } while (this.mIsInPendingAction);
+        QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !running, mFirstFrameBitmap is null");
+      }
+    }
+    else if (this.restart)
+    {
+      if (this.mFirstFrameBitmap != null) {
+        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
+      } else if ((QLog.isColorLevel()) && (this.IS_ENABLE_DEBUG_LOG)) {
+        QLog.d("VoiceGifImage", 2, "VoiceGifImage draw restart, mFirstFrameBitmap is null");
+      }
+      if (!sPaused)
+      {
+        executeNewTask();
+        if ((QLog.isColorLevel()) && (this.IS_ENABLE_DEBUG_LOG)) {
+          QLog.d("VoiceGifImage", 2, "VoiceGifImage draw restart  !sPaused");
+        }
+      }
+      else if (!this.mIsInPendingAction)
+      {
         sPendingActions.add(new WeakReference(this));
         this.mIsInPendingAction = true;
-      } while ((!QLog.isColorLevel()) || (!this.IS_ENABLE_DEBUG_LOG));
-      QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !mIsInPendingAction  !mIsInPendingAction");
-      return;
+        if ((QLog.isColorLevel()) && (this.IS_ENABLE_DEBUG_LOG)) {
+          QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !mIsInPendingAction  !mIsInPendingAction");
+        }
+      }
+    }
+    else
+    {
       super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
-    } while ((!QLog.isColorLevel()) || (!this.IS_ENABLE_DEBUG_LOG));
-    label161:
-    QLog.d("VoiceGifImage", 2, "VoiceGifImage draw else");
+      if ((QLog.isColorLevel()) && (this.IS_ENABLE_DEBUG_LOG)) {
+        QLog.d("VoiceGifImage", 2, "VoiceGifImage draw else");
+      }
+    }
   }
   
   public void getNextFrame()
@@ -132,7 +121,7 @@ public class VoiceGifImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.VoiceGifImage
  * JD-Core Version:    0.7.0.1
  */

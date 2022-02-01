@@ -19,10 +19,16 @@ class VipProfileCardBaseActivity$2
   
   public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("CardObserver onSetCardTemplateReturn isSuccess : ");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      ((StringBuilder)localObject1).append(", obj : ");
+      ((StringBuilder)localObject1).append(paramObject);
+      QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, ((StringBuilder)localObject1).toString());
     }
-    String str = this.a.app.getCurrentAccountUin();
+    Object localObject1 = this.a.app.getCurrentAccountUin();
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_BackgroundId", String.valueOf(this.a.g));
     localHashMap.put("param_StyleId", String.valueOf(this.a.jdField_a_of_type_Long));
@@ -30,57 +36,60 @@ class VipProfileCardBaseActivity$2
     this.a.b();
     if ((paramBoolean) && (paramObject != null))
     {
-      if ((paramObject instanceof Card)) {
-        ThreadManager.post(new VipProfileCardBaseActivity.2.1(this, (Card)paramObject, localHashMap, str), 5, null, true);
-      }
-      while (!(paramObject instanceof Pair)) {
+      if ((paramObject instanceof Card))
+      {
+        ThreadManager.post(new VipProfileCardBaseActivity.2.1(this, (Card)paramObject, localHashMap, (String)localObject1), 5, null, true);
         return;
       }
-      paramObject = (Pair)paramObject;
-      Message localMessage;
-      if (((Integer)paramObject.first).intValue() == 101107)
+      if ((paramObject instanceof Pair))
       {
-        this.a.jdField_a_of_type_Int = 1;
-        this.a.d = 2;
-        localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      }
-      for (;;)
-      {
-        localHashMap.put("param_FailCode", String.valueOf(paramObject.first));
-        StatisticCollector.getInstance(this.a.app.getApp()).collectPerformance(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
-        return;
-        if (((Integer)paramObject.first).intValue() == 101108)
+        paramObject = (Pair)paramObject;
+        Object localObject2;
+        if (((Integer)paramObject.first).intValue() == 101107)
         {
-          this.a.jdField_a_of_type_Int = 2;
-          this.a.d = 5;
-          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+          localObject2 = this.a;
+          ((VipProfileCardBaseActivity)localObject2).jdField_a_of_type_Int = 1;
+          ((VipProfileCardBaseActivity)localObject2).d = 2;
+          localObject2 = ((VipProfileCardBaseActivity)localObject2).jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+        }
+        else if (((Integer)paramObject.first).intValue() == 101108)
+        {
+          localObject2 = this.a;
+          ((VipProfileCardBaseActivity)localObject2).jdField_a_of_type_Int = 2;
+          ((VipProfileCardBaseActivity)localObject2).d = 5;
+          localObject2 = ((VipProfileCardBaseActivity)localObject2).jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
         }
         else
         {
-          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
+          localObject2 = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
           if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
-            localMessage.obj = ((SSummaryCardRsp)paramObject.second).emsg;
+            ((Message)localObject2).obj = ((SSummaryCardRsp)paramObject.second).emsg;
           }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
         }
+        localHashMap.put("param_FailCode", String.valueOf(paramObject.first));
+        StatisticCollector.getInstance(this.a.app.getApp()).collectPerformance((String)localObject1, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
       }
     }
-    if (!paramBoolean) {}
-    for (paramObject = "-104";; paramObject = "-105")
+    else
     {
+      if (!paramBoolean) {
+        paramObject = "-104";
+      } else {
+        paramObject = "-105";
+      }
       localHashMap.put("param_FailCode", paramObject);
-      StatisticCollector.getInstance(this.a.app.getApp()).collectPerformance(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
+      StatisticCollector.getInstance(this.a.app.getApp()).collectPerformance((String)localObject1, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
       paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
       this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardBaseActivity.2
  * JD-Core Version:    0.7.0.1
  */

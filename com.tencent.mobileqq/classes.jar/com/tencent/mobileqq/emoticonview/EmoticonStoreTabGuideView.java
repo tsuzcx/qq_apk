@@ -18,10 +18,10 @@ public class EmoticonStoreTabGuideView
   
   public void initUI()
   {
-    setContentView(LayoutInflater.from(this.mContext).inflate(2131559211, null));
+    setContentView(LayoutInflater.from(this.mContext).inflate(2131561609, null));
     setWidth(-2);
     setHeight(-2);
-    setBackgroundDrawable(new ColorDrawable(7));
+    setBackgroundDrawable(new ColorDrawable(0));
     setOutsideTouchable(true);
     setTouchable(true);
     setFocusable(true);
@@ -29,7 +29,7 @@ public class EmoticonStoreTabGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonStoreTabGuideView
  * JD-Core Version:    0.7.0.1
  */

@@ -36,8 +36,14 @@ public class QQIndividualityProxyActivity
     if ((paramString2.equals("com.qqindividuality.activity.QQIndividualitySignatureActivity")) && ((paramActivity instanceof QQIndividualityBridgeActivity)) && (paramDialog != null)) {
       paramActivity.finish();
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("QQIndividuality", 2, "QQIndividualityPluginProxyActivity.openPluginActivityForResult() " + paramString2 + " IPluginManager.SUPPORT_NETWORKING " + true);
+    if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("QQIndividualityPluginProxyActivity.openPluginActivityForResult() ");
+      paramActivity.append(paramString2);
+      paramActivity.append(" IPluginManager.SUPPORT_NETWORKING ");
+      paramActivity.append(true);
+      QLog.i("QQIndividuality", 2, paramActivity.toString());
     }
     return true;
   }
@@ -60,7 +66,7 @@ public class QQIndividualityProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityProxyActivity
  * JD-Core Version:    0.7.0.1
  */

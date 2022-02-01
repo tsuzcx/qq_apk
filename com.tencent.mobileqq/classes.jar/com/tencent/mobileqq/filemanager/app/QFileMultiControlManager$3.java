@@ -15,46 +15,56 @@ class QFileMultiControlManager$3
 {
   QFileMultiControlManager$3(QFileMultiControlManager paramQFileMultiControlManager) {}
   
-  public void a(long paramLong, float paramFloat)
+  protected void a(long paramLong, float paramFloat)
   {
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (QFileMultiControlManager.a(this.a).getMessageFacade().a(i).a(paramLong) == null) {}
-    Object localObject;
-    do
+    if (QFileMultiControlManager.a(this.a).getMessageFacade().a(i).a(paramLong) == null) {
+      return;
+    }
+    Object localObject1 = this.a;
+    Object localObject2 = AppConstants.DATALINE_PC_UIN;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("");
+    localObject1 = ((QFileMultiControlManager)localObject1).a("6000", (String)localObject2, localStringBuilder.toString());
+    if (localObject1 != null)
     {
-      do
+      localObject1 = ((QFileControlReq)localObject1).a();
+      if (localObject1 != null)
       {
-        return;
-        localObject = this.a.a("6000", AppConstants.DATALINE_PC_UIN, paramLong + "");
-      } while (localObject == null);
-      localObject = ((QFileControlReq)localObject).a();
-    } while (localObject == null);
-    i = (int)(100.0F * paramFloat);
-    Bundle localBundle = new Bundle();
-    ((QFileControlCallback)localObject).a(0, 6000, AppConstants.DATALINE_PC_UIN, i, localBundle);
+        i = (int)(paramFloat * 100.0F);
+        localObject2 = new Bundle();
+        ((QFileControlCallback)localObject1).a(0, 6000, AppConstants.DATALINE_PC_UIN, i, (Bundle)localObject2);
+      }
+    }
   }
   
-  public void a(boolean paramBoolean, long paramLong, String paramString)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-    if (QFileMultiControlManager.a(this.a).getMessageFacade().a(i).a(paramLong) == null) {}
-    do
-    {
+    if (QFileMultiControlManager.a(this.a).getMessageFacade().a(i).a(paramLong) == null) {
       return;
-      paramString = this.a.a("6000", AppConstants.DATALINE_PC_UIN, paramLong + "");
-      if ((paramString != null) && (paramString.a() != null))
-      {
-        QFileControlCallback localQFileControlCallback = paramString.a();
-        Bundle localBundle = new Bundle();
-        localQFileControlCallback.a(paramBoolean, 6000, AppConstants.DATALINE_PC_UIN, localBundle);
-      }
-    } while (paramString == null);
-    this.a.b(paramString);
+    }
+    paramString = this.a;
+    Object localObject1 = AppConstants.DATALINE_PC_UIN;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramLong);
+    ((StringBuilder)localObject2).append("");
+    paramString = paramString.a("6000", (String)localObject1, ((StringBuilder)localObject2).toString());
+    if ((paramString != null) && (paramString.a() != null))
+    {
+      localObject1 = paramString.a();
+      localObject2 = new Bundle();
+      ((QFileControlCallback)localObject1).a(paramBoolean, 6000, AppConstants.DATALINE_PC_UIN, (Bundle)localObject2);
+    }
+    if (paramString != null) {
+      this.a.b(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMultiControlManager.3
  * JD-Core Version:    0.7.0.1
  */

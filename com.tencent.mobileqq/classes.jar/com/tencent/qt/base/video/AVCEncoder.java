@@ -9,7 +9,7 @@ public class AVCEncoder
   public static final int EXPECT_CAMERA_CAPTURE_HEIGHT = 480;
   public static final int EXPECT_CAMERA_CAPTURE_WIDTH = 640;
   private static final String TAG = "Render|AVCEncoder";
-  private static byte[] mExpectData = null;
+  private static byte[] mExpectData;
   private static int nExpectYSize = 307200;
   private long mHandle;
   private int mHeight;
@@ -25,9 +25,11 @@ public class AVCEncoder
     int j = (paramInt - 640) / 2 * 480;
     paramInt *= 480;
     System.arraycopy(paramArrayOfByte, j, mExpectData, 0, i);
-    System.arraycopy(paramArrayOfByte, j / 4 + paramInt, mExpectData, i, i / 4);
-    int k = paramInt / 4;
-    System.arraycopy(paramArrayOfByte, j / 4 + (paramInt + k), mExpectData, i / 4 + i, i / 4);
+    j /= 4;
+    byte[] arrayOfByte = mExpectData;
+    int k = i / 4;
+    System.arraycopy(paramArrayOfByte, paramInt + j, arrayOfByte, i, k);
+    System.arraycopy(paramArrayOfByte, paramInt + paramInt / 4 + j, mExpectData, i + k, k);
     return mExpectData;
   }
   
@@ -115,15 +117,15 @@ public class AVCEncoder
       this.mHandle = native_startupencoder(paramInt1, paramInt2, paramInt3, paramInt4);
       this.mWidth = paramInt1;
       this.mHeight = paramInt2;
-      return true;
     }
     catch (Exception paramObject)
     {
-      for (;;)
-      {
-        LogUtils.e("Render|AVCEncoder", "native code library native_startupencoder Failed.\n" + paramObject);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("native code library native_startupencoder Failed.\n");
+      localStringBuilder.append(paramObject);
+      LogUtils.e("Render|AVCEncoder", localStringBuilder.toString());
     }
+    return true;
   }
   
   public int encode(byte[] paramArrayOfByte, long paramLong, VideoFrame paramVideoFrame)
@@ -138,7 +140,10 @@ public class AVCEncoder
     }
     catch (Exception paramArrayOfByte)
     {
-      LogUtils.e("Render|AVCEncoder", "native code library native_encodervideoframe Failed.\n" + paramArrayOfByte);
+      paramVideoFrame = new StringBuilder();
+      paramVideoFrame.append("native code library native_encodervideoframe Failed.\n");
+      paramVideoFrame.append(paramArrayOfByte);
+      LogUtils.e("Render|AVCEncoder", paramVideoFrame.toString());
     }
     return 0;
   }
@@ -150,14 +155,15 @@ public class AVCEncoder
   
   public void release()
   {
-    if (this.mHandle != 0L) {
-      native_cleanupencoder((int)this.mHandle);
+    long l = this.mHandle;
+    if (l != 0L) {
+      native_cleanupencoder((int)l);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qt.base.video.AVCEncoder
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.av.wtogether.adapter;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.callback.GroupFileClickListener;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class QVideoGroupFileExpandableListAdapter$1
   implements View.OnClickListener
@@ -13,33 +13,29 @@ class QVideoGroupFileExpandableListAdapter$1
   public void onClick(View paramView)
   {
     FileManagerEntity localFileManagerEntity = (FileManagerEntity)((QVideoGroupFileExpandableListAdapter.RecentItemHolder)paramView.getTag()).a;
-    Object localObject2 = localFileManagerEntity.Uuid;
+    Object localObject = localFileManagerEntity.Uuid;
     QVideoGroupFileExpandableListAdapter localQVideoGroupFileExpandableListAdapter = this.a;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).equalsIgnoreCase(QVideoGroupFileExpandableListAdapter.a(this.a))) {
-      localObject1 = null;
+    paramView = (View)localObject;
+    if (((String)localObject).equalsIgnoreCase(QVideoGroupFileExpandableListAdapter.a(localQVideoGroupFileExpandableListAdapter))) {
+      paramView = null;
     }
-    QVideoGroupFileExpandableListAdapter.a(localQVideoGroupFileExpandableListAdapter, (String)localObject1);
+    QVideoGroupFileExpandableListAdapter.a(localQVideoGroupFileExpandableListAdapter, paramView);
     this.a.notifyDataSetChanged();
     if (QVideoGroupFileExpandableListAdapter.a(this.a) != null)
     {
-      localObject2 = QVideoGroupFileExpandableListAdapter.a(this.a);
-      if (QVideoGroupFileExpandableListAdapter.a(this.a) == null) {
-        break label113;
+      localObject = QVideoGroupFileExpandableListAdapter.a(this.a);
+      if (QVideoGroupFileExpandableListAdapter.a(this.a) != null) {
+        paramView = localFileManagerEntity;
+      } else {
+        paramView = null;
       }
-    }
-    label113:
-    for (localObject1 = localFileManagerEntity;; localObject1 = null)
-    {
-      ((QVideoGroupFileExpandableListAdapter.UIEvent)localObject2).a((FileManagerEntity)localObject1);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      ((GroupFileClickListener)localObject).a(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.adapter.QVideoGroupFileExpandableListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

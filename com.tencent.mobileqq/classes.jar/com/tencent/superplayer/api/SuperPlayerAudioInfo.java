@@ -56,17 +56,25 @@ public class SuperPlayerAudioInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("SuperPlayerAudioInfo[ mAudioSampleRateHZ:").append(this.mAudioSampleRateHZ).append("\n");
-    localStringBuilder.append("mAudioChannelLayout:").append(this.mAudioChannelLayout).append("\n");
-    localStringBuilder.append("mAuidoOutPutFormat:").append(this.mAuidoOutPutFormat).append("\n");
-    localStringBuilder.append("mAudioSampleFrameSizeByte:").append(this.mAudioSampleFrameSizeByte).append("\n");
+    localStringBuilder.append("SuperPlayerAudioInfo[ mAudioSampleRateHZ:");
+    localStringBuilder.append(this.mAudioSampleRateHZ);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mAudioChannelLayout:");
+    localStringBuilder.append(this.mAudioChannelLayout);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mAuidoOutPutFormat:");
+    localStringBuilder.append(this.mAuidoOutPutFormat);
+    localStringBuilder.append("\n");
+    localStringBuilder.append("mAudioSampleFrameSizeByte:");
+    localStringBuilder.append(this.mAudioSampleFrameSizeByte);
+    localStringBuilder.append("\n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerAudioInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -30,6 +30,7 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.biz.subscribe.SubscribeLaucher;
 import com.tencent.biz.subscribe.network.GetSubscribeFeedListRequest;
 import com.tencent.biz.subscribe.part.block.BlockContainer;
@@ -56,6 +57,7 @@ import com.tencent.util.ArrayUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import cooperation.ilive.entity.IliveJumpParams;
 import cooperation.ilive.util.IliveEntranceUtil;
+import cooperation.qzone.mobilereport.MobileReportManager;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -91,7 +93,7 @@ public class RelativeFeedsAdapter
   
   private RecyclerView.ViewHolder a(ViewGroup paramViewGroup)
   {
-    Object localObject = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559762, paramViewGroup, false);
+    Object localObject = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559638, paramViewGroup, false);
     paramViewGroup = new RelativeFeedsAdapter.RelativeLiveVH(this, (View)localObject);
     this.g = ((View)localObject).getResources().getDisplayMetrics().widthPixels;
     int k = (int)(this.g * 0.5F - ViewUtils.b(8.5F));
@@ -100,10 +102,11 @@ public class RelativeFeedsAdapter
     int n = ViewUtils.b(54.0F);
     localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).width = k;
-    ((RelativeLayout.LayoutParams)localObject).height = (n + m);
+    ((RelativeLayout.LayoutParams)localObject).height = (m + n);
     localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).width = this.h;
-    ((RelativeLayout.LayoutParams)localObject).height = this.h;
+    k = this.h;
+    ((RelativeLayout.LayoutParams)localObject).width = k;
+    ((RelativeLayout.LayoutParams)localObject).height = k;
     return paramViewGroup;
   }
   
@@ -120,8 +123,61 @@ public class RelativeFeedsAdapter
     paramViewGroup.getPaint().setFakeBoldText(true);
     localLayoutParams.leftMargin = ImmersiveUtils.dpToPx(16.0F);
     localLayoutParams.rightMargin = ImmersiveUtils.dpToPx(16.0F);
-    paramViewGroup.setText(HardCodeUtil.a(2131701581));
+    paramViewGroup.setText(HardCodeUtil.a(2131701721));
     return localFrameLayout;
+  }
+  
+  private void a(String paramString)
+  {
+    int k = this.i;
+    MobileReportManager localMobileReportManager;
+    Object localObject;
+    long l;
+    StringBuilder localStringBuilder;
+    if (k == 0)
+    {
+      this.j = 6;
+      localMobileReportManager = MobileReportManager.getInstance();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
+      l = System.currentTimeMillis();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("");
+      localMobileReportManager.reportActionLive((String)localObject, "25", "qq_live", "tab_page", "subscribe", 102, 1, l, localStringBuilder.toString());
+      return;
+    }
+    if (k == 1)
+    {
+      this.j = 5;
+      localMobileReportManager = MobileReportManager.getInstance();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
+      l = System.currentTimeMillis();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("");
+      localMobileReportManager.reportActionLive((String)localObject, "25", "qq_live", "find_page", "hot_push", 102, 1, l, localStringBuilder.toString());
+      return;
+    }
+    if (k == 2)
+    {
+      this.j = 2;
+      localMobileReportManager = MobileReportManager.getInstance();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
+      l = System.currentTimeMillis();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("");
+      localMobileReportManager.reportActionLive((String)localObject, "25", "qq_live", "shopcart_page", "hot_push", 102, 1, l, localStringBuilder.toString());
+    }
   }
   
   private boolean a(CertifiedAccountMeta.StFeed paramStFeed)
@@ -153,19 +209,29 @@ public class RelativeFeedsAdapter
   
   public CertifiedAccountMeta.StFeed a()
   {
-    if ((b() == null) || (b().size() == 0)) {
-      return null;
-    }
-    int k = this.jdField_e_of_type_Int + 1;
-    while (k < b().size())
+    if (b() != null)
     {
-      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)b().get(k);
-      if ((localStFeed != null) && (SubscribeLaucher.a(localStFeed.type.get())))
-      {
-        this.jdField_e_of_type_Int = k;
-        return localStFeed;
+      if (b().size() == 0) {
+        return null;
       }
-      k += 1;
+      int k = this.jdField_e_of_type_Int;
+      int m;
+      CertifiedAccountMeta.StFeed localStFeed;
+      do
+      {
+        do
+        {
+          m = k + 1;
+          if (m >= b().size()) {
+            break;
+          }
+          localStFeed = (CertifiedAccountMeta.StFeed)b().get(m);
+          k = m;
+        } while (localStFeed == null);
+        k = m;
+      } while (!SubscribeLaucher.a(localStFeed.type.get()));
+      this.jdField_e_of_type_Int = m;
+      return localStFeed;
     }
     return null;
   }
@@ -233,26 +299,28 @@ public class RelativeFeedsAdapter
   
   public void a(LoadInfo paramLoadInfo)
   {
-    GetSubscribeFeedListRequest localGetSubscribeFeedListRequest;
-    if ((this.f != -1) && ((paramLoadInfo.c()) || (paramLoadInfo.d()))) {
-      localGetSubscribeFeedListRequest = new GetSubscribeFeedListRequest(this.f, a().b(), a().a(), null);
-    }
-    for (;;)
+    int k = this.f;
+    Object localObject2 = null;
+    Object localObject1;
+    if ((k != -1) && ((paramLoadInfo.c()) || (paramLoadInfo.d())))
     {
-      if (localGetSubscribeFeedListRequest == null)
+      localObject1 = new GetSubscribeFeedListRequest(this.f, a().b(), a().a(), null);
+    }
+    else
+    {
+      localObject1 = localObject2;
+      if (this.f != -1)
       {
-        return;
-        if ((this.f != -1) && (paramLoadInfo.e())) {
-          localGetSubscribeFeedListRequest = new GetSubscribeFeedListRequest(this.f, a().b(), a().a(), a().b());
+        localObject1 = localObject2;
+        if (paramLoadInfo.e()) {
+          localObject1 = new GetSubscribeFeedListRequest(this.f, a().b(), a().a(), a().b());
         }
       }
-      else
-      {
-        VSNetworkHelper.getInstance().sendRequest(localGetSubscribeFeedListRequest, new RelativeFeedsAdapter.1(this, paramLoadInfo));
-        return;
-      }
-      localGetSubscribeFeedListRequest = null;
     }
+    if (localObject1 == null) {
+      return;
+    }
+    VSNetworkHelper.getInstance().sendRequest((BaseRequest)localObject1, new RelativeFeedsAdapter.1(this, paramLoadInfo));
   }
   
   public void a(String paramString, BlockMerger.ShareData paramShareData)
@@ -317,21 +385,24 @@ public class RelativeFeedsAdapter
   
   public void c(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if ((b() == null) || (b().size() == 0) || (this.jdField_e_of_type_Int > b().size())) {
-      return;
-    }
-    int k = this.jdField_e_of_type_Int;
-    while (k >= 0)
+    if ((b() != null) && (b().size() != 0))
     {
-      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)b().get(k);
-      if ((localStFeed != null) && (SubscribeLaucher.a(localStFeed.type.get())) && (localStFeed.id.get().equals(paramStFeed.id.get())))
-      {
-        this.jdField_e_of_type_Int = k;
+      if (this.jdField_e_of_type_Int > b().size()) {
         return;
       }
-      k -= 1;
+      int k = this.jdField_e_of_type_Int;
+      while (k >= 0)
+      {
+        CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)b().get(k);
+        if ((localStFeed != null) && (SubscribeLaucher.a(localStFeed.type.get())) && (localStFeed.id.get().equals(paramStFeed.id.get())))
+        {
+          this.jdField_e_of_type_Int = k;
+          return;
+        }
+        k -= 1;
+      }
+      this.jdField_e_of_type_Int = -1;
     }
-    this.jdField_e_of_type_Int = -1;
   }
   
   public void c(boolean paramBoolean)
@@ -345,36 +416,32 @@ public class RelativeFeedsAdapter
     {
       a().a(4);
       a().setRefreshing(false);
-      if (!f()) {
-        break label53;
+      if (f())
+      {
+        a().a(paramBoolean, a().a());
+        return;
       }
-      a().a(paramBoolean, a().a());
+      if ((a() != null) && (b() != null) && (b().size() == 0)) {
+        a().a(paramBoolean, false);
+      }
     }
-    label53:
-    while ((a() == null) || (b() == null) || (b().size() != 0)) {
-      return;
-    }
-    a().a(paramBoolean, false);
   }
   
   public int getItemCount()
   {
-    int k;
     if (!this.jdField_a_of_type_Boolean) {
-      k = 4;
+      return 4;
     }
-    int m;
-    do
+    int m = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int k = m;
+    if (m > 0)
     {
-      do
-      {
-        return k;
-        m = this.jdField_a_of_type_JavaUtilArrayList.size();
-        k = m;
-      } while (m <= 0);
       k = m;
-    } while (!this.jdField_c_of_type_Boolean);
-    return m + 1;
+      if (this.jdField_c_of_type_Boolean) {
+        k = m + 1;
+      }
+    }
+    return k;
   }
   
   public long getItemId(int paramInt)
@@ -407,17 +474,15 @@ public class RelativeFeedsAdapter
     if (this.jdField_c_of_type_Boolean) {
       k = paramInt - 1;
     }
-    if (ArrayUtils.a(k, b())) {}
-    for (;;)
+    if (!ArrayUtils.a(k, b()))
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, k, getItemId(k));
-      return;
       CertifiedAccountMeta.StFeed localStFeed;
       if ((paramViewHolder instanceof RelativeFeedsAdapter.RelativeLiveVH))
       {
         localStFeed = (CertifiedAccountMeta.StFeed)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-        ((RelativeFeedsAdapter.RelativeLiveVH)paramViewHolder).a(localStFeed);
-        ((RelativeFeedsAdapter.RelativeLiveVH)paramViewHolder).a((RelativeFeedsAdapter.RelativeLiveVH)paramViewHolder, localStFeed);
+        RelativeFeedsAdapter.RelativeLiveVH localRelativeLiveVH = (RelativeFeedsAdapter.RelativeLiveVH)paramViewHolder;
+        localRelativeLiveVH.a(localStFeed);
+        localRelativeLiveVH.a(localRelativeLiveVH, localStFeed);
       }
       else
       {
@@ -425,6 +490,7 @@ public class RelativeFeedsAdapter
         ((RelativeFeedsAdapter.RelativeFeedVH)paramViewHolder).a(localStFeed, a());
       }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, k, getItemId(k));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -443,7 +509,7 @@ public class RelativeFeedsAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.RelativeFeedsAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
+import com.tencent.comic.api.IQQDcReporter;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicReportUtils;
 import java.lang.reflect.Field;
 import java.util.Locale;
 
 public class SqliteExcuteMonitor
 {
-  private static int jdField_a_of_type_Int;
+  private static int jdField_a_of_type_Int = 0;
   private static Field jdField_a_of_type_JavaLangReflectField;
   private static boolean jdField_a_of_type_Boolean = false;
   private static int jdField_b_of_type_Int;
@@ -23,17 +24,15 @@ public class SqliteExcuteMonitor
   public static int a(String paramString)
   {
     paramString = paramString.trim();
-    if (paramString.length() < 3) {}
-    do
-    {
+    if (paramString.length() < 3) {
       return 99;
-      paramString = paramString.substring(0, 3).toUpperCase(Locale.US);
-      if (paramString.equals("SEL")) {
-        return 1;
-      }
-      if ((paramString.equals("INS")) || (paramString.equals("UPD")) || (paramString.equals("REP")) || (paramString.equals("DEL"))) {
-        return 2;
-      }
+    }
+    paramString = paramString.substring(0, 3).toUpperCase(Locale.US);
+    if (paramString.equals("SEL")) {
+      return 1;
+    }
+    if ((!paramString.equals("INS")) && (!paramString.equals("UPD")) && (!paramString.equals("REP")) && (!paramString.equals("DEL")))
+    {
       if (paramString.equals("ATT")) {
         return 3;
       }
@@ -52,11 +51,16 @@ public class SqliteExcuteMonitor
       if (paramString.equals("PRA")) {
         return 7;
       }
-      if ((paramString.equals("CRE")) || (paramString.equals("DRO")) || (paramString.equals("ALT"))) {
-        return 8;
+      if ((!paramString.equals("CRE")) && (!paramString.equals("DRO")) && (!paramString.equals("ALT")))
+      {
+        if ((!paramString.equals("ANA")) && (!paramString.equals("DET"))) {
+          return 99;
+        }
+        return 9;
       }
-    } while ((!paramString.equals("ANA")) && (!paramString.equals("DET")));
-    return 9;
+      return 8;
+    }
+    return 2;
   }
   
   private static boolean a()
@@ -68,92 +72,90 @@ public class SqliteExcuteMonitor
   {
     String str2 = paramString.replaceAll("(([=|>|<|>=|<=|!=|]|LIKE)\\s*)[\\w\\.']+", "$1?");
     int i = a(str2);
-    paramString = "";
-    if (i == 1)
-    {
+    if (i == 1) {
       paramString = "SELECT";
-      if (!paramBoolean) {
-        break label168;
-      }
     }
-    label168:
-    for (String str1 = "1";; str1 = "0")
+    for (;;)
     {
-      String str3 = String.valueOf(paramInt);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("sql=").append(str2).append(",bizId=").append(str3).append(",operType=").append(paramString).append(",costTime=").append(paramLong).append("isMainThread").append(paramBoolean);
-        QLog.i("SqliteExcuteMonitor", 2, localStringBuilder.toString());
-      }
-      VipComicReportUtils.a(paramAppInterface, str3, "", paramString, str2, String.valueOf(paramLong), str1, new String[0]);
-      return;
-      if (i == 2)
-      {
-        paramString = "UPDATE";
-        break;
-      }
-      if (i != 5) {
-        break;
-      }
-      paramString = "TRANSACTION";
       break;
+      if (i == 2) {
+        paramString = "UPDATE";
+      } else if (i == 5) {
+        paramString = "TRANSACTION";
+      } else {
+        paramString = "";
+      }
     }
+    String str1;
+    if (paramBoolean) {
+      str1 = "1";
+    } else {
+      str1 = "0";
+    }
+    String str3 = String.valueOf(paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sql=");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(",bizId=");
+      localStringBuilder.append(str3);
+      localStringBuilder.append(",operType=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",costTime=");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("isMainThread");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("SqliteExcuteMonitor", 2, localStringBuilder.toString());
+    }
+    ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDCSqliteProfile(paramAppInterface, str3, "", paramString, str2, String.valueOf(paramLong), str1, new String[0]);
   }
   
   private static boolean b(String paramString, long paramLong, boolean paramBoolean)
   {
-    int i;
-    int j;
-    label37:
-    int k;
     if ((!TextUtils.isEmpty(paramString)) && (a()))
     {
       int m = a(paramString);
-      if (!paramBoolean) {
-        break label86;
+      int i;
+      if (paramBoolean) {
+        i = jdField_a_of_type_Int;
+      } else {
+        i = jdField_b_of_type_Int;
       }
-      i = jdField_a_of_type_Int;
-      if (!paramBoolean) {
-        break label94;
+      int j;
+      if (paramBoolean) {
+        j = jdField_c_of_type_Int;
+      } else {
+        j = d;
       }
-      j = jdField_c_of_type_Int;
-      if (!paramBoolean) {
-        break label102;
+      int k;
+      if (paramBoolean) {
+        k = e;
+      } else {
+        k = f;
       }
-      k = e;
-      label46:
-      switch (m)
+      if (m != 1)
       {
+        if (m != 2)
+        {
+          if ((m == 5) && (paramLong > k)) {
+            return true;
+          }
+        }
+        else if (paramLong > j) {
+          return true;
+        }
+      }
+      else if (paramLong > i) {
+        return true;
       }
     }
-    label86:
-    label94:
-    label102:
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          i = jdField_b_of_type_Int;
-          break;
-          j = d;
-          break label37;
-          k = f;
-          break label46;
-        } while (paramLong <= i);
-        return true;
-      } while (paramLong <= j);
-      return true;
-    } while (paramLong <= k);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SqliteExcuteMonitor
  * JD-Core Version:    0.7.0.1
  */

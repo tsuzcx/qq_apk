@@ -15,56 +15,63 @@ final class InnerAudioPlugin$operateAudio$1
   {
     int i = this.$arguments.getParams().optInt("audioId", -1);
     Object localObject = this.$arguments.getParams().optString("operationType");
-    if (localObject == null) {}
-    do
+    if (localObject == null) {
+      return;
+    }
+    switch (((String)localObject).hashCode())
     {
-      do
+    default: 
+    case 106440182: 
+      if (((String)localObject).equals("pause"))
       {
-        do
+        localObject = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
+        if (localObject != null)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    switch (((String)localObject).hashCode())
-                    {
-                    default: 
-                      return;
-                    }
-                  } while ((!((String)localObject).equals("play")) || (InnerAudioPlugin.access$isActivityPaused$p(this.this$0)));
-                  localObject = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
-                  if (localObject != null) {
-                    ((AudioPlayerManager)localObject).playMusic(i);
-                  }
-                } while (InnerAudioPlugin.access$getMixWithOther$p(this.this$0));
-                InnerAudioPlugin.access$execAudioFocus(this.this$0, true);
-                return;
-              } while (!((String)localObject).equals("stop"));
-              localObject = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
-            } while (localObject == null);
-            ((AudioPlayerManager)localObject).stopMusic(i);
-            return;
-          } while (!((String)localObject).equals("seek"));
-          localObject = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
-        } while (localObject == null);
-        ((AudioPlayerManager)localObject).seekTo(i, (float)this.$arguments.getParams().optDouble("currentTime"));
-        return;
-      } while (!((String)localObject).equals("pause"));
-      localObject = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
-    } while (localObject == null);
-    ((AudioPlayerManager)localObject).pauseMusic(i);
+          ((AudioPlayerManager)localObject).pauseMusic(i);
+          return;
+        }
+      }
+      break;
+    case 3540994: 
+      if (((String)localObject).equals("stop"))
+      {
+        localObject = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
+        if (localObject != null)
+        {
+          ((AudioPlayerManager)localObject).stopMusic(i);
+          return;
+        }
+      }
+      break;
+    case 3526264: 
+      if (((String)localObject).equals("seek"))
+      {
+        localObject = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
+        if (localObject != null)
+        {
+          ((AudioPlayerManager)localObject).seekTo(i, (float)this.$arguments.getParams().optDouble("currentTime"));
+          return;
+        }
+      }
+      break;
+    case 3443508: 
+      if ((((String)localObject).equals("play")) && (!InnerAudioPlugin.access$isActivityPaused$p(this.this$0)))
+      {
+        localObject = InnerAudioPlugin.access$getAudioPlayerManager$p(this.this$0);
+        if (localObject != null) {
+          ((AudioPlayerManager)localObject).playMusic(i);
+        }
+        if (!InnerAudioPlugin.access$getMixWithOther$p(this.this$0)) {
+          InnerAudioPlugin.access$execAudioFocus(this.this$0, true);
+        }
+      }
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.InnerAudioPlugin.operateAudio.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class OnlineStatusWeatherDisplayInfo$2
   @QQPermissionDenied(1)
   public void denied()
   {
-    DialogUtil.a(OnlineStatusWeatherDisplayInfo.a(this.a), 2131698416, 2131698417);
+    DialogUtil.a(OnlineStatusWeatherDisplayInfo.a(this.a), 2131698482, 2131698483);
   }
   
   @QQPermissionGrant(1)
@@ -19,7 +19,7 @@ class OnlineStatusWeatherDisplayInfo$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.weather.OnlineStatusWeatherDisplayInfo.2
  * JD-Core Version:    0.7.0.1
  */

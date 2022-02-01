@@ -41,15 +41,27 @@ public final class ListenTogetherHeartBeatController$Data
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if ((paramObject instanceof Data)) {
-      return (((Data)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (StringsKt.equals$default(((Data)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, false, 2, null));
+    boolean bool3 = paramObject instanceof Data;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      paramObject = (Data)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
+      {
+        bool1 = bool2;
+        if (StringsKt.equals$default(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, false, 2, null)) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherHeartBeatController.Data
  * JD-Core Version:    0.7.0.1
  */

@@ -18,15 +18,17 @@ class ImageJsPlugin$1
     if ("micro_api_choose_image".equals(paramContext))
     {
       paramContext = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
-      if ((ImageJsPlugin.access$000(this.this$0) != null) && (ImageJsPlugin.access$000(this.this$0).callbackId > 0)) {
-        ImageJsPlugin.access$100(this.this$0, paramContext, ImageJsPlugin.access$000(this.this$0));
+      if ((ImageJsPlugin.access$000(this.this$0) != null) && (ImageJsPlugin.access$000(this.this$0).callbackId > 0))
+      {
+        paramIntent = this.this$0;
+        ImageJsPlugin.access$100(paramIntent, paramContext, ImageJsPlugin.access$000(paramIntent));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ImageJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

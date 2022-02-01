@@ -10,7 +10,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class QPublicTransFragmentActivity
   extends QPublicFragmentActivity
 {
-  public static void b(Context paramContext, Intent paramIntent, Class<? extends QPublicBaseFragment> paramClass)
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends QPublicBaseFragment> paramClass)
   {
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
@@ -39,7 +39,7 @@ public class QPublicTransFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QPublicTransFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

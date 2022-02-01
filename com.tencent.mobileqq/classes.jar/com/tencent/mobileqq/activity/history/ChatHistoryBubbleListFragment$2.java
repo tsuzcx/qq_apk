@@ -16,13 +16,15 @@ class ChatHistoryBubbleListFragment$2
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Int == 1) {}
-    for (Object localObject = this.this$0.b;; localObject = this.this$0.jdField_a_of_type_JavaLangString)
+    Object localObject;
+    if (this.this$0.jdField_a_of_type_Int == 1) {
+      localObject = this.this$0.b;
+    } else {
+      localObject = this.this$0.jdField_a_of_type_JavaLangString;
+    }
+    MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().e((String)localObject, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_c_of_type_Long);
+    if (localMessageRecord != null)
     {
-      MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().e((String)localObject, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_c_of_type_Long);
-      if (localMessageRecord == null) {
-        break;
-      }
       localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b((String)localObject, this.this$0.jdField_a_of_type_Int, localMessageRecord.shmsgseq, 20);
       ((List)localObject).add(0, localMessageRecord);
       ThreadManager.getUIHandler().post(new ChatHistoryBubbleListFragment.2.1(this, (List)localObject));
@@ -37,7 +39,7 @@ class ChatHistoryBubbleListFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBubbleListFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,15 @@ public class CameraSizeComparator
   {
     paramObject1 = (Camera.Size)paramObject1;
     paramObject2 = (Camera.Size)paramObject2;
-    if (paramObject1.width < paramObject2.width) {}
-    do
-    {
+    if (paramObject1.width < paramObject2.width) {
       return -1;
-      if (paramObject1.width > paramObject2.width) {
-        return 1;
-      }
-    } while (paramObject1.height < paramObject2.height);
+    }
+    if (paramObject1.width > paramObject2.width) {
+      return 1;
+    }
+    if (paramObject1.height < paramObject2.height) {
+      return -1;
+    }
     if (paramObject1.height > paramObject2.height) {
       return 1;
     }

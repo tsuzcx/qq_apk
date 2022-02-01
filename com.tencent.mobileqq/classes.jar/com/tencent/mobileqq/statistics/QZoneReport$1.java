@@ -16,44 +16,46 @@ final class QZoneReport$1
   
   public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data")))
+    boolean bool = true;
+    if ((paramBundle != null) && (paramBundle.containsKey("data")))
     {
-      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent data == null || !data.containsKey(\"data\")");
-      return;
-    }
-    paramBundle = paramBundle.getBundle("data");
-    if (paramBundle == null)
-    {
-      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent getTravelGroup bundle is empty");
-      return;
-    }
-    boolean bool;
-    if ("cmd.getTravelGroup".equals(paramString))
-    {
-      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent CMD_GET_TRAVEL_GROUP");
-      paramString = (LocalPhotoGroupData)paramBundle.getSerializable("groupData");
-      if ((paramString == null) || (paramString.pathList == null) || (paramString.pathList.size() == 0))
+      paramBundle = paramBundle.getBundle("data");
+      if (paramBundle == null)
       {
-        QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData == null");
+        QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent getTravelGroup bundle is empty");
+        return;
+      }
+      if ("cmd.getTravelGroup".equals(paramString))
+      {
+        QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent CMD_GET_TRAVEL_GROUP");
+        paramString = (LocalPhotoGroupData)paramBundle.getSerializable("groupData");
+        if ((paramString != null) && (paramString.pathList != null) && (paramString.pathList.size() != 0))
+        {
+          paramBundle = new StringBuilder();
+          paramBundle.append("onWebEvent localPhotoGroupData:");
+          paramBundle.append(paramString.toString());
+          QLog.i("[PhotoAlbum]QZoneReport", 1, paramBundle.toString());
+          LocalMultiProcConfig.putLong("SP_LAST_UPDATE_TIME", paramString.startTime);
+        }
+        else
+        {
+          QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData == null");
+        }
+      }
+      else
+      {
         bool = false;
       }
-    }
-    for (;;)
-    {
       QZoneReport.a(this.a, bool);
       RemoteHandleManager.getInstance().removeWebEventListener(this);
       return;
-      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData:" + paramString.toString());
-      LocalMultiProcConfig.putLong("SP_LAST_UPDATE_TIME", paramString.startTime);
-      bool = true;
-      continue;
-      bool = false;
     }
+    QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent data == null || !data.containsKey(\"data\")");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.QZoneReport.1
  * JD-Core Version:    0.7.0.1
  */

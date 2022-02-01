@@ -20,87 +20,100 @@ class TroopRobotPickerActivity$WebOnDismissListener
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopRobotPickerActivity.jdField_a_of_type_JavaLangString, 2, "onDismiss|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      paramDialogInterface = TroopRobotPickerActivity.jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDismiss|pickerType : ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType);
+      QLog.d(paramDialogInterface, 2, ((StringBuilder)localObject).toString());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2)
     {
       paramDialogInterface = new Intent();
-      localJSONObject = new JSONObject();
+      localObject = new JSONObject();
       try
       {
-        localJSONObject.put("ageStart", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex1);
-        localJSONObject.put("ageEnd", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex2);
-        paramDialogInterface.putExtra("result", localJSONObject.toString());
-        paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
-        if (QLog.isColorLevel()) {
-          QLog.d(TroopRobotPickerActivity.jdField_a_of_type_JavaLangString, 2, "onDismiss|mCurAgeIndex1 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 + ", mCurAgeIndex2 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 + ", mAgeSelectIndex1 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex1 + ", mAgeSelectIndex2 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex2);
-        }
-        return;
+        ((JSONObject)localObject).put("ageStart", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex1);
+        ((JSONObject)localObject).put("ageEnd", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex2);
       }
       catch (JSONException localJSONException1)
       {
-        for (;;)
-        {
-          localJSONException1.printStackTrace();
-        }
+        localJSONException1.printStackTrace();
+      }
+      paramDialogInterface.putExtra("result", ((JSONObject)localObject).toString());
+      paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
+      if (QLog.isColorLevel())
+      {
+        paramDialogInterface = TroopRobotPickerActivity.jdField_a_of_type_JavaLangString;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onDismiss|mCurAgeIndex1 : ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1);
+        ((StringBuilder)localObject).append(", mCurAgeIndex2 : ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2);
+        ((StringBuilder)localObject).append(", mAgeSelectIndex1 : ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex1);
+        ((StringBuilder)localObject).append(", mAgeSelectIndex2 : ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex2);
+        QLog.d(paramDialogInterface, 2, ((StringBuilder)localObject).toString());
       }
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-    if (i == 1)
+    else
     {
-      paramDialogInterface = new Intent();
-      localJSONObject = new JSONObject();
-      try
+      int i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
+      if (i == 1)
       {
-        localJSONObject.put("sex", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mSexIndex);
+        paramDialogInterface = new Intent();
+        localObject = new JSONObject();
+        try
+        {
+          ((JSONObject)localObject).put("sex", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mSexIndex);
+        }
+        catch (JSONException localJSONException2)
+        {
+          localJSONException2.printStackTrace();
+        }
         paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
-        paramDialogInterface.putExtra("result", localJSONObject.toString());
+        paramDialogInterface.putExtra("result", ((JSONObject)localObject).toString());
         this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
         this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
         return;
       }
-      catch (JSONException localJSONException2)
+      paramDialogInterface = new Intent();
+      localObject = new JSONObject();
+      i = 0;
+      try
       {
-        for (;;)
+        while (i < this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray.length)
         {
-          localJSONException2.printStackTrace();
+          ((JSONObject)localObject).put(TroopRobotPickerActivity.jdField_a_of_type_ArrayOfJavaLangString[i], this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[i]);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(TroopRobotPickerActivity.jdField_a_of_type_ArrayOfJavaLangString[i]);
+          localStringBuilder.append("Str");
+          ((JSONObject)localObject).put(localStringBuilder.toString(), this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[i].name);
+          i += 1;
         }
+        ((JSONObject)localObject).put("country", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountyCode);
+        ((JSONObject)localObject).put("countryStr", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry.name);
       }
-    }
-    paramDialogInterface = new Intent();
-    JSONObject localJSONObject = new JSONObject();
-    i = 0;
-    try
-    {
-      while (i < this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray.length)
-      {
-        localJSONObject.put(TroopRobotPickerActivity.jdField_a_of_type_ArrayOfJavaLangString[i], this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[i]);
-        localJSONObject.put(TroopRobotPickerActivity.jdField_a_of_type_ArrayOfJavaLangString[i] + "Str", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[i].name);
-        i += 1;
-      }
-      localJSONObject.put("country", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountyCode);
-      localJSONObject.put("countryStr", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry.name);
-    }
-    catch (JSONException localJSONException3)
-    {
-      for (;;)
+      catch (JSONException localJSONException3)
       {
         localJSONException3.printStackTrace();
       }
+      paramDialogInterface.putExtra("result", ((JSONObject)localObject).toString());
+      paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
     }
-    paramDialogInterface.putExtra("result", localJSONObject.toString());
-    paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRobotPickerActivity.WebOnDismissListener
  * JD-Core Version:    0.7.0.1
  */

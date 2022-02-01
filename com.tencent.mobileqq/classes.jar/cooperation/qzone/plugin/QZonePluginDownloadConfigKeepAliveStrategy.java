@@ -20,8 +20,12 @@ public class QZonePluginDownloadConfigKeepAliveStrategy
   private void loadConfig()
   {
     String str = QzoneConfig.getInstance().getConfig("PhotoDownload", "KpDomainList", "m.qpic.cn,a[0-9].qpic.cn,b\\d+\\.photo\\.store\\.qq\\.com,a\\d+\\.photo\\.store\\.qq\\.com,.*d3g\\.qq\\.com,.*i.gtimg.cn,.*qzonestyle.gtimg.cn,.*qzs.qq.com,qlogo[0-9].store.qq.com,group.store.qq.com,pgdt.gtimg.cn,img[0-7].paipaiimg.com");
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "loadConfig, kp_domain_list=" + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadConfig, kp_domain_list=");
+      localStringBuilder.append(str);
+      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, localStringBuilder.toString());
     }
     setConfig(str);
   }
@@ -36,7 +40,7 @@ public class QZonePluginDownloadConfigKeepAliveStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginDownloadConfigKeepAliveStrategy
  * JD-Core Version:    0.7.0.1
  */

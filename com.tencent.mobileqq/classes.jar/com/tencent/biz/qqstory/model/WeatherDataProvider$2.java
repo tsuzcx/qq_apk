@@ -26,20 +26,20 @@ class WeatherDataProvider$2
       paramGetWeatherRequest.b("edit_video_weather_desc", paramGetWeatherResponse.a);
       WeatherDataProvider.a(this.a, System.currentTimeMillis() + 14400000L);
       paramGetWeatherRequest.b("edit_video_weather_expiry_time", Long.valueOf(WeatherDataProvider.a(this.a)));
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
+      paramGetWeatherRequest = this.a;
+      paramGetWeatherRequest.a(true, paramGetWeatherRequest.jdField_a_of_type_JavaLangObject);
     }
-    for (;;)
+    else
     {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
       SLog.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetWeatherRequest });
       this.a.a(false, null);
     }
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.WeatherDataProvider.2
  * JD-Core Version:    0.7.0.1
  */

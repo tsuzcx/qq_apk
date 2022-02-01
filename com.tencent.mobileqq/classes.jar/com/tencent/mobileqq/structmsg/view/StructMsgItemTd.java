@@ -67,43 +67,53 @@ public class StructMsgItemTd
   {
     try
     {
-      Object localObject = paramStructMsgNode.a("weight");
-      if (localObject != null) {}
-      for (int i = Integer.parseInt((String)localObject);; i = 0)
-      {
-        this.r = i;
-        localObject = paramStructMsgNode.a("align");
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        localObject = ((String)localObject).split("\\|");
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("left", Integer.valueOf(3));
-        localHashMap.put("right", Integer.valueOf(5));
-        localHashMap.put("top", Integer.valueOf(48));
-        localHashMap.put("bottom", Integer.valueOf(80));
-        localHashMap.put("center", Integer.valueOf(17));
-        i = 0;
-        while (i < localObject.length)
-        {
-          if (!TextUtils.isEmpty(localObject[i]))
-          {
-            String str = localObject[i].toLowerCase();
-            if (localHashMap.containsKey(str))
-            {
-              int j = this.p;
-              this.p = (((Integer)localHashMap.get(str)).intValue() | j);
-            }
-          }
-          i += 1;
-        }
+      localObject = paramStructMsgNode.a("weight");
+      j = 0;
+      if (localObject == null) {
+        break label211;
       }
-      return super.a(paramStructMsgNode);
+      i = Integer.parseInt((String)localObject);
     }
     catch (NumberFormatException localNumberFormatException)
     {
+      for (;;)
+      {
+        Object localObject;
+        int j;
+        HashMap localHashMap;
+        continue;
+        label211:
+        int i = 0;
+      }
+    }
+    this.r = i;
+    localObject = paramStructMsgNode.a("align");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("\\|");
+      localHashMap = new HashMap();
+      localHashMap.put("left", Integer.valueOf(3));
+      localHashMap.put("right", Integer.valueOf(5));
+      localHashMap.put("top", Integer.valueOf(48));
+      localHashMap.put("bottom", Integer.valueOf(80));
+      localHashMap.put("center", Integer.valueOf(17));
+      i = j;
+      while (i < localObject.length)
+      {
+        if (!TextUtils.isEmpty(localObject[i]))
+        {
+          String str = localObject[i].toLowerCase();
+          if (localHashMap.containsKey(str))
+          {
+            j = this.p;
+            this.p = (((Integer)localHashMap.get(str)).intValue() | j);
+          }
+        }
+        i += 1;
+      }
       this.r = 1;
     }
+    return super.a(paramStructMsgNode);
   }
   
   public int b()
@@ -111,9 +121,9 @@ public class StructMsgItemTd
     return this.q;
   }
   
-  public int c()
+  protected int c()
   {
-    return 2131380624;
+    return 2131379906;
   }
   
   public int e()
@@ -131,7 +141,7 @@ public class StructMsgItemTd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTd
  * JD-Core Version:    0.7.0.1
  */

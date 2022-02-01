@@ -17,8 +17,7 @@ class AbstractCustomRoomService$3
     if (localEnterExitRoomCallback == null) {
       return;
     }
-    if (paramInt == 0)
-    {
+    if (paramInt == 0) {
       try
       {
         paramInt = paramJSONObject.getInt("retcode");
@@ -42,6 +41,8 @@ class AbstractCustomRoomService$3
           }
         }
         localEnterExitRoomCallback.onFail(-1, "");
+        this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesRoomAbstractCustomRoomService.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, -1, "");
+        return;
       }
       catch (JSONException paramJSONObject)
       {
@@ -49,8 +50,6 @@ class AbstractCustomRoomService$3
         this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesRoomAbstractCustomRoomService.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, -2, paramJSONObject.getMessage());
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesRoomAbstractCustomRoomService.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, -1, "");
-      return;
     }
     localEnterExitRoomCallback.onFail(-1, "");
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesRoomAbstractCustomRoomService.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, -1, "");
@@ -58,7 +57,7 @@ class AbstractCustomRoomService$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.room.AbstractCustomRoomService.3
  * JD-Core Version:    0.7.0.1
  */

@@ -56,14 +56,15 @@ public final class e
     paramJceOutputStream.write(this.d, 3);
     paramJceOutputStream.write(this.e, 4);
     paramJceOutputStream.write(this.f, 5);
-    if (this.g != null) {
-      paramJceOutputStream.write(this.g, 6);
+    String str = this.g;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.e
  * JD-Core Version:    0.7.0.1
  */

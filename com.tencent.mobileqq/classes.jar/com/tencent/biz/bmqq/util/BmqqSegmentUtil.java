@@ -66,10 +66,11 @@ public class BmqqSegmentUtil
   
   private static void a(int paramInt, long[] paramArrayOfLong1, long[] paramArrayOfLong2)
   {
-    if ((paramArrayOfLong1 == null) || (paramArrayOfLong2 == null)) {}
-    do
+    if (paramArrayOfLong1 != null)
     {
-      return;
+      if (paramArrayOfLong2 == null) {
+        return;
+      }
       if (1 == paramInt) {
         try
         {
@@ -88,157 +89,151 @@ public class BmqqSegmentUtil
         }
         finally {}
       }
-    } while (3 != paramInt);
-    try
-    {
-      g = paramArrayOfLong1;
-      h = paramArrayOfLong2;
-      return;
+      if (3 == paramInt) {
+        try
+        {
+          g = paramArrayOfLong1;
+          h = paramArrayOfLong2;
+          return;
+        }
+        finally {}
+      }
     }
-    finally {}
   }
   
   public static void a(Context paramContext)
   {
-    Object localObject = null;
     try
     {
-      String str = SharedPreUtils.c(paramContext);
-      localObject = str;
+      str = SharedPreUtils.c(paramContext);
     }
     catch (Exception localException)
     {
-      label9:
-      break label9;
+      String str;
+      label8:
+      label68:
+      break label8;
     }
+    str = null;
     SharedPreUtils.c(paramContext, "");
-    if (!TextUtils.isEmpty(localObject))
+    if (!TextUtils.isEmpty(str))
     {
-      a(SecurityUtile.decode(localObject));
-      a(localObject, true);
+      a(SecurityUtile.decode(str));
+      a(str, true);
     }
-    for (;;)
+    try
     {
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      return;
-      try
-      {
-        paramContext = (EqqDetailDataManager)BaseApplicationImpl.sApplication.getRuntime().getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
-        if (paramContext != null) {
-          a(paramContext.a(), false);
-        }
+      paramContext = (EqqDetailDataManager)BaseApplicationImpl.sApplication.getRuntime().getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
+      if (paramContext != null) {
+        a(paramContext.a(), false);
       }
-      catch (Exception paramContext) {}
     }
+    catch (Exception paramContext)
+    {
+      break label68;
+    }
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
   public static void a(String paramString)
   {
-    EqqDetailDataManager localEqqDetailDataManager;
     if (a(paramString, false))
     {
-      localEqqDetailDataManager = (EqqDetailDataManager)BaseApplicationImpl.sApplication.getRuntime().getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
-      if (localEqqDetailDataManager == null) {
-        break label48;
+      EqqDetailDataManager localEqqDetailDataManager = (EqqDetailDataManager)BaseApplicationImpl.sApplication.getRuntime().getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
+      if (localEqqDetailDataManager != null)
+      {
+        if (TextUtils.isEmpty(paramString))
+        {
+          localEqqDetailDataManager.a("");
+          return;
+        }
+        localEqqDetailDataManager.a(paramString);
+        return;
       }
-      if (!TextUtils.isEmpty(paramString)) {
-        break label42;
+      if (QLog.isColorLevel()) {
+        QLog.d("BmqqSegmentUtil", 2, "EqqDetailDataManager is null");
       }
-      localEqqDetailDataManager.a("");
     }
-    label42:
-    label48:
-    while (!QLog.isColorLevel())
-    {
-      return;
-      localEqqDetailDataManager.a(paramString);
-      return;
-    }
-    QLog.d("BmqqSegmentUtil", 2, "EqqDetailDataManager is null");
   }
   
   private static void a(Element paramElement, int paramInt)
   {
-    Object localObject1 = null;
-    NodeList localNodeList;
+    Object localObject = null;
     if (paramElement != null)
     {
-      localNodeList = paramElement.getElementsByTagName("segment");
+      NodeList localNodeList = paramElement.getElementsByTagName("segment");
       int m = localNodeList.getLength();
       if (m > 0)
       {
-        localObject1 = new long[m];
-        paramElement = new long[m];
+        long[] arrayOfLong1 = new long[m];
+        long[] arrayOfLong2 = new long[m];
         int k = 0;
-        while (k < m)
+        for (;;)
         {
-          Object localObject2 = (Element)localNodeList.item(k);
-          String str;
-          if (localObject2 != null)
+          localObject = arrayOfLong1;
+          paramElement = arrayOfLong2;
+          if (k >= m) {
+            break;
+          }
+          localObject = (Element)localNodeList.item(k);
+          if (localObject != null)
           {
-            str = ((Element)localObject2).getAttribute("start");
-            localObject2 = ((Element)localObject2).getAttribute("end");
+            paramElement = ((Element)localObject).getAttribute("start");
+            localObject = ((Element)localObject).getAttribute("end");
           }
           try
           {
-            long l1 = Long.valueOf(str.trim()).longValue();
-            long l2 = Long.valueOf(((String)localObject2).trim()).longValue();
-            localObject1[k] = l1;
-            paramElement[k] = l2;
+            long l1 = Long.valueOf(paramElement.trim()).longValue();
+            long l2 = Long.valueOf(((String)localObject).trim()).longValue();
+            arrayOfLong1[k] = l1;
+            arrayOfLong2[k] = l2;
           }
-          catch (Exception localException)
+          catch (NumberFormatException|Exception paramElement)
           {
-            break label122;
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            label122:
-            break label122;
+            label129:
+            break label129;
           }
           k += 1;
         }
       }
     }
-    for (;;)
-    {
-      a(paramInt, (long[])localObject1, paramElement);
-      return;
-      localNodeList = null;
-      paramElement = (Element)localObject1;
-      localObject1 = localNodeList;
-    }
+    paramElement = null;
+    a(paramInt, (long[])localObject, paramElement);
   }
   
   public static boolean a(Context paramContext, String paramString)
   {
-    if (!a(paramString)) {}
-    for (;;)
-    {
+    if (!a(paramString)) {
       return false;
-      if ((!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramContext != null)) {
-        a(paramContext);
-      }
-      long l = Long.valueOf(paramString).longValue();
-      if ((c == null) || (d == null)) {
-        a();
-      }
-      int m;
-      int k;
-      if ((c != null) && (d != null) && (c.length == d.length))
+    }
+    if ((!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramContext != null)) {
+      a(paramContext);
+    }
+    long l = Long.valueOf(paramString).longValue();
+    if ((c == null) || (d == null)) {
+      a();
+    }
+    int m;
+    int k;
+    if ((c != null) && (d != null) && (c.length == d.length))
+    {
+      m = c.length;
+      k = 0;
+      while (k < m)
       {
-        m = c.length;
-        k = 0;
-        while (k < m)
-        {
-          if ((c[k] <= l) && (l <= d[k])) {
-            return true;
-          }
-          k += 1;
+        if ((c[k] <= l) && (l <= d[k])) {
+          return true;
         }
+        k += 1;
       }
-      if ((c != null) && (c.length != jdField_a_of_type_ArrayOfLong.length))
+    }
+    if (c != null)
+    {
+      k = c.length;
+      paramContext = jdField_a_of_type_ArrayOfLong;
+      if (k != paramContext.length)
       {
-        m = jdField_a_of_type_ArrayOfLong.length;
+        m = paramContext.length;
         k = 0;
         while (k < m)
         {
@@ -249,6 +244,7 @@ public class BmqqSegmentUtil
         }
       }
     }
+    return false;
   }
   
   public static boolean a(String paramString)
@@ -262,26 +258,27 @@ public class BmqqSegmentUtil
       }
       return bool;
     }
-    catch (NumberFormatException paramString)
-    {
-      return false;
-    }
-    catch (Exception paramString) {}
+    catch (NumberFormatException|Exception paramString) {}
     return false;
   }
   
   private static boolean a(String paramString, boolean paramBoolean)
   {
-    Object localObject2 = null;
     if (paramString != null)
     {
       String str = paramString.trim();
-      if ("".equals(str)) {
-        return true;
-      }
-      try
+      if (!"".equals(str))
       {
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        Object localObject2 = null;
+        try
+        {
+          paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        }
+        catch (ParserConfigurationException paramString)
+        {
+          paramString.printStackTrace();
+          paramString = null;
+        }
         if (paramString != null)
         {
           Object localObject1 = str;
@@ -294,86 +291,109 @@ public class BmqqSegmentUtil
             paramString = paramString.parse((InputSource)localObject1);
             paramBoolean = true;
           }
-          catch (SAXException paramString)
+          catch (Exception paramString)
           {
-            for (;;)
-            {
-              paramString.printStackTrace();
-              paramBoolean = false;
-              paramString = localObject2;
-            }
+            paramString.printStackTrace();
           }
           catch (IOException paramString)
           {
-            for (;;)
-            {
-              paramString.printStackTrace();
-              paramBoolean = false;
-              paramString = localObject2;
-            }
+            paramString.printStackTrace();
           }
-          catch (Exception paramString)
+          catch (SAXException paramString)
           {
-            for (;;)
-            {
-              paramString.printStackTrace();
-              paramBoolean = false;
-              paramString = localObject2;
-            }
+            paramString.printStackTrace();
           }
-          if (paramString != null)
-          {
-            a((Element)paramString.getElementsByTagName("hrtx-uin-segment").item(0), 1);
-            a((Element)paramString.getElementsByTagName("crm3-ext-uin-segment").item(0), 2);
-            a((Element)paramString.getElementsByTagName("crm3-wx-map-uin-segment").item(0), 3);
+          paramBoolean = false;
+          paramString = localObject2;
+          bool = paramBoolean;
+          if (paramString == null) {
+            return bool;
           }
+          a((Element)paramString.getElementsByTagName("hrtx-uin-segment").item(0), 1);
+          a((Element)paramString.getElementsByTagName("crm3-ext-uin-segment").item(0), 2);
+          a((Element)paramString.getElementsByTagName("crm3-wx-map-uin-segment").item(0), 3);
           return paramBoolean;
         }
       }
-      catch (ParserConfigurationException paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-          paramString = null;
-        }
-      }
     }
-    return true;
+    boolean bool = true;
+    return bool;
   }
   
   public static boolean b(Context paramContext, String paramString)
   {
-    if (!a(paramString)) {}
-    for (;;)
-    {
+    if (!a(paramString)) {
       return false;
-      if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        a(paramContext);
-      }
-      long l = Long.valueOf(paramString).longValue();
-      if ((e == null) || (f == null)) {
-        a();
-      }
-      if ((e != null) && (f != null) && (e.length == f.length))
+    }
+    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      a(paramContext);
+    }
+    long l = Long.valueOf(paramString).longValue();
+    if ((e == null) || (f == null)) {
+      a();
+    }
+    if ((e != null) && (f != null) && (e.length == f.length))
+    {
+      int m = e.length;
+      int k = 0;
+      while (k < m)
       {
-        int m = e.length;
-        int k = 0;
-        while (k < m)
-        {
-          if ((e[k] <= l) && (l <= f[k])) {
-            return true;
-          }
-          k += 1;
+        if ((e[k] <= l) && (l <= f[k])) {
+          return true;
         }
+        k += 1;
       }
     }
+    return false;
   }
   
   public static boolean b(String paramString)
   {
-    if (!a(paramString)) {}
-    while (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+    if (!a(paramString)) {
+      return false;
+    }
+    long l = Long.valueOf(paramString).longValue();
+    if ((l >= 2355000000L) && (l <= 2355999999L)) {
+      return true;
+    }
+    if ((l >= 2880000000L) && (l <= 2881999999L)) {
+      return true;
+    }
+    if ((l >= 2885000000L) && (l <= 2885999999L)) {
+      return true;
+    }
+    return (l >= 2850121000L) && (l <= 2854120999L);
+  }
+  
+  public static boolean c(Context paramContext, String paramString)
+  {
+    if (!a(paramString)) {
+      return false;
+    }
+    if ((!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramContext != null)) {
+      a(paramContext);
+    }
+    if ((g != null) && (h != null) && (g.length == h.length))
+    {
+      int k = 0;
+      while (k < g.length)
+      {
+        long l = Long.valueOf(paramString).longValue();
+        if ((l >= g[k]) && (l <= h[k])) {
+          return true;
+        }
+        k += 1;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    if (!a(paramString)) {
+      return false;
+    }
+    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return false;
     }
     return a(null, paramString);
@@ -381,7 +401,7 @@ public class BmqqSegmentUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.bmqq.util.BmqqSegmentUtil
  * JD-Core Version:    0.7.0.1
  */

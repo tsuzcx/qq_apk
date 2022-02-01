@@ -88,19 +88,42 @@ public class NotificationElement
   @NonNull
   public String toString()
   {
-    Bundle localBundle = null;
+    Bundle localBundle;
     if (a() != null) {
       localBundle = a().getExtras();
+    } else {
+      localBundle = null;
     }
-    if (a() != null) {}
-    for (String str = String.valueOf(a().getHeight());; str = "using default bitmap") {
-      return "NotificationElement{contentIntentExtras=" + localBundle + ", ticker='" + this.jdField_a_of_type_JavaLangString + '\'' + ", contentTitle='" + this.b + '\'' + ", notificationContentText='" + this.c + '\'' + ", notificationIconBitmap=" + str + ", briefOfMessage='" + this.d + '\'' + '}';
+    String str;
+    if (a() != null) {
+      str = String.valueOf(a().getHeight());
+    } else {
+      str = "using default bitmap";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NotificationElement{contentIntentExtras=");
+    localStringBuilder.append(localBundle);
+    localStringBuilder.append(", ticker='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", contentTitle='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", notificationContentText='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", notificationIconBitmap=");
+    localStringBuilder.append(str);
+    localStringBuilder.append(", briefOfMessage='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.NotificationElement
  * JD-Core Version:    0.7.0.1
  */

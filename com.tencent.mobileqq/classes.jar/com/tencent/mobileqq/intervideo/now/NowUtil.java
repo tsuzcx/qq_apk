@@ -1,13 +1,30 @@
 package com.tencent.mobileqq.intervideo.now;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Environment;
+import com.tencent.open.downloadnew.common.NoticeParam;
 import java.io.File;
 
 public class NowUtil
 {
   public static String a()
   {
-    return c() + "now_download_temp_QQ.apk";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append("now_download_temp_QQ.apk");
+    return localStringBuilder.toString();
+  }
+  
+  public static void a(Context paramContext)
+  {
+    NoticeParam localNoticeParam = new NoticeParam();
+    localNoticeParam.d = "com.tencent.now";
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.open.download.pause.com.tencent.mobileqq.tool");
+    localIntent.putExtra("processName", "com.tencent.mobileqq:tool");
+    localIntent.putExtra("noticeParam", localNoticeParam);
+    paramContext.sendBroadcast(localIntent);
   }
   
   private static void a(String paramString)
@@ -22,276 +39,282 @@ public class NowUtil
     }
   }
   
+  public static boolean a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    localStringBuilder.append("/now/h5testEnv");
+    return new File(localStringBuilder.toString()).exists();
+  }
+  
   public static boolean a(String paramString)
   {
-    if ((paramString == null) || ("".equalsIgnoreCase(paramString))) {
-      return false;
+    if ((paramString != null) && (!"".equalsIgnoreCase(paramString))) {
+      return new File(paramString).delete();
     }
-    return new File(paramString).delete();
+    return false;
   }
   
   public static boolean a(String paramString1, String paramString2)
   {
-    if (!"com.tencent.now".equals(paramString2)) {}
-    while (!b(b())) {
+    if (!"com.tencent.now".equals(paramString2)) {
       return false;
     }
-    return true;
+    return b(b());
   }
   
   /* Error */
   public static boolean a(String paramString1, String paramString2, String paramString3)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aconst_null
-    //   4: astore 6
-    //   6: aconst_null
-    //   7: astore_1
+    //   0: ldc 32
+    //   2: aload_2
+    //   3: invokevirtual 111	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   6: istore 4
     //   8: iconst_0
     //   9: istore 5
-    //   11: ldc 61
-    //   13: aload_2
-    //   14: invokevirtual 65	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   17: ifne +5 -> 22
-    //   20: iconst_0
-    //   21: ireturn
-    //   22: aload_0
-    //   23: invokestatic 70	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
-    //   26: ifeq -6 -> 20
-    //   29: invokestatic 68	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
-    //   32: invokestatic 70	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
-    //   35: ifeq +5 -> 40
-    //   38: iconst_1
-    //   39: ireturn
-    //   40: invokestatic 77	com/tencent/mobileqq/intervideo/now/NowUtil:a	()Ljava/lang/String;
-    //   43: astore 8
-    //   45: aload 8
-    //   47: invokestatic 70	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
-    //   50: ifeq +9 -> 59
-    //   53: aload 8
-    //   55: invokestatic 79	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
-    //   58: pop
-    //   59: new 29	java/io/File
-    //   62: dup
-    //   63: aload_0
-    //   64: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
-    //   67: astore_0
-    //   68: new 29	java/io/File
-    //   71: dup
-    //   72: aload 8
-    //   74: invokespecial 31	java/io/File:<init>	(Ljava/lang/String;)V
-    //   77: astore_2
-    //   78: aload_2
-    //   79: invokevirtual 82	java/io/File:createNewFile	()Z
-    //   82: pop
-    //   83: new 84	java/io/FileInputStream
-    //   86: dup
-    //   87: aload_0
-    //   88: invokespecial 87	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   91: astore_0
-    //   92: new 89	java/io/FileOutputStream
-    //   95: dup
-    //   96: aload_2
-    //   97: invokespecial 90	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   100: astore_1
-    //   101: sipush 1024
-    //   104: newarray byte
-    //   106: astore_2
-    //   107: aload_0
-    //   108: aload_2
-    //   109: invokevirtual 96	java/io/InputStream:read	([B)I
-    //   112: istore_3
-    //   113: iload_3
-    //   114: iconst_m1
-    //   115: if_icmpeq +58 -> 173
-    //   118: aload_1
-    //   119: aload_2
-    //   120: iconst_0
-    //   121: iload_3
-    //   122: invokevirtual 102	java/io/OutputStream:write	([BII)V
-    //   125: goto -18 -> 107
-    //   128: astore_2
-    //   129: aload_1
-    //   130: astore_2
-    //   131: aload_0
-    //   132: astore_1
-    //   133: aload_2
-    //   134: astore_0
-    //   135: aload_0
-    //   136: ifnull +7 -> 143
-    //   139: aload_0
-    //   140: invokevirtual 105	java/io/OutputStream:close	()V
-    //   143: iload 5
-    //   145: istore 4
-    //   147: aload_1
-    //   148: ifnull +11 -> 159
-    //   151: aload_1
-    //   152: invokevirtual 106	java/io/InputStream:close	()V
-    //   155: iload 5
-    //   157: istore 4
-    //   159: iload 4
-    //   161: ifne +134 -> 295
-    //   164: aload 8
-    //   166: invokestatic 79	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
-    //   169: pop
-    //   170: iload 4
-    //   172: ireturn
-    //   173: aload_1
-    //   174: ifnull +7 -> 181
-    //   177: aload_1
-    //   178: invokevirtual 105	java/io/OutputStream:close	()V
-    //   181: aload_0
-    //   182: ifnull +7 -> 189
-    //   185: aload_0
-    //   186: invokevirtual 106	java/io/InputStream:close	()V
-    //   189: iconst_1
-    //   190: istore 4
-    //   192: goto -33 -> 159
-    //   195: astore_0
-    //   196: aload_0
-    //   197: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   200: iconst_1
-    //   201: istore 4
-    //   203: goto -44 -> 159
-    //   206: astore_0
-    //   207: aload_0
-    //   208: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   211: iload 5
-    //   213: istore 4
-    //   215: goto -56 -> 159
-    //   218: astore_0
+    //   11: iload 4
+    //   13: ifne +5 -> 18
+    //   16: iconst_0
+    //   17: ireturn
+    //   18: aload_0
+    //   19: invokestatic 116	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
+    //   22: ifne +5 -> 27
+    //   25: iconst_0
+    //   26: ireturn
+    //   27: invokestatic 114	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
+    //   30: invokestatic 116	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
+    //   33: ifeq +5 -> 38
+    //   36: iconst_1
+    //   37: ireturn
+    //   38: invokestatic 123	com/tencent/mobileqq/intervideo/now/NowUtil:a	()Ljava/lang/String;
+    //   41: astore 8
+    //   43: aload 8
+    //   45: invokestatic 116	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;)Z
+    //   48: ifeq +9 -> 57
+    //   51: aload 8
+    //   53: invokestatic 125	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
+    //   56: pop
+    //   57: new 67	java/io/File
+    //   60: dup
+    //   61: aload_0
+    //   62: invokespecial 69	java/io/File:<init>	(Ljava/lang/String;)V
+    //   65: astore_0
+    //   66: new 67	java/io/File
+    //   69: dup
+    //   70: aload 8
+    //   72: invokespecial 69	java/io/File:<init>	(Ljava/lang/String;)V
+    //   75: astore_1
+    //   76: aload_1
+    //   77: invokevirtual 128	java/io/File:createNewFile	()Z
+    //   80: pop
+    //   81: aconst_null
+    //   82: astore_2
+    //   83: aconst_null
+    //   84: astore 7
+    //   86: aconst_null
+    //   87: astore 6
+    //   89: new 130	java/io/FileInputStream
+    //   92: dup
+    //   93: aload_0
+    //   94: invokespecial 133	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   97: astore_0
+    //   98: new 135	java/io/FileOutputStream
+    //   101: dup
+    //   102: aload_1
+    //   103: invokespecial 136	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   106: astore_1
+    //   107: sipush 1024
+    //   110: newarray byte
+    //   112: astore_2
+    //   113: aload_0
+    //   114: aload_2
+    //   115: invokevirtual 142	java/io/InputStream:read	([B)I
+    //   118: istore_3
+    //   119: iload_3
+    //   120: iconst_m1
+    //   121: if_icmpeq +13 -> 134
+    //   124: aload_1
+    //   125: aload_2
+    //   126: iconst_0
+    //   127: iload_3
+    //   128: invokevirtual 148	java/io/OutputStream:write	([BII)V
+    //   131: goto -18 -> 113
+    //   134: aload_1
+    //   135: invokevirtual 151	java/io/OutputStream:close	()V
+    //   138: aload_0
+    //   139: invokevirtual 152	java/io/InputStream:close	()V
+    //   142: goto +8 -> 150
+    //   145: astore_0
+    //   146: aload_0
+    //   147: invokevirtual 155	java/io/IOException:printStackTrace	()V
+    //   150: iconst_1
+    //   151: istore 4
+    //   153: goto +140 -> 293
+    //   156: astore 6
+    //   158: aload_0
+    //   159: astore_2
+    //   160: aload 6
+    //   162: astore_0
+    //   163: goto +28 -> 191
+    //   166: goto +57 -> 223
+    //   169: goto +100 -> 269
+    //   172: astore 7
+    //   174: aload 6
+    //   176: astore_1
+    //   177: aload_0
+    //   178: astore_2
+    //   179: aload 7
+    //   181: astore_0
+    //   182: goto +9 -> 191
+    //   185: astore_0
+    //   186: aconst_null
+    //   187: astore_2
+    //   188: aload 6
+    //   190: astore_1
+    //   191: aload_1
+    //   192: ifnull +10 -> 202
+    //   195: aload_1
+    //   196: invokevirtual 151	java/io/OutputStream:close	()V
+    //   199: goto +3 -> 202
+    //   202: aload_2
+    //   203: ifnull +14 -> 217
+    //   206: aload_2
+    //   207: invokevirtual 152	java/io/InputStream:close	()V
+    //   210: goto +7 -> 217
+    //   213: aload_1
+    //   214: invokevirtual 155	java/io/IOException:printStackTrace	()V
+    //   217: aload_0
+    //   218: athrow
     //   219: aconst_null
     //   220: astore_0
-    //   221: aload 7
-    //   223: astore_1
-    //   224: aload_1
-    //   225: ifnull +7 -> 232
-    //   228: aload_1
-    //   229: invokevirtual 105	java/io/OutputStream:close	()V
-    //   232: iload 5
-    //   234: istore 4
-    //   236: aload_0
-    //   237: ifnull -78 -> 159
-    //   240: aload_0
-    //   241: invokevirtual 106	java/io/InputStream:close	()V
-    //   244: iload 5
-    //   246: istore 4
-    //   248: goto -89 -> 159
-    //   251: astore_0
-    //   252: aload_0
-    //   253: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   256: iload 5
-    //   258: istore 4
-    //   260: goto -101 -> 159
-    //   263: astore_1
+    //   221: aload_2
+    //   222: astore_1
+    //   223: aload_1
+    //   224: ifnull +10 -> 234
+    //   227: aload_1
+    //   228: invokevirtual 151	java/io/OutputStream:close	()V
+    //   231: goto +3 -> 234
+    //   234: iload 5
+    //   236: istore 4
+    //   238: aload_0
+    //   239: ifnull +54 -> 293
+    //   242: aload_0
+    //   243: invokevirtual 152	java/io/InputStream:close	()V
+    //   246: iload 5
+    //   248: istore 4
+    //   250: goto +43 -> 293
+    //   253: aload_0
+    //   254: invokevirtual 155	java/io/IOException:printStackTrace	()V
+    //   257: iload 5
+    //   259: istore 4
+    //   261: goto +32 -> 293
     //   264: aconst_null
     //   265: astore_0
-    //   266: aload 6
-    //   268: astore_2
-    //   269: aload_2
+    //   266: aload 7
+    //   268: astore_1
+    //   269: aload_1
     //   270: ifnull +7 -> 277
-    //   273: aload_2
-    //   274: invokevirtual 105	java/io/OutputStream:close	()V
-    //   277: aload_0
-    //   278: ifnull +7 -> 285
+    //   273: aload_1
+    //   274: invokevirtual 151	java/io/OutputStream:close	()V
+    //   277: iload 5
+    //   279: istore 4
     //   281: aload_0
-    //   282: invokevirtual 106	java/io/InputStream:close	()V
-    //   285: aload_1
-    //   286: athrow
-    //   287: astore_0
-    //   288: aload_0
-    //   289: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   292: goto -7 -> 285
-    //   295: aload 8
-    //   297: invokestatic 68	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
-    //   300: invokestatic 111	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   282: ifnull +11 -> 293
+    //   285: aload_0
+    //   286: invokevirtual 152	java/io/InputStream:close	()V
+    //   289: iload 5
+    //   291: istore 4
+    //   293: iload 4
+    //   295: ifne +12 -> 307
+    //   298: aload 8
+    //   300: invokestatic 125	com/tencent/mobileqq/intervideo/now/NowUtil:a	(Ljava/lang/String;)Z
     //   303: pop
     //   304: iload 4
     //   306: ireturn
-    //   307: astore_0
-    //   308: iconst_0
-    //   309: ireturn
-    //   310: astore_1
-    //   311: aload 6
-    //   313: astore_2
-    //   314: goto -45 -> 269
-    //   317: astore 6
-    //   319: aload_1
-    //   320: astore_2
-    //   321: aload 6
-    //   323: astore_1
-    //   324: goto -55 -> 269
-    //   327: astore_1
-    //   328: aload 7
+    //   307: aload 8
+    //   309: invokestatic 114	com/tencent/mobileqq/intervideo/now/NowUtil:b	()Ljava/lang/String;
+    //   312: invokestatic 157	com/tencent/mobileqq/intervideo/now/NowUtil:b	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   315: pop
+    //   316: iload 4
+    //   318: ireturn
+    //   319: astore_0
+    //   320: iconst_0
+    //   321: ireturn
+    //   322: astore_0
+    //   323: goto -59 -> 264
+    //   326: astore_0
+    //   327: goto -108 -> 219
     //   330: astore_1
-    //   331: goto -107 -> 224
-    //   334: astore_2
-    //   335: goto -111 -> 224
-    //   338: astore_0
-    //   339: aconst_null
-    //   340: astore_0
-    //   341: goto -206 -> 135
-    //   344: astore_1
-    //   345: aconst_null
-    //   346: astore_2
-    //   347: aload_0
-    //   348: astore_1
-    //   349: aload_2
-    //   350: astore_0
-    //   351: goto -216 -> 135
+    //   331: aload 7
+    //   333: astore_1
+    //   334: goto -65 -> 269
+    //   337: astore_1
+    //   338: aload_2
+    //   339: astore_1
+    //   340: goto -117 -> 223
+    //   343: astore_2
+    //   344: goto -175 -> 169
+    //   347: astore_2
+    //   348: goto -182 -> 166
+    //   351: astore_1
+    //   352: goto -139 -> 213
+    //   355: astore_0
+    //   356: goto -103 -> 253
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	354	0	paramString1	String
-    //   0	354	1	paramString2	String
-    //   0	354	2	paramString3	String
-    //   112	10	3	i	int
-    //   145	160	4	bool1	boolean
-    //   9	248	5	bool2	boolean
-    //   4	308	6	localObject1	Object
-    //   317	5	6	localObject2	Object
-    //   1	328	7	localObject3	Object
-    //   43	253	8	str	String
+    //   0	359	0	paramString1	String
+    //   0	359	1	paramString2	String
+    //   0	359	2	paramString3	String
+    //   118	10	3	i	int
+    //   6	311	4	bool1	boolean
+    //   9	281	5	bool2	boolean
+    //   87	1	6	localObject1	Object
+    //   156	33	6	localObject2	Object
+    //   84	1	7	localObject3	Object
+    //   172	160	7	localObject4	Object
+    //   41	267	8	str	String
     // Exception table:
     //   from	to	target	type
-    //   101	107	128	java/io/FileNotFoundException
-    //   107	113	128	java/io/FileNotFoundException
-    //   118	125	128	java/io/FileNotFoundException
-    //   177	181	195	java/io/IOException
-    //   185	189	195	java/io/IOException
-    //   139	143	206	java/io/IOException
-    //   151	155	206	java/io/IOException
-    //   83	92	218	java/io/IOException
-    //   228	232	251	java/io/IOException
-    //   240	244	251	java/io/IOException
-    //   83	92	263	finally
-    //   273	277	287	java/io/IOException
-    //   281	285	287	java/io/IOException
-    //   78	83	307	java/io/IOException
-    //   92	101	310	finally
-    //   101	107	317	finally
-    //   107	113	317	finally
-    //   118	125	317	finally
-    //   92	101	327	java/io/IOException
-    //   101	107	334	java/io/IOException
-    //   107	113	334	java/io/IOException
-    //   118	125	334	java/io/IOException
-    //   83	92	338	java/io/FileNotFoundException
-    //   92	101	344	java/io/FileNotFoundException
+    //   134	142	145	java/io/IOException
+    //   107	113	156	finally
+    //   113	119	156	finally
+    //   124	131	156	finally
+    //   98	107	172	finally
+    //   89	98	185	finally
+    //   76	81	319	java/io/IOException
+    //   89	98	322	java/io/FileNotFoundException
+    //   89	98	326	java/io/IOException
+    //   98	107	330	java/io/FileNotFoundException
+    //   98	107	337	java/io/IOException
+    //   107	113	343	java/io/FileNotFoundException
+    //   113	119	343	java/io/FileNotFoundException
+    //   124	131	343	java/io/FileNotFoundException
+    //   107	113	347	java/io/IOException
+    //   113	119	347	java/io/IOException
+    //   124	131	347	java/io/IOException
+    //   195	199	351	java/io/IOException
+    //   206	210	351	java/io/IOException
+    //   227	231	355	java/io/IOException
+    //   242	246	355	java/io/IOException
+    //   273	277	355	java/io/IOException
+    //   285	289	355	java/io/IOException
   }
   
   public static String b()
   {
-    return c() + "now_download_common.apk";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append("now_download_common.apk");
+    return localStringBuilder.toString();
   }
   
   public static boolean b(String paramString)
   {
-    if ((paramString == null) || ("".equalsIgnoreCase(paramString))) {
-      return false;
+    if ((paramString != null) && (!"".equalsIgnoreCase(paramString))) {
+      return new File(paramString).exists();
     }
-    return new File(paramString).exists();
+    return false;
   }
   
   public static boolean b(String paramString1, String paramString2)
@@ -304,14 +327,17 @@ public class NowUtil
   
   private static String c()
   {
-    String str = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/now/";
-    a(str);
-    return str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+    ((StringBuilder)localObject).append("/tencent/now/");
+    localObject = ((StringBuilder)localObject).toString();
+    a((String)localObject);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowUtil
  * JD-Core Version:    0.7.0.1
  */

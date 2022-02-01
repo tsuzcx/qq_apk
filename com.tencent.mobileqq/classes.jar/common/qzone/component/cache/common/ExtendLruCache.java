@@ -22,28 +22,35 @@ public class ExtendLruCache<K, V>
   
   public String toString()
   {
-    float f1 = 0.0F;
     StringBuilder localStringBuilder = new StringBuilder(128);
-    float f2 = this.jdField_a_of_type_Int + this.b;
+    int i = this.jdField_a_of_type_Int;
+    float f2 = this.b + i;
+    float f1 = 0.0F;
     if (f2 != 0.0F) {
-      f1 = this.jdField_a_of_type_Int * 100 / f2;
+      f1 = i * 100 / f2;
     }
-    String str = String.format("ExtendLruCache[hits=%d,misses=%d,hitRate=%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), String.valueOf(f1) });
+    Object localObject = String.format("ExtendLruCache[hits=%d,misses=%d,hitRate=%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), String.valueOf(f1) });
     this.jdField_a_of_type_Int = 0;
     this.b = 0;
-    localStringBuilder.append(str);
+    localStringBuilder.append((String)localObject);
     localStringBuilder.append("\n");
     localStringBuilder.append(this.jdField_a_of_type_AndroidSupportV4UtilLruCache.toString());
-    int i = this.jdField_a_of_type_AndroidSupportV4UtilLruCache.size() / 1024;
+    i = this.jdField_a_of_type_AndroidSupportV4UtilLruCache.size() / 1024;
     int j = this.jdField_a_of_type_AndroidSupportV4UtilLruCache.maxSize() / 1024;
     localStringBuilder.append("\n");
-    localStringBuilder.append("Lru Size Info:" + String.valueOf(i) + "kb/" + String.valueOf(j) + "kb");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Lru Size Info:");
+    ((StringBuilder)localObject).append(String.valueOf(i));
+    ((StringBuilder)localObject).append("kb/");
+    ((StringBuilder)localObject).append(String.valueOf(j));
+    ((StringBuilder)localObject).append("kb");
+    localStringBuilder.append(((StringBuilder)localObject).toString());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     common.qzone.component.cache.common.ExtendLruCache
  * JD-Core Version:    0.7.0.1
  */

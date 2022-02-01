@@ -34,21 +34,33 @@ public class ViewModelProvider$AndroidViewModelFactory
         ViewModel localViewModel = (ViewModel)paramClass.getConstructor(new Class[] { Application.class }).newInstance(new Object[] { this.mApplication });
         return localViewModel;
       }
-      catch (NoSuchMethodException localNoSuchMethodException)
+      catch (InvocationTargetException localInvocationTargetException)
       {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localNoSuchMethodException);
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Cannot create an instance of ");
+        localStringBuilder.append(paramClass);
+        throw new RuntimeException(localStringBuilder.toString(), localInvocationTargetException);
       }
       catch (InstantiationException localInstantiationException)
       {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Cannot create an instance of ");
+        localStringBuilder.append(paramClass);
+        throw new RuntimeException(localStringBuilder.toString(), localInstantiationException);
       }
-      catch (InvocationTargetException localInvocationTargetException)
+      catch (IllegalAccessException localIllegalAccessException)
       {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localInvocationTargetException);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Cannot create an instance of ");
+        localStringBuilder.append(paramClass);
+        throw new RuntimeException(localStringBuilder.toString(), localIllegalAccessException);
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Cannot create an instance of ");
+        localStringBuilder.append(paramClass);
+        throw new RuntimeException(localStringBuilder.toString(), localNoSuchMethodException);
       }
     }
     return super.create(paramClass);
@@ -56,7 +68,7 @@ public class ViewModelProvider$AndroidViewModelFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory
  * JD-Core Version:    0.7.0.1
  */

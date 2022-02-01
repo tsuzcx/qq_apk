@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.hostproxy;
 
 import android.content.Context;
+import com.tencent.falco.base.libapi.hostproxy.AnchorTagInterface;
+import com.tencent.falco.base.libapi.hostproxy.AuthInterface;
 import com.tencent.falco.base.libapi.hostproxy.ClickEventInterface;
 import com.tencent.falco.base.libapi.hostproxy.HostAppResInterface;
 import com.tencent.falco.base.libapi.hostproxy.HostLoginInterface;
@@ -13,8 +15,17 @@ import java.io.File;
 public abstract class DefaultCustomHostProxyService
   implements HostProxyInterface
 {
-  public String a = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv/";
-  public String b = "testserver";
+  protected String a;
+  protected String b;
+  
+  public DefaultCustomHostProxyService()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append("/testEnv/");
+    this.a = localStringBuilder.toString();
+    this.b = "testserver";
+  }
   
   public String a()
   {
@@ -24,6 +35,16 @@ public abstract class DefaultCustomHostProxyService
   public abstract boolean a();
   
   public void clearEventOutput() {}
+  
+  public AnchorTagInterface getAnchorTagInterface()
+  {
+    return null;
+  }
+  
+  public AuthInterface getAuthInterface()
+  {
+    return null;
+  }
   
   public ClickEventInterface getClickEventInterface()
   {
@@ -56,7 +77,7 @@ public abstract class DefaultCustomHostProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.hostproxy.DefaultCustomHostProxyService
  * JD-Core Version:    0.7.0.1
  */

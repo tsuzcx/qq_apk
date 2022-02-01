@@ -14,19 +14,24 @@ class DoubleVideoCtrlUI$10
   {
     if (!this.this$0.h())
     {
-      SessionInfo localSessionInfo = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(localSessionInfo.d, 239);
+      Object localObject = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(((SessionInfo)localObject).c, 239);
       this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(239);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(localSessionInfo.d, 9);
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), localSessionInfo.d, Boolean.valueOf(true) });
-      QLog.w(this.this$0.d, 1, "onCreate, exit when OnCreate, seq[" + this.a + "]");
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(((SessionInfo)localObject).c, 9);
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), ((SessionInfo)localObject).c, Boolean.valueOf(true) });
+      localObject = this.this$0.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCreate, exit when OnCreate, seq[");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("]");
+      QLog.w((String)localObject, 1, localStringBuilder.toString());
       this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a, 1008);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.10
  * JD-Core Version:    0.7.0.1
  */

@@ -30,18 +30,20 @@ public final class PictureUtil
     localIntent.putExtra("crop", "true");
     paramUri1 = Build.MANUFACTURER;
     Intrinsics.checkExpressionValueIsNotNull(paramUri1, "Build.MANUFACTURER");
-    if (paramUri1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
-    }
-    paramUri1 = paramUri1.toLowerCase();
-    Intrinsics.checkExpressionValueIsNotNull(paramUri1, "(this as java.lang.String).toLowerCase()");
-    if (Intrinsics.areEqual(paramUri1, "huawei"))
+    if (paramUri1 != null)
     {
-      localIntent.putExtra("aspectX", 9998);
-      localIntent.putExtra("aspectY", 9999);
-    }
-    for (;;)
-    {
+      paramUri1 = paramUri1.toLowerCase();
+      Intrinsics.checkExpressionValueIsNotNull(paramUri1, "(this as java.lang.String).toLowerCase()");
+      if (Intrinsics.areEqual(paramUri1, "huawei"))
+      {
+        localIntent.putExtra("aspectX", 9998);
+        localIntent.putExtra("aspectY", 9999);
+      }
+      else
+      {
+        localIntent.putExtra("aspectX", 1);
+        localIntent.putExtra("aspectY", 1);
+      }
       localIntent.putExtra("circleCrop", false);
       localIntent.putExtra("scale", true);
       localIntent.putExtra("return-data", false);
@@ -49,30 +51,33 @@ public final class PictureUtil
       localIntent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
       localIntent.putExtra("noFaceDetection", true);
       return localIntent;
-      localIntent.putExtra("aspectX", 1);
-      localIntent.putExtra("aspectY", 1);
     }
+    throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
   }
   
   private final File a()
   {
-    File localFile = new File(TopicSDKHelperKt.a());
+    File localFile = new File(TopicSDKHelperKt.b());
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
-    localFile = new File(localFile, "CropImage_" + System.currentTimeMillis() + ".jpg");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CropImage_");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append(".jpg");
+    localFile = new File(localFile, localStringBuilder.toString());
     try
     {
       if (localFile.exists())
       {
         localFile.delete();
         TLog.d("PictureUtil", "delete");
+        return localFile;
       }
-      return localFile;
     }
     catch (Exception localException)
     {
-      TLog.c("PictureUtil", "onCapturePic", (Throwable)localException);
+      TLog.b("PictureUtil", "onCapturePic", (Throwable)localException);
     }
     return localFile;
   }
@@ -93,7 +98,7 @@ public final class PictureUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.PictureUtil
  * JD-Core Version:    0.7.0.1
  */

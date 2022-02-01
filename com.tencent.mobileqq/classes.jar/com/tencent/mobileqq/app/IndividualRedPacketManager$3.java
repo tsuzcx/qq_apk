@@ -11,15 +11,16 @@ class IndividualRedPacketManager$3
   public int a(File paramFile1, File paramFile2)
   {
     long l2 = 0L;
-    if (paramFile1 != null) {}
-    for (long l1 = paramFile1.lastModified();; l1 = 0L)
-    {
-      if (paramFile2 != null) {
-        l2 = paramFile2.lastModified();
-      }
-      if (l2 >= l1) {
-        break;
-      }
+    long l1;
+    if (paramFile1 != null) {
+      l1 = paramFile1.lastModified();
+    } else {
+      l1 = 0L;
+    }
+    if (paramFile2 != null) {
+      l2 = paramFile2.lastModified();
+    }
+    if (l2 < l1) {
       return -1;
     }
     if (l2 > l1) {
@@ -30,7 +31,7 @@ class IndividualRedPacketManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.IndividualRedPacketManager.3
  * JD-Core Version:    0.7.0.1
  */

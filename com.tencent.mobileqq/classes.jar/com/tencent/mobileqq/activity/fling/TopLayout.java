@@ -73,21 +73,26 @@ public class TopLayout
     if (paramView != null)
     {
       float f1 = Math.abs(paramInt1 / paramInt2);
-      float f2 = 0.95F + (1.0F - 0.95F) * f1;
+      float f2 = 0.05000001F * f1 + 0.95F;
       if (f2 < 1.0F) {
         paramView.setForeground(new ColorDrawable((int)((1.0F - f1) * 128.0F) << 24));
       }
       a(paramView, f2);
     }
-    if (Math.abs(paramInt1) >= paramInt2) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener.endDrag();
+    if (Math.abs(paramInt1) >= paramInt2)
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener;
+      if (paramView != null) {
+        paramView.endDrag();
       }
     }
-    while ((paramInt1 != 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener == null)) {
-      return;
+    else if (paramInt1 == 0)
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener;
+      if (paramView != null) {
+        paramView.cancelDrag();
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener.cancelDrag();
   }
   
   public void setBehind(View paramView)
@@ -107,14 +112,15 @@ public class TopLayout
   
   public void startDrag()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener.startDrag();
+    TopLayout.OnDraggingListener localOnDraggingListener = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout$OnDraggingListener;
+    if (localOnDraggingListener != null) {
+      localOnDraggingListener.startDrag();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.TopLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -27,29 +27,28 @@ public class ImageCursor
   
   private void updateMimeType(LocalMediaInfo paramLocalMediaInfo)
   {
-    if (("*/*".equals(paramLocalMediaInfo.mMimeType)) || ("image/*".equals(paramLocalMediaInfo.mMimeType)))
-    {
-      if ((!paramLocalMediaInfo.path.contains(".jpg")) && (!paramLocalMediaInfo.path.contains(".jpeg"))) {
-        break label55;
+    if (("*/*".equals(paramLocalMediaInfo.mMimeType)) || ("image/*".equals(paramLocalMediaInfo.mMimeType))) {
+      if ((!paramLocalMediaInfo.path.contains(".jpg")) && (!paramLocalMediaInfo.path.contains(".jpeg")))
+      {
+        if (paramLocalMediaInfo.path.contains(".gif"))
+        {
+          paramLocalMediaInfo.mMimeType = "image/gif";
+          return;
+        }
+        if (paramLocalMediaInfo.path.contains(".bmp"))
+        {
+          paramLocalMediaInfo.mMimeType = "image/bmp";
+          return;
+        }
+        if (paramLocalMediaInfo.path.contains(".png")) {
+          paramLocalMediaInfo.mMimeType = "image/png";
+        }
       }
-      paramLocalMediaInfo.mMimeType = "image/jpeg";
+      else
+      {
+        paramLocalMediaInfo.mMimeType = "image/jpeg";
+      }
     }
-    label55:
-    do
-    {
-      return;
-      if (paramLocalMediaInfo.path.contains(".gif"))
-      {
-        paramLocalMediaInfo.mMimeType = "image/gif";
-        return;
-      }
-      if (paramLocalMediaInfo.path.contains(".bmp"))
-      {
-        paramLocalMediaInfo.mMimeType = "image/bmp";
-        return;
-      }
-    } while (!paramLocalMediaInfo.path.contains(".png"));
-    paramLocalMediaInfo.mMimeType = "image/png";
   }
   
   Cursor createCursor(Context paramContext)
@@ -77,14 +76,18 @@ public class ImageCursor
     updateMimeType(localLocalMediaInfo);
     if ((localLocalMediaInfo.mediaWidth <= 0) || (localLocalMediaInfo.mediaHeight <= 0))
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
+      Object localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       int[] arrayOfInt = new int[2];
-      QAlbumBaseUtil.getWHByPath(localLocalMediaInfo.path, localOptions, arrayOfInt);
+      QAlbumBaseUtil.getWHByPath(localLocalMediaInfo.path, (BitmapFactory.Options)localObject, arrayOfInt);
       localLocalMediaInfo.mediaWidth = arrayOfInt[0];
       localLocalMediaInfo.mediaHeight = arrayOfInt[1];
-      if (((localLocalMediaInfo.mediaWidth <= 0) || (localLocalMediaInfo.mediaHeight <= 0)) && (QLog.isColorLevel())) {
-        QLog.i("MediaQuery", 2, "image no size " + localLocalMediaInfo.path);
+      if (((localLocalMediaInfo.mediaWidth <= 0) || (localLocalMediaInfo.mediaHeight <= 0)) && (QLog.isColorLevel()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("image no size ");
+        ((StringBuilder)localObject).append(localLocalMediaInfo.path);
+        QLog.i("QQAlbum", 2, ((StringBuilder)localObject).toString());
       }
     }
     return localLocalMediaInfo;
@@ -92,15 +95,15 @@ public class ImageCursor
   
   protected boolean needMediaInfo(LocalMediaInfo paramLocalMediaInfo)
   {
-    if ((!super.needMediaInfo(paramLocalMediaInfo)) || (paramLocalMediaInfo.mMimeType == null)) {
-      return false;
+    if ((super.needMediaInfo(paramLocalMediaInfo)) && (paramLocalMediaInfo.mMimeType != null)) {
+      return paramLocalMediaInfo.mMimeType.contains("image");
     }
-    return paramLocalMediaInfo.mMimeType.contains("image");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.querymedia.ImageCursor
  * JD-Core Version:    0.7.0.1
  */

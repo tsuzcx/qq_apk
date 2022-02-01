@@ -16,14 +16,15 @@ class SDKEmotionSettingManager$7
       return;
     }
     QLog.i("SDKEmotionSettingManager", 1, "checkJumpActionTimeOutRunnable -->preForward--fetch openid timeout");
-    this.this$0.a = true;
-    this.this$0.c();
+    SDKEmotionSettingManager localSDKEmotionSettingManager = this.this$0;
+    localSDKEmotionSettingManager.a = true;
+    localSDKEmotionSettingManager.d();
     SDKEmotionSettingManager.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.7
  * JD-Core Version:    0.7.0.1
  */

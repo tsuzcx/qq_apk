@@ -27,15 +27,16 @@ public class NativeVueEngine
   
   public static NativeVueEngine getInstance()
   {
-    if (INSTANCE == null) {}
-    try
-    {
-      if (INSTANCE == null) {
-        INSTANCE = new NativeVueEngine();
+    if (INSTANCE == null) {
+      try
+      {
+        if (INSTANCE == null) {
+          INSTANCE = new NativeVueEngine();
+        }
       }
-      return INSTANCE;
+      finally {}
     }
-    finally {}
+    return INSTANCE;
   }
   
   private native boolean initNaive(String paramString1, String paramString2);
@@ -50,7 +51,10 @@ public class NativeVueEngine
     catch (Throwable paramString1)
     {
       paramDomResult.onResult("");
-      onLogError("[internalCreateDom]: " + paramString1.getMessage());
+      paramString2 = new StringBuilder();
+      paramString2.append("[internalCreateDom]: ");
+      paramString2.append(paramString1.getMessage());
+      onLogError(paramString2.toString());
     }
   }
   
@@ -59,16 +63,20 @@ public class NativeVueEngine
     try
     {
       Iterator localIterator = this.builder.envMap.entrySet().iterator();
+      Object localObject;
       while (localIterator.hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        initNaive((String)localEntry.getKey(), (String)localEntry.getValue());
+        localObject = (Map.Entry)localIterator.next();
+        initNaive((String)((Map.Entry)localObject).getKey(), (String)((Map.Entry)localObject).getValue());
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      onLogError("initNativeVueError: " + localThrowable.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initNativeVueError: ");
+      ((StringBuilder)localObject).append(localThrowable.getMessage());
+      onLogError(((StringBuilder)localObject).toString());
     }
   }
   
@@ -166,7 +174,7 @@ public class NativeVueEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.nativevue.NativeVueEngine
  * JD-Core Version:    0.7.0.1
  */

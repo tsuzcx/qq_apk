@@ -20,18 +20,18 @@ public final class c
   {
     synchronized (this.b)
     {
-      if (this.c)
-      {
+      if (this.c) {
         paramRunnable.run();
-        return this;
+      } else {
+        this.a.add(paramRunnable);
       }
-      this.a.add(paramRunnable);
+      return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hmf.tasks.a.c
  * JD-Core Version:    0.7.0.1
  */

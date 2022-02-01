@@ -16,44 +16,57 @@ class TroopFeedsDataManager$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 2)
     {
-    default: 
-    case 2: 
-    case 3: 
-    case 4: 
-      do
+      if (i != 3)
       {
-        do
+        if (i != 4)
         {
+          if (i != 5)
+          {
+            if (i != 6) {
+              return;
+            }
+            TroopFeedsDataManager.d(this.a);
+            this.a.notifyObservers(Integer.valueOf(103));
+            return;
+          }
+          TroopFeedsDataManager.c(this.a);
+          this.a.notifyObservers(Integer.valueOf(1010));
           return;
-          this.a.a = ((List)paramMessage.obj);
-          this.a.a(1000);
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          TroopFeedsDataManager.a(this.a);
-          this.a.notifyObservers(Integer.valueOf(101));
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
-        return;
+        }
         this.a.a = ((List)paramMessage.obj);
         TroopFeedsDataManager.b(this.a);
         this.a.notifyObservers(Integer.valueOf(105));
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
-      return;
-    case 5: 
-      TroopFeedsDataManager.c(this.a);
-      this.a.notifyObservers(Integer.valueOf(1010));
-      return;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
+        }
+      }
+      else
+      {
+        this.a.a = ((List)paramMessage.obj);
+        TroopFeedsDataManager.a(this.a);
+        this.a.notifyObservers(Integer.valueOf(101));
+        if (QLog.isColorLevel())
+        {
+          paramMessage = new StringBuilder();
+          paramMessage.append("end load feed: ");
+          paramMessage.append(System.currentTimeMillis());
+          QLog.d("TroopFeedsDataManager", 2, paramMessage.toString());
+        }
+      }
     }
-    TroopFeedsDataManager.d(this.a);
-    this.a.notifyObservers(Integer.valueOf(103));
+    else
+    {
+      this.a.a = ((List)paramMessage.obj);
+      this.a.a(1000);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager.1
  * JD-Core Version:    0.7.0.1
  */

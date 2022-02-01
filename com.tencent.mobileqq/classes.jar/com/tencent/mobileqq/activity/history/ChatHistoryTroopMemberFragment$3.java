@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -15,11 +15,12 @@ class ChatHistoryTroopMemberFragment$3
   
   public void run()
   {
-    Object localObject1 = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.this$0.getActivity().app, this.this$0.c, this.this$0.w);
-    ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberCardInfo(this.this$0.getActivity().app, this.this$0.c, this.this$0.w);
+    Object localObject1 = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.this$0.getBaseActivity().app, this.this$0.c, this.this$0.w);
+    ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberCardInfo(this.this$0.getBaseActivity().app, this.this$0.c, this.this$0.w);
     if ((localObject1 != null) && (this.a != null))
     {
-      this.this$0.a(this.this$0.w);
+      ??? = this.this$0;
+      ???.a(???.w);
       synchronized (this.this$0)
       {
         localObject1 = this.this$0.a((TroopMemberInfo)localObject1, this.a);
@@ -32,7 +33,7 @@ class ChatHistoryTroopMemberFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.3
  * JD-Core Version:    0.7.0.1
  */

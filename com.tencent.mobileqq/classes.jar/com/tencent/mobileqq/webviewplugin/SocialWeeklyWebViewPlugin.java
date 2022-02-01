@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
@@ -26,274 +25,305 @@ public class SocialWeeklyWebViewPlugin
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 7
-    //   3: aload_1
-    //   4: iconst_0
-    //   5: invokestatic 28	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
-    //   8: astore_2
-    //   9: aload_2
-    //   10: astore_1
-    //   11: aload 7
-    //   13: astore_2
-    //   14: aload_1
-    //   15: ifnull +142 -> 157
-    //   18: ldc 30
-    //   20: invokestatic 36	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
-    //   23: invokevirtual 42	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   26: ifeq +165 -> 191
-    //   29: new 44	java/io/File
-    //   32: dup
-    //   33: getstatic 49	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH	Ljava/lang/String;
-    //   36: invokespecial 52	java/io/File:<init>	(Ljava/lang/String;)V
-    //   39: astore_2
-    //   40: new 44	java/io/File
-    //   43: dup
-    //   44: aload_2
-    //   45: ldc 12
-    //   47: invokespecial 55	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   50: astore_2
-    //   51: aload_2
-    //   52: invokevirtual 59	java/io/File:exists	()Z
-    //   55: ifne +8 -> 63
-    //   58: aload_2
-    //   59: invokevirtual 62	java/io/File:mkdirs	()Z
-    //   62: pop
-    //   63: new 44	java/io/File
-    //   66: dup
-    //   67: aload_2
-    //   68: aload_1
-    //   69: invokestatic 68	com/tencent/qphone/base/util/MD5:toMD5	([B)Ljava/lang/String;
-    //   72: invokespecial 55	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   75: astore 5
-    //   77: aload 5
-    //   79: invokevirtual 59	java/io/File:exists	()Z
-    //   82: ifeq +9 -> 91
-    //   85: aload 5
-    //   87: invokevirtual 71	java/io/File:delete	()Z
-    //   90: pop
-    //   91: new 73	java/io/FileOutputStream
-    //   94: dup
-    //   95: aload 5
-    //   97: invokespecial 76	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   100: astore_2
-    //   101: new 78	java/io/BufferedOutputStream
-    //   104: dup
-    //   105: aload_2
-    //   106: invokespecial 81	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   109: astore 6
-    //   111: aload 6
-    //   113: astore 4
-    //   115: aload_2
-    //   116: astore_3
-    //   117: aload 6
-    //   119: aload_1
-    //   120: invokevirtual 85	java/io/BufferedOutputStream:write	([B)V
-    //   123: aload 6
-    //   125: astore 4
-    //   127: aload_2
-    //   128: astore_3
-    //   129: aload 5
-    //   131: invokevirtual 88	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   134: astore_1
-    //   135: aload_2
-    //   136: ifnull +7 -> 143
-    //   139: aload_2
-    //   140: invokevirtual 91	java/io/FileOutputStream:close	()V
-    //   143: aload_1
-    //   144: astore_2
-    //   145: aload 6
-    //   147: ifnull +10 -> 157
-    //   150: aload 6
-    //   152: invokevirtual 92	java/io/BufferedOutputStream:close	()V
-    //   155: aload_1
-    //   156: astore_2
-    //   157: aload_2
-    //   158: areturn
-    //   159: astore_2
-    //   160: ldc 94
-    //   162: iconst_1
-    //   163: new 96	java/lang/StringBuilder
-    //   166: dup
-    //   167: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   170: ldc 99
-    //   172: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: aload_1
-    //   176: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: aload_2
-    //   183: invokestatic 112	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   186: aconst_null
-    //   187: astore_1
-    //   188: goto -177 -> 11
-    //   191: invokestatic 118	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   194: invokevirtual 122	com/tencent/common/app/BaseApplicationImpl:getCacheDir	()Ljava/io/File;
-    //   197: astore_2
-    //   198: goto -158 -> 40
-    //   201: astore 5
-    //   203: aconst_null
-    //   204: astore_1
-    //   205: aconst_null
-    //   206: astore_2
-    //   207: aload_1
-    //   208: astore 4
-    //   210: aload_2
-    //   211: astore_3
-    //   212: ldc 94
-    //   214: iconst_1
-    //   215: ldc 124
-    //   217: aload 5
-    //   219: invokestatic 112	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   222: aload_2
-    //   223: ifnull +7 -> 230
-    //   226: aload_2
-    //   227: invokevirtual 91	java/io/FileOutputStream:close	()V
-    //   230: aload 7
-    //   232: astore_2
-    //   233: aload_1
-    //   234: ifnull -77 -> 157
-    //   237: aload_1
-    //   238: invokevirtual 92	java/io/BufferedOutputStream:close	()V
-    //   241: aconst_null
-    //   242: areturn
-    //   243: astore_1
-    //   244: aconst_null
-    //   245: areturn
-    //   246: astore_1
-    //   247: aconst_null
-    //   248: astore 4
+    //   1: astore_2
+    //   2: aconst_null
+    //   3: astore 7
+    //   5: aconst_null
+    //   6: astore 6
+    //   8: aload_1
+    //   9: iconst_0
+    //   10: invokestatic 28	com/tencent/mobileqq/utils/Base64Util:decode	(Ljava/lang/String;I)[B
+    //   13: astore 5
+    //   15: goto +43 -> 58
+    //   18: astore_3
+    //   19: new 30	java/lang/StringBuilder
+    //   22: dup
+    //   23: invokespecial 31	java/lang/StringBuilder:<init>	()V
+    //   26: astore 4
+    //   28: aload 4
+    //   30: ldc 33
+    //   32: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: pop
+    //   36: aload 4
+    //   38: aload_1
+    //   39: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: ldc 39
+    //   45: iconst_1
+    //   46: aload 4
+    //   48: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: aload_3
+    //   52: invokestatic 49	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   55: aconst_null
+    //   56: astore 5
+    //   58: aload 5
+    //   60: ifnull +260 -> 320
+    //   63: ldc 51
+    //   65: invokestatic 56	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
+    //   68: invokevirtual 62	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   71: ifeq +17 -> 88
+    //   74: new 64	java/io/File
+    //   77: dup
+    //   78: getstatic 69	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH	Ljava/lang/String;
+    //   81: invokespecial 72	java/io/File:<init>	(Ljava/lang/String;)V
+    //   84: astore_1
+    //   85: goto +10 -> 95
+    //   88: invokestatic 78	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   91: invokevirtual 82	com/tencent/common/app/BaseApplicationImpl:getCacheDir	()Ljava/io/File;
+    //   94: astore_1
+    //   95: new 64	java/io/File
+    //   98: dup
+    //   99: aload_1
+    //   100: ldc 12
+    //   102: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   105: astore_1
+    //   106: aload_1
+    //   107: invokevirtual 89	java/io/File:exists	()Z
+    //   110: ifne +8 -> 118
+    //   113: aload_1
+    //   114: invokevirtual 92	java/io/File:mkdirs	()Z
+    //   117: pop
+    //   118: new 64	java/io/File
+    //   121: dup
+    //   122: aload_1
+    //   123: aload 5
+    //   125: invokestatic 98	com/tencent/qphone/base/util/MD5:toMD5	([B)Ljava/lang/String;
+    //   128: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   131: astore 8
+    //   133: aload 8
+    //   135: invokevirtual 89	java/io/File:exists	()Z
+    //   138: ifeq +9 -> 147
+    //   141: aload 8
+    //   143: invokevirtual 101	java/io/File:delete	()Z
+    //   146: pop
+    //   147: new 103	java/io/FileOutputStream
+    //   150: dup
+    //   151: aload 8
+    //   153: invokespecial 106	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   156: astore_1
+    //   157: new 108	java/io/BufferedOutputStream
+    //   160: dup
+    //   161: aload_1
+    //   162: invokespecial 111	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   165: astore 4
+    //   167: aload_1
+    //   168: astore_2
+    //   169: aload 4
+    //   171: astore_3
+    //   172: aload 4
+    //   174: aload 5
+    //   176: invokevirtual 115	java/io/BufferedOutputStream:write	([B)V
+    //   179: aload_1
+    //   180: astore_2
+    //   181: aload 4
+    //   183: astore_3
+    //   184: aload 8
+    //   186: invokevirtual 118	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   189: astore 5
+    //   191: aload 5
+    //   193: astore_2
+    //   194: aload_1
+    //   195: invokevirtual 121	java/io/FileOutputStream:close	()V
+    //   198: aload 4
+    //   200: astore_1
+    //   201: aload 5
+    //   203: astore_3
+    //   204: aload_3
+    //   205: astore_2
+    //   206: aload_1
+    //   207: invokevirtual 122	java/io/BufferedOutputStream:close	()V
+    //   210: aload_3
+    //   211: areturn
+    //   212: astore_2
+    //   213: aload_1
+    //   214: astore 5
+    //   216: aload 4
+    //   218: astore_1
+    //   219: aload_2
+    //   220: astore 4
+    //   222: goto +41 -> 263
+    //   225: astore 4
+    //   227: aconst_null
+    //   228: astore_3
+    //   229: aload_1
+    //   230: astore_2
+    //   231: aload 4
+    //   233: astore_1
+    //   234: goto +68 -> 302
+    //   237: astore 4
+    //   239: aconst_null
+    //   240: astore_2
+    //   241: aload_1
+    //   242: astore 5
+    //   244: aload_2
+    //   245: astore_1
+    //   246: goto +17 -> 263
+    //   249: astore_1
     //   250: aconst_null
-    //   251: astore_2
-    //   252: aload_2
-    //   253: ifnull +7 -> 260
-    //   256: aload_2
-    //   257: invokevirtual 91	java/io/FileOutputStream:close	()V
-    //   260: aload 4
-    //   262: ifnull +8 -> 270
-    //   265: aload 4
-    //   267: invokevirtual 92	java/io/BufferedOutputStream:close	()V
-    //   270: aload_1
-    //   271: athrow
-    //   272: astore_2
-    //   273: goto -3 -> 270
-    //   276: astore_1
-    //   277: aconst_null
-    //   278: astore 4
-    //   280: goto -28 -> 252
-    //   283: astore_1
-    //   284: aload_3
+    //   251: astore_3
+    //   252: goto +50 -> 302
+    //   255: astore 4
+    //   257: aconst_null
+    //   258: astore 5
+    //   260: aload 5
+    //   262: astore_1
+    //   263: aload 5
+    //   265: astore_2
+    //   266: aload_1
+    //   267: astore_3
+    //   268: ldc 39
+    //   270: iconst_1
+    //   271: ldc 124
+    //   273: aload 4
+    //   275: invokestatic 49	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   278: aload 5
+    //   280: ifnull +11 -> 291
+    //   283: aload 7
     //   285: astore_2
-    //   286: goto -34 -> 252
-    //   289: astore 5
-    //   291: aconst_null
-    //   292: astore_1
-    //   293: goto -86 -> 207
-    //   296: astore 5
-    //   298: aload 6
-    //   300: astore_1
-    //   301: goto -94 -> 207
-    //   304: astore_2
-    //   305: aload_1
-    //   306: areturn
+    //   286: aload 5
+    //   288: invokevirtual 121	java/io/FileOutputStream:close	()V
+    //   291: aload_1
+    //   292: ifnull +28 -> 320
+    //   295: aload 6
+    //   297: astore_3
+    //   298: goto -94 -> 204
+    //   301: astore_1
+    //   302: aload_2
+    //   303: ifnull +7 -> 310
+    //   306: aload_2
+    //   307: invokevirtual 121	java/io/FileOutputStream:close	()V
+    //   310: aload_3
+    //   311: ifnull +7 -> 318
+    //   314: aload_3
+    //   315: invokevirtual 122	java/io/BufferedOutputStream:close	()V
+    //   318: aload_1
+    //   319: athrow
+    //   320: aconst_null
+    //   321: areturn
+    //   322: astore_1
+    //   323: aload_2
+    //   324: areturn
+    //   325: astore_2
+    //   326: goto -8 -> 318
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	307	0	this	SocialWeeklyWebViewPlugin
-    //   0	307	1	paramString	String
-    //   8	150	2	localObject1	Object
-    //   159	24	2	localException1	Exception
-    //   197	60	2	localObject2	Object
-    //   272	1	2	localException2	Exception
-    //   285	1	2	localObject3	Object
-    //   304	1	2	localException3	Exception
-    //   116	169	3	localObject4	Object
-    //   113	166	4	localObject5	Object
-    //   75	55	5	localFile	java.io.File
-    //   201	17	5	localException4	Exception
-    //   289	1	5	localException5	Exception
-    //   296	1	5	localException6	Exception
-    //   109	190	6	localBufferedOutputStream	java.io.BufferedOutputStream
-    //   1	230	7	localObject6	Object
+    //   0	329	0	this	SocialWeeklyWebViewPlugin
+    //   0	329	1	paramString	String
+    //   1	205	2	localObject1	Object
+    //   212	8	2	localException1	Exception
+    //   230	94	2	localObject2	Object
+    //   325	1	2	localException2	Exception
+    //   18	34	3	localException3	Exception
+    //   171	144	3	localObject3	Object
+    //   26	195	4	localObject4	Object
+    //   225	7	4	localObject5	Object
+    //   237	1	4	localException4	Exception
+    //   255	19	4	localException5	Exception
+    //   13	274	5	localObject6	Object
+    //   6	290	6	localObject7	Object
+    //   3	281	7	localObject8	Object
+    //   131	54	8	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   3	9	159	java/lang/Exception
-    //   18	40	201	java/lang/Exception
-    //   40	63	201	java/lang/Exception
-    //   63	91	201	java/lang/Exception
-    //   91	101	201	java/lang/Exception
-    //   191	198	201	java/lang/Exception
-    //   226	230	243	java/lang/Exception
-    //   237	241	243	java/lang/Exception
-    //   18	40	246	finally
-    //   40	63	246	finally
-    //   63	91	246	finally
-    //   91	101	246	finally
-    //   191	198	246	finally
-    //   256	260	272	java/lang/Exception
-    //   265	270	272	java/lang/Exception
-    //   101	111	276	finally
-    //   117	123	283	finally
-    //   129	135	283	finally
-    //   212	222	283	finally
-    //   101	111	289	java/lang/Exception
-    //   117	123	296	java/lang/Exception
-    //   129	135	296	java/lang/Exception
-    //   139	143	304	java/lang/Exception
-    //   150	155	304	java/lang/Exception
+    //   8	15	18	java/lang/Exception
+    //   172	179	212	java/lang/Exception
+    //   184	191	212	java/lang/Exception
+    //   157	167	225	finally
+    //   157	167	237	java/lang/Exception
+    //   63	85	249	finally
+    //   88	95	249	finally
+    //   95	118	249	finally
+    //   118	147	249	finally
+    //   147	157	249	finally
+    //   63	85	255	java/lang/Exception
+    //   88	95	255	java/lang/Exception
+    //   95	118	255	java/lang/Exception
+    //   118	147	255	java/lang/Exception
+    //   147	157	255	java/lang/Exception
+    //   172	179	301	finally
+    //   184	191	301	finally
+    //   268	278	301	finally
+    //   194	198	322	java/lang/Exception
+    //   206	210	322	java/lang/Exception
+    //   286	291	322	java/lang/Exception
+    //   306	310	325	java/lang/Exception
+    //   314	318	325	java/lang/Exception
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
+    boolean bool1 = QLog.isColorLevel();
+    boolean bool2 = false;
+    if (bool1) {
       QLog.d("SocialWeeklyWebViewPlugin", 2, String.format("handleJsRequest pkgName=%s method=%s url=%s", new Object[] { paramString2, paramString3, paramString1 }));
     }
-    if (("SocialWeekly".equals(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString1)) && ("sharePicMessage".equals(paramString3))) {
-      try
+    bool1 = bool2;
+    if ("SocialWeekly".equals(paramString2))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramString3))
       {
-        paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-        if (paramJsBridgeListener != null)
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramString1))
         {
-          paramJsBridgeListener = paramJsBridgeListener.getString("imageData");
-          if (!TextUtils.isEmpty(paramJsBridgeListener))
+          bool1 = bool2;
+          if ("sharePicMessage".equals(paramString3))
           {
-            int i = paramJsBridgeListener.indexOf(',');
-            if (i > 0) {
-              postPluginAsyncTask(new SocialWeeklyWebViewPlugin.1(this, paramJsBridgeListener.substring(i)));
+            try
+            {
+              paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
+              if (paramJsBridgeListener != null)
+              {
+                paramJsBridgeListener = paramJsBridgeListener.getString("imageData");
+                if (!TextUtils.isEmpty(paramJsBridgeListener))
+                {
+                  int i = paramJsBridgeListener.indexOf(',');
+                  if (i > 0) {
+                    postPluginAsyncTask(new SocialWeeklyWebViewPlugin.1(this, paramJsBridgeListener.substring(i)));
+                  }
+                }
+              }
             }
+            catch (Exception paramJsBridgeListener)
+            {
+              QLog.d("SocialWeeklyWebViewPlugin", 1, "handleJsRequest json parse fail!", paramJsBridgeListener);
+            }
+            bool1 = true;
           }
         }
-        return true;
-      }
-      catch (Exception paramJsBridgeListener)
-      {
-        QLog.d("SocialWeeklyWebViewPlugin", 1, "handleJsRequest json parse fail!", paramJsBridgeListener);
-        return true;
       }
     }
-    return false;
+    return bool1;
   }
   
-  public void onPostPluginAsyncTask()
+  protected void onPostPluginAsyncTask()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SocialWeeklyWebViewPlugin", 2, "onPostPluginAsyncTask mSharePicLocalPath=" + this.a);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPostPluginAsyncTask mSharePicLocalPath=");
+      ((StringBuilder)localObject).append(this.a);
+      QLog.d("SocialWeeklyWebViewPlugin", 2, ((StringBuilder)localObject).toString());
     }
     if (!TextUtils.isEmpty(this.a))
     {
-      Activity localActivity = this.mRuntime.a();
-      if (localActivity != null)
+      localObject = this.mRuntime.a();
+      if (localObject != null)
       {
         Intent localIntent = new Intent();
-        localIntent.setClass(localActivity, ForwardRecentActivity.class);
+        localIntent.setClass((Context)localObject, ForwardRecentActivity.class);
         localIntent.putExtra("forward_type", 1);
         localIntent.putExtra("forward_filepath", this.a);
         localIntent.putExtra("isFromShare", true);
-        localActivity.startActivity(localIntent);
+        ((Context)localObject).startActivity(localIntent);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.SocialWeeklyWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

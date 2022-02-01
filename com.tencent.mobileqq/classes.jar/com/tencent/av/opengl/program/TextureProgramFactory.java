@@ -11,54 +11,83 @@ public class TextureProgramFactory
   
   public static TextureProgram a(int paramInt)
   {
-    int j = 1;
-    for (;;)
+    try
     {
-      int i;
-      try
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("_");
+      ((StringBuilder)localObject1).append(Thread.currentThread().getId());
+      str = ((StringBuilder)localObject1).toString();
+      localObject1 = (TextureProgram)a.get(str);
+      if (localObject1 != null) {
+        break label213;
+      }
+      i = 1;
+    }
+    finally
+    {
+      label213:
+      label218:
+      label223:
+      for (;;)
       {
-        String str = paramInt + "_" + Thread.currentThread().getId();
-        localObject1 = (TextureProgram)a.get(str);
-        if (localObject1 == null)
+        Object localObject1;
+        String str;
+        for (;;)
         {
-          i = 1;
-          if (i != 0) {
-            break label173;
-          }
-          GLES20.glUseProgram(((TextureProgram)localObject1).a());
-          if (Utils.a() != 0)
+          throw localObject2;
+        }
+        int i = 0;
+        continue;
+        int j = 0;
+      }
+    }
+    j = i;
+    if (i == 0)
+    {
+      GLES20.glUseProgram(((TextureProgram)localObject1).a());
+      if (Utils.a() == 0) {
+        break label218;
+      }
+      j = 1;
+    }
+    if (j != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
           {
-            i = j;
-            break label173;
-            localObject1 = new TextureProgram();
-            a.put(str, localObject1);
-            return localObject1;
+            if (paramInt != 5)
+            {
+              if (paramInt != 6) {
+                localObject1 = new TextureProgram();
+              } else {
+                localObject1 = new RGBToI420Program();
+              }
+            }
+            else {
+              localObject1 = new RGBToYUVProgrtam();
+            }
+          }
+          else {
+            localObject1 = new SharpenProgram();
           }
         }
-        else
-        {
-          i = 0;
-          continue;
-        }
-        i = 0;
-      }
-      finally {}
-      Object localObject1 = new YUVTextureProgram();
-      continue;
-      Object localObject3 = new YUVTextureAliasingProgram();
-      continue;
-      localObject3 = new SharpenProgram();
-      continue;
-      localObject3 = new RGBToYUVProgrtam();
-      continue;
-      localObject3 = new RGBToI420Program();
-      continue;
-      label173:
-      if (i != 0) {
-        switch (paramInt)
-        {
+        else {
+          localObject1 = new YUVTextureAliasingProgram();
         }
       }
+      else
+      {
+        localObject1 = new YUVTextureProgram();
+        break label223;
+        a.put(str, localObject1);
+      }
+    }
+    else {
+      return localObject1;
     }
   }
   
@@ -78,7 +107,7 @@ public class TextureProgramFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.program.TextureProgramFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -27,12 +27,11 @@ public class tlv_t141
     util.int16_to_buf(paramArrayOfByte2, 0, this._version);
     util.int16_to_buf(paramArrayOfByte2, 2, arrayOfByte.length);
     System.arraycopy(arrayOfByte, 0, paramArrayOfByte2, 4, arrayOfByte.length);
-    int j = arrayOfByte.length + 4;
+    int j = 4 + arrayOfByte.length;
     util.int16_to_buf(paramArrayOfByte2, j, paramInt);
     paramInt = j + 2;
     util.int16_to_buf(paramArrayOfByte2, paramInt, paramArrayOfByte1.length);
-    paramInt += 2;
-    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, paramInt, paramArrayOfByte1.length);
+    System.arraycopy(paramArrayOfByte1, 0, paramArrayOfByte2, paramInt + 2, paramArrayOfByte1.length);
     paramInt = paramArrayOfByte1.length;
     fill_head(this._cmd);
     fill_body(paramArrayOfByte2, i);
@@ -42,7 +41,7 @@ public class tlv_t141
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t141
  * JD-Core Version:    0.7.0.1
  */

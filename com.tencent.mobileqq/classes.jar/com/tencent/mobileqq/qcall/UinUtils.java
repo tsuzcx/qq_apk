@@ -14,9 +14,18 @@ public class UinUtils
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w(UinUtils.class.getSimpleName(), 2, "failed to long:" + paramString);
-      }
+      label14:
+      String str;
+      StringBuilder localStringBuilder;
+      break label14;
+    }
+    if (QLog.isColorLevel())
+    {
+      str = UinUtils.class.getSimpleName();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to long:");
+      localStringBuilder.append(paramString);
+      QLog.w(str, 2, localStringBuilder.toString());
     }
     return 0L;
   }
@@ -38,26 +47,24 @@ public class UinUtils
   
   public static String a(String paramString)
   {
-    int j = 0;
     if (paramString == null) {
       return null;
     }
     StringBuffer localStringBuffer = new StringBuffer(paramString);
-    int m = paramString.length() - 4;
-    int k = m - 4;
-    int i = m;
-    if (m < 0) {
+    int j = paramString.length() - 4;
+    int k = j - 4;
+    int i = j;
+    if (j < 0) {
       i = 0;
     }
-    if (k < 0) {}
-    for (;;)
-    {
-      if ((j < i) && (i > 0)) {
-        localStringBuffer.replace(j, i, "*");
-      }
-      return localStringBuffer.toString();
-      j = k;
+    j = k;
+    if (k < 0) {
+      j = 0;
     }
+    if ((j < i) && (i > 0)) {
+      localStringBuffer.replace(j, i, "*");
+    }
+    return localStringBuffer.toString();
   }
   
   public static long b(String paramString)
@@ -69,16 +76,25 @@ public class UinUtils
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(UinUtils.class.getSimpleName(), 2, "failed getLong, uin = " + paramString);
-      }
+      label14:
+      String str;
+      StringBuilder localStringBuilder;
+      break label14;
+    }
+    if (QLog.isColorLevel())
+    {
+      str = UinUtils.class.getSimpleName();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed getLong, uin = ");
+      localStringBuilder.append(paramString);
+      QLog.e(str, 2, localStringBuilder.toString());
     }
     return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.UinUtils
  * JD-Core Version:    0.7.0.1
  */

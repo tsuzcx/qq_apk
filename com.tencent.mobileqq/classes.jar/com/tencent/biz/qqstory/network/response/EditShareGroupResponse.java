@@ -13,12 +13,18 @@ public class EditShareGroupResponse
   
   public String toString()
   {
-    return "RspEditShareGroup{errorCode=" + this.a + ", errorMsg='" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RspEditShareGroup{errorCode=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", errorMsg='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.EditShareGroupResponse
  * JD-Core Version:    0.7.0.1
  */

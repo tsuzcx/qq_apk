@@ -33,20 +33,21 @@ class QZoneShareActivity$4
     {
       QZoneShareActivity.access$202(this.this$0, paramJSONObject.optBoolean("needShareCallBack"));
       l = paramJSONObject.optLong("retCode");
+      paramJSONObject = paramJSONObject.optString("errMsg");
     }
-    for (paramJSONObject = paramJSONObject.optString("errMsg");; paramJSONObject = null)
+    else
     {
-      if (!QZoneShareActivity.access$200(this.this$0)) {
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
-      }
-      this.this$0.runOnUiThread(new QZoneShareActivity.4.2(this, l, paramJSONObject));
-      return;
+      paramJSONObject = null;
     }
+    if (!QZoneShareActivity.access$200(this.this$0)) {
+      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
+    }
+    this.this$0.runOnUiThread(new QZoneShareActivity.4.2(this, l, paramJSONObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.4
  * JD-Core Version:    0.7.0.1
  */

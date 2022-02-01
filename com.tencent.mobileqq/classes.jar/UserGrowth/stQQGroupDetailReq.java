@@ -26,17 +26,19 @@ public final class stQQGroupDetailReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.groupId != null) {
-      paramJceOutputStream.write(this.groupId, 0);
+    String str = this.groupId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.posterPersonId != null) {
-      paramJceOutputStream.write(this.posterPersonId, 1);
+    str = this.posterPersonId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stQQGroupDetailReq
  * JD-Core Version:    0.7.0.1
  */

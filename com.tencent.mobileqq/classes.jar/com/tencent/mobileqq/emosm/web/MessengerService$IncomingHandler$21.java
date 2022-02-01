@@ -1,21 +1,37 @@
 package com.tencent.mobileqq.emosm.web;
 
-import com.tencent.mobileqq.reminder.OnDeleteReminderFailListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.theme.diy.ResData;
+import com.tencent.mobileqq.vas.theme.diy.ThemeDiyStyleLogic.StyleCallBack;
+import java.lang.ref.WeakReference;
 
 class MessengerService$IncomingHandler$21
-  implements OnDeleteReminderFailListener
+  implements ThemeDiyStyleLogic.StyleCallBack
 {
   MessengerService$IncomingHandler$21(MessengerService.IncomingHandler paramIncomingHandler) {}
   
-  public void a()
+  public int a(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    QLog.i("MessengerService$IncomingHandler", 2, "@qqnotify delete faield ");
+    paramResData = (MessengerService)this.a.a.get();
+    if (paramResData != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("themeId", paramBundle.getString("themeId"));
+      if (paramInt2 == 4) {
+        paramInt1 = 0;
+      } else {
+        paramInt1 = -2;
+      }
+      localBundle.putInt("themeStatus", paramInt1);
+      paramBundle.putBundle("response", localBundle);
+      paramResData.a(paramBundle);
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.21
  * JD-Core Version:    0.7.0.1
  */

@@ -18,22 +18,28 @@ public class VipUtils$VipIconUtils$NamePlateVipTpye
   
   public static NamePlateVipTpye a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return jdField_a_of_type_ComTencentMobileqqUtilsVipUtils$VipIconUtils$NamePlateVipTpye;
-    case 1: 
-      return b;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          switch (paramInt)
+          {
+          default: 
+            return jdField_a_of_type_ComTencentMobileqqUtilsVipUtils$VipIconUtils$NamePlateVipTpye;
+          case 259: 
+            return g;
+          case 258: 
+            return e;
+          }
+          return c;
+        }
+        return f;
+      }
       return d;
-    case 3: 
-      return f;
-    case 257: 
-      return c;
-    case 258: 
-      return e;
     }
-    return g;
+    return b;
   }
   
   public boolean a()
@@ -53,7 +59,7 @@ public class VipUtils$VipIconUtils$NamePlateVipTpye
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.VipIconUtils.NamePlateVipTpye
  * JD-Core Version:    0.7.0.1
  */

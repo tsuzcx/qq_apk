@@ -29,15 +29,17 @@ public final class oidb_0x6d6$UploadFileReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 64, 74, 82, 90, 120 }, new String[] { "uint64_group_code", "uint32_app_id", "uint32_bus_id", "uint32_entrance", "str_parent_folder_id", "str_file_name", "str_local_path", "uint64_file_size", "bytes_sha", "bytes_sha3", "bytes_md5", "bool_support_multi_upload" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Boolean.valueOf(false) }, UploadFileReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58, 64, 74, 82, 90, 120 }, new String[] { "uint64_group_code", "uint32_app_id", "uint32_bus_id", "uint32_entrance", "str_parent_folder_id", "str_file_name", "str_local_path", "uint64_file_size", "bytes_sha", "bytes_sha3", "bytes_md5", "bool_support_multi_upload" }, new Object[] { localLong, localInteger, localInteger, localInteger, "", "", "", localLong, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Boolean.valueOf(false) }, UploadFileReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileReqBody
  * JD-Core Version:    0.7.0.1
  */

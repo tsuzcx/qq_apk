@@ -61,44 +61,33 @@ public class PhotoGridView
         this.mLastMotionY = paramFloat2;
       }
     }
-    if (this.mIsBeingInSelectMode.get())
-    {
-      if (!this.mIsScrolling) {
-        break label96;
+    if (this.mIsBeingInSelectMode.get()) {
+      if (this.mIsScrolling) {
+        handleMoveScrolling(paramFloat2);
+      } else {
+        handleMoveNoScrolling(paramFloat2);
       }
-      handleMoveScrolling(paramFloat2);
     }
-    for (;;)
-    {
-      handleScroll((int)paramFloat1, (int)paramFloat2);
-      return;
-      label96:
-      handleMoveNoScrolling(paramFloat2);
-    }
+    handleScroll((int)paramFloat1, (int)paramFloat2);
   }
   
   private void handleMoveNoScrolling(float paramFloat)
   {
-    int i = 0;
     if ((paramFloat < 0.0F) || (paramFloat > getHeight()))
     {
       this.mIsScrolling = true;
-      if (paramFloat >= 0.0F) {
-        break label54;
+      int i = 0;
+      if (paramFloat < 0.0F)
+      {
+        this.mIsScrollingFromTop = false;
       }
-      this.mIsScrollingFromTop = false;
-    }
-    for (;;)
-    {
-      this.smoothScroller.setTargetPosition(i);
-      this.gridLayoutManager.startSmoothScroll(this.smoothScroller);
-      return;
-      label54:
-      if (paramFloat > getHeight())
+      else if (paramFloat > getHeight())
       {
         i = getAdapter().getItemCount();
         this.mIsScrollingFromTop = true;
       }
+      this.smoothScroller.setTargetPosition(i);
+      this.gridLayoutManager.startSmoothScroll(this.smoothScroller);
     }
   }
   
@@ -113,20 +102,26 @@ public class PhotoGridView
   
   private void handleScroll(int paramInt1, int paramInt2)
   {
-    int i = -1;
     if (this.mIsBeingInSelectMode.get())
     {
-      if ((!this.mIsBegined.get()) && (this.mBeginSelectPosition != -1))
+      boolean bool = this.mIsBegined.get();
+      int i = -1;
+      if (!bool)
       {
-        if (this.mOnSelectChangedListener != null) {
-          this.mOnSelectChangedListener.onSelectBegin(this.mBeginSelectPosition);
+        int j = this.mBeginSelectPosition;
+        if (j != -1)
+        {
+          localObject = this.mOnSelectChangedListener;
+          if (localObject != null) {
+            ((PhotoGridView.OnSelectListener)localObject).onSelectBegin(j);
+          }
+          this.mIsBegined.set(true);
         }
-        this.mIsBegined.set(true);
       }
-      View localView = findChildViewUnder(paramInt1, paramInt2);
+      Object localObject = findChildViewUnder(paramInt1, paramInt2);
       paramInt1 = i;
-      if (localView != null) {
-        paramInt1 = getChildAdapterPosition(localView);
+      if (localObject != null) {
+        paramInt1 = getChildAdapterPosition((View)localObject);
       }
       handleScrollSelectState(paramInt1);
     }
@@ -136,152 +131,164 @@ public class PhotoGridView
   {
     if (paramInt != -1)
     {
-      if (this.mIsBegined.get()) {
-        break label54;
-      }
-      this.mEndSelectPosition = paramInt;
-      this.mBeginSelectPosition = paramInt;
-      if (this.mOnSelectChangedListener != null) {
-        this.mOnSelectChangedListener.onSelectBegin(this.mBeginSelectPosition);
-      }
-      this.mIsBegined.set(true);
-    }
-    label54:
-    do
-    {
-      do
+      PhotoGridView.OnSelectListener localOnSelectListener;
+      if (!this.mIsBegined.get())
       {
+        this.mEndSelectPosition = paramInt;
+        this.mBeginSelectPosition = paramInt;
+        localOnSelectListener = this.mOnSelectChangedListener;
+        if (localOnSelectListener != null) {
+          localOnSelectListener.onSelectBegin(this.mBeginSelectPosition);
+        }
+        this.mIsBegined.set(true);
         return;
-      } while (this.mEndSelectPosition == paramInt);
-      this.mEndSelectPosition = paramInt;
-    } while ((this.mIsScrolling) || (this.mOnSelectChangedListener == null));
-    this.mOnSelectChangedListener.onSelectChanged(this.mBeginSelectPosition, this.mEndSelectPosition);
+      }
+      if (this.mEndSelectPosition != paramInt)
+      {
+        this.mEndSelectPosition = paramInt;
+        if (!this.mIsScrolling)
+        {
+          localOnSelectListener = this.mOnSelectChangedListener;
+          if (localOnSelectListener != null) {
+            localOnSelectListener.onSelectChanged(this.mBeginSelectPosition, this.mEndSelectPosition);
+          }
+        }
+      }
+    }
   }
   
   private boolean handleUp()
   {
-    boolean bool1 = false;
     if (this.mIsScrolling)
     {
       stopScroll();
       this.mIsScrolling = false;
     }
-    boolean bool2 = this.mIsBeingInSelectMode.get();
+    boolean bool = this.mIsBeingInSelectMode.get();
     this.mBeginSelectPosition = -1;
     this.mEndSelectPosition = -1;
     this.mIsBeingInSelectMode.set(false);
     this.mIsBegined.set(false);
-    if ((bool2) && (this.mOnSelectChangedListener != null)) {
-      this.mOnSelectChangedListener.onSelectEnd();
+    if (bool)
+    {
+      PhotoGridView.OnSelectListener localOnSelectListener = this.mOnSelectChangedListener;
+      if (localOnSelectListener != null) {
+        localOnSelectListener.onSelectEnd();
+      }
     }
-    if (bool2) {
-      bool1 = true;
-    }
-    return bool1;
+    return bool;
   }
   
   private boolean processEvent(MotionEvent paramMotionEvent, int paramInt)
   {
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (paramInt & 0xFF)
+    paramInt &= 0xFF;
+    if (paramInt != 0)
     {
-    default: 
-    case 2: 
-      for (;;)
-      {
-        return false;
-        float f3 = Math.abs(f1 - this.mLastMotionX);
-        if ((f3 > Math.abs(f2 - this.mLastMotionY) * 1.73F) && (f3 > this.mTouchSlop))
+      if (paramInt != 1) {
+        if (paramInt != 2)
         {
+          if (paramInt != 3) {
+            return false;
+          }
+        }
+        else
+        {
+          float f3 = Math.abs(f1 - this.mLastMotionX);
+          if ((f3 <= Math.abs(f2 - this.mLastMotionY) * 1.73F) || (f3 <= this.mTouchSlop)) {
+            break label195;
+          }
           this.mIsBeingInSelectMode.set(true);
           this.mLastMotionX = f1;
           this.mLastMotionY = f2;
+          return false;
         }
       }
-    case 0: 
-      this.mLastMotionX = f1;
-      this.mLastMotionY = f2;
-      paramMotionEvent = findChildViewUnder((int)f1, (int)f2);
-      if (paramMotionEvent == null) {
-        break;
-      }
-    }
-    for (paramInt = getChildAdapterPosition(paramMotionEvent); paramInt != -1; paramInt = -1)
-    {
-      this.mEndSelectPosition = paramInt;
-      this.mBeginSelectPosition = paramInt;
-      break;
       boolean bool = this.mIsBeingInSelectMode.get();
       this.mIsBeingInSelectMode.set(false);
       this.mBeginSelectPosition = -1;
       this.mEndSelectPosition = -1;
       this.mIsBegined.set(false);
-      if (!bool) {
-        break;
+      if (bool) {
+        return true;
       }
-      return true;
     }
+    else
+    {
+      this.mLastMotionX = f1;
+      this.mLastMotionY = f2;
+      paramMotionEvent = findChildViewUnder((int)f1, (int)f2);
+      if (paramMotionEvent != null) {
+        paramInt = getChildAdapterPosition(paramMotionEvent);
+      } else {
+        paramInt = -1;
+      }
+      if (paramInt != -1)
+      {
+        this.mEndSelectPosition = paramInt;
+        this.mBeginSelectPosition = paramInt;
+      }
+    }
+    label195:
+    return false;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     if (!this.mEnableSelectMode.get()) {
-      bool = super.dispatchTouchEvent(paramMotionEvent);
+      return super.dispatchTouchEvent(paramMotionEvent);
     }
-    do
+    int i = paramMotionEvent.getAction();
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    i &= 0xFF;
+    if (i != 0)
     {
-      for (;;)
-      {
-        return bool;
-        int i = paramMotionEvent.getAction();
-        float f1 = paramMotionEvent.getX();
-        float f2 = paramMotionEvent.getY();
-        switch (i & 0xFF)
+      if (i != 1) {
+        if (i != 2)
         {
-        default: 
-        case 2: 
-        case 0: 
-          while (!this.mIsBeingInSelectMode.get())
-          {
-            return super.dispatchTouchEvent(paramMotionEvent);
-            handleMove(f1, f2);
-            continue;
-            this.mLastMotionX = f1;
-            this.mLastMotionY = f2;
+          if (i != 3) {
+            break label94;
           }
         }
+        else
+        {
+          handleMove(f1, f2);
+          break label94;
+        }
       }
-    } while (!handleUp());
-    return true;
+      if (handleUp()) {
+        return true;
+      }
+    }
+    else
+    {
+      this.mLastMotionX = f1;
+      this.mLastMotionY = f2;
+    }
+    label94:
+    if (this.mIsBeingInSelectMode.get()) {
+      return true;
+    }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if (!this.mEnableSelectMode.get()) {
-      bool1 = super.onInterceptTouchEvent(paramMotionEvent);
+      return super.onInterceptTouchEvent(paramMotionEvent);
     }
-    do
-    {
-      int i;
-      do
-      {
-        do
-        {
-          return bool1;
-          i = paramMotionEvent.getAction();
-          if (i != 2) {
-            break;
-          }
-          bool1 = bool2;
-        } while (this.mIsBeingInSelectMode.get());
-        bool1 = bool2;
-      } while (processEvent(paramMotionEvent, i));
-      bool1 = bool2;
-    } while (this.mIsBeingInSelectMode.get());
+    int i = paramMotionEvent.getAction();
+    if ((i == 2) && (this.mIsBeingInSelectMode.get())) {
+      return true;
+    }
+    if (processEvent(paramMotionEvent, i)) {
+      return true;
+    }
+    if (this.mIsBeingInSelectMode.get()) {
+      return true;
+    }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
@@ -298,7 +305,7 @@ public class PhotoGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PhotoGridView
  * JD-Core Version:    0.7.0.1
  */

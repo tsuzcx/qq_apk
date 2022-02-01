@@ -48,7 +48,7 @@ public class PanoramaLoadingBackground
     int i = this.mViewHeight / 2;
     int j = localFontMetricsInt.descent;
     int k = (localFontMetricsInt.descent - localFontMetricsInt.ascent) / 2;
-    paramCanvas.drawText("360", getWidth() / 2, k + (i - j), this.mPaint);
+    paramCanvas.drawText("360", getWidth() / 2, i - j + k, this.mPaint);
   }
   
   private void drawInCircle(Canvas paramCanvas)
@@ -56,7 +56,8 @@ public class PanoramaLoadingBackground
     this.mPaint.setColor(-1);
     this.mPaint.setAlpha(this.contentAlpha);
     this.mPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawCircle(this.mViewWidth / 2, this.mViewWidth / 2, this.inCircleRadius, this.mPaint);
+    int i = this.mViewWidth;
+    paramCanvas.drawCircle(i / 2, i / 2, this.inCircleRadius, this.mPaint);
   }
   
   private void drawOutCircle(Canvas paramCanvas)
@@ -64,62 +65,60 @@ public class PanoramaLoadingBackground
     this.mPaint.setAlpha(255);
     this.mPaint.setColor(this.colorBackground);
     this.mPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawCircle(this.mViewWidth / 2, this.mViewWidth / 2, this.outCircleRadius, this.mPaint);
+    int i = this.mViewWidth;
+    paramCanvas.drawCircle(i / 2, i / 2, this.outCircleRadius, this.mPaint);
   }
   
   private void init(Context paramContext)
   {
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
-    this.colorBackground = paramContext.getResources().getColor(2131165370);
+    this.colorBackground = paramContext.getResources().getColor(2131165338);
   }
   
   private int measureHeight(int paramInt)
   {
     int i = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
-    if (i == 1073741824) {}
-    for (;;)
-    {
-      this.mViewHeight = paramInt;
-      return paramInt;
+    if (i != 1073741824) {
       if (i == -2147483648) {
         paramInt = Math.min(paramInt, this.mViewHeight);
       } else {
         paramInt = this.mViewHeight;
       }
     }
+    this.mViewHeight = paramInt;
+    return paramInt;
   }
   
   private int measureWidth(int paramInt)
   {
     int i = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
-    if (i == 1073741824) {}
-    for (;;)
-    {
-      this.mViewWidth = paramInt;
-      return paramInt;
+    if (i != 1073741824) {
       if (i == -2147483648) {
         paramInt = Math.min(paramInt, this.mViewWidth);
       } else {
         paramInt = this.mViewWidth;
       }
     }
+    this.mViewWidth = paramInt;
+    return paramInt;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     this.outCircleRadius = (this.mViewWidth / 2);
-    this.midCircleRadius = (this.outCircleRadius - this.outCircleRadius / 5);
-    this.inCircleRadius = (this.outCircleRadius - this.outCircleRadius * 2 / 5);
+    int i = this.outCircleRadius;
+    this.midCircleRadius = (i - i / 5);
+    this.inCircleRadius = (i - i * 2 / 5);
     drawOutCircle(paramCanvas);
     drawInCircle(paramCanvas);
     drawContentText(paramCanvas);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(measureWidth(paramInt1), measureHeight(paramInt2));
   }
@@ -132,7 +131,7 @@ public class PanoramaLoadingBackground
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaLoadingBackground
  * JD-Core Version:    0.7.0.1
  */

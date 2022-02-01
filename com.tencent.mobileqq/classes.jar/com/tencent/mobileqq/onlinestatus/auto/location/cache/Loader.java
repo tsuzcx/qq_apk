@@ -19,58 +19,131 @@ abstract class Loader
   
   protected void a(String paramString, PoiBean paramPoiBean)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      if ((paramPoiBean != null) && (paramPoiBean.poiArray != null) && (paramPoiBean.poiArray.length > 0)) {
-        break label99;
+      if ((paramPoiBean != null) && (paramPoiBean.poiArray != null) && (paramPoiBean.poiArray.length > 0))
+      {
+        localObject1 = a;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[status][poiLoader][");
+        ((StringBuilder)localObject2).append(this.b);
+        ((StringBuilder)localObject2).append("] from: ");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(" result: ");
+        ((StringBuilder)localObject2).append(Arrays.toString(paramPoiBean.poiArray));
+        ((StringBuilder)localObject2).append(" size: ");
+        ((StringBuilder)localObject2).append(paramPoiBean.poiArray.length);
+        QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+        localObject1 = paramPoiBean.poiArray[0];
+        localObject2 = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[status][poiLoader][");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append("] from: ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" first poi: ");
+        localStringBuilder.append(((Poi)localObject1).title);
+        localStringBuilder.append("-");
+        localStringBuilder.append(((Poi)localObject1).category);
+        localStringBuilder.append("-");
+        localStringBuilder.append(((Poi)localObject1)._distance);
+        QLog.d((String)localObject2, 2, localStringBuilder.toString());
+        if (paramPoiBean.poiArray.length >= 2)
+        {
+          localObject1 = paramPoiBean.poiArray[1];
+          localObject2 = a;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[status][poiLoader][");
+          localStringBuilder.append(this.b);
+          localStringBuilder.append("] from: ");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" second poi: ");
+          localStringBuilder.append(((Poi)localObject1).title);
+          localStringBuilder.append("-");
+          localStringBuilder.append(((Poi)localObject1).category);
+          localStringBuilder.append("-");
+          localStringBuilder.append(((Poi)localObject1)._distance);
+          QLog.d((String)localObject2, 2, localStringBuilder.toString());
+        }
+        localObject1 = a;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[status][poiLoader][");
+        ((StringBuilder)localObject2).append(this.b);
+        ((StringBuilder)localObject2).append("] from: ");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(" result: ");
+        ((StringBuilder)localObject2).append(Arrays.toString(paramPoiBean.poiArray));
+        ((StringBuilder)localObject2).append(" adInfoCity: ");
+        ((StringBuilder)localObject2).append(paramPoiBean.adInfo.city);
+        ((StringBuilder)localObject2).append(" adInfoDistrict: ");
+        ((StringBuilder)localObject2).append(paramPoiBean.adInfo.district);
+        QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+        return;
       }
-      localObject = a;
-      localStringBuilder = new StringBuilder().append("[status][poiLoader][").append(this.b).append("] from: ").append(paramString).append(" result: ");
+      Object localObject1 = a;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[status][poiLoader][");
+      ((StringBuilder)localObject2).append(this.b);
+      ((StringBuilder)localObject2).append("] from: ");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" result: ");
       if ((paramPoiBean != null) && (paramPoiBean.poiArray != null)) {
-        break label93;
+        paramString = "0";
+      } else {
+        paramString = "null";
       }
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    label93:
-    for (paramString = "null";; paramString = "0")
-    {
-      QLog.d((String)localObject, 2, paramString);
-      return;
-    }
-    label99:
-    QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " result: " + Arrays.toString(paramPoiBean.poiArray) + " size: " + paramPoiBean.poiArray.length);
-    Object localObject = paramPoiBean.poiArray[0];
-    QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " first poi: " + ((Poi)localObject).title + "-" + ((Poi)localObject).category + "-" + ((Poi)localObject)._distance);
-    if (paramPoiBean.poiArray.length >= 2)
-    {
-      localObject = paramPoiBean.poiArray[1];
-      QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " second poi: " + ((Poi)localObject).title + "-" + ((Poi)localObject).category + "-" + ((Poi)localObject)._distance);
-    }
-    QLog.d(a, 2, "[status][poiLoader][" + this.b + "] from: " + paramString + " result: " + Arrays.toString(paramPoiBean.poiArray) + " adInfoCity: " + paramPoiBean.adInfo.city + " adInfoDistrict: " + paramPoiBean.adInfo.district);
   }
   
   protected boolean a(LatLng paramLatLng1, LatLng paramLatLng2, int paramInt)
   {
-    if ((paramLatLng1 == null) || (paramLatLng2 == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "[status][poiLoader][" + this.b + "] accept? fail this.latLng: " + paramLatLng1 + " that.latLng: " + paramLatLng2);
-      }
-    }
-    double d;
-    do
+    boolean bool = false;
+    String str;
+    StringBuilder localStringBuilder;
+    if ((paramLatLng1 != null) && (paramLatLng2 != null))
     {
-      return false;
-      d = LocationUtil.a(paramLatLng1, paramLatLng2);
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "[status][poiLoader][" + this.b + "] accept? this.latLng: " + paramLatLng1 + " that.latLng: " + paramLatLng2 + " distance: " + d + " acceptAccuracy: " + paramInt);
+      double d = LocationUtil.a(paramLatLng1, paramLatLng2);
+      if (QLog.isColorLevel())
+      {
+        str = a;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[status][poiLoader][");
+        localStringBuilder.append(this.b);
+        localStringBuilder.append("] accept? this.latLng: ");
+        localStringBuilder.append(paramLatLng1);
+        localStringBuilder.append(" that.latLng: ");
+        localStringBuilder.append(paramLatLng2);
+        localStringBuilder.append(" distance: ");
+        localStringBuilder.append(d);
+        localStringBuilder.append(" acceptAccuracy: ");
+        localStringBuilder.append(paramInt);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
-    } while (d >= paramInt);
-    return true;
+      if (d < paramInt) {
+        bool = true;
+      }
+      return bool;
+    }
+    if (QLog.isColorLevel())
+    {
+      str = a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[status][poiLoader][");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("] accept? fail this.latLng: ");
+      localStringBuilder.append(paramLatLng1);
+      localStringBuilder.append(" that.latLng: ");
+      localStringBuilder.append(paramLatLng2);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.cache.Loader
  * JD-Core Version:    0.7.0.1
  */

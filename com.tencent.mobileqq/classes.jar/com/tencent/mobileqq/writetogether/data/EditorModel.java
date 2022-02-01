@@ -48,11 +48,8 @@ public class EditorModel
   
   private void a(String paramString1, String paramString2)
   {
-    int i = 0;
-    if (this.jdField_b_of_type_JavaLangString.equals(paramString1)) {
-      i = 1;
-    }
-    if (i == 0)
+    boolean bool = this.jdField_b_of_type_JavaLangString.equals(paramString1);
+    if (!bool)
     {
       this.jdField_a_of_type_JavaUtilList.remove(paramString1);
       this.jdField_a_of_type_JavaUtilList.add(paramString1);
@@ -62,20 +59,22 @@ public class EditorModel
       this.jdField_a_of_type_JavaUtilMap.put(paramString1, Long.valueOf(l));
       b(this.jdField_a_of_type_JavaUtilList);
       b(this.jdField_b_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, true);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener;
+      if (localObject != null) {
+        ((IPartChangeListener)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, true);
       }
     }
     this.e = paramString1;
     this.jdField_a_of_type_Long = b();
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController;
+    if (localObject != null)
     {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.b();
+      if (!bool) {
+        ((UserStateController)localObject).b();
       }
       this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqEasysync2AText.jdField_a_of_type_JavaLangString.length());
     }
-    if (i == 0) {
+    if (!bool) {
       this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.b(paramString2);
     }
     this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramString1, paramString2);
@@ -88,38 +87,29 @@ public class EditorModel
   
   private void b()
   {
-    boolean bool;
-    label30:
-    IPartChangeListener localIPartChangeListener;
-    String str;
     if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener != null)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-        break label66;
+      boolean bool;
+      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      bool = true;
-      if (!bool) {
-        break label71;
+      List localList;
+      if (bool) {
+        localList = this.jdField_a_of_type_JavaUtilList;
+      } else {
+        localList = this.jdField_b_of_type_JavaUtilList;
       }
-      localList = this.jdField_a_of_type_JavaUtilList;
       b(localList);
-      localIPartChangeListener = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener;
-      str = this.jdField_a_of_type_JavaLangString;
-      if (!bool) {
-        break label79;
+      IPartChangeListener localIPartChangeListener = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener;
+      String str = this.jdField_a_of_type_JavaLangString;
+      if (bool) {
+        localList = this.jdField_a_of_type_JavaUtilList;
+      } else {
+        localList = this.jdField_b_of_type_JavaUtilList;
       }
-    }
-    label66:
-    label71:
-    label79:
-    for (List localList = this.jdField_a_of_type_JavaUtilList;; localList = this.jdField_b_of_type_JavaUtilList)
-    {
       localIPartChangeListener.a(str, localList, bool);
-      return;
-      bool = false;
-      break;
-      localList = this.jdField_b_of_type_JavaUtilList;
-      break label30;
     }
   }
   
@@ -174,8 +164,9 @@ public class EditorModel
   
   public String a(String paramString)
   {
-    if (this.jdField_b_of_type_JavaUtilMap != null) {
-      return (String)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+    Map localMap = this.jdField_b_of_type_JavaUtilMap;
+    if (localMap != null) {
+      return (String)localMap.get(paramString);
     }
     return null;
   }
@@ -187,8 +178,9 @@ public class EditorModel
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilList, false);
+    IPartChangeListener localIPartChangeListener = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIPartChangeListener;
+    if (localIPartChangeListener != null) {
+      localIPartChangeListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilList, false);
     }
   }
   
@@ -199,8 +191,9 @@ public class EditorModel
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramInt1, paramInt2, false);
+    CursorManager localCursorManager = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager;
+    if (localCursorManager != null) {
+      localCursorManager.a(paramInt1, paramInt2, false);
     }
   }
   
@@ -255,8 +248,9 @@ public class EditorModel
     if ((this.jdField_a_of_type_Long <= 0L) && (QLog.isColorLevel())) {
       QLog.e("EditorModel", 2, "metaData.mTime lt 0");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController.b();
+    paramDocMetaData = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientUserStateController;
+    if (paramDocMetaData != null) {
+      paramDocMetaData.b();
     }
   }
   
@@ -269,30 +263,36 @@ public class EditorModel
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramString, paramInt1, paramInt2);
-    } while (paramString.equals(this.jdField_b_of_type_JavaLangString));
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    long l = b();
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(l));
-    b();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramString, paramInt1, paramInt2);
+    if (!paramString.equals(this.jdField_b_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramString);
+      this.jdField_a_of_type_JavaUtilList.add(paramString);
+      long l = b();
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(l));
+      b();
+    }
   }
   
   public void a(String paramString, long paramLong, UserEditInfo paramUserEditInfo)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {
-      QLog.e("EditorModel", 1, "[addParticipant error] author: " + paramString + ", aliveTimeSec: " + paramLong);
-    }
-    do
+    if ((!TextUtils.isEmpty(paramString)) && (paramLong > 0L))
     {
-      return;
       b();
-    } while (paramUserEditInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramString, paramUserEditInfo);
+      if (!paramUserEditInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_b_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataCursorManager.a(paramString, paramUserEditInfo);
+      }
+      return;
+    }
+    paramUserEditInfo = new StringBuilder();
+    paramUserEditInfo.append("[addParticipant error] author: ");
+    paramUserEditInfo.append(paramString);
+    paramUserEditInfo.append(", aliveTimeSec: ");
+    paramUserEditInfo.append(paramLong);
+    QLog.e("EditorModel", 1, paramUserEditInfo.toString());
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
@@ -304,8 +304,14 @@ public class EditorModel
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditorModel", 2, "[new changeset] - notifyView: " + paramBoolean + ", cs: " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[new changeset] - notifyView: ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", cs: ");
+      localStringBuilder.append(paramString1);
+      QLog.d("EditorModel", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqEasysync2AText = Changeset.a(paramString1, this.jdField_a_of_type_ComTencentMobileqqEasysync2AText, this.jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool);
     if (paramBoolean) {
@@ -316,44 +322,51 @@ public class EditorModel
   
   public void a(List<EditUserHistory> paramList)
   {
-    if (paramList == null) {
+    if (paramList == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("EditorModel", 2, "histories is null");
       }
+      return;
     }
-    do
+    if ((paramList.size() == 0) && (QLog.isColorLevel())) {
+      QLog.d("EditorModel", 2, "histories size is 0");
+    }
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      do
+      EditUserHistory localEditUserHistory = (EditUserHistory)paramList.next();
+      if (localEditUserHistory != null)
       {
-        return;
-        if ((paramList.size() == 0) && (QLog.isColorLevel())) {
-          QLog.d("EditorModel", 2, "histories size is 0");
-        }
-        this.jdField_b_of_type_JavaUtilList = new ArrayList();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
+        String str = localEditUserHistory.jdField_a_of_type_JavaLangString;
+        long l = localEditUserHistory.jdField_a_of_type_Long * 1000L;
+        if (QLog.isColorLevel())
         {
-          EditUserHistory localEditUserHistory = (EditUserHistory)paramList.next();
-          if (localEditUserHistory != null)
-          {
-            String str = localEditUserHistory.jdField_a_of_type_JavaLangString;
-            long l = localEditUserHistory.jdField_a_of_type_Long * 1000L;
-            if (QLog.isColorLevel()) {
-              QLog.d("EditorModel", 2, "[setEditUserHistory] uin: " + str + ", editTime: " + l);
-            }
-            this.jdField_b_of_type_JavaUtilList.add(str);
-            this.jdField_a_of_type_JavaUtilMap.put(str, Long.valueOf(l));
-            if (this.jdField_b_of_type_JavaUtilMap != null) {
-              this.jdField_b_of_type_JavaUtilMap.put(str, localEditUserHistory.jdField_b_of_type_JavaLangString);
-            }
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[setEditUserHistory] uin: ");
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(", editTime: ");
+          ((StringBuilder)localObject).append(l);
+          QLog.d("EditorModel", 2, ((StringBuilder)localObject).toString());
         }
-        b(this.jdField_b_of_type_JavaUtilList);
-      } while (this.jdField_b_of_type_JavaUtilList.size() == 0);
+        this.jdField_b_of_type_JavaUtilList.add(str);
+        this.jdField_a_of_type_JavaUtilMap.put(str, Long.valueOf(l));
+        Object localObject = this.jdField_b_of_type_JavaUtilMap;
+        if (localObject != null) {
+          ((Map)localObject).put(str, localEditUserHistory.jdField_b_of_type_JavaLangString);
+        }
+      }
+    }
+    b(this.jdField_b_of_type_JavaUtilList);
+    if (this.jdField_b_of_type_JavaUtilList.size() != 0)
+    {
       this.e = ((String)this.jdField_b_of_type_JavaUtilList.get(0));
       paramList = (Long)this.jdField_a_of_type_JavaUtilMap.get(this.e);
-    } while (paramList == null);
-    this.jdField_a_of_type_Long = paramList.longValue();
+      if (paramList != null) {
+        this.jdField_a_of_type_Long = paramList.longValue();
+      }
+    }
   }
   
   public void a(boolean paramBoolean)
@@ -393,7 +406,7 @@ public class EditorModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.EditorModel
  * JD-Core Version:    0.7.0.1
  */

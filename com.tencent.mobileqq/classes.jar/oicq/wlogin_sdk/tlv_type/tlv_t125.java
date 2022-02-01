@@ -29,12 +29,14 @@ public class tlv_t125
   
   public Boolean verify()
   {
-    if (this._body_len < 2) {
-      return Boolean.valueOf(false);
+    int i = this._body_len;
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (i < 2) {
+      return localBoolean;
     }
     this._openid_len = util.buf_to_int16(this._buf, this._head_len);
     if (this._body_len < this._openid_len + 2 + 2) {
-      return Boolean.valueOf(false);
+      return localBoolean;
     }
     this._openkey_len = util.buf_to_int16(this._buf, this._head_len + 2 + this._openid_len);
     return Boolean.valueOf(true);
@@ -42,7 +44,7 @@ public class tlv_t125
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t125
  * JD-Core Version:    0.7.0.1
  */

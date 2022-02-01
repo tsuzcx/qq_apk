@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/cfi" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.capture.view.CountDownView android:layout_gravity="center" android:id="@id/l8i" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="45.0sp" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center" android:id="@id/m5o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:shadowColor="#4c000000" android:shadowDy="5.0" android:shadowRadius="10.0" android:layout_centerInParent="true" />
-    </dov.com.qq.im.capture.view.CountDownView>
-</FrameLayout>

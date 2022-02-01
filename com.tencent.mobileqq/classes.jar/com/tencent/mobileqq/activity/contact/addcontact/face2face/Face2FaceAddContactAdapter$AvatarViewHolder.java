@@ -23,9 +23,9 @@ class Face2FaceAddContactAdapter$AvatarViewHolder
   public Face2FaceAddContactAdapter$AvatarViewHolder(Face2FaceAddContactAdapter paramFace2FaceAddContactAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131377394));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368603));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372115));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376844));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371697));
   }
   
   public void onAnimationCancel(Animator paramAnimator) {}
@@ -38,26 +38,31 @@ class Face2FaceAddContactAdapter$AvatarViewHolder
     Face2FaceAddContactAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFace2faceFace2FaceAddContactAdapter).add(this.jdField_a_of_type_JavaLangString);
   }
   
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
+  }
+  
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator) {}
   
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
+  }
+  
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (paramView.getId() == 2131368343) {
       Face2FaceAddContactAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFace2faceFace2FaceAddContactAdapter, this.jdField_a_of_type_JavaLangString);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactAdapter.AvatarViewHolder
  * JD-Core Version:    0.7.0.1
  */

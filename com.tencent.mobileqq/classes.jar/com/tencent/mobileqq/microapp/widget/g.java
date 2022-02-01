@@ -68,24 +68,34 @@ public final class g
       localImageView.setVisibility(0);
       localImageView.setImageDrawable(this.l);
     }
-    for (;;)
+    else
     {
-      if (this.m != null) {
-        ((TextView)this.a.findViewById(R.id.o)).setText(this.m);
-      }
-      return;
       localImageView.setVisibility(8);
+    }
+    if (this.m != null) {
+      ((TextView)this.a.findViewById(R.id.o)).setText(this.m);
     }
   }
   
   private void b()
   {
-    QLog.d("ToastView", 4, "show mParentView=" + this.b + ",toastLayout=" + this.a);
-    if ((this.b != null) && (this.a != null))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("show mParentView=");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(",toastLayout=");
+    ((StringBuilder)localObject).append(this.a);
+    QLog.d("ToastView", 4, ((StringBuilder)localObject).toString());
+    localObject = this.b;
+    if (localObject != null)
     {
-      this.b.addView(this.a, new ViewGroup.LayoutParams(-1, -1));
-      if (this.n > -1) {
-        this.c.postDelayed(this.d, this.n);
+      View localView = this.a;
+      if (localView != null)
+      {
+        ((ViewGroup)localObject).addView(localView, new ViewGroup.LayoutParams(-1, -1));
+        int i1 = this.n;
+        if (i1 > -1) {
+          this.c.postDelayed(this.d, i1);
+        }
       }
     }
   }
@@ -97,20 +107,16 @@ public final class g
   
   private int c(String paramString)
   {
-    int i1 = 0;
     if ("success".equals(paramString)) {
-      i1 = R.drawable.a;
+      return R.drawable.a;
     }
-    do
-    {
-      return i1;
-      if ("warn".equals(paramString)) {
-        return R.drawable.b;
-      }
-      if ("loading".equals(paramString)) {
-        return R.drawable.d;
-      }
-    } while (!"none".equals(paramString));
+    if ("warn".equals(paramString)) {
+      return R.drawable.b;
+    }
+    if ("loading".equals(paramString)) {
+      return R.drawable.d;
+    }
+    if ("none".equals(paramString)) {}
     return 0;
   }
   
@@ -121,31 +127,25 @@ public final class g
     }
     String str2 = c.n(paramString);
     Iterator localIterator = this.i.iterator();
-    label120:
-    label123:
     while (localIterator.hasNext())
     {
       String str3 = (String)localIterator.next();
-      String str1;
-      if (str3.startsWith("/"))
-      {
+      if (str3.startsWith("/")) {
         paramString = str3.substring(1);
-        str1 = paramString;
-        if (paramString.endsWith("/")) {
-          str1 = paramString.substring(0, paramString.length() - 1);
-        }
-        if (!str2.startsWith("/")) {
-          break label120;
-        }
-      }
-      for (paramString = str2.substring(1);; paramString = str2)
-      {
-        if (!paramString.startsWith(str1)) {
-          break label123;
-        }
-        return str3;
+      } else {
         paramString = str3;
-        break;
+      }
+      String str1 = paramString;
+      if (paramString.endsWith("/")) {
+        str1 = paramString.substring(0, paramString.length() - 1);
+      }
+      if (str2.startsWith("/")) {
+        paramString = str2.substring(1);
+      } else {
+        paramString = str2;
+      }
+      if (paramString.startsWith(str1)) {
+        return str3;
       }
     }
     return "";
@@ -154,28 +154,46 @@ public final class g
   public void a()
   {
     this.c.removeCallbacks(this.d);
-    QLog.d("ToastView", 4, "hide mParentView=" + this.b + ",toastLayout=" + this.a);
-    if ((this.b != null) && (this.a != null)) {
-      this.b.removeView(this.a);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("hide mParentView=");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(",toastLayout=");
+    ((StringBuilder)localObject).append(this.a);
+    QLog.d("ToastView", 4, ((StringBuilder)localObject).toString());
+    localObject = this.b;
+    if (localObject != null)
+    {
+      View localView = this.a;
+      if (localView != null) {
+        ((ViewGroup)localObject).removeView(localView);
+      }
     }
   }
   
   public void a(String paramString1, String paramString2, CharSequence paramCharSequence, int paramInt, boolean paramBoolean)
   {
-    QLog.d("ToastView", 4, "show iconType=" + paramString1 + ",localIconPath=" + paramString2 + ",msg=" + paramCharSequence + ",duration=" + paramInt + ",mask=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("show iconType=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",localIconPath=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",msg=");
+    localStringBuilder.append(paramCharSequence);
+    localStringBuilder.append(",duration=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",mask=");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("ToastView", 4, localStringBuilder.toString());
     if (!TextUtils.isEmpty(paramString2)) {
       a(new BitmapDrawable(paramString2));
-    }
-    for (;;)
-    {
-      a(paramCharSequence);
-      b(paramInt);
-      a();
-      a(paramBoolean);
-      b();
-      return;
+    } else {
       a(c(paramString1));
     }
+    a(paramCharSequence);
+    b(paramInt);
+    a();
+    a(paramBoolean);
+    b();
   }
   
   public j b(String paramString)
@@ -191,7 +209,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.g
  * JD-Core Version:    0.7.0.1
  */

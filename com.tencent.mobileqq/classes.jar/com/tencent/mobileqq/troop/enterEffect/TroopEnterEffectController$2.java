@@ -7,13 +7,16 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.entereffect.TroopEnterEffectData;
+import com.tencent.mobileqq.troop.entereffect.api.ITroopEnterEffectService;
 import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 
 class TroopEnterEffectController$2
   implements View.OnTouchListener
 {
-  TroopEnterEffectController$2(TroopEnterEffectController paramTroopEnterEffectController, String paramString, TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData) {}
+  TroopEnterEffectController$2(TroopEnterEffectController paramTroopEnterEffectController, QQAppInterface paramQQAppInterface, String paramString, TroopEnterEffectData paramTroopEnterEffectData) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
@@ -21,17 +24,21 @@ class TroopEnterEffectController$2
     {
       paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a.getContext(), QQBrowserActivity.class);
       paramMotionEvent = IndividuationUrlHelper.a("troopEnterEffect");
-      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.b);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMotionEvent);
+      localStringBuilder.append("&gc=");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.b);
+      paramView.putExtra("url", localStringBuilder.toString());
       this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a.getContext().startActivity(paramView);
-      TroopEnterEffectManager.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.b });
-      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$TroopEnterEffectData.a), "");
+      ((ITroopEnterEffectService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopEnterEffectService.class, "all")).report("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.b });
+      VasWebviewUtil.a(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_ComTencentMobileqqTroopEntereffectTroopEnterEffectData.a), "");
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,51 +16,92 @@ final class WSFollowBeaconReport$1
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("index", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("position_profile", "dynamics_nickname" + this.jdField_a_of_type_Int);
-    localHashMap.put("position_nickname", "dynamics_nickname" + this.jdField_a_of_type_Int);
-    localHashMap.put("position_content", "dynamics_content" + this.jdField_a_of_type_Int);
-    localHashMap.put("position_video", "dynamics_video" + this.jdField_a_of_type_Int);
-    localHashMap.put("position_more_operations", "dynamics_more_operations" + this.jdField_a_of_type_Int);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("dynamics_nickname");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    localHashMap.put("position_profile", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("dynamics_nickname");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    localHashMap.put("position_nickname", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("dynamics_content");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    localHashMap.put("position_content", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("dynamics_video");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    localHashMap.put("position_video", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("dynamics_more_operations");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    localHashMap.put("position_more_operations", ((StringBuilder)localObject).toString());
     if (this.jdField_a_of_type_Boolean)
     {
-      localHashMap.put("position_close", "dynamics_close" + this.jdField_a_of_type_Int);
-      localHashMap.put("position_follow", "dynamics_follow" + this.jdField_a_of_type_Int);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dynamics_close");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      localHashMap.put("position_close", ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dynamics_follow");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      localHashMap.put("position_follow", ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_b_of_type_Boolean) {
-      localHashMap.put("position_label_music", "dynamics_bottom_label_music" + this.jdField_a_of_type_Int);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dynamics_bottom_label_music");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      localHashMap.put("position_label_music", ((StringBuilder)localObject).toString());
     }
-    if (this.c) {
-      localHashMap.put("position_label_magic", "dynamics_bottom_label_magic" + this.jdField_a_of_type_Int);
+    if (this.c)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dynamics_bottom_label_magic");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      localHashMap.put("position_label_magic", ((StringBuilder)localObject).toString());
     }
-    if (this.d) {
-      localHashMap.put("position_label_location", "dynamics_bottom_label_location" + this.jdField_a_of_type_Int);
+    if (this.d)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dynamics_bottom_label_location");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      localHashMap.put("position_label_location", ((StringBuilder)localObject).toString());
     }
-    if (this.e) {
-      localHashMap.put("position_qqgroup", "dynamics_qqgroup" + this.jdField_a_of_type_Int);
+    if (this.e)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dynamics_qqgroup");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      localHashMap.put("position_qqgroup", ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.friendLikes != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.friendLikes.likeFriends != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.friendLikes.likeFriends.size() > 0)) {
-      localHashMap.put("position_friend", "dynamics_friend" + this.jdField_a_of_type_Int);
+    localObject = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+    if ((localObject != null) && (((stSimpleMetaFeed)localObject).friendLikes != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.friendLikes.likeFriends != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.friendLikes.likeFriends.size() > 0))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dynamics_friend");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      localHashMap.put("position_friend", ((StringBuilder)localObject).toString());
     }
+    stSimpleMetaFeed localstSimpleMetaFeed = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
     String str = "0";
-    if (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) {
-      if (!WSFeedUtils.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster)) {
-        break label568;
+    localObject = str;
+    if (localstSimpleMetaFeed != null)
+    {
+      localObject = str;
+      if (WSFeedUtils.a(localstSimpleMetaFeed.poster)) {
+        localObject = "1";
       }
     }
-    label568:
-    for (str = "1";; str = "0")
-    {
-      localHashMap.put("is_livenow", str);
-      WSFollowBeaconReport.a(localHashMap, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int);
-      WSFollowBeaconReport.b(localHashMap, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int);
-      WSFollowBeaconReport.a(WSFollowBeaconReport.a("focus").addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("dynamics_feed", 0, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed)).addExtParams(localHashMap), "gzh_exposure");
-      return;
-    }
+    localHashMap.put("is_livenow", localObject);
+    WSFollowBeaconReport.a(localHashMap, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int);
+    WSFollowBeaconReport.b(localHashMap, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int);
+    WSFollowBeaconReport.a(WSFollowBeaconReport.a("focus").addParams(WSPublicAccReport.getInstance().getFeedsBaseParams("dynamics_feed", 0, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed)).addExtParams(localHashMap), "gzh_exposure");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSFollowBeaconReport.1
  * JD-Core Version:    0.7.0.1
  */

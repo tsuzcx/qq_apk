@@ -36,7 +36,7 @@ public class RoundRelativeLayout
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.l);
-      this.jdField_a_of_type_Float = paramContext.getDimensionPixelSize(R.styleable.I, 0);
+      this.jdField_a_of_type_Float = paramContext.getDimensionPixelSize(R.styleable.J, 0);
       paramContext.recycle();
     }
   }
@@ -44,7 +44,10 @@ public class RoundRelativeLayout
   private final void a()
   {
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f = this.jdField_a_of_type_Float;
+    localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
   }
   
   public void draw(@NotNull Canvas paramCanvas)
@@ -58,7 +61,7 @@ public class RoundRelativeLayout
     super.draw(paramCanvas);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth() - 1, getHeight() - 1);
@@ -74,7 +77,7 @@ public class RoundRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.RoundRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -11,10 +11,17 @@ class TroopFileDownloader$1
   
   public void run()
   {
-    if (this.this$0.a) {
-      TroopFileTransferUtil.Log.b("TroopFileDownloader", TroopFileTransferUtil.Log.a, "[" + this.this$0.b + "] download. had stoped");
+    if (this.this$0.a)
+    {
+      int i = TroopFileTransferUtil.Log.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.this$0.b);
+      localStringBuilder.append("] download. had stoped");
+      TroopFileTransferUtil.Log.b("TroopFileDownloader", i, localStringBuilder.toString());
+      return;
     }
-    while (this.this$0.a()) {
+    if (this.this$0.a()) {
       return;
     }
     if (!this.this$0.c())
@@ -22,7 +29,7 @@ class TroopFileDownloader$1
       this.this$0.a(true, -5001, "file open exception", "");
       return;
     }
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
       this.this$0.a(true, 9004, "no network", "");
       return;
@@ -32,7 +39,7 @@ class TroopFileDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloader.1
  * JD-Core Version:    0.7.0.1
  */

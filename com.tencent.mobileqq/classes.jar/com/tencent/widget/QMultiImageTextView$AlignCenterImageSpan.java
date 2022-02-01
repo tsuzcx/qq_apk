@@ -19,8 +19,7 @@ class QMultiImageTextView$AlignCenterImageSpan
   {
     paramCharSequence = getDrawable();
     paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt1 = (paramPaint.descent + paramInt4 + paramInt4 + paramPaint.ascent) / 2;
     paramInt2 = paramCharSequence.getBounds().bottom / 2;
     paramCanvas.save();
     paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
@@ -30,7 +29,7 @@ class QMultiImageTextView$AlignCenterImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.QMultiImageTextView.AlignCenterImageSpan
  * JD-Core Version:    0.7.0.1
  */

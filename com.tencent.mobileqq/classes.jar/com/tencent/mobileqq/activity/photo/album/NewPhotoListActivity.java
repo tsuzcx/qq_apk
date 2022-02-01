@@ -1,173 +1,59 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.av.camera.QavCameraUsage;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoLogicFactory;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.av.smallscreen.SmallScreenUtils;
+import com.tencent.mobileqq.activity.photo.album.photolist.AbstractPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.photolist.PhotoListCustomization;
+import com.tencent.mobileqq.activity.photo.album.photolist.PhotoListSceneBase;
+import com.tencent.mobileqq.colornote.api.IColorNoteUtil;
+import com.tencent.mobileqq.qqalbum.IPhotoLogicFactory;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import com.tencent.widget.PhotoGridView;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.util.PermissionUtil;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import mqq.app.MobileQQ;
 
+@RoutePage(desc="相册图片列表页面", path="/base/album/photolist")
 public class NewPhotoListActivity
   extends AbstractPhotoListActivity
 {
-  public Handler a;
-  View jdField_a_of_type_AndroidViewView;
-  public Button a;
-  public CheckBox a;
-  public TextView a;
-  NewPhotoListActivity.QZoneGetAlbumListNumObserver jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity$QZoneGetAlbumListNumObserver = new NewPhotoListActivity.QZoneGetAlbumListNumObserver(this);
-  public TextView b;
-  public TextView c;
-  TextView d;
+  public TextView imgCountTipsTv;
+  public TextView magicStickBtn;
+  public CheckBox qualityCheckBox;
+  public TextView qualityCountTv;
+  public TextView qualityTv;
   
-  public NewPhotoListActivity()
+  public void dispatchTakePictureIntent()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new NewPhotoListActivity.NewPhotoListActivityHandler(this);
-  }
-  
-  public static String a(String paramString)
-  {
-    try
-    {
-      File localFile = new File(paramString);
-      Object localObject = paramString;
-      if (localFile.exists())
-      {
-        localObject = localFile.getName();
-        String str = AppConstants.SDCARD_IMG_CAMERA + (String)localObject;
-        localObject = paramString;
-        if (!str.equals(paramString))
-        {
-          localObject = new File(AppConstants.SDCARD_IMG_CAMERA);
-          if (!((File)localObject).exists()) {
-            ((File)localObject).mkdirs();
-          }
-          boolean bool2 = localFile.renameTo(new File(str));
-          boolean bool1 = bool2;
-          if (!bool2) {
-            bool1 = FileUtils.b(paramString, str);
-          }
-          QLog.d("PhotoListActivity", 2, new Object[] { "saveToDCIM rename to :", str });
-          localObject = paramString;
-          if (bool1) {
-            localObject = str;
-          }
-        }
-      }
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("PhotoListActivity", 2, "saveToDCIM :", localThrowable);
-    }
-    return paramString;
-  }
-  
-  public void a()
-  {
-    if (QavCameraUsage.b(BaseApplicationImpl.getContext())) {}
-    label27:
-    do
-    {
-      return;
-      Intent localIntent = new Intent();
-      Object localObject = null;
-      try
-      {
-        File localFile = createImageFile();
-        localObject = localFile;
-      }
-      catch (IOException localIOException)
-      {
-        break label27;
-      }
-    } while (localObject == null);
-    FileProvider7Helper.setSystemCapture(this, localObject, localIntent);
-    startActivityForResult(localIntent, 16);
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      FileProvider7Helper.savePhotoToSysAlbum(this, paramString);
+    if (QavCameraUsage.b(MobileQQ.getContext())) {
       return;
     }
-    catch (Exception paramString)
+    Intent localIntent = new Intent();
+    Object localObject = null;
+    try
     {
-      QLog.e("PhotoListActivity", 2, "scanMediaFile :", paramString);
+      File localFile = this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a();
+      localObject = localFile;
     }
-  }
-  
-  void a(List<String> paramList, HashMap<String, LocalMediaInfo> paramHashMap)
-  {
-    if ((paramList != null) && (paramHashMap != null) && (this.mPhotoListLogic.mPhotoCommonData.allMediaInfoHashMap != null))
+    catch (IOException localIOException)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        String str = (String)paramList.next();
-        if (!paramHashMap.containsKey(str)) {
-          paramHashMap.put(str, this.mPhotoListLogic.mPhotoCommonData.allMediaInfoHashMap.get(str));
-        }
-      }
+      label33:
+      break label33;
     }
-  }
-  
-  protected boolean a(Intent paramIntent)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramIntent != null)
+    if (localObject != null)
     {
-      boolean bool3 = paramIntent.getBooleanExtra("extra_directly_back", false);
-      boolean bool4 = paramIntent.getBooleanExtra("PhotoConst.IS_VIDEO_RECORDED", false);
-      bool1 = bool2;
-      if (bool3)
-      {
-        if (!bool4) {
-          break label50;
-        }
-        this.mPhotoListLogic.handleVideoCapture(paramIntent);
-      }
-    }
-    for (;;)
-    {
-      bool1 = true;
-      return bool1;
-      label50:
-      this.mPhotoListLogic.handlePicCapture(paramIntent);
-    }
-  }
-  
-  public void b()
-  {
-    if (((this.mPhotoListData.isShowCamera) && ("$RecentAlbumId".equals(this.mPhotoListLogic.mPhotoCommonData.albumId))) || ((this.mPhotoListData.showCameraInVideo) && ("$VideoAlbumId".equals(this.mPhotoListLogic.mPhotoCommonData.albumId)))) {
-      excuteQueryPhotoTask(true);
+      FileProvider7Helper.setSystemCapture(this, localObject, localIntent);
+      startActivityForResult(localIntent, 16);
     }
   }
   
@@ -180,79 +66,125 @@ public class NewPhotoListActivity
     return bool;
   }
   
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAlbum", 2, "-----doOnActivityResult-----");
+    }
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    if (!CheckPermission.isHasStorageReadAndWritePermission(this)) {
-      CheckPermission.requestStoreReadAndWritePermission(this, null);
+    if (!PermissionUtil.b(this)) {
+      PermissionUtil.c(this, null);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("-----doOnCreate-----");
+      paramBundle.append(this);
+      QLog.d("QQAlbum", 2, paramBundle.toString());
     }
     return true;
   }
   
-  public void doOnPause()
+  public void doOnDestroy()
+  {
+    super.doOnDestroy();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-----doOnDestroy-----");
+      localStringBuilder.append(this);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
+    }
+  }
+  
+  protected void doOnPause()
   {
     super.doOnPause();
-    ColorNoteSmallScreenUtil.a(BaseApplicationImpl.getContext(), 2, true);
+    SmallScreenUtils.a(MobileQQ.getContext(), false);
+    ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(MobileQQ.getContext(), 2, true);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-----doOnPause-----");
+      localStringBuilder.append(this);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
+    }
   }
   
-  protected PhotoListLogic generateLogic()
+  public void doOnResume()
+  {
+    super.doOnResume();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-----doOnResume-----");
+      localStringBuilder.append(this);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void doOnStart()
+  {
+    super.doOnStart();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-----doOnStart-----");
+      localStringBuilder.append(this);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void doOnStop()
+  {
+    super.doOnStop();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-----doOnStop-----");
+      localStringBuilder.append(this);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public PhotoListCustomization<? extends OtherCommonData> generateCustomization()
   {
     int i = getIntent().getIntExtra("enter_from", 0);
-    PhotoListLogic localPhotoListLogic = PhotoLogicFactory.a(i, this);
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListActivity", 2, "generateLogic:" + localPhotoListLogic.getClass().getName() + " enterFrom:" + i);
-    }
-    return localPhotoListLogic;
-  }
-  
-  public AbstractAlbumListFragment getAlbumListFragment()
-  {
-    return new AlbumListFragment();
-  }
-  
-  protected Dialog getDialog()
-  {
-    ReportDialog localReportDialog = new ReportDialog(this, 2131755842);
-    localReportDialog.setContentView(2131559683);
-    return localReportDialog;
-  }
-  
-  public Class getJumpActivity()
-  {
-    return NewPhotoPreviewActivity.class;
-  }
-  
-  protected void initUI()
-  {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131377356);
-    if (ImmersiveUtils.isSupporImmersive() == 1)
+    PhotoListCustomization localPhotoListCustomization = ((IPhotoLogicFactory)QRoute.api(IPhotoLogicFactory.class)).createPhotoListLogic(this, getIntent());
+    if (QLog.isColorLevel())
     {
-      localRelativeLayout.setFitsSystemWindows(true);
-      localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("generateLogic:");
+      localStringBuilder.append(localPhotoListCustomization.getClass().getName());
+      localStringBuilder.append(" enterFrom:");
+      localStringBuilder.append(i);
+      QLog.d("QQAlbum", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131368071);
-    this.d = ((TextView)findViewById(2131381000));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370969));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131375209));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375215));
-    this.b = ((TextView)findViewById(2131375210));
-    this.c = ((TextView)findViewById(2131368901));
-    super.initUI();
-    this.mGridView.addOnScrollListener(new NewPhotoListActivity.1(this));
+    return localPhotoListCustomization;
   }
   
-  public void onClick(View paramView)
+  protected boolean handleCaptureResult(Intent paramIntent)
   {
-    super.onClick(paramView);
-    switch (paramView.getId())
+    if (paramIntent != null)
     {
+      boolean bool1 = paramIntent.getBooleanExtra("extra_directly_back", false);
+      boolean bool2 = paramIntent.getBooleanExtra("PhotoConst.IS_VIDEO_RECORDED", false);
+      if (bool1)
+      {
+        if (bool2) {
+          this.mPhotoListCustomization.f(paramIntent);
+        } else {
+          this.mPhotoListCustomization.e(paramIntent);
+        }
+        return true;
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.mPhotoListLogic.onMagicStickClick(paramView, new Bundle(), 2, null);
-    }
+    return false;
   }
   
   @Override
@@ -262,29 +194,33 @@ public class NewPhotoListActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  void processNewIntent(Intent paramIntent)
+  public void processNewIntent(Intent paramIntent)
   {
     boolean bool = paramIntent.getBooleanExtra("extra_directly_back", false);
     if (paramIntent.getIntExtra("p_e_s_type", 0) == 7)
     {
-      this.mPhotoListData.needQueryTask = false;
-      this.mPhotoListLogic.initData(paramIntent);
-      return;
+      this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.o = false;
+      this.mPhotoListCustomization.a(paramIntent);
     }
-    if (bool)
+    else if (bool)
     {
-      this.mPhotoListData.needQueryTask = false;
-      a(paramIntent);
-      QLog.d("PhotoListActivity", 2, "PhotoListActivity onNewIntent() camera back");
-      return;
+      this.mPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.o = false;
+      handleCaptureResult(paramIntent);
+      QLog.d("QQAlbum", 2, "QQAlbum onNewIntent() camera back");
     }
-    setIntent(paramIntent);
-    this.mPhotoListLogic.initData(paramIntent);
+    else
+    {
+      setIntent(paramIntent);
+      this.mPhotoListCustomization.a(paramIntent);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAlbum", 2, "-----do ProcessNewIntent-----");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -20,30 +20,29 @@ public class TransformUtils
   
   public static float[] ConvertPointListToFloatArray(List<PointF> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    int j = paramList.size();
-    float[] arrayOfFloat = new float[j * 2];
-    int i = 0;
-    while (i < j)
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      arrayOfFloat[(i * 2)] = ((PointF)paramList.get(i)).x;
-      arrayOfFloat[(i * 2 + 1)] = ((PointF)paramList.get(i)).y;
-      i += 1;
+      int j = paramList.size();
+      float[] arrayOfFloat = new float[j * 2];
+      int i = 0;
+      while (i < j)
+      {
+        int k = i * 2;
+        arrayOfFloat[k] = ((PointF)paramList.get(i)).x;
+        arrayOfFloat[(k + 1)] = ((PointF)paramList.get(i)).y;
+        i += 1;
+      }
+      return arrayOfFloat;
     }
-    return arrayOfFloat;
+    return null;
   }
   
   private static List<PointF> arrPointToList(float[] paramArrayOfFloat, float paramFloat)
   {
-    int j = 0;
-    Object localObject;
-    if (paramArrayOfFloat == null)
-    {
-      localObject = new ArrayList();
-      return localObject;
+    if (paramArrayOfFloat == null) {
+      return new ArrayList();
     }
+    int j = 0;
     int i = 0;
     while (i < paramArrayOfFloat.length)
     {
@@ -52,121 +51,116 @@ public class TransformUtils
     }
     ArrayList localArrayList = new ArrayList();
     i = j;
-    for (;;)
+    while (i < paramArrayOfFloat.length / 2)
     {
-      localObject = localArrayList;
-      if (i >= paramArrayOfFloat.length / 2) {
-        break;
-      }
-      localArrayList.add(new PointF(paramArrayOfFloat[(i * 2)], paramArrayOfFloat[(i * 2 + 1)]));
+      j = i * 2;
+      localArrayList.add(new PointF(paramArrayOfFloat[j], paramArrayOfFloat[(j + 1)]));
       i += 1;
     }
+    return localArrayList;
   }
   
   public static PTFaceAttr lightFaceToPTFaceAttr(LightFaceData paramLightFaceData)
   {
     Object localObject1 = new ArrayList();
     ArrayList localArrayList = new ArrayList();
-    if ((paramLightFaceData == null) || (paramLightFaceData.mLightFaceFeatureList == null)) {
-      return new PTFaceAttr(new PTFaceAttr.Builder());
-    }
-    Object localObject2 = paramLightFaceData.mLightFaceFeatureList.iterator();
-    float f2;
-    for (float f1 = 1.0F; ((Iterator)localObject2).hasNext(); f1 = f2)
+    if ((paramLightFaceData != null) && (paramLightFaceData.mLightFaceFeatureList != null))
     {
-      localObject3 = (LightFaceFeature)((Iterator)localObject2).next();
-      localObject4 = ((LightFaceFeature)localObject3).mTTFaceOriginDataModel;
-      localArrayList.add(localObject4);
-      localObject5 = new FaceInfo();
-      f2 = f1;
-      if (paramLightFaceData.imageSize != null)
+      Object localObject2 = paramLightFaceData.mLightFaceFeatureList.iterator();
+      float f2;
+      for (float f1 = 1.0F; ((Iterator)localObject2).hasNext(); f1 = f2)
       {
+        localObject3 = (LightFaceFeature)((Iterator)localObject2).next();
+        localObject4 = ((LightFaceFeature)localObject3).mTTFaceOriginDataModel;
+        localArrayList.add(localObject4);
+        localObject5 = new FaceInfo();
         f2 = f1;
-        if (paramLightFaceData.renderSize != null) {
-          f2 = paramLightFaceData.renderSize[0] * 1.0F / paramLightFaceData.imageSize[0];
+        if (paramLightFaceData.imageSize != null)
+        {
+          f2 = f1;
+          if (paramLightFaceData.renderSize != null) {
+            f2 = paramLightFaceData.renderSize[0] * 1.0F / paramLightFaceData.imageSize[0];
+          }
         }
+        ((FaceInfo)localObject5).points = arrPointToList(((LightFaceFeature)localObject3).facePoint90, f2);
+        ((FaceInfo)localObject5).point94 = arrPointToList(((LightFaceFeature)localObject3).facePoints, f2);
+        ((FaceInfo)localObject5).irisPoints = YoutuPointsUtil.getIrisPoints(((LightFaceFeature)localObject3).facePoint90);
+        ((FaceInfo)localObject5).pointsVis = YoutuPointsUtil.transformYTPointsVisToPtuPoints(((LightFaceFeature)localObject3).facePoint90Visibility);
+        ((FaceInfo)localObject5).pointsVis = YoutuPointsUtil.smoothYTPointsVisPoints(((FaceInfo)localObject5).pointsVis);
+        ((FaceInfo)localObject5).angles[0] = ((TTFaceOriginDataModel)localObject4).pitch;
+        ((FaceInfo)localObject5).angles[1] = ((TTFaceOriginDataModel)localObject4).yaw;
+        ((FaceInfo)localObject5).angles[2] = ((TTFaceOriginDataModel)localObject4).roll;
+        ((FaceInfo)localObject5).pitch = ((TTFaceOriginDataModel)localObject4).pitch;
+        ((FaceInfo)localObject5).yaw = ((TTFaceOriginDataModel)localObject4).yaw;
+        ((FaceInfo)localObject5).roll = ((TTFaceOriginDataModel)localObject4).roll;
+        ((FaceInfo)localObject5).scale = 0.0F;
+        ((FaceInfo)localObject5).tx = 0.0F;
+        ((FaceInfo)localObject5).ty = 0.0F;
+        ((FaceInfo)localObject5).denseFaceModel = null;
+        ((FaceInfo)localObject5).transform = null;
+        ((FaceInfo)localObject5).expressionWeights = null;
+        ((FaceInfo)localObject5).gender = GenderType.FEMALE.value;
+        ((List)localObject1).add(localObject5);
       }
-      ((FaceInfo)localObject5).points = arrPointToList(((LightFaceFeature)localObject3).facePoint90, f2);
-      ((FaceInfo)localObject5).point94 = arrPointToList(((LightFaceFeature)localObject3).facePoints, f2);
-      ((FaceInfo)localObject5).irisPoints = YoutuPointsUtil.getIrisPoints(((LightFaceFeature)localObject3).facePoint90);
-      ((FaceInfo)localObject5).pointsVis = YoutuPointsUtil.transformYTPointsVisToPtuPoints(((LightFaceFeature)localObject3).facePoint90Visibility);
-      ((FaceInfo)localObject5).pointsVis = YoutuPointsUtil.smoothYTPointsVisPoints(((FaceInfo)localObject5).pointsVis);
-      ((FaceInfo)localObject5).angles[0] = ((TTFaceOriginDataModel)localObject4).pitch;
-      ((FaceInfo)localObject5).angles[1] = ((TTFaceOriginDataModel)localObject4).yaw;
-      ((FaceInfo)localObject5).angles[2] = ((TTFaceOriginDataModel)localObject4).roll;
-      ((FaceInfo)localObject5).pitch = ((TTFaceOriginDataModel)localObject4).pitch;
-      ((FaceInfo)localObject5).yaw = ((TTFaceOriginDataModel)localObject4).yaw;
-      ((FaceInfo)localObject5).roll = ((TTFaceOriginDataModel)localObject4).roll;
-      ((FaceInfo)localObject5).scale = 0.0F;
-      ((FaceInfo)localObject5).tx = 0.0F;
-      ((FaceInfo)localObject5).ty = 0.0F;
-      ((FaceInfo)localObject5).denseFaceModel = null;
-      ((FaceInfo)localObject5).transform = null;
-      ((FaceInfo)localObject5).expressionWeights = null;
-      ((FaceInfo)localObject5).gender = GenderType.FEMALE.value;
-      ((List)localObject1).add(localObject5);
+      localArrayList = new ArrayList();
+      localObject2 = new ArrayList();
+      Object localObject3 = new ArrayList();
+      Object localObject4 = new ArrayList();
+      Object localObject5 = new ArrayList();
+      HashSet localHashSet = new HashSet();
+      localHashSet.add(Integer.valueOf(1));
+      int i = 0;
+      while (i < ((List)localObject1).size())
+      {
+        localArrayList.add(((FaceInfo)((List)localObject1).get(i)).points);
+        i += 1;
+      }
+      i = 0;
+      while (i < ((List)localObject1).size())
+      {
+        ((List)localObject2).add(((FaceInfo)((List)localObject1).get(i)).point94);
+        i += 1;
+      }
+      i = 0;
+      while (i < ((List)localObject1).size())
+      {
+        ((List)localObject3).add(((FaceInfo)((List)localObject1).get(i)).irisPoints);
+        i += 1;
+      }
+      i = 0;
+      while (i < ((List)localObject1).size())
+      {
+        ((List)localObject4).add(((FaceInfo)((List)localObject1).get(i)).pointsVis);
+        i += 1;
+      }
+      i = 0;
+      while (i < ((List)localObject1).size())
+      {
+        ((List)localObject5).add(((FaceInfo)((List)localObject1).get(i)).angles);
+        i += 1;
+      }
+      localObject1 = new PTFaceAttr.Builder();
+      ((PTFaceAttr.Builder)localObject1).facePoints(localArrayList).facePoint94((List)localObject2).irisPoints((List)localObject3).pointsVis((List)localObject4).faceAngles((List)localObject5).faceDetectScale(f1).triggeredExpression(localHashSet).faceDetWidth(paramLightFaceData.imageSize[0]).faceDetHeight(paramLightFaceData.imageSize[1]).data(paramLightFaceData.imageData).build();
+      return new PTFaceAttr((PTFaceAttr.Builder)localObject1);
     }
-    localArrayList = new ArrayList();
-    localObject2 = new ArrayList();
-    Object localObject3 = new ArrayList();
-    Object localObject4 = new ArrayList();
-    Object localObject5 = new ArrayList();
-    HashSet localHashSet = new HashSet();
-    localHashSet.add(Integer.valueOf(1));
-    int i = 0;
-    while (i < ((List)localObject1).size())
-    {
-      localArrayList.add(((FaceInfo)((List)localObject1).get(i)).points);
-      i += 1;
-    }
-    i = 0;
-    while (i < ((List)localObject1).size())
-    {
-      ((List)localObject2).add(((FaceInfo)((List)localObject1).get(i)).point94);
-      i += 1;
-    }
-    i = 0;
-    while (i < ((List)localObject1).size())
-    {
-      ((List)localObject3).add(((FaceInfo)((List)localObject1).get(i)).irisPoints);
-      i += 1;
-    }
-    i = 0;
-    while (i < ((List)localObject1).size())
-    {
-      ((List)localObject4).add(((FaceInfo)((List)localObject1).get(i)).pointsVis);
-      i += 1;
-    }
-    i = 0;
-    while (i < ((List)localObject1).size())
-    {
-      ((List)localObject5).add(((FaceInfo)((List)localObject1).get(i)).angles);
-      i += 1;
-    }
-    localObject1 = new PTFaceAttr.Builder();
-    ((PTFaceAttr.Builder)localObject1).facePoints(localArrayList).facePoint94((List)localObject2).irisPoints((List)localObject3).pointsVis((List)localObject4).faceAngles((List)localObject5).faceDetectScale(f1).triggeredExpression(localHashSet).faceDetWidth(paramLightFaceData.imageSize[0]).faceDetHeight(paramLightFaceData.imageSize[1]).data(paramLightFaceData.imageData).build();
-    return new PTFaceAttr((PTFaceAttr.Builder)localObject1);
+    return new PTFaceAttr(new PTFaceAttr.Builder());
   }
   
   public static LightFaceData ptFaceAttrToLightFaceData(PTFaceAttr paramPTFaceAttr)
   {
-    if (paramPTFaceAttr == null) {}
-    while (paramPTFaceAttr.getAllFacePoints94() == null) {
+    if (paramPTFaceAttr == null) {
+      return null;
+    }
+    if (paramPTFaceAttr.getAllFacePoints94() == null) {
       return null;
     }
     LightFaceData localLightFaceData = new LightFaceData();
     int j = paramPTFaceAttr.getAllFacePoints94().size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      List localList;
-      if (i < j)
-      {
-        localList = (List)paramPTFaceAttr.getAllFacePoints94().get(i);
-        if (localList != null) {}
-      }
-      else
-      {
+      List localList = (List)paramPTFaceAttr.getAllFacePoints94().get(i);
+      if (localList == null) {
         return localLightFaceData;
       }
       Object localObject1 = localList.iterator();
@@ -191,11 +185,12 @@ public class TransformUtils
       localLightFaceData.mLightFaceFeatureList.add(localObject2);
       i += 1;
     }
+    return localLightFaceData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.TransformUtils
  * JD-Core Version:    0.7.0.1
  */

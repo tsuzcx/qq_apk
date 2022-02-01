@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape android:shape="oval" android:useLevel="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/iga" android:top="1.0dip" />
-</layer-list>
+    <solid android:color="#ff00cafc" />
+    <size android:height="6.0dip" android:width="6.0dip" />
+</shape>

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment.searchentry;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import androidx.annotation.NonNull;
+import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.model.SearchEntryDataModel;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public abstract interface ISearchEntryFragment
   public abstract void afterTextChanged(Editable paramEditable);
   
   @NonNull
-  public abstract Fragment getFragment();
+  public abstract QBaseFragment getFragment();
   
   @NonNull
   public abstract Bundle getInitData();
@@ -44,7 +44,7 @@ public abstract interface ISearchEntryFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.ISearchEntryFragment
  * JD-Core Version:    0.7.0.1
  */

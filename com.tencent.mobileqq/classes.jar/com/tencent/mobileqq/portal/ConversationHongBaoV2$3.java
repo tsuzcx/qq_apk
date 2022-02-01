@@ -23,35 +23,42 @@ class ConversationHongBaoV2$3
   
   public void onFinish()
   {
-    QLog.d("2021_UI_ConversationHongBaoV2", 1, "CountDownTimer onFinish pullState = " + this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_b_of_type_Int + ",totalGrabCountForShare = " + ConversationHongBaoV2.c(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2) + ",maxComboCountForShare = " + ConversationHongBaoV2.b(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2) + ",mResume" + this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.c);
-    SpringFestivalEntryManager localSpringFestivalEntryManager = (SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-    localSpringFestivalEntryManager.d();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("CountDownTimer onFinish pullState = ");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_b_of_type_Int);
+    ((StringBuilder)localObject1).append(",totalGrabCountForShare = ");
+    ((StringBuilder)localObject1).append(ConversationHongBaoV2.c(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2));
+    ((StringBuilder)localObject1).append(",maxComboCountForShare = ");
+    ((StringBuilder)localObject1).append(ConversationHongBaoV2.b(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2));
+    ((StringBuilder)localObject1).append(",mResume");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.c);
+    QLog.d("2021_UI_ConversationHongBaoV2", 1, ((StringBuilder)localObject1).toString());
+    Object localObject2 = (SpringFestivalEntryManager)this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
+    ((SpringFestivalEntryManager)localObject2).d();
     ConversationHongBaoV2.b(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2, 0L);
     this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.d();
-    BaseActivityData localBaseActivityData = this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback.a();
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback.g(localBaseActivityData);
-    EntryConfigBean localEntryConfigBean = localSpringFestivalEntryManager.a();
-    String str = null;
-    Object localObject = str;
-    if (localEntryConfigBean != null)
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback.a();
+    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntrySpringFestivalTaskCallback.g((BaseActivityData)localObject3);
+    localObject1 = ((SpringFestivalEntryManager)localObject2).a();
+    if ((localObject1 != null) && (((EntryConfigBean)localObject1).commonData != null)) {
+      localObject1 = ((EntryConfigBean)localObject1).commonData.getShareWordings(ConversationHongBaoV2.c(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2));
+    } else {
+      localObject1 = null;
+    }
+    int i = ((SpringFestivalEntryManager)localObject2).a().getShareForbidden();
+    localObject2 = ((BaseActivityData)localObject3).getId();
+    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.c)
     {
-      localObject = str;
-      if (localEntryConfigBean.commonData != null) {
-        localObject = localEntryConfigBean.commonData.getShareWordings(ConversationHongBaoV2.c(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2));
-      }
+      localObject3 = this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2;
+      new ConversationHongBaoV2.ShowSharePageTask((ConversationHongBaoV2)localObject3, (List)localObject1, ConversationHongBaoV2.a((ConversationHongBaoV2)localObject3), (String)localObject2, ConversationHongBaoV2.c(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), ConversationHongBaoV2.b(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), ConversationHongBaoV2.d(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), i).a();
     }
-    int i = localSpringFestivalEntryManager.a().getShareForbidden();
-    str = localBaseActivityData.getId();
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.c) {
-      new ConversationHongBaoV2.ShowSharePageTask(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2, (List)localObject, ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), str, ConversationHongBaoV2.c(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), ConversationHongBaoV2.b(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), ConversationHongBaoV2.d(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), i).a();
-    }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.t();
-      ConversationHongBaoV2.f(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2);
-      return;
-      ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2, new ConversationHongBaoV2.ShowSharePageTask(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2, (List)localObject, ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), str, ConversationHongBaoV2.c(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), ConversationHongBaoV2.b(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), ConversationHongBaoV2.d(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), i));
+      localObject3 = this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2;
+      ConversationHongBaoV2.a((ConversationHongBaoV2)localObject3, new ConversationHongBaoV2.ShowSharePageTask((ConversationHongBaoV2)localObject3, (List)localObject1, ConversationHongBaoV2.a((ConversationHongBaoV2)localObject3), (String)localObject2, ConversationHongBaoV2.c(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), ConversationHongBaoV2.b(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), ConversationHongBaoV2.d(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), i));
     }
+    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.t();
+    ConversationHongBaoV2.f(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2);
   }
   
   public void onTick(long paramLong)
@@ -74,18 +81,19 @@ class ConversationHongBaoV2$3
       this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a(paramLong, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_b_of_type_JavaLangStringBuilder);
     }
     paramLong = System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.d;
-    if (paramLong > 2000L) {
+    if (paramLong > 2000L)
+    {
       this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(1);
-    }
-    while (paramLong <= 1000L) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(2);
+    if (paramLong > 1000L) {
+      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.3
  * JD-Core Version:    0.7.0.1
  */

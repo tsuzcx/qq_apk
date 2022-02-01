@@ -27,59 +27,59 @@ final class OggPageHeader
   
   public boolean populate(ExtractorInput paramExtractorInput, boolean paramBoolean)
   {
-    int j = 0;
     this.scratch.reset();
     reset();
-    if ((paramExtractorInput.getLength() == -1L) || (paramExtractorInput.getLength() - paramExtractorInput.getPeekPosition() >= 27L))
-    {
+    long l = paramExtractorInput.getLength();
+    int j = 0;
+    int i;
+    if ((l != -1L) && (paramExtractorInput.getLength() - paramExtractorInput.getPeekPosition() < 27L)) {
+      i = 0;
+    } else {
       i = 1;
-      if ((i != 0) && (paramExtractorInput.peekFully(this.scratch.data, 0, 27, true))) {
-        break label92;
-      }
-      if (!paramBoolean) {
-        break label84;
-      }
     }
-    label84:
-    label92:
-    label121:
-    do
+    if ((i != 0) && (paramExtractorInput.peekFully(this.scratch.data, 0, 27, true)))
     {
-      do
+      if (this.scratch.readUnsignedInt() != TYPE_OGGS)
       {
-        return false;
-        i = 0;
-        break;
-        throw new EOFException();
-        if (this.scratch.readUnsignedInt() == TYPE_OGGS) {
-          break label121;
+        if (paramBoolean) {
+          return false;
         }
-      } while (paramBoolean);
-      throw new ParserException("expected OggS capture pattern at begin of page");
-      this.revision = this.scratch.readUnsignedByte();
-      if (this.revision == 0) {
-        break label153;
+        throw new ParserException("expected OggS capture pattern at begin of page");
       }
-    } while (paramBoolean);
-    throw new ParserException("unsupported bit stream revision");
-    label153:
-    this.type = this.scratch.readUnsignedByte();
-    this.granulePosition = this.scratch.readLittleEndianLong();
-    this.streamSerialNumber = this.scratch.readLittleEndianUnsignedInt();
-    this.pageSequenceNumber = this.scratch.readLittleEndianUnsignedInt();
-    this.pageChecksum = this.scratch.readLittleEndianUnsignedInt();
-    this.pageSegmentCount = this.scratch.readUnsignedByte();
-    this.headerSize = (this.pageSegmentCount + 27);
-    this.scratch.reset();
-    paramExtractorInput.peekFully(this.scratch.data, 0, this.pageSegmentCount);
-    int i = j;
-    while (i < this.pageSegmentCount)
-    {
-      this.laces[i] = this.scratch.readUnsignedByte();
-      this.bodySize += this.laces[i];
-      i += 1;
+      this.revision = this.scratch.readUnsignedByte();
+      if (this.revision != 0)
+      {
+        if (paramBoolean) {
+          return false;
+        }
+        throw new ParserException("unsupported bit stream revision");
+      }
+      this.type = this.scratch.readUnsignedByte();
+      this.granulePosition = this.scratch.readLittleEndianLong();
+      this.streamSerialNumber = this.scratch.readLittleEndianUnsignedInt();
+      this.pageSequenceNumber = this.scratch.readLittleEndianUnsignedInt();
+      this.pageChecksum = this.scratch.readLittleEndianUnsignedInt();
+      this.pageSegmentCount = this.scratch.readUnsignedByte();
+      this.headerSize = (this.pageSegmentCount + 27);
+      this.scratch.reset();
+      paramExtractorInput.peekFully(this.scratch.data, 0, this.pageSegmentCount);
+      i = j;
+      while (i < this.pageSegmentCount)
+      {
+        this.laces[i] = this.scratch.readUnsignedByte();
+        this.bodySize += this.laces[i];
+        i += 1;
+      }
+      return true;
     }
-    return true;
+    if (paramBoolean) {
+      return false;
+    }
+    paramExtractorInput = new EOFException();
+    for (;;)
+    {
+      throw paramExtractorInput;
+    }
   }
   
   public void reset()
@@ -97,7 +97,7 @@ final class OggPageHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.OggPageHeader
  * JD-Core Version:    0.7.0.1
  */

@@ -15,19 +15,29 @@ public final class TakeSequence<T>
   {
     this.sequence = paramSequence;
     this.count = paramInt;
-    if (this.count >= 0) {}
-    for (paramInt = 1; paramInt == 0; paramInt = 0) {
-      throw ((Throwable)new IllegalArgumentException(("count must be non-negative, but was " + this.count + '.').toString()));
+    if (this.count >= 0) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
     }
+    if (paramInt != 0) {
+      return;
+    }
+    paramSequence = new StringBuilder();
+    paramSequence.append("count must be non-negative, but was ");
+    paramSequence.append(this.count);
+    paramSequence.append('.');
+    throw ((Throwable)new IllegalArgumentException(paramSequence.toString().toString()));
   }
   
   @NotNull
   public Sequence<T> drop(int paramInt)
   {
-    if (paramInt >= this.count) {
+    int i = this.count;
+    if (paramInt >= i) {
       return SequencesKt.emptySequence();
     }
-    return (Sequence)new SubSequence(this.sequence, paramInt, this.count);
+    return (Sequence)new SubSequence(this.sequence, paramInt, i);
   }
   
   @NotNull
@@ -47,7 +57,7 @@ public final class TakeSequence<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.sequences.TakeSequence
  * JD-Core Version:    0.7.0.1
  */

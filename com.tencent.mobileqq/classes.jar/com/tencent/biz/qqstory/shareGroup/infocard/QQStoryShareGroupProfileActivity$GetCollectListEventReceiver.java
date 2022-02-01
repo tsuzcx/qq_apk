@@ -16,12 +16,22 @@ class QQStoryShareGroupProfileActivity$GetCollectListEventReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) {}
-    while ((paramGetCollectionListEvent.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramGetCollectionListEvent.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramGetCollectionListEvent.toString());
+    if ((paramGetCollectionListEvent.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetShareGroupVideos: 是否来自缓存=");
+      localStringBuilder.append(paramGetCollectionListEvent.b);
+      localStringBuilder.append(" groupId=");
+      localStringBuilder.append(paramQQStoryShareGroupProfileActivity.b);
+      localStringBuilder.append(", event=");
+      localStringBuilder.append(paramGetCollectionListEvent.toString());
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, localStringBuilder.toString());
     }
     QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetCollectionListEvent);
   }
@@ -33,7 +43,7 @@ class QQStoryShareGroupProfileActivity$GetCollectListEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.GetCollectListEventReceiver
  * JD-Core Version:    0.7.0.1
  */

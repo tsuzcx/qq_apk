@@ -16,9 +16,10 @@ public class IMAppChannel$IdToIdCallbackImpl
   
   public void onError(int paramInt, String paramString)
   {
-    if (this.mCallback != null)
+    AVAppChannel.IdToIdCallback localIdToIdCallback = this.mCallback;
+    if (localIdToIdCallback != null)
     {
-      this.mCallback.onError(paramInt, paramString);
+      localIdToIdCallback.onError(paramInt, paramString);
       this.mCallback = null;
     }
   }

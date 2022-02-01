@@ -23,16 +23,20 @@ public class GetRobotUinRequest
   
   public static INTERFACE.StGetRobotUinRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetRobotUinRsp localStGetRobotUinRsp = new INTERFACE.StGetRobotUinRsp();
+    Object localObject = new INTERFACE.StGetRobotUinRsp();
     try
     {
-      localStGetRobotUinRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetRobotUinRsp;
+      ((INTERFACE.StGetRobotUinRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetRobotUinRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetRobotUinRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -45,7 +49,7 @@ public class GetRobotUinRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetRobotUinRequest
  * JD-Core Version:    0.7.0.1
  */

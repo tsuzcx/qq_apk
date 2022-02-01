@@ -17,25 +17,31 @@ public class APMServiceBuilder
   {
     try
     {
-      APMInterface localAPMInterface = (APMInterface)Class.forName("com.tencent.falco.base.apm.APMComponent").getConstructor(new Class[0]).newInstance(new Object[0]);
+      localObject = (APMInterface)Class.forName("com.tencent.falco.base.apm.APMComponent").getConstructor(new Class[0]).newInstance(new Object[0]);
       Bundle localBundle = new Bundle();
       localBundle.putString("appId", "de14684b-605");
       localBundle.putString("userId", "liveSdkTest");
-      localBundle.putString("appVersionName", ((AppGeneralInfoService)paramServiceAccessor.getService(AppGeneralInfoService.class)).getVersionName() + "_livesdktest");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((AppGeneralInfoService)paramServiceAccessor.getService(AppGeneralInfoService.class)).getVersionName());
+      localStringBuilder.append("_livesdktest");
+      localBundle.putString("appVersionName", localStringBuilder.toString());
       localBundle.putString("symbolId", "");
-      localAPMInterface.init(new APMConfiguration.Builder().extra(localBundle).build());
-      return localAPMInterface;
+      ((APMInterface)localObject).init(new APMConfiguration.Builder().extra(localBundle).build());
+      return localObject;
     }
     catch (Exception paramServiceAccessor)
     {
-      Log.e("APMServiceBuilder", "Exception " + paramServiceAccessor.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Exception ");
+      ((StringBuilder)localObject).append(paramServiceAccessor.toString());
+      Log.e("APMServiceBuilder", ((StringBuilder)localObject).toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.apm.APMServiceBuilder
  * JD-Core Version:    0.7.0.1
  */

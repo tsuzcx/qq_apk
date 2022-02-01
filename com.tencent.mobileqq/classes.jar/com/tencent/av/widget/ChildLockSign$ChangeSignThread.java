@@ -7,25 +7,26 @@ class ChildLockSign$ChangeSignThread
   
   public void run()
   {
-    ChildLockSign.a(this.this$0, ChildLockSign.a(this.this$0));
+    ChildLockSign localChildLockSign = this.this$0;
+    ChildLockSign.a(localChildLockSign, ChildLockSign.a(localChildLockSign));
     ChildLockSign.a(this.this$0, false);
     this.this$0.postInvalidate();
     try
     {
       Thread.sleep(500L);
-      label37:
-      this.this$0.a(1);
+      label36:
+      ChildLockSign.a(this.this$0, 1);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      break label37;
+      break label36;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.widget.ChildLockSign.ChangeSignThread
  * JD-Core Version:    0.7.0.1
  */

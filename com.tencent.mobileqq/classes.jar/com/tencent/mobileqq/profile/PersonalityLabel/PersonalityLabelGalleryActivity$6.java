@@ -17,20 +17,25 @@ class PersonalityLabelGalleryActivity$6
   
   public void onDelPersonalityLabelPhoto(boolean paramBoolean, String paramString, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onDelPersonalityLabelPhoto suc:" + paramBoolean + "," + paramString + "," + paramLong1 + "," + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDelPersonalityLabelPhoto suc:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramLong2);
+      QLog.i("PersonalityLabelGalleryActivity", 2, localStringBuilder.toString());
     }
     if ((PersonalityLabelGalleryActivity.a(this.a)) && (paramString.equals(this.a.app.getCurrentAccountUin())))
     {
       paramString = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.a).get(Long.valueOf(paramLong1));
-      if (paramString != null) {
-        break label109;
+      if (paramString == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      return;
-      label109:
       int i = 0;
       while (i < paramString.personalityLabelPhotos.size())
       {
@@ -52,49 +57,37 @@ class PersonalityLabelGalleryActivity$6
   
   public void onGetPersonalityLabel(boolean paramBoolean, String paramString, ProfilePersonalityLabelInfo paramProfilePersonalityLabelInfo, byte[] paramArrayOfByte, int paramInt)
   {
-    if (paramInt != 1) {}
-    label36:
-    label167:
-    label169:
-    label192:
-    do
-    {
+    if (paramInt != 1) {
       return;
-      boolean bool;
-      if (TextUtils.isEmpty(PersonalityLabelGalleryActivity.a(this.a)))
+    }
+    if (TextUtils.isEmpty(PersonalityLabelGalleryActivity.a(this.a))) {
+      paramArrayOfByte = this.a.app.getCurrentAccountUin();
+    } else {
+      paramArrayOfByte = PersonalityLabelGalleryActivity.a(this.a);
+    }
+    if (!paramArrayOfByte.equals(paramString)) {
+      return;
+    }
+    if ((paramBoolean) && (paramProfilePersonalityLabelInfo != null))
+    {
+      if (this.a.jdField_a_of_type_Boolean)
       {
-        bool = this.a.app.getCurrentAccountUin().equals(paramString);
-        if (!bool) {
-          break label167;
-        }
-        if ((!paramBoolean) || (paramProfilePersonalityLabelInfo == null)) {
-          continue;
-        }
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label192;
-        }
         this.a.jdField_a_of_type_JavaUtilHashSet.clear();
-        if (PersonalityLabelGalleryActivity.a(this.a) != null) {
-          break label169;
+        if (PersonalityLabelGalleryActivity.a(this.a) == null) {
+          paramInt = 0;
+        } else {
+          paramInt = PersonalityLabelGalleryActivity.a(this.a).getSize();
         }
-      }
-      for (paramInt = 0;; paramInt = PersonalityLabelGalleryActivity.a(this.a).getSize())
-      {
-        int i = paramProfilePersonalityLabelInfo.getSize();
-        int j = 0;
-        i -= paramInt;
-        paramInt = j;
-        while (i > 0)
+        paramInt = paramProfilePersonalityLabelInfo.getSize() - paramInt;
+        int i = 0;
+        while (paramInt > 0)
         {
-          this.a.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(((PersonalityLabelInfo)paramProfilePersonalityLabelInfo.personalityLabelInfos.get(paramInt)).id));
-          i -= 1;
-          paramInt += 1;
+          this.a.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(((PersonalityLabelInfo)paramProfilePersonalityLabelInfo.personalityLabelInfos.get(i)).id));
+          i += 1;
+          paramInt -= 1;
         }
-        bool = PersonalityLabelGalleryActivity.a(this.a).equals(paramString);
-        break label36;
-        break;
+        this.a.jdField_a_of_type_Boolean = false;
       }
-      this.a.jdField_a_of_type_Boolean = false;
       if ((paramProfilePersonalityLabelInfo.getSize() > 0) && (PersonalityLabelGalleryActivity.a(this.a)))
       {
         paramInt = 0;
@@ -112,22 +105,26 @@ class PersonalityLabelGalleryActivity$6
       paramString = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, paramProfilePersonalityLabelInfo);
       this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, 500L);
       return;
-    } while (paramBoolean);
-    if (!NetworkUtil.d(this.a))
-    {
-      PersonalityLabelGalleryActivity.a(this.a, this.a.getResources().getString(2131694457));
-      paramString = this.a;
-      if ((PersonalityLabelGalleryActivity.a(this.a) == null) || (PersonalityLabelGalleryActivity.a(this.a).getSize() <= 0)) {
-        break label427;
-      }
     }
-    label427:
-    for (paramInt = 8;; paramInt = 0)
+    if (!paramBoolean)
     {
+      if (!NetworkUtil.isNetSupport(this.a))
+      {
+        paramString = this.a;
+        PersonalityLabelGalleryActivity.a(paramString, paramString.getResources().getString(2131694422));
+      }
+      else
+      {
+        paramString = this.a;
+        PersonalityLabelGalleryActivity.a(paramString, paramString.getResources().getString(2131693799));
+      }
+      paramString = this.a;
+      if ((PersonalityLabelGalleryActivity.a(paramString) != null) && (PersonalityLabelGalleryActivity.a(this.a).getSize() > 0)) {
+        paramInt = 8;
+      } else {
+        paramInt = 0;
+      }
       paramString.a(paramInt, "加载失败", false);
-      return;
-      PersonalityLabelGalleryActivity.a(this.a, this.a.getResources().getString(2131693846));
-      break;
     }
   }
   
@@ -136,63 +133,67 @@ class PersonalityLabelGalleryActivity$6
     Object localObject;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("onGetPersonalityLabelPhotos : isSuccess = ").append(paramBoolean).append(", uin = ").append(paramString).append(", labelId = ").append(paramLong).append(", completeFlag = ").append(paramInt).append(", cookie = ");
-      if (paramArrayOfByte == null)
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetPersonalityLabelPhotos : isSuccess = ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", uin = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", labelId = ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(", completeFlag = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", cookie = ");
+      String str = "null";
+      if (paramArrayOfByte == null) {
         localObject = "null";
-        localStringBuilder = localStringBuilder.append(localObject).append(", labelInfo = ");
-        if (paramPersonalityLabelInfo != null) {
-          break label313;
-        }
-        localObject = "null";
-        label89:
-        QLog.i("PersonalityLabelGalleryActivity", 2, (String)localObject);
+      } else {
+        localObject = paramArrayOfByte;
       }
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(", labelInfo = ");
+      if (paramPersonalityLabelInfo == null) {
+        localObject = str;
+      } else {
+        localObject = paramPersonalityLabelInfo.toString();
+      }
+      localStringBuilder.append((String)localObject);
+      QLog.i("PersonalityLabelGalleryActivity", 2, localStringBuilder.toString());
     }
-    else
-    {
-      if (!TextUtils.isEmpty(PersonalityLabelGalleryActivity.a(this.a))) {
-        break label323;
-      }
+    if (TextUtils.isEmpty(PersonalityLabelGalleryActivity.a(this.a))) {
+      localObject = this.a.app.getCurrentAccountUin();
+    } else {
+      localObject = PersonalityLabelGalleryActivity.a(this.a);
     }
-    label313:
-    label323:
-    for (boolean bool = this.a.app.getCurrentAccountUin().equals(paramString);; bool = PersonalityLabelGalleryActivity.a(this.a).equals(paramString))
+    if (((String)localObject).equals(paramString)) {
+      PersonalityLabelGalleryActivity.a(this.a, false);
+    }
+    if ((paramBoolean) && (paramPersonalityLabelInfo != null))
     {
-      if (bool) {
-        PersonalityLabelGalleryActivity.a(this.a, false);
-      }
-      if ((paramBoolean) && (paramPersonalityLabelInfo != null))
+      paramString = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.a).get(Long.valueOf(paramLong));
+      if (paramString != null)
       {
-        paramString = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.a).get(Long.valueOf(paramLong));
-        if (paramString != null)
+        if (PersonalityLabelGalleryActivity.b(this.a).get(Long.valueOf(paramLong)) == null)
         {
-          if (PersonalityLabelGalleryActivity.b(this.a).get(Long.valueOf(paramLong)) == null)
+          paramString.personalityLabelPhotos.clear();
+          if (PersonalityLabelGalleryActivity.a(this.a))
           {
-            paramString.personalityLabelPhotos.clear();
-            if (PersonalityLabelGalleryActivity.a(this.a)) {
-              paramPersonalityLabelInfo.photoCount = (this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a(paramLong, paramPersonalityLabelInfo, true) + paramPersonalityLabelInfo.photoCount);
-            }
+            int i = this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a(paramLong, paramPersonalityLabelInfo, true);
+            paramPersonalityLabelInfo.photoCount += i;
           }
-          paramString.personalityLabelPhotos.addAll(paramPersonalityLabelInfo.personalityLabelPhotos);
-          PersonalityLabelGalleryActivity.c(this.a).put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
-          if (paramArrayOfByte != null) {
-            PersonalityLabelGalleryActivity.b(this.a).put(Long.valueOf(paramLong), paramArrayOfByte);
-          }
-          PersonalityLabelGalleryActivity.a(this.a, paramLong);
         }
+        paramString.personalityLabelPhotos.addAll(paramPersonalityLabelInfo.personalityLabelPhotos);
+        PersonalityLabelGalleryActivity.c(this.a).put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
+        if (paramArrayOfByte != null) {
+          PersonalityLabelGalleryActivity.b(this.a).put(Long.valueOf(paramLong), paramArrayOfByte);
+        }
+        PersonalityLabelGalleryActivity.a(this.a, paramLong);
       }
-      return;
-      localObject = paramArrayOfByte;
-      break;
-      localObject = paramPersonalityLabelInfo.toString();
-      break label89;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.6
  * JD-Core Version:    0.7.0.1
  */

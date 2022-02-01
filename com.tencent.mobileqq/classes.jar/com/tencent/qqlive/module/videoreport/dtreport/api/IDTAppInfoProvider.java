@@ -1,6 +1,6 @@
 package com.tencent.qqlive.module.videoreport.dtreport.api;
 
-public abstract interface IDTAppInfoProvider
+abstract interface IDTAppInfoProvider
 {
   public abstract String getAdCode();
   
@@ -20,7 +20,7 @@ public abstract interface IDTAppInfoProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.api.IDTAppInfoProvider
  * JD-Core Version:    0.7.0.1
  */

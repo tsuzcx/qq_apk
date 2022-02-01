@@ -9,9 +9,14 @@ import android.text.TextUtils;
 import com.huawei.hmf.tasks.Task;
 import com.huawei.hmf.tasks.TaskCompletionSource;
 import com.huawei.hmf.tasks.Tasks;
+import com.huawei.hms.aaid.constant.ErrorEnum;
 import com.huawei.hms.aaid.encrypt.PushEncrypter;
 import com.huawei.hms.aaid.init.AutoInitHelper;
 import com.huawei.hms.aaid.plugin.ProxyCenter;
+import com.huawei.hms.aaid.plugin.PushProxy;
+import com.huawei.hms.aaid.task.PushClientBuilder;
+import com.huawei.hms.aaid.utils.BaseUtils;
+import com.huawei.hms.aaid.utils.PushPreferences;
 import com.huawei.hms.android.HwBuildEx.VERSION;
 import com.huawei.hms.api.Api;
 import com.huawei.hms.api.Api.ApiOptions.NoOptions;
@@ -19,6 +24,11 @@ import com.huawei.hms.common.ApiException;
 import com.huawei.hms.common.HuaweiApi;
 import com.huawei.hms.common.internal.Preconditions;
 import com.huawei.hms.core.aidl.IMessageEntity;
+import com.huawei.hms.push.task.BaseVoidTask;
+import com.huawei.hms.push.task.IntentCallable;
+import com.huawei.hms.push.task.SendUpStreamTask;
+import com.huawei.hms.push.task.SubscribeTask;
+import com.huawei.hms.push.utils.PushBiUtil;
 import com.huawei.hms.support.api.entity.push.EnableNotifyReq;
 import com.huawei.hms.support.api.entity.push.SubscribeReq;
 import com.huawei.hms.support.api.entity.push.UpSendMsgReq;
@@ -31,186 +41,21 @@ import java.util.regex.Pattern;
 public class HmsMessaging
 {
   public static final String DEFAULT_TOKEN_SCOPE = "HCM";
-  private static final Pattern a = Pattern.compile("[\\u4e00-\\u9fa5\\w-_.~%]{1,900}");
-  private Context b;
-  private HuaweiApi<Api.ApiOptions.NoOptions> c;
+  public static final Pattern a = Pattern.compile("[\\u4e00-\\u9fa5\\w-_.~%]{1,900}");
+  public Context b;
+  public HuaweiApi<Api.ApiOptions.NoOptions> c;
   
-  private HmsMessaging(Context paramContext)
+  public HmsMessaging(Context paramContext)
   {
     Preconditions.checkNotNull(paramContext);
     this.b = paramContext;
     Api localApi = new Api("HuaweiPush.API");
-    if ((paramContext instanceof Activity)) {}
-    for (this.c = new HuaweiApi((Activity)paramContext, localApi, null, new i());; this.c = new HuaweiApi(paramContext, localApi, null, new i()))
-    {
-      this.c.setKitSdkVersion(50002300);
-      return;
+    if ((paramContext instanceof Activity)) {
+      this.c = new HuaweiApi((Activity)paramContext, localApi, null, new PushClientBuilder());
+    } else {
+      this.c = new HuaweiApi(paramContext, localApi, null, new PushClientBuilder());
     }
-  }
-  
-  private Task<Void> a()
-  {
-    TaskCompletionSource localTaskCompletionSource = new TaskCompletionSource();
-    localTaskCompletionSource.setException(a.a(a.ad));
-    return localTaskCompletionSource.getTask();
-  }
-  
-  private Task<Void> a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((paramString1 == null) || (!a.matcher(paramString1).matches()))
-    {
-      g.a(this.b, "push.subscribe", paramString3, a.L);
-      HMSLog.e("HmsMessaging", "Invalid topic: topic should match the format:[\\u4e00-\\u9fa5\\w-_.~%]{1,900}");
-      throw new IllegalArgumentException("Invalid topic: topic should match the format:[\\u4e00-\\u9fa5\\w-_.~%]{1,900}");
-    }
-    try
-    {
-      HMSLog.i("HmsMessaging", "EMUI:" + HwBuildEx.VERSION.EMUI_SDK_INT);
-      a locala = j.a(this.b);
-      if (locala != a.a) {
-        throw a.a(locala);
-      }
-    }
-    catch (ApiException paramString1)
-    {
-      paramString2 = new TaskCompletionSource();
-      paramString2.setException(paramString1);
-      g.a(this.b, "push.subscribe", paramString3, paramString1.getStatusCode());
-      return paramString2.getTask();
-      if (NetWorkUtil.getNetworkType(this.b) == 0)
-      {
-        HMSLog.e("HmsMessaging", "no network");
-        throw a.a(a.d);
-      }
-    }
-    catch (Exception paramString1)
-    {
-      paramString1 = new TaskCompletionSource();
-      paramString1.setException(a.a(a.M));
-      g.a(this.b, "push.subscribe", paramString3, a.M);
-      return paramString1.getTask();
-    }
-    paramString1 = new SubscribeReq(this.b.getPackageName(), paramString2, paramString1);
-    paramString1.setToken(y.a(this.b, "push_client_self_info"));
-    if (w.a()) {
-      return this.c.doWrite(new b("push.subscribe", JsonUtil.createJsonString(paramString1), paramString3));
-    }
-    paramString1 = this.c.doWrite(new e("push.subscribe", JsonUtil.createJsonString(paramString1), paramString3));
-    return paramString1;
-  }
-  
-  private Task<Void> a(boolean paramBoolean, String paramString)
-  {
-    if ((!w.a(this.b)) || (w.a()))
-    {
-      HMSLog.i("HmsMessaging", "turn on/off with AIDL");
-      localObject = new EnableNotifyReq();
-      ((EnableNotifyReq)localObject).setPackageName(this.b.getPackageName());
-      ((EnableNotifyReq)localObject).setEnable(paramBoolean);
-      return this.c.doWrite(new b("push.setNotifyFlag", JsonUtil.createJsonString((IMessageEntity)localObject), paramString));
-    }
-    if (HwBuildEx.VERSION.EMUI_SDK_INT < 12)
-    {
-      HMSLog.e("HmsMessaging", "operation not available on Huawei device with EMUI lower than 5.1");
-      localObject = new TaskCompletionSource();
-      ((TaskCompletionSource)localObject).setException(a.a(a.ad));
-      g.a(this.b, "push.setNotifyFlag", paramString, a.ad);
-      return ((TaskCompletionSource)localObject).getTask();
-    }
-    if (w.b(this.b) < 90101310L)
-    {
-      HMSLog.i("HmsMessaging", "turn on/off with broadcast v1");
-      localObject = PushEncrypter.encrypterOld(this.b, this.b.getPackageName() + "#" + paramBoolean);
-      localObject = new Intent("com.huawei.intent.action.SELF_SHOW_FLAG").putExtra("enalbeFlag", (String)localObject);
-      ((Intent)localObject).setPackage("android");
-      return Tasks.callInBackground(new c(this.b, (Intent)localObject, paramString));
-    }
-    HMSLog.i("HmsMessaging", "turn on/off with broadcast v2");
-    Object localObject = new ac(this.b, "push_notify_flag");
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      ((ac)localObject).a("notify_msg_enable", paramBoolean);
-      localObject = Uri.parse("content://" + this.b.getPackageName() + ".huawei.push.provider/" + "push_notify_flag" + ".xml");
-      Intent localIntent = new Intent("com.huawei.android.push.intent.SDK_COMMAND");
-      localIntent.putExtra("type", "enalbeFlag");
-      localIntent.putExtra("pkgName", this.b.getPackageName());
-      localIntent.putExtra("url", (Parcelable)localObject);
-      localIntent.setPackage("android");
-      return Tasks.callInBackground(new c(this.b, localIntent, paramString));
-    }
-  }
-  
-  private void a(RemoteMessage paramRemoteMessage, String paramString)
-  {
-    Object localObject = j.a(this.b);
-    if (localObject != a.a)
-    {
-      HMSLog.e("HmsMessaging", "Message sent failed:" + ((a)localObject).b() + ':' + ((a)localObject).c());
-      g.a(this.b, "push.sendMessage", paramString, (a)localObject);
-      throw new UnsupportedOperationException(((a)localObject).c());
-    }
-    if (TextUtils.isEmpty(paramRemoteMessage.getTo()))
-    {
-      HMSLog.e("HmsMessaging", "Mandatory parameter 'to' missing");
-      g.a(this.b, "push.sendMessage", paramString, a.L);
-      throw new IllegalArgumentException("Mandatory parameter 'to' missing");
-    }
-    if (TextUtils.isEmpty(paramRemoteMessage.getMessageId()))
-    {
-      HMSLog.e("HmsMessaging", "Mandatory parameter 'message_id' missing");
-      g.a(this.b, "push.sendMessage", paramString, a.L);
-      throw new IllegalArgumentException("Mandatory parameter 'message_id' missing");
-    }
-    if (TextUtils.isEmpty(paramRemoteMessage.getData()))
-    {
-      HMSLog.e("HmsMessaging", "Mandatory parameter 'data' missing");
-      g.a(this.b, "push.sendMessage", paramString, a.L);
-      throw new IllegalArgumentException("Mandatory parameter 'data' missing");
-    }
-    localObject = new UpSendMsgReq();
-    ((UpSendMsgReq)localObject).setPackageName(this.b.getPackageName());
-    ((UpSendMsgReq)localObject).setMessageId(paramRemoteMessage.getMessageId());
-    ((UpSendMsgReq)localObject).setTo(paramRemoteMessage.getTo());
-    ((UpSendMsgReq)localObject).setData(paramRemoteMessage.getData());
-    ((UpSendMsgReq)localObject).setMessageType(paramRemoteMessage.getMessageType());
-    ((UpSendMsgReq)localObject).setTtl(paramRemoteMessage.getTtl());
-    ((UpSendMsgReq)localObject).setCollapseKey(paramRemoteMessage.getCollapseKey());
-    ((UpSendMsgReq)localObject).setSendMode(paramRemoteMessage.getSendMode());
-    ((UpSendMsgReq)localObject).setReceiptMode(paramRemoteMessage.getReceiptMode());
-    if (w.a())
-    {
-      this.c.doWrite(new b("push.sendMessage", JsonUtil.createJsonString((IMessageEntity)localObject), paramString));
-      return;
-    }
-    a((UpSendMsgReq)localObject, paramString);
-  }
-  
-  private void a(UpSendMsgReq paramUpSendMsgReq, String paramString)
-  {
-    paramUpSendMsgReq.setToken(y.a(this.b, "push_client_self_info"));
-    try
-    {
-      this.c.doWrite(new d("push.sendMessage", JsonUtil.createJsonString(paramUpSendMsgReq), paramString, paramUpSendMsgReq.getPackageName(), paramUpSendMsgReq.getMessageId()));
-      return;
-    }
-    catch (Exception paramUpSendMsgReq)
-    {
-      if ((paramUpSendMsgReq.getCause() instanceof ApiException))
-      {
-        paramUpSendMsgReq = (ApiException)paramUpSendMsgReq.getCause();
-        g.a(this.b, "push.sendMessage", paramString, paramUpSendMsgReq.getStatusCode());
-        return;
-      }
-      g.a(this.b, "push.sendMessage", paramString, a.M);
-    }
-  }
-  
-  private Task<Void> b()
-  {
-    TaskCompletionSource localTaskCompletionSource = new TaskCompletionSource();
-    localTaskCompletionSource.setResult(null);
-    return localTaskCompletionSource.getTask();
+    this.c.setKitSdkVersion(50101300);
   }
   
   public static HmsMessaging getInstance(Context paramContext)
@@ -227,6 +72,182 @@ public class HmsMessaging
     }
   }
   
+  public final Task<Void> a(String paramString1, String paramString2)
+  {
+    str = PushBiUtil.reportEntry(this.b, "push.subscribe");
+    if ((paramString1 != null) && (a.matcher(paramString1).matches())) {
+      if (ProxyCenter.getProxy() != null)
+      {
+        HMSLog.i("HmsMessaging", "use proxy subscribe.");
+        if (TextUtils.equals(paramString2, "Sub")) {
+          return ProxyCenter.getProxy().subscribe(this.b, paramString1, str);
+        }
+        return ProxyCenter.getProxy().unsubscribe(this.b, paramString1, str);
+      }
+    }
+    try
+    {
+      ErrorEnum localErrorEnum = d.a(this.b);
+      if (localErrorEnum == ErrorEnum.SUCCESS)
+      {
+        if (NetWorkUtil.getNetworkType(this.b) != 0)
+        {
+          paramString1 = new SubscribeReq(this.b, paramString2, paramString1);
+          paramString1.setToken(BaseUtils.getLocalToken(this.b, null));
+          if (s.b()) {
+            return this.c.doWrite(new BaseVoidTask("push.subscribe", JsonUtil.createJsonString(paramString1), str));
+          }
+          paramString1 = this.c.doWrite(new SubscribeTask("push.subscribe", JsonUtil.createJsonString(paramString1), str));
+          return paramString1;
+        }
+        HMSLog.e("HmsMessaging", "no network");
+        throw ErrorEnum.ERROR_NO_NETWORK.toApiException();
+      }
+      throw localErrorEnum.toApiException();
+    }
+    catch (ApiException paramString1)
+    {
+      paramString2 = new TaskCompletionSource();
+      paramString2.setException(paramString1);
+      PushBiUtil.reportExit(this.b, "push.subscribe", str, paramString1.getStatusCode());
+      return paramString2.getTask();
+      PushBiUtil.reportExit(this.b, "push.subscribe", str, ErrorEnum.ERROR_ARGUMENTS_INVALID);
+      HMSLog.e("HmsMessaging", "Invalid topic: topic should match the format:[\\u4e00-\\u9fa5\\w-_.~%]{1,900}");
+      throw new IllegalArgumentException("Invalid topic: topic should match the format:[\\u4e00-\\u9fa5\\w-_.~%]{1,900}");
+    }
+    catch (Exception paramString1)
+    {
+      label204:
+      break label204;
+    }
+    paramString1 = new TaskCompletionSource();
+    paramString1.setException(ErrorEnum.ERROR_INTERNAL_ERROR.toApiException());
+    PushBiUtil.reportExit(this.b, "push.subscribe", str, ErrorEnum.ERROR_INTERNAL_ERROR);
+    return paramString1.getTask();
+  }
+  
+  public final Task<Void> a(boolean paramBoolean)
+  {
+    String str = PushBiUtil.reportEntry(this.b, "push.setNotifyFlag");
+    if ((s.d(this.b)) && (!s.b()))
+    {
+      if (HwBuildEx.VERSION.EMUI_SDK_INT < 12)
+      {
+        HMSLog.e("HmsMessaging", "operation not available on Huawei device with EMUI lower than 5.1");
+        localObject1 = new TaskCompletionSource();
+        ((TaskCompletionSource)localObject1).setException(ErrorEnum.ERROR_OPERATION_NOT_SUPPORTED.toApiException());
+        PushBiUtil.reportExit(this.b, "push.setNotifyFlag", str, ErrorEnum.ERROR_OPERATION_NOT_SUPPORTED);
+        return ((TaskCompletionSource)localObject1).getTask();
+      }
+      if (s.b(this.b) < 90101310L)
+      {
+        HMSLog.i("HmsMessaging", "turn on/off with broadcast v1");
+        localObject1 = this.b;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.b.getPackageName());
+        ((StringBuilder)localObject2).append("#");
+        ((StringBuilder)localObject2).append(paramBoolean);
+        localObject1 = PushEncrypter.encrypterOld((Context)localObject1, ((StringBuilder)localObject2).toString());
+        localObject1 = new Intent("com.huawei.intent.action.SELF_SHOW_FLAG").putExtra("enalbeFlag", (String)localObject1);
+        ((Intent)localObject1).setPackage("android");
+        return Tasks.callInBackground(new IntentCallable(this.b, (Intent)localObject1, str));
+      }
+      HMSLog.i("HmsMessaging", "turn on/off with broadcast v2");
+      new PushPreferences(this.b, "push_notify_flag").saveBoolean("notify_msg_enable", paramBoolean ^ true);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("content://");
+      ((StringBuilder)localObject1).append(this.b.getPackageName());
+      ((StringBuilder)localObject1).append(".huawei.push.provider/");
+      ((StringBuilder)localObject1).append("push_notify_flag");
+      ((StringBuilder)localObject1).append(".xml");
+      localObject1 = Uri.parse(((StringBuilder)localObject1).toString());
+      Object localObject2 = new Intent("com.huawei.android.push.intent.SDK_COMMAND");
+      ((Intent)localObject2).putExtra("type", "enalbeFlag");
+      ((Intent)localObject2).putExtra("pkgName", this.b.getPackageName());
+      ((Intent)localObject2).putExtra("url", (Parcelable)localObject1);
+      ((Intent)localObject2).setPackage("android");
+      return Tasks.callInBackground(new IntentCallable(this.b, (Intent)localObject2, str));
+    }
+    HMSLog.i("HmsMessaging", "turn on/off with AIDL");
+    Object localObject1 = new EnableNotifyReq();
+    ((EnableNotifyReq)localObject1).setPackageName(this.b.getPackageName());
+    ((EnableNotifyReq)localObject1).setEnable(paramBoolean);
+    return this.c.doWrite(new BaseVoidTask("push.setNotifyFlag", JsonUtil.createJsonString((IMessageEntity)localObject1), str));
+  }
+  
+  public final void a(RemoteMessage paramRemoteMessage)
+  {
+    String str = PushBiUtil.reportEntry(this.b, "push.sendMessage");
+    Object localObject = d.a(this.b);
+    if (localObject == ErrorEnum.SUCCESS)
+    {
+      if (!TextUtils.isEmpty(paramRemoteMessage.getTo()))
+      {
+        if (!TextUtils.isEmpty(paramRemoteMessage.getMessageId()))
+        {
+          if (!TextUtils.isEmpty(paramRemoteMessage.getData()))
+          {
+            localObject = new UpSendMsgReq();
+            ((UpSendMsgReq)localObject).setPackageName(this.b.getPackageName());
+            ((UpSendMsgReq)localObject).setMessageId(paramRemoteMessage.getMessageId());
+            ((UpSendMsgReq)localObject).setTo(paramRemoteMessage.getTo());
+            ((UpSendMsgReq)localObject).setData(paramRemoteMessage.getData());
+            ((UpSendMsgReq)localObject).setMessageType(paramRemoteMessage.getMessageType());
+            ((UpSendMsgReq)localObject).setTtl(paramRemoteMessage.getTtl());
+            ((UpSendMsgReq)localObject).setCollapseKey(paramRemoteMessage.getCollapseKey());
+            ((UpSendMsgReq)localObject).setSendMode(paramRemoteMessage.getSendMode());
+            ((UpSendMsgReq)localObject).setReceiptMode(paramRemoteMessage.getReceiptMode());
+            if (s.b())
+            {
+              this.c.doWrite(new BaseVoidTask("push.sendMessage", JsonUtil.createJsonString((IMessageEntity)localObject), str));
+              return;
+            }
+            a((UpSendMsgReq)localObject, str);
+            return;
+          }
+          HMSLog.e("HmsMessaging", "Mandatory parameter 'data' missing");
+          PushBiUtil.reportExit(this.b, "push.sendMessage", str, ErrorEnum.ERROR_ARGUMENTS_INVALID);
+          throw new IllegalArgumentException("Mandatory parameter 'data' missing");
+        }
+        HMSLog.e("HmsMessaging", "Mandatory parameter 'message_id' missing");
+        PushBiUtil.reportExit(this.b, "push.sendMessage", str, ErrorEnum.ERROR_ARGUMENTS_INVALID);
+        throw new IllegalArgumentException("Mandatory parameter 'message_id' missing");
+      }
+      HMSLog.e("HmsMessaging", "Mandatory parameter 'to' missing");
+      PushBiUtil.reportExit(this.b, "push.sendMessage", str, ErrorEnum.ERROR_ARGUMENTS_INVALID);
+      throw new IllegalArgumentException("Mandatory parameter 'to' missing");
+    }
+    paramRemoteMessage = new StringBuilder();
+    paramRemoteMessage.append("Message sent failed:");
+    paramRemoteMessage.append(((ErrorEnum)localObject).getExternalCode());
+    paramRemoteMessage.append(':');
+    paramRemoteMessage.append(((ErrorEnum)localObject).getMessage());
+    HMSLog.e("HmsMessaging", paramRemoteMessage.toString());
+    PushBiUtil.reportExit(this.b, "push.sendMessage", str, (ErrorEnum)localObject);
+    throw new UnsupportedOperationException(((ErrorEnum)localObject).getMessage());
+  }
+  
+  public final void a(UpSendMsgReq paramUpSendMsgReq, String paramString)
+  {
+    paramUpSendMsgReq.setToken(BaseUtils.getLocalToken(this.b, null));
+    try
+    {
+      HuaweiApi localHuaweiApi = this.c;
+      localHuaweiApi.doWrite(new SendUpStreamTask("push.sendMessage", JsonUtil.createJsonString(paramUpSendMsgReq), paramString, paramUpSendMsgReq.getPackageName(), paramUpSendMsgReq.getMessageId()));
+      return;
+    }
+    catch (Exception paramUpSendMsgReq)
+    {
+      if ((paramUpSendMsgReq.getCause() instanceof ApiException))
+      {
+        paramUpSendMsgReq = (ApiException)paramUpSendMsgReq.getCause();
+        PushBiUtil.reportExit(this.b, "push.sendMessage", paramString, paramUpSendMsgReq.getStatusCode());
+        return;
+      }
+      PushBiUtil.reportExit(this.b, "push.sendMessage", paramString, ErrorEnum.ERROR_INTERNAL_ERROR);
+    }
+  }
+  
   public boolean isAutoInitEnabled()
   {
     return AutoInitHelper.isAutoInitEnabled(this.b);
@@ -234,14 +255,14 @@ public class HmsMessaging
   
   public void send(RemoteMessage paramRemoteMessage)
   {
-    if (ProxyCenter.getInstance().getProxy() != null)
+    if (ProxyCenter.getProxy() == null)
     {
-      HMSLog.e("HmsMessaging", "Operation(send) unsupported");
-      throw new UnsupportedOperationException("Operation(send) unsupported");
+      HMSLog.i("HmsMessaging", "send upstream message");
+      a(paramRemoteMessage);
+      return;
     }
-    String str = g.a(this.b, "push.sendMessage");
-    HMSLog.i("HmsMessaging", "send upstream message");
-    a(paramRemoteMessage, str);
+    HMSLog.e("HmsMessaging", "Operation(send) unsupported");
+    throw new UnsupportedOperationException("Operation(send) unsupported");
   }
   
   public void setAutoInitEnabled(boolean paramBoolean)
@@ -251,52 +272,36 @@ public class HmsMessaging
   
   public Task<Void> subscribe(String paramString)
   {
-    if (ProxyCenter.getInstance().getProxy() != null)
-    {
-      HMSLog.e("HmsMessaging", "Operation(subscribe) unsupported");
-      return a();
-    }
-    String str = g.a(this.b, "push.subscribe");
     HMSLog.i("HmsMessaging", "invoke subscribe");
-    return a(paramString, "Sub", str);
+    return a(paramString, "Sub");
   }
   
   public Task<Void> turnOffPush()
   {
-    if (ProxyCenter.getInstance().getProxy() != null)
+    if (ProxyCenter.getProxy() != null)
     {
       HMSLog.i("HmsMessaging", "turn off for proxy");
-      new ac(this.b, "push_notify_flag").a("notify_msg_enable", true);
-      return b();
+      return ProxyCenter.getProxy().turnOff(this.b, null);
     }
-    String str = g.a(this.b, "push.setNotifyFlag");
     HMSLog.i("HmsMessaging", "invoke turnOffPush");
-    return a(false, str);
+    return a(false);
   }
   
   public Task<Void> turnOnPush()
   {
-    if (ProxyCenter.getInstance().getProxy() != null)
+    if (ProxyCenter.getProxy() != null)
     {
       HMSLog.i("HmsMessaging", "turn on for proxy");
-      new ac(this.b, "push_notify_flag").a("notify_msg_enable", false);
-      return b();
+      return ProxyCenter.getProxy().turnOn(this.b, null);
     }
-    String str = g.a(this.b, "push.setNotifyFlag");
     HMSLog.i("HmsMessaging", "invoke turnOnPush");
-    return a(true, str);
+    return a(true);
   }
   
   public Task<Void> unsubscribe(String paramString)
   {
-    if (ProxyCenter.getInstance().getProxy() != null)
-    {
-      HMSLog.e("HmsMessaging", "Operation(unsubscribe) unsupported");
-      return a();
-    }
-    String str = g.a(this.b, "push.subscribe");
     HMSLog.i("HmsMessaging", "invoke unsubscribe");
-    return a(paramString, "UnSub", str);
+    return a(paramString, "UnSub");
   }
 }
 

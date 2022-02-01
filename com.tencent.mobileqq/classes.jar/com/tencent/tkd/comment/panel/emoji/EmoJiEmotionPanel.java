@@ -55,25 +55,31 @@ public class EmoJiEmotionPanel
     a();
   }
   
-  public boolean a()
+  protected boolean a()
   {
     boolean bool = super.a();
     if ((bool) && (!CollectionUtil.isEmpty(this.a)))
     {
       setPageIndicator(f());
-      int i = e();
-      int j = g() * i;
-      i = 0;
-      while (i < f())
+      int k = e() * g();
+      int j;
+      for (int i = 0; i < f(); i = j)
       {
-        int k = i * j - i;
-        int m = Math.min((i + 1) * j - i - 1, this.a.length);
-        Object localObject = new ArrayList(Arrays.asList(Arrays.copyOfRange(this.a, k, m)));
+        int m = i * k - i;
+        j = i + 1;
+        i = Math.min(j * k - i - 1, this.a.length);
+        Object localObject = new ArrayList(Arrays.asList(Arrays.copyOfRange(this.a, m, i)));
         ((List)localObject).add(new Emotion(-1, Integer.valueOf(R.drawable.a)));
-        LogUtil.logD("EmotionPanelTAG", "size:" + ((List)localObject).size() + "__from:" + k + "__to:" + m);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("size:");
+        localStringBuilder.append(((List)localObject).size());
+        localStringBuilder.append("__from:");
+        localStringBuilder.append(m);
+        localStringBuilder.append("__to:");
+        localStringBuilder.append(i);
+        LogUtil.logD("EmotionPanelTAG", localStringBuilder.toString());
         localObject = EmotionListFactory.a(getContext(), g(), new EmoJiEmotionPanelAdapter(this, getContext()), (List)localObject, a());
         a().add(localObject);
-        i += 1;
       }
       if (a().getAdapter() != null) {
         a().getAdapter().notifyDataSetChanged();
@@ -82,17 +88,17 @@ public class EmoJiEmotionPanel
     return bool;
   }
   
-  public int b()
+  protected int b()
   {
     return getResources().getDimensionPixelOffset(R.dimen.a);
   }
   
-  public int c()
+  protected int c()
   {
     return getResources().getDimensionPixelOffset(R.dimen.c);
   }
   
-  public int d()
+  protected int d()
   {
     return getResources().getDimensionPixelOffset(R.dimen.b);
   }
@@ -104,16 +110,18 @@ public class EmoJiEmotionPanel
   
   public int f()
   {
+    boolean bool = CollectionUtil.isEmpty(this.a);
     int i = 0;
-    if (CollectionUtil.isEmpty(this.a)) {
+    if (bool) {
       return 0;
     }
     int k = e() * g() - 1;
-    int j = this.a.length / k;
-    if (this.a.length % k > 0) {
+    Emotion[] arrayOfEmotion = this.a;
+    int j = arrayOfEmotion.length / k;
+    if (arrayOfEmotion.length % k > 0) {
       i = 1;
     }
-    return i + j;
+    return j + i;
   }
   
   public int g()
@@ -123,7 +131,7 @@ public class EmoJiEmotionPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.emoji.EmoJiEmotionPanel
  * JD-Core Version:    0.7.0.1
  */

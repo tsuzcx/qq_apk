@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class BroadCastInfo
   extends JceStruct
 {
-  static int cache_subchannel = 0;
+  static int cache_subchannel;
   public String billno = "";
   public String hbIdiom = "";
   public String hbIdiomLastPY = "";
@@ -31,27 +31,31 @@ public final class BroadCastInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.hbIdiom != null) {
-      paramJceOutputStream.write(this.hbIdiom, 0);
+    String str = this.hbIdiom;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.idiomSeq, 1);
-    if (this.billno != null) {
-      paramJceOutputStream.write(this.billno, 2);
+    str = this.billno;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.idiomUin, 3);
     paramJceOutputStream.write(this.isFinished, 4);
-    if (this.hbIdiomLastPY != null) {
-      paramJceOutputStream.write(this.hbIdiomLastPY, 5);
+    str = this.hbIdiomLastPY;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.subchannel, 6);
-    if (this.hbPoemRule != null) {
-      paramJceOutputStream.write(this.hbPoemRule, 7);
+    str = this.hbPoemRule;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.BroadCastInfo
  * JD-Core Version:    0.7.0.1
  */

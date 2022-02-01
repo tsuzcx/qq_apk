@@ -8,8 +8,8 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.api.IAnonymousChatApi;
-import com.tencent.mobileqq.troop.api.ITroopGagService;
-import com.tencent.mobileqq.troop.data.SelfGagInfo;
+import com.tencent.mobileqq.troop.troopgag.api.ITroopGagService;
+import com.tencent.mobileqq.troop.troopgag.data.SelfGagInfo;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.writetogether.WriteTogetherUtils;
@@ -28,7 +28,7 @@ public class WTStartupImpl
   {
     boolean bool = ((IAnonymousChatApi)QRoute.api(IAnonymousChatApi.class)).getAioAnonymousStatus(paramString);
     if (bool) {
-      QQToast.a(paramContext, 2131720728, 0).a();
+      QQToast.a(paramContext, 2131720453, 0).a();
     }
     return bool;
   }
@@ -37,16 +37,16 @@ public class WTStartupImpl
   {
     boolean bool = isGag(paramAppRuntime, paramString);
     if (bool) {
-      QQToast.a(paramContext, 2131720738, 0).a();
+      QQToast.a(paramContext, 2131720463, 0).a();
     }
     return bool;
   }
   
   private static boolean checkNetwork(Context paramContext)
   {
-    boolean bool = NetworkUtil.g(paramContext);
+    boolean bool = NetworkUtil.isNetworkAvailable(paramContext);
     if (!bool) {
-      QQToast.a(paramContext, 2131720747, 0).a();
+      QQToast.a(paramContext, 2131720472, 0).a();
     }
     return bool;
   }
@@ -58,97 +58,106 @@ public class WTStartupImpl
   
   public void launchEditor(Context paramContext, Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (!checkNetwork(paramContext)) {}
-    while (TextUtils.isEmpty(paramString1)) {
+    if (!checkNetwork(paramContext)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WTStartupImpl", 2, "[Launch Editor] - Click WT message. docId: " + paramString1);
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("KEY_CANCEL_OR_BACK", "VALUE_BACK");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[Launch Editor] - Click WT message. docId: ");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.d("WTStartupImpl", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("KEY_CANCEL_OR_BACK", "VALUE_BACK");
     OpenDocParam localOpenDocParam = new OpenDocParam();
     localOpenDocParam.jdField_f_of_type_Int = paramInt1;
     localOpenDocParam.k = paramString2;
     localOpenDocParam.jdField_f_of_type_JavaLangString = paramString1;
     localOpenDocParam.g = 0;
-    localBundle.putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
+    ((Bundle)localObject).putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
     if ((paramContext instanceof Activity))
     {
-      WriteTogetherEditorFragment.a((Activity)paramContext, WriteTogetherEditorFragment.class, localBundle, paramInt2);
+      WriteTogetherEditorFragment.a((Activity)paramContext, WriteTogetherEditorFragment.class, (Bundle)localObject, paramInt2);
       return;
     }
     if (paramActivity != null)
     {
-      WriteTogetherEditorFragment.a(paramActivity, WriteTogetherEditorFragment.class, localBundle, paramInt2);
+      WriteTogetherEditorFragment.a(paramActivity, WriteTogetherEditorFragment.class, (Bundle)localObject, paramInt2);
       return;
     }
-    WriteTogetherEditorFragment.a(paramContext, WriteTogetherEditorFragment.class, localBundle);
+    WriteTogetherEditorFragment.a(paramContext, WriteTogetherEditorFragment.class, (Bundle)localObject);
   }
   
   public void launchWriteTogetherEditor(AppRuntime paramAppRuntime, Context paramContext, Activity paramActivity, String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    if (!checkNetwork(paramContext)) {}
-    while ((checkAnonymous(paramContext, paramString2)) || (checkGag(paramAppRuntime, paramContext, paramString2))) {
+    if (!checkNetwork(paramContext)) {
+      return;
+    }
+    if (checkAnonymous(paramContext, paramString2)) {
+      return;
+    }
+    if (checkGag(paramAppRuntime, paramContext, paramString2)) {
       return;
     }
     if (!WriteTogetherUtils.a(paramAppRuntime, paramString2))
     {
-      QQToast.a(paramContext, 2131720730, 0).a();
+      QQToast.a(paramContext, 2131720455, 0).a();
       return;
     }
-    String str = paramString1;
     if (paramString1 == null) {
-      str = "";
+      paramString1 = "";
     }
-    if (QLog.isColorLevel())
+    boolean bool = QLog.isColorLevel();
+    int i = 2;
+    if (bool)
     {
-      if (paramInt1 == 1)
-      {
+      if (paramInt1 == 1) {
         paramContext = "input box";
-        QLog.d("WTStartupImpl", 2, "[Launch Editor] - " + paramContext);
-      }
-    }
-    else
-    {
-      paramContext = new Bundle();
-      paramString1 = WriteTogetherUtils.a(str);
-      paramContext.putString("leftViewText", HardCodeUtil.a(2131720698));
-      paramContext.putString("KEY_CANCEL_OR_BACK", "VALUE_CANCEL");
-      OpenDocParam localOpenDocParam = new OpenDocParam();
-      localOpenDocParam.a = paramString1;
-      localOpenDocParam.jdField_f_of_type_Int = paramInt1;
-      localOpenDocParam.k = paramString2;
-      if ((paramInt1 == 5) || (paramInt1 == 6)) {
-        localOpenDocParam.g = 0;
-      }
-      paramContext.putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
-      WriteTogetherEditorFragment.a(paramActivity, WriteTogetherEditorFragment.class, paramContext, paramInt2);
-      paramInt2 = WriteTogetherUtils.a(paramAppRuntime, paramString2);
-      paramAppRuntime = "" + WriteTogetherUtils.a(paramInt1);
-      paramContext = new StringBuilder().append("");
-      if (!TextUtils.isEmpty(str)) {
-        break label307;
-      }
-    }
-    label307:
-    for (paramInt1 = 1;; paramInt1 = 2)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800AF2F", "0X800AF2F", paramInt2, 0, paramAppRuntime, paramInt1, "", "");
-      return;
-      if (paramInt1 == 2)
-      {
+      } else if (paramInt1 == 2) {
         paramContext = "full screen";
-        break;
+      } else {
+        paramContext = "unknown";
       }
-      paramContext = "unknown";
-      break;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[Launch Editor] - ");
+      ((StringBuilder)localObject).append(paramContext);
+      QLog.d("WTStartupImpl", 2, ((StringBuilder)localObject).toString());
     }
+    paramContext = new Bundle();
+    Object localObject = WriteTogetherUtils.a(paramString1);
+    paramContext.putString("leftViewText", HardCodeUtil.a(2131720417));
+    paramContext.putString("KEY_CANCEL_OR_BACK", "VALUE_CANCEL");
+    OpenDocParam localOpenDocParam = new OpenDocParam();
+    localOpenDocParam.a = ((String)localObject);
+    localOpenDocParam.jdField_f_of_type_Int = paramInt1;
+    localOpenDocParam.k = paramString2;
+    if ((paramInt1 == 5) || (paramInt1 == 6)) {
+      localOpenDocParam.g = 0;
+    }
+    paramContext.putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
+    WriteTogetherEditorFragment.a(paramActivity, WriteTogetherEditorFragment.class, paramContext, paramInt2);
+    paramInt2 = WriteTogetherUtils.a(paramAppRuntime, paramString2);
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("");
+    paramAppRuntime.append(WriteTogetherUtils.a(paramInt1));
+    paramAppRuntime = paramAppRuntime.toString();
+    paramContext = new StringBuilder();
+    paramContext.append("");
+    paramInt1 = i;
+    if (TextUtils.isEmpty(paramString1)) {
+      paramInt1 = 1;
+    }
+    paramContext.append(paramInt1);
+    ReportController.b(null, "dc00898", "", "", "0X800AF2F", "0X800AF2F", paramInt2, 0, paramAppRuntime, paramContext.toString(), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.api.impl.WTStartupImpl
  * JD-Core Version:    0.7.0.1
  */

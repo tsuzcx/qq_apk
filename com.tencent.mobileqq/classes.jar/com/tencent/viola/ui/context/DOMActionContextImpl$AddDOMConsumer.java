@@ -19,12 +19,14 @@ class DOMActionContextImpl$AddDOMConsumer
   public void accept(DomObject paramDomObject)
   {
     this.mRegistry.put(paramDomObject.getRef(), paramDomObject);
-    if ((!TextUtils.isEmpty(DOMActionContextImpl.access$000(this.this$0))) && ((DomObject)this.mRegistry.get(DOMActionContextImpl.access$000(this.this$0)) != null) && (paramDomObject.isFixed())) {}
+    if ((!TextUtils.isEmpty(DOMActionContextImpl.access$000(this.this$0))) && ((DomObject)this.mRegistry.get(DOMActionContextImpl.access$000(this.this$0)) != null)) {
+      paramDomObject.isFixed();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContextImpl.AddDOMConsumer
  * JD-Core Version:    0.7.0.1
  */

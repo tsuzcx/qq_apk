@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MiniGameLameMp3Recorder
 {
-  public static final String TAG = MiniGameLameMp3Recorder.class.getSimpleName();
+  public static final String TAG = "MiniGameLameMp3Recorder";
   private MiniGameLameMp3Recorder.AudioRecordListener mAudioRecordListener;
   private MiniGameLameMp3EncodeThread mEncodeThread;
   private long mPauseTime;
@@ -21,24 +21,27 @@ public class MiniGameLameMp3Recorder
   
   public int getAudioSource()
   {
-    if (this.mEncodeThread != null) {
-      return this.mEncodeThread.getAudioSource();
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      return localMiniGameLameMp3EncodeThread.getAudioSource();
     }
     return 0;
   }
   
   public int getCallbackFrameSize()
   {
-    if (this.mEncodeThread != null) {
-      return this.mEncodeThread.getCallbackFrameSize();
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      return localMiniGameLameMp3EncodeThread.getCallbackFrameSize();
     }
     return 0;
   }
   
   public int getInChannel()
   {
-    if (this.mEncodeThread != null) {
-      return this.mEncodeThread.getInChannel();
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      return localMiniGameLameMp3EncodeThread.getInChannel();
     }
     return 0;
   }
@@ -55,33 +58,37 @@ public class MiniGameLameMp3Recorder
   
   public int getOutBitRate()
   {
-    if (this.mEncodeThread != null) {
-      return this.mEncodeThread.getOutBitRate();
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      return localMiniGameLameMp3EncodeThread.getOutBitRate();
     }
     return 0;
   }
   
   public long getRecordDuration()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.mStartTime;
+    long l = System.currentTimeMillis() - this.mStartTime;
     Iterator localIterator = this.mPauseTimeList.iterator();
-    for (l1 -= l2; localIterator.hasNext(); l1 -= ((Integer)localIterator.next()).intValue()) {}
-    return l1;
+    while (localIterator.hasNext()) {
+      l -= ((Integer)localIterator.next()).intValue();
+    }
+    return l;
   }
   
   public String getRecordFileFormat()
   {
-    if (this.mEncodeThread != null) {
-      return this.mEncodeThread.getRecordFileFormat();
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      return localMiniGameLameMp3EncodeThread.getRecordFileFormat();
     }
     return "";
   }
   
   public String getRecordFilePath()
   {
-    if (this.mEncodeThread != null) {
-      return this.mEncodeThread.getRecordFilePath();
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      return localMiniGameLameMp3EncodeThread.getRecordFilePath();
     }
     return "";
   }
@@ -89,13 +96,14 @@ public class MiniGameLameMp3Recorder
   public long getRecordFileSize()
   {
     Object localObject = getRecordFilePath();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
-    {
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
       return 0L;
-      localObject = new File((String)localObject);
-    } while (!((File)localObject).exists());
-    return ((File)localObject).length();
+    }
+    localObject = new File((String)localObject);
+    if (((File)localObject).exists()) {
+      return ((File)localObject).length();
+    }
+    return 0L;
   }
   
   public long getRecordTime()
@@ -105,8 +113,9 @@ public class MiniGameLameMp3Recorder
   
   public int getSampleRate()
   {
-    if (this.mEncodeThread != null) {
-      return this.mEncodeThread.getSampleRate();
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      return localMiniGameLameMp3EncodeThread.getSampleRate();
     }
     return 0;
   }
@@ -118,7 +127,8 @@ public class MiniGameLameMp3Recorder
   
   public boolean isPause()
   {
-    return (this.mEncodeThread != null) && (this.mEncodeThread.isPause());
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    return (localMiniGameLameMp3EncodeThread != null) && (localMiniGameLameMp3EncodeThread.isPause());
   }
   
   public boolean isRecordIdle()
@@ -128,7 +138,8 @@ public class MiniGameLameMp3Recorder
   
   public boolean isRecording()
   {
-    return (this.mEncodeThread != null) && (this.mEncodeThread.isRecording());
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    return (localMiniGameLameMp3EncodeThread != null) && (localMiniGameLameMp3EncodeThread.isRecording());
   }
   
   public void recordPause()
@@ -173,22 +184,25 @@ public class MiniGameLameMp3Recorder
   
   public void setAudioSource(String paramString)
   {
-    if (this.mEncodeThread != null) {
-      this.mEncodeThread.setAudioSource(paramString);
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      localMiniGameLameMp3EncodeThread.setAudioSource(paramString);
     }
   }
   
   public void setCallbackFrameSize(int paramInt)
   {
-    if (this.mEncodeThread != null) {
-      this.mEncodeThread.setCallbackFrameSize(paramInt);
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      localMiniGameLameMp3EncodeThread.setCallbackFrameSize(paramInt);
     }
   }
   
   public void setInChannel(int paramInt)
   {
-    if (this.mEncodeThread != null) {
-      this.mEncodeThread.setInChannel(paramInt);
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      localMiniGameLameMp3EncodeThread.setInChannel(paramInt);
     }
   }
   
@@ -204,22 +218,25 @@ public class MiniGameLameMp3Recorder
   
   public void setOutBitRate(int paramInt)
   {
-    if (this.mEncodeThread != null) {
-      this.mEncodeThread.setOutBitRate(paramInt);
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      localMiniGameLameMp3EncodeThread.setOutBitRate(paramInt);
     }
   }
   
   public void setRecordFileFormat(String paramString)
   {
-    if (this.mEncodeThread != null) {
-      this.mEncodeThread.setRecordFileFormat(paramString);
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      localMiniGameLameMp3EncodeThread.setRecordFileFormat(paramString);
     }
   }
   
   public void setRecordFilePath(String paramString)
   {
-    if (this.mEncodeThread != null) {
-      this.mEncodeThread.setRecordFilePath(paramString);
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      localMiniGameLameMp3EncodeThread.setRecordFilePath(paramString);
     }
   }
   
@@ -230,14 +247,15 @@ public class MiniGameLameMp3Recorder
   
   public void setSampleRate(int paramInt)
   {
-    if (this.mEncodeThread != null) {
-      this.mEncodeThread.setSampleRate(paramInt);
+    MiniGameLameMp3EncodeThread localMiniGameLameMp3EncodeThread = this.mEncodeThread;
+    if (localMiniGameLameMp3EncodeThread != null) {
+      localMiniGameLameMp3EncodeThread.setSampleRate(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.audiorecorder.MiniGameLameMp3Recorder
  * JD-Core Version:    0.7.0.1
  */

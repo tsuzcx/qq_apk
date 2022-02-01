@@ -18,54 +18,81 @@ class RiskInfoActivity$1
 {
   RiskInfoActivity$1(RiskInfoActivity paramRiskInfoActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool1;
-    boolean bool2;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("RiskInfoDetails", 2, "request risks info,onResult error=" + paramInt + " data=" + paramArrayOfByte);
+      bool1 = true;
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("request risks info,onResult error=");
+        paramBundle.append(paramInt);
+        paramBundle.append(" data=");
+        paramBundle.append(paramArrayOfByte);
+        QLog.i("RiskInfoDetails", 2, paramBundle.toString());
       }
       bool1 = false;
-      paramBundle = new HashMap();
-      bool2 = bool1;
-      if (!bool1) {}
     }
-    for (;;)
+    paramBundle = new HashMap();
+    bool2 = bool1;
+    if (bool1) {}
+    try
     {
-      try
+      localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
+      localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
+      if (!localQQProtectRisksResponse.uint32_sec_cmd.has()) {
+        break label535;
+      }
+      paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse;
+      paramArrayOfByte.printStackTrace();
+      bool2 = bool1;
+      break label520;
+      QLog.d("RiskInfoDetails", 1, "error protobuf content");
+      bool2 = false;
+      RiskInfoActivity.a(this.a, paramBundle, bool2);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
+        continue;
         paramInt = 0;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
+      }
+    }
+    bool2 = bool1;
+    if (paramInt == 1)
+    {
+      bool2 = bool1;
+      if (localQQProtectRisksResponse.risk_info_list.has())
+      {
         bool2 = bool1;
-        if (paramInt == 1)
+        if (!localQQProtectRisksResponse.risk_info_list.isEmpty())
         {
-          bool2 = bool1;
-          if (localQQProtectRisksResponse.risk_info_list.has())
+          paramInt = 0;
+          for (;;)
           {
             bool2 = bool1;
-            if (!localQQProtectRisksResponse.risk_info_list.isEmpty())
+            if (paramInt >= localQQProtectRisksResponse.risk_info_list.size()) {
+              break;
+            }
+            new QQProtectRisks.RiskInfo();
+            paramArrayOfByte = (QQProtectRisks.RiskInfo)localQQProtectRisksResponse.risk_info_list.get(paramInt);
+            if ((!paramArrayOfByte.uint32_item_type.has()) || (paramArrayOfByte.uint32_item_type.get() != 1))
             {
-              paramInt = 0;
-              bool2 = bool1;
-              if (paramInt < localQQProtectRisksResponse.risk_info_list.size())
+              RiskInfoItem localRiskInfoItem = new RiskInfoItem();
+              localRiskInfoItem.jdField_a_of_type_JavaLangString = paramArrayOfByte.str_left_text.get();
+              localRiskInfoItem.d = paramArrayOfByte.str_jump_target.get();
+              if ((!TextUtils.isEmpty(localRiskInfoItem.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localRiskInfoItem.d)))
               {
-                new QQProtectRisks.RiskInfo();
-                paramArrayOfByte = (QQProtectRisks.RiskInfo)localQQProtectRisksResponse.risk_info_list.get(paramInt);
-                if ((paramArrayOfByte.uint32_item_type.has()) && (paramArrayOfByte.uint32_item_type.get() == 1)) {
-                  break label511;
-                }
-                RiskInfoItem localRiskInfoItem = new RiskInfoItem();
-                localRiskInfoItem.jdField_a_of_type_JavaLangString = paramArrayOfByte.str_left_text.get();
-                localRiskInfoItem.d = paramArrayOfByte.str_jump_target.get();
-                if ((TextUtils.isEmpty(localRiskInfoItem.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localRiskInfoItem.d))) {
-                  break label511;
-                }
                 localRiskInfoItem.jdField_b_of_type_JavaLangString = paramArrayOfByte.str_right_text.get();
                 localRiskInfoItem.c = paramArrayOfByte.str_desc_text.get();
                 localRiskInfoItem.jdField_a_of_type_Int = paramArrayOfByte.uint32_click_report_id.get();
@@ -83,32 +110,16 @@ class RiskInfoActivity$1
                 QLog.d("RiskInfoDetails", 1, String.format("%s, %s, %s, %s, %d, %d, %s", new Object[] { localRiskInfoItem.jdField_a_of_type_JavaLangString, localRiskInfoItem.jdField_b_of_type_JavaLangString, localRiskInfoItem.c, localRiskInfoItem.d, Integer.valueOf(localRiskInfoItem.jdField_a_of_type_Int), Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int), localRiskInfoItem.e }));
               }
             }
+            paramInt += 1;
           }
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.d("RiskInfoDetails", 1, "error protobuf content");
-        bool2 = false;
-        RiskInfoActivity.a(this.a, paramBundle, bool2);
-        return;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        bool2 = bool1;
-        continue;
-      }
-      bool1 = true;
-      break;
-      label511:
-      paramInt += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskInfoActivity.1
  * JD-Core Version:    0.7.0.1
  */

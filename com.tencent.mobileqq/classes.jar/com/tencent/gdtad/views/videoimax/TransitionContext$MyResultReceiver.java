@@ -20,32 +20,36 @@ final class TransitionContext$MyResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    GdtLog.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
-    TransitionContext localTransitionContext = (TransitionContext)this.a.get();
-    if (localTransitionContext != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onReceiveResult() called with: resultCode = [");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("], resultData = [");
+    ((StringBuilder)localObject).append(paramBundle);
+    ((StringBuilder)localObject).append("]");
+    GdtLog.a("TransitionContext", ((StringBuilder)localObject).toString());
+    localObject = (TransitionContext)this.a.get();
+    if (localObject != null)
     {
-      if (paramInt != 2) {
-        break label73;
-      }
-      TransitionContext.a(localTransitionContext, TransitionContext.a(localTransitionContext));
-    }
-    label73:
-    do
-    {
-      do
+      if (paramInt == 2)
       {
+        TransitionContext.a((TransitionContext)localObject, TransitionContext.a((TransitionContext)localObject));
         return;
-      } while (paramInt != 0);
-      TransitionContext.a(localTransitionContext, true);
-      paramBundle.setClassLoader(GdtVideoImaxFragment.MyResultReceiver.class.getClassLoader());
-      TransitionContext.a(localTransitionContext, (ResultReceiver)paramBundle.getParcelable("callback"));
-    } while (!TransitionContext.a(localTransitionContext));
-    TransitionContext.a(localTransitionContext);
+      }
+      if (paramInt == 0)
+      {
+        TransitionContext.a((TransitionContext)localObject, true);
+        paramBundle.setClassLoader(GdtVideoImaxFragment.MyResultReceiver.class.getClassLoader());
+        TransitionContext.a((TransitionContext)localObject, (ResultReceiver)paramBundle.getParcelable("callback"));
+        if (TransitionContext.a((TransitionContext)localObject)) {
+          TransitionContext.a((TransitionContext)localObject);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.TransitionContext.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

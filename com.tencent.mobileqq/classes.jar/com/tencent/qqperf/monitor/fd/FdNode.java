@@ -42,32 +42,36 @@ class FdNode
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass())) {
+      return ((FdNode)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
     }
-    return ((FdNode)paramObject).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+    return false;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaLangString.hashCode();
+    return str.hashCode();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("FdNode{");
-    localStringBuilder.append("text='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", appearTimes=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("text='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", appearTimes=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.fd.FdNode
  * JD-Core Version:    0.7.0.1
  */

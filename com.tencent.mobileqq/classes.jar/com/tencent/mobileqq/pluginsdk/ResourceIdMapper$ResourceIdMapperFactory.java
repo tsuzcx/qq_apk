@@ -9,17 +9,15 @@ public class ResourceIdMapper$ResourceIdMapperFactory
       paramString = (ResourceIdMapper)Class.forName(paramString).newInstance();
       return paramString;
     }
-    catch (InstantiationException paramString)
+    catch (ClassNotFoundException paramString)
     {
       paramString.printStackTrace();
-      return null;
     }
     catch (IllegalAccessException paramString)
     {
       paramString.printStackTrace();
-      return null;
     }
-    catch (ClassNotFoundException paramString)
+    catch (InstantiationException paramString)
     {
       paramString.printStackTrace();
     }
@@ -28,7 +26,7 @@ public class ResourceIdMapper$ResourceIdMapperFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.ResourceIdMapper.ResourceIdMapperFactory
  * JD-Core Version:    0.7.0.1
  */

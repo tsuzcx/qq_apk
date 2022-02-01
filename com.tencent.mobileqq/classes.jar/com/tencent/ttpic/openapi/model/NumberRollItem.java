@@ -15,66 +15,61 @@ public class NumberRollItem
   
   public void calculateCurrentPosition(float paramFloat)
   {
-    if (paramFloat < this.speedUpTime) {
-      this.currentPosition = (this.maxSpeed * paramFloat * paramFloat / this.speedUpTime * 0.5F);
-    }
-    for (;;)
+    float f1 = this.speedUpTime;
+    if (paramFloat < f1)
     {
-      this.currentPosition -= (int)this.currentPosition;
-      return;
-      if (paramFloat < this.speedUpTime + this.continueTime)
+      this.currentPosition = (this.maxSpeed * paramFloat * paramFloat / f1 * 0.5F);
+    }
+    else
+    {
+      float f3 = this.continueTime;
+      float f2;
+      if (paramFloat < f1 + f3)
       {
-        this.currentPosition = (this.speedUpTime * this.maxSpeed * 0.5F + (paramFloat - this.speedUpTime) * this.maxSpeed);
+        f2 = this.maxSpeed;
+        this.currentPosition = (f1 * f2 * 0.5F + (paramFloat - f1) * f2);
       }
       else
       {
-        float f2 = this.speedUpTime;
-        float f3 = this.maxSpeed;
-        float f4 = this.continueTime;
-        float f5 = this.maxSpeed;
-        float f1 = this.maxSpeed * this.stopTime * 0.5F;
-        f2 = f2 * f3 * 0.5F + f4 * f5 + f1;
-        f2 -= (int)f2;
+        float f4 = this.maxSpeed;
+        f2 = f4 * this.stopTime * 0.5F;
+        f1 = f1 * f4 * 0.5F + f3 * f4 + f2;
+        f1 -= (int)f1;
         f3 = this.targetNumber / 10.0F;
-        if (f3 >= f2) {}
-        for (f1 = f3 - f2 + f1;; f1 = f3 - f2 + 1.0F + f1)
-        {
-          f1 = f1 * 2.0F / this.maxSpeed - this.stopTime;
-          f2 = this.stopTime - f1;
-          if (paramFloat >= this.speedUpTime + this.continueTime + f1) {
-            break label267;
-          }
-          this.currentPosition = (this.speedUpTime * this.maxSpeed * 0.5F + this.continueTime * this.maxSpeed + (paramFloat - this.speedUpTime - this.continueTime) * this.maxSpeed);
-          break;
+        if (f3 >= f1) {
+          f1 = f3 - f1;
+        } else {
+          f1 = f3 - f1 + 1.0F;
         }
-        label267:
-        if (paramFloat < this.speedUpTime + this.continueTime + this.stopTime)
+        f3 = this.maxSpeed;
+        f2 = (f2 + f1) * 2.0F / f3;
+        f1 = this.stopTime;
+        f2 -= f1;
+        f4 = f1 - f2;
+        float f5 = this.speedUpTime;
+        float f6 = this.continueTime;
+        if (paramFloat < f5 + f6 + f2)
         {
-          paramFloat = paramFloat - this.speedUpTime - this.continueTime - f1;
-          f3 = this.speedUpTime;
-          f4 = this.maxSpeed;
-          f5 = this.continueTime;
-          float f6 = this.maxSpeed;
-          float f7 = this.maxSpeed;
-          float f8 = this.maxSpeed;
-          float f9 = this.maxSpeed;
-          this.currentPosition = (f1 * f7 + (f3 * f4 * 0.5F + f5 * f6) + ((f2 - paramFloat) / f2 * f9 + f8) * paramFloat * 0.5F);
+          this.currentPosition = (f5 * f3 * 0.5F + f6 * f3 + (paramFloat - f5 - f6) * f3);
+        }
+        else if (paramFloat < f5 + f6 + f1)
+        {
+          paramFloat = paramFloat - f5 - f6 - f2;
+          this.currentPosition = (f5 * f3 * 0.5F + f6 * f3 + f2 * f3 + (f3 + (f4 - paramFloat) / f4 * f3) * paramFloat * 0.5F);
         }
         else
         {
-          paramFloat = this.speedUpTime;
-          f3 = this.maxSpeed;
-          f4 = this.continueTime;
-          f5 = this.maxSpeed;
-          this.currentPosition = (f1 * this.maxSpeed + (paramFloat * f3 * 0.5F + f4 * f5) + f2 * this.maxSpeed * 0.5F);
+          this.currentPosition = (f5 * f3 * 0.5F + f6 * f3 + f2 * f3 + f4 * f3 * 0.5F);
         }
       }
     }
+    paramFloat = this.currentPosition;
+    this.currentPosition = (paramFloat - (int)paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.NumberRollItem
  * JD-Core Version:    0.7.0.1
  */

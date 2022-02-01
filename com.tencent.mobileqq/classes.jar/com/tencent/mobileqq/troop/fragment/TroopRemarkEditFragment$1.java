@@ -22,21 +22,17 @@ class TroopRemarkEditFragment$1
       if (TroopRemarkEditFragment.a(this.a).getBytes("utf-8").length > 60) {
         TextUtils.backspace(TroopRemarkEditFragment.a(this.a));
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.fragment.TroopRemarkEditFragment.1
  * JD-Core Version:    0.7.0.1
  */

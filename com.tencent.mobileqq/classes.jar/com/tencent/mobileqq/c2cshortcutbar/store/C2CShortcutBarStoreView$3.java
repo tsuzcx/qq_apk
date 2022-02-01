@@ -20,15 +20,17 @@ class C2CShortcutBarStoreView$3
         C2CShortcutBarStoreView.a(this.a).setChecked(paramBoolean2);
         C2CShortcutBarStoreView.a(this.a).setOnCheckedChangeListener(this.a);
       }
-      return;
     }
-    paramString = QQToast.a(BaseApplication.getContext(), 1, 2131690784, 0);
-    paramString.b(paramString.b());
+    else
+    {
+      paramString = QQToast.a(BaseApplication.getContext(), 1, 2131690712, 0);
+      paramString.b(paramString.b());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.store.C2CShortcutBarStoreView.3
  * JD-Core Version:    0.7.0.1
  */

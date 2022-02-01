@@ -7,19 +7,19 @@ import android.view.View;
 
 abstract interface StoryPlayerImpl$Ui
 {
-  public abstract Context a();
-  
   public abstract View a();
   
   public abstract void finish();
   
   public abstract Activity getActivity();
   
+  public abstract Context getContext();
+  
   public abstract void startActivity(Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerImpl.Ui
  * JD-Core Version:    0.7.0.1
  */

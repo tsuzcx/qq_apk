@@ -5,12 +5,12 @@ public final class hn
 {
   public hn(int paramInt)
   {
-    super("Cannot create a LatLngBounds from " + paramInt + " items");
+    super(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.hn
  * JD-Core Version:    0.7.0.1
  */

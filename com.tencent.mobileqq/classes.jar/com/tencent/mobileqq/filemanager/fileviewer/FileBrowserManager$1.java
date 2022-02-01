@@ -11,12 +11,12 @@ class FileBrowserManager$1
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+    ImmersiveUtils.isSupporImmersive();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserManager.1
  * JD-Core Version:    0.7.0.1
  */

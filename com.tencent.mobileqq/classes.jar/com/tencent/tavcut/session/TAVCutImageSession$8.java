@@ -18,7 +18,8 @@ class TAVCutImageSession$8
       int i = 0;
       while (i < this.this$0.mediaModels.size())
       {
-        this.this$0.resetAEKitModel((MediaModel)this.this$0.mediaModels.get(i), (VideoRenderChainManager)this.this$0.renderChainManagers.get(i), this.val$effectStrength, this.val$lutPath, this.val$glowStrength, this.val$adjustParams, this.val$materialPath);
+        TAVCutImageSession localTAVCutImageSession = this.this$0;
+        localTAVCutImageSession.resetAEKitModel((MediaModel)localTAVCutImageSession.mediaModels.get(i), (VideoRenderChainManager)this.this$0.renderChainManagers.get(i), this.val$effectStrength, this.val$lutPath, this.val$glowStrength, this.val$adjustParams, this.val$materialPath);
         i += 1;
       }
     }
@@ -26,7 +27,7 @@ class TAVCutImageSession$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutImageSession.8
  * JD-Core Version:    0.7.0.1
  */

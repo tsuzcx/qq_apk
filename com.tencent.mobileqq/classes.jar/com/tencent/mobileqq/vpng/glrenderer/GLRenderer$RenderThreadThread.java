@@ -10,36 +10,40 @@ class GLRenderer$RenderThreadThread
   
   private GLRenderer$RenderThreadThread(GLRenderer paramGLRenderer)
   {
-    setName("GLRenderer-" + getId());
+    paramGLRenderer = new StringBuilder();
+    paramGLRenderer.append("GLRenderer-");
+    paramGLRenderer.append(getId());
+    setName(paramGLRenderer.toString());
   }
   
   public void run()
   {
     GLRenderer.a(this.this$0);
     this.this$0.d();
-    while (this.a)
+    for (;;)
     {
-      long l;
-      try
-      {
-        l = System.currentTimeMillis();
-        synchronized (GLRenderer.a(this.this$0))
+      if (this.a) {
+        try
         {
-          Iterator localIterator = GLRenderer.a(this.this$0).iterator();
-          if (localIterator.hasNext()) {
-            ((Runnable)localIterator.next()).run();
+          long l = System.currentTimeMillis();
+          synchronized (GLRenderer.a(this.this$0))
+          {
+            Iterator localIterator = GLRenderer.a(this.this$0).iterator();
+            while (localIterator.hasNext()) {
+              ((Runnable)localIterator.next()).run();
+            }
+            GLRenderer.a(this.this$0).clear();
+            if (!this.this$0.a) {
+              GLRenderer.b(this.this$0);
+            }
+            sleep(Math.max(0L, 33L - (System.currentTimeMillis() - l)));
           }
         }
+        catch (InterruptedException localInterruptedException)
+        {
+          localInterruptedException.printStackTrace();
+        }
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-      }
-      GLRenderer.a(this.this$0).clear();
-      if (!this.this$0.a) {
-        GLRenderer.b(this.this$0);
-      }
-      sleep(Math.max(0L, 33L - (System.currentTimeMillis() - l)));
     }
     if (GLRenderer.a(this.this$0) != null)
     {
@@ -53,7 +57,7 @@ class GLRenderer$RenderThreadThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.glrenderer.GLRenderer.RenderThreadThread
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,10 @@ import android.annotation.TargetApi;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.ShortcutBarAIOHelper;
-import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
+import com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper;
+import com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarHelper;
+import com.tencent.mobileqq.apollo.aio.ChatPieApolloViewController;
+import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import java.lang.ref.WeakReference;
 
@@ -29,39 +31,43 @@ public class InputGlobalLayoutListener
       paramView.post(this);
     }
     paramInt1 = 0;
-    paramView = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramView != null)
+    Object localObject = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject != null)
     {
-      if (paramView.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO != null) {
-        paramInt1 = paramView.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.getHeight();
+      if (((BaseChatPie)localObject).a != null) {
+        paramInt1 = ((BaseChatPie)localObject).a.getHeight();
       }
-      if (paramView.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController != null) {
-        paramView.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.a(paramInt1, paramView);
+      paramView = ApolloUtilImpl.getChatPieApolloViewController((BaseChatPie)localObject);
+      localObject = (FullScreenInputHelper)((BaseChatPie)localObject).a(24);
+      if ((paramView != null) && (localObject != null)) {
+        paramView.a(paramInt1, ((FullScreenInputHelper)localObject).c());
       }
     }
   }
   
   public void run()
   {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController == null)) {}
-    for (;;)
-    {
+    Object localObject = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ChatPieApolloViewController localChatPieApolloViewController = ApolloUtilImpl.getChatPieApolloViewController((BaseChatPie)localObject);
+    if (localChatPieApolloViewController == null) {
       return;
-      localBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.c(this.jdField_a_of_type_Int);
-      ShortcutBarAIOHelper localShortcutBarAIOHelper = (ShortcutBarAIOHelper)localBaseChatPie.a(52);
-      if ((localShortcutBarAIOHelper != null) && (localShortcutBarAIOHelper.b())) {}
-      for (int i = 1; i == 0; i = 0)
-      {
-        localBaseChatPie.jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.d(this.jdField_a_of_type_Int);
-        return;
-      }
+    }
+    localChatPieApolloViewController.c(this.jdField_a_of_type_Int);
+    localObject = (AIOShortcutBarHelper)((BaseChatPie)localObject).a(52);
+    int i;
+    if ((localObject != null) && (((AIOShortcutBarHelper)localObject).d() == 2) && (((AIOShortcutBarHelper)localObject).c() == 0)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
+      localChatPieApolloViewController.d(this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.InputGlobalLayoutListener
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleDispatcher;", "Lcom/tencent/hippy/qq/fragment/BaseHippyFragment$HippyActivityLifecycleListener;", "()V", "mActivityLifecycleListeners", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "addActivityLifecycleListener", "", "listener", "clearAllListener", "onActivityCreated", "activity", "Landroid/app/Activity;", "savedInstanceState", "Landroid/os/Bundle;", "onActivityDestroyed", "onActivityPaused", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onActivityResumed", "onActivitySaveInstanceState", "outState", "onActivityStarted", "onActivityStopped", "removeActivityLifecycleListener", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleDispatcher;", "Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleListener;", "()V", "mActivityLifecycleListeners", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "addActivityLifecycleListener", "", "listener", "clearAllListener", "onActivityCreated", "activity", "Landroid/app/Activity;", "savedInstanceState", "Landroid/os/Bundle;", "onActivityDestroyed", "onActivityPaused", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onActivityResumed", "onActivitySaveInstanceState", "outState", "onActivityStarted", "onActivityStopped", "removeActivityLifecycleListener", "hippy-api_release"}, k=1, mv={1, 1, 16})
 public final class HippyActivityLifecycleDispatcher
-  implements BaseHippyFragment.HippyActivityLifecycleListener
+  implements HippyActivityLifecycleListener
 {
-  private final ArrayList<BaseHippyFragment.HippyActivityLifecycleListener> mActivityLifecycleListeners = new ArrayList();
+  private final ArrayList<HippyActivityLifecycleListener> mActivityLifecycleListeners = new ArrayList();
   
-  public final void addActivityLifecycleListener(@NotNull BaseHippyFragment.HippyActivityLifecycleListener paramHippyActivityLifecycleListener)
+  public final void addActivityLifecycleListener(@NotNull HippyActivityLifecycleListener paramHippyActivityLifecycleListener)
   {
     Intrinsics.checkParameterIsNotNull(paramHippyActivityLifecycleListener, "listener");
     this.mActivityLifecycleListeners.add(paramHippyActivityLifecycleListener);
@@ -31,7 +31,7 @@ public final class HippyActivityLifecycleDispatcher
   {
     Iterator localIterator = this.mActivityLifecycleListeners.iterator();
     while (localIterator.hasNext()) {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)localIterator.next()).onActivityCreated(paramActivity, paramBundle);
+      ((HippyActivityLifecycleListener)localIterator.next()).onActivityCreated(paramActivity, paramBundle);
     }
   }
   
@@ -39,7 +39,7 @@ public final class HippyActivityLifecycleDispatcher
   {
     Iterator localIterator = this.mActivityLifecycleListeners.iterator();
     while (localIterator.hasNext()) {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)localIterator.next()).onActivityDestroyed(paramActivity);
+      ((HippyActivityLifecycleListener)localIterator.next()).onActivityDestroyed(paramActivity);
     }
   }
   
@@ -47,7 +47,7 @@ public final class HippyActivityLifecycleDispatcher
   {
     Iterator localIterator = this.mActivityLifecycleListeners.iterator();
     while (localIterator.hasNext()) {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)localIterator.next()).onActivityPaused(paramActivity);
+      ((HippyActivityLifecycleListener)localIterator.next()).onActivityPaused(paramActivity);
     }
   }
   
@@ -55,7 +55,7 @@ public final class HippyActivityLifecycleDispatcher
   {
     Iterator localIterator = this.mActivityLifecycleListeners.iterator();
     while (localIterator.hasNext()) {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)localIterator.next()).onActivityResult(paramActivity, paramInt1, paramInt2, paramIntent);
+      ((HippyActivityLifecycleListener)localIterator.next()).onActivityResult(paramActivity, paramInt1, paramInt2, paramIntent);
     }
   }
   
@@ -63,7 +63,7 @@ public final class HippyActivityLifecycleDispatcher
   {
     Iterator localIterator = this.mActivityLifecycleListeners.iterator();
     while (localIterator.hasNext()) {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)localIterator.next()).onActivityResumed(paramActivity);
+      ((HippyActivityLifecycleListener)localIterator.next()).onActivityResumed(paramActivity);
     }
   }
   
@@ -71,7 +71,7 @@ public final class HippyActivityLifecycleDispatcher
   {
     Iterator localIterator = this.mActivityLifecycleListeners.iterator();
     while (localIterator.hasNext()) {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)localIterator.next()).onActivitySaveInstanceState(paramActivity, paramBundle);
+      ((HippyActivityLifecycleListener)localIterator.next()).onActivitySaveInstanceState(paramActivity, paramBundle);
     }
   }
   
@@ -79,7 +79,7 @@ public final class HippyActivityLifecycleDispatcher
   {
     Iterator localIterator = this.mActivityLifecycleListeners.iterator();
     while (localIterator.hasNext()) {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)localIterator.next()).onActivityStarted(paramActivity);
+      ((HippyActivityLifecycleListener)localIterator.next()).onActivityStarted(paramActivity);
     }
   }
   
@@ -87,11 +87,11 @@ public final class HippyActivityLifecycleDispatcher
   {
     Iterator localIterator = this.mActivityLifecycleListeners.iterator();
     while (localIterator.hasNext()) {
-      ((BaseHippyFragment.HippyActivityLifecycleListener)localIterator.next()).onActivityStopped(paramActivity);
+      ((HippyActivityLifecycleListener)localIterator.next()).onActivityStopped(paramActivity);
     }
   }
   
-  public final void removeActivityLifecycleListener(@NotNull BaseHippyFragment.HippyActivityLifecycleListener paramHippyActivityLifecycleListener)
+  public final void removeActivityLifecycleListener(@NotNull HippyActivityLifecycleListener paramHippyActivityLifecycleListener)
   {
     Intrinsics.checkParameterIsNotNull(paramHippyActivityLifecycleListener, "listener");
     this.mActivityLifecycleListeners.remove(paramHippyActivityLifecycleListener);
@@ -99,7 +99,7 @@ public final class HippyActivityLifecycleDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.fragment.HippyActivityLifecycleDispatcher
  * JD-Core Version:    0.7.0.1
  */

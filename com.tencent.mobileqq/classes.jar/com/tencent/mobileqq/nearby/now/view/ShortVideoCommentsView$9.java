@@ -10,9 +10,8 @@ import android.widget.EditText;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenter;
+import com.tencent.mobileqq.nearby.now.view.presenter.impl.CommentsPresenter;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ShortVideoCommentsView$9
   implements View.OnClickListener
@@ -21,50 +20,51 @@ class ShortVideoCommentsView$9
   
   public void onClick(View paramView)
   {
-    String str3 = ShortVideoCommentsView.a(this.a).getText().toString();
-    if (str3.equals("")) {
-      this.a.a(this.a.getContext().getResources().getString(2131696359));
-    }
-    for (;;)
+    String str = ShortVideoCommentsView.access$400(this.a).getText().toString();
+    if (str.equals(""))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramView = this.a;
+      paramView.showToast(paramView.getContext().getResources().getString(2131696378));
       return;
-      if (str3.length() > 140)
-      {
-        this.a.a(this.a.getContext().getResources().getString(2131696360));
-      }
-      else
-      {
-        Comments.Comment localComment = new Comments.Comment();
-        localComment.jdField_c_of_type_Long = Long.parseLong(this.a.a.getCurrentAccountUin());
-        localComment.jdField_c_of_type_JavaLangString = "";
-        String str2 = BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + this.a.a.getCurrentAccountUin(), 4).getString("nick", "");
-        String str1 = str2;
-        if (TextUtils.isEmpty(str2)) {
-          str1 = this.a.a.getCurrentNickname();
-        }
-        localComment.jdField_b_of_type_JavaLangString = str1;
-        localComment.jdField_a_of_type_JavaLangString = str3;
-        localComment.jdField_b_of_type_Long = (System.currentTimeMillis() / 1000L);
-        localComment.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfo = ShortVideoCommentsView.a(this.a);
-        if ((ShortVideoCommentsView.a(this.a) != null) && ((ShortVideoCommentsView.a(this.a).jdField_c_of_type_Long > 0L) || (ShortVideoCommentsView.a(this.a).jdField_d_of_type_Long > 0L)))
-        {
-          localComment.jdField_e_of_type_JavaLangString = ShortVideoCommentsView.a(this.a).jdField_c_of_type_JavaLangString;
-          localComment.jdField_d_of_type_JavaLangString = ShortVideoCommentsView.a(this.a).jdField_b_of_type_JavaLangString;
-          localComment.jdField_e_of_type_Long = ShortVideoCommentsView.a(this.a).jdField_c_of_type_Long;
-          localComment.f = ShortVideoCommentsView.a(this.a).jdField_d_of_type_Long;
-          localComment.jdField_c_of_type_Int = ShortVideoCommentsView.a(this.a).jdField_b_of_type_Int;
-        }
-        ShortVideoCommentsView.a(this.a).a(localComment);
-        ShortVideoCommentsView.a(this.a, localComment);
-        ReportController.b(this.a.a, "dc00899", "grp_lbs", "", "new_thing", "clk_reply", 0, 0, "", "", "", "");
-      }
     }
+    if (str.length() > 140)
+    {
+      paramView = this.a;
+      paramView.showToast(paramView.getContext().getResources().getString(2131696379));
+      return;
+    }
+    Comments.Comment localComment = new Comments.Comment();
+    localComment.jdField_c_of_type_Long = Long.parseLong(this.a.app.getCurrentAccountUin());
+    localComment.jdField_c_of_type_JavaLangString = "";
+    paramView = BaseApplicationImpl.getApplication();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("self_info");
+    ((StringBuilder)localObject).append(this.a.app.getCurrentAccountUin());
+    localObject = paramView.getSharedPreferences(((StringBuilder)localObject).toString(), 4).getString("nick", "");
+    paramView = (View)localObject;
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      paramView = this.a.app.getCurrentNickname();
+    }
+    localComment.jdField_b_of_type_JavaLangString = paramView;
+    localComment.jdField_a_of_type_JavaLangString = str;
+    localComment.jdField_b_of_type_Long = (System.currentTimeMillis() / 1000L);
+    localComment.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfo = ShortVideoCommentsView.access$700(this.a);
+    if ((ShortVideoCommentsView.access$800(this.a) != null) && ((ShortVideoCommentsView.access$800(this.a).jdField_c_of_type_Long > 0L) || (ShortVideoCommentsView.access$800(this.a).jdField_d_of_type_Long > 0L)))
+    {
+      localComment.jdField_e_of_type_JavaLangString = ShortVideoCommentsView.access$800(this.a).jdField_c_of_type_JavaLangString;
+      localComment.jdField_d_of_type_JavaLangString = ShortVideoCommentsView.access$800(this.a).jdField_b_of_type_JavaLangString;
+      localComment.jdField_e_of_type_Long = ShortVideoCommentsView.access$800(this.a).jdField_c_of_type_Long;
+      localComment.f = ShortVideoCommentsView.access$800(this.a).jdField_d_of_type_Long;
+      localComment.jdField_c_of_type_Int = ShortVideoCommentsView.access$800(this.a).jdField_b_of_type_Int;
+    }
+    ShortVideoCommentsView.access$900(this.a).a(localComment);
+    ShortVideoCommentsView.access$1000(this.a, localComment);
+    ReportController.b(this.a.app, "dc00899", "grp_lbs", "", "new_thing", "clk_reply", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.9
  * JD-Core Version:    0.7.0.1
  */

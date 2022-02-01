@@ -2,10 +2,10 @@ package com.tencent.mobileqq.activity.richmedia.state;
 
 import android.os.Handler;
 import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.editor.composite.CodecParam;
 import com.tencent.mobileqq.shortvideo.common.TCTimer;
 import com.tencent.mobileqq.shortvideo.common.TCTimer.TCTimerCallback;
 import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
 import com.tencent.mobileqq.shortvideo.mediadevice.Lock;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
@@ -23,34 +23,43 @@ public class RMVideoRecordState
   private void d()
   {
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + Lock.jdField_a_of_type_Boolean);
-    }
-    if (!Lock.jdField_a_of_type_Boolean) {}
-    synchronized (Lock.jdField_a_of_type_JavaLangObject)
+    if (QLog.isColorLevel())
     {
-      Lock.jdField_a_of_type_Boolean = true;
-      Lock.jdField_a_of_type_JavaLangObject.notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + Lock.jdField_a_of_type_Boolean);
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("[@] [startRecordVideo]Lock.CAPTURE_LOCK=");
+      ((StringBuilder)???).append(Lock.jdField_a_of_type_Boolean);
+      QLog.d("RMRecordState", 2, ((StringBuilder)???).toString());
+    }
+    if (!Lock.jdField_a_of_type_Boolean) {
+      synchronized (Lock.jdField_a_of_type_JavaLangObject)
+      {
+        Lock.jdField_a_of_type_Boolean = true;
+        Lock.jdField_a_of_type_JavaLangObject.notifyAll();
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("[@] [startRecordVideo]Lock.CAPTURE_LOCK=");
+          ((StringBuilder)???).append(Lock.jdField_a_of_type_Boolean);
+          QLog.d("RMRecordState", 2, ((StringBuilder)???).toString());
+        }
+        AVCodec.get().startCapture();
+        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.startCapture();
+        if (localRMVideoStateMgr.h()) {
+          localRMVideoStateMgr.f();
+        }
+        if ((localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) && (localRMVideoStateMgr.g())) {
+          localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.h();
+        }
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        return;
       }
-      AVCodec.get().startCapture();
-      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.startCapture();
-      if (localRMVideoStateMgr.b(2)) {
-        localRMVideoStateMgr.f();
-      }
-      if ((localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) && (localRMVideoStateMgr.i())) {
-        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.h();
-      }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
     }
   }
   
   public void a()
   {
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.l();
+    localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.ag_();
     localRMVideoStateMgr.k();
     if (QLog.isColorLevel()) {
       QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]stopWatching");
@@ -65,24 +74,34 @@ public class RMVideoRecordState
   public void a(TCTimer.TCTimerCallback paramTCTimerCallback, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     paramTCTimerCallback = RMVideoStateMgr.a();
-    if (paramTCTimerCallback.jdField_b_of_type_Boolean) {}
-    for (paramTCTimerCallback.jdField_a_of_type_Double = (System.currentTimeMillis() - paramTCTimerCallback.jdField_a_of_type_Long);; paramTCTimerCallback.jdField_a_of_type_Double = paramInt1)
+    if (paramTCTimerCallback.jdField_b_of_type_Boolean) {
+      paramTCTimerCallback.jdField_a_of_type_Double = (System.currentTimeMillis() - paramTCTimerCallback.jdField_a_of_type_Long);
+    } else {
+      paramTCTimerCallback.jdField_a_of_type_Double = paramInt1;
+    }
+    if (!this.jdField_a_of_type_Boolean)
     {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        if ((paramTCTimerCallback.h()) && (!paramTCTimerCallback.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.e) && (!paramTCTimerCallback.h)) {
-          paramTCTimerCallback.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.2(this));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("RMRecordState", 2, "[@] timeExpire: mIsRecordOver=" + this.jdField_a_of_type_Boolean + " mStateMgr.mTotalTime=" + paramTCTimerCallback.jdField_a_of_type_Double);
-        }
-        paramTCTimerCallback.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.a((int)(paramTCTimerCallback.jdField_a_of_type_Double + RecordManager.a().a().a()), this.jdField_a_of_type_Boolean);
-        if (this.jdField_a_of_type_Boolean) {
-          paramTCTimerCallback.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.3(this));
-        }
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if ((paramTCTimerCallback.f()) && (!paramTCTimerCallback.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.e) && (!paramTCTimerCallback.h)) {
+        paramTCTimerCallback.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.2(this));
       }
-      return;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[@] timeExpire: mIsRecordOver=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject).append(" mStateMgr.mTotalTime=");
+        ((StringBuilder)localObject).append(paramTCTimerCallback.jdField_a_of_type_Double);
+        QLog.d("RMRecordState", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = paramTCTimerCallback.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface;
+      double d1 = paramTCTimerCallback.jdField_a_of_type_Double;
+      double d2 = RecordManager.a().a().a();
+      Double.isNaN(d2);
+      ((RMViewSTInterface)localObject).a((int)(d1 + d2), this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Boolean) {
+        paramTCTimerCallback.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.3(this));
+      }
     }
   }
   
@@ -99,38 +118,55 @@ public class RMVideoRecordState
   
   public void c()
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMRecordState", 2, "[@] [stopRecordVideo]Lock.CAPTURE_LOCK = " + Lock.jdField_a_of_type_Boolean);
+    Object localObject = RMVideoStateMgr.a();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[@] [stopRecordVideo]Lock.CAPTURE_LOCK = ");
+      localStringBuilder.append(Lock.jdField_a_of_type_Boolean);
+      QLog.d("RMRecordState", 2, localStringBuilder.toString());
     }
     if (Lock.jdField_a_of_type_Boolean)
     {
       Lock.jdField_a_of_type_Boolean = false;
       long l1 = System.currentTimeMillis();
       this.jdField_a_of_type_Long = (l1 - this.jdField_a_of_type_Long);
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] current=" + l1 + " timestamp=" + this.jdField_a_of_type_Long);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[@] [stopRecordVideo] current=");
+        localStringBuilder.append(l1);
+        localStringBuilder.append(" timestamp=");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        QLog.d("RMRecordState", 2, localStringBuilder.toString());
       }
       if (this.jdField_a_of_type_Boolean) {
-        localRMVideoStateMgr.jdField_a_of_type_Double = CodecParam.RECORD_MAX_TIME;
+        ((RMVideoStateMgr)localObject).jdField_a_of_type_Double = CodecParam.RECORD_MAX_TIME;
       }
-      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.q();
-      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.stopCapture();
-      if (localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
-        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.i();
+      ((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.f();
+      ((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.stopCapture();
+      if (((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
+        ((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.i();
       }
-      if (localRMVideoStateMgr.b(3))
+      if (((RMVideoStateMgr)localObject).h())
       {
-        if (localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioDataCache != null) {
-          localRMVideoStateMgr.jdField_b_of_type_JavaLangString = localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioDataCache.a(localRMVideoStateMgr);
+        if (((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioDataCache != null) {
+          ((RMVideoStateMgr)localObject).jdField_b_of_type_JavaLangString = ((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioDataCache.a((RMVideoStateMgr)localObject);
         }
-        localRMVideoStateMgr.g();
+        ((RMVideoStateMgr)localObject).g();
       }
-      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new RMVideoRecordState.1(this, localRMVideoStateMgr));
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new RMVideoRecordState.1(this, (RMVideoStateMgr)localObject));
       AVCodec.get().stopCapture();
-      long l2 = localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.d();
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] timeLimit=" + l2 + " timestamp=" + this.jdField_a_of_type_Long);
+      long l2 = ((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.a();
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[@] [stopRecordVideo] timeLimit=");
+        localStringBuilder.append(l2);
+        localStringBuilder.append(" timestamp=");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        QLog.d("RMRecordState", 2, localStringBuilder.toString());
       }
       l1 = l2;
       if (l2 == -1L) {
@@ -138,11 +174,15 @@ public class RMVideoRecordState
       }
       if ((l1 < 500L) && (!this.jdField_a_of_type_Boolean))
       {
-        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.g(true);
-        localRMVideoStateMgr.a(true);
+        ((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.a(true);
+        ((RMVideoStateMgr)localObject).a(true);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] stopRecordVideo end Lock.CAPTURE_LOCK = " + Lock.jdField_a_of_type_Boolean);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[@] stopRecordVideo end Lock.CAPTURE_LOCK = ");
+        ((StringBuilder)localObject).append(Lock.jdField_a_of_type_Boolean);
+        QLog.d("RMRecordState", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -154,7 +194,7 @@ public class RMVideoRecordState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState
  * JD-Core Version:    0.7.0.1
  */

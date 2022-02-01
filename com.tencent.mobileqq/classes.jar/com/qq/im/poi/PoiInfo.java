@@ -33,11 +33,16 @@ public class PoiInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", latitude:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", longitude:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", name:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", address").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("id:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", latitude:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", longitude:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", name:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", address");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
     return localStringBuilder.toString();
   }
   

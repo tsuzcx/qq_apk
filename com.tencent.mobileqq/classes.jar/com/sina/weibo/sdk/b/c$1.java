@@ -15,9 +15,7 @@ final class c$1
   public final void handleMessage(Message paramMessage)
   {
     c.a locala = (c.a)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     c.a(locala.Y, locala.Z[0]);

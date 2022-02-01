@@ -2,8 +2,9 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webview.swift.WebViewProvider;
 import java.util.Map;
@@ -12,7 +13,7 @@ public class ChatBackgroundUiPlugin
   extends VasWebviewUiPlugin
 {
   private static final String TAG = "ChatBackgroundUiPlugin";
-  Client.OnRemoteRespObserver mOnRemoteResp = new ChatBackgroundUiPlugin.1(this);
+  OnRemoteRespObserver mOnRemoteResp = new ChatBackgroundUiPlugin.1(this);
   private Bundle mReqBundle;
   private String uin;
   
@@ -25,13 +26,13 @@ public class ChatBackgroundUiPlugin
     if (localWebViewProvider != null) {
       localWebViewProvider.setCurUrl(super.decodeUrl(localWebViewProvider.getCurrentUrl()));
     }
-    WebIPCOperator.a().a(this.mOnRemoteResp);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).registerObserver(this.mOnRemoteResp);
   }
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    WebIPCOperator.a().b(this.mOnRemoteResp);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).unRegisterObserver(this.mOnRemoteResp);
   }
   
   protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
@@ -51,7 +52,7 @@ public class ChatBackgroundUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatBackgroundUiPlugin
  * JD-Core Version:    0.7.0.1
  */

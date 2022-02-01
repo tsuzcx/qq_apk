@@ -36,32 +36,54 @@ public class WXAppExtendObject
   
   public boolean checkArgs()
   {
-    if (((this.extInfo == null) || (this.extInfo.length() == 0)) && ((this.filePath == null) || (this.filePath.length() == 0)) && ((this.fileData == null) || (this.fileData.length == 0)))
+    Object localObject = this.extInfo;
+    if ((localObject == null) || (((String)localObject).length() == 0))
     {
-      Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, all arguments is null");
-      return false;
+      localObject = this.filePath;
+      if ((localObject == null) || (((String)localObject).length() == 0))
+      {
+        localObject = this.fileData;
+        if ((localObject == null) || (localObject.length == 0)) {
+          break label153;
+        }
+      }
     }
-    if ((this.extInfo != null) && (this.extInfo.length() > 2048))
+    localObject = this.extInfo;
+    if ((localObject != null) && (((String)localObject).length() > 2048)) {
+      localObject = "checkArgs fail, extInfo is invalid";
+    }
+    for (;;)
     {
-      Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, extInfo is invalid");
+      Log.e("MicroMsg.SDK.WXAppExtendObject", (String)localObject);
       return false;
+      localObject = this.filePath;
+      if ((localObject != null) && (((String)localObject).length() > 10240))
+      {
+        localObject = "checkArgs fail, filePath is invalid";
+      }
+      else
+      {
+        localObject = this.filePath;
+        if ((localObject != null) && (getFileSize((String)localObject) > 10485760))
+        {
+          localObject = "checkArgs fail, fileSize is too large";
+        }
+        else
+        {
+          localObject = this.fileData;
+          if ((localObject != null) && (localObject.length > 10485760))
+          {
+            localObject = "checkArgs fail, fileData is too large";
+          }
+          else
+          {
+            return true;
+            label153:
+            localObject = "checkArgs fail, all arguments is null";
+          }
+        }
+      }
     }
-    if ((this.filePath != null) && (this.filePath.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, filePath is invalid");
-      return false;
-    }
-    if ((this.filePath != null) && (getFileSize(this.filePath) > 10485760))
-    {
-      Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, fileSize is too large");
-      return false;
-    }
-    if ((this.fileData != null) && (this.fileData.length > 10485760))
-    {
-      Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, fileData is too large");
-      return false;
-    }
-    return true;
   }
   
   public void serialize(Bundle paramBundle)
@@ -85,7 +107,7 @@ public class WXAppExtendObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXAppExtendObject
  * JD-Core Version:    0.7.0.1
  */

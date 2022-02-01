@@ -23,24 +23,34 @@ class UniformDownload$UniDownloadListener$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("UniformDownloadMgr<FileAssistant>", 2, "handleCheck, success: " + paramBoolean + ", canceled: " + UniformDownload.UniDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener));
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleCheck, success: ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", canceled: ");
+      localStringBuilder.append(UniformDownload.UniDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener));
+      QLog.d("UniformDownloadMgr<FileAssistant>", 2, localStringBuilder.toString());
     }
     Activity localActivity = (Activity)UniformDownload.UniDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener).get();
-    if ((UniformDownload.UniDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener)) || (localActivity == null) || (localActivity.isFinishing())) {
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("param_url", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("_filesize", this.jdField_a_of_type_Long);
-    localIntent.putExtra("big_brother_source_key", localActivity.getIntent().getStringExtra("big_brother_source_key"));
+    Intent localIntent;
     DownloadURLCheck.RspDownloadUrlCheckRecmd localRspDownloadUrlCheckRecmd;
-    if (paramBoolean)
+    if ((!UniformDownload.UniDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener)) && (localActivity != null))
     {
-      paramBundle = paramBundle.getByteArray("extra_data");
-      if (paramBundle != null) {
-        localRspDownloadUrlCheckRecmd = new DownloadURLCheck.RspDownloadUrlCheckRecmd();
+      if (localActivity.isFinishing()) {
+        return;
+      }
+      localIntent = new Intent();
+      localIntent.putExtra("param_url", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("_filesize", this.jdField_a_of_type_Long);
+      localIntent.putExtra("big_brother_source_key", localActivity.getIntent().getStringExtra("big_brother_source_key"));
+      if (paramBoolean)
+      {
+        paramBundle = paramBundle.getByteArray("extra_data");
+        if (paramBundle != null) {
+          localRspDownloadUrlCheckRecmd = new DownloadURLCheck.RspDownloadUrlCheckRecmd();
+        }
       }
     }
     for (;;)
@@ -51,11 +61,15 @@ class UniformDownload$UniDownloadListener$1
         if (localRspDownloadUrlCheckRecmd.err_code.has())
         {
           if (localRspDownloadUrlCheckRecmd.err_code.get() != 0) {
-            continue;
+            break label429;
           }
           paramInt = 1;
-          if (QLog.isColorLevel()) {
-            QLog.d("UniformDownloadMgr<FileAssistant>", 2, "handleCheck, code: " + localRspDownloadUrlCheckRecmd.err_code.get());
+          if (QLog.isColorLevel())
+          {
+            paramBundle = new StringBuilder();
+            paramBundle.append("handleCheck, code: ");
+            paramBundle.append(localRspDownloadUrlCheckRecmd.err_code.get());
+            QLog.d("UniformDownloadMgr<FileAssistant>", 2, paramBundle.toString());
           }
           if (paramInt != 0)
           {
@@ -63,16 +77,18 @@ class UniformDownload$UniDownloadListener$1
               QLog.d("UniformDownloadMgr<FileAssistant>", 2, "start download from yyb");
             }
             if ((!localRspDownloadUrlCheckRecmd.is_white_url.has()) || (!localRspDownloadUrlCheckRecmd.is_white_url.get())) {
-              continue;
+              break label434;
             }
             paramBoolean = true;
             localIntent.putExtra("param_in_white_list", paramBoolean);
-            if (!localRspDownloadUrlCheckRecmd.pkg_name.has()) {
-              continue;
+            paramBoolean = localRspDownloadUrlCheckRecmd.pkg_name.has();
+            localStringBuilder = null;
+            if (!paramBoolean) {
+              break label439;
             }
             paramBundle = localRspDownloadUrlCheckRecmd.pkg_name.get();
             localIntent.putExtra("param_pkg_name", paramBundle);
-            paramBundle = localObject;
+            paramBundle = localStringBuilder;
             if (localRspDownloadUrlCheckRecmd.extra_info.has()) {
               paramBundle = localRspDownloadUrlCheckRecmd.extra_info.get();
             }
@@ -83,26 +99,29 @@ class UniformDownload$UniDownloadListener$1
       catch (InvalidProtocolBufferMicroException paramBundle)
       {
         QLog.e("UniformDownloadMgr<FileAssistant>", 1, paramBundle, new Object[0]);
-        continue;
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener.a.sendEmptyMessage(2);
       }
       PublicFragmentActivity.Launcher.a(localActivity, localIntent, PublicFragmentActivity.class, ApkFileDownloadFragment.class);
-      if (!this.jdField_a_of_type_Boolean) {
-        continue;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localActivity.finish();
+        return;
       }
-      localActivity.finish();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener.a.sendEmptyMessage(2);
       return;
+      label429:
       paramInt = 0;
       continue;
+      label434:
       paramBoolean = false;
       continue;
+      label439:
       paramBundle = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.app.UniformDownload.UniDownloadListener.1
  * JD-Core Version:    0.7.0.1
  */

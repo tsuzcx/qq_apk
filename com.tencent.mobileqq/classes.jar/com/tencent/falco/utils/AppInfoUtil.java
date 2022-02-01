@@ -37,8 +37,23 @@ public final class AppInfoUtil
   
   public static String getDeviceId()
   {
-    Object localObject = null;
-    String str2 = "35" + Build.BOARD.length() % 10 + Build.BRAND.length() % 10 + Build.CPU_ABI.length() % 10 + Build.DEVICE.length() % 10 + Build.DISPLAY.length() % 10 + Build.HOST.length() % 10 + Build.ID.length() % 10 + Build.MANUFACTURER.length() % 10 + Build.MODEL.length() % 10 + Build.PRODUCT.length() % 10 + Build.TAGS.length() % 10 + Build.TYPE.length() % 10 + Build.USER.length() % 10;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("35");
+    ((StringBuilder)localObject).append(Build.BOARD.length() % 10);
+    ((StringBuilder)localObject).append(Build.BRAND.length() % 10);
+    ((StringBuilder)localObject).append(Build.CPU_ABI.length() % 10);
+    ((StringBuilder)localObject).append(Build.DEVICE.length() % 10);
+    ((StringBuilder)localObject).append(Build.DISPLAY.length() % 10);
+    ((StringBuilder)localObject).append(Build.HOST.length() % 10);
+    ((StringBuilder)localObject).append(Build.ID.length() % 10);
+    ((StringBuilder)localObject).append(Build.MANUFACTURER.length() % 10);
+    ((StringBuilder)localObject).append(Build.MODEL.length() % 10);
+    ((StringBuilder)localObject).append(Build.PRODUCT.length() % 10);
+    ((StringBuilder)localObject).append(Build.TAGS.length() % 10);
+    ((StringBuilder)localObject).append(Build.TYPE.length() % 10);
+    ((StringBuilder)localObject).append(Build.USER.length() % 10);
+    String str2 = ((StringBuilder)localObject).toString();
+    localObject = null;
     try
     {
       String str1 = Build.class.getField("SERIAL").get(null).toString();
@@ -46,8 +61,12 @@ public final class AppInfoUtil
       str1 = new UUID(str2.hashCode(), str1.hashCode()).toString();
       return str1;
     }
-    catch (Exception localException) {}
-    return new UUID(str2.hashCode(), localObject.hashCode()).toString();
+    catch (Exception localException)
+    {
+      label244:
+      break label244;
+    }
+    return new UUID(str2.hashCode(), ((String)localObject).hashCode()).toString();
   }
   
   public static PackageInfo getPackageInfo(Context paramContext)
@@ -158,29 +177,34 @@ public final class AppInfoUtil
   {
     try
     {
-      Intent localIntent1 = new Intent("miui.intent.action.APP_PERM_EDITOR");
-      localIntent1.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.PermissionsEditorActivity");
-      localIntent1.putExtra("extra_pkgname", paramContext.getPackageName());
-      localIntent1.addFlags(268435456);
-      paramContext.startActivity(localIntent1);
+      localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+      localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.PermissionsEditorActivity");
+      localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
+      localIntent.addFlags(268435456);
+      paramContext.startActivity(localIntent);
       return;
     }
     catch (Throwable localThrowable1)
     {
-      try
-      {
-        Intent localIntent2 = new Intent("miui.intent.action.APP_PERM_EDITOR");
-        localIntent2.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
-        localIntent2.putExtra("extra_pkgname", paramContext.getPackageName());
-        localIntent2.addFlags(268435456);
-        paramContext.startActivity(localIntent2);
-        return;
-      }
-      catch (Throwable localThrowable2)
-      {
-        gotoNormalPermission(paramContext);
-      }
+      Intent localIntent;
+      label43:
+      label86:
+      break label43;
     }
+    try
+    {
+      localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+      localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+      localIntent.putExtra("extra_pkgname", paramContext.getPackageName());
+      localIntent.addFlags(268435456);
+      paramContext.startActivity(localIntent);
+      return;
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label86;
+    }
+    gotoNormalPermission(paramContext);
   }
   
   private static void gotoNormalPermission(Context paramContext)
@@ -202,17 +226,17 @@ public final class AppInfoUtil
   public static void jumpAppSettings(Context paramContext)
   {
     String str = Build.BRAND;
-    if ((TextUtils.equals(str.toLowerCase(), "redmi")) || (TextUtils.equals(str.toLowerCase(), "xiaomi")))
+    if ((!TextUtils.equals(str.toLowerCase(), "redmi")) && (!TextUtils.equals(str.toLowerCase(), "xiaomi")))
     {
-      gotoMiuiPermission(paramContext);
+      gotoNormalPermission(paramContext);
       return;
     }
-    gotoNormalPermission(paramContext);
+    gotoMiuiPermission(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.AppInfoUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -21,28 +21,27 @@ class DetailLikeListLoader$2
     paramGetLikeListRequest.jdField_b_of_type_Boolean = false;
     paramGetLikeListRequest.jdField_a_of_type_Boolean = DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader);
     paramGetLikeListRequest.jdField_a_of_type_Int = DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader);
-    if ((??? == null) || (paramErrorMessage.isFail()))
+    if ((??? != null) && (!paramErrorMessage.isFail()))
     {
-      StoryDispatcher.a().dispatch(paramGetLikeListRequest);
-      return;
+      paramGetLikeListRequest.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
+      paramGetLikeListRequest.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
+      paramGetLikeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
+      paramGetLikeListRequest.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      ((LikeManager)SuperManager.a(15)).a(paramGetLikeListRequest.jdField_a_of_type_JavaUtilList, DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader), DetailLikeListLoader.c(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader), true);
+      synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader)
+      {
+        DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader, true);
+        StoryDispatcher.a().dispatch(paramGetLikeListRequest);
+        SLog.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramGetLikeListRequest);
+        return;
+      }
     }
-    paramGetLikeListRequest.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
-    paramGetLikeListRequest.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
-    paramGetLikeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    paramGetLikeListRequest.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    ((LikeManager)SuperManager.a(15)).a(paramGetLikeListRequest.jdField_a_of_type_JavaUtilList, DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader), DetailLikeListLoader.c(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader), true);
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader)
-    {
-      DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader, true);
-      StoryDispatcher.a().dispatch(paramGetLikeListRequest);
-      SLog.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramGetLikeListRequest);
-      return;
-    }
+    StoryDispatcher.a().dispatch(paramGetLikeListRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.2
  * JD-Core Version:    0.7.0.1
  */

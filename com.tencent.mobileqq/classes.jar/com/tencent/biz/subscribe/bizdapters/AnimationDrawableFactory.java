@@ -16,35 +16,34 @@ public class AnimationDrawableFactory
   
   private Bitmap a(File paramFile)
   {
-    QLog.i("AnimationDrawableFactory", 2, "getBitMapFromFile fileName:" + paramFile.getName());
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramFile.exists())
-    {
-      localObject1 = localObject2;
-      if (paramFile.isFile()) {
-        localObject1 = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getBitMapFromFile fileName:");
+    localStringBuilder.append(paramFile.getName());
+    QLog.i("AnimationDrawableFactory", 2, localStringBuilder.toString());
+    if ((paramFile.exists()) && (paramFile.isFile())) {
+      return BitmapFactory.decodeFile(paramFile.getAbsolutePath());
     }
-    return localObject1;
+    return null;
   }
   
   public static AnimationDrawableFactory a()
   {
-    if (jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory == null) {
-        jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory = new AnimationDrawableFactory();
+    if (jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory == null) {
+          jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory = new AnimationDrawableFactory();
+        }
       }
-      return jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizSubscribeBizdaptersAnimationDrawableFactory;
   }
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) && (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString) != null)) {
+    MQLruCache localMQLruCache = this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
+    if ((localMQLruCache != null) && (localMQLruCache.get(paramString) != null)) {
       this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.remove(paramString);
     }
   }
@@ -52,7 +51,14 @@ public class AnimationDrawableFactory
   @Deprecated
   public void a(String paramString, int paramInt, AnimationDrawableFactory.CreateDrawableResultListener paramCreateDrawableResultListener, boolean paramBoolean)
   {
-    QLog.i("AnimationDrawableFactory", 2, "createFromDirectory dirPath=" + paramString + " allDuration=" + paramInt + " useCache=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("createFromDirectory dirPath=");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" allDuration=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" useCache=");
+    localStringBuilder.append(paramBoolean);
+    QLog.i("AnimationDrawableFactory", 2, localStringBuilder.toString());
     if (TextUtils.isEmpty(paramString))
     {
       QLog.e("AnimationDrawableFactory", 2, "createFromDirectory error dirPath is invalid");
@@ -65,7 +71,7 @@ public class AnimationDrawableFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.AnimationDrawableFactory
  * JD-Core Version:    0.7.0.1
  */

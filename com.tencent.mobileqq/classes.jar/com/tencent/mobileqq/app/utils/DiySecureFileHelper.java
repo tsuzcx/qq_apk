@@ -17,75 +17,99 @@ public class DiySecureFileHelper
   
   public static int a(String arg0, String paramString2)
   {
-    paramString2 = ??? + "_" + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(???);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    paramString2 = localStringBuilder.toString();
     synchronized (a)
     {
+      int i;
       if (a.containsKey(paramString2))
       {
         i = ((Integer)a.get(paramString2)).intValue();
-        return i;
       }
-      int i = BaseApplication.getContext().getSharedPreferences("StepUpdate", 4).getInt(paramString2, 0);
-      a.put(paramString2, Integer.valueOf(i));
+      else
+      {
+        i = BaseApplication.getContext().getSharedPreferences("StepUpdate", 4).getInt(paramString2, 0);
+        a.put(paramString2, Integer.valueOf(i));
+      }
+      return i;
     }
   }
   
   public static String a()
   {
-    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "custom_background/");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("custom_background/");
+    return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   public static String a(String paramString)
   {
-    String str = paramString;
     if (paramString.length() > 4)
     {
-      str = paramString.substring(4);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("DiySecureFileHelper", 4, paramString + " -> " + str);
+      String str = paramString.substring(4);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" -> ");
+        localStringBuilder.append(str);
+        QLog.d("DiySecureFileHelper", 4, localStringBuilder.toString());
       }
+      return str;
     }
-    return str;
+    return paramString;
   }
   
   public static void a(String arg0, String paramString2, int paramInt)
   {
-    int i = -1;
-    paramString2 = ??? + "_" + paramString2;
-    synchronized (a)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(???);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    paramString2 = localStringBuilder.toString();
+    for (;;)
     {
-      if (a.containsKey(paramString2)) {
-        i = ((Integer)a.get(paramString2)).intValue();
-      }
-      if (i != paramInt)
+      synchronized (a)
       {
-        BaseApplication.getContext().getSharedPreferences("StepUpdate", 4).edit().putInt(paramString2, paramInt).commit();
-        a.put(paramString2, Integer.valueOf(paramInt));
+        if (a.containsKey(paramString2))
+        {
+          i = ((Integer)a.get(paramString2)).intValue();
+          if (i != paramInt)
+          {
+            BaseApplication.getContext().getSharedPreferences("StepUpdate", 4).edit().putInt(paramString2, paramInt).commit();
+            a.put(paramString2, Integer.valueOf(paramInt));
+          }
+          return;
+        }
       }
-      return;
+      int i = -1;
     }
   }
   
   private static void b(String paramString1, String paramString2)
   {
     Object localObject1 = new File(paramString1);
-    int i;
     if (((File)localObject1).exists())
     {
-      if (!((File)localObject1).isFile()) {
-        break label75;
+      int i;
+      if (((File)localObject1).isFile())
+      {
+        i = FileUtils.quickMove(paramString1, paramString2);
+        if (i != 0)
+        {
+          paramString2 = new StringBuilder();
+          paramString2.append("Move [");
+          paramString2.append(paramString1);
+          paramString2.append("] errorcode = ");
+          paramString2.append(i);
+          QLog.d("DiySecureFileHelper", 1, paramString2.toString());
+        }
       }
-      i = FileUtils.a(paramString1, paramString2);
-      if (i != 0) {
-        QLog.d("DiySecureFileHelper", 1, "Move [" + paramString1 + "] errorcode = " + i);
-      }
-    }
-    for (;;)
-    {
-      FileUtils.a(paramString1);
-      return;
-      label75:
-      if (((File)localObject1).isDirectory())
+      else if (((File)localObject1).isDirectory())
       {
         localObject1 = b((File)localObject1);
         int j = localObject1.length;
@@ -97,6 +121,7 @@ public class DiySecureFileHelper
           i += 1;
         }
       }
+      FileUtils.deleteDirectory(paramString1);
     }
   }
   
@@ -114,7 +139,7 @@ public class DiySecureFileHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.DiySecureFileHelper
  * JD-Core Version:    0.7.0.1
  */

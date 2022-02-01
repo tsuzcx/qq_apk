@@ -2,9 +2,10 @@ package com.tencent.mobileqq.peak.api.impl;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PeakService;
+import com.tencent.aelight.camera.api.IAEClassManager;
+import com.tencent.aelight.camera.util.api.IQIMShortVideoUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMShortVideoUtils;
 
 class PeakHelperApiImpl$1
   implements Runnable
@@ -13,26 +14,28 @@ class PeakHelperApiImpl$1
   
   public void run()
   {
-    if (QIMShortVideoUtils.a(this.a)) {}
-    do
-    {
+    if (((IQIMShortVideoUtil)QRoute.api(IQIMShortVideoUtil.class)).isPeakAlive(this.a)) {
       return;
-      Intent localIntent = new Intent(this.a, PeakService.class);
-      localIntent.putExtra("ServiceAction", 2);
-      localIntent.putExtra("key_alive", true);
-      try
-      {
-        this.a.startService(localIntent);
-        return;
+    }
+    Intent localIntent = new Intent(this.a, ((IAEClassManager)QRoute.api(IAEClassManager.class)).getPeakServiceClass());
+    localIntent.putExtra("ServiceAction", 2);
+    localIntent.putExtra("key_alive", true);
+    try
+    {
+      this.a.startService(localIntent);
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QCirclePluginInitHelper", 2, "preload peak fail ", localException);
       }
-      catch (Exception localException) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("QCirclePluginInitHelper", 2, "preload peak fail ", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.peak.api.impl.PeakHelperApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

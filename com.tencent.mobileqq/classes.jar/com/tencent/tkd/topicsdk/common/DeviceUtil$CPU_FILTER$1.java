@@ -16,26 +16,26 @@ public final class DeviceUtil$CPU_FILTER$1
     Intrinsics.checkParameterIsNotNull(paramFile, "pathname");
     paramFile = paramFile.getName();
     Intrinsics.checkExpressionValueIsNotNull(paramFile, "path");
-    int i;
-    int j;
+    boolean bool = false;
     if (StringsKt.startsWith$default(paramFile, "cpu", false, 2, null))
     {
-      i = 3;
-      j = paramFile.length();
-    }
-    while (i < j)
-    {
-      if (!Character.isDigit(paramFile.charAt(i))) {
-        return false;
+      int i = 3;
+      int j = paramFile.length();
+      while (i < j)
+      {
+        if (!Character.isDigit(paramFile.charAt(i))) {
+          return false;
+        }
+        i += 1;
       }
-      i += 1;
+      bool = true;
     }
-    return true;
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.DeviceUtil.CPU_FILTER.1
  * JD-Core Version:    0.7.0.1
  */

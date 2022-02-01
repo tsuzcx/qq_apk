@@ -81,15 +81,12 @@ public class CardOCRInfo
       localJSONArray.put(1, paramCardOCRInfo.jdField_b_of_type_JavaLangString);
       localJSONArray.put(2, BusinessCard.pack(paramCardOCRInfo.jdField_a_of_type_JavaUtilList));
       localJSONArray.put(3, BusinessCard.pack(paramCardOCRInfo.jdField_b_of_type_JavaUtilList));
-      return localJSONArray.toString();
     }
     catch (JSONException paramCardOCRInfo)
     {
-      for (;;)
-      {
-        paramCardOCRInfo.printStackTrace();
-      }
+      paramCardOCRInfo.printStackTrace();
     }
+    return localJSONArray.toString();
   }
   
   public int describeContents()
@@ -99,7 +96,26 @@ public class CardOCRInfo
   
   public String toString()
   {
-    return "erroCode: " + this.jdField_a_of_type_Int + " errMsg: " + this.jdField_c_of_type_JavaLangString + " uin:" + this.jdField_a_of_type_JavaUtilList + " uincon:" + this.jdField_b_of_type_Float + " phone: " + this.jdField_b_of_type_JavaUtilList + " phoneConfidence: " + this.jdField_c_of_type_Float + " name:" + this.jdField_a_of_type_JavaLangString + " nameConfidence:" + this.jdField_a_of_type_Float + " imgUrl:" + this.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("erroCode: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" errMsg: ");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" uin:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(" uincon:");
+    localStringBuilder.append(this.jdField_b_of_type_Float);
+    localStringBuilder.append(" phone: ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaUtilList);
+    localStringBuilder.append(" phoneConfidence: ");
+    localStringBuilder.append(this.jdField_c_of_type_Float);
+    localStringBuilder.append(" name:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" nameConfidence:");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(" imgUrl:");
+    localStringBuilder.append(this.d);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -115,7 +131,7 @@ public class CardOCRInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.data.CardOCRInfo
  * JD-Core Version:    0.7.0.1
  */

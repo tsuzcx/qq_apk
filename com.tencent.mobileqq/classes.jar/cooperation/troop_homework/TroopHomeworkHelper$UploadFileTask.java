@@ -2,16 +2,15 @@ package cooperation.troop_homework;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.discoperation.FileHttpUtils;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.security.InvalidParameterException;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import okhttp3.OkHttpClient;
 import org.json.JSONArray;
@@ -51,1236 +50,1822 @@ public class TroopHomeworkHelper$UploadFileTask
       }
       i += 1;
     }
-    throw new InvalidParameterException("not found auth data");
+    paramJSONArray = new InvalidParameterException("not found auth data");
+    for (;;)
+    {
+      throw paramJSONArray;
+    }
   }
   
   private void d()
   {
-    String str1 = FileHttpUtils.a(FileManagerUtil.a(new String(this.c))).toLowerCase();
-    int i = NetworkUtil.b(BaseApplicationImpl.getContext());
-    File localFile = new File(this.c);
-    JSONObject localJSONObject = TroopHomeworkHelper.a(this.jdField_a_of_type_MqqAppAppRuntime, localFile.getName(), this.d, str1);
-    Object localObject;
-    if ((localJSONObject != null) && (localJSONObject.optInt("retcode") == 0))
+    String str = QQFileManagerUtil.a(QQFileManagerUtil.d(new String(this.c))).toLowerCase();
+    int i = NetworkUtil.getNetworkType(MobileQQ.getContext());
+    Object localObject3 = new File(this.c);
+    Object localObject1 = TroopHomeworkHelper.a(this.jdField_a_of_type_MqqAppAppRuntime, ((File)localObject3).getName(), this.d, str);
+    Object localObject2;
+    if ((localObject1 != null) && (((JSONObject)localObject1).optInt("retcode") == 0))
     {
-      localObject = localJSONObject.optJSONObject("data");
-      if (localObject == null)
+      Object localObject4 = ((JSONObject)localObject1).optJSONObject("data");
+      if (localObject4 == null)
       {
         if (QLog.isColorLevel()) {
           QLog.w("TroopHomeworkHelper", 2, "getCosUploadAuthSync failed, dataObject == null");
         }
-        TroopTechReportUtils.a("grp_hw", "upload_video", "-1", "", i + "", "");
-        if (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback != null) {
-          this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(2);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-1", "", ((StringBuilder)localObject1).toString(), "");
+        localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+        if (localObject1 != null) {
+          ((TroopHomeworkHelper.UploadCallback)localObject1).b(2);
+        }
+        return;
+      }
+      localObject2 = ((JSONObject)localObject4).optString("file_url");
+      if (TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("TroopHomeworkHelper", 2, "getCosUploadAuthSync failed, TextUtils.isEmpty(putUrl)");
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-2", "", ((StringBuilder)localObject1).toString(), "");
+        localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+        if (localObject1 != null) {
+          ((TroopHomeworkHelper.UploadCallback)localObject1).b(2);
+        }
+        return;
+      }
+      localObject4 = ((JSONObject)localObject4).optString("max_size", "0");
+      if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+        try
+        {
+          long l = Long.parseLong((String)localObject4);
+          if ((l != 0L) && (((File)localObject3).length() > l))
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append("getCosUploadAuthSync failed, maxSize != 0 && file.length() > maxSize, maxSize:");
+              ((StringBuilder)localObject4).append(l);
+              ((StringBuilder)localObject4).append(", filesize:");
+              ((StringBuilder)localObject4).append(((File)localObject3).length());
+              QLog.w("TroopHomeworkHelper", 2, ((StringBuilder)localObject4).toString());
+            }
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append(i);
+            ((StringBuilder)localObject3).append("");
+            TroopReportor.a("grp_hw", "upload_video", "-3", "", ((StringBuilder)localObject3).toString(), "");
+            if (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback != null) {
+              this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(3);
+            }
+            return;
+          }
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("UploadVideoJob, get MaxSize exception:");
+            ((StringBuilder)localObject4).append(localNumberFormatException.getMessage());
+            QLog.w("TroopHomeworkHelper", 2, ((StringBuilder)localObject4).toString());
+          }
+        }
+      }
+      int j = TroopHomeworkHelper.a((JSONObject)localObject1, this.c, str);
+      if (j == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopHomeworkHelper", 2, "doPutCOSData success");
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        TroopReportor.a("grp_hw", "upload_video", "0", "1", ((StringBuilder)localObject1).toString(), "");
+        localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+        if (localObject1 != null) {
+          ((TroopHomeworkHelper.UploadCallback)localObject1).a((String)localObject2);
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("doPutCOSData failed, putResult =");
+          ((StringBuilder)localObject1).append(j);
+          QLog.w("TroopHomeworkHelper", 2, ((StringBuilder)localObject1).toString());
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-4", "", ((StringBuilder)localObject1).toString(), "");
+        localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+        if (localObject1 != null) {
+          ((TroopHomeworkHelper.UploadCallback)localObject1).b(5);
         }
       }
     }
-    do
+    else if (localObject1 != null)
     {
-      do
+      if (((JSONObject)localObject1).optInt("retcode") != 1006)
       {
-        do
+        if (QLog.isColorLevel())
         {
-          do
-          {
-            String str2;
-            int j;
-            do
-            {
-              for (;;)
-              {
-                return;
-                str2 = ((JSONObject)localObject).optString("file_url");
-                if (TextUtils.isEmpty(str2))
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.w("TroopHomeworkHelper", 2, "getCosUploadAuthSync failed, TextUtils.isEmpty(putUrl)");
-                  }
-                  TroopTechReportUtils.a("grp_hw", "upload_video", "-2", "", i + "", "");
-                  if (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback != null) {
-                    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(2);
-                  }
-                }
-                else
-                {
-                  localObject = ((JSONObject)localObject).optString("max_size", "0");
-                  if (!TextUtils.isEmpty((CharSequence)localObject)) {
-                    try
-                    {
-                      long l = Long.parseLong((String)localObject);
-                      if ((l != 0L) && (localFile.length() > l))
-                      {
-                        if (QLog.isColorLevel()) {
-                          QLog.w("TroopHomeworkHelper", 2, "getCosUploadAuthSync failed, maxSize != 0 && file.length() > maxSize, maxSize:" + l + ", filesize:" + localFile.length());
-                        }
-                        TroopTechReportUtils.a("grp_hw", "upload_video", "-3", "", i + "", "");
-                        if (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null) {
-                          continue;
-                        }
-                        this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(3);
-                      }
-                    }
-                    catch (NumberFormatException localNumberFormatException)
-                    {
-                      if (QLog.isColorLevel()) {
-                        QLog.w("TroopHomeworkHelper", 2, "UploadVideoJob, get MaxSize exception:" + localNumberFormatException.getMessage());
-                      }
-                    }
-                  }
-                }
-              }
-              j = TroopHomeworkHelper.a(localJSONObject, this.c, str1);
-              if (j != 0) {
-                break;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i("TroopHomeworkHelper", 2, "doPutCOSData success");
-              }
-              TroopTechReportUtils.a("grp_hw", "upload_video", "0", "1", i + "", "");
-            } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
-            this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.a(str2);
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.w("TroopHomeworkHelper", 2, "doPutCOSData failed, putResult =" + j);
-            }
-            TroopTechReportUtils.a("grp_hw", "upload_video", "-4", "", i + "", "");
-          } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
-          this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(5);
-          return;
-          if (localJSONObject == null) {
-            break;
-          }
-          switch (localJSONObject.optInt("retcode"))
-          {
-          default: 
-            if (QLog.isColorLevel()) {
-              QLog.w("TroopHomeworkHelper", 2, "getCosUploadAuthSync failed, ret:" + localJSONObject.toString());
-            }
-            TroopTechReportUtils.a("grp_hw", "upload_video", "-6", "", i + "", "");
-          }
-        } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
-        this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(2);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.w("TroopHomeworkHelper", 2, "getCosUploadAuthSync failed, 达到当日上传次数限制, ret:" + localJSONObject.toString());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getCosUploadAuthSync failed, ret:");
+          ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+          QLog.w("TroopHomeworkHelper", 2, ((StringBuilder)localObject2).toString());
         }
-        TroopTechReportUtils.a("grp_hw", "upload_video", "-5", "", i + "", "");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-6", "", ((StringBuilder)localObject1).toString(), "");
+        localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+        if (localObject1 != null) {
+          ((TroopHomeworkHelper.UploadCallback)localObject1).b(2);
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getCosUploadAuthSync failed, 达到当日上传次数限制, ret:");
+          ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+          QLog.w("TroopHomeworkHelper", 2, ((StringBuilder)localObject2).toString());
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-5", "", ((StringBuilder)localObject1).toString(), "");
         if (this.jdField_b_of_type_Boolean) {
           ThreadManager.getUIHandler().post(new TroopHomeworkHelper.UploadFileTask.2(this));
         }
-      } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
-      this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(4);
-      return;
+        localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+        if (localObject1 != null) {
+          ((TroopHomeworkHelper.UploadCallback)localObject1).b(4);
+        }
+      }
+    }
+    else
+    {
       if (QLog.isColorLevel()) {
         QLog.w("TroopHomeworkHelper", 2, "getCosUploadAuthSync failed, result == null");
       }
-      TroopTechReportUtils.a("grp_hw", "upload_video", "-7", "", i + "", "");
-    } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
-    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(2);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append("");
+      TroopReportor.a("grp_hw", "upload_video", "-7", "", ((StringBuilder)localObject1).toString(), "");
+      localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+      if (localObject1 != null) {
+        ((TroopHomeworkHelper.UploadCallback)localObject1).b(2);
+      }
+    }
   }
   
   private void e()
   {
     this.jdField_a_of_type_Boolean = false;
-    int i = NetworkUtil.b(BaseApplicationImpl.getContext());
-    File localFile = new File(this.c);
-    Object localObject = TroopHomeworkHelper.c(this.c);
-    localObject = TroopHomeworkHelper.b(this.jdField_a_of_type_MqqAppAppRuntime, localFile.getName(), this.d, (String)localObject);
-    if ((localObject != null) && (((JSONObject)localObject).optInt("retcode") == 0))
+    int i = NetworkUtil.getNetworkType(MobileQQ.getContext());
+    Object localObject2 = new File(this.c);
+    Object localObject1 = TroopHomeworkHelper.c(this.c);
+    localObject1 = TroopHomeworkHelper.b(this.jdField_a_of_type_MqqAppAppRuntime, ((File)localObject2).getName(), this.d, (String)localObject1);
+    if ((localObject1 != null) && (((JSONObject)localObject1).optInt("retcode") == 0))
     {
-      localObject = ((JSONObject)localObject).optJSONObject("data");
-      if (localObject == null)
+      localObject1 = ((JSONObject)localObject1).optJSONObject("data");
+      if (localObject1 == null)
       {
         if (QLog.isColorLevel()) {
           QLog.w("TroopHomeworkHelper", 2, "getAppendUploadAuthSync failed, dataObject == null");
         }
-        TroopTechReportUtils.a("grp_hw", "upload_video", "-1", "", i + "", "");
-        if (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback != null) {
-          this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(2);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-1", "", ((StringBuilder)localObject1).toString(), "");
+        localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+        if (localObject1 != null) {
+          ((TroopHomeworkHelper.UploadCallback)localObject1).b(2);
+        }
+        return;
+      }
+      this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("file_url");
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("TroopHomeworkHelper", 2, "getAppendUploadAuthSync failed, TextUtils.isEmpty(appendUrl)");
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-2", "", ((StringBuilder)localObject1).toString(), "");
+        localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+        if (localObject1 != null) {
+          ((TroopHomeworkHelper.UploadCallback)localObject1).b(2);
+        }
+        return;
+      }
+      Object localObject3 = ((JSONObject)localObject1).optString("max_size", "0");
+      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+        try
+        {
+          long l = Long.parseLong((String)localObject3);
+          if ((l != 0L) && (((File)localObject2).length() > l))
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("getAppendUploadAuthSync failed, maxSize != 0 && file.length() > maxSize, maxSize:");
+              ((StringBuilder)localObject3).append(l);
+              ((StringBuilder)localObject3).append(", filesize:");
+              ((StringBuilder)localObject3).append(((File)localObject2).length());
+              QLog.w("TroopHomeworkHelper", 2, ((StringBuilder)localObject3).toString());
+            }
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(i);
+            ((StringBuilder)localObject2).append("");
+            TroopReportor.a("grp_hw", "upload_video", "-3", "", ((StringBuilder)localObject2).toString(), "");
+            if (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback != null) {
+              this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(3);
+            }
+            return;
+          }
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("UploadVideoJob, get MaxSize exception:");
+            ((StringBuilder)localObject3).append(localNumberFormatException.getMessage());
+            QLog.w("TroopHomeworkHelper", 2, ((StringBuilder)localObject3).toString());
+          }
         }
       }
+      this.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject1);
+      f();
+      return;
     }
-    do
+    if (localObject1 != null)
     {
-      do
+      StringBuilder localStringBuilder;
+      if (((JSONObject)localObject1).optInt("retcode") != 1006)
       {
-        do
+        if (QLog.isColorLevel())
         {
-          for (;;)
-          {
-            return;
-            this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("file_url");
-            if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.w("TroopHomeworkHelper", 2, "getAppendUploadAuthSync failed, TextUtils.isEmpty(appendUrl)");
-              }
-              TroopTechReportUtils.a("grp_hw", "upload_video", "-2", "", i + "", "");
-              if (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback != null) {
-                this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(2);
-              }
-            }
-            else
-            {
-              String str = ((JSONObject)localObject).optString("max_size", "0");
-              if (!TextUtils.isEmpty(str)) {
-                try
-                {
-                  long l = Long.parseLong(str);
-                  if ((l != 0L) && (localFile.length() > l))
-                  {
-                    if (QLog.isColorLevel()) {
-                      QLog.w("TroopHomeworkHelper", 2, "getAppendUploadAuthSync failed, maxSize != 0 && file.length() > maxSize, maxSize:" + l + ", filesize:" + localFile.length());
-                    }
-                    TroopTechReportUtils.a("grp_hw", "upload_video", "-3", "", i + "", "");
-                    if (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null) {
-                      continue;
-                    }
-                    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(3);
-                  }
-                }
-                catch (NumberFormatException localNumberFormatException)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.w("TroopHomeworkHelper", 2, "UploadVideoJob, get MaxSize exception:" + localNumberFormatException.getMessage());
-                  }
-                }
-              }
-            }
-          }
-          this.jdField_a_of_type_OrgJsonJSONObject = ((JSONObject)localObject);
-          f();
-          return;
-          if (localObject == null) {
-            break;
-          }
-          switch (((JSONObject)localObject).optInt("retcode"))
-          {
-          default: 
-            if (QLog.isColorLevel()) {
-              QLog.w("TroopHomeworkHelper", 2, "getCosUploadAuthSync failed, ret:" + ((JSONObject)localObject).toString());
-            }
-            TroopTechReportUtils.a("grp_hw", "upload_video", "-6", "", i + "", "");
-          }
-        } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
-        this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(2);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.w("TroopHomeworkHelper", 2, "getCosUploadAuthSync failed, 达到当日上传次数限制, ret:" + ((JSONObject)localObject).toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getCosUploadAuthSync failed, ret:");
+          localStringBuilder.append(((JSONObject)localObject1).toString());
+          QLog.w("TroopHomeworkHelper", 2, localStringBuilder.toString());
         }
-        TroopTechReportUtils.a("grp_hw", "upload_video", "-5", "", i + "", "");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-6", "", ((StringBuilder)localObject1).toString(), "");
+        localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+        if (localObject1 != null) {
+          ((TroopHomeworkHelper.UploadCallback)localObject1).b(2);
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getCosUploadAuthSync failed, 达到当日上传次数限制, ret:");
+          localStringBuilder.append(((JSONObject)localObject1).toString());
+          QLog.w("TroopHomeworkHelper", 2, localStringBuilder.toString());
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-5", "", ((StringBuilder)localObject1).toString(), "");
         if (this.jdField_b_of_type_Boolean) {
           ThreadManager.getUIHandler().post(new TroopHomeworkHelper.UploadFileTask.3(this));
         }
-      } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
-      this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(4);
-      return;
+        localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+        if (localObject1 != null) {
+          ((TroopHomeworkHelper.UploadCallback)localObject1).b(4);
+        }
+      }
+    }
+    else
+    {
       if (QLog.isColorLevel()) {
         QLog.w("TroopHomeworkHelper", 2, "getCosUploadAuthSync failed, result == null");
       }
-      TroopTechReportUtils.a("grp_hw", "upload_video", "-7", "", i + "", "");
-    } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
-    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(2);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append("");
+      TroopReportor.a("grp_hw", "upload_video", "-7", "", ((StringBuilder)localObject1).toString(), "");
+      localObject1 = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+      if (localObject1 != null) {
+        ((TroopHomeworkHelper.UploadCallback)localObject1).b(2);
+      }
+    }
   }
   
   /* Error */
   private void f()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 278	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Okhttp3OkHttpClient	Lokhttp3/OkHttpClient;
-    //   4: ifnonnull +47 -> 51
-    //   7: aload_0
-    //   8: new 280	okhttp3/OkHttpClient
-    //   11: dup
-    //   12: invokespecial 281	okhttp3/OkHttpClient:<init>	()V
-    //   15: invokevirtual 285	okhttp3/OkHttpClient:newBuilder	()Lokhttp3/OkHttpClient$Builder;
-    //   18: ldc2_w 286
-    //   21: getstatic 293	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   24: invokevirtual 299	okhttp3/OkHttpClient$Builder:connectTimeout	(JLjava/util/concurrent/TimeUnit;)Lokhttp3/OkHttpClient$Builder;
-    //   27: ldc2_w 286
-    //   30: getstatic 293	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   33: invokevirtual 302	okhttp3/OkHttpClient$Builder:writeTimeout	(JLjava/util/concurrent/TimeUnit;)Lokhttp3/OkHttpClient$Builder;
-    //   36: ldc2_w 286
-    //   39: getstatic 293	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   42: invokevirtual 305	okhttp3/OkHttpClient$Builder:readTimeout	(JLjava/util/concurrent/TimeUnit;)Lokhttp3/OkHttpClient$Builder;
-    //   45: invokevirtual 309	okhttp3/OkHttpClient$Builder:build	()Lokhttp3/OkHttpClient;
-    //   48: putfield 278	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Okhttp3OkHttpClient	Lokhttp3/OkHttpClient;
-    //   51: invokestatic 91	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   54: invokestatic 96	com/tencent/mobileqq/utils/NetworkUtil:b	(Landroid/content/Context;)I
-    //   57: istore_3
-    //   58: aload_0
-    //   59: aload_0
-    //   60: getfield 264	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   63: ldc_w 311
-    //   66: invokevirtual 59	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   69: putfield 313	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   72: aload_0
+    //   0: ldc_w 277
+    //   3: astore 16
+    //   5: ldc_w 279
+    //   8: astore 21
+    //   10: ldc 121
+    //   12: astore 15
+    //   14: aload_0
+    //   15: getfield 281	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Okhttp3OkHttpClient	Lokhttp3/OkHttpClient;
+    //   18: ifnonnull +47 -> 65
+    //   21: aload_0
+    //   22: new 283	okhttp3/OkHttpClient
+    //   25: dup
+    //   26: invokespecial 284	okhttp3/OkHttpClient:<init>	()V
+    //   29: invokevirtual 288	okhttp3/OkHttpClient:newBuilder	()Lokhttp3/OkHttpClient$Builder;
+    //   32: ldc2_w 289
+    //   35: getstatic 296	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   38: invokevirtual 302	okhttp3/OkHttpClient$Builder:connectTimeout	(JLjava/util/concurrent/TimeUnit;)Lokhttp3/OkHttpClient$Builder;
+    //   41: ldc2_w 289
+    //   44: getstatic 296	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   47: invokevirtual 305	okhttp3/OkHttpClient$Builder:writeTimeout	(JLjava/util/concurrent/TimeUnit;)Lokhttp3/OkHttpClient$Builder;
+    //   50: ldc2_w 289
+    //   53: getstatic 296	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   56: invokevirtual 308	okhttp3/OkHttpClient$Builder:readTimeout	(JLjava/util/concurrent/TimeUnit;)Lokhttp3/OkHttpClient$Builder;
+    //   59: invokevirtual 312	okhttp3/OkHttpClient$Builder:build	()Lokhttp3/OkHttpClient;
+    //   62: putfield 281	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Okhttp3OkHttpClient	Lokhttp3/OkHttpClient;
+    //   65: invokestatic 89	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   68: invokestatic 95	com/tencent/mobileqq/utils/NetworkUtil:getNetworkType	(Landroid/content/Context;)I
+    //   71: istore 4
     //   73: aload_0
-    //   74: getfield 264	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   77: ldc 163
-    //   79: invokevirtual 59	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   82: putfield 258	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   85: aload_0
-    //   86: getfield 264	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   89: ldc_w 315
-    //   92: invokevirtual 319	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   95: astore 16
-    //   97: aload_0
-    //   98: iconst_3
-    //   99: putfield 321	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
-    //   102: new 323	java/io/RandomAccessFile
-    //   105: dup
-    //   106: aload_0
-    //   107: getfield 27	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:c	Ljava/lang/String;
-    //   110: ldc_w 325
-    //   113: invokespecial 328	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   116: astore 12
-    //   118: aload 12
-    //   120: astore 13
-    //   122: aload 12
-    //   124: invokevirtual 329	java/io/RandomAccessFile:length	()J
-    //   127: lstore 9
-    //   129: aload 12
-    //   131: astore 13
-    //   133: aload_0
-    //   134: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   137: lstore 5
-    //   139: aload 12
-    //   141: astore 13
-    //   143: aload_0
-    //   144: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   147: lload 9
-    //   149: lcmp
-    //   150: ifge +725 -> 875
-    //   153: aload 12
-    //   155: astore 13
-    //   157: aload_0
-    //   158: getfield 23	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Boolean	Z
-    //   161: istore 11
-    //   163: iload 11
-    //   165: ifeq +22 -> 187
-    //   168: aload 12
-    //   170: ifnull +8 -> 178
-    //   173: aload 12
-    //   175: invokevirtual 332	java/io/RandomAccessFile:close	()V
-    //   178: return
-    //   179: astore 12
-    //   181: aload 12
-    //   183: invokevirtual 335	java/io/IOException:printStackTrace	()V
-    //   186: return
-    //   187: aload 12
-    //   189: astore 13
-    //   191: lload 9
-    //   193: aload_0
-    //   194: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   197: lsub
-    //   198: ldc2_w 336
-    //   201: lcmp
-    //   202: ifle +121 -> 323
-    //   205: aload 12
-    //   207: astore 13
-    //   209: aload_0
-    //   210: aload_0
-    //   211: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   214: ldc2_w 338
-    //   217: ladd
-    //   218: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   221: aload 12
-    //   223: astore 13
-    //   225: aload_0
-    //   226: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   229: lload 5
-    //   231: lsub
-    //   232: lstore 7
-    //   234: aload 12
-    //   236: astore 13
-    //   238: lload 7
-    //   240: l2i
-    //   241: newarray byte
-    //   243: astore 14
-    //   245: iconst_0
-    //   246: istore_1
-    //   247: aload 12
-    //   249: astore 13
-    //   251: aload 12
-    //   253: lload 5
-    //   255: invokevirtual 343	java/io/RandomAccessFile:seek	(J)V
-    //   258: aload 12
-    //   260: astore 13
-    //   262: sipush 4096
-    //   265: newarray byte
-    //   267: astore 15
-    //   269: aload 12
-    //   271: astore 13
-    //   273: aload 12
-    //   275: aload 15
-    //   277: invokevirtual 347	java/io/RandomAccessFile:read	([B)I
-    //   280: istore 4
-    //   282: iload_1
-    //   283: istore_2
-    //   284: iload 4
-    //   286: ifle +184 -> 470
-    //   289: iload_1
-    //   290: iload 4
-    //   292: iadd
-    //   293: i2l
-    //   294: lload 7
-    //   296: lcmp
-    //   297: ifgt +148 -> 445
-    //   300: aload 12
-    //   302: astore 13
-    //   304: aload 15
-    //   306: iconst_0
-    //   307: aload 14
-    //   309: iload_1
-    //   310: iload 4
-    //   312: invokestatic 353	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   315: iload_1
-    //   316: iload 4
-    //   318: iadd
-    //   319: istore_1
-    //   320: goto -51 -> 269
-    //   323: aload 12
-    //   325: astore 13
-    //   327: aload_0
-    //   328: lload 9
-    //   330: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   333: goto -112 -> 221
-    //   336: astore 13
-    //   338: ldc 122
-    //   340: iconst_2
-    //   341: new 138	java/lang/StringBuilder
-    //   344: dup
-    //   345: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   348: ldc_w 355
-    //   351: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   354: aload 13
-    //   356: invokevirtual 356	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   359: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   362: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   365: aload 13
-    //   367: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   370: aload_0
-    //   371: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   374: ifnull +14 -> 388
-    //   377: aload_0
-    //   378: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   381: bipush 6
-    //   383: invokeinterface 161 2 0
-    //   388: ldc 130
-    //   390: ldc 132
-    //   392: ldc_w 361
-    //   395: ldc 136
-    //   397: new 138	java/lang/StringBuilder
-    //   400: dup
-    //   401: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   404: iload_3
-    //   405: invokevirtual 143	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   408: ldc 136
-    //   410: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   413: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   416: ldc 136
-    //   418: invokestatic 154	com/tencent/mobileqq/troop/utils/TroopTechReportUtils:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   421: aload_0
-    //   422: lconst_0
-    //   423: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   426: aload 12
-    //   428: ifnull -250 -> 178
-    //   431: aload 12
-    //   433: invokevirtual 332	java/io/RandomAccessFile:close	()V
-    //   436: return
-    //   437: astore 12
-    //   439: aload 12
-    //   441: invokevirtual 335	java/io/IOException:printStackTrace	()V
-    //   444: return
-    //   445: lload 7
-    //   447: iload_1
-    //   448: i2l
-    //   449: lsub
-    //   450: l2i
-    //   451: istore_2
-    //   452: aload 12
-    //   454: astore 13
-    //   456: aload 15
-    //   458: iconst_0
-    //   459: aload 14
-    //   461: iload_1
-    //   462: iload_2
-    //   463: invokestatic 353	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
-    //   466: lload 7
-    //   468: l2i
-    //   469: istore_2
-    //   470: aload 12
-    //   472: astore 13
-    //   474: ldc_w 363
-    //   477: invokestatic 369	okhttp3/MediaType:parse	(Ljava/lang/String;)Lokhttp3/MediaType;
-    //   480: aload 14
-    //   482: iconst_0
-    //   483: iload_2
-    //   484: invokestatic 375	okhttp3/RequestBody:create	(Lokhttp3/MediaType;[BII)Lokhttp3/RequestBody;
-    //   487: astore 14
-    //   489: aload 12
-    //   491: astore 13
-    //   493: new 377	okhttp3/Request$Builder
-    //   496: dup
-    //   497: invokespecial 378	okhttp3/Request$Builder:<init>	()V
-    //   500: new 138	java/lang/StringBuilder
-    //   503: dup
-    //   504: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   507: aload_0
-    //   508: getfield 258	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   511: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   514: ldc_w 380
-    //   517: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   520: lload 5
-    //   522: invokevirtual 194	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   525: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   528: invokevirtual 384	okhttp3/Request$Builder:url	(Ljava/lang/String;)Lokhttp3/Request$Builder;
-    //   531: ldc_w 386
-    //   534: aload_0
-    //   535: getfield 313	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   538: invokevirtual 390	okhttp3/Request$Builder:addHeader	(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
-    //   541: ldc_w 392
-    //   544: ldc_w 394
-    //   547: invokevirtual 390	okhttp3/Request$Builder:addHeader	(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
-    //   550: ldc_w 396
-    //   553: ldc_w 363
-    //   556: invokevirtual 390	okhttp3/Request$Builder:addHeader	(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
-    //   559: ldc_w 398
-    //   562: aload_0
-    //   563: lload 5
-    //   565: l2i
-    //   566: aload 16
-    //   568: invokespecial 400	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:a	(ILorg/json/JSONArray;)Ljava/lang/String;
-    //   571: invokevirtual 390	okhttp3/Request$Builder:addHeader	(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
-    //   574: aload 14
-    //   576: invokevirtual 403	okhttp3/Request$Builder:post	(Lokhttp3/RequestBody;)Lokhttp3/Request$Builder;
-    //   579: invokevirtual 406	okhttp3/Request$Builder:build	()Lokhttp3/Request;
-    //   582: astore 14
-    //   584: aload_0
-    //   585: getfield 278	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Okhttp3OkHttpClient	Lokhttp3/OkHttpClient;
-    //   588: aload 14
-    //   590: invokevirtual 410	okhttp3/OkHttpClient:newCall	(Lokhttp3/Request;)Lokhttp3/Call;
-    //   593: invokeinterface 416 1 0
-    //   598: astore 14
-    //   600: aload 14
-    //   602: astore 13
-    //   604: aload 14
-    //   606: invokevirtual 421	okhttp3/Response:isSuccessful	()Z
-    //   609: ifeq +152 -> 761
-    //   612: aload 14
-    //   614: astore 13
-    //   616: aload_0
-    //   617: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   620: ifnull +97 -> 717
-    //   623: aload 14
-    //   625: astore 13
-    //   627: aload_0
-    //   628: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   631: iload_2
-    //   632: i2l
-    //   633: lload 5
-    //   635: ladd
-    //   636: ldc2_w 422
-    //   639: lmul
-    //   640: lload 9
-    //   642: ldiv
-    //   643: l2i
-    //   644: invokeinterface 425 2 0
-    //   649: aload 14
-    //   651: astore 13
-    //   653: aload_0
-    //   654: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   657: lload 9
-    //   659: lcmp
-    //   660: iflt +57 -> 717
-    //   663: aload 14
-    //   665: astore 13
-    //   667: ldc 130
-    //   669: ldc 132
-    //   671: ldc 177
-    //   673: ldc_w 427
-    //   676: new 138	java/lang/StringBuilder
-    //   679: dup
-    //   680: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   683: iload_3
-    //   684: invokevirtual 143	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   687: ldc 136
-    //   689: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   692: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   695: ldc 136
-    //   697: invokestatic 154	com/tencent/mobileqq/troop/utils/TroopTechReportUtils:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   700: aload 14
-    //   702: astore 13
-    //   704: aload_0
-    //   705: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   708: aload_0
-    //   709: getfield 258	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   712: invokeinterface 215 2 0
-    //   717: aload 14
-    //   719: astore 13
-    //   721: aload_0
-    //   722: iconst_3
-    //   723: putfield 321	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
-    //   726: aload 14
-    //   728: astore 13
-    //   730: aload_0
-    //   731: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   734: lstore 7
-    //   736: lload 7
-    //   738: lstore 5
-    //   740: aload 14
-    //   742: ifnull +16 -> 758
-    //   745: aload 12
-    //   747: astore 13
-    //   749: aload 14
-    //   751: invokevirtual 428	okhttp3/Response:close	()V
-    //   754: lload 7
-    //   756: lstore 5
-    //   758: goto -619 -> 139
-    //   761: aload 14
-    //   763: astore 13
-    //   765: aload_0
-    //   766: getfield 321	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
-    //   769: iconst_1
-    //   770: isub
-    //   771: istore_1
-    //   772: aload 14
-    //   774: astore 13
-    //   776: aload_0
-    //   777: iload_1
-    //   778: putfield 321	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
-    //   781: iload_1
-    //   782: ifgt +261 -> 1043
-    //   785: aload 14
-    //   787: astore 13
-    //   789: ldc 130
-    //   791: ldc 132
-    //   793: ldc_w 430
-    //   796: ldc 136
-    //   798: new 138	java/lang/StringBuilder
-    //   801: dup
-    //   802: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   805: iload_3
-    //   806: invokevirtual 143	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   809: ldc 136
-    //   811: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   814: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   817: ldc 136
-    //   819: invokestatic 154	com/tencent/mobileqq/troop/utils/TroopTechReportUtils:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   822: aload 14
-    //   824: astore 13
-    //   826: aload_0
-    //   827: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   830: ifnull +805 -> 1635
-    //   833: aload 14
-    //   835: astore 13
-    //   837: aload_0
-    //   838: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   841: aload 14
-    //   843: invokevirtual 433	okhttp3/Response:code	()I
-    //   846: invokeinterface 161 2 0
-    //   851: aload 14
-    //   853: astore 13
-    //   855: aload_0
-    //   856: lload 5
-    //   858: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   861: aload 14
-    //   863: ifnull +12 -> 875
-    //   866: aload 12
-    //   868: astore 13
-    //   870: aload 14
-    //   872: invokevirtual 428	okhttp3/Response:close	()V
-    //   875: aload 12
-    //   877: ifnull -699 -> 178
-    //   880: aload 12
-    //   882: invokevirtual 332	java/io/RandomAccessFile:close	()V
-    //   885: return
-    //   886: astore 12
-    //   888: aload 12
-    //   890: invokevirtual 335	java/io/IOException:printStackTrace	()V
-    //   893: return
-    //   894: astore 14
-    //   896: aload 12
-    //   898: astore 13
-    //   900: ldc 122
-    //   902: iconst_1
-    //   903: ldc_w 435
-    //   906: aload 14
-    //   908: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   911: goto -36 -> 875
-    //   914: astore 14
-    //   916: aload 12
-    //   918: astore 13
-    //   920: ldc 122
-    //   922: iconst_2
-    //   923: new 138	java/lang/StringBuilder
-    //   926: dup
-    //   927: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   930: ldc_w 355
-    //   933: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   936: aload 14
-    //   938: invokevirtual 436	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   941: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   944: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   947: aload 14
-    //   949: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   952: aload 12
-    //   954: astore 13
+    //   74: aload_0
+    //   75: getfield 263	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   78: ldc_w 314
+    //   81: invokevirtual 59	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   84: putfield 316	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   87: aload_0
+    //   88: aload_0
+    //   89: getfield 263	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   92: ldc 162
+    //   94: invokevirtual 59	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   97: putfield 257	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   100: aload_0
+    //   101: getfield 263	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   104: ldc_w 318
+    //   107: invokevirtual 322	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   110: astore 29
+    //   112: aload_0
+    //   113: iconst_3
+    //   114: putfield 324	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
+    //   117: new 326	java/io/RandomAccessFile
+    //   120: dup
+    //   121: aload_0
+    //   122: getfield 27	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:c	Ljava/lang/String;
+    //   125: ldc_w 328
+    //   128: invokespecial 331	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   131: astore 17
+    //   133: aload 17
+    //   135: astore 19
+    //   137: aload 16
+    //   139: astore 26
+    //   141: aload 15
+    //   143: astore 18
+    //   145: aload 17
+    //   147: astore 23
+    //   149: aload 16
+    //   151: astore 27
+    //   153: aload 15
+    //   155: astore 20
+    //   157: aload 17
+    //   159: astore 24
+    //   161: aload 16
+    //   163: astore 28
+    //   165: aload 15
+    //   167: astore 22
+    //   169: aload 17
+    //   171: astore 25
+    //   173: aload 17
+    //   175: invokevirtual 332	java/io/RandomAccessFile:length	()J
+    //   178: lstore 8
+    //   180: aload 17
+    //   182: astore 19
+    //   184: aload 16
+    //   186: astore 26
+    //   188: aload 15
+    //   190: astore 18
+    //   192: aload 17
+    //   194: astore 23
+    //   196: aload 16
+    //   198: astore 27
+    //   200: aload 15
+    //   202: astore 20
+    //   204: aload 17
+    //   206: astore 24
+    //   208: aload 16
+    //   210: astore 28
+    //   212: aload 15
+    //   214: astore 22
+    //   216: aload 17
+    //   218: astore 25
+    //   220: aload_0
+    //   221: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   224: lstore 6
+    //   226: aload 17
+    //   228: astore 19
+    //   230: aload 16
+    //   232: astore 26
+    //   234: aload 15
+    //   236: astore 18
+    //   238: aload 17
+    //   240: astore 23
+    //   242: aload 16
+    //   244: astore 27
+    //   246: aload 15
+    //   248: astore 20
+    //   250: aload 17
+    //   252: astore 24
+    //   254: aload 16
+    //   256: astore 28
+    //   258: aload 15
+    //   260: astore 22
+    //   262: aload 17
+    //   264: astore 25
+    //   266: aload_0
+    //   267: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   270: lload 8
+    //   272: lcmp
+    //   273: ifge +1583 -> 1856
+    //   276: aload 17
+    //   278: astore 19
+    //   280: aload 16
+    //   282: astore 26
+    //   284: aload 15
+    //   286: astore 18
+    //   288: aload 17
+    //   290: astore 23
+    //   292: aload 16
+    //   294: astore 27
+    //   296: aload 15
+    //   298: astore 20
+    //   300: aload 17
+    //   302: astore 24
+    //   304: aload 16
+    //   306: astore 28
+    //   308: aload 15
+    //   310: astore 22
+    //   312: aload 17
+    //   314: astore 25
+    //   316: aload_0
+    //   317: getfield 23	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Boolean	Z
+    //   320: istore 14
+    //   322: iload 14
+    //   324: ifeq +17 -> 341
+    //   327: aload 17
+    //   329: invokevirtual 335	java/io/RandomAccessFile:close	()V
+    //   332: return
+    //   333: astore 15
+    //   335: aload 15
+    //   337: invokevirtual 338	java/io/IOException:printStackTrace	()V
+    //   340: return
+    //   341: aload 17
+    //   343: astore 19
+    //   345: aload 16
+    //   347: astore 26
+    //   349: aload 15
+    //   351: astore 18
+    //   353: aload 17
+    //   355: astore 23
+    //   357: aload 16
+    //   359: astore 27
+    //   361: aload 15
+    //   363: astore 20
+    //   365: aload 17
+    //   367: astore 24
+    //   369: aload 16
+    //   371: astore 28
+    //   373: aload 15
+    //   375: astore 22
+    //   377: aload 17
+    //   379: astore 25
+    //   381: aload_0
+    //   382: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   385: lstore 10
+    //   387: lload 8
+    //   389: lload 10
+    //   391: lsub
+    //   392: ldc2_w 339
+    //   395: lcmp
+    //   396: ifle +63 -> 459
+    //   399: aload 16
+    //   401: astore 26
+    //   403: aload 15
+    //   405: astore 18
+    //   407: aload 17
+    //   409: astore 23
+    //   411: aload 16
+    //   413: astore 27
+    //   415: aload 15
+    //   417: astore 20
+    //   419: aload 17
+    //   421: astore 24
+    //   423: aload 16
+    //   425: astore 28
+    //   427: aload 15
+    //   429: astore 22
+    //   431: aload 17
+    //   433: astore 25
+    //   435: aload_0
+    //   436: aload_0
+    //   437: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   440: ldc2_w 341
+    //   443: ladd
+    //   444: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   447: goto +58 -> 505
+    //   450: astore 15
+    //   452: aload 17
+    //   454: astore 19
+    //   456: goto +2027 -> 2483
+    //   459: aload 17
+    //   461: astore 19
+    //   463: aload 16
+    //   465: astore 26
+    //   467: aload 15
+    //   469: astore 18
+    //   471: aload 17
+    //   473: astore 23
+    //   475: aload 16
+    //   477: astore 27
+    //   479: aload 15
+    //   481: astore 20
+    //   483: aload 17
+    //   485: astore 24
+    //   487: aload 16
+    //   489: astore 28
+    //   491: aload 15
+    //   493: astore 22
+    //   495: aload 17
+    //   497: astore 25
+    //   499: aload_0
+    //   500: lload 8
+    //   502: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   505: aload 17
+    //   507: astore 19
+    //   509: aload 16
+    //   511: astore 26
+    //   513: aload 15
+    //   515: astore 18
+    //   517: aload 17
+    //   519: astore 23
+    //   521: aload 16
+    //   523: astore 27
+    //   525: aload 15
+    //   527: astore 20
+    //   529: aload 17
+    //   531: astore 24
+    //   533: aload 16
+    //   535: astore 28
+    //   537: aload 15
+    //   539: astore 22
+    //   541: aload 17
+    //   543: astore 25
+    //   545: aload_0
+    //   546: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   549: lstore 10
+    //   551: lload 10
+    //   553: lload 6
+    //   555: lsub
+    //   556: lstore 10
+    //   558: lload 10
+    //   560: l2i
+    //   561: istore_2
+    //   562: aload 17
+    //   564: astore 19
+    //   566: iload_2
+    //   567: newarray byte
+    //   569: astore 20
+    //   571: aload 17
+    //   573: astore 19
+    //   575: aload 17
+    //   577: lload 6
+    //   579: invokevirtual 346	java/io/RandomAccessFile:seek	(J)V
+    //   582: aload 17
+    //   584: astore 19
+    //   586: sipush 4096
+    //   589: newarray byte
+    //   591: astore 22
+    //   593: iconst_0
+    //   594: istore_1
+    //   595: aload 17
+    //   597: astore 18
+    //   599: aload 18
+    //   601: astore 19
+    //   603: aload 18
+    //   605: aload 22
+    //   607: invokevirtual 350	java/io/RandomAccessFile:read	([B)I
+    //   610: istore 5
+    //   612: iload 5
+    //   614: ifle +1898 -> 2512
+    //   617: aload 18
+    //   619: astore 17
+    //   621: iload_1
+    //   622: iload 5
+    //   624: iadd
+    //   625: istore_3
+    //   626: iload_3
+    //   627: i2l
+    //   628: lload 10
+    //   630: lcmp
+    //   631: ifgt +27 -> 658
+    //   634: aload 17
+    //   636: astore 19
+    //   638: aload 22
+    //   640: iconst_0
+    //   641: aload 20
+    //   643: iload_1
+    //   644: iload 5
+    //   646: invokestatic 356	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   649: iload_3
+    //   650: istore_1
+    //   651: aload 17
+    //   653: astore 18
+    //   655: goto -56 -> 599
+    //   658: aload 17
+    //   660: astore 19
+    //   662: aload 22
+    //   664: iconst_0
+    //   665: aload 20
+    //   667: iload_1
+    //   668: lload 10
+    //   670: iload_1
+    //   671: i2l
+    //   672: lsub
+    //   673: l2i
+    //   674: invokestatic 356	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   677: iload_2
+    //   678: istore_1
+    //   679: goto +3 -> 682
+    //   682: lload 8
+    //   684: lstore 12
+    //   686: aload 18
+    //   688: astore 17
+    //   690: aload 17
+    //   692: astore 19
+    //   694: ldc_w 358
+    //   697: invokestatic 364	okhttp3/MediaType:parse	(Ljava/lang/String;)Lokhttp3/MediaType;
+    //   700: aload 20
+    //   702: iconst_0
+    //   703: iload_1
+    //   704: invokestatic 370	okhttp3/RequestBody:create	(Lokhttp3/MediaType;[BII)Lokhttp3/RequestBody;
+    //   707: astore 20
+    //   709: aload 17
+    //   711: astore 19
+    //   713: new 372	okhttp3/Request$Builder
+    //   716: dup
+    //   717: invokespecial 373	okhttp3/Request$Builder:<init>	()V
+    //   720: astore 22
+    //   722: aload 17
+    //   724: astore 19
+    //   726: new 129	java/lang/StringBuilder
+    //   729: dup
+    //   730: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   733: astore 23
+    //   735: aload 17
+    //   737: astore 19
+    //   739: aload 23
+    //   741: aload_0
+    //   742: getfield 257	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   745: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   748: pop
+    //   749: aload 17
+    //   751: astore 19
+    //   753: aload 23
+    //   755: ldc_w 375
+    //   758: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   761: pop
+    //   762: aload 17
+    //   764: astore 19
+    //   766: aload 23
+    //   768: lload 6
+    //   770: invokevirtual 193	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   773: pop
+    //   774: aload 17
+    //   776: astore 19
+    //   778: aload 22
+    //   780: aload 23
+    //   782: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   785: invokevirtual 379	okhttp3/Request$Builder:url	(Ljava/lang/String;)Lokhttp3/Request$Builder;
+    //   788: ldc_w 381
+    //   791: aload_0
+    //   792: getfield 316	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   795: invokevirtual 385	okhttp3/Request$Builder:addHeader	(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
+    //   798: ldc_w 387
+    //   801: ldc_w 389
+    //   804: invokevirtual 385	okhttp3/Request$Builder:addHeader	(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
+    //   807: ldc_w 391
+    //   810: ldc_w 358
+    //   813: invokevirtual 385	okhttp3/Request$Builder:addHeader	(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
+    //   816: ldc_w 393
+    //   819: aload_0
+    //   820: lload 6
+    //   822: l2i
+    //   823: aload 29
+    //   825: invokespecial 395	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:a	(ILorg/json/JSONArray;)Ljava/lang/String;
+    //   828: invokevirtual 385	okhttp3/Request$Builder:addHeader	(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
+    //   831: aload 20
+    //   833: invokevirtual 398	okhttp3/Request$Builder:post	(Lokhttp3/RequestBody;)Lokhttp3/Request$Builder;
+    //   836: invokevirtual 401	okhttp3/Request$Builder:build	()Lokhttp3/Request;
+    //   839: astore 20
+    //   841: aload_0
+    //   842: getfield 281	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Okhttp3OkHttpClient	Lokhttp3/OkHttpClient;
+    //   845: aload 20
+    //   847: invokevirtual 405	okhttp3/OkHttpClient:newCall	(Lokhttp3/Request;)Lokhttp3/Call;
+    //   850: invokeinterface 411 1 0
+    //   855: astore 20
+    //   857: aload 20
+    //   859: invokevirtual 416	okhttp3/Response:isSuccessful	()Z
+    //   862: istore 14
+    //   864: iload 14
+    //   866: ifeq +148 -> 1014
+    //   869: aload_0
+    //   870: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   873: astore 18
+    //   875: aload 18
+    //   877: ifnull +104 -> 981
+    //   880: aload_0
+    //   881: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   884: iload_1
+    //   885: i2l
+    //   886: lload 6
+    //   888: ladd
+    //   889: ldc2_w 417
+    //   892: lmul
+    //   893: lload 12
+    //   895: ldiv
+    //   896: l2i
+    //   897: invokeinterface 420 2 0
+    //   902: aload_0
+    //   903: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   906: lload 12
+    //   908: lcmp
+    //   909: iflt +72 -> 981
+    //   912: new 129	java/lang/StringBuilder
+    //   915: dup
+    //   916: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   919: astore 18
+    //   921: aload 18
+    //   923: iload 4
+    //   925: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   928: pop
+    //   929: aload 18
+    //   931: ldc 136
+    //   933: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   936: pop
+    //   937: ldc 141
+    //   939: ldc 143
+    //   941: ldc 176
+    //   943: ldc_w 422
+    //   946: aload 18
+    //   948: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   951: ldc 136
+    //   953: invokestatic 153	com/tencent/mobileqq/utils/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   956: aload_0
-    //   957: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   960: ifnull +18 -> 978
-    //   963: aload 12
-    //   965: astore 13
-    //   967: aload_0
-    //   968: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   971: bipush 6
-    //   973: invokeinterface 161 2 0
-    //   978: aload 12
-    //   980: astore 13
-    //   982: ldc 130
-    //   984: ldc 132
-    //   986: ldc_w 438
-    //   989: ldc 136
-    //   991: new 138	java/lang/StringBuilder
-    //   994: dup
-    //   995: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   998: iload_3
-    //   999: invokevirtual 143	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1002: ldc 136
-    //   1004: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1007: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1010: ldc 136
-    //   1012: invokestatic 154	com/tencent/mobileqq/troop/utils/TroopTechReportUtils:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1015: aload 12
-    //   1017: astore 13
-    //   1019: aload_0
-    //   1020: lconst_0
-    //   1021: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   1024: aload 12
-    //   1026: ifnull -848 -> 178
-    //   1029: aload 12
-    //   1031: invokevirtual 332	java/io/RandomAccessFile:close	()V
-    //   1034: return
-    //   1035: astore 12
-    //   1037: aload 12
-    //   1039: invokevirtual 335	java/io/IOException:printStackTrace	()V
-    //   1042: return
-    //   1043: aload 14
-    //   1045: astore 13
-    //   1047: aload_0
-    //   1048: lload 5
-    //   1050: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   1053: aload 14
-    //   1055: ifnull -916 -> 139
-    //   1058: aload 12
-    //   1060: astore 13
-    //   1062: aload 14
-    //   1064: invokevirtual 428	okhttp3/Response:close	()V
-    //   1067: goto -928 -> 139
-    //   1070: astore 14
-    //   1072: aload 12
-    //   1074: astore 13
-    //   1076: ldc 122
-    //   1078: iconst_1
-    //   1079: ldc_w 435
-    //   1082: aload 14
-    //   1084: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1087: goto -948 -> 139
-    //   1090: astore 14
-    //   1092: aload 12
-    //   1094: astore 13
-    //   1096: ldc 122
-    //   1098: iconst_2
-    //   1099: new 138	java/lang/StringBuilder
-    //   1102: dup
-    //   1103: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   1106: ldc_w 355
-    //   1109: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1112: aload 14
-    //   1114: invokevirtual 439	java/security/InvalidParameterException:getMessage	()Ljava/lang/String;
-    //   1117: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1120: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1123: aload 14
-    //   1125: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1128: aload 12
-    //   1130: astore 13
-    //   1132: aload_0
-    //   1133: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   1136: ifnull +18 -> 1154
-    //   1139: aload 12
-    //   1141: astore 13
-    //   1143: aload_0
-    //   1144: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   1147: bipush 6
-    //   1149: invokeinterface 161 2 0
-    //   1154: aload 12
-    //   1156: astore 13
-    //   1158: ldc 130
-    //   1160: ldc 132
-    //   1162: ldc_w 441
-    //   1165: ldc 136
-    //   1167: new 138	java/lang/StringBuilder
-    //   1170: dup
-    //   1171: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   1174: iload_3
-    //   1175: invokevirtual 143	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1178: ldc 136
-    //   1180: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1183: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1186: ldc 136
-    //   1188: invokestatic 154	com/tencent/mobileqq/troop/utils/TroopTechReportUtils:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1191: aload 12
-    //   1193: astore 13
-    //   1195: aload_0
-    //   1196: lconst_0
-    //   1197: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   1200: aload 12
-    //   1202: ifnull -1024 -> 178
-    //   1205: aload 12
-    //   1207: invokevirtual 332	java/io/RandomAccessFile:close	()V
-    //   1210: return
-    //   1211: astore 12
-    //   1213: aload 12
-    //   1215: invokevirtual 335	java/io/IOException:printStackTrace	()V
-    //   1218: return
-    //   1219: astore 14
-    //   1221: aload 12
-    //   1223: astore 13
-    //   1225: ldc 122
-    //   1227: iconst_1
-    //   1228: ldc_w 435
-    //   1231: aload 14
-    //   1233: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1236: lload 7
-    //   1238: lstore 5
-    //   1240: goto -482 -> 758
-    //   1243: astore 12
-    //   1245: aload 13
-    //   1247: ifnull +8 -> 1255
-    //   1250: aload 13
-    //   1252: invokevirtual 332	java/io/RandomAccessFile:close	()V
-    //   1255: aload 12
-    //   1257: athrow
-    //   1258: astore 15
-    //   1260: aconst_null
-    //   1261: astore 14
-    //   1263: aload 14
-    //   1265: astore 13
-    //   1267: ldc 122
-    //   1269: iconst_2
-    //   1270: new 138	java/lang/StringBuilder
-    //   1273: dup
-    //   1274: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   1277: ldc_w 355
-    //   1280: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1283: aload 15
-    //   1285: invokevirtual 436	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1288: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1291: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1294: aload 15
-    //   1296: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1299: aload 14
-    //   1301: astore 13
-    //   1303: aload_0
-    //   1304: getfield 321	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
-    //   1307: iconst_1
-    //   1308: isub
-    //   1309: istore_1
-    //   1310: aload 14
-    //   1312: astore 13
-    //   1314: aload_0
-    //   1315: iload_1
-    //   1316: putfield 321	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
-    //   1319: iload_1
-    //   1320: ifgt +113 -> 1433
-    //   1323: aload 14
-    //   1325: astore 13
-    //   1327: ldc 130
-    //   1329: ldc 132
-    //   1331: ldc_w 443
-    //   1334: ldc 136
-    //   1336: new 138	java/lang/StringBuilder
-    //   1339: dup
-    //   1340: invokespecial 139	java/lang/StringBuilder:<init>	()V
-    //   1343: iload_3
-    //   1344: invokevirtual 143	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1347: ldc 136
-    //   1349: invokevirtual 146	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1352: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1355: ldc 136
-    //   1357: invokestatic 154	com/tencent/mobileqq/troop/utils/TroopTechReportUtils:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1360: aload 14
-    //   1362: astore 13
-    //   1364: aload_0
-    //   1365: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   1368: ifnull +112 -> 1480
-    //   1371: aload 14
-    //   1373: astore 13
-    //   1375: aload_0
-    //   1376: getfield 156	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
-    //   1379: bipush 6
-    //   1381: invokeinterface 161 2 0
-    //   1386: aload 14
-    //   1388: astore 13
-    //   1390: aload_0
-    //   1391: lload 5
-    //   1393: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   1396: aload 14
-    //   1398: ifnull -523 -> 875
-    //   1401: aload 12
-    //   1403: astore 13
-    //   1405: aload 14
-    //   1407: invokevirtual 428	okhttp3/Response:close	()V
-    //   1410: goto -535 -> 875
-    //   1413: astore 14
-    //   1415: aload 12
-    //   1417: astore 13
-    //   1419: ldc 122
-    //   1421: iconst_1
-    //   1422: ldc_w 435
-    //   1425: aload 14
-    //   1427: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1430: goto -555 -> 875
-    //   1433: aload 14
-    //   1435: astore 13
-    //   1437: aload_0
-    //   1438: lload 5
-    //   1440: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
-    //   1443: aload 14
-    //   1445: ifnull -1306 -> 139
-    //   1448: aload 12
-    //   1450: astore 13
-    //   1452: aload 14
-    //   1454: invokevirtual 428	okhttp3/Response:close	()V
-    //   1457: goto -1318 -> 139
-    //   1460: astore 14
-    //   1462: aload 12
-    //   1464: astore 13
-    //   1466: ldc 122
-    //   1468: iconst_1
-    //   1469: ldc_w 435
-    //   1472: aload 14
-    //   1474: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1477: goto -1338 -> 139
-    //   1480: aload 14
-    //   1482: ifnull +150 -> 1632
-    //   1485: aload 12
-    //   1487: astore 13
-    //   1489: aload 14
-    //   1491: invokevirtual 428	okhttp3/Response:close	()V
-    //   1494: goto -736 -> 758
-    //   1497: astore 14
-    //   1499: aload 12
-    //   1501: astore 13
-    //   1503: ldc 122
-    //   1505: iconst_1
-    //   1506: ldc_w 435
-    //   1509: aload 14
-    //   1511: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1514: goto -756 -> 758
-    //   1517: astore 14
-    //   1519: aconst_null
-    //   1520: astore 15
-    //   1522: aload 15
-    //   1524: ifnull +12 -> 1536
-    //   1527: aload 12
-    //   1529: astore 13
-    //   1531: aload 15
-    //   1533: invokevirtual 428	okhttp3/Response:close	()V
-    //   1536: aload 12
-    //   1538: astore 13
-    //   1540: aload 14
-    //   1542: athrow
-    //   1543: astore 15
-    //   1545: aload 12
-    //   1547: astore 13
-    //   1549: ldc 122
-    //   1551: iconst_1
-    //   1552: ldc_w 435
-    //   1555: aload 15
-    //   1557: invokestatic 359	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1560: goto -24 -> 1536
-    //   1563: astore 13
-    //   1565: aload 13
-    //   1567: invokevirtual 335	java/io/IOException:printStackTrace	()V
-    //   1570: goto -315 -> 1255
-    //   1573: astore 12
-    //   1575: aconst_null
-    //   1576: astore 13
-    //   1578: goto -333 -> 1245
-    //   1581: astore 14
-    //   1583: aload 12
-    //   1585: astore 13
-    //   1587: aload 14
-    //   1589: astore 12
-    //   1591: goto -346 -> 1245
-    //   1594: astore 14
-    //   1596: aconst_null
-    //   1597: astore 12
-    //   1599: goto -507 -> 1092
-    //   1602: astore 14
-    //   1604: aconst_null
-    //   1605: astore 12
-    //   1607: goto -691 -> 916
-    //   1610: astore 13
-    //   1612: aconst_null
-    //   1613: astore 12
-    //   1615: goto -1277 -> 338
-    //   1618: astore 14
-    //   1620: aload 13
-    //   1622: astore 15
-    //   1624: goto -102 -> 1522
-    //   1627: astore 15
-    //   1629: goto -366 -> 1263
-    //   1632: goto -874 -> 758
-    //   1635: lload 5
-    //   1637: lstore 7
-    //   1639: goto -903 -> 736
+    //   957: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   960: aload_0
+    //   961: getfield 257	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   964: invokeinterface 214 2 0
+    //   969: goto +12 -> 981
+    //   972: astore 19
+    //   974: aload 20
+    //   976: astore 18
+    //   978: goto +346 -> 1324
+    //   981: aload_0
+    //   982: iconst_3
+    //   983: putfield 324	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
+    //   986: aload_0
+    //   987: getfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   990: lstore 8
+    //   992: goto +161 -> 1153
+    //   995: astore 19
+    //   997: goto +10 -> 1007
+    //   1000: astore 18
+    //   1002: goto +610 -> 1612
+    //   1005: astore 19
+    //   1007: aload 20
+    //   1009: astore 18
+    //   1011: goto +313 -> 1324
+    //   1014: aload_0
+    //   1015: getfield 324	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
+    //   1018: iconst_1
+    //   1019: isub
+    //   1020: istore_1
+    //   1021: aload_0
+    //   1022: iload_1
+    //   1023: putfield 324	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
+    //   1026: iload_1
+    //   1027: ifgt +174 -> 1201
+    //   1030: new 129	java/lang/StringBuilder
+    //   1033: dup
+    //   1034: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   1037: astore 19
+    //   1039: aload 19
+    //   1041: iload 4
+    //   1043: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1046: pop
+    //   1047: aload 19
+    //   1049: ldc 136
+    //   1051: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1054: pop
+    //   1055: ldc 141
+    //   1057: ldc 143
+    //   1059: ldc_w 424
+    //   1062: ldc 136
+    //   1064: aload 19
+    //   1066: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1069: ldc 136
+    //   1071: invokestatic 153	com/tencent/mobileqq/utils/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1074: lload 6
+    //   1076: lstore 8
+    //   1078: aload_0
+    //   1079: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   1082: ifnull -90 -> 992
+    //   1085: aload_0
+    //   1086: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   1089: aload 20
+    //   1091: invokevirtual 427	okhttp3/Response:code	()I
+    //   1094: invokeinterface 160 2 0
+    //   1099: aload_0
+    //   1100: lload 6
+    //   1102: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   1105: aload 17
+    //   1107: astore 19
+    //   1109: aload 20
+    //   1111: ifnull +749 -> 1860
+    //   1114: aload 17
+    //   1116: astore 19
+    //   1118: aload 20
+    //   1120: invokevirtual 428	okhttp3/Response:close	()V
+    //   1123: aload 17
+    //   1125: astore 19
+    //   1127: goto +733 -> 1860
+    //   1130: astore 18
+    //   1132: aload 17
+    //   1134: astore 19
+    //   1136: aload 15
+    //   1138: iconst_1
+    //   1139: aload 21
+    //   1141: aload 18
+    //   1143: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1146: aload 17
+    //   1148: astore 19
+    //   1150: goto +710 -> 1860
+    //   1153: lload 8
+    //   1155: lstore 10
+    //   1157: aload 20
+    //   1159: ifnull +120 -> 1279
+    //   1162: aload 17
+    //   1164: astore 19
+    //   1166: aload 20
+    //   1168: invokevirtual 428	okhttp3/Response:close	()V
+    //   1171: lload 8
+    //   1173: lstore 10
+    //   1175: goto +104 -> 1279
+    //   1178: astore 18
+    //   1180: aload 17
+    //   1182: astore 19
+    //   1184: aload 15
+    //   1186: iconst_1
+    //   1187: aload 21
+    //   1189: aload 18
+    //   1191: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1194: lload 8
+    //   1196: lstore 10
+    //   1198: goto +81 -> 1279
+    //   1201: aload_0
+    //   1202: lload 6
+    //   1204: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   1207: lload 6
+    //   1209: lstore 10
+    //   1211: aload 20
+    //   1213: ifnull +66 -> 1279
+    //   1216: aload 17
+    //   1218: astore 19
+    //   1220: aload 20
+    //   1222: invokevirtual 428	okhttp3/Response:close	()V
+    //   1225: lload 6
+    //   1227: lstore 10
+    //   1229: goto +50 -> 1279
+    //   1232: aload 15
+    //   1234: astore 18
+    //   1236: astore 15
+    //   1238: goto +553 -> 1791
+    //   1241: aload 15
+    //   1243: astore 18
+    //   1245: astore 15
+    //   1247: goto +569 -> 1816
+    //   1250: aload 15
+    //   1252: astore 18
+    //   1254: astore 15
+    //   1256: goto +585 -> 1841
+    //   1259: astore 18
+    //   1261: aload 17
+    //   1263: astore 19
+    //   1265: aload 15
+    //   1267: iconst_1
+    //   1268: aload 21
+    //   1270: aload 18
+    //   1272: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1275: lload 6
+    //   1277: lstore 10
+    //   1279: goto +307 -> 1586
+    //   1282: astore 18
+    //   1284: goto +15 -> 1299
+    //   1287: astore 19
+    //   1289: goto +15 -> 1304
+    //   1292: astore 19
+    //   1294: goto +10 -> 1304
+    //   1297: astore 18
+    //   1299: goto +313 -> 1612
+    //   1302: astore 19
+    //   1304: aload 20
+    //   1306: astore 18
+    //   1308: goto +16 -> 1324
+    //   1311: astore 18
+    //   1313: aconst_null
+    //   1314: astore 20
+    //   1316: goto +296 -> 1612
+    //   1319: astore 19
+    //   1321: aconst_null
+    //   1322: astore 18
+    //   1324: aload 21
+    //   1326: astore 22
+    //   1328: aload 15
+    //   1330: astore 20
+    //   1332: new 129	java/lang/StringBuilder
+    //   1335: dup
+    //   1336: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   1339: astore 23
+    //   1341: aload 23
+    //   1343: aload 16
+    //   1345: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1348: pop
+    //   1349: aload 23
+    //   1351: aload 19
+    //   1353: invokevirtual 432	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1356: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1359: pop
+    //   1360: aload 20
+    //   1362: iconst_2
+    //   1363: aload 23
+    //   1365: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1368: aload 19
+    //   1370: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1373: aload_0
+    //   1374: getfield 324	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
+    //   1377: iconst_1
+    //   1378: isub
+    //   1379: istore_1
+    //   1380: aload_0
+    //   1381: iload_1
+    //   1382: putfield 324	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Int	I
+    //   1385: iload_1
+    //   1386: ifgt +149 -> 1535
+    //   1389: new 129	java/lang/StringBuilder
+    //   1392: dup
+    //   1393: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   1396: astore 19
+    //   1398: aload 19
+    //   1400: iload 4
+    //   1402: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1405: pop
+    //   1406: aload 19
+    //   1408: ldc 136
+    //   1410: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1413: pop
+    //   1414: ldc 141
+    //   1416: ldc 143
+    //   1418: ldc_w 434
+    //   1421: ldc 136
+    //   1423: aload 19
+    //   1425: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1428: ldc 136
+    //   1430: invokestatic 153	com/tencent/mobileqq/utils/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1433: aload_0
+    //   1434: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   1437: ifnull +68 -> 1505
+    //   1440: aload_0
+    //   1441: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   1444: bipush 6
+    //   1446: invokeinterface 160 2 0
+    //   1451: aload_0
+    //   1452: lload 6
+    //   1454: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   1457: aload 17
+    //   1459: astore 19
+    //   1461: aload 18
+    //   1463: ifnull +397 -> 1860
+    //   1466: aload 17
+    //   1468: astore 19
+    //   1470: aload 18
+    //   1472: invokevirtual 428	okhttp3/Response:close	()V
+    //   1475: aload 17
+    //   1477: astore 19
+    //   1479: goto +381 -> 1860
+    //   1482: astore 18
+    //   1484: aload 17
+    //   1486: astore 19
+    //   1488: aload 20
+    //   1490: iconst_1
+    //   1491: aload 22
+    //   1493: aload 18
+    //   1495: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1498: aload 17
+    //   1500: astore 19
+    //   1502: goto +358 -> 1860
+    //   1505: lload 6
+    //   1507: lstore 10
+    //   1509: aload 18
+    //   1511: ifnull +75 -> 1586
+    //   1514: aload 17
+    //   1516: astore 19
+    //   1518: aload 18
+    //   1520: invokevirtual 428	okhttp3/Response:close	()V
+    //   1523: lload 6
+    //   1525: lstore 10
+    //   1527: goto +59 -> 1586
+    //   1530: astore 18
+    //   1532: goto +36 -> 1568
+    //   1535: aload_0
+    //   1536: lload 6
+    //   1538: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   1541: lload 6
+    //   1543: lstore 10
+    //   1545: aload 18
+    //   1547: ifnull +39 -> 1586
+    //   1550: aload 17
+    //   1552: astore 19
+    //   1554: aload 18
+    //   1556: invokevirtual 428	okhttp3/Response:close	()V
+    //   1559: lload 6
+    //   1561: lstore 10
+    //   1563: goto +23 -> 1586
+    //   1566: astore 18
+    //   1568: aload 17
+    //   1570: astore 19
+    //   1572: aload 20
+    //   1574: iconst_1
+    //   1575: aload 22
+    //   1577: aload 18
+    //   1579: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1582: lload 6
+    //   1584: lstore 10
+    //   1586: lload 12
+    //   1588: lstore 8
+    //   1590: lload 10
+    //   1592: lstore 6
+    //   1594: goto -1368 -> 226
+    //   1597: astore 19
+    //   1599: goto +5 -> 1604
+    //   1602: astore 19
+    //   1604: aload 18
+    //   1606: astore 20
+    //   1608: aload 19
+    //   1610: astore 18
+    //   1612: aload 20
+    //   1614: ifnull +31 -> 1645
+    //   1617: aload 17
+    //   1619: astore 19
+    //   1621: aload 20
+    //   1623: invokevirtual 428	okhttp3/Response:close	()V
+    //   1626: goto +19 -> 1645
+    //   1629: astore 20
+    //   1631: aload 17
+    //   1633: astore 19
+    //   1635: aload 15
+    //   1637: iconst_1
+    //   1638: aload 21
+    //   1640: aload 20
+    //   1642: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1645: aload 17
+    //   1647: astore 19
+    //   1649: aload 18
+    //   1651: athrow
+    //   1652: aload 16
+    //   1654: astore 18
+    //   1656: aload 15
+    //   1658: astore 16
+    //   1660: astore 15
+    //   1662: goto +294 -> 1956
+    //   1665: aload 16
+    //   1667: astore 18
+    //   1669: aload 15
+    //   1671: astore 16
+    //   1673: astore 15
+    //   1675: goto +462 -> 2137
+    //   1678: aload 16
+    //   1680: astore 18
+    //   1682: aload 15
+    //   1684: astore 16
+    //   1686: astore 15
+    //   1688: goto +630 -> 2318
+    //   1691: astore 17
+    //   1693: goto +15 -> 1708
+    //   1696: astore 17
+    //   1698: goto +35 -> 1733
+    //   1701: astore 17
+    //   1703: goto +55 -> 1758
+    //   1706: astore 17
+    //   1708: aload 18
+    //   1710: astore 19
+    //   1712: aload 16
+    //   1714: astore 18
+    //   1716: aload 15
+    //   1718: astore 16
+    //   1720: aload 17
+    //   1722: astore 15
+    //   1724: aload 19
+    //   1726: astore 17
+    //   1728: goto +228 -> 1956
+    //   1731: astore 17
+    //   1733: aload 18
+    //   1735: astore 19
+    //   1737: aload 16
+    //   1739: astore 18
+    //   1741: aload 15
+    //   1743: astore 16
+    //   1745: aload 17
+    //   1747: astore 15
+    //   1749: aload 19
+    //   1751: astore 17
+    //   1753: goto +384 -> 2137
+    //   1756: astore 17
+    //   1758: aload 18
+    //   1760: astore 19
+    //   1762: aload 16
+    //   1764: astore 18
+    //   1766: aload 15
+    //   1768: astore 16
+    //   1770: aload 17
+    //   1772: astore 15
+    //   1774: aload 19
+    //   1776: astore 17
+    //   1778: goto +540 -> 2318
+    //   1781: astore 19
+    //   1783: aload 15
+    //   1785: astore 18
+    //   1787: aload 19
+    //   1789: astore 15
+    //   1791: aload 16
+    //   1793: astore 19
+    //   1795: aload 18
+    //   1797: astore 16
+    //   1799: aload 19
+    //   1801: astore 18
+    //   1803: goto +153 -> 1956
+    //   1806: astore 19
+    //   1808: aload 15
+    //   1810: astore 18
+    //   1812: aload 19
+    //   1814: astore 15
+    //   1816: aload 16
+    //   1818: astore 19
+    //   1820: aload 18
+    //   1822: astore 16
+    //   1824: aload 19
+    //   1826: astore 18
+    //   1828: goto +309 -> 2137
+    //   1831: astore 19
+    //   1833: aload 15
+    //   1835: astore 18
+    //   1837: aload 19
+    //   1839: astore 15
+    //   1841: aload 16
+    //   1843: astore 19
+    //   1845: aload 18
+    //   1847: astore 16
+    //   1849: aload 19
+    //   1851: astore 18
+    //   1853: goto +465 -> 2318
+    //   1856: aload 17
+    //   1858: astore 19
+    //   1860: aload 19
+    //   1862: invokevirtual 335	java/io/RandomAccessFile:close	()V
+    //   1865: return
+    //   1866: astore 15
+    //   1868: aload 15
+    //   1870: invokevirtual 338	java/io/IOException:printStackTrace	()V
+    //   1873: return
+    //   1874: astore 15
+    //   1876: goto +607 -> 2483
+    //   1879: astore 15
+    //   1881: aload 23
+    //   1883: astore 17
+    //   1885: aload 18
+    //   1887: astore 16
+    //   1889: aload 26
+    //   1891: astore 18
+    //   1893: goto +63 -> 1956
+    //   1896: astore 15
+    //   1898: aload 27
+    //   1900: astore 18
+    //   1902: aload 24
+    //   1904: astore 17
+    //   1906: aload 20
+    //   1908: astore 16
+    //   1910: goto +227 -> 2137
+    //   1913: astore 15
+    //   1915: aload 28
+    //   1917: astore 18
+    //   1919: aload 25
+    //   1921: astore 17
+    //   1923: aload 22
+    //   1925: astore 16
+    //   1927: goto +391 -> 2318
+    //   1930: astore 15
+    //   1932: aconst_null
+    //   1933: astore 19
+    //   1935: goto +548 -> 2483
+    //   1938: astore 19
+    //   1940: ldc_w 277
+    //   1943: astore 18
+    //   1945: aconst_null
+    //   1946: astore 17
+    //   1948: aload 15
+    //   1950: astore 16
+    //   1952: aload 19
+    //   1954: astore 15
+    //   1956: aload 17
+    //   1958: astore 19
+    //   1960: new 129	java/lang/StringBuilder
+    //   1963: dup
+    //   1964: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   1967: astore 20
+    //   1969: aload 17
+    //   1971: astore 19
+    //   1973: aload 20
+    //   1975: aload 18
+    //   1977: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1980: pop
+    //   1981: aload 17
+    //   1983: astore 19
+    //   1985: aload 20
+    //   1987: aload 15
+    //   1989: invokevirtual 435	java/security/InvalidParameterException:getMessage	()Ljava/lang/String;
+    //   1992: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1995: pop
+    //   1996: aload 17
+    //   1998: astore 19
+    //   2000: aload 16
+    //   2002: iconst_2
+    //   2003: aload 20
+    //   2005: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2008: aload 15
+    //   2010: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2013: aload 17
+    //   2015: astore 19
+    //   2017: aload_0
+    //   2018: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   2021: ifnull +18 -> 2039
+    //   2024: aload 17
+    //   2026: astore 19
+    //   2028: aload_0
+    //   2029: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   2032: bipush 6
+    //   2034: invokeinterface 160 2 0
+    //   2039: aload 17
+    //   2041: astore 19
+    //   2043: new 129	java/lang/StringBuilder
+    //   2046: dup
+    //   2047: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   2050: astore 15
+    //   2052: aload 17
+    //   2054: astore 19
+    //   2056: aload 15
+    //   2058: iload 4
+    //   2060: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2063: pop
+    //   2064: aload 17
+    //   2066: astore 19
+    //   2068: aload 15
+    //   2070: ldc 136
+    //   2072: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2075: pop
+    //   2076: aload 17
+    //   2078: astore 19
+    //   2080: ldc 141
+    //   2082: ldc 143
+    //   2084: ldc_w 437
+    //   2087: ldc 136
+    //   2089: aload 15
+    //   2091: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2094: ldc 136
+    //   2096: invokestatic 153	com/tencent/mobileqq/utils/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2099: aload 17
+    //   2101: astore 19
+    //   2103: aload_0
+    //   2104: lconst_0
+    //   2105: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   2108: aload 17
+    //   2110: ifnull +370 -> 2480
+    //   2113: aload 17
+    //   2115: invokevirtual 335	java/io/RandomAccessFile:close	()V
+    //   2118: return
+    //   2119: astore 19
+    //   2121: ldc_w 277
+    //   2124: astore 18
+    //   2126: aconst_null
+    //   2127: astore 17
+    //   2129: aload 15
+    //   2131: astore 16
+    //   2133: aload 19
+    //   2135: astore 15
+    //   2137: aload 17
+    //   2139: astore 19
+    //   2141: new 129	java/lang/StringBuilder
+    //   2144: dup
+    //   2145: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   2148: astore 20
+    //   2150: aload 17
+    //   2152: astore 19
+    //   2154: aload 20
+    //   2156: aload 18
+    //   2158: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2161: pop
+    //   2162: aload 17
+    //   2164: astore 19
+    //   2166: aload 20
+    //   2168: aload 15
+    //   2170: invokevirtual 432	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   2173: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2176: pop
+    //   2177: aload 17
+    //   2179: astore 19
+    //   2181: aload 16
+    //   2183: iconst_2
+    //   2184: aload 20
+    //   2186: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2189: aload 15
+    //   2191: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2194: aload 17
+    //   2196: astore 19
+    //   2198: aload_0
+    //   2199: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   2202: ifnull +18 -> 2220
+    //   2205: aload 17
+    //   2207: astore 19
+    //   2209: aload_0
+    //   2210: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   2213: bipush 6
+    //   2215: invokeinterface 160 2 0
+    //   2220: aload 17
+    //   2222: astore 19
+    //   2224: new 129	java/lang/StringBuilder
+    //   2227: dup
+    //   2228: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   2231: astore 15
+    //   2233: aload 17
+    //   2235: astore 19
+    //   2237: aload 15
+    //   2239: iload 4
+    //   2241: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2244: pop
+    //   2245: aload 17
+    //   2247: astore 19
+    //   2249: aload 15
+    //   2251: ldc 136
+    //   2253: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2256: pop
+    //   2257: aload 17
+    //   2259: astore 19
+    //   2261: ldc 141
+    //   2263: ldc 143
+    //   2265: ldc_w 439
+    //   2268: ldc 136
+    //   2270: aload 15
+    //   2272: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2275: ldc 136
+    //   2277: invokestatic 153	com/tencent/mobileqq/utils/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2280: aload 17
+    //   2282: astore 19
+    //   2284: aload_0
+    //   2285: lconst_0
+    //   2286: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   2289: aload 17
+    //   2291: ifnull +189 -> 2480
+    //   2294: aload 17
+    //   2296: invokevirtual 335	java/io/RandomAccessFile:close	()V
+    //   2299: return
+    //   2300: astore 19
+    //   2302: ldc_w 277
+    //   2305: astore 18
+    //   2307: aconst_null
+    //   2308: astore 17
+    //   2310: aload 15
+    //   2312: astore 16
+    //   2314: aload 19
+    //   2316: astore 15
+    //   2318: aload 17
+    //   2320: astore 19
+    //   2322: new 129	java/lang/StringBuilder
+    //   2325: dup
+    //   2326: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   2329: astore 20
+    //   2331: aload 17
+    //   2333: astore 19
+    //   2335: aload 20
+    //   2337: aload 18
+    //   2339: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2342: pop
+    //   2343: aload 17
+    //   2345: astore 19
+    //   2347: aload 20
+    //   2349: aload 15
+    //   2351: invokevirtual 440	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   2354: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2357: pop
+    //   2358: aload 17
+    //   2360: astore 19
+    //   2362: aload 16
+    //   2364: iconst_2
+    //   2365: aload 20
+    //   2367: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2370: aload 15
+    //   2372: invokestatic 431	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   2375: aload 17
+    //   2377: astore 19
+    //   2379: aload_0
+    //   2380: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   2383: ifnull +18 -> 2401
+    //   2386: aload 17
+    //   2388: astore 19
+    //   2390: aload_0
+    //   2391: getfield 155	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback	Lcooperation/troop_homework/TroopHomeworkHelper$UploadCallback;
+    //   2394: bipush 6
+    //   2396: invokeinterface 160 2 0
+    //   2401: aload 17
+    //   2403: astore 19
+    //   2405: new 129	java/lang/StringBuilder
+    //   2408: dup
+    //   2409: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   2412: astore 15
+    //   2414: aload 17
+    //   2416: astore 19
+    //   2418: aload 15
+    //   2420: iload 4
+    //   2422: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2425: pop
+    //   2426: aload 17
+    //   2428: astore 19
+    //   2430: aload 15
+    //   2432: ldc 136
+    //   2434: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2437: pop
+    //   2438: aload 17
+    //   2440: astore 19
+    //   2442: ldc 141
+    //   2444: ldc 143
+    //   2446: ldc_w 442
+    //   2449: ldc 136
+    //   2451: aload 15
+    //   2453: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2456: ldc 136
+    //   2458: invokestatic 153	com/tencent/mobileqq/utils/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   2461: aload 17
+    //   2463: astore 19
+    //   2465: aload_0
+    //   2466: lconst_0
+    //   2467: putfield 33	cooperation/troop_homework/TroopHomeworkHelper$UploadFileTask:jdField_a_of_type_Long	J
+    //   2470: aload 17
+    //   2472: ifnull +8 -> 2480
+    //   2475: aload 17
+    //   2477: invokevirtual 335	java/io/RandomAccessFile:close	()V
+    //   2480: return
+    //   2481: astore 15
+    //   2483: aload 19
+    //   2485: ifnull +18 -> 2503
+    //   2488: aload 19
+    //   2490: invokevirtual 335	java/io/RandomAccessFile:close	()V
+    //   2493: goto +10 -> 2503
+    //   2496: astore 16
+    //   2498: aload 16
+    //   2500: invokevirtual 338	java/io/IOException:printStackTrace	()V
+    //   2503: goto +6 -> 2509
+    //   2506: aload 15
+    //   2508: athrow
+    //   2509: goto -3 -> 2506
+    //   2512: goto -1830 -> 682
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1642	0	this	UploadFileTask
-    //   246	1074	1	i	int
-    //   283	349	2	j	int
-    //   57	1287	3	k	int
-    //   280	39	4	m	int
-    //   137	1499	5	l1	long
-    //   232	1406	7	l2	long
-    //   127	531	9	l3	long
-    //   161	3	11	bool	boolean
-    //   116	58	12	localRandomAccessFile	java.io.RandomAccessFile
-    //   179	253	12	localIOException1	java.io.IOException
-    //   437	444	12	localIOException2	java.io.IOException
-    //   886	144	12	localIOException3	java.io.IOException
-    //   1035	171	12	localIOException4	java.io.IOException
-    //   1211	11	12	localIOException5	java.io.IOException
-    //   1243	303	12	localObject1	Object
-    //   1573	11	12	localObject2	Object
-    //   1589	25	12	localObject3	Object
-    //   120	206	13	localObject4	Object
-    //   336	30	13	localFileNotFoundException1	java.io.FileNotFoundException
-    //   454	1094	13	localObject5	Object
-    //   1563	3	13	localIOException6	java.io.IOException
-    //   1576	10	13	localObject6	Object
-    //   1610	11	13	localFileNotFoundException2	java.io.FileNotFoundException
-    //   243	628	14	localObject7	Object
-    //   894	13	14	localException1	java.lang.Exception
-    //   914	149	14	localIOException7	java.io.IOException
-    //   1070	13	14	localException2	java.lang.Exception
-    //   1090	34	14	localInvalidParameterException1	InvalidParameterException
-    //   1219	13	14	localException3	java.lang.Exception
-    //   1261	145	14	localObject8	Object
-    //   1413	40	14	localException4	java.lang.Exception
-    //   1460	30	14	localException5	java.lang.Exception
-    //   1497	13	14	localException6	java.lang.Exception
-    //   1517	24	14	localObject9	Object
-    //   1581	7	14	localObject10	Object
-    //   1594	1	14	localInvalidParameterException2	InvalidParameterException
-    //   1602	1	14	localIOException8	java.io.IOException
-    //   1618	1	14	localObject11	Object
-    //   267	190	15	arrayOfByte	byte[]
-    //   1258	37	15	localIOException9	java.io.IOException
-    //   1520	12	15	localObject12	Object
-    //   1543	13	15	localException7	java.lang.Exception
-    //   1622	1	15	localFileNotFoundException3	java.io.FileNotFoundException
-    //   1627	1	15	localIOException10	java.io.IOException
-    //   95	472	16	localJSONArray	JSONArray
+    //   0	2515	0	this	UploadFileTask
+    //   594	792	1	i	int
+    //   561	117	2	j	int
+    //   625	25	3	k	int
+    //   71	2350	4	m	int
+    //   610	35	5	n	int
+    //   224	1369	6	l1	long
+    //   178	1411	8	l2	long
+    //   385	1206	10	l3	long
+    //   684	903	12	l4	long
+    //   320	545	14	bool	boolean
+    //   12	297	15	str1	String
+    //   333	95	15	localIOException1	java.io.IOException
+    //   450	783	15	str2	String
+    //   1236	6	15	localInvalidParameterException1	InvalidParameterException
+    //   1245	6	15	localIOException2	java.io.IOException
+    //   1254	403	15	localFileNotFoundException1	java.io.FileNotFoundException
+    //   1660	10	15	localInvalidParameterException2	InvalidParameterException
+    //   1673	10	15	localIOException3	java.io.IOException
+    //   1686	31	15	localFileNotFoundException2	java.io.FileNotFoundException
+    //   1722	118	15	localObject1	Object
+    //   1866	3	15	localIOException4	java.io.IOException
+    //   1874	1	15	localObject2	Object
+    //   1879	1	15	localInvalidParameterException3	InvalidParameterException
+    //   1896	1	15	localIOException5	java.io.IOException
+    //   1913	1	15	localFileNotFoundException3	java.io.FileNotFoundException
+    //   1930	19	15	localObject3	Object
+    //   1954	498	15	localObject4	Object
+    //   2481	26	15	localObject5	Object
+    //   3	2360	16	localObject6	Object
+    //   2496	3	16	localIOException6	java.io.IOException
+    //   131	1515	17	localObject7	Object
+    //   1691	1	17	localInvalidParameterException4	InvalidParameterException
+    //   1696	1	17	localIOException7	java.io.IOException
+    //   1701	1	17	localFileNotFoundException4	java.io.FileNotFoundException
+    //   1706	15	17	localInvalidParameterException5	InvalidParameterException
+    //   1726	1	17	localObject8	Object
+    //   1731	15	17	localIOException8	java.io.IOException
+    //   1751	1	17	localObject9	Object
+    //   1756	15	17	localFileNotFoundException5	java.io.FileNotFoundException
+    //   1776	700	17	localObject10	Object
+    //   143	834	18	localObject11	Object
+    //   1000	1	18	localObject12	Object
+    //   1009	1	18	localObject13	Object
+    //   1130	12	18	localException1	java.lang.Exception
+    //   1178	12	18	localException2	java.lang.Exception
+    //   1234	19	18	localObject14	Object
+    //   1259	12	18	localException3	java.lang.Exception
+    //   1282	1	18	localObject15	Object
+    //   1297	1	18	localObject16	Object
+    //   1306	1	18	localObject17	Object
+    //   1311	1	18	localObject18	Object
+    //   1322	149	18	localObject19	Object
+    //   1482	37	18	localException4	java.lang.Exception
+    //   1530	25	18	localException5	java.lang.Exception
+    //   1566	39	18	localException6	java.lang.Exception
+    //   1610	728	18	localObject20	Object
+    //   135	642	19	localObject21	Object
+    //   972	1	19	localIOException9	java.io.IOException
+    //   995	1	19	localIOException10	java.io.IOException
+    //   1005	1	19	localIOException11	java.io.IOException
+    //   1037	227	19	localObject22	Object
+    //   1287	1	19	localIOException12	java.io.IOException
+    //   1292	1	19	localIOException13	java.io.IOException
+    //   1302	1	19	localIOException14	java.io.IOException
+    //   1319	50	19	localIOException15	java.io.IOException
+    //   1396	175	19	localObject23	Object
+    //   1597	1	19	localObject24	Object
+    //   1602	7	19	localObject25	Object
+    //   1619	156	19	localObject26	Object
+    //   1781	7	19	localInvalidParameterException6	InvalidParameterException
+    //   1793	7	19	localObject27	Object
+    //   1806	7	19	localIOException16	java.io.IOException
+    //   1818	7	19	localObject28	Object
+    //   1831	7	19	localFileNotFoundException6	java.io.FileNotFoundException
+    //   1843	91	19	localObject29	Object
+    //   1938	15	19	localInvalidParameterException7	InvalidParameterException
+    //   1958	144	19	localObject30	Object
+    //   2119	15	19	localIOException17	java.io.IOException
+    //   2139	144	19	localObject31	Object
+    //   2300	15	19	localFileNotFoundException7	java.io.FileNotFoundException
+    //   2320	169	19	localObject32	Object
+    //   155	1467	20	localObject33	Object
+    //   1629	278	20	localException7	java.lang.Exception
+    //   1967	399	20	localStringBuilder	StringBuilder
+    //   8	1631	21	str3	String
+    //   167	1757	22	localObject34	Object
+    //   147	1735	23	localObject35	Object
+    //   159	1744	24	localObject36	Object
+    //   171	1749	25	localObject37	Object
+    //   139	1751	26	localObject38	Object
+    //   151	1748	27	localObject39	Object
+    //   163	1753	28	localObject40	Object
+    //   110	714	29	localJSONArray	JSONArray
     // Exception table:
     //   from	to	target	type
-    //   173	178	179	java/io/IOException
-    //   122	129	336	java/io/FileNotFoundException
-    //   133	139	336	java/io/FileNotFoundException
-    //   143	153	336	java/io/FileNotFoundException
-    //   157	163	336	java/io/FileNotFoundException
-    //   191	205	336	java/io/FileNotFoundException
-    //   209	221	336	java/io/FileNotFoundException
-    //   225	234	336	java/io/FileNotFoundException
-    //   238	245	336	java/io/FileNotFoundException
-    //   251	258	336	java/io/FileNotFoundException
-    //   262	269	336	java/io/FileNotFoundException
-    //   273	282	336	java/io/FileNotFoundException
-    //   304	315	336	java/io/FileNotFoundException
-    //   327	333	336	java/io/FileNotFoundException
-    //   456	466	336	java/io/FileNotFoundException
-    //   474	489	336	java/io/FileNotFoundException
-    //   493	584	336	java/io/FileNotFoundException
-    //   749	754	336	java/io/FileNotFoundException
-    //   870	875	336	java/io/FileNotFoundException
-    //   900	911	336	java/io/FileNotFoundException
-    //   1062	1067	336	java/io/FileNotFoundException
-    //   1076	1087	336	java/io/FileNotFoundException
-    //   1225	1236	336	java/io/FileNotFoundException
-    //   1405	1410	336	java/io/FileNotFoundException
-    //   1419	1430	336	java/io/FileNotFoundException
-    //   1452	1457	336	java/io/FileNotFoundException
-    //   1466	1477	336	java/io/FileNotFoundException
-    //   1489	1494	336	java/io/FileNotFoundException
-    //   1503	1514	336	java/io/FileNotFoundException
-    //   1531	1536	336	java/io/FileNotFoundException
-    //   1540	1543	336	java/io/FileNotFoundException
-    //   1549	1560	336	java/io/FileNotFoundException
-    //   431	436	437	java/io/IOException
-    //   880	885	886	java/io/IOException
-    //   870	875	894	java/lang/Exception
-    //   122	129	914	java/io/IOException
-    //   133	139	914	java/io/IOException
-    //   143	153	914	java/io/IOException
-    //   157	163	914	java/io/IOException
-    //   191	205	914	java/io/IOException
-    //   209	221	914	java/io/IOException
-    //   225	234	914	java/io/IOException
-    //   238	245	914	java/io/IOException
-    //   251	258	914	java/io/IOException
-    //   262	269	914	java/io/IOException
-    //   273	282	914	java/io/IOException
-    //   304	315	914	java/io/IOException
-    //   327	333	914	java/io/IOException
-    //   456	466	914	java/io/IOException
-    //   474	489	914	java/io/IOException
-    //   493	584	914	java/io/IOException
-    //   749	754	914	java/io/IOException
-    //   870	875	914	java/io/IOException
-    //   900	911	914	java/io/IOException
-    //   1062	1067	914	java/io/IOException
-    //   1076	1087	914	java/io/IOException
-    //   1225	1236	914	java/io/IOException
-    //   1405	1410	914	java/io/IOException
-    //   1419	1430	914	java/io/IOException
-    //   1452	1457	914	java/io/IOException
-    //   1466	1477	914	java/io/IOException
-    //   1489	1494	914	java/io/IOException
-    //   1503	1514	914	java/io/IOException
-    //   1531	1536	914	java/io/IOException
-    //   1540	1543	914	java/io/IOException
-    //   1549	1560	914	java/io/IOException
-    //   1029	1034	1035	java/io/IOException
-    //   1062	1067	1070	java/lang/Exception
-    //   122	129	1090	java/security/InvalidParameterException
-    //   133	139	1090	java/security/InvalidParameterException
-    //   143	153	1090	java/security/InvalidParameterException
-    //   157	163	1090	java/security/InvalidParameterException
-    //   191	205	1090	java/security/InvalidParameterException
-    //   209	221	1090	java/security/InvalidParameterException
-    //   225	234	1090	java/security/InvalidParameterException
-    //   238	245	1090	java/security/InvalidParameterException
-    //   251	258	1090	java/security/InvalidParameterException
-    //   262	269	1090	java/security/InvalidParameterException
-    //   273	282	1090	java/security/InvalidParameterException
-    //   304	315	1090	java/security/InvalidParameterException
-    //   327	333	1090	java/security/InvalidParameterException
-    //   456	466	1090	java/security/InvalidParameterException
-    //   474	489	1090	java/security/InvalidParameterException
-    //   493	584	1090	java/security/InvalidParameterException
-    //   749	754	1090	java/security/InvalidParameterException
-    //   870	875	1090	java/security/InvalidParameterException
-    //   900	911	1090	java/security/InvalidParameterException
-    //   1062	1067	1090	java/security/InvalidParameterException
-    //   1076	1087	1090	java/security/InvalidParameterException
-    //   1225	1236	1090	java/security/InvalidParameterException
-    //   1405	1410	1090	java/security/InvalidParameterException
-    //   1419	1430	1090	java/security/InvalidParameterException
-    //   1452	1457	1090	java/security/InvalidParameterException
-    //   1466	1477	1090	java/security/InvalidParameterException
-    //   1489	1494	1090	java/security/InvalidParameterException
-    //   1503	1514	1090	java/security/InvalidParameterException
-    //   1531	1536	1090	java/security/InvalidParameterException
-    //   1540	1543	1090	java/security/InvalidParameterException
-    //   1549	1560	1090	java/security/InvalidParameterException
-    //   1205	1210	1211	java/io/IOException
-    //   749	754	1219	java/lang/Exception
-    //   122	129	1243	finally
-    //   133	139	1243	finally
-    //   143	153	1243	finally
-    //   157	163	1243	finally
-    //   191	205	1243	finally
-    //   209	221	1243	finally
-    //   225	234	1243	finally
-    //   238	245	1243	finally
-    //   251	258	1243	finally
-    //   262	269	1243	finally
-    //   273	282	1243	finally
-    //   304	315	1243	finally
-    //   327	333	1243	finally
-    //   456	466	1243	finally
-    //   474	489	1243	finally
-    //   493	584	1243	finally
-    //   749	754	1243	finally
-    //   870	875	1243	finally
-    //   900	911	1243	finally
-    //   920	952	1243	finally
-    //   956	963	1243	finally
-    //   967	978	1243	finally
-    //   982	1015	1243	finally
-    //   1019	1024	1243	finally
-    //   1062	1067	1243	finally
-    //   1076	1087	1243	finally
-    //   1096	1128	1243	finally
-    //   1132	1139	1243	finally
-    //   1143	1154	1243	finally
-    //   1158	1191	1243	finally
-    //   1195	1200	1243	finally
-    //   1225	1236	1243	finally
-    //   1405	1410	1243	finally
-    //   1419	1430	1243	finally
-    //   1452	1457	1243	finally
-    //   1466	1477	1243	finally
-    //   1489	1494	1243	finally
-    //   1503	1514	1243	finally
-    //   1531	1536	1243	finally
-    //   1540	1543	1243	finally
-    //   1549	1560	1243	finally
-    //   584	600	1258	java/io/IOException
-    //   1405	1410	1413	java/lang/Exception
-    //   1452	1457	1460	java/lang/Exception
-    //   1489	1494	1497	java/lang/Exception
-    //   584	600	1517	finally
-    //   1531	1536	1543	java/lang/Exception
-    //   1250	1255	1563	java/io/IOException
-    //   102	118	1573	finally
-    //   338	388	1581	finally
-    //   388	426	1581	finally
-    //   102	118	1594	java/security/InvalidParameterException
-    //   102	118	1602	java/io/IOException
-    //   102	118	1610	java/io/FileNotFoundException
-    //   604	612	1618	finally
-    //   616	623	1618	finally
-    //   627	649	1618	finally
-    //   653	663	1618	finally
-    //   667	700	1618	finally
-    //   704	717	1618	finally
-    //   721	726	1618	finally
-    //   730	736	1618	finally
-    //   765	772	1618	finally
-    //   776	781	1618	finally
-    //   789	822	1618	finally
-    //   826	833	1618	finally
-    //   837	851	1618	finally
-    //   855	861	1618	finally
-    //   1047	1053	1618	finally
-    //   1267	1299	1618	finally
-    //   1303	1310	1618	finally
-    //   1314	1319	1618	finally
-    //   1327	1360	1618	finally
-    //   1364	1371	1618	finally
-    //   1375	1386	1618	finally
-    //   1390	1396	1618	finally
-    //   1437	1443	1618	finally
-    //   604	612	1627	java/io/IOException
-    //   616	623	1627	java/io/IOException
-    //   627	649	1627	java/io/IOException
-    //   653	663	1627	java/io/IOException
-    //   667	700	1627	java/io/IOException
-    //   704	717	1627	java/io/IOException
-    //   721	726	1627	java/io/IOException
-    //   730	736	1627	java/io/IOException
-    //   765	772	1627	java/io/IOException
-    //   776	781	1627	java/io/IOException
-    //   789	822	1627	java/io/IOException
-    //   826	833	1627	java/io/IOException
-    //   837	851	1627	java/io/IOException
-    //   855	861	1627	java/io/IOException
-    //   1047	1053	1627	java/io/IOException
+    //   327	332	333	java/io/IOException
+    //   435	447	450	finally
+    //   880	969	972	java/io/IOException
+    //   981	992	995	java/io/IOException
+    //   869	875	1000	finally
+    //   880	969	1000	finally
+    //   981	992	1000	finally
+    //   869	875	1005	java/io/IOException
+    //   1118	1123	1130	java/lang/Exception
+    //   1166	1171	1178	java/lang/Exception
+    //   1136	1146	1232	java/security/InvalidParameterException
+    //   1166	1171	1232	java/security/InvalidParameterException
+    //   1184	1194	1232	java/security/InvalidParameterException
+    //   1220	1225	1232	java/security/InvalidParameterException
+    //   1265	1275	1232	java/security/InvalidParameterException
+    //   1136	1146	1241	java/io/IOException
+    //   1166	1171	1241	java/io/IOException
+    //   1184	1194	1241	java/io/IOException
+    //   1220	1225	1241	java/io/IOException
+    //   1265	1275	1241	java/io/IOException
+    //   1136	1146	1250	java/io/FileNotFoundException
+    //   1166	1171	1250	java/io/FileNotFoundException
+    //   1184	1194	1250	java/io/FileNotFoundException
+    //   1220	1225	1250	java/io/FileNotFoundException
+    //   1265	1275	1250	java/io/FileNotFoundException
+    //   1220	1225	1259	java/lang/Exception
+    //   1201	1207	1282	finally
+    //   1201	1207	1287	java/io/IOException
+    //   1014	1026	1292	java/io/IOException
+    //   1030	1074	1292	java/io/IOException
+    //   1078	1105	1292	java/io/IOException
+    //   857	864	1297	finally
+    //   1014	1026	1297	finally
+    //   1030	1074	1297	finally
+    //   1078	1105	1297	finally
+    //   857	864	1302	java/io/IOException
+    //   841	857	1311	finally
+    //   841	857	1319	java/io/IOException
+    //   1470	1475	1482	java/lang/Exception
+    //   1518	1523	1530	java/lang/Exception
+    //   1554	1559	1566	java/lang/Exception
+    //   1341	1385	1597	finally
+    //   1389	1457	1597	finally
+    //   1535	1541	1597	finally
+    //   1332	1341	1602	finally
+    //   1621	1626	1629	java/lang/Exception
+    //   1470	1475	1652	java/security/InvalidParameterException
+    //   1488	1498	1652	java/security/InvalidParameterException
+    //   1518	1523	1652	java/security/InvalidParameterException
+    //   1554	1559	1652	java/security/InvalidParameterException
+    //   1572	1582	1652	java/security/InvalidParameterException
+    //   1621	1626	1652	java/security/InvalidParameterException
+    //   1635	1645	1652	java/security/InvalidParameterException
+    //   1649	1652	1652	java/security/InvalidParameterException
+    //   1470	1475	1665	java/io/IOException
+    //   1488	1498	1665	java/io/IOException
+    //   1518	1523	1665	java/io/IOException
+    //   1554	1559	1665	java/io/IOException
+    //   1572	1582	1665	java/io/IOException
+    //   1621	1626	1665	java/io/IOException
+    //   1635	1645	1665	java/io/IOException
+    //   1649	1652	1665	java/io/IOException
+    //   1470	1475	1678	java/io/FileNotFoundException
+    //   1488	1498	1678	java/io/FileNotFoundException
+    //   1518	1523	1678	java/io/FileNotFoundException
+    //   1554	1559	1678	java/io/FileNotFoundException
+    //   1572	1582	1678	java/io/FileNotFoundException
+    //   1621	1626	1678	java/io/FileNotFoundException
+    //   1635	1645	1678	java/io/FileNotFoundException
+    //   1649	1652	1678	java/io/FileNotFoundException
+    //   638	649	1691	java/security/InvalidParameterException
+    //   662	677	1691	java/security/InvalidParameterException
+    //   694	709	1691	java/security/InvalidParameterException
+    //   713	722	1691	java/security/InvalidParameterException
+    //   726	735	1691	java/security/InvalidParameterException
+    //   739	749	1691	java/security/InvalidParameterException
+    //   753	762	1691	java/security/InvalidParameterException
+    //   766	774	1691	java/security/InvalidParameterException
+    //   778	841	1691	java/security/InvalidParameterException
+    //   1118	1123	1691	java/security/InvalidParameterException
+    //   638	649	1696	java/io/IOException
+    //   662	677	1696	java/io/IOException
+    //   694	709	1696	java/io/IOException
+    //   713	722	1696	java/io/IOException
+    //   726	735	1696	java/io/IOException
+    //   739	749	1696	java/io/IOException
+    //   753	762	1696	java/io/IOException
+    //   766	774	1696	java/io/IOException
+    //   778	841	1696	java/io/IOException
+    //   1118	1123	1696	java/io/IOException
+    //   638	649	1701	java/io/FileNotFoundException
+    //   662	677	1701	java/io/FileNotFoundException
+    //   694	709	1701	java/io/FileNotFoundException
+    //   713	722	1701	java/io/FileNotFoundException
+    //   726	735	1701	java/io/FileNotFoundException
+    //   739	749	1701	java/io/FileNotFoundException
+    //   753	762	1701	java/io/FileNotFoundException
+    //   766	774	1701	java/io/FileNotFoundException
+    //   778	841	1701	java/io/FileNotFoundException
+    //   1118	1123	1701	java/io/FileNotFoundException
+    //   603	612	1706	java/security/InvalidParameterException
+    //   603	612	1731	java/io/IOException
+    //   603	612	1756	java/io/FileNotFoundException
+    //   566	571	1781	java/security/InvalidParameterException
+    //   575	582	1781	java/security/InvalidParameterException
+    //   586	593	1781	java/security/InvalidParameterException
+    //   566	571	1806	java/io/IOException
+    //   575	582	1806	java/io/IOException
+    //   586	593	1806	java/io/IOException
+    //   566	571	1831	java/io/FileNotFoundException
+    //   575	582	1831	java/io/FileNotFoundException
+    //   586	593	1831	java/io/FileNotFoundException
+    //   1860	1865	1866	java/io/IOException
+    //   2113	2118	1866	java/io/IOException
+    //   2294	2299	1866	java/io/IOException
+    //   2475	2480	1866	java/io/IOException
+    //   173	180	1874	finally
+    //   220	226	1874	finally
+    //   266	276	1874	finally
+    //   316	322	1874	finally
+    //   381	387	1874	finally
+    //   499	505	1874	finally
+    //   545	551	1874	finally
+    //   566	571	1874	finally
+    //   575	582	1874	finally
+    //   586	593	1874	finally
+    //   603	612	1874	finally
+    //   173	180	1879	java/security/InvalidParameterException
+    //   220	226	1879	java/security/InvalidParameterException
+    //   266	276	1879	java/security/InvalidParameterException
+    //   316	322	1879	java/security/InvalidParameterException
+    //   381	387	1879	java/security/InvalidParameterException
+    //   435	447	1879	java/security/InvalidParameterException
+    //   499	505	1879	java/security/InvalidParameterException
+    //   545	551	1879	java/security/InvalidParameterException
+    //   173	180	1896	java/io/IOException
+    //   220	226	1896	java/io/IOException
+    //   266	276	1896	java/io/IOException
+    //   316	322	1896	java/io/IOException
+    //   381	387	1896	java/io/IOException
+    //   435	447	1896	java/io/IOException
+    //   499	505	1896	java/io/IOException
+    //   545	551	1896	java/io/IOException
+    //   173	180	1913	java/io/FileNotFoundException
+    //   220	226	1913	java/io/FileNotFoundException
+    //   266	276	1913	java/io/FileNotFoundException
+    //   316	322	1913	java/io/FileNotFoundException
+    //   381	387	1913	java/io/FileNotFoundException
+    //   435	447	1913	java/io/FileNotFoundException
+    //   499	505	1913	java/io/FileNotFoundException
+    //   545	551	1913	java/io/FileNotFoundException
+    //   117	133	1930	finally
+    //   117	133	1938	java/security/InvalidParameterException
+    //   117	133	2119	java/io/IOException
+    //   117	133	2300	java/io/FileNotFoundException
+    //   638	649	2481	finally
+    //   662	677	2481	finally
+    //   694	709	2481	finally
+    //   713	722	2481	finally
+    //   726	735	2481	finally
+    //   739	749	2481	finally
+    //   753	762	2481	finally
+    //   766	774	2481	finally
+    //   778	841	2481	finally
+    //   1118	1123	2481	finally
+    //   1136	1146	2481	finally
+    //   1166	1171	2481	finally
+    //   1184	1194	2481	finally
+    //   1220	1225	2481	finally
+    //   1265	1275	2481	finally
+    //   1470	1475	2481	finally
+    //   1488	1498	2481	finally
+    //   1518	1523	2481	finally
+    //   1554	1559	2481	finally
+    //   1572	1582	2481	finally
+    //   1621	1626	2481	finally
+    //   1635	1645	2481	finally
+    //   1649	1652	2481	finally
+    //   1960	1969	2481	finally
+    //   1973	1981	2481	finally
+    //   1985	1996	2481	finally
+    //   2000	2013	2481	finally
+    //   2017	2024	2481	finally
+    //   2028	2039	2481	finally
+    //   2043	2052	2481	finally
+    //   2056	2064	2481	finally
+    //   2068	2076	2481	finally
+    //   2080	2099	2481	finally
+    //   2103	2108	2481	finally
+    //   2141	2150	2481	finally
+    //   2154	2162	2481	finally
+    //   2166	2177	2481	finally
+    //   2181	2194	2481	finally
+    //   2198	2205	2481	finally
+    //   2209	2220	2481	finally
+    //   2224	2233	2481	finally
+    //   2237	2245	2481	finally
+    //   2249	2257	2481	finally
+    //   2261	2280	2481	finally
+    //   2284	2289	2481	finally
+    //   2322	2331	2481	finally
+    //   2335	2343	2481	finally
+    //   2347	2358	2481	finally
+    //   2362	2375	2481	finally
+    //   2379	2386	2481	finally
+    //   2390	2401	2481	finally
+    //   2405	2414	2481	finally
+    //   2418	2426	2481	finally
+    //   2430	2438	2481	finally
+    //   2442	2461	2481	finally
+    //   2465	2470	2481	finally
+    //   2488	2493	2496	java/io/IOException
   }
   
   public void a()
@@ -1290,15 +1875,22 @@ public class TroopHomeworkHelper$UploadFileTask
       ThreadManager.post(new TroopHomeworkHelper.UploadFileTask.1(this), 8, null, true);
       return;
     }
-    File localFile = new File(this.c);
-    if (((!localFile.exists()) || (localFile.length() == 0L)) && (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback != null))
+    Object localObject = new File(this.c);
+    if ((!((File)localObject).exists()) || (((File)localObject).length() == 0L))
     {
-      this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(-1);
-      int i = NetworkUtil.b(BaseApplicationImpl.getContext());
-      TroopTechReportUtils.a("grp_hw", "upload_video", "-13", "", i + "", "");
-      return;
+      TroopHomeworkHelper.UploadCallback localUploadCallback = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+      if (localUploadCallback != null)
+      {
+        localUploadCallback.b(-1);
+        int i = NetworkUtil.getNetworkType(MobileQQ.getContext());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-13", "", ((StringBuilder)localObject).toString(), "");
+        return;
+      }
     }
-    if (localFile.length() > 4096L)
+    if (((File)localObject).length() > 4096L)
     {
       e();
       return;
@@ -1313,39 +1905,49 @@ public class TroopHomeworkHelper$UploadFileTask
   
   public void b()
   {
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      ThreadManager.post(new TroopHomeworkHelper.UploadFileTask.4(this), 8, null, true);
-    }
-    do
+    if (Looper.myLooper() == Looper.getMainLooper())
     {
+      ThreadManager.post(new TroopHomeworkHelper.UploadFileTask.4(this), 8, null, true);
       return;
-      File localFile = new File(this.c);
-      if (((!localFile.exists()) || (localFile.length() == 0L)) && (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback != null))
+    }
+    Object localObject = new File(this.c);
+    if ((!((File)localObject).exists()) || (((File)localObject).length() == 0L))
+    {
+      TroopHomeworkHelper.UploadCallback localUploadCallback = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+      if (localUploadCallback != null)
       {
-        this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.b(-1);
-        int i = NetworkUtil.b(BaseApplicationImpl.getContext());
-        TroopTechReportUtils.a("grp_hw", "upload_video", "-13", "", i + "", "");
+        localUploadCallback.b(-1);
+        int i = NetworkUtil.getNetworkType(MobileQQ.getContext());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("");
+        TroopReportor.a("grp_hw", "upload_video", "-13", "", ((StringBuilder)localObject).toString(), "");
         return;
       }
-      if (localFile.length() <= 4096L) {
-        break label172;
+    }
+    if (((File)localObject).length() > 4096L)
+    {
+      if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+      {
+        if (this.jdField_a_of_type_Long >= ((File)localObject).length())
+        {
+          localObject = this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback;
+          if (localObject != null) {
+            ((TroopHomeworkHelper.UploadCallback)localObject).a(this.jdField_a_of_type_JavaLangString);
+          }
+        }
+        else
+        {
+          f();
+        }
       }
-      if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-        break label167;
+      else {
+        e();
       }
-      if (this.jdField_a_of_type_Long < localFile.length()) {
-        break;
-      }
-    } while (this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback == null);
-    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback.a(this.jdField_a_of_type_JavaLangString);
-    return;
-    f();
-    return;
-    label167:
-    e();
-    return;
-    label172:
-    d();
+    }
+    else {
+      d();
+    }
   }
   
   public void c()
@@ -1355,7 +1957,7 @@ public class TroopHomeworkHelper$UploadFileTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask
  * JD-Core Version:    0.7.0.1
  */

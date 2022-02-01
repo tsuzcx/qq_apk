@@ -22,12 +22,16 @@ final class SequencesKt___SequencesKt$requireNoNulls$1
     if (paramT != null) {
       return paramT;
     }
-    throw ((Throwable)new IllegalArgumentException("null element found in " + this.$this_requireNoNulls + '.'));
+    paramT = new StringBuilder();
+    paramT.append("null element found in ");
+    paramT.append(this.$this_requireNoNulls);
+    paramT.append('.');
+    throw ((Throwable)new IllegalArgumentException(paramT.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.sequences.SequencesKt___SequencesKt.requireNoNulls.1
  * JD-Core Version:    0.7.0.1
  */

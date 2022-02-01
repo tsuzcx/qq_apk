@@ -9,19 +9,24 @@ class QCircleChatPie$2
 {
   QCircleChatPie$2(QCircleChatPie paramQCircleChatPie) {}
   
-  public void onAddFriend(String paramString)
+  protected void onAddFriend(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onAddFriend : " + paramString);
+    if (QLog.isColorLevel())
+    {
+      String str = this.a.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAddFriend : ");
+      localStringBuilder.append(paramString);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
-    if ((this.a.t()) && (paramString != null) && (paramString.equals(this.a.a.a))) {
+    if ((this.a.l()) && (paramString != null) && (paramString.equals(this.a.a.a))) {
       QCircleChatPie.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.QCircleChatPie.2
  * JD-Core Version:    0.7.0.1
  */

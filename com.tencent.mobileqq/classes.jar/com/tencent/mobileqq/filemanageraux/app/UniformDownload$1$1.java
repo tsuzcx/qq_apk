@@ -27,31 +27,32 @@ class UniformDownload$1$1
     localIntent.putExtra(UniformDownloadActivity.b, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_JavaLangString);
     localIntent.putExtra(UniformDownloadActivity.d, this.jdField_a_of_type_JavaLangString);
     localIntent.setFlags(536870912);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_Long != 0L) {}
-    for (long l = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_Long;; l = this.jdField_a_of_type_Long)
-    {
-      localIntent.putExtra(UniformDownloadActivity.e, l);
-      localIntent.putExtra(UniformDownloadActivity.j, str2);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.b == 1L) {
-        localIntent.putExtra(UniformDownloadActivity.c, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.b);
-      }
-      localIntent.putExtra("fromArkAppDownload", this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_AndroidOsBundle.getBoolean("fromArkAppDownload", false));
-      localIntent.putExtra(UniformDownloadActivity.k, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_AndroidOsBundle.getString("param_refer_url", ""));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload.a.getIntent();
-      if (localObject != null)
-      {
-        localIntent.putExtra("big_brother_source_key", ((Intent)localObject).getStringExtra("big_brother_source_key"));
-        localIntent.putExtra("big_brother_ref_source_key", ((Intent)localObject).getStringExtra("big_brother_ref_source_key"));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload.a.startActivity(localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload.a.overridePendingTransition(0, 0);
-      return;
+    long l;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_Long != 0L) {
+      l = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_Long;
+    } else {
+      l = this.jdField_a_of_type_Long;
     }
+    localIntent.putExtra(UniformDownloadActivity.e, l);
+    localIntent.putExtra(UniformDownloadActivity.j, str2);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.b == 1L) {
+      localIntent.putExtra(UniformDownloadActivity.c, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.b);
+    }
+    localIntent.putExtra("fromArkAppDownload", this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_AndroidOsBundle.getBoolean("fromArkAppDownload", false));
+    localIntent.putExtra(UniformDownloadActivity.k, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_AndroidOsBundle.getString("param_refer_url", ""));
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload.a.getIntent();
+    if (localObject != null)
+    {
+      localIntent.putExtra("big_brother_source_key", ((Intent)localObject).getStringExtra("big_brother_source_key"));
+      localIntent.putExtra("big_brother_ref_source_key", ((Intent)localObject).getStringExtra("big_brother_ref_source_key"));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload.a.startActivity(localIntent);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$1.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.app.UniformDownload.1.1
  * JD-Core Version:    0.7.0.1
  */

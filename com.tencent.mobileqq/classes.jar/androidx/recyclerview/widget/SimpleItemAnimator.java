@@ -28,14 +28,18 @@ public abstract class SimpleItemAnimator
     int k = paramItemHolderInfo1.left;
     int m = paramItemHolderInfo1.top;
     int i;
-    if (paramViewHolder2.shouldIgnore()) {
-      i = paramItemHolderInfo1.left;
-    }
-    for (int j = paramItemHolderInfo1.top;; j = paramItemHolderInfo2.top)
+    int j;
+    if (paramViewHolder2.shouldIgnore())
     {
-      return animateChange(paramViewHolder1, paramViewHolder2, k, m, i, j);
-      i = paramItemHolderInfo2.left;
+      i = paramItemHolderInfo1.left;
+      j = paramItemHolderInfo1.top;
     }
+    else
+    {
+      i = paramItemHolderInfo2.left;
+      j = paramItemHolderInfo2.top;
+    }
+    return animateChange(paramViewHolder1, paramViewHolder2, k, m, i, j);
   }
   
   public boolean animateDisappearance(@NonNull RecyclerView.ViewHolder paramViewHolder, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo1, @Nullable RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo2)
@@ -44,25 +48,22 @@ public abstract class SimpleItemAnimator
     int m = paramItemHolderInfo1.top;
     paramItemHolderInfo1 = paramViewHolder.itemView;
     int i;
-    if (paramItemHolderInfo2 == null)
-    {
+    if (paramItemHolderInfo2 == null) {
       i = paramItemHolderInfo1.getLeft();
-      if (paramItemHolderInfo2 != null) {
-        break label103;
-      }
+    } else {
+      i = paramItemHolderInfo2.left;
     }
-    label103:
-    for (int j = paramItemHolderInfo1.getTop();; j = paramItemHolderInfo2.top)
+    int j;
+    if (paramItemHolderInfo2 == null) {
+      j = paramItemHolderInfo1.getTop();
+    } else {
+      j = paramItemHolderInfo2.top;
+    }
+    if ((!paramViewHolder.isRemoved()) && ((k != i) || (m != j)))
     {
-      if ((paramViewHolder.isRemoved()) || ((k == i) && (m == j))) {
-        break label112;
-      }
       paramItemHolderInfo1.layout(i, j, paramItemHolderInfo1.getWidth() + i, paramItemHolderInfo1.getHeight() + j);
       return animateMove(paramViewHolder, k, m, i, j);
-      i = paramItemHolderInfo2.left;
-      break;
     }
-    label112:
     return animateRemove(paramViewHolder);
   }
   
@@ -70,11 +71,12 @@ public abstract class SimpleItemAnimator
   
   public boolean animatePersistence(@NonNull RecyclerView.ViewHolder paramViewHolder, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo1, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo2)
   {
-    if ((paramItemHolderInfo1.left != paramItemHolderInfo2.left) || (paramItemHolderInfo1.top != paramItemHolderInfo2.top)) {
-      return animateMove(paramViewHolder, paramItemHolderInfo1.left, paramItemHolderInfo1.top, paramItemHolderInfo2.left, paramItemHolderInfo2.top);
+    if ((paramItemHolderInfo1.left == paramItemHolderInfo2.left) && (paramItemHolderInfo1.top == paramItemHolderInfo2.top))
+    {
+      dispatchMoveFinished(paramViewHolder);
+      return false;
     }
-    dispatchMoveFinished(paramViewHolder);
-    return false;
+    return animateMove(paramViewHolder, paramItemHolderInfo1.left, paramItemHolderInfo1.top, paramItemHolderInfo2.left, paramItemHolderInfo2.top);
   }
   
   public abstract boolean animateRemove(RecyclerView.ViewHolder paramViewHolder);
@@ -156,7 +158,7 @@ public abstract class SimpleItemAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.SimpleItemAnimator
  * JD-Core Version:    0.7.0.1
  */

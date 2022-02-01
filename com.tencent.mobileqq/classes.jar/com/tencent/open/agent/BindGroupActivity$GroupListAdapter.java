@@ -23,41 +23,39 @@ public class BindGroupActivity$GroupListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject;
-    View localView;
+    BindGroupActivity.ViewHolder localViewHolder;
     if ((paramView != null) && (paramView.getTag() != null))
     {
-      localObject = (BindGroupActivity.ViewHolder)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      localObject = (BindGroupActivity.GroupInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((BindGroupActivity.GroupInfo)localObject).b);
-      paramView.jdField_a_of_type_JavaLangString = ((BindGroupActivity.GroupInfo)localObject).c;
-      Bitmap localBitmap = ImageLoader.a().a(((BindGroupActivity.GroupInfo)localObject).c);
-      if (localBitmap == null) {
-        break label171;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      localViewHolder = (BindGroupActivity.ViewHolder)paramView.getTag();
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562997, paramViewGroup, false);
-      paramView = new BindGroupActivity.ViewHolder();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366520));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379987));
-      localView.setTag(paramView);
-      break;
-      label171:
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840707);
-      ImageLoader.a().a(((BindGroupActivity.GroupInfo)localObject).c, this.a);
+      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562819, paramViewGroup, false);
+      localViewHolder = new BindGroupActivity.ViewHolder();
+      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366401));
+      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379316));
+      paramView.setTag(localViewHolder);
     }
+    BindGroupActivity.GroupInfo localGroupInfo = (BindGroupActivity.GroupInfo)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupInfo.b);
+    localViewHolder.jdField_a_of_type_JavaLangString = localGroupInfo.c;
+    Bitmap localBitmap = ImageLoader.a().a(localGroupInfo.c);
+    if (localBitmap != null)
+    {
+      localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+    }
+    else
+    {
+      localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840582);
+      ImageLoader.a().a(localGroupInfo.c, this.a);
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupActivity.GroupListAdapter
  * JD-Core Version:    0.7.0.1
  */

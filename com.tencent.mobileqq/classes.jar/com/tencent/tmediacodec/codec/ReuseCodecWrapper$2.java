@@ -10,15 +10,19 @@ class ReuseCodecWrapper$2
   
   public void run()
   {
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("ReuseCodecWrapper", "releaseOldSurface " + this.val$surface);
+    if (LogUtils.isLogEnable())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("releaseOldSurface ");
+      localStringBuilder.append(this.val$surface);
+      LogUtils.d("ReuseCodecWrapper", localStringBuilder.toString());
     }
     this.val$surface.release();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.codec.ReuseCodecWrapper.2
  * JD-Core Version:    0.7.0.1
  */

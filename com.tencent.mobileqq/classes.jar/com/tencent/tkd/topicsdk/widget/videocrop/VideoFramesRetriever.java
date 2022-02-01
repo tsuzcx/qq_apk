@@ -48,48 +48,55 @@ public final class VideoFramesRetriever
   
   private final FramesProcessor.Frame b(int paramInt)
   {
-    if (!a()) {
-      TLog.b("VideoFramesRetriever", "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
-    }
-    for (;;)
+    Object localObject;
+    if (!a())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("FetchFrameAtTime fail, status=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      TLog.b("VideoFramesRetriever", ((StringBuilder)localObject).toString());
       return null;
-      try
+    }
+    try
+    {
+      localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("mRequestingFrames");
+      }
+      long l;
+      if (((ConcurrentHashMap)localObject).containsKey(Integer.valueOf(paramInt)))
       {
-        Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+        localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
         if (localObject == null) {
           Intrinsics.throwUninitializedPropertyAccessException("mRequestingFrames");
         }
-        if (((ConcurrentHashMap)localObject).containsKey(Integer.valueOf(paramInt)))
+        localObject = (VideoFramesRetriever.FrameFetchTask)((ConcurrentHashMap)localObject).get(Integer.valueOf(paramInt));
+        if (localObject != null)
         {
-          localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-          if (localObject == null) {
-            Intrinsics.throwUninitializedPropertyAccessException("mRequestingFrames");
-          }
-          localObject = (VideoFramesRetriever.FrameFetchTask)((ConcurrentHashMap)localObject).get(Integer.valueOf(paramInt));
-          if (localObject == null) {
-            continue;
-          }
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
           ((VideoFramesRetriever.FrameFetchTask)localObject).a(l);
           return null;
         }
       }
-      catch (Exception localException)
+      else
       {
-        localException.printStackTrace();
+        l = jdField_a_of_type_Long;
+        jdField_a_of_type_Long = 1L + l;
+        localObject = new VideoFramesRetriever.FrameFetchTask(this, l, paramInt, paramInt + this.b);
+        BlockingQueue localBlockingQueue = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+        if (localBlockingQueue == null) {
+          Intrinsics.throwUninitializedPropertyAccessException("mFramesFetchingQueue");
+        }
+        localBlockingQueue.offer(localObject);
         return null;
       }
     }
-    long l = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = 1L + l;
-    VideoFramesRetriever.FrameFetchTask localFrameFetchTask = new VideoFramesRetriever.FrameFetchTask(this, l, paramInt, paramInt + this.b);
-    BlockingQueue localBlockingQueue = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-    if (localBlockingQueue == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("mFramesFetchingQueue");
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      return null;
     }
-    localBlockingQueue.offer(localFrameFetchTask);
     return null;
   }
   
@@ -104,34 +111,34 @@ public final class VideoFramesRetriever
     if (paramFrameAdapter != null) {
       this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = paramFrameAdapter;
     }
-    for (;;)
-    {
-      Executors.newSingleThreadExecutor().submit((Runnable)new VideoFramesRetriever.FrameFetchRunnable(this));
-      return 0;
-    }
+    Executors.newSingleThreadExecutor().submit((Runnable)new VideoFramesRetriever.FrameFetchRunnable(this));
+    return 0;
   }
   
   @Nullable
   public FramesProcessor.Frame a(int paramInt)
   {
-    if ((!a()) || (paramInt < 0))
+    if ((a()) && (paramInt >= 0))
     {
-      TLog.b("VideoFramesRetriever", "fetchFrameByIndex1 fail, status=" + this.jdField_a_of_type_Int);
-      return null;
-    }
-    FrameAdapter localFrameAdapter = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameAdapter;
-    if (localFrameAdapter == null) {
-      Intrinsics.throwNpe();
-    }
-    if (localFrameAdapter.a(paramInt))
-    {
-      localFrameAdapter = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameAdapter;
-      if (localFrameAdapter == null) {
+      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameAdapter;
+      if (localObject == null) {
         Intrinsics.throwNpe();
       }
-      return localFrameAdapter.a(paramInt);
+      if (((FrameAdapter)localObject).a(paramInt))
+      {
+        localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocropFrameAdapter;
+        if (localObject == null) {
+          Intrinsics.throwNpe();
+        }
+        return ((FrameAdapter)localObject).a(paramInt);
+      }
+      return b(paramInt * this.b);
     }
-    return b(this.b * paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("fetchFrameByIndex1 fail, status=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    TLog.b("VideoFramesRetriever", ((StringBuilder)localObject).toString());
+    return null;
   }
   
   public void a()
@@ -161,22 +168,25 @@ public final class VideoFramesRetriever
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((!a()) || (paramInt1 < 0) || (paramInt2 < 0)) {
-      TLog.b("VideoFramesRetriever", "fetchFrameByIndex2 fail, status=" + this.jdField_a_of_type_Int);
-    }
-    do
+    if ((a()) && (paramInt1 >= 0) && (paramInt2 >= 0))
     {
-      return;
       paramInt2 -= 1;
-    } while (paramInt2 < paramInt1);
-    for (;;)
-    {
-      a(paramInt2);
-      if (paramInt2 == paramInt1) {
-        break;
+      if (paramInt2 >= paramInt1) {
+        for (;;)
+        {
+          a(paramInt2);
+          if (paramInt2 == paramInt1) {
+            break;
+          }
+          paramInt2 -= 1;
+        }
       }
-      paramInt2 -= 1;
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fetchFrameByIndex2 fail, status=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    TLog.b("VideoFramesRetriever", localStringBuilder.toString());
   }
   
   public boolean a()
@@ -186,7 +196,7 @@ public final class VideoFramesRetriever
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoFramesRetriever
  * JD-Core Version:    0.7.0.1
  */

@@ -29,15 +29,15 @@ class QWalletBluetoothJsPlugin$QWLeScanCallback$1
         localJSONObject.put("devices", localJSONArray);
         QWalletBluetoothJsPlugin.access$200(this.this$1.this$0, "onBluetoothDeviceFound", localJSONObject.toString());
         ThreadManager.getUIHandler().postDelayed(this, QWalletBluetoothJsPlugin.QWLeScanCallback.access$900(this.this$1) * 1000);
-        return;
       }
+      return;
     }
     catch (JSONException localJSONException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin.QWLeScanCallback.1
  * JD-Core Version:    0.7.0.1
  */

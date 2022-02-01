@@ -18,21 +18,22 @@ import org.jetbrains.annotations.NotNull;
 @TargetApi(16)
 public class DropFrameMonitor
 {
-  private static long jdField_a_of_type_Long = 0L;
-  private static DropFrameMonitor jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor = null;
+  private static long jdField_a_of_type_Long;
+  private static DropFrameMonitor jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor;
   DropFrameMonitor.DropFrameCallback jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor$DropFrameCallback;
   
   public static DropFrameMonitor a()
   {
-    if (jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor == null) {
-        jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor = new DropFrameMonitor();
+    if (jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor == null) {
+          jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor = new DropFrameMonitor();
+        }
       }
-      return jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor;
   }
   
   public static void a()
@@ -48,85 +49,102 @@ public class DropFrameMonitor
   @NotNull
   public HashMap<String, String> a(String paramString, long paramLong1, long paramLong2, long[] paramArrayOfLong)
   {
-    if (this.jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor$DropFrameCallback != null) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor$DropFrameCallback.a(paramString, paramLong1, paramLong2, paramArrayOfLong);
+    Object localObject = this.jdField_a_of_type_ComTencentQqperfMonitorDropframeDropFrameMonitor$DropFrameCallback;
+    if (localObject != null) {
+      ((DropFrameMonitor.DropFrameCallback)localObject).a(paramString, paramLong1, paramLong2, paramArrayOfLong);
     }
-    if (QLog.isColorLevel()) {
-      Log.d("AutoMonitor.DropFrame", "tag = " + paramString + ", dropCount = " + paramLong2 + ", " + Arrays.toString(paramArrayOfLong) + ", totalMs = " + paramLong1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tag = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", dropCount = ");
+      ((StringBuilder)localObject).append(paramLong2);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(Arrays.toString(paramArrayOfLong));
+      ((StringBuilder)localObject).append(", totalMs = ");
+      ((StringBuilder)localObject).append(paramLong1);
+      Log.d("AutoMonitor.DropFrame", ((StringBuilder)localObject).toString());
     }
-    if (a()) {}
+    a();
     double d1 = paramArrayOfLong[4];
+    Double.isNaN(d1);
     double d2 = paramArrayOfLong[5];
+    Double.isNaN(d2);
     double d3 = paramArrayOfLong[0];
+    Double.isNaN(d3);
     double d4 = paramArrayOfLong[1];
+    Double.isNaN(d4);
     double d5 = paramArrayOfLong[2];
+    Double.isNaN(d5);
     double d6 = paramArrayOfLong[3];
+    Double.isNaN(d6);
     HashMap localHashMap = new HashMap(10);
     localHashMap.put("dropCount", String.valueOf(paramLong2));
     localHashMap.put("totalMs", String.valueOf(paramLong1));
     localHashMap.put("scene", paramString);
     localHashMap.put("dropTimes", Arrays.toString(paramArrayOfLong));
     localHashMap.put("isFirstLaunch", String.valueOf(DeviceOptSwitch.k));
-    String str1;
-    String str2;
-    String str3;
-    if (jdField_a_of_type_Long > 0L)
-    {
+    if (jdField_a_of_type_Long > 0L) {
       paramLong1 = SystemClock.uptimeMillis() - jdField_a_of_type_Long;
-      localHashMap.put("intervalAfterSyncMsg", String.valueOf(paramLong1));
-      localHashMap.put("hcState", String.valueOf(HardCoderManager.a().a()));
-      localHashMap.put("dropFenzi", String.valueOf(266.72000000000003D * d2 + 200.04000000000002D * d1));
-      localHashMap.put("dropFenzi2", String.valueOf(16.699999999999999D * d3 + 25.049999999999997D * d4 + 50.099999999999994D * d5 + 100.19999999999999D * d6));
-      if (DeviceOptSwitch.j)
-      {
-        paramArrayOfLong = "-1";
-        str1 = "-1";
-        str2 = "-1";
-        str3 = "-1";
-        paramLong1 = System.currentTimeMillis();
-        if (DeviceOptSwitch.e != -1L) {
-          break label512;
-        }
-      }
+    } else {
+      paramLong1 = -1L;
     }
-    label512:
-    for (paramString = "-1";; paramString = String.valueOf(paramLong1 - DeviceOptSwitch.e))
+    localHashMap.put("intervalAfterSyncMsg", String.valueOf(paramLong1));
+    localHashMap.put("hcState", String.valueOf(HardCoderManager.a().a()));
+    localHashMap.put("dropFenzi", String.valueOf(d1 * 200.04000000000002D + d2 * 266.72000000000003D));
+    localHashMap.put("dropFenzi2", String.valueOf(d3 * 16.699999999999999D + d4 * 25.049999999999997D + d5 * 50.099999999999994D + d6 * 100.19999999999999D));
+    if (DeviceOptSwitch.j)
     {
+      paramLong1 = System.currentTimeMillis();
+      paramLong2 = DeviceOptSwitch.e;
+      String str2 = "-1";
+      if (paramLong2 == -1L) {
+        paramString = "-1";
+      } else {
+        paramString = String.valueOf(paramLong1 - DeviceOptSwitch.e);
+      }
       if (DeviceOptSwitch.b != 0L) {
         paramArrayOfLong = String.valueOf(paramLong1 - DeviceOptSwitch.b);
+      } else {
+        paramArrayOfLong = "-1";
       }
       if (DeviceOptSwitch.jdField_a_of_type_Long != 0L) {
-        str1 = String.valueOf(paramLong1 - DeviceOptSwitch.jdField_a_of_type_Long);
+        localObject = String.valueOf(paramLong1 - DeviceOptSwitch.jdField_a_of_type_Long);
+      } else {
+        localObject = "-1";
       }
+      String str1;
       if (DeviceOptSwitch.d != 0L) {
-        str2 = String.valueOf(paramLong1 - DeviceOptSwitch.d);
+        str1 = String.valueOf(paramLong1 - DeviceOptSwitch.d);
+      } else {
+        str1 = "-1";
       }
       if (DeviceOptSwitch.c != 0L) {
-        str3 = String.valueOf(paramLong1 - DeviceOptSwitch.c);
+        str2 = String.valueOf(paramLong1 - DeviceOptSwitch.c);
       }
       localHashMap.put("perfConfigReportValue", String.valueOf(String.valueOf(DeviceOptSwitch.jdField_a_of_type_Int)));
       localHashMap.put("qZoneInterval", paramArrayOfLong);
-      localHashMap.put("miniInterval", str1);
-      localHashMap.put("troopListInterval", str2);
-      localHashMap.put("preDownloadInterval", str3);
+      localHashMap.put("miniInterval", localObject);
+      localHashMap.put("troopListInterval", str1);
+      localHashMap.put("preDownloadInterval", str2);
       localHashMap.put("automatorFinishtime", paramString);
-      UnifiedMonitor.a().addEvent(9, null, 0, 0, localHashMap);
-      return localHashMap;
-      paramLong1 = -1L;
-      break;
     }
+    UnifiedMonitor.a().addEvent(9, null, 0, 0, localHashMap);
+    return localHashMap;
   }
   
   public void a(String paramString)
   {
     MagnifierSDK.a().a().a(paramString);
-    if (paramString.equals("qzone_homepage")) {
+    if (paramString.equals("qzone_homepage"))
+    {
       HardCoderManager.a().a(0, 1, 1, 0, 1500, 701, 32L, Process.myTid(), "qzoneList", false);
-    }
-    while (!paramString.equals("list_photo")) {
       return;
     }
-    HardCoderManager.a().a(0, 1, 1, 0, 1500, 702, 32L, Process.myTid(), "photoList", false);
+    if (paramString.equals("list_photo")) {
+      HardCoderManager.a().a(0, 1, 1, 0, 1500, 702, 32L, Process.myTid(), "photoList", false);
+    }
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -136,7 +154,7 @@ public class DropFrameMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.dropframe.DropFrameMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -39,25 +39,31 @@ public class TextViewJsPlugin
   
   private boolean insertTextView(JSONObject paramJSONObject)
   {
-    boolean bool1 = true;
     int i = paramJSONObject.optInt("viewId");
     int j = paramJSONObject.optInt("parentId");
-    String str = paramJSONObject.optString("data");
-    boolean bool2 = paramJSONObject.optBoolean("gesture");
-    boolean bool3 = paramJSONObject.optBoolean("fixed", false);
-    CoverView localCoverView = CoverViewAction.obtain(this.mMiniAppContext).get(i);
-    Object localObject = localCoverView;
-    if (localCoverView == null)
+    Object localObject2 = paramJSONObject.optString("data");
+    boolean bool1 = paramJSONObject.optBoolean("gesture");
+    boolean bool2 = paramJSONObject.optBoolean("fixed", false);
+    Object localObject1 = CoverViewAction.obtain(this.mMiniAppContext).get(i);
+    if (localObject1 == null)
     {
-      localObject = new CoverTextView(this.mContext);
-      ((CoverView)localObject).setData(str, bool2, GetJsRuntimeListener.get(this.mMiniAppContext));
-      ((CoverView)localObject).setContentDescription(i + "_" + j);
-      ((CoverView)localObject).setParentId(j);
-      ((CoverView)localObject).setFixed(bool3);
-      bool1 = CoverViewAction.obtain(this.mMiniAppContext).add(j, i, (CoverView)localObject, bool3);
+      localObject1 = new CoverTextView(this.mContext);
+      ((CoverView)localObject1).setData((String)localObject2, bool1, GetJsRuntimeListener.get(this.mMiniAppContext));
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(j);
+      ((CoverView)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
+      ((CoverView)localObject1).setParentId(j);
+      ((CoverView)localObject1).setFixed(bool2);
+      bool1 = CoverViewAction.obtain(this.mMiniAppContext).add(j, i, (CoverView)localObject1, bool2);
     }
-    if ((localObject instanceof CoverTextView)) {
-      updateTextView((CoverTextView)localObject, paramJSONObject);
+    else
+    {
+      bool1 = true;
+    }
+    if ((localObject1 instanceof CoverTextView)) {
+      updateTextView((CoverTextView)localObject1, paramJSONObject);
     }
     return bool1;
   }
@@ -75,19 +81,19 @@ public class TextViewJsPlugin
   private void setGravity(CoverTextView paramCoverTextView, JSONObject paramJSONObject)
   {
     paramJSONObject = paramJSONObject.optString("textAlign");
-    if ("left".equals(paramJSONObject)) {
-      paramCoverTextView.setGravity(3);
-    }
-    do
+    if ("left".equals(paramJSONObject))
     {
+      paramCoverTextView.setGravity(3);
       return;
-      if ("center".equals(paramJSONObject))
-      {
-        paramCoverTextView.setGravity(17);
-        return;
-      }
-    } while (!"right".equals(paramJSONObject));
-    paramCoverTextView.setGravity(5);
+    }
+    if ("center".equals(paramJSONObject))
+    {
+      paramCoverTextView.setGravity(17);
+      return;
+    }
+    if ("right".equals(paramJSONObject)) {
+      paramCoverTextView.setGravity(5);
+    }
   }
   
   private void setPadding(CoverTextView paramCoverTextView, JSONObject paramJSONObject)
@@ -98,9 +104,10 @@ public class TextViewJsPlugin
       i = DisplayUtil.dip2px(this.mContext, i) - paramCoverTextView.getTextView().getLineHeight();
       if (i != 0)
       {
-        paramCoverTextView.setLineSpacing(i, 1.0F);
+        float f = i;
+        paramCoverTextView.setLineSpacing(f, 1.0F);
         if ((this.needSetPadding) && (Build.MANUFACTURER.equals("Xiaomi")) && (i < 0)) {
-          paramCoverTextView.getTextView().setPadding(0, (int)(i / DisplayUtil.getDensity(this.mContext)), 0, 0);
+          paramCoverTextView.getTextView().setPadding(0, (int)(f / DisplayUtil.getDensity(this.mContext)), 0, 0);
         }
       }
     }
@@ -114,8 +121,7 @@ public class TextViewJsPlugin
       int i = (int)(this.density * paramJSONObject.optInt("width") + 0.5F);
       int j = (int)(this.density * paramJSONObject.optInt("height") + 0.5F);
       int k = (int)(this.density * paramJSONObject.optInt("left") + 0.5F);
-      float f = this.density;
-      int m = (int)(paramJSONObject.optInt("top") * f + 0.5F);
+      int m = (int)(this.density * paramJSONObject.optInt("top") + 0.5F);
       paramJSONObject = new FrameLayout.LayoutParams(i, j);
       paramJSONObject.leftMargin = k;
       paramJSONObject.topMargin = m;
@@ -136,40 +142,41 @@ public class TextViewJsPlugin
   private void setStyle(CoverTextView paramCoverTextView, JSONObject paramJSONObject)
   {
     paramJSONObject = paramJSONObject.optJSONObject("style");
-    Object localObject;
     if (paramJSONObject != null)
     {
-      if (!paramJSONObject.has("bgColor")) {
-        break label233;
+      if (paramJSONObject.has("bgColor"))
+      {
+        localObject = ColorUtils.getActualColor(paramJSONObject.optString("bgColor"));
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          i = Color.parseColor((String)localObject);
+          break label53;
+        }
       }
-      localObject = ColorUtils.getActualColor(paramJSONObject.optString("bgColor"));
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label233;
-      }
-    }
-    label233:
-    for (int i = Color.parseColor((String)localObject);; i = 0)
-    {
+      int i = 0;
+      label53:
       if (paramJSONObject.has("borderColor"))
       {
         localObject = ColorUtils.getActualColor(paramJSONObject.optString("borderColor"));
-        if (TextUtils.isEmpty((CharSequence)localObject)) {}
-      }
-      for (int j = Color.parseColor((String)localObject);; j = 0)
-      {
-        paramCoverTextView.setAlpha((float)paramJSONObject.optDouble("opacity", 0.0D));
-        paramCoverTextView.setBackgroundColor(i);
-        paramCoverTextView.setScaleX((float)paramJSONObject.optDouble("scaleX", 1.0D));
-        paramCoverTextView.setScaleY((float)paramJSONObject.optDouble("scaleY", 1.0D));
-        localObject = paramJSONObject.optJSONArray("padding");
-        if (localObject != null) {
-          paramCoverTextView.setPadding(((JSONArray)localObject).optInt(3), ((JSONArray)localObject).optInt(0), ((JSONArray)localObject).optInt(1), ((JSONArray)localObject).optInt(2));
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          j = Color.parseColor((String)localObject);
+          break label96;
         }
-        paramCoverTextView.setBorder(paramJSONObject.optInt("borderWidth", 0), j, (float)paramJSONObject.optDouble("borderRadius", 0.0D), i);
-        paramCoverTextView.setAlpha((float)paramJSONObject.optDouble("opacity", 0.0D));
-        paramCoverTextView.setBorderRadius((float)paramJSONObject.optDouble("borderRadius", 0.0D) * this.density);
-        return;
       }
+      int j = 0;
+      label96:
+      paramCoverTextView.setAlpha((float)paramJSONObject.optDouble("opacity", 0.0D));
+      paramCoverTextView.setBackgroundColor(i);
+      paramCoverTextView.setScaleX((float)paramJSONObject.optDouble("scaleX", 1.0D));
+      paramCoverTextView.setScaleY((float)paramJSONObject.optDouble("scaleY", 1.0D));
+      Object localObject = paramJSONObject.optJSONArray("padding");
+      if (localObject != null) {
+        paramCoverTextView.setPadding(((JSONArray)localObject).optInt(3), ((JSONArray)localObject).optInt(0), ((JSONArray)localObject).optInt(1), ((JSONArray)localObject).optInt(2));
+      }
+      paramCoverTextView.setBorder(paramJSONObject.optInt("borderWidth", 0), j, (float)paramJSONObject.optDouble("borderRadius", 0.0D), i);
+      paramCoverTextView.setAlpha((float)paramJSONObject.optDouble("opacity", 0.0D));
+      paramCoverTextView.setBorderRadius((float)paramJSONObject.optDouble("borderRadius", 0.0D) * this.density);
     }
   }
   
@@ -254,7 +261,10 @@ public class TextViewJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("TextViewJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("TextViewJsPlugin", localStringBuilder.toString(), localJSONException);
     }
   }
   
@@ -268,7 +278,10 @@ public class TextViewJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("TextViewJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("TextViewJsPlugin", localStringBuilder.toString(), localJSONException);
     }
   }
   
@@ -282,13 +295,16 @@ public class TextViewJsPlugin
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("TextViewJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("TextViewJsPlugin", localStringBuilder.toString(), localJSONException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.TextViewJsPlugin
  * JD-Core Version:    0.7.0.1
  */

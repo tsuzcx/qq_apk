@@ -10,15 +10,19 @@ class JumpLoginResult$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpLoginResult", 2, "-->login success(finish after ls), go to AgentActivity, account:" + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->login success(finish after ls), go to AgentActivity, account:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("JumpLoginResult", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.JumpLoginResult.1
  * JD-Core Version:    0.7.0.1
  */

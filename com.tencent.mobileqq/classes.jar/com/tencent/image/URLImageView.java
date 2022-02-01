@@ -30,8 +30,9 @@ public class URLImageView
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (this.listener != null) {
-      this.listener.onLoadCancelled(this, paramURLDrawable);
+    URLDrawableDownListener localURLDrawableDownListener = this.listener;
+    if (localURLDrawableDownListener != null) {
+      localURLDrawableDownListener.onLoadCancelled(this, paramURLDrawable);
     }
   }
   
@@ -42,24 +43,22 @@ public class URLImageView
       super.setImageDrawable(null);
       super.setImageDrawable(paramURLDrawable);
     }
-    for (;;)
+    else if (getBackground() == paramURLDrawable)
     {
-      if (this.listener != null) {
-        this.listener.onLoadFailed(this, paramURLDrawable, null);
-      }
-      return;
-      if (getBackground() == paramURLDrawable)
-      {
-        super.setBackgroundDrawable(null);
-        super.setBackgroundDrawable(paramURLDrawable);
-      }
+      super.setBackgroundDrawable(null);
+      super.setBackgroundDrawable(paramURLDrawable);
+    }
+    paramThrowable = this.listener;
+    if (paramThrowable != null) {
+      paramThrowable.onLoadFailed(this, paramURLDrawable, null);
     }
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    if (this.listener != null) {
-      this.listener.onLoadProgressed(this, paramURLDrawable, paramInt);
+    URLDrawableDownListener localURLDrawableDownListener = this.listener;
+    if (localURLDrawableDownListener != null) {
+      localURLDrawableDownListener.onLoadProgressed(this, paramURLDrawable, paramInt);
     }
   }
   
@@ -71,17 +70,14 @@ public class URLImageView
       super.setImageDrawable(null);
       super.setImageDrawable(paramURLDrawable);
     }
-    for (;;)
+    else if (getBackground() == paramURLDrawable)
     {
-      if (this.listener != null) {
-        this.listener.onLoadSuccessed(this, paramURLDrawable);
-      }
-      return;
-      if (getBackground() == paramURLDrawable)
-      {
-        super.setBackgroundDrawable(null);
-        super.setBackgroundDrawable(paramURLDrawable);
-      }
+      super.setBackgroundDrawable(null);
+      super.setBackgroundDrawable(paramURLDrawable);
+    }
+    URLDrawableDownListener localURLDrawableDownListener = this.listener;
+    if (localURLDrawableDownListener != null) {
+      localURLDrawableDownListener.onLoadSuccessed(this, paramURLDrawable);
     }
   }
   
@@ -102,13 +98,15 @@ public class URLImageView
   
   public void setBackgroundURL(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("url can't be null");
-    }
-    if (((getBackground() instanceof URLDrawable)) && (((URLDrawable)getBackground()).getURL().toString().equals(paramString))) {
+    if (paramString != null)
+    {
+      if (((getBackground() instanceof URLDrawable)) && (((URLDrawable)getBackground()).getURL().toString().equals(paramString))) {
+        return;
+      }
+      setBackgroundDrawable(URLDrawable.getDrawable(paramString));
       return;
     }
-    setBackgroundDrawable(URLDrawable.getDrawable(paramString));
+    throw new IllegalArgumentException("url can't be null");
   }
   
   public void setImageDrawable(Drawable paramDrawable)
@@ -129,13 +127,15 @@ public class URLImageView
   @Deprecated
   public void setImageURL(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("url can't be null");
-    }
-    if (((getDrawable() instanceof URLDrawable)) && (((URLDrawable)getDrawable()).getURL().toString().equals(paramString))) {
+    if (paramString != null)
+    {
+      if (((getDrawable() instanceof URLDrawable)) && (((URLDrawable)getDrawable()).getURL().toString().equals(paramString))) {
+        return;
+      }
+      setImageDrawable(URLDrawable.getDrawable(paramString));
       return;
     }
-    setImageDrawable(URLDrawable.getDrawable(paramString));
+    throw new IllegalArgumentException("url can't be null");
   }
   
   public void setURLDrawableDownListener(URLDrawableDownListener paramURLDrawableDownListener)
@@ -145,7 +145,7 @@ public class URLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.URLImageView
  * JD-Core Version:    0.7.0.1
  */

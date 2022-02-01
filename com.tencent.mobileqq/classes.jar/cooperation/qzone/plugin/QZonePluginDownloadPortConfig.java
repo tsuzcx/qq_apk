@@ -25,13 +25,10 @@ class QZonePluginDownloadPortConfig
   private void initConfig()
   {
     String str = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadAccessPortList");
-    if (str != null) {}
-    for (;;)
-    {
-      setConfig(str);
-      return;
+    if (str == null) {
       str = "{'a[0-9].qpic.cn':[{'port': '80'},{'port': '14000'}],'m.qpic.cn':[{'port': '80'},{'port': '14000'}]}";
     }
+    setConfig(str);
   }
   
   private void initPort()
@@ -39,8 +36,12 @@ class QZonePluginDownloadPortConfig
     String str = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadAccessPortList");
     if (str != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginDownloadPortConfig", 2, "initPort, ports=" + str);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("initPort, ports=");
+        localStringBuilder.append(str);
+        QLog.d("QZonePluginDownloadPortConfig", 2, localStringBuilder.toString());
       }
       setConfig(str);
     }
@@ -56,7 +57,7 @@ class QZonePluginDownloadPortConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginDownloadPortConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -14,32 +14,38 @@ class ReportCenter$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    Object localObject;
+    if (i != 1000)
     {
-    default: 
-      super.handleMessage(paramMessage);
-      return;
-    case 1000: 
-      ReportCenter localReportCenter = this.a;
-      if (paramMessage.obj == null) {}
-      for (localObject = null;; localObject = (String)paramMessage.obj)
+      if (i == 1001)
       {
-        localReportCenter.a((String)localObject);
-        break;
+        localObject = this.a;
+        boolean bool;
+        if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        ((ReportCenter)localObject).a(bool);
       }
     }
-    Object localObject = this.a;
-    if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {}
-    for (boolean bool = true;; bool = false)
+    else
     {
-      ((ReportCenter)localObject).a(bool);
-      break;
+      ReportCenter localReportCenter = this.a;
+      if (paramMessage.obj == null) {
+        localObject = null;
+      } else {
+        localObject = (String)paramMessage.obj;
+      }
+      localReportCenter.a((String)localObject);
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.report.ReportCenter.1
  * JD-Core Version:    0.7.0.1
  */

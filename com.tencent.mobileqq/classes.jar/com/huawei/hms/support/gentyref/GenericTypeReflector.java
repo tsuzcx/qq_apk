@@ -22,12 +22,15 @@ public final class GenericTypeReflector
       }
       return getType(paramType.getBounds()[0]);
     }
-    throw new IllegalArgumentException("not supported: " + paramType.getClass());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("not supported: ");
+    localStringBuilder.append(paramType.getClass());
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.gentyref.GenericTypeReflector
  * JD-Core Version:    0.7.0.1
  */

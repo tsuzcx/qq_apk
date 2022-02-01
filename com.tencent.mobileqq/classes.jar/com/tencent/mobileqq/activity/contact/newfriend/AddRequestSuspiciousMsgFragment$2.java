@@ -16,24 +16,26 @@ class AddRequestSuspiciousMsgFragment$2
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity())) {
-        NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity(), AddRequestSuspiciousMsgFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment).uin + "", null, AddRequestSuspiciousMsgFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment).getCurrentAccountUin(), 20010, null);
-      } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity(), 2131694459, 0).a();
+    if (paramInt == 0) {
+      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getBaseActivity()))
+      {
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getBaseActivity();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(AddRequestSuspiciousMsgFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment).uin);
+        localStringBuilder.append("");
+        NewReportPlugin.a(paramView, localStringBuilder.toString(), null, AddRequestSuspiciousMsgFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment).getCurrentAccountUin(), 20010, null);
+      }
+      else
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getBaseActivity(), 2131694424, 0).a();
       }
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment.2
  * JD-Core Version:    0.7.0.1
  */

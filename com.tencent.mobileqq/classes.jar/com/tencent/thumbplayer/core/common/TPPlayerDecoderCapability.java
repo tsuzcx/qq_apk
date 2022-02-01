@@ -1,12 +1,29 @@
 package com.tencent.thumbplayer.core.common;
 
 import android.content.Context;
+import android.os.Build;
 import java.util.HashMap;
 
 public class TPPlayerDecoderCapability
 {
   private static String TAG = "TPPlayerDecoderCapability";
+  private static boolean mIsLibLoaded;
   private long mNativeContext = 0L;
+  
+  static
+  {
+    try
+    {
+      TPNativeLibraryLoader.loadLibIfNeeded(null);
+      mIsLibLoaded = true;
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      TPNativeLog.printLog(4, localUnsupportedOperationException.getMessage());
+      mIsLibLoaded = false;
+    }
+  }
   
   private static native boolean _addVCodecBlacklist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange);
   
@@ -21,46 +38,70 @@ public class TPPlayerDecoderCapability
     return true;
   }
   
+  public static boolean addDRMLevel1Blacklist(int paramInt)
+  {
+    return TPCodecUtils.addDRMLevel1Blacklist(paramInt);
+  }
+  
+  public static boolean addHDRBlackList(int paramInt, TPCodecCapability.TPHdrSupportVersionRange paramTPHdrSupportVersionRange)
+  {
+    return TPCodecUtils.addHDRBlackList(paramInt, Build.MODEL, paramTPHdrSupportVersionRange);
+  }
+  
+  public static boolean addHDRWhiteList(int paramInt, TPCodecCapability.TPHdrSupportVersionRange paramTPHdrSupportVersionRange)
+  {
+    return TPCodecUtils.addHDRWhiteList(paramInt, Build.MODEL, paramTPHdrSupportVersionRange);
+  }
+  
   public static boolean addVCodecBlacklist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange)
   {
-    try
-    {
-      boolean bool = _addVCodecBlacklist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
-      return bool;
+    if (isLibLoaded()) {
+      try
+      {
+        boolean bool = _addVCodecBlacklist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
+        return bool;
+      }
+      catch (Throwable paramTPVCodecPropertyRange)
+      {
+        TPNativeLog.printLog(4, paramTPVCodecPropertyRange.getMessage());
+        throw new TPNativeLibraryException("Failed to call _addVCodecBlacklist.");
+      }
     }
-    catch (Throwable paramTPVCodecPropertyRange)
-    {
-      TPNativeLog.printLog(4, paramTPVCodecPropertyRange.getMessage());
-    }
-    return false;
+    throw new TPNativeLibraryException("Failed to load native library.");
   }
   
   public static boolean addVCodecWhitelist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange)
   {
-    try
-    {
-      boolean bool = _addVCodecWhitelist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
-      return bool;
+    if (isLibLoaded()) {
+      try
+      {
+        boolean bool = _addVCodecWhitelist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
+        return bool;
+      }
+      catch (Throwable paramTPVCodecPropertyRange)
+      {
+        TPNativeLog.printLog(4, paramTPVCodecPropertyRange.getMessage());
+        throw new TPNativeLibraryException("Failed to call _addVCodecWhitelist.");
+      }
     }
-    catch (Throwable paramTPVCodecPropertyRange)
-    {
-      TPNativeLog.printLog(4, paramTPVCodecPropertyRange.getMessage());
-    }
-    return false;
+    throw new TPNativeLibraryException("Failed to load native library.");
   }
   
   public static HashMap<Integer, TPCodecCapability.TPVCodecMaxCapability> getVCodecDecoderMaxCapabilityMap(int paramInt)
   {
-    try
-    {
-      HashMap localHashMap = _getDecoderMaxCapabilityMap(paramInt);
-      return localHashMap;
+    if (isLibLoaded()) {
+      try
+      {
+        HashMap localHashMap = _getDecoderMaxCapabilityMap(paramInt);
+        return localHashMap;
+      }
+      catch (Throwable localThrowable)
+      {
+        TPNativeLog.printLog(4, localThrowable.getMessage());
+        throw new TPNativeLibraryException("Failed to call _getDecoderMaxCapabilityMap.");
+      }
     }
-    catch (Throwable localThrowable)
-    {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-    }
-    return null;
+    throw new TPNativeLibraryException("Failed to load native library.");
   }
   
   public static void init(Context paramContext, boolean paramBoolean)
@@ -82,21 +123,6 @@ public class TPPlayerDecoderCapability
     return true;
   }
   
-  public static boolean isBlackListForHdr10(String paramString)
-  {
-    return TPCodecUtils.isBlackListForHdr10(paramString);
-  }
-  
-  public static boolean isBlackListForHdr10Enhance(String paramString)
-  {
-    return TPCodecUtils.isBlackListForHdr10Enhance(paramString);
-  }
-  
-  public static boolean isBlackListForVidHdr10Enhance(String paramString1, String paramString2)
-  {
-    return TPCodecUtils.isBlackListForVidHdr10Enhance(paramString1, paramString2);
-  }
-  
   public static boolean isDDPlusSupported()
   {
     return TPCodecUtils.isHwDDPlusSupported();
@@ -112,45 +138,47 @@ public class TPPlayerDecoderCapability
     return TPCodecUtils.isHDRsupport(paramInt1, paramInt2, paramInt3);
   }
   
+  private static boolean isLibLoaded()
+  {
+    return mIsLibLoaded;
+  }
+  
   public static boolean isVCodecCapabilitySupport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
     if (102 == paramInt1)
     {
-      String str = "";
-      switch (paramInt2)
+      String str;
+      if (paramInt2 != 26)
       {
+        if (paramInt2 != 172) {
+          str = "";
+        } else {
+          str = "video/hevc";
+        }
       }
-      while (TPCodecUtils.isInMediaCodecWhiteList(str, paramInt3, paramInt4))
-      {
-        return true;
+      else {
         str = "video/avc";
-        continue;
-        str = "video/hevc";
       }
-      if (TPCodecUtils.isBlackListForHardwareDec(str)) {
+      if (TPCodecUtils.isInMediaCodecWhiteList(str, paramInt3, paramInt4)) {
+        return true;
+      }
+      if ((TPCodecUtils.isBlackListModel()) || (TPCodecUtils.isBlackListType(str))) {
         return false;
       }
     }
-    try
-    {
-      boolean bool = _isVCodecCapabilitySupport(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
-      return bool;
+    if (isLibLoaded()) {
+      try
+      {
+        boolean bool = _isVCodecCapabilitySupport(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
+        return bool;
+      }
+      catch (Throwable localThrowable)
+      {
+        TPNativeLog.printLog(4, localThrowable.getMessage());
+        throw new TPNativeLibraryException("Failed to call _isVCodecCapabilitySupport.");
+      }
     }
-    catch (Throwable localThrowable)
-    {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-    }
-    return false;
-  }
-  
-  public static boolean isWhiteListForHdr10(String paramString)
-  {
-    return TPCodecUtils.isWhiteListForHdr10(paramString);
-  }
-  
-  public static boolean isWhiteListForHdr10Enhance(String paramString)
-  {
-    return TPCodecUtils.isWhiteListForHdr10Enhance(paramString);
+    throw new TPNativeLibraryException("Failed to load native library.");
   }
   
   public static boolean probeACodecMaxCapability()
@@ -160,7 +188,7 @@ public class TPPlayerDecoderCapability
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPPlayerDecoderCapability
  * JD-Core Version:    0.7.0.1
  */

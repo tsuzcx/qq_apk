@@ -18,30 +18,38 @@ public class CheckInServer
   
   public static CheckInServer a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInServer == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInServer == null) {
-        jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInServer = new CheckInServer();
+    if (jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInServer == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInServer == null) {
+          jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInServer = new CheckInServer();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInServer;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInServer;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInUploadTask != null)
+    CheckInUploadTask localCheckInUploadTask = this.jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInUploadTask;
+    if (localCheckInUploadTask != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInUploadTask.d();
+      localCheckInUploadTask.d();
       this.jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInUploadTask = null;
     }
   }
   
   public void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Module_CheckInServer", 2, "notifyUploadResult callbackId" + paramInt + ", data = " + paramBundle.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyUploadResult callbackId");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", data = ");
+      localStringBuilder.append(paramBundle.toString());
+      QLog.d("Module_CheckInServer", 2, localStringBuilder.toString());
     }
     paramBundle = EIPCResult.createResult(0, paramBundle);
     a();
@@ -56,39 +64,49 @@ public class CheckInServer
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Module_CheckInServer", 2, "action = " + paramString + ", params = " + paramBundle + ",callbackId=" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("action = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", params = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      ((StringBuilder)localObject).append(",callbackId=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("Module_CheckInServer", 2, ((StringBuilder)localObject).toString());
     }
     a();
-    CheckInResEntity localCheckInResEntity;
-    if (("ACTION_UPLOAD_PIC".equals(paramString)) || ("ACTION_UPLOAD_VIDEO".equals(paramString)))
+    if ((!"ACTION_UPLOAD_PIC".equals(paramString)) && (!"ACTION_UPLOAD_VIDEO".equals(paramString)))
     {
-      localCheckInResEntity = new CheckInResEntity();
-      if ("ACTION_UPLOAD_PIC".equals(paramString))
-      {
-        localCheckInResEntity.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
-        paramString = new CheckInUploadPicTask(localCheckInResEntity, paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInUploadTask = paramString;
-        paramString.a();
-      }
-    }
-    for (;;)
-    {
-      return null;
-      localCheckInResEntity.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
-      localCheckInResEntity.b = paramBundle.getString("BUNDLE_NAME_COVER");
-      localCheckInResEntity.jdField_a_of_type_Long = paramBundle.getLong("BUNDLE_NAME_VIDEOTIME");
-      paramString = new CheckInUploadVideoTask(localCheckInResEntity, paramInt);
-      break;
       if ("ACTION_CANCEL".equals(paramString)) {
         a();
       }
     }
+    else
+    {
+      localObject = new CheckInResEntity();
+      if ("ACTION_UPLOAD_PIC".equals(paramString))
+      {
+        ((CheckInResEntity)localObject).jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+        paramString = new CheckInUploadPicTask((CheckInResEntity)localObject, paramInt);
+      }
+      else
+      {
+        ((CheckInResEntity)localObject).jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
+        ((CheckInResEntity)localObject).b = paramBundle.getString("BUNDLE_NAME_COVER");
+        ((CheckInResEntity)localObject).jdField_a_of_type_Long = paramBundle.getLong("BUNDLE_NAME_VIDEOTIME");
+        paramString = new CheckInUploadVideoTask((CheckInResEntity)localObject, paramInt);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInUploadTask = paramString;
+      paramString.a();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopcheckin.CheckInServer
  * JD-Core Version:    0.7.0.1
  */

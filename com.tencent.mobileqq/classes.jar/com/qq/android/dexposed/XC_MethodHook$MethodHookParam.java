@@ -20,10 +20,11 @@ public class XC_MethodHook$MethodHookParam
   
   public Object getResultOrThrowable()
   {
-    if (this.throwable != null) {
-      throw this.throwable;
+    Throwable localThrowable = this.throwable;
+    if (localThrowable == null) {
+      return this.result;
     }
-    return this.result;
+    throw localThrowable;
   }
   
   public Throwable getThrowable()

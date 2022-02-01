@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.ui;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
 
 class SearchResultFragment$2
@@ -23,7 +23,7 @@ class SearchResultFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.SearchResultFragment.2
  * JD-Core Version:    0.7.0.1
  */

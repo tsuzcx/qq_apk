@@ -15,24 +15,23 @@ class Http2Connection$4
   
   public void execute()
   {
-    if (this.this$0.pushObserver.onRequest(this.val$streamId, this.val$requestHeaders)) {
-      try
+    if (this.this$0.pushObserver.onRequest(this.val$streamId, this.val$requestHeaders)) {}
+    try
+    {
+      this.this$0.writer.rstStream(this.val$streamId, ErrorCode.CANCEL);
+      synchronized (this.this$0)
       {
-        this.this$0.writer.rstStream(this.val$streamId, ErrorCode.CANCEL);
-        synchronized (this.this$0)
-        {
-          this.this$0.currentPushRequests.remove(Integer.valueOf(this.val$streamId));
-          return;
-        }
+        this.this$0.currentPushRequests.remove(Integer.valueOf(this.val$streamId));
         return;
       }
-      catch (IOException localIOException) {}
+      return;
     }
+    catch (IOException localIOException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http2.Http2Connection.4
  * JD-Core Version:    0.7.0.1
  */

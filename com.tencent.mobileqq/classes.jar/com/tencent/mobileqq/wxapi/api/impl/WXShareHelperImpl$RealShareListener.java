@@ -18,20 +18,21 @@ class WXShareHelperImpl$RealShareListener
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if ((this.a != null) && (this.a.get() != null))
+    Object localObject = this.a;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      WXShareRsp localWXShareRsp = new WXShareRsp();
-      localWXShareRsp.jdField_a_of_type_Int = paramBaseResp.errCode;
-      localWXShareRsp.jdField_a_of_type_JavaLangString = paramBaseResp.errStr;
-      localWXShareRsp.c = paramBaseResp.openId;
-      localWXShareRsp.b = paramBaseResp.transaction;
-      ((IWXShareHelperListener)this.a.get()).a(localWXShareRsp);
+      localObject = new WXShareRsp();
+      ((WXShareRsp)localObject).jdField_a_of_type_Int = paramBaseResp.errCode;
+      ((WXShareRsp)localObject).jdField_a_of_type_JavaLangString = paramBaseResp.errStr;
+      ((WXShareRsp)localObject).c = paramBaseResp.openId;
+      ((WXShareRsp)localObject).b = paramBaseResp.transaction;
+      ((IWXShareHelperListener)this.a.get()).a((WXShareRsp)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.api.impl.WXShareHelperImpl.RealShareListener
  * JD-Core Version:    0.7.0.1
  */

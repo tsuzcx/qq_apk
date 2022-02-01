@@ -91,16 +91,17 @@ public class FlutterImageView
       localObject = this.currentImage.getHardwareBuffer();
       this.currentBitmap = Bitmap.wrapHardwareBuffer((HardwareBuffer)localObject, ColorSpace.get(ColorSpace.Named.SRGB));
       ((HardwareBuffer)localObject).close();
-    }
-    do
-    {
       return;
-      localObject = this.currentImage.getPlanes();
-    } while (localObject.length != 1);
-    Object localObject = localObject[0];
+    }
+    Object localObject = this.currentImage.getPlanes();
+    if (localObject.length != 1) {
+      return;
+    }
+    localObject = localObject[0];
     int i = ((Image.Plane)localObject).getRowStride() / ((Image.Plane)localObject).getPixelStride();
     int j = this.currentImage.getHeight();
-    if ((this.currentBitmap == null) || (this.currentBitmap.getWidth() != i) || (this.currentBitmap.getHeight() != j)) {
+    Bitmap localBitmap = this.currentBitmap;
+    if ((localBitmap == null) || (localBitmap.getWidth() != i) || (this.currentBitmap.getHeight() != j)) {
       this.currentBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
     }
     this.currentBitmap.copyPixelsFromBuffer(((Image.Plane)localObject).getBuffer());
@@ -133,15 +134,12 @@ public class FlutterImageView
     if (this.isAttachedToFlutterRenderer) {
       return;
     }
-    if (FlutterImageView.1.$SwitchMap$io$flutter$embedding$android$FlutterImageView$SurfaceKind[this.kind.ordinal()] != 1) {}
-    for (;;)
-    {
-      setAlpha(1.0F);
-      this.flutterRenderer = paramFlutterRenderer;
-      this.isAttachedToFlutterRenderer = true;
-      return;
+    if (FlutterImageView.1.$SwitchMap$io$flutter$embedding$android$FlutterImageView$SurfaceKind[this.kind.ordinal()] == 1) {
       paramFlutterRenderer.swapSurface(this.imageReader.getSurface());
     }
+    setAlpha(1.0F);
+    this.flutterRenderer = paramFlutterRenderer;
+    this.isAttachedToFlutterRenderer = true;
   }
   
   public void detachFromRenderer()
@@ -152,14 +150,15 @@ public class FlutterImageView
     setAlpha(0.0F);
     acquireLatestImage();
     this.currentBitmap = null;
-    Iterator localIterator = this.imageQueue.iterator();
-    while (localIterator.hasNext()) {
-      ((Image)localIterator.next()).close();
+    Object localObject = this.imageQueue.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((Image)((Iterator)localObject).next()).close();
     }
     this.imageQueue.clear();
-    if (this.currentImage != null)
+    localObject = this.currentImage;
+    if (localObject != null)
     {
-      this.currentImage.close();
+      ((Image)localObject).close();
       this.currentImage = null;
     }
     invalidate();
@@ -178,38 +177,44 @@ public class FlutterImageView
     return this.imageReader.getSurface();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (!this.imageQueue.isEmpty())
     {
-      if (this.currentImage != null) {
-        this.currentImage.close();
+      localObject = this.currentImage;
+      if (localObject != null) {
+        ((Image)localObject).close();
       }
       this.currentImage = ((Image)this.imageQueue.poll());
       updateCurrentBitmap();
     }
-    if (this.currentBitmap != null) {
-      paramCanvas.drawBitmap(this.currentBitmap, 0.0F, 0.0F, null);
+    Object localObject = this.currentBitmap;
+    if (localObject != null) {
+      paramCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, null);
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt1 == this.imageReader.getWidth()) && (paramInt2 == this.imageReader.getHeight())) {}
-    while ((this.kind != FlutterImageView.SurfaceKind.background) || (!this.isAttachedToFlutterRenderer)) {
+    if ((paramInt1 == this.imageReader.getWidth()) && (paramInt2 == this.imageReader.getHeight())) {
       return;
     }
-    resizeIfNeeded(paramInt1, paramInt2);
-    this.flutterRenderer.swapSurface(this.imageReader.getSurface());
+    if ((this.kind == FlutterImageView.SurfaceKind.background) && (this.isAttachedToFlutterRenderer))
+    {
+      resizeIfNeeded(paramInt1, paramInt2);
+      this.flutterRenderer.swapSurface(this.imageReader.getSurface());
+    }
   }
   
   public void pause() {}
   
   public void resizeIfNeeded(int paramInt1, int paramInt2)
   {
-    if (this.flutterRenderer == null) {}
-    while ((paramInt1 == this.imageReader.getWidth()) && (paramInt2 == this.imageReader.getHeight())) {
+    if (this.flutterRenderer == null) {
+      return;
+    }
+    if ((paramInt1 == this.imageReader.getWidth()) && (paramInt2 == this.imageReader.getHeight())) {
       return;
     }
     this.imageQueue.clear();
@@ -221,7 +226,7 @@ public class FlutterImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterImageView
  * JD-Core Version:    0.7.0.1
  */

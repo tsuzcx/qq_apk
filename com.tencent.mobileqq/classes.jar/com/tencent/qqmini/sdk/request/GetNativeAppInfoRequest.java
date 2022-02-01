@@ -49,28 +49,26 @@ public class GetNativeAppInfoRequest
     try
     {
       localStGetNAppForJumpRsp.mergeFrom(paramArrayOfByte);
-      if (localStGetNAppForJumpRsp != null)
-      {
-        paramJSONObject.put("packageName", localStGetNAppForJumpRsp.android_pkg.get());
-        paramJSONObject.put("nativeAppId", localStGetNAppForJumpRsp.native_appid.get());
-        paramJSONObject.put("downloadUrl", localStGetNAppForJumpRsp.android_donwload_url.get());
-        paramJSONObject.put("appName", localStGetNAppForJumpRsp.appName.get());
-        paramJSONObject.put("onlyOpen", localStGetNAppForJumpRsp.onlyOpen.get());
-        return paramJSONObject;
-      }
+      paramJSONObject.put("packageName", localStGetNAppForJumpRsp.android_pkg.get());
+      paramJSONObject.put("nativeAppId", localStGetNAppForJumpRsp.native_appid.get());
+      paramJSONObject.put("downloadUrl", localStGetNAppForJumpRsp.android_donwload_url.get());
+      paramJSONObject.put("appName", localStGetNAppForJumpRsp.appName.get());
+      paramJSONObject.put("onlyOpen", localStGetNAppForJumpRsp.onlyOpen.get());
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("GetAppInfoByIdRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("GetAppInfoByIdRequest", paramJSONObject.toString());
     }
-    QMLog.d("GetAppInfoByIdRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetNativeAppInfoRequest
  * JD-Core Version:    0.7.0.1
  */

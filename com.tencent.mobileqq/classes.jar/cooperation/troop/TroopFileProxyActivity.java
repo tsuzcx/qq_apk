@@ -28,7 +28,10 @@ public class TroopFileProxyActivity
   
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt, String paramString)
   {
-    QLog.i("TroopFileBrowserActivity", 1, "openTroopFileBrowserActivity:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("openTroopFileBrowserActivity:");
+    localStringBuilder.append(paramInt);
+    QLog.i("TroopFileBrowserActivity", 1, localStringBuilder.toString());
     a(paramActivity, paramIntent, null, "com.tencent.mobileqq.troop.activity.TroopFileBroswerActivity", paramString, paramInt);
   }
   
@@ -36,7 +39,7 @@ public class TroopFileProxyActivity
   {
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
     localPluginParams.b = "troop_plugin.apk";
-    localPluginParams.e = HardCodeUtil.a(2131715189);
+    localPluginParams.e = HardCodeUtil.a(2131715112);
     localPluginParams.jdField_a_of_type_JavaLangString = paramString2;
     localPluginParams.f = paramString1;
     localPluginParams.jdField_a_of_type_JavaLangClass = TroopFileProxyActivity.class;
@@ -88,7 +91,7 @@ public class TroopFileProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop.TroopFileProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -13,23 +13,23 @@ class VideoFilePresenter$4
   
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    if (paramActionSheetItem == null) {}
-    do
-    {
+    if (paramActionSheetItem == null) {
       return;
-      VideoFilePresenter.a(this.a).dismiss();
-      if (paramActionSheetItem.listener != null)
-      {
-        paramActionSheetItem.listener.onClick(null);
-        return;
-      }
-    } while (this.a.a == null);
-    this.a.a.a(paramActionSheetItem);
+    }
+    VideoFilePresenter.a(this.a).dismiss();
+    if (paramActionSheetItem.listener != null)
+    {
+      paramActionSheetItem.listener.onClick(null);
+      return;
+    }
+    if (this.a.a != null) {
+      this.a.a.a(paramActionSheetItem);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.4
  * JD-Core Version:    0.7.0.1
  */

@@ -14,46 +14,49 @@ class SoConfigServiceImpl$1
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    SoLoadInfo localSoLoadInfo2 = SoLoadInfo.sDefault;
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null)) {}
-    for (;;)
+    SoLoadInfo localSoLoadInfo = SoLoadInfo.sDefault;
+    Object localObject = localSoLoadInfo;
+    if (paramEIPCResult != null)
     {
-      try
+      localObject = localSoLoadInfo;
+      if (paramEIPCResult.isSuccess())
       {
-        SoLoadInfo localSoLoadInfo1 = (SoLoadInfo)paramEIPCResult.data.getSerializable("res");
-        paramEIPCResult = localSoLoadInfo1;
-        if (localSoLoadInfo1 == null) {}
-        QLog.e("SoLoadWidget.IPC", 1, localThrowable1, new Object[0]);
-      }
-      catch (Throwable localThrowable1)
-      {
-        try
-        {
-          paramEIPCResult = SoLoadInfo.sDefault;
-          if (this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnGetSoLoadInfoListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnGetSoLoadInfoListener.a(paramEIPCResult);
-          }
-          return;
-        }
-        catch (Throwable localThrowable3)
-        {
-          for (;;)
+        localObject = localSoLoadInfo;
+        if (paramEIPCResult.data != null) {
+          try
           {
-            paramEIPCResult = localThrowable1;
-            Throwable localThrowable2 = localThrowable3;
+            localObject = (SoLoadInfo)paramEIPCResult.data.getSerializable("res");
+            paramEIPCResult = (EIPCResult)localObject;
+            if (localObject == null) {
+              try
+              {
+                paramEIPCResult = SoLoadInfo.sDefault;
+              }
+              catch (Throwable paramEIPCResult)
+              {
+                break label66;
+              }
+            }
+            localObject = paramEIPCResult;
+          }
+          catch (Throwable paramEIPCResult)
+          {
+            localObject = localSoLoadInfo;
+            label66:
+            QLog.e("SoLoadWidget.IPC", 1, paramEIPCResult, new Object[0]);
           }
         }
-        localThrowable1 = localThrowable1;
-        paramEIPCResult = localSoLoadInfo2;
       }
-      continue;
-      paramEIPCResult = localThrowable3;
+    }
+    paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqSoloadBizOnGetSoLoadInfoListener;
+    if (paramEIPCResult != null) {
+      paramEIPCResult.onGetLoadInfo((SoLoadInfo)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.SoConfigServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

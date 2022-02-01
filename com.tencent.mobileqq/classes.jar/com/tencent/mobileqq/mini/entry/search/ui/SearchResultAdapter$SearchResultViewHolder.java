@@ -21,7 +21,6 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
-import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.BaseExposureReport;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.search.comm.SearchInfo;
@@ -61,48 +60,24 @@ class SearchResultAdapter$SearchResultViewHolder
   public void update(SearchResultViewHolder paramSearchResultViewHolder, View paramView, SearchInfo paramSearchInfo, Activity paramActivity, String paramString, int paramInt)
   {
     MiniAppInfo localMiniAppInfo = paramSearchInfo.getMiniAppInfo();
-    this.icon.setImageDrawable(MiniAppUtils.getIcon(paramView.getContext(), localMiniAppInfo.iconUrl, false, 0, 48));
+    Object localObject1 = this.icon;
+    Object localObject2 = paramView.getContext();
+    Object localObject3 = localMiniAppInfo.iconUrl;
+    int j = 0;
+    ((ImageView)localObject1).setImageDrawable(MiniAppUtils.getIcon((Context)localObject2, (String)localObject3, false, 0, 48));
     this.name.setText(SearchResultAdapter.highLightKeyword(-14763268, localMiniAppInfo.name, paramString));
     this.category.setText(paramSearchInfo.getCategoryDesc());
     this.desc.setText(localMiniAppInfo.desc);
     this.userNumDesc.setText(paramSearchInfo.getUseNumberDesc());
     this.payingFriendsDesc.setText(paramSearchInfo.playingFriendsDesc);
+    int i;
     if (paramSearchInfo.userInfoList.size() == 0)
     {
       this.avatarContainer.setVisibility(8);
       this.divider.setVisibility(8);
     }
-    int j;
-    for (;;)
+    else
     {
-      this.pkRankingContainer.setVisibility(8);
-      this.couponScrollView.setVisibility(8);
-      this.couponTitle.setVisibility(8);
-      if (paramSearchInfo.getSearchExtInfo() == null) {
-        break label797;
-      }
-      localObject2 = (MiniAppSearch.SearchExtInfo)paramSearchInfo.getSearchExtInfo().get();
-      localObject1 = ((MiniAppSearch.SearchExtInfo)localObject2).coupon.get();
-      localObject2 = ((MiniAppSearch.SearchExtInfo)localObject2).pkRank.get();
-      if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
-        break label637;
-      }
-      this.pkRankingContainer.setVisibility(0);
-      paramView.setBackgroundResource(2130841185);
-      int i = 0;
-      for (;;)
-      {
-        j = i;
-        if (i >= ((List)localObject2).size()) {
-          break;
-        }
-        j = i;
-        if (i >= this.mRanking.size()) {
-          break;
-        }
-        ((SearchResultAdapter.Item)this.mRanking.get(i)).setData(paramView.getContext(), (STORE_APP_CLIENT.StRankingList)((List)localObject2).get(i));
-        i += 1;
-      }
       this.avatarContainer.removeAllViews();
       this.avatarContainer.setVisibility(0);
       this.divider.setVisibility(0);
@@ -114,8 +89,8 @@ class SearchResultAdapter$SearchResultViewHolder
         {
           localObject1 = new ImageView(paramView.getContext());
           ((ImageView)localObject1).setImageDrawable(SearchResultAdapter.getAvatarDrawable(paramView.getContext(), (String)localObject2));
-          j = ViewUtils.b(12.0F);
-          localObject2 = new LinearLayout.LayoutParams(j, j);
+          int k = ViewUtils.b(12.0F);
+          localObject2 = new LinearLayout.LayoutParams(k, k);
           if (i > 0) {
             ((LinearLayout.LayoutParams)localObject2).leftMargin = (-ViewUtils.b(2.0F));
           }
@@ -125,61 +100,95 @@ class SearchResultAdapter$SearchResultViewHolder
         i += 1;
       }
     }
-    while (j < this.mRanking.size())
+    localObject1 = "result_expo";
+    localObject2 = "result_click";
+    this.pkRankingContainer.setVisibility(8);
+    this.couponScrollView.setVisibility(8);
+    this.couponTitle.setVisibility(8);
+    if (paramSearchInfo.getSearchExtInfo() != null)
     {
-      ((SearchResultAdapter.Item)this.mRanking.get(j)).gone();
-      j += 1;
-    }
-    paramSearchResultViewHolder = "pk_result_click";
-    Object localObject1 = "pk_result_expo";
-    this.name.setTextColor(-16578534);
-    Object localObject2 = paramSearchResultViewHolder;
-    for (paramSearchResultViewHolder = (SearchResultViewHolder)localObject1;; paramSearchResultViewHolder = "result_expo")
-    {
-      paramView.setOnClickListener(new SearchResultAdapter.SearchResultViewHolder.1(this, paramActivity, localMiniAppInfo, paramSearchInfo, paramString, (String)localObject2));
-      paramView = (MiniAppExposureManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
-      paramActivity = new MiniAppConfig(localMiniAppInfo);
-      paramActivity.launchParam.scene = paramInt;
-      localObject1 = new MiniAppExposureManager.MiniAppModuleExposureData(paramActivity, "page_view", "expo");
-      paramActivity.launchParam.scene = 3026;
-      if (paramSearchInfo.getType() == 5) {
-        paramActivity.launchParam.scene = 3028;
-      }
-      MiniProgramLpReportDC04239.reportAsync(paramActivity, "desktop", "search", paramSearchResultViewHolder, paramString);
-      paramView.addSearchItemAndCheckReport((MiniAppExposureManager.BaseExposureReport)localObject1);
-      return;
-      label637:
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      Object localObject4 = (MiniAppSearch.SearchExtInfo)paramSearchInfo.getSearchExtInfo().get();
+      localObject3 = ((MiniAppSearch.SearchExtInfo)localObject4).coupon.get();
+      localObject4 = ((MiniAppSearch.SearchExtInfo)localObject4).pkRank.get();
+      if ((localObject4 != null) && (((List)localObject4).size() > 0))
       {
+        this.pkRankingContainer.setVisibility(0);
+        paramView.setBackgroundResource(2130841061);
+        i = j;
+        for (;;)
+        {
+          j = i;
+          if (i >= ((List)localObject4).size()) {
+            break;
+          }
+          j = i;
+          if (i >= this.mRanking.size()) {
+            break;
+          }
+          ((SearchResultAdapter.Item)this.mRanking.get(i)).setData(paramView.getContext(), (STORE_APP_CLIENT.StRankingList)((List)localObject4).get(i));
+          i += 1;
+        }
+        while (j < this.mRanking.size())
+        {
+          ((SearchResultAdapter.Item)this.mRanking.get(j)).gone();
+          j += 1;
+        }
+        localObject1 = "pk_result_expo";
+        paramSearchResultViewHolder = "pk_result_click";
+      }
+      else
+      {
+        if ((localObject3 == null) || (((List)localObject3).size() <= 0)) {
+          break label688;
+        }
         this.couponScrollView.setVisibility(0);
-        this.couponTitle.setText("本游戏可使用" + ((List)localObject1).size() + "张抵扣券");
+        localObject1 = this.couponTitle;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("本游戏可使用");
+        ((StringBuilder)localObject2).append(((List)localObject3).size());
+        ((StringBuilder)localObject2).append("张抵扣券");
+        ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
         this.couponTitle.setVisibility(0);
-        paramView.setBackgroundResource(2130841176);
+        paramView.setBackgroundResource(2130841052);
         paramSearchResultViewHolder.couponContainer.removeAllViews();
-        localObject1 = ((List)localObject1).iterator();
+        localObject1 = ((List)localObject3).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = SearchResultAdapter.access$000((MiniAppSearch.CouponInfo)((Iterator)localObject1).next(), paramView);
           paramSearchResultViewHolder.couponContainer.addView((View)localObject2);
         }
-        paramSearchResultViewHolder = "ticket_result_click";
         localObject1 = "ticket_result_expo";
-        break;
+        paramSearchResultViewHolder = "ticket_result_click";
       }
+      break label696;
+      label688:
       resetPkAndCouponView(paramView);
-      paramSearchResultViewHolder = "result_click";
-      localObject1 = "result_expo";
-      break;
-      label797:
-      this.name.setTextColor(paramView.getContext().getResources().getColor(2131167040));
-      resetPkAndCouponView(paramView);
-      localObject2 = "result_click";
+      paramSearchResultViewHolder = (SearchResultViewHolder)localObject2;
+      label696:
+      this.name.setTextColor(-16578534);
     }
+    else
+    {
+      this.name.setTextColor(paramView.getContext().getResources().getColor(2131167063));
+      resetPkAndCouponView(paramView);
+      paramSearchResultViewHolder = (SearchResultViewHolder)localObject2;
+    }
+    paramView.setOnClickListener(new SearchResultAdapter.SearchResultViewHolder.1(this, paramActivity, localMiniAppInfo, paramSearchInfo, paramString, paramSearchResultViewHolder));
+    paramSearchResultViewHolder = (MiniAppExposureManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
+    paramView = new MiniAppConfig(localMiniAppInfo);
+    paramView.launchParam.scene = paramInt;
+    paramActivity = new MiniAppExposureManager.MiniAppModuleExposureData(paramView, "page_view", "expo");
+    paramView.launchParam.scene = 3026;
+    if (paramSearchInfo.getType() == 5) {
+      paramView.launchParam.scene = 3028;
+    }
+    MiniProgramLpReportDC04239.reportAsync(paramView, "desktop", "search", (String)localObject1, paramString);
+    paramSearchResultViewHolder.addSearchItemAndCheckReport(paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchResultAdapter.SearchResultViewHolder
  * JD-Core Version:    0.7.0.1
  */

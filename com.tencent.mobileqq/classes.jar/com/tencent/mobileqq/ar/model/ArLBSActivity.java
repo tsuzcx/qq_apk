@@ -39,14 +39,22 @@ public class ArLBSActivity
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("ArLBSActivity{");
-    localStringBuffer.append("activityName = ").append(this.a);
-    localStringBuffer.append(", logoUrl = ").append(this.b);
-    localStringBuffer.append(", mapBackgroundUrl = ").append(this.c);
-    localStringBuffer.append(", prizeImageUrl = ").append(this.d);
-    localStringBuffer.append(", prizeName = ").append(this.e);
-    localStringBuffer.append(", tipsForOutsideLBSLocation = ").append(this.f);
-    localStringBuffer.append(", tipsTitleForNoLBSLocation = ").append(this.g);
-    localStringBuffer.append(", tipsContentForNoLBSLocation = ").append(this.h);
+    localStringBuffer.append("activityName = ");
+    localStringBuffer.append(this.a);
+    localStringBuffer.append(", logoUrl = ");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append(", mapBackgroundUrl = ");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append(", prizeImageUrl = ");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append(", prizeName = ");
+    localStringBuffer.append(this.e);
+    localStringBuffer.append(", tipsForOutsideLBSLocation = ");
+    localStringBuffer.append(this.f);
+    localStringBuffer.append(", tipsTitleForNoLBSLocation = ");
+    localStringBuffer.append(this.g);
+    localStringBuffer.append(", tipsContentForNoLBSLocation = ");
+    localStringBuffer.append(this.h);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
@@ -65,7 +73,7 @@ public class ArLBSActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArLBSActivity
  * JD-Core Version:    0.7.0.1
  */

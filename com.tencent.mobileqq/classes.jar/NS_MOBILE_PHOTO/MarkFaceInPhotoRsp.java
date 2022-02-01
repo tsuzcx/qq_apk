@@ -32,17 +32,19 @@ public final class MarkFaceInPhotoRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Object localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.faceitem != null) {
-      paramJceOutputStream.write(this.faceitem, 2);
+    localObject = this.faceitem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.MarkFaceInPhotoRsp
  * JD-Core Version:    0.7.0.1
  */

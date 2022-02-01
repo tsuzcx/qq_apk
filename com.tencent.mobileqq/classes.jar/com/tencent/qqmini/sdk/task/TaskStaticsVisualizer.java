@@ -37,23 +37,12 @@ public final class TaskStaticsVisualizer
   {
     Intrinsics.checkParameterIsNotNull(paramTaskExecutionStatics, "root");
     this.visitor.beginTask(paramTaskExecutionStatics);
-    int i;
-    if (!((Collection)paramTaskExecutionStatics.getSubSteps()).isEmpty()) {
-      i = 1;
-    }
-    while (i != 0)
+    if ((((Collection)paramTaskExecutionStatics.getSubSteps()).isEmpty() ^ true))
     {
       this.visitor.beginDependencies();
       paramTaskExecutionStatics = ((Iterable)paramTaskExecutionStatics.getSubSteps()).iterator();
-      for (;;)
-      {
-        if (paramTaskExecutionStatics.hasNext())
-        {
-          visitRootTask((TaskExecutionStatics)paramTaskExecutionStatics.next());
-          continue;
-          i = 0;
-          break;
-        }
+      while (paramTaskExecutionStatics.hasNext()) {
+        visitRootTask((TaskExecutionStatics)paramTaskExecutionStatics.next());
       }
       this.visitor.endDependencies();
     }
@@ -70,7 +59,7 @@ public final class TaskStaticsVisualizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskStaticsVisualizer
  * JD-Core Version:    0.7.0.1
  */

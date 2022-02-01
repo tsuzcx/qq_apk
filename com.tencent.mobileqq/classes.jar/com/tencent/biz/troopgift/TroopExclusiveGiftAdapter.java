@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,16 +24,17 @@ public class TroopExclusiveGiftAdapter
   public void a(int paramInt)
   {
     int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
       TroopExclusiveGiftAdapter.TroopExclusiveGiftData localTroopExclusiveGiftData = (TroopExclusiveGiftAdapter.TroopExclusiveGiftData)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (i == paramInt) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localTroopExclusiveGiftData.jdField_a_of_type_Boolean = bool;
-        i += 1;
-        break;
+      boolean bool;
+      if (i == paramInt) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localTroopExclusiveGiftData.jdField_a_of_type_Boolean = bool;
+      i += 1;
     }
     notifyDataSetChanged();
   }
@@ -47,10 +48,11 @@ public class TroopExclusiveGiftAdapter
   
   public int getCount()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() != 0)) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return 0;
   }
   
   public Object getItem(int paramInt)
@@ -66,61 +68,57 @@ public class TroopExclusiveGiftAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     TroopExclusiveGiftAdapter.TroopExclusiveGiftData localTroopExclusiveGiftData = (TroopExclusiveGiftAdapter.TroopExclusiveGiftData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject;
-    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
+    boolean bool = this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt));
+    int i = 0;
+    Object localObject1;
+    Object localObject2;
+    if (!bool)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560752, paramViewGroup, false);
-      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, ScreenUtil.a(50.0F)));
-      localObject = new TroopExclusiveGiftAdapter.ViewHolder();
-      ((TroopExclusiveGiftAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380388));
-      ((TroopExclusiveGiftAdapter.ViewHolder)localObject).b = paramView.findViewById(2131381611);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560640, paramViewGroup, false);
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, ScreenUtil.dip2px(50.0F)));
+      localObject1 = new TroopExclusiveGiftAdapter.ViewHolder();
+      ((TroopExclusiveGiftAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379704));
+      ((TroopExclusiveGiftAdapter.ViewHolder)localObject1).b = paramView.findViewById(2131380844);
       if ((localTroopExclusiveGiftData != null) && (Build.VERSION.SDK_INT >= 4)) {
         paramView.setContentDescription(localTroopExclusiveGiftData.jdField_a_of_type_JavaLangString);
       }
-      ((TroopExclusiveGiftAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject);
+      ((TroopExclusiveGiftAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localObject1);
     }
-    label279:
-    label289:
-    label296:
-    for (;;)
+    else
     {
-      if ((localTroopExclusiveGiftData != null) && (localObject != null) && (paramView != null))
+      localObject2 = (TroopExclusiveGiftAdapter.ViewHolder)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      localObject1 = localObject2;
+      if (localObject2 != null)
       {
-        ((TroopExclusiveGiftAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localTroopExclusiveGiftData.jdField_a_of_type_JavaLangString);
-        TextView localTextView = ((TroopExclusiveGiftAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView;
-        if (!localTroopExclusiveGiftData.jdField_a_of_type_Boolean) {
-          break label279;
-        }
-        i = Color.parseColor("#ffff5b84");
-        label190:
-        localTextView.setTextColor(i);
-        localObject = ((TroopExclusiveGiftAdapter.ViewHolder)localObject).b;
-        if (!localTroopExclusiveGiftData.jdField_a_of_type_Boolean) {
-          break label289;
-        }
-      }
-      for (int i = 0;; i = 8)
-      {
-        ((View)localObject).setVisibility(i);
-        paramView.setSelected(localTroopExclusiveGiftData.jdField_a_of_type_Boolean);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localObject = (TroopExclusiveGiftAdapter.ViewHolder)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-        if (localObject == null) {
-          break label296;
-        }
-        paramView = ((TroopExclusiveGiftAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView;
-        break;
-        i = Color.parseColor("#ff878b99");
-        break label190;
+        paramView = ((TroopExclusiveGiftAdapter.ViewHolder)localObject2).jdField_a_of_type_AndroidViewView;
+        localObject1 = localObject2;
       }
     }
+    if ((localTroopExclusiveGiftData != null) && (localObject1 != null) && (paramView != null))
+    {
+      ((TroopExclusiveGiftAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(localTroopExclusiveGiftData.jdField_a_of_type_JavaLangString);
+      TextView localTextView = ((TroopExclusiveGiftAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView;
+      if (localTroopExclusiveGiftData.jdField_a_of_type_Boolean) {
+        localObject2 = "#ffff5b84";
+      } else {
+        localObject2 = "#ff878b99";
+      }
+      localTextView.setTextColor(Color.parseColor((String)localObject2));
+      localObject1 = ((TroopExclusiveGiftAdapter.ViewHolder)localObject1).b;
+      if (!localTroopExclusiveGiftData.jdField_a_of_type_Boolean) {
+        i = 8;
+      }
+      ((View)localObject1).setVisibility(i);
+      paramView.setSelected(localTroopExclusiveGiftData.jdField_a_of_type_Boolean);
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopExclusiveGiftAdapter
  * JD-Core Version:    0.7.0.1
  */

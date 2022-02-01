@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import android.support.v4.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProvider.Factory;
 import androidx.lifecycle.ViewModelStoreOwner;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PluginData;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.config.business.qvip.QVipSDKConfig;
-import com.tencent.mobileqq.config.business.qvip.QVipSDKProcessor;
-import com.tencent.mobileqq.mvvm.ActivityExtKt;
-import com.tencent.mobileqq.mvvm.LifeCycleExtKt;
+import com.tencent.mobileqq.mvvm.LifeCycleFragment;
+import com.tencent.mobileqq.mvvm.ViewModelProviderHelper;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -96,72 +96,62 @@ public final class PlusRedPointHelper
   @NotNull
   public int[] interestedIn()
   {
-    return new int[] { 8 };
+    return new int[] { 9 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
-    {
+    if (paramInt != 9) {
+      return;
     }
-    Object localObject1;
-    Object localObject2;
-    label171:
-    do
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onShowFirst create pluspanel");
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (localObject1 != null) {
+      localObject1 = ((BaseChatPie)localObject1).a();
+    } else {
+      localObject1 = null;
+    }
+    if (!(localObject1 instanceof BaseActivity)) {
+      return;
+    }
+    if (QVipSDKProcessor.c().e())
     {
-      do
+      localObject1 = LifeCycleFragment.a((QBaseActivity)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel = ((PlusPanelViewModel)ViewModelProviderHelper.a((ViewModelStoreOwner)localObject1, PlusPanelViewModel.a).get(PlusPanelViewModel.class));
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
+      if (localObject2 != null)
       {
-        for (;;)
-        {
-          return;
-          QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onShowFirst create pluspanel");
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-          if (localObject1 != null) {}
-          for (localObject1 = ((BaseChatPie)localObject1).a(); (localObject1 instanceof FragmentActivity); localObject1 = null)
-          {
-            if (!QVipSDKProcessor.c().e()) {
-              break label171;
-            }
-            localObject1 = ActivityExtKt.a((FragmentActivity)localObject1);
-            localObject2 = (ViewModelStoreOwner)localObject1;
-            localFactory = PlusPanelViewModel.a;
-            Intrinsics.checkExpressionValueIsNotNull(localFactory, "PlusPanelViewModel.sPlusPanelViewModelFactory");
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel = ((PlusPanelViewModel)LifeCycleExtKt.a((ViewModelStoreOwner)localObject2, localFactory).get(PlusPanelViewModel.class));
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
-            if (localObject2 != null)
-            {
-              localObject2 = ((PlusPanelViewModel)localObject2).a();
-              if (localObject2 != null) {
-                ((MutableLiveData)localObject2).observe((LifecycleOwner)localObject1, (Observer)new PlusRedPointHelper.onMoveToState.1(this));
-              }
-            }
-            ThreadManagerV2.executeOnSubThread((Runnable)new PlusRedPointHelper.sam.java_lang_Runnable.0((Function0)new PlusRedPointHelper.onMoveToState.block.1(this)));
-            return;
-          }
-        }
-        localObject1 = ActivityExtKt.a((FragmentActivity)localObject1);
-        localObject2 = (ViewModelStoreOwner)localObject1;
-        ViewModelProvider.Factory localFactory = PlusPanelViewModel.a;
-        Intrinsics.checkExpressionValueIsNotNull(localFactory, "PlusPanelViewModel.sPlusPanelViewModelFactory");
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel = ((PlusPanelViewModel)LifeCycleExtKt.a((ViewModelStoreOwner)localObject2, localFactory).get(PlusPanelViewModel.class));
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
+        localObject2 = ((PlusPanelViewModel)localObject2).a();
         if (localObject2 != null) {
-          ((PlusPanelViewModel)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+          ((MutableLiveData)localObject2).observe((LifecycleOwner)localObject1, (Observer)new PlusRedPointHelper.onMoveToState.1(this));
         }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
-        if (localObject2 != null) {
-          ((PlusPanelViewModel)localObject2).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
-        }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
-      } while (localObject2 == null);
+      }
+      ThreadManagerV2.executeOnSubThread((Runnable)new PlusRedPointHelper.sam.java_lang_Runnable.0((Function0)new PlusRedPointHelper.onMoveToState.block.1(this)));
+      return;
+    }
+    localObject1 = LifeCycleFragment.a((QBaseActivity)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel = ((PlusPanelViewModel)ViewModelProviderHelper.a((ViewModelStoreOwner)localObject1, PlusPanelViewModel.a).get(PlusPanelViewModel.class));
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
+    if (localObject2 != null) {
+      ((PlusPanelViewModel)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    }
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
+    if (localObject2 != null) {
+      ((PlusPanelViewModel)localObject2).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    }
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel;
+    if (localObject2 != null)
+    {
       localObject2 = ((PlusPanelViewModel)localObject2).a();
-    } while (localObject2 == null);
-    ((MutableLiveData)localObject2).observe((LifecycleOwner)localObject1, (Observer)new PlusRedPointHelper.onMoveToState.2(this));
+      if (localObject2 != null) {
+        ((MutableLiveData)localObject2).observe((LifecycleOwner)localObject1, (Observer)new PlusRedPointHelper.onMoveToState.2(this));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PlusRedPointHelper
  * JD-Core Version:    0.7.0.1
  */

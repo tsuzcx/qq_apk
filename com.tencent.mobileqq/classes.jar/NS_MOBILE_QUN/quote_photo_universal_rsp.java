@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class quote_photo_universal_rsp
   extends JceStruct
@@ -37,17 +38,19 @@ public final class quote_photo_universal_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Object localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 2);
+    localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.quote_photo_universal_rsp
  * JD-Core Version:    0.7.0.1
  */

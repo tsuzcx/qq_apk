@@ -13,7 +13,7 @@ class FollowImageTextView$FirstTextView
     super(paramContext);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (FollowImageTextView.a(this.a))
     {
@@ -30,7 +30,7 @@ class FollowImageTextView$FirstTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.FollowImageTextView.FirstTextView
  * JD-Core Version:    0.7.0.1
  */

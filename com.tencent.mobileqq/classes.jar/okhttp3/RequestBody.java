@@ -11,28 +11,31 @@ public abstract class RequestBody
 {
   public static RequestBody create(@Nullable MediaType paramMediaType, File paramFile)
   {
-    if (paramFile == null) {
-      throw new NullPointerException("file == null");
+    if (paramFile != null) {
+      return new RequestBody.3(paramMediaType, paramFile);
     }
-    return new RequestBody.3(paramMediaType, paramFile);
+    throw new NullPointerException("file == null");
   }
   
   public static RequestBody create(@Nullable MediaType paramMediaType, String paramString)
   {
-    Object localObject = Util.UTF_8;
-    MediaType localMediaType = paramMediaType;
+    Object localObject1 = Util.UTF_8;
+    Object localObject2 = paramMediaType;
     if (paramMediaType != null)
     {
       Charset localCharset = paramMediaType.charset();
-      localObject = localCharset;
-      localMediaType = paramMediaType;
+      localObject1 = localCharset;
+      localObject2 = paramMediaType;
       if (localCharset == null)
       {
-        localObject = Util.UTF_8;
-        localMediaType = MediaType.parse(paramMediaType + "; charset=utf-8");
+        localObject1 = Util.UTF_8;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramMediaType);
+        ((StringBuilder)localObject2).append("; charset=utf-8");
+        localObject2 = MediaType.parse(((StringBuilder)localObject2).toString());
       }
     }
-    return create(localMediaType, paramString.getBytes((Charset)localObject));
+    return create((MediaType)localObject2, paramString.getBytes((Charset)localObject1));
   }
   
   public static RequestBody create(@Nullable MediaType paramMediaType, ByteString paramByteString)
@@ -47,11 +50,12 @@ public abstract class RequestBody
   
   public static RequestBody create(@Nullable MediaType paramMediaType, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (paramArrayOfByte == null) {
-      throw new NullPointerException("content == null");
+    if (paramArrayOfByte != null)
+    {
+      Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
+      return new RequestBody.2(paramMediaType, paramInt2, paramArrayOfByte, paramInt1);
     }
-    Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
-    return new RequestBody.2(paramMediaType, paramInt2, paramArrayOfByte, paramInt1);
+    throw new NullPointerException("content == null");
   }
   
   public long contentLength()
@@ -66,7 +70,7 @@ public abstract class RequestBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.RequestBody
  * JD-Core Version:    0.7.0.1
  */

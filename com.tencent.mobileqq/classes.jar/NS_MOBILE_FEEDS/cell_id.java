@@ -26,17 +26,19 @@ public final class cell_id
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cellid != null) {
-      paramJceOutputStream.write(this.cellid, 0);
+    String str = this.cellid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.subid != null) {
-      paramJceOutputStream.write(this.subid, 1);
+    str = this.subid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_id
  * JD-Core Version:    0.7.0.1
  */

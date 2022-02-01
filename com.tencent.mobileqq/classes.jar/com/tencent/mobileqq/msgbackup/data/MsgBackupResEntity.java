@@ -24,25 +24,29 @@ public class MsgBackupResEntity
     return "res";
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
     MsgBackupUtil.b(this);
     try
     {
-      if (this.extraData != null) {
-        this.extraDataStr = new String(this.extraData, "utf-8");
+      if (this.extraData == null) {
+        break label50;
       }
+      this.extraDataStr = new String(this.extraData, "utf-8");
       return;
     }
     catch (Exception localException)
     {
-      MsgBackupUtil.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
-      this.extraDataStr = "";
+      label33:
+      label50:
+      break label33;
     }
+    MsgBackupUtil.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
+    this.extraDataStr = "";
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
     if (!TextUtils.isEmpty(this.extraDataStr)) {
@@ -54,12 +58,28 @@ public class MsgBackupResEntity
   
   public String toLogString()
   {
-    return "MsgBackupResEntity{msgSeq=" + this.msgSeq + ", msgRandom=" + this.msgRandom + ", msgType=" + this.msgType + ", msgSubType=" + this.msgSubType + ", filePath='" + this.filePath + '\'' + ", extraDataStr='" + this.extraDataStr + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgBackupResEntity{msgSeq=");
+    localStringBuilder.append(this.msgSeq);
+    localStringBuilder.append(", msgRandom=");
+    localStringBuilder.append(this.msgRandom);
+    localStringBuilder.append(", msgType=");
+    localStringBuilder.append(this.msgType);
+    localStringBuilder.append(", msgSubType=");
+    localStringBuilder.append(this.msgSubType);
+    localStringBuilder.append(", filePath='");
+    localStringBuilder.append(this.filePath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extraDataStr='");
+    localStringBuilder.append(this.extraDataStr);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,12 @@ package com.tencent.avgame.ui;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.avgame.util.AVGameUtils;
+import com.tencent.avgame.util.AVGameUtil;
 import com.tencent.avgame.util.IdUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class AVGameSplitNumberView
     int i = 0;
     while (i < 10)
     {
-      localArrayList.add(AVGameUtils.a(String.format(paramString, new Object[] { Integer.valueOf(i) })));
+      localArrayList.add(AVGameUtil.a(String.format(paramString, new Object[] { Integer.valueOf(i) })));
       i += 1;
     }
     return localArrayList;
@@ -59,31 +60,33 @@ public class AVGameSplitNumberView
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0) || (paramInt < 0) || (this.b <= 0) || (this.jdField_a_of_type_Int <= 0)) {
-      QLog.e("AVGameSplitNumberView", 1, "invalid params to update num.");
-    }
-    for (;;)
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() != 0) && (paramInt >= 0) && (this.b > 0) && (this.jdField_a_of_type_Int > 0))
     {
-      return;
-      int i = 1;
-      while (i * 10 <= paramInt) {
-        i *= 10;
+      for (int i = 1;; i = j)
+      {
+        j = i * 10;
+        if (j > paramInt) {
+          break;
+        }
       }
       removeAllViews();
       int j = 0;
       while (i != 0)
       {
-        ImageView localImageView = a(paramInt / i);
+        localObject = a(paramInt / i);
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.b, this.jdField_a_of_type_Int);
         if (j != 0) {
           localLayoutParams.addRule(1, j);
         }
-        addView(localImageView, localLayoutParams);
-        j = localImageView.getId();
+        addView((View)localObject, localLayoutParams);
+        j = ((ImageView)localObject).getId();
         paramInt %= i;
         i /= 10;
       }
+      return;
     }
+    QLog.e("AVGameSplitNumberView", 1, "invalid params to update num.");
   }
   
   public void setDimension(int paramInt1, int paramInt2)
@@ -100,7 +103,7 @@ public class AVGameSplitNumberView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameSplitNumberView
  * JD-Core Version:    0.7.0.1
  */

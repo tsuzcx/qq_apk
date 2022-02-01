@@ -43,134 +43,198 @@ public class NotificationReportControllerImpl
   {
     StringBuffer localStringBuffer = new StringBuffer();
     Iterator localIterator = this.mTodayReportedNotifyIds.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuffer.append((Integer)localIterator.next()).append(",");
+    while (localIterator.hasNext())
+    {
+      localStringBuffer.append((Integer)localIterator.next());
+      localStringBuffer.append(",");
     }
     return localStringBuffer.substring(0, localStringBuffer.length() - 1);
   }
   
   private void reportReal()
   {
-    Object localObject;
-    if ((0 == 0) && (MobileQQ.sProcessId == 1))
+    Object localObject1;
+    if (MobileQQ.sProcessId == 1)
     {
-      localObject = MobileQQ.sMobileQQ.peekAppRuntime();
-      if ((localObject == null) || (!(localObject instanceof BaseQQAppInterface))) {}
-    }
-    for (BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)localObject;; localBaseQQAppInterface = null)
-    {
-      if ((localBaseQQAppInterface != null) && (this.mCache.size() > 0))
+      localObject1 = MobileQQ.sMobileQQ.peekAppRuntime();
+      if ((localObject1 != null) && ((localObject1 instanceof BaseQQAppInterface)))
       {
-        Iterator localIterator = this.mCache.iterator();
-        if (localIterator.hasNext())
+        localBaseQQAppInterface = (BaseQQAppInterface)localObject1;
+        break label37;
+      }
+    }
+    BaseQQAppInterface localBaseQQAppInterface = null;
+    label37:
+    if ((localBaseQQAppInterface != null) && (this.mCache.size() > 0))
+    {
+      Iterator localIterator = this.mCache.iterator();
+      while (localIterator.hasNext())
+      {
+        NotificationReportControllerImpl.ReportEntry localReportEntry = (NotificationReportControllerImpl.ReportEntry)localIterator.next();
+        boolean bool = shouldReportNetInfo(localBaseQQAppInterface, localReportEntry.b);
+        int i = localReportEntry.jdField_a_of_type_Int;
+        if (i != 1)
         {
-          NotificationReportControllerImpl.ReportEntry localReportEntry = (NotificationReportControllerImpl.ReportEntry)localIterator.next();
-          boolean bool = shouldReportNetInfo(localBaseQQAppInterface, localReportEntry.b);
-          localObject = "";
-          switch (localReportEntry.jdField_a_of_type_Int)
+          if (i != 2)
           {
-          default: 
-            label132:
-            if ((localReportEntry.c == 7200) || (localReportEntry.c == 1008) || (localReportEntry.c == 7220)) {
-              ReportController.a(localBaseQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", localReportEntry.jdField_a_of_type_JavaLangString, localReportEntry.b + "", "" + localReportEntry.c, "", "", "", "");
+            if (i != 3)
+            {
+              if (i != 4) {
+                localObject1 = "";
+              } else {
+                localObject1 = "lock_clk";
+              }
             }
-            break;
+            else {
+              localObject1 = "lock_arr";
+            }
           }
-          while (QLog.isDevelopLevel())
-          {
-            QLog.d("NotificationReportControllerImpl", 2, "report real msgType:" + localReportEntry.jdField_a_of_type_Int + "    frienduin:" + localReportEntry.jdField_a_of_type_JavaLangString + "   uinType:" + localReportEntry.c + "    nId:" + localReportEntry.b);
-            break;
-            localObject = "info_arr";
-            break label132;
-            localObject = "clk";
-            break label132;
-            localObject = "lock_arr";
-            break label132;
-            localObject = "lock_clk";
-            break label132;
-            ReportController.a(localBaseQQAppInterface, bool, "tech_push", "push", (String)localObject, "", 0, "", "", "", localReportEntry.b + "", "", "", "", "", "");
+          else {
+            localObject1 = "clk";
           }
         }
-        this.mCache.clear();
+        else {
+          localObject1 = "info_arr";
+        }
+        Object localObject2;
+        if ((localReportEntry.c != 7200) && (localReportEntry.c != 1008) && (localReportEntry.c != 7220))
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(localReportEntry.b);
+          ((StringBuilder)localObject2).append("");
+          ReportController.a(localBaseQQAppInterface, bool, "tech_push", "push", (String)localObject1, "", 0, "", "", "", ((StringBuilder)localObject2).toString(), "", "", "", "", "");
+        }
+        else
+        {
+          localObject2 = localReportEntry;
+          String str = ((NotificationReportControllerImpl.ReportEntry)localObject2).jdField_a_of_type_JavaLangString;
+          Object localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(((NotificationReportControllerImpl.ReportEntry)localObject2).b);
+          ((StringBuilder)localObject3).append("");
+          localObject3 = ((StringBuilder)localObject3).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append(((NotificationReportControllerImpl.ReportEntry)localObject2).c);
+          ReportController.a(localBaseQQAppInterface, bool, "tech_push", "push", (String)localObject1, "", 0, "", "", str, (String)localObject3, localStringBuilder.toString(), "", "", "", "");
+        }
+        if (QLog.isDevelopLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("report real msgType:");
+          ((StringBuilder)localObject1).append(localReportEntry.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append("    frienduin:");
+          ((StringBuilder)localObject1).append(localReportEntry.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append("   uinType:");
+          ((StringBuilder)localObject1).append(localReportEntry.c);
+          ((StringBuilder)localObject1).append("    nId:");
+          ((StringBuilder)localObject1).append(localReportEntry.b);
+          QLog.d("NotificationReportControllerImpl", 2, ((StringBuilder)localObject1).toString());
+        }
       }
-      return;
+      this.mCache.clear();
     }
   }
   
   private boolean shouldReportNetInfo(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
   {
-    if (!this.hasInitTodayReportedNotifyIds)
+    boolean bool2 = this.hasInitTodayReportedNotifyIds;
+    boolean bool1 = false;
+    Object localObject1;
+    Object localObject2;
+    if (!bool2)
     {
-      Object localObject = paramBaseQQAppInterface.getAccount();
-      SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
-      long l1 = localSharedPreferences.getLong("key_begintime_" + (String)localObject, 0L);
+      localObject1 = paramBaseQQAppInterface.getAccount();
+      localObject2 = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_begintime_");
+      localStringBuilder.append((String)localObject1);
+      long l1 = ((SharedPreferences)localObject2).getLong(localStringBuilder.toString(), 0L);
       long l2 = NotificationController.a().longValue();
       this.mTodayReportedNotifyIds = new HashSet();
       if (l1 == l2)
       {
-        localObject = localSharedPreferences.getString("kay_reported_notify_ids_" + (String)localObject, "");
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("kay_reported_notify_ids_");
+        localStringBuilder.append((String)localObject1);
+        localObject1 = ((SharedPreferences)localObject2).getString(localStringBuilder.toString(), "");
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          localObject = ((String)localObject).split(",");
-          int j = localObject.length;
+          localObject1 = ((String)localObject1).split(",");
+          int j = localObject1.length;
           int i = 0;
           while (i < j)
           {
-            localSharedPreferences = localObject[i];
-            this.mTodayReportedNotifyIds.add(Integer.valueOf(localSharedPreferences));
+            localObject2 = localObject1[i];
+            this.mTodayReportedNotifyIds.add(Integer.valueOf((String)localObject2));
             i += 1;
           }
         }
       }
       else
       {
-        localSharedPreferences.edit().putLong("key_begintime_" + (String)localObject, l2).apply();
+        localObject2 = ((SharedPreferences)localObject2).edit();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("key_begintime_");
+        localStringBuilder.append((String)localObject1);
+        ((SharedPreferences.Editor)localObject2).putLong(localStringBuilder.toString(), l2).apply();
       }
       this.hasInitTodayReportedNotifyIds = true;
     }
     if (!this.mTodayReportedNotifyIds.contains(Integer.valueOf(paramInt)))
     {
       this.mTodayReportedNotifyIds.add(Integer.valueOf(paramInt));
-      PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putString("kay_reported_notify_ids_" + paramBaseQQAppInterface.getAccount(), getTodayReportedNotifyIdsInCache()).apply();
-      return true;
+      localObject1 = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("kay_reported_notify_ids_");
+      ((StringBuilder)localObject2).append(paramBaseQQAppInterface.getAccount());
+      ((SharedPreferences.Editor)localObject1).putString(((StringBuilder)localObject2).toString(), getTodayReportedNotifyIdsInCache()).apply();
+      bool1 = true;
     }
-    return false;
+    return bool1;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if ((i != 1) && (i != 2) && (i != 3) && (i != 4))
     {
-    default: 
-      return true;
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-      paramMessage = (NotificationReportControllerImpl.ReportEntry)paramMessage.obj;
-      if (this.isAfterActionB)
-      {
-        this.mCache.add(paramMessage);
-        reportReal();
+      if (i != 5) {
         return true;
       }
-      this.mCache.add(paramMessage);
+      this.isAfterActionB = true;
+      reportReal();
       return true;
     }
-    this.isAfterActionB = true;
-    reportReal();
+    paramMessage = (NotificationReportControllerImpl.ReportEntry)paramMessage.obj;
+    if (this.isAfterActionB)
+    {
+      this.mCache.add(paramMessage);
+      reportReal();
+      return true;
+    }
+    this.mCache.add(paramMessage);
     return true;
   }
   
   public void report(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("NotificationReportControllerImpl", 2, "msgType:" + paramInt1 + "frienduin:" + paramString + "   uinType:" + paramInt3 + "    nId:" + paramInt2);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("msgType:");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append("frienduin:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("   uinType:");
+      ((StringBuilder)localObject).append(paramInt3);
+      ((StringBuilder)localObject).append("    nId:");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("NotificationReportControllerImpl", 2, ((StringBuilder)localObject).toString());
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = paramInt1;
-    localMessage.obj = new NotificationReportControllerImpl.ReportEntry(paramInt1, paramInt2, paramString, paramInt3);
-    this.mHandler.sendMessage(localMessage);
+    Object localObject = Message.obtain();
+    ((Message)localObject).what = paramInt1;
+    ((Message)localObject).obj = new NotificationReportControllerImpl.ReportEntry(paramInt1, paramInt2, paramString, paramInt3);
+    this.mHandler.sendMessage((Message)localObject);
   }
   
   public void reportAll()
@@ -182,7 +246,7 @@ public class NotificationReportControllerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.notification.NotificationReportControllerImpl
  * JD-Core Version:    0.7.0.1
  */

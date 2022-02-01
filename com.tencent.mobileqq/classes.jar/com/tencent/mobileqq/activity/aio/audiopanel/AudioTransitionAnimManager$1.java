@@ -4,6 +4,7 @@ import android.content.Context;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Set;
 
 class AudioTransitionAnimManager$1
@@ -15,8 +16,12 @@ class AudioTransitionAnimManager$1
   {
     try
     {
-      FileInputStream localFileInputStream = new FileInputStream(AudioTransitionAnimManager.b + this.jdField_a_of_type_JavaLangString + "data.json");
-      AudioTransitionAnimManager.a(this.this$0, LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidContentContext, localFileInputStream, new AudioTransitionAnimManager.1.1(this)));
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(AudioTransitionAnimManager.b);
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("data.json");
+      localObject = new FileInputStream(((StringBuilder)localObject).toString());
+      AudioTransitionAnimManager.a(this.this$0, LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidContentContext, (InputStream)localObject, new AudioTransitionAnimManager.1.1(this)));
       return;
     }
     catch (Throwable localThrowable)
@@ -28,7 +33,7 @@ class AudioTransitionAnimManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1
  * JD-Core Version:    0.7.0.1
  */

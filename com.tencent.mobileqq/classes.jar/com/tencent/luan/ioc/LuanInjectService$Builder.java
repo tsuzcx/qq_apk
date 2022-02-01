@@ -54,17 +54,28 @@ public class LuanInjectService$Builder
   public Builder addNamedType(Class<?> paramClass)
   {
     Utility.makeSureNotNull(paramClass, "namedType");
-    String str = LuanInjectService.access$1100(paramClass);
-    if (str.isEmpty()) {
-      LuanLog.d("LuanInjectService", "addNamedType: this class " + paramClass.getName() + " is not named or named empty string, ignored");
-    }
-    Class localClass;
-    do
+    Object localObject = LuanInjectService.access$1100(paramClass);
+    if (((String)localObject).isEmpty())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addNamedType: this class ");
+      ((StringBuilder)localObject).append(paramClass.getName());
+      ((StringBuilder)localObject).append(" is not named or named empty string, ignored");
+      LuanLog.d("LuanInjectService", ((StringBuilder)localObject).toString());
       return this;
-      localClass = (Class)this.nameTypeMap.put(str, paramClass);
-    } while (localClass == null);
-    LuanLog.d("LuanInjectService", "addNamedType: " + localClass.getName() + " with the name of " + str + " is override by " + paramClass.getName());
+    }
+    Class localClass = (Class)this.nameTypeMap.put(localObject, paramClass);
+    if (localClass != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addNamedType: ");
+      localStringBuilder.append(localClass.getName());
+      localStringBuilder.append(" with the name of ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" is override by ");
+      localStringBuilder.append(paramClass.getName());
+      LuanLog.d("LuanInjectService", localStringBuilder.toString());
+    }
     return this;
   }
   
@@ -118,7 +129,7 @@ public class LuanInjectService$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.luan.ioc.LuanInjectService.Builder
  * JD-Core Version:    0.7.0.1
  */

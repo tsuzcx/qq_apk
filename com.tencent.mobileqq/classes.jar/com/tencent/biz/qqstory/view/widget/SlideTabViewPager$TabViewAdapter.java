@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 import java.util.ArrayList;
 
 public class SlideTabViewPager$TabViewAdapter
@@ -40,7 +40,7 @@ public class SlideTabViewPager$TabViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.SlideTabViewPager.TabViewAdapter
  * JD-Core Version:    0.7.0.1
  */

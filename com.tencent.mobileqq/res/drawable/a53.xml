@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<transition
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/h3s" />
-    <item android:drawable="@drawable/h3n" android:state_activated="true" />
-    <item android:drawable="@drawable/h3q" />
-</selector>
+    <item android:drawable="@drawable/fsk" />
+    <item android:drawable="@drawable/fs0" />
+</transition>

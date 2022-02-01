@@ -20,7 +20,7 @@ public final class oidb_cmd0xe89$ReqGetChangeList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe89.oidb_cmd0xe89.ReqGetChangeList
  * JD-Core Version:    0.7.0.1
  */

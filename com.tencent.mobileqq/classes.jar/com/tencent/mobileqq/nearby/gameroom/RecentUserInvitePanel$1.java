@@ -2,24 +2,22 @@ package com.tencent.mobileqq.nearby.gameroom;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class RecentUserInvitePanel$1
   implements View.OnClickListener
 {
-  RecentUserInvitePanel$1(RecentUserInvitePanel paramRecentUserInvitePanel, WerewolvesDataManager.InviteUser paramInviteUser) {}
+  RecentUserInvitePanel$1(RecentUserInvitePanel paramRecentUserInvitePanel, InviteUser paramInviteUser) {}
   
   public void onClick(View paramView)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a.a(paramView, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager$InviteUser);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomRecentUserInvitePanel.a.a(paramView, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomInviteUser);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel.1
  * JD-Core Version:    0.7.0.1
  */

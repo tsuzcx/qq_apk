@@ -14,8 +14,7 @@ import java.util.Map;
 
 public class LocationDataHandler
 {
-  private static String b = "LocationDataHandler";
-  private String jdField_a_of_type_JavaLangString;
+  private final String jdField_a_of_type_JavaLangString;
   private final List<OnUpdateUserLocationListener> jdField_a_of_type_JavaUtilList = new ArrayList();
   private final Map<LocationRoom.RoomKey, LocationRoom> jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
   
@@ -35,8 +34,14 @@ public class LocationDataHandler
         localLocationRoom1 = new LocationRoom(paramRoomKey, this.jdField_a_of_type_JavaLangString);
         this.jdField_a_of_type_JavaUtilMap.put(paramRoomKey, localLocationRoom1);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(b, 2, "getLocationRoom: invoked. mLocationRoomMap size: " + this.jdField_a_of_type_JavaUtilMap.size() + " locationRoom: " + localLocationRoom1);
+      if (QLog.isColorLevel())
+      {
+        paramRoomKey = new StringBuilder();
+        paramRoomKey.append("getLocationRoom: invoked. mLocationRoomMap size: ");
+        paramRoomKey.append(this.jdField_a_of_type_JavaUtilMap.size());
+        paramRoomKey.append(" locationRoom: ");
+        paramRoomKey.append(localLocationRoom1);
+        QLog.d("LocationDataHandler", 2, paramRoomKey.toString());
       }
       return localLocationRoom1;
     }
@@ -135,15 +140,20 @@ public class LocationDataHandler
     {
       this.jdField_a_of_type_JavaUtilMap.remove(paramRoomKey);
       ??? = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((OnUpdateUserLocationListener)((Iterator)???).next()).a(paramRoomKey, paramInt);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramRoomKey;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationDataHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -37,30 +37,30 @@ public class CheckJsServiceAction
   
   public Boolean perform(BaseRuntime paramBaseRuntime)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     paramBaseRuntime = paramBaseRuntime.getJsService();
-    switch (this.action)
+    int i = this.action;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (i != 1)
     {
-    default: 
-      return Boolean.valueOf(false);
-    case 1: 
-      if (this.mJsService != paramBaseRuntime) {}
-      for (;;)
-      {
-        return Boolean.valueOf(bool1);
-        bool1 = false;
+      if (i != 2) {
+        return Boolean.valueOf(false);
       }
-    }
-    if (this.mJsService == paramBaseRuntime) {}
-    for (bool1 = bool2;; bool1 = false) {
+      if (this.mJsService == paramBaseRuntime) {
+        bool1 = true;
+      }
       return Boolean.valueOf(bool1);
     }
+    bool1 = bool2;
+    if (this.mJsService != paramBaseRuntime) {
+      bool1 = true;
+    }
+    return Boolean.valueOf(bool1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.action.CheckJsServiceAction
  * JD-Core Version:    0.7.0.1
  */

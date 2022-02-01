@@ -25,14 +25,15 @@ public final class UserInfo
   
   public static UserInfo[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new UserInfo[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new UserInfo[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static UserInfo parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -58,38 +59,42 @@ public final class UserInfo
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    long l = this.id;
     int i = j;
-    if (this.id != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.id);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
+    l = this.explicit;
     j = i;
-    if (this.explicit != 0L) {
-      j = i + CodedOutputByteBufferNano.computeInt64Size(2, this.explicit);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeInt64Size(2, l);
     }
-    i = j;
+    int k = j;
     if (!this.name.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(3, this.name);
+      k = j + CodedOutputByteBufferNano.computeStringSize(3, this.name);
     }
-    j = i;
+    i = k;
     if (!this.head.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(4, this.head);
+      i = k + CodedOutputByteBufferNano.computeStringSize(4, this.head);
     }
-    i = j;
-    if (this.initialClientType != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(5, this.initialClientType);
-    }
+    k = this.initialClientType;
     j = i;
-    if (!this.businessUid.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(6, this.businessUid);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(5, k);
     }
     i = j;
-    if (this.tinyId != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(7, this.tinyId);
+    if (!this.businessUid.equals("")) {
+      i = j + CodedOutputByteBufferNano.computeStringSize(6, this.businessUid);
     }
-    return i;
+    l = this.tinyId;
+    j = i;
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeUInt64Size(7, l);
+    }
+    return j;
   }
   
   public UserInfo mergeFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -97,44 +102,67 @@ public final class UserInfo
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.id = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 16: 
-        this.explicit = paramCodedInputByteBufferNano.readInt64();
-        break;
-      case 26: 
-        this.name = paramCodedInputByteBufferNano.readString();
-        break;
-      case 34: 
-        this.head = paramCodedInputByteBufferNano.readString();
-        break;
-      case 40: 
-        this.initialClientType = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 50: 
-        this.businessUid = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.tinyId = paramCodedInputByteBufferNano.readUInt64();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (i != 40)
+              {
+                if (i != 50)
+                {
+                  if (i != 56)
+                  {
+                    if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                      return this;
+                    }
+                  }
+                  else {
+                    this.tinyId = paramCodedInputByteBufferNano.readUInt64();
+                  }
+                }
+                else {
+                  this.businessUid = paramCodedInputByteBufferNano.readString();
+                }
+              }
+              else {
+                this.initialClientType = paramCodedInputByteBufferNano.readUInt32();
+              }
+            }
+            else {
+              this.head = paramCodedInputByteBufferNano.readString();
+            }
+          }
+          else {
+            this.name = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.explicit = paramCodedInputByteBufferNano.readInt64();
+        }
+      }
+      else {
+        this.id = paramCodedInputByteBufferNano.readUInt64();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.id != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.id);
+    long l = this.id;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if (this.explicit != 0L) {
-      paramCodedOutputByteBufferNano.writeInt64(2, this.explicit);
+    l = this.explicit;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeInt64(2, l);
     }
     if (!this.name.equals("")) {
       paramCodedOutputByteBufferNano.writeString(3, this.name);
@@ -142,21 +170,23 @@ public final class UserInfo
     if (!this.head.equals("")) {
       paramCodedOutputByteBufferNano.writeString(4, this.head);
     }
-    if (this.initialClientType != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(5, this.initialClientType);
+    int i = this.initialClientType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(5, i);
     }
     if (!this.businessUid.equals("")) {
       paramCodedOutputByteBufferNano.writeString(6, this.businessUid);
     }
-    if (this.tinyId != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(7, this.tinyId);
+    l = this.tinyId;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(7, l);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.UserInfo
  * JD-Core Version:    0.7.0.1
  */

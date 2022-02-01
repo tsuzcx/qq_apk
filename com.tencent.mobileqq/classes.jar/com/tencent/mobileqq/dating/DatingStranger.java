@@ -38,15 +38,9 @@ public class DatingStranger
   
   public static DatingStranger a(appoint_define.StrangerInfo paramStrangerInfo)
   {
-    Object localObject;
-    if ((paramStrangerInfo == null) || (paramStrangerInfo.uint64_tinyid.get() == 0L)) {
-      localObject = null;
-    }
-    DatingStranger localDatingStranger;
-    do
+    if ((paramStrangerInfo != null) && (paramStrangerInfo.uint64_tinyid.get() != 0L))
     {
-      return localObject;
-      localDatingStranger = new DatingStranger();
+      DatingStranger localDatingStranger = new DatingStranger();
       if (paramStrangerInfo.uint64_tinyid.has()) {
         localDatingStranger.jdField_a_of_type_Long = paramStrangerInfo.uint64_tinyid.get();
       }
@@ -74,10 +68,12 @@ public class DatingStranger
       if (paramStrangerInfo.uint32_marriage.has()) {
         localDatingStranger.e = paramStrangerInfo.uint32_marriage.get();
       }
-      localObject = localDatingStranger;
-    } while (!paramStrangerInfo.str_vipinfo.has());
-    localDatingStranger.jdField_c_of_type_JavaLangString = paramStrangerInfo.str_vipinfo.get();
-    return localDatingStranger;
+      if (paramStrangerInfo.str_vipinfo.has()) {
+        localDatingStranger.jdField_c_of_type_JavaLangString = paramStrangerInfo.str_vipinfo.get();
+      }
+      return localDatingStranger;
+    }
+    return null;
   }
   
   public static DatingStranger a(JSONObject paramJSONObject)
@@ -85,23 +81,14 @@ public class DatingStranger
     if (paramJSONObject == null) {
       return null;
     }
-    localDatingStranger = new DatingStranger();
-    for (;;)
+    DatingStranger localDatingStranger = new DatingStranger();
+    try
     {
-      try
-      {
-        localDatingStranger.jdField_a_of_type_Long = paramJSONObject.getLong("open_id");
-        localDatingStranger.jdField_a_of_type_JavaLangString = paramJSONObject.getString("nickname");
-        localDatingStranger.jdField_a_of_type_Int = paramJSONObject.getInt("age");
-        localDatingStranger.jdField_b_of_type_Int = paramJSONObject.getInt("gender");
-        localDatingStranger.jdField_c_of_type_Int = paramJSONObject.getInt("state");
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        paramJSONObject = null;
-        continue;
-      }
+      localDatingStranger.jdField_a_of_type_Long = paramJSONObject.getLong("open_id");
+      localDatingStranger.jdField_a_of_type_JavaLangString = paramJSONObject.getString("nickname");
+      localDatingStranger.jdField_a_of_type_Int = paramJSONObject.getInt("age");
+      localDatingStranger.jdField_b_of_type_Int = paramJSONObject.getInt("gender");
+      localDatingStranger.jdField_c_of_type_Int = paramJSONObject.getInt("state");
       try
       {
         localDatingStranger.jdField_b_of_type_JavaLangString = paramJSONObject.getString("constellation");
@@ -109,42 +96,45 @@ public class DatingStranger
         localDatingStranger.e = paramJSONObject.getInt("emotion");
         localDatingStranger.f = paramJSONObject.getInt("listIdx");
         localDatingStranger.jdField_c_of_type_JavaLangString = paramJSONObject.getString("vip");
-        paramJSONObject = localDatingStranger;
       }
       catch (JSONException paramJSONObject)
       {
         paramJSONObject.printStackTrace();
-        paramJSONObject = localDatingStranger;
       }
+      return localDatingStranger;
     }
-    return paramJSONObject;
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return null;
   }
   
   public static String a(List<DatingStranger> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return "";
-    }
-    JSONArray localJSONArray = new JSONArray();
-    paramList = paramList.iterator();
-    int i = 0;
-    if (paramList.hasNext())
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      JSONObject localJSONObject = a((DatingStranger)paramList.next());
-      if (localJSONObject == null) {
-        break label83;
-      }
-      localJSONArray.put(localJSONObject);
-      i += 1;
+      JSONArray localJSONArray = new JSONArray();
+      int i = 0;
+      paramList = paramList.iterator();
+      int j;
+      do
+      {
+        if (!paramList.hasNext()) {
+          break;
+        }
+        JSONObject localJSONObject = a((DatingStranger)paramList.next());
+        j = i;
+        if (localJSONObject != null)
+        {
+          localJSONArray.put(localJSONObject);
+          j = i + 1;
+        }
+        i = j;
+      } while (j < 20);
+      return localJSONArray.toString();
     }
-    label83:
-    for (;;)
-    {
-      if (i >= 20) {
-        return localJSONArray.toString();
-      }
-      break;
-    }
+    return "";
   }
   
   public static JSONObject a(DatingStranger paramDatingStranger)
@@ -176,10 +166,11 @@ public class DatingStranger
   
   public static void a(List<DatingStranger> paramList, String paramString)
   {
-    if ((paramList == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
       try
       {
         paramString = new JSONArray(paramString);
@@ -204,21 +195,20 @@ public class DatingStranger
   
   public boolean equals(Object paramObject)
   {
-    boolean bool = true;
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool = false;
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-    } while (paramObject.getClass() != getClass());
-    if (((DatingStranger)paramObject).jdField_a_of_type_Long == this.jdField_a_of_type_Long) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
     }
+    if (paramObject == this) {
+      return true;
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
+    if (((DatingStranger)paramObject).jdField_a_of_type_Long == this.jdField_a_of_type_Long) {
+      bool = true;
+    }
+    return bool;
   }
   
   public int hashCode()
@@ -229,13 +219,33 @@ public class DatingStranger
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append(this.jdField_a_of_type_Long).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_b_of_type_Int).append(",").append(this.jdField_c_of_type_Int).append(",").append(this.jdField_b_of_type_JavaLangString).append(",").append(this.d).append(",").append(this.e).append(",").append(this.f).append(",").append(this.jdField_c_of_type_JavaLangString).append("]");
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingStranger
  * JD-Core Version:    0.7.0.1
  */

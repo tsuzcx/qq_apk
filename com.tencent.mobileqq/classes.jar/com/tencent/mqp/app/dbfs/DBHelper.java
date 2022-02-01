@@ -12,15 +12,18 @@ public class DBHelper
   public long a(long paramLong)
   {
     SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
-    Cursor localCursor = localSQLiteDatabase.query("t_PathNode", null, " ID_node=?", new String[] { "" + paramLong }, null, null, null);
-    if (localCursor.moveToFirst() == true)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = localSQLiteDatabase.query("t_PathNode", null, " ID_node=?", new String[] { ((StringBuilder)localObject).toString() }, null, null, null);
+    if (((Cursor)localObject).moveToFirst() == true)
     {
-      paramLong = localCursor.getLong(2);
-      localCursor.close();
+      paramLong = ((Cursor)localObject).getLong(2);
+      ((Cursor)localObject).close();
       localSQLiteDatabase.close();
       return paramLong;
     }
-    localCursor.close();
+    ((Cursor)localObject).close();
     localSQLiteDatabase.close();
     return -1L;
   }
@@ -30,7 +33,10 @@ public class DBHelper
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("ID_blob", Long.valueOf(paramLong2));
     SQLiteDatabase localSQLiteDatabase = getWritableDatabase();
-    paramLong1 = localSQLiteDatabase.update("t_PathNode", localContentValues, " ID_node=?", new String[] { "" + paramLong1 });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong1);
+    paramLong1 = localSQLiteDatabase.update("t_PathNode", localContentValues, " ID_node=?", new String[] { localStringBuilder.toString() });
     localSQLiteDatabase.close();
     return paramLong1;
   }
@@ -59,7 +65,10 @@ public class DBHelper
   public long a(long paramLong, String paramString)
   {
     SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
-    paramString = localSQLiteDatabase.query("t_PathNode", null, " ID_parent=? and name=? ", new String[] { "" + paramLong, paramString }, null, null, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    paramString = localSQLiteDatabase.query("t_PathNode", null, " ID_parent=? and name=? ", new String[] { localStringBuilder.toString(), paramString }, null, null, null);
     if (paramString.moveToFirst() == true)
     {
       paramLong = paramString.getLong(0);
@@ -85,27 +94,33 @@ public class DBHelper
   public void a(long paramLong)
   {
     SQLiteDatabase localSQLiteDatabase = getWritableDatabase();
-    localSQLiteDatabase.delete("t_BlobNode", " ID_blob=? ", new String[] { "" + paramLong });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong);
+    localSQLiteDatabase.delete("t_BlobNode", " ID_blob=? ", new String[] { localStringBuilder.toString() });
     localSQLiteDatabase.close();
   }
   
   public String[] a(long paramLong)
   {
     SQLiteDatabase localSQLiteDatabase = getReadableDatabase();
-    Cursor localCursor = localSQLiteDatabase.query("t_PathNode", null, " ID_parent=? ", new String[] { "" + paramLong }, null, null, null);
-    if (localCursor.moveToFirst() == true)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(paramLong);
+    localObject1 = localSQLiteDatabase.query("t_PathNode", null, " ID_parent=? ", new String[] { ((StringBuilder)localObject1).toString() }, null, null, null);
+    if (((Cursor)localObject1).moveToFirst() == true)
     {
-      Object localObject = new ArrayList();
+      Object localObject2 = new ArrayList();
       do
       {
-        ((ArrayList)localObject).add(localCursor.getString(3));
-      } while (localCursor.moveToNext());
-      localObject = (String[])((ArrayList)localObject).toArray(new String[0]);
-      localCursor.close();
+        ((ArrayList)localObject2).add(((Cursor)localObject1).getString(3));
+      } while (((Cursor)localObject1).moveToNext());
+      localObject2 = (String[])((ArrayList)localObject2).toArray(new String[0]);
+      ((Cursor)localObject1).close();
       localSQLiteDatabase.close();
-      return localObject;
+      return localObject2;
     }
-    localCursor.close();
+    ((Cursor)localObject1).close();
     localSQLiteDatabase.close();
     return null;
   }
@@ -128,7 +143,7 @@ public class DBHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqp.app.dbfs.DBHelper
  * JD-Core Version:    0.7.0.1
  */

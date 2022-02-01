@@ -23,45 +23,54 @@ public class GifImageWithText
   
   private void a(Canvas paramCanvas, Rect paramRect)
   {
-    float f2 = 1.0F;
     if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_Boolean))
     {
-      QLog.d("ZhituManager", 2, " dst rect is " + paramRect + " but bitmap is " + getWidth() + " / " + getHeight());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" dst rect is ");
+      localStringBuilder.append(paramRect);
+      localStringBuilder.append(" but bitmap is ");
+      localStringBuilder.append(getWidth());
+      localStringBuilder.append(" / ");
+      localStringBuilder.append(getHeight());
+      QLog.d("ZhituManager", 2, localStringBuilder.toString());
       this.jdField_a_of_type_Boolean = true;
     }
-    float f1 = paramRect.width() / getWidth();
-    if (Math.abs(f1 - 1.0F) < 0.01D)
+    float f2 = paramRect.width() / getWidth();
+    float f1;
+    if (Math.abs(f2 - 1.0F) < 0.01D)
     {
-      f1 = f2;
       if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
         this.jdField_a_of_type_AndroidGraphicsPaint = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_AndroidGraphicsPaint;
         this.b = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.b;
-        f1 = f2;
       }
+      f1 = 1.0F;
     }
-    for (;;)
+    else
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        f2 = paramRect.top + this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfFloat[i] * f1;
-        if (this.b != null) {
-          paramCanvas.drawText(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.b);
-        }
-        paramCanvas.drawText(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
-        i += 1;
-      }
+      f1 = f2;
       if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
         this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() * f1);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() * f2);
+        f1 = f2;
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.b != null)
         {
           this.b = new Paint(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.b);
-          this.b.setTextSize(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.b.getTextSize() * f1);
+          this.b.setTextSize(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.b.getTextSize() * f2);
+          f1 = f2;
         }
       }
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfFloat.length)
+    {
+      f2 = paramRect.top + this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfFloat[i] * f1;
+      if (this.b != null) {
+        paramCanvas.drawText(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.b);
+      }
+      paramCanvas.drawText(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      i += 1;
     }
   }
   
@@ -84,8 +93,16 @@ public class GifImageWithText
   public void a(Canvas paramCanvas)
   {
     Rect localRect = new Rect(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "draw text to file dst rect is " + localRect + " and bitmap is " + getWidth() + " / " + getHeight());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("draw text to file dst rect is ");
+      localStringBuilder.append(localRect);
+      localStringBuilder.append(" and bitmap is ");
+      localStringBuilder.append(getWidth());
+      localStringBuilder.append(" / ");
+      localStringBuilder.append(getHeight());
+      QLog.d("ZhituManager", 2, localStringBuilder.toString());
     }
     a(paramCanvas, localRect);
   }
@@ -124,7 +141,7 @@ public class GifImageWithText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.GifImageWithText
  * JD-Core Version:    0.7.0.1
  */

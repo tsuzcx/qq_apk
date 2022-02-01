@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class UinFraudInfo
 {
-  private static UinFraudInfo jdField_a_of_type_ComTencentMobileqqAntiphingUinFraudInfo = null;
+  private static UinFraudInfo jdField_a_of_type_ComTencentMobileqqAntiphingUinFraudInfo;
   private Map<Long, UinFraudInfo.FraudInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
   private Map<Long, Long> b = new HashMap();
   
@@ -120,7 +120,7 @@ public class UinFraudInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.UinFraudInfo
  * JD-Core Version:    0.7.0.1
  */

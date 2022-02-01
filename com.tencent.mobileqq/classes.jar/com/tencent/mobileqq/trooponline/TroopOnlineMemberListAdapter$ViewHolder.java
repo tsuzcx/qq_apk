@@ -3,7 +3,7 @@ package com.tencent.mobileqq.trooponline;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.trooponline.data.TroopOnlineMemberItem;
+import com.tencent.mobileqq.troop.onlinemember.data.TroopOnlineMemberItem;
 import com.tencent.mobileqq.trooponline.widget.RoundTextView;
 
 public class TroopOnlineMemberListAdapter$ViewHolder
@@ -20,7 +20,7 @@ public class TroopOnlineMemberListAdapter$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

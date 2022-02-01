@@ -18,13 +18,12 @@ public class VfcPluginProxyActivity
     return bool;
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
-    boolean bool = false;
     if (super.getIntent() != null) {
-      bool = super.getIntent().getBooleanExtra("QWalletExtra.isFling", false);
+      return super.getIntent().getBooleanExtra("QWalletExtra.isFling", false);
     }
-    return bool;
+    return false;
   }
   
   @Override
@@ -36,7 +35,7 @@ public class VfcPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.thirdpay.VfcPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

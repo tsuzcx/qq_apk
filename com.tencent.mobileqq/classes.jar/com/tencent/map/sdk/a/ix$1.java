@@ -13,17 +13,14 @@ final class ix$1
     if (ix.a(this.a) != null)
     {
       paramString = (qg.a)ix.a(this.a).a.get(paramString);
-      if (paramString == null) {
-        break label58;
+      if (paramString != null) {
+        paramString = paramString.a;
+      } else {
+        paramString = null;
       }
-    }
-    label58:
-    for (paramString = paramString.a;; paramString = null)
-    {
       if (paramString != null) {
         ix.b(this.a).remove(paramString);
       }
-      return;
     }
   }
   
@@ -33,7 +30,7 @@ final class ix$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ix.1
  * JD-Core Version:    0.7.0.1
  */

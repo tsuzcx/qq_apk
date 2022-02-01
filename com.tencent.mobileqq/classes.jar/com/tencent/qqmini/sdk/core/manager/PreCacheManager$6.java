@@ -13,7 +13,12 @@ class PreCacheManager$6
   
   public void onDownloadFailed(int paramInt, String paramString)
   {
-    QMLog.i("minisdk-start_PreCacheManager", "[Resource Cache] download Resource url failed! url=" + this.val$url + " path=" + this.val$path);
+    paramString = new StringBuilder();
+    paramString.append("[Resource Cache] download Resource url failed! url=");
+    paramString.append(this.val$url);
+    paramString.append(" path=");
+    paramString.append(this.val$path);
+    QMLog.i("minisdk-start_PreCacheManager", paramString.toString());
   }
   
   public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
@@ -22,12 +27,15 @@ class PreCacheManager$6
   
   public void onDownloadSucceed(int paramInt, String paramString, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult)
   {
-    QMLog.i("minisdk-start_PreCacheManager", "[Resource Cache] download Resource url succeed! url=" + this.val$url);
+    paramString = new StringBuilder();
+    paramString.append("[Resource Cache] download Resource url succeed! url=");
+    paramString.append(this.val$url);
+    QMLog.i("minisdk-start_PreCacheManager", paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.PreCacheManager.6
  * JD-Core Version:    0.7.0.1
  */

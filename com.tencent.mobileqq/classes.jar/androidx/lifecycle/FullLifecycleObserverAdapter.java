@@ -19,37 +19,36 @@ class FullLifecycleObserverAdapter
     switch (FullLifecycleObserverAdapter.1.$SwitchMap$androidx$lifecycle$Lifecycle$Event[paramEvent.ordinal()])
     {
     default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
+      break;
+    case 7: 
+      throw new IllegalArgumentException("ON_ANY must not been send by anybody");
     case 6: 
-      for (;;)
-      {
-        if (this.mLifecycleEventObserver != null) {
-          this.mLifecycleEventObserver.onStateChanged(paramLifecycleOwner, paramEvent);
-        }
-        return;
-        this.mFullLifecycleObserver.onCreate(paramLifecycleOwner);
-        continue;
-        this.mFullLifecycleObserver.onStart(paramLifecycleOwner);
-        continue;
-        this.mFullLifecycleObserver.onResume(paramLifecycleOwner);
-        continue;
-        this.mFullLifecycleObserver.onPause(paramLifecycleOwner);
-        continue;
-        this.mFullLifecycleObserver.onStop(paramLifecycleOwner);
-        continue;
-        this.mFullLifecycleObserver.onDestroy(paramLifecycleOwner);
-      }
+      this.mFullLifecycleObserver.onDestroy(paramLifecycleOwner);
+      break;
+    case 5: 
+      this.mFullLifecycleObserver.onStop(paramLifecycleOwner);
+      break;
+    case 4: 
+      this.mFullLifecycleObserver.onPause(paramLifecycleOwner);
+      break;
+    case 3: 
+      this.mFullLifecycleObserver.onResume(paramLifecycleOwner);
+      break;
+    case 2: 
+      this.mFullLifecycleObserver.onStart(paramLifecycleOwner);
+      break;
+    case 1: 
+      this.mFullLifecycleObserver.onCreate(paramLifecycleOwner);
     }
-    throw new IllegalArgumentException("ON_ANY must not been send by anybody");
+    LifecycleEventObserver localLifecycleEventObserver = this.mLifecycleEventObserver;
+    if (localLifecycleEventObserver != null) {
+      localLifecycleEventObserver.onStateChanged(paramLifecycleOwner, paramEvent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.FullLifecycleObserverAdapter
  * JD-Core Version:    0.7.0.1
  */

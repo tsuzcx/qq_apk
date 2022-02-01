@@ -14,37 +14,33 @@ class PLNewsItemBuilder$FastBlurDecoderHandler
 {
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    int k = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    int m = paramDownloadParams.reqHeight;
-    int i = k * m / j;
-    if (m >= j) {
-      i = k;
-    }
-    for (;;)
+    int j = paramBitmap.getWidth();
+    int i = paramBitmap.getHeight();
+    int k = paramDownloadParams.reqHeight;
+    int m = j * k / i;
+    if (k >= i)
     {
-      try
-      {
-        paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_4444);
-        new Canvas(paramDownloadParams).drawBitmap(paramBitmap, null, new Rect(0, 0, i, j), new Paint(7));
-        StackBlur.a(paramDownloadParams, 10);
-        return paramDownloadParams;
-      }
-      catch (OutOfMemoryError paramDownloadParams)
-      {
-        return paramBitmap;
-      }
-      catch (Exception paramDownloadParams)
-      {
-        return paramBitmap;
-      }
-      j = m;
+      k = i;
     }
+    else
+    {
+      i = m;
+      j = i;
+    }
+    try
+    {
+      paramDownloadParams = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_4444);
+      new Canvas(paramDownloadParams).drawBitmap(paramBitmap, null, new Rect(0, 0, j, k), new Paint(7));
+      StackBlur.a(paramDownloadParams, 10);
+      return paramDownloadParams;
+    }
+    catch (Exception|OutOfMemoryError paramDownloadParams) {}
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PLNewsItemBuilder.FastBlurDecoderHandler
  * JD-Core Version:    0.7.0.1
  */

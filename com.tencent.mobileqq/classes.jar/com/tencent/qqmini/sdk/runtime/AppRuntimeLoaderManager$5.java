@@ -11,12 +11,15 @@ class AppRuntimeLoaderManager$5
   
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
-    QMLog.i("minisdk-start_AppRuntimeLoaderManager", "notifyRuntime runtime info result " + paramBoolean);
+    paramBundle = new StringBuilder();
+    paramBundle.append("notifyRuntime runtime info result ");
+    paramBundle.append(paramBoolean);
+    QMLog.i("minisdk-start_AppRuntimeLoaderManager", paramBundle.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppRuntimeLoaderManager.5
  * JD-Core Version:    0.7.0.1
  */

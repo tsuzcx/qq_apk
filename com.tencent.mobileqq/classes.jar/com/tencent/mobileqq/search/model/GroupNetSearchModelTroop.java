@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.business.addcontact.model.SearchResult;
 import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -35,7 +35,7 @@ public class GroupNetSearchModelTroop
   
   public String a()
   {
-    return HardCodeUtil.a(2131705369);
+    return HardCodeUtil.a(2131705443);
   }
   
   public List<ISearchResultModel> a()
@@ -49,13 +49,30 @@ public class GroupNetSearchModelTroop
     new Intent().putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
     long l1 = Double.valueOf(NetSearchEngine.a * 1000000.0D).longValue();
     long l2 = Double.valueOf(NetSearchEngine.b * 1000000.0D).longValue();
-    Object localObject2 = "https://qqweb.qq.com/m/relativegroup/index.html?source=qun_recent_search&keyword=" + URLEncoder.encode(this.jdField_a_of_type_JavaLangString) + "&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=" + Long.valueOf(l2) + "&lat=" + Long.valueOf(l1);
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Boolean) {
-      localObject1 = (String)localObject2 + "&show_tab=hot";
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("https://qqweb.qq.com/m/relativegroup/index.html?source=qun_recent_search&keyword=");
+    ((StringBuilder)localObject1).append(URLEncoder.encode(this.jdField_a_of_type_JavaLangString));
+    ((StringBuilder)localObject1).append("&gpstype=1&sid=AWSAPtjyiVRg92WelXNMAqd0&_bid=165&lon=");
+    ((StringBuilder)localObject1).append(Long.valueOf(l2));
+    ((StringBuilder)localObject1).append("&lat=");
+    ((StringBuilder)localObject1).append(Long.valueOf(l1));
+    Object localObject2 = ((StringBuilder)localObject1).toString();
+    localObject1 = localObject2;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("&show_tab=hot");
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("search", 2, "lastKeywords = " + this.jdField_a_of_type_JavaLangString + " jump url is : " + (String)localObject1);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("lastKeywords = ");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(" jump url is : ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("search", 2, ((StringBuilder)localObject2).toString());
     }
     localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
     ((Intent)localObject2).putExtra("url", (String)localObject1);
@@ -74,7 +91,7 @@ public class GroupNetSearchModelTroop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.GroupNetSearchModelTroop
  * JD-Core Version:    0.7.0.1
  */

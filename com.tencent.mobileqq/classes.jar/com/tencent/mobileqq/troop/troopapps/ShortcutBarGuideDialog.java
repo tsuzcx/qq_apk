@@ -18,7 +18,7 @@ public class ShortcutBarGuideDialog
   
   public ShortcutBarGuideDialog(Context paramContext)
   {
-    super(paramContext, 2131755176);
+    super(paramContext, 2131755340);
     a();
   }
   
@@ -26,14 +26,14 @@ public class ShortcutBarGuideDialog
   {
     setCancelable(false);
     setCanceledOnTouchOutside(false);
-    setContentView(2131559089);
-    Object localObject1 = (URLImageView)findViewById(2131368729);
+    setContentView(2131558983);
+    Object localObject1 = (URLImageView)findViewById(2131368461);
     Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
     ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#FFEBEDF5"));
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localColorDrawable;
     ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localColorDrawable;
     ((URLImageView)localObject1).setBackgroundDrawable(URLDrawable.getDrawable(a, (URLDrawable.URLDrawableOptions)localObject2));
-    localObject1 = (TextView)findViewById(2131370005);
+    localObject1 = (TextView)findViewById(2131369690);
     ((TextView)localObject1).setClickable(true);
     localObject2 = new GradientDrawable();
     ((GradientDrawable)localObject2).setCornerRadius(12.0F);
@@ -44,7 +44,7 @@ public class ShortcutBarGuideDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.ShortcutBarGuideDialog
  * JD-Core Version:    0.7.0.1
  */

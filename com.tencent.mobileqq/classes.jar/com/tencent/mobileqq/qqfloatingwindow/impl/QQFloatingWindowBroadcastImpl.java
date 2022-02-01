@@ -55,13 +55,14 @@ public class QQFloatingWindowBroadcastImpl
     }
     Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
     localIntent.setPackage(paramContext.getPackageName());
-    if (paramBoolean) {}
-    for (int i = 103;; i = 102)
-    {
-      localIntent.putExtra("param_curr_window_status", i);
-      paramContext.sendBroadcast(localIntent);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 103;
+    } else {
+      i = 102;
     }
+    localIntent.putExtra("param_curr_window_status", i);
+    paramContext.sendBroadcast(localIntent);
   }
   
   public void sendWindowVisibleBroadcast(Context paramContext, boolean paramBoolean, int paramInt)
@@ -71,14 +72,15 @@ public class QQFloatingWindowBroadcastImpl
     }
     Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
     localIntent.setPackage(paramContext.getPackageName());
-    if (paramBoolean) {}
-    for (int i = 103;; i = 102)
-    {
-      localIntent.putExtra("param_curr_window_status", i);
-      localIntent.putExtra("param_busitype", paramInt);
-      paramContext.sendBroadcast(localIntent);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 103;
+    } else {
+      i = 102;
     }
+    localIntent.putExtra("param_curr_window_status", i);
+    localIntent.putExtra("param_busitype", paramInt);
+    paramContext.sendBroadcast(localIntent);
   }
   
   public void sendWindowVisibleBroadcast(Context paramContext, boolean paramBoolean, int paramInt1, int paramInt2)
@@ -89,19 +91,19 @@ public class QQFloatingWindowBroadcastImpl
     Intent localIntent = new Intent("tencent.mobileqq.floatingscreen.statuschange");
     localIntent.setPackage(paramContext.getPackageName());
     localIntent.putExtra("param_concern_floating_type", paramInt2);
-    if (paramBoolean) {}
-    for (paramInt2 = 103;; paramInt2 = 102)
-    {
-      localIntent.putExtra("param_curr_window_status", paramInt2);
-      localIntent.putExtra("param_busitype", paramInt1);
-      paramContext.sendBroadcast(localIntent);
-      return;
+    if (paramBoolean) {
+      paramInt2 = 103;
+    } else {
+      paramInt2 = 102;
     }
+    localIntent.putExtra("param_curr_window_status", paramInt2);
+    localIntent.putExtra("param_busitype", paramInt1);
+    paramContext.sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.QQFloatingWindowBroadcastImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.data;
 
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.api.IFMSettings;
 import com.tencent.mobileqq.filemanager.core.FileVideoDownloadManager;
 import com.tencent.mobileqq.filemanager.core.FileVideoDownloadManager.FileVideoManagerCallback;
 import com.tencent.mobileqq.filemanager.settings.FMSettings;
@@ -23,10 +24,12 @@ public class VideoForTroop
   {
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo = paramTroopFileStatusInfo;
     this.jdField_a_of_type_JavaUtilUUID = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID;
-    if (this.jdField_a_of_type_JavaUtilUUID == null) {
-      throw new NullPointerException("TroopFileStatusInfo Id null");
+    if (this.jdField_a_of_type_JavaUtilUUID != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    throw new NullPointerException("TroopFileStatusInfo Id null");
   }
   
   public long a()
@@ -42,17 +45,17 @@ public class VideoForTroop
   public void a(long paramLong)
   {
     TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyProgress: get troopFileTransferManager failed.");
-    }
-    TroopFileTransferManager.Item localItem;
-    do
+    if (localTroopFileTransferManager == null)
     {
+      QLog.e("VideoForTroop<QFile>", 1, "notifyProgress: get troopFileTransferManager failed.");
       return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    localItem.ProgressValue = paramLong;
-    localTroopFileTransferManager.a(localItem, 8);
+    }
+    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+    if (localItem != null)
+    {
+      localItem.ProgressValue = paramLong;
+      localTroopFileTransferManager.a(localItem, 8);
+    }
   }
   
   public void a(FileVideoDownloadManager.FileVideoManagerCallback paramFileVideoManagerCallback)
@@ -78,22 +81,25 @@ public class VideoForTroop
     if (localItem != null)
     {
       boolean bool = TroopFileInfo.FileStatus.b(localItem.Status);
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed  itemStatus[" + localItem.Status + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("notifySuccessed  itemStatus[");
+        localStringBuilder.append(localItem.Status);
+        localStringBuilder.append("]");
+        QLog.e("VideoForTroop<QFile>", 1, localStringBuilder.toString());
       }
-      if ((!bool) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_b_of_type_Int != 7)) {
-        break label126;
+      if ((!bool) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_b_of_type_Int != 7))
+      {
+        localTroopFileTransferManager.a(localItem, 6);
       }
-      localItem.LocalFile = paramString;
-      localTroopFileTransferManager.a(localItem, 11);
+      else
+      {
+        localItem.LocalFile = paramString;
+        localTroopFileTransferManager.a(localItem, 11);
+      }
     }
-    for (;;)
-    {
-      FileVideoDownloadManager.a(this);
-      return;
-      label126:
-      localTroopFileTransferManager.a(localItem, 6);
-    }
+    FileVideoDownloadManager.a(this);
   }
   
   public void a(boolean paramBoolean)
@@ -112,26 +118,31 @@ public class VideoForTroop
         localTroopFileTransferManager.a(localItem, 12);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoForTroop<QFile>", 1, "notifyFileFaild isInvalid[" + paramBoolean + "], itemStatus[" + localItem.Status + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("notifyFileFaild isInvalid[");
+        localStringBuilder.append(paramBoolean);
+        localStringBuilder.append("], itemStatus[");
+        localStringBuilder.append(localItem.Status);
+        localStringBuilder.append("]");
+        QLog.e("VideoForTroop<QFile>", 1, localStringBuilder.toString());
       }
       if ((!TroopFileInfo.FileStatus.b(localItem.Status)) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.jdField_b_of_type_Int != 7)) {
-        break label134;
+        localTroopFileTransferManager.a(localItem, 3);
+      } else {
+        localTroopFileTransferManager.a(localItem, 10);
       }
-      localTroopFileTransferManager.a(localItem, 10);
     }
-    for (;;)
-    {
-      FileVideoDownloadManager.a(this);
-      return;
-      label134:
-      localTroopFileTransferManager.a(localItem, 3);
-    }
+    FileVideoDownloadManager.a(this);
   }
   
   public String b()
   {
-    return FMSettings.a().c() + MD5.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FMSettings.a().getDefaultTmpPath());
+    localStringBuilder.append(MD5.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e));
+    return localStringBuilder.toString();
   }
   
   public String c()
@@ -141,7 +152,7 @@ public class VideoForTroop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.VideoForTroop
  * JD-Core Version:    0.7.0.1
  */

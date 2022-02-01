@@ -91,7 +91,7 @@ public class PagerTabStrip
     return this.mIndicatorColor;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getHeight();
@@ -101,11 +101,15 @@ public class PagerTabStrip
     int n = this.mTabPadding;
     int i1 = this.mIndicatorHeight;
     this.mTabPaint.setColor(this.mTabAlpha << 24 | this.mIndicatorColor & 0xFFFFFF);
-    paramCanvas.drawRect(j - k, i - i1, m + n, i, this.mTabPaint);
+    float f1 = j - k;
+    float f2 = i - i1;
+    float f3 = m + n;
+    float f4 = i;
+    paramCanvas.drawRect(f1, f2, f3, f4, this.mTabPaint);
     if (this.mDrawFullUnderline)
     {
       this.mTabPaint.setColor(0xFF000000 | this.mIndicatorColor & 0xFFFFFF);
-      paramCanvas.drawRect(getPaddingLeft(), i - this.mFullUnderlineHeight, getWidth() - getPaddingRight(), i, this.mTabPaint);
+      paramCanvas.drawRect(getPaddingLeft(), i - this.mFullUnderlineHeight, getWidth() - getPaddingRight(), f4, this.mTabPaint);
     }
   }
   
@@ -117,74 +121,84 @@ public class PagerTabStrip
     }
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    switch (i)
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      this.mInitialMotionX = f1;
-      this.mInitialMotionY = f2;
-      this.mIgnoreTap = false;
-      continue;
-      if ((Math.abs(f1 - this.mInitialMotionX) > this.mTouchSlop) || (Math.abs(f2 - this.mInitialMotionY) > this.mTouchSlop))
+      if (i != 1)
       {
-        this.mIgnoreTap = true;
-        continue;
-        if (f1 < this.mCurrText.getLeft() - this.mTabPadding) {
+        if (i != 2) {
+          return true;
+        }
+        if ((Math.abs(f1 - this.mInitialMotionX) > this.mTouchSlop) || (Math.abs(f2 - this.mInitialMotionY) > this.mTouchSlop))
+        {
+          this.mIgnoreTap = true;
+          return true;
+        }
+      }
+      else
+      {
+        if (f1 < this.mCurrText.getLeft() - this.mTabPadding)
+        {
           this.mPager.setCurrentItem(this.mPager.getCurrentItem() - 1);
-        } else if (f1 > this.mCurrText.getRight() + this.mTabPadding) {
+          return true;
+        }
+        if (f1 > this.mCurrText.getRight() + this.mTabPadding)
+        {
           this.mPager.setCurrentItem(this.mPager.getCurrentItem() + 1);
+          return true;
         }
       }
     }
+    else
+    {
+      this.mInitialMotionX = f1;
+      this.mInitialMotionY = f2;
+      this.mIgnoreTap = false;
+    }
+    return true;
   }
   
   public void setBackgroundColor(@ColorInt int paramInt)
   {
     super.setBackgroundColor(paramInt);
-    if (!this.mDrawFullUnderlineSet) {
-      if ((0xFF000000 & paramInt) != 0) {
-        break label27;
-      }
-    }
-    label27:
-    for (boolean bool = true;; bool = false)
+    if (!this.mDrawFullUnderlineSet)
     {
+      boolean bool;
+      if ((paramInt & 0xFF000000) == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       this.mDrawFullUnderline = bool;
-      return;
     }
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (!this.mDrawFullUnderlineSet) {
-      if (paramDrawable != null) {
-        break label24;
-      }
-    }
-    label24:
-    for (boolean bool = true;; bool = false)
+    if (!this.mDrawFullUnderlineSet)
     {
+      boolean bool;
+      if (paramDrawable == null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       this.mDrawFullUnderline = bool;
-      return;
     }
   }
   
   public void setBackgroundResource(@DrawableRes int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (!this.mDrawFullUnderlineSet) {
-      if (paramInt != 0) {
-        break label24;
-      }
-    }
-    label24:
-    for (boolean bool = true;; bool = false)
+    if (!this.mDrawFullUnderlineSet)
     {
+      boolean bool;
+      if (paramInt == 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       this.mDrawFullUnderline = bool;
-      return;
     }
   }
   
@@ -197,9 +211,10 @@ public class PagerTabStrip
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    int j = this.mMinPaddingBottom;
     int i = paramInt4;
-    if (paramInt4 < this.mMinPaddingBottom) {
-      i = this.mMinPaddingBottom;
+    if (paramInt4 < j) {
+      i = j;
     }
     super.setPadding(paramInt1, paramInt2, paramInt3, i);
   }
@@ -218,9 +233,10 @@ public class PagerTabStrip
   
   public void setTextSpacing(int paramInt)
   {
+    int j = this.mMinTextSpacing;
     int i = paramInt;
-    if (paramInt < this.mMinTextSpacing) {
-      i = this.mMinTextSpacing;
+    if (paramInt < j) {
+      i = j;
     }
     super.setTextSpacing(i);
   }
@@ -243,7 +259,7 @@ public class PagerTabStrip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.viewpager.widget.PagerTabStrip
  * JD-Core Version:    0.7.0.1
  */

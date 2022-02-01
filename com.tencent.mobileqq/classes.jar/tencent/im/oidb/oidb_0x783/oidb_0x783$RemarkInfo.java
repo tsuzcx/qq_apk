@@ -19,13 +19,14 @@ public final class oidb_0x783$RemarkInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint64_uin", "bytes_remark", "uint32_source", "uint32_is_frd" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, RemarkInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint64_uin", "bytes_remark", "uint32_source", "uint32_is_frd" }, new Object[] { Long.valueOf(0L), localByteStringMicro, localInteger, localInteger }, RemarkInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0x783.oidb_0x783.RemarkInfo
  * JD-Core Version:    0.7.0.1
  */

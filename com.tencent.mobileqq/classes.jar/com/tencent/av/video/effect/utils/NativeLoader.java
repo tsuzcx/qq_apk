@@ -14,23 +14,29 @@ public class NativeLoader
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      mIsSoLoaded = false;
-      return;
+      break label20;
     }
     catch (RuntimeException localRuntimeException)
     {
-      mIsSoLoaded = false;
-      return;
+      break label15;
     }
     catch (Exception localException)
     {
-      mIsSoLoaded = false;
+      label10:
+      label15:
+      label20:
+      break label10;
     }
+    mIsSoLoaded = false;
+    return;
+    mIsSoLoaded = false;
+    return;
+    mIsSoLoaded = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.utils.NativeLoader
  * JD-Core Version:    0.7.0.1
  */

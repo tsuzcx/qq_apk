@@ -23,74 +23,82 @@ final class WebSocketWriter
   
   WebSocketWriter(boolean paramBoolean, BufferedSink paramBufferedSink, Random paramRandom)
   {
-    if (paramBufferedSink == null) {
-      throw new NullPointerException("sink == null");
-    }
-    if (paramRandom == null) {
+    if (paramBufferedSink != null)
+    {
+      if (paramRandom != null)
+      {
+        this.isClient = paramBoolean;
+        this.sink = paramBufferedSink;
+        this.sinkBuffer = paramBufferedSink.buffer();
+        this.random = paramRandom;
+        paramRandom = null;
+        if (paramBoolean) {
+          paramBufferedSink = new byte[4];
+        } else {
+          paramBufferedSink = null;
+        }
+        this.maskKey = paramBufferedSink;
+        paramBufferedSink = paramRandom;
+        if (paramBoolean) {
+          paramBufferedSink = new Buffer.UnsafeCursor();
+        }
+        this.maskCursor = paramBufferedSink;
+        return;
+      }
       throw new NullPointerException("random == null");
     }
-    this.isClient = paramBoolean;
-    this.sink = paramBufferedSink;
-    this.sinkBuffer = paramBufferedSink.buffer();
-    this.random = paramRandom;
-    if (paramBoolean) {}
-    for (paramBufferedSink = new byte[4];; paramBufferedSink = null)
-    {
-      this.maskKey = paramBufferedSink;
-      paramBufferedSink = localObject;
-      if (paramBoolean) {
-        paramBufferedSink = new Buffer.UnsafeCursor();
-      }
-      this.maskCursor = paramBufferedSink;
-      return;
-    }
+    throw new NullPointerException("sink == null");
   }
   
   private void writeControlFrame(int paramInt, ByteString paramByteString)
   {
-    if (this.writerClosed) {
-      throw new IOException("closed");
-    }
-    int i = paramByteString.size();
-    if (i > 125L) {
+    if (!this.writerClosed)
+    {
+      int i = paramByteString.size();
+      if (i <= 125L)
+      {
+        this.sinkBuffer.writeByte(paramInt | 0x80);
+        if (this.isClient)
+        {
+          this.sinkBuffer.writeByte(i | 0x80);
+          this.random.nextBytes(this.maskKey);
+          this.sinkBuffer.write(this.maskKey);
+          if (i > 0)
+          {
+            long l = this.sinkBuffer.size();
+            this.sinkBuffer.write(paramByteString);
+            this.sinkBuffer.readAndWriteUnsafe(this.maskCursor);
+            this.maskCursor.seek(l);
+            WebSocketProtocol.toggleMask(this.maskCursor, this.maskKey);
+            this.maskCursor.close();
+          }
+        }
+        else
+        {
+          this.sinkBuffer.writeByte(i);
+          this.sinkBuffer.write(paramByteString);
+        }
+        this.sink.flush();
+        return;
+      }
       throw new IllegalArgumentException("Payload size must be less than or equal to 125");
     }
-    this.sinkBuffer.writeByte(paramInt | 0x80);
-    if (this.isClient)
-    {
-      this.sinkBuffer.writeByte(i | 0x80);
-      this.random.nextBytes(this.maskKey);
-      this.sinkBuffer.write(this.maskKey);
-      if (i > 0)
-      {
-        long l = this.sinkBuffer.size();
-        this.sinkBuffer.write(paramByteString);
-        this.sinkBuffer.readAndWriteUnsafe(this.maskCursor);
-        this.maskCursor.seek(l);
-        WebSocketProtocol.toggleMask(this.maskCursor, this.maskKey);
-        this.maskCursor.close();
-      }
-    }
-    for (;;)
-    {
-      this.sink.flush();
-      return;
-      this.sinkBuffer.writeByte(i);
-      this.sinkBuffer.write(paramByteString);
-    }
+    throw new IOException("closed");
   }
   
   Sink newMessageSink(int paramInt, long paramLong)
   {
-    if (this.activeWriter) {
-      throw new IllegalStateException("Another message writer is active. Did you call close()?");
+    if (!this.activeWriter)
+    {
+      this.activeWriter = true;
+      WebSocketWriter.FrameSink localFrameSink = this.frameSink;
+      localFrameSink.formatOpcode = paramInt;
+      localFrameSink.contentLength = paramLong;
+      localFrameSink.isFirstFrame = true;
+      localFrameSink.closed = false;
+      return localFrameSink;
     }
-    this.activeWriter = true;
-    this.frameSink.formatOpcode = paramInt;
-    this.frameSink.contentLength = paramLong;
-    this.frameSink.isFirstFrame = true;
-    this.frameSink.closed = false;
-    return this.frameSink;
+    throw new IllegalStateException("Another message writer is active. Did you call close()?");
   }
   
   void writeClose(int paramInt, ByteString paramByteString)
@@ -121,32 +129,38 @@ final class WebSocketWriter
   
   void writeMessageFrame(int paramInt, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.writerClosed) {
-      throw new IOException("closed");
-    }
-    int i;
-    if (paramBoolean1)
+    if (!this.writerClosed)
     {
-      i = paramInt;
+      int j = 0;
+      if (!paramBoolean1) {
+        paramInt = 0;
+      }
+      int i = paramInt;
       if (paramBoolean2) {
         i = paramInt | 0x80;
       }
       this.sinkBuffer.writeByte(i);
-      if (!this.isClient) {
-        break label267;
+      paramInt = j;
+      if (this.isClient) {
+        paramInt = 128;
       }
-    }
-    label267:
-    for (paramInt = 128;; paramInt = 0)
-    {
       if (paramLong <= 125L)
       {
         i = (int)paramLong;
-        this.sinkBuffer.writeByte(paramInt | i);
-        label82:
-        if (!this.isClient) {
-          break label252;
-        }
+        this.sinkBuffer.writeByte(i | paramInt);
+      }
+      else if (paramLong <= 65535L)
+      {
+        this.sinkBuffer.writeByte(paramInt | 0x7E);
+        this.sinkBuffer.writeShort((int)paramLong);
+      }
+      else
+      {
+        this.sinkBuffer.writeByte(paramInt | 0x7F);
+        this.sinkBuffer.writeLong(paramLong);
+      }
+      if (this.isClient)
+      {
         this.random.nextBytes(this.maskKey);
         this.sinkBuffer.write(this.maskKey);
         if (paramLong > 0L)
@@ -159,25 +173,14 @@ final class WebSocketWriter
           this.maskCursor.close();
         }
       }
-      for (;;)
+      else
       {
-        this.sink.emit();
-        return;
-        paramInt = 0;
-        break;
-        if (paramLong <= 65535L)
-        {
-          this.sinkBuffer.writeByte(paramInt | 0x7E);
-          this.sinkBuffer.writeShort((int)paramLong);
-          break label82;
-        }
-        this.sinkBuffer.writeByte(paramInt | 0x7F);
-        this.sinkBuffer.writeLong(paramLong);
-        break label82;
-        label252:
         this.sinkBuffer.write(this.buffer, paramLong);
       }
+      this.sink.emit();
+      return;
     }
+    throw new IOException("closed");
   }
   
   void writePing(ByteString paramByteString)
@@ -192,7 +195,7 @@ final class WebSocketWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.ws.WebSocketWriter
  * JD-Core Version:    0.7.0.1
  */

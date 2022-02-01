@@ -19,20 +19,23 @@ public class QBufferedWriter
   public QBufferedWriter(QWriter paramQWriter, int paramInt)
   {
     super(paramQWriter);
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("Buffer size <= 0");
+    if (paramInt > 0)
+    {
+      this.out = paramQWriter;
+      this.cb = new char[paramInt];
+      this.nChars = paramInt;
+      this.nextChar = 0;
+      return;
     }
-    this.out = paramQWriter;
-    this.cb = new char[paramInt];
-    this.nChars = paramInt;
-    this.nextChar = 0;
+    throw new IllegalArgumentException("Buffer size <= 0");
   }
   
   private void ensureOpen()
   {
-    if (this.out == null) {
-      throw new IOException("Stream closed");
+    if (this.out != null) {
+      return;
     }
+    throw new IOException("Stream closed");
   }
   
   private int min(int paramInt1, int paramInt2)
@@ -49,6 +52,22 @@ public class QBufferedWriter
     {
       if (this.out == null) {
         return;
+      }
+      try
+      {
+        flushBuffer();
+        this.out.close();
+        this.out = null;
+        this.cb = null;
+        return;
+      }
+      finally
+      {
+        localObject2 = finally;
+        this.out.close();
+        this.out = null;
+        this.cb = null;
+        throw localObject2;
       }
     }
   }
@@ -98,19 +117,20 @@ public class QBufferedWriter
     synchronized (this.lock)
     {
       ensureOpen();
-      int i = paramInt1 + paramInt2;
-      while (paramInt1 < i)
+      int i = paramInt2 + paramInt1;
+      if (paramInt1 < i)
       {
         int j = min(this.nChars - this.nextChar, i - paramInt1);
-        paramString.getChars(paramInt1, paramInt1 + j, this.cb, this.nextChar);
         paramInt2 = paramInt1 + j;
-        this.nextChar = (j + this.nextChar);
-        paramInt1 = paramInt2;
-        if (this.nextChar >= this.nChars)
-        {
+        paramString.getChars(paramInt1, paramInt2, this.cb, this.nextChar);
+        this.nextChar += j;
+        if (this.nextChar >= this.nChars) {
           flushBuffer();
-          paramInt1 = paramInt2;
         }
+      }
+      else
+      {
+        return;
       }
     }
   }
@@ -130,46 +150,48 @@ public class QBufferedWriter
     synchronized (this.lock)
     {
       ensureOpen();
-      if ((paramInt1 < 0) || (paramInt1 > paramArrayOfChar.length) || (paramInt2 < 0) || (paramInt1 + paramInt2 > paramArrayOfChar.length) || (paramInt1 + paramInt2 < 0)) {
-        throw new IndexOutOfBoundsException();
+      if ((paramInt1 >= 0) && (paramInt1 <= paramArrayOfChar.length) && (paramInt2 >= 0))
+      {
+        int j = paramInt1 + paramInt2;
+        if ((j <= paramArrayOfChar.length) && (j >= 0))
+        {
+          if (paramInt2 == 0) {
+            return;
+          }
+          int i = paramInt1;
+          if (paramInt2 >= this.nChars)
+          {
+            flushBuffer();
+            this.out.write(paramArrayOfChar, paramInt1, paramInt2);
+            return;
+          }
+          while (i < j)
+          {
+            paramInt2 = min(this.nChars - this.nextChar, j - i);
+            System.arraycopy(paramArrayOfChar, i, this.cb, this.nextChar, paramInt2);
+            paramInt1 = i + paramInt2;
+            this.nextChar += paramInt2;
+            i = paramInt1;
+            if (this.nextChar >= this.nChars)
+            {
+              flushBuffer();
+              i = paramInt1;
+            }
+          }
+          return;
+        }
       }
-    }
-    if (paramInt2 == 0) {
-      return;
-    }
-    if (paramInt2 >= this.nChars)
-    {
-      flushBuffer();
-      this.out.write(paramArrayOfChar, paramInt1, paramInt2);
-      return;
+      throw new IndexOutOfBoundsException();
     }
     for (;;)
     {
-      int i;
-      if (paramInt1 < i)
-      {
-        int j = min(this.nChars - this.nextChar, i - paramInt1);
-        System.arraycopy(paramArrayOfChar, paramInt1, this.cb, this.nextChar, j);
-        paramInt2 = paramInt1 + j;
-        this.nextChar = (j + this.nextChar);
-        paramInt1 = paramInt2;
-        if (this.nextChar >= this.nChars)
-        {
-          flushBuffer();
-          paramInt1 = paramInt2;
-        }
-      }
-      else
-      {
-        return;
-        i = paramInt1 + paramInt2;
-      }
+      throw paramArrayOfChar;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.QBufferedWriter
  * JD-Core Version:    0.7.0.1
  */

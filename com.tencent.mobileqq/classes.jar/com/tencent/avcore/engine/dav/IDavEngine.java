@@ -45,7 +45,7 @@ public abstract interface IDavEngine
   
   public abstract int ignore(long paramLong);
   
-  public abstract int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15);
+  public abstract int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15, String paramString16);
   
   public abstract boolean isEnableLoopback();
   
@@ -131,6 +131,8 @@ public abstract interface IDavEngine
   
   public abstract int setProductId(int paramInt);
   
+  public abstract void setQosParams(String paramString);
+  
   public abstract int setSelfUin(long paramLong);
   
   public abstract void setVideoJitterLength(int paramInt);
@@ -169,7 +171,7 @@ public abstract interface IDavEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.engine.dav.IDavEngine
  * JD-Core Version:    0.7.0.1
  */

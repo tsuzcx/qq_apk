@@ -21,13 +21,14 @@ public final class redInfo$RedInfo
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 50 }, new String[] { "str_msg", "uint64_time", "uint64_from_uin", "uint64_label_id", "str_from_nick", "bytes_feeds_id" }, new Object[] { "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", localByteStringMicro }, RedInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 50 }, new String[] { "str_msg", "uint64_time", "uint64_from_uin", "uint64_label_id", "str_from_nick", "bytes_feeds_id" }, new Object[] { "", localLong, localLong, localLong, "", localByteStringMicro }, RedInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.redInfo.RedInfo
  * JD-Core Version:    0.7.0.1
  */

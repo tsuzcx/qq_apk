@@ -8,9 +8,11 @@ import android.text.TextUtils;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
+import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelperUtil;
+import com.tencent.mobileqq.intervideo.huayang.IHuayangDowanloadHelper;
+import com.tencent.mobileqq.intervideo.huayang.IHuayangJsPlugin;
 import com.tencent.mobileqq.intervideo.huayang.Monitor;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -25,7 +27,7 @@ public class IVPluginLoader
   private static boolean e;
   private long jdField_a_of_type_Long;
   protected BroadcastReceiver a;
-  private HuayangDowanloadHelper jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangDowanloadHelper;
+  private IHuayangDowanloadHelper jdField_a_of_type_ComTencentMobileqqIntervideoHuayangIHuayangDowanloadHelper;
   private String jdField_a_of_type_JavaLangString;
   private WeakReference<PluginLoadListener> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
@@ -59,30 +61,36 @@ public class IVPluginLoader
   
   private void a(int paramInt)
   {
-    StoryReportor.a("group_video", "loadPuginState", paramInt, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), new String[] { "", "", "", "8.5.5" });
-    switch (paramInt)
+    StoryReportor.a("group_video", "loadPuginState", paramInt, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), new String[] { "", "", "", "8.7.0" });
+    if (paramInt != 2)
     {
-    case 4: 
-    case 8: 
-    default: 
-      return;
-    case 2: 
-      Monitor.b("2856626");
-      return;
-    case 3: 
+      if (paramInt != 3)
+      {
+        if (paramInt != 5)
+        {
+          if (paramInt != 6)
+          {
+            if (paramInt != 7)
+            {
+              if (paramInt != 9) {
+                return;
+              }
+              Monitor.b("2856647");
+              return;
+            }
+            Monitor.b("2856631");
+            return;
+          }
+          Monitor.b("2856630");
+          return;
+        }
+        Monitor.b("2856629");
+        return;
+      }
       Monitor.b("2856627");
       return;
-    case 5: 
-      Monitor.b("2856629");
-      return;
-    case 6: 
-      Monitor.b("2856630");
-      return;
-    case 7: 
-      Monitor.b("2856631");
-      return;
     }
-    Monitor.b("2856647");
+    Monitor.b("2856626");
   }
   
   public static boolean a()
@@ -90,30 +98,29 @@ public class IVPluginLoader
     if (e) {
       return d;
     }
+    Object localObject = null;
     try
     {
       File localFile = new File(jdField_a_of_type_AndroidContentContext.getExternalFilesDir(null).getPath(), "versionchecker.test");
-      if (localFile != null)
-      {
-        d = localFile.exists();
-        e = true;
-      }
-      return d;
+      localObject = localFile;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        Object localObject = null;
-      }
+      localThrowable.printStackTrace();
     }
+    if (localObject != null)
+    {
+      d = localObject.exists();
+      e = true;
+    }
+    return d;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangDowanloadHelper != null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangDowanloadHelper.a();
+    IHuayangDowanloadHelper localIHuayangDowanloadHelper = this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangIHuayangDowanloadHelper;
+    if (localIHuayangDowanloadHelper != null) {
+      localIHuayangDowanloadHelper.canceLauncher();
     }
   }
   
@@ -121,8 +128,8 @@ public class IVPluginLoader
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      localObject = new IntentFilter(HuayangJsPlugin.a(this.jdField_a_of_type_JavaLangString));
-      ((IntentFilter)localObject).addAction(HuayangJsPlugin.b(this.jdField_a_of_type_JavaLangString));
+      localObject = new IntentFilter(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getDownloadNotifyAction(this.jdField_a_of_type_JavaLangString));
+      ((IntentFilter)localObject).addAction(((IHuayangJsPlugin)QRoute.api(IHuayangJsPlugin.class)).getBackNotifyAction(this.jdField_a_of_type_JavaLangString));
       jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
       this.jdField_a_of_type_Boolean = true;
     }
@@ -131,44 +138,40 @@ public class IVPluginLoader
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramPluginLoadListener);
     paramPluginLoadListener = IVPluginInfo.a();
     Object localObject = (IVPluginInfo)paramPluginLoadListener.get(this.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(paramString3)) {}
-    try
-    {
-      ((IVPluginInfo)localObject).jdField_a_of_type_Long = Long.parseLong(paramString3);
-      if (!TextUtils.isEmpty(paramString6)) {
-        ((IVPluginInfo)localObject).e = paramString6;
-      }
-      ((IVPluginInfo)localObject).h = paramString7;
-      ((IVPluginInfo)localObject).c = paramInt;
-      ((IVPluginInfo)localObject).i = paramString8;
-      ((IVPluginInfo)localObject).j = paramString9;
-      if (this.jdField_b_of_type_Boolean)
+    if (!TextUtils.isEmpty(paramString3)) {
+      try
       {
-        Monitor.b("2856624");
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangDowanloadHelper = HuayangDowanloadHelper.a(jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramString1);
-        ThreadManagerV2.executeOnSubThread(new IVPluginLoader.1(this, paramString2, paramString1, paramString4, paramString5, paramPluginLoadListener));
-        return;
+        ((IVPluginInfo)localObject).jdField_a_of_type_Long = Long.parseLong(paramString3);
       }
-    }
-    catch (NumberFormatException paramString3)
-    {
-      for (;;)
+      catch (NumberFormatException paramString3)
       {
         paramString3.printStackTrace();
-        continue;
-        if (this.c)
-        {
-          Monitor.b("2856625");
-          this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          StoryReportor.a("group_video", "startLoad", 0, 0, new String[] { "", "", "", "8.5.5" });
-        }
       }
     }
+    if (!TextUtils.isEmpty(paramString6)) {
+      ((IVPluginInfo)localObject).e = paramString6;
+    }
+    ((IVPluginInfo)localObject).h = paramString7;
+    ((IVPluginInfo)localObject).c = paramInt;
+    ((IVPluginInfo)localObject).i = paramString8;
+    ((IVPluginInfo)localObject).j = paramString9;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      Monitor.b("2856624");
+    }
+    else if (this.c)
+    {
+      Monitor.b("2856625");
+      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      StoryReportor.a("group_video", "startLoad", 0, 0, new String[] { "", "", "", "8.7.0" });
+    }
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangIHuayangDowanloadHelper = HuayangDowanloadHelperUtil.a(jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramString1);
+    ThreadManagerV2.executeOnSubThread(new IVPluginLoader.1(this, paramString2, paramString1, paramString4, paramString5, paramPluginLoadListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader
  * JD-Core Version:    0.7.0.1
  */

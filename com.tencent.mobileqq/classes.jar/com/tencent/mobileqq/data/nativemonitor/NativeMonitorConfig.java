@@ -93,15 +93,24 @@ public class NativeMonitorConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("nativeMonitorOpened:").append(this.nativeMonitorOpened);
-    localStringBuilder.append("|switchFlag:").append(this.switchFlag);
-    localStringBuilder.append("|soWhiteList:").append(this.soWhiteList);
-    localStringBuilder.append("|androidVersionBlackList:").append(this.androidVersionBlackList);
-    localStringBuilder.append("|timeLimited:").append(this.timeLimited);
-    localStringBuilder.append("|countLimited:").append(this.countLimted);
-    localStringBuilder.append("|memoryLimited:").append(this.memoryLimited);
-    localStringBuilder.append("|processBlackList:").append(this.processBlackList);
-    localStringBuilder.append("|tmChance:").append(this.tmChance);
+    localStringBuilder.append("nativeMonitorOpened:");
+    localStringBuilder.append(this.nativeMonitorOpened);
+    localStringBuilder.append("|switchFlag:");
+    localStringBuilder.append(this.switchFlag);
+    localStringBuilder.append("|soWhiteList:");
+    localStringBuilder.append(this.soWhiteList);
+    localStringBuilder.append("|androidVersionBlackList:");
+    localStringBuilder.append(this.androidVersionBlackList);
+    localStringBuilder.append("|timeLimited:");
+    localStringBuilder.append(this.timeLimited);
+    localStringBuilder.append("|countLimited:");
+    localStringBuilder.append(this.countLimted);
+    localStringBuilder.append("|memoryLimited:");
+    localStringBuilder.append(this.memoryLimited);
+    localStringBuilder.append("|processBlackList:");
+    localStringBuilder.append(this.processBlackList);
+    localStringBuilder.append("|tmChance:");
+    localStringBuilder.append(this.tmChance);
     return localStringBuilder.toString();
   }
   
@@ -120,7 +129,7 @@ public class NativeMonitorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfig
  * JD-Core Version:    0.7.0.1
  */

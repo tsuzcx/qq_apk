@@ -2,13 +2,12 @@ package com.tencent.mobileqq.studyroom.download;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.gamecenter.wadl.util.WLog;
 import com.tencent.hlyyb.HalleyAgent;
 import com.tencent.hlyyb.downloader.Downloader;
 import com.tencent.hlyyb.downloader.DownloaderTask;
 import com.tencent.hlyyb.downloader.DownloaderTaskCategory;
 import com.tencent.hlyyb.downloader.DownloaderTaskStatus;
+import com.tencent.mobileqq.statistics.QQBeaconReport;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,17 +35,20 @@ public class NowDownloadManager
   private DownloaderTask a(String paramString)
   {
     Object localObject = this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.getAllTasks();
-    if ((TextUtils.isEmpty(paramString)) || (localObject == null)) {
-      return null;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    if (!TextUtils.isEmpty(paramString))
     {
-      DownloaderTask localDownloaderTask = (DownloaderTask)((Iterator)localObject).next();
-      if (localDownloaderTask.getUrl().equals(paramString))
+      if (localObject == null) {
+        return null;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        QLog.i("DownloadManager_Now_for_qq", 4, "isHalleyTaskAlreadyExist:YES");
-        return localDownloaderTask;
+        DownloaderTask localDownloaderTask = (DownloaderTask)((Iterator)localObject).next();
+        if (localDownloaderTask.getUrl().equals(paramString))
+        {
+          QLog.i("DownloadManager_Now_for_qq", 4, "isHalleyTaskAlreadyExist:YES");
+          return localDownloaderTask;
+        }
       }
     }
     return null;
@@ -74,6 +76,10 @@ public class NowDownloadManager
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   private void b(Context paramContext)
@@ -81,7 +87,7 @@ public class NowDownloadManager
     this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.setProgressInterval(1000);
     this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.setTaskNumForCategory(DownloaderTaskCategory.Cate_CustomMass1, 3);
     this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.enableUserAction(true);
-    UserAction.initUserAction(paramContext);
+    QQBeaconReport.a();
   }
   
   private void b(NowDownloadTaskInfo paramNowDownloadTaskInfo)
@@ -112,64 +118,76 @@ public class NowDownloadManager
   
   public void a(NowDownloadTaskInfo paramNowDownloadTaskInfo)
   {
-    if (this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader == null) {}
-    String str;
-    do
+    if (this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader == null) {
+      return;
+    }
+    Object localObject = a(paramNowDownloadTaskInfo.b);
+    try
     {
-      for (;;)
+      String str = paramNowDownloadTaskInfo.b;
+      if (TextUtils.isEmpty(str))
       {
-        return;
-        DownloaderTask localDownloaderTask = a(paramNowDownloadTaskInfo.b);
-        try
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("startDownload, wurl:");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("wrong status or parammter");
+        QLog.i("DownloadManager_Now_for_qq", 4, ((StringBuilder)localObject).toString());
+        if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
+          ((IDownloadListener)this.jdField_a_of_type_JavaUtilHashMap.get(str)).a(-1000, -1, "url is invalid");
+        }
+      }
+      else
+      {
+        if ((localObject != null) && (str.equals(((DownloaderTask)localObject).getUrl())))
         {
-          str = paramNowDownloadTaskInfo.b;
-          if (!TextUtils.isEmpty(str)) {
-            break label134;
-          }
-          QLog.i("DownloadManager_Now_for_qq", 4, "startDownload, wurl:" + str + "wrong status or parammter");
-          if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str)))
+          paramNowDownloadTaskInfo.a((DownloaderTask)localObject);
+          DownloaderTaskStatus localDownloaderTaskStatus = ((DownloaderTask)localObject).getStatus();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("startDownload----hstatus:");
+          localStringBuilder.append(localDownloaderTaskStatus);
+          QLog.i("DownloadManager_Now_for_qq", 4, localStringBuilder.toString());
+          if (localDownloaderTaskStatus == DownloaderTaskStatus.COMPLETE)
           {
-            ((IDownloadListener)this.jdField_a_of_type_JavaUtilHashMap.get(str)).a(-1000, -1, "url is invalid");
+            if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
+              ((IDownloadListener)this.jdField_a_of_type_JavaUtilHashMap.get(str)).a();
+            }
+            a(((DownloaderTask)localObject).getUrl(), false);
             return;
           }
+          if (localDownloaderTaskStatus == DownloaderTaskStatus.DOWNLOADING)
+          {
+            QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----Task is already Downloading!");
+            return;
+          }
+          QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----resume halley task");
+          ((DownloaderTask)localObject).resume();
+          return;
         }
-        catch (Exception localException)
-        {
-          QLog.i("DownloadManager_Now_for_qq", 4, "startDownload---exception happend:", localException);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("startDownload: url is changed, thread = ");
+        ((StringBuilder)localObject).append(Thread.currentThread().getId());
+        ((StringBuilder)localObject).append(",");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("path = ");
+        ((StringBuilder)localObject).append(paramNowDownloadTaskInfo.h);
+        QLog.i("DownloadManager_Now_for_qq", 4, ((StringBuilder)localObject).toString());
+        b(paramNowDownloadTaskInfo);
+        this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.addNewTask(paramNowDownloadTaskInfo.a());
+        QLog.i("DownloadManager_Now_for_qq", 4, "mHellyDownloader.addNewTask");
+        return;
       }
-    } while (this.jdField_a_of_type_Int >= 3);
-    this.jdField_a_of_type_Int += 1;
-    a(paramNowDownloadTaskInfo);
-    return;
-    label134:
-    if ((localException == null) || (!str.equals(localException.getUrl())))
-    {
-      QLog.i("DownloadManager_Now_for_qq", 4, "startDownload: url is changed, thread = " + Thread.currentThread().getId() + "," + str + "path = " + paramNowDownloadTaskInfo.h);
-      if (localException != null) {}
-      b(paramNowDownloadTaskInfo);
-      this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.addNewTask(paramNowDownloadTaskInfo.a());
-      QLog.i("DownloadManager_Now_for_qq", 4, "mHellyDownloader.addNewTask");
-      return;
     }
-    paramNowDownloadTaskInfo.a(localException);
-    DownloaderTaskStatus localDownloaderTaskStatus = localException.getStatus();
-    QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----hstatus:" + localDownloaderTaskStatus);
-    if (localDownloaderTaskStatus == DownloaderTaskStatus.COMPLETE)
+    catch (Exception localException)
     {
-      if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
-        ((IDownloadListener)this.jdField_a_of_type_JavaUtilHashMap.get(str)).a();
+      QLog.i("DownloadManager_Now_for_qq", 4, "startDownload---exception happend:", localException);
+      int i = this.jdField_a_of_type_Int;
+      if (i < 3)
+      {
+        this.jdField_a_of_type_Int = (i + 1);
+        a(paramNowDownloadTaskInfo);
       }
-      a(localException.getUrl(), false);
       return;
     }
-    if (localDownloaderTaskStatus == DownloaderTaskStatus.DOWNLOADING)
-    {
-      QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----Task is already Downloading!");
-      return;
-    }
-    QLog.i("DownloadManager_Now_for_qq", 4, "startDownload----resume halley task");
-    localException.resume();
   }
   
   public void a(String paramString, IDownloadListener paramIDownloadListener)
@@ -183,23 +201,30 @@ public class NowDownloadManager
   public void a(String paramString, boolean paramBoolean)
   {
     Object localObject = this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.getAllTasks();
-    if ((TextUtils.isEmpty(paramString)) || (localObject == null)) {}
-    DownloaderTask localDownloaderTask;
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
-      while (!((Iterator)localObject).hasNext()) {
-        localObject = ((List)localObject).iterator();
+      if (localObject == null) {
+        return;
       }
-      localDownloaderTask = (DownloaderTask)((Iterator)localObject).next();
-    } while (!localDownloaderTask.getUrl().equals(paramString));
-    WLog.c("DownloadManager_Now_for_qq", "removeDownloadTask---delete unactive halley task, Id:" + localDownloaderTask.getId());
-    this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.deleteTask(localDownloaderTask, paramBoolean);
+      Iterator localIterator = ((List)localObject).iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (DownloaderTask)localIterator.next();
+        if (((DownloaderTask)localObject).getUrl().equals(paramString))
+        {
+          paramString = new StringBuilder();
+          paramString.append("removeDownloadTask---delete unactive halley task, Id:");
+          paramString.append(((DownloaderTask)localObject).getId());
+          QLog.i("DownloadManager_Now_for_qq", 2, paramString.toString());
+          this.jdField_a_of_type_ComTencentHlyybDownloaderDownloader.deleteTask((DownloaderTask)localObject, paramBoolean);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.download.NowDownloadManager
  * JD-Core Version:    0.7.0.1
  */

@@ -25,44 +25,42 @@ class GdtMotiveVideoMockQzoneImaxFeedsFragment$URLDrawableFactory
     com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new DiskCache(paramFile);
   }
   
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  protected ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
   {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
-    {
-      if (BaseApplicationImpl.sProcessId == 1) {}
-      for (;;)
-      {
-        return new HttpDownloader(bool, paramObject);
-        bool = false;
-      }
+    if ((!"http".equals(paramString)) && (!"https".equals(paramString))) {
+      return null;
     }
-    return null;
+    int i = BaseApplicationImpl.sProcessId;
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
+    }
+    return new HttpDownloader(bool, paramObject);
   }
   
-  public String doGetLocalFilePath(String paramString)
+  protected String doGetLocalFilePath(String paramString)
   {
     return null;
   }
   
-  public ApngSoLoader getApngSoLoader()
+  protected ApngSoLoader getApngSoLoader()
   {
     return VasApngIPCModule.a();
   }
   
-  public Drawable getDefaultLoadingDrawable()
+  protected Drawable getDefaultLoadingDrawable()
   {
-    return this.a.getResources().getDrawable(2130848203);
+    return this.a.getResources().getDrawable(2130848074);
   }
   
-  public Drawable getDefualtFailedDrawable()
+  protected Drawable getDefualtFailedDrawable()
   {
-    return this.a.getResources().getDrawable(2130848203);
+    return this.a.getResources().getDrawable(2130848074);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment.URLDrawableFactory
  * JD-Core Version:    0.7.0.1
  */

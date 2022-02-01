@@ -66,19 +66,19 @@ public class QQVideoPlayView
   
   private void addBuffView()
   {
-    this.mBufferPanel = ((RelativeLayout)inflate(getContext(), 2131563203, null));
+    this.mBufferPanel = ((RelativeLayout)inflate(getContext(), 2131563027, null));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(13);
     this.mBufferPanel.setVisibility(8);
     addView(this.mBufferPanel, localLayoutParams);
-    this.mRateText = ((TextView)this.mBufferPanel.findViewById(2131376473));
+    this.mRateText = ((TextView)this.mBufferPanel.findViewById(2131375985));
     this.mRateText.setVisibility(8);
   }
   
   private void addCenterPlayBtn()
   {
     this.mCenterPlayBtn = new ImageView(getContext());
-    this.mCenterPlayBtn.setImageDrawable(getResources().getDrawable(2130851281));
+    this.mCenterPlayBtn.setImageDrawable(getResources().getDrawable(2130851194));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(13);
     this.mCenterPlayBtn.setLayoutParams(localLayoutParams);
@@ -89,7 +89,7 @@ public class QQVideoPlayView
   
   private void addErrView()
   {
-    this.mErrLayout = ((LinearLayout)inflate(getContext(), 2131563204, null));
+    this.mErrLayout = ((LinearLayout)inflate(getContext(), 2131563028, null));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     localLayoutParams.addRule(13);
     addView(this.mErrLayout, localLayoutParams);
@@ -97,17 +97,17 @@ public class QQVideoPlayView
   
   private void addPlayCtlView()
   {
-    this.mPlayPanel = ((RelativeLayout)inflate(getContext(), 2131563205, null));
+    this.mPlayPanel = ((RelativeLayout)inflate(getContext(), 2131563029, null));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(12);
     this.mPlayPanel.setLayoutParams(localLayoutParams);
     addView(this.mPlayPanel);
     this.mPlayPanel.bringToFront();
-    this.mPlayBar = ((SeekBar)this.mPlayPanel.findViewById(2131377688));
-    this.mPlayButton = ((ImageView)this.mPlayPanel.findViewById(2131372608));
-    this.mPlayButton.setImageResource(2130851277);
-    this.mProgressTime = ((TextView)this.mPlayPanel.findViewById(2131373552));
-    this.mTotalTime = ((TextView)this.mPlayPanel.findViewById(2131379724));
+    this.mPlayBar = ((SeekBar)this.mPlayPanel.findViewById(2131377124));
+    this.mPlayButton = ((ImageView)this.mPlayPanel.findViewById(2131372192));
+    this.mPlayButton.setImageResource(2130851190);
+    this.mProgressTime = ((TextView)this.mPlayPanel.findViewById(2131373130));
+    this.mTotalTime = ((TextView)this.mPlayPanel.findViewById(2131379063));
     updateTotalTime();
     this.mPlayButton.setOnClickListener(this);
     this.mPlayBar.setMax(10000);
@@ -116,7 +116,11 @@ public class QQVideoPlayView
   
   private String getLogTag()
   {
-    return "[VideoPlatForm]QQVideoPlayView[" + this.mBaseVideoView.getLogId() + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[VideoPlatForm]QQVideoPlayView[");
+    localStringBuilder.append(this.mBaseVideoView.getLogId());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   private void initView()
@@ -130,8 +134,12 @@ public class QQVideoPlayView
   
   private void updateTotalTime()
   {
-    if ((getVideoDurationMs() > 0L) && (this.mTotalTime != null)) {
-      this.mTotalTime.setText(UIUtil.stringForTime(getVideoDurationMs()));
+    if (getVideoDurationMs() > 0L)
+    {
+      TextView localTextView = this.mTotalTime;
+      if (localTextView != null) {
+        localTextView.setText(UIUtil.stringForTime(getVideoDurationMs()));
+      }
     }
   }
   
@@ -182,20 +190,14 @@ public class QQVideoPlayView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131372608)
-    {
-      if (!this.mIsPlay) {
-        break label28;
+    if (paramView.getId() == 2131372192) {
+      if (this.mIsPlay) {
+        pause();
+      } else {
+        play();
       }
-      pause();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label28:
-      play();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDownloadComplete(long paramLong)
@@ -220,12 +222,12 @@ public class QQVideoPlayView
   
   public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    String str = getContext().getString(2131720582);
+    String str = getContext().getString(2131720297);
     if (paramInt1 == 1) {
-      str = getContext().getString(2131720581);
+      str = getContext().getString(2131720296);
     }
     if (paramInt3 == 14011001) {
-      str = getContext().getString(2131720583);
+      str = getContext().getString(2131720298);
     }
     ThreadUtil.postOnUIThread(new QQVideoPlayView.2(this, str));
     this.mBaseVideoView.onPlayError(paramLong, paramInt1, paramInt2, paramInt3, paramString);
@@ -233,12 +235,23 @@ public class QQVideoPlayView
   
   public void onPlayProgress(long paramLong1, long paramLong2)
   {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d(getLogTag(), 2, "onPlayProgress , id = " + paramLong1 + ", positionMs=" + paramLong2);
+    if (LogUtil.isColorLevel())
+    {
+      String str = getLogTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPlayProgress , id = ");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(", positionMs=");
+      localStringBuilder.append(paramLong2);
+      LogUtil.d(str, 2, localStringBuilder.toString());
     }
     if (this.mBaseVideoView.getVideoDurationMs() > 0L)
     {
-      int i = (int)(paramLong2 / this.mBaseVideoView.getVideoDurationMs() * 10000.0D);
+      double d1 = paramLong2;
+      double d2 = this.mBaseVideoView.getVideoDurationMs();
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      int i = (int)(d1 / d2 * 10000.0D);
       this.mProgressTime.setText(UIUtil.stringForTime(paramLong2));
       this.mPlayBar.setProgress(i);
     }
@@ -258,40 +271,50 @@ public class QQVideoPlayView
   
   public void onStateChange(long paramLong, int paramInt)
   {
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d(getLogTag(), 2, "onStateChange , state = " + PlayerState.getStateStr(paramInt) + ", msgUniseq=" + paramLong);
-    }
-    switch (paramInt)
+    Object localObject;
+    if (LogUtil.isColorLevel())
     {
+      localObject = getLogTag();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onStateChange , state = ");
+      localStringBuilder.append(PlayerState.getStateStr(paramInt));
+      localStringBuilder.append(", msgUniseq=");
+      localStringBuilder.append(paramLong);
+      LogUtil.d((String)localObject, 2, localStringBuilder.toString());
     }
-    for (;;)
+    if (paramInt != 4)
     {
-      this.mBaseVideoView.onStateChange(paramLong, paramInt);
-      return;
+      if (paramInt != 5)
+      {
+        if ((paramInt == 8) || (paramInt == 9))
+        {
+          this.mBufferPanel.setVisibility(8);
+          this.mErrLayout.setVisibility(8);
+          this.mCenterPlayBtn.setVisibility(0);
+          this.mPlayButton.setImageResource(2130851190);
+        }
+      }
+      else
+      {
+        localObject = this.mBaseVideoView;
+        if (localObject != null) {
+          if (((BaseVideoView)localObject).isPlaying()) {
+            this.mBufferPanel.setVisibility(0);
+          } else {
+            this.mBufferPanel.setVisibility(8);
+          }
+        }
+        this.mErrLayout.setVisibility(8);
+      }
+    }
+    else
+    {
       this.mBufferPanel.setVisibility(8);
       this.mErrLayout.setVisibility(8);
       this.mCenterPlayBtn.setVisibility(8);
       updateTotalTime();
-      continue;
-      if (this.mBaseVideoView != null)
-      {
-        if (!this.mBaseVideoView.isPlaying()) {
-          break label169;
-        }
-        this.mBufferPanel.setVisibility(0);
-      }
-      for (;;)
-      {
-        this.mErrLayout.setVisibility(8);
-        break;
-        label169:
-        this.mBufferPanel.setVisibility(8);
-      }
-      this.mBufferPanel.setVisibility(8);
-      this.mErrLayout.setVisibility(8);
-      this.mCenterPlayBtn.setVisibility(0);
-      this.mPlayButton.setImageResource(2130851277);
     }
+    this.mBaseVideoView.onStateChange(paramLong, paramInt);
   }
   
   public void onStopTrackingTouch(SeekBar paramSeekBar) {}
@@ -307,7 +330,7 @@ public class QQVideoPlayView
     this.mBufferPanel.setVisibility(8);
     this.mErrLayout.setVisibility(8);
     this.mCenterPlayBtn.setVisibility(0);
-    this.mPlayButton.setImageResource(2130851277);
+    this.mPlayButton.setImageResource(2130851190);
     this.mBaseVideoView.pause();
   }
   
@@ -321,7 +344,7 @@ public class QQVideoPlayView
     this.mIsPlay = true;
     this.mErrLayout.setVisibility(8);
     this.mCenterPlayBtn.setVisibility(8);
-    this.mPlayButton.setImageResource(2130851278);
+    this.mPlayButton.setImageResource(2130851191);
     this.mBaseVideoView.play();
   }
   
@@ -336,11 +359,11 @@ public class QQVideoPlayView
     {
       this.mBaseVideoView.resume();
       this.mCenterPlayBtn.setVisibility(8);
-      this.mPlayButton.setImageResource(2130851278);
+      this.mPlayButton.setImageResource(2130851191);
       return;
     }
     this.mCenterPlayBtn.setVisibility(0);
-    this.mPlayButton.setImageResource(2130851277);
+    this.mPlayButton.setImageResource(2130851190);
   }
   
   public void resumeDownload()
@@ -384,7 +407,7 @@ public class QQVideoPlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.view.QQVideoPlayView
  * JD-Core Version:    0.7.0.1
  */

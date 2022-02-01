@@ -1,24 +1,18 @@
 package com.tencent.mobileqq.filemanager.activity.cloudfile;
 
-import android.content.Intent;
-import android.os.Parcelable;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.api.IFMConfig;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.api.IQQFileDataCenter;
+import com.tencent.mobileqq.filemanager.api.IQQFileEngine;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 import com.tencent.mobileqq.filemanager.util.FileManagerReporter.FileAssistantReportData;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.util.IReportVer51;
 import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -35,44 +29,38 @@ class QfileBaseCloudFileTabView$12
   {
     QfileCloudFileBaseExpandableListAdapter.CloudItemHolder localCloudItemHolder = (QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)paramView.getTag();
     Object localObject2 = (WeiYunFileInfo)localCloudItemHolder.a;
-    Object localObject1 = QfileBaseCloudFileTabView.e(this.a).getFileManagerDataCenter().c(((WeiYunFileInfo)localObject2).jdField_a_of_type_JavaLangString);
-    if (localObject1 != null) {
+    Object localObject1 = ((IQQFileDataCenter)QfileBaseCloudFileTabView.e(this.a).getRuntimeService(IQQFileDataCenter.class, "")).queryByFileIdForMemory(((WeiYunFileInfo)localObject2).a);
+    if (localObject1 != null)
+    {
       if (localCloudItemHolder.c == 1)
       {
         this.a.a.a().aa();
-        if (!NetworkUtil.d(BaseApplication.getContext()))
+        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
         {
-          FMToastUtil.a(2131692602);
-          EventCollector.getInstance().onViewClicked(paramView);
-          return;
+          FMToastUtil.a(2131692554);
+          break label443;
         }
-        FileModel.a((FileManagerEntity)localObject1).a(false, this.a.a, new QfileBaseCloudFileTabView.12.1(this, (FileManagerEntity)localObject1));
+        ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).doWithWifiChecked((FileManagerEntity)localObject1, false, this.a.a, new QfileBaseCloudFileTabView.12.1(this, (FileManagerEntity)localObject1));
       }
-    }
-    for (;;)
-    {
-      this.a.i();
-      break;
-      if (localCloudItemHolder.c == 3)
+      else if (localCloudItemHolder.c == 3)
       {
         this.a.a.a().ac();
-        if (!NetworkUtil.d(BaseApplication.getContext()))
+        if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
         {
-          FMToastUtil.a(2131692602);
-          break;
+          FMToastUtil.a(2131692554);
+          break label443;
         }
-        FileModel.a((FileManagerEntity)localObject1).a(false, this.a.a, new QfileBaseCloudFileTabView.12.2(this, (FileManagerEntity)localObject1));
-        continue;
+        QfileBaseCloudFileTabView.a(this.a, (FileManagerEntity)localObject1);
       }
-      if (localCloudItemHolder.c == 0)
+      else if (localCloudItemHolder.c == 0)
       {
         this.a.a.a().Z();
         localObject2 = new FileManagerReporter.FileAssistantReportData();
         ((FileManagerReporter.FileAssistantReportData)localObject2).b = "file_viewer_in";
         ((FileManagerReporter.FileAssistantReportData)localObject2).jdField_a_of_type_Int = 73;
-        ((FileManagerReporter.FileAssistantReportData)localObject2).c = FileUtil.a(((FileManagerEntity)localObject1).fileName);
+        ((FileManagerReporter.FileAssistantReportData)localObject2).c = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getExtension(((FileManagerEntity)localObject1).fileName);
         ((FileManagerReporter.FileAssistantReportData)localObject2).jdField_a_of_type_Long = ((FileManagerEntity)localObject1).fileSize;
-        FileManagerReporter.a(QfileBaseCloudFileTabView.h(this.a).getCurrentAccountUin(), (FileManagerReporter.FileAssistantReportData)localObject2);
+        FileManagerReporter.a(QfileBaseCloudFileTabView.g(this.a).getCurrentAccountUin(), (FileManagerReporter.FileAssistantReportData)localObject2);
         localObject2 = new ForwardFileInfo();
         ((ForwardFileInfo)localObject2).d(((FileManagerEntity)localObject1).getCloudType());
         ((ForwardFileInfo)localObject2).b(10001);
@@ -81,29 +69,28 @@ class QfileBaseCloudFileTabView$12
         ((ForwardFileInfo)localObject2).d(((FileManagerEntity)localObject1).fileName);
         ((ForwardFileInfo)localObject2).d(((FileManagerEntity)localObject1).fileSize);
         ((ForwardFileInfo)localObject2).b(((FileManagerEntity)localObject1).Uuid);
-        localObject1 = new Intent(QfileBaseCloudFileTabView.a(this.a), FileBrowserActivity.class);
-        ((Intent)localObject1).putExtra("fileinfo", (Parcelable)localObject2);
-        QfileBaseCloudFileTabView.b(this.a).startActivityForResult((Intent)localObject1, 102);
+        ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).openRencentFileBrowser(QfileBaseCloudFileTabView.a(this.a), (ForwardFileInfo)localObject2);
       }
       else if (localCloudItemHolder.c == 2)
       {
         this.a.a.a().ab();
-        QfileBaseCloudFileTabView.i(this.a).getFileManagerEngine().a(((FileManagerEntity)localObject1).nSessionId);
-        continue;
-        this.a.a.a().aa();
-        localObject1 = new QfileBaseCloudFileTabView.12.3(this, (WeiYunFileInfo)localObject2);
-        if ((((WeiYunFileInfo)localObject2).jdField_a_of_type_Long > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()) && (FileManagerUtil.a())) {
-          FileManagerUtil.a(false, this.a.a, (FMDialogUtil.FMDialogInterface)localObject1);
-        } else {
-          ((FMDialogUtil.FMDialogInterface)localObject1).a();
-        }
+        ((IQQFileEngine)QfileBaseCloudFileTabView.h(this.a).getRuntimeService(IQQFileEngine.class, "")).pause(((FileManagerEntity)localObject1).nSessionId);
       }
     }
+    else
+    {
+      this.a.a.a().aa();
+      localObject1 = new QfileBaseCloudFileTabView.12.2(this, (WeiYunFileInfo)localObject2);
+      QfileBaseCloudFileTabView.a(this.a, (WeiYunFileInfo)localObject2, (FMDialogUtil.FMDialogInterface)localObject1);
+    }
+    this.a.i();
+    label443:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.12
  * JD-Core Version:    0.7.0.1
  */

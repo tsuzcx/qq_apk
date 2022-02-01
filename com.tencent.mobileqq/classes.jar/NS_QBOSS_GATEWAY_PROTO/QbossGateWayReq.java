@@ -45,18 +45,20 @@ public final class QbossGateWayReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.stAdvReq, 0);
-    if (this.stLoginInfo != null) {
-      paramJceOutputStream.write(this.stLoginInfo, 1);
+    Object localObject = this.stLoginInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
     paramJceOutputStream.write(this.iAppID, 2);
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 3);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QBOSS_GATEWAY_PROTO.QbossGateWayReq
  * JD-Core Version:    0.7.0.1
  */

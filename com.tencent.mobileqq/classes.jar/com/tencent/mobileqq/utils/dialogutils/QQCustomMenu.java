@@ -72,33 +72,38 @@ public class QQCustomMenu
   
   public QQCustomMenuItem[] a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      QQCustomMenuItem[] arrayOfQQCustomMenuItem = new QQCustomMenuItem[this.jdField_a_of_type_JavaUtilList.size()];
-      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfQQCustomMenuItem);
-      return arrayOfQQCustomMenuItem;
+      localObject = new QQCustomMenuItem[this.jdField_a_of_type_JavaUtilList.size()];
+      this.jdField_a_of_type_JavaUtilList.toArray((Object[])localObject);
+      return localObject;
     }
     return null;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        QQCustomMenuItem localQQCustomMenuItem = (QQCustomMenuItem)localIterator.next();
-        localStringBuilder.append(" " + localQQCustomMenuItem.jdField_a_of_type_JavaLangString);
+        QQCustomMenuItem localQQCustomMenuItem = (QQCustomMenuItem)((Iterator)localObject).next();
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(" ");
+        localStringBuilder2.append(localQQCustomMenuItem.jdField_a_of_type_JavaLangString);
+        localStringBuilder1.append(localStringBuilder2.toString());
       }
     }
-    return localStringBuilder.toString();
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.dialogutils.QQCustomMenu
  * JD-Core Version:    0.7.0.1
  */

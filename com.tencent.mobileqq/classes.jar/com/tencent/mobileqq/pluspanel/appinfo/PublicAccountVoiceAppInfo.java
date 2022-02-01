@@ -14,7 +14,7 @@ public class PublicAccountVoiceAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130839288;
+    return 2130839143;
   }
   
   public int getAppID()
@@ -27,7 +27,7 @@ public class PublicAccountVoiceAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698484);
+    return BaseApplicationImpl.getContext().getString(2131698550);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
@@ -39,7 +39,7 @@ public class PublicAccountVoiceAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.PublicAccountVoiceAppInfo
  * JD-Core Version:    0.7.0.1
  */

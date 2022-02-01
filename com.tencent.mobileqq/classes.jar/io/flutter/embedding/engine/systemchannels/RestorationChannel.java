@@ -53,24 +53,23 @@ public class RestorationChannel
   public void setRestorationData(byte[] paramArrayOfByte)
   {
     this.engineHasProvidedData = true;
-    if (this.pendingFrameworkRestorationChannelRequest != null)
+    MethodChannel.Result localResult = this.pendingFrameworkRestorationChannelRequest;
+    if (localResult != null)
     {
-      this.pendingFrameworkRestorationChannelRequest.success(packageData(paramArrayOfByte));
+      localResult.success(packageData(paramArrayOfByte));
       this.pendingFrameworkRestorationChannelRequest = null;
+    }
+    while (!this.frameworkHasRequestedData)
+    {
       this.restorationData = paramArrayOfByte;
       return;
     }
-    if (this.frameworkHasRequestedData)
-    {
-      this.channel.invokeMethod("push", packageData(paramArrayOfByte), new RestorationChannel.1(this, paramArrayOfByte));
-      return;
-    }
-    this.restorationData = paramArrayOfByte;
+    this.channel.invokeMethod("push", packageData(paramArrayOfByte), new RestorationChannel.1(this, paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.RestorationChannel
  * JD-Core Version:    0.7.0.1
  */

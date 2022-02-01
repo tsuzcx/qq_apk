@@ -1,33 +1,25 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle.Event;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.OnLifecycleEvent;
 
 class QQSettingMe$1
-  implements Runnable
+  implements LifecycleObserver
 {
-  QQSettingMe$1(QQSettingMe paramQQSettingMe, boolean paramBoolean) {}
+  QQSettingMe$1(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+  public void onDestroy(LifecycleOwner paramLifecycleOwner)
   {
-    this.this$0.a(Boolean.valueOf(this.a));
-    QQSettingMe.a(this.this$0).setImageResource(2130846361);
-    QQSettingMe.b(this.this$0).setImageResource(2130846377);
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166481));
-    if (this.this$0.b != null) {
-      this.this$0.b.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166481));
-    }
-    TextView localTextView = (TextView)this.this$0.e.findViewById(2131377044);
-    localTextView.setTextColor(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColor(2131166479));
-    ((ImageView)this.this$0.e.findViewById(2131368620)).setColorFilter(localTextView.getCurrentTextColor());
+    paramLifecycleOwner.getLifecycle().removeObserver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.1
  * JD-Core Version:    0.7.0.1
  */

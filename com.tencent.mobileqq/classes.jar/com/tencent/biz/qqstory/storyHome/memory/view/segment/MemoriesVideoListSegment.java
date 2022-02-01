@@ -37,8 +37,8 @@ import com.tencent.biz.qqstory.view.segment.SegmentList;
 import com.tencent.biz.qqstory.view.segment.SegmentView;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.AccessibilityUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import com.tribe.async.dispatch.Dispatcher;
@@ -84,25 +84,21 @@ public class MemoriesVideoListSegment
       if (!paramBoolean) {
         ThreadManager.getUIHandler().postDelayed(new MemoriesVideoListSegment.3(this, paramInt, paramVideoCollectionItem, paramString), 300L);
       }
-    }
-    do
-    {
       return;
-      localObject = (MemoriesInnerListView)((BaseViewHolder)localObject).a(2131369137);
-    } while (localObject == null);
-    Iterator localIterator = paramVideoCollectionItem.collectionVideoUIItemList.iterator();
+    }
+    localObject = (MemoriesInnerListView)((BaseViewHolder)localObject).a(2131368870);
+    if (localObject == null) {
+      return;
+    }
     int i = 0;
-    for (;;)
-    {
-      if ((!localIterator.hasNext()) || (TextUtils.equals(((VideoCollectionItem.FakeVideoUIItem)localIterator.next()).jdField_a_of_type_JavaLangString, paramString)))
-      {
-        if (paramVideoCollectionItem.collectionVideoUIItemList.size() > 2) {
-          break;
-        }
-        ThreadManager.getUIHandler().post(new MemoriesVideoListSegment.4(this, (MemoriesInnerListView)localObject, i, paramString));
-        return;
-      }
+    Iterator localIterator = paramVideoCollectionItem.collectionVideoUIItemList.iterator();
+    while ((localIterator.hasNext()) && (!TextUtils.equals(((VideoCollectionItem.FakeVideoUIItem)localIterator.next()).jdField_a_of_type_JavaLangString, paramString))) {
       i += 1;
+    }
+    if (paramVideoCollectionItem.collectionVideoUIItemList.size() <= 2)
+    {
+      ThreadManager.getUIHandler().post(new MemoriesVideoListSegment.4(this, (MemoriesInnerListView)localObject, i, paramString));
+      return;
     }
     if (!paramBoolean)
     {
@@ -126,9 +122,9 @@ public class MemoriesVideoListSegment
     return String.valueOf(hashCode());
   }
   
-  public void T_()
+  protected void R_()
   {
-    super.T_();
+    super.R_();
     this.jdField_b_of_type_Boolean = false;
   }
   
@@ -144,7 +140,7 @@ public class MemoriesVideoListSegment
     return 0;
   }
   
-  public int a(int paramInt)
+  protected int a(int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.jdField_a_of_type_Boolean)
     {
@@ -158,22 +154,23 @@ public class MemoriesVideoListSegment
       if (localVideoCollectionItem.collectionType == 8) {
         return 2;
       }
-      throw new IllegalStateException("get view type error because unknown view type:" + localVideoCollectionItem.collectionType);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get view type error because unknown view type:");
+      localStringBuilder.append(localVideoCollectionItem.collectionType);
+      throw new IllegalStateException(localStringBuilder.toString());
     }
     return 3;
   }
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder)
   {
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131370757);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131370392);
     if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 11111)) {
-      localTextView.setText(HardCodeUtil.a(2131706549));
+      localTextView.setText(HardCodeUtil.a(2131706575));
+    } else {
+      localTextView.setText(HardCodeUtil.a(2131706573));
     }
-    for (;;)
-    {
-      return paramBaseViewHolder.a();
-      localTextView.setText(HardCodeUtil.a(2131706547));
-    }
+    return paramBaseViewHolder.a();
   }
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
@@ -191,25 +188,31 @@ public class MemoriesVideoListSegment
     if (i == 3) {
       return a(paramInt, paramBaseViewHolder);
     }
-    throw new IllegalStateException("bind view error because unknown view type:" + i);
+    paramBaseViewHolder = new StringBuilder();
+    paramBaseViewHolder.append("bind view error because unknown view type:");
+    paramBaseViewHolder.append(i);
+    throw new IllegalStateException(paramBaseViewHolder.toString());
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
     paramInt = a(paramInt);
     if (paramInt == 0) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561857, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561708, paramViewGroup, false));
     }
     if (paramInt == 1) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561847, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561698, paramViewGroup, false));
     }
     if (paramInt == 2) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561855, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561706, paramViewGroup, false));
     }
     if (paramInt == 3) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561852, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561703, paramViewGroup, false));
     }
-    throw new IllegalStateException("create view error because unknown view type:" + paramInt);
+    paramViewGroup = new StringBuilder();
+    paramViewGroup.append("create view error because unknown view type:");
+    paramViewGroup.append(paramInt);
+    throw new IllegalStateException(paramViewGroup.toString());
   }
   
   public String a()
@@ -223,12 +226,12 @@ public class MemoriesVideoListSegment
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.a(paramString);
     paramString = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.jdField_a_of_type_JavaLangString);
     int i = StoryMemoriesFragment.a(this.jdField_a_of_type_Int);
-    if ((paramString != null) && (paramString.isMe())) {}
-    for (paramString = "1";; paramString = "2")
-    {
-      StoryReportor.a("memory", "left_right", i, 0, new String[] { paramString, "", "", "" });
-      return;
+    if ((paramString != null) && (paramString.isMe())) {
+      paramString = "1";
+    } else {
+      paramString = "2";
     }
+    StoryReportor.a("memory", "left_right", i, 0, new String[] { paramString, "", "", "" });
   }
   
   public void a(String paramString1, int paramInt, View paramView, String paramString2)
@@ -240,28 +243,26 @@ public class MemoriesVideoListSegment
   {
     Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.jdField_a_of_type_JavaUtilArrayList.iterator();
     int i = 0;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      localVideoCollectionItem = (VideoCollectionItem)localIterator.next();
+      VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)localIterator.next();
       if (paramString1.equals(localVideoCollectionItem.feedId))
       {
         this.jdField_a_of_type_JavaLangString = null;
         this.jdField_b_of_type_JavaLangString = null;
         b(i);
         a(i, localVideoCollectionItem, paramString2, false);
+        return;
       }
-    }
-    while (!paramBoolean)
-    {
-      VideoCollectionItem localVideoCollectionItem;
-      return;
       i += 1;
-      break;
     }
-    SLog.b("Q.qqstory.memories.MemoriesVideoListSegment", "scroll2NewGroup, loadmore");
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    b();
+    if (paramBoolean)
+    {
+      SLog.b("Q.qqstory.memories.MemoriesVideoListSegment", "scroll2NewGroup, loadmore");
+      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.jdField_b_of_type_JavaLangString = paramString2;
+      b();
+    }
   }
   
   public void a(String paramString, List<VideoCollectionItem.FakeVideoUIItem> paramList)
@@ -275,32 +276,22 @@ public class MemoriesVideoListSegment
   
   public void a(boolean paramBoolean)
   {
-    boolean bool = true;
-    SegmentList localSegmentList;
-    String str;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       c(true);
-      localSegmentList = a();
-      str = a();
-      if (a()) {
-        break label83;
-      }
+    } else {
+      c(false);
     }
-    for (;;)
+    a().setLoadMoreComplete(a(), paramBoolean, true ^ a());
+    String str1 = this.jdField_a_of_type_JavaLangString;
+    if (str1 != null)
     {
-      localSegmentList.setLoadMoreComplete(str, paramBoolean, bool);
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString != null))
+      String str2 = this.jdField_b_of_type_JavaLangString;
+      if (str2 != null)
       {
-        a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false);
+        a(str1, str2, false);
         this.jdField_a_of_type_JavaLangString = null;
         this.jdField_b_of_type_JavaLangString = null;
       }
-      return;
-      c(false);
-      break;
-      label83:
-      bool = false;
     }
   }
   
@@ -312,7 +303,15 @@ public class MemoriesVideoListSegment
     return true;
   }
   
-  public boolean a_(boolean paramBoolean)
+  public void a_(boolean paramBoolean)
+  {
+    super.a_(paramBoolean);
+    if (this.jdField_a_of_type_Boolean) {
+      f();
+    }
+  }
+  
+  protected boolean a_(boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.a(false);
     return true;
@@ -321,9 +320,9 @@ public class MemoriesVideoListSegment
   public View b(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
     paramViewGroup = (VideoCollectionItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131382104);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131381306);
-    View localView = paramBaseViewHolder.a(2131370388);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131381306);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131380562);
+    View localView = paramBaseViewHolder.a(2131370049);
     if (ThemeUtil.isInNightMode(PlayModeUtils.a()))
     {
       localTextView2.setTextColor(Color.parseColor("#44608a"));
@@ -331,21 +330,18 @@ public class MemoriesVideoListSegment
       localView.setBackgroundColor(Color.parseColor("#0c284e"));
     }
     localTextView1.setText(DateUtils.c(paramViewGroup.collectionTime));
-    if (paramViewGroup.collectionCount <= 0)
-    {
+    int j = paramViewGroup.collectionCount;
+    int i = 0;
+    if (j <= 0) {
       localTextView2.setText("");
-      if (paramInt != 0) {
-        break label166;
-      }
+    } else {
+      localTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131699376, new Object[] { Integer.valueOf(paramViewGroup.collectionCount) }));
     }
-    label166:
-    for (paramInt = 4;; paramInt = 0)
-    {
-      localView.setVisibility(paramInt);
-      return paramBaseViewHolder.a();
-      localTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131699271, new Object[] { Integer.valueOf(paramViewGroup.collectionCount) }));
-      break;
+    if (paramInt == 0) {
+      i = 4;
     }
+    localView.setVisibility(i);
+    return paramBaseViewHolder.a();
   }
   
   protected boolean b()
@@ -356,18 +352,18 @@ public class MemoriesVideoListSegment
   
   public View c(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    Object localObject3 = (RelativeLayout)paramBaseViewHolder.a(2131379336);
-    Object localObject4 = (TextView)paramBaseViewHolder.a(2131364919);
-    Object localObject5 = (TextView)paramBaseViewHolder.a(2131364921);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131364922);
-    paramViewGroup = (MemoriesInnerListView)paramBaseViewHolder.a(2131369137);
-    Object localObject1 = paramBaseViewHolder.a(2131370389);
-    Object localObject2 = (ImageView)paramBaseViewHolder.a(2131373341);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131362231);
+    Object localObject3 = (RelativeLayout)paramBaseViewHolder.a(2131378688);
+    Object localObject4 = (TextView)paramBaseViewHolder.a(2131364805);
+    Object localObject5 = (TextView)paramBaseViewHolder.a(2131364807);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131364808);
+    paramViewGroup = (MemoriesInnerListView)paramBaseViewHolder.a(2131368870);
+    Object localObject1 = paramBaseViewHolder.a(2131370050);
+    Object localObject2 = (ImageView)paramBaseViewHolder.a(2131372919);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131362254);
     if (ThemeUtil.isInNightMode(PlayModeUtils.a()))
     {
       ((View)localObject1).setBackgroundColor(Color.parseColor("#0c284e"));
-      ((ImageView)localObject2).setBackgroundResource(2130846968);
+      ((ImageView)localObject2).setBackgroundResource(2130846846);
       localTextView1.setTextColor(Color.parseColor("#44608a"));
       ((TextView)localObject4).setTextColor(Color.parseColor("#6991b8"));
       ((TextView)localObject5).setTextColor(Color.parseColor("#6991b8"));
@@ -389,60 +385,54 @@ public class MemoriesVideoListSegment
       localObject4 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject3).getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject4).setMargins(0, 0, 0, 0);
       ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-      localTextView1.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131699257, new Object[] { Integer.valueOf(((VideoCollectionItem)localObject2).collectionCount) }));
-      if (!TextUtils.isEmpty(((VideoCollectionItem)localObject2).address)) {
-        break label590;
-      }
-      localTextView2.setVisibility(4);
-      label344:
-      localObject3 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
-      if (paramInt != 1) {
-        break label628;
-      }
-      ((RelativeLayout.LayoutParams)localObject3).height = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 150.0F);
     }
-    for (;;)
+    else
     {
-      ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-      paramViewGroup.a = this;
-      localObject1 = (MemoriesInnerListAdapter)paramViewGroup.a();
-      ((MemoriesInnerListAdapter)localObject1).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.jdField_a_of_type_JavaLangString);
-      ((MemoriesInnerListAdapter)localObject1).a(this);
-      paramViewGroup.setSelection(0);
-      paramViewGroup.resetCurrentX(0);
-      paramViewGroup.setDate(((VideoCollectionItem)localObject2).collectionVideoUIItemList, ((VideoCollectionItem)localObject2).collectionId);
-      this.jdField_a_of_type_JavaUtilHashMap.put(((VideoCollectionItem)localObject2).collectionId, new WeakReference(localObject1));
-      return paramBaseViewHolder.a();
       ((TextView)localObject5).setVisibility(8);
       ((TextView)localObject4).setTextSize(1, 20.0F);
       localObject5 = (LinearLayout.LayoutParams)((TextView)localObject4).getLayoutParams();
       ((LinearLayout.LayoutParams)localObject5).setMargins(0, 0, 0, 0);
       ((TextView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
       localObject4 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject3).getLayoutParams();
-      if (TextUtils.equals(arrayOfString[1], HardCodeUtil.a(2131706544))) {
+      if (TextUtils.equals(arrayOfString[1], HardCodeUtil.a(2131706570))) {
         ((RelativeLayout.LayoutParams)localObject4).setMargins(0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 7.0F));
-      }
-      for (;;)
-      {
-        ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-        break;
+      } else {
         ((RelativeLayout.LayoutParams)localObject4).setMargins(0, 0, 0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 7.0F));
       }
-      label590:
+      ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+    }
+    localTextView1.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131699362, new Object[] { Integer.valueOf(((VideoCollectionItem)localObject2).collectionCount) }));
+    if (TextUtils.isEmpty(((VideoCollectionItem)localObject2).address))
+    {
+      localTextView2.setVisibility(4);
+    }
+    else
+    {
       ((VideoCollectionItem)localObject2).address = ((VideoCollectionItem)localObject2).address.replace(65292, '‧');
       localTextView2.setText(((VideoCollectionItem)localObject2).address);
       localTextView2.setVisibility(0);
-      break label344;
-      label628:
-      if (TextUtils.equals(arrayOfString[1], HardCodeUtil.a(2131706536))) {
-        ((RelativeLayout.LayoutParams)localObject3).height = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 172.0F);
-      } else {
-        ((RelativeLayout.LayoutParams)localObject3).height = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 176.0F);
-      }
     }
+    localObject3 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
+    if (paramInt == 1) {
+      ((RelativeLayout.LayoutParams)localObject3).height = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 150.0F);
+    } else if (TextUtils.equals(arrayOfString[1], HardCodeUtil.a(2131706562))) {
+      ((RelativeLayout.LayoutParams)localObject3).height = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 172.0F);
+    } else {
+      ((RelativeLayout.LayoutParams)localObject3).height = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 176.0F);
+    }
+    ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    paramViewGroup.a = this;
+    localObject1 = (MemoriesInnerListAdapter)paramViewGroup.a();
+    ((MemoriesInnerListAdapter)localObject1).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.jdField_a_of_type_JavaLangString);
+    ((MemoriesInnerListAdapter)localObject1).a(this);
+    paramViewGroup.setSelection(0);
+    paramViewGroup.resetCurrentX(0);
+    paramViewGroup.setDate(((VideoCollectionItem)localObject2).collectionVideoUIItemList, ((VideoCollectionItem)localObject2).collectionId);
+    this.jdField_a_of_type_JavaUtilHashMap.put(((VideoCollectionItem)localObject2).collectionId, new WeakReference(localObject1));
+    return paramBaseViewHolder.a();
   }
   
-  public void c()
+  protected void c()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.a(true);
     f();
@@ -453,7 +443,7 @@ public class MemoriesVideoListSegment
     return paramBaseViewHolder.a();
   }
   
-  public void d()
+  protected void d()
   {
     super.d();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.b();
@@ -461,30 +451,15 @@ public class MemoriesVideoListSegment
     StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment$PlayVideoChangeReceiver);
   }
   
-  public int d_()
+  protected int d_()
   {
     return 4;
-  }
-  
-  public void e_(boolean paramBoolean)
-  {
-    super.e_(paramBoolean);
-    if (this.jdField_a_of_type_Boolean) {
-      f();
-    }
   }
   
   public void f()
   {
     a().setOnLoadMoreListener(a(), new MemoriesVideoListSegment.1(this));
-    SegmentList localSegmentList = a();
-    String str = a();
-    if (!a()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localSegmentList.setLoadMoreComplete(str, true, bool);
-      return;
-    }
+    a().setLoadMoreComplete(a(), true, a() ^ true);
   }
   
   public boolean isValidate()
@@ -494,7 +469,7 @@ public class MemoriesVideoListSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment
  * JD-Core Version:    0.7.0.1
  */

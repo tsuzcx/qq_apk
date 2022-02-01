@@ -14,12 +14,16 @@ public class VideoReportPlayerUtils$DebugTime
   
   public void debug(String paramString)
   {
-    Log.d("DebugTime::", paramString + " time=" + (System.currentTimeMillis() - this.startTime));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" time=");
+    localStringBuilder.append(System.currentTimeMillis() - this.startTime);
+    Log.d("DebugTime::", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.logic.VideoReportPlayerUtils.DebugTime
  * JD-Core Version:    0.7.0.1
  */

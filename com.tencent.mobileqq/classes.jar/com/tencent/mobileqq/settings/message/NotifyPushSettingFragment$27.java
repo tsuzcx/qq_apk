@@ -26,12 +26,12 @@ class NotifyPushSettingFragment$27
     }
     if (paramInt == 0)
     {
-      QQToast.a(this.a.getActivity(), 1, 2131696097, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299166));
+      QQToast.a(this.a.getBaseActivity(), 1, 2131696114, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
       return;
     }
     if (NotifyPushSettingFragment.a(this.a).compareAndSet(true, true))
     {
-      QQToast.a(this.a.getActivity(), 1, 2131698311, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299166));
+      QQToast.a(this.a.getBaseActivity(), 1, 2131698376, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
       return;
     }
     NotifyPushSettingFragment.a(this.a, false, true);
@@ -43,7 +43,7 @@ class NotifyPushSettingFragment$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.27
  * JD-Core Version:    0.7.0.1
  */

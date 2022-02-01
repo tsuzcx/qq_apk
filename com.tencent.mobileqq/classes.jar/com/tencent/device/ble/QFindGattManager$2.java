@@ -25,7 +25,8 @@ class QFindGattManager$2
     }
     if (!QFindGattManager.a(this.a).isEmpty())
     {
-      this.a.a = ((PeerInfo)QFindGattManager.a(this.a).get(0));
+      paramComponentName = this.a;
+      paramComponentName.a = ((PeerInfo)QFindGattManager.a(paramComponentName).get(0));
       QFindGattManager.a(this.a).remove(0);
       QFindGattManager.a(this.a).a(this.a.a.a, this.a.a.b);
     }
@@ -38,7 +39,7 @@ class QFindGattManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.ble.QFindGattManager.2
  * JD-Core Version:    0.7.0.1
  */

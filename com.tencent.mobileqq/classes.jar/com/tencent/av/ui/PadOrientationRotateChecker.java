@@ -8,58 +8,67 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PadOrientationRotateChecker
 {
-  private static final String[][] jdField_a_of_type_Array2dOfJavaLangString = { { "Lenovo", "Lenovo TB-J606F" }, { "Lenovo", "Lenovo TB-J706F" } };
+  private static final String[][] jdField_a_of_type_Array2dOfJavaLangString = { { "LENOVO", "Lenovo TB-J606F" }, { "LENOVO", "Lenovo TB-J706F" }, { "LENOVO", "Lenovo YT-K606F" }, { "LENOVO", "Lenovo TB-J716F" }, { "LENOVO", "Lenovo TB-J607F" } };
   private Integer jdField_a_of_type_JavaLangInteger = null;
   
   private void a()
   {
-    String str;
     if (this.jdField_a_of_type_JavaLangInteger == null)
     {
-      str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.qavPadOrientationRotateFlag.name(), String.valueOf(0));
-      if (!String.valueOf(1).equals(str)) {
-        break label81;
-      }
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(1);
-    }
-    for (;;)
-    {
-      QLog.i("PadOrientationRotateChecker", 1, "initPadOrientationRotateFlag, value[" + str + "]");
-      return;
-      label81:
-      if (String.valueOf(2).equals(str)) {
+      String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.qavPadOrientationRotateFlag.name(), String.valueOf(0));
+      if (String.valueOf(1).equals(str)) {
+        this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(1);
+      } else if (String.valueOf(2).equals(str)) {
         this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(2);
       } else if (b()) {
         this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(2);
       } else {
         this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(0);
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initPadOrientationRotateFlag, value[");
+      localStringBuilder.append(str);
+      localStringBuilder.append("]");
+      QLog.i("PadOrientationRotateChecker", 1, localStringBuilder.toString());
     }
   }
   
   private boolean b()
   {
-    boolean bool = true;
     String str1 = Build.MANUFACTURER;
     String str2 = Build.MODEL;
-    String[][] arrayOfString = jdField_a_of_type_Array2dOfJavaLangString;
-    int j = arrayOfString.length;
+    Object localObject1 = jdField_a_of_type_Array2dOfJavaLangString;
+    int j = localObject1.length;
+    boolean bool2 = false;
     int i = 0;
-    if (i < j)
-    {
-      String[] arrayOfString1 = arrayOfString[i];
-      if ((!arrayOfString1[0].equalsIgnoreCase(str1)) || (!arrayOfString1[1].equalsIgnoreCase(str2))) {}
-    }
+    boolean bool1;
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("PadOrientationRotateChecker", 2, "isDisableDevice, manufacturer[" + str1 + "], model[" + str2 + "], isDisableDevice[" + bool + "]");
+      bool1 = bool2;
+      if (i >= j) {
+        break;
       }
-      return bool;
+      Object localObject2 = localObject1[i];
+      if ((localObject2[0].equalsIgnoreCase(str1)) && (localObject2[1].equalsIgnoreCase(str2)))
+      {
+        bool1 = true;
+        break;
+      }
       i += 1;
-      break;
-      bool = false;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("isDisableDevice, manufacturer[");
+      ((StringBuilder)localObject1).append(str1);
+      ((StringBuilder)localObject1).append("], model[");
+      ((StringBuilder)localObject1).append(str2);
+      ((StringBuilder)localObject1).append("], isDisableDevice[");
+      ((StringBuilder)localObject1).append(bool1);
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("PadOrientationRotateChecker", 2, ((StringBuilder)localObject1).toString());
+    }
+    return bool1;
   }
   
   public boolean a()
@@ -72,7 +81,7 @@ public class PadOrientationRotateChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.PadOrientationRotateChecker
  * JD-Core Version:    0.7.0.1
  */

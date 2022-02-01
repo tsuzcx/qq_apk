@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.teamwork.IGroupTeamWorkAdapter;
 import com.tencent.mobileqq.teamwork.OnItemLongClickListener;
 import com.tencent.mobileqq.teamwork.PadInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupTeamWorkAdapter
-  extends BaseAdapter
+  extends IGroupTeamWorkAdapter
   implements BaseMenuCloudFileItemBuilder.OnMenuItemClickListener
 {
   protected int a;
@@ -27,7 +27,7 @@ public class GroupTeamWorkAdapter
   protected Handler a;
   protected View.OnClickListener a;
   protected View.OnLongClickListener a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private OnItemLongClickListener jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener;
   private EmptyViewInfoForTroop jdField_a_of_type_ComTencentMobileqqTeamworkforgroupEmptyViewInfoForTroop = new EmptyViewInfoForTroop();
   private TeamWorkItemBuilder jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkItemBuilder;
@@ -38,14 +38,14 @@ public class GroupTeamWorkAdapter
   protected View.OnClickListener b;
   protected boolean b;
   
-  public GroupTeamWorkAdapter(QQAppInterface paramQQAppInterface, Activity paramActivity, OnItemLongClickListener paramOnItemLongClickListener, Handler paramHandler)
+  public GroupTeamWorkAdapter(AppInterface paramAppInterface, Activity paramActivity, OnItemLongClickListener paramOnItemLongClickListener, Handler paramHandler)
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_b_of_type_Int = -1;
     this.jdField_b_of_type_AndroidViewView$OnClickListener = new GroupTeamWorkAdapter.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramActivity;
     this.jdField_a_of_type_Int = 1;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
@@ -56,27 +56,30 @@ public class GroupTeamWorkAdapter
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      localList.clear();
     }
   }
   
   public void a(int paramInt, ICloudFile paramICloudFile)
   {
     paramICloudFile = (PadInfo)paramICloudFile;
-    switch (paramInt)
+    OnItemLongClickListener localOnItemLongClickListener;
+    if (paramInt == 2131364747)
     {
+      localOnItemLongClickListener = this.jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener;
+      if (localOnItemLongClickListener != null) {
+        localOnItemLongClickListener.b(paramICloudFile);
+      }
     }
-    do
+    if (paramInt == 2131364745)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener == null);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener.b(paramICloudFile);
-      return;
-    } while (this.jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener.a(paramICloudFile);
+      localOnItemLongClickListener = this.jdField_a_of_type_ComTencentMobileqqTeamworkOnItemLongClickListener;
+      if (localOnItemLongClickListener != null) {
+        localOnItemLongClickListener.a(paramICloudFile);
+      }
+    }
   }
   
   public void a(View.OnClickListener paramOnClickListener)
@@ -93,33 +96,31 @@ public class GroupTeamWorkAdapter
   
   public void a(List<? extends Object> paramList)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if ((paramList != null) && (!paramList.isEmpty())) {
       this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      }
-      notifyDataSetChanged();
+    } else {
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupEmptyViewInfoForTroop);
     }
-    do
-    {
-      return;
-      a();
-    } while (this.jdField_a_of_type_AndroidOsHandler == null);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    notifyDataSetChanged();
   }
   
   public void b(List<? extends Object> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    for (;;)
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      paramList = this.jdField_a_of_type_AndroidOsHandler;
+      if (paramList != null) {
+        paramList.sendEmptyMessage(4);
+      }
       notifyDataSetChanged();
       return;
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupEmptyViewInfoForTroop);
+    }
+    a();
+    paramList = this.jdField_a_of_type_AndroidOsHandler;
+    if (paramList != null) {
+      paramList.sendEmptyMessage(3);
     }
   }
   
@@ -154,24 +155,24 @@ public class GroupTeamWorkAdapter
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new TroopEmptyViewItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this, this.jdField_a_of_type_Int);
+        localObject1 = new TroopEmptyViewItemBuilder(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this, this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTroopEmptyViewItemBuilder = ((TroopEmptyViewItemBuilder)localObject1);
       }
     }
-    for (;;)
+    else
     {
-      a((CloudFileItemBuilder)localObject1);
-      paramView = ((CloudFileItemBuilder)localObject1).a(paramInt, localICloudFile, paramView, paramViewGroup, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkItemBuilder;
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new TeamWorkItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this, this.jdField_a_of_type_Int);
+        localObject1 = new TeamWorkItemBuilder(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this, this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkItemBuilder = ((TeamWorkItemBuilder)localObject1);
       }
     }
+    a((CloudFileItemBuilder)localObject1);
+    paramView = ((CloudFileItemBuilder)localObject1).a(paramInt, localICloudFile, paramView, paramViewGroup, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public int getViewTypeCount()
@@ -181,7 +182,7 @@ public class GroupTeamWorkAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkAdapter
  * JD-Core Version:    0.7.0.1
  */

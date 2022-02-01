@@ -9,12 +9,12 @@ class DbCacheService$1
   
   public void onClosed(IDBManagerWrapper paramIDBManagerWrapper)
   {
-    synchronized (DbCacheService.access$000(this.this$0))
+    synchronized (DbCacheService.a(this.a))
     {
       if ((paramIDBManagerWrapper instanceof DbCacheManager))
       {
         paramIDBManagerWrapper = (DbCacheManager)paramIDBManagerWrapper;
-        DbCacheService.access$000(this.this$0).remove(paramIDBManagerWrapper.uniqueKey());
+        DbCacheService.a(this.a).remove(paramIDBManagerWrapper.b());
       }
       return;
     }
@@ -22,7 +22,7 @@ class DbCacheService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.DbCacheService.1
  * JD-Core Version:    0.7.0.1
  */

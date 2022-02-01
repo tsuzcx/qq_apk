@@ -27,7 +27,7 @@ class DavEngineJni$NativeEventHandler
   
   private void onReceiveRequest(int paramInt, DavNativeEventParams paramDavNativeEventParams, IDavEventListener paramIDavEventListener)
   {
-    byte[] arrayOfByte1 = paramDavNativeEventParams.detail;
+    Object localObject1 = paramDavNativeEventParams.detail;
     int i = (int)paramDavNativeEventParams.extraParam0;
     String str1 = paramDavNativeEventParams.extraParam2;
     int j = paramDavNativeEventParams.extraParam3;
@@ -36,101 +36,93 @@ class DavEngineJni$NativeEventHandler
       i = 26;
     }
     String str2 = AVCoreUtil.asUnsignedDecimalString(paramDavNativeEventParams.fromUin);
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    switch (i)
+    if ((i != 0) && (i != 12) && (i != 19) && (i != 29))
     {
-    default: 
-      localObject1 = localObject2;
-    case 1: 
-    case 2: 
-    case 3: 
-    case 6: 
-    case 7: 
-    case 11: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 20: 
-    case 21: 
-    case 22: 
-    case 23: 
-    case 28: 
-    case 0: 
-    case 10: 
-    case 12: 
-    case 19: 
-    case 27: 
-    case 29: 
-    case 4: 
-    case 5: 
-    case 24: 
-    case 25: 
-    case 26: 
-      while ((paramInt == 2) || (paramInt == 60))
+      if ((i != 4) && (i != 5)) {}
+      switch (i)
       {
-        paramIDavEventListener.onRequestVideo(i, str2, (String)localObject1, paramDavNativeEventParams.extraBuf, true, str1, j, k);
-        label234:
-        if (AVCoreLog.isColorLevel()) {
-          AVCoreLog.i("onReceiveRequest", "uinType = " + i + ", extraUin = " + (String)localObject1 + ", longFronUin = " + paramDavNativeEventParams.fromUin);
-        }
-        return;
-        localObject1 = null;
-        continue;
-        localObject1 = localObject2;
-        if (arrayOfByte1 != null)
+      default: 
+        switch (i)
         {
-          int m = arrayOfByte1[0];
-          localObject1 = null;
-          localObject2 = localObject1;
-          if (arrayOfByte1.length > m + 1)
+        }
+        break;
+      case 8: 
+      case 9: 
+        localObject1 = String.valueOf(paramDavNativeEventParams.extraParam1);
+        break label400;
+        if (localObject1 != null)
+        {
+          int m = localObject1[0];
+          int n = localObject1.length;
+          int i1 = m + 1;
+          Object localObject2;
+          if (n > i1)
           {
-            arrayOfByte2 = new byte[m];
-            localObject2 = localObject1;
-            if (arrayOfByte2 != null)
+            localObject2 = new byte[m];
+            System.arraycopy(localObject1, 1, localObject2, 0, m);
+            localObject2 = new String((byte[])localObject2);
+          }
+          else
+          {
+            localObject2 = null;
+          }
+          n = localObject1[i1];
+          if (localObject1.length > m + n + 2)
+          {
+            Object localObject3 = new byte[n];
+            System.arraycopy(localObject1, m + 2, localObject3, 0, n);
+            localObject3 = new String((byte[])localObject3);
+            localObject1 = localObject3;
+            if (localObject3 != null)
             {
-              System.arraycopy(arrayOfByte1, 1, arrayOfByte2, 0, m);
-              localObject2 = new String(arrayOfByte2);
+              localObject1 = localObject3;
+              if (localObject2 != null)
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append((String)localObject2);
+                ((StringBuilder)localObject1).append((String)localObject3);
+                localObject1 = ((StringBuilder)localObject1).toString();
+              }
             }
           }
-          int n = arrayOfByte1[(m + 1)];
-          if (arrayOfByte1.length <= m + n + 2) {
-            break label552;
-          }
-          byte[] arrayOfByte2 = new byte[n];
-          localObject1 = null;
-          if (arrayOfByte2 != null)
+          else
           {
-            System.arraycopy(arrayOfByte1, m + 2, arrayOfByte2, 0, n);
-            localObject1 = new String(arrayOfByte2);
+            localObject1 = null;
           }
-          if ((localObject1 == null) || (localObject2 == null)) {
-            break label549;
+          if (AVCoreLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("uinType = ");
+            ((StringBuilder)localObject2).append(i);
+            ((StringBuilder)localObject2).append(", extraUin = ");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            AVCoreLog.i("onReceiveRequest", ((StringBuilder)localObject2).toString());
           }
-          localObject1 = (String)localObject2 + (String)localObject1;
         }
+        break;
       }
     }
-    for (;;)
+    localObject1 = null;
+    label400:
+    if ((paramInt != 2) && (paramInt != 60))
     {
-      if (AVCoreLog.isColorLevel()) {
-        AVCoreLog.i("onReceiveRequest", "uinType = " + i + ", extraUin = " + (String)localObject1);
+      if ((paramInt == 1) || (paramInt == 61)) {
+        paramIDavEventListener.onRequestVideo(i, str2, (String)localObject1, paramDavNativeEventParams.extraBuf, false, str1, j, k);
       }
-      break;
-      localObject1 = String.valueOf(paramDavNativeEventParams.extraParam1);
-      break;
-      if ((paramInt != 1) && (paramInt != 61)) {
-        break label234;
-      }
-      paramIDavEventListener.onRequestVideo(i, str2, (String)localObject1, paramDavNativeEventParams.extraBuf, false, str1, j, k);
-      break label234;
-      label549:
-      continue;
-      label552:
-      localObject1 = null;
+    }
+    else {
+      paramIDavEventListener.onRequestVideo(i, str2, (String)localObject1, paramDavNativeEventParams.extraBuf, true, str1, j, k);
+    }
+    if (AVCoreLog.isColorLevel())
+    {
+      paramIDavEventListener = new StringBuilder();
+      paramIDavEventListener.append("uinType = ");
+      paramIDavEventListener.append(i);
+      paramIDavEventListener.append(", extraUin = ");
+      paramIDavEventListener.append((String)localObject1);
+      paramIDavEventListener.append(", longFronUin = ");
+      paramIDavEventListener.append(paramDavNativeEventParams.fromUin);
+      AVCoreLog.i("onReceiveRequest", paramIDavEventListener.toString());
     }
   }
   
@@ -141,276 +133,362 @@ class DavEngineJni$NativeEventHandler
       return;
     }
     int i = paramMessage.what;
-    Object localObject1 = (DavNativeEventParams)paramMessage.obj;
-    if (localObject1 == null)
+    DavNativeEventParams localDavNativeEventParams = (DavNativeEventParams)paramMessage.obj;
+    if (localDavNativeEventParams == null)
     {
       AVCoreLog.printErrorLog("DAVEngineJni_NativeEvent", "p is null");
       return;
     }
-    Object localObject2 = ((DavNativeEventParams)localObject1).detail;
-    long l1 = ((DavNativeEventParams)localObject1).info;
-    String str = AVCoreUtil.asUnsignedDecimalString(((DavNativeEventParams)localObject1).fromUin);
-    byte[] arrayOfByte = ((DavNativeEventParams)localObject1).extraBuf;
-    if ((i != 16) && (i != 100) && (i != 117) && (i != 120) && (i != 124) && (i != 125)) {
-      AVCoreLog.printAllUserLog("DAVEngineJni_NativeEvent", "handleMessage eventId[" + i + "], info[" + l1 + "], fromUin[" + str + "]");
+    byte[] arrayOfByte1 = localDavNativeEventParams.detail;
+    long l1 = localDavNativeEventParams.info;
+    String str = AVCoreUtil.asUnsignedDecimalString(localDavNativeEventParams.fromUin);
+    byte[] arrayOfByte2 = localDavNativeEventParams.extraBuf;
+    Object localObject;
+    if ((i != 16) && (i != 100) && (i != 117) && (i != 120) && (i != 124) && (i != 125))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleMessage eventId[");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("], info[");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append("], fromUin[");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("]");
+      AVCoreLog.printAllUserLog("DAVEngineJni_NativeEvent", ((StringBuilder)localObject).toString());
     }
     AVNativeEventProcessor localAVNativeEventProcessor = (AVNativeEventProcessor)this.mCallback.get();
     int j;
-    if ((localAVNativeEventProcessor != null) && (localAVNativeEventProcessor.isMsgNeedExtraDeal(i)))
-    {
+    if ((localAVNativeEventProcessor != null) && (localAVNativeEventProcessor.isMsgNeedExtraDeal(i))) {
       j = 1;
-      label191:
-      if (j != 0) {
-        ((DavNativeEventParams)localObject1).elapsedRealtime = SystemClock.elapsedRealtime();
+    } else {
+      j = 0;
+    }
+    if (j != 0) {
+      localDavNativeEventParams.elapsedRealtime = SystemClock.elapsedRealtime();
+    }
+    if ((i != 1) && (i != 2))
+    {
+      if (i == 3) {
+        break label2045;
       }
-      switch (i)
-      {
-      case 5: 
-      case 11: 
-      case 12: 
-      case 15: 
-      case 17: 
-      case 23: 
-      case 27: 
-      case 28: 
-      case 29: 
-      case 30: 
-      case 31: 
-      case 32: 
-      case 33: 
-      case 34: 
-      case 35: 
-      case 36: 
-      case 37: 
-      case 38: 
-      case 39: 
-      case 40: 
-      case 41: 
-      case 42: 
-      case 43: 
-      case 44: 
-      case 45: 
-      case 46: 
-      case 47: 
-      case 48: 
-      case 49: 
-      case 50: 
-      case 51: 
-      case 52: 
-      case 53: 
-      case 54: 
-      case 55: 
-      case 56: 
-      case 57: 
-      case 58: 
-      case 59: 
-      case 70: 
-      case 71: 
-      case 77: 
-      case 78: 
-      case 79: 
-      case 80: 
-      case 81: 
-      case 82: 
-      case 84: 
-      case 85: 
-      case 86: 
-      case 87: 
-      case 88: 
-      case 89: 
-      case 90: 
-      case 93: 
-      case 94: 
-      case 96: 
-      case 97: 
-      case 98: 
-      case 99: 
-      case 101: 
-      case 102: 
-      case 103: 
-      case 104: 
-      case 109: 
-      case 111: 
-      case 112: 
-      case 115: 
-      case 117: 
-      case 120: 
-      case 121: 
-      case 122: 
-      default: 
-        if (localAVNativeEventProcessor != null) {
-          localAVNativeEventProcessor.handleMessage(paramMessage);
-        }
-        break;
+      if (i == 4) {
+        break label1808;
+      }
+      if (i == 13) {
+        break label1796;
+      }
+      if (i == 14) {
+        break label1784;
+      }
+      if (i == 91) {
+        break label1773;
+      }
+      if (i == 92) {
+        break label1762;
+      }
+      if (i == 113) {
+        break label1680;
+      }
+      if (i != 114) {
+        localObject = "";
       }
     }
-    label738:
-    while (j != 0)
+    else
     {
-      localAVNativeEventProcessor.handleMessage(paramMessage);
-      return;
-      j = 0;
-      break label191;
-      onReceiveRequest(i, (DavNativeEventParams)localObject1, localIDavEventListener);
-      continue;
-      localIDavEventListener.onAcceptedVideo(str);
-      continue;
-      i = (int)l1;
-      localObject2 = new StringBuilder().append("SdkEventId.EV_VOIP_CLOSED, Param0[").append(((DavNativeEventParams)localObject1).extraParam0).append("], Param1[").append(((DavNativeEventParams)localObject1).extraParam1).append("], Param2[").append(((DavNativeEventParams)localObject1).extraParam2).append("], Param3[").append(((DavNativeEventParams)localObject1).extraParam3).append("], Param4[").append(((DavNativeEventParams)localObject1).extraParam4).append("], Param5[").append(((DavNativeEventParams)localObject1).extraParam5).append("], extraBuf[");
-      if (((DavNativeEventParams)localObject1).extraBuf != null) {}
-      for (boolean bool = true;; bool = false)
+      int k;
+      switch (i)
       {
-        AVCoreLog.e("DAVEngineJni_NativeEvent", bool + "], reason[" + i + "]");
+      default: 
         switch (i)
         {
         default: 
-          localIDavEventListener.onCloseVideo(str, i, ((DavNativeEventParams)localObject1).extraParam0);
-          break label738;
+          switch (i)
+          {
+          default: 
+            switch (i)
+            {
+            default: 
+              switch (i)
+              {
+              default: 
+                switch (i)
+                {
+                default: 
+                  if (localAVNativeEventProcessor == null) {
+                    break;
+                  }
+                  localAVNativeEventProcessor.handleMessage(paramMessage);
+                  break;
+                case 108: 
+                  localIDavEventListener.onCancelVideoMode(str);
+                  break;
+                case 107: 
+                  localIDavEventListener.onRejectVideoMode(str);
+                  break;
+                case 106: 
+                  localIDavEventListener.onAcceptVideoMode(str);
+                  break;
+                case 105: 
+                  localIDavEventListener.onRequestVideoMode(str);
+                }
+                break;
+              case 76: 
+                localIDavEventListener.onPeerSwitchTerminalFail(str, (int)l1);
+                break;
+              case 75: 
+                localIDavEventListener.onSyncOtherTerminalChatStatus(str, (int)l1);
+                break;
+              case 74: 
+                i = (int)localDavNativeEventParams.extraParam0;
+                k = (int)localDavNativeEventParams.extraParam1;
+                long l2 = localDavNativeEventParams.extraParam5;
+                if (localDavNativeEventParams.extraBuf != null) {
+                  localObject = new String(localDavNativeEventParams.extraBuf);
+                }
+                localIDavEventListener.onSwitchTerminalSuccess(str, (int)l1, i, k, (String)localObject, l2);
+                break;
+              case 73: 
+                localIDavEventListener.onPeerSwitchTerminal(str, (int)localDavNativeEventParams.extraParam0, (int)localDavNativeEventParams.extraParam1, localDavNativeEventParams.extraParam5);
+                break;
+              case 72: 
+                i = (int)localDavNativeEventParams.extraParam0;
+                if (i != 1)
+                {
+                  if (i != 2) {
+                    i = 0;
+                  } else {
+                    i = 1;
+                  }
+                }
+                else {
+                  i = 2;
+                }
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append("SdkEventId.EV_VOIP_OTHER_TER_CHATING_STAUTS, type[");
+                ((StringBuilder)localObject).append(localDavNativeEventParams.extraParam0);
+                ((StringBuilder)localObject).append("]");
+                AVCoreLog.e("DAVEngineJni_NativeEvent", ((StringBuilder)localObject).toString());
+                localIDavEventListener.onOtherTerminalChatingStatus(str, localDavNativeEventParams.extraParam1, i);
+              }
+              break;
+            case 26: 
+              localIDavEventListener.onAnotherIsRing(str, false);
+              break;
+            case 25: 
+              localIDavEventListener.onAnotherIsRing(str, true);
+              break;
+            case 24: 
+              localIDavEventListener.onCloseVideo(str, 12, 0L);
+            }
+            break;
+          case 19: 
+          case 20: 
+          case 21: 
+          case 22: 
+            localIDavEventListener.onAVShiftEvent(i - 19, str);
+            break;
+          case 18: 
+            localIDavEventListener.onConfigSysDealDone(str);
+          }
+          break;
+        case 127: 
+          if ((int)localDavNativeEventParams.extraParam0 == 1) {
+            localIDavEventListener.onNotifyAIDenoiseTips(true);
+          } else {
+            localIDavEventListener.onNotifyAIDenoiseTips(false);
+          }
+          break;
+        case 126: 
+          localIDavEventListener.onSwitchMeeting(str, arrayOfByte1, l1);
+          break;
+        case 125: 
+          localIDavEventListener.onAudioVolumeChange(localDavNativeEventParams.extraParam0, 0L, 100L);
+          break;
+        case 124: 
+          localIDavEventListener.onNetworkQualityChanged((int)localDavNativeEventParams.extraParam0);
+          break;
+        case 123: 
+          localIDavEventListener.onAvReqAutoAccept(str);
+          break;
+        case 119: 
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("EM_SDK_EVENT_ID_CUSTOM_COMMAND, peerUin[");
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append("]");
+          AVCoreLog.e("NativeEventHandler", ((StringBuilder)localObject).toString());
+          localIDavEventListener.onSDKCustomCommand(str, localDavNativeEventParams.extraParam0, localDavNativeEventParams.extraParam1, localDavNativeEventParams.extraParam4);
+          break;
+        case 118: 
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("NETWORK_CHECK, peerUin[");
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append("]");
+          AVCoreLog.e("NativeEventHandler", ((StringBuilder)localObject).toString());
+          localIDavEventListener.checkNetStatus();
+          break;
+        case 116: 
+          localIDavEventListener.onFpsChange((int)l1);
+          break;
+        case 110: 
+          localIDavEventListener.receiveTransferMsg(str, (int)l1, localDavNativeEventParams.detail);
+          break;
+        case 100: 
+          localIDavEventListener.onNetLevel_S2C(str, l1, arrayOfByte1);
+          break;
+        case 95: 
+          localIDavEventListener.onPstnCallConnected(str, (int)l1, localDavNativeEventParams.extraParam0, localDavNativeEventParams.detail);
+          break;
+        case 83: 
+          localIDavEventListener.onSendC2CMsg(str);
+          localIDavEventListener.onDetectAudioDataIssue(2048);
+          break;
+        case 69: 
+          localIDavEventListener.onSwitchGroup(str, arrayOfByte1, l1);
+          break;
+        case 68: 
+          localIDavEventListener.onInviteReached(str, (int)l1, localDavNativeEventParams.extraParam0, localDavNativeEventParams.detail);
+          break;
+        case 67: 
+          localIDavEventListener.onNetworkInfo_S2C(str, arrayOfByte1, l1);
+          break;
+        case 66: 
+          localIDavEventListener.onNeedShowPeerVideo(str);
+          break;
+        case 65: 
+          localIDavEventListener.onMediaCameraNotify(arrayOfByte1, l1);
+          break;
+        case 64: 
+          localIDavEventListener.onRecvFirstAudioData(true);
+          break;
+        case 63: 
+          localIDavEventListener.onNotRecvAudioData(false);
+          break;
+        case 62: 
+          localIDavEventListener.onNotRecvAudioData(true);
+          break;
+        case 60: 
+        case 61: 
+          break;
+        case 16: 
+          if (l1 == 1L) {
+            localIDavEventListener.onNetworkMonitorInfo(str, arrayOfByte2, 1L);
+          } else {
+            localIDavEventListener.onNetworkMonitorInfo(str, arrayOfByte1, 0L);
+          }
+          break;
         }
-      }
-      localIDavEventListener.onNetworkDisconnect(str);
-      continue;
-      i = (int)((DavNativeEventParams)localObject1).extraParam0;
-      int k = (int)((DavNativeEventParams)localObject1).extraParam1;
-      l1 = ((DavNativeEventParams)localObject1).extraParam5;
-      if (((DavNativeEventParams)localObject1).extraBuf != null) {}
-      for (localObject1 = new String(((DavNativeEventParams)localObject1).extraBuf);; localObject1 = "")
-      {
-        localIDavEventListener.onChannelReady(str, i, k, (String)localObject1, l1);
+        break;
+      case 10: 
+        localIDavEventListener.onResumeVideo(str);
+        break;
+      case 9: 
+        localIDavEventListener.onResumeAudio(str);
+        break;
+      case 8: 
+        localIDavEventListener.onPauseVideo(str);
+        break;
+      case 7: 
+        localIDavEventListener.onPauseAudio(str);
+        break;
+      case 6: 
+        i = (int)localDavNativeEventParams.extraParam0;
+        k = (int)localDavNativeEventParams.extraParam1;
+        l1 = localDavNativeEventParams.extraParam5;
+        if (localDavNativeEventParams.extraBuf != null) {
+          localObject = new String(localDavNativeEventParams.extraBuf);
+        } else {
+          localObject = "";
+        }
+        localIDavEventListener.onChannelReady(str, i, k, (String)localObject, l1);
         break;
       }
-      if (l1 == 1L)
+    }
+    i = (int)l1;
+    localIDavEventListener.onGroundGlassWaitTimeChange(str, i);
+    if (AVCoreLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("EM_SDK_EVENT_ID_GROUND_GLASS_WAIT_TIME, nTime[");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("], fromUin[");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("]");
+      AVCoreLog.i("NativeEventHandler", ((StringBuilder)localObject).toString());
+      break label2066;
+      label1680:
+      i = (int)l1;
+      localIDavEventListener.onGroundGlassSwitch(str, i);
+      if (AVCoreLog.isColorLevel())
       {
-        localIDavEventListener.onNetworkMonitorInfo(str, arrayOfByte, 1L);
-      }
-      else
-      {
-        localIDavEventListener.onNetworkMonitorInfo(str, (byte[])localObject2, 0L);
-        continue;
-        localIDavEventListener.onAudioVolumeChange(((DavNativeEventParams)localObject1).extraParam0, 0L, 100L);
-        continue;
-        localIDavEventListener.onCloseVideo(str, 12, 0L);
-        continue;
-        localIDavEventListener.onPauseVideo(str);
-        continue;
-        localIDavEventListener.onResumeVideo(str);
-        continue;
-        localIDavEventListener.onPauseAudio(str);
-        continue;
-        localIDavEventListener.onResumeAudio(str);
-        continue;
-        localIDavEventListener.onAnotherHaveAccept(str);
-        continue;
-        localIDavEventListener.onAnotherHaveReject(str);
-        continue;
-        localIDavEventListener.onConfigSysDealDone(str);
-        continue;
-        localIDavEventListener.onAVShiftEvent(i - 19, str);
-        continue;
-        localIDavEventListener.onAnotherIsRing(str, true);
-        continue;
-        localIDavEventListener.onAnotherIsRing(str, false);
-        continue;
-        localIDavEventListener.onRequestVideoMode(str);
-        continue;
-        localIDavEventListener.onAcceptVideoMode(str);
-        continue;
-        localIDavEventListener.onRejectVideoMode(str);
-        continue;
-        localIDavEventListener.onCancelVideoMode(str);
-        continue;
-        localIDavEventListener.onNotRecvAudioData(true);
-        continue;
-        localIDavEventListener.onNotRecvAudioData(false);
-        continue;
-        localIDavEventListener.onMediaCameraNotify((byte[])localObject2, l1);
-        continue;
-        localIDavEventListener.onNeedShowPeerVideo(str);
-        continue;
-        localIDavEventListener.onPstnCallConnected(str, (int)l1, ((DavNativeEventParams)localObject1).extraParam0, ((DavNativeEventParams)localObject1).detail);
-        continue;
-        localIDavEventListener.onInviteReached(str, (int)l1, ((DavNativeEventParams)localObject1).extraParam0, ((DavNativeEventParams)localObject1).detail);
-        continue;
-        localIDavEventListener.onNetworkInfo_S2C(str, (byte[])localObject2, l1);
-        continue;
-        localIDavEventListener.onSwitchGroup(str, (byte[])localObject2, l1);
-        continue;
-        localIDavEventListener.onSwitchMeeting(str, (byte[])localObject2, l1);
-        continue;
-        switch ((int)((DavNativeEventParams)localObject1).extraParam0)
-        {
-        default: 
-          i = 0;
-        }
-        for (;;)
-        {
-          AVCoreLog.e("DAVEngineJni_NativeEvent", "SdkEventId.EV_VOIP_OTHER_TER_CHATING_STAUTS, type[" + ((DavNativeEventParams)localObject1).extraParam0 + "]");
-          localIDavEventListener.onOtherTerminalChatingStatus(str, ((DavNativeEventParams)localObject1).extraParam1, i);
-          break;
-          i = 2;
-          continue;
-          i = 1;
-        }
-        localIDavEventListener.onPeerSwitchTerminal(str, (int)((DavNativeEventParams)localObject1).extraParam0, (int)((DavNativeEventParams)localObject1).extraParam1, ((DavNativeEventParams)localObject1).extraParam5);
-        continue;
-        localIDavEventListener.onSyncOtherTerminalChatStatus(str, (int)l1);
-        continue;
-        i = (int)((DavNativeEventParams)localObject1).extraParam0;
-        k = (int)((DavNativeEventParams)localObject1).extraParam1;
-        long l2 = ((DavNativeEventParams)localObject1).extraParam5;
-        if (((DavNativeEventParams)localObject1).extraBuf != null) {}
-        for (localObject1 = new String(((DavNativeEventParams)localObject1).extraBuf);; localObject1 = "")
-        {
-          localIDavEventListener.onSwitchTerminalSuccess(str, (int)l1, i, k, (String)localObject1, l2);
-          break;
-        }
-        localIDavEventListener.onPeerSwitchTerminalFail(str, (int)l1);
-        continue;
-        localIDavEventListener.onSendC2CMsg(str);
-        localIDavEventListener.onDetectAudioDataIssue(2048);
-        continue;
-        localIDavEventListener.onDetectAudioDataIssue(3);
-        continue;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("EM_SDK_EVENT_ID_GROUND_GLASS_SWITCH, nSwitch[");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("], fromUin[");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("]");
+        AVCoreLog.i("NativeEventHandler", ((StringBuilder)localObject).toString());
+        break label2066;
+        label1762:
         localIDavEventListener.onDetectAudioDataIssue(4);
-        continue;
-        localIDavEventListener.onNetLevel_S2C(str, l1, (byte[])localObject2);
-        continue;
-        localIDavEventListener.receiveTransferMsg(str, (int)l1, ((DavNativeEventParams)localObject1).detail);
-        continue;
+        break label2066;
+        label1773:
+        localIDavEventListener.onDetectAudioDataIssue(3);
+        break label2066;
+        label1784:
+        localIDavEventListener.onAnotherHaveReject(str);
+        break label2066;
+        label1796:
+        localIDavEventListener.onAnotherHaveAccept(str);
+        break label2066;
+        label1808:
+        boolean bool = true;
         i = (int)l1;
-        localIDavEventListener.onGroundGlassSwitch(str, i);
-        if (AVCoreLog.isColorLevel())
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("SdkEventId.EV_VOIP_CLOSED, Param0[");
+        ((StringBuilder)localObject).append(localDavNativeEventParams.extraParam0);
+        ((StringBuilder)localObject).append("], Param1[");
+        ((StringBuilder)localObject).append(localDavNativeEventParams.extraParam1);
+        ((StringBuilder)localObject).append("], Param2[");
+        ((StringBuilder)localObject).append(localDavNativeEventParams.extraParam2);
+        ((StringBuilder)localObject).append("], Param3[");
+        ((StringBuilder)localObject).append(localDavNativeEventParams.extraParam3);
+        ((StringBuilder)localObject).append("], Param4[");
+        ((StringBuilder)localObject).append(localDavNativeEventParams.extraParam4);
+        ((StringBuilder)localObject).append("], Param5[");
+        ((StringBuilder)localObject).append(localDavNativeEventParams.extraParam5);
+        ((StringBuilder)localObject).append("], extraBuf[");
+        if (localDavNativeEventParams.extraBuf == null) {
+          bool = false;
+        }
+        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append("], reason[");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("]");
+        AVCoreLog.e("DAVEngineJni_NativeEvent", ((StringBuilder)localObject).toString());
+        if (i != 13)
         {
-          AVCoreLog.i("NativeEventHandler", "EM_SDK_EVENT_ID_GROUND_GLASS_SWITCH, nSwitch[" + i + "], fromUin[" + str + "]");
-          continue;
-          i = (int)l1;
-          localIDavEventListener.onGroundGlassWaitTimeChange(str, i);
-          if (AVCoreLog.isColorLevel())
-          {
-            AVCoreLog.i("NativeEventHandler", "EM_SDK_EVENT_ID_GROUND_GLASS_WAIT_TIME, nTime[" + i + "], fromUin[" + str + "]");
-            continue;
-            localIDavEventListener.onFpsChange((int)l1);
-            continue;
-            AVCoreLog.e("NativeEventHandler", "EM_SDK_EVENT_ID_CUSTOM_COMMAND, peerUin[" + str + "]");
-            localIDavEventListener.onSDKCustomCommand(str, ((DavNativeEventParams)localObject1).extraParam0, ((DavNativeEventParams)localObject1).extraParam1, ((DavNativeEventParams)localObject1).extraParam4);
-            continue;
-            AVCoreLog.e("NativeEventHandler", "NETWORK_CHECK, peerUin[" + str + "]");
-            localIDavEventListener.checkNetStatus();
-            continue;
-            localIDavEventListener.onRecvFirstAudioData(true);
-            continue;
-            localIDavEventListener.onNetworkQualityChanged((int)((DavNativeEventParams)localObject1).extraParam0);
-            continue;
-            localIDavEventListener.onAvReqAutoAccept(str);
-          }
+          localIDavEventListener.onCloseVideo(str, i, localDavNativeEventParams.extraParam0);
+        }
+        else
+        {
+          localIDavEventListener.onNetworkDisconnect(str);
+          break label2066;
+          label2045:
+          localIDavEventListener.onAcceptedVideo(str);
+          break label2066;
+          onReceiveRequest(i, localDavNativeEventParams, localIDavEventListener);
         }
       }
+    }
+    label2066:
+    if (j != 0) {
+      localAVNativeEventProcessor.handleMessage(paramMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.dav.DavEngineJni.NativeEventHandler
  * JD-Core Version:    0.7.0.1
  */

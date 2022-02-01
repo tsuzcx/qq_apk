@@ -26,7 +26,11 @@ public class DownloadModule
   
   public void onDownloadStart(String paramString)
   {
-    VasUpdateWrapper.getLog().i("VasUpdate_DownloadModule", "onDownloadStart itemId = " + paramString);
+    IVasLog localIVasLog = VasUpdateWrapper.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadStart itemId = ");
+    localStringBuilder.append(paramString);
+    localIVasLog.i("VasUpdate_DownloadModule", localStringBuilder.toString());
   }
   
   public void onProgress(String paramString, long paramLong1, long paramLong2, int paramInt)
@@ -50,7 +54,7 @@ public class DownloadModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.module.download.DownloadModule
  * JD-Core Version:    0.7.0.1
  */

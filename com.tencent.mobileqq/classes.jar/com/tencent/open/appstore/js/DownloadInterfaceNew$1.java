@@ -15,52 +15,63 @@ class DownloadInterfaceNew$1
   
   public void a(int paramInt, String paramString)
   {
-    LogUtility.e("DownloadInterfaceNew", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[innerQuery] [onException] errorCode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errorMsg=");
+    localStringBuilder.append(paramString);
+    LogUtility.e("DownloadInterfaceNew", localStringBuilder.toString());
   }
   
   public void a(List<DownloadInfo> paramList)
   {
-    LogUtility.c("DownloadInterfaceNew", "[innerQuery] onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[innerQuery] onResult = ");
+    ((StringBuilder)localObject).append(paramList.size());
+    LogUtility.c("DownloadInterfaceNew", ((StringBuilder)localObject).toString());
+    localObject = new JSONArray();
     int j = paramList.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      JSONObject localJSONObject = new JSONObject();
+      DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+      try
       {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localJSONObject.put("packagename", localDownloadInfo.e);
-          localJSONObject.put("versioncode", localDownloadInfo.b);
-          localJSONObject.put("url", localDownloadInfo.d);
-          localJSONObject.put("pro", localDownloadInfo.f);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
-          localJSONObject.put("download_from", localDownloadInfo.h);
-          localJSONObject.put("writecodestate", localDownloadInfo.j);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+        localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+        localJSONObject.put("packagename", localDownloadInfo.e);
+        localJSONObject.put("versioncode", localDownloadInfo.b);
+        localJSONObject.put("url", localDownloadInfo.d);
+        localJSONObject.put("pro", localDownloadInfo.f);
+        localJSONObject.put("state", localDownloadInfo.a());
+        localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+        localJSONObject.put("download_from", localDownloadInfo.h);
+        localJSONObject.put("writecodestate", localDownloadInfo.j);
       }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      ((JSONArray)localObject).put(localJSONObject);
+      i += 1;
     }
-    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
-    LogUtility.c("DownloadInterfaceNew", "[innerQuery] querySucess : " + paramList);
+    paramList = new StringBuilder();
+    paramList.append("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": ");
+    paramList.append(this.jdField_a_of_type_JavaLangString);
+    paramList.append(", \"r\" : 0, \"data\":");
+    paramList.append(((JSONArray)localObject).toString());
+    paramList.append("});}void(0);");
+    paramList = paramList.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[innerQuery] querySucess : ");
+    ((StringBuilder)localObject).append(paramList);
+    LogUtility.c("DownloadInterfaceNew", ((StringBuilder)localObject).toString());
     DownloadInterfaceNew.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDownloadInterfaceNew, paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.js.DownloadInterfaceNew.1
  * JD-Core Version:    0.7.0.1
  */

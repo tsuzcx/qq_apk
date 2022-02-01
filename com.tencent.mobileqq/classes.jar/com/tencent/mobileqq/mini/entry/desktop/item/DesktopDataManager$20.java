@@ -14,54 +14,58 @@ class DesktopDataManager$20
   
   public void run()
   {
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
-      QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
-    }
-    EntityManager localEntityManager;
-    do
+    Object localObject1 = MiniAppUtils.getAppInterface();
+    if (localObject1 == null)
     {
+      QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
       return;
-      localEntityManager = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localEntityManager == null);
+    }
+    EntityManager localEntityManager = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    if (localEntityManager != null) {}
     for (;;)
     {
       try
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localObject = null;
-        if (!(this.val$data instanceof DesktopAppInfo)) {
-          break label148;
-        }
-        localObject = new DeskTopAppEntity(((DesktopAppInfo)this.val$data).mMiniAppInfo);
-        if (localObject != null)
+        if ((this.val$data instanceof DesktopAppInfo))
         {
-          ((DeskTopAppEntity)localObject).setStatus(1000);
-          DesktopDataManager.access$3100(this.this$0, localEntityManager, (Entity)localObject);
-          localStringBuilder.append(((DeskTopAppEntity)localObject).name).append(", ");
+          localObject1 = new DeskTopAppEntity(((DesktopAppInfo)this.val$data).mMiniAppInfo);
         }
-        if (!QLog.isColorLevel()) {
-          break;
+        else
+        {
+          if (!(this.val$data instanceof DesktopSearchInfo)) {
+            break label182;
+          }
+          localObject1 = new DeskTopAppEntity(((DesktopSearchInfo)this.val$data).mAppInfo);
         }
-        QLog.d("DesktopDataManager", 2, new Object[] { "insertEntity : ", localStringBuilder.toString() });
-        return;
+        if (localObject1 != null)
+        {
+          ((DeskTopAppEntity)localObject1).setStatus(1000);
+          DesktopDataManager.access$3100(this.this$0, localEntityManager, (Entity)localObject1);
+          localStringBuilder.append(((DeskTopAppEntity)localObject1).name);
+          localStringBuilder.append(", ");
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("DesktopDataManager", 2, new Object[] { "insertEntity : ", localStringBuilder.toString() });
+          return;
+        }
       }
-      catch (Exception localException) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("DesktopDataManager", 2, "insertEntity exception: ", localException);
+        }
       }
-      QLog.d("DesktopDataManager", 2, "insertEntity exception: ", localException);
       return;
-      label148:
-      if ((this.val$data instanceof DesktopSearchInfo)) {
-        DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(((DesktopSearchInfo)this.val$data).mAppInfo);
-      }
+      label182:
+      Object localObject2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.20
  * JD-Core Version:    0.7.0.1
  */

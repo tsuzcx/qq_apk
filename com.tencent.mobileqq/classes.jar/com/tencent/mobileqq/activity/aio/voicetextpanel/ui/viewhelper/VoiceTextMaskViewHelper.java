@@ -6,10 +6,11 @@ import android.os.Build.VERSION;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseAIOContext;
+import com.tencent.mobileqq.activity.aio.panel.PanelManager;
 import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.mobileqq.ptt.temp.api.IVoice2TxtTmpApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
@@ -18,13 +19,13 @@ public class VoiceTextMaskViewHelper
   private int jdField_a_of_type_Int;
   protected ViewGroup a;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private BaseAIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext;
   private VoiceTextPanel jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel;
   private ViewGroup b;
   
   private void d()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getRight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getLeft(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext()) + this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.getBottom());
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getRight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getLeft(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext()) + ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getCustomTitleViewBottom(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext));
   }
   
   private void e()
@@ -60,8 +61,9 @@ public class VoiceTextMaskViewHelper
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a();
-    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getTopMask();
+    PopupWindow localPopupWindow = this.jdField_a_of_type_AndroidWidgetPopupWindow;
+    if ((localPopupWindow != null) && (localPopupWindow.isShowing()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceTextMaskViewHelper", 2, "dismissTopMaskPanel");
@@ -78,37 +80,41 @@ public class VoiceTextMaskViewHelper
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a();
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getTopMask();
     e();
-    if ((this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()))
+    PopupWindow localPopupWindow = this.jdField_a_of_type_AndroidWidgetPopupWindow;
+    if ((localPopupWindow != null) && (localPopupWindow.isShowing()))
     {
       if (paramInt2 != this.jdField_a_of_type_AndroidWidgetPopupWindow.getHeight()) {
         this.jdField_a_of_type_AndroidWidgetPopupWindow.update(0, 0, paramInt1, paramInt2);
       }
-      return;
     }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), paramInt1, paramInt2, this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel, 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.update(0, 0, paramInt1, paramInt2);
-    e();
+    else
+    {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).showTopMaskPanel(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext(), paramInt1, paramInt2, this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel, 0, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.update(0, 0, paramInt1, paramInt2);
+      e();
+    }
   }
   
-  public void a(ViewGroup paramViewGroup1, VoiceTextPanel paramVoiceTextPanel, ViewGroup paramViewGroup2, BaseChatPie paramBaseChatPie)
+  public void a(ViewGroup paramViewGroup1, VoiceTextPanel paramVoiceTextPanel, ViewGroup paramViewGroup2, BaseAIOContext paramBaseAIOContext)
   {
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup1;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel = paramVoiceTextPanel;
     this.b = paramViewGroup2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext = paramBaseAIOContext;
   }
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       d();
-    }
-    while (this.jdField_a_of_type_Int != 0) {
       return;
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getRight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getLeft(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext()) + this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a.getBottom());
+    if (this.jdField_a_of_type_Int == 0) {
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getRight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getLeft(), ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext()) + ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getCustomTitleViewBottom(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext));
+    }
   }
   
   public int b()
@@ -118,13 +124,15 @@ public class VoiceTextMaskViewHelper
   
   public void b()
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.f(false);
-    }
-    while (this.jdField_a_of_type_Int != 2) {
+    int i = this.jdField_a_of_type_Int;
+    if (i == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext.a().a(2, false);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.aF();
+    if (i == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseAIOContext.a().a(true);
+    }
   }
   
   public void c()
@@ -134,7 +142,7 @@ public class VoiceTextMaskViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextMaskViewHelper
  * JD-Core Version:    0.7.0.1
  */

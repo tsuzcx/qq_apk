@@ -19,45 +19,26 @@ class VideoShelfEngine$1
     switch (paramMessage.what)
     {
     default: 
-    case 100: 
-      do
-      {
-        return false;
-        VideoShelfEngine.access$002(this.this$0, new FilterContext());
-        VideoShelfEngine.access$000(this.this$0).usecurruntContext();
-      } while (!(VideoShelfEngine.access$100(this.this$0) instanceof PagVideoShelfProcessor));
-      VideoShelfEngine.access$100(this.this$0).setParam("PagVideoShelfProcessor_1", VideoShelfEngine.access$000(this.this$0));
       return false;
-    case 101: 
-      if (VideoShelfEngine.access$200(this.this$0)) {}
-      for (int i = 0; (VideoShelfEngine.access$100(this.this$0) == null) || (i > 0); i = VideoShelfEngine.access$100(this.this$0).isPrepareInit())
-      {
-        VideoShelfEngine.access$300(this.this$0).onError(-1, i, "file not exit or app version is low.");
-        VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(105);
-        return false;
-      }
-      VideoShelfEngine.access$300(this.this$0).onStartGenerate();
-      if (VideoShelfEngine.access$300(this.this$0) != null) {
-        VideoShelfEngine.access$300(this.this$0).onProgress(1);
-      }
-      this.this$0.init();
-      VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(102);
+    case 108: 
+      VideoShelfEngine.access$702(this.this$0, true);
+      VideoShelfEngine.access$900(this.this$0);
       return false;
-    case 102: 
-      if ((VideoShelfEngine.access$100(this.this$0) != null) && (VideoShelfEngine.access$100(this.this$0).getProgress() >= 100)) {
-        VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(105);
+    case 107: 
+      if (VideoShelfEngine.access$700(this.this$0)) {
+        VideoShelfEngine.access$300(this.this$0).onCancelCompleted();
+      } else {
+        VideoShelfEngine.access$300(this.this$0).onCompleted();
       }
-      if (VideoShelfEngine.access$500(this.this$0) < 0)
-      {
-        VideoShelfEngine.access$300(this.this$0).onError(-1, 0, "decode error");
-        VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(105);
-        return false;
-      }
-      VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(103);
+      VideoShelfEngine.access$702(this.this$0, false);
+      VideoShelfEngine.access$400(this.this$0).removeCallbacksAndMessages(null);
+      HandlerThreadManager.getInstance().destroyHandlerThread(HandlerThreadTag.VIDEO_SHELF_SAVE);
       return false;
-    case 103: 
-      VideoShelfEngine.access$600(this.this$0);
-      VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(104);
+    case 106: 
+      VideoShelfEngine.access$000(this.this$0).destroyEgl();
+      return false;
+    case 105: 
+      VideoShelfEngine.access$900(this.this$0);
       return false;
     case 104: 
       if (VideoShelfEngine.access$700(this.this$0))
@@ -73,33 +54,54 @@ class VideoShelfEngine$1
       }
       VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(105);
       return false;
-    case 105: 
-      VideoShelfEngine.access$900(this.this$0);
+    case 103: 
+      VideoShelfEngine.access$600(this.this$0);
+      VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(104);
       return false;
-    case 106: 
-      VideoShelfEngine.access$000(this.this$0).destroyEgl();
+    case 102: 
+      if ((VideoShelfEngine.access$100(this.this$0) != null) && (VideoShelfEngine.access$100(this.this$0).getProgress() >= 100)) {
+        VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(105);
+      }
+      if (VideoShelfEngine.access$500(this.this$0) < 0)
+      {
+        VideoShelfEngine.access$300(this.this$0).onError(-1, 0, "decode error");
+        VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(105);
+        return false;
+      }
+      VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(103);
       return false;
-    case 108: 
-      VideoShelfEngine.access$702(this.this$0, true);
-      VideoShelfEngine.access$900(this.this$0);
+    case 101: 
+      int i;
+      if (VideoShelfEngine.access$200(this.this$0)) {
+        i = 0;
+      } else {
+        i = VideoShelfEngine.access$100(this.this$0).isPrepareInit();
+      }
+      if ((VideoShelfEngine.access$100(this.this$0) != null) && (i <= 0))
+      {
+        VideoShelfEngine.access$300(this.this$0).onStartGenerate();
+        if (VideoShelfEngine.access$300(this.this$0) != null) {
+          VideoShelfEngine.access$300(this.this$0).onProgress(1);
+        }
+        this.this$0.init();
+        VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(102);
+        return false;
+      }
+      VideoShelfEngine.access$300(this.this$0).onError(-1, i, "file not exit or app version is low.");
+      VideoShelfEngine.access$400(this.this$0).sendEmptyMessage(105);
       return false;
     }
-    if (VideoShelfEngine.access$700(this.this$0)) {
-      VideoShelfEngine.access$300(this.this$0).onCancelCompleted();
+    VideoShelfEngine.access$002(this.this$0, new FilterContext());
+    VideoShelfEngine.access$000(this.this$0).usecurruntContext();
+    if ((VideoShelfEngine.access$100(this.this$0) instanceof PagVideoShelfProcessor)) {
+      VideoShelfEngine.access$100(this.this$0).setParam("PagVideoShelfProcessor_1", VideoShelfEngine.access$000(this.this$0));
     }
-    for (;;)
-    {
-      VideoShelfEngine.access$702(this.this$0, false);
-      VideoShelfEngine.access$400(this.this$0).removeCallbacksAndMessages(null);
-      HandlerThreadManager.getInstance().destroyHandlerThread(HandlerThreadTag.VIDEO_SHELF_SAVE);
-      return false;
-      VideoShelfEngine.access$300(this.this$0).onCompleted();
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.VideoShelfEngine.1
  * JD-Core Version:    0.7.0.1
  */

@@ -29,24 +29,30 @@ public final class PrivFrame
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (PrivFrame)paramObject;
-    } while ((Util.areEqual(this.owner, paramObject.owner)) && (Arrays.equals(this.privateData, paramObject.privateData)));
+      return (Util.areEqual(this.owner, paramObject.owner)) && (Arrays.equals(this.privateData, paramObject.privateData));
+    }
     return false;
   }
   
   public int hashCode()
   {
-    if (this.owner != null) {}
-    for (int i = this.owner.hashCode();; i = 0) {
-      return (i + 527) * 31 + Arrays.hashCode(this.privateData);
+    String str = this.owner;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    return (527 + i) * 31 + Arrays.hashCode(this.privateData);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -57,7 +63,7 @@ public final class PrivFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.PrivFrame
  * JD-Core Version:    0.7.0.1
  */

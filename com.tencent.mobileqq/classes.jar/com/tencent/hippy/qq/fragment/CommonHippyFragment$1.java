@@ -1,28 +1,23 @@
 package com.tencent.hippy.qq.fragment;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.hippy.qq.app.HippyQQPreloadEngine;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.VideoReport;
+import com.tencent.qqlive.module.videoreport.detection.DetectionPolicy;
 
 class CommonHippyFragment$1
-  implements View.OnClickListener
+  implements Runnable
 {
   CommonHippyFragment$1(CommonHippyFragment paramCommonHippyFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    CommonHippyFragment.access$000(this.this$0).hideNetworkErrorView();
-    if (this.this$0.mHippyQQEngine != null) {
-      this.this$0.mHippyQQEngine.destoryEngineImmediately();
+    if (!DetectionPolicy.isAbleToDetect(this.this$0.getActivity())) {
+      VideoReport.addToDetectionWhitelist(this.this$0.getActivity());
     }
-    this.this$0.loadHippy(CommonHippyFragment.access$100(this.this$0));
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.fragment.CommonHippyFragment.1
  * JD-Core Version:    0.7.0.1
  */

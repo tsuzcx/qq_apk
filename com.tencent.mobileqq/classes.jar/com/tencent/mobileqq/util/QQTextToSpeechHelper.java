@@ -10,9 +10,10 @@ public class QQTextToSpeechHelper
   
   public static void a()
   {
-    if (a != null)
+    TextToSpeech localTextToSpeech = a;
+    if (localTextToSpeech != null)
     {
-      a.stop();
+      localTextToSpeech.stop();
       a = null;
     }
   }
@@ -33,7 +34,7 @@ public class QQTextToSpeechHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQTextToSpeechHelper
  * JD-Core Version:    0.7.0.1
  */

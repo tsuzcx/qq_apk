@@ -14,17 +14,18 @@ class FolderRecommendTabFragment$FolderRecommendHeadItemView$1
     {
       FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.this$0).setVisibility(0);
       FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.this$0).setVisibility(0);
-    }
-    while ((this.a) || (FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.this$0).getVisibility() != 0)) {
       return;
     }
-    FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.this$0).setVisibility(8);
-    FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.this$0).setVisibility(8);
+    if ((!this.a) && (FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.this$0).getVisibility() == 0))
+    {
+      FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.this$0).setVisibility(8);
+      FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.this$0).setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView.1
  * JD-Core Version:    0.7.0.1
  */

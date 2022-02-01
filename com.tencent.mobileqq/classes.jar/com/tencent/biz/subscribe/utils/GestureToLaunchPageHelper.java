@@ -38,18 +38,18 @@ public class GestureToLaunchPageHelper
   
   public void a(View paramView)
   {
-    if (paramView == null) {}
-    do
-    {
+    if (paramView == null) {
       return;
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-    } while (this.jdField_a_of_type_JavaUtilArrayList.contains(paramView));
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramView)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
+    }
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return true;
   }
@@ -58,21 +58,20 @@ public class GestureToLaunchPageHelper
   {
     if (this.mTopLayout != null)
     {
-      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null) {
-        break label29;
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser != null)
+      {
+        SubscribeLaucher.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
+        return;
       }
-      SubscribeLaucher.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser);
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
+        SubscribeLaucher.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
+      }
     }
-    label29:
-    while (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) {
-      return;
-    }
-    SubscribeLaucher.a(this.mTopLayout.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.GestureToLaunchPageHelper
  * JD-Core Version:    0.7.0.1
  */

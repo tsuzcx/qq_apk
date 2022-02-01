@@ -26,176 +26,129 @@ final class SystemProduct$Companion$isYunOS$2
   public final boolean invoke()
   {
     Object localObject1 = (String)null;
-    String str4 = (String)null;
-    Object localObject2 = localObject1;
-    Object localObject3 = localObject1;
-    Object localObject4 = localObject1;
-    Object localObject5 = localObject1;
+    boolean bool2 = false;
+    Object localObject2;
     try
     {
-      Method localMethod = Class.forName("android.os.SystemProperties").getMethod("get", new Class[] { String.class });
-      localObject2 = localObject1;
-      localObject3 = localObject1;
-      localObject4 = localObject1;
-      localObject5 = localObject1;
-      Object localObject7 = localMethod.invoke(null, new Object[] { "ro.yunos.version" });
-      Object localObject6 = localObject7;
-      localObject2 = localObject1;
-      localObject3 = localObject1;
-      localObject4 = localObject1;
-      localObject5 = localObject1;
-      if (!(localObject7 instanceof String)) {
-        localObject6 = null;
+      Object localObject4 = Class.forName("android.os.SystemProperties").getMethod("get", new Class[] { String.class });
+      Object localObject3 = ((Method)localObject4).invoke(null, new Object[] { "ro.yunos.version" });
+      localObject2 = localObject3;
+      if (!(localObject3 instanceof String)) {
+        localObject2 = null;
       }
-      localObject2 = localObject1;
-      localObject3 = localObject1;
-      localObject4 = localObject1;
-      localObject5 = localObject1;
-      localObject1 = (String)localObject6;
-      localObject2 = localObject1;
-      localObject3 = localObject1;
-      localObject4 = localObject1;
-      localObject5 = localObject1;
-      localObject7 = localMethod.invoke(null, new Object[] { "java.vm.name" });
-      localObject6 = localObject7;
-      localObject2 = localObject1;
-      localObject3 = localObject1;
-      localObject4 = localObject1;
-      localObject5 = localObject1;
-      if (!(localObject7 instanceof String)) {
-        localObject6 = null;
-      }
-      localObject2 = localObject1;
-      localObject3 = localObject1;
-      localObject4 = localObject1;
-      localObject5 = localObject1;
-      localObject6 = (String)localObject6;
-      localObject2 = localObject6;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      for (;;)
+      localObject2 = (String)localObject2;
+      try
       {
-        localObject1 = localObject2;
-        Logger.INSTANCE.exception("QAPM_common_SystemProduct", (Throwable)localNoSuchMethodException);
-        localObject2 = str4;
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        localObject1 = localNoSuchMethodException;
-        Logger.INSTANCE.exception("QAPM_common_SystemProduct", (Throwable)localClassNotFoundException);
-        String str1 = str4;
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        localObject1 = localObject4;
-        Logger.INSTANCE.exception("QAPM_common_SystemProduct", (Throwable)localIllegalAccessException);
-        String str2 = str4;
-      }
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      for (;;)
-      {
-        localObject1 = localObject5;
-        Logger.INSTANCE.exception("QAPM_common_SystemProduct", (Throwable)localInvocationTargetException);
-        str3 = str4;
-      }
-      String str3 = str3.toLowerCase(localNoSuchMethodException);
-      Intrinsics.checkExpressionValueIsNotNull(str3, "(this as java.lang.String).toLowerCase(locale)");
-      if (str3 == null) {
-        break label476;
-      }
-      boolean bool = StringsKt.contains$default((CharSequence)str3, (CharSequence)"lemur", false, 2, null);
-      if (bool) {
-        break label537;
-      }
-      if (localObject1 == null) {
-        break label546;
-      }
-      localObject1 = (CharSequence)localObject1;
-      int j = ((CharSequence)localObject1).length() - 1;
-      int i = 0;
-      int k = 0;
-      label433:
-      if (k > j) {
-        break label506;
-      }
-      if (i != 0) {
-        break label482;
-      }
-      int m = k;
-      label445:
-      if (((CharSequence)localObject1).charAt(m) > ' ') {
-        break label488;
-      }
-      m = 1;
-      label462:
-      if (i != 0) {
-        break label501;
-      }
-      if (m != 0) {
-        break label494;
-      }
-      i = 1;
-      for (;;)
-      {
-        break label433;
-        label476:
-        bool = false;
-        break;
-        label482:
-        m = j;
-        break label445;
-        label488:
-        m = 0;
-        break label462;
-        label494:
-        k += 1;
-      }
-      label501:
-      if (m != 0) {
-        break label539;
-      }
-      label506:
-      localObject1 = ((CharSequence)localObject1).subSequence(k, j + 1).toString();
-      if (localObject1 == null) {
-        break label546;
-      }
-      label537:
-      label539:
-      label546:
-      for (i = ((String)localObject1).length();; i = 0)
-      {
-        if (i <= 0) {
-          break label551;
+        localObject4 = ((Method)localObject4).invoke(null, new Object[] { "java.vm.name" });
+        localObject3 = localObject4;
+        if (!(localObject4 instanceof String)) {
+          localObject3 = null;
         }
-        return true;
-        j -= 1;
-        break;
+        localObject3 = (String)localObject3;
+        localObject1 = localObject3;
       }
+      catch (InvocationTargetException localInvocationTargetException1) {}catch (IllegalAccessException localIllegalAccessException1) {}catch (ClassNotFoundException localClassNotFoundException1) {}catch (NoSuchMethodException localNoSuchMethodException1) {}
+      Logger.INSTANCE.exception("QAPM_common_SystemProduct", (Throwable)localNoSuchMethodException2);
     }
-    if (localObject2 != null)
+    catch (InvocationTargetException localInvocationTargetException2)
     {
-      localObject3 = Locale.US;
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "Locale.US");
-      if (localObject2 == null) {
+      localObject2 = localObject1;
+      Logger.INSTANCE.exception("QAPM_common_SystemProduct", (Throwable)localInvocationTargetException2);
+    }
+    catch (IllegalAccessException localIllegalAccessException2)
+    {
+      localObject2 = localObject1;
+      Logger.INSTANCE.exception("QAPM_common_SystemProduct", (Throwable)localIllegalAccessException2);
+    }
+    catch (ClassNotFoundException localClassNotFoundException2)
+    {
+      localObject2 = localObject1;
+      Logger.INSTANCE.exception("QAPM_common_SystemProduct", (Throwable)localClassNotFoundException2);
+    }
+    catch (NoSuchMethodException localNoSuchMethodException2)
+    {
+      localObject2 = localObject1;
+    }
+    if (localObject1 != null)
+    {
+      Locale localLocale = Locale.US;
+      Intrinsics.checkExpressionValueIsNotNull(localLocale, "Locale.US");
+      if (localObject1 != null)
+      {
+        localObject1 = ((String)localObject1).toLowerCase(localLocale);
+        Intrinsics.checkExpressionValueIsNotNull(localObject1, "(this as java.lang.String).toLowerCase(locale)");
+        if (localObject1 != null)
+        {
+          bool1 = StringsKt.contains$default((CharSequence)localObject1, (CharSequence)"lemur", false, 2, null);
+          break label297;
+        }
+      }
+      else
+      {
         throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
       }
     }
-    label551:
-    return false;
+    boolean bool1 = false;
+    label297:
+    if (!bool1)
+    {
+      if (localObject2 != null)
+      {
+        localObject1 = (CharSequence)localObject2;
+        i = ((CharSequence)localObject1).length() - 1;
+        int j = 0;
+        int k = 0;
+        while (j <= i)
+        {
+          int m;
+          if (k == 0) {
+            m = j;
+          } else {
+            m = i;
+          }
+          if (((CharSequence)localObject1).charAt(m) <= ' ') {
+            m = 1;
+          } else {
+            m = 0;
+          }
+          if (k == 0)
+          {
+            if (m == 0) {
+              k = 1;
+            } else {
+              j += 1;
+            }
+          }
+          else
+          {
+            if (m == 0) {
+              break;
+            }
+            i -= 1;
+          }
+        }
+        localObject1 = ((CharSequence)localObject1).subSequence(j, i + 1).toString();
+        if (localObject1 != null)
+        {
+          i = ((String)localObject1).length();
+          break label437;
+        }
+      }
+      int i = 0;
+      label437:
+      bool1 = bool2;
+      if (i <= 0) {}
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.SystemProduct.Companion.isYunOS.2
  * JD-Core Version:    0.7.0.1
  */

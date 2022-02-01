@@ -37,34 +37,24 @@ class TypefaceCompatApi24Impl
   
   static
   {
-    Object localObject2 = null;
+    Object localObject1 = null;
     try
     {
-      localClass = Class.forName("android.graphics.FontFamily");
-      localConstructor = localClass.getConstructor(new Class[0]);
-      Method localMethod2 = localClass.getMethod("addFontWeightStyle", new Class[] { ByteBuffer.class, Integer.TYPE, List.class, Integer.TYPE, Boolean.TYPE });
-      localMethod1 = Typeface.class.getMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(localClass, 1).getClass() });
-      localObject2 = localMethod2;
+      localClass2 = Class.forName("android.graphics.FontFamily");
+      Constructor localConstructor = localClass2.getConstructor(new Class[0]);
+      localObject2 = localClass2.getMethod("addFontWeightStyle", new Class[] { ByteBuffer.class, Integer.TYPE, List.class, Integer.TYPE, Boolean.TYPE });
+      Method localMethod = Typeface.class.getMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(localClass2, 1).getClass() });
+      localObject1 = localConstructor;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        Method localMethod1;
-        Log.e("TypefaceCompatApi24Impl", localClassNotFoundException.getClass().getName(), localClassNotFoundException);
-        Object localObject1 = null;
-        Constructor localConstructor = null;
-        Class localClass = null;
-      }
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      break label101;
-    }
-    sFontFamilyCtor = localConstructor;
-    sFontFamily = localClass;
-    sAddFontWeightStyle = localObject2;
-    sCreateFromFamiliesWithDefault = localMethod1;
+    catch (NoSuchMethodException localNoSuchMethodException) {}catch (ClassNotFoundException localClassNotFoundException) {}
+    Log.e("TypefaceCompatApi24Impl", localClassNotFoundException.getClass().getName(), localClassNotFoundException);
+    Class localClass2 = null;
+    Class localClass1 = localClass2;
+    Object localObject2 = localClass1;
+    sFontFamilyCtor = localObject1;
+    sFontFamily = localClass2;
+    sAddFontWeightStyle = (Method)localObject2;
+    sCreateFromFamiliesWithDefault = localClass1;
   }
   
   private static boolean addFontWeightStyle(Object paramObject, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -74,15 +64,8 @@ class TypefaceCompatApi24Impl
       paramBoolean = ((Boolean)sAddFontWeightStyle.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) })).booleanValue();
       return paramBoolean;
     }
-    catch (IllegalAccessException paramObject)
-    {
-      return false;
-    }
-    catch (InvocationTargetException paramObject)
-    {
-      label53:
-      break label53;
-    }
+    catch (IllegalAccessException|InvocationTargetException paramObject) {}
+    return false;
   }
   
   private static Typeface createFromFamiliesWithDefault(Object paramObject)
@@ -94,15 +77,8 @@ class TypefaceCompatApi24Impl
       paramObject = (Typeface)sCreateFromFamiliesWithDefault.invoke(null, new Object[] { localObject });
       return paramObject;
     }
-    catch (IllegalAccessException paramObject)
-    {
-      return null;
-    }
-    catch (InvocationTargetException paramObject)
-    {
-      label36:
-      break label36;
-    }
+    catch (IllegalAccessException|InvocationTargetException paramObject) {}
+    return null;
   }
   
   public static boolean isUsable()
@@ -120,19 +96,12 @@ class TypefaceCompatApi24Impl
       Object localObject = sFontFamilyCtor.newInstance(new Object[0]);
       return localObject;
     }
-    catch (InstantiationException localInstantiationException)
+    catch (IllegalAccessException|InstantiationException|InvocationTargetException localIllegalAccessException)
     {
-      return null;
+      label13:
+      break label13;
     }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      break label14;
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      label14:
-      break label14;
-    }
+    return null;
   }
   
   @Nullable
@@ -145,19 +114,18 @@ class TypefaceCompatApi24Impl
     paramFontFamilyFilesResourceEntry = paramFontFamilyFilesResourceEntry.getEntries();
     int i = paramFontFamilyFilesResourceEntry.length;
     paramInt = 0;
-    for (;;)
+    while (paramInt < i)
     {
-      if (paramInt >= i) {
-        break label88;
-      }
       Object localObject2 = paramFontFamilyFilesResourceEntry[paramInt];
       ByteBuffer localByteBuffer = TypefaceCompatUtil.copyToDirectBuffer(paramContext, paramResources, localObject2.getResourceId());
-      if ((localByteBuffer == null) || (!addFontWeightStyle(localObject1, localByteBuffer, localObject2.getTtcIndex(), localObject2.getWeight(), localObject2.isItalic()))) {
-        break;
+      if (localByteBuffer == null) {
+        return null;
+      }
+      if (!addFontWeightStyle(localObject1, localByteBuffer, localObject2.getTtcIndex(), localObject2.getWeight(), localObject2.isItalic())) {
+        return null;
       }
       paramInt += 1;
     }
-    label88:
     return createFromFamiliesWithDefault(localObject1);
   }
   
@@ -199,7 +167,7 @@ class TypefaceCompatApi24Impl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.graphics.TypefaceCompatApi24Impl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.avgame.gameroom.video;
 
 import com.tencent.avgame.gameroom.IGameRoomPresenter;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 
 class AVGameControlUIImpl$3$1
   implements Runnable
@@ -13,7 +13,7 @@ class AVGameControlUIImpl$3$1
     if (this.a.a.a()) {
       return;
     }
-    long l = AudioHelper.b();
+    long l = QQAudioHelper.b();
     this.a.a.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a("onAfterOpenCamera", l);
     AVGameControlUIImpl.b(this.a.a);
     this.a.a.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.c(true);
@@ -21,7 +21,7 @@ class AVGameControlUIImpl$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.1
  * JD-Core Version:    0.7.0.1
  */

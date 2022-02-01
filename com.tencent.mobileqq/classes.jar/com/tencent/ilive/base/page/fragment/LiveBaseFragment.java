@@ -15,8 +15,9 @@ public class LiveBaseFragment
   
   public void callFragmentAction(LiveFragmentAction paramLiveFragmentAction, Intent paramIntent)
   {
-    if (this.actionCallback != null) {
-      this.actionCallback.sendAction(paramLiveFragmentAction, paramIntent);
+    LiveBaseFragment.FragmentActionCallback localFragmentActionCallback = this.actionCallback;
+    if (localFragmentActionCallback != null) {
+      localFragmentActionCallback.sendAction(paramLiveFragmentAction, paramIntent);
     }
   }
   
@@ -55,7 +56,7 @@ public class LiveBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.base.page.fragment.LiveBaseFragment
  * JD-Core Version:    0.7.0.1
  */

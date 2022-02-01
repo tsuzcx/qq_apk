@@ -17,54 +17,43 @@ class MsgTabVideoPreloaderDataProvider$2
   public void a(List<MsgTabVideoData> paramList)
   {
     super.onNext(paramList);
-    ArrayList localArrayList;
-    int i;
-    MsgTabVideoData localMsgTabVideoData;
     if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null)
     {
-      localArrayList = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
       if ((paramList != null) && (!paramList.isEmpty()))
       {
         Collections.sort(paramList, new MsgTabVideoPreloaderDataProvider.2.1(this));
+        int i = 0;
         paramList = paramList.iterator();
-        i = 0;
-        if (paramList.hasNext())
+        while (paramList.hasNext())
         {
-          localMsgTabVideoData = (MsgTabVideoData)paramList.next();
-          if (i < MsgTabVideoPreloaderDataProvider.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider)) {
-            break label100;
+          MsgTabVideoData localMsgTabVideoData = (MsgTabVideoData)paramList.next();
+          if (i >= MsgTabVideoPreloaderDataProvider.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider)) {
+            break;
+          }
+          if ((localMsgTabVideoData != null) && (!localMsgTabVideoData.jdField_a_of_type_Boolean) && (localMsgTabVideoData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+          {
+            localArrayList.add(localMsgTabVideoData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+            i += 1;
           }
         }
       }
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, localArrayList);
-    }
-    else
-    {
-      return;
-    }
-    label100:
-    if ((localMsgTabVideoData != null) && (!localMsgTabVideoData.jdField_a_of_type_Boolean) && (localMsgTabVideoData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
-    {
-      localArrayList.add(localMsgTabVideoData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      i += 1;
-    }
-    for (;;)
-    {
-      break;
     }
   }
   
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramError);
+    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener;
+    if (localDataProviderListener != null) {
+      localDataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramError);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider.2
  * JD-Core Version:    0.7.0.1
  */

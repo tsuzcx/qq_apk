@@ -43,24 +43,57 @@ public class TaskInfo
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("pageId=" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\nmoduleId=" + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\npositionId=" + this.c);
-    localStringBuilder.append("\nvia=" + this.d);
-    localStringBuilder.append("\nurl=" + this.e);
-    localStringBuilder.append("\npackageName=" + this.f);
-    localStringBuilder.append("\niconUrl=" + this.g);
-    localStringBuilder.append("\nlength=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append("\nname=" + this.h);
-    localStringBuilder.append("\nprogress=" + this.jdField_a_of_type_Int);
-    localStringBuilder.append("\nstate=" + this.jdField_b_of_type_Int);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("pageId=");
+    localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\nmoduleId=");
+    localStringBuilder2.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\npositionId=");
+    localStringBuilder2.append(this.c);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\nvia=");
+    localStringBuilder2.append(this.d);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\nurl=");
+    localStringBuilder2.append(this.e);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\npackageName=");
+    localStringBuilder2.append(this.f);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\niconUrl=");
+    localStringBuilder2.append(this.g);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\nlength=");
+    localStringBuilder2.append(this.jdField_a_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\nname=");
+    localStringBuilder2.append(this.h);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\nprogress=");
+    localStringBuilder2.append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\nstate=");
+    localStringBuilder2.append(this.jdField_b_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.filedownload.TaskInfo
  * JD-Core Version:    0.7.0.1
  */

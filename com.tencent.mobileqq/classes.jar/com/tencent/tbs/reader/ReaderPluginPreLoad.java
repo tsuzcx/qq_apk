@@ -12,30 +12,32 @@ public class ReaderPluginPreLoad
     if (paramITbsReader != null) {
       this.mReaderPlugin = paramITbsReader.getReaderPlugin();
     }
-    if (this.mReaderPlugin != null) {
-      this.mReaderPlugin.initPlugin(paramContext);
+    paramITbsReader = this.mReaderPlugin;
+    if (paramITbsReader != null) {
+      paramITbsReader.initPlugin(paramContext);
     }
   }
   
   public void destroy()
   {
-    if (this.mReaderPlugin != null) {
-      this.mReaderPlugin.destroy();
+    ITbsReader.IReaderPlugin localIReaderPlugin = this.mReaderPlugin;
+    if (localIReaderPlugin != null) {
+      localIReaderPlugin.destroy();
     }
   }
   
   public int downloadPlugin(Context paramContext, String paramString)
   {
-    int i = 0;
-    if (this.mReaderPlugin != null) {
-      i = this.mReaderPlugin.downloadPlugin(paramContext, paramString);
+    ITbsReader.IReaderPlugin localIReaderPlugin = this.mReaderPlugin;
+    if (localIReaderPlugin != null) {
+      return localIReaderPlugin.downloadPlugin(paramContext, paramString);
     }
-    return i;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.reader.ReaderPluginPreLoad
  * JD-Core Version:    0.7.0.1
  */

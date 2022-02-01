@@ -13,26 +13,39 @@ class MiniAppSearchDataManager$3
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
+    Object localObject;
     if ((paramBoolean) && (paramJSONObject != null))
     {
       long l = paramJSONObject.optLong("retCode");
-      String str = paramJSONObject.optString("errMsg");
-      QLog.d("MiniAppSearchDataManager", 1, "sendGuessYouLikeRequest, retCode = " + l + ", errMsg = " + str);
-      if (l != 0L) {}
-      do
-      {
+      localObject = paramJSONObject.optString("errMsg");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendGuessYouLikeRequest, retCode = ");
+      localStringBuilder.append(l);
+      localStringBuilder.append(", errMsg = ");
+      localStringBuilder.append((String)localObject);
+      QLog.d("MiniAppSearchDataManager", 1, localStringBuilder.toString());
+      if (l != 0L) {
         return;
-        paramJSONObject = (STORE_APP_CLIENT.StGetGuessYouLikeRsp)paramJSONObject.opt("searchGuessYouLikeResponse");
-      } while (paramJSONObject == null);
-      MiniAppSearchDataManager.access$700(this.this$0, paramJSONObject.appList.get());
-      return;
+      }
+      paramJSONObject = (STORE_APP_CLIENT.StGetGuessYouLikeRsp)paramJSONObject.opt("searchGuessYouLikeResponse");
+      if (paramJSONObject != null) {
+        MiniAppSearchDataManager.access$700(this.this$0, paramJSONObject.appList.get());
+      }
     }
-    QLog.e("MiniAppSearchDataManager", 1, "sendGuessYouLikeRequest, isSuccess = " + paramBoolean + ", ret = " + paramJSONObject);
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendGuessYouLikeRequest, isSuccess = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", ret = ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.e("MiniAppSearchDataManager", 1, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager.3
  * JD-Core Version:    0.7.0.1
  */

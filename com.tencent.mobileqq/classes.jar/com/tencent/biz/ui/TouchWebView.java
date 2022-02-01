@@ -69,9 +69,10 @@ public class TouchWebView
     this.mGesture.onTouchEvent(paramMotionEvent);
     if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
     {
-      if ((this.l != null) && (this.overscrolling))
+      paramView = this.l;
+      if ((paramView != null) && (this.overscrolling))
       {
-        this.l.onBack();
+        paramView.onBack();
         this.overscrolling = false;
         this.overscroll = false;
       }
@@ -81,9 +82,10 @@ public class TouchWebView
     {
       if (paramMotionEvent.getAction() == 0)
       {
-        if (this.l != null)
+        paramMotionEvent = this.l;
+        if (paramMotionEvent != null)
         {
-          this.l.onBack();
+          paramMotionEvent.onBack();
           this.overscrolling = false;
           this.overscroll = false;
         }
@@ -106,40 +108,47 @@ public class TouchWebView
   
   public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
   {
-    if (paramInt2 <= 0) {}
-    for (this.overscroll = true;; this.overscroll = false)
-    {
-      super.super_onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
-      return;
+    if (paramInt2 <= 0) {
+      this.overscroll = true;
+    } else {
+      this.overscroll = false;
     }
+    super.super_onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
   }
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     super.super_onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.mTotalYoffset += paramInt2 - paramInt4;
-    if (this.t != null) {
-      this.t.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    Object localObject = this.t;
+    if (localObject != null) {
+      ((TouchWebView.OnScrollChangedListener)localObject).onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
     }
-    if (this.helper != null) {
-      this.helper.a(paramInt2);
+    localObject = this.helper;
+    if (localObject != null) {
+      ((WebViewTouchHelper)localObject).a(paramInt2);
     }
-    if (this.mScrollListenerForBiz != null) {
-      this.mScrollListenerForBiz.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    localObject = this.mScrollListenerForBiz;
+    if (localObject != null) {
+      ((TouchWebView.OnScrollChangedListener)localObject).onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
     }
-    if (this.mScrollChangedListenerArrayList != null)
+    localObject = this.mScrollChangedListenerArrayList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mScrollChangedListenerArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((TouchWebView.OnScrollChangedListener)localIterator.next()).onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((TouchWebView.OnScrollChangedListener)((Iterator)localObject).next()).onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
       }
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    if (((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) && (this.overscrolling)) {}
-    while ((this.helper != null) && (this.helper.a) && (paramMotionEvent.getAction() == 2)) {
+    if (((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) && (this.overscrolling)) {
+      return true;
+    }
+    paramView = this.helper;
+    if ((paramView != null) && (paramView.a) && (paramMotionEvent.getAction() == 2)) {
       return true;
     }
     return super.super_onTouchEvent(paramMotionEvent);
@@ -184,7 +193,7 @@ public class TouchWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.TouchWebView
  * JD-Core Version:    0.7.0.1
  */

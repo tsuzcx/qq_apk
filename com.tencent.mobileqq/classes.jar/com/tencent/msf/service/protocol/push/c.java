@@ -86,23 +86,27 @@ public final class c
     paramJceOutputStream.write(this.j, 9);
     paramJceOutputStream.write(this.k, 10);
     paramJceOutputStream.write(this.l, 11);
-    if (this.m != null) {
-      paramJceOutputStream.write(this.m, 12);
+    Object localObject = this.m;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 12);
     }
-    if (this.n != null) {
-      paramJceOutputStream.write(this.n, 13);
+    localObject = this.n;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.o != null) {
-      paramJceOutputStream.write(this.o, 14);
+    localObject = this.o;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.p != null) {
-      paramJceOutputStream.write(this.p, 15);
+    localObject = this.p;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.c
  * JD-Core Version:    0.7.0.1
  */

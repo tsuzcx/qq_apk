@@ -13,15 +13,21 @@ class ImportantMsgManager$6
   {
     long l = System.currentTimeMillis();
     ImportantMsgItem localImportantMsgItem = this.this$0.a(this.jdField_a_of_type_Long);
-    if (QLog.isColorLevel()) {
-      QLog.i("ImportantMsgManager", 2, "readEntity costTime" + (System.currentTimeMillis() - l) + " msgItem:" + localImportantMsgItem.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("readEntity costTime");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      localStringBuilder.append(" msgItem:");
+      localStringBuilder.append(localImportantMsgItem.toString());
+      QLog.i("ImportantMsgManager", 2, localStringBuilder.toString());
     }
     ThreadManager.getUIHandler().post(new ImportantMsgManager.6.1(this, localImportantMsgItem));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgManager.6
  * JD-Core Version:    0.7.0.1
  */

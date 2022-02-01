@@ -23,7 +23,7 @@ import mqq.os.MqqHandler;
 public class MonitorManager
   extends BroadcastReceiver
 {
-  private static MonitorManager jdField_a_of_type_CooperationVipManagerMonitorManager = null;
+  private static MonitorManager jdField_a_of_type_CooperationVipManagerMonitorManager;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private List<mobile_monitor_report.ExceptionReport> jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -41,15 +41,16 @@ public class MonitorManager
   
   public static MonitorManager a()
   {
-    if (jdField_a_of_type_CooperationVipManagerMonitorManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationVipManagerMonitorManager == null) {
-        jdField_a_of_type_CooperationVipManagerMonitorManager = new MonitorManager();
+    if (jdField_a_of_type_CooperationVipManagerMonitorManager == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationVipManagerMonitorManager == null) {
+          jdField_a_of_type_CooperationVipManagerMonitorManager = new MonitorManager();
+        }
       }
-      return jdField_a_of_type_CooperationVipManagerMonitorManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationVipManagerMonitorManager;
   }
   
   private void a()
@@ -68,34 +69,31 @@ public class MonitorManager
   
   private boolean a(boolean paramBoolean)
   {
-    boolean bool = false;
+    boolean bool = true;
     if (paramBoolean) {
       return true;
     }
     int i;
-    if (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int)
-    {
+    if (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int) {
       i = 1;
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long <= this.b) {
-        break label65;
-      }
-    }
-    label65:
-    for (int j = 1;; j = 0)
-    {
-      if (i == 0)
-      {
-        paramBoolean = bool;
-        if (j == 0) {}
-      }
-      else
-      {
-        paramBoolean = true;
-      }
-      return paramBoolean;
+    } else {
       i = 0;
-      break;
     }
+    int j;
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > this.b) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    paramBoolean = bool;
+    if (i == 0)
+    {
+      if (j != 0) {
+        return true;
+      }
+      paramBoolean = false;
+    }
+    return paramBoolean;
   }
   
   private void b()
@@ -165,8 +163,20 @@ public class MonitorManager
   
   public void a(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("MonitorManager", 1, new Object[] { "report trace " + paramInt1, " trace Num " + paramInt2 + " page desc " + paramString1 + " trace Msg " + paramString2 });
+    if (QLog.isColorLevel())
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("report trace ");
+      ((StringBuilder)localObject).append(paramInt1);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" trace Num ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" page desc ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" trace Msg ");
+      localStringBuilder.append(paramString2);
+      QLog.e("MonitorManager", 1, new Object[] { localObject, localStringBuilder.toString() });
     }
     ThreadManager.getSubThreadHandler().post(new MonitorManager.3(this, paramInt1, paramInt2, paramString1, paramString2));
   }
@@ -179,17 +189,19 @@ public class MonitorManager
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (TextUtils.isEmpty(paramContext)) {}
-    while ((!"com.tencent.plugin.state.change".equals(paramContext)) || (paramIntent.getIntExtra("key_plugin_state", 0) != 0)) {
+    if (TextUtils.isEmpty(paramContext)) {
       return;
     }
-    QLog.i("MonitorManager", 1, "[onReceive] bg action");
-    a();
+    if (("com.tencent.plugin.state.change".equals(paramContext)) && (paramIntent.getIntExtra("key_plugin_state", 0) == 0))
+    {
+      QLog.i("MonitorManager", 1, "[onReceive] bg action");
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.manager.MonitorManager
  * JD-Core Version:    0.7.0.1
  */

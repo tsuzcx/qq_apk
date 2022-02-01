@@ -28,12 +28,12 @@ public class GVideoUpdateUtil
   
   static void a(Context paramContext, String paramString1, String paramString2, String paramString3, GVideoUpdateUtil.OnGVideoUpdateListener paramOnGVideoUpdateListener)
   {
-    DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131695600, 2131695602, new GVideoUpdateUtil.2(paramContext), new GVideoUpdateUtil.3(paramOnGVideoUpdateListener, paramContext, paramString3)).show();
+    DialogUtil.a(paramContext, 230, paramString1, paramString2, 2131695611, 2131695613, new GVideoUpdateUtil.2(paramContext), new GVideoUpdateUtil.3(paramOnGVideoUpdateListener, paramContext, paramString3)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.GVideoUpdateUtil
  * JD-Core Version:    0.7.0.1
  */

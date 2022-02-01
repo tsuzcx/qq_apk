@@ -1,25 +1,26 @@
 package com.tencent.mobileqq.startup.step;
 
-import com.tencent.mobileqq.startup.director.StartupDirector;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.splashad.SplashADView.SplashADViewPresenter;
 
 final class SetSplash$4
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements SplashADView.SplashADViewPresenter
 {
-  SetSplash$4(StartupDirector paramStartupDirector) {}
+  SetSplash$4(ImageView paramImageView1, ImageView paramImageView2) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a()
   {
-    QLog.i("SplashMiniGameStarter", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
-    this.a.a(15, 1, 0L);
-    return false;
+    ImageView localImageView = this.a;
+    if ((localImageView != null) && (this.b != null))
+    {
+      localImageView.setVisibility(8);
+      this.b.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.4
  * JD-Core Version:    0.7.0.1
  */

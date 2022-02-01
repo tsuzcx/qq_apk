@@ -33,7 +33,11 @@ class Trampoline
   private boolean activate()
   {
     long l = getTrampolinePc();
-    Logger.d("Trampoline", "Writing direct jump entry " + Debug.addrHex(l) + " to origin entry: 0x" + Debug.addrHex(this.jumpToAddress));
+    StringBuilder localStringBuilder = new StringBuilder("Writing direct jump entry ");
+    localStringBuilder.append(Debug.addrHex(l));
+    localStringBuilder.append(" to origin entry: 0x");
+    localStringBuilder.append(Debug.addrHex(this.jumpToAddress));
+    Logger.d("Trampoline", localStringBuilder.toString());
     try
     {
       boolean bool = EpicNative.activateNative(this.jumpToAddress, l, this.shellCode.sizeOfDirectJump(), this.shellCode.sizeOfBridgeJump(), this.shellCode.createDirectJump(l));
@@ -49,26 +53,32 @@ class Trampoline
     }
     this.trampolineSize = getSize();
     this.trampolineAddress = EpicNative.map(this.trampolineSize);
-    Logger.d("Trampoline", "Trampoline alloc:" + this.trampolineSize + ", addr: 0x" + Long.toHexString(this.trampolineAddress));
+    StringBuilder localStringBuilder = new StringBuilder("Trampoline alloc:");
+    localStringBuilder.append(this.trampolineSize);
+    localStringBuilder.append(", addr: 0x");
+    localStringBuilder.append(Long.toHexString(this.trampolineAddress));
+    Logger.d("Trampoline", localStringBuilder.toString());
   }
   
   private byte[] create()
   {
-    Logger.d("Trampoline", "create trampoline." + this.segments);
-    byte[] arrayOfByte1 = new byte[getSize()];
-    Object localObject = this.segments.iterator();
+    Object localObject1 = new StringBuilder("create trampoline.");
+    ((StringBuilder)localObject1).append(this.segments);
+    Logger.d("Trampoline", ((StringBuilder)localObject1).toString());
+    localObject1 = new byte[getSize()];
+    Object localObject2 = this.segments.iterator();
     int i = 0;
     for (;;)
     {
-      if (!((Iterator)localObject).hasNext())
+      if (!((Iterator)localObject2).hasNext())
       {
-        localObject = this.shellCode.createCallOrigin(this.jumpToAddress, this.originalCode);
-        System.arraycopy(localObject, 0, arrayOfByte1, i, localObject.length);
-        return arrayOfByte1;
+        localObject2 = this.shellCode.createCallOrigin(this.jumpToAddress, this.originalCode);
+        System.arraycopy(localObject2, 0, localObject1, i, localObject2.length);
+        return localObject1;
       }
-      byte[] arrayOfByte2 = createTrampoline((ArtMethod)((Iterator)localObject).next());
-      int j = arrayOfByte2.length;
-      System.arraycopy(arrayOfByte2, 0, arrayOfByte1, i, j);
+      byte[] arrayOfByte = createTrampoline((ArtMethod)((Iterator)localObject2).next());
+      int j = arrayOfByte.length;
+      System.arraycopy(arrayOfByte, 0, localObject1, i, j);
       i += j;
     }
   }
@@ -77,27 +87,37 @@ class Trampoline
   {
     Object localObject = Epic.getMethodInfo(paramArtMethod.getAddress());
     Class localClass = ((Epic.MethodInfo)localObject).returnType;
-    if (Runtime.is64Bit()) {}
-    for (localObject = Entry64_2.getBridgeMethod((Epic.MethodInfo)localObject);; localObject = Entry.getBridgeMethod(localClass))
-    {
-      localObject = ArtMethod.of((Method)localObject);
-      long l1 = ((ArtMethod)localObject).getAddress();
-      long l2 = ((ArtMethod)localObject).getEntryPointFromQuickCompiledCode();
-      long l3 = paramArtMethod.getAddress();
-      long l4 = EpicNative.malloc(4);
-      Logger.d("Trampoline", "targetAddress:" + Debug.longHex(l1));
-      Logger.d("Trampoline", "sourceAddress:" + Debug.longHex(l3));
-      Logger.d("Trampoline", "targetEntry:" + Debug.longHex(l2));
-      Logger.d("Trampoline", "structAddress:" + Debug.longHex(l4));
-      return this.shellCode.createBridgeJump(l1, l2, l3, l4);
+    if (Runtime.is64Bit()) {
+      localObject = Entry64_2.getBridgeMethod((Epic.MethodInfo)localObject);
+    } else {
+      localObject = Entry.getBridgeMethod(localClass);
     }
+    localObject = ArtMethod.of((Method)localObject);
+    long l1 = ((ArtMethod)localObject).getAddress();
+    long l2 = ((ArtMethod)localObject).getEntryPointFromQuickCompiledCode();
+    long l3 = paramArtMethod.getAddress();
+    long l4 = EpicNative.malloc(4);
+    paramArtMethod = new StringBuilder("targetAddress:");
+    paramArtMethod.append(Debug.longHex(l1));
+    Logger.d("Trampoline", paramArtMethod.toString());
+    paramArtMethod = new StringBuilder("sourceAddress:");
+    paramArtMethod.append(Debug.longHex(l3));
+    Logger.d("Trampoline", paramArtMethod.toString());
+    paramArtMethod = new StringBuilder("targetEntry:");
+    paramArtMethod.append(Debug.longHex(l2));
+    Logger.d("Trampoline", paramArtMethod.toString());
+    paramArtMethod = new StringBuilder("structAddress:");
+    paramArtMethod.append(Debug.longHex(l4));
+    Logger.d("Trampoline", paramArtMethod.toString());
+    return this.shellCode.createBridgeJump(l1, l2, l3, l4);
   }
   
   private void free()
   {
-    if (this.trampolineAddress != 0L)
+    long l = this.trampolineAddress;
+    if (l != 0L)
     {
-      EpicNative.unmap(this.trampolineAddress, this.trampolineSize);
+      EpicNative.unmap(l, this.trampolineSize);
       this.trampolineAddress = 0L;
       this.trampolineSize = 0;
     }
@@ -108,7 +128,7 @@ class Trampoline
   
   private int getSize()
   {
-    return 0 + this.shellCode.sizeOfBridgeJump() * this.segments.size() + this.shellCode.sizeOfCallOrigin();
+    return this.shellCode.sizeOfBridgeJump() * this.segments.size() + 0 + this.shellCode.sizeOfCallOrigin();
   }
   
   private long getTrampolineAddress()
@@ -132,16 +152,23 @@ class Trampoline
   
   public boolean install(ArtMethod paramArtMethod)
   {
+    StringBuilder localStringBuilder;
     if (!this.segments.add(paramArtMethod))
     {
-      Logger.d("Trampoline", paramArtMethod + " is already hooked, return.");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArtMethod);
+      localStringBuilder.append(" is already hooked, return.");
+      Logger.d("Trampoline", localStringBuilder.toString());
       return true;
     }
     EpicNative.put(create(), getTrampolineAddress());
     int i = Epic.getQuickCompiledCodeSize(paramArtMethod);
     if (i < this.shellCode.sizeOfDirectJump())
     {
-      Logger.w("Trampoline", paramArtMethod.toGenericString() + " quickCompiledCodeSize: " + i);
+      localStringBuilder = new StringBuilder(String.valueOf(paramArtMethod.toGenericString()));
+      localStringBuilder.append(" quickCompiledCodeSize: ");
+      localStringBuilder.append(i);
+      Logger.w("Trampoline", localStringBuilder.toString());
       paramArtMethod.setEntryPointFromQuickCompiledCode(getTrampolinePc());
       return true;
     }
@@ -150,7 +177,7 @@ class Trampoline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.weishu.epic.art.Trampoline
  * JD-Core Version:    0.7.0.1
  */

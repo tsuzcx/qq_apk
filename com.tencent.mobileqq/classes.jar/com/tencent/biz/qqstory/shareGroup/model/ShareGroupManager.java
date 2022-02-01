@@ -71,52 +71,59 @@ public class ShareGroupManager
   
   public ShareGroupItem a(String paramString)
   {
-    AssertUtils.a(paramString);
+    AssertUtils.checkNotNull(paramString);
     Object localObject = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
     if (localObject != null)
     {
-      SLog.d("Q.qqstory.discover.ShareGroupManager", "read sg cc:%s, unionId:" + ((ShareGroupItem)localObject).headerUnionIdList, new Object[] { ((ShareGroupItem)localObject).shareGroupId });
+      paramString = new StringBuilder();
+      paramString.append("read sg cc:%s, unionId:");
+      paramString.append(((ShareGroupItem)localObject).headerUnionIdList);
+      SLog.d("Q.qqstory.discover.ShareGroupManager", paramString.toString(), new Object[] { ((ShareGroupItem)localObject).shareGroupId });
       return localObject;
     }
     localObject = a(a().a().createEntityManager(), ShareGroupEntry.class, ShareGroupEntry.class.getSimpleName(), ShareGroupEntry.getShareGroupSelectionNoArg(), new String[] { paramString });
-    if ((localObject == null) || (((List)localObject).size() == 0))
+    if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      SLog.d("Q.qqstory.discover.ShareGroupManager", "find not find share group:%s", new Object[] { paramString });
-      return null;
+      localObject = new ShareGroupItem((ShareGroupEntry)((List)localObject).get(0));
+      return (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString, (Copyable)localObject);
     }
-    localObject = new ShareGroupItem((ShareGroupEntry)((List)localObject).get(0));
-    return (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString, (Copyable)localObject);
+    SLog.d("Q.qqstory.discover.ShareGroupManager", "find not find share group:%s", new Object[] { paramString });
+    return null;
   }
   
   public void a() {}
   
   public void a(String paramString, int paramInt)
   {
-    VideoCollectionItem localVideoCollectionItem = ((MemoryManager)SuperManager.a(19)).a(paramString);
-    if (localVideoCollectionItem == null)
+    Object localObject1 = ((MemoryManager)SuperManager.a(19)).a(paramString);
+    if (localObject1 == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.qqstory.discover.ShareGroupManager", 2, "doGetFeedIdVidList: videoCollectionItem is null, feedId:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("doGetFeedIdVidList: videoCollectionItem is null, feedId:");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.e("Q.qqstory.discover.ShareGroupManager", 2, ((StringBuilder)localObject1).toString());
       }
       return;
     }
-    if (localVideoCollectionItem.collectionCount == localVideoCollectionItem.videoVidList.size())
+    if (((VideoCollectionItem)localObject1).collectionCount == ((VideoCollectionItem)localObject1).videoVidList.size())
     {
-      localObject = new ShareGroupManager.GetFeedIdVidListEvent();
-      ((ShareGroupManager.GetFeedIdVidListEvent)localObject).jdField_a_of_type_JavaLangString = paramString;
-      ((ShareGroupManager.GetFeedIdVidListEvent)localObject).jdField_a_of_type_JavaUtilArrayList = localVideoCollectionItem.videoVidList;
-      StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
+      localObject2 = new ShareGroupManager.GetFeedIdVidListEvent();
+      ((ShareGroupManager.GetFeedIdVidListEvent)localObject2).jdField_a_of_type_JavaLangString = paramString;
+      ((ShareGroupManager.GetFeedIdVidListEvent)localObject2).jdField_a_of_type_JavaUtilArrayList = ((VideoCollectionItem)localObject1).videoVidList;
+      StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject2);
       return;
     }
-    int i = localVideoCollectionItem.videoVidList.size();
-    Object localObject = new qqstory_service.ReqLoadMoreVideoList();
-    ((qqstory_service.ReqLoadMoreVideoList)localObject).feed_id.set(ByteStringMicro.copyFromUtf8(localVideoCollectionItem.feedId));
-    ((qqstory_service.ReqLoadMoreVideoList)localObject).from.set(paramInt);
-    ((qqstory_service.ReqLoadMoreVideoList)localObject).start_cookie.set(ByteStringMicro.copyFromUtf8(localVideoCollectionItem.nextCookie));
-    ((qqstory_service.ReqLoadMoreVideoList)localObject).video_count.set(10);
+    int i = ((VideoCollectionItem)localObject1).videoVidList.size();
+    Object localObject2 = new qqstory_service.ReqLoadMoreVideoList();
+    ((qqstory_service.ReqLoadMoreVideoList)localObject2).feed_id.set(ByteStringMicro.copyFromUtf8(((VideoCollectionItem)localObject1).feedId));
+    ((qqstory_service.ReqLoadMoreVideoList)localObject2).from.set(paramInt);
+    ((qqstory_service.ReqLoadMoreVideoList)localObject2).start_cookie.set(ByteStringMicro.copyFromUtf8(((VideoCollectionItem)localObject1).nextCookie));
+    ((qqstory_service.ReqLoadMoreVideoList)localObject2).video_count.set(10);
     Bundle localBundle = new Bundle();
-    localBundle.putString("extra_feedid", localVideoCollectionItem.feedId);
-    ProtoUtils.a(PlayModeUtils.a(), new ShareGroupManager.1(this, i, paramString, paramInt), ((qqstory_service.ReqLoadMoreVideoList)localObject).toByteArray(), StoryApi.a("StoryGroupSvc.datacard_load_more_video"), localBundle);
+    localBundle.putString("extra_feedid", ((VideoCollectionItem)localObject1).feedId);
+    ProtoUtils.a(PlayModeUtils.a(), new ShareGroupManager.1(this, i, paramString, paramInt), ((qqstory_service.ReqLoadMoreVideoList)localObject2).toByteArray(), StoryApi.a("StoryGroupSvc.datacard_load_more_video"), localBundle);
   }
   
   public void a(String paramString1, String paramString2)
@@ -144,7 +151,7 @@ public class ShareGroupManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager
  * JD-Core Version:    0.7.0.1
  */

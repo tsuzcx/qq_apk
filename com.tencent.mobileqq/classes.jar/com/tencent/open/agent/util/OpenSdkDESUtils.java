@@ -3,7 +3,6 @@ package com.tencent.open.agent.util;
 import android.os.Bundle;
 import android.util.Base64;
 import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
 import java.security.MessageDigest;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -13,78 +12,58 @@ public class OpenSdkDESUtils
 {
   public static String a(Bundle paramBundle)
   {
-    Object localObject6 = paramBundle.getString("status_os");
-    Object localObject5 = paramBundle.getString("status_machine");
-    Object localObject4 = paramBundle.getString("status_version");
-    Object localObject3 = paramBundle.getString("sdkv");
-    Object localObject2 = paramBundle.getString("client_id");
-    Object localObject1 = paramBundle.getString("need_pay");
-    String str = paramBundle.getString("pf");
-    QLog.d("OpenSdkDESUtils", 1, new Object[] { "os=", localObject6, ", machine=", localObject5, ", version=", localObject4, ", sdkv=", localObject3, ", appId=", localObject2, ", needPay=", localObject1, ", pf=", str });
+    String str7 = paramBundle.getString("status_os");
+    String str6 = paramBundle.getString("status_machine");
+    String str5 = paramBundle.getString("status_version");
+    String str4 = paramBundle.getString("sdkv");
+    String str3 = paramBundle.getString("client_id");
+    String str2 = paramBundle.getString("need_pay");
+    String str1 = paramBundle.getString("pf");
+    SSOLog.a("OpenSdkDESUtils", new Object[] { "os=", str7, ", machine=", str6, ", version=", str5, ", sdkv=", str4, ", appId=", str3, ", needPay=", str2, ", pf=", str1 });
     StringBuilder localStringBuilder = new StringBuilder();
-    paramBundle = (Bundle)localObject6;
-    if (localObject6 == null) {
+    paramBundle = str7;
+    if (str7 == null) {
       paramBundle = "";
     }
-    localObject6 = localStringBuilder.append(paramBundle);
-    if (localObject5 == null)
-    {
+    localStringBuilder.append(paramBundle);
+    paramBundle = str6;
+    if (str6 == null) {
       paramBundle = "";
-      localObject5 = ((StringBuilder)localObject6).append(paramBundle);
-      if (localObject4 != null) {
-        break label264;
-      }
-      paramBundle = "";
-      label191:
-      localObject4 = ((StringBuilder)localObject5).append(paramBundle);
-      if (localObject3 != null) {
-        break label270;
-      }
-      paramBundle = "";
-      label207:
-      localObject3 = ((StringBuilder)localObject4).append(paramBundle);
-      if (localObject2 != null) {
-        break label276;
-      }
-      paramBundle = "";
-      label222:
-      localObject2 = ((StringBuilder)localObject3).append(paramBundle);
-      if (localObject1 != null) {
-        break label281;
-      }
-      paramBundle = "";
-      label236:
-      localObject1 = ((StringBuilder)localObject2).append(paramBundle);
-      if (str != null) {
-        break label286;
-      }
     }
-    label264:
-    label270:
-    label276:
-    label281:
-    label286:
-    for (paramBundle = "";; paramBundle = str)
-    {
-      return paramBundle;
-      paramBundle = (Bundle)localObject5;
-      break;
-      paramBundle = (Bundle)localObject4;
-      break label191;
-      paramBundle = (Bundle)localObject3;
-      break label207;
-      paramBundle = (Bundle)localObject2;
-      break label222;
-      paramBundle = (Bundle)localObject1;
-      break label236;
+    localStringBuilder.append(paramBundle);
+    paramBundle = str5;
+    if (str5 == null) {
+      paramBundle = "";
     }
+    localStringBuilder.append(paramBundle);
+    paramBundle = str4;
+    if (str4 == null) {
+      paramBundle = "";
+    }
+    localStringBuilder.append(paramBundle);
+    paramBundle = str3;
+    if (str3 == null) {
+      paramBundle = "";
+    }
+    localStringBuilder.append(paramBundle);
+    paramBundle = str2;
+    if (str2 == null) {
+      paramBundle = "";
+    }
+    localStringBuilder.append(paramBundle);
+    paramBundle = str1;
+    if (str1 == null) {
+      paramBundle = "";
+    }
+    localStringBuilder.append(paramBundle);
+    return localStringBuilder.toString();
   }
   
   public static String a(String paramString1, String paramString2)
   {
     if (paramString1 == null)
     {
-      QLog.e("OpenSdkDESUtils", 1, "getDecryptPkgName decryptStr==null !!!!!!");
+      SSOLog.b("OpenSdkDESUtils", new Object[] { "getDecryptPkgName decryptStr==null !!!!!!" });
       return "";
     }
     try
@@ -92,7 +71,7 @@ public class OpenSdkDESUtils
       paramString2 = a(paramString2);
       if (paramString2 == null)
       {
-        QLog.e("OpenSdkDESUtils", 1, "getDecryptPkgName shaBytes==null !!!!!!");
+        SSOLog.b("OpenSdkDESUtils", new Object[] { "getDecryptPkgName shaBytes==null !!!!!!" });
         return "";
       }
       byte[] arrayOfByte = new byte[8];
@@ -109,7 +88,7 @@ public class OpenSdkDESUtils
     }
     catch (Exception paramString1)
     {
-      QLog.e("OpenSdkDESUtils", 1, "getDecryptPkgName", paramString1);
+      SSOLog.c("OpenSdkDESUtils", "getDecryptPkgName", paramString1);
     }
     return "";
   }
@@ -128,7 +107,7 @@ public class OpenSdkDESUtils
     }
     catch (Exception paramString1)
     {
-      QLog.e("OpenSdkDESUtils", 1, "decryptAES", paramString1);
+      SSOLog.c("OpenSdkDESUtils", "decryptAES", paramString1);
     }
     return null;
   }
@@ -144,14 +123,14 @@ public class OpenSdkDESUtils
     }
     catch (Exception paramString)
     {
-      QLog.e("OpenSdkDESUtils", 1, "encryptSha", paramString);
+      SSOLog.c("OpenSdkDESUtils", "encryptSha", paramString);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.util.OpenSdkDESUtils
  * JD-Core Version:    0.7.0.1
  */

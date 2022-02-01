@@ -45,18 +45,17 @@ public final class AthenaFileUploadRunnable
     Object localObject2 = (Iterable)this.filePaths;
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
-    label80:
     while (((Iterator)localObject2).hasNext())
     {
       Object localObject3 = ((Iterator)localObject2).next();
-      if (((CharSequence)localObject3).length() > 0) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label80;
-        }
+      int i;
+      if (((CharSequence)localObject3).length() > 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0) {
         ((Collection)localObject1).add(localObject3);
-        break;
       }
     }
     localObject1 = ((Iterable)localObject1).iterator();
@@ -71,17 +70,31 @@ public final class AthenaFileUploadRunnable
   
   private final String generateEndStream()
   {
-    this.buffer.delete(0, this.buffer.length());
-    this.buffer.append("--").append("27182818284590452353602874713526").append("\r\n");
-    String str = this.buffer.toString();
-    Intrinsics.checkExpressionValueIsNotNull(str, "buffer.toString()");
-    return str;
+    Object localObject = this.buffer;
+    ((StringBuffer)localObject).delete(0, ((StringBuffer)localObject).length());
+    localObject = this.buffer;
+    ((StringBuffer)localObject).append("--");
+    ((StringBuffer)localObject).append("27182818284590452353602874713526");
+    ((StringBuffer)localObject).append("\r\n");
+    localObject = this.buffer.toString();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "buffer.toString()");
+    return localObject;
   }
   
   private final String generateFileStream(String paramString)
   {
-    this.buffer.delete(0, this.buffer.length());
-    this.buffer.append("--").append("27182818284590452353602874713526").append("\r\n").append("Content-Disposition: form-data; name=\"files\"; filename=\"").append(paramString).append("\"").append("\r\n").append("Content-Type: application/octet-stream").append("\r\n\r\n");
+    StringBuffer localStringBuffer = this.buffer;
+    localStringBuffer.delete(0, localStringBuffer.length());
+    localStringBuffer = this.buffer;
+    localStringBuffer.append("--");
+    localStringBuffer.append("27182818284590452353602874713526");
+    localStringBuffer.append("\r\n");
+    localStringBuffer.append("Content-Disposition: form-data; name=\"files\"; filename=\"");
+    localStringBuffer.append(paramString);
+    localStringBuffer.append("\"");
+    localStringBuffer.append("\r\n");
+    localStringBuffer.append("Content-Type: application/octet-stream");
+    localStringBuffer.append("\r\n\r\n");
     paramString = this.buffer.toString();
     Intrinsics.checkExpressionValueIsNotNull(paramString, "buffer.toString()");
     return paramString;
@@ -89,11 +102,18 @@ public final class AthenaFileUploadRunnable
   
   private final String generateJsonStream()
   {
-    this.buffer.delete(0, this.buffer.length());
-    this.buffer.append("--").append("27182818284590452353602874713526").append("\r\n").append("Content-Disposition: form-data; name=\"_json\"\r\n\r\n").append(this.jsonObject.toString()).append("\r\n");
-    String str = this.buffer.toString();
-    Intrinsics.checkExpressionValueIsNotNull(str, "buffer.toString()");
-    return str;
+    Object localObject = this.buffer;
+    ((StringBuffer)localObject).delete(0, ((StringBuffer)localObject).length());
+    localObject = this.buffer;
+    ((StringBuffer)localObject).append("--");
+    ((StringBuffer)localObject).append("27182818284590452353602874713526");
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Content-Disposition: form-data; name=\"_json\"\r\n\r\n");
+    ((StringBuffer)localObject).append(this.jsonObject.toString());
+    ((StringBuffer)localObject).append("\r\n");
+    localObject = this.buffer.toString();
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "buffer.toString()");
+    return localObject;
   }
   
   private final ArrayList<File> getUploadGzipFiles()
@@ -103,44 +123,45 @@ public final class AthenaFileUploadRunnable
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
     Object localObject3;
-    label140:
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = ((Iterator)localObject2).next();
       Object localObject4 = (String)localObject3;
-      int i;
-      if (((CharSequence)localObject4).length() == 0)
-      {
+      int i = ((CharSequence)localObject4).length();
+      int j = 0;
+      if (i == 0) {
         i = 1;
-        label78:
-        if (i == 0) {
-          break label105;
-        }
+      } else {
         i = 0;
       }
-      for (;;)
+      if (i != 0)
       {
-        if (i == 0) {
-          break label140;
-        }
-        ((Collection)localObject1).add(localObject3);
-        break;
-        i = 0;
-        break label78;
-        label105:
+        i = j;
+      }
+      else
+      {
         localObject4 = new File((String)localObject4);
-        if ((((File)localObject4).isFile()) && (((File)localObject4).canRead())) {
-          i = 1;
-        } else {
-          i = 0;
+        i = j;
+        if (((File)localObject4).isFile())
+        {
+          i = j;
+          if (((File)localObject4).canRead()) {
+            i = 1;
+          }
         }
+      }
+      if (i != 0) {
+        ((Collection)localObject1).add(localObject3);
       }
     }
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
-      localObject3 = (String)localObject2 + ".gz";
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject2);
+      ((StringBuilder)localObject3).append(".gz");
+      localObject3 = ((StringBuilder)localObject3).toString();
       if (FileUtil.Companion.zipFiles(CollectionsKt.listOf(localObject2), (String)localObject3, true)) {
         localArrayList.add(new File((String)localObject3));
       }
@@ -165,16 +186,16 @@ public final class AthenaFileUploadRunnable
     // Byte code:
     //   0: aload_0
     //   1: invokespecial 224	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:getUploadGzipFiles	()Ljava/util/ArrayList;
-    //   4: astore 6
-    //   6: aload 6
+    //   4: astore 7
+    //   6: aload 7
     //   8: invokevirtual 227	java/util/ArrayList:isEmpty	()Z
     //   11: ifeq +25 -> 36
     //   14: aload_0
     //   15: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   18: astore_1
-    //   19: aload_1
+    //   18: astore_2
+    //   19: aload_2
     //   20: ifnull +15 -> 35
-    //   23: aload_1
+    //   23: aload_2
     //   24: sipush 601
     //   27: ldc 229
     //   29: iconst_0
@@ -183,618 +204,647 @@ public final class AthenaFileUploadRunnable
     //   36: new 237	java/util/HashMap
     //   39: dup
     //   40: invokespecial 238	java/util/HashMap:<init>	()V
-    //   43: astore_1
-    //   44: aload_1
+    //   43: astore_2
+    //   44: aload_2
     //   45: checkcast 240	java/util/Map
     //   48: ldc 242
     //   50: ldc 244
     //   52: invokeinterface 248 3 0
     //   57: pop
     //   58: aload_0
-    //   59: aload_1
+    //   59: aload_2
     //   60: invokevirtual 252	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:connectionBuilder	(Ljava/util/HashMap;)Ljava/net/HttpURLConnection;
-    //   63: astore 5
-    //   65: aload 5
-    //   67: ifnull +489 -> 556
+    //   63: astore 6
+    //   65: aload 6
+    //   67: ifnull +940 -> 1007
     //   70: new 254	java/io/DataOutputStream
     //   73: dup
-    //   74: aload 5
+    //   74: aload 6
     //   76: invokevirtual 260	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   79: invokespecial 263	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   82: checkcast 265	java/io/Closeable
-    //   85: astore 7
+    //   85: astore 8
     //   87: aconst_null
     //   88: checkcast 222	java/lang/Throwable
     //   91: astore 4
     //   93: aload 4
-    //   95: astore_1
-    //   96: aload 7
+    //   95: astore_2
+    //   96: aload 8
     //   98: checkcast 254	java/io/DataOutputStream
-    //   101: astore_2
-    //   102: aload 4
-    //   104: astore_1
-    //   105: aload_2
-    //   106: aload_0
-    //   107: invokespecial 267	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:generateJsonStream	()Ljava/lang/String;
-    //   110: invokevirtual 270	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   113: aload 4
-    //   115: astore_1
-    //   116: aload 6
-    //   118: checkcast 99	java/lang/Iterable
-    //   121: invokeinterface 109 1 0
-    //   126: astore 9
-    //   128: aload 4
-    //   130: astore_1
-    //   131: aload 9
-    //   133: invokeinterface 115 1 0
-    //   138: ifeq +252 -> 390
-    //   141: aload 4
-    //   143: astore_1
-    //   144: aload 9
-    //   146: invokeinterface 119 1 0
-    //   151: checkcast 135	java/io/File
-    //   154: astore_3
-    //   155: aload 4
-    //   157: astore_1
-    //   158: aload_3
-    //   159: invokevirtual 273	java/io/File:getName	()Ljava/lang/String;
-    //   162: astore 8
-    //   164: aload 4
-    //   166: astore_1
-    //   167: aload 8
-    //   169: ldc_w 275
-    //   172: invokestatic 168	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   175: aload 4
-    //   177: astore_1
-    //   178: aload_2
-    //   179: aload_0
-    //   180: aload 8
-    //   182: invokespecial 277	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:generateFileStream	(Ljava/lang/String;)Ljava/lang/String;
-    //   185: invokevirtual 270	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   188: aload 4
-    //   190: astore_1
-    //   191: new 279	java/io/FileInputStream
-    //   194: dup
-    //   195: aload_3
-    //   196: invokespecial 282	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   199: checkcast 265	java/io/Closeable
-    //   202: astore 8
-    //   204: aload 4
-    //   206: astore_1
-    //   207: aconst_null
-    //   208: checkcast 222	java/lang/Throwable
-    //   211: astore_3
-    //   212: aload 8
-    //   214: checkcast 279	java/io/FileInputStream
-    //   217: astore_1
-    //   218: aload_1
-    //   219: checkcast 284	java/io/InputStream
-    //   222: aload_2
-    //   223: checkcast 286	java/io/OutputStream
-    //   226: aload_1
-    //   227: invokevirtual 289	java/io/FileInputStream:available	()I
-    //   230: ldc_w 290
-    //   233: invokestatic 296	java/lang/Math:min	(II)I
-    //   236: invokestatic 302	kotlin/io/ByteStreamsKt:copyTo	(Ljava/io/InputStream;Ljava/io/OutputStream;I)J
-    //   239: pop2
-    //   240: aload 4
-    //   242: astore_1
-    //   243: aload 8
-    //   245: aload_3
-    //   246: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   249: aload 4
-    //   251: astore_1
-    //   252: aload_2
-    //   253: ldc 160
-    //   255: invokevirtual 270	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   258: goto -130 -> 128
-    //   261: astore_3
-    //   262: aload_3
-    //   263: athrow
-    //   264: astore_2
-    //   265: aload 4
-    //   267: astore_1
-    //   268: aload 8
-    //   270: aload_3
-    //   271: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   274: aload 4
-    //   276: astore_1
-    //   277: aload_2
-    //   278: athrow
+    //   101: astore 10
+    //   103: aload 4
+    //   105: astore_2
+    //   106: aload 10
+    //   108: aload_0
+    //   109: invokespecial 267	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:generateJsonStream	()Ljava/lang/String;
+    //   112: invokevirtual 270	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   115: aload 4
+    //   117: astore_2
+    //   118: aload 7
+    //   120: checkcast 99	java/lang/Iterable
+    //   123: invokeinterface 109 1 0
+    //   128: astore 11
+    //   130: aload 4
+    //   132: astore_2
+    //   133: aload 11
+    //   135: invokeinterface 115 1 0
+    //   140: ifeq +159 -> 299
+    //   143: aload 4
+    //   145: astore_2
+    //   146: aload 11
+    //   148: invokeinterface 119 1 0
+    //   153: checkcast 135	java/io/File
+    //   156: astore_3
+    //   157: aload 4
+    //   159: astore_2
+    //   160: aload_3
+    //   161: invokevirtual 273	java/io/File:getName	()Ljava/lang/String;
+    //   164: astore 5
+    //   166: aload 4
+    //   168: astore_2
+    //   169: aload 5
+    //   171: ldc_w 275
+    //   174: invokestatic 168	kotlin/jvm/internal/Intrinsics:checkExpressionValueIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   177: aload 4
+    //   179: astore_2
+    //   180: aload 10
+    //   182: aload_0
+    //   183: aload 5
+    //   185: invokespecial 277	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:generateFileStream	(Ljava/lang/String;)Ljava/lang/String;
+    //   188: invokevirtual 270	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   191: aload 4
+    //   193: astore_2
+    //   194: new 279	java/io/FileInputStream
+    //   197: dup
+    //   198: aload_3
+    //   199: invokespecial 282	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   202: checkcast 265	java/io/Closeable
+    //   205: astore 9
+    //   207: aload 4
+    //   209: astore_2
+    //   210: aconst_null
+    //   211: checkcast 222	java/lang/Throwable
+    //   214: astore 5
+    //   216: aload 5
+    //   218: astore_3
+    //   219: aload 9
+    //   221: checkcast 279	java/io/FileInputStream
+    //   224: astore_2
+    //   225: aload 5
+    //   227: astore_3
+    //   228: aload_2
+    //   229: checkcast 284	java/io/InputStream
+    //   232: aload 10
+    //   234: checkcast 286	java/io/OutputStream
+    //   237: aload_2
+    //   238: invokevirtual 289	java/io/FileInputStream:available	()I
+    //   241: ldc_w 290
+    //   244: invokestatic 296	java/lang/Math:min	(II)I
+    //   247: invokestatic 302	kotlin/io/ByteStreamsKt:copyTo	(Ljava/io/InputStream;Ljava/io/OutputStream;I)J
+    //   250: pop2
+    //   251: aload 4
+    //   253: astore_2
+    //   254: aload 9
+    //   256: aload 5
+    //   258: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   261: aload 4
+    //   263: astore_2
+    //   264: aload 10
+    //   266: ldc 160
+    //   268: invokevirtual 270	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   271: goto -141 -> 130
+    //   274: astore 5
+    //   276: goto +8 -> 284
     //   279: astore_2
     //   280: aload_2
-    //   281: astore_1
+    //   281: astore_3
     //   282: aload_2
     //   283: athrow
-    //   284: astore_2
-    //   285: aload 7
-    //   287: aload_1
-    //   288: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   291: aload_2
-    //   292: athrow
-    //   293: astore_1
-    //   294: getstatic 314	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   297: iconst_2
-    //   298: anewarray 121	java/lang/String
-    //   301: dup
-    //   302: iconst_0
-    //   303: ldc 54
-    //   305: aastore
-    //   306: dup
-    //   307: iconst_1
-    //   308: new 185	java/lang/StringBuilder
-    //   311: dup
-    //   312: invokespecial 186	java/lang/StringBuilder:<init>	()V
-    //   315: aload_1
-    //   316: invokevirtual 317	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   319: ldc_w 319
-    //   322: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   328: aastore
-    //   329: invokevirtual 323	com/tencent/qapmsdk/common/logger/Logger:e	([Ljava/lang/String;)V
-    //   332: aload_0
-    //   333: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   336: astore_1
-    //   337: aload_1
-    //   338: ifnull +16 -> 354
-    //   341: aload_1
-    //   342: sipush 600
-    //   345: ldc_w 325
-    //   348: iconst_0
-    //   349: invokeinterface 235 4 0
-    //   354: aload 6
-    //   356: checkcast 99	java/lang/Iterable
-    //   359: invokeinterface 109 1 0
-    //   364: astore_1
-    //   365: aload_1
-    //   366: invokeinterface 115 1 0
-    //   371: ifeq +582 -> 953
-    //   374: aload_1
-    //   375: invokeinterface 119 1 0
-    //   380: checkcast 135	java/io/File
-    //   383: invokevirtual 147	java/io/File:delete	()Z
-    //   386: pop
-    //   387: goto -22 -> 365
-    //   390: aload 4
-    //   392: astore_1
-    //   393: aload_2
-    //   394: aload_0
-    //   395: invokespecial 327	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:generateEndStream	()Ljava/lang/String;
-    //   398: invokevirtual 270	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   401: aload 4
-    //   403: astore_1
-    //   404: getstatic 332	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   407: astore_2
-    //   408: aload 7
-    //   410: aload 4
-    //   412: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   415: new 334	java/io/BufferedInputStream
-    //   418: dup
-    //   419: aload 5
-    //   421: invokevirtual 338	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   424: invokespecial 341	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   427: checkcast 265	java/io/Closeable
-    //   430: astore 4
-    //   432: aconst_null
-    //   433: checkcast 222	java/lang/Throwable
-    //   436: astore_2
-    //   437: aload_2
-    //   438: astore_1
-    //   439: aload 4
-    //   441: checkcast 334	java/io/BufferedInputStream
-    //   444: astore_3
-    //   445: aload_2
-    //   446: astore_1
-    //   447: getstatic 197	com/tencent/qapmsdk/common/util/FileUtil:Companion	Lcom/tencent/qapmsdk/common/util/FileUtil$Companion;
-    //   450: aload_3
-    //   451: checkcast 284	java/io/InputStream
-    //   454: sipush 8192
-    //   457: invokevirtual 345	com/tencent/qapmsdk/common/util/FileUtil$Companion:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
-    //   460: astore_3
-    //   461: aload_2
-    //   462: astore_1
-    //   463: getstatic 332	kotlin/Unit:INSTANCE	Lkotlin/Unit;
-    //   466: astore 7
-    //   468: aload 4
-    //   470: aload_2
-    //   471: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   474: getstatic 314	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   477: iconst_2
-    //   478: anewarray 121	java/lang/String
-    //   481: dup
-    //   482: iconst_0
-    //   483: ldc 54
-    //   485: aastore
-    //   486: dup
-    //   487: iconst_1
-    //   488: aload_3
-    //   489: aastore
-    //   490: invokevirtual 348	com/tencent/qapmsdk/common/logger/Logger:i	([Ljava/lang/String;)V
-    //   493: aload 5
-    //   495: invokevirtual 351	java/net/HttpURLConnection:getResponseCode	()I
-    //   498: lookupswitch	default:+515->1013, 200:+205->703, 400:+357->855, 500:+421->919
-    //   533: invokespecial 353	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:cleanOriginal	()V
-    //   536: aload_0
-    //   537: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   540: astore_1
-    //   541: aload_1
-    //   542: ifnull +14 -> 556
-    //   545: aload_1
-    //   546: sipush 700
-    //   549: aload_3
-    //   550: iconst_0
-    //   551: invokeinterface 235 4 0
-    //   556: aload 6
-    //   558: checkcast 99	java/lang/Iterable
-    //   561: invokeinterface 109 1 0
-    //   566: astore_1
-    //   567: aload_1
-    //   568: invokeinterface 115 1 0
-    //   573: ifeq +369 -> 942
-    //   576: aload_1
-    //   577: invokeinterface 119 1 0
-    //   582: checkcast 135	java/io/File
-    //   585: invokevirtual 147	java/io/File:delete	()Z
-    //   588: pop
-    //   589: goto -22 -> 567
-    //   592: astore_2
-    //   593: aload_2
-    //   594: astore_1
-    //   595: aload_2
-    //   596: athrow
-    //   597: astore_2
-    //   598: aload 4
-    //   600: aload_1
-    //   601: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   604: aload_2
-    //   605: athrow
-    //   606: astore_1
-    //   607: getstatic 314	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   610: iconst_2
-    //   611: anewarray 121	java/lang/String
-    //   614: dup
-    //   615: iconst_0
-    //   616: ldc 54
-    //   618: aastore
-    //   619: dup
-    //   620: iconst_1
-    //   621: new 185	java/lang/StringBuilder
-    //   624: dup
-    //   625: invokespecial 186	java/lang/StringBuilder:<init>	()V
-    //   628: aload_1
-    //   629: invokevirtual 317	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   632: ldc_w 355
-    //   635: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   638: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   641: aastore
-    //   642: invokevirtual 323	com/tencent/qapmsdk/common/logger/Logger:e	([Ljava/lang/String;)V
-    //   645: aload_0
-    //   646: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   649: astore_1
-    //   650: aload_1
-    //   651: ifnull +16 -> 667
-    //   654: aload_1
-    //   655: sipush 601
-    //   658: ldc_w 357
-    //   661: iconst_0
-    //   662: invokeinterface 235 4 0
-    //   667: aload 6
-    //   669: checkcast 99	java/lang/Iterable
-    //   672: invokeinterface 109 1 0
-    //   677: astore_1
-    //   678: aload_1
-    //   679: invokeinterface 115 1 0
-    //   684: ifeq +280 -> 964
-    //   687: aload_1
-    //   688: invokeinterface 119 1 0
-    //   693: checkcast 135	java/io/File
-    //   696: invokevirtual 147	java/io/File:delete	()Z
-    //   699: pop
-    //   700: goto -22 -> 678
-    //   703: aload_0
-    //   704: aload_3
-    //   705: invokevirtual 361	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:isSucceeded	(Ljava/lang/String;)Z
-    //   708: ifeq +78 -> 786
-    //   711: aload_0
-    //   712: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   715: astore_1
-    //   716: aload_1
-    //   717: ifnull +13 -> 730
-    //   720: aload_1
-    //   721: sipush 200
-    //   724: iconst_0
-    //   725: invokeinterface 365 3 0
-    //   730: aload_0
-    //   731: invokespecial 353	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:cleanOriginal	()V
-    //   734: goto -178 -> 556
-    //   737: astore_1
-    //   738: getstatic 314	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   741: ldc 54
-    //   743: aload_1
-    //   744: checkcast 222	java/lang/Throwable
-    //   747: invokevirtual 369	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   750: aload 6
-    //   752: checkcast 99	java/lang/Iterable
-    //   755: invokeinterface 109 1 0
-    //   760: astore_1
-    //   761: aload_1
-    //   762: invokeinterface 115 1 0
-    //   767: ifeq +208 -> 975
-    //   770: aload_1
-    //   771: invokeinterface 119 1 0
-    //   776: checkcast 135	java/io/File
-    //   779: invokevirtual 147	java/io/File:delete	()Z
-    //   782: pop
-    //   783: goto -22 -> 761
-    //   786: aload_0
-    //   787: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   790: astore_1
-    //   791: aload_1
-    //   792: ifnull -62 -> 730
-    //   795: aload_1
-    //   796: sipush 700
-    //   799: aload_3
-    //   800: iconst_0
-    //   801: invokeinterface 235 4 0
-    //   806: goto -76 -> 730
-    //   809: astore_1
-    //   810: getstatic 314	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
-    //   813: ldc 54
-    //   815: aload_1
-    //   816: invokevirtual 369	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   819: aload 6
-    //   821: checkcast 99	java/lang/Iterable
-    //   824: invokeinterface 109 1 0
-    //   829: astore_1
-    //   830: aload_1
-    //   831: invokeinterface 115 1 0
-    //   836: ifeq +150 -> 986
-    //   839: aload_1
-    //   840: invokeinterface 119 1 0
-    //   845: checkcast 135	java/io/File
-    //   848: invokevirtual 147	java/io/File:delete	()Z
-    //   851: pop
-    //   852: goto -22 -> 830
-    //   855: aload_0
-    //   856: invokespecial 353	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:cleanOriginal	()V
-    //   859: aload_0
-    //   860: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   863: astore_1
-    //   864: aload_1
-    //   865: ifnull -309 -> 556
-    //   868: aload_1
-    //   869: sipush 400
+    //   284: aload 4
+    //   286: astore_2
+    //   287: aload 9
+    //   289: aload_3
+    //   290: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   293: aload 4
+    //   295: astore_2
+    //   296: aload 5
+    //   298: athrow
+    //   299: aload 4
+    //   301: astore_2
+    //   302: aload 10
+    //   304: aload_0
+    //   305: invokespecial 310	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:generateEndStream	()Ljava/lang/String;
+    //   308: invokevirtual 270	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   311: aload 4
+    //   313: astore_2
+    //   314: getstatic 316	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   317: astore_3
+    //   318: aload 8
+    //   320: aload 4
+    //   322: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   325: new 318	java/io/BufferedInputStream
+    //   328: dup
+    //   329: aload 6
+    //   331: invokevirtual 322	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   334: invokespecial 325	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   337: checkcast 265	java/io/Closeable
+    //   340: astore 4
+    //   342: aconst_null
+    //   343: checkcast 222	java/lang/Throwable
+    //   346: astore_3
+    //   347: aload_3
+    //   348: astore_2
+    //   349: aload 4
+    //   351: checkcast 318	java/io/BufferedInputStream
+    //   354: astore 5
+    //   356: aload_3
+    //   357: astore_2
+    //   358: getstatic 197	com/tencent/qapmsdk/common/util/FileUtil:Companion	Lcom/tencent/qapmsdk/common/util/FileUtil$Companion;
+    //   361: aload 5
+    //   363: checkcast 284	java/io/InputStream
+    //   366: sipush 8192
+    //   369: invokevirtual 329	com/tencent/qapmsdk/common/util/FileUtil$Companion:readStream	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   372: astore 5
+    //   374: aload_3
+    //   375: astore_2
+    //   376: getstatic 316	kotlin/Unit:INSTANCE	Lkotlin/Unit;
+    //   379: astore 8
+    //   381: aload 4
+    //   383: aload_3
+    //   384: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   387: getstatic 334	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   390: iconst_2
+    //   391: anewarray 121	java/lang/String
+    //   394: dup
+    //   395: iconst_0
+    //   396: ldc 54
+    //   398: aastore
+    //   399: dup
+    //   400: iconst_1
+    //   401: aload 5
+    //   403: aastore
+    //   404: invokevirtual 338	com/tencent/qapmsdk/common/logger/Logger:i	([Ljava/lang/String;)V
+    //   407: aload 6
+    //   409: invokevirtual 341	java/net/HttpURLConnection:getResponseCode	()I
+    //   412: istore_1
+    //   413: iload_1
+    //   414: sipush 200
+    //   417: if_icmpeq +97 -> 514
+    //   420: iload_1
+    //   421: sipush 400
+    //   424: if_icmpeq +62 -> 486
+    //   427: iload_1
+    //   428: sipush 500
+    //   431: if_icmpeq +31 -> 462
+    //   434: aload_0
+    //   435: invokespecial 343	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:cleanOriginal	()V
+    //   438: aload_0
+    //   439: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   442: astore_2
+    //   443: aload_2
+    //   444: ifnull +563 -> 1007
+    //   447: aload_2
+    //   448: sipush 700
+    //   451: aload 5
+    //   453: iconst_0
+    //   454: invokeinterface 235 4 0
+    //   459: goto +548 -> 1007
+    //   462: aload_0
+    //   463: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   466: astore_2
+    //   467: aload_2
+    //   468: ifnull +539 -> 1007
+    //   471: aload_2
+    //   472: sipush 500
+    //   475: aload 5
+    //   477: iconst_0
+    //   478: invokeinterface 235 4 0
+    //   483: goto +524 -> 1007
+    //   486: aload_0
+    //   487: invokespecial 343	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:cleanOriginal	()V
+    //   490: aload_0
+    //   491: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   494: astore_2
+    //   495: aload_2
+    //   496: ifnull +511 -> 1007
+    //   499: aload_2
+    //   500: sipush 400
+    //   503: aload 5
+    //   505: iconst_0
+    //   506: invokeinterface 235 4 0
+    //   511: goto +496 -> 1007
+    //   514: aload_0
+    //   515: aload 5
+    //   517: invokevirtual 347	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:isSucceeded	(Ljava/lang/String;)Z
+    //   520: ifeq +25 -> 545
+    //   523: aload_0
+    //   524: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   527: astore_2
+    //   528: aload_2
+    //   529: ifnull +37 -> 566
+    //   532: aload_2
+    //   533: sipush 200
+    //   536: iconst_0
+    //   537: invokeinterface 351 3 0
+    //   542: goto +24 -> 566
+    //   545: aload_0
+    //   546: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   549: astore_2
+    //   550: aload_2
+    //   551: ifnull +15 -> 566
+    //   554: aload_2
+    //   555: sipush 700
+    //   558: aload 5
+    //   560: iconst_0
+    //   561: invokeinterface 235 4 0
+    //   566: aload_0
+    //   567: invokespecial 343	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:cleanOriginal	()V
+    //   570: goto +437 -> 1007
+    //   573: astore_3
+    //   574: goto +8 -> 582
+    //   577: astore_3
+    //   578: aload_3
+    //   579: astore_2
+    //   580: aload_3
+    //   581: athrow
+    //   582: aload 4
+    //   584: aload_2
+    //   585: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   588: aload_3
+    //   589: athrow
+    //   590: astore_3
+    //   591: goto +8 -> 599
+    //   594: astore_3
+    //   595: aload_3
+    //   596: astore_2
+    //   597: aload_3
+    //   598: athrow
+    //   599: aload 8
+    //   601: aload_2
+    //   602: invokestatic 308	kotlin/io/CloseableKt:closeFinally	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   605: aload_3
+    //   606: athrow
+    //   607: astore_2
+    //   608: goto +351 -> 959
+    //   611: astore_2
+    //   612: getstatic 334	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   615: ldc 54
+    //   617: aload_2
+    //   618: invokevirtual 355	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   621: aload 7
+    //   623: checkcast 99	java/lang/Iterable
+    //   626: invokeinterface 109 1 0
+    //   631: astore_2
+    //   632: aload_2
+    //   633: invokeinterface 115 1 0
+    //   638: ifeq +19 -> 657
+    //   641: aload_2
+    //   642: invokeinterface 119 1 0
+    //   647: checkcast 135	java/io/File
+    //   650: invokevirtual 147	java/io/File:delete	()Z
+    //   653: pop
+    //   654: goto -22 -> 632
+    //   657: aload 6
+    //   659: ifnull +392 -> 1051
+    //   662: aload 6
+    //   664: invokevirtual 358	java/net/HttpURLConnection:disconnect	()V
+    //   667: return
+    //   668: astore_2
+    //   669: getstatic 334	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   672: ldc 54
+    //   674: aload_2
+    //   675: checkcast 222	java/lang/Throwable
+    //   678: invokevirtual 355	com/tencent/qapmsdk/common/logger/Logger:exception	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   681: aload 7
+    //   683: checkcast 99	java/lang/Iterable
+    //   686: invokeinterface 109 1 0
+    //   691: astore_2
+    //   692: aload_2
+    //   693: invokeinterface 115 1 0
+    //   698: ifeq +19 -> 717
+    //   701: aload_2
+    //   702: invokeinterface 119 1 0
+    //   707: checkcast 135	java/io/File
+    //   710: invokevirtual 147	java/io/File:delete	()Z
+    //   713: pop
+    //   714: goto -22 -> 692
+    //   717: aload 6
+    //   719: ifnull +332 -> 1051
+    //   722: goto -60 -> 662
+    //   725: astore_2
+    //   726: getstatic 334	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   729: astore_3
+    //   730: new 185	java/lang/StringBuilder
+    //   733: dup
+    //   734: invokespecial 186	java/lang/StringBuilder:<init>	()V
+    //   737: astore 4
+    //   739: aload 4
+    //   741: aload_2
+    //   742: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   745: pop
+    //   746: aload 4
+    //   748: ldc_w 363
+    //   751: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   754: pop
+    //   755: aload_3
+    //   756: iconst_2
+    //   757: anewarray 121	java/lang/String
+    //   760: dup
+    //   761: iconst_0
+    //   762: ldc 54
+    //   764: aastore
+    //   765: dup
+    //   766: iconst_1
+    //   767: aload 4
+    //   769: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   772: aastore
+    //   773: invokevirtual 366	com/tencent/qapmsdk/common/logger/Logger:e	([Ljava/lang/String;)V
+    //   776: aload_0
+    //   777: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   780: astore_2
+    //   781: aload_2
+    //   782: ifnull +16 -> 798
+    //   785: aload_2
+    //   786: sipush 601
+    //   789: ldc_w 368
+    //   792: iconst_0
+    //   793: invokeinterface 235 4 0
+    //   798: aload 7
+    //   800: checkcast 99	java/lang/Iterable
+    //   803: invokeinterface 109 1 0
+    //   808: astore_2
+    //   809: aload_2
+    //   810: invokeinterface 115 1 0
+    //   815: ifeq +19 -> 834
+    //   818: aload_2
+    //   819: invokeinterface 119 1 0
+    //   824: checkcast 135	java/io/File
+    //   827: invokevirtual 147	java/io/File:delete	()Z
+    //   830: pop
+    //   831: goto -22 -> 809
+    //   834: aload 6
+    //   836: ifnull +215 -> 1051
+    //   839: goto -177 -> 662
+    //   842: astore_2
+    //   843: getstatic 334	com/tencent/qapmsdk/common/logger/Logger:INSTANCE	Lcom/tencent/qapmsdk/common/logger/Logger;
+    //   846: astore_3
+    //   847: new 185	java/lang/StringBuilder
+    //   850: dup
+    //   851: invokespecial 186	java/lang/StringBuilder:<init>	()V
+    //   854: astore 4
+    //   856: aload 4
+    //   858: aload_2
+    //   859: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   862: pop
+    //   863: aload 4
+    //   865: ldc_w 370
+    //   868: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   871: pop
     //   872: aload_3
-    //   873: iconst_0
-    //   874: invokeinterface 235 4 0
-    //   879: goto -323 -> 556
-    //   882: astore_1
-    //   883: aload 6
-    //   885: checkcast 99	java/lang/Iterable
-    //   888: invokeinterface 109 1 0
-    //   893: astore_2
-    //   894: aload_2
-    //   895: invokeinterface 115 1 0
-    //   900: ifeq +97 -> 997
-    //   903: aload_2
-    //   904: invokeinterface 119 1 0
-    //   909: checkcast 135	java/io/File
-    //   912: invokevirtual 147	java/io/File:delete	()Z
-    //   915: pop
-    //   916: goto -22 -> 894
-    //   919: aload_0
-    //   920: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
-    //   923: astore_1
-    //   924: aload_1
-    //   925: ifnull -369 -> 556
-    //   928: aload_1
-    //   929: sipush 500
-    //   932: aload_3
-    //   933: iconst_0
-    //   934: invokeinterface 235 4 0
-    //   939: goto -383 -> 556
-    //   942: aload 5
-    //   944: ifnull -909 -> 35
-    //   947: aload 5
-    //   949: invokevirtual 372	java/net/HttpURLConnection:disconnect	()V
-    //   952: return
-    //   953: aload 5
-    //   955: ifnull -920 -> 35
-    //   958: aload 5
-    //   960: invokevirtual 372	java/net/HttpURLConnection:disconnect	()V
-    //   963: return
-    //   964: aload 5
-    //   966: ifnull -931 -> 35
-    //   969: aload 5
-    //   971: invokevirtual 372	java/net/HttpURLConnection:disconnect	()V
-    //   974: return
-    //   975: aload 5
-    //   977: ifnull -942 -> 35
-    //   980: aload 5
-    //   982: invokevirtual 372	java/net/HttpURLConnection:disconnect	()V
-    //   985: return
-    //   986: aload 5
-    //   988: ifnull -953 -> 35
-    //   991: aload 5
-    //   993: invokevirtual 372	java/net/HttpURLConnection:disconnect	()V
-    //   996: return
-    //   997: aload 5
-    //   999: ifnull +8 -> 1007
-    //   1002: aload 5
-    //   1004: invokevirtual 372	java/net/HttpURLConnection:disconnect	()V
-    //   1007: aload_1
-    //   1008: athrow
-    //   1009: astore_2
-    //   1010: goto -745 -> 265
-    //   1013: goto -481 -> 532
+    //   873: iconst_2
+    //   874: anewarray 121	java/lang/String
+    //   877: dup
+    //   878: iconst_0
+    //   879: ldc 54
+    //   881: aastore
+    //   882: dup
+    //   883: iconst_1
+    //   884: aload 4
+    //   886: invokevirtual 192	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   889: aastore
+    //   890: invokevirtual 366	com/tencent/qapmsdk/common/logger/Logger:e	([Ljava/lang/String;)V
+    //   893: aload_0
+    //   894: getfield 87	com/tencent/qapmsdk/base/reporter/uploaddata/runnable/AthenaFileUploadRunnable:callback	Lcom/tencent/qapmsdk/common/reporter/IReporter$ReportResultCallback;
+    //   897: astore_2
+    //   898: aload_2
+    //   899: ifnull +16 -> 915
+    //   902: aload_2
+    //   903: sipush 600
+    //   906: ldc_w 372
+    //   909: iconst_0
+    //   910: invokeinterface 235 4 0
+    //   915: aload 7
+    //   917: checkcast 99	java/lang/Iterable
+    //   920: invokeinterface 109 1 0
+    //   925: astore_2
+    //   926: aload_2
+    //   927: invokeinterface 115 1 0
+    //   932: ifeq +19 -> 951
+    //   935: aload_2
+    //   936: invokeinterface 119 1 0
+    //   941: checkcast 135	java/io/File
+    //   944: invokevirtual 147	java/io/File:delete	()Z
+    //   947: pop
+    //   948: goto -22 -> 926
+    //   951: aload 6
+    //   953: ifnull +98 -> 1051
+    //   956: goto -294 -> 662
+    //   959: aload 7
+    //   961: checkcast 99	java/lang/Iterable
+    //   964: invokeinterface 109 1 0
+    //   969: astore_3
+    //   970: aload_3
+    //   971: invokeinterface 115 1 0
+    //   976: ifeq +19 -> 995
+    //   979: aload_3
+    //   980: invokeinterface 119 1 0
+    //   985: checkcast 135	java/io/File
+    //   988: invokevirtual 147	java/io/File:delete	()Z
+    //   991: pop
+    //   992: goto -22 -> 970
+    //   995: aload 6
+    //   997: ifnull +8 -> 1005
+    //   1000: aload 6
+    //   1002: invokevirtual 358	java/net/HttpURLConnection:disconnect	()V
+    //   1005: aload_2
+    //   1006: athrow
+    //   1007: aload 7
+    //   1009: checkcast 99	java/lang/Iterable
+    //   1012: invokeinterface 109 1 0
+    //   1017: astore_2
+    //   1018: aload_2
+    //   1019: invokeinterface 115 1 0
+    //   1024: ifeq +19 -> 1043
+    //   1027: aload_2
+    //   1028: invokeinterface 119 1 0
+    //   1033: checkcast 135	java/io/File
+    //   1036: invokevirtual 147	java/io/File:delete	()Z
+    //   1039: pop
+    //   1040: goto -22 -> 1018
+    //   1043: aload 6
+    //   1045: ifnull +6 -> 1051
+    //   1048: goto -386 -> 662
+    //   1051: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1016	0	this	AthenaFileUploadRunnable
-    //   18	270	1	localObject1	Object
-    //   293	23	1	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   336	265	1	localObject2	Object
-    //   606	23	1	localFileNotFoundException	java.io.FileNotFoundException
-    //   649	72	1	localObject3	Object
-    //   737	7	1	localException	java.lang.Exception
-    //   760	36	1	localObject4	Object
-    //   809	7	1	localThrowable1	java.lang.Throwable
-    //   829	40	1	localObject5	Object
-    //   882	1	1	localObject6	Object
-    //   923	85	1	localReportResultCallback	IReporter.ReportResultCallback
-    //   101	152	2	localDataOutputStream	java.io.DataOutputStream
-    //   264	14	2	localObject7	Object
-    //   279	4	2	localThrowable2	java.lang.Throwable
-    //   284	110	2	localObject8	Object
-    //   407	64	2	localObject9	Object
-    //   592	4	2	localThrowable3	java.lang.Throwable
-    //   597	8	2	localObject10	Object
-    //   893	11	2	localIterator1	Iterator
-    //   1009	1	2	localObject11	Object
-    //   154	92	3	localObject12	Object
-    //   261	10	3	localThrowable4	java.lang.Throwable
-    //   444	489	3	localObject13	Object
-    //   91	508	4	localObject14	Object
-    //   63	940	5	localHttpURLConnection	java.net.HttpURLConnection
-    //   4	880	6	localArrayList	ArrayList
-    //   85	382	7	localObject15	Object
-    //   162	107	8	localObject16	Object
-    //   126	19	9	localIterator2	Iterator
+    //   0	1052	0	this	AthenaFileUploadRunnable
+    //   412	20	1	i	int
+    //   18	246	2	localObject1	Object
+    //   279	4	2	localThrowable1	java.lang.Throwable
+    //   286	316	2	localObject2	Object
+    //   607	1	2	localObject3	Object
+    //   611	7	2	localThrowable2	java.lang.Throwable
+    //   631	11	2	localIterator1	Iterator
+    //   668	7	2	localException	java.lang.Exception
+    //   691	11	2	localIterator2	Iterator
+    //   725	17	2	localFileNotFoundException	java.io.FileNotFoundException
+    //   780	39	2	localObject4	Object
+    //   842	17	2	localOutOfMemoryError	java.lang.OutOfMemoryError
+    //   897	131	2	localObject5	Object
+    //   156	228	3	localObject6	Object
+    //   573	1	3	localObject7	Object
+    //   577	12	3	localThrowable3	java.lang.Throwable
+    //   590	1	3	localObject8	Object
+    //   594	12	3	localThrowable4	java.lang.Throwable
+    //   729	251	3	localObject9	Object
+    //   91	794	4	localObject10	Object
+    //   164	93	5	localObject11	Object
+    //   274	23	5	localObject12	Object
+    //   354	205	5	localObject13	Object
+    //   63	981	6	localHttpURLConnection	java.net.HttpURLConnection
+    //   4	1004	7	localArrayList	ArrayList
+    //   85	515	8	localObject14	Object
+    //   205	83	9	localCloseable	java.io.Closeable
+    //   101	202	10	localDataOutputStream	java.io.DataOutputStream
+    //   128	19	11	localIterator3	Iterator
     // Exception table:
     //   from	to	target	type
-    //   212	240	261	java/lang/Throwable
-    //   262	264	264	finally
-    //   96	102	279	java/lang/Throwable
-    //   105	113	279	java/lang/Throwable
-    //   116	128	279	java/lang/Throwable
-    //   131	141	279	java/lang/Throwable
-    //   144	155	279	java/lang/Throwable
-    //   158	164	279	java/lang/Throwable
-    //   167	175	279	java/lang/Throwable
-    //   178	188	279	java/lang/Throwable
-    //   191	204	279	java/lang/Throwable
-    //   207	212	279	java/lang/Throwable
-    //   243	249	279	java/lang/Throwable
-    //   252	258	279	java/lang/Throwable
-    //   268	274	279	java/lang/Throwable
-    //   277	279	279	java/lang/Throwable
-    //   393	401	279	java/lang/Throwable
-    //   404	408	279	java/lang/Throwable
-    //   96	102	284	finally
-    //   105	113	284	finally
-    //   116	128	284	finally
-    //   131	141	284	finally
-    //   144	155	284	finally
-    //   158	164	284	finally
-    //   167	175	284	finally
-    //   178	188	284	finally
-    //   191	204	284	finally
-    //   207	212	284	finally
-    //   243	249	284	finally
-    //   252	258	284	finally
-    //   268	274	284	finally
-    //   277	279	284	finally
-    //   282	284	284	finally
-    //   393	401	284	finally
-    //   404	408	284	finally
-    //   70	93	293	java/lang/OutOfMemoryError
-    //   285	293	293	java/lang/OutOfMemoryError
-    //   408	437	293	java/lang/OutOfMemoryError
-    //   468	532	293	java/lang/OutOfMemoryError
-    //   532	541	293	java/lang/OutOfMemoryError
-    //   545	556	293	java/lang/OutOfMemoryError
-    //   598	606	293	java/lang/OutOfMemoryError
-    //   703	716	293	java/lang/OutOfMemoryError
-    //   720	730	293	java/lang/OutOfMemoryError
-    //   730	734	293	java/lang/OutOfMemoryError
-    //   786	791	293	java/lang/OutOfMemoryError
-    //   795	806	293	java/lang/OutOfMemoryError
-    //   855	864	293	java/lang/OutOfMemoryError
-    //   868	879	293	java/lang/OutOfMemoryError
-    //   919	924	293	java/lang/OutOfMemoryError
-    //   928	939	293	java/lang/OutOfMemoryError
-    //   439	445	592	java/lang/Throwable
-    //   447	461	592	java/lang/Throwable
-    //   463	468	592	java/lang/Throwable
-    //   439	445	597	finally
-    //   447	461	597	finally
-    //   463	468	597	finally
-    //   595	597	597	finally
-    //   70	93	606	java/io/FileNotFoundException
-    //   285	293	606	java/io/FileNotFoundException
-    //   408	437	606	java/io/FileNotFoundException
-    //   468	532	606	java/io/FileNotFoundException
-    //   532	541	606	java/io/FileNotFoundException
-    //   545	556	606	java/io/FileNotFoundException
-    //   598	606	606	java/io/FileNotFoundException
-    //   703	716	606	java/io/FileNotFoundException
-    //   720	730	606	java/io/FileNotFoundException
-    //   730	734	606	java/io/FileNotFoundException
-    //   786	791	606	java/io/FileNotFoundException
-    //   795	806	606	java/io/FileNotFoundException
-    //   855	864	606	java/io/FileNotFoundException
-    //   868	879	606	java/io/FileNotFoundException
-    //   919	924	606	java/io/FileNotFoundException
-    //   928	939	606	java/io/FileNotFoundException
-    //   70	93	737	java/lang/Exception
-    //   285	293	737	java/lang/Exception
-    //   408	437	737	java/lang/Exception
-    //   468	532	737	java/lang/Exception
-    //   532	541	737	java/lang/Exception
-    //   545	556	737	java/lang/Exception
-    //   598	606	737	java/lang/Exception
-    //   703	716	737	java/lang/Exception
-    //   720	730	737	java/lang/Exception
-    //   730	734	737	java/lang/Exception
-    //   786	791	737	java/lang/Exception
-    //   795	806	737	java/lang/Exception
-    //   855	864	737	java/lang/Exception
-    //   868	879	737	java/lang/Exception
-    //   919	924	737	java/lang/Exception
-    //   928	939	737	java/lang/Exception
-    //   70	93	809	java/lang/Throwable
-    //   285	293	809	java/lang/Throwable
-    //   408	437	809	java/lang/Throwable
-    //   468	532	809	java/lang/Throwable
-    //   532	541	809	java/lang/Throwable
-    //   545	556	809	java/lang/Throwable
-    //   598	606	809	java/lang/Throwable
-    //   703	716	809	java/lang/Throwable
-    //   720	730	809	java/lang/Throwable
-    //   730	734	809	java/lang/Throwable
-    //   786	791	809	java/lang/Throwable
-    //   795	806	809	java/lang/Throwable
-    //   855	864	809	java/lang/Throwable
-    //   868	879	809	java/lang/Throwable
-    //   919	924	809	java/lang/Throwable
-    //   928	939	809	java/lang/Throwable
-    //   70	93	882	finally
-    //   285	293	882	finally
-    //   294	337	882	finally
-    //   341	354	882	finally
-    //   408	437	882	finally
-    //   468	532	882	finally
-    //   532	541	882	finally
-    //   545	556	882	finally
-    //   598	606	882	finally
-    //   607	650	882	finally
-    //   654	667	882	finally
-    //   703	716	882	finally
-    //   720	730	882	finally
-    //   730	734	882	finally
-    //   738	750	882	finally
-    //   786	791	882	finally
-    //   795	806	882	finally
-    //   810	819	882	finally
-    //   855	864	882	finally
-    //   868	879	882	finally
-    //   919	924	882	finally
-    //   928	939	882	finally
-    //   212	240	1009	finally
+    //   219	225	274	finally
+    //   228	251	274	finally
+    //   282	284	274	finally
+    //   219	225	279	java/lang/Throwable
+    //   228	251	279	java/lang/Throwable
+    //   349	356	573	finally
+    //   358	374	573	finally
+    //   376	381	573	finally
+    //   580	582	573	finally
+    //   349	356	577	java/lang/Throwable
+    //   358	374	577	java/lang/Throwable
+    //   376	381	577	java/lang/Throwable
+    //   96	103	590	finally
+    //   106	115	590	finally
+    //   118	130	590	finally
+    //   133	143	590	finally
+    //   146	157	590	finally
+    //   160	166	590	finally
+    //   169	177	590	finally
+    //   180	191	590	finally
+    //   194	207	590	finally
+    //   210	216	590	finally
+    //   254	261	590	finally
+    //   264	271	590	finally
+    //   287	293	590	finally
+    //   296	299	590	finally
+    //   302	311	590	finally
+    //   314	318	590	finally
+    //   597	599	590	finally
+    //   96	103	594	java/lang/Throwable
+    //   106	115	594	java/lang/Throwable
+    //   118	130	594	java/lang/Throwable
+    //   133	143	594	java/lang/Throwable
+    //   146	157	594	java/lang/Throwable
+    //   160	166	594	java/lang/Throwable
+    //   169	177	594	java/lang/Throwable
+    //   180	191	594	java/lang/Throwable
+    //   194	207	594	java/lang/Throwable
+    //   210	216	594	java/lang/Throwable
+    //   254	261	594	java/lang/Throwable
+    //   264	271	594	java/lang/Throwable
+    //   287	293	594	java/lang/Throwable
+    //   296	299	594	java/lang/Throwable
+    //   302	311	594	java/lang/Throwable
+    //   314	318	594	java/lang/Throwable
+    //   70	93	607	finally
+    //   318	347	607	finally
+    //   381	413	607	finally
+    //   434	443	607	finally
+    //   447	459	607	finally
+    //   462	467	607	finally
+    //   471	483	607	finally
+    //   486	495	607	finally
+    //   499	511	607	finally
+    //   514	528	607	finally
+    //   532	542	607	finally
+    //   545	550	607	finally
+    //   554	566	607	finally
+    //   566	570	607	finally
+    //   582	590	607	finally
+    //   599	607	607	finally
+    //   612	621	607	finally
+    //   669	681	607	finally
+    //   726	781	607	finally
+    //   785	798	607	finally
+    //   843	898	607	finally
+    //   902	915	607	finally
+    //   70	93	611	java/lang/Throwable
+    //   318	347	611	java/lang/Throwable
+    //   381	413	611	java/lang/Throwable
+    //   434	443	611	java/lang/Throwable
+    //   447	459	611	java/lang/Throwable
+    //   462	467	611	java/lang/Throwable
+    //   471	483	611	java/lang/Throwable
+    //   486	495	611	java/lang/Throwable
+    //   499	511	611	java/lang/Throwable
+    //   514	528	611	java/lang/Throwable
+    //   532	542	611	java/lang/Throwable
+    //   545	550	611	java/lang/Throwable
+    //   554	566	611	java/lang/Throwable
+    //   566	570	611	java/lang/Throwable
+    //   582	590	611	java/lang/Throwable
+    //   599	607	611	java/lang/Throwable
+    //   70	93	668	java/lang/Exception
+    //   318	347	668	java/lang/Exception
+    //   381	413	668	java/lang/Exception
+    //   434	443	668	java/lang/Exception
+    //   447	459	668	java/lang/Exception
+    //   462	467	668	java/lang/Exception
+    //   471	483	668	java/lang/Exception
+    //   486	495	668	java/lang/Exception
+    //   499	511	668	java/lang/Exception
+    //   514	528	668	java/lang/Exception
+    //   532	542	668	java/lang/Exception
+    //   545	550	668	java/lang/Exception
+    //   554	566	668	java/lang/Exception
+    //   566	570	668	java/lang/Exception
+    //   582	590	668	java/lang/Exception
+    //   599	607	668	java/lang/Exception
+    //   70	93	725	java/io/FileNotFoundException
+    //   318	347	725	java/io/FileNotFoundException
+    //   381	413	725	java/io/FileNotFoundException
+    //   434	443	725	java/io/FileNotFoundException
+    //   447	459	725	java/io/FileNotFoundException
+    //   462	467	725	java/io/FileNotFoundException
+    //   471	483	725	java/io/FileNotFoundException
+    //   486	495	725	java/io/FileNotFoundException
+    //   499	511	725	java/io/FileNotFoundException
+    //   514	528	725	java/io/FileNotFoundException
+    //   532	542	725	java/io/FileNotFoundException
+    //   545	550	725	java/io/FileNotFoundException
+    //   554	566	725	java/io/FileNotFoundException
+    //   566	570	725	java/io/FileNotFoundException
+    //   582	590	725	java/io/FileNotFoundException
+    //   599	607	725	java/io/FileNotFoundException
+    //   70	93	842	java/lang/OutOfMemoryError
+    //   318	347	842	java/lang/OutOfMemoryError
+    //   381	413	842	java/lang/OutOfMemoryError
+    //   434	443	842	java/lang/OutOfMemoryError
+    //   447	459	842	java/lang/OutOfMemoryError
+    //   462	467	842	java/lang/OutOfMemoryError
+    //   471	483	842	java/lang/OutOfMemoryError
+    //   486	495	842	java/lang/OutOfMemoryError
+    //   499	511	842	java/lang/OutOfMemoryError
+    //   514	528	842	java/lang/OutOfMemoryError
+    //   532	542	842	java/lang/OutOfMemoryError
+    //   545	550	842	java/lang/OutOfMemoryError
+    //   554	566	842	java/lang/OutOfMemoryError
+    //   566	570	842	java/lang/OutOfMemoryError
+    //   582	590	842	java/lang/OutOfMemoryError
+    //   599	607	842	java/lang/OutOfMemoryError
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.runnable.AthenaFileUploadRunnable
  * JD-Core Version:    0.7.0.1
  */

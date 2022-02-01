@@ -20,18 +20,16 @@ public class TroopFeedsDataManager$ProclamationXmlHandler
     if (this.e != null)
     {
       paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-      if (!this.e.equals("title")) {
-        break label46;
+      if (this.e.equals("title"))
+      {
+        if (StringUtil.a(this.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+        }
       }
-      if (StringUtil.a(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+      else if (this.e.equals("summary")) {
+        this.c = paramArrayOfChar;
       }
     }
-    label46:
-    while (!this.e.equals("summary")) {
-      return;
-    }
-    this.c = paramArrayOfChar;
   }
   
   public void endElement(String paramString1, String paramString2, String paramString3)
@@ -43,20 +41,15 @@ public class TroopFeedsDataManager$ProclamationXmlHandler
   {
     if (paramString2.equals("picture")) {
       this.b = paramAttributes.getValue("cover");
+    } else if (paramString2.equals("msg")) {
+      this.d = paramAttributes.getValue("url");
     }
-    for (;;)
-    {
-      this.e = paramString2;
-      return;
-      if (paramString2.equals("msg")) {
-        this.d = paramAttributes.getValue("url");
-      }
-    }
+    this.e = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFeedsDataManager.ProclamationXmlHandler
  * JD-Core Version:    0.7.0.1
  */

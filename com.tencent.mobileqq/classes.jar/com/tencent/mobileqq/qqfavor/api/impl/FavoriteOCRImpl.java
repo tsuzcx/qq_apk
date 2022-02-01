@@ -2,11 +2,12 @@ package com.tencent.mobileqq.qqfavor.api.impl;
 
 import android.app.Activity;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qassistant.core.AssistantUtils;
 import com.tencent.mobileqq.qqfavor.api.IFavoriteOCR;
 import cooperation.qqfav.QfavBuilder;
 import cooperation.qqfav.QfavReport;
+import mqq.app.AppRuntime;
 
 public class FavoriteOCRImpl
   implements IFavoriteOCR
@@ -24,17 +25,19 @@ public class FavoriteOCRImpl
       j = i;
       if ('\024' == paramString.charAt(i))
       {
+        int m = i + 1;
         j = i;
-        if (i + 1 < k)
+        if (m < k)
         {
           j = i;
-          if ('ÿ' == paramString.charAt(i + 1))
+          if ('ÿ' == paramString.charAt(m))
           {
+            m = i + 2;
             j = i;
-            if (i + 2 < k)
+            if (m < k)
             {
-              if (paramString.charAt(i + 2) == '\024') {
-                paramString.setCharAt(i + 2, 'ý');
+              if (paramString.charAt(m) == '\024') {
+                paramString.setCharAt(m, 'ý');
               }
               j = i + 4;
             }
@@ -47,14 +50,22 @@ public class FavoriteOCRImpl
   
   public void favorite(Activity paramActivity, String paramString)
   {
-    QQAppInterface localQQAppInterface = AssistantUtils.a();
-    QfavBuilder.a(null, doReplaceForIndex20(paramString)).b(localQQAppInterface, null).a(paramActivity, localQQAppInterface.getAccount());
-    QfavReport.a(localQQAppInterface, 6, 1);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {
+      localObject = (QQAppInterface)localObject;
+    } else {
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      QfavBuilder.a(null, doReplaceForIndex20(paramString)).b((QQAppInterface)localObject, null).a(paramActivity, ((QQAppInterface)localObject).getAccount());
+      QfavReport.a((AppRuntime)localObject, 6, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqfavor.api.impl.FavoriteOCRImpl
  * JD-Core Version:    0.7.0.1
  */

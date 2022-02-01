@@ -1,27 +1,39 @@
 package com.tencent.mobileqq.activity.framebusiness;
 
-import android.support.v4.app.FragmentActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
+import com.tencent.mobileqq.activity.qcircle.QCircleFrame;
 import com.tencent.mobileqq.app.FrameFragment;
-import common.config.service.QzoneConfig.QzoneConfigChangeListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.tianshu.ui.RedTouch;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 final class QCircleInjectImpl$3
-  implements QzoneConfig.QzoneConfigChangeListener
+  implements Runnable
 {
   QCircleInjectImpl$3(FrameFragment paramFrameFragment) {}
   
-  public void onConfigChange()
+  public void run()
   {
-    if (this.a.getActivity() == null) {
+    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = QCircleFrame.a(this.a.a() instanceof QCircleFrame);
+    if (localRedTypeInfo == null)
+    {
+      QLog.i("updateQCircleRedDot", 1, "redInfo is null");
       return;
     }
-    QCircleInjectImpl.a(new WeakReference(this.a));
-    this.a.getActivity().runOnUiThread(new QCircleInjectImpl.3.1(this));
+    if (this.a.jdField_a_of_type_JavaUtilHashMap == null) {
+      return;
+    }
+    RedTouch localRedTouch = (RedTouch)this.a.jdField_a_of_type_JavaUtilHashMap.get(FrameControllerUtil.g);
+    if ((localRedTouch != null) && (this.a.jdField_a_of_type_AndroidOsHandler != null)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new QCircleInjectImpl.3.1(this, localRedTouch, localRedTypeInfo));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl.3
  * JD-Core Version:    0.7.0.1
  */

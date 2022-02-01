@@ -32,12 +32,16 @@ public final class Result$Failure
   @NotNull
   public String toString()
   {
-    return "Failure(" + this.exception + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Failure(");
+    localStringBuilder.append(this.exception);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.Result.Failure
  * JD-Core Version:    0.7.0.1
  */

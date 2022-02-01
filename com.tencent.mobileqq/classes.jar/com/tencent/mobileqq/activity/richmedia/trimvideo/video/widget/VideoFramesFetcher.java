@@ -10,7 +10,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 public class VideoFramesFetcher
   implements OnFetchFrameListener
 {
-  private static long jdField_a_of_type_Long = 0L;
+  private static long jdField_a_of_type_Long;
   private volatile int jdField_a_of_type_Int = 1;
   private FrameAdapter jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter;
   private BlockingQueue<VideoFramesFetcher.FrameFetchTask> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
@@ -22,36 +22,41 @@ public class VideoFramesFetcher
   
   private FramesProcessor.Frame b(int paramInt)
   {
-    if (!a()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
-      }
-    }
-    VideoFramesFetcher.FrameFetchTask localFrameFetchTask2;
-    do
+    Object localObject;
+    if (!a())
     {
-      return null;
-      try
+      if (QLog.isColorLevel())
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
-        {
-          VideoFramesFetcher.FrameFetchTask localFrameFetchTask1 = (VideoFramesFetcher.FrameFetchTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-          l = jdField_a_of_type_Long;
-          jdField_a_of_type_Long = 1L + l;
-          localFrameFetchTask1.jdField_a_of_type_Long = l;
-          return null;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("FetchFrameAtTime fail, status=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        QLog.d("VideoFramesFetcher", 2, ((StringBuilder)localObject).toString());
       }
-      catch (Exception localException)
+      return null;
+    }
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
       {
-        localException.printStackTrace();
+        localObject = (VideoFramesFetcher.FrameFetchTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+        l = jdField_a_of_type_Long;
+        jdField_a_of_type_Long = 1L + l;
+        ((VideoFramesFetcher.FrameFetchTask)localObject).jdField_a_of_type_Long = l;
         return null;
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localFrameFetchTask2 = new VideoFramesFetcher.FrameFetchTask(this, l, paramInt, paramInt + this.b);
-    } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localFrameFetchTask2);
+      localObject = new VideoFramesFetcher.FrameFetchTask(this, l, paramInt, paramInt + this.b);
+      if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localObject);
+        return null;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
     return null;
   }
   
@@ -69,31 +74,37 @@ public class VideoFramesFetcher
   
   public FramesProcessor.Frame a(int paramInt)
   {
-    if ((!a()) || (paramInt < 0))
+    if ((a()) && (paramInt >= 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFramesFetcher", 2, "fetchFrameByIndex1 fail, status=" + this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt)) {
+        return this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt);
       }
-      return null;
+      return b(paramInt * this.b);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt)) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fetchFrameByIndex1 fail, status=");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("VideoFramesFetcher", 2, localStringBuilder.toString());
     }
-    return b(this.b * paramInt);
+    return null;
   }
   
   public void a()
   {
     this.jdField_a_of_type_Int = 1;
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.clear();
+      ((BlockingQueue)localObject).clear();
       this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = null;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      ((ConcurrentHashMap)localObject).clear();
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
     }
     this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdownNow();
@@ -102,20 +113,22 @@ public class VideoFramesFetcher
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((!a()) || (paramInt1 < 0) || (paramInt2 < 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFramesFetcher", 2, "fetchFrameByIndex2 fail, status=" + this.jdField_a_of_type_Int);
-      }
-    }
-    for (;;)
+    if ((a()) && (paramInt1 >= 0) && (paramInt2 >= 0))
     {
-      return;
       paramInt2 -= 1;
       while (paramInt2 >= paramInt1)
       {
         a(paramInt2);
         paramInt2 -= 1;
       }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fetchFrameByIndex2 fail, status=");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("VideoFramesFetcher", 2, localStringBuilder.toString());
     }
   }
   
@@ -126,7 +139,7 @@ public class VideoFramesFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher
  * JD-Core Version:    0.7.0.1
  */

@@ -23,14 +23,19 @@ class VideoSprite$2$1
     }
     catch (Exception paramMediaPlayer)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("playVideo: ");
+        localStringBuilder.append(QLog.getStackTraceString(paramMediaPlayer));
+        QLog.e("VideoSprite", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.2.1
  * JD-Core Version:    0.7.0.1
  */

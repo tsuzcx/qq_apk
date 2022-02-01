@@ -8,8 +8,9 @@ public class ColorNickManagerProxy
   
   public static CharSequence a(String paramString1, String paramString2)
   {
-    if (a != null) {
-      return a.a(paramString1, paramString2);
+    ColorNickManagerProxy.Proxy localProxy = a;
+    if (localProxy != null) {
+      return localProxy.a(paramString1, paramString2);
     }
     return QQTextProxy.a(paramString1, 3, 16);
   }
@@ -21,7 +22,7 @@ public class ColorNickManagerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.business.ColorNickManagerProxy
  * JD-Core Version:    0.7.0.1
  */

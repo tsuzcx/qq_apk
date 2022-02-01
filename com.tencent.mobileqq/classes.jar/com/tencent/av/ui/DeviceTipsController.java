@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.tips.TipsManager;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -47,8 +47,7 @@ public class DeviceTipsController
   
   private void a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (int i = 1; i != 0; i = 0)
+    if ((TextUtils.isEmpty(paramString) ^ true))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
@@ -59,18 +58,19 @@ public class DeviceTipsController
   
   private void f()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage != null) && (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage.a())) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
-      }
-      String str = a();
-      a(str);
-      if ((this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler != null) && (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.hasMessages(256))) {
-        this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.sendEmptyMessageDelayed(256, 1000L);
-      }
-      return;
+    int i;
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage != null) && (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage.a())) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0) {
+      this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
+    }
+    String str = a();
+    a(str);
+    if ((this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler != null) && (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.hasMessages(256))) {
+      this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.sendEmptyMessageDelayed(256, 1000L);
     }
   }
   
@@ -80,34 +80,39 @@ public class DeviceTipsController
     {
     default: 
       return "";
-    case 0: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690286);
-    case 1: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690273);
-    case 2: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690287);
-    case 3: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690274);
-    case 4: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695442);
-    case 5: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690275);
-    case 6: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690281);
-    case 7: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690276);
-    case 8: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690280);
+    case 10: 
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690196);
     case 9: 
-      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690277);
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690195);
+    case 8: 
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690198);
+    case 7: 
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690194);
+    case 6: 
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690199);
+    case 5: 
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690193);
+    case 4: 
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131695452);
+    case 3: 
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690192);
+    case 2: 
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690205);
+    case 1: 
+      return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690191);
     }
-    return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690278);
+    return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131690204);
   }
   
   public void a()
   {
-    if (AudioHelper.e()) {
-      QLog.w("DeviceTipsController", 1, "attach, isAttach[" + this.jdField_b_of_type_Boolean + "]");
+    if (AudioHelper.b())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("attach, isAttach[");
+      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append("]");
+      QLog.w("DeviceTipsController", 1, localStringBuilder.toString());
     }
     if (this.jdField_b_of_type_Boolean) {
       b();
@@ -130,7 +135,7 @@ public class DeviceTipsController
   
   public void a(View paramView)
   {
-    a((ViewGroup)paramView.findViewById(2131374072), (TextView)paramView.findViewById(2131373802));
+    a((ViewGroup)paramView.findViewById(2131373627), (TextView)paramView.findViewById(2131373374));
   }
   
   public void a(DeviceTipsController.DeviceItemMessage paramDeviceItemMessage)
@@ -139,9 +144,10 @@ public class DeviceTipsController
     if (paramDeviceItemMessage.jdField_a_of_type_Boolean) {
       this.jdField_b_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = paramDeviceItemMessage;
     }
-    if (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler != null)
+    paramDeviceItemMessage = this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler;
+    if (paramDeviceItemMessage != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.removeMessages(256);
+      paramDeviceItemMessage.removeMessages(256);
       this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.sendEmptyMessage(256);
     }
   }
@@ -165,22 +171,27 @@ public class DeviceTipsController
       }
       this.jdField_b_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
     }
-    for (;;)
+    else
     {
-      if (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.removeMessages(256);
-        this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.sendEmptyMessage(256);
-      }
-      return;
       this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
+    }
+    DeviceTipsController.CustomHandler localCustomHandler = this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler;
+    if (localCustomHandler != null)
+    {
+      localCustomHandler.removeMessages(256);
+      this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.sendEmptyMessage(256);
     }
   }
   
   public void b()
   {
-    if (AudioHelper.e()) {
-      QLog.w("DeviceTipsController", 1, "detach, isAttach[" + this.jdField_b_of_type_Boolean + "]");
+    if (AudioHelper.b())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("detach, isAttach[");
+      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append("]");
+      QLog.w("DeviceTipsController", 1, localStringBuilder.toString());
     }
     if (this.jdField_b_of_type_Boolean) {
       ((TipsManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(11)).a(null);
@@ -203,14 +214,15 @@ public class DeviceTipsController
     this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_ComTencentAvUiDeviceTipsController$DeviceItemMessage = null;
-    if (this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler != null) {
-      this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler.removeMessages(256);
+    DeviceTipsController.CustomHandler localCustomHandler = this.jdField_a_of_type_ComTencentAvUiDeviceTipsController$CustomHandler;
+    if (localCustomHandler != null) {
+      localCustomHandler.removeMessages(256);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DeviceTipsController
  * JD-Core Version:    0.7.0.1
  */

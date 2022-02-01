@@ -45,20 +45,23 @@ public final class GetReminderReq
   {
     paramJceOutputStream.write(this.uiUin, 0);
     paramJceOutputStream.write(this.iZoneId, 1);
-    if (this.sQua != null) {
-      paramJceOutputStream.write(this.sQua, 2);
+    Object localObject = this.sQua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.sIp != null) {
-      paramJceOutputStream.write(this.sIp, 3);
+    localObject = this.sIp;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.MapUserInfo != null) {
-      paramJceOutputStream.write(this.MapUserInfo, 4);
+    localObject = this.MapUserInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_VipReminderSvrProto.GetReminderReq
  * JD-Core Version:    0.7.0.1
  */

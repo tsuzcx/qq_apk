@@ -45,8 +45,9 @@ class MiniGamePublicAccountViewPagerIndicator$IndicatorView
   {
     paramContext = new LinearLayout.LayoutParams(this.mConfig.normalWidth, HEIGHT);
     paramContext.gravity = 17;
-    paramContext.leftMargin = SPACE;
-    paramContext.rightMargin = SPACE;
+    int i = SPACE;
+    paramContext.leftMargin = i;
+    paramContext.rightMargin = i;
     setLayoutParams(paramContext);
     setClickable(false);
     setFocusable(false);
@@ -54,25 +55,21 @@ class MiniGamePublicAccountViewPagerIndicator$IndicatorView
   
   public void setSelected(boolean paramBoolean)
   {
-    ViewGroup.LayoutParams localLayoutParams;
-    if (paramBoolean)
-    {
+    int i;
+    if (paramBoolean) {
       i = this.mConfig.selectedColor;
-      setBackgroundColor(i);
-      localLayoutParams = getLayoutParams();
-      if (!paramBoolean) {
-        break label56;
-      }
-    }
-    label56:
-    for (int i = this.mConfig.selectedWidth;; i = this.mConfig.normalWidth)
-    {
-      localLayoutParams.width = i;
-      setLayoutParams(localLayoutParams);
-      return;
+    } else {
       i = this.mConfig.normalColor;
-      break;
     }
+    setBackgroundColor(i);
+    ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
+    if (paramBoolean) {
+      i = this.mConfig.selectedWidth;
+    } else {
+      i = this.mConfig.normalWidth;
+    }
+    localLayoutParams.width = i;
+    setLayoutParams(localLayoutParams);
   }
   
   public void update(float paramFloat)
@@ -86,7 +83,7 @@ class MiniGamePublicAccountViewPagerIndicator$IndicatorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountViewPagerIndicator.IndicatorView
  * JD-Core Version:    0.7.0.1
  */

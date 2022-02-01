@@ -7,12 +7,13 @@ class AppBrandRemoteService$1
   
   public void onLoadFinish()
   {
-    this.this$0.setCurrState(this.this$0.stateLoadSucc);
+    AppBrandRemoteService localAppBrandRemoteService = this.this$0;
+    localAppBrandRemoteService.setCurrState(localAppBrandRemoteService.stateLoadSucc);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppBrandRemoteService.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,18 +14,23 @@ public class AddCardToWXCardPackage$Req
   
   public boolean checkArgs()
   {
-    if ((this.cardArrary == null) || (this.cardArrary.size() == 0) || (this.cardArrary.size() > 40)) {
-      return false;
-    }
-    Iterator localIterator = this.cardArrary.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.cardArrary;
+    if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      AddCardToWXCardPackage.WXCardItem localWXCardItem = (AddCardToWXCardPackage.WXCardItem)localIterator.next();
-      if ((localWXCardItem == null) || (localWXCardItem.cardId == null) || (localWXCardItem.cardId.length() > 1024) || ((localWXCardItem.cardExtMsg != null) && (localWXCardItem.cardExtMsg.length() > 1024))) {
+      if (this.cardArrary.size() > 40) {
         return false;
       }
+      localObject = this.cardArrary.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        AddCardToWXCardPackage.WXCardItem localWXCardItem = (AddCardToWXCardPackage.WXCardItem)((Iterator)localObject).next();
+        if ((localWXCardItem == null) || (localWXCardItem.cardId == null) || (localWXCardItem.cardId.length() > 1024) || ((localWXCardItem.cardExtMsg != null) && (localWXCardItem.cardExtMsg.length() > 1024))) {
+          return false;
+        }
+      }
+      return true;
     }
-    return true;
+    return false;
   }
   
   public int getType()
@@ -42,44 +47,37 @@ public class AddCardToWXCardPackage$Req
       localJSONStringer.object();
       localJSONStringer.key("card_list");
       localJSONStringer.array();
-      Iterator localIterator = this.cardArrary.iterator();
-      for (;;)
+      localObject2 = this.cardArrary.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        if (localIterator.hasNext())
-        {
-          Object localObject = (AddCardToWXCardPackage.WXCardItem)localIterator.next();
-          localJSONStringer.object();
-          localJSONStringer.key("card_id");
-          localJSONStringer.value(((AddCardToWXCardPackage.WXCardItem)localObject).cardId);
-          localJSONStringer.key("card_ext");
-          if (((AddCardToWXCardPackage.WXCardItem)localObject).cardExtMsg == null)
-          {
-            localObject = "";
-            localJSONStringer.value(localObject);
-            localJSONStringer.endObject();
-            continue;
-            paramBundle.putString("_wxapi_add_card_to_wx_card_list", localJSONStringer.toString());
-          }
+        Object localObject1 = (AddCardToWXCardPackage.WXCardItem)((Iterator)localObject2).next();
+        localJSONStringer.object();
+        localJSONStringer.key("card_id");
+        localJSONStringer.value(((AddCardToWXCardPackage.WXCardItem)localObject1).cardId);
+        localJSONStringer.key("card_ext");
+        if (((AddCardToWXCardPackage.WXCardItem)localObject1).cardExtMsg == null) {
+          localObject1 = "";
+        } else {
+          localObject1 = ((AddCardToWXCardPackage.WXCardItem)localObject1).cardExtMsg;
         }
+        localJSONStringer.value(localObject1);
+        localJSONStringer.endObject();
       }
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.AddCardToWXCardPackage", "Req.toBundle exception:" + localException.getMessage());
-    }
-    for (;;)
-    {
-      return;
-      String str = localException.cardExtMsg;
-      break;
       localJSONStringer.endArray();
       localJSONStringer.endObject();
     }
+    catch (Exception localException)
+    {
+      Object localObject2 = new StringBuilder("Req.toBundle exception:");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      Log.e("MicroMsg.AddCardToWXCardPackage", ((StringBuilder)localObject2).toString());
+    }
+    paramBundle.putString("_wxapi_add_card_to_wx_card_list", localJSONStringer.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelbiz.AddCardToWXCardPackage.Req
  * JD-Core Version:    0.7.0.1
  */

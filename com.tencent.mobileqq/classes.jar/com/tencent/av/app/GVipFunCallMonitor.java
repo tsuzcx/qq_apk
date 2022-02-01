@@ -19,13 +19,17 @@ public class GVipFunCallMonitor
   
   public void a()
   {
-    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
-    localIntentFilter.addAction("tencent.video.q2v.AnnimateDownloadFinish");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+    Object localObject = new IntentFilter("tencent.video.q2v.MultiVideo");
+    ((IntentFilter)localObject).addAction("tencent.video.q2v.AnnimateDownloadFinish");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject) != null) {
       this.jdField_a_of_type_Boolean = true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("GVipFunCallMonitor", 2, "regist vipFunCall " + this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("regist vipFunCall ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      QLog.d("GVipFunCallMonitor", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -40,7 +44,7 @@ public class GVipFunCallMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GVipFunCallMonitor
  * JD-Core Version:    0.7.0.1
  */

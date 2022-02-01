@@ -47,18 +47,18 @@ public class FriendListOpenFrame
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    super.setContentView(2131562988);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131364583));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)super.findViewById(2131369039));
+    super.setContentView(2131562810);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131364470));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)super.findViewById(2131368761));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(new String[] { "$", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" });
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelector(2131167305);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelector(2131167333);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setOnLayoutListener(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131562951, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366452));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getLayoutInflater().inflate(2131562770, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366333));
     this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this);
-    ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363942)).setVisibility(8);
+    ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363868)).setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.addHeaderView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
   }
   
@@ -74,23 +74,12 @@ public class FriendListOpenFrame
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
   }
   
-  public void a(String paramString)
-  {
-    if ("$".equals(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(0);
-    }
-    int i;
-    do
-    {
-      return;
-      i = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter.a(paramString);
-    } while (i == -1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(i + this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount());
-  }
-  
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    LogUtility.c("FriendListOpenFrame", "-->onImageLoaded() url = " + paramString1);
+    paramString2 = new StringBuilder();
+    paramString2.append("-->onImageLoaded() url = ");
+    paramString2.append(paramString1);
+    LogUtility.c("FriendListOpenFrame", paramString2.toString());
     paramString2 = Message.obtain();
     Bundle localBundle = new Bundle();
     localBundle.putString("url", paramString1);
@@ -107,19 +96,35 @@ public class FriendListOpenFrame
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(0);
     this.jdField_a_of_type_Int = paramBundle.getInt("group_index");
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("group_name");
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(true, false, this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getString(2131719002), this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter == null)
+    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(true, false, this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.getString(2131718718), this.jdField_a_of_type_JavaLangString);
+    paramBundle = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter;
+    if (paramBundle == null)
     {
       this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter = new FriendListOpenFrame.FriendListAdapter(this);
       this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter);
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter.b();
+    paramBundle.b();
   }
   
   public void g()
   {
     this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter.notifyDataSetChanged();
+  }
+  
+  public void onIndexChanged(String paramString)
+  {
+    if ("$".equals(paramString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(0);
+      return;
+    }
+    int i = this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter.a(paramString);
+    if (i != -1)
+    {
+      paramString = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
+      paramString.setSelection(i + paramString.getHeaderViewsCount());
+    }
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -128,23 +133,21 @@ public class FriendListOpenFrame
     if ((paramAdapterView != null) && (paramAdapterView.a != null))
     {
       paramInt -= this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount();
-      if (paramInt >= 0) {
-        break label34;
+      if (paramInt < 0) {
+        return;
+      }
+      paramView = (Friend)this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter.getItem(paramInt);
+      if (paramView != null)
+      {
+        this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(paramView);
+        if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramView.jdField_a_of_type_JavaLangString))
+        {
+          paramAdapterView.a.setChecked(true);
+          return;
+        }
+        paramAdapterView.a.setChecked(false);
       }
     }
-    label34:
-    do
-    {
-      return;
-      paramView = (Friend)this.jdField_a_of_type_ComTencentOpenAgentFriendListOpenFrame$FriendListAdapter.getItem(paramInt);
-    } while (paramView == null);
-    this.jdField_a_of_type_ComTencentOpenAgentFriendChooser.a(paramView);
-    if (this.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramView.jdField_a_of_type_JavaLangString))
-    {
-      paramAdapterView.a.setChecked(true);
-      return;
-    }
-    paramAdapterView.a.setChecked(false);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -157,7 +160,7 @@ public class FriendListOpenFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.FriendListOpenFrame
  * JD-Core Version:    0.7.0.1
  */

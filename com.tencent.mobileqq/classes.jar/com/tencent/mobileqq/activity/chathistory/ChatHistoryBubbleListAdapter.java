@@ -14,7 +14,7 @@ import com.tencent.mobileqq.activity.aio.TimestampReporter;
 import com.tencent.mobileqq.activity.aio.core.msglist.item.ItemBuilderFactory;
 import com.tencent.mobileqq.activity.aio.item.LocationShareItemBuilder;
 import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
-import com.tencent.mobileqq.apollo.api.aio.item.IApolloItemBuilder;
+import com.tencent.mobileqq.apollo.aio.item.IApolloItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -64,24 +64,23 @@ public class ChatHistoryBubbleListAdapter
   
   private void a(int paramInt1, int paramInt2)
   {
-    Object localObject;
-    label9:
-    ChatMessage localChatMessage;
-    boolean bool1;
-    if (paramInt1 == 0)
+    Object localObject1;
+    if (paramInt1 == 0) {
+      localObject1 = null;
+    } else {
+      localObject1 = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(paramInt1 - 1);
+    }
+    long l1 = 0L;
+    while (paramInt1 < paramInt2)
     {
-      localObject = null;
-      long l1 = 0L;
-      if (paramInt1 >= paramInt2) {
-        break label287;
-      }
-      localChatMessage = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
+      ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(paramInt1);
       boolean bool2 = MessageUtils.b(localChatMessage.msgtype);
-      if ((!bool2) || ((paramInt1 != 0) && ((localChatMessage.time >= this.jdField_b_of_type_Long) || (localChatMessage.time - l1 <= 300L)) && ((localChatMessage.time < this.jdField_b_of_type_Long) || (localChatMessage.time - l1 <= 300L) || ((localObject != null) && (localChatMessage.time - ((ChatMessage)localObject).time <= 60L))) && ((!this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(Long.valueOf(localChatMessage.uniseq))) || (l1 / 60L == localChatMessage.time / 60L)))) {
-        break label281;
+      boolean bool1;
+      if ((bool2) && ((paramInt1 == 0) || ((localChatMessage.time < this.jdField_b_of_type_Long) && (localChatMessage.time - l1 > 300L)) || ((localChatMessage.time >= this.jdField_b_of_type_Long) && (localChatMessage.time - l1 > 300L) && ((localObject1 == null) || (localChatMessage.time - ((ChatMessage)localObject1).time > 60L))) || ((this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(Long.valueOf(localChatMessage.uniseq))) && (l1 / 60L != localChatMessage.time / 60L)))) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      bool1 = true;
-      label164:
       localChatMessage.mNeedTimeStamp = bool1;
       if (localChatMessage.mNeedTimeStamp)
       {
@@ -93,28 +92,25 @@ public class ChatHistoryBubbleListAdapter
           l1 = l2;
         }
       }
-      if ((!bool2) || (((localChatMessage instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localChatMessage).tipParam.b == 1))) {
-        break label327;
+      Object localObject2 = localObject1;
+      if (bool2) {
+        if ((localChatMessage instanceof MessageForUniteGrayTip))
+        {
+          localObject2 = localObject1;
+          if (((MessageForUniteGrayTip)localChatMessage).tipParam.b == 1) {}
+        }
+        else
+        {
+          localObject2 = localChatMessage;
+        }
       }
-      localObject = localChatMessage;
-    }
-    label281:
-    label287:
-    label327:
-    for (;;)
-    {
       localChatMessage.isFlowMessage = false;
       localChatMessage.isDui = false;
       paramInt1 += 1;
-      break label9;
-      localObject = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(paramInt1 - 1);
-      break;
-      bool1 = false;
-      break label164;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Long.valueOf(((ChatMessage)this.jdField_a_of_type_JavaUtilList.get(0)).uniseq));
-      }
-      return;
+      localObject1 = localObject2;
+    }
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+      this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Long.valueOf(((ChatMessage)this.jdField_a_of_type_JavaUtilList.get(0)).uniseq));
     }
   }
   
@@ -124,20 +120,16 @@ public class ChatHistoryBubbleListAdapter
     int i = paramList.size();
     int k = this.jdField_a_of_type_JavaUtilList.size();
     this.jdField_a_of_type_JavaUtilList.addAll(0, paramList);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    this.jdField_b_of_type_Boolean = (paramBoolean ^ true);
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    if ((k > 0) && (j > 200))
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      int j = this.jdField_a_of_type_JavaUtilList.size();
-      if ((k > 0) && (j > 200))
-      {
-        k = Math.max(paramList.size(), 200);
-        this.jdField_a_of_type_JavaUtilList.subList(k, j).clear();
-        this.c = true;
-      }
-      a(0, paramList.size());
-      return i;
+      k = Math.max(paramList.size(), 200);
+      this.jdField_a_of_type_JavaUtilList.subList(k, j).clear();
+      this.c = true;
     }
+    a(0, paramList.size());
+    return i;
   }
   
   public void a(ChatHistoryBubbleListAdapter.HistoryDeleteOperator paramHistoryDeleteOperator)
@@ -145,7 +137,7 @@ public class ChatHistoryBubbleListAdapter
     this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter$HistoryDeleteOperator = paramHistoryDeleteOperator;
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return false;
   }
@@ -157,31 +149,25 @@ public class ChatHistoryBubbleListAdapter
   
   public int b(List<MessageRecord> paramList, boolean paramBoolean)
   {
-    int j = 0;
     paramList = a(paramList);
-    int k = this.jdField_a_of_type_JavaUtilList.size();
+    int i = this.jdField_a_of_type_JavaUtilList.size();
     this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    this.c = (paramBoolean ^ true);
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    if ((i > 0) && (j > 200))
     {
-      this.c = paramBoolean;
-      int m = this.jdField_a_of_type_JavaUtilList.size();
-      int i = j;
-      if (k > 0)
-      {
-        i = j;
-        if (m > 200)
-        {
-          i = Math.min(m - 200, k);
-          this.jdField_a_of_type_JavaUtilList.subList(0, i).clear();
-          i = -i;
-          this.jdField_b_of_type_Boolean = true;
-          a(0, 1);
-        }
-      }
-      a(this.jdField_a_of_type_JavaUtilList.size() - paramList.size(), this.jdField_a_of_type_JavaUtilList.size());
-      return i;
+      i = Math.min(j - 200, i);
+      this.jdField_a_of_type_JavaUtilList.subList(0, i).clear();
+      i = -i;
+      this.jdField_b_of_type_Boolean = true;
+      a(0, 1);
     }
+    else
+    {
+      i = 0;
+    }
+    a(this.jdField_a_of_type_JavaUtilList.size() - paramList.size(), this.jdField_a_of_type_JavaUtilList.size());
+    return i;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -193,21 +179,13 @@ public class ChatHistoryBubbleListAdapter
     }
     View localView = ((ChatItemBuilder)localObject).a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage, paramView, paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter$HistoryItemOnlongClickListener);
     if (localView != null) {
-      localView.setTag(2131364647, localChatMessage);
+      localView.setTag(2131364534, localChatMessage);
     }
     if ((localView instanceof BaseChatItemLayout)) {
       ((BaseChatItemLayout)localView).b();
     }
-    if ((localChatMessage.msgtype == -2009) || (localChatMessage.msgtype == -2016)) {
-      ((VideoItemBuilder)localObject).a(false);
-    }
-    for (;;)
+    if ((localChatMessage.msgtype != -2009) && (localChatMessage.msgtype != -2016))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "AIOTime getView " + localChatMessage.getClass().getName());
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
       if (localChatMessage.msgtype == -2076)
       {
         if ((localObject instanceof LocationShareItemBuilder)) {
@@ -221,11 +199,24 @@ public class ChatHistoryBubbleListAdapter
         ((IApolloItemBuilder)localObject).a(AIOUtils.a(localView));
       }
     }
+    else {
+      ((VideoItemBuilder)localObject).a(false);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AIOTime getView ");
+      localStringBuilder.append(localChatMessage.getClass().getName());
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter
  * JD-Core Version:    0.7.0.1
  */

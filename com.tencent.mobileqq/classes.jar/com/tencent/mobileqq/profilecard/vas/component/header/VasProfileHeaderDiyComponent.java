@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.profilecard.vas.component.header;
 
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.template.ProfileTemplateApi;
 import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView;
 
 public class VasProfileHeaderDiyComponent
@@ -20,14 +21,14 @@ public class VasProfileHeaderDiyComponent
     return "VasProfileHeaderDiyComponent";
   }
   
-  public void initHeaderView()
+  protected void initHeaderView()
   {
     if (this.mHeaderView == null)
     {
       VasProfileQVipDiyView localVasProfileQVipDiyView = new VasProfileQVipDiyView(this.mActivity, (ProfileCardInfo)this.mData);
       localVasProfileQVipDiyView.setProfileArgs(this.mRootView);
       localVasProfileQVipDiyView.setClickListener(this);
-      localVasProfileQVipDiyView.onInit();
+      localVasProfileQVipDiyView.onInit(ProfileTemplateApi.getTemplateUtils(this.mComponentCenter));
       localVasProfileQVipDiyView.initDiyTemplate();
       this.mHeaderView = localVasProfileQVipDiyView;
       ((FrameLayout)this.mViewContainer).removeAllViews();
@@ -37,7 +38,7 @@ public class VasProfileHeaderDiyComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.header.VasProfileHeaderDiyComponent
  * JD-Core Version:    0.7.0.1
  */

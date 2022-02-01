@@ -10,42 +10,35 @@ class AVActivity$13
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) {}
-    SessionInfo localSessionInfo;
-    do
-    {
+    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) {
       return;
-      localSessionInfo = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    } while (!localSessionInfo.b());
-    this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(localSessionInfo.jdField_d_of_type_JavaLangString, 229);
-    this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(229);
-    int i = localSessionInfo.jdField_d_of_type_Int;
-    this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(localSessionInfo.jdField_d_of_type_JavaLangString, 21);
-    if (i == 1)
-    {
-      localSessionInfo.a(this.a, "av.onResume.1", 3);
-      if (!localSessionInfo.c()) {
-        break label158;
-      }
     }
-    label158:
-    for (localSessionInfo.j = 1;; localSessionInfo.j = 3000)
+    SessionInfo localSessionInfo = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+    if (localSessionInfo.b())
     {
-      localSessionInfo.b(this.a, false);
-      localSessionInfo.c("AVActivity.onResume", 0);
-      this.this$0.jdField_a_of_type_ComTencentAvUiControlUIObserver.a(this.a);
-      return;
-      if (i != 2) {
-        break;
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(localSessionInfo.c, 229);
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(229);
+      int i = localSessionInfo.d;
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(localSessionInfo.c, 21);
+      if (i == 1) {
+        localSessionInfo.a(this.a, "av.onResume.1", 3);
+      } else if (i == 2) {
+        localSessionInfo.a(this.a, "av.onResume.2", 4);
       }
-      localSessionInfo.a(this.a, "av.onResume.2", 4);
-      break;
+      if (localSessionInfo.c()) {
+        localSessionInfo.k = 1;
+      } else {
+        localSessionInfo.k = 3000;
+      }
+      localSessionInfo.c(this.a, false);
+      localSessionInfo.d("AVActivity.onResume", 0);
+      this.this$0.jdField_a_of_type_ComTencentAvUiControlUIObserver.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.13
  * JD-Core Version:    0.7.0.1
  */

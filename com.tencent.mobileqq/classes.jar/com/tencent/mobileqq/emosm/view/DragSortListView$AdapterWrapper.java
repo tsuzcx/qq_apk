@@ -46,30 +46,37 @@ class DragSortListView$AdapterWrapper
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    Object localObject1;
     if (paramView != null)
     {
-      localObject = (DragSortItemView)paramView;
-      localView1 = ((DragSortItemView)localObject).getChildAt(0);
+      localObject2 = (DragSortItemView)paramView;
+      View localView1 = ((DragSortItemView)localObject2).getChildAt(0);
       View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+      localObject1 = localObject2;
       if (localView2 != localView1)
       {
         if (localView1 != null) {
-          ((DragSortItemView)localObject).removeViewAt(0);
+          ((DragSortItemView)localObject2).removeViewAt(0);
         }
-        ((DragSortItemView)localObject).addView(localView2);
+        ((DragSortItemView)localObject2).addView(localView2);
+        localObject1 = localObject2;
       }
-      DragSortListView.a(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount() + paramInt, (View)localObject, true);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
     }
-    View localView1 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
-    if ((localView1 instanceof Checkable)) {}
-    for (Object localObject = new DragSortItemViewCheckable(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());; localObject = new DragSortItemView(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext()))
+    else
     {
-      ((DragSortItemView)localObject).setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      ((DragSortItemView)localObject).addView(localView1);
-      break;
+      localObject2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+      if ((localObject2 instanceof Checkable)) {
+        localObject1 = new DragSortItemViewCheckable(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());
+      } else {
+        localObject1 = new DragSortItemView(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());
+      }
+      ((DragSortItemView)localObject1).setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+      ((DragSortItemView)localObject1).addView((View)localObject2);
     }
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView;
+    DragSortListView.a((DragSortListView)localObject2, ((DragSortListView)localObject2).getHeaderViewsCount() + paramInt, (View)localObject1, true);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
   
   public int getViewTypeCount()
@@ -94,7 +101,7 @@ class DragSortListView$AdapterWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView.AdapterWrapper
  * JD-Core Version:    0.7.0.1
  */

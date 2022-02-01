@@ -14,15 +14,19 @@ class d
   
   public boolean accept(File paramFile, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.endsWith(".xml"))) {
-      return false;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!paramString.endsWith(".xml")) {
+        return false;
+      }
+      return Pattern.compile((String)this.a.first).matcher(paramString.substring(0, paramString.length() - 4)).matches();
     }
-    return Pattern.compile((String)this.a.first).matcher(paramString.substring(0, paramString.length() - 4)).matches();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.utils.d
  * JD-Core Version:    0.7.0.1
  */

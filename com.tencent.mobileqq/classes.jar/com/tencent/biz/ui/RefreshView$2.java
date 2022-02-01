@@ -14,7 +14,7 @@ class RefreshView$2
   {
     if (this.a.jdField_a_of_type_Int == 2)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.ah_();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.f();
       return;
     }
     this.a.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.c(0L);
@@ -32,10 +32,12 @@ class RefreshView$2
     if (this.a.jdField_a_of_type_Int != 2)
     {
       RefreshView.a(this.a, false);
-      this.a.a(RefreshView.a(this.a));
+      paramView = this.a;
+      paramView.a(RefreshView.a(paramView));
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.a(0L);
-      this.a.jdField_a_of_type_Int = 2;
-      RefreshView.a(this.a);
+      paramView = this.a;
+      paramView.jdField_a_of_type_Int = 2;
+      RefreshView.a(paramView);
     }
     return false;
   }
@@ -47,7 +49,7 @@ class RefreshView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.RefreshView.2
  * JD-Core Version:    0.7.0.1
  */

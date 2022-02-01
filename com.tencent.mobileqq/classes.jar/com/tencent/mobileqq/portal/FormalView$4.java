@@ -17,8 +17,12 @@ class FormalView$4
       if (localComboNumber != null)
       {
         PortalManager.a(localComboNumber.numberImageMD5, "hb_icon_path");
-        if (QLog.isColorLevel()) {
-          QLog.d("FormalView", 2, "setComboNumberList, preload p=" + localComboNumber);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("setComboNumberList, preload p=");
+          localStringBuilder.append(localComboNumber);
+          QLog.d("FormalView", 2, localStringBuilder.toString());
         }
       }
       i += 1;
@@ -27,7 +31,7 @@ class FormalView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.FormalView.4
  * JD-Core Version:    0.7.0.1
  */

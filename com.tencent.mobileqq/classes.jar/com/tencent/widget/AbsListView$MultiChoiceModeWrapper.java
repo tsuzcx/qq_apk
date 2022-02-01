@@ -20,22 +20,23 @@ class AbsListView$MultiChoiceModeWrapper
   
   public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    boolean bool = false;
     if (this.mWrapped.onCreateActionMode(paramActionMode, paramMenu))
     {
       this.this$0.setLongClickable(false);
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public void onDestroyActionMode(ActionMode paramActionMode)
   {
     this.mWrapped.onDestroyActionMode(paramActionMode);
-    this.this$0.mChoiceActionMode = null;
-    this.this$0.clearChoices();
-    this.this$0.mDataChanged = true;
-    this.this$0.rememberSyncState();
+    paramActionMode = this.this$0;
+    paramActionMode.mChoiceActionMode = null;
+    paramActionMode.clearChoices();
+    paramActionMode = this.this$0;
+    paramActionMode.mDataChanged = true;
+    paramActionMode.rememberSyncState();
     this.this$0.requestLayout();
     this.this$0.setLongClickable(true);
   }
@@ -60,7 +61,7 @@ class AbsListView$MultiChoiceModeWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AbsListView.MultiChoiceModeWrapper
  * JD-Core Version:    0.7.0.1
  */

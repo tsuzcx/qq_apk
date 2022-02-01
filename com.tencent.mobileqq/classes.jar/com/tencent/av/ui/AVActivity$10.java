@@ -13,21 +13,21 @@ class AVActivity$10
   public void run()
   {
     VideoAppInterface localVideoAppInterface = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-    if (localVideoAppInterface == null) {}
-    do
+    if (localVideoAppInterface == null) {
+      return;
+    }
+    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch == null) && (!this.this$0.isDestroyed()))
     {
-      do
-      {
-        return;
-      } while ((this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch != null) || (this.this$0.isDestroyed()));
       this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = AVRedTouchUtil.a(localVideoAppInterface, this.a, 1);
-    } while ((this.a.getVisibility() != 8) || (this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch == null));
-    this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.setVisibility(8);
+      if ((this.a.getVisibility() == 8) && (this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch != null)) {
+        this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.setVisibility(8);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.10
  * JD-Core Version:    0.7.0.1
  */

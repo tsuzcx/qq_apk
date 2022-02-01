@@ -12,12 +12,16 @@ public class QPDirUtils
   
   public static String b()
   {
-    return a() + File.separator + "qseclibs";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("qseclibs");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.common.QPDirUtils
  * JD-Core Version:    0.7.0.1
  */

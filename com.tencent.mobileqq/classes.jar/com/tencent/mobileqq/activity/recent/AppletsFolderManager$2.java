@@ -10,23 +10,22 @@ class AppletsFolderManager$2
   
   public void run()
   {
-    AppletsFolderManager.a(this.this$0, ActionSheet.create(this.jdField_a_of_type_AndroidContentContext));
-    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131690180);
-    AppletsFolderManager.a(this.this$0).setMainTitle(str);
-    AppletsFolderManager.a(this.this$0).addButton(2131690181, 3);
-    AppletsFolderManager.a(this.this$0).addCancelButton(2131690800);
-    AppletsFolderManager.a(this.this$0).setOnDismissListener(new AppletsFolderManager.2.1(this));
-    AppletsFolderManager.a(this.this$0).setOnButtonClickListener(new AppletsFolderManager.2.2(this));
-    if (!AppletsFolderManager.a(this.this$0).isShowing())
+    ActionSheet localActionSheet = ActionSheet.create(this.jdField_a_of_type_AndroidContentContext);
+    localActionSheet.setMainTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131690098));
+    localActionSheet.addButton(2131690099, 3);
+    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.setOnDismissListener(new AppletsFolderManager.2.1(this));
+    localActionSheet.setOnButtonClickListener(new AppletsFolderManager.2.2(this, localActionSheet));
+    if (!localActionSheet.isShowing())
     {
       AppletsFolderManager.a(this.this$0, false);
-      AppletsFolderManager.a(this.this$0).show();
+      localActionSheet.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.AppletsFolderManager.2
  * JD-Core Version:    0.7.0.1
  */

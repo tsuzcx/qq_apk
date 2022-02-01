@@ -40,9 +40,10 @@ public class CommonMenuWrapper
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate == null) {
-      throw new IllegalStateException("Delegate has not bound.");
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate != null) {
+      return;
     }
+    throw new IllegalStateException("Delegate has not bound.");
   }
   
   public int a()
@@ -52,12 +53,12 @@ public class CommonMenuWrapper
   
   public CommonMenuWrapper.MenuPlaceInfo a(View paramView, BaseChatPie paramBaseChatPie)
   {
-    int m = 0;
     int[] arrayOfInt = new int[2];
     paramView.getLocationInWindow(arrayOfInt);
+    int k = 1;
     int n = arrayOfInt[1];
-    int i = arrayOfInt[1];
-    i = paramView.getHeight() + i;
+    int i1 = arrayOfInt[1];
+    int i2 = paramView.getHeight();
     paramView = paramBaseChatPie;
     if (paramBaseChatPie == null)
     {
@@ -66,79 +67,80 @@ public class CommonMenuWrapper
         paramView = ((AIOMenuWrapper)this).a;
       }
     }
-    int j;
-    int k;
+    int i;
     if ((paramView != null) && (paramView.a != null) && (paramView.a.getVisibility() == 0))
     {
       paramView.a.getLocationInWindow(arrayOfInt);
-      j = arrayOfInt[1];
-      if (n + 0 >= e + ImmersiveUtils.statusHeight) {
-        break label344;
-      }
-      if (i + 0 >= e + ImmersiveUtils.statusHeight) {
-        break label221;
-      }
-      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int + 0 <= e + ImmersiveUtils.statusHeight)) {
-        break label171;
-      }
-      i = this.jdField_a_of_type_Int + 0;
-      k = m;
+      i = arrayOfInt[1];
     }
-    for (;;)
+    else
     {
-      return new CommonMenuWrapper.MenuPlaceInfo(i, k);
-      j = ViewUtils.b();
-      break;
-      label171:
-      if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
+      i = ViewUtils.b();
+    }
+    int m = n + 0;
+    int i3 = e;
+    int i4 = ImmersiveUtils.statusHeight;
+    int j = 0;
+    if (m < i3 + i4)
+    {
+      m = i1 + i2 + 0;
+      if (m < e + ImmersiveUtils.statusHeight)
       {
-        i = this.jdField_a_of_type_Int + 0;
-        k = 1;
-      }
-      else
-      {
-        i = e + ImmersiveUtils.statusHeight;
-        k = m;
-        continue;
-        label221:
-        i += 0;
-        if (f + i > j) {
-          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + 0 > e + ImmersiveUtils.statusHeight))
-          {
-            j = this.jdField_a_of_type_Int + 0;
-            i = 0;
-          }
-        }
-        for (;;)
+        k = this.jdField_a_of_type_Int;
+        if ((k != 0) && (k - 0 > e + ImmersiveUtils.statusHeight))
         {
-          k = i;
-          i = j;
-          break;
-          if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int + f + 0 < j))
+          i = this.jdField_a_of_type_Int - 0;
+        }
+        else
+        {
+          k = this.jdField_a_of_type_Int;
+          if ((k != 0) && (f + k - 0 < i))
           {
-            j = this.jdField_a_of_type_Int + 0;
-            i = 1;
+            i = k + 0;
+            j = 1;
           }
           else
           {
-            j = e + ImmersiveUtils.statusHeight + f + 0;
-            i = 0;
-            continue;
-            k = 1;
-            j = i;
-            i = k;
+            i = e + ImmersiveUtils.statusHeight;
           }
         }
-        label344:
-        i = j;
-        k = m;
-        if (n <= j)
+      }
+      else
+      {
+        j = m;
+        if (f + m > i)
         {
-          i = n + 0;
-          k = m;
+          j = this.jdField_a_of_type_Int;
+          if ((j != 0) && (j - 0 > e + ImmersiveUtils.statusHeight))
+          {
+            i = this.jdField_a_of_type_Int + 0;
+          }
+          else
+          {
+            j = this.jdField_a_of_type_Int;
+            if ((j != 0) && (f + j - 0 < i))
+            {
+              j += 0;
+              break label328;
+            }
+            i = e + ImmersiveUtils.statusHeight + f + 0;
+          }
+          j = 0;
+          break label335;
         }
+        label328:
+        i = j;
+        j = k;
       }
     }
+    else
+    {
+      label335:
+      if (n <= i) {
+        i = m;
+      }
+    }
+    return new CommonMenuWrapper.MenuPlaceInfo(i, j);
   }
   
   @Nullable
@@ -149,8 +151,9 @@ public class CommonMenuWrapper
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b())) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
+    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if ((localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing())) {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.dismiss();
     }
   }
   
@@ -172,66 +175,66 @@ public class CommonMenuWrapper
     {
       int i = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.c();
       int j = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.b();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a() == i - j) {
-        localQQCustomMenu = this.b;
-      }
-    }
-    for (;;)
-    {
-      a(localQQCustomMenu, paramView, paramInt1, paramInt2, paramInt3);
-      return;
-      if (this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate.a() == i - j)
       {
-        localQQCustomMenu = this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
+        localQQCustomMenu = this.b;
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu == null)
+        localQQCustomMenu = this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
+        if (localQQCustomMenu == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = new QQCustomMenu();
-          this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131365448, HardCodeUtil.a(2131702292), 2130839050);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131377708, HardCodeUtil.a(2131702290), 2130839070);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131367398, HardCodeUtil.a(2131702294), 2130839059);
-          this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131366625, HardCodeUtil.a(2131702291), 2130839058);
+          if (this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu == null)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = new QQCustomMenu();
+            this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131365311, HardCodeUtil.a(2131702424), 2130838903);
+            this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131377136, HardCodeUtil.a(2131702422), 2130838923);
+            this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131367180, HardCodeUtil.a(2131702426), 2130838912);
+            this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(2131366494, HardCodeUtil.a(2131702423), 2130838911);
+          }
+          localQQCustomMenu = this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
         }
-        localQQCustomMenu = this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
-        continue;
-        localQQCustomMenu = this.b;
       }
     }
+    else
+    {
+      localQQCustomMenu = this.b;
+    }
+    a(localQQCustomMenu, paramView, paramInt1, paramInt2, paramInt3);
   }
   
   protected void a(View paramView, int paramInt1, int paramInt2, QQCustomMenu paramQQCustomMenu, int paramInt3, boolean paramBoolean1, Activity paramActivity, boolean paramBoolean2, Integer paramInteger)
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    if ((localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing()))
     {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.dismiss();
       this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
     }
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
     paramQQCustomMenu = BubbleContextMenu.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow, paramView.getContext(), paramQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener);
     paramQQCustomMenu.setIgnoreTouchLocation(paramBoolean2);
     paramQQCustomMenu.setContainerBottom(paramInteger);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(paramQQCustomMenu);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(paramBoolean1);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setContentView(paramQQCustomMenu);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOutsideTouchable(paramBoolean1);
+    paramBoolean2 = true;
     if (paramBoolean1) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(true);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setFocusable(true);
     }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.c(1);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b(2);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setSoftInputMode(1);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setInputMethodMode(2);
     paramQQCustomMenu = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    if (paramInt3 == 1) {}
-    for (paramBoolean1 = bool;; paramBoolean1 = false)
-    {
-      paramQQCustomMenu.d(paramBoolean1);
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener);
-      paramView.post(new CommonMenuWrapper.1(this, paramActivity, paramView, paramInt1, paramInt2));
-      this.jdField_c_of_type_Int = paramInt1;
-      this.d = paramInt2;
-      return;
+    if (paramInt3 == 1) {
+      paramBoolean1 = paramBoolean2;
+    } else {
+      paramBoolean1 = false;
     }
+    paramQQCustomMenu.setKeepAbove(paramBoolean1);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOnDismissListener(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener);
+    paramView.post(new CommonMenuWrapper.1(this, paramActivity, paramView, paramInt1, paramInt2));
+    this.jdField_c_of_type_Int = paramInt1;
+    this.d = paramInt2;
   }
   
   protected void a(View paramView, int paramInt1, int paramInt2, QQCustomMenu paramQQCustomMenu, int paramInt3, boolean paramBoolean, Integer paramInteger)
@@ -267,42 +270,39 @@ public class CommonMenuWrapper
   {
     this.b = paramQQCustomMenu;
     this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = null;
-    Object localObject;
-    int i;
     if ((paramBoolean) && (paramQQCustomMenu != null))
     {
-      localObject = paramQQCustomMenu.a();
+      Object localObject = paramQQCustomMenu.a();
       if ((localObject != null) && (localObject.length > 0))
       {
         paramQQCustomMenu = new ArrayList(Arrays.asList((Object[])localObject));
-        i = 0;
-        if (i >= localObject.length) {
-          break label161;
+        int k = 0;
+        int i = 0;
+        int j;
+        for (;;)
+        {
+          j = k;
+          if (i >= localObject.length) {
+            break;
+          }
+          if (localObject[i].a() == 2131365311)
+          {
+            j = i;
+            break;
+          }
+          i += 1;
         }
-        if (localObject[i].a() != 2131365448) {}
-      }
-    }
-    for (;;)
-    {
-      localObject = new QQCustomMenuItem(2131377708, HardCodeUtil.a(2131702293));
-      ((QQCustomMenuItem)localObject).a(2130839070);
-      paramQQCustomMenu.add(i + 1, localObject);
-      this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = new QQCustomMenu();
-      paramQQCustomMenu = paramQQCustomMenu.iterator();
-      for (;;)
-      {
-        if (paramQQCustomMenu.hasNext())
+        localObject = new QQCustomMenuItem(2131377136, HardCodeUtil.a(2131702425));
+        ((QQCustomMenuItem)localObject).a(2130838923);
+        paramQQCustomMenu.add(j + 1, localObject);
+        this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = new QQCustomMenu();
+        paramQQCustomMenu = paramQQCustomMenu.iterator();
+        while (paramQQCustomMenu.hasNext())
         {
           localObject = (QQCustomMenuItem)paramQQCustomMenu.next();
           this.jdField_c_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a((QQCustomMenuItem)localObject);
-          continue;
-          i += 1;
-          break;
         }
       }
-      return;
-      label161:
-      i = 0;
     }
   }
   
@@ -313,7 +313,8 @@ public class CommonMenuWrapper
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b());
+    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    return (localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing());
   }
   
   public int b()
@@ -333,7 +334,7 @@ public class CommonMenuWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.CommonMenuWrapper
  * JD-Core Version:    0.7.0.1
  */

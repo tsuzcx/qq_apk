@@ -16,51 +16,42 @@ public class PageInfo
   
   public PageInfo clone()
   {
+    PageInfo localPageInfo;
     try
     {
       localPageInfo = (PageInfo)super.clone();
-      localThrowable1.printStackTrace();
-    }
-    catch (Throwable localThrowable1)
-    {
       try
       {
         localPageInfo.windowInfo = this.windowInfo.clone();
         return localPageInfo;
       }
-      catch (Throwable localThrowable2)
-      {
-        PageInfo localPageInfo;
-        break label24;
-      }
-      localThrowable1 = localThrowable1;
+      catch (Throwable localThrowable1) {}
+      localThrowable2.printStackTrace();
+    }
+    catch (Throwable localThrowable2)
+    {
       localPageInfo = null;
     }
-    label24:
     return localPageInfo;
   }
   
   public void updateInfo(JSONObject paramJSONObject)
   {
-    WindowInfo localWindowInfo;
-    if (this.windowInfo != null)
+    WindowInfo localWindowInfo = this.windowInfo;
+    if (localWindowInfo != null)
     {
-      localWindowInfo = this.windowInfo;
-      if (paramJSONObject != null) {
-        break label24;
+      if (paramJSONObject == null) {
+        paramJSONObject = null;
+      } else {
+        paramJSONObject = paramJSONObject.optJSONObject("window");
       }
-    }
-    label24:
-    for (paramJSONObject = null;; paramJSONObject = paramJSONObject.optJSONObject("window"))
-    {
       localWindowInfo.updateInfo(paramJSONObject);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.PageInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -28,27 +28,36 @@ public class AVGameEffectCtrl
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramCameraDataProcess);
     this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
     this.jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig.a("BEAUTY_SKIN", 60);
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender = new FilterProcessRender(this.jdField_a_of_type_AndroidContentContext, null, this.jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig);
+    this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender = new FilterProcessRender(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig);
     int i = AvGameMachineLevelUtils.a();
-    if (i == 3) {}
-    for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int = 1)
+    if (i == 3) {
+      this.jdField_a_of_type_Int = 0;
+    } else {
+      this.jdField_a_of_type_Int = 1;
+    }
+    this.b = GraphicRenderMgr.soloadedPTV;
+    if (QLog.isColorLevel())
     {
-      this.b = GraphicRenderMgr.soloadedPTV;
-      if (QLog.isColorLevel()) {
-        QLog.i("AVGameEffectCtrl", 2, "AVGameEffectCtrl, line[" + i + "], mode[" + this.jdField_a_of_type_Int + "], PtvSoReady[" + this.b + "]");
-      }
-      return;
+      paramCameraDataProcess = new StringBuilder();
+      paramCameraDataProcess.append("AVGameEffectCtrl, line[");
+      paramCameraDataProcess.append(i);
+      paramCameraDataProcess.append("], mode[");
+      paramCameraDataProcess.append(this.jdField_a_of_type_Int);
+      paramCameraDataProcess.append("], PtvSoReady[");
+      paramCameraDataProcess.append(this.b);
+      paramCameraDataProcess.append("]");
+      QLog.i("AVGameEffectCtrl", 2, paramCameraDataProcess.toString());
     }
   }
   
-  public int a()
+  protected int a()
   {
     return this.jdField_a_of_type_Int;
   }
   
   public void a(int paramInt) {}
   
-  public void a(CameraFrame paramCameraFrame, RenderParams paramRenderParams)
+  protected void a(CameraFrame paramCameraFrame, RenderParams paramRenderParams)
   {
     paramRenderParams.a();
     if (!paramRenderParams.c) {
@@ -58,8 +67,13 @@ public class AVGameEffectCtrl
   
   public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameEffectCtrl", 2, "destroy, exit[" + paramBoolean + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("destroy, exit[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("]");
+      QLog.i("AVGameEffectCtrl", 2, localStringBuilder.toString());
     }
     c();
   }
@@ -79,23 +93,28 @@ public class AVGameEffectCtrl
       paramAVGameAppInterface = paramAVGameAppInterface.a();
       if (paramAVGameAppInterface != null) {
         this.b = paramAVGameAppInterface.a();
-      }
-      while (!this.b)
-      {
-        QLog.w("AVGameEffectCtrl", 1, "isLoadedSO, load ptv so fail, proxy[" + paramAVGameAppInterface + "]");
-        return this.b;
+      } else {
         g();
+      }
+      if (!this.b)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isLoadedSO, load ptv so fail, proxy[");
+        localStringBuilder.append(paramAVGameAppInterface);
+        localStringBuilder.append("]");
+        QLog.w("AVGameEffectCtrl", 1, localStringBuilder.toString());
+        return this.b;
       }
     }
     return g();
   }
   
-  public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2, short paramShort3, short paramShort4)
+  protected byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2, short paramShort3, short paramShort4)
   {
     return null;
   }
   
-  public float[] a()
+  protected float[] a()
   {
     CameraDataProcess localCameraDataProcess = (CameraDataProcess)this.jdField_a_of_type_MqqUtilWeakReference.get();
     if (localCameraDataProcess != null) {
@@ -104,8 +123,6 @@ public class AVGameEffectCtrl
     return null;
   }
   
-  public void b(int paramInt) {}
-  
   public boolean f()
   {
     return this.b;
@@ -113,32 +130,44 @@ public class AVGameEffectCtrl
   
   public boolean g()
   {
-    boolean bool2;
+    StringBuilder localStringBuilder;
+    boolean bool1;
     if (!GraphicRenderMgr.soloadedPTV)
     {
       GraphicRenderMgr.loadPtuSO();
-      QLog.w("AVGameEffectCtrl", 1, "isLoadedSO, loadPtvSoRet[" + GraphicRenderMgr.soloadedPTV + "]");
-      bool2 = GraphicRenderMgr.soloadedPTV;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isLoadedSO, loadPtvSoRet[");
+      localStringBuilder.append(GraphicRenderMgr.soloadedPTV);
+      localStringBuilder.append("]");
+      QLog.w("AVGameEffectCtrl", 1, localStringBuilder.toString());
+      boolean bool2 = GraphicRenderMgr.soloadedPTV;
       bool1 = bool2;
       if (bool2)
       {
         this.b = true;
         d();
+        bool1 = bool2;
       }
     }
-    for (boolean bool1 = bool2;; bool1 = true)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AVGameEffectCtrl", 2, "loadPtvSo, ret[" + bool1 + "]");
-      }
-      return bool1;
       this.b = true;
+      bool1 = true;
     }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadPtvSo, ret[");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append("]");
+      QLog.i("AVGameEffectCtrl", 2, localStringBuilder.toString());
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.AVGameEffectCtrl
  * JD-Core Version:    0.7.0.1
  */

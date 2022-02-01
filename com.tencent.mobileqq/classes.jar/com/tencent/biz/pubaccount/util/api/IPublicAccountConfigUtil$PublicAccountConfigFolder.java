@@ -3,25 +3,29 @@ package com.tencent.biz.pubaccount.util.api;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.util.api.impl.PublicAccountConfigUtilImpl.PublicAccountDownloadListener;
-import com.tencent.mobileqq.activity.LebaIconDownloader;
-import com.tencent.mobileqq.activity.LebaIconDownloader.DownloadListenerAdapter;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.qphone.base.util.QLog;
 
 public class IPublicAccountConfigUtil$PublicAccountConfigFolder
 {
-  int jdField_a_of_type_Int = 0;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
-  String c = "";
+  public int a;
+  public Drawable a;
+  public String a;
+  public String b = "";
+  public String c = "";
   
-  public IPublicAccountConfigUtil$PublicAccountConfigFolder(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public IPublicAccountConfigUtil$PublicAccountConfigFolder()
   {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+  }
+  
+  public IPublicAccountConfigUtil$PublicAccountConfigFolder(AppInterface paramAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_JavaLangString = paramContext.getString(paramInt2);
     this.b = "";
@@ -32,50 +36,10 @@ public class IPublicAccountConfigUtil$PublicAccountConfigFolder
       this.c = a(paramInt1);
       return;
     }
-    catch (Exception paramQQAppInterface)
+    catch (Exception paramAppInterface)
     {
       break label66;
     }
-  }
-  
-  public IPublicAccountConfigUtil$PublicAccountConfigFolder(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = a(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getDefaultDrawable(paramContext, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mId: " + this.jdField_a_of_type_Int + " | mName: " + this.jdField_a_of_type_JavaLangString + " | mIconUrl: " + this.b + " | mUin : " + this.c);
-    }
-    if ((!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
-    {
-      paramString1 = LebaIconDownloader.b(paramContext, paramString2);
-      if (paramString1 != null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString1;
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      LebaIconDownloader.a(paramQQAppInterface, paramContext, paramString2, new LebaIconDownloader.DownloadListenerAdapter(paramContext, new PublicAccountConfigUtilImpl.PublicAccountDownloadListener(this, paramQQAppInterface, this.c), new Object[0]));
-      return;
-    }
-    QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder mIconUrl is empty");
-  }
-  
-  private String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return String.valueOf(7210);
-    case 2: 
-      return String.valueOf(AppConstants.NEW_KANDIAN_UIN);
-    }
-    return String.valueOf(AppConstants.KANDIAN_MERGE_UIN);
   }
   
   public int a()
@@ -93,6 +57,22 @@ public class IPublicAccountConfigUtil$PublicAccountConfigFolder
     return this.jdField_a_of_type_JavaLangString;
   }
   
+  public String a(int paramInt)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return "";
+        }
+        return String.valueOf(AppConstants.KANDIAN_MERGE_UIN);
+      }
+      return String.valueOf(AppConstants.NEW_KANDIAN_UIN);
+    }
+    return String.valueOf(7210);
+  }
+  
   public void a(Drawable paramDrawable)
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
@@ -100,7 +80,7 @@ public class IPublicAccountConfigUtil$PublicAccountConfigFolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil.PublicAccountConfigFolder
  * JD-Core Version:    0.7.0.1
  */

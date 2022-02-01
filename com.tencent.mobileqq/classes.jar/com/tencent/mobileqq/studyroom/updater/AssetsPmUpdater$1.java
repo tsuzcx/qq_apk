@@ -14,23 +14,28 @@ class AssetsPmUpdater$1
     if ((!AssetsPmUpdater.a(this.a).exists()) || (!AssetsPmUpdater.a(this.a)))
     {
       long l = System.currentTimeMillis();
-      if (!AssetsPmUpdater.a(this.a, AssetsPmUpdater.a(this.a), AssetsPmUpdater.a(this.a), AssetsPmUpdater.a(this.a).getAbsolutePath())) {
-        break label111;
+      Object localObject = this.a;
+      if (AssetsPmUpdater.a((AssetsPmUpdater)localObject, AssetsPmUpdater.a((AssetsPmUpdater)localObject), AssetsPmUpdater.a(this.a), AssetsPmUpdater.a(this.a).getAbsolutePath()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("copy asset pm success, cost=");
+        ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+        QLog.i("studyroom.AssetsPmUpdater", 1, ((StringBuilder)localObject).toString());
       }
-      QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm success, cost=" + (System.currentTimeMillis() - l));
+      else
+      {
+        QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm fail");
+      }
     }
-    while (AssetsPmUpdater.a(this.a).exists())
-    {
+    if (AssetsPmUpdater.a(this.a).exists()) {
       return AssetsPmUpdater.a(this.a);
-      label111:
-      QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm fail");
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.updater.AssetsPmUpdater.1
  * JD-Core Version:    0.7.0.1
  */

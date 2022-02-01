@@ -9,10 +9,9 @@ import androidx.annotation.Nullable;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.api.util.QStorage;
 import com.tencent.mobileqq.filemanager.app.QFileConfigManager;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileExcitingC2CUploadConfigProcessor
@@ -38,17 +37,25 @@ public class QFileExcitingC2CUploadConfigProcessor
   {
     if (paramQFileExcitingC2CUploadConfigBean != null)
     {
-      Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getApp();
-      if (localObject != null)
+      BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+      if (localBaseQQAppInterface != null)
       {
         if (TextUtils.isEmpty(paramQFileExcitingC2CUploadConfigBean.a)) {
           paramQFileExcitingC2CUploadConfigBean.a = "{}";
         }
-        localObject = ((BaseQQAppInterface)localObject).getApplicationContext().getSharedPreferences("c2cfile_excitingupload_" + ((BaseQQAppInterface)localObject).getCurrentUin(), 0).edit();
+        Object localObject = localBaseQQAppInterface.getApplicationContext();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("c2cfile_excitingupload_");
+        localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
+        localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
         ((SharedPreferences.Editor)localObject).putString("qfile_c2cfile_excitingupload", paramQFileExcitingC2CUploadConfigBean.a);
         ((SharedPreferences.Editor)localObject).apply();
-        QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Upload config [" + paramQFileExcitingC2CUploadConfigBean.a + "]");
-        QFileConfigManager.a().a(paramQFileExcitingC2CUploadConfigBean);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("save Exciting-Group-Upload config [");
+        ((StringBuilder)localObject).append(paramQFileExcitingC2CUploadConfigBean.a);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+        QFileConfigManager.a(localBaseQQAppInterface).a(paramQFileExcitingC2CUploadConfigBean);
       }
     }
   }
@@ -75,7 +82,11 @@ public class QFileExcitingC2CUploadConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: failCode[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QFileExcitingC2CUploadConfigProcessor<FileAssistant>", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -85,7 +96,7 @@ public class QFileExcitingC2CUploadConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileExcitingC2CUploadConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

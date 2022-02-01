@@ -16,7 +16,6 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
 import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
@@ -32,6 +31,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
@@ -40,6 +40,24 @@ import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.mobileqq.troop.utils.TroopFileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.weiyun.WeiyunCallback;
+import com.tencent.mobileqq.weiyun.api.IWeiyunApi;
+import com.tencent.mobileqq.weiyun.api.IWeiyunHelper;
+import com.tencent.mobileqq.weiyun.api.IWeiyunResponseHandler;
+import com.tencent.mobileqq.weiyun.api.IWeiyunUploadDownloadService;
+import com.tencent.mobileqq.weiyun.api.download.IDownloadStatusListener;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.DiskDirFileBatchDeleteExMsgReq;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.DiskFileDocDownloadAbsMsgReq;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.DiskSimpleFileItem;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.ExtensionReq;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.LibInfoListGetMsgReq;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.PicVideo2QcloudItem;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.PwdVerifyMsgReq;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.ShareFileItem;
+import com.tencent.mobileqq.weiyun.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgReq;
+import com.tencent.mobileqq.weiyun.utils.StringUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
@@ -49,26 +67,6 @@ import com.tencent.weiyun.transmission.upload.UploadManager;
 import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
 import com.tencent.weiyun.utils.NetworkUtils;
 import com.tencent.weiyun.utils.Utils;
-import cooperation.weiyun.ResponseHandler;
-import cooperation.weiyun.TransmissionHelper;
-import cooperation.weiyun.WeiyunHelper;
-import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskDirFileBatchDeleteExMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDocDownloadAbsMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskSimpleFileItem;
-import cooperation.weiyun.channel.pb.WeiyunPB.ExtensionReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.LibInfoListGetMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.PicVideo2QcloudItem;
-import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.ShareFileItem;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgReq;
-import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAuthInfo;
-import cooperation.weiyun.sdk.api.WeiyunApi;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadStatusListener;
-import cooperation.weiyun.utils.SoHelper;
-import cooperation.weiyun.utils.StringUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -90,20 +88,19 @@ public class WeiYunLogicCenter
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (jdField_a_of_type_Boolean) {
-      WeiyunHelper.b();
+      ((IWeiyunHelper)QRoute.api(IWeiyunHelper.class)).shutdownWySystem();
     }
-    WeiyunHelper.a();
+    ((IWeiyunHelper)QRoute.api(IWeiyunHelper.class)).startWySystem();
     jdField_a_of_type_Boolean = true;
   }
   
   private int a(int paramInt)
   {
-    int i = 1;
     if (UinTypeUtil.b(paramInt)) {
-      i = 0;
+      return 0;
     }
-    while (paramInt == 1) {
-      return i;
+    if (paramInt == 1) {
+      return 1;
     }
     if (paramInt == 3000) {
       return 2;
@@ -228,236 +225,224 @@ public class WeiYunLogicCenter
   @Nullable
   private String a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb : strFileId[" + paramString1 + "], thumbUrl[" + paramString2 + "], WeiYunThumbnailType[" + paramInt + "]");
-    }
-    String str;
-    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0))
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 39, new Object[] { paramString1, paramObject });
-      if (QLog.isColorLevel()) {
-        QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb : fileID or thumbUrl error");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getWeiYunThumb : strFileId[");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("], thumbUrl[");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("], WeiYunThumbnailType[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((paramString1 != null) && (paramString1.length() != 0) && (paramString2 != null) && (paramString2.length() != 0))
+    {
+      if (!paramString2.startsWith("http")) {
+        return paramString2;
       }
-      str = null;
-    }
-    Pair localPair;
-    File localFile;
-    do
-    {
-      do
+      paramString2 = ((IWeiyunHelper)QRoute.api(IWeiyunHelper.class)).genThumbInfo(paramString2, paramInt, paramBoolean);
+      File localFile = new File(((IWeiyunHelper)QRoute.api(IWeiyunHelper.class)).getDefaultThumbPath(), Long.toString(((Long)paramString2.second).longValue()));
+      localObject = localFile.getAbsolutePath();
+      if (localFile.exists()) {
+        return localObject;
+      }
+      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        return str;
-        str = paramString2;
-      } while (!paramString2.startsWith("http"));
-      localPair = WeiyunHelper.a(paramString2, paramInt, paramBoolean);
-      localFile = new File(WeiyunHelper.b(), Long.toString(((Long)localPair.second).longValue()));
-      paramString2 = localFile.getAbsolutePath();
-      str = paramString2;
-    } while (localFile.exists());
-    if (!NetworkUtil.d(BaseApplication.getContext()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 39, new Object[] { paramString1, paramObject });
-      if (QLog.isColorLevel()) {
-        QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb : network error");
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 39, new Object[] { paramString1, paramObject });
+        if (QLog.isColorLevel()) {
+          QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb : network error");
+        }
+        return null;
       }
+      paramString1 = new WeiYunLogicCenter.7(this, paramString1, paramInt, paramObject);
+      ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).downloadImage((String)((Pair)paramString2.first).first, (String)localObject, (String)((Pair)paramString2.first).second, paramString1);
       return null;
     }
-    paramString1 = new WeiYunLogicCenter.7(this, paramString1, paramInt, paramObject);
-    WyDownloader.a().a((String)((Pair)localPair.first).first, paramString2, (String)((Pair)localPair.first).second, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 39, new Object[] { paramString1, paramObject });
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb : fileID or thumbUrl error");
+    }
     return null;
   }
   
   private void a(FileManagerEntity paramFileManagerEntity, TroopFileStatusInfo paramTroopFileStatusInfo, String paramString, int paramInt1, int paramInt2)
   {
     TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(paramString).longValue());
-    if (localTroopFileTransferManager == null) {}
-    for (;;)
-    {
+    if (localTroopFileTransferManager == null) {
       return;
-      long l1 = 0L;
-      int i = FileManagerUtil.a(paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString);
+    }
+    int i = FileManagerUtil.a(paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString);
+    long l1;
+    if ((FileUtil.b(paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString)) && ((i == 0) || (i == 2)))
+    {
       Object localObject;
       long l2;
-      if ((FileUtil.a(paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString)) && ((i == 0) || (i == 2))) {
-        if (i == 0)
-        {
-          localObject = new BitmapFactory.Options();
-          ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-          BitmapFactory.decodeFile(paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-          l2 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramTroopFileStatusInfo.g, paramTroopFileStatusInfo.c, paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, Long.toString(paramTroopFileStatusInfo.b), paramFileManagerEntity.nSessionId, ((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight);
-          paramFileManagerEntity = localTroopFileTransferManager.a(paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
-          l1 = l2;
-          if (paramFileManagerEntity != null)
-          {
-            paramFileManagerEntity.width = ((BitmapFactory.Options)localObject).outWidth;
-            paramFileManagerEntity.height = ((BitmapFactory.Options)localObject).outHeight;
-            l1 = l2;
-          }
-        }
-      }
-      while ((paramInt1 != 0) && (l1 != 0L))
+      if (i == 0)
       {
-        ForwardOrderManager.a().a(l1, 0L, paramInt1);
-        return;
-        if (i == 2)
+        localObject = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+        l2 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramTroopFileStatusInfo.g, paramTroopFileStatusInfo.c, paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, Long.toString(paramTroopFileStatusInfo.b), paramFileManagerEntity.nSessionId, ((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight);
+        paramTroopFileStatusInfo = localTroopFileTransferManager.a(paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+        l1 = l2;
+        if (paramTroopFileStatusInfo != null)
         {
-          localObject = ShortVideoUtils.getVideoFileRtAndTime(paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString);
-          l2 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramTroopFileStatusInfo.g, paramTroopFileStatusInfo.c, paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, Long.toString(paramTroopFileStatusInfo.b), paramFileManagerEntity.nSessionId, localObject[0], localObject[1], localObject[2]);
-          paramFileManagerEntity = localTroopFileTransferManager.a(paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+          paramTroopFileStatusInfo.width = ((BitmapFactory.Options)localObject).outWidth;
+          paramTroopFileStatusInfo.height = ((BitmapFactory.Options)localObject).outHeight;
           l1 = l2;
-          if (paramFileManagerEntity != null)
-          {
-            paramFileManagerEntity.width = localObject[0];
-            paramFileManagerEntity.height = localObject[1];
-            l1 = l2;
-            continue;
-            l1 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, Long.toString(8888L), paramFileManagerEntity.nSessionId);
-          }
         }
       }
+      else if (i == 2)
+      {
+        localObject = ShortVideoUtils.getVideoFileRtAndTime(paramTroopFileStatusInfo.jdField_a_of_type_JavaLangString);
+        l2 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramTroopFileStatusInfo.g, paramTroopFileStatusInfo.c, paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, Long.toString(paramTroopFileStatusInfo.b), paramFileManagerEntity.nSessionId, localObject[0], localObject[1], localObject[2]);
+        paramTroopFileStatusInfo = localTroopFileTransferManager.a(paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+        l1 = l2;
+        if (paramTroopFileStatusInfo != null)
+        {
+          paramTroopFileStatusInfo.width = localObject[0];
+          paramTroopFileStatusInfo.height = localObject[1];
+          l1 = l2;
+        }
+      }
+      else
+      {
+        l1 = 0L;
+      }
+    }
+    else
+    {
+      l1 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, Long.toString(8888L), paramFileManagerEntity.nSessionId);
+    }
+    if ((paramInt1 != 0) && (l1 != 0L)) {
+      ForwardOrderManager.a().a(l1, paramFileManagerEntity.uniseq, paramInt1);
     }
   }
   
-  private void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq paramAioPicAndVideoCopyToWeiyunMsgReq, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback)
+  private void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq paramAioPicAndVideoCopyToWeiyunMsgReq, WeiyunCallback paramWeiyunCallback)
   {
-    ResponseHandler.a();
-    WeiyunApi.a(paramAioPicAndVideoCopyToWeiyunMsgReq, new WeiYunLogicCenter.6(this, paramWeiyunCallback));
+    ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).startSave2Weiyun();
+    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).saveAioPicVideo2Weiyun(paramAioPicAndVideoCopyToWeiyunMsgReq, new WeiYunLogicCenter.6(this, paramWeiyunCallback));
   }
   
   private boolean a(WeiyunPB.WeiyunShareAddFromMobileQQMsgReq paramWeiyunShareAddFromMobileQQMsgReq, long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramLong > 0L)
-    {
-      paramWeiyunShareAddFromMobileQQMsgReq.weiyun_share_auth_info.expired_time.set((int)(paramLong / 1000L));
-      paramWeiyunShareAddFromMobileQQMsgReq.weiyun_share_auth_info.setHasFlag(true);
-    }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramWeiyunShareAddFromMobileQQMsgReq.pass_word.set(paramString);
-      paramWeiyunShareAddFromMobileQQMsgReq.weiyun_share_auth_info.pass_word.set(paramString);
-      paramWeiyunShareAddFromMobileQQMsgReq.weiyun_share_auth_info.setHasFlag(true);
-    }
-    paramWeiyunShareAddFromMobileQQMsgReq.enable_qq_add_friend.set(paramBoolean1);
-    paramWeiyunShareAddFromMobileQQMsgReq = paramWeiyunShareAddFromMobileQQMsgReq.qr_flag;
-    if (paramBoolean2) {}
-    for (int i = 1;; i = 0)
-    {
-      paramWeiyunShareAddFromMobileQQMsgReq.set(i);
-      return true;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private boolean a(WeiyunPB.WeiyunShareAddFromMobileQQMsgReq paramWeiyunShareAddFromMobileQQMsgReq, FileManagerEntity paramFileManagerEntity)
   {
-    boolean bool = false;
-    int i = FileManagerUtil.a(paramFileManagerEntity);
-    if (i == 2)
+    int j = FileManagerUtil.a(paramFileManagerEntity);
+    if (j == 2)
     {
       paramWeiyunShareAddFromMobileQQMsgReq.source.set(1);
       paramWeiyunShareAddFromMobileQQMsgReq.file.setHasFlag(true);
       paramWeiyunShareAddFromMobileQQMsgReq.file.file_id.set(paramFileManagerEntity.WeiYunFileId);
-      if (!TextUtils.isEmpty(paramFileManagerEntity.WeiYunDirKey)) {
-        paramWeiyunShareAddFromMobileQQMsgReq.file.pdir_key.set(StringUtils.a(paramFileManagerEntity.WeiYunDirKey));
-      }
-      bool = true;
-    }
-    label111:
-    label241:
-    do
-    {
-      for (;;)
+      if (!TextUtils.isEmpty(paramFileManagerEntity.WeiYunDirKey))
       {
-        return bool;
-        if (i == 1)
-        {
-          paramWeiyunShareAddFromMobileQQMsgReq.source.set(2);
-          PBUInt64Field localPBUInt64Field = paramWeiyunShareAddFromMobileQQMsgReq.src_uin;
-          Object localObject;
-          if (paramFileManagerEntity.peerType == 3000)
-          {
-            localObject = paramFileManagerEntity.peerUin;
-            localPBUInt64Field.set(Long.parseLong((String)localObject));
-            localObject = paramWeiyunShareAddFromMobileQQMsgReq.src_appid;
-            if (paramFileManagerEntity.peerType != 3000) {
-              break label241;
-            }
-          }
-          for (i = 106;; i = 3)
-          {
-            ((PBUInt32Field)localObject).set(i);
-            if (!TextUtils.isEmpty(paramFileManagerEntity.Uuid)) {
-              paramWeiyunShareAddFromMobileQQMsgReq.src_full_path.set(ByteStringMicro.copyFrom(paramFileManagerEntity.Uuid.getBytes()));
-            }
-            paramWeiyunShareAddFromMobileQQMsgReq.file_size.set(paramFileManagerEntity.fileSize);
-            if (!TextUtils.isEmpty(paramFileManagerEntity.fileName)) {
-              paramWeiyunShareAddFromMobileQQMsgReq.file_name.set(paramFileManagerEntity.fileName);
-            }
-            if (TextUtils.isEmpty(paramFileManagerEntity.strFileSHA)) {
-              break;
-            }
-            paramWeiyunShareAddFromMobileQQMsgReq.file_sha.set(paramFileManagerEntity.strFileSHA);
-            break;
-            localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-            break label111;
-          }
+        paramWeiyunShareAddFromMobileQQMsgReq.file.pdir_key.set(StringUtils.a(paramFileManagerEntity.WeiYunDirKey));
+        return true;
+      }
+    }
+    else
+    {
+      int i = 3;
+      Object localObject;
+      if (j == 1)
+      {
+        paramWeiyunShareAddFromMobileQQMsgReq.source.set(2);
+        PBUInt64Field localPBUInt64Field = paramWeiyunShareAddFromMobileQQMsgReq.src_uin;
+        if (paramFileManagerEntity.peerType == 3000) {
+          localObject = paramFileManagerEntity.peerUin;
+        } else {
+          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
         }
-        if (i != 4) {
-          break label412;
+        localPBUInt64Field.set(Long.parseLong((String)localObject));
+        localObject = paramWeiyunShareAddFromMobileQQMsgReq.src_appid;
+        if (paramFileManagerEntity.peerType == 3000) {
+          i = 106;
+        }
+        ((PBUInt32Field)localObject).set(i);
+        if (!TextUtils.isEmpty(paramFileManagerEntity.Uuid)) {
+          paramWeiyunShareAddFromMobileQQMsgReq.src_full_path.set(ByteStringMicro.copyFrom(paramFileManagerEntity.Uuid.getBytes()));
+        }
+        paramWeiyunShareAddFromMobileQQMsgReq.file_size.set(paramFileManagerEntity.fileSize);
+        if (!TextUtils.isEmpty(paramFileManagerEntity.fileName)) {
+          paramWeiyunShareAddFromMobileQQMsgReq.file_name.set(paramFileManagerEntity.fileName);
+        }
+        if (!TextUtils.isEmpty(paramFileManagerEntity.strFileSHA))
+        {
+          paramWeiyunShareAddFromMobileQQMsgReq.file_sha.set(paramFileManagerEntity.strFileSHA);
+          return true;
+        }
+      }
+      else
+      {
+        if (j != 4) {
+          break label411;
         }
         paramWeiyunShareAddFromMobileQQMsgReq.source.set(3);
+        localObject = null;
         try
         {
           paramFileManagerEntity = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);
-          if ((paramFileManagerEntity == null) || (TextUtils.isEmpty(paramFileManagerEntity.e)))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink : troop file info is invalid");
-            return false;
-          }
         }
         catch (Throwable paramFileManagerEntity)
         {
-          for (;;)
-          {
-            QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink : get troop file info error", paramFileManagerEntity);
-            paramFileManagerEntity = null;
-          }
-          paramWeiyunShareAddFromMobileQQMsgReq.src_uin.set(paramFileManagerEntity.b);
-          paramWeiyunShareAddFromMobileQQMsgReq.src_appid.set(paramFileManagerEntity.h);
-          paramWeiyunShareAddFromMobileQQMsgReq.src_full_path.set(ByteStringMicro.copyFrom(paramFileManagerEntity.e.getBytes()));
-          paramWeiyunShareAddFromMobileQQMsgReq.file_size.set(paramFileManagerEntity.c);
-          if (!TextUtils.isEmpty(paramFileManagerEntity.g)) {
-            paramWeiyunShareAddFromMobileQQMsgReq.file_name.set(paramFileManagerEntity.g);
-          }
+          QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink : get troop file info error", paramFileManagerEntity);
+          paramFileManagerEntity = (FileManagerEntity)localObject;
+        }
+        if ((paramFileManagerEntity == null) || (TextUtils.isEmpty(paramFileManagerEntity.e))) {
+          break label393;
+        }
+        paramWeiyunShareAddFromMobileQQMsgReq.src_uin.set(paramFileManagerEntity.b);
+        paramWeiyunShareAddFromMobileQQMsgReq.src_appid.set(paramFileManagerEntity.h);
+        paramWeiyunShareAddFromMobileQQMsgReq.src_full_path.set(ByteStringMicro.copyFrom(paramFileManagerEntity.e.getBytes()));
+        paramWeiyunShareAddFromMobileQQMsgReq.file_size.set(paramFileManagerEntity.c);
+        if (!TextUtils.isEmpty(paramFileManagerEntity.g)) {
+          paramWeiyunShareAddFromMobileQQMsgReq.file_name.set(paramFileManagerEntity.g);
+        }
+        if (!TextUtils.isEmpty(paramFileManagerEntity.f)) {
+          paramWeiyunShareAddFromMobileQQMsgReq.file_sha.set(paramFileManagerEntity.f);
         }
       }
-      if (TextUtils.isEmpty(paramFileManagerEntity.f)) {
-        break;
-      }
-      paramWeiyunShareAddFromMobileQQMsgReq.file_sha.set(paramFileManagerEntity.f);
-      break;
-    } while (!QLog.isColorLevel());
-    label412:
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink : unsupported cloudType:" + i);
+    }
+    return true;
+    label393:
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink : troop file info is invalid");
+    }
+    return false;
+    label411:
+    if (QLog.isColorLevel())
+    {
+      paramWeiyunShareAddFromMobileQQMsgReq = new StringBuilder();
+      paramWeiyunShareAddFromMobileQQMsgReq.append("getShareLink : unsupported cloudType:");
+      paramWeiyunShareAddFromMobileQQMsgReq.append(j);
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, paramWeiyunShareAddFromMobileQQMsgReq.toString());
+    }
     return false;
   }
   
   private void b()
   {
-    if (!SoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))
+    if (!((IWeiyunHelper)QRoute.api(IWeiyunHelper.class)).checkSOExists(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))
     {
       if (NetworkUtils.isWifiAvailable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))
       {
         this.c = true;
-        SoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), new WeiYunLogicCenter.8(this));
+        ((IWeiyunHelper)QRoute.api(IWeiyunHelper.class)).downloadSo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), new WeiYunLogicCenter.8(this));
       }
-      return;
     }
-    this.b = true;
-    TransmissionHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), true);
-    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(SoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).getAbsolutePath());
+    else
+    {
+      this.b = true;
+      ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).initTransmission(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), true);
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(((IWeiyunHelper)QRoute.api(IWeiyunHelper.class)).getUploadSoFile(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).getAbsolutePath());
+    }
   }
   
   public FileManagerEntity a(FileManagerEntity paramFileManagerEntity, String paramString)
@@ -486,28 +471,39 @@ public class WeiYunLogicCenter
     localFileManagerEntity.peerNick = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, null, paramFileManagerEntity.peerType);
     localFileManagerEntity.peerType = paramFileManagerEntity.peerType;
     localFileManagerEntity.peerUin = paramString;
-    if (paramFileManagerEntity.peerType == 3000) {}
-    for (localFileManagerEntity.selfUin = paramFileManagerEntity.peerUin;; localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())
-    {
-      localFileManagerEntity.srvTime = (MessageCache.a() * 1000L);
-      localFileManagerEntity.status = 2;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "insertWeiYun2OfflineEntity FileManagerEntity:" + FileManagerUtil.a(localFileManagerEntity));
-      }
-      return localFileManagerEntity;
+    if (paramFileManagerEntity.peerType == 3000) {
+      localFileManagerEntity.selfUin = paramFileManagerEntity.peerUin;
+    } else {
+      localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
     }
+    localFileManagerEntity.srvTime = (MessageCache.a() * 1000L);
+    localFileManagerEntity.status = 2;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
+    if (QLog.isColorLevel())
+    {
+      paramFileManagerEntity = new StringBuilder();
+      paramFileManagerEntity.append("insertWeiYun2OfflineEntity FileManagerEntity:");
+      paramFileManagerEntity.append(FileManagerUtil.a(localFileManagerEntity));
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, paramFileManagerEntity.toString());
+    }
+    return localFileManagerEntity;
   }
   
   public FileManagerEntity a(FileManagerEntity paramFileManagerEntity, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     if (paramFileManagerEntity == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "insertWeiYun2OfflineEntity : entity is null, peerUin[" + FileManagerUtil.e(paramString2) + "], peerType[" + paramInt1 + "]");
+      if (QLog.isColorLevel())
+      {
+        paramFileManagerEntity = new StringBuilder();
+        paramFileManagerEntity.append("insertWeiYun2OfflineEntity : entity is null, peerUin[");
+        paramFileManagerEntity.append(FileManagerUtil.d(paramString2));
+        paramFileManagerEntity.append("], peerType[");
+        paramFileManagerEntity.append(paramInt1);
+        paramFileManagerEntity.append("]");
+        QLog.e("WeiYunLogicCenter<FileAssistant>", 2, paramFileManagerEntity.toString());
       }
-      paramFileManagerEntity = null;
-      return paramFileManagerEntity;
+      return null;
     }
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
     localFileManagerEntity.copyFrom(paramFileManagerEntity);
@@ -526,79 +522,94 @@ public class WeiYunLogicCenter
     localFileManagerEntity.msgSeq = FileManagerUtil.a();
     localFileManagerEntity.msgUid = FileManagerUtil.b();
     if (paramInt2 != 0) {
-      ForwardOrderManager.a().a(l, 0L, paramInt2);
+      ForwardOrderManager.a().a(l, paramFileManagerEntity.uniseq, paramInt2);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
     paramFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    if ((paramInt1 == 1004) || (paramInt1 == 1000)) {
-      paramFileManagerEntity = paramString1;
-    }
-    for (;;)
+    if ((paramInt1 != 1004) && (paramInt1 != 1000))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString2, paramFileManagerEntity, true, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, true, paramInt1, str, localFileManagerEntity.msgSeq, l, localFileManagerEntity.msgUid, -1L, MessageCache.a());
-      paramFileManagerEntity = localFileManagerEntity;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "insertWeiYun2OfflineEntity peerType[" + paramInt1 + "],FileManagerEntity:" + FileManagerUtil.a(localFileManagerEntity));
-      return localFileManagerEntity;
       if (paramInt1 == 1006)
       {
-        localFileManagerEntity.tmpSessionFromPhone = paramString1;
-        localFileManagerEntity.tmpSessionToPhone = paramString2;
         paramFileManagerEntity = paramString1;
+        localFileManagerEntity.tmpSessionFromPhone = paramFileManagerEntity;
+        localFileManagerEntity.tmpSessionToPhone = paramString2;
       }
     }
+    else {
+      paramFileManagerEntity = paramString1;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString2, paramFileManagerEntity, true, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, true, paramInt1, str, localFileManagerEntity.msgSeq, l, localFileManagerEntity.msgUid, -1L, MessageCache.a());
+    if (QLog.isColorLevel())
+    {
+      paramFileManagerEntity = new StringBuilder();
+      paramFileManagerEntity.append("insertWeiYun2OfflineEntity peerType[");
+      paramFileManagerEntity.append(paramInt1);
+      paramFileManagerEntity.append("],FileManagerEntity:");
+      paramFileManagerEntity.append(FileManagerUtil.a(localFileManagerEntity));
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, paramFileManagerEntity.toString());
+    }
+    return localFileManagerEntity;
   }
   
-  public WeiyunTask a(FileManagerEntity paramFileManagerEntity, Object paramObject, WyDownloader.IDownloadStatusListener paramIDownloadStatusListener)
+  public WeiyunTask a(FileManagerEntity paramFileManagerEntity, Object paramObject, IDownloadStatusListener paramIDownloadStatusListener)
   {
-    if (paramFileManagerEntity == null) {
+    if (paramFileManagerEntity == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "downLoadWeiYunFile entity is null");
       }
-    }
-    Pair localPair;
-    do
-    {
       return null;
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "downLoadWeiYunFile, fileId[" + paramFileManagerEntity.WeiYunFileId + "], fileName[" + paramFileManagerEntity.fileName + "], fileSize[" + paramFileManagerEntity.fileSize + "],modifyTime[" + paramFileManagerEntity.lastTime + "]");
-      }
-      if (!TextUtils.isEmpty(paramFileManagerEntity.WeiYunDirKey)) {
-        break label169;
-      }
-      localPair = FileTransferHandler.a(paramFileManagerEntity.WeiYunFileId);
-      if (localPair != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "downLoadWeiYunFile dirKey is null");
-    return null;
-    paramFileManagerEntity.WeiYunDirKey = ((String)localPair.first);
-    paramFileManagerEntity.WeiYunFileId = ((String)localPair.second);
-    label169:
-    if (paramFileManagerEntity.nWeiYunSrcType == 2) {
-      paramFileManagerEntity = WyDownloader.a().a(paramFileManagerEntity.strLargeThumPath, paramFileManagerEntity.strThumbPath, paramFileManagerEntity.WeiYunDirKey, paramFileManagerEntity.WeiYunFileId, paramIDownloadStatusListener);
     }
-    label290:
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("downLoadWeiYunFile, fileId[");
+      ((StringBuilder)localObject).append(paramFileManagerEntity.WeiYunFileId);
+      ((StringBuilder)localObject).append("], fileName[");
+      ((StringBuilder)localObject).append(paramFileManagerEntity.fileName);
+      ((StringBuilder)localObject).append("], fileSize[");
+      ((StringBuilder)localObject).append(paramFileManagerEntity.fileSize);
+      ((StringBuilder)localObject).append("],modifyTime[");
+      ((StringBuilder)localObject).append(paramFileManagerEntity.lastTime);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+    }
+    if (TextUtils.isEmpty(paramFileManagerEntity.WeiYunDirKey))
+    {
+      localObject = FileTransferHandler.a(paramFileManagerEntity.WeiYunFileId);
+      if (localObject == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "downLoadWeiYunFile dirKey is null");
+        }
+        return null;
+      }
+      paramFileManagerEntity.WeiYunDirKey = ((String)((Pair)localObject).first);
+      paramFileManagerEntity.WeiYunFileId = ((String)((Pair)localObject).second);
+    }
+    if (paramFileManagerEntity.nWeiYunSrcType == 2) {
+      localObject = ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).downloadShare(paramFileManagerEntity.strLargeThumPath, paramFileManagerEntity.strThumbPath, paramFileManagerEntity.WeiYunDirKey, paramFileManagerEntity.WeiYunFileId, paramIDownloadStatusListener);
+    }
     for (;;)
     {
-      return new WeiyunTask(paramFileManagerEntity, paramObject, false, null, paramIDownloadStatusListener);
-      paramFileManagerEntity = TransmissionHelper.a(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.strFileSHA, paramFileManagerEntity.fileSize, 0, paramFileManagerEntity.WeiYunDirKey, paramFileManagerEntity.strLargeThumPath);
-      if (paramFileManagerEntity == null) {}
-      for (paramFileManagerEntity = null;; paramFileManagerEntity = WyDownloader.a().a(paramFileManagerEntity, WeiyunHelper.a(), true, paramIDownloadStatusListener))
+      break;
+      paramFileManagerEntity = ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).createDownloadFile(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.strFileSHA, paramFileManagerEntity.fileSize, 0, paramFileManagerEntity.WeiYunDirKey, paramFileManagerEntity.strLargeThumPath);
+      if (paramFileManagerEntity == null) {
+        paramFileManagerEntity = null;
+      } else {
+        paramFileManagerEntity = ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).download(paramFileManagerEntity, ((IWeiyunHelper)QRoute.api(IWeiyunHelper.class)).getDefaultDownloadPath(), true, paramIDownloadStatusListener);
+      }
+      localObject = paramFileManagerEntity;
+      if (TextUtils.isEmpty(paramFileManagerEntity))
       {
-        if (!TextUtils.isEmpty(paramFileManagerEntity)) {
-          break label290;
+        if (QLog.isColorLevel()) {
+          QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "create download task failed!");
         }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "create download task failed!");
         return null;
       }
     }
+    return new WeiyunTask((String)localObject, paramObject, false, null, paramIDownloadStatusListener);
   }
   
   public WeiyunTask a(String paramString, Object paramObject, UploadManager.IUploadStatusListener paramIUploadStatusListener)
@@ -613,23 +624,27 @@ public class WeiYunLogicCenter
       }
       return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "uploadWeiYunFile, strPath[" + paramString + "]");
-    }
-    paramString = TransmissionHelper.b(paramString, UploadFile.createUploadBatch(1, null), 1);
-    if (paramString == null) {}
-    for (paramString = null;; paramString = WeiyunTransmissionGlobal.getInstance().getUploadManager().upload(paramString, false, true, paramIUploadStatusListener))
+    if (QLog.isColorLevel())
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label138;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uploadWeiYunFile, strPath[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, localStringBuilder.toString());
+    }
+    paramString = ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).createUploadFile(paramString, UploadFile.createUploadBatch(1, null), 1);
+    if (paramString == null) {
+      paramString = null;
+    } else {
+      paramString = WeiyunTransmissionGlobal.getInstance().getUploadManager().upload(paramString, false, true, paramIUploadStatusListener);
+    }
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "uploadWeiYunFile create upload task failed!");
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "uploadWeiYunFile create upload task failed!");
       return null;
     }
-    label138:
     return new WeiyunTask(paramString, paramObject, true, paramIUploadStatusListener, null);
   }
   
@@ -643,16 +658,28 @@ public class WeiYunLogicCenter
     if (QLog.isColorLevel()) {
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "queryNeedVerifyPwd");
     }
-    WeiyunApi.a(new WeiYunLogicCenter.12(this));
+    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).queryPwd(new WeiYunLogicCenter.12(this));
   }
   
   public void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList, categoryId[" + paramString1 + "], offset[" + paramInt2 + "], count[" + paramInt3 + "], version[" + paramString2 + "]");
+    if (bool)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("queryWeiyunFileList, categoryId[");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("], offset[");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("], count[");
+      ((StringBuilder)localObject).append(paramInt3);
+      ((StringBuilder)localObject).append("], version[");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     }
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 31, new Object[] { Integer.valueOf(0), "network error", paramString1 });
       if (QLog.isColorLevel()) {
@@ -662,72 +689,61 @@ public class WeiYunLogicCenter
     }
     if (paramInt2 == 0)
     {
-      if (this.jdField_a_of_type_JavaUtilLinkedHashMap != null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+      localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap;
+      if (localObject != null) {
+        ((LinkedHashMap)localObject).clear();
       }
       this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
       this.jdField_a_of_type_Int = 0;
-      label168:
-      this.jdField_a_of_type_Int += 1;
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "categoryId : " + paramString1);
-      if (!"document".equals(paramString1)) {
-        break label330;
-      }
-      paramInt2 = 1;
     }
-    for (;;)
+    else if (this.jdField_a_of_type_JavaUtilLinkedHashMap == null)
     {
-      WeiyunPB.LibInfoListGetMsgReq localLibInfoListGetMsgReq = new WeiyunPB.LibInfoListGetMsgReq();
-      localLibInfoListGetMsgReq.lib_id.set(paramInt2);
-      localLibInfoListGetMsgReq.load_type.set(1);
-      PBStringField localPBStringField = localLibInfoListGetMsgReq.local_version;
-      String str = paramString2;
-      if (paramString2 == null) {
-        str = "";
+      if (QLog.isColorLevel()) {
+        QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList : start not from zero?!");
       }
-      localPBStringField.set(str);
-      localLibInfoListGetMsgReq.count.set(paramInt3);
-      localLibInfoListGetMsgReq.scene_id.set(paramInt1);
-      WeiyunApi.a(localLibInfoListGetMsgReq, new WeiYunLogicCenter.1(this, paramString1));
       return;
-      if (this.jdField_a_of_type_JavaUtilLinkedHashMap != null) {
-        break label168;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "queryWeiyunFileList : start not from zero?!");
-      return;
-      label330:
-      paramInt2 = i;
-      if (!"picture".equals(paramString1)) {
-        if ("video".equals(paramString1)) {
-          paramInt2 = 4;
-        } else if ("music".equals(paramString1)) {
-          paramInt2 = 3;
-        } else {
-          paramInt2 = 5;
-        }
-      }
     }
+    this.jdField_a_of_type_Int += 1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("categoryId : ");
+    ((StringBuilder)localObject).append(paramString1);
+    QLog.d("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+    if ("document".equals(paramString1)) {
+      paramInt2 = 1;
+    } else if ("picture".equals(paramString1)) {
+      paramInt2 = i;
+    } else if ("video".equals(paramString1)) {
+      paramInt2 = 4;
+    } else if ("music".equals(paramString1)) {
+      paramInt2 = 3;
+    } else {
+      paramInt2 = 5;
+    }
+    WeiyunPB.LibInfoListGetMsgReq localLibInfoListGetMsgReq = new WeiyunPB.LibInfoListGetMsgReq();
+    localLibInfoListGetMsgReq.lib_id.set(paramInt2);
+    localLibInfoListGetMsgReq.load_type.set(1);
+    PBStringField localPBStringField = localLibInfoListGetMsgReq.local_version;
+    localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = "";
+    }
+    localPBStringField.set((String)localObject);
+    localLibInfoListGetMsgReq.count.set(paramInt3);
+    localLibInfoListGetMsgReq.scene_id.set(paramInt1);
+    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).getCategoryFileList(localLibInfoListGetMsgReq, new WeiYunLogicCenter.1(this, paramString1));
   }
   
-  public void a(ChatMessage paramChatMessage, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback)
+  public void a(ChatMessage paramChatMessage, WeiyunCallback paramWeiyunCallback)
   {
     WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq localAioPicAndVideoCopyToWeiyunMsgReq = new WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq();
     ArrayList localArrayList = new ArrayList(1);
     if ((paramChatMessage instanceof MessageForPic)) {
       localArrayList.add(a((MessageForPic)paramChatMessage));
+    } else if ((paramChatMessage instanceof MessageForShortVideo)) {
+      localArrayList.add(a((MessageForShortVideo)paramChatMessage));
     }
-    for (;;)
-    {
-      localAioPicAndVideoCopyToWeiyunMsgReq.pic_video_2qcloud_list.set(localArrayList);
-      a(localAioPicAndVideoCopyToWeiyunMsgReq, paramWeiyunCallback);
-      return;
-      if ((paramChatMessage instanceof MessageForShortVideo)) {
-        localArrayList.add(a((MessageForShortVideo)paramChatMessage));
-      }
-    }
+    localAioPicAndVideoCopyToWeiyunMsgReq.pic_video_2qcloud_list.set(localArrayList);
+    a(localAioPicAndVideoCopyToWeiyunMsgReq, paramWeiyunCallback);
   }
   
   public void a(FileManagerEntity paramFileManagerEntity, int paramInt, boolean paramBoolean)
@@ -740,97 +756,126 @@ public class WeiYunLogicCenter
       return;
     }
     paramFileManagerEntity.status = 2;
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    paramBoolean = NetworkUtil.isNetSupport(BaseApplication.getContext());
+    int i = 3;
+    if (!paramBoolean)
     {
       paramFileManagerEntity.status = 0;
       paramFileManagerEntity.isReaded = false;
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a();
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 3, null);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 33, new Object[] { Integer.valueOf(2), "", Long.valueOf(paramFileManagerEntity.nSessionId) });
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "=_= ^! [CS Send] Id[" + paramFileManagerEntity.nSessionId + "]sendWeiYun2OfflineFile : network error");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("=_= ^! [CS Send] Id[");
+      ((StringBuilder)localObject).append(paramFileManagerEntity.nSessionId);
+      ((StringBuilder)localObject).append("]sendWeiYun2OfflineFile : network error");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
       FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, "actFileWy2Of", 0L, "", paramFileManagerEntity.peerUin, "", "", 9004L, "Error_No_Network", 0L, 0L, 0L, "", "", 0, "", null);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
       return;
     }
-    QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "=_= ^ [CS Send]sendWyFile2QqOffline, peerUin[" + FileManagerUtil.e(paramFileManagerEntity.peerUin) + "peerType[" + paramInt + "]], WeiYunFileId[" + paramFileManagerEntity.WeiYunFileId + "], fileName[" + paramFileManagerEntity.fileName + "], fileSize[" + paramFileManagerEntity.fileSize + "], nWeiYunSrcType[" + paramFileManagerEntity.nWeiYunSrcType + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("=_= ^ [CS Send]sendWyFile2QqOffline, peerUin[");
+    ((StringBuilder)localObject).append(FileManagerUtil.d(paramFileManagerEntity.peerUin));
+    ((StringBuilder)localObject).append("peerType[");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("]], WeiYunFileId[");
+    ((StringBuilder)localObject).append(paramFileManagerEntity.WeiYunFileId);
+    ((StringBuilder)localObject).append("], fileName[");
+    ((StringBuilder)localObject).append(paramFileManagerEntity.fileName);
+    ((StringBuilder)localObject).append("], fileSize[");
+    ((StringBuilder)localObject).append(paramFileManagerEntity.fileSize);
+    ((StringBuilder)localObject).append("], nWeiYunSrcType[");
+    ((StringBuilder)localObject).append(paramFileManagerEntity.nWeiYunSrcType);
+    ((StringBuilder)localObject).append("]");
+    QLog.d("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     paramFileManagerEntity.fProgress = 0.0F;
-    long l;
     try
     {
       l = Long.parseLong(paramFileManagerEntity.peerUin.replace("+", ""));
-      ShieldMsgManger localShieldMsgManger = (ShieldMsgManger)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
-      if ((QFileAssistantUtils.a()) && (!QFileAssistantUtils.a()) && (localShieldMsgManger != null) && (localShieldMsgManger.a(paramFileManagerEntity.peerUin)))
-      {
-        FileManagerUtil.c(HardCodeUtil.a(2131716751));
-        paramFileManagerEntity.status = 0;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 3, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 33, new Object[] { Integer.valueOf(10), "", Long.valueOf(paramFileManagerEntity.nSessionId) });
-        if (QLog.isColorLevel()) {
-          QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2OfflineFile : shield");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
-        return;
-      }
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("WeiYunLogicCenter<FileAssistant>", 2, "number format failed!");
-        }
-        l = 0L;
-      }
-      if ((TextUtils.isEmpty(paramFileManagerEntity.WeiYunFileId)) || (TextUtils.isEmpty(paramFileManagerEntity.fileName)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWyFile2QqOffline onFailed: weiyunID is null[" + TextUtils.isEmpty(paramFileManagerEntity.WeiYunFileId) + "], fileName is Null[" + TextUtils.isEmpty(paramFileManagerEntity.fileName) + "]");
-        }
-        paramFileManagerEntity.status = 0;
-        paramFileManagerEntity.isReaded = false;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramFileManagerEntity.nSessionId, 1005);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 33, new Object[] { Integer.valueOf(1), "", Long.valueOf(paramFileManagerEntity.nSessionId) });
-        return;
-      }
-      i = 3;
-      if (paramInt != 3000) {
-        break label1167;
-      }
+      long l;
+      label434:
+      WeiyunPB.ExtensionReq localExtensionReq;
+      break label434;
     }
-    int i = 106;
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "=_=k Id[" + paramFileManagerEntity.nSessionId + "] sendWeiYun2Disc[" + paramFileManagerEntity.fileName + "]");
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "=_= ^ Id[" + paramFileManagerEntity.nSessionId + "]sendWyFile2Offline bizId:" + i);
-    WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq localCrossBidProxyCopyFileToOtherBidMsgReq = new WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq();
-    if (paramFileManagerEntity.fileName != null) {
-      localCrossBidProxyCopyFileToOtherBidMsgReq.file_name.set(paramFileManagerEntity.fileName);
+    if (QLog.isColorLevel()) {
+      QLog.w("WeiYunLogicCenter<FileAssistant>", 2, "number format failed!");
     }
-    localCrossBidProxyCopyFileToOtherBidMsgReq.file_size.set(paramFileManagerEntity.fileSize);
-    if (paramFileManagerEntity.strFileSHA != null) {
-      localCrossBidProxyCopyFileToOtherBidMsgReq.file_sha.set(StringUtils.a(paramFileManagerEntity.strFileSHA));
-    }
-    if (paramFileManagerEntity.strFileMd5 != null) {
-      localCrossBidProxyCopyFileToOtherBidMsgReq.file_md5.set(StringUtils.a(paramFileManagerEntity.strFileMd5));
-    }
-    for (;;)
+    l = 0L;
+    localObject = (ShieldMsgManger)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SHIELD_LIST_MANAGER);
+    if ((QFileAssistantUtils.a()) && (!QFileAssistantUtils.a()) && (localObject != null) && (((ShieldMsgManger)localObject).a(paramFileManagerEntity.peerUin)))
     {
+      FileManagerUtil.a(HardCodeUtil.a(2131716401));
+      paramFileManagerEntity.status = 0;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 3, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 33, new Object[] { Integer.valueOf(10), "", Long.valueOf(paramFileManagerEntity.nSessionId) });
+      if (QLog.isColorLevel()) {
+        QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2OfflineFile : shield");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
+      return;
+    }
+    if ((!TextUtils.isEmpty(paramFileManagerEntity.WeiYunFileId)) && (!TextUtils.isEmpty(paramFileManagerEntity.fileName)))
+    {
+      if (paramInt == 3000)
+      {
+        i = 106;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("=_=k Id[");
+        ((StringBuilder)localObject).append(paramFileManagerEntity.nSessionId);
+        ((StringBuilder)localObject).append("] sendWeiYun2Disc[");
+        ((StringBuilder)localObject).append(paramFileManagerEntity.fileName);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("WeiYunLogicCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("=_=k Id[");
+        ((StringBuilder)localObject).append(paramFileManagerEntity.nSessionId);
+        ((StringBuilder)localObject).append("] sendWeiYun2Offline[");
+        ((StringBuilder)localObject).append(paramFileManagerEntity.fileName);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("WeiYunLogicCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("=_= ^ Id[");
+      ((StringBuilder)localObject).append(paramFileManagerEntity.nSessionId);
+      ((StringBuilder)localObject).append("]sendWyFile2Offline bizId:");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+      localObject = new WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq();
+      if (paramFileManagerEntity.fileName != null) {
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).file_name.set(paramFileManagerEntity.fileName);
+      }
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).file_size.set(paramFileManagerEntity.fileSize);
+      if (paramFileManagerEntity.strFileSHA != null) {
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).file_sha.set(StringUtils.a(paramFileManagerEntity.strFileSHA));
+      }
+      if (paramFileManagerEntity.strFileMd5 != null) {
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).file_md5.set(StringUtils.a(paramFileManagerEntity.strFileMd5));
+      } else {
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).file_md5.set(StringUtils.a(""));
+      }
       if (paramFileManagerEntity.WeiYunFileId != null) {
-        localCrossBidProxyCopyFileToOtherBidMsgReq.src_file_id.set(paramFileManagerEntity.WeiYunFileId);
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).src_file_id.set(paramFileManagerEntity.WeiYunFileId);
       }
       if (paramFileManagerEntity.WeiYunDirKey != null) {
-        localCrossBidProxyCopyFileToOtherBidMsgReq.src_pdir_key.set(StringUtils.a(paramFileManagerEntity.WeiYunDirKey));
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).src_pdir_key.set(StringUtils.a(paramFileManagerEntity.WeiYunDirKey));
       }
-      localCrossBidProxyCopyFileToOtherBidMsgReq.src_bid.set(25);
-      localCrossBidProxyCopyFileToOtherBidMsgReq.src_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-      localCrossBidProxyCopyFileToOtherBidMsgReq.src_group.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-      localCrossBidProxyCopyFileToOtherBidMsgReq.dst_bid.set(i);
-      localCrossBidProxyCopyFileToOtherBidMsgReq.dst_uin.set(l);
-      localCrossBidProxyCopyFileToOtherBidMsgReq.user_type.set(0);
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).src_bid.set(25);
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).src_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).src_group.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).dst_bid.set(i);
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).dst_uin.set(l);
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).user_type.set(0);
       if (paramFileManagerEntity.tmpSessionType > 0L)
       {
-        WeiyunPB.ExtensionReq localExtensionReq = new WeiyunPB.ExtensionReq();
+        localExtensionReq = new WeiyunPB.ExtensionReq();
         localExtensionReq.uint64_id.set(3L);
         localExtensionReq.uint64_type.set(paramFileManagerEntity.tmpSessionType);
         if ((paramFileManagerEntity.tmpSessionType == 102L) && (paramFileManagerEntity.peerUin != null)) {
@@ -840,21 +885,33 @@ public class WeiYunLogicCenter
         if ((paramFileManagerEntity.tmpSessionSig != null) && (paramFileManagerEntity.tmpSessionSig.length > 0)) {
           localExtensionReq.bytes_sig.set(ByteStringMicro.copyFrom(paramFileManagerEntity.tmpSessionSig));
         }
-        localCrossBidProxyCopyFileToOtherBidMsgReq.extension_req.set(localExtensionReq);
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).extension_req.set(localExtensionReq);
       }
-      WeiyunApi.a(localCrossBidProxyCopyFileToOtherBidMsgReq, new WeiYunLogicCenter.3(this, paramFileManagerEntity, paramInt));
+      ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).copyFileToOtherBid((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject, new WeiYunLogicCenter.3(this, paramFileManagerEntity, paramInt));
       FileManagerUtil.b(paramFileManagerEntity.nSessionId);
       return;
-      label1167:
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "=_=k Id[" + paramFileManagerEntity.nSessionId + "] sendWeiYun2Offline[" + paramFileManagerEntity.fileName + "]");
-      break;
-      localCrossBidProxyCopyFileToOtherBidMsgReq.file_md5.set(StringUtils.a(""));
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendWyFile2QqOffline onFailed: weiyunID is null[");
+      ((StringBuilder)localObject).append(TextUtils.isEmpty(paramFileManagerEntity.WeiYunFileId));
+      ((StringBuilder)localObject).append("], fileName is Null[");
+      ((StringBuilder)localObject).append(TextUtils.isEmpty(paramFileManagerEntity.fileName));
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+    }
+    paramFileManagerEntity.status = 0;
+    paramFileManagerEntity.isReaded = false;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramFileManagerEntity.nSessionId, 1005);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 33, new Object[] { Integer.valueOf(1), "", Long.valueOf(paramFileManagerEntity.nSessionId) });
   }
   
-  public void a(FileManagerEntity paramFileManagerEntity, long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback)
+  public void a(FileManagerEntity paramFileManagerEntity, long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2, WeiyunCallback paramWeiyunCallback)
   {
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
       if (paramWeiyunCallback != null) {
         paramWeiyunCallback.a(2, "");
@@ -862,150 +919,176 @@ public class WeiYunLogicCenter
       if (QLog.isColorLevel()) {
         QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink : network error");
       }
-    }
-    WeiyunPB.WeiyunShareAddFromMobileQQMsgReq localWeiyunShareAddFromMobileQQMsgReq;
-    do
-    {
       return;
-      localWeiyunShareAddFromMobileQQMsgReq = new WeiyunPB.WeiyunShareAddFromMobileQQMsgReq();
-      if ((a(localWeiyunShareAddFromMobileQQMsgReq, paramLong, paramString, paramBoolean1, paramBoolean2)) && (a(localWeiyunShareAddFromMobileQQMsgReq, paramFileManagerEntity))) {
-        break;
-      }
-    } while (paramWeiyunCallback == null);
-    paramWeiyunCallback.a(13, "");
-    return;
-    WeiyunApi.a(localWeiyunShareAddFromMobileQQMsgReq, new WeiYunLogicCenter.11(this, paramWeiyunCallback));
+    }
+    WeiyunPB.WeiyunShareAddFromMobileQQMsgReq localWeiyunShareAddFromMobileQQMsgReq = new WeiyunPB.WeiyunShareAddFromMobileQQMsgReq();
+    if ((a(localWeiyunShareAddFromMobileQQMsgReq, paramLong, paramString, paramBoolean1, paramBoolean2)) && (a(localWeiyunShareAddFromMobileQQMsgReq, paramFileManagerEntity)))
+    {
+      ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).getShareLink(localWeiyunShareAddFromMobileQQMsgReq, new WeiYunLogicCenter.11(this, paramWeiyunCallback));
+      return;
+    }
+    if (paramWeiyunCallback != null) {
+      paramWeiyunCallback.a(13, "");
+    }
   }
   
   public void a(FileManagerEntity paramFileManagerEntity, String paramString, int paramInt)
   {
-    if (paramFileManagerEntity == null) {
+    if (paramFileManagerEntity == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop : entity is null");
       }
+      return;
     }
-    TroopFileTransferManager localTroopFileTransferManager;
-    TroopFileStatusInfo localTroopFileStatusInfo;
-    do
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(paramString).longValue());
+    if (localTroopFileTransferManager == null) {
+      return;
+    }
+    int i = Math.abs(new Random().nextInt());
+    TroopFileStatusInfo localTroopFileStatusInfo = localTroopFileTransferManager.a(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.getFilePath(), paramFileManagerEntity.fileSize, 25, i, 8888L);
+    if (localTroopFileStatusInfo == null) {
+      return;
+    }
+    a(paramFileManagerEntity, localTroopFileStatusInfo, paramString, paramInt, i);
+    paramFileManagerEntity.status = 2;
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      int i;
-      do
-      {
-        do
-        {
-          return;
-          localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(paramString).longValue());
-        } while (localTroopFileTransferManager == null);
-        i = Math.abs(new Random().nextInt());
-        localTroopFileStatusInfo = localTroopFileTransferManager.a(paramFileManagerEntity.WeiYunFileId, paramFileManagerEntity.fileName, paramFileManagerEntity.getFilePath(), paramFileManagerEntity.fileSize, 25, i, 8888L);
-      } while (localTroopFileStatusInfo == null);
-      a(paramFileManagerEntity, localTroopFileStatusInfo, paramString, paramInt, i);
-      paramFileManagerEntity.status = 2;
-      if (NetworkUtil.d(BaseApplication.getContext())) {
-        break;
-      }
       paramFileManagerEntity.status = 0;
       paramFileManagerEntity.isReaded = false;
-      localTroopFileTransferManager.a(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID, -1, null, HardCodeUtil.a(2131716749));
-    } while (!QLog.isColorLevel());
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop : network error");
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop, peerUin[" + FileManagerUtil.e(paramFileManagerEntity.peerUin) + "], WeiYunFileId[" + paramFileManagerEntity.WeiYunFileId + "], fileName[" + paramFileManagerEntity.fileName + "], fileSize[" + paramFileManagerEntity.fileSize + "], nWeiYunSrcType[" + paramFileManagerEntity.nWeiYunSrcType + "]");
+      localTroopFileTransferManager.a(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID, -1, null, HardCodeUtil.a(2131716399));
+      if (QLog.isColorLevel()) {
+        QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWeiYun2Troop : network error");
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendWeiYun2Troop, peerUin[");
+      localStringBuilder.append(FileManagerUtil.d(paramFileManagerEntity.peerUin));
+      localStringBuilder.append("], WeiYunFileId[");
+      localStringBuilder.append(paramFileManagerEntity.WeiYunFileId);
+      localStringBuilder.append("], fileName[");
+      localStringBuilder.append(paramFileManagerEntity.fileName);
+      localStringBuilder.append("], fileSize[");
+      localStringBuilder.append(paramFileManagerEntity.fileSize);
+      localStringBuilder.append("], nWeiYunSrcType[");
+      localStringBuilder.append(paramFileManagerEntity.nWeiYunSrcType);
+      localStringBuilder.append("]");
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, localStringBuilder.toString());
     }
     paramFileManagerEntity.fProgress = 0.0F;
     long l2 = 0L;
     try
     {
       l1 = Long.parseLong(paramString);
-      WeiyunApi.a(a(paramFileManagerEntity, l1), new WeiYunLogicCenter.4(this, localTroopFileTransferManager, localTroopFileStatusInfo, paramFileManagerEntity));
-      return;
     }
     catch (NumberFormatException paramString)
     {
-      for (;;)
-      {
-        long l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("WeiYunLogicCenter<FileAssistant>", 2, "number format failed!");
-          l1 = l2;
-        }
-      }
+      long l1;
+      label316:
+      break label316;
     }
+    l1 = l2;
+    if (QLog.isColorLevel())
+    {
+      QLog.w("WeiYunLogicCenter<FileAssistant>", 2, "number format failed!");
+      l1 = l2;
+    }
+    paramString = a(paramFileManagerEntity, l1);
+    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).copyFileToOtherBid(paramString, new WeiYunLogicCenter.4(this, localTroopFileTransferManager, localTroopFileStatusInfo, paramFileManagerEntity));
   }
   
   public void a(WeiYunFileInfo paramWeiYunFileInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, strFileId[" + paramWeiYunFileInfo.jdField_a_of_type_JavaLangString + "],strFileName[" + paramWeiYunFileInfo.c + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("deleteWeiYunFile, strFileId[");
+      ((StringBuilder)localObject1).append(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append("],strFileName[");
+      ((StringBuilder)localObject1).append(paramWeiYunFileInfo.c);
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
     }
-    FMDataCache.a(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString, paramWeiYunFileInfo);
-    Object localObject = new WeiyunPB.DiskSimpleFileItem();
-    ((WeiyunPB.DiskSimpleFileItem)localObject).file_id.set(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
+    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).addDeletingCloudFile(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString, paramWeiYunFileInfo);
+    Object localObject2 = new WeiyunPB.DiskSimpleFileItem();
+    ((WeiyunPB.DiskSimpleFileItem)localObject2).file_id.set(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
     if (paramWeiYunFileInfo.b != null) {
-      ((WeiyunPB.DiskSimpleFileItem)localObject).pdir_key.set(StringUtils.a(paramWeiYunFileInfo.b));
+      ((WeiyunPB.DiskSimpleFileItem)localObject2).pdir_key.set(StringUtils.a(paramWeiYunFileInfo.b));
     }
-    ((WeiyunPB.DiskSimpleFileItem)localObject).filename.set(paramWeiYunFileInfo.c);
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(localObject);
-    localObject = new WeiyunPB.DiskDirFileBatchDeleteExMsgReq();
-    ((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)localObject).file_list.set(localArrayList);
-    WeiyunApi.a((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)localObject, new WeiYunLogicCenter.9(this, paramWeiYunFileInfo));
+    ((WeiyunPB.DiskSimpleFileItem)localObject2).filename.set(paramWeiYunFileInfo.c);
+    Object localObject1 = new ArrayList(1);
+    ((List)localObject1).add(localObject2);
+    localObject2 = new WeiyunPB.DiskDirFileBatchDeleteExMsgReq();
+    ((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)localObject2).file_list.set((List)localObject1);
+    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).batchDelete((WeiyunPB.DiskDirFileBatchDeleteExMsgReq)localObject2, new WeiYunLogicCenter.9(this, paramWeiYunFileInfo));
   }
   
-  public void a(WeiYunFileInfo paramWeiYunFileInfo, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback)
+  public void a(WeiYunFileInfo paramWeiYunFileInfo, WeiyunCallback paramWeiyunCallback)
   {
-    if (paramWeiYunFileInfo == null) {
+    if (paramWeiYunFileInfo == null)
+    {
       QLog.e("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^! [CS Send]sendWeiYun2Dataline : entity is null");
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (NetworkUtil.d(BaseApplication.getContext())) {
-          break;
-        }
-      } while (paramWeiyunCallback == null);
-      paramWeiyunCallback.a(-1, "no_network");
       return;
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^ [CS Send]sendWeiYun2Dataline, WeiYunFileId[" + paramWeiYunFileInfo.jdField_a_of_type_JavaLangString + "], fileName[" + paramWeiYunFileInfo.c + "], fileSize[" + paramWeiYunFileInfo.jdField_a_of_type_Long + "], nWeiYunSrcType[" + paramWeiYunFileInfo.jdField_a_of_type_Int);
-      if ((!TextUtils.isEmpty(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramWeiYunFileInfo.c))) {
-        break;
-      }
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "sendWeiYun2Dataline onFailed: weiyunID is null[" + TextUtils.isEmpty(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString) + "], fileName is Null[" + TextUtils.isEmpty(paramWeiYunFileInfo.c) + "]");
-    } while (paramWeiyunCallback == null);
-    paramWeiyunCallback.a(-2, "no_weiyunid_or_filename");
-    return;
-    WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq localCrossBidProxyCopyFileToOtherBidMsgReq = new WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq();
-    if (paramWeiYunFileInfo.c != null) {
-      localCrossBidProxyCopyFileToOtherBidMsgReq.file_name.set(paramWeiYunFileInfo.c);
     }
-    localCrossBidProxyCopyFileToOtherBidMsgReq.file_size.set(paramWeiYunFileInfo.jdField_a_of_type_Long);
-    if (paramWeiYunFileInfo.j != null) {
-      localCrossBidProxyCopyFileToOtherBidMsgReq.file_sha.set(StringUtils.a(paramWeiYunFileInfo.j));
-    }
-    if (paramWeiYunFileInfo.i != null) {
-      localCrossBidProxyCopyFileToOtherBidMsgReq.file_md5.set(StringUtils.a(paramWeiYunFileInfo.i));
-    }
-    for (;;)
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
+      if (paramWeiyunCallback != null) {
+        paramWeiyunCallback.a(-1, "no_network");
+      }
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("=_= ^ [CS Send]sendWeiYun2Dataline, WeiYunFileId[");
+    ((StringBuilder)localObject).append(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("], fileName[");
+    ((StringBuilder)localObject).append(paramWeiYunFileInfo.c);
+    ((StringBuilder)localObject).append("], fileSize[");
+    ((StringBuilder)localObject).append(paramWeiYunFileInfo.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append("], nWeiYunSrcType[");
+    ((StringBuilder)localObject).append(paramWeiYunFileInfo.jdField_a_of_type_Int);
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    if ((!TextUtils.isEmpty(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramWeiYunFileInfo.c)))
+    {
+      localObject = new WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq();
+      if (paramWeiYunFileInfo.c != null) {
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).file_name.set(paramWeiYunFileInfo.c);
+      }
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).file_size.set(paramWeiYunFileInfo.jdField_a_of_type_Long);
+      if (paramWeiYunFileInfo.j != null) {
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).file_sha.set(StringUtils.a(paramWeiYunFileInfo.j));
+      }
+      if (paramWeiYunFileInfo.i != null) {
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).file_md5.set(StringUtils.a(paramWeiYunFileInfo.i));
+      } else {
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).file_md5.set(StringUtils.a(""));
+      }
       if (paramWeiYunFileInfo.jdField_a_of_type_JavaLangString != null) {
-        localCrossBidProxyCopyFileToOtherBidMsgReq.src_file_id.set(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).src_file_id.set(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString);
       }
       if (paramWeiYunFileInfo.b != null) {
-        localCrossBidProxyCopyFileToOtherBidMsgReq.src_pdir_key.set(StringUtils.a(paramWeiYunFileInfo.b));
+        ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).src_pdir_key.set(StringUtils.a(paramWeiYunFileInfo.b));
       }
-      localCrossBidProxyCopyFileToOtherBidMsgReq.src_bid.set(25);
-      localCrossBidProxyCopyFileToOtherBidMsgReq.src_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-      localCrossBidProxyCopyFileToOtherBidMsgReq.src_group.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-      localCrossBidProxyCopyFileToOtherBidMsgReq.dst_bid.set(38);
-      localCrossBidProxyCopyFileToOtherBidMsgReq.dst_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-      localCrossBidProxyCopyFileToOtherBidMsgReq.user_type.set(0);
-      WeiyunApi.a(localCrossBidProxyCopyFileToOtherBidMsgReq, new WeiYunLogicCenter.5(this, paramWeiyunCallback));
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).src_bid.set(25);
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).src_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).src_group.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).dst_bid.set(38);
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).dst_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+      ((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject).user_type.set(0);
+      ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).copyFileToOtherBid((WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq)localObject, new WeiYunLogicCenter.5(this, paramWeiyunCallback));
       return;
-      localCrossBidProxyCopyFileToOtherBidMsgReq.file_md5.set(StringUtils.a(""));
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendWeiYun2Dataline onFailed: weiyunID is null[");
+    ((StringBuilder)localObject).append(TextUtils.isEmpty(paramWeiYunFileInfo.jdField_a_of_type_JavaLangString));
+    ((StringBuilder)localObject).append("], fileName is Null[");
+    ((StringBuilder)localObject).append(TextUtils.isEmpty(paramWeiYunFileInfo.c));
+    ((StringBuilder)localObject).append("]");
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    if (paramWeiyunCallback != null) {
+      paramWeiyunCallback.a(-2, "no_weiyunid_or_filename");
     }
   }
   
@@ -1014,37 +1097,45 @@ public class WeiYunLogicCenter
     if (QLog.isColorLevel()) {
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd");
     }
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
       if (QLog.isColorLevel()) {
         QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd : network error");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 45, new Object[] { Integer.valueOf(0), BaseApplication.getContext().getString(2131694457) });
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 45, new Object[] { Integer.valueOf(0), BaseApplication.getContext().getString(2131694422) });
       return;
     }
     WeiyunPB.PwdVerifyMsgReq localPwdVerifyMsgReq = new WeiyunPB.PwdVerifyMsgReq();
     paramString = Utils.bytes2HexStr(Utils.str2Md5(paramString));
     localPwdVerifyMsgReq.pwd_md5.set(StringUtils.a(paramString));
-    WeiyunApi.a(localPwdVerifyMsgReq, new WeiYunLogicCenter.13(this, paramString));
+    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).checkPwd(localPwdVerifyMsgReq, new WeiYunLogicCenter.13(this, paramString));
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    Object localObject;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "get weiyun file PreviewAddress onFailed, fileId[" + paramString1 + "],dirKey[" + paramString2 + "]");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 278, new Object[] { Integer.valueOf(1810001), HardCodeUtil.a(2131716752), "", "", "", "", Integer.valueOf(0) });
+      localObject = new WeiyunPB.DiskFileDocDownloadAbsMsgReq();
+      ((WeiyunPB.DiskFileDocDownloadAbsMsgReq)localObject).file_id.set(paramString1);
+      ((WeiyunPB.DiskFileDocDownloadAbsMsgReq)localObject).pdir_key.set(StringUtils.a(paramString2));
+      ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).fetchPreviewAddress((WeiyunPB.DiskFileDocDownloadAbsMsgReq)localObject, new WeiYunLogicCenter.10(this));
       return;
     }
-    WeiyunPB.DiskFileDocDownloadAbsMsgReq localDiskFileDocDownloadAbsMsgReq = new WeiyunPB.DiskFileDocDownloadAbsMsgReq();
-    localDiskFileDocDownloadAbsMsgReq.file_id.set(paramString1);
-    localDiskFileDocDownloadAbsMsgReq.pdir_key.set(StringUtils.a(paramString2));
-    WeiyunApi.a(localDiskFileDocDownloadAbsMsgReq, new WeiYunLogicCenter.10(this));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get weiyun file PreviewAddress onFailed, fileId[");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("],dirKey[");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 278, new Object[] { Integer.valueOf(1810001), HardCodeUtil.a(2131716402), "", "", "", "", Integer.valueOf(0) });
   }
   
-  public void a(List<MessageForPic> paramList, List<MessageForShortVideo> paramList1, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback)
+  public void a(List<MessageForPic> paramList, List<MessageForShortVideo> paramList1, WeiyunCallback paramWeiyunCallback)
   {
     WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq localAioPicAndVideoCopyToWeiyunMsgReq = new WeiyunPB.AioPicAndVideoCopyToWeiyunMsgReq();
     ArrayList localArrayList = new ArrayList();
@@ -1068,7 +1159,7 @@ public class WeiYunLogicCenter
   
   public boolean a()
   {
-    return WeiyunApi.a();
+    return ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).isPwdQueried();
   }
   
   public String b(String paramString1, String paramString2, int paramInt, Object paramObject)
@@ -1078,7 +1169,7 @@ public class WeiYunLogicCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter
  * JD-Core Version:    0.7.0.1
  */

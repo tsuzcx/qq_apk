@@ -54,7 +54,10 @@ public class SmsPlugin
     {
       QLog.e("SmsPlugin", 1, new Object[] { "sendSms exception : ", localException.getMessage() });
       Intent localIntent2 = new Intent("android.intent.action.SENDTO");
-      localIntent2.setData(Uri.parse("smsto:" + paramJSONObject));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("smsto:");
+      localStringBuilder.append(paramJSONObject);
+      localIntent2.setData(Uri.parse(localStringBuilder.toString()));
       localIntent2.putExtra("sms_body", (String)localObject);
       paramJSContext.startActivity(localIntent2);
     }
@@ -62,7 +65,7 @@ public class SmsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.SmsPlugin
  * JD-Core Version:    0.7.0.1
  */

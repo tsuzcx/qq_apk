@@ -18,26 +18,23 @@ class Conversation$UICallBack$6
     long l = SharedPreUtils.a(this.a.a.a.getApplication(), this.a.a.a().getCurrentAccountUin());
     if (System.currentTimeMillis() - l >= 86400000L)
     {
-      localUpgradeTIMWrapper = UpgradeTIMWrapper.a();
+      UpgradeTIMWrapper localUpgradeTIMWrapper = UpgradeTIMWrapper.a();
       if (localUpgradeTIMWrapper != null)
       {
-        localMessage = this.a.a.b.obtainMessage(1134045);
+        Message localMessage = this.a.a.b.obtainMessage(1134045);
         localMessage.obj = localUpgradeTIMWrapper;
         this.a.a.b(new Conversation.UICallBack.6.1(this, localMessage));
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      UpgradeTIMWrapper localUpgradeTIMWrapper;
-      Message localMessage;
-      return;
+      QLog.e("UpgradeTIMWrapper", 2, "Conversation onReceiveShowTIMUpgradeTips smaller than 24 hours");
     }
-    QLog.e("UpgradeTIMWrapper", 2, "Conversation onReceiveShowTIMUpgradeTips smaller than 24 hours");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.6
  * JD-Core Version:    0.7.0.1
  */

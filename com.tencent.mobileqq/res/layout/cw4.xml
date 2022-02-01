@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/nb3" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/i7t" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:id="@id/ofo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_toRightOf="@id/nb3" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/nb2" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="15.5dip" android:src="@drawable/qb_troop_info_qrcode" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nyj" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.navbar.NavBarCommon android:id="@id/nyi" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/myu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/dyj" android:layout_below="@id/nyj" />
+    <RelativeLayout android:id="@id/n6t" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/dyj" android:layout_below="@id/nyj" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/dyj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
 </RelativeLayout>

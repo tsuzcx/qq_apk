@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.profilecard.vas;
 
+import com.tencent.mobileqq.profilecard.entity.IProfileBusinessInfo;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/VasDiyData;", "", "urlPrefix", "", "titleStyle", "", "mainColor", "headerJson", "bodyJson", "Lorg/json/JSONObject;", "bgJson", "(Ljava/lang/String;IILjava/lang/Object;Lorg/json/JSONObject;Ljava/lang/Object;)V", "getBgJson", "()Ljava/lang/Object;", "getBodyJson", "()Lorg/json/JSONObject;", "getHeaderJson", "getMainColor", "()I", "getTitleStyle", "getUrlPrefix", "()Ljava/lang/String;", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/VasDiyData;", "Lcom/tencent/mobileqq/profilecard/entity/IProfileBusinessInfo;", "urlPrefix", "", "titleStyle", "", "mainColor", "headerJson", "", "bodyJson", "Lorg/json/JSONObject;", "bgJson", "(Ljava/lang/String;IILjava/lang/Object;Lorg/json/JSONObject;Ljava/lang/Object;)V", "getBgJson", "()Ljava/lang/Object;", "getBodyJson", "()Lorg/json/JSONObject;", "getHeaderJson", "getMainColor", "()I", "getTitleStyle", "getUrlPrefix", "()Ljava/lang/String;", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class VasDiyData
+  implements IProfileBusinessInfo
 {
   @NotNull
   private final Object bgJson;
@@ -76,18 +78,18 @@ public final class VasDiyData
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VasDiyData))
       {
         paramObject = (VasDiyData)paramObject;
-        if ((!Intrinsics.areEqual(this.urlPrefix, paramObject.urlPrefix)) || (this.titleStyle != paramObject.titleStyle) || (this.mainColor != paramObject.mainColor) || (!Intrinsics.areEqual(this.headerJson, paramObject.headerJson)) || (!Intrinsics.areEqual(this.bodyJson, paramObject.bodyJson)) || (!Intrinsics.areEqual(this.bgJson, paramObject.bgJson))) {}
+        if ((Intrinsics.areEqual(this.urlPrefix, paramObject.urlPrefix)) && (this.titleStyle == paramObject.titleStyle) && (this.mainColor == paramObject.mainColor) && (Intrinsics.areEqual(this.headerJson, paramObject.headerJson)) && (Intrinsics.areEqual(this.bodyJson, paramObject.bodyJson)) && (Intrinsics.areEqual(this.bgJson, paramObject.bgJson))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -126,53 +128,60 @@ public final class VasDiyData
   
   public int hashCode()
   {
-    int m = 0;
     Object localObject = this.urlPrefix;
+    int m = 0;
     int i;
-    int n;
-    int i1;
-    int j;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      n = this.titleStyle;
-      i1 = this.mainColor;
-      localObject = this.headerJson;
-      if (localObject == null) {
-        break label119;
-      }
-      j = localObject.hashCode();
-      label49:
-      localObject = this.bodyJson;
-      if (localObject == null) {
-        break label124;
-      }
-    }
-    label119:
-    label124:
-    for (int k = localObject.hashCode();; k = 0)
-    {
-      localObject = this.bgJson;
-      if (localObject != null) {
-        m = localObject.hashCode();
-      }
-      return (k + (j + ((i * 31 + n) * 31 + i1) * 31) * 31) * 31 + m;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label49;
     }
+    int n = this.titleStyle;
+    int i1 = this.mainColor;
+    localObject = this.headerJson;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.bodyJson;
+    int k;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    } else {
+      k = 0;
+    }
+    localObject = this.bgJson;
+    if (localObject != null) {
+      m = localObject.hashCode();
+    }
+    return ((((i * 31 + n) * 31 + i1) * 31 + j) * 31 + k) * 31 + m;
   }
   
   @NotNull
   public String toString()
   {
-    return "VasDiyData(urlPrefix=" + this.urlPrefix + ", titleStyle=" + this.titleStyle + ", mainColor=" + this.mainColor + ", headerJson=" + this.headerJson + ", bodyJson=" + this.bodyJson + ", bgJson=" + this.bgJson + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VasDiyData(urlPrefix=");
+    localStringBuilder.append(this.urlPrefix);
+    localStringBuilder.append(", titleStyle=");
+    localStringBuilder.append(this.titleStyle);
+    localStringBuilder.append(", mainColor=");
+    localStringBuilder.append(this.mainColor);
+    localStringBuilder.append(", headerJson=");
+    localStringBuilder.append(this.headerJson);
+    localStringBuilder.append(", bodyJson=");
+    localStringBuilder.append(this.bodyJson);
+    localStringBuilder.append(", bgJson=");
+    localStringBuilder.append(this.bgJson);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.VasDiyData
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoOuterStatusListener;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import java.lang.ref.WeakReference;
 
 public class VideoTextureView
@@ -32,27 +33,30 @@ public class VideoTextureView
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    Object localObject = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    if (localObject != null)
     {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
+      if (((MediaPlayer)localObject).isPlaying()) {
         this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
       }
       this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
       this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenVideoviewVideoTextureView$WeakHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenVideoviewVideoTextureView$WeakHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenVideoviewVideoTextureView$WeakHandler;
+    if (localObject != null) {
+      ((VideoTextureView.WeakHandler)localObject).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
+    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    if (localMediaPlayer == null) {
       return;
     }
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
+      localMediaPlayer.setDataSource(paramString);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new VideoTextureView.2(this));
       this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
@@ -71,7 +75,7 @@ public class VideoTextureView
   {
     this.jdField_a_of_type_AndroidViewSurface = new Surface(paramSurfaceTexture);
     if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+      this.jdField_a_of_type_AndroidMediaMediaPlayer = new ReportMediaPlayer();
     }
     this.jdField_a_of_type_AndroidMediaMediaPlayer.setSurface(this.jdField_a_of_type_AndroidViewSurface);
     a(this.jdField_a_of_type_JavaLangString);
@@ -93,7 +97,7 @@ public class VideoTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView
  * JD-Core Version:    0.7.0.1
  */

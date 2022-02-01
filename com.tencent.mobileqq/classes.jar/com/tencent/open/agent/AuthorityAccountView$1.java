@@ -1,39 +1,32 @@
 package com.tencent.open.agent;
 
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ActionSheet;
 
 class AuthorityAccountView$1
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
-  AuthorityAccountView$1(AuthorityAccountView paramAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
+  AuthorityAccountView$1(AuthorityAccountView paramAuthorityAccountView) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    paramInt1 = paramView.getHeight();
-    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
+    if (AuthorityAccountView.a(this.a) != null) {
+      AuthorityAccountView.a(this.a).a();
     }
-    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (paramView == null) {
-      paramView = new RelativeLayout.LayoutParams(-1, -2);
-    }
-    for (;;)
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-      paramView.addRule(12);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      return;
-      paramView.height = -2;
+      this.a.f();
+      this.a.jdField_a_of_type_Boolean = true;
     }
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityAccountView.1
  * JD-Core Version:    0.7.0.1
  */

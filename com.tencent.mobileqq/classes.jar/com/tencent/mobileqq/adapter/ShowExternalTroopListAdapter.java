@@ -10,9 +10,9 @@ import android.widget.TextView;
 import com.tencent.biz.addContactTroopView.GroupViewAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.troop.api.observer.TroopAvatarObserver;
 import com.tencent.mobileqq.troop.data.NearbyTroops.CustomViewHolder;
 import com.tencent.mobileqq.troop.data.ShowExternalTroop;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -28,8 +28,8 @@ public class ShowExternalTroopListAdapter
   protected View.OnClickListener a;
   ShowExternalTroopListAdapter.OnTroopListClickListener jdField_a_of_type_ComTencentMobileqqAdapterShowExternalTroopListAdapter$OnTroopListClickListener;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopBusinessObserver jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver = new ShowExternalTroopListAdapter.1(this);
   protected TroopManager a;
+  TroopAvatarObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopAvatarObserver = new ShowExternalTroopListAdapter.1(this);
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   protected String a;
   protected List<ShowExternalTroopListAdapter.TroopListItem> a;
@@ -54,7 +54,7 @@ public class ShowExternalTroopListAdapter
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER));
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopAvatarObserver);
   }
   
   public void a(List<ShowExternalTroop> paramList)
@@ -69,7 +69,7 @@ public class ShowExternalTroopListAdapter
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopAvatarObserver);
     super.c();
   }
   
@@ -85,43 +85,40 @@ public class ShowExternalTroopListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
     View localView;
-    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    for (paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560642, null);; paramView = localView)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560754, null);
-      paramView = localView;
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
+      localView = paramView;
+      break;
       ShowExternalTroopListAdapter.TroopListItem localTroopListItem = (ShowExternalTroopListAdapter.TroopListItem)getItem(paramInt);
       if (localTroopListItem == null)
       {
-        localView = null;
+        localTroopListItem = null;
+        localView = paramView;
+        paramView = localTroopListItem;
+        break;
+      }
+      if (paramView != null)
+      {
+        localView = paramView;
+        if (paramView.getTag() != null) {}
       }
       else
       {
-        if (paramView != null)
-        {
-          localView = paramView;
-          if (paramView.getTag() != null) {}
-        }
-        else
-        {
-          localView = GroupViewAdapter.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup, 5, false, 1);
-          localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        }
-        paramView = (NearbyTroops.CustomViewHolder)localView.getTag();
-        paramView.jdField_c_of_type_Int = 4;
-        ShowExternalTroop localShowExternalTroop = localTroopListItem.a;
-        GroupViewAdapter.a(localView, this.jdField_a_of_type_AndroidContentContext, localShowExternalTroop);
-        paramView.e.setVisibility(8);
-        paramView.jdField_a_of_type_JavaLangString = localTroopListItem.a.troopUin;
-        paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, localShowExternalTroop.troopUin));
-        paramView = localView;
+        localView = GroupViewAdapter.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup, 5, false, 1);
+        localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
+      paramView = (NearbyTroops.CustomViewHolder)localView.getTag();
+      paramView.jdField_c_of_type_Int = 4;
+      ShowExternalTroop localShowExternalTroop = localTroopListItem.a;
+      GroupViewAdapter.a(localView, this.jdField_a_of_type_AndroidContentContext, localShowExternalTroop);
+      paramView.e.setVisibility(8);
+      paramView.jdField_a_of_type_JavaLangString = localTroopListItem.a.troopUin;
+      paramView.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, localShowExternalTroop.troopUin));
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public void notifyDataSetChanged()
@@ -129,8 +126,7 @@ public class ShowExternalTroopListAdapter
     if (this.c != null)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      if (!this.c.isEmpty()) {}
-      for (int i = 1; i != 0; i = 0)
+      if ((this.c.isEmpty() ^ true))
       {
         Iterator localIterator = this.c.iterator();
         while (localIterator.hasNext())
@@ -145,7 +141,7 @@ public class ShowExternalTroopListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter
  * JD-Core Version:    0.7.0.1
  */

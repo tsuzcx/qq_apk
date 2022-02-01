@@ -23,13 +23,14 @@ public final class FeedCloudRead$StGetRankingListRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 56 }, new String[] { "extInfo", "items", "startTime", "endTime", "busiRspData", "hostUinRank", "isActiveRank" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null, Integer.valueOf(0) }, StGetRankingListRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50, 56 }, new String[] { "extInfo", "items", "startTime", "endTime", "busiRspData", "hostUinRank", "isActiveRank" }, new Object[] { null, null, localInteger, localInteger, localByteStringMicro, null, localInteger }, StGetRankingListRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudRead.StGetRankingListRsp
  * JD-Core Version:    0.7.0.1
  */

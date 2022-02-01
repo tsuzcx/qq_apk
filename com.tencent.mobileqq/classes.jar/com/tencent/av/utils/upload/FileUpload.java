@@ -22,7 +22,12 @@ public abstract class FileUpload
   
   protected FileUpload(AppInterface paramAppInterface, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = ("FileUpload_" + paramInt + "_" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FileUpload_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramLong);
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
@@ -63,33 +68,40 @@ public abstract class FileUpload
       return false;
     }
     Object localObject = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if ((localObject == null) || (localObject.length == 0))
+    if ((localObject != null) && (localObject.length != 0))
     {
-      paramUploadCallback.a(-10003, str, "", null);
-      return false;
-    }
-    byte[] arrayOfByte = ARCloudFileUpload.a(paramString);
-    if ((arrayOfByte == null) || (arrayOfByte.length == 0))
-    {
+      byte[] arrayOfByte = ARCloudFileUpload.a(paramString);
+      if ((arrayOfByte != null) && (arrayOfByte.length != 0))
+      {
+        FileUpload.1 local1 = new FileUpload.1(this, str, l, arrayOfByte, paramUploadCallback);
+        Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
+        localCommFileExtReq.uint32_action_type.set(0);
+        localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
+        localObject = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, paramString, 0, (byte[])localObject, arrayOfByte, local1, localCommFileExtReq.toByteArray());
+        int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
+        if (i != 0) {
+          paramUploadCallback.a(i, str, "", null);
+        }
+        paramUploadCallback = this.jdField_a_of_type_JavaLangString;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("requestToUpload, localFile[");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("], sessionId[");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("]");
+        QLog.w(paramUploadCallback, 1, ((StringBuilder)localObject).toString());
+        return i == 0;
+      }
       paramUploadCallback.a(-10002, str, "", null);
       return false;
     }
-    FileUpload.1 local1 = new FileUpload.1(this, str, l, arrayOfByte, paramUploadCallback);
-    Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
-    localCommFileExtReq.uint32_action_type.set(0);
-    localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-    localObject = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, paramString, 0, (byte[])localObject, arrayOfByte, local1, localCommFileExtReq.toByteArray());
-    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
-    if (i != 0) {
-      paramUploadCallback.a(i, str, "", null);
-    }
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestToUpload, localFile[" + paramString + "], sessionId[" + str + "]");
-    return i == 0;
+    paramUploadCallback.a(-10003, str, "", null);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.upload.FileUpload
  * JD-Core Version:    0.7.0.1
  */

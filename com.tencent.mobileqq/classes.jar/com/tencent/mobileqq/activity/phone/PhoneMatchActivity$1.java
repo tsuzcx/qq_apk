@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.phonecontact.permission.PermissionChecker;
 
 class PhoneMatchActivity$1
   implements Runnable
@@ -9,12 +9,12 @@ class PhoneMatchActivity$1
   
   public void run()
   {
-    this.this$0.a.m();
+    PermissionChecker.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneMatchActivity.1
  * JD-Core Version:    0.7.0.1
  */

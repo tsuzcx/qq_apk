@@ -86,31 +86,31 @@ public final class QAPMConfigureWizard$Companion
   public final boolean setUin(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    UserMeta localUserMeta;
-    Object localObject;
-    if ((BaseInfo.sharePreference != null) && (Intrinsics.areEqual("10000", BaseInfo.userMeta.uin)))
+    if (BaseInfo.sharePreference != null)
     {
-      localUserMeta = BaseInfo.userMeta;
-      localObject = BaseInfo.sharePreference;
-      if (localObject == null) {
-        break label94;
-      }
-      localObject = ((SharedPreferences)localObject).getString("config_uin", "10000");
-      if (localObject == null) {
-        break label94;
+      Object localObject1 = BaseInfo.userMeta.uin;
+      String str = "10000";
+      if (Intrinsics.areEqual("10000", localObject1))
+      {
+        UserMeta localUserMeta = BaseInfo.userMeta;
+        Object localObject2 = BaseInfo.sharePreference;
+        localObject1 = str;
+        if (localObject2 != null)
+        {
+          localObject2 = ((SharedPreferences)localObject2).getString("config_uin", "10000");
+          localObject1 = str;
+          if (localObject2 != null) {
+            localObject1 = localObject2;
+          }
+        }
+        localUserMeta.uin = ((String)localObject1);
       }
     }
-    for (;;)
+    if ((Intrinsics.areEqual(paramString, BaseInfo.userMeta.uin) ^ true))
     {
-      localUserMeta.uin = ((String)localObject);
-      if (!(Intrinsics.areEqual(paramString, BaseInfo.userMeta.uin) ^ true)) {
-        break;
-      }
       BaseInfo.userMeta.uin = paramString;
       BaseInfo.editor.putString("config_uin", paramString).apply();
       return true;
-      label94:
-      localObject = "10000";
     }
     return false;
   }
@@ -128,8 +128,13 @@ public final class QAPMConfigureWizard$Companion
   public final void setVersion(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "version");
-    if (((CharSequence)paramString).length() == 0) {}
-    for (int i = 1; i != 0; i = 0)
+    int i;
+    if (((CharSequence)paramString).length() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
       BaseInfo.userMeta.version = AppInfo.Companion.getAppVersion((Context)BaseInfo.app);
       return;
@@ -139,7 +144,7 @@ public final class QAPMConfigureWizard$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qapmmanager.QAPMConfigureWizard.Companion
  * JD-Core Version:    0.7.0.1
  */

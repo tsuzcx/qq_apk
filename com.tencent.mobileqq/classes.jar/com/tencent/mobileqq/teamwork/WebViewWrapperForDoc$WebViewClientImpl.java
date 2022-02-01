@@ -10,18 +10,15 @@ import android.text.TextUtils;
 import com.tencent.biz.AuthorizeConfig;
 import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountH5AbilityPlugin;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocPreloadConfigBean;
 import com.tencent.mobileqq.config.business.tendoc.TencentDocPreloadConfigProcessor;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.api.IGetExternalInterface;
 import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
 import com.tencent.mobileqq.webview.swift.WebViewCallback;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.smtt.export.external.interfaces.SslError;
@@ -43,36 +40,48 @@ class WebViewWrapperForDoc$WebViewClientImpl
   
   WebResourceResponse a(WebView paramWebView, String paramString)
   {
-    Object localObject3 = null;
+    boolean bool = TextUtils.isEmpty(paramString);
     Object localObject2 = null;
-    if (TextUtils.isEmpty(paramString)) {}
-    WebViewPluginEngine localWebViewPluginEngine;
-    do
-    {
-      return localObject2;
-      if (paramString.startsWith("mqqpa://resourceid/")) {
-        return ((IPublicAccountH5AbilityPlugin)QRoute.api(IPublicAccountH5AbilityPlugin.class)).getWebResponse(paramString);
-      }
-      localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
-    } while (localWebViewPluginEngine == null);
-    Object localObject1;
+    StringBuilder localStringBuilder2 = null;
+    if (bool) {
+      return null;
+    }
+    if (paramString.startsWith("mqqpa://resourceid/")) {
+      return ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).getWebResponse(paramString);
+    }
+    WebViewPluginEngine localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
+    if (localWebViewPluginEngine == null) {
+      return null;
+    }
     if (paramString.startsWith("https://jsbridge/"))
     {
-      localObject1 = paramString.replace("https://jsbridge/", "jsbridge://");
-      if (QLog.isColorLevel())
-      {
-        if ((!((String)localObject1).startsWith("jsbridge://")) || (((String)localObject1).length() <= 512)) {
-          break label245;
-        }
-        QLog.i("WebLog_WebViewWrapper", 2, "doInterceptRequest:" + ((String)localObject1).substring(0, 512));
+      paramWebView = paramString.replace("https://jsbridge/", "jsbridge://");
+    }
+    else
+    {
+      paramWebView = paramString;
+      if (paramString.startsWith("http://jsbridge/")) {
+        paramWebView = paramString.replace("http://jsbridge/", "jsbridge://");
       }
     }
-    for (;;)
-    {
-      if ((!((String)localObject1).startsWith("jsbridge:")) || (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
-        break label270;
+    if (QLog.isColorLevel()) {
+      if ((paramWebView.startsWith("jsbridge://")) && (paramWebView.length() > 512))
+      {
+        paramString = new StringBuilder("doInterceptRequest:");
+        paramString.append(paramWebView.substring(0, 512));
+        QLog.i("WebLog_WebViewWrapper", 2, paramString.toString());
       }
-      ThreadManagerV2.getUIHandlerV2().post(new WebViewWrapperForDoc.WebViewClientImpl.1(this, localWebViewPluginEngine, (String)localObject1));
+      else
+      {
+        paramString = new StringBuilder("doInterceptRequest:");
+        paramString.append(paramWebView);
+        QLog.i("WebLog_WebViewWrapper", 2, paramString.toString());
+      }
+    }
+    Object localObject1;
+    if ((paramWebView.startsWith("jsbridge:")) && (WebViewWrapperForDoc.j(this.b) != null))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new WebViewWrapperForDoc.WebViewClientImpl.1(this, localWebViewPluginEngine, paramWebView));
       localObject1 = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
       paramString = ((WebResourceResponse)localObject1).getResponseHeaders();
       paramWebView = paramString;
@@ -82,141 +91,157 @@ class WebViewWrapperForDoc$WebViewClientImpl
       paramWebView.put("cache-control", "must-revalidate，no-store");
       ((WebResourceResponse)localObject1).setResponseHeaders(paramWebView);
       return localObject1;
-      localObject1 = paramString;
-      if (!paramString.startsWith("http://jsbridge/")) {
-        break;
-      }
-      localObject1 = paramString.replace("http://jsbridge/", "jsbridge://");
-      break;
-      label245:
-      QLog.i("WebLog_WebViewWrapper", 2, "doInterceptRequest:" + (String)localObject1);
     }
     for (;;)
     {
       try
       {
-        label270:
-        if (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null)
-        {
-          paramWebView = this.b.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.requestResource((String)localObject1);
-          if (!(paramWebView instanceof WebResourceResponse)) {
-            break label423;
-          }
-          paramWebView = (WebResourceResponse)paramWebView;
+        if (WebViewWrapperForDoc.a(this.b) == null) {
+          break label457;
         }
-      }
-      catch (Exception paramString)
-      {
-        label343:
-        paramWebView = localObject3;
-        label354:
-        QLog.e("WebLog_WebViewWrapper", 1, "shouldInterceptRequest:intercept by sonic error -> " + paramString.getMessage());
-        continue;
-      }
-      for (;;)
-      {
+        localObject1 = WebViewWrapperForDoc.b(this.b).requestResource(paramWebView);
+        paramString = localObject2;
+        if (!(localObject1 instanceof WebResourceResponse)) {
+          break label388;
+        }
+        paramString = (WebResourceResponse)localObject1;
         try
         {
           QLog.i("WebLog_WebViewWrapper", 1, "doInterceptRequest:intercept by sonic.");
-          localObject2 = paramWebView;
-          if (paramWebView != null) {
-            break;
-          }
         }
-        catch (Exception paramString)
-        {
-          break label354;
-          break label343;
-        }
+        catch (Exception localException1) {}
+        localStringBuilder2 = new StringBuilder();
+      }
+      catch (Exception localException2)
+      {
+        paramString = localStringBuilder2;
+      }
+      localStringBuilder2.append("shouldInterceptRequest:intercept by sonic error -> ");
+      localStringBuilder2.append(localException2.getMessage());
+      QLog.e("WebLog_WebViewWrapper", 1, localStringBuilder2.toString());
+      label388:
+      if (paramString == null) {
         try
         {
-          paramString = localWebViewPluginEngine.a((String)localObject1, 8L);
-          if (!(paramString instanceof WebResourceResponse)) {
-            continue;
+          paramWebView = localWebViewPluginEngine.a(paramWebView, 8L);
+          if ((paramWebView instanceof WebResourceResponse))
+          {
+            paramWebView = (WebResourceResponse)paramWebView;
+            return paramWebView;
           }
-          paramString = (WebResourceResponse)paramString;
-          paramWebView = paramString;
-          return paramWebView;
         }
-        catch (Exception paramString)
+        catch (Exception paramWebView)
         {
-          QLog.e("WebLog_WebViewWrapper", 1, "shouldInterceptRequest error:" + paramString.getMessage());
-          return paramWebView;
+          localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("shouldInterceptRequest error:");
+          localStringBuilder1.append(paramWebView.getMessage());
+          QLog.e("WebLog_WebViewWrapper", 1, localStringBuilder1.toString());
         }
       }
-      paramWebView = null;
-      continue;
-      label423:
-      paramWebView = null;
+      return paramString;
+      label457:
+      StringBuilder localStringBuilder1 = null;
     }
   }
   
   public void onDetectedBlankScreen(String paramString, int paramInt)
   {
-    QLog.i("WebLog_WebViewWrapper", 1, "onDetectedBlankScreen, status: " + paramInt + ", url:" + paramString);
-    if (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null) {
-      this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.onDetectedBlankScreen(paramString, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDetectedBlankScreen, status: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", url:");
+    localStringBuilder.append(paramString);
+    QLog.i("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
+    if (WebViewWrapperForDoc.K(this.b) != null) {
+      WebViewWrapperForDoc.L(this.b).onDetectedBlankScreen(paramString, paramInt);
     }
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if ((this.b.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
-      return;
+    if (!WebViewWrapperForDoc.b(this.b).isFinishing())
+    {
+      if (WebViewWrapperForDoc.b(this.b) == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageFinished:");
+      localStringBuilder.append(paramString);
+      QLog.d("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
+      super.onPageFinished(paramWebView, paramString);
+      if (WebViewWrapperForDoc.x(this.b) != null) {
+        WebViewWrapperForDoc.y(this.b).onPageFinished(paramWebView, paramString);
+      }
+      paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
+      if (paramWebView != null) {
+        paramWebView.a(paramString, 8589934594L, null);
+      }
+      ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).paramInitFinish(WebViewWrapperForDoc.a(this.b));
     }
-    QLog.d("WebLog_WebViewWrapper", 1, "onPageFinished:" + paramString);
-    super.onPageFinished(paramWebView, paramString);
-    if (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null) {
-      this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.onPageFinished(paramWebView, paramString);
-    }
-    paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
-    if (paramWebView != null) {
-      paramWebView.a(paramString, 8589934594L, null);
-    }
-    AIOOpenWebMonitor.b(this.b.jdField_a_of_type_AndroidContentIntent);
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     JsInjector.getInstance().onPageStarted(paramWebView);
-    if ((this.b.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
-    do
+    if (!WebViewWrapperForDoc.a(this.b).isFinishing())
     {
-      return;
-      QLog.d("WebLog_WebViewWrapper", 1, "onPageStarted:" + paramString);
+      if (WebViewWrapperForDoc.a(this.b) == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageStarted:");
+      localStringBuilder.append(paramString);
+      QLog.d("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
       super.onPageStarted(paramWebView, paramString, paramBitmap);
-      if (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null)
+      if (WebViewWrapperForDoc.u(this.b) != null)
       {
-        this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.onPageStarted(paramWebView, paramString, paramBitmap);
-        this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.onWebViewClientImplPageStarted(paramWebView, paramString, paramBitmap);
+        WebViewWrapperForDoc.v(this.b).onPageStarted(paramWebView, paramString, paramBitmap);
+        WebViewWrapperForDoc.w(this.b).onWebViewClientImplPageStarted(paramWebView, paramString, paramBitmap);
       }
       paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
-    } while (paramWebView == null);
-    paramWebView.a(paramString, 8589934593L, null);
+      if (paramWebView != null) {
+        paramWebView.a(paramString, 8589934593L, null);
+      }
+    }
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if ((this.b.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
-    do
+    if (!WebViewWrapperForDoc.d(this.b).isFinishing())
     {
-      return;
-      QLog.e("WebLog_WebViewWrapper", 1, "onReceivedError:" + paramInt + ", desc=" + paramString1 + ", url=" + paramString2);
-      if (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null) {
-        this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
+      if (WebViewWrapperForDoc.d(this.b) == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceivedError:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", desc=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", url=");
+      localStringBuilder.append(paramString2);
+      QLog.e("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
+      if (WebViewWrapperForDoc.B(this.b) != null) {
+        WebViewWrapperForDoc.C(this.b).onReceivedError(paramWebView, paramInt, paramString1, paramString2);
       }
       paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
-    } while (paramWebView == null);
-    paramWebView.a(paramString2, 8589934595L, paramInt);
+      if (paramWebView != null) {
+        paramWebView.a(paramString2, 8589934595L, paramInt);
+      }
+    }
   }
   
   public void onReceivedHttpError(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse)
   {
     if ((paramWebView != null) && (paramWebResourceRequest != null) && (paramWebResourceResponse != null))
     {
-      QLog.e("WebLog_WebViewWrapper", 1, "onReceivedHttpError:" + paramWebResourceRequest.getUrl() + "Occur error, resp code=" + paramWebResourceResponse.getStatusCode());
-      String str = paramWebView.getUrl();
-      if ((str != null) && (AuthorizeConfig.a().a(str)))
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceivedHttpError:");
+      ((StringBuilder)localObject).append(paramWebResourceRequest.getUrl());
+      ((StringBuilder)localObject).append("Occur error, resp code=");
+      ((StringBuilder)localObject).append(paramWebResourceResponse.getStatusCode());
+      QLog.e("WebLog_WebViewWrapper", 1, ((StringBuilder)localObject).toString());
+      localObject = paramWebView.getUrl();
+      if ((localObject != null) && (AuthorizeConfig.a().a((String)localObject)))
       {
         paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
         if (paramWebView != null)
@@ -227,8 +252,8 @@ class WebViewWrapperForDoc$WebViewClientImpl
           this.a.put("requestData", paramWebResourceRequest);
           this.a.put("responseData", paramWebResourceResponse);
           this.a.put("errorCode", Integer.valueOf(paramWebResourceResponse.getStatusCode()));
-          paramWebView.a(str, 64L, this.a);
-          paramWebView.a(str, 8589934612L, this.a);
+          paramWebView.a((String)localObject, 64L, this.a);
+          paramWebView.a((String)localObject, 8589934612L, this.a);
         }
       }
     }
@@ -236,128 +261,148 @@ class WebViewWrapperForDoc$WebViewClientImpl
   
   public void onReceivedSslError(WebView paramWebView, SslErrorHandler paramSslErrorHandler, SslError paramSslError)
   {
-    if ((this.b.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {
-      return;
-    }
-    Object localObject = paramSslError.getCertificate();
-    String str = paramWebView.getUrl();
-    StringBuilder localStringBuilder = new StringBuilder().append("onReceivedSslError:").append(paramSslError.getPrimaryError()).append(", cert=");
-    if (localObject == null) {}
-    for (localObject = "null";; localObject = ((SslCertificate)localObject).toString())
+    if (!WebViewWrapperForDoc.c(this.b).isFinishing())
     {
-      QLog.e("WebLog_WebViewWrapper", 1, (String)localObject + ", pageUrl=" + Util.b(str, new String[0]));
-      if (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null) {
-        this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.onReceivedSslError(paramWebView, paramSslError);
+      if (WebViewWrapperForDoc.c(this.b) == null) {
+        return;
+      }
+      Object localObject = paramSslError.getCertificate();
+      String str = paramWebView.getUrl();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceivedSslError:");
+      localStringBuilder.append(paramSslError.getPrimaryError());
+      localStringBuilder.append(", cert=");
+      if (localObject == null) {
+        localObject = "null";
+      } else {
+        localObject = ((SslCertificate)localObject).toString();
+      }
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(", pageUrl=");
+      localStringBuilder.append(Util.b(str, new String[0]));
+      QLog.e("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
+      if (WebViewWrapperForDoc.z(this.b) != null) {
+        WebViewWrapperForDoc.A(this.b).onReceivedSslError(paramWebView, paramSslError);
       }
       paramSslErrorHandler.cancel();
-      return;
     }
   }
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if ((this.b.jdField_a_of_type_ComTencentBizUiTouchWebView == null) || (this.b.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    Object localObject1 = paramString;
+    if ((WebViewWrapperForDoc.e(this.b) != null) && (!WebViewWrapperForDoc.e(this.b).isFinishing()))
     {
-      QLog.e("WebLog_WebViewWrapper", 1, "call shouldOverrideUrlLoading after destroy.");
-      return true;
-    }
-    if ((TextUtils.isEmpty(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString)))
-    {
-      QLog.e("WebLog_WebViewWrapper", 1, new Object[] { new StringBuilder("shouldOverrideUrlLoading fail , url=[").append(paramString).append("].") });
-      return true;
-    }
-    Object localObject = TencentDocPreloadConfigProcessor.a();
-    if ((paramString.startsWith("mqqapi:")) && (paramString.contains("getTcntDocData")) && (((TencentDocPreloadConfigBean)localObject).a()))
-    {
-      paramWebView = Uri.parse(paramString).getQueryParameter("id");
-      TenDocWebViewPool.a(paramWebView, this.b.jdField_a_of_type_ComTencentBizUiTouchWebView);
-      if ((this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback instanceof TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment)) {
-        TenDocWebViewPool.a(paramWebView, this.b.jdField_a_of_type_ComTencentBizUiTouchWebView);
-      }
-      for (;;)
+      if ((!TextUtils.isEmpty(paramString)) && (!"about:blank;".equals(localObject1)) && (!"about:blank".equals(localObject1)))
       {
-        return true;
-        TenDocWebViewPool.a().a(this.b.a());
-      }
-    }
-    if (paramString.startsWith("https://jsbridge/"))
-    {
-      localObject = paramString.replace("https://jsbridge/", "jsbridge://");
-      if (QLog.isColorLevel())
-      {
-        if ((!((String)localObject).startsWith("jsbridge://")) || (((String)localObject).length() <= 512)) {
-          break label361;
-        }
-        QLog.d("WebLog_WebViewWrapper", 2, "shouldOverrideUrlLoading:" + ((String)localObject).substring(0, 512));
-      }
-    }
-    for (;;)
-    {
-      AIOOpenWebMonitor.b(this.b.jdField_a_of_type_AndroidContentIntent, (String)localObject);
-      paramString = SwiftWebViewUtils.a((String)localObject);
-      if ((this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback == null) || (!this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.beforeWebViewEngineHandleOverrideUrl(this.b.jdField_a_of_type_ComTencentBizUiTouchWebView, (String)localObject))) {
-        break label398;
-      }
-      QLog.d("WebLog_WebViewWrapper", 1, "shouldOverrideUrlLoading callback handle override url");
-      return true;
-      localObject = paramString;
-      if (!paramString.startsWith("http://jsbridge/")) {
-        break;
-      }
-      localObject = paramString.replace("http://jsbridge/", "jsbridge://");
-      break;
-      label361:
-      QLog.d("WebLog_WebViewWrapper", 2, "shouldOverrideUrlLoading:" + Util.b((String)localObject, new String[0]));
-    }
-    label398:
-    if ((("http".equals(paramString)) || ("data".equals(paramString))) && (!((String)localObject).contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
-      CustomWebView.addContextLog(Util.b((String)localObject, new String[0]));
-    }
-    try
-    {
-      WebViewPluginEngine localWebViewPluginEngine = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((localWebViewPluginEngine != null) && (localWebViewPluginEngine.a((String)localObject, 1024L, null)))
-      {
-        QLog.i("WebLog_WebViewWrapper", 1, "KEY_EVENT_OVERRIDE_URL_LOADING");
-        return true;
-      }
-      if ((localWebViewPluginEngine != null) && (localWebViewPluginEngine.a((String)localObject))) {
-        return true;
-      }
-      if ((this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null) && (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.shouldOverrideUrlLoading(paramWebView, (String)localObject))) {
-        return true;
-      }
-      if (("http".equals(paramString)) || ("https".equals(paramString)) || ("data".equals(paramString)) || ("file".equals(paramString)))
-      {
-        if ((localWebViewPluginEngine != null) && (localWebViewPluginEngine.a((String)localObject, 16L, null))) {
+        Object localObject2 = TencentDocPreloadConfigProcessor.a();
+        if ((((String)localObject1).startsWith("mqqapi:")) && (((String)localObject1).contains("getTcntDocData")) && (((TencentDocPreloadConfigBean)localObject2).a()))
+        {
+          paramWebView = Uri.parse(paramString).getQueryParameter("id");
+          TenDocWebViewPool.a(paramWebView, WebViewWrapperForDoc.f(this.b));
+          if (((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).isInstanceTeamWorkDocEditBrowserFragment(WebViewWrapperForDoc.D(this.b)))
+          {
+            TenDocWebViewPool.a(paramWebView, WebViewWrapperForDoc.g(this.b));
+            return true;
+          }
+          TenDocWebViewPool.a().a(this.b.a());
           return true;
         }
-      }
-      else if (this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null)
-      {
-        boolean bool = this.b.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.afterWebViewEngineHandleOverrideUrl(this.b.jdField_a_of_type_ComTencentBizUiTouchWebView, (String)localObject);
-        if (bool) {
+        if (((String)localObject1).startsWith("https://jsbridge/"))
+        {
+          paramString = ((String)localObject1).replace("https://jsbridge/", "jsbridge://");
+        }
+        else
+        {
+          paramString = (String)localObject1;
+          if (((String)localObject1).startsWith("http://jsbridge/")) {
+            paramString = ((String)localObject1).replace("http://jsbridge/", "jsbridge://");
+          }
+        }
+        if (QLog.isColorLevel()) {
+          if ((paramString.startsWith("jsbridge://")) && (paramString.length() > 512))
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("shouldOverrideUrlLoading:");
+            ((StringBuilder)localObject1).append(paramString.substring(0, 512));
+            QLog.d("WebLog_WebViewWrapper", 2, ((StringBuilder)localObject1).toString());
+          }
+          else
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("shouldOverrideUrlLoading:");
+            ((StringBuilder)localObject1).append(Util.b(paramString, new String[0]));
+            QLog.d("WebLog_WebViewWrapper", 2, ((StringBuilder)localObject1).toString());
+          }
+        }
+        ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).endUrlLoad(WebViewWrapperForDoc.b(this.b), paramString);
+        localObject1 = CommonUtils.b(paramString);
+        if ((WebViewWrapperForDoc.E(this.b) != null) && (WebViewWrapperForDoc.F(this.b).beforeWebViewEngineHandleOverrideUrl(WebViewWrapperForDoc.h(this.b), paramString)))
+        {
+          QLog.d("WebLog_WebViewWrapper", 1, "shouldOverrideUrlLoading callback handle override url");
           return true;
         }
-      }
-    }
-    catch (RuntimeException paramWebView)
-    {
-      paramString = QLog.getStackTraceString(paramWebView);
-      if (paramString.length() > 255) {}
-      for (paramWebView = paramString.substring(0, 255);; paramWebView = paramString)
-      {
-        ReportController.b(null, "P_CliOper", "BizTechReport", "", "webview", "exception", 0, 1, 0, paramWebView, "", "", "");
-        QLog.e("WebLog_WebViewWrapper", 1, paramString);
+        if ((("http".equals(localObject1)) || ("data".equals(localObject1))) && (!paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
+          CustomWebView.addContextLog(Util.b(paramString, new String[0]));
+        }
+        try
+        {
+          localObject2 = ((CustomWebView)paramWebView).getPluginEngine();
+          if ((localObject2 != null) && (((WebViewPluginEngine)localObject2).a(paramString, 1024L, null)))
+          {
+            QLog.i("WebLog_WebViewWrapper", 1, "KEY_EVENT_OVERRIDE_URL_LOADING");
+            return true;
+          }
+          if ((localObject2 != null) && (((WebViewPluginEngine)localObject2).a(paramString))) {
+            return true;
+          }
+          if ((WebViewWrapperForDoc.G(this.b) != null) && (WebViewWrapperForDoc.H(this.b).shouldOverrideUrlLoading(paramWebView, paramString))) {
+            return true;
+          }
+          if ((!"http".equals(localObject1)) && (!"https".equals(localObject1)) && (!"data".equals(localObject1)) && (!"file".equals(localObject1)))
+          {
+            if ((WebViewWrapperForDoc.I(this.b) != null) && (WebViewWrapperForDoc.J(this.b).afterWebViewEngineHandleOverrideUrl(WebViewWrapperForDoc.i(this.b), paramString))) {
+              return true;
+            }
+          }
+          else
+          {
+            if (localObject2 != null)
+            {
+              boolean bool = ((WebViewPluginEngine)localObject2).a(paramString, 16L, null);
+              if (bool) {
+                return true;
+              }
+            }
+            return false;
+          }
+        }
+        catch (RuntimeException paramWebView)
+        {
+          paramString = QLog.getStackTraceString(paramWebView);
+          if (paramString.length() > 255) {
+            paramWebView = paramString.substring(0, 255);
+          } else {
+            paramWebView = paramString;
+          }
+          ReportController.b(null, "P_CliOper", "BizTechReport", "", "webview", "exception", 0, 1, 0, paramWebView, "", "", "");
+          QLog.e("WebLog_WebViewWrapper", 1, paramString);
+        }
         return true;
       }
+      paramWebView = new StringBuilder("shouldOverrideUrlLoading fail , url=[");
+      paramWebView.append((String)localObject1);
+      paramWebView.append("].");
+      QLog.e("WebLog_WebViewWrapper", 1, new Object[] { paramWebView });
+      return true;
     }
-    return false;
+    QLog.e("WebLog_WebViewWrapper", 1, "call shouldOverrideUrlLoading after destroy.");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.WebViewWrapperForDoc.WebViewClientImpl
  * JD-Core Version:    0.7.0.1
  */

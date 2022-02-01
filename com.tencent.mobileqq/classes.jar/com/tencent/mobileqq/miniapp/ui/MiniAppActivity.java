@@ -3,11 +3,11 @@ package com.tencent.mobileqq.miniapp.ui;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.tencent.biz.qqstory.base.StoryDispatcher;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.miniapp.MiniAppEvent;
 import com.tencent.mobileqq.miniapp.MiniAppInfo;
 import com.tencent.mobileqq.miniapp.MiniAppManager;
@@ -17,7 +17,7 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 
 public class MiniAppActivity
-  extends FragmentActivity
+  extends BaseActivity
 {
   protected int a;
   public MiniAppInfo a;
@@ -27,7 +27,7 @@ public class MiniAppActivity
   public void a(MiniAppBaseFragment paramMiniAppBaseFragment)
   {
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-    localFragmentTransaction.replace(2131367430, paramMiniAppBaseFragment);
+    localFragmentTransaction.replace(2131367211, paramMiniAppBaseFragment);
     localFragmentTransaction.commit();
     this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppBaseFragment = paramMiniAppBaseFragment;
   }
@@ -41,11 +41,11 @@ public class MiniAppActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131558456);
+    super.setContentView(2131558485);
     paramBundle = getIntent().getExtras();
     Object localObject = new MiniAppLoadingFragment();
     ((MiniAppLoadingFragment)localObject).setArguments(paramBundle);
@@ -62,7 +62,7 @@ public class MiniAppActivity
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     MiniAppEvent localMiniAppEvent = new MiniAppEvent();
@@ -72,15 +72,15 @@ public class MiniAppActivity
     StoryDispatcher.a().dispatch("MiniAppManager", localMiniAppEvent);
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return false;
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     moveTaskToBack(true);
-    overridePendingTransition(2130772315, 2130771992);
+    overridePendingTransition(2130772343, 2130772004);
     return true;
   }
   
@@ -93,7 +93,7 @@ public class MiniAppActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.ui.MiniAppActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ final class WeiyunClient
   extends WeiyunNative
 {
   private static final String TAG = "WeiyunClient";
-  private static WeiyunClient sInstance = null;
+  private static WeiyunClient sInstance;
   private final WeiyunCallbackCenter mCallbackCenter = new WeiyunCallbackCenter();
   private boolean mIsInit = false;
   
@@ -32,15 +32,16 @@ final class WeiyunClient
   
   public static WeiyunClient getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new WeiyunClient();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new WeiyunClient();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static boolean isLoaded()
@@ -53,31 +54,24 @@ final class WeiyunClient
     boolean bool = ensureInit();
     if (bool)
     {
-      if (paramList != null) {
-        break label57;
+      if (paramList == null) {
+        paramList = new DirItem[0];
+      } else {
+        paramList = (DirItem[])paramList.toArray(new DirItem[paramList.size()]);
       }
-      paramList = new DirItem[0];
-      if (paramList1 != null) {
-        break label79;
+      if (paramList1 == null) {
+        paramList1 = new FileItem[0];
+      } else {
+        paramList1 = (FileItem[])paramList1.toArray(new FileItem[paramList1.size()]);
       }
-      paramList1 = new FileItem[0];
-      label29:
-      if (paramList2 != null) {
-        break label101;
+      if (paramList2 == null) {
+        paramList2 = new String[0];
+      } else {
+        paramList2 = (String[])paramList2.toArray(new String[paramList2.size()]);
       }
-    }
-    label57:
-    label79:
-    label101:
-    for (paramList2 = new String[0];; paramList2 = (String[])paramList2.toArray(new String[paramList2.size()]))
-    {
       nativeCheckShareFile(paramList, paramList1, paramList2, this.mCallbackCenter.addCallback(paramCheckShareFileCallback));
-      return bool;
-      paramList = (DirItem[])paramList.toArray(new DirItem[paramList.size()]);
-      break;
-      paramList1 = (FileItem[])paramList1.toArray(new FileItem[paramList1.size()]);
-      break label29;
     }
+    return bool;
   }
   
   public boolean deleteDirFile(List<DirItem> paramList, List<FileItem> paramList1, DeleteDirFileCallback paramDeleteDirFileCallback)
@@ -85,30 +79,28 @@ final class WeiyunClient
     boolean bool = ensureInit();
     if (bool)
     {
-      if (paramList != null) {
-        break label46;
+      if (paramList == null) {
+        paramList = new DirItem[0];
+      } else {
+        paramList = (DirItem[])paramList.toArray(new DirItem[paramList.size()]);
       }
-      paramList = new DirItem[0];
-      if (paramList1 != null) {
-        break label68;
+      if (paramList1 == null) {
+        paramList1 = new FileItem[0];
+      } else {
+        paramList1 = (FileItem[])paramList1.toArray(new FileItem[paramList1.size()]);
       }
-    }
-    label46:
-    label68:
-    for (paramList1 = new FileItem[0];; paramList1 = (FileItem[])paramList1.toArray(new FileItem[paramList1.size()]))
-    {
       nativeDeleteDirFile(paramList, paramList1, this.mCallbackCenter.addCallback(paramDeleteDirFileCallback));
-      return bool;
-      paramList = (DirItem[])paramList.toArray(new DirItem[paramList.size()]);
-      break;
     }
+    return bool;
   }
   
   public boolean fetchFileList(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, FetchFileListCallback paramFetchFileListCallback)
   {
     boolean bool = ensureInit();
-    if (bool) {
+    if (bool)
+    {
       nativeFetchFileList(paramInt1, paramBoolean, paramInt2, paramInt3, paramInt4, this.mCallbackCenter.addCallback(paramFetchFileListCallback));
+      return bool;
     }
     return bool;
   }
@@ -125,17 +117,16 @@ final class WeiyunClient
   public boolean fetchPOI(List<PoiItem> paramList, FetchPOICallback paramFetchPOICallback)
   {
     boolean bool = ensureInit();
-    if (bool) {
-      if (paramList != null) {
-        break label33;
-      }
-    }
-    label33:
-    for (paramList = new PoiItem[0];; paramList = (PoiItem[])paramList.toArray(new PoiItem[paramList.size()]))
+    if (bool)
     {
+      if (paramList == null) {
+        paramList = new PoiItem[0];
+      } else {
+        paramList = (PoiItem[])paramList.toArray(new PoiItem[paramList.size()]);
+      }
       nativeFetchPOI(paramList, this.mCallbackCenter.addCallback(paramFetchPOICallback));
-      return bool;
     }
+    return bool;
   }
   
   public boolean fetchPicVideoInfo(FetchPicVideoInfoCallback paramFetchPicVideoInfoCallback)
@@ -158,23 +149,23 @@ final class WeiyunClient
   
   public boolean init(WeiyunSDKContext paramWeiyunSDKContext)
   {
-    boolean bool = true;
-    if ((paramWeiyunSDKContext == null) || (!sIsLoaded)) {
-      bool = false;
-    }
-    while (this.mIsInit) {
-      return bool;
-    }
-    try
+    if ((paramWeiyunSDKContext != null) && (sIsLoaded))
     {
-      if (!this.mIsInit)
-      {
-        nativeRegisterContext(paramWeiyunSDKContext);
-        this.mIsInit = true;
+      if (!this.mIsInit) {
+        try
+        {
+          if (!this.mIsInit)
+          {
+            nativeRegisterContext(paramWeiyunSDKContext);
+            this.mIsInit = true;
+          }
+          return true;
+        }
+        finally {}
       }
       return true;
     }
-    finally {}
+    return false;
   }
   
   public boolean modifyFile(FileItem paramFileItem1, FileItem paramFileItem2, ModifyFileCallback paramModifyFileCallback)
@@ -210,7 +201,7 @@ final class WeiyunClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.cmd.WeiyunClient
  * JD-Core Version:    0.7.0.1
  */

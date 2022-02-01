@@ -20,65 +20,54 @@ class CTEntryMng$5
       FriendListHandler localFriendListHandler = (FriendListHandler)CTEntryMng.a(this.a).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
       if (localFriendListHandler != null)
       {
-        localFriendListHandler.notifyUI(112, true, null);
-        if (paramShort2 != 0) {
-          break label75;
+        localFriendListHandler.notifyUI(110, true, null);
+        if (paramShort2 == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("CTEntryMng", 2, "switch state change to on, force to get service enable state");
+          }
+          localFriendListHandler.getMayKnowRecommend(null, null, 6, null);
+          return;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("CTEntryMng", 2, "switch state change to on, force to get service enable state");
-        }
-        localFriendListHandler.getMayKnowRecommend(null, null, 6, null);
+        this.a.b(false);
       }
     }
-    return;
-    label75:
-    this.a.b(false);
   }
   
   private void a(short[] paramArrayOfShort, Map<Short, Short> paramMap)
   {
-    String str;
-    int i;
     if (QLog.isColorLevel())
     {
-      str = "";
-      i = 0;
-      if ((paramMap != null) && (paramArrayOfShort != null) && (i < paramArrayOfShort.length))
+      Object localObject1 = "";
+      int i = 0;
+      while ((paramMap != null) && (paramArrayOfShort != null) && (i < paramArrayOfShort.length))
       {
         short s = paramArrayOfShort[i];
         Short localShort = (Short)paramMap.get(Short.valueOf(s));
-        if (!QLog.isColorLevel()) {
-          break label124;
+        Object localObject2 = localObject1;
+        if (QLog.isColorLevel()) {
+          localObject2 = String.format(Locale.getDefault(), "%s, [id: %s, value: %s]", new Object[] { localObject1, Short.valueOf(s), localShort });
         }
-        str = String.format(Locale.getDefault(), "%s, [id: %s, value: %s]", new Object[] { str, Short.valueOf(s), localShort });
+        i += 1;
+        localObject1 = localObject2;
       }
-    }
-    label124:
-    for (;;)
-    {
-      i += 1;
-      break;
       if (QLog.isColorLevel()) {
-        QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onGetCommonSwitchFromDetailInfo,  fail, log: %s", new Object[] { str }));
+        QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onGetCommonSwitchFromDetailInfo,  fail, log: %s", new Object[] { localObject1 }));
       }
-      return;
     }
   }
   
-  public void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap)
+  protected void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap)
   {
     if (QLog.isColorLevel()) {
       QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onGetCommonSwitchFromDetailInfo isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    String str;
-    int i;
-    boolean bool;
     if (paramBoolean)
     {
-      str = "";
-      i = 0;
-      paramBoolean = false;
-      if ((paramMap != null) && (paramArrayOfShort != null) && (i < paramArrayOfShort.length))
+      Object localObject1 = "";
+      int i = 0;
+      boolean bool;
+      for (paramBoolean = false; (paramMap != null) && (paramArrayOfShort != null) && (i < paramArrayOfShort.length); paramBoolean = bool)
       {
         short s = paramArrayOfShort[i];
         Short localShort = (Short)paramMap.get(Short.valueOf(s));
@@ -97,37 +86,37 @@ class CTEntryMng$5
             }
           }
         }
-        if ((localEntryUserSetting == null) || (!QLog.isColorLevel())) {
-          break label254;
+        Object localObject2 = localObject1;
+        if (localEntryUserSetting != null)
+        {
+          localObject2 = localObject1;
+          if (QLog.isColorLevel()) {
+            localObject2 = String.format(Locale.getDefault(), "%s, [id: %s, value: %s]", new Object[] { localObject1, Short.valueOf(s), localShort });
+          }
         }
-        str = String.format(Locale.getDefault(), "%s, [id: %s, value: %s]", new Object[] { str, Short.valueOf(s), localShort });
+        i += 1;
+        localObject1 = localObject2;
       }
-    }
-    label254:
-    for (;;)
-    {
-      i += 1;
-      paramBoolean = bool;
-      break;
       if (paramBoolean)
       {
         CTEntryMng.b(this.a);
         CTEntryMng.a(this.a);
       }
       if (QLog.isColorLevel()) {
-        QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onGetCommonSwitchFromDetailInfo, needUpdate: %s, log: %s", new Object[] { Boolean.valueOf(paramBoolean), str }));
+        QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onGetCommonSwitchFromDetailInfo, needUpdate: %s, log: %s", new Object[] { Boolean.valueOf(paramBoolean), localObject1 }));
       }
-      return;
+    }
+    else
+    {
       a(paramArrayOfShort, paramMap);
-      return;
     }
   }
   
-  public void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2)
+  protected void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2)
   {
     if (paramBoolean)
     {
-      localEntryUserSetting = CTEntryMng.a(this.a, paramShort1);
+      CTEntryMng.EntryUserSetting localEntryUserSetting = CTEntryMng.a(this.a, paramShort1);
       if ((localEntryUserSetting != null) && (localEntryUserSetting.b != paramShort2))
       {
         localEntryUserSetting.b = paramShort2;
@@ -139,17 +128,15 @@ class CTEntryMng$5
         QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onSetCommonSwitchFromDetailInfo suc switch_id: %s, switch_value: %s", new Object[] { Short.valueOf(paramShort1), Short.valueOf(paramShort2) }));
       }
     }
-    while (!QLog.isColorLevel())
+    else if (QLog.isColorLevel())
     {
-      CTEntryMng.EntryUserSetting localEntryUserSetting;
-      return;
+      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onSetCommonSwitchFromDetailInfo fail switch_id: %s, switch_value: %s", new Object[] { Short.valueOf(paramShort1), Short.valueOf(paramShort2) }));
     }
-    QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onSetCommonSwitchFromDetailInfo fail switch_id: %s, switch_value: %s", new Object[] { Short.valueOf(paramShort1), Short.valueOf(paramShort2) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.5
  * JD-Core Version:    0.7.0.1
  */

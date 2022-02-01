@@ -85,64 +85,81 @@ public final class s_weishi
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.weishi_feedId != null) {
-      paramJceOutputStream.write(this.weishi_feedId, 0);
+    Object localObject = this.weishi_feedId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.weishi_fileId != null) {
-      paramJceOutputStream.write(this.weishi_fileId, 1);
+    localObject = this.weishi_fileId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.cover_url != null) {
-      paramJceOutputStream.write(this.cover_url, 2);
+    localObject = this.cover_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.nick_name != null) {
-      paramJceOutputStream.write(this.nick_name, 3);
+    localObject = this.nick_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.weishi_musicId != null) {
-      paramJceOutputStream.write(this.weishi_musicId, 4);
+    localObject = this.weishi_musicId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.weishi_musicName != null) {
-      paramJceOutputStream.write(this.weishi_musicName, 5);
+    localObject = this.weishi_musicName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.weishi_musicUrl != null) {
-      paramJceOutputStream.write(this.weishi_musicUrl, 6);
+    localObject = this.weishi_musicUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.weishi_topicID != null) {
-      paramJceOutputStream.write(this.weishi_topicID, 7);
+    localObject = this.weishi_topicID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.weishi_topicName != null) {
-      paramJceOutputStream.write(this.weishi_topicName, 8);
+    localObject = this.weishi_topicName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.weishi_topicUrl != null) {
-      paramJceOutputStream.write(this.weishi_topicUrl, 9);
+    localObject = this.weishi_topicUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.weishi_schema != null) {
-      paramJceOutputStream.write(this.weishi_schema, 10);
+    localObject = this.weishi_schema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.dc_report != null) {
-      paramJceOutputStream.write(this.dc_report, 11);
+    localObject = this.dc_report;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
     paramJceOutputStream.write(this.pull_weishi_mask, 12);
-    if (this.weishi_download_url != null) {
-      paramJceOutputStream.write(this.weishi_download_url, 13);
+    localObject = this.weishi_download_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.weishi_pull_schema != null) {
-      paramJceOutputStream.write(this.weishi_pull_schema, 14);
+    localObject = this.weishi_pull_schema;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.weishi_clipbrd != null) {
-      paramJceOutputStream.write(this.weishi_clipbrd, 15);
+    localObject = this.weishi_clipbrd;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
-    if (this.pull_weishi_alg_id != null) {
-      paramJceOutputStream.write(this.pull_weishi_alg_id, 16);
+    localObject = this.pull_weishi_alg_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
     paramJceOutputStream.write(this.need_show_related, 17);
-    if (this.related_button_text != null) {
-      paramJceOutputStream.write(this.related_button_text, 18);
+    localObject = this.related_button_text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_weishi
  * JD-Core Version:    0.7.0.1
  */

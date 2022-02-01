@@ -1,12 +1,14 @@
 package com.qflutter.qqcircle;
 
 import android.app.Activity;
+import android.os.Build.VERSION;
 import android.util.Log;
 import android.view.View;
 import androidx.annotation.NonNull;
 import com.qflutter.qqcircle.video.Messages.VideoPlayerApi._CC;
 import com.qflutter.qqcircle.video.QCircleVideoPlayerApi;
 import com.qflutter.qqcircle.video.QQCircleVideoProxy;
+import com.tencent.qphone.base.util.QLog;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -43,18 +45,12 @@ public class TencentQQCirclePlugin
       PLog.d("TencentQQCirclePlugin", ((StringBuilder)localObject).toString());
     }
     Object localObject = methodChannelMap.entrySet().iterator();
-    for (;;)
+    while (((Iterator)localObject).hasNext())
     {
-      MethodChannel localMethodChannel;
-      if (((Iterator)localObject).hasNext())
+      MethodChannel localMethodChannel = (MethodChannel)((Map.Entry)((Iterator)localObject).next()).getValue();
+      if (localMethodChannel == null)
       {
-        localMethodChannel = (MethodChannel)((Map.Entry)((Iterator)localObject).next()).getValue();
-        if (localMethodChannel == null) {
-          Log.e("TencentQQCirclePlugin", "[sendEvent] invalid methodChannel");
-        }
-      }
-      else
-      {
+        Log.e("TencentQQCirclePlugin", "[sendEvent] invalid methodChannel");
         return;
       }
       HashMap localHashMap = new HashMap();
@@ -175,9 +171,10 @@ public class TencentQQCirclePlugin
       paramFlutterPluginBinding.setMethodCallHandler(null);
     }
     this.activity = null;
-    if (this.videoProxy != null)
+    paramFlutterPluginBinding = this.videoProxy;
+    if (paramFlutterPluginBinding != null)
     {
-      this.videoProxy.clean();
+      paramFlutterPluginBinding.clean();
       this.videoProxy = null;
     }
   }
@@ -198,12 +195,32 @@ public class TencentQQCirclePlugin
     }
     if (methodBridge != null)
     {
-      if (PLog.isColorLevel()) {
-        PLog.d("TencentQQCirclePlugin", "[onMethodCall]");
+      if ("isInMultiWindowMode".equals(paramMethodCall.method))
+      {
+        if (Build.VERSION.SDK_INT >= 24)
+        {
+          paramMethodCall = this.activity;
+          if (paramMethodCall != null)
+          {
+            bool = paramMethodCall.isInMultiWindowMode();
+            break label178;
+          }
+        }
+        paramMethodCall = new StringBuilder();
+        paramMethodCall.append("[onMethodCall] SDK_INT=");
+        paramMethodCall.append(Build.VERSION.SDK_INT);
+        paramMethodCall.append(", activity=");
+        paramMethodCall.append(this.activity);
+        QLog.w("TencentQQCirclePlugin", 1, paramMethodCall.toString());
+        boolean bool = false;
+        label178:
+        paramResult.success(Boolean.valueOf(bool));
+        return;
       }
       localObject = null;
-      if (this.activity != null) {
-        localObject = this.activity.findViewById(16908290);
+      Activity localActivity = this.activity;
+      if (localActivity != null) {
+        localObject = localActivity.findViewById(16908290);
       }
       methodBridge.onMethodCall(this.activity, (View)localObject, paramMethodCall, paramResult);
       return;
@@ -228,7 +245,7 @@ public class TencentQQCirclePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqcircle.TencentQQCirclePlugin
  * JD-Core Version:    0.7.0.1
  */

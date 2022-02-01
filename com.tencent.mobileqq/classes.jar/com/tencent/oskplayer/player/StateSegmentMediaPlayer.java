@@ -17,10 +17,25 @@ public class StateSegmentMediaPlayer
   {
     if (!checkState(StateMediaPlayer.StateMediaPlayerOperation.OP_GETCURRENTPROXYSEGMENTURL))
     {
-      if (this.mThrowException) {
-        throw new StateMediaPlayerException("call getCurrentProxySegmentUrl in illegalState " + getMediaPlayerState() + this);
+      StringBuilder localStringBuilder;
+      if (!this.mThrowException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("call getCurrentProxySegmentUrl in illegalState ");
+        localStringBuilder.append(getMediaPlayerState());
+        localStringBuilder.append(this);
+        localStringBuilder.append("\n: stack\n");
+        localStringBuilder.append(PlayerUtils.getStackTrace());
+        PlayerUtils.log(5, "StateMediaPlayer", localStringBuilder.toString());
       }
-      PlayerUtils.log(5, "StateMediaPlayer", "call getCurrentProxySegmentUrl in illegalState " + getMediaPlayerState() + this + "\n: stack\n" + PlayerUtils.getStackTrace());
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("call getCurrentProxySegmentUrl in illegalState ");
+        localStringBuilder.append(getMediaPlayerState());
+        localStringBuilder.append(this);
+        throw new StateMediaPlayerException(localStringBuilder.toString());
+      }
     }
     return ((ISegmentMediaPlayer)this.mInternalMediaPlayer).getCurrentProxySegmentUrl();
   }
@@ -29,10 +44,25 @@ public class StateSegmentMediaPlayer
   {
     if (!checkState(StateMediaPlayer.StateMediaPlayerOperation.OP_GETCURRENTSEGMENTURL))
     {
-      if (this.mThrowException) {
-        throw new StateMediaPlayerException("call getCurrentSegmentUrl in illegalState " + getMediaPlayerState() + this);
+      StringBuilder localStringBuilder;
+      if (!this.mThrowException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("call getCurrentSegmentUrl in illegalState ");
+        localStringBuilder.append(getMediaPlayerState());
+        localStringBuilder.append(this);
+        localStringBuilder.append("\n: stack\n");
+        localStringBuilder.append(PlayerUtils.getStackTrace());
+        PlayerUtils.log(5, "StateMediaPlayer", localStringBuilder.toString());
       }
-      PlayerUtils.log(5, "StateMediaPlayer", "call getCurrentSegmentUrl in illegalState " + getMediaPlayerState() + this + "\n: stack\n" + PlayerUtils.getStackTrace());
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("call getCurrentSegmentUrl in illegalState ");
+        localStringBuilder.append(getMediaPlayerState());
+        localStringBuilder.append(this);
+        throw new StateMediaPlayerException(localStringBuilder.toString());
+      }
     }
     return ((ISegmentMediaPlayer)this.mInternalMediaPlayer).getCurrentSegmentUrl();
   }
@@ -46,55 +76,122 @@ public class StateSegmentMediaPlayer
   {
     if ((this.mMediaPlayerState == StateMediaPlayer.StateMediaPlayerInternalState.RELEASED) || (this.mMediaPlayerState == StateMediaPlayer.StateMediaPlayerInternalState.IDLE))
     {
-      if (this.mThrowException) {
-        throw new StateMediaPlayerException("call getSegmentCount in illegalState " + getMediaPlayerState() + this);
+      if (!this.mThrowException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("call getSegmentCount in illegalState ");
+        localStringBuilder.append(getMediaPlayerState());
+        localStringBuilder.append(this);
+        localStringBuilder.append("\n: stack\n");
+        localStringBuilder.append(PlayerUtils.getStackTrace());
+        PlayerUtils.log(5, "StateMediaPlayer", localStringBuilder.toString());
       }
-      PlayerUtils.log(5, "StateMediaPlayer", "call getSegmentCount in illegalState " + getMediaPlayerState() + this + "\n: stack\n" + PlayerUtils.getStackTrace());
     }
-    return ((ISegmentMediaPlayer)this.mInternalMediaPlayer).getSegmentCount();
+    else {
+      return ((ISegmentMediaPlayer)this.mInternalMediaPlayer).getSegmentCount();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("call getSegmentCount in illegalState ");
+    localStringBuilder.append(getMediaPlayerState());
+    localStringBuilder.append(this);
+    throw new StateMediaPlayerException(localStringBuilder.toString());
   }
   
   public void setDataSource(SegmentVideoInfo.StreamInfo paramStreamInfo)
   {
-    if (!setMediaPlayerState(StateMediaPlayer.StateMediaPlayerInternalState.INITIALIZED))
-    {
-      if (this.mThrowException) {
-        throw new StateMediaPlayerException("call setDataSource in illegalState " + getMediaPlayerState() + this);
+    StringBuilder localStringBuilder;
+    if (!setMediaPlayerState(StateMediaPlayer.StateMediaPlayerInternalState.INITIALIZED)) {
+      if (!this.mThrowException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("call setDataSource in illegalState ");
+        localStringBuilder.append(getMediaPlayerState());
+        localStringBuilder.append(this);
+        localStringBuilder.append("\n: stack\n");
+        localStringBuilder.append(PlayerUtils.getStackTrace());
+        PlayerUtils.log(5, "StateMediaPlayer", localStringBuilder.toString());
       }
-      PlayerUtils.log(5, "StateMediaPlayer", "call setDataSource in illegalState " + getMediaPlayerState() + this + "\n: stack\n" + PlayerUtils.getStackTrace());
+      else
+      {
+        paramStreamInfo = new StringBuilder();
+        paramStreamInfo.append("call setDataSource in illegalState ");
+        paramStreamInfo.append(getMediaPlayerState());
+        paramStreamInfo.append(this);
+        throw new StateMediaPlayerException(paramStreamInfo.toString());
+      }
     }
-    if (!sVideoUrlValidator.isValid(paramStreamInfo))
-    {
-      if (this.mThrowException) {
-        throw new StateMediaPlayerException("VideoUrlValidationError " + paramStreamInfo + this);
+    if (!sVideoUrlValidator.isValid(paramStreamInfo)) {
+      if (!this.mThrowException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("VideoUrlValidationError ");
+        localStringBuilder.append(paramStreamInfo);
+        localStringBuilder.append(this);
+        localStringBuilder.append("\n: stack\n");
+        localStringBuilder.append(PlayerUtils.getStackTrace());
+        PlayerUtils.log(5, "StateMediaPlayer", localStringBuilder.toString());
       }
-      PlayerUtils.log(5, "StateMediaPlayer", "VideoUrlValidationError " + paramStreamInfo + this + "\n: stack\n" + PlayerUtils.getStackTrace());
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("VideoUrlValidationError ");
+        localStringBuilder.append(paramStreamInfo);
+        localStringBuilder.append(this);
+        throw new StateMediaPlayerException(localStringBuilder.toString());
+      }
     }
     ((ISegmentMediaPlayer)this.mInternalMediaPlayer).setDataSource(paramStreamInfo);
   }
   
   public void setDataSource(SegmentVideoInfo.StreamInfo paramStreamInfo, int paramInt)
   {
-    if (!setMediaPlayerState(StateMediaPlayer.StateMediaPlayerInternalState.INITIALIZED))
-    {
-      if (this.mThrowException) {
-        throw new StateMediaPlayerException("call setDataSource in illegalState " + getMediaPlayerState() + this);
+    StringBuilder localStringBuilder;
+    if (!setMediaPlayerState(StateMediaPlayer.StateMediaPlayerInternalState.INITIALIZED)) {
+      if (!this.mThrowException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("call setDataSource in illegalState ");
+        localStringBuilder.append(getMediaPlayerState());
+        localStringBuilder.append(this);
+        localStringBuilder.append("\n: stack\n");
+        localStringBuilder.append(PlayerUtils.getStackTrace());
+        PlayerUtils.log(5, "StateMediaPlayer", localStringBuilder.toString());
       }
-      PlayerUtils.log(5, "StateMediaPlayer", "call setDataSource in illegalState " + getMediaPlayerState() + this + "\n: stack\n" + PlayerUtils.getStackTrace());
+      else
+      {
+        paramStreamInfo = new StringBuilder();
+        paramStreamInfo.append("call setDataSource in illegalState ");
+        paramStreamInfo.append(getMediaPlayerState());
+        paramStreamInfo.append(this);
+        throw new StateMediaPlayerException(paramStreamInfo.toString());
+      }
     }
-    if (!sVideoUrlValidator.isValid(paramStreamInfo))
-    {
-      if (this.mThrowException) {
-        throw new StateMediaPlayerException("VideoUrlValidationError " + paramStreamInfo + this);
+    if (!sVideoUrlValidator.isValid(paramStreamInfo)) {
+      if (!this.mThrowException)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("VideoUrlValidationError ");
+        localStringBuilder.append(paramStreamInfo);
+        localStringBuilder.append(this);
+        localStringBuilder.append("\n: stack\n");
+        localStringBuilder.append(PlayerUtils.getStackTrace());
+        PlayerUtils.log(5, "StateMediaPlayer", localStringBuilder.toString());
       }
-      PlayerUtils.log(5, "StateMediaPlayer", "VideoUrlValidationError " + paramStreamInfo + this + "\n: stack\n" + PlayerUtils.getStackTrace());
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("VideoUrlValidationError ");
+        localStringBuilder.append(paramStreamInfo);
+        localStringBuilder.append(this);
+        throw new StateMediaPlayerException(localStringBuilder.toString());
+      }
     }
     ((ISegmentMediaPlayer)this.mInternalMediaPlayer).setDataSource(paramStreamInfo, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.player.StateSegmentMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

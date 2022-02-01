@@ -65,15 +65,15 @@ public class ReportClientInfo
     }
   }
   
-  public int a()
+  protected int doStep()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.getLongAccountUin(), true);
+    a(this.mAutomator.a.getLongAccountUin(), true);
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.ReportClientInfo
  * JD-Core Version:    0.7.0.1
  */

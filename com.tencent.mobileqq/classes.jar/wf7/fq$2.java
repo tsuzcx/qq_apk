@@ -11,35 +11,36 @@ final class fq$2
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (TextUtils.isEmpty(paramContext)) {}
-    label12:
-    do
+    if (TextUtils.isEmpty(paramContext)) {
+      return;
+    }
+    if ("android.intent.action.PACKAGE_ADDED".equals(paramContext))
     {
-      long l;
-      do
+      if (paramIntent.getBooleanExtra("android.intent.extra.REPLACING", false)) {
+        return;
+      }
+      paramContext = paramIntent.getDataString();
+      if ((paramContext != null) && (paramContext.startsWith("package:")) && (TextUtils.equals(paramContext.substring(8), "com.tencent.wifimanager")))
       {
-        do
-        {
-          break label12;
-          do
-          {
-            return;
-          } while ((!"android.intent.action.PACKAGE_ADDED".equals(paramContext)) || (paramIntent.getBooleanExtra("android.intent.extra.REPLACING", false)));
-          paramContext = paramIntent.getDataString();
-        } while ((paramContext == null) || (!paramContext.startsWith("package:")) || (!TextUtils.equals(paramContext.substring(8), "com.tencent.wifimanager")));
         paramContext = fm.dL();
-        l = paramContext.dP();
-      } while ((l <= 0L) || (System.currentTimeMillis() - l > 3600000L));
-      hk.az(500146);
-      paramContext.dQ();
-    } while (paramContext.dR() != 8);
-    hk.az(500180);
-    paramContext.dS();
+        long l = paramContext.dP();
+        if ((l > 0L) && (System.currentTimeMillis() - l <= 3600000L))
+        {
+          hk.az(500146);
+          paramContext.dQ();
+          if (paramContext.dR() == 8)
+          {
+            hk.az(500180);
+            paramContext.dS();
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fq.2
  * JD-Core Version:    0.7.0.1
  */

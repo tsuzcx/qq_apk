@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import android.support.annotation.NonNull;
-
 public class TabLayoutStatus
 {
   public int a;
@@ -37,15 +35,23 @@ public class TabLayoutStatus
     this.b = 0;
   }
   
-  @NonNull
   public String toString()
   {
-    return "TabLayoutStatus{tabId=" + this.jdField_a_of_type_Int + ", tabPosition=" + this.b + ", display='" + this.jdField_a_of_type_Boolean + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TabLayoutStatus{tabId=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", tabPosition=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", display='");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.TabLayoutStatus
  * JD-Core Version:    0.7.0.1
  */

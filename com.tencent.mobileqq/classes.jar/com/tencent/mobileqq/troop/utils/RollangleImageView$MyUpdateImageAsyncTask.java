@@ -29,19 +29,18 @@ class RollangleImageView$MyUpdateImageAsyncTask
     RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
     if (localRollangleImageView != null)
     {
-      if (paramBitmap != null) {
+      if (paramBitmap != null)
+      {
         localRollangleImageView.setImageBitmap(paramBitmap);
+        return;
       }
+      localRollangleImageView.setImageResource(FileManagerUtil.b(localRollangleImageView.a));
     }
-    else {
-      return;
-    }
-    localRollangleImageView.setImageResource(FileManagerUtil.b(localRollangleImageView.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RollangleImageView.MyUpdateImageAsyncTask
  * JD-Core Version:    0.7.0.1
  */

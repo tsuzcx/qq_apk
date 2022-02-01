@@ -26,12 +26,30 @@ public class FastColorFontCache
   
   public static Bitmap a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return (Bitmap)jdField_c_of_type_JavaUtilHashMap.get(paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4);
+    HashMap localHashMap = jdField_c_of_type_JavaUtilHashMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt4);
+    return (Bitmap)localHashMap.get(localStringBuilder.toString());
   }
   
   public static BitmapShader a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return (BitmapShader)jdField_a_of_type_JavaUtilHashMap.get(paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4);
+    HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt4);
+    return (BitmapShader)localHashMap.get(localStringBuilder.toString());
   }
   
   public static void a(int paramInt)
@@ -73,17 +91,33 @@ public class FastColorFontCache
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Bitmap paramBitmap)
   {
-    String str = paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4;
-    if ((!jdField_c_of_type_JavaUtilHashMap.containsKey(str)) && (paramBitmap != null)) {
-      jdField_c_of_type_JavaUtilHashMap.put(str, paramBitmap);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt3);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt4);
+    localObject = ((StringBuilder)localObject).toString();
+    if ((!jdField_c_of_type_JavaUtilHashMap.containsKey(localObject)) && (paramBitmap != null)) {
+      jdField_c_of_type_JavaUtilHashMap.put(localObject, paramBitmap);
     }
   }
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, BitmapShader paramBitmapShader)
   {
-    String str = paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4;
-    if ((!jdField_a_of_type_JavaUtilHashMap.containsKey(str)) && (paramBitmapShader != null)) {
-      jdField_a_of_type_JavaUtilHashMap.put(str, paramBitmapShader);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt3);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt4);
+    localObject = ((StringBuilder)localObject).toString();
+    if ((!jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) && (paramBitmapShader != null)) {
+      jdField_a_of_type_JavaUtilHashMap.put(localObject, paramBitmapShader);
     }
   }
   
@@ -94,7 +128,16 @@ public class FastColorFontCache
   
   public static Bitmap b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return (Bitmap)jdField_d_of_type_JavaUtilHashMap.get(paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4);
+    HashMap localHashMap = jdField_d_of_type_JavaUtilHashMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt4);
+    return (Bitmap)localHashMap.get(localStringBuilder.toString());
   }
   
   public static void b(int paramInt1, int paramInt2)
@@ -104,9 +147,17 @@ public class FastColorFontCache
   
   public static void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Bitmap paramBitmap)
   {
-    String str = paramInt1 + "_" + paramInt2 + "_" + paramInt3 + "_" + paramInt4;
-    if ((!jdField_d_of_type_JavaUtilHashMap.containsKey(str)) && (paramBitmap != null)) {
-      jdField_d_of_type_JavaUtilHashMap.put(str, paramBitmap);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt3);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt4);
+    localObject = ((StringBuilder)localObject).toString();
+    if ((!jdField_d_of_type_JavaUtilHashMap.containsKey(localObject)) && (paramBitmap != null)) {
+      jdField_d_of_type_JavaUtilHashMap.put(localObject, paramBitmap);
     }
   }
   
@@ -166,7 +217,7 @@ public class FastColorFontCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.Vas.ColorFont.FastColorFontCache
  * JD-Core Version:    0.7.0.1
  */

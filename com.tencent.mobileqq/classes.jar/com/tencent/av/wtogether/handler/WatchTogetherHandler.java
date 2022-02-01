@@ -70,13 +70,13 @@ public class WatchTogetherHandler
   
   public void a(long paramLong, ByteStringMicro paramByteStringMicro, String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {}
-    ByteStringMicro localByteStringMicro;
-    do
+    if (paramString != null)
     {
-      return;
+      if (paramString.equals("")) {
+        return;
+      }
       Object localObject = new cmd0x383.ApplyFileSearchReqBody();
-      localByteStringMicro = paramByteStringMicro;
+      ByteStringMicro localByteStringMicro = paramByteStringMicro;
       if (paramByteStringMicro == null) {
         localByteStringMicro = ByteStringMicro.copyFromUtf8("");
       }
@@ -95,107 +95,117 @@ public class WatchTogetherHandler
       ((ToServiceMsg)localObject).extraData.putString("cookie", localByteStringMicro.toStringUtf8());
       ((ToServiceMsg)localObject).extraData.putString("keywords", paramString);
       sendPbReq((ToServiceMsg)localObject);
-    } while (!QLog.isColorLevel());
-    QLog.i("WatchTogetherHandler", 2, String.format("queryGroupAVFileListWithKeywords() troopUin=%d cookie=%s keywords=%s", new Object[] { Long.valueOf(paramLong), localByteStringMicro, paramString }));
+      if (QLog.isColorLevel()) {
+        QLog.i("WatchTogetherHandler", 2, String.format("queryGroupAVFileListWithKeywords() troopUin=%d cookie=%s keywords=%s", new Object[] { Long.valueOf(paramLong), localByteStringMicro, paramString }));
+      }
+    }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
       i = 1;
-      if (i == 0) {
-        break label607;
-      }
+    } else {
+      i = 0;
     }
-    label434:
-    label607:
-    for (paramToServiceMsg = new cmd0x383.RspBody();; paramToServiceMsg = null) {
+    int j;
+    if (i != 0)
+    {
+      paramFromServiceMsg = new cmd0x383.RspBody();
       try
       {
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if (QLog.isColorLevel()) {
-          QLog.i("WatchTogetherHandler", 2, "handleGroupAVFileList receive success");
-        }
-        if (i == 0)
-        {
-          notifyUI(1, false, null);
-          QLog.e("WatchTogetherHandler", 2, "handleGroupAVFileList() failed");
-          notifyUI(1, false, null);
-          return;
-          i = 0;
-        }
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
       }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
-        int j;
-        int k;
-        do
-        {
-          do
-          {
-            for (;;)
-            {
-              i = 0;
-              QLog.e("WatchTogetherHandler", 1, "handleGroupAVFileList(): " + paramFromServiceMsg);
-            }
-            if (paramToServiceMsg.int32_ret_code.get() < 0) {
-              break label534;
-            }
-            paramObject = (cmd0x383.ApplyFileSearchRspBody)paramToServiceMsg.msg_file_search_rsp_body.get();
-            if (paramObject == null)
-            {
-              QLog.e("WatchTogetherHandler", 2, "handleGroupAVFileList() empty respond");
-              notifyUI(1, false, null);
-              return;
-            }
-            paramToServiceMsg = paramObject.bytes_sync_cookie.get().toStringUtf8();
-            paramFromServiceMsg = paramObject.bytes_key_word.get().toStringUtf8();
-            j = paramObject.uint32_is_end.get();
-            k = paramObject.uint32_total_match_count.get();
-            paramObject = paramObject.item_list.get();
-            if ((paramObject != null) && (paramObject.size() != 0)) {
-              break;
-            }
-          } while (!QLog.isDevelopLevel());
-          QLog.d("WatchTogetherHandler", 2, "handleGroupAVFileList() empty file list");
-          notifyUI(1, false, null);
-          return;
-          ArrayList localArrayList = new ArrayList();
-          i = 0;
-          if (i < paramObject.size())
-          {
-            TroopFileSearchItemData localTroopFileSearchItemData = new TroopFileSearchItemData(this.a, (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
-            TroopFileManager localTroopFileManager;
-            TroopFileInfo localTroopFileInfo;
-            if (localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo != null)
-            {
-              localTroopFileManager = TroopFileManager.a(this.a, localTroopFileSearchItemData.jdField_a_of_type_Long);
-              localTroopFileInfo = localTroopFileManager.a(localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
-              if (localTroopFileInfo == null) {
-                break label434;
-              }
-            }
-            for (localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a = localTroopFileInfo.a;; localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a = UUID.randomUUID())
-            {
-              localTroopFileManager.a(localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b, localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
-              if (QLog.isColorLevel()) {
-                QLog.i("WatchTogetherHandler", 2, "fileList[" + i + "]: " + localTroopFileSearchItemData.toString());
-              }
-              localArrayList.add(localTroopFileSearchItemData);
-              i += 1;
-              break;
-            }
-          }
-          notifyUI(1, true, new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), localArrayList });
-        } while (!QLog.isColorLevel());
-        QLog.i("WatchTogetherHandler", 2, String.format("handleGroupAVFileList() success[cookie : %s, keywords : %s, isEnd : %d, totalMatchCount : %d]", new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k) }));
-        return;
-        notifyUI(1, false, new Object[] { Integer.valueOf(paramToServiceMsg.int32_ret_code.get()), paramToServiceMsg.str_ret_msg.get() });
-        QLog.e("WatchTogetherHandler", 2, String.format("handleGroupAVFileList(), errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramToServiceMsg.int32_ret_code.get()), paramToServiceMsg.str_ret_msg.get() }));
+        paramObject = new StringBuilder();
+        paramObject.append("handleGroupAVFileList(): ");
+        paramObject.append(paramToServiceMsg);
+        QLog.e("WatchTogetherHandler", 1, paramObject.toString());
+        i = 0;
+      }
+      paramToServiceMsg = paramFromServiceMsg;
+      j = i;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("WatchTogetherHandler", 2, "handleGroupAVFileList receive success");
+        paramToServiceMsg = paramFromServiceMsg;
+        j = i;
+      }
+    }
+    else
+    {
+      paramToServiceMsg = null;
+      j = i;
+    }
+    if (j == 0)
+    {
+      notifyUI(1, false, null);
+      QLog.e("WatchTogetherHandler", 2, "handleGroupAVFileList() failed");
+      notifyUI(1, false, null);
+      return;
+    }
+    if (paramToServiceMsg.int32_ret_code.get() >= 0)
+    {
+      paramObject = (cmd0x383.ApplyFileSearchRspBody)paramToServiceMsg.msg_file_search_rsp_body.get();
+      if (paramObject == null)
+      {
+        QLog.e("WatchTogetherHandler", 2, "handleGroupAVFileList() empty respond");
+        notifyUI(1, false, null);
         return;
       }
+      paramToServiceMsg = paramObject.bytes_sync_cookie.get().toStringUtf8();
+      paramFromServiceMsg = paramObject.bytes_key_word.get().toStringUtf8();
+      j = paramObject.uint32_is_end.get();
+      int k = paramObject.uint32_total_match_count.get();
+      paramObject = paramObject.item_list.get();
+      if ((paramObject != null) && (paramObject.size() != 0))
+      {
+        ArrayList localArrayList = new ArrayList();
+        i = 0;
+        while (i < paramObject.size())
+        {
+          TroopFileSearchItemData localTroopFileSearchItemData = new TroopFileSearchItemData(this.a, (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
+          Object localObject;
+          if (localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo != null)
+          {
+            localObject = TroopFileManager.a(this.a, localTroopFileSearchItemData.jdField_a_of_type_Long);
+            TroopFileInfo localTroopFileInfo = ((TroopFileManager)localObject).a(localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
+            if (localTroopFileInfo != null) {
+              localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a = localTroopFileInfo.a;
+            } else {
+              localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a = UUID.randomUUID();
+            }
+            ((TroopFileManager)localObject).a(localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b, localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("fileList[");
+            ((StringBuilder)localObject).append(i);
+            ((StringBuilder)localObject).append("]: ");
+            ((StringBuilder)localObject).append(localTroopFileSearchItemData.toString());
+            QLog.i("WatchTogetherHandler", 2, ((StringBuilder)localObject).toString());
+          }
+          localArrayList.add(localTroopFileSearchItemData);
+          i += 1;
+        }
+        notifyUI(1, true, new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k), localArrayList });
+        if (QLog.isColorLevel()) {
+          QLog.i("WatchTogetherHandler", 2, String.format("handleGroupAVFileList() success[cookie : %s, keywords : %s, isEnd : %d, totalMatchCount : %d]", new Object[] { paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(j), Integer.valueOf(k) }));
+        }
+      }
+      else if (QLog.isDevelopLevel())
+      {
+        QLog.d("WatchTogetherHandler", 2, "handleGroupAVFileList() empty file list");
+        notifyUI(1, false, null);
+      }
+    }
+    else
+    {
+      notifyUI(1, false, new Object[] { Integer.valueOf(paramToServiceMsg.int32_ret_code.get()), paramToServiceMsg.str_ret_msg.get() });
+      QLog.e("WatchTogetherHandler", 2, String.format("handleGroupAVFileList(), errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramToServiceMsg.int32_ret_code.get()), paramToServiceMsg.str_ret_msg.get() }));
     }
   }
   
@@ -209,23 +219,24 @@ public class WatchTogetherHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return WatchTogetherObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {}
-    while (!"GroupFileAppSvr.GetFileSearch".equals(paramFromServiceMsg.getServiceCmd())) {
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
       return;
     }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    if ("GroupFileAppSvr.GetFileSearch".equals(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.handler.WatchTogetherHandler
  * JD-Core Version:    0.7.0.1
  */

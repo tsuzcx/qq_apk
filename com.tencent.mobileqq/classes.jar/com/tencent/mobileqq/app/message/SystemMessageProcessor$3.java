@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.message;
 
 import android.os.Bundle;
 import com.tencent.imcore.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
@@ -23,7 +23,7 @@ class SystemMessageProcessor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.SystemMessageProcessor.3
  * JD-Core Version:    0.7.0.1
  */

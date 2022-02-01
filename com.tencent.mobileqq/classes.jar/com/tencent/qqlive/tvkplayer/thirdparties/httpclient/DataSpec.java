@@ -53,67 +53,63 @@ public final class DataSpec
   
   public DataSpec(Uri paramUri, int paramInt1, @Nullable byte[] paramArrayOfByte, long paramLong1, long paramLong2, long paramLong3, @Nullable String paramString, int paramInt2)
   {
-    boolean bool;
-    if (paramLong1 >= 0L)
-    {
-      bool = true;
-      Assertions.checkArgument(bool);
-      if (paramLong2 < 0L) {
-        break label119;
-      }
-      bool = true;
-      label29:
-      Assertions.checkArgument(bool);
-      if ((paramLong3 <= 0L) && (paramLong3 != -1L)) {
-        break label125;
-      }
-      bool = true;
-      label53:
-      Assertions.checkArgument(bool);
-      this.uri = paramUri;
-      this.httpMethod = paramInt1;
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-        break label131;
+    boolean bool2 = true;
+    if (paramLong1 >= 0L) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    if (paramLong2 >= 0L) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    boolean bool1 = bool2;
+    if (paramLong3 <= 0L) {
+      if (paramLong3 == -1L) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
     }
-    for (;;)
-    {
-      this.httpBody = paramArrayOfByte;
-      this.absoluteStreamPosition = paramLong1;
-      this.position = paramLong2;
-      this.length = paramLong3;
-      this.key = paramString;
-      this.flags = paramInt2;
-      return;
-      bool = false;
-      break;
-      label119:
-      bool = false;
-      break label29;
-      label125:
-      bool = false;
-      break label53;
-      label131:
+    Assertions.checkArgument(bool1);
+    this.uri = paramUri;
+    this.httpMethod = paramInt1;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
       paramArrayOfByte = null;
     }
+    this.httpBody = paramArrayOfByte;
+    this.absoluteStreamPosition = paramLong1;
+    this.position = paramLong2;
+    this.length = paramLong3;
+    this.key = paramString;
+    this.flags = paramInt2;
   }
   
   public static String getStringForHttpMethod(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      throw new AssertionError(paramInt);
-    case 1: 
-      return "GET";
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt == 5) {
+              return "DELETE";
+            }
+            throw new AssertionError(paramInt);
+          }
+          return "PUT";
+        }
+        return "HEAD";
+      }
       return "POST";
-    case 3: 
-      return "HEAD";
-    case 4: 
-      return "PUT";
     }
-    return "DELETE";
+    return "GET";
   }
   
   public final String getHttpMethodString()
@@ -128,13 +124,12 @@ public final class DataSpec
   
   public DataSpec subrange(long paramLong)
   {
-    long l = -1L;
-    if (this.length == -1L) {}
-    for (;;)
-    {
-      return subrange(paramLong, l);
-      l = this.length - paramLong;
+    long l2 = this.length;
+    long l1 = -1L;
+    if (l2 != -1L) {
+      l1 = l2 - paramLong;
     }
+    return subrange(paramLong, l1);
   }
   
   public DataSpec subrange(long paramLong1, long paramLong2)
@@ -147,7 +142,25 @@ public final class DataSpec
   
   public String toString()
   {
-    return "DataSpec[" + getHttpMethodString() + " " + this.uri + ", " + Arrays.toString(this.httpBody) + ", " + this.absoluteStreamPosition + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DataSpec[");
+    localStringBuilder.append(getHttpMethodString());
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.uri);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(Arrays.toString(this.httpBody));
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.absoluteStreamPosition);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.position);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.length);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.key);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.flags);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public DataSpec withUri(Uri paramUri)
@@ -157,7 +170,7 @@ public final class DataSpec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.DataSpec
  * JD-Core Version:    0.7.0.1
  */

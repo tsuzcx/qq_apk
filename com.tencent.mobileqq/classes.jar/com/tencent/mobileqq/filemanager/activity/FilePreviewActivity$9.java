@@ -30,12 +30,13 @@ class FilePreviewActivity$9
   public void b()
   {
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 1000L) {}
-    do
-    {
+    if (l - this.jdField_a_of_type_Long < 1000L) {
       return;
-      this.jdField_a_of_type_Long = l;
-    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean);
+    }
+    this.jdField_a_of_type_Long = l;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean) {
+      return;
+    }
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g)
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.d();
@@ -46,10 +47,10 @@ class FilePreviewActivity$9
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.k = "3";
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter.e = System.currentTimeMillis();
     }
-    if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getActivity()))
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.getActivity()))
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.setText(2131693846);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.setText(2131693799);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.c.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFilePreviewDataReporter != null)
@@ -92,23 +93,23 @@ class FilePreviewActivity$9
   
   public void g()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g) {}
-    do
-    {
-      long l;
-      do
-      {
-        return;
-        l = System.currentTimeMillis();
-      } while (l - this.jdField_a_of_type_Long < 1000L);
-      this.jdField_a_of_type_Long = l;
-    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.g) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1000L) {
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_Boolean) {
+      return;
+    }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetFileWebView.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.9
  * JD-Core Version:    0.7.0.1
  */

@@ -27,15 +27,15 @@ public class FlexNode
   
   private void toStringWithIndentation(StringBuilder paramStringBuilder, int paramInt)
   {
+    StringBuilder localStringBuilder1 = new StringBuilder();
     int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     while (i < paramInt)
     {
-      localStringBuilder.append("__");
+      localStringBuilder1.append("__");
       i += 1;
     }
-    paramStringBuilder.append(localStringBuilder.toString());
+    paramStringBuilder.append(localStringBuilder1.toString());
     paramStringBuilder.append(this.mRef);
     paramStringBuilder.append(this.flexLayout.toString());
     paramStringBuilder.append(this.flexStyle.toString());
@@ -52,20 +52,25 @@ public class FlexNode
       paramStringBuilder.append("\n");
       i += 1;
     }
-    paramStringBuilder.append(localStringBuilder + "]");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(localStringBuilder1);
+    localStringBuilder2.append("]");
+    paramStringBuilder.append(localStringBuilder2.toString());
   }
   
   public void addChildAt(FlexNode paramFlexNode, int paramInt)
   {
-    if (paramFlexNode.mParent != null) {
-      throw new IllegalStateException("Child already has a parent, it must be removed first.");
+    if (paramFlexNode.mParent == null)
+    {
+      if (this.mChildren == null) {
+        this.mChildren = new ArrayList(4);
+      }
+      this.mChildren.add(paramInt, paramFlexNode);
+      paramFlexNode.mParent = this;
+      dirty();
+      return;
     }
-    if (this.mChildren == null) {
-      this.mChildren = new ArrayList(4);
-    }
-    this.mChildren.add(paramInt, paramFlexNode);
-    paramFlexNode.mParent = this;
-    dirty();
+    throw new IllegalStateException("Child already has a parent, it must be removed first.");
   }
   
   public void calculateLayout(FlexLayoutContext paramFlexLayoutContext)
@@ -80,16 +85,17 @@ public class FlexNode
   
   protected void dirty()
   {
-    if (this.mLayoutStateAtomicReference.get() == FlexNode.LayoutState.DIRTY) {}
-    do
-    {
+    if (this.mLayoutStateAtomicReference.get() == FlexNode.LayoutState.DIRTY) {
       return;
-      if ((this.mLayoutStateAtomicReference.get() == FlexNode.LayoutState.HAS_NEW_LAYOUT) && (hasNewLayout())) {
-        markLayoutSeen();
-      }
-      this.mLayoutStateAtomicReference.getAndSet(FlexNode.LayoutState.DIRTY);
-    } while ((this.mParent == null) || (this.mParent.isDirty()));
-    this.mParent.dirty();
+    }
+    if ((this.mLayoutStateAtomicReference.get() == FlexNode.LayoutState.HAS_NEW_LAYOUT) && (hasNewLayout())) {
+      markLayoutSeen();
+    }
+    this.mLayoutStateAtomicReference.getAndSet(FlexNode.LayoutState.DIRTY);
+    FlexNode localFlexNode = this.mParent;
+    if ((localFlexNode != null) && (!localFlexNode.isDirty())) {
+      this.mParent.dirty();
+    }
   }
   
   public FlexAlign getAlignItems()
@@ -110,7 +116,8 @@ public class FlexNode
   
   public FlexNode getChildAt(int paramInt)
   {
-    if ((this.mChildren != null) && (this.mChildren.size() > paramInt)) {
+    ArrayList localArrayList = this.mChildren;
+    if ((localArrayList != null) && (localArrayList.size() > paramInt)) {
       return (FlexNode)this.mChildren.get(paramInt);
     }
     return null;
@@ -118,10 +125,11 @@ public class FlexNode
   
   public int getChildCount()
   {
-    if (this.mChildren == null) {
+    ArrayList localArrayList = this.mChildren;
+    if (localArrayList == null) {
       return 0;
     }
-    return this.mChildren.size();
+    return localArrayList.size();
   }
   
   public float getFlex()
@@ -281,7 +289,11 @@ public class FlexNode
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e(TAG, "markDirty Exception e:" + localException.getMessage());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("markDirty Exception e:");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e(str, localStringBuilder.toString());
     }
   }
   
@@ -307,15 +319,17 @@ public class FlexNode
   
   protected MeasureOutput measure(MeasureOutput paramMeasureOutput, float paramFloat)
   {
-    if (!isMeasureDefined()) {
-      throw new RuntimeException("Measure function isn't defined!");
+    if (isMeasureDefined())
+    {
+      paramMeasureOutput.height = (0.0F / 0.0F);
+      paramMeasureOutput.width = (0.0F / 0.0F);
+      FlexNode.MeasureFunction localMeasureFunction = this.mMeasureFunction;
+      if (localMeasureFunction != null) {
+        localMeasureFunction.measure(this, paramFloat, paramMeasureOutput);
+      }
+      return paramMeasureOutput;
     }
-    paramMeasureOutput.height = (0.0F / 0.0F);
-    paramMeasureOutput.width = (0.0F / 0.0F);
-    if (this.mMeasureFunction != null) {
-      this.mMeasureFunction.measure(this, paramFloat, paramMeasureOutput);
-    }
-    return paramMeasureOutput;
+    throw new RuntimeException("Measure function isn't defined!");
   }
   
   public FlexNode removeChildAt(int paramInt)
@@ -328,15 +342,19 @@ public class FlexNode
   
   public void reset()
   {
-    if ((this.mParent != null) || ((this.mChildren != null) && (this.mChildren.size() > 0)))
+    if (this.mParent == null)
     {
-      ViolaLogUtils.e(TAG, "You should not reset an attached CSSNode!");
-      return;
+      ArrayList localArrayList = this.mChildren;
+      if ((localArrayList == null) || (localArrayList.size() <= 0))
+      {
+        this.flexStyle.reset();
+        this.flexLayout.resetResult();
+        this.lineIndex = 0;
+        this.mLayoutStateAtomicReference.getAndSet(FlexNode.LayoutState.DIRTY);
+        return;
+      }
     }
-    this.flexStyle.reset();
-    this.flexLayout.resetResult();
-    this.lineIndex = 0;
-    this.mLayoutStateAtomicReference.getAndSet(FlexNode.LayoutState.DIRTY);
+    ViolaLogUtils.e(TAG, "You should not reset an attached CSSNode!");
   }
   
   public void setAlignItems(FlexAlign paramFlexAlign)
@@ -465,8 +483,9 @@ public class FlexNode
   {
     if (!valuesEqual(this.flexStyle.minHeight, paramFloat))
     {
-      this.flexStyle.minHeight = paramFloat;
-      this.flexStyle.minDimensions[1] = paramFloat;
+      FlexStyle localFlexStyle = this.flexStyle;
+      localFlexStyle.minHeight = paramFloat;
+      localFlexStyle.minDimensions[1] = paramFloat;
       dirty();
     }
   }
@@ -582,15 +601,11 @@ public class FlexNode
   
   public boolean updateLastLayout(FlexLayout paramFlexLayout)
   {
-    if (!this.lastLayout.equals(paramFlexLayout)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mIsLayoutChanged = bool;
-      if (this.mIsLayoutChanged) {
-        this.lastLayout.copy(paramFlexLayout);
-      }
-      return this.mIsLayoutChanged;
+    this.mIsLayoutChanged = (this.lastLayout.equals(paramFlexLayout) ^ true);
+    if (this.mIsLayoutChanged) {
+      this.lastLayout.copy(paramFlexLayout);
     }
+    return this.mIsLayoutChanged;
   }
   
   protected boolean valuesEqual(float paramFloat1, float paramFloat2)
@@ -600,7 +615,7 @@ public class FlexNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.FlexNode
  * JD-Core Version:    0.7.0.1
  */

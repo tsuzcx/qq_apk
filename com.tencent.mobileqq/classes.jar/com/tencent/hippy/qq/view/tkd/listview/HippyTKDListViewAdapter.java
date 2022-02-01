@@ -18,12 +18,13 @@ import com.tencent.mtt.supportui.views.recyclerview.RecyclerView.OnListScrollLis
 import com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.LayoutManager;
 import com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.ViewFlinger;
 import com.tencent.mtt.supportui.views.recyclerview.Scroller;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class HippyTKDListViewAdapter
   extends HippyListAdapter
 {
-  private int[] fixedEndEdge = new int[2];
+  private final int[] fixedEndEdge = new int[2];
   private HippyTKDListViewAdapter.IContainerPositionGetter mContainerPositionGetter;
   private boolean mEnableExposureReport;
   private boolean mEnableScrollForReport;
@@ -58,55 +59,48 @@ public class HippyTKDListViewAdapter
     this.mDefaultLoadingView = new HippyTKDDefaultFooter(paramRecyclerView.getContext());
   }
   
-  private int[] fixEndEdge(int paramInt1, int paramInt2)
+  private int[] fixEndEdgeAndLastVisiblePosition(int paramInt1, int paramInt2)
   {
-    int i;
-    int j;
-    int k;
-    int m;
-    if (this.mContainerPositionGetter != null)
+    int j = getFixedLastPositionYByDp(paramInt1);
+    int i = paramInt2;
+    if (j != paramInt1) {
+      i = getFixedLastPosition(paramInt2, j);
+    }
+    int[] arrayOfInt = this.fixedEndEdge;
+    arrayOfInt[0] = j;
+    arrayOfInt[1] = i;
+    return arrayOfInt;
+  }
+  
+  private int getFixedLastPosition(int paramInt1, int paramInt2)
+  {
+    int j = (int)PixelUtil.dp2px(paramInt2);
+    paramInt2 = 0;
+    int i = 0;
+    while (paramInt2 <= paramInt1)
     {
-      HippyTKDListViewAdapter.ContainerPosition localContainerPosition = this.mContainerPositionGetter.getContainerPosition();
-      if ((localContainerPosition != null) && (localContainerPosition.mode == 1))
-      {
-        float f = PixelUtil.dp2px(paramInt1);
-        paramInt1 = localContainerPosition.top;
-        i = localContainerPosition.marginTop;
-        j = (int)PixelUtil.px2dp(f - (localContainerPosition.offset + (paramInt1 - i)));
-        i = 1;
-        k = paramInt2;
-        if (i != 0)
-        {
-          m = (int)PixelUtil.dp2px(j);
-          paramInt1 = 0;
-          i = 0;
-        }
+      i += getItemHeight(paramInt2);
+      if ((i > 0) && (i > j)) {
+        return paramInt2;
+      }
+      paramInt2 += 1;
+    }
+    return paramInt1;
+  }
+  
+  private int getFixedLastPositionYByDp(int paramInt)
+  {
+    Object localObject = this.mContainerPositionGetter;
+    int i = paramInt;
+    if (localObject != null)
+    {
+      localObject = ((HippyTKDListViewAdapter.IContainerPositionGetter)localObject).getContainerPosition();
+      i = paramInt;
+      if (localObject != null) {
+        i = (int)PixelUtil.px2dp(PixelUtil.dp2px(paramInt) - (((HippyTKDListViewAdapter.ContainerPosition)localObject).top - ((HippyTKDListViewAdapter.ContainerPosition)localObject).marginTop + ((HippyTKDListViewAdapter.ContainerPosition)localObject).offset));
       }
     }
-    for (;;)
-    {
-      k = paramInt2;
-      if (paramInt1 <= paramInt2)
-      {
-        i += getItemHeight(paramInt1);
-        if ((i > 0) && (i > m)) {
-          k = paramInt1;
-        }
-      }
-      else
-      {
-        this.fixedEndEdge[0] = j;
-        this.fixedEndEdge[1] = k;
-        return this.fixedEndEdge;
-        i = 0;
-        j = paramInt1;
-        break;
-        i = 0;
-        j = paramInt1;
-        break;
-      }
-      paramInt1 += 1;
-    }
+    return i;
   }
   
   private HippyTKDListViewAdapter.OnFooterAppearedEvent getOnFooterAppearedEvent()
@@ -187,25 +181,28 @@ public class HippyTKDListViewAdapter
   
   protected void checkExposureForReport(int paramInt1, int paramInt2)
   {
-    if (!this.mEnableExposureReport) {}
-    HippyTKDListView.ExposureForReport localExposureForReport;
-    do
-    {
+    if (!this.mEnableExposureReport) {
       return;
-      localExposureForReport = getExposureForReportInner(paramInt1, paramInt2);
-    } while ((localExposureForReport == null) || (!checkNeedToReport(localExposureForReport.mVelocity, paramInt2)));
-    if (this.mExposureReportResultMap == null) {
-      this.mExposureReportResultMap = new HippyMap();
     }
-    this.mExposureReportResultMap.clear();
-    int[] arrayOfInt = fixEndEdge(localExposureForReport.mEndEdgePos, localExposureForReport.mLastVisibleRowIndex);
-    this.mExposureReportResultMap.pushInt("startEdgePos", localExposureForReport.mStartEdgePos);
-    this.mExposureReportResultMap.pushInt("endEdgePos", arrayOfInt[0]);
-    this.mExposureReportResultMap.pushInt("firstVisibleRowIndex", localExposureForReport.mFirstVisibleRowIndex);
-    this.mExposureReportResultMap.pushInt("lastVisibleRowIndex", arrayOfInt[1]);
-    this.mExposureReportResultMap.pushInt("scrollState", localExposureForReport.mScrollState);
-    this.mExposureReportResultMap.pushArray("visibleRowFrames", localExposureForReport.mVisibleRowFrames);
-    localExposureForReport.send(this.mParentRecyclerView, this.mExposureReportResultMap);
+    HippyTKDListView.ExposureForReport localExposureForReport = getExposureForReportInner(paramInt1, paramInt2);
+    if (localExposureForReport == null) {
+      return;
+    }
+    if (checkNeedToReport(localExposureForReport.mVelocity, paramInt2))
+    {
+      if (this.mExposureReportResultMap == null) {
+        this.mExposureReportResultMap = new HippyMap();
+      }
+      this.mExposureReportResultMap.clear();
+      int[] arrayOfInt = fixEndEdgeAndLastVisiblePosition(localExposureForReport.mEndEdgePos, localExposureForReport.mLastVisibleRowIndex);
+      this.mExposureReportResultMap.pushInt("startEdgePos", localExposureForReport.mStartEdgePos);
+      this.mExposureReportResultMap.pushInt("endEdgePos", arrayOfInt[0]);
+      this.mExposureReportResultMap.pushInt("firstVisibleRowIndex", localExposureForReport.mFirstVisibleRowIndex);
+      this.mExposureReportResultMap.pushInt("lastVisibleRowIndex", arrayOfInt[1]);
+      this.mExposureReportResultMap.pushInt("scrollState", localExposureForReport.mScrollState);
+      this.mExposureReportResultMap.pushArray("visibleRowFrames", localExposureForReport.mVisibleRowFrames);
+      localExposureForReport.send(this.mParentRecyclerView, this.mExposureReportResultMap);
+    }
   }
   
   protected boolean checkNeedToReport(float paramFloat, int paramInt)
@@ -216,101 +213,91 @@ public class HippyTKDListViewAdapter
   protected void checkOnScrollEvent()
   {
     long l = System.currentTimeMillis();
-    if (l - this.mLastScrollEventTimeStamp < this.mScrollEventThrottle) {}
-    HippyMap localHippyMap;
-    do
-    {
+    if (l - this.mLastScrollEventTimeStamp < this.mScrollEventThrottle) {
       return;
-      this.mLastScrollEventTimeStamp = l;
-      localHippyMap = getOnScrollDataMap();
-    } while (localHippyMap == null);
-    this.mHasOnScroll = true;
-    getOnScrollEvent().send(this.mParentRecyclerView, localHippyMap);
+    }
+    this.mLastScrollEventTimeStamp = l;
+    HippyMap localHippyMap = getOnScrollDataMap();
+    if (localHippyMap != null)
+    {
+      this.mHasOnScroll = true;
+      getOnScrollEvent().send(this.mParentRecyclerView, localHippyMap);
+    }
   }
   
   protected void checkScrollForReport()
   {
-    if (!this.mEnableScrollForReport) {}
-    int n;
-    int i1;
-    int m;
-    int j;
-    float f;
-    int i2;
-    HippyArray localHippyArray;
-    do
-    {
+    if (!this.mEnableScrollForReport) {
       return;
-      n = (int)PixelUtil.px2dp(this.mParentRecyclerView.mOffsetY);
-      i1 = (int)PixelUtil.px2dp(this.mParentRecyclerView.getHeight() + this.mParentRecyclerView.mOffsetY);
-      m = ((LinearLayoutManager)this.mParentRecyclerView.getLayoutManager()).findFirstVisibleItemPosition();
-      int i = ((LinearLayoutManager)this.mParentRecyclerView.getLayoutManager()).findLastVisibleItemPosition();
-      j = i;
-      if (i >= 1)
-      {
-        j = i;
-        if ((this.mParentRecyclerView.getLayoutManager().findViewByPosition(i) instanceof HippyTKDDefaultFooter)) {
-          j = i - 1;
-        }
-      }
-      f = Math.abs(this.mParentRecyclerView.mViewFlinger.getScroller().getCurrVelocity());
-      i2 = this.mParentRecyclerView.getScrollState();
-      localHippyArray = new HippyArray();
-      int k = 0;
-      int i3;
-      int i4;
-      int i5;
-      for (i = 0; k < m; i = i5 + (i + i3 + i4))
-      {
-        i3 = getItemHeight(k);
-        i4 = getItemMaigin(1, k);
-        i5 = getItemMaigin(3, k);
-        k += 1;
-      }
-      k = i;
-      i = m;
-      while (i <= j)
-      {
-        localObject = new HippyMap();
-        ((HippyMap)localObject).pushInt("x", 0);
-        ((HippyMap)localObject).pushInt("y", (int)PixelUtil.px2dp(k));
-        k += getItemHeight(i);
-        ((HippyMap)localObject).pushInt("width", (int)PixelUtil.px2dp(getItemWidth(i)));
-        ((HippyMap)localObject).pushInt("height", (int)PixelUtil.px2dp(getItemHeight(i)));
-        localHippyArray.pushMap((HippyMap)localObject);
-        i += 1;
-      }
-      if ((i2 == 0) && (checkNeedToReport(0.0F, i2)))
-      {
-        this.mHasOnScrollForReport = true;
-        if (this.mScrollReportResultMap == null) {
-          this.mScrollReportResultMap = new HippyMap();
-        }
-        this.mScrollReportResultMap.clear();
-        localObject = fixEndEdge(i1, j);
-        this.mScrollReportResultMap.pushInt("startEdgePos", n);
-        this.mScrollReportResultMap.pushInt("endEdgePos", localObject[0]);
-        this.mScrollReportResultMap.pushInt("firstVisibleRowIndex", m);
-        this.mScrollReportResultMap.pushInt("lastVisibleRowIndex", localObject[1]);
-        this.mScrollReportResultMap.pushInt("scrollState", i2);
-        this.mScrollReportResultMap.pushArray("visibleRowFrames", localHippyArray);
-        getOnScrollForReportEvent().send(this.mParentRecyclerView, this.mScrollReportResultMap);
-        return;
-      }
-    } while ((f >= this.mParentRecyclerView.getHeight() * 2) || (!checkNeedToReport(f, i2)));
-    this.mHasOnScrollForReport = true;
-    if (this.mScrollReportResultMap == null) {
-      this.mScrollReportResultMap = new HippyMap();
     }
-    this.mScrollReportResultMap.clear();
-    Object localObject = fixEndEdge(i1, j);
-    this.mScrollReportResultMap.pushInt("startEdgePos", n);
-    this.mScrollReportResultMap.pushInt("endEdgePos", localObject[0]);
-    this.mScrollReportResultMap.pushInt("firstVisibleRowIndex", m);
-    this.mScrollReportResultMap.pushInt("lastVisibleRowIndex", localObject[1]);
-    this.mScrollReportResultMap.pushInt("scrollState", i2);
-    this.mScrollReportResultMap.pushArray("visibleRowFrames", localHippyArray);
-    getOnScrollForReportEvent().send(this.mParentRecyclerView, this.mScrollReportResultMap);
+    int n = (int)PixelUtil.px2dp(this.mParentRecyclerView.mOffsetY);
+    int i1 = (int)PixelUtil.px2dp(this.mParentRecyclerView.getHeight() + this.mParentRecyclerView.mOffsetY);
+    int m = ((LinearLayoutManager)this.mParentRecyclerView.getLayoutManager()).findFirstVisibleItemPosition();
+    int i = ((LinearLayoutManager)this.mParentRecyclerView.getLayoutManager()).findLastVisibleItemPosition();
+    int j = i;
+    if (i >= 1)
+    {
+      j = i;
+      if ((this.mParentRecyclerView.getLayoutManager().findViewByPosition(i) instanceof HippyTKDDefaultFooter)) {
+        j = i - 1;
+      }
+    }
+    float f = Math.abs(this.mParentRecyclerView.mViewFlinger.getScroller().getCurrVelocity());
+    int i2 = this.mParentRecyclerView.getScrollState();
+    HippyArray localHippyArray = new HippyArray();
+    int k = 0;
+    i = 0;
+    while (k < m)
+    {
+      i = i + getItemHeight(k) + getItemMaigin(1, k) + getItemMaigin(3, k);
+      k += 1;
+    }
+    k = m;
+    Object localObject;
+    while (k <= j)
+    {
+      localObject = new HippyMap();
+      ((HippyMap)localObject).pushInt("x", 0);
+      ((HippyMap)localObject).pushInt("y", (int)PixelUtil.px2dp(i));
+      i += getItemHeight(k);
+      ((HippyMap)localObject).pushInt("width", (int)PixelUtil.px2dp(getItemWidth(k)));
+      ((HippyMap)localObject).pushInt("height", (int)PixelUtil.px2dp(getItemHeight(k)));
+      localHippyArray.pushMap((HippyMap)localObject);
+      k += 1;
+    }
+    if ((i2 == 0) && (checkNeedToReport(0.0F, i2)))
+    {
+      this.mHasOnScrollForReport = true;
+      if (this.mScrollReportResultMap == null) {
+        this.mScrollReportResultMap = new HippyMap();
+      }
+      this.mScrollReportResultMap.clear();
+      localObject = fixEndEdgeAndLastVisiblePosition(i1, j);
+      this.mScrollReportResultMap.pushInt("startEdgePos", n);
+      this.mScrollReportResultMap.pushInt("endEdgePos", localObject[0]);
+      this.mScrollReportResultMap.pushInt("firstVisibleRowIndex", m);
+      this.mScrollReportResultMap.pushInt("lastVisibleRowIndex", localObject[1]);
+      this.mScrollReportResultMap.pushInt("scrollState", i2);
+      this.mScrollReportResultMap.pushArray("visibleRowFrames", localHippyArray);
+      getOnScrollForReportEvent().send(this.mParentRecyclerView, this.mScrollReportResultMap);
+      return;
+    }
+    if ((f < this.mParentRecyclerView.getHeight() * 2) && (checkNeedToReport(f, i2)))
+    {
+      this.mHasOnScrollForReport = true;
+      if (this.mScrollReportResultMap == null) {
+        this.mScrollReportResultMap = new HippyMap();
+      }
+      this.mScrollReportResultMap.clear();
+      localObject = fixEndEdgeAndLastVisiblePosition(i1, j);
+      this.mScrollReportResultMap.pushInt("startEdgePos", n);
+      this.mScrollReportResultMap.pushInt("endEdgePos", localObject[0]);
+      this.mScrollReportResultMap.pushInt("firstVisibleRowIndex", m);
+      this.mScrollReportResultMap.pushInt("lastVisibleRowIndex", localObject[1]);
+      this.mScrollReportResultMap.pushInt("scrollState", i2);
+      this.mScrollReportResultMap.pushArray("visibleRowFrames", localHippyArray);
+      getOnScrollForReportEvent().send(this.mParentRecyclerView, this.mScrollReportResultMap);
+    }
   }
   
   public int getDefaultFooterHeight()
@@ -338,28 +325,23 @@ public class HippyTKDListViewAdapter
     }
     HippyArray localHippyArray = new HippyArray();
     int j = 0;
-    int i1;
-    int i2;
-    int i3;
-    for (paramInt1 = 0; j < k; paramInt1 = i3 + (paramInt1 + i1 + i2))
+    paramInt1 = 0;
+    while (j < k)
     {
-      i1 = getItemHeight(j);
-      i2 = getItemMaigin(1, j);
-      i3 = getItemMaigin(3, j);
+      paramInt1 = paramInt1 + getItemHeight(j) + getItemMaigin(1, j) + getItemMaigin(3, j);
       j += 1;
     }
-    j = paramInt1;
-    paramInt1 = k;
-    while (paramInt1 <= i)
+    j = k;
+    while (j <= i)
     {
       HippyMap localHippyMap = new HippyMap();
       localHippyMap.pushInt("x", 0);
-      localHippyMap.pushInt("y", (int)PixelUtil.px2dp(j));
-      j += getItemHeight(paramInt1);
-      localHippyMap.pushInt("width", (int)PixelUtil.px2dp(getItemWidth(paramInt1)));
-      localHippyMap.pushInt("height", (int)PixelUtil.px2dp(getItemHeight(paramInt1)));
+      localHippyMap.pushInt("y", (int)PixelUtil.px2dp(paramInt1));
+      paramInt1 += getItemHeight(j);
+      localHippyMap.pushInt("width", (int)PixelUtil.px2dp(getItemWidth(j)));
+      localHippyMap.pushInt("height", (int)PixelUtil.px2dp(getItemHeight(j)));
       localHippyArray.pushMap(localHippyMap);
-      paramInt1 += 1;
+      j += 1;
     }
     float f = Math.abs(this.mParentRecyclerView.mViewFlinger.getScroller().getCurrVelocity());
     return new HippyTKDListView.ExposureForReport(this.mParentRecyclerView.getId(), m, n, k, i, (int)f, paramInt2, localHippyArray);
@@ -370,9 +352,9 @@ public class HippyTKDListViewAdapter
     if (!this.mEnableExposureReport) {
       return null;
     }
-    int m = (int)PixelUtil.px2dp(this.mParentRecyclerView.mOffsetY);
-    int n = (int)PixelUtil.px2dp(this.mParentRecyclerView.getHeight() + this.mParentRecyclerView.mOffsetY);
-    int k = ((LinearLayoutManager)this.mParentRecyclerView.getLayoutManager()).findFirstVisibleItemPosition();
+    int n = (int)PixelUtil.px2dp(this.mParentRecyclerView.mOffsetY);
+    int i1 = (int)PixelUtil.px2dp(this.mParentRecyclerView.getHeight() + this.mParentRecyclerView.mOffsetY);
+    int m = ((LinearLayoutManager)this.mParentRecyclerView.getLayoutManager()).findFirstVisibleItemPosition();
     paramInt1 = ((LinearLayoutManager)this.mParentRecyclerView.getLayoutManager()).findLastVisibleItemPosition();
     int i = paramInt1;
     if (paramInt1 >= 1)
@@ -384,16 +366,13 @@ public class HippyTKDListViewAdapter
     }
     HippyArray localHippyArray = new HippyArray();
     int j = 0;
-    int i1;
-    int i2;
-    int i3;
-    for (paramInt1 = 0; j < k; paramInt1 = i3 + (paramInt1 + i1 + i2))
+    paramInt1 = 0;
+    while (j < m)
     {
-      i1 = getItemHeight(j);
-      i2 = getItemMaigin(1, j);
-      i3 = getItemMaigin(3, j);
+      paramInt1 = paramInt1 + getItemHeight(j) + getItemMaigin(1, j) + getItemMaigin(3, j);
       j += 1;
     }
+    int k = m;
     j = paramInt1;
     paramInt1 = k;
     while (paramInt1 <= i)
@@ -401,16 +380,16 @@ public class HippyTKDListViewAdapter
       HippyMap localHippyMap = new HippyMap();
       localHippyMap.pushInt("x", 0);
       localHippyMap.pushInt("y", (int)PixelUtil.px2dp(j));
-      i1 = getItemWidth(paramInt1);
-      i2 = getItemHeight(paramInt1);
+      k = getItemWidth(paramInt1);
+      int i2 = getItemHeight(paramInt1);
       j += i2;
-      localHippyMap.pushInt("width", (int)PixelUtil.px2dp(i1));
+      localHippyMap.pushInt("width", (int)PixelUtil.px2dp(k));
       localHippyMap.pushInt("height", (int)PixelUtil.px2dp(i2));
       localHippyArray.pushMap(localHippyMap);
       paramInt1 += 1;
     }
     float f = Math.abs(this.mParentRecyclerView.mViewFlinger.getScroller().getCurrVelocity());
-    return new HippyTKDListView.OuterScroll(this.mParentRecyclerView.getId(), m, n, k, i, (int)f, paramInt2, localHippyArray);
+    return new HippyTKDListView.OuterScroll(this.mParentRecyclerView.getId(), n, i1, m, i, (int)f, paramInt2, localHippyArray);
   }
   
   public RecyclerView.OnListScrollListener getOnListScrollListener()
@@ -444,40 +423,41 @@ public class HippyTKDListViewAdapter
     }
     this.mOnScrollVisibleItemArray.clear();
     int k = 0;
-    int i3;
-    int i4;
-    int i5;
-    for (i = 0; k < m; i = i5 + (i + i3 + i4))
+    i = 0;
+    while (k < m)
     {
-      i3 = getItemHeight(k);
-      i4 = getItemMaigin(1, k);
-      i5 = getItemMaigin(3, k);
+      i = i + getItemHeight(k) + getItemMaigin(1, k) + getItemMaigin(3, k);
       k += 1;
     }
-    k = i;
-    i = m;
-    while (i <= j)
+    k = m;
+    while (k <= j)
     {
       localObject = new HippyMap();
       ((HippyMap)localObject).pushInt("x", 0);
-      ((HippyMap)localObject).pushInt("y", (int)PixelUtil.px2dp(k));
-      k += getItemHeight(i);
-      ((HippyMap)localObject).pushInt("width", (int)PixelUtil.px2dp(getItemWidth(i)));
-      ((HippyMap)localObject).pushInt("height", (int)PixelUtil.px2dp(getItemHeight(i)));
+      ((HippyMap)localObject).pushInt("y", (int)PixelUtil.px2dp(i));
+      i += getItemHeight(k);
+      ((HippyMap)localObject).pushInt("width", (int)PixelUtil.px2dp(getItemWidth(k)));
+      ((HippyMap)localObject).pushInt("height", (int)PixelUtil.px2dp(getItemHeight(k)));
       this.mOnScrollVisibleItemArray.pushMap((HippyMap)localObject);
-      i += 1;
+      k += 1;
     }
     if (this.mOnScrollDataMap == null) {
       this.mOnScrollDataMap = new HippyMap();
     }
     this.mOnScrollDataMap.clear();
-    Object localObject = fixEndEdge(i1, j);
+    Object localObject = fixEndEdgeAndLastVisiblePosition(i1, j);
     this.mOnScrollDataMap.pushInt("startEdgePos", n);
     this.mOnScrollDataMap.pushInt("endEdgePos", localObject[0]);
     this.mOnScrollDataMap.pushInt("firstVisibleRowIndex", m);
     this.mOnScrollDataMap.pushInt("lastVisibleRowIndex", localObject[1]);
     this.mOnScrollDataMap.pushInt("scrollState", i2);
     this.mOnScrollDataMap.pushArray("visibleRowFrames", this.mOnScrollVisibleItemArray);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("firstPosition=");
+    localStringBuilder.append(m);
+    localStringBuilder.append(", lastPosition=");
+    localStringBuilder.append(localObject[1]);
+    QLog.d("HippyTKDListViewAdapter", 4, localStringBuilder.toString());
     return this.mOnScrollDataMap;
   }
   
@@ -518,19 +498,24 @@ public class HippyTKDListViewAdapter
   {
     super.onBindContentView(paramContentHolder, paramInt1, paramInt2);
     paramContentHolder = this.mHippyContext.getRenderManager().getRenderNode(this.mParentRecyclerView.getId());
-    if ((paramContentHolder != null) && (paramInt1 + 1 < paramContentHolder.getChildCount())) {
-      preLoadImageRecursive(paramContentHolder.getChildAt(paramInt1 + 1));
+    if (paramContentHolder != null)
+    {
+      paramInt2 = paramContentHolder.getChildCount();
+      paramInt1 += 1;
+      if (paramInt1 < paramInt2) {
+        preLoadImageRecursive(paramContentHolder.getChildAt(paramInt1));
+      }
     }
   }
   
-  public void onClickBackward()
+  protected void onClickBackward()
   {
     if ((this.mParentRecyclerView instanceof HippyTKDListView)) {
       ((HippyTKDListView)this.mParentRecyclerView).scrollToTopRightAway();
     }
   }
   
-  public void onClickRetry()
+  protected void onClickRetry()
   {
     startLoadMore();
   }
@@ -585,21 +570,21 @@ public class HippyTKDListViewAdapter
           ((HippyTKDDefaultFooter)this.mDefaultLoadingView).setText(paramString);
         }
       }
-      for (;;)
+      else
       {
-        if (this.mDefaultLoadingView != null)
-        {
-          this.mDefaultLoadingView.measure(View.MeasureSpec.makeMeasureSpec(this.mDefaultLoadingView.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(this.mDefaultLoadingView.getHeight(), 1073741824));
-          this.mDefaultLoadingView.layout(this.mDefaultLoadingView.getLeft(), this.mDefaultLoadingView.getTop(), this.mDefaultLoadingView.getRight(), this.mDefaultLoadingView.getBottom());
-          this.mDefaultLoadingView.invalidate();
-        }
-        this.mOnPreloadCalled = false;
-        return;
         if ((this.mDefaultLoadingView != null) && ((this.mDefaultLoadingView instanceof HippyTKDDefaultFooter))) {
           ((HippyTKDDefaultFooter)this.mDefaultLoadingView).setLoadingStatus(100, paramString);
         }
         setLoadingStatus(paramInt);
       }
+      if (this.mDefaultLoadingView != null)
+      {
+        this.mDefaultLoadingView.measure(View.MeasureSpec.makeMeasureSpec(this.mDefaultLoadingView.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(this.mDefaultLoadingView.getHeight(), 1073741824));
+        this.mDefaultLoadingView.layout(this.mDefaultLoadingView.getLeft(), this.mDefaultLoadingView.getTop(), this.mDefaultLoadingView.getRight(), this.mDefaultLoadingView.getBottom());
+        this.mDefaultLoadingView.invalidate();
+      }
+      this.mOnPreloadCalled = false;
+      return;
     }
     setLoadingStatus(paramInt);
   }
@@ -635,7 +620,7 @@ public class HippyTKDListViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

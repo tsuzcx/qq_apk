@@ -37,14 +37,13 @@ public final class DrmInitData
   private DrmInitData(@Nullable String paramString, boolean paramBoolean, DrmInitData.SchemeData... paramVarArgs)
   {
     this.schemeType = paramString;
-    if (paramBoolean) {}
-    for (paramString = (DrmInitData.SchemeData[])paramVarArgs.clone();; paramString = paramVarArgs)
-    {
-      Arrays.sort(paramString, this);
-      this.schemeDatas = paramString;
-      this.schemeDataCount = paramString.length;
-      return;
+    paramString = paramVarArgs;
+    if (paramBoolean) {
+      paramString = (DrmInitData.SchemeData[])paramVarArgs.clone();
     }
+    Arrays.sort(paramString, this);
+    this.schemeDatas = paramString;
+    this.schemeDataCount = paramString.length;
   }
   
   public DrmInitData(@Nullable String paramString, DrmInitData.SchemeData... paramVarArgs)
@@ -78,8 +77,8 @@ public final class DrmInitData
   @Nullable
   public static DrmInitData createSessionCreationData(@Nullable DrmInitData paramDrmInitData1, @Nullable DrmInitData paramDrmInitData2)
   {
-    int j = 0;
     ArrayList localArrayList = new ArrayList();
+    int j = 0;
     Object localObject1;
     int k;
     int i;
@@ -160,15 +159,17 @@ public final class DrmInitData
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (DrmInitData)paramObject;
-    } while ((Util.areEqual(this.schemeType, paramObject.schemeType)) && (Arrays.equals(this.schemeDatas, paramObject.schemeDatas)));
+      return (Util.areEqual(this.schemeType, paramObject.schemeType)) && (Arrays.equals(this.schemeDatas, paramObject.schemeDatas));
+    }
     return false;
   }
   
@@ -196,17 +197,18 @@ public final class DrmInitData
   
   public int hashCode()
   {
-    if (this.hashCode == 0) {
-      if (this.schemeType != null) {
-        break label37;
-      }
-    }
-    label37:
-    for (int i = 0;; i = this.schemeType.hashCode())
+    if (this.hashCode == 0)
     {
+      String str = this.schemeType;
+      int i;
+      if (str == null) {
+        i = 0;
+      } else {
+        i = str.hashCode();
+      }
       this.hashCode = (i * 31 + Arrays.hashCode(this.schemeDatas));
-      return this.hashCode;
     }
+    return this.hashCode;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -217,7 +219,7 @@ public final class DrmInitData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.DrmInitData
  * JD-Core Version:    0.7.0.1
  */

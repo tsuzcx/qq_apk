@@ -5,20 +5,21 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.View;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.biz.common.util.Util;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.webso.WebSoScreenshot;
 import com.tencent.mobileqq.webview.webso.WebSoService;
 import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
 import com.tencent.mobileqq.webview.webso.WebSoUtils;
@@ -59,8 +60,12 @@ public class WebSoPlugin
     if ((jdField_a_of_type_Int < 0) && (paramWebView != null))
     {
       jdField_a_of_type_Int = WebView.getTbsCoreVersion(BaseApplicationImpl.getContext());
-      if (QLog.isColorLevel()) {
-        QLog.i("WebSoPlugin", 2, "tbsCoreVersion= " + jdField_a_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        paramWebView = new StringBuilder();
+        paramWebView.append("tbsCoreVersion= ");
+        paramWebView.append(jdField_a_of_type_Int);
+        QLog.i("WebSoPlugin", 2, paramWebView.toString());
       }
     }
     return jdField_a_of_type_Int;
@@ -68,209 +73,257 @@ public class WebSoPlugin
   
   private void a(int paramInt)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    JSONObject localJSONObject1;
-    CustomWebView localCustomWebView;
-    do
-    {
-      do
-      {
-        return;
-      } while (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
-      localJSONObject1 = new JSONObject();
-      localCustomWebView = null;
-      if (this.mRuntime != null) {
-        localCustomWebView = this.mRuntime.a();
-      }
-    } while (localCustomWebView == null);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_JavaLangString = "";
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return;
-      JSONObject localJSONObject2;
-      long l;
+    }
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject1 = null;
+    if (this.mRuntime != null) {
+      localObject1 = this.mRuntime.a();
+    }
+    if (localObject1 == null) {
+      return;
+    }
+    if ((paramInt == 200) || (paramInt == 304))
+    {
       try
       {
-        localJSONObject2 = new JSONObject(this.jdField_b_of_type_JavaLangString);
-        l = System.currentTimeMillis() - localJSONObject2.optLong("local_refresh_time", 0L);
-        if (l <= 30000L) {
-          break label202;
+        localJSONObject.put("code", 304);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("now call localRefresh data: , ");
+          ((StringBuilder)localObject2).append(localJSONObject.toString());
+          QLog.i("WebSoPlugin", 1, ((StringBuilder)localObject2).toString());
         }
-        if (QLog.isColorLevel()) {
-          QLog.w("WebSoPlugin", 1, "receive js call too late, " + l / 1000.0D + "s");
+        ((CustomWebView)localObject1).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      }
+      catch (Exception localException)
+      {
+        Object localObject2;
+        long l1;
+        long l2;
+        double d;
+        StringBuilder localStringBuilder;
+        localException.printStackTrace();
+        QLog.e("WebSoPlugin", 1, localException, new Object[] { "dispatchDiffData to website error!" });
+      }
+      localObject2 = new JSONObject(this.jdField_b_of_type_JavaLangString);
+      l1 = System.currentTimeMillis();
+      l2 = ((JSONObject)localObject2).optLong("local_refresh_time", 0L);
+      l1 -= l2;
+      if (l1 > 30000L)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("receive js call too late, ");
+          d = l1;
+          Double.isNaN(d);
+          d /= 1000.0D;
+          ((StringBuilder)localObject1).append(d);
+          ((StringBuilder)localObject1).append("s");
+          QLog.w("WebSoPlugin", 1, ((StringBuilder)localObject1).toString());
         }
         this.jdField_b_of_type_JavaLangString = "";
         this.jdField_a_of_type_JavaLangString = "";
         return;
       }
-      catch (Exception localException)
+      if (!QLog.isColorLevel()) {
+        break label490;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("receive js call in time: ");
+      d = l1;
+      Double.isNaN(d);
+      d /= 1000.0D;
+      localStringBuilder.append(d);
+      localStringBuilder.append("s");
+      QLog.i("WebSoPlugin", 1, localStringBuilder.toString());
+    }
+    label490:
+    for (;;)
+    {
+      if (l1 > 0L) {
+        localJSONObject.put("local_refresh_time", l1);
+      }
+      ((JSONObject)localObject2).remove("local_refresh_time");
+      localJSONObject.put("result", ((JSONObject)localObject2).toString());
+      localJSONObject.put("code", 200);
+      if (QLog.isColorLevel())
       {
-        localException.printStackTrace();
-        QLog.e("WebSoPlugin", 1, localException, new Object[] { "dispatchDiffData to website error!" });
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("now call localRefresh data: , ");
+        ((StringBuilder)localObject2).append(localJSONObject.toString());
+        QLog.i("WebSoPlugin", 1, ((StringBuilder)localObject2).toString());
       }
-      continue;
-      label202:
-      if (QLog.isColorLevel()) {
-        QLog.i("WebSoPlugin", 1, "receive js call in time: " + l / 1000.0D + "s");
-      }
-      if (l > 0L) {
-        localJSONObject1.put("local_refresh_time", l);
-      }
-      localJSONObject2.remove("local_refresh_time");
-      localJSONObject1.put("result", localJSONObject2.toString());
-      localJSONObject1.put("code", 200);
-      if (QLog.isColorLevel()) {
-        QLog.i("WebSoPlugin", 1, "now call localRefresh data: , " + localJSONObject1.toString());
-      }
-      localException.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
-      continue;
-      localJSONObject1.put("code", 304);
-      if (QLog.isColorLevel()) {
-        QLog.i("WebSoPlugin", 1, "now call localRefresh data: , " + localJSONObject1.toString());
-      }
-      localException.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
+      ((CustomWebView)localObject1).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      this.jdField_b_of_type_JavaLangString = "";
+      return;
     }
   }
   
   private void a(Bundle paramBundle)
   {
-    if (this.mRuntime != null) {}
-    for (CustomWebView localCustomWebView = this.mRuntime.a();; localCustomWebView = null)
+    CustomWebView localCustomWebView;
+    if (this.mRuntime != null) {
+      localCustomWebView = this.mRuntime.a();
+    } else {
+      localCustomWebView = null;
+    }
+    if (localCustomWebView == null) {
+      return;
+    }
+    Object localObject = localCustomWebView.getUrl();
+    if (paramBundle == null) {
+      return;
+    }
+    String str2 = paramBundle.getString("url");
+    paramBundle.getInt("req_state", 0);
+    int j = paramBundle.getInt("result_code", 0);
+    boolean bool1 = paramBundle.getBoolean("is_local_data");
+    String str1 = paramBundle.getString("wns_proxy_http_data");
+    boolean bool2 = TextUtils.isEmpty(str1);
+    int i;
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!"about:blank".equals(localObject))) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    boolean bool3 = paramBundle.getBoolean("key_wns_cache_hit", false);
+    WebSoService.WebSoState.WebSo3 localWebSo3 = (WebSoService.WebSoState.WebSo3)paramBundle.getParcelable("key_webso_3");
+    if (j == 10503)
     {
-      if (localCustomWebView == null) {}
-      String str3;
-      do
+      paramBundle = new StringBuilder();
+      paramBundle.append("QZoneWebViewPlugin onReceive 503, now it reload url! ");
+      paramBundle.append(Util.c(str2, new String[0]));
+      QLog.e("WebSoPlugin", 1, paramBundle.toString());
+      localCustomWebView.loadUrlOriginal(str2);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QZoneWebViewPlugin onReceive  htmlBody(");
+    localStringBuilder.append(bool2 ^ true);
+    localStringBuilder.append(") currentUrl(");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(") cache hit(");
+    localStringBuilder.append(bool3);
+    localStringBuilder.append(") hasLoadCache(");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(") load Url: ");
+    localStringBuilder.append(Util.c(str2, new String[0]));
+    localStringBuilder.append(",silent_mode:");
+    localStringBuilder.append(paramBundle.getBoolean("is_silent_mode", false));
+    localStringBuilder.append(",isLocalData:");
+    localStringBuilder.append(bool1);
+    QLog.d("WebSoPlugin", 1, localStringBuilder.toString());
+    if ((localWebSo3 != null) && (localWebSo3.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSo3Helper.a(this, localWebSo3);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSo3Helper.a();
+    if ((!bool2) && (Build.VERSION.SDK_INT >= 17)) {
+      if (bool1)
       {
-        return;
-        str3 = localCustomWebView.getUrl();
-      } while (paramBundle == null);
-      String str2 = paramBundle.getString("url");
-      int j = paramBundle.getInt("req_state", 0);
-      int k = paramBundle.getInt("result_code", 0);
-      boolean bool2 = paramBundle.getBoolean("is_local_data");
-      String str1 = paramBundle.getString("wns_proxy_http_data");
-      boolean bool3 = TextUtils.isEmpty(str1);
-      if ((TextUtils.isEmpty(str3)) || ("about:blank".equals(str3))) {}
-      boolean bool4;
-      WebSoService.WebSoState.WebSo3 localWebSo3;
-      for (int i = 1;; i = 0)
-      {
-        bool4 = paramBundle.getBoolean("key_wns_cache_hit", false);
-        localWebSo3 = (WebSoService.WebSoState.WebSo3)paramBundle.getParcelable("key_webso_3");
-        if (k != 10503) {
-          break;
-        }
-        QLog.e("WebSoPlugin", 1, "QZoneWebViewPlugin onReceive 503, now it reload url! " + Util.c(str2, new String[0]));
-        localCustomWebView.loadUrlOriginal(str2);
-        return;
-      }
-      StringBuilder localStringBuilder = new StringBuilder().append("QZoneWebViewPlugin onReceive  htmlBody(");
-      if (!bool3) {}
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        QLog.d("WebSoPlugin", 1, bool1 + ") currentUrl(" + str3 + ") cache hit(" + bool4 + ") hasLoadCache(" + this.jdField_b_of_type_Boolean + ") load Url: " + Util.c(str2, new String[0]) + ",silent_mode:" + paramBundle.getBoolean("is_silent_mode", false) + ",isLocalData:" + bool2);
-        if ((localWebSo3 == null) || (!localWebSo3.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSo3Helper.a(this, localWebSo3);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSo3Helper.a();
-      if ((!bool3) && (Build.VERSION.SDK_INT >= 17))
-      {
-        if (!bool2) {
-          break label480;
-        }
         if (this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj == null)
         {
           this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj = new WebSoPlugin.WebSoJavaScriptObj(this, localCustomWebView);
           localCustomWebView.addJavascriptInterface(this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj, "_webso");
-          if (QLog.isColorLevel()) {
-            QLog.d("WebSoPlugin", 1, "js method : " + Arrays.toString(this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj.getClass().getDeclaredMethods()));
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("js method : ");
+            ((StringBuilder)localObject).append(Arrays.toString(this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj.getClass().getDeclaredMethods()));
+            QLog.d("WebSoPlugin", 1, ((StringBuilder)localObject).toString());
           }
         }
       }
-      label425:
-      if ((!this.jdField_b_of_type_Boolean) && (!bool3) && (i != 0))
+      else if (paramBundle.getBoolean("is_silent_mode", false))
       {
-        if (j == 2) {}
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-        if (bool2) {}
-        for (paramBundle = WebSoUtils.a(str2, str1);; paramBundle = WebSoUtils.b(str2, str1))
-        {
-          a(localCustomWebView, str2, paramBundle);
-          return;
-          label480:
-          if (!paramBundle.getBoolean("is_silent_mode", false)) {
-            break label425;
-          }
-          QLog.d("WebSoPlugin", 1, "静默加载html");
-          if (this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj == null) {
-            break;
-          }
-          this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj.a(str1);
-          return;
+        QLog.d("WebSoPlugin", 1, "静默加载html");
+        paramBundle = this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj;
+        if (paramBundle != null) {
+          paramBundle.a(str1);
         }
-      }
-      if (bool4)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("WebSoPlugin", 2, "webso return 304, so hit local cache!");
-        }
-        if (this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj != null) {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj.a("{\"code\":0,\"data\":null}");
-        }
-        this.jdField_b_of_type_JavaLangString = "304";
-        a(304);
         return;
       }
-      if (this.jdField_b_of_type_Boolean)
+    }
+    if ((!this.jdField_b_of_type_Boolean) && (!bool2) && (i != 0))
+    {
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_ArrayOfBoolean[0] = true;
+      if (bool1) {
+        paramBundle = WebSoUtils.a(str2, str1);
+      } else {
+        paramBundle = WebSoUtils.b(str2, str1);
+      }
+      a(localCustomWebView, str2, paramBundle);
+      return;
+    }
+    if (bool3)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("WebSoPlugin", 2, "webso return 304, so hit local cache!");
+      }
+      paramBundle = this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSoJavaScriptObj;
+      if (paramBundle != null) {
+        paramBundle.a("{\"code\":0,\"data\":null}");
+      }
+      this.jdField_b_of_type_JavaLangString = "304";
+      a(304);
+      return;
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("WebSoPlugin", 1, "webso success load local data, now load new data ! " + this.jdField_b_of_type_Boolean);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("webso success load local data, now load new data ! ");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+        QLog.i("WebSoPlugin", 1, ((StringBuilder)localObject).toString());
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if ((bool2) && (i != 0))
+    {
+      localCustomWebView.loadUrl(str2);
+      a(true);
+      return;
+    }
+    if ((!bool2) && (i != 0))
+    {
+      if (bool1) {
+        paramBundle = WebSoUtils.a(str2, str1);
+      } else {
+        paramBundle = WebSoUtils.b(str2, str1);
+      }
+      a(localCustomWebView, str2, paramBundle);
+      return;
+    }
+    if ((!bool2) && (i == 0))
+    {
+      if (paramBundle.getBoolean("need_force_refresh", false))
+      {
+        paramBundle = str1;
+        if (!bool1) {
+          paramBundle = WebSoUtils.b(str2, str1);
         }
-        this.jdField_a_of_type_Boolean = true;
-      }
-      if ((bool3) && (i != 0))
-      {
-        localCustomWebView.loadUrl(str2);
-        a(true);
-        return;
-      }
-      if ((!bool3) && (i != 0))
-      {
-        if (bool2) {}
-        for (paramBundle = WebSoUtils.a(str2, str1);; paramBundle = WebSoUtils.b(str2, str1))
-        {
-          a(localCustomWebView, str2, paramBundle);
-          return;
-        }
-      }
-      if ((!bool3) && (i == 0)) {
-        if (paramBundle.getBoolean("need_force_refresh", false)) {
-          if (bool2) {
-            break label769;
-          }
-        }
-      }
-      label769:
-      for (paramBundle = WebSoUtils.b(str2, str1);; paramBundle = str1)
-      {
         a(localCustomWebView, str2, paramBundle);
         return;
-        if (!paramBundle.getBoolean("need_local_refresh", false)) {
-          break;
-        }
+      }
+      if (paramBundle.getBoolean("need_local_refresh", false))
+      {
         this.jdField_b_of_type_JavaLangString = paramBundle.getString("key_html_changed_data");
         a(200);
-        return;
-        this.jdField_a_of_type_Boolean = false;
-        return;
       }
+    }
+    else
+    {
+      this.jdField_a_of_type_Boolean = false;
     }
   }
   
@@ -282,8 +335,8 @@ public class WebSoPlugin
     }
     if (a(paramCustomWebView))
     {
-      paramCustomWebView.setTag(2131374839, paramString2);
-      paramCustomWebView.setTag(2131374840, Long.valueOf(System.currentTimeMillis()));
+      paramCustomWebView.setTag(2131374373, paramString2);
+      paramCustomWebView.setTag(2131374374, Long.valueOf(System.currentTimeMillis()));
       paramCustomWebView.loadUrl(paramString1);
       return;
     }
@@ -292,34 +345,23 @@ public class WebSoPlugin
   
   private void a(boolean paramBoolean)
   {
-    boolean bool = true;
     if (this.mRuntime == null) {
       return;
     }
     Object localObject = this.mRuntime.a();
-    if ((localObject instanceof FragmentActivity))
+    if ((localObject instanceof QBaseActivity))
     {
-      localObject = a((FragmentActivity)localObject);
-      if ((localObject != null) && (((WebViewFragment)localObject).mUIStyleHandler != null))
+      localObject = a((QBaseActivity)localObject);
+      if ((localObject != null) && (((WebViewFragment)localObject).getUIStyleHandler() != null))
       {
-        if (((WebViewFragment)localObject).mUIStyleHandler.a != null)
+        if (((WebViewFragment)localObject).getUIStyleHandler().a != null)
         {
-          SwiftBrowserUIStyleHandler localSwiftBrowserUIStyleHandler = ((WebViewFragment)localObject).mUIStyleHandler;
-          if (!paramBoolean) {}
-          for (bool = true;; bool = false)
-          {
-            localSwiftBrowserUIStyleHandler.d = bool;
-            ((WebViewFragment)localObject).mUIStyleHandler.a.a(paramBoolean);
-            return;
-          }
-        }
-        localObject = ((WebViewFragment)localObject).mUIStyleHandler;
-        if (!paramBoolean) {}
-        for (paramBoolean = bool;; paramBoolean = false)
-        {
-          ((SwiftBrowserUIStyleHandler)localObject).d = paramBoolean;
+          ((WebViewFragment)localObject).getUIStyleHandler().d = (paramBoolean ^ true);
+          ((WebViewFragment)localObject).getUIStyleHandler().a.a(paramBoolean);
           return;
         }
+        ((WebViewFragment)localObject).getUIStyleHandler().d = (paramBoolean ^ true);
+        return;
       }
       b(paramBoolean);
       return;
@@ -337,63 +379,81 @@ public class WebSoPlugin
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_ArrayOfBoolean[0] = false;
     this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSo3Helper.a();
-    if ((paramLong != 32L) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if (paramLong == 32L)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-          } while (this.mRuntime == null);
-          paramMap = this.mRuntime.a();
-        } while ((paramMap == null) || (paramMap.isFinishing()) || (paramMap.getIntent() == null));
-        paramMap = this.mRuntime.a();
-      } while (paramMap == null);
-      paramMap = paramMap.getUrl();
-      if ((!TextUtils.isEmpty(paramMap)) && (!"about:blank".equals(paramMap)))
-      {
-        QLog.e("WebSoPlugin", 1, "now onHandleEventBeforeLoaded current url is not null! so return! " + Util.c(paramMap, new String[0]));
+      if (TextUtils.isEmpty(paramString)) {
         return false;
       }
-      a(paramString);
-    } while ((!WebSoUtils.b(paramString)) || (WebSoUtils.e(paramString)));
-    WebSoService.a().a(paramString, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ArrayOfBoolean);
-    a(false);
-    return true;
+      if (this.mRuntime == null) {
+        return false;
+      }
+      paramMap = this.mRuntime.a();
+      if ((paramMap != null) && (!paramMap.isFinishing()))
+      {
+        if (paramMap.getIntent() == null) {
+          return false;
+        }
+        paramMap = this.mRuntime.a();
+        if (paramMap == null) {
+          return false;
+        }
+        paramMap = paramMap.getUrl();
+        if ((!TextUtils.isEmpty(paramMap)) && (!"about:blank".equals(paramMap)))
+        {
+          paramString = new StringBuilder();
+          paramString.append("now onHandleEventBeforeLoaded current url is not null! so return! ");
+          paramString.append(Util.c(paramMap, new String[0]));
+          QLog.e("WebSoPlugin", 1, paramString.toString());
+          return false;
+        }
+        a(paramString);
+        if (WebSoUtils.b(paramString))
+        {
+          if (WebSoUtils.e(paramString)) {
+            return false;
+          }
+          WebSoService.a().a(paramString, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ArrayOfBoolean);
+          a(false);
+          return true;
+        }
+      }
+    }
+    return false;
   }
   
   private void b(boolean paramBoolean)
   {
-    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getRootView() == null) || (this.mRuntime.a().getRootView().findViewById(2131381873) == null)) {}
-    View localView;
-    do
+    if ((this.mRuntime != null) && (this.mRuntime.a() != null) && (this.mRuntime.a().getRootView() != null))
     {
-      return;
-      localView = this.mRuntime.a().getRootView().findViewById(2131381873).findViewById(2131373555);
-    } while (localView == null);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
+      if (this.mRuntime.a().getRootView().findViewById(2131381085) == null) {
+        return;
+      }
+      View localView = this.mRuntime.a().getRootView().findViewById(2131381085).findViewById(2131373133);
+      if (localView != null)
+      {
+        int i;
+        if (paramBoolean) {
+          i = 0;
+        } else {
+          i = 8;
+        }
+        localView.setVisibility(i);
+      }
     }
   }
   
-  public WebViewFragment a(FragmentActivity paramFragmentActivity)
+  public WebViewFragment a(QBaseActivity paramQBaseActivity)
   {
-    paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager();
-    if (paramFragmentActivity != null)
+    paramQBaseActivity = paramQBaseActivity.getSupportFragmentManager();
+    if (paramQBaseActivity != null)
     {
-      paramFragmentActivity = paramFragmentActivity.getFragments();
-      if ((paramFragmentActivity != null) && (paramFragmentActivity.size() > 0))
+      paramQBaseActivity = paramQBaseActivity.getFragments();
+      if ((paramQBaseActivity != null) && (paramQBaseActivity.size() > 0))
       {
-        paramFragmentActivity = paramFragmentActivity.iterator();
-        while (paramFragmentActivity.hasNext())
+        paramQBaseActivity = paramQBaseActivity.iterator();
+        while (paramQBaseActivity.hasNext())
         {
-          Fragment localFragment = (Fragment)paramFragmentActivity.next();
+          Fragment localFragment = (Fragment)paramQBaseActivity.next();
           if ((localFragment instanceof WebViewFragment)) {
             return (WebViewFragment)localFragment;
           }
@@ -420,7 +480,7 @@ public class WebSoPlugin
     return 32L;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 32L)
     {
@@ -430,19 +490,74 @@ public class WebSoPlugin
     if (paramLong == 8589934594L)
     {
       WebSoUtils.a("EVENT_LOAD_FINISH");
-      if ((TextUtils.isEmpty(paramString)) || ("about:bank".equals(paramString))) {
-        return false;
-      }
-      if (!WebSoUtils.b(paramString)) {
-        return false;
-      }
-      CustomWebView localCustomWebView = this.mRuntime.a();
-      if (localCustomWebView == null) {
-        return false;
-      }
-      paramString = localCustomWebView.copyBackForwardList();
-      if ((paramString == null) || (paramString.getSize() == 0))
+      if (!TextUtils.isEmpty(paramString))
       {
+        if ("about:bank".equals(paramString)) {
+          return false;
+        }
+        if (!WebSoUtils.b(paramString)) {
+          return false;
+        }
+        CustomWebView localCustomWebView = this.mRuntime.a();
+        if (localCustomWebView == null) {
+          return false;
+        }
+        paramString = localCustomWebView.copyBackForwardList();
+        if ((paramString != null) && (paramString.getSize() != 0))
+        {
+          int i;
+          Object localObject;
+          if (QLog.isColorLevel())
+          {
+            i = paramString.getSize() - 1;
+            while (i >= 0)
+            {
+              paramMap = paramString.getItemAtIndex(i);
+              if (paramMap != null)
+              {
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append(" EVENT_LOAD_FINISH --- history: ");
+                ((StringBuilder)localObject).append(i);
+                ((StringBuilder)localObject).append(" ");
+                ((StringBuilder)localObject).append(paramMap.getUrl());
+                QLog.i("WebSoPlugin", 2, ((StringBuilder)localObject).toString());
+              }
+              i -= 1;
+            }
+          }
+          if (paramString.getSize() >= 2)
+          {
+            i = paramString.getSize() - 1;
+            localObject = paramString.getItemAtIndex(i);
+            paramString = paramString.getItemAtIndex(i - 1);
+            paramMap = "";
+            if ((localObject != null) && (paramString != null))
+            {
+              paramMap = ((WebHistoryItem)localObject).getUrl();
+              paramString = paramString.getUrl();
+            }
+            else
+            {
+              paramString = "";
+            }
+            if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(paramMap)))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.i("WebSoPlugin", 2, "current url equals with precious url, need clear history!");
+              }
+              this.jdField_a_of_type_Boolean = true;
+            }
+          }
+          if (!this.jdField_a_of_type_Boolean) {
+            break label520;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("WebSoPlugin", 2, "now clear webview history!");
+          }
+          localCustomWebView.clearHistory();
+          this.jdField_a_of_type_Boolean = false;
+          return false;
+        }
         if (this.jdField_a_of_type_Boolean)
         {
           if (localCustomWebView != null)
@@ -454,215 +569,168 @@ public class WebSoPlugin
           }
           this.jdField_a_of_type_Boolean = false;
         }
-        return false;
       }
-      int i;
-      if (QLog.isColorLevel())
-      {
-        i = paramString.getSize() - 1;
-        while (i >= 0)
-        {
-          paramMap = paramString.getItemAtIndex(i);
-          if (paramMap != null) {
-            QLog.i("WebSoPlugin", 2, " EVENT_LOAD_FINISH --- history: " + i + " " + paramMap.getUrl());
-          }
-          i -= 1;
-        }
-      }
-      if (paramString.getSize() >= 2)
-      {
-        String str1 = "";
-        String str2 = "";
-        i = paramString.getSize() - 1;
-        WebHistoryItem localWebHistoryItem1 = paramString.getItemAtIndex(i);
-        WebHistoryItem localWebHistoryItem2 = paramString.getItemAtIndex(i - 1);
-        paramMap = str2;
-        paramString = str1;
-        if (localWebHistoryItem1 != null)
-        {
-          paramMap = str2;
-          paramString = str1;
-          if (localWebHistoryItem2 != null)
-          {
-            paramString = localWebHistoryItem1.getUrl();
-            paramMap = localWebHistoryItem2.getUrl();
-          }
-        }
-        if ((!TextUtils.isEmpty(paramMap)) && (paramMap.equals(paramString)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("WebSoPlugin", 2, "current url equals with precious url, need clear history!");
-          }
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("WebSoPlugin", 2, "now clear webview history!");
-        }
-        localCustomWebView.clearHistory();
-        this.jdField_a_of_type_Boolean = false;
-      }
+      return false;
     }
-    do
+    else if (paramLong == 8589934601L)
     {
-      do
+      WebSoUtils.a("EVENT_GO_BACK");
+      if (!TextUtils.isEmpty(paramString))
       {
-        do
+        if ("about:bank".equals(paramString)) {
+          return false;
+        }
+        if (!WebSoUtils.b(paramString)) {
+          return false;
+        }
+        paramString = this.mRuntime.a();
+        if (paramString == null) {
+          return false;
+        }
+        paramString = paramString.copyBackForwardList();
+        if (paramString == null) {
+          return false;
+        }
+        if (paramString.getSize() == 2)
         {
-          do
+          paramMap = paramString.getItemAtIndex(paramString.getSize() - 1).getUrl();
+          if (paramString.getItemAtIndex(paramString.getSize() - 2).getUrl().equals(paramMap))
           {
-            return false;
-          } while (paramLong != 8589934601L);
-          WebSoUtils.a("EVENT_GO_BACK");
-          if ((TextUtils.isEmpty(paramString)) || ("about:bank".equals(paramString))) {
-            return false;
-          }
-          if (!WebSoUtils.b(paramString)) {
-            return false;
-          }
-          paramString = this.mRuntime.a();
-          if (paramString == null) {
-            return false;
-          }
-          paramString = paramString.copyBackForwardList();
-          if (paramString == null) {
-            return false;
-          }
-        } while (paramString.getSize() != 2);
-        paramMap = paramString.getItemAtIndex(paramString.getSize() - 1).getUrl();
-      } while (!paramString.getItemAtIndex(paramString.getSize() - 2).getUrl().equals(paramMap));
-      if (QLog.isColorLevel()) {
-        QLog.i("WebSoPlugin", 2, "current url equals with precious url, need close activity!");
-      }
-    } while (this.mRuntime.a() == null);
-    this.mRuntime.a().finish();
-    return true;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((paramString2 != null) && ("WebSo".equals(paramString2)))
-    {
-      paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-      if (paramJsBridgeListener == null) {}
-      label226:
-      do
-      {
-        for (;;)
-        {
-          return true;
-          if (QLog.isColorLevel()) {
-            QLog.d("WebSoPlugin", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
-          }
-          paramJsBridgeListener = paramJsBridgeListener.optString("callback");
-          if (TextUtils.isEmpty(paramJsBridgeListener))
-          {
-            QLog.e("WebSoPlugin", 1, "callback id is null, so return");
-            return true;
-          }
-          if (!"getWebsoDiffData".equals(paramString3)) {
-            break label226;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("WebSoPlugin", 2, "WebSo get webso js api, data: " + Arrays.toString(paramVarArgs));
-          }
-          if ((this.mRuntime.a() != null) && (paramVarArgs.length > 0)) {
-            try
-            {
-              paramJsBridgeListener = new JSONObject(paramVarArgs[0]).getString("callback");
-              if (!TextUtils.isEmpty(paramJsBridgeListener))
-              {
-                this.jdField_a_of_type_JavaLangString = paramJsBridgeListener;
-                if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-                  if (this.jdField_b_of_type_JavaLangString.equals("304"))
-                  {
-                    a(304);
-                    return true;
-                  }
-                }
-              }
+            if (QLog.isColorLevel()) {
+              QLog.i("WebSoPlugin", 2, "current url equals with precious url, need close activity!");
             }
-            catch (Exception paramJsBridgeListener)
+            if (this.mRuntime.a() != null)
             {
-              paramJsBridgeListener.printStackTrace();
+              this.mRuntime.a().finish();
               return true;
             }
           }
         }
-        a(200);
+      }
+    }
+    label520:
+    return false;
+  }
+  
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((paramString2 != null) && ("WebSo".equals(paramString2)))
+    {
+      paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
+      if (paramJsBridgeListener == null) {
         return true;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("handleJsRequest JSON = ");
+        paramString1.append(paramJsBridgeListener.toString());
+        QLog.d("WebSoPlugin", 2, paramString1.toString());
+      }
+      paramJsBridgeListener = paramJsBridgeListener.optString("callback");
+      if (TextUtils.isEmpty(paramJsBridgeListener))
+      {
+        QLog.e("WebSoPlugin", 1, "callback id is null, so return");
+        return true;
+      }
+      if ("getWebsoDiffData".equals(paramString3))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramJsBridgeListener = new StringBuilder();
+          paramJsBridgeListener.append("WebSo get webso js api, data: ");
+          paramJsBridgeListener.append(Arrays.toString(paramVarArgs));
+          QLog.d("WebSoPlugin", 2, paramJsBridgeListener.toString());
+        }
+        if ((this.mRuntime.a() != null) && (paramVarArgs.length > 0)) {
+          try
+          {
+            paramJsBridgeListener = new JSONObject(paramVarArgs[0]).getString("callback");
+            if (TextUtils.isEmpty(paramJsBridgeListener)) {
+              break label504;
+            }
+            this.jdField_a_of_type_JavaLangString = paramJsBridgeListener;
+            if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+              break label504;
+            }
+            if (this.jdField_b_of_type_JavaLangString.equals("304"))
+            {
+              a(304);
+              return true;
+            }
+            a(200);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            paramJsBridgeListener.printStackTrace();
+            return true;
+          }
+        }
+      }
+      else
+      {
         if ("getData".equals(paramString3))
         {
           WebSoUtils.a("js call getData");
           this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSo3Helper.a(this, paramJsBridgeListener);
           return true;
         }
-        if ("updateWebsoCache".equals(paramString3)) {}
-        try
-        {
-          WebSoUtils.a("js call updateWebsoCache");
-          if (this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSo3Helper.a() != null)
-          {
-            if (this.mRuntime != null) {
-              this.mRuntime.a().loadUrl("javascript:window._webso.catchHtml(document.getElementsByTagName('html')[0].outerHTML);");
-            }
-            paramString1 = new JSONObject();
-            paramString1.put("result", 1);
-            super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-            return true;
-          }
-          WebSoUtils.a("return : webso == null");
-          return true;
-        }
-        catch (Exception paramJsBridgeListener) {}
-        if ("updateScreenshot".equals(paramString3)) {
-          try
-          {
-            WebSoUtils.a("js call updateScreenshot");
-            if (this.mRuntime != null)
-            {
-              paramString1 = this.mRuntime.a();
-              paramString2 = paramString1.getUrl();
-              if (WebSoUtils.b(paramString2)) {
-                WebSoService.a(paramString1, paramString2);
-              }
-            }
-            paramString1 = new JSONObject();
-            paramString1.put("result", 1);
-            super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
-            return true;
-          }
-          catch (Exception paramJsBridgeListener)
-          {
-            return true;
-          }
-        }
-      } while (!"hideScreenshot".equals(paramString3));
-      try
+        if (!"updateWebsoCache".equals(paramString3)) {}
+      }
+    }
+    try
+    {
+      WebSoUtils.a("js call updateWebsoCache");
+      if (this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin$WebSo3Helper.a() != null)
       {
-        WebSoUtils.a("js call hideScreenshot");
         if (this.mRuntime != null) {
-          WebSoService.a(this.mRuntime.a());
+          this.mRuntime.a().loadUrl("javascript:window._webso.catchHtml(document.getElementsByTagName('html')[0].outerHTML);");
         }
         paramString1 = new JSONObject();
         paramString1.put("result", 1);
         super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
         return true;
       }
-      catch (Exception paramJsBridgeListener)
-      {
-        return true;
-      }
+      WebSoUtils.a("return : webso == null");
+      return true;
     }
+    catch (Exception paramJsBridgeListener) {}
+    if ("updateScreenshot".equals(paramString3))
+    {
+      WebSoUtils.a("js call updateScreenshot");
+      if (this.mRuntime != null)
+      {
+        paramString1 = this.mRuntime.a();
+        paramString2 = paramString1.getUrl();
+        if (WebSoUtils.b(paramString2)) {
+          WebSoScreenshot.a(paramString1, paramString2);
+        }
+      }
+      paramString1 = new JSONObject();
+      paramString1.put("result", 1);
+      super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+      return true;
+    }
+    if ("hideScreenshot".equals(paramString3))
+    {
+      WebSoUtils.a("js call hideScreenshot");
+      if (this.mRuntime != null) {
+        WebSoScreenshot.a(this.mRuntime.a());
+      }
+      paramString1 = new JSONObject();
+      paramString1.put("result", 1);
+      super.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+    }
+    label504:
+    return true;
     return false;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.WebSoPlugin
  * JD-Core Version:    0.7.0.1
  */

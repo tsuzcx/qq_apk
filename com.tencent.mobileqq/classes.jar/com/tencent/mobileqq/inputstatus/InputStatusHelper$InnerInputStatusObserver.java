@@ -28,16 +28,21 @@ final class InputStatusHelper$InnerInputStatusObserver
       int i = paramObject.sint32_result.get();
       int j = paramObject.uint32_interval.get();
       paramObject = paramObject.bytes_err_msg.get().toStringUtf8();
-      if (i != 0) {
-        break label84;
+      if (i == 0)
+      {
+        if ((j > 0) && (this.a.get() != null)) {
+          ((InputStatusHelper)this.a.get()).a = (j * 1000);
+        }
       }
-      if ((j > 0) && (this.a.get() != null)) {
-        ((InputStatusHelper)this.a.get()).a = (j * 1000);
+      else
+      {
+        String str = InputStatusHelper.a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("send input status fail : ");
+        localStringBuilder.append(paramObject);
+        QLog.d(str, 1, localStringBuilder.toString());
       }
     }
-    return;
-    label84:
-    QLog.d(InputStatusHelper.a(), 1, "send input status fail : " + paramObject);
   }
   
   protected void b(boolean paramBoolean1, boolean paramBoolean2)
@@ -57,7 +62,7 @@ final class InputStatusHelper$InnerInputStatusObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.inputstatus.InputStatusHelper.InnerInputStatusObserver
  * JD-Core Version:    0.7.0.1
  */

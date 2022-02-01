@@ -21,14 +21,14 @@ public final class b
     this.d = paramFile;
   }
   
-  public final void a()
+  protected final void a()
   {
     m.d(new b.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.b.b
  * JD-Core Version:    0.7.0.1
  */

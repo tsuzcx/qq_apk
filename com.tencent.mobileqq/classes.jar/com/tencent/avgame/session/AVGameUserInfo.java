@@ -8,20 +8,30 @@ public class AVGameUserInfo
   extends QavDef.MultiUserInfo
 {
   public int mAudioEnergy;
-  public boolean mBigVideo = false;
-  public long mEnterTime = 0L;
+  public boolean mBigVideo;
+  public long mEnterTime;
   public boolean mIsSelf;
   public boolean mIsSpeaking;
-  public boolean mSubVideoOn = false;
-  public int mSubVideoSrc = 0;
-  public long mSubVideoTime = 0L;
-  public boolean mVideoOn = false;
-  public int mVideoSrc = 0;
-  public long mVideoTime = 0L;
-  public int mVolumeValue = 0;
+  public boolean mSubVideoOn;
+  public int mSubVideoSrc;
+  public long mSubVideoTime;
+  public boolean mVideoOn;
+  public int mVideoSrc;
+  public long mVideoTime;
+  public int mVolumeValue;
   
   public AVGameUserInfo(QavDef.MultiUserInfo paramMultiUserInfo, long paramLong)
   {
+    boolean bool = false;
+    this.mVideoOn = false;
+    this.mVideoSrc = 0;
+    this.mBigVideo = false;
+    this.mVideoTime = 0L;
+    this.mSubVideoOn = false;
+    this.mSubVideoSrc = 0;
+    this.mSubVideoTime = 0L;
+    this.mEnterTime = 0L;
+    this.mVolumeValue = 0;
     this.mUin = paramMultiUserInfo.mUin;
     this.mOpenId = paramMultiUserInfo.mOpenId;
     this.mMicOn = paramMultiUserInfo.mMicOn;
@@ -56,7 +66,17 @@ public class AVGameUserInfo
         bool3 = bool1;
         if (QLog.isDevelopLevel())
         {
-          QLog.i("AVGameSession", 4, "hasCameraVideo, uin[" + this.mUin + "], ret[" + bool1 + "], videoOn[" + this.mVideoOn + "], bigVideo[" + this.mBigVideo + "]");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("hasCameraVideo, uin[");
+          localStringBuilder.append(this.mUin);
+          localStringBuilder.append("], ret[");
+          localStringBuilder.append(bool1);
+          localStringBuilder.append("], videoOn[");
+          localStringBuilder.append(this.mVideoOn);
+          localStringBuilder.append("], bigVideo[");
+          localStringBuilder.append(this.mBigVideo);
+          localStringBuilder.append("]");
+          QLog.i("AVGameSession", 4, localStringBuilder.toString());
           bool3 = bool1;
         }
       }
@@ -76,12 +96,27 @@ public class AVGameUserInfo
   
   public String toString()
   {
-    return "AVGameUserInfo{mUin=" + this.mUin + ", mOpenId='" + this.mOpenId + '\'' + ", mMicOn=" + this.mMicOn + ", mVideoOn=" + this.mVideoOn + ", mSubVideoOn=" + this.mSubVideoOn + ", mAudioEnergy=" + this.mAudioEnergy + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AVGameUserInfo{mUin=");
+    localStringBuilder.append(this.mUin);
+    localStringBuilder.append(", mOpenId='");
+    localStringBuilder.append(this.mOpenId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mMicOn=");
+    localStringBuilder.append(this.mMicOn);
+    localStringBuilder.append(", mVideoOn=");
+    localStringBuilder.append(this.mVideoOn);
+    localStringBuilder.append(", mSubVideoOn=");
+    localStringBuilder.append(this.mSubVideoOn);
+    localStringBuilder.append(", mAudioEnergy=");
+    localStringBuilder.append(this.mAudioEnergy);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.session.AVGameUserInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -26,24 +26,28 @@ public final class StandardMethodCodec
   public Object decodeEnvelope(ByteBuffer paramByteBuffer)
   {
     paramByteBuffer.order(ByteOrder.nativeOrder());
-    switch (paramByteBuffer.get())
+    int i = paramByteBuffer.get();
+    if (i != 0)
     {
+      if (i != 1) {
+        break label118;
+      }
     }
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    do
+    else
     {
-      throw new IllegalArgumentException("Envelope corrupted");
       localObject1 = this.messageCodec.readValue(paramByteBuffer);
       if (!paramByteBuffer.hasRemaining()) {
         return localObject1;
       }
-      localObject1 = this.messageCodec.readValue(paramByteBuffer);
-      localObject2 = this.messageCodec.readValue(paramByteBuffer);
-      localObject3 = this.messageCodec.readValue(paramByteBuffer);
-    } while ((!(localObject1 instanceof String)) || ((localObject2 != null) && (!(localObject2 instanceof String))) || (paramByteBuffer.hasRemaining()));
-    throw new FlutterException((String)localObject1, (String)localObject2, localObject3);
+    }
+    Object localObject1 = this.messageCodec.readValue(paramByteBuffer);
+    Object localObject2 = this.messageCodec.readValue(paramByteBuffer);
+    Object localObject3 = this.messageCodec.readValue(paramByteBuffer);
+    if (((localObject1 instanceof String)) && ((localObject2 == null) || ((localObject2 instanceof String))) && (!paramByteBuffer.hasRemaining())) {
+      throw new FlutterException((String)localObject1, (String)localObject2, localObject3);
+    }
+    label118:
+    throw new IllegalArgumentException("Envelope corrupted");
   }
   
   public MethodCall decodeMethodCall(ByteBuffer paramByteBuffer)
@@ -65,14 +69,12 @@ public final class StandardMethodCodec
     this.messageCodec.writeValue(localExposedByteArrayOutputStream, paramString2);
     if ((paramObject instanceof Throwable)) {
       this.messageCodec.writeValue(localExposedByteArrayOutputStream, getStackTrace((Throwable)paramObject));
-    }
-    for (;;)
-    {
-      paramString1 = ByteBuffer.allocateDirect(localExposedByteArrayOutputStream.size());
-      paramString1.put(localExposedByteArrayOutputStream.buffer(), 0, localExposedByteArrayOutputStream.size());
-      return paramString1;
+    } else {
       this.messageCodec.writeValue(localExposedByteArrayOutputStream, paramObject);
     }
+    paramString1 = ByteBuffer.allocateDirect(localExposedByteArrayOutputStream.size());
+    paramString1.put(localExposedByteArrayOutputStream.buffer(), 0, localExposedByteArrayOutputStream.size());
+    return paramString1;
   }
   
   public ByteBuffer encodeErrorEnvelopeWithStacktrace(String paramString1, String paramString2, Object paramObject, String paramString3)
@@ -83,15 +85,13 @@ public final class StandardMethodCodec
     this.messageCodec.writeValue(localExposedByteArrayOutputStream, paramString2);
     if ((paramObject instanceof Throwable)) {
       this.messageCodec.writeValue(localExposedByteArrayOutputStream, getStackTrace((Throwable)paramObject));
-    }
-    for (;;)
-    {
-      this.messageCodec.writeValue(localExposedByteArrayOutputStream, paramString3);
-      paramString1 = ByteBuffer.allocateDirect(localExposedByteArrayOutputStream.size());
-      paramString1.put(localExposedByteArrayOutputStream.buffer(), 0, localExposedByteArrayOutputStream.size());
-      return paramString1;
+    } else {
       this.messageCodec.writeValue(localExposedByteArrayOutputStream, paramObject);
     }
+    this.messageCodec.writeValue(localExposedByteArrayOutputStream, paramString3);
+    paramString1 = ByteBuffer.allocateDirect(localExposedByteArrayOutputStream.size());
+    paramString1.put(localExposedByteArrayOutputStream.buffer(), 0, localExposedByteArrayOutputStream.size());
+    return paramString1;
   }
   
   public ByteBuffer encodeMethodCall(MethodCall paramMethodCall)
@@ -116,7 +116,7 @@ public final class StandardMethodCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.StandardMethodCodec
  * JD-Core Version:    0.7.0.1
  */

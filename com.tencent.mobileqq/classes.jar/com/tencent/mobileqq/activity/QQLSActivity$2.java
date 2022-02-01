@@ -10,8 +10,12 @@ class QQLSActivity$2
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSSensor", 2, "====shutSensor===" + Thread.currentThread().getId());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("====shutSensor===");
+      localStringBuilder.append(Thread.currentThread().getId());
+      QLog.d("QQLSSensor", 2, localStringBuilder.toString());
     }
     if (this.this$0.a != null)
     {
@@ -22,7 +26,7 @@ class QQLSActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.2
  * JD-Core Version:    0.7.0.1
  */

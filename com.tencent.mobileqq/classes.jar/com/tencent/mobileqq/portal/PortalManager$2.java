@@ -16,15 +16,20 @@ class PortalManager$2
     }
     catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PortalManager", 2, "report exception =" + localThrowable.getMessage());
-      localThrowable.printStackTrace();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("report exception =");
+        localStringBuilder.append(localThrowable.getMessage());
+        QLog.d("PortalManager", 2, localStringBuilder.toString());
+        localThrowable.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,45 +11,45 @@ public class DataUtils
 {
   public static boolean closeDataObject(Object paramObject)
   {
-    if (paramObject == null) {}
-    for (;;)
-    {
+    if (paramObject == null) {
       return false;
-      try
-      {
-        if ((paramObject instanceof InputStream))
-        {
-          ((InputStream)paramObject).close();
-        }
-        else if ((paramObject instanceof OutputStream))
-        {
-          ((OutputStream)paramObject).close();
-        }
-        else if ((paramObject instanceof Reader))
-        {
-          ((Reader)paramObject).close();
-        }
-        else if ((paramObject instanceof Writer))
-        {
-          ((Writer)paramObject).close();
-        }
-        else
-        {
-          if (!(paramObject instanceof RandomAccessFile)) {
-            continue;
-          }
-          ((RandomAccessFile)paramObject).close();
-        }
-        return true;
-      }
-      catch (IOException paramObject) {}
     }
+    try
+    {
+      if ((paramObject instanceof InputStream))
+      {
+        ((InputStream)paramObject).close();
+      }
+      else if ((paramObject instanceof OutputStream))
+      {
+        ((OutputStream)paramObject).close();
+      }
+      else if ((paramObject instanceof Reader))
+      {
+        ((Reader)paramObject).close();
+      }
+      else if ((paramObject instanceof Writer))
+      {
+        ((Writer)paramObject).close();
+      }
+      else
+      {
+        if (!(paramObject instanceof RandomAccessFile)) {
+          break label90;
+        }
+        ((RandomAccessFile)paramObject).close();
+      }
+      return true;
+      label90:
+      return false;
+    }
+    catch (IOException paramObject) {}
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.DataUtils
  * JD-Core Version:    0.7.0.1
  */

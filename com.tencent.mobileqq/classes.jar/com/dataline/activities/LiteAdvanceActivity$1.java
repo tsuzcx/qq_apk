@@ -14,30 +14,21 @@ class LiteAdvanceActivity$1
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool;
     if (!LiteAdvanceActivity.a(this.a, paramBoolean))
     {
-      Switch localSwitch = LiteAdvanceActivity.a(this.a);
-      if (!paramBoolean)
-      {
-        bool = true;
-        localSwitch.setChecked(bool);
-        QQToast.a(this.a, 1, HardCodeUtil.a(2131706220), 0).b(this.a.getTitleBarHeight());
-      }
+      LiteAdvanceActivity.a(this.a).setChecked(paramBoolean ^ true);
+      QQToast.a(this.a, 1, HardCodeUtil.a(2131706271), 0).b(this.a.getTitleBarHeight());
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
       LiteAdvanceActivity.b(this.a, paramBoolean);
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteAdvanceActivity.1
  * JD-Core Version:    0.7.0.1
  */

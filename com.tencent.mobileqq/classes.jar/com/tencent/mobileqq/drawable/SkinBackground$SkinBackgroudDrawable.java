@@ -24,7 +24,9 @@ public class SkinBackground$SkinBackgroudDrawable
     if (paramRect.height() / paramRect.width() >= i / k)
     {
       int j = paramRect.width() * i / paramRect.height();
-      k = (int)((k - j) * 0.5D);
+      double d = k - j;
+      Double.isNaN(d);
+      k = (int)(d * 0.5D);
       return new Rect(k, 0, j + k, i);
     }
     return new Rect(0, 0, k, paramRect.height() * k / paramRect.width());
@@ -51,7 +53,7 @@ public class SkinBackground$SkinBackgroudDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.drawable.SkinBackground.SkinBackgroudDrawable
  * JD-Core Version:    0.7.0.1
  */

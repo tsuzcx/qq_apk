@@ -14,18 +14,17 @@ class MiniCustomDialog$BrandColorManager
   
   private void setBrandBorderColor()
   {
-    if ((this.dialogBrandColorView != null) && (this.color != 0))
+    Object localObject = this.dialogBrandColorView;
+    if ((localObject != null) && (this.color != 0))
     {
-      Drawable localDrawable = this.dialogBrandColorView.getBackground().mutate();
-      if ((localDrawable instanceof GradientDrawable)) {
-        ((GradientDrawable)localDrawable).setColor(this.color);
+      localObject = ((View)localObject).getBackground().mutate();
+      if ((localObject instanceof GradientDrawable))
+      {
+        ((GradientDrawable)localObject).setColor(this.color);
+        return;
       }
+      QMLog.w("BrandColorManager", "set band border-color fail");
     }
-    else
-    {
-      return;
-    }
-    QMLog.w("BrandColorManager", "set band border-color fail");
   }
   
   void setColor(int paramInt)
@@ -42,7 +41,7 @@ class MiniCustomDialog$BrandColorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.MiniCustomDialog.BrandColorManager
  * JD-Core Version:    0.7.0.1
  */

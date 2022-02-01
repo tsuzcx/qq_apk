@@ -53,49 +53,50 @@ public class CornerImageView
   
   protected void b(Canvas paramCanvas) {}
   
-  public void drawableStateChanged()
+  protected void drawableStateChanged()
   {
-    int k = 0;
     super.drawableStateChanged();
-    if (!this.jdField_a_of_type_Boolean) {}
-    Object localObject;
-    label83:
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      localObject = getDrawableState();
-      int i = 0;
-      for (;;)
-      {
-        int j = k;
-        if (i < localObject.length)
-        {
-          if (localObject[i] == 16842919) {
-            j = 1;
-          }
-        }
-        else
-        {
-          if (!(isPressed() | j)) {
-            break label83;
-          }
-          localObject = getDrawable();
-          if (localObject == null) {
-            break;
-          }
-          ((Drawable)localObject).setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
-          ((Drawable)localObject).invalidateSelf();
-          return;
-        }
-        i += 1;
+    }
+    Object localObject = getDrawableState();
+    int k = 0;
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= localObject.length) {
+        break;
       }
+      if (localObject[i] == 16842919)
+      {
+        j = 1;
+        break;
+      }
+      i += 1;
+    }
+    if ((isPressed() | j))
+    {
       localObject = getDrawable();
-    } while (localObject == null);
-    ((Drawable)localObject).setColorFilter(null);
-    ((Drawable)localObject).invalidateSelf();
+      if (localObject != null)
+      {
+        ((Drawable)localObject).setColorFilter(jdField_a_of_type_AndroidGraphicsColorFilter);
+        ((Drawable)localObject).invalidateSelf();
+      }
+    }
+    else
+    {
+      localObject = getDrawable();
+      if (localObject != null)
+      {
+        ((Drawable)localObject).setColorFilter(null);
+        ((Drawable)localObject).invalidateSelf();
+      }
+    }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
       this.jdField_a_of_type_AndroidGraphicsPath = new Path();
@@ -103,26 +104,34 @@ public class CornerImageView
     int i = paramCanvas.save();
     try
     {
-      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-      localRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-      localPath.reset();
-      localPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
-      paramCanvas.clipPath(localPath);
-      b(paramCanvas);
-      super.onDraw(paramCanvas);
-      a(paramCanvas);
-      return;
+      try
+      {
+        Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+        RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+        localRectF.set(0.0F, 0.0F, getWidth(), getHeight());
+        localPath.reset();
+        localPath.addRoundRect(localRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
+        paramCanvas.clipPath(localPath);
+        a(paramCanvas);
+        super.onDraw(paramCanvas);
+        b(paramCanvas);
+      }
+      finally
+      {
+        break label107;
+      }
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
-      super.onDraw(paramCanvas);
-      return;
+      label96:
+      break label96;
     }
-    finally
-    {
-      paramCanvas.restoreToCount(i);
-    }
+    super.onDraw(paramCanvas);
+    paramCanvas.restoreToCount(i);
+    return;
+    label107:
+    paramCanvas.restoreToCount(i);
+    throw localObject;
   }
   
   public void setPressMask(boolean paramBoolean)
@@ -144,7 +153,7 @@ public class CornerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView
  * JD-Core Version:    0.7.0.1
  */

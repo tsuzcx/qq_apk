@@ -53,19 +53,23 @@ public final class TAVStickerExKt
   public static final String getReportLocation(@NotNull TAVSticker paramTAVSticker)
   {
     Intrinsics.checkParameterIsNotNull(paramTAVSticker, "$this$reportLocation");
-    StringBuilder localStringBuilder = new StringBuilder().append('(');
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('(');
     Object localObject = StringCompanionObject.INSTANCE;
     localObject = new Object[1];
     localObject[0] = Float.valueOf(paramTAVSticker.getCenterX());
     localObject = String.format("%.3f", Arrays.copyOf((Object[])localObject, localObject.length));
     Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
-    localStringBuilder = localStringBuilder.append((String)localObject).append(',');
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(',');
     localObject = StringCompanionObject.INSTANCE;
     localObject = new Object[1];
     localObject[0] = Float.valueOf(paramTAVSticker.getCenterY());
     paramTAVSticker = String.format("%.3f", Arrays.copyOf((Object[])localObject, localObject.length));
     Intrinsics.checkExpressionValueIsNotNull(paramTAVSticker, "java.lang.String.format(format, *args)");
-    return paramTAVSticker + ')';
+    localStringBuilder.append(paramTAVSticker);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
   
   public static final int getReportStickerType(@NotNull TAVSticker paramTAVSticker)
@@ -90,15 +94,12 @@ public final class TAVStickerExKt
       if ((Intrinsics.areEqual(str, "sticker_plaintext") ^ true)) {
         return "";
       }
-    }
-    else {
-      return "";
-    }
-    paramTAVSticker = paramTAVSticker.getStickerTextItems();
-    Intrinsics.checkExpressionValueIsNotNull(paramTAVSticker, "stickerTextItems");
-    paramTAVSticker = (TAVStickerTextItem)CollectionsKt.firstOrNull((List)paramTAVSticker);
-    if (paramTAVSticker != null) {
-      return Integer.toHexString(paramTAVSticker.getTextColor());
+      paramTAVSticker = paramTAVSticker.getStickerTextItems();
+      Intrinsics.checkExpressionValueIsNotNull(paramTAVSticker, "stickerTextItems");
+      paramTAVSticker = (TAVStickerTextItem)CollectionsKt.firstOrNull((List)paramTAVSticker);
+      if (paramTAVSticker != null) {
+        return Integer.toHexString(paramTAVSticker.getTextColor());
+      }
     }
     return "";
   }
@@ -134,7 +135,7 @@ public final class TAVStickerExKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.effect.TAVStickerExKt
  * JD-Core Version:    0.7.0.1
  */

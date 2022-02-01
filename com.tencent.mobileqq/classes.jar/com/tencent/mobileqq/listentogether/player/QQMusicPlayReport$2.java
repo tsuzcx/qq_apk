@@ -16,12 +16,12 @@ final class QQMusicPlayReport$2
     localHashMap.put("qqmusicplay_report_key_seek_delay", String.valueOf(this.a));
     localHashMap.put("qqmusicplay_report_key_net_type", String.valueOf(this.b));
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "qqmusicplay_report_tag_seek_delay", true, 0L, 0L, localHashMap, "");
-    if (QLog.isColorLevel()) {}
+    QLog.isColorLevel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2
  * JD-Core Version:    0.7.0.1
  */

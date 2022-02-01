@@ -12,13 +12,22 @@ public class WriteTogetherMessageSummaryCallback
 {
   public boolean a(Context paramContext, AppRuntime paramAppRuntime, Message paramMessage, int paramInt, MsgSummary paramMsgSummary, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((!(paramAppRuntime instanceof QQAppInterface)) || (paramMessage == null) || (paramMsgSummary == null)) {}
-    while (paramMessage.msgtype != -7014) {
-      return false;
+    if (((paramAppRuntime instanceof QQAppInterface)) && (paramMessage != null))
+    {
+      if (paramMsgSummary == null) {
+        return false;
+      }
+      if (paramMessage.msgtype != -7014) {
+        return false;
+      }
+      paramMsgSummary.strPrefix = paramString;
+      paramContext = new StringBuilder();
+      paramContext.append("[一起写] ");
+      paramContext.append(paramMessage.msg);
+      paramMsgSummary.strContent = paramContext.toString();
+      return true;
     }
-    paramMsgSummary.strPrefix = paramString;
-    paramMsgSummary.strContent = ("[一起写] " + paramMessage.msg);
-    return true;
+    return false;
   }
   
   public boolean a(Message paramMessage)
@@ -28,7 +37,7 @@ public class WriteTogetherMessageSummaryCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.summary.WriteTogetherMessageSummaryCallback
  * JD-Core Version:    0.7.0.1
  */

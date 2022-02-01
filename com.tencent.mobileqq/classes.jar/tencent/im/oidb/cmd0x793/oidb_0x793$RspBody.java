@@ -19,13 +19,14 @@ public final class oidb_0x793$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "uint32_result", "errMsg", "rpt_uinlist", "uint32_flag" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, Integer.valueOf(0) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "uint32_result", "errMsg", "rpt_uinlist", "uint32_flag" }, new Object[] { localInteger, localByteStringMicro, null, localInteger }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x793.oidb_0x793.RspBody
  * JD-Core Version:    0.7.0.1
  */

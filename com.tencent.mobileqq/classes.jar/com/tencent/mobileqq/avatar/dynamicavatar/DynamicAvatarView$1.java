@@ -9,14 +9,16 @@ class DynamicAvatarView$1
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.setImageDrawable(this.this$0.a.a());
+    if (this.this$0.a != null)
+    {
+      DynamicAvatarView localDynamicAvatarView = this.this$0;
+      localDynamicAvatarView.setImageDrawable(localDynamicAvatarView.a.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView.1
  * JD-Core Version:    0.7.0.1
  */

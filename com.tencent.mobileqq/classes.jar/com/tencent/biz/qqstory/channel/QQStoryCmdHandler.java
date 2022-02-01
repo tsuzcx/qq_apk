@@ -47,66 +47,76 @@ public class QQStoryCmdHandler
     long l = paramBundle.getLong("start_time");
     l = System.currentTimeMillis() - l;
     int i = paramBundle.getInt("data_error_code");
+    Object localObject = null;
     if (i != 0)
     {
       paramArrayOfByte = paramBundle.getString("data_error_msg");
       if (((i == 2901) || (i == 1002) || (i == 1003)) && (a(paramNetworkRequest)))
       {
-        SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramNetworkRequest.a() + " channel error:%d, msg:%s, take time:%d ,retry time:%d , retry now", new Object[] { Integer.valueOf(i), paramArrayOfByte, Long.valueOf(l), Integer.valueOf(paramNetworkRequest.b) });
+        paramBundle = new StringBuilder();
+        paramBundle.append("get cmd:");
+        paramBundle.append(paramNetworkRequest.a());
+        paramBundle.append(" channel error:%d, msg:%s, take time:%d ,retry time:%d , retry now");
+        SLog.d("Q.qqstory.net:QQStoryCmdHandler", paramBundle.toString(), new Object[] { Integer.valueOf(i), paramArrayOfByte, Long.valueOf(l), Integer.valueOf(paramNetworkRequest.b) });
         paramNetworkRequest.b += 1;
         paramArrayOfByte = Bosses.get();
         paramNetworkRequest = new QQStoryCmdHandler.6(this, "Q.qqstory.net:QQStoryCmdHandler", paramNetworkRequest);
-        if (i == 2901) {}
-        for (i = 500;; i = 2000)
-        {
-          paramArrayOfByte.scheduleJobDelayed(paramNetworkRequest, i);
-          return;
+        if (i == 2901) {
+          i = 500;
+        } else {
+          i = 2000;
         }
+        paramArrayOfByte.scheduleJobDelayed(paramNetworkRequest, i);
+        return;
       }
-      paramNetworkRequest.a().a(i, HardCodeUtil.a(2131710785), null);
-      SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramNetworkRequest.a() + " channel error:%d, msg:%s, take time:%d", new Object[] { Integer.valueOf(i), paramArrayOfByte, Long.valueOf(l) });
+      paramNetworkRequest.a().a(i, HardCodeUtil.a(2131710762), null);
+      paramBundle = new StringBuilder();
+      paramBundle.append("get cmd:");
+      paramBundle.append(paramNetworkRequest.a());
+      paramBundle.append(" channel error:%d, msg:%s, take time:%d");
+      SLog.d("Q.qqstory.net:QQStoryCmdHandler", paramBundle.toString(), new Object[] { Integer.valueOf(i), paramArrayOfByte, Long.valueOf(l) });
       a(paramNetworkRequest, i, paramArrayOfByte, l);
       return;
     }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      paramNetworkRequest.a().a(-1, "channel error null data", null);
-      SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramNetworkRequest.a() + " channel error null data, take time:%d", new Object[] { Long.valueOf(l) });
-      a(paramNetworkRequest, 940002, "rsp data error", l);
-      return;
-    }
-    paramBundle = null;
-    try
-    {
-      BaseResponse localBaseResponse = paramNetworkRequest.a(paramArrayOfByte);
-      paramBundle = localBaseResponse;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
       {
-        SLog.c("Q.qqstory.net:QQStoryCmdHandler", "decode pb fail", localException);
+        paramBundle = paramNetworkRequest.a(paramArrayOfByte);
       }
-    }
-    if (paramBundle == null)
-    {
-      SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error. response is null", new Object[] { paramNetworkRequest.a() });
-      a(paramNetworkRequest, 940002, "response is null", l);
-      return;
-    }
-    if (paramBundle.a == 0) {
-      SLog.a("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s success take time:%d data length=%d respond:%s", paramNetworkRequest.a(), Long.valueOf(l), Integer.valueOf(paramArrayOfByte.length), paramBundle);
-    }
-    for (;;)
-    {
+      catch (Exception paramBundle)
+      {
+        SLog.c("Q.qqstory.net:QQStoryCmdHandler", "decode pb fail", paramBundle);
+        paramBundle = localObject;
+      }
+      if (paramBundle == null)
+      {
+        SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error. response is null", new Object[] { paramNetworkRequest.a() });
+        a(paramNetworkRequest, 940002, "response is null", l);
+        return;
+      }
+      if (paramBundle.a == 0)
+      {
+        SLog.a("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s success take time:%d data length=%d respond:%s", paramNetworkRequest.a(), Long.valueOf(l), Integer.valueOf(paramArrayOfByte.length), paramBundle);
+      }
+      else
+      {
+        SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { paramNetworkRequest.a(), Integer.valueOf(paramBundle.a), paramBundle.b, Long.valueOf(l), Integer.valueOf(paramArrayOfByte.length) });
+        if (paramBundle.a == 10001) {
+          SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error:%s", new Object[] { paramNetworkRequest.a(), paramNetworkRequest });
+        }
+      }
       paramNetworkRequest.a().a(paramBundle.a, paramBundle.b, paramBundle);
       a(paramNetworkRequest, paramBundle.a, paramBundle.b, l);
       return;
-      SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { paramNetworkRequest.a(), Integer.valueOf(paramBundle.a), paramBundle.b, Long.valueOf(l), Integer.valueOf(paramArrayOfByte.length) });
-      if (paramBundle.a == 10001) {
-        SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error:%s", new Object[] { paramNetworkRequest.a(), paramNetworkRequest });
-      }
     }
+    paramNetworkRequest.a().a(-1, "channel error null data", null);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("get cmd:");
+    paramArrayOfByte.append(paramNetworkRequest.a());
+    paramArrayOfByte.append(" channel error null data, take time:%d");
+    SLog.d("Q.qqstory.net:QQStoryCmdHandler", paramArrayOfByte.toString(), new Object[] { Long.valueOf(l) });
+    a(paramNetworkRequest, 940002, "rsp data error", l);
   }
   
   private boolean a(NetworkRequest paramNetworkRequest)
@@ -133,7 +143,12 @@ public class QQStoryCmdHandler
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      SLog.e("Q.qqstory.net:QQStoryCmdHandler", "send cmd:" + paramNetworkRequest.a() + " error:" + localIllegalArgumentException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("send cmd:");
+      localStringBuilder.append(paramNetworkRequest.a());
+      localStringBuilder.append(" error:");
+      localStringBuilder.append(localIllegalArgumentException.getMessage());
+      SLog.e("Q.qqstory.net:QQStoryCmdHandler", localStringBuilder.toString());
       paramNetworkRequest.a().a(940001, localIllegalArgumentException.getMessage(), null);
     }
   }
@@ -161,7 +176,7 @@ public class QQStoryCmdHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,10 @@ package com.tencent.av.business.manager.magicface;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.av.AVFunChat.AVFunChatMessage;
 import com.tencent.av.AVLog;
 import com.tencent.av.AVPathUtil;
+import com.tencent.av.ManageConfig.QAVConfItem;
+import com.tencent.av.ManageConfig.QAVConfig;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
@@ -13,26 +14,21 @@ import com.tencent.av.business.manager.Checker;
 import com.tencent.av.business.manager.EffectConfigBase;
 import com.tencent.av.business.manager.EffectMutexManager;
 import com.tencent.av.business.manager.EffectMutexManager.IMutexItem;
-import com.tencent.av.business.manager.makeup.MakeupMng;
+import com.tencent.av.business.manager.material.EffectMaterialManager;
 import com.tencent.av.business.manager.pendant.EffectPendantTools;
 import com.tencent.av.business.manager.pendant.PendantItem;
 import com.tencent.av.business.manager.support.EffectSupportManager;
-import com.tencent.av.opengl.effects.AEKitAbilityInfo;
-import com.tencent.av.ptu.PtuResChecker;
+import com.tencent.av.business.processor.FaceConfigFileProcessor;
 import com.tencent.av.recog.AVVoiceRecog;
-import com.tencent.av.tips.TipsUtil;
 import com.tencent.av.ui.ControlUIObserver.RequestPlayMagicFace;
 import com.tencent.av.ui.ControlUIObserver.ZimuRequest;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -48,7 +44,7 @@ public class EffectFaceManager
   extends EffectConfigBase<FaceItem>
   implements EffectMutexManager.IMutexItem, MagicfaceBaseDecoder.MagicPlayListener
 {
-  public static final String d = AVPathUtil.a() + 176 + File.separator;
+  public static final String b;
   EffectFaceManager.VoiceStickerGuideTips jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips = new EffectFaceManager.VoiceStickerGuideTips();
   private MagicFaceDataEntity jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity;
   private MagicfacePlayer jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer = new MagicfacePlayer();
@@ -56,64 +52,71 @@ public class EffectFaceManager
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Queue<MagicFaceDataEntity> jdField_a_of_type_JavaUtilQueue = new ArrayBlockingQueue(8);
   private WeakReference<MagicfaceBaseDecoder.MagicfaceRenderListener> jdField_a_of_type_MqqUtilWeakReference = new WeakReference(null);
-  private boolean jdField_a_of_type_Boolean = false;
-  private ArrayList<EffectFaceManager.BlessingTips> b = new ArrayList();
-  private String e;
-  private String f;
+  private ArrayList<EffectFaceManager.BlessingTips> b;
+  private String c;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AVPathUtil.a());
+    localStringBuilder.append(176);
+    localStringBuilder.append(File.separator);
+    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+  }
   
   public EffectFaceManager(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   private MagicFaceDataEntity a(FaceItem paramFaceItem, String paramString, boolean paramBoolean, int paramInt)
   {
-    String str1 = null;
-    String str2;
     if (paramFaceItem != null)
     {
       AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, String.format("createMagicEntity: id=%s, senderType%s.", new Object[] { paramFaceItem.getId(), Integer.valueOf(paramInt) }));
-      str1 = paramFaceItem.getId();
-      str2 = paramFaceItem.getType();
-      if (!"multi_result".equalsIgnoreCase(paramFaceItem.getAttr())) {
-        break label100;
+      String str1 = paramFaceItem.getId();
+      String str2 = paramFaceItem.getType();
+      if ("multi_result".equalsIgnoreCase(paramFaceItem.getAttr())) {
+        paramString = new MagicFaceDataEntityMultiResult(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, str1, str2, paramString, paramBoolean, paramInt);
+      } else {
+        paramString = new MagicFaceDataEntity(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, str1, str2, paramString, paramBoolean, paramInt);
       }
-    }
-    label100:
-    for (paramString = new MagicFaceDataEntityMultiResult(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, str1, str2, paramString, paramBoolean, paramInt);; paramString = new MagicFaceDataEntity(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, str1, str2, paramString, paramBoolean, paramInt))
-    {
       paramFaceItem.lastPositionIndex = paramString.a(paramFaceItem.lastPositionIndex);
-      str1 = paramString;
-      return str1;
+      return paramString;
     }
+    return null;
   }
   
   private MagicFaceDataEntity a(String paramString, boolean paramBoolean)
   {
-    boolean bool = false;
-    int i = 1;
     paramString = (FaceItem)a(paramString);
     if (paramString != null)
     {
-      Object localObject = b(paramString);
-      localObject = new File((String)localObject + "config.json");
-      if (((File)localObject).exists())
+      Object localObject1 = b(paramString);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("config.json");
+      localObject1 = new File(((StringBuilder)localObject2).toString());
+      boolean bool = ((File)localObject1).exists();
+      int i = 1;
+      if (bool)
       {
-        localObject = FileUtils.a((File)localObject);
-        if (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().e) {
-          bool = true;
-        }
-        if (paramBoolean) {}
-        for (;;)
-        {
-          return a(paramString, (String)localObject, bool, i);
+        localObject1 = FileUtils.readFileContent((File)localObject1);
+        bool = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().e;
+        if (!paramBoolean) {
           i = 2;
         }
+        return a(paramString, (String)localObject1, bool ^ true, i);
       }
-      ArrayList localArrayList = new ArrayList(1);
-      localArrayList.add("config.json");
-      this.jdField_a_of_type_ComTencentAvBusinessManagerChecker.a(paramString, a(paramString), b(paramString), localArrayList, false);
-      AVLog.printErrorLog(this.jdField_a_of_type_JavaLangString, "prepareEntity FILE not exist: " + ((File)localObject).getPath());
+      localObject2 = new ArrayList(1);
+      ((ArrayList)localObject2).add("config.json");
+      this.jdField_a_of_type_ComTencentAvBusinessManagerChecker.a(paramString, a(paramString), b(paramString), (ArrayList)localObject2, false);
+      paramString = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("prepareEntity FILE not exist: ");
+      ((StringBuilder)localObject2).append(((File)localObject1).getPath());
+      AVLog.printErrorLog(paramString, ((StringBuilder)localObject2).toString());
     }
     return null;
   }
@@ -143,146 +146,96 @@ public class EffectFaceManager
     if (this.jdField_a_of_type_JavaUtilQueue.size() > 0)
     {
       MagicFaceDataEntity localMagicFaceDataEntity = (MagicFaceDataEntity)this.jdField_a_of_type_JavaUtilQueue.remove();
-      if (AudioHelper.e()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "playItemFromQueueHead, id[" + localMagicFaceDataEntity + "], seq[" + paramLong + "]");
+      if (AudioHelper.b())
+      {
+        String str = this.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("playItemFromQueueHead, id[");
+        localStringBuilder.append(localMagicFaceDataEntity);
+        localStringBuilder.append("], seq[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("]");
+        QLog.w(str, 1, localStringBuilder.toString());
       }
       a(paramLong, localMagicFaceDataEntity, (MagicfaceBaseDecoder.MagicfaceRenderListener)this.jdField_a_of_type_MqqUtilWeakReference.get());
       a(paramLong, localMagicFaceDataEntity.b());
       if (localMagicFaceDataEntity.c())
       {
         a(paramLong, 6102, null, null);
-        this.e = null;
+        this.c = null;
       }
       return true;
     }
     return false;
   }
   
-  private int b()
-  {
-    int j = 0;
-    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    SessionInfo localSessionInfo = localVideoController.a();
-    int i = localVideoController.b(localSessionInfo.d);
-    if ((i == 2) || (i == 3) || (i == 4))
-    {
-      i = 1;
-      if (i != 0) {
-        break label59;
-      }
-      i = 1;
-    }
-    label59:
-    int k;
-    do
-    {
-      return i;
-      i = 0;
-      break;
-      k = localVideoController.c(localSessionInfo.d);
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "checkPeerCreativeSupport peerSharpVersion:=" + k);
-      }
-      i = j;
-    } while (k > 105);
-    return 2;
-  }
-  
   private void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 2, "sendStartCreativeCopMsg, id[" + paramString + "]");
+    paramString = (FaceItem)a(paramString);
+    if (paramString != null)
+    {
+      int i;
+      if (paramString.isInteract())
+      {
+        i = 3;
+        StringBuilder localStringBuilder;
+        if (paramString.isSameType("voicesticker"))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("VSTART_");
+          localStringBuilder.append(paramString.getId());
+          paramString = localStringBuilder.toString();
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("START_");
+          localStringBuilder.append(paramString.getId());
+          paramString = localStringBuilder.toString();
+        }
+      }
+      else
+      {
+        i = 1;
+        paramString = paramString.getId();
+      }
+      b(i, paramString);
     }
-    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    AVFunChat.AVFunChatMessage localAVFunChatMessage = new AVFunChat.AVFunChatMessage();
-    localAVFunChatMessage.uint64_type.set(14L);
-    localAVFunChatMessage.enum_operator.set(1);
-    PBStringField localPBStringField = localAVFunChatMessage.str_msg;
-    String str = paramString;
-    if (paramString == null) {
-      str = "0";
-    }
-    localPBStringField.set(str);
-    localVideoController.a(14, localAVFunChatMessage);
   }
   
   private void c(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 2, "sendStopCreativeCopMsg, id[" + paramString + "]");
-    }
-    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    AVFunChat.AVFunChatMessage localAVFunChatMessage = new AVFunChat.AVFunChatMessage();
-    localAVFunChatMessage.uint64_type.set(14L);
-    localAVFunChatMessage.enum_operator.set(0);
-    PBStringField localPBStringField = localAVFunChatMessage.str_msg;
-    String str = paramString;
-    if (paramString == null) {
-      str = "0";
-    }
-    localPBStringField.set(str);
-    localVideoController.a(14, localAVFunChatMessage);
-  }
-  
-  private void d(String paramString)
-  {
-    paramString = (FaceItem)a(paramString);
-    int i;
-    if (paramString != null)
-    {
-      if (!paramString.isInteract()) {
-        break label90;
-      }
-      i = 3;
-      if (!paramString.isSameType("voicesticker")) {
-        break label63;
-      }
-      paramString = "VSTART_" + paramString.getId();
-    }
-    for (;;)
-    {
-      b(i, paramString);
-      return;
-      label63:
-      paramString = "START_" + paramString.getId();
-      continue;
-      label90:
-      i = 1;
-      paramString = paramString.getId();
-    }
-  }
-  
-  private void e(String paramString)
-  {
+    boolean bool = TextUtils.isEmpty(paramString);
     int j = 3;
-    String str;
+    Object localObject;
     int i;
-    if (TextUtils.isEmpty(paramString))
+    if (bool)
     {
-      str = "START_0";
+      localObject = "START_0";
       i = 3;
-      paramString = (FaceItem)a(paramString);
-      if (paramString == null) {
-        break label93;
-      }
-      if (!paramString.isInteract()) {
-        break label82;
-      }
-      str = "STOP" + paramString.getId();
-      i = j;
     }
-    label82:
-    label93:
-    for (;;)
+    else
     {
-      b(i, str);
-      return;
-      str = "0";
-      i = 1;
-      break;
-      str = paramString.getId();
+      localObject = "0";
       i = 1;
     }
+    paramString = (FaceItem)a(paramString);
+    if (paramString != null) {
+      if (paramString.isInteract())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("STOP");
+        ((StringBuilder)localObject).append(paramString.getId());
+        localObject = ((StringBuilder)localObject).toString();
+        i = j;
+      }
+      else
+      {
+        localObject = paramString.getId();
+        i = 1;
+      }
+    }
+    b(i, (String)localObject);
   }
   
   public int a()
@@ -293,55 +246,52 @@ public class EffectFaceManager
   public int a(int paramInt, String paramString)
   {
     long l = AudioHelper.b();
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onReceivedMessageOfPeer, type[" + paramInt + "], seq[" + l + "], info[" + paramString + "]");
-    String str1;
+    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onReceivedMessageOfPeer, type[");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("], seq[");
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append("], info[");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("]");
+    QLog.w(str, 1, ((StringBuilder)localObject).toString());
     if (paramInt == 3)
     {
       paramInt = paramString.indexOf('_');
       if (paramInt == -1) {
         return -1;
       }
-      str1 = paramString.substring(0, paramInt);
-      String str2 = paramString.substring(paramInt + 1, paramString.length());
-      boolean bool1 = "START".equals(str1);
-      boolean bool2 = "VSTART".equals(str1);
-      if ((bool1) || (bool2)) {
-        if ((!"0".equalsIgnoreCase(str2)) && (!"0_iOS".equalsIgnoreCase(str2)))
-        {
-          if (bool1) {
-            a(l, 6104, paramString, null);
-          }
-          new ControlUIObserver.RequestPlayMagicFace(l, str2, false, 4).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-          a(l, 164, Integer.valueOf(0), null);
-        }
-      }
-    }
-    for (;;)
-    {
-      return 0;
-      a(l, 6101, null, Boolean.valueOf(false));
-      continue;
-      if ("STOP".equals(str1))
+      str = paramString.substring(0, paramInt);
+      localObject = paramString.substring(paramInt + 1, paramString.length());
+      boolean bool1 = "START".equals(str);
+      boolean bool2 = "VSTART".equals(str);
+      if ((!bool1) && (!bool2))
       {
-        continue;
-        if (paramInt == 1) {
-          new ControlUIObserver.RequestPlayMagicFace(l, paramString, false, 4).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-        }
+        "STOP".equals(str);
+        return 0;
       }
+      if ((!"0".equalsIgnoreCase((String)localObject)) && (!"0_iOS".equalsIgnoreCase((String)localObject)))
+      {
+        if (bool1) {
+          a(l, 6104, paramString, null);
+        }
+        new ControlUIObserver.RequestPlayMagicFace(l, (String)localObject, false, 4).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+        a(l, 164, Integer.valueOf(0), null);
+        return 0;
+      }
+      a(l, 6101, null, Boolean.valueOf(false));
+      return 0;
     }
+    if (paramInt == 1) {
+      new ControlUIObserver.RequestPlayMagicFace(l, paramString, false, 4).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    }
+    return 0;
   }
   
   public EffectFaceManager.VoiceStickerGuideTips a()
   {
     return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips;
-  }
-  
-  public FaceItem a()
-  {
-    if ((this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase != null) && (((FaceItem)this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase).isSameType("creativecop"))) {
-      return (FaceItem)this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase;
-    }
-    return null;
   }
   
   public FaceItem a(String paramString)
@@ -369,95 +319,87 @@ public class EffectFaceManager
     return null;
   }
   
-  public Class<?> a()
+  protected Class<?> a()
   {
     return FaceItem.class;
   }
   
   public ArrayList<EffectFaceManager.BlessingTips> a()
   {
-    return this.b;
+    return this.jdField_b_of_type_JavaUtilArrayList;
   }
   
-  public List<FaceItem> a(int paramInt, String paramString)
+  protected List<FaceItem> a(int paramInt, String paramString)
   {
-    int j = 0;
-    int i = 0;
-    try
+    label453:
+    label460:
+    for (;;)
     {
-      Object localObject1 = new JSONObject(paramString);
-      Object localObject2;
-      if (paramInt == 176)
+      try
       {
-        if ((QLog.isColorLevel()) && (((JSONObject)localObject1).has("version"))) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "parseConfig： version=" + ((JSONObject)localObject1).getString("version"));
-        }
-        if (((JSONObject)localObject1).has("black_list"))
+        JSONObject localJSONObject = new JSONObject(paramString);
+        if (paramInt == 370)
         {
-          localObject1 = ((JSONObject)localObject1).getJSONArray("black_list");
-          while (i < ((JSONArray)localObject1).length())
+          try
           {
-            localObject2 = ((JSONArray)localObject1).getString(i);
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-            i += 1;
+            if (localJSONObject.has("blessingTips"))
+            {
+              SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+              localSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+              localObject1 = localJSONObject.getJSONArray("blessingTips");
+              int i = 0;
+              if (i < ((JSONArray)localObject1).length())
+              {
+                Object localObject2 = ((JSONArray)localObject1).getJSONObject(i);
+                EffectFaceManager.BlessingTips localBlessingTips = new EffectFaceManager.BlessingTips();
+                localBlessingTips.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("id");
+                if (!((JSONObject)localObject2).has("start_date")) {
+                  break label460;
+                }
+                localBlessingTips.jdField_a_of_type_Long = localSimpleDateFormat.parse(((JSONObject)localObject2).optString("start_date")).getTime();
+                if (((JSONObject)localObject2).has("end_date")) {
+                  localBlessingTips.jdField_b_of_type_Long = localSimpleDateFormat.parse(((JSONObject)localObject2).optString("end_date")).getTime();
+                }
+                if (((JSONObject)localObject2).has("text")) {
+                  localBlessingTips.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("text");
+                }
+                if (((JSONObject)localObject2).has("image_url")) {
+                  localBlessingTips.c = ((JSONObject)localObject2).getString("image_url");
+                }
+                if (((JSONObject)localObject2).has("call_time_len")) {
+                  localBlessingTips.jdField_a_of_type_Int = ((JSONObject)localObject2).getInt("call_time_len");
+                }
+                if (((JSONObject)localObject2).has("show_time_len")) {
+                  localBlessingTips.jdField_b_of_type_Int = ((JSONObject)localObject2).getInt("show_time_len");
+                }
+                this.jdField_b_of_type_JavaUtilArrayList.add(localBlessingTips);
+                localObject2 = this.jdField_a_of_type_JavaLangString;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("parseConfig, blessingTips[");
+                localStringBuilder.append(localBlessingTips);
+                localStringBuilder.append("]");
+                QLog.w((String)localObject2, 1, localStringBuilder.toString());
+                i += 1;
+                continue;
+              }
+            }
+            Object localObject1 = localJSONObject.optJSONObject("triggerTips");
+            if (localObject1 == null) {
+              break label453;
+            }
+            this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("exposure_show_time_len", 5);
+            this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.jdField_b_of_type_Int = ((JSONObject)localObject1).optInt("exposure_call_time", 2);
+            this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.c = ((JSONObject)localObject1).optInt("click_call_time", 2);
+            this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.d = ((JSONObject)localObject1).optInt("click_show_time_len", 5);
+            this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("exposure_show_text", this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.jdField_a_of_type_JavaLangString);
           }
+          catch (Exception localException1) {}
+          localException2.printStackTrace();
         }
       }
-      else if (paramInt == 370)
-      {
-        if (((JSONObject)localObject1).has("blessingTips"))
-        {
-          localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-          ((SimpleDateFormat)localObject2).setTimeZone(TimeZone.getTimeZone("GMT+8"));
-          JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("blessingTips");
-          i = j;
-          while (i < localJSONArray.length())
-          {
-            JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-            EffectFaceManager.BlessingTips localBlessingTips = new EffectFaceManager.BlessingTips();
-            localBlessingTips.jdField_a_of_type_JavaLangString = localJSONObject.optString("id");
-            if (localJSONObject.has("start_date")) {
-              localBlessingTips.jdField_a_of_type_Long = ((SimpleDateFormat)localObject2).parse(localJSONObject.optString("start_date")).getTime();
-            }
-            if (localJSONObject.has("end_date")) {
-              localBlessingTips.jdField_b_of_type_Long = ((SimpleDateFormat)localObject2).parse(localJSONObject.optString("end_date")).getTime();
-            }
-            if (localJSONObject.has("text")) {
-              localBlessingTips.jdField_b_of_type_JavaLangString = localJSONObject.getString("text");
-            }
-            if (localJSONObject.has("image_url")) {
-              localBlessingTips.c = localJSONObject.getString("image_url");
-            }
-            if (localJSONObject.has("call_time_len")) {
-              localBlessingTips.jdField_a_of_type_Int = localJSONObject.getInt("call_time_len");
-            }
-            if (localJSONObject.has("show_time_len")) {
-              localBlessingTips.jdField_b_of_type_Int = localJSONObject.getInt("show_time_len");
-            }
-            this.b.add(localBlessingTips);
-            QLog.w(this.jdField_a_of_type_JavaLangString, 1, "parseConfig, blessingTips[" + localBlessingTips + "]");
-            i += 1;
-          }
-        }
-        localObject1 = ((JSONObject)localObject1).optJSONObject("triggerTips");
-        if (localObject1 != null)
-        {
-          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("exposure_show_time_len", 5);
-          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.jdField_b_of_type_Int = ((JSONObject)localObject1).optInt("exposure_call_time", 2);
-          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.c = ((JSONObject)localObject1).optInt("click_call_time", 2);
-          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.d = ((JSONObject)localObject1).optInt("click_show_time_len", 5);
-          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("exposure_show_text", this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceEffectFaceManager$VoiceStickerGuideTips.jdField_a_of_type_JavaLangString);
-        }
-      }
+      catch (Exception localException2) {}
+      return super.a(paramInt, paramString);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-    return super.a(paramInt, paramString);
   }
   
   public List<FaceItem> a(String paramString)
@@ -484,7 +426,7 @@ public class EffectFaceManager
     return localArrayList;
   }
   
-  public void a()
+  protected void a()
   {
     super.a();
     EffectMutexManager localEffectMutexManager = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
@@ -497,67 +439,91 @@ public class EffectFaceManager
   public void a(int paramInt, String paramString)
   {
     long l = AudioHelper.b();
+    if (paramInt == 3003) {}
     boolean bool;
-    if (paramInt == 3003) {
+    while (paramInt == 3002)
+    {
       bool = false;
+      break;
     }
+    if (paramInt == 3001) {}
     for (;;)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 2, "MuteByOthers, seq[" + l + "], fromMuteKey[" + paramInt + "], data[" + paramString + "], mute[" + bool + "]");
-      }
-      if (bool)
-      {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(134) });
-        a(0, null, true);
-        if (this.jdField_a_of_type_JavaUtilQueue != null) {
-          this.jdField_a_of_type_JavaUtilQueue.clear();
-        }
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity = null;
-        this.f = null;
-        a(l, null);
-        if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.a()) {
-          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.b();
+      bool = true;
+      break label60;
+      if (paramInt != 3004) {
+        if (paramInt != 3005) {
+          break;
         }
       }
-      return;
-      if (paramInt == 3002) {
-        bool = false;
-      } else if (paramInt == 3001) {
-        bool = true;
-      } else if (paramInt == 3004) {
-        bool = true;
-      } else if (paramInt == 3005) {
-        bool = true;
-      } else {
-        bool = false;
+    }
+    label60:
+    if (QLog.isDevelopLevel())
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MuteByOthers, seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("], fromMuteKey[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], data[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], mute[");
+      localStringBuilder.append(bool);
+      localStringBuilder.append("]");
+      QLog.w(str, 2, localStringBuilder.toString());
+    }
+    if (bool)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(134) });
+      a(0, null, true);
+      paramString = this.jdField_a_of_type_JavaUtilQueue;
+      if (paramString != null) {
+        paramString.clear();
+      }
+      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity = null;
+      a(l, null);
+      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.a()) {
+        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.b();
       }
     }
   }
   
   protected void a(long paramLong, int paramInt, Object paramObject1, Object paramObject2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "notifyEvent, event[" + paramInt + "], value[" + paramObject1 + "], value2[" + paramObject2 + "], seq[" + paramLong + "]");
+    if (QLog.isColorLevel())
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyEvent, event[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], value[");
+      localStringBuilder.append(paramObject1);
+      localStringBuilder.append("], value2[");
+      localStringBuilder.append(paramObject2);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(paramInt), paramObject1, paramObject2 });
   }
   
-  public void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
-      return;
-    case 2: 
+      if (paramInt != 3) {
+        return;
+      }
       a(paramLong, 6101, null, Boolean.valueOf(false));
-      new ControlUIObserver.ZimuRequest(paramLong, "onSessionStatusChanged", 5, null).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      MagicDataReport.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString1);
-      MagicDataReport.a(2, paramString1);
-      MagicDataReport.a(2);
       return;
     }
     a(paramLong, 6101, null, Boolean.valueOf(false));
+    new ControlUIObserver.ZimuRequest(paramLong, "onSessionStatusChanged", 5, null).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    MagicDataReport.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramString1);
+    MagicDataReport.a(2, paramString1);
+    MagicDataReport.a(2);
   }
   
   public void a(long paramLong, String paramString)
@@ -567,55 +533,78 @@ public class EffectFaceManager
   
   public void a(long paramLong, String paramString, int paramInt)
   {
-    Object localObject = (MagicFaceDataEntity)this.jdField_a_of_type_JavaUtilQueue.peek();
-    boolean bool2;
-    if ((this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity.b().equalsIgnoreCase(paramString)) && (localObject != null))
+    Object localObject1 = (MagicFaceDataEntity)this.jdField_a_of_type_JavaUtilQueue.peek();
+    Object localObject2 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity;
+    if ((localObject2 != null) && (((MagicFaceDataEntity)localObject2).b().equalsIgnoreCase(paramString)) && (localObject1 != null))
     {
-      bool2 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity.a((MagicfaceData)localObject);
+      boolean bool2 = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity.a((MagicfaceData)localObject1);
       bool1 = bool2;
       if (bool2)
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_JavaUtilQueue.size() < 8) {
-          a(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity);
-        }
-      }
-    }
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      if (AudioHelper.e()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onEndMagicPlay, id[" + paramString + "], reason[" + paramInt + "], cur[" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity + "], next[" + localObject + "], size[" + this.jdField_a_of_type_JavaUtilQueue.size() + "], needBeRestore[" + bool1 + "], mLastPendantId[" + this.e + "], seq[" + paramLong + "]");
-      }
-      a("onEndMagicPlay.1");
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity = null;
-      localObject = (FaceItem)a(paramString);
-      if ((localObject != null) && ((((FaceItem)localObject).isSameType("voicesticker")) || (((FaceItem)localObject).isSameType("face")))) {
-        AVVoiceRecog.a().b(2);
-      }
-      bool1 = a(paramLong);
-      a("onEndMagicPlay.2_" + bool1);
-      if (!bool1)
-      {
-        a(paramLong, 6101, paramString, Boolean.valueOf(false));
-        if (!TextUtils.isEmpty(this.e))
+        if (this.jdField_a_of_type_JavaUtilQueue.size() < 8)
         {
-          ((EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2)).a(paramLong, this.e);
-          a(paramLong, 6102, null, null);
-          this.e = null;
+          a(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity);
+          bool1 = bool2;
         }
       }
-      a(paramLong, 165, Integer.valueOf(3), null);
-      return;
     }
+    else
+    {
+      bool1 = false;
+    }
+    if (AudioHelper.b())
+    {
+      localObject2 = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEndMagicPlay, id[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], reason[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], cur[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity);
+      localStringBuilder.append("], next[");
+      localStringBuilder.append(localObject1);
+      localStringBuilder.append("], size[");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilQueue.size());
+      localStringBuilder.append("], needBeRestore[");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append("], mLastPendantId[");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w((String)localObject2, 1, localStringBuilder.toString());
+    }
+    a("onEndMagicPlay.1");
+    this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity = null;
+    localObject1 = (FaceItem)a(paramString);
+    if ((localObject1 != null) && ((((FaceItem)localObject1).isSameType("voicesticker")) || (((FaceItem)localObject1).isSameType("face")))) {
+      AVVoiceRecog.a().b(2);
+    }
+    boolean bool1 = a(paramLong);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onEndMagicPlay.2_");
+    ((StringBuilder)localObject1).append(bool1);
+    a(((StringBuilder)localObject1).toString());
+    if (!bool1)
+    {
+      a(paramLong, 6101, paramString, Boolean.valueOf(false));
+      if (!TextUtils.isEmpty(this.c))
+      {
+        ((EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2)).a(paramLong, this.c);
+        a(paramLong, 6102, null, null);
+        this.c = null;
+      }
+    }
+    a(paramLong, 165, Integer.valueOf(3), null);
   }
   
   public void a(long paramLong, String paramString, boolean paramBoolean) {}
   
-  public void a(Message paramMessage)
+  protected void a(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 101) {
       return;
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(168), paramMessage.obj });
@@ -626,300 +615,298 @@ public class EffectFaceManager
     if (paramMagicFaceDataEntity == null) {
       return;
     }
+    Object localObject2 = null;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilQueue.iterator();
-    MagicFaceDataEntity localMagicFaceDataEntity;
+    Object localObject1;
     do
     {
+      localObject1 = localObject2;
       if (!localIterator.hasNext()) {
         break;
       }
-      localMagicFaceDataEntity = (MagicFaceDataEntity)localIterator.next();
-    } while (!localMagicFaceDataEntity.c());
-    for (;;)
+      localObject1 = (MagicFaceDataEntity)localIterator.next();
+    } while (!((MagicFaceDataEntity)localObject1).c());
+    this.jdField_a_of_type_JavaUtilQueue.offer(paramMagicFaceDataEntity);
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_JavaUtilQueue.offer(paramMagicFaceDataEntity);
-      if (localMagicFaceDataEntity != null)
-      {
-        this.jdField_a_of_type_JavaUtilQueue.remove(localMagicFaceDataEntity);
-        if (!paramMagicFaceDataEntity.c()) {
-          this.jdField_a_of_type_JavaUtilQueue.offer(localMagicFaceDataEntity);
-        }
+      this.jdField_a_of_type_JavaUtilQueue.remove(localObject1);
+      if (!paramMagicFaceDataEntity.c()) {
+        this.jdField_a_of_type_JavaUtilQueue.offer(localObject1);
       }
-      a("addItemToQueue");
-      return;
-      localMagicFaceDataEntity = null;
     }
+    a("addItemToQueue");
   }
   
   void a(String paramString)
   {
     if (QLog.isDevelopLevel())
     {
-      paramString = paramString + "\n";
-      paramString = paramString + "size :" + this.jdField_a_of_type_JavaUtilQueue.size() + "\n";
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilQueue.iterator();
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("\n");
+      paramString = ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("size :");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilQueue.size());
+      ((StringBuilder)localObject1).append("\n");
+      paramString = ((StringBuilder)localObject1).toString();
       int i = 0;
-      while (localIterator.hasNext())
+      localObject1 = this.jdField_a_of_type_JavaUtilQueue.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        MagicFaceDataEntity localMagicFaceDataEntity = (MagicFaceDataEntity)localIterator.next();
-        paramString = paramString + i + ":" + localMagicFaceDataEntity + "\n";
+        localObject2 = (MagicFaceDataEntity)((Iterator)localObject1).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(i);
+        localStringBuilder.append(":");
+        localStringBuilder.append(localObject2);
+        localStringBuilder.append("\n");
+        paramString = localStringBuilder.toString();
         i += 1;
       }
-      paramString = paramString + "\ncur :" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity;
-      paramString = paramString + "\nmLastPendantId :" + this.e;
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "printQueue, " + paramString);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("\ncur :");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity);
+      paramString = ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append("\nmLastPendantId :");
+      ((StringBuilder)localObject1).append(this.c);
+      paramString = ((StringBuilder)localObject1).toString();
+      localObject1 = this.jdField_a_of_type_JavaLangString;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("printQueue, ");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     }
   }
   
-  public void a(String paramString1, String paramString2)
-  {
-    FaceItem localFaceItem = a();
-    if (localFaceItem == null) {}
-    long l;
-    do
-    {
-      return;
-      l = AudioHelper.b();
-      if (AudioHelper.e()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "stop, id[" + paramString2 + "], reason[" + paramString1 + "], seq[" + l + "]");
-      }
-      a(l, 6101, localFaceItem.getId(), Boolean.valueOf(true));
-      MagicDataReport.a(4, paramString2);
-      MagicDataReport.a(4);
-    } while (!this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(13));
-    ((MakeupMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(13)).a(l, "stopInteractiveVideo");
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
+  protected void a(String paramString, boolean paramBoolean)
   {
     super.a(paramString, paramBoolean);
-    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d))) {
-      this.e = null;
+    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().c))) {
+      this.c = null;
     }
   }
   
-  public boolean a()
+  protected boolean a()
   {
-    return ((this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity.a())) || ((this.f != null) && (this.jdField_a_of_type_Boolean));
+    return true;
   }
   
   public boolean a(int paramInt, String paramString, boolean paramBoolean)
   {
     long l = AudioHelper.b();
-    if (AudioHelper.e()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "stop, id[" + paramString + "], reason[" + paramInt + "], isSender[" + paramBoolean + "], seq[" + l + "]");
-    }
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity != null)
+    StringBuilder localStringBuilder;
+    if (AudioHelper.b())
     {
-      String str = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity.b();
-      if ((TextUtils.isEmpty(paramString)) || (str.equalsIgnoreCase(paramString)))
+      localObject = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stop, id[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], reason[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], isSender[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.w((String)localObject, 1, localStringBuilder.toString());
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity;
+    if (localObject != null)
+    {
+      localObject = ((MagicFaceDataEntity)localObject).b();
+      if ((TextUtils.isEmpty(paramString)) || (((String)localObject).equalsIgnoreCase(paramString)))
       {
         this.jdField_a_of_type_JavaUtilQueue.clear();
-        AVLog.printErrorLog(this.jdField_a_of_type_JavaLangString, "stop dequeue" + paramString);
+        localObject = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("stop dequeue");
+        localStringBuilder.append(paramString);
+        AVLog.printErrorLog((String)localObject, localStringBuilder.toString());
         this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity = null;
         if (paramBoolean) {
-          e(paramString);
+          c(paramString);
         }
         a(l, null);
         if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.a())
         {
           this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.b();
-          AVLog.printErrorLog(this.jdField_a_of_type_JavaLangString, "stop " + paramString + ", mStopType =" + paramInt);
+          localObject = this.jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("stop ");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(", mStopType =");
+          localStringBuilder.append(paramInt);
+          AVLog.printErrorLog((String)localObject, localStringBuilder.toString());
         }
       }
-    }
-    if ((this.f != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity == null) && ((TextUtils.isEmpty(paramString)) || (this.f.equalsIgnoreCase(paramString))))
-    {
-      if (paramBoolean) {
-        c(null);
-      }
-      a(l, null);
-      this.f = null;
     }
     return true;
   }
   
   public boolean a(long paramLong, FaceItem paramFaceItem)
   {
-    boolean bool2 = super.a(paramLong, paramFaceItem);
-    Object localObject;
-    int j;
-    boolean bool1;
-    int i;
-    if ((paramFaceItem != null) && (paramFaceItem.isSameType("creativecop")))
+    boolean bool = super.a(paramLong, paramFaceItem);
+    if (bool)
     {
-      localObject = c(paramFaceItem);
-      ((FaceItem)this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase).setDesc((String)localObject);
-      ReportController.b(null, "CliOper", "", "", "0X800A74C", "0X800A74C", 0, 0, "", "", paramFaceItem.getId(), "");
-      j = b();
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerSupportEffectSupportManager.a(3, "creative") != 1) {
-        break label282;
-      }
-      bool1 = true;
-      i = 0;
-      if (j == 0) {
-        break label296;
-      }
-      if (j != 2) {
-        break label288;
-      }
-      i = 2131695427;
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem , TYPE_STR_INTERACTIVE_VIDEO seq[" + paramLong + "]" + (String)localObject + "[peerPowerSupport:=" + bool1 + "],[peerVersionSupport:=" + j);
-      }
-      if (i != 0) {
-        TipsUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1010, i);
-      }
-      if (bool2)
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(101, this.jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase).sendToTarget();
+      if (paramFaceItem != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(101, this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase).sendToTarget();
-        if (paramFaceItem != null)
+        paramFaceItem = paramFaceItem.getType();
+        if ((!paramFaceItem.equalsIgnoreCase("face")) && (!paramFaceItem.equalsIgnoreCase("voicesticker")))
         {
-          paramFaceItem = paramFaceItem.getType();
-          if ((!paramFaceItem.equalsIgnoreCase("face")) && (!paramFaceItem.equalsIgnoreCase("voicesticker")))
-          {
-            localObject = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
-            if (localObject != null) {
-              ((EffectMutexManager)localObject).a(3003, paramFaceItem);
-            }
+          EffectMutexManager localEffectMutexManager = (EffectMutexManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+          if (localEffectMutexManager != null) {
+            localEffectMutexManager.a(3003, paramFaceItem);
           }
         }
       }
-      return bool2;
-      label282:
-      bool1 = false;
-      break;
-      label288:
-      i = 2131695426;
-      continue;
-      label296:
-      if (!bool1) {
-        i = 2131695426;
-      }
     }
+    return bool;
   }
   
   public boolean a(long paramLong, FaceItem paramFaceItem, String paramString, boolean paramBoolean, MagicfaceBaseDecoder.MagicfaceRenderListener paramMagicfaceRenderListener)
   {
-    boolean bool2 = true;
-    if (AudioHelper.e()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "start, id[" + paramString + "], curData[" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity + "], isSender[" + paramBoolean + "], queue[" + this.jdField_a_of_type_JavaUtilQueue.size() + "], isPlaying[" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.a() + "], mLastPendantId[" + this.e + "], seq[" + paramLong + "]");
-    }
-    boolean bool1;
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilQueue.size() >= 8) || ((this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity != null) && (paramString.equalsIgnoreCase(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity.b()))) || ((this.f != null) && (this.f.equalsIgnoreCase(paramString))))
+    Object localObject;
+    if (AudioHelper.b())
     {
-      bool1 = false;
-      return bool1;
+      paramFaceItem = this.jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start, id[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("], curData[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity);
+      ((StringBuilder)localObject).append("], isSender[");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("], queue[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilQueue.size());
+      ((StringBuilder)localObject).append("], isPlaying[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.a());
+      ((StringBuilder)localObject).append("], mLastPendantId[");
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append("], seq[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]");
+      QLog.w(paramFaceItem, 1, ((StringBuilder)localObject).toString());
     }
-    boolean bool3 = paramFaceItem.isSameType("creativecop");
-    if (bool3)
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilQueue.size() < 8))
     {
-      this.f = paramString;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramMagicfaceRenderListener);
-      if ((this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer == null) || (!this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.a())) {
-        break label468;
-      }
-      if (bool3) {
-        break label554;
-      }
-      paramFaceItem = a(paramString, paramBoolean);
-      a(paramFaceItem);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.b();
-      for (;;)
+      paramFaceItem = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity;
+      if ((paramFaceItem == null) || (!paramString.equalsIgnoreCase(paramFaceItem.b())))
       {
-        label276:
-        Object localObject;
-        int i;
-        if ((paramFaceItem != null) || (bool3))
+        this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramMagicfaceRenderListener);
+        paramFaceItem = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer;
+        if ((paramFaceItem != null) && (paramFaceItem.a()))
         {
-          paramMagicfaceRenderListener = this.e;
-          a(paramLong, paramString);
-          if ((paramFaceItem == null) || (!paramFaceItem.b())) {
-            break label512;
-          }
-          paramFaceItem = (EffectPendantTools)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2);
-          localObject = (PendantItem)paramFaceItem.a();
-          if ((localObject == null) || (!((PendantItem)localObject).isShow()) || (TextUtils.isEmpty(((PendantItem)localObject).getId()))) {
-            break label506;
-          }
-          this.e = ((PendantItem)localObject).getId();
-          localObject = (FaceItem)a();
-          paramFaceItem.a(paramLong, null);
-          i = 1;
+          paramFaceItem = a(paramString, paramBoolean);
+          a(paramFaceItem);
+          this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfacePlayer.b();
         }
-        for (;;)
+        else
         {
-          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "start, step[" + i + "], mLastPendantId[" + paramMagicfaceRenderListener + "->" + this.e + "]");
-          if ((!paramBoolean) || (bool3)) {
-            break label523;
-          }
-          d(paramString);
-          return true;
-          this.f = null;
-          break;
-          label468:
-          if (bool3) {
-            break label549;
-          }
           localObject = a(paramString, paramBoolean);
           paramFaceItem = (FaceItem)localObject;
-          if (localObject == null) {
-            break label276;
+          if (localObject != null)
+          {
+            a(paramLong, (MagicFaceDataEntity)localObject, paramMagicfaceRenderListener);
+            paramFaceItem = (FaceItem)localObject;
           }
-          a(paramLong, (MagicFaceDataEntity)localObject, paramMagicfaceRenderListener);
-          paramFaceItem = (FaceItem)localObject;
-          break label276;
-          label506:
-          i = 2;
-          continue;
-          label512:
-          i = 3;
-          this.e = null;
         }
-        label523:
-        bool1 = bool2;
-        if (!paramBoolean) {
-          break;
+        if (paramFaceItem != null)
+        {
+          paramMagicfaceRenderListener = this.c;
+          a(paramLong, paramString);
+          int i;
+          if ((paramFaceItem != null) && (paramFaceItem.b()))
+          {
+            paramFaceItem = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+            int j = 2;
+            paramFaceItem = (EffectPendantTools)paramFaceItem.a(2);
+            localObject = (PendantItem)paramFaceItem.a();
+            i = j;
+            if (localObject != null)
+            {
+              i = j;
+              if (((PendantItem)localObject).isShow())
+              {
+                i = j;
+                if (!TextUtils.isEmpty(((PendantItem)localObject).getId()))
+                {
+                  this.c = ((PendantItem)localObject).getId();
+                  localObject = (FaceItem)a();
+                  paramFaceItem.a(paramLong, null);
+                  i = 1;
+                }
+              }
+            }
+          }
+          else
+          {
+            i = 3;
+            this.c = null;
+          }
+          paramFaceItem = this.jdField_a_of_type_JavaLangString;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("start, step[");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append("], mLastPendantId[");
+          ((StringBuilder)localObject).append(paramMagicfaceRenderListener);
+          ((StringBuilder)localObject).append("->");
+          ((StringBuilder)localObject).append(this.c);
+          ((StringBuilder)localObject).append("]");
+          QLog.w(paramFaceItem, 1, ((StringBuilder)localObject).toString());
         }
-        bool1 = bool2;
-        if (!bool3) {
-          break;
+        if (paramBoolean) {
+          b(paramString);
         }
-        b(paramString);
         return true;
-        label549:
-        paramFaceItem = null;
       }
-      label554:
-      paramFaceItem = null;
     }
+    return false;
   }
   
-  public boolean a(String paramString)
+  protected boolean a(String paramString)
   {
-    if (AEKitAbilityInfo.b()) {
-      PtuResChecker.a().a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    }
     return true;
   }
   
-  public String b()
+  protected String b()
   {
     return "resources";
   }
   
+  protected void b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      Object localObject = (FaceConfigFileProcessor)((EffectMaterialManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(15)).a(2);
+      this.jdField_a_of_type_JavaUtilList = ((FaceConfigFileProcessor)localObject).a(AVPathUtil.i(), "face_update_template.json", "face_default_template.json");
+      a(this.jdField_a_of_type_JavaUtilList);
+      localObject = ((FaceConfigFileProcessor)localObject).b();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(Arrays.asList(((String)localObject).split(",")));
+      }
+    }
+    if ((a() == 176) && ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() == 0))) {
+      this.jdField_b_of_type_JavaUtilList = a(370, QAVConfig.b(370).jdField_a_of_type_JavaLangString);
+    }
+  }
+  
   public void b(long paramLong, String paramString) {}
+  
+  public boolean b()
+  {
+    MagicFaceDataEntity localMagicFaceDataEntity = this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity;
+    return (localMagicFaceDataEntity != null) && (localMagicFaceDataEntity.a());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.EffectFaceManager
  * JD-Core Version:    0.7.0.1
  */

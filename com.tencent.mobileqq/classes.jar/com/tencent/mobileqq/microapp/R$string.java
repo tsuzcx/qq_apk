@@ -2,11 +2,11 @@ package com.tencent.mobileqq.microapp;
 
 public final class R$string
 {
-  public static int a = 2131690778;
+  public static int a = 2131690706;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.R.string
  * JD-Core Version:    0.7.0.1
  */

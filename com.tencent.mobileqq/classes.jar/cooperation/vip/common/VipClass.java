@@ -21,7 +21,7 @@ public class VipClass
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.common.VipClass
  * JD-Core Version:    0.7.0.1
  */

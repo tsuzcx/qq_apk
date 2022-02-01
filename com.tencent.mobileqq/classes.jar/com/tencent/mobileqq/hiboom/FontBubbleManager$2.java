@@ -5,7 +5,7 @@ import android.os.Message;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 import com.tencent.qphone.base.util.QLog;
 
 class FontBubbleManager$2
@@ -18,9 +18,9 @@ class FontBubbleManager$2
     SetFontBubble localSetFontBubble = FontBubbleManager.a(this.this$0);
     if (localSetFontBubble != null)
     {
-      SVIPHandler localSVIPHandler = (SVIPHandler)FontBubbleManager.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
-      localSVIPHandler.a(localSetFontBubble.a.bubbleId);
-      localSVIPHandler.a(localSetFontBubble.a.fontId, localSetFontBubble.a.engine);
+      ISVIPHandler localISVIPHandler = (ISVIPHandler)FontBubbleManager.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
+      localISVIPHandler.a(localSetFontBubble.a.bubbleId);
+      localISVIPHandler.a(localSetFontBubble.a.fontId, localSetFontBubble.a.engine);
       FontBubbleManager.a(this.this$0).obtainMessage(1001, this.a).sendToTarget();
       return;
     }
@@ -29,7 +29,7 @@ class FontBubbleManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubbleManager.2
  * JD-Core Version:    0.7.0.1
  */

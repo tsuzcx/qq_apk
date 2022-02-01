@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,20 +45,23 @@ public final class rtmp_report_basic_info_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.comm_info != null) {
-      paramJceOutputStream.write(this.comm_info, 0);
+    Object localObject = this.comm_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.basic_infos != null) {
-      paramJceOutputStream.write(this.basic_infos, 1);
+    localObject = this.basic_infos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.ext_info != null) {
-      paramJceOutputStream.write(this.ext_info, 2);
+    localObject = this.ext_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.rtmp_report_basic_info_req
  * JD-Core Version:    0.7.0.1
  */

@@ -10,10 +10,10 @@ class SwiftWebAccelerator$5$1
   
   public void run()
   {
-    int i = 0;
     if (this.jdField_a_of_type_Int == 202)
     {
       localObject = new String[2];
+      int i = 0;
       localObject[0] = "https://qc.vip.qq.com/";
       localObject[1] = "https://m.gamecenter.qq.com";
       int j = localObject.length;
@@ -37,7 +37,7 @@ class SwiftWebAccelerator$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,10 @@
 package com.tencent.richmediabrowser.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
@@ -25,7 +23,7 @@ import com.tencent.richmediabrowser.animation.IGalleryAnimationEvent;
 import com.tencent.richmediabrowser.animation.ViscousFluidInterpolator;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.model.IBrowserModel;
+import com.tencent.richmediabrowser.model.MainBrowserModel;
 import com.tencent.richmediabrowser.presenter.MainBrowserPresenter;
 import com.tencent.richmediabrowser.view.progress.AbstractProgressView;
 import com.tencent.richmediabrowser.view.progress.GalleryProgressView;
@@ -40,22 +38,23 @@ public class BrowserBaseScene
   private static final String TAG = "GalleryBaseScene";
   private AbstractAnimationManager animationManager;
   protected View bgView;
+  private RelativeLayout contentView;
   private boolean isEnter = false;
   public LinearLayoutManager linearLayoutManager;
   public PagerSnapHelper linearSnapHelper;
   public BrowserAdapter mAdapter;
-  public Activity mContext;
+  public Context mContext;
   public RelativeLayout mRoot;
   public MainBrowserPresenter mainBrowserPresenter;
   protected AbstractProgressView progressView;
   protected ProgressViewHelper progressViewHelper;
   public BrowserRecyclerView recyclerView;
-  protected View rootView;
+  protected RelativeLayout rootView;
   public BrowserScrollListener scrollListener;
   
-  public BrowserBaseScene(Activity paramActivity)
+  public BrowserBaseScene(Context paramContext)
   {
-    this.mContext = paramActivity;
+    this.mContext = paramContext;
   }
   
   public boolean back()
@@ -65,53 +64,49 @@ public class BrowserBaseScene
       getAnimationManager().addAnimationListener(this);
       doExitAnimation(getAnimationManager().startExitAnimation());
     }
-    for (;;)
+    else
     {
-      return false;
       onExitAnimationEnd();
     }
+    return false;
   }
   
   public void buildComplete() {}
   
   public void buildParams(Intent paramIntent)
   {
-    this.animationManager = createAnimationManager(this.mContext, this.mainBrowserPresenter.browserModel);
     this.scrollListener = new BrowserScrollListener();
     this.scrollListener.setMainBrowserPresenter(this.mainBrowserPresenter);
   }
   
-  public void buildView(ViewGroup paramViewGroup)
+  public void buildView()
   {
-    onCreate(paramViewGroup);
-    if (this.mRoot != null) {
-      this.mRoot.addView(createAnimationView());
+    onCreate();
+    RelativeLayout localRelativeLayout = this.mRoot;
+    if (localRelativeLayout != null) {
+      localRelativeLayout.addView(createAnimationView());
     }
+    this.animationManager = createAnimationManager(this.mContext, this.mainBrowserPresenter.browserModel);
   }
   
-  public AbstractAnimationManager createAnimationManager(Activity paramActivity, IBrowserModel paramIBrowserModel)
+  public AbstractAnimationManager createAnimationManager(Context paramContext, MainBrowserModel paramMainBrowserModel)
   {
-    paramActivity = new AnimationManager(paramActivity, paramIBrowserModel);
-    paramActivity.setMainBrowserPresenter(this.mainBrowserPresenter);
-    return paramActivity;
+    paramContext = new AnimationManager(paramContext, paramMainBrowserModel, this.mRoot);
+    paramContext.setMainBrowserPresenter(this.mainBrowserPresenter);
+    return paramContext;
   }
   
   public AnimationView createAnimationView()
   {
     AnimationView localAnimationView = new AnimationView(this.mContext, null);
-    localAnimationView.setId(2131362741);
+    localAnimationView.setId(2131362696);
     localAnimationView.setVisibility(4);
     return localAnimationView;
   }
   
-  protected BrowserAdapter createGalleryAdapter(Activity paramActivity)
+  protected BrowserAdapter createGalleryAdapter(Context paramContext)
   {
-    return new BrowserAdapter(paramActivity);
-  }
-  
-  protected RelativeLayout createLayout()
-  {
-    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131558825, null);
+    return new BrowserAdapter(paramContext);
   }
   
   protected AbstractProgressView createProgressBar()
@@ -192,6 +187,11 @@ public class BrowserBaseScene
     return this.animationManager;
   }
   
+  public RelativeLayout getContentView()
+  {
+    return this.contentView;
+  }
+  
   public int getPosition(View paramView)
   {
     if (paramView != null) {
@@ -205,15 +205,16 @@ public class BrowserBaseScene
     return this.recyclerView;
   }
   
-  public View getRootView()
+  public RelativeLayout getRootView()
   {
     return this.rootView;
   }
   
   public void hideProgress()
   {
-    if (this.progressView != null) {
-      this.progressView.hide();
+    AbstractProgressView localAbstractProgressView = this.progressView;
+    if (localAbstractProgressView != null) {
+      localAbstractProgressView.hide();
     }
   }
   
@@ -224,108 +225,128 @@ public class BrowserBaseScene
   
   public boolean needEnterRectAnimation()
   {
-    return true;
+    return false;
   }
   
   public boolean needExitRectAnimation()
   {
-    return true;
+    return false;
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void onConfigurationChanged(Configuration paramConfiguration) {}
-  
-  public void onCreate(ViewGroup paramViewGroup)
+  public void onCreate()
   {
-    this.mRoot = createLayout();
-    if (paramViewGroup == null) {
-      this.mContext.addContentView(this.mRoot, new ViewGroup.LayoutParams(-1, -1));
+    this.mRoot = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559324, null));
+    Object localObject = this.mContext;
+    if ((localObject instanceof Activity)) {
+      ((Activity)localObject).addContentView(this.mRoot, new ViewGroup.LayoutParams(-1, -1));
     }
-    for (;;)
+    this.rootView = ((RelativeLayout)this.mRoot.findViewById(2131376809));
+    this.recyclerView = ((BrowserRecyclerView)this.mRoot.findViewById(2131376306));
+    this.bgView = this.mRoot.findViewById(2131363349);
+    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131365169));
+    this.progressView = createProgressBar();
+    localObject = this.progressView;
+    if (localObject != null) {
+      ((AbstractProgressView)localObject).init(this.mContext, this);
+    }
+    this.progressViewHelper = new ProgressViewHelper();
+    this.mAdapter = createGalleryAdapter(this.mContext);
+    this.mAdapter.setPresenter(this.mainBrowserPresenter);
+    localObject = this.progressView;
+    if (localObject != null)
     {
-      this.rootView = this.mRoot.findViewById(2131377356);
-      this.recyclerView = ((BrowserRecyclerView)this.mRoot.findViewById(2131376814));
-      this.bgView = this.mRoot.findViewById(2131363419);
-      this.progressView = createProgressBar();
-      if (this.progressView != null) {
-        this.progressView.init(this.mContext, this);
-      }
-      this.progressViewHelper = new ProgressViewHelper();
-      this.mAdapter = createGalleryAdapter(this.mContext);
-      this.mAdapter.setPresenter(this.mainBrowserPresenter);
-      if (this.progressView != null)
-      {
-        this.progressViewHelper.setProgressView(this.progressView);
-        this.progressView.show();
-      }
-      this.linearLayoutManager = new LinearLayoutManager(this.mContext, 0, false);
-      this.recyclerView.setLayoutManager(this.linearLayoutManager);
-      this.recyclerView.setAdapter(this.mAdapter);
-      this.recyclerView.addOnScrollListener(this.scrollListener);
-      this.linearSnapHelper = new PagerSnapHelper();
-      this.linearSnapHelper.attachToRecyclerView(this.recyclerView);
-      this.recyclerView.setMainBrowserPresenter(this.mainBrowserPresenter);
-      this.recyclerView.setLinearLayoutManager(this.linearLayoutManager);
-      this.recyclerView.setPageSnapHelper(this.linearSnapHelper);
-      this.mRoot.setVisibility(0);
-      return;
-      paramViewGroup.addView(this.mRoot, new ViewGroup.LayoutParams(-1, -1));
+      this.progressViewHelper.setProgressView((AbstractProgressView)localObject);
+      this.progressView.show();
     }
+    this.linearLayoutManager = new LinearLayoutManager(this.mContext, 0, false);
+    this.recyclerView.setLayoutManager(this.linearLayoutManager);
+    this.recyclerView.setAdapter(this.mAdapter);
+    this.recyclerView.addOnScrollListener(this.scrollListener);
+    this.linearSnapHelper = new PagerSnapHelper();
+    this.linearSnapHelper.attachToRecyclerView(this.recyclerView);
+    this.recyclerView.setMainBrowserPresenter(this.mainBrowserPresenter);
+    this.recyclerView.setLinearLayoutManager(this.linearLayoutManager);
+    this.recyclerView.setPageSnapHelper(this.linearSnapHelper);
+    this.mRoot.setVisibility(0);
   }
   
   public void onDestroy()
   {
-    if (this.animationManager != null) {
-      this.animationManager.onDestroy();
+    AbstractAnimationManager localAbstractAnimationManager = this.animationManager;
+    if (localAbstractAnimationManager != null) {
+      localAbstractAnimationManager.onDestroy();
     }
   }
   
   public void onEnterAnimationEnd()
   {
-    if ((this.recyclerView != null) && (this.recyclerView.getVisibility() != 0)) {
+    Object localObject = this.recyclerView;
+    if ((localObject != null) && (((BrowserRecyclerView)localObject).getVisibility() != 0)) {
       this.recyclerView.setVisibility(0);
     }
-    if (this.mRoot != null) {
-      this.mRoot.setVisibility(0);
+    localObject = this.mRoot;
+    if (localObject != null) {
+      ((RelativeLayout)localObject).setVisibility(0);
     }
   }
   
   public void onEnterAnimationStart()
   {
-    if ((this.mainBrowserPresenter != null) && (getAnimationManager().isRectAnimation) && (this.recyclerView != null)) {
-      this.recyclerView.setVisibility(4);
+    if ((this.mainBrowserPresenter != null) && (getAnimationManager().isRectAnimation))
+    {
+      BrowserRecyclerView localBrowserRecyclerView = this.recyclerView;
+      if (localBrowserRecyclerView != null) {
+        localBrowserRecyclerView.setVisibility(4);
+      }
     }
   }
   
   public void onExitAnimationEnd()
   {
-    if (this.mContext != null) {
-      this.mContext.finish();
+    if (this.mContext != null)
+    {
+      Object localObject = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("BrowserBaseScene.onExitAnimationEnd[");
+      localStringBuilder.append(this.mContext.hashCode());
+      localStringBuilder.append("]");
+      ((IBrowserLog)localObject).i("RichMediaBrowserManager", 2, localStringBuilder.toString());
+      localObject = this.mContext;
+      if ((localObject instanceof Activity)) {
+        ((Activity)localObject).finish();
+      }
     }
   }
   
   public void onExitAnimationStart()
   {
-    if ((this.mainBrowserPresenter != null) && (getAnimationManager().isRectAnimation) && (this.recyclerView != null)) {
-      this.recyclerView.setVisibility(4);
+    if ((this.mainBrowserPresenter != null) && (getAnimationManager().isRectAnimation))
+    {
+      localObject = this.recyclerView;
+      if (localObject != null) {
+        ((BrowserRecyclerView)localObject).setVisibility(4);
+      }
     }
-    if ((this.progressView != null) && (this.progressView.isShow())) {
+    Object localObject = this.progressView;
+    if ((localObject != null) && (((AbstractProgressView)localObject).isShow())) {
       this.progressView.hide();
     }
   }
   
   public void onItemSelected(int paramInt)
   {
-    if ((!isAnimating()) && (this.progressView != null) && (!this.progressView.isShow())) {
-      this.progressView.show();
+    if (!isAnimating())
+    {
+      localObject = this.progressView;
+      if ((localObject != null) && (!((AbstractProgressView)localObject).isShow())) {
+        this.progressView.show();
+      }
     }
-    BrowserLogHelper.getInstance().getGalleryLog().i("GalleryBaseScene", 2, "GalleryBaseView.onItemSelected(): position=" + paramInt);
-  }
-  
-  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    return false;
+    Object localObject = BrowserLogHelper.getInstance().getGalleryLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GalleryBaseView.onItemSelected(): position=");
+    localStringBuilder.append(paramInt);
+    ((IBrowserLog)localObject).i("GalleryBaseScene", 2, localStringBuilder.toString());
   }
   
   public void onLoadFinish(int paramInt, boolean paramBoolean)
@@ -343,14 +364,6 @@ public class BrowserBaseScene
     this.progressViewHelper.onLoadFinish(paramInt, paramBoolean);
   }
   
-  public void onPause() {}
-  
-  public void onResume() {}
-  
-  public void onStart() {}
-  
-  public void onStop() {}
-  
   public void onWindowFocusChanged()
   {
     enter();
@@ -359,8 +372,24 @@ public class BrowserBaseScene
   
   public void setGalleryBlack()
   {
-    if (this.recyclerView != null) {
-      this.recyclerView.setBackgroundColor(-16777216);
+    BrowserRecyclerView localBrowserRecyclerView = this.recyclerView;
+    if (localBrowserRecyclerView != null) {
+      localBrowserRecyclerView.setBackgroundColor(-16777216);
+    }
+  }
+  
+  public void showContentView(boolean paramBoolean)
+  {
+    RelativeLayout localRelativeLayout = this.contentView;
+    if (localRelativeLayout != null)
+    {
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
+      }
+      localRelativeLayout.setVisibility(i);
     }
   }
   
@@ -371,7 +400,7 @@ public class BrowserBaseScene
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.BrowserBaseScene
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.share;
 
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,7 +12,6 @@ import android.util.DisplayMetrics;
 import android.webkit.URLUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
 import com.tencent.mobileqq.forward.ForwardStatisticsReporter;
@@ -54,23 +54,28 @@ public class MiniProgramOpenSdkUtil
     if (localJSONObject == null) {
       paramJSONObject = new JSONObject();
     }
-    try
+    for (;;)
     {
-      paramJSONObject.put("type", "normal");
-      paramJSONObject.put("width", 253);
-      if ("intro".equals(paramString)) {}
-      for (int i = 140;; i = 272)
+      try
       {
+        paramJSONObject.put("type", "normal");
+        paramJSONObject.put("width", 253);
+        if (!"intro".equals(paramString)) {
+          break label89;
+        }
+        i = 140;
         paramJSONObject.put("height", i);
         paramJSONObject.put("forward", 1);
         paramJSONObject.put("autoSize", 0);
         return paramJSONObject;
       }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
       return paramJSONObject;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
+      label89:
+      int i = 272;
     }
   }
   
@@ -87,16 +92,16 @@ public class MiniProgramOpenSdkUtil
     try
     {
       i = Integer.parseInt(toBase64Decode((String)paramHashMap.get("mini_program_type")));
-      paramHashMap = getFinalPic(str7, str8);
-      return new MiniArkShareModelBuilder().setAppId(str1).setTitle(str2).setDescription(str3).setShareScene(3).setShareTemplateType(1).setShareBusinessType(0).setPicUrl(paramHashMap).setVidUrl(null).setJumpUrl(str4).setVersionType(i).setWebURL(str5).setAppidRich(str6).createMiniArkShareModel();
     }
     catch (NumberFormatException paramHashMap)
     {
-      for (;;)
-      {
-        int i = 3;
-      }
+      int i;
+      label126:
+      break label126;
     }
+    i = 3;
+    paramHashMap = getFinalPic(str7, str8);
+    return new MiniArkShareModelBuilder().setAppId(str1).setTitle(str2).setDescription(str3).setShareScene(3).setShareTemplateType(1).setShareBusinessType(0).setPicUrl(paramHashMap).setVidUrl(null).setJumpUrl(str4).setVersionType(i).setWebURL(str5).setAppidRich(str6).createMiniArkShareModel();
   }
   
   private static MiniProgramShare.StAdaptShareInfoReq buildShareInfoRequest(MiniArkShareModel paramMiniArkShareModel)
@@ -107,11 +112,16 @@ public class MiniProgramOpenSdkUtil
   private static void finishPreviousActivity(Context paramContext)
   {
     ILoginRegisterApi localILoginRegisterApi = (ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class);
-    if ((!(paramContext instanceof JumpActivity)) && (!localILoginRegisterApi.getLoginActivityClass().isInstance(paramContext))) {}
-    while (((BaseActivity)paramContext).isFinishing()) {
+    if ((!(paramContext instanceof JumpActivity)) && (!localILoginRegisterApi.getLoginActivityClass().isInstance(paramContext))) {
       return;
     }
-    ((BaseActivity)paramContext).finish();
+    if ((paramContext instanceof Activity))
+    {
+      paramContext = (Activity)paramContext;
+      if (!paramContext.isFinishing()) {
+        paramContext.finish();
+      }
+    }
   }
   
   public static void forwardShare(Context paramContext, HashMap<String, String> paramHashMap, Bundle paramBundle, Intent paramIntent)
@@ -131,17 +141,16 @@ public class MiniProgramOpenSdkUtil
     String str3 = toBase64Decode((String)paramHashMap.get("mini_program_path"));
     String str4 = toBase64Decode((String)paramHashMap.get("mini_program_type"));
     String str1 = toBase64Decode((String)paramHashMap.get("image_url"));
-    Object localObject = toBase64Decode((String)paramHashMap.get("file_data"));
+    paramBundle = toBase64Decode((String)paramHashMap.get("file_data"));
     String str5 = toBase64Decode((String)paramHashMap.get("title"));
     String str6 = toBase64Decode((String)paramHashMap.get("description"));
     String str7 = toBase64Decode((String)paramHashMap.get("url"));
-    paramBundle = (Bundle)localObject;
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
+    if (TextUtils.isEmpty(paramBundle)) {
       paramBundle = str1;
     }
-    localObject = buildMiniArkShareModel(paramHashMap);
-    paramHashMap = buildShareInfoRequest((MiniArkShareModel)localObject);
-    paramContext = new MiniProgramOpenSdkUtil.3(local2, local1, localTimeOutInfo, str2, str3, str4, str7, ((MiniArkShareModel)localObject).getAppidRich(), str5, str6, paramBundle, paramContext, paramIntent, str1);
+    MiniArkShareModel localMiniArkShareModel = buildMiniArkShareModel(paramHashMap);
+    paramHashMap = buildShareInfoRequest(localMiniArkShareModel);
+    paramContext = new MiniProgramOpenSdkUtil.3(local2, local1, localTimeOutInfo, str2, str3, str4, str7, localMiniArkShareModel.getAppidRich(), str5, str6, paramBundle, paramContext, paramIntent, str1);
     QLog.d("MiniProgramOpenSdkUtil", 1, "forwardShare");
     ForwardStatisticsReporter.a("KEY_STAGE_1_GET_SHARE_INFO");
     MiniAppCmdUtil.getInstance().getShareInfo(paramHashMap, paramContext);
@@ -156,7 +165,10 @@ public class MiniProgramOpenSdkUtil
     }
     catch (Throwable paramContext)
     {
-      QLog.e("MiniProgramOpenSdkUtil", 1, "forwardShare has Exception" + paramContext.getMessage());
+      paramHashMap = new StringBuilder();
+      paramHashMap.append("forwardShare has Exception");
+      paramHashMap.append(paramContext.getMessage());
+      QLog.e("MiniProgramOpenSdkUtil", 1, paramHashMap.toString());
     }
   }
   
@@ -164,27 +176,22 @@ public class MiniProgramOpenSdkUtil
   {
     if (TextUtils.isEmpty(paramString1))
     {
-      if (TextUtils.isEmpty(paramString2))
-      {
+      if (TextUtils.isEmpty(paramString2)) {
         QLog.e("MiniProgramOpenSdkUtil", 1, "getFinalPic previewPicUrl&localImagePath is null");
-        return "";
-      }
-      int i;
-      if ((!URLUtil.isHttpUrl(paramString2)) && (!URLUtil.isHttpsUrl(paramString2)))
-      {
-        i = 1;
-        if (i == 0) {
-          break label54;
-        }
       }
       for (;;)
       {
-        return paramString2;
-        i = 0;
-        break;
-        label54:
+        return "";
+        int i;
+        if ((!URLUtil.isHttpUrl(paramString2)) && (!URLUtil.isHttpsUrl(paramString2))) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i != 0) {
+          return paramString2;
+        }
         QLog.e("MiniProgramOpenSdkUtil", 1, "getFinalPic localImagePath is null");
-        paramString2 = "";
       }
     }
     return paramString1;
@@ -199,7 +206,6 @@ public class MiniProgramOpenSdkUtil
   
   private static void startForwardActivityOfArk(Context paramContext, Intent paramIntent, String paramString, JSONObject paramJSONObject, OpenSdkShareModel paramOpenSdkShareModel)
   {
-    int j = 0;
     QLog.d("MiniProgramOpenSdkUtil", 1, new Object[] { "startForwardActivityOfArk: invoked. arkJson: ", paramJSONObject });
     String str1 = paramJSONObject.optString("app");
     String str2 = paramJSONObject.optString("view");
@@ -207,27 +213,17 @@ public class MiniProgramOpenSdkUtil
     if (paramJSONObject.optJSONObject("meta") != null)
     {
       String str3 = paramJSONObject.optJSONObject("meta").toString();
-      int i = j;
-      if (!URLUtil.isHttpUrl(paramString))
-      {
-        i = j;
-        if (!URLUtil.isHttpsUrl(paramString)) {
-          i = 1;
-        }
-      }
+      if ((!URLUtil.isHttpUrl(paramString)) && (!URLUtil.isHttpsUrl(paramString))) {}
       paramString = buildArkConfig(paramJSONObject, str2);
       paramIntent.putExtra("is_ark_display_share", true).putExtra("forward_ark_app_name", str1).putExtra("forward_ark_app_view", str2).putExtra("forward_ark_app_prompt", str4).putExtra("forward_ark_app_ver", "0.0.0.1").putExtra("forward_ark_app_config", paramString.toString()).putExtra("forward_type", 11).putExtra("forwardDirect", true);
       paramString = new Bundle();
-      if ((i != 0) && (0 != 0)) {
-        paramString.putString("arkPath", null);
-      }
       paramString.putString("KEY_MINI_PROGRAM_ARK_JSON", paramJSONObject.toString());
       paramString.putString("forward_ark_app_name", str1);
       paramIntent.putExtras(paramString);
       paramIntent.putExtra("is_share_flag", true);
       paramIntent.putExtra("req_type", 2147483646);
       paramIntent.putExtra("forward_mini_program_ark_from_sdk", true);
-      com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = true;
+      com.tencent.mobileqq.phonecontact.constant.PhoneContactFlags.a = true;
       paramIntent.putExtra("KEY_MINI_PROGRAM_SHARE_OBJ", paramOpenSdkShareModel);
       paramIntent.putExtra("forward_ark_app_meta", str3);
       paramIntent.putExtras(QQCustomArkDialog.AppInfo.a(str1, str2, "0.0.0.1", str3, BaseApplicationImpl.context.getResources().getDisplayMetrics().scaledDensity, null, null));
@@ -241,13 +237,21 @@ public class MiniProgramOpenSdkUtil
   @NonNull
   public static String toBase64Decode(@NonNull String paramString)
   {
-    if ((paramString == null) || ("".equals(paramString)) || (paramString.length() == 0)) {
-      return "";
+    String str2 = "";
+    String str1 = str2;
+    if (paramString != null)
+    {
+      str1 = str2;
+      if (!"".equals(paramString)) {
+        if (paramString.length() == 0) {
+          return "";
+        }
+      }
     }
     try
     {
-      paramString = new String(Base64Util.decode(paramString, 0));
-      return paramString;
+      str1 = new String(Base64Util.decode(paramString, 0));
+      return str1;
     }
     catch (Exception paramString) {}
     return "";
@@ -263,18 +267,14 @@ public class MiniProgramOpenSdkUtil
       paramJSONObject.put("app", localObject1);
       paramJSONObject.put("view", localObject2);
       paramJSONObject.put("meta", localObject3);
-      paramJSONObject.remove("appName");
-      paramJSONObject.remove("appView");
-      paramJSONObject.remove("metaData");
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    paramJSONObject.remove("appName");
+    paramJSONObject.remove("appView");
+    paramJSONObject.remove("metaData");
   }
   
   private static void transformArkShareJson(JSONObject paramJSONObject, String paramString)
@@ -294,10 +294,7 @@ public class MiniProgramOpenSdkUtil
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
     paramJSONObject.remove("appName");
     paramJSONObject.remove("appView");
@@ -306,7 +303,7 @@ public class MiniProgramOpenSdkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil
  * JD-Core Version:    0.7.0.1
  */

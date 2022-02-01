@@ -22,35 +22,44 @@ public class AppBrandPagePool
   public void destroyCachePage()
   {
     this.mBrandPageList.clear();
-    if (this.mPageWebviewPool != null) {
-      this.mPageWebviewPool.destroyCachePage();
+    PageWebviewPool localPageWebviewPool = this.mPageWebviewPool;
+    if (localPageWebviewPool != null) {
+      localPageWebviewPool.destroyCachePage();
     }
   }
   
   public void destroyPageWebviewCache()
   {
-    if (this.mPageWebviewPool != null) {
-      this.mPageWebviewPool.destroyCachePage();
+    PageWebviewPool localPageWebviewPool = this.mPageWebviewPool;
+    if (localPageWebviewPool != null) {
+      localPageWebviewPool.destroyCachePage();
     }
   }
   
   public AppBrandPage getAppBrandPage(IMiniAppContext paramIMiniAppContext, AppBrandPageContainer paramAppBrandPageContainer)
   {
-    QMLog.d("AppBrandPagePool", "mBrandPageList size : " + this.mBrandPageList.size());
-    AppBrandPage localAppBrandPage = (AppBrandPage)this.mBrandPageList.poll();
-    if (localAppBrandPage == null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mBrandPageList size : ");
+    ((StringBuilder)localObject).append(this.mBrandPageList.size());
+    QMLog.d("AppBrandPagePool", ((StringBuilder)localObject).toString());
+    localObject = (AppBrandPage)this.mBrandPageList.poll();
+    if (localObject == null)
     {
       QMLog.i("AppBrandPagePool", "getAppBrandPage form new BrandPageWebview.");
       return new AppBrandPage(paramIMiniAppContext, paramAppBrandPageContainer);
     }
     QMLog.i("AppBrandPagePool", "getAppBrandPage from cache.");
-    return localAppBrandPage;
+    return localObject;
   }
   
   public EmbeddedState getEmbeddedState(AppBrandPageContainer paramAppBrandPageContainer)
   {
-    if ((this.mBrandPageList.size() > 0) && (this.mPageWebviewPool != null)) {
-      return this.mPageWebviewPool.getEmbeddedState(paramAppBrandPageContainer);
+    if (this.mBrandPageList.size() > 0)
+    {
+      PageWebviewPool localPageWebviewPool = this.mPageWebviewPool;
+      if (localPageWebviewPool != null) {
+        return localPageWebviewPool.getEmbeddedState(paramAppBrandPageContainer);
+      }
     }
     return null;
   }
@@ -62,30 +71,32 @@ public class AppBrandPagePool
   
   public void initBaseJs(AppBrandPageContainer paramAppBrandPageContainer, BaselibLoader.BaselibContent paramBaselibContent)
   {
-    if (this.mPageWebviewPool != null) {
-      this.mPageWebviewPool.initBaseJs(paramAppBrandPageContainer, paramBaselibContent);
+    PageWebviewPool localPageWebviewPool = this.mPageWebviewPool;
+    if (localPageWebviewPool != null) {
+      localPageWebviewPool.initBaseJs(paramAppBrandPageContainer, paramBaselibContent);
     }
   }
   
   public void preLoadAppBrandPage(IMiniAppContext paramIMiniAppContext, AppBrandPageContainer paramAppBrandPageContainer)
   {
-    if (paramIMiniAppContext == null) {}
-    do
-    {
+    if (paramIMiniAppContext == null) {
       return;
-      if (this.mBrandPageList.size() <= 0)
-      {
-        QMLog.d("AppBrandPagePool", "preLoadAppBrandPage");
-        paramIMiniAppContext = new AppBrandPage(paramIMiniAppContext, paramAppBrandPageContainer);
-        this.mBrandPageList.add(paramIMiniAppContext);
-      }
-    } while (this.mPageWebviewPool == null);
-    this.mPageWebviewPool.preLoadAppBrandPage(paramAppBrandPageContainer);
+    }
+    if (this.mBrandPageList.size() <= 0)
+    {
+      QMLog.d("AppBrandPagePool", "preLoadAppBrandPage");
+      paramIMiniAppContext = new AppBrandPage(paramIMiniAppContext, paramAppBrandPageContainer);
+      this.mBrandPageList.add(paramIMiniAppContext);
+    }
+    paramIMiniAppContext = this.mPageWebviewPool;
+    if (paramIMiniAppContext != null) {
+      paramIMiniAppContext.preLoadAppBrandPage(paramAppBrandPageContainer);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.pool.AppBrandPagePool
  * JD-Core Version:    0.7.0.1
  */

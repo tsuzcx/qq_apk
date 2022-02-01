@@ -39,15 +39,12 @@ public class GetVidListRequest
     try
     {
       localRspGetBatchUserVidList.mergeFrom(paramArrayOfByte);
-      return new GetVidListResponse(localRspGetBatchUserVidList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetVidListResponse(localRspGetBatchUserVidList);
   }
   
   public String a()
@@ -55,7 +52,7 @@ public class GetVidListRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetBatchUserVidList localReqGetBatchUserVidList = new qqstory_service.ReqGetBatchUserVidList();
     localReqGetBatchUserVidList.pull_type.set(this.c);
@@ -65,7 +62,7 @@ public class GetVidListRequest
     {
       String str = (String)localIterator.next();
       if (TextUtils.isEmpty(a(str))) {
-        AssertUtils.a("why uid is null ??", new Object[0]);
+        AssertUtils.fail("why uid is null ??", new Object[0]);
       } else {
         localArrayList.add(ByteStringMicro.copyFromUtf8(a(str)));
       }
@@ -76,7 +73,7 @@ public class GetVidListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetVidListRequest
  * JD-Core Version:    0.7.0.1
  */

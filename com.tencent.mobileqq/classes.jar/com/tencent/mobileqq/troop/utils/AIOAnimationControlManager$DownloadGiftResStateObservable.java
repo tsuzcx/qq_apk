@@ -5,19 +5,20 @@ import java.util.Observable;
 public class AIOAnimationControlManager$DownloadGiftResStateObservable
   extends Observable
 {
-  private static DownloadGiftResStateObservable a = null;
+  private static DownloadGiftResStateObservable a;
   
   public static DownloadGiftResStateObservable a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new DownloadGiftResStateObservable();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new DownloadGiftResStateObservable();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public void setChanged()
@@ -27,7 +28,7 @@ public class AIOAnimationControlManager$DownloadGiftResStateObservable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.DownloadGiftResStateObservable
  * JD-Core Version:    0.7.0.1
  */

@@ -14,6 +14,11 @@ public class VideoDanmakuConfig
     }
   }
   
+  public static void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
   public static boolean a()
   {
     return (jdField_a_of_type_Boolean) && (b());
@@ -21,15 +26,16 @@ public class VideoDanmakuConfig
   
   private static boolean b()
   {
-    if (jdField_a_of_type_ComTencentMobileqqDanmakuInjectEnableHardwareAccelerateChecker != null) {
-      return jdField_a_of_type_ComTencentMobileqqDanmakuInjectEnableHardwareAccelerateChecker.a();
+    EnableHardwareAccelerateChecker localEnableHardwareAccelerateChecker = jdField_a_of_type_ComTencentMobileqqDanmakuInjectEnableHardwareAccelerateChecker;
+    if (localEnableHardwareAccelerateChecker != null) {
+      return localEnableHardwareAccelerateChecker.a();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.inject.VideoDanmakuConfig
  * JD-Core Version:    0.7.0.1
  */

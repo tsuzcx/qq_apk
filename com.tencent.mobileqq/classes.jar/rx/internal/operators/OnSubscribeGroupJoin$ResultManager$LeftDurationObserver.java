@@ -18,17 +18,18 @@ final class OnSubscribeGroupJoin$ResultManager$LeftDurationObserver
   
   public void onCompleted()
   {
-    if (this.once) {
-      this.once = false;
-    }
-    synchronized (this.this$1.guard)
+    if (this.once)
     {
-      Observer localObserver = (Observer)this.this$1.leftMap.remove(Integer.valueOf(this.id));
-      if (localObserver != null) {
-        localObserver.onCompleted();
+      this.once = false;
+      synchronized (this.this$1.guard)
+      {
+        Observer localObserver = (Observer)this.this$1.leftMap.remove(Integer.valueOf(this.id));
+        if (localObserver != null) {
+          localObserver.onCompleted();
+        }
+        this.this$1.group.remove(this);
+        return;
       }
-      this.this$1.group.remove(this);
-      return;
     }
   }
   
@@ -44,7 +45,7 @@ final class OnSubscribeGroupJoin$ResultManager$LeftDurationObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeGroupJoin.ResultManager.LeftDurationObserver
  * JD-Core Version:    0.7.0.1
  */

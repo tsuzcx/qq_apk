@@ -12,20 +12,25 @@ class PhoneStatusMonitor$PhoneStatusReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    for (paramContext = null;; paramContext = paramIntent.getAction())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneStatusMonitor", 2, "PhoneStatusReceiver.onReceive, action[" + paramContext + "]");
-      }
-      this.a.c();
-      return;
+    if (paramIntent == null) {
+      paramContext = null;
+    } else {
+      paramContext = paramIntent.getAction();
     }
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("PhoneStatusReceiver.onReceive, action[");
+      paramIntent.append(paramContext);
+      paramIntent.append("]");
+      QLog.d("PhoneStatusMonitor", 2, paramIntent.toString());
+    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class WSTabBeaconReport
 {
   private static WSStatisticsReporter.Builder a(String paramString)
   {
-    return new WSStatisticsReporter.Builder().setSopName(paramString).setTestId(WeishiUtils.a(1)).setPushId(WSInitializeHelper.a().a()).setFlush(true).setImmediatelyUpload(WeishiUtils.d());
+    return new WSStatisticsReporter.Builder().setSopName(paramString).setTestId(WeishiUtils.a(1)).setPushId(WSInitializeHelper.a().a()).setFlush(true);
   }
   
   public static void a(int paramInt, String paramString)
@@ -45,19 +45,22 @@ public class WSTabBeaconReport
     localHashMap1.put("feed_id", "");
     localHashMap1.put("owner_id", "");
     HashMap localHashMap2 = new HashMap();
-    if (paramBoolean) {}
-    for (paramList = "1";; paramList = "0")
+    if (paramBoolean) {
+      paramList = "1";
+    } else {
+      paramList = "0";
+    }
+    localHashMap2.put("is_show", paramList);
+    paramList = new StringBuilder();
+    int j;
+    for (int i = 0; i < ((List)localObject).size(); i = j)
     {
-      localHashMap2.put("is_show", paramList);
-      paramList = new StringBuilder();
-      int i = 0;
-      while (i < ((List)localObject).size())
-      {
-        paramList.append(i + 1).append("_").append(((WSTabInfo)((List)localObject).get(i)).a());
-        if (i != ((List)localObject).size() - 1) {
-          paramList.append(",");
-        }
-        i += 1;
+      j = i + 1;
+      paramList.append(j);
+      paramList.append("_");
+      paramList.append(((WSTabInfo)((List)localObject).get(i)).a());
+      if (i != ((List)localObject).size() - 1) {
+        paramList.append(",");
       }
     }
     localHashMap2.put("feeds_tab_list", paramList.toString());
@@ -66,7 +69,7 @@ public class WSTabBeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabBeaconReport
  * JD-Core Version:    0.7.0.1
  */

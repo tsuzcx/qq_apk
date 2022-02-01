@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
@@ -23,37 +23,44 @@ public class SchemeJsPlugin
   @JsEvent({"openScheme"})
   public void openScheme(RequestEvent paramRequestEvent)
   {
-    Activity localActivity = this.mMiniAppContext.getAttachedActivity();
-    if (localActivity == null) {
+    Object localObject2 = this.mMiniAppContext.getAttachedActivity();
+    if (localObject2 == null) {
       return;
     }
     try
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      if (((JSONObject)localObject).has("api_name"))
+      Object localObject1 = new JSONObject(paramRequestEvent.jsonParams);
+      if (((JSONObject)localObject1).has("api_name"))
       {
-        String str = ((JSONObject)localObject).optString("api_name");
-        JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("data");
-        localObject = null;
-        if (localJSONObject != null) {
-          localObject = JSONUtil.json2Params(localJSONObject);
+        String str = ((JSONObject)localObject1).optString("api_name");
+        Object localObject3 = ((JSONObject)localObject1).optJSONObject("data");
+        localObject1 = null;
+        if (localObject3 != null) {
+          localObject1 = JSONUtil.json2Params((JSONObject)localObject3);
         }
-        localObject = str + "?" + (String)localObject;
-        ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openSchema(localActivity, (String)localObject, -1, new SchemeJsPlugin.1(this, new Handler(Looper.getMainLooper()), paramRequestEvent, (String)localObject));
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(str);
+        ((StringBuilder)localObject3).append("?");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        localObject1 = ((StringBuilder)localObject3).toString();
+        ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openSchema((Context)localObject2, (String)localObject1, -1, new SchemeJsPlugin.1(this, new Handler(Looper.getMainLooper()), paramRequestEvent, (String)localObject1));
         return;
       }
+      paramRequestEvent.fail("params error.");
+      return;
     }
     catch (Exception localException)
     {
-      QMLog.e("SchemeJsPlugin", paramRequestEvent.event + " error.", localException);
-      return;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramRequestEvent.event);
+      ((StringBuilder)localObject2).append(" error.");
+      QMLog.e("SchemeJsPlugin", ((StringBuilder)localObject2).toString(), localException);
     }
-    paramRequestEvent.fail("params error.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SchemeJsPlugin
  * JD-Core Version:    0.7.0.1
  */

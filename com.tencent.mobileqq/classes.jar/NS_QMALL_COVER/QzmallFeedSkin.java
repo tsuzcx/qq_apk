@@ -25,14 +25,15 @@ public final class QzmallFeedSkin
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stFeedSkinInfo != null) {
-      paramJceOutputStream.write(this.stFeedSkinInfo, 0);
+    FeedSkinInfo localFeedSkinInfo = this.stFeedSkinInfo;
+    if (localFeedSkinInfo != null) {
+      paramJceOutputStream.write(localFeedSkinInfo, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallFeedSkin
  * JD-Core Version:    0.7.0.1
  */

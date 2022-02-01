@@ -45,14 +45,15 @@ public class MedalInfo
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeInt(this.b);
     paramParcel.writeInt(this.c);
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      paramParcel.writeTypedList(localList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.MedalInfo
  * JD-Core Version:    0.7.0.1
  */

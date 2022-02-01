@@ -18,23 +18,36 @@ public class SearchBusinessConfBean
   public static SearchBusinessConfBean a(QConfItem paramQConfItem)
   {
     SearchBusinessConfBean localSearchBusinessConfBean = new SearchBusinessConfBean();
-    if (paramQConfItem != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfBean", 2, "parse taskid->" + paramQConfItem.jdField_a_of_type_Int + " content->" + paramQConfItem.jdField_a_of_type_JavaLangString);
+    if (paramQConfItem != null)
+    {
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parse taskid->");
+        localStringBuilder.append(paramQConfItem.jdField_a_of_type_Int);
+        localStringBuilder.append(" content->");
+        localStringBuilder.append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        QLog.d("SearchBusinessConfBean", 2, localStringBuilder.toString());
       }
-    }
-    try
-    {
-      paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString);
-      localSearchBusinessConfBean.a(paramQConfItem.optInt("business_switch_message", 1));
-      localSearchBusinessConfBean.b(paramQConfItem.optInt("business_switch_contact", 1));
-      localSearchBusinessConfBean.c(paramQConfItem.optInt("business_switch_dongtai", 1));
-      return localSearchBusinessConfBean;
-    }
-    catch (Exception paramQConfItem)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SearchBusinessConfBean", 2, "parse error->" + paramQConfItem.toString());
+      try
+      {
+        paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString);
+        localSearchBusinessConfBean.a(paramQConfItem.optInt("business_switch_message", 1));
+        localSearchBusinessConfBean.b(paramQConfItem.optInt("business_switch_contact", 1));
+        localSearchBusinessConfBean.c(paramQConfItem.optInt("business_switch_dongtai", 1));
+        return localSearchBusinessConfBean;
+      }
+      catch (Exception paramQConfItem)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("parse error->");
+          localStringBuilder.append(paramQConfItem.toString());
+          QLog.d("SearchBusinessConfBean", 2, localStringBuilder.toString());
+        }
+      }
     }
     return localSearchBusinessConfBean;
   }
@@ -76,7 +89,7 @@ public class SearchBusinessConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.SearchBusinessConfBean
  * JD-Core Version:    0.7.0.1
  */

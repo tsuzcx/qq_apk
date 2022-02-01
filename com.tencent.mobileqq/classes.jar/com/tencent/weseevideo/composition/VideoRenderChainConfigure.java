@@ -4,6 +4,7 @@ import com.tencent.tav.coremedia.CGSize;
 
 public class VideoRenderChainConfigure
 {
+  private boolean imageMode;
   private boolean isOpenAspectFillEffect;
   private boolean isOpenBeautyEffect;
   private boolean isOpenFreeVideoEndEffect;
@@ -21,6 +22,7 @@ public class VideoRenderChainConfigure
   public int mApplyType = -1;
   private CGSize mRenderSize;
   private int mSceneType = 0;
+  private CGSize screenSize;
   
   public VideoRenderChainConfigure()
   {
@@ -58,6 +60,16 @@ public class VideoRenderChainConfigure
   public int getSceneType()
   {
     return this.mSceneType;
+  }
+  
+  public CGSize getScreenSize()
+  {
+    return this.screenSize;
+  }
+  
+  public boolean isImageMode()
+  {
+    return this.imageMode;
   }
   
   public boolean isOpenAspectFillEffect()
@@ -133,6 +145,11 @@ public class VideoRenderChainConfigure
   public void setApplyType(int paramInt)
   {
     this.mApplyType = paramInt;
+  }
+  
+  public void setImageMode(boolean paramBoolean)
+  {
+    this.imageMode = paramBoolean;
   }
   
   public void setOpenAspectFillEffect(boolean paramBoolean)
@@ -214,10 +231,15 @@ public class VideoRenderChainConfigure
   {
     this.mSceneType = paramInt;
   }
+  
+  public void setScreenSize(CGSize paramCGSize)
+  {
+    this.screenSize = paramCGSize;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.VideoRenderChainConfigure
  * JD-Core Version:    0.7.0.1
  */

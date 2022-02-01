@@ -15,24 +15,33 @@ public class GPSDistanceDetector
   
   double a()
   {
-    double d1;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() < 2) {
-      d1 = 0.0D;
+      return 0.0D;
     }
-    double d3;
-    long l;
-    double d2;
-    do
+    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject1 = (Location)((ArrayList)localObject1).get(((ArrayList)localObject1).size() - 1);
+    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject2 = (Location)((ArrayList)localObject2).get(((ArrayList)localObject2).size() - 2);
+    double d1 = LocationUtil.a(((Location)localObject1).jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, ((Location)localObject2).jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    long l = Math.abs(((Location)localObject2).jdField_a_of_type_Long - ((Location)localObject1).jdField_a_of_type_Long);
+    double d2 = l;
+    Double.isNaN(d2);
+    d2 = d1 / (d2 * 1.0D);
+    if (QLog.isColorLevel())
     {
-      return d1;
-      Location localLocation1 = (Location)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-      Location localLocation2 = (Location)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 2);
-      d3 = LocationUtil.a(localLocation1.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, localLocation2.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-      l = Math.abs(localLocation2.jdField_a_of_type_Long - localLocation1.jdField_a_of_type_Long);
-      d2 = d3 / (l * 1.0D);
-      d1 = d2;
-    } while (!QLog.isColorLevel());
-    QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] getLastSampleRate. distance: " + d3, " interval: " + l, " rate: " + d2 });
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[status][distance] getLastSampleRate. distance: ");
+      ((StringBuilder)localObject1).append(d1);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" interval: ");
+      ((StringBuilder)localObject2).append(l);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" rate: ");
+      localStringBuilder.append(d2);
+      QLog.d("GPSDistanceDetector", 2, new Object[] { localObject1, localObject2, localStringBuilder.toString() });
+    }
     return d2;
   }
   
@@ -54,16 +63,15 @@ public class GPSDistanceDetector
       if (QLog.isColorLevel()) {
         QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] getStatus status:", Constant.a(41042) });
       }
-      paramInt = 41042;
+      return 41042;
     }
-    do
+    if (paramInt == 41042)
     {
-      return paramInt;
-      if (paramInt != 41042) {
-        break;
+      if (b()) {
+        return 40001;
       }
-    } while (!b());
-    return 40001;
+      return paramInt;
+    }
     if (QLog.isColorLevel()) {
       QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] getStatus status:", Constant.a(40001) });
     }
@@ -72,21 +80,19 @@ public class GPSDistanceDetector
   
   Location a()
   {
-    Object localObject;
     if (this.jdField_a_of_type_JavaUtilArrayList.size() < 1) {
-      localObject = null;
+      return null;
     }
-    Location localLocation;
-    do
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject = (Location)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+    if (System.currentTimeMillis() - ((Location)localObject).jdField_a_of_type_Long > Constant.N)
     {
-      return localObject;
-      localLocation = (Location)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-      localObject = localLocation;
-    } while (System.currentTimeMillis() - localLocation.jdField_a_of_type_Long <= Constant.N);
-    if (QLog.isColorLevel()) {
-      QLog.d("GPSDistanceDetector", 2, "[status][distance] getLastLatLngForPOI. timeout");
+      if (QLog.isColorLevel()) {
+        QLog.d("GPSDistanceDetector", 2, "[status][distance] getLastLatLngForPOI. timeout");
+      }
+      return null;
     }
-    return null;
+    return localObject;
   }
   
   ArrayList<Location> a()
@@ -133,53 +139,59 @@ public class GPSDistanceDetector
   
   public boolean a()
   {
-    boolean bool = true;
-    Object localObject = a();
-    if (((ArrayList)localObject).size() < 2) {
+    ArrayList localArrayList = a();
+    int i = localArrayList.size();
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (i < 2)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("GPSDistanceDetector", 2, "[status][distance] isMoving size < 2");
       }
+      return false;
     }
-    label313:
+    Location localLocation = (Location)localArrayList.get(localArrayList.size() - 1);
+    if (System.currentTimeMillis() - localLocation.jdField_a_of_type_Long > Constant.H + 30000) {
+      return false;
+    }
+    Object localObject2 = null;
+    i = localArrayList.size() - 2;
+    Object localObject1;
     for (;;)
     {
-      return false;
-      Location localLocation = (Location)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
-      if (System.currentTimeMillis() - localLocation.jdField_a_of_type_Long <= Constant.H + 30000)
+      localObject1 = localObject2;
+      if (i < 0) {
+        break;
+      }
+      if (localLocation.jdField_a_of_type_Long - ((Location)localArrayList.get(i)).jdField_a_of_type_Long <= Constant.K)
       {
-        int i = ((ArrayList)localObject).size() - 2;
-        if (i >= 0) {
-          if (localLocation.jdField_a_of_type_Long - ((Location)((ArrayList)localObject).get(i)).jdField_a_of_type_Long > Constant.K) {}
+        localObject1 = (Location)localArrayList.get(i);
+        break;
+      }
+      i -= 1;
+    }
+    boolean bool1 = bool3;
+    if (localObject1 != null)
+    {
+      double d = LocationUtil.a(localLocation.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, ((Location)localObject1).jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+      long l = localLocation.jdField_a_of_type_Long - ((Location)localObject1).jdField_a_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] isMoving distance:", Double.valueOf(d), " size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " time1:", Long.valueOf(localLocation.jdField_a_of_type_Long), " time2:", Long.valueOf(((Location)localObject1).jdField_a_of_type_Long), " interval:", Long.valueOf(l) });
+      }
+      if (l <= Constant.I + 30000)
+      {
+        bool1 = bool2;
+        if (d >= Constant.J) {
+          bool1 = true;
         }
-        for (localObject = (Location)((ArrayList)localObject).get(i);; localObject = null)
-        {
-          if (localObject == null) {
-            break label313;
-          }
-          double d = LocationUtil.a(localLocation.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, ((Location)localObject).jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-          long l = localLocation.jdField_a_of_type_Long - ((Location)localObject).jdField_a_of_type_Long;
-          if (QLog.isColorLevel()) {
-            QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] isMoving distance:", Double.valueOf(d), " size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " time1:", Long.valueOf(localLocation.jdField_a_of_type_Long), " time2:", Long.valueOf(((Location)localObject).jdField_a_of_type_Long), " interval:", Long.valueOf(l) });
-          }
-          if (l <= Constant.I + 30000)
-          {
-            if (d >= Constant.J) {}
-            for (bool = true;; bool = false)
-            {
-              return bool;
-              i -= 1;
-              break;
-            }
-          }
-          if (d >= Constant.G) {}
-          for (;;)
-          {
-            return bool;
-            bool = false;
-          }
-        }
+        return bool1;
+      }
+      bool1 = bool3;
+      if (d >= Constant.G) {
+        bool1 = true;
       }
     }
+    return bool1;
   }
   
   public void b()
@@ -212,7 +224,8 @@ public class GPSDistanceDetector
       i = 0;
       while (i < localArrayList.size())
       {
-        paramLocation.append(((Location)localArrayList.get(i)).toString()).append("\n");
+        paramLocation.append(((Location)localArrayList.get(i)).toString());
+        paramLocation.append("\n");
         i += 1;
       }
       QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] newList:", paramLocation.toString() });
@@ -222,42 +235,48 @@ public class GPSDistanceDetector
   
   public boolean b()
   {
-    Object localObject = a();
-    if (((ArrayList)localObject).size() < 2)
+    ArrayList localArrayList = a();
+    if (localArrayList.size() < 2)
     {
       if (QLog.isColorLevel()) {
         QLog.d("GPSDistanceDetector", 2, "[status][distance] isNotMoving size < 2");
       }
       return false;
     }
-    Location localLocation = (Location)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
+    Location localLocation = (Location)localArrayList.get(localArrayList.size() - 1);
     if (System.currentTimeMillis() - localLocation.jdField_a_of_type_Long > Constant.H + 30000) {
       return false;
     }
-    int i = ((ArrayList)localObject).size() - 2;
-    if (i >= 0) {
-      if (localLocation.jdField_a_of_type_Long - ((Location)((ArrayList)localObject).get(i)).jdField_a_of_type_Long <= Constant.L) {}
-    }
-    for (localObject = (Location)((ArrayList)localObject).get(i);; localObject = null)
+    Object localObject2 = null;
+    int i = localArrayList.size() - 2;
+    Object localObject1;
+    for (;;)
     {
-      if (localObject != null)
+      localObject1 = localObject2;
+      if (i < 0) {
+        break;
+      }
+      if (localLocation.jdField_a_of_type_Long - ((Location)localArrayList.get(i)).jdField_a_of_type_Long > Constant.L)
       {
-        double d = LocationUtil.a(localLocation.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, ((Location)localObject).jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-        if (QLog.isColorLevel()) {
-          QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] isNotMoving distance:", Double.valueOf(d), " size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " time1:", Long.valueOf(localLocation.jdField_a_of_type_Long), " time2:", Long.valueOf(((Location)localObject).jdField_a_of_type_Long) });
-        }
-        if (d < Constant.G)
-        {
-          return true;
-          i -= 1;
-          break;
-        }
+        localObject1 = (Location)localArrayList.get(i);
+        break;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] isNotMoving not hit record size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " time1:", Long.valueOf(localLocation.jdField_a_of_type_Long) });
-      }
-      return false;
+      i -= 1;
     }
+    if (localObject1 != null)
+    {
+      double d = LocationUtil.a(localLocation.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, ((Location)localObject1).jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+      if (QLog.isColorLevel()) {
+        QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] isNotMoving distance:", Double.valueOf(d), " size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " time1:", Long.valueOf(localLocation.jdField_a_of_type_Long), " time2:", Long.valueOf(((Location)localObject1).jdField_a_of_type_Long) });
+      }
+      if (d < Constant.G) {
+        return true;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] isNotMoving not hit record size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " time1:", Long.valueOf(localLocation.jdField_a_of_type_Long) });
+    }
+    return false;
   }
   
   public void c()
@@ -267,26 +286,29 @@ public class GPSDistanceDetector
     if (QLog.isColorLevel()) {
       QLog.d("GPSDistanceDetector", 2, new Object[] { "[status][distance] notifyCheckStatus notmoving:", Boolean.valueOf(bool1), " isMoving:", Boolean.valueOf(bool2) });
     }
-    if ((bool1) || (bool2)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationCheckListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationCheckListener.a();
+    if ((!bool1) && (!bool2))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GPSDistanceDetector", 2, "[status][distance] notifyCheckStatus miss");
       }
     }
-    while (!QLog.isColorLevel())
+    else
     {
-      do
+      AutoLocationCheckListener localAutoLocationCheckListener = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationCheckListener;
+      if (localAutoLocationCheckListener != null)
       {
+        localAutoLocationCheckListener.a();
         return;
-      } while (!QLog.isColorLevel());
-      QLog.d("GPSDistanceDetector", 2, "[status][distance] notifyCheckStatus listener empty");
-      return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("GPSDistanceDetector", 2, "[status][distance] notifyCheckStatus listener empty");
+      }
     }
-    QLog.d("GPSDistanceDetector", 2, "[status][distance] notifyCheckStatus miss");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.GPSDistanceDetector
  * JD-Core Version:    0.7.0.1
  */

@@ -33,44 +33,41 @@ public class DataReportViewer$DataAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView;
-    Object localObject;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131559723, paramViewGroup, false);
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131559599, paramViewGroup, false);
       paramView = new DataReportViewer.ViewHolder(this.a, localView);
       localView.setTag(paramView);
-      localObject = (ReportData)this.a.a.get(paramInt);
-      paramView.a.setText(((ReportData)localObject).table);
-      paramView.b.setText(((ReportData)localObject).mainAction);
-      paramView.c.setText(((ReportData)localObject).subAction);
-      paramView.d.setText(((ReportData)localObject).actionName);
-      paramView.e.setText(String.valueOf(((ReportData)localObject).opType));
-      paramView.f.setText(String.valueOf(((ReportData)localObject).result));
-      paramView.g.setText(((ReportData)localObject).r2);
-      paramView.h.setText(((ReportData)localObject).r3);
-      paramView.i.setText(((ReportData)localObject).r4);
-      paramView.j.setText(((ReportData)localObject).r5);
-      if (!((ReportData)localObject).isLightBlueBg) {
-        break label249;
-      }
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166602));
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject = (DataReportViewer.ViewHolder)paramView.getTag();
       localView = paramView;
       paramView = (View)localObject;
-      break;
-      label249:
-      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167374));
     }
+    Object localObject = (ReportData)this.a.a.get(paramInt);
+    paramView.a.setText(((ReportData)localObject).table);
+    paramView.b.setText(((ReportData)localObject).mainAction);
+    paramView.c.setText(((ReportData)localObject).subAction);
+    paramView.d.setText(((ReportData)localObject).actionName);
+    paramView.e.setText(String.valueOf(((ReportData)localObject).opType));
+    paramView.f.setText(String.valueOf(((ReportData)localObject).result));
+    paramView.g.setText(((ReportData)localObject).r2);
+    paramView.h.setText(((ReportData)localObject).r3);
+    paramView.i.setText(((ReportData)localObject).r4);
+    paramView.j.setText(((ReportData)localObject).r5);
+    if (((ReportData)localObject).isLightBlueBg) {
+      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166617));
+    } else {
+      localView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167394));
+    }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewer.DataAdapter
  * JD-Core Version:    0.7.0.1
  */

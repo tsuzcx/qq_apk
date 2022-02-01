@@ -12,7 +12,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.SearchWordHistoryManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
@@ -46,21 +46,19 @@ public class SearchWordHistoryAdapter
     this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqAppSearchWordHistoryManager.a();
     if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      notifyDataSetChanged();
-      return;
+    } else {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
+    notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public long getItemId(int paramInt)
@@ -73,49 +71,50 @@ public class SearchWordHistoryAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559938, paramViewGroup, false);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559808, paramViewGroup, false);
       paramView = new SearchWordHistoryAdapter.ViewHolder(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368443));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368444));
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView = ((PressEffectImageView)localView.findViewById(2131377211));
-      paramView.b = localView.findViewById(2131365939);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368193));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368194));
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView = ((PressEffectImageView)localView.findViewById(2131376671));
+      paramView.b = localView.findViewById(2131365776);
       paramView.jdField_a_of_type_AndroidViewView = localView;
       localView.setTag(paramView);
-      paramView.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      }
-      if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-        break label241;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991B8"));
-      paramView.b.setBackgroundColor(Color.parseColor("#040E1C"));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846342);
-      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839529);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846340);
     }
-    for (;;)
+    else
     {
-      localView.setOnClickListener(paramView);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setOnClickListener(paramView);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       SearchWordHistoryAdapter.ViewHolder localViewHolder = (SearchWordHistoryAdapter.ViewHolder)paramView.getTag();
       localView = paramView;
       paramView = localViewHolder;
-      break;
-      label241:
+    }
+    paramView.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    }
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    {
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991B8"));
+      paramView.b.setBackgroundColor(Color.parseColor("#040E1C"));
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846215);
+      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839385);
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846213);
+    }
+    else
+    {
       paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4D4D4D"));
       paramView.b.setBackgroundColor(Color.parseColor("#E6E6E6"));
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846341);
-      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839528);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846339);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846214);
+      paramView.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839384);
+      paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130846212);
     }
+    localView.setOnClickListener(paramView);
+    paramView.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setOnClickListener(paramView);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.SearchWordHistoryAdapter
  * JD-Core Version:    0.7.0.1
  */

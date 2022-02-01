@@ -15,63 +15,69 @@ class ReminderListFragment$9
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    boolean bool = true;
     if (paramInt == 2000)
     {
-      if (!paramBoolean) {
-        break label228;
+      if (paramBoolean)
+      {
+        paramBundle = (AcsGetMsgListRsp)paramBundle.getSerializable("rsp");
+        Object localObject1;
+        Object localObject2;
+        if (paramBundle != null)
+        {
+          localObject1 = paramBundle.data_list;
+          localObject2 = new ArrayList();
+          if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
+          {
+            ReminderListFragment localReminderListFragment = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment;
+            ReminderListFragment.a(localReminderListFragment, ReminderListFragment.a(localReminderListFragment) + ((ArrayList)localObject1).size());
+            paramInt = ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment);
+            int i = paramBundle.total;
+            paramBoolean = false;
+            if (paramInt >= i)
+            {
+              ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, false);
+            }
+            else
+            {
+              ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, true);
+              ReminderListFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment);
+            }
+            localReminderListFragment = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment;
+            if (this.jdField_a_of_type_Int == 0) {
+              paramBoolean = true;
+            }
+            ReminderListFragment.a(localReminderListFragment, (ArrayList)localObject1, (ArrayList)localObject2, paramBoolean);
+          }
+          else
+          {
+            ReminderListFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment);
+          }
+        }
+        else
+        {
+          ReminderListFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment);
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject1 = ReminderListFragment.a();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("acsGetMsgListRsp: ");
+          ((StringBuilder)localObject2).append(paramBundle);
+          ((StringBuilder)localObject2).append(" ");
+          QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+        }
       }
-      paramBundle = (AcsGetMsgListRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle == null) {
-        break label218;
+      else
+      {
+        ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, HardCodeUtil.a(2131713312));
       }
-      ArrayList localArrayList1 = paramBundle.data_list;
-      ArrayList localArrayList2 = new ArrayList();
-      if ((localArrayList1 == null) || (localArrayList1.isEmpty())) {
-        break label208;
-      }
-      ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment) + localArrayList1.size());
-      if (ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment) < paramBundle.total) {
-        break label183;
-      }
-      ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, false);
-      ReminderListFragment localReminderListFragment = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label203;
-      }
-      paramBoolean = bool;
-      label116:
-      ReminderListFragment.a(localReminderListFragment, localArrayList1, localArrayList2, paramBoolean);
-      label126:
-      if (QLog.isColorLevel()) {
-        QLog.i(ReminderListFragment.a(), 2, "acsGetMsgListRsp: " + paramBundle + " ");
-      }
-    }
-    for (;;)
-    {
       ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).post(new ReminderListFragment.9.1(this));
-      return;
-      label183:
-      ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, true);
-      ReminderListFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment);
-      break;
-      label203:
-      paramBoolean = false;
-      break label116;
-      label208:
-      ReminderListFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment);
-      break label126;
-      label218:
-      ReminderListFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment);
-      break label126;
-      label228:
-      ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, HardCodeUtil.a(2131713344));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.9
  * JD-Core Version:    0.7.0.1
  */

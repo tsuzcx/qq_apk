@@ -20,12 +20,23 @@ public class ReportEvilHandler$ReportEvent
   
   public String toString()
   {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReportEvent{vid='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uin='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", impeachType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("} ");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportEvilHandler.ReportEvent
  * JD-Core Version:    0.7.0.1
  */

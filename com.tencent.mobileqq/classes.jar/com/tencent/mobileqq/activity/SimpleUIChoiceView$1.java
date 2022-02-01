@@ -20,7 +20,9 @@ class SimpleUIChoiceView$1
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
+    boolean bool = QLog.isColorLevel();
+    paramInt = 0;
+    if (bool) {
       QLog.d("SimpleUIChoiceView", 1, new Object[] { "loadSimpleThemeListData isSuccess: ", Boolean.valueOf(paramBoolean) });
     }
     if (SimpleUIChoiceView.a() == null) {
@@ -31,45 +33,62 @@ class SimpleUIChoiceView$1
       if (SimpleUIChoiceView.a() == null) {
         return;
       }
-    }
-    if ((paramBoolean) && ((paramObject instanceof GetConciseThemeRsp)))
-    {
-      paramObject = (GetConciseThemeRsp)paramObject;
-      int i = Integer.decode(SimpleUIUtil.a(SimpleUIUtil.f())).intValue();
-      List localList2 = SimpleUIUtil.a();
-      localList2.clear();
-      SimpleUIChoiceView.a().clear();
-      paramInt = 0;
-      while (paramInt < paramObject.vItems.size())
+      if ((paramBoolean) && ((paramObject instanceof GetConciseThemeRsp)))
       {
-        ItemDisDetail localItemDisDetail = (ItemDisDetail)paramObject.vItems.get(paramInt);
-        SimpleUIChoiceView.ColorItemInfo localColorItemInfo = new SimpleUIChoiceView.ColorItemInfo(this.a, localItemDisDetail.itemId + "", localItemDisDetail.image, paramInt);
-        if (i == localItemDisDetail.itemId) {
-          localColorItemInfo.a = true;
+        Object localObject1 = (GetConciseThemeRsp)paramObject;
+        int i = Integer.decode(SimpleUIUtil.a(SimpleUIUtil.f())).intValue();
+        paramObject = SimpleUIUtil.a();
+        paramObject.clear();
+        SimpleUIChoiceView.a().clear();
+        while (paramInt < ((GetConciseThemeRsp)localObject1).vItems.size())
+        {
+          ItemDisDetail localItemDisDetail = (ItemDisDetail)((GetConciseThemeRsp)localObject1).vItems.get(paramInt);
+          Object localObject2 = this.a;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localItemDisDetail.itemId);
+          localStringBuilder.append("");
+          localObject2 = new SimpleUIChoiceView.ColorItemInfo((SimpleUIChoiceView)localObject2, localStringBuilder.toString(), localItemDisDetail.image, paramInt);
+          if (i == localItemDisDetail.itemId) {
+            ((SimpleUIChoiceView.ColorItemInfo)localObject2).a = true;
+          }
+          SimpleUIChoiceView.a(this.a, null, (SimpleUIChoiceView.ColorItemInfo)localObject2);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localItemDisDetail.itemId);
+          localStringBuilder.append("");
+          paramObject.add(localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localItemDisDetail.itemId);
+          localStringBuilder.append("");
+          if (TextUtils.equals("2920", localStringBuilder.toString())) {
+            SimpleUIUtil.c = paramInt;
+          }
+          SimpleUIChoiceView.a().add(localObject2);
+          MobileReportManager.getInstance().reportAction(SimpleUIUtil.a(localItemDisDetail.itemId), "4", "platform898", "4", "1", 101, 1, System.currentTimeMillis());
+          ReportController.b(SimpleUIChoiceView.a(this.a).app, "dc00898", "", "", "qq_vip", "0X800B15B", Integer.decode(SimpleUIUtil.a(localItemDisDetail.itemId)).intValue(), 0, "", "", "", "");
+          paramInt += 1;
         }
-        SimpleUIChoiceView.a(this.a, null, localColorItemInfo);
-        localList2.add(localItemDisDetail.itemId + "");
-        if (TextUtils.equals("2920", localItemDisDetail.itemId + "")) {
-          SimpleUIUtil.c = paramInt;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("");
+        paramInt = SimpleUIUtil.a(((StringBuilder)localObject1).toString());
+        SimpleUIProtocolUtil.a(SimpleUIChoiceView.a(this.a).getCurrentAccountUin(), paramInt, 3);
+        SimpleUIChoiceView.a(this.a).a(SimpleUIChoiceView.a());
+        SimpleUIChoiceView.a(this.a).notifyDataSetChanged();
+        if (paramInt < paramObject.size()) {
+          SimpleUIChoiceView.a(this.a).scrollToPosition(paramInt);
         }
-        SimpleUIChoiceView.a().add(localColorItemInfo);
-        MobileReportManager.getInstance().reportAction(SimpleUIUtil.a(localItemDisDetail.itemId), "4", "platform898", "4", "1", 101, 1, System.currentTimeMillis());
-        ReportController.b(SimpleUIChoiceView.a(this.a).app, "dc00898", "", "", "qq_vip", "0X800B15B", Integer.decode(SimpleUIUtil.a(localItemDisDetail.itemId)).intValue(), 0, "", "", "", "");
-        paramInt += 1;
       }
-      paramInt = SimpleUIUtil.a(i + "");
-      SimpleUIProtocolUtil.a(SimpleUIChoiceView.a(this.a).getCurrentAccountUin(), paramInt, 3);
-      SimpleUIChoiceView.a(this.a).a(SimpleUIChoiceView.a());
-      SimpleUIChoiceView.a(this.a).notifyDataSetChanged();
-      if (paramInt < localList2.size()) {
-        SimpleUIChoiceView.a(this.a).scrollToPosition(paramInt);
-      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SimpleUIChoiceView.1
  * JD-Core Version:    0.7.0.1
  */

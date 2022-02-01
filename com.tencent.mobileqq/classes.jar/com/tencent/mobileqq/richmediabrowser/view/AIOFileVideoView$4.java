@@ -1,21 +1,39 @@
 package com.tencent.mobileqq.richmediabrowser.view;
 
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
-import com.tencent.mobileqq.richmediabrowser.presenter.AIOFileVideoPresenter;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class AIOFileVideoView$4
   implements Runnable
 {
-  AIOFileVideoView$4(AIOFileVideoView paramAIOFileVideoView, AIOFileVideoData paramAIOFileVideoData) {}
+  AIOFileVideoView$4(AIOFileVideoView paramAIOFileVideoView, ArrayList paramArrayList) {}
   
   public void run()
   {
-    AIOFileVideoView.a(this.this$0, this.this$0.a.getCurrentPosition(), this.a.i);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)localIterator.next();
+      this.this$0.c.add(this.this$0.c.size() - 1, localActionSheetItem);
+    }
+    this.this$0.a.setActionSheetItems(this.this$0.b, this.this$0.c);
+    if (this.this$0.a.isShowing())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOFileVideoView<FileAssistant>XOXO", 2, "onVideoFrameCallBack, refresh share menu");
+      }
+      this.this$0.a.refresh();
+      return;
+    }
+    this.this$0.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFileVideoView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -122,43 +122,54 @@ public class HardCodeIpList
       return false;
     }
     Iterator localIterator = paramCopyOnWriteArrayList.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (!((String)localIterator.next()).equalsIgnoreCase(paramString));
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
+    while (localIterator.hasNext()) {
+      if (((String)localIterator.next()).equalsIgnoreCase(paramString))
       {
-        paramCopyOnWriteArrayList.remove(paramString);
-        return true;
+        i = 1;
+        break label43;
       }
-      return false;
     }
+    int i = 0;
+    label43:
+    if (i != 0)
+    {
+      paramCopyOnWriteArrayList.remove(paramString);
+      return true;
+    }
+    return false;
   }
   
   private EndPoint getOrderlyFromCandicate4HardCode(CopyOnWriteArrayList<String> paramCopyOnWriteArrayList)
   {
-    if ((paramCopyOnWriteArrayList != null) && (!paramCopyOnWriteArrayList.isEmpty())) {
-      return new EndPoint((String)paramCopyOnWriteArrayList.get(0), ((Integer)this.mPort4HardCode.get(rand(this.mPort4HardCode.size() - 1))).intValue());
+    if ((paramCopyOnWriteArrayList != null) && (!paramCopyOnWriteArrayList.isEmpty()))
+    {
+      paramCopyOnWriteArrayList = (String)paramCopyOnWriteArrayList.get(0);
+      ArrayList localArrayList = this.mPort4HardCode;
+      return new EndPoint(paramCopyOnWriteArrayList, ((Integer)localArrayList.get(rand(localArrayList.size() - 1))).intValue());
     }
     return null;
   }
   
   public static int rand(int paramInt)
   {
-    return (int)(Math.random() * (paramInt + 1));
+    double d1 = Math.random();
+    double d2 = paramInt + 1;
+    Double.isNaN(d2);
+    return (int)(d1 * d2);
   }
   
   public boolean foundNRemove(String paramString)
   {
-    if (foundNRemoveIP(this.mHcIpCandicateListWifi, paramString)) {}
-    while ((foundNRemoveIP(this.mHcIpCandicateListChinaMobile, paramString)) || (foundNRemoveIP(this.mHcIpCandicateListChinaUnicom, paramString)) || (foundNRemoveIP(this.mHcIpCandicateListChinaTelecom, paramString))) {
+    if (foundNRemoveIP(this.mHcIpCandicateListWifi, paramString)) {
       return true;
     }
-    return false;
+    if (foundNRemoveIP(this.mHcIpCandicateListChinaMobile, paramString)) {
+      return true;
+    }
+    if (foundNRemoveIP(this.mHcIpCandicateListChinaUnicom, paramString)) {
+      return true;
+    }
+    return foundNRemoveIP(this.mHcIpCandicateListChinaTelecom, paramString);
   }
   
   public EndPoint getNextIp(Context paramContext)
@@ -166,22 +177,28 @@ public class HardCodeIpList
     if (HwNetworkUtil.isWifiEnabled(paramContext)) {
       return getOrderlyFromCandicate4HardCode(this.mHcIpCandicateListWifi);
     }
-    switch (HwNetworkUtil.getCarrierOperatorType(paramContext))
+    int i = HwNetworkUtil.getCarrierOperatorType(paramContext);
+    if (i != 2)
     {
-    default: 
-      return getRandomFromCandicate4HardCode(this.mHcIpCandicateListOverseas);
-    case 2: 
-      return getRandomFromCandicate4HardCode(this.mHcIpCandicateListChinaMobile);
-    case 3: 
+      if (i != 3)
+      {
+        if (i != 4) {
+          return getRandomFromCandicate4HardCode(this.mHcIpCandicateListOverseas);
+        }
+        return getRandomFromCandicate4HardCode(this.mHcIpCandicateListChinaTelecom);
+      }
       return getRandomFromCandicate4HardCode(this.mHcIpCandicateListChinaUnicom);
     }
-    return getRandomFromCandicate4HardCode(this.mHcIpCandicateListChinaTelecom);
+    return getRandomFromCandicate4HardCode(this.mHcIpCandicateListChinaMobile);
   }
   
   public EndPoint getRandomFromCandicate4HardCode(CopyOnWriteArrayList<String> paramCopyOnWriteArrayList)
   {
-    if ((paramCopyOnWriteArrayList != null) && (!paramCopyOnWriteArrayList.isEmpty())) {
-      return new EndPoint((String)paramCopyOnWriteArrayList.get(rand(paramCopyOnWriteArrayList.size() - 1)), ((Integer)this.mPort4HardCode.get(rand(this.mPort4HardCode.size() - 1))).intValue());
+    if ((paramCopyOnWriteArrayList != null) && (!paramCopyOnWriteArrayList.isEmpty()))
+    {
+      paramCopyOnWriteArrayList = (String)paramCopyOnWriteArrayList.get(rand(paramCopyOnWriteArrayList.size() - 1));
+      ArrayList localArrayList = this.mPort4HardCode;
+      return new EndPoint(paramCopyOnWriteArrayList, ((Integer)localArrayList.get(rand(localArrayList.size() - 1))).intValue());
     }
     return null;
   }
@@ -191,21 +208,24 @@ public class HardCodeIpList
     if (HwNetworkUtil.isWifiEnabled(paramContext)) {
       return this.mHcIpCandicateListWifi.isEmpty();
     }
-    switch (HwNetworkUtil.getCarrierOperatorType(paramContext))
+    int i = HwNetworkUtil.getCarrierOperatorType(paramContext);
+    if (i != 2)
     {
-    default: 
-      return this.mHcIpCandicateListOverseas.isEmpty();
-    case 2: 
-      return this.mHcIpCandicateListChinaMobile.isEmpty();
-    case 3: 
+      if (i != 3)
+      {
+        if (i != 4) {
+          return this.mHcIpCandicateListOverseas.isEmpty();
+        }
+        return this.mHcIpCandicateListChinaTelecom.isEmpty();
+      }
       return this.mHcIpCandicateListChinaUnicom.isEmpty();
     }
-    return this.mHcIpCandicateListChinaTelecom.isEmpty();
+    return this.mHcIpCandicateListChinaMobile.isEmpty();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.config.HardCodeIpList
  * JD-Core Version:    0.7.0.1
  */

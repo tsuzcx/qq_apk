@@ -23,22 +23,20 @@ public class e
     try
     {
       a = com.tencent.qapmsdk.socket.d.d.a(localClass).a(new Class[0]);
-      Logger.INSTANCE.i(new String[] { "QAPM_Socket_TrafficSocketImplFactory", "TrafficSocketImplFactory init success, SocketImpl: ", localClass.toString() });
-      return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      for (;;)
-      {
-        if ((localClass == d.class) && (a == null)) {
-          if (!AndroidVersion.isN()) {
-            a = com.tencent.qapmsdk.socket.d.d.a("java.net.PlainSocketImpl").a(new Class[0]);
-          } else {
-            a = com.tencent.qapmsdk.socket.d.d.a("java.net.SocksSocketImpl").a(new Class[0]);
-          }
-        }
+      label45:
+      break label45;
+    }
+    if ((localClass == d.class) && (a == null)) {
+      if (!AndroidVersion.isN()) {
+        a = com.tencent.qapmsdk.socket.d.d.a("java.net.PlainSocketImpl").a(new Class[0]);
+      } else {
+        a = com.tencent.qapmsdk.socket.d.d.a("java.net.SocksSocketImpl").a(new Class[0]);
       }
     }
+    Logger.INSTANCE.i(new String[] { "QAPM_Socket_TrafficSocketImplFactory", "TrafficSocketImplFactory init success, SocketImpl: ", localClass.toString() });
   }
   
   public e(SocketImplFactory paramSocketImplFactory)
@@ -54,50 +52,49 @@ public class e
       try
       {
         StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-        if ((arrayOfStackTraceElement == null) || (arrayOfStackTraceElement.length <= 0)) {
-          break;
-        }
-        i = 0;
-        if (i >= arrayOfStackTraceElement.length) {
-          break;
-        }
-        if (arrayOfStackTraceElement[i] != null)
+        if ((arrayOfStackTraceElement != null) && (arrayOfStackTraceElement.length > 0))
         {
-          boolean bool = arrayOfStackTraceElement[i].toString().contains("java.net.ServerSocket");
-          if (!bool) {}
+          i = 0;
+          if (i < arrayOfStackTraceElement.length) {
+            if (arrayOfStackTraceElement[i] != null)
+            {
+              boolean bool = arrayOfStackTraceElement[i].toString().contains("java.net.ServerSocket");
+              if (!bool) {}
+            }
+          }
         }
       }
       catch (Exception localException1)
       {
         int i;
-        return false;
+        continue;
       }
       try
       {
         Logger.INSTANCE.d(new String[] { "QAPM_Socket_TrafficSocketImplFactory", "socket stack contain ServerSocket" });
         return true;
       }
-      catch (Exception localException2)
-      {
-        return true;
-      }
+      catch (Exception localException2) {}
       i += 1;
+      continue;
+      return false;
     }
-    return false;
+    return true;
   }
   
   public SocketImpl createSocketImpl()
   {
-    if (this.b != null) {
-      return new d(this.b.createSocketImpl());
+    Object localObject = this.b;
+    if (localObject != null) {
+      return new d(((SocketImplFactory)localObject).createSocketImpl());
     }
     try
     {
       if (a()) {
         return (SocketImpl)a.newInstance(new Object[0]);
       }
-      d locald = new d((SocketImpl)a.newInstance(new Object[0]));
-      return locald;
+      localObject = new d((SocketImpl)a.newInstance(new Object[0]));
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
@@ -109,7 +106,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.e
  * JD-Core Version:    0.7.0.1
  */

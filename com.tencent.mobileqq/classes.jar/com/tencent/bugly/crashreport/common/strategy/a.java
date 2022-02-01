@@ -17,8 +17,8 @@ public final class a
 {
   public static int a = 1000;
   public static long b;
-  private static a c = null;
-  private static String i = null;
+  private static a c;
+  private static String i;
   private final List<com.tencent.bugly.a> d;
   private final w e;
   private final StrategyBean f;
@@ -62,12 +62,12 @@ public final class a
   
   public static void a(String paramString)
   {
-    if ((z.a(paramString)) || (!z.c(paramString)))
+    if ((!z.a(paramString)) && (z.c(paramString)))
     {
-      x.d("URL user set is invalid.", new Object[0]);
+      i = paramString;
       return;
     }
-    i = paramString;
+    x.d("URL user set is invalid.", new Object[0]);
   }
   
   public static StrategyBean d()
@@ -110,11 +110,13 @@ public final class a
   
   public final void a(ap paramap)
   {
-    if (paramap == null) {}
-    while ((this.g != null) && (paramap.h == this.g.o)) {
+    if (paramap == null) {
       return;
     }
-    localStrategyBean = new StrategyBean();
+    if ((this.g != null) && (paramap.h == this.g.o)) {
+      return;
+    }
+    StrategyBean localStrategyBean = new StrategyBean();
     localStrategyBean.f = paramap.a;
     localStrategyBean.h = paramap.c;
     localStrategyBean.g = paramap.b;
@@ -137,72 +139,64 @@ public final class a
     if (paramap.h != 0L) {
       localStrategyBean.o = paramap.h;
     }
-    String str;
     if ((paramap.g != null) && (paramap.g.size() > 0))
     {
       localStrategyBean.t = paramap.g;
-      str = (String)paramap.g.get("B11");
-      if ((str == null) || (!str.equals("1"))) {
-        break label633;
+      String str1 = (String)paramap.g.get("B11");
+      if ((str1 != null) && (str1.equals("1"))) {
+        localStrategyBean.i = true;
+      } else {
+        localStrategyBean.i = false;
       }
-    }
-    label633:
-    for (localStrategyBean.i = true;; localStrategyBean.i = false)
-    {
-      str = (String)paramap.g.get("B3");
-      if (str != null) {
-        localStrategyBean.w = Long.valueOf(str).longValue();
+      str1 = (String)paramap.g.get("B3");
+      if (str1 != null) {
+        localStrategyBean.w = Long.valueOf(str1).longValue();
       }
       localStrategyBean.p = paramap.i;
       localStrategyBean.v = paramap.i;
-      str = (String)paramap.g.get("B27");
-      if ((str != null) && (str.length() > 0)) {}
-      try
-      {
-        int j = Integer.parseInt(str);
-        if (j > 0) {
-          localStrategyBean.u = j;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+      str1 = (String)paramap.g.get("B27");
+      if ((str1 != null) && (str1.length() > 0)) {
+        try
         {
-          if (!x.a(localException))
-          {
+          int j = Integer.parseInt(str1);
+          if (j > 0) {
+            localStrategyBean.u = j;
+          }
+        }
+        catch (Exception localException)
+        {
+          if (!x.a(localException)) {
             localException.printStackTrace();
-            continue;
-            localStrategyBean.k = false;
           }
         }
       }
-      str = (String)paramap.g.get("B25");
-      if ((str == null) || (!str.equals("1"))) {
-        break;
+      String str2 = (String)paramap.g.get("B25");
+      if ((str2 != null) && (str2.equals("1"))) {
+        localStrategyBean.k = true;
+      } else {
+        localStrategyBean.k = false;
       }
-      localStrategyBean.k = true;
-      x.a("[Strategy] enableCrashReport:%b, enableQuery:%b, enableUserInfo:%b, enableAnr:%b, enableBlock:%b, enableSession:%b, enableSessionTimer:%b, sessionOverTime:%d, enableCocos:%b, strategyLastUpdateTime:%d", new Object[] { Boolean.valueOf(localStrategyBean.f), Boolean.valueOf(localStrategyBean.h), Boolean.valueOf(localStrategyBean.g), Boolean.valueOf(localStrategyBean.i), Boolean.valueOf(localStrategyBean.j), Boolean.valueOf(localStrategyBean.m), Boolean.valueOf(localStrategyBean.n), Long.valueOf(localStrategyBean.p), Boolean.valueOf(localStrategyBean.k), Long.valueOf(localStrategyBean.o) });
-      this.g = localStrategyBean;
-      if (!z.c(paramap.d))
-      {
-        x.c("[Strategy] download url is null", new Object[0]);
-        this.g.q = "";
-      }
-      if (!z.c(paramap.e))
-      {
-        x.c("[Strategy] download crashurl is null", new Object[0]);
-        this.g.r = "";
-      }
-      p.a().b(2);
-      paramap = new r();
-      paramap.b = 2;
-      paramap.a = localStrategyBean.d;
-      paramap.e = localStrategyBean.e;
-      paramap.g = z.a(localStrategyBean);
-      p.a().a(paramap);
-      a(localStrategyBean, true);
-      return;
     }
+    x.a("[Strategy] enableCrashReport:%b, enableQuery:%b, enableUserInfo:%b, enableAnr:%b, enableBlock:%b, enableSession:%b, enableSessionTimer:%b, sessionOverTime:%d, enableCocos:%b, strategyLastUpdateTime:%d", new Object[] { Boolean.valueOf(localStrategyBean.f), Boolean.valueOf(localStrategyBean.h), Boolean.valueOf(localStrategyBean.g), Boolean.valueOf(localStrategyBean.i), Boolean.valueOf(localStrategyBean.j), Boolean.valueOf(localStrategyBean.m), Boolean.valueOf(localStrategyBean.n), Long.valueOf(localStrategyBean.p), Boolean.valueOf(localStrategyBean.k), Long.valueOf(localStrategyBean.o) });
+    this.g = localStrategyBean;
+    if (!z.c(paramap.d))
+    {
+      x.c("[Strategy] download url is null", new Object[0]);
+      this.g.q = "";
+    }
+    if (!z.c(paramap.e))
+    {
+      x.c("[Strategy] download crashurl is null", new Object[0]);
+      this.g.r = "";
+    }
+    p.a().b(2);
+    paramap = new r();
+    paramap.b = 2;
+    paramap.a = localStrategyBean.d;
+    paramap.e = localStrategyBean.e;
+    paramap.g = z.a(localStrategyBean);
+    p.a().a(paramap);
+    a(localStrategyBean, true);
   }
   
   /* Error */
@@ -212,7 +206,7 @@ public final class a
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 37	com/tencent/bugly/crashreport/common/strategy/a:g	Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
+    //   3: getfield 32	com/tencent/bugly/crashreport/common/strategy/a:g	Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnull +9 -> 17
@@ -228,14 +222,16 @@ public final class a
     //   22: astore_2
     //   23: aload_0
     //   24: monitorexit
-    //   25: aload_2
-    //   26: athrow
+    //   25: goto +5 -> 30
+    //   28: aload_2
+    //   29: athrow
+    //   30: goto -2 -> 28
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	27	0	this	a
+    //   0	33	0	this	a
     //   12	7	1	bool	boolean
     //   6	2	2	localStrategyBean	StrategyBean
-    //   22	4	2	localObject	Object
+    //   22	7	2	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   2	7	22	finally
@@ -243,9 +239,10 @@ public final class a
   
   public final StrategyBean c()
   {
-    if (this.g != null)
+    StrategyBean localStrategyBean = this.g;
+    if (localStrategyBean != null)
     {
-      if (!z.c(this.g.q)) {
+      if (!z.c(localStrategyBean.q)) {
         this.g.q = StrategyBean.b;
       }
       if (!z.c(this.g.r)) {
@@ -255,15 +252,17 @@ public final class a
     }
     if ((!z.a(i)) && (z.c(i)))
     {
-      this.f.q = i;
-      this.f.r = i;
+      localStrategyBean = this.f;
+      String str = i;
+      localStrategyBean.q = str;
+      localStrategyBean.r = str;
     }
     return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.crashreport.common.strategy.a
  * JD-Core Version:    0.7.0.1
  */

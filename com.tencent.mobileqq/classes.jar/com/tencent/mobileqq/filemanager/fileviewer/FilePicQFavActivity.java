@@ -43,7 +43,7 @@ public class FilePicQFavActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Long = getIntent().getLongExtra("file_pic_favorites", -1L);
@@ -66,14 +66,14 @@ public class FilePicQFavActivity
     }
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FilePicQFavActivity
  * JD-Core Version:    0.7.0.1
  */

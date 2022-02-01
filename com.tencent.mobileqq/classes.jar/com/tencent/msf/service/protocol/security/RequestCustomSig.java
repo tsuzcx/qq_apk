@@ -52,15 +52,16 @@ public final class RequestCustomSig
     paramJceOutputStream.write(this.ulCustumFlag, 0);
     paramJceOutputStream.write(this.ulSType, 1);
     paramJceOutputStream.write(this.reserved, 2);
-    if (this.customSigPara != null) {
-      paramJceOutputStream.write(this.customSigPara, 3);
+    Map localMap = this.customSigPara;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
     paramJceOutputStream.write(this.nlTestFlag, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.security.RequestCustomSig
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,10 @@ public abstract class BaseTavApiProxy
   
   public BaseTavApiProxy()
   {
-    this.jdField_a_of_type_JavaLangString = ("WS_" + getClass().getSimpleName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WS_");
+    localStringBuilder.append(getClass().getSimpleName());
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   final void a()
@@ -34,12 +37,26 @@ public abstract class BaseTavApiProxy
   
   void a(ObjCreateTavEvent paramObjCreateTavEvent)
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "newObjInvoke() called with: req = [" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent + "], eventBean = [" + paramObjCreateTavEvent + "]");
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("newObjInvoke() called with: req = [");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent);
+    localStringBuilder.append("], eventBean = [");
+    localStringBuilder.append(paramObjCreateTavEvent);
+    localStringBuilder.append("]");
+    Log.d(str, localStringBuilder.toString());
   }
   
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "sendMsgInvoke() called with: req = [" + this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent + "], eventBean = [" + paramSendMsgTavEvent + "]");
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sendMsgInvoke() called with: req = [");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent);
+    localStringBuilder.append("], eventBean = [");
+    localStringBuilder.append(paramSendMsgTavEvent);
+    localStringBuilder.append("]");
+    Log.d(str, localStringBuilder.toString());
   }
   
   public void a(MiniAppFileManager paramMiniAppFileManager)
@@ -55,13 +72,14 @@ public abstract class BaseTavApiProxy
   public final void a(RequestEvent paramRequestEvent, BaseTavEvent paramBaseTavEvent)
   {
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
-    if ((paramBaseTavEvent instanceof ObjCreateTavEvent)) {
+    if ((paramBaseTavEvent instanceof ObjCreateTavEvent))
+    {
       a((ObjCreateTavEvent)paramBaseTavEvent);
-    }
-    while (!(paramBaseTavEvent instanceof SendMsgTavEvent)) {
       return;
     }
-    a((SendMsgTavEvent)paramBaseTavEvent);
+    if ((paramBaseTavEvent instanceof SendMsgTavEvent)) {
+      a((SendMsgTavEvent)paramBaseTavEvent);
+    }
   }
   
   final void a(@NotNull Object paramObject)
@@ -71,7 +89,12 @@ public abstract class BaseTavApiProxy
   
   final void a(String paramString)
   {
-    Log.w(this.jdField_a_of_type_JavaLangString, "returnFail() called with: msg = [" + paramString + "]");
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("returnFail() called with: msg = [");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    Log.w(str, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramString);
   }
   
@@ -82,14 +105,22 @@ public abstract class BaseTavApiProxy
     }
     paramJSONObject = paramJSONObject.toString();
     int i = PageAction.obtain(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext).getPageId();
-    paramString = "custom_event_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("custom_event_");
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.performAction(ServiceSubscribeEvent.obtain(paramString, paramJSONObject, i));
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.jsService.evaluateSubscribeJS(paramString, paramJSONObject, i);
   }
   
   final void a(JSONObject paramJSONObject)
   {
-    Log.v(this.jdField_a_of_type_JavaLangString, "returnOk() called with: json = [" + paramJSONObject + "]");
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("returnOk() called with: json = [");
+    localStringBuilder.append(paramJSONObject);
+    localStringBuilder.append("]");
+    Log.v(str, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramJSONObject);
   }
   
@@ -106,7 +137,10 @@ public abstract class BaseTavApiProxy
   
   final void b(String paramString)
   {
-    a("illegal params: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("illegal params: ");
+    localStringBuilder.append(paramString);
+    a(localStringBuilder.toString());
   }
   
   final void c()
@@ -123,7 +157,7 @@ public abstract class BaseTavApiProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.BaseTavApiProxy
  * JD-Core Version:    0.7.0.1
  */

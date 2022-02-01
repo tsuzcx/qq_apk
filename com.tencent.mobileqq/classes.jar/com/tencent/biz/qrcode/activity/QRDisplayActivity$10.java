@@ -7,13 +7,14 @@ class QRDisplayActivity$10
   
   public void run()
   {
-    this.this$0.b = true;
-    this.this$0.i();
+    QRDisplayActivity localQRDisplayActivity = this.this$0;
+    localQRDisplayActivity.b = true;
+    localQRDisplayActivity.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.10
  * JD-Core Version:    0.7.0.1
  */

@@ -30,17 +30,19 @@ public final class AuthResultInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.authret, 0);
-    if (this.authmsg != null) {
-      paramJceOutputStream.write(this.authmsg, 1);
+    String str = this.authmsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.authurl != null) {
-      paramJceOutputStream.write(this.authurl, 2);
+    str = this.authurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.AuthResultInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.manager;
 
 import com.tencent.biz.pubaccount.NativeAd.data.AdRequestData;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngine;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngineFactory;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class ReadInjoyADExposureManager$1
   implements Runnable
@@ -10,12 +12,12 @@ class ReadInjoyADExposureManager$1
   
   public void run()
   {
-    ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_Int, 4, 0, 10000, this.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataAdRequestData);
+    ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().a(this.jdField_a_of_type_Int, 4, 0, 10000, this.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataAdRequestData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.ReadInjoyADExposureManager.1
  * JD-Core Version:    0.7.0.1
  */

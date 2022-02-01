@@ -36,23 +36,24 @@ public class FormMutiWithAvatarItem
   private void d()
   {
     this.b = new LinearLayout(getContext());
-    this.b.setId(2131367392);
+    this.b.setId(2131367174);
     this.b.setOrientation(0);
     this.b.setGravity(16);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(0, 2131367393);
+    localLayoutParams.addRule(0, 2131367175);
     localLayoutParams.addRule(15);
     addView(this.b, localLayoutParams);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(1, 2131367391);
-    localLayoutParams.addRule(0, 2131367392);
+    localLayoutParams.addRule(1, 2131367173);
+    localLayoutParams.addRule(0, 2131367174);
     localLayoutParams.addRule(15);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsOverlappingImgLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsOverlappingImgLayout.getChildCount() != 0);
+    OverlappingImgLayout localOverlappingImgLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsOverlappingImgLayout;
+    return (localOverlappingImgLayout != null) && (localOverlappingImgLayout.getChildCount() != 0);
   }
   
   public void setOverimgLayout(int paramInt1, int paramInt2, String[] paramArrayOfString, IFaceDecoder paramIFaceDecoder)
@@ -65,7 +66,7 @@ public class FormMutiWithAvatarItem
     this.jdField_c_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_c_of_type_AndroidWidgetTextView.setSingleLine(true);
     this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(FormResHelper.a(getResources(), this.j));
-    int i = getResources().getDimensionPixelSize(2131296793);
+    int i = getResources().getDimensionPixelSize(2131296773);
     this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(0, i);
     this.jdField_c_of_type_AndroidWidgetTextView.setGravity(21);
     this.jdField_c_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -96,7 +97,7 @@ public class FormMutiWithAvatarItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormMutiWithAvatarItem
  * JD-Core Version:    0.7.0.1
  */

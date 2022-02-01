@@ -29,8 +29,11 @@ public final class b
     if (b())
     {
       long l = this.c.longValue();
-      if ((this.d + l < System.currentTimeMillis()) && (this.c.compareAndSet(l, System.currentTimeMillis() + 1L)))
+      if (this.d + l < System.currentTimeMillis())
       {
+        if (!this.c.compareAndSet(l, System.currentTimeMillis() + 1L)) {
+          return;
+        }
         Thread.currentThread().setUncaughtExceptionHandler(new e(this));
         throw new RuntimeException("Stopping thread to avoid potential memory leaks after a context was stopped.");
       }
@@ -67,16 +70,16 @@ public final class b
     catch (RejectedExecutionException localRejectedExecutionException)
     {
       a locala;
-      while ((super.getQueue() instanceof a))
+      if ((super.getQueue() instanceof a))
       {
         locala = (a)super.getQueue();
         try
         {
-          if (!locala.a(paramRunnable, 0L, localTimeUnit))
-          {
-            this.a.decrementAndGet();
-            throw new RejectedExecutionException("Queue capacity is full.");
+          if (locala.a(paramRunnable, 0L, localTimeUnit)) {
+            return;
           }
+          this.a.decrementAndGet();
+          throw new RejectedExecutionException("Queue capacity is full.");
         }
         catch (InterruptedException paramRunnable)
         {
@@ -107,7 +110,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.f.a.b
  * JD-Core Version:    0.7.0.1
  */

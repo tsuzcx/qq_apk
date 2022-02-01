@@ -23,13 +23,12 @@ public final class StoryMsfServlet
       paramIntent = WupUtil.b(paramFromServiceMsg.getWupBuffer());
       localBundle.putInt("data_error_code", 0);
     }
-    for (;;)
+    else
     {
-      QQStoryContext.a().a().a(localBundle, paramIntent);
-      return;
       localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
       localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
     }
+    QQStoryContext.a().a().a(localBundle, paramIntent);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -43,7 +42,7 @@ public final class StoryMsfServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.StoryMsfServlet
  * JD-Core Version:    0.7.0.1
  */

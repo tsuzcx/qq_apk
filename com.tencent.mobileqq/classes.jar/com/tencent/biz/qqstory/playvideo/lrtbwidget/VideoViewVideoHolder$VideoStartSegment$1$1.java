@@ -13,14 +13,11 @@ class VideoViewVideoHolder$VideoStartSegment$1$1
   
   public void run()
   {
-    if (this.a.a.isCanceled()) {}
-    InteractWidgetVideoHolder localInteractWidgetVideoHolder;
-    do
-    {
+    if (this.a.a.isCanceled()) {
       return;
-      if ((!this.a.a.this$0.c()) || (this.a.a.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder == null)) {
-        break;
-      }
+    }
+    if ((this.a.a.this$0.c()) && (this.a.a.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder != null))
+    {
       SLog.d(this.a.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, wait first not-black frame");
       this.a.a.this$0.a().setVisibility(8);
       this.a.a.this$0.b().setVisibility(8);
@@ -30,17 +27,15 @@ class VideoViewVideoHolder$VideoStartSegment$1$1
       this.a.a.a = SystemClock.uptimeMillis();
       VideoViewVideoHolder.a(this.a.a.this$0).removeCallbacksAndMessages(null);
       VideoViewVideoHolder.a(this.a.a.this$0).post(this.a.a);
-      localInteractWidgetVideoHolder = (InteractWidgetVideoHolder)this.a.a.this$0.a(InteractWidgetVideoHolder.class);
-    } while (localInteractWidgetVideoHolder == null);
-    localInteractWidgetVideoHolder.a.setVisibility(0);
-    return;
+      return;
+    }
     SLog.e(this.a.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, do not wait first not-black frame");
     VideoViewVideoHolder.VideoStartSegment.a(this.a.a, new ErrorMessage(0, "onPrepared, is not on foreground"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoStartSegment.1.1
  * JD-Core Version:    0.7.0.1
  */

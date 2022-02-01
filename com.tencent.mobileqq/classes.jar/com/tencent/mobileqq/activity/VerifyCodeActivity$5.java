@@ -12,16 +12,16 @@ class VerifyCodeActivity$5
   
   public void onClick(View paramView)
   {
-    QLog.d("VerifyCodeActivity", 1, new Object[] { "refreshVerifyCode isRefresh=", Boolean.valueOf(this.a.b) });
-    if (!this.a.b) {
-      this.a.a();
+    QLog.d("VerifyCodeActivity", 1, new Object[] { "refreshVerifyCode isRefresh=", Boolean.valueOf(this.a.isRefresh) });
+    if (!this.a.isRefresh) {
+      this.a.refreshVerifyCode();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyCodeActivity.5
  * JD-Core Version:    0.7.0.1
  */

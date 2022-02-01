@@ -17,12 +17,29 @@ public class HomeFeedPlayInfo
   
   public String toString()
   {
-    return "HomeFeedPlayInfo{mIsEnd=" + this.mIsEnd + ", mFeedFeedId='" + this.mFeedFeedId + '\'' + ", mStartVideoFeedId='" + this.mStartVideoFeedId + '\'' + ", mStartVid='" + this.mStartVid + '\'' + ", mForcePlayVidFromOld2New=" + this.mForcePlayVidFromOld2New + ", mForceNotUseVidCache=" + this.mForceNotUseVidCache + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HomeFeedPlayInfo{mIsEnd=");
+    localStringBuilder.append(this.mIsEnd);
+    localStringBuilder.append(", mFeedFeedId='");
+    localStringBuilder.append(this.mFeedFeedId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mStartVideoFeedId='");
+    localStringBuilder.append(this.mStartVideoFeedId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mStartVid='");
+    localStringBuilder.append(this.mStartVid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mForcePlayVidFromOld2New=");
+    localStringBuilder.append(this.mForcePlayVidFromOld2New);
+    localStringBuilder.append(", mForceNotUseVidCache=");
+    localStringBuilder.append(this.mForceNotUseVidCache);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo
  * JD-Core Version:    0.7.0.1
  */

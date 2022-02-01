@@ -10,36 +10,41 @@ public class GetMsgFin
 {
   public void a(MessageObserver paramMessageObserver, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, StatictisInfo paramStatictisInfo)
   {
-    switch (paramInt)
+    if (paramInt != 3021)
     {
-    default: 
-      return;
-    case 4003: 
-      paramMessageObserver.getTroopMsgFin(paramBoolean, paramArrayOfObject);
-      return;
-    case 4005: 
-      paramMessageObserver.getSystemMsgFin(paramBoolean, false, (List)paramObject);
-      return;
-    case 4006: 
-      paramMessageObserver.getSystemMsgFin(false, true, null);
-      return;
-    case 4011: 
-      paramMessageObserver.sendSystemMsgActionFin(paramBoolean, (ToServiceMsg)paramObject);
-      return;
-    case 4012: 
-      paramMessageObserver.sendSystemMsgActionError((ToServiceMsg)paramObject);
-      return;
-    case 4001: 
+      switch (paramInt)
+      {
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          return;
+        case 4013: 
+          paramMessageObserver.getAllProxyTroopMsg(paramBoolean, paramArrayOfObject);
+          return;
+        case 4012: 
+          paramMessageObserver.sendSystemMsgActionError((ToServiceMsg)paramObject);
+          return;
+        }
+        paramMessageObserver.sendSystemMsgActionFin(paramBoolean, (ToServiceMsg)paramObject);
+        return;
+      case 4006: 
+        paramMessageObserver.getSystemMsgFin(false, true, null);
+        return;
+      case 4005: 
+        paramMessageObserver.getSystemMsgFin(paramBoolean, false, (List)paramObject);
+        return;
+      case 4004: 
+        paramMessageObserver.registerProxyFin(paramBoolean, paramObject);
+        return;
+      case 4003: 
+        paramMessageObserver.getTroopMsgFin(paramBoolean, paramArrayOfObject);
+        return;
+      case 4002: 
+        paramMessageObserver.getDiscussionMsgFin(paramBoolean);
+        return;
+      }
       paramMessageObserver.getMsgFin(paramBoolean);
-      return;
-    case 4004: 
-      paramMessageObserver.registerProxyFin(paramBoolean, paramObject);
-      return;
-    case 4002: 
-      paramMessageObserver.getDiscussionMsgFin(paramBoolean);
-      return;
-    case 4013: 
-      paramMessageObserver.getAllProxyTroopMsg(paramBoolean, paramArrayOfObject);
       return;
     }
     paramMessageObserver.receiptErrorRsp((Long[])paramObject);
@@ -47,7 +52,7 @@ public class GetMsgFin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.messageobserver.GetMsgFin
  * JD-Core Version:    0.7.0.1
  */

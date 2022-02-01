@@ -38,49 +38,76 @@ final class TaskStaticsVisualizer$Companion$ToStringVisitor
   public void beginTask(@NotNull TaskExecutionStatics paramTaskExecutionStatics)
   {
     Intrinsics.checkParameterIsNotNull(paramTaskExecutionStatics, "statics");
-    int j = getIndent();
+    int k = getIndent();
+    int j = 0;
     int i = 0;
-    while (i < j)
+    while (i < k)
     {
       getBuilder().append("|   ");
       i += 1;
     }
     getBuilder().append("|-> ");
-    StringBuilder localStringBuilder = getBuilder();
-    Object localObject = paramTaskExecutionStatics.getStatus();
-    switch (TaskStaticsVisualizer.Companion.ToStringVisitor.WhenMappings.$EnumSwitchMapping$0[localObject.ordinal()])
+    StringBuilder localStringBuilder1 = getBuilder();
+    Object localObject1 = paramTaskExecutionStatics.getStatus();
+    i = TaskStaticsVisualizer.Companion.ToStringVisitor.WhenMappings.$EnumSwitchMapping$0[localObject1.ordinal()];
+    if (i != 1)
     {
-    default: 
-      throw new NoWhenBranchMatchedException();
-    case 1: 
-      localObject = "✅";
-      if (((CharSequence)paramTaskExecutionStatics.getMessage()).length() > 0)
+      if (i != 2)
       {
-        i = 1;
-        label129:
-        if (i == 0) {
-          break label281;
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i == 5) {
+              localObject1 = "💾";
+            } else {
+              throw new NoWhenBranchMatchedException();
+            }
+          }
+          else {
+            localObject1 = "🚀";
+          }
+        }
+        else {
+          localObject1 = "⛔️";
         }
       }
-      break;
+      else {
+        localObject1 = "❌";
+      }
     }
-    label281:
-    for (String str = '"' + paramTaskExecutionStatics.getMessage() + '"';; str = "")
+    else {
+      localObject1 = "✅";
+    }
+    i = j;
+    if (((CharSequence)paramTaskExecutionStatics.getMessage()).length() > 0) {
+      i = 1;
+    }
+    Object localObject2;
+    if (i != 0)
     {
-      localStringBuilder.append((String)localObject + " [" + paramTaskExecutionStatics.getName() + "] " + ms(paramTaskExecutionStatics.getRunDurationMs()) + '/' + ms(paramTaskExecutionStatics.getTotalRunDurationMs()) + ' ' + str);
-      getBuilder().append('\n');
-      return;
-      localObject = "❌";
-      break;
-      localObject = "⛔️";
-      break;
-      localObject = "🚀";
-      break;
-      localObject = "💾";
-      break;
-      i = 0;
-      break label129;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append('"');
+      ((StringBuilder)localObject2).append(paramTaskExecutionStatics.getMessage());
+      ((StringBuilder)localObject2).append('"');
+      localObject2 = ((StringBuilder)localObject2).toString();
     }
+    else
+    {
+      localObject2 = "";
+    }
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append((String)localObject1);
+    localStringBuilder2.append(" [");
+    localStringBuilder2.append(paramTaskExecutionStatics.getName());
+    localStringBuilder2.append("] ");
+    localStringBuilder2.append(ms(paramTaskExecutionStatics.getRunDurationMs()));
+    localStringBuilder2.append('/');
+    localStringBuilder2.append(ms(paramTaskExecutionStatics.getTotalRunDurationMs()));
+    localStringBuilder2.append(' ');
+    localStringBuilder2.append((String)localObject2);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    getBuilder().append('\n');
   }
   
   @NotNull
@@ -112,11 +139,17 @@ final class TaskStaticsVisualizer$Companion$ToStringVisitor
   @NotNull
   public final String ms(long paramLong)
   {
-    if (paramLong < 1000) {
-      return paramLong + "ms";
+    if (paramLong < 1000)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("ms");
+      return ((StringBuilder)localObject).toString();
     }
     Object localObject = new Object[1];
-    localObject[0] = Double.valueOf(paramLong / 1000.0D);
+    double d = paramLong;
+    Double.isNaN(d);
+    localObject[0] = Double.valueOf(d / 1000.0D);
     localObject = String.format("%.2fs", Arrays.copyOf((Object[])localObject, localObject.length));
     Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(this, *args)");
     return localObject;
@@ -129,7 +162,7 @@ final class TaskStaticsVisualizer$Companion$ToStringVisitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskStaticsVisualizer.Companion.ToStringVisitor
  * JD-Core Version:    0.7.0.1
  */

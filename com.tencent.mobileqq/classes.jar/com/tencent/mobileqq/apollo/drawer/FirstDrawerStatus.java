@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
+import com.tencent.mobileqq.apollo.script.drawerinfo.SpriteDrawerInfoManager;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -21,17 +21,24 @@ public class FirstDrawerStatus
   
   public void a(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (!a()) {}
-    SharedPreferences localSharedPreferences;
-    do
-    {
+    if (!a()) {
       return;
-      this.b = true;
-      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
-    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
-    SpriteUtil.a(paramSpriteDrawerInfoManager, HardCodeUtil.a(2131704631), 7, 0);
-    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
-    a(paramContext, paramQQAppInterface);
+    }
+    this.b = true;
+    Object localObject = paramContext.getSharedPreferences("apollo_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQQAppInterface.getAccount());
+    localStringBuilder.append("apollo_settingme_first_enter");
+    if (((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), true))
+    {
+      SpriteUtil.a(paramSpriteDrawerInfoManager, HardCodeUtil.a(2131704711), 7, 0);
+      paramSpriteDrawerInfoManager = ((SharedPreferences)localObject).edit();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramQQAppInterface.getAccount());
+      ((StringBuilder)localObject).append("apollo_settingme_first_enter");
+      paramSpriteDrawerInfoManager.putBoolean(((StringBuilder)localObject).toString(), false).commit();
+      a(paramContext, paramQQAppInterface);
+    }
   }
   
   public boolean a()
@@ -41,7 +48,7 @@ public class FirstDrawerStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.drawer.FirstDrawerStatus
  * JD-Core Version:    0.7.0.1
  */

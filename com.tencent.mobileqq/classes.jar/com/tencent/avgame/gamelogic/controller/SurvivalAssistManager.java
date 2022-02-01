@@ -1,13 +1,14 @@
 package com.tencent.avgame.gamelogic.controller;
 
 import android.util.SparseArray;
-import com.tencent.avgame.audio.AudioRouter;
-import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.IGameEngine;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.avgame.gamelogic.data.SurvivalPkResultInfo;
 import com.tencent.avgame.gamelogic.listener.GameRoomStatusListener;
-import com.tencent.avgame.video.VideoRouter;
+import com.tencent.avgame.qav.audio.AudioRouter;
+import com.tencent.avgame.video.api.IVideoRouter;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -17,7 +18,7 @@ public class SurvivalAssistManager
   public static final int a;
   private static final SparseArray<SurvivalAssistCallback> a;
   public static final int b;
-  private static int c = 0;
+  private static int c;
   
   static
   {
@@ -33,15 +34,15 @@ public class SurvivalAssistManager
   public SurvivalAssistManager()
   {
     jdField_a_of_type_AndroidUtilSparseArray.put(jdField_a_of_type_Int, new AudioRouter());
-    jdField_a_of_type_AndroidUtilSparseArray.put(b, new VideoRouter());
+    jdField_a_of_type_AndroidUtilSparseArray.put(b, QRoute.api(IVideoRouter.class));
   }
   
   public SurvivalAssistCallback a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= c)) {
-      return null;
+    if ((paramInt >= 0) && (paramInt < c)) {
+      return (SurvivalAssistCallback)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     }
-    return (SurvivalAssistCallback)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    return null;
   }
   
   public void a() {}
@@ -68,9 +69,9 @@ public class SurvivalAssistManager
   
   public void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
   {
-    if ((paramBoolean1) && (GameEngine.a().f()) && (!GameEngine.a().g()))
+    if ((paramBoolean1) && (IGameEngine.a().f()) && (!IGameEngine.a().g()))
     {
-      d();
+      onEnterSurvivalRoom();
       QLog.d("SurvivalAssistManager", 1, "onSurvivalPoolEnter");
     }
   }
@@ -98,9 +99,9 @@ public class SurvivalAssistManager
   
   public void b(boolean paramBoolean)
   {
-    if ((GameEngine.a().f()) && (!GameEngine.a().g()))
+    if ((IGameEngine.a().f()) && (!IGameEngine.a().g()))
     {
-      e();
+      onQuitSurvivalRoom();
       QLog.d("SurvivalAssistManager", 1, "onSurvivalGameOver");
     }
   }
@@ -112,34 +113,14 @@ public class SurvivalAssistManager
   public void c()
   {
     QLog.d("SurvivalAssistManager", 1, "clear");
-    if ((GameEngine.a().f()) && (!GameEngine.a().g())) {
-      e();
+    if ((IGameEngine.a().f()) && (!IGameEngine.a().g())) {
+      onQuitSurvivalRoom();
     }
   }
   
   public void c(EngineData paramEngineData, int paramInt) {}
   
   public void c(String paramString, EngineData paramEngineData) {}
-  
-  public void d()
-  {
-    int i = 0;
-    while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
-    {
-      ((SurvivalAssistCallback)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).d();
-      i += 1;
-    }
-  }
-  
-  public void e()
-  {
-    int i = 0;
-    while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
-    {
-      ((SurvivalAssistCallback)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).e();
-      i += 1;
-    }
-  }
   
   public void g() {}
   
@@ -150,10 +131,30 @@ public class SurvivalAssistManager
   public void j() {}
   
   public void k() {}
+  
+  public void onEnterSurvivalRoom()
+  {
+    int i = 0;
+    while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      ((SurvivalAssistCallback)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).onEnterSurvivalRoom();
+      i += 1;
+    }
+  }
+  
+  public void onQuitSurvivalRoom()
+  {
+    int i = 0;
+    while (i < jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      ((SurvivalAssistCallback)jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).onQuitSurvivalRoom();
+      i += 1;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.controller.SurvivalAssistManager
  * JD-Core Version:    0.7.0.1
  */

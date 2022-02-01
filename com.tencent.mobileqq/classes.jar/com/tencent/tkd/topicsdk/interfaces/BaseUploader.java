@@ -28,13 +28,11 @@ public abstract class BaseUploader
   
   public abstract void a(@NotNull String paramString);
   
-  public abstract void b();
-  
   public abstract void b(@NotNull String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.interfaces.BaseUploader
  * JD-Core Version:    0.7.0.1
  */

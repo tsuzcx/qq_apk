@@ -10,22 +10,26 @@ class ApolloUrlInterceptor$2
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runDataTask in AsyncThread start!");
+      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, "runDataTask in AsyncThread start!");
     }
-    ApolloWebStatistics localApolloWebStatistics = ApolloUrlInterceptor.a(this.this$0);
+    Object localObject = ApolloUrlInterceptor.a(this.this$0);
     long l = System.currentTimeMillis();
-    localApolloWebStatistics.g = l;
+    ((ApolloWebStatistics)localObject).g = l;
     ApolloUrlInterceptor.a(this.this$0);
     ApolloUrlInterceptor.b(this.this$0);
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runDataTask use:" + (System.currentTimeMillis() - l));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("runDataTask use:");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      QLog.d("[cmshow]apollo_client_ApolloUrlInterceptor", 2, ((StringBuilder)localObject).toString());
     }
     ApolloUrlInterceptor.a(this.this$0).h = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor.2
  * JD-Core Version:    0.7.0.1
  */

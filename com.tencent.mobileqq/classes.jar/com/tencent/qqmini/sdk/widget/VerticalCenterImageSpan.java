@@ -30,7 +30,7 @@ public class VerticalCenterImageSpan
     paramCharSequence = getDrawable();
     paramCanvas.save();
     paramInt1 = (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2;
-    paramCanvas.translate(this.mLeftPadding + paramFloat - this.mRightPadding, paramInt1 + paramInt3);
+    paramCanvas.translate(paramFloat + this.mLeftPadding - this.mRightPadding, paramInt1 + paramInt3);
     paramCharSequence.draw(paramCanvas);
     paramCanvas.restore();
   }
@@ -41,15 +41,16 @@ public class VerticalCenterImageSpan
     if (paramFontMetricsInt != null)
     {
       paramPaint = paramPaint.getFontMetricsInt();
-      paramInt2 = paramPaint.bottom - paramPaint.top;
-      int i = paramCharSequence.bottom - paramCharSequence.top;
-      paramInt1 = i / 2 - paramInt2 / 4;
-      i /= 2;
-      paramInt2 = paramInt2 / 4 + i;
-      paramFontMetricsInt.ascent = (-paramInt2);
-      paramFontMetricsInt.top = (-paramInt2);
-      paramFontMetricsInt.bottom = paramInt1;
-      paramFontMetricsInt.descent = paramInt1;
+      paramInt2 = paramPaint.bottom;
+      int i = paramPaint.top;
+      paramInt1 = (paramCharSequence.bottom - paramCharSequence.top) / 2;
+      i = (paramInt2 - i) / 4;
+      paramInt2 = paramInt1 - i;
+      paramInt1 = -(paramInt1 + i);
+      paramFontMetricsInt.ascent = paramInt1;
+      paramFontMetricsInt.top = paramInt1;
+      paramFontMetricsInt.bottom = paramInt2;
+      paramFontMetricsInt.descent = paramInt2;
     }
     return paramCharSequence.right + this.mLeftPadding + this.mRightPadding;
   }
@@ -62,7 +63,7 @@ public class VerticalCenterImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.VerticalCenterImageSpan
  * JD-Core Version:    0.7.0.1
  */

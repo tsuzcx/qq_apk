@@ -38,14 +38,15 @@ public final class multiple_count
   {
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.num, 1);
-    if (this.icon != null) {
-      paramJceOutputStream.write(this.icon, 2);
+    ArrayList localArrayList = this.icon;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.multiple_count
  * JD-Core Version:    0.7.0.1
  */

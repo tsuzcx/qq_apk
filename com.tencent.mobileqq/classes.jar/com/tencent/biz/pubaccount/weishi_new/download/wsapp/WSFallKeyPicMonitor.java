@@ -9,6 +9,8 @@ import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 import com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil;
 import com.tencent.biz.pubaccount.weishi_new.report.UserActionReportPresenter;
 import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898;
+import com.tencent.biz.pubaccount.weishi_new.report.WsBeaconReportPresenter;
+import com.tencent.biz.pubaccount.weishi_new.util.WSInitializeHelper;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
@@ -21,7 +23,7 @@ import java.util.List;
 public class WSFallKeyPicMonitor
   implements SimpleEventReceiver<WSPicMonitorEvent>
 {
-  private static WSFallKeyPicMonitor jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor = null;
+  private static WSFallKeyPicMonitor jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor;
   private static boolean jdField_c_of_type_Boolean;
   private volatile int jdField_a_of_type_Int = 0;
   private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
@@ -52,26 +54,30 @@ public class WSFallKeyPicMonitor
   
   public static WSFallKeyPicMonitor a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor == null) {
-        jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor = new WSFallKeyPicMonitor();
+    if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor == null) {
+          jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor = new WSFallKeyPicMonitor();
+        }
       }
-      return jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor;
   }
   
   private String a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
     if (paramstSimpleMetaFeed != null)
     {
-      String str = "weishi://feed?feed_id=" + paramstSimpleMetaFeed.id;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("weishi://feed?feed_id=");
+      ((StringBuilder)localObject).append(paramstSimpleMetaFeed.id);
+      localObject = ((StringBuilder)localObject).toString();
       if (!TextUtils.isEmpty(paramstSimpleMetaFeed.weishi_jump_url)) {
-        str = paramstSimpleMetaFeed.weishi_jump_url;
+        localObject = paramstSimpleMetaFeed.weishi_jump_url;
       }
-      return str;
+      return localObject;
     }
     return null;
   }
@@ -87,9 +93,11 @@ public class WSFallKeyPicMonitor
   
   public static <T> void a(int paramInt, T paramT)
   {
-    if (jdField_c_of_type_Boolean)
-    {
-      WSLog.b("WSFallKeyPicMonitor", "sendStartEvent");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sendStartEvent sRunning:");
+    localStringBuilder.append(jdField_c_of_type_Boolean);
+    WSLog.b("WSFallKeyPicMonitor", localStringBuilder.toString());
+    if (jdField_c_of_type_Boolean) {
       SimpleEventBus.getInstance().dispatchEvent(new WSPicMonitorEvent(paramInt, 1, paramT));
     }
   }
@@ -122,9 +130,11 @@ public class WSFallKeyPicMonitor
   
   public static <T> void b(int paramInt, T paramT)
   {
-    if (jdField_c_of_type_Boolean)
-    {
-      WSLog.b("WSFallKeyPicMonitor", "sendFinishEvent");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sendFinishEvent url:");
+    localStringBuilder.append(paramT);
+    WSLog.b("WSFallKeyPicMonitor", localStringBuilder.toString());
+    if (jdField_c_of_type_Boolean) {
       SimpleEventBus.getInstance().dispatchEvent(new WSPicMonitorEvent(paramInt, -1, paramT));
     }
   }
@@ -141,8 +151,9 @@ public class WSFallKeyPicMonitor
     {
       jdField_c_of_type_Boolean = false;
       WSLog.b("WSFallKeyPicMonitor", "release");
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler.removeMessages(1);
+      WSFallKeyPicMonitor.DownloadHandler localDownloadHandler = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler;
+      if (localDownloadHandler != null) {
+        localDownloadHandler.removeMessages(1);
       }
       this.jdField_a_of_type_JavaUtilList.clear();
       b(this);
@@ -168,9 +179,10 @@ public class WSFallKeyPicMonitor
   public void a()
   {
     WSLog.b("WSFallKeyPicMonitor", "immediatelyPreload");
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler != null)
+    WSFallKeyPicMonitor.DownloadHandler localDownloadHandler = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler;
+    if (localDownloadHandler != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler.removeMessages(1);
+      localDownloadHandler.removeMessages(1);
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler.sendEmptyMessage(1);
     }
   }
@@ -180,39 +192,52 @@ public class WSFallKeyPicMonitor
     if (WeishiGuideUtils.a(paramActivity)) {
       return;
     }
-    WSLog.b("WSFallKeyPicMonitor", "init , linkType = " + paramInt + "; feed = " + paramstSimpleMetaFeed);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init , linkType = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("; feed = ");
+    localStringBuilder.append(paramstSimpleMetaFeed);
+    WSLog.b("WSFallKeyPicMonitor", localStringBuilder.toString());
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
     this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = a(paramstSimpleMetaFeed);
-    if (paramInt == 4) {}
-    for (paramInt = 300;; paramInt = 99)
+    if (paramInt == 4) {
+      paramInt = 300;
+    } else {
+      paramInt = 99;
+    }
+    this.d = paramInt;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler == null)
     {
-      this.d = paramInt;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler != null) {
-        break;
-      }
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler = new WSFallKeyPicMonitor.DownloadHandler(this, this);
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor$DownloadHandler.sendEmptyMessageDelayed(1, 3000L);
-      return;
     }
   }
   
   public void a(Context paramContext)
   {
-    if (WeishiGuideUtils.a(paramContext)) {
+    if (WeishiGuideUtils.a(paramContext))
+    {
       WSLog.d("WSFallKeyPicMonitor", "本地已经安装微视app");
-    }
-    while (jdField_c_of_type_Boolean) {
       return;
     }
-    jdField_c_of_type_Boolean = true;
-    a(this);
+    if (!jdField_c_of_type_Boolean)
+    {
+      jdField_c_of_type_Boolean = true;
+      a(this);
+    }
   }
   
   public void b()
   {
-    if (jdField_c_of_type_Boolean) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSFallKeyPicMonitor.java][release] sRunning:");
+    localStringBuilder.append(jdField_c_of_type_Boolean);
+    WSLog.b("WSFallKeyPicMonitor", localStringBuilder.toString());
+    if (jdField_c_of_type_Boolean)
+    {
+      WsBeaconReportPresenter.a().a(WSInitializeHelper.a().a());
       c();
     }
     jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWsappWSFallKeyPicMonitor = null;
@@ -227,74 +252,73 @@ public class WSFallKeyPicMonitor
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    int j = 1;
     WSLog.b("WSFallKeyPicMonitor", "onReceiveEvent");
-    int i;
     if ((paramSimpleBaseEvent instanceof WSPicMonitorEvent))
     {
       paramSimpleBaseEvent = (WSPicMonitorEvent)paramSimpleBaseEvent;
-      switch (paramSimpleBaseEvent.getType())
+      int i = paramSimpleBaseEvent.getType();
+      int j = 1;
+      if (i != 1)
       {
-      default: 
-        WSLog.b("WSFallKeyPicMonitor", "type = " + paramSimpleBaseEvent.getType() + "; OperateType = " + paramSimpleBaseEvent.getOperateType() + ", content = " + paramSimpleBaseEvent.getContent());
-        if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() == 0))
+        if (i != 2)
         {
+          if (i != 3) {
+            break label180;
+          }
+          synchronized (this.jdField_c_of_type_JavaLangObject)
+          {
+            this.jdField_a_of_type_Int += paramSimpleBaseEvent.getOperateType();
+          }
+        }
+        this.jdField_b_of_type_Boolean = true;
+        synchronized (this.jdField_b_of_type_JavaLangObject)
+        {
+          this.jdField_b_of_type_Int += paramSimpleBaseEvent.getOperateType();
+        }
+      }
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (paramSimpleBaseEvent.getOperateType() == 1)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_JavaUtilList.add(paramSimpleBaseEvent.getContent());
+        }
+        else if (!this.jdField_a_of_type_JavaUtilList.remove(paramSimpleBaseEvent.getContent()))
+        {
+          return;
+        }
+        label180:
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("type = ");
+        ((StringBuilder)???).append(paramSimpleBaseEvent.getType());
+        ((StringBuilder)???).append("; OperateType = ");
+        ((StringBuilder)???).append(paramSimpleBaseEvent.getOperateType());
+        ((StringBuilder)???).append(", content = ");
+        ((StringBuilder)???).append(paramSimpleBaseEvent.getContent());
+        WSLog.b("WSFallKeyPicMonitor", ((StringBuilder)???).toString());
+        if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
           i = 1;
-          if ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Int > 0)) {
-            break label329;
-          }
+        } else {
+          i = 0;
         }
-        break;
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        for (;;)
-        {
-          if ((i != 0) && (j != 0) && (this.jdField_a_of_type_Int <= 0))
-          {
-            jdField_c_of_type_Boolean = false;
-            this.jdField_a_of_type_Boolean = false;
-            this.jdField_b_of_type_Boolean = false;
-            a();
-            WSLog.b("WSFallKeyPicMonitor", "非超时触发下载");
-          }
-          return;
-          do
-          {
-            synchronized (this.jdField_a_of_type_JavaLangObject)
-            {
-              if (paramSimpleBaseEvent.getOperateType() == 1)
-              {
-                this.jdField_a_of_type_Boolean = true;
-                this.jdField_a_of_type_JavaUtilList.add(paramSimpleBaseEvent.getContent());
-              }
-            }
-          } while (this.jdField_a_of_type_JavaUtilList.remove(paramSimpleBaseEvent.getContent()));
-          return;
-          this.jdField_b_of_type_Boolean = true;
-          synchronized (this.jdField_b_of_type_JavaLangObject)
-          {
-            this.jdField_b_of_type_Int += paramSimpleBaseEvent.getOperateType();
-          }
+        if ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Int > 0)) {
+          j = 0;
         }
-        synchronized (this.jdField_c_of_type_JavaLangObject)
+        if ((i != 0) && (j != 0) && (this.jdField_a_of_type_Int <= 0))
         {
-          this.jdField_a_of_type_Int += paramSimpleBaseEvent.getOperateType();
+          this.jdField_a_of_type_Boolean = false;
+          this.jdField_b_of_type_Boolean = false;
+          a();
+          WSLog.b("WSFallKeyPicMonitor", "非超时触发下载");
+          return;
         }
       }
-      i = 0;
-      break;
-      label329:
-      j = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.wsapp.WSFallKeyPicMonitor
  * JD-Core Version:    0.7.0.1
  */

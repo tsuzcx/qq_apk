@@ -77,45 +77,55 @@ public final class cell_left_thumb
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.mediatype, 0);
-    if (this.picdata != null) {
-      paramJceOutputStream.write(this.picdata, 1);
+    Object localObject = this.picdata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 2);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 3);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.actiontype, 4);
-    if (this.actionturl != null) {
-      paramJceOutputStream.write(this.actionturl, 5);
+    localObject = this.actionturl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.remark != null) {
-      paramJceOutputStream.write(this.remark, 6);
+    localObject = this.remark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.postparams != null) {
-      paramJceOutputStream.write(this.postparams, 7);
+    localObject = this.postparams;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.usepost, 8);
-    if (this.user != null) {
-      paramJceOutputStream.write(this.user, 9);
+    localObject = this.user;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
     paramJceOutputStream.write(this.pic_actiontype, 10);
-    if (this.pic_actionurl != null) {
-      paramJceOutputStream.write(this.pic_actionurl, 11);
+    localObject = this.pic_actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.user_actiontype, 12);
-    if (this.user_actionurl != null) {
-      paramJceOutputStream.write(this.user_actionurl, 13);
+    localObject = this.user_actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 14);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_left_thumb
  * JD-Core Version:    0.7.0.1
  */

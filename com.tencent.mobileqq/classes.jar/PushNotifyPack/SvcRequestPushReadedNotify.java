@@ -56,20 +56,23 @@ public final class SvcRequestPushReadedNotify
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.cNotifyType, 0);
-    if (this.vC2CReadedNotify != null) {
-      paramJceOutputStream.write(this.vC2CReadedNotify, 1);
+    ArrayList localArrayList = this.vC2CReadedNotify;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
-    if (this.vGroupReadedNotify != null) {
-      paramJceOutputStream.write(this.vGroupReadedNotify, 2);
+    localArrayList = this.vGroupReadedNotify;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
-    if (this.vDisReadedNotify != null) {
-      paramJceOutputStream.write(this.vDisReadedNotify, 3);
+    localArrayList = this.vDisReadedNotify;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     PushNotifyPack.SvcRequestPushReadedNotify
  * JD-Core Version:    0.7.0.1
  */

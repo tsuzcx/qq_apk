@@ -11,23 +11,23 @@ class EmoticonPanelMallHelper$7
   
   public void run()
   {
-    if (!this.this$0.mPanelController.addEmoPkgList.contains(this.val$ep)) {
-      this.this$0.mPanelController.addEmoPkgList.add(this.val$ep);
+    if (!((EmoticonPanelController)this.this$0.mPanelController).getBasePanelModel().addEmoPkgList.contains(this.val$ep)) {
+      ((EmoticonPanelController)this.this$0.mPanelController).getBasePanelModel().addEmoPkgList.add(this.val$ep);
     }
-    this.this$0.mPanelController.mMarketPgkDownloaded = true;
-    this.this$0.mPanelController.getPanel().mSecondTabInited = false;
-    if (this.this$0.mPanelController.getPanel().getVisibility() == 0)
+    ((EmoticonPanelController)this.this$0.mPanelController).getBasePanelView().mMarketPgkDownloaded = true;
+    ((EmoticonPanelController)this.this$0.mPanelController).getPanel().mSecondTabInited = false;
+    if (((EmoticonPanelController)this.this$0.mPanelController).getPanel().getVisibility() == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelMallHelper", 2, "refresh magic emoji.");
       }
-      this.this$0.mPanelController.switchTabMode(EmoticonPanelController.sLastSelectedSecondTabIndex);
+      ((EmoticonPanelController)this.this$0.mPanelController).switchTabMode(BasePanelModel.sLastSelectedSecondTabIndex);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.7
  * JD-Core Version:    0.7.0.1
  */

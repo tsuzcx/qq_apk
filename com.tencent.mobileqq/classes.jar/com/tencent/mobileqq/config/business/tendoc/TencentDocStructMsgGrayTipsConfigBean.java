@@ -13,56 +13,68 @@ public class TencentDocStructMsgGrayTipsConfigBean
   
   public static TencentDocStructMsgGrayTipsConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      paramArrayOfQConfItem = null;
-    }
-    TencentDocStructMsgGrayTipsConfigBean localTencentDocStructMsgGrayTipsConfigBean;
-    for (;;)
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      return paramArrayOfQConfItem;
-      localTencentDocStructMsgGrayTipsConfigBean = new TencentDocStructMsgGrayTipsConfigBean();
+      TencentDocStructMsgGrayTipsConfigBean localTencentDocStructMsgGrayTipsConfigBean = new TencentDocStructMsgGrayTipsConfigBean();
       try
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[0].a);
-        if (localJSONObject.has("flag"))
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        if (paramArrayOfQConfItem.has("flag"))
         {
-          localTencentDocStructMsgGrayTipsConfigBean.d = localJSONObject.getInt("flag");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips flag = " + localTencentDocStructMsgGrayTipsConfigBean.d);
-          }
-        }
-        if (localJSONObject.has("showCount"))
-        {
-          localTencentDocStructMsgGrayTipsConfigBean.c = localJSONObject.getInt("showCount");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips showCount = " + localTencentDocStructMsgGrayTipsConfigBean.c);
-          }
-        }
-        if (localJSONObject.has("groupFlag"))
-        {
-          localTencentDocStructMsgGrayTipsConfigBean.b = localJSONObject.getInt("groupFlag");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupFlag = " + localTencentDocStructMsgGrayTipsConfigBean.b);
-          }
-        }
-        paramArrayOfQConfItem = localTencentDocStructMsgGrayTipsConfigBean;
-        if (localJSONObject.has("groupShowCount"))
-        {
-          localTencentDocStructMsgGrayTipsConfigBean.a = localJSONObject.getInt("groupShowCount");
-          paramArrayOfQConfItem = localTencentDocStructMsgGrayTipsConfigBean;
+          localTencentDocStructMsgGrayTipsConfigBean.d = paramArrayOfQConfItem.getInt("flag");
           if (QLog.isColorLevel())
           {
-            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupShowCount = " + localTencentDocStructMsgGrayTipsConfigBean.a);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleDocsStructMsgGrayTips flag = ");
+            localStringBuilder.append(localTencentDocStructMsgGrayTipsConfigBean.d);
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, localStringBuilder.toString());
+          }
+        }
+        if (paramArrayOfQConfItem.has("showCount"))
+        {
+          localTencentDocStructMsgGrayTipsConfigBean.c = paramArrayOfQConfItem.getInt("showCount");
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleDocsStructMsgGrayTips showCount = ");
+            localStringBuilder.append(localTencentDocStructMsgGrayTipsConfigBean.c);
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, localStringBuilder.toString());
+          }
+        }
+        if (paramArrayOfQConfItem.has("groupFlag"))
+        {
+          localTencentDocStructMsgGrayTipsConfigBean.b = paramArrayOfQConfItem.getInt("groupFlag");
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleDocsStructMsgGrayTips groupFlag = ");
+            localStringBuilder.append(localTencentDocStructMsgGrayTipsConfigBean.b);
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, localStringBuilder.toString());
+          }
+        }
+        if (paramArrayOfQConfItem.has("groupShowCount"))
+        {
+          localTencentDocStructMsgGrayTipsConfigBean.a = paramArrayOfQConfItem.getInt("groupShowCount");
+          if (QLog.isColorLevel())
+          {
+            paramArrayOfQConfItem = new StringBuilder();
+            paramArrayOfQConfItem.append("handleDocsStructMsgGrayTips groupShowCount = ");
+            paramArrayOfQConfItem.append(localTencentDocStructMsgGrayTipsConfigBean.a);
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, paramArrayOfQConfItem.toString());
             return localTencentDocStructMsgGrayTipsConfigBean;
           }
         }
       }
       catch (Exception paramArrayOfQConfItem)
       {
-        QLog.e("TencentDocStructMsgGrayTipsConfigBean", 1, "handleDocsStructMsgGrayTips e " + paramArrayOfQConfItem.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleDocsStructMsgGrayTips e ");
+        localStringBuilder.append(paramArrayOfQConfItem.toString());
+        QLog.e("TencentDocStructMsgGrayTipsConfigBean", 1, localStringBuilder.toString());
       }
+      return localTencentDocStructMsgGrayTipsConfigBean;
     }
-    return localTencentDocStructMsgGrayTipsConfigBean;
+    return null;
   }
   
   public int a()
@@ -87,7 +99,7 @@ public class TencentDocStructMsgGrayTipsConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocStructMsgGrayTipsConfigBean
  * JD-Core Version:    0.7.0.1
  */

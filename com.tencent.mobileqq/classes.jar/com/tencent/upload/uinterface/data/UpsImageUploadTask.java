@@ -65,22 +65,24 @@ public class UpsImageUploadTask
     localUploadUpsInfoReq.sFileId = this.fileId;
     localUploadUpsInfoReq.sBusinessId = this.sBusinessId;
     localUploadUpsInfoReq.vBusiNessData = this.vBusiNessData;
-    if (this.iBusiNessType != 0) {}
-    for (int i = 1;; i = 0)
-    {
-      localUploadUpsInfoReq.bNotifyWns = ((byte)i);
-      localUploadUpsInfoReq.iBatchId = this.iBatchID;
-      localUploadUpsInfoReq.iBatUploadNum = this.iBatchUploadCount;
-      localUploadUpsInfoReq.iCurUpload = this.iCurrentUploadOrder;
-      localUploadUpsInfoReq.sWnsCmd = this.sCommand;
-      BitmapFactory.Options localOptions = BitmapUtils.getOptions();
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(this.uploadFilePath, localOptions);
-      localUploadUpsInfoReq.iPicHight = localOptions.outHeight;
-      localUploadUpsInfoReq.iPicWidth = localOptions.outWidth;
-      localUploadUpsInfoReq.mapExt = this.mapExt;
-      return JceEncoder.encode(localUploadUpsInfoReq);
+    int i;
+    if (this.iBusiNessType != 0) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    localUploadUpsInfoReq.bNotifyWns = ((byte)i);
+    localUploadUpsInfoReq.iBatchId = this.iBatchID;
+    localUploadUpsInfoReq.iBatUploadNum = this.iBatchUploadCount;
+    localUploadUpsInfoReq.iCurUpload = this.iCurrentUploadOrder;
+    localUploadUpsInfoReq.sWnsCmd = this.sCommand;
+    BitmapFactory.Options localOptions = BitmapUtils.getOptions();
+    localOptions.inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(this.uploadFilePath, localOptions);
+    localUploadUpsInfoReq.iPicHight = localOptions.outHeight;
+    localUploadUpsInfoReq.iPicWidth = localOptions.outWidth;
+    localUploadUpsInfoReq.mapExt = this.mapExt;
+    return JceEncoder.encode(localUploadUpsInfoReq);
   }
   
   public TaskTypeConfig getUploadTaskType()
@@ -88,7 +90,7 @@ public class UpsImageUploadTask
     return TaskTypeConfig.UpsUploadTaskType;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (!this.mKeepFileAfterUpload) {
       FileUtils.deleteTempFile(this.mFilePath);
@@ -96,43 +98,44 @@ public class UpsImageUploadTask
     CacheUtil.deleteSessionId(this, this.mSessionId);
   }
   
-  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject2 = null;
     try
     {
-      localObject1 = (UploadUpsInfoRsp)JceEncoder.decode(UploadUpsInfoRsp.class, paramArrayOfByte);
-      localObject2 = localObject1;
+      UploadUpsInfoRsp localUploadUpsInfoRsp = (UploadUpsInfoRsp)JceEncoder.decode(UploadUpsInfoRsp.class, paramArrayOfByte);
       localObject1 = null;
+      localObject2 = localUploadUpsInfoRsp;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localObject1 = Log.getStackTraceString(localException);
-        UploadLog.w("UpsImageUploadTask", "get rsp ", localException);
-      }
-      Object localObject1 = new UpsImageUploadResult();
-      ((UpsImageUploadResult)localObject1).flowId = this.flowId;
-      ((UpsImageUploadResult)localObject1).dataType = ((UploadUpsInfoRsp)localObject2).iType;
-      ((UpsImageUploadResult)localObject1).vBusiNessData = ((UploadUpsInfoRsp)localObject2).vBusiNessData;
-      ((UpsImageUploadResult)localObject1).url = ((UploadUpsInfoRsp)localObject2).sUrl;
-      ((UpsImageUploadResult)localObject1).rawWidth = ((UploadUpsInfoRsp)localObject2).iWidth;
-      ((UpsImageUploadResult)localObject1).rawHeight = ((UploadUpsInfoRsp)localObject2).iHight;
-      ((UpsImageUploadResult)localObject1).photoType = ((UploadUpsInfoRsp)localObject2).iPhotoType;
-      onUploadSucceed(localObject1);
-      super.processFileUploadFinishRsp(paramArrayOfByte);
-      onDestroy();
+      localObject1 = Log.getStackTraceString(localException);
+      UploadLog.w("UpsImageUploadTask", "get rsp ", localException);
     }
     if (localObject2 == null)
     {
       localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = "unpack UploadUpsInfoRsp==null. " + paramArrayOfByte;
+      if (localObject1 == null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("unpack UploadUpsInfoRsp==null. ");
+        ((StringBuilder)localObject1).append(paramArrayOfByte);
+        localObject2 = ((StringBuilder)localObject1).toString();
       }
       onError(Const.UploadRetCode.DATA_UNPACK_FAILED_RETCODE.getCode(), (String)localObject2);
       return;
     }
+    Object localObject1 = new UpsImageUploadResult();
+    ((UpsImageUploadResult)localObject1).flowId = this.flowId;
+    ((UpsImageUploadResult)localObject1).dataType = ((UploadUpsInfoRsp)localObject2).iType;
+    ((UpsImageUploadResult)localObject1).vBusiNessData = ((UploadUpsInfoRsp)localObject2).vBusiNessData;
+    ((UpsImageUploadResult)localObject1).url = ((UploadUpsInfoRsp)localObject2).sUrl;
+    ((UpsImageUploadResult)localObject1).rawWidth = ((UploadUpsInfoRsp)localObject2).iWidth;
+    ((UpsImageUploadResult)localObject1).rawHeight = ((UploadUpsInfoRsp)localObject2).iHight;
+    ((UpsImageUploadResult)localObject1).photoType = ((UploadUpsInfoRsp)localObject2).iPhotoType;
+    onUploadSucceed(localObject1);
+    super.processFileUploadFinishRsp(paramArrayOfByte);
+    onDestroy();
   }
   
   public void setAppid(int paramInt)
@@ -142,7 +145,7 @@ public class UpsImageUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.UpsImageUploadTask
  * JD-Core Version:    0.7.0.1
  */

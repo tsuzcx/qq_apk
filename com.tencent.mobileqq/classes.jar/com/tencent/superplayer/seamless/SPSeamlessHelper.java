@@ -66,16 +66,17 @@ public class SPSeamlessHelper
     if (paramView == null) {
       return;
     }
-    if (paramFloat2 == 0.0F) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramFloat1, paramFloat2);
-      localAlphaAnimation.setDuration(paramLong);
-      localAlphaAnimation.setAnimationListener(new SPSeamlessHelper.3(this, bool, paramView));
-      paramView.setAnimation(localAlphaAnimation);
-      localAlphaAnimation.start();
-      return;
+    boolean bool;
+    if (paramFloat2 == 0.0F) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramFloat1, paramFloat2);
+    localAlphaAnimation.setDuration(paramLong);
+    localAlphaAnimation.setAnimationListener(new SPSeamlessHelper.3(this, bool, paramView));
+    paramView.setAnimation(localAlphaAnimation);
+    localAlphaAnimation.start();
   }
   
   private void doVideoViewAnimation(View paramView, ViewGroup paramViewGroup1, ViewGroup paramViewGroup2, long paramLong, SPSeamlessParam paramSPSeamlessParam, Animator.AnimatorListener paramAnimatorListener)
@@ -102,12 +103,11 @@ public class SPSeamlessHelper
   private View getVideoViewByToken(String paramString)
   {
     paramString = SuperPlayerSDKMgr.getPlayerPool().get(paramString);
-    if ((paramString == null) || (paramString.getVideoView() == null))
-    {
-      LogUtil.e("SPSeamlessHelper", "getVideoViewByToken failed for player/videoView or videoLayout is null.");
-      return null;
+    if ((paramString != null) && (paramString.getVideoView() != null)) {
+      return (View)paramString.getVideoView();
     }
-    return (View)paramString.getVideoView();
+    LogUtil.e("SPSeamlessHelper", "getVideoViewByToken failed for player/videoView or videoLayout is null.");
+    return null;
   }
   
   private ViewInfo getViewInfo(View paramView)
@@ -153,11 +153,11 @@ public class SPSeamlessHelper
     {
       doVideoViewAnimation(paramView, localViewGroup, paramViewGroup, 250L, paramSPSeamlessParam, new SPSeamlessHelper.1(this));
       doContentViewAlphaGradientAnimation(localViewGroup.findViewById(16908290), 1.0F, 0.0F, 250L);
-    }
-    while (paramSceneTransformType != SPSeamlessHelper.SceneTransformType.EnterIn) {
       return;
     }
-    paramViewGroup.getViewTreeObserver().addOnPreDrawListener(new SPSeamlessHelper.2(this, paramViewGroup, paramView, localViewGroup, paramSPSeamlessParam));
+    if (paramSceneTransformType == SPSeamlessHelper.SceneTransformType.EnterIn) {
+      paramViewGroup.getViewTreeObserver().addOnPreDrawListener(new SPSeamlessHelper.2(this, paramViewGroup, paramView, localViewGroup, paramSPSeamlessParam));
+    }
   }
   
   public void attachVideoView(ViewGroup paramViewGroup, View paramView)
@@ -172,27 +172,24 @@ public class SPSeamlessHelper
   
   public void attachVideoView(ViewGroup paramViewGroup, View paramView, ViewGroup.LayoutParams paramLayoutParams, int paramInt)
   {
-    if ((paramViewGroup == null) || (paramView == null))
+    if ((paramViewGroup != null) && (paramView != null))
     {
-      LogUtil.e("SPSeamlessHelper", "innerAttachVideoView failed for containerView or videoView is null");
-      return;
-    }
-    if ((paramView instanceof ISPlayerVideoView)) {
-      ((ISPlayerVideoView)paramView).disableViewCallback();
-    }
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if (localViewGroup != null) {
-      localViewGroup.removeView(paramView);
-    }
-    if (paramInt == -1) {
-      paramViewGroup.addView(paramView, paramLayoutParams);
-    }
-    for (;;)
-    {
+      if ((paramView instanceof ISPlayerVideoView)) {
+        ((ISPlayerVideoView)paramView).disableViewCallback();
+      }
+      ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
+      if (localViewGroup != null) {
+        localViewGroup.removeView(paramView);
+      }
+      if (paramInt == -1) {
+        paramViewGroup.addView(paramView, paramLayoutParams);
+      } else {
+        paramViewGroup.addView(paramView, paramInt, paramLayoutParams);
+      }
       ((ISPlayerVideoView)paramView).enableViewCallback();
       return;
-      paramViewGroup.addView(paramView, paramInt, paramLayoutParams);
     }
+    LogUtil.e("SPSeamlessHelper", "innerAttachVideoView failed for containerView or videoView is null");
   }
   
   public void attachVideoView(ViewGroup paramViewGroup, ISPlayerVideoView paramISPlayerVideoView)
@@ -214,12 +211,12 @@ public class SPSeamlessHelper
       addSeamlessCallback(paramString, paramSeamlessCallback);
     }
     paramString = SuperPlayerSDKMgr.getPlayerPool().get(paramString);
-    if ((paramString == null) || (paramString.getVideoView() == null) || (paramViewGroup == null))
+    if ((paramString != null) && (paramString.getVideoView() != null) && (paramViewGroup != null))
     {
-      LogUtil.e("SPSeamlessHelper", "attachBeforeAnimation failed for player/videoView or videoLayout is null.");
+      attachVideoView(paramViewGroup, paramString.getVideoView(), paramLayoutParams);
       return;
     }
-    attachVideoView(paramViewGroup, paramString.getVideoView(), paramLayoutParams);
+    LogUtil.e("SPSeamlessHelper", "attachBeforeAnimation failed for player/videoView or videoLayout is null.");
   }
   
   public void enterSceneWithAnim(Activity paramActivity, String paramString, ViewGroup paramViewGroup, SPSeamlessParam paramSPSeamlessParam, SPSeamlessHelper.SeamlessCallback paramSeamlessCallback)
@@ -228,15 +225,15 @@ public class SPSeamlessHelper
       addSeamlessCallback(paramString, paramSeamlessCallback);
     }
     paramString = SuperPlayerSDKMgr.getPlayerPool().get(paramString);
-    if ((paramString == null) || (paramString.getVideoView() == null) || (paramViewGroup == null))
+    if ((paramString != null) && (paramString.getVideoView() != null) && (paramViewGroup != null))
     {
-      LogUtil.e("SPSeamlessHelper", "attachBeforeAnimation failed for player/videoView or videoLayout is null.");
+      paramString = (View)paramString.getVideoView();
+      this.mAnimActivity = paramActivity;
+      this.mJumpParentViewGroup = getParentView(paramString);
+      attachThenDoAnimation(paramString, paramViewGroup, paramSPSeamlessParam, SPSeamlessHelper.SceneTransformType.EnterIn);
       return;
     }
-    paramString = (View)paramString.getVideoView();
-    this.mAnimActivity = paramActivity;
-    this.mJumpParentViewGroup = getParentView(paramString);
-    attachThenDoAnimation(paramString, paramViewGroup, paramSPSeamlessParam, SPSeamlessHelper.SceneTransformType.EnterIn);
+    LogUtil.e("SPSeamlessHelper", "attachBeforeAnimation failed for player/videoView or videoLayout is null.");
   }
   
   public void exitScene(String paramString1, String paramString2, SPSeamlessParam paramSPSeamlessParam, SPSeamlessHelper.SeamlessCallback paramSeamlessCallback)
@@ -263,7 +260,12 @@ public class SPSeamlessHelper
       attachThenDoAnimation(paramSeamlessCallback, this.mJumpParentViewGroup, paramSPSeamlessParam, SPSeamlessHelper.SceneTransformType.Exit);
       return;
     }
-    LogUtil.w("SPSeamlessHelper", "exitScene failed for token not equal, enterToken:" + paramString1 + " leftToken:" + paramString2);
+    paramSPSeamlessParam = new StringBuilder();
+    paramSPSeamlessParam.append("exitScene failed for token not equal, enterToken:");
+    paramSPSeamlessParam.append(paramString1);
+    paramSPSeamlessParam.append(" leftToken:");
+    paramSPSeamlessParam.append(paramString2);
+    LogUtil.w("SPSeamlessHelper", paramSPSeamlessParam.toString());
   }
   
   public void jumpScene(Activity paramActivity, String paramString, SPSeamlessHelper.SeamlessCallback paramSeamlessCallback)
@@ -290,7 +292,7 @@ public class SPSeamlessHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.seamless.SPSeamlessHelper
  * JD-Core Version:    0.7.0.1
  */

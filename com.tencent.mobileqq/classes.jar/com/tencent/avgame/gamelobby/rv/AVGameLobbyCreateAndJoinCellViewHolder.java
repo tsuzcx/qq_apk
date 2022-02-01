@@ -6,36 +6,34 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
-import com.dataline.util.widget.AsyncImageView;
 import com.tencent.avgame.gamelobby.data.AVGameLobbyCreateAndJoinContentInfo;
 import com.tencent.avgame.gamelobby.view.AutoResizeAsyncImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class AVGameLobbyCreateAndJoinCellViewHolder
   extends BaseViewHolder<AVGameLobbyCreateAndJoinContentInfo>
   implements View.OnTouchListener
 {
-  private static final String jdField_a_of_type_JavaLangString = AVGameLobbyCreateAndJoinCellViewHolder.class.getName();
+  private static final String jdField_a_of_type_JavaLangString = "com.tencent.avgame.gamelobby.rv.AVGameLobbyCreateAndJoinCellViewHolder";
   private Context jdField_a_of_type_AndroidContentContext = null;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private AsyncImageView jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView;
   private AutoResizeAsyncImageView jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView;
-  private AsyncImageView jdField_b_of_type_ComDatalineUtilWidgetAsyncImageView;
+  private AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
   private AutoResizeAsyncImageView jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView;
+  private AsyncImageView jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
   
   public AVGameLobbyCreateAndJoinCellViewHolder(@NonNull View paramView)
   {
     super(paramView);
     this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131363282));
-    this.jdField_b_of_type_ComDatalineUtilWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131363294));
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363280));
-    this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363292));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363279));
-    this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultColorDrawable(0);
-    this.jdField_b_of_type_ComDatalineUtilWidgetAsyncImageView.setDefaultColorDrawable(0);
-    View localView = paramView.findViewById(2131363281);
-    paramView = paramView.findViewById(2131363293);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131363214));
+    this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131363226));
+    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363212));
+    this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363224));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363211));
+    View localView = paramView.findViewById(2131363213);
+    paramView = paramView.findViewById(2131363225);
     localView.setOnTouchListener(this);
     paramView.setOnTouchListener(this);
     a(paramView);
@@ -55,39 +53,42 @@ public class AVGameLobbyCreateAndJoinCellViewHolder
     }
     this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.a(paramAVGameLobbyCreateAndJoinContentInfo.jdField_a_of_type_JavaLangString);
     this.jdField_b_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.a(paramAVGameLobbyCreateAndJoinContentInfo.b);
-    this.jdField_a_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(paramAVGameLobbyCreateAndJoinContentInfo.c);
-    this.jdField_b_of_type_ComDatalineUtilWidgetAsyncImageView.setAsyncImage(paramAVGameLobbyCreateAndJoinContentInfo.d);
-    int j = AIOUtils.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setUrlIconAsyncImage(paramAVGameLobbyCreateAndJoinContentInfo.c);
+    this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setUrlIconAsyncImage(paramAVGameLobbyCreateAndJoinContentInfo.d);
+    int j = ViewUtils.a(16.0F);
     int i;
-    if (paramAVGameLobbyCreateAndJoinContentInfo.jdField_a_of_type_Boolean) {
-      i = AIOUtils.a(97.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    }
-    for (paramInt = AIOUtils.a(27.0F, this.jdField_a_of_type_AndroidContentContext.getResources());; paramInt = AIOUtils.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()))
+    if (paramAVGameLobbyCreateAndJoinContentInfo.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().height = i;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(j, paramInt, j, 0);
-      return;
-      i = AIOUtils.a(83.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramInt = ViewUtils.a(97.0F);
+      i = ViewUtils.a(27.0F);
     }
+    else
+    {
+      paramInt = ViewUtils.a(83.0F);
+      i = ViewUtils.a(13.0F);
+    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().height = paramInt;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(j, i, j, 0);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getActionMasked())
+    int i = paramMotionEvent.getActionMasked();
+    if (i != 0)
     {
+      if ((i == 1) || (i == 3)) {
+        paramView.setAlpha(1.0F);
+      }
     }
-    for (;;)
-    {
-      return false;
+    else {
       paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.rv.AVGameLobbyCreateAndJoinCellViewHolder
  * JD-Core Version:    0.7.0.1
  */

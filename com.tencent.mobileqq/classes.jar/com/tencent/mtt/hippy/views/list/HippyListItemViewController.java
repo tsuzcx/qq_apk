@@ -21,14 +21,14 @@ public class HippyListItemViewController
     return new ListItemRenderNode(paramInt, paramHippyMap, paramString, paramHippyRootView, paramControllerManager, paramBoolean);
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyListItemView(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.list.HippyListItemViewController
  * JD-Core Version:    0.7.0.1
  */

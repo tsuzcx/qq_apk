@@ -70,7 +70,7 @@ public final class a
     //   68: astore_3
     //   69: aload 4
     //   71: invokevirtual 80	java/io/File:exists	()Z
-    //   74: ifeq +95 -> 169
+    //   74: ifeq +117 -> 191
     //   77: aload_3
     //   78: ldc 91
     //   80: ldc 93
@@ -95,7 +95,7 @@ public final class a
     //   119: astore_2
     //   120: aload_2
     //   121: invokeinterface 123 1 0
-    //   126: ifeq +102 -> 228
+    //   126: ifeq +38 -> 164
     //   129: aload_2
     //   130: invokeinterface 127 1 0
     //   135: checkcast 129	java/util/Map$Entry
@@ -108,88 +108,85 @@ public final class a
     //   153: invokeinterface 138 1 0
     //   158: invokevirtual 96	com/tencent/tbs/one/impl/e/i:a	(Ljava/lang/String;Ljava/lang/Object;)V
     //   161: goto -41 -> 120
-    //   164: astore_2
-    //   165: aload_0
-    //   166: invokestatic 143	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
-    //   169: ldc 145
-    //   171: aload_1
-    //   172: invokevirtual 151	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   175: ifeq +51 -> 226
-    //   178: aload_3
-    //   179: getfield 155	com/tencent/tbs/one/impl/e/i:q	Landroid/content/SharedPreferences;
-    //   182: astore_2
-    //   183: aload_2
-    //   184: ldc 157
-    //   186: invokeinterface 163 2 0
-    //   191: ifne +35 -> 226
-    //   194: getstatic 169	com/tencent/tbs/sdk/BuildConfig:COMPONENT_SDK_VERSIONS	Ljava/util/Map;
-    //   197: invokeinterface 174 1 0
-    //   202: astore_0
-    //   203: aload_2
-    //   204: invokeinterface 178 1 0
-    //   209: astore_2
-    //   210: aload_2
-    //   211: ldc 157
-    //   213: aload_0
-    //   214: invokeinterface 184 3 0
-    //   219: pop
-    //   220: aload_2
-    //   221: invokeinterface 187 1 0
-    //   226: aload_3
-    //   227: areturn
-    //   228: aload_0
-    //   229: invokestatic 143	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
-    //   232: goto -63 -> 169
-    //   235: astore_0
-    //   236: aconst_null
-    //   237: astore_2
-    //   238: aload_0
-    //   239: astore_1
-    //   240: aload_2
-    //   241: invokestatic 143	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
-    //   244: aload_1
-    //   245: athrow
-    //   246: astore_0
-    //   247: ldc 189
-    //   249: iconst_2
-    //   250: anewarray 4	java/lang/Object
-    //   253: dup
-    //   254: iconst_0
-    //   255: aload_1
-    //   256: aastore
+    //   164: aload_0
+    //   165: invokestatic 143	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
+    //   168: goto +23 -> 191
+    //   171: astore_1
+    //   172: goto +9 -> 181
+    //   175: goto +12 -> 187
+    //   178: astore_1
+    //   179: aconst_null
+    //   180: astore_0
+    //   181: aload_0
+    //   182: invokestatic 143	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
+    //   185: aload_1
+    //   186: athrow
+    //   187: aload_0
+    //   188: invokestatic 143	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
+    //   191: ldc 145
+    //   193: aload_1
+    //   194: invokevirtual 151	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   197: ifeq +71 -> 268
+    //   200: aload_3
+    //   201: getfield 155	com/tencent/tbs/one/impl/e/i:q	Landroid/content/SharedPreferences;
+    //   204: astore_2
+    //   205: aload_2
+    //   206: ldc 157
+    //   208: invokeinterface 163 2 0
+    //   213: ifne +55 -> 268
+    //   216: getstatic 169	com/tencent/tbs/sdk/BuildConfig:COMPONENT_SDK_VERSIONS	Ljava/util/Map;
+    //   219: invokeinterface 174 1 0
+    //   224: astore_0
+    //   225: aload_2
+    //   226: invokeinterface 178 1 0
+    //   231: astore_2
+    //   232: aload_2
+    //   233: ldc 157
+    //   235: aload_0
+    //   236: invokeinterface 184 3 0
+    //   241: pop
+    //   242: aload_2
+    //   243: invokeinterface 187 1 0
+    //   248: aload_3
+    //   249: areturn
+    //   250: astore_0
+    //   251: ldc 189
+    //   253: iconst_2
+    //   254: anewarray 4	java/lang/Object
     //   257: dup
-    //   258: iconst_1
-    //   259: aload_0
+    //   258: iconst_0
+    //   259: aload_1
     //   260: aastore
-    //   261: invokestatic 195	com/tencent/tbs/one/impl/a/f:c	(Ljava/lang/String;[Ljava/lang/Object;)V
-    //   264: aload_3
-    //   265: areturn
-    //   266: astore_1
-    //   267: aload_0
-    //   268: astore_2
-    //   269: goto -29 -> 240
+    //   261: dup
+    //   262: iconst_1
+    //   263: aload_0
+    //   264: aastore
+    //   265: invokestatic 195	com/tencent/tbs/one/impl/a/f:c	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   268: aload_3
+    //   269: areturn
+    //   270: astore_0
+    //   271: aload_2
     //   272: astore_0
-    //   273: aload_2
-    //   274: astore_0
-    //   275: goto -110 -> 165
+    //   273: goto -86 -> 187
+    //   276: astore_2
+    //   277: goto -102 -> 175
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	278	0	paramContext	Context
-    //   0	278	1	paramString	String
-    //   86	44	2	localObject1	Object
-    //   164	1	2	localIOException	java.io.IOException
-    //   182	92	2	localObject2	Object
-    //   68	197	3	locali	i
-    //   49	103	4	localObject3	Object
+    //   0	280	0	paramContext	Context
+    //   0	280	1	paramString	String
+    //   86	186	2	localObject1	Object
+    //   276	1	2	localIOException	java.io.IOException
+    //   68	201	3	locali	i
+    //   49	103	4	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   97	120	164	java/io/IOException
-    //   120	161	164	java/io/IOException
-    //   87	97	235	finally
-    //   194	226	246	java/lang/Throwable
-    //   97	120	266	finally
-    //   120	161	266	finally
-    //   87	97	272	java/io/IOException
+    //   97	120	171	finally
+    //   120	161	171	finally
+    //   87	97	178	finally
+    //   216	248	250	java/lang/Throwable
+    //   87	97	270	java/io/IOException
+    //   97	120	276	java/io/IOException
+    //   120	161	276	java/io/IOException
   }
   
   public static void a(Context paramContext)
@@ -211,7 +208,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a
  * JD-Core Version:    0.7.0.1
  */

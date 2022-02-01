@@ -17,42 +17,42 @@ class VideoController$34
     if (VideoController.a(this.this$0).isEmpty()) {
       QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "InviteMemberList dealInviteMemberRsp empty result");
     }
-    HashSet localHashSet = new HashSet();
-    Iterator localIterator = VideoController.a(this.this$0).iterator();
-    while (localIterator.hasNext()) {
-      localHashSet.add(Long.valueOf(((VideoController.GAudioFriends)localIterator.next()).jdField_a_of_type_Long));
+    Object localObject1 = new HashSet();
+    Object localObject2 = VideoController.a(this.this$0).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((HashSet)localObject1).add(Long.valueOf(((VideoController.GAudioFriends)((Iterator)localObject2).next()).jdField_a_of_type_Long));
     }
-    localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     boolean bool = false;
-    if (localIterator.hasNext())
+    while (((Iterator)localObject2).hasNext())
     {
-      Memberinfo localMemberinfo = (Memberinfo)localIterator.next();
-      if (localHashSet.contains(Long.valueOf(localMemberinfo.jdField_a_of_type_Long))) {
-        break label276;
+      Memberinfo localMemberinfo = (Memberinfo)((Iterator)localObject2).next();
+      if (!((HashSet)localObject1).contains(Long.valueOf(localMemberinfo.jdField_a_of_type_Long)))
+      {
+        VideoController.GAudioFriends localGAudioFriends = new VideoController.GAudioFriends();
+        localGAudioFriends.d = 0;
+        localGAudioFriends.jdField_a_of_type_Long = localMemberinfo.jdField_a_of_type_Long;
+        localGAudioFriends.h = false;
+        localGAudioFriends.e = localMemberinfo.b;
+        VideoController.a(this.this$0).add(localGAudioFriends);
+        bool = true;
       }
-      VideoController.GAudioFriends localGAudioFriends = new VideoController.GAudioFriends();
-      localGAudioFriends.d = 0;
-      localGAudioFriends.jdField_a_of_type_Long = localMemberinfo.jdField_a_of_type_Long;
-      localGAudioFriends.h = false;
-      localGAudioFriends.e = localMemberinfo.b;
-      VideoController.a(this.this$0).add(localGAudioFriends);
-      bool = true;
     }
-    label276:
-    for (;;)
-    {
-      break;
-      if (bool) {
-        this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), VideoController.a(this.this$0) });
-      }
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 1, "InviteMemberList dealInviteMemberRsp memberLists size=" + this.jdField_a_of_type_JavaUtilArrayList.size() + ";change:" + bool);
-      return;
+    if (bool) {
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), VideoController.a(this.this$0) });
     }
+    localObject1 = VideoController.jdField_a_of_type_JavaLangString;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("InviteMemberList dealInviteMemberRsp memberLists size=");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+    ((StringBuilder)localObject2).append(";change:");
+    ((StringBuilder)localObject2).append(bool);
+    QLog.d((String)localObject1, 1, ((StringBuilder)localObject2).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.34
  * JD-Core Version:    0.7.0.1
  */

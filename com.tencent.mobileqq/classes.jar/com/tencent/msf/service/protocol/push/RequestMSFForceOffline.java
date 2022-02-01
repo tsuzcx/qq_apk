@@ -54,19 +54,21 @@ public final class RequestMSFForceOffline
     paramJceOutputStream.write(this.iSeqno, 1);
     paramJceOutputStream.write(this.bKickType, 2);
     paramJceOutputStream.write(this.strInfo, 3);
-    if (this.strTitle != null) {
-      paramJceOutputStream.write(this.strTitle, 4);
+    Object localObject = this.strTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.bSigKick, 5);
-    if (this.vecSigKickData != null) {
-      paramJceOutputStream.write(this.vecSigKickData, 6);
+    localObject = this.vecSigKickData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
     paramJceOutputStream.write(this.bSameDevice, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.RequestMSFForceOffline
  * JD-Core Version:    0.7.0.1
  */

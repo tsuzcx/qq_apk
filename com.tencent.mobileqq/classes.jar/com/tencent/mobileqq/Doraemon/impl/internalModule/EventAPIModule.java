@@ -24,8 +24,8 @@ import org.json.JSONObject;
 public class EventAPIModule
   extends DoraemonAPIModule
 {
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  private static HashSet<WeakReference<EventAPIModule>> jdField_a_of_type_JavaUtilHashSet = null;
+  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private static HashSet<WeakReference<EventAPIModule>> jdField_a_of_type_JavaUtilHashSet;
   private static boolean jdField_a_of_type_Boolean = false;
   private String jdField_a_of_type_JavaLangString;
   private WeakReference<EventAPIModule> jdField_a_of_type_JavaLangRefWeakReference;
@@ -41,8 +41,14 @@ public class EventAPIModule
   
   protected String a()
   {
-    if (this.jdField_b_of_type_JavaLangString == null) {
-      this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int + "_" + this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString + ".virtual_host");
+    if (this.jdField_b_of_type_JavaLangString == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int);
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(".virtual_host");
+      this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     }
     return this.jdField_b_of_type_JavaLangString;
   }
@@ -51,345 +57,351 @@ public class EventAPIModule
   protected void a(android.content.Context paramContext, Intent paramIntent)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: iconst_0
-    //   4: istore_3
+    //   0: aload_2
+    //   1: ifnonnull +4 -> 5
+    //   4: return
     //   5: aload_2
-    //   6: ifnonnull +4 -> 10
-    //   9: return
-    //   10: aload_2
-    //   11: ldc 72
-    //   13: iconst_1
-    //   14: invokevirtual 78	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   17: ifeq -8 -> 9
-    //   20: aload_2
-    //   21: ldc 80
-    //   23: invokevirtual 84	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   26: astore_1
+    //   6: ldc 71
+    //   8: iconst_1
+    //   9: invokevirtual 77	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   12: ifne +4 -> 16
+    //   15: return
+    //   16: aload_2
+    //   17: ldc 79
+    //   19: invokevirtual 83	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   22: astore_1
+    //   23: aload_1
+    //   24: ifnull +15 -> 39
     //   27: aload_1
-    //   28: ifnull +14 -> 42
-    //   31: aload_1
-    //   32: aload_0
-    //   33: invokevirtual 86	com/tencent/mobileqq/Doraemon/impl/internalModule/EventAPIModule:b	()Ljava/lang/String;
-    //   36: invokevirtual 92	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   39: ifne -30 -> 9
-    //   42: aload_2
-    //   43: ldc 94
-    //   45: invokevirtual 84	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   48: astore 6
-    //   50: aload 6
-    //   52: invokestatic 100	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   55: ifne -46 -> 9
-    //   58: aload_2
-    //   59: ldc 102
-    //   61: invokevirtual 84	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   64: astore_1
-    //   65: aload_1
-    //   66: ifnull +180 -> 246
-    //   69: new 104	org/json/JSONObject
-    //   72: dup
-    //   73: aload_1
-    //   74: invokespecial 107	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   77: astore_1
-    //   78: aload_2
-    //   79: ldc 109
-    //   81: invokevirtual 113	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   84: astore 7
-    //   86: aload 7
-    //   88: ifnull -79 -> 9
-    //   91: aload_2
-    //   92: ldc 115
-    //   94: invokevirtual 84	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   97: astore 8
-    //   99: aload 5
-    //   101: astore_2
-    //   102: aload 8
-    //   104: ifnull +13 -> 117
-    //   107: new 104	org/json/JSONObject
-    //   110: dup
-    //   111: aload 8
-    //   113: invokespecial 107	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   116: astore_2
-    //   117: aload_0
-    //   118: invokevirtual 117	com/tencent/mobileqq/Doraemon/impl/internalModule/EventAPIModule:a	()Ljava/lang/String;
-    //   121: astore 8
-    //   123: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   126: ifeq +63 -> 189
-    //   129: aload_0
-    //   130: invokevirtual 126	java/lang/Object:toString	()Ljava/lang/String;
-    //   133: astore 9
-    //   135: aload_1
-    //   136: ifnull +92 -> 228
-    //   139: aload_1
-    //   140: invokevirtual 127	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   143: astore 5
-    //   145: ldc 129
-    //   147: iconst_2
-    //   148: ldc 131
-    //   150: iconst_5
-    //   151: anewarray 125	java/lang/Object
-    //   154: dup
-    //   155: iconst_0
-    //   156: aload 9
-    //   158: aastore
-    //   159: dup
-    //   160: iconst_1
-    //   161: aload 6
-    //   163: aastore
-    //   164: dup
-    //   165: iconst_2
-    //   166: aload 5
-    //   168: aastore
-    //   169: dup
-    //   170: iconst_3
-    //   171: ldc 133
-    //   173: aload 7
-    //   175: invokestatic 137	android/text/TextUtils:join	(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
-    //   178: aastore
-    //   179: dup
-    //   180: iconst_4
-    //   181: aload_2
-    //   182: aastore
-    //   183: invokestatic 141	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   186: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   189: aload 7
-    //   191: invokevirtual 150	java/util/ArrayList:size	()I
-    //   194: istore 4
-    //   196: iload_3
-    //   197: iload 4
-    //   199: if_icmpge -190 -> 9
-    //   202: aload 7
-    //   204: iload_3
-    //   205: invokevirtual 154	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   208: checkcast 88	java/lang/String
-    //   211: aload 8
-    //   213: invokestatic 159	com/tencent/biz/AuthorizeConfig:b	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   216: ifeq +19 -> 235
-    //   219: aload_0
-    //   220: aload 6
-    //   222: aload_1
-    //   223: aload_2
-    //   224: invokevirtual 162	com/tencent/mobileqq/Doraemon/impl/internalModule/EventAPIModule:a	(Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
-    //   227: return
-    //   228: ldc 164
-    //   230: astore 5
-    //   232: goto -87 -> 145
-    //   235: iload_3
-    //   236: iconst_1
-    //   237: iadd
-    //   238: istore_3
-    //   239: goto -43 -> 196
-    //   242: astore_1
-    //   243: return
-    //   244: astore_1
-    //   245: return
-    //   246: aconst_null
-    //   247: astore_1
-    //   248: goto -170 -> 78
+    //   28: aload_0
+    //   29: invokevirtual 85	com/tencent/mobileqq/Doraemon/impl/internalModule/EventAPIModule:b	()Ljava/lang/String;
+    //   32: invokevirtual 91	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   35: ifeq +4 -> 39
+    //   38: return
+    //   39: aload_2
+    //   40: ldc 93
+    //   42: invokevirtual 83	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: astore 7
+    //   47: aload 7
+    //   49: invokestatic 99	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   52: ifeq +4 -> 56
+    //   55: return
+    //   56: aload_2
+    //   57: ldc 101
+    //   59: invokevirtual 83	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   62: astore_1
+    //   63: aconst_null
+    //   64: astore 6
+    //   66: aload_1
+    //   67: ifnull +15 -> 82
+    //   70: new 103	org/json/JSONObject
+    //   73: dup
+    //   74: aload_1
+    //   75: invokespecial 106	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   78: astore_1
+    //   79: goto +5 -> 84
+    //   82: aconst_null
+    //   83: astore_1
+    //   84: aload_2
+    //   85: ldc 108
+    //   87: invokevirtual 112	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   90: astore 8
+    //   92: aload 8
+    //   94: ifnonnull +4 -> 98
+    //   97: return
+    //   98: aload_2
+    //   99: ldc 114
+    //   101: invokevirtual 83	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   104: astore 9
+    //   106: aload 6
+    //   108: astore_2
+    //   109: aload 9
+    //   111: ifnull +16 -> 127
+    //   114: new 103	org/json/JSONObject
+    //   117: dup
+    //   118: aload 9
+    //   120: invokespecial 106	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   123: astore_2
+    //   124: goto +3 -> 127
+    //   127: aload_0
+    //   128: invokevirtual 116	com/tencent/mobileqq/Doraemon/impl/internalModule/EventAPIModule:a	()Ljava/lang/String;
+    //   131: astore 9
+    //   133: invokestatic 122	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   136: istore 5
+    //   138: iconst_0
+    //   139: istore_3
+    //   140: iload 5
+    //   142: ifeq +70 -> 212
+    //   145: aload_0
+    //   146: invokevirtual 125	java/lang/Object:toString	()Ljava/lang/String;
+    //   149: astore 10
+    //   151: aload_1
+    //   152: ifnull +12 -> 164
+    //   155: aload_1
+    //   156: invokevirtual 126	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   159: astore 6
+    //   161: goto +7 -> 168
+    //   164: ldc 128
+    //   166: astore 6
+    //   168: ldc 130
+    //   170: iconst_2
+    //   171: ldc 132
+    //   173: iconst_5
+    //   174: anewarray 124	java/lang/Object
+    //   177: dup
+    //   178: iconst_0
+    //   179: aload 10
+    //   181: aastore
+    //   182: dup
+    //   183: iconst_1
+    //   184: aload 7
+    //   186: aastore
+    //   187: dup
+    //   188: iconst_2
+    //   189: aload 6
+    //   191: aastore
+    //   192: dup
+    //   193: iconst_3
+    //   194: ldc 134
+    //   196: aload 8
+    //   198: invokestatic 138	android/text/TextUtils:join	(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+    //   201: aastore
+    //   202: dup
+    //   203: iconst_4
+    //   204: aload_2
+    //   205: aastore
+    //   206: invokestatic 142	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   209: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   212: aload 8
+    //   214: invokevirtual 151	java/util/ArrayList:size	()I
+    //   217: istore 4
+    //   219: iload_3
+    //   220: iload 4
+    //   222: if_icmpge +36 -> 258
+    //   225: aload 8
+    //   227: iload_3
+    //   228: invokevirtual 155	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   231: checkcast 87	java/lang/String
+    //   234: aload 9
+    //   236: invokestatic 160	com/tencent/biz/AuthorizeConfig:b	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   239: ifeq +12 -> 251
+    //   242: aload_0
+    //   243: aload 7
+    //   245: aload_1
+    //   246: aload_2
+    //   247: invokevirtual 163	com/tencent/mobileqq/Doraemon/impl/internalModule/EventAPIModule:a	(Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
+    //   250: return
+    //   251: iload_3
+    //   252: iconst_1
+    //   253: iadd
+    //   254: istore_3
+    //   255: goto -36 -> 219
+    //   258: return
+    //   259: astore_1
+    //   260: return
+    //   261: astore_1
+    //   262: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	251	0	this	EventAPIModule
-    //   0	251	1	paramContext	android.content.Context
-    //   0	251	2	paramIntent	Intent
-    //   4	235	3	i	int
-    //   194	6	4	j	int
-    //   1	230	5	str1	String
-    //   48	173	6	str2	String
-    //   84	119	7	localArrayList	ArrayList
-    //   97	115	8	str3	String
-    //   133	24	9	str4	String
+    //   0	263	0	this	EventAPIModule
+    //   0	263	1	paramContext	android.content.Context
+    //   0	263	2	paramIntent	Intent
+    //   139	116	3	i	int
+    //   217	6	4	j	int
+    //   136	5	5	bool	boolean
+    //   64	126	6	str1	String
+    //   45	199	7	str2	String
+    //   90	136	8	localArrayList	ArrayList
+    //   104	131	9	str3	String
+    //   149	31	10	str4	String
     // Exception table:
     //   from	to	target	type
-    //   107	117	242	org/json/JSONException
-    //   69	78	244	org/json/JSONException
+    //   70	79	259	org/json/JSONException
+    //   114	124	261	org/json/JSONException
   }
   
   protected void a(String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    APICallback localAPICallback;
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      localAPICallback = null;
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = (APICallback)((HashMap)localObject).get(paramString);
     }
-    for (;;)
+    if (localObject != null)
     {
-      JSONObject localJSONObject;
-      if (localAPICallback != null) {
-        localJSONObject = new JSONObject();
-      }
+      JSONObject localJSONObject = new JSONObject();
       try
       {
         localJSONObject.put("event", paramString);
         localJSONObject.put("data", paramJSONObject1);
         localJSONObject.put("source", paramJSONObject2);
-        DoraemonUtil.b(localAPICallback, localJSONObject);
-        return;
-        localAPICallback = (APICallback)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
       }
       catch (JSONException paramString)
       {
-        for (;;)
-        {
-          QLog.e("DoraemonOpenAPI.event", 1, paramString.getMessage(), paramString);
-        }
+        QLog.e("DoraemonOpenAPI.event", 1, paramString.getMessage(), paramString);
       }
+      DoraemonUtil.b((APICallback)localObject, localJSONObject);
     }
   }
   
   public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    switch (paramInt)
+    paramString = "";
+    boolean bool1;
+    boolean bool2;
+    if (paramInt != 1)
     {
-    default: 
-      return false;
-    case 1: 
-      paramString = paramJSONObject.optString("event", "");
-      if (TextUtils.isEmpty(paramString))
+      if (paramInt != 4)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("DoraemonOpenAPI.event", 2, "event name is required");
+        if (paramInt != 23) {
+          return false;
         }
-        DoraemonUtil.a(paramAPICallback, -1, "event name is required");
-      }
-      break;
-    }
-    String str1;
-    label239:
-    JSONObject localJSONObject;
-    for (;;)
-    {
-      return true;
-      c();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramAPICallback);
-      DoraemonUtil.a(paramAPICallback, APIParam.a);
-      continue;
-      paramString = paramJSONObject.optString("event", "");
-      if (TextUtils.isEmpty(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("DoraemonOpenAPI.event", 2, "event name is required");
-        }
-        DoraemonUtil.a(paramAPICallback, -1, "event name is required");
-      }
-      else
-      {
-        if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        }
-        DoraemonUtil.a(paramAPICallback, APIParam.a);
-        continue;
-        try
+        paramString = paramJSONObject.optString("event", "");
+        if (TextUtils.isEmpty(paramString))
         {
-          str1 = paramJSONObject.optString("event");
-          if (!TextUtils.isEmpty(str1)) {
-            break label239;
-          }
           if (QLog.isColorLevel()) {
             QLog.w("DoraemonOpenAPI.event", 2, "event name is required");
           }
           DoraemonUtil.a(paramAPICallback, -1, "event name is required");
+          break label620;
         }
-        catch (Throwable paramString)
+        paramJSONObject = this.jdField_a_of_type_JavaUtilHashMap;
+        if (paramJSONObject != null) {
+          paramJSONObject.remove(paramString);
+        }
+        DoraemonUtil.a(paramAPICallback, APIParam.a);
+        break label620;
+      }
+      try
+      {
+        str1 = paramJSONObject.optString("event");
+        if (TextUtils.isEmpty(str1))
         {
-          QLog.e("DoraemonOpenAPI.event", 1, paramString.getMessage(), paramString);
-          DoraemonUtil.a(paramAPICallback, -3, paramString.getMessage());
+          if (QLog.isColorLevel()) {
+            QLog.w("DoraemonOpenAPI.event", 2, "event name is required");
+          }
+          DoraemonUtil.a(paramAPICallback, -1, "event name is required");
+          break label620;
         }
-        continue;
         localJSONObject = paramJSONObject.optJSONObject("data");
+        if (localJSONObject != null) {
+          paramString = localJSONObject.toString();
+        }
+        if ((!TextUtils.isEmpty(paramString)) && (paramString.length() >= 460800L))
+        {
+          bool1 = QLog.isColorLevel();
+          if (bool1) {
+            QLog.w("DoraemonOpenAPI.event", 2, "param data is over size");
+          }
+          DoraemonUtil.a(paramAPICallback, -2, "param data is over size");
+          break label620;
+        }
+        paramString = paramJSONObject.optJSONObject("options");
+        paramJSONObject = new ArrayList();
+        if (paramString == null) {
+          break label632;
+        }
+        bool2 = paramString.optBoolean("echo", true);
+        bool1 = paramString.optBoolean("broadcast", true);
+        paramString = paramString.optJSONArray("domains");
+        if (paramString == null) {
+          break label629;
+        }
+        int i = paramString.length();
+        paramInt = 0;
+        if (paramInt >= i) {
+          break label629;
+        }
+        localObject = paramString.optString(paramInt);
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label622;
+        }
+        paramJSONObject.add(localObject);
+      }
+      catch (Throwable paramString)
+      {
+        String str1;
+        JSONObject localJSONObject;
+        Object localObject;
+        label284:
+        Intent localIntent;
+        String str2;
+        QLog.e("DoraemonOpenAPI.event", 1, paramString.getMessage(), paramString);
+        DoraemonUtil.a(paramAPICallback, -3, paramString.getMessage());
+        break label620;
+      }
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("appid", this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("appType", this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int);
+      if (paramJSONObject.size() == 0) {
+        paramJSONObject.add(a());
+      }
+      localIntent = new Intent("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
+      localIntent.putExtra("broadcast", bool1);
+      localIntent.putExtra("unique", b());
+      localIntent.putExtra("event", str1);
+      if (localJSONObject != null) {
+        localIntent.putExtra("data", localJSONObject.toString());
+      }
+      localIntent.putStringArrayListExtra("domains", paramJSONObject);
+      localIntent.putExtra("source", ((JSONObject)localObject).toString());
+      if (QLog.isColorLevel())
+      {
+        str2 = toString();
         if (localJSONObject == null) {
-          break label663;
+          break label641;
         }
         paramString = localJSONObject.toString();
-        label258:
-        if ((TextUtils.isEmpty(paramString)) || (paramString.length() < 460800L)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("DoraemonOpenAPI.event", 2, "param data is over size");
-        }
-        DoraemonUtil.a(paramAPICallback, -2, "param data is over size");
-      }
-    }
-    paramString = paramJSONObject.optJSONObject("options");
-    int j = 1;
-    boolean bool1 = true;
-    paramJSONObject = new ArrayList();
-    boolean bool2;
-    boolean bool3;
-    int i;
-    if (paramString != null)
-    {
-      bool2 = paramString.optBoolean("echo", true);
-      bool3 = paramString.optBoolean("broadcast", true);
-      paramString = paramString.optJSONArray("domains");
-      bool1 = bool3;
-      j = bool2;
-      if (paramString != null)
-      {
-        paramInt = 0;
-        i = paramString.length();
       }
     }
     for (;;)
     {
-      bool1 = bool3;
-      j = bool2;
-      Object localObject;
-      if (paramInt < i)
+      QLog.d("DoraemonOpenAPI.event", 2, String.format("send event broadcast, pluginReference: %s, event: %s, data: %s, domains: %s, source: %s", new Object[] { str2, str1, paramString, TextUtils.join(",", paramJSONObject), localObject }));
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+      if (bool2) {
+        a(str1, localJSONObject, (JSONObject)localObject);
+      }
+      DoraemonUtil.a(paramAPICallback, APIParam.a);
+      break label620;
+      paramString = paramJSONObject.optString("event", "");
+      if (TextUtils.isEmpty(paramString))
       {
-        localObject = paramString.optString(paramInt);
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          paramJSONObject.add(localObject);
+        if (QLog.isColorLevel()) {
+          QLog.w("DoraemonOpenAPI.event", 2, "event name is required");
         }
+        DoraemonUtil.a(paramAPICallback, -1, "event name is required");
       }
       else
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("appid", this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_JavaLangString);
-        ((JSONObject)localObject).put("appType", this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int);
-        if (paramJSONObject.size() == 0) {
-          paramJSONObject.add(a());
-        }
-        Intent localIntent = new Intent("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-        localIntent.putExtra("broadcast", bool1);
-        localIntent.putExtra("unique", b());
-        localIntent.putExtra("event", str1);
-        if (localJSONObject != null) {
-          localIntent.putExtra("data", localJSONObject.toString());
-        }
-        localIntent.putStringArrayListExtra("domains", paramJSONObject);
-        localIntent.putExtra("source", ((JSONObject)localObject).toString());
-        String str2;
-        if (QLog.isColorLevel())
-        {
-          str2 = toString();
-          if (localJSONObject == null) {
-            break label657;
-          }
-        }
-        label657:
-        for (paramString = localJSONObject.toString();; paramString = "NULL")
-        {
-          QLog.d("DoraemonOpenAPI.event", 2, String.format("send event broadcast, pluginReference: %s, event: %s, data: %s, domains: %s, source: %s", new Object[] { str2, str1, paramString, TextUtils.join(",", paramJSONObject), localObject }));
-          BaseApplicationImpl.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
-          if (j != 0) {
-            a(str1, localJSONObject, (JSONObject)localObject);
-          }
-          DoraemonUtil.a(paramAPICallback, APIParam.a);
-          break;
-        }
-        label663:
-        paramString = "";
-        break label258;
+        c();
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramAPICallback);
+        DoraemonUtil.a(paramAPICallback, APIParam.a);
       }
+      label620:
+      return true;
+      label622:
       paramInt += 1;
+      break;
+      label629:
+      break label284;
+      label632:
+      bool1 = true;
+      bool2 = true;
+      break label284;
+      label641:
+      paramString = "NULL";
     }
   }
   
   protected String b()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = (String.valueOf(System.currentTimeMillis()) + String.valueOf((int)(Math.random() * 1000000.0D)));
+    if (this.jdField_a_of_type_JavaLangString == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(System.currentTimeMillis()));
+      localStringBuilder.append(String.valueOf((int)(Math.random() * 1000000.0D)));
+      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     }
     return this.jdField_a_of_type_JavaLangString;
   }
@@ -430,7 +442,7 @@ public class EventAPIModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.internalModule.EventAPIModule
  * JD-Core Version:    0.7.0.1
  */

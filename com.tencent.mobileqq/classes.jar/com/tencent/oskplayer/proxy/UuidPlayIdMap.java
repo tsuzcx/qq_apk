@@ -1,5 +1,6 @@
 package com.tencent.oskplayer.proxy;
 
+import android.text.TextUtils;
 import com.tencent.oskplayer.PlayerConfig;
 import com.tencent.oskplayer.util.PlayerUtils;
 import java.util.HashMap;
@@ -23,17 +24,28 @@ public class UuidPlayIdMap
   {
     try
     {
-      HashSet localHashSet2 = getTcDataId(paramString1);
-      HashSet localHashSet1 = localHashSet2;
-      if (localHashSet2 == null) {
-        localHashSet1 = new HashSet(10, 0.75F);
+      HashSet localHashSet = getTcDataId(paramString1);
+      Object localObject = localHashSet;
+      if (localHashSet == null) {
+        localObject = new HashSet(10, 0.75F);
       }
-      localHashSet1.add(paramString2);
-      uuidTCIdMap.put(paramString1, localHashSet1);
+      ((HashSet)localObject).add(paramString2);
+      uuidTCIdMap.put(paramString1, localObject);
       playidUuidMap.put(paramString2, paramString1);
-      PlayerUtils.log(4, "UuidPlayIdMap", "addPlayId uuid=" + paramString1 + ", playId=" + paramString2);
-      if (PlayerConfig.g().isDebugVersion()) {
-        PlayerUtils.log(3, "UuidPlayIdMap", "playIdListForUuid " + paramString1 + " -> " + getPlayIdListByUuid(paramString1));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addPlayId uuid=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", playId=");
+      ((StringBuilder)localObject).append(paramString2);
+      PlayerUtils.log(4, "UuidPlayIdMap", ((StringBuilder)localObject).toString());
+      if (PlayerConfig.g().isDebugVersion())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("playIdListForUuid ");
+        paramString2.append(paramString1);
+        paramString2.append(" -> ");
+        paramString2.append(getPlayIdListByUuid(paramString1));
+        PlayerUtils.log(3, "UuidPlayIdMap", paramString2.toString());
       }
       return;
     }
@@ -56,10 +68,9 @@ public class UuidPlayIdMap
   
   public static void deleteItem(String paramString, boolean paramBoolean)
   {
-    Object localObject;
     try
     {
-      localObject = getTcDataId(paramString);
+      Object localObject = getTcDataId(paramString);
       if ((localObject != null) && (paramBoolean))
       {
         localObject = ((HashSet)localObject).iterator();
@@ -70,37 +81,55 @@ public class UuidPlayIdMap
         }
         uuidTCIdMap.remove(paramString);
       }
+      else if (localObject == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("associate playid not exists, data cached? uuid=");
+        ((StringBuilder)localObject).append(paramString);
+        PlayerUtils.log(4, "UuidPlayIdMap", ((StringBuilder)localObject).toString());
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("deleteItem uuid=");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(paramBoolean);
+      PlayerUtils.log(4, "UuidPlayIdMap", ((StringBuilder)localObject).toString());
+      deletedUuid.add(paramString);
+      return;
     }
     finally {}
     for (;;)
     {
-      PlayerUtils.log(4, "UuidPlayIdMap", "deleteItem uuid=" + paramString + "," + paramBoolean);
-      deletedUuid.add(paramString);
-      return;
-      if (localObject == null) {
-        PlayerUtils.log(4, "UuidPlayIdMap", "associate playid not exists, data cached? uuid=" + paramString);
-      }
+      throw paramString;
     }
   }
   
   public static String getPlayIdListByUuid(String paramString)
   {
-    paramString = getTcDataId(paramString);
-    if (paramString != null)
+    Object localObject2 = getTcDataId(paramString);
+    paramString = "";
+    Object localObject1 = paramString;
+    if (localObject2 != null)
     {
-      Iterator localIterator = paramString.iterator();
-      for (paramString = "";; paramString = paramString + ",")
+      localObject2 = ((HashSet)localObject2).iterator();
+      for (;;)
       {
-        str = paramString;
-        if (!localIterator.hasNext()) {
+        localObject1 = paramString;
+        if (!((Iterator)localObject2).hasNext()) {
           break;
         }
-        str = (String)localIterator.next();
-        paramString = paramString + str;
+        localObject1 = (String)((Iterator)localObject2).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append((String)localObject1);
+        paramString = localStringBuilder.toString();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(",");
+        paramString = ((StringBuilder)localObject1).toString();
       }
     }
-    String str = "";
-    return str;
+    return localObject1;
   }
   
   public static HashSet<String> getTcDataId(String paramString)
@@ -135,7 +164,11 @@ public class UuidPlayIdMap
   {
     try
     {
-      boolean bool = deletedUuid.contains(getUuid(paramInt + ""));
+      HashSet localHashSet = deletedUuid;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("");
+      boolean bool = localHashSet.contains(getUuid(localStringBuilder.toString()));
       return bool;
     }
     finally
@@ -145,48 +178,24 @@ public class UuidPlayIdMap
     }
   }
   
-  /* Error */
   public static boolean isUuidDeleted(String paramString)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: invokestatic 151	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   7: ifne +16 -> 23
-    //   10: getstatic 34	com/tencent/oskplayer/proxy/UuidPlayIdMap:deletedUuid	Ljava/util/HashSet;
-    //   13: aload_0
-    //   14: invokevirtual 143	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   17: istore_1
-    //   18: ldc 2
-    //   20: monitorexit
-    //   21: iload_1
-    //   22: ireturn
-    //   23: bipush 6
-    //   25: ldc 8
-    //   27: ldc 153
-    //   29: invokestatic 74	com/tencent/oskplayer/util/PlayerUtils:log	(ILjava/lang/String;Ljava/lang/String;)V
-    //   32: iconst_1
-    //   33: istore_1
-    //   34: goto -16 -> 18
-    //   37: astore_0
-    //   38: ldc 2
-    //   40: monitorexit
-    //   41: aload_0
-    //   42: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	43	0	paramString	String
-    //   17	17	1	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   3	18	37	finally
-    //   23	32	37	finally
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        boolean bool = deletedUuid.contains(paramString);
+        return bool;
+      }
+      PlayerUtils.log(6, "UuidPlayIdMap", "isUuidDeleted uuid is null");
+      return true;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.proxy.UuidPlayIdMap
  * JD-Core Version:    0.7.0.1
  */

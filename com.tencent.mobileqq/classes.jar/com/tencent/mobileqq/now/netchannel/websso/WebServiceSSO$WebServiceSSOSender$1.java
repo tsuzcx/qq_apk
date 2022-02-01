@@ -20,10 +20,9 @@ class WebServiceSSO$WebServiceSSOSender$1
       this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoSSOCallback.a((byte[])localObject);
       return;
     }
-    catch (InterruptedException localInterruptedException)
+    catch (Exception localException)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.b.incrementAndGet();
-      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoSSOCallback.a(-1, "InterruptedException");
+      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoSSOCallback.a(-3, localException.getCause().getMessage());
       return;
     }
     catch (ExecutionException localExecutionException)
@@ -38,16 +37,20 @@ class WebServiceSSO$WebServiceSSOSender$1
       }
       this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoSSOCallback.a(-2, localSSOException.getCause().getMessage());
       return;
+      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO$WebServiceSSOSender.b.incrementAndGet();
+      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoSSOCallback.a(-1, "InterruptedException");
+      return;
     }
-    catch (Exception localException)
+    catch (InterruptedException localInterruptedException)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoSSOCallback.a(-3, localException.getCause().getMessage());
+      label131:
+      break label131;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO.WebServiceSSOSender.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.report_action.GameComponentReport;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
-import com.tencent.biz.pubaccount.util.PublicDrawableUtil;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUIService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.util.VersionUtils;
@@ -40,8 +40,8 @@ public class GiftPackageDialog
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
   private GiftServiceBean jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean;
-  private GiftPackageDialog.GiftGetListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$GiftGetListener;
-  private GiftPackageDialog.GiftPackageListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$GiftPackageListener;
+  private GiftGetListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftGetListener;
+  private GiftPackageListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageListener;
   private GiftPkgSelectDialog jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog;
   private String jdField_a_of_type_JavaLangString;
   private List<GiftServiceBean> jdField_a_of_type_JavaUtilList;
@@ -65,109 +65,103 @@ public class GiftPackageDialog
   
   public GiftPackageDialog(Context paramContext, int paramInt)
   {
-    super(paramContext, 2131755346);
+    super(paramContext, 2131755540);
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     requestWindowFeature(1);
     if (!VersionUtils.e()) {
       getWindow().setBackgroundDrawable(new ColorDrawable());
+    } else {
+      getWindow().setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165700)));
     }
-    for (;;)
-    {
-      setContentView(2131560326);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380593));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380197));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380576));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380561));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363966));
-      this.e = ((TextView)findViewById(2131380651));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369611));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370891));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370894));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-      PublicDrawableUtil.a(this.jdField_a_of_type_AndroidWidgetButton, AIOUtils.a(6.0F, paramContext.getResources()), Color.parseColor("#EBEDF5"));
-      PublicDrawableUtil.a(this.jdField_a_of_type_AndroidWidgetTextView, AIOUtils.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
-      PublicDrawableUtil.a(this.jdField_b_of_type_AndroidWidgetTextView, AIOUtils.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
-      PublicDrawableUtil.a(this.jdField_c_of_type_AndroidWidgetTextView, AIOUtils.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
-      PublicDrawableUtil.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, AIOUtils.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
-      return;
-      getWindow().setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165711)));
-    }
+    setContentView(2131560213);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379874));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379516));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379860));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379846));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363893));
+    this.e = ((TextView)findViewById(2131379930));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369319));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370525));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370528));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).setGradientDrawable(this.jdField_a_of_type_AndroidWidgetButton, ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(6.0F, paramContext.getResources()), Color.parseColor("#EBEDF5"));
+    ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).setGradientDrawable(this.jdField_a_of_type_AndroidWidgetTextView, ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
+    ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).setGradientDrawable(this.jdField_b_of_type_AndroidWidgetTextView, ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
+    ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).setGradientDrawable(this.jdField_c_of_type_AndroidWidgetTextView, ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
+    ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).setGradientDrawable(this.jdField_a_of_type_AndroidWidgetLinearLayout, ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
   }
   
   private String a()
   {
-    if (this.jdField_b_of_type_Int == 4) {}
-    do
-    {
+    int i = this.jdField_b_of_type_Int;
+    String str = "1";
+    if (i == 4) {
       return "1";
-      if (this.jdField_b_of_type_Int == 3) {
-        return "2";
-      }
-    } while (this.jdField_b_of_type_Int != 5);
-    return "0";
+    }
+    if (i == 3) {
+      return "2";
+    }
+    if (i == 5) {
+      str = "0";
+    }
+    return str;
   }
   
   private void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog = new GiftPkgSelectDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight());
-      String str2 = "";
-      String str1 = str2;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null)
-      {
-        str1 = str2;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t)) {
-          str1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t;
-        }
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean;
+      if ((localObject != null) && (!TextUtils.isEmpty(((GiftServiceBean)localObject).t))) {
+        localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t;
+      } else {
+        localObject = "";
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog.a(this.jdField_a_of_type_JavaUtilList, new GiftPackageDialog.1(this), str1);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog.a(this.jdField_a_of_type_JavaUtilList, new GiftPackageDialog.1(this), (String)localObject);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog.show();
     }
   }
   
   private void b()
   {
-    if ((this.jdField_c_of_type_JavaUtilList != null) && (this.jdField_c_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.jdField_c_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog = new GiftPkgSelectDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight());
-      String str2 = "";
-      String str1 = str2;
-      if (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null)
-      {
-        str1 = str2;
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t)) {
-          str1 = this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t;
-        }
+      localObject = this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean;
+      if ((localObject != null) && (!TextUtils.isEmpty(((GiftServiceBean)localObject).t))) {
+        localObject = this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t;
+      } else {
+        localObject = "";
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog.a(this.jdField_c_of_type_JavaUtilList, new GiftPackageDialog.2(this), str1);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog.a(this.jdField_c_of_type_JavaUtilList, new GiftPackageDialog.2(this), (String)localObject);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog.show();
     }
   }
   
   private void c()
   {
-    if ((this.jdField_d_of_type_JavaUtilList != null) && (this.jdField_d_of_type_JavaUtilList.size() > 0))
+    Object localObject = this.jdField_d_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog = new GiftPkgSelectDialog(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight());
-      String str2 = "";
-      String str1 = str2;
-      if (this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null)
-      {
-        str1 = str2;
-        if (!TextUtils.isEmpty(this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t)) {
-          str1 = this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t;
-        }
+      localObject = this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean;
+      if ((localObject != null) && (!TextUtils.isEmpty(((GiftServiceBean)localObject).t))) {
+        localObject = this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t;
+      } else {
+        localObject = "";
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog.a(this.jdField_d_of_type_JavaUtilList, new GiftPackageDialog.3(this), str1);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog.a(this.jdField_d_of_type_JavaUtilList, new GiftPackageDialog.3(this), (String)localObject);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog.show();
     }
   }
@@ -181,11 +175,11 @@ public class GiftPackageDialog
   {
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null) && (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null) && (this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null))
     {
-      PublicDrawableUtil.a(this.jdField_a_of_type_AndroidWidgetButton, AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#00CAFC"));
+      ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).setGradientDrawable(this.jdField_a_of_type_AndroidWidgetButton, ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#00CAFC"));
       this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
       return;
     }
-    PublicDrawableUtil.a(this.jdField_a_of_type_AndroidWidgetButton, AIOUtils.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#EBEDF5"));
+    ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).setGradientDrawable(this.jdField_a_of_type_AndroidWidgetButton, ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#EBEDF5"));
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
   }
   
@@ -197,8 +191,9 @@ public class GiftPackageDialog
   public void a(Configuration paramConfiguration)
   {
     this.jdField_a_of_type_Int = paramConfiguration.orientation;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog.dismiss();
+    paramConfiguration = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPkgSelectDialog;
+    if (paramConfiguration != null) {
+      paramConfiguration.dismiss();
     }
   }
   
@@ -207,14 +202,14 @@ public class GiftPackageDialog
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
   }
   
-  public void a(GiftPackageDialog.GiftGetListener paramGiftGetListener)
+  public void a(GiftGetListener paramGiftGetListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$GiftGetListener = paramGiftGetListener;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftGetListener = paramGiftGetListener;
   }
   
-  public void a(GiftPackageDialog.GiftPackageListener paramGiftPackageListener)
+  public void a(GiftPackageListener paramGiftPackageListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$GiftPackageListener = paramGiftPackageListener;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageListener = paramGiftPackageListener;
   }
   
   public void a(List<GiftServiceBean> paramList1, List<GiftServiceBean> paramList2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -240,7 +235,7 @@ public class GiftPackageDialog
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean = new GiftServiceBean();
-      this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t = HardCodeUtil.a(2131705287);
+      this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t = HardCodeUtil.a(2131705361);
       this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.v = "0";
     }
   }
@@ -257,29 +252,41 @@ public class GiftPackageDialog
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i == 2131379874)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       a();
-      continue;
+    }
+    else if (i == 2131379516)
+    {
       b();
-      continue;
+    }
+    else if (i == 2131379860)
+    {
       c();
-      continue;
+    }
+    else if (i == 2131363893)
+    {
       d();
-      continue;
-      GameComponentReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 3, a());
+    }
+    else if (i == 2131369319)
+    {
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportGameGiftClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 3, a());
       dismiss();
-      continue;
+    }
+    else if (i == 2131370528)
+    {
       dismiss();
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$GiftPackageListener != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$GiftPackageListener.a();
+    }
+    else if ((i != 2131370525) && (i == 2131379846))
+    {
+      dismiss();
+      GiftPackageListener localGiftPackageListener = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageListener;
+      if (localGiftPackageListener != null) {
+        localGiftPackageListener.a();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void show()
@@ -289,7 +296,7 @@ public class GiftPackageDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog
  * JD-Core Version:    0.7.0.1
  */

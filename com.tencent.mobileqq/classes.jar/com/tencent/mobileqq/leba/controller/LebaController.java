@@ -19,8 +19,9 @@ public class LebaController
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController.a();
+    ILebaController localILebaController = this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController;
+    if (localILebaController != null) {
+      return localILebaController.a();
     }
     return 0;
   }
@@ -48,33 +49,43 @@ public class LebaController
     this.jdField_a_of_type_ComTencentMobileqqLebaEntityInitViewParam = paramInitViewParam;
     this.jdField_a_of_type_MqqAppAppRuntime = paramInitViewParam.jdField_a_of_type_MqqAppAppRuntime;
     this.jdField_a_of_type_JavaUtilList = paramInitViewParam.jdField_a_of_type_JavaUtilList;
-    QLog.i("Q.lebatab.LebaController", 1, "initLebaView" + LebaViewItem.a(this.jdField_a_of_type_JavaUtilList));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initLebaView");
+    localStringBuilder.append(LebaViewItem.a(this.jdField_a_of_type_JavaUtilList));
+    QLog.i("Q.lebatab.LebaController", 1, localStringBuilder.toString());
     if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController == null)
     {
       boolean bool = a();
       this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController = a(bool);
       QLog.i("Q.lebatab.LebaController", 1, String.format("init puginLogin modle = %b", new Object[] { Boolean.valueOf(bool) }));
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController.a(paramInitViewParam);
-      return;
       a(false);
     }
+    this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController.a(paramInitViewParam);
   }
   
   public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController.a(paramAbsListView, paramInt);
+    ILebaController localILebaController = this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController;
+    if (localILebaController != null) {
+      localILebaController.a(paramAbsListView, paramInt);
     }
   }
   
   public void a(AppRuntime paramAppRuntime, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    QLog.i("Q.lebatab.LebaController", 1, "onPause" + paramInt1 + "|" + paramBoolean + paramInt2);
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController.a(paramAppRuntime, paramInt1, paramBoolean, paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onPause");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(paramInt2);
+    QLog.i("Q.lebatab.LebaController", 1, ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController;
+    if (localObject != null) {
+      ((ILebaController)localObject).a(paramAppRuntime, paramInt1, paramBoolean, paramInt2);
     }
   }
   
@@ -98,31 +109,37 @@ public class LebaController
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime == null) {
+    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    if (localAppRuntime == null) {
       return false;
     }
-    return LebaUtil.c(this.jdField_a_of_type_MqqAppAppRuntime);
+    return LebaUtil.c(localAppRuntime);
   }
   
   public void b()
   {
-    QLog.i("Q.lebatab.LebaController", 1, "notifyDataSetChanged" + LebaViewItem.a(this.jdField_a_of_type_JavaUtilList));
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController.c();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("notifyDataSetChanged");
+    ((StringBuilder)localObject).append(LebaViewItem.a(this.jdField_a_of_type_JavaUtilList));
+    QLog.i("Q.lebatab.LebaController", 1, ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController;
+    if (localObject != null) {
+      ((ILebaController)localObject).c();
     }
   }
   
   public void c()
   {
     QLog.i("Q.lebatab.LebaController", 1, "onPostThemeChanged");
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController.b();
+    ILebaController localILebaController = this.jdField_a_of_type_ComTencentMobileqqLebaControllerILebaController;
+    if (localILebaController != null) {
+      localILebaController.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.controller.LebaController
  * JD-Core Version:    0.7.0.1
  */

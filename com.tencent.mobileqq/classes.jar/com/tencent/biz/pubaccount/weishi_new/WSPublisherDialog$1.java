@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
 import android.app.Activity;
+import android.content.Context;
 import com.tencent.biz.pubaccount.weishi_new.config.WSGlobalConfig;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 import com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil;
@@ -39,13 +40,15 @@ class WSPublisherDialog$1
   
   public void d(String paramString, int paramInt)
   {
-    WeishiActivityHelper.a(WSPublisherDialog.a(this.a), paramString, new WSPublisherDialog.MiniAppListener(this.a, this.a));
+    Context localContext = WSPublisherDialog.a(this.a);
+    WSPublisherDialog localWSPublisherDialog = this.a;
+    WeishiActivityHelper.a(localContext, paramString, new WSPublisherDialog.MiniAppListener(localWSPublisherDialog, localWSPublisherDialog));
     WSPublisherDialog.a(this.a, "gzh_click", "publish_popup", 1000007);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSPublisherDialog.1
  * JD-Core Version:    0.7.0.1
  */

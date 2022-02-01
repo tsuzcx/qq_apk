@@ -31,14 +31,15 @@ public class ShortVideoItemBuilder$Holder
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView;
+    if (localObject != null)
     {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
+      long l = ((CropBubbleVideoView)localObject).getCurPlayingPos();
       if (l > 0L)
       {
-        MessageForShortVideo localMessageForShortVideo = AIOSingleReporter.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
-        if (localMessageForShortVideo != null) {
-          ShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder, localMessageForShortVideo, l);
+        localObject = AIOSingleReporter.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        if (localObject != null) {
+          ShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder, (MessageForShortVideo)localObject, l);
         }
       }
       this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
@@ -48,7 +49,7 @@ public class ShortVideoItemBuilder$Holder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

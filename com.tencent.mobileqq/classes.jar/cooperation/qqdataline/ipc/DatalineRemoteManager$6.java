@@ -13,13 +13,14 @@ class DatalineRemoteManager$6
     if (!this.a.b) {
       DatalineRemoteManager.a(this.a, 1);
     }
-    this.a.b = false;
-    this.a.a = null;
+    paramDialogInterface = this.a;
+    paramDialogInterface.b = false;
+    paramDialogInterface.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.6
  * JD-Core Version:    0.7.0.1
  */

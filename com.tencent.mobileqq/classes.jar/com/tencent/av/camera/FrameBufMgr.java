@@ -4,22 +4,23 @@ import com.tencent.qphone.base.util.QLog;
 
 public class FrameBufMgr
 {
-  static int jdField_a_of_type_Int = 0;
+  static int jdField_a_of_type_Int;
   private static volatile FrameBufMgr jdField_a_of_type_ComTencentAvCameraFrameBufMgr;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private FrameBufMgr.FrameBuf[] jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf = new FrameBufMgr.FrameBuf[4];
   
   public static FrameBufMgr a()
   {
-    if (jdField_a_of_type_ComTencentAvCameraFrameBufMgr == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvCameraFrameBufMgr == null) {
-        jdField_a_of_type_ComTencentAvCameraFrameBufMgr = new FrameBufMgr();
+    if (jdField_a_of_type_ComTencentAvCameraFrameBufMgr == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvCameraFrameBufMgr == null) {
+          jdField_a_of_type_ComTencentAvCameraFrameBufMgr = new FrameBufMgr();
+        }
       }
-      return jdField_a_of_type_ComTencentAvCameraFrameBufMgr;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvCameraFrameBufMgr;
   }
   
   public int a()
@@ -29,11 +30,12 @@ public class FrameBufMgr
   
   public void a()
   {
-    int i = 0;
     QLog.i("FrameBufMgr", 1, "clear.");
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      try
       {
         if (i < this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf.length)
         {
@@ -47,15 +49,21 @@ public class FrameBufMgr
           return;
         }
       }
-      i += 1;
+      finally
+      {
+        continue;
+        throw localObject2;
+        continue;
+        i += 1;
+      }
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    int j = 0;
     Object localObject1 = this.jdField_a_of_type_JavaLangObject;
     int i = 0;
+    int j = 0;
     for (;;)
     {
       try
@@ -70,14 +78,25 @@ public class FrameBufMgr
         }
         else
         {
-          if (j == 0) {
-            QLog.i("FrameBufMgr", 1, "setFrameBufState failed. oldState = " + paramInt1 + ", newState = " + paramInt2);
+          if (j == 0)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("setFrameBufState failed. oldState = ");
+            ((StringBuilder)localObject1).append(paramInt1);
+            ((StringBuilder)localObject1).append(", newState = ");
+            ((StringBuilder)localObject1).append(paramInt2);
+            QLog.i("FrameBufMgr", 1, ((StringBuilder)localObject1).toString());
           }
           return;
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        continue;
+        throw localObject2;
+        continue;
+        i += 1;
+      }
     }
   }
   
@@ -97,20 +116,34 @@ public class FrameBufMgr
         }
         else
         {
-          QLog.i("FrameBufMgr", 1, "setFrameBufState failed. dataBuf = " + paramArrayOfByte + ", state = " + paramInt);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("setFrameBufState failed. dataBuf = ");
+          ((StringBuilder)localObject).append(paramArrayOfByte);
+          ((StringBuilder)localObject).append(", state = ");
+          ((StringBuilder)localObject).append(paramInt);
+          QLog.i("FrameBufMgr", 1, ((StringBuilder)localObject).toString());
           return;
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        continue;
+        throw paramArrayOfByte;
+        continue;
+        i += 1;
+      }
     }
   }
   
   public boolean a(int paramInt)
   {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("init. bufSize = ");
+    ((StringBuilder)localObject1).append(paramInt);
+    QLog.i("FrameBufMgr", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = this.jdField_a_of_type_JavaLangObject;
     int i = 0;
-    QLog.i("FrameBufMgr", 1, "init. bufSize = " + paramInt);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    try
     {
       while (i < this.jdField_a_of_type_ArrayOfComTencentAvCameraFrameBufMgr$FrameBuf.length)
       {
@@ -124,6 +157,11 @@ public class FrameBufMgr
         i += 1;
       }
       return true;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -145,18 +183,26 @@ public class FrameBufMgr
         }
         else
         {
-          QLog.i("FrameBufMgr", 1, "getFrameBufByState failed. state = " + paramInt);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getFrameBufByState failed. state = ");
+          ((StringBuilder)localObject1).append(paramInt);
+          QLog.i("FrameBufMgr", 1, ((StringBuilder)localObject1).toString());
           return null;
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        continue;
+        throw localObject2;
+        continue;
+        i += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.camera.FrameBufMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -30,26 +30,31 @@ public class NetworkUtils$NetworkProxy
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (!(paramObject instanceof NetworkProxy))) {
-        break;
-      }
+    }
+    if ((paramObject != null) && ((paramObject instanceof NetworkProxy)))
+    {
       paramObject = (NetworkProxy)paramObject;
-    } while ((TextUtils.equals(this.host, paramObject.host)) && (this.port == paramObject.port));
+      if ((TextUtils.equals(this.host, paramObject.host)) && (this.port == paramObject.port)) {
+        return true;
+      }
+    }
     return false;
   }
   
   public String toString()
   {
-    return this.host + ":" + this.port;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.host);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.port);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.utils.NetworkUtils.NetworkProxy
  * JD-Core Version:    0.7.0.1
  */

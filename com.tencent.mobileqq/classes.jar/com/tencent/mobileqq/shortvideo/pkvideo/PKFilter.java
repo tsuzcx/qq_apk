@@ -21,7 +21,7 @@ public class PKFilter
   extends QQBaseFilter
 {
   public static String TAG = "PKFilter";
-  public static final String TAG_ENCODE = TAG + "_encode";
+  public static final String TAG_ENCODE;
   private boolean havePrepared = false;
   private boolean isDebug = false;
   private boolean isPKdecoderNeedWaitStart;
@@ -49,6 +49,14 @@ public class PKFilter
   private String mVideoPath;
   private int mWidth;
   private PKFilter.OnFrameAvailableListener onFrameAvailableListener;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(TAG);
+    localStringBuilder.append("_encode");
+    TAG_ENCODE = localStringBuilder.toString();
+  }
   
   public PKFilter(QQFilterRenderManager paramQQFilterRenderManager)
   {
@@ -79,7 +87,10 @@ public class PKFilter
     int i = GLES20.glCheckFramebufferStatus(36160);
     if (i != 36053)
     {
-      assertFailed("fbo is not ready plz fix it error:" + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fbo is not ready plz fix it error:");
+      localStringBuilder.append(i);
+      assertFailed(localStringBuilder.toString());
       return this.mLastOutputTexture;
     }
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
@@ -96,59 +107,67 @@ public class PKFilter
       Matrix.setIdentityM(this.mMvpMatrix, 0);
       Matrix.translateM(this.mMvpMatrix, 0, 0.5F, -0.24F, 0.0F);
       Matrix.scaleM(this.mMvpMatrix, 0, 0.5F, 0.5F, 1.0F);
-      if (this.mSurfaceTexture != null) {
-        break label253;
+      if (this.mSurfaceTexture == null) {
+        this.mTextureRender.drawTexture(3553, paramInt2, null, this.mMvpMatrix);
+      } else {
+        this.mTextureRender.drawTexture(36197, paramInt2, null, this.mMvpMatrix);
       }
-      this.mTextureRender.drawTexture(3553, paramInt2, null, this.mMvpMatrix);
     }
-    for (;;)
+    if (paramInt1 >= 0)
     {
-      if (paramInt1 >= 0)
-      {
-        Matrix.setIdentityM(this.mMvpMatrix, 0);
-        Matrix.translateM(this.mMvpMatrix, 0, -0.5F, -0.24F, 0.0F);
-        Matrix.scaleM(this.mMvpMatrix, 0, 0.5F, 0.5F, 1.0F);
-        this.mTextureRender.drawTexture(3553, paramInt1, null, this.mMvpMatrix);
-      }
-      this.mRenderFBO.unbind();
-      this.mOutputTextureID = this.mRenderFBO.getTexId();
-      return this.mOutputTextureID;
-      label253:
-      this.mTextureRender.drawTexture(36197, paramInt2, null, this.mMvpMatrix);
+      Matrix.setIdentityM(this.mMvpMatrix, 0);
+      Matrix.translateM(this.mMvpMatrix, 0, -0.5F, -0.24F, 0.0F);
+      Matrix.scaleM(this.mMvpMatrix, 0, 0.5F, 0.5F, 1.0F);
+      this.mTextureRender.drawTexture(3553, paramInt1, null, this.mMvpMatrix);
     }
+    this.mRenderFBO.unbind();
+    this.mOutputTextureID = this.mRenderFBO.getTexId();
+    return this.mOutputTextureID;
   }
   
   private void syncDecoderStartTime(long paramLong) {}
   
   public void config(String paramString1, String paramString2, String paramString3, long paramLong, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
+    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2)))
+    {
       assertFailed("config the pk video file path and cover both null!!");
-    }
-    do
-    {
       return;
-      SLog.e(TAG, "config pk video path = " + paramString1 + ", cover= " + paramString2 + ",mOrigVideoDurationMS = " + paramLong + ",isEncode=" + paramBoolean);
-      this.mIsEncode = paramBoolean;
-      this.mVideoPath = paramString1;
-      this.mPKCoverPath = paramString2;
-      this.mPKTitleBmgPath = paramString3;
-      this.mOrigVideoDurationMS = paramLong;
-      this.mPKDecodeListener = new PKFilter.PKDecodeListener(this, null);
-      if (this.mDecodePlayer != null) {
-        this.mDecodePlayer.stopPlay();
-      }
-    } while (!FileUtil.fileExistsAndNotEmpty(paramString1));
-    this.mDecodePlayer = new DecodePlayer();
-    this.mDecodePlayer.setRepeat(false);
-    if (paramBoolean)
-    {
-      this.mDecodePlayer.setNOSleep(true);
-      this.mDecodePlayer.setSyncDecode(true);
     }
-    this.mDecodePlayer.setFilePath(this.mVideoPath, null);
-    this.mDecodePlayer.setDecodeListener(this.mPKDecodeListener);
-    this.mDecodePlayer.setSpeedType(0);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("config pk video path = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", cover= ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",mOrigVideoDurationMS = ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(",isEncode=");
+    localStringBuilder.append(paramBoolean);
+    SLog.e(str, localStringBuilder.toString());
+    this.mIsEncode = paramBoolean;
+    this.mVideoPath = paramString1;
+    this.mPKCoverPath = paramString2;
+    this.mPKTitleBmgPath = paramString3;
+    this.mOrigVideoDurationMS = paramLong;
+    this.mPKDecodeListener = new PKFilter.PKDecodeListener(this, null);
+    paramString2 = this.mDecodePlayer;
+    if (paramString2 != null) {
+      paramString2.stopPlay();
+    }
+    if (FileUtil.fileExistsAndNotEmpty(paramString1))
+    {
+      this.mDecodePlayer = new DecodePlayer();
+      this.mDecodePlayer.setRepeat(false);
+      if (paramBoolean)
+      {
+        this.mDecodePlayer.setNOSleep(true);
+        this.mDecodePlayer.setSyncDecode(true);
+      }
+      this.mDecodePlayer.setFilePath(this.mVideoPath, null);
+      this.mDecodePlayer.setDecodeListener(this.mPKDecodeListener);
+      this.mDecodePlayer.setSpeedType(0);
+    }
   }
   
   public void enableDebug(boolean paramBoolean)
@@ -163,10 +182,11 @@ public class PKFilter
   
   public HWVideoDecoder getPKDecoder()
   {
-    if (this.mDecodePlayer == null) {
+    DecodePlayer localDecodePlayer = this.mDecodePlayer;
+    if (localDecodePlayer == null) {
       return null;
     }
-    return this.mDecodePlayer.getDecoder();
+    return localDecodePlayer.getDecoder();
   }
   
   public String getPKTitleBmgPath()
@@ -194,36 +214,41 @@ public class PKFilter
     long l1 = System.currentTimeMillis();
     this.mFilterDecodeTimeStamp = getQQFilterRenderManager().getBusinessOperation().getPresentTimeStamp();
     int i = this.mPKCoverTextureID;
-    if (this.mSurfaceTexture != null)
+    Object localObject = this.mSurfaceTexture;
+    if (localObject != null)
     {
-      this.mSurfaceTexture.updateTexImage();
+      ((SurfaceTexture)localObject).updateTexImage();
       i = this.mRivalTextureID;
     }
-    for (;;)
+    else
     {
-      super.onDrawFrame();
-      int j = drawPKFrame(this.mInputTextureID, i, this.mPKTitleTextureID);
-      i = j;
-      if (j < 0)
-      {
-        SLog.e(TAG, "out is fushu!!!");
-        i = this.mInputTextureID;
-      }
-      this.mLastOutputTexture = i;
-      this.mOutputTextureID = i;
-      long l2 = System.currentTimeMillis();
-      SLog.e(TAG, "PKFilter draw frame cost=" + (l2 - l1));
-      return;
       SLog.e(TAG, "mSurfaceTexture is null!!!");
     }
+    super.onDrawFrame();
+    int j = drawPKFrame(this.mInputTextureID, i, this.mPKTitleTextureID);
+    i = j;
+    if (j < 0)
+    {
+      SLog.e(TAG, "out is fushu!!!");
+      i = this.mInputTextureID;
+    }
+    this.mLastOutputTexture = i;
+    this.mOutputTextureID = i;
+    long l2 = System.currentTimeMillis();
+    localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PKFilter draw frame cost=");
+    localStringBuilder.append(l2 - l1);
+    SLog.e((String)localObject, localStringBuilder.toString());
   }
   
   public void onFilterDecodeRepeat()
   {
     SLog.e(TAG, "filter decoder onDecodeRepeat");
     this.mFilterDecodeTimeStamp = 0L;
-    if (this.mDecodePlayer != null) {
-      this.mDecodePlayer.startPlay(this.mRivalTextureID, this.onFrameAvailableListener);
+    DecodePlayer localDecodePlayer = this.mDecodePlayer;
+    if (localDecodePlayer != null) {
+      localDecodePlayer.startPlay(this.mRivalTextureID, this.onFrameAvailableListener);
     }
   }
   
@@ -241,54 +266,70 @@ public class PKFilter
     }
     this.mWidth = getQQFilterRenderManager().getFilterWidth();
     this.mHeight = getQQFilterRenderManager().getFilterHeight();
-    if (this.mWidth > 720)
+    int i = this.mWidth;
+    if (i > 720)
     {
-      this.mHeight = (this.mHeight * 720 / this.mWidth);
+      this.mHeight = (this.mHeight * 720 / i);
       this.mWidth = 720;
     }
+    Object localObject;
     if ((this.mWidth == 0) || (this.mHeight == 0))
     {
-      assertFailed("error:: get filter width=" + this.mWidth + " and mHeight=" + this.mHeight);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("error:: get filter width=");
+      ((StringBuilder)localObject).append(this.mWidth);
+      ((StringBuilder)localObject).append(" and mHeight=");
+      ((StringBuilder)localObject).append(this.mHeight);
+      assertFailed(((StringBuilder)localObject).toString());
       this.mWidth = 720;
       this.mHeight = 1280;
     }
     if (this.mRenderFBO == null) {
       this.mRenderFBO = new RenderBuffer(this.mWidth, this.mHeight, 33984);
     }
-    if ((this.mPKCoverTextureID < 0) && (FileUtil.fileExistsAndNotEmpty(this.mPKCoverPath))) {}
-    try
+    String str;
+    StringBuilder localStringBuilder;
+    if ((this.mPKCoverTextureID < 0) && (FileUtil.fileExistsAndNotEmpty(this.mPKCoverPath)))
     {
-      localBitmap = BitmapFactory.decodeFile(this.mPKCoverPath);
-      this.mPKCoverTextureID = GlUtil.createTexture(3553, localBitmap);
-      localBitmap.recycle();
+      try
+      {
+        localObject = BitmapFactory.decodeFile(this.mPKCoverPath);
+        this.mPKCoverTextureID = GlUtil.createTexture(3553, (Bitmap)localObject);
+        ((Bitmap)localObject).recycle();
+      }
+      catch (OutOfMemoryError localOutOfMemoryError1)
+      {
+        str = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("create the pk cover texture out of memory:");
+        localStringBuilder.append(localOutOfMemoryError1);
+        SLog.e(str, localStringBuilder.toString());
+      }
       if (this.mPKCoverTextureID < 0) {
         SLog.e(TAG, "create the pk cover texture failed");
       }
-      if ((this.mPKTitleTextureID >= 0) || (!FileUtil.fileExistsAndNotEmpty(this.mPKTitleBmgPath))) {}
     }
-    catch (OutOfMemoryError localOutOfMemoryError1)
+    if ((this.mPKTitleTextureID < 0) && (FileUtil.fileExistsAndNotEmpty(this.mPKTitleBmgPath)))
     {
       try
       {
         Bitmap localBitmap = BitmapFactory.decodeFile(this.mPKTitleBmgPath);
         this.mPKTitleTextureID = GlUtil.createTexture(3553, localBitmap);
         localBitmap.recycle();
-        if (this.mPKTitleTextureID < 0) {
-          SLog.e(TAG, "create the pk title texture failed");
-        }
-        this.mIsSurfaceCreated = true;
-        return;
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        SLog.e(TAG, "create the pk cover texture out of memory:" + localOutOfMemoryError1);
       }
       catch (OutOfMemoryError localOutOfMemoryError2)
       {
-        for (;;)
-        {
-          SLog.e(TAG, "create the pk title texture out of memory:" + localOutOfMemoryError2);
-        }
+        str = TAG;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("create the pk title texture out of memory:");
+        localStringBuilder.append(localOutOfMemoryError2);
+        SLog.e(str, localStringBuilder.toString());
+      }
+      if (this.mPKTitleTextureID < 0) {
+        SLog.e(TAG, "create the pk title texture failed");
       }
     }
+    this.mIsSurfaceCreated = true;
   }
   
   public void onSurfaceDestroy()
@@ -296,16 +337,19 @@ public class PKFilter
     super.onSurfaceDestroy();
     SLog.d(TAG, "onSurfaceDestroy");
     this.isPKdecoderNeedWaitStart = false;
-    if (this.mDecodePlayer != null) {
-      this.mDecodePlayer.stopPlay();
+    Object localObject = this.mDecodePlayer;
+    if (localObject != null) {
+      ((DecodePlayer)localObject).stopPlay();
     }
     this.havePrepared = false;
-    if (this.mRenderFBO != null) {
-      this.mRenderFBO.destroy();
+    localObject = this.mRenderFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
     this.mRenderFBO = null;
-    if (this.mTextureRender != null) {
-      this.mTextureRender.release();
+    localObject = this.mTextureRender;
+    if (localObject != null) {
+      ((TextureRender)localObject).release();
     }
     this.mTextureRender = null;
     this.mSurfaceTexture = null;
@@ -316,13 +360,15 @@ public class PKFilter
   
   public void prepare()
   {
-    if (this.onFrameAvailableListener != null) {
-      this.onFrameAvailableListener.disable();
+    Object localObject = this.onFrameAvailableListener;
+    if (localObject != null) {
+      ((PKFilter.OnFrameAvailableListener)localObject).disable();
     }
     this.onFrameAvailableListener = new PKFilter.OnFrameAvailableListener(this);
     this.mSurfaceTexture = null;
-    if (this.mRivalTextureID > 0) {
-      GLES20.glDeleteTextures(1, new int[] { this.mRivalTextureID }, 0);
+    int i = this.mRivalTextureID;
+    if (i > 0) {
+      GLES20.glDeleteTextures(1, new int[] { i }, 0);
     }
     if (!FileUtil.fileExistsAndNotEmpty(this.mVideoPath))
     {
@@ -331,7 +377,11 @@ public class PKFilter
         assertFailed("failed to prepare the filter when video path and cover is both no exists!");
         return;
       }
-      SLog.e(TAG, "prepare pk video file is not ready , cover= " + this.mPKCoverPath);
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("prepare pk video file is not ready , cover= ");
+      localStringBuilder.append(this.mPKCoverPath);
+      SLog.e((String)localObject, localStringBuilder.toString());
       this.mRivalTextureID = GlUtil.createTexture(3553, BitmapFactory.decodeFile(this.mPKCoverPath));
       this.havePrepared = true;
       return;
@@ -349,7 +399,7 @@ public class PKFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.pkvideo.PKFilter
  * JD-Core Version:    0.7.0.1
  */

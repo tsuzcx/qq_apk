@@ -36,8 +36,9 @@ public final class LoginInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uAuthType, 0);
-    if (this.strAuthKey != null) {
-      paramJceOutputStream.write(this.strAuthKey, 1);
+    String str = this.strAuthKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.uUserIpNet, 2);
     paramJceOutputStream.write(this.uHostUin, 3);
@@ -46,7 +47,7 @@ public final class LoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QBOSS_GATEWAY_PROTO.LoginInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -22,24 +22,23 @@ public class QzoneGiftHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 11 };
+    return new int[] { 12 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if (paramInt != 12) {
       return;
-    } while (this.a == null);
-    ((QzoneGiftManager)this.a.getManager(QQManagerFactory.QZONE_GIFT_MANAGER)).onDestroy();
+    }
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null) {
+      ((QzoneGiftManager)localQQAppInterface.getManager(QQManagerFactory.QZONE_GIFT_MANAGER)).onDestroy();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.QzoneGiftHelper
  * JD-Core Version:    0.7.0.1
  */

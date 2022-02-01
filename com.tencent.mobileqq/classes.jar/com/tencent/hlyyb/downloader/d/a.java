@@ -13,12 +13,16 @@ public final class a
   
   public final String toString()
   {
-    return this.a + ";" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(";");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.d.a
  * JD-Core Version:    0.7.0.1
  */

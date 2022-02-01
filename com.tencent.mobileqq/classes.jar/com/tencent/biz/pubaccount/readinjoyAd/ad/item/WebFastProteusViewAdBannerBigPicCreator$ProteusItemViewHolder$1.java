@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.item;
 
 import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
 
 class WebFastProteusViewAdBannerBigPicCreator$ProteusItemViewHolder$1
   implements ViewFactory.FoundClickableViewListener
@@ -17,7 +17,7 @@ class WebFastProteusViewAdBannerBigPicCreator$ProteusItemViewHolder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastProteusViewAdBannerBigPicCreator.ProteusItemViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

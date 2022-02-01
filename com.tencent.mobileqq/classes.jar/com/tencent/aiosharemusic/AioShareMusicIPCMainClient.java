@@ -27,51 +27,64 @@ public class AioShareMusicIPCMainClient
   
   private void a(Bundle paramBundle)
   {
-    QQAppInterface localQQAppInterface = null;
+    QQAppInterface localQQAppInterface;
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    } else {
+      localQQAppInterface = null;
     }
-    if (localQQAppInterface != null) {}
-    try
-    {
-      ((ListenTogetherManager)localQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).c(new JSONObject(paramBundle.getString("data")));
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
+    if (localQQAppInterface != null) {
+      try
+      {
+        ((ListenTogetherManager)localQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).c(new JSONObject(paramBundle.getString("data")));
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
     }
   }
   
   public static void a(JSONObject paramJSONObject, String paramString)
   {
     boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (QLog.isColorLevel()) {
-      QLog.d("AioShareMusic.AioShareMusicIPCMainClient", 2, "callWebClient data:" + paramJSONObject.toString() + "  isToolRunning:" + bool);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("callWebClient data:");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      ((StringBuilder)localObject).append("  isToolRunning:");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("AioShareMusic.AioShareMusicIPCMainClient", 2, ((StringBuilder)localObject).toString());
     }
     if (bool)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("data", paramJSONObject.toString());
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "AioShareMusicIPCWebClient", paramString, localBundle, null);
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("data", paramJSONObject.toString());
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "AioShareMusicIPCWebClient", paramString, (Bundle)localObject, null);
     }
   }
   
   private void b(Bundle paramBundle)
   {
-    QQAppInterface localQQAppInterface = null;
+    QQAppInterface localQQAppInterface;
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
       localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    } else {
+      localQQAppInterface = null;
     }
-    if (localQQAppInterface != null) {}
-    try
-    {
-      ((ListenTogetherManager)localQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).b(new JSONObject(paramBundle.getString("data")));
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
+    if (localQQAppInterface != null) {
+      try
+      {
+        ((ListenTogetherManager)localQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).b(new JSONObject(paramBundle.getString("data")));
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
     }
   }
   
@@ -79,14 +92,10 @@ public class AioShareMusicIPCMainClient
   {
     if ("checkAioShareMusic".equals(paramString)) {
       b(paramBundle);
+    } else if ("startListenAioShareMusic".equals(paramString)) {
+      a(paramBundle);
     }
-    for (;;)
-    {
-      return null;
-      if ("startListenAioShareMusic".equals(paramString)) {
-        a(paramBundle);
-      }
-    }
+    return null;
   }
 }
 

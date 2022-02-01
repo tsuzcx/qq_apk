@@ -96,14 +96,15 @@ public class ContextMenuTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    int i = 0;
     if (!getText().equals(paramCharSequence))
     {
       super.setText(paramCharSequence, paramBufferType);
       if ((getText() instanceof QQText))
       {
         paramCharSequence = (Spannable)getText();
-        paramCharSequence = (EmoticonSpan[])paramCharSequence.getSpans(0, paramCharSequence.length(), EmoticonSpan.class);
+        int j = paramCharSequence.length();
+        int i = 0;
+        paramCharSequence = (EmoticonSpan[])paramCharSequence.getSpans(0, j, EmoticonSpan.class);
         paramBufferType = new Drawable[paramCharSequence.length];
         while (i < paramCharSequence.length)
         {
@@ -118,7 +119,7 @@ public class ContextMenuTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContextMenuTextView
  * JD-Core Version:    0.7.0.1
  */

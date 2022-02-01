@@ -39,22 +39,25 @@ public final class Net
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.netType, 0);
-    if (this.extNetworkOperator != null) {
-      paramJceOutputStream.write(this.extNetworkOperator, 1);
+    String str = this.extNetworkOperator;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.extNetworkType, 2);
     paramJceOutputStream.write(this.isWap, 3);
-    if (this.wifiSsid != null) {
-      paramJceOutputStream.write(this.wifiSsid, 4);
+    str = this.wifiSsid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.wifiBssid != null) {
-      paramJceOutputStream.write(this.wifiBssid, 5);
+    str = this.wifiBssid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.Net
  * JD-Core Version:    0.7.0.1
  */

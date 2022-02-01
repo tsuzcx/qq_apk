@@ -6,12 +6,10 @@ import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.TroopAIONotifyItem;
 import com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateBar;
 import com.tencent.mobileqq.troop.navigatebar.TroopAioNavigateUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import java.util.Observer;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TroopAioTips
@@ -64,24 +62,38 @@ public class TroopAioTips
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if ((d()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) && (!a().a.get()))
-    {
-      if ((!TroopAioNavigateUtil.a(b())) || (paramInt2 <= 0)) {
-        break label181;
+    if ((d()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) && (!a().a.get())) {
+      if ((TroopAioNavigateUtil.a(b())) && (paramInt2 > 0))
+      {
+        List localList = this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
+        int i = localList.size();
+        int j = paramInt1 + paramInt2 - paramInt5 - paramInt4;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("firstVisibleItem = ");
+          localStringBuilder.append(paramInt1);
+          localStringBuilder.append(",visibleItemCount = ");
+          localStringBuilder.append(paramInt2);
+          localStringBuilder.append(",totalItemCount = ");
+          localStringBuilder.append(paramInt3);
+          localStringBuilder.append(",footerCnt = ");
+          localStringBuilder.append(paramInt4);
+          localStringBuilder.append(",headerCnt = ");
+          localStringBuilder.append(paramInt5);
+          localStringBuilder.append(", listSize = ");
+          localStringBuilder.append(i);
+          QLog.i("BaseTroopChatPieOnScroll", 2, localStringBuilder.toString());
+        }
+        if ((paramInt1 >= 0) && (paramInt1 <= j) && (j < i)) {
+          b(localList.subList(paramInt1, j));
+        }
       }
-      List localList = this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
-      int i = localList.size();
-      int j = paramInt1 + paramInt2 - paramInt5 - paramInt4;
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseTroopChatPieOnScroll", 2, "firstVisibleItem = " + paramInt1 + ",visibleItemCount = " + paramInt2 + ",totalItemCount = " + paramInt3 + ",footerCnt = " + paramInt4 + ",headerCnt = " + paramInt5 + ", listSize = " + i);
-      }
-      if ((paramInt1 >= 0) && (paramInt1 <= j) && (j < i)) {
-        b(localList.subList(paramInt1, j));
+      else
+      {
+        b(0);
       }
     }
-    return;
-    label181:
-    b(0);
   }
   
   public void a(long paramLong)
@@ -101,8 +113,12 @@ public class TroopAioTips
   
   public void a(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidViewGestureDetector != null)) {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      GestureDetector localGestureDetector = this.jdField_a_of_type_AndroidViewGestureDetector;
+      if (localGestureDetector != null) {
+        localGestureDetector.onTouchEvent(paramMotionEvent);
+      }
     }
     k();
   }
@@ -112,60 +128,37 @@ public class TroopAioTips
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNotificationBar.a(paramList);
   }
   
-  public void a(Observer paramObserver)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNewMessageBar.b = paramObserver;
-      this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.b = paramObserver;
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNotificationBar.b = paramObserver;
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioBlueTipsView.b = paramObserver;
-    }
-  }
-  
   public void a(boolean paramBoolean)
   {
-    Object localObject;
-    RelativeLayout.LayoutParams localLayoutParams;
     if (this.jdField_a_of_type_Boolean)
     {
-      localObject = null;
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a()) {
-        break label65;
+      Object localObject = null;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a()) {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar;
+      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNotificationBar.a()) {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNotificationBar;
+      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar.a()) {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar;
       if (localObject != null)
       {
         localObject = ((TroopAioAgent)localObject).a();
         if (localObject != null)
         {
-          localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
-          if (!paramBoolean) {
-            break label101;
+          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
+          if (paramBoolean)
+          {
+            localLayoutParams.addRule(3, 2131379333);
           }
-          localLayoutParams.addRule(3, 2131380004);
+          else
+          {
+            int i = TroopAioMsgNavigateBar.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new int[] { 2131374119, 2131374255, 2131374250 });
+            if (i > 0) {
+              localLayoutParams.addRule(3, i);
+            }
+          }
+          ((View)localObject).setLayoutParams(localLayoutParams);
         }
-      }
-    }
-    for (;;)
-    {
-      ((View)localObject).setLayoutParams(localLayoutParams);
-      return;
-      label65:
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNotificationBar.a())
-      {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNotificationBar;
-        break;
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar.a()) {
-        break;
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar;
-      break;
-      label101:
-      int i = TroopAioMsgNavigateBar.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new int[] { 2131374581, 2131374717, 2131374712 });
-      if (i > 0) {
-        localLayoutParams.addRule(3, i);
       }
     }
   }
@@ -185,8 +178,12 @@ public class TroopAioTips
   
   public int b()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      TroopAioMsgNavigateBar localTroopAioMsgNavigateBar = this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar;
+      if (localTroopAioMsgNavigateBar != null) {
+        return localTroopAioMsgNavigateBar.a();
+      }
     }
     return -1;
   }
@@ -215,11 +212,11 @@ public class TroopAioTips
   
   protected void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNewMessageBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNotificationBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioBlueTipsView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNewMessageBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNotificationBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioBlueTipsView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar.a(this);
     this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new TroopAioTips.1(this));
     this.jdField_b_of_type_Boolean = false;
@@ -314,9 +311,10 @@ public class TroopAioTips
   
   public boolean h()
   {
+    boolean bool3 = this.jdField_a_of_type_Boolean;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Boolean) {
+    if (bool3) {
       if ((!d()) && (!c()) && (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioNotificationBar.a()))
       {
         bool1 = bool2;
@@ -347,7 +345,7 @@ public class TroopAioTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioTips
  * JD-Core Version:    0.7.0.1
  */

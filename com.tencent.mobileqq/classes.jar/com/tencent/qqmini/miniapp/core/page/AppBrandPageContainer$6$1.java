@@ -11,29 +11,40 @@ class AppBrandPageContainer$6$1
   
   public void run()
   {
-    if (this.this$1.val$loadingView != null) {}
-    try
-    {
-      this.this$1.val$loadingView.hide();
-      if (this.val$resCode == 0)
+    if (this.this$1.val$loadingView != null) {
+      try
       {
-        AppBrandPageContainer.access$300(this.this$1.this$0, this.val$apkgInfo, this.this$1.val$path, this.this$1.val$pageWeakRef, this.this$1.val$openType);
-        return;
+        this.this$1.val$loadingView.hide();
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         QMLog.e("minisdk-start-AppBrandPageContainer", "", localThrowable);
       }
-      QMLog.e("minisdk-start-AppBrandPageContainer", "executeDownSubPackage failed." + this.val$message);
     }
+    int i = this.val$resCode;
+    if (i == 0)
+    {
+      AppBrandPageContainer.access$300(this.this$1.this$0, this.val$apkgInfo, this.this$1.val$path, this.this$1.val$pageWeakRef, this.this$1.val$openType);
+      return;
+    }
+    if (i == 5)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("executeDownSubPackage url is empty.");
+      localStringBuilder.append(this.val$message);
+      QMLog.e("minisdk-start-AppBrandPageContainer", localStringBuilder.toString());
+      AppBrandPageContainer.access$300(this.this$1.this$0, this.val$apkgInfo, this.this$1.val$path, this.this$1.val$pageWeakRef, this.this$1.val$openType);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("executeDownSubPackage failed.");
+    localStringBuilder.append(this.val$message);
+    QMLog.e("minisdk-start-AppBrandPageContainer", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.6.1
  * JD-Core Version:    0.7.0.1
  */

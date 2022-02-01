@@ -50,7 +50,7 @@ public final class ReqHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.ReqHeader
  * JD-Core Version:    0.7.0.1
  */

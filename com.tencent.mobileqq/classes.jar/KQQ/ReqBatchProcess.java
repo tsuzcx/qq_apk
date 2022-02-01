@@ -31,8 +31,9 @@ public final class ReqBatchProcess
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.batch_request_list != null) {
-      paramJceOutputStream.write(this.batch_request_list, 0);
+    ArrayList localArrayList = this.batch_request_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

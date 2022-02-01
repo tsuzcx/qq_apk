@@ -13,12 +13,20 @@ public class GroupID
   
   public String toString()
   {
-    return "GroupID{groupUin='" + this.a + '\'' + ", groupUnionID='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GroupID{groupUin='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", groupUnionID='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.model.GroupID
  * JD-Core Version:    0.7.0.1
  */

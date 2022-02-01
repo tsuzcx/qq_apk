@@ -6,7 +6,7 @@ import com.tencent.falco.base.libapi.datareport.QualityReportTask;
 public class DataReport
 {
   private static DataReportInterface a;
-  public static String a;
+  public static String a = "event_install_fail";
   public static String b = "get_version_fail";
   public static String c = "get_version_success";
   public static String d = "get_plugin_fail";
@@ -26,11 +26,6 @@ public class DataReport
   public static String r = "install_finish_install";
   public static String s = "zt_str1";
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "event_install_fail";
-  }
-  
   public static void a()
   {
     jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface = null;
@@ -43,126 +38,143 @@ public class DataReport
   
   public static void a(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface == null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(jdField_a_of_type_JavaLangString).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface == null) {
+      localDataReportInterface.newQualityTask().setActType(jdField_a_of_type_JavaLangString).addKeyValue(s, paramString).send();
     }
   }
   
   public static void b(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(b).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(b).addKeyValue(s, paramString).send();
     }
   }
   
   public static void c(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(c).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(c).addKeyValue(s, paramString).send();
     }
   }
   
   public static void d(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(d).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(d).addKeyValue(s, paramString).send();
     }
   }
   
   public static void e(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(e).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(e).addKeyValue(s, paramString).send();
     }
   }
   
   public static void f(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(f).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(f).addKeyValue(s, paramString).send();
     }
   }
   
   public static void g(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(g).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(g).addKeyValue(s, paramString).send();
     }
   }
   
   public static void h(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(h).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(h).addKeyValue(s, paramString).send();
     }
   }
   
   public static void i(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(i).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(i).addKeyValue(s, paramString).send();
     }
   }
   
   public static void j(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(j).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(j).addKeyValue(s, paramString).send();
     }
   }
   
   public static void k(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(l).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(l).addKeyValue(s, paramString).send();
     }
   }
   
   public static void l(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(k).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(k).addKeyValue(s, paramString).send();
     }
   }
   
   public static void m(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(r).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(r).addKeyValue(s, paramString).send();
     }
   }
   
   public static void n(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(n).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(n).addKeyValue(s, paramString).send();
     }
   }
   
   public static void o(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(o).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(o).addKeyValue(s, paramString).send();
     }
   }
   
   public static void p(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(p).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(p).addKeyValue(s, paramString).send();
     }
   }
   
   public static void q(String paramString)
   {
-    if (jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface != null) {
-      jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.newQualityTask().setActType(q).addKeyValue(s, paramString).send();
+    DataReportInterface localDataReportInterface = jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface;
+    if (localDataReportInterface != null) {
+      localDataReportInterface.newQualityTask().setActType(q).addKeyValue(s, paramString).send();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.report.DataReport
  * JD-Core Version:    0.7.0.1
  */

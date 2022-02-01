@@ -16,60 +16,61 @@ public class DownloadReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str3;
     if (paramIntent != null)
     {
-      str3 = paramIntent.getStringExtra("processName");
-      if ((!TextUtils.isEmpty(str3)) && (str3.equalsIgnoreCase(Common.r()))) {
-        break label32;
-      }
-    }
-    label32:
-    String str1;
-    String str2;
-    String str4;
-    do
-    {
-      do
+      String str3 = paramIntent.getStringExtra("processName");
+      if (!TextUtils.isEmpty(str3))
       {
-        return;
-        str1 = paramIntent.getAction();
+        if (!str3.equalsIgnoreCase(Common.r())) {
+          return;
+        }
+        String str1 = paramIntent.getAction();
         paramIntent = (NoticeParam)paramIntent.getParcelableExtra("noticeParam");
-      } while (paramIntent == null);
-      str2 = str3.replace(":", ".");
-      if ((IntentFactory.e + "." + str2).equals(str1))
-      {
-        AppUtil.a(paramContext, paramIntent.d);
-        return;
-      }
-      LogUtility.b("vivi", "processName :" + str3 + " | formatStr:" + str2);
-      str3 = paramIntent.a;
-      str4 = paramIntent.d;
-    } while ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4)));
-    StackTraceElement[] arrayOfStackTraceElement = new Throwable().getStackTrace();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 1;
-    while (i < arrayOfStackTraceElement.length)
-    {
-      localStringBuilder.append(arrayOfStackTraceElement[i].toString());
-      i += 1;
-    }
-    if (!TextUtils.isEmpty(str3)) {
-      DownloadInfoReport.a.put(str3, localStringBuilder.toString());
-    }
-    for (;;)
-    {
-      ThreadManager.executeOnSubThread(new DownloadReceiver.1(this, str3, str4, paramIntent, str2, str1, paramContext));
-      return;
-      if (!TextUtils.isEmpty(paramIntent.e)) {
-        DownloadInfoReport.a.put(paramIntent.e, localStringBuilder.toString());
+        if (paramIntent == null) {
+          return;
+        }
+        String str2 = str3.replace(":", ".");
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(IntentFactory.e);
+        ((StringBuilder)localObject).append(".");
+        ((StringBuilder)localObject).append(str2);
+        if (((StringBuilder)localObject).toString().equals(str1))
+        {
+          AppUtil.a(paramContext, paramIntent.d);
+          return;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("processName :");
+        ((StringBuilder)localObject).append(str3);
+        ((StringBuilder)localObject).append(" | formatStr:");
+        ((StringBuilder)localObject).append(str2);
+        LogUtility.b("vivi", ((StringBuilder)localObject).toString());
+        str3 = paramIntent.a;
+        localObject = paramIntent.d;
+        if ((TextUtils.isEmpty(str3)) && (TextUtils.isEmpty((CharSequence)localObject))) {
+          return;
+        }
+        StackTraceElement[] arrayOfStackTraceElement = new Throwable().getStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        int i = 1;
+        while (i < arrayOfStackTraceElement.length)
+        {
+          localStringBuilder.append(arrayOfStackTraceElement[i].toString());
+          i += 1;
+        }
+        if (!TextUtils.isEmpty(str3)) {
+          DownloadInfoReport.a.put(str3, localStringBuilder.toString());
+        } else if (!TextUtils.isEmpty(paramIntent.e)) {
+          DownloadInfoReport.a.put(paramIntent.e, localStringBuilder.toString());
+        }
+        ThreadManager.executeOnSubThread(new DownloadReceiver.1(this, str3, (String)localObject, paramIntent, str2, str1, paramContext));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.common.DownloadReceiver
  * JD-Core Version:    0.7.0.1
  */

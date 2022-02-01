@@ -97,39 +97,38 @@ public class GLFrameImage
           localObject3 = FileUtils.loadBitmapFromNative(str, false, (Bitmap)localObject2);
           localObject1 = localObject2;
           Object localObject4 = localObject3;
-          if (localObject3 == null)
-          {
-            if (localObject2 == null) {
-              break label257;
+          if (localObject3 == null) {
+            if (localObject2 != null)
+            {
+              localArrayList.remove(localObject2);
+              ((Bitmap)localObject2).recycle();
+              localObject4 = FileUtils.loadBitmapFromNative(str, false);
+              localObject1 = null;
             }
-            localArrayList.remove(localObject2);
-            ((Bitmap)localObject2).recycle();
-            localObject4 = FileUtils.loadBitmapFromNative(str, false);
-            localObject1 = null;
+            else
+            {
+              DanceLog.printFrameQueue("GLFrameImage", "oncePreloadBoyFilterPrivateResource error");
+              localObject4 = localObject3;
+              localObject1 = localObject2;
+            }
           }
-          for (;;)
+          localObject3 = localObject1;
+          if (localObject4 != null)
           {
-            localObject3 = localObject1;
-            if (localObject4 == null) {
-              break;
-            }
             localObject2 = new GLImage(true, true);
             ((GLImage)localObject2).loadTextureSync((Bitmap)localObject4, false);
             localHashMap.put(str, localObject2);
-            if (localObject1 != null) {
-              break label271;
+            if (localObject1 == null)
+            {
+              localArrayList.add(localObject4);
+              localObject3 = localObject1;
             }
-            localArrayList.add(localObject4);
-            localObject3 = localObject1;
-            break;
-            label257:
-            DanceLog.printFrameQueue("GLFrameImage", "oncePreloadBoyFilterPrivateResource error");
-            localObject1 = localObject2;
-            localObject4 = localObject3;
+            else
+            {
+              ((Bitmap)localObject4).recycle();
+              localObject3 = localObject1;
+            }
           }
-          label271:
-          ((Bitmap)localObject4).recycle();
-          localObject3 = localObject1;
         }
         if (localObject3 != null)
         {
@@ -150,17 +149,36 @@ public class GLFrameImage
   private static void printTextureCache()
   {
     DanceLog.printFrameQueue("GLFrameImage", "printTextureCache[Begin]......................");
-    Object localObject = mFrameImages.keySet();
-    DanceLog.printFrameQueue("GLFrameImage", "printTextureCache size=" + ((Set)localObject).size());
-    localObject = ((Set)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    Object localObject1 = mFrameImages.keySet();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("printTextureCache size=");
+    ((StringBuilder)localObject2).append(((Set)localObject1).size());
+    DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)localObject2).toString());
+    localObject1 = ((Set)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      String str = (String)((Iterator)localObject).next();
-      GLImage localGLImage = (GLImage)mFrameImages.get(str);
-      if (localGLImage != null) {
-        DanceLog.printFrameQueue("GLFrameImage", "printTextureCache path=" + str + " texture=" + localGLImage.getTexture() + " enableRelease=" + localGLImage.isEnableTemporaryRelease() + " isBoy=" + localGLImage.isBoyFilterTexture());
-      } else {
-        DanceLog.printFrameQueue("GLFrameImage", "printTextureCache path=" + str + " Released[noValue]");
+      localObject2 = (String)((Iterator)localObject1).next();
+      Object localObject3 = (GLImage)mFrameImages.get(localObject2);
+      if (localObject3 != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("printTextureCache path=");
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(" texture=");
+        localStringBuilder.append(((GLImage)localObject3).getTexture());
+        localStringBuilder.append(" enableRelease=");
+        localStringBuilder.append(((GLImage)localObject3).isEnableTemporaryRelease());
+        localStringBuilder.append(" isBoy=");
+        localStringBuilder.append(((GLImage)localObject3).isBoyFilterTexture());
+        DanceLog.printFrameQueue("GLFrameImage", localStringBuilder.toString());
+      }
+      else
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("printTextureCache path=");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append(" Released[noValue]");
+        DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)localObject3).toString());
       }
     }
     DanceLog.printFrameQueue("GLFrameImage", "printTextureCache[End]......................");
@@ -170,10 +188,10 @@ public class GLFrameImage
   {
     DanceLog.printFrameQueue("GLFrameImage", "reloadReleaseDanceStageTexture[begin]");
     Set localSet = mFrameImages.keySet();
-    Iterator localIterator = localSet.iterator();
-    while (localIterator.hasNext())
+    Object localObject = localSet.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      String str = (String)localIterator.next();
+      String str = (String)((Iterator)localObject).next();
       if ((GLImage)mFrameImages.get(str) == null)
       {
         GLImage localGLImage = new GLImage(true);
@@ -181,7 +199,10 @@ public class GLFrameImage
         mFrameImages.put(str, localGLImage);
       }
     }
-    DanceLog.printFrameQueue("GLFrameImage", "reloadReleaseDanceStageTexture[end] loadedSize=" + localSet.size());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("reloadReleaseDanceStageTexture[end] loadedSize=");
+    ((StringBuilder)localObject).append(localSet.size());
+    DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)localObject).toString());
   }
   
   public static void reloadTextureCache()
@@ -207,35 +228,45 @@ public class GLFrameImage
     while (((Iterator)localObject2).hasNext())
     {
       String str = (String)((Iterator)localObject2).next();
-      GLImage localGLImage = (GLImage)mFrameImages.get(str);
-      if (localGLImage != null)
+      Object localObject3 = (GLImage)mFrameImages.get(str);
+      if (localObject3 != null)
       {
-        if (localGLImage.isEnableTemporaryRelease()) {
-          if (localGLImage.isBoyFilterTexture())
+        if (((GLImage)localObject3).isEnableTemporaryRelease()) {
+          if (((GLImage)localObject3).isBoyFilterTexture())
           {
-            localGLImage.release();
+            ((GLImage)localObject3).release();
             mFrameImages.put(str, null);
             ((ArrayList)localObject1).add(str);
           }
           else if (paramBoolean)
           {
-            localGLImage.release();
+            ((GLImage)localObject3).release();
             mFrameImages.put(str, null);
           }
         }
       }
-      else {
-        DanceLog.printFrameQueue("GLFrameImage", "temporaryReleaseTextureCache[Error] image=null key=" + str);
+      else
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("temporaryReleaseTextureCache[Error] image=null key=");
+        ((StringBuilder)localObject3).append(str);
+        DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)localObject3).toString());
       }
     }
-    DanceLog.printFrameQueue("GLFrameImage", "temporaryReleaseTextureCache[clear boyFilter] size=" + ((ArrayList)localObject1).size());
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("temporaryReleaseTextureCache[clear boyFilter] size=");
+    ((StringBuilder)localObject2).append(((ArrayList)localObject1).size());
+    DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)localObject2).toString());
     localObject1 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
       mFrameImages.remove(localObject2);
     }
-    DanceLog.printFrameQueue("GLFrameImage", "temporaryReleaseTextureCache boyFilterName=" + ResourceManager.getInstance().getLittleBoyFilterRootPath());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("temporaryReleaseTextureCache boyFilterName=");
+    ((StringBuilder)localObject1).append(ResourceManager.getInstance().getLittleBoyFilterRootPath());
+    DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)localObject1).toString());
     printTextureCache();
   }
   
@@ -255,7 +286,13 @@ public class GLFrameImage
         }
         else
         {
-          DanceLog.printFrameQueue("GLFrameImage", "updateGLFrameImageCache[Error]newImage=" + localGLImage1 + " oldImage=" + localGLImage2 + str);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("updateGLFrameImageCache[Error]newImage=");
+          localStringBuilder.append(localGLImage1);
+          localStringBuilder.append(" oldImage=");
+          localStringBuilder.append(localGLImage2);
+          localStringBuilder.append(str);
+          DanceLog.printFrameQueue("GLFrameImage", localStringBuilder.toString());
           if (localGLImage1 != null) {
             localGLImage1.release();
           }
@@ -284,20 +321,16 @@ public class GLFrameImage
     if (this.mHasAnimationStarted)
     {
       this.mCurrentFrameIndex = ((int)((float)(SystemClock.uptimeMillis() - this.mStartMsTime) / this.mFrameDuration));
-      if (this.mFrameAnimationMode != 1) {
-        break label65;
-      }
-      if (this.mCurrentFrameIndex >= this.mAnimationFrames.size())
+      int i = this.mFrameAnimationMode;
+      if (i == 1)
       {
-        this.mStartMsTime = SystemClock.uptimeMillis();
-        this.mCurrentFrameIndex = 0;
+        if (this.mCurrentFrameIndex >= this.mAnimationFrames.size())
+        {
+          this.mStartMsTime = SystemClock.uptimeMillis();
+          this.mCurrentFrameIndex = 0;
+        }
       }
-    }
-    for (;;)
-    {
-      return this.mCurrentFrameIndex;
-      label65:
-      if (this.mFrameAnimationMode == 0) {
+      else if (i == 0) {
         if (this.mReversedPlay)
         {
           this.mCurrentFrameIndex = (this.mAnimationFrames.size() - 2 - this.mCurrentFrameIndex);
@@ -324,12 +357,14 @@ public class GLFrameImage
         }
       }
     }
+    return this.mCurrentFrameIndex;
   }
   
   public GLImage getImageByIndex(int paramInt)
   {
     String str = (String)this.mAnimationFrames.get(paramInt);
-    if (((this.mLoadTextureMode == 1) || (this.mLoadTextureMode == 0)) && ((GLImage)mFrameImages.get(str) == null))
+    paramInt = this.mLoadTextureMode;
+    if (((paramInt == 1) || (paramInt == 0)) && ((GLImage)mFrameImages.get(str) == null))
     {
       GLImage localGLImage = new GLImage(this.mNeedTemporaryRelease, this.mIsBoyFilterPrivateRes);
       localGLImage.loadTextureSync(str);
@@ -354,9 +389,10 @@ public class GLFrameImage
   {
     if (!this.mHasInitedImage)
     {
+      int i = this.mLoadTextureMode;
       Object localObject1;
       Object localObject2;
-      if (this.mLoadTextureMode == 0)
+      if (i == 0)
       {
         localObject1 = this.mAnimationFrames.iterator();
         while (((Iterator)localObject1).hasNext())
@@ -370,7 +406,7 @@ public class GLFrameImage
           }
         }
       }
-      if (this.mLoadTextureMode == 1)
+      if (i == 1)
       {
         localObject1 = (String)this.mAnimationFrames.get(0);
         if ((localObject1 != null) && (!((String)localObject1).equals("")) && ((GLImage)mFrameImages.get(localObject1) == null))
@@ -399,11 +435,13 @@ public class GLFrameImage
   public final void setCurrentImage(int paramInt)
   {
     String str = (String)this.mAnimationFrames.get(paramInt);
+    paramInt = this.mLoadTextureMode;
     GLImage localGLImage;
-    if (this.mLoadTextureMode == 0)
+    if (paramInt == 0)
     {
       localGLImage = (GLImage)mFrameImages.get(str);
-      if (localGLImage == null) {
+      if (localGLImage == null)
+      {
         if ((str != null) && (!str.equals("")))
         {
           localGLImage = new GLImage(this.mNeedTemporaryRelease, this.mIsBoyFilterPrivateRes);
@@ -412,31 +450,28 @@ public class GLFrameImage
           this.mCurrentTexture = localGLImage.getTexture();
         }
       }
+      else {
+        this.mCurrentTexture = localGLImage.getTexture();
+      }
     }
-    for (;;)
+    else if (paramInt == 1)
     {
-      DanceLog.printFrameQueue("GLFrameImage", "setCurrentImage");
-      return;
-      this.mCurrentTexture = localGLImage.getTexture();
-      continue;
-      if (this.mLoadTextureMode == 1)
+      localGLImage = (GLImage)mFrameImages.get(str);
+      if (localGLImage == null)
       {
-        localGLImage = (GLImage)mFrameImages.get(str);
-        if (localGLImage == null)
+        if ((str != null) && (!str.equals("")))
         {
-          if ((str != null) && (!str.equals("")))
-          {
-            localGLImage = new GLImage(this.mNeedTemporaryRelease, this.mIsBoyFilterPrivateRes);
-            localGLImage.loadTextureSync(str);
-            mFrameImages.put(str, localGLImage);
-            this.mCurrentTexture = localGLImage.getTexture();
-          }
-        }
-        else {
+          localGLImage = new GLImage(this.mNeedTemporaryRelease, this.mIsBoyFilterPrivateRes);
+          localGLImage.loadTextureSync(str);
+          mFrameImages.put(str, localGLImage);
           this.mCurrentTexture = localGLImage.getTexture();
         }
       }
+      else {
+        this.mCurrentTexture = localGLImage.getTexture();
+      }
     }
+    DanceLog.printFrameQueue("GLFrameImage", "setCurrentImage");
   }
   
   public void setFrameDuration(float paramFloat)
@@ -466,7 +501,7 @@ public class GLFrameImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLFrameImage
  * JD-Core Version:    0.7.0.1
  */

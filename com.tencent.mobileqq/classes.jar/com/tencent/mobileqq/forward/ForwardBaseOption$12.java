@@ -1,25 +1,76 @@
 package com.tencent.mobileqq.forward;
 
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.selectmember.ResultRecord;
+import java.util.Iterator;
+import java.util.List;
 
 class ForwardBaseOption$12
-  implements Runnable
+  implements ForwardNewVersionDialog.ForwardWriteTogetherListener
 {
-  ForwardBaseOption$12(ForwardBaseOption paramForwardBaseOption, Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
+  ForwardBaseOption$12(ForwardBaseOption paramForwardBaseOption) {}
   
-  public void run()
+  public boolean a(View paramView)
   {
-    if (this.this$0.a.isShowing())
+    paramView = this.a.a.getBooleanArray("forward_is_write_together");
+    for (;;)
     {
-      this.this$0.a.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b);
-      this.this$0.t();
+      int i;
+      try
+      {
+        Object localObject = this.a.a.getParcelableArrayList("forward_multi_target");
+        String str = this.a.a.getString("forward_source_uin");
+        if ((localObject != null) && (!((List)localObject).isEmpty()))
+        {
+          localObject = ((List)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            ResultRecord localResultRecord = (ResultRecord)((Iterator)localObject).next();
+            if ((localResultRecord.getUinType() != 1) || (!str.equals(localResultRecord.uin))) {
+              continue;
+            }
+            i = 0;
+            if (i >= paramView.length) {
+              continue;
+            }
+            if (paramView[i] == 0) {
+              break label200;
+            }
+            return true;
+          }
+        }
+        else
+        {
+          localObject = this.a.a.getString("uin");
+          if ((this.a.a.getInt("uintype") == 1) && (((String)localObject).equals(str)))
+          {
+            i = 0;
+            if (i < paramView.length)
+            {
+              int j = paramView[i];
+              if (j != 0) {
+                return true;
+              }
+              i += 1;
+              continue;
+            }
+          }
+        }
+        return false;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      label200:
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.12
  * JD-Core Version:    0.7.0.1
  */

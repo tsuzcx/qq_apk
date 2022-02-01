@@ -23,16 +23,18 @@ public class TroopMemberAddFrdHelper$TroopMemberListConfig
         Object localObject = new JSONObject(paramString);
         this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
         localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
+        int i = 0;
         while ((localObject != null) && (i < ((JSONArray)localObject).length()))
         {
           this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
           i += 1;
         }
       }
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.i("TroopMemberAddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
+        return;
       }
-      return;
     }
     catch (Throwable paramString)
     {
@@ -42,7 +44,7 @@ public class TroopMemberAddFrdHelper$TroopMemberListConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.helper.TroopMemberAddFrdHelper.TroopMemberListConfig
  * JD-Core Version:    0.7.0.1
  */

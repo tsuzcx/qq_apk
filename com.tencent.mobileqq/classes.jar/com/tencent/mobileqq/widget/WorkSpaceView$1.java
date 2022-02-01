@@ -12,26 +12,30 @@ class WorkSpaceView$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
+      if (i == 1) {
+        WorkSpaceView.a(this.a).removeMessages(0);
+      }
     }
-    for (;;)
+    else
     {
-      super.handleMessage(paramMessage);
-      return;
-      int i = ((PushBanner)this.a.getChildAt(this.a.a).getTag()).a;
-      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
-        this.a.a(this.a.a() + 1);
+      WorkSpaceView localWorkSpaceView = this.a;
+      i = ((PushBanner)localWorkSpaceView.getChildAt(localWorkSpaceView.a).getTag()).a;
+      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0))
+      {
+        localWorkSpaceView = this.a;
+        localWorkSpaceView.a(localWorkSpaceView.a() + 1);
       }
       WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
-      continue;
-      WorkSpaceView.a(this.a).removeMessages(0);
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WorkSpaceView.1
  * JD-Core Version:    0.7.0.1
  */

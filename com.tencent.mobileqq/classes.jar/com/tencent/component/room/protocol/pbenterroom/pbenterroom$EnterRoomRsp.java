@@ -49,6 +49,7 @@ public final class pbenterroom$EnterRoomRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -56,12 +57,12 @@ public final class pbenterroom$EnterRoomRsp
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 80, 90, 98, 106, 114, 120, 130, 138, 146, 154, 162, 170, 178, 186, 194, 200, 208, 218, 226, 232, 242, 248, 282 }, new String[] { "result", "err_msg", "room_info", "anchor_info", "voice_info", "video_info", "sig", "cmd_info", "self_info", "st_type", "buff_login_key", "media_data", "record_info", "sdk_info", "jump_type", "jump_url", "rtmp_url", "hls_url", "h5_url", "ext_info", "av_info", "catch_doll_video_info", "doll_info_url", "token", "close_media", "use_url", "close_jump_url", "buz_data", "buz_time", "endpage_jump_url", "enable_rank_list", "program_info" }, new Object[] { Integer.valueOf(0), "", null, null, null, null, localByteStringMicro1, null, null, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, null, null, Integer.valueOf(0), localByteStringMicro4, "", "", "", localByteStringMicro5, null, null, "", localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro7, Integer.valueOf(0), "", Boolean.valueOf(false), null }, EnterRoomRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 80, 90, 98, 106, 114, 120, 130, 138, 146, 154, 162, 170, 178, 186, 194, 200, 208, 218, 226, 232, 242, 248, 282 }, new String[] { "result", "err_msg", "room_info", "anchor_info", "voice_info", "video_info", "sig", "cmd_info", "self_info", "st_type", "buff_login_key", "media_data", "record_info", "sdk_info", "jump_type", "jump_url", "rtmp_url", "hls_url", "h5_url", "ext_info", "av_info", "catch_doll_video_info", "doll_info_url", "token", "close_media", "use_url", "close_jump_url", "buz_data", "buz_time", "endpage_jump_url", "enable_rank_list", "program_info" }, new Object[] { localInteger, "", null, null, null, null, localByteStringMicro1, null, null, localInteger, localByteStringMicro2, localByteStringMicro3, null, null, localInteger, localByteStringMicro4, "", "", "", localByteStringMicro5, null, null, "", localByteStringMicro6, localInteger, localInteger, "", localByteStringMicro7, localInteger, "", Boolean.valueOf(false), null }, EnterRoomRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.room.protocol.pbenterroom.pbenterroom.EnterRoomRsp
  * JD-Core Version:    0.7.0.1
  */

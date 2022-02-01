@@ -40,7 +40,29 @@ public class WSGlobalConfig
     if (paramstGlobalConfig == null) {
       return;
     }
-    WSLog.d("WSGlobalConfigLog", "globalConfig info:stGlobalConfig: {\nis_call_weishi=" + paramstGlobalConfig.is_call_weishi + ", link_strategy_type=" + paramstGlobalConfig.link_strategy_type + ", open_4g_autodownload=" + paramstGlobalConfig.open_4g_autodownload + ", cache_size=" + paramstGlobalConfig.cache_size + ", is_direct_open=" + paramstGlobalConfig.is_direct_open + ", encrypted_deviceid=" + paramstGlobalConfig.encrypted_deviceid + "\ncommentConfig=" + paramstGlobalConfig.commentConfig + "\nlinkConfig=" + paramstGlobalConfig.linkConfig + "\ndownload=" + paramstGlobalConfig.download + "\nmapExt=" + paramstGlobalConfig.mapExt + "\n}");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("globalConfig info:stGlobalConfig: {\nis_call_weishi=");
+    localStringBuilder.append(paramstGlobalConfig.is_call_weishi);
+    localStringBuilder.append(", link_strategy_type=");
+    localStringBuilder.append(paramstGlobalConfig.link_strategy_type);
+    localStringBuilder.append(", open_4g_autodownload=");
+    localStringBuilder.append(paramstGlobalConfig.open_4g_autodownload);
+    localStringBuilder.append(", cache_size=");
+    localStringBuilder.append(paramstGlobalConfig.cache_size);
+    localStringBuilder.append(", is_direct_open=");
+    localStringBuilder.append(paramstGlobalConfig.is_direct_open);
+    localStringBuilder.append(", encrypted_deviceid=");
+    localStringBuilder.append(paramstGlobalConfig.encrypted_deviceid);
+    localStringBuilder.append("\ncommentConfig=");
+    localStringBuilder.append(paramstGlobalConfig.commentConfig);
+    localStringBuilder.append("\nlinkConfig=");
+    localStringBuilder.append(paramstGlobalConfig.linkConfig);
+    localStringBuilder.append("\ndownload=");
+    localStringBuilder.append(paramstGlobalConfig.download);
+    localStringBuilder.append("\nmapExt=");
+    localStringBuilder.append(paramstGlobalConfig.mapExt);
+    localStringBuilder.append("\n}");
+    WSLog.d("WSGlobalConfigLog", localStringBuilder.toString());
   }
   
   private boolean b(int paramInt)
@@ -50,14 +72,16 @@ public class WSGlobalConfig
   
   private boolean d()
   {
-    return (this.jdField_a_of_type_UserGrowthStGlobalConfig == null) || (this.jdField_a_of_type_UserGrowthStGlobalConfig.download == null);
+    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
+    return (localstGlobalConfig == null) || (localstGlobalConfig.download == null);
   }
   
   @Deprecated
   public int a()
   {
-    if (this.jdField_a_of_type_UserGrowthStGlobalConfig != null) {
-      return this.jdField_a_of_type_UserGrowthStGlobalConfig.link_strategy_type;
+    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
+    if (localstGlobalConfig != null) {
+      return localstGlobalConfig.link_strategy_type;
     }
     return 1;
   }
@@ -73,10 +97,11 @@ public class WSGlobalConfig
   
   public stCallInfo a()
   {
-    if (this.jdField_a_of_type_UserGrowthStGlobalConfig == null) {
+    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
+    if (localstGlobalConfig == null) {
       return null;
     }
-    return this.jdField_a_of_type_UserGrowthStGlobalConfig.callinfo;
+    return localstGlobalConfig.callinfo;
   }
   
   public stGlobalConfig a(int paramInt)
@@ -95,10 +120,11 @@ public class WSGlobalConfig
   
   public stUserAuth a()
   {
-    if (this.jdField_a_of_type_UserGrowthStGlobalConfig == null) {
+    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
+    if (localstGlobalConfig == null) {
       return null;
     }
-    return this.jdField_a_of_type_UserGrowthStGlobalConfig.user_auth;
+    return localstGlobalConfig.user_auth;
   }
   
   public String a()
@@ -113,13 +139,17 @@ public class WSGlobalConfig
   {
     this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramstGlobalConfig);
     this.jdField_a_of_type_UserGrowthStGlobalConfig = paramstGlobalConfig;
-    WSLog.d("WSGlobalConfigLog", "initGlobalConfig globalConfig:" + paramstGlobalConfig);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initGlobalConfig globalConfig:");
+    localStringBuilder.append(paramstGlobalConfig);
+    WSLog.d("WSGlobalConfigLog", localStringBuilder.toString());
     a(paramstGlobalConfig);
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_UserGrowthStGlobalConfig == null) || (this.jdField_a_of_type_UserGrowthStGlobalConfig.open_4g_autodownload != 0);
+    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
+    return (localstGlobalConfig == null) || (localstGlobalConfig.open_4g_autodownload != 0);
   }
   
   public boolean a(int paramInt)
@@ -132,8 +162,8 @@ public class WSGlobalConfig
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
     stJumpInfo localstJumpInfo = a(paramInt2);
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (localstJumpInfo != null)
     {
@@ -143,7 +173,12 @@ public class WSGlobalConfig
         bool1 = bool2;
         if (localstJumpInfo.id > 0)
         {
-          WSLog.a("WSGlobalConfigLog", "全屏阻断页是第" + localstJumpInfo.index + "个,id为：" + localstJumpInfo.id);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("全屏阻断页是第");
+          localStringBuilder.append(localstJumpInfo.index);
+          localStringBuilder.append("个,id为：");
+          localStringBuilder.append(localstJumpInfo.id);
+          WSLog.a("WSGlobalConfigLog", localStringBuilder.toString());
           bool1 = bool2;
           if (paramInt1 == localstJumpInfo.index) {
             bool1 = true;
@@ -236,10 +271,21 @@ public class WSGlobalConfig
     {
       if (TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl))
       {
-        this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl = (WeishiDownloadUtil.a() + "&versioncode=" + c());
-        WSLog.c("WeishiDownloadUtil", "服务器下发QQDownloadUrl失败，使用默认的:" + this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl);
+        localObject = this.jdField_a_of_type_UserGrowthStGlobalConfig.download;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(WeishiDownloadUtil.a());
+        localStringBuilder.append("&versioncode=");
+        localStringBuilder.append(c());
+        ((downloadConfig)localObject).qqDownloadUrl = localStringBuilder.toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("服务器下发QQDownloadUrl失败，使用默认的:");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl);
+        WSLog.c("WeishiDownloadUtil", ((StringBuilder)localObject).toString());
       }
-      WSLog.d("WeishiDownloadUtil", "服务器下发QQDownloadUrl: " + this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("服务器下发QQDownloadUrl: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl);
+      WSLog.d("WeishiDownloadUtil", ((StringBuilder)localObject).toString());
       return this.jdField_a_of_type_UserGrowthStGlobalConfig.download.qqDownloadUrl;
     }
     return WeishiDownloadUtil.a();
@@ -249,28 +295,39 @@ public class WSGlobalConfig
   {
     if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
     {
-      str = WSSharePreferencesUtil.a("encryptedDeviceId", "");
-      WSLog.a("WSGlobalConfigLog", "WSSharePreferencesUtil load encrypted_deviceid:" + str);
-      return str;
+      localObject = WSSharePreferencesUtil.a("encryptedDeviceId", "");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WSSharePreferencesUtil load encrypted_deviceid:");
+      localStringBuilder.append((String)localObject);
+      WSLog.a("WSGlobalConfigLog", localStringBuilder.toString());
+      return localObject;
     }
-    if (this.jdField_a_of_type_UserGrowthStGlobalConfig != null)
+    Object localObject = this.jdField_a_of_type_UserGrowthStGlobalConfig;
+    if (localObject != null)
     {
-      str = this.jdField_a_of_type_UserGrowthStGlobalConfig.encrypted_deviceid;
-      if (!TextUtils.isEmpty(str))
+      localObject = ((stGlobalConfig)localObject).encrypted_deviceid;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        WSSharePreferencesUtil.a("encryptedDeviceId", str);
-        WSLog.a("WSGlobalConfigLog", "WSSharePreferencesUtil save encrypted_deviceid:" + str);
-        return str;
+        WSSharePreferencesUtil.a("encryptedDeviceId", (String)localObject);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("WSSharePreferencesUtil save encrypted_deviceid:");
+        localStringBuilder.append((String)localObject);
+        WSLog.a("WSGlobalConfigLog", localStringBuilder.toString());
+        return localObject;
       }
     }
-    String str = WSSharePreferencesUtil.a("encryptedDeviceId", "");
-    WSLog.a("WSGlobalConfigLog", "WSSharePreferencesUtil load encrypted_deviceid:" + str);
-    return str;
+    localObject = WSSharePreferencesUtil.a("encryptedDeviceId", "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSSharePreferencesUtil load encrypted_deviceid:");
+    localStringBuilder.append((String)localObject);
+    WSLog.a("WSGlobalConfigLog", localStringBuilder.toString());
+    return localObject;
   }
   
   public String f()
   {
-    if ((this.jdField_a_of_type_UserGrowthStGlobalConfig != null) && (this.jdField_a_of_type_UserGrowthStGlobalConfig.commentConfig != null)) {
+    stGlobalConfig localstGlobalConfig = this.jdField_a_of_type_UserGrowthStGlobalConfig;
+    if ((localstGlobalConfig != null) && (localstGlobalConfig.commentConfig != null)) {
       return this.jdField_a_of_type_UserGrowthStGlobalConfig.commentConfig.guideText;
     }
     return "";
@@ -278,7 +335,7 @@ public class WSGlobalConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.WSGlobalConfig
  * JD-Core Version:    0.7.0.1
  */

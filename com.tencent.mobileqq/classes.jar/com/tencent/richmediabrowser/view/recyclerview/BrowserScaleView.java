@@ -13,9 +13,9 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView.ScaleType;
+import com.tencent.richmediabrowser.api.event.IBrowserItemClickEvent;
 import com.tencent.richmediabrowser.listener.IBrowserFlingControlListener;
 import com.tencent.richmediabrowser.listener.IBrowserFlingEventListener;
-import com.tencent.richmediabrowser.listener.IBrowserItemEventListener;
 import com.tencent.richmediabrowser.listener.IBrowserScaleControlListener;
 import com.tencent.richmediabrowser.listener.IBrowserScaleEventListener;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
@@ -29,7 +29,6 @@ public class BrowserScaleView
   implements ScaleGestureDetector.OnScaleGestureListener, View.OnTouchListener, IBrowserFlingControlListener, IBrowserFlingEventListener, IBrowserScaleControlListener, IBrowserScaleEventListener
 {
   private static final String TAG = "BrowserScaleView";
-  private int TURN_PAGE_MAX_DISTANCE;
   private int defaultDx;
   private int defaultDy;
   private int degrees;
@@ -43,7 +42,7 @@ public class BrowserScaleView
   private BrowserFlingAnimator mFlingAnimator;
   private GestureDetector mGestureDetector;
   private int mHeight;
-  private IBrowserItemEventListener mItemEventListener;
+  private IBrowserItemClickEvent mItemEventListener;
   private int mLastPointerCount;
   private float mLastX;
   private float mLastY;
@@ -52,11 +51,11 @@ public class BrowserScaleView
   private float mMaxScale;
   private float mMidScale;
   private float mMinScale;
-  private float mNormalScale;
   private RegionRectHelper mRegionRectHelper;
   private ScaleGestureDetector mScaleGestureDetector;
   private Matrix mScaleMatrix;
   protected int mScrollDirection;
+  private int mTurnPageMaxDistance;
   private VelocityTracker mVelocityTracker;
   private int mWidth;
   private int privorX;
@@ -71,7 +70,7 @@ public class BrowserScaleView
   {
     super(paramContext, paramAttributeSet);
     setScaleType(ImageView.ScaleType.MATRIX);
-    this.TURN_PAGE_MAX_DISTANCE = ScreenUtils.dip2px(paramContext, 80.0F);
+    this.mTurnPageMaxDistance = ScreenUtils.dip2px(paramContext, 80.0F);
     this.mScaleGestureDetector = new ScaleGestureDetector(paramContext, this);
     setOnTouchListener(this);
     this.mGestureDetector = new GestureDetector(paramContext, new BrowserScaleView.1(this));
@@ -79,125 +78,145 @@ public class BrowserScaleView
   
   private boolean canUpdateRegionRect()
   {
-    if (this.mDrawable == null) {
+    Drawable localDrawable = this.mDrawable;
+    if (localDrawable == null) {
       return false;
     }
-    int i = (int)(this.mDrawable.getIntrinsicWidth() * getScale());
+    int i = (int)(localDrawable.getIntrinsicWidth() * getScale());
     int j = (int)(this.mDrawable.getIntrinsicHeight() * getScale());
     return getRegionRectHelper().canUpdateRegionRect(i, j, this.mWidth, this.mHeight);
   }
   
   private void checkBorderAndCenterWhenScale()
   {
-    float f2 = 0.0F;
-    float f3 = 0.0F;
     if (this.mDrawable == null) {
       return;
     }
     RectF localRectF = getMatrixRectF();
-    if (localRectF.width() >= this.mWidth) {
-      if (localRectF.left > 0.0F)
-      {
-        f1 = -localRectF.left;
-        if (localRectF.right >= this.mWidth) {}
-      }
-    }
-    for (float f1 = this.mWidth - localRectF.right;; f1 = 0.0F)
+    float f1 = localRectF.width();
+    float f4 = this.mWidth;
+    float f2 = 0.0F;
+    float f3 = 0.0F;
+    if (f1 >= f4)
     {
-      if (localRectF.height() >= this.mHeight)
-      {
-        f2 = f3;
-        if (localRectF.top > 0.0F) {
-          f2 = -localRectF.top;
-        }
-        if (localRectF.bottom < this.mHeight) {
-          f2 = this.mHeight - localRectF.bottom;
-        }
+      if (localRectF.left > 0.0F) {
+        f1 = -localRectF.left;
+      } else {
+        f1 = 0.0F;
       }
-      if (localRectF.width() < this.mWidth) {
-        f1 = this.mWidth / 2.0F - localRectF.right + localRectF.width() / 2.0F;
+      f4 = localRectF.right;
+      i = this.mWidth;
+      if (f4 < i) {
+        f1 = i - localRectF.right;
       }
-      if (localRectF.height() < this.mHeight) {
-        f2 = this.mHeight / 2.0F - localRectF.bottom + localRectF.height() / 2.0F;
-      }
-      this.mScaleMatrix.postTranslate(f1, f2);
-      return;
-      f1 = 0.0F;
-      break;
     }
+    else
+    {
+      f1 = 0.0F;
+    }
+    if (localRectF.height() >= this.mHeight)
+    {
+      f2 = f3;
+      if (localRectF.top > 0.0F) {
+        f2 = -localRectF.top;
+      }
+      f3 = localRectF.bottom;
+      i = this.mHeight;
+      if (f3 < i) {
+        f2 = i - localRectF.bottom;
+      }
+    }
+    f3 = localRectF.width();
+    int i = this.mWidth;
+    if (f3 < i) {
+      f1 = i / 2.0F - localRectF.right + localRectF.width() / 2.0F;
+    }
+    f3 = localRectF.height();
+    i = this.mHeight;
+    if (f3 < i) {
+      f2 = i / 2.0F - localRectF.bottom + localRectF.height() / 2.0F;
+    }
+    this.mScaleMatrix.postTranslate(f1, f2);
   }
   
   private void checkBorderWhenTranslate()
   {
+    RectF localRectF = getMatrixRectF();
+    boolean bool = this.isCheckLeftAndRight;
     float f2 = 0.0F;
     float f3 = 0.0F;
-    RectF localRectF = getMatrixRectF();
-    if (this.isCheckLeftAndRight) {
-      if (localRectF.left > 0.0F)
-      {
-        f1 = -localRectF.left;
-        if (localRectF.right >= this.mWidth) {}
-      }
-    }
-    for (float f1 = this.mWidth - localRectF.right;; f1 = 0.0F)
+    float f1;
+    int i;
+    if (bool)
     {
-      if (this.isCheckTopAndBottom)
-      {
-        f2 = f3;
-        if (localRectF.top > 0.0F) {
-          f2 = -localRectF.top;
-        }
-        if (localRectF.bottom < this.mHeight) {
-          f2 = this.mHeight - localRectF.bottom;
-        }
+      if (localRectF.left > 0.0F) {
+        f1 = -localRectF.left;
+      } else {
+        f1 = 0.0F;
       }
-      this.mScaleMatrix.postTranslate(f1, f2);
-      return;
-      f1 = 0.0F;
-      break;
+      float f4 = localRectF.right;
+      i = this.mWidth;
+      if (f4 < i) {
+        f1 = i - localRectF.right;
+      }
     }
+    else
+    {
+      f1 = 0.0F;
+    }
+    if (this.isCheckTopAndBottom)
+    {
+      f2 = f3;
+      if (localRectF.top > 0.0F) {
+        f2 = -localRectF.top;
+      }
+      f3 = localRectF.bottom;
+      i = this.mHeight;
+      if (f3 < i) {
+        f2 = i - localRectF.bottom;
+      }
+    }
+    this.mScaleMatrix.postTranslate(f1, f2);
   }
   
   private void dealScaleEvent()
   {
     if (!this.isAutoScale)
     {
-      if (!isVerticalLongPhoto(this.degrees)) {
-        break label88;
-      }
-      if (getScale() != this.mNormalScale) {
-        break label53;
-      }
-      this.isCheckLeftAndRight = false;
-      this.isCheckTopAndBottom = true;
-      checkBorderWhenTranslate();
-      setImageMatrix(this.mScaleMatrix);
-    }
-    label53:
-    label88:
-    do
-    {
-      return;
-      if (getScale() < this.mNormalScale)
+      if (isVerticalLongPhoto(this.degrees))
       {
-        startScale(this.mNormalScale, this.mWidth / 2, this.mHeight / 2);
-        return;
-        if (getScale() < this.mDefaultScale) {
-          startScale(this.mDefaultScale, this.mWidth / 2, this.mHeight / 2);
+        f1 = getScale();
+        f2 = this.mDefaultScale;
+        if (f1 < f2) {
+          startScale(f2, this.mWidth / 2, this.mHeight / 2);
         }
       }
-    } while (getScale() <= this.mMaxScale);
-    startScale(this.mMaxScale, this.mWidth / 2, this.mHeight / 2);
+      else
+      {
+        f1 = getScale();
+        f2 = this.mDefaultScale;
+        if (f1 < f2) {
+          startScale(f2, this.mWidth / 2, this.mHeight / 2);
+        }
+      }
+      float f1 = getScale();
+      float f2 = this.mMaxScale;
+      if (f1 > f2) {
+        startScale(f2, this.mWidth / 2, this.mHeight / 2);
+      }
+    }
   }
   
   private boolean enableScrollLeft()
   {
-    return (this.mMainBrowserPresenter != null) && (this.mMainBrowserPresenter.enableScrollLeft());
+    MainBrowserPresenter localMainBrowserPresenter = this.mMainBrowserPresenter;
+    return (localMainBrowserPresenter != null) && (localMainBrowserPresenter.enableScrollLeft());
   }
   
   private boolean enableScrollRight()
   {
-    return (this.mMainBrowserPresenter != null) && (this.mMainBrowserPresenter.enableScrollRight());
+    MainBrowserPresenter localMainBrowserPresenter = this.mMainBrowserPresenter;
+    return (localMainBrowserPresenter != null) && (localMainBrowserPresenter.enableScrollRight());
   }
   
   private RectF getMatrixRectF()
@@ -224,9 +243,10 @@ public class BrowserScaleView
   private float getScale()
   {
     float[] arrayOfFloat = new float[9];
-    if (this.mScaleMatrix != null)
+    Matrix localMatrix = this.mScaleMatrix;
+    if (localMatrix != null)
     {
-      this.mScaleMatrix.getValues(arrayOfFloat);
+      localMatrix.getValues(arrayOfFloat);
       if (isHorizonRotate(this.degrees)) {
         return Math.abs(arrayOfFloat[1]);
       }
@@ -235,29 +255,284 @@ public class BrowserScaleView
     return this.mDefaultScale;
   }
   
+  private void handleCancel(MotionEvent paramMotionEvent)
+  {
+    this.mLastPointerCount = 0;
+    Object localObject = BrowserLogHelper.getInstance().getGalleryLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onTouch...action = ");
+    localStringBuilder.append(paramMotionEvent.getAction());
+    ((IBrowserLog)localObject).i("BrowserScaleView", 2, localStringBuilder.toString());
+    dealScaleEvent();
+    if ((isNeedRebound()) && (getScale() == this.mDefaultScale))
+    {
+      if (isVerticalLongPhoto(this.degrees))
+      {
+        checkBorderWhenTranslate();
+        setImageMatrix(this.mScaleMatrix);
+      }
+      else
+      {
+        reset();
+      }
+    }
+    else
+    {
+      localObject = this.mVelocityTracker;
+      if (localObject != null)
+      {
+        ((VelocityTracker)localObject).addMovement(paramMotionEvent);
+        this.mVelocityTracker.computeCurrentVelocity(1000);
+        float f1 = this.mVelocityTracker.getXVelocity();
+        float f2 = this.mVelocityTracker.getYVelocity();
+        startFling(this.mWidth, this.mHeight, (int)-f1, (int)-f2);
+      }
+    }
+    this.mScrollDirection = 0;
+    if (canUpdateRegionRect()) {
+      getRegionRectHelper().updateShowArea(this.mDrawable, this.mScaleMatrix, this.mDefaultScale, getScale(), this, true, this.mScrollDirection);
+    }
+    paramMotionEvent = this.mVelocityTracker;
+    if (paramMotionEvent != null)
+    {
+      paramMotionEvent.recycle();
+      this.mVelocityTracker = null;
+    }
+  }
+  
+  private void handleDown(MotionEvent paramMotionEvent, RectF paramRectF)
+  {
+    this.mVelocityTracker = VelocityTracker.obtain();
+    VelocityTracker localVelocityTracker = this.mVelocityTracker;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.addMovement(paramMotionEvent);
+    }
+    paramMotionEvent = this.mFlingAnimator;
+    if (paramMotionEvent != null)
+    {
+      paramMotionEvent.cancelFling();
+      this.mFlingAnimator = null;
+    }
+    if ((paramRectF.width() > this.mWidth) || (paramRectF.height() > this.mHeight)) {
+      requestDisallowInterceptTouchEvent(true);
+    }
+  }
+  
+  private boolean handleInterceptEvent(RectF paramRectF, float paramFloat)
+  {
+    if ((getScale() == this.mDefaultScale) && (!isVerticalLongPhoto(this.degrees)))
+    {
+      if (((paramFloat > 0.0F) && (enableScrollLeft())) || ((paramFloat < 0.0F) && (enableScrollRight())))
+      {
+        requestDisallowInterceptTouchEvent(false);
+        return true;
+      }
+    }
+    else if ((paramRectF.width() > this.mWidth) || (paramRectF.height() > this.mHeight)) {
+      requestDisallowInterceptTouchEvent(true);
+    }
+    return false;
+  }
+  
+  private float handleLeftScroll(RectF paramRectF, float paramFloat)
+  {
+    if (paramRectF.left > 0.0F) {
+      if (enableScrollLeft())
+      {
+        if (Math.abs(paramRectF.left) > this.mTurnPageMaxDistance)
+        {
+          requestDisallowInterceptTouchEvent(false);
+          requestDisallowInterceptDragEvent(true);
+          return 0.0F;
+        }
+      }
+      else
+      {
+        requestDisallowInterceptTouchEvent(true);
+        if (Math.abs(paramRectF.left) > this.mWidth / 4.0F) {
+          return 0.0F;
+        }
+      }
+    }
+    return paramFloat;
+  }
+  
+  private boolean handleMove(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, int paramInt, RectF paramRectF)
+  {
+    float f2 = paramFloat1 - this.mLastX;
+    float f3 = paramFloat2 - this.mLastY;
+    if (handleInterceptEvent(paramRectF, f2)) {
+      return true;
+    }
+    float f4 = f2;
+    float f1 = f3;
+    if (this.mDrawable != null)
+    {
+      VelocityTracker localVelocityTracker = this.mVelocityTracker;
+      if (localVelocityTracker != null) {
+        localVelocityTracker.addMovement(paramMotionEvent);
+      }
+      this.isCheckLeftAndRight = true;
+      this.isCheckTopAndBottom = true;
+      f4 = f2;
+      f1 = f3;
+      if (paramRectF.width() < this.mWidth)
+      {
+        f4 = f2;
+        f1 = f3;
+        if (paramRectF.height() < this.mHeight)
+        {
+          this.isCheckLeftAndRight = false;
+          this.isCheckTopAndBottom = false;
+          f4 = 0.0F;
+          f1 = 0.0F;
+        }
+      }
+      f2 = handleLeftScroll(paramRectF, f4);
+      if (paramRectF.right < this.mWidth)
+      {
+        if (enableScrollRight())
+        {
+          if (Math.abs(this.mWidth - paramRectF.right) <= this.mTurnPageMaxDistance) {
+            break label236;
+          }
+          requestDisallowInterceptTouchEvent(false);
+          requestDisallowInterceptDragEvent(true);
+        }
+        else
+        {
+          requestDisallowInterceptTouchEvent(true);
+          if (Math.abs(this.mWidth - paramRectF.right) <= this.mWidth / 4.0F) {
+            break label236;
+          }
+        }
+        f2 = 0.0F;
+      }
+      label236:
+      if (getScale() == this.mDefaultScale)
+      {
+        f4 = f2;
+        if (isVerticalLongPhoto(this.degrees)) {}
+      }
+      else
+      {
+        for (;;)
+        {
+          f1 = 0.0F;
+          f4 = f2;
+          break;
+          f3 = f1;
+          if (paramRectF.top > 0.0F)
+          {
+            f3 = f1;
+            if (Math.abs(paramRectF.top) > this.mWidth / 4.0F)
+            {
+              requestDisallowInterceptDragEvent(false);
+              f3 = 0.0F;
+            }
+          }
+          float f5 = paramRectF.bottom;
+          int i = this.mHeight;
+          f4 = f2;
+          f1 = f3;
+          if (f5 >= i) {
+            break;
+          }
+          f4 = f2;
+          f1 = f3;
+          if (Math.abs(i - paramRectF.bottom) <= this.mWidth / 4.0F) {
+            break;
+          }
+          requestDisallowInterceptDragEvent(true);
+        }
+      }
+    }
+    if (handlePhotoTranslate(paramInt, paramRectF, f4, f1)) {
+      return true;
+    }
+    this.mLastX = paramFloat1;
+    this.mLastY = paramFloat2;
+    return false;
+  }
+  
+  private boolean handlePhotoTranslate(int paramInt, RectF paramRectF, float paramFloat1, float paramFloat2)
+  {
+    float f = paramFloat1;
+    if (isVerticalLongPhoto(this.degrees))
+    {
+      f = paramFloat1;
+      if (getScale() == this.mDefaultScale)
+      {
+        if ((Math.abs(paramFloat1) / Math.abs(paramFloat2) >= 6.0F) && (Math.abs(paramFloat2) < 10.0F))
+        {
+          requestDisallowInterceptTouchEvent(false);
+          requestDisallowInterceptDragEvent(true);
+          return true;
+        }
+        if ((paramInt < 2) && (paramRectF.top > 0.0F) && (Math.abs(paramFloat2) / Math.abs(paramFloat1) >= 6.0F) && (Math.abs(paramFloat1) < 10.0F))
+        {
+          requestDisallowInterceptTouchEvent(true);
+          requestDisallowInterceptDragEvent(false);
+          f = paramFloat1;
+        }
+        else
+        {
+          f = 0.0F;
+        }
+      }
+    }
+    paramRectF = this.mScaleMatrix;
+    if (paramRectF != null)
+    {
+      paramRectF.postTranslate(f, paramFloat2);
+      setImageMatrix(this.mScaleMatrix);
+    }
+    handleRegionRect(f);
+    return false;
+  }
+  
+  private void handleRegionRect(float paramFloat)
+  {
+    if (canUpdateRegionRect())
+    {
+      if (paramFloat == 0.0F) {
+        this.mScrollDirection = 0;
+      } else if (paramFloat < 0.0F) {
+        this.mScrollDirection = 1;
+      } else {
+        this.mScrollDirection = 2;
+      }
+      getRegionRectHelper().updateShowArea(this.mDrawable, this.mScaleMatrix, this.mDefaultScale, getScale(), this, true, 1, this.mScrollDirection);
+    }
+  }
+  
   private void initScaleValue(float paramFloat)
   {
     this.mDefaultScale = paramFloat;
-    if (isHorizonLongPhoto()) {
-      this.mMaxScale = (this.mDrawable.getIntrinsicWidth() * 1.0F / this.mWidth);
-    }
-    for (this.mMaxOverScale = (this.mMaxScale * 1.1F);; this.mMaxOverScale = (this.mMaxScale * 5.0F))
+    if (isHorizonLongPhoto())
     {
-      this.mMidScale = (this.mDefaultScale * 2.0F);
-      this.mMinScale = (this.mDefaultScale * 0.6F);
-      return;
-      this.mMaxScale = (this.mDefaultScale * 4.0F);
+      this.mMaxScale = (this.mDrawable.getIntrinsicWidth() * 1.0F / this.mWidth);
+      this.mMaxOverScale = (this.mMaxScale * 1.1F);
     }
+    else
+    {
+      this.mMaxScale = Math.max(this.mDefaultScale * 4.0F, 1.0F);
+      this.mMaxOverScale = (this.mMaxScale * 5.0F);
+    }
+    paramFloat = this.mDefaultScale;
+    this.mMidScale = (2.0F * paramFloat);
+    this.mMinScale = (paramFloat * 0.6F);
   }
   
   private boolean isHorizonLongPhoto()
   {
+    Drawable localDrawable = this.mDrawable;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.mDrawable != null)
+    if (localDrawable != null)
     {
       bool1 = bool2;
-      if (this.mDrawable.getIntrinsicWidth() >= this.mDrawable.getIntrinsicHeight() * 3L) {
+      if (localDrawable.getIntrinsicWidth() >= this.mDrawable.getIntrinsicHeight() * 3L) {
         bool1 = true;
       }
     }
@@ -271,11 +546,12 @@ public class BrowserScaleView
   
   private boolean isLongPhoto()
   {
+    Drawable localDrawable = this.mDrawable;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.mDrawable != null)
+    if (localDrawable != null)
     {
-      long l = this.mDrawable.getIntrinsicWidth();
+      long l = localDrawable.getIntrinsicWidth();
       bool1 = bool2;
       if (this.mDrawable.getIntrinsicHeight() >= l * 3L) {
         bool1 = true;
@@ -297,15 +573,17 @@ public class BrowserScaleView
   
   private void requestDisallowInterceptDragEvent(boolean paramBoolean)
   {
-    if (this.mMainBrowserPresenter != null) {
-      this.mMainBrowserPresenter.requestDisallowInterceptDragEvent(paramBoolean);
+    MainBrowserPresenter localMainBrowserPresenter = this.mMainBrowserPresenter;
+    if (localMainBrowserPresenter != null) {
+      localMainBrowserPresenter.requestDisallowInterceptDragEvent(paramBoolean);
     }
   }
   
   private void requestDisallowInterceptTouchEvent(boolean paramBoolean)
   {
-    if (this.mMainBrowserPresenter != null) {
-      this.mMainBrowserPresenter.requestDisallowInterceptTouchEvent(paramBoolean);
+    MainBrowserPresenter localMainBrowserPresenter = this.mMainBrowserPresenter;
+    if (localMainBrowserPresenter != null) {
+      localMainBrowserPresenter.requestDisallowInterceptTouchEvent(paramBoolean);
     }
   }
   
@@ -327,8 +605,10 @@ public class BrowserScaleView
     }
     this.mScaleMatrix.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
     setImageMatrix(this.mScaleMatrix);
-    paramFloat2 = this.mDrawable.getIntrinsicWidth() * (1.0F - paramFloat1) / 2.0F;
-    paramFloat1 = this.mDrawable.getIntrinsicHeight() * (1.0F - paramFloat1) / 2.0F;
+    paramFloat2 = this.mDrawable.getIntrinsicWidth();
+    paramFloat1 = 1.0F - paramFloat1;
+    paramFloat2 = paramFloat2 * paramFloat1 / 2.0F;
+    paramFloat1 = this.mDrawable.getIntrinsicHeight() * paramFloat1 / 2.0F;
     this.mScaleMatrix.postTranslate(-paramFloat2, -paramFloat1);
     setImageMatrix(this.mScaleMatrix);
   }
@@ -346,7 +626,13 @@ public class BrowserScaleView
   
   private void startFling(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    BrowserLogHelper.getInstance().getGalleryLog().i("BrowserScaleView", 2, "startFling...velocityX = " + paramInt3 + ", velocityY = " + paramInt4);
+    IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startFling...velocityX = ");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(", velocityY = ");
+    localStringBuilder.append(paramInt4);
+    localIBrowserLog.i("BrowserScaleView", 2, localStringBuilder.toString());
     if (this.mFlingAnimator == null)
     {
       this.mFlingAnimator = new BrowserFlingAnimator(getContext());
@@ -382,85 +668,96 @@ public class BrowserScaleView
     this.mScaleMatrix = new Matrix();
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
-    if (this.mDrawable == null) {
+    paramDrawable = this.mDrawable;
+    if (paramDrawable == null) {
       return;
     }
-    int j = this.mDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicWidth();
     int i = this.mDrawable.getIntrinsicHeight();
-    int k;
     if (isHorizonRotate(paramInt3))
     {
-      i = this.mDrawable.getIntrinsicHeight();
-      k = this.mDrawable.getIntrinsicWidth();
-      j = i;
+      j = this.mDrawable.getIntrinsicHeight();
+      i = this.mDrawable.getIntrinsicWidth();
     }
-    for (;;)
+    if ((j >= paramInt1) && (i <= paramInt2)) {
+      f2 = paramInt1 * 1.0F / j;
+    } else {
+      f2 = 1.0F;
+    }
+    float f1 = f2;
+    if (j <= paramInt1)
     {
-      if ((j >= paramInt1) && (k <= paramInt2)) {}
-      for (float f2 = paramInt1 * 1.0F / j;; f2 = 1.0F)
+      f1 = f2;
+      if (i >= paramInt2)
       {
-        float f1 = f2;
-        if (j <= paramInt1)
+        if (isVerticalLongPhoto(paramInt3))
         {
-          f1 = f2;
-          if (k >= paramInt2)
-          {
-            if (!isVerticalLongPhoto(paramInt3)) {
-              break label470;
-            }
-            f1 = paramInt1 * 1.0F / j;
-          }
+          f1 = paramInt1 * 1.0F;
+          f2 = j;
         }
-        f2 = f1;
-        if (j <= paramInt1)
+        else
         {
-          f2 = f1;
-          if (k <= paramInt2)
-          {
-            f2 = f1;
-            if (isVerticalLongPhoto(paramInt3)) {
-              f2 = paramInt1 * 1.0F / j;
-            }
-          }
+          f1 = paramInt2 * 1.0F;
+          f2 = i;
         }
-        f1 = f2;
-        if (j >= paramInt1)
-        {
-          f1 = f2;
-          if (k >= paramInt2) {
-            if (!isVerticalLongPhoto(paramInt3)) {
-              break label483;
-            }
-          }
-        }
-        label470:
-        label483:
-        for (f1 = paramInt1 * 1.0F / j;; f1 = Math.min(paramInt1 * 1.0F / j, paramInt2 * 1.0F / k))
-        {
-          BrowserLogHelper.getInstance().getGalleryLog().d("BrowserScaleView", 4, "dw = " + j + ", dh = " + k + "， width = " + paramInt1 + ", height" + paramInt2 + ", degrees = " + paramInt3 + ", scale = " + f1);
-          this.defaultDx = (paramInt1 / 2 - this.mDrawable.getIntrinsicWidth() / 2);
-          this.defaultDy = (paramInt2 / 2 - this.mDrawable.getIntrinsicHeight() / 2);
-          this.privorX = (this.mDrawable.getIntrinsicWidth() / 2);
-          this.privorY = (this.mDrawable.getIntrinsicHeight() / 2);
-          showDefaultImage(this.defaultDx, this.defaultDy, paramInt3, f1, this.privorX, this.privorY);
-          if (!isVerticalLongPhoto(paramInt3)) {
-            break label507;
-          }
-          this.mDefaultScale = f1;
-          this.mNormalScale = (paramInt2 * 1.0F / k);
-          this.mMinScale = (this.mNormalScale * 0.6F);
-          this.mMaxScale = (this.mDefaultScale * 4.0F);
-          this.mMaxOverScale = (this.mMaxScale * 5.0F);
-          return;
-          f1 = paramInt2 * 1.0F / k;
-          break;
-        }
-        label507:
-        initScaleValue(f1);
-        return;
+        f1 /= f2;
       }
-      k = i;
     }
+    float f2 = f1;
+    if (j <= paramInt1)
+    {
+      f2 = f1;
+      if (i <= paramInt2)
+      {
+        f2 = f1;
+        if (isVerticalLongPhoto(paramInt3)) {
+          f2 = paramInt1 * 1.0F / j;
+        }
+      }
+    }
+    f1 = f2;
+    if (j >= paramInt1)
+    {
+      f1 = f2;
+      if (i >= paramInt2) {
+        if (isVerticalLongPhoto(paramInt3)) {
+          f1 = paramInt1 * 1.0F / j;
+        } else {
+          f1 = Math.min(paramInt1 * 1.0F / j, paramInt2 * 1.0F / i);
+        }
+      }
+    }
+    paramDrawable = BrowserLogHelper.getInstance().getGalleryLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dw = ");
+    localStringBuilder.append(j);
+    localStringBuilder.append(", dh = ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(", width = ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", height");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", degrees = ");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(", scale = ");
+    localStringBuilder.append(f1);
+    paramDrawable.d("BrowserScaleView", 4, localStringBuilder.toString());
+    this.defaultDx = (paramInt1 / 2 - this.mDrawable.getIntrinsicWidth() / 2);
+    this.defaultDy = (paramInt2 / 2 - this.mDrawable.getIntrinsicHeight() / 2);
+    this.privorX = (this.mDrawable.getIntrinsicWidth() / 2);
+    this.privorY = (this.mDrawable.getIntrinsicHeight() / 2);
+    showDefaultImage(this.defaultDx, this.defaultDy, paramInt3, f1, this.privorX, this.privorY);
+    if (isVerticalLongPhoto(paramInt3))
+    {
+      this.mDefaultScale = f1;
+      f1 = this.mDefaultScale;
+      this.mMidScale = (2.0F * f1);
+      this.mMinScale = (0.6F * f1);
+      this.mMaxScale = Math.max(f1 * 4.0F, 1.0F);
+      this.mMaxOverScale = (this.mMaxScale * 5.0F);
+      return;
+    }
+    initScaleValue(f1);
   }
   
   public void onFlingAnimationCancel() {}
@@ -478,24 +775,29 @@ public class BrowserScaleView
   
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (!this.isScaleEnable) {}
-    while (this.mDrawable == null) {
+    if (!this.isScaleEnable) {
       return false;
     }
-    if (this.mMainBrowserPresenter != null) {
-      this.mMainBrowserPresenter.onScale();
+    if (this.mDrawable == null) {
+      return false;
+    }
+    MainBrowserPresenter localMainBrowserPresenter = this.mMainBrowserPresenter;
+    if (localMainBrowserPresenter != null) {
+      localMainBrowserPresenter.onScale();
     }
     float f2 = paramScaleGestureDetector.getScaleFactor();
     float f3 = getScale();
     if (((f2 > 1.0F) && (f3 * f2 < this.mMaxOverScale)) || ((f2 < 1.0F) && (f3 * f2 > this.mMinScale)))
     {
+      float f4 = this.mMaxOverScale;
       float f1 = f2;
-      if (f3 * f2 > this.mMaxOverScale) {
-        f1 = this.mMaxOverScale / f3;
+      if (f3 * f2 > f4) {
+        f1 = f4 / f3;
       }
+      f4 = this.mMinScale;
       f2 = f1;
-      if (f3 * f1 < this.mMinScale) {
-        f2 = this.mMinScale / f3;
+      if (f3 * f1 < f4) {
+        f2 = f4 / f3;
       }
       this.mScaleMatrix.postScale(f2, f2, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
       checkBorderAndCenterWhenScale();
@@ -523,8 +825,9 @@ public class BrowserScaleView
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.mMainBrowserPresenter != null) {
-      this.mMainBrowserPresenter.onScaleBegin();
+    paramScaleGestureDetector = this.mMainBrowserPresenter;
+    if (paramScaleGestureDetector != null) {
+      paramScaleGestureDetector.onScaleBegin();
     }
     if (canUpdateRegionRect()) {
       getRegionRectHelper().updateShowArea(this.mDrawable, this.mScaleMatrix, this.mDefaultScale, getScale(), this, false, this.mScrollDirection);
@@ -534,8 +837,9 @@ public class BrowserScaleView
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.mMainBrowserPresenter != null) {
-      this.mMainBrowserPresenter.onScaleEnd();
+    paramScaleGestureDetector = this.mMainBrowserPresenter;
+    if (paramScaleGestureDetector != null) {
+      paramScaleGestureDetector.onScaleEnd();
     }
     float f = getScale();
     if ((f > this.mDefaultScale) && (f <= this.mMaxScale))
@@ -543,267 +847,65 @@ public class BrowserScaleView
       if (canUpdateRegionRect()) {
         getRegionRectHelper().updateShowArea(this.mDrawable, this.mScaleMatrix, this.mDefaultScale, getScale(), this, true, this.mScrollDirection);
       }
-      return;
     }
-    getRegionRectHelper().updateShowArea(this.mDrawable, this.mScaleMatrix, this.mDefaultScale, getScale(), this, false, this.mScrollDirection);
+    else {
+      getRegionRectHelper().updateShowArea(this.mDrawable, this.mScaleMatrix, this.mDefaultScale, getScale(), this, false, this.mScrollDirection);
+    }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.mGestureDetector.onTouchEvent(paramMotionEvent)) {}
-    int j;
-    float f2;
-    float f6;
-    float f7;
-    do
-    {
+    if (this.mGestureDetector.onTouchEvent(paramMotionEvent)) {
       return true;
-      this.mScaleGestureDetector.onTouchEvent(paramMotionEvent);
-      j = paramMotionEvent.getPointerCount();
-      int i = 0;
-      f1 = 0.0F;
-      f2 = 0.0F;
-      while (i < j)
-      {
-        f2 += paramMotionEvent.getX(i);
-        f1 += paramMotionEvent.getY(i);
-        i += 1;
-      }
-      f6 = f2 / j;
-      f7 = f1 / j;
-      if (this.mLastPointerCount != j)
-      {
-        this.mLastX = f6;
-        this.mLastY = f7;
-      }
-      this.mLastPointerCount = j;
-      paramView = getMatrixRectF();
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        return true;
-      case 0: 
-        this.mVelocityTracker = VelocityTracker.obtain();
-        if (this.mVelocityTracker != null) {
-          this.mVelocityTracker.addMovement(paramMotionEvent);
-        }
-        if (this.mFlingAnimator != null)
+    }
+    this.mScaleGestureDetector.onTouchEvent(paramMotionEvent);
+    int j = paramMotionEvent.getPointerCount();
+    int i = 0;
+    float f2 = 0.0F;
+    float f1 = 0.0F;
+    while (i < j)
+    {
+      f2 += paramMotionEvent.getX(i);
+      f1 += paramMotionEvent.getY(i);
+      i += 1;
+    }
+    float f3 = j;
+    f2 /= f3;
+    f1 /= f3;
+    if (this.mLastPointerCount != j)
+    {
+      this.mLastX = f2;
+      this.mLastY = f1;
+    }
+    this.mLastPointerCount = j;
+    paramView = getMatrixRectF();
+    i = paramMotionEvent.getAction();
+    if (i != 0)
+    {
+      if (i != 1) {
+        if (i != 2)
         {
-          this.mFlingAnimator.cancelFling();
-          this.mFlingAnimator = null;
+          if (i != 3) {
+            return true;
+          }
         }
-        break;
+        else
+        {
+          if (!handleMove(paramMotionEvent, f2, f1, j, paramView)) {
+            break label180;
+          }
+          return false;
+        }
       }
-    } while ((paramView.width() <= this.mWidth) && (paramView.height() <= this.mHeight));
-    requestDisallowInterceptTouchEvent(true);
+      handleCancel(paramMotionEvent);
+      return true;
+    }
+    else
+    {
+      handleDown(paramMotionEvent, paramView);
+    }
+    label180:
     return true;
-    float f4 = f6 - this.mLastX;
-    float f5 = f7 - this.mLastY;
-    if ((getScale() == this.mDefaultScale) && (!isVerticalLongPhoto(this.degrees)))
-    {
-      if (((f4 > 0.0F) && (enableScrollLeft())) || ((f4 < 0.0F) && (enableScrollRight())))
-      {
-        requestDisallowInterceptTouchEvent(false);
-        return false;
-      }
-    }
-    else if ((paramView.width() > this.mWidth) || (paramView.height() > this.mHeight)) {
-      requestDisallowInterceptTouchEvent(true);
-    }
-    float f1 = f5;
-    float f3 = f4;
-    if (this.mDrawable != null)
-    {
-      if (this.mVelocityTracker != null) {
-        this.mVelocityTracker.addMovement(paramMotionEvent);
-      }
-      this.isCheckLeftAndRight = true;
-      this.isCheckTopAndBottom = true;
-      f1 = f5;
-      f2 = f4;
-      if (paramView.width() < this.mWidth)
-      {
-        f1 = f5;
-        f2 = f4;
-        if (paramView.height() < this.mHeight)
-        {
-          this.isCheckLeftAndRight = false;
-          this.isCheckTopAndBottom = false;
-          f1 = 0.0F;
-          f2 = 0.0F;
-        }
-      }
-      f3 = f2;
-      if (paramView.left > 0.0F)
-      {
-        if (!enableScrollLeft()) {
-          break label689;
-        }
-        f3 = f2;
-        if (Math.abs(paramView.left) > this.TURN_PAGE_MAX_DISTANCE)
-        {
-          requestDisallowInterceptTouchEvent(false);
-          requestDisallowInterceptDragEvent(true);
-          f3 = 0.0F;
-        }
-      }
-      f2 = f3;
-      if (paramView.right < this.mWidth)
-      {
-        if (!enableScrollRight()) {
-          break label724;
-        }
-        f2 = f3;
-        if (Math.abs(this.mWidth - paramView.right) > this.TURN_PAGE_MAX_DISTANCE)
-        {
-          requestDisallowInterceptTouchEvent(false);
-          requestDisallowInterceptDragEvent(true);
-          f2 = 0.0F;
-        }
-      }
-      label545:
-      if (getScale() != this.mDefaultScale) {
-        break label765;
-      }
-      f3 = f2;
-      if (!isVerticalLongPhoto(this.degrees))
-      {
-        f1 = 0.0F;
-        f3 = f2;
-      }
-    }
-    for (;;)
-    {
-      f2 = f3;
-      if (!isVerticalLongPhoto(this.degrees)) {
-        break label933;
-      }
-      if ((getScale() != this.mDefaultScale) && (getScale() != this.mNormalScale))
-      {
-        f2 = f3;
-        if (getScale() <= this.mNormalScale) {
-          break label933;
-        }
-        f2 = f3;
-        if (getScale() >= this.mDefaultScale) {
-          break label933;
-        }
-      }
-      if ((Math.abs(f3) / Math.abs(f1) < 6.0F) || (Math.abs(f1) >= 10.0F)) {
-        break label875;
-      }
-      requestDisallowInterceptTouchEvent(false);
-      requestDisallowInterceptDragEvent(true);
-      return false;
-      label689:
-      requestDisallowInterceptTouchEvent(true);
-      f3 = f2;
-      if (Math.abs(paramView.left) <= this.mWidth / 4.0F) {
-        break;
-      }
-      f3 = 0.0F;
-      break;
-      label724:
-      requestDisallowInterceptTouchEvent(true);
-      f2 = f3;
-      if (Math.abs(this.mWidth - paramView.right) <= this.mWidth / 4.0F) {
-        break label545;
-      }
-      f2 = 0.0F;
-      break label545;
-      label765:
-      f4 = f1;
-      if (paramView.top > 0.0F)
-      {
-        f4 = f1;
-        if (Math.abs(paramView.top) > this.mWidth / 4.0F)
-        {
-          requestDisallowInterceptDragEvent(false);
-          f4 = 0.0F;
-        }
-      }
-      f1 = f4;
-      f3 = f2;
-      if (paramView.bottom < this.mHeight)
-      {
-        f1 = f4;
-        f3 = f2;
-        if (Math.abs(this.mHeight - paramView.bottom) > this.mWidth / 4.0F)
-        {
-          requestDisallowInterceptDragEvent(true);
-          f1 = 0.0F;
-          f3 = f2;
-        }
-      }
-    }
-    label875:
-    if ((j < 2) && (paramView.top > 0.0F) && (Math.abs(f1) / Math.abs(f3) >= 6.0F) && (Math.abs(f3) < 10.0F))
-    {
-      requestDisallowInterceptTouchEvent(true);
-      requestDisallowInterceptDragEvent(false);
-      f2 = f3;
-      if (this.mScaleMatrix != null)
-      {
-        this.mScaleMatrix.postTranslate(f2, f1);
-        setImageMatrix(this.mScaleMatrix);
-      }
-      if (canUpdateRegionRect())
-      {
-        if (f2 != 0.0F) {
-          break label1028;
-        }
-        this.mScrollDirection = 0;
-      }
-    }
-    for (;;)
-    {
-      label933:
-      getRegionRectHelper().updateShowArea(this.mDrawable, this.mScaleMatrix, this.mDefaultScale, getScale(), this, true, 1, this.mScrollDirection);
-      this.mLastX = f6;
-      this.mLastY = f7;
-      return true;
-      f2 = 0.0F;
-      break;
-      label1028:
-      if (f2 < 0.0F) {
-        this.mScrollDirection = 1;
-      } else {
-        this.mScrollDirection = 2;
-      }
-    }
-    this.mLastPointerCount = 0;
-    BrowserLogHelper.getInstance().getGalleryLog().i("BrowserScaleView", 2, "onTouch...action = " + paramMotionEvent.getAction());
-    dealScaleEvent();
-    if ((isNeedRebound()) && (getScale() == this.mDefaultScale)) {
-      if (isVerticalLongPhoto(this.degrees))
-      {
-        checkBorderWhenTranslate();
-        setImageMatrix(this.mScaleMatrix);
-      }
-    }
-    for (;;)
-    {
-      this.mScrollDirection = 0;
-      if (canUpdateRegionRect()) {
-        getRegionRectHelper().updateShowArea(this.mDrawable, this.mScaleMatrix, this.mDefaultScale, getScale(), this, true, this.mScrollDirection);
-      }
-      if (this.mVelocityTracker == null) {
-        break;
-      }
-      this.mVelocityTracker.recycle();
-      this.mVelocityTracker = null;
-      return true;
-      reset();
-      continue;
-      if (this.mVelocityTracker != null)
-      {
-        this.mVelocityTracker.addMovement(paramMotionEvent);
-        this.mVelocityTracker.computeCurrentVelocity(1000);
-        f1 = this.mVelocityTracker.getXVelocity();
-        f2 = this.mVelocityTracker.getYVelocity();
-        startFling(this.mWidth, this.mHeight, (int)-f1, (int)-f2);
-      }
-    }
   }
   
   public void reset()
@@ -821,9 +923,9 @@ public class BrowserScaleView
     this.mMainBrowserPresenter = paramMainBrowserPresenter;
   }
   
-  public void setOnItemEventListener(IBrowserItemEventListener paramIBrowserItemEventListener)
+  public void setOnItemEventListener(IBrowserItemClickEvent paramIBrowserItemClickEvent)
   {
-    this.mItemEventListener = paramIBrowserItemEventListener;
+    this.mItemEventListener = paramIBrowserItemClickEvent;
   }
   
   public void setScaleEnable(boolean paramBoolean)
@@ -839,9 +941,10 @@ public class BrowserScaleView
   
   public void startScale(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if (this.mScaleMatrix != null)
+    Matrix localMatrix = this.mScaleMatrix;
+    if (localMatrix != null)
     {
-      this.mScaleMatrix.postScale(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+      localMatrix.postScale(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
       checkBorderAndCenterWhenScale();
       setImageMatrix(this.mScaleMatrix);
     }
@@ -849,7 +952,7 @@ public class BrowserScaleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView
  * JD-Core Version:    0.7.0.1
  */

@@ -16,32 +16,23 @@ class QFileBubblePauseHandler$1
   public void onClick(View paramView)
   {
     BaseBubbleBuilder.ViewHolder localViewHolder = (BaseBubbleBuilder.ViewHolder)AIOUtils.a(paramView);
-    int i;
-    ChatMessage localChatMessage;
     if (localViewHolder != null)
     {
-      i = -1;
-      localChatMessage = FileManagerUtil.a(localViewHolder.a);
-      if (!this.a.a(localChatMessage)) {
-        break label57;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      this.a.a(paramView, localViewHolder, localChatMessage, i);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label57:
-      if (this.a.b(localChatMessage)) {
+      int i = -1;
+      ChatMessage localChatMessage = FileManagerUtil.a(localViewHolder.a);
+      if (this.a.a(localChatMessage)) {
+        i = 0;
+      } else if (this.a.b(localChatMessage)) {
         i = 1;
       }
+      this.a.a(paramView, localViewHolder, localChatMessage, i);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.QFileBubblePauseHandler.1
  * JD-Core Version:    0.7.0.1
  */

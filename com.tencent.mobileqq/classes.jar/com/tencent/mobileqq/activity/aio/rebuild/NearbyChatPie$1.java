@@ -17,10 +17,11 @@ class NearbyChatPie$1
   {
     try
     {
-      if ((((FriendsManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == null) && (StringUtil.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
+      if ((((FriendsManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == null) && (StringUtil.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+      {
         ((CardHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (byte)1, 0);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -30,7 +31,7 @@ class NearbyChatPie$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.1
  * JD-Core Version:    0.7.0.1
  */

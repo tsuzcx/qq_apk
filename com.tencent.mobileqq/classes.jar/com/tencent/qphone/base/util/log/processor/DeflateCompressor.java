@@ -25,9 +25,10 @@ public class DeflateCompressor
     if (this.compress)
     {
       this.deflater.setInput(paramProcessByteData.bytes, paramProcessByteData.offset, paramProcessByteData.length);
-      this.out.length = this.deflater.deflate(this.out.bytes, 0, this.out.capacity, 2);
-      this.out.offset = 0;
+      paramProcessByteData = this.out;
+      paramProcessByteData.length = this.deflater.deflate(paramProcessByteData.bytes, 0, this.out.capacity, 2);
       localProcessByteData = this.out;
+      localProcessByteData.offset = 0;
     }
     return localProcessByteData;
   }
@@ -39,7 +40,7 @@ public class DeflateCompressor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.processor.DeflateCompressor
  * JD-Core Version:    0.7.0.1
  */

@@ -24,36 +24,45 @@ class ScribbleItemBuilder$ProgressRunnable
   
   public void run()
   {
-    if (this.a != null) {}
-    for (MessageForScribble localMessageForScribble = (MessageForScribble)this.a.get();; localMessageForScribble = null)
+    Object localObject1 = this.a;
+    Context localContext = null;
+    if (localObject1 != null) {
+      localObject1 = (MessageForScribble)((WeakReference)localObject1).get();
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2 = this.b;
+    if (localObject2 != null) {
+      localObject2 = (ScribbleItemBuilder.Holder)((WeakReference)localObject2).get();
+    } else {
+      localObject2 = null;
+    }
+    Object localObject3 = this.c;
+    if (localObject3 != null) {
+      localObject3 = (Handler)((WeakReference)localObject3).get();
+    } else {
+      localObject3 = null;
+    }
+    WeakReference localWeakReference = this.d;
+    if (localWeakReference != null) {
+      localContext = (Context)localWeakReference.get();
+    }
+    if ((localObject1 != null) && (localObject3 != null) && (localObject2 != null))
     {
-      if (this.b != null) {}
-      for (ScribbleItemBuilder.Holder localHolder = (ScribbleItemBuilder.Holder)this.b.get();; localHolder = null)
-      {
-        if (this.c != null) {}
-        for (Handler localHandler = (Handler)this.c.get();; localHandler = null)
-        {
-          if (this.d != null) {}
-          for (Context localContext = (Context)this.d.get();; localContext = null)
-          {
-            if ((localMessageForScribble == null) || (localHandler == null) || (localHolder == null) || (localContext == null)) {}
-            do
-            {
-              return;
-              ScribbleItemBuilder.a(localMessageForScribble);
-              ScribbleItemBuilder.a(localMessageForScribble, localHolder, localMessageForScribble.mUiProgress, false, localContext, localHandler);
-            } while (!localHolder.a.isShown());
-            localHandler.postDelayed(localMessageForScribble.mUpdateProgressRunnable, 50L);
-            return;
-          }
-        }
+      if (localContext == null) {
+        return;
+      }
+      ScribbleItemBuilder.a((MessageForScribble)localObject1);
+      ScribbleItemBuilder.a((MessageForScribble)localObject1, (ScribbleItemBuilder.Holder)localObject2, ((MessageForScribble)localObject1).mUiProgress, false, localContext, (Handler)localObject3);
+      if (((ScribbleItemBuilder.Holder)localObject2).a.isShown()) {
+        ((Handler)localObject3).postDelayed(((MessageForScribble)localObject1).mUpdateProgressRunnable, 50L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.ProgressRunnable
  * JD-Core Version:    0.7.0.1
  */

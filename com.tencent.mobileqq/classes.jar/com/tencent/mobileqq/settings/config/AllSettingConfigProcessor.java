@@ -7,7 +7,6 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
 public class AllSettingConfigProcessor
   extends IQConfigProcessor<AllSettingConfig>
@@ -15,7 +14,10 @@ public class AllSettingConfigProcessor
   @NonNull
   public AllSettingConfig a(int paramInt)
   {
-    QLog.d("AllSettingConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("AllSettingConfigProcessor", 2, localStringBuilder.toString());
     return new AllSettingConfig();
   }
   
@@ -30,20 +32,19 @@ public class AllSettingConfigProcessor
   
   public void a(AllSettingConfig paramAllSettingConfig)
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onUpdate, newConf = ");
+    ((StringBuilder)localObject).append(paramAllSettingConfig);
+    localObject = ((StringBuilder)localObject).toString();
     boolean bool = true;
-    QLog.d("AllSettingConfigProcessor", 1, "onUpdate, newConf = " + paramAllSettingConfig);
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      if (paramAllSettingConfig.a() != 1) {
-        break label58;
-      }
-    }
-    for (;;)
+    QLog.d("AllSettingConfigProcessor", 1, (String)localObject);
+    localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      SettingsConfigHelper.a((QQAppInterface)localAppRuntime, bool);
-      return;
-      label58:
-      bool = false;
+      if (paramAllSettingConfig.a() != 1) {
+        bool = false;
+      }
+      SettingsConfigHelper.a((QQAppInterface)localObject, bool);
     }
   }
   
@@ -69,7 +70,10 @@ public class AllSettingConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("AllSettingConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("AllSettingConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -79,7 +83,7 @@ public class AllSettingConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.config.AllSettingConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,30 @@
 package com.tencent.mobileqq.startup.step;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.mini.api.ISplashMiniGameStarterService;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.startup.director.StartupDirector;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 final class SetSplash$3
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
   SetSplash$3(StartupDirector paramStartupDirector) {}
   
-  public void onClick(View paramView)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a(15, 1, 0L);
-      ISplashMiniGameStarterService localISplashMiniGameStarterService = (ISplashMiniGameStarterService)QRoute.api(ISplashMiniGameStarterService.class);
-      localISplashMiniGameStarterService.setNeedJump(false);
-      localISplashMiniGameStarterService.setHasClickJumpBtn(true);
-    }
+    paramTVK_IMediaPlayer = new StringBuilder();
+    paramTVK_IMediaPlayer.append("splash_logoerro+ errotype");
+    paramTVK_IMediaPlayer.append(paramInt1);
+    paramTVK_IMediaPlayer.append("errcode =");
+    paramTVK_IMediaPlayer.append(paramInt2);
+    QLog.i("SplashMiniGameStarter", 1, paramTVK_IMediaPlayer.toString());
+    this.a.a(15, 1, 0L);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.3
  * JD-Core Version:    0.7.0.1
  */

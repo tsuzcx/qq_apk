@@ -2,7 +2,6 @@ package com.tencent.av.business.handler;
 
 import android.text.TextUtils;
 import com.tencent.av.business.MsfServletProxy;
-import com.tencent.av.redpacket.AVRedPacketHandler;
 import com.tencent.av.screenshare.ScreenShareHandler;
 import com.tencent.av.wtogether.WTogetherHandler;
 
@@ -10,10 +9,8 @@ public class BusinessHandlerFactory
 {
   public static final String a = AudioTransClientInterfaceHandlerExtend.class.getName();
   public static final String b = AudioTransClientInfoHandlerExtend.class.getName();
-  public static final String c = AVRedPacketHandler.class.getName();
-  public static final String d = AVC2CDataHandler.class.getName();
-  public static final String e = WTogetherHandler.class.getName();
-  public static final String f = ScreenShareHandler.class.getName();
+  public static final String c = WTogetherHandler.class.getName();
+  public static final String d = ScreenShareHandler.class.getName();
   
   public void a(MsfServletProxy paramMsfServletProxy)
   {
@@ -22,7 +19,6 @@ public class BusinessHandlerFactory
     paramMsfServletProxy.a("TransInfo.ExitSession", new String[] { a });
     paramMsfServletProxy.a("TransInfo.ChangeSession", new String[] { a });
     paramMsfServletProxy.a("TransInfo.RawData", new String[] { a });
-    paramMsfServletProxy.a("OidbSvc.0xa75", new String[] { c });
     String[] arrayOfString = WTogetherHandler.a();
     int j;
     int i;
@@ -35,7 +31,7 @@ public class BusinessHandlerFactory
       {
         str = arrayOfString[i];
         if (!TextUtils.isEmpty(str)) {
-          paramMsfServletProxy.a(str, new String[] { e }, true);
+          paramMsfServletProxy.a(str, new String[] { c }, true);
         }
         i += 1;
       }
@@ -49,7 +45,7 @@ public class BusinessHandlerFactory
       {
         str = arrayOfString[i];
         if (!TextUtils.isEmpty(str)) {
-          paramMsfServletProxy.a(str, new String[] { f }, true);
+          paramMsfServletProxy.a(str, new String[] { d }, true);
         }
         i += 1;
       }
@@ -58,7 +54,7 @@ public class BusinessHandlerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.handler.BusinessHandlerFactory
  * JD-Core Version:    0.7.0.1
  */

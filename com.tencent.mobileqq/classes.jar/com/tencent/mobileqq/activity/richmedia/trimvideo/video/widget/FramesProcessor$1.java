@@ -29,23 +29,25 @@ class FramesProcessor$1
   
   public boolean onScroll(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    do
+    synchronized (this.a)
     {
-      synchronized (this.a)
+      FramesProcessor.a(this.a, FramesProcessor.a(this.a) + paramFloat1);
+      if (FramesProcessor.a(this.a) < FramesProcessor.b(this.a))
       {
-        FramesProcessor.a(this.a, FramesProcessor.a(this.a) + paramFloat1);
-        if (FramesProcessor.a(this.a) < FramesProcessor.b(this.a)) {
-          FramesProcessor.a(this.a, FramesProcessor.b(this.a));
-        }
-        if (FramesProcessor.a(this.a) > FramesProcessor.c(this.a)) {
-          FramesProcessor.a(this.a, FramesProcessor.c(this.a));
-        }
-        paramFloat1 = FramesProcessor.a(this.a);
-        paramFloat2 = FramesProcessor.d(this.a);
-        FramesProcessor.b(this.a, FramesProcessor.a(this.a));
-        if (FramesProcessor.a(this.a, paramFloat1 - paramFloat2, 0.0F)) {
-          return true;
-        }
+        ??? = this.a;
+        FramesProcessor.a(???, FramesProcessor.b(???));
+      }
+      if (FramesProcessor.a(this.a) > FramesProcessor.c(this.a))
+      {
+        ??? = this.a;
+        FramesProcessor.a(???, FramesProcessor.c(???));
+      }
+      paramFloat1 = FramesProcessor.a(this.a);
+      paramFloat2 = FramesProcessor.d(this.a);
+      ??? = this.a;
+      FramesProcessor.b(???, FramesProcessor.a(???));
+      if (FramesProcessor.a(this.a, paramFloat1 - paramFloat2, 0.0F)) {
+        return true;
       }
       FramesProcessor.a(this.a);
       if (FramesProcessor.a(this.a) != null) {
@@ -54,9 +56,11 @@ class FramesProcessor$1
       if (FramesProcessor.a(this.a) != null) {
         FramesProcessor.a(this.a).invalidate();
       }
-    } while (FramesProcessor.a(this.a) == null);
-    FramesProcessor.a(this.a).a(FramesProcessor.a(this.a), -FramesProcessor.a(this.a), FramesProcessor.e(this.a) - FramesProcessor.a(this.a));
-    return true;
+      if (FramesProcessor.a(this.a) != null) {
+        FramesProcessor.a(this.a).a(FramesProcessor.a(this.a), -FramesProcessor.a(this.a), FramesProcessor.e(this.a) - FramesProcessor.a(this.a));
+      }
+      return true;
+    }
   }
   
   public void onShowPress(MotionEvent paramMotionEvent) {}
@@ -68,7 +72,7 @@ class FramesProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FramesProcessor.1
  * JD-Core Version:    0.7.0.1
  */

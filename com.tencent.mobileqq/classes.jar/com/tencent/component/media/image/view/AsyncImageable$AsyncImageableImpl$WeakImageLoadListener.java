@@ -25,39 +25,44 @@ class AsyncImageable$AsyncImageableImpl$WeakImageLoadListener
   public void onImageFailed(String paramString, ImageLoader.Options paramOptions)
   {
     paramOptions = getAsyncImageable();
-    if (paramOptions == null) {}
-    while (AsyncImageable.AsyncImageableImpl.access$400(paramOptions, paramString)) {
+    if (paramOptions == null) {
       return;
     }
-    AsyncImageable.AsyncImageableImpl.access$500(paramOptions);
-    AsyncImageable.AsyncImageableImpl.access$000(paramOptions);
-    AsyncImageable.AsyncImageableImpl.access$600(paramOptions);
+    if (!AsyncImageable.AsyncImageableImpl.access$400(paramOptions, paramString))
+    {
+      AsyncImageable.AsyncImageableImpl.access$500(paramOptions);
+      AsyncImageable.AsyncImageableImpl.access$000(paramOptions);
+      AsyncImageable.AsyncImageableImpl.access$600(paramOptions);
+    }
   }
   
   public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
   {
     paramOptions = getAsyncImageable();
-    if (paramOptions == null) {}
-    while (AsyncImageable.AsyncImageableImpl.access$400(paramOptions, paramString)) {
+    if (paramOptions == null) {
       return;
     }
-    AsyncImageable.AsyncImageableImpl.access$700(paramOptions, paramDrawable, true);
-    AsyncImageable.AsyncImageableImpl.access$800(paramOptions);
+    if (!AsyncImageable.AsyncImageableImpl.access$400(paramOptions, paramString))
+    {
+      AsyncImageable.AsyncImageableImpl.access$700(paramOptions, paramDrawable, true);
+      AsyncImageable.AsyncImageableImpl.access$800(paramOptions);
+    }
   }
   
   public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions)
   {
     paramOptions = getAsyncImageable();
-    if (paramOptions == null) {}
-    while (AsyncImageable.AsyncImageableImpl.access$400(paramOptions, paramString)) {
+    if (paramOptions == null) {
       return;
     }
-    AsyncImageable.AsyncImageableImpl.access$900(paramOptions, paramFloat);
+    if (!AsyncImageable.AsyncImageableImpl.access$400(paramOptions, paramString)) {
+      AsyncImageable.AsyncImageableImpl.access$900(paramOptions, paramFloat);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl.WeakImageLoadListener
  * JD-Core Version:    0.7.0.1
  */

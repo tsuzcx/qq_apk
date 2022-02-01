@@ -13,36 +13,34 @@ public class LogsUtil
   
   private static String a(String paramString)
   {
-    int i = 1;
     if (TextUtils.isEmpty(paramString)) {
       return paramString;
     }
-    int n = paramString.length();
-    if (1 == n) {
+    int i1 = paramString.length();
+    int j = 1;
+    if (1 == i1) {
       return String.valueOf('*');
     }
-    StringBuilder localStringBuilder = new StringBuilder(n);
-    int j = 0;
-    char c;
-    if (j < n)
+    StringBuilder localStringBuilder = new StringBuilder(i1);
+    int i = 0;
+    while (i < i1)
     {
-      c = paramString.charAt(j);
-      if (!k.matcher(String.valueOf(c)).matches()) {
-        break label103;
+      char c1 = paramString.charAt(i);
+      int n = j;
+      char c2 = c1;
+      if (k.matcher(String.valueOf(c1)).matches())
+      {
+        if (j % 2 == 0) {
+          c1 = '*';
+        }
+        n = j + 1;
+        c2 = c1;
       }
-      if (i % 2 == 0) {
-        c = '*';
-      }
+      localStringBuilder.append(c2);
       i += 1;
+      j = n;
     }
-    label103:
-    for (;;)
-    {
-      localStringBuilder.append(c);
-      j += 1;
-      break;
-      return localStringBuilder.toString();
-    }
+    return localStringBuilder.toString();
   }
   
   private static String a(String paramString1, String paramString2)
@@ -60,45 +58,35 @@ public class LogsUtil
   private static String a(String paramString, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder(512);
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (!paramBoolean) {
-        break label36;
+    if (!TextUtils.isEmpty(paramString)) {
+      if (paramBoolean) {
+        localStringBuilder.append(a(paramString));
+      } else {
+        localStringBuilder.append(paramString);
       }
-      localStringBuilder.append(a(paramString));
     }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      label36:
-      localStringBuilder.append(paramString);
-    }
+    return localStringBuilder.toString();
   }
   
   private static Throwable a(Throwable paramThrowable)
   {
-    Object localObject2;
-    if (paramThrowable == null)
-    {
-      localObject2 = null;
-      return localObject2;
+    if (paramThrowable == null) {
+      return null;
     }
-    LogsUtil.a locala = new LogsUtil.a(paramThrowable);
-    locala.setStackTrace(paramThrowable.getStackTrace());
-    locala.setMessage(b(paramThrowable.getMessage()));
-    paramThrowable = paramThrowable.getCause();
-    for (Object localObject1 = locala;; localObject1 = localObject2)
+    LogsUtil.a locala1 = new LogsUtil.a(paramThrowable);
+    locala1.setStackTrace(paramThrowable.getStackTrace());
+    locala1.setMessage(b(paramThrowable.getMessage()));
+    Throwable localThrowable = paramThrowable.getCause();
+    LogsUtil.a locala2;
+    for (paramThrowable = locala1; localThrowable != null; paramThrowable = locala2)
     {
-      localObject2 = locala;
-      if (paramThrowable == null) {
-        break;
-      }
-      localObject2 = new LogsUtil.a(paramThrowable);
-      ((LogsUtil.a)localObject2).setStackTrace(paramThrowable.getStackTrace());
-      ((LogsUtil.a)localObject2).setMessage(b(paramThrowable.getMessage()));
-      ((LogsUtil.a)localObject1).b((Throwable)localObject2);
-      paramThrowable = paramThrowable.getCause();
+      locala2 = new LogsUtil.a(localThrowable);
+      locala2.setStackTrace(localThrowable.getStackTrace());
+      locala2.setMessage(b(localThrowable.getMessage()));
+      paramThrowable.b(locala2);
+      localThrowable = localThrowable.getCause();
     }
+    return locala1;
   }
   
   private static String b(String paramString)
@@ -312,7 +300,7 @@ public class LogsUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.util.LogsUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -53,47 +53,46 @@ public class QQSysAndEmojiResReloader
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 10001) {
       return false;
-    } while ((this.mWaitingReloadList == null) || (this.mWaitingReloadList.size() <= 0));
-    this.mLoadingLock.lock();
-    for (;;)
+    }
+    paramMessage = this.mWaitingReloadList;
+    if ((paramMessage != null) && (paramMessage.size() > 0))
     {
+      this.mLoadingLock.lock();
       try
       {
-        if (this.mWaitingReloadList.size() <= 0) {
-          break label162;
+        int i;
+        if (this.mWaitingReloadList.size() > 0) {
+          i = ((Integer)this.mWaitingReloadList.remove(0)).intValue();
+        } else {
+          i = -1;
         }
-        i = ((Integer)this.mWaitingReloadList.remove(0)).intValue();
         this.mLoadingLock.unlock();
-        if (i <= -1) {
-          break;
-        }
-        if (this.mResReloadListener != null) {
-          this.mResReloadListener.startReloadDrawable(i);
-        }
-        if (this.mWaitingReloadList.size() > 0)
+        if (i > -1)
         {
-          this.mHandler.sendEmptyMessageDelayed(10001, 300L);
-          return false;
+          paramMessage = this.mResReloadListener;
+          if (paramMessage != null) {
+            paramMessage.startReloadDrawable(i);
+          }
+          if (this.mWaitingReloadList.size() > 0)
+          {
+            this.mHandler.sendEmptyMessageDelayed(10001, 300L);
+            return false;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("QQSysAndEmojiResReloader", 2, "finish reloading");
+            return false;
+          }
         }
       }
       finally
       {
         this.mLoadingLock.unlock();
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQSysAndEmojiResReloader", 2, "finish reloading");
-      return false;
-      label162:
-      int i = -1;
     }
+    return false;
   }
   
   public void nofityReloadList()
@@ -108,7 +107,7 @@ public class QQSysAndEmojiResReloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysAndEmojiResReloader
  * JD-Core Version:    0.7.0.1
  */

@@ -20,40 +20,39 @@ class TroopBarAssistantManager$3
   {
     ConversationFacade localConversationFacade = this.a.getConversationFacade();
     Object localObject1 = this.a.getMessageFacade();
-    if ((localConversationFacade == null) || (localObject1 == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TroopBarAssistantManager", 2, "clearAllSubscriptionUnreadMsgLite getConversationFacade fail");
-      }
-      return;
-    }
-    synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.this$0.jdField_a_of_type_JavaUtilList != null)
+    if ((localConversationFacade != null) && (localObject1 != null)) {
+      synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
       {
-        Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
+        if (this.this$0.jdField_a_of_type_JavaUtilList != null)
         {
-          TroopBarData localTroopBarData = (TroopBarData)localIterator.next();
-          MessageRecord localMessageRecord = localTroopBarData.mLatestMessage;
-          localObject1 = localMessageRecord;
-          if (localMessageRecord == null) {
-            localObject1 = this.a.getMessageFacade().b(localTroopBarData.mUin, 1008);
-          }
-          if ((localObject1 != null) && (localConversationFacade.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) > 0))
+          Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext())
           {
-            int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(this.a, ((MessageRecord)localObject1).frienduin);
-            RecentUtil.b(this.a, ((MessageRecord)localObject1).frienduin, i);
-            localConversationFacade.a(((MessageRecord)localObject1).frienduin, i, true);
+            TroopBarData localTroopBarData = (TroopBarData)localIterator.next();
+            MessageRecord localMessageRecord = localTroopBarData.mLatestMessage;
+            localObject1 = localMessageRecord;
+            if (localMessageRecord == null) {
+              localObject1 = this.a.getMessageFacade().b(localTroopBarData.mUin, 1008);
+            }
+            if ((localObject1 != null) && (localConversationFacade.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) > 0))
+            {
+              int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(this.a, ((MessageRecord)localObject1).frienduin);
+              RecentUtil.b(this.a, ((MessageRecord)localObject1).frienduin, i);
+              localConversationFacade.a(((MessageRecord)localObject1).frienduin, i, true);
+            }
           }
         }
+        return;
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("TroopBarAssistantManager", 2, "clearAllSubscriptionUnreadMsgLite getConversationFacade fail");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager.3
  * JD-Core Version:    0.7.0.1
  */

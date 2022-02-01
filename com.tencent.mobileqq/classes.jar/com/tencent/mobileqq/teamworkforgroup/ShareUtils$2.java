@@ -11,19 +11,20 @@ class ShareUtils$2
   {
     if (ShareUtils.a(this.this$0).getWidth() < this.a) {
       ShareUtils.a(this.this$0).setMove(true);
+    } else {
+      ShareUtils.a(this.this$0).setMove(false);
     }
-    while (ShareUtils.b(this.this$0).getWidth() < this.b)
+    if (ShareUtils.b(this.this$0).getWidth() < this.b)
     {
       ShareUtils.b(this.this$0).setMove(true);
       return;
-      ShareUtils.a(this.this$0).setMove(false);
     }
     ShareUtils.b(this.this$0).setMove(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.ShareUtils.2
  * JD-Core Version:    0.7.0.1
  */

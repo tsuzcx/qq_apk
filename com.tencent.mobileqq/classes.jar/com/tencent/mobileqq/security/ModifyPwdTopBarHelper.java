@@ -7,9 +7,8 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.home.Conversation;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.SecureModifyPwdNotifyBannerProcessor;
 import com.tencent.mobileqq.banner.BannerManager;
 import com.tencent.mobileqq.banner.TipsBar;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
@@ -27,75 +26,100 @@ public class ModifyPwdTopBarHelper
   
   public static ModifyPwdTopBarHelper a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new ModifyPwdTopBarHelper();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new ModifyPwdTopBarHelper();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   protected long a(String paramString1, String paramString2, long paramLong)
   {
-    return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getLong(paramString1 + "_" + paramString2, paramLong);
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localSharedPreferences.getLong(localStringBuilder.toString(), paramLong);
   }
   
-  public TipsBar a(QQAppInterface paramQQAppInterface, Context paramContext)
+  public TipsBar a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
     TipsBar localTipsBar = new TipsBar(paramContext);
     localTipsBar.setVisibility(0);
-    localTipsBar.a().setText(a(paramQQAppInterface.getCurrentUin(), "bar_content_string", ""));
-    localTipsBar.setTipsIcon(paramContext.getResources().getDrawable(2130839417));
-    localTipsBar.setOriginalOnClickListener(new ModifyPwdTopBarHelper.1(this, paramContext, paramQQAppInterface));
+    localTipsBar.a().setText(a(paramBaseQQAppInterface.getCurrentUin(), "bar_content_string", ""));
+    localTipsBar.setTipsIcon(paramContext.getResources().getDrawable(2130839273));
+    localTipsBar.setOriginalOnClickListener(new ModifyPwdTopBarHelper.1(this, paramContext, paramBaseQQAppInterface));
     return localTipsBar;
   }
   
   protected String a(String paramString1, String paramString2, String paramString3)
   {
-    return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getString(paramString1 + "_" + paramString2, paramString3);
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localSharedPreferences.getString(localStringBuilder.toString(), paramString3);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, long paramLong)
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, long paramLong)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getCurrentAccountUin())) || (paramLong <= 0L)) {
-      QLog.e("ModifyPwdTopBarHelper", 1, "updateBarDisplayStatus: params error");
-    }
-    String str1;
-    do
+    if ((paramBaseQQAppInterface != null) && (!TextUtils.isEmpty(paramBaseQQAppInterface.getCurrentAccountUin())) && (paramLong > 0L))
     {
-      return;
       ((IMiniAppService)QRoute.api(IMiniAppService.class)).doClearAfterLoginSuccess(false);
-      str1 = paramQQAppInterface.getCurrentAccountUin();
-      if (a(str1)) {
-        break;
+      String str1 = paramBaseQQAppInterface.getCurrentAccountUin();
+      if (!a(str1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ModifyPwdTopBarHelper", 2, "isModifyPwdBarHelperEnable false");
+        }
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ModifyPwdTopBarHelper", 2, "isModifyPwdBarHelperEnable false");
-    return;
-    boolean bool1 = a(str1, "key_verify_for_dlg_or_clk", false);
-    boolean bool2 = a(str1, "key_show_status", false);
-    long l1 = a(str1, "time_dlg_show_or_bar_clk", 0L);
-    long l2 = a(str1, "time_fetch_next_time", 0L);
-    String str2 = a(str1, "bar_url", "");
-    String str3 = a(str1, "bar_content_string", "");
-    QLog.d("ModifyPwdTopBarHelper", 1, "updateBarDisplayInfo verifyForDlgOrClk: " + bool1 + " showStatus: " + bool2 + " timeDlgShowOrBarClk: " + l1 + " fetchNext: " + l2 + " barUrl: " + str2 + " contentStr: " + str3 + " currentMillis: " + paramLong);
-    if ((bool1) && (paramLong - l1 >= 86400000L) && (paramLong >= l2)) {
-      a(paramQQAppInterface, str1);
+      boolean bool1 = a(str1, "key_verify_for_dlg_or_clk", false);
+      boolean bool2 = a(str1, "key_show_status", false);
+      long l1 = a(str1, "time_dlg_show_or_bar_clk", 0L);
+      long l2 = a(str1, "time_fetch_next_time", 0L);
+      String str2 = a(str1, "bar_url", "");
+      String str3 = a(str1, "bar_content_string", "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateBarDisplayInfo verifyForDlgOrClk: ");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append(" showStatus: ");
+      localStringBuilder.append(bool2);
+      localStringBuilder.append(" timeDlgShowOrBarClk: ");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(" fetchNext: ");
+      localStringBuilder.append(l2);
+      localStringBuilder.append(" barUrl: ");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" contentStr: ");
+      localStringBuilder.append(str3);
+      localStringBuilder.append(" currentMillis: ");
+      localStringBuilder.append(paramLong);
+      QLog.d("ModifyPwdTopBarHelper", 1, localStringBuilder.toString());
+      if ((bool1) && (paramLong - l1 >= 86400000L) && (paramLong >= l2)) {
+        a(paramBaseQQAppInterface, str1);
+      }
+      a(paramBaseQQAppInterface, bool2);
+      return;
     }
-    a(paramQQAppInterface, bool2);
+    QLog.e("ModifyPwdTopBarHelper", 1, "updateBarDisplayStatus: params error");
   }
   
-  protected void a(QQAppInterface paramQQAppInterface, String paramString)
+  protected void a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    if (paramQQAppInterface == null)
+    if (paramBaseQQAppInterface == null)
     {
       QLog.e("ModifyPwdTopBarHelper", 1, "requestTopBarDisplayInfo error: app == null");
       return;
     }
-    ModifyPwdTopBarHandler localModifyPwdTopBarHandler = (ModifyPwdTopBarHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SECURITY_TOP_BAR);
+    ModifyPwdTopBarHandler localModifyPwdTopBarHandler = (ModifyPwdTopBarHandler)paramBaseQQAppInterface.getBusinessHandler(ModifyPwdTopBarHandler.class.getName());
     if (localModifyPwdTopBarHandler == null)
     {
       QLog.e("ModifyPwdTopBarHelper", 1, "requestTopBarDisplayInfo error: handler == null");
@@ -103,33 +127,40 @@ public class ModifyPwdTopBarHelper
     }
     long l = System.currentTimeMillis();
     HashMap localHashMap = new HashMap();
-    paramString = new ModifyPwdTopBarHelper.2(this, l, localHashMap, paramQQAppInterface, paramString);
+    paramString = new ModifyPwdTopBarHelper.2(this, l, localHashMap, paramBaseQQAppInterface, paramString);
     localHashMap.put(Long.valueOf(l), paramString);
-    paramQQAppInterface.addObserver(paramString);
+    paramBaseQQAppInterface.addObserver(paramString);
     localModifyPwdTopBarHandler.a(l);
   }
   
-  protected void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  protected void a(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
   {
-    paramQQAppInterface.getHandler(Conversation.class);
     if (paramBoolean)
     {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800B186", "0X800B186", 0, 0, "", "", "", "");
-      BannerManager.a().a(3, 2, null);
+      ReportController.b(paramBaseQQAppInterface, "dc00898", "", "", "0X800B186", "0X800B186", 0, 0, "", "", "", "");
+      BannerManager.a().a(SecureModifyPwdNotifyBannerProcessor.a, 2, null);
       return;
     }
-    BannerManager.a().a(3, 0, null);
+    BannerManager.a().a(SecureModifyPwdNotifyBannerProcessor.a, 0, null);
   }
   
   public void a(String paramString)
   {
-    QLog.d("ModifyPwdTopBarHelper", 1, "cancelVerifyRiskDialog uin: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cancelVerifyRiskDialog uin: ");
+    localStringBuilder.append(paramString);
+    QLog.d("ModifyPwdTopBarHelper", 1, localStringBuilder.toString());
     a(paramString, false, false, 0L, 0L);
   }
   
   public void a(String paramString, long paramLong)
   {
-    QLog.d("ModifyPwdTopBarHelper", 1, "doAfterPushRiskDialog uin: " + paramString + " currentMillis: " + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doAfterPushRiskDialog uin: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" currentMillis: ");
+    localStringBuilder.append(paramLong);
+    QLog.d("ModifyPwdTopBarHelper", 1, localStringBuilder.toString());
     b(paramString);
     a(paramString, true, false, paramLong, 0L);
   }
@@ -137,27 +168,50 @@ public class ModifyPwdTopBarHelper
   protected void a(String paramString1, String paramString2, long paramLong)
   {
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-    localEditor.putLong(paramString1 + "_" + paramString2, paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    localEditor.putLong(localStringBuilder.toString(), paramLong);
     localEditor.commit();
   }
   
   protected void a(String paramString1, String paramString2, String paramString3)
   {
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-    localEditor.putString(paramString1 + "_" + paramString2, paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    localEditor.putString(localStringBuilder.toString(), paramString3);
     localEditor.commit();
   }
   
   protected void a(String paramString1, String paramString2, boolean paramBoolean)
   {
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-    localEditor.putBoolean(paramString1 + "_" + paramString2, paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    localEditor.putBoolean(localStringBuilder.toString(), paramBoolean);
     localEditor.commit();
   }
   
   protected void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
   {
-    QLog.d("ModifyPwdTopBarHelper", 1, "updateConfigData uin: " + paramString + " verifyForDlgOrClk: " + paramBoolean1 + " showStatus: " + paramBoolean2 + " timeDlgShowOrBarClk: " + paramLong1 + " fetchNext: " + paramLong2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateConfigData uin: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" verifyForDlgOrClk: ");
+    localStringBuilder.append(paramBoolean1);
+    localStringBuilder.append(" showStatus: ");
+    localStringBuilder.append(paramBoolean2);
+    localStringBuilder.append(" timeDlgShowOrBarClk: ");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(" fetchNext: ");
+    localStringBuilder.append(paramLong2);
+    QLog.d("ModifyPwdTopBarHelper", 1, localStringBuilder.toString());
     a(paramString, "key_verify_for_dlg_or_clk", paramBoolean1);
     a(paramString, "key_show_status", paramBoolean2);
     a(paramString, "time_dlg_show_or_bar_clk", paramLong1);
@@ -171,24 +225,37 @@ public class ModifyPwdTopBarHelper
   
   protected boolean a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getBoolean(paramString1 + "_" + paramString2, paramBoolean);
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), paramBoolean);
   }
   
   protected void b(String paramString)
   {
-    QLog.d("ModifyPwdTopBarHelper", 1, "setModifyPwdTopBarEnable uin: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setModifyPwdTopBarEnable uin: ");
+    localStringBuilder.append(paramString);
+    QLog.d("ModifyPwdTopBarHelper", 1, localStringBuilder.toString());
     a(paramString, "key_risk_top_bar_enable", true);
   }
   
   protected void b(String paramString, long paramLong)
   {
-    QLog.d("ModifyPwdTopBarHelper", 1, "doAfterClickTopBar uin: " + paramString + " currentMillis: " + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doAfterClickTopBar uin: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" currentMillis: ");
+    localStringBuilder.append(paramLong);
+    QLog.d("ModifyPwdTopBarHelper", 1, localStringBuilder.toString());
     a(paramString, true, false, paramLong, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.security.ModifyPwdTopBarHelper
  * JD-Core Version:    0.7.0.1
  */

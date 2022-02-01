@@ -21,35 +21,39 @@ public class HippyNativeModuleInfo$HippyNativeMethod
   
   private Object[] prepareArguments(HippyEngineContext paramHippyEngineContext, Type[] paramArrayOfType, HippyArray paramHippyArray, PromiseImpl paramPromiseImpl)
   {
-    if ((paramArrayOfType == null) || (paramArrayOfType.length <= 0)) {
-      return new Object[0];
-    }
-    paramHippyEngineContext = new Object[paramArrayOfType.length];
-    if (paramHippyArray == null) {
-      throw new RuntimeException("method argument list not match");
-    }
-    int i = 0;
-    int j = 0;
-    if (i < paramArrayOfType.length)
+    if ((paramArrayOfType != null) && (paramArrayOfType.length > 0))
     {
-      Type localType = paramArrayOfType[i];
-      if (localType == Promise.class)
+      paramHippyEngineContext = new Object[paramArrayOfType.length];
+      if (paramHippyArray != null)
       {
-        paramHippyEngineContext[i] = paramPromiseImpl;
-        paramPromiseImpl.setNeedResolveBySelf(false);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (paramHippyArray.size() <= j) {
+        int i = 0;
+        int j = 0;
+        while (i < paramArrayOfType.length)
+        {
+          Type localType = paramArrayOfType[i];
+          if (localType == Promise.class)
+          {
+            paramHippyEngineContext[i] = paramPromiseImpl;
+            paramPromiseImpl.setNeedResolveBySelf(false);
+          }
+          else
+          {
+            if (paramHippyArray.size() <= j) {
+              break label99;
+            }
+            paramHippyEngineContext[i] = ArgumentUtils.parseArgument(localType, paramHippyArray, j);
+            j += 1;
+          }
+          i += 1;
+          continue;
+          label99:
           throw new RuntimeException("method argument list not match");
         }
-        paramHippyEngineContext[i] = ArgumentUtils.parseArgument(localType, paramHippyArray, j);
-        j += 1;
+        return paramHippyEngineContext;
       }
+      throw new RuntimeException("method argument list not match");
     }
-    return paramHippyEngineContext;
+    return new Object[0];
   }
   
   public void invoke(HippyEngineContext paramHippyEngineContext, Object paramObject, HippyArray paramHippyArray, PromiseImpl paramPromiseImpl)
@@ -63,7 +67,7 @@ public class HippyNativeModuleInfo$HippyNativeMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleInfo.HippyNativeMethod
  * JD-Core Version:    0.7.0.1
  */

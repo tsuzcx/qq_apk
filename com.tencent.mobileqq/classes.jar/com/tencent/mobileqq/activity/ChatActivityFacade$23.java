@@ -25,31 +25,32 @@ final class ChatActivityFacade$23
       if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSendFromLocal()) {
         ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).removeProcessor(BaseTransFileController.makeKey(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq));
       }
-      AbsStructMsg localAbsStructMsg = StructMsgFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
+      Object localObject = StructMsgFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      if ((localAbsStructMsg instanceof StructMsgForImageShare))
+      if ((localObject instanceof StructMsgForImageShare))
       {
-        StructMsgForImageShare.resendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (StructMsgForImageShare)localAbsStructMsg);
+        StructMsgForImageShare.resendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (StructMsgForImageShare)localObject);
         return;
       }
-      if (((localAbsStructMsg instanceof AbsShareMsg)) && (ForwardUtils.a(((AbsShareMsg)localAbsStructMsg).forwardType, localAbsStructMsg.mMsgServiceID)))
+      if (((localObject instanceof AbsShareMsg)) && (ForwardUtils.a(((AbsShareMsg)localObject).forwardType, ((AbsStructMsg)localObject).mMsgServiceID)))
       {
-        AbsShareMsg.resendSdkShareMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (AbsShareMsg)localAbsStructMsg);
+        AbsShareMsg.resendSdkShareMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (AbsShareMsg)localObject);
         return;
       }
+      localObject = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a((MessageRecord)localObject, null, true);
+      return;
     }
     catch (RuntimeException localRuntimeException)
     {
       QLog.e("ChatActivityFacade", 1, "resendStructMessage error :", localRuntimeException);
       throw localRuntimeException;
     }
-    MessageRecord localMessageRecord = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageRecord, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.23
  * JD-Core Version:    0.7.0.1
  */

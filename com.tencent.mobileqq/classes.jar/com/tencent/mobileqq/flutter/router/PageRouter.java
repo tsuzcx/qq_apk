@@ -7,22 +7,44 @@ public class PageRouter
   public boolean a;
   public String b;
   public boolean b;
-  public String c = System.currentTimeMillis() + "-" + hashCode();
+  public String c;
   public boolean c;
   
   public PageRouter()
   {
     this.jdField_b_of_type_JavaLangString = "unknown";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("-");
+    localStringBuilder.append(hashCode());
+    this.c = localStringBuilder.toString();
   }
   
   public String toString()
   {
-    return "PageRouter{entryPoint='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pageName='" + this.jdField_b_of_type_JavaLangString + '\'' + ", params=" + this.jdField_a_of_type_ComTencentMobileqqFlutterRouterSerializableMap + ", uniqueId='" + this.c + '\'' + ", needStatusBarTransparent=" + this.jdField_a_of_type_Boolean + ", needStatusTextDark=" + this.jdField_b_of_type_Boolean + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PageRouter{entryPoint='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", pageName='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", params=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFlutterRouterSerializableMap);
+    localStringBuilder.append(", uniqueId='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", needStatusBarTransparent=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", needStatusTextDark=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.router.PageRouter
  * JD-Core Version:    0.7.0.1
  */

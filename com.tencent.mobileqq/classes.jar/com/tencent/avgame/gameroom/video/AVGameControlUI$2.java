@@ -2,7 +2,7 @@ package com.tencent.avgame.gameroom.video;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.util.AVGameUtils;
+import com.tencent.avgame.util.AVGameUtil;
 import com.tencent.qphone.base.util.QLog;
 
 class AVGameControlUI$2
@@ -13,19 +13,26 @@ class AVGameControlUI$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a()) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a()) {
       return;
-      paramDialogInterface = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a();
-      QLog.w(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "], activity[" + paramDialogInterface + "]");
-    } while (paramDialogInterface == null);
-    AVGameUtils.a(paramDialogInterface);
+    }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a();
+    String str = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showPermissionNormalDialog.gotoSetting, seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("], activity[");
+    localStringBuilder.append(paramDialogInterface);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
+    if (paramDialogInterface != null) {
+      AVGameUtil.a(paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUI.2
  * JD-Core Version:    0.7.0.1
  */

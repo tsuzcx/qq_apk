@@ -22,14 +22,22 @@ public class ExtRspData
       this.b = paramGetFriendListResp.stSubSrvRspCode.wGetMutualMarkRspCode;
       this.c = paramGetFriendListResp.stSubSrvRspCode.wGetIntimateInfoRspCode;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtRspCode", 2, "wGetExtSnsRspCode: " + this.jdField_a_of_type_Int + ", wGetMutualMarkRspCode: " + this.b + ", wGetIntimateInfoRspCode: " + this.c);
+    if (QLog.isColorLevel())
+    {
+      paramGetFriendListResp = new StringBuilder();
+      paramGetFriendListResp.append("wGetExtSnsRspCode: ");
+      paramGetFriendListResp.append(this.jdField_a_of_type_Int);
+      paramGetFriendListResp.append(", wGetMutualMarkRspCode: ");
+      paramGetFriendListResp.append(this.b);
+      paramGetFriendListResp.append(", wGetIntimateInfoRspCode: ");
+      paramGetFriendListResp.append(this.c);
+      QLog.d("ExtRspCode", 2, paramGetFriendListResp.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.data.ExtRspData
  * JD-Core Version:    0.7.0.1
  */

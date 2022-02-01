@@ -18,15 +18,16 @@ public class UniteDownloadIPCModule
   
   public static UniteDownloadIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new UniteDownloadIPCModule("UniteDownloadIPCModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new UniteDownloadIPCModule("UniteDownloadIPCModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -44,7 +45,7 @@ public class UniteDownloadIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.util.UniteDownloadIPCModule
  * JD-Core Version:    0.7.0.1
  */

@@ -25,13 +25,14 @@ public class AsyncHttpResponseHandler
   
   protected Message a(int paramInt, Object paramObject)
   {
-    if (this.a != null) {
-      return this.a.obtainMessage(paramInt, paramObject);
+    Object localObject = this.a;
+    if (localObject != null) {
+      return ((Handler)localObject).obtainMessage(paramInt, paramObject);
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = paramInt;
-    localMessage.obj = paramObject;
-    return localMessage;
+    localObject = Message.obtain();
+    ((Message)localObject).what = paramInt;
+    ((Message)localObject).obj = paramObject;
+    return localObject;
   }
   
   public void a() {}
@@ -40,23 +41,28 @@ public class AsyncHttpResponseHandler
   
   protected void a(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      paramMessage = (Object[])paramMessage.obj;
-      c(((Integer)paramMessage[0]).intValue(), (Header[])paramMessage[1], (String)paramMessage[2]);
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          b();
+          return;
+        }
+        a();
+        return;
+      }
       paramMessage = (Object[])paramMessage.obj;
       c((Throwable)paramMessage[0], (String)paramMessage[1]);
       return;
-    case 2: 
-      a();
-      return;
     }
-    b();
+    paramMessage = (Object[])paramMessage.obj;
+    c(((Integer)paramMessage[0]).intValue(), (Header[])paramMessage[1], (String)paramMessage[2]);
   }
   
   public void a(Throwable paramThrowable, String paramString) {}
@@ -69,31 +75,27 @@ public class AsyncHttpResponseHandler
   void a(HttpResponse paramHttpResponse)
   {
     StatusLine localStatusLine = paramHttpResponse.getStatusLine();
+    String str3 = "";
+    String str2;
     try
     {
-      localObject = paramHttpResponse.getEntity();
-      if (localObject == null) {
-        break label79;
+      HttpEntity localHttpEntity = paramHttpResponse.getEntity();
+      String str1 = str3;
+      if (localHttpEntity != null) {
+        str1 = EntityUtils.toString(new BufferedHttpEntity(localHttpEntity), "UTF-8");
       }
-      localObject = EntityUtils.toString(new BufferedHttpEntity((HttpEntity)localObject), "UTF-8");
     }
     catch (IOException localIOException)
     {
-      label79:
-      String str;
-      for (;;)
-      {
-        Object localObject;
-        b(localIOException, (String)null);
-        str = "";
-      }
-      b(localStatusLine.getStatusCode(), paramHttpResponse.getAllHeaders(), str);
+      b(localIOException, (String)null);
+      str2 = str3;
     }
     if (localStatusLine.getStatusCode() >= 300)
     {
-      b(new HttpResponseException(localStatusLine.getStatusCode(), localStatusLine.getReasonPhrase()), (String)localObject);
+      b(new HttpResponseException(localStatusLine.getStatusCode(), localStatusLine.getReasonPhrase()), str2);
       return;
     }
+    b(localStatusLine.getStatusCode(), paramHttpResponse.getAllHeaders(), str2);
   }
   
   public void b() {}
@@ -105,9 +107,10 @@ public class AsyncHttpResponseHandler
   
   protected void b(Message paramMessage)
   {
-    if (this.a != null)
+    Handler localHandler = this.a;
+    if (localHandler != null)
     {
-      this.a.sendMessage(paramMessage);
+      localHandler.sendMessage(paramMessage);
       return;
     }
     a(paramMessage);

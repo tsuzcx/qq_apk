@@ -175,14 +175,16 @@ public class SharpPNewGifDecoder
   
   public void setSpeed(float paramFloat)
   {
-    if ((paramFloat <= 0.0F) || (Float.isNaN(paramFloat))) {
-      throw new IllegalArgumentException("Speed factor is not positive");
+    if ((paramFloat > 0.0F) && (!Float.isNaN(paramFloat)))
+    {
+      float f = paramFloat;
+      if (paramFloat < 0.0F) {
+        f = 0.0F;
+      }
+      this.speedFactor = f;
+      return;
     }
-    float f = paramFloat;
-    if (paramFloat < 0.0F) {
-      f = 0.0F;
-    }
-    this.speedFactor = f;
+    throw new IllegalArgumentException("Speed factor is not positive");
   }
   
   public long start()
@@ -201,7 +203,7 @@ public class SharpPNewGifDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.gif.SharpPNewGifDecoder
  * JD-Core Version:    0.7.0.1
  */

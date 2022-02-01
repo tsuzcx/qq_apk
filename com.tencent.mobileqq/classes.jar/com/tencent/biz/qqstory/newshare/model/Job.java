@@ -16,7 +16,10 @@ public abstract class Job
   
   public Job()
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.share" + getClass().getSimpleName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Q.qqstory.share");
+    localStringBuilder.append(getClass().getSimpleName());
+    this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = true;
   }
@@ -55,8 +58,9 @@ public abstract class Job
   protected final void a(boolean paramBoolean)
   {
     SLog.a(this.jdField_b_of_type_JavaLangString, "onJobFinish %b, stack = %s", Boolean.valueOf(paramBoolean), FeedUtils.a(7));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob$JobExecutorCallback != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob$JobExecutorCallback.b(paramBoolean);
+    Job.JobExecutorCallback localJobExecutorCallback = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob$JobExecutorCallback;
+    if (localJobExecutorCallback != null) {
+      localJobExecutorCallback.b(paramBoolean);
     }
   }
   
@@ -65,11 +69,12 @@ public abstract class Job
     return true;
   }
   
-  public final void b(boolean paramBoolean)
+  protected final void b(boolean paramBoolean)
   {
     SLog.a(this.jdField_b_of_type_JavaLangString, "onRunFinish %b, stack = %s", Boolean.valueOf(paramBoolean), FeedUtils.a(7));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob$JobExecutorCallback != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob$JobExecutorCallback.a(paramBoolean);
+    Job.JobExecutorCallback localJobExecutorCallback = this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob$JobExecutorCallback;
+    if (localJobExecutorCallback != null) {
+      localJobExecutorCallback.a(paramBoolean);
     }
   }
   
@@ -80,7 +85,7 @@ public abstract class Job
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.Job
  * JD-Core Version:    0.7.0.1
  */

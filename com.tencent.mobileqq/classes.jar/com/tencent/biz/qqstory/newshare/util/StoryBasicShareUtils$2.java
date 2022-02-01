@@ -23,7 +23,10 @@ final class StoryBasicShareUtils$2
     localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
     localIntent.setType("image/*");
     localIntent.setFlags(268435456);
-    localIntent.putExtra("android.intent.extra.TEXT", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.a + this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.c);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.a);
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.c);
+    localIntent.putExtra("android.intent.extra.TEXT", localStringBuilder.toString());
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d)) {
       localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d)));
     }
@@ -34,7 +37,7 @@ final class StoryBasicShareUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryBasicShareUtils.2
  * JD-Core Version:    0.7.0.1
  */

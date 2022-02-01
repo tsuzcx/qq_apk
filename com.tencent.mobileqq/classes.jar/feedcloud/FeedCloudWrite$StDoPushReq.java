@@ -21,13 +21,14 @@ public final class FeedCloudWrite$StDoPushReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 50, 56 }, new String[] { "extInfo", "feed", "comboCount", "push", "from", "busiReqData", "pushType" }, new Object[] { null, null, Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, StDoPushReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 50, 56 }, new String[] { "extInfo", "feed", "comboCount", "push", "from", "busiReqData", "pushType" }, new Object[] { null, null, localInteger, null, localInteger, localByteStringMicro, localInteger }, StDoPushReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudWrite.StDoPushReq
  * JD-Core Version:    0.7.0.1
  */

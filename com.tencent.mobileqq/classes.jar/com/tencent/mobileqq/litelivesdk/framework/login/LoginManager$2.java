@@ -50,26 +50,26 @@ class LoginManager$2
           ((Bundle)localObject).putString("Key_ErrMsg", paramString);
           QIPCClientHelper.getInstance().getClient().callServer("LiteSDKServerModuleName", "Action_Server_OnLoginFailed", (Bundle)localObject);
         }
+        return;
       }
-    }
-    do
-    {
-      return;
       this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.a();
       return;
-      localObject = (List)this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.jdField_a_of_type_JavaUtilMap.get(BusinessManager.a.a().a);
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((ILiveLoginTicketListener)((Iterator)localObject).next()).a(paramInt, paramString);
-        }
+    }
+    Object localObject = (List)this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.jdField_a_of_type_JavaUtilMap.get(BusinessManager.a.a().a);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((ILiveLoginTicketListener)((Iterator)localObject).next()).a(paramInt, paramString);
       }
-    } while (!LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager));
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("Key_ErrCode", paramInt);
-    ((Bundle)localObject).putString("Key_ErrMsg", paramString);
-    QIPCClientHelper.getInstance().getClient().callServer("LiteSDKServerModuleName", "Action_Server_OnLoginFailed", (Bundle)localObject);
+    }
+    if (LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager))
+    {
+      localObject = new Bundle();
+      ((Bundle)localObject).putInt("Key_ErrCode", paramInt);
+      ((Bundle)localObject).putString("Key_ErrMsg", paramString);
+      QIPCClientHelper.getInstance().getClient().callServer("LiteSDKServerModuleName", "Action_Server_OnLoginFailed", (Bundle)localObject);
+    }
   }
   
   public void onSucceed(LoginInfo paramLoginInfo)
@@ -78,7 +78,11 @@ class LoginManager$2
     if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.jdField_a_of_type_Int != 0) {
       this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager.jdField_a_of_type_Int = 0;
     }
-    LogFactory.a().c("LoginManager", "loginToLiveSDK onSucceed --loginInfo=" + paramLoginInfo);
+    LogInterface localLogInterface = LogFactory.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loginToLiveSDK onSucceed --loginInfo=");
+    localStringBuilder.append(paramLoginInfo);
+    localLogInterface.c("LoginManager", localStringBuilder.toString());
     paramLoginInfo = LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager, paramLoginInfo);
     LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager, paramLoginInfo);
     LoginManager.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkFrameworkLoginLoginManager, paramLoginInfo);
@@ -86,7 +90,7 @@ class LoginManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.login.LoginManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,15 @@ class MultiVideoEnterPageActivity$9
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.a.h = paramInt1;
-    this.a.i = paramInt2;
-    this.a.d(10);
+    MultiVideoEnterPageActivity localMultiVideoEnterPageActivity = this.a;
+    localMultiVideoEnterPageActivity.h = paramInt1;
+    localMultiVideoEnterPageActivity.i = paramInt2;
+    localMultiVideoEnterPageActivity.d(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoEnterPageActivity.9
  * JD-Core Version:    0.7.0.1
  */

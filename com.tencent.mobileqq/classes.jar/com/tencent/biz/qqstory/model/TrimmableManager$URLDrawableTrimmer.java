@@ -7,18 +7,18 @@ public class TrimmableManager$URLDrawableTrimmer
 {
   public void a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 0: 
-    default: 
-      return;
+      if ((paramInt != 1) && (paramInt != 2)) {
+        return;
+      }
+      URLDrawable.clearMemoryCache();
     }
-    URLDrawable.clearMemoryCache();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TrimmableManager.URLDrawableTrimmer
  * JD-Core Version:    0.7.0.1
  */

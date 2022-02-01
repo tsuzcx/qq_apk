@@ -24,12 +24,13 @@ public class RequestServer
   
   public RequestServer()
   {
-    if ((QUAUtil.isAlienApp()) || (QUAUtil.isDemoApp())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.useHttpDirectly = bool;
-      return;
+    boolean bool;
+    if ((!QUAUtil.isAlienApp()) && (!QUAUtil.isDemoApp())) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    this.useHttpDirectly = bool;
   }
   
   private byte[] encodeRequest(ProtoBufRequest paramProtoBufRequest)
@@ -48,51 +49,55 @@ public class RequestServer
   
   public static RequestServer getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new RequestServer();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new RequestServer();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private void handleRequest(ProtoBufRequest paramProtoBufRequest, AsyncResult paramAsyncResult)
   {
-    byte[] arrayOfByte;
     try
     {
-      arrayOfByte = paramProtoBufRequest.encode();
-      QMLog.w("RequestServer", "sendData " + paramProtoBufRequest);
+      byte[] arrayOfByte = paramProtoBufRequest.encode();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendData ");
+      localStringBuilder.append(paramProtoBufRequest);
+      QMLog.w("RequestServer", localStringBuilder.toString());
       if (this.useHttpDirectly)
       {
         sendDataByHttpServer(paramProtoBufRequest, paramAsyncResult, arrayOfByte);
         return;
       }
+      sendRequestByMsf(paramProtoBufRequest, paramAsyncResult, arrayOfByte);
+      return;
     }
     catch (Exception paramProtoBufRequest)
     {
-      do
-      {
-        QMLog.e("RequestServer", "handleRequest Exception", paramProtoBufRequest);
-      } while (paramAsyncResult == null);
-      paramProtoBufRequest = new JSONObject();
+      QMLog.e("RequestServer", "handleRequest Exception", paramProtoBufRequest);
+      if (paramAsyncResult == null) {
+        break label108;
+      }
     }
+    paramProtoBufRequest = new JSONObject();
     try
     {
       paramProtoBufRequest.put("retCode", -1);
       paramProtoBufRequest.put("errMsg", "数据编码错误");
-      label82:
+      label100:
       paramAsyncResult.onReceiveResult(false, paramProtoBufRequest);
-      return;
-      sendRequestByMsf(paramProtoBufRequest, paramAsyncResult, arrayOfByte);
+      label108:
       return;
     }
     catch (Throwable localThrowable)
     {
-      break label82;
+      break label100;
     }
   }
   
@@ -153,7 +158,7 @@ public class RequestServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.RequestServer
  * JD-Core Version:    0.7.0.1
  */

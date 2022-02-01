@@ -17,39 +17,41 @@ public class UniteDownloadIPCModule$UniteDownloadIPCListenerWrapper
   
   public void a(int paramInt)
   {
-    boolean bool = false;
     if (QLog.isColorLevel())
     {
+      boolean bool = false;
       if (this.a == null) {
         bool = true;
       }
       QLog.d("[UniteDownload] UniteDownloadIPCModule", 1, new Object[] { "listener is null: ", Boolean.valueOf(bool) });
     }
-    if (this.a != null) {
-      this.a.a(paramInt);
+    UniteDownloadUtil.DownloadDialogListener localDownloadDialogListener = this.a;
+    if (localDownloadDialogListener != null) {
+      localDownloadDialogListener.a(paramInt);
     }
   }
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 2;
-    if (QLog.isColorLevel()) {
+    if (bool) {
       QLog.d("[UniteDownload] UniteDownloadIPCModule", 1, new Object[] { "IPC onCallBack: ", Integer.valueOf(paramEIPCResult.code) });
     }
-    if ((paramEIPCResult != null) && (paramEIPCResult.code == 0)) {}
-    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = null)
-    {
-      if (paramEIPCResult != null) {
-        i = paramEIPCResult.getInt("result");
-      }
-      a(i);
-      return;
+    if ((paramEIPCResult != null) && (paramEIPCResult.code == 0)) {
+      paramEIPCResult = paramEIPCResult.data;
+    } else {
+      paramEIPCResult = null;
     }
+    if (paramEIPCResult != null) {
+      i = paramEIPCResult.getInt("result");
+    }
+    a(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.util.UniteDownloadIPCModule.UniteDownloadIPCListenerWrapper
  * JD-Core Version:    0.7.0.1
  */

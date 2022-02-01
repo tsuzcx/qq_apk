@@ -11,11 +11,11 @@ import com.tencent.mobileqq.filemanager.fileviewer.sendbar.QlinkSendBarManager;
 public class QFileCustomBottomBarManager
 {
   public static final int[] a;
-  public Context a;
+  protected Context a;
   protected Bundle a;
   protected QQAppInterface a;
   protected QFileSendBottomView a;
-  public boolean a;
+  protected boolean a;
   
   static
   {
@@ -35,35 +35,31 @@ public class QFileCustomBottomBarManager
     paramBundle.getInt("qfile_search_param_exparams_peer_type");
     if (i == 1) {
       paramQQAppInterface = new QlinkSendBarManager(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+    } else if (i == 5) {
+      paramQQAppInterface = new PrinterSendBarManager(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+    } else {
+      paramQQAppInterface = new QFileSendBarManager(paramQQAppInterface, paramContext, paramQFileSendBottomView);
     }
-    for (;;)
-    {
-      paramQQAppInterface.a(paramBundle);
-      return paramQQAppInterface;
-      if (i == 5) {
-        paramQQAppInterface = new PrinterSendBarManager(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-      } else {
-        paramQQAppInterface = new QFileSendBarManager(paramQQAppInterface, paramContext, paramQFileSendBottomView);
-      }
-    }
+    paramQQAppInterface.a(paramBundle);
+    return paramQQAppInterface;
   }
   
   public void a() {}
   
   protected void a(int paramInt, Intent paramIntent)
   {
-    if (paramIntent != null) {}
-    for (paramIntent = new Intent(paramIntent);; paramIntent = new Intent())
-    {
-      paramIntent.putExtra("qfile_send_bottom_bar_finish_result_code", -1);
-      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-      localActivity.setResult(paramInt, paramIntent);
-      localActivity.finish();
-      return;
+    if (paramIntent != null) {
+      paramIntent = new Intent(paramIntent);
+    } else {
+      paramIntent = new Intent();
     }
+    paramIntent.putExtra("qfile_send_bottom_bar_finish_result_code", -1);
+    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+    localActivity.setResult(paramInt, paramIntent);
+    localActivity.finish();
   }
   
-  public void a(Intent paramIntent)
+  protected void a(Intent paramIntent)
   {
     a(-1, paramIntent);
   }
@@ -83,7 +79,7 @@ public class QFileCustomBottomBarManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileCustomBottomBarManager
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,15 @@ class WebViewDownloadListener$1$1
   
   public void a(String paramString)
   {
-    LogUtility.a("WebViewDownloadListener", "[onReceiveValue]:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onReceiveValue]:");
+    localStringBuilder.append(paramString);
+    LogUtility.a("WebViewDownloadListener", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.WebViewDownloadListener.1.1
  * JD-Core Version:    0.7.0.1
  */

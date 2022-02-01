@@ -82,19 +82,24 @@ public abstract class AsyncTask<Params, Progress, Result>
   
   public final AsyncTask<Params, Progress, Result> executeOnExecutor(Executor paramExecutor, Params... paramVarArgs)
   {
-    if (this.d != AsyncTask.d.a) {}
-    switch (AsyncTask.4.a[this.d.ordinal()])
+    if (this.d != AsyncTask.d.a)
     {
-    default: 
-      this.d = AsyncTask.d.b;
-      onPreExecute();
-      this.b.b = paramVarArgs;
-      paramExecutor.execute(this.c);
-      return this;
-    case 1: 
-      throw new IllegalStateException("Cannot execute task: the task is already running.");
+      int i = AsyncTask.4.a[this.d.ordinal()];
+      if (i != 1)
+      {
+        if (i == 2) {
+          throw new IllegalStateException("Cannot execute task: the task has already been executed (a task can be executed only once)");
+        }
+      }
+      else {
+        throw new IllegalStateException("Cannot execute task: the task is already running.");
+      }
     }
-    throw new IllegalStateException("Cannot execute task: the task has already been executed (a task can be executed only once)");
+    this.d = AsyncTask.d.b;
+    onPreExecute();
+    this.b.b = paramVarArgs;
+    paramExecutor.execute(this.c);
+    return this;
   }
   
   public final Result get()
@@ -139,7 +144,7 @@ public abstract class AsyncTask<Params, Progress, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.lib.thread.AsyncTask
  * JD-Core Version:    0.7.0.1
  */

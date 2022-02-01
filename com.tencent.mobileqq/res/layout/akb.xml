@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include layout="@layout/is" />
     <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/akd" />
-    <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" layout="@layout/csq" />
+    <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" layout="@layout/csm" />
     <TextView android:textSize="16.0dip" android:textColor="@color/k8" android:id="@id/g3d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="15.0dip" />
     <TextView android:textSize="12.0dip" android:textColor="@color/k8" android:layout_gravity="left" android:id="@id/kcu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="15.0dip" android:singleLine="true" android:includeFontPadding="false" />
     <LinearLayout android:gravity="bottom|center|right" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">

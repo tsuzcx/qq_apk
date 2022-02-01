@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.colornote.data;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
@@ -14,13 +12,11 @@ public class ColorNoteRecentConfigProcessor
     return (ColorNoteRecentConfBean)QConfigManager.a().a(586);
   }
   
-  @NonNull
   public ColorNoteRecentConfBean a(int paramInt)
   {
     return new ColorNoteRecentConfBean();
   }
   
-  @Nullable
   public ColorNoteRecentConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
@@ -60,7 +56,7 @@ public class ColorNoteRecentConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.ColorNoteRecentConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -41,44 +41,41 @@ public class PrinterSubOptionActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager != null)
     {
-      int j = 0;
-      int k = 0;
       this.b.clear();
       List localList = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager.a();
       int i1 = localList.size();
-      int i = 0;
-      if (i < i1)
+      int j = 0;
+      int k = 0;
+      int n;
+      for (int i = 0; j < i1; i = n)
       {
-        PrinterEntity localPrinterEntity = (PrinterEntity)localList.get(i);
-        int n;
+        PrinterEntity localPrinterEntity = (PrinterEntity)localList.get(j);
         int m;
-        if ((localPrinterEntity.jdField_a_of_type_Int == 1) && (j == 0))
+        if ((localPrinterEntity.jdField_a_of_type_Int == 1) && (k == 0))
         {
           this.b.add(new PrinterSubOptionActivity.CloudPrinter(this, 1, 0L, "PC绑定的打印机"));
-          n = 1;
-          m = k;
+          m = 1;
+          n = i;
         }
-        for (;;)
+        else
         {
-          this.b.add(new PrinterSubOptionActivity.CloudPrinter(this, 2, localPrinterEntity.jdField_a_of_type_Long, localPrinterEntity.jdField_a_of_type_JavaLangString));
-          i += 1;
-          k = m;
-          j = n;
-          break;
           m = k;
-          n = j;
+          n = i;
           if (localPrinterEntity.jdField_a_of_type_Int == 2)
           {
             m = k;
-            n = j;
-            if (k == 0)
+            n = i;
+            if (i == 0)
             {
               this.b.add(new PrinterSubOptionActivity.CloudPrinter(this, 1, 0L, "QQ物联打印机"));
-              m = 1;
-              n = j;
+              n = 1;
+              m = k;
             }
           }
         }
+        this.b.add(new PrinterSubOptionActivity.CloudPrinter(this, 2, localPrinterEntity.jdField_a_of_type_Long, localPrinterEntity.jdField_a_of_type_JavaLangString));
+        j += 1;
+        k = m;
       }
       this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity$PrinterItemAdapter.notifyDataSetChanged();
     }
@@ -93,48 +90,48 @@ public class PrinterSubOptionActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this);
     this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler = ((DataLineHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER));
     this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.jdField_a_of_type_JavaUtilList = null;
-    getWindow().setBackgroundDrawableResource(2131165443);
-    setContentView(2131559129);
-    setTitle(2131691446);
+    getWindow().setBackgroundDrawableResource(2131165419);
+    setContentView(2131559023);
+    setTitle(2131691368);
     getWindow().setBackgroundDrawable(null);
     this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity$PrinterItemAdapter = new PrinterSubOptionActivity.PrinterItemAdapter(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131373483));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361807, "n/a");
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131373058));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361813, "n/a");
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity$PrinterItemAdapter);
     if (!this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager.a())
     {
-      paramBundle = findViewById(2131366334);
+      paramBundle = findViewById(2131366222);
       paramBundle.setVisibility(0);
-      paramBundle.setContentDescription(HardCodeUtil.a(2131708409));
-      ((TextView)findViewById(2131379689)).setText(getString(2131691438));
-      ((TextView)findViewById(2131363852)).setText(getString(2131691437));
+      paramBundle.setContentDescription(HardCodeUtil.a(2131708415));
+      ((TextView)findViewById(2131379031)).setText(getString(2131691360));
+      ((TextView)findViewById(2131363780)).setText(getString(2131691359));
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
-    for (;;)
+    else
     {
-      setLeftViewName(2131690778);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361807, "n/a");
-      return true;
       a();
       this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager.a(this.jdField_a_of_type_ComDatalineDataPrinterManager$PrinterUpdateObserver);
     }
+    setLeftViewName(2131690706);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setTag(2131361813, "n/a");
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComDatalineDataPrinterManager.a();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_JavaLangString = getString(2131691439);
+    this.jdField_a_of_type_JavaLangString = getString(2131691361);
     this.b.clear();
     a();
     PrinterStatusHandler localPrinterStatusHandler = (PrinterStatusHandler)this.app.getBusinessHandler(BusinessHandlerFactory.PRINTER_STATUS_HANDLER);
@@ -142,7 +139,7 @@ public class PrinterSubOptionActivity
     localPrinterStatusHandler.a();
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     setResult(-1, new Intent());
     finish();
@@ -160,7 +157,7 @@ public class PrinterSubOptionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.PrinterSubOptionActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,10 @@ class LoaderManagerImpl$LoaderViewModel
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.println("Loaders:");
-      String str = paramString + "    ";
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("    ");
+      localObject = ((StringBuilder)localObject).toString();
       int i = 0;
       while (i < this.mLoaders.size())
       {
@@ -38,7 +41,7 @@ class LoaderManagerImpl$LoaderViewModel
         paramPrintWriter.print(this.mLoaders.keyAt(i));
         paramPrintWriter.print(": ");
         paramPrintWriter.println(localLoaderInfo.toString());
-        localLoaderInfo.dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+        localLoaderInfo.dump((String)localObject, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
         i += 1;
       }
     }
@@ -84,7 +87,7 @@ class LoaderManagerImpl$LoaderViewModel
     }
   }
   
-  public void onCleared()
+  protected void onCleared()
   {
     super.onCleared();
     int j = this.mLoaders.size();
@@ -114,7 +117,7 @@ class LoaderManagerImpl$LoaderViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.loader.app.LoaderManagerImpl.LoaderViewModel
  * JD-Core Version:    0.7.0.1
  */

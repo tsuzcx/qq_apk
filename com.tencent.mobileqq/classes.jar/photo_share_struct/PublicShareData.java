@@ -32,23 +32,27 @@ public final class PublicShareData
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cover != null) {
-      paramJceOutputStream.write(this.cover, 0);
+    String str = this.cover;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 1);
+    str = this.desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.h5url != null) {
-      paramJceOutputStream.write(this.h5url, 2);
+    str = this.h5url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.schema != null) {
-      paramJceOutputStream.write(this.schema, 3);
+    str = this.schema;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     photo_share_struct.PublicShareData
  * JD-Core Version:    0.7.0.1
  */

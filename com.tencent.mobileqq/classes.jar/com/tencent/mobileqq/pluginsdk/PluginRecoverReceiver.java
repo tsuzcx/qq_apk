@@ -47,18 +47,20 @@ public class PluginRecoverReceiver
     boolean bool = TextUtils.equals(paramApplication.getPackageName(), str);
     if (bool) {
       localIntentFilter.setPriority(50);
-    }
-    for (;;)
-    {
-      paramPluginRecoverReceiver.isMobileQQProcess = bool;
-      paramPluginRecoverReceiver.processName = str;
-      try
-      {
-        paramApplication.registerReceiver(paramPluginRecoverReceiver, localIntentFilter);
-        return paramPluginRecoverReceiver;
-      }
-      catch (Exception paramApplication) {}
+    } else {
       localIntentFilter.setPriority(100);
+    }
+    paramPluginRecoverReceiver.isMobileQQProcess = bool;
+    paramPluginRecoverReceiver.processName = str;
+    try
+    {
+      paramApplication.registerReceiver(paramPluginRecoverReceiver, localIntentFilter);
+      return paramPluginRecoverReceiver;
+    }
+    catch (Exception paramApplication)
+    {
+      label65:
+      break label65;
     }
     return null;
   }
@@ -68,33 +70,43 @@ public class PluginRecoverReceiver
     if (("com.tencent.mobileqq.ACTION_PLUGIN_STARUP_FAILED".equals(paramIntent.getAction())) && (TextUtils.equals(paramContext.getPackageName(), paramIntent.getPackage())))
     {
       paramContext = paramIntent.getStringExtra("pluginId");
-      QLog.d("PluginRecoverReceiver", 1, "onReceive =  pluginID = " + paramContext + ", isQQMobileProcess = " + this.isMobileQQProcess + ", processName = " + this.processName);
-      if (!this.isMobileQQProcess) {
-        break label107;
+      paramIntent = new StringBuilder();
+      paramIntent.append("onReceive =  pluginID = ");
+      paramIntent.append(paramContext);
+      paramIntent.append(", isQQMobileProcess = ");
+      paramIntent.append(this.isMobileQQProcess);
+      paramIntent.append(", processName = ");
+      paramIntent.append(this.processName);
+      QLog.d("PluginRecoverReceiver", 1, paramIntent.toString());
+      if (this.isMobileQQProcess)
+      {
+        if (!sCarePluginIds.contains(paramContext)) {
+          onRecver(paramContext);
+        }
       }
-      if (!sCarePluginIds.contains(paramContext)) {
-        onRecver(paramContext);
+      else if (sCarePluginIds.contains(paramContext))
+      {
+        paramIntent = PluginRuntime.getRuntime();
+        if ((paramIntent != null) && (paramIntent.getRunningModuleSize() > 1))
+        {
+          onRecver(paramContext);
+          return;
+        }
+        paramIntent = new StringBuilder();
+        paramIntent.append("kill Process =  pluginID = ");
+        paramIntent.append(paramContext);
+        paramIntent.append(", ");
+        QLog.d("PluginRecoverReceiver", 1, paramIntent.toString());
+        Process.killProcess(Process.myPid());
       }
     }
-    label107:
-    while (!sCarePluginIds.contains(paramContext)) {
-      return;
-    }
-    paramIntent = PluginRuntime.getRuntime();
-    if ((paramIntent != null) && (paramIntent.getRunningModuleSize() > 1))
-    {
-      onRecver(paramContext);
-      return;
-    }
-    QLog.d("PluginRecoverReceiver", 1, "kill Process =  pluginID = " + paramContext + ", ");
-    Process.killProcess(Process.myPid());
   }
   
   protected void onRecver(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver
  * JD-Core Version:    0.7.0.1
  */

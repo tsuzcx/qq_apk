@@ -65,12 +65,22 @@ public class WTSyncPlayInfo
   
   public String toString()
   {
-    return "WTSyncPlayInfo[playState: " + this.jdField_a_of_type_Int + ", playTimeMills[" + this.jdField_a_of_type_Long + ", playRate:" + this.jdField_a_of_type_Float + ", syncTimeMills:" + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WTSyncPlayInfo[playState: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", playTimeMills[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", playRate:");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", syncTimeMills:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.data.WTSyncPlayInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -58,172 +58,346 @@ class f$e
   public String toString()
   {
     Object localObject1;
-    label79:
     Object localObject3;
-    label110:
-    Object localObject4;
     if ((this.b == f.e.a.a) && (this.c.isEmpty()))
     {
       localObject1 = this.b;
       localObject1 = f.e.a.a.toString();
-      if ((this.r != 5) && (this.r != 6)) {
-        break label374;
+    }
+    else
+    {
+      localObject1 = this.c;
+      if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
+      {
+        localObject2 = this.c.entrySet().iterator();
+        for (localObject1 = ""; ((Iterator)localObject2).hasNext(); localObject1 = ((StringBuilder)localObject4).toString())
+        {
+          localObject4 = (Map.Entry)((Iterator)localObject2).next();
+          localObject3 = (f.e.a)((Map.Entry)localObject4).getKey();
+          i1 = ((Integer)((Map.Entry)localObject4).getValue()).intValue();
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append((String)localObject1);
+          ((StringBuilder)localObject4).append(((f.e.a)localObject3).toString());
+          ((StringBuilder)localObject4).append(":");
+          ((StringBuilder)localObject4).append(i1);
+          ((StringBuilder)localObject4).append(";");
+        }
       }
-      if (this.K != null) {
-        break label343;
+      else
+      {
+        localObject1 = this.b;
+        localObject1 = f.e.a.b.toString();
       }
-      localObject2 = "0|" + "0.0.0.0|";
-      if (this.C != null)
+    }
+    int i1 = this.r;
+    if ((i1 != 5) && (i1 != 6))
+    {
+      if (this.d == null)
+      {
+        localObject2 = "0.0.0.0|";
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.d.getHostAddress());
+        ((StringBuilder)localObject2).append("|");
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      if (this.e == null)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append("0.0.0.0|");
+        localObject2 = ((StringBuilder)localObject3).toString();
+      }
+      else
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append(this.e.getHostAddress());
+        ((StringBuilder)localObject3).append("|");
+        localObject2 = ((StringBuilder)localObject3).toString();
+      }
+      localObject4 = this.C;
+      if (localObject4 != null)
       {
         localObject3 = localObject2;
-        if (!this.C.isEmpty()) {}
+        if (!((String)localObject4).isEmpty()) {}
+      }
+      else
+      {
+        localObject3 = this.e;
+        if (localObject3 == null)
+        {
+          this.C = "0.0.0.0";
+          localObject3 = localObject2;
+        }
+        else
+        {
+          this.C = ((InetAddress)localObject3).getHostAddress();
+          localObject3 = localObject2;
+        }
+      }
+    }
+    else
+    {
+      if (this.K == null)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("0|");
+        ((StringBuilder)localObject2).append("0.0.0.0|");
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("0|");
+        ((StringBuilder)localObject2).append(this.K);
+        ((StringBuilder)localObject2).append("|");
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      localObject4 = this.C;
+      if (localObject4 != null)
+      {
+        localObject3 = localObject2;
+        if (!((String)localObject4).isEmpty()) {}
       }
       else
       {
         this.C = this.K;
         localObject3 = localObject2;
       }
-      localObject2 = "";
-      localObject4 = localObject2;
-      if (this.y == null) {
-        break label558;
-      }
-      localObject4 = localObject2;
-      if (this.y.size() == 0) {
-        break label558;
-      }
-      i1 = 0;
-      label138:
-      localObject4 = localObject2;
-      if (i1 >= this.y.size()) {
-        break label558;
-      }
-      if (i1 == this.y.size() - 1) {
-        break label529;
-      }
     }
-    label384:
-    label512:
-    label529:
-    for (Object localObject2 = (String)localObject2 + this.y.get(i1) + ",";; localObject2 = (String)localObject2 + this.y.get(i1))
+    Object localObject2 = this.y;
+    int i2 = 0;
+    if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
     {
-      i1 += 1;
-      break label138;
-      if ((this.c == null) || (this.c.isEmpty()))
+      localObject2 = "";
+      i1 = 0;
+      for (;;)
       {
-        localObject1 = this.b;
-        localObject1 = f.e.a.b.toString();
-        break;
-      }
-      localObject3 = this.c.entrySet().iterator();
-      for (localObject2 = "";; localObject2 = (String)localObject2 + ((f.e.a)localObject4).toString() + ":" + i1 + ";")
-      {
-        localObject1 = localObject2;
-        if (!((Iterator)localObject3).hasNext()) {
+        localObject4 = localObject2;
+        if (i1 >= this.y.size()) {
           break;
         }
-        localObject1 = (Map.Entry)((Iterator)localObject3).next();
-        localObject4 = (f.e.a)((Map.Entry)localObject1).getKey();
-        i1 = ((Integer)((Map.Entry)localObject1).getValue()).intValue();
-      }
-      label343:
-      localObject2 = "0|" + this.K + "|";
-      break label79;
-      label374:
-      if (this.d == null)
-      {
-        localObject2 = "0.0.0.0|";
-        if (this.e != null) {
-          break label479;
-        }
-      }
-      label479:
-      for (localObject2 = (String)localObject2 + "0.0.0.0|";; localObject2 = (String)localObject2 + this.e.getHostAddress() + "|")
-      {
-        if (this.C != null)
+        if (i1 != this.y.size() - 1)
         {
-          localObject3 = localObject2;
-          if (!this.C.isEmpty()) {
-            break;
-          }
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append((String)localObject2);
+          ((StringBuilder)localObject4).append(this.y.get(i1));
+          ((StringBuilder)localObject4).append(",");
+          localObject2 = ((StringBuilder)localObject4).toString();
         }
-        if (this.e != null) {
-          break label512;
-        }
-        this.C = "0.0.0.0";
-        localObject3 = localObject2;
-        break;
-        localObject2 = this.d.getHostAddress() + "|";
-        break label384;
-      }
-      this.C = this.e.getHostAddress();
-      localObject3 = localObject2;
-      break label110;
-    }
-    label558:
-    localObject2 = "";
-    Object localObject5 = localObject2;
-    if (this.u != null)
-    {
-      localObject5 = localObject2;
-      if (this.u.size() != 0)
-      {
-        i1 = 0;
-        localObject5 = localObject2;
-        if (i1 < this.u.size())
+        else
         {
-          if (i1 != this.u.size() - 1) {}
-          for (localObject2 = (String)localObject2 + this.u.get(i1) + ",";; localObject2 = (String)localObject2 + this.u.get(i1))
-          {
-            i1 += 1;
-            break;
-          }
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append((String)localObject2);
+          ((StringBuilder)localObject4).append(this.y.get(i1));
+          localObject2 = ((StringBuilder)localObject4).toString();
         }
+        i1 += 1;
       }
     }
-    if (this.x) {}
-    for (String str1 = this.A; this.a == f.e.b.a; str1 = "false") {
-      return "" + (String)localObject1 + "|" + (String)localObject3 + this.f + "|" + this.L + "|" + this.M + "|" + this.N + "|" + this.O + "|" + this.P + "|" + this.Q + "|" + this.R + "|" + this.C + "|" + this.D + "|" + this.E + "|" + this.F + "|" + this.G + "|" + this.g + "|" + this.l + "|" + this.m + "|" + this.I.toString().replace("[", "").replace("]", "") + "|" + this.J.toString().replace("[", "").replace("]", "") + "|" + this.n + "|" + this.o + "|" + this.p + "|" + this.q + "|" + this.r + "|" + this.s + "|" + this.t + "|" + localObject5 + "|" + this.w + "|" + str1 + "|" + (String)localObject4 + "|" + this.z + "|" + this.h + "," + this.i + "," + this.j;
-    }
-    int i1 = Math.min(this.l, this.m);
-    String str2;
-    if (i1 > 0)
+    Object localObject4 = "";
+    localObject2 = this.u;
+    if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
     {
-      str2 = Integer.toString(this.k / i1);
-      String str3 = "";
-      localObject2 = str3;
-      if (this.v == null) {
-        break label1315;
-      }
-      localObject2 = str3;
-      if (this.v.size() == 0) {
-        break label1315;
-      }
       localObject2 = "";
       i1 = 0;
-      label1216:
-      if (i1 >= this.v.size()) {
-        break label1315;
-      }
-      if (i1 == this.v.size() - 1) {
-        break label1286;
+      for (;;)
+      {
+        localObject5 = localObject2;
+        if (i1 >= this.u.size()) {
+          break;
+        }
+        if (i1 != this.u.size() - 1)
+        {
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append((String)localObject2);
+          ((StringBuilder)localObject5).append(this.u.get(i1));
+          ((StringBuilder)localObject5).append(",");
+          localObject2 = ((StringBuilder)localObject5).toString();
+        }
+        else
+        {
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append((String)localObject2);
+          ((StringBuilder)localObject5).append(this.u.get(i1));
+          localObject2 = ((StringBuilder)localObject5).toString();
+        }
+        i1 += 1;
       }
     }
-    label1286:
-    for (localObject2 = (String)localObject2 + this.v.get(i1) + ",";; localObject2 = (String)localObject2 + this.v.get(i1))
+    Object localObject5 = "";
+    String str1;
+    if (this.x) {
+      str1 = this.A;
+    } else {
+      str1 = "false";
+    }
+    if (this.a == f.e.b.a)
     {
-      i1 += 1;
-      break label1216;
-      str2 = "0";
-      break;
+      localObject2 = new StringBuilder("");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append((String)localObject3);
+      ((StringBuilder)localObject2).append(this.f);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.L);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.M);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.N);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.O);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.P);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.Q);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.R);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.C);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.D);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.E);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.F);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.G);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.g);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.l);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.m);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.I.toString().replace("[", "").replace("]", ""));
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.J.toString().replace("[", "").replace("]", ""));
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.n);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.o);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.p);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.q);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.r);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.s);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.t);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append((String)localObject5);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.w);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(str1);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append((String)localObject4);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.z);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(this.h);
+      ((StringBuilder)localObject2).append(",");
+      ((StringBuilder)localObject2).append(this.i);
+      ((StringBuilder)localObject2).append(",");
+      ((StringBuilder)localObject2).append(this.j);
+      return ((StringBuilder)localObject2).toString();
     }
-    label1315:
-    return "" + this.a + "|" + (String)localObject1 + "|" + (String)localObject3 + this.f + "|" + this.g + "|" + str2 + "|" + this.l + "|" + this.m + "|" + this.n + "|" + this.o + "|" + (String)localObject2 + "|" + this.p + "|" + this.q + "|" + this.r + "|" + this.s + "|" + this.t + "|" + localObject5 + "|" + this.w + "|" + str1 + "|" + (String)localObject4 + "|" + this.z + "|" + this.h + "," + this.i + "," + this.j;
+    i1 = Math.min(this.l, this.m);
+    String str2;
+    if (i1 > 0) {
+      str2 = Integer.toString(this.k / i1);
+    } else {
+      str2 = "0";
+    }
+    localObject2 = this.v;
+    if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
+    {
+      localObject2 = "";
+      i1 = i2;
+      for (;;)
+      {
+        localObject6 = localObject2;
+        if (i1 >= this.v.size()) {
+          break;
+        }
+        if (i1 != this.v.size() - 1)
+        {
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append((String)localObject2);
+          ((StringBuilder)localObject6).append(this.v.get(i1));
+          ((StringBuilder)localObject6).append(",");
+          localObject2 = ((StringBuilder)localObject6).toString();
+        }
+        else
+        {
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append((String)localObject2);
+          ((StringBuilder)localObject6).append(this.v.get(i1));
+          localObject2 = ((StringBuilder)localObject6).toString();
+        }
+        i1 += 1;
+      }
+    }
+    Object localObject6 = "";
+    localObject2 = new StringBuilder("");
+    ((StringBuilder)localObject2).append(this.a);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append((String)localObject3);
+    ((StringBuilder)localObject2).append(this.f);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.g);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(str2);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.l);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.m);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.n);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.o);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append((String)localObject6);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.p);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.q);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.r);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.s);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.t);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append((String)localObject5);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.w);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(str1);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append((String)localObject4);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.z);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(this.h);
+    ((StringBuilder)localObject2).append(",");
+    ((StringBuilder)localObject2).append(this.i);
+    ((StringBuilder)localObject2).append(",");
+    ((StringBuilder)localObject2).append(this.j);
+    return ((StringBuilder)localObject2).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.c.f.e
  * JD-Core Version:    0.7.0.1
  */

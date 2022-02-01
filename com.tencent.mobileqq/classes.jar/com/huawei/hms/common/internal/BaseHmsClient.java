@@ -3,6 +3,7 @@ package com.huawei.hms.common.internal;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
+import android.text.TextUtils;
 import com.huawei.hms.adapter.AvailableAdapter;
 import com.huawei.hms.adapter.BinderAdapter;
 import com.huawei.hms.api.ConnectionResult;
@@ -12,7 +13,6 @@ import com.huawei.hms.core.aidl.d;
 import com.huawei.hms.support.api.client.AidlApiClient;
 import com.huawei.hms.support.api.client.SubAppInfo;
 import com.huawei.hms.support.log.HMSLog;
-import com.huawei.hms.utils.HMSPackageManager;
 import com.huawei.hms.utils.Util;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -20,47 +20,167 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class BaseHmsClient
   implements AidlApiClient
 {
-  private static final Object a = new Object();
-  private int b = 0;
-  private final Context c;
-  private String d;
-  private final ClientSettings e;
-  private volatile d f;
-  private final AtomicInteger g = new AtomicInteger(1);
-  private final BaseHmsClient.ConnectionCallbacks h;
-  private final BaseHmsClient.OnConnectionFailedListener i;
-  private Handler j = null;
-  private BinderAdapter k;
+  private static final int BINDING = 5;
+  private static final int CONNECTED = 3;
+  private static final int DISCONNECTED = 1;
+  private static final int DISCONNECTING = 4;
+  private static final Object LOCK_CONNECT_TIMEOUT_HANDLER = new Object();
+  private static final int MSG_CONN_TIMEOUT = 2;
+  private static final String TAG = "BaseHmsClient";
+  private String mAppID;
+  private BinderAdapter mBinderAdapter;
+  private final ClientSettings mClientSettings;
+  private final AtomicInteger mConnStatus = new AtomicInteger(1);
+  private Handler mConnectTimeoutHandler = null;
+  private final BaseHmsClient.ConnectionCallbacks mConnectionCallbacks;
+  private final BaseHmsClient.OnConnectionFailedListener mConnectionFailedListener;
+  private final Context mContext;
+  private volatile d mService;
   protected String sessionId;
   
   public BaseHmsClient(Context paramContext, ClientSettings paramClientSettings, BaseHmsClient.OnConnectionFailedListener paramOnConnectionFailedListener, BaseHmsClient.ConnectionCallbacks paramConnectionCallbacks)
   {
-    this.c = paramContext;
-    this.e = paramClientSettings;
-    this.d = this.e.getAppID();
-    this.i = paramOnConnectionFailedListener;
-    this.h = paramConnectionCallbacks;
+    this.mContext = paramContext;
+    this.mClientSettings = paramClientSettings;
+    this.mAppID = this.mClientSettings.getAppID();
+    this.mConnectionFailedListener = paramOnConnectionFailedListener;
+    this.mConnectionCallbacks = paramConnectionCallbacks;
   }
   
-  private void a()
+  private void bindCoreService()
   {
-    HMSLog.i("BaseHmsClient", "enter bindCoreService");
-    String str = HMSPackageManager.getInstance(this.c).getHMSPackageName();
-    this.k = new BinderAdapter(this.c, getServiceAction(), str);
-    this.k.binder(new BaseHmsClient.1(this));
+    String str2 = this.mClientSettings.getInnerHmsPkg();
+    Object localObject2 = getServiceAction();
+    Object localObject1 = localObject2;
+    if (str2.equalsIgnoreCase(this.mContext.getPackageName()))
+    {
+      String str1 = Util.getServiceActionMetadata(this.mContext);
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(str1)) {
+        localObject1 = str1;
+      }
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("enter bindCoreService, packageName is ");
+    ((StringBuilder)localObject2).append(str2);
+    ((StringBuilder)localObject2).append(", serviceAction is ");
+    ((StringBuilder)localObject2).append(localObject1);
+    HMSLog.i("BaseHmsClient", ((StringBuilder)localObject2).toString());
+    this.mBinderAdapter = new BinderAdapter(this.mContext, localObject1, str2);
+    this.mBinderAdapter.binder(new BaseHmsClient.1(this));
   }
   
-  private void a(int paramInt)
+  private void cancelConnDelayHandle()
   {
-    this.g.set(paramInt);
+    synchronized (LOCK_CONNECT_TIMEOUT_HANDLER)
+    {
+      if (this.mConnectTimeoutHandler != null)
+      {
+        this.mConnectTimeoutHandler.removeMessages(2);
+        this.mConnectTimeoutHandler = null;
+      }
+      return;
+    }
   }
   
-  private void a(AvailableAdapter paramAvailableAdapter)
+  private void checkAvailabilityAndConnect(int paramInt, boolean paramBoolean)
+  {
+    HMSLog.i("BaseHmsClient", "====== HMSSDK version: 50200300 ======");
+    int i = this.mConnStatus.get();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Enter connect, Connection Status: ");
+    ((StringBuilder)localObject).append(i);
+    HMSLog.i("BaseHmsClient", ((StringBuilder)localObject).toString());
+    if ((!paramBoolean) && ((i == 3) || (i == 5) || (i == 4))) {
+      return;
+    }
+    setConnectStatus(5);
+    i = paramInt;
+    if (getMinApkVersion() > paramInt) {
+      i = getMinApkVersion();
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("connect minVersion:");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(" packageName:");
+    ((StringBuilder)localObject).append(this.mClientSettings.getInnerHmsPkg());
+    HMSLog.i("BaseHmsClient", ((StringBuilder)localObject).toString());
+    if (this.mContext.getPackageName().equals(this.mClientSettings.getInnerHmsPkg()))
+    {
+      HMSLog.i("BaseHmsClient", "service packageName is same, bind core service return");
+      bindCoreService();
+      return;
+    }
+    if (Util.isAvailableLibExist(this.mContext))
+    {
+      localObject = new AvailableAdapter(i);
+      paramInt = ((AvailableAdapter)localObject).isHuaweiMobileServicesAvailable(this.mContext);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("check available result: ");
+      localStringBuilder.append(paramInt);
+      HMSLog.i("BaseHmsClient", localStringBuilder.toString());
+      if (paramInt == 0)
+      {
+        bindCoreService();
+        return;
+      }
+      if (((AvailableAdapter)localObject).isUserResolvableError(paramInt))
+      {
+        HMSLog.i("BaseHmsClient", "bindCoreService3.0 fail, start resolution now.");
+        resolution((AvailableAdapter)localObject, paramInt);
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("bindCoreService3.0 fail: ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" is not resolvable.");
+      HMSLog.i("BaseHmsClient", ((StringBuilder)localObject).toString());
+      notifyFailed(paramInt);
+      return;
+    }
+    paramInt = HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(this.mContext, i);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("HuaweiApiAvailability check available result: ");
+    ((StringBuilder)localObject).append(paramInt);
+    HMSLog.i("BaseHmsClient", ((StringBuilder)localObject).toString());
+    if (paramInt == 0)
+    {
+      bindCoreService();
+      return;
+    }
+    notifyFailed(paramInt);
+  }
+  
+  private void notifyFailed(int paramInt)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("notifyFailed result: ");
+    ((StringBuilder)localObject).append(paramInt);
+    HMSLog.i("BaseHmsClient", ((StringBuilder)localObject).toString());
+    localObject = this.mConnectionFailedListener;
+    if (localObject != null) {
+      ((BaseHmsClient.OnConnectionFailedListener)localObject).onConnectionFailed(new ConnectionResult(paramInt));
+    }
+  }
+  
+  private void notifyFailed(ConnectionResult paramConnectionResult)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("notifyFailed result: ");
+    ((StringBuilder)localObject).append(paramConnectionResult.getErrorCode());
+    HMSLog.i("BaseHmsClient", ((StringBuilder)localObject).toString());
+    localObject = this.mConnectionFailedListener;
+    if (localObject != null) {
+      ((BaseHmsClient.OnConnectionFailedListener)localObject).onConnectionFailed(paramConnectionResult);
+    }
+  }
+  
+  private void resolution(AvailableAdapter paramAvailableAdapter, int paramInt)
   {
     HMSLog.i("BaseHmsClient", "enter HmsCore resolution");
     if (!getClientSettings().isHasActivity())
     {
-      b(26);
+      notifyFailed(new ConnectionResult(26, HuaweiApiAvailability.getInstance().getErrPendingIntent(this.mContext, paramInt, 0)));
       return;
     }
     Activity localActivity = Util.getActiveActivity(getClientSettings().getCpActivity(), getContext());
@@ -69,147 +189,94 @@ public abstract class BaseHmsClient
       paramAvailableAdapter.startResolution(localActivity, new BaseHmsClient.2(this));
       return;
     }
-    b(26);
+    notifyFailed(26);
   }
   
-  private void a(ConnectionResult paramConnectionResult)
+  private void setConnectStatus(int paramInt)
   {
-    HMSLog.i("BaseHmsClient", "notifyFailed result: " + paramConnectionResult.getErrorCode());
-    if (this.i != null) {
-      this.i.onConnectionFailed(paramConnectionResult);
-    }
-  }
-  
-  private void b()
-  {
-    synchronized (a)
-    {
-      if (this.j != null)
-      {
-        this.j.removeMessages(2);
-        this.j = null;
-      }
-      return;
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    HMSLog.i("BaseHmsClient", "notifyFailed result: " + paramInt);
-    if (this.i != null) {
-      this.i.onConnectionFailed(new ConnectionResult(paramInt));
-    }
-  }
-  
-  public void checkAvailabilityAndConnect(int paramInt)
-  {
-    HMSLog.i("BaseHmsClient", "====== HMSSDK version: 50000301 ======");
-    int m = this.g.get();
-    HMSLog.i("BaseHmsClient", "Enter connect, Connection Status: " + m);
-    if ((m == 3) || (m == 5) || (m == 4)) {
-      return;
-    }
-    a(5);
-    m = paramInt;
-    if (getMinApkVersion() > paramInt) {
-      m = getMinApkVersion();
-    }
-    HMSLog.i("BaseHmsClient", "connect minVersion:" + m);
-    if (Util.isAvailableLibExist(this.c))
-    {
-      AvailableAdapter localAvailableAdapter = new AvailableAdapter(m);
-      paramInt = localAvailableAdapter.isHuaweiMobileServicesAvailable(this.c);
-      HMSLog.i("BaseHmsClient", "check available result: " + paramInt);
-      if (paramInt == 0)
-      {
-        a();
-        return;
-      }
-      if (localAvailableAdapter.isUserResolvableError(paramInt))
-      {
-        HMSLog.i("BaseHmsClient", "bindCoreService3.0 fail, start resolution now.");
-        a(localAvailableAdapter);
-        return;
-      }
-      HMSLog.i("BaseHmsClient", "bindCoreService3.0 fail: " + paramInt + " is not resolvable.");
-      b(paramInt);
-      return;
-    }
-    paramInt = HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(this.c, m);
-    HMSLog.i("BaseHmsClient", "HuaweiApiAvailability check available result: " + paramInt);
-    if (paramInt == 0)
-    {
-      a();
-      return;
-    }
-    b(paramInt);
+    this.mConnStatus.set(paramInt);
   }
   
   protected final void checkConnected()
   {
-    if (!isConnected()) {
-      throw new IllegalStateException("Not connected. Call connect() and wait for onConnected() to be called.");
+    if (isConnected()) {
+      return;
     }
+    throw new IllegalStateException("Not connected. Call connect() and wait for onConnected() to be called.");
   }
   
   public void connect(int paramInt)
   {
-    checkAvailabilityAndConnect(paramInt);
+    checkAvailabilityAndConnect(paramInt, false);
+  }
+  
+  public void connect(int paramInt, boolean paramBoolean)
+  {
+    checkAvailabilityAndConnect(paramInt, paramBoolean);
   }
   
   protected final void connectionConnected()
   {
-    a(3);
-    if (this.h != null) {
-      this.h.onConnected();
+    setConnectStatus(3);
+    BaseHmsClient.ConnectionCallbacks localConnectionCallbacks = this.mConnectionCallbacks;
+    if (localConnectionCallbacks != null) {
+      localConnectionCallbacks.onConnected();
     }
   }
   
   public void disconnect()
   {
-    int m = this.g.get();
-    HMSLog.i("BaseHmsClient", "Enter disconnect, Connection Status: " + m);
-    switch (m)
-    {
-    case 1: 
-    case 2: 
-    case 4: 
-    default: 
-      return;
-    case 5: 
-      b();
-      a(4);
-      return;
+    int i = this.mConnStatus.get();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Enter disconnect, Connection Status: ");
+    ((StringBuilder)localObject).append(i);
+    HMSLog.i("BaseHmsClient", ((StringBuilder)localObject).toString());
+    if (i != 1) {
+      if (i != 3)
+      {
+        if (i != 4)
+        {
+          if (i != 5) {
+            return;
+          }
+          cancelConnDelayHandle();
+          setConnectStatus(4);
+        }
+      }
+      else
+      {
+        localObject = this.mBinderAdapter;
+        if (localObject != null) {
+          ((BinderAdapter)localObject).unBind();
+        }
+        setConnectStatus(1);
+      }
     }
-    if (this.k != null) {
-      this.k.unBind();
-    }
-    a(1);
   }
   
   public List<String> getApiNameList()
   {
-    return this.e.getApiName();
+    return this.mClientSettings.getApiName();
   }
   
   public String getAppID()
   {
-    return this.d;
+    return this.mAppID;
   }
   
   protected ClientSettings getClientSettings()
   {
-    return this.e;
+    return this.mClientSettings;
   }
   
   public Context getContext()
   {
-    return this.c;
+    return this.mContext;
   }
   
   public String getCpID()
   {
-    return this.e.getCpID();
+    return this.mClientSettings.getCpID();
   }
   
   @Deprecated
@@ -220,12 +287,12 @@ public abstract class BaseHmsClient
   
   public String getPackageName()
   {
-    return this.e.getClientPackageName();
+    return this.mClientSettings.getClientPackageName();
   }
   
   public d getService()
   {
-    return this.f;
+    return this.mService;
   }
   
   public String getServiceAction()
@@ -240,7 +307,7 @@ public abstract class BaseHmsClient
   
   public SubAppInfo getSubAppInfo()
   {
-    return this.e.getSubAppID();
+    return this.mClientSettings.getSubAppID();
   }
   
   public String getTransportName()
@@ -250,12 +317,12 @@ public abstract class BaseHmsClient
   
   public boolean isConnected()
   {
-    return (this.g.get() == 3) || (this.g.get() == 4);
+    return (this.mConnStatus.get() == 3) || (this.mConnStatus.get() == 4);
   }
   
   public boolean isConnecting()
   {
-    return this.g.get() == 5;
+    return this.mConnStatus.get() == 5;
   }
   
   public void onConnecting()
@@ -265,7 +332,7 @@ public abstract class BaseHmsClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.BaseHmsClient
  * JD-Core Version:    0.7.0.1
  */

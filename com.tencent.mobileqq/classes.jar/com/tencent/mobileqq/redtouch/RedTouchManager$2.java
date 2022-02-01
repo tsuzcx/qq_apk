@@ -1,18 +1,20 @@
 package com.tencent.mobileqq.redtouch;
 
+import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.TimeRspBody;
+
 class RedTouchManager$2
   implements Runnable
 {
-  RedTouchManager$2(RedTouchManager paramRedTouchManager) {}
+  RedTouchManager$2(RedTouchManager paramRedTouchManager, BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody) {}
   
   public void run()
   {
-    RedTouchManager.a(this.this$0);
+    this.this$0.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchManager.2
  * JD-Core Version:    0.7.0.1
  */

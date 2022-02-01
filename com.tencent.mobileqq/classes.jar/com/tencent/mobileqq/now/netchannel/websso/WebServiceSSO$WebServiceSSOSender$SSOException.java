@@ -8,14 +8,14 @@ class WebServiceSSO$WebServiceSSOSender$SSOException
   
   WebServiceSSO$WebServiceSSOSender$SSOException(WebServiceSSO.WebServiceSSOSender paramWebServiceSSOSender, int paramInt, String paramString)
   {
-    super("errorCode==" + paramInt + " errorMessage==" + paramString);
+    super(paramWebServiceSSOSender.toString());
     this.errorCode = paramInt;
     this.errorMessage = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO.WebServiceSSOSender.SSOException
  * JD-Core Version:    0.7.0.1
  */

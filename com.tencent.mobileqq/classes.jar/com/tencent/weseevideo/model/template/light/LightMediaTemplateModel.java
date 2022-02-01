@@ -187,87 +187,82 @@ public final class LightMediaTemplateModel
   @NotNull
   public final LightMediaTemplateModel deepCopy()
   {
-    Object localObject1 = this.maxDuration;
+    CMTime localCMTime1 = this.maxDuration;
+    if (localCMTime1 != null) {
+      localCMTime1 = localCMTime1.clone();
+    } else {
+      localCMTime1 = null;
+    }
+    CMTime localCMTime2 = this.minDuration;
+    if (localCMTime2 != null) {
+      localCMTime2 = localCMTime2.clone();
+    } else {
+      localCMTime2 = null;
+    }
+    Object localObject1 = this.segmentModels;
     if (localObject1 != null)
     {
-      localObject1 = ((CMTime)localObject1).clone();
-      localObject2 = this.minDuration;
-      if (localObject2 == null) {
-        break label108;
-      }
-    }
-    Object localObject4;
-    label108:
-    for (Object localObject2 = ((CMTime)localObject2).clone();; localObject2 = null)
-    {
-      localObject3 = this.segmentModels;
-      if (localObject3 == null) {
-        break label233;
-      }
-      localObject4 = (Iterable)localObject3;
-      localObject3 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject4, 10));
-      localObject4 = ((Iterable)localObject4).iterator();
-      while (((Iterator)localObject4).hasNext()) {
-        ((Collection)localObject3).add(((MovieSegmentModel)((Iterator)localObject4).next()).clone());
-      }
-      localObject1 = null;
-      break;
-    }
-    Object localObject5;
-    Object localObject6;
-    label233:
-    for (Object localObject3 = CollectionsKt.toMutableList((Collection)localObject3);; localObject3 = null)
-    {
-      localObject4 = this;
-      localObject5 = localObject1;
-      localObject6 = localObject2;
-      localObject1 = this.clipPlaceHolders;
-      if (localObject1 == null) {
-        break label346;
-      }
       localObject2 = (Iterable)localObject1;
       localObject1 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject2, 10));
       localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject7 = (ClipPlaceHolder)((Iterator)localObject2).next();
-        ((Collection)localObject1).add(new ClipPlaceHolder(((ClipPlaceHolder)localObject7).contentDuration, ((ClipPlaceHolder)localObject7).fillMode, ((ClipPlaceHolder)localObject7).width, ((ClipPlaceHolder)localObject7).height, ((ClipPlaceHolder)localObject7).volume));
+      while (((Iterator)localObject2).hasNext()) {
+        ((Collection)localObject1).add(((MovieSegmentModel)((Iterator)localObject2).next()).clone());
       }
+      localObject1 = CollectionsKt.toMutableList((Collection)localObject1);
     }
-    label346:
-    for (localObject1 = (List)localObject1;; localObject1 = null)
+    else
     {
-      localObject7 = this.lightStickerTextModels;
-      localObject2 = (Map)new LinkedHashMap(MapsKt.mapCapacity(((Map)localObject7).size()));
-      localObject7 = ((Iterable)((Map)localObject7).entrySet()).iterator();
-      while (((Iterator)localObject7).hasNext())
+      localObject1 = null;
+    }
+    Object localObject2 = this.clipPlaceHolders;
+    if (localObject2 != null)
+    {
+      localObject3 = (Iterable)localObject2;
+      localObject2 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject3, 10));
+      localObject3 = ((Iterable)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        Object localObject8 = ((Iterator)localObject7).next();
-        ((Map)localObject2).put(((Map.Entry)localObject8).getKey(), LightStickerTextModel.copy$default((LightStickerTextModel)((Map.Entry)localObject8).getValue(), null, 0, 3, null));
+        localObject4 = (ClipPlaceHolder)((Iterator)localObject3).next();
+        ((Collection)localObject2).add(new ClipPlaceHolder(((ClipPlaceHolder)localObject4).contentDuration, ((ClipPlaceHolder)localObject4).fillMode, ((ClipPlaceHolder)localObject4).width, ((ClipPlaceHolder)localObject4).height, ((ClipPlaceHolder)localObject4).volume));
       }
+      localObject2 = (List)localObject2;
     }
-    Object localObject7 = MapsKt.toMutableMap((Map)localObject2);
-    localObject2 = this.templateBean;
-    if (localObject2 != null) {}
-    for (localObject2 = ((TemplateBean)localObject2).clone();; localObject2 = null) {
-      return copy$default((LightMediaTemplateModel)localObject4, null, null, null, null, (List)localObject1, (List)localObject3, null, localObject5, localObject6, (Map)localObject7, null, (TemplateBean)localObject2, null, null, false, 29775, null);
+    else
+    {
+      localObject2 = null;
     }
+    Object localObject4 = this.lightStickerTextModels;
+    Object localObject3 = (Map)new LinkedHashMap(MapsKt.mapCapacity(((Map)localObject4).size()));
+    localObject4 = ((Iterable)((Map)localObject4).entrySet()).iterator();
+    while (((Iterator)localObject4).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject4).next();
+      ((Map)localObject3).put(localEntry.getKey(), LightStickerTextModel.copy$default((LightStickerTextModel)localEntry.getValue(), null, 0, 3, null));
+    }
+    localObject4 = MapsKt.toMutableMap((Map)localObject3);
+    localObject3 = this.templateBean;
+    if (localObject3 != null) {
+      localObject3 = ((TemplateBean)localObject3).clone();
+    } else {
+      localObject3 = null;
+    }
+    return copy$default(this, null, null, null, null, (List)localObject2, (List)localObject1, null, localCMTime1, localCMTime2, (Map)localObject4, null, (TemplateBean)localObject3, null, null, false, 29775, null);
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof LightMediaTemplateModel))
       {
         paramObject = (LightMediaTemplateModel)paramObject;
-        if ((!Intrinsics.areEqual(this.filePath, paramObject.filePath)) || (!Intrinsics.areEqual(this.templateId, paramObject.templateId)) || (!Intrinsics.areEqual(this.templateType, paramObject.templateType)) || (!Intrinsics.areEqual(this.templateCateId, paramObject.templateCateId)) || (!Intrinsics.areEqual(this.clipPlaceHolders, paramObject.clipPlaceHolders)) || (!Intrinsics.areEqual(this.segmentModels, paramObject.segmentModels)) || (!Intrinsics.areEqual(this.segmentInfo, paramObject.segmentInfo)) || (!Intrinsics.areEqual(this.maxDuration, paramObject.maxDuration)) || (!Intrinsics.areEqual(this.minDuration, paramObject.minDuration)) || (!Intrinsics.areEqual(this.lightStickerTextModels, paramObject.lightStickerTextModels)) || (!Intrinsics.areEqual(this.aiAbilityModel, paramObject.aiAbilityModel)) || (!Intrinsics.areEqual(this.templateBean, paramObject.templateBean)) || (!Intrinsics.areEqual(this.backgroundEffectPath, paramObject.backgroundEffectPath)) || (!Intrinsics.areEqual(this.renderSize, paramObject.renderSize)) || (this.isRedTemplate != paramObject.isRedTemplate)) {}
+        if ((Intrinsics.areEqual(this.filePath, paramObject.filePath)) && (Intrinsics.areEqual(this.templateId, paramObject.templateId)) && (Intrinsics.areEqual(this.templateType, paramObject.templateType)) && (Intrinsics.areEqual(this.templateCateId, paramObject.templateCateId)) && (Intrinsics.areEqual(this.clipPlaceHolders, paramObject.clipPlaceHolders)) && (Intrinsics.areEqual(this.segmentModels, paramObject.segmentModels)) && (Intrinsics.areEqual(this.segmentInfo, paramObject.segmentInfo)) && (Intrinsics.areEqual(this.maxDuration, paramObject.maxDuration)) && (Intrinsics.areEqual(this.minDuration, paramObject.minDuration)) && (Intrinsics.areEqual(this.lightStickerTextModels, paramObject.lightStickerTextModels)) && (Intrinsics.areEqual(this.aiAbilityModel, paramObject.aiAbilityModel)) && (Intrinsics.areEqual(this.templateBean, paramObject.templateBean)) && (Intrinsics.areEqual(this.backgroundEffectPath, paramObject.backgroundEffectPath)) && (Intrinsics.areEqual(this.renderSize, paramObject.renderSize)) && (this.isRedTemplate == paramObject.isRedTemplate)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @Nullable
@@ -452,12 +447,44 @@ public final class LightMediaTemplateModel
   @NotNull
   public String toString()
   {
-    return "LightMediaTemplateModel(filePath=" + this.filePath + ", templateId=" + this.templateId + ", templateType=" + this.templateType + ", templateCateId=" + this.templateCateId + ", clipPlaceHolders=" + this.clipPlaceHolders + ", segmentModels=" + this.segmentModels + ", segmentInfo=" + this.segmentInfo + ", maxDuration=" + this.maxDuration + ", minDuration=" + this.minDuration + ", lightStickerTextModels=" + this.lightStickerTextModels + ", aiAbilityModel=" + this.aiAbilityModel + ", templateBean=" + this.templateBean + ", backgroundEffectPath=" + this.backgroundEffectPath + ", renderSize=" + this.renderSize + ", isRedTemplate=" + this.isRedTemplate + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LightMediaTemplateModel(filePath=");
+    localStringBuilder.append(this.filePath);
+    localStringBuilder.append(", templateId=");
+    localStringBuilder.append(this.templateId);
+    localStringBuilder.append(", templateType=");
+    localStringBuilder.append(this.templateType);
+    localStringBuilder.append(", templateCateId=");
+    localStringBuilder.append(this.templateCateId);
+    localStringBuilder.append(", clipPlaceHolders=");
+    localStringBuilder.append(this.clipPlaceHolders);
+    localStringBuilder.append(", segmentModels=");
+    localStringBuilder.append(this.segmentModels);
+    localStringBuilder.append(", segmentInfo=");
+    localStringBuilder.append(this.segmentInfo);
+    localStringBuilder.append(", maxDuration=");
+    localStringBuilder.append(this.maxDuration);
+    localStringBuilder.append(", minDuration=");
+    localStringBuilder.append(this.minDuration);
+    localStringBuilder.append(", lightStickerTextModels=");
+    localStringBuilder.append(this.lightStickerTextModels);
+    localStringBuilder.append(", aiAbilityModel=");
+    localStringBuilder.append(this.aiAbilityModel);
+    localStringBuilder.append(", templateBean=");
+    localStringBuilder.append(this.templateBean);
+    localStringBuilder.append(", backgroundEffectPath=");
+    localStringBuilder.append(this.backgroundEffectPath);
+    localStringBuilder.append(", renderSize=");
+    localStringBuilder.append(this.renderSize);
+    localStringBuilder.append(", isRedTemplate=");
+    localStringBuilder.append(this.isRedTemplate);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.light.LightMediaTemplateModel
  * JD-Core Version:    0.7.0.1
  */

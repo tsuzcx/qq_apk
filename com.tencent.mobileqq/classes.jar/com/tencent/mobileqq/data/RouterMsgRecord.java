@@ -68,7 +68,7 @@ public class RouterMsgRecord
     return null;
   }
   
-  public Class<? extends Entity> getClassForTable()
+  protected Class<? extends Entity> getClassForTable()
   {
     return RouterMsgRecord.class;
   }
@@ -78,17 +78,20 @@ public class RouterMsgRecord
     return this.sTableName;
   }
   
-  public void postRead() {}
+  protected void postRead() {}
   
   public void setTableName(String paramString)
   {
-    this.sTableName = (sBasicTableName + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(sBasicTableName);
+    localStringBuilder.append(paramString);
+    this.sTableName = localStringBuilder.toString();
     this.peerDin = Long.parseLong(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.RouterMsgRecord
  * JD-Core Version:    0.7.0.1
  */

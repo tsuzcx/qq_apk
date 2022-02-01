@@ -24,26 +24,26 @@ class MiniAppSearchFragment$4
       if (!TextUtils.isEmpty(paramKeyEvent))
       {
         this.val$searchDataManager.updateHistorySearchList(paramKeyEvent);
-        QLog.d("MiniAppSearchFragment", 2, "initHistorySearch, record search content: " + paramKeyEvent);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("initHistorySearch, record search content: ");
+        localStringBuilder.append(paramKeyEvent);
+        QLog.d("MiniAppSearchFragment", 2, localStringBuilder.toString());
         MiniProgramLpReportDC04239.reportAsync("desktop", "search", "search_button", paramKeyEvent);
       }
-      for (;;)
+      else if (!TextUtils.isEmpty(MiniAppSearchFragment.access$400(this.this$0)))
       {
-        ((InputMethodManager)paramTextView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramTextView.getWindowToken(), 0);
-        return true;
-        if (!TextUtils.isEmpty(MiniAppSearchFragment.access$400(this.this$0)))
-        {
-          MiniAppSearchFragment.access$200(this.this$0).setText(MiniAppSearchFragment.access$400(this.this$0));
-          MiniAppSearchFragment.access$200(this.this$0).setSelection(MiniAppSearchFragment.access$400(this.this$0).length());
-        }
+        MiniAppSearchFragment.access$200(this.this$0).setText(MiniAppSearchFragment.access$400(this.this$0));
+        MiniAppSearchFragment.access$200(this.this$0).setSelection(MiniAppSearchFragment.access$400(this.this$0).length());
       }
+      ((InputMethodManager)paramTextView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramTextView.getWindowToken(), 0);
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.MiniAppSearchFragment.4
  * JD-Core Version:    0.7.0.1
  */

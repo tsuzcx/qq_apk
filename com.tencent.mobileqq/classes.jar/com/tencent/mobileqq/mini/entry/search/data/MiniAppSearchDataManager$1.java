@@ -17,7 +17,12 @@ class MiniAppSearchDataManager$1
     {
       long l = ???.optLong("retCode");
       Object localObject1 = ???.optString("errMsg");
-      QLog.d("MiniAppSearchDataManager", 1, "sendHotSearchAppRequest, retCode = " + l + ", errMsg = " + (String)localObject1);
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("sendHotSearchAppRequest, retCode = ");
+      localStringBuilder2.append(l);
+      localStringBuilder2.append(", errMsg = ");
+      localStringBuilder2.append((String)localObject1);
+      QLog.d("MiniAppSearchDataManager", 1, localStringBuilder2.toString());
       if (l != 0L) {
         return;
       }
@@ -29,12 +34,17 @@ class MiniAppSearchDataManager$1
         return;
       }
     }
-    QLog.e("MiniAppSearchDataManager", 1, "sendHotSearchAppRequest, isSuccess = " + paramBoolean + ", ret = " + ???);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("sendHotSearchAppRequest, isSuccess = ");
+    localStringBuilder1.append(paramBoolean);
+    localStringBuilder1.append(", ret = ");
+    localStringBuilder1.append(???);
+    QLog.e("MiniAppSearchDataManager", 1, localStringBuilder1.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager.1
  * JD-Core Version:    0.7.0.1
  */

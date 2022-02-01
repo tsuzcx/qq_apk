@@ -15,45 +15,49 @@ class TraeAudioManager$headsetSwitchThread
   
   public void _run()
   {
+    TraeAudioManager localTraeAudioManager;
     if ((!TraeAudioManager.IsMusicScene) && (TraeAudioManager.IsUpdateSceneFlag))
     {
-      this.this$0.InternalSetSpeaker(this.this$0._context, false);
+      localTraeAudioManager = this.this$0;
+      localTraeAudioManager.InternalSetSpeaker(localTraeAudioManager._context, false);
       this.this$0._am.setWiredHeadsetOn(true);
     }
     updateStatus();
-    if ((TraeAudioManager.IsMusicScene) || (!TraeAudioManager.IsUpdateSceneFlag)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "connect headset: do nothing");
-      }
+    int i;
+    if ((!TraeAudioManager.IsMusicScene) && (TraeAudioManager.IsUpdateSceneFlag)) {
+      i = 0;
     }
     for (;;)
     {
-      return;
-      while (this._running == true)
+      long l;
+      if (this._running == true)
       {
-        if (this.this$0._am.isSpeakerphoneOn()) {
-          this.this$0.InternalSetSpeaker(this.this$0._context, false);
+        if (this.this$0._am.isSpeakerphoneOn())
+        {
+          localTraeAudioManager = this.this$0;
+          localTraeAudioManager.InternalSetSpeaker(localTraeAudioManager._context, false);
         }
-        long l;
         if (i < 5) {
           l = 1000L;
+        } else {
+          l = 4000L;
         }
-        try
-        {
-          for (;;)
-          {
-            Thread.sleep(l);
-            label120:
-            i += 1;
-            break;
-            l = 4000L;
-          }
+      }
+      try
+      {
+        Thread.sleep(l);
+        label121:
+        i += 1;
+        continue;
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.w("TRAE", 0, "connect headset: do nothing");
         }
-        catch (InterruptedException localInterruptedException)
-        {
-          break label120;
-        }
-        int i = 0;
+        return;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        break label121;
       }
     }
   }

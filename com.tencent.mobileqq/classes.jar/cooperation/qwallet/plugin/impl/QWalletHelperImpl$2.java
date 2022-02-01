@@ -1,16 +1,15 @@
 package cooperation.qwallet.plugin.impl;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.mobileqq.qrscan.OnQRHandleResultCallback;
 import java.lang.ref.WeakReference;
 
-final class QWalletHelperImpl$2
+class QWalletHelperImpl$2
   extends ResultReceiver
 {
-  QWalletHelperImpl$2(Handler paramHandler, WeakReference paramWeakReference)
+  QWalletHelperImpl$2(QWalletHelperImpl paramQWalletHelperImpl, Handler paramHandler, WeakReference paramWeakReference)
   {
     super(paramHandler);
   }
@@ -18,15 +17,15 @@ final class QWalletHelperImpl$2
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    paramBundle = (Activity)this.val$activityRef.get();
-    if (((paramBundle instanceof ScannerActivity)) && (!paramBundle.isFinishing())) {
-      paramBundle.finish();
+    paramBundle = (OnQRHandleResultCallback)this.val$callbackRef.get();
+    if (paramBundle != null) {
+      paramBundle.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qwallet.plugin.impl.QWalletHelperImpl.2
  * JD-Core Version:    0.7.0.1
  */

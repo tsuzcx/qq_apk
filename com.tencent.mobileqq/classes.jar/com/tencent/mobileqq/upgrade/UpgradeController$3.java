@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.upgrade;
 
+import com.tencent.mobileqq.activity.recent.bannerprocessor.UpgradeBannerProcessor;
 import com.tencent.mobileqq.banner.BannerManager;
 
 class UpgradeController$3
@@ -9,12 +10,12 @@ class UpgradeController$3
   
   public void run()
   {
-    BannerManager.a().b(15, 3000);
+    BannerManager.a().b(UpgradeBannerProcessor.a, 3000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeController.3
  * JD-Core Version:    0.7.0.1
  */

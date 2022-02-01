@@ -45,29 +45,31 @@ public class ProfileCircleInfoView
   
   private void addEffectTextView(String paramString, long paramLong)
   {
-    if (this.mEffectTextView == null) {}
-    CharSequence localCharSequence;
-    do
-    {
+    Object localObject = this.mEffectTextView;
+    if (localObject == null) {
       return;
-      localCharSequence = this.mEffectTextView.getText();
-    } while ((localCharSequence != null) && (TextUtils.equals(paramString, localCharSequence)));
-    this.mEffectTextView.setText(paramString);
-    this.mEffectTextView.setDuration(paramLong);
-    addView(this.mEffectTextView);
+    }
+    localObject = ((DynamicEffectTextView)localObject).getText();
+    if ((localObject == null) || (!TextUtils.equals(paramString, (CharSequence)localObject)))
+    {
+      this.mEffectTextView.setText(paramString);
+      this.mEffectTextView.setDuration(paramLong);
+      addView(this.mEffectTextView);
+    }
   }
   
   private void addNormalTextView(String paramString)
   {
-    if (this.mTextView == null) {}
-    CharSequence localCharSequence;
-    do
-    {
+    Object localObject = this.mTextView;
+    if (localObject == null) {
       return;
-      localCharSequence = this.mTextView.getText();
-    } while ((localCharSequence != null) && (TextUtils.equals(paramString, localCharSequence)));
-    this.mTextView.setText(paramString);
-    addView(this.mTextView);
+    }
+    localObject = ((TextView)localObject).getText();
+    if ((localObject == null) || (!TextUtils.equals(paramString, (CharSequence)localObject)))
+    {
+      this.mTextView.setText(paramString);
+      addView(this.mTextView);
+    }
   }
   
   private DynamicEffectTextView buildEffectTextView()
@@ -77,7 +79,7 @@ public class ProfileCircleInfoView
     localDynamicEffectTextView.setSingleLine(true);
     localDynamicEffectTextView.setTextColor(-13604865);
     localDynamicEffectTextView.setTextSize(2, 12.0F);
-    localDynamicEffectTextView.setDrawableResource(2130844236);
+    localDynamicEffectTextView.setDrawableResource(2130844140);
     return localDynamicEffectTextView;
   }
   
@@ -122,27 +124,32 @@ public class ProfileCircleInfoView
   
   private void refreshCircleInfoLayout()
   {
-    if ((TextUtils.isEmpty(this.mFansText)) && (TextUtils.isEmpty(this.mFuelText))) {
-      QLog.w("ProfileCircleInfoView", 1, "[buildCircleInfoLayout] fans text and fuel text not is empty.");
-    }
-    do
+    if ((TextUtils.isEmpty(this.mFansText)) && (TextUtils.isEmpty(this.mFuelText)))
     {
-      do
-      {
-        return;
-        release();
-        if ((this.mFansValueStyle == 1) && (this.mFuelValueStyle == 1))
-        {
-          addEffectTextView(this.mFuelText, 2000L);
-          return;
-        }
-        if (this.mFansValueStyle != 1) {
-          break;
-        }
-        addEffectTextView(this.mFansText, 1200L);
-      } while (TextUtils.isEmpty(this.mFuelText));
-      addNormalTextView(this.mFuelText);
+      QLog.w("ProfileCircleInfoView", 1, "[buildCircleInfoLayout] fans text and fuel text not is empty.");
       return;
+    }
+    release();
+    StringBuilder localStringBuilder;
+    if ((this.mFansValueStyle == 1) && (this.mFuelValueStyle == 1))
+    {
+      localStringBuilder = createStringBuilder(this.mFansText, true);
+      localStringBuilder.append(this.mFuelText);
+      addEffectTextView(localStringBuilder.toString(), 2000L);
+      return;
+    }
+    if (this.mFansValueStyle == 1)
+    {
+      addEffectTextView(this.mFansText, 1200L);
+      if (!TextUtils.isEmpty(this.mFuelText))
+      {
+        localStringBuilder = createStringBuilder("  ", false);
+        localStringBuilder.append(this.mFuelText);
+        addNormalTextView(localStringBuilder.toString());
+      }
+    }
+    else
+    {
       if (this.mFuelValueStyle == 1)
       {
         if (!TextUtils.isEmpty(this.mFansText)) {
@@ -153,7 +160,9 @@ public class ProfileCircleInfoView
       }
       if ((!TextUtils.isEmpty(this.mFansText)) && (!TextUtils.isEmpty(this.mFuelText)))
       {
-        addNormalTextView(this.mFuelText);
+        localStringBuilder = createStringBuilder(this.mFansText, true);
+        localStringBuilder.append(this.mFuelText);
+        addNormalTextView(localStringBuilder.toString());
         return;
       }
       if (!TextUtils.isEmpty(this.mFansText))
@@ -161,14 +170,17 @@ public class ProfileCircleInfoView
         addNormalTextView(createStringBuilder(this.mFansText, false).toString());
         return;
       }
-    } while (TextUtils.isEmpty(this.mFuelText));
-    addNormalTextView(createStringBuilder(this.mFuelText, false).toString());
+      if (!TextUtils.isEmpty(this.mFuelText)) {
+        addNormalTextView(createStringBuilder(this.mFuelText, false).toString());
+      }
+    }
   }
   
   private void release()
   {
-    if (this.mEffectTextView != null) {
-      this.mEffectTextView.cancelAnimation();
+    DynamicEffectTextView localDynamicEffectTextView = this.mEffectTextView;
+    if (localDynamicEffectTextView != null) {
+      localDynamicEffectTextView.cancelAnimation();
     }
     removeAllViews();
   }
@@ -193,7 +205,7 @@ public class ProfileCircleInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.circle.view.ProfileCircleInfoView
  * JD-Core Version:    0.7.0.1
  */

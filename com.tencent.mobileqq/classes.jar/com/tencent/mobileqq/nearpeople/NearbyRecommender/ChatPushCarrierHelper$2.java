@@ -12,17 +12,18 @@ class ChatPushCarrierHelper$2
   {
     IFaceDecoder localIFaceDecoder = this.this$0.a;
     String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
-    for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
-    {
-      localIFaceDecoder.refreshFaceWithTimeStamp(32, str, 200, l, 0);
-      return;
+    int i;
+    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {
+      i = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;
+    } else {
+      i = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp;
     }
+    localIFaceDecoder.refreshFaceWithTimeStamp(32, str, 200, i, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper.2
  * JD-Core Version:    0.7.0.1
  */

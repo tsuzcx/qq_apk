@@ -9,16 +9,15 @@ class MiniAppSearchFragment$1
   
   public int getSpanSize(int paramInt)
   {
-    int i = 1;
     if (MiniAppSearchFragment.access$000(this.this$0).getItemViewType(paramInt) == 1) {
-      i = 2;
+      return 2;
     }
-    return i;
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.MiniAppSearchFragment.1
  * JD-Core Version:    0.7.0.1
  */

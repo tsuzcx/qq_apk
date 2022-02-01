@@ -17,59 +17,73 @@ public class NetWorkReceiver
   public NetWorkReceiver(Context paramContext)
   {
     paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-    if (paramContext == null) {}
-    for (int i = -1;; i = paramContext.getType())
-    {
-      lastType = i;
-      return;
+    int i;
+    if (paramContext == null) {
+      i = -1;
+    } else {
+      i = paramContext.getType();
     }
+    lastType = i;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    while (!paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE")) {
+    if (paramIntent == null) {
       return;
     }
-    paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-    int j;
-    if (paramContext == null)
+    if (paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE"))
     {
-      j = -1;
-      Log.i("OpenSdk|NetWorkReceiver", "cur type: " + j + " last type: " + lastType + " cur hash code" + hashCode());
-      if (lastType != j) {
-        break label144;
+      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      int j;
+      if (paramContext == null) {
+        j = -1;
+      } else {
+        j = paramContext.getType();
       }
-      Log.e("OpenSdk|NetWorkReceiver", "same type, ignore!");
-    }
-    label144:
-    label233:
-    for (;;)
-    {
-      lastType = j;
-      Log.e("OpenSdk|NetWorkReceiver", "Last Type: " + lastType);
-      return;
-      j = paramContext.getType();
-      break;
-      int i = 100;
-      switch (j)
+      paramContext = new StringBuilder();
+      paramContext.append("cur type: ");
+      paramContext.append(j);
+      paramContext.append(" last type: ");
+      paramContext.append(lastType);
+      paramContext.append(" cur hash code");
+      paramContext.append(hashCode());
+      Log.i("OpenSdk|NetWorkReceiver", paramContext.toString());
+      if (lastType == j)
       {
+        Log.e("OpenSdk|NetWorkReceiver", "same type, ignore!");
       }
-      for (;;)
+      else
       {
-        if (this.onNetworkCallback == null) {
-          break label233;
+        int i = 100;
+        if (j != -1)
+        {
+          if (j != 0)
+          {
+            if (j == 1)
+            {
+              Log.e("OpenSdk|NetWorkReceiver", "wifi avaiable!");
+              i = 101;
+            }
+          }
+          else
+          {
+            Log.e("OpenSdk|NetWorkReceiver", "3G/4G avaiable!");
+            i = 102;
+          }
         }
-        this.onNetworkCallback.handleNetwork(i);
-        break;
-        Log.e("OpenSdk|NetWorkReceiver", "network not avaiable!");
-        continue;
-        Log.e("OpenSdk|NetWorkReceiver", "3G/4G avaiable!");
-        i = 102;
-        continue;
-        Log.e("OpenSdk|NetWorkReceiver", "wifi avaiable!");
-        i = 101;
+        else {
+          Log.e("OpenSdk|NetWorkReceiver", "network not avaiable!");
+        }
+        paramContext = this.onNetworkCallback;
+        if (paramContext != null) {
+          paramContext.handleNetwork(i);
+        }
       }
+      lastType = j;
+      paramContext = new StringBuilder();
+      paramContext.append("Last Type: ");
+      paramContext.append(lastType);
+      Log.e("OpenSdk|NetWorkReceiver", paramContext.toString());
     }
   }
   
@@ -85,7 +99,7 @@ public class NetWorkReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.network.NetWorkReceiver
  * JD-Core Version:    0.7.0.1
  */

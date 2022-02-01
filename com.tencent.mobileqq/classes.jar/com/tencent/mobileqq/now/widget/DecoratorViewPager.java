@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.now.widget;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.ViewPager;
 
 public class DecoratorViewPager
   extends ViewPager
@@ -23,24 +23,27 @@ public class DecoratorViewPager
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.requestDisallowInterceptTouchEvent(true);
+    ViewGroup localViewGroup = this.a;
+    if (localViewGroup != null) {
+      localViewGroup.requestDisallowInterceptTouchEvent(true);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.requestDisallowInterceptTouchEvent(true);
+    ViewGroup localViewGroup = this.a;
+    if (localViewGroup != null) {
+      localViewGroup.requestDisallowInterceptTouchEvent(true);
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.requestDisallowInterceptTouchEvent(true);
+    ViewGroup localViewGroup = this.a;
+    if (localViewGroup != null) {
+      localViewGroup.requestDisallowInterceptTouchEvent(true);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -52,7 +55,7 @@ public class DecoratorViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.widget.DecoratorViewPager
  * JD-Core Version:    0.7.0.1
  */

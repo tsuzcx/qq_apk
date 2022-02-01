@@ -15,7 +15,8 @@ class CmShowAESurfaceView$3
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
     if (this.jdField_a_of_type_Int > i)
     {
-      CmShowAESurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView, CmShowAESurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView) + CmShowAESurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView));
+      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView;
+      CmShowAESurfaceView.a(paramValueAnimator, CmShowAESurfaceView.a(paramValueAnimator) + CmShowAESurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView));
       this.jdField_a_of_type_ComTencentMobileqqApolloViewCmShowAESurfaceView.requestRender();
     }
     this.jdField_a_of_type_Int = i;
@@ -23,7 +24,7 @@ class CmShowAESurfaceView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.CmShowAESurfaceView.3
  * JD-Core Version:    0.7.0.1
  */

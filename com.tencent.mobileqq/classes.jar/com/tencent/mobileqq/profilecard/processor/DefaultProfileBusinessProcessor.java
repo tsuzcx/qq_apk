@@ -55,17 +55,101 @@ public class DefaultProfileBusinessProcessor
   
   private void handleGetDetailInfoInner1(ByteBuffer paramByteBuffer, short paramShort1, short paramShort2, Long paramLong, Card paramCard, DefaultProfileBusinessProcessor.ProfileLocationCodes paramProfileLocationCodes)
   {
-    int i;
-    switch (paramShort1)
+    if (paramShort1 != 20002)
     {
-    default: 
-      return;
-    case 20002: 
-      paramLong = new byte[paramShort2];
-      paramByteBuffer.get(paramLong);
-      paramCard.strNick = new String(paramLong);
-      return;
-    case 20009: 
+      if (paramShort1 != 20009)
+      {
+        if (paramShort1 != 20011)
+        {
+          if (paramShort1 != 20019)
+          {
+            if (paramShort1 != 20037)
+            {
+              if (paramShort1 != 20041)
+              {
+                if (paramShort1 != 20043)
+                {
+                  if (paramShort1 != 24002)
+                  {
+                    if (paramShort1 != 24008)
+                    {
+                      if (paramShort1 != 27037)
+                      {
+                        if (paramShort1 != 20021)
+                        {
+                          if (paramShort1 != 20022)
+                          {
+                            if (paramShort1 != 20031)
+                            {
+                              if (paramShort1 != 20032) {
+                                return;
+                              }
+                              paramShort1 = paramByteBuffer.getInt();
+                              paramShort2 = paramByteBuffer.getInt();
+                              i = paramByteBuffer.getInt();
+                              paramProfileLocationCodes.gotLocation = true;
+                              paramProfileLocationCodes.locCountryCode = ProfileCodecUtils.decodeRemoteCode(paramShort1);
+                              paramProfileLocationCodes.locProvinceCode = ProfileCodecUtils.decodeRemoteCode(paramShort2);
+                              paramProfileLocationCodes.locCityCode = ProfileCodecUtils.decodeRemoteCode(i);
+                              return;
+                            }
+                            paramCard.lBirthday = paramByteBuffer.getInt();
+                            if (paramCard.lBirthday == 0L)
+                            {
+                              paramCard.constellation = 0;
+                              return;
+                            }
+                            paramCard.constellation = Utils.a((int)((paramCard.lBirthday & 0xFF00) >> 8), (int)(paramCard.lBirthday & 0xFF));
+                            return;
+                          }
+                          paramCard.constellation = paramByteBuffer.get();
+                          return;
+                        }
+                        paramLong = new byte[paramShort2];
+                        paramByteBuffer.get(paramLong);
+                        paramCard.strSchool = new String(paramLong);
+                        return;
+                      }
+                      paramCard.iProfession = paramByteBuffer.getInt();
+                      return;
+                    }
+                    paramLong = new byte[paramShort2];
+                    paramByteBuffer.get(paramLong);
+                    paramCard.strCompany = new String(paramLong);
+                    return;
+                  }
+                  paramShort1 = paramByteBuffer.getInt();
+                  paramShort2 = paramByteBuffer.getInt();
+                  int i = paramByteBuffer.getInt();
+                  paramProfileLocationCodes.gotHometown = true;
+                  paramProfileLocationCodes.homeCountryCode = ProfileCodecUtils.decodeRemoteCode(paramShort1);
+                  paramProfileLocationCodes.homeProvinceCode = ProfileCodecUtils.decodeRemoteCode(paramShort2);
+                  paramProfileLocationCodes.homeCityCode = ProfileCodecUtils.decodeRemoteCode(i);
+                  return;
+                }
+                paramShort1 = paramByteBuffer.getInt();
+                paramProfileLocationCodes.gotHometown = true;
+                paramProfileLocationCodes.homeDistrictCode = ProfileCodecUtils.decodeRemoteCode(paramShort1);
+                return;
+              }
+              paramShort1 = paramByteBuffer.getInt();
+              paramProfileLocationCodes.gotLocation = true;
+              paramProfileLocationCodes.locDistrictCode = ProfileCodecUtils.decodeRemoteCode(paramShort1);
+              return;
+            }
+            paramCard.age = paramByteBuffer.get();
+            return;
+          }
+          paramLong = new byte[paramShort2];
+          paramByteBuffer.get(paramLong);
+          paramCard.strPersonalNote = new String(paramLong);
+          return;
+        }
+        paramLong = new byte[paramShort2];
+        paramByteBuffer.get(paramLong);
+        paramCard.strEmail = new String(paramLong);
+        return;
+      }
       paramShort1 = paramByteBuffer.get();
       if (paramShort1 == 1)
       {
@@ -79,100 +163,49 @@ public class DefaultProfileBusinessProcessor
       }
       paramCard.shGender = -1;
       return;
-    case 27037: 
-      paramCard.iProfession = paramByteBuffer.getInt();
-      return;
-    case 20031: 
-      paramCard.lBirthday = paramByteBuffer.getInt();
-      if (paramCard.lBirthday == 0L)
-      {
-        paramCard.constellation = 0;
-        return;
-      }
-      paramCard.constellation = Utils.a((int)((paramCard.lBirthday & 0xFF00) >> 8), (int)(paramCard.lBirthday & 0xFF));
-      return;
-    case 24008: 
-      paramLong = new byte[paramShort2];
-      paramByteBuffer.get(paramLong);
-      paramCard.strCompany = new String(paramLong);
-      return;
-    case 24002: 
-      paramShort1 = paramByteBuffer.getInt();
-      paramShort2 = paramByteBuffer.getInt();
-      i = paramByteBuffer.getInt();
-      paramProfileLocationCodes.gotHometown = true;
-      paramProfileLocationCodes.homeCountryCode = ProfileCodecUtils.decodeRemoteCode(paramShort1);
-      paramProfileLocationCodes.homeProvinceCode = ProfileCodecUtils.decodeRemoteCode(paramShort2);
-      paramProfileLocationCodes.homeCityCode = ProfileCodecUtils.decodeRemoteCode(i);
-      return;
-    case 20043: 
-      paramShort1 = paramByteBuffer.getInt();
-      paramProfileLocationCodes.gotHometown = true;
-      paramProfileLocationCodes.homeDistrictCode = ProfileCodecUtils.decodeRemoteCode(paramShort1);
-      return;
-    case 20032: 
-      paramShort1 = paramByteBuffer.getInt();
-      paramShort2 = paramByteBuffer.getInt();
-      i = paramByteBuffer.getInt();
-      paramProfileLocationCodes.gotLocation = true;
-      paramProfileLocationCodes.locCountryCode = ProfileCodecUtils.decodeRemoteCode(paramShort1);
-      paramProfileLocationCodes.locProvinceCode = ProfileCodecUtils.decodeRemoteCode(paramShort2);
-      paramProfileLocationCodes.locCityCode = ProfileCodecUtils.decodeRemoteCode(i);
-      return;
-    case 20041: 
-      paramShort1 = paramByteBuffer.getInt();
-      paramProfileLocationCodes.gotLocation = true;
-      paramProfileLocationCodes.locDistrictCode = ProfileCodecUtils.decodeRemoteCode(paramShort1);
-      return;
-    case 20011: 
-      paramLong = new byte[paramShort2];
-      paramByteBuffer.get(paramLong);
-      paramCard.strEmail = new String(paramLong);
-      return;
-    case 20019: 
-      paramLong = new byte[paramShort2];
-      paramByteBuffer.get(paramLong);
-      paramCard.strPersonalNote = new String(paramLong);
-      return;
-    case 20021: 
-      paramLong = new byte[paramShort2];
-      paramByteBuffer.get(paramLong);
-      paramCard.strSchool = new String(paramLong);
-      return;
-    case 20037: 
-      paramCard.age = paramByteBuffer.get();
-      return;
     }
-    paramCard.constellation = paramByteBuffer.get();
+    paramLong = new byte[paramShort2];
+    paramByteBuffer.get(paramLong);
+    paramCard.strNick = new String(paramLong);
   }
   
   private void handleGetDetailInfoInner2(ByteBuffer paramByteBuffer, short paramShort1, short paramShort2, Long paramLong, Card paramCard)
   {
-    switch (paramShort1)
+    if (paramShort1 != -23364)
     {
-    default: 
-      return;
-    case -23196: 
-      paramCard.switchMusicBox = paramByteBuffer.getShort();
-      return;
-    case -23364: 
-      if (paramByteBuffer.getShort() == 0) {}
-      for (boolean bool = true;; bool = false)
+      if (paramShort1 != -23196)
       {
-        paramCard.isShowCard = bool;
+        if (paramShort1 != -23180)
+        {
+          if (paramShort1 != -23175)
+          {
+            if (paramShort1 != -23169)
+            {
+              if (paramShort1 != -23159) {
+                return;
+              }
+              paramCard.switchWeiShi = paramByteBuffer.getShort();
+              return;
+            }
+            paramCard.switchLifeAchievement = paramByteBuffer.getShort();
+            return;
+          }
+          paramCard.switchQQCircle = paramByteBuffer.getShort();
+          return;
+        }
+        paramCard.switchStickyNote = paramByteBuffer.getShort();
         return;
       }
-    case -23180: 
-      paramCard.switchStickyNote = paramByteBuffer.getShort();
-      return;
-    case -23175: 
-      paramCard.switchQQCircle = paramByteBuffer.getShort();
-      return;
-    case -23169: 
-      paramCard.switchLifeAchievement = paramByteBuffer.getShort();
+      paramCard.switchMusicBox = paramByteBuffer.getShort();
       return;
     }
-    paramCard.switchWeiShi = paramByteBuffer.getShort();
+    boolean bool;
+    if (paramByteBuffer.getShort() == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramCard.isShowCard = bool;
   }
   
   private void processProfileCardWithCover(Card paramCard, RespSummaryCard paramRespSummaryCard)
@@ -242,61 +275,60 @@ public class DefaultProfileBusinessProcessor
       {
         Object localObject = new GetExtendFriendInfo.RspBody();
         ((GetExtendFriendInfo.RspBody)localObject).mergeFrom(paramRespSummaryCard.vExtendCard);
-        if (((GetExtendFriendInfo.RspBody)localObject).bytes_declaration.has())
+        if (!((GetExtendFriendInfo.RspBody)localObject).bytes_declaration.has()) {
+          break label529;
+        }
+        paramRespSummaryCard = ((GetExtendFriendInfo.RspBody)localObject).bytes_declaration.get().toStringUtf8();
+        if (!((GetExtendFriendInfo.RspBody)localObject).bytes_voice_url.has()) {
+          break label534;
+        }
+        str = ((GetExtendFriendInfo.RspBody)localObject).bytes_voice_url.get().toStringUtf8();
+        if (!((GetExtendFriendInfo.RspBody)localObject).uint32_popularity.has()) {
+          break label540;
+        }
+        i = ((GetExtendFriendInfo.RspBody)localObject).uint32_popularity.get();
+        if (!((GetExtendFriendInfo.RspBody)localObject).uint64_update_time.has()) {
+          break label545;
+        }
+        l = ((GetExtendFriendInfo.RspBody)localObject).uint64_update_time.get();
+        if (!((GetExtendFriendInfo.RspBody)localObject).uint32_voice_duration.has()) {
+          break label551;
+        }
+        j = ((GetExtendFriendInfo.RspBody)localObject).uint32_voice_duration.get();
+        PersonalInfo.ReqBody localReqBody = new PersonalInfo.ReqBody();
+        localReqBody.mergeFrom(((GetExtendFriendInfo.RspBody)localObject).bytes_personalization.get().toByteArray());
+        int k = localReqBody.fontid.get();
+        int m = localReqBody.fonttype.get();
+        int n = localReqBody.itemid.get();
+        paramCard.fontId = k;
+        paramCard.fontType = m;
+        paramCard.clothesId = n;
+        paramCard.declaration = paramRespSummaryCard;
+        paramCard.popularity = i;
+        paramCard.voiceUrl = str;
+        paramCard.updateTime = l;
+        paramCard.extendFriendVoiceDuration = j;
+        if ((((GetExtendFriendInfo.RspBody)localObject).rpt_school_info.has()) && (((GetExtendFriendInfo.schoolInfo)((GetExtendFriendInfo.RspBody)localObject).rpt_school_info.get().get(0)).has()))
         {
-          paramRespSummaryCard = ((GetExtendFriendInfo.RspBody)localObject).bytes_declaration.get().toStringUtf8();
-          if (!((GetExtendFriendInfo.RspBody)localObject).bytes_voice_url.has()) {
-            break label519;
-          }
-          str = ((GetExtendFriendInfo.RspBody)localObject).bytes_voice_url.get().toStringUtf8();
-          if (!((GetExtendFriendInfo.RspBody)localObject).uint32_popularity.has()) {
-            break label525;
-          }
-          i = ((GetExtendFriendInfo.RspBody)localObject).uint32_popularity.get();
-          if (!((GetExtendFriendInfo.RspBody)localObject).uint64_update_time.has()) {
-            break label530;
-          }
-          l = ((GetExtendFriendInfo.RspBody)localObject).uint64_update_time.get();
-          if (!((GetExtendFriendInfo.RspBody)localObject).uint32_voice_duration.has()) {
-            break label536;
-          }
-          j = ((GetExtendFriendInfo.RspBody)localObject).uint32_voice_duration.get();
-          PersonalInfo.ReqBody localReqBody = new PersonalInfo.ReqBody();
-          localReqBody.mergeFrom(((GetExtendFriendInfo.RspBody)localObject).bytes_personalization.get().toByteArray());
-          int k = localReqBody.fontid.get();
-          int m = localReqBody.fonttype.get();
-          int n = localReqBody.itemid.get();
-          paramCard.fontId = k;
-          paramCard.fontType = m;
-          paramCard.clothesId = n;
-          paramCard.declaration = paramRespSummaryCard;
-          paramCard.popularity = i;
-          paramCard.voiceUrl = str;
-          paramCard.updateTime = l;
-          paramCard.extendFriendVoiceDuration = j;
-          if ((((GetExtendFriendInfo.RspBody)localObject).rpt_school_info.has()) && (((GetExtendFriendInfo.schoolInfo)((GetExtendFriendInfo.RspBody)localObject).rpt_school_info.get().get(0)).has()))
-          {
-            localObject = (GetExtendFriendInfo.schoolInfo)((GetExtendFriendInfo.RspBody)localObject).rpt_school_info.get().get(0);
-            paramCard.schoolId = ((GetExtendFriendInfo.schoolInfo)localObject).str_school_id.get();
-            paramCard.schoolName = ((GetExtendFriendInfo.schoolInfo)localObject).str_school_name.get();
-            paramCard.authState = ((GetExtendFriendInfo.schoolInfo)localObject).uint64_state.get();
-            paramCard.idx = ((GetExtendFriendInfo.schoolInfo)localObject).uint32_idx.get();
-            paramCard.category = ((GetExtendFriendInfo.schoolInfo)localObject).uint32_category.get();
-            if (QLog.isColorLevel())
-            {
-              QLog.d("DefaultProfileBusinessProcessor", 2, String.format("processProfileCardWithExtendFriend popularity=%s declaration=%s voiceUrl=%s updateTime=%s duration=%s fontId=%s fontType=%s clothesId=%s", new Object[] { Integer.valueOf(i), paramRespSummaryCard, str, Long.valueOf(l), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n) }));
-              QLog.d("DefaultProfileBusinessProcessor", 2, String.format("processProfileCardWithExtendFriend schoolName=%s schoolId=%s authState=%s", new Object[] { paramCard.schoolName, paramCard.schoolId, Long.valueOf(paramCard.authState) }));
-            }
-          }
-          else
-          {
-            paramCard.schoolId = null;
-            paramCard.schoolName = null;
-            paramCard.authState = -1L;
-            paramCard.idx = -1;
-            paramCard.category = -1;
-            continue;
-          }
+          localObject = (GetExtendFriendInfo.schoolInfo)((GetExtendFriendInfo.RspBody)localObject).rpt_school_info.get().get(0);
+          paramCard.schoolId = ((GetExtendFriendInfo.schoolInfo)localObject).str_school_id.get();
+          paramCard.schoolName = ((GetExtendFriendInfo.schoolInfo)localObject).str_school_name.get();
+          paramCard.authState = ((GetExtendFriendInfo.schoolInfo)localObject).uint64_state.get();
+          paramCard.idx = ((GetExtendFriendInfo.schoolInfo)localObject).uint32_idx.get();
+          paramCard.category = ((GetExtendFriendInfo.schoolInfo)localObject).uint32_category.get();
+        }
+        else
+        {
+          paramCard.schoolId = null;
+          paramCard.schoolName = null;
+          paramCard.authState = -1L;
+          paramCard.idx = -1;
+          paramCard.category = -1;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("DefaultProfileBusinessProcessor", 2, String.format("processProfileCardWithExtendFriend popularity=%s declaration=%s voiceUrl=%s updateTime=%s duration=%s fontId=%s fontType=%s clothesId=%s", new Object[] { Integer.valueOf(i), paramRespSummaryCard, str, Long.valueOf(l), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n) }));
+          QLog.d("DefaultProfileBusinessProcessor", 2, String.format("processProfileCardWithExtendFriend schoolName=%s schoolId=%s authState=%s", new Object[] { paramCard.schoolName, paramCard.schoolId, Long.valueOf(paramCard.authState) }));
           return;
         }
       }
@@ -304,18 +336,20 @@ public class DefaultProfileBusinessProcessor
       {
         QLog.e("DefaultProfileBusinessProcessor", 1, "", paramCard);
       }
+      return;
+      label529:
       paramRespSummaryCard = null;
       continue;
-      label519:
+      label534:
       String str = null;
       continue;
-      label525:
+      label540:
       int i = 0;
       continue;
-      label530:
+      label545:
       long l = 0L;
       continue;
-      label536:
+      label551:
       int j = 0;
     }
   }
@@ -337,168 +371,248 @@ public class DefaultProfileBusinessProcessor
     if ((0x10000 & paramLong) != 0L) {
       paramCard.vLongNickTopicInfo = paramRespSummaryCard.vLongNickTopicInfo;
     }
-    if ((0x10 & paramLong) != 0L)
+    if ((paramLong & 0x10) != 0L)
     {
       paramCard.lLoginDays = paramRespSummaryCard.uLoginDays;
       paramCard.strLoginDaysDesc = paramRespSummaryCard.strLoginDesc;
     }
-    if ((0x8 & paramLong) != 0L)
+    if ((paramLong & 0x8) != 0L)
     {
       paramCard.lUserFlag = paramRespSummaryCard.lUserFlag;
-      if ((paramCard.lUserFlag & 0x8) == 0L) {
-        break label180;
+      paramLong = paramCard.lUserFlag;
+      boolean bool2 = true;
+      boolean bool1;
+      if ((paramLong & 0x8) != 0L) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      bool = true;
-      paramCard.allowClick = bool;
-      if (!paramString.equals(this.appRuntime.getAccount())) {
-        if ((paramCard.lUserFlag & 0x10) == 0L) {
-          break label186;
+      paramCard.allowClick = bool1;
+      if (!paramString.equals(this.appRuntime.getAccount()))
+      {
+        if ((paramCard.lUserFlag & 0x10) != 0L) {
+          bool1 = bool2;
+        } else {
+          bool1 = false;
         }
+        paramCard.allowPeopleSee = bool1;
       }
-    }
-    label180:
-    label186:
-    for (boolean bool = true;; bool = false)
-    {
-      paramCard.allowPeopleSee = bool;
-      return;
-      bool = false;
-      break;
     }
   }
   
   private void processProfileCardWithHobbies(Card paramCard, RespSummaryCard paramRespSummaryCard)
   {
+    Object localObject1 = paramRespSummaryCard;
     ArrayList localArrayList1 = new ArrayList();
     int i;
-    Object localObject1;
     int j;
-    label60:
-    label82:
     int k;
     Object localObject2;
-    if ((paramRespSummaryCard.vvRespServicesBigOrder != null) && (paramRespSummaryCard.vvRespServicesBigOrder.size() > 0))
+    if ((((RespSummaryCard)localObject1).vvRespServicesBigOrder != null) && (((RespSummaryCard)localObject1).vvRespServicesBigOrder.size() > 0))
     {
       i = 0;
-      if (i < paramRespSummaryCard.vvRespServicesBigOrder.size())
+      localObject1 = paramRespSummaryCard;
+      if (i < ((RespSummaryCard)localObject1).vvRespServicesBigOrder.size())
       {
-        localObject1 = (byte[])paramRespSummaryCard.vvRespServicesBigOrder.get(i);
-        if (localObject1 == null)
-        {
+        localObject1 = (byte[])((RespSummaryCard)localObject1).vvRespServicesBigOrder.get(i);
+        if (localObject1 == null) {
           j = 0;
-          if (j > 10) {
-            break label82;
+        } else {
+          j = localObject1.length;
+        }
+        if (j > 10)
+        {
+          k = (int)PkgTools.getLongData((byte[])localObject1, 1);
+          PkgTools.getLongData((byte[])localObject1, 5);
+          if ((k > 0) && (9 + k < j))
+          {
+            localObject2 = new byte[k];
+            PkgTools.copyData((byte[])localObject2, 0, (byte[])localObject1, 9, k);
+            localObject1 = new SummaryCardBusiEntry.comm();
+            j = i;
           }
         }
-        do
-        {
-          i += 1;
-          break;
-          j = localObject1.length;
-          break label60;
-          k = (int)PkgTools.getLongData((byte[])localObject1, 1);
-          int m = (int)PkgTools.getLongData((byte[])localObject1, 5);
-        } while ((k <= 0) || (k + 9 >= j));
-        localObject2 = new byte[k];
-        PkgTools.copyData((byte[])localObject2, 0, (byte[])localObject1, 9, k);
-        localObject1 = new SummaryCardBusiEntry.comm();
       }
     }
     for (;;)
     {
-      ArrayList localArrayList2;
-      ProfileSummaryHobbiesItem localProfileSummaryHobbiesItem;
-      ArrayList localArrayList3;
       try
       {
         ((SummaryCardBusiEntry.comm)localObject1).mergeFrom((byte[])localObject2);
-        j = ((SummaryCardBusiEntry.comm)localObject1).result.get();
+        j = i;
+        k = ((SummaryCardBusiEntry.comm)localObject1).result.get();
+        j = i;
         localObject2 = new ProfileSummaryHobbiesEntry();
-        if (j != 0) {
-          break label744;
+        if (k != 0) {
+          break label1052;
         }
+        j = i;
         ((ProfileSummaryHobbiesEntry)localObject2).strName = ((SummaryCardBusiEntry.comm)localObject1).msg_rich_display.strName.get();
+        j = i;
         ((ProfileSummaryHobbiesEntry)localObject2).strServiceUrl = ((SummaryCardBusiEntry.comm)localObject1).msg_rich_display.strServiceUrl.get();
+        j = i;
         ((ProfileSummaryHobbiesEntry)localObject2).serviceType = ((SummaryCardBusiEntry.comm)localObject1).service.get();
-        localArrayList2 = new ArrayList();
-        j = 0;
-        if (j >= ((SummaryCardBusiEntry.comm)localObject1).msg_rich_display.rptUiList.size()) {
-          break label737;
-        }
-        SummaryCardBusiEntry.ui_info localui_info = (SummaryCardBusiEntry.ui_info)((SummaryCardBusiEntry.comm)localObject1).msg_rich_display.rptUiList.get(j);
-        localProfileSummaryHobbiesItem = new ProfileSummaryHobbiesItem();
-        localProfileSummaryHobbiesItem.strTitle = localui_info.strTitle.get();
-        localProfileSummaryHobbiesItem.strCoverUrl = localui_info.strCoverUrl.get();
-        localProfileSummaryHobbiesItem.strJmpUrl = localui_info.strJmpUrl.get();
-        localProfileSummaryHobbiesItem.strSubInfo = localui_info.strSubInfo.get();
-        localProfileSummaryHobbiesItem.strDesc = localui_info.strDesc.get();
-        localProfileSummaryHobbiesItem.strTitleIconUrl = localui_info.strTitleIconUrl.get();
-        localProfileSummaryHobbiesItem.groupCode = localui_info.uint64_group_code.get();
-        localProfileSummaryHobbiesItem.serviceType = ((ProfileSummaryHobbiesEntry)localObject2).serviceType;
-        if (i == 0)
+        j = i;
+        ArrayList localArrayList2 = new ArrayList();
+        k = 0;
+        j = i;
+        ProfileSummaryHobbiesItem localProfileSummaryHobbiesItem;
+        int m;
+        SummaryCardBusiEntry.Label localLabel;
+        ProfileGroupLabel localProfileGroupLabel;
+        ProfileColor localProfileColor;
+        long l;
+        if (k < ((SummaryCardBusiEntry.comm)localObject1).msg_rich_display.rptUiList.size())
         {
-          if (j == 0) {
-            localProfileSummaryHobbiesItem.service = 0;
+          j = i;
+          SummaryCardBusiEntry.ui_info localui_info = (SummaryCardBusiEntry.ui_info)((SummaryCardBusiEntry.comm)localObject1).msg_rich_display.rptUiList.get(k);
+          j = i;
+          localProfileSummaryHobbiesItem = new ProfileSummaryHobbiesItem();
+          j = i;
+          localProfileSummaryHobbiesItem.strTitle = localui_info.strTitle.get();
+          j = i;
+          localProfileSummaryHobbiesItem.strCoverUrl = localui_info.strCoverUrl.get();
+          j = i;
+          localProfileSummaryHobbiesItem.strJmpUrl = localui_info.strJmpUrl.get();
+          j = i;
+          localProfileSummaryHobbiesItem.strSubInfo = localui_info.strSubInfo.get();
+          j = i;
+          localProfileSummaryHobbiesItem.strDesc = localui_info.strDesc.get();
+          j = i;
+          localProfileSummaryHobbiesItem.strTitleIconUrl = localui_info.strTitleIconUrl.get();
+          j = i;
+          localProfileSummaryHobbiesItem.groupCode = localui_info.uint64_group_code.get();
+          j = i;
+          localProfileSummaryHobbiesItem.serviceType = ((ProfileSummaryHobbiesEntry)localObject2).serviceType;
+          if (i == 0) {
+            if (k == 0)
+            {
+              j = i;
+              localProfileSummaryHobbiesItem.service = 0;
+            }
+            else
+            {
+              j = i;
+              localProfileSummaryHobbiesItem.service = 1;
+            }
           }
-        }
-        else
-        {
+          j = i;
           if (localui_info.rptGroupTagList.size() <= 0) {
-            break label677;
+            break label1034;
           }
-          localArrayList3 = new ArrayList();
-          k = 0;
-          if (k >= localui_info.rptGroupTagList.size()) {
-            break label670;
+          j = i;
+          localObject3 = new ArrayList();
+          m = 0;
+          j = i;
+          if (m < localui_info.rptGroupTagList.size())
+          {
+            j = i;
+            localLabel = (SummaryCardBusiEntry.Label)localui_info.rptGroupTagList.get(m);
+            j = i;
+            localProfileGroupLabel = new ProfileGroupLabel();
+            j = i;
+            localProfileGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
+            j = i;
+            localProfileGroupLabel.type = localLabel.uint32_label_type.get();
+            j = i;
+            localProfileGroupLabel.attr = localLabel.uint32_label_attr.get();
+            j = i;
+            localProfileColor = new ProfileColor();
+            j = i;
+            int n = localLabel.edging_color.uint32_r.get();
+            j = i;
+            l = n;
+            i = j;
           }
-          SummaryCardBusiEntry.Label localLabel = (SummaryCardBusiEntry.Label)localui_info.rptGroupTagList.get(k);
-          ProfileGroupLabel localProfileGroupLabel = new ProfileGroupLabel();
-          localProfileGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
-          localProfileGroupLabel.type = localLabel.uint32_label_type.get();
-          localProfileGroupLabel.attr = localLabel.uint32_label_attr.get();
-          ProfileColor localProfileColor = new ProfileColor();
-          localProfileColor.red = localLabel.edging_color.uint32_r.get();
+        }
+        try
+        {
+          localProfileColor.red = l;
+          i = j;
           localProfileColor.green = localLabel.edging_color.uint32_g.get();
+          i = j;
           localProfileColor.blue = localLabel.edging_color.uint32_b.get();
+          i = j;
           localProfileGroupLabel.edgingColor = localProfileColor;
+          i = j;
           localProfileColor = new ProfileColor();
+          i = j;
           localProfileColor.red = localLabel.text_color.uint32_r.get();
+          i = j;
           localProfileColor.green = localLabel.text_color.uint32_g.get();
+          i = j;
           localProfileColor.blue = localLabel.text_color.uint32_b.get();
+          i = j;
           localProfileGroupLabel.textColor = localProfileColor;
-          localArrayList3.add(localProfileGroupLabel);
-          k += 1;
-          continue;
+          i = j;
+          ((ArrayList)localObject3).add(localProfileGroupLabel);
+          m += 1;
+          i = j;
         }
-        localProfileSummaryHobbiesItem.service = 1;
-        continue;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("DefaultProfileBusinessProcessor", 1, "processProfileCardWithHobbies fail.", localException);
-      }
-      label670:
-      localProfileSummaryHobbiesItem.labels = localArrayList3;
-      label677:
-      localArrayList2.add(localProfileSummaryHobbiesItem);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("DefaultProfileBusinessProcessor", 2, String.format("HobbiesEntry Item strTitle=%s serviceType=%s strJmpUrl=%s", new Object[] { localProfileSummaryHobbiesItem.strTitle, Integer.valueOf(localProfileSummaryHobbiesItem.serviceType), localProfileSummaryHobbiesItem.strJmpUrl }));
-        break label810;
-        label737:
-        ((ProfileSummaryHobbiesEntry)localObject2).sProfileSummaryHobbiesItem = localArrayList2;
-        label744:
-        localArrayList1.add(localObject2);
+        catch (Exception localException2)
+        {
+          break label1000;
+        }
+        j = i;
+        i = j;
+        localProfileSummaryHobbiesItem.labels = ((ArrayList)localObject3);
+        i = j;
+        localArrayList2.add(localProfileSummaryHobbiesItem);
+        i = j;
         if (!QLog.isColorLevel()) {
-          break;
+          break label1040;
         }
-        QLog.d("DefaultProfileBusinessProcessor", 2, String.format("HobbiesEntry strName=%s strServiceType=%s strServiceUrl=%s", new Object[] { ((ProfileSummaryHobbiesEntry)localObject2).strName, ((ProfileSummaryHobbiesEntry)localObject2).strServiceType, ((ProfileSummaryHobbiesEntry)localObject2).strServiceUrl }));
-        break;
-        paramCard.saveBigOrderEntrys(localArrayList1);
-        return;
+        i = j;
+        Object localObject3 = localProfileSummaryHobbiesItem.strTitle;
+        i = j;
+        QLog.d("DefaultProfileBusinessProcessor", 2, String.format("HobbiesEntry Item strTitle=%s serviceType=%s strJmpUrl=%s", new Object[] { localObject3, Integer.valueOf(localProfileSummaryHobbiesItem.serviceType), localProfileSummaryHobbiesItem.strJmpUrl }));
+        break label1040;
+        j = i;
+        i = j;
+        ((ProfileSummaryHobbiesEntry)localObject2).sProfileSummaryHobbiesItem = localArrayList2;
+        i = j;
+        localArrayList1.add(localObject2);
+        i = j;
+        k = j;
+        if (!QLog.isColorLevel()) {
+          break label1017;
+        }
+        i = j;
+        localObject1 = ((ProfileSummaryHobbiesEntry)localObject2).strName;
+        try
+        {
+          QLog.d("DefaultProfileBusinessProcessor", 2, String.format("HobbiesEntry strName=%s strServiceType=%s strServiceUrl=%s", new Object[] { localObject1, ((ProfileSummaryHobbiesEntry)localObject2).strServiceType, ((ProfileSummaryHobbiesEntry)localObject2).strServiceUrl }));
+          i = j;
+        }
+        catch (Exception localException1)
+        {
+          i = j;
+        }
+        QLog.e("DefaultProfileBusinessProcessor", 1, "processProfileCardWithHobbies fail.", localException3);
       }
-      label810:
-      j += 1;
+      catch (Exception localException3)
+      {
+        i = j;
+      }
+      label1000:
+      break label1020;
+      k = i;
+      label1017:
+      i = k;
+      label1020:
+      i += 1;
+      break;
+      paramCard.saveBigOrderEntrys(localArrayList1);
+      return;
+      label1034:
+      j = i;
+      continue;
+      label1040:
+      k += 1;
+      i = j;
+      continue;
+      label1052:
+      j = i;
     }
   }
   
@@ -560,14 +674,6 @@ public class DefaultProfileBusinessProcessor
     paramList.add(Short.valueOf((short)-23325));
     paramList.add(Short.valueOf((short)27245));
     paramList.add(Short.valueOf((short)-23332));
-    paramList.add(Short.valueOf((short)-23308));
-    paramList.add(Short.valueOf((short)-23309));
-    paramList.add(Short.valueOf((short)-23310));
-    paramList.add(Short.valueOf((short)-23166));
-    paramList.add(Short.valueOf((short)-23312));
-    paramList.add(Short.valueOf((short)-23168));
-    paramList.add(Short.valueOf((short)-23158));
-    paramList.add(Short.valueOf((short)-23161));
     paramList.add(Short.valueOf((short)-23249));
     paramList.add(Short.valueOf((short)-23221));
     paramList.add(Short.valueOf((short)-23172));
@@ -635,47 +741,40 @@ public class DefaultProfileBusinessProcessor
       paramCard.encId = paramBundle.getString("searchName");
     }
     paramCard.ulShowControl = ((int)paramRespSummaryCard.ulShowControl);
-    if ((paramRespSummaryCard.ulShowControl & 1L) != 0L)
-    {
-      bool = true;
-      paramCard.setFeedsShowFlag(bool);
-      if ((paramRespSummaryCard.ulShowControl & 0x2) == 0L) {
-        break label395;
-      }
-      bool = true;
-      label282:
-      paramCard.setPhotoShowFlag(bool);
-      if ((paramRespSummaryCard.ulShowControl & 0x10) == 0L) {
-        break label401;
-      }
-      bool = true;
-      label305:
-      paramCard.setXManFlag(bool);
-      if (paramRespSummaryCard.lCacheControl == 0L) {
-        break label407;
-      }
+    long l3 = paramRespSummaryCard.ulShowControl;
+    boolean bool2 = true;
+    boolean bool1;
+    if ((l3 & 1L) != 0L) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    label395:
-    label401:
-    label407:
-    for (boolean bool = true;; bool = false)
-    {
-      paramCard.setPhotoUseCacheFlag(bool);
-      paramCard.setVipInfo(paramRespSummaryCard.stVipInfo);
-      processProfileCardWithGetControl(paramCard, paramRespSummaryCard, l2, String.valueOf(l1));
-      processProfileCardWithCover(paramCard, paramRespSummaryCard);
-      processProfileCardWithDiamonds(paramCard, paramRespSummaryCard);
-      processProfileCardWithHobbies(paramCard, paramRespSummaryCard);
-      processProfileCardWithVisitingCard(paramCard, paramRespSummaryCard);
-      processProfileCardWithExtendFriend(paramCard, paramRespSummaryCard);
-      return;
-      bool = false;
-      break;
-      bool = false;
-      break label282;
-      bool = false;
-      break label305;
+    paramCard.setFeedsShowFlag(bool1);
+    if ((paramRespSummaryCard.ulShowControl & 0x2) != 0L) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    paramCard.setPhotoShowFlag(bool1);
+    if ((paramRespSummaryCard.ulShowControl & 0x10) != 0L) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    paramCard.setXManFlag(bool1);
+    if (paramRespSummaryCard.lCacheControl != 0L) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    paramCard.setPhotoUseCacheFlag(bool1);
+    paramCard.setVipInfo(paramRespSummaryCard.stVipInfo);
+    processProfileCardWithGetControl(paramCard, paramRespSummaryCard, l2, String.valueOf(l1));
+    processProfileCardWithCover(paramCard, paramRespSummaryCard);
+    processProfileCardWithDiamonds(paramCard, paramRespSummaryCard);
+    processProfileCardWithHobbies(paramCard, paramRespSummaryCard);
+    processProfileCardWithVisitingCard(paramCard, paramRespSummaryCard);
+    processProfileCardWithExtendFriend(paramCard, paramRespSummaryCard);
   }
   
   public void onRequestProfileCard(Bundle paramBundle, ArrayList<BusinessReqBuffer> paramArrayList, ArrayList<Integer> paramArrayList1)
@@ -686,7 +785,7 @@ public class DefaultProfileBusinessProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.processor.DefaultProfileBusinessProcessor
  * JD-Core Version:    0.7.0.1
  */

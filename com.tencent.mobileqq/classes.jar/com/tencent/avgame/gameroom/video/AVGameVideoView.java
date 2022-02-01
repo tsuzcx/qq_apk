@@ -22,7 +22,7 @@ public class AVGameVideoView
     this.r = paramBoolean;
   }
   
-  public boolean a(int paramInt)
+  protected boolean a(int paramInt)
   {
     if (g() == 2) {
       return false;
@@ -30,14 +30,14 @@ public class AVGameVideoView
     return super.a(paramInt);
   }
   
-  public void b(GLCanvas paramGLCanvas)
+  protected void b(GLCanvas paramGLCanvas)
   {
     if (this.r) {
       super.b(paramGLCanvas);
     }
   }
   
-  public void d(GLCanvas paramGLCanvas)
+  protected void d(GLCanvas paramGLCanvas)
   {
     this.s = true;
     super.d(paramGLCanvas);
@@ -45,7 +45,7 @@ public class AVGameVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameVideoView
  * JD-Core Version:    0.7.0.1
  */

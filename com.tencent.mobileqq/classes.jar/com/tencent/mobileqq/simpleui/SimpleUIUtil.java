@@ -49,24 +49,19 @@ public class SimpleUIUtil
     jdField_b_of_type_Int = -1;
     jdField_c_of_type_Int = 0;
     int i = 0;
-    for (;;)
+    while (i < QQTheme.a.size())
     {
-      if (i < QQTheme.a.size())
+      if (TextUtils.equals("2920", a(i)))
       {
-        if (TextUtils.equals("2920", a(i))) {
-          jdField_c_of_type_Int = i;
-        }
-      }
-      else
-      {
-        d = 0;
-        e = 0;
-        f = 0;
-        jdField_a_of_type_Boolean = false;
-        return;
+        jdField_c_of_type_Int = i;
+        break;
       }
       i += 1;
     }
+    d = 0;
+    e = 0;
+    f = 0;
+    jdField_a_of_type_Boolean = false;
   }
   
   static int a()
@@ -117,52 +112,42 @@ public class SimpleUIUtil
   
   public static void a(ImmersiveTitleBar2 paramImmersiveTitleBar2, Window paramWindow)
   {
-    boolean bool1 = false;
-    boolean bool2;
     if (a())
     {
-      bool2 = QQTheme.a();
-      if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()) && (!jdField_c_of_type_Boolean)) {
-        if (QQTheme.c(QQTheme.a())) {
-          if (!QQTheme.a(QQTheme.a()))
-          {
-            ImmersiveUtils.setStatusTextColor(false, paramWindow);
-            jdField_b_of_type_Boolean = true;
-          }
-        }
-      }
-    }
-    do
-    {
-      return;
-      ImmersiveUtils.setStatusTextColor(true, paramWindow);
-      break;
-      if (!bool2) {
-        bool1 = true;
-      }
-      ImmersiveUtils.setStatusTextColor(bool1, paramWindow);
-      break;
-      if ((ImmersiveUtils.isSupporImmersive() == 0) || (paramImmersiveTitleBar2 == null) || (bool2)) {
-        break;
-      }
-      paramImmersiveTitleBar2.setBackgroundColor(jdField_a_of_type_Int);
-      break;
-      if (true == jdField_b_of_type_Boolean)
+      boolean bool = QQTheme.a();
+      if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()) && (!jdField_c_of_type_Boolean))
       {
-        if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()) && (!jdField_c_of_type_Boolean)) {
-          ImmersiveUtils.setStatusTextColor(false, paramWindow);
-        }
-        for (;;)
+        if (QQTheme.d(QQTheme.a()))
         {
-          jdField_b_of_type_Boolean = false;
-          return;
-          if ((ImmersiveUtils.isSupporImmersive() != 0) && (paramImmersiveTitleBar2 != null)) {
-            paramImmersiveTitleBar2.setBackgroundColor(MobileQQ.getContext().getResources().getColor(2131167091));
+          if (!QQTheme.b(QQTheme.a())) {
+            ImmersiveUtils.setStatusTextColor(false, paramWindow);
+          } else {
+            ImmersiveUtils.setStatusTextColor(true, paramWindow);
           }
         }
+        else {
+          ImmersiveUtils.setStatusTextColor(bool ^ true, paramWindow);
+        }
       }
-    } while (paramImmersiveTitleBar2 == null);
-    ImmersiveUtils.adjustThemeStatusBar(paramWindow);
+      else if ((ImmersiveUtils.isSupporImmersive() != 0) && (paramImmersiveTitleBar2 != null) && (!bool)) {
+        paramImmersiveTitleBar2.setBackgroundColor(jdField_a_of_type_Int);
+      }
+      jdField_b_of_type_Boolean = true;
+      return;
+    }
+    if (true == jdField_b_of_type_Boolean)
+    {
+      if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()) && (!jdField_c_of_type_Boolean)) {
+        ImmersiveUtils.setStatusTextColor(false, paramWindow);
+      } else if ((ImmersiveUtils.isSupporImmersive() != 0) && (paramImmersiveTitleBar2 != null)) {
+        paramImmersiveTitleBar2.setBackgroundColor(MobileQQ.getContext().getResources().getColor(2131167114));
+      }
+      jdField_b_of_type_Boolean = false;
+      return;
+    }
+    if (paramImmersiveTitleBar2 != null) {
+      ImmersiveUtils.adjustThemeStatusBar(paramWindow);
+    }
   }
   
   public static void a(SystemBarCompact paramSystemBarCompact, Window paramWindow)
@@ -176,64 +161,59 @@ public class SimpleUIUtil
     if (a())
     {
       bool = QQTheme.a();
-      if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()) && (!jdField_c_of_type_Boolean)) {
-        if (paramBoolean == null) {
-          if (!bool)
-          {
-            bool = true;
-            if (!QQTheme.c(QQTheme.a())) {
-              break label89;
-            }
-            if (QQTheme.a(QQTheme.a())) {
-              break label80;
-            }
-            ImmersiveUtils.setStatusTextColor(false, paramWindow);
-            label62:
-            jdField_b_of_type_Boolean = true;
-          }
-        }
-      }
-    }
-    label80:
-    label89:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      bool = paramBoolean.booleanValue();
-      break;
-      ImmersiveUtils.setStatusTextColor(true, paramWindow);
-      break label62;
-      ImmersiveUtils.setStatusTextColor(bool, paramWindow);
-      break label62;
-      if ((ImmersiveUtils.isSupporImmersive() == 0) || (paramSystemBarCompact == null) || (bool)) {
-        break label62;
-      }
-      paramSystemBarCompact.setStatusBarColor(jdField_a_of_type_Int);
-      break label62;
-      if (true == jdField_b_of_type_Boolean)
+      if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()) && (!jdField_c_of_type_Boolean))
       {
-        if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()) && (!jdField_c_of_type_Boolean)) {
-          if (paramBoolean == null)
-          {
+        if (paramBoolean == null)
+        {
+          if (!bool) {
+            bool = true;
+          } else {
             bool = false;
-            ImmersiveUtils.setStatusTextColor(bool, paramWindow);
           }
         }
-        for (;;)
-        {
-          jdField_b_of_type_Boolean = false;
-          return;
+        else {
           bool = paramBoolean.booleanValue();
-          break;
-          if ((ImmersiveUtils.isSupporImmersive() != 0) && (paramSystemBarCompact != null)) {
-            paramSystemBarCompact.setStatusBarColor(2131167091);
+        }
+        if (QQTheme.d(QQTheme.a()))
+        {
+          if (!QQTheme.b(QQTheme.a())) {
+            ImmersiveUtils.setStatusTextColor(false, paramWindow);
+          } else {
+            ImmersiveUtils.setStatusTextColor(true, paramWindow);
           }
+        }
+        else {
+          ImmersiveUtils.setStatusTextColor(bool, paramWindow);
         }
       }
-    } while (paramSystemBarCompact == null);
-    ImmersiveUtils.adjustThemeStatusBar(paramWindow);
+      else if ((ImmersiveUtils.isSupporImmersive() != 0) && (paramSystemBarCompact != null) && (!bool))
+      {
+        paramSystemBarCompact.setStatusBarColor(jdField_a_of_type_Int);
+      }
+      jdField_b_of_type_Boolean = true;
+      return;
+    }
+    if (true == jdField_b_of_type_Boolean)
+    {
+      if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()) && (!jdField_c_of_type_Boolean))
+      {
+        if (paramBoolean == null) {
+          bool = false;
+        } else {
+          bool = paramBoolean.booleanValue();
+        }
+        ImmersiveUtils.setStatusTextColor(bool, paramWindow);
+      }
+      else if ((ImmersiveUtils.isSupporImmersive() != 0) && (paramSystemBarCompact != null))
+      {
+        paramSystemBarCompact.setStatusBarColor(2131167114);
+      }
+      jdField_b_of_type_Boolean = false;
+      return;
+    }
+    if (paramSystemBarCompact != null) {
+      ImmersiveUtils.adjustThemeStatusBar(paramWindow);
+    }
   }
   
   public static void a(boolean paramBoolean, int paramInt, Window paramWindow)
@@ -243,58 +223,31 @@ public class SimpleUIUtil
       boolean bool = QQTheme.a();
       if ((ImmersiveUtils.isSupporImmersive() != 0) && (ImmersiveUtils.couldSetStatusTextColor()) && (!bool))
       {
-        if (!paramBoolean) {
-          break label37;
+        if (paramBoolean)
+        {
+          ImmersiveUtils.setStatusTextColor(false, paramWindow);
+          return;
         }
-        ImmersiveUtils.setStatusTextColor(false, paramWindow);
+        ImmersiveUtils.setStatusTextColor(true, paramWindow);
       }
     }
-    return;
-    label37:
-    ImmersiveUtils.setStatusTextColor(true, paramWindow);
   }
   
   public static final boolean a()
   {
-    int j = 1;
-    boolean bool = false;
-    if (MobileQQ.sProcessId == 1) {
-      i = 1;
-    }
-    while ((i != 0) && (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -2147483648)) {
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1)
-      {
-        return true;
-        i = 0;
-      }
-      else
-      {
-        return false;
-      }
-    }
-    Object localObject = MobileQQ.sMobileQQ.peekAppRuntime();
-    if (localObject != null)
-    {
-      bool = QQTheme.a(((AppRuntime)localObject).getAccount()).getBoolean("key_simple_ui_switch", false);
-      localObject = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-      if (!bool) {
-        break label94;
-      }
-    }
-    label94:
-    for (int i = j;; i = 0)
-    {
-      ((AtomicInteger)localObject).compareAndSet(-2147483648, i);
-      return bool;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static boolean a(int paramInt)
   {
     if (((paramInt < 0) || (paramInt >= QQTheme.a.size())) && (paramInt != jdField_b_of_type_Int))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleUILogSimpleUIUtil", 2, "isValidSimplePref error bPref=" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isValidSimplePref error bPref=");
+        localStringBuilder.append(paramInt);
+        QLog.d("SimpleUILogSimpleUIUtil", 2, localStringBuilder.toString());
       }
       return false;
     }
@@ -321,7 +274,7 @@ public class SimpleUIUtil
   
   public static void b()
   {
-    if (f == 1) {}
+    int i = f;
   }
   
   static void b(int paramInt)
@@ -346,23 +299,17 @@ public class SimpleUIUtil
   
   public static int d()
   {
-    if (d != 0) {
-      return d;
+    int i = d;
+    if (i != 0) {
+      return i;
     }
     Object localObject = QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "action_qzone_get_themeid", null);
     if ((localObject != null) && (((EIPCResult)localObject).data != null))
     {
       localObject = ((EIPCResult)localObject).data.getString("themeId");
-      if (!"2971".equals(localObject)) {
-        break label65;
-      }
-      d = -1;
-    }
-    for (;;)
-    {
-      return d;
-      label65:
-      if ("2921".equals(localObject)) {
+      if ("2971".equals(localObject)) {
+        d = -1;
+      } else if ("2921".equals(localObject)) {
         d = -657670;
       } else if ("3064".equals(localObject)) {
         d = -7084;
@@ -378,6 +325,7 @@ public class SimpleUIUtil
         d = -15120003;
       }
     }
+    return d;
   }
   
   static void d(int paramInt)
@@ -387,23 +335,17 @@ public class SimpleUIUtil
   
   public static int e()
   {
-    if (e != 0) {
-      return e;
+    int i = e;
+    if (i != 0) {
+      return i;
     }
     Object localObject = QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "action_qzone_get_themeid", null);
     if ((localObject != null) && (((EIPCResult)localObject).data != null))
     {
       localObject = ((EIPCResult)localObject).data.getString("themeId");
-      if (!"2971".equals(localObject)) {
-        break label69;
-      }
-      e = Color.parseColor("#03081A");
-    }
-    for (;;)
-    {
-      return e;
-      label69:
-      if ("2921".equals(localObject)) {
+      if ("2971".equals(localObject)) {
+        e = Color.parseColor("#03081A");
+      } else if ("2921".equals(localObject)) {
         e = Color.parseColor("#03081A");
       } else if ("3064".equals(localObject)) {
         e = Color.parseColor("#03081A");
@@ -419,6 +361,7 @@ public class SimpleUIUtil
         e = -1;
       }
     }
+    return e;
   }
   
   public static void e(int paramInt)
@@ -428,86 +371,78 @@ public class SimpleUIUtil
   
   public static final int f()
   {
+    int m = MobileQQ.sProcessId;
     int i = 1;
-    int j = 0;
     int k = 0;
-    if (MobileQQ.sProcessId == 1)
-    {
-      if ((i == 0) || (jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == -2147483648) || (!a(jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()))) {
-        break label54;
-      }
-      i = jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    }
-    label54:
-    do
-    {
-      return i;
+    int j = 0;
+    if (m != 1) {
       i = 0;
-      break;
-      localObject = MobileQQ.sMobileQQ.peekAppRuntime();
-      i = k;
-    } while (localObject == null);
-    Object localObject = QQTheme.a(((AppRuntime)localObject).getAccount());
-    k = ((SharedPreferences)localObject).getInt("key_simple_ui_pref_828", -1);
+    }
+    if ((i != 0) && (jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -2147483648) && (a(jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()))) {
+      return jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    }
+    Object localObject = MobileQQ.sMobileQQ.peekAppRuntime();
     i = k;
-    if (!a(k))
+    if (localObject != null)
     {
-      k = ((SharedPreferences)localObject).getInt("key_simple_ui_pref_new", 0);
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).remove("key_simple_ui_pref_new");
-      ((SharedPreferences.Editor)localObject).commit();
-      i = k;
-      if (!a(k)) {
-        i = j;
+      localObject = QQTheme.a(((AppRuntime)localObject).getAccount());
+      i = ((SharedPreferences)localObject).getInt("key_simple_ui_pref_828", -1);
+      if (!a(i))
+      {
+        i = ((SharedPreferences)localObject).getInt("key_simple_ui_pref_new", 0);
+        localObject = ((SharedPreferences)localObject).edit();
+        ((SharedPreferences.Editor)localObject).remove("key_simple_ui_pref_new");
+        ((SharedPreferences.Editor)localObject).commit();
+        if (!a(i)) {
+          i = j;
+        } else {}
       }
-    }
-    for (;;)
-    {
       jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(-2147483648, i);
-      return i;
     }
+    return i;
   }
   
   public static int g()
   {
+    int m = MobileQQ.sProcessId;
     int i = 1;
-    if (MobileQQ.sProcessId == 1) {}
-    while ((i != 0) && (jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -2147483648) && (a(jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())))
-    {
-      return jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    int k = 0;
+    int j = 0;
+    if (m != 1) {
       i = 0;
     }
+    if ((i != 0) && (jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -2147483648) && (a(jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()))) {
+      return jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    }
     Object localObject = MobileQQ.sMobileQQ.peekAppRuntime();
+    i = k;
     if (localObject != null)
     {
       localObject = QQTheme.a(((AppRuntime)localObject).getAccount());
-      int j = ((SharedPreferences)localObject).getInt("key_simple_no_night_ui_828", -1);
-      i = j;
-      if (!a(j))
+      i = ((SharedPreferences)localObject).getInt("key_simple_no_night_ui_828", -1);
+      if (!a(i))
       {
-        j = ((SharedPreferences)localObject).getInt("key_simple_no_night_ui_new", 0);
+        k = ((SharedPreferences)localObject).getInt("key_simple_no_night_ui_new", 0);
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).remove("key_simple_no_night_ui_new");
         ((SharedPreferences.Editor)localObject).commit();
-        if (a(j))
-        {
-          i = j;
-          if (j != jdField_c_of_type_Int) {}
-        }
-        else
-        {
-          i = 0;
+        i = j;
+        if (a(k)) {
+          if (k == jdField_c_of_type_Int) {
+            i = j;
+          } else {
+            i = k;
+          }
         }
       }
       jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(-2147483648, i);
-      return i;
     }
-    return 0;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIUtil
  * JD-Core Version:    0.7.0.1
  */

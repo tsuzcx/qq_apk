@@ -18,40 +18,52 @@ public class FileMsg$StepBaseInfo
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt);
     localStringBuilder.append("_");
-    if (this.result) {
-      if (this.startTime > 0L)
-      {
-        localStringBuilder.append("1");
-        localStringBuilder.append("_");
-      }
-    }
-    for (;;)
+    if (this.result)
     {
-      if ((!(this instanceof FileMsg.StepTransInfo)) && (!this.result) && (this.successTryCount > 0))
+      if (this.startTime > 0L) {
+        localStringBuilder.append("1");
+      } else {
+        localStringBuilder.append("-1");
+      }
+      localStringBuilder.append("_");
+    }
+    else
+    {
+      localStringBuilder.append("0");
+      localStringBuilder.append("_");
+    }
+    if ((!(this instanceof FileMsg.StepTransInfo)) && (!this.result))
+    {
+      paramInt = this.successTryCount;
+      if (paramInt > 0)
       {
-        this.failTryCount += this.successTryCount;
+        this.failTryCount += paramInt;
         this.successTryCount = 0;
       }
-      localStringBuilder.append(this.successTryCount).append("_");
-      localStringBuilder.append(this.failTryCount).append("_");
-      localStringBuilder.append(this.finishTime - this.startTime);
-      return localStringBuilder.toString();
-      localStringBuilder.append("-1");
-      break;
-      localStringBuilder.append("0").append("_");
     }
+    localStringBuilder.append(this.successTryCount);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.failTryCount);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.finishTime - this.startTime);
+    return localStringBuilder.toString();
   }
   
   public long getTimeElapsed()
   {
-    long l = 0L;
-    if ((this.startTime != 0L) && (this.finishTime != 0L)) {
-      l = this.finishTime - this.startTime;
+    long l2 = this.startTime;
+    long l1 = 0L;
+    if (l2 != 0L)
+    {
+      long l3 = this.finishTime;
+      if (l3 != 0L) {
+        return l3 - l2;
+      }
     }
-    while ((this.startTime == 0L) && (this.finishTime == 0L)) {
-      return l;
+    if ((this.startTime != 0L) || (this.finishTime != 0L)) {
+      l1 = 612345L;
     }
-    return 612345L;
+    return l1;
   }
   
   public void reset()
@@ -77,17 +89,33 @@ public class FileMsg$StepBaseInfo
   {
     if (shouldReport())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("{");
-      localStringBuilder.append("result:" + this.result);
-      localStringBuilder.append(",elapsed:" + getTimeElapsed());
-      localStringBuilder.append(",errCode:" + this.errCode);
-      localStringBuilder.append(",retryCount:" + this.retryCount);
-      if (this.detailErrCode != 9223372036854775807L) {
-        localStringBuilder.append(",detailError:" + this.detailErrCode);
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("{");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("result:");
+      localStringBuilder2.append(this.result);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",elapsed:");
+      localStringBuilder2.append(getTimeElapsed());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",errCode:");
+      localStringBuilder2.append(this.errCode);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",retryCount:");
+      localStringBuilder2.append(this.retryCount);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      if (this.detailErrCode != 9223372036854775807L)
+      {
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(",detailError:");
+        localStringBuilder2.append(this.detailErrCode);
+        localStringBuilder1.append(localStringBuilder2.toString());
       }
-      localStringBuilder.append("}");
-      return localStringBuilder.toString();
+      localStringBuilder1.append("}");
+      return localStringBuilder1.toString();
     }
     return "{}";
   }
@@ -96,24 +124,39 @@ public class FileMsg$StepBaseInfo
   {
     if (shouldReport())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("{");
-      localStringBuilder.append("elapsed:" + getTimeElapsed());
-      localStringBuilder.append(",tryCount:" + this.retryCount);
-      localStringBuilder.append("}");
-      return localStringBuilder.toString();
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("{");
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("elapsed:");
+      localStringBuilder2.append(getTimeElapsed());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(",tryCount:");
+      localStringBuilder2.append(this.retryCount);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder1.append("}");
+      return localStringBuilder1.toString();
     }
     return "{}";
   }
   
   public String toString()
   {
-    return "result:" + this.result + " startTime:" + this.startTime + " finishTime:" + this.finishTime + " errCode:" + this.errCode;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("result:");
+    localStringBuilder.append(this.result);
+    localStringBuilder.append(" startTime:");
+    localStringBuilder.append(this.startTime);
+    localStringBuilder.append(" finishTime:");
+    localStringBuilder.append(this.finishTime);
+    localStringBuilder.append(" errCode:");
+    localStringBuilder.append(this.errCode);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FileMsg.StepBaseInfo
  * JD-Core Version:    0.7.0.1
  */

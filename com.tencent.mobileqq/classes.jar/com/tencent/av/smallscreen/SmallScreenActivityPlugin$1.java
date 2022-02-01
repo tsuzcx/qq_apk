@@ -1,6 +1,6 @@
 package com.tencent.av.smallscreen;
 
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.business.BaseVideoAppInterface;
 
 class SmallScreenActivityPlugin$1
   implements Runnable
@@ -14,7 +14,7 @@ class SmallScreenActivityPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenActivityPlugin.1
  * JD-Core Version:    0.7.0.1
  */

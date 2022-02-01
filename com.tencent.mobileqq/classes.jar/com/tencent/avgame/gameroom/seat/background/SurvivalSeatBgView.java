@@ -45,14 +45,18 @@ public class SurvivalSeatBgView
   public void a()
   {
     setAdapter(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SurvivalSeatBgView", 4, "init SurvivalSeatBgView " + GameRoomViewLayoutParamsDef.C);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init SurvivalSeatBgView ");
+      localStringBuilder.append(GameRoomViewLayoutParamsDef.N);
+      QLog.d("SurvivalSeatBgView", 4, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.background.SurvivalSeatBgView
  * JD-Core Version:    0.7.0.1
  */

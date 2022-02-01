@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="60.0dip" android:layout_height="60.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/jd2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:id="@id/jd_" android:background="@drawable/aly" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/jdb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <ProgressBar android:id="@id/jd7" android:visibility="gone" android:layout_width="17.5dip" android:layout_height="17.5dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/jt" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
-</RelativeLayout>

@@ -16,8 +16,8 @@ class RegisterActivity$6
         RegisterActivity.a(this.this$0).dismiss();
         RegisterActivity.a(this.this$0).cancel();
         RegisterActivity.a(this.this$0, null);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -27,7 +27,7 @@ class RegisterActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import mqq.app.AppRuntime;
 final class LoginFailedHelper$4
   implements DialogInterface.OnClickListener
 {
-  LoginFailedHelper$4(Context paramContext, String paramString, AppRuntime paramAppRuntime) {}
+  LoginFailedHelper$4(Context paramContext, String paramString, AppRuntime paramAppRuntime, LoginFailedHelper.FrozenDialogCallback paramFrozenDialogCallback) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
@@ -24,11 +24,15 @@ final class LoginFailedHelper$4
     localBundle.putString("befault_uin", this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
     localBundle.putBoolean("is_show_not_login_uin", true);
     QRoute.startUri(paramDialogInterface, null);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppLoginFailedHelper$FrozenDialogCallback;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.LoginFailedHelper.4
  * JD-Core Version:    0.7.0.1
  */

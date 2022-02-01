@@ -52,108 +52,112 @@ public class SubscribeJsPlugin
   
   private void a(String paramString, String[] paramArrayOfString)
   {
-    if ("opendetail".equals(paramString)) {
-      if (a(paramArrayOfString)) {}
-    }
-    do
+    if ("opendetail".equals(paramString))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          return;
-                          paramString = new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]);
-                          QLog.d(this.TAG, 2, paramString.toString());
-                          if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment)))
-                          {
-                            ((SubscribeHybirdFragment)this.mRuntime.a()).a(SubscribeLaucher.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
-                            return;
-                          }
-                        } while ((this.mRuntime == null) || (this.mRuntime.a() == null));
-                        SubscribeLaucher.a(null, SubscribeLaucher.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
-                        return;
-                        if (!"sharepersonalpage".equals(paramString)) {
-                          break;
-                        }
-                      } while (!a(paramArrayOfString));
-                      paramString = new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]);
-                    } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
-                    QLog.d(this.TAG, 2, paramString.toString());
-                    ((SubscribeHybirdFragment)this.mRuntime.a()).a(paramString.getString("uin"), paramString.getString("nickname"), paramString.getString("icon"), paramString.getString("desc"), paramString.getString("usertype"));
-                    return;
-                    if (!"reloadmainpage".equals(paramString)) {
-                      break;
-                    }
-                  } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
-                  ((SubscribeHybirdFragment)this.mRuntime.a()).a();
-                  return;
-                  if (!"openpublishpage".equals(paramString)) {
-                    break;
-                  }
-                } while ((!a(paramArrayOfString)) || (this.mRuntime == null) || (this.mRuntime.a() == null));
-                paramString = new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]).optString("puin");
-                new Intent().putExtra("postUin", paramString);
-                QZoneHelper.forwardToQQPublicAccountPublishPage(this.mRuntime.a().getHostActivity(), null, 0);
-                return;
-                if (!"attachGoods".equals(paramString)) {
-                  break;
-                }
-              } while (!a(paramArrayOfString));
-              b(paramArrayOfString[0]);
-              return;
-              if (!"cancelfollow".equals(paramString)) {
-                break;
-              }
-            } while (!a(paramArrayOfString));
-            c(paramArrayOfString[0]);
-            return;
-            if (!"getavatar".equals(paramString)) {
-              break;
-            }
-          } while (!a(paramArrayOfString));
-          d(paramArrayOfString[0]);
-          return;
-          if (!"refreshreturnpage".equals(paramString)) {
-            break;
-          }
-        } while ((this.mRuntime == null) || (!(this.mRuntime.a() instanceof SubscribeHybirdFragment)));
-        ((SubscribeHybirdFragment)this.mRuntime.a()).b();
+      if (!a(paramArrayOfString)) {
         return;
-        if (!"getlbslocation".equals(paramString)) {
-          break;
+      }
+      paramString = new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]);
+      QLog.d(this.TAG, 2, paramString.toString());
+      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment)))
+      {
+        ((SubscribeHybirdFragment)this.mRuntime.a()).a(SubscribeLaucher.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+        return;
+      }
+      if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
+        SubscribeLaucher.a(null, SubscribeLaucher.a(paramString.getString("feedid"), paramString.getString("uin"), paramString.getInt("type"), paramString.getInt("width"), paramString.getInt("height"), Long.valueOf(paramString.getString("createtime")).longValue()));
+      }
+    }
+    else if ("sharepersonalpage".equals(paramString))
+    {
+      if (!a(paramArrayOfString)) {
+        return;
+      }
+      paramString = new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]);
+      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment)))
+      {
+        QLog.d(this.TAG, 2, paramString.toString());
+        ((SubscribeHybirdFragment)this.mRuntime.a()).a(paramString.getString("uin"), paramString.getString("nickname"), paramString.getString("icon"), paramString.getString("desc"), paramString.getString("usertype"));
+      }
+    }
+    else if ("reloadmainpage".equals(paramString))
+    {
+      if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment))) {
+        ((SubscribeHybirdFragment)this.mRuntime.a()).a();
+      }
+    }
+    else if ("openpublishpage".equals(paramString))
+    {
+      if (!a(paramArrayOfString)) {
+        return;
+      }
+      if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+      {
+        paramString = new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]).optString("puin");
+        new Intent().putExtra("postUin", paramString);
+        QZoneHelper.forwardToQQPublicAccountPublishPage(this.mRuntime.a().getHostActivity(), null, 0);
+      }
+    }
+    else
+    {
+      if ("attachGoods".equals(paramString))
+      {
+        if (!a(paramArrayOfString)) {
+          return;
         }
-      } while (!a(paramArrayOfString));
-      a(paramArrayOfString[0]);
-      return;
-    } while ((!"openhomepage".equals(paramString)) || (!a(paramArrayOfString)));
-    SubscribeLaucher.a(null, new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]).optString("uid"));
+        b(paramArrayOfString[0]);
+        return;
+      }
+      if ("cancelfollow".equals(paramString))
+      {
+        if (!a(paramArrayOfString)) {
+          return;
+        }
+        c(paramArrayOfString[0]);
+        return;
+      }
+      if ("getavatar".equals(paramString))
+      {
+        if (!a(paramArrayOfString)) {
+          return;
+        }
+        d(paramArrayOfString[0]);
+        return;
+      }
+      if ("refreshreturnpage".equals(paramString))
+      {
+        if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof SubscribeHybirdFragment))) {
+          ((SubscribeHybirdFragment)this.mRuntime.a()).b();
+        }
+      }
+      else
+      {
+        if ("getlbslocation".equals(paramString))
+        {
+          if (!a(paramArrayOfString)) {
+            return;
+          }
+          a(paramArrayOfString[0]);
+          return;
+        }
+        if ("openhomepage".equals(paramString))
+        {
+          if (!a(paramArrayOfString)) {
+            return;
+          }
+          SubscribeLaucher.a(null, new SubscribeJsPlugin.SafeJsonObject(this, paramArrayOfString[0]).optString("uid"));
+        }
+      }
+    }
   }
   
   private boolean a(String[] paramArrayOfString)
   {
-    boolean bool = true;
-    if ((paramArrayOfString == null) || (paramArrayOfString.length < 1))
-    {
-      QLog.e(this.TAG, 2, "args is null");
-      bool = false;
+    if ((paramArrayOfString != null) && (paramArrayOfString.length >= 1)) {
+      return true;
     }
-    return bool;
+    QLog.e(this.TAG, 2, "args is null");
+    return false;
   }
   
   private void b(String paramString)
@@ -179,92 +183,108 @@ public class SubscribeJsPlugin
   
   private void c(String paramString)
   {
-    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getHostActivity() == null)) {
-      return;
+    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+    {
+      if (this.mRuntime.a().getHostActivity() == null) {
+        return;
+      }
+      Object localObject = new SubscribeJsPlugin.SafeJsonObject(this, paramString);
+      paramString = ((SubscribeJsPlugin.SafeJsonObject)localObject).optString("uin");
+      String str = ((SubscribeJsPlugin.SafeJsonObject)localObject).optString("nick");
+      localObject = ((SubscribeJsPlugin.SafeJsonObject)localObject).optString("callback");
+      SubscribeFollowUserUtil.a(this.mRuntime.a().getHostActivity(), paramString, str, new SubscribeJsPlugin.1(this, (String)localObject, str));
     }
-    Object localObject = new SubscribeJsPlugin.SafeJsonObject(this, paramString);
-    paramString = ((SubscribeJsPlugin.SafeJsonObject)localObject).optString("uin");
-    String str = ((SubscribeJsPlugin.SafeJsonObject)localObject).optString("nick");
-    localObject = ((SubscribeJsPlugin.SafeJsonObject)localObject).optString("callback");
-    SubscribeFollowUserUtil.a(this.mRuntime.a().getHostActivity(), paramString, str, new SubscribeJsPlugin.1(this, (String)localObject, str));
   }
   
   private void d(String paramString)
   {
-    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a().getHostActivity() == null)) {
-      return;
-    }
-    paramString = new SubscribeJsPlugin.SafeJsonObject(this, paramString);
-    JSONArray localJSONArray = paramString.optJSONArray("accountList");
-    int i;
-    if ("1".equals(paramString.getString("avatarType")))
+    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
     {
-      i = 4;
-      if (this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader != null) {
-        break label143;
+      if (this.mRuntime.a().getHostActivity() == null) {
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.mRuntime.a(), i);
-      this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
-      this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(this);
-    }
-    for (;;)
-    {
-      ThreadManagerV2.excute(new SubscribeJsPlugin.2(this, localJSONArray), 16, null, false);
-      return;
-      i = 1;
-      break;
-      label143:
-      this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(i);
+      Object localObject = new SubscribeJsPlugin.SafeJsonObject(this, paramString);
+      paramString = ((SubscribeJsPlugin.SafeJsonObject)localObject).optJSONArray("accountList");
+      int i;
+      if ("1".equals(((SubscribeJsPlugin.SafeJsonObject)localObject).getString("avatarType"))) {
+        i = 4;
+      } else {
+        i = 1;
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
+      if (localObject == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = ((IQQNonMainProcAvatarLoaderApi)QRoute.api(IQQNonMainProcAvatarLoaderApi.class)).getNonMainAppHeadLoader(this.mRuntime.a(), i);
+        this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a();
+        this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.a(this);
+      }
+      else
+      {
+        ((INonMainProcAvatarLoader)localObject).a(i);
+      }
+      ThreadManagerV2.excute(new SubscribeJsPlugin.2(this, paramString), 16, null, false);
     }
   }
   
   public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
     a(paramString1, paramBitmap);
-    if (QLog.isColorLevel()) {
-      QLog.i(this.TAG, 4, "handleGetAvatar onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    if (QLog.isColorLevel())
+    {
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleGetAvatar onFaceUpdate uin: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" -- ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" head:");
+      localStringBuilder.append(paramBitmap);
+      QLog.i(str, 4, localStringBuilder.toString());
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if ("qsubscribe".equals(paramString2))
     {
-      QLog.i(this.TAG, 2, "handleJsRequest:" + paramString1);
+      paramJsBridgeListener = this.TAG;
+      paramString2 = new StringBuilder();
+      paramString2.append("handleJsRequest:");
+      paramString2.append(paramString1);
+      QLog.i(paramJsBridgeListener, 2, paramString2.toString());
       try
       {
         a(paramString3, paramVarArgs);
-        return true;
       }
       catch (JSONException paramJsBridgeListener)
       {
-        for (;;)
-        {
-          QLog.d(this.TAG, 2, paramJsBridgeListener, new Object[0]);
-        }
+        QLog.d(this.TAG, 2, paramJsBridgeListener, new Object[0]);
       }
+      return true;
     }
     return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
+      ((TroopMemberApiClient)localObject).b();
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader.b();
+      ((INonMainProcAvatarLoader)localObject).b();
       this.jdField_a_of_type_ComTencentMobileqqArmapINonMainProcAvatarLoader = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeJsPlugin
  * JD-Core Version:    0.7.0.1
  */

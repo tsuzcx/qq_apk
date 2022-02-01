@@ -43,10 +43,10 @@ public class LoadingMoreHelper
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a(3);
+      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setState(3);
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a(0);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setState(0);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -56,42 +56,49 @@ public class LoadingMoreHelper
     }
     if (!paramBoolean1)
     {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a(5);
+      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setState(5);
       return;
     }
-    if (paramBoolean2) {}
-    for (int i = 3;; i = 4)
-    {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a(i);
-      if ((!this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.b(i)) || (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener == null)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener.a();
+    int i;
+    if (paramBoolean2) {
+      i = 3;
+    } else {
+      i = 4;
+    }
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setState(i);
+    if (!this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.checkState(i)) {
       return;
+    }
+    LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener;
+    if (localOnLoadMoreListener != null) {
+      localOnLoadMoreListener.a();
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    boolean bool;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a() == 0) || (!this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.b(2)));
-      bool = true;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener != null) {
-        bool = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener.a(paramBoolean);
-      }
-    } while (!bool);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a(2);
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.getState() == 0) {
+      return;
+    }
+    if (!this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.checkState(2)) {
+      return;
+    }
+    boolean bool = true;
+    LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener;
+    if (localOnLoadMoreListener != null) {
+      bool = localOnLoadMoreListener.a(paramBoolean);
+    }
+    if (bool) {
+      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setState(2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.LoadingMoreHelper
  * JD-Core Version:    0.7.0.1
  */

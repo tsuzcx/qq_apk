@@ -38,17 +38,19 @@ public class SimpleGLThread
   
   public void destroy(Runnable paramRunnable)
   {
-    if (this.mHandler != null) {
-      this.mHandler.post(new SimpleGLThread.2(this, paramRunnable));
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.post(new SimpleGLThread.2(this, paramRunnable));
     }
   }
   
   public Looper getLooper()
   {
-    if (this.mHandler == null) {
+    Handler localHandler = this.mHandler;
+    if (localHandler == null) {
       return null;
     }
-    return this.mHandler.getLooper();
+    return localHandler.getLooper();
   }
   
   public void makeCurrent()
@@ -58,31 +60,35 @@ public class SimpleGLThread
   
   public void postJob(Runnable paramRunnable)
   {
-    if (this.mHandler != null) {
-      this.mHandler.post(paramRunnable);
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.post(paramRunnable);
     }
   }
   
   public void postJobSync(Runnable paramRunnable)
   {
-    if (this.mHandler != null)
+    Handler localHandler = this.mHandler;
+    if (localHandler != null)
     {
-      this.mHandler.post(paramRunnable);
+      localHandler.post(paramRunnable);
       HandlerUtil.waitDone(this.mHandler);
     }
   }
   
   public void removeCallbacksAndMessages(Object paramObject)
   {
-    if (this.mHandler != null) {
-      this.mHandler.removeCallbacksAndMessages(paramObject);
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(paramObject);
     }
   }
   
   public void sendEmptyMessage(int paramInt)
   {
-    if (this.mHandler != null) {
-      this.mHandler.sendEmptyMessage(paramInt);
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.sendEmptyMessage(paramInt);
     }
   }
   
@@ -98,7 +104,7 @@ public class SimpleGLThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.gles.SimpleGLThread
  * JD-Core Version:    0.7.0.1
  */

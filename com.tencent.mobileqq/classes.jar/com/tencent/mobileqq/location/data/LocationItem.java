@@ -69,12 +69,21 @@ public class LocationItem
   
   public String toString()
   {
-    return "LocationItem{mUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLatLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", mRotation=" + this.jdField_a_of_type_Double + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LocationItem{mUin='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mLatLng=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    localStringBuilder.append(", mRotation=");
+    localStringBuilder.append(this.jdField_a_of_type_Double);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.data.LocationItem
  * JD-Core Version:    0.7.0.1
  */

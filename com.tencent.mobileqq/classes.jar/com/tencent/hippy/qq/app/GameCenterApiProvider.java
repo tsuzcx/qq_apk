@@ -1,13 +1,8 @@
 package com.tencent.hippy.qq.app;
 
-import com.tencent.hippy.qq.module.gamecenter.GamePubAccountModule;
 import com.tencent.hippy.qq.module.gamecenter.QQGameCenterModule;
-import com.tencent.hippy.qq.module.gamecenter.QQWadlModule;
 import com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoViewController;
-import com.tencent.mobileqq.gamecenter.hippy.view.GamePubAccountMsgViewController;
-import com.tencent.mobileqq.gamecenter.hippy.view.GpArkViewController;
 import com.tencent.mobileqq.gamecenter.hippy.view.GpImageViewController;
-import com.tencent.mobileqq.gamecenter.hippy.view.GpMsgHelperViewController;
 import com.tencent.mobileqq.gamecenter.hippy.view.GpTextViewController;
 import com.tencent.mtt.hippy.HippyAPIProvider;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -27,9 +22,6 @@ public class GameCenterApiProvider
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(GameCenterVideoViewController.class);
-    localArrayList.add(GamePubAccountMsgViewController.class);
-    localArrayList.add(GpMsgHelperViewController.class);
-    localArrayList.add(GpArkViewController.class);
     localArrayList.add(GpImageViewController.class);
     localArrayList.add(GpTextViewController.class);
     return localArrayList;
@@ -44,14 +36,12 @@ public class GameCenterApiProvider
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put(QQGameCenterModule.class, new GameCenterApiProvider.1(this, paramHippyEngineContext));
-    localHashMap.put(QQWadlModule.class, new GameCenterApiProvider.2(this, paramHippyEngineContext));
-    localHashMap.put(GamePubAccountModule.class, new GameCenterApiProvider.3(this, paramHippyEngineContext));
     return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.app.GameCenterApiProvider
  * JD-Core Version:    0.7.0.1
  */

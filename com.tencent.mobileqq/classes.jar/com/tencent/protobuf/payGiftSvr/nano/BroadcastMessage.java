@@ -22,14 +22,15 @@ public final class BroadcastMessage
   
   public static BroadcastMessage[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new BroadcastMessage[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new BroadcastMessage[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static BroadcastMessage parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -52,24 +53,28 @@ public final class BroadcastMessage
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.appid;
     int i = j;
-    if (this.appid != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.appid);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
+    k = this.type;
     j = i;
-    if (this.type != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, this.type);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, k);
     }
+    Object localObject = this.personGift;
     i = j;
-    if (this.personGift != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(3, this.personGift);
+    if (localObject != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(3, (MessageNano)localObject);
     }
+    localObject = this.overGift;
     j = i;
-    if (this.overGift != null) {
-      j = i + CodedOutputByteBufferNano.computeMessageSize(4, this.overGift);
+    if (localObject != null) {
+      j = i + CodedOutputByteBufferNano.computeMessageSize(4, (MessageNano)localObject);
     }
     return j;
   }
@@ -79,54 +84,72 @@ public final class BroadcastMessage
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      if (i == 0) {
+        break;
+      }
+      if (i != 8)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (i != 16)
+        {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                return this;
+              }
+            }
+            else
+            {
+              if (this.overGift == null) {
+                this.overGift = new BroadcastOverGift();
+              }
+              paramCodedInputByteBufferNano.readMessage(this.overGift);
+            }
+          }
+          else
+          {
+            if (this.personGift == null) {
+              this.personGift = new BroadcastPersonGift();
+            }
+            paramCodedInputByteBufferNano.readMessage(this.personGift);
+          }
         }
-      case 0: 
-        return this;
-      case 8: 
+        else {
+          this.type = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
         this.appid = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 16: 
-        this.type = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 26: 
-        if (this.personGift == null) {
-          this.personGift = new BroadcastPersonGift();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.personGift);
-        break;
       }
-      if (this.overGift == null) {
-        this.overGift = new BroadcastOverGift();
-      }
-      paramCodedInputByteBufferNano.readMessage(this.overGift);
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.appid != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.appid);
+    int i = this.appid;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
-    if (this.type != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(2, this.type);
+    i = this.type;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(2, i);
     }
-    if (this.personGift != null) {
-      paramCodedOutputByteBufferNano.writeMessage(3, this.personGift);
+    Object localObject = this.personGift;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(3, (MessageNano)localObject);
     }
-    if (this.overGift != null) {
-      paramCodedOutputByteBufferNano.writeMessage(4, this.overGift);
+    localObject = this.overGift;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(4, (MessageNano)localObject);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.payGiftSvr.nano.BroadcastMessage
  * JD-Core Version:    0.7.0.1
  */

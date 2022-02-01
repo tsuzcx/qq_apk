@@ -27,7 +27,11 @@ public class AladdinUserConfig
   
   AladdinUserConfig(String paramString1, String paramString2, @NonNull AsyncTaskExecutor paramAsyncTaskExecutor)
   {
-    this.basePath = (paramString1 + File.separator + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    this.basePath = localStringBuilder.toString();
     this.executor = paramAsyncTaskExecutor;
     this.versionManager = new AladdinConfigVersionManager(this.basePath);
     initConfigIds();
@@ -35,62 +39,77 @@ public class AladdinUserConfig
   
   private void initConfigIds()
   {
-    try
+    for (;;)
     {
-      Object localObject1 = new File(this.basePath);
-      if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+      int i;
+      try
       {
-        localObject1 = ((File)localObject1).listFiles();
-        int j = localObject1.length;
-        int i = 0;
-        for (;;)
+        Object localObject1 = new File(this.basePath);
+        if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
         {
+          localObject1 = ((File)localObject1).listFiles();
+          int j = localObject1.length;
+          i = 0;
           if (i < j)
           {
-            String str = localObject1[i].getName();
-            Object localObject2;
-            if ((!TextUtils.isEmpty(str)) && (str.contains(".xml"))) {
-              localObject2 = str.substring(0, str.lastIndexOf(".xml"));
+            localObject2 = localObject1[i].getName();
+            if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).contains(".xml"))) {
+              break label238;
             }
+            Object localObject3 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf(".xml"));
             try
             {
-              localObject2 = Integer.valueOf((String)localObject2);
-              this.configIds.add(localObject2);
-              i += 1;
+              localObject3 = Integer.valueOf((String)localObject3);
+              this.configIds.add(localObject3);
             }
             catch (NumberFormatException localNumberFormatException)
             {
-              for (;;)
-              {
-                Log.e("AladdinUserConfig", "[initConfigs] error, fileName = " + str + ", e = " + localNumberFormatException);
-              }
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[initConfigs] error, fileName = ");
+              localStringBuilder.append((String)localObject2);
+              localStringBuilder.append(", e = ");
+              localStringBuilder.append(localNumberFormatException);
+              Log.e("AladdinUserConfig", localStringBuilder.toString());
             }
           }
         }
-        printLocalConfigIdList("initConfigIds");
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("[initConfigIds] dir does not exists, basePath = ");
+          ((StringBuilder)localObject1).append(this.basePath);
+          Log.i("AladdinUserConfig", ((StringBuilder)localObject1).toString());
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      Log.e("AladdinUserConfig", "[initConfigIds] failed, e = " + localException);
-    }
-    for (;;)
-    {
+      catch (Exception localException)
+      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[initConfigIds] failed, e = ");
+        ((StringBuilder)localObject2).append(localException);
+        Log.e("AladdinUserConfig", ((StringBuilder)localObject2).toString());
+      }
+      printLocalConfigIdList("initConfigIds");
       return;
-      Log.i("AladdinUserConfig", "[initConfigIds] dir does not exists, basePath = " + this.basePath);
+      label238:
+      i += 1;
     }
   }
   
   private void printLocalConfigIdList(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append(paramString).append("]").append(" local config id list: ");
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    localStringBuilder.append(" local config id list: ");
     if (this.configIds.size() <= 0) {
       localStringBuilder.append("null");
     }
     paramString = this.configIds.iterator();
-    while (paramString.hasNext()) {
-      localStringBuilder.append((Integer)paramString.next()).append(" | ");
+    while (paramString.hasNext())
+    {
+      localStringBuilder.append((Integer)paramString.next());
+      localStringBuilder.append(" | ");
     }
     Log.i("AladdinUserConfig", localStringBuilder.toString());
   }
@@ -100,14 +119,19 @@ public class AladdinUserConfig
   {
     try
     {
-      AladdinConfig localAladdinConfig2 = (AladdinConfig)this.configs.get(paramInt);
-      AladdinConfig localAladdinConfig1 = localAladdinConfig2;
-      if (localAladdinConfig2 == null)
+      AladdinConfig localAladdinConfig = (AladdinConfig)this.configs.get(paramInt);
+      Object localObject1 = localAladdinConfig;
+      if (localAladdinConfig == null)
       {
-        localAladdinConfig1 = new AladdinConfig(this.basePath + File.separator + paramInt + ".xml", paramInt, this.executor, Aladdin.getParserById(paramInt));
-        this.configs.put(paramInt, localAladdinConfig1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(this.basePath);
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append(paramInt);
+        ((StringBuilder)localObject1).append(".xml");
+        localObject1 = new AladdinConfig(((StringBuilder)localObject1).toString(), paramInt, this.executor, Aladdin.getParserById(paramInt));
+        this.configs.put(paramInt, localObject1);
       }
-      return localAladdinConfig1;
+      return localObject1;
     }
     finally {}
   }
@@ -120,24 +144,24 @@ public class AladdinUserConfig
   
   public int[] getConfigIdList()
   {
-    int[] arrayOfInt;
     if (this.configIds.size() > 0)
     {
-      arrayOfInt = new int[this.configIds.size()];
+      int[] arrayOfInt2 = new int[this.configIds.size()];
       int i = 0;
-      while (i < this.configIds.size())
+      for (;;)
       {
-        arrayOfInt[i] = ((Integer)this.configIds.get(i)).intValue();
+        arrayOfInt1 = arrayOfInt2;
+        if (i >= this.configIds.size()) {
+          break;
+        }
+        arrayOfInt2[i] = ((Integer)this.configIds.get(i)).intValue();
         i += 1;
       }
     }
-    for (;;)
-    {
-      printLocalConfigIdList("getConfigIdList");
-      return arrayOfInt;
-      Log.i("AladdinUserConfig", "[getConfigIdList] configIds is null.");
-      arrayOfInt = new int[1];
-    }
+    Log.i("AladdinUserConfig", "[getConfigIdList] configIds is null.");
+    int[] arrayOfInt1 = new int[1];
+    printLocalConfigIdList("getConfigIdList");
+    return arrayOfInt1;
   }
   
   public AladdinConfigVersionManager getVersionInfo()

@@ -27,14 +27,15 @@ public final class RespHeader
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.Result, 0);
-    if (this.ResultDesc != null) {
-      paramJceOutputStream.write(this.ResultDesc, 1);
+    String str = this.ResultDesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     GeneralSettings.RespHeader
  * JD-Core Version:    0.7.0.1
  */

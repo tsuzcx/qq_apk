@@ -37,22 +37,22 @@ public class SDKSetEmotionDialog
   
   public SDKSetEmotionDialog(Context paramContext)
   {
-    super(paramContext, 2131755842);
+    super(paramContext, 2131756189);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
-    setContentView(2131559082);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365811));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365807));
-    this.c = ((TextView)findViewById(2131365796));
-    this.d = ((TextView)findViewById(2131365802));
-    this.e = ((TextView)findViewById(2131365766));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367459));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131377753));
-    this.f = ((TextView)findViewById(2131373573));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131366311));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365814));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365840));
+    setContentView(2131558976);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365648));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365644));
+    this.c = ((TextView)findViewById(2131365633));
+    this.d = ((TextView)findViewById(2131365639));
+    this.e = ((TextView)findViewById(2131365603));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367217));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131377181));
+    this.f = ((TextView)findViewById(2131373153));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131366199));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365651));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131365677));
   }
   
   public SDKSetEmotionDialog a(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
@@ -63,7 +63,11 @@ public class SDKSetEmotionDialog
       return this;
     }
     this.c.setText(paramInt);
-    this.c.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691194));
+    TextView localTextView = this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getContext().getString(paramInt));
+    localStringBuilder.append(getContext().getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.c.setVisibility(0);
     this.c.setOnClickListener(new SDKSetEmotionDialog.1(this, paramOnClickListener));
     return this;
@@ -84,14 +88,17 @@ public class SDKSetEmotionDialog
   
   public SDKSetEmotionDialog a(List<String> paramList, View.OnClickListener paramOnClickListener)
   {
-    if ((paramList == null) || (paramOnClickListener == null)) {
-      return this;
+    if (paramList != null)
+    {
+      if (paramOnClickListener == null) {
+        return this;
+      }
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(new StackAdapter(paramList));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(new DefaultItemAnimator());
+      paramList = new CardLayoutManager(paramOnClickListener);
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramList);
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(new StackAdapter(paramList));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(new DefaultItemAnimator());
-    paramList = new CardLayoutManager(paramOnClickListener);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramList);
     return this;
   }
   
@@ -101,36 +108,45 @@ public class SDKSetEmotionDialog
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    }
-    while (paramInt != 1) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    }
   }
   
   public void a(String paramString, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (paramInt > 0)) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if ((localValueAnimator != null) && (paramInt > 0)) {
+      localValueAnimator.cancel();
     }
-    if ((this.f == null) || (this.jdField_a_of_type_AndroidWidgetProgressBar == null)) {}
-    do
+    if (this.f != null)
     {
-      return;
+      if (this.jdField_a_of_type_AndroidWidgetProgressBar == null) {
+        return;
+      }
       if (!TextUtils.isEmpty(paramString))
       {
         this.f.setVisibility(0);
         this.f.setText(paramString);
       }
-    } while ((paramInt < 0) || (paramInt > 100));
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt, true);
-      return;
+      if (paramInt >= 0)
+      {
+        if (paramInt > 100) {
+          return;
+        }
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        if (Build.VERSION.SDK_INT >= 24)
+        {
+          this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt, true);
+          return;
+        }
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
   }
   
   public SDKSetEmotionDialog b(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
@@ -141,7 +157,11 @@ public class SDKSetEmotionDialog
       return this;
     }
     this.e.setText(paramInt);
-    this.e.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691194));
+    TextView localTextView = this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getContext().getString(paramInt));
+    localStringBuilder.append(getContext().getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.e.setVisibility(0);
     this.e.setOnClickListener(new SDKSetEmotionDialog.2(this, paramOnClickListener));
     return this;
@@ -149,25 +169,29 @@ public class SDKSetEmotionDialog
   
   public SDKSetEmotionDialog b(String paramString)
   {
-    if ((this.f == null) || (this.jdField_a_of_type_AndroidWidgetProgressBar == null)) {
-      return this;
-    }
-    if (!TextUtils.isEmpty(paramString))
+    if (this.f != null)
     {
-      this.f.setVisibility(0);
-      this.f.setText(paramString);
-      return this;
+      if (this.jdField_a_of_type_AndroidWidgetProgressBar == null) {
+        return this;
+      }
+      if (!TextUtils.isEmpty(paramString))
+      {
+        this.f.setVisibility(0);
+        this.f.setText(paramString);
+        return this;
+      }
+      this.f.setVisibility(4);
     }
-    this.f.setVisibility(4);
     return this;
   }
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetProgressBar == null) {
+    ProgressBar localProgressBar = this.jdField_a_of_type_AndroidWidgetProgressBar;
+    if (localProgressBar == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = SDKSetEmotionHelper.a(this.jdField_a_of_type_AndroidWidgetProgressBar, paramInt);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = SDKSetEmotionHelper.a(localProgressBar, paramInt);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -179,7 +203,11 @@ public class SDKSetEmotionDialog
       return this;
     }
     this.d.setText(paramInt);
-    this.d.setContentDescription(getContext().getString(paramInt) + getContext().getString(2131691194));
+    TextView localTextView = this.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getContext().getString(paramInt));
+    localStringBuilder.append(getContext().getString(2131691115));
+    localTextView.setContentDescription(localStringBuilder.toString());
     this.d.setVisibility(0);
     this.d.setOnClickListener(new SDKSetEmotionDialog.3(this, paramOnClickListener));
     return this;
@@ -189,21 +217,29 @@ public class SDKSetEmotionDialog
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      try
+      {
+        if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
+          this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+        }
+        super.dismiss();
       }
-      super.dismiss();
-      return;
+      finally
+      {
+        ActivityLeakSolution.a(this);
+      }
     }
-    catch (Exception localException) {}finally
+    catch (Exception localException)
     {
-      ActivityLeakSolution.a(this);
+      label28:
+      break label28;
     }
+    ActivityLeakSolution.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKSetEmotionDialog
  * JD-Core Version:    0.7.0.1
  */

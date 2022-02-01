@@ -17,23 +17,18 @@ class VideoHeaderBlock$3
     if (this.a.a() != null)
     {
       CertifiedAccountMeta.StFeed localStFeed = this.a.a().a();
-      if (localStFeed == null) {
-        break label41;
+      if (localStFeed != null) {
+        this.a.d(localStFeed);
+      } else {
+        QQToast.a(VideoHeaderBlock.a(this.a), 1, HardCodeUtil.a(2131714449), 0).a();
       }
-      this.a.d(localStFeed);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label41:
-      QQToast.a(VideoHeaderBlock.a(this.a), 1, HardCodeUtil.a(2131714528), 0).a();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.VideoHeaderBlock.3
  * JD-Core Version:    0.7.0.1
  */

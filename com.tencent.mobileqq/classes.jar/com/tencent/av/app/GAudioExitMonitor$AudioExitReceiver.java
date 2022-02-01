@@ -17,11 +17,15 @@ class GAudioExitMonitor$AudioExitReceiver
     if ((paramIntent != null) && ("com.tencent.av.EXIT_VIDEO_PROCESS".equals(paramIntent.getAction())))
     {
       long l = SeqUtil.a(paramIntent);
-      QLog.w("GAudioExitMonitor", 1, "onReceive.EXIT_VIDEO_ACTION, seq[" + l + "]");
+      paramContext = new StringBuilder();
+      paramContext.append("onReceive.EXIT_VIDEO_ACTION, seq[");
+      paramContext.append(l);
+      paramContext.append("]");
+      QLog.w("GAudioExitMonitor", 1, paramContext.toString());
       paramContext = GAudioExitMonitor.a(this.a).a();
       if (paramContext != null)
       {
-        paramContext.a(false, 202, new int[] { paramContext.a().D });
+        paramContext.a(false, 202, new int[] { paramContext.a().j });
         paramContext.b(202);
         paramContext.d(1011);
       }
@@ -30,7 +34,7 @@ class GAudioExitMonitor$AudioExitReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GAudioExitMonitor.AudioExitReceiver
  * JD-Core Version:    0.7.0.1
  */

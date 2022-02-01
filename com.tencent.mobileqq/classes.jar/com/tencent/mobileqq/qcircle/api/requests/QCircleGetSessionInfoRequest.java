@@ -43,7 +43,7 @@ public class QCircleGetSessionInfoRequest
     return "FeedCloudSvr.trpc.feedcloud.commreader.ComReader.GetSessionInfo";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mReq.toByteArray();
   }
@@ -56,7 +56,7 @@ public class QCircleGetSessionInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.requests.QCircleGetSessionInfoRequest
  * JD-Core Version:    0.7.0.1
  */

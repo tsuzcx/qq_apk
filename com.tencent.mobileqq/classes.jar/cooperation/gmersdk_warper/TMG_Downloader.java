@@ -36,41 +36,51 @@ public class TMG_Downloader
   
   public static String a()
   {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
+    Object localObject1 = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject1 == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("TMG_Downloader", 2, "getFilesDir is null");
       }
-      localObject = "";
+      return "";
     }
-    String str;
-    File localFile;
-    do
-    {
-      return localObject;
-      str = ((File)localObject).getParent() + "/txlib/gme_sdk/";
-      localFile = new File(str);
-      localObject = str;
-    } while (localFile.exists());
-    localFile.mkdirs();
-    return str;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(((File)localObject1).getParent());
+    ((StringBuilder)localObject2).append("/txlib/gme_sdk/");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new File((String)localObject1);
+    if (!((File)localObject2).exists()) {
+      ((File)localObject2).mkdirs();
+    }
+    return localObject1;
   }
   
   public static String a(TMG_DownloadInfo paramTMG_DownloadInfo)
   {
-    return a() + "gme_sdk_" + paramTMG_DownloadInfo.a + "_" + paramTMG_DownloadInfo.b + ".zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append("gme_sdk_");
+    localStringBuilder.append(paramTMG_DownloadInfo.a);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramTMG_DownloadInfo.b);
+    localStringBuilder.append(".zip");
+    return localStringBuilder.toString();
   }
   
   public static void a()
   {
-    ArrayList localArrayList = FileUtils.a(a());
+    ArrayList localArrayList = FileUtils.getChildFiles(a());
     if (localArrayList != null)
     {
       int i = 0;
       while (i < localArrayList.size())
       {
-        QLog.e("TMG_Downloader", 1, String.format("ListSoDirs file i=" + i + ", name=" + (String)localArrayList.get(i), new Object[0]));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ListSoDirs file i=");
+        localStringBuilder.append(i);
+        localStringBuilder.append(", name=");
+        localStringBuilder.append((String)localArrayList.get(i));
+        QLog.e("TMG_Downloader", 1, String.format(localStringBuilder.toString(), new Object[0]));
         i += 1;
       }
     }
@@ -93,22 +103,22 @@ public class TMG_Downloader
     String str1 = paramTMG_DownloadInfo.b;
     paramTMG_DownloadInfo = a(paramTMG_DownloadInfo);
     String str2 = b();
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TMG_Downloader", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
+    if ((!TextUtils.isEmpty(str2)) && (str2.equals(str1)))
     {
-      return false;
-      if (FileUtils.a(paramTMG_DownloadInfo)) {
-        break;
+      if (!FileUtils.fileExists(paramTMG_DownloadInfo))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TMG_Downloader", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramTMG_DownloadInfo }));
+        }
+        return false;
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("TMG_Downloader", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramTMG_DownloadInfo }));
+      a();
+      return true;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TMG_Downloader", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
+    }
     return false;
-    a();
-    return true;
   }
   
   boolean a(TMG_DownloadInfo paramTMG_DownloadInfo)
@@ -139,7 +149,7 @@ public class TMG_Downloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.gmersdk_warper.TMG_Downloader
  * JD-Core Version:    0.7.0.1
  */

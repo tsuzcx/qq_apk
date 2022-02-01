@@ -40,111 +40,112 @@ public final class d
   
   private static d.a a(JSONObject paramJSONObject)
   {
-    Object localObject = null;
-    if (paramJSONObject == null) {}
-    d.a locala;
-    do
-    {
-      do
-      {
-        String str;
-        do
-        {
-          return localObject;
-          str = paramJSONObject.optString("NAME");
-        } while (TextUtils.isEmpty(str));
-        locala = new d.a();
-        locala.a = str;
-        locala.b = paramJSONObject.optString("VERSIONNAME");
-        locala.c = paramJSONObject.optInt("VERSIONCODE");
-        locala.d = paramJSONObject.optString("URL");
-        locala.e = paramJSONObject.optString("MD5");
-        paramJSONObject = paramJSONObject.optJSONArray("DEPENDENCIES");
-        localObject = locala;
-      } while (paramJSONObject == null);
-      localObject = locala;
-    } while (paramJSONObject.length() <= 0);
-    int j = paramJSONObject.length();
-    locala.f = new String[j];
-    int i = 0;
-    for (;;)
-    {
-      localObject = locala;
-      if (i >= j) {
-        break;
-      }
-      locala.f[i] = paramJSONObject.optString(i);
-      i += 1;
+    if (paramJSONObject == null) {
+      return null;
     }
+    String str = paramJSONObject.optString("NAME");
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    d.a locala = new d.a();
+    locala.a = str;
+    locala.b = paramJSONObject.optString("VERSIONNAME");
+    locala.c = paramJSONObject.optInt("VERSIONCODE");
+    locala.d = paramJSONObject.optString("URL");
+    locala.e = paramJSONObject.optString("MD5");
+    paramJSONObject = paramJSONObject.optJSONArray("DEPENDENCIES");
+    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
+    {
+      int j = paramJSONObject.length();
+      locala.f = new String[j];
+      int i = 0;
+      while (i < j)
+      {
+        locala.f[i] = paramJSONObject.optString(i);
+        i += 1;
+      }
+    }
+    return locala;
   }
   
   /* Error */
   public static d a(java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 109	java/io/FileInputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 112	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   8: astore_1
-    //   9: aload_1
-    //   10: astore_0
-    //   11: aload_1
-    //   12: invokestatic 115	com/tencent/tbs/one/impl/common/d:a	(Ljava/io/InputStream;)Lcom/tencent/tbs/one/impl/common/d;
-    //   15: astore_2
-    //   16: aload_1
-    //   17: invokestatic 120	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
-    //   20: aload_2
-    //   21: areturn
-    //   22: astore_2
-    //   23: aconst_null
-    //   24: astore_0
-    //   25: new 122	com/tencent/tbs/one/TBSOneException
-    //   28: dup
-    //   29: sipush 306
-    //   32: new 124	java/lang/StringBuilder
-    //   35: dup
-    //   36: ldc 126
-    //   38: invokespecial 129	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   41: aload_2
-    //   42: invokevirtual 133	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   45: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: aload_2
-    //   52: invokespecial 143	com/tencent/tbs/one/TBSOneException:<init>	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   55: athrow
-    //   56: astore_2
-    //   57: aload_0
-    //   58: astore_1
-    //   59: aload_2
-    //   60: astore_0
-    //   61: aload_1
-    //   62: invokestatic 120	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
-    //   65: aload_0
-    //   66: athrow
-    //   67: astore_0
-    //   68: aconst_null
-    //   69: astore_1
-    //   70: goto -9 -> 61
-    //   73: astore_2
-    //   74: aload_1
-    //   75: astore_0
-    //   76: goto -51 -> 25
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore_1
+    //   4: new 109	java/io/FileInputStream
+    //   7: dup
+    //   8: aload_0
+    //   9: invokespecial 112	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   12: astore_0
+    //   13: aload_0
+    //   14: invokestatic 115	com/tencent/tbs/one/impl/common/d:a	(Ljava/io/InputStream;)Lcom/tencent/tbs/one/impl/common/d;
+    //   17: astore_1
+    //   18: aload_0
+    //   19: invokestatic 120	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
+    //   22: aload_1
+    //   23: areturn
+    //   24: astore_2
+    //   25: aload_0
+    //   26: astore_1
+    //   27: aload_2
+    //   28: astore_0
+    //   29: goto +55 -> 84
+    //   32: astore_2
+    //   33: goto +10 -> 43
+    //   36: astore_0
+    //   37: goto +47 -> 84
+    //   40: astore_2
+    //   41: aload_3
+    //   42: astore_0
+    //   43: aload_0
+    //   44: astore_1
+    //   45: new 122	java/lang/StringBuilder
+    //   48: dup
+    //   49: ldc 124
+    //   51: invokespecial 127	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   54: astore_3
+    //   55: aload_0
+    //   56: astore_1
+    //   57: aload_3
+    //   58: aload_2
+    //   59: invokevirtual 131	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   62: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: pop
+    //   66: aload_0
+    //   67: astore_1
+    //   68: new 137	com/tencent/tbs/one/TBSOneException
+    //   71: dup
+    //   72: sipush 306
+    //   75: aload_3
+    //   76: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: aload_2
+    //   80: invokespecial 143	com/tencent/tbs/one/TBSOneException:<init>	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   83: athrow
+    //   84: aload_1
+    //   85: invokestatic 120	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
+    //   88: aload_0
+    //   89: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	79	0	paramFile	java.io.File
-    //   8	67	1	localObject1	Object
-    //   15	6	2	locald	d
-    //   22	30	2	localFileNotFoundException1	java.io.FileNotFoundException
-    //   56	4	2	localObject2	Object
-    //   73	1	2	localFileNotFoundException2	java.io.FileNotFoundException
+    //   0	90	0	paramFile	java.io.File
+    //   3	82	1	localObject1	Object
+    //   24	4	2	localObject2	Object
+    //   32	1	2	localFileNotFoundException1	java.io.FileNotFoundException
+    //   40	40	2	localFileNotFoundException2	java.io.FileNotFoundException
+    //   1	75	3	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   0	9	22	java/io/FileNotFoundException
-    //   11	16	56	finally
-    //   25	56	56	finally
-    //   0	9	67	finally
-    //   11	16	73	java/io/FileNotFoundException
+    //   13	18	24	finally
+    //   13	18	32	java/io/FileNotFoundException
+    //   4	13	36	finally
+    //   45	55	36	finally
+    //   57	66	36	finally
+    //   68	84	36	finally
+    //   4	13	40	java/io/FileNotFoundException
   }
   
   private static d a(InputStream paramInputStream)
@@ -156,7 +157,9 @@ public final class d
     }
     catch (IOException paramInputStream)
     {
-      throw new TBSOneException(307, "Failed to read DEPS contents, error: " + paramInputStream.getMessage(), paramInputStream);
+      StringBuilder localStringBuilder = new StringBuilder("Failed to read DEPS contents, error: ");
+      localStringBuilder.append(paramInputStream.getMessage());
+      throw new TBSOneException(307, localStringBuilder.toString(), paramInputStream);
     }
   }
   
@@ -169,21 +172,26 @@ public final class d
     }
     catch (JSONException localJSONException)
     {
-      throw new TBSOneException(308, "Failed to parse DEPS " + paramString + ", error: " + localJSONException.getMessage(), localJSONException);
+      StringBuilder localStringBuilder = new StringBuilder("Failed to parse DEPS ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", error: ");
+      localStringBuilder.append(localJSONException.getMessage());
+      throw new TBSOneException(308, localStringBuilder.toString(), localJSONException);
     }
   }
   
   public final d.a b(String paramString)
   {
-    if (this.c == null) {
+    Map localMap = this.c;
+    if (localMap == null) {
       return null;
     }
-    return (d.a)this.c.get(paramString);
+    return (d.a)localMap.get(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.common.d
  * JD-Core Version:    0.7.0.1
  */

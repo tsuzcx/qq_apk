@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.ClipData;
 import android.content.Context;
 import android.os.Build.VERSION;
+import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 
 public final class ClipboardUtil
 {
@@ -12,7 +13,10 @@ public final class ClipboardUtil
   {
     if (Build.VERSION.SDK_INT >= 11)
     {
-      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
+      paramContext = (android.content.ClipboardManager)paramContext.getSystemService("clipboard");
+      paramString = ClipData.newPlainText(null, paramString);
+      ClipboardMonitor.setPrimaryClip(paramContext, paramString);
+      paramContext.setPrimaryClip(paramString);
       return;
     }
     ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
@@ -20,7 +24,7 @@ public final class ClipboardUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.util.ClipboardUtil
  * JD-Core Version:    0.7.0.1
  */

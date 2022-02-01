@@ -17,9 +17,7 @@ class AddContactTroopHandler$1
     }
     catch (Exception paramSosoLbsInfo)
     {
-      paramSosoLbsInfo.printStackTrace();
-      this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB.b();
-      return;
+      break label58;
     }
     if (paramInt == 2)
     {
@@ -30,11 +28,15 @@ class AddContactTroopHandler$1
       return;
     }
     this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB.b();
+    return;
+    label58:
+    paramSosoLbsInfo.printStackTrace();
+    this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.AddContactTroopHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
+import com.tencent.mobileqq.search.base.engine.ISearchEngine;
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
+import com.tencent.mobileqq.search.base.model.SearchRequest;
 import com.tencent.mobileqq.search.model.MessageSearchResultModel;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -46,10 +49,12 @@ public class MessageSearchEngine
       QLog.d("MessageSearchEngine", 2, "========== search message use MessageSearchEngine");
     }
     this.jdField_a_of_type_JavaLangString = paramSearchRequest.jdField_a_of_type_JavaLangString;
-    if ((paramSearchRequest.jdField_a_of_type_AndroidOsBundle != null) && (paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", false))) {}
-    for (paramSearchRequest = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchManager.a(this.jdField_a_of_type_JavaLangString);; paramSearchRequest = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchManager.b(this.jdField_a_of_type_JavaLangString)) {
-      return a(this.jdField_a_of_type_JavaLangString, paramSearchRequest);
+    if ((paramSearchRequest.jdField_a_of_type_AndroidOsBundle != null) && (paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getBoolean("SEARCH_REQUEST_EXTRA_TIME_LIMIT", false))) {
+      paramSearchRequest = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchManager.a(this.jdField_a_of_type_JavaLangString);
+    } else {
+      paramSearchRequest = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchManager.b(this.jdField_a_of_type_JavaLangString);
     }
+    return a(this.jdField_a_of_type_JavaLangString, paramSearchRequest);
   }
   
   public void a() {}
@@ -78,7 +83,7 @@ public class MessageSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.MessageSearchEngine
  * JD-Core Version:    0.7.0.1
  */

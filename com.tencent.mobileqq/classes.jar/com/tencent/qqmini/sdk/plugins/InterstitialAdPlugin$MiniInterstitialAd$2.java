@@ -22,7 +22,12 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
   
   public void onError(int paramInt, String paramString)
   {
-    QMLog.i("SDK_MiniInterstitialAd", "onError, errCode = " + paramInt + ", errMsg = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onError, errCode = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errMsg = ");
+    localStringBuilder.append(paramString);
+    QMLog.i("SDK_MiniInterstitialAd", localStringBuilder.toString());
     InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, false, "operateInterstitialAd", this.val$compId, paramInt, this.val$callbackId);
     InterstitialAdPlugin.MiniInterstitialAd.access$602(this.this$1, false);
   }
@@ -41,7 +46,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InterstitialAdPlugin.MiniInterstitialAd.2
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ class DatalineMessageManager$1
   
   public void run()
   {
-    EntityManager localEntityManager = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     try
     {
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time == 0L) {
@@ -29,7 +29,7 @@ class DatalineMessageManager$1
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq == 0L) {
         this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq = ((int)this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time);
       }
-      DatalineMessageManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, localEntityManager);
+      DatalineMessageManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, (EntityManager)localObject1);
       if (!QFileAssistantUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
         RecentUserProxy localRecentUserProxy = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
@@ -41,21 +41,25 @@ class DatalineMessageManager$1
       }
       long l = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId;
       this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
-      localEntityManager.close();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.DatalineMessageManager", 2, "mr.msgId: " + l);
+      ((EntityManager)localObject1).close();
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("mr.msgId: ");
+        ((StringBuilder)localObject1).append(l);
+        QLog.d("Q.msg.DatalineMessageManager", 2, ((StringBuilder)localObject1).toString());
       }
       return;
     }
     finally
     {
-      localEntityManager.close();
+      ((EntityManager)localObject1).close();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.DatalineMessageManager.1
  * JD-Core Version:    0.7.0.1
  */

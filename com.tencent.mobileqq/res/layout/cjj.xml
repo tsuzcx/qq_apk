@@ -1,21 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/icon" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="12.0dip" />
-    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/b9s" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="12.0dip" android:layout_weight="1.0">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/title_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="16.0sp" android:textColor="#ff242424" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_below="@id/title_container">
-            <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.GameGiftsImageView android:id="@id/n2k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <TextView android:textSize="12.0sp" android:textColor="#ff8f8f8f" android:ellipsize="end" android:id="@id/n0u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-        </LinearLayout>
-    </RelativeLayout>
-    <FrameLayout android:layout_gravity="end|center" android:layout_width="50.0dip" android:layout_height="30.0dip" android:layout_marginRight="12.0dip">
-        <com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJDownloadView android:id="@id/a6w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <View android:background="@drawable/e7f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/mxe" android:visibility="visible" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="15.0dip">
-        <ImageView android:layout_gravity="center" android:id="@id/c9a" android:background="@drawable/ibd" android:layout_width="12.0dip" android:layout_height="12.0dip" />
-    </FrameLayout>
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -47,21 +47,21 @@ final class OperatorMerge$InnerSubscriber<T>
   public void requestMore(long paramLong)
   {
     int i = this.outstanding - (int)paramLong;
-    if (i > limit) {
-      this.outstanding = i;
-    }
-    do
+    if (i > limit)
     {
+      this.outstanding = i;
       return;
-      this.outstanding = RxRingBuffer.SIZE;
-      i = RxRingBuffer.SIZE - i;
-    } while (i <= 0);
-    request(i);
+    }
+    this.outstanding = RxRingBuffer.SIZE;
+    i = RxRingBuffer.SIZE - i;
+    if (i > 0) {
+      request(i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorMerge.InnerSubscriber
  * JD-Core Version:    0.7.0.1
  */

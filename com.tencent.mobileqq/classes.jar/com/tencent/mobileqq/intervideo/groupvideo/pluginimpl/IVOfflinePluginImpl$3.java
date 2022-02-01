@@ -10,8 +10,15 @@ class IVOfflinePluginImpl$3
   
   public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(IVOfflinePluginImpl.access$000(this.this$0), 2, "checkOfflineUpNotCallback, param = " + paramString + " code = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = IVOfflinePluginImpl.access$000(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkOfflineUpNotCallback, param = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" code = ");
+      localStringBuilder.append(paramInt);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
   }
   
@@ -19,7 +26,7 @@ class IVOfflinePluginImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.pluginimpl.IVOfflinePluginImpl.3
  * JD-Core Version:    0.7.0.1
  */

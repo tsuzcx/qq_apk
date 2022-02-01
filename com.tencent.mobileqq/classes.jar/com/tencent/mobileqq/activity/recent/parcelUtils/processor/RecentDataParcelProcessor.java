@@ -17,37 +17,31 @@ public class RecentDataParcelProcessor
   
   private static final boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      bool1 = true;
-    }
-    do
+    if (paramArrayOfByte1 != null)
     {
-      do
+      if (paramArrayOfByte2 == null) {
+        return true;
+      }
+      if (paramArrayOfByte1 != null)
       {
-        do
+        if (paramArrayOfByte2 == null) {
+          return false;
+        }
+        if (paramArrayOfByte1.length != paramArrayOfByte2.length) {
+          return false;
+        }
+        int i = 0;
+        while (i < paramArrayOfByte1.length)
         {
-          return bool1;
-          bool1 = bool2;
-        } while (paramArrayOfByte1 == null);
-        bool1 = bool2;
-      } while (paramArrayOfByte2 == null);
-      bool1 = bool2;
-    } while (paramArrayOfByte1.length != paramArrayOfByte2.length);
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramArrayOfByte1.length) {
-        break label66;
+          if (paramArrayOfByte1[i] != paramArrayOfByte2[i]) {
+            return false;
+          }
+          i += 1;
+        }
+        return true;
       }
-      bool1 = bool2;
-      if (paramArrayOfByte1[i] != paramArrayOfByte2[i]) {
-        break;
-      }
-      i += 1;
+      return false;
     }
-    label66:
     return true;
   }
   
@@ -57,29 +51,40 @@ public class RecentDataParcelProcessor
     {
       if (paramField.getType() == MsgSummary.class)
       {
-        paramObject = Parcel.obtain();
+        paramField = Parcel.obtain();
         try
         {
-          paramObject.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
-          paramObject.setDataPosition(0);
-          paramField = new byte[4];
-          paramObject.readByteArray(paramField);
-          boolean bool = a(paramField, a);
-          if (bool) {
+          paramField.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+          paramField.setDataPosition(0);
+          paramObject = new byte[4];
+          paramField.readByteArray(paramObject);
+          boolean bool = a(paramObject, a);
+          if (bool)
+          {
+            paramField.recycle();
             return null;
           }
-          if (!a(paramField, b)) {
-            throw new RuntimeException("Bad MsgSummary header");
+          if (a(paramObject, b))
+          {
+            paramObject = new MsgSummary();
+            paramArrayOfByte = ParcelHelper.a(paramObject);
           }
+          try
+          {
+            b(paramObject, paramField, paramArrayOfByte);
+            paramField.recycle();
+            return paramObject;
+          }
+          finally
+          {
+            break label113;
+          }
+          throw new RuntimeException("Bad MsgSummary header");
         }
-        finally
-        {
-          paramObject.recycle();
-        }
-        paramField = new MsgSummary();
-        b(paramField, paramObject, ParcelHelper.a(paramField));
-        paramObject.recycle();
-        return paramField;
+        finally {}
+        label113:
+        paramField.recycle();
+        throw paramObject;
       }
       QLog.e("Recent.Processor", 1, new Object[] { "unparcel unrecognize type ", paramField.getType(), "(", paramObject.getClass(), ")" });
       return null;
@@ -103,30 +108,42 @@ public class RecentDataParcelProcessor
         localParcel.setDataPosition(0);
         try
         {
-          MsgSummary localMsgSummary = (MsgSummary)paramField.get(paramObject);
-          if (localMsgSummary == null) {
+          localObject = (MsgSummary)paramField.get(paramObject);
+          if (localObject == null)
+          {
             localParcel.writeByteArray(a);
           }
-          for (;;)
+          else
           {
-            paramObject = localParcel.marshall();
-            localParcel.recycle();
-            return paramObject;
             localParcel.writeByteArray(b);
-            c(localMsgSummary, ParcelHelper.a(localMsgSummary), localParcel);
+            c(localObject, ParcelHelper.a(localObject), localParcel);
           }
-          localStringBuilder = new StringBuilder().append("unrecognize type ");
+          paramObject = localParcel.marshall();
+          localParcel.recycle();
+          return paramObject;
         }
         catch (IllegalAccessException localIllegalAccessException)
         {
-          throw new RuntimeException("get MsgSummary error. object=" + paramObject.getClass() + ", field=" + paramField.getName(), localIllegalAccessException);
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("get MsgSummary error. object=");
+          ((StringBuilder)localObject).append(paramObject.getClass());
+          ((StringBuilder)localObject).append(", field=");
+          ((StringBuilder)localObject).append(paramField.getName());
+          throw new RuntimeException(((StringBuilder)localObject).toString(), localIllegalAccessException);
         }
       }
-      StringBuilder localStringBuilder;
-      if (paramField != null) {}
-      for (paramField = paramField.getType();; paramField = "NullField") {
-        throw new ParcelHelper.UnsupportedFieldTypeException(paramField + "(" + paramObject.getClass() + ")");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unrecognize type ");
+      if (paramField != null) {
+        paramField = paramField.getType();
+      } else {
+        paramField = "NullField";
       }
+      localStringBuilder.append(paramField);
+      localStringBuilder.append("(");
+      localStringBuilder.append(paramObject.getClass());
+      localStringBuilder.append(")");
+      throw new ParcelHelper.UnsupportedFieldTypeException(localStringBuilder.toString());
     }
     QLog.e("Recent.Processor", 1, new Object[] { "parcel unrecognize type ", paramField.getType(), "(", paramObject.getClass(), ")" });
     return null;
@@ -139,7 +156,7 @@ public class RecentDataParcelProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.parcelUtils.processor.RecentDataParcelProcessor
  * JD-Core Version:    0.7.0.1
  */

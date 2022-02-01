@@ -6,7 +6,7 @@ import java.net.InetAddress;
 
 public class HostCacheManager
 {
-  private static HostCacheManager manager = null;
+  private static HostCacheManager manager;
   private final int MAX_CACHE_SIZE = 128;
   private HostCacheManager.Cache<String, HostCacheManager.HostEntity> data = new HostCacheManager.Cache(this, 128);
   
@@ -25,42 +25,45 @@ public class HostCacheManager
   
   public void addCache(String paramString, InetAddress[] paramArrayOfInetAddress, long paramLong)
   {
-    if (QDLog.isDebugEnable()) {
-      QDLog.d("dnstest", "$$$addCache[" + paramString + "]");
-    }
-    HostCacheManager.HostEntity localHostEntity = new HostCacheManager.HostEntity(this, null);
-    localHostEntity.expireTime = paramLong;
-    localHostEntity.address = paramArrayOfInetAddress;
-    if (NetworkManager.isMobile()) {}
-    for (paramArrayOfInetAddress = NetworkManager.getApnValue();; paramArrayOfInetAddress = NetworkManager.getBSSID())
+    if (QDLog.isDebugEnable())
     {
-      localHostEntity.networkType = paramArrayOfInetAddress;
-      if (this.data.containsKey(paramString)) {
-        this.data.remove(paramString);
-      }
-      this.data.put(paramString, localHostEntity);
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("$$$addCache[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QDLog.d("dnstest", ((StringBuilder)localObject).toString());
     }
+    Object localObject = new HostCacheManager.HostEntity(this, null);
+    ((HostCacheManager.HostEntity)localObject).expireTime = paramLong;
+    ((HostCacheManager.HostEntity)localObject).address = paramArrayOfInetAddress;
+    if (NetworkManager.isMobile()) {
+      paramArrayOfInetAddress = NetworkManager.getApnValue();
+    } else {
+      paramArrayOfInetAddress = NetworkManager.getBSSID();
+    }
+    ((HostCacheManager.HostEntity)localObject).networkType = paramArrayOfInetAddress;
+    if (this.data.containsKey(paramString)) {
+      this.data.remove(paramString);
+    }
+    this.data.put(paramString, localObject);
   }
   
   public InetAddress[] getCacheItemByHost(String paramString)
   {
     HostCacheManager.HostEntity localHostEntity = (HostCacheManager.HostEntity)this.data.get(paramString);
-    if (localHostEntity != null)
-    {
+    if (localHostEntity != null) {
       if (!localHostEntity.isValid()) {
         this.data.remove(paramString);
+      } else {
+        return localHostEntity.address;
       }
     }
-    else {
-      return null;
-    }
-    return localHostEntity.address;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.common.dns.HostCacheManager
  * JD-Core Version:    0.7.0.1
  */

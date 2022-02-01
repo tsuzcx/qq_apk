@@ -1,26 +1,21 @@
 package com.tencent.av.opengl.multiplevideos.renderbase;
 
-import android.util.Log;
-
 public abstract class RenderObject
 {
-  protected RenderContext a;
   private String a;
   
   public RenderObject()
   {
-    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "-" + Integer.toHexString(hashCode()));
-  }
-  
-  public void a(RenderContext paramRenderContext)
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "init");
-    this.jdField_a_of_type_ComTencentAvOpenglMultiplevideosRenderbaseRenderContext = paramRenderContext;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append("-");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.a = localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.multiplevideos.renderbase.RenderObject
  * JD-Core Version:    0.7.0.1
  */

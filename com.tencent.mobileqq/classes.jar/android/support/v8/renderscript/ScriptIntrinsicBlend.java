@@ -10,13 +10,16 @@ public class ScriptIntrinsicBlend
   
   private void blend(int paramInt, Allocation paramAllocation1, Allocation paramAllocation2)
   {
-    if (!paramAllocation1.getElement().isCompatible(Element.U8_4(this.mRS))) {
-      throw new RSIllegalArgumentException("Input is not of expected format.");
-    }
-    if (!paramAllocation2.getElement().isCompatible(Element.U8_4(this.mRS))) {
+    if (paramAllocation1.getElement().isCompatible(Element.U8_4(this.mRS)))
+    {
+      if (paramAllocation2.getElement().isCompatible(Element.U8_4(this.mRS)))
+      {
+        forEach(paramInt, paramAllocation1, paramAllocation2, null);
+        return;
+      }
       throw new RSIllegalArgumentException("Output is not of expected format.");
     }
-    forEach(paramInt, paramAllocation1, paramAllocation2, null);
+    throw new RSIllegalArgumentException("Input is not of expected format.");
   }
   
   public static ScriptIntrinsicBlend create(RenderScript paramRenderScript, Element paramElement)
@@ -178,7 +181,7 @@ public class ScriptIntrinsicBlend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.ScriptIntrinsicBlend
  * JD-Core Version:    0.7.0.1
  */

@@ -12,78 +12,96 @@ class ShapeFillParser
   static ShapeFill parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
     String str1 = null;
-    boolean bool1 = false;
+    Object localObject1 = str1;
+    Object localObject2 = localObject1;
     int j = 1;
-    AnimatableIntegerValue localAnimatableIntegerValue = null;
     boolean bool2 = false;
-    AnimatableColorValue localAnimatableColorValue = null;
-    label17:
+    boolean bool1 = false;
     while (paramJsonReader.hasNext())
     {
       String str2 = paramJsonReader.nextName();
       int i = -1;
-      switch (str2.hashCode())
+      int k = str2.hashCode();
+      if (k != -396065730)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (k != 99)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label17;
-          if (str2.equals("nm"))
+          if (k != 111)
           {
-            i = 0;
-            continue;
-            if (str2.equals("c"))
+            if (k != 114)
             {
-              i = 1;
-              continue;
-              if (str2.equals("o"))
+              if (k != 3324)
               {
-                i = 2;
-                continue;
-                if (str2.equals("fillEnabled"))
-                {
-                  i = 3;
-                  continue;
-                  if (str2.equals("r"))
-                  {
-                    i = 4;
-                    continue;
-                    if (str2.equals("hd")) {
-                      i = 5;
-                    }
-                  }
+                if ((k == 3519) && (str2.equals("nm"))) {
+                  i = 0;
                 }
               }
+              else if (str2.equals("hd")) {
+                i = 5;
+              }
+            }
+            else if (str2.equals("r")) {
+              i = 4;
             }
           }
-          break;
+          else if (str2.equals("o")) {
+            i = 2;
+          }
+        }
+        else if (str2.equals("c")) {
+          i = 1;
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localAnimatableColorValue = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableIntegerValue = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
-      continue;
-      bool2 = paramJsonReader.nextBoolean();
-      continue;
-      j = paramJsonReader.nextInt();
-      continue;
-      bool1 = paramJsonReader.nextBoolean();
+      else if (str2.equals("fillEnabled")) {
+        i = 3;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i != 4)
+              {
+                if (i != 5) {
+                  paramJsonReader.skipValue();
+                } else {
+                  bool1 = paramJsonReader.nextBoolean();
+                }
+              }
+              else {
+                j = paramJsonReader.nextInt();
+              }
+            }
+            else {
+              bool2 = paramJsonReader.nextBoolean();
+            }
+          }
+          else {
+            localObject2 = AnimatableValueParser.parseInteger(paramJsonReader, paramLottieComposition);
+          }
+        }
+        else {
+          localObject1 = AnimatableValueParser.parseColor(paramJsonReader, paramLottieComposition);
+        }
+      }
+      else {
+        str1 = paramJsonReader.nextString();
+      }
     }
-    if (j == 1) {}
-    for (paramJsonReader = Path.FillType.WINDING;; paramJsonReader = Path.FillType.EVEN_ODD) {
-      return new ShapeFill(str1, bool2, paramJsonReader, localAnimatableColorValue, localAnimatableIntegerValue, bool1);
+    if (j == 1) {
+      paramJsonReader = Path.FillType.WINDING;
+    } else {
+      paramJsonReader = Path.FillType.EVEN_ODD;
     }
+    return new ShapeFill(str1, bool2, paramJsonReader, (AnimatableColorValue)localObject1, (AnimatableIntegerValue)localObject2, bool1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ShapeFillParser
  * JD-Core Version:    0.7.0.1
  */

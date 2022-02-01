@@ -20,22 +20,33 @@ class VideoController$StartAudioSendRunnable
   public void run()
   {
     this.jdField_a_of_type_Int -= 1;
-    if (this.jdField_a_of_type_Int > 0) {}
-    for (int i = 1;; i = 2)
-    {
-      VideoController.a(VideoController.a(), this.jdField_a_of_type_Long, "StartAudioSendRunnable", this.jdField_a_of_type_Boolean, this.b, i);
-      return;
+    int i;
+    if (this.jdField_a_of_type_Int > 0) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    VideoController.a(VideoController.a(), this.jdField_a_of_type_Long, "StartAudioSendRunnable", this.jdField_a_of_type_Boolean, this.b, i);
   }
   
   public String toString()
   {
-    return "seq[" + this.jdField_a_of_type_Long + "], mFrom[" + this.jdField_a_of_type_JavaLangString + "], mEnable[" + this.jdField_a_of_type_Boolean + "], mNotifySvr[" + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("], mFrom[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("], mEnable[");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("], mNotifySvr[");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.StartAudioSendRunnable
  * JD-Core Version:    0.7.0.1
  */

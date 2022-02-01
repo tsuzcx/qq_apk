@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class ARCloudRecogCommonPb$ARCloudRecogReq
   extends MessageMicro<ARCloudRecogReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58, 66, 74, 82, 90, 96, 106, 114, 122, 130, 138, 146, 162, 170 }, new String[] { "str_session_id", "msg_ar_req_file_info", "uint32_lon", "uint32_lat", "uin64_req_recog_type", "uin32_business_type", "msg_ar_marker_recog_info", "msg_object_classify_info", "msg_face_recog_info", "msg_face_reg_info", "str_clt_version", "uint64_uin", "msg_ocr_info", "msg_game_info", "msg_word_detect_info", "msg_img_retrieval_info", "msg_face_detect_info", "msg_search_question_info", "msg_scene_classify_info", "msg_image_translate_req_info" }, new Object[] { "", null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), null, null, null, null, "", Long.valueOf(0L), null, null, null, null, null, null, null, null }, ARCloudRecogReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public ARCloudRecogCustomPb.ARMarkerRecogInfo msg_ar_marker_recog_info = new ARCloudRecogCustomPb.ARMarkerRecogInfo();
   public ARCloudRecogCommonPb.ARFileReqInfo msg_ar_req_file_info = new ARCloudRecogCommonPb.ARFileReqInfo();
   public ARCloudRecogCustomPb.ARFaceDetectInfo msg_face_detect_info = new ARCloudRecogCustomPb.ARFaceDetectInfo();
@@ -31,10 +31,16 @@ public final class ARCloudRecogCommonPb$ARCloudRecogReq
   public final PBUInt32Field uint32_lat = PBField.initUInt32(0);
   public final PBUInt32Field uint32_lon = PBField.initUInt32(0);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58, 66, 74, 82, 90, 96, 106, 114, 122, 130, 138, 146, 162, 170 }, new String[] { "str_session_id", "msg_ar_req_file_info", "uint32_lon", "uint32_lat", "uin64_req_recog_type", "uin32_business_type", "msg_ar_marker_recog_info", "msg_object_classify_info", "msg_face_recog_info", "msg_face_reg_info", "str_clt_version", "uint64_uin", "msg_ocr_info", "msg_game_info", "msg_word_detect_info", "msg_img_retrieval_info", "msg_face_detect_info", "msg_search_question_info", "msg_scene_classify_info", "msg_image_translate_req_info" }, new Object[] { "", null, localInteger, localInteger, Long.valueOf(0L), localInteger, null, null, null, null, "", Long.valueOf(0L), null, null, null, null, null, null, null, null }, ARCloudRecogReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCommonPb.ARCloudRecogReq
  * JD-Core Version:    0.7.0.1
  */

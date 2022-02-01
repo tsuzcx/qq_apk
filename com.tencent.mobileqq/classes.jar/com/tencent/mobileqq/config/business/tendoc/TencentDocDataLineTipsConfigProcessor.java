@@ -2,14 +2,11 @@ package com.tencent.mobileqq.config.business.tendoc;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.IDataLineMessageSpreadManager;
 
 public class TencentDocDataLineTipsConfigProcessor
   extends IQConfigProcessor<TencentDocDataLineTipsConfigBean>
@@ -36,9 +33,7 @@ public class TencentDocDataLineTipsConfigProcessor
   
   public void a(TencentDocDataLineTipsConfigBean paramTencentDocDataLineTipsConfigBean)
   {
-    if ((paramTencentDocDataLineTipsConfigBean != null) && (!TextUtils.isEmpty(paramTencentDocDataLineTipsConfigBean.b()))) {
-      ((DataLineMessageSpreadManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER_DATALINE)).a(paramTencentDocDataLineTipsConfigBean);
-    }
+    ((IDataLineMessageSpreadManager)QRoute.api(IDataLineMessageSpreadManager.class)).updateConfig(paramTencentDocDataLineTipsConfigBean);
   }
   
   public Class<TencentDocDataLineTipsConfigBean> clazz()
@@ -70,7 +65,7 @@ public class TencentDocDataLineTipsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocDataLineTipsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

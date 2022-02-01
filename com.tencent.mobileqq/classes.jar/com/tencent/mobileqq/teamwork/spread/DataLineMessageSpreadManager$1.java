@@ -11,112 +11,139 @@ class DataLineMessageSpreadManager$1
   
   public void run()
   {
-    int k = 0;
     if (QLog.isDebugVersion()) {
       QLog.i("DataLineMessageSpreadManager", 1, "SubThread Process Start");
     }
-    if (!DataLineMessageSpreadManager.a(this.this$0, this.a)) {
+    if (!DataLineMessageSpreadManager.a(this.this$0, this.a))
+    {
       if (QLog.isColorLevel()) {
         QLog.i("DataLineMessageSpreadManager", 1, "config return false!");
       }
-    }
-    label179:
-    label596:
-    do
-    {
-      String str2;
-      String[] arrayOfString;
-      String str1;
-      int i;
-      Object localObject;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (this.a.msgtype != -2005) {
-              break;
-            }
-            if (QLog.isDebugVersion()) {
-              QLog.i("DataLineMessageSpreadManager", 1, "message is MessageForFile");
-            }
-            DataLineMessageSpreadManager.a(this.this$0, new BuddyFileDataLineMsgTips(DataLineMessageSpreadManager.a(this.this$0), this.a, DataLineMessageSpreadManager.a(this.this$0)));
-            if (DataLineMessageSpreadManager.a(this.this$0).a()) {
-              break label179;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.i("DataLineMessageSpreadManager", 1, "file[" + DataLineMessageSpreadManager.a(this.this$0).a() + "] is not support!");
-          return;
-        } while (!QLog.isDebugVersion());
-        QLog.i("DataLineMessageSpreadManager", 1, "message is unknown");
-        return;
-        str2 = DataLineMessageSpreadManager.a(this.this$0).a();
-        if (QLog.isColorLevel()) {
-          QLog.i("DataLineMessageSpreadManager", 1, "recv new File name is :" + str2);
-        }
-        arrayOfString = DataLineMessageSpreadManager.a(this.this$0).a(DataLineMessageSpreadManager.a(this.this$0));
-        str1 = "";
-        if (arrayOfString.length != 0) {
-          break;
-        }
-        i = 1;
-        localObject = str1;
-        if (i == 0) {
-          break label596;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("DataLineMessageSpreadManager", 1, "keyWord[" + (String)localObject + "] find!");
-        }
-        str1 = DataLineMessageSpreadManager.a(this.this$0).a(DataLineMessageSpreadManager.a(this.this$0));
-        localObject = DataLineMessageSpreadManager.a(this.this$0).b(DataLineMessageSpreadManager.a(this.this$0));
-        if ((TextUtils.isEmpty(str1)) && (QLog.isColorLevel())) {
-          QLog.i("DataLineMessageSpreadManager", 1, "tips is null! return, tips[" + str1 + "], link[" + (String)localObject + "]");
-        }
-        str1 = str1 + "。" + (String)localObject;
-      } while (!(DataLineMessageSpreadManager.a(this.this$0) instanceof BuddyFileDataLineMsgTips));
-      DataLineMessageSpreadManager.a(this.this$0, this.a, str1, (String)localObject, "keyword", null);
       return;
-      if (QLog.isDebugVersion())
+    }
+    if (this.a.msgtype == -2005)
+    {
+      if (QLog.isDebugVersion()) {
+        QLog.i("DataLineMessageSpreadManager", 1, "message is MessageForFile");
+      }
+      Object localObject1 = this.this$0;
+      DataLineMessageSpreadManager.a((DataLineMessageSpreadManager)localObject1, new BuddyFileDataLineMsgTips(DataLineMessageSpreadManager.a((DataLineMessageSpreadManager)localObject1), this.a, DataLineMessageSpreadManager.a(this.this$0)));
+      if (!DataLineMessageSpreadManager.a(this.this$0).a())
       {
-        localObject = new StringBuilder();
-        j = arrayOfString.length;
-        i = 0;
-        while (i < j)
+        if (QLog.isColorLevel())
         {
-          ((StringBuilder)localObject).append(arrayOfString[i]).append(",");
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("file[");
+          ((StringBuilder)localObject1).append(DataLineMessageSpreadManager.a(this.this$0).a());
+          ((StringBuilder)localObject1).append("] is not support!");
+          QLog.i("DataLineMessageSpreadManager", 1, ((StringBuilder)localObject1).toString());
+        }
+        return;
+      }
+      Object localObject3 = DataLineMessageSpreadManager.a(this.this$0).a();
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("recv new File name is :");
+        ((StringBuilder)localObject1).append((String)localObject3);
+        QLog.i("DataLineMessageSpreadManager", 1, ((StringBuilder)localObject1).toString());
+      }
+      String[] arrayOfString = DataLineMessageSpreadManager.a(this.this$0).a(DataLineMessageSpreadManager.a(this.this$0));
+      int i = arrayOfString.length;
+      int k = 0;
+      localObject1 = "";
+      int j;
+      Object localObject2;
+      if (i == 0)
+      {
+        j = 1;
+        localObject2 = localObject1;
+      }
+      else
+      {
+        if (QLog.isDebugVersion())
+        {
+          localObject2 = new StringBuilder();
+          j = arrayOfString.length;
+          i = 0;
+          while (i < j)
+          {
+            ((StringBuilder)localObject2).append(arrayOfString[i]);
+            ((StringBuilder)localObject2).append(",");
+            i += 1;
+          }
+          if (((StringBuilder)localObject2).length() > 0) {
+            ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getConfig keyWords:");
+          localStringBuilder.append(((StringBuilder)localObject2).toString());
+          QLog.i("DataLineMessageSpreadManager", 1, localStringBuilder.toString());
+        }
+        int m = arrayOfString.length;
+        i = 0;
+        for (;;)
+        {
+          j = k;
+          localObject2 = localObject1;
+          if (i >= m) {
+            break label433;
+          }
+          localObject2 = arrayOfString[i];
+          if (((String)localObject3).contains((CharSequence)localObject2))
+          {
+            localObject1 = localObject2;
+            break;
+          }
           i += 1;
         }
-        if (((StringBuilder)localObject).length() > 0) {
-          ((StringBuilder)localObject).deleteCharAt(((StringBuilder)localObject).length() - 1);
-        }
-        QLog.i("DataLineMessageSpreadManager", 1, "getConfig keyWords:" + ((StringBuilder)localObject).toString());
       }
-      int m = arrayOfString.length;
-      int j = 0;
-      for (;;)
+      label433:
+      if (j != 0)
       {
-        i = k;
-        localObject = str1;
-        if (j >= m) {
-          break;
-        }
-        localObject = arrayOfString[j];
-        if (str2.contains((CharSequence)localObject))
+        if (QLog.isColorLevel())
         {
-          i = 1;
-          break;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("keyWord[");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append("] find!");
+          QLog.i("DataLineMessageSpreadManager", 1, ((StringBuilder)localObject1).toString());
         }
-        j += 1;
+        localObject2 = DataLineMessageSpreadManager.a(this.this$0).a(DataLineMessageSpreadManager.a(this.this$0));
+        localObject1 = DataLineMessageSpreadManager.a(this.this$0).b(DataLineMessageSpreadManager.a(this.this$0));
+        if ((TextUtils.isEmpty((CharSequence)localObject2)) && (QLog.isColorLevel()))
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("tips is null! return, tips[");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          ((StringBuilder)localObject3).append("], link[");
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append("]");
+          QLog.i("DataLineMessageSpreadManager", 1, ((StringBuilder)localObject3).toString());
+        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append("。");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        localObject2 = ((StringBuilder)localObject3).toString();
+        if ((DataLineMessageSpreadManager.a(this.this$0) instanceof BuddyFileDataLineMsgTips)) {
+          DataLineMessageSpreadManager.a(this.this$0, this.a, (String)localObject2, (String)localObject1, "keyword", null);
+        }
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("DataLineMessageSpreadManager", 1, "keyWords not find!");
+      if (QLog.isColorLevel()) {
+        QLog.i("DataLineMessageSpreadManager", 1, "keyWords not find!");
+      }
+      return;
+    }
+    if (QLog.isDebugVersion()) {
+      QLog.i("DataLineMessageSpreadManager", 1, "message is unknown");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.DataLineMessageSpreadManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.service;
 
+import com.tencent.aelight.camera.ae.config.CameraDataService;
 import com.tencent.biz.bmqq.protocol.BmqqBusinessService;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseProtocolCoder;
@@ -8,6 +9,7 @@ import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.NearFieldDiscussHandler;
 import com.tencent.mobileqq.compatible.TempServlet;
+import com.tencent.mobileqq.hotchat.app.HotChatHandler;
 import com.tencent.mobileqq.onlinestatus.music.OnlineStatusHandler;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.mobileqq.service.RegisterProxySvcPack.RegisterProxySvcPackService;
@@ -24,8 +26,8 @@ import com.tencent.mobileqq.service.qwallet.VIPRecommendService;
 import com.tencent.mobileqq.service.qzone.QZoneService;
 import com.tencent.mobileqq.service.report.ReportService;
 import com.tencent.mobileqq.service.wifisdk.WifiSdkService;
+import com.tencent.mobileqq.subaccount.api.impl.SubAccountBindHandler;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.config.CameraDataService;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -69,6 +71,8 @@ public class MobileQQService
     jdField_a_of_type_JavaUtilArrayList.add(WifiSdkService.class);
     b = new ArrayList();
     b.add(MessageHandler.class);
+    b.add(SubAccountBindHandler.class);
+    b.add(HotChatHandler.class);
     c = new ArrayList();
     c.add(MessageHandler.class);
     c.add(NearFieldDiscussHandler.class);
@@ -110,7 +114,7 @@ public class MobileQQService
         try
         {
           Object localObject = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getBusinessHandler(localClass.getName()).getPushCommandList();
-          if ((localObject != null) && (((Set)localObject).isEmpty()))
+          if ((localObject != null) && (!((Set)localObject).isEmpty()))
           {
             localObject = ((Set)localObject).iterator();
             while (((Iterator)localObject).hasNext()) {
@@ -186,7 +190,7 @@ public class MobileQQService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.MobileQQService
  * JD-Core Version:    0.7.0.1
  */

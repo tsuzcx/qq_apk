@@ -3,7 +3,7 @@ package com.tencent.gdtad.aditem;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -30,26 +30,23 @@ public class GdtAdLoader
   
   private void b(WeakReference<Context> paramWeakReference)
   {
-    if ((this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session == null) || (this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a == null))
+    Object localObject = this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session;
+    if ((localObject != null) && (((GdtAdLoader.Session)localObject).a != null))
     {
-      GdtLog.d("GdtAdLoader", "reportForAnalysis error");
+      int i = 0;
+      while (i < this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a.position_info.size())
+      {
+        if (paramWeakReference != null) {
+          localObject = (Context)paramWeakReference.get();
+        } else {
+          localObject = null;
+        }
+        AdAnalysisHelperForUtil.reportForLoadAd((Context)localObject, ((qq_ad_get.QQAdGet.PositionInfo)this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a.position_info.get(i)).pos_id.get());
+        i += 1;
+      }
       return;
     }
-    int i = 0;
-    label27:
-    if (i < this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a.position_info.size()) {
-      if (paramWeakReference == null) {
-        break label90;
-      }
-    }
-    label90:
-    for (Context localContext = (Context)paramWeakReference.get();; localContext = null)
-    {
-      AdReporterForAnalysis.reportForLoadAd(localContext, ((qq_ad_get.QQAdGet.PositionInfo)this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session.a.position_info.get(i)).pos_id.get());
-      i += 1;
-      break label27;
-      break;
-    }
+    GdtLog.d("GdtAdLoader", "reportForAnalysis error");
   }
   
   public GdtAdLoader.Session a()
@@ -57,6 +54,7 @@ public class GdtAdLoader
     return this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Session;
   }
   
+  @Deprecated
   public void a(WeakReference<Context> paramWeakReference)
   {
     ThreadManager.post(new GdtAdLoader.1(this, paramWeakReference), 5, null, true);
@@ -65,7 +63,7 @@ public class GdtAdLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtAdLoader
  * JD-Core Version:    0.7.0.1
  */

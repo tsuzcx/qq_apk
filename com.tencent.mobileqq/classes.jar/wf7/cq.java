@@ -27,61 +27,69 @@ public class cq
   
   private void T(int paramInt)
   {
-    int i = 1;
     Object localObject2 = new ArrayList();
-    for (;;)
+    synchronized (this.hN)
     {
-      synchronized (this.hN)
+      ((List)localObject2).addAll(this.hN);
+      ??? = ((List)localObject2).iterator();
+      boolean bool1;
+      int i;
+      for (;;)
       {
-        ((List)localObject2).addAll(this.hN);
-        ??? = ((List)localObject2).iterator();
-        if (!((Iterator)???).hasNext()) {
+        bool1 = ((Iterator)???).hasNext();
+        i = 2;
+        if (!bool1) {
           break;
         }
         localObject2 = (d)((Iterator)???).next();
-        switch (paramInt)
+        if (paramInt != 0)
         {
-        default: 
-          break;
-        case 0: 
+          if (paramInt != 1)
+          {
+            if (paramInt != 2)
+            {
+              if (paramInt == 3) {
+                ((d)localObject2).q();
+              }
+            }
+            else {
+              ((d)localObject2).p();
+            }
+          }
+          else {
+            ((d)localObject2).s();
+          }
+        }
+        else {
           ((d)localObject2).r();
         }
       }
-      localObject3.p();
-      continue;
-      localObject3.q();
-      continue;
-      localObject3.s();
-    }
-    paramInt = cm.R(12);
-    boolean bool1;
-    if (paramInt == 1)
-    {
-      bool1 = true;
+      paramInt = cm.R(12);
+      if (paramInt == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
       boolean bool2 = m();
       if ((bool1 != bool2) || (paramInt == 12))
       {
-        if (!bool2) {
-          break label210;
+        if (bool2) {
+          paramInt = 1;
+        } else {
+          paramInt = -1;
         }
-        paramInt = 1;
-        label185:
         by.d(501096, paramInt);
-        if (!bool2) {
-          break label215;
+        paramInt = i;
+        if (bool2) {
+          paramInt = 1;
         }
+        cm.q(12, paramInt);
       }
-    }
-    label210:
-    label215:
-    for (paramInt = i;; paramInt = 2)
-    {
-      cm.q(12, paramInt);
       return;
-      bool1 = false;
-      break;
-      paramInt = -1;
-      break label185;
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
   
@@ -107,9 +115,14 @@ public class cq
     {
       localArrayList.addAll(this.hJ);
       ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((a)((Iterator)???).next()).a(paramCurrentSessionItem);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramCurrentSessionItem;
     }
   }
   
@@ -140,8 +153,9 @@ public class cq
   
   public void aW()
   {
-    if (this.hL != null) {
-      this.hL.aW();
+    cr localcr = this.hL;
+    if (localcr != null) {
+      localcr.aW();
     }
   }
   
@@ -176,8 +190,9 @@ public class cq
   
   public CurrentSessionItem n()
   {
-    if (this.hL != null) {
-      return this.hL.n();
+    cr localcr = this.hL;
+    if (localcr != null) {
+      return localcr.n();
     }
     return null;
   }
@@ -200,7 +215,7 @@ public class cq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cq
  * JD-Core Version:    0.7.0.1
  */

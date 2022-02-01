@@ -22,8 +22,11 @@ class VideoChatRoomUIContoller$3
       while (localIterator.hasNext())
       {
         VideoChatMessage localVideoChatMessage = (VideoChatMessage)localIterator.next();
-        if (localVideoChatMessage != null) {
-          VideoChatRoomUIContoller.a(this.this$0).append(localVideoChatMessage.b()).append(", ");
+        if (localVideoChatMessage != null)
+        {
+          StringBuilder localStringBuilder = VideoChatRoomUIContoller.a(this.this$0);
+          localStringBuilder.append(localVideoChatMessage.b());
+          localStringBuilder.append(", ");
         }
       }
       VideoChatRoomUIContoller.a(this.this$0).append("]");
@@ -36,7 +39,7 @@ class VideoChatRoomUIContoller$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.VideoChatRoomUIContoller.3
  * JD-Core Version:    0.7.0.1
  */

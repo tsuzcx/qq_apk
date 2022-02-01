@@ -13,35 +13,38 @@ public class PathPoint$PathEvaluator
     float f2;
     if (paramPathPoint2.jdField_a_of_type_Int == 2)
     {
-      f1 = 1.0F - paramFloat;
-      f2 = f1 * f1 * f1 * paramPathPoint1.jdField_a_of_type_Float + 3.0F * f1 * f1 * paramFloat * paramPathPoint2.e + 3.0F * f1 * paramFloat * paramFloat * paramPathPoint2.g + paramFloat * paramFloat * paramFloat * paramPathPoint2.jdField_a_of_type_Float;
-      float f3 = paramPathPoint1.b;
-      float f4 = paramPathPoint2.f;
-      f1 = f1 * 3.0F * paramFloat * paramFloat * paramPathPoint2.h + (f1 * f1 * f1 * f3 + 3.0F * f1 * f1 * paramFloat * f4) + paramFloat * paramFloat * paramFloat * paramPathPoint2.b;
+      float f3 = 1.0F - paramFloat;
+      f1 = f3 * f3 * f3;
+      f2 = paramPathPoint1.jdField_a_of_type_Float;
+      float f5 = 3.0F * f3;
+      f3 = f3 * f5 * paramFloat;
+      float f4 = paramPathPoint2.e;
+      f5 = f5 * paramFloat * paramFloat;
+      float f7 = paramPathPoint2.g;
+      float f6 = paramFloat * paramFloat * paramFloat;
+      f2 = f2 * f1 + f4 * f3 + f7 * f5 + paramPathPoint2.jdField_a_of_type_Float * f6;
+      f1 = f1 * paramPathPoint1.b + f3 * paramPathPoint2.f + f5 * paramPathPoint2.h + f6 * paramPathPoint2.b;
     }
-    for (;;)
+    else if (paramPathPoint2.jdField_a_of_type_Int == 1)
     {
-      PathPoint localPathPoint = PathPoint.b(f2, f1);
-      paramPathPoint1.d += (paramPathPoint2.d - paramPathPoint1.d) * paramFloat;
-      paramPathPoint1.c += (paramPathPoint2.c - paramPathPoint1.c) * paramFloat;
-      return localPathPoint;
-      if (paramPathPoint2.jdField_a_of_type_Int == 1)
-      {
-        f1 = paramPathPoint1.jdField_a_of_type_Float;
-        f2 = (paramPathPoint2.jdField_a_of_type_Float - paramPathPoint1.jdField_a_of_type_Float) * paramFloat + f1;
-        f1 = paramPathPoint1.b + (paramPathPoint2.b - paramPathPoint1.b) * paramFloat;
-      }
-      else
-      {
-        f2 = paramPathPoint2.jdField_a_of_type_Float;
-        f1 = paramPathPoint2.b;
-      }
+      f2 = paramPathPoint1.jdField_a_of_type_Float + (paramPathPoint2.jdField_a_of_type_Float - paramPathPoint1.jdField_a_of_type_Float) * paramFloat;
+      f1 = paramPathPoint1.b;
+      f1 = (paramPathPoint2.b - paramPathPoint1.b) * paramFloat + f1;
     }
+    else
+    {
+      f2 = paramPathPoint2.jdField_a_of_type_Float;
+      f1 = paramPathPoint2.b;
+    }
+    PathPoint localPathPoint = PathPoint.b(f2, f1);
+    paramPathPoint1.d += (paramPathPoint2.d - paramPathPoint1.d) * paramFloat;
+    paramPathPoint1.c += paramFloat * (paramPathPoint2.c - paramPathPoint1.c);
+    return localPathPoint;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.PathPoint.PathEvaluator
  * JD-Core Version:    0.7.0.1
  */

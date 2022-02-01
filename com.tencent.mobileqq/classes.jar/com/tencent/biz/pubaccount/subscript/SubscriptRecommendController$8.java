@@ -27,13 +27,13 @@ class SubscriptRecommendController$8
   public void onAnimationStart(Animation paramAnimation)
   {
     if ((this.a.b > 0) && (this.a.c > 0)) {
-      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131373647)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
+      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131373220)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.8
  * JD-Core Version:    0.7.0.1
  */

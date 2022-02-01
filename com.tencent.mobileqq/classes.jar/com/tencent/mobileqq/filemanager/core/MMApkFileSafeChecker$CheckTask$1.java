@@ -22,13 +22,24 @@ class MMApkFileSafeChecker$CheckTask$1
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$CheckTask.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$FileBusiInfo.f = HexUtil.bytes2HexStr(paramFileDigestInfo.a);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$CheckTask.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$FileBusiInfo.g = HexUtil.bytes2HexStr(paramFileDigestInfo.b);
     }
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] <" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$CheckTask.jdField_a_of_type_Int + "> on get digest result:" + paramBoolean + " cost:" + (l1 - l2) + " fileMd5:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$CheckTask.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$FileBusiInfo.f + " fileSha:" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$CheckTask.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$FileBusiInfo.g);
+    paramFileDigestInfo = new StringBuilder();
+    paramFileDigestInfo.append("[MMApkCheck] <");
+    paramFileDigestInfo.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$CheckTask.jdField_a_of_type_Int);
+    paramFileDigestInfo.append("> on get digest result:");
+    paramFileDigestInfo.append(paramBoolean);
+    paramFileDigestInfo.append(" cost:");
+    paramFileDigestInfo.append(l1 - l2);
+    paramFileDigestInfo.append(" fileMd5:");
+    paramFileDigestInfo.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$CheckTask.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$FileBusiInfo.f);
+    paramFileDigestInfo.append(" fileSha:");
+    paramFileDigestInfo.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$CheckTask.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker$FileBusiInfo.g);
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, paramFileDigestInfo.toString());
     new Handler(Looper.getMainLooper()).post(new MMApkFileSafeChecker.CheckTask.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.CheckTask.1
  * JD-Core Version:    0.7.0.1
  */

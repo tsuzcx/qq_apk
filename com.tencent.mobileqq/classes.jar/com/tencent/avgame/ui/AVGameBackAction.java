@@ -3,12 +3,11 @@ package com.tencent.avgame.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.Message;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseAIOUtils;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
+import mqq.app.MobileQQ;
 
 public class AVGameBackAction
 {
@@ -27,21 +26,22 @@ public class AVGameBackAction
   
   public static AVGameBackAction a(Intent paramIntent)
   {
-    String str1 = paramIntent.getStringExtra("key_from");
+    Object localObject = paramIntent.getStringExtra("key_from");
     long l = paramIntent.getLongExtra("key_msg_seq", 0L);
     int i = paramIntent.getIntExtra("uintype", 0);
-    String str2 = paramIntent.getStringExtra("uin");
-    Object localObject = null;
-    paramIntent = localObject;
-    if (!TextUtils.isEmpty(str1))
-    {
-      paramIntent = localObject;
-      if (!TextUtils.isEmpty(str2)) {
-        paramIntent = new AVGameBackAction(str1, i, str2, l);
-      }
+    paramIntent = paramIntent.getStringExtra("uin");
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramIntent))) {
+      paramIntent = new AVGameBackAction((String)localObject, i, paramIntent, l);
+    } else {
+      paramIntent = null;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameBackAction", 4, "parseAction, action[" + paramIntent + "]");
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parseAction, action[");
+      ((StringBuilder)localObject).append(paramIntent);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVGameBackAction", 4, ((StringBuilder)localObject).toString());
     }
     return paramIntent;
   }
@@ -54,8 +54,13 @@ public class AVGameBackAction
       paramIntent.putExtra("key_msg_seq", paramAVGameBackAction.jdField_a_of_type_Long);
       paramIntent.putExtra("uintype", paramAVGameBackAction.jdField_a_of_type_Int);
       paramIntent.putExtra("uin", paramAVGameBackAction.b);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AVGameBackAction", 4, "addAction, action[" + paramAVGameBackAction + "]");
+      if (QLog.isDevelopLevel())
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("addAction, action[");
+        paramIntent.append(paramAVGameBackAction);
+        paramIntent.append("]");
+        QLog.i("AVGameBackAction", 4, paramIntent.toString());
       }
     }
   }
@@ -68,8 +73,17 @@ public class AVGameBackAction
       paramIntent.putExtra("key_msg_seq", paramMessage.uniseq);
       paramIntent.putExtra("uintype", paramMessage.istroop);
       paramIntent.putExtra("uin", paramMessage.frienduin);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AVGameBackAction", 4, "addAction, action[MsgPush," + paramMessage.istroop + "," + paramMessage.frienduin + "," + paramMessage.uniseq + "]");
+      if (QLog.isDevelopLevel())
+      {
+        paramIntent = new StringBuilder();
+        paramIntent.append("addAction, action[MsgPush,");
+        paramIntent.append(paramMessage.istroop);
+        paramIntent.append(",");
+        paramIntent.append(paramMessage.frienduin);
+        paramIntent.append(",");
+        paramIntent.append(paramMessage.uniseq);
+        paramIntent.append("]");
+        QLog.i("AVGameBackAction", 4, paramIntent.toString());
       }
     }
   }
@@ -78,28 +92,37 @@ public class AVGameBackAction
   {
     Object localObject = paramContext;
     if (paramContext == null) {
-      localObject = BaseApplicationImpl.getContext();
+      localObject = MobileQQ.getContext();
     }
-    paramContext = new Intent((Context)localObject, SplashActivity.class);
+    paramContext = new Intent();
     if (this.jdField_a_of_type_Int == 1024) {
       paramContext.putExtra("chat_subType", 1);
     }
     paramContext.putExtra("uin", this.b);
     paramContext.putExtra("uintype", this.jdField_a_of_type_Int);
-    paramContext = AIOUtils.a(paramContext, new int[] { 2 });
+    paramContext = BaseAIOUtils.a(paramContext, new int[] { 2 });
     paramContext.setAction("com.tencent.mobileqq.action.MAINACTIVITY");
-    ((Context)localObject).startActivity(paramContext);
+    RouteUtils.a((Context)localObject, paramContext, "/base/start/splash");
   }
   
-  @NotNull
   public String toString()
   {
-    return "{" + this.jdField_a_of_type_JavaLangString + "," + this.jdField_a_of_type_Int + "," + this.b + "," + this.jdField_a_of_type_Long + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AVGameBackAction
  * JD-Core Version:    0.7.0.1
  */

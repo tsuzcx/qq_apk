@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.flutter.router.PageRouterBuilder;
 import com.tencent.mobileqq.flutter.router.QFlutterPageRouter;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -36,19 +36,19 @@ public class LikeRankingUtil
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((!TextUtils.isEmpty(paramString)) && (localObject != null))
     {
-      String str = ((AppRuntime)localObject).getAccount();
-      localObject = "2";
-      if (paramString.equals(str)) {
+      if (paramString.equals(((AppRuntime)localObject).getAccount())) {
         localObject = "1";
+      } else {
+        localObject = "2";
       }
       ReportController.b(null, "dc00898", "", "", "0X8007616", "0X8007616", 0, 0, (String)localObject, "", "", "");
-      ProfileActivity.b(paramContext, new ProfileActivity.AllInOne(paramString, 1));
+      ProfileUtils.openProfileCard(paramContext, new AllInOne(paramString, 1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.vote.LikeRankingUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/bja" android:background="@drawable/hd0" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:id="@id/o7i" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="15.0dip" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/vt" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/ewf" android:layout_width="26.0dip" android:layout_height="26.0dip" android:scaleType="fitXY" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/ewh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="" android:singleLine="true" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/a10" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_below="@id/a19">
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/o4s" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <CheckBox android:id="@id/mpk" android:background="@drawable/djz" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="24.0dip" android:layout_height="24.0dip" android:checked="true" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/ncm" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/gsq" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/oh5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:layout_toRightOf="@id/mpk" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/o4t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/o4s">
+            <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/njd">
+                <CheckBox android:id="@id/mpl" android:background="@drawable/djz" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="24.0dip" android:layout_height="24.0dip" android:checked="true" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/ncn" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/gsq" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/oh6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:layout_toRightOf="@id/mpl" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View android:id="@id/njd" android:background="#ffebedf5" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="16.0dip" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/o4u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/o4t">
+            <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/nje">
+                <CheckBox android:id="@id/mpm" android:background="@drawable/djz" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="24.0dip" android:layout_height="24.0dip" android:checked="true" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/nco" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/gsq" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/oh7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:layout_toRightOf="@id/mpm" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View android:id="@id/nje" android:background="#ffebedf5" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="16.0dip" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/o4j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/a10">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_below="@id/nj5">
+            <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:gravity="center" android:id="@id/e7d" android:background="@drawable/hd1" android:layout_width="fill_parent" android:layout_height="45.0dip" android:text="拒绝" android:singleLine="true" android:layout_weight="1.0" />
+            <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/i_w" android:background="@drawable/dk8" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="7.0dip" android:text="允许" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+        <View android:id="@id/nj5" android:background="#ffebedf5" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="20.0dip" />
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o4o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_below="@id/o4j">
+        <CheckBox android:id="@id/mpg" android:background="@drawable/djz" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="20.0dip" android:layout_height="20.0dip" android:checked="false" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:ellipsize="end" android:id="@id/ogy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="总是保持以上选择，不再询问" android:singleLine="true" android:layout_toRightOf="@id/mpg" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:id="@id/a19" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="申请发送一次以下消息" android:layout_below="@id/vt" />
+</RelativeLayout>

@@ -41,7 +41,8 @@ public class VComponentCompat<C extends VComponent, D extends DomObject>
   
   protected String getInstanceId()
   {
-    if ((this.component != null) && (this.component.getInstance() != null)) {
+    VComponent localVComponent = this.component;
+    if ((localVComponent != null) && (localVComponent.getInstance() != null)) {
       return this.component.getInstance().getInstanceId();
     }
     return null;
@@ -64,7 +65,7 @@ public class VComponentCompat<C extends VComponent, D extends DomObject>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.compatible.VComponentCompat
  * JD-Core Version:    0.7.0.1
  */

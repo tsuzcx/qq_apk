@@ -8,11 +8,11 @@ public class OaidResp
   extends AbstractMessageEntity
 {
   @Packed
-  private String id;
+  public String id;
   @Packed
-  private boolean isTrackLimited;
+  public boolean isTrackLimited;
   @Packed
-  private PendingIntent settingIntent;
+  public PendingIntent settingIntent;
   
   public String getId()
   {
@@ -46,7 +46,7 @@ public class OaidResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.entity.opendevice.OaidResp
  * JD-Core Version:    0.7.0.1
  */

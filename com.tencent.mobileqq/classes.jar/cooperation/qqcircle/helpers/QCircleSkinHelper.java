@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.util.Log;
 import com.tencent.biz.richframework.download.RFWDownloader;
 import com.tencent.biz.richframework.download.RFWDownloader.RFWDownloadListener;
 import com.tencent.biz.richframework.download.RFWDownloaderFactory;
@@ -13,21 +12,28 @@ import com.tencent.mobileqq.mqq.api.IThreadManagerApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.util.SharePreferenceUtils;
 import com.tencent.qcircle.cooperation.config.download.QCircleDownloadConfig;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.report.QCircleQualityReporter;
 import cooperation.qqcircle.report.QCircleReportHelper;
 import cooperation.qqcircle.utils.QCircleCommonUtil;
 import feedcloud.FeedCloudCommon.Entry;
 import java.io.File;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mqq.app.MobileQQ;
 
 public class QCircleSkinHelper
 {
-  public static final String SKIN_DARK_MODE_CONFIG_PATH = "darkmode/config.ini";
-  public static final String SKIN_DEFAULT_MODE_CONFIG_PATH = "defaultmode/config.ini";
+  public static final String SKIN_CONFIG_FILE_NAME = "config.ini";
+  public static final String SKIN_DARK_MODE_CONFIG_PATH;
+  public static final String SKIN_DARK_MODE_TAG = "darkmode";
+  public static final String SKIN_DEFAULT_MODE_CONFIG_PATH;
+  public static final String SKIN_DEFAULT_MODE_TAG = "defaultmode";
   public static final String SKIN_IMAGE_URL_SECTION = "ImageURL";
   public static final String SKIN_PACKAGE_PATH_SP_KEY = "qcircle_skin_package_path";
   private static final String TAG = "QCircleSkinHelper";
@@ -45,6 +51,21 @@ public class QCircleSkinHelper
   private QCircleIniFile mSkinIniFile;
   private long mStartDownloadTime;
   private long mStartLoadTime;
+  private List<QCircleSkinHelper.OnThemeUpdateListener> mThemeUpdateListeners = new ArrayList();
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("defaultmode");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("config.ini");
+    SKIN_DEFAULT_MODE_CONFIG_PATH = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("darkmode");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("config.ini");
+    SKIN_DARK_MODE_CONFIG_PATH = localStringBuilder.toString();
+  }
   
   private void findInvokeDtClass(Context paramContext)
   {
@@ -55,11 +76,11 @@ public class QCircleSkinHelper
         return;
       }
       paramContext = paramContext.getParent();
-      if (paramContext != null)
-      {
-        this.mClassObject = paramContext.loadClass("com.tencent.shadow.core.runtime.skin.loader.SkinManager");
+      if (paramContext == null) {
         return;
       }
+      this.mClassObject = paramContext.loadClass("com.tencent.qcircle.shadow.core.runtime.skin.loader.SkinManager");
+      return;
     }
     catch (Exception paramContext)
     {
@@ -69,15 +90,16 @@ public class QCircleSkinHelper
   
   public static QCircleSkinHelper getInstance()
   {
-    if (sHelper == null) {}
-    try
-    {
-      if (sHelper == null) {
-        sHelper = new QCircleSkinHelper();
+    if (sHelper == null) {
+      try
+      {
+        if (sHelper == null) {
+          sHelper = new QCircleSkinHelper();
+        }
       }
-      return sHelper;
+      finally {}
     }
-    finally {}
+    return sHelper;
   }
   
   private int getSkinPackageVersion(String paramString)
@@ -85,23 +107,41 @@ public class QCircleSkinHelper
     if (TextUtils.isEmpty(paramString)) {
       return 0;
     }
-    Matcher localMatcher = Pattern.compile("darkmode-v(\\d+).skin").matcher(paramString);
+    Object localObject = Pattern.compile("darkmode-v(\\d+).skin").matcher(paramString);
     paramString = "";
     try
     {
-      while (localMatcher.find()) {
-        paramString = localMatcher.group(1);
+      while (((Matcher)localObject).find()) {
+        paramString = ((Matcher)localObject).group(1);
       }
       int i = Integer.parseInt(paramString);
       return i;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getSkinPackageVersion error");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      QLog.e("QCircleSkinHelper", 1, ((StringBuilder)localObject).toString());
+    }
     return 0;
   }
   
   private void initIniFile()
   {
     ((IThreadManagerApi)QRoute.api(IThreadManagerApi.class)).executeOnSubThread(new QCircleSkinHelper.1(this));
+  }
+  
+  private void onThemeUpdate()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onThemeUpdate");
+    ((StringBuilder)localObject).append(this.mThemeUpdateListeners.size());
+    QLog.d("QCircleSkinHelper", 1, ((StringBuilder)localObject).toString());
+    localObject = this.mThemeUpdateListeners.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((QCircleSkinHelper.OnThemeUpdateListener)((Iterator)localObject).next()).onThemeUpdate();
+    }
   }
   
   private void reportDownLoadSkinEvent(String paramString1, String paramString2, double paramDouble)
@@ -116,44 +156,48 @@ public class QCircleSkinHelper
   
   public String convertUrl(String paramString)
   {
-    String str;
     if (TextUtils.isEmpty(paramString)) {
-      str = "";
+      return "";
     }
-    int i;
-    do
-    {
-      do
-      {
-        return str;
-        str = paramString;
-      } while (!QCircleCommonUtil.isInNightMode());
-      i = paramString.lastIndexOf('.');
-      str = paramString;
-    } while (i == -1);
-    return paramString.substring(0, i) + "_dark" + paramString.substring(i);
+    if (!QCircleCommonUtil.isInNightMode()) {
+      return paramString;
+    }
+    if (paramString.contains("defaultmode")) {
+      return paramString.replace("defaultmode", "darkmode");
+    }
+    int i = paramString.lastIndexOf('.');
+    if (i == -1) {
+      return paramString;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString.substring(0, i));
+    localStringBuilder.append("_dark");
+    localStringBuilder.append(paramString.substring(i));
+    return localStringBuilder.toString();
   }
   
   public void downloadSkinPackage(String paramString, QCircleSkinHelper.SkinDownLoadLister paramSkinDownLoadLister)
   {
     String str1 = RFWDownloaderFactory.getDownloader(QCircleDownloadConfig.a()).getDefaultSavePath(paramString);
     String str2 = SharePreferenceUtils.a(MobileQQ.sMobileQQ.getApplicationContext(), "qcircle_skin_package_path");
-    if (getSkinPackageVersion(str1) < getSkinPackageVersion(str2)) {}
-    do
-    {
+    if (getSkinPackageVersion(str1) < getSkinPackageVersion(str2)) {
       return;
-      if (!str1.equals(str2)) {
-        break;
-      }
-    } while (paramSkinDownLoadLister == null);
-    paramSkinDownLoadLister.onRspCallback(true, str1);
-    return;
-    if ((new File(str1).exists()) && (paramSkinDownLoadLister != null)) {
-      paramSkinDownLoadLister.onRspCallback(true, str1);
     }
-    this.mStartDownloadTime = System.currentTimeMillis();
-    this.mDownLoadListener = new QCircleSkinHelper.2(this, paramString, paramSkinDownLoadLister, str2);
-    RFWDownloaderFactory.getDownloader(QCircleDownloadConfig.a()).download(paramString, this.mDownLoadListener);
+    if (str1.equals(str2))
+    {
+      if (paramSkinDownLoadLister != null) {
+        paramSkinDownLoadLister.onRspCallback(true, str1);
+      }
+    }
+    else
+    {
+      if ((new File(str1).exists()) && (paramSkinDownLoadLister != null)) {
+        paramSkinDownLoadLister.onRspCallback(true, str1);
+      }
+      this.mStartDownloadTime = System.currentTimeMillis();
+      this.mDownLoadListener = new QCircleSkinHelper.2(this, paramString, paramSkinDownLoadLister, str2);
+      RFWDownloaderFactory.getDownloader(QCircleDownloadConfig.a()).download(paramString, this.mDownLoadListener);
+    }
   }
   
   public int getColor(int paramInt)
@@ -165,7 +209,7 @@ public class QCircleSkinHelper
       }
       if (this.mClassObject == null)
       {
-        Log.e("QCircleSkinHelper", "invokeGetColor  firstTime");
+        QLog.d("QCircleSkinHelper", 1, "invokeGetColor  firstTime");
         findInvokeDtClass(this.mContext);
       }
       if ((this.mColorMethod == null) && (this.mClassObject != null)) {
@@ -180,6 +224,10 @@ public class QCircleSkinHelper
     }
     catch (Exception localException)
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getColor  error");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("QCircleSkinHelper", 1, localStringBuilder.toString());
       localException.printStackTrace();
     }
     return 0;
@@ -197,7 +245,7 @@ public class QCircleSkinHelper
       }
       if (this.mClassObject == null)
       {
-        Log.e("QCircleSkinHelper", "invokeGetColor  firstTime");
+        QLog.d("QCircleSkinHelper", 1, "invokeGetColor  firstTime");
         findInvokeDtClass(this.mContext);
       }
       if ((this.mColorNameMethod == null) && (this.mClassObject != null)) {
@@ -212,6 +260,10 @@ public class QCircleSkinHelper
     }
     catch (Exception paramString)
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getColor  error");
+      localStringBuilder.append(paramString.getMessage());
+      QLog.e("QCircleSkinHelper", 1, localStringBuilder.toString());
       paramString.printStackTrace();
     }
     return 0;
@@ -235,7 +287,7 @@ public class QCircleSkinHelper
       }
       if (this.mClassObject == null)
       {
-        Log.e("QCircleSkinHelper", "invokeGetDrawable  firstTime");
+        QLog.d("QCircleSkinHelper", 1, "invokeGetDrawable  firstTime");
         findInvokeDtClass(this.mContext);
       }
       if ((this.mDrawableMethod == null) && (this.mClassObject != null)) {
@@ -250,6 +302,10 @@ public class QCircleSkinHelper
     }
     catch (Exception localException)
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDrawable  error");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("QCircleSkinHelper", 1, localStringBuilder.toString());
       localException.printStackTrace();
     }
     return null;
@@ -269,7 +325,7 @@ public class QCircleSkinHelper
       }
       if (this.mClassObject == null)
       {
-        Log.e("QCircleSkinHelper", "invokeGetDrawable  firstTime");
+        QLog.d("QCircleSkinHelper", 1, "invokeGetDrawable  firstTime");
         findInvokeDtClass(this.mContext);
       }
       if ((this.mDrawableNameMethod == null) && (this.mClassObject != null)) {
@@ -284,6 +340,10 @@ public class QCircleSkinHelper
     }
     catch (Exception paramString)
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDrawable  error");
+      localStringBuilder.append(paramString.getMessage());
+      QLog.e("QCircleSkinHelper", 1, localStringBuilder.toString());
       paramString.printStackTrace();
     }
     return null;
@@ -322,20 +382,24 @@ public class QCircleSkinHelper
   
   public void loadSkin(String paramString)
   {
+    if (!this.isDefaultMode) {
+      return;
+    }
     this.mStartLoadTime = System.currentTimeMillis();
     try
     {
       if (this.mClassObject == null)
       {
-        Log.e("QCircleSkinHelper", "invokeLoadSkin firstTime");
+        QLog.d("QCircleSkinHelper", 1, "invokeLoadSkin firstTime");
         findInvokeDtClass(this.mContext);
       }
       if (this.mClassObject != null)
       {
-        Object localObject = this.mClassObject.getMethod("getsInstance", null).invoke(null, null);
+        localObject = this.mClassObject.getMethod("getsInstance", null).invoke(null, null);
         this.mClassObject.getDeclaredMethod("loadSkinResource", new Class[] { String.class }).invoke(localObject, new Object[] { paramString });
         this.isDefaultMode = false;
         reportLoadSkinEvent("0", (float)(System.currentTimeMillis() - this.mStartLoadTime) / 1000.0F);
+        onThemeUpdate();
         return;
       }
       reportLoadSkinEvent("-1", (float)(System.currentTimeMillis() - this.mStartLoadTime) / 1000.0F);
@@ -344,18 +408,31 @@ public class QCircleSkinHelper
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      Log.e("QCircleSkinHelper", "invokeLoadSkin Exception : " + paramString.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("invokeLoadSkin error : ");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      QLog.e("QCircleSkinHelper", 1, ((StringBuilder)localObject).toString());
       reportLoadSkinEvent("-1", (float)(System.currentTimeMillis() - this.mStartLoadTime) / 1000.0F);
+    }
+  }
+  
+  public void registerOnThemeUpdateListener(QCircleSkinHelper.OnThemeUpdateListener paramOnThemeUpdateListener)
+  {
+    if (!this.mThemeUpdateListeners.contains(paramOnThemeUpdateListener)) {
+      this.mThemeUpdateListeners.add(paramOnThemeUpdateListener);
     }
   }
   
   public void resetDefaultSkin()
   {
+    if (this.isDefaultMode) {
+      return;
+    }
     try
     {
       if (this.mClassObject == null)
       {
-        Log.e("QCircleSkinHelper", "invokeResetDefaultSkin  firstTime");
+        QLog.d("QCircleSkinHelper", 1, "invokeResetDefaultSkin  firstTime");
         findInvokeDtClass(this.mContext);
       }
       if (this.mClassObject != null)
@@ -363,11 +440,16 @@ public class QCircleSkinHelper
         Object localObject = this.mClassObject.getMethod("getsInstance", null).invoke(null, null);
         this.mClassObject.getDeclaredMethod("restoreDefaultTheme", null).invoke(localObject, null);
         this.isDefaultMode = true;
+        onThemeUpdate();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resetDefaultSkin error : ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("QCircleSkinHelper", 1, localStringBuilder.toString());
       localException.printStackTrace();
     }
   }
@@ -379,26 +461,36 @@ public class QCircleSkinHelper
     {
       if (this.mClassObject == null)
       {
-        Log.e("QCircleSkinHelper", "invokeSetContext  firstTime");
+        QLog.d("QCircleSkinHelper", 1, "invokeSetContext  firstTime");
         findInvokeDtClass(paramContext);
       }
       if ((this.mContextMethod == null) && (this.mClassObject != null)) {
         this.mContextMethod = this.mClassObject.getMethod("setContext", new Class[] { Context.class });
       }
-      if (this.mContextMethod != null) {
+      if (this.mContextMethod != null)
+      {
         this.mContextMethod.invoke(null, new Object[] { this.mContext });
+        return;
       }
-      return;
     }
     catch (Exception paramContext)
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setContext  error");
+      localStringBuilder.append(paramContext.getMessage());
+      QLog.e("QCircleSkinHelper", 1, localStringBuilder.toString());
       paramContext.printStackTrace();
     }
+  }
+  
+  public void unregisterOnThemeUpdateListener(QCircleSkinHelper.OnThemeUpdateListener paramOnThemeUpdateListener)
+  {
+    this.mThemeUpdateListeners.remove(paramOnThemeUpdateListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.helpers.QCircleSkinHelper
  * JD-Core Version:    0.7.0.1
  */

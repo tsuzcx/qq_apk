@@ -17,31 +17,30 @@ final class ChatAVHelper$10
     long l = System.currentTimeMillis();
     if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.a)
     {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label130;
-      }
-      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "1", "", "", "");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.b = false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.c = false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.e = false;
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag);
-      if (QLog.isColorLevel()) {
-        QLog.d("chenlong", 2, "" + (System.currentTimeMillis() - l));
-      }
-      return;
-      label130:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+      paramInt = this.jdField_a_of_type_Int;
+      if (paramInt == 2) {
+        ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "1", "", "", "");
+      } else if ((paramInt == 3) || (paramInt == 4)) {
         ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "1", "", "", "");
       }
+    }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag;
+    paramDialogInterface.b = false;
+    paramDialogInterface.c = false;
+    paramDialogInterface.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, paramDialogInterface);
+    if (QLog.isColorLevel())
+    {
+      paramDialogInterface = new StringBuilder();
+      paramDialogInterface.append("");
+      paramDialogInterface.append(System.currentTimeMillis() - l);
+      QLog.d("chenlong", 2, paramDialogInterface.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatAVHelper.10
  * JD-Core Version:    0.7.0.1
  */

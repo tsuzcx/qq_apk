@@ -52,7 +52,7 @@ public final class UByte
   @InlineOnly
   private static final int compareTo-xj2QHRw(byte paramByte, short paramShort)
   {
-    return Intrinsics.compare(paramByte & 0xFF, 0xFFFF & paramShort);
+    return Intrinsics.compare(paramByte & 0xFF, paramShort & 0xFFFF);
   }
   
   @PublishedApi
@@ -88,7 +88,7 @@ public final class UByte
   @InlineOnly
   private static final int div-xj2QHRw(byte paramByte, short paramShort)
   {
-    return UnsignedKt.uintDivide-J1ME1BU(UInt.constructor-impl(paramByte & 0xFF), UInt.constructor-impl(0xFFFF & paramShort));
+    return UnsignedKt.uintDivide-J1ME1BU(UInt.constructor-impl(paramByte & 0xFF), UInt.constructor-impl(paramShort & 0xFFFF));
   }
   
   public static boolean equals-impl(byte paramByte, @Nullable Object paramObject)
@@ -139,7 +139,7 @@ public final class UByte
   @InlineOnly
   private static final int minus-xj2QHRw(byte paramByte, short paramShort)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(paramByte & 0xFF) - UInt.constructor-impl(0xFFFF & paramShort));
+    return UInt.constructor-impl(UInt.constructor-impl(paramByte & 0xFF) - UInt.constructor-impl(paramShort & 0xFFFF));
   }
   
   @InlineOnly
@@ -169,7 +169,7 @@ public final class UByte
   @InlineOnly
   private static final int plus-xj2QHRw(byte paramByte, short paramShort)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(paramByte & 0xFF) + UInt.constructor-impl(0xFFFF & paramShort));
+    return UInt.constructor-impl(UInt.constructor-impl(paramByte & 0xFF) + UInt.constructor-impl(paramShort & 0xFFFF));
   }
   
   @InlineOnly
@@ -199,7 +199,7 @@ public final class UByte
   @InlineOnly
   private static final int rem-xj2QHRw(byte paramByte, short paramShort)
   {
-    return UnsignedKt.uintRemainder-J1ME1BU(UInt.constructor-impl(paramByte & 0xFF), UInt.constructor-impl(0xFFFF & paramShort));
+    return UnsignedKt.uintRemainder-J1ME1BU(UInt.constructor-impl(paramByte & 0xFF), UInt.constructor-impl(paramShort & 0xFFFF));
   }
   
   @InlineOnly
@@ -223,7 +223,7 @@ public final class UByte
   @InlineOnly
   private static final int times-xj2QHRw(byte paramByte, short paramShort)
   {
-    return UInt.constructor-impl(UInt.constructor-impl(paramByte & 0xFF) * UInt.constructor-impl(0xFFFF & paramShort));
+    return UInt.constructor-impl(UInt.constructor-impl(paramByte & 0xFF) * UInt.constructor-impl(paramShort & 0xFFFF));
   }
   
   @InlineOnly
@@ -316,7 +316,7 @@ public final class UByte
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.UByte
  * JD-Core Version:    0.7.0.1
  */

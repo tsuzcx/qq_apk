@@ -57,20 +57,19 @@ public class MiniAppGetUserSettingServlet
       paramPacket.putSendData(WupUtil.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     }
-    for (;;)
+    else
     {
-      super.onSend(paramIntent, paramPacket);
-      return;
       localObject1 = new Bundle();
       ((Bundle)localObject1).putInt("key_index", i);
       ((Bundle)localObject1).putString("errMsg", "openId is null, request failed!");
       notifyObserver(paramIntent, 1051, false, (Bundle)localObject1, MiniAppObserver.class);
     }
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetUserSettingServlet
  * JD-Core Version:    0.7.0.1
  */

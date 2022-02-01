@@ -22,42 +22,32 @@ class TopMsgSeqFinder
   
   public TopMsgSeqFinder a()
   {
+    int i = 0;
     this.jdField_a_of_type_Boolean = false;
+    List localList = this.jdField_a_of_type_JavaUtilList;
     int j;
-    int i;
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
+    if (localList == null) {
       j = 0;
-      i = 0;
+    } else {
+      j = localList.size();
     }
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
-      {
-        if (((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(i)).uniseq != this.jdField_a_of_type_Long) {}
-      }
-      else {
-        for (;;)
+      if (((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(i)).uniseq == this.jdField_a_of_type_Long) {
+        while (i < this.jdField_a_of_type_JavaUtilList.size())
         {
-          if (i < this.jdField_a_of_type_JavaUtilList.size())
+          if (UinTypeUtil.c(((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(i)).msgtype))
           {
-            if (UinTypeUtil.c(((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(i)).msgtype))
-            {
-              this.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(i)).uniseq;
-              this.jdField_a_of_type_Boolean = true;
-            }
-          }
-          else
-          {
+            this.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(i)).uniseq;
+            this.jdField_a_of_type_Boolean = true;
             return this;
-            j = this.jdField_a_of_type_JavaUtilList.size();
-            break;
           }
           i += 1;
         }
       }
       i += 1;
     }
+    return this;
   }
   
   public boolean a()
@@ -67,7 +57,7 @@ class TopMsgSeqFinder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.TopMsgSeqFinder
  * JD-Core Version:    0.7.0.1
  */

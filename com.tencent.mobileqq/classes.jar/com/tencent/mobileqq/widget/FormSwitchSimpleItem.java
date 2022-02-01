@@ -29,9 +29,9 @@ public class FormSwitchSimpleItem
     {
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167127));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167152));
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.rightMargin = getResources().getDimensionPixelSize(2131297298);
+      localLayoutParams.rightMargin = getResources().getDimensionPixelSize(2131297287);
       localLayoutParams.addRule(0, this.jdField_a_of_type_ComTencentWidgetSwitch.getId());
       localLayoutParams.addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
@@ -45,7 +45,7 @@ public class FormSwitchSimpleItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormSwitchSimpleItem
  * JD-Core Version:    0.7.0.1
  */

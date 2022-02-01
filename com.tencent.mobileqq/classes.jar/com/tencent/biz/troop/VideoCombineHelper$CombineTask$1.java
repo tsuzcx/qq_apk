@@ -10,11 +10,17 @@ class VideoCombineHelper$CombineTask$1
   
   public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("combineVideos end! isSuccess:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" path = ");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.d(".troop.VideoCombineHelper", 2, ((StringBuilder)localObject).toString());
     }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
+    Object localObject = new File(paramString1);
+    if ((paramBoolean) && (((File)localObject).exists()))
     {
       if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a)
       {
@@ -28,16 +34,18 @@ class VideoCombineHelper$CombineTask$1
         return;
       }
       long l = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.a(localFile, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.b, new VideoCombineHelper.CombineTask.1.2(this, l));
+      paramString1 = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask;
+      paramString1.a((File)localObject, paramString1.b, new VideoCombineHelper.CombineTask.1.2(this, l));
       return;
     }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.d = paramString2;
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask);
+    paramString1 = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask;
+    paramString1.d = paramString2;
+    paramString1.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask.1
  * JD-Core Version:    0.7.0.1
  */

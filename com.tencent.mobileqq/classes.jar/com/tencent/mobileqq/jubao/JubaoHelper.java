@@ -29,8 +29,12 @@ public class JubaoHelper
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("jubaoApiPlugin", 0, "filterMsgSize = " + localArrayList.size());
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("filterMsgSize = ");
+      paramList.append(localArrayList.size());
+      QLog.d("jubaoApiPlugin", 0, paramList.toString());
     }
     return localArrayList;
   }
@@ -41,85 +45,78 @@ public class JubaoHelper
     Object localObject2 = paramIntent.getStringExtra("uin");
     int j = paramIntent.getIntExtra("uintype", 0);
     paramIntent = paramIntent.getSerializableExtra("msgs");
-    Object localObject3;
     if (paramIntent != null)
     {
-      localObject3 = (ArrayList)paramIntent;
-      if (((ArrayList)localObject3).size() != 0) {
-        break label50;
+      Object localObject3 = (ArrayList)paramIntent;
+      if (((ArrayList)localObject3).size() == 0) {
+        return;
       }
-    }
-    label50:
-    label206:
-    label237:
-    do
-    {
-      return;
-      Object localObject1 = (JubaoMsgData)((ArrayList)localObject3).get(0);
+      paramIntent = (JubaoMsgData)((ArrayList)localObject3).get(0);
       int i = 1;
       JubaoMsgData localJubaoMsgData;
-      if (i < ((ArrayList)localObject3).size())
+      Object localObject1;
+      while (i < ((ArrayList)localObject3).size())
       {
         localJubaoMsgData = (JubaoMsgData)((ArrayList)localObject3).get(i);
-        if ((j == 3000) || (j == 1))
+        if ((j != 3000) && (j != 1))
         {
-          paramIntent = (Intent)localObject1;
-          if (((JubaoMsgData)localObject1).msgSeq > localJubaoMsgData.msgSeq) {
-            paramIntent = localJubaoMsgData;
+          localObject1 = paramIntent;
+          if (paramIntent.msgTime <= localJubaoMsgData.msgTime) {
+            break label134;
           }
         }
+        else
+        {
+          localObject1 = paramIntent;
+          if (paramIntent.msgSeq <= localJubaoMsgData.msgSeq) {
+            break label134;
+          }
+        }
+        localObject1 = localJubaoMsgData;
+        label134:
+        i += 1;
+        paramIntent = (Intent)localObject1;
+      }
+      if ((j != 3000) && (j != 1)) {
+        i = paramIntent.msgTime;
+      } else {
+        i = paramIntent.msgSeq;
+      }
+      long l = i;
+      paramIntent = new ArrayList();
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade().a((String)localObject2, j, l);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
+      {
+        localObject1 = ((ArrayList)localObject3).iterator();
         for (;;)
         {
-          i += 1;
-          localObject1 = paramIntent;
-          break;
-          paramIntent = (Intent)localObject1;
-          if (((JubaoMsgData)localObject1).msgTime > localJubaoMsgData.msgTime) {
-            paramIntent = localJubaoMsgData;
+          if (!((Iterator)localObject1).hasNext()) {
+            break label358;
           }
-        }
-      }
-      long l;
-      if ((j == 3000) || (j == 1))
-      {
-        l = ((JubaoMsgData)localObject1).msgSeq;
-        paramIntent = new ArrayList();
-        paramQQAppInterface = paramQQAppInterface.getMessageFacade().a((String)localObject2, j, l);
-        if ((paramQQAppInterface == null) || (paramQQAppInterface.size() <= 0)) {
-          break label356;
-        }
-        localObject1 = ((ArrayList)localObject3).iterator();
-        break label237;
-      }
-      for (;;)
-      {
-        if (!((Iterator)localObject1).hasNext()) {
-          break label356;
-        }
-        localJubaoMsgData = (JubaoMsgData)((Iterator)localObject1).next();
-        localObject2 = paramQQAppInterface.iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (ChatMessage)((Iterator)localObject2).next();
-          i = (int)((ChatMessage)localObject3).time;
-          if ((j == 3000) || (j == 1))
+          localJubaoMsgData = (JubaoMsgData)((Iterator)localObject1).next();
+          localObject2 = paramQQAppInterface.iterator();
+          if (((Iterator)localObject2).hasNext())
           {
+            localObject3 = (ChatMessage)((Iterator)localObject2).next();
+            i = (int)((ChatMessage)localObject3).time;
+            if ((j != 3000) && (j != 1))
+            {
+              int k = (short)(int)((ChatMessage)localObject3).shmsgseq;
+              if ((localJubaoMsgData.msgSeq != (0xFFFF & k)) || (localJubaoMsgData.msgTime != i)) {
+                break;
+              }
+              paramIntent.add(localObject3);
+              continue;
+            }
             i = (int)((ChatMessage)localObject3).shmsgseq;
             if (localJubaoMsgData.msgSeq != i) {
-              break label206;
+              break;
             }
             paramIntent.add(localObject3);
-            continue;
-            l = ((JubaoMsgData)localObject1).msgTime;
-            break;
           }
-          int k = (short)(int)((ChatMessage)localObject3).shmsgseq;
-          if ((localJubaoMsgData.msgSeq != (0xFFFF & k)) || (localJubaoMsgData.msgTime != i)) {
-            break label206;
-          }
-          paramIntent.add(localObject3);
         }
       }
+      label358:
       if (paramIntent.size() > 0)
       {
         paramQQAppInterface = paramIntent.iterator();
@@ -129,14 +126,19 @@ public class JubaoHelper
           MultiMsgManager.a().jdField_a_of_type_JavaUtilHashMap.put(localObject1, Boolean.valueOf(true));
         }
       }
-    } while (!QLog.isColorLevel());
-    label356:
-    QLog.d("jubaoApiPlugin", 0, "handleOpenAIO = " + paramIntent.size());
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("handleOpenAIO = ");
+        paramQQAppInterface.append(paramIntent.size());
+        QLog.d("jubaoApiPlugin", 0, paramQQAppInterface.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jubao.JubaoHelper
  * JD-Core Version:    0.7.0.1
  */

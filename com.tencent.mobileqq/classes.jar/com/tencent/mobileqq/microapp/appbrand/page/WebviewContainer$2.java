@@ -17,22 +17,25 @@ class WebviewContainer$2
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("data", this.val$data);
-      WebviewContainer.access$000(this.this$0).evaluteJs("WeixinJSBridge.subscribeHandler(\"onImageViewClick\", " + localJSONObject + "," + WebviewContainer.access$000(this.this$0).pageWebviewId + ")");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      PageWebview localPageWebview = WebviewContainer.access$000(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WeixinJSBridge.subscribeHandler(\"onImageViewClick\", ");
+      localStringBuilder.append(localJSONObject);
+      localStringBuilder.append(",");
+      localStringBuilder.append(WebviewContainer.access$000(this.this$0).pageWebviewId);
+      localStringBuilder.append(")");
+      localPageWebview.evaluteJs(localStringBuilder.toString());
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer.2
  * JD-Core Version:    0.7.0.1
  */

@@ -35,17 +35,18 @@ public class SHA1Util
   
   private static String a(byte[] paramArrayOfByte, String paramString)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return "";
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+    {
+      paramString = MessageDigest.getInstance(paramString);
+      paramString.update(paramArrayOfByte, 0, paramArrayOfByte.length);
+      return a(paramString.digest());
     }
-    paramString = MessageDigest.getInstance(paramString);
-    paramString.update(paramArrayOfByte, 0, paramArrayOfByte.length);
-    return a(paramString.digest());
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.SHA1Util
  * JD-Core Version:    0.7.0.1
  */

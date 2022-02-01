@@ -26,8 +26,11 @@ public class qfileJumpActivity
   
   private int a()
   {
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1)) {}
-    while ((!AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
+    int i = this.jdField_a_of_type_Int;
+    if ((i != 0) && (i != 1)) {
+      return -1;
+    }
+    if ((!AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
       return -1;
     }
     if (this.jdField_a_of_type_Int == 0)
@@ -103,7 +106,7 @@ public class qfileJumpActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == -1)
@@ -124,7 +127,7 @@ public class qfileJumpActivity
     finish();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     try
     {
@@ -141,9 +144,13 @@ public class qfileJumpActivity
         this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("targetUin");
         this.jdField_a_of_type_Int = paramBundle.getIntExtra("device_type", -1);
         int i = a();
+        Object localObject;
         if (i != 0)
         {
-          QLog.w("qfileJump", 1, "targetparam no match, modify it " + i);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("targetparam no match, modify it ");
+          ((StringBuilder)localObject).append(i);
+          QLog.w("qfileJump", 1, ((StringBuilder)localObject).toString());
           this.jdField_a_of_type_Int = 0;
           this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
           paramBundle.putExtra("device_type", this.jdField_a_of_type_Int);
@@ -156,21 +163,24 @@ public class qfileJumpActivity
         }
         if (paramBundle.getBooleanExtra("jump_shortcut_dataline", false))
         {
-          Intent localIntent;
           if (!this.app.isLogin())
           {
-            localIntent = new Intent();
-            localIntent.addFlags(67371008);
-            localIntent.putExtras(paramBundle.getExtras());
-            RouteUtils.a(this, localIntent, "/base/login", 9);
+            localObject = new Intent();
+            ((Intent)localObject).addFlags(67371008);
+            ((Intent)localObject).putExtras(paramBundle.getExtras());
+            RouteUtils.a(this, (Intent)localObject, "/base/login", 9);
+            return true;
           }
-          else if ((GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) && (!GesturePWDUtils.getAppForground(this)))
+          if ((GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) && (!GesturePWDUtils.getAppForground(this)))
           {
-            localIntent = new Intent(getActivity(), GesturePWDUnlockActivity.class);
-            localIntent.putExtra("key_gesture_from_jumpactivity", true);
-            localIntent.putExtras(paramBundle.getExtras());
-            startActivityForResult(localIntent, 9);
+            localObject = new Intent(getActivity(), GesturePWDUnlockActivity.class);
+            ((Intent)localObject).putExtra("key_gesture_from_jumpactivity", true);
+            ((Intent)localObject).putExtras(paramBundle.getExtras());
+            startActivityForResult((Intent)localObject, 9);
+            return true;
           }
+          c();
+          return true;
         }
       }
     }
@@ -178,10 +188,8 @@ public class qfileJumpActivity
     {
       paramBundle.printStackTrace();
       finish();
-      return false;
     }
-    c();
-    return true;
+    return false;
   }
   
   @Override
@@ -191,7 +199,7 @@ public class qfileJumpActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
@@ -205,13 +213,17 @@ public class qfileJumpActivity
         return true;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label11:
+      break label11;
+    }
     return super.showPreview();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qfileJumpActivity
  * JD-Core Version:    0.7.0.1
  */

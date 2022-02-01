@@ -13,27 +13,23 @@ public class MethodCallsLogger
   public boolean approveCall(String paramString, int paramInt)
   {
     Integer localInteger = (Integer)this.mCalledMethods.get(paramString);
+    int j = 0;
     int i;
-    if (localInteger != null)
-    {
+    if (localInteger != null) {
       i = localInteger.intValue();
-      if ((i & paramInt) == 0) {
-        break label62;
-      }
-    }
-    label62:
-    for (int j = 1;; j = 0)
-    {
-      this.mCalledMethods.put(paramString, Integer.valueOf(i | paramInt));
-      return j ^ 0x1;
+    } else {
       i = 0;
-      break;
     }
+    if ((i & paramInt) != 0) {
+      j = 1;
+    }
+    this.mCalledMethods.put(paramString, Integer.valueOf(paramInt | i));
+    return j ^ 0x1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.lifecycle.MethodCallsLogger
  * JD-Core Version:    0.7.0.1
  */

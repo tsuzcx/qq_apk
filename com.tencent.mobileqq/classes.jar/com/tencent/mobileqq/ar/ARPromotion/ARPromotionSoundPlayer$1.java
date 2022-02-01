@@ -25,6 +25,8 @@ class ARPromotionSoundPlayer$1
         }
       }
       ARPromotionSoundPlayer.a(this.this$0).release();
+      ARPromotionSoundPlayer.a(this.this$0).clear();
+      return;
     }
     catch (Exception localException)
     {
@@ -32,14 +34,12 @@ class ARPromotionSoundPlayer$1
       if (QLog.isColorLevel()) {
         QLog.e("ARPromotionSoundPlayer", 2, "release exception", localException);
       }
-      return;
     }
-    ARPromotionSoundPlayer.a(this.this$0).clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionSoundPlayer.1
  * JD-Core Version:    0.7.0.1
  */

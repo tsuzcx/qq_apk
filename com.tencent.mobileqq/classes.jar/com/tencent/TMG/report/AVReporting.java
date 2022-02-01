@@ -17,7 +17,11 @@ public class AVReporting
       AVReporting localAVReporting = (AVReporting)super.clone();
       return localAVReporting;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
 }

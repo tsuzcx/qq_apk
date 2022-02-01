@@ -3,20 +3,23 @@ package com.tencent.mobileqq.ark.vipreport;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-final class ArkVipReporter$1
+class ArkVipReporter$1
   implements Runnable
 {
-  ArkVipReporter$1(String paramString, ArkVipSceneConfig paramArkVipSceneConfig) {}
+  ArkVipReporter$1(ArkVipReporter paramArkVipReporter, String paramString, ArkVipSceneConfig paramArkVipSceneConfig) {}
   
   public void run()
   {
     synchronized ()
     {
-      ArkVipReportScene localArkVipReportScene = (ArkVipReportScene)ArkVipReporter.a().get(this.jdField_a_of_type_JavaLangString);
-      if ((localArkVipReportScene != null) && (Math.abs(System.currentTimeMillis() - localArkVipReportScene.a) >= this.jdField_a_of_type_ComTencentMobileqqArkVipreportArkVipSceneConfig.a))
+      Object localObject2 = (ArkVipReportScene)ArkVipReporter.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
+      if ((localObject2 != null) && (Math.abs(System.currentTimeMillis() - ((ArkVipReportScene)localObject2).a) >= this.jdField_a_of_type_ComTencentMobileqqArkVipreportArkVipSceneConfig.a))
       {
-        QLog.i("ArkVipReporter", 1, "startSceneByEvent() find timeout scene and report:" + this.jdField_a_of_type_JavaLangString);
-        ArkVipReporter.a(this.jdField_a_of_type_JavaLangString);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("startSceneByEvent() find timeout scene and report:");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        QLog.i("ArkVipReporter", 1, ((StringBuilder)localObject2).toString());
+        this.this$0.a(this.jdField_a_of_type_JavaLangString);
       }
       return;
     }
@@ -24,7 +27,7 @@ final class ArkVipReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.vipreport.ArkVipReporter.1
  * JD-Core Version:    0.7.0.1
  */

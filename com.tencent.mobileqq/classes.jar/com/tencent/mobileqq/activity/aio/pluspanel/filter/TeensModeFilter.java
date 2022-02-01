@@ -12,23 +12,16 @@ public abstract class TeensModeFilter
 {
   private boolean a(int paramInt, int[] paramArrayOfInt)
   {
-    boolean bool2 = false;
     int j = paramArrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramArrayOfInt[i] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramArrayOfInt[i] == paramInt) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public void a(PlusPanelAppLoader paramPlusPanelAppLoader, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
@@ -48,7 +41,7 @@ public abstract class TeensModeFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.filter.TeensModeFilter
  * JD-Core Version:    0.7.0.1
  */

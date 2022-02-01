@@ -24,11 +24,12 @@ public class ObservableScrollView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.a != null) {
-      this.a.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    ScrollViewListener localScrollViewListener = this.a;
+    if (localScrollViewListener != null) {
+      localScrollViewListener.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -39,7 +40,7 @@ public class ObservableScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ObservableScrollView
  * JD-Core Version:    0.7.0.1
  */

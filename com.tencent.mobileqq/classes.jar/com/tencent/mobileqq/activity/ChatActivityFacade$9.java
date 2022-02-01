@@ -38,14 +38,17 @@ final class ChatActivityFacade$9
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
+      label100:
+      break label100;
+    }
+    if (QLog.isColorLevel()) {
       QLog.i("ChatActivityFacade.byte encode to String", 2, "encode error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.9
  * JD-Core Version:    0.7.0.1
  */

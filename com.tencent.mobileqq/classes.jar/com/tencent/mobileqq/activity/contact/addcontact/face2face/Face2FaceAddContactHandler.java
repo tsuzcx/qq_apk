@@ -42,286 +42,312 @@ public class Face2FaceAddContactHandler
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, boolean paramBoolean, Object paramObject)
   {
-    paramFromServiceMsg = null;
-    String str;
+    Object localObject2 = null;
+    Object localObject1;
     boolean bool;
     if (paramToServiceMsg != null)
     {
-      paramFromServiceMsg = paramToServiceMsg.extraData.getString("face2face_add_contact_session_id");
-      str = paramToServiceMsg.extraData.getString("face2face_add_contact_number");
+      localObject1 = paramToServiceMsg.extraData.getString("face2face_add_contact_session_id");
+      paramFromServiceMsg = paramToServiceMsg.extraData.getString("face2face_add_contact_number");
       bool = paramToServiceMsg.extraData.getBoolean("face2face_add_contact_enter_after_verify", false);
-      paramToServiceMsg = str;
+      paramToServiceMsg = (ToServiceMsg)localObject1;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Face2FaceAddContactHandler", 2, "handleEnterFace2faceAddContact:" + paramBoolean + " sessionId:" + paramFromServiceMsg + " number:" + paramToServiceMsg);
-      }
-      int j;
-      int i;
-      if (paramBoolean)
-      {
-        paramToServiceMsg = new nearfield_friend.RspEnter();
-        try
-        {
-          paramToServiceMsg.mergeFrom((byte[])paramObject);
-          paramObject = paramToServiceMsg;
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          for (;;)
-          {
-            paramBoolean = false;
-            if (QLog.isColorLevel()) {
-              QLog.e("Face2FaceAddContactHandler", 2, "handleEnterFace2faceAddContact:" + paramToServiceMsg.toString());
-            }
-            paramObject = null;
-            continue;
-            paramToServiceMsg = null;
-            continue;
-            paramToServiceMsg = "";
-            continue;
-            j = 0;
-            continue;
-            str = null;
-            continue;
-            k = 60;
-            continue;
-            m = 1200;
-          }
-        }
-        if ((paramBoolean) && (paramObject != null)) {
-          if (paramObject.result.has())
-          {
-            paramToServiceMsg = (nearfield_friend.ResultInfo)paramObject.result.get();
-            j = 0;
-            i = 0;
-            if (paramToServiceMsg == null) {
-              break label459;
-            }
-            if (paramToServiceMsg.errcode.has()) {
-              i = paramToServiceMsg.errcode.get();
-            }
-            if (!paramToServiceMsg.errmsg.has()) {
-              break label403;
-            }
-            paramToServiceMsg = paramToServiceMsg.errmsg.get().toStringUtf8();
-          }
-        }
-      }
-      for (;;)
-      {
-        int k;
-        int m;
-        if (paramObject.security_level.has())
-        {
-          j = paramObject.security_level.get();
-          if (!paramObject.verify_url.has()) {
-            break label415;
-          }
-          str = paramObject.verify_url.get().toStringUtf8();
-          if (!paramObject.heartbeat_time.has()) {
-            break label421;
-          }
-          k = paramObject.heartbeat_time.get();
-          if (!paramObject.expire_time.has()) {
-            break label428;
-          }
-          m = paramObject.expire_time.get();
-          notifyUI(1, true, new Object[] { paramFromServiceMsg, Integer.valueOf(i), paramToServiceMsg, Integer.valueOf(j), str, Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
-        }
-        label403:
-        label415:
-        label421:
-        label428:
-        notifyUI(1, false, new Object[] { paramFromServiceMsg, Boolean.valueOf(bool) });
-        return;
-        label459:
-        paramToServiceMsg = "";
-        i = j;
-      }
       paramToServiceMsg = null;
+      paramFromServiceMsg = paramToServiceMsg;
       bool = false;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleEnterFace2faceAddContact:");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      ((StringBuilder)localObject1).append(" sessionId:");
+      ((StringBuilder)localObject1).append(paramToServiceMsg);
+      ((StringBuilder)localObject1).append(" number:");
+      ((StringBuilder)localObject1).append(paramFromServiceMsg);
+      QLog.d("Face2FaceAddContactHandler", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (paramBoolean)
+    {
+      paramFromServiceMsg = new nearfield_friend.RspEnter();
+      try
+      {
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramObject = new StringBuilder();
+          paramObject.append("handleEnterFace2faceAddContact:");
+          paramObject.append(paramFromServiceMsg.toString());
+          QLog.e("Face2FaceAddContactHandler", 2, paramObject.toString());
+        }
+        paramFromServiceMsg = null;
+        paramBoolean = false;
+      }
+      if ((paramBoolean) && (paramFromServiceMsg != null))
+      {
+        if (paramFromServiceMsg.result.has()) {
+          localObject1 = (nearfield_friend.ResultInfo)paramFromServiceMsg.result.get();
+        } else {
+          localObject1 = null;
+        }
+        paramObject = "";
+        int i;
+        int j;
+        if (localObject1 != null)
+        {
+          if (((nearfield_friend.ResultInfo)localObject1).errcode.has()) {
+            i = ((nearfield_friend.ResultInfo)localObject1).errcode.get();
+          } else {
+            i = 0;
+          }
+          j = i;
+          if (((nearfield_friend.ResultInfo)localObject1).errmsg.has())
+          {
+            paramObject = ((nearfield_friend.ResultInfo)localObject1).errmsg.get().toStringUtf8();
+            j = i;
+          }
+        }
+        else
+        {
+          j = 0;
+        }
+        if (paramFromServiceMsg.security_level.has()) {
+          i = paramFromServiceMsg.security_level.get();
+        } else {
+          i = 0;
+        }
+        localObject1 = localObject2;
+        if (paramFromServiceMsg.verify_url.has()) {
+          localObject1 = paramFromServiceMsg.verify_url.get().toStringUtf8();
+        }
+        int k;
+        if (paramFromServiceMsg.heartbeat_time.has()) {
+          k = paramFromServiceMsg.heartbeat_time.get();
+        } else {
+          k = 60;
+        }
+        int m;
+        if (paramFromServiceMsg.expire_time.has()) {
+          m = paramFromServiceMsg.expire_time.get();
+        } else {
+          m = 1200;
+        }
+        notifyUI(1, true, new Object[] { paramToServiceMsg, Integer.valueOf(j), paramObject, Integer.valueOf(i), localObject1, Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
+        return;
+      }
+    }
+    notifyUI(1, false, new Object[] { paramToServiceMsg, Boolean.valueOf(bool) });
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, boolean paramBoolean, Object paramObject)
   {
-    if (paramToServiceMsg != null) {}
-    for (paramFromServiceMsg = paramToServiceMsg.extraData.getString("face2face_add_contact_session_id");; paramFromServiceMsg = null)
+    paramFromServiceMsg = null;
+    if (paramToServiceMsg != null) {
+      paramToServiceMsg = paramToServiceMsg.extraData.getString("face2face_add_contact_session_id");
+    } else {
+      paramToServiceMsg = null;
+    }
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Face2FaceAddContactHandler", 2, "handleExitFace2FaceAddContact:" + paramBoolean + " sessionId:" + paramFromServiceMsg);
-      }
-      if (paramBoolean) {
-        paramToServiceMsg = new nearfield_friend.RspExit();
-      }
-      for (;;)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleExitFace2FaceAddContact:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" sessionId:");
+      ((StringBuilder)localObject).append(paramToServiceMsg);
+      QLog.d("Face2FaceAddContactHandler", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramBoolean)
+    {
+      localObject = new nearfield_friend.RspExit();
+      try
       {
-        try
+        ((nearfield_friend.RspExit)localObject).mergeFrom((byte[])paramObject);
+        paramObject = localObject;
+      }
+      catch (Exception paramObject)
+      {
+        if (QLog.isColorLevel())
         {
-          paramToServiceMsg.mergeFrom((byte[])paramObject);
-          if ((paramBoolean) && (paramToServiceMsg != null)) {
-            if (paramToServiceMsg.result.has())
-            {
-              paramToServiceMsg = (nearfield_friend.ResultInfo)paramToServiceMsg.result.get();
-              if (paramToServiceMsg == null) {
-                break label253;
-              }
-              if (!paramToServiceMsg.errcode.has()) {
-                continue;
-              }
-              i = paramToServiceMsg.errcode.get();
-              if (!paramToServiceMsg.errmsg.has()) {
-                continue;
-              }
-              paramToServiceMsg = paramToServiceMsg.errmsg.get().toStringUtf8();
-              notifyUI(2, true, new Object[] { paramFromServiceMsg, Integer.valueOf(i), paramToServiceMsg });
-            }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handleExitFace2FaceAddContact:");
+          ((StringBuilder)localObject).append(paramObject.toString());
+          QLog.e("Face2FaceAddContactHandler", 2, ((StringBuilder)localObject).toString());
+        }
+        paramObject = null;
+        paramBoolean = false;
+      }
+      if ((paramBoolean) && (paramObject != null))
+      {
+        if (paramObject.result.has()) {
+          paramFromServiceMsg = (nearfield_friend.ResultInfo)paramObject.result.get();
+        }
+        paramObject = "";
+        int j;
+        if (paramFromServiceMsg != null)
+        {
+          int i;
+          if (paramFromServiceMsg.errcode.has()) {
+            i = paramFromServiceMsg.errcode.get();
+          } else {
+            i = 0;
+          }
+          j = i;
+          if (paramFromServiceMsg.errmsg.has())
+          {
+            paramObject = paramFromServiceMsg.errmsg.get().toStringUtf8();
+            j = i;
           }
         }
-        catch (Exception paramToServiceMsg)
+        else
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("Face2FaceAddContactHandler", 2, "handleExitFace2FaceAddContact:" + paramToServiceMsg.toString());
-          }
-          paramToServiceMsg = null;
-          paramBoolean = false;
-          continue;
-          paramToServiceMsg = null;
-          continue;
-          i = 0;
-          continue;
-          paramToServiceMsg = "";
-          continue;
+          j = 0;
         }
-        notifyUI(2, false, new Object[] { paramFromServiceMsg });
+        notifyUI(2, true, new Object[] { paramToServiceMsg, Integer.valueOf(j), paramObject });
         return;
-        label253:
-        paramToServiceMsg = "";
-        int i = 0;
       }
     }
+    notifyUI(2, false, new Object[] { paramToServiceMsg });
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, boolean paramBoolean, Object paramObject)
   {
-    Object localObject = null;
-    if (paramToServiceMsg != null) {}
-    for (paramFromServiceMsg = paramToServiceMsg.extraData.getString("face2face_add_contact_session_id");; paramFromServiceMsg = null)
+    Object localObject2 = null;
+    if (paramToServiceMsg != null) {
+      paramToServiceMsg = paramToServiceMsg.extraData.getString("face2face_add_contact_session_id");
+    } else {
+      paramToServiceMsg = null;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Face2FaceAddContactHandler", 2, "handleFace2FaceAddContactHeartBeat:" + paramBoolean + " sessionId:" + paramFromServiceMsg);
-      }
-      String str;
-      int i;
-      if (paramBoolean)
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("handleFace2FaceAddContactHeartBeat:");
+      paramFromServiceMsg.append(paramBoolean);
+      paramFromServiceMsg.append(" sessionId:");
+      paramFromServiceMsg.append(paramToServiceMsg);
+      QLog.d("Face2FaceAddContactHandler", 2, paramFromServiceMsg.toString());
+    }
+    if (paramBoolean)
+    {
+      paramFromServiceMsg = new nearfield_friend.RspHeartBeat();
+      try
       {
-        paramToServiceMsg = new nearfield_friend.RspHeartBeat();
-        try
+        paramFromServiceMsg.mergeFrom((byte[])paramObject);
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        if (QLog.isColorLevel())
         {
-          paramToServiceMsg.mergeFrom((byte[])paramObject);
-          paramObject = paramToServiceMsg;
+          paramObject = new StringBuilder();
+          paramObject.append("handleFace2FaceAddContactHeartBeat:");
+          paramObject.append(paramFromServiceMsg.toString());
+          QLog.e("Face2FaceAddContactHandler", 2, paramObject.toString());
         }
-        catch (Exception paramToServiceMsg)
+        paramFromServiceMsg = null;
+        paramBoolean = false;
+      }
+      if ((paramBoolean) && (paramFromServiceMsg != null))
+      {
+        if (paramFromServiceMsg.result.has()) {
+          localObject1 = (nearfield_friend.ResultInfo)paramFromServiceMsg.result.get();
+        } else {
+          localObject1 = null;
+        }
+        paramObject = "";
+        int j;
+        if (localObject1 != null)
         {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("Face2FaceAddContactHandler", 2, "handleFace2FaceAddContactHeartBeat:" + paramToServiceMsg.toString());
-            }
-            paramObject = null;
-            paramBoolean = false;
-            continue;
-            paramToServiceMsg = null;
-            continue;
+          int i;
+          if (((nearfield_friend.ResultInfo)localObject1).errcode.has()) {
+            i = ((nearfield_friend.ResultInfo)localObject1).errcode.get();
+          } else {
             i = 0;
-            continue;
-            paramToServiceMsg = "";
           }
-          notifyUI(3, true, new Object[] { paramFromServiceMsg, Integer.valueOf(i), paramToServiceMsg, paramObject });
-          return;
-        }
-        if ((paramBoolean) && (paramObject != null)) {
-          if (paramObject.result.has())
+          j = i;
+          if (((nearfield_friend.ResultInfo)localObject1).errmsg.has())
           {
-            paramToServiceMsg = (nearfield_friend.ResultInfo)paramObject.result.get();
-            str = "";
-            if (paramToServiceMsg == null) {
-              break label358;
-            }
-            if (!paramToServiceMsg.errcode.has()) {
-              break label299;
-            }
-            i = paramToServiceMsg.errcode.get();
-            if (!paramToServiceMsg.errmsg.has()) {
-              break label305;
-            }
+            paramObject = ((nearfield_friend.ResultInfo)localObject1).errmsg.get().toStringUtf8();
+            j = i;
           }
         }
-      }
-      for (paramToServiceMsg = paramToServiceMsg.errmsg.get().toStringUtf8();; paramToServiceMsg = str)
-      {
-        if (paramObject.uin_list.has()) {
-          localObject = paramObject.uin_list.get();
-        }
-        paramObject = new ArrayList();
-        if ((localObject != null) && (((List)localObject).size() > 0))
+        else
         {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext()) {
-            paramObject.add(String.valueOf((Long)((Iterator)localObject).next()));
+          j = 0;
+        }
+        Object localObject1 = localObject2;
+        if (paramFromServiceMsg.uin_list.has()) {
+          localObject1 = paramFromServiceMsg.uin_list.get();
+        }
+        paramFromServiceMsg = new ArrayList();
+        if ((localObject1 != null) && (((List)localObject1).size() > 0))
+        {
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext()) {
+            paramFromServiceMsg.add(String.valueOf((Long)((Iterator)localObject1).next()));
           }
         }
-        label299:
-        label305:
-        notifyUI(3, false, new Object[] { paramFromServiceMsg });
+        notifyUI(3, true, new Object[] { paramToServiceMsg, Integer.valueOf(j), paramObject, paramFromServiceMsg });
         return;
-        label358:
-        i = 0;
       }
     }
+    notifyUI(3, false, new Object[] { paramToServiceMsg });
   }
   
   public void a(String paramString)
   {
-    QLog.i("Face2FaceAddContactHandler", 1, "exitFace2FaceAddContact sessionId=" + paramString);
-    nearfield_friend.ReqExit localReqExit = new nearfield_friend.ReqExit();
-    localReqExit.session_id.set(paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("exitFace2FaceAddContact sessionId=");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("Face2FaceAddContactHandler", 1, ((StringBuilder)localObject).toString());
+    localObject = new nearfield_friend.ReqExit();
+    ((nearfield_friend.ReqExit)localObject).session_id.set(paramString);
     ToServiceMsg localToServiceMsg = createToServiceMsg("NearFieldFriendSvr.ReqExit");
     localToServiceMsg.extraData.putString("face2face_add_contact_session_id", paramString);
-    localToServiceMsg.putWupBuffer(localReqExit.toByteArray());
+    localToServiceMsg.putWupBuffer(((nearfield_friend.ReqExit)localObject).toByteArray());
     localToServiceMsg.setTimeout(30000L);
     sendPbReq(localToServiceMsg);
   }
   
   public void a(String paramString1, String paramString2, nearfield_friend.GPS paramGPS, byte[] paramArrayOfByte)
   {
-    QLog.i("Face2FaceAddContactHandler", 1, "enterFace2faceAddContact sessionId=" + paramString1 + " number:" + paramString2);
-    nearfield_friend.ReqEnter localReqEnter = new nearfield_friend.ReqEnter();
-    localReqEnter.session_id.set(paramString1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("enterFace2faceAddContact sessionId=");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" number:");
+    ((StringBuilder)localObject).append(paramString2);
+    QLog.i("Face2FaceAddContactHandler", 1, ((StringBuilder)localObject).toString());
+    localObject = new nearfield_friend.ReqEnter();
+    ((nearfield_friend.ReqEnter)localObject).session_id.set(paramString1);
     if (paramGPS != null) {
-      localReqEnter.gps_info.set(paramGPS);
+      ((nearfield_friend.ReqEnter)localObject).gps_info.set(paramGPS);
     }
-    localReqEnter.number.set(paramString2);
+    ((nearfield_friend.ReqEnter)localObject).number.set(paramString2);
     paramGPS = createToServiceMsg("NearFieldFriendSvr.ReqEnter");
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      localReqEnter.verify_sig.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+      ((nearfield_friend.ReqEnter)localObject).verify_sig.set(ByteStringMicro.copyFrom(paramArrayOfByte));
       paramGPS.extraData.putBoolean("face2face_add_contact_enter_after_verify", true);
     }
     paramGPS.extraData.putString("face2face_add_contact_number", paramString2);
     paramGPS.extraData.putString("face2face_add_contact_session_id", paramString1);
-    paramGPS.putWupBuffer(localReqEnter.toByteArray());
+    paramGPS.putWupBuffer(((nearfield_friend.ReqEnter)localObject).toByteArray());
     paramGPS.setTimeout(30000L);
     sendPbReq(paramGPS);
   }
   
   public void a(String paramString, List<String> paramList)
   {
-    QLog.i("Face2FaceAddContactHandler", 1, "face2FaceAddContactHeartBeat sessionId=" + paramString);
-    nearfield_friend.ReqHeartBeat localReqHeartBeat = new nearfield_friend.ReqHeartBeat();
-    localReqHeartBeat.session_id.set(paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("face2FaceAddContactHeartBeat sessionId=");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("Face2FaceAddContactHandler", 1, ((StringBuilder)localObject).toString());
+    localObject = new nearfield_friend.ReqHeartBeat();
+    ((nearfield_friend.ReqHeartBeat)localObject).session_id.set(paramString);
     if ((paramList != null) && (paramList.size() > 0)) {
       try
       {
@@ -329,90 +355,103 @@ public class Face2FaceAddContactHandler
         while (paramList.hasNext())
         {
           long l = Long.parseLong((String)paramList.next());
-          localReqHeartBeat.uin_list.add(Long.valueOf(l));
+          ((nearfield_friend.ReqHeartBeat)localObject).uin_list.add(Long.valueOf(l));
         }
+        StringBuilder localStringBuilder;
         paramList = createToServiceMsg("NearFieldFriendSvr.ReqHeartBeat");
       }
       catch (Exception paramList)
       {
-        QLog.e("Face2FaceAddContactHandler", 1, "face2FaceAddContactHeartBeat error:" + paramList.getMessage());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("face2FaceAddContactHeartBeat error:");
+        localStringBuilder.append(paramList.getMessage());
+        QLog.e("Face2FaceAddContactHandler", 1, localStringBuilder.toString());
       }
     }
     paramList.extraData.putString("face2face_add_contact_session_id", paramString);
-    paramList.putWupBuffer(localReqHeartBeat.toByteArray());
+    paramList.putWupBuffer(((nearfield_friend.ReqHeartBeat)localObject).toByteArray());
     paramList.setTimeout(30000L);
     sendPbReq(paramList);
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    Object localObject1 = null;
     if (paramArrayOfByte != null) {}
     for (;;)
     {
-      Object localObject2;
       try
       {
-        localObject2 = new submsgtype0x133.MsgBody();
-        ((submsgtype0x133.MsgBody)localObject2).mergeFrom(paramArrayOfByte);
-        if (((submsgtype0x133.MsgBody)localObject2).uint64_uin.has())
+        Object localObject3 = new submsgtype0x133.MsgBody();
+        ((submsgtype0x133.MsgBody)localObject3).mergeFrom(paramArrayOfByte);
+        boolean bool = ((submsgtype0x133.MsgBody)localObject3).uint64_uin.has();
+        localObject2 = null;
+        if (!bool) {
+          break label409;
+        }
+        paramArrayOfByte = String.valueOf(((submsgtype0x133.MsgBody)localObject3).uint64_uin.get());
+        if (!((submsgtype0x133.MsgBody)localObject3).str_session_id.has()) {
+          break label414;
+        }
+        localObject1 = ((submsgtype0x133.MsgBody)localObject3).str_session_id.get();
+        if (((submsgtype0x133.MsgBody)localObject3).rpt_msg_friends.has()) {
+          localObject2 = ((submsgtype0x133.MsgBody)localObject3).rpt_msg_friends.get();
+        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("decodePush0x210_0x133 uin:");
+        ((StringBuilder)localObject3).append(paramArrayOfByte);
+        ((StringBuilder)localObject3).append(" sessionId:");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        QLog.i("Face2FaceAddContactHandler", 1, ((StringBuilder)localObject3).toString());
+        if ((TextUtils.isEmpty(paramArrayOfByte)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (!TextUtils.equals(paramArrayOfByte, this.appRuntime.getAccount()))) {
+          break label408;
+        }
+        localObject3 = new ArrayList();
+        if ((localObject2 != null) && (((List)localObject2).size() > 0))
         {
-          paramArrayOfByte = String.valueOf(((submsgtype0x133.MsgBody)localObject2).uint64_uin.get());
-          if (!((submsgtype0x133.MsgBody)localObject2).str_session_id.has()) {
-            break label336;
-          }
-          str = ((submsgtype0x133.MsgBody)localObject2).str_session_id.get();
-          if (((submsgtype0x133.MsgBody)localObject2).rpt_msg_friends.has()) {
-            localObject1 = ((submsgtype0x133.MsgBody)localObject2).rpt_msg_friends.get();
-          }
-          QLog.i("Face2FaceAddContactHandler", 1, "decodePush0x210_0x133 uin:" + paramArrayOfByte + " sessionId:" + str);
-          if ((!TextUtils.isEmpty(paramArrayOfByte)) && (!TextUtils.isEmpty(str)) && (TextUtils.equals(paramArrayOfByte, this.appRuntime.getAccount())))
+          Iterator localIterator = ((List)localObject2).iterator();
+          if (localIterator.hasNext())
           {
-            localObject2 = new ArrayList();
-            if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
-              break label348;
-            }
-            Iterator localIterator = ((List)localObject1).iterator();
-            if (!localIterator.hasNext()) {
-              break label348;
-            }
             submsgtype0x133.FaceFriend localFaceFriend = (submsgtype0x133.FaceFriend)localIterator.next();
             Face2FaceFriendInfo localFace2FaceFriendInfo = new Face2FaceFriendInfo();
             localFace2FaceFriendInfo.jdField_a_of_type_JavaLangString = String.valueOf(localFaceFriend.uint64_friend.get());
             if (!localFaceFriend.bytes_name.has()) {
-              break label341;
+              break label420;
             }
-            localObject1 = localFaceFriend.bytes_name.get().toStringUtf8();
-            localFace2FaceFriendInfo.b = ((String)localObject1);
+            localObject2 = localFaceFriend.bytes_name.get().toStringUtf8();
+            localFace2FaceFriendInfo.b = ((String)localObject2);
             if (!localFaceFriend.uint32_type.has()) {
-              break label382;
+              break label427;
             }
             i = localFaceFriend.uint32_type.get();
             localFace2FaceFriendInfo.jdField_a_of_type_Int = i;
-            ((List)localObject2).add(localFace2FaceFriendInfo);
+            ((List)localObject3).add(localFace2FaceFriendInfo);
             continue;
           }
-          return;
         }
+        notifyUI(4, true, new Object[] { paramArrayOfByte, localObject1, localObject3 });
+        return;
       }
       catch (Throwable paramArrayOfByte)
       {
-        QLog.e("Face2FaceAddContactHandler", 1, "decodePush0x210_0x133 decode error, e=" + paramArrayOfByte.toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("decodePush0x210_0x133 decode error, e=");
+        ((StringBuilder)localObject1).append(paramArrayOfByte.toString());
+        QLog.e("Face2FaceAddContactHandler", 1, ((StringBuilder)localObject1).toString());
+        return;
       }
+      QLog.e("Face2FaceAddContactHandler", 1, "decodePush0x210_0x133 pbData = null");
+      label408:
+      return;
+      label409:
       paramArrayOfByte = null;
       continue;
-      label336:
-      String str = null;
+      label414:
+      Object localObject1 = null;
       continue;
-      label341:
-      localObject1 = "";
+      label420:
+      Object localObject2 = "";
       continue;
-      label348:
-      notifyUI(4, true, new Object[] { paramArrayOfByte, str, localObject2 });
-      return;
-      QLog.e("Face2FaceAddContactHandler", 1, "decodePush0x210_0x133 pbData = null");
-      return;
-      label382:
+      label427:
       int i = 0;
     }
   }
@@ -429,47 +468,61 @@ public class Face2FaceAddContactHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return Face2FaceAddContactObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    String str = "";
+    String str;
     if (paramFromServiceMsg != null) {
       str = paramFromServiceMsg.getServiceCmd();
+    } else {
+      str = "";
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceAddContactHandler", 2, "onReceive:" + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive:");
+      localStringBuilder.append(str);
+      QLog.d("Face2FaceAddContactHandler", 2, localStringBuilder.toString());
     }
-    if (msgCmdFilter(str)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Face2FaceAddContactHandler", 2, "msgCmdFilter error=" + str);
+    if (msgCmdFilter(str))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("msgCmdFilter error=");
+        paramToServiceMsg.append(str);
+        QLog.d("Face2FaceAddContactHandler", 2, paramToServiceMsg.toString());
       }
+      return;
     }
     boolean bool;
-    do
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if ("NearFieldFriendSvr.ReqEnter".equalsIgnoreCase(str))
     {
+      a(paramToServiceMsg, paramFromServiceMsg, bool, paramObject);
       return;
-      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
-      for (bool = true; "NearFieldFriendSvr.ReqEnter".equalsIgnoreCase(str); bool = false)
-      {
-        a(paramToServiceMsg, paramFromServiceMsg, bool, paramObject);
-        return;
-      }
-      if ("NearFieldFriendSvr.ReqExit".equalsIgnoreCase(str))
-      {
-        b(paramToServiceMsg, paramFromServiceMsg, bool, paramObject);
-        return;
-      }
-    } while (!"NearFieldFriendSvr.ReqHeartBeat".equalsIgnoreCase(str));
-    c(paramToServiceMsg, paramFromServiceMsg, bool, paramObject);
+    }
+    if ("NearFieldFriendSvr.ReqExit".equalsIgnoreCase(str))
+    {
+      b(paramToServiceMsg, paramFromServiceMsg, bool, paramObject);
+      return;
+    }
+    if ("NearFieldFriendSvr.ReqHeartBeat".equalsIgnoreCase(str)) {
+      c(paramToServiceMsg, paramFromServiceMsg, bool, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactHandler
  * JD-Core Version:    0.7.0.1
  */

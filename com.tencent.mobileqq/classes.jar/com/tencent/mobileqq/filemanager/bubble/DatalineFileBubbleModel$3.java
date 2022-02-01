@@ -4,8 +4,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.VideoThumbInfo;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil.VideoThumbInfo;
 
 class DatalineFileBubbleModel$3
   implements Runnable
@@ -14,8 +14,8 @@ class DatalineFileBubbleModel$3
   
   public void run()
   {
-    FileManagerUtil.VideoThumbInfo localVideoThumbInfo = FileManagerUtil.a(this.a.path);
-    if (FileUtil.b(localVideoThumbInfo.a))
+    QQFileManagerUtil.VideoThumbInfo localVideoThumbInfo = FileManagerUtil.a(this.a.path);
+    if (FileUtil.a(localVideoThumbInfo.a))
     {
       this.a.thumbPath = localVideoThumbInfo.a;
       this.this$0.a.getFileManagerNotifyCenter().a(true, 0, null);
@@ -24,7 +24,7 @@ class DatalineFileBubbleModel$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.DatalineFileBubbleModel.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.pic;
 
-import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ReportBean;
 import com.tencent.image.api.IReport;
 import com.tencent.image.api.ReportEventBean;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qqperf.UnifiedMonitor;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -19,109 +18,112 @@ final class URLDrawableDepWrapInit$6
 {
   private Set<String> a = new HashSet();
   
-  public void debug(int paramInt, Object paramObject)
+  protected void a(Object[] paramArrayOfObject)
   {
-    String str1;
     String str2;
     String str3;
     String str4;
+    String str5;
     Exception localException;
-    switch (paramInt)
+    int i;
+    String str1;
+    if (paramArrayOfObject.length == 5)
     {
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        paramObject = (Object[])paramObject;
-      } while (paramObject.length != 5);
-      str1 = (String)paramObject[0];
-      str2 = (String)paramObject[1];
-      str3 = (String)paramObject[2];
-      str4 = (String)paramObject[3];
-      localException = (Exception)paramObject[4];
-      if (paramObject.length > 5) {
-        paramObject = (String)paramObject[5];
+      str2 = (String)paramArrayOfObject[0];
+      str3 = (String)paramArrayOfObject[1];
+      str4 = (String)paramArrayOfObject[2];
+      str5 = (String)paramArrayOfObject[3];
+      localException = (Exception)paramArrayOfObject[4];
+      i = paramArrayOfObject.length;
+      str1 = "";
+      if (i > 5) {
+        paramArrayOfObject = (String)paramArrayOfObject[5];
+      } else {
+        paramArrayOfObject = "";
       }
-      break;
     }
-    label525:
     for (;;)
     {
       try
       {
-        Object localObject = str1.split("\\(|,|\\)");
-        int j = Integer.parseInt(localObject[1]);
-        int k = Integer.parseInt(localObject[2]);
         localObject = str2.split("\\(|,|\\)");
-        paramInt = Integer.parseInt(localObject[1]);
-        int i = Integer.parseInt(localObject[2]);
-        if ((paramInt <= 0) || (i <= 0) || (j <= 0) || (k <= 0)) {
-          break;
-        }
-        j = Math.max(Math.round(paramInt / j), Math.round(i / k));
-        if (j >= 2)
+        int k = Integer.parseInt(localObject[1]);
+        int m = Integer.parseInt(localObject[2]);
+        localObject = str3.split("\\(|,|\\)");
+        i = Integer.parseInt(localObject[1]);
+        int j = Integer.parseInt(localObject[2]);
+        if ((i > 0) && (j > 0) && (k > 0) && (m > 0))
         {
-          paramInt = paramInt * i - i * paramInt / (j * j);
-          if (paramInt <= 0) {
-            break;
+          k = Math.max(Math.round(i / k), Math.round(j / m));
+          if (k < 2) {
+            break label392;
           }
-          paramInt = paramInt * 4 / 1024;
-          HashMap localHashMap = new HashMap(8);
-          localObject = URLDrawableDepWrapInit.a(localException, false);
-          String str5 = URLDrawableDepWrapInit.a((String)localObject, 1);
-          if (localObject == null) {
-            break label525;
-          }
-          localHashMap.put("stack", localObject);
-          localHashMap.put("title", str5);
-          localHashMap.put("viewsize", str1);
-          localHashMap.put("picsize", str2);
-          localHashMap.put("req_info", paramObject);
-          if (str3 != null)
+          i *= j;
+          i -= i / (k * k);
+          if (i > 0)
           {
-            localObject = str3.replace('&', ' ');
-            localHashMap.put("img_url", localObject);
-            UnifiedMonitor.a().addEvent(2, str4, paramInt, 0, localHashMap);
-            if (paramInt < 512) {
-              break;
+            i = i * 4 / 1024;
+            HashMap localHashMap = new HashMap(8);
+            localObject = URLDrawableDepWrapInit.a(localException, false);
+            String str6 = URLDrawableDepWrapInit.a((String)localObject, 1);
+            if (localObject == null) {
+              break label397;
             }
-            URLDrawableDepWrapInit.a(localException, str5, str4, str1 + paramObject, str2, str3, paramInt);
-            return;
+            localHashMap.put("stack", localObject);
+            localHashMap.put("title", str6);
+            localHashMap.put("viewsize", str2);
+            localHashMap.put("picsize", str3);
+            localHashMap.put("req_info", paramArrayOfObject);
+            localObject = str1;
+            if (str4 != null) {
+              localObject = str4.replace('&', ' ');
+            }
+            localHashMap.put("img_url", localObject);
+            UnifiedMonitor.a().addEvent(2, str5, i, 0, localHashMap);
+            if (i >= 512)
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(str2);
+              ((StringBuilder)localObject).append(paramArrayOfObject);
+              URLDrawableDepWrapInit.a(localException, str6, str5, ((StringBuilder)localObject).toString(), str3, str4, i);
+            }
           }
-          localObject = "";
-          continue;
-          paramObject = (Object[])paramObject;
-          if (paramObject.length != 2) {
-            break;
-          }
-          localObject = (String)paramObject[0];
-          paramObject = (Exception)paramObject[1];
-          return;
-          paramObject = (Long)paramObject;
-          if (SystemClock.uptimeMillis() % 100L != 0L) {
-            break;
-          }
-          StatisticCollector.getInstance(BaseApplicationImpl.sApplication).collectPerformance(null, "AioPicDownloadWait", true, paramObject.longValue(), 0L, null, null);
-          return;
-          paramObject = (Long)paramObject;
-          if (SystemClock.uptimeMillis() % 100L != 0L) {
-            break;
-          }
-          StatisticCollector.getInstance(BaseApplicationImpl.sApplication).collectPerformance(null, "AioPicDispatchWait", true, paramObject.longValue(), 0L, null, null);
-          return;
         }
-        paramInt = 0;
-        continue;
-        paramObject = "";
-        continue;
-        localObject = "";
+        return;
       }
-      catch (Throwable paramObject)
+      catch (Throwable paramArrayOfObject)
       {
         return;
       }
+      label392:
+      i = 0;
+      continue;
+      label397:
+      Object localObject = "";
     }
+  }
+  
+  public void debug(int paramInt, Object paramObject)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return;
+          }
+          URLDrawableDepWrapInit.a((Long)paramObject);
+          return;
+        }
+        URLDrawableDepWrapInit.b((Long)paramObject);
+        return;
+      }
+      URLDrawableDepWrapInit.a((Object[])paramObject);
+      return;
+    }
+    a((Object[])paramObject);
   }
   
   public void report(ReportBean paramReportBean)
@@ -143,7 +145,7 @@ final class URLDrawableDepWrapInit$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.URLDrawableDepWrapInit.6
  * JD-Core Version:    0.7.0.1
  */

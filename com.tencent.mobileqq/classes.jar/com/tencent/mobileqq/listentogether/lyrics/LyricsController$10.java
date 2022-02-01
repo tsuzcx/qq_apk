@@ -14,26 +14,27 @@ class LyricsController$10
   public void OnClick(View paramView, int paramInt)
   {
     this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (paramInt != 0)
       {
+        if (paramInt == 1) {
+          this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.h();
+        }
+      }
+      else {
+        ListenTogetherUtils.a(BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.a().e, this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.a().b);
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.b(false);
-      return;
-      ListenTogetherUtils.a(BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.a().e, this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.a().b);
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.h();
-      continue;
+    else {
       this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.h();
     }
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsLyricsController.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.LyricsController.10
  * JD-Core Version:    0.7.0.1
  */

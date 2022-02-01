@@ -46,7 +46,7 @@ import org.json.JSONObject;
 public class ReflectLivenessState
   extends YtFSMBaseState
 {
-  private static final String TAG = ReflectLivenessState.class.getSimpleName();
+  private static final String TAG = "ReflectLivenessState";
   private YTActRefData actRefData;
   private int actReflectUXMode = 0;
   private String appId;
@@ -124,8 +124,19 @@ public class ReflectLivenessState
   
   private void handleFailure(int paramInt, String paramString1, String paramString2)
   {
-    paramString2 = "message:" + paramString1 + "\ntips:" + paramString2 + "\ncode:" + paramInt;
-    YtLogger.e(TAG, "failed :" + paramString2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("message:");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("\ntips:");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("\ncode:");
+    ((StringBuilder)localObject).append(paramInt);
+    paramString2 = ((StringBuilder)localObject).toString();
+    localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("failed :");
+    localStringBuilder.append(paramString2);
+    YtLogger.e((String)localObject, localStringBuilder.toString());
     paramString2 = SilentLivenessState.convertAdvise(this.poseState);
     paramString1 = CommonUtils.makeMessageJson(4194304, paramString2, paramString1);
     YtSDKStats.getInstance().reportError(paramInt, paramString2);
@@ -142,76 +153,97 @@ public class ReflectLivenessState
   
   private void handleSuccess(FullPack paramFullPack)
   {
-    ByteArrayOutputStream localByteArrayOutputStream;
-    int j;
-    int k;
-    if (YtFSM.getInstance().getWorkMode() == YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE) {
-      for (;;)
+    if (YtFSM.getInstance().getWorkMode() == YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE) {}
+    for (;;)
+    {
+      ByteArrayOutputStream localByteArrayOutputStream;
+      int j;
+      int k;
+      StringBuilder localStringBuilder;
+      try
       {
-        try
+        localObject2 = getActionReflectLiveReq(paramFullPack, new YTActReflectData(new YTActReflectImage(this.actRefData.best.image, this.actRefData.best.xys, this.actRefData.best.checksum), new YTActReflectImage(this.actRefData.eye.image, this.actRefData.eye.xys, this.actRefData.eye.checksum), new YTActReflectImage(this.actRefData.mouth.image, this.actRefData.mouth.xys, this.actRefData.mouth.checksum), this.seleceData), this.colorData);
+        ((ActionReflectReq)localObject2).app_id = this.appId;
+        localObject1 = YtFSM.getInstance().getContext().imageToCompare;
+        if (localObject1 != null)
         {
-          localObject = getActionReflectLiveReq(paramFullPack, new YTActReflectData(new YTActReflectImage(this.actRefData.best.image, this.actRefData.best.xys, this.actRefData.best.checksum), new YTActReflectImage(this.actRefData.eye.image, this.actRefData.eye.xys, this.actRefData.eye.checksum), new YTActReflectImage(this.actRefData.mouth.image, this.actRefData.mouth.xys, this.actRefData.mouth.checksum), this.seleceData), this.colorData);
-          ((ActionReflectReq)localObject).app_id = this.appId;
-          localBitmap = YtFSM.getInstance().getContext().imageToCompare;
-          if (localBitmap != null)
-          {
-            localByteArrayOutputStream = new ByteArrayOutputStream();
-            j = localBitmap.getWidth();
-            k = localBitmap.getHeight();
-            if (j <= k) {
-              continue;
-            }
-            i = j;
-            paramFullPack = localBitmap;
-            if (i > 640)
-            {
-              paramFullPack = imageScale(localBitmap, j * 640 / i, k * 640 / i);
-              YtLogger.d(TAG, "resize image. from w:" + j + " h:" + k + " to w:" + paramFullPack.getWidth() + " h:" + paramFullPack.getHeight());
-            }
-            paramFullPack.compress(Bitmap.CompressFormat.JPEG, 95, localByteArrayOutputStream);
-            ((ActionReflectReq)localObject).compare_image = new YTImageInfo(new YTActReflectImage(localByteArrayOutputStream.toByteArray(), null, null));
+          localByteArrayOutputStream = new ByteArrayOutputStream();
+          j = ((Bitmap)localObject1).getWidth();
+          k = ((Bitmap)localObject1).getHeight();
+          if (j <= k) {
+            break label720;
           }
-          ((ActionReflectReq)localObject).color_data = this.colorData;
-          this.stateData.put("reflect_request_object", localObject);
+          i = j;
+          paramFullPack = (FullPack)localObject1;
+          if (i > 640)
+          {
+            paramFullPack = imageScale((Bitmap)localObject1, j * 640 / i, k * 640 / i);
+            localObject1 = TAG;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("resize image. from w:");
+            localStringBuilder.append(j);
+            localStringBuilder.append(" h:");
+            localStringBuilder.append(k);
+            localStringBuilder.append(" to w:");
+            localStringBuilder.append(paramFullPack.getWidth());
+            localStringBuilder.append(" h:");
+            localStringBuilder.append(paramFullPack.getHeight());
+            YtLogger.d((String)localObject1, localStringBuilder.toString());
+          }
+          paramFullPack.compress(Bitmap.CompressFormat.JPEG, 95, localByteArrayOutputStream);
+          ((ActionReflectReq)localObject2).compare_image = new YTImageInfo(new YTActReflectImage(localByteArrayOutputStream.toByteArray(), null, null));
         }
-        catch (Exception paramFullPack)
-        {
-          YtLogger.e(TAG, "Handle actref data failed:" + paramFullPack.getLocalizedMessage());
-          continue;
-        }
-        this.nextStateName = YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE;
-        this.tracker.setParam(this.mOriginParam);
-        return;
-        i = k;
+        ((ActionReflectReq)localObject2).color_data = this.colorData;
+        this.stateData.put("reflect_request_object", localObject2);
       }
-    }
-    Object localObject = getReflectLiveReq(paramFullPack, this.colorData);
-    Bitmap localBitmap = YtFSM.getInstance().getContext().imageToCompare;
-    if (localBitmap != null)
-    {
-      localByteArrayOutputStream = new ByteArrayOutputStream();
-      j = localBitmap.getWidth();
-      k = localBitmap.getHeight();
-      if (j <= k) {
-        break label639;
-      }
-    }
-    label639:
-    for (int i = j;; i = k)
-    {
-      paramFullPack = localBitmap;
-      if (i > 640)
+      catch (Exception paramFullPack)
       {
-        paramFullPack = imageScale(localBitmap, j * 640 / i, k * 640 / i);
-        YtLogger.d(TAG, "resize image. from w:" + j + " h:" + k + " to w:" + paramFullPack.getWidth() + " h:" + paramFullPack.getHeight());
+        localObject1 = TAG;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("Handle actref data failed:");
+        ((StringBuilder)localObject2).append(paramFullPack.getLocalizedMessage());
+        YtLogger.e((String)localObject1, ((StringBuilder)localObject2).toString());
       }
-      paramFullPack.compress(Bitmap.CompressFormat.JPEG, 95, localByteArrayOutputStream);
-      ((ReflectLiveReq)localObject).compare_image = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 2));
+      Object localObject2 = getReflectLiveReq(paramFullPack, this.colorData);
+      Object localObject1 = YtFSM.getInstance().getContext().imageToCompare;
+      if (localObject1 != null)
+      {
+        localByteArrayOutputStream = new ByteArrayOutputStream();
+        j = ((Bitmap)localObject1).getWidth();
+        k = ((Bitmap)localObject1).getHeight();
+        if (j > k) {
+          i = j;
+        } else {
+          i = k;
+        }
+        paramFullPack = (FullPack)localObject1;
+        if (i > 640)
+        {
+          paramFullPack = imageScale((Bitmap)localObject1, j * 640 / i, k * 640 / i);
+          localObject1 = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("resize image. from w:");
+          localStringBuilder.append(j);
+          localStringBuilder.append(" h:");
+          localStringBuilder.append(k);
+          localStringBuilder.append(" to w:");
+          localStringBuilder.append(paramFullPack.getWidth());
+          localStringBuilder.append(" h:");
+          localStringBuilder.append(paramFullPack.getHeight());
+          YtLogger.d((String)localObject1, localStringBuilder.toString());
+        }
+        paramFullPack.compress(Bitmap.CompressFormat.JPEG, 95, localByteArrayOutputStream);
+        ((ReflectLiveReq)localObject2).compare_image = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 2));
+      }
       YtLogger.d(TAG, "on Request...");
-      ((ReflectLiveReq)localObject).color_data = this.colorData;
-      ((ReflectLiveReq)localObject).select_data = this.seleceData;
-      this.stateData.put("reflect_request_object", localObject);
-      break;
+      ((ReflectLiveReq)localObject2).color_data = this.colorData;
+      ((ReflectLiveReq)localObject2).select_data = this.seleceData;
+      this.stateData.put("reflect_request_object", localObject2);
+      this.nextStateName = YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE;
+      this.tracker.setParam(this.mOriginParam);
+      return;
+      label720:
+      int i = k;
     }
   }
   
@@ -230,32 +262,49 @@ public class ReflectLivenessState
   
   private void startReflect()
   {
-    boolean bool = false;
     YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.10(this));
-    if ((this.mOriginParam == null) && (this.tracker != null)) {
-      this.mOriginParam = this.tracker.getParam();
-    }
-    if (this.tracker != null)
+    if (this.mOriginParam == null)
     {
-      localObject = this.mOriginParam;
-      ((YTFaceTracker.Param)localObject).detInterval = 30;
-      this.tracker.setParam((YTFaceTracker.Param)localObject);
+      localObject1 = this.tracker;
+      if (localObject1 != null) {
+        this.mOriginParam = ((YTFaceTracker)localObject1).getParam();
+      }
+    }
+    Object localObject1 = this.tracker;
+    if (localObject1 != null)
+    {
+      localObject2 = this.mOriginParam;
+      ((YTFaceTracker.Param)localObject2).detInterval = 30;
+      ((YTFaceTracker)localObject1).setParam((YTFaceTracker.Param)localObject2);
     }
     this.currentProcessType = ReflectLivenessState.ReflectProcessType.RPT_REFLECT;
     setupRequset();
-    Object localObject = YTAGReflectLiveCheckInterface.getAGSettings();
-    ((YTAGReflectSettings)localObject).safetylevel = this.securityLevel;
-    ((YTAGReflectSettings)localObject).isEncodeReflectData = false;
+    localObject1 = YTAGReflectLiveCheckInterface.getAGSettings();
+    ((YTAGReflectSettings)localObject1).safetylevel = this.securityLevel;
+    boolean bool = false;
+    ((YTAGReflectSettings)localObject1).isEncodeReflectData = false;
     if (YtFSM.getInstance().getWorkMode() == YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE) {
       bool = true;
     }
-    ((YTAGReflectSettings)localObject).isActionReflect = bool;
-    YTAGReflectLiveCheckInterface.setAGSettings((YTAGReflectSettings)localObject);
-    YtLogger.i(TAG, "Settings: safetyLevel " + ((YTAGReflectSettings)localObject).safetylevel);
-    YtLogger.i(TAG, "Settings: isEncodeReflectData " + ((YTAGReflectSettings)localObject).isEncodeReflectData);
-    YtLogger.i(TAG, "Settings: isActionReflect " + ((YTAGReflectSettings)localObject).isActionReflect);
-    localObject = YtFSM.getInstance().getContext();
-    YTAGReflectLiveCheckInterface.start(((YtSDKKitFramework.YtSDKPlatformContext)localObject).currentAppContext, ((YtSDKKitFramework.YtSDKPlatformContext)localObject).currentCamera, ((YtSDKKitFramework.YtSDKPlatformContext)localObject).currentRotateState, this.colorData, new ReflectLivenessState.11(this));
+    ((YTAGReflectSettings)localObject1).isActionReflect = bool;
+    YTAGReflectLiveCheckInterface.setAGSettings((YTAGReflectSettings)localObject1);
+    Object localObject2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Settings: safetyLevel ");
+    localStringBuilder.append(((YTAGReflectSettings)localObject1).safetylevel);
+    YtLogger.i((String)localObject2, localStringBuilder.toString());
+    localObject2 = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Settings: isEncodeReflectData ");
+    localStringBuilder.append(((YTAGReflectSettings)localObject1).isEncodeReflectData);
+    YtLogger.i((String)localObject2, localStringBuilder.toString());
+    localObject2 = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Settings: isActionReflect ");
+    localStringBuilder.append(((YTAGReflectSettings)localObject1).isActionReflect);
+    YtLogger.i((String)localObject2, localStringBuilder.toString());
+    localObject1 = YtFSM.getInstance().getContext();
+    YTAGReflectLiveCheckInterface.start(((YtSDKKitFramework.YtSDKPlatformContext)localObject1).currentAppContext, ((YtSDKKitFramework.YtSDKPlatformContext)localObject1).currentCamera, ((YtSDKKitFramework.YtSDKPlatformContext)localObject1).currentRotateState, this.colorData, new ReflectLivenessState.11(this));
   }
   
   private ColorImgData translation(RawImgData paramRawImgData)
@@ -271,9 +320,9 @@ public class ReflectLivenessState
   
   private ReflectColorData translation(DataPack paramDataPack)
   {
-    int j = 0;
     ReflectColorData localReflectColorData = new ReflectColorData();
     ArrayList localArrayList = new ArrayList();
+    int j = 0;
     int i = 0;
     while (i < paramDataPack.videoData.length)
     {
@@ -312,73 +361,72 @@ public class ReflectLivenessState
   public void enter()
   {
     super.enter();
-    Object localObject = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
+    Object localObject1 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
     for (;;)
     {
+      int i;
       try
       {
-        this.poseState = ((Integer)((YtFSMBaseState)localObject).getStateDataBy("pose_state")).intValue();
-        this.continuousDetectCount = ((Integer)((YtFSMBaseState)localObject).getStateDataBy("continuous_detect_count")).intValue();
-        this.faceStatus = ((YTFaceTracker.TrackedFace[])((YtFSMBaseState)localObject).getStateDataBy("face_status"));
-        localObject = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.NET_FETCH_STATE));
-        if (localObject != null)
+        this.poseState = ((Integer)((YtFSMBaseState)localObject1).getStateDataBy("pose_state")).intValue();
+        this.continuousDetectCount = ((Integer)((YtFSMBaseState)localObject1).getStateDataBy("continuous_detect_count")).intValue();
+        this.faceStatus = ((YTFaceTracker.TrackedFace[])((YtFSMBaseState)localObject1).getStateDataBy("face_status"));
+        localObject1 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.NET_FETCH_STATE));
+        if (localObject1 != null)
         {
-          this.seleceData = ((LiveStyleRequester.SeleceData)((YtFSMBaseState)localObject).getStateDataBy("select_data"));
-          if (this.needLocalConfig) {
-            continue;
+          this.seleceData = ((LiveStyleRequester.SeleceData)((YtFSMBaseState)localObject1).getStateDataBy("select_data"));
+          if (!this.needLocalConfig) {
+            this.colorData = ((String)((YtFSMBaseState)localObject1).getStateDataBy("color_data"));
+          } else if (this.needRandom) {
+            this.colorData = this.randomColorData;
           }
-          this.colorData = ((String)((YtFSMBaseState)localObject).getStateDataBy("color_data"));
-          localObject = (String)((YtFSMBaseState)localObject).getStateDataBy("control_config");
-          if (localObject != null) {
-            this.controlConfig = ((String)localObject);
+          localObject1 = (String)((YtFSMBaseState)localObject1).getStateDataBy("control_config");
+          if (localObject1 != null) {
+            this.controlConfig = ((String)localObject1);
           }
         }
-        if (this.controlConfig.isEmpty()) {
-          continue;
+        if (!this.controlConfig.isEmpty())
+        {
+          localObject1 = this.controlConfig.split("&");
+          if (localObject1.length > 0)
+          {
+            int j = localObject1.length;
+            i = 0;
+            if (i < j)
+            {
+              localObject2 = localObject1[i].split("=");
+              if ((localObject2.length <= 1) || (!localObject2[0].equals("actref_ux_mode"))) {
+                break label401;
+              }
+              this.actReflectUXMode = Integer.parseInt(localObject2[1]);
+            }
+          }
         }
-        localObject = this.controlConfig.split("&");
-        if (localObject.length <= 0) {
-          continue;
+        localObject1 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.ACTION_STATE));
+        if (localObject1 != null) {
+          this.actRefData = ((YTActRefData)((YtFSMBaseState)localObject1).getStateDataBy("act_reflect_data"));
         }
-        j = localObject.length;
-        i = 0;
+        if ((this.continuousDetectCount > this.stableFrameCount) && (this.poseState == 0) && (this.faceStatus != null) && (this.faceStatus.length > 0)) {
+          YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.8(this));
+        }
+        if (this.actReflectUXMode == 2)
+        {
+          this.currentProcessType = ReflectLivenessState.ReflectProcessType.RPT_FINISH;
+          handleSuccess(null);
+        }
       }
       catch (Exception localException)
       {
-        int j;
-        int i;
-        String[] arrayOfString;
-        YtLogger.e(TAG, "reflection enter failed " + localException.getLocalizedMessage());
+        Object localObject2 = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reflection enter failed ");
+        localStringBuilder.append(localException.getLocalizedMessage());
+        YtLogger.e((String)localObject2, localStringBuilder.toString());
         CommonUtils.reportException("reflection enter failed ", localException);
-        continue;
-        i += 1;
-        continue;
-      }
-      if (i < j)
-      {
-        arrayOfString = localObject[i].split("=");
-        if ((arrayOfString.length <= 1) || (!arrayOfString[0].equals("actref_ux_mode"))) {
-          continue;
-        }
-        this.actReflectUXMode = Integer.parseInt(arrayOfString[1]);
-      }
-      localObject = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.ACTION_STATE));
-      if (localObject != null) {
-        this.actRefData = ((YTActRefData)((YtFSMBaseState)localObject).getStateDataBy("act_reflect_data"));
-      }
-      if ((this.continuousDetectCount > this.stableFrameCount) && (this.poseState == 0) && (this.faceStatus != null) && (this.faceStatus.length > 0)) {
-        YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.8(this));
-      }
-      if (this.actReflectUXMode == 2)
-      {
-        this.currentProcessType = ReflectLivenessState.ReflectProcessType.RPT_FINISH;
-        handleSuccess(null);
       }
       YtFSM.getInstance().updateCacheStrategy(YtFSM.YtFSMUpdateStrategy.CacheStrategy);
       return;
-      if (this.needRandom) {
-        this.colorData = this.randomColorData;
-      }
+      label401:
+      i += 1;
     }
   }
   
@@ -408,118 +456,118 @@ public class ReflectLivenessState
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
     super.loadStateWith(paramString, paramJSONObject);
-    for (;;)
+    try
     {
-      try
-      {
-        if (paramJSONObject.has("resource_online")) {
-          this.isLoadResourceOnline = paramJSONObject.getBoolean("resource_online");
-        }
-        if (!paramJSONObject.has("similarity_threshold")) {
-          continue;
-        }
+      if (paramJSONObject.has("resource_online")) {
+        this.isLoadResourceOnline = paramJSONObject.getBoolean("resource_online");
+      }
+      if (paramJSONObject.has("similarity_threshold")) {
         this.simiThreshold = paramJSONObject.getInt("similarity_threshold");
-        if (paramJSONObject.has("reflect_security_level")) {
-          this.securityLevel = paramJSONObject.getInt("reflect_security_level");
-        }
-        if (paramJSONObject.has("local_config_flag")) {
-          this.needLocalConfig = paramJSONObject.getBoolean("local_config_flag");
-        }
-        if (paramJSONObject.has("color_data")) {
-          this.colorData = paramJSONObject.getString("color_data");
-        }
-        if (paramJSONObject.has("stable_frame_num")) {
-          this.stableFrameCount = paramJSONObject.getInt("stable_frame_num");
-        }
-        if (paramJSONObject.has("backend_proto_type")) {
-          this.backendProtoType = paramJSONObject.getInt("backend_proto_type");
-        }
-        if (paramJSONObject.has("force_pose_check")) {
-          this.needCheckPose = paramJSONObject.getBoolean("force_pose_check");
-        }
-        if (paramJSONObject.has("manual_trigger")) {
-          this.needManualTrigger = paramJSONObject.getBoolean("manual_trigger");
-        }
-        if (paramJSONObject.has("reflect_tips_countdown_ms")) {
-          this.tipsTimer.init(Math.max(0, Math.min(10000, paramJSONObject.getInt("reflect_tips_countdown_ms"))), false);
-        }
-        if (paramJSONObject.has("control_config")) {
-          this.controlConfig = paramJSONObject.getString("control_config");
-        }
+      } else {
+        this.simiThreshold = 70;
       }
-      catch (JSONException paramString)
-      {
-        Object localObject;
-        paramString.printStackTrace();
-        YtLogger.e(TAG, "Failed to parse json:" + paramString.getLocalizedMessage());
-        continue;
-        if (Integer.parseInt(paramString[1]) == Integer.parseInt(localObject[1])) {
-          continue;
-        }
-        YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.2(this));
-        continue;
-        if (Integer.parseInt(paramString[2]) >= Integer.parseInt(localObject[2])) {
-          continue;
-        }
-        YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.3(this));
-        continue;
+      if (paramJSONObject.has("reflect_security_level")) {
+        this.securityLevel = paramJSONObject.getInt("reflect_security_level");
       }
-      if (!this.isLoadResourceOnline) {
-        FileUtils.loadLibrary("YTAGReflectLiveCheck");
+      if (paramJSONObject.has("local_config_flag")) {
+        this.needLocalConfig = paramJSONObject.getBoolean("local_config_flag");
       }
-      YtLogger.i(TAG, "Reflection version:3.6.8");
-      paramString = "3.6.8".split("\\.");
-      localObject = this.legitimateReflectVersion;
-      YtLogger.i(TAG, "Wanted Reflection Version: " + (String)localObject);
-      localObject = ((String)localObject).split("\\.");
-      if (Integer.parseInt(paramString[0]) == Integer.parseInt(localObject[0])) {
-        continue;
+      if (paramJSONObject.has("color_data")) {
+        this.colorData = paramJSONObject.getString("color_data");
       }
-      YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.1(this));
-      try
-      {
-        this.appId = paramJSONObject.getString("app_id");
-        if (paramJSONObject.has("extra_config")) {
-          this.extraConfig = paramJSONObject.getString("extra_config");
-        }
-        if (paramJSONObject.has("change_point_num")) {
-          this.changePointNum = paramJSONObject.getInt("change_point_num");
-        }
-        if (paramJSONObject.has("need_random_flag")) {
-          this.needRandom = paramJSONObject.getBoolean("need_random_flag");
-        }
-        this.needCheckMultiFaces = paramJSONObject.optBoolean("need_check_multiface", false);
+      if (paramJSONObject.has("stable_frame_num")) {
+        this.stableFrameCount = paramJSONObject.getInt("stable_frame_num");
       }
-      catch (JSONException paramString)
-      {
-        int i;
-        paramString.printStackTrace();
-        YtLogger.e(TAG, "Failed to parse json:" + paramString.getLocalizedMessage());
-        continue;
-        YTAGReflectLiveCheckInterface.setReflectListener(null);
-        continue;
+      if (paramJSONObject.has("backend_proto_type")) {
+        this.backendProtoType = paramJSONObject.getInt("backend_proto_type");
       }
-      i = YTAGReflectLiveCheckInterface.initModel(this.appId);
-      if (i != 0)
-      {
-        YtLogger.e(TAG, "failed to init reflect sdk " + i);
-        YtSDKStats.getInstance().reportError(i, "failed to init reflect sdk");
-        YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.4(this, i));
+      if (paramJSONObject.has("force_pose_check")) {
+        this.needCheckPose = paramJSONObject.getBoolean("force_pose_check");
       }
-      if (this.needRandom) {
-        this.randomColorData = YTAGReflectLiveCheckJNIInterface.FRGenConfigData(this.changePointNum, this.extraConfig);
+      if (paramJSONObject.has("manual_trigger")) {
+        this.needManualTrigger = paramJSONObject.getBoolean("manual_trigger");
       }
-      YTAGReflectLiveCheckInterface.setReflectNotice(new ReflectLivenessState.5(this));
-      if (YtFSM.getInstance().getContext().reflectListener == null) {
-        break label737;
+      if (paramJSONObject.has("reflect_tips_countdown_ms")) {
+        this.tipsTimer.init(Math.max(0, Math.min(10000, paramJSONObject.getInt("reflect_tips_countdown_ms"))), false);
       }
-      YTAGReflectLiveCheckInterface.setReflectListener(new ReflectLivenessState.6(this));
-      YTAGReflectLiveCheckJNIInterface.configNativeLog(true);
-      YTAGReflectLiveCheckJNIInterface.updateParam("log_level", "3");
-      YTAGReflectLiveCheckJNIInterface.setLoggerListener(new ReflectLivenessState.7(this));
-      return;
-      this.simiThreshold = 70;
+      if (paramJSONObject.has("control_config")) {
+        this.controlConfig = paramJSONObject.getString("control_config");
+      }
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Failed to parse json:");
+      ((StringBuilder)localObject2).append(paramString.getLocalizedMessage());
+      YtLogger.e((String)localObject1, ((StringBuilder)localObject2).toString());
+    }
+    if (!this.isLoadResourceOnline) {
+      FileUtils.loadLibrary("YTAGReflectLiveCheck");
+    }
+    YtLogger.i(TAG, "Reflection version:3.6.8");
+    paramString = "3.6.8".split("\\.");
+    Object localObject1 = this.legitimateReflectVersion;
+    Object localObject2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Wanted Reflection Version: ");
+    localStringBuilder.append((String)localObject1);
+    YtLogger.i((String)localObject2, localStringBuilder.toString());
+    localObject1 = ((String)localObject1).split("\\.");
+    if (Integer.parseInt(paramString[0]) != Integer.parseInt(localObject1[0])) {
+      YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.1(this));
+    } else if (Integer.parseInt(paramString[1]) != Integer.parseInt(localObject1[1])) {
+      YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.2(this));
+    } else if (Integer.parseInt(paramString[2]) < Integer.parseInt(localObject1[2])) {
+      YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.3(this));
+    }
+    try
+    {
+      this.appId = paramJSONObject.getString("app_id");
+      if (paramJSONObject.has("extra_config")) {
+        this.extraConfig = paramJSONObject.getString("extra_config");
+      }
+      if (paramJSONObject.has("change_point_num")) {
+        this.changePointNum = paramJSONObject.getInt("change_point_num");
+      }
+      if (paramJSONObject.has("need_random_flag")) {
+        this.needRandom = paramJSONObject.getBoolean("need_random_flag");
+      }
+      this.needCheckMultiFaces = paramJSONObject.optBoolean("need_check_multiface", false);
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      paramJSONObject = TAG;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Failed to parse json:");
+      ((StringBuilder)localObject1).append(paramString.getLocalizedMessage());
+      YtLogger.e(paramJSONObject, ((StringBuilder)localObject1).toString());
+    }
+    int i = YTAGReflectLiveCheckInterface.initModel(this.appId);
+    if (i != 0)
+    {
+      paramString = TAG;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("failed to init reflect sdk ");
+      paramJSONObject.append(i);
+      YtLogger.e(paramString, paramJSONObject.toString());
+      YtSDKStats.getInstance().reportError(i, "failed to init reflect sdk");
+      YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.4(this, i));
+    }
+    if (this.needRandom) {
+      this.randomColorData = YTAGReflectLiveCheckJNIInterface.FRGenConfigData(this.changePointNum, this.extraConfig);
+    }
+    YTAGReflectLiveCheckInterface.setReflectNotice(new ReflectLivenessState.5(this));
+    if (YtFSM.getInstance().getContext().reflectListener != null) {
+      YTAGReflectLiveCheckInterface.setReflectListener(new ReflectLivenessState.6(this));
+    } else {
+      YTAGReflectLiveCheckInterface.setReflectListener(null);
+    }
+    YTAGReflectLiveCheckJNIInterface.configNativeLog(true);
+    YTAGReflectLiveCheckJNIInterface.updateParam("log_level", "3");
+    YTAGReflectLiveCheckJNIInterface.setLoggerListener(new ReflectLivenessState.7(this));
   }
   
   public void moveToNextState()
@@ -559,59 +607,93 @@ public class ReflectLivenessState
   public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
-    switch (ReflectLivenessState.12.$SwitchMap$com$tencent$youtu$sdkkitframework$liveness$ReflectLivenessState$ReflectProcessType[this.currentProcessType.ordinal()])
+    paramInt3 = ReflectLivenessState.12.$SwitchMap$com$tencent$youtu$sdkkitframework$liveness$ReflectLivenessState$ReflectProcessType[this.currentProcessType.ordinal()];
+    if (paramInt3 != 1)
     {
-    default: 
-    case 1: 
-    case 2: 
-      for (;;)
+      if (paramInt3 != 2)
       {
-        moveToNextState();
-        return;
-        if ((this.tipsTimer.isRunning()) && (!this.tipsTimer.checkTimeout()))
+        if (paramInt3 == 3)
         {
-          if (this.continuousDetectCount <= 1) {
-            this.tipsTimer.reset();
+          String str = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("reflect continuous_detect_count ");
+          localStringBuilder.append(this.continuousDetectCount);
+          localStringBuilder.append("pass flag ");
+          boolean bool;
+          if (this.poseState != 0) {
+            bool = true;
           } else {
-            YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.9(this));
+            bool = false;
           }
-        }
-        else
-        {
-          this.tipsTimer.cancel();
-          this.currentProcessType = ReflectLivenessState.ReflectProcessType.RPT_INIT;
-          continue;
-          if ((this.continuousDetectCount > this.stableFrameCount) && ((this.poseState == 0) || (this.poseState == 9)) && (this.faceStatus != null) && (this.faceStatus.length > 0)) {
-            startReflect();
+          localStringBuilder.append(bool);
+          YtLogger.d(str, localStringBuilder.toString());
+          str = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("reflect pose state ");
+          localStringBuilder.append(this.poseState);
+          YtLogger.d(str, localStringBuilder.toString());
+          if (this.needCheckFaces)
+          {
+            if (this.needCheckPose)
+            {
+              paramInt3 = this.poseState;
+              if ((paramInt3 != 0) && (paramInt3 != 9)) {}
+            }
+            else
+            {
+              if (((!this.needCheckMultiFaces) || (this.poseState != 1)) && (this.poseState != 1)) {
+                break label276;
+              }
+            }
+            str = TAG;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("reflect cancel:");
+            localStringBuilder.append(this.continuousDetectCount);
+            YtLogger.i(str, localStringBuilder.toString());
+            YTAGReflectLiveCheckInterface.cancel();
+            handleFailure(-1, "检测异常", "请保持姿态");
           }
-          this.nextStateName = YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE;
+          label276:
+          if (this.faceStatus != null) {
+            YTAGReflectLiveCheckInterface.pushImageData(paramArrayOfByte, paramInt1, paramInt2, paramLong, YtFSM.getInstance().getContext().currentRotateState, this.faceStatus[0].faceShape, this.faceStatus[0].pitch, this.faceStatus[0].yaw, this.faceStatus[0].roll);
+          }
         }
       }
-    }
-    String str = TAG;
-    StringBuilder localStringBuilder = new StringBuilder().append("reflect continuous_detect_count ").append(this.continuousDetectCount).append("pass flag ");
-    if (this.poseState != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      YtLogger.d(str, bool);
-      YtLogger.d(TAG, "reflect pose state " + this.poseState);
-      if ((this.needCheckFaces) && (((this.needCheckPose) && (this.poseState != 0) && (this.poseState != 9)) || ((this.needCheckMultiFaces) && (this.poseState == 1)) || (this.poseState == 1)))
+      else
       {
-        YtLogger.i(TAG, "reflect cancel:" + this.continuousDetectCount);
-        YTAGReflectLiveCheckInterface.cancel();
-        handleFailure(-1, "检测异常", "请保持姿态");
+        if (this.continuousDetectCount > this.stableFrameCount)
+        {
+          paramInt1 = this.poseState;
+          if ((paramInt1 == 0) || (paramInt1 == 9))
+          {
+            paramArrayOfByte = this.faceStatus;
+            if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+              startReflect();
+            }
+          }
+        }
+        this.nextStateName = YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE;
       }
-      if (this.faceStatus == null) {
-        break;
-      }
-      YTAGReflectLiveCheckInterface.pushImageData(paramArrayOfByte, paramInt1, paramInt2, paramLong, YtFSM.getInstance().getContext().currentRotateState, this.faceStatus[0].faceShape, this.faceStatus[0].pitch, this.faceStatus[0].yaw, this.faceStatus[0].roll);
-      break;
     }
+    else if ((this.tipsTimer.isRunning()) && (!this.tipsTimer.checkTimeout()))
+    {
+      if (this.continuousDetectCount <= 1) {
+        this.tipsTimer.reset();
+      } else {
+        YtFSM.getInstance().sendFSMEvent(new ReflectLivenessState.9(this));
+      }
+    }
+    else
+    {
+      this.tipsTimer.cancel();
+      this.currentProcessType = ReflectLivenessState.ReflectProcessType.RPT_INIT;
+    }
+    moveToNextState();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ReflectLivenessState
  * JD-Core Version:    0.7.0.1
  */

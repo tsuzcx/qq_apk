@@ -10,7 +10,10 @@ public class AudioTrans
   
   private static int a(byte[] paramArrayOfByte)
   {
-    return paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24;
+    int i = paramArrayOfByte[3];
+    int j = paramArrayOfByte[2];
+    int k = paramArrayOfByte[1];
+    return (paramArrayOfByte[0] & 0xFF) << 24 | i & 0xFF | (j & 0xFF) << 8 | (k & 0xFF) << 16;
   }
   
   public static AudioTrans.PBBytes a(byte[] paramArrayOfByte)
@@ -20,12 +23,22 @@ public class AudioTrans
     j = paramArrayOfByte[(i - 1)];
     Object localObject = new byte[4];
     byte[] arrayOfByte = new byte[4];
-    QLog.d("AudioTrans runhw", 2, "rspBodyBytes = " + a(paramArrayOfByte));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("rspBodyBytes = ");
+    localStringBuilder.append(a(paramArrayOfByte));
+    QLog.d("AudioTrans runhw", 2, localStringBuilder.toString());
     System.arraycopy(paramArrayOfByte, 1, localObject, 0, 4);
     System.arraycopy(paramArrayOfByte, 5, arrayOfByte, 0, 4);
     j = a((byte[])localObject);
     int k = a(arrayOfByte);
-    QLog.d("AudioTrans runhw", 2, "rspBytesLen = " + i + ", lengthOfHead = " + j + ", lengthOfBody = " + k);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("rspBytesLen = ");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(", lengthOfHead = ");
+    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(", lengthOfBody = ");
+    ((StringBuilder)localObject).append(k);
+    QLog.d("AudioTrans runhw", 2, ((StringBuilder)localObject).toString());
     localObject = new AudioTrans.PBBytes(j, k);
     System.arraycopy(paramArrayOfByte, 9, ((AudioTrans.PBBytes)localObject).a, 0, j);
     System.arraycopy(paramArrayOfByte, j + 9, ((AudioTrans.PBBytes)localObject).b, 0, k);
@@ -54,8 +67,9 @@ public class AudioTrans
     while (i < paramArrayOfByte.length)
     {
       int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar2[(i * 2)] = arrayOfChar1[(j >>> 4)];
-      arrayOfChar2[(i * 2 + 1)] = arrayOfChar1[(j & 0xF)];
+      int k = i * 2;
+      arrayOfChar2[k] = arrayOfChar1[(j >>> 4)];
+      arrayOfChar2[(k + 1)] = arrayOfChar1[(j & 0xF)];
       i += 1;
     }
     return new String(arrayOfChar2);
@@ -67,19 +81,20 @@ public class AudioTrans
     int j = paramArrayOfByte2.length;
     byte[] arrayOfByte1 = ByteBuffer.allocate(4).putInt(i).array();
     byte[] arrayOfByte2 = ByteBuffer.allocate(4).putInt(j).array();
-    byte[] arrayOfByte3 = new byte[i + 9 + j + 1];
+    int k = i + 9;
+    byte[] arrayOfByte3 = new byte[k + j + 1];
     arrayOfByte3[0] = 40;
     System.arraycopy(arrayOfByte1, 0, arrayOfByte3, 1, 4);
     System.arraycopy(arrayOfByte2, 0, arrayOfByte3, 5, 4);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte3, 9, i);
-    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte3, i + 9, j);
+    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte3, k, j);
     arrayOfByte3[(arrayOfByte3.length - 1)] = 41;
     return arrayOfByte3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.handler.AudioTrans
  * JD-Core Version:    0.7.0.1
  */

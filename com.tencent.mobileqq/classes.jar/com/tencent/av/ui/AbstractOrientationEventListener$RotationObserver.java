@@ -28,8 +28,9 @@ class AbstractOrientationEventListener$RotationObserver
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidContentContentResolver != null) {
-      this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    ContentResolver localContentResolver = this.jdField_a_of_type_AndroidContentContentResolver;
+    if (localContentResolver != null) {
+      localContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
     }
   }
   
@@ -45,7 +46,7 @@ class AbstractOrientationEventListener$RotationObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AbstractOrientationEventListener.RotationObserver
  * JD-Core Version:    0.7.0.1
  */

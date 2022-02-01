@@ -31,8 +31,13 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
   
   void _addAction(IntentFilter paramIntentFilter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 0, " " + interfaceDesc() + " _addAction");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" ");
+      localStringBuilder.append(interfaceDesc());
+      localStringBuilder.append(" _addAction");
+      QLog.w("TRAE", 0, localStringBuilder.toString());
     }
     paramIntentFilter.addAction("android.bluetooth.headset.action.AUDIO_STATE_CHANGED");
     paramIntentFilter.addAction("android.bluetooth.headset.action.STATE_CHANGED");
@@ -48,48 +53,71 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
       i = paramIntent.getIntExtra("android.bluetooth.headset.extra.STATE", -2);
       j = paramIntent.getIntExtra("android.bluetooth.headset.extra.PREVIOUS_STATE", -2);
       k = paramIntent.getIntExtra("android.bluetooth.headset.extra.AUDIO_STATE", -2);
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "++ AUDIO_STATE_CHANGED|  STATE " + i);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "       PREVIOUS_STATE " + j);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "       AUDIO_STATE " + k);
-      }
-      if (k != 2) {}
-    }
-    do
-    {
-      do
+      if (QLog.isColorLevel())
       {
-        this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", true);
-        do
-        {
-          return;
-        } while (k != 0);
-        this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", false);
-        return;
-      } while (!"android.bluetooth.headset.action.STATE_CHANGED".equals(paramIntent.getAction()));
-      i = paramIntent.getIntExtra("android.bluetooth.headset.extra.STATE", -2);
-      j = paramIntent.getIntExtra("android.bluetooth.headset.extra.PREVIOUS_STATE", -2);
-      k = paramIntent.getIntExtra("android.bluetooth.headset.extra.AUDIO_STATE", -2);
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "++ STATE_CHANGED|  STATE " + i);
+        paramContext = new StringBuilder();
+        paramContext.append("++ AUDIO_STATE_CHANGED|  STATE ");
+        paramContext.append(i);
+        QLog.w("TRAE", 0, paramContext.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "       PREVIOUS_STATE " + j);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("       PREVIOUS_STATE ");
+        paramContext.append(j);
+        QLog.w("TRAE", 0, paramContext.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "       AUDIO_STATE " + k);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("       AUDIO_STATE ");
+        paramContext.append(k);
+        QLog.w("TRAE", 0, paramContext.toString());
       }
       if (k == 2)
       {
         this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", true);
         return;
       }
-    } while (k != 0);
-    this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", false);
+      if (k == 0) {
+        this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", false);
+      }
+    }
+    else if ("android.bluetooth.headset.action.STATE_CHANGED".equals(paramIntent.getAction()))
+    {
+      i = paramIntent.getIntExtra("android.bluetooth.headset.extra.STATE", -2);
+      j = paramIntent.getIntExtra("android.bluetooth.headset.extra.PREVIOUS_STATE", -2);
+      k = paramIntent.getIntExtra("android.bluetooth.headset.extra.AUDIO_STATE", -2);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("++ STATE_CHANGED|  STATE ");
+        paramContext.append(i);
+        QLog.w("TRAE", 0, paramContext.toString());
+      }
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("       PREVIOUS_STATE ");
+        paramContext.append(j);
+        QLog.w("TRAE", 0, paramContext.toString());
+      }
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("       AUDIO_STATE ");
+        paramContext.append(k);
+        QLog.w("TRAE", 0, paramContext.toString());
+      }
+      if (k == 2)
+      {
+        this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", true);
+        return;
+      }
+      if (k == 0) {
+        this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", false);
+      }
+    }
   }
   
   public boolean init(Context paramContext, TraeAudioManager.DeviceConfigManager paramDeviceConfigManager)
@@ -97,121 +125,125 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
     AudioDeviceInterface.LogTraceEntry("");
     this._ctx = paramContext;
     this._devCfg = paramDeviceConfigManager;
-    if ((this._ctx == null) || (this._devCfg == null)) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        this.BluetoothHeadsetClass = Class.forName("android.bluetooth.BluetoothHeadset");
-        if (this.BluetoothHeadsetClass == null) {
-          continue;
-        }
+    if (this._ctx != null) {
+      if (this._devCfg == null) {
+        return false;
       }
-      catch (Exception paramDeviceConfigManager)
+    }
+    try
+    {
+      this.BluetoothHeadsetClass = Class.forName("android.bluetooth.BluetoothHeadset");
+    }
+    catch (Exception paramDeviceConfigManager)
+    {
+      label43:
+      break label43;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset class not found");
+    }
+    if (this.BluetoothHeadsetClass == null) {
+      return false;
+    }
+    try
+    {
+      this.ListenerClass = Class.forName("android.bluetooth.BluetoothHeadset$ServiceListener");
+    }
+    catch (Exception paramDeviceConfigManager)
+    {
+      if (QLog.isColorLevel())
       {
-        try
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("BTLooperThread BluetoothHeadset.ServiceListener class not found:");
+        localStringBuilder.append(paramDeviceConfigManager);
+        QLog.e("TRAE", 0, localStringBuilder.toString());
+      }
+    }
+    paramDeviceConfigManager = this.ListenerClass;
+    label141:
+    label277:
+    label291:
+    try
+    {
+      this.getCurrentHeadsetMethod = this.BluetoothHeadsetClass.getDeclaredMethod("getCurrentHeadset", new Class[0]);
+    }
+    catch (NoSuchMethodException paramDeviceConfigManager)
+    {
+      label209:
+      label226:
+      label243:
+      break label141;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset method getCurrentHeadset NoSuchMethodException");
+    }
+    if (this.getCurrentHeadsetMethod == null) {
+      return false;
+    }
+    try
+    {
+      this.BluetoothHeadsetObj = this.BluetoothHeadsetClass.getConstructor(new Class[] { Context.class, this.ListenerClass }).newInstance(new Object[] { paramContext, null });
+    }
+    catch (IllegalArgumentException paramContext)
+    {
+      break label277;
+    }
+    catch (InstantiationException paramContext)
+    {
+      break label260;
+    }
+    catch (IllegalAccessException paramContext)
+    {
+      break label243;
+    }
+    catch (InvocationTargetException paramContext)
+    {
+      break label226;
+    }
+    catch (NoSuchMethodException paramContext)
+    {
+      label260:
+      break label209;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset getConstructor NoSuchMethodException");
+      break label291;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset getConstructor InvocationTargetException");
+        break label291;
+        if (QLog.isColorLevel())
         {
-          this.ListenerClass = Class.forName("android.bluetooth.BluetoothHeadset$ServiceListener");
-          if (this.ListenerClass != null) {}
-        }
-        catch (Exception paramDeviceConfigManager)
-        {
-          try
+          QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset getConstructor IllegalAccessException");
+          break label291;
+          if (QLog.isColorLevel())
           {
-            this.getCurrentHeadsetMethod = this.BluetoothHeadsetClass.getDeclaredMethod("getCurrentHeadset", new Class[0]);
-            if (this.getCurrentHeadsetMethod == null) {
-              continue;
-            }
-          }
-          catch (NoSuchMethodException paramDeviceConfigManager)
-          {
-            try
-            {
-              do
-              {
-                for (;;)
-                {
-                  this.BluetoothHeadsetObj = this.BluetoothHeadsetClass.getConstructor(new Class[] { Context.class, this.ListenerClass }).newInstance(new Object[] { paramContext, null });
-                  if (this.BluetoothHeadsetObj == null) {
-                    break;
-                  }
-                  this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", isConnected());
-                  if (!isConnected()) {
-                    break label344;
-                  }
-                  this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", true);
-                  this.this$0.checkDevicePlug("DEVICE_BLUETOOTHHEADSET", true);
-                  AudioDeviceInterface.LogTraceExit();
-                  return true;
-                  paramDeviceConfigManager = paramDeviceConfigManager;
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset class not found");
-                    continue;
-                    paramDeviceConfigManager = paramDeviceConfigManager;
-                    if (QLog.isColorLevel()) {
-                      QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset.ServiceListener class not found:" + paramDeviceConfigManager);
-                    }
-                  }
-                }
-                paramDeviceConfigManager = paramDeviceConfigManager;
-              } while (!QLog.isColorLevel());
-              QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset method getCurrentHeadset NoSuchMethodException");
-            }
-            catch (IllegalArgumentException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset getConstructor IllegalArgumentException");
-                }
-              }
-            }
-            catch (InstantiationException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset getConstructor InstantiationException");
-                }
-              }
-            }
-            catch (IllegalAccessException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset getConstructor IllegalAccessException");
-                }
-              }
-            }
-            catch (InvocationTargetException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset getConstructor InvocationTargetException");
-                }
-              }
-            }
-            catch (NoSuchMethodException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel())
-                {
-                  QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset getConstructor NoSuchMethodException");
-                  continue;
-                  label344:
-                  this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", false);
-                }
-              }
+            QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset getConstructor InstantiationException");
+            break label291;
+            if (QLog.isColorLevel()) {
+              QLog.e("TRAE", 0, "BTLooperThread BluetoothHeadset getConstructor IllegalArgumentException");
             }
           }
         }
       }
     }
+    if (this.BluetoothHeadsetObj == null) {
+      return false;
+    }
+    this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", isConnected());
+    if (isConnected())
+    {
+      this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", true);
+      this.this$0.checkDevicePlug("DEVICE_BLUETOOTHHEADSET", true);
+    }
+    else
+    {
+      this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", false);
+    }
+    AudioDeviceInterface.LogTraceExit();
+    return true;
+    return false;
   }
   
   public String interfaceDesc()
@@ -221,118 +253,104 @@ class TraeAudioManager$BluetoohHeadsetCheckFor2x
   
   public boolean isConnected()
   {
-    String str4 = null;
-    if ((this.getCurrentHeadsetMethod == null) || (this.getCurrentHeadsetMethod == null)) {
-      return false;
+    Object localObject = this.getCurrentHeadsetMethod;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null) {
+      if (localObject == null) {
+        return false;
+      }
     }
     try
     {
-      Object localObject = this.getCurrentHeadsetMethod.invoke(this.BluetoothHeadsetObj, new Object[0]);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("BTLooperThread BluetoothHeadset method getCurrentHeadset res:");
-        if (localObject != null)
-        {
-          str4 = " Y";
-          QLog.w("TRAE", 0, str4);
-        }
-      }
-      else
-      {
-        if (localObject == null) {
-          break label152;
-        }
-        return true;
-      }
+      localObject = ((Method)localObject).invoke(this.BluetoothHeadsetObj, new Object[0]);
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      for (;;)
-      {
-        String str1 = str4;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("TRAE", 0, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalArgumentException");
-          str1 = str4;
-        }
-      }
+      StringBuilder localStringBuilder;
+      String str;
+      break label69;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      for (;;)
-      {
-        String str2 = str4;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("TRAE", 0, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalAccessException");
-          str2 = str4;
-        }
-      }
+      break label52;
     }
     catch (InvocationTargetException localInvocationTargetException)
     {
-      for (;;)
+      label35:
+      label52:
+      label69:
+      break label35;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.w("TRAE", 0, "BTLooperThread BluetoothHeadset method getCurrentHeadset InvocationTargetException");
+      break label83;
+      if (QLog.isColorLevel())
       {
-        String str3 = str4;
-        if (QLog.isColorLevel())
-        {
-          QLog.w("TRAE", 0, "BTLooperThread BluetoothHeadset method getCurrentHeadset InvocationTargetException");
-          str3 = str4;
-          continue;
-          str4 = "N";
+        QLog.w("TRAE", 0, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalAccessException");
+        break label83;
+        if (QLog.isColorLevel()) {
+          QLog.w("TRAE", 0, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalArgumentException");
         }
       }
     }
-    label152:
-    return false;
+    label83:
+    localObject = null;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("BTLooperThread BluetoothHeadset method getCurrentHeadset res:");
+      if (localObject != null) {
+        str = " Y";
+      } else {
+        str = "N";
+      }
+      localStringBuilder.append(str);
+      QLog.w("TRAE", 0, localStringBuilder.toString());
+    }
+    bool1 = bool2;
+    if (localObject != null) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public void release()
   {
     AudioDeviceInterface.LogTraceEntry("");
-    if (this.BluetoothHeadsetObj == null) {}
-    for (;;)
-    {
+    if (this.BluetoothHeadsetObj == null) {
       return;
+    }
+    try
+    {
+      localMethod = this.BluetoothHeadsetClass.getDeclaredMethod("close", new Class[0]);
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
       try
       {
-        localMethod = this.BluetoothHeadsetClass.getDeclaredMethod("close", new Class[0]);
-        if (localMethod == null) {
-          continue;
-        }
+        Method localMethod;
+        localMethod.invoke(this.BluetoothHeadsetObj, new Object[0]);
+        this.BluetoothHeadsetClass = null;
+        this.ListenerClass = null;
+        this.BluetoothHeadsetObj = null;
+        this.getCurrentHeadsetMethod = null;
+        AudioDeviceInterface.LogTraceExit();
+        return;
+        localNoSuchMethodException = localNoSuchMethodException;
       }
-      catch (NoSuchMethodException localNoSuchMethodException)
+      catch (IllegalArgumentException|IllegalAccessException|InvocationTargetException localIllegalArgumentException)
       {
-        try
-        {
-          Method localMethod;
-          localMethod.invoke(this.BluetoothHeadsetObj, new Object[0]);
-          label44:
-          this.BluetoothHeadsetClass = null;
-          this.ListenerClass = null;
-          this.BluetoothHeadsetObj = null;
-          this.getCurrentHeadsetMethod = null;
-          AudioDeviceInterface.LogTraceExit();
-          return;
-          localNoSuchMethodException = localNoSuchMethodException;
-          if (QLog.isColorLevel()) {
-            QLog.e("TRAE", 0, "BTLooperThread _uninitHeadsetfor2x method close NoSuchMethodException");
-          }
-          Object localObject = null;
-        }
-        catch (InvocationTargetException localInvocationTargetException)
-        {
-          break label44;
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          break label44;
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          break label44;
-        }
+        break label64;
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("TRAE", 0, "BTLooperThread _uninitHeadsetfor2x method close NoSuchMethodException");
+    }
+    localMethod = null;
+    if (localMethod == null) {
+      return;
     }
   }
 }

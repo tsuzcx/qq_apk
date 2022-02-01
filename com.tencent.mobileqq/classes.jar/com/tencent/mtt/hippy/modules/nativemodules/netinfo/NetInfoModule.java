@@ -11,6 +11,7 @@ import com.tencent.mtt.hippy.annotation.HippyNativeModule;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
+import com.tencent.mtt.hippy.utils.LogUtils;
 
 @HippyNativeModule(name="NetInfo")
 public class NetInfoModule
@@ -33,18 +34,22 @@ public class NetInfoModule
       NetworkInfo localNetworkInfo = this.b.getActiveNetworkInfo();
       if ((localNetworkInfo != null) && (localNetworkInfo.isConnected()))
       {
-        if (ConnectivityManager.isNetworkTypeValid(localNetworkInfo.getType())) {
-          return localNetworkInfo.getTypeName().toUpperCase();
+        if (!ConnectivityManager.isNetworkTypeValid(localNetworkInfo.getType())) {
+          break label55;
         }
-        return "UNKNOWN";
+        return localNetworkInfo.getTypeName().toUpperCase();
       }
+      return "NONE";
     }
     catch (Exception localException)
     {
-      this.c = true;
-      return "UNKNOWN";
+      label43:
+      break label43;
     }
-    return "NONE";
+    this.c = true;
+    return "UNKNOWN";
+    label55:
+    return "UNKNOWN";
   }
   
   private void b()
@@ -52,16 +57,23 @@ public class NetInfoModule
     if (this.a == null) {
       this.a = new NetInfoModule.a(this, null);
     }
-    if (!this.a.a()) {}
-    try
-    {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-      this.mContext.getGlobalConfigs().getContext().registerReceiver(this.a, localIntentFilter);
-      this.a.a(true);
-      return;
+    if (!this.a.a()) {
+      try
+      {
+        IntentFilter localIntentFilter = new IntentFilter();
+        localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        this.mContext.getGlobalConfigs().getContext().registerReceiver(this.a, localIntentFilter);
+        this.a.a(true);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("registerReceiver: ");
+        localStringBuilder.append(localThrowable.getMessage());
+        LogUtils.d("NetInfoModule", localStringBuilder.toString());
+      }
     }
-    catch (Throwable localThrowable) {}
   }
   
   private void c()
@@ -73,10 +85,16 @@ public class NetInfoModule
         this.mContext.getGlobalConfigs().getContext().unregisterReceiver(this.a);
         this.a.a(false);
         this.a = null;
+        return;
       }
-      return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unregisterReceiver: ");
+      localStringBuilder.append(localThrowable.getMessage());
+      LogUtils.d("NetInfoModule", localStringBuilder.toString());
+    }
   }
   
   public void destroy()
@@ -111,7 +129,7 @@ public class NetInfoModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.netinfo.NetInfoModule
  * JD-Core Version:    0.7.0.1
  */

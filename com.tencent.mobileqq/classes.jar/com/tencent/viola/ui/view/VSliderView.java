@@ -49,14 +49,18 @@ public class VSliderView
   
   private void setCurrentItemInMode()
   {
-    if ((this.mIsAutoMode.booleanValue()) && (this.mAdapter != null) && (this.mAutoSidleTimer != null) && (this.mIsScrollable))
+    if (this.mIsAutoMode.booleanValue())
     {
-      this.mCurrentItemIndex += 1;
-      if (this.mCurrentItemIndex == this.mAdapter.getCount()) {
-        this.mCurrentItemIndex = 0;
+      VLoopAbleSliderAdapter localVLoopAbleSliderAdapter = this.mAdapter;
+      if ((localVLoopAbleSliderAdapter != null) && (this.mAutoSidleTimer != null) && (this.mIsScrollable))
+      {
+        this.mCurrentItemIndex += 1;
+        if (this.mCurrentItemIndex == localVLoopAbleSliderAdapter.getCount()) {
+          this.mCurrentItemIndex = 0;
+        }
+        setCurrentItem(this.mCurrentItemIndex);
+        ViolaLogUtils.i("VSliderView", "定时器setItem");
       }
-      setCurrentItem(this.mCurrentItemIndex);
-      ViolaLogUtils.i("VSliderView", "定时器setItem");
     }
   }
   
@@ -79,27 +83,29 @@ public class VSliderView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      if ((i == 1) || (i == 3)) {
+        startPlay();
+      }
     }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
+    else {
       stopPlay();
-      continue;
-      startPlay();
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public VSlider getComponent()
   {
-    if (this.mWeakReference != null) {
-      return (VSlider)this.mWeakReference.get();
+    WeakReference localWeakReference = this.mWeakReference;
+    if (localWeakReference != null) {
+      return (VSlider)localWeakReference.get();
     }
     return null;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     try
@@ -107,19 +113,15 @@ public class VSliderView
       Field localField = ViewPager.class.getDeclaredField("mFirstLayout");
       localField.setAccessible(true);
       localField.set(this, Boolean.valueOf(false));
-      startPlay();
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    startPlay();
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.mAutoSidleTimer != null)
@@ -136,35 +138,47 @@ public class VSliderView
     }
     int i = paramMotionEvent.getAction();
     ViewParent localViewParent = getParent();
-    switch (i)
+    if (i != 0)
     {
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3) {
+            break label185;
+          }
+        }
+        else
+        {
+          float f3 = paramMotionEvent.getRawY();
+          float f1 = paramMotionEvent.getRawX();
+          float f2 = this.mStartRawX;
+          f3 -= this.mStartRawY;
+          if ((Math.abs(f3) > this.mTouchSlop) && (Math.abs(f1 - f2) / Math.abs(f3) < 0.5F) && (localViewParent != null))
+          {
+            localViewParent.requestDisallowInterceptTouchEvent(false);
+            break label185;
+          }
+          if (localViewParent == null) {
+            break label185;
+          }
+          localViewParent.requestDisallowInterceptTouchEvent(true);
+          break label185;
+        }
+      }
+      if (localViewParent != null) {
+        localViewParent.requestDisallowInterceptTouchEvent(false);
+      }
     }
-    for (;;)
+    else
     {
-      return super.onInterceptTouchEvent(paramMotionEvent);
       if (getParent() != null) {
         getParent().requestDisallowInterceptTouchEvent(true);
       }
       this.mStartRawY = paramMotionEvent.getRawY();
       this.mStartRawX = paramMotionEvent.getRawX();
-      continue;
-      float f3 = paramMotionEvent.getRawY();
-      float f1 = paramMotionEvent.getRawX();
-      float f2 = this.mStartRawX;
-      f3 -= this.mStartRawY;
-      if ((Math.abs(f3) > this.mTouchSlop) && (Math.abs(f1 - f2) / Math.abs(f3) < 0.5F) && (localViewParent != null))
-      {
-        localViewParent.requestDisallowInterceptTouchEvent(false);
-      }
-      else if (localViewParent != null)
-      {
-        localViewParent.requestDisallowInterceptTouchEvent(true);
-        continue;
-        if (localViewParent != null) {
-          localViewParent.requestDisallowInterceptTouchEvent(false);
-        }
-      }
     }
+    label185:
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -193,20 +207,22 @@ public class VSliderView
   
   public void setStartIndexWithNoAnimate(int paramInt)
   {
-    if (this.mAdapter == null) {
+    VLoopAbleSliderAdapter localVLoopAbleSliderAdapter = this.mAdapter;
+    if (localVLoopAbleSliderAdapter == null) {
       return;
     }
-    paramInt = this.mAdapter.getInitPosition() + paramInt;
+    paramInt += localVLoopAbleSliderAdapter.getInitPosition();
     setCurrentItem(paramInt, false);
     this.mCurrentItemIndex = paramInt;
   }
   
   public void setStartItemIndex(int paramInt)
   {
-    if (this.mAdapter == null) {
+    VLoopAbleSliderAdapter localVLoopAbleSliderAdapter = this.mAdapter;
+    if (localVLoopAbleSliderAdapter == null) {
       return;
     }
-    paramInt = this.mAdapter.getInitPosition() + paramInt;
+    paramInt += localVLoopAbleSliderAdapter.getInitPosition();
     setCurrentItem(paramInt);
     this.mCurrentItemIndex = paramInt;
   }
@@ -218,31 +234,43 @@ public class VSliderView
   
   public void startPlay()
   {
-    if (this.mAdapter == null) {}
-    while (!this.mIsAutoMode.booleanValue()) {
+    if (this.mAdapter == null) {
       return;
     }
-    if (this.mAutoSidleTimer == null)
+    if (this.mIsAutoMode.booleanValue())
     {
-      this.mAutoSidleTimer = new VSliderView.AutoSidleTimer(this, this);
-      this.mAutoSidleTimer.startTimer(this.mTimeInterval);
-      return;
+      VSliderView.AutoSidleTimer localAutoSidleTimer = this.mAutoSidleTimer;
+      if (localAutoSidleTimer == null)
+      {
+        this.mAutoSidleTimer = new VSliderView.AutoSidleTimer(this, this);
+        this.mAutoSidleTimer.startTimer(this.mTimeInterval);
+        return;
+      }
+      localAutoSidleTimer.startTimer(this.mTimeInterval);
     }
-    this.mAutoSidleTimer.startTimer(this.mTimeInterval);
   }
   
   public void stopPlay()
   {
-    if ((this.mAdapter == null) || (this.mAdapter.getCount() <= 1)) {}
-    while ((!this.mIsAutoMode.booleanValue()) || (this.mAutoSidleTimer == null)) {
-      return;
+    Object localObject = this.mAdapter;
+    if (localObject != null)
+    {
+      if (((VLoopAbleSliderAdapter)localObject).getCount() <= 1) {
+        return;
+      }
+      if (this.mIsAutoMode.booleanValue())
+      {
+        localObject = this.mAutoSidleTimer;
+        if (localObject != null) {
+          ((VSliderView.AutoSidleTimer)localObject).stopTimer();
+        }
+      }
     }
-    this.mAutoSidleTimer.stopTimer();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.VSliderView
  * JD-Core Version:    0.7.0.1
  */

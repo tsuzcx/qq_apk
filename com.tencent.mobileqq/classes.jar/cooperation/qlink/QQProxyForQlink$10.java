@@ -13,18 +13,23 @@ class QQProxyForQlink$10
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+    if (paramContext == null) {
       return;
     }
-    QLog.w("QQProxyForQlink", 1, "receive qqAccountbroacast action=" + paramContext);
-    QQProxyForQlink.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
-    QQProxyForQlink.c(this.a);
+    if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.LOGOUT")))
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("receive qqAccountbroacast action=");
+      paramIntent.append(paramContext);
+      QLog.w("QQProxyForQlink", 1, paramIntent.toString());
+      QQProxyForQlink.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
+      QQProxyForQlink.c(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.QQProxyForQlink.10
  * JD-Core Version:    0.7.0.1
  */

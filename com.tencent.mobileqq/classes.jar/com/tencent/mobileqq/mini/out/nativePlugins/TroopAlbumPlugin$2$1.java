@@ -17,7 +17,7 @@ class TroopAlbumPlugin$2$1
     TroopAlbumPlugin.access$202(this.this$1.this$0, this.this$1.val$jsonString);
     Activity localActivity = this.this$1.val$jsContext.getActivity();
     if (TroopAlbumPlugin.access$300(this.this$1.this$0) == null) {
-      TroopAlbumPlugin.access$302(this.this$1.this$0, DialogUtil.a(localActivity, 230).setTitle(HardCodeUtil.a(2131715035)).setMessage(HardCodeUtil.a(2131715034)).setPositiveButton(HardCodeUtil.a(2131715033), new TroopAlbumPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131717899), new TroopAlbumPlugin.2.1.1(this)));
+      TroopAlbumPlugin.access$302(this.this$1.this$0, DialogUtil.a(localActivity, 230).setTitle(HardCodeUtil.a(2131714958)).setMessage(HardCodeUtil.a(2131714957)).setPositiveButton(HardCodeUtil.a(2131714956), new TroopAlbumPlugin.2.1.2(this)).setNegativeButton(localActivity.getString(2131717558), new TroopAlbumPlugin.2.1.1(this)));
     }
     if (!TroopAlbumPlugin.access$300(this.this$1.this$0).isShowing()) {
       TroopAlbumPlugin.access$300(this.this$1.this$0).show();
@@ -26,7 +26,7 @@ class TroopAlbumPlugin$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TroopAlbumPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

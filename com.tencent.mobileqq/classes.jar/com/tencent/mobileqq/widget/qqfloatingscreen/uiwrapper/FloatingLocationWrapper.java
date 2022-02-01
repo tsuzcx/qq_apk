@@ -6,19 +6,15 @@ import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.os.Handler;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.location.LocationShareServiceHolder;
 import com.tencent.mobileqq.location.ThemeChangedListener;
 import com.tencent.mobileqq.location.api.IFloatMapService;
+import com.tencent.mobileqq.qqfloatingwindow.FloatingBaseProxyWrapper;
 import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams;
 import com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams.FloatingBuilder;
-import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenContainer;
-import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenContainer.OnDragListener;
-import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenStatusReceiver;
-import com.tencent.mobileqq.qqfloatingwindow.impl.uiwrapper.FloatingBaseWrapper;
+import com.tencent.mobileqq.qqfloatingwindow.listener.IDragListener;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -26,27 +22,30 @@ import com.tencent.widget.ThemeImageWrapper;
 import mqq.app.MobileQQ;
 
 public class FloatingLocationWrapper
-  extends FloatingBaseWrapper
-  implements ThemeChangedListener, FloatingScreenContainer.OnDragListener
+  extends FloatingBaseProxyWrapper
+  implements ThemeChangedListener, IDragListener
 {
-  public static final String CLASS_NAME = FloatingLocationWrapper.class.getName();
+  public static final String CLASS_NAME = "com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper";
   public static final int WAIT_ACTIVITY_ANIM_END_MILLIS = 500;
   
   public FloatingLocationWrapper(Context paramContext)
   {
     super(paramContext);
-    f();
+    l();
   }
   
-  private void f()
+  private void l()
   {
-    this.mFloatingContainer.setOnDragListener(this);
+    a(this);
     LocationShareServiceHolder.a(MobileQQ.sMobileQQ.waitAppRuntime(null)).setThemeChangedListener(this);
   }
   
-  private void g()
+  private void m()
   {
-    View localView = this.mRootLayout.findViewById(2131374874);
+    View localView = a(2131374409);
+    if (localView == null) {
+      return;
+    }
     localView.setContentDescription("位置共享悬浮窗");
     if (ThemeImageWrapper.isNightMode())
     {
@@ -59,19 +58,16 @@ public class FloatingLocationWrapper
   public int a(FloatingScreenParams paramFloatingScreenParams, View paramView)
   {
     FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
-    if (paramFloatingScreenParams == null)
-    {
-      if (this.mContext != null) {
+    if (paramFloatingScreenParams == null) {
+      if (a() != null) {
         localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setCanZoom(false).build();
+      } else {
+        return 2;
       }
     }
-    else
-    {
-      paramFloatingScreenParams = new FloatingLocationWrapper.2(this, paramView, localFloatingScreenParams);
-      ThreadManager.getUIHandlerV2().postDelayed(paramFloatingScreenParams, 500L);
-      return 0;
-    }
-    return 2;
+    paramFloatingScreenParams = new FloatingLocationWrapper.2(this, paramView, localFloatingScreenParams);
+    ThreadManager.getUIHandlerV2().postDelayed(paramFloatingScreenParams, 500L);
+    return 0;
   }
   
   public void a()
@@ -79,14 +75,14 @@ public class FloatingLocationWrapper
     if (QLog.isColorLevel()) {
       QLog.d("FloatingLocationWrapper", 2, new Object[] { "onThemeChanged: invoked. ", " TAG: ", "FloatingLocationWrapper" });
     }
-    g();
+    m();
   }
   
   public void a(Context paramContext)
   {
     super.a(paramContext);
-    this.mFloatingCloseBtn.setContentDescription("关闭位置共享悬浮窗");
-    g();
+    a("关闭位置共享悬浮窗");
+    m();
   }
   
   public void a(FloatingScreenParams paramFloatingScreenParams)
@@ -115,23 +111,19 @@ public class FloatingLocationWrapper
     ThreadManager.getUIHandlerV2().post(local3);
   }
   
-  public void d()
+  public void c()
   {
-    if (this.mStatusReceiver == null)
-    {
-      this.mStatusReceiver = new FloatingScreenStatusReceiver(this.mContext);
-      this.mStatusReceiver.a(1, new FloatingLocationWrapper.1(this));
-    }
+    a(1, new FloatingLocationWrapper.1(this));
   }
   
-  public void e()
+  public void k()
   {
-    if (this.mFloatingContainer != null)
+    if (!a())
     {
-      boolean bool = this.mFloatingContainer.b();
+      boolean bool = b();
       SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4).edit();
-      int i = this.mFloatingContainer.a();
-      int j = this.mFloatingContainer.b();
+      int i = b();
+      int j = c();
       localEditor.putInt("KEY_QQFS_LOCATION_SHARE_CENTER_X", i);
       localEditor.putInt("KEY_QQFS_LOCATION_SHARE_CENTER_Y", j);
       localEditor.apply();
@@ -143,7 +135,7 @@ public class FloatingLocationWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper
  * JD-Core Version:    0.7.0.1
  */

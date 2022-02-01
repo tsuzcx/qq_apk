@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
-import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import java.util.HashMap;
 
 public class UrlDownloader
@@ -11,22 +11,22 @@ public class UrlDownloader
   
   public UrlDownloader() {}
   
-  public UrlDownloader(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
+  public UrlDownloader(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileControllerImpl, paramTransferRequest);
+    super(paramBaseTransFileController, paramTransferRequest);
     this.mRecvLen = ((TransferRequest.PicDownExtraInfo)this.mUiRequest.mExtraObj).mStartDownOffset;
   }
   
   void onError()
   {
     super.onError();
-    this.mController.removeProcessor(TransFileControllerImpl.makeReceiveKey(this.mUiRequest));
+    this.mController.removeProcessor(BaseTransFileController.makeReceiveKey(this.mUiRequest));
     TransferResult localTransferResult = this.mUiRequest.mResult;
     if (localTransferResult != null)
     {
       localTransferResult.mResult = -1;
-      localTransferResult.mErrCode = this.errCode;
-      localTransferResult.mErrDesc = this.errDesc;
+      localTransferResult.mErrCode = this.mProcessorReport.errCode;
+      localTransferResult.mErrDesc = this.mProcessorReport.errDesc;
       localTransferResult.mOrigReq = this.mUiRequest;
     }
     try
@@ -42,15 +42,19 @@ public class UrlDownloader
   public void onResp(NetResp paramNetResp)
   {
     super.onResp(paramNetResp);
-    StringBuilder localStringBuilder = new StringBuilder().append(" result:");
-    if (paramNetResp.mResult == 0) {}
-    for (boolean bool = true;; bool = false)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" result:");
+    boolean bool;
+    if (paramNetResp.mResult == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    logRichMediaEvent("onHttpResp", localStringBuilder.toString());
+    this.mRecvLen += paramNetResp.mWrittenBlockLen;
+    if (paramNetResp.mResult == 0)
     {
-      logRichMediaEvent("onHttpResp", bool);
-      this.mRecvLen += paramNetResp.mWrittenBlockLen;
-      if (paramNetResp.mResult != 0) {
-        break;
-      }
       onSuccess();
       return;
     }
@@ -61,7 +65,7 @@ public class UrlDownloader
   {
     super.onSuccess();
     TransferResult localTransferResult = this.mUiRequest.mResult;
-    this.mController.removeProcessor(TransFileControllerImpl.makeReceiveKey(this.mUiRequest));
+    this.mController.removeProcessor(BaseTransFileController.makeReceiveKey(this.mUiRequest));
     if (localTransferResult != null)
     {
       localTransferResult.mResult = 0;
@@ -94,12 +98,22 @@ public class UrlDownloader
     localHttpNetReq.mPrioty = this.mUiRequest.mPrioty;
     if (this.mUiRequest.mSupportRangeBreakDown)
     {
-      localHttpNetReq.mReqProperties.put("Range", "bytes=" + localHttpNetReq.mStartDownOffset + "-");
+      localObject = localHttpNetReq.mReqProperties;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bytes=");
+      localStringBuilder.append(localHttpNetReq.mStartDownOffset);
+      localStringBuilder.append("-");
+      ((HashMap)localObject).put("Range", localStringBuilder.toString());
       localHttpNetReq.mSupportBreakResume = true;
     }
     localHttpNetReq.mContinuErrorLimit = 4;
     localHttpNetReq.mExcuteTimeLimit = 90000L;
-    logRichMediaEvent("httpDown", " url:" + str + ",downOffset:" + localHttpNetReq.mStartDownOffset);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" url:");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(",downOffset:");
+    ((StringBuilder)localObject).append(localHttpNetReq.mStartDownOffset);
+    logRichMediaEvent("httpDown", ((StringBuilder)localObject).toString());
     this.mNetEngine.sendReq(localHttpNetReq);
   }
   
@@ -110,7 +124,7 @@ public class UrlDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.UrlDownloader
  * JD-Core Version:    0.7.0.1
  */

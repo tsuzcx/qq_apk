@@ -44,15 +44,17 @@ public abstract class ExploreByTouchHelper
   
   public ExploreByTouchHelper(@NonNull View paramView)
   {
-    if (paramView == null) {
-      throw new IllegalArgumentException("View may not be null");
+    if (paramView != null)
+    {
+      this.mHost = paramView;
+      this.mManager = ((AccessibilityManager)paramView.getContext().getSystemService("accessibility"));
+      paramView.setFocusable(true);
+      if (ViewCompat.getImportantForAccessibility(paramView) == 0) {
+        ViewCompat.setImportantForAccessibility(paramView, 1);
+      }
+      return;
     }
-    this.mHost = paramView;
-    this.mManager = ((AccessibilityManager)paramView.getContext().getSystemService("accessibility"));
-    paramView.setFocusable(true);
-    if (ViewCompat.getImportantForAccessibility(paramView) == 0) {
-      ViewCompat.setImportantForAccessibility(paramView, 1);
-    }
+    throw new IllegalArgumentException("View may not be null");
   }
   
   private boolean clearAccessibilityFocus(int paramInt)
@@ -69,14 +71,13 @@ public abstract class ExploreByTouchHelper
   
   private boolean clickKeyboardFocusedVirtualView()
   {
-    return (this.mKeyboardFocusedVirtualViewId != -2147483648) && (onPerformActionForVirtualView(this.mKeyboardFocusedVirtualViewId, 16, null));
+    int i = this.mKeyboardFocusedVirtualViewId;
+    return (i != -2147483648) && (onPerformActionForVirtualView(i, 16, null));
   }
   
   private AccessibilityEvent createEvent(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
-    {
-    default: 
+    if (paramInt1 != -1) {
       return createEventForChild(paramInt1, paramInt2);
     }
     return createEventForHost(paramInt2);
@@ -112,94 +113,91 @@ public abstract class ExploreByTouchHelper
   @NonNull
   private AccessibilityNodeInfoCompat createNodeForChild(int paramInt)
   {
-    AccessibilityNodeInfoCompat localAccessibilityNodeInfoCompat1 = AccessibilityNodeInfoCompat.obtain();
-    localAccessibilityNodeInfoCompat1.setEnabled(true);
-    localAccessibilityNodeInfoCompat1.setFocusable(true);
-    localAccessibilityNodeInfoCompat1.setClassName("android.view.View");
-    localAccessibilityNodeInfoCompat1.setBoundsInParent(INVALID_PARENT_BOUNDS);
-    localAccessibilityNodeInfoCompat1.setBoundsInScreen(INVALID_PARENT_BOUNDS);
-    localAccessibilityNodeInfoCompat1.setParent(this.mHost);
-    onPopulateNodeForVirtualView(paramInt, localAccessibilityNodeInfoCompat1);
-    if ((localAccessibilityNodeInfoCompat1.getText() == null) && (localAccessibilityNodeInfoCompat1.getContentDescription() == null)) {
+    Object localObject = AccessibilityNodeInfoCompat.obtain();
+    ((AccessibilityNodeInfoCompat)localObject).setEnabled(true);
+    ((AccessibilityNodeInfoCompat)localObject).setFocusable(true);
+    ((AccessibilityNodeInfoCompat)localObject).setClassName("android.view.View");
+    ((AccessibilityNodeInfoCompat)localObject).setBoundsInParent(INVALID_PARENT_BOUNDS);
+    ((AccessibilityNodeInfoCompat)localObject).setBoundsInScreen(INVALID_PARENT_BOUNDS);
+    ((AccessibilityNodeInfoCompat)localObject).setParent(this.mHost);
+    onPopulateNodeForVirtualView(paramInt, (AccessibilityNodeInfoCompat)localObject);
+    if ((((AccessibilityNodeInfoCompat)localObject).getText() == null) && (((AccessibilityNodeInfoCompat)localObject).getContentDescription() == null)) {
       throw new RuntimeException("Callbacks must add text or a content description in populateNodeForVirtualViewId()");
     }
-    localAccessibilityNodeInfoCompat1.getBoundsInParent(this.mTempParentRect);
-    if (this.mTempParentRect.equals(INVALID_PARENT_BOUNDS)) {
-      throw new RuntimeException("Callbacks must set parent bounds in populateNodeForVirtualViewId()");
-    }
-    int i = localAccessibilityNodeInfoCompat1.getActions();
-    if ((i & 0x40) != 0) {
+    ((AccessibilityNodeInfoCompat)localObject).getBoundsInParent(this.mTempParentRect);
+    if (!this.mTempParentRect.equals(INVALID_PARENT_BOUNDS))
+    {
+      int i = ((AccessibilityNodeInfoCompat)localObject).getActions();
+      if ((i & 0x40) == 0)
+      {
+        if ((i & 0x80) == 0)
+        {
+          ((AccessibilityNodeInfoCompat)localObject).setPackageName(this.mHost.getContext().getPackageName());
+          ((AccessibilityNodeInfoCompat)localObject).setSource(this.mHost, paramInt);
+          if (this.mAccessibilityFocusedVirtualViewId == paramInt)
+          {
+            ((AccessibilityNodeInfoCompat)localObject).setAccessibilityFocused(true);
+            ((AccessibilityNodeInfoCompat)localObject).addAction(128);
+          }
+          else
+          {
+            ((AccessibilityNodeInfoCompat)localObject).setAccessibilityFocused(false);
+            ((AccessibilityNodeInfoCompat)localObject).addAction(64);
+          }
+          boolean bool;
+          if (this.mKeyboardFocusedVirtualViewId == paramInt) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          if (bool) {
+            ((AccessibilityNodeInfoCompat)localObject).addAction(2);
+          } else if (((AccessibilityNodeInfoCompat)localObject).isFocusable()) {
+            ((AccessibilityNodeInfoCompat)localObject).addAction(1);
+          }
+          ((AccessibilityNodeInfoCompat)localObject).setFocused(bool);
+          this.mHost.getLocationOnScreen(this.mTempGlobalRect);
+          ((AccessibilityNodeInfoCompat)localObject).getBoundsInScreen(this.mTempScreenRect);
+          if (this.mTempScreenRect.equals(INVALID_PARENT_BOUNDS))
+          {
+            ((AccessibilityNodeInfoCompat)localObject).getBoundsInParent(this.mTempScreenRect);
+            if (((AccessibilityNodeInfoCompat)localObject).mParentVirtualDescendantId != -1)
+            {
+              AccessibilityNodeInfoCompat localAccessibilityNodeInfoCompat = AccessibilityNodeInfoCompat.obtain();
+              for (paramInt = ((AccessibilityNodeInfoCompat)localObject).mParentVirtualDescendantId; paramInt != -1; paramInt = localAccessibilityNodeInfoCompat.mParentVirtualDescendantId)
+              {
+                localAccessibilityNodeInfoCompat.setParent(this.mHost, -1);
+                localAccessibilityNodeInfoCompat.setBoundsInParent(INVALID_PARENT_BOUNDS);
+                onPopulateNodeForVirtualView(paramInt, localAccessibilityNodeInfoCompat);
+                localAccessibilityNodeInfoCompat.getBoundsInParent(this.mTempParentRect);
+                this.mTempScreenRect.offset(this.mTempParentRect.left, this.mTempParentRect.top);
+              }
+              localAccessibilityNodeInfoCompat.recycle();
+            }
+            this.mTempScreenRect.offset(this.mTempGlobalRect[0] - this.mHost.getScrollX(), this.mTempGlobalRect[1] - this.mHost.getScrollY());
+          }
+          if (this.mHost.getLocalVisibleRect(this.mTempVisibleRect))
+          {
+            this.mTempVisibleRect.offset(this.mTempGlobalRect[0] - this.mHost.getScrollX(), this.mTempGlobalRect[1] - this.mHost.getScrollY());
+            if (this.mTempScreenRect.intersect(this.mTempVisibleRect))
+            {
+              ((AccessibilityNodeInfoCompat)localObject).setBoundsInScreen(this.mTempScreenRect);
+              if (isVisibleToUser(this.mTempScreenRect)) {
+                ((AccessibilityNodeInfoCompat)localObject).setVisibleToUser(true);
+              }
+            }
+          }
+          return localObject;
+        }
+        throw new RuntimeException("Callbacks must not add ACTION_CLEAR_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
+      }
       throw new RuntimeException("Callbacks must not add ACTION_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
     }
-    if ((i & 0x80) != 0) {
-      throw new RuntimeException("Callbacks must not add ACTION_CLEAR_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
-    }
-    localAccessibilityNodeInfoCompat1.setPackageName(this.mHost.getContext().getPackageName());
-    localAccessibilityNodeInfoCompat1.setSource(this.mHost, paramInt);
-    boolean bool;
-    if (this.mAccessibilityFocusedVirtualViewId == paramInt)
-    {
-      localAccessibilityNodeInfoCompat1.setAccessibilityFocused(true);
-      localAccessibilityNodeInfoCompat1.addAction(128);
-      if (this.mKeyboardFocusedVirtualViewId != paramInt) {
-        break label379;
-      }
-      bool = true;
-      label216:
-      if (!bool) {
-        break label384;
-      }
-      localAccessibilityNodeInfoCompat1.addAction(2);
-    }
-    AccessibilityNodeInfoCompat localAccessibilityNodeInfoCompat2;
+    localObject = new RuntimeException("Callbacks must set parent bounds in populateNodeForVirtualViewId()");
     for (;;)
     {
-      localAccessibilityNodeInfoCompat1.setFocused(bool);
-      this.mHost.getLocationOnScreen(this.mTempGlobalRect);
-      localAccessibilityNodeInfoCompat1.getBoundsInScreen(this.mTempScreenRect);
-      if (!this.mTempScreenRect.equals(INVALID_PARENT_BOUNDS)) {
-        break label441;
-      }
-      localAccessibilityNodeInfoCompat1.getBoundsInParent(this.mTempScreenRect);
-      if (localAccessibilityNodeInfoCompat1.mParentVirtualDescendantId == -1) {
-        break label406;
-      }
-      localAccessibilityNodeInfoCompat2 = AccessibilityNodeInfoCompat.obtain();
-      for (paramInt = localAccessibilityNodeInfoCompat1.mParentVirtualDescendantId; paramInt != -1; paramInt = localAccessibilityNodeInfoCompat2.mParentVirtualDescendantId)
-      {
-        localAccessibilityNodeInfoCompat2.setParent(this.mHost, -1);
-        localAccessibilityNodeInfoCompat2.setBoundsInParent(INVALID_PARENT_BOUNDS);
-        onPopulateNodeForVirtualView(paramInt, localAccessibilityNodeInfoCompat2);
-        localAccessibilityNodeInfoCompat2.getBoundsInParent(this.mTempParentRect);
-        this.mTempScreenRect.offset(this.mTempParentRect.left, this.mTempParentRect.top);
-      }
-      localAccessibilityNodeInfoCompat1.setAccessibilityFocused(false);
-      localAccessibilityNodeInfoCompat1.addAction(64);
-      break;
-      label379:
-      bool = false;
-      break label216;
-      label384:
-      if (localAccessibilityNodeInfoCompat1.isFocusable()) {
-        localAccessibilityNodeInfoCompat1.addAction(1);
-      }
+      throw ((Throwable)localObject);
     }
-    localAccessibilityNodeInfoCompat2.recycle();
-    label406:
-    this.mTempScreenRect.offset(this.mTempGlobalRect[0] - this.mHost.getScrollX(), this.mTempGlobalRect[1] - this.mHost.getScrollY());
-    label441:
-    if (this.mHost.getLocalVisibleRect(this.mTempVisibleRect))
-    {
-      this.mTempVisibleRect.offset(this.mTempGlobalRect[0] - this.mHost.getScrollX(), this.mTempGlobalRect[1] - this.mHost.getScrollY());
-      if (this.mTempScreenRect.intersect(this.mTempVisibleRect))
-      {
-        localAccessibilityNodeInfoCompat1.setBoundsInScreen(this.mTempScreenRect);
-        if (isVisibleToUser(this.mTempScreenRect)) {
-          localAccessibilityNodeInfoCompat1.setVisibleToUser(true);
-        }
-      }
-    }
-    return localAccessibilityNodeInfoCompat1;
   }
   
   @NonNull
@@ -212,8 +210,8 @@ public abstract class ExploreByTouchHelper
     if ((localAccessibilityNodeInfoCompat.getChildCount() > 0) && (localArrayList.size() > 0)) {
       throw new RuntimeException("Views cannot have both real and virtual children");
     }
-    int j = localArrayList.size();
     int i = 0;
+    int j = localArrayList.size();
     while (i < j)
     {
       localAccessibilityNodeInfoCompat.addChild(this.mHost, ((Integer)localArrayList.get(i)).intValue());
@@ -245,119 +243,144 @@ public abstract class ExploreByTouchHelper
   {
     int i = paramView.getWidth();
     int j = paramView.getHeight();
-    switch (paramInt)
+    if (paramInt != 17)
     {
-    default: 
-      throw new IllegalArgumentException("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
-    case 17: 
-      paramRect.set(i, 0, i, j);
-      return paramRect;
-    case 33: 
+      if (paramInt != 33)
+      {
+        if (paramInt != 66)
+        {
+          if (paramInt == 130)
+          {
+            paramRect.set(0, -1, i, -1);
+            return paramRect;
+          }
+          throw new IllegalArgumentException("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+        }
+        paramRect.set(-1, 0, -1, j);
+        return paramRect;
+      }
       paramRect.set(0, j, i, j);
       return paramRect;
-    case 66: 
-      paramRect.set(-1, 0, -1, j);
-      return paramRect;
     }
-    paramRect.set(0, -1, i, -1);
+    paramRect.set(i, 0, i, j);
     return paramRect;
   }
   
   private boolean isVisibleToUser(Rect paramRect)
   {
-    if ((paramRect == null) || (paramRect.isEmpty())) {}
-    while (this.mHost.getWindowVisibility() != 0) {
-      return false;
-    }
-    for (paramRect = this.mHost.getParent();; paramRect = paramRect.getParent())
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramRect != null)
     {
-      if (!(paramRect instanceof View)) {
-        break label67;
+      if (paramRect.isEmpty()) {
+        return false;
       }
-      paramRect = (View)paramRect;
-      if ((paramRect.getAlpha() <= 0.0F) || (paramRect.getVisibility() != 0)) {
-        break;
+      if (this.mHost.getWindowVisibility() != 0) {
+        return false;
+      }
+      paramRect = this.mHost.getParent();
+      while ((paramRect instanceof View))
+      {
+        paramRect = (View)paramRect;
+        if (paramRect.getAlpha() > 0.0F)
+        {
+          if (paramRect.getVisibility() != 0) {
+            return false;
+          }
+          paramRect = paramRect.getParent();
+        }
+        else
+        {
+          return false;
+        }
+      }
+      bool1 = bool2;
+      if (paramRect != null) {
+        bool1 = true;
       }
     }
-    label67:
-    if (paramRect != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return bool1;
   }
   
   private static int keyToDirection(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 19)
     {
-    case 20: 
-    default: 
-      return 130;
-    case 21: 
+      if (paramInt != 21)
+      {
+        if (paramInt != 22) {
+          return 130;
+        }
+        return 66;
+      }
       return 17;
-    case 19: 
-      return 33;
     }
-    return 66;
+    return 33;
   }
   
   private boolean moveFocus(int paramInt, @Nullable Rect paramRect)
   {
-    boolean bool = true;
     SparseArrayCompat localSparseArrayCompat = getAllNodes();
-    int i = this.mKeyboardFocusedVirtualViewId;
-    if (i == -2147483648) {}
-    for (AccessibilityNodeInfoCompat localAccessibilityNodeInfoCompat = null;; localAccessibilityNodeInfoCompat = (AccessibilityNodeInfoCompat)localSparseArrayCompat.get(i)) {
-      switch (paramInt)
-      {
-      default: 
+    int j = this.mKeyboardFocusedVirtualViewId;
+    int i = -2147483648;
+    AccessibilityNodeInfoCompat localAccessibilityNodeInfoCompat;
+    if (j == -2147483648) {
+      localAccessibilityNodeInfoCompat = null;
+    } else {
+      localAccessibilityNodeInfoCompat = (AccessibilityNodeInfoCompat)localSparseArrayCompat.get(j);
+    }
+    if ((paramInt != 1) && (paramInt != 2))
+    {
+      if ((paramInt != 17) && (paramInt != 33) && (paramInt != 66) && (paramInt != 130)) {
         throw new IllegalArgumentException("direction must be one of {FOCUS_FORWARD, FOCUS_BACKWARD, FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
       }
-    }
-    if (ViewCompat.getLayoutDirection(this.mHost) == 1)
-    {
-      paramRect = (AccessibilityNodeInfoCompat)FocusStrategy.findNextFocusInRelativeDirection(localSparseArrayCompat, SPARSE_VALUES_ADAPTER, NODE_ADAPTER, localAccessibilityNodeInfoCompat, paramInt, bool, false);
-      if (paramRect != null) {
-        break label238;
-      }
-    }
-    label238:
-    for (paramInt = -2147483648;; paramInt = localSparseArrayCompat.keyAt(localSparseArrayCompat.indexOfValue(paramRect)))
-    {
-      return requestKeyboardFocusForVirtualView(paramInt);
-      bool = false;
-      break;
       Rect localRect = new Rect();
-      if (this.mKeyboardFocusedVirtualViewId != -2147483648) {
-        getBoundsInParent(this.mKeyboardFocusedVirtualViewId, localRect);
+      j = this.mKeyboardFocusedVirtualViewId;
+      if (j != -2147483648) {
+        getBoundsInParent(j, localRect);
+      } else if (paramRect != null) {
+        localRect.set(paramRect);
+      } else {
+        guessPreviouslyFocusedRect(this.mHost, paramInt, localRect);
       }
-      for (;;)
-      {
-        paramRect = (AccessibilityNodeInfoCompat)FocusStrategy.findNextFocusInAbsoluteDirection(localSparseArrayCompat, SPARSE_VALUES_ADAPTER, NODE_ADAPTER, localAccessibilityNodeInfoCompat, localRect, paramInt);
-        break;
-        if (paramRect != null) {
-          localRect.set(paramRect);
-        } else {
-          guessPreviouslyFocusedRect(this.mHost, paramInt, localRect);
-        }
-      }
+      paramRect = (AccessibilityNodeInfoCompat)FocusStrategy.findNextFocusInAbsoluteDirection(localSparseArrayCompat, SPARSE_VALUES_ADAPTER, NODE_ADAPTER, localAccessibilityNodeInfoCompat, localRect, paramInt);
     }
+    else
+    {
+      boolean bool;
+      if (ViewCompat.getLayoutDirection(this.mHost) == 1) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      paramRect = (AccessibilityNodeInfoCompat)FocusStrategy.findNextFocusInRelativeDirection(localSparseArrayCompat, SPARSE_VALUES_ADAPTER, NODE_ADAPTER, localAccessibilityNodeInfoCompat, paramInt, bool, false);
+    }
+    if (paramRect == null) {
+      paramInt = i;
+    } else {
+      paramInt = localSparseArrayCompat.keyAt(localSparseArrayCompat.indexOfValue(paramRect));
+    }
+    return requestKeyboardFocusForVirtualView(paramInt);
   }
   
   private boolean performActionForChild(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    switch (paramInt2)
+    if (paramInt2 != 1)
     {
-    default: 
-      return onPerformActionForVirtualView(paramInt1, paramInt2, paramBundle);
-    case 64: 
-      return requestAccessibilityFocus(paramInt1);
-    case 128: 
-      return clearAccessibilityFocus(paramInt1);
-    case 1: 
-      return requestKeyboardFocusForVirtualView(paramInt1);
+      if (paramInt2 != 2)
+      {
+        if (paramInt2 != 64)
+        {
+          if (paramInt2 != 128) {
+            return onPerformActionForVirtualView(paramInt1, paramInt2, paramBundle);
+          }
+          return clearAccessibilityFocus(paramInt1);
+        }
+        return requestAccessibilityFocus(paramInt1);
+      }
+      return clearKeyboardFocusForVirtualView(paramInt1);
     }
-    return clearKeyboardFocusForVirtualView(paramInt1);
+    return requestKeyboardFocusForVirtualView(paramInt1);
   }
   
   private boolean performActionForHost(int paramInt, Bundle paramBundle)
@@ -367,25 +390,32 @@ public abstract class ExploreByTouchHelper
   
   private boolean requestAccessibilityFocus(int paramInt)
   {
-    if ((!this.mManager.isEnabled()) || (!this.mManager.isTouchExplorationEnabled())) {}
-    while (this.mAccessibilityFocusedVirtualViewId == paramInt) {
-      return false;
+    if (this.mManager.isEnabled())
+    {
+      if (!this.mManager.isTouchExplorationEnabled()) {
+        return false;
+      }
+      int i = this.mAccessibilityFocusedVirtualViewId;
+      if (i != paramInt)
+      {
+        if (i != -2147483648) {
+          clearAccessibilityFocus(i);
+        }
+        this.mAccessibilityFocusedVirtualViewId = paramInt;
+        this.mHost.invalidate();
+        sendEventForVirtualView(paramInt, 32768);
+        return true;
+      }
     }
-    if (this.mAccessibilityFocusedVirtualViewId != -2147483648) {
-      clearAccessibilityFocus(this.mAccessibilityFocusedVirtualViewId);
-    }
-    this.mAccessibilityFocusedVirtualViewId = paramInt;
-    this.mHost.invalidate();
-    sendEventForVirtualView(paramInt, 32768);
-    return true;
+    return false;
   }
   
   private void updateHoveredVirtualView(int paramInt)
   {
-    if (this.mHoveredVirtualViewId == paramInt) {
+    int i = this.mHoveredVirtualViewId;
+    if (i == paramInt) {
       return;
     }
-    int i = this.mHoveredVirtualViewId;
     this.mHoveredVirtualViewId = paramInt;
     sendEventForVirtualView(paramInt, 128);
     sendEventForVirtualView(i, 256);
@@ -404,85 +434,96 @@ public abstract class ExploreByTouchHelper
   
   public final boolean dispatchHoverEvent(@NonNull MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    if ((!this.mManager.isEnabled()) || (!this.mManager.isTouchExplorationEnabled())) {}
-    do
+    boolean bool3 = this.mManager.isEnabled();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
     {
-      return false;
-      switch (paramMotionEvent.getAction())
-      {
-      case 8: 
-      default: 
+      if (!this.mManager.isTouchExplorationEnabled()) {
         return false;
-      case 7: 
-      case 9: 
-        int i = getVirtualViewAt(paramMotionEvent.getX(), paramMotionEvent.getY());
-        updateHoveredVirtualView(i);
-        if (i != -2147483648) {}
-        for (;;)
-        {
-          return bool;
-          bool = false;
-        }
       }
-    } while (this.mHoveredVirtualViewId == -2147483648);
-    updateHoveredVirtualView(-2147483648);
-    return true;
+      int i = paramMotionEvent.getAction();
+      if ((i != 7) && (i != 9))
+      {
+        if (i != 10) {
+          return false;
+        }
+        if (this.mHoveredVirtualViewId != -2147483648)
+        {
+          updateHoveredVirtualView(-2147483648);
+          return true;
+        }
+        return false;
+      }
+      i = getVirtualViewAt(paramMotionEvent.getX(), paramMotionEvent.getY());
+      updateHoveredVirtualView(i);
+      bool1 = bool2;
+      if (i != -2147483648) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public final boolean dispatchKeyEvent(@NonNull KeyEvent paramKeyEvent)
   {
-    boolean bool3 = false;
-    boolean bool1 = false;
-    boolean bool2 = bool1;
-    int i;
-    if (paramKeyEvent.getAction() != 1)
+    int j = paramKeyEvent.getAction();
+    boolean bool2 = false;
+    int i = 0;
+    boolean bool1 = bool2;
+    if (j != 1)
     {
-      i = paramKeyEvent.getKeyCode();
-      switch (i)
+      j = paramKeyEvent.getKeyCode();
+      if (j != 61)
       {
-      default: 
-        bool2 = bool1;
+        if (j != 66)
+        {
+          switch (j)
+          {
+          default: 
+            return false;
+          case 19: 
+          case 20: 
+          case 21: 
+          case 22: 
+            bool1 = bool2;
+            if (!paramKeyEvent.hasNoModifiers()) {
+              break;
+            }
+            j = keyToDirection(j);
+            int k = paramKeyEvent.getRepeatCount();
+            for (bool1 = false; (i < k + 1) && (moveFocus(j, null)); bool1 = true) {
+              i += 1;
+            }
+            return bool1;
+          }
+        }
+        else
+        {
+          bool1 = bool2;
+          if (paramKeyEvent.hasNoModifiers())
+          {
+            bool1 = bool2;
+            if (paramKeyEvent.getRepeatCount() == 0)
+            {
+              clickKeyboardFocusedVirtualView();
+              return true;
+            }
+          }
+        }
+      }
+      else
+      {
+        if (paramKeyEvent.hasNoModifiers()) {
+          return moveFocus(2, null);
+        }
+        bool1 = bool2;
+        if (paramKeyEvent.hasModifiers(1)) {
+          bool1 = moveFocus(1, null);
+        }
       }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool2;
-            bool2 = bool1;
-          } while (!paramKeyEvent.hasNoModifiers());
-          int j = keyToDirection(i);
-          int k = paramKeyEvent.getRepeatCount();
-          i = 0;
-          for (bool1 = bool3;; bool1 = true)
-          {
-            bool2 = bool1;
-            if (i >= k + 1) {
-              break;
-            }
-            bool2 = bool1;
-            if (!moveFocus(j, null)) {
-              break;
-            }
-            i += 1;
-          }
-          bool2 = bool1;
-        } while (!paramKeyEvent.hasNoModifiers());
-        bool2 = bool1;
-      } while (paramKeyEvent.getRepeatCount() != 0);
-      clickKeyboardFocusedVirtualView();
-      return true;
-      if (paramKeyEvent.hasNoModifiers()) {
-        return moveFocus(2, null);
-      }
-      bool2 = bool1;
-    } while (!paramKeyEvent.hasModifiers(1));
-    return moveFocus(1, null);
+    return bool1;
   }
   
   public final int getAccessibilityFocusedVirtualViewId()
@@ -548,8 +589,9 @@ public abstract class ExploreByTouchHelper
   
   public final void onFocusChanged(boolean paramBoolean, int paramInt, @Nullable Rect paramRect)
   {
-    if (this.mKeyboardFocusedVirtualViewId != -2147483648) {
-      clearKeyboardFocusForVirtualView(this.mKeyboardFocusedVirtualViewId);
+    int i = this.mKeyboardFocusedVirtualViewId;
+    if (i != -2147483648) {
+      clearKeyboardFocusForVirtualView(i);
     }
     if (paramBoolean) {
       moveFocus(paramInt, paramRect);
@@ -582,9 +624,7 @@ public abstract class ExploreByTouchHelper
   
   boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    switch (paramInt1)
-    {
-    default: 
+    if (paramInt1 != -1) {
       return performActionForChild(paramInt1, paramInt2, paramBundle);
     }
     return performActionForHost(paramInt2, paramBundle);
@@ -592,12 +632,15 @@ public abstract class ExploreByTouchHelper
   
   public final boolean requestKeyboardFocusForVirtualView(int paramInt)
   {
-    if ((!this.mHost.isFocused()) && (!this.mHost.requestFocus())) {}
-    while (this.mKeyboardFocusedVirtualViewId == paramInt) {
+    if ((!this.mHost.isFocused()) && (!this.mHost.requestFocus())) {
       return false;
     }
-    if (this.mKeyboardFocusedVirtualViewId != -2147483648) {
-      clearKeyboardFocusForVirtualView(this.mKeyboardFocusedVirtualViewId);
+    int i = this.mKeyboardFocusedVirtualViewId;
+    if (i == paramInt) {
+      return false;
+    }
+    if (i != -2147483648) {
+      clearKeyboardFocusForVirtualView(i);
     }
     this.mKeyboardFocusedVirtualViewId = paramInt;
     onVirtualViewKeyboardFocusChanged(paramInt, true);
@@ -607,20 +650,24 @@ public abstract class ExploreByTouchHelper
   
   public final boolean sendEventForVirtualView(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == -2147483648) || (!this.mManager.isEnabled())) {}
-    ViewParent localViewParent;
-    do
+    if (paramInt1 != -2147483648)
     {
-      return false;
-      localViewParent = this.mHost.getParent();
-    } while (localViewParent == null);
-    AccessibilityEvent localAccessibilityEvent = createEvent(paramInt1, paramInt2);
-    return ViewParentCompat.requestSendAccessibilityEvent(localViewParent, this.mHost, localAccessibilityEvent);
+      if (!this.mManager.isEnabled()) {
+        return false;
+      }
+      ViewParent localViewParent = this.mHost.getParent();
+      if (localViewParent == null) {
+        return false;
+      }
+      AccessibilityEvent localAccessibilityEvent = createEvent(paramInt1, paramInt2);
+      return ViewParentCompat.requestSendAccessibilityEvent(localViewParent, this.mHost, localAccessibilityEvent);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.customview.widget.ExploreByTouchHelper
  * JD-Core Version:    0.7.0.1
  */

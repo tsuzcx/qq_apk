@@ -4,50 +4,68 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.huawei.hms.android.HwBuildEx.VERSION;
-import com.huawei.hms.push.m;
-import com.huawei.hms.push.x;
+import com.huawei.hms.push.i;
+import com.huawei.hms.push.t;
 import com.huawei.hms.support.log.HMSLog;
 import com.huawei.hms.utils.ResourceLoaderUtil;
 
 public class PushMsgReceiver
   extends BroadcastReceiver
 {
-  private static void a(Context paramContext, Intent paramIntent)
+  public static void a(Context paramContext, Intent paramIntent)
   {
     if (paramIntent.hasExtra("selfshow_info"))
     {
-      if (!x.a(paramContext)) {
-        HMSLog.i("PushMsgReceiver", paramContext.getPackageName() + " disable display notification.");
+      if (!t.a(paramContext))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramContext.getPackageName());
+        localStringBuilder.append(" disable display notification.");
+        HMSLog.i("PushMsgReceiver", localStringBuilder.toString());
       }
-      m.a(paramContext, paramIntent);
+      i.a(paramContext, paramIntent);
     }
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramContext == null)) {
-      return;
+    Object localObject;
+    if (paramIntent != null)
+    {
+      if (paramContext == null) {
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("push receive broadcast message, Intent:");
+      ((StringBuilder)localObject).append(paramIntent.getAction());
+      ((StringBuilder)localObject).append(" pkgName:");
+      ((StringBuilder)localObject).append(paramContext.getPackageName());
+      HMSLog.i("PushMsgReceiver", ((StringBuilder)localObject).toString());
     }
-    HMSLog.i("PushMsgReceiver", "push receive broadcast message, Intent:" + paramIntent.getAction() + " pkgName:" + paramContext.getPackageName());
     try
     {
       paramIntent.getStringExtra("TestIntent");
-      String str = paramIntent.getAction();
+      localObject = paramIntent.getAction();
       if (ResourceLoaderUtil.getmContext() == null) {
         ResourceLoaderUtil.setmContext(paramContext.getApplicationContext());
       }
-      if (("com.huawei.intent.action.PUSH_DELAY_NOTIFY".equals(str)) || (("com.huawei.intent.action.PUSH".equals(str)) && (HwBuildEx.VERSION.EMUI_SDK_INT < 10)))
+      if ((!"com.huawei.intent.action.PUSH_DELAY_NOTIFY".equals(localObject)) && ((!"com.huawei.intent.action.PUSH".equals(localObject)) || (HwBuildEx.VERSION.EMUI_SDK_INT >= 10)))
       {
-        a(paramContext, paramIntent);
+        paramContext = new StringBuilder();
+        paramContext.append("message can't be recognised:");
+        paramContext.append(paramIntent.toUri(0));
+        HMSLog.i("PushMsgReceiver", paramContext.toString());
         return;
       }
+      a(paramContext, paramIntent);
+      return;
     }
     catch (Exception paramContext)
     {
-      HMSLog.e("PushMsgReceiver", "intent has some error");
-      return;
+      label153:
+      break label153;
     }
-    HMSLog.i("PushMsgReceiver", "message can't be recognised:" + paramIntent.toUri(0));
+    HMSLog.e("PushMsgReceiver", "intent has some error");
   }
 }
 

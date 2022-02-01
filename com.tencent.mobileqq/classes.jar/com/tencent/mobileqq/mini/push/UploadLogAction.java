@@ -15,16 +15,22 @@ public class UploadLogAction
     if (paramMiniAppControlInfo.data.containsKey("appid"))
     {
       paramMiniAppControlInfo = (String)paramMiniAppControlInfo.data.get("appid");
-      QLog.d("UploadLogAction", 1, "UploadLogAction appid:" + paramMiniAppControlInfo);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("UploadLogAction appid:");
+      localStringBuilder.append(paramMiniAppControlInfo);
+      QLog.d("UploadLogAction", 1, localStringBuilder.toString());
       ReportLogUtil.compressAndUploadLog(paramMiniAppControlInfo);
       return;
     }
-    QLog.d("UploadLogAction", 1, "UploadLogAction has no appid parameter! " + paramMiniAppControlInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UploadLogAction has no appid parameter! ");
+    localStringBuilder.append(paramMiniAppControlInfo);
+    QLog.d("UploadLogAction", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.push.UploadLogAction
  * JD-Core Version:    0.7.0.1
  */

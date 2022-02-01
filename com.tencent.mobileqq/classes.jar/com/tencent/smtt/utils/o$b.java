@@ -20,21 +20,19 @@ class o$b
     if (paramFile.isDirectory())
     {
       paramFile = paramFile.listFiles();
-      if ((paramFile != null) || (Build.VERSION.SDK_INT < 26)) {}
-    }
-    while (!paramFile.isFile()) {
-      for (;;)
-      {
+      if ((paramFile == null) && (Build.VERSION.SDK_INT >= 26)) {
         return;
-        int i = 0;
-        while (i < paramFile.length)
-        {
-          a(paramFile[i]);
-          i += 1;
-        }
+      }
+      int i = 0;
+      while (i < paramFile.length)
+      {
+        a(paramFile[i]);
+        i += 1;
       }
     }
-    a(paramFile.getName(), paramFile.length(), paramFile.lastModified());
+    if (paramFile.isFile()) {
+      a(paramFile.getName(), paramFile.length(), paramFile.lastModified());
+    }
   }
   
   private void a(String paramString, long paramLong1, long paramLong2)
@@ -55,7 +53,7 @@ class o$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.o.b
  * JD-Core Version:    0.7.0.1
  */

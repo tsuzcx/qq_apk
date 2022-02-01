@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.history;
 
-import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.FadeIconImageView;
 
 public class ChatHistoryReadOnlyViewController
   extends ChatHistoryCommonViewController
 {
   public static final int[] a;
-  public static final int[] b = { 2131364608 };
+  public static final int[] b = { 2131364495 };
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131690879 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131690808 };
   }
   
-  public ChatHistoryReadOnlyViewController(FragmentActivity paramFragmentActivity)
+  public ChatHistoryReadOnlyViewController(BaseActivity paramBaseActivity)
   {
-    super(paramFragmentActivity);
+    super(paramBaseActivity);
   }
   
   public void a()
@@ -39,7 +39,7 @@ public class ChatHistoryReadOnlyViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryReadOnlyViewController
  * JD-Core Version:    0.7.0.1
  */

@@ -30,45 +30,43 @@ public class DiyPendantDrawable
   
   public List<DiyPendantDrawable.Sticker> a()
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      try
+      if (this.jdField_a_of_type_JavaUtilList != null)
       {
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          localList1 = this.jdField_a_of_type_JavaUtilList;
-          return localList1;
-        }
-        List localList1 = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a(this);
-        if ((localList1 == null) || (localList1.isEmpty())) {
-          break label188;
-        }
+        localList = this.jdField_a_of_type_JavaUtilList;
+        return localList;
+      }
+      List localList = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a(this);
+      if ((localList != null) && (!localList.isEmpty()))
+      {
         this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        if (i < localList1.size())
+        int i = 0;
+        while (i < localList.size())
         {
-          DiyPendantSticker localDiyPendantSticker = (DiyPendantSticker)localList1.get(i);
-          int j = -16777216;
+          DiyPendantSticker localDiyPendantSticker = (DiyPendantSticker)localList.get(i);
+          int j;
           try
           {
-            int k = Color.parseColor(localDiyPendantSticker.fontColor);
-            j = k;
+            j = Color.parseColor(localDiyPendantSticker.fontColor);
           }
           catch (Exception localException)
           {
             QLog.e("DiyPendantDrawable", 1, new Object[] { "parse sticker text color failed.", localException.getMessage() });
-            continue;
+            j = -16777216;
           }
           this.jdField_a_of_type_JavaUtilList.add(new DiyPendantDrawable.DiyAddonSticker(this, i, localDiyPendantSticker.angle, localDiyPendantSticker.text, localDiyPendantSticker.fontId, localDiyPendantSticker.fontType, j));
           i += 1;
-          continue;
         }
-        localList2 = this.jdField_a_of_type_JavaUtilList;
+        localList = this.jdField_a_of_type_JavaUtilList;
+        return localList;
       }
-      finally {}
-      continue;
-      label188:
-      List localList2 = null;
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -94,13 +92,15 @@ public class DiyPendantDrawable
   {
     int i = paramRect.width();
     this.c = Math.abs(paramRect.height() - i);
-    this.jdField_a_of_type_Double = (i / 250.0D);
-    this.d = ((int)(100.0D * this.jdField_a_of_type_Double));
+    double d1 = i;
+    Double.isNaN(d1);
+    this.jdField_a_of_type_Double = (d1 / 250.0D);
+    this.d = ((int)(this.jdField_a_of_type_Double * 100.0D));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantDrawable
  * JD-Core Version:    0.7.0.1
  */

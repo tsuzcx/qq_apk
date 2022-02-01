@@ -13,29 +13,36 @@ class TelephonyJsPlugin$2$1
   
   public void onClick(View paramView, int paramInt)
   {
-    try
+    for (;;)
     {
-      paramView = this.this$1.this$0;
-      String str1 = this.this$1.val$req.event;
-      String str2 = this.this$1.val$req.jsonParams;
-      if (paramInt == 0) {}
-      for (boolean bool = true;; bool = false)
+      try
       {
-        TelephonyJsPlugin.access$200(paramView, str1, str2, bool);
-        this.val$actionSheet.dismiss();
+        paramView = this.this$1.this$0;
+        localObject = this.this$1.val$req.event;
+        String str = this.this$1.val$req.jsonParams;
+        if (paramInt == 0)
+        {
+          bool = true;
+          TelephonyJsPlugin.access$200(paramView, (String)localObject, str, bool);
+          this.val$actionSheet.dismiss();
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.this$1.val$req.event);
+        ((StringBuilder)localObject).append(" error.");
+        QMLog.e("TelephonyJsPlugin", ((StringBuilder)localObject).toString(), paramView);
         return;
       }
-      return;
-    }
-    catch (Exception paramView)
-    {
-      QMLog.e("TelephonyJsPlugin", this.this$1.val$req.event + " error.", paramView);
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.TelephonyJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

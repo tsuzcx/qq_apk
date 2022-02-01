@@ -38,10 +38,17 @@ public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
     if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + b())) {
       return null;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    List localList;
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      localList = this.jdField_a_of_type_JavaUtilList;
     }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+    else
+    {
+      localList = this.jdField_a_of_type_JavaUtilList;
+      paramInt -= 1;
+    }
+    return localList.get(paramInt);
   }
   
   public List<M> a()
@@ -85,8 +92,9 @@ public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
         notifyItemChanged(paramInt);
         return;
       }
-      notifyItemMoved(i + 1, paramInt + 1);
-      notifyItemChanged(paramInt + 1);
+      paramInt += 1;
+      notifyItemMoved(i + 1, paramInt);
+      notifyItemChanged(paramInt);
       return;
     }
     if (this.jdField_a_of_type_AndroidViewView == null)
@@ -99,16 +107,13 @@ public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
   
   public boolean a(List<M> paramList)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      boolean bool = i | this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (bool) {
-        notifyDataSetChanged();
-      }
-      return bool;
+    boolean bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
+    this.jdField_a_of_type_JavaUtilList.clear();
+    bool = this.jdField_a_of_type_JavaUtilList.addAll(paramList) | bool ^ true;
+    if (bool) {
+      notifyDataSetChanged();
     }
+    return bool;
   }
   
   public boolean b(List<M> paramList)
@@ -143,7 +148,7 @@ public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.common.recyclerview.BaseAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.dt;
 
 import android.content.Context;
 import com.tencent.beacon.event.UserAction;
+import com.tencent.mobileqq.statistics.QQBeaconReport;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTReport;
@@ -57,28 +58,31 @@ public final class QQDtReporter
     if (b(paramString)) {
       paramBoolean = true;
     }
-    for (;;)
+    Object localObject;
+    if (c(paramString))
     {
-      if (c(paramString)) {
-        QLog.d("QQDtReporter", 1, new Object[] { "848QQDT _report event: " + paramString, ",isImmediatelyUpload:", Boolean.valueOf(paramBoolean), ",params:", paramMap });
-      }
-      QQDtReportHelper.a(paramString, paramMap);
-      if (paramMap != null) {}
-      for (String str = (String)paramMap.get("dt_appkey");; str = null)
-      {
-        CharSequence localCharSequence = (CharSequence)str;
-        if ((localCharSequence == null) || (localCharSequence.length() == 0)) {
-          i = 1;
-        }
-        if (i == 0) {
-          break;
-        }
-        UserAction.onDTUserAction((Context)BaseApplication.context, paramString, true, -1L, -1L, paramMap, paramBoolean, paramBoolean);
-        return true;
-      }
-      dtEvent(paramObject, paramString, paramMap, paramBoolean, str);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("848QQDT _report event: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("QQDtReporter", 1, new Object[] { ((StringBuilder)localObject).toString(), ",isImmediatelyUpload:", Boolean.valueOf(paramBoolean), ",params:", paramMap });
+    }
+    QQDtReportHelper.a(paramString, paramMap);
+    if (paramMap != null) {
+      localObject = (String)paramMap.get("dt_appkey");
+    } else {
+      localObject = null;
+    }
+    CharSequence localCharSequence = (CharSequence)localObject;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {
+      i = 1;
+    }
+    if (i != 0)
+    {
+      QQBeaconReport.a("", paramString, paramMap, paramBoolean);
       return true;
     }
+    dtEvent(paramObject, paramString, paramMap, paramBoolean, (String)localObject);
+    return true;
   }
   
   public boolean dtEvent(@Nullable Object paramObject, @Nullable String paramString1, @Nullable Map<String, String> paramMap, boolean paramBoolean, @Nullable String paramString2)
@@ -91,23 +95,30 @@ public final class QQDtReporter
       dtEvent(paramObject, paramString1, paramMap, paramBoolean);
       return false;
     }
-    if ((a(paramString2)) || (b(paramString1))) {
-      paramBoolean = true;
+    if ((!a(paramString2)) && (!b(paramString1))) {
+      break label49;
     }
-    for (;;)
+    paramBoolean = true;
+    label49:
+    if (c(paramString1))
     {
-      if (c(paramString1)) {
-        QLog.d("QQDtReporter", 1, new Object[] { "848QQDT _report eventkey: " + paramString1, " , appkey:" + paramString2, " , isImmediatelyUpload:", Boolean.valueOf(paramBoolean), " , isImmediatelyUpload:", Boolean.valueOf(paramBoolean), " , params:", paramMap });
-      }
-      QQDtReportHelper.a(paramString1, paramMap);
-      UserAction.onDTUserActionToTunnel((Context)BaseApplication.context, paramString2, paramString1, paramMap, paramBoolean, paramBoolean);
-      return false;
+      paramObject = new StringBuilder();
+      paramObject.append("848QQDT _report eventkey: ");
+      paramObject.append(paramString1);
+      paramObject = paramObject.toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" , appkey:");
+      localStringBuilder.append(paramString2);
+      QLog.d("QQDtReporter", 1, new Object[] { paramObject, localStringBuilder.toString(), " , isImmediatelyUpload:", Boolean.valueOf(paramBoolean), " , isImmediatelyUpload:", Boolean.valueOf(paramBoolean), " , params:", paramMap });
     }
+    QQDtReportHelper.a(paramString1, paramMap);
+    UserAction.onDTUserActionToTunnel((Context)BaseApplication.context, paramString2, paramString1, paramMap, paramBoolean, paramBoolean);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dt.QQDtReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -172,6 +172,7 @@ public class BaseConstants
   public static final String CMD_VERIFY_PASSWD = "login.verifyPasswd";
   public static final String CMD_VERIFY_PASSWD_IMAGE = "login.verifyPasswdImage";
   public static final String CMD_VERIFY_PASSWD_REFRESH_IMAGE = "login.verifyPasswdRefreshImage";
+  public static final String CMD_WAKE_FROM_DS = "cmd_wake_from_deep_sleep";
   public static final String CMD_WIRELESSMEIBAOREQ = "PwdProtect.DataUpload";
   public static final String CMD_WIRELESSPSWREQ = "KsidTrans.Trans";
   public static final String CMD_WT_LOGIN_ADDCONTACTS = "account.RequestVerifyWTLogin_emp";
@@ -243,7 +244,7 @@ public class BaseConstants
   public static final String FLOW_XG_KEY = "param_XGFlow";
   public static final String FLOW_XG_RDM_KEY = "param_XGRdmFlow";
   public static final boolean IS_RELEASE_SUPPORT_SWITCH_TO_TEST_ENV = false;
-  public static int MAXSENDCOUNT_INMINUTE = 0;
+  public static int MAXSENDCOUNT_INMINUTE = 150;
   public static final String MINI_SDK = "";
   public static final String NETEXCEPTION_ATTRIBUTE_EXCEPTYPE = "NetExceptionType";
   public static final int NETEXCEPTION_TYPE_MESSAGETIMEOUT = 1;
@@ -253,7 +254,7 @@ public class BaseConstants
   public static final int NETINFO_WIFI = 2;
   public static final int NETINFO_WIFIANDMOBILE = 3;
   public static final long OPEN_SDK_BUFLAG_B1 = 1600001540L;
-  public static String RDM_NoChangeFailCode;
+  public static String RDM_NoChangeFailCode = "rdm_NCF";
   public static final int REGUIN_CAPTCHA = 4;
   public static final int REGUIN_FACE = 59;
   public static final int REGUIN_GUARANTEE = 8;
@@ -290,7 +291,7 @@ public class BaseConstants
   public static final int TYPE_BOOT_ACTION_NORMAL = 0;
   public static final byte UINTYPE_QQ = 0;
   public static final String UIN_NOUIN = "0";
-  public static int USEWAKELOCK_MINFAILEDCOUNT = 0;
+  public static int USEWAKELOCK_MINFAILEDCOUNT = 5;
   public static String[] WiFiloginMergeTSAddress;
   public static String[] XGloginMergeTSAddress;
   public static int checkExpiresLogScreenOffCount = 2;
@@ -300,22 +301,12 @@ public class BaseConstants
   public static final boolean isSwitchToTestEnv = false;
   public static boolean isUseDebugSso = false;
   public static long reSendIntrevTime = 5000L;
-  public static final String revision = "de12fadd";
+  public static final String revision = "01328a87";
   public static final String testServerAddress = "socket://183.3.233.202:14000";
-  
-  static
-  {
-    RDM_NoChangeFailCode = "rdm_NCF";
-    isUseDebugSso = false;
-    XGloginMergeTSAddress = null;
-    WiFiloginMergeTSAddress = null;
-    MAXSENDCOUNT_INMINUTE = 150;
-    USEWAKELOCK_MINFAILEDCOUNT = 5;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.BaseConstants
  * JD-Core Version:    0.7.0.1
  */

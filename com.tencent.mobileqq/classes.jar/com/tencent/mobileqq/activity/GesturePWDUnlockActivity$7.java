@@ -12,12 +12,15 @@ class GesturePWDUnlockActivity$7
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
+    if (this.a.mIsFromJump) {
+      return;
+    }
     if (paramIntent != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
       }
-      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.createTime) && (!this.a.isFinishing())) {
         this.a.finish();
       }
     }
@@ -25,7 +28,7 @@ class GesturePWDUnlockActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDUnlockActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,24 @@
 package com.tencent.mobileqq.activity.framebusiness;
 
-import android.view.View;
-import com.tencent.mobileqq.activity.qcircle.QCircleFrame;
-import com.tencent.mobileqq.app.Frame;
+import android.widget.PopupWindow;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.mobileqq.app.FrameFragment;
-import com.tencent.mobileqq.app.FrameFragment.DragViewPunctureClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class QCircleInjectImpl$2
-  extends FrameFragment.DragViewPunctureClickListener
+class QCircleInjectImpl$2
+  implements Runnable
 {
-  QCircleInjectImpl$2(FrameFragment paramFrameFragment) {}
+  QCircleInjectImpl$2(QCircleInjectImpl paramQCircleInjectImpl, FrameFragment paramFrameFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Frame localFrame = this.a.a();
-    if ((localFrame instanceof QCircleFrame)) {
-      ((QCircleFrame)localFrame).b();
+    if ((QCircleInjectImpl.a(this.this$0) != null) && (QCircleInjectImpl.a(this.this$0).isShowing()) && (!this.a.getActivity().isFinishing())) {
+      QCircleInjectImpl.a(this.this$0).dismiss();
     }
-    super.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl.2
  * JD-Core Version:    0.7.0.1
  */

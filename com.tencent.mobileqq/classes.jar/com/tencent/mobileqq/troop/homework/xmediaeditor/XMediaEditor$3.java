@@ -21,7 +21,8 @@ class XMediaEditor$3
     if (XMediaEditor.a(this.a) != null) {
       XMediaEditor.a(this.a).a(XMediaEditor.a(this.a), XMediaEditor.a(this.a) + paramInt1);
     }
-    XMediaEditor.a(this.a, paramInt1 + XMediaEditor.a(this.a));
+    XMediaEditor localXMediaEditor = this.a;
+    XMediaEditor.a(localXMediaEditor, XMediaEditor.a(localXMediaEditor) + paramInt1);
   }
   
   public void a(RecyclerView.ViewHolder paramViewHolder)
@@ -35,31 +36,26 @@ class XMediaEditor$3
     if (XMediaEditor.a(this.a) != this.a.a.a())
     {
       paramViewHolder = this.a;
-      if (XMediaEditor.a(this.a)) {
-        break label73;
-      }
-    }
-    label73:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      XMediaEditor.a(paramViewHolder, paramBoolean);
+      XMediaEditor.a(paramViewHolder, XMediaEditor.a(paramViewHolder) ^ true);
       if (XMediaEditor.a(this.a) != null) {
         XMediaEditor.a(this.a).a(XMediaEditor.a(this.a));
       }
-      return;
     }
   }
   
   public void b(RecyclerView.ViewHolder paramViewHolder)
   {
     int i = ((EditorViewHolderManager.EditViewHolderBase)paramViewHolder).jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase.c;
-    if (i == 0) {}
-    do
-    {
+    if (i == 0) {
       return;
-      paramViewHolder = this.a.a.a(i - 1);
-    } while ((paramViewHolder != null) && (paramViewHolder.b() == -1));
-    this.a.a(i - 1);
+    }
+    paramViewHolder = this.a.a;
+    i -= 1;
+    paramViewHolder = paramViewHolder.a(i);
+    if ((paramViewHolder != null) && (paramViewHolder.b() == -1)) {
+      return;
+    }
+    this.a.a(i);
   }
   
   public void c(RecyclerView.ViewHolder paramViewHolder)
@@ -84,7 +80,7 @@ class XMediaEditor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor.3
  * JD-Core Version:    0.7.0.1
  */

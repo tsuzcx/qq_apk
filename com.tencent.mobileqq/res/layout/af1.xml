@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel android:gravity="center" android:id="@id/d7n" android:background="@color/gg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel android:gravity="center" android:id="@id/d7n" android:background="@color/gg" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/dfw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
     <RelativeLayout android:id="@id/e2r" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignParentBottom="true">
@@ -13,4 +13,4 @@
         </RelativeLayout>
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView android:id="@id/d7p" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="24.0dip" android:layout_marginTop="1.0dip" android:layout_above="@id/e2r" android:layout_alignParentTop="true" android:overScrollMode="never" />
-</com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel>
+</com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel>

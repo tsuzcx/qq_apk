@@ -45,42 +45,41 @@ public class VSlider
   private void changeIndicatorIndex(int paramInt)
   {
     JSONObject localJSONObject = new JSONObject();
+    Object localObject;
     try
     {
       localJSONObject.put("index", paramInt);
-      JSONArray localJSONArray = new JSONArray();
-      if (getDomObject() != null)
-      {
-        String str = getDomObject().getRef();
-        if (str != null) {
-          localJSONArray.put(str);
-        }
-      }
-      localJSONArray.put("change");
-      sliderFireEvent("change", localJSONArray, localJSONObject);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e("VSlider", "change error :" + localException.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("change error :");
+      ((StringBuilder)localObject).append(localException.getMessage());
+      ViolaLogUtils.e("VSlider", ((StringBuilder)localObject).toString());
+    }
+    JSONArray localJSONArray = new JSONArray();
+    if (getDomObject() != null)
+    {
+      localObject = getDomObject().getRef();
+      if (localObject != null) {
+        localJSONArray.put(localObject);
       }
     }
+    localJSONArray.put("change");
+    sliderFireEvent("change", localJSONArray, localJSONObject);
   }
   
   private void detectScrollable(VSliderView paramVSliderView)
   {
     if (paramVSliderView != null)
     {
-      if (getChildCount() <= 1) {
+      if (getChildCount() <= 1)
+      {
         paramVSliderView.setScrollable(false);
+        return;
       }
+      paramVSliderView.setScrollable(true);
     }
-    else {
-      return;
-    }
-    paramVSliderView.setScrollable(true);
   }
   
   private void fireAppear(int paramInt)
@@ -98,10 +97,11 @@ public class VSlider
   
   private void notifyDataChange()
   {
-    if (this.mAdapter != null)
+    VLoopAbleSliderAdapter localVLoopAbleSliderAdapter = this.mAdapter;
+    if (localVLoopAbleSliderAdapter != null)
     {
       this.mIsNotify = true;
-      this.mAdapter.notifyDataSetChanged();
+      localVLoopAbleSliderAdapter.notifyDataSetChanged();
       this.mIsNotify = false;
     }
   }
@@ -118,47 +118,55 @@ public class VSlider
   
   private void setCellWidth(Object paramObject)
   {
-    if ((paramObject == null) || (getHostView() == null)) {
-      return;
-    }
-    ((VSliderView)getHostView()).setClipChildren(false);
-    paramObject = (ViewGroup)((VSliderView)getHostView()).getParent();
-    if (paramObject != null) {
-      paramObject.setClipChildren(false);
-    }
-    for (;;)
+    if (paramObject != null)
     {
+      if (getHostView() == null) {
+        return;
+      }
+      ((VSliderView)getHostView()).setClipChildren(false);
+      paramObject = (ViewGroup)((VSliderView)getHostView()).getParent();
+      if (paramObject != null) {
+        paramObject.setClipChildren(false);
+      } else {
+        ViolaLogUtils.d("VSlider", "patent is null");
+      }
       paramObject = ((VSliderView)getHostView()).getLayoutParams();
       if ((paramObject instanceof FrameLayout.LayoutParams)) {
         ((FrameLayout.LayoutParams)paramObject).gravity = 1;
       }
       this.mAdapter.setCellExactlyWidth(paramObject.width);
-      return;
-      ViolaLogUtils.d("VSlider", "patent is null");
     }
   }
   
   private void tryResumeState(VSliderView paramVSliderView)
   {
-    if (paramVSliderView == null) {}
-    while ((this.mDomObj == null) || (this.mDomObj.getDomChildCount() <= 1)) {
+    if (paramVSliderView == null) {
       return;
     }
-    Object localObject = this.mDomObj.getState("index");
-    if ((localObject instanceof Integer))
+    if (this.mDomObj != null)
     {
-      int i = ((Integer)localObject).intValue();
-      if ((i <= this.mDomObj.mDomChildren.size() - 1) && (i >= 0))
+      if (this.mDomObj.getDomChildCount() <= 1) {
+        return;
+      }
+      Object localObject = this.mDomObj.getState("index");
+      if ((localObject instanceof Integer))
       {
-        paramVSliderView.setStartIndexWithNoAnimate(i);
-        changeIndicatorIndex(i);
-        ViolaLogUtils.d("VSlider", "resumeState, index: " + i);
+        int i = ((Integer)localObject).intValue();
+        if ((i <= this.mDomObj.mDomChildren.size() - 1) && (i >= 0))
+        {
+          paramVSliderView.setStartIndexWithNoAnimate(i);
+          changeIndicatorIndex(i);
+          paramVSliderView = new StringBuilder();
+          paramVSliderView.append("resumeState, index: ");
+          paramVSliderView.append(i);
+          ViolaLogUtils.d("VSlider", paramVSliderView.toString());
+          return;
+        }
+        paramVSliderView.setStartIndexWithNoAnimate(0);
         return;
       }
       paramVSliderView.setStartIndexWithNoAnimate(0);
-      return;
     }
-    paramVSliderView.setStartIndexWithNoAnimate(0);
   }
   
   public void addChild(VComponent paramVComponent, int paramInt)
@@ -170,22 +178,16 @@ public class VSlider
   
   public void addEvent(String paramString)
   {
-    int i = -1;
-    switch (paramString.hashCode())
-    {
+    int i;
+    if ((paramString.hashCode() == -1361636432) && (paramString.equals("change"))) {
+      i = 0;
+    } else {
+      i = -1;
     }
-    for (;;)
+    if (i != 0)
     {
-      switch (i)
-      {
-      default: 
-        super.addEvent(paramString);
-        return;
-        if (paramString.equals("change")) {
-          i = 0;
-        }
-        break;
-      }
+      super.addEvent(paramString);
+      return;
     }
     this.mAppendEvents.add(paramString);
   }
@@ -213,8 +215,9 @@ public class VSlider
     if (getHostView() != null) {
       ((VSliderView)getHostView()).destroy();
     }
-    if (this.mBatchHandler != null) {
-      this.mBatchHandler.removeCallbacks(this);
+    Handler localHandler = this.mBatchHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacks(this);
     }
   }
   
@@ -250,10 +253,14 @@ public class VSlider
     if (loopDisable()) {
       return;
     }
-    if ((paramDomObject != null) && (!"cell".equals(paramDomObject.getType())) && (this.mBatchHandler != null))
+    if ((paramDomObject != null) && (!"cell".equals(paramDomObject.getType())))
     {
-      this.mBatchHandler.removeCallbacks(this);
-      this.mBatchHandler.postDelayed(this, 16L);
+      Handler localHandler = this.mBatchHandler;
+      if (localHandler != null)
+      {
+        localHandler.removeCallbacks(this);
+        this.mBatchHandler.postDelayed(this, 16L);
+      }
     }
     super.notifyWhenChange(paramString, paramDomObject);
   }
@@ -306,21 +313,14 @@ public class VSlider
   
   public boolean setProperty(String paramString, Object paramObject)
   {
-    int i = -1;
-    switch (paramString.hashCode())
-    {
+    int i;
+    if ((paramString.hashCode() == 1622491524) && (paramString.equals("cellWidth"))) {
+      i = 0;
+    } else {
+      i = -1;
     }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return super.setProperty(paramString, paramObject);
-        if (paramString.equals("cellWidth")) {
-          i = 0;
-        }
-        break;
-      }
+    if (i != 0) {
+      return super.setProperty(paramString, paramObject);
     }
     setCellWidth(paramObject);
     return true;
@@ -333,7 +333,7 @@ public class VSlider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VSlider
  * JD-Core Version:    0.7.0.1
  */

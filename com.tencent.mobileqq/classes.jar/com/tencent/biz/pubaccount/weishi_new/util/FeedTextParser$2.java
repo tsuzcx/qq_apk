@@ -12,8 +12,9 @@ final class FeedTextParser$2
   
   public void onClick(@NonNull View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView$OnElementClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView$OnElementClickListener.b(this.jdField_a_of_type_JavaLangString);
+    paramView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView$OnElementClickListener;
+    if (paramView != null) {
+      paramView.b(this.jdField_a_of_type_JavaLangString);
     }
   }
   
@@ -24,7 +25,7 @@ final class FeedTextParser$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.FeedTextParser.2
  * JD-Core Version:    0.7.0.1
  */

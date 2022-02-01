@@ -42,25 +42,36 @@ public class TVTGLProgramUtils
   
   private static int loadShader(int paramInt, String paramString)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    TAVGLUtils.checkEglError("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
+    int j = GLES20.glCreateShader(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glCreateShader type=");
+    localStringBuilder.append(paramInt);
+    TAVGLUtils.checkEglError(localStringBuilder.toString());
+    GLES20.glShaderSource(j, paramString);
+    GLES20.glCompileShader(j);
     paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    GLES20.glGetShaderiv(j, 35713, paramString, 0);
+    int i = j;
     if (paramString[0] == 0)
     {
-      Log.e("TVTGLProgramUtils", "Could not compile shader " + paramInt + ":");
-      Log.e("TVTGLProgramUtils", " " + GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
+      paramString = new StringBuilder();
+      paramString.append("Could not compile shader ");
+      paramString.append(paramInt);
+      paramString.append(":");
+      Log.e("TVTGLProgramUtils", paramString.toString());
+      paramString = new StringBuilder();
+      paramString.append(" ");
+      paramString.append(GLES20.glGetShaderInfoLog(j));
+      Log.e("TVTGLProgramUtils", paramString.toString());
+      GLES20.glDeleteShader(j);
+      i = 0;
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.taveffect.utils.TVTGLProgramUtils
  * JD-Core Version:    0.7.0.1
  */

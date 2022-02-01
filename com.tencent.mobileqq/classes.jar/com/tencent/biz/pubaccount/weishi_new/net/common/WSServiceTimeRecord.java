@@ -53,7 +53,12 @@ public class WSServiceTimeRecord
   public void c()
   {
     this.c = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onReqEncodeTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onReqEncodeCost:" + a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onReqEncodeTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onReqEncodeCost:");
+    localStringBuilder.append(a());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
   
   public long d()
@@ -64,7 +69,12 @@ public class WSServiceTimeRecord
   public void d()
   {
     this.d = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onReqSendTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onReqPrepareCost:" + b());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onReqSendTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onReqPrepareCost:");
+    localStringBuilder.append(b());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
   
   public long e()
@@ -75,7 +85,12 @@ public class WSServiceTimeRecord
   public void e()
   {
     this.e = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onRspReceiveTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onRspReceiveCost:" + c());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onRspReceiveTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onRspReceiveCost:");
+    localStringBuilder.append(c());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
   
   public long f()
@@ -86,7 +101,12 @@ public class WSServiceTimeRecord
   public void f()
   {
     this.f = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onDecodeWupTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onDecodeWupTime:" + e());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onDecodeWupTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onDecodeWupTime:");
+    localStringBuilder.append(e());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
   
   public long g()
@@ -97,49 +117,72 @@ public class WSServiceTimeRecord
   public void g()
   {
     this.g = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onDecodeExpTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onDecodeExpTime:" + f());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onDecodeExpTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onDecodeExpTime:");
+    localStringBuilder.append(f());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
   
   public long h()
   {
-    if (this.i == 0L) {
+    long l1 = this.i;
+    if (l1 == 0L) {
       return -1L;
     }
-    return this.i - this.h;
+    return l1 - this.h;
   }
   
   public void h()
   {
     this.h = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onDecodeHeaderTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onDecodeHeaderTime:" + g());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onDecodeHeaderTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onDecodeHeaderTime:");
+    localStringBuilder.append(g());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
   
   public long i()
   {
-    if (this.j == 0L) {
+    long l1 = this.j;
+    if (l1 == 0L) {
       return -1L;
     }
-    return this.j - this.i;
+    return l1 - this.i;
   }
   
   public void i()
   {
     this.i = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onDecompressRspTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onDecompressRspTime:" + h());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onDecompressRspTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onDecompressRspTime:");
+    localStringBuilder.append(h());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
   
   public long j()
   {
-    if ((this.i == 0L) || (this.j == 0L)) {
-      return this.k - this.h;
+    long l1 = this.i;
+    if ((l1 != 0L) && (this.j != 0L)) {
+      return this.k - l1;
     }
-    return this.k - this.i;
+    return this.k - this.h;
   }
   
   public void j()
   {
     this.j = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onDecompressDataTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onDecompressDataTime:" + i());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onDecompressDataTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onDecompressDataTime:");
+    localStringBuilder.append(i());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
   
   public long k()
@@ -150,7 +193,12 @@ public class WSServiceTimeRecord
   public void k()
   {
     this.k = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onDecodeRspTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onDecodeRspTime:" + j());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onDecodeRspTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onDecodeRspTime:");
+    localStringBuilder.append(j());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
   
   public long l()
@@ -161,7 +209,12 @@ public class WSServiceTimeRecord
   public void l()
   {
     this.l = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onWorkThreadTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", mWorkThreadTime:" + k());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onWorkThreadTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mWorkThreadTime:");
+    localStringBuilder.append(k());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
   
   public long m()
@@ -172,13 +225,23 @@ public class WSServiceTimeRecord
   public void m()
   {
     this.m = SystemClock.uptimeMillis();
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onSwitchUIThreadTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onSwitchUIThreadTime:" + l());
-    WSLog.e("[WSService][TimeRecord]", "[WSServiceTimeRecord.java][onSwitchUIThreadTime] cmd:" + this.jdField_a_of_type_JavaLangString + ", onReqBisCost:" + m());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onSwitchUIThreadTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onSwitchUIThreadTime:");
+    localStringBuilder.append(l());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSServiceTimeRecord.java][onSwitchUIThreadTime] cmd:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onReqBisCost:");
+    localStringBuilder.append(m());
+    WSLog.e("[WSService][TimeRecord]", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSServiceTimeRecord
  * JD-Core Version:    0.7.0.1
  */

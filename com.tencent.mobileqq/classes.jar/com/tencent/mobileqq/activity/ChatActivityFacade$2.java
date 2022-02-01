@@ -1,13 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.av.utils.CharacterUtil;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneFeedsServlet;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.NewIntent;
 
 final class ChatActivityFacade$2
   implements Runnable
@@ -16,66 +10,12 @@ final class ChatActivityFacade$2
   
   public void run()
   {
-    int i = 1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("ChatActivityFacade.insertFriendNewestFeedIfNeeded", 2, "insertFriendNewestFeedIfNeeded:sessionInfo == null");
-      }
-    }
-    do
-    {
-      return;
-      ChatActivityFacade.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    } while ((!ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) && (!ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true)));
-    long l = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatActivityFacade.QZoneFeeds", 2, "insertFriendNewestFeedIfNeeded    last publish time:" + l);
-    }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QZoneFeedsServlet.class);
-    localNewIntent.putExtra("selfuin", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    try
-    {
-      localNewIntent.putExtra("hostuin", new long[] { CharacterUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) });
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatActivityFacade.QZoneFeeds", 2, "insertFriendNewestFeedIfNeeded   lastTime:" + l);
-      }
-      localNewIntent.putExtra("lasttime", l);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localNewIntent.putExtra("src", i);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
-        {
-          ChatActivityFacade.QZoneNewestFeedObserver localQZoneNewestFeedObserver2 = (ChatActivityFacade.QZoneNewestFeedObserver)ChatActivityFacade.a().get(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-          ChatActivityFacade.QZoneNewestFeedObserver localQZoneNewestFeedObserver1 = localQZoneNewestFeedObserver2;
-          if (localQZoneNewestFeedObserver2 == null)
-          {
-            localQZoneNewestFeedObserver1 = new ChatActivityFacade.QZoneNewestFeedObserver();
-            ChatActivityFacade.a().put(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localQZoneNewestFeedObserver1);
-          }
-          localQZoneNewestFeedObserver1.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          localQZoneNewestFeedObserver1.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-          localQZoneNewestFeedObserver1.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(localQZoneNewestFeedObserver1);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-        }
-        ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_feeds_time");
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("ChatActivityFacade.QZoneFeeds", 1, "Long.valueOf " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        continue;
-        i = 0;
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.2
  * JD-Core Version:    0.7.0.1
  */

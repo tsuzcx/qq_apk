@@ -41,44 +41,38 @@ class MoveFileActivity$FolderListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    MoveFileActivity.ViewHolder localViewHolder;
+    View localView = paramView;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2131560765, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
-      localViewHolder = new MoveFileActivity.ViewHolder(null);
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367273));
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367272));
-      localViewHolder.b = ((TextView)paramView.findViewById(2131364712));
-      paramView.setTag(localViewHolder);
+      localView = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2131560653, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
+      paramView = new MoveFileActivity.ViewHolder(null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367056));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367055));
+      paramView.b = ((TextView)localView.findViewById(2131364599));
+      localView.setTag(paramView);
     }
-    for (;;)
+    paramView = (MoveFileActivity.ViewHolder)localView.getTag();
+    TroopFileInfo localTroopFileInfo = (TroopFileInfo)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
+    if (localTroopFileInfo != null)
     {
-      localViewHolder = (MoveFileActivity.ViewHolder)paramView.getTag();
-      TroopFileInfo localTroopFileInfo = (TroopFileInfo)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-      if (localTroopFileInfo != null)
+      if (MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt))
       {
-        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt)) {
-          break label183;
-        }
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopFileInfo.c);
-        localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843963);
-        if (paramInt != MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
-          break label209;
-        }
-        localViewHolder.b.setVisibility(0);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopFileInfo.c);
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843883);
       }
-      for (;;)
+      else
       {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        label183:
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131706910));
-        localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843965);
-        break;
-        label209:
-        localViewHolder.b.setVisibility(4);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131706932));
+        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843885);
+      }
+      if (paramInt == MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
+        paramView.b.setVisibility(0);
+      } else {
+        paramView.b.setVisibility(4);
       }
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
@@ -94,24 +88,24 @@ class MoveFileActivity$FolderListAdapter
       QLog.e("IphoneTitleBarActivity", 4, "onScrollStateChanged=SCROLL_STATE_IDLE");
       if (this.jdField_a_of_type_Int == this.b - 2)
       {
-        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
-          break label44;
+        if (MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity))
+        {
+          this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
+          return;
         }
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
+        paramAbsListView = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app;
+        MoveFileActivity localMoveFileActivity = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity;
+        if (TroopFileUtils.a(paramAbsListView, localMoveFileActivity, localMoveFileActivity.a) != 0) {
+          this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
+        }
       }
     }
-    label44:
-    do
-    {
-      return;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
-    } while (TroopFileUtils.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a) == 0);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity.FolderListAdapter
  * JD-Core Version:    0.7.0.1
  */

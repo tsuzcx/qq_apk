@@ -30,15 +30,16 @@ public final class readItemInfoReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.implat, 0);
-    if (this.qqver != null) {
-      paramJceOutputStream.write(this.qqver, 1);
+    String str = this.qqver;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.index, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ColorNick.QC.readItemInfoReq
  * JD-Core Version:    0.7.0.1
  */

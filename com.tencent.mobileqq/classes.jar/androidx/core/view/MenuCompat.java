@@ -11,13 +11,14 @@ public final class MenuCompat
   @SuppressLint({"NewApi"})
   public static void setGroupDividerEnabled(Menu paramMenu, boolean paramBoolean)
   {
-    if ((paramMenu instanceof SupportMenu)) {
+    if ((paramMenu instanceof SupportMenu))
+    {
       ((SupportMenu)paramMenu).setGroupDividerEnabled(paramBoolean);
-    }
-    while (Build.VERSION.SDK_INT < 28) {
       return;
     }
-    paramMenu.setGroupDividerEnabled(paramBoolean);
+    if (Build.VERSION.SDK_INT >= 28) {
+      paramMenu.setGroupDividerEnabled(paramBoolean);
+    }
   }
   
   @Deprecated
@@ -28,7 +29,7 @@ public final class MenuCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.MenuCompat
  * JD-Core Version:    0.7.0.1
  */

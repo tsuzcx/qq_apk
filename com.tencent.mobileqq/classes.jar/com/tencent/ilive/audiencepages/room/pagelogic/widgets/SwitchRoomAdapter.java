@@ -54,17 +54,17 @@ public class SwitchRoomAdapter
     paramIAudienceRoomPager.extData = paramIntent.getBundleExtra("biz_ext_data");
     paramIAudienceRoomPager.videoLevel = paramIntent.getIntExtra("video_level", -1);
     paramIAudienceRoomPager.videoIsOrigin = paramIntent.getBooleanExtra("video_is_origin", false);
-    if (paramIntent.getIntExtra("video_format", 1) == 3) {}
-    for (paramFragmentManager = VideoType.VIDEO;; paramFragmentManager = VideoType.LIVE)
-    {
-      paramIAudienceRoomPager.videoType = paramFragmentManager;
-      paramIAudienceRoomPager.videoId = paramIntent.getStringExtra("video_id");
-      paramIAudienceRoomPager.coverBitmapBytes = paramIntent.getByteArrayExtra("cover_bitmap");
-      this.switchRoomInfoList.add(paramIAudienceRoomPager);
-      this.audienceRoomFragmentSparseArray.put(0, createFragment(0));
-      this.mSource = ((AppGeneralInfoService)BizEngineMgr.getInstance().getLiveEngine().getService(AppGeneralInfoService.class)).getSource();
-      return;
+    if (paramIntent.getIntExtra("video_format", 1) == 3) {
+      paramFragmentManager = VideoType.VIDEO;
+    } else {
+      paramFragmentManager = VideoType.LIVE;
     }
+    paramIAudienceRoomPager.videoType = paramFragmentManager;
+    paramIAudienceRoomPager.videoId = paramIntent.getStringExtra("video_id");
+    paramIAudienceRoomPager.coverBitmapBytes = paramIntent.getByteArrayExtra("cover_bitmap");
+    this.switchRoomInfoList.add(paramIAudienceRoomPager);
+    this.audienceRoomFragmentSparseArray.put(0, createFragment(0));
+    this.mSource = ((AppGeneralInfoService)BizEngineMgr.getInstance().getLiveEngine().getService(AppGeneralInfoService.class)).getSource();
   }
   
   private AudienceRoomFragment createFragment(int paramInt)
@@ -108,10 +108,12 @@ public class SwitchRoomAdapter
   
   public AudienceRoomFragment getCurrentFragment()
   {
-    if (this.currentFragment == null) {
-      return (AudienceRoomFragment)this.audienceRoomFragmentSparseArray.get(0);
+    AudienceRoomFragment localAudienceRoomFragment2 = this.currentFragment;
+    AudienceRoomFragment localAudienceRoomFragment1 = localAudienceRoomFragment2;
+    if (localAudienceRoomFragment2 == null) {
+      localAudienceRoomFragment1 = (AudienceRoomFragment)this.audienceRoomFragmentSparseArray.get(0);
     }
-    return this.currentFragment;
+    return localAudienceRoomFragment1;
   }
   
   public Fragment getItem(int paramInt)
@@ -194,16 +196,21 @@ public class SwitchRoomAdapter
   public void queryAndUpdateRoomListFromServer(int paramInt1, int paramInt2)
   {
     Object localObject = (LogInterface)BizEngineMgr.getInstance().getLiveEngine().getService(LogInterface.class);
-    ((LogInterface)localObject).i("SwitchRoomAdapter", "direction: " + paramInt1 + ", index: " + paramInt2, new Object[0]);
-    if (getCurrentFragment() == null) {
-      ((LogInterface)localObject).e("SwitchRoomAdapter", "queryAndUpdateRoomListFromServer--getCurrentFragment is null", new Object[0]);
-    }
-    do
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("direction: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", index: ");
+    localStringBuilder.append(paramInt2);
+    ((LogInterface)localObject).i("SwitchRoomAdapter", localStringBuilder.toString(), new Object[0]);
+    if (getCurrentFragment() == null)
     {
+      ((LogInterface)localObject).e("SwitchRoomAdapter", "queryAndUpdateRoomListFromServer--getCurrentFragment is null", new Object[0]);
       return;
-      localObject = (RoomSwitchInterface)getCurrentFragment().getRoomEngine().getService(RoomSwitchInterface.class);
-    } while (localObject == null);
-    ((RoomSwitchInterface)localObject).queryRoomList(this.switchRoomInfoList, paramInt1, paramInt2, new SwitchRoomAdapter.2(this));
+    }
+    localObject = (RoomSwitchInterface)getCurrentFragment().getRoomEngine().getService(RoomSwitchInterface.class);
+    if (localObject != null) {
+      ((RoomSwitchInterface)localObject).queryRoomList(this.switchRoomInfoList, paramInt1, paramInt2, new SwitchRoomAdapter.2(this));
+    }
   }
   
   public void setPrimaryItem(@NonNull ViewGroup paramViewGroup, int paramInt, @NonNull Object paramObject)
@@ -221,7 +228,7 @@ public class SwitchRoomAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.widgets.SwitchRoomAdapter
  * JD-Core Version:    0.7.0.1
  */

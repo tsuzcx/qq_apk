@@ -29,15 +29,16 @@ public final class d
   public final boolean a()
   {
     Log.i("MicroMsg.SDK.GetQRCodeTask", "cancelTask");
-    if (this.l == null) {
+    f localf = this.l;
+    if (localf == null) {
       return cancel(true);
     }
-    return this.l.cancel(true);
+    return localf.cancel(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.d
  * JD-Core Version:    0.7.0.1
  */

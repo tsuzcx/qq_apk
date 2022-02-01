@@ -8,9 +8,9 @@ import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.Surface;
 import android.view.SurfaceHolder;
+import com.tencent.android.gldrawable.api.IGLDrawable;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
-import com.tencent.mobileqq.vas.gldrawable.GLDrawableWraper;
 import com.tencent.mobileqq.vas.wallpaper.contract.DrawWallpaperContract.View;
 
 public abstract class AbstractDrawWallpaperView
@@ -29,42 +29,38 @@ public abstract class AbstractDrawWallpaperView
   
   private void b(Drawable paramDrawable)
   {
-    if (GLDrawableWraper.a(paramDrawable))
+    if ((paramDrawable instanceof IGLDrawable))
     {
-      GLDrawableWraper.a().a(paramDrawable, true);
+      ((IGLDrawable)paramDrawable).setLockWH(true);
       paramDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
       return;
     }
     Rect localRect = new Rect();
     Object localObject;
-    float f2;
     if ((paramDrawable instanceof BitmapDrawable))
     {
       localObject = (BitmapDrawable)paramDrawable;
       localRect.set(0, 0, ((BitmapDrawable)localObject).getBitmap().getWidth(), ((BitmapDrawable)localObject).getBitmap().getHeight());
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRect.width() / localRect.width();
-      f2 = this.jdField_a_of_type_AndroidGraphicsRect.height() / localRect.height();
-      if (f1 <= f2) {
-        break label200;
-      }
-      localRect.right = this.jdField_a_of_type_AndroidGraphicsRect.right;
-      localRect.bottom = ((int)(f1 * localRect.bottom));
     }
-    for (;;)
+    else if ((paramDrawable instanceof ApngDrawable))
     {
-      Gravity.apply(17, localRect.width(), localRect.height(), this.jdField_a_of_type_AndroidGraphicsRect, localRect);
-      paramDrawable.setBounds(localRect);
-      return;
-      if (!(paramDrawable instanceof ApngDrawable)) {
-        break;
-      }
       localObject = (ApngDrawable)paramDrawable;
       localRect.set(0, 0, ((ApngDrawable)localObject).getImage().getWidth(), ((ApngDrawable)localObject).getImage().getHeight());
-      break;
-      label200:
+    }
+    float f1 = this.jdField_a_of_type_AndroidGraphicsRect.width() / localRect.width();
+    float f2 = this.jdField_a_of_type_AndroidGraphicsRect.height() / localRect.height();
+    if (f1 > f2)
+    {
+      localRect.right = this.jdField_a_of_type_AndroidGraphicsRect.right;
+      localRect.bottom = ((int)(localRect.bottom * f1));
+    }
+    else
+    {
       localRect.bottom = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
       localRect.right = ((int)(localRect.right * f2));
     }
+    Gravity.apply(17, localRect.width(), localRect.height(), this.jdField_a_of_type_AndroidGraphicsRect, localRect);
+    paramDrawable.setBounds(localRect);
   }
   
   abstract Canvas a(SurfaceHolder paramSurfaceHolder);
@@ -82,31 +78,32 @@ public abstract class AbstractDrawWallpaperView
   
   public final void a(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {}
-    Canvas localCanvas;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_AndroidViewSurfaceHolder == null) || (this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface() == null) || (!this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().isValid()));
-      localCanvas = a(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-    } while (localCanvas == null);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) {
-        this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-      }
-      this.jdField_a_of_type_Boolean = false;
-      b(paramDrawable);
+    if (paramDrawable == null) {
+      return;
     }
-    paramDrawable.draw(localCanvas);
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(localCanvas);
+    Object localObject = this.jdField_a_of_type_AndroidViewSurfaceHolder;
+    if ((localObject != null) && (((SurfaceHolder)localObject).getSurface() != null) && (this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().isValid()))
+    {
+      localObject = a(this.jdField_a_of_type_AndroidViewSurfaceHolder);
+      if (localObject != null)
+      {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (this.jdField_a_of_type_AndroidGraphicsRect.width() == 0) {
+            this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Canvas)localObject).getWidth(), ((Canvas)localObject).getHeight());
+          }
+          this.jdField_a_of_type_Boolean = false;
+          b(paramDrawable);
+        }
+        paramDrawable.draw((Canvas)localObject);
+        this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost((Canvas)localObject);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.view.AbstractDrawWallpaperView
  * JD-Core Version:    0.7.0.1
  */

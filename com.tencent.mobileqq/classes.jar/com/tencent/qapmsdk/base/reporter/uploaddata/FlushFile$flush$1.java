@@ -16,22 +16,27 @@ final class FlushFile$flush$1
   
   public final void run()
   {
-    StringBuffer localStringBuffer = new StringBuffer(1024);
-    Iterator localIterator = this.$metas.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuffer.append(((IMetaData)localIterator.next()).metaSerialize());
+    Object localObject1 = new StringBuffer(1024);
+    Object localObject2 = this.$metas.iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((StringBuffer)localObject1).append(((IMetaData)((Iterator)localObject2).next()).metaSerialize());
     }
     if (new File(this.$fileName).exists())
     {
-      FileUtil.Companion.writeFile(this.$fileName, localStringBuffer.toString(), true);
+      FileUtil.Companion.writeFile(this.$fileName, ((StringBuffer)localObject1).toString(), true);
       return;
     }
-    Logger.INSTANCE.w(new String[] { "QAPM_base_FlushFile", "file " + this.$fileName + " is not exists, so can not write file" });
+    localObject1 = Logger.INSTANCE;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("file ");
+    ((StringBuilder)localObject2).append(this.$fileName);
+    ((StringBuilder)localObject2).append(" is not exists, so can not write file");
+    ((Logger)localObject1).w(new String[] { "QAPM_base_FlushFile", ((StringBuilder)localObject2).toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.FlushFile.flush.1
  * JD-Core Version:    0.7.0.1
  */

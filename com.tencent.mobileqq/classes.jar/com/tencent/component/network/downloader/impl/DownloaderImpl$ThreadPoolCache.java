@@ -27,29 +27,34 @@ final class DownloaderImpl$ThreadPoolCache
   
   public PriorityThreadPool get(String paramString)
   {
-    String str = this.mName + "-" + paramString;
-    ??? = (PriorityThreadPool)this.mThreadPoolMap.get(str);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.mName);
+    ((StringBuilder)localObject1).append("-");
+    ((StringBuilder)localObject1).append(paramString);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    ??? = (PriorityThreadPool)this.mThreadPoolMap.get(localObject1);
     if (??? != null) {
       return ???;
     }
     synchronized (this.mThreadPoolMap)
     {
-      PriorityThreadPool localPriorityThreadPool = (PriorityThreadPool)this.mThreadPoolMap.get(str);
+      PriorityThreadPool localPriorityThreadPool = (PriorityThreadPool)this.mThreadPoolMap.get(localObject1);
       if (localPriorityThreadPool != null) {
         return localPriorityThreadPool;
       }
-    }
-    if ((paramString != null) && (paramString.equals(DownloadPreprocessStrategy.DownloadPool.HTTP2.getName()))) {}
-    for (paramString = new PriorityThreadPool(str, Config.getDefaultHttp2ThreadPoolSize());; paramString = new PriorityThreadPool(str, this.mPoolSize))
-    {
-      this.mThreadPoolMap.put(str, paramString);
+      if ((paramString != null) && (paramString.equals(DownloadPreprocessStrategy.DownloadPool.HTTP2.getName()))) {
+        paramString = new PriorityThreadPool((String)localObject1, Config.getDefaultHttp2ThreadPoolSize());
+      } else {
+        paramString = new PriorityThreadPool((String)localObject1, this.mPoolSize);
+      }
+      this.mThreadPoolMap.put(localObject1, paramString);
       return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.DownloaderImpl.ThreadPoolCache
  * JD-Core Version:    0.7.0.1
  */

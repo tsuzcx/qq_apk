@@ -33,37 +33,34 @@ class GiftPkgSelectDialog$SelectAdatpter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView;
-    Object localObject;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560327, null);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560214, null);
       paramView = new GiftPkgSelectDialog.ViewHolder(this.a);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380639));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369606));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379920));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131369316));
       localView.setTag(paramView);
-      localObject = (GiftServiceBean)getItem(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((GiftServiceBean)localObject).t);
-      if (GiftPkgSelectDialog.a(this.a) != paramInt) {
-        break label143;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843099);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject = (GiftPkgSelectDialog.ViewHolder)paramView.getTag();
       localView = paramView;
       paramView = (View)localObject;
-      break;
-      label143:
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843100);
     }
+    Object localObject = (GiftServiceBean)getItem(paramInt);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((GiftServiceBean)localObject).t);
+    if (GiftPkgSelectDialog.a(this.a) == paramInt) {
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843005);
+    } else {
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843006);
+    }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPkgSelectDialog.SelectAdatpter
  * JD-Core Version:    0.7.0.1
  */

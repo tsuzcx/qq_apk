@@ -27,12 +27,12 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder$Item
   MiniAppDesktopAdapter$FriendsPkViewHolder$Item(MiniAppDesktopAdapter.FriendsPkViewHolder paramFriendsPkViewHolder, View paramView)
   {
     this.mContainer = paramView;
-    this.mIcon = ((ImageView)paramView.findViewById(2131371497));
-    this.mCrown = ((ImageView)paramView.findViewById(2131371498));
-    this.mName = ((TextView)paramView.findViewById(2131371500));
-    this.mRanking = ((TextView)paramView.findViewById(2131371501));
-    this.mScore = ((TextView)paramView.findViewById(2131371502));
-    this.mUnit = ((TextView)paramView.findViewById(2131371493));
+    this.mIcon = ((ImageView)paramView.findViewById(2131371117));
+    this.mCrown = ((ImageView)paramView.findViewById(2131371118));
+    this.mName = ((TextView)paramView.findViewById(2131371120));
+    this.mRanking = ((TextView)paramView.findViewById(2131371121));
+    this.mScore = ((TextView)paramView.findViewById(2131371122));
+    this.mUnit = ((TextView)paramView.findViewById(2131371113));
   }
   
   public void gone()
@@ -45,22 +45,30 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder$Item
     this.mContainer.setVisibility(0);
     try
     {
-      Object localObject = this.this$0.itemView.getResources().getDrawable(2130840452);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      Object localObject1 = this.this$0.itemView.getResources().getDrawable(2130840321);
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
       int i = ViewUtils.a(30.0F);
-      localURLDrawableOptions.mRequestHeight = i;
-      localURLDrawableOptions.mRequestWidth = i;
-      localObject = URLDrawable.getDrawable(paramStRankingList.avatar.get(), localURLDrawableOptions);
-      ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.a(ViewUtils.a(30.0F), ViewUtils.a(30.0F)));
-      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.p);
-      this.mIcon.setImageDrawable((Drawable)localObject);
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = i;
+      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = i;
+      localObject1 = URLDrawable.getDrawable(paramStRankingList.avatar.get(), (URLDrawable.URLDrawableOptions)localObject2);
+      ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.a(ViewUtils.a(30.0F), ViewUtils.a(30.0F)));
+      ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.n);
+      this.mIcon.setImageDrawable((Drawable)localObject1);
       label104:
       this.mName.setText(paramStRankingList.nick.get());
-      this.mScore.setText("" + paramStRankingList.score.get());
+      localObject1 = this.mScore;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(paramStRankingList.score.get());
+      ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
       this.mUnit.setText(paramStRankingList.unit.get());
-      this.mRanking.setText(paramStRankingList.ranks.get() + "");
+      localObject1 = this.mRanking;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramStRankingList.ranks.get());
+      ((StringBuilder)localObject2).append("");
+      ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
@@ -78,7 +86,7 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder$Item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.FriendsPkViewHolder.Item
  * JD-Core Version:    0.7.0.1
  */

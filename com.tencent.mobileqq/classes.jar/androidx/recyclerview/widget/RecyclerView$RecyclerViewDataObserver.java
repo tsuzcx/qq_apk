@@ -53,16 +53,18 @@ class RecyclerView$RecyclerViewDataObserver
   {
     if ((RecyclerView.POST_UPDATES_ON_ANIMATION) && (this.this$0.mHasFixedSize) && (this.this$0.mIsAttached))
     {
-      ViewCompat.postOnAnimation(this.this$0, this.this$0.mUpdateChildViewsRunnable);
+      localRecyclerView = this.this$0;
+      ViewCompat.postOnAnimation(localRecyclerView, localRecyclerView.mUpdateChildViewsRunnable);
       return;
     }
-    this.this$0.mAdapterUpdateDuringMeasure = true;
-    this.this$0.requestLayout();
+    RecyclerView localRecyclerView = this.this$0;
+    localRecyclerView.mAdapterUpdateDuringMeasure = true;
+    localRecyclerView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.RecyclerViewDataObserver
  * JD-Core Version:    0.7.0.1
  */

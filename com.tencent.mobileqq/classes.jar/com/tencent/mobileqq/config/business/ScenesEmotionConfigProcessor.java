@@ -2,13 +2,13 @@ package com.tencent.mobileqq.config.business;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.ScenesRecommendManager;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.ScenesRecommendUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.impl.ScenesRecommendManagerImpl;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class ScenesEmotionConfigProcessor
   extends IQConfigProcessor<ScenesEmotionConfigProcessor.ScencesEmotionConfigContent>
@@ -23,8 +23,12 @@ public class ScenesEmotionConfigProcessor
   public ScenesEmotionConfigProcessor.ScencesEmotionConfigContent a(QConfItem[] paramArrayOfQConfItem)
   {
     ScenesEmotionConfigProcessor.ScencesEmotionConfigContent localScencesEmotionConfigContent = new ScenesEmotionConfigProcessor.ScencesEmotionConfigContent();
-    if (QLog.isColorLevel()) {
-      QLog.d("ScencesEmotionConfigProcessor", 2, "onParsed confFiles.length = " + paramArrayOfQConfItem.length);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onParsed confFiles.length = ");
+      localStringBuilder.append(paramArrayOfQConfItem.length);
+      QLog.d("ScencesEmotionConfigProcessor", 2, localStringBuilder.toString());
     }
     if (paramArrayOfQConfItem.length > 0)
     {
@@ -32,24 +36,39 @@ public class ScenesEmotionConfigProcessor
       localScencesEmotionConfigContent.jdField_a_of_type_Int = paramArrayOfQConfItem.jdField_a_of_type_Int;
       localScencesEmotionConfigContent.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.jdField_a_of_type_JavaLangString;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ScencesEmotionConfigProcessor", 2, "onParsed taskId = " + localScencesEmotionConfigContent.jdField_a_of_type_Int + " | content = " + localScencesEmotionConfigContent.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfQConfItem = new StringBuilder();
+      paramArrayOfQConfItem.append("onParsed taskId = ");
+      paramArrayOfQConfItem.append(localScencesEmotionConfigContent.jdField_a_of_type_Int);
+      paramArrayOfQConfItem.append(" | content = ");
+      paramArrayOfQConfItem.append(localScencesEmotionConfigContent.jdField_a_of_type_JavaLangString);
+      QLog.d("ScencesEmotionConfigProcessor", 2, paramArrayOfQConfItem.toString());
     }
     return localScencesEmotionConfigContent;
   }
   
   public void a(ScenesEmotionConfigProcessor.ScencesEmotionConfigContent paramScencesEmotionConfigContent)
   {
-    if ((paramScencesEmotionConfigContent != null) && (paramScencesEmotionConfigContent.jdField_a_of_type_JavaLangString != null)) {
+    if ((paramScencesEmotionConfigContent != null) && (paramScencesEmotionConfigContent.jdField_a_of_type_JavaLangString != null))
+    {
       try
       {
         String str = paramScencesEmotionConfigContent.jdField_a_of_type_JavaLangString;
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (QLog.isColorLevel()) {
-          QLog.d("ScencesEmotionConfigProcessor", 2, "onUpdate content = " + paramScencesEmotionConfigContent.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onUpdate content = ");
+          localStringBuilder.append(paramScencesEmotionConfigContent.jdField_a_of_type_JavaLangString);
+          QLog.d("ScencesEmotionConfigProcessor", 2, localStringBuilder.toString());
         }
-        ScenesRecommendUtils.a(localQQAppInterface, str);
-        ScenesRecommendManager.a(localQQAppInterface).a();
+        paramScencesEmotionConfigContent = MobileQQ.sMobileQQ.waitAppRuntime(null);
+        if (!(paramScencesEmotionConfigContent instanceof AppInterface)) {
+          return;
+        }
+        paramScencesEmotionConfigContent = (AppInterface)paramScencesEmotionConfigContent;
+        ScenesRecommendUtils.a(paramScencesEmotionConfigContent, str);
+        ScenesRecommendManagerImpl.get(paramScencesEmotionConfigContent).loadConfigFromLoacl();
         return;
       }
       catch (Exception paramScencesEmotionConfigContent)
@@ -59,7 +78,13 @@ public class ScenesEmotionConfigProcessor
         return;
       }
     }
-    QLog.e("ScencesEmotionConfigProcessor", 2, "onUpdate has empty content newConf is null = " + null);
+    else
+    {
+      paramScencesEmotionConfigContent = new StringBuilder();
+      paramScencesEmotionConfigContent.append("onUpdate has empty content newConf is null = ");
+      paramScencesEmotionConfigContent.append(null);
+      QLog.e("ScencesEmotionConfigProcessor", 2, paramScencesEmotionConfigContent.toString());
+    }
   }
   
   public Class<ScenesEmotionConfigProcessor.ScencesEmotionConfigContent> clazz()
@@ -87,8 +112,12 @@ public class ScenesEmotionConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScencesEmotionConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed, code = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("ScencesEmotionConfigProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -99,7 +128,7 @@ public class ScenesEmotionConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.ScenesEmotionConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

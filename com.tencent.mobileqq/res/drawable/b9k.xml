@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#66000000" android:endColor="#00000000" android:angle="90.0" />
-</shape>
+    <item android:state_focused="true" android:state_enabled="true" android:drawable="@drawable/g00" />
+    <item android:state_enabled="true" android:drawable="@drawable/g00" android:state_activated="true" />
+    <item android:state_enabled="true" android:drawable="@drawable/g01" />
+    <item android:drawable="@drawable/g01" />
+</selector>

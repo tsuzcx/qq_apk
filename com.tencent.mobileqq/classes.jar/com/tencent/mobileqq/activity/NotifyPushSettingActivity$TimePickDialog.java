@@ -30,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
 public class NotifyPushSettingActivity$TimePickDialog
   extends ReportDialog
@@ -49,14 +50,14 @@ public class NotifyPushSettingActivity$TimePickDialog
   
   public NotifyPushSettingActivity$TimePickDialog(Context paramContext, QQAppInterface paramQQAppInterface, FormSwitchSimpleItem paramFormSwitchSimpleItem, TextView paramTextView, CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    super(paramContext, 2131755420);
+    super(paramContext, 2131755695);
     requestWindowFeature(1);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchSimpleItem = paramFormSwitchSimpleItem;
     this.c = paramTextView;
     this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = paramOnCheckedChangeListener;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2131561121, null);
+    this.jdField_a_of_type_AndroidViewView = getLayoutInflater().inflate(2131560983, null);
     setContentView(this.jdField_a_of_type_AndroidViewView);
     paramContext = getWindow();
     paramQQAppInterface = paramContext.getAttributes();
@@ -64,7 +65,7 @@ public class NotifyPushSettingActivity$TimePickDialog
     paramQQAppInterface.height = -2;
     paramQQAppInterface.gravity = 81;
     paramContext.setAttributes(paramQQAppInterface);
-    paramContext.setWindowAnimations(2131755421);
+    paramContext.setWindowAnimations(2131755696);
     paramContext.setFlags(16777216, 16777216);
     setCancelable(true);
     setCanceledOnTouchOutside(true);
@@ -83,31 +84,38 @@ public class NotifyPushSettingActivity$TimePickDialog
     if ((!bool) && (!paramBoolean))
     {
       String str = new SimpleDateFormat("hh:mm").format(new Date(paramLong));
-      Calendar localCalendar = Calendar.getInstance();
-      localCalendar.setTimeInMillis(paramLong);
-      if (localCalendar.get(9) == 0) {
-        return HardCodeUtil.a(2131707631) + str;
+      Object localObject = Calendar.getInstance();
+      ((Calendar)localObject).setTimeInMillis(paramLong);
+      if (((Calendar)localObject).get(9) == 0)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131707656));
+        ((StringBuilder)localObject).append(str);
+        return ((StringBuilder)localObject).toString();
       }
-      return HardCodeUtil.a(2131707639) + str;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131707664));
+      ((StringBuilder)localObject).append(str);
+      return ((StringBuilder)localObject).toString();
     }
     return new SimpleDateFormat("HH:mm").format(new Date(paramLong));
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel = ((TimeWheelPanel)this.jdField_a_of_type_AndroidViewView.findViewById(2131372730));
+    this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel = ((TimeWheelPanel)((View)localObject).findViewById(2131372307));
     this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a(0, 24, 60, 0);
     this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a(true);
     this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.setViewVisibility(0, 8);
     this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.setViewVisibility(3, 0);
     this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.setScrollerStateListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364377));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131167068));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365217));
-    this.b.setTextColor(getContext().getResources().getColor(2131167074));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364275));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365095));
+    this.b.setTextColor(getContext().getResources().getColor(2131167097));
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(true);
     this.b.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -115,13 +123,13 @@ public class NotifyPushSettingActivity$TimePickDialog
     this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(true);
     this.b.setFocusable(true);
     this.b.setEnabled(false);
-    this.b.setTextColor(getContext().getResources().getColor(2131167256));
+    this.b.setTextColor(getContext().getResources().getColor(2131167287));
     if (this.jdField_a_of_type_AndroidContentContext != null)
     {
-      String str1 = HardCodeUtil.a(2131707630);
-      String str2 = HardCodeUtil.a(2131707629);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(str1);
-      this.b.setContentDescription(str2);
+      localObject = HardCodeUtil.a(2131707655);
+      String str = HardCodeUtil.a(2131707654);
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription((CharSequence)localObject);
+      this.b.setContentDescription(str);
     }
     a(null, null);
     setOnCancelListener(this);
@@ -133,13 +141,22 @@ public class NotifyPushSettingActivity$TimePickDialog
     if ((int)paramLong % 86400 % 3600 % 60 != 0) {
       l = paramLong + 60L;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a = ((int)l / 86400);
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.b = ((int)l % 86400 / 3600);
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.c = ((int)l % 86400 % 3600 / 60);
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.setValues(true);
-    String str1 = HardCodeUtil.a(2131707627) + a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() * 1000);
-    String str2 = HardCodeUtil.a(2131707627) + a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() * 1000, true);
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.setEndTime(str1, str2);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel;
+    int i = (int)l;
+    ((TimeWheelPanel)localObject1).a = (i / 86400);
+    i %= 86400;
+    ((TimeWheelPanel)localObject1).b = (i / 3600);
+    ((TimeWheelPanel)localObject1).c = (i % 3600 / 60);
+    ((TimeWheelPanel)localObject1).setValues(true);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(HardCodeUtil.a(2131707652));
+    ((StringBuilder)localObject1).append(a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() * 1000));
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131707652));
+    ((StringBuilder)localObject2).append(a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() * 1000, true));
+    localObject2 = ((StringBuilder)localObject2).toString();
+    this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.setEndTime((String)localObject1, (String)localObject2);
   }
   
   public void a(NumberWheelView paramNumberWheelView, VerticalGallery paramVerticalGallery)
@@ -150,20 +167,22 @@ public class NotifyPushSettingActivity$TimePickDialog
     if (this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() == 0)
     {
       this.b.setEnabled(false);
-      this.b.setTextColor(getContext().getResources().getColor(2131167256));
+      this.b.setTextColor(getContext().getResources().getColor(2131167287));
     }
-    for (;;)
+    else if (this.jdField_a_of_type_Boolean)
     {
-      paramNumberWheelView = HardCodeUtil.a(2131707627) + a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() * 1000);
-      paramVerticalGallery = HardCodeUtil.a(2131707627) + a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() * 1000, true);
-      this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.setEndTime(paramNumberWheelView, paramVerticalGallery);
-      return;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.b.setEnabled(true);
-        this.b.setTextColor(getContext().getResources().getColor(2131167333));
-      }
+      this.b.setEnabled(true);
+      this.b.setTextColor(getContext().getResources().getColor(2131167361));
     }
+    paramNumberWheelView = new StringBuilder();
+    paramNumberWheelView.append(HardCodeUtil.a(2131707652));
+    paramNumberWheelView.append(a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() * 1000));
+    paramNumberWheelView = paramNumberWheelView.toString();
+    paramVerticalGallery = new StringBuilder();
+    paramVerticalGallery.append(HardCodeUtil.a(2131707652));
+    paramVerticalGallery.append(a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() * 1000, true));
+    paramVerticalGallery = paramVerticalGallery.toString();
+    this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.setEndTime(paramNumberWheelView, paramVerticalGallery);
   }
   
   public void a(AtomicBoolean paramAtomicBoolean)
@@ -179,28 +198,37 @@ public class NotifyPushSettingActivity$TimePickDialog
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131364275)
     {
+      if (i == 2131365095)
+      {
+        dismiss();
+        long l1 = this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() / 60;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131707652));
+        ((StringBuilder)localObject).append(a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() * 1000));
+        localObject = ((StringBuilder)localObject).toString();
+        this.c.setText((CharSequence)localObject);
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        long l2 = NetConnInfoCenter.getServerTime();
+        long l3 = this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a();
+        ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a((int)(l2 + l3), "", "not_disturb_from_notify_push_setting_activity");
+        this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a(0, 24, 60, 0);
+        a(null, null);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(l1);
+        localStringBuilder.append("");
+        ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, localStringBuilder.toString(), "0", "", "");
+      }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       dismiss();
       onCancel(null);
-      continue;
-      dismiss();
-      long l1 = this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() / 60;
-      String str = HardCodeUtil.a(2131707627) + a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a() * 1000);
-      this.c.setText(str);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      long l2 = NetConnInfoCenter.getServerTime();
-      long l3 = this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a();
-      ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a((int)(l3 + l2), "", "not_disturb_from_notify_push_setting_activity");
-      this.jdField_a_of_type_ComTencentMobileqqAppUtilsTimeWheelPanel.a(0, 24, 60, 0);
-      a(null, null);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, l1 + "", "0", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onShow(DialogInterface paramDialogInterface)
@@ -210,7 +238,7 @@ public class NotifyPushSettingActivity$TimePickDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPushSettingActivity.TimePickDialog
  * JD-Core Version:    0.7.0.1
  */

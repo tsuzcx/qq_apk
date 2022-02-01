@@ -37,10 +37,13 @@ public class FlexNodeStyle
   
   public FlexNodeStyle(long paramLong)
   {
-    if (this.a == 0L) {
-      throw new IllegalStateException("Failed to allocate native memory");
+    long l1 = this.a;
+    if (l1 != 0L)
+    {
+      nativeSetFlexNode(l1, paramLong);
+      return;
     }
-    nativeSetFlexNode(this.a, paramLong);
+    throw new IllegalStateException("Failed to allocate native memory");
   }
   
   private native void nativeFlexNodeStyleFree(long paramLong);
@@ -213,27 +216,36 @@ public class FlexNodeStyle
   
   public void a(e parame)
   {
-    int i2 = 1;
-    int i3 = parame.ordinal();
+    int i2 = parame.ordinal();
     this.d = parame;
-    int i1 = i2;
-    switch (i3)
+    int i1 = 3;
+    if (i2 != 0)
     {
-    default: 
-      i1 = i2;
+      if (i2 == 1) {
+        break label53;
+      }
+      if (i2 == 2) {
+        break label55;
+      }
+      if (i2 == 3) {
+        break label47;
+      }
+      if (i2 == 4) {}
     }
-    for (;;)
+    else
     {
-      nativeFlexNodeStyleSetJustifyContent(this.a, i1);
-      return;
-      i1 = 2;
-      continue;
-      i1 = 3;
-      continue;
-      i1 = 6;
-      continue;
-      i1 = 7;
+      i1 = 1;
+      break label55;
     }
+    i1 = 7;
+    break label55;
+    label47:
+    i1 = 6;
+    break label55;
+    label53:
+    i1 = 2;
+    label55:
+    nativeFlexNodeStyleSetJustifyContent(this.a, i1);
   }
   
   public void a(i parami)
@@ -466,64 +478,148 @@ public class FlexNodeStyle
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("style: {");
-    localStringBuilder.append("flex-direction: " + b().toString().toLowerCase() + ", ");
-    if (j() != 0.0F) {
-      localStringBuilder.append("flex-grow: " + j() + ", ");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("style: {");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("flex-direction: ");
+    localStringBuilder2.append(b().toString().toLowerCase());
+    localStringBuilder2.append(", ");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    if (j() != 0.0F)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("flex-grow: ");
+      localStringBuilder2.append(j());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (l().a() != (0.0F / 0.0F)) {
-      localStringBuilder.append("flex-basis: " + l().a() + ", ");
+    if (l().a() != (0.0F / 0.0F))
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("flex-basis: ");
+      localStringBuilder2.append(l().a());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (k() != 0.0F) {
-      localStringBuilder.append("flex-shrink: " + k() + ", ");
+    if (k() != 0.0F)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("flex-shrink: ");
+      localStringBuilder2.append(k());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (c() != e.a) {
-      localStringBuilder.append("justifycontent: " + c().toString().toLowerCase() + ", ");
+    if (c() != e.a)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("justifycontent: ");
+      localStringBuilder2.append(c().toString().toLowerCase());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (f() != com.tencent.mtt.hippy.dom.a.a.b) {
-      localStringBuilder.append("aligncontent: " + f().toString().toLowerCase() + ", ");
+    if (f() != com.tencent.mtt.hippy.dom.a.a.b)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("aligncontent: ");
+      localStringBuilder2.append(f().toString().toLowerCase());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (d() != com.tencent.mtt.hippy.dom.a.a.e) {
-      localStringBuilder.append("alignitems: " + d().toString().toLowerCase() + ", ");
+    if (d() != com.tencent.mtt.hippy.dom.a.a.e)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("alignitems: ");
+      localStringBuilder2.append(d().toString().toLowerCase());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (e() != com.tencent.mtt.hippy.dom.a.a.a) {
-      localStringBuilder.append("alignself: " + e().toString().toLowerCase() + ", ");
+    if (e() != com.tencent.mtt.hippy.dom.a.a.a)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("alignself: ");
+      localStringBuilder2.append(e().toString().toLowerCase());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (h() != k.a) {
-      localStringBuilder.append("wrap: " + h().toString().toLowerCase() + ", ");
+    if (h() != k.a)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("wrap: ");
+      localStringBuilder2.append(h().toString().toLowerCase());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (i() != i.a) {
-      localStringBuilder.append("overflow: " + i().toString().toLowerCase() + ", ");
+    if (i() != i.a)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("overflow: ");
+      localStringBuilder2.append(i().toString().toLowerCase());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (g() != j.a) {
-      localStringBuilder.append("positionType: " + g().toString().toLowerCase() + ", ");
+    if (g() != j.a)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("positionType: ");
+      localStringBuilder2.append(g().toString().toLowerCase());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (m().a() != 0.0F) {
-      localStringBuilder.append("width: " + m().a() + ", ");
+    if (m().a() != 0.0F)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("width: ");
+      localStringBuilder2.append(m().a());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (n().a() != 0.0F) {
-      localStringBuilder.append("height: " + n().a() + ", ");
+    if (n().a() != 0.0F)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("height: ");
+      localStringBuilder2.append(n().a());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (q().a() != 0.0F) {
-      localStringBuilder.append("max-width: " + q().a() + ", ");
+    if (q().a() != 0.0F)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("max-width: ");
+      localStringBuilder2.append(q().a());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (r().a() != 0.0F) {
-      localStringBuilder.append("max-height: " + r().a() + ", ");
+    if (r().a() != 0.0F)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("max-height: ");
+      localStringBuilder2.append(r().a());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (o().a() != 0.0F) {
-      localStringBuilder.append("min-height: " + o().a() + ", ");
+    if (o().a() != 0.0F)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("min-height: ");
+      localStringBuilder2.append(o().a());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (p().a() != 0.0F) {
-      localStringBuilder.append("min-height: " + p().a() + ", ");
+    if (p().a() != 0.0F)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("min-height: ");
+      localStringBuilder2.append(p().a());
+      localStringBuilder2.append(", ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    localStringBuilder1.append("}");
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.flexbox.FlexNodeStyle
  * JD-Core Version:    0.7.0.1
  */

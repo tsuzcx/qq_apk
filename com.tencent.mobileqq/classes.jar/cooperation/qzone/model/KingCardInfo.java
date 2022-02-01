@@ -16,14 +16,15 @@ public class KingCardInfo
   
   protected KingCardInfo(Parcel paramParcel)
   {
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.showGuide = bool;
-      this.buttonTitle = paramParcel.readString();
-      this.jumpUrl = paramParcel.readString();
-      return;
+    boolean bool;
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.showGuide = bool;
+    this.buttonTitle = paramParcel.readString();
+    this.jumpUrl = paramParcel.readString();
   }
   
   public KingCardInfo(boolean paramBoolean, String paramString1, String paramString2)
@@ -40,24 +41,27 @@ public class KingCardInfo
   
   public String toString()
   {
-    return "KingCardInfo [showGuide=" + this.showGuide + ", buttonTitle=" + this.buttonTitle + ", jumpUrl=" + this.jumpUrl + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KingCardInfo [showGuide=");
+    localStringBuilder.append(this.showGuide);
+    localStringBuilder.append(", buttonTitle=");
+    localStringBuilder.append(this.buttonTitle);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.showGuide) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.buttonTitle);
-      paramParcel.writeString(this.jumpUrl);
-      return;
-    }
+    paramParcel.writeByte((byte)this.showGuide);
+    paramParcel.writeString(this.buttonTitle);
+    paramParcel.writeString(this.jumpUrl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.KingCardInfo
  * JD-Core Version:    0.7.0.1
  */

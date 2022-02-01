@@ -49,6 +49,7 @@ public final class be
         String str2;
         n localn;
         paramu.printStackTrace();
+        return;
       }
       try
       {
@@ -66,10 +67,10 @@ public final class be
         str2 = localJSONArray2.getString(k);
         localn = new n();
         if (!localn.a(str2)) {
-          break label200;
+          break label201;
         }
         localv.c.add(localn);
-        break label200;
+        break label201;
       }
       paramu.b.put(localv.a, localv);
       j += 1;
@@ -80,14 +81,15 @@ public final class be
   
   public final List<v> a()
   {
-    if ((this.b != null) && (this.b.a.equals(x.b())))
+    Object localObject = this.b;
+    if ((localObject != null) && (((u)localObject).a.equals(x.b())))
     {
-      ArrayList localArrayList = new ArrayList();
+      localObject = new ArrayList();
       Iterator localIterator = this.b.b.entrySet().iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((Map.Entry)localIterator.next()).getValue());
+        ((List)localObject).add(((Map.Entry)localIterator.next()).getValue());
       }
-      return localArrayList;
+      return localObject;
     }
     m.j().post(new bf(this));
     return null;
@@ -111,7 +113,7 @@ public final class be
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.be
  * JD-Core Version:    0.7.0.1
  */

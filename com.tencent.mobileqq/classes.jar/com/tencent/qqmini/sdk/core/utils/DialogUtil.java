@@ -53,7 +53,7 @@ public class DialogUtil
     localAppCloseDialog.setNegativeButton(paramString2, paramOnClickListener1);
     localAppCloseDialog.setPositiveButton(paramString3, paramOnClickListener2);
     if (paramFloat > 0.0F) {
-      localAppCloseDialog.setTitleHeight((int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F));
+      localAppCloseDialog.setTitleHeight((int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F));
     }
     if (paramBoolean2) {
       localAppCloseDialog.setTitleTextBold();
@@ -102,7 +102,7 @@ public class DialogUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.DialogUtil
  * JD-Core Version:    0.7.0.1
  */

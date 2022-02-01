@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 public final class ev
 {
-  public static int a = 0;
+  public static int a;
   public final ex b;
   public final et c;
   public final eu d;
@@ -30,146 +30,233 @@ public final class ev
     if (paramea == null) {
       return null;
     }
-    for (;;)
+    try
     {
-      try
+      localObject1 = this.c;
+      i = 0;
+      if (localObject1 == null)
       {
+        bool = true;
+        break label56;
+      }
+      if (a == this.c.e) {
+        break label1357;
+      }
+      bool = true;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        Object localObject1;
+        int i;
+        Object localObject2;
+        int j;
+        Object localObject3;
         Object localObject4;
-        if (this.c == null)
-        {
-          bool = true;
-          localObject1 = this.b;
-          if (localObject1 == null)
-          {
-            localObject1 = null;
-            break label1118;
-            localObject4 = fp.a(this.c, bool);
-            localObject2 = this.d;
-            if (localObject2 != null) {
-              continue;
-            }
-            localObject2 = "{}";
-            du localdu = paramea.b;
-            localObject3 = new HashMap();
-            ((HashMap)localObject3).put("imei", localdu.a());
-            ((HashMap)localObject3).put("imsi", localdu.b());
-            if (localdu.p == null) {
-              localdu.p = new Pair((String)dy.b("LocationSDK", "location_device_id_type", ""), (String)dy.b("LocationSDK", "location_device_id", ""));
-            }
-            ((HashMap)localObject3).put("idfa", localdu.p.second);
-            ((HashMap)localObject3).put("phonenum", co.e(localdu.d));
-            ((HashMap)localObject3).put("qq", co.e(localdu.f));
-            ((HashMap)localObject3).put("mac", localdu.c().toLowerCase(Locale.ENGLISH));
-            localObject5 = new JSONObject((Map)localObject3).toString();
-            String str2 = localdu.f();
-            fm.a();
-            int k = fm.a(paramea.a);
-            String str1 = fq.c(paramea);
-            localObject3 = localdu.j;
-            paramea = (ea)localObject3;
-            if (localObject3 != null) {
-              paramea = ((String)localObject3).replace("\"", "");
-            }
-            localObject3 = paramea;
-            if (paramea != null) {
-              localObject3 = paramea.replace("|", "");
-            }
-            paramea = (String)localObject3 + "_" + localdu.h;
-            int j = 203;
-            i = j;
-            if (paramBoolean2)
-            {
-              localObject3 = localdu.a();
-              i = j;
-              if (localObject3 != null) {
-                i = Math.abs(((String)localObject3).hashCode()) % 1000 + 1001;
-              }
-            }
-            localObject3 = "{\"version\":\"" + localdu.d() + "\",\"address\":" + paramInt1;
-            paramea = (String)localObject3 + ",\"source\":" + i + ",\"access_token\":\"" + str2 + "\",\"app_name\":\"" + paramString + "\",\"app_label\":\"" + paramea + "\",\"bearing\":1";
-            paramString = paramea;
-            if (paramInt2 >= 0) {
-              paramString = paramea + ",\"control\":" + paramInt2;
-            }
-            if ((!paramBoolean1) || (paramBoolean2)) {
-              continue;
-            }
-            paramString = paramString + ",\"detectgps\":1";
-            paramString = paramString + ",\"pstat\":" + k;
-            paramString = paramString + ",\"wlan\":" + str1;
-            return paramString + ",\"attribute\":" + (String)localObject5 + ",\"location\":" + (String)localObject2 + ",\"cells\":" + (String)localObject4 + ",\"wifis\":" + (String)localObject1 + "}";
-          }
-        }
-        else
-        {
-          if (a == this.c.e) {
-            break label1131;
-          }
-          bool = true;
-          a = this.c.e;
-          continue;
-        }
-        localObject1 = Collections.unmodifiableList(((ex)localObject1).b);
-        break label1118;
-        Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("[");
-        if (((List)localObject1).size() <= 0)
-        {
-          ((StringBuilder)localObject2).append("]");
-          localObject1 = ((StringBuilder)localObject2).toString();
-          continue;
-        }
-        Object localObject3 = ((List)localObject1).iterator();
-        int i = 0;
-        if (((Iterator)localObject3).hasNext())
+        Object localObject5;
+        double d1;
+        continue;
+        boolean bool = false;
+      }
+    }
+    a = this.c.e;
+    label56:
+    localObject1 = this.b;
+    if (localObject1 == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = Collections.unmodifiableList(((ex)localObject1).b);
+    }
+    if (localObject1 == null)
+    {
+      localObject1 = "[]";
+    }
+    else
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[");
+      j = ((List)localObject1).size();
+      if (j <= 0)
+      {
+        ((StringBuilder)localObject2).append("]");
+        localObject1 = ((StringBuilder)localObject2).toString();
+      }
+      else
+      {
+        localObject3 = ((List)localObject1).iterator();
+        while (((Iterator)localObject3).hasNext())
         {
           localObject4 = (ScanResult)((Iterator)localObject3).next();
           ((List)localObject1).size();
           if (i > 0) {
             ((StringBuilder)localObject2).append(",");
           }
-          ((StringBuilder)localObject2).append("{\"mac\":\"").append(((ScanResult)localObject4).BSSID).append("\",");
-          ((StringBuilder)localObject2).append("\"rssi\":").append(((ScanResult)localObject4).level).append("}");
+          ((StringBuilder)localObject2).append("{\"mac\":\"");
+          ((StringBuilder)localObject2).append(((ScanResult)localObject4).BSSID);
+          ((StringBuilder)localObject2).append("\",");
+          ((StringBuilder)localObject2).append("\"rssi\":");
+          ((StringBuilder)localObject2).append(((ScanResult)localObject4).level);
+          ((StringBuilder)localObject2).append("}");
           i += 1;
-          continue;
         }
         ((StringBuilder)localObject2).append("]");
         localObject1 = ((StringBuilder)localObject2).toString();
-        continue;
-        localObject3 = ((eu)localObject2).a;
-        Object localObject5 = new StringBuilder();
-        double d1 = fp.a(((Location)localObject3).getLatitude(), 6);
-        double d2 = fp.a(((Location)localObject3).getLongitude(), 6);
-        double d3 = fp.a(((Location)localObject3).getAltitude(), 1);
-        double d4 = fp.a(((Location)localObject3).getAccuracy(), 1);
-        double d5 = fp.a(((Location)localObject3).getBearing(), 1);
-        double d6 = fp.a(((Location)localObject3).getSpeed(), 1);
-        ((StringBuilder)localObject5).append("{");
-        ((StringBuilder)localObject5).append("\"latitude\":");
-        ((StringBuilder)localObject5).append(d1);
-        ((StringBuilder)localObject5).append(",\"longitude\":");
-        ((StringBuilder)localObject5).append(d2);
-        ((StringBuilder)localObject5).append(",\"additional\":");
-        ((StringBuilder)localObject5).append("\"" + d3 + "," + d4 + "," + d5 + "," + d6 + "," + ((eu)localObject2).b + "\"");
-        ((StringBuilder)localObject5).append("}");
-        localObject2 = ((StringBuilder)localObject5).toString();
-        continue;
-        paramString = paramString + ",\"detectgps\":0";
-        continue;
-        if (localObject1 != null) {
-          continue;
+      }
+    }
+    localObject4 = fp.a(this.c, bool);
+    localObject2 = this.d;
+    if (localObject2 == null)
+    {
+      localObject2 = "{}";
+    }
+    else
+    {
+      localObject5 = ((eu)localObject2).a;
+      localObject3 = new StringBuilder();
+      d1 = ((Location)localObject5).getLatitude();
+    }
+    try
+    {
+      d1 = fp.a(d1, 6);
+      double d2 = fp.a(((Location)localObject5).getLongitude(), 6);
+      double d3 = fp.a(((Location)localObject5).getAltitude(), 1);
+      double d4 = fp.a(((Location)localObject5).getAccuracy(), 1);
+      double d5 = fp.a(((Location)localObject5).getBearing(), 1);
+      double d6 = fp.a(((Location)localObject5).getSpeed(), 1);
+      ((StringBuilder)localObject3).append("{");
+      ((StringBuilder)localObject3).append("\"latitude\":");
+      ((StringBuilder)localObject3).append(d1);
+      ((StringBuilder)localObject3).append(",\"longitude\":");
+      ((StringBuilder)localObject3).append(d2);
+      ((StringBuilder)localObject3).append(",\"additional\":");
+      localObject5 = new StringBuilder("\"");
+      ((StringBuilder)localObject5).append(d3);
+      ((StringBuilder)localObject5).append(",");
+      ((StringBuilder)localObject5).append(d4);
+      ((StringBuilder)localObject5).append(",");
+      ((StringBuilder)localObject5).append(d5);
+      ((StringBuilder)localObject5).append(",");
+      ((StringBuilder)localObject5).append(d6);
+      ((StringBuilder)localObject5).append(",");
+      ((StringBuilder)localObject5).append(((eu)localObject2).b);
+      ((StringBuilder)localObject5).append("\"");
+      ((StringBuilder)localObject3).append(((StringBuilder)localObject5).toString());
+      ((StringBuilder)localObject3).append("}");
+      localObject2 = ((StringBuilder)localObject3).toString();
+      localObject3 = paramea;
+      Object localObject7 = ((ea)localObject3).b;
+      localObject5 = new HashMap();
+      ((HashMap)localObject5).put("imei", ((du)localObject7).a());
+      ((HashMap)localObject5).put("imsi", ((du)localObject7).b());
+      Object localObject6 = ((du)localObject7).p;
+      if (localObject6 == null) {
+        ((du)localObject7).p = new Pair((String)dy.b("LocationSDK", "location_device_id_type", ""), (String)dy.b("LocationSDK", "location_device_id", ""));
+      }
+      ((HashMap)localObject5).put("idfa", ((du)localObject7).p.second);
+      ((HashMap)localObject5).put("phonenum", co.e(((du)localObject7).d));
+      ((HashMap)localObject5).put("qq", co.e(((du)localObject7).f));
+      ((HashMap)localObject5).put("mac", ((du)localObject7).c().toLowerCase(Locale.ENGLISH));
+      localObject5 = new JSONObject((Map)localObject5).toString();
+      String str = ((du)localObject7).f();
+      fm.a();
+      int k = fm.a(((ea)localObject3).a);
+      localObject6 = fq.c(paramea);
+      localObject3 = ((du)localObject7).j;
+      paramea = (ea)localObject3;
+      if (localObject3 != null) {
+        paramea = ((String)localObject3).replace("\"", "");
+      }
+      localObject3 = paramea;
+      if (paramea != null) {
+        localObject3 = paramea.replace("|", "");
+      }
+      paramea = new StringBuilder();
+      paramea.append((String)localObject3);
+      paramea.append("_");
+      paramea.append(((du)localObject7).h);
+      paramea = paramea.toString();
+      j = 203;
+      i = j;
+      if (paramBoolean2)
+      {
+        localObject3 = ((du)localObject7).a();
+        i = j;
+        if (localObject3 != null) {
+          i = Math.abs(((String)localObject3).hashCode()) % 1000 + 1001;
         }
       }
-      catch (Exception paramString)
+      localObject3 = new StringBuilder("{\"version\":\"");
+      ((StringBuilder)localObject3).append(((du)localObject7).d());
+      ((StringBuilder)localObject3).append("\",\"address\":");
+      ((StringBuilder)localObject3).append(paramInt1);
+      localObject3 = ((StringBuilder)localObject3).toString();
+      localObject7 = new StringBuilder();
+      ((StringBuilder)localObject7).append((String)localObject3);
+      ((StringBuilder)localObject7).append(",\"source\":");
+      ((StringBuilder)localObject7).append(i);
+      ((StringBuilder)localObject7).append(",\"access_token\":\"");
+      ((StringBuilder)localObject7).append(str);
+      ((StringBuilder)localObject7).append("\",\"app_name\":\"");
+      ((StringBuilder)localObject7).append(paramString);
+      ((StringBuilder)localObject7).append("\",\"app_label\":\"");
+      ((StringBuilder)localObject7).append(paramea);
+      ((StringBuilder)localObject7).append("\",\"bearing\":1");
+      paramea = ((StringBuilder)localObject7).toString();
+      paramString = paramea;
+      if (paramInt2 >= 0)
       {
-        return null;
+        paramString = new StringBuilder();
+        paramString.append(paramea);
+        paramString.append(",\"control\":");
+        paramString.append(paramInt2);
+        paramString = paramString.toString();
       }
-      label1118:
-      Object localObject1 = "[]";
-      continue;
-      label1131:
-      boolean bool = false;
+      if ((paramBoolean1) && (!paramBoolean2))
+      {
+        paramea = new StringBuilder();
+        paramea.append(paramString);
+        paramea.append(",\"detectgps\":1");
+        paramString = paramea.toString();
+      }
+      else
+      {
+        paramea = new StringBuilder();
+        paramea.append(paramString);
+        paramea.append(",\"detectgps\":0");
+        paramString = paramea.toString();
+      }
+      paramea = new StringBuilder();
+      paramea.append(paramString);
+      paramea.append(",\"pstat\":");
+      paramea.append(k);
+      paramString = paramea.toString();
+      paramea = new StringBuilder();
+      paramea.append(paramString);
+      paramea.append(",\"wlan\":");
+      paramea.append((String)localObject6);
+      paramString = paramea.toString();
+      paramea = new StringBuilder();
+      paramea.append(paramString);
+      paramea.append(",\"attribute\":");
+      paramea.append((String)localObject5);
+      paramea.append(",\"location\":");
+      paramea.append((String)localObject2);
+      paramea.append(",\"cells\":");
+      paramea.append((String)localObject4);
+      paramea.append(",\"wifis\":");
+      paramea.append((String)localObject1);
+      paramea.append("}");
+      paramString = paramea.toString();
+      return paramString;
     }
+    catch (Exception paramString)
+    {
+      label1345:
+      break label1345;
+    }
+    return null;
+    return null;
   }
   
   public final String a(int paramInt, String paramString, ea paramea, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -192,7 +279,7 @@ public final class ev
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ev
  * JD-Core Version:    0.7.0.1
  */

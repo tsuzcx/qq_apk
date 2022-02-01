@@ -21,30 +21,30 @@ public final class ItemManager
   
   void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged == null) {}
-    AbsListView localAbsListView;
-    ListAdapter localListAdapter;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged;
+    if (localObject == null) {
       return;
-      localAbsListView = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
-      localListAdapter = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
-      this.jdField_b_of_type_Boolean = false;
-    } while (localListAdapter == null);
+    }
+    localObject = ((ItemManaged)localObject).a();
+    ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
+    this.jdField_b_of_type_Boolean = false;
+    if (localListAdapter == null) {
+      return;
+    }
     long l1 = SystemClock.uptimeMillis();
-    int j = localAbsListView.getChildCount();
+    int j = ((AbsListView)localObject).getChildCount();
     int i = 0;
     while (i < j)
     {
-      View localView = localAbsListView.getChildAt(i);
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localAbsListView, localListAdapter, localView, l1);
+      View localView = ((AbsListView)localObject).getChildAt(i);
+      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a((View)localObject, localListAdapter, localView, l1);
       i += 1;
-      l1 += 1L;
+      l1 = 1L + l1;
     }
     long l3 = l1;
     if (this.jdField_a_of_type_Boolean)
     {
-      j = localAbsListView.getLastVisiblePosition() + 1;
+      j = ((AbsListView)localObject).getLastVisiblePosition() + 1;
       long l2 = l1;
       if (j > 0)
       {
@@ -60,12 +60,12 @@ public final class ItemManager
           if (i >= k) {
             break;
           }
-          this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localAbsListView, localListAdapter, i, l1);
+          this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a((View)localObject, localListAdapter, i, l1);
           i += 1;
           l1 += 1L;
         }
       }
-      j = localAbsListView.getFirstVisiblePosition();
+      j = ((AbsListView)localObject).getFirstVisiblePosition();
       l3 = l2;
       if (j >= this.jdField_a_of_type_Int)
       {
@@ -76,7 +76,7 @@ public final class ItemManager
           if (i < j - this.jdField_a_of_type_Int) {
             break;
           }
-          this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localAbsListView, localListAdapter, i, l2);
+          this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a((View)localObject, localListAdapter, i, l2);
           i -= 1;
           l2 += 1L;
         }
@@ -84,27 +84,29 @@ public final class ItemManager
     }
     this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Long);
     this.jdField_a_of_type_Long = l3;
-    localAbsListView.invalidate();
+    ((AbsListView)localObject).invalidate();
   }
   
   void a(View paramView1, View paramView2, int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
     ListAdapter localListAdapter = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
-    if ((this.jdField_b_of_type_Int != 2) && (!this.jdField_b_of_type_Boolean)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
-      return;
+    boolean bool;
+    if ((this.jdField_b_of_type_Int != 2) && (!this.jdField_b_of_type_Boolean)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
   }
   
   void a(ItemManaged paramItemManaged)
   {
     this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged = paramItemManaged;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged != null)
+    paramItemManaged = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged;
+    if (paramItemManaged != null)
     {
-      paramItemManaged = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a();
+      paramItemManaged = paramItemManaged.a();
       paramItemManaged.setOnScrollListener(new ItemManager.ScrollManager(this, null));
       paramItemManaged.setOnTouchListener(new ItemManager.FingerTracker(this, null));
       paramItemManaged.setOnItemSelectedListener(new ItemManager.SelectionTracker(this, null));
@@ -121,15 +123,18 @@ public final class ItemManager
   
   void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged == null) {
-      throw new IllegalStateException("Cannot cancel requests with no managed view");
+    ItemManaged localItemManaged = this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged;
+    if (localItemManaged != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(localItemManaged.a());
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManaged.a());
+    throw new IllegalStateException("Cannot cancel requests with no managed view");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemManager
  * JD-Core Version:    0.7.0.1
  */

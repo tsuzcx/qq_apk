@@ -27,25 +27,27 @@ public final class TroopListHandlerProcessorConfig
       if (TroopCustomizedProcessorRegister.jdField_a_of_type_JavaUtilArrayList != null)
       {
         Iterator localIterator = TroopCustomizedProcessorRegister.jdField_a_of_type_JavaUtilArrayList.iterator();
-        for (;;)
+        while (localIterator.hasNext())
         {
-          if (localIterator.hasNext())
+          Object localObject3 = (Class)localIterator.next();
+          try
           {
-            Object localObject3 = (Class)localIterator.next();
-            try
-            {
-              localObject3 = (AbsTroopListHandlerProcessor)((Class)localObject3).newInstance();
-              jdField_a_of_type_JavaUtilArrayList.add(localObject3);
-            }
-            catch (Throwable localThrowable)
-            {
-              QLog.e("TroopListHandlerProcessorConfig", 1, "Init Fail,", localThrowable);
-            }
+            localObject3 = (AbsTroopListHandlerProcessor)((Class)localObject3).newInstance();
+            jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("TroopListHandlerProcessorConfig", 1, "Init Fail,", localThrowable);
           }
         }
       }
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      return;
     }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public static void a(@NonNull AppInterface paramAppInterface)
@@ -82,7 +84,7 @@ public final class TroopListHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopListHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

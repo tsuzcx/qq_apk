@@ -14,7 +14,7 @@ public final class CommunityInfo$Creator
   public final Object createFromParcel(@NotNull Parcel paramParcel)
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "in");
-    return new CommunityInfo(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString());
+    return new CommunityInfo(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString());
   }
   
   @NotNull
@@ -25,7 +25,7 @@ public final class CommunityInfo$Creator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.CommunityInfo.Creator
  * JD-Core Version:    0.7.0.1
  */

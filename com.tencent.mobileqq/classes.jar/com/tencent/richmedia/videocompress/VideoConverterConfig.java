@@ -31,19 +31,16 @@ public class VideoConverterConfig
   
   private static boolean shouldSetRotation()
   {
-    boolean bool = false;
     if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
-      bool = true;
+      return true;
     }
-    while (Build.VERSION.SDK_INT <= 19) {
-      return bool;
-    }
+    if (Build.VERSION.SDK_INT > 19) {}
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmedia.videocompress.VideoConverterConfig
  * JD-Core Version:    0.7.0.1
  */

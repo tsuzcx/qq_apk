@@ -14,12 +14,14 @@ class LoadDataJob$1
     if (QLog.isColorLevel()) {
       QLog.d("LoadDataJob", 2, "run write parcel begin:");
     }
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam, LoadDataJob.a(this.this$0, this.this$0.a, false));
-    if (this.this$0.a(this.jdField_a_of_type_JavaUtilList, LoadDataJob.b(this.this$0, this.this$0.a, false)))
+    Object localObject = this.this$0;
+    ((LoadDataJob)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam, LoadDataJob.a((LoadDataJob)localObject, ((LoadDataJob)localObject).a, false));
+    localObject = this.this$0;
+    if (((LoadDataJob)localObject).a(this.jdField_a_of_type_JavaUtilList, LoadDataJob.b((LoadDataJob)localObject, ((LoadDataJob)localObject).a, false)))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((PathDrawer)localIterator.next()).b();
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PathDrawer)((Iterator)localObject).next()).b();
       }
     }
     if (QLog.isColorLevel()) {
@@ -29,7 +31,7 @@ class LoadDataJob$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LoadDataJob.1
  * JD-Core Version:    0.7.0.1
  */

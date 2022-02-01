@@ -13,12 +13,12 @@ class ForwardRecentActivity$2
   public void onGlobalLayout()
   {
     this.a.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ForwardRecentActivity.a(this.a);
+    ForwardRecentActivity.access$000(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ class TroopOnlineMemberBar$3
     paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
     ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getLayoutParams()).topMargin = paramValueAnimator.intValue();
     this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.requestLayout();
-    if (paramValueAnimator.intValue() <= -TroopOnlineMemberBar.jdField_a_of_type_Int + this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299166))
+    if (paramValueAnimator.intValue() <= -TroopOnlineMemberBar.jdField_a_of_type_Int + this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299168))
     {
       if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) {
         this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a(false);
@@ -29,7 +29,7 @@ class TroopOnlineMemberBar$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberBar.3
  * JD-Core Version:    0.7.0.1
  */

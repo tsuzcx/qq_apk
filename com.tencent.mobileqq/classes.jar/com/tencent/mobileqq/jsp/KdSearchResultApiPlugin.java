@@ -10,7 +10,7 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 public class KdSearchResultApiPlugin
   extends WebViewPlugin
 {
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (("nvPopToRoot".equals(paramString3)) && (paramVarArgs.length > 0))
     {
@@ -25,7 +25,7 @@ public class KdSearchResultApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.KdSearchResultApiPlugin
  * JD-Core Version:    0.7.0.1
  */

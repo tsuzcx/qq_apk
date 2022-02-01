@@ -4,29 +4,30 @@ import android.graphics.Bitmap;
 
 public class BitmapCreatorGetter
 {
-  BitmapCreator nextBitmapCreator;
+  IBitmapCreator nextBitmapCreator;
   
   protected Bitmap getBitmap(Bitmap paramBitmap)
   {
-    if (this.nextBitmapCreator == null) {
+    IBitmapCreator localIBitmapCreator = this.nextBitmapCreator;
+    if (localIBitmapCreator == null) {
       return paramBitmap;
     }
-    return this.nextBitmapCreator.creatBitmap(paramBitmap);
+    return localIBitmapCreator.creatBitmap(paramBitmap);
   }
   
-  public BitmapCreator getNextBitmapCreator()
+  public IBitmapCreator getNextBitmapCreator()
   {
     return this.nextBitmapCreator;
   }
   
-  public void setNextBitmapCreator(BitmapCreator paramBitmapCreator)
+  public void setNextBitmapCreator(IBitmapCreator paramIBitmapCreator)
   {
-    this.nextBitmapCreator = paramBitmapCreator;
+    this.nextBitmapCreator = paramIBitmapCreator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.bitmapcreator.BitmapCreatorGetter
  * JD-Core Version:    0.7.0.1
  */

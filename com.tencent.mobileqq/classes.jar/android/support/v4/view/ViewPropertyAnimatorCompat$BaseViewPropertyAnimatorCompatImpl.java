@@ -11,31 +11,33 @@ class ViewPropertyAnimatorCompat$BaseViewPropertyAnimatorCompatImpl
   
   private void postStartMessage(ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat, View paramView)
   {
-    if (this.mStarterMap != null) {}
-    for (Runnable localRunnable = (Runnable)this.mStarterMap.get(paramView);; localRunnable = null)
-    {
-      Object localObject = localRunnable;
-      if (localRunnable == null)
-      {
-        localObject = new ViewPropertyAnimatorCompat.BaseViewPropertyAnimatorCompatImpl.Starter(this, paramViewPropertyAnimatorCompat, paramView, null);
-        if (this.mStarterMap == null) {
-          this.mStarterMap = new WeakHashMap();
-        }
-        this.mStarterMap.put(paramView, localObject);
-      }
-      paramView.removeCallbacks((Runnable)localObject);
-      paramView.post((Runnable)localObject);
-      return;
+    Object localObject1 = this.mStarterMap;
+    if (localObject1 != null) {
+      localObject1 = (Runnable)((WeakHashMap)localObject1).get(paramView);
+    } else {
+      localObject1 = null;
     }
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject2 = new ViewPropertyAnimatorCompat.BaseViewPropertyAnimatorCompatImpl.Starter(this, paramViewPropertyAnimatorCompat, paramView, null);
+      if (this.mStarterMap == null) {
+        this.mStarterMap = new WeakHashMap();
+      }
+      this.mStarterMap.put(paramView, localObject2);
+    }
+    paramView.removeCallbacks((Runnable)localObject2);
+    paramView.post((Runnable)localObject2);
   }
   
   private void removeStartMessage(View paramView)
   {
-    if (this.mStarterMap != null)
+    Object localObject = this.mStarterMap;
+    if (localObject != null)
     {
-      Runnable localRunnable = (Runnable)this.mStarterMap.get(paramView);
-      if (localRunnable != null) {
-        paramView.removeCallbacks(localRunnable);
+      localObject = (Runnable)((WeakHashMap)localObject).get(paramView);
+      if (localObject != null) {
+        paramView.removeCallbacks((Runnable)localObject);
       }
     }
   }
@@ -43,26 +45,27 @@ class ViewPropertyAnimatorCompat$BaseViewPropertyAnimatorCompatImpl
   private void startAnimation(ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat, View paramView)
   {
     Object localObject = paramView.getTag(2113929216);
-    if ((localObject instanceof ViewPropertyAnimatorListener)) {}
-    for (localObject = (ViewPropertyAnimatorListener)localObject;; localObject = null)
+    if ((localObject instanceof ViewPropertyAnimatorListener)) {
+      localObject = (ViewPropertyAnimatorListener)localObject;
+    } else {
+      localObject = null;
+    }
+    Runnable localRunnable = ViewPropertyAnimatorCompat.access$100(paramViewPropertyAnimatorCompat);
+    paramViewPropertyAnimatorCompat = ViewPropertyAnimatorCompat.access$000(paramViewPropertyAnimatorCompat);
+    if (localRunnable != null) {
+      localRunnable.run();
+    }
+    if (localObject != null)
     {
-      Runnable localRunnable = ViewPropertyAnimatorCompat.access$100(paramViewPropertyAnimatorCompat);
-      paramViewPropertyAnimatorCompat = ViewPropertyAnimatorCompat.access$000(paramViewPropertyAnimatorCompat);
-      if (localRunnable != null) {
-        localRunnable.run();
-      }
-      if (localObject != null)
-      {
-        ((ViewPropertyAnimatorListener)localObject).onAnimationStart(paramView);
-        ((ViewPropertyAnimatorListener)localObject).onAnimationEnd(paramView);
-      }
-      if (paramViewPropertyAnimatorCompat != null) {
-        paramViewPropertyAnimatorCompat.run();
-      }
-      if (this.mStarterMap != null) {
-        this.mStarterMap.remove(paramView);
-      }
-      return;
+      ((ViewPropertyAnimatorListener)localObject).onAnimationStart(paramView);
+      ((ViewPropertyAnimatorListener)localObject).onAnimationEnd(paramView);
+    }
+    if (paramViewPropertyAnimatorCompat != null) {
+      paramViewPropertyAnimatorCompat.run();
+    }
+    paramViewPropertyAnimatorCompat = this.mStarterMap;
+    if (paramViewPropertyAnimatorCompat != null) {
+      paramViewPropertyAnimatorCompat.remove(paramView);
     }
   }
   

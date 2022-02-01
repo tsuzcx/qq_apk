@@ -33,9 +33,10 @@ public class ViewAnimation
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     paramTransformation = paramTransformation.getMatrix();
-    if (this.mImageLayer != null)
+    ImageLayer localImageLayer = this.mImageLayer;
+    if (localImageLayer != null)
     {
-      this.resMatrix.set(this.mImageLayer.getMatrix());
+      this.resMatrix.set(localImageLayer.getMatrix());
       if (this.enableXCoordinateMirrored) {
         mirrorXCoordinate(this.resMatrix);
       }
@@ -67,7 +68,7 @@ public class ViewAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.ViewAnimation
  * JD-Core Version:    0.7.0.1
  */

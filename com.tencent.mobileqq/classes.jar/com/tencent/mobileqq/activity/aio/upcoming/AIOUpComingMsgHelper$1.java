@@ -15,27 +15,25 @@ class AIOUpComingMsgHelper$1
   
   public void run()
   {
-    MessageRecord localMessageRecord = AIOUpComingMsgHelper.a(this.this$0).getMessageFacade().b(AIOUpComingMsgHelper.a(this.this$0).jdField_a_of_type_JavaLangString, AIOUpComingMsgHelper.a(this.this$0).jdField_a_of_type_Int, this.a);
-    if (!UpComingMsgUtil.a(localMessageRecord)) {
-      localMessageRecord = null;
+    Object localObject2 = AIOUpComingMsgHelper.a(this.this$0).getMessageFacade().b(AIOUpComingMsgHelper.a(this.this$0).jdField_a_of_type_JavaLangString, AIOUpComingMsgHelper.a(this.this$0).jdField_a_of_type_Int, this.a);
+    Object localObject1 = localObject2;
+    if (!UpComingMsgUtil.a((MessageRecord)localObject2)) {
+      localObject1 = null;
     }
-    for (;;)
-    {
-      if (localMessageRecord == null) {
-        ReportController.b(null, "dc00898", "", "", "0X800AE94", "0X800AE94", 0, 0, "", "", "", "");
-      }
-      Message localMessage = AIOUpComingMsgHelper.a(this.this$0).obtainMessage();
-      localMessage.what = 1;
-      localMessage.obj = localMessageRecord;
-      AIOUpComingMsgHelper.a(this.this$0).sendMessage(localMessage);
-      AIOUpComingMsgHelper.a(this.this$0, AIOUpComingMsgHelper.a(this.this$0).jdField_a_of_type_JavaLangString);
-      return;
+    if (localObject1 == null) {
+      ReportController.b(null, "dc00898", "", "", "0X800AE94", "0X800AE94", 0, 0, "", "", "", "");
     }
+    localObject2 = AIOUpComingMsgHelper.a(this.this$0).obtainMessage();
+    ((Message)localObject2).what = 1;
+    ((Message)localObject2).obj = localObject1;
+    AIOUpComingMsgHelper.a(this.this$0).sendMessage((Message)localObject2);
+    localObject1 = this.this$0;
+    AIOUpComingMsgHelper.a((AIOUpComingMsgHelper)localObject1, AIOUpComingMsgHelper.a((AIOUpComingMsgHelper)localObject1).jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.AIOUpComingMsgHelper.1
  * JD-Core Version:    0.7.0.1
  */

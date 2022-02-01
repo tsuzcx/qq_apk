@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class RedPointHelper
 {
@@ -41,47 +41,50 @@ public class RedPointHelper
   
   public void hidePoint()
   {
-    if (this.popupWindow == null) {
+    PopupWindow localPopupWindow = this.popupWindow;
+    if (localPopupWindow == null) {
       return;
     }
-    this.popupWindow.dismiss();
+    localPopupWindow.dismiss();
   }
   
   public void showRedPoint(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.popupWindow == null) {
-      throw new RuntimeException("createSinglePopView should called first!");
+    if (this.popupWindow != null)
+    {
+      int[] arrayOfInt = new int[2];
+      paramView.getLocationOnScreen(arrayOfInt);
+      int n = this.popupWindow.getWidth();
+      int m = this.popupWindow.getHeight();
+      int j = arrayOfInt[0];
+      int k = arrayOfInt[1];
+      int i = j;
+      if ((paramInt1 & 0x1) != 0) {
+        i = j + paramView.getWidth() - n;
+      }
+      j = k;
+      if ((paramInt1 & 0x2) != 0) {
+        j = k + paramView.getHeight() - m;
+      }
+      k = i;
+      if ((paramInt1 & 0x4) != 0) {
+        k = i + paramView.getWidth() / 2 - n / 2;
+      }
+      i = j;
+      if ((paramInt1 & 0x8) != 0) {
+        i = j + paramView.getHeight() / 2 - m / 2;
+      }
+      paramInt1 = DisplayUtil.a(this.mContext, paramInt2);
+      paramInt2 = DisplayUtil.a(this.mContext, paramInt3);
+      this.popupWindow.showAtLocation(paramView, 0, k + paramInt1, i + paramInt2);
+      return;
     }
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    int n = this.popupWindow.getWidth();
-    int m = this.popupWindow.getHeight();
-    int j = arrayOfInt[0];
-    int k = arrayOfInt[1];
-    int i = j;
-    if ((paramInt1 & 0x1) != 0) {
-      i = j + paramView.getWidth() - n;
-    }
-    j = k;
-    if ((paramInt1 & 0x2) != 0) {
-      j = k + paramView.getHeight() - m;
-    }
-    k = i;
-    if ((paramInt1 & 0x4) != 0) {
-      k = i + paramView.getWidth() / 2 - n / 2;
-    }
-    i = j;
-    if ((paramInt1 & 0x8) != 0) {
-      i = j + paramView.getHeight() / 2 - m / 2;
-    }
-    paramInt1 = AIOUtils.a(paramInt2, this.mContext.getResources());
-    paramInt2 = AIOUtils.a(paramInt3, this.mContext.getResources());
-    this.popupWindow.showAtLocation(paramView, 0, k + paramInt1, i + paramInt2);
+    throw new RuntimeException("createSinglePopView should called first!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qwallet.plugin.RedPointHelper
  * JD-Core Version:    0.7.0.1
  */

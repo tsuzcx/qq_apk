@@ -1,9 +1,9 @@
 package com.tencent.biz.subscribe.bizdapters;
 
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver.OnCallback;
 
 class RelativeFeedsAdapter$5
-  extends PublicAccountObserver
+  extends IPublicAccountObserver.OnCallback
 {
   public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
   {
@@ -12,7 +12,7 @@ class RelativeFeedsAdapter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.RelativeFeedsAdapter.5
  * JD-Core Version:    0.7.0.1
  */

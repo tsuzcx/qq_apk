@@ -19,13 +19,15 @@ class ForwardSDKB77Sender$5
   
   public void a(UpCallBack.SendResult paramSendResult)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("upCallBack updateMsg info =");
-    if (paramSendResult == null) {}
-    for (paramSendResult = "null";; paramSendResult = paramSendResult.toString())
-    {
-      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, paramSendResult);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("upCallBack updateMsg info =");
+    if (paramSendResult == null) {
+      paramSendResult = "null";
+    } else {
+      paramSendResult = paramSendResult.toString();
     }
+    localStringBuilder.append(paramSendResult);
+    QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, localStringBuilder.toString());
   }
   
   public void b(UpCallBack.SendResult paramSendResult)
@@ -36,7 +38,7 @@ class ForwardSDKB77Sender$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSDKB77Sender.5
  * JD-Core Version:    0.7.0.1
  */

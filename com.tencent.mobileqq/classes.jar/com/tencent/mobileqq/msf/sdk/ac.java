@@ -14,40 +14,52 @@ class ac
   
   public void onBindingDied(ComponentName paramComponentName)
   {
-    try
+    for (;;)
     {
-      if (this.a.r != null) {}
-      for (String str = this.a.r.processName;; str = "sdk_null")
+      try
       {
-        QLog.d("MSF.D.RemoteServiceProxy", 1, new Object[] { "onBindingDied: name = ", paramComponentName, ", process = ", str });
+        if (this.a.r != null)
+        {
+          str = this.a.r.processName;
+          QLog.d("MSF.D.RemoteServiceProxy", 1, new Object[] { "onBindingDied: name = ", paramComponentName, ", process = ", str });
+          return;
+        }
+      }
+      catch (Throwable paramComponentName)
+      {
+        QLog.e("MSF.D.RemoteServiceProxy", 1, "log onBindingDied throw t", paramComponentName);
         return;
       }
-      return;
-    }
-    catch (Throwable paramComponentName)
-    {
-      QLog.e("MSF.D.RemoteServiceProxy", 1, "log onBindingDied throw t", paramComponentName);
+      String str = "sdk_null";
     }
   }
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    QLog.d("MSF.D.RemoteServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onServiceConnected service:");
+    localStringBuilder.append(paramComponentName);
+    QLog.d("MSF.D.RemoteServiceProxy", 1, localStringBuilder.toString());
     this.a.b = IBaseService.Stub.asInterface(paramIBinder);
     this.a.d();
-    this.a.onProcessViewableChanged(ab.a(this.a), ab.b(this.a), BaseApplication.processName);
+    paramComponentName = this.a;
+    paramComponentName.onProcessViewableChanged(ab.a(paramComponentName), ab.b(this.a), BaseApplication.processName);
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    QLog.d("MSF.D.RemoteServiceProxy", 1, " onServiceDisconnected " + paramComponentName);
-    this.a.b = null;
-    this.a.e();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" onServiceDisconnected ");
+    localStringBuilder.append(paramComponentName);
+    QLog.d("MSF.D.RemoteServiceProxy", 1, localStringBuilder.toString());
+    paramComponentName = this.a;
+    paramComponentName.b = null;
+    paramComponentName.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.ac
  * JD-Core Version:    0.7.0.1
  */

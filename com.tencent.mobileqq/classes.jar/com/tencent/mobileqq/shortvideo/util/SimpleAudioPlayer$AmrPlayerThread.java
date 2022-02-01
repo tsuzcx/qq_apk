@@ -11,8 +11,14 @@ class SimpleAudioPlayer$AmrPlayerThread
   
   public void run()
   {
-    if (SdkContext.getInstance().getLogger().isEnable()) {
-      SdkContext.getInstance().getLogger().d("SimpleAudioPlayer", "playSimpleAudio " + SimpleAudioPlayer.access$100(this.this$0));
+    Object localObject;
+    if (SdkContext.getInstance().getLogger().isEnable())
+    {
+      Logger localLogger = SdkContext.getInstance().getLogger();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("playSimpleAudio ");
+      ((StringBuilder)localObject).append(SimpleAudioPlayer.access$100(this.this$0));
+      localLogger.d("SimpleAudioPlayer", ((StringBuilder)localObject).toString());
     }
     try
     {
@@ -21,20 +27,27 @@ class SimpleAudioPlayer$AmrPlayerThread
       }
       SimpleAudioPlayer.access$300(this.this$0).prepare();
       SimpleAudioPlayer.access$300(this.this$0).start();
-      if (SimpleAudioPlayer.access$400(this.this$0) > 0) {
+      if (SimpleAudioPlayer.access$400(this.this$0) > 0)
+      {
         SimpleAudioPlayer.access$300(this.this$0).seekTo(SimpleAudioPlayer.access$400(this.this$0));
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      SdkContext.getInstance().getLogger().e("SimpleAudioPlayer", "playSimpleAudio " + SimpleAudioPlayer.access$100(this.this$0) + "error: " + localException.toString());
+      localObject = SdkContext.getInstance().getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playSimpleAudio ");
+      localStringBuilder.append(SimpleAudioPlayer.access$100(this.this$0));
+      localStringBuilder.append("error: ");
+      localStringBuilder.append(localException.toString());
+      ((Logger)localObject).e("SimpleAudioPlayer", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.SimpleAudioPlayer.AmrPlayerThread
  * JD-Core Version:    0.7.0.1
  */

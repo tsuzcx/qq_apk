@@ -3,45 +3,45 @@ package com.tencent.mobileqq.webview.swift;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.filemanageraux.app.UniformDownload.UniDownloadListener;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.open.temp.api.IWebViewOpenSdkApi;
+import com.tencent.smtt.sdk.DownloadListener;
+import mqq.app.AppRuntime;
 
 public class WebViewWrapperWithActivity
   extends WebViewWrapper
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  private UniformDownload.UniDownloadListener jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener;
+  protected Activity a;
   
-  public WebViewWrapperWithActivity(AppInterface paramAppInterface, Activity paramActivity, WebViewCallback paramWebViewCallback, Intent paramIntent, TouchWebView paramTouchWebView)
+  public WebViewWrapperWithActivity(AppRuntime paramAppRuntime, Activity paramActivity, WebViewCallback paramWebViewCallback, Intent paramIntent, TouchWebView paramTouchWebView)
   {
-    super(paramAppInterface, paramWebViewCallback, paramIntent, paramTouchWebView);
+    super(paramAppRuntime, paramWebViewCallback, paramIntent, paramTouchWebView);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    b();
+    c();
   }
   
-  public WebViewWrapperWithActivity(AppInterface paramAppInterface, Activity paramActivity, WebViewCallback paramWebViewCallback, Intent paramIntent, boolean paramBoolean)
+  public WebViewWrapperWithActivity(AppRuntime paramAppRuntime, Activity paramActivity, WebViewCallback paramWebViewCallback, Intent paramIntent, boolean paramBoolean)
   {
-    super(paramAppInterface, paramWebViewCallback, paramIntent, paramActivity, paramBoolean);
+    super(paramAppRuntime, paramWebViewCallback, paramIntent, paramActivity, paramBoolean);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    b();
+    c();
   }
   
   protected boolean a()
   {
-    return (this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_AndroidAppActivity.isFinishing());
+    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    return (localActivity != null) && (localActivity.isFinishing());
   }
   
-  public void b()
+  public void c()
   {
-    boolean bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("fromArkAppDownload", false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener = new UniformDownload.UniDownloadListener((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener.a(bool);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setDownloadListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxAppUniformDownload$UniDownloadListener);
+    DownloadListener localDownloadListener = (DownloadListener)((IWebViewOpenSdkApi)QRoute.api(IWebViewOpenSdkApi.class)).createDownloadListener(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setDownloadListener(localDownloadListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewWrapperWithActivity
  * JD-Core Version:    0.7.0.1
  */

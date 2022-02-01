@@ -1,29 +1,25 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 class TroopAvatarWallPreviewActivity$5
-  implements Animation.AnimationListener
+  implements AdapterView.OnItemLongClickListener
 {
   TroopAvatarWallPreviewActivity$5(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.b == null) {
-      return;
+    if ((this.a.mIsShowAction) || (this.a.mIsEdit)) {
+      TroopAvatarWallPreviewActivity.access$600(this.a);
     }
-    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5
  * JD-Core Version:    0.7.0.1
  */

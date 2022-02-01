@@ -15,7 +15,7 @@ public class WSFollowSeparateHolder2
   
   private WSFollowSeparateHolder2(ViewGroup paramViewGroup, WSFollowAdapter paramWSFollowAdapter)
   {
-    super(paramViewGroup, 2131560542);
+    super(paramViewGroup, 2131560432);
     b();
   }
   
@@ -26,7 +26,7 @@ public class WSFollowSeparateHolder2
   
   private void b()
   {
-    this.a = ((TextView)a(2131382047));
+    this.a = ((TextView)getView(2131381250));
   }
   
   public void a()
@@ -36,18 +36,18 @@ public class WSFollowSeparateHolder2
   
   public void a(stFeed paramstFeed)
   {
-    if (paramstFeed == null) {}
-    do
-    {
+    if (paramstFeed == null) {
       return;
-      paramstFeed = paramstFeed.recommend_splitter;
-    } while (paramstFeed == null);
-    this.a.setText(paramstFeed.tips);
+    }
+    paramstFeed = paramstFeed.recommend_splitter;
+    if (paramstFeed != null) {
+      this.a.setText(paramstFeed.tips);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.holder.WSFollowSeparateHolder2
  * JD-Core Version:    0.7.0.1
  */

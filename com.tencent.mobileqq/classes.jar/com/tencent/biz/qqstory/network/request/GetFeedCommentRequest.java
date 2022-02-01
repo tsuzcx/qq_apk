@@ -28,15 +28,12 @@ public class GetFeedCommentRequest
     try
     {
       localRspFeedCommentList.mergeFrom(paramArrayOfByte);
-      return new GetFeedCommentRequest.GetFeedCommentResponse(localRspFeedCommentList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetFeedCommentRequest.GetFeedCommentResponse(localRspFeedCommentList);
   }
   
   public String a()
@@ -44,7 +41,7 @@ public class GetFeedCommentRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
     localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_a_of_type_JavaLangString));
@@ -61,7 +58,7 @@ public class GetFeedCommentRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetFeedCommentRequest
  * JD-Core Version:    0.7.0.1
  */

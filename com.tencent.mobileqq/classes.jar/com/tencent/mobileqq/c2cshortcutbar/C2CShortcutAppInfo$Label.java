@@ -8,12 +8,23 @@ public class C2CShortcutAppInfo$Label
   
   public String toString()
   {
-    return "Label{content='" + this.a + '\'' + ", bgColor='" + this.b + '\'' + ", textColor='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Label{content='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bgColor='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", textColor='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutAppInfo.Label
  * JD-Core Version:    0.7.0.1
  */

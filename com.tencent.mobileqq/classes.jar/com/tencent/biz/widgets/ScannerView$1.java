@@ -12,63 +12,80 @@ class ScannerView$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 9)
+    int i = paramMessage.what;
+    boolean bool2 = false;
+    if (i == 9)
     {
-      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131690796), 1);
+      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131690724), 1);
       paramMessage.setGravity(17, 0, 0);
       paramMessage.show();
-    }
-    Object localObject;
-    do
-    {
       return;
-      localObject = ScannerView.a(this.a);
-      if (localObject != null) {}
-      switch (paramMessage.what)
+    }
+    Object localObject = ScannerView.a(this.a);
+    if (localObject != null)
+    {
+      i = paramMessage.what;
+      if (i != 1)
       {
-      case 3: 
-      case 4: 
-      case 5: 
-      case 6: 
-      default: 
-        localObject = ScannerView.a(this.a);
-        if (localObject != null) {}
-        switch (paramMessage.what)
+        if (i != 2)
         {
-        default: 
-          localObject = ScannerView.a(this.a);
+          if (i != 7)
+          {
+            if (i == 8) {
+              ((ScannerView.ScannerListener)localObject).b();
+            }
+          }
+          else {
+            ((ScannerView.ScannerListener)localObject).a();
+          }
         }
-        break;
+        else {
+          ((ScannerView.ScannerListener)localObject).c();
+        }
       }
-    } while (localObject == null);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+      else
+      {
+        ((ScannerView.ScannerListener)localObject).a(String.valueOf(paramMessage.obj));
+        return;
+      }
     }
-    if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {}
-    for (boolean bool = true;; bool = false)
+    localObject = ScannerView.a(this.a);
+    if (localObject != null)
     {
-      ((ScannerView.FlashLightListener)localObject).a(bool);
-      return;
-      ((ScannerView.ScannerListener)localObject).a(String.valueOf(paramMessage.obj));
-      return;
-      ((ScannerView.ScannerListener)localObject).c();
-      return;
-      ((ScannerView.ScannerListener)localObject).b();
-      return;
-      ((ScannerView.ScannerListener)localObject).a();
-      return;
-      ((ScannerView.FileDecodeListener)localObject).a(String.valueOf(paramMessage.obj), 1, 1);
-      return;
-      ((ScannerView.FileDecodeListener)localObject).b(1);
-      return;
+      i = paramMessage.what;
+      if (i != 3)
+      {
+        if (i == 4) {
+          ((ScannerView.FileDecodeListener)localObject).b(1);
+        }
+      }
+      else
+      {
+        ((ScannerView.FileDecodeListener)localObject).a(String.valueOf(paramMessage.obj), 1, 1);
+        return;
+      }
+    }
+    localObject = ScannerView.a(this.a);
+    if (localObject != null)
+    {
+      if (paramMessage.what != 10) {
+        return;
+      }
+      boolean bool1 = bool2;
+      if ((paramMessage.obj instanceof Boolean))
+      {
+        bool1 = bool2;
+        if (((Boolean)paramMessage.obj).booleanValue()) {
+          bool1 = true;
+        }
+      }
+      ((ScannerView.FlashLightListener)localObject).a(bool1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.widgets.ScannerView.1
  * JD-Core Version:    0.7.0.1
  */

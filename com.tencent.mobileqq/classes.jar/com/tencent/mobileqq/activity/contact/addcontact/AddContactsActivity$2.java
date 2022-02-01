@@ -36,7 +36,7 @@ class AddContactsActivity$2
   
   public void b()
   {
-    this.a.findViewById(2131377297).setVisibility(0);
+    this.a.findViewById(2131376752).setVisibility(0);
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()), 0 });
     localValueAnimator.setDuration(250L);
     localValueAnimator.addUpdateListener(new AddContactsActivity.2.3(this));
@@ -46,7 +46,7 @@ class AddContactsActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -56,56 +56,71 @@ public class CircleBubbleImageView
   
   private void a(Canvas paramCanvas)
   {
-    Resources localResources = this.jdField_a_of_type_AndroidContentResResources;
+    Object localObject = this.jdField_a_of_type_AndroidContentResResources;
     int i = this.jdField_a_of_type_Int;
     int j = this.jdField_b_of_type_Int;
-    j = this.jdField_a_of_type_Int / 2;
+    j = i / 2;
     Path localPath;
     float f1;
     float f2;
-    if (this.jdField_c_of_type_Boolean) {
-      if (this.jdField_a_of_type_AndroidGraphicsPath != null)
+    if (this.jdField_c_of_type_Boolean)
+    {
+      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      if (localPath != null)
       {
-        localPath = this.jdField_a_of_type_AndroidGraphicsPath;
         localPath.reset();
-        localPath.moveTo(i - a(23.0F, localResources), a(26.0F, localResources));
-        f1 = i - a(9.0F, localResources);
-        f2 = a(23.0F, localResources);
-        localPath.quadTo(i - a(13.0F, localResources), a(28.0F, localResources), f1, f2);
-        f1 = i - a(19.0F, localResources);
-        f2 = a(34.0F, localResources);
-        localPath.quadTo(i - a(10.0F, localResources), a(32.0F, localResources), f1, f2);
+        localPath.moveTo(i - a(23.0F, (Resources)localObject), a(26.0F, (Resources)localObject));
+        f1 = i - a(9.0F, (Resources)localObject);
+        f2 = a(23.0F, (Resources)localObject);
+        localPath.quadTo(i - a(13.0F, (Resources)localObject), a(28.0F, (Resources)localObject), f1, f2);
+        f1 = i - a(19.0F, (Resources)localObject);
+        f2 = a(34.0F, (Resources)localObject);
+        localPath.quadTo(i - a(10.0F, (Resources)localObject), a(32.0F, (Resources)localObject), f1, f2);
         localPath.close();
         this.jdField_a_of_type_AndroidGraphicsPath = localPath;
       }
     }
-    do
+    else
     {
-      while (this.jdField_c_of_type_Boolean)
+      localPath = this.jdField_b_of_type_AndroidGraphicsPath;
+      if (localPath != null)
       {
-        paramCanvas.drawCircle(j, j, j, this.jdField_a_of_type_AndroidGraphicsPaint);
-        if ((this.d) && (this.jdField_a_of_type_AndroidGraphicsPath != null)) {
-          paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-        }
-        return;
-        if (this.jdField_b_of_type_AndroidGraphicsPath != null)
-        {
-          localPath = this.jdField_b_of_type_AndroidGraphicsPath;
-          localPath.reset();
-          localPath.moveTo(a(23.0F, localResources), a(26.0F, localResources));
-          f1 = a(9.0F, localResources);
-          f2 = a(23.0F, localResources);
-          localPath.quadTo(a(13.0F, localResources), a(28.0F, localResources), f1, f2);
-          f1 = a(19.0F, localResources);
-          f2 = a(34.0F, localResources);
-          localPath.quadTo(a(10.0F, localResources), a(32.0F, localResources), f1, f2);
-          localPath.close();
-          this.jdField_b_of_type_AndroidGraphicsPath = localPath;
+        localPath.reset();
+        localPath.moveTo(a(23.0F, (Resources)localObject), a(26.0F, (Resources)localObject));
+        f1 = a(9.0F, (Resources)localObject);
+        f2 = a(23.0F, (Resources)localObject);
+        localPath.quadTo(a(13.0F, (Resources)localObject), a(28.0F, (Resources)localObject), f1, f2);
+        f1 = a(19.0F, (Resources)localObject);
+        f2 = a(34.0F, (Resources)localObject);
+        localPath.quadTo(a(10.0F, (Resources)localObject), a(32.0F, (Resources)localObject), f1, f2);
+        localPath.close();
+        this.jdField_b_of_type_AndroidGraphicsPath = localPath;
+      }
+    }
+    if (this.jdField_c_of_type_Boolean)
+    {
+      f1 = j;
+      paramCanvas.drawCircle(f1, f1, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (this.d)
+      {
+        localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+        if (localObject != null) {
+          paramCanvas.drawPath((Path)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
       }
-      paramCanvas.drawCircle(j, j, j, this.jdField_a_of_type_AndroidGraphicsPaint);
-    } while ((!this.d) || (this.jdField_b_of_type_AndroidGraphicsPath == null));
-    paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    else
+    {
+      f1 = j;
+      paramCanvas.drawCircle(f1, f1, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (this.d)
+      {
+        localObject = this.jdField_b_of_type_AndroidGraphicsPath;
+        if (localObject != null) {
+          paramCanvas.drawPath((Path)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
+        }
+      }
+    }
   }
   
   public int a(float paramFloat, Resources paramResources)
@@ -122,86 +137,100 @@ public class CircleBubbleImageView
   {
     this.jdField_a_of_type_Int = getWidth();
     this.jdField_b_of_type_Int = getHeight();
-    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0))
+    int i = this.jdField_a_of_type_Int;
+    int j;
+    if (i > 0)
     {
-      super.draw(paramCanvas);
-      return;
+      j = this.jdField_b_of_type_Int;
+      if ((j > 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {}
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
-      if (this.jdField_a_of_type_AndroidGraphicsCanvas != null) {
-        this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-      {
-        super.draw(paramCanvas);
-        return;
-      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
     }
-    catch (OutOfMemoryError localOutOfMemoryError1)
+    catch (OutOfMemoryError localOutOfMemoryError3)
     {
-      for (;;)
+      try
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_4444);
+        break label104;
+        URLDrawable.clearMemoryCache();
+      }
+      catch (OutOfMemoryError localOutOfMemoryError3)
       {
         try
         {
           this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_4444);
+          label104:
+          localObject = this.jdField_a_of_type_AndroidGraphicsCanvas;
+          if (localObject != null) {
+            ((Canvas)localObject).setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+          }
+          localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+          if (localObject == null)
+          {
+            super.draw(paramCanvas);
+            return;
+          }
+          if (this.jdField_a_of_type_AndroidGraphicsCanvas == null)
+          {
+            this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas((Bitmap)localObject);
+            this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+          }
+          if (this.jdField_a_of_type_AndroidGraphicsBitmapShader == null)
+          {
+            this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+            this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
+          }
+          this.jdField_a_of_type_AndroidGraphicsBitmap.eraseColor(16711680);
+          super.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
+          if (this.f) {
+            this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(this.jdField_c_of_type_Int);
+          }
+          if ((!this.e) || (this.jdField_b_of_type_AndroidGraphicsBitmap != null)) {}
         }
-        catch (OutOfMemoryError localOutOfMemoryError2)
+        catch (OutOfMemoryError localOutOfMemoryError3)
         {
-          URLDrawable.clearMemoryCache();
           try
           {
-            this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_4444);
+            for (;;)
+            {
+              this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
+              label279:
+              Object localObject = this.jdField_b_of_type_AndroidGraphicsCanvas;
+              if (localObject != null) {
+                ((Canvas)localObject).setBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
+              }
+              if (this.e)
+              {
+                localObject = this.jdField_b_of_type_AndroidGraphicsBitmap;
+                if (localObject != null)
+                {
+                  if (this.jdField_b_of_type_AndroidGraphicsCanvas == null) {
+                    this.jdField_b_of_type_AndroidGraphicsCanvas = new Canvas((Bitmap)localObject);
+                  }
+                  this.jdField_b_of_type_AndroidGraphicsBitmap.eraseColor(0);
+                  a(this.jdField_b_of_type_AndroidGraphicsCanvas);
+                  paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_b_of_type_AndroidGraphicsPaint);
+                  return;
+                }
+              }
+              a(paramCanvas);
+              return;
+              super.draw(paramCanvas);
+              return;
+              localOutOfMemoryError1 = localOutOfMemoryError1;
+              continue;
+              localOutOfMemoryError2 = localOutOfMemoryError2;
+            }
+            localOutOfMemoryError3 = localOutOfMemoryError3;
           }
-          catch (OutOfMemoryError localOutOfMemoryError3) {}
+          catch (OutOfMemoryError localOutOfMemoryError4)
+          {
+            break label279;
+          }
         }
       }
-      if (this.jdField_a_of_type_AndroidGraphicsCanvas == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmapShader == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap.eraseColor(16711680);
-      super.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
-      if (this.f) {
-        this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(this.jdField_c_of_type_Int);
-      }
-      if (!this.e) {
-        break label301;
-      }
-    }
-    if (this.jdField_b_of_type_AndroidGraphicsBitmap == null) {}
-    try
-    {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
-      label283:
-      if (this.jdField_b_of_type_AndroidGraphicsCanvas != null) {
-        this.jdField_b_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
-      }
-      label301:
-      if ((this.e) && (this.jdField_b_of_type_AndroidGraphicsBitmap != null))
-      {
-        if (this.jdField_b_of_type_AndroidGraphicsCanvas == null) {
-          this.jdField_b_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_b_of_type_AndroidGraphicsBitmap);
-        }
-        this.jdField_b_of_type_AndroidGraphicsBitmap.eraseColor(0);
-        a(this.jdField_b_of_type_AndroidGraphicsCanvas);
-        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_b_of_type_AndroidGraphicsPaint);
-        return;
-      }
-      a(paramCanvas);
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError4)
-    {
-      break label283;
     }
   }
   
@@ -223,7 +252,7 @@ public class CircleBubbleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleBubbleImageView
  * JD-Core Version:    0.7.0.1
  */

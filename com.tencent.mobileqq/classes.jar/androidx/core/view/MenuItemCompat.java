@@ -144,57 +144,62 @@ public final class MenuItemCompat
   
   public static void setAlphabeticShortcut(MenuItem paramMenuItem, char paramChar, int paramInt)
   {
-    if ((paramMenuItem instanceof SupportMenuItem)) {
+    if ((paramMenuItem instanceof SupportMenuItem))
+    {
       ((SupportMenuItem)paramMenuItem).setAlphabeticShortcut(paramChar, paramInt);
-    }
-    while (Build.VERSION.SDK_INT < 26) {
       return;
     }
-    paramMenuItem.setAlphabeticShortcut(paramChar, paramInt);
+    if (Build.VERSION.SDK_INT >= 26) {
+      paramMenuItem.setAlphabeticShortcut(paramChar, paramInt);
+    }
   }
   
   public static void setContentDescription(MenuItem paramMenuItem, CharSequence paramCharSequence)
   {
-    if ((paramMenuItem instanceof SupportMenuItem)) {
+    if ((paramMenuItem instanceof SupportMenuItem))
+    {
       ((SupportMenuItem)paramMenuItem).setContentDescription(paramCharSequence);
-    }
-    while (Build.VERSION.SDK_INT < 26) {
       return;
     }
-    paramMenuItem.setContentDescription(paramCharSequence);
+    if (Build.VERSION.SDK_INT >= 26) {
+      paramMenuItem.setContentDescription(paramCharSequence);
+    }
   }
   
   public static void setIconTintList(MenuItem paramMenuItem, ColorStateList paramColorStateList)
   {
-    if ((paramMenuItem instanceof SupportMenuItem)) {
+    if ((paramMenuItem instanceof SupportMenuItem))
+    {
       ((SupportMenuItem)paramMenuItem).setIconTintList(paramColorStateList);
-    }
-    while (Build.VERSION.SDK_INT < 26) {
       return;
     }
-    paramMenuItem.setIconTintList(paramColorStateList);
+    if (Build.VERSION.SDK_INT >= 26) {
+      paramMenuItem.setIconTintList(paramColorStateList);
+    }
   }
   
   public static void setIconTintMode(MenuItem paramMenuItem, PorterDuff.Mode paramMode)
   {
-    if ((paramMenuItem instanceof SupportMenuItem)) {
+    if ((paramMenuItem instanceof SupportMenuItem))
+    {
       ((SupportMenuItem)paramMenuItem).setIconTintMode(paramMode);
-    }
-    while (Build.VERSION.SDK_INT < 26) {
       return;
     }
-    paramMenuItem.setIconTintMode(paramMode);
+    if (Build.VERSION.SDK_INT >= 26) {
+      paramMenuItem.setIconTintMode(paramMode);
+    }
   }
   
   public static void setNumericShortcut(MenuItem paramMenuItem, char paramChar, int paramInt)
   {
-    if ((paramMenuItem instanceof SupportMenuItem)) {
+    if ((paramMenuItem instanceof SupportMenuItem))
+    {
       ((SupportMenuItem)paramMenuItem).setNumericShortcut(paramChar, paramInt);
-    }
-    while (Build.VERSION.SDK_INT < 26) {
       return;
     }
-    paramMenuItem.setNumericShortcut(paramChar, paramInt);
+    if (Build.VERSION.SDK_INT >= 26) {
+      paramMenuItem.setNumericShortcut(paramChar, paramInt);
+    }
   }
   
   @Deprecated
@@ -205,13 +210,14 @@ public final class MenuItemCompat
   
   public static void setShortcut(MenuItem paramMenuItem, char paramChar1, char paramChar2, int paramInt1, int paramInt2)
   {
-    if ((paramMenuItem instanceof SupportMenuItem)) {
+    if ((paramMenuItem instanceof SupportMenuItem))
+    {
       ((SupportMenuItem)paramMenuItem).setShortcut(paramChar1, paramChar2, paramInt1, paramInt2);
-    }
-    while (Build.VERSION.SDK_INT < 26) {
       return;
     }
-    paramMenuItem.setShortcut(paramChar1, paramChar2, paramInt1, paramInt2);
+    if (Build.VERSION.SDK_INT >= 26) {
+      paramMenuItem.setShortcut(paramChar1, paramChar2, paramInt1, paramInt2);
+    }
   }
   
   @Deprecated
@@ -222,18 +228,19 @@ public final class MenuItemCompat
   
   public static void setTooltipText(MenuItem paramMenuItem, CharSequence paramCharSequence)
   {
-    if ((paramMenuItem instanceof SupportMenuItem)) {
+    if ((paramMenuItem instanceof SupportMenuItem))
+    {
       ((SupportMenuItem)paramMenuItem).setTooltipText(paramCharSequence);
-    }
-    while (Build.VERSION.SDK_INT < 26) {
       return;
     }
-    paramMenuItem.setTooltipText(paramCharSequence);
+    if (Build.VERSION.SDK_INT >= 26) {
+      paramMenuItem.setTooltipText(paramCharSequence);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.MenuItemCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,15 @@ class QQAppInterface$8
   
   protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQAppInterface_friendListObserver", 2, "onUpdateFriendInfo uin:" + paramString + ",isSuccess:" + paramBoolean);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onUpdateFriendInfo uin:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",isSuccess:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("QQAppInterface_friendListObserver", 2, ((StringBuilder)localObject).toString());
     }
     if (this.this$0.friendInfoQueue.contains(paramString))
     {
@@ -24,7 +31,8 @@ class QQAppInterface$8
         if (QLog.isColorLevel()) {
           QLog.d("QQAppInterface_friendListObserver", 2, "update notifcation");
         }
-        QQAppInterface.access$1900(this.this$0, (Message)this.this$0.msgFacade.a.a().get(0), false);
+        localObject = this.this$0;
+        QQAppInterface.access$1900((QQAppInterface)localObject, (Message)((QQAppInterface)localObject).msgFacade.a.a().get(0), false);
       }
       this.this$0.friendInfoQueue.remove(paramString);
     }
@@ -36,7 +44,7 @@ class QQAppInterface$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.8
  * JD-Core Version:    0.7.0.1
  */

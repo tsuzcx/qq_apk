@@ -59,31 +59,39 @@ public class ForwardSdkShareProcessor$UrlExchangeStep
     if ((this.this$0.mServiceType == 2) && (HttpUtil.isValidUrl(this.this$0.mAudioUrl))) {
       this.this$0.mUrlMap.put("audioUrl", this.this$0.mAudioUrl);
     }
-    Bundle localBundle;
     if (TextUtils.isEmpty(this.this$0.mRemoteImgUrl))
     {
-      this.this$0.mRemoteImgUrl = this.this$0.mAppInfo.sourceIconBig;
+      localObject = this.this$0;
+      ((ForwardSdkShareProcessor)localObject).mRemoteImgUrl = ((ForwardSdkShareProcessor)localObject).mAppInfo.sourceIconBig;
       ForwardSdkShareProcessor.access$900(this.this$0).set(false);
-      QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|use app icon:" + this.this$0.mRemoteImgUrl);
-      localBundle = new Bundle();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("UrlExchangeStep|use app icon:");
+      ((StringBuilder)localObject).append(this.this$0.mRemoteImgUrl);
+      QLog.i("Q.share.ForwardSdkShareProcessor", 1, ((StringBuilder)localObject).toString());
+      Bundle localBundle = new Bundle();
       localBundle.putString("report_type", "102");
       localBundle.putString("act_type", "18");
-      if (!TextUtils.isEmpty(this.this$0.mRemoteImgUrl)) {
-        break label496;
+      if (TextUtils.isEmpty(this.this$0.mRemoteImgUrl)) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
+      localBundle.putString("intext_1", (String)localObject);
+      localObject = ReportCenter.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(ForwardSdkShareProcessor.access$400(this.this$0));
+      ((ReportCenter)localObject).a(localBundle, localStringBuilder.toString(), this.this$0.app.getCurrentUin(), false, this.this$0.isSdkShare());
     }
-    label496:
-    for (String str = "1";; str = "0")
+    if ((!ForwardSdkShareProcessor.access$900(this.this$0).get()) && (HttpUtil.isValidUrl(this.this$0.mRemoteImgUrl))) {
+      this.this$0.mUrlMap.put("imageUrl", this.this$0.mRemoteImgUrl);
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("UrlExchangeStep|process|url=");
+    ((StringBuilder)localObject).append(this.this$0.mUrlMap.toString());
+    qlog(((StringBuilder)localObject).toString());
+    if (this.this$0.mUrlMap.isEmpty())
     {
-      localBundle.putString("intext_1", str);
-      ReportCenter.a().a(localBundle, "" + ForwardSdkShareProcessor.access$400(this.this$0), this.this$0.app.getCurrentUin(), false, this.this$0.isSdkShare());
-      if ((!ForwardSdkShareProcessor.access$900(this.this$0).get()) && (HttpUtil.isValidUrl(this.this$0.mRemoteImgUrl))) {
-        this.this$0.mUrlMap.put("imageUrl", this.this$0.mRemoteImgUrl);
-      }
-      qlog("UrlExchangeStep|process|url=" + this.this$0.mUrlMap.toString());
-      if (!this.this$0.mUrlMap.isEmpty()) {
-        break;
-      }
       this.this$0.mIsAllUrlShort.set(true);
       doNextStep();
       return;
@@ -100,7 +108,7 @@ public class ForwardSdkShareProcessor$UrlExchangeStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.UrlExchangeStep
  * JD-Core Version:    0.7.0.1
  */

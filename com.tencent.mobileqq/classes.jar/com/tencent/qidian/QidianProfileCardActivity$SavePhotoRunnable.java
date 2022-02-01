@@ -21,41 +21,48 @@ class QidianProfileCardActivity$SavePhotoRunnable
   
   public void run()
   {
-    localQidianProfileCardActivity = (QidianProfileCardActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QidianProfileCardActivity localQidianProfileCardActivity = (QidianProfileCardActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localQidianProfileCardActivity == null) {
       return;
     }
-    for (;;)
+    try
     {
-      try
+      str = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      if (str != null)
       {
-        str1 = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-        if (str1 == null) {
-          continue;
-        }
-        ImageUtil.a(localQidianProfileCardActivity, str1);
-        str1 = localQidianProfileCardActivity.getString(2131694923) + " " + str1;
+        ImageUtil.a(localQidianProfileCardActivity, str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localQidianProfileCardActivity.getString(2131694913));
+        localStringBuilder.append(" ");
+        localStringBuilder.append(str);
+        str = localStringBuilder.toString();
       }
-      catch (IOException localIOException)
+      else
       {
-        String str1;
-        String str2 = localQidianProfileCardActivity.getString(2131694921);
-        continue;
+        str = localQidianProfileCardActivity.getString(2131694911);
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        String str3 = localQidianProfileCardActivity.getString(2131694921);
-        continue;
-      }
-      localQidianProfileCardActivity.runOnUiThread(new QidianProfileCardActivity.SavePhotoRunnable.1(this, localQidianProfileCardActivity, str1));
-      return;
-      str1 = localQidianProfileCardActivity.getString(2131694921);
     }
+    catch (IOException localIOException)
+    {
+      String str;
+      break label97;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label87:
+      break label87;
+    }
+    str = localQidianProfileCardActivity.getString(2131694911);
+    break label104;
+    label97:
+    str = localQidianProfileCardActivity.getString(2131694911);
+    label104:
+    localQidianProfileCardActivity.runOnUiThread(new QidianProfileCardActivity.SavePhotoRunnable.1(this, localQidianProfileCardActivity, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.SavePhotoRunnable
  * JD-Core Version:    0.7.0.1
  */

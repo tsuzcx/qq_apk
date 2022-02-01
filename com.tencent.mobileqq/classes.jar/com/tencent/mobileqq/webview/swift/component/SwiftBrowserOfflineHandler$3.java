@@ -12,19 +12,25 @@ class SwiftBrowserOfflineHandler$3
   
   public void run()
   {
-    if ((QLog.isColorLevel()) && (this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != 0)) {
-      QLog.i("SwiftBrowserOfflineHandler", 2, "now post offline callback, bid is " + this.this$0.jdField_a_of_type_JavaLangString + ", mode: " + this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+    if ((QLog.isColorLevel()) && (this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != 0))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("now post offline callback, bid is ");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(", mode: ");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      QLog.i("SwiftBrowserOfflineHandler", 2, ((StringBuilder)localObject).toString());
     }
-    Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((SwiftBrowserOfflineHandler.CheckOfflineCallback)localIterator.next()).a(this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+    Object localObject = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((SwiftBrowserOfflineHandler.CheckOfflineCallback)((Iterator)localObject).next()).onCheckOfflineFinish(this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.3
  * JD-Core Version:    0.7.0.1
  */

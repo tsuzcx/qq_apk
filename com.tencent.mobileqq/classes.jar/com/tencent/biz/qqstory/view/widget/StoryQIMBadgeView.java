@@ -72,18 +72,11 @@ public class StoryQIMBadgeView
   
   public void a(QQUserUIItem paramQQUserUIItem)
   {
-    if ((paramQQUserUIItem == null) || (TextUtils.isEmpty(paramQQUserUIItem.qq))) {
-      setVisibility(8);
-    }
-    do
+    if ((paramQQUserUIItem != null) && (!TextUtils.isEmpty(paramQQUserUIItem.qq)))
     {
-      do
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramQQUserUIItem;
+      if (StoryDepends.b())
       {
-        return;
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramQQUserUIItem;
-        if (!StoryDepends.b()) {
-          break;
-        }
         if ((!this.jdField_a_of_type_Boolean) && (jdField_a_of_type_AndroidUtilLruCache.get(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null))
         {
           a(((Boolean)jdField_a_of_type_AndroidUtilLruCache.get(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq)).booleanValue());
@@ -93,12 +86,21 @@ public class StoryQIMBadgeView
           setVisibility(8);
         }
         paramQQUserUIItem = QQStoryContext.a();
-      } while (paramQQUserUIItem == null);
-      paramQQUserUIItem = (FriendListHandler)paramQQUserUIItem.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-    } while (paramQQUserUIItem == null);
-    paramQQUserUIItem.getOnlineInfo(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
-    return;
-    a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend());
+        if (paramQQUserUIItem != null)
+        {
+          paramQQUserUIItem = (FriendListHandler)paramQQUserUIItem.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+          if (paramQQUserUIItem != null) {
+            paramQQUserUIItem.getOnlineInfo(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
+          }
+        }
+      }
+      else
+      {
+        a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend());
+      }
+      return;
+    }
+    setVisibility(8);
   }
   
   public void a(boolean paramBoolean)
@@ -115,33 +117,32 @@ public class StoryQIMBadgeView
       }
       UIUtils.a(this, this.jdField_a_of_type_JavaLangString, getMeasuredWidth(), getMeasuredHeight(), null, null);
     }
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    setVisibility(i);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (StoryDepends.b())
     {
       this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver != null) {
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+      FriendListObserver localFriendListObserver = this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver;
+      if (localFriendListObserver != null) {
+        this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(localFriendListObserver);
       }
     }
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null) {}
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       Context localContext = paramView.getContext();
       String str = StoryDepends.QimUtil.b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
       Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
@@ -149,15 +150,24 @@ public class StoryQIMBadgeView
       localIntent.putExtra("hide_operation_bar", true);
       localContext.startActivity(localIntent);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if ((StoryDepends.b()) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver != null))
+    if (StoryDepends.b())
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+      AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      if (localAppInterface != null)
+      {
+        FriendListObserver localFriendListObserver = this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver;
+        if (localFriendListObserver != null)
+        {
+          localAppInterface.removeObserver(localFriendListObserver);
+          this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+        }
+      }
     }
   }
   
@@ -168,7 +178,7 @@ public class StoryQIMBadgeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView
  * JD-Core Version:    0.7.0.1
  */

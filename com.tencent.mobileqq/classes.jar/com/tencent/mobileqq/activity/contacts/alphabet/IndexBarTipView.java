@@ -72,16 +72,17 @@ public class IndexBarTipView
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localDrawable == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(a(localDrawable), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     this.c = paramContext.getResources().getColor(17170444);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDimension(2131297227);
+    this.jdField_a_of_type_Float = paramContext.getResources().getDimension(2131297216);
     if (paramAttributeSet != null)
     {
       paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.IndexBar);
@@ -106,21 +107,30 @@ public class IndexBarTipView
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "updateImagePaint mWidth =  " + this.jdField_a_of_type_Int + ", getWidth = " + getWidth());
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateImagePaint mWidth =  ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(", getWidth = ");
+      localStringBuilder.append(getWidth());
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     int i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
     int j = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-    if (i * 1.0F / j > 1.0F) {}
-    for (float f = this.jdField_a_of_type_Int * 1.0F / i;; f = this.jdField_a_of_type_Int * 1.0F / j)
-    {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f, f);
-      this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
-      this.jdField_b_of_type_Int = ((int)(f * j));
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      return;
+    float f1 = i;
+    float f2 = j;
+    if (f1 * 1.0F / f2 > 1.0F) {
+      f1 = this.jdField_a_of_type_Int * 1.0F / f1;
+    } else {
+      f1 = this.jdField_a_of_type_Int * 1.0F / f2;
     }
+    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
+    this.jdField_a_of_type_AndroidGraphicsBitmapShader.setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsBitmapShader);
+    this.jdField_b_of_type_Int = ((int)(f1 * f2));
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
   
   public Bitmap a(int paramInt1, int paramInt2, Bitmap.Config paramConfig, int paramInt3)
@@ -142,7 +152,7 @@ public class IndexBarTipView
     return null;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
@@ -154,7 +164,7 @@ public class IndexBarTipView
     paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, this.d, this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.jdField_a_of_type_Int != getWidth())
@@ -165,10 +175,19 @@ public class IndexBarTipView
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       Rect localRect = new Rect();
-      this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_JavaLangString.length(), localRect);
-      this.d = ((int)(this.jdField_a_of_type_Int * 0.5D - localRect.width() / 2.0D));
-      double d1 = this.jdField_b_of_type_Int;
-      this.e = ((int)(localRect.height() / 2.0D + d1 * 0.5D));
+      Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+      String str = this.jdField_b_of_type_JavaLangString;
+      localPaint.getTextBounds(str, 0, str.length(), localRect);
+      double d1 = this.jdField_a_of_type_Int;
+      Double.isNaN(d1);
+      double d2 = localRect.width();
+      Double.isNaN(d2);
+      this.d = ((int)(d1 * 0.5D - d2 / 2.0D));
+      d1 = this.jdField_b_of_type_Int;
+      Double.isNaN(d1);
+      d2 = localRect.height();
+      Double.isNaN(d2);
+      this.e = ((int)(d1 * 0.5D + d2 / 2.0D));
     }
   }
   
@@ -176,16 +195,25 @@ public class IndexBarTipView
   {
     this.jdField_b_of_type_JavaLangString = paramString;
     paramString = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_JavaLangString.length(), paramString);
-    this.d = ((int)(this.jdField_a_of_type_Int * 0.5D - paramString.width() / 2.0D));
-    double d1 = this.jdField_b_of_type_Int;
-    this.e = ((int)(paramString.height() / 2.0D + d1 * 0.5D));
+    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    String str = this.jdField_b_of_type_JavaLangString;
+    localPaint.getTextBounds(str, 0, str.length(), paramString);
+    double d1 = this.jdField_a_of_type_Int;
+    Double.isNaN(d1);
+    double d2 = paramString.width();
+    Double.isNaN(d2);
+    this.d = ((int)(d1 * 0.5D - d2 / 2.0D));
+    d1 = this.jdField_b_of_type_Int;
+    Double.isNaN(d1);
+    d2 = paramString.height();
+    Double.isNaN(d2);
+    this.e = ((int)(d1 * 0.5D + d2 / 2.0D));
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.IndexBarTipView
  * JD-Core Version:    0.7.0.1
  */

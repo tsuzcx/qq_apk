@@ -33,7 +33,7 @@ public class NearbyImgLoader
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     int i = ((WindowManager)localBaseApplication.getSystemService("window")).getDefaultDisplay().getWidth();
-    b = (i - AIOUtils.a(2.0F, localBaseApplication.getResources())) / 2;
+    b = (i - AIOUtils.b(2.0F, localBaseApplication.getResources())) / 2;
     jdField_a_of_type_Int = i;
     c = localBaseApplication.getResources().getDisplayMetrics().densityDpi;
   }
@@ -56,211 +56,222 @@ public class NearbyImgLoader
     paramBitmap.setDensity(c);
     int i;
     int j;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      i = 0;
-      j = 0;
-    }
-    int k;
-    int m;
-    for (;;)
-    {
-      k = paramBitmap.getWidth();
-      m = paramBitmap.getHeight();
-      if ((k != j) || (m != i)) {
-        break;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          i = 0;
+          j = 0;
+        }
+        else
+        {
+          i = b;
+          j = i;
+        }
       }
+      else
+      {
+        i = jdField_a_of_type_Int;
+        j = i / 2;
+      }
+    }
+    else
+    {
+      i = jdField_a_of_type_Int;
+      j = i * 3 / 4;
+    }
+    int k = paramBitmap.getWidth();
+    int m = paramBitmap.getHeight();
+    if ((k == i) && (m == j)) {
       return new Pair(paramBitmap, Boolean.valueOf(true));
-      j = jdField_a_of_type_Int;
-      i = jdField_a_of_type_Int * 3 / 4;
-      continue;
-      j = jdField_a_of_type_Int;
-      i = jdField_a_of_type_Int / 2;
-      continue;
-      i = b;
-      j = b;
     }
-    float f;
     if (k > m) {
-      if ((paramInt == 1) || (paramInt == 2))
+      if ((paramInt != 1) && (paramInt != 2))
       {
-        f = j / k;
+        paramString = paramBitmap;
+        if (paramInt != 3) {
+          break label780;
+        }
+        f = j / m;
         paramString = paramBitmap;
       }
     }
-    for (;;)
+    try
     {
-      try
-      {
-        localObject = new Matrix();
-        paramString = paramBitmap;
-        ((Matrix)localObject).setScale(f, f);
-        paramString = paramBitmap;
-        localObject = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, (Matrix)localObject, false);
-        if (paramBitmap != localObject) {
-          paramString = (String)localObject;
-        }
-      }
-      catch (Throwable paramBitmap)
-      {
-        Object localObject;
-        continue;
-      }
-      try
-      {
-        paramBitmap.recycle();
-        paramString = (String)localObject;
-        ((Bitmap)localObject).getWidth();
-        paramString = (String)localObject;
-        paramInt = ((Bitmap)localObject).getHeight();
-        paramString = (String)localObject;
-        if (paramInt <= i) {
-          break label794;
-        }
-        paramString = (String)localObject;
-        paramBitmap = Bitmap.createBitmap((Bitmap)localObject, 0, (paramInt - i) / 2, j, i);
-        paramString = paramBitmap;
-        if (localObject != paramBitmap) {
-          paramString = paramBitmap;
-        }
-      }
-      catch (Throwable paramBitmap)
-      {
-        continue;
-        continue;
-        continue;
-      }
-      try
-      {
-        ((Bitmap)localObject).recycle();
-        paramString = paramBitmap;
-        if (paramString != null) {
-          paramString.setDensity(c);
-        }
-        return new Pair(paramString, Boolean.valueOf(true));
-      }
-      catch (Throwable paramBitmap) {}
-      paramString = paramBitmap;
-      if (paramInt != 3) {
-        break label791;
-      }
-      f = i / m;
-      paramString = paramBitmap;
       localObject = new Matrix();
       paramString = paramBitmap;
       ((Matrix)localObject).setScale(f, f);
       paramString = paramBitmap;
       localObject = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, (Matrix)localObject, false);
-      if (paramBitmap != localObject)
-      {
+      if (paramBitmap != localObject) {
         paramString = (String)localObject;
-        paramBitmap.recycle();
       }
+    }
+    catch (Throwable localThrowable1)
+    {
+      Object localObject;
+      paramBitmap = paramString;
+      paramString = localThrowable1;
+    }
+    try
+    {
+      paramBitmap.recycle();
       paramString = (String)localObject;
       paramInt = ((Bitmap)localObject).getWidth();
       paramString = (String)localObject;
       ((Bitmap)localObject).getHeight();
       paramString = (String)localObject;
-      if (paramInt <= j) {
-        break label794;
+      if (paramInt <= i) {
+        break label780;
       }
       paramString = (String)localObject;
-      paramBitmap = Bitmap.createBitmap((Bitmap)localObject, (paramInt - j) / 2, 0, j, i);
+      paramBitmap = Bitmap.createBitmap((Bitmap)localObject, (paramInt - i) / 2, 0, i, j);
+      paramString = paramBitmap;
+      if (localObject == paramBitmap) {
+        break label780;
+      }
+      paramString = paramBitmap;
+      ((Bitmap)localObject).recycle();
+      paramString = paramBitmap;
+    }
+    catch (Throwable localThrowable2)
+    {
+      for (;;)
+      {
+        paramBitmap = paramString;
+        paramString = localThrowable2;
+      }
+    }
+    paramString = paramBitmap;
+    float f = i / k;
+    paramString = paramBitmap;
+    localObject = new Matrix();
+    paramString = paramBitmap;
+    ((Matrix)localObject).setScale(f, f);
+    paramString = paramBitmap;
+    localObject = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, (Matrix)localObject, false);
+    if (paramBitmap != localObject)
+    {
+      paramString = (String)localObject;
+      paramBitmap.recycle();
+    }
+    paramString = (String)localObject;
+    ((Bitmap)localObject).getWidth();
+    paramString = (String)localObject;
+    paramInt = ((Bitmap)localObject).getHeight();
+    paramString = (String)localObject;
+    if (paramInt > j)
+    {
+      paramString = (String)localObject;
+      paramBitmap = Bitmap.createBitmap((Bitmap)localObject, 0, (paramInt - j) / 2, i, j);
       paramString = paramBitmap;
       if (localObject != paramBitmap)
       {
         paramString = paramBitmap;
         ((Bitmap)localObject).recycle();
         paramString = paramBitmap;
-        continue;
-        paramBitmap.printStackTrace();
-        System.gc();
-        return new Pair(paramString, Boolean.valueOf(false));
-        f = j / k;
+        break label780;
+        paramString = paramBitmap;
+        f = i / k;
         paramString = paramBitmap;
         localObject = new Matrix();
         paramString = paramBitmap;
         ((Matrix)localObject).setScale(f, f);
         paramString = paramBitmap;
-        localObject = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, (Matrix)localObject, false);
-        paramString = (String)localObject;
-        i = ((Bitmap)localObject).getWidth();
-        paramString = (String)localObject;
-        j = ((Bitmap)localObject).getHeight();
+        paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, (Matrix)localObject, false);
+        paramString = paramBitmap;
+        i = paramBitmap.getWidth();
+        paramString = paramBitmap;
+        j = paramBitmap.getHeight();
         if (paramInt == 1)
         {
-          paramString = (String)localObject;
-          if (j / 3 >= i * 3 / 8)
+          paramString = paramBitmap;
+          paramInt = j / 3;
+          k = i * 3;
+          paramString = paramBitmap;
+          if (paramInt >= k / 8)
           {
-            paramString = (String)localObject;
-            paramBitmap = Bitmap.createBitmap((Bitmap)localObject, 0, j / 3 - i * 3 / 8, i, i * 3 / 4);
             paramString = paramBitmap;
-            if (localObject != paramBitmap)
+            localObject = Bitmap.createBitmap(paramBitmap, 0, j / 3 - k / 8, i, k / 4);
+            paramString = (String)localObject;
+            if (paramBitmap != localObject)
             {
-              paramString = paramBitmap;
-              ((Bitmap)localObject).recycle();
-              paramString = paramBitmap;
+              paramString = (String)localObject;
+              paramBitmap.recycle();
+              paramString = (String)localObject;
             }
           }
           else
           {
-            paramString = (String)localObject;
-            paramBitmap = Bitmap.createBitmap((Bitmap)localObject, 0, 0, i, i * 3 / 4);
             paramString = paramBitmap;
-            if (localObject != paramBitmap)
+            localObject = Bitmap.createBitmap(paramBitmap, 0, 0, i, k / 4);
+            paramString = (String)localObject;
+            if (paramBitmap != localObject)
             {
-              paramString = paramBitmap;
-              ((Bitmap)localObject).recycle();
-              paramString = paramBitmap;
+              paramString = (String)localObject;
+              paramBitmap.recycle();
+              paramString = (String)localObject;
             }
           }
         }
         else if (paramInt == 2)
         {
-          paramString = (String)localObject;
-          paramBitmap = Bitmap.createBitmap((Bitmap)localObject, 0, j / 3 - i / 4, i, i / 2);
           paramString = paramBitmap;
-          if (localObject != paramBitmap)
+          localObject = Bitmap.createBitmap(paramBitmap, 0, j / 3 - i / 4, i, i / 2);
+          paramString = (String)localObject;
+          if (paramBitmap != localObject)
           {
-            paramString = paramBitmap;
-            ((Bitmap)localObject).recycle();
-            paramString = paramBitmap;
+            paramString = (String)localObject;
+            paramBitmap.recycle();
+            paramString = (String)localObject;
           }
         }
         else
         {
-          paramString = (String)localObject;
+          paramString = paramBitmap;
           if (paramInt != 3) {
-            break label791;
+            break label780;
           }
-          paramString = (String)localObject;
+          paramString = paramBitmap;
           if (i >= j * 2 / 3)
           {
-            paramString = (String)localObject;
-            paramBitmap = Bitmap.createBitmap((Bitmap)localObject, 0, 0, i, i);
             paramString = paramBitmap;
-            if (localObject != paramBitmap)
+            localObject = Bitmap.createBitmap(paramBitmap, 0, 0, i, i);
+            paramString = (String)localObject;
+            if (paramBitmap != localObject)
             {
-              paramString = paramBitmap;
-              ((Bitmap)localObject).recycle();
-              paramString = paramBitmap;
+              paramString = (String)localObject;
+              paramBitmap.recycle();
+              paramString = (String)localObject;
             }
           }
           else
           {
-            paramString = (String)localObject;
-            paramBitmap = Bitmap.createBitmap((Bitmap)localObject, 0, j * 1 / 3 - i / 2, i, i);
             paramString = paramBitmap;
-            if (localObject != paramBitmap)
+            localObject = Bitmap.createBitmap(paramBitmap, 0, j * 1 / 3 - i / 2, i, i);
+            paramString = (String)localObject;
+            if (paramBitmap != localObject)
             {
-              paramString = paramBitmap;
-              ((Bitmap)localObject).recycle();
-              paramString = paramBitmap;
+              paramString = (String)localObject;
+              paramBitmap.recycle();
+              paramString = (String)localObject;
             }
           }
         }
       }
+    }
+    label780:
+    for (;;)
+    {
+      if (paramString != null) {
+        paramString.setDensity(c);
+      }
+      return new Pair(paramString, Boolean.valueOf(true));
+      paramString.printStackTrace();
+      System.gc();
+      return new Pair(paramBitmap, Boolean.valueOf(false));
     }
   }
   
@@ -272,24 +283,25 @@ public class NearbyImgLoader
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
         if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-          break label113;
+          break label117;
         }
-        URL localURL = (URL)this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-        if (localURL != null)
+        ??? = (URL)this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        if (??? != null)
         {
-          ThreadManager.post(new NearbyImgLoader.RequestLoadedImgTask(this, localURL), 8, null, true);
+          ThreadManager.post(new NearbyImgLoader.RequestLoadedImgTask(this, (URL)???), 8, null, true);
+          return;
+        }
+        synchronized (this.jdField_a_of_type_JavaUtilList)
+        {
+          if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+            a();
+          }
           return;
         }
       }
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-          a();
-        }
-        return;
-      }
-      label113:
-      ??? = null;
+      return;
+      label117:
+      Object localObject3 = null;
     }
   }
   
@@ -310,19 +322,17 @@ public class NearbyImgLoader
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-      localObject2 = finally;
-      throw localObject2;
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.feed.NearbyImgLoader
  * JD-Core Version:    0.7.0.1
  */

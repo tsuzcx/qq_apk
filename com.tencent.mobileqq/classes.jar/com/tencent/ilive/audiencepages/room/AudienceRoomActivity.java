@@ -24,10 +24,12 @@ import com.tencent.falco.base.libapi.wns.WnsInterface;
 import com.tencent.falco.utils.UIUtil;
 import com.tencent.ilive.EnterRoomConfig;
 import com.tencent.ilive.LiveAudience;
+import com.tencent.ilive.audiencepages.room.pagelogic.AudienceMultiRoomActivityLogic;
 import com.tencent.ilive.base.page.PageFactory;
 import com.tencent.ilive.base.page.fragment.LiveTemplateFragment;
 import com.tencent.ilive.enginemanager.BizEngineMgr;
 import com.tencent.ilivesdk.avplayerbuilderservice_interface.AVPlayerBuilderServiceInterface;
+import com.tencent.ilivesdk.roomswitchservice_interface.SwitchRoomInfo;
 import com.tencent.livesdk.liveengine.LiveEngine;
 import com.tencent.livesdk.roomengine.RoomEngine;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -36,10 +38,10 @@ public class AudienceRoomActivity
   extends RoomLiveTemplateActivity
 {
   private static final String TAG = "AudienceRoomActivity";
-  private static long enterTime = 0L;
+  protected static long enterTime;
   private ActivityLifeCycleService mActivityLifeCycleService;
   private SdkEventInterface mSdkEventInterface;
-  private AudienceRoomViewPager mViewPager = null;
+  protected AudienceRoomViewPager mViewPager = null;
   
   private LogInterface log()
   {
@@ -72,13 +74,10 @@ public class AudienceRoomActivity
     }
     if (i != 0) {
       localIntent.setFlags(335544320);
-    }
-    for (;;)
-    {
-      PageFactory.startActivity(localIntent, paramContext, LiveAudience.getPageType(paramEnterRoomConfig));
-      return;
+    } else {
       localIntent.setFlags(268435456);
     }
+    PageFactory.startActivity(localIntent, paramContext, LiveAudience.getPageType(paramEnterRoomConfig));
   }
   
   protected LiveTemplateFragment createFragment(boolean paramBoolean)
@@ -98,15 +97,24 @@ public class AudienceRoomActivity
   public void finish()
   {
     super.finish();
-    if (this.mViewPager != null) {
-      this.mViewPager.finish();
+    try
+    {
+      if (this.mViewPager != null) {
+        this.mViewPager.finish();
+      }
+      if (this.mActivityLifeCycleService != null)
+      {
+        this.mActivityLifeCycleService.onFinish();
+        return;
+      }
     }
-    if (this.mActivityLifeCycleService != null) {
-      this.mActivityLifeCycleService.onFinish();
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     ((WeiboSdkInterface)BizEngineMgr.getInstance().getLiveEngine().getService(WeiboSdkInterface.class)).onWeiboResult(paramInt1, paramInt2, paramIntent);
@@ -115,13 +123,15 @@ public class AudienceRoomActivity
   
   public void onBackPressed()
   {
-    if ((this.mSdkEventInterface != null) && (this.mSdkEventInterface.onBackPressed())) {}
-    do
-    {
+    Object localObject = this.mSdkEventInterface;
+    if ((localObject != null) && (((SdkEventInterface)localObject).onBackPressed())) {
       return;
-      super.onBackPressed();
-    } while (this.mViewPager == null);
-    this.mViewPager.onBackPressed();
+    }
+    super.onBackPressed();
+    localObject = this.mViewPager;
+    if (localObject != null) {
+      ((AudienceRoomViewPager)localObject).onBackPressed();
+    }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
@@ -130,17 +140,17 @@ public class AudienceRoomActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(@Nullable Bundle paramBundle)
+  protected void onCreate(@Nullable Bundle paramBundle)
   {
-    log().i("AudienceTime", "activity--onCreate", new Object[0]);
     getWindow().addFlags(128);
     super.onCreate(paramBundle);
     if (BizEngineMgr.getInstance().getLiveEngine() == null)
     {
-      log().e("AudienceRoomActivity", "-- live or room engine is null--", new Object[0]);
+      Log.e("AudienceRoomActivity", "-- live or room engine is null--");
       finish();
       return;
     }
+    log().i("AudienceTime", "activity--onCreate", new Object[0]);
     if (!((WnsInterface)BizEngineMgr.getInstance().getLiveEngine().getService(WnsInterface.class)).isGlobalInitialized())
     {
       log().e("AudienceRoomActivity", "-- Wns Global Context is null --", new Object[0]);
@@ -152,38 +162,57 @@ public class AudienceRoomActivity
       UIUtil.setFullscreen(this, false, false);
       UIUtil.setStatusBarColor(this, 0);
     }
-    for (;;)
+    else
     {
-      paramBundle = new ViewGroup.LayoutParams(-1, -1);
-      this.mViewPager = ((AudienceRoomViewPager)LayoutInflater.from(this).inflate(2131559370, null).findViewById(2131363083));
-      this.mViewPager.initRoomPageAction(new AudienceRoomActivity.1(this));
-      this.mViewPager.setIntent(getIntent());
-      this.mRootLayout.addView(this.mViewPager, paramBundle);
-      this.mViewPager.onCreate();
-      this.mSdkEventInterface = ((HostProxyInterface)BizEngineMgr.getInstance().getLiveEngine().getService(HostProxyInterface.class)).getSdkEventInterface();
-      this.mActivityLifeCycleService = ((ActivityLifeCycleService)BizEngineMgr.getInstance().getLiveEngine().getService(ActivityLifeCycleService.class));
-      if (this.mActivityLifeCycleService == null) {
-        break;
-      }
-      this.mActivityLifeCycleService.onActivityCreated(this);
-      return;
       getWindow().getDecorView().setSystemUiVisibility(5376);
       UIUtil.setStatusBarColor(this, 0);
     }
+    paramBundle = new ViewGroup.LayoutParams(-1, -1);
+    this.mViewPager = ((AudienceRoomViewPager)LayoutInflater.from(this).inflate(2131559245, null).findViewById(2131363023));
+    this.mViewPager.initRoomPageAction(new AudienceRoomActivity.1(this));
+    this.mViewPager.setIntent(getIntent());
+    this.mRootLayout.addView(this.mViewPager, paramBundle);
+    this.mViewPager.onCreate();
+    this.mSdkEventInterface = ((HostProxyInterface)BizEngineMgr.getInstance().getLiveEngine().getService(HostProxyInterface.class)).getSdkEventInterface();
+    this.mActivityLifeCycleService = ((ActivityLifeCycleService)BizEngineMgr.getInstance().getLiveEngine().getService(ActivityLifeCycleService.class));
+    paramBundle = this.mActivityLifeCycleService;
+    if (paramBundle != null) {
+      paramBundle.onActivityCreated(this);
+    }
+    AudienceMultiRoomActivityLogic.a().a(this);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if (this.mViewPager != null) {
-      this.mViewPager.onDestroy();
+    try
+    {
+      if (this.mViewPager != null) {
+        this.mViewPager.onDestroy();
+      }
+      if (this.mActivityLifeCycleService != null) {
+        this.mActivityLifeCycleService.onActivityDestroyed();
+      }
     }
-    if (this.mActivityLifeCycleService != null) {
-      this.mActivityLifeCycleService.onActivityDestroyed();
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
+    AudienceMultiRoomActivityLogic.a().a(null);
   }
   
-  public void onNewIntent(Intent paramIntent)
+  protected boolean onFloatWindowClicked(Runnable paramRunnable, SwitchRoomInfo paramSwitchRoomInfo)
+  {
+    if ((isFinishing()) && (paramSwitchRoomInfo != null))
+    {
+      startActivity(LiveAudience.switchToNewIntent(getIntent(), paramSwitchRoomInfo));
+      paramRunnable.run();
+      return true;
+    }
+    return false;
+  }
+  
+  protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
     boolean bool = paramIntent.getBooleanExtra("open_from_float_window", false);
@@ -194,69 +223,79 @@ public class AudienceRoomActivity
     setIntent(paramIntent);
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
-    if (this.mViewPager != null) {
-      this.mViewPager.onPause();
+    Object localObject = this.mViewPager;
+    if (localObject != null) {
+      ((AudienceRoomViewPager)localObject).onPause();
     }
-    if (this.mActivityLifeCycleService != null) {
-      this.mActivityLifeCycleService.onActivityPaused();
+    localObject = this.mActivityLifeCycleService;
+    if (localObject != null) {
+      ((ActivityLifeCycleService)localObject).onActivityPaused();
     }
   }
   
   public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
   {
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    if ((this.mViewPager != null) && (this.mViewPager.getCurrentFragment() != null)) {
+    AudienceRoomViewPager localAudienceRoomViewPager = this.mViewPager;
+    if ((localAudienceRoomViewPager != null) && (localAudienceRoomViewPager.getCurrentFragment() != null)) {
       ((AVPlayerBuilderServiceInterface)((AudienceRoomFragment)this.mViewPager.getCurrentFragment()).getRoomEngine().getService(AVPlayerBuilderServiceInterface.class)).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
-    if (this.mViewPager != null) {
-      this.mViewPager.onResume();
+    Object localObject = this.mViewPager;
+    if (localObject != null) {
+      ((AudienceRoomViewPager)localObject).onResume();
     }
-    if (this.mActivityLifeCycleService != null) {
-      this.mActivityLifeCycleService.onActivityResumed();
+    localObject = this.mActivityLifeCycleService;
+    if (localObject != null) {
+      ((ActivityLifeCycleService)localObject).onActivityResumed();
     }
   }
   
-  public void onStart()
+  protected void onStart()
   {
     super.onStart();
-    if (this.mViewPager != null) {
-      this.mViewPager.onStart();
+    Object localObject = this.mViewPager;
+    if (localObject != null) {
+      ((AudienceRoomViewPager)localObject).onStart();
     }
-    if (this.mActivityLifeCycleService != null) {
-      this.mActivityLifeCycleService.onActivityStarted();
+    localObject = this.mActivityLifeCycleService;
+    if (localObject != null) {
+      ((ActivityLifeCycleService)localObject).onActivityStarted();
     }
   }
   
-  public void onStop()
+  protected void onStop()
   {
     super.onStop();
-    if (this.mViewPager != null) {
-      this.mViewPager.onStop();
+    Object localObject = this.mViewPager;
+    if (localObject != null) {
+      ((AudienceRoomViewPager)localObject).onStop();
     }
-    if (this.mActivityLifeCycleService != null) {
-      this.mActivityLifeCycleService.onActivityStopped();
+    localObject = this.mActivityLifeCycleService;
+    if (localObject != null) {
+      ((ActivityLifeCycleService)localObject).onActivityStopped();
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.mActivityLifeCycleService != null) {
-      this.mActivityLifeCycleService.onWindowFocusChanged(paramBoolean);
+    ActivityLifeCycleService localActivityLifeCycleService = this.mActivityLifeCycleService;
+    if (localActivityLifeCycleService != null) {
+      localActivityLifeCycleService.onWindowFocusChanged(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.AudienceRoomActivity
  * JD-Core Version:    0.7.0.1
  */

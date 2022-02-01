@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.music;
 
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import mqq.app.MobileQQ;
 
 class QQPlayerService$NetInfoHandler
   implements INetInfoHandler
@@ -14,7 +14,7 @@ class QQPlayerService$NetInfoHandler
       return;
     }
     this.a = System.currentTimeMillis();
-    QQPlayerService.d(BaseApplicationImpl.getContext());
+    QQPlayerService.d(MobileQQ.getContext());
   }
   
   public void onNetMobile2None()
@@ -49,7 +49,7 @@ class QQPlayerService$NetInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.music.QQPlayerService.NetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

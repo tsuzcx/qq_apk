@@ -7,7 +7,7 @@ class Face2FaceAddContactPresenter$5
 {
   Face2FaceAddContactPresenter$5(Face2FaceAddContactPresenter paramFace2FaceAddContactPresenter) {}
   
-  public void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
     if ((paramBoolean) && (Face2FaceAddContactPresenter.a(this.a) != null)) {
       Face2FaceAddContactPresenter.a(this.a).a(String.valueOf(paramObject));
@@ -16,7 +16,7 @@ class Face2FaceAddContactPresenter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.5
  * JD-Core Version:    0.7.0.1
  */

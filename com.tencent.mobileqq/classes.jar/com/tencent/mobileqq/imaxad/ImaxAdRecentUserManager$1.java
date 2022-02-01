@@ -20,12 +20,16 @@ class ImaxAdRecentUserManager$1
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdvertisement", 2, "doDeleteItem disk  uin:" + this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doDeleteItem disk  uin:");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
+        QLog.d("ImaxAdvertisement", 2, ((StringBuilder)localObject).toString());
       }
-      Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.iterator();
-      while (localIterator.hasNext()) {
-        ImaxAdVideoPreloadManager.b(((VideoCoverItem)localIterator.next()).b);
+      Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ImaxAdVideoPreloadManager.b(((VideoCoverItem)((Iterator)localObject).next()).b);
       }
     }
     ImaxAdUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin);
@@ -33,7 +37,7 @@ class ImaxAdRecentUserManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdRecentUserManager.1
  * JD-Core Version:    0.7.0.1
  */

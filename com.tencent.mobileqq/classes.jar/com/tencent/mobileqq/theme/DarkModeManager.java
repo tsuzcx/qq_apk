@@ -14,6 +14,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.automator.AutomatorHelper;
 import com.tencent.mobileqq.config.business.DarkModeConfigProcessor;
 import com.tencent.mobileqq.settings.config.SettingsConfigHelper;
 import com.tencent.mobileqq.settings.message.ReportClickEventHelper;
@@ -21,7 +22,10 @@ import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.vas.theme.ThemeSwitchUtil;
+import com.tencent.mobileqq.vas.theme.ThemeSwitcher;
 import com.tencent.mobileqq.vas.theme.api.IThemeSwitchCallback;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -35,20 +39,18 @@ public class DarkModeManager
   
   private static SharedPreferences a()
   {
-    Object localObject2 = null;
     try
     {
-      Object localObject3 = BaseApplicationImpl.getApplication();
-      Object localObject1 = localObject2;
-      if (localObject3 != null)
+      Object localObject = BaseApplicationImpl.getApplication();
+      if (localObject != null)
       {
-        localObject3 = ((BaseApplicationImpl)localObject3).getRuntime();
-        localObject1 = localObject2;
-        if (localObject3 != null) {
-          localObject1 = ((AppRuntime)localObject3).getApplication().getSharedPreferences("DarkModeManagerdark_mode_ui", 4);
+        localObject = ((BaseApplicationImpl)localObject).getRuntime();
+        if (localObject != null)
+        {
+          localObject = ((AppRuntime)localObject).getApplication().getSharedPreferences("DarkModeManagerdark_mode_ui", 4);
+          return localObject;
         }
       }
-      return localObject1;
     }
     catch (Throwable localThrowable)
     {
@@ -59,56 +61,69 @@ public class DarkModeManager
   
   private static void a()
   {
-    if (SimpleUIUtil.a()) {}
-    for (String str = "2920";; str = "1103")
-    {
-      QLog.d("DarkModeManager", 1, "switchToNightMode themeID=" + str);
-      ThemeSwitcher.a(str, "202", null);
-      return;
+    String str;
+    if (SimpleUIUtil.a()) {
+      str = "2920";
+    } else {
+      str = "1103";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("switchToNightMode themeID=");
+    localStringBuilder.append(str);
+    QLog.d("DarkModeManager", 1, localStringBuilder.toString());
+    ThemeSwitcher.a(str, "202", null);
   }
   
   protected static void a(Activity paramActivity, String paramString, DarkModeManager.ActionResult paramActionResult)
   {
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
+    if ((paramActivity != null) && (!paramActivity.isFinishing()))
     {
-      QLog.e("DarkModeManager", 2, "showThemeDarkModeTips error!: ");
+      paramActivity = DialogUtil.a(paramActivity, 0, null, paramActivity.getString(2131718827), paramActivity.getString(2131690728), paramActivity.getString(2131691064), new DarkModeManager.4(paramActionResult), new DarkModeManager.5(paramActionResult));
+      paramActivity.show();
+      paramActivity.setCancelable(false);
+      a("0X800A5C9");
       return;
     }
-    paramActivity = DialogUtil.a(paramActivity, 0, null, paramActivity.getString(2131719109), paramActivity.getString(2131690800), paramActivity.getString(2131691144), new DarkModeManager.4(paramActionResult), new DarkModeManager.5(paramActionResult));
-    paramActivity.show();
-    paramActivity.setCancelable(false);
-    a("0X800A5C9");
+    QLog.e("DarkModeManager", 2, "showThemeDarkModeTips error!: ");
   }
   
   public static void a(IThemeSwitchCallback paramIThemeSwitchCallback)
   {
-    if (b()) {
-      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) == 32)
-      {
+    if (b())
+    {
+      boolean bool1;
+      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) == 32) {
         bool1 = true;
-        bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("DarkModeManager", 2, "updateDarkModeStatus isNightMode  = " + bool2 + ", isDarkMode = " + bool1);
-        }
-        b(bool1, bool2, paramIThemeSwitchCallback);
+      } else {
+        bool1 = false;
       }
-    }
-    while ((!b) || (BaseApplicationImpl.isCurrentVersionFirstLaunch)) {
-      for (;;)
+      boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
+      if (QLog.isColorLevel())
       {
-        boolean bool2;
-        return;
-        boolean bool1 = false;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateDarkModeStatus isNightMode  = ");
+        localStringBuilder.append(bool2);
+        localStringBuilder.append(", isDarkMode = ");
+        localStringBuilder.append(bool1);
+        QLog.d("DarkModeManager", 2, localStringBuilder.toString());
       }
+      b(bool1, bool2, paramIThemeSwitchCallback);
+      return;
     }
-    d();
+    if ((b) && (!AutomatorHelper.b)) {
+      d();
+    }
   }
   
   public static void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "report() called with: key = [" + paramString + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("report() called with: key = [");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.d("DarkModeManager", 2, localStringBuilder.toString());
     }
     ReportController.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
@@ -117,24 +132,22 @@ public class DarkModeManager
   {
     if (SettingsConfigHelper.a(b())) {
       ReportClickEventHelper.a(b(), "0X800B86E", paramBoolean);
+    } else if (paramBoolean) {
+      a("0X800A3E8");
+    } else {
+      a("0X800A3E7");
     }
-    SharedPreferences localSharedPreferences;
-    for (;;)
-    {
-      a = paramBoolean;
-      localSharedPreferences = a();
-      if (localSharedPreferences != null) {
-        break;
-      }
+    a = paramBoolean;
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences == null) {
       return;
-      if (paramBoolean) {
-        a("0X800A3E8");
-      } else {
-        a("0X800A3E7");
-      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "updateModeStatus isOpened  = " + a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateModeStatus isOpened  = ");
+      localStringBuilder.append(a);
+      QLog.d("DarkModeManager", 2, localStringBuilder.toString());
     }
     localSharedPreferences.edit().putBoolean("dark_switch_key", a).apply();
   }
@@ -142,20 +155,20 @@ public class DarkModeManager
   protected static void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing()))
+    if ((localBaseActivity != null) && (!localBaseActivity.isFinishing()))
     {
-      QLog.e("DarkModeManager", 2, "showDarkModeTips error!: ");
+      String str = localBaseActivity.getString(2131718830);
+      if (!paramBoolean1) {
+        str = localBaseActivity.getString(2131718826);
+      }
+      paramString1 = DialogUtil.a(localBaseActivity, 0, null, str, localBaseActivity.getString(2131690728), localBaseActivity.getString(2131691064), new DarkModeManager.1(paramBoolean1, paramBoolean2), new DarkModeManager.2(paramString1, paramString2));
+      paramString1.show();
+      paramString1.setCancelable(false);
+      c();
+      a("0X800A5B4");
       return;
     }
-    String str = localBaseActivity.getString(2131719112);
-    if (!paramBoolean1) {
-      str = localBaseActivity.getString(2131719108);
-    }
-    paramString1 = DialogUtil.a(localBaseActivity, 0, null, str, localBaseActivity.getString(2131690800), localBaseActivity.getString(2131691144), new DarkModeManager.1(paramBoolean1, paramBoolean2), new DarkModeManager.2(paramString1, paramString2));
-    paramString1.show();
-    paramString1.setCancelable(false);
-    c();
-    a("0X800A5B4");
+    QLog.e("DarkModeManager", 2, "showDarkModeTips error!: ");
   }
   
   public static boolean a()
@@ -165,123 +178,138 @@ public class DarkModeManager
   
   public static boolean a(Activity paramActivity, String paramString, DarkModeManager.ActionResult paramActionResult)
   {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
-    while (!b()) {
-      return false;
-    }
-    boolean bool2;
-    label40:
-    boolean bool1;
-    if ((paramActivity.getResources().getConfiguration().uiMode & 0x30) == 32)
+    if (paramActivity != null)
     {
-      bool2 = true;
-      bool1 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
-      if (TextUtils.isEmpty(paramString))
+      if (paramActivity.isFinishing()) {
+        return false;
+      }
+      if (b())
       {
-        if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
-          break label136;
+        boolean bool1;
+        if ((paramActivity.getResources().getConfiguration().uiMode & 0x30) == 32) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-        bool1 = true;
+        boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
+        if (TextUtils.isEmpty(paramString)) {
+          bool2 = ThemeUtil.isNowThemeIsNight(null, false, null) ^ true;
+        }
+        if (bool1 == bool2) {
+          return false;
+        }
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("userSetThemeAction isNightMode  = ");
+          localStringBuilder.append(bool2);
+          localStringBuilder.append(", isDarkMode = ");
+          localStringBuilder.append(bool1);
+          QLog.d("DarkModeManager", 2, localStringBuilder.toString());
+        }
+        if (Looper.getMainLooper() == Looper.myLooper())
+        {
+          a(paramActivity, paramString, paramActionResult);
+          return true;
+        }
+        ThreadManager.getUIHandler().post(new DarkModeManager.6(paramActivity, paramString, paramActionResult));
+        return true;
       }
-      label65:
-      if (bool2 == bool1) {
-        break label139;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "userSetThemeAction isNightMode  = " + bool1 + ", isDarkMode = " + bool2);
-      }
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label141;
-      }
-      a(paramActivity, paramString, paramActionResult);
     }
-    for (;;)
-    {
-      return true;
-      bool2 = false;
-      break label40;
-      label136:
-      bool1 = false;
-      break label65;
-      label139:
-      break;
-      label141:
-      ThreadManager.getUIHandler().post(new DarkModeManager.6(paramActivity, paramString, paramActionResult));
-    }
+    return false;
   }
   
   public static boolean a(String paramString)
   {
-    if (b()) {
-      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) != 32) {
-        break label85;
-      }
-    }
-    label85:
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool2 = b();
+    boolean bool1 = true;
+    if (bool2)
     {
-      boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "updateDarkModeStatus isNightMode  = " + bool2 + ", isDarkMode = " + bool1);
+      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) == 32) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      if (bool1 != bool2) {
-        break;
+      bool2 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("updateDarkModeStatus isNightMode  = ");
+        paramString.append(bool2);
+        paramString.append(", isDarkMode = ");
+        paramString.append(bool1);
+        QLog.d("DarkModeManager", 2, paramString.toString());
       }
-      return true;
+      if (bool1 == bool2) {
+        return true;
+      }
+      bool1 = false;
     }
-    return false;
+    return bool1;
   }
   
   public static boolean a(String paramString1, String paramString2)
   {
     if (a())
     {
-      localBaseActivity = BaseActivity.sTopActivity;
-      if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {}
-    }
-    while (!QLog.isColorLevel())
-    {
-      boolean bool1;
-      boolean bool2;
-      do
+      Object localObject = BaseActivity.sTopActivity;
+      if (localObject != null)
       {
-        do
-        {
-          BaseActivity localBaseActivity;
+        if (((Activity)localObject).isFinishing()) {
           return false;
-          if ((localBaseActivity.getResources().getConfiguration().uiMode & 0x30) != 32) {
-            break;
-          }
+        }
+        boolean bool1;
+        if ((((Activity)localObject).getResources().getConfiguration().uiMode & 0x30) == 32) {
           bool1 = true;
-          bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
-          if (QLog.isColorLevel()) {
-            QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme isNightMode  = " + bool2 + ", isDarkMode = " + bool1 + ", isCurrentVersionFirstLaunch = " + BaseApplicationImpl.isCurrentVersionFirstLaunch);
-          }
-        } while (bool1 == bool2);
+        } else {
+          bool1 = false;
+        }
+        boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("afterDownloadRoamTheme isNightMode  = ");
+          ((StringBuilder)localObject).append(bool2);
+          ((StringBuilder)localObject).append(", isDarkMode = ");
+          ((StringBuilder)localObject).append(bool1);
+          ((StringBuilder)localObject).append(", isCurrentVersionFirstLaunch = ");
+          ((StringBuilder)localObject).append(AutomatorHelper.b);
+          QLog.d("DarkModeManager", 2, ((StringBuilder)localObject).toString());
+        }
+        if (bool1 == bool2) {
+          return false;
+        }
         if ((!d()) && (DarkModeConfigProcessor.a()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme dialog will show!");
           }
-          if (Looper.getMainLooper() == Looper.myLooper()) {
-            a(bool1, bool2, paramString1, paramString2);
-          }
-          for (;;)
+          if (Looper.getMainLooper() == Looper.myLooper())
           {
+            a(bool1, bool2, paramString1, paramString2);
             return true;
-            bool1 = false;
-            break;
-            ThreadManager.getUIHandler().post(new DarkModeManager.3(bool1, bool2, paramString1, paramString2));
           }
+          ThreadManager.getUIHandler().post(new DarkModeManager.3(bool1, bool2, paramString1, paramString2));
+          return true;
         }
-      } while (!b());
-      b(bool1, bool2, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! switch is opened, so switch theme!");
+        if (b())
+        {
+          b(bool1, bool2, null);
+          if (QLog.isColorLevel()) {
+            QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! switch is opened, so switch theme!");
+          }
+          return true;
+        }
       }
-      return true;
+      else
+      {
+        return false;
+      }
     }
-    QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! the system version is lower 29! so do not dialog!");
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! the system version is lower 29! so do not dialog!");
+    }
     return false;
   }
   
@@ -312,23 +340,30 @@ public class DarkModeManager
   
   private static void b(IThemeSwitchCallback paramIThemeSwitchCallback)
   {
-    Object localObject;
-    if (SimpleUIUtil.a()) {
-      localObject = SimpleUIUtil.a(SimpleUIUtil.g());
-    }
-    for (;;)
+    String str;
+    if (SimpleUIUtil.a())
     {
-      QLog.d("DarkModeManager", 1, "closedNightMode is called, will set themeID=" + (String)localObject);
-      ThemeSwitcher.a((String)localObject, "202", paramIThemeSwitchCallback);
-      return;
+      str = SimpleUIUtil.a(SimpleUIUtil.g());
+    }
+    else
+    {
       localObject = ThemeSwitchUtil.a(b());
-      String str = ((Bundle)localObject).getString("themeID");
-      QLog.d("DarkModeManager", 1, "closedNightMode, pre themeID=" + str + ",version=" + ((Bundle)localObject).getString("version"));
-      localObject = str;
+      str = ((Bundle)localObject).getString("themeID");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("closedNightMode, pre themeID=");
+      localStringBuilder.append(str);
+      localStringBuilder.append(",version=");
+      localStringBuilder.append(((Bundle)localObject).getString("version"));
+      QLog.d("DarkModeManager", 1, localStringBuilder.toString());
       if (TextUtils.isEmpty(str)) {
-        localObject = "1000";
+        str = "1000";
       }
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("closedNightMode is called, will set themeID=");
+    ((StringBuilder)localObject).append(str);
+    QLog.d("DarkModeManager", 1, ((StringBuilder)localObject).toString());
+    ThemeSwitcher.a(str, "202", paramIThemeSwitchCallback);
   }
   
   public static void b(boolean paramBoolean)
@@ -338,13 +373,14 @@ public class DarkModeManager
   
   private static void b(boolean paramBoolean1, boolean paramBoolean2, IThemeSwitchCallback paramIThemeSwitchCallback)
   {
-    if ((paramBoolean1) && (!paramBoolean2)) {
+    if ((paramBoolean1) && (!paramBoolean2))
+    {
       a();
-    }
-    while ((paramBoolean1) || (!paramBoolean2)) {
       return;
     }
-    b(paramIThemeSwitchCallback);
+    if ((!paramBoolean1) && (paramBoolean2)) {
+      b(paramIThemeSwitchCallback);
+    }
   }
   
   public static boolean b()
@@ -367,8 +403,12 @@ public class DarkModeManager
   public static boolean c()
   {
     
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "getDarkModeSwitch isOpened  = " + a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDarkModeSwitch isOpened  = ");
+      localStringBuilder.append(a);
+      QLog.d("DarkModeManager", 2, localStringBuilder.toString());
     }
     return a;
   }
@@ -380,8 +420,8 @@ public class DarkModeManager
   
   private static boolean d()
   {
-    boolean bool = false;
     SharedPreferences localSharedPreferences = a();
+    boolean bool = false;
     if (localSharedPreferences != null) {
       bool = localSharedPreferences.getBoolean("dialog_has_shown_key", false);
     }
@@ -390,7 +430,7 @@ public class DarkModeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.theme.DarkModeManager
  * JD-Core Version:    0.7.0.1
  */

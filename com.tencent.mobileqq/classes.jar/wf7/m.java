@@ -46,18 +46,20 @@ public final class m
     paramJceOutputStream.write(this.aO, 0);
     paramJceOutputStream.write(this.aP, 1);
     paramJceOutputStream.write(this.aQ, 2);
-    if (this.aR) {
-      paramJceOutputStream.write(this.aR, 3);
+    boolean bool = this.aR;
+    if (bool) {
+      paramJceOutputStream.write(bool, 3);
     }
     paramJceOutputStream.write(this.aS, 4);
-    if (this.aT != null) {
-      paramJceOutputStream.write(this.aT, 5);
+    Map localMap = this.aT;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.m
  * JD-Core Version:    0.7.0.1
  */

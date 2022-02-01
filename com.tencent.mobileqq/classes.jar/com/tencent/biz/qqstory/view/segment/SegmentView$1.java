@@ -11,7 +11,9 @@ class SegmentView$1
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     super.applyTransformation(paramFloat, paramTransformation);
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    int i = this.jdField_a_of_type_Int;
+    paramTransformation.height = (i - (int)(i * paramFloat));
     this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
   
@@ -23,7 +25,7 @@ class SegmentView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.segment.SegmentView.1
  * JD-Core Version:    0.7.0.1
  */

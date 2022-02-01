@@ -12,20 +12,26 @@ final class GdtBannerViewWithLetterStyle$Params
   
   public GdtBannerViewWithLetterStyle$Params(Context paramContext, int paramInt1, int paramInt2)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0))
+    if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      GdtLog.d("GdtBannerViewWithLetterStyle", "constructor");
+      double d1 = paramInt1;
+      Double.isNaN(d1);
+      this.a = Double.valueOf(d1 * 0.02892561983471075D).intValue();
+      d1 = paramInt2;
+      Double.isNaN(d1);
+      this.b = Double.valueOf(0.02666666666666667D * d1).intValue();
+      Double.isNaN(d1);
+      this.c = Double.valueOf(0.06666666666666667D * d1).intValue();
+      Double.isNaN(d1);
+      this.d = Double.valueOf(d1 * 0.16D).intValue();
       return;
     }
-    this.a = Double.valueOf(0.02892561983471075D * paramInt1).intValue();
-    this.b = Double.valueOf(0.02666666666666667D * paramInt2).intValue();
-    this.c = Double.valueOf(0.06666666666666667D * paramInt2).intValue();
-    this.d = Double.valueOf(0.16D * paramInt2).intValue();
+    GdtLog.d("GdtBannerViewWithLetterStyle", "constructor");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.letter.GdtBannerViewWithLetterStyle.Params
  * JD-Core Version:    0.7.0.1
  */

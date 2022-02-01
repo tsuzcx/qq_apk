@@ -22,17 +22,18 @@ public class IdentifierCameraCaptureView
     super(paramContext, paramAttributeSet);
   }
   
+  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    super.a(paramArrayOfByte, paramCamera);
+    IdentifierCameraCaptureView.OutPreviewCallback localOutPreviewCallback = this.a;
+    if (localOutPreviewCallback != null) {
+      localOutPreviewCallback.a(paramArrayOfByte, paramCamera);
+    }
+  }
+  
   public void onDrawFrame(GL10 paramGL10)
   {
     super.onDrawFrame(paramGL10);
-  }
-  
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    super.onPreviewFrame(paramArrayOfByte, paramCamera);
-    if (this.a != null) {
-      this.a.a(paramArrayOfByte, paramCamera);
-    }
   }
   
   public void setPreviewCallback(IdentifierCameraCaptureView.OutPreviewCallback paramOutPreviewCallback)
@@ -42,7 +43,7 @@ public class IdentifierCameraCaptureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.IdentifierCameraCaptureView
  * JD-Core Version:    0.7.0.1
  */

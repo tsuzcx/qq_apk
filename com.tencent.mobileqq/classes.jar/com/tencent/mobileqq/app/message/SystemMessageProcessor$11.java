@@ -21,71 +21,77 @@ class SystemMessageProcessor$11
   public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     ToServiceMsg localToServiceMsg = (ToServiceMsg)paramProtoReq.busiData;
-    if (paramProtoResp.resp.getResultCode() != 1000) {
+    int i = paramProtoResp.resp.getResultCode();
+    boolean bool2 = false;
+    if (i != 1000) {
       this.a.a(4012, false, localToServiceMsg);
     }
+    label341:
     for (;;)
     {
+      boolean bool1;
       try
       {
         paramProtoResp = paramProtoResp.resp.getWupBuffer();
-        localRspSystemMsgAction = new structmsg.RspSystemMsgAction();
+        structmsg.RspSystemMsgAction localRspSystemMsgAction = new structmsg.RspSystemMsgAction();
         localRspSystemMsgAction.mergeFrom(paramProtoResp);
-        j = localRspSystemMsgAction.head.result.get();
-        if (j != 0) {
-          continue;
+        int j = localRspSystemMsgAction.head.result.get();
+        paramProtoReq = "";
+        if (j == 0)
+        {
+          bool1 = true;
         }
-        bool1 = true;
+        else
+        {
+          String str = localRspSystemMsgAction.head.msg_fail.get();
+          paramProtoResp = str;
+          if (str == null) {
+            paramProtoResp = "";
+          }
+          localToServiceMsg.extraData.putString("system_msg_action_resp_error_key", paramProtoResp);
+          bool1 = false;
+        }
         paramProtoResp = localRspSystemMsgAction.msg_detail.get();
         if (paramProtoResp != null) {
-          continue;
+          break label341;
         }
-        paramProtoResp = "";
+        paramProtoResp = paramProtoReq;
+        i = -1;
+        if (localRspSystemMsgAction.remark_result.has()) {
+          i = localRspSystemMsgAction.remark_result.get();
+        }
+        localToServiceMsg.extraData.putString("system_msg_action_resp_key", paramProtoResp);
+        localToServiceMsg.extraData.putInt("system_msg_action_resp_result_code_key", localRspSystemMsgAction.head.result.get());
+        localToServiceMsg.extraData.putInt("system_msg_action_resp_type_key", localRspSystemMsgAction.type.get());
+        localToServiceMsg.extraData.putString("system_msg_action_resp_invalid_decided_key", localRspSystemMsgAction.msg_invalid_decided.get());
+        localToServiceMsg.extraData.putInt("system_msg_action_resp_remark_result_key", i);
+        if (QLog.isColorLevel())
+        {
+          paramProtoReq = new StringBuilder();
+          paramProtoReq.append("sendFriendSystemMsgActionResp result:");
+          paramProtoReq.append(j);
+          paramProtoReq.append(" msg:");
+          paramProtoReq.append(paramProtoResp);
+          QLog.d("Q.systemmsg.", 2, paramProtoReq.toString());
+        }
       }
       catch (Exception paramProtoResp)
       {
-        structmsg.RspSystemMsgAction localRspSystemMsgAction;
-        int j;
-        boolean bool1;
-        int i;
-        if (!QLog.isColorLevel()) {
-          continue;
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
+          bool1 = bool2;
         }
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
-        boolean bool2 = false;
-        continue;
-        continue;
       }
-      i = -1;
-      if (localRspSystemMsgAction.remark_result.has()) {
-        i = localRspSystemMsgAction.remark_result.get();
-      }
-      localToServiceMsg.extraData.putString("system_msg_action_resp_key", paramProtoResp);
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_result_code_key", localRspSystemMsgAction.head.result.get());
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_type_key", localRspSystemMsgAction.type.get());
-      localToServiceMsg.extraData.putString("system_msg_action_resp_invalid_decided_key", localRspSystemMsgAction.msg_invalid_decided.get());
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_remark_result_key", i);
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgActionResp result:" + j + " msg:" + paramProtoResp);
-        bool2 = bool1;
-      }
-      this.a.a(4011, bool2, localToServiceMsg);
+      this.a.a(4011, bool1, localToServiceMsg);
       return;
-      paramProtoReq = localRspSystemMsgAction.head.msg_fail.get();
-      paramProtoResp = paramProtoReq;
-      if (paramProtoReq == null) {
-        paramProtoResp = "";
-      }
-      localToServiceMsg.extraData.putString("system_msg_action_resp_error_key", paramProtoResp);
-      bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.SystemMessageProcessor.11
  * JD-Core Version:    0.7.0.1
  */

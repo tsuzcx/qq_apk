@@ -53,30 +53,36 @@ public final class stJumpInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.index, 0);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 1);
+    Object localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 2);
+    localObject = this.text;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 3);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
     paramJceOutputStream.write(this.id, 4);
-    if (this.h5url != null) {
-      paramJceOutputStream.write(this.h5url, 5);
+    localObject = this.h5url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.schema_url != null) {
-      paramJceOutputStream.write(this.schema_url, 6);
+    localObject = this.schema_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.trace_id != null) {
-      paramJceOutputStream.write(this.trace_id, 7);
+    localObject = this.trace_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stJumpInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -56,23 +56,23 @@ public class VRecyclerViewAdapter
   
   private void detectFooterOrHeader(List<DomObject> paramList)
   {
-    if (paramList == null) {}
-    label46:
+    if (paramList == null) {
+      return;
+    }
+    paramList = paramList.iterator();
     do
     {
-      return;
       DomObject localDomObject;
       for (;;)
       {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localDomObject = (DomObject)paramList.next();
-          if (!ViolaUtils.isRefresh(localDomObject)) {
-            break label46;
-          }
-          this.mHasHeader = true;
+        if (!paramList.hasNext()) {
+          return;
         }
+        localDomObject = (DomObject)paramList.next();
+        if (!ViolaUtils.isRefresh(localDomObject)) {
+          break;
+        }
+        this.mHasHeader = true;
       }
       if ("footer-refresh".equals(localDomObject.getType())) {
         this.mHasFooter = true;
@@ -82,11 +82,14 @@ public class VRecyclerViewAdapter
   
   private void doNotifyItemDeleteWithAnim(int paramInt)
   {
-    View localView = getDoAnimView(paramInt);
-    if ((localView != null) && (localView.getTop() < 0))
+    Object localObject = getDoAnimView(paramInt);
+    if ((localObject != null) && (((View)localObject).getTop() < 0))
     {
-      ViolaLogUtils.d("VRecyclerViewAdapter", "doNotifyItemDeleteWithAnim  startSpecialRemoveAnimation start,index:" + paramInt);
-      DefaultRecycleItemAnimator.startSpecialRemoveAnimation(localView, new VRecyclerViewAdapter.2(this, paramInt));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doNotifyItemDeleteWithAnim  startSpecialRemoveAnimation start,index:");
+      localStringBuilder.append(paramInt);
+      ViolaLogUtils.d("VRecyclerViewAdapter", localStringBuilder.toString());
+      DefaultRecycleItemAnimator.startSpecialRemoveAnimation((View)localObject, new VRecyclerViewAdapter.2(this, paramInt));
       return;
     }
     if (paramInt != -1) {
@@ -95,47 +98,39 @@ public class VRecyclerViewAdapter
     this.mDiffItemAnimListener.startDiffItemAnim();
     if (this.mHasHeader) {
       notifyItemRemoved(paramInt - 1);
-    }
-    for (;;)
-    {
-      if ((paramInt - 1 != this.mDataList.size() - 1) && (this.mHasHeader)) {
-        notifyItemRangeChanged(paramInt - 1, 0);
-      }
-      ViolaLogUtils.d("VRecyclerViewAdapter", "doNotifyItemDeleteWithAnim  startSystemRemoveAnimation finish,index:" + paramInt);
-      return;
+    } else {
       notifyItemRemoved(paramInt);
     }
+    int i = paramInt - 1;
+    if ((i != this.mDataList.size() - 1) && (this.mHasHeader)) {
+      notifyItemRangeChanged(i, 0);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("doNotifyItemDeleteWithAnim  startSystemRemoveAnimation finish,index:");
+    ((StringBuilder)localObject).append(paramInt);
+    ViolaLogUtils.d("VRecyclerViewAdapter", ((StringBuilder)localObject).toString());
   }
   
   private void doNotifyItemInsertWithAnim(int paramInt)
   {
     int i;
-    if (this.mHasHeader)
-    {
+    if (this.mHasHeader) {
       i = paramInt - 1;
-      if ((this.mRecyclerList.getHostView() == null) || (i < this.mRecyclerList.getFirstVisiableItemPosition()) || (i > ((VRecyclerView)this.mRecyclerList.getHostView()).getLastVisibleItemPosition())) {
-        break label122;
-      }
-      this.mDiffItemAnimListener.startDiffItemAnim();
-      label58:
-      if (!this.mHasHeader) {
-        break label132;
-      }
-      notifyItemInserted(paramInt - 1);
-    }
-    for (;;)
-    {
-      if (((this.mHasHeader) && (paramInt == 1)) || ((!this.mHasHeader) && (paramInt == 0) && (this.mDiffItemAnimListener.getFirstVisiableItemPosition() == 0))) {
-        this.mDiffItemAnimListener.scrollToTop();
-      }
-      return;
+    } else {
       i = paramInt;
-      break;
-      label122:
+    }
+    if ((this.mRecyclerList.getHostView() != null) && (i >= this.mRecyclerList.getFirstVisiableItemPosition()) && (i <= ((VRecyclerView)this.mRecyclerList.getHostView()).getLastVisibleItemPosition())) {
+      this.mDiffItemAnimListener.startDiffItemAnim();
+    } else {
       this.mRecyclerList.onAnimFinish();
-      break label58;
-      label132:
+    }
+    if (this.mHasHeader) {
+      notifyItemInserted(paramInt - 1);
+    } else {
       notifyItemInserted(paramInt);
+    }
+    if (((this.mHasHeader) && (paramInt == 1)) || ((!this.mHasHeader) && (paramInt == 0) && (this.mDiffItemAnimListener.getFirstVisiableItemPosition() == 0))) {
+      this.mDiffItemAnimListener.scrollToTop();
     }
   }
   
@@ -143,14 +138,13 @@ public class VRecyclerViewAdapter
   {
     if (paramView != null)
     {
-      if (Build.VERSION.SDK_INT >= 16) {
+      if (Build.VERSION.SDK_INT >= 16)
+      {
         paramView.setBackgroundColor(0);
+        return;
       }
+      paramView.setBackgroundDrawable(new ColorDrawable(0));
     }
-    else {
-      return;
-    }
-    paramView.setBackgroundDrawable(new ColorDrawable(0));
   }
   
   private View getDoAnimView(int paramInt)
@@ -181,12 +175,14 @@ public class VRecyclerViewAdapter
   
   private boolean ifNeedDoItemAnim()
   {
-    return (this.mDiffItemAnimListener != null) && (this.mDiffItemAnimListener.isDiffItemAnimEnable());
+    VRecyclerViewAdapter.DiffItemAnimListener localDiffItemAnimListener = this.mDiffItemAnimListener;
+    return (localDiffItemAnimListener != null) && (localDiffItemAnimListener.isDiffItemAnimEnable());
   }
   
   private void internalNotifyItemInsert(int paramInt)
   {
-    if ((this.mRecyclerList != null) && (this.mRecyclerList.disableAutoScroll()))
+    VRecyclerList localVRecyclerList = this.mRecyclerList;
+    if ((localVRecyclerList != null) && (localVRecyclerList.disableAutoScroll()))
     {
       notifyItemChanged(paramInt);
       return;
@@ -206,91 +202,110 @@ public class VRecyclerViewAdapter
   
   private void onCreateAndSetRealView(VRecyclerViewAdapter.VH paramVH, DomObject paramDomObject)
   {
-    if ((paramVH == null) || (paramDomObject == null)) {}
-    do
+    if (paramVH != null)
     {
-      return;
+      if (paramDomObject == null) {
+        return;
+      }
       paramVH.mVCell = onCreateVCell(paramDomObject);
-    } while (paramVH.mVCell == null);
-    ((ViewGroup)paramVH.itemView).addView(paramVH.mVCell.getRealView());
+      if (paramVH.mVCell != null) {
+        ((ViewGroup)paramVH.itemView).addView(paramVH.mVCell.getRealView());
+      }
+    }
   }
   
   private VCell onCreateVCell(DomObject paramDomObject)
   {
     if (paramDomObject == null) {
-      paramDomObject = null;
+      return null;
     }
-    VCell localVCell;
-    do
+    paramDomObject.lazy(false);
+    paramDomObject = (VCell)MethodAbsAdd.generateComponentTree(this.mDomActionContext, paramDomObject, this.mRecyclerList);
+    if (paramDomObject != null)
     {
-      do
-      {
-        return paramDomObject;
-        paramDomObject.lazy(false);
-        localVCell = (VCell)MethodAbsAdd.generateComponentTree(this.mDomActionContext, paramDomObject, this.mRecyclerList);
-        paramDomObject = localVCell;
-      } while (localVCell == null);
-      localVCell.lazy(false);
-      paramDomObject = localVCell;
-    } while (localVCell.getHostView() != null);
-    localVCell.createView();
-    return localVCell;
+      paramDomObject.lazy(false);
+      if (paramDomObject.getHostView() == null) {
+        paramDomObject.createView();
+      }
+    }
+    return paramDomObject;
   }
   
   private void setRealLastSize(int paramInt)
   {
-    if (paramInt <= 0) {
-      this.mLastDataSize = 0;
-    }
-    do
+    if (paramInt <= 0)
     {
+      this.mLastDataSize = 0;
       return;
-      this.mLastDataSize = paramInt;
-      if (this.mHasHeader) {
-        this.mLastDataSize -= 1;
+    }
+    this.mLastDataSize = paramInt;
+    if (this.mHasHeader) {
+      this.mLastDataSize -= 1;
+    }
+    if (this.mHasFooter) {
+      this.mLastDataSize -= 1;
+    }
+  }
+  
+  public int findItemIndex(DomObject paramDomObject)
+  {
+    List localList = this.mDataList;
+    if (localList != null)
+    {
+      if (paramDomObject == null) {
+        return -1;
       }
-    } while (!this.mHasFooter);
-    this.mLastDataSize -= 1;
+      int i = localList.indexOf(paramDomObject);
+      if (i >= 0) {
+        return getRealPosition(i);
+      }
+    }
+    return -1;
   }
   
   public DomObject getItem(int paramInt)
   {
     paramInt = getRealPosition(paramInt);
-    if ((this.mDataList == null) || (paramInt < 0) || (paramInt >= this.mDataList.size())) {
-      return null;
+    List localList = this.mDataList;
+    if ((localList != null) && (paramInt >= 0) && (paramInt < localList.size())) {
+      return (DomObject)this.mDataList.get(paramInt);
     }
-    return (DomObject)this.mDataList.get(paramInt);
+    return null;
   }
   
   public int getItemCount()
   {
-    int j;
-    if ((this.mDataList == null) || (this.mDataList.isEmpty())) {
-      j = 0;
-    }
-    int i;
-    do
+    List localList = this.mDataList;
+    if ((localList != null) && (!localList.isEmpty()))
     {
-      return j;
-      j = this.mDataList.size();
-      i = j;
+      int j = this.mDataList.size();
+      int i = j;
       if (this.mHasHeader) {
         i = j - 1;
       }
       j = i;
-    } while (!this.mHasFooter);
-    return i - 1;
+      if (this.mHasFooter) {
+        j = i - 1;
+      }
+      return j;
+    }
+    return 0;
   }
   
   public long getItemId(int paramInt)
   {
-    if (this.mDataList == null) {}
-    do
-    {
+    if (this.mDataList == null) {
       return -1L;
-      paramInt = getRealPosition(paramInt);
-    } while ((paramInt < 0) || (paramInt > this.mDataList.size() - 1));
-    return Long.parseLong(((DomObject)this.mDataList.get(paramInt)).getRef());
+    }
+    paramInt = getRealPosition(paramInt);
+    if (paramInt >= 0)
+    {
+      if (paramInt > this.mDataList.size() - 1) {
+        return -1L;
+      }
+      return Long.parseLong(((DomObject)this.mDataList.get(paramInt)).getRef());
+    }
+    return -1L;
   }
   
   public int getItemViewType(int paramInt)
@@ -317,26 +332,17 @@ public class VRecyclerViewAdapter
     if (paramDomObject == null) {
       return;
     }
-    if (!this.mDataList.contains(paramDomObject))
-    {
-      if ((paramInt < 0) || (paramInt > this.mDataList.size())) {
-        break label123;
+    if (!this.mDataList.contains(paramDomObject)) {
+      if ((paramInt >= 0) && (paramInt <= this.mDataList.size()))
+      {
+        this.mDataList.add(paramInt, paramDomObject);
+        if (ifNeedDoItemAnim()) {
+          doNotifyItemInsertWithAnim(paramInt);
+        } else {
+          internalNotifyItemInsert(paramInt);
+        }
       }
-      this.mDataList.add(paramInt, paramDomObject);
-      if (!ifNeedDoItemAnim()) {
-        break label115;
-      }
-      doNotifyItemInsertWithAnim(paramInt);
-    }
-    for (;;)
-    {
-      ViolaLogUtils.d("VRecyclerViewAdapter", "insert, dataSize: " + this.mDataList.size() + ", index: " + paramInt + ", hasHeader: " + this.mHasHeader);
-      return;
-      label115:
-      internalNotifyItemInsert(paramInt);
-      continue;
-      label123:
-      if (paramInt == -1)
+      else if (paramInt == -1)
       {
         this.mDataList.add(paramDomObject);
         if (ifNeedDoItemAnim()) {
@@ -346,6 +352,14 @@ public class VRecyclerViewAdapter
         }
       }
     }
+    paramDomObject = new StringBuilder();
+    paramDomObject.append("insert, dataSize: ");
+    paramDomObject.append(this.mDataList.size());
+    paramDomObject.append(", index: ");
+    paramDomObject.append(paramInt);
+    paramDomObject.append(", hasHeader: ");
+    paramDomObject.append(this.mHasHeader);
+    ViolaLogUtils.d("VRecyclerViewAdapter", paramDomObject.toString());
   }
   
   public void notifyItemRemove(DomObject paramDomObject)
@@ -354,7 +368,10 @@ public class VRecyclerViewAdapter
       return;
     }
     int i = this.mDataList.indexOf(paramDomObject);
-    ViolaLogUtils.d("VRecyclerViewAdapter", "notifyRemove, position: " + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyRemove, position: ");
+    localStringBuilder.append(i);
+    ViolaLogUtils.d("VRecyclerViewAdapter", localStringBuilder.toString());
     if (ifNeedDoItemAnim())
     {
       doNotifyItemDeleteWithAnim(i);
@@ -384,38 +401,39 @@ public class VRecyclerViewAdapter
     if (localDomObject == null)
     {
       ViolaLogUtils.d("VRecyclerViewAdapter", "onBindViewHolder: dom is null, may be position is invalid!");
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramVH, paramInt, getItemId(paramInt));
-      return;
     }
-    if (paramVH.mVCell == null)
+    else
     {
-      onCreateAndSetRealView(paramVH, localDomObject);
-      onBindCell(paramVH.mVCell);
-    }
-    for (;;)
-    {
+      if (paramVH.mVCell == null)
+      {
+        onCreateAndSetRealView(paramVH, localDomObject);
+        onBindCell(paramVH.mVCell);
+      }
+      else if (paramVH.mVCell.getRef().equals(localDomObject.getRef()))
+      {
+        if (((DomObjectCell)paramVH.mVCell.getDomObject()).needRefresh) {
+          onBindCell(paramVH.mVCell);
+        }
+      }
+      else
+      {
+        boolean bool;
+        if (this.mCurrentVisPos.get(paramVH.position, -1) != -1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        DomDiffUtils.diffComponent(paramVH.mVCell, localDomObject, this.mDomActionContext, new VRecyclerViewAdapter.1(this, paramVH), bool);
+        paramVH.mVCell.bindDomobj(localDomObject);
+        paramVH.mVCell.needFresh(false);
+        ((DomObjectCell)localDomObject).needRefresh = false;
+        onBindCell(paramVH.mVCell);
+      }
       this.mCurrentVisPos.put(paramInt, paramInt);
       paramVH.position = paramInt;
       fixBg(paramVH.itemView);
-      break;
-      if (!paramVH.mVCell.getRef().equals(localDomObject.getRef())) {
-        break label126;
-      }
-      if (((DomObjectCell)paramVH.mVCell.getDomObject()).needRefresh) {
-        onBindCell(paramVH.mVCell);
-      }
     }
-    label126:
-    if (this.mCurrentVisPos.get(paramVH.position, -1) != -1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      DomDiffUtils.diffComponent(paramVH.mVCell, localDomObject, this.mDomActionContext, new VRecyclerViewAdapter.1(this, paramVH), bool);
-      paramVH.mVCell.bindDomobj(localDomObject);
-      paramVH.mVCell.needFresh(false);
-      ((DomObjectCell)localDomObject).needRefresh = false;
-      onBindCell(paramVH.mVCell);
-      break;
-    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramVH, paramInt, getItemId(paramInt));
   }
   
   public VRecyclerViewAdapter.VH onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
@@ -429,15 +447,17 @@ public class VRecyclerViewAdapter
   
   public void onViewAttachedToWindow(VRecyclerViewAdapter.VH paramVH)
   {
-    if (this.mCellEventListener != null) {
-      this.mCellEventListener.onCellAppear(paramVH);
+    VRecyclerViewAdapter.CellEventListener localCellEventListener = this.mCellEventListener;
+    if (localCellEventListener != null) {
+      localCellEventListener.onCellAppear(paramVH);
     }
   }
   
   public void onViewDetachedFromWindow(VRecyclerViewAdapter.VH paramVH)
   {
-    if (this.mCellEventListener != null) {
-      this.mCellEventListener.onCellDisappear(paramVH);
+    VRecyclerViewAdapter.CellEventListener localCellEventListener = this.mCellEventListener;
+    if (localCellEventListener != null) {
+      localCellEventListener.onCellDisappear(paramVH);
     }
     this.mCurrentVisPos.delete(paramVH.position);
   }
@@ -454,7 +474,7 @@ public class VRecyclerViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.adapter.VRecyclerViewAdapter
  * JD-Core Version:    0.7.0.1
  */

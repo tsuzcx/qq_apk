@@ -8,6 +8,7 @@ import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
 import com.tencent.tav.coremedia.CGRect;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tavsticker.exception.StickerInitializationException;
 import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.model.TAVStickerLayerInfo;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
+import org.libpag.PAGFile;
 
 class PagFileProxy
   extends BaseTavApiProxy
@@ -84,7 +86,16 @@ class PagFileProxy
       g(paramTAVSticker, paramSendMsgTavEvent);
       return;
     }
-    c(ObjConvector.a(paramTAVSticker.getTimeRange()));
+    CMTimeRange localCMTimeRange = paramTAVSticker.getTimeRange();
+    paramSendMsgTavEvent = localCMTimeRange;
+    if (localCMTimeRange == null)
+    {
+      paramSendMsgTavEvent = localCMTimeRange;
+      if (paramTAVSticker.getPagFile() != null) {
+        paramSendMsgTavEvent = CMTimeRange.fromUs(0L, paramTAVSticker.getPagFile().duration());
+      }
+    }
+    c(ObjConvector.a(paramSendMsgTavEvent));
   }
   
   private void g(TAVSticker paramTAVSticker, SendMsgTavEvent paramSendMsgTavEvent)
@@ -125,7 +136,7 @@ class PagFileProxy
       k(paramTAVSticker, paramSendMsgTavEvent);
       return;
     }
-    paramSendMsgTavEvent = ObjConvector.a(paramSendMsgTavEvent.a().getJSONArray("textList"), new PagFileProxy.2(this));
+    paramSendMsgTavEvent = ObjConvector.a(paramSendMsgTavEvent.a().getJSONArray("textList"), new PagFileProxy.2(this, paramTAVSticker));
     paramTAVSticker.getStickerTextItems().clear();
     paramTAVSticker.getStickerTextItems().addAll(paramSendMsgTavEvent);
     a();
@@ -160,7 +171,7 @@ class PagFileProxy
       n(paramTAVSticker, paramSendMsgTavEvent);
       return;
     }
-    paramSendMsgTavEvent = ObjConvector.a(paramSendMsgTavEvent.a().getJSONArray("imageList"), new PagFileProxy.5(this));
+    paramSendMsgTavEvent = ObjConvector.a(paramSendMsgTavEvent.a().getJSONArray("imageList"), new PagFileProxy.5(this, paramTAVSticker));
     paramTAVSticker.getStickerImageItems().clear();
     paramTAVSticker.getStickerImageItems().addAll(paramSendMsgTavEvent);
     a();
@@ -192,16 +203,19 @@ class PagFileProxy
       return;
     }
     paramObjCreateTavEvent = this.a.getAbsolutePath(paramObjCreateTavEvent);
-    TAVSticker localTAVSticker = new TAVSticker();
+    Object localObject = new TAVSticker();
     try
     {
-      localTAVSticker.setFilePath(paramObjCreateTavEvent).setCenterX(0.5F).setCenterY(0.5F).setScale(1.0F).init();
-      a(localTAVSticker);
+      ((TAVSticker)localObject).setFilePath(paramObjCreateTavEvent).setCenterX(0.5F).setCenterY(0.5F).setScale(1.0F).init();
+      a(localObject);
       return;
     }
     catch (StickerInitializationException paramObjCreateTavEvent)
     {
-      a("StickerInitializationException:" + paramObjCreateTavEvent);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("StickerInitializationException:");
+      ((StringBuilder)localObject).append(paramObjCreateTavEvent);
+      a(((StringBuilder)localObject).toString());
     }
   }
   
@@ -217,7 +231,7 @@ class PagFileProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.PagFileProxy
  * JD-Core Version:    0.7.0.1
  */

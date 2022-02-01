@@ -2,9 +2,11 @@ package com.tencent.mobileqq.troop.api.config;
 
 import android.content.Context;
 import com.tencent.mobileqq.activity.troop.TroopCommonProcessor;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -39,25 +41,45 @@ public class TroopCommonConfig
     }
   }
   
+  public static void a(List<String> paramList)
+  {
+    AbsTroopCommonProcessor localAbsTroopCommonProcessor = jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor;
+    if (localAbsTroopCommonProcessor != null) {
+      localAbsTroopCommonProcessor.a(paramList);
+    }
+  }
+  
   public static boolean a(Context paramContext, String paramString1, String paramString2)
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor != null) {
-      return jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor.a(paramContext, paramString1, paramString2);
+    AbsTroopCommonProcessor localAbsTroopCommonProcessor = jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor;
+    if (localAbsTroopCommonProcessor != null) {
+      return localAbsTroopCommonProcessor.a(paramContext, paramString1, paramString2);
+    }
+    return false;
+  }
+  
+  public static boolean a(AppRuntime paramAppRuntime, TroopInfo paramTroopInfo, boolean paramBoolean)
+  {
+    AbsTroopCommonProcessor localAbsTroopCommonProcessor = jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor;
+    if (localAbsTroopCommonProcessor != null) {
+      return localAbsTroopCommonProcessor.a(paramAppRuntime, paramTroopInfo, paramBoolean);
     }
     return false;
   }
   
   public static boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor != null) {
-      return jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor.a(paramAppRuntime, paramString);
+    AbsTroopCommonProcessor localAbsTroopCommonProcessor = jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor;
+    if (localAbsTroopCommonProcessor != null) {
+      return localAbsTroopCommonProcessor.a(paramAppRuntime, paramString);
     }
     return false;
   }
   
   private static void b()
   {
-    if ((jdField_a_of_type_JavaUtilArrayList != null) && (jdField_a_of_type_JavaUtilArrayList.size() == 1)) {
+    ArrayList localArrayList = jdField_a_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (localArrayList.size() == 1)) {
       try
       {
         jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor = (AbsTroopCommonProcessor)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
@@ -73,15 +95,16 @@ public class TroopCommonConfig
   
   public static boolean b(AppRuntime paramAppRuntime, String paramString)
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor != null) {
-      return jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor.b(paramAppRuntime, paramString);
+    AbsTroopCommonProcessor localAbsTroopCommonProcessor = jdField_a_of_type_ComTencentMobileqqTroopApiConfigAbsTroopCommonProcessor;
+    if (localAbsTroopCommonProcessor != null) {
+      return localAbsTroopCommonProcessor.b(paramAppRuntime, paramString);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopCommonConfig
  * JD-Core Version:    0.7.0.1
  */

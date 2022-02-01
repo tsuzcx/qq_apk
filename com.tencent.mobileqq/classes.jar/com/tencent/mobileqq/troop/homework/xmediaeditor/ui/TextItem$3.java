@@ -14,41 +14,29 @@ class TextItem$3
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramInt != 4) && (paramInt != 6))
-    {
-      bool1 = bool2;
-      if (paramKeyEvent != null)
-      {
-        bool1 = bool2;
-        if (66 == paramKeyEvent.getKeyCode())
-        {
-          bool1 = bool2;
-          if (paramKeyEvent.getAction() != 0) {}
-        }
-      }
-    }
-    else
+    if ((paramInt == 4) || (paramInt == 6) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0)))
     {
       paramTextView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getEditableText().toString();
       paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getSelectionStart();
       paramTextView = paramTextView.substring(0, paramInt);
       paramTextView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a(paramTextView);
-      bool1 = bool2;
       if (!TextUtils.isEmpty(paramTextView))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getEditableText().replace(paramInt, paramInt, "\n" + paramTextView);
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(paramTextView.length() + paramInt + 1);
-        bool1 = true;
+        paramKeyEvent = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getEditableText();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("\n");
+        localStringBuilder.append(paramTextView);
+        paramKeyEvent.replace(paramInt, paramInt, localStringBuilder.toString());
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(paramInt + paramTextView.length() + 1);
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.3
  * JD-Core Version:    0.7.0.1
  */

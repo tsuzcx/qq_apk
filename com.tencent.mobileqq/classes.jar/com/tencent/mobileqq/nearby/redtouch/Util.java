@@ -12,54 +12,80 @@ public class Util
 {
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.redtouch.util", 2, "onMedalConfigChanged configOn:" + paramBoolean + " refresh parents");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onMedalConfigChanged configOn:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" refresh parents");
+      QLog.i("Q.redtouch.util", 2, ((StringBuilder)localObject).toString());
     }
     paramQQAppInterface = (LocalRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-    RedTouchItem localRedTouchItem = paramQQAppInterface.a(10016);
-    if (paramQQAppInterface.a(localRedTouchItem))
+    Object localObject = paramQQAppInterface.a(10016);
+    if (paramQQAppInterface.a((RedTouchItem)localObject))
     {
-      localRedTouchItem.isClosed = paramBoolean;
+      ((RedTouchItem)localObject).isClosed = paramBoolean;
       paramQQAppInterface.d(10016);
     }
-    localRedTouchItem = paramQQAppInterface.a(10015);
-    if (paramQQAppInterface.a(localRedTouchItem))
+    localObject = paramQQAppInterface.a(10015);
+    if (paramQQAppInterface.a((RedTouchItem)localObject))
     {
-      localRedTouchItem.isClosed = paramBoolean;
+      ((RedTouchItem)localObject).isClosed = paramBoolean;
       paramQQAppInterface.d(10015);
     }
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("medal_wall_" + paramQQAppInterface.getCurrentAccountUin(), 4).getBoolean("medal_switch_disable", false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.redtouch.util", 2, "card.medalSwitchDisable=" + bool);
-    }
-    if (SharedPreUtils.X(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {}
-    for (int i = 1;; i = 0)
+    Object localObject = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("medal_wall_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 4);
+    boolean bool2 = false;
+    boolean bool3 = ((SharedPreferences)localObject).getBoolean("medal_switch_disable", false);
+    if (QLog.isColorLevel())
     {
-      if ((i != 0) && (QLog.isColorLevel())) {
-        QLog.d("Q.redtouch.util", 2, "medal config off");
-      }
-      if ((bool) || (i != 0)) {
-        break;
-      }
-      return true;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("card.medalSwitchDisable=");
+      ((StringBuilder)localObject).append(bool3);
+      QLog.d("Q.redtouch.util", 2, ((StringBuilder)localObject).toString());
     }
-    return false;
+    int i;
+    if (SharedPreUtils.U(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i != 0) && (QLog.isColorLevel())) {
+      QLog.d("Q.redtouch.util", 2, "medal config off");
+    }
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      bool1 = bool2;
+      if (i == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.redtouch.util", 2, "onLikeRankListConfigChanged configOn:" + paramBoolean + " refresh parents");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onLikeRankListConfigChanged configOn:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" refresh parents");
+      QLog.i("Q.redtouch.util", 2, ((StringBuilder)localObject).toString());
     }
     paramQQAppInterface = (LocalRedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
-    RedTouchItem localRedTouchItem = paramQQAppInterface.a(100601);
-    if (paramQQAppInterface.a(localRedTouchItem))
+    Object localObject = paramQQAppInterface.a(100601);
+    if (paramQQAppInterface.a((RedTouchItem)localObject))
     {
-      localRedTouchItem.isClosed = paramBoolean;
+      ((RedTouchItem)localObject).isClosed = paramBoolean;
       paramQQAppInterface.d(100601);
     }
   }
@@ -71,7 +97,7 @@ public class Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.Util
  * JD-Core Version:    0.7.0.1
  */

@@ -22,21 +22,25 @@ class MessageThreadUtil$SyncQueueItem
   {
     synchronized (sPoolLock)
     {
+      SyncQueueItem localSyncQueueItem;
       if (sPool == null)
       {
         localSyncQueueItem = new SyncQueueItem();
-        localSyncQueueItem.what = paramInt1;
-        localSyncQueueItem.arg1 = paramInt2;
-        localSyncQueueItem.arg2 = paramInt3;
-        localSyncQueueItem.arg3 = paramInt4;
-        localSyncQueueItem.arg4 = paramInt5;
-        localSyncQueueItem.arg5 = paramInt6;
-        localSyncQueueItem.data = paramObject;
-        return localSyncQueueItem;
       }
-      SyncQueueItem localSyncQueueItem = sPool;
-      sPool = sPool.next;
-      localSyncQueueItem.next = null;
+      else
+      {
+        localSyncQueueItem = sPool;
+        sPool = sPool.next;
+        localSyncQueueItem.next = null;
+      }
+      localSyncQueueItem.what = paramInt1;
+      localSyncQueueItem.arg1 = paramInt2;
+      localSyncQueueItem.arg2 = paramInt3;
+      localSyncQueueItem.arg3 = paramInt4;
+      localSyncQueueItem.arg4 = paramInt5;
+      localSyncQueueItem.arg5 = paramInt6;
+      localSyncQueueItem.data = paramObject;
+      return localSyncQueueItem;
     }
   }
   
@@ -67,7 +71,7 @@ class MessageThreadUtil$SyncQueueItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.MessageThreadUtil.SyncQueueItem
  * JD-Core Version:    0.7.0.1
  */

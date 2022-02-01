@@ -20,17 +20,15 @@ class SplashActivity$5
         QLog.i("SplashActivity", 1, "qqclean conf did notice");
         SpaceLowNoticeActiviy.a(this.this$0);
         ReportController.b(this.this$0.app, "dc00898", "", "", "0X8007545", "0X8007545", 0, 0, this.this$0.app.getCurrentAccountUin(), "", "", "");
+        return;
       }
+      QLog.i("SplashActivity", 1, "qqclean conf not need notice");
     }
-    else {
-      return;
-    }
-    QLog.i("SplashActivity", 1, "qqclean conf not need notice");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SplashActivity.5
  * JD-Core Version:    0.7.0.1
  */

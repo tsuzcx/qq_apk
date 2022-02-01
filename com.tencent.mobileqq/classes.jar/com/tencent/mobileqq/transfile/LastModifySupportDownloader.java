@@ -94,100 +94,112 @@ public class LastModifySupportDownloader
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    Object localObject1 = paramDownloadParams.urlStr;
+    localObject1 = paramDownloadParams.urlStr;
     String str = Utils.Crc64String((String)localObject1);
-    Object localObject2 = InitUrlDrawable.a.getCleanFile(str);
-    if ((localObject2 != null) && (((File)localObject2).exists())) {}
-    for (int i = 1;; i = 0)
+    Object localObject3 = InitUrlDrawable.a.getCleanFile(str);
+    int i;
+    if ((localObject3 != null) && (((File)localObject3).exists())) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    str = ((String)localObject1).replace("gamead", "http");
+    localObject1 = new HttpGet(str);
+    Object localObject2;
+    if (paramDownloadParams.cookies != null)
     {
-      str = ((String)localObject1).replace("gamead", "http");
-      localObject1 = new HttpGet(str);
-      Object localObject3;
-      if (paramDownloadParams.cookies != null)
-      {
-        localObject3 = this.sHttpClient.getCookieSpecs().getCookieSpec("best-match").formatCookies(paramDownloadParams.cookies.getCookies()).iterator();
-        while (((Iterator)localObject3).hasNext()) {
-          ((HttpGet)localObject1).addHeader((Header)((Iterator)localObject3).next());
-        }
+      localObject2 = this.sHttpClient.getCookieSpecs().getCookieSpec("best-match").formatCookies(paramDownloadParams.cookies.getCookies()).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((HttpGet)localObject1).addHeader((Header)((Iterator)localObject2).next());
       }
-      int j;
-      if ((paramDownloadParams.headers != null) && (paramDownloadParams.headers.length > 0))
+    }
+    if ((paramDownloadParams.headers != null) && (paramDownloadParams.headers.length > 0))
+    {
+      localObject2 = paramDownloadParams.headers;
+      int k = localObject2.length;
+      j = 0;
+      while (j < k)
       {
-        localObject3 = paramDownloadParams.headers;
-        int k = localObject3.length;
-        j = 0;
-        while (j < k)
+        ((HttpGet)localObject1).addHeader(localObject2[j]);
+        j += 1;
+      }
+    }
+    if (i != 0) {
+      ((HttpGet)localObject1).addHeader("If-Modified-Since", getLastModified(Utils.Crc64String(str)));
+    }
+    try
+    {
+      localObject2 = this.sHttpClient.execute((HttpUriRequest)localObject1);
+      j = ((HttpResponse)localObject2).getStatusLine().getStatusCode();
+      if (!QLog.isColorLevel()) {
+        break label572;
+      }
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("-->status code: ");
+      ((StringBuilder)localObject4).append(j);
+      QLog.d("LastModifySupportDownloader", 2, ((StringBuilder)localObject4).toString());
+    }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject4;
+        ((HttpGet)localObject1).abort();
+        for (;;)
         {
-          ((HttpGet)localObject1).addHeader(localObject3[j]);
-          j += 1;
+          throw paramOutputStream;
+        }
+        if (j != 200) {
+          if (j == 304) {}
         }
       }
+    }
+    paramOutputStream = new StringBuilder();
+    paramOutputStream.append(paramDownloadParams.url);
+    paramOutputStream.append(" response error! response code: ");
+    paramOutputStream.append(j);
+    paramOutputStream.append(" . reason: ");
+    paramOutputStream.append(((HttpResponse)localObject2).getStatusLine().getReasonPhrase());
+    throw new IOException(paramOutputStream.toString());
+    localObject4 = ((HttpResponse)localObject2).getEntity();
+    if (j == 200)
+    {
       if (i != 0) {
-        ((HttpGet)localObject1).addHeader("If-Modified-Since", getLastModified(Utils.Crc64String(str)));
+        ((File)localObject3).delete();
       }
+      localObject3 = new BufferedInputStream(((HttpEntity)localObject4).getContent(), 4096);
       try
       {
-        localObject3 = this.sHttpClient.execute((HttpUriRequest)localObject1);
-        j = ((HttpResponse)localObject3).getStatusLine().getStatusCode();
-        if (QLog.isColorLevel()) {
-          QLog.d("LastModifySupportDownloader", 2, "-->status code: " + j);
+        paramDownloadParams = new byte[4096];
+        long l = 0L;
+        i = ((InputStream)localObject3).read(paramDownloadParams);
+        if (i != -1)
+        {
+          paramOutputStream.write(paramDownloadParams, 0, i);
+          l += i;
+          if (AnimationUtils.currentAnimationTimeMillis() - 0L <= 100L) {
+            break label591;
+          }
+          paramURLDrawableHandler.publishProgress((int)((float)l / (float)((HttpEntity)localObject4).getContentLength() * 9500.0F));
+          break label591;
         }
-        if ((j != 200) && (j != 304)) {
-          throw new IOException(paramDownloadParams.url + " response error! response code: " + j + " . reason: " + ((HttpResponse)localObject3).getStatusLine().getReasonPhrase());
+        if (((HttpResponse)localObject2).containsHeader("Last-Modified"))
+        {
+          paramOutputStream = ((HttpResponse)localObject2).getFirstHeader("Last-Modified").getValue();
+          saveLastModified(Utils.Crc64String(str), paramOutputStream);
         }
       }
       finally
       {
-        ((HttpGet)localObject1).abort();
-      }
-      HttpEntity localHttpEntity = ((HttpResponse)localObject3).getEntity();
-      if (j == 200)
-      {
-        if (i != 0) {
-          ((File)localObject2).delete();
-        }
-        paramDownloadParams = new BufferedInputStream(localHttpEntity.getContent(), 4096);
-        long l1 = 0L;
-        try
-        {
-          localObject2 = new byte[4096];
-          for (;;)
-          {
-            i = paramDownloadParams.read((byte[])localObject2);
-            if (i == -1) {
-              break;
-            }
-            paramOutputStream.write((byte[])localObject2, 0, i);
-            long l2 = l1 + i;
-            l1 = l2;
-            if (AnimationUtils.currentAnimationTimeMillis() - 0L > 100L)
-            {
-              paramURLDrawableHandler.publishProgress((int)((float)l2 / (float)localHttpEntity.getContentLength() * 9500.0F));
-              l1 = l2;
-            }
-          }
-          if (!((HttpResponse)localObject3).containsHeader("Last-Modified")) {
-            break label523;
-          }
-        }
-        finally
-        {
-          paramDownloadParams.close();
-        }
-        paramOutputStream = ((HttpResponse)localObject3).getFirstHeader("Last-Modified").getValue();
-        saveLastModified(Utils.Crc64String(str), paramOutputStream);
-        label523:
-        paramDownloadParams.close();
-      }
-      for (;;)
-      {
-        ((HttpGet)localObject1).abort();
-        return null;
-        if ((j != 304) && (paramURLDrawableHandler != null)) {
-          paramURLDrawableHandler.publishProgress(10000);
-        }
+        ((InputStream)localObject3).close();
       }
     }
+    else if ((j != 304) && (paramURLDrawableHandler != null))
+    {
+      paramURLDrawableHandler.publishProgress(10000);
+    }
+    ((HttpGet)localObject1).abort();
+    return null;
   }
   
   /* Error */
@@ -201,105 +213,103 @@ public class LastModifySupportDownloader
     //   8: getstatic 103	com/tencent/mobileqq/startup/step/InitUrlDrawable:a	Lcom/tencent/mobileqq/transfile/DiskCache;
     //   11: aload_3
     //   12: invokevirtual 367	com/tencent/mobileqq/transfile/DiskCache:edit	(Ljava/lang/String;)Lcom/tencent/mobileqq/transfile/DiskCache$Editor;
-    //   15: astore 5
-    //   17: new 369	java/io/FileOutputStream
-    //   20: dup
-    //   21: aload 5
-    //   23: getfield 375	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
-    //   26: iconst_0
-    //   27: invokespecial 378	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   30: astore 4
-    //   32: aload 4
-    //   34: astore_3
-    //   35: aload_0
-    //   36: aload 4
-    //   38: aload_1
-    //   39: aload_2
-    //   40: invokevirtual 380	com/tencent/mobileqq/transfile/LastModifySupportDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
-    //   43: pop
-    //   44: aload 4
-    //   46: astore_3
-    //   47: aload 5
-    //   49: invokevirtual 383	com/tencent/mobileqq/transfile/DiskCache$Editor:commit	()Ljava/io/File;
-    //   52: astore_1
-    //   53: aload 4
-    //   55: ifnull +8 -> 63
-    //   58: aload 4
-    //   60: invokevirtual 384	java/io/OutputStream:close	()V
-    //   63: aload_1
-    //   64: areturn
-    //   65: astore_2
-    //   66: aconst_null
-    //   67: astore_1
-    //   68: aload 5
-    //   70: ifnull +11 -> 81
-    //   73: aload_1
-    //   74: astore_3
-    //   75: aload 5
-    //   77: iconst_0
-    //   78: invokevirtual 387	com/tencent/mobileqq/transfile/DiskCache$Editor:abort	(Z)V
-    //   81: aload_1
-    //   82: astore_3
-    //   83: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   86: ifeq +15 -> 101
-    //   89: aload_1
-    //   90: astore_3
-    //   91: ldc 14
-    //   93: iconst_2
-    //   94: ldc_w 389
-    //   97: aload_2
-    //   98: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   101: aload_1
-    //   102: astore_3
-    //   103: aload_2
-    //   104: athrow
-    //   105: astore_1
-    //   106: aload_3
-    //   107: ifnull +7 -> 114
-    //   110: aload_3
-    //   111: invokevirtual 384	java/io/OutputStream:close	()V
+    //   15: astore 6
+    //   17: aconst_null
+    //   18: astore 5
+    //   20: aconst_null
+    //   21: astore_3
+    //   22: new 369	java/io/FileOutputStream
+    //   25: dup
+    //   26: aload 6
+    //   28: getfield 375	com/tencent/mobileqq/transfile/DiskCache$Editor:dirtyFile	Ljava/io/File;
+    //   31: iconst_0
+    //   32: invokespecial 378	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   35: astore 4
+    //   37: aload_0
+    //   38: aload 4
+    //   40: aload_1
+    //   41: aload_2
+    //   42: invokevirtual 380	com/tencent/mobileqq/transfile/LastModifySupportDownloader:downloadImage	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   45: pop
+    //   46: aload 6
+    //   48: invokevirtual 383	com/tencent/mobileqq/transfile/DiskCache$Editor:commit	()Ljava/io/File;
+    //   51: astore_1
+    //   52: aload 4
+    //   54: invokevirtual 384	java/io/OutputStream:close	()V
+    //   57: aload_1
+    //   58: areturn
+    //   59: astore_1
+    //   60: aload 4
+    //   62: astore_3
+    //   63: goto +55 -> 118
+    //   66: astore_2
+    //   67: aload 4
+    //   69: astore_1
+    //   70: goto +11 -> 81
+    //   73: astore_1
+    //   74: goto +44 -> 118
+    //   77: astore_2
+    //   78: aload 5
+    //   80: astore_1
+    //   81: aload 6
+    //   83: ifnull +11 -> 94
+    //   86: aload_1
+    //   87: astore_3
+    //   88: aload 6
+    //   90: iconst_0
+    //   91: invokevirtual 387	com/tencent/mobileqq/transfile/DiskCache$Editor:abort	(Z)V
+    //   94: aload_1
+    //   95: astore_3
+    //   96: invokestatic 257	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   99: ifeq +15 -> 114
+    //   102: aload_1
+    //   103: astore_3
+    //   104: ldc 14
+    //   106: iconst_2
+    //   107: ldc_w 389
+    //   110: aload_2
+    //   111: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   114: aload_1
-    //   115: athrow
-    //   116: astore_2
-    //   117: aload_1
-    //   118: areturn
-    //   119: astore_2
-    //   120: goto -6 -> 114
-    //   123: astore_1
-    //   124: aconst_null
-    //   125: astore_3
-    //   126: goto -20 -> 106
-    //   129: astore_2
-    //   130: aload 4
-    //   132: astore_1
-    //   133: goto -65 -> 68
+    //   115: astore_3
+    //   116: aload_2
+    //   117: athrow
+    //   118: aload_3
+    //   119: ifnull +7 -> 126
+    //   122: aload_3
+    //   123: invokevirtual 384	java/io/OutputStream:close	()V
+    //   126: aload_1
+    //   127: athrow
+    //   128: astore_2
+    //   129: aload_1
+    //   130: areturn
+    //   131: astore_2
+    //   132: goto -6 -> 126
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	136	0	this	LastModifySupportDownloader
-    //   0	136	1	paramDownloadParams	DownloadParams
-    //   0	136	2	paramURLDrawableHandler	URLDrawableHandler
-    //   7	119	3	localObject	Object
-    //   30	101	4	localFileOutputStream	java.io.FileOutputStream
-    //   15	61	5	localEditor	DiskCache.Editor
+    //   0	135	0	this	LastModifySupportDownloader
+    //   0	135	1	paramDownloadParams	DownloadParams
+    //   0	135	2	paramURLDrawableHandler	URLDrawableHandler
+    //   7	116	3	localObject1	Object
+    //   35	33	4	localFileOutputStream	java.io.FileOutputStream
+    //   18	61	5	localObject2	Object
+    //   15	74	6	localEditor	DiskCache.Editor
     // Exception table:
     //   from	to	target	type
-    //   17	32	65	java/lang/Exception
-    //   35	44	105	finally
-    //   47	53	105	finally
-    //   75	81	105	finally
-    //   83	89	105	finally
-    //   91	101	105	finally
-    //   103	105	105	finally
-    //   58	63	116	java/io/IOException
-    //   110	114	119	java/io/IOException
-    //   17	32	123	finally
-    //   35	44	129	java/lang/Exception
-    //   47	53	129	java/lang/Exception
+    //   37	52	59	finally
+    //   37	52	66	java/lang/Exception
+    //   22	37	73	finally
+    //   88	94	73	finally
+    //   96	102	73	finally
+    //   104	114	73	finally
+    //   116	118	73	finally
+    //   22	37	77	java/lang/Exception
+    //   52	57	128	java/io/IOException
+    //   122	126	131	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.LastModifySupportDownloader
  * JD-Core Version:    0.7.0.1
  */

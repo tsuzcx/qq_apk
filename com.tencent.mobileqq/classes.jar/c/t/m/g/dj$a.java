@@ -21,15 +21,20 @@ public final class dj$a
     }
     catch (Throwable localThrowable)
     {
-      while (!co.e()) {}
-      this.a.c();
-      co.a("handleInnerMessage[" + paramMessage.what + "] error.", localThrowable);
+      if (co.e())
+      {
+        this.a.c();
+        StringBuilder localStringBuilder = new StringBuilder("handleInnerMessage[");
+        localStringBuilder.append(paramMessage.what);
+        localStringBuilder.append("] error.");
+        co.a(localStringBuilder.toString(), localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dj.a
  * JD-Core Version:    0.7.0.1
  */

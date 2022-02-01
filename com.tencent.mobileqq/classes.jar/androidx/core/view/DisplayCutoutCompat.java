@@ -3,13 +3,17 @@ package androidx.core.view;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.view.DisplayCutout;
+import androidx.annotation.RequiresApi;
 import java.util.List;
 
 public final class DisplayCutoutCompat
 {
   private final Object mDisplayCutout;
   
-  public DisplayCutoutCompat(Rect paramRect, List<Rect> paramList) {}
+  public DisplayCutoutCompat(Rect paramRect, List<Rect> paramList)
+  {
+    this(paramRect);
+  }
   
   private DisplayCutoutCompat(Object paramObject)
   {
@@ -26,20 +30,22 @@ public final class DisplayCutoutCompat
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (DisplayCutoutCompat)paramObject;
-      if (this.mDisplayCutout != null) {
-        break;
+      Object localObject = this.mDisplayCutout;
+      if (localObject == null) {
+        return paramObject.mDisplayCutout == null;
       }
-    } while (paramObject.mDisplayCutout == null);
+      return localObject.equals(paramObject.mDisplayCutout);
+    }
     return false;
-    return this.mDisplayCutout.equals(paramObject.mDisplayCutout);
   }
   
   public List<Rect> getBoundingRects()
@@ -84,20 +90,31 @@ public final class DisplayCutoutCompat
   
   public int hashCode()
   {
-    if (this.mDisplayCutout == null) {
+    Object localObject = this.mDisplayCutout;
+    if (localObject == null) {
       return 0;
     }
-    return this.mDisplayCutout.hashCode();
+    return localObject.hashCode();
   }
   
   public String toString()
   {
-    return "DisplayCutoutCompat{" + this.mDisplayCutout + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DisplayCutoutCompat{");
+    localStringBuilder.append(this.mDisplayCutout);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
+  }
+  
+  @RequiresApi(api=28)
+  DisplayCutout unwrap()
+  {
+    return (DisplayCutout)this.mDisplayCutout;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.DisplayCutoutCompat
  * JD-Core Version:    0.7.0.1
  */

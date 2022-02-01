@@ -32,7 +32,7 @@ class PEPanel$2
     Rect localRect = paramLottieComposition.getBounds();
     int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.getResources().getDisplayMetrics().widthPixels;
     i = XPanelContainer.a;
-    AIOUtils.a(40.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.getResources());
+    AIOUtils.b(40.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.getResources());
     float f = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.getResources().getDisplayMetrics().widthPixels / localRect.width();
     PEPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel, paramLottieComposition.getDuration() * 6L / 10L);
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
@@ -46,7 +46,7 @@ class PEPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PEPanel.2
  * JD-Core Version:    0.7.0.1
  */

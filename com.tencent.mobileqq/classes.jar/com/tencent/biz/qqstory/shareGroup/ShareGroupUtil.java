@@ -27,60 +27,76 @@ public class ShareGroupUtil
   {
     Object localObject1 = LayoutInflater.from(paramContext);
     int i = UIUtils.a(paramContext, paramInt1);
-    if ((paramInt2 != 1) || (!paramBoolean))
+    if ((paramInt2 == 1) && (paramBoolean))
     {
-      localObject1 = ((LayoutInflater)localObject1).inflate(2131561919, null);
-      localObject2 = (CircleImageView)((View)localObject1).findViewById(2131368772);
-      localObject3 = ((CircleImageView)localObject2).getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject3).height = i;
-      ((ViewGroup.LayoutParams)localObject3).width = i;
-      ((CircleImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-      ((CircleImageView)localObject2).setBorderColor(-1);
-      ((CircleImageView)localObject2).setBorderWidth(UIUtils.a(paramContext, 1.0F));
-      UIUtils.a((ImageView)localObject2, paramQQUserUIItem.headUrl, i, i, new CircleTransformation(null, null));
-      paramQQUserUIItem = new LinearLayout.LayoutParams(i, i);
-      if (paramInt2 != -1) {
-        paramQQUserUIItem.setMargins(-AIOUtils.a(8.0F, paramContext.getResources()), 0, 0, 0);
+      localObject2 = ((LayoutInflater)localObject1).inflate(2131561767, null);
+      localObject3 = (TextView)((View)localObject2).findViewById(2131379066);
+      if (paramInt3 > 99)
+      {
+        localObject1 = "99+";
       }
-      paramLinearLayout.addView((View)localObject1, paramQQUserUIItem);
-      return;
-    }
-    Object localObject2 = ((LayoutInflater)localObject1).inflate(2131561920, null);
-    Object localObject3 = (TextView)((View)localObject2).findViewById(2131379727);
-    if (paramInt3 > 99) {}
-    for (localObject1 = "99+";; localObject1 = paramInt3 + "")
-    {
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramInt3);
+        ((StringBuilder)localObject1).append("");
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
       ((TextView)localObject3).setText((CharSequence)localObject1);
       ((TextView)localObject3).setVisibility(0);
-      localObject1 = ((View)localObject2).findViewById(2131368773);
+      localObject1 = ((View)localObject2).findViewById(2131368503);
       localObject3 = ((View)localObject1).getLayoutParams();
       paramInt1 = UIUtils.a(paramContext, paramInt1 - 2);
       ((ViewGroup.LayoutParams)localObject3).height = paramInt1;
       ((ViewGroup.LayoutParams)localObject3).width = paramInt1;
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
       localObject1 = localObject2;
-      break;
     }
+    else
+    {
+      localObject1 = ((LayoutInflater)localObject1).inflate(2131561766, null);
+    }
+    Object localObject2 = (CircleImageView)((View)localObject1).findViewById(2131368502);
+    Object localObject3 = ((CircleImageView)localObject2).getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject3).height = i;
+    ((ViewGroup.LayoutParams)localObject3).width = i;
+    ((CircleImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+    ((CircleImageView)localObject2).setBorderColor(-1);
+    ((CircleImageView)localObject2).setBorderWidth(UIUtils.a(paramContext, 1.0F));
+    UIUtils.a((ImageView)localObject2, paramQQUserUIItem.headUrl, i, i, new CircleTransformation(null, null));
+    paramQQUserUIItem = new LinearLayout.LayoutParams(i, i);
+    if (paramInt2 != -1) {
+      paramQQUserUIItem.setMargins(-AIOUtils.b(8.0F, paramContext.getResources()), 0, 0, 0);
+    }
+    paramLinearLayout.addView((View)localObject1, paramQQUserUIItem);
   }
   
   public static boolean a()
   {
-    return new File(BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv/testserver").exists();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append("/testEnv/testserver");
+    return new File(localStringBuilder.toString()).exists();
   }
   
   public static boolean a(ShareGroupItem paramShareGroupItem)
   {
-    boolean bool = true;
     int i = ((StoryConfigManager)SuperManager.a(10)).a();
-    if (paramShareGroupItem.isPublic()) {
-      return (i & 0x1) != 0;
-    }
-    if ((i & 0x2) != 0) {}
-    for (;;)
+    boolean bool3 = paramShareGroupItem.isPublic();
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (bool3)
     {
-      return bool;
-      bool = false;
+      if ((i & 0x1) != 0) {
+        bool1 = true;
+      }
+      return bool1;
     }
+    bool1 = bool2;
+    if ((i & 0x2) != 0) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static boolean a(ShareGroupFeedItem paramShareGroupFeedItem)
@@ -104,7 +120,7 @@ public class ShareGroupUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.ShareGroupUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,16 @@ class SonicEngine$1
     }
     catch (Throwable localThrowable)
     {
-      SonicUtils.log("SonicSdk_SonicEngine", 6, "initSonicDB getWritableDatabase encounter error." + localThrowable.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initSonicDB getWritableDatabase encounter error.");
+      localStringBuilder.append(localThrowable.getMessage());
+      SonicUtils.log("SonicSdk_SonicEngine", 6, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicEngine.1
  * JD-Core Version:    0.7.0.1
  */

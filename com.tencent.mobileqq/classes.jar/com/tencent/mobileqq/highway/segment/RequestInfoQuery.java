@@ -65,113 +65,138 @@ public class RequestInfoQuery
       localSegHead.bytes_file_md5.set(ByteStringMicro.copyFrom(this.mTrans.MD5));
     }
     localSegHead.uint64_filesize.set(this.mTrans.totalLength);
-    if (this.mTrans.cacheIp != 0)
-    {
-      localSegHead.uint32_cache_addr.set(this.mTrans.cacheIp);
-      BdhLogUtil.LogEvent("R", "RequestInfoQuery getSegmentHead : cache_addr send to server is : " + this.mTrans.cacheIp + " ( " + intToIP(this.mTrans.cacheIp) + " ) Seq:" + getHwSeq());
-    }
+    writeCacheIp(localSegHead, this.mTrans);
     return localSegHead;
   }
   
   public void onCancle()
   {
-    this.mTrans.TRACKER.logStep("CANCL", " Query Seq:" + getHwSeq());
+    Tracker localTracker = this.mTrans.TRACKER;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" Query Seq:");
+    localStringBuilder.append(getHwSeq());
+    localTracker.logStep("CANCL", localStringBuilder.toString());
     this.mTrans.onQuertHoleError(this.sentBitmap);
   }
   
   public void onError(int paramInt)
   {
     this.mTrans.onQuertHoleError(this.sentBitmap);
-    this.mTrans.TRACKER.logStep("SND_E", " Query Seq:" + getHwSeq() + " Code:" + paramInt);
+    Tracker localTracker = this.mTrans.TRACKER;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" Query Seq:");
+    localStringBuilder.append(getHwSeq());
+    localStringBuilder.append(" Code:");
+    localStringBuilder.append(paramInt);
+    localTracker.logStep("SND_E", localStringBuilder.toString());
   }
   
   public void onResponse(RequestWorker paramRequestWorker, HwResponse paramHwResponse, HwRequest paramHwRequest)
   {
-    boolean bool;
-    Object localObject;
     if ((paramHwResponse.segmentResp.has()) && (paramHwResponse.segmentResp.uint32_flag.has()))
     {
-      if ((paramHwResponse.segmentResp.uint32_flag.get() & 0x1) == 1)
-      {
+      boolean bool;
+      if ((paramHwResponse.segmentResp.uint32_flag.get() & 0x1) == 1) {
         bool = true;
-        paramHwResponse.isFinish = bool;
+      } else {
+        bool = false;
       }
+      paramHwResponse.isFinish = bool;
     }
-    else
+    Object localObject1 = this.mTrans.TRACKER;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(" Query Seq:");
+    ((StringBuilder)localObject2).append(getHwSeq());
+    ((StringBuilder)localObject2).append(" RetCode:");
+    ((StringBuilder)localObject2).append(paramHwResponse.retCode);
+    ((StringBuilder)localObject2).append(" isFinish:");
+    ((StringBuilder)localObject2).append(paramHwResponse.isFinish);
+    ((Tracker)localObject1).logStep("RESPN", ((StringBuilder)localObject2).toString());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("QueryDebug Query HandleResponse : retResp.hwRetCode:");
+    ((StringBuilder)localObject1).append(paramHwResponse.retCode);
+    ((StringBuilder)localObject1).append(" : TransId:");
+    ((StringBuilder)localObject1).append(this.mTrans.getTransationId());
+    ((StringBuilder)localObject1).append(" CopyBitmap:");
+    ((StringBuilder)localObject1).append(Arrays.toString(this.sentBitmap));
+    ((StringBuilder)localObject1).append(" CurrentBitmap:");
+    ((StringBuilder)localObject1).append(Arrays.toString(this.mTrans.bitmap));
+    BdhLogUtil.LogEvent("R", ((StringBuilder)localObject1).toString());
+    if (this.endpoint != null)
     {
-      this.mTrans.TRACKER.logStep("RESPN", " Query Seq:" + getHwSeq() + " RetCode:" + paramHwResponse.retCode + " isFinish:" + paramHwResponse.isFinish);
-      BdhLogUtil.LogEvent("R", "QueryDebug Query HandleResponse : retResp.hwRetCode:" + paramHwResponse.retCode + " : TransId:" + this.mTrans.getTransationId() + " CopyBitmap:" + Arrays.toString(this.sentBitmap) + " CurrentBitmap:" + Arrays.toString(this.mTrans.bitmap));
-      if (this.endpoint != null)
-      {
-        this.mTrans.mTransReport.netType = HwNetworkCenter.getInstance(paramRequestWorker.engine.getAppContext()).getNetType();
-        this.mTrans.mTransReport.connNum = paramRequestWorker.engine.mConnManager.getCurrentConnNum();
-        TransReport localTransReport = this.mTrans.mTransReport;
-        if (this.protoType != 1) {
-          break label373;
-        }
-        localObject = "TCP";
-        label253:
-        localTransReport.protoType = ((String)localObject);
-        this.mTrans.mTransReport.ipIndex = this.endpoint.ipIndex;
-        this.mTrans.mTransReport.isIpv6 = paramHwResponse.isIpv6;
-        this.mTrans.mTransReport.mHasIpv6List = paramRequestWorker.engine.mConnManager.mHasIpv6List;
-        this.mTrans.mTransReport.mIPv6Fast = paramRequestWorker.engine.mConnManager.isIpv6Fast();
+      this.mTrans.mTransReport.netType = HwNetworkCenter.getInstance(paramRequestWorker.engine.getAppContext()).getNetType();
+      this.mTrans.mTransReport.connNum = paramRequestWorker.engine.mConnManager.getCurrentConnNum();
+      localObject2 = this.mTrans.mTransReport;
+      if (this.protoType == 1) {
+        localObject1 = "TCP";
+      } else {
+        localObject1 = "HTTP";
       }
-      if (paramHwResponse.retCode != 0) {
-        break label445;
-      }
-      if (!paramHwResponse.isFinish) {
-        break label381;
-      }
-      this.mTrans.onTransSuccess(null, paramHwResponse.mBuExtendinfo);
+      ((TransReport)localObject2).protoType = ((String)localObject1);
+      this.mTrans.mTransReport.ipIndex = this.endpoint.ipIndex;
+      this.mTrans.mTransReport.isIpv6 = paramHwResponse.isIpv6;
+      this.mTrans.mTransReport.mHasIpv6List = paramRequestWorker.engine.mConnManager.mHasIpv6List;
+      this.mTrans.mTransReport.mIPv6Fast = paramRequestWorker.engine.mConnManager.isIpv6Fast();
     }
-    for (;;)
+    if (paramHwResponse.retCode == 0) {
+      if (paramHwResponse.isFinish)
+      {
+        this.mTrans.onTransSuccess(null, paramHwResponse.mBuExtendinfo);
+      }
+      else
+      {
+        localObject1 = paramHwResponse.mRespData;
+        paramRequestWorker = new CSDataHighwayHead.RspBody();
+      }
+    }
+    try
     {
-      checkCacheIp(paramHwResponse, this.mTrans);
-      return;
-      bool = false;
-      break;
-      label373:
-      localObject = "HTTP";
-      break label253;
-      label381:
-      localObject = paramHwResponse.mRespData;
-      paramRequestWorker = new CSDataHighwayHead.RspBody();
-      try
-      {
-        paramRequestWorker.mergeFrom((byte[])localObject);
-        this.mTrans.onQueryHoleResp((CSDataHighwayHead.QueryHoleRsp)paramRequestWorker.msg_query_hole_rsp.get(), this.sentBitmap, false, paramHwResponse, (RequestInfoQuery)paramHwRequest);
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          BdhLogUtil.LogEvent("R", "HandleResp ParseError.");
-        }
-      }
+      paramRequestWorker.mergeFrom((byte[])localObject1);
     }
-    label445:
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      label452:
+      break label452;
+    }
+    BdhLogUtil.LogEvent("R", "HandleResp ParseError.");
+    this.mTrans.onQueryHoleResp((CSDataHighwayHead.QueryHoleRsp)paramRequestWorker.msg_query_hole_rsp.get(), this.sentBitmap, false, paramHwResponse, (RequestInfoQuery)paramHwRequest);
+    checkCacheIp(paramHwResponse, this.mTrans);
+    return;
     this.mTrans.onQuertHoleError(this.sentBitmap);
   }
   
   public void onRetry(int paramInt)
   {
-    this.mTrans.TRACKER.logStep("SND_R", " Query Seq:" + getHwSeq() + " Code:" + paramInt);
+    Tracker localTracker = this.mTrans.TRACKER;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" Query Seq:");
+    localStringBuilder.append(getHwSeq());
+    localStringBuilder.append(" Code:");
+    localStringBuilder.append(paramInt);
+    localTracker.logStep("SND_R", localStringBuilder.toString());
   }
   
   public void onSendBegin()
   {
-    this.mTrans.TRACKER.logStep("SND_S", " Query Seq:" + getHwSeq());
+    Tracker localTracker = this.mTrans.TRACKER;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" Query Seq:");
+    localStringBuilder.append(getHwSeq());
+    localTracker.logStep("SND_S", localStringBuilder.toString());
   }
   
   public void onSendEnd()
   {
-    this.mTrans.TRACKER.logStep("SND_F", " Query Seq:" + getHwSeq());
+    Tracker localTracker = this.mTrans.TRACKER;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" Query Seq:");
+    localStringBuilder.append(getHwSeq());
+    localTracker.logStep("SND_F", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.RequestInfoQuery
  * JD-Core Version:    0.7.0.1
  */

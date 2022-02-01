@@ -48,21 +48,23 @@ public enum TouchTriggerManager
   
   private int getTouchState(int paramInt)
   {
-    switch (paramInt)
-    {
+    if (paramInt != 100) {
+      mCurExpression = -1;
+    } else {
+      mCurExpression = PTFaceAttr.PTExpression.TAP_SCREEN.value;
     }
-    for (mCurExpression = -1;; mCurExpression = PTFaceAttr.PTExpression.TAP_SCREEN.value) {
-      return mCurExpression;
-    }
+    return mCurExpression;
   }
   
   public void clear()
   {
     mCurExpression = -1;
-    mCurPosition.x = -1.0F;
-    mCurPosition.y = -1.0F;
-    mNextPosition.x = 0.0F;
-    mNextPosition.y = 0.0F;
+    PointF localPointF = mCurPosition;
+    localPointF.x = -1.0F;
+    localPointF.y = -1.0F;
+    localPointF = mNextPosition;
+    localPointF.x = 0.0F;
+    localPointF.y = 0.0F;
     bgmClockTime = 0.0F;
     bgmTriggerTime = 0L;
     musicDuration = 0;
@@ -120,10 +122,12 @@ public enum TouchTriggerManager
   public void reset()
   {
     mCurExpression = -1;
-    mCurPosition.x = -1.0F;
-    mCurPosition.y = -1.0F;
-    mNextPosition.x = 0.0F;
-    mNextPosition.y = 0.0F;
+    PointF localPointF = mCurPosition;
+    localPointF.x = -1.0F;
+    localPointF.y = -1.0F;
+    localPointF = mNextPosition;
+    localPointF.x = 0.0F;
+    localPointF.y = 0.0F;
     bgmClockTime = 0.0F;
     bgmTriggerTime = 0L;
     musicDuration = 0;
@@ -169,8 +173,9 @@ public enum TouchTriggerManager
   public void setTouchState(int paramInt, float paramFloat1, float paramFloat2)
   {
     mCurExpression = getTouchState(paramInt);
-    mNextPosition.x = paramFloat1;
-    mNextPosition.y = paramFloat2;
+    PointF localPointF = mNextPosition;
+    localPointF.x = paramFloat1;
+    localPointF.y = paramFloat2;
     if (!isLocked) {
       mTouchCount += 1;
     }
@@ -182,20 +187,23 @@ public enum TouchTriggerManager
     {
       paramPTDetectInfo.triggeredExpression.add(Integer.valueOf(mCurExpression));
       mCurPosition.x = mNextPosition.x;
+      mCurPosition.y = mNextPosition.y;
     }
-    for (mCurPosition.y = mNextPosition.y;; mCurPosition.y = -1.0F)
+    else
     {
-      mCurExpression = -1;
-      mNextPosition.x = 0.0F;
-      mNextPosition.y = 0.0F;
-      return;
-      mCurPosition.x = -1.0F;
+      paramPTDetectInfo = mCurPosition;
+      paramPTDetectInfo.x = -1.0F;
+      paramPTDetectInfo.y = -1.0F;
     }
+    mCurExpression = -1;
+    paramPTDetectInfo = mNextPosition;
+    paramPTDetectInfo.x = 0.0F;
+    paramPTDetectInfo.y = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.manager.TouchTriggerManager
  * JD-Core Version:    0.7.0.1
  */

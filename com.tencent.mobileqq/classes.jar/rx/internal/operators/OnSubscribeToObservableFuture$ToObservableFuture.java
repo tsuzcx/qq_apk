@@ -36,30 +36,28 @@ class OnSubscribeToObservableFuture$ToObservableFuture<T>
       if (paramSubscriber.isUnsubscribed()) {
         return;
       }
-      if (this.unit != null) {
-        break label64;
+      Object localObject;
+      if (this.unit == null) {
+        localObject = this.that.get();
+      } else {
+        localObject = this.that.get(this.time, this.unit);
       }
-      localObject1 = this.that.get();
+      paramSubscriber.onNext(localObject);
+      paramSubscriber.onCompleted();
+      return;
     }
     catch (Throwable localThrowable)
     {
-      Object localObject1;
-      while (!paramSubscriber.isUnsubscribed())
-      {
-        Exceptions.throwOrReport(localThrowable, paramSubscriber);
+      if (paramSubscriber.isUnsubscribed()) {
         return;
-        Object localObject2 = this.that.get(this.time, this.unit);
       }
+      Exceptions.throwOrReport(localThrowable, paramSubscriber);
     }
-    paramSubscriber.onNext(localObject1);
-    paramSubscriber.onCompleted();
-    return;
-    label64:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeToObservableFuture.ToObservableFuture
  * JD-Core Version:    0.7.0.1
  */

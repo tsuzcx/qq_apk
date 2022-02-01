@@ -41,7 +41,8 @@ public class VideoTextureRenderer
   
   static
   {
-    squareCoords = new float[] { -squareSize, squareSize, 0.0F, -squareSize, -squareSize, 0.0F, squareSize, -squareSize, 0.0F, squareSize, squareSize, 0.0F };
+    float f = squareSize;
+    squareCoords = new float[] { -f, f, 0.0F, -f, -f, 0.0F, f, -f, 0.0F, f, f, 0.0F };
   }
   
   public VideoTextureRenderer(CountDownLatch paramCountDownLatch, SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
@@ -71,7 +72,10 @@ public class VideoTextureRenderer
     if (localObject[0] != 1)
     {
       localObject = GLES20.glGetProgramInfoLog(this.shaderProgram);
-      PlayerUtils.log(6, "SurfaceTest", "Error while linking program:\n" + (String)localObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Error while linking program:\n");
+      localStringBuilder.append((String)localObject);
+      PlayerUtils.log(6, "SurfaceTest", localStringBuilder.toString());
     }
   }
   
@@ -114,7 +118,11 @@ public class VideoTextureRenderer
       if (i == 0) {
         break;
       }
-      PlayerUtils.log(6, "SurfaceTest", paramString + ": glError " + GLUtils.getEGLErrorString(i));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(GLUtils.getEGLErrorString(i));
+      PlayerUtils.log(6, "SurfaceTest", localStringBuilder.toString());
     }
   }
   
@@ -185,7 +193,7 @@ public class VideoTextureRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzoneplayer.videorenderer.VideoTextureRenderer
  * JD-Core Version:    0.7.0.1
  */

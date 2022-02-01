@@ -13,30 +13,34 @@ class RewardedVideoAdPlugin$3
   public void run()
   {
     JSONObject localJSONObject = new JSONObject();
-    try
+    for (;;)
     {
-      localJSONObject.put("state", "show");
-      if (!TextUtils.isEmpty(this.val$compId)) {
-        localJSONObject.put("compId", this.val$compId);
-      }
-      if (this.val$isSucc) {}
-      for (String str = "ok";; str = "error")
+      try
       {
-        localJSONObject.put("status", str);
-        RewardedVideoAdPlugin.access$1600(this.this$0, this.val$req, localJSONObject, "onRewardedVideoShowDone");
+        localJSONObject.put("state", "load");
+        if (!TextUtils.isEmpty(this.val$compId)) {
+          localJSONObject.put("compId", this.val$compId);
+        }
+        if (this.val$isSucc)
+        {
+          String str1 = "ok";
+          localJSONObject.put("status", str1);
+          RewardedVideoAdPlugin.access$1800(this.this$0, this.val$req, localJSONObject, "onRewardedVideoShowDone");
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
         return;
       }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+      String str2 = "error";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RewardedVideoAdPlugin.3
  * JD-Core Version:    0.7.0.1
  */

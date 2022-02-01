@@ -23,12 +23,12 @@ class EditorStateMachineController$6
       EditorStateMachineController.a(this.a).a(false, false);
       return;
     }
-    EditorStateMachineController.a(this.a).a(EditorState.CLOSED_BY_ADMIN, EditorStateMachineController.a(this.a).getString(2131720730));
+    EditorStateMachineController.a(this.a).a(EditorState.CLOSED_BY_ADMIN, EditorStateMachineController.a(this.a).getString(2131720455));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.EditorStateMachineController.6
  * JD-Core Version:    0.7.0.1
  */

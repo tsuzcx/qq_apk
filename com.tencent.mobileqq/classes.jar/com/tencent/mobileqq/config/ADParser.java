@@ -8,14 +8,16 @@ public class ADParser
 {
   public static int a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    String str;
-    do
+    int j = -1;
+    int i = j;
+    if (paramString != null)
     {
-      return -1;
+      if (paramString.length() <= 0) {
+        return -1;
+      }
       paramString = b(paramString);
-      str = PkgTools.GetParaVal("RESPCONDITION", paramString);
-      if (PkgTools.GetParaVal("RESPCONTENTTYPES", paramString).equals("PRELOAD")) {
+      String str = PkgTools.getParaVal("RESPCONDITION", paramString);
+      if (PkgTools.getParaVal("RESPCONTENTTYPES", paramString).equals("PRELOAD")) {
         return 3;
       }
       if (str.equals("MANUAL")) {
@@ -24,71 +26,75 @@ public class ADParser
       if (str.equals("AUTO")) {
         return 1;
       }
-    } while (!str.equals("SEMIAUTO"));
-    return 2;
+      i = j;
+      if (str.equals("SEMIAUTO")) {
+        i = 2;
+      }
+    }
+    return i;
   }
   
   public static ADMsg a(String paramString)
   {
     ADMsg localADMsg = new ADMsg();
     paramString = b(paramString);
-    localADMsg.a = PkgTools.Decodecgi(PkgTools.GetParaVal("DESC", paramString));
-    localADMsg.b = PkgTools.Decodecgi(PkgTools.GetParaVal("SUBJECT", paramString));
-    localADMsg.c = PkgTools.GetParaVal("RESPCONDITION", paramString);
+    localADMsg.a = PkgTools.decodeCgi(PkgTools.getParaVal("DESC", paramString));
+    localADMsg.b = PkgTools.decodeCgi(PkgTools.getParaVal("SUBJECT", paramString));
+    localADMsg.c = PkgTools.getParaVal("RESPCONDITION", paramString);
     if ((!localADMsg.c.equals("MANUAL")) && (!localADMsg.c.equals("AUTO")) && (!localADMsg.c.equals("SEMIAUTO"))) {
       return null;
     }
-    localADMsg.d = PkgTools.GetParaVal("RESPDESC", paramString);
-    localADMsg.e = PkgTools.GetParaVal("RESPCONTENTTYPES", paramString);
-    localADMsg.f = PkgTools.GetParaVal("RESPDEST", paramString);
-    localADMsg.g = PkgTools.GetParaVal("RESPCONTENTS", paramString);
-    localADMsg.d = PkgTools.Decodecgi(localADMsg.d);
-    localADMsg.f = PkgTools.Decodecgi(localADMsg.f).trim();
-    localADMsg.g = PkgTools.Decodecgi(localADMsg.g);
+    localADMsg.d = PkgTools.getParaVal("RESPDESC", paramString);
+    localADMsg.e = PkgTools.getParaVal("RESPCONTENTTYPES", paramString);
+    localADMsg.f = PkgTools.getParaVal("RESPDEST", paramString);
+    localADMsg.g = PkgTools.getParaVal("RESPCONTENTS", paramString);
+    localADMsg.d = PkgTools.decodeCgi(localADMsg.d);
+    localADMsg.f = PkgTools.decodeCgi(localADMsg.f).trim();
+    localADMsg.g = PkgTools.decodeCgi(localADMsg.g);
     return localADMsg;
   }
   
   public static String a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {
-      return null;
+    if ((paramString != null) && (paramString.length() > 0)) {
+      return PkgTools.getParaVal("RESPCONTENTTYPES", paramString);
     }
-    return PkgTools.GetParaVal("RESPCONTENTTYPES", paramString);
+    return null;
   }
   
   public static ADMsg b(String paramString)
   {
     paramString = a(paramString);
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return paramString;
-      if (paramString.c.equals("MANUAL"))
-      {
-        paramString.a(false);
-        return paramString;
-      }
-      if (paramString.c.equals("AUTO"))
-      {
-        paramString.a();
-        return paramString;
-      }
-    } while (!paramString.c.equals("SEMIAUTO"));
-    paramString.a();
+    }
+    if (paramString.c.equals("MANUAL"))
+    {
+      paramString.a(false);
+      return paramString;
+    }
+    if (paramString.c.equals("AUTO"))
+    {
+      paramString.a();
+      return paramString;
+    }
+    if (paramString.c.equals("SEMIAUTO")) {
+      paramString.a();
+    }
     return paramString;
   }
   
   private static String b(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {
-      return "";
+    if ((paramString != null) && (paramString.length() > 0)) {
+      return PkgTools.replace(PkgTools.replace(paramString, 0, "||QQNO||", Config.a()), 0, "||LICENCE||", AppSetting.d());
     }
-    return PkgTools.replace(PkgTools.replace(paramString, 0, "||QQNO||", Config.a()), 0, "||LICENCE||", AppSetting.d());
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.ADParser
  * JD-Core Version:    0.7.0.1
  */

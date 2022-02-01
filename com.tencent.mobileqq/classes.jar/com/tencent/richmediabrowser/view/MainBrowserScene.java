@@ -1,25 +1,26 @@
 package com.tencent.richmediabrowser.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.RelativeLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import com.tencent.image.RegionDrawableData;
+import com.tencent.richmediabrowser.api.BrowserParamsBuilder;
+import com.tencent.richmediabrowser.core.IBaseViewBuilder;
 import com.tencent.richmediabrowser.listener.IBrowserItemScrollListener;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import com.tencent.richmediabrowser.model.MainBrowserModel;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
-import com.tencent.richmediabrowser.presenter.BrowserBasePresenter;
 import com.tencent.richmediabrowser.presenter.MainBrowserPresenter;
 import com.tencent.richmediabrowser.view.recyclerview.BrowserAdapter;
 import com.tencent.richmediabrowser.view.recyclerview.BrowserAdapter.BrowserViewHolder;
@@ -33,51 +34,55 @@ public class MainBrowserScene
   implements IBrowserItemScrollListener, DragView.OnGestureChangeListener
 {
   private static final String TAG = "MainBrowserScene";
-  private RelativeLayout contentView;
+  private boolean isNeedFullScreen = true;
   private volatile boolean isRemoveFullScreen = false;
-  public Activity mActivity;
+  public Context mContext;
   public DragView mDragView;
   public Intent mIntent;
   
-  public MainBrowserScene(Activity paramActivity, MainBrowserPresenter paramMainBrowserPresenter)
+  public MainBrowserScene(Context paramContext, MainBrowserPresenter paramMainBrowserPresenter)
   {
-    super(paramActivity);
-    this.mActivity = paramActivity;
+    super(paramContext);
+    this.mContext = paramContext;
     this.mainBrowserPresenter = paramMainBrowserPresenter;
   }
   
   private void setFullScreen(boolean paramBoolean)
   {
-    if ((this.mActivity != null) && (this.mActivity.getWindow() != null))
+    Object localObject = this.mContext;
+    if ((localObject instanceof Activity))
     {
+      localObject = (Activity)localObject;
       if (paramBoolean)
       {
-        localLayoutParams = this.mActivity.getWindow().getAttributes();
+        localLayoutParams = ((Activity)localObject).getWindow().getAttributes();
         localLayoutParams.flags |= 0x400;
-        this.mActivity.getWindow().setAttributes(localLayoutParams);
+        ((Activity)localObject).getWindow().setAttributes(localLayoutParams);
+        return;
       }
+      WindowManager.LayoutParams localLayoutParams = ((Activity)localObject).getWindow().getAttributes();
+      localLayoutParams.flags &= 0xFFFFFBFF;
+      ((Activity)localObject).getWindow().setAttributes(localLayoutParams);
     }
-    else {
-      return;
-    }
-    WindowManager.LayoutParams localLayoutParams = this.mActivity.getWindow().getAttributes();
-    localLayoutParams.flags &= 0xFFFFFBFF;
-    this.mActivity.getWindow().setAttributes(localLayoutParams);
   }
   
   public boolean back()
   {
-    if (!this.isRemoveFullScreen)
+    if (this.mContext != null)
+    {
+      IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MainBrowserScene.back[");
+      localStringBuilder.append(this.mContext.hashCode());
+      localStringBuilder.append("]");
+      localIBrowserLog.i("RichMediaBrowserManager", 2, localStringBuilder.toString());
+    }
+    if ((this.isNeedFullScreen) && (!this.isRemoveFullScreen))
     {
       this.isRemoveFullScreen = true;
       setFullScreen(false);
     }
-    super.back();
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.back();
-    }
-    return false;
+    return super.back();
   }
   
   public void buildComplete()
@@ -87,35 +92,51 @@ public class MainBrowserScene
   
   public void buildParams(Intent paramIntent)
   {
-    super.buildParams(paramIntent);
     this.mIntent = paramIntent;
-    this.scrollListener.setBrowserItemScrollListener(this);
+    super.buildParams(paramIntent);
+    if (this.scrollListener != null) {
+      this.scrollListener.setBrowserItemScrollListener(this);
+    }
+    if (paramIntent != null) {
+      this.isNeedFullScreen = paramIntent.getBooleanExtra("isNeedFullScreen", true);
+    }
   }
   
-  public void buildView(ViewGroup paramViewGroup)
+  public void buildView()
   {
-    super.buildView(paramViewGroup);
+    super.buildView();
     initView();
   }
   
-  protected BrowserAdapter createGalleryAdapter(Activity paramActivity)
+  protected BrowserAdapter createGalleryAdapter(Context paramContext)
   {
-    this.mAdapter = new BrowserAdapter(paramActivity);
+    this.mAdapter = new BrowserAdapter(paramContext);
     this.mAdapter.setPresenter(this.mainBrowserPresenter);
     return this.mAdapter;
   }
   
-  protected RelativeLayout createLayout()
+  public Rect getAnimationEndDstRect()
   {
-    return (RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559450, null);
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      return ((BrowserBaseView)localIBaseViewBuilder).getAnimationEndDstRect();
+    }
+    return null;
   }
   
-  public RelativeLayout getContentView()
+  public BrowserAdapter.BrowserViewHolder getBrowserViewHolder(int paramInt)
   {
-    return this.contentView;
+    if ((this.mainBrowserPresenter != null) && (this.recyclerView != null))
+    {
+      RecyclerView.ViewHolder localViewHolder = this.recyclerView.findViewHolderForAdapterPosition(paramInt);
+      if ((localViewHolder instanceof BrowserAdapter.BrowserViewHolder)) {
+        return (BrowserAdapter.BrowserViewHolder)localViewHolder;
+      }
+    }
+    return null;
   }
   
-  public BrowserBaseView getCurrentView()
+  public IBaseViewBuilder getCurrentView()
   {
     return getView(this.mainBrowserPresenter.getCurrentPosition());
   }
@@ -133,7 +154,7 @@ public class MainBrowserScene
     return -1;
   }
   
-  public BrowserBaseView getView(int paramInt)
+  public IBaseViewBuilder getView(int paramInt)
   {
     if ((this.mainBrowserPresenter != null) && (this.recyclerView != null))
     {
@@ -147,26 +168,48 @@ public class MainBrowserScene
   
   public void initView()
   {
-    this.contentView = ((RelativeLayout)this.rootView.findViewById(2131365294));
     if ((this.mainBrowserPresenter != null) && (this.mainBrowserPresenter.browserModel != null)) {
       this.recyclerView.scrollToPosition(this.mainBrowserPresenter.browserModel.getSelectedIndex());
     }
     this.recyclerView.setVisibility(0);
-    this.mDragView = ((DragView)this.mRoot.findViewById(2131366062));
+    this.mDragView = ((DragView)this.mRoot.findViewById(2131365892));
     this.mDragView.setGestureChangeListener(this);
     this.mDragView.setRatioModify(true);
     this.mDragView.init();
+    if (this.mainBrowserPresenter != null) {
+      this.mDragView.setEnableDrag(this.mainBrowserPresenter.getParamsBuilder().c);
+    }
   }
   
   public boolean isNeedDisallowInterceptEvent(MotionEvent paramMotionEvent)
   {
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    return (localBrowserBaseView != null) && (localBrowserBaseView.isNeedDisallowInterceptEvent(paramMotionEvent));
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    return ((localIBaseViewBuilder instanceof BrowserBaseView)) && (((BrowserBaseView)localIBaseViewBuilder).isNeedDisallowInterceptEvent(paramMotionEvent));
+  }
+  
+  public boolean needEnterRectAnimation()
+  {
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      return ((BrowserBaseView)localIBaseViewBuilder).needEnterRectAnimation();
+    }
+    return false;
+  }
+  
+  public boolean needExitRectAnimation()
+  {
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      return ((BrowserBaseView)localIBaseViewBuilder).needExitRectAnimation();
+    }
+    return false;
   }
   
   public void notifyDataSetChanged()
   {
-    this.mAdapter.notifyDataSetChanged();
+    if (this.mAdapter != null) {
+      this.mAdapter.notifyDataSetChanged();
+    }
   }
   
   public void notifyImageModelDataChanged()
@@ -174,13 +217,9 @@ public class MainBrowserScene
     if ((this.mAdapter != null) && (this.mainBrowserPresenter != null))
     {
       this.mAdapter.reset();
-      this.mAdapter.notifyDataSetChanged();
-      this.recyclerView.scrollToPosition(this.mainBrowserPresenter.getCurrentPosition());
+      notifyDataSetChanged();
+      scrollToCurrentPosition();
       BrowserLogHelper.getInstance().getGalleryLog().e("MainBrowserScene", 2, "notifyImageModelDataChanged");
-    }
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.notifyImageModelDataChanged();
     }
   }
   
@@ -189,22 +228,19 @@ public class MainBrowserScene
     this.mAdapter.notifyItemChanged(paramInt);
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
   public void onClickDragView() {}
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    super.onConfigurationChanged(paramConfiguration);
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onConfigurationChanged(paramConfiguration);
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localIBaseViewBuilder).onConfigurationChanged(paramConfiguration);
     }
   }
   
   public void onContentMove(float paramFloat)
   {
-    if (!this.isRemoveFullScreen)
+    if ((this.isNeedFullScreen) && (!this.isRemoveFullScreen))
     {
       this.isRemoveFullScreen = true;
       setFullScreen(false);
@@ -212,33 +248,44 @@ public class MainBrowserScene
     this.bgView.setAlpha(paramFloat);
     if (paramFloat < 0.8F)
     {
-      BrowserBaseView localBrowserBaseView = getCurrentView();
-      if (localBrowserBaseView != null) {
-        localBrowserBaseView.updateUI();
+      IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+      if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+        ((BrowserBaseView)localIBaseViewBuilder).updateUI();
       }
     }
   }
   
   public void onDestroy()
   {
+    if (this.mContext != null)
+    {
+      localObject = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MainBrowserScene.onDestroy[");
+      localStringBuilder.append(this.mContext.hashCode());
+      localStringBuilder.append("]");
+      ((IBrowserLog)localObject).i("RichMediaBrowserManager", 2, localStringBuilder.toString());
+    }
     super.onDestroy();
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onDestroy();
-    }
-    if (this.contentView != null) {
-      this.contentView.removeAllViews();
-    }
-    if (this.mDragView != null) {
+    Object localObject = this.mDragView;
+    if (localObject != null)
+    {
+      ((DragView)localObject).setGestureChangeListener(null);
       this.mDragView.onDestroy();
+      this.mDragView = null;
+    }
+    if (this.scrollListener != null)
+    {
+      this.scrollListener.setBrowserItemScrollListener(null);
+      this.scrollListener = null;
     }
   }
   
   public void onDoubleTap()
   {
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onDoubleTap();
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localIBaseViewBuilder).onDoubleTap(this.mainBrowserPresenter.getCurrentPosition());
     }
   }
   
@@ -246,185 +293,169 @@ public class MainBrowserScene
   {
     super.onEnterAnimationEnd();
     showContentView(true);
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null)
+    Object localObject = getCurrentView();
+    if ((localObject instanceof BrowserBaseView))
     {
-      localBrowserBaseView.onEnterAnimationEnd();
-      localBrowserBaseView.isInEnterAnim = false;
+      localObject = (BrowserBaseView)localObject;
+      ((BrowserBaseView)localObject).isInEnterAnim = false;
+      ((BrowserBaseView)localObject).onEnterAnimationEnd();
     }
   }
   
   public void onEnterAnimationStart()
   {
     super.onEnterAnimationStart();
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null)
+    Object localObject = getCurrentView();
+    if ((localObject instanceof BrowserBaseView))
     {
-      localBrowserBaseView.onEnterAnimationStart();
-      localBrowserBaseView.isInEnterAnim = true;
+      localObject = (BrowserBaseView)localObject;
+      ((BrowserBaseView)localObject).isInEnterAnim = true;
+      ((BrowserBaseView)localObject).onEnterAnimationStart();
     }
   }
   
   public void onExitAnimationEnd()
   {
     super.onExitAnimationEnd();
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null)
+    Object localObject = getCurrentView();
+    if ((localObject instanceof BrowserBaseView))
     {
-      localBrowserBaseView.onExitAnimationEnd();
-      localBrowserBaseView.isInExitAnim = false;
+      localObject = (BrowserBaseView)localObject;
+      ((BrowserBaseView)localObject).isInExitAnim = false;
+      ((BrowserBaseView)localObject).onExitAnimationEnd();
     }
   }
   
   public void onExitAnimationStart()
   {
     super.onExitAnimationStart();
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null)
+    Object localObject = getCurrentView();
+    if ((localObject instanceof BrowserBaseView))
     {
-      localBrowserBaseView.onExitAnimationStart();
-      localBrowserBaseView.isInExitAnim = true;
+      localObject = (BrowserBaseView)localObject;
+      ((BrowserBaseView)localObject).isInExitAnim = true;
+      ((BrowserBaseView)localObject).onExitAnimationStart();
     }
     showContentView(false);
   }
   
   public void onGestureFinish()
   {
-    this.mContext.finish();
+    if (this.mContext != null)
+    {
+      localObject = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGestureFinish[");
+      localStringBuilder.append(this.mContext.hashCode());
+      localStringBuilder.append("]");
+      ((IBrowserLog)localObject).i("RichMediaBrowserManager", 2, localStringBuilder.toString());
+    }
+    Object localObject = this.mContext;
+    if ((localObject instanceof Activity)) {
+      ((Activity)localObject).finish();
+    }
   }
   
   public void onItemSelected(int paramInt)
   {
     super.onItemSelected(paramInt);
-    BrowserBaseView localBrowserBaseView = getView(paramInt);
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onItemSelected(paramInt);
+    IBaseViewBuilder localIBaseViewBuilder = getView(paramInt);
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localIBaseViewBuilder).onItemSelected(paramInt);
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 82: 
-      BrowserBaseView localBrowserBaseView;
-      do
-      {
-        return super.onKeyDown(paramInt, paramKeyEvent);
-        localBrowserBaseView = getCurrentView();
-      } while (localBrowserBaseView == null);
-      return localBrowserBaseView.onKeyDown(paramInt, paramKeyEvent);
+    if (paramInt != 4) {
+      return false;
     }
     return back();
   }
   
-  public void onPause()
-  {
-    super.onPause();
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onPause();
-    }
-  }
-  
   public void onResetPosition()
   {
-    if (this.isRemoveFullScreen)
+    if (this.mContext != null)
+    {
+      localObject = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResetPosition[");
+      localStringBuilder.append(this.mContext.hashCode());
+      localStringBuilder.append("]");
+      ((IBrowserLog)localObject).i("RichMediaBrowserManager", 2, localStringBuilder.toString());
+    }
+    if ((this.isNeedFullScreen) && (this.isRemoveFullScreen))
     {
       this.isRemoveFullScreen = false;
       setFullScreen(true);
     }
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.updateUI();
-    }
-  }
-  
-  public void onResume()
-  {
-    super.onResume();
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onResume();
+    Object localObject = getCurrentView();
+    if ((localObject instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localObject).updateUI();
     }
   }
   
   public void onScale()
   {
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onScale();
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localIBaseViewBuilder).onScale(this.mainBrowserPresenter.getCurrentPosition());
     }
   }
   
   public void onScaleBegin()
   {
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onScaleBegin();
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localIBaseViewBuilder).onScaleBegin(this.mainBrowserPresenter.getCurrentPosition());
     }
   }
   
   public void onScaleEnd()
   {
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onScaleEnd();
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localIBaseViewBuilder).onScaleEnd(this.mainBrowserPresenter.getCurrentPosition());
     }
   }
   
   public void onScrollEnd()
   {
-    if (this.mainBrowserPresenter != null)
-    {
-      BrowserBasePresenter localBrowserBasePresenter = this.mainBrowserPresenter.getCurrentPresenter();
-      if ((localBrowserBasePresenter != null) && (localBrowserBasePresenter.browserBaseView != null)) {
-        localBrowserBasePresenter.browserBaseView.onScrollEnd();
-      }
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localIBaseViewBuilder).onScrollEnd();
     }
   }
   
   public void onScrollHalfScreenWidth()
   {
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onScrollHalfScreenWidth();
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localIBaseViewBuilder).onScrollHalfScreenWidth();
     }
   }
   
   public void onScrollStart()
   {
-    if (this.mainBrowserPresenter != null)
-    {
-      BrowserBasePresenter localBrowserBasePresenter = this.mainBrowserPresenter.getCurrentPresenter();
-      if ((localBrowserBasePresenter != null) && (localBrowserBasePresenter.browserBaseView != null)) {
-        localBrowserBasePresenter.browserBaseView.onScrollStart();
-      }
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localIBaseViewBuilder).onScrollStart();
     }
   }
   
   public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
   {
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
-    }
-  }
-  
-  public void onStop()
-  {
-    super.onStop();
-    BrowserBaseView localBrowserBaseView = getCurrentView();
-    if (localBrowserBaseView != null) {
-      localBrowserBaseView.onStop();
+    IBaseViewBuilder localIBaseViewBuilder = getCurrentView();
+    if ((localIBaseViewBuilder instanceof BrowserBaseView)) {
+      ((BrowserBaseView)localIBaseViewBuilder).onShowAreaChanged(paramInt, paramView, paramRegionDrawableData);
     }
   }
   
   public void requestDisallowInterceptDragEvent(boolean paramBoolean)
   {
-    if (this.mDragView != null) {
-      this.mDragView.requestDisallowInterceptTouchEvent(paramBoolean);
+    DragView localDragView = this.mDragView;
+    if (localDragView != null) {
+      localDragView.requestDisallowInterceptTouchEvent(paramBoolean);
     }
   }
   
@@ -435,33 +466,25 @@ public class MainBrowserScene
     }
   }
   
-  public void showContentView(boolean paramBoolean)
+  public void scrollToCurrentPosition()
   {
-    RelativeLayout localRelativeLayout;
-    if (this.contentView != null)
-    {
-      localRelativeLayout = this.contentView;
-      if (!paramBoolean) {
-        break label24;
-      }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localRelativeLayout.setVisibility(i);
-      return;
+    if ((this.recyclerView != null) && (this.mainBrowserPresenter != null)) {
+      this.recyclerView.scrollToPosition(this.mainBrowserPresenter.getCurrentPosition());
     }
   }
   
   public void updateSystemUIVisablity()
   {
-    this.isRemoveFullScreen = false;
-    setFullScreen(true);
+    if (this.isNeedFullScreen)
+    {
+      this.isRemoveFullScreen = false;
+      setFullScreen(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.MainBrowserScene
  * JD-Core Version:    0.7.0.1
  */

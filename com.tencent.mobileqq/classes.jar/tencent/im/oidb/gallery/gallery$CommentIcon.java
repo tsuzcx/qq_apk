@@ -17,13 +17,14 @@ public final class gallery$CommentIcon
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_icon_url", "uint32_icon_height", "uint32_icon_width" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, CommentIcon.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_icon_url", "uint32_icon_height", "uint32_icon_width" }, new Object[] { localByteStringMicro, localInteger, localInteger }, CommentIcon.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.gallery.gallery.CommentIcon
  * JD-Core Version:    0.7.0.1
  */

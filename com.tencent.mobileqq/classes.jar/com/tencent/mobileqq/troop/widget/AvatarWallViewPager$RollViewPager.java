@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.widget;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
 
 public class AvatarWallViewPager$RollViewPager
@@ -24,69 +24,80 @@ public class AvatarWallViewPager$RollViewPager
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
     float f3 = Math.abs(f1 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.c);
     float f4 = Math.abs(f2 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.d);
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (i != 0)
     {
-    default: 
-      return false;
-    case 0: 
-    case 261: 
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.a();
-      requestDisallowInterceptTouchEvent(true);
-      AvatarWallViewPager localAvatarWallViewPager = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager;
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.c = f1;
-      localAvatarWallViewPager.jdField_a_of_type_Float = f1;
-      localAvatarWallViewPager = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager;
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.d = f2;
-      localAvatarWallViewPager.b = f2;
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.e();
-      return super.dispatchTouchEvent(paramMotionEvent);
-    case 2: 
-      if (this.jdField_a_of_type_Int <= 1)
-      {
-        getParent().requestDisallowInterceptTouchEvent(false);
-        bool1 = bool2;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.c = f1;
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.d = f2;
-        return bool1;
-        if ((f3 < f4) && (Math.abs(f2 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.b) > this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Int)) {
-          getParent().requestDisallowInterceptTouchEvent(false);
-        }
-        for (;;)
+      if (i != 1) {
+        if (i != 2)
         {
-          if ((f3 <= f4) || (Math.abs(f1 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Float) <= this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Int)) {
-            break label312;
+          if (i != 3)
+          {
+            if (i == 261) {
+              break label332;
+            }
+            return false;
           }
-          bool1 = super.dispatchTouchEvent(paramMotionEvent);
-          break;
-          getParent().requestDisallowInterceptTouchEvent(true);
         }
-        label312:
+        else
+        {
+          if (this.jdField_a_of_type_Int <= 1)
+          {
+            getParent().requestDisallowInterceptTouchEvent(false);
+            bool1 = bool2;
+          }
+          else
+          {
+            if ((f3 < f4) && (Math.abs(f2 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.b) > this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Int)) {
+              getParent().requestDisallowInterceptTouchEvent(false);
+            } else {
+              getParent().requestDisallowInterceptTouchEvent(true);
+            }
+            if ((f3 > f4) && (Math.abs(f1 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Float) > this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Int))
+            {
+              bool1 = super.dispatchTouchEvent(paramMotionEvent);
+            }
+            else
+            {
+              requestDisallowInterceptTouchEvent(false);
+              bool1 = bool2;
+            }
+          }
+          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager;
+          paramMotionEvent.c = f1;
+          paramMotionEvent.d = f2;
+          return bool1;
+        }
+      }
+      requestDisallowInterceptTouchEvent(false);
+      bool2 = super.dispatchTouchEvent(paramMotionEvent);
+      if ((Math.abs(f1 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Float) < this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Int) && (Math.abs(f2 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.b) < this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Boolean))
+      {
         requestDisallowInterceptTouchEvent(false);
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.performClick();
+      }
+      else
+      {
         bool1 = bool2;
       }
-    }
-    requestDisallowInterceptTouchEvent(false);
-    bool2 = super.dispatchTouchEvent(paramMotionEvent);
-    if ((Math.abs(f1 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Float) < this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Int) && (Math.abs(f2 - this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.b) < this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_Boolean))
-    {
-      requestDisallowInterceptTouchEvent(false);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.performClick();
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.d();
       return bool1;
-      bool1 = bool2;
     }
+    label332:
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.a();
+    requestDisallowInterceptTouchEvent(true);
+    AvatarWallViewPager localAvatarWallViewPager = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager;
+    localAvatarWallViewPager.c = f1;
+    localAvatarWallViewPager.jdField_a_of_type_Float = f1;
+    localAvatarWallViewPager.d = f2;
+    localAvatarWallViewPager.b = f2;
+    localAvatarWallViewPager.e();
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -121,7 +132,7 @@ public class AvatarWallViewPager$RollViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager
  * JD-Core Version:    0.7.0.1
  */

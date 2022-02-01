@@ -52,31 +52,30 @@ public class Rotate3dAnimation
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.b;
-    float f3 = this.c;
-    float f4 = this.d;
+    float f3 = this.jdField_a_of_type_Float;
+    float f4 = this.b;
+    float f1 = this.c;
+    float f2 = this.d;
     Object localObject = this.jdField_a_of_type_AndroidGraphicsCamera;
     paramTransformation = paramTransformation.getMatrix();
     ((Camera)localObject).save();
     if (this.jdField_a_of_type_Boolean) {
       ((Camera)localObject).translate(0.0F, 0.0F, this.e * paramFloat);
-    }
-    for (;;)
-    {
-      ((Camera)localObject).rotateY(f1 + (f2 - f1) * paramFloat);
-      ((Camera)localObject).getMatrix(paramTransformation);
-      ((Camera)localObject).restore();
-      localObject = new float[9];
-      paramTransformation.getValues((float[])localObject);
-      localObject[6] /= this.f;
-      localObject[7] /= this.f;
-      paramTransformation.setValues((float[])localObject);
-      paramTransformation.preTranslate(-f3, -f4);
-      paramTransformation.postTranslate(f3, f4);
-      return;
+    } else {
       ((Camera)localObject).translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
+    ((Camera)localObject).rotateY(f3 + (f4 - f3) * paramFloat);
+    ((Camera)localObject).getMatrix(paramTransformation);
+    ((Camera)localObject).restore();
+    localObject = new float[9];
+    paramTransformation.getValues((float[])localObject);
+    paramFloat = localObject[6];
+    f3 = this.f;
+    localObject[6] = (paramFloat / f3);
+    localObject[7] /= f3;
+    paramTransformation.setValues((float[])localObject);
+    paramTransformation.preTranslate(-f1, -f2);
+    paramTransformation.postTranslate(f1, f2);
   }
   
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -87,7 +86,7 @@ public class Rotate3dAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.Rotate3dAnimation
  * JD-Core Version:    0.7.0.1
  */

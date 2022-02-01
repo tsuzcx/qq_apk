@@ -60,15 +60,16 @@ public final class ReqGetGroupInArea
     paramJceOutputStream.write(this.iCount, 4);
     paramJceOutputStream.write(this.iFilterId, 5);
     paramJceOutputStream.write(this.uiLabelStyle, 6);
-    if (this.vClientVersion != null) {
-      paramJceOutputStream.write(this.vClientVersion, 7);
+    byte[] arrayOfByte = this.vClientVersion;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 7);
     }
     paramJceOutputStream.write(this.uiClientType, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.ReqGetGroupInArea
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,30 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class FolderUtils
 {
   public static Runnable a;
-  public static boolean a;
+  public static boolean a = true;
   
   static
   {
-    jdField_a_of_type_Boolean = true;
     jdField_a_of_type_JavaLangRunnable = new FolderUtils.1();
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("device busy ");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("PicReporter", 2, localStringBuilder.toString());
+    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "Pic.Mkdir.DeviceBusy", paramBoolean, 0L, 0L, null, "");
   }
   
   public static boolean a(Context paramContext)
@@ -22,169 +36,159 @@ public class FolderUtils
   public static boolean a(Context paramContext, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 30
-    //   2: invokestatic 36	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
-    //   5: invokevirtual 42	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   0: ldc 78
+    //   2: invokestatic 83	android/os/Environment:getExternalStorageState	()Ljava/lang/String;
+    //   5: invokevirtual 89	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   8: istore_2
     //   9: iload_2
-    //   10: ifeq +61 -> 71
-    //   13: new 44	java/io/File
+    //   10: ifeq +20 -> 30
+    //   13: new 91	java/io/File
     //   16: dup
-    //   17: getstatic 50	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH	Ljava/lang/String;
-    //   20: invokestatic 56	com/tencent/mobileqq/vfs/VFSAssistantUtils:getSDKPrivatePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   23: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
-    //   26: astore 4
-    //   28: new 44	java/io/File
-    //   31: dup
-    //   32: aload 4
-    //   34: ldc 61
-    //   36: invokespecial 64	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   39: astore 4
-    //   41: aload 4
-    //   43: invokevirtual 68	java/io/File:exists	()Z
-    //   46: ifeq +36 -> 82
-    //   49: iconst_1
-    //   50: istore_3
-    //   51: iload_3
-    //   52: ireturn
-    //   53: astore_0
-    //   54: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   57: ifeq +12 -> 69
-    //   60: ldc 75
-    //   62: iconst_2
-    //   63: ldc 77
-    //   65: aload_0
-    //   66: invokestatic 81	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   69: iconst_0
-    //   70: ireturn
-    //   71: invokestatic 87	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   74: invokevirtual 91	com/tencent/qphone/base/util/BaseApplication:getCacheDir	()Ljava/io/File;
-    //   77: astore 4
-    //   79: goto -51 -> 28
-    //   82: aload 4
-    //   84: invokevirtual 94	java/io/File:mkdirs	()Z
-    //   87: istore_2
-    //   88: getstatic 11	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
-    //   91: ifne +7 -> 98
-    //   94: iconst_1
-    //   95: putstatic 11	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
-    //   98: iload_2
-    //   99: ifne +36 -> 135
-    //   102: invokestatic 99	com/tencent/mobileqq/utils/FileUtils:b	()Z
-    //   105: ifeq +15 -> 120
-    //   108: invokestatic 102	com/tencent/mobileqq/utils/FileUtils:c	()Z
-    //   111: ifeq +9 -> 120
-    //   114: invokestatic 105	com/tencent/mobileqq/utils/FileUtils:d	()Z
-    //   117: ifne +18 -> 135
-    //   120: invokestatic 111	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   123: new 113	com/tencent/mobileqq/utils/FolderUtils$2
-    //   126: dup
-    //   127: aload_0
-    //   128: invokespecial 116	com/tencent/mobileqq/utils/FolderUtils$2:<init>	(Landroid/content/Context;)V
-    //   131: invokevirtual 122	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   134: pop
+    //   17: getstatic 97	com/tencent/mobileqq/app/AppConstants:SDCARD_PATH	Ljava/lang/String;
+    //   20: invokestatic 103	com/tencent/mobileqq/vfs/VFSAssistantUtils:getSDKPrivatePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   23: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
+    //   26: astore_3
+    //   27: goto +10 -> 37
+    //   30: invokestatic 54	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   33: invokevirtual 110	com/tencent/qphone/base/util/BaseApplication:getCacheDir	()Ljava/io/File;
+    //   36: astore_3
+    //   37: new 91	java/io/File
+    //   40: dup
+    //   41: aload_3
+    //   42: ldc 112
+    //   44: invokespecial 115	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   47: astore_3
+    //   48: aload_3
+    //   49: invokevirtual 118	java/io/File:exists	()Z
+    //   52: ifeq +5 -> 57
+    //   55: iconst_1
+    //   56: ireturn
+    //   57: aload_3
+    //   58: invokevirtual 121	java/io/File:mkdirs	()Z
+    //   61: istore_2
+    //   62: getstatic 123	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
+    //   65: ifne +7 -> 72
+    //   68: iconst_1
+    //   69: putstatic 123	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
+    //   72: iload_2
+    //   73: ifne +36 -> 109
+    //   76: invokestatic 128	com/tencent/mobileqq/utils/FileUtils:checkTencentFolderExist	()Z
+    //   79: ifeq +15 -> 94
+    //   82: invokestatic 131	com/tencent/mobileqq/utils/FileUtils:checkMobileQQFolderExist	()Z
+    //   85: ifeq +9 -> 94
+    //   88: invokestatic 134	com/tencent/mobileqq/utils/FileUtils:checkDiskCacheExist	()Z
+    //   91: ifne +18 -> 109
+    //   94: invokestatic 140	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
+    //   97: new 142	com/tencent/mobileqq/utils/FolderUtils$2
+    //   100: dup
+    //   101: aload_0
+    //   102: invokespecial 145	com/tencent/mobileqq/utils/FolderUtils$2:<init>	(Landroid/content/Context;)V
+    //   105: invokevirtual 151	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   108: pop
+    //   109: iload_1
+    //   110: ifeq +25 -> 135
+    //   113: iload_2
+    //   114: ifne +9 -> 123
+    //   117: getstatic 123	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
+    //   120: ifeq +15 -> 135
+    //   123: iload_2
+    //   124: invokestatic 153	com/tencent/mobileqq/utils/FolderUtils:a	(Z)V
+    //   127: iload_2
+    //   128: ifne +7 -> 135
+    //   131: iconst_0
+    //   132: putstatic 123	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
     //   135: iload_2
-    //   136: istore_3
-    //   137: iload_1
-    //   138: ifeq -87 -> 51
-    //   141: iload_2
-    //   142: ifne +11 -> 153
-    //   145: iload_2
-    //   146: istore_3
-    //   147: getstatic 11	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
-    //   150: ifeq -99 -> 51
-    //   153: iload_2
-    //   154: invokestatic 127	com/tencent/mobileqq/pic/PicReporter:a	(Z)V
-    //   157: iload_2
-    //   158: istore_3
-    //   159: iload_2
-    //   160: ifne -109 -> 51
-    //   163: iconst_0
-    //   164: putstatic 11	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
-    //   167: iload_2
-    //   168: ireturn
-    //   169: astore 4
-    //   171: invokestatic 99	com/tencent/mobileqq/utils/FileUtils:b	()Z
-    //   174: ifeq +15 -> 189
-    //   177: invokestatic 102	com/tencent/mobileqq/utils/FileUtils:c	()Z
-    //   180: ifeq +9 -> 189
-    //   183: invokestatic 105	com/tencent/mobileqq/utils/FileUtils:d	()Z
-    //   186: ifne +18 -> 204
-    //   189: invokestatic 111	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   192: new 113	com/tencent/mobileqq/utils/FolderUtils$2
-    //   195: dup
-    //   196: aload_0
-    //   197: invokespecial 116	com/tencent/mobileqq/utils/FolderUtils$2:<init>	(Landroid/content/Context;)V
-    //   200: invokevirtual 122	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   203: pop
-    //   204: iload_1
-    //   205: ifeq +94 -> 299
-    //   208: getstatic 11	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
-    //   211: ifeq +88 -> 299
-    //   214: iconst_0
-    //   215: invokestatic 127	com/tencent/mobileqq/pic/PicReporter:a	(Z)V
-    //   218: iconst_0
-    //   219: putstatic 11	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
-    //   222: iconst_0
-    //   223: ireturn
-    //   224: astore 4
-    //   226: iconst_0
-    //   227: istore_2
-    //   228: iload_2
-    //   229: ifne +36 -> 265
-    //   232: invokestatic 99	com/tencent/mobileqq/utils/FileUtils:b	()Z
-    //   235: ifeq +15 -> 250
-    //   238: invokestatic 102	com/tencent/mobileqq/utils/FileUtils:c	()Z
-    //   241: ifeq +9 -> 250
-    //   244: invokestatic 105	com/tencent/mobileqq/utils/FileUtils:d	()Z
-    //   247: ifne +18 -> 265
-    //   250: invokestatic 111	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   253: new 113	com/tencent/mobileqq/utils/FolderUtils$2
-    //   256: dup
-    //   257: aload_0
-    //   258: invokespecial 116	com/tencent/mobileqq/utils/FolderUtils$2:<init>	(Landroid/content/Context;)V
-    //   261: invokevirtual 122	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   264: pop
-    //   265: iload_1
-    //   266: ifeq +25 -> 291
-    //   269: iload_2
-    //   270: ifne +9 -> 279
-    //   273: getstatic 11	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
-    //   276: ifeq +15 -> 291
-    //   279: iload_2
-    //   280: invokestatic 127	com/tencent/mobileqq/pic/PicReporter:a	(Z)V
-    //   283: iload_2
-    //   284: ifne +7 -> 291
-    //   287: iconst_0
-    //   288: putstatic 11	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
-    //   291: aload 4
-    //   293: athrow
-    //   294: astore 4
-    //   296: goto -68 -> 228
-    //   299: iconst_0
-    //   300: ireturn
+    //   136: ireturn
+    //   137: astore_3
+    //   138: goto +6 -> 144
+    //   141: astore_3
+    //   142: iconst_0
+    //   143: istore_2
+    //   144: iload_2
+    //   145: ifne +36 -> 181
+    //   148: invokestatic 128	com/tencent/mobileqq/utils/FileUtils:checkTencentFolderExist	()Z
+    //   151: ifeq +15 -> 166
+    //   154: invokestatic 131	com/tencent/mobileqq/utils/FileUtils:checkMobileQQFolderExist	()Z
+    //   157: ifeq +9 -> 166
+    //   160: invokestatic 134	com/tencent/mobileqq/utils/FileUtils:checkDiskCacheExist	()Z
+    //   163: ifne +18 -> 181
+    //   166: invokestatic 140	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
+    //   169: new 142	com/tencent/mobileqq/utils/FolderUtils$2
+    //   172: dup
+    //   173: aload_0
+    //   174: invokespecial 145	com/tencent/mobileqq/utils/FolderUtils$2:<init>	(Landroid/content/Context;)V
+    //   177: invokevirtual 151	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   180: pop
+    //   181: iload_1
+    //   182: ifeq +25 -> 207
+    //   185: iload_2
+    //   186: ifne +9 -> 195
+    //   189: getstatic 123	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
+    //   192: ifeq +15 -> 207
+    //   195: iload_2
+    //   196: invokestatic 153	com/tencent/mobileqq/utils/FolderUtils:a	(Z)V
+    //   199: iload_2
+    //   200: ifne +7 -> 207
+    //   203: iconst_0
+    //   204: putstatic 123	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
+    //   207: aload_3
+    //   208: athrow
+    //   209: invokestatic 128	com/tencent/mobileqq/utils/FileUtils:checkTencentFolderExist	()Z
+    //   212: ifeq +15 -> 227
+    //   215: invokestatic 131	com/tencent/mobileqq/utils/FileUtils:checkMobileQQFolderExist	()Z
+    //   218: ifeq +9 -> 227
+    //   221: invokestatic 134	com/tencent/mobileqq/utils/FileUtils:checkDiskCacheExist	()Z
+    //   224: ifne +18 -> 242
+    //   227: invokestatic 140	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
+    //   230: new 142	com/tencent/mobileqq/utils/FolderUtils$2
+    //   233: dup
+    //   234: aload_0
+    //   235: invokespecial 145	com/tencent/mobileqq/utils/FolderUtils$2:<init>	(Landroid/content/Context;)V
+    //   238: invokevirtual 151	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   241: pop
+    //   242: iload_1
+    //   243: ifeq +17 -> 260
+    //   246: getstatic 123	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
+    //   249: ifeq +11 -> 260
+    //   252: iconst_0
+    //   253: invokestatic 153	com/tencent/mobileqq/utils/FolderUtils:a	(Z)V
+    //   256: iconst_0
+    //   257: putstatic 123	com/tencent/mobileqq/utils/FolderUtils:jdField_a_of_type_Boolean	Z
+    //   260: iconst_0
+    //   261: ireturn
+    //   262: astore_0
+    //   263: invokestatic 26	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   266: ifeq +12 -> 278
+    //   269: ldc 155
+    //   271: iconst_2
+    //   272: ldc 157
+    //   274: aload_0
+    //   275: invokestatic 161	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   278: iconst_0
+    //   279: ireturn
+    //   280: astore_3
+    //   281: goto -72 -> 209
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	301	0	paramContext	Context
-    //   0	301	1	paramBoolean	boolean
-    //   8	276	2	bool1	boolean
-    //   50	109	3	bool2	boolean
-    //   26	57	4	localFile	java.io.File
-    //   169	1	4	localException	java.lang.Exception
-    //   224	68	4	localObject1	Object
-    //   294	1	4	localObject2	Object
+    //   0	284	0	paramContext	Context
+    //   0	284	1	paramBoolean	boolean
+    //   8	192	2	bool	boolean
+    //   26	32	3	localFile	java.io.File
+    //   137	1	3	localObject1	Object
+    //   141	67	3	localObject2	Object
+    //   280	1	3	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   0	9	53	java/lang/NullPointerException
-    //   82	88	169	java/lang/Exception
-    //   88	98	169	java/lang/Exception
-    //   82	88	224	finally
-    //   88	98	294	finally
+    //   62	72	137	finally
+    //   57	62	141	finally
+    //   0	9	262	java/lang/NullPointerException
+    //   57	62	280	java/lang/Exception
+    //   62	72	280	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.FolderUtils
  * JD-Core Version:    0.7.0.1
  */

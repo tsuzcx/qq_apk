@@ -15,7 +15,7 @@ import mqq.app.MobileQQ;
 
 public class WTogetherRealNameVideoProcessHelper
 {
-  private static Boolean jdField_a_of_type_JavaLangBoolean = null;
+  private static Boolean jdField_a_of_type_JavaLangBoolean;
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private WTogetherRealNameVideoProcessHelper.RealNameAuthReceiver jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper$RealNameAuthReceiver;
   private RealNameAuthCallback jdField_a_of_type_ComTencentAvWtogetherCallbackRealNameAuthCallback;
@@ -36,7 +36,7 @@ public class WTogetherRealNameVideoProcessHelper
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.i();
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.h();
     c();
   }
   
@@ -61,17 +61,13 @@ public class WTogetherRealNameVideoProcessHelper
         this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper$RealNameAuthReceiver);
         this.jdField_a_of_type_Boolean = false;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("WTogetherRealNameVideoProcessHelper", 2, "unRegister");
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.d("WTogetherRealNameVideoProcessHelper", 1, new Object[] { "unregisterReceiver error : ", localException.getMessage() });
-      }
+      QLog.d("WTogetherRealNameVideoProcessHelper", 1, new Object[] { "unregisterReceiver error : ", localException.getMessage() });
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("WTogetherRealNameVideoProcessHelper", 2, "unRegister");
     }
   }
   
@@ -81,32 +77,33 @@ public class WTogetherRealNameVideoProcessHelper
       QLog.i("WTogetherRealNameVideoProcessHelper", 2, "showRealNameDialog");
     }
     Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
+    if (localObject1 != null) {
       localObject1 = (Activity)((WeakReference)localObject1).get();
-      if (localObject1 != null) {
-        break label44;
+    } else {
+      localObject1 = null;
+    }
+    if (localObject1 == null) {
+      return;
+    }
+    if ((localObject1 instanceof AVActivity))
+    {
+      Object localObject2 = (AVActivity)localObject1;
+      if (!((AVActivity)localObject2).isFinishing())
+      {
+        if (((AVActivity)localObject2).isDestroyed()) {
+          return;
+        }
+        String str2 = ((Activity)localObject1).getString(2131690525);
+        localObject2 = ((Activity)localObject1).getString(2131690524);
+        String str1 = this.jdField_a_of_type_JavaLangString;
+        if (str1 != null) {
+          localObject2 = str1;
+        }
+        localObject1 = DialogUtil.a((Context)localObject1, 230, str2, (CharSequence)localObject2, ((Activity)localObject1).getString(2131699195), ((Activity)localObject1).getString(2131699197), new WTogetherRealNameVideoProcessHelper.1(this, (Activity)localObject1), new WTogetherRealNameVideoProcessHelper.2(this));
+        ((QQCustomDialog)localObject1).setCancelable(false);
+        ((QQCustomDialog)localObject1).show();
       }
     }
-    label44:
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = null;
-        break;
-      } while (!(localObject1 instanceof AVActivity));
-      localObject2 = (AVActivity)localObject1;
-    } while ((((AVActivity)localObject2).isFinishing()) || (((AVActivity)localObject2).isDestroyed()));
-    String str = ((Activity)localObject1).getString(2131690597);
-    Object localObject2 = ((Activity)localObject1).getString(2131690596);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localObject2 = this.jdField_a_of_type_JavaLangString;
-    }
-    localObject1 = DialogUtil.a((Context)localObject1, 230, str, (CharSequence)localObject2, ((Activity)localObject1).getString(2131699088), ((Activity)localObject1).getString(2131699090), new WTogetherRealNameVideoProcessHelper.1(this, (Activity)localObject1), new WTogetherRealNameVideoProcessHelper.2(this));
-    ((QQCustomDialog)localObject1).setCancelable(false);
-    ((QQCustomDialog)localObject1).show();
   }
   
   public void a(int paramInt, Intent paramIntent)
@@ -114,8 +111,9 @@ public class WTogetherRealNameVideoProcessHelper
     if (QLog.isColorLevel()) {
       QLog.i("WTogetherRealNameVideoProcessHelper", 2, "onActivityResult");
     }
-    if (this.jdField_a_of_type_ComTencentAvWtogetherCallbackRealNameAuthCallback != null) {
-      this.jdField_a_of_type_ComTencentAvWtogetherCallbackRealNameAuthCallback.a(jdField_a_of_type_JavaLangBoolean.booleanValue());
+    paramIntent = this.jdField_a_of_type_ComTencentAvWtogetherCallbackRealNameAuthCallback;
+    if (paramIntent != null) {
+      paramIntent.a(jdField_a_of_type_JavaLangBoolean.booleanValue());
     }
   }
   
@@ -136,7 +134,7 @@ public class WTogetherRealNameVideoProcessHelper
   
   public boolean a()
   {
-    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.h());
+    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.g());
     return jdField_a_of_type_JavaLangBoolean.booleanValue();
   }
   
@@ -153,7 +151,7 @@ public class WTogetherRealNameVideoProcessHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.WTogetherRealNameVideoProcessHelper
  * JD-Core Version:    0.7.0.1
  */

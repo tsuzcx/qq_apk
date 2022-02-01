@@ -13,41 +13,39 @@ final class GdtInterstitialForJSHandler
 {
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if (paramGdtAdWebPlugin != null) {}
-    for (paramString = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (paramString == null); paramString = null)
-    {
-      GdtLog.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
-      return true;
+    if (paramGdtAdWebPlugin != null) {
+      paramString = paramGdtAdWebPlugin.a();
+    } else {
+      paramString = null;
     }
-    for (;;)
-    {
+    if ((paramGdtAdWebPlugin != null) && (paramString != null)) {
       try
       {
         paramVarArgs = new JSONObject(paramVarArgs[0]);
         paramGdtAdWebPlugin = paramVarArgs.optString("process", "com.tencent.mobileqq:mini");
-        if (TextUtils.equals(paramGdtAdWebPlugin, "com.tencent.mobileqq"))
-        {
+        if (TextUtils.equals(paramGdtAdWebPlugin, "com.tencent.mobileqq")) {
           paramGdtAdWebPlugin = PublicFragmentActivity.class;
-          GdtInterstitialFragmentForJS.a(paramString, paramGdtAdWebPlugin, paramVarArgs);
-          return true;
+        } else if (TextUtils.equals(paramGdtAdWebPlugin, "com.tencent.mobileqq:tool")) {
+          paramGdtAdWebPlugin = PublicFragmentActivityForTool.class;
+        } else {
+          paramGdtAdWebPlugin = QQMiniManager.getPublicFragmentActivityForMiniClass();
         }
+        GdtInterstitialFragmentForJS.a(paramString, paramGdtAdWebPlugin, paramVarArgs);
+        return true;
       }
       catch (JSONException paramGdtAdWebPlugin)
       {
         GdtLog.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramGdtAdWebPlugin);
         return true;
       }
-      if (TextUtils.equals(paramGdtAdWebPlugin, "com.tencent.mobileqq:tool")) {
-        paramGdtAdWebPlugin = PublicFragmentActivityForTool.class;
-      } else {
-        paramGdtAdWebPlugin = QQMiniManager.getPublicFragmentActivityForMiniClass();
-      }
     }
+    GdtLog.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtInterstitialForJSHandler
  * JD-Core Version:    0.7.0.1
  */

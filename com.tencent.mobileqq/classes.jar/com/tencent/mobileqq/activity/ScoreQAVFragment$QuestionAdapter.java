@@ -18,7 +18,7 @@ class ScoreQAVFragment$QuestionAdapter
   
   public ScoreQAVFragment.QuestionAdapter.MyViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new ScoreQAVFragment.QuestionAdapter.MyViewHolder(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559884, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener);
+    return new ScoreQAVFragment.QuestionAdapter.MyViewHolder(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559759, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener);
   }
   
   public void a(ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
@@ -31,13 +31,10 @@ class ScoreQAVFragment$QuestionAdapter
     paramMyViewHolder.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
     if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt)) {
       paramMyViewHolder.a.setSelected(true);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramMyViewHolder, paramInt, getItemId(paramInt));
-      return;
+    } else {
       paramMyViewHolder.a.setSelected(false);
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramMyViewHolder, paramInt, getItemId(paramInt));
   }
   
   public int getItemCount()
@@ -47,7 +44,7 @@ class ScoreQAVFragment$QuestionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ScoreQAVFragment.QuestionAdapter
  * JD-Core Version:    0.7.0.1
  */

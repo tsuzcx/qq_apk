@@ -48,56 +48,57 @@ public class DoodleItem
   
   public void a(PathData paramPathData, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramPathData == null) {}
-    do
-    {
+    if (paramPathData == null) {
       return;
-      if (paramBoolean1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam.a(paramPathData);
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramPathData);
-    } while (!paramBoolean2);
-    this.jdField_a_of_type_Long += paramPathData.a();
+    }
+    if (paramBoolean1) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam.a(paramPathData);
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramPathData);
+    if (paramBoolean2) {
+      this.jdField_a_of_type_Long += paramPathData.a();
+    }
   }
   
   public void a(List<PathData> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l;
     if (paramList != null)
     {
-      l = 0L;
-      if ((paramBoolean1) || (paramBoolean2))
+      long l1 = 0L;
+      long l2;
+      if (!paramBoolean1)
+      {
+        l2 = l1;
+        if (!paramBoolean2) {}
+      }
+      else
       {
         Iterator localIterator = paramList.iterator();
-        l = 0L;
-        if (localIterator.hasNext())
+        for (;;)
         {
+          l2 = l1;
+          if (!localIterator.hasNext()) {
+            break;
+          }
           PathData localPathData = (PathData)localIterator.next();
           if (paramBoolean1) {
             this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam.a(localPathData);
           }
-          if (!paramBoolean2) {
-            break label103;
+          if (paramBoolean2) {
+            l1 += localPathData.a();
           }
-          l = localPathData.a() + l;
         }
       }
-    }
-    label103:
-    for (;;)
-    {
-      break;
       this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
       if (paramBoolean2) {
-        this.jdField_a_of_type_Long = (l + this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Long += l2;
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleItem
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,12 @@ public abstract class ForwardingSource
   
   public ForwardingSource(Source paramSource)
   {
-    if (paramSource == null) {
-      throw new IllegalArgumentException("delegate == null");
+    if (paramSource != null)
+    {
+      this.delegate = paramSource;
+      return;
     }
-    this.delegate = paramSource;
+    throw new IllegalArgumentException("delegate == null");
   }
   
   public void close()
@@ -35,12 +37,17 @@ public abstract class ForwardingSource
   
   public String toString()
   {
-    return getClass().getSimpleName() + "(" + this.delegate.toString() + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.delegate.toString());
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.ForwardingSource
  * JD-Core Version:    0.7.0.1
  */

@@ -17,17 +17,19 @@ class OperatorElementAt$InnerProducer
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= 0 required");
+    if (paramLong >= 0L)
+    {
+      if ((paramLong > 0L) && (compareAndSet(false, true))) {
+        this.actual.request(9223372036854775807L);
+      }
+      return;
     }
-    if ((paramLong > 0L) && (compareAndSet(false, true))) {
-      this.actual.request(9223372036854775807L);
-    }
+    throw new IllegalArgumentException("n >= 0 required");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorElementAt.InnerProducer
  * JD-Core Version:    0.7.0.1
  */

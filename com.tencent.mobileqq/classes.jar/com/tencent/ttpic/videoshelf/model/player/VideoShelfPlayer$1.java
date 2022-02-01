@@ -13,7 +13,12 @@ class VideoShelfPlayer$1
   {
     this.this$0.mVideoWidth = paramMediaPlayer.getVideoWidth();
     this.this$0.mVideoHeight = paramMediaPlayer.getVideoHeight();
-    TTPTLogger.i("VideoShelfPlayer", "mVideoWidth:" + this.this$0.mVideoWidth + ",mVideoHeight:" + this.this$0.mVideoHeight);
+    paramMediaPlayer = new StringBuilder();
+    paramMediaPlayer.append("mVideoWidth:");
+    paramMediaPlayer.append(this.this$0.mVideoWidth);
+    paramMediaPlayer.append(",mVideoHeight:");
+    paramMediaPlayer.append(this.this$0.mVideoHeight);
+    TTPTLogger.i("VideoShelfPlayer", paramMediaPlayer.toString());
     if (VideoShelfPlayer.access$000(this.this$0) != null) {
       VideoShelfPlayer.access$000(this.this$0).onChangVideoSize(this.this$0.mVideoWidth, this.this$0.mVideoHeight);
     }
@@ -21,7 +26,7 @@ class VideoShelfPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.model.player.VideoShelfPlayer.1
  * JD-Core Version:    0.7.0.1
  */

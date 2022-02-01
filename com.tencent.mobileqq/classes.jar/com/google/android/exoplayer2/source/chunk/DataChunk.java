@@ -22,13 +22,15 @@ public abstract class DataChunk
   
   private void maybeExpandData()
   {
-    if (this.data == null) {
+    byte[] arrayOfByte = this.data;
+    if (arrayOfByte == null)
+    {
       this.data = new byte[16384];
-    }
-    while (this.data.length >= this.limit + 16384) {
       return;
     }
-    this.data = Arrays.copyOf(this.data, this.data.length + 16384);
+    if (arrayOfByte.length < this.limit + 16384) {
+      this.data = Arrays.copyOf(arrayOfByte, arrayOfByte.length + 16384);
+    }
   }
   
   public long bytesLoaded()
@@ -55,10 +57,10 @@ public abstract class DataChunk
   
   public final void load()
   {
-    int i = 0;
     try
     {
       this.dataSource.open(this.dataSpec);
+      int i = 0;
       this.limit = 0;
       while ((i != -1) && (!this.loadCanceled))
       {
@@ -71,22 +73,25 @@ public abstract class DataChunk
           i = j;
         }
       }
-      if (this.loadCanceled) {
-        break label109;
+      if (!this.loadCanceled) {
+        consume(this.data, this.limit);
       }
+      Util.closeQuietly(this.dataSource);
+      return;
     }
     finally
     {
       Util.closeQuietly(this.dataSource);
     }
-    consume(this.data, this.limit);
-    label109:
-    Util.closeQuietly(this.dataSource);
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.chunk.DataChunk
  * JD-Core Version:    0.7.0.1
  */

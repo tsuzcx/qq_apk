@@ -16,7 +16,7 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.a;
 import com.tencent.mobileqq.msf.core.auth.b;
 import com.tencent.mobileqq.msf.core.c.j;
-import com.tencent.mobileqq.msf.core.u;
+import com.tencent.mobileqq.msf.core.stepcount.i;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.remote.IBaseService.Stub;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -58,141 +58,169 @@ public class MsfService
   
   public static boolean isSamePackage(Context paramContext, int paramInt, String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if (invalidUids.contains(Integer.valueOf(paramInt)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.S.MsfService", 2, "MSF_Alive_Log found invalid uid call " + paramInt);
-      }
-      bool1 = false;
-    }
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (passedUids.contains(Integer.valueOf(paramInt)));
-    String[] arrayOfString = paramContext.getPackageManager().getPackagesForUid(paramInt);
-    paramContext = paramContext.getPackageName();
-    int j = arrayOfString.length;
-    int i = 0;
-    label92:
-    if (i < j) {
-      if (arrayOfString[i].equals(paramContext))
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.MsfService", 2, "MSF_Alive_Log found accountSyncRequest from the same packeName application,");
-        }
-        passedUids.add(Integer.valueOf(paramInt));
+        paramContext = new StringBuilder();
+        paramContext.append("MSF_Alive_Log found invalid uid call ");
+        paramContext.append(paramInt);
+        QLog.d("MSF.S.MsfService", 2, paramContext.toString());
       }
+      return false;
     }
-    for (i = 0;; i = 1)
+    if (!passedUids.contains(Integer.valueOf(paramInt)))
     {
-      bool1 = bool2;
-      if (i == 0) {
-        break;
-      }
-      invalidUids.add(Integer.valueOf(paramInt));
-      paramContext = "";
-      Object localObject = paramContext;
-      if (arrayOfString != null)
+      Object localObject = paramContext.getPackageManager().getPackagesForUid(paramInt);
+      paramContext = paramContext.getPackageName();
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        i = arrayOfString.length;
-        paramInt = 0;
-        for (;;)
+        if (localObject[i].equals(paramContext))
         {
-          localObject = paramContext;
-          if (paramInt >= i) {
-            break;
+          if (QLog.isColorLevel()) {
+            QLog.d("MSF.S.MsfService", 2, "MSF_Alive_Log found accountSyncRequest from the same packeName application,");
           }
-          localObject = arrayOfString[paramInt];
-          paramContext = paramContext + " " + (String)localObject + ";";
-          paramInt += 1;
+          passedUids.add(Integer.valueOf(paramInt));
+          i = 0;
+          break label143;
         }
         i += 1;
-        break label92;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.S.MsfService", 2, "MSF_Alive_Log found invalid uid call " + (String)localObject);
-      }
-      try
+      i = 1;
+      label143:
+      if (i != 0)
       {
-        paramContext = new HashMap();
-        paramContext.put("param_Reason", localObject);
-        paramContext.put("method", paramString);
-        if (core.getStatReporter() != null) {
-          core.getStatReporter().a("dim.Msf.invaildAppCall", true, 0L, 0L, paramContext, false, false);
+        invalidUids.add(Integer.valueOf(paramInt));
+        paramContext = "";
+        if (localObject != null)
+        {
+          i = localObject.length;
+          paramContext = "";
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            String str = localObject[paramInt];
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramContext);
+            localStringBuilder.append(" ");
+            localStringBuilder.append(str);
+            localStringBuilder.append(";");
+            paramContext = localStringBuilder.toString();
+            paramInt += 1;
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("MSF_Alive_Log found invalid uid call ");
+          ((StringBuilder)localObject).append(paramContext);
+          QLog.d("MSF.S.MsfService", 2, ((StringBuilder)localObject).toString());
+        }
+        try
+        {
+          localObject = new HashMap();
+          ((Map)localObject).put("param_Reason", paramContext);
+          ((Map)localObject).put("method", paramString);
+          if (core.getStatReporter() != null)
+          {
+            core.getStatReporter().a("dim.Msf.invaildAppCall", true, 0L, 0L, (Map)localObject, false, false);
+            return false;
+          }
+        }
+        catch (Exception paramContext)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("send invaild call error ");
+            paramString.append(paramContext);
+            QLog.d("MSF.S.MsfService", 2, paramString.toString(), paramContext);
+          }
         }
         return false;
       }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.S.MsfService", 2, "send invaild call error " + paramContext, paramContext);
-          }
-        }
-      }
     }
+    return true;
   }
   
   public static void serviceInit(Context paramContext, boolean paramBoolean)
   {
-    boolean bool3 = false;
-    boolean bool2 = false;
-    boolean bool1;
     try
     {
-      QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serviceInit inited=" + inited + " boot=" + paramBoolean + " gray=" + false + " public=" + true);
-      long l1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MSF_Alive_Log serviceInit inited=");
+      localStringBuilder.append(inited);
+      localStringBuilder.append(" boot=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" gray=");
+      boolean bool3 = false;
+      boolean bool2 = false;
+      localStringBuilder.append(false);
+      localStringBuilder.append(" public=");
+      localStringBuilder.append(true);
+      QLog.d("MSF.S.MsfService", 1, localStringBuilder.toString());
       if (!inited)
       {
         serviceInitStart = SystemClock.elapsedRealtime();
         core.init(paramContext, paramBoolean);
-        l1 = SystemClock.elapsedRealtime();
-        QLog.d("MsfInitCost", 1, "MSF_Alive_Log MsfCoreInitCost: " + (l1 - serviceInitStart));
+        long l1 = SystemClock.elapsedRealtime();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("MSF_Alive_Log MsfCoreInitCost: ");
+        localStringBuilder.append(l1 - serviceInitStart);
+        QLog.d("MsfInitCost", 1, localStringBuilder.toString());
         e.a(paramContext, core);
         msfServiceRespHandler = new t(core);
         msfServiceRespHandler.setName("MsfServiceRespHandler");
         msfServiceRespHandler.start();
         inited = true;
         long l2 = SystemClock.elapsedRealtime() - serviceInitStart;
-        QLog.d("MsfInitCost", 1, "MSF_Alive_Log ServiceInitCost: " + l2);
+        paramContext = new StringBuilder();
+        paramContext.append("MSF_Alive_Log ServiceInitCost: ");
+        paramContext.append(l2);
+        QLog.d("MsfInitCost", 1, paramContext.toString());
         new p(l1, l2).start();
-        bool1 = bool3;
-      }
-      try
-      {
-        l1 = Long.parseLong(getCore().getAccountCenter().i());
-        paramBoolean = bool2;
-        if (l1 > 0L)
+        boolean bool1 = bool3;
+        try
         {
+          l1 = Long.parseLong(getCore().getAccountCenter().i());
           paramBoolean = bool2;
-          bool1 = bool3;
-          if (Long.valueOf(l1).longValue() / 1000L % 1000L < 5L) {
-            paramBoolean = true;
+          if (l1 > 0L)
+          {
+            paramBoolean = bool2;
+            bool1 = bool3;
+            if (Long.valueOf(l1).longValue() / 1000L % 1000L < 5L) {
+              paramBoolean = true;
+            }
+          }
+          bool1 = paramBoolean;
+          bool2 = paramBoolean;
+          if (QLog.isColorLevel())
+          {
+            bool1 = paramBoolean;
+            paramContext = new StringBuilder();
+            bool1 = paramBoolean;
+            paramContext.append("needReportStartWay=");
+            bool1 = paramBoolean;
+            paramContext.append(paramBoolean);
+            bool1 = paramBoolean;
+            paramContext.append(" ");
+            bool1 = paramBoolean;
+            paramContext.append(l1);
+            bool1 = paramBoolean;
+            QLog.d("MSF.S.MsfService", 2, paramContext.toString());
+            bool2 = paramBoolean;
           }
         }
-        bool2 = paramBoolean;
-        bool1 = paramBoolean;
-        if (QLog.isColorLevel())
-        {
-          bool1 = paramBoolean;
-          QLog.d("MSF.S.MsfService", 2, "needReportStartWay=" + paramBoolean + " " + l1);
-          bool2 = paramBoolean;
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        for (;;)
+        catch (Throwable paramContext)
         {
           paramContext.printStackTrace();
           bool2 = bool1;
         }
-      }
-      if (bool2) {
-        new q().start();
+        if (bool2) {
+          new q().start();
+        }
       }
       return;
     }
@@ -230,58 +258,56 @@ public class MsfService
   
   protected void handleAccountSyncRequest(Context paramContext, ToServiceMsg paramToServiceMsg, int paramInt)
   {
-    if (paramToServiceMsg == null) {
+    if (paramToServiceMsg == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.w("MSF.S.MsfService", 2, "handleAccountSyncRequest toServiceMsg null!");
       }
+      return;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramToServiceMsg.getServiceCmd().equals("cmd_sync_syncuser"));
+    if (paramToServiceMsg.getServiceCmd().equals("cmd_sync_syncuser")) {
       try
       {
         core.handleAccountSyncRequest(paramContext, paramToServiceMsg, paramInt);
         return;
       }
-      catch (Exception paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("MSF.S.MsfService", 2, "handleAccountSyncRequestReport error " + paramContext, paramContext);
+      catch (Exception paramContext)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("handleAccountSyncRequestReport error ");
+          paramToServiceMsg.append(paramContext);
+          QLog.d("MSF.S.MsfService", 2, paramToServiceMsg.toString(), paramContext);
+        }
+      }
+    }
   }
   
   public IBinder onBind(Intent paramIntent)
   {
-    label68:
-    for (;;)
+    Object localObject = null;
+    try
     {
-      try
-      {
-        String str = paramIntent.getStringExtra("to_SenderProcessName");
-        localException1.printStackTrace();
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          fromProcessName = str;
-          QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onBind by :" + str);
-          if (a.am()) {
-            a.a(false);
-          }
-          k.a(paramIntent, 1);
-          l.a(this.mUIHandler);
-          return this.binder;
-        }
-        catch (Exception localException2)
-        {
-          break label68;
-        }
-        localException1 = localException1;
-        str = null;
-      }
+      String str = paramIntent.getStringExtra("to_SenderProcessName");
+      localObject = str;
+      fromProcessName = str;
+      localObject = str;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MSF_Alive_Log serivce onBind by :");
+    localStringBuilder.append(localObject);
+    QLog.d("MSF.S.MsfService", 1, localStringBuilder.toString());
+    if (a.am()) {
+      a.a(false);
+    }
+    k.a(paramIntent, 1);
+    l.a(this.mUIHandler);
+    return this.binder;
   }
   
   public void onCreate()
@@ -289,8 +315,13 @@ public class MsfService
     super.onCreate();
     QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onCreate");
     serviceInit(this, sIsCreatedByAutoBoot);
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.S.MsfService", 2, "MSF_Alive_Log serivce onCreate... autoBoot[" + sIsCreatedByAutoBoot + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MSF_Alive_Log serivce onCreate... autoBoot[");
+      localStringBuilder.append(sIsCreatedByAutoBoot);
+      localStringBuilder.append("]");
+      QLog.d("MSF.S.MsfService", 2, localStringBuilder.toString());
     }
     sIsCreatedByAutoBoot = false;
     startForegroundCompat();
@@ -300,42 +331,42 @@ public class MsfService
   public void onDestroy()
   {
     QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onDestroy");
+    StringBuilder localStringBuilder;
     try
     {
       BaseApplication.getContext().unregisterReceiver(core.getNetFlowStore());
     }
+    catch (Exception localException1)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unregisterReceiver failed. ");
+      localStringBuilder.append(localException1);
+      QLog.d("MSF.S.MsfService", 1, localStringBuilder.toString(), localException1);
+    }
+    try
+    {
+      BaseApplication.getContext().unregisterReceiver(core.getStandyModeManager());
+    }
     catch (Exception localException2)
     {
-      try
-      {
-        BaseApplication.getContext().unregisterReceiver(core.getStandyModeManager());
-      }
-      catch (Exception localException2)
-      {
-        try
-        {
-          for (;;)
-          {
-            u.a(u.P);
-            stopForegroundCompat();
-            super.onDestroy();
-            return;
-            localException1 = localException1;
-            QLog.d("MSF.S.MsfService", 1, "unregisterReceiver failed. " + localException1, localException1);
-            continue;
-            localException2 = localException2;
-            QLog.d("MSF.S.MsfService", 1, "unregisterReceiver failed. " + localException2, localException2);
-          }
-        }
-        catch (Exception localException3)
-        {
-          for (;;)
-          {
-            QLog.d("MSF.S.MsfService", 1, "unregisterReceiver failed. " + localException3, localException3);
-          }
-        }
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unregisterReceiver failed. ");
+      localStringBuilder.append(localException2);
+      QLog.d("MSF.S.MsfService", 1, localStringBuilder.toString(), localException2);
     }
+    try
+    {
+      i.b().a();
+    }
+    catch (Exception localException3)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unregisterReceiver failed. ");
+      localStringBuilder.append(localException3);
+      QLog.d("MSF.S.MsfService", 1, localStringBuilder.toString(), localException3);
+    }
+    stopForegroundCompat();
+    super.onDestroy();
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
@@ -350,13 +381,16 @@ public class MsfService
   public boolean onUnbind(Intent paramIntent)
   {
     String str = paramIntent.getStringExtra("to_SenderProcessName");
-    QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onUnbind by :" + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MSF_Alive_Log serivce onUnbind by :");
+    localStringBuilder.append(str);
+    QLog.d("MSF.S.MsfService", 1, localStringBuilder.toString());
     return super.onUnbind(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.MsfService
  * JD-Core Version:    0.7.0.1
  */

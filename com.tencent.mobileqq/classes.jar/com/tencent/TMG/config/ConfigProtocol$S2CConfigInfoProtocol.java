@@ -30,51 +30,60 @@ public class ConfigProtocol$S2CConfigInfoProtocol
   
   public boolean UnPack(ByteBuffer paramByteBuffer)
   {
-    if ((paramByteBuffer == null) || (paramByteBuffer.length() < 39)) {
-      return false;
-    }
-    this.md5 = paramByteBuffer.ReadString(33);
-    this.tag = paramByteBuffer.ReadUInt16();
-    this.numOfTLV = paramByteBuffer.ReadUInt16();
-    this.lengthOfTLV = paramByteBuffer.ReadUInt16Length();
-    this.attrs.clear();
-    int i = 0;
-    for (;;)
+    if (paramByteBuffer != null)
     {
-      if (paramByteBuffer.length() <= 0) {
-        break label196;
-      }
-      short s1 = paramByteBuffer.ReadUInt16();
-      short s2 = paramByteBuffer.ReadUInt16Length();
-      ConfigProtocol.TLVBase localTLVBase = this.this$0.CreateS2CTLV(s1, s2);
-      if (localTLVBase == null)
-      {
-        if (paramByteBuffer.Consume(s2)) {
-          break label187;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("simonchwang", 0, "[S2CConfigInfoProtocol::UnPack] Consume failed" + i);
+      if (paramByteBuffer.length() < 39) {
         return false;
       }
-      if (!localTLVBase.Unpack(paramByteBuffer))
+      this.md5 = paramByteBuffer.ReadString(33);
+      this.tag = paramByteBuffer.ReadUInt16();
+      this.numOfTLV = paramByteBuffer.ReadUInt16();
+      this.lengthOfTLV = paramByteBuffer.ReadUInt16Length();
+      this.attrs.clear();
+      int i = 0;
+      while (paramByteBuffer.length() > 0)
       {
-        if (!QLog.isColorLevel()) {
-          break;
+        short s1 = paramByteBuffer.ReadUInt16();
+        short s2 = paramByteBuffer.ReadUInt16Length();
+        ConfigProtocol.TLVBase localTLVBase = this.this$0.CreateS2CTLV(s1, s2);
+        if (localTLVBase == null)
+        {
+          if (!paramByteBuffer.Consume(s2))
+          {
+            if (QLog.isColorLevel())
+            {
+              paramByteBuffer = new StringBuilder();
+              paramByteBuffer.append("[S2CConfigInfoProtocol::UnPack] Consume failed");
+              paramByteBuffer.append(i);
+              QLog.d("simonchwang", 0, paramByteBuffer.toString());
+            }
+            return false;
+          }
         }
-        QLog.d("simonchwang", 0, "[S2CConfigInfoProtocol::UnPack] Unpack failed" + i);
-        return false;
+        else
+        {
+          if (!localTLVBase.Unpack(paramByteBuffer))
+          {
+            if (QLog.isColorLevel())
+            {
+              paramByteBuffer = new StringBuilder();
+              paramByteBuffer.append("[S2CConfigInfoProtocol::UnPack] Unpack failed");
+              paramByteBuffer.append(i);
+              QLog.d("simonchwang", 0, paramByteBuffer.toString());
+            }
+            return false;
+          }
+          this.attrs.add(localTLVBase);
+        }
+        i += 1;
       }
-      this.attrs.add(localTLVBase);
-      label187:
-      i += 1;
+      paramByteBuffer = this.attrs;
+      if (paramByteBuffer != null) {
+        this.numOfTLV = ((short)paramByteBuffer.size());
+      }
+      return true;
     }
-    label196:
-    if (this.attrs != null) {
-      this.numOfTLV = ((short)this.attrs.size());
-    }
-    return true;
+    return false;
   }
   
   public short getLengthOfTLV()

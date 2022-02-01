@@ -2,13 +2,13 @@ package com.tencent.mobileqq.microapp;
 
 public final class R$layout
 {
-  public static int a = 2131559060;
-  public static int b = 2131562125;
-  public static int c = 2131562126;
+  public static int a = 2131558954;
+  public static int b = 2131561961;
+  public static int c = 2131561962;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.R.layout
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,11 @@ public class PublicAccountProxyImpl
       paramClass = Class.forName(getImplName(paramClass));
       return paramClass;
     }
-    catch (Throwable paramClass) {}
+    catch (Throwable paramClass)
+    {
+      label11:
+      break label11;
+    }
     return null;
   }
   
@@ -23,10 +27,19 @@ public class PublicAccountProxyImpl
     {
       String str = paramClass.getPackage().getName();
       paramClass = paramClass.getSimpleName();
-      paramClass = str + ".impl." + paramClass.substring(1) + "Impl";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(".impl.");
+      localStringBuilder.append(paramClass.substring(1));
+      localStringBuilder.append("Impl");
+      paramClass = localStringBuilder.toString();
       return paramClass;
     }
-    catch (Throwable paramClass) {}
+    catch (Throwable paramClass)
+    {
+      label58:
+      break label58;
+    }
     return "";
   }
   
@@ -34,10 +47,12 @@ public class PublicAccountProxyImpl
   {
     return paramActivity instanceof PublicAccountBrowserImpl;
   }
+  
+  public void setDataManagerAfterMsgSync() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountProxyImpl
  * JD-Core Version:    0.7.0.1
  */

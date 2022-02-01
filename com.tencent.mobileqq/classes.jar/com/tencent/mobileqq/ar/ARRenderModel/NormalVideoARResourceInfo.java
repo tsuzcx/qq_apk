@@ -25,20 +25,31 @@ public class NormalVideoARResourceInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("NormalVideoARResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mRealRenderType=").append(this.d);
-    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams).append('\'');
-    localStringBuilder.append(", mVideoPath='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout).append('\'');
+    localStringBuilder.append("key=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", arType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mRealRenderType=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mKeyingParams='");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArKeyingKeyingParams);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mVideoPath='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mLayout='");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo$ARVideoLayout);
+    localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.NormalVideoARResourceInfo
  * JD-Core Version:    0.7.0.1
  */

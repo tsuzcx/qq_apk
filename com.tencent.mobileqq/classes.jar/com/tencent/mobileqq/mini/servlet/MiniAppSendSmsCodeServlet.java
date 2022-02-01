@@ -38,7 +38,10 @@ public class MiniAppSendSmsCodeServlet
   {
     if (BaseApplicationImpl.getApplication() == null)
     {
-      QLog.e("MiniAppSendSmsCodeServlet", 1, "sendRequest getApplication is null, command is " + paramString);
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("sendRequest getApplication is null, command is ");
+      paramArrayOfByte.append(paramString);
+      QLog.e("MiniAppSendSmsCodeServlet", 1, paramArrayOfByte.toString());
       return;
     }
     oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
@@ -83,18 +86,20 @@ public class MiniAppSendSmsCodeServlet
     if (localObject2 == null) {
       localObject1 = new Bundle();
     }
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (localObject2 = WupUtil.b(paramFromServiceMsg.getWupBuffer());; localObject2 = null)
+    localObject2 = null;
+    if (paramFromServiceMsg.isSuccess())
     {
-      ((Bundle)localObject1).putByteArray("data", (byte[])localObject2);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("MiniAppSendSmsCodeServlet", 2, "onReceive exit");
-      return;
+      localObject2 = WupUtil.b(paramFromServiceMsg.getWupBuffer());
+    }
+    else
+    {
       ((Bundle)localObject1).putString("dataErrorMsg", paramFromServiceMsg.getBusinessFailMsg());
       ((Bundle)localObject1).putInt("dataErrorCode", paramFromServiceMsg.getBusinessFailCode());
+    }
+    ((Bundle)localObject1).putByteArray("data", (byte[])localObject2);
+    notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniAppSendSmsCodeServlet", 2, "onReceive exit");
     }
   }
   
@@ -102,7 +107,10 @@ public class MiniAppSendSmsCodeServlet
   {
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
     paramIntent = paramIntent.getStringExtra("cmd");
-    QLog.i("MiniAppSendSmsCodeServlet", 1, "onSend, cmd is " + paramIntent);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSend, cmd is ");
+    localStringBuilder.append(paramIntent);
+    QLog.i("MiniAppSendSmsCodeServlet", 1, localStringBuilder.toString());
     paramPacket.setSSOCommand(paramIntent);
     paramPacket.putSendData(WupUtil.a(arrayOfByte));
     if (QLog.isColorLevel()) {
@@ -112,7 +120,7 @@ public class MiniAppSendSmsCodeServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSendSmsCodeServlet
  * JD-Core Version:    0.7.0.1
  */

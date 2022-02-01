@@ -3,7 +3,8 @@ package com.tencent.gdtad.statistics;
 class GdtCgiReportRunnable
   implements Runnable
 {
-  private String a;
+  private GdtCgiReportRunnable.GdtCgiReportRunnableCallback jdField_a_of_type_ComTencentGdtadStatisticsGdtCgiReportRunnable$GdtCgiReportRunnableCallback;
+  private String jdField_a_of_type_JavaLangString;
   protected boolean a;
   
   GdtCgiReportRunnable(String paramString)
@@ -12,102 +13,166 @@ class GdtCgiReportRunnable
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
+  public void a(GdtCgiReportRunnable.GdtCgiReportRunnableCallback paramGdtCgiReportRunnableCallback)
+  {
+    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtCgiReportRunnable$GdtCgiReportRunnableCallback = paramGdtCgiReportRunnableCallback;
+  }
+  
   /* Error */
   public void run()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: aconst_null
-    //   3: astore_3
-    //   4: new 24	java/net/URL
-    //   7: dup
-    //   8: aload_0
-    //   9: getfield 18	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   12: invokespecial 26	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   15: invokevirtual 30	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   18: checkcast 32	java/net/HttpURLConnection
-    //   21: astore_2
-    //   22: aload_2
-    //   23: ldc 34
-    //   25: ldc 36
-    //   27: invokevirtual 40	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   30: aload_2
-    //   31: invokevirtual 43	java/net/HttpURLConnection:connect	()V
-    //   34: aload_2
-    //   35: invokevirtual 47	java/net/HttpURLConnection:getResponseCode	()I
-    //   38: sipush 200
-    //   41: if_icmpne +8 -> 49
-    //   44: aload_0
-    //   45: iconst_1
-    //   46: putfield 16	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_Boolean	Z
-    //   49: aload_2
-    //   50: ifnull +7 -> 57
-    //   53: aload_2
-    //   54: invokevirtual 50	java/net/HttpURLConnection:disconnect	()V
-    //   57: return
-    //   58: astore_1
-    //   59: aload_3
-    //   60: astore_2
-    //   61: aload_1
-    //   62: astore_3
-    //   63: aload_2
-    //   64: astore_1
-    //   65: ldc 52
-    //   67: ldc 54
-    //   69: iconst_1
-    //   70: anewarray 4	java/lang/Object
-    //   73: dup
-    //   74: iconst_0
-    //   75: aload_0
-    //   76: getfield 18	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   79: aastore
-    //   80: invokestatic 60	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   83: aload_3
-    //   84: invokestatic 66	com/tencent/gdtad/log/GdtLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   87: aload_2
-    //   88: ifnull -31 -> 57
-    //   91: aload_2
-    //   92: invokevirtual 50	java/net/HttpURLConnection:disconnect	()V
-    //   95: return
-    //   96: astore_3
-    //   97: aload_1
-    //   98: astore_2
-    //   99: aload_3
-    //   100: astore_1
-    //   101: aload_2
-    //   102: ifnull +7 -> 109
-    //   105: aload_2
-    //   106: invokevirtual 50	java/net/HttpURLConnection:disconnect	()V
-    //   109: aload_1
-    //   110: athrow
-    //   111: astore_1
-    //   112: goto -11 -> 101
-    //   115: astore_3
-    //   116: goto -53 -> 63
+    //   0: iconst_m1
+    //   1: istore_2
+    //   2: new 28	java/net/URL
+    //   5: dup
+    //   6: aload_0
+    //   7: getfield 19	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   10: invokespecial 30	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   13: invokevirtual 34	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   16: checkcast 36	java/net/HttpURLConnection
+    //   19: astore 5
+    //   21: iload_2
+    //   22: istore_3
+    //   23: iload_2
+    //   24: istore_1
+    //   25: aload 5
+    //   27: astore 4
+    //   29: aload 5
+    //   31: ldc 38
+    //   33: ldc 40
+    //   35: invokevirtual 44	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   38: iload_2
+    //   39: istore_3
+    //   40: iload_2
+    //   41: istore_1
+    //   42: aload 5
+    //   44: astore 4
+    //   46: aload 5
+    //   48: invokevirtual 47	java/net/HttpURLConnection:connect	()V
+    //   51: iload_2
+    //   52: istore_3
+    //   53: iload_2
+    //   54: istore_1
+    //   55: aload 5
+    //   57: astore 4
+    //   59: aload 5
+    //   61: invokevirtual 51	java/net/HttpURLConnection:getResponseCode	()I
+    //   64: istore_2
+    //   65: iload_2
+    //   66: sipush 200
+    //   69: if_icmpne +16 -> 85
+    //   72: iload_2
+    //   73: istore_3
+    //   74: iload_2
+    //   75: istore_1
+    //   76: aload 5
+    //   78: astore 4
+    //   80: aload_0
+    //   81: iconst_1
+    //   82: putfield 17	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_Boolean	Z
+    //   85: aload 5
+    //   87: ifnull +8 -> 95
+    //   90: aload 5
+    //   92: invokevirtual 54	java/net/HttpURLConnection:disconnect	()V
+    //   95: aload_0
+    //   96: getfield 23	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_ComTencentGdtadStatisticsGdtCgiReportRunnable$GdtCgiReportRunnableCallback	Lcom/tencent/gdtad/statistics/GdtCgiReportRunnable$GdtCgiReportRunnableCallback;
+    //   99: astore 4
+    //   101: aload 4
+    //   103: ifnull +86 -> 189
+    //   106: goto +75 -> 181
+    //   109: astore 6
+    //   111: iload_3
+    //   112: istore_2
+    //   113: goto +18 -> 131
+    //   116: astore 4
+    //   118: aconst_null
+    //   119: astore 5
+    //   121: iload_2
+    //   122: istore_1
+    //   123: goto +77 -> 200
+    //   126: astore 6
+    //   128: aconst_null
+    //   129: astore 5
+    //   131: iload_2
+    //   132: istore_1
+    //   133: aload 5
+    //   135: astore 4
+    //   137: ldc 56
+    //   139: ldc 58
+    //   141: iconst_1
+    //   142: anewarray 4	java/lang/Object
+    //   145: dup
+    //   146: iconst_0
+    //   147: aload_0
+    //   148: getfield 19	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   151: aastore
+    //   152: invokestatic 64	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   155: aload 6
+    //   157: invokestatic 70	com/tencent/gdtad/log/GdtLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   160: aload 5
+    //   162: ifnull +8 -> 170
+    //   165: aload 5
+    //   167: invokevirtual 54	java/net/HttpURLConnection:disconnect	()V
+    //   170: aload_0
+    //   171: getfield 23	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_ComTencentGdtadStatisticsGdtCgiReportRunnable$GdtCgiReportRunnableCallback	Lcom/tencent/gdtad/statistics/GdtCgiReportRunnable$GdtCgiReportRunnableCallback;
+    //   174: astore 4
+    //   176: aload 4
+    //   178: ifnull +11 -> 189
+    //   181: aload 4
+    //   183: iload_2
+    //   184: invokeinterface 75 2 0
+    //   189: return
+    //   190: astore 6
+    //   192: aload 4
+    //   194: astore 5
+    //   196: aload 6
+    //   198: astore 4
+    //   200: aload 5
+    //   202: ifnull +8 -> 210
+    //   205: aload 5
+    //   207: invokevirtual 54	java/net/HttpURLConnection:disconnect	()V
+    //   210: aload_0
+    //   211: getfield 23	com/tencent/gdtad/statistics/GdtCgiReportRunnable:jdField_a_of_type_ComTencentGdtadStatisticsGdtCgiReportRunnable$GdtCgiReportRunnableCallback	Lcom/tencent/gdtad/statistics/GdtCgiReportRunnable$GdtCgiReportRunnableCallback;
+    //   214: astore 5
+    //   216: aload 5
+    //   218: ifnull +11 -> 229
+    //   221: aload 5
+    //   223: iload_1
+    //   224: invokeinterface 75 2 0
+    //   229: aload 4
+    //   231: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	119	0	this	GdtCgiReportRunnable
-    //   1	1	1	localObject1	Object
-    //   58	4	1	localThrowable1	java.lang.Throwable
-    //   64	46	1	localObject2	Object
-    //   111	1	1	localObject3	Object
-    //   21	85	2	localObject4	Object
-    //   3	81	3	localThrowable2	java.lang.Throwable
-    //   96	4	3	localObject5	Object
-    //   115	1	3	localThrowable3	java.lang.Throwable
+    //   0	232	0	this	GdtCgiReportRunnable
+    //   24	200	1	i	int
+    //   1	183	2	j	int
+    //   22	90	3	k	int
+    //   27	75	4	localObject1	Object
+    //   116	1	4	localObject2	Object
+    //   135	95	4	localObject3	Object
+    //   19	203	5	localObject4	Object
+    //   109	1	6	localThrowable1	java.lang.Throwable
+    //   126	30	6	localThrowable2	java.lang.Throwable
+    //   190	7	6	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   4	22	58	java/lang/Throwable
-    //   4	22	96	finally
-    //   65	87	96	finally
-    //   22	49	111	finally
-    //   22	49	115	java/lang/Throwable
+    //   29	38	109	java/lang/Throwable
+    //   46	51	109	java/lang/Throwable
+    //   59	65	109	java/lang/Throwable
+    //   80	85	109	java/lang/Throwable
+    //   2	21	116	finally
+    //   2	21	126	java/lang/Throwable
+    //   29	38	190	finally
+    //   46	51	190	finally
+    //   59	65	190	finally
+    //   80	85	190	finally
+    //   137	160	190	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtCgiReportRunnable
  * JD-Core Version:    0.7.0.1
  */

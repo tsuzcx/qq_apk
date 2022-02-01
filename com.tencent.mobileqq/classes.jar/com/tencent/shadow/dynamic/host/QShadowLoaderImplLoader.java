@@ -19,36 +19,38 @@ public class QShadowLoaderImplLoader
   
   PluginLoaderImpl load(InstalledApk paramInstalledApk, String paramString, Context paramContext)
   {
-    Log.w("ShadowTag.QShadowLoader", "load uuid = " + paramString);
-    ApkClassLoader localApkClassLoader = new ApkClassLoader(paramInstalledApk, LoaderImplLoader.class.getClassLoader(), loadWhiteList(paramInstalledApk), 1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("load uuid = ");
+    ((StringBuilder)localObject).append(paramString);
+    Log.w("ShadowTag.QShadowLoader", ((StringBuilder)localObject).toString());
+    localObject = new ApkClassLoader(paramInstalledApk, LoaderImplLoader.class.getClassLoader(), loadWhiteList(paramInstalledApk), 1);
     Log.w("ShadowTag.QShadowLoader", "loadLoader loadNormalFactory");
-    LoaderFactory localLoaderFactory = (LoaderFactory)localApkClassLoader.getInterface(LoaderFactory.class, "com.tencent.shadow.dynamic.loader.impl.LoaderFactoryImpl");
+    LoaderFactory localLoaderFactory = (LoaderFactory)((ApkClassLoader)localObject).getInterface(LoaderFactory.class, "com.tencent.shadow.dynamic.loader.impl.LoaderFactoryImpl");
     Log.w("ShadowTag.QShadowLoader", "loadLoader loadTryQShadowFactory");
     try
     {
-      localApkClassLoader.loadClass("com.tencent.shadow.dynamic.loader.impl.QShadowCoreLoaderFactoryImpl");
+      ((ApkClassLoader)localObject).loadClass("com.tencent.shadow.dynamic.loader.impl.QShadowCoreLoaderFactoryImpl");
       Log.w("ShadowTag.QShadowLoader", "ChangeApkContextWrapper");
-      paramInstalledApk = new ChangeApkContextWrapper(paramContext, paramInstalledApk.apkFilePath, localApkClassLoader);
-      Log.w("ShadowTag.QShadowLoader", "loadLoader buildLoader");
-      if (paramInstalledApk == null) {
-        return localLoaderFactory.buildLoader(paramString, paramContext);
-      }
+      paramInstalledApk = new ChangeApkContextWrapper(paramContext, paramInstalledApk.apkFilePath, (ClassLoader)localObject);
     }
     catch (ClassNotFoundException paramInstalledApk)
     {
-      for (;;)
-      {
-        Log.w("ShadowTag.QShadowLoader", "不存在QShadowCoreLoaderFactoryImpl，为shadow原生插件，buildLoader传入宿主Context");
-        paramInstalledApk = null;
-        continue;
-        paramContext = paramInstalledApk;
-      }
+      label120:
+      break label120;
     }
+    Log.w("ShadowTag.QShadowLoader", "不存在QShadowCoreLoaderFactoryImpl，为shadow原生插件，buildLoader传入宿主Context");
+    paramInstalledApk = null;
+    Log.w("ShadowTag.QShadowLoader", "loadLoader buildLoader");
+    localObject = paramInstalledApk;
+    if (paramInstalledApk == null) {
+      localObject = paramContext;
+    }
+    return localLoaderFactory.buildLoader(paramString, (Context)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.QShadowLoaderImplLoader
  * JD-Core Version:    0.7.0.1
  */

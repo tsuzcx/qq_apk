@@ -74,43 +74,44 @@ class IArRemoteCallback$Stub$Proxy
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    try
     {
-      try
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      if (paramArConfigInfo != null)
       {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
-        if (paramArConfigInfo != null)
-        {
-          localParcel1.writeInt(1);
-          paramArConfigInfo.writeToParcel(localParcel1, 0);
-          if (paramArEffectConfig != null)
-          {
-            localParcel1.writeInt(1);
-            paramArEffectConfig.writeToParcel(localParcel1, 0);
-            if (paramARCommonConfigInfo == null) {
-              break label131;
-            }
-            localParcel1.writeInt(1);
-            paramARCommonConfigInfo.writeToParcel(localParcel1, 0);
-            this.a.transact(4, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
+        localParcel1.writeInt(1);
+        paramArConfigInfo.writeToParcel(localParcel1, 0);
+      }
+      else
+      {
         localParcel1.writeInt(0);
       }
-      finally
+      if (paramArEffectConfig != null)
       {
-        localParcel2.recycle();
-        localParcel1.recycle();
+        localParcel1.writeInt(1);
+        paramArEffectConfig.writeToParcel(localParcel1, 0);
       }
-      continue;
-      label131:
-      localParcel1.writeInt(0);
+      else
+      {
+        localParcel1.writeInt(0);
+      }
+      if (paramARCommonConfigInfo != null)
+      {
+        localParcel1.writeInt(1);
+        paramARCommonConfigInfo.writeToParcel(localParcel1, 0);
+      }
+      else
+      {
+        localParcel1.writeInt(0);
+      }
+      this.a.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
@@ -121,7 +122,7 @@ class IArRemoteCallback$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.IArRemoteCallback.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

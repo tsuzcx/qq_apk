@@ -37,8 +37,15 @@ public class MultiAIOManager
     try
     {
       this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramMultiAioContext);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "addAioContext() called with: multiAioContext = [" + paramMultiAioContext + "], id = [" + i + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addAioContext() called with: multiAioContext = [");
+        localStringBuilder.append(paramMultiAioContext);
+        localStringBuilder.append("], id = [");
+        localStringBuilder.append(i);
+        localStringBuilder.append("]");
+        QLog.d("MultiAIOManager", 2, localStringBuilder.toString());
       }
       return i;
     }
@@ -50,8 +57,14 @@ public class MultiAIOManager
     try
     {
       MultiAioContext localMultiAioContext = (MultiAioContext)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOManager", 2, "removeAioContext() called with: id = [" + paramInt + "], multiAioContext = " + localMultiAioContext);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("removeAioContext() called with: id = [");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("], multiAioContext = ");
+        localStringBuilder.append(localMultiAioContext);
+        QLog.d("MultiAIOManager", 2, localStringBuilder.toString());
       }
       return localMultiAioContext;
     }
@@ -71,22 +84,35 @@ public class MultiAIOManager
         }
       }
       this.jdField_a_of_type_JavaUtilMap.clear();
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void a(MultiAIOEntranceConfigData paramMultiAIOEntranceConfigData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "onConfUpdate : " + paramMultiAIOEntranceConfigData);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onConfUpdate : ");
+      localStringBuilder.append(paramMultiAIOEntranceConfigData);
+      QLog.d("MultiAIOManager", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqMultiaioManagerMultiAIOEntranceConfigData = paramMultiAIOEntranceConfigData;
   }
   
   public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "MultiAIOEntranceConfigData isConfigInited = " + this.b);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("MultiAIOEntranceConfigData isConfigInited = ");
+      ((StringBuilder)localObject1).append(this.b);
+      QLog.d("MultiAIOManager", 2, ((StringBuilder)localObject1).toString());
     }
     if (this.b) {
       return this.jdField_a_of_type_Boolean;
@@ -98,15 +124,18 @@ public class MultiAIOManager
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioManagerMultiAIOEntranceConfigData.a();
-    String str = (Build.MANUFACTURER + Build.MODEL).trim();
-    if ((localObject != null) && (((List)localObject).contains(str)))
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioManagerMultiAIOEntranceConfigData.a();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject2).append(Build.MODEL);
+    localObject2 = ((StringBuilder)localObject2).toString().trim();
+    if ((localObject1 != null) && (((List)localObject1).contains(localObject2)))
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioManagerMultiAIOEntranceConfigData.a();
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (QmcfDevicesStrategy.b((String)localObject) <= 0))
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioManagerMultiAIOEntranceConfigData.a();
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (QmcfDevicesStrategy.b((String)localObject1) <= 0))
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
@@ -117,13 +146,19 @@ public class MultiAIOManager
   
   public MultiAioContext b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOManager", 2, "getAioContext() called with: id = [" + paramInt + "]");
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getAioContext() called with: id = [");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("]");
+      QLog.d("MultiAIOManager", 2, ((StringBuilder)localObject1).toString());
     }
     try
     {
-      MultiAioContext localMultiAioContext = (MultiAioContext)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      return localMultiAioContext;
+      localObject1 = (MultiAioContext)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      return localObject1;
     }
     finally {}
   }
@@ -147,7 +182,7 @@ public class MultiAIOManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.model.MultiAIOManager
  * JD-Core Version:    0.7.0.1
  */

@@ -32,17 +32,22 @@ public final class GenericGF
   
   private void a()
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
-    this.jdField_b_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ArrayOfInt = new int[i];
+    this.jdField_b_of_type_ArrayOfInt = new int[i];
     int j = 0;
-    int i = 1;
-    while (j < this.jdField_a_of_type_Int)
+    i = 1;
+    for (;;)
     {
+      int m = this.jdField_a_of_type_Int;
+      if (j >= m) {
+        break;
+      }
       this.jdField_a_of_type_ArrayOfInt[j] = i;
       int k = i << 1;
       i = k;
-      if (k >= this.jdField_a_of_type_Int) {
-        i = (k ^ this.jdField_b_of_type_Int) & this.jdField_a_of_type_Int - 1;
+      if (k >= m) {
+        i = (k ^ this.jdField_b_of_type_Int) & m - 1;
       }
       j += 1;
     }
@@ -79,42 +84,46 @@ public final class GenericGF
   GenericGFPoly a(int paramInt1, int paramInt2)
   {
     b();
-    if (paramInt1 < 0) {
-      throw new IllegalArgumentException();
+    if (paramInt1 >= 0)
+    {
+      if (paramInt2 == 0) {
+        return this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGFPoly;
+      }
+      int[] arrayOfInt = new int[paramInt1 + 1];
+      arrayOfInt[0] = paramInt2;
+      return new GenericGFPoly(this, arrayOfInt);
     }
-    if (paramInt2 == 0) {
-      return this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGFPoly;
-    }
-    int[] arrayOfInt = new int[paramInt1 + 1];
-    arrayOfInt[0] = paramInt2;
-    return new GenericGFPoly(this, arrayOfInt);
+    throw new IllegalArgumentException();
   }
   
   int b(int paramInt)
   {
     b();
-    if (paramInt == 0) {
-      throw new IllegalArgumentException();
+    if (paramInt != 0) {
+      return this.jdField_b_of_type_ArrayOfInt[paramInt];
     }
-    return this.jdField_b_of_type_ArrayOfInt[paramInt];
+    throw new IllegalArgumentException();
   }
   
   int b(int paramInt1, int paramInt2)
   {
     b();
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return 0;
+    if ((paramInt1 != 0) && (paramInt2 != 0))
+    {
+      int[] arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
+      int[] arrayOfInt2 = this.jdField_b_of_type_ArrayOfInt;
+      return arrayOfInt1[((arrayOfInt2[paramInt1] + arrayOfInt2[paramInt2]) % (this.jdField_a_of_type_Int - 1))];
     }
-    return this.jdField_a_of_type_ArrayOfInt[((this.jdField_b_of_type_ArrayOfInt[paramInt1] + this.jdField_b_of_type_ArrayOfInt[paramInt2]) % (this.jdField_a_of_type_Int - 1))];
+    return 0;
   }
   
   int c(int paramInt)
   {
     b();
-    if (paramInt == 0) {
-      throw new ArithmeticException();
+    if (paramInt != 0) {
+      return this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_Int - this.jdField_b_of_type_ArrayOfInt[paramInt] - 1)];
     }
-    return this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_Int - this.jdField_b_of_type_ArrayOfInt[paramInt] - 1)];
+    throw new ArithmeticException();
   }
 }
 

@@ -14,16 +14,24 @@ public class TroopImageInfo
   public boolean a(String paramString)
   {
     FileManagerEntity localFileManagerEntity = this.a.a();
-    if (localFileManagerEntity == null) {}
-    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
+    boolean bool2 = false;
+    if (localFileManagerEntity == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (localFileManagerEntity.strTroopFilePath != null)
+    {
+      bool1 = bool2;
+      if (localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.TroopImageInfo
  * JD-Core Version:    0.7.0.1
  */

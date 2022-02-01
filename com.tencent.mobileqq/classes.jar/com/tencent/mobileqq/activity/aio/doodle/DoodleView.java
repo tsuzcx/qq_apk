@@ -31,14 +31,20 @@ public class DoodleView
   
   public int a(boolean paramBoolean)
   {
+    LineLayer localLineLayer;
     if (!paramBoolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
-        return this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.b();
+      localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+      if (localLineLayer != null) {
+        return localLineLayer.b();
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.c();
+    else
+    {
+      localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+      if (localLineLayer != null) {
+        return localLineLayer.c();
+      }
     }
     return 0;
   }
@@ -59,11 +65,7 @@ public class DoodleView
       }
       return localBitmap;
     }
-    catch (Exception localException)
-    {
-      return null;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
+    catch (OutOfMemoryError|Exception localOutOfMemoryError) {}
     return null;
   }
   
@@ -80,24 +82,27 @@ public class DoodleView
   
   public DoodleParam a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer == null) {
+    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+    if (localLineLayer == null) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a();
+    return localLineLayer.a();
   }
   
   public List<PathData> a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a();
+    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+    if (localLineLayer != null) {
+      return localLineLayer.a();
     }
     return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a();
+    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+    if (localLineLayer != null) {
+      localLineLayer.a();
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView$DoodleViewListener = null;
   }
@@ -110,77 +115,93 @@ public class DoodleView
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(paramBoolean);
+    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+    if (localLineLayer != null) {
+      localLineLayer.a(paramBoolean);
     }
     super.invalidate();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.d();
+    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+    if (localLineLayer != null) {
+      localLineLayer.d();
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(paramCanvas);
+    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+    if (localLineLayer != null) {
+      localLineLayer.a(paramCanvas);
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer == null) {
-      return;
+    if (paramInt1 > 0)
+    {
+      if (paramInt2 <= 0) {
+        return;
+      }
+      LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+      if (localLineLayer != null) {
+        localLineLayer.a(paramInt1, paramInt2);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(paramInt1, paramInt2);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(paramMotionEvent);
+    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+    if (localLineLayer != null) {
+      return localLineLayer.a(paramMotionEvent);
     }
     return false;
   }
   
-  public void onVisibilityChanged(View paramView, int paramInt)
+  protected void onVisibilityChanged(View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
     if (isShown()) {
       super.invalidate();
     }
-    if (paramInt != 0) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.b() == 0)) {
+    if (paramInt != 0)
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+      if ((paramView != null) && (paramView.b() == 0)) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(true);
       }
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer == null) {
-      return;
+    else
+    {
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+      if (paramView != null) {
+        paramView.d();
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.d();
   }
   
   public void setLineColor(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(paramInt);
+    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+    if (localLineLayer != null) {
+      localLineLayer.a(paramInt);
     }
   }
   
   public void setLineTexture(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.b(paramInt);
+    LineLayer localLineLayer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
+    if (localLineLayer != null) {
+      localLineLayer.b(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleView
  * JD-Core Version:    0.7.0.1
  */

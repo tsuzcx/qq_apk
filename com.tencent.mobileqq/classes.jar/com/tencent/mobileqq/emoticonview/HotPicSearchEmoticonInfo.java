@@ -18,7 +18,7 @@ import mqq.app.AppRuntime;
 
 public class HotPicSearchEmoticonInfo
   extends EmoticonInfo
-  implements Parcelable
+  implements Parcelable, IHotPicSearchEmoticonInfo
 {
   public static final Parcelable.Creator<HotPicSearchEmoticonInfo> CREATOR = new HotPicSearchEmoticonInfo.1();
   static final long ONE_SEC = 1000L;
@@ -60,33 +60,33 @@ public class HotPicSearchEmoticonInfo
   public Drawable getDrawable(Context paramContext, float paramFloat)
   {
     paramContext = URLDrawable.URLDrawableOptions.obtain();
-    paramContext.mLoadingDrawable = sLoadingDrawable;
-    paramContext.mFailedDrawable = sLoadingDrawable;
+    Object localObject = sLoadingDrawable;
+    paramContext.mLoadingDrawable = ((Drawable)localObject);
+    paramContext.mFailedDrawable = ((Drawable)localObject);
     paramContext.mPlayGifImage = true;
     paramContext.mExtraInfo = this.mSearchItem;
-    URL localURL = ((IHotPicSearchService)QRoute.api(IHotPicSearchService.class)).getURL(this.mSearchItem.url);
-    if (localURL == null) {
+    localObject = ((IHotPicSearchService)QRoute.api(IHotPicSearchService.class)).getURL(this.mSearchItem.url);
+    if (localObject == null) {
       return null;
     }
-    return URLDrawable.getDrawable(localURL, paramContext);
+    return URLDrawable.getDrawable((URL)localObject, paramContext);
   }
   
   public void send(AppRuntime paramAppRuntime, Context paramContext, EditText paramEditText, Parcelable paramParcelable)
   {
-    if (paramAppRuntime == null) {
-      QLog.e("HotPicSearchEmoticonInfo", 2, "app is null.");
-    }
-    long l;
-    do
+    if (paramAppRuntime == null)
     {
+      QLog.e("HotPicSearchEmoticonInfo", 2, "app is null.");
       return;
-      l = System.currentTimeMillis();
-      if (l - lastTime >= 1000L) {
-        break;
+    }
+    long l = System.currentTimeMillis();
+    if (l - lastTime < 1000L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("HotPicSearchEmoticonInfo", 2, "send to offen,please try it later");
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("HotPicSearchEmoticonInfo", 2, "send to offen,please try it later");
-    return;
+      return;
+    }
     lastTime = l;
     ((IHotPicSearchService)QRoute.api(IHotPicSearchService.class)).send(paramAppRuntime, paramContext, paramEditText, paramParcelable, this.mSearchItem, this.mSearchWord, this.mPageType, this.mReportPosition);
   }
@@ -107,7 +107,7 @@ public class HotPicSearchEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.HotPicSearchEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -571,32 +571,28 @@ public class SpellTool
   
   public static int a(String paramString)
   {
-    int i4 = 1;
     paramString = paramString.toCharArray();
+    int i4 = 0;
     int i1 = 0;
     int i2 = 0;
     int i3 = 0;
-    if (i1 < paramString.length)
+    while (i1 < paramString.length)
     {
       if (a(paramString[i1])) {
         i2 = 1;
-      }
-      for (;;)
-      {
-        i1 += 1;
-        break;
+      } else {
         i3 = 1;
       }
+      i1 += 1;
     }
     if ((i2 != 0) && (i3 == 0)) {
-      i1 = 2;
+      return 2;
     }
-    do
-    {
-      return i1;
-      i1 = i4;
-    } while (i2 != 0);
-    return 0;
+    i1 = i4;
+    if (i2 != 0) {
+      i1 = 1;
+    }
+    return i1;
   }
   
   public static void a()
@@ -622,7 +618,7 @@ public class SpellTool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.SpellTool
  * JD-Core Version:    0.7.0.1
  */

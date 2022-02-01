@@ -39,9 +39,6 @@ public class v
   
   public static String b()
   {
-    if ("1002".contains("BuildNo")) {
-      return "0000";
-    }
     return "1002";
   }
   
@@ -75,14 +72,12 @@ public class v
     String str = Build.VERSION.RELEASE;
     if (TextUtils.isEmpty(str)) {
       localStringBuffer.append("NA");
-    }
-    for (;;)
-    {
-      localStringBuffer.append("_");
-      localStringBuffer.append(Build.VERSION.SDK_INT);
-      return localStringBuffer.toString();
+    } else {
       localStringBuffer.append(str);
     }
+    localStringBuffer.append("_");
+    localStringBuffer.append(Build.VERSION.SDK_INT);
+    return localStringBuffer.toString();
   }
   
   public String a()
@@ -102,7 +97,7 @@ public class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.v
  * JD-Core Version:    0.7.0.1
  */

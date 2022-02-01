@@ -28,14 +28,16 @@ public final class SSOReserveField$ReserveFields
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 66, 72, 80, 88, 98 }, new String[] { "type", "extra", "app_recv", "sdk_send", "sdk_recv", "sso_send", "sso_recv", "client_ipcookie", "flag", "env_id", "locale_id", "qimei" }, new Object[] { Integer.valueOf(0), "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, ReserveFields.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 66, 72, 80, 88, 98 }, new String[] { "type", "extra", "app_recv", "sdk_send", "sdk_recv", "sso_send", "sso_recv", "client_ipcookie", "flag", "env_id", "locale_id", "qimei" }, new Object[] { localInteger, "", localLong, localLong, localLong, localLong, localLong, localByteStringMicro1, localInteger, localInteger, localInteger, localByteStringMicro2 }, ReserveFields.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.pb.SSOReserveField.ReserveFields
  * JD-Core Version:    0.7.0.1
  */

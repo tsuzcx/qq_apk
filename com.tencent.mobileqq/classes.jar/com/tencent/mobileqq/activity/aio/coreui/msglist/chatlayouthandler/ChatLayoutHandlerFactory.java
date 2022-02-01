@@ -45,40 +45,39 @@ public class ChatLayoutHandlerFactory
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {}
-    SparseArray localSparseArray;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_AndroidUtilSparseArray == null)
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("ChatLayoutHandlerFactory", 2, "mHandleCachePreNewView init");
+        if (this.jdField_a_of_type_AndroidUtilSparseArray == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("ChatLayoutHandlerFactory", 2, "mHandleCachePreNewView init");
+          }
+          SparseArray localSparseArray1 = new SparseArray();
+          localSparseArray1.append(0, new HeadIconHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
+          localSparseArray1.append(1, new AvatarPendantHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
+          localSparseArray1.append(2, new NickHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
+          localSparseArray1.append(3, new TroopRelevantHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
+          localSparseArray1.append(4, new QCircleHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
+          this.jdField_a_of_type_AndroidUtilSparseArray = localSparseArray1;
         }
-        localSparseArray = new SparseArray();
-        localSparseArray.append(0, new HeadIconHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
-        localSparseArray.append(1, new AvatarPendantHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
-        localSparseArray.append(2, new NickHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
-        localSparseArray.append(3, new TroopRelevantHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
-        localSparseArray.append(4, new QCircleHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
-        this.jdField_a_of_type_AndroidUtilSparseArray = localSparseArray;
       }
-      if (this.b != null) {}
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.b == null)
+    if (this.b == null) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("ChatLayoutHandlerFactory", 2, "mHandleCacheBehindNewView init");
+        if (this.b == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("ChatLayoutHandlerFactory", 2, "mHandleCacheBehindNewView init");
+          }
+          SparseArray localSparseArray2 = new SparseArray();
+          localSparseArray2.append(0, new BubbleBgHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
+          localSparseArray2.append(1, new StickerHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
+          this.b = localSparseArray2;
         }
-        localSparseArray = new SparseArray();
-        localSparseArray.append(0, new BubbleBgHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
-        localSparseArray.append(1, new StickerHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistChatlayouthandlerIChatLayoutListenerController));
-        this.b = localSparseArray;
+        return;
       }
-      return;
-      localObject2 = finally;
-      throw localObject2;
     }
   }
   
@@ -165,7 +164,7 @@ public class ChatLayoutHandlerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.ChatLayoutHandlerFactory
  * JD-Core Version:    0.7.0.1
  */

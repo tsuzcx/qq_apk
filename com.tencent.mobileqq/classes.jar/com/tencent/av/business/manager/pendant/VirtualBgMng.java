@@ -23,17 +23,21 @@ public class VirtualBgMng
   
   public EffectPendantBase.Pendant a(int paramInt1, int paramInt2)
   {
-    EffectPendantBase.Pendant localPendant = super.a(paramInt1, paramInt2);
-    if ((localPendant != null) && (localPendant.a != null) && (!localPendant.a.needHMirror)) {
-      localPendant.a.needHMirror = true;
-    }
-    return localPendant;
+    return super.a(paramInt1, paramInt2);
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 4, "MuteByOthers, fromMuteKey[" + paramInt + "], data[" + paramString + "]");
+    if (QLog.isDevelopLevel())
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MuteByOthers, fromMuteKey[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], data[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.i(str, 4, localStringBuilder.toString());
     }
     if (paramInt == b()) {
       return;
@@ -41,17 +45,15 @@ public class VirtualBgMng
     a(0L, null);
   }
   
-  public void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if ((paramInt != 2) && (paramInt != 3)) {
       return;
-      paramString1 = (PendantItem)a();
-    } while ((paramString1 == null) || (TextUtils.isEmpty(paramString1.getId())));
-    a(paramLong, null);
+    }
+    paramString1 = (PendantItem)a();
+    if ((paramString1 != null) && (!TextUtils.isEmpty(paramString1.getId()))) {
+      a(paramLong, null);
+    }
   }
   
   public boolean a(long paramLong, PendantItem paramPendantItem)
@@ -74,7 +76,7 @@ public class VirtualBgMng
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.VirtualBgMng
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cg_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView android:id="@id/aog" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <Button android:id="@id/cancel" android:background="@drawable/ai3" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_marginTop="7.5dip" android:layout_alignParentLeft="true" android:contentDescription="@string/hkk" />
-    <com.tencent.mobileqq.widget.CircleProgress android:id="@id/bbg" android:visibility="visible" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_margin="18.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/cg8" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="@string/qn4" android:layout_above="@id/bbg" android:layout_centerHorizontal="true" android:contentDescription="@string/qn7" />
-</RelativeLayout>

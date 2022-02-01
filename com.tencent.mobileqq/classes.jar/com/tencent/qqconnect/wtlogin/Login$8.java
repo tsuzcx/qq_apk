@@ -5,7 +5,8 @@ import android.os.Bundle;
 import android.os.Message;
 import android.widget.EditText;
 import com.tencent.mobileqq.app.LoginFailedHelper;
-import com.tencent.mobileqq.app.security.FrozenNotifyDlgHelper;
+import com.tencent.mobileqq.qqsec.api.ISafeBlockApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
@@ -19,58 +20,69 @@ class Login$8
   public void handleMessage(Message paramMessage)
   {
     Object localObject = paramMessage.getData();
-    this.a.d();
-    switch (paramMessage.what)
+    this.a.hideLoginTip();
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    do
-    {
-      do
+      if (i != 2)
       {
-        return;
-        this.a.a(String.format(this.a.getResources().getString(2131696476), new Object[] { this.a.getResources().getString(2131694678), Integer.valueOf(3100) }));
-        paramMessage = new HashMap();
-        paramMessage.put("error", "3100");
-        StatisticCollector.getInstance(this.a).collectPerformance("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
-        return;
-        int i = ((Bundle)localObject).getInt("ret");
+        if (i != 2001)
+        {
+          if (i != 2002) {
+            return;
+          }
+          if (!this.a.isFinishing()) {
+            this.a.showLoginTip();
+          }
+        }
+        else if (!this.a.isFinishing())
+        {
+          this.a.hideLoginTip();
+        }
+      }
+      else
+      {
+        i = ((Bundle)localObject).getInt("ret");
         int j = ((Bundle)localObject).getInt("code");
         paramMessage = ((Bundle)localObject).getString("OTHER_ERROR");
         if (((Bundle)localObject).getBoolean("pwdblank", false)) {
-          this.a.b.setText("");
+          this.a.pswd.setText("");
         }
         ReportController.a(null, "dc00898", "", "", "0X800B298", "0X800B298", 0, 0, "", "", paramMessage, "");
-        boolean bool = FrozenNotifyDlgHelper.a().a(((Bundle)localObject).getByteArray("tlverror"));
-        if ((i == 40) && (bool)) {
-          this.a.a((Bundle)localObject);
-        }
-        for (;;)
+        boolean bool = ((ISafeBlockApi)QRoute.api(ISafeBlockApi.class)).shouldHandleByDlgHelper(((Bundle)localObject).getByteArray("tlverror"));
+        if ((i == 40) && (bool))
         {
-          paramMessage = new HashMap();
-          paramMessage.put("error", "3101");
-          StatisticCollector.getInstance(this.a).collectPerformance("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
-          return;
-          if (i == 1)
-          {
-            localObject = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-            paramMessage = String.format(this.a.getResources().getString(2131696476), new Object[] { paramMessage, Integer.valueOf(j) });
-            Login.a(this.a).a(this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.a, (String)localObject, 4, paramMessage, new Login.8.1(this));
-          }
-          else
-          {
-            this.a.a(String.format(this.a.getResources().getString(2131696476), new Object[] { paramMessage, Integer.valueOf(j) }));
-          }
+          this.a.showFrozenDlg((Bundle)localObject);
         }
-      } while (this.a.isFinishing());
-      this.a.d();
-      return;
-    } while (this.a.isFinishing());
-    this.a.c();
+        else if (i == 1)
+        {
+          localObject = this.a.name.getText().toString();
+          paramMessage = String.format(this.a.getResources().getString(2131696495), new Object[] { paramMessage, Integer.valueOf(j) });
+          Login.access$200(this.a).a(this.a.app, this.a, (String)localObject, 4, paramMessage, new Login.8.1(this));
+        }
+        else
+        {
+          localObject = this.a;
+          ((Login)localObject).showDialog(String.format(((Login)localObject).getResources().getString(2131696495), new Object[] { paramMessage, Integer.valueOf(j) }));
+        }
+        paramMessage = new HashMap();
+        paramMessage.put("error", "3101");
+        StatisticCollector.getInstance(this.a).collectPerformance("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
+      }
+    }
+    else
+    {
+      paramMessage = this.a;
+      paramMessage.showDialog(String.format(paramMessage.getResources().getString(2131696495), new Object[] { this.a.getResources().getString(2131694647), Integer.valueOf(3100) }));
+      paramMessage = new HashMap();
+      paramMessage.put("error", "3100");
+      StatisticCollector.getInstance(this.a).collectPerformance("0", "connect_sso_authfail", false, 0L, 0L, paramMessage, "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.8
  * JD-Core Version:    0.7.0.1
  */

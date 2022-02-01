@@ -29,7 +29,7 @@ import java.util.List;
 public class AIOPushDialogHelper
   implements ILifeCycleHelper
 {
-  private int jdField_a_of_type_Int = 13;
+  private int jdField_a_of_type_Int = 14;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   @Nullable
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -75,112 +75,94 @@ public class AIOPushDialogHelper
   private void a(QQCustomDialog paramQQCustomDialog, UniteEntity paramUniteEntity, PushDialogTemplate paramPushDialogTemplate)
   {
     paramUniteEntity = paramUniteEntity.a();
-    if (paramUniteEntity.a() != 6) {}
-    Object localObject3;
-    Object localObject2;
-    label438:
-    do
-    {
+    if (paramUniteEntity.a() != 6) {
       return;
-      for (;;)
+    }
+    paramUniteEntity = paramUniteEntity.a();
+    if (paramUniteEntity != null)
+    {
+      if (paramUniteEntity.size() == 0) {
+        return;
+      }
+      paramUniteEntity = paramUniteEntity.iterator();
+      while (paramUniteEntity.hasNext())
       {
-        paramUniteEntity = paramUniteEntity.a();
-        if ((paramUniteEntity != null) && (paramUniteEntity.size() != 0))
+        Object localObject1 = (UniteEntity.Note)paramUniteEntity.next();
+        Object localObject3 = ((UniteEntity.Note)localObject1).a();
+        Object localObject2 = ((UniteEntity.Note)localObject1).a();
+        if (((UniteEntity.Note)localObject1).a() == 7)
         {
-          paramUniteEntity = paramUniteEntity.iterator();
-          while (paramUniteEntity.hasNext())
+          localObject1 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+            paramQQCustomDialog.setTitle((String)localObject1);
+          }
+        }
+        else
+        {
+          int j = ((UniteEntity.Note)localObject1).a();
+          int i = 0;
+          if (j == 8)
           {
-            localObject1 = (UniteEntity.Note)paramUniteEntity.next();
-            localObject3 = ((UniteEntity.Note)localObject1).a();
-            localObject2 = ((UniteEntity.Note)localObject1).a();
-            if (((UniteEntity.Note)localObject1).a() == 7)
+            localObject1 = (String)((HashMap)localObject3).get(Integer.valueOf(1));
+            if ((localObject2 != null) && (((List)localObject2).size() != 0))
             {
-              localObject1 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
-              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                paramQQCustomDialog.setTitle((String)localObject1);
-              }
-            }
-            else
-            {
-              if (((UniteEntity.Note)localObject1).a() != 8) {
-                break label438;
-              }
-              localObject1 = (String)((HashMap)localObject3).get(Integer.valueOf(1));
-              if ((localObject2 != null) && (((List)localObject2).size() != 0))
+              localObject1 = new SpannableStringBuilder();
+              localObject2 = ((List)localObject2).iterator();
+              while (((Iterator)localObject2).hasNext())
               {
-                localObject1 = new SpannableStringBuilder();
-                localObject2 = ((List)localObject2).iterator();
-                while (((Iterator)localObject2).hasNext())
+                Object localObject4 = (UniteEntity.Note)((Iterator)localObject2).next();
+                localObject3 = ((UniteEntity.Note)localObject4).a();
+                String str1;
+                if (((UniteEntity.Note)localObject4).a() == 2)
                 {
-                  Object localObject4 = (UniteEntity.Note)((Iterator)localObject2).next();
-                  localObject3 = ((UniteEntity.Note)localObject4).a();
-                  String str1;
-                  if (((UniteEntity.Note)localObject4).a() == 2)
-                  {
-                    if (localObject3 != null)
-                    {
-                      localObject4 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
-                      str1 = (String)((HashMap)localObject3).get(Integer.valueOf(3));
-                      localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(5));
-                      if (!TextUtils.isEmpty((CharSequence)localObject4))
-                      {
-                        localObject3 = new SpannableString((CharSequence)localObject4);
-                        ((SpannableString)localObject3).setSpan(Integer.valueOf(Color.parseColor("#03081A")), 0, ((SpannableString)localObject3).length(), 33);
-                        ((SpannableStringBuilder)localObject1).append((CharSequence)localObject3);
-                      }
-                    }
-                  }
-                  else if ((((UniteEntity.Note)localObject4).a() == 3) && (localObject3 != null))
+                  if (localObject3 != null)
                   {
                     localObject4 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
-                    str1 = (String)((HashMap)localObject3).get(Integer.valueOf(4));
-                    String str2 = (String)((HashMap)localObject3).get(Integer.valueOf(3));
+                    str1 = (String)((HashMap)localObject3).get(Integer.valueOf(3));
                     localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(5));
-                    SpannableString localSpannableString = new SpannableString((CharSequence)localObject4);
-                    localSpannableString.setSpan(new AIOPushDialogHelper.2(this, str1, (String)localObject3, str2), 0, ((String)localObject4).length(), 33);
-                    ((SpannableStringBuilder)localObject1).append(localSpannableString);
+                    if (!TextUtils.isEmpty((CharSequence)localObject4))
+                    {
+                      localObject3 = new SpannableString((CharSequence)localObject4);
+                      ((SpannableString)localObject3).setSpan(Integer.valueOf(Color.parseColor("#03081A")), 0, ((SpannableString)localObject3).length(), 33);
+                      ((SpannableStringBuilder)localObject1).append((CharSequence)localObject3);
+                    }
                   }
                 }
-                paramQQCustomDialog.setMessageWithoutAutoLink((CharSequence)localObject1);
+                else if ((((UniteEntity.Note)localObject4).a() == 3) && (localObject3 != null))
+                {
+                  localObject4 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+                  str1 = (String)((HashMap)localObject3).get(Integer.valueOf(4));
+                  String str2 = (String)((HashMap)localObject3).get(Integer.valueOf(3));
+                  localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(5));
+                  SpannableString localSpannableString = new SpannableString((CharSequence)localObject4);
+                  localSpannableString.setSpan(new AIOPushDialogHelper.2(this, str1, (String)localObject3, str2), 0, ((String)localObject4).length(), 33);
+                  ((SpannableStringBuilder)localObject1).append(localSpannableString);
+                }
+              }
+              paramQQCustomDialog.setMessageWithoutAutoLink((CharSequence)localObject1);
+            }
+          }
+          else if ((((UniteEntity.Note)localObject1).a() == 9) && (localObject2 != null))
+          {
+            localObject1 = ((List)localObject2).iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject2 = (UniteEntity.Note)((Iterator)localObject1).next();
+              if (((UniteEntity.Note)localObject2).a() == 10)
+              {
+                localObject3 = ((UniteEntity.Note)localObject2).a();
+                localObject2 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
+                localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(4));
+                if (i == 0) {
+                  paramQQCustomDialog.setNegativeButton((String)localObject2, new AIOPushDialogHelper.3(this, (String)localObject3, paramPushDialogTemplate));
+                } else if (i == 1) {
+                  paramQQCustomDialog.setPositiveButton((String)localObject2, new AIOPushDialogHelper.4(this, (String)localObject3));
+                }
+                i += 1;
               }
             }
           }
         }
-      }
-    } while ((((UniteEntity.Note)localObject1).a() != 9) || (localObject2 == null));
-    Object localObject1 = ((List)localObject2).iterator();
-    int i = 0;
-    label465:
-    if (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (UniteEntity.Note)((Iterator)localObject1).next();
-      if (((UniteEntity.Note)localObject2).a() != 10) {
-        break label590;
-      }
-      localObject3 = ((UniteEntity.Note)localObject2).a();
-      localObject2 = (String)((HashMap)localObject3).get(Integer.valueOf(2));
-      localObject3 = (String)((HashMap)localObject3).get(Integer.valueOf(4));
-      if (i != 0) {
-        break label564;
-      }
-      paramQQCustomDialog.setNegativeButton((String)localObject2, new AIOPushDialogHelper.3(this, (String)localObject3, paramPushDialogTemplate));
-    }
-    label555:
-    label564:
-    label590:
-    label591:
-    for (;;)
-    {
-      i += 1;
-      for (;;)
-      {
-        break label465;
-        break;
-        if (i != 1) {
-          break label591;
-        }
-        paramQQCustomDialog.setPositiveButton((String)localObject2, new AIOPushDialogHelper.4(this, (String)localObject3));
-        break label555;
       }
     }
   }
@@ -190,8 +172,9 @@ public class AIOPushDialogHelper
     if (QLog.isColorLevel()) {
       QLog.d("AIOPushDialogHelper", 2, "onCreate");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (localBaseChatPie != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
@@ -207,8 +190,9 @@ public class AIOPushDialogHelper
     if ((paramInt == 102) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null)) {
       PushDialogDbUtil.a().b(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, paramPushDialogTemplate);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    paramPushDialogTemplate = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (paramPushDialogTemplate != null) {
+      paramPushDialogTemplate.dismiss();
     }
   }
   
@@ -217,55 +201,70 @@ public class AIOPushDialogHelper
     if (QLog.isColorLevel()) {
       QLog.d("AIOPushDialogHelper", 2, "onDestroy");
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqPushdialogSafeBlowObserver != null))
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqPushdialogSafeBlowObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+      SafeBlowObserver localSafeBlowObserver = this.jdField_a_of_type_ComTencentMobileqqPushdialogSafeBlowObserver;
+      if (localSafeBlowObserver != null)
+      {
+        localQQAppInterface.removeObserver(localSafeBlowObserver);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+      }
     }
   }
   
   private void d()
   {
-    boolean bool2 = false;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
     {
-      localObject = (SafeBlowHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(SafeBlowHandler.a);
-      long l = NumberUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((localObject != null) && (l != 0L)) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (localObject != null)
+      {
+        localObject = (SafeBlowHandler)((QQAppInterface)localObject).getBusinessHandler(SafeBlowHandler.a);
+        long l = NumberUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        if ((localObject == null) || (l == 0L)) {
+          return;
+        }
         ((SafeBlowHandler)localObject).a(l);
+        return;
       }
-      return;
     }
-    Object localObject = new StringBuilder().append("mChatPie == null ? = ");
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localObject = ((StringBuilder)localObject).append(bool1).append(", mApp == null ? = ");
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        bool1 = true;
-      }
-      QLog.e("AIOPushDialogHelper", 1, bool1);
-      return;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mChatPie == null ? = ");
+    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    boolean bool2 = false;
+    if (localBaseChatPie == null) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    ((StringBuilder)localObject).append(bool1);
+    ((StringBuilder)localObject).append(", mApp == null ? = ");
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      bool1 = true;
+    }
+    ((StringBuilder)localObject).append(bool1);
+    QLog.e("AIOPushDialogHelper", 1, ((StringBuilder)localObject).toString());
   }
   
   public void a()
   {
-    String str;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (localObject != null)
     {
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      if (TextUtils.isEmpty(str)) {}
-    }
-    try
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, Long.valueOf(str).longValue());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("AIOPushDialogHelper", 1, "db search error: ", localException);
+      localObject = ((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        try
+        {
+          a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, Long.valueOf((String)localObject).longValue());
+          return;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("AIOPushDialogHelper", 1, "db search error: ", localException);
+        }
+      }
     }
   }
   
@@ -276,49 +275,47 @@ public class AIOPushDialogHelper
       UniteEntity localUniteEntity = a(paramPushDialogTemplate.templ_content);
       if (localUniteEntity != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-          break label255;
+        Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+        if (localObject == null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext, 2131756189);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131558978);
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
+          localObject = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131363688);
+          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((LinearLayout)localObject).getLayoutParams();
+          localLayoutParams.leftMargin = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext, 30.0F);
+          localLayoutParams.rightMargin = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext, 30.0F);
+          ((LinearLayout)localObject).setLayoutParams(localLayoutParams);
         }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext, 2131755842);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131559084);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
-        LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131363757);
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
-        localLayoutParams.leftMargin = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext, 30.0F);
-        localLayoutParams.rightMargin = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext, 30.0F);
-        localLinearLayout.setLayoutParams(localLayoutParams);
+        else
+        {
+          ((QQCustomDialog)localObject).dismiss();
+        }
         a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, localUniteEntity, paramPushDialogTemplate);
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-        if (this.jdField_a_of_type_Int != 5) {
-          break label307;
+        if (this.jdField_a_of_type_Int == 5)
+        {
+          a(paramPushDialogTemplate, paramInt2);
+          if (paramPushDialogTemplate.isFriendBanned()) {
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "dc00898", "", "", "0X800A4B9", "0X800A4B9", 0, 0, "", "", "", "");
+          } else {
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "dc00898", "", "", "0X800A4B8", "0X800A4B8", 0, 0, "", "", "", "");
+          }
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B9A1", "0X800B9A1", 0, 0, "", "", "", "");
+          return;
         }
-        a(paramPushDialogTemplate, paramInt2);
-        if (!paramPushDialogTemplate.isFriendBanned()) {
-          break label265;
-        }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "dc00898", "", "", "0X800A4B9", "0X800A4B9", 0, 0, "", "", "", "");
+        b(paramPushDialogTemplate, paramInt1);
       }
     }
-    for (;;)
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B9A1", "0X800B9A1", 0, 0, "", "", "", "");
-      return;
-      label255:
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      break;
-      label265:
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "dc00898", "", "", "0X800A4B8", "0X800A4B8", 0, 0, "", "", "", "");
-    }
-    label307:
-    b(paramPushDialogTemplate, paramInt1);
   }
   
   public void a(List<PushDialogTemplate> paramList, int paramInt1, int paramInt2)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
       int i = 0;
       while (i < paramList.size())
       {
@@ -335,44 +332,48 @@ public class AIOPushDialogHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 11, 5, 8, 14 };
+    return new int[] { 4, 12, 5, 9, 15 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    case 6: 
-    case 7: 
-    case 9: 
-    case 10: 
-    case 12: 
-    case 13: 
-    default: 
-    case 4: 
-    case 11: 
-      do
+      if (paramInt != 5)
       {
-        return;
-        b();
-        return;
-        this.jdField_a_of_type_Int = 11;
-      } while (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      return;
-    case 5: 
-      this.jdField_a_of_type_Int = 5;
-      return;
-    case 8: 
-      a();
-      return;
+        if (paramInt != 9)
+        {
+          if (paramInt != 12)
+          {
+            if (paramInt != 15) {
+              return;
+            }
+            c();
+            return;
+          }
+          this.jdField_a_of_type_Int = 12;
+          QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+          if (localQQCustomDialog != null) {
+            localQQCustomDialog.dismiss();
+          }
+        }
+        else
+        {
+          a();
+        }
+      }
+      else {
+        this.jdField_a_of_type_Int = 5;
+      }
     }
-    c();
+    else {
+      b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.AIOPushDialogHelper
  * JD-Core Version:    0.7.0.1
  */

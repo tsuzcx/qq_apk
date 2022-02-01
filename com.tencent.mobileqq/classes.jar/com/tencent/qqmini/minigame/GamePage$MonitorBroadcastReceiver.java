@@ -12,32 +12,32 @@ class GamePage$MonitorBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool;
     if ((paramIntent != null) && (paramIntent.getAction() != null) && (paramIntent.getAction().equals("action.qq.miniapp.show.monitorview")))
     {
-      bool = paramIntent.getBooleanExtra("show", true);
-      paramIntent = new StringBuilder().append("onReceive action action.qq.miniapp.show.monitorview, ");
+      paramContext = "show";
+      boolean bool = paramIntent.getBooleanExtra("show", true);
+      paramIntent = new StringBuilder();
+      paramIntent.append("onReceive action action.qq.miniapp.show.monitorview, ");
       if (!bool) {
-        break label113;
+        paramContext = "hide";
       }
-    }
-    label113:
-    for (paramContext = "show";; paramContext = "hide")
-    {
-      QMLog.d("GamePage", paramContext + " monitor view!");
+      paramIntent.append(paramContext);
+      paramIntent.append(" monitor view!");
+      QMLog.d("GamePage", paramIntent.toString());
       if (GamePage.access$900(this.this$0) != bool) {
         this.this$0.toggleMonitorPanel();
       }
-      if (GamePage.access$1000(this.this$0) != null) {
-        GamePage.access$1100(this.this$0, GamePage.access$1000(this.this$0));
+      if (GamePage.access$1000(this.this$0) != null)
+      {
+        paramContext = this.this$0;
+        GamePage.access$1100(paramContext, GamePage.access$1000(paramContext));
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GamePage.MonitorBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

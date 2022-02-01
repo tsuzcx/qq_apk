@@ -27,37 +27,41 @@ public class BaselibVersionCheckTask
   
   private void checkBaseLibVersionMatch(MiniAppInfo paramMiniAppInfo, BaselibLoader.BaselibContent paramBaselibContent)
   {
-    if ((paramBaselibContent == null) || (paramMiniAppInfo == null) || (TextUtils.isEmpty(paramBaselibContent.version)) || (TextUtils.isEmpty(paramMiniAppInfo.baselibMiniVersion)))
+    if ((paramBaselibContent != null) && (paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramBaselibContent.version)) && (!TextUtils.isEmpty(paramMiniAppInfo.baselibMiniVersion)))
     {
-      QMLog.e("BaselibVersionCheckTask", "version is empty, escape verison check!");
-      onTaskSucceed();
-      return;
-    }
-    String str = paramMiniAppInfo.baselibMiniVersion;
-    paramBaselibContent = paramBaselibContent.version;
-    QMLog.i("BaselibVersionCheckTask", "checkBaseLibVersionMatch current:" + paramBaselibContent + ",need:" + str);
-    boolean bool = false;
-    if (TextUtils.isEmpty(paramBaselibContent)) {
-      bool = true;
-    }
-    while (!bool)
-    {
-      QMLog.i("BaselibVersionCheckTask", "no need to update baselib!");
-      onTaskSucceed();
-      return;
-      if (!TextUtils.isEmpty(str)) {
+      String str = paramMiniAppInfo.baselibMiniVersion;
+      paramBaselibContent = paramBaselibContent.version;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkBaseLibVersionMatch current:");
+      localStringBuilder.append(paramBaselibContent);
+      localStringBuilder.append(",need:");
+      localStringBuilder.append(str);
+      QMLog.i("BaselibVersionCheckTask", localStringBuilder.toString());
+      boolean bool = false;
+      if (TextUtils.isEmpty(paramBaselibContent)) {
+        bool = true;
+      } else if (!TextUtils.isEmpty(str)) {
         bool = BaseLibInfo.needUpdateVersion(str, paramBaselibContent);
       }
-    }
-    if (this.mVersionUpdated)
-    {
-      QMLog.w("BaselibVersionCheckTask", "baselib has checked before!");
-      onTaskFailed();
+      if (!bool)
+      {
+        QMLog.i("BaselibVersionCheckTask", "no need to update baselib!");
+        onTaskSucceed();
+        return;
+      }
+      if (this.mVersionUpdated)
+      {
+        QMLog.w("BaselibVersionCheckTask", "baselib has checked before!");
+        onTaskFailed();
+        return;
+      }
+      this.mVersionUpdated = true;
+      QMLog.w("BaselibVersionCheckTask", "need update baselib!");
+      AppBrandCmdProxy.g().sendCmd("cmd_update_baselib", new Bundle(), new BaselibVersionCheckTask.1(this, paramMiniAppInfo));
       return;
     }
-    this.mVersionUpdated = true;
-    QMLog.w("BaselibVersionCheckTask", "need update baselib!");
-    AppBrandCmdProxy.g().sendCmd("cmd_update_baselib", new Bundle(), new BaselibVersionCheckTask.1(this, paramMiniAppInfo));
+    QMLog.e("BaselibVersionCheckTask", "version is empty, escape verison check!");
+    onTaskSucceed();
   }
   
   public void executeAsync()
@@ -68,7 +72,7 @@ public class BaselibVersionCheckTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.BaselibVersionCheckTask
  * JD-Core Version:    0.7.0.1
  */

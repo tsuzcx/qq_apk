@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profilecard.vas.view;
 
 import android.view.animation.Animation;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 
 class VasProfileSimpleView$1
   extends VasProfileSimpleView.SimpleAnimationListener
@@ -19,7 +19,7 @@ class VasProfileSimpleView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView.1
  * JD-Core Version:    0.7.0.1
  */

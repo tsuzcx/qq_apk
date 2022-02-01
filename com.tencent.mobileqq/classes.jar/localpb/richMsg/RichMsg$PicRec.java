@@ -51,13 +51,15 @@ public final class RichMsg$PicRec
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 50, 58, 66, 74, 82, 88, 96, 106, 120, 128, 136, 146, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 258, 266, 272 }, new String[] { "localPath", "size", "type", "isRead", "uuid", "md5", "serverStorageSource", "thumbMsgUrl", "bigMsgUrl", "rawMsgUrl", "fileSizeFlag", "uiOperatorFlag", "fowardInfo", "version", "isReport", "groupFileID", "localUUID", "preDownState", "preDownNetwork", "previewed", "uint32_thumb_width", "uint32_thumb_height", "uint32_width", "uint32_height", "uint32_image_type", "uint32_show_len", "uint32_download_len", "uint32_current_len", "notPredownloadReason", "enableEnc", "bigthumbMsgUrl", "bytes_pb_reserved", "bool_story_pic_send_to_recent" }, new Object[] { "", Long.valueOf(0L), Integer.valueOf(0), Boolean.valueOf(false), "", "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), "", localByteStringMicro, Boolean.valueOf(false) }, PicRec.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42, 50, 58, 66, 74, 82, 88, 96, 106, 120, 128, 136, 146, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 258, 266, 272 }, new String[] { "localPath", "size", "type", "isRead", "uuid", "md5", "serverStorageSource", "thumbMsgUrl", "bigMsgUrl", "rawMsgUrl", "fileSizeFlag", "uiOperatorFlag", "fowardInfo", "version", "isReport", "groupFileID", "localUUID", "preDownState", "preDownNetwork", "previewed", "uint32_thumb_width", "uint32_thumb_height", "uint32_width", "uint32_height", "uint32_image_type", "uint32_show_len", "uint32_download_len", "uint32_current_len", "notPredownloadReason", "enableEnc", "bigthumbMsgUrl", "bytes_pb_reserved", "bool_story_pic_send_to_recent" }, new Object[] { "", Long.valueOf(0L), localInteger, localBoolean, "", "", "", "", "", "", localInteger, localInteger, null, localInteger, localInteger, Long.valueOf(0L), "", localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localBoolean, "", localByteStringMicro, localBoolean }, PicRec.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     localpb.richMsg.RichMsg.PicRec
  * JD-Core Version:    0.7.0.1
  */

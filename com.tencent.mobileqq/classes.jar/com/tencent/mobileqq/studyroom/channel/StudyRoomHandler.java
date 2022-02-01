@@ -17,7 +17,9 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.manager.TicketManager;
@@ -39,7 +41,7 @@ public class StudyRoomHandler
     CommProtocolProto.commRequest localcommRequest = new CommProtocolProto.commRequest();
     localcommRequest.seq.set(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
     localcommRequest.cmd.set(paramInt);
-    paramInt = NetworkUtil.b(BaseApplicationImpl.getApplication());
+    paramInt = NetworkUtil.getNetworkType(BaseApplicationImpl.getApplication());
     localcommRequest.network.set(paramInt);
     String str = ((TicketManager)this.appRuntime.getManager(2)).getA2(this.appRuntime.getAccount());
     localcommRequest.auth_type.set(8);
@@ -57,8 +59,12 @@ public class StudyRoomHandler
       }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("studyroom.proto", 2, "sendPbRequest. cmd=" + paramcommRequest.cmd.get());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendPbRequest. cmd=");
+      localStringBuilder.append(paramcommRequest.cmd.get());
+      QLog.d("studyroom.proto", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf((int)paramcommRequest.seq.get()), paramcommRequest);
     paramString = createToServiceMsg(paramString);
@@ -77,7 +83,14 @@ public class StudyRoomHandler
     a(paramString, "SelfStudyRoomForQQ.17101");
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  public Set<String> getCommandList()
+  {
+    HashSet localHashSet = new HashSet();
+    localHashSet.add(Integer.toString(17101));
+    return localHashSet;
+  }
+  
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return StudyRoomObserver.class;
   }
@@ -86,22 +99,29 @@ public class StudyRoomHandler
   {
     paramObject = paramFromServiceMsg.getServiceCmd();
     int i = paramToServiceMsg.extraData.getInt("extra_seq");
-    if (QLog.isColorLevel()) {
-      QLog.d("studyroom.proto", 2, "StudyRoomHandler onReceive. cmd=" + paramObject + " seq:" + i);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("StudyRoomHandler onReceive. cmd=");
+      paramToServiceMsg.append(paramObject);
+      paramToServiceMsg.append(" seq:");
+      paramToServiceMsg.append(i);
+      QLog.d("studyroom.proto", 2, paramToServiceMsg.toString());
     }
     paramToServiceMsg = (CommProtocolProto.commRequest)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-    if (paramToServiceMsg == null) {
+    if (paramToServiceMsg == null)
+    {
       QLog.w("studyroom.proto", 1, "can't find request");
-    }
-    while (!"SelfStudyRoomForQQ.17101".equals(paramObject)) {
       return;
     }
-    notifyUI(1, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
+    if ("SelfStudyRoomForQQ.17101".equals(paramObject)) {
+      notifyUI(1, true, new Object[] { paramToServiceMsg, paramFromServiceMsg });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.channel.StudyRoomHandler
  * JD-Core Version:    0.7.0.1
  */

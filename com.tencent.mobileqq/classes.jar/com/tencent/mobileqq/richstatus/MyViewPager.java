@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richstatus;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import androidx.viewpager.widget.ViewPager;
 
 public class MyViewPager
   extends ViewPager
@@ -30,7 +30,7 @@ public class MyViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.MyViewPager
  * JD-Core Version:    0.7.0.1
  */

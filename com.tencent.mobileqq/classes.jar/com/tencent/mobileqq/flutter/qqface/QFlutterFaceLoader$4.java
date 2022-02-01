@@ -15,28 +15,31 @@ class QFlutterFaceLoader$4
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      paramMessage = (List)paramMessage.obj;
-      QFlutterFaceLoader.a(this.a, paramMessage);
-      continue;
-      paramMessage = QFlutterFaceLoader.a(this.a).keySet().iterator();
-      while (paramMessage.hasNext())
+      if (i == 1)
       {
-        Integer localInteger = (Integer)paramMessage.next();
-        ArrayList localArrayList = (ArrayList)QFlutterFaceLoader.a(this.a).get(localInteger);
-        QFlutterFaceLoader.a(this.a, new ArrayList(localArrayList), localInteger.intValue());
+        paramMessage = QFlutterFaceLoader.a(this.a).keySet().iterator();
+        while (paramMessage.hasNext())
+        {
+          Integer localInteger = (Integer)paramMessage.next();
+          ArrayList localArrayList = (ArrayList)QFlutterFaceLoader.a(this.a).get(localInteger);
+          QFlutterFaceLoader.a(this.a, new ArrayList(localArrayList), localInteger.intValue());
+        }
       }
     }
+    else
+    {
+      paramMessage = (List)paramMessage.obj;
+      QFlutterFaceLoader.a(this.a, paramMessage);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFaceLoader.4
  * JD-Core Version:    0.7.0.1
  */

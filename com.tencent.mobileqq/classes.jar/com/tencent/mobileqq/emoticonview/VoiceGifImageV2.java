@@ -20,7 +20,7 @@ public class VoiceGifImageV2
     super(paramFile, paramBoolean, true, 0, 0, 0.0F);
   }
   
-  public void doApplyNextFrame()
+  protected void doApplyNextFrame()
   {
     super.doApplyNextFrame();
     if (this.mRestarting)
@@ -33,17 +33,14 @@ public class VoiceGifImageV2
   public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
   {
     initHandlerAndRunnable();
-    if ((!this.mRunning) && (this.mFirstFrameBitmap != null)) {
+    if ((!this.mRunning) && (this.mFirstFrameBitmap != null))
+    {
       if (this.mFirstFrameBitmap != null) {
         paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
       }
     }
-    do
+    else if (this.mRestart)
     {
-      return;
-      if (!this.mRestart) {
-        break;
-      }
       if (this.mFirstFrameBitmap != null) {
         paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
       }
@@ -52,11 +49,16 @@ public class VoiceGifImageV2
         executeNewTask();
         return;
       }
-    } while (this.mIsInPendingAction);
-    sPendingActions.add(new WeakReference(this));
-    this.mIsInPendingAction = true;
-    return;
-    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
+      if (!this.mIsInPendingAction)
+      {
+        sPendingActions.add(new WeakReference(this));
+        this.mIsInPendingAction = true;
+      }
+    }
+    else
+    {
+      super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
+    }
   }
   
   public void getNextFrame()
@@ -87,7 +89,7 @@ public class VoiceGifImageV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.VoiceGifImageV2
  * JD-Core Version:    0.7.0.1
  */

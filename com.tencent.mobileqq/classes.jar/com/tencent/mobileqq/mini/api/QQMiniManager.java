@@ -235,7 +235,7 @@ public class QQMiniManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.api.QQMiniManager
  * JD-Core Version:    0.7.0.1
  */

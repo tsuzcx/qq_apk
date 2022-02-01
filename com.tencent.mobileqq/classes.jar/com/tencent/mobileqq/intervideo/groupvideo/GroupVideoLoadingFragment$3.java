@@ -23,19 +23,16 @@ class GroupVideoLoadingFragment$3
     paramMessage = Message.obtain();
     if (GroupVideoLoadingFragment.a(this.a) >= 90) {
       i += 1;
-    }
-    for (;;)
-    {
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 500L);
-      return;
+    } else {
       i += 8;
     }
+    paramMessage.arg1 = i;
+    sendMessageDelayed(paramMessage, 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment.3
  * JD-Core Version:    0.7.0.1
  */

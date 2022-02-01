@@ -13,12 +13,15 @@ public class GetPublisherRequest
     super("Publisher", 10004);
     stPublisherReq localstPublisherReq = new stPublisherReq();
     this.a = localstPublisherReq;
-    WSLog.b("GetPublisherRequest", "stSimpleGetFeedDetailReq = " + localstPublisherReq.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stSimpleGetFeedDetailReq = ");
+    localStringBuilder.append(localstPublisherReq.toString());
+    WSLog.b("GetPublisherRequest", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.GetPublisherRequest
  * JD-Core Version:    0.7.0.1
  */

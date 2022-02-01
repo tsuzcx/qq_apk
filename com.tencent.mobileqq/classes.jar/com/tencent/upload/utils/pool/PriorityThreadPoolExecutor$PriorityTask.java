@@ -15,23 +15,19 @@ class PriorityThreadPoolExecutor$PriorityTask
   
   public int compareTo(PriorityTask paramPriorityTask)
   {
-    int i;
     if (this == paramPriorityTask) {
-      i = 0;
+      return 0;
     }
-    int j;
-    do
-    {
+    int i = paramPriorityTask.mPriority - this.mPriority;
+    if (i != 0) {
       return i;
-      j = paramPriorityTask.mPriority - this.mPriority;
-      i = j;
-    } while (j != 0);
+    }
     return (int)(this.mPostTime - paramPriorityTask.mPostTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.utils.pool.PriorityThreadPoolExecutor.PriorityTask
  * JD-Core Version:    0.7.0.1
  */

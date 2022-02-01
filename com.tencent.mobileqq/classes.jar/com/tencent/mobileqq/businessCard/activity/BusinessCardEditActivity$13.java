@@ -23,40 +23,34 @@ class BusinessCardEditActivity$13
       this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
       this.a.jdField_a_of_type_AndroidAppDialog = null;
     }
-    if (this.a.jdField_a_of_type_Int == 0)
-    {
+    if (this.a.jdField_a_of_type_Int == 0) {
       ReportController.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
-      if ((!this.a.jdField_a_of_type_Boolean) || (!this.a.b) || (this.a.isFinishing())) {
-        break label176;
-      }
+    } else if (this.a.getIntent().getIntExtra("source_activity", 0) == 1) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
+    }
+    if ((this.a.jdField_a_of_type_Boolean) && (this.a.b) && (!this.a.isFinishing()))
+    {
       this.a.finish();
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.getIntent().getIntExtra("source_activity", 0) != 1) {
-        break;
-      }
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
-      break;
-      label176:
       if (this.a.c)
       {
         BusinessCardUtils.a(this.a.app.getCurrentAccountUin(), -1);
         this.a.c = false;
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId))) {
-        this.a.finish();
-      } else {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId))) {
         BusinessCardEditActivity.a(this.a, false, true, true);
+      } else {
+        this.a.finish();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity.13
  * JD-Core Version:    0.7.0.1
  */

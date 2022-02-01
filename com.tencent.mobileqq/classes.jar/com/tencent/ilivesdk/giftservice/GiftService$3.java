@@ -17,15 +17,24 @@ class GiftService$3
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    if (paramBoolean) {
-      if (this.val$callback != null) {
-        this.val$callback.onFail(201, "time out");
+    if (paramBoolean)
+    {
+      paramString = this.val$callback;
+      if (paramString != null) {
+        paramString.onFail(201, "time out");
       }
     }
-    while (this.val$callback == null) {
-      return;
+    else
+    {
+      GiftServiceInterface.OnPresentGiftCallback localOnPresentGiftCallback = this.val$callback;
+      if (localOnPresentGiftCallback != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("not get data ");
+        localStringBuilder.append(paramString);
+        localOnPresentGiftCallback.onFail(paramInt, localStringBuilder.toString());
+      }
     }
-    this.val$callback.onFail(paramInt, "not get data " + paramString);
   }
   
   public void onRecv(byte[] paramArrayOfByte)
@@ -38,37 +47,41 @@ class GiftService$3
         if (this.val$callback != null)
         {
           this.val$giftMessage.mBalance = GiftService.access$700(this.this$0);
+          this.val$giftMessage.sendGiftErrorCode = paramArrayOfByte.result;
+          this.val$giftMessage.sendGiftErrorMsg = paramArrayOfByte.errMsg;
           this.val$callback.onPresentGiftFail(this.val$giftMessage);
         }
         if (paramArrayOfByte.result == 8) {
           this.this$0.queryAllGiftsInfo(this.val$req.roomId, 0, null);
-        }
-        while (this.val$callback != null)
-        {
-          this.val$callback.onFail(paramArrayOfByte.result, paramArrayOfByte.errMsg);
+        } else if (paramArrayOfByte.result == 17) {
+          GiftService.access$800(this.this$0).getLoginService().notifyNoLogin(NoLoginObserver.NoLoginReason.TICKET_EXPIRED);
+        } else if (paramArrayOfByte.result == 22) {
           return;
-          if (paramArrayOfByte.result == 17) {
-            GiftService.access$800(this.this$0).getLoginService().notifyNoLogin(NoLoginObserver.NoLoginReason.TICKET_EXPIRED);
-          }
+        }
+        if (this.val$callback != null) {
+          this.val$callback.onFail(paramArrayOfByte.result, paramArrayOfByte.errMsg);
         }
       }
-      GiftService.access$702(this.this$0, paramArrayOfByte.balance);
+      else
+      {
+        GiftService.access$702(this.this$0, paramArrayOfByte.balance);
+        if (this.val$callback != null)
+        {
+          this.val$giftMessage.mBalance = GiftService.access$700(this.this$0);
+          this.val$callback.onPresentGift(this.val$giftMessage);
+          return;
+        }
+      }
     }
     catch (InvalidProtocolBufferNanoException paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
-      return;
-    }
-    if (this.val$callback != null)
-    {
-      this.val$giftMessage.mBalance = GiftService.access$700(this.this$0);
-      this.val$callback.onPresentGift(this.val$giftMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.giftservice.GiftService.3
  * JD-Core Version:    0.7.0.1
  */

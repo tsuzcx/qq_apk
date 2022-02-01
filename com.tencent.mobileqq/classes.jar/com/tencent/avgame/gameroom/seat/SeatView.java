@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.GridView;
-import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.gamelogic.GameEngine;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.GameItem;
@@ -15,6 +14,7 @@ import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.avgame.gameroom.GameRoomViewLayoutParamsDef;
 import com.tencent.avgame.gameroom.IGameRoomPresenter;
 import com.tencent.avgame.gameroom.MemberVideoDisplayInfo;
+import com.tencent.common.app.business.BaseAVGameAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -60,34 +60,46 @@ public class SeatView
     QQCustomDialog localQQCustomDialog = DialogUtil.a(getContext(), 230);
     if (localQQCustomDialog != null)
     {
-      localQQCustomDialog.setMessage(2131690437);
+      localQQCustomDialog.setMessage(2131690361);
       paramPlayer = new SeatView.1(this, paramPlayer);
-      localQQCustomDialog.setPositiveButton(2131694615, paramPlayer);
-      localQQCustomDialog.setNegativeButton(2131690800, paramPlayer);
+      localQQCustomDialog.setPositiveButton(2131694583, paramPlayer);
+      localQQCustomDialog.setNegativeButton(2131690728, paramPlayer);
       localQQCustomDialog.show();
     }
   }
   
   public void OnClick(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet == null) || (this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null)) {
-      return;
-    }
-    int i;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null)
     {
-      i = paramInt;
-      if (!this.b) {}
-    }
-    else
-    {
-      i = paramInt + 1;
-    }
-    switch (i)
-    {
-    }
-    for (;;)
-    {
+      if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null) {
+        return;
+      }
+      int i;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        i = paramInt;
+        if (!this.b) {}
+      }
+      else
+      {
+        i = paramInt + 1;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i == 2) {
+            this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.c(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
+          }
+        }
+        else {
+          this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.b(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
+        }
+      }
+      else {
+        a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
+      }
       try
       {
         this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(null);
@@ -99,13 +111,7 @@ public class SeatView
       catch (Exception paramView)
       {
         paramView.printStackTrace();
-        return;
       }
-      a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
-      continue;
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.b(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
-      continue;
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.c(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
     }
   }
   
@@ -124,8 +130,7 @@ public class SeatView
         localRectF.left = arrayOfInt[0];
         localRectF.top = arrayOfInt[1];
         localRectF.right = (localRectF.left + ((AddMemberItemView)localObject).getMeasuredWidth());
-        float f = localRectF.top;
-        localRectF.bottom = (((AddMemberItemView)localObject).getMeasuredHeight() + f);
+        localRectF.bottom = (localRectF.top + ((AddMemberItemView)localObject).getMeasuredHeight());
         return localRectF;
       }
       i += 1;
@@ -136,24 +141,30 @@ public class SeatView
   public RectF a(long paramLong)
   {
     int i = 0;
-    if (i < getChildCount())
+    while (i < getChildCount())
     {
       localObject = getChildAt(i);
       if ((localObject instanceof MemberItemView))
       {
         localObject = (MemberItemView)localObject;
-        if (!((MemberItemView)localObject).a(String.valueOf(paramLong))) {}
+        if (((MemberItemView)localObject).a(String.valueOf(paramLong)))
+        {
+          localObject = ((MemberItemView)localObject).a();
+          break label64;
+        }
       }
-    }
-    for (Object localObject = ((MemberItemView)localObject).a();; localObject = null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SeatView", 2, "getPlayerHeadViewRect result:" + localObject);
-      }
-      return localObject;
       i += 1;
-      break;
     }
+    Object localObject = null;
+    label64:
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPlayerHeadViewRect result:");
+      localStringBuilder.append(localObject);
+      QLog.i("SeatView", 2, localStringBuilder.toString());
+    }
+    return localObject;
   }
   
   public ISeatPresenter a()
@@ -164,65 +175,70 @@ public class SeatView
   public List<MemberVideoDisplayInfo> a()
   {
     ArrayList localArrayList = new ArrayList();
-    RoomInfo localRoomInfo = GameEngine.a().a().a();
+    Object localObject1 = GameEngine.a().a().a();
     int i = 0;
     while (i < getChildCount())
     {
-      Object localObject = getChildAt(i);
-      if ((localObject instanceof MemberItemView))
+      Object localObject2 = getChildAt(i);
+      if ((localObject2 instanceof MemberItemView))
       {
-        localObject = ((MemberItemView)localObject).a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter);
-        if ((localObject != null) && (localRoomInfo.getPlayer(String.valueOf(((MemberVideoDisplayInfo)localObject).a)) != null)) {
-          localArrayList.add(localObject);
+        localObject2 = ((MemberItemView)localObject2).a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter);
+        if ((localObject2 != null) && (((RoomInfo)localObject1).getPlayer(String.valueOf(((MemberVideoDisplayInfo)localObject2).a)) != null)) {
+          localArrayList.add(localObject2);
         }
       }
       i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("SeatView", 2, "getMemberHeadViewDisplayInfoList infoList:" + localArrayList);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getMemberHeadViewDisplayInfoList infoList:");
+      ((StringBuilder)localObject1).append(localArrayList);
+      QLog.i("SeatView", 2, ((StringBuilder)localObject1).toString());
     }
     return localArrayList;
   }
   
   public void a()
   {
-    EngineData localEngineData = GameEngine.a().a();
-    if ((localEngineData != null) && (localEngineData.a() != null)) {}
-    for (int i = localEngineData.a().a;; i = 0)
-    {
-      if (GameEngine.a().a()) {}
-      for (int j = 1;; j = 2)
-      {
-        ReportController.b(null, "dc00898", "", "", "0X800B0A6", "0X800B0A6", i, 0, "" + j, "", "", "");
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.a();
-        this.c = true;
-        return;
-      }
+    Object localObject = GameEngine.a().a();
+    int i;
+    if ((localObject != null) && (((EngineData)localObject).a() != null)) {
+      i = ((EngineData)localObject).a().a;
+    } else {
+      i = 0;
     }
+    int j = 2;
+    if (GameEngine.a().a()) {
+      j = 1;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(j);
+    ReportController.b(null, "dc00898", "", "", "0X800B0A6", "0X800B0A6", i, 0, ((StringBuilder)localObject).toString(), "", "", "");
+    this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.a();
+    this.c = true;
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
     int i = 0;
-    Object localObject;
-    if (i < getChildCount())
+    while (i < getChildCount())
     {
       localObject = getChildAt(i);
       if ((localObject instanceof MemberItemView))
       {
         localObject = (MemberItemView)localObject;
-        if (!((MemberItemView)localObject).a(String.valueOf(paramLong))) {}
+        if (((MemberItemView)localObject).a(String.valueOf(paramLong))) {
+          break label62;
+        }
       }
-    }
-    for (;;)
-    {
-      if (localObject != null) {
-        ((MemberItemView)localObject).a(paramBoolean);
-      }
-      return;
       i += 1;
-      break;
-      localObject = null;
+    }
+    Object localObject = null;
+    label62:
+    if (localObject != null) {
+      ((MemberItemView)localObject).a(paramBoolean);
     }
   }
   
@@ -244,42 +260,44 @@ public class SeatView
   
   public void a(SeatMemberInfo paramSeatMemberInfo)
   {
-    if ((paramSeatMemberInfo == null) || (paramSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = paramSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
-    this.jdField_a_of_type_Boolean = GameEngine.a().a();
-    this.b = false;
-    if (GameEngine.a().a() != null)
+    if (paramSeatMemberInfo != null)
     {
-      paramSeatMemberInfo = GameEngine.a().a().getAccount();
-      if (TextUtils.equals(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin, paramSeatMemberInfo)) {
-        this.b = true;
+      if (paramSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null) {
+        return;
       }
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(getContext(), null));
-    if ((this.jdField_a_of_type_Boolean) && (!this.b)) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690364);
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690367);
-    if (!this.b) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690363);
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(this);
-    try
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-      ReportController.b(null, "dc00898", "", "", "0X800B02A", "0X800B02A", 0, 0, "", "" + GameEngine.a().a().a(), "", "");
-      return;
-    }
-    catch (Exception paramSeatMemberInfo)
-    {
-      for (;;)
+      this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = paramSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
+      this.jdField_a_of_type_Boolean = GameEngine.a().a();
+      this.b = false;
+      if (GameEngine.a().a() != null)
+      {
+        paramSeatMemberInfo = GameEngine.a().a().getAccount();
+        if (TextUtils.equals(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin, paramSeatMemberInfo)) {
+          this.b = true;
+        }
+      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(getContext(), null));
+      if ((this.jdField_a_of_type_Boolean) && (!this.b)) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690287);
+      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690290);
+      if (!this.b) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690286);
+      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(this);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(this);
+      try
+      {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+      }
+      catch (Exception paramSeatMemberInfo)
       {
         QLog.e("SeatView", 1, "onMemberItemClick error:", paramSeatMemberInfo);
       }
+      paramSeatMemberInfo = new StringBuilder();
+      paramSeatMemberInfo.append("");
+      paramSeatMemberInfo.append(GameEngine.a().a().a());
+      ReportController.b(null, "dc00898", "", "", "0X800B02A", "0X800B02A", 0, 0, "", paramSeatMemberInfo.toString(), "", "");
     }
   }
   
@@ -311,16 +329,17 @@ public class SeatView
   public void onDismiss()
   {
     this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null) {
+    ActionSheet localActionSheet = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if (localActionSheet == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(null);
+    localActionSheet.setOnButtonClickListener(null);
     this.jdField_a_of_type_ComTencentWidgetActionSheet = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.SeatView
  * JD-Core Version:    0.7.0.1
  */

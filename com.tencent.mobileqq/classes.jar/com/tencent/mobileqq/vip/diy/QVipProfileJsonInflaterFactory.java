@@ -25,48 +25,62 @@ public class QVipProfileJsonInflaterFactory
   
   public QVipProfileJsonInflaterFactory(HashMap<String, View> paramHashMap, String paramString)
   {
-    if (paramHashMap == null) {
-      throw new RuntimeException("create the QVipProfileJsonInflaterFactory with null profileHeaderViewsMap");
+    if (paramHashMap != null)
+    {
+      this.b = new HashMap();
+      this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
     }
-    this.b = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    throw new RuntimeException("create the QVipProfileJsonInflaterFactory with null profileHeaderViewsMap");
   }
   
   public View a(Context paramContext, String paramString)
   {
     if ("pf_name".equals(paramString))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView != null) {
-        throw new RuntimeException("It have duplicate " + paramString);
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView == null)
+      {
+        SLog.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了昵称控件");
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView = new ProfileNameView(paramContext);
+        paramContext = new ProfileTemplateNickNameContainer(paramContext, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+        this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
+        return paramContext;
       }
-      SLog.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了昵称控件");
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView = new ProfileNameView(paramContext);
-      paramContext = new ProfileTemplateNickNameContainer(paramContext, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
-      return paramContext;
+      paramContext = new StringBuilder();
+      paramContext.append("It have duplicate ");
+      paramContext.append(paramString);
+      throw new RuntimeException(paramContext.toString());
     }
     if ("pf_avatar".equals(paramString))
     {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        throw new RuntimeException("It have duplicate " + paramString);
+      if (this.jdField_a_of_type_AndroidViewView == null)
+      {
+        SLog.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了头像控件");
+        paramContext = LayoutInflater.from(paramContext).inflate(2131562011, null);
+        this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131374761);
+        this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_diy_nick_container", this.jdField_a_of_type_AndroidViewView);
+        return paramContext;
       }
-      SLog.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了头像控件");
-      paramContext = LayoutInflater.from(paramContext).inflate(2131562174, null);
-      this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131375247);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_diy_nick_container", this.jdField_a_of_type_AndroidViewView);
-      return paramContext;
+      paramContext = new StringBuilder();
+      paramContext.append("It have duplicate ");
+      paramContext.append(paramString);
+      throw new RuntimeException(paramContext.toString());
     }
     if ("pf_like".equals(paramString))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView != null) {
-        throw new RuntimeException("It have duplicate " + paramString);
+      if (this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView == null)
+      {
+        SLog.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了点赞控件");
+        this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView = new TemplateLikeView(paramContext);
+        this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView.a(0);
+        this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView);
+        return this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView;
       }
-      SLog.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了点赞控件");
-      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView = new TemplateLikeView(paramContext);
-      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView.a(0);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView);
-      return this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView;
+      paramContext = new StringBuilder();
+      paramContext.append("It have duplicate ");
+      paramContext.append(paramString);
+      throw new RuntimeException(paramContext.toString());
     }
     if ("image_view".equals(paramString)) {
       return new DIYImageView(paramContext);
@@ -110,7 +124,7 @@ public class QVipProfileJsonInflaterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.QVipProfileJsonInflaterFactory
  * JD-Core Version:    0.7.0.1
  */

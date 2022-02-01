@@ -19,8 +19,12 @@ class TroopGameCardConfigProcessor$2
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopGameCardConfigProcessor", 2, "onResDownloadProgress and percent is " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResDownloadProgress and percent is ");
+      localStringBuilder.append(paramInt);
+      QLog.i("TroopGameCardConfigProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -41,7 +45,7 @@ class TroopGameCardConfigProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardConfigProcessor.2
  * JD-Core Version:    0.7.0.1
  */

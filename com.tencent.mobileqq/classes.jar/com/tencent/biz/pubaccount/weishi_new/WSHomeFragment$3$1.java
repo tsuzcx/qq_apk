@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
-import android.support.v4.app.Fragment;
-import com.tencent.biz.pubaccount.weishi_new.ui.HomeTabSelectListener;
+import com.tencent.biz.pubaccount.weishi_new.ui.OnTabSelectedListener;
+import com.tencent.mobileqq.app.BaseFragment;
 import java.util.List;
 
 class WSHomeFragment$3$1
@@ -17,9 +17,15 @@ class WSHomeFragment$3$1
       int i = 0;
       while (i < WSHomeFragment.a(this.a.a).size())
       {
-        Fragment localFragment = (Fragment)WSHomeFragment.a(this.a.a).get(i);
-        if ((localFragment instanceof HomeTabSelectListener)) {
-          ((HomeTabSelectListener)localFragment).a(WSHomeFragment.a);
+        Object localObject = (BaseFragment)WSHomeFragment.a(this.a.a).get(i);
+        if ((localObject instanceof OnTabSelectedListener))
+        {
+          localObject = (OnTabSelectedListener)localObject;
+          if (WSHomeFragment.a == i) {
+            ((OnTabSelectedListener)localObject).g();
+          } else {
+            ((OnTabSelectedListener)localObject).h();
+          }
         }
         i += 1;
       }
@@ -29,7 +35,7 @@ class WSHomeFragment$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

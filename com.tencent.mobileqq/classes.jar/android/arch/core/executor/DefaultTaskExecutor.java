@@ -28,20 +28,20 @@ public class DefaultTaskExecutor
   
   public void postToMainThread(Runnable paramRunnable)
   {
-    if (this.mMainHandler == null) {}
-    synchronized (this.mLock)
-    {
-      if (this.mMainHandler == null) {
-        this.mMainHandler = new Handler(Looper.getMainLooper());
+    if (this.mMainHandler == null) {
+      synchronized (this.mLock)
+      {
+        if (this.mMainHandler == null) {
+          this.mMainHandler = new Handler(Looper.getMainLooper());
+        }
       }
-      this.mMainHandler.post(paramRunnable);
-      return;
     }
+    this.mMainHandler.post(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.core.executor.DefaultTaskExecutor
  * JD-Core Version:    0.7.0.1
  */

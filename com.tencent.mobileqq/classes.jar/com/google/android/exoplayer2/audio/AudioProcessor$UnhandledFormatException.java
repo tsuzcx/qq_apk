@@ -5,12 +5,12 @@ public final class AudioProcessor$UnhandledFormatException
 {
   public AudioProcessor$UnhandledFormatException(int paramInt1, int paramInt2, int paramInt3)
   {
-    super("Unhandled format: " + paramInt1 + " Hz, " + paramInt2 + " channels in encoding " + paramInt3);
+    super(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.AudioProcessor.UnhandledFormatException
  * JD-Core Version:    0.7.0.1
  */

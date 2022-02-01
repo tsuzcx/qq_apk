@@ -2,7 +2,7 @@ package com.tencent.mobileqq.writetogetherui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.QFragmentActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 
 class WriteTogetherEditorFragment$12
   implements DialogInterface.OnClickListener
@@ -12,13 +12,13 @@ class WriteTogetherEditorFragment$12
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    this.a.getActivity().finish();
+    this.a.getQBaseActivity().finish();
     WriteTogetherEditorFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.12
  * JD-Core Version:    0.7.0.1
  */

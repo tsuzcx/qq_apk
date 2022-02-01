@@ -21,7 +21,7 @@ public final class MathUtils
   
   public static final float a(float paramFloat)
   {
-    return MathUtils.Sin.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
+    return MathUtils.Sin.a[((int)(paramFloat * 45.511112F) & 0x3FFF)];
   }
   
   public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -51,14 +51,9 @@ public final class MathUtils
     return paramInt1;
   }
   
-  public static final boolean a()
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextBoolean();
-  }
-  
   public static final float b(float paramFloat)
   {
-    return MathUtils.Sin.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
+    return MathUtils.Sin.a[((int)((paramFloat + 90.0F) * 45.511112F) & 0x3FFF)];
   }
   
   public static final float c(float paramFloat)
@@ -68,7 +63,7 @@ public final class MathUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.MathUtils
  * JD-Core Version:    0.7.0.1
  */

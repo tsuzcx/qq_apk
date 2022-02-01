@@ -27,6 +27,8 @@ class MapViewJsPlugin$11
         this.val$req.fail();
         return;
       }
+      this.val$req.fail();
+      return;
     }
     catch (JSONException localJSONException)
     {
@@ -34,14 +36,12 @@ class MapViewJsPlugin$11
         QMLog.e("MapViewJsPlugin", "", localJSONException);
       }
       this.val$req.fail();
-      return;
     }
-    this.val$req.fail();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.map.MapViewJsPlugin.11
  * JD-Core Version:    0.7.0.1
  */

@@ -13,41 +13,42 @@ class JoinDiscussionActivity$FaceObserver
 {
   private JoinDiscussionActivity$FaceObserver(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.app.getCurrentAccountUin().equals(paramString))) {}
-    label192:
-    for (;;)
+    if ((paramBoolean) && (this.a.jdField_a_of_type_JavaUtilList != null))
     {
-      return;
+      if (this.a.app.getCurrentAccountUin().equals(paramString)) {
+        return;
+      }
+      int j = 0;
       Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
       do
       {
+        i = j;
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
       } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
-      for (int i = 1;; i = 0)
+      int i = 1;
+      if ((i != 0) && (!this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
       {
-        if ((i == 0) || (this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
-          break label192;
-        }
         this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
         localObject = new StringBuilder();
         JoinDiscussionActivity localJoinDiscussionActivity = this.a;
-        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
-        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != this.a.b) {
-          break;
+        ((StringBuilder)localObject).append(localJoinDiscussionActivity.f);
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(";");
+        localJoinDiscussionActivity.f = ((StringBuilder)localObject).toString();
+        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() == this.a.b) {
+          ThreadManager.post(new JoinDiscussionActivity.FaceObserver.1(this), 8, null, true);
         }
-        ThreadManager.post(new JoinDiscussionActivity.FaceObserver.1(this), 8, null, true);
-        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.FaceObserver
  * JD-Core Version:    0.7.0.1
  */

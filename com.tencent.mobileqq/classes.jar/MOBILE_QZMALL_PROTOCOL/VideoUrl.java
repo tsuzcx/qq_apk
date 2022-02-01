@@ -26,17 +26,19 @@ public final class VideoUrl
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strContentUrl != null) {
-      paramJceOutputStream.write(this.strContentUrl, 0);
+    String str = this.strContentUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strCoverUrl != null) {
-      paramJceOutputStream.write(this.strCoverUrl, 1);
+    str = this.strCoverUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MOBILE_QZMALL_PROTOCOL.VideoUrl
  * JD-Core Version:    0.7.0.1
  */

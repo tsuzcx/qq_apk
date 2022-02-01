@@ -34,16 +34,13 @@ public class Platform
     ArrayList localArrayList = new ArrayList(paramList.size());
     int j = paramList.size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Protocol localProtocol = (Protocol)paramList.get(i);
-      if (localProtocol == Protocol.HTTP_1_0) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (localProtocol != Protocol.HTTP_1_0) {
         localArrayList.add(localProtocol.toString());
       }
+      i += 1;
     }
     return localArrayList;
   }
@@ -53,50 +50,44 @@ public class Platform
     Buffer localBuffer = new Buffer();
     int j = paramList.size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Protocol localProtocol = (Protocol)paramList.get(i);
-      if (localProtocol == Protocol.HTTP_1_0) {}
-      for (;;)
+      if (localProtocol != Protocol.HTTP_1_0)
       {
-        i += 1;
-        break;
         localBuffer.writeByte(localProtocol.toString().length());
         localBuffer.writeUtf8(localProtocol.toString());
       }
+      i += 1;
     }
     return localBuffer.readByteArray();
   }
   
   private static Platform findPlatform()
   {
-    Object localObject1 = Android10Platform.buildIfSupported();
-    if (localObject1 != null) {}
-    Object localObject2;
-    do
+    Object localObject = Android10Platform.buildIfSupported();
+    if (localObject != null) {
+      return localObject;
+    }
+    localObject = AndroidPlatform.buildIfSupported();
+    if (localObject != null) {
+      return localObject;
+    }
+    if (isConscryptPreferred())
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return localObject1;
-            localObject2 = AndroidPlatform.buildIfSupported();
-            localObject1 = localObject2;
-          } while (localObject2 != null);
-          if (!isConscryptPreferred()) {
-            break;
-          }
-          localObject2 = ConscryptPlatform.buildIfSupported();
-          localObject1 = localObject2;
-        } while (localObject2 != null);
-        localObject2 = Jdk9Platform.buildIfSupported();
-        localObject1 = localObject2;
-      } while (localObject2 != null);
-      localObject2 = JdkWithJettyBootPlatform.buildIfSupported();
-      localObject1 = localObject2;
-    } while (localObject2 != null);
+      localObject = ConscryptPlatform.buildIfSupported();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    localObject = Jdk9Platform.buildIfSupported();
+    if (localObject != null) {
+      return localObject;
+    }
+    localObject = JdkWithJettyBootPlatform.buildIfSupported();
+    if (localObject != null) {
+      return localObject;
+    }
     return new Platform();
   }
   
@@ -116,27 +107,33 @@ public class Platform
   @Nullable
   static <T> T readFieldOrNull(Object paramObject, Class<T> paramClass, String paramString)
   {
-    Class localClass = paramObject.getClass();
-    while (localClass != Object.class) {
+    for (Class localClass = paramObject.getClass(); localClass != Object.class; localClass = localClass.getSuperclass())
+    {
       try
       {
         Object localObject = localClass.getDeclaredField(paramString);
         ((Field)localObject).setAccessible(true);
         localObject = ((Field)localObject).get(paramObject);
-        if ((localObject == null) || (!paramClass.isInstance(localObject))) {
-          break label110;
+        if (localObject != null)
+        {
+          if (!paramClass.isInstance(localObject)) {
+            return null;
+          }
+          localObject = paramClass.cast(localObject);
+          return localObject;
         }
-        localObject = paramClass.cast(localObject);
-        return localObject;
-      }
-      catch (IllegalAccessException paramObject)
-      {
-        throw new AssertionError();
+        return null;
       }
       catch (NoSuchFieldException localNoSuchFieldException)
       {
-        localClass = localClass.getSuperclass();
+        continue;
       }
+      catch (IllegalAccessException paramObject)
+      {
+        label61:
+        break label61;
+      }
+      throw new AssertionError();
     }
     if (!paramString.equals("delegate"))
     {
@@ -146,19 +143,22 @@ public class Platform
       }
     }
     return null;
-    label110:
-    return null;
   }
   
   public void afterHandshake(SSLSocket paramSSLSocket) {}
   
   public CertificateChainCleaner buildCertificateChainCleaner(SSLSocketFactory paramSSLSocketFactory)
   {
-    X509TrustManager localX509TrustManager = trustManager(paramSSLSocketFactory);
-    if (localX509TrustManager == null) {
-      throw new IllegalStateException("Unable to extract the trust manager on " + get() + ", sslSocketFactory is " + paramSSLSocketFactory.getClass());
+    Object localObject = trustManager(paramSSLSocketFactory);
+    if (localObject != null) {
+      return buildCertificateChainCleaner((X509TrustManager)localObject);
     }
-    return buildCertificateChainCleaner(localX509TrustManager);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unable to extract the trust manager on ");
+    ((StringBuilder)localObject).append(get());
+    ((StringBuilder)localObject).append(", sslSocketFactory is ");
+    ((StringBuilder)localObject).append(paramSSLSocketFactory.getClass());
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   public CertificateChainCleaner buildCertificateChainCleaner(X509TrustManager paramX509TrustManager)
@@ -187,22 +187,28 @@ public class Platform
   
   public SSLContext getSSLContext()
   {
-    if ("1.7".equals(System.getProperty("java.specification.version"))) {
+    if ("1.7".equals(System.getProperty("java.specification.version"))) {}
+    for (;;)
+    {
       try
       {
-        SSLContext localSSLContext1 = SSLContext.getInstance("TLSv1.2");
-        return localSSLContext1;
+        localSSLContext = SSLContext.getInstance("TLSv1.2");
+        return localSSLContext;
       }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1) {}
-    }
-    try
-    {
-      SSLContext localSSLContext2 = SSLContext.getInstance("TLS");
-      return localSSLContext2;
-    }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
-    {
-      throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException2);
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
+      {
+        SSLContext localSSLContext;
+        continue;
+      }
+      try
+      {
+        localSSLContext = SSLContext.getInstance("TLS");
+        return localSSLContext;
+      }
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
+      {
+        throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException1);
+      }
     }
   }
   
@@ -227,21 +233,26 @@ public class Platform
   
   public void log(int paramInt, String paramString, @Nullable Throwable paramThrowable)
   {
-    if (paramInt == 5) {}
-    for (Level localLevel = Level.WARNING;; localLevel = Level.INFO)
-    {
-      logger.log(localLevel, paramString, paramThrowable);
-      return;
+    Level localLevel;
+    if (paramInt == 5) {
+      localLevel = Level.WARNING;
+    } else {
+      localLevel = Level.INFO;
     }
+    logger.log(localLevel, paramString, paramThrowable);
   }
   
   public void logCloseableLeak(String paramString, Object paramObject)
   {
-    String str = paramString;
-    if (paramObject == null) {
-      str = paramString + " To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);";
+    Object localObject = paramString;
+    if (paramObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);");
+      localObject = ((StringBuilder)localObject).toString();
     }
-    log(5, str, (Throwable)paramObject);
+    log(5, (String)localObject, (Throwable)paramObject);
   }
   
   public String toString()
@@ -267,7 +278,7 @@ public class Platform
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.platform.Platform
  * JD-Core Version:    0.7.0.1
  */

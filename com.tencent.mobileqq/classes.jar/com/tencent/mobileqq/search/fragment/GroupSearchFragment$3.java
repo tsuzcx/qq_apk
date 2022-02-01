@@ -1,30 +1,20 @@
 package com.tencent.mobileqq.search.fragment;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class GroupSearchFragment$3
-  implements View.OnClickListener
+  implements Runnable
 {
   GroupSearchFragment$3(GroupSearchFragment paramGroupSearchFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.c = 1;
-    if (UniteSearchActivity.a(GroupSearchFragment.b(this.a), GroupSearchFragment.a(this.a))) {
-      this.a.c = 1;
-    }
-    this.a.h();
-    this.a.b.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    long l = System.currentTimeMillis();
+    this.this$0.g();
+    GroupSearchFragment.a(this.this$0, System.currentTimeMillis() - l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.GroupSearchFragment.3
  * JD-Core Version:    0.7.0.1
  */

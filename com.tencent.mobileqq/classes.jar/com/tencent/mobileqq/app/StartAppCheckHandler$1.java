@@ -19,37 +19,38 @@ class StartAppCheckHandler$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      Object localObject;
-      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
-      {
-        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), ProtoServlet.class);
-        ((NewIntent)localObject).putExtra("data", ((StartAppCheckHandler.SendingAPP)paramMessage.obj).a.toByteArray());
-        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
-        ((NewIntent)localObject).setObserver(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP = null;
+      if (i != 3) {
         return;
-        localObject = this.a.createToServiceMsg("SecCheckSigSvc.UploadReq");
-        ((ToServiceMsg)localObject).putWupBuffer(((StartAppCheckHandler.SendingAPP)paramMessage.obj).a.toByteArray());
-        this.a.sendPbReq((ToServiceMsg)localObject);
       }
+      new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
+      return;
     }
-    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
+    Object localObject;
+    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
+    {
+      localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), ProtoServlet.class);
+      ((NewIntent)localObject).putExtra("data", ((StartAppCheckHandler.SendingAPP)paramMessage.obj).a.toByteArray());
+      ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
+      ((NewIntent)localObject).setObserver(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
+    }
+    else
+    {
+      localObject = this.a.createToServiceMsg("SecCheckSigSvc.UploadReq");
+      ((ToServiceMsg)localObject).putWupBuffer(((StartAppCheckHandler.SendingAPP)paramMessage.obj).a.toByteArray());
+      this.a.sendPbReq((ToServiceMsg)localObject);
+    }
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Boolean = false;
+    paramMessage.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.StartAppCheckHandler.1
  * JD-Core Version:    0.7.0.1
  */

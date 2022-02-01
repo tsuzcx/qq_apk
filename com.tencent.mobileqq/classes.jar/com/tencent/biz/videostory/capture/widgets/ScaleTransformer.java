@@ -15,15 +15,14 @@ public class ScaleTransformer
     this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsPivot.a(paramView);
     this.jdField_b_of_type_ComTencentBizVideostoryCaptureWidgetsPivot.a(paramView);
     paramFloat = Math.abs(paramFloat);
-    float f = this.jdField_a_of_type_Float;
-    paramFloat = (1.0F - paramFloat) * this.jdField_b_of_type_Float + f;
+    paramFloat = this.jdField_a_of_type_Float + this.jdField_b_of_type_Float * (1.0F - paramFloat);
     paramView.setScaleX(paramFloat);
     paramView.setScaleY(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.capture.widgets.ScaleTransformer
  * JD-Core Version:    0.7.0.1
  */

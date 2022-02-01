@@ -1,16 +1,22 @@
 package com.tencent.tkd.topicsdk.bean;
 
+import com.tencent.tkd.topicsdk.framework.TopicSDKHelperKt;
+import java.io.File;
 import java.io.Serializable;
 import kotlin.Metadata;
+import kotlin.concurrent.ThreadsKt;
+import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "Ljava/io/Serializable;", "media", "Lcom/tencent/tkd/topicsdk/bean/Media;", "(Lcom/tencent/tkd/topicsdk/bean/Media;)V", "coverPath", "", "getCoverPath", "()Ljava/lang/String;", "setCoverPath", "(Ljava/lang/String;)V", "endMergeTime", "", "getEndMergeTime", "()I", "setEndMergeTime", "(I)V", "filterType", "getFilterType", "setFilterType", "fromPage", "getFromPage", "setFromPage", "initialProgress", "", "getInitialProgress", "()F", "setInitialProgress", "(F)V", "getMedia", "()Lcom/tencent/tkd/topicsdk/bean/Media;", "setMedia", "mergeDuration", "", "getMergeDuration", "()J", "mergePath", "getMergePath", "setMergePath", "realDuration", "getRealDuration", "realPath", "getRealPath", "speedMode", "getSpeedMode", "setSpeedMode", "startMergeTime", "getStartMergeTime", "setStartMergeTime", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "Ljava/io/Serializable;", "media", "Lcom/tencent/tkd/topicsdk/bean/Media;", "(Lcom/tencent/tkd/topicsdk/bean/Media;)V", "backupCoverPath", "", "getBackupCoverPath", "()Ljava/lang/String;", "setBackupCoverPath", "(Ljava/lang/String;)V", "value", "coverPath", "getCoverPath", "setCoverPath", "endMergeTime", "", "getEndMergeTime", "()I", "setEndMergeTime", "(I)V", "filterType", "getFilterType", "setFilterType", "fromPage", "getFromPage", "setFromPage", "initialProgress", "", "getInitialProgress", "()F", "setInitialProgress", "(F)V", "getMedia", "()Lcom/tencent/tkd/topicsdk/bean/Media;", "setMedia", "mergeDuration", "", "getMergeDuration", "()J", "mergePath", "getMergePath", "setMergePath", "realDuration", "getRealDuration", "realPath", "getRealPath", "speedMode", "getSpeedMode", "setSpeedMode", "startMergeTime", "getStartMergeTime", "setStartMergeTime", "copyCoverToBaseDir", "", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class DisplayItem
   implements Serializable
 {
   public static final DisplayItem.Companion Companion = new DisplayItem.Companion(null);
   private static final long serialVersionUID = 0L;
+  @NotNull
+  private String backupCoverPath;
   @NotNull
   private String coverPath;
   private int endMergeTime;
@@ -30,6 +36,23 @@ public final class DisplayItem
     this.coverPath = "";
     this.mergePath = "";
     this.endMergeTime = ((int)this.media.getDuration());
+    paramMedia = new File(TopicSDKHelperKt.a(), "tmp_cover_path.jpg").getAbsolutePath();
+    Intrinsics.checkExpressionValueIsNotNull(paramMedia, "File(baseFileDir, \"tmp_c…r_path.jpg\").absolutePath");
+    this.backupCoverPath = paramMedia;
+  }
+  
+  private final void a()
+  {
+    File localFile = new File(this.coverPath);
+    if (localFile.exists()) {
+      ThreadsKt.thread$default(false, false, null, null, 0, (Function0)new DisplayItem.copyCoverToBaseDir.1(this, localFile), 31, null);
+    }
+  }
+  
+  @NotNull
+  public final String getBackupCoverPath()
+  {
+    return this.backupCoverPath;
   }
   
   @NotNull
@@ -66,10 +89,12 @@ public final class DisplayItem
   
   public final long getMergeDuration()
   {
-    if (this.startMergeTime > this.endMergeTime) {
+    int i = this.startMergeTime;
+    int j = this.endMergeTime;
+    if (i > j) {
       return this.media.getDuration();
     }
-    return this.endMergeTime - this.startMergeTime;
+    return j - i;
   }
   
   @NotNull
@@ -89,8 +114,13 @@ public final class DisplayItem
   @NotNull
   public final String getRealPath()
   {
-    if (((CharSequence)this.mergePath).length() > 0) {}
-    for (int i = 1; i != 0; i = 0) {
+    int i;
+    if (((CharSequence)this.mergePath).length() > 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
       return this.mergePath;
     }
     return this.media.getFilePath();
@@ -106,10 +136,17 @@ public final class DisplayItem
     return this.startMergeTime;
   }
   
-  public final void setCoverPath(@NotNull String paramString)
+  public final void setBackupCoverPath(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.backupCoverPath = paramString;
+  }
+  
+  public final void setCoverPath(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "value");
     this.coverPath = paramString;
+    a();
   }
   
   public final void setEndMergeTime(int paramInt)
@@ -156,7 +193,7 @@ public final class DisplayItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.DisplayItem
  * JD-Core Version:    0.7.0.1
  */

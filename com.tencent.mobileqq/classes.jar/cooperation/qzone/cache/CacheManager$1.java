@@ -11,18 +11,19 @@ final class CacheManager$1
   {
     synchronized ()
     {
-      if (CacheManager.access$000().size() <= 0)
-      {
-        localObject1 = null;
-        return localObject1;
+      ArrayList localArrayList;
+      if (CacheManager.access$000().size() <= 0) {
+        localArrayList = null;
+      } else {
+        localArrayList = new ArrayList(CacheManager.access$000().values());
       }
-      Object localObject1 = new ArrayList(CacheManager.access$000().values());
+      return localArrayList;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.cache.CacheManager.1
  * JD-Core Version:    0.7.0.1
  */

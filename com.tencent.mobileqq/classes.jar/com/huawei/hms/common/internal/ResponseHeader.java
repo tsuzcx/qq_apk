@@ -63,7 +63,10 @@ public class ResponseHeader
     }
     catch (JSONException paramString)
     {
-      HMSLog.e("ResponseHeader", "fromJson failed: " + paramString.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fromJson failed: ");
+      localStringBuilder.append(paramString.getMessage());
+      HMSLog.e("ResponseHeader", localStringBuilder.toString());
     }
     return false;
   }
@@ -138,6 +141,11 @@ public class ResponseHeader
     return this.transaction_id;
   }
   
+  public boolean hasResolution()
+  {
+    return this.parcelable != null;
+  }
+  
   public boolean isSuccess()
   {
     return this.status_code == 0;
@@ -210,7 +218,8 @@ public class ResponseHeader
       localJSONObject.put("api_name", this.api_name);
       localJSONObject.put("app_id", this.app_id);
       localJSONObject.put("pkg_name", this.pkg_name);
-      if (!TextUtils.isEmpty(this.session_id)) {
+      boolean bool = TextUtils.isEmpty(this.session_id);
+      if (!bool) {
         localJSONObject.put("session_id", this.session_id);
       }
       localJSONObject.put("transaction_id", this.transaction_id);
@@ -218,22 +227,37 @@ public class ResponseHeader
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        HMSLog.e("ResponseHeader", "toJson failed: " + localJSONException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("toJson failed: ");
+      localStringBuilder.append(localJSONException.getMessage());
+      HMSLog.e("ResponseHeader", localStringBuilder.toString());
     }
     return localJSONObject.toString();
   }
   
   public String toString()
   {
-    return "status_code:" + this.status_code + ", error_code" + this.error_code + ", api_name:" + this.api_name + ", app_id:" + this.app_id + ", pkg_name:" + this.pkg_name + ", session_id:*, transaction_id:" + this.transaction_id + ", resolution:" + this.resolution;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("status_code:");
+    localStringBuilder.append(this.status_code);
+    localStringBuilder.append(", error_code");
+    localStringBuilder.append(this.error_code);
+    localStringBuilder.append(", api_name:");
+    localStringBuilder.append(this.api_name);
+    localStringBuilder.append(", app_id:");
+    localStringBuilder.append(this.app_id);
+    localStringBuilder.append(", pkg_name:");
+    localStringBuilder.append(this.pkg_name);
+    localStringBuilder.append(", session_id:*, transaction_id:");
+    localStringBuilder.append(this.transaction_id);
+    localStringBuilder.append(", resolution:");
+    localStringBuilder.append(this.resolution);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.ResponseHeader
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,11 @@ class AdvertisementVideoPreloadManager$7
   {
     synchronized (AdvertisementVideoPreloadManager.a(this.this$0))
     {
-      AdvertisementVideoPreloadManager.c("loadLocalConfigTask uin:" + this.a);
-      Object localObject2 = AdvertisementVideoPreloadManager.a(this.this$0);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("loadLocalConfigTask uin:");
+      ((StringBuilder)localObject2).append(this.a);
+      AdvertisementVideoPreloadManager.c(((StringBuilder)localObject2).toString());
+      localObject2 = AdvertisementVideoPreloadManager.a(this.this$0);
       if (localObject2 != null)
       {
         localObject2 = ((PublicAccountEntityHelper)localObject2).a(PAAdPreloadTask.class, true, "mUserUin = ?", new String[] { this.a }, null, null, "mExpireTime asc", null);
@@ -25,21 +28,24 @@ class AdvertisementVideoPreloadManager$7
         {
           AdvertisementVideoPreloadManager.a(this.this$0).clear();
           AdvertisementVideoPreloadManager.a(this.this$0).addAll((Collection)localObject2);
-          AdvertisementVideoPreloadManager.c("loadLocalConfigTask taskSize:" + ((List)localObject2).size());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("loadLocalConfigTask taskSize:");
+          localStringBuilder.append(((List)localObject2).size());
+          AdvertisementVideoPreloadManager.c(localStringBuilder.toString());
           ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.7.1(this));
         }
+        else
+        {
+          AdvertisementVideoPreloadManager.c("loadLocalConfigTask tasklist null");
+        }
       }
-      else
-      {
-        return;
-      }
-      AdvertisementVideoPreloadManager.c("loadLocalConfigTask tasklist null");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.7
  * JD-Core Version:    0.7.0.1
  */

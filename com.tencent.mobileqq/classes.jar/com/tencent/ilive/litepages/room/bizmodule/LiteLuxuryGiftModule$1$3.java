@@ -21,17 +21,18 @@ class LiteLuxuryGiftModule$1$3
       while (paramList.hasNext())
       {
         GiftEffectResourceInfo localGiftEffectResourceInfo = (GiftEffectResourceInfo)paramList.next();
-        localArrayList.add(LiteLuxuryGiftModule.access$1300(this.this$1.this$0, localGiftEffectResourceInfo));
+        localArrayList.add(LiteLuxuryGiftModule.access$1200(this.this$1.this$0, localGiftEffectResourceInfo));
       }
     }
-    if (this.val$listener != null) {
-      this.val$listener.onCompleted(localArrayList);
+    paramList = this.val$listener;
+    if (paramList != null) {
+      paramList.onCompleted(localArrayList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule.1.3
  * JD-Core Version:    0.7.0.1
  */

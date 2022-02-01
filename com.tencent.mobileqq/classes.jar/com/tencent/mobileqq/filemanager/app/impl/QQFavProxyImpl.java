@@ -28,51 +28,58 @@ public class QQFavProxyImpl
   
   private void handleGettedFileList(long paramLong, List<FavFileInfo> paramList, Bundle paramBundle)
   {
-    Object localObject = TAG;
-    StringBuilder localStringBuilder = new StringBuilder().append(FTL).append("onGettedFileList. reqTimeStamp:").append(paramLong).append(" size:");
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(FTL);
+    ((StringBuilder)localObject2).append("onGettedFileList. reqTimeStamp:");
+    ((StringBuilder)localObject2).append(paramLong);
+    ((StringBuilder)localObject2).append(" size:");
     int i;
-    if (paramList != null)
-    {
+    if (paramList != null) {
       i = paramList.size();
-      QLog.i((String)localObject, 1, i);
-      if (this.mResultCbs != null) {
-        if (paramBundle == null) {
-          break label257;
-        }
-      }
+    } else {
+      i = 0;
     }
-    label257:
-    for (boolean bool = paramBundle.getBoolean("fecth_operate_end");; bool = true)
+    ((StringBuilder)localObject2).append(i);
+    QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    if (this.mResultCbs != null)
     {
-      localObject = (IQQFavProxy.GetFileListResult)this.mResultCbs.get(Long.valueOf(paramLong));
-      if (localObject == null) {}
-      do
-      {
+      boolean bool;
+      if (paramBundle != null) {
+        bool = paramBundle.getBoolean("fecth_operate_end");
+      } else {
+        bool = true;
+      }
+      localObject1 = (IQQFavProxy.GetFileListResult)this.mResultCbs.get(Long.valueOf(paramLong));
+      if (localObject1 == null) {
         return;
-        i = 0;
-        break;
-        if (((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_JavaUtilList == null) {
-          ((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_JavaUtilList = new ArrayList();
-        }
-        if (bool)
-        {
-          this.mResultCbs.remove(Long.valueOf(paramLong));
-          if (paramList != null) {
-            ((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
-          }
-          if (paramBundle != null) {
-            ((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
-          }
-          ((IQQFavProxy.GetFileListResult)localObject).a(0, ((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_JavaUtilList, paramBundle);
-          return;
-        }
-        QLog.i(TAG, 1, FTL + "onGettedFileList. fav is getting and waiting");
+      }
+      if (((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_JavaUtilList == null) {
+        ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+      }
+      if (bool)
+      {
+        this.mResultCbs.remove(Long.valueOf(paramLong));
         if (paramList != null) {
-          ((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
+          ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_JavaUtilList.addAll(paramList);
         }
-      } while (paramBundle == null);
-      ((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
-      return;
+        if (paramBundle != null) {
+          ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
+        }
+        ((IQQFavProxy.GetFileListResult)localObject1).a(0, ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_JavaUtilList, paramBundle);
+        return;
+      }
+      localObject2 = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FTL);
+      localStringBuilder.append("onGettedFileList. fav is getting and waiting");
+      QLog.i((String)localObject2, 1, localStringBuilder.toString());
+      if (paramList != null) {
+        ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_JavaUtilList.addAll(paramList);
+      }
+      if (paramBundle != null) {
+        ((IQQFavProxy.GetFileListResult)localObject1).jdField_a_of_type_Long = paramBundle.getLong("resultTimestamp");
+      }
     }
   }
   
@@ -86,9 +93,15 @@ public class QQFavProxyImpl
   
   public void cancelGetFileList(long paramLong)
   {
-    QLog.i(TAG, 1, FTL + "cancelGetFileList. reqTimeStamp:" + paramLong);
-    if (this.mResultCbs != null) {
-      this.mResultCbs.remove(Long.valueOf(paramLong));
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FTL);
+    localStringBuilder.append("cancelGetFileList. reqTimeStamp:");
+    localStringBuilder.append(paramLong);
+    QLog.i((String)localObject, 1, localStringBuilder.toString());
+    localObject = this.mResultCbs;
+    if (localObject != null) {
+      ((HashMap)localObject).remove(Long.valueOf(paramLong));
     }
   }
   
@@ -102,31 +115,37 @@ public class QQFavProxyImpl
   
   public void downloadThumb(FavFileInfo paramFavFileInfo, int paramInt)
   {
-    if (paramInt == 0) {
-      paramInt = 64;
-    }
-    for (;;)
-    {
-      QLog.i(TAG, 1, FTL + "downloadThumb. favId:" + paramFavFileInfo.jdField_a_of_type_Long + " format:" + paramInt);
-      ((IQQFavHelper)this.mApp.getRuntimeService(IQQFavHelper.class)).downloadThumb(this.mApp, paramFavFileInfo, paramInt);
-      return;
+    int i = 64;
+    if (paramInt != 0) {
       if (paramInt == 1) {
-        paramInt = 128;
+        i = 128;
       } else if (paramInt == 2) {
-        paramInt = 320;
+        i = 320;
       } else if (paramInt == 3) {
-        paramInt = 640;
+        i = 640;
       } else if (paramInt == 4) {
-        paramInt = 1024;
-      } else {
-        paramInt = 64;
+        i = 1024;
       }
     }
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FTL);
+    localStringBuilder.append("downloadThumb. favId:");
+    localStringBuilder.append(paramFavFileInfo.jdField_a_of_type_Long);
+    localStringBuilder.append(" format:");
+    localStringBuilder.append(i);
+    QLog.i(str, 1, localStringBuilder.toString());
+    ((IQQFavHelper)this.mApp.getRuntimeService(IQQFavHelper.class)).downloadThumb(this.mApp, paramFavFileInfo, i);
   }
   
   public void getFileList(long paramLong, boolean paramBoolean, Bundle paramBundle, IQQFavProxy.GetFileListResult paramGetFileListResult)
   {
-    QLog.i(TAG, 1, FTL + "getFileList. lastTimestamp:" + paramLong);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FTL);
+    localStringBuilder.append("getFileList. lastTimestamp:");
+    localStringBuilder.append(paramLong);
+    QLog.i(str, 1, localStringBuilder.toString());
     if (this.mResultCbs == null) {
       this.mResultCbs = new HashMap();
     }
@@ -138,14 +157,15 @@ public class QQFavProxyImpl
   
   public long getGettedPartList(long paramLong, List<FavFileInfo> paramList)
   {
-    if (this.mResultCbs != null)
+    Object localObject = this.mResultCbs;
+    if (localObject != null)
     {
-      IQQFavProxy.GetFileListResult localGetFileListResult = (IQQFavProxy.GetFileListResult)this.mResultCbs.get(Long.valueOf(paramLong));
+      localObject = (IQQFavProxy.GetFileListResult)((HashMap)localObject).get(Long.valueOf(paramLong));
       if (paramList != null) {
-        paramList.addAll(localGetFileListResult.jdField_a_of_type_JavaUtilList);
+        paramList.addAll(((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_JavaUtilList);
       }
-      if (localGetFileListResult != null) {
-        return localGetFileListResult.jdField_a_of_type_Long;
+      if (localObject != null) {
+        return ((IQQFavProxy.GetFileListResult)localObject).jdField_a_of_type_Long;
       }
     }
     return 0L;
@@ -160,31 +180,47 @@ public class QQFavProxyImpl
   
   public void onFileDownloaded(long paramLong, String paramString)
   {
-    QLog.i(TAG, 1, FTL + "onFileDownloaded. favId:" + paramLong + " strSavePath:" + paramString + "lz:" + this.mListeners.size());
-    if (this.mListeners.size() == 0) {}
-    for (;;)
-    {
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FTL);
+    localStringBuilder.append("onFileDownloaded. favId:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" strSavePath:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("lz:");
+    localStringBuilder.append(this.mListeners.size());
+    QLog.i((String)localObject, 1, localStringBuilder.toString());
+    if (this.mListeners.size() == 0) {
       return;
-      Object localObject = Looper.getMainLooper();
-      if (Thread.currentThread() != ((Looper)localObject).getThread())
-      {
-        new Handler((Looper)localObject).post(new QQFavProxyImpl.4(this, paramLong, paramString));
-        return;
-      }
-      localObject = this.mListeners.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((IQQFavProxy.QQFavProxyListener)((Iterator)localObject).next()).a(paramLong, paramString);
-      }
+    }
+    localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new QQFavProxyImpl.4(this, paramLong, paramString));
+      return;
+    }
+    localObject = this.mListeners.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((IQQFavProxy.QQFavProxyListener)((Iterator)localObject).next()).a(paramLong, paramString);
     }
   }
   
   public void onFileListRefreshed(boolean paramBoolean, Bundle paramBundle)
   {
-    String str = "";
+    String str1;
     if (paramBundle != null) {
-      str = paramBundle.getString("delete_favids");
+      str1 = paramBundle.getString("delete_favids");
+    } else {
+      str1 = "";
     }
-    QLog.i(TAG, 1, FTL + "onFileListRefreshed. bSuc:" + paramBoolean + " delFavIds:" + str);
+    String str2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FTL);
+    localStringBuilder.append("onFileListRefreshed. bSuc:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" delFavIds:");
+    localStringBuilder.append(str1);
+    QLog.i(str2, 1, localStringBuilder.toString());
     if (this.mListeners.size() == 0) {
       return;
     }
@@ -193,31 +229,42 @@ public class QQFavProxyImpl
   
   public void onFileThumbUpdated(long paramLong, String paramString, int paramInt)
   {
-    int i = 0;
-    QLog.i(TAG, 1, FTL + "onFileThumbUpdated. favId:" + paramLong + " strThumbPath:" + paramString + " format:" + paramInt + " lz:" + this.mListeners.size());
-    if (this.mListeners.size() == 0) {}
-    for (;;)
-    {
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FTL);
+    localStringBuilder.append("onFileThumbUpdated. favId:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" strThumbPath:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" format:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" lz:");
+    localStringBuilder.append(this.mListeners.size());
+    QLog.i((String)localObject, 1, localStringBuilder.toString());
+    if (this.mListeners.size() == 0) {
       return;
-      if (paramInt == 64) {}
-      for (;;)
+    }
+    if (paramInt == 64) {}
+    do
+    {
+      paramInt = 0;
+      break;
+      if (paramInt == 128)
       {
-        localObject = Looper.getMainLooper();
-        if (Thread.currentThread() == ((Looper)localObject).getThread()) {
-          break;
-        }
-        new Handler((Looper)localObject).post(new QQFavProxyImpl.3(this, paramLong, i, paramString));
-        return;
-        if (paramInt == 128) {
-          i = 1;
-        } else if (paramInt == 320) {
-          i = 2;
-        }
+        paramInt = 1;
+        break;
       }
-      Object localObject = this.mListeners.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((IQQFavProxy.QQFavProxyListener)((Iterator)localObject).next()).a(paramLong, i, paramString);
-      }
+    } while (paramInt != 320);
+    paramInt = 2;
+    localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread())
+    {
+      new Handler((Looper)localObject).post(new QQFavProxyImpl.3(this, paramLong, paramInt, paramString));
+      return;
+    }
+    localObject = this.mListeners.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((IQQFavProxy.QQFavProxyListener)((Iterator)localObject).next()).a(paramLong, paramInt, paramString);
     }
   }
   
@@ -228,19 +275,32 @@ public class QQFavProxyImpl
   
   public boolean refreshList(Bundle paramBundle)
   {
-    QLog.i(TAG, 1, FTL + "refreshList.");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FTL);
+    localStringBuilder.append("refreshList.");
+    QLog.i(str, 1, localStringBuilder.toString());
     return ((IQQFavHelper)this.mApp.getRuntimeService(IQQFavHelper.class)).refreshList(this.mApp, paramBundle);
   }
   
   public void sendFavFiles(List<FavFileInfo> paramList, String paramString, int paramInt, Bundle paramBundle)
   {
-    QLog.i(TAG, 1, FTL + "sendFavFiles. size:" + paramList.size() + " strToUin:" + paramString + " toUinType:" + paramInt);
+    paramBundle = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FTL);
+    localStringBuilder.append("sendFavFiles. size:");
+    localStringBuilder.append(paramList.size());
+    localStringBuilder.append(" strToUin:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" toUinType:");
+    localStringBuilder.append(paramInt);
+    QLog.i(paramBundle, 1, localStringBuilder.toString());
     ((IQQFavHelper)this.mApp.getRuntimeService(IQQFavHelper.class)).forwardFavFileList(this.mApp, paramList, paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.impl.QQFavProxyImpl
  * JD-Core Version:    0.7.0.1
  */

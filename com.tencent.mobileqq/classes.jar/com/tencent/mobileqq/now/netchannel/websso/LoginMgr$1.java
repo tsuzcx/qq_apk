@@ -15,9 +15,15 @@ class LoginMgr$1
   
   public void a(int paramInt, String paramString)
   {
-    Log.d("now_live_login_mgr", "login faile, errCode=" + paramInt + ", errMsg=" + paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener.a(paramInt, paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("login faile, errCode=");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", errMsg=");
+    ((StringBuilder)localObject).append(paramString);
+    Log.d("now_live_login_mgr", ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener;
+    if (localObject != null) {
+      ((LoginMgr.Listener)localObject).a(paramInt, paramString);
     }
   }
   
@@ -31,40 +37,43 @@ class LoginMgr$1
       try
       {
         Log.d("now_live_login_mgr", "login success");
-        LoginMergedProto.LoginRsp localLoginRsp = new LoginMergedProto.LoginRsp();
-        localLoginRsp.mergeFrom(paramArrayOfByte);
-        UserInfoMgr.a().a(localLoginRsp.account_base_info.uid.get());
-        UserInfoMgr.a().b(localLoginRsp.account_base_info.tinyid.get());
-        UserInfoMgr.a().a(localLoginRsp.tickets.auth_key.get());
+        localObject = new LoginMergedProto.LoginRsp();
+        ((LoginMergedProto.LoginRsp)localObject).mergeFrom(paramArrayOfByte);
+        UserInfoMgr.a().a(((LoginMergedProto.LoginRsp)localObject).account_base_info.uid.get());
+        UserInfoMgr.a().b(((LoginMergedProto.LoginRsp)localObject).account_base_info.tinyid.get());
+        UserInfoMgr.a().a(((LoginMergedProto.LoginRsp)localObject).tickets.auth_key.get());
         paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr;
-        if (localLoginRsp.result.get() != 0) {
-          break label185;
+        if (((LoginMergedProto.LoginRsp)localObject).result.get() != 0) {
+          break label193;
         }
         bool = true;
         LoginMgr.a(paramArrayOfByte, bool);
-        if (this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener == null) {
-          break;
+        if (this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener.a(((LoginMergedProto.LoginRsp)localObject).result.get(), ((LoginMergedProto.LoginRsp)localObject).errMsg.get());
+          return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener.a(localLoginRsp.result.get(), localLoginRsp.errMsg.get());
-        return;
       }
       catch (Exception paramArrayOfByte)
       {
-        Log.d("now_live_login_mgr", "login parse exception, errMsg=" + paramArrayOfByte.getMessage());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("login parse exception, errMsg=");
+        ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
+        Log.d("now_live_login_mgr", ((StringBuilder)localObject).toString());
+        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener;
+        if (paramArrayOfByte != null) {
+          paramArrayOfByte.a(1000001, "login parse exception");
+        }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener.a(1000001, "login parse exception");
       return;
-      label185:
+      label193:
       boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.LoginMgr.1
  * JD-Core Version:    0.7.0.1
  */

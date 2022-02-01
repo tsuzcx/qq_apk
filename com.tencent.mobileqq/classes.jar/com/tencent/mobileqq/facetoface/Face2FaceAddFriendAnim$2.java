@@ -11,8 +11,16 @@ class Face2FaceAddFriendAnim$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(Face2FaceAddFriendActivity.a, 2, "startFriendDisappearAnimation disappear ( disappearCount: " + this.a.h + ", disappearSize: " + this.a.i + " )");
+    if (QLog.isColorLevel())
+    {
+      paramAnimation = Face2FaceAddFriendActivity.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startFriendDisappearAnimation disappear ( disappearCount: ");
+      localStringBuilder.append(this.a.h);
+      localStringBuilder.append(", disappearSize: ");
+      localStringBuilder.append(this.a.i);
+      localStringBuilder.append(" )");
+      QLog.d(paramAnimation, 2, localStringBuilder.toString());
     }
   }
   
@@ -22,7 +30,7 @@ class Face2FaceAddFriendAnim$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim.2
  * JD-Core Version:    0.7.0.1
  */

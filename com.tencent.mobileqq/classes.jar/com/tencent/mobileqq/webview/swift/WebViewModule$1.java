@@ -12,32 +12,57 @@ class WebViewModule$1
   public int a(Bundle paramBundle)
   {
     int j = this.a.mCreateLoopNextStep;
-    int i = -1;
     long l = System.currentTimeMillis();
-    switch (this.a.mCreateLoopNextStep)
+    int i = this.a.mCreateLoopNextStep;
+    if (i != 2)
     {
+      if (i != 4)
+      {
+        if (i != 8)
+        {
+          if (i != 16)
+          {
+            if (i != 32)
+            {
+              if (i != 1024) {
+                i = -1;
+              } else {
+                i = this.a.doCreateLoopStep_Final(paramBundle);
+              }
+            }
+            else {
+              i = this.a.doCreateLoopStep_LoadUrl(paramBundle);
+            }
+          }
+          else {
+            i = this.a.doCreateLoopStep_InitWebView(paramBundle);
+          }
+        }
+        else {
+          i = this.a.doCreateLoopStep_InitAppAndWebVieEngine(paramBundle);
+        }
+      }
+      else {
+        i = this.a.doCreateLoopStep_InitX5Environment(paramBundle);
+      }
     }
-    for (;;)
-    {
-      QLog.i("WebViewModule", 1, "CreateLoop:step[" + j + "] -> step[" + this.a.mCreateLoopNextStep + "] cost" + (System.currentTimeMillis() - l) + " ms.");
-      return i;
+    else {
       i = this.a.doCreateLoopStep_InitData(paramBundle);
-      continue;
-      i = this.a.doCreateLoopStep_InitX5Environment(paramBundle);
-      continue;
-      i = this.a.doCreateLoopStep_InitAppAndWebVieEngine(paramBundle);
-      continue;
-      i = this.a.doCreateLoopStep_InitWebView(paramBundle);
-      continue;
-      i = this.a.doCreateLoopStep_LoadUrl(paramBundle);
-      continue;
-      i = this.a.doCreateLoopStep_Final(paramBundle);
     }
+    paramBundle = new StringBuilder("CreateLoop:step[");
+    paramBundle.append(j);
+    paramBundle.append("] -> step[");
+    paramBundle.append(this.a.mCreateLoopNextStep);
+    paramBundle.append("] cost");
+    paramBundle.append(System.currentTimeMillis() - l);
+    paramBundle.append(" ms.");
+    QLog.i("WebViewModule", 1, paramBundle.toString());
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewModule.1
  * JD-Core Version:    0.7.0.1
  */

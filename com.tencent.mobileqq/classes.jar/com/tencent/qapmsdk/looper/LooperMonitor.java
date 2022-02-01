@@ -27,7 +27,11 @@ public class LooperMonitor
       Object localObject = Looper.class.getDeclaredField("mLogging");
       ((Field)localObject).setAccessible(true);
       localObject = (Printer)((Field)localObject).get(Looper.getMainLooper());
-      Logger.INSTANCE.i(new String[] { "QAPM_looper_LooperMonitor", "getMainPrinter: originalLogging:" + localObject });
+      Logger localLogger = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getMainPrinter: originalLogging:");
+      localStringBuilder.append(localObject);
+      localLogger.i(new String[] { "QAPM_looper_LooperMonitor", localStringBuilder.toString() });
       if (localObject != null) {
         return localObject;
       }
@@ -53,7 +57,11 @@ public class LooperMonitor
         if (localMonitorInfo.stackGetter == null)
         {
           localMonitorInfo.stackGetter = new GetStackRunnable(paramThread);
-          new Thread(localMonitorInfo.stackGetter, "get-stack-" + str).start();
+          paramThread = localMonitorInfo.stackGetter;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("get-stack-");
+          localStringBuilder.append(str);
+          new Thread(paramThread, localStringBuilder.toString()).start();
           localMonitorInfo.stackGetterInited = true;
           localMonitorInfo.callback = paramIMonitorCallback;
           return true;
@@ -65,7 +73,11 @@ public class LooperMonitor
       localMonitorInfo.stackGetterInited = true;
       localMonitorInfo.callback = paramIMonitorCallback;
       monitorMap.put(str, localMonitorInfo);
-      new Thread(localMonitorInfo.stackGetter, "get-stack-" + str).start();
+      paramThread = localMonitorInfo.stackGetter;
+      paramIMonitorCallback = new StringBuilder();
+      paramIMonitorCallback.append("get-stack-");
+      paramIMonitorCallback.append(str);
+      new Thread(paramThread, paramIMonitorCallback.toString()).start();
       return true;
     }
     finally {}
@@ -93,7 +105,7 @@ public class LooperMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.looper.LooperMonitor
  * JD-Core Version:    0.7.0.1
  */

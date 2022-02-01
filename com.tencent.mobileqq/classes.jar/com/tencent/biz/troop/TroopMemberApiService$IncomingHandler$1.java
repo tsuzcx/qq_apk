@@ -31,30 +31,34 @@ class TroopMemberApiService$IncomingHandler$1
         this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
         return;
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
-      return;
       paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
       if (!paramBundle.rpt_banner_info.has())
       {
         this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
         return;
       }
-    }
-    catch (Exception paramBundle)
-    {
+      this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
       this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      break label178;
+    }
+    catch (Exception paramBundle)
+    {
+      label161:
+      label178:
+      break label161;
+    }
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+    return;
     this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.1
  * JD-Core Version:    0.7.0.1
  */

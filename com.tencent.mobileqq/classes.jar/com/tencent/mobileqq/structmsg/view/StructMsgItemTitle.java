@@ -21,7 +21,7 @@ public class StructMsgItemTitle
     super(paramString, "title");
   }
   
-  public Class<? extends TextView> a()
+  protected Class<? extends TextView> a()
   {
     if (this.d) {
       return StructMsgItemTitle.TitleTextView.class;
@@ -50,9 +50,9 @@ public class StructMsgItemTitle
     this.d = paramBoolean;
   }
   
-  public int c()
+  protected int c()
   {
-    return 2131380651;
+    return 2131379930;
   }
   
   public int e()
@@ -70,7 +70,7 @@ public class StructMsgItemTitle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTitle
  * JD-Core Version:    0.7.0.1
  */

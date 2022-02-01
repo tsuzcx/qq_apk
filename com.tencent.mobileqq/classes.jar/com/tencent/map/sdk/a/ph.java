@@ -14,20 +14,21 @@ public final class ph
   
   public final void a(kc paramkc)
   {
-    if (this.a == null) {}
-    do
-    {
+    pn localpn = this.a;
+    if (localpn == null) {
       return;
-      if (paramkc != null) {
-        this.a.a(this.a.az.e());
-      }
-    } while (this.a.C == null);
-    this.a.C.sendEmptyMessage(0);
+    }
+    if (paramkc != null) {
+      localpn.a(localpn.az.e());
+    }
+    if (this.a.C != null) {
+      this.a.C.sendEmptyMessage(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ph
  * JD-Core Version:    0.7.0.1
  */

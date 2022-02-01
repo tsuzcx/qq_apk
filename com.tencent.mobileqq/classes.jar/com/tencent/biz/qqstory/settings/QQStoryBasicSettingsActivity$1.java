@@ -16,22 +16,25 @@ class QQStoryBasicSettingsActivity$1
   public void b(int paramInt)
   {
     QQStoryBasicSettingsActivity.a(this.a);
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    default: 
-      return;
-    case 1: 
-    case 1001: 
+      if ((paramInt != 1001) && (paramInt != 1))
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return;
+          }
+          this.a.a(2);
+          return;
+        }
+        this.a.a(1);
+        return;
+      }
       this.a.a(0);
       return;
-    case 2: 
-      this.a.a(1);
-      return;
-    case 3: 
-      this.a.a(2);
-      return;
     }
-    QQToast.a(this.a, HardCodeUtil.a(2131710781), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a, HardCodeUtil.a(2131710758), 0).b(this.a.getTitleBarHeight());
   }
   
   public void b(boolean paramBoolean)
@@ -39,33 +42,41 @@ class QQStoryBasicSettingsActivity$1
     if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
     }
+    Object localObject;
     if (paramBoolean)
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a(this.a.b(this.a.jdField_a_of_type_Int));
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b(this.a.b(this.a.jdField_a_of_type_Int));
-      if (this.a.jdField_a_of_type_Int == 2) {
-        StoryReportor.a("browse_friend_settings", "close", 0, 0, new String[] { "", "", "", "" });
-      }
-      do
+      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
+      QQStoryBasicSettingsActivity localQQStoryBasicSettingsActivity = this.a;
+      ((QQStoryManager)localObject).a(localQQStoryBasicSettingsActivity.b(localQQStoryBasicSettingsActivity.jdField_a_of_type_Int));
+      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
+      localQQStoryBasicSettingsActivity = this.a;
+      ((QQStoryManager)localObject).b(localQQStoryBasicSettingsActivity.b(localQQStoryBasicSettingsActivity.jdField_a_of_type_Int));
+      if (this.a.jdField_a_of_type_Int == 2)
       {
+        StoryReportor.a("browse_friend_settings", "close", 0, 0, new String[] { "", "", "", "" });
         return;
-        if (this.a.jdField_a_of_type_Int == 0)
-        {
-          StoryReportor.a("browse_friend_settings", "choose_all", 0, 0, new String[] { "", "", "", "" });
-          return;
-        }
-      } while (this.a.jdField_a_of_type_Int != 1);
-      StoryReportor.a("browse_friend_settings", "choose_wifi", 0, 0, new String[] { "", "", "", "" });
-      return;
+      }
+      if (this.a.jdField_a_of_type_Int == 0)
+      {
+        StoryReportor.a("browse_friend_settings", "choose_all", 0, 0, new String[] { "", "", "", "" });
+        return;
+      }
+      if (this.a.jdField_a_of_type_Int == 1) {
+        StoryReportor.a("browse_friend_settings", "choose_wifi", 0, 0, new String[] { "", "", "", "" });
+      }
     }
-    QQToast.a(this.a, 2131694733, 0).b(this.a.getTitleBarHeight());
-    this.a.a(this.a.b);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d();
+    else
+    {
+      QQToast.a(this.a, 2131694712, 0).b(this.a.getTitleBarHeight());
+      localObject = this.a;
+      ((QQStoryBasicSettingsActivity)localObject).a(((QQStoryBasicSettingsActivity)localObject).b);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity.1
  * JD-Core Version:    0.7.0.1
  */

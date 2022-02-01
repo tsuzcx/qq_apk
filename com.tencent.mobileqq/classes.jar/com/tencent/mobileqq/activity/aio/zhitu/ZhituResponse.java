@@ -36,7 +36,19 @@ public class ZhituResponse
   
   public String toString()
   {
-    return "ZhituResponse{cat='" + this.cat + '\'' + ", list=" + this.list + ", cookie='" + this.cookie + '\'' + ", hasMore=" + this.hasMore + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ZhituResponse{cat='");
+    localStringBuilder.append(this.cat);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", list=");
+    localStringBuilder.append(this.list);
+    localStringBuilder.append(", cookie='");
+    localStringBuilder.append(this.cookie);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hasMore=");
+    localStringBuilder.append(this.hasMore);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -50,7 +62,7 @@ public class ZhituResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse
  * JD-Core Version:    0.7.0.1
  */

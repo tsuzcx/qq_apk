@@ -101,61 +101,55 @@ public class TeamWorkAuthorizeUinListAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     View localView;
-    label116:
-    Object localObject;
-    int i;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131563085, null);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562912, null);
       paramView = new TeamWorkAuthorizeUinListAdapter.Holder(this);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368386));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372265));
-      paramView.b = ((TextView)localView.findViewById(2131378436));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131363042));
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368137));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371854));
+      paramView.b = ((TextView)localView.findViewById(2131377850));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362989));
       localView.setTag(paramView);
-      if (this.jdField_a_of_type_Int != 2) {
-        break label262;
-      }
-      paramView.b.setVisibility(8);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      localObject = (TeamWorkAuthorizeUinListAdapter.ItemData)getItem(paramInt);
-      String str = String.valueOf(((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get());
-      FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, str);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localFaceDrawable);
-      str = a(str);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      i = ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint32_right.get();
-      if (i != 1) {
-        break label281;
-      }
-      paramView.b.setText(2131719778);
     }
-    for (;;)
+    else
     {
-      paramView.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo;
-      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject = (TeamWorkAuthorizeUinListAdapter.Holder)paramView.getTag();
       localView = paramView;
       paramView = (View)localObject;
-      break;
-      label262:
+    }
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      paramView.b.setVisibility(8);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    else
+    {
       paramView.b.setVisibility(0);
       paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      break label116;
-      label281:
-      if (i == 2) {
-        paramView.b.setText(2131719779);
-      } else {
-        paramView.b.setText(HardCodeUtil.a(2131714657));
-      }
     }
+    Object localObject = (TeamWorkAuthorizeUinListAdapter.ItemData)getItem(paramInt);
+    String str = String.valueOf(((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint64_uin.get());
+    FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, str);
+    paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localFaceDrawable);
+    str = a(str);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    int i = ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo.uint32_right.get();
+    if (i == 1) {
+      paramView.b.setText(2131719502);
+    } else if (i == 2) {
+      paramView.b.setText(2131719503);
+    } else {
+      paramView.b.setText(HardCodeUtil.a(2131714586));
+    }
+    paramView.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = ((TeamWorkAuthorizeUinListAdapter.ItemData)localObject).jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo;
+    localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkAuthorizeUinListAdapter
  * JD-Core Version:    0.7.0.1
  */

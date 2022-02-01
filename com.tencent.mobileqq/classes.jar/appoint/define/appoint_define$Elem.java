@@ -14,7 +14,7 @@ public final class appoint_define$Elem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     appoint.define.appoint_define.Elem
  * JD-Core Version:    0.7.0.1
  */

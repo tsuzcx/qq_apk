@@ -22,14 +22,16 @@ public class ScriptIntrinsicLUT
     }
     paramElement = new ScriptIntrinsicLUT(paramRenderScript.nScriptIntrinsicCreate(3, paramElement.getID(paramRenderScript)), paramRenderScript);
     paramElement.mTables = Allocation.createSized(paramRenderScript, Element.U8(paramRenderScript), 1024);
-    int i = 0;
-    while (i < 256)
+    int j = 0;
+    while (j < 256)
     {
-      paramElement.mCache[i] = ((byte)i);
-      paramElement.mCache[(i + 256)] = ((byte)i);
-      paramElement.mCache[(i + 512)] = ((byte)i);
-      paramElement.mCache[(i + 768)] = ((byte)i);
-      i += 1;
+      paramRenderScript = paramElement.mCache;
+      int i = (byte)j;
+      paramRenderScript[j] = i;
+      paramRenderScript[(j + 256)] = i;
+      paramRenderScript[(j + 512)] = i;
+      paramRenderScript[(j + 768)] = i;
+      j += 1;
     }
     paramElement.setVar(0, paramElement.mTables);
     return paramElement;
@@ -37,12 +39,14 @@ public class ScriptIntrinsicLUT
   
   private void validate(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 > 255)) {
-      throw new RSIllegalArgumentException("Index out of range (0-255).");
-    }
-    if ((paramInt2 < 0) || (paramInt2 > 255)) {
+    if ((paramInt1 >= 0) && (paramInt1 <= 255))
+    {
+      if ((paramInt2 >= 0) && (paramInt2 <= 255)) {
+        return;
+      }
       throw new RSIllegalArgumentException("Value out of range (0-255).");
     }
+    throw new RSIllegalArgumentException("Index out of range (0-255).");
   }
   
   public void forEach(Allocation paramAllocation1, Allocation paramAllocation2)
@@ -90,7 +94,7 @@ public class ScriptIntrinsicLUT
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.ScriptIntrinsicLUT
  * JD-Core Version:    0.7.0.1
  */

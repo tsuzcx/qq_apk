@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.vas.api.impl;
 
-import com.tencent.mobileqq.vas.kingcard.IKingCardManager;
 import com.tencent.mobileqq.vas.kingcard.KingCardManagerImpl;
+import com.tencent.mobileqq.vas.manager.api.IKingCardManager;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mobileqq/vas/kingcard/IKingCardManager;", "invoke"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/mobileqq/vas/manager/api/IKingCardManager;", "invoke"}, k=3, mv={1, 1, 16})
 final class VasServiceImpl$kingCardManager$2
   extends Lambda
   implements Function0<IKingCardManager>
@@ -25,7 +25,7 @@ final class VasServiceImpl$kingCardManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.impl.VasServiceImpl.kingCardManager.2
  * JD-Core Version:    0.7.0.1
  */

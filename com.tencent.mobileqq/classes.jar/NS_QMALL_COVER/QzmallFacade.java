@@ -28,15 +28,16 @@ public final class QzmallFacade
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stFacade != null) {
-      paramJceOutputStream.write(this.stFacade, 0);
+    Facade localFacade = this.stFacade;
+    if (localFacade != null) {
+      paramJceOutputStream.write(localFacade, 0);
     }
     paramJceOutputStream.write(this.iShowOnFriDyn, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallFacade
  * JD-Core Version:    0.7.0.1
  */

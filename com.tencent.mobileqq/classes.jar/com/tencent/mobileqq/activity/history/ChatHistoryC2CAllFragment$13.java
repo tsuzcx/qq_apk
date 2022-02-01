@@ -24,10 +24,10 @@ class ChatHistoryC2CAllFragment$13
   {
     try
     {
-      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
-      String str = (String)paramArrayOfObject[1];
+      localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
+      str = (String)paramArrayOfObject[1];
       long l = ((Long)paramArrayOfObject[2]).longValue();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719825).equals(str))
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719549).equals(str))
       {
         paramArrayOfObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((DocsGrayTipsInfo)localObject).a, 0, l);
         if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof MessageForUniteGrayTip)))
@@ -46,13 +46,23 @@ class ChatHistoryC2CAllFragment$13
           this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
         }
       }
-      QQToast.a(this.a.getActivity(), str, 0).a();
-      QLog.i(TeamWorkConstants.i, 2, " onGetUserAuth  isSuccess = " + paramBoolean + " tips =" + str);
+      QQToast.a(this.a.getBaseActivity(), str, 0).a();
+      paramArrayOfObject = TeamWorkConstants.i;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" onGetUserAuth  isSuccess = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" tips =");
+      ((StringBuilder)localObject).append(str);
+      QLog.i(paramArrayOfObject, 2, ((StringBuilder)localObject).toString());
       return;
     }
     catch (Exception paramArrayOfObject)
     {
-      QLog.e(TeamWorkConstants.i, 2, " onGetUserAuth  exception = " + paramArrayOfObject.toString());
+      String str = TeamWorkConstants.i;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" onGetUserAuth  exception = ");
+      ((StringBuilder)localObject).append(paramArrayOfObject.toString());
+      QLog.e(str, 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -60,9 +70,13 @@ class ChatHistoryC2CAllFragment$13
   {
     try
     {
-      QLog.i(TeamWorkConstants.i, 2, " onSetUserAuth  isSuccess = " + paramBoolean);
-      Object localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
-      String str = (String)paramArrayOfObject[1];
+      str = TeamWorkConstants.i;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" onSetUserAuth  isSuccess = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.i(str, 2, ((StringBuilder)localObject).toString());
+      localObject = (DocsGrayTipsInfo)paramArrayOfObject[0];
+      str = (String)paramArrayOfObject[1];
       long l = ((Long)paramArrayOfObject[2]).longValue();
       if (paramBoolean)
       {
@@ -83,18 +97,22 @@ class ChatHistoryC2CAllFragment$13
           this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
         }
       }
-      QQToast.a(this.a.getActivity(), str, 0).a();
+      QQToast.a(this.a.getBaseActivity(), str, 0).a();
       return;
     }
     catch (Exception paramArrayOfObject)
     {
-      QLog.e(TeamWorkConstants.i, 1, " onSetUserAuth  exception  = " + paramArrayOfObject.toString());
+      String str = TeamWorkConstants.i;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" onSetUserAuth  exception  = ");
+      ((StringBuilder)localObject).append(paramArrayOfObject.toString());
+      QLog.e(str, 1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.13
  * JD-Core Version:    0.7.0.1
  */

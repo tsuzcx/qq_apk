@@ -29,21 +29,17 @@ public final class ColorInfo
     this.colorRange = paramParcel.readInt();
     this.colorTransfer = paramParcel.readInt();
     int i;
-    if (paramParcel.readInt() != 0)
-    {
+    if (paramParcel.readInt() != 0) {
       i = 1;
-      if (i == 0) {
-        break label57;
-      }
-    }
-    label57:
-    for (paramParcel = paramParcel.createByteArray();; paramParcel = null)
-    {
-      this.hdrStaticInfo = paramParcel;
-      return;
+    } else {
       i = 0;
-      break;
     }
+    if (i != 0) {
+      paramParcel = paramParcel.createByteArray();
+    } else {
+      paramParcel = null;
+    }
+    this.hdrStaticInfo = paramParcel;
   }
   
   public int describeContents()
@@ -53,33 +49,47 @@ public final class ColorInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (ColorInfo)paramObject;
-    } while ((this.colorSpace == paramObject.colorSpace) && (this.colorRange == paramObject.colorRange) && (this.colorTransfer == paramObject.colorTransfer) && (Arrays.equals(this.hdrStaticInfo, paramObject.hdrStaticInfo)));
+      return (this.colorSpace == paramObject.colorSpace) && (this.colorRange == paramObject.colorRange) && (this.colorTransfer == paramObject.colorTransfer) && (Arrays.equals(this.hdrStaticInfo, paramObject.hdrStaticInfo));
+    }
     return false;
   }
   
   public int hashCode()
   {
     if (this.hashCode == 0) {
-      this.hashCode = ((((this.colorSpace + 527) * 31 + this.colorRange) * 31 + this.colorTransfer) * 31 + Arrays.hashCode(this.hdrStaticInfo));
+      this.hashCode = ((((527 + this.colorSpace) * 31 + this.colorRange) * 31 + this.colorTransfer) * 31 + Arrays.hashCode(this.hdrStaticInfo));
     }
     return this.hashCode;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("ColorInfo(").append(this.colorSpace).append(", ").append(this.colorRange).append(", ").append(this.colorTransfer).append(", ");
-    if (this.hdrStaticInfo != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ColorInfo(");
+    localStringBuilder.append(this.colorSpace);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.colorRange);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.colorTransfer);
+    localStringBuilder.append(", ");
+    boolean bool;
+    if (this.hdrStaticInfo != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -87,20 +97,21 @@ public final class ColorInfo
     paramParcel.writeInt(this.colorSpace);
     paramParcel.writeInt(this.colorRange);
     paramParcel.writeInt(this.colorTransfer);
-    if (this.hdrStaticInfo != null) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      if (this.hdrStaticInfo != null) {
-        paramParcel.writeByteArray(this.hdrStaticInfo);
-      }
-      return;
+    if (this.hdrStaticInfo != null) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
+    }
+    paramParcel.writeInt(paramInt);
+    byte[] arrayOfByte = this.hdrStaticInfo;
+    if (arrayOfByte != null) {
+      paramParcel.writeByteArray(arrayOfByte);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.video.ColorInfo
  * JD-Core Version:    0.7.0.1
  */

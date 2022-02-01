@@ -102,20 +102,18 @@ public final class WebAudioPlugin
   
   private final void closeWebAudioContext()
   {
-    Object localObject;
     if (!this.hasSoLoaded)
     {
       localObject = this.logger;
       if (localObject != null) {
         ((LogDelegate)localObject).printLog(LogDelegate.Level.INFO, "[audio]WebAudioPlugin", "closeWebAudioContext fail so has not loaded", null);
       }
-    }
-    do
-    {
       return;
-      localObject = this.webAudioManager;
-    } while (localObject == null);
-    ((WebAudioManager)localObject).closeAudioContext();
+    }
+    Object localObject = this.webAudioManager;
+    if (localObject != null) {
+      ((WebAudioManager)localObject).closeAudioContext();
+    }
   }
   
   private final String connectWebAudioNode(Argument paramArgument)
@@ -145,26 +143,27 @@ public final class WebAudioPlugin
   
   private final String copyToChannel(Argument paramArgument)
   {
-    int i = paramArgument.getParams().getInt("bufferId");
-    int j = paramArgument.getParams().optInt("sourceId", -1);
-    int k = paramArgument.getParams().getInt("channelId");
-    int m = paramArgument.getParams().optInt("startInChannel", 0);
+    int j = paramArgument.getParams().getInt("bufferId");
+    Object localObject = paramArgument.getParams();
+    int i = -1;
+    int k = ((JSONObject)localObject).optInt("sourceId", -1);
+    int m = paramArgument.getParams().getInt("channelId");
+    int n = paramArgument.getParams().optInt("startInChannel", 0);
     paramArgument = NativeBuffer.unpackNativeBuffer(paramArgument, paramArgument.getParams(), "data");
     if (paramArgument != null)
     {
       paramArgument = paramArgument.buf;
       if ((paramArgument != null) && (paramArgument.length != 0))
       {
-        WebAudioManager localWebAudioManager = this.webAudioManager;
-        if (localWebAudioManager != null) {}
-        for (i = localWebAudioManager.copyToChannel(paramArgument, i, j, k, m);; i = -1)
-        {
-          paramArgument = new JSONObject();
-          paramArgument.put("bufferId", i);
-          paramArgument = ApiUtil.wrapCallbackOk("audioBufferCopyToChannel", paramArgument).toString();
-          Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…_CHANNEL, res).toString()");
-          return paramArgument;
+        localObject = this.webAudioManager;
+        if (localObject != null) {
+          i = ((WebAudioManager)localObject).copyToChannel(paramArgument, j, k, m, n);
         }
+        paramArgument = new JSONObject();
+        paramArgument.put("bufferId", i);
+        paramArgument = ApiUtil.wrapCallbackOk("audioBufferCopyToChannel", paramArgument).toString();
+        Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…_CHANNEL, res).toString()");
+        return paramArgument;
       }
     }
     paramArgument = ApiUtil.wrapCallbackFail("audioBufferCopyToChannel", null).toString();
@@ -179,13 +178,14 @@ public final class WebAudioPlugin
     int k = paramArgument.getParams().optInt("sampleRate");
     int m = paramArgument.getParams().getInt("audioId");
     paramArgument = this.webAudioManager;
-    if (paramArgument != null) {}
-    for (paramArgument = paramArgument.createBuffer(m, i, j, k);; paramArgument = null)
-    {
-      paramArgument = ApiUtil.wrapCallbackOk("createWebAudioContextBuffer", paramArgument).toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…, sampleRate)).toString()");
-      return paramArgument;
+    if (paramArgument != null) {
+      paramArgument = paramArgument.createBuffer(m, i, j, k);
+    } else {
+      paramArgument = null;
     }
+    paramArgument = ApiUtil.wrapCallbackOk("createWebAudioContextBuffer", paramArgument).toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…, sampleRate)).toString()");
+    return paramArgument;
   }
   
   private final String createGainNode(Argument paramArgument)
@@ -202,25 +202,27 @@ public final class WebAudioPlugin
   {
     int i = paramArgument.getParams().getInt("audioId");
     paramArgument = this.webAudioManager;
-    if (paramArgument != null) {}
-    for (paramArgument = paramArgument.createBufferSource(i);; paramArgument = null)
-    {
-      paramArgument = ApiUtil.wrapCallbackOk("createWebAudioBufferSource", paramArgument).toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…urce(audioId)).toString()");
-      return paramArgument;
+    if (paramArgument != null) {
+      paramArgument = paramArgument.createBufferSource(i);
+    } else {
+      paramArgument = null;
     }
+    paramArgument = ApiUtil.wrapCallbackOk("createWebAudioBufferSource", paramArgument).toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…urce(audioId)).toString()");
+    return paramArgument;
   }
   
   private final String createWebAudioContext(Argument paramArgument)
   {
     paramArgument = this.webAudioManager;
-    if (paramArgument != null) {}
-    for (paramArgument = paramArgument.createAudioContext();; paramArgument = null)
-    {
-      paramArgument = ApiUtil.wrapCallbackOk("createWebAudioContext", paramArgument).toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…udioContext()).toString()");
-      return paramArgument;
+    if (paramArgument != null) {
+      paramArgument = paramArgument.createAudioContext();
+    } else {
+      paramArgument = null;
     }
+    paramArgument = ApiUtil.wrapCallbackOk("createWebAudioContext", paramArgument).toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…udioContext()).toString()");
+    return paramArgument;
   }
   
   private final String createWebAudioScriptProcessor(Argument paramArgument)
@@ -268,17 +270,17 @@ public final class WebAudioPlugin
     if (localObject != null)
     {
       localObject = ((WebAudioManager)localObject).getBufferChannelData(i, j);
-      if (localObject == null) {}
+      if (localObject != null) {}
     }
-    for (;;)
+    else
     {
-      JSONObject localJSONObject = new JSONObject();
-      NativeBuffer.packNativeBuffer(paramArgument, (byte[])localObject, NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject);
-      paramArgument = ApiUtil.wrapCallbackOk("getWebAudioBufferChannelData", localJSONObject).toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…_DATA, resObj).toString()");
-      return paramArgument;
       localObject = new byte[0];
     }
+    JSONObject localJSONObject = new JSONObject();
+    NativeBuffer.packNativeBuffer(paramArgument, (byte[])localObject, NativeBuffer.TYPE_BUFFER_NATIVE, "data", localJSONObject);
+    paramArgument = ApiUtil.wrapCallbackOk("getWebAudioBufferChannelData", localJSONObject).toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…_DATA, resObj).toString()");
+    return paramArgument;
   }
   
   private final String getCurrentGain(Argument paramArgument)
@@ -286,20 +288,26 @@ public final class WebAudioPlugin
     int i = paramArgument.getParams().getInt("channelId");
     int j = paramArgument.getParams().getInt("audioId");
     paramArgument = this.webAudioManager;
-    if (paramArgument != null) {}
-    for (float f = paramArgument.getCurrentGain(j, i);; f = 1.0F) {
-      return String.valueOf(f);
+    float f;
+    if (paramArgument != null) {
+      f = paramArgument.getCurrentGain(j, i);
+    } else {
+      f = 1.0F;
     }
+    return String.valueOf(f);
   }
   
   private final String getWebAudioCurrentTime(Argument paramArgument)
   {
     int i = paramArgument.getParams().getInt("audioId");
     paramArgument = this.webAudioManager;
-    if (paramArgument != null) {}
-    for (double d = paramArgument.getAudioContextCurrentTime(i);; d = -1.0D) {
-      return String.valueOf(d);
+    double d;
+    if (paramArgument != null) {
+      d = paramArgument.getAudioContextCurrentTime(i);
+    } else {
+      d = -1.0D;
     }
+    return String.valueOf(d);
   }
   
   private final String getWebAudioDestination(Argument paramArgument)
@@ -328,37 +336,32 @@ public final class WebAudioPlugin
         paramArgument.suspendAudioContext();
       }
     }
-    for (;;)
+    else if (Intrinsics.areEqual(paramArgument, "resume"))
     {
-      paramArgument = ApiUtil.wrapCallbackOk("operateWebAudioContext", null).toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…CONTEXT, null).toString()");
-      return paramArgument;
-      if (Intrinsics.areEqual(paramArgument, "resume"))
-      {
-        paramArgument = this.webAudioManager;
-        if (paramArgument != null) {
-          paramArgument.resumeAudioContext();
-        }
+      paramArgument = this.webAudioManager;
+      if (paramArgument != null) {
+        paramArgument.resumeAudioContext();
       }
     }
+    paramArgument = ApiUtil.wrapCallbackOk("operateWebAudioContext", null).toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…CONTEXT, null).toString()");
+    return paramArgument;
   }
   
   private final void resumeWebAudioContext()
   {
-    Object localObject;
     if (!this.hasSoLoaded)
     {
       localObject = this.logger;
       if (localObject != null) {
         ((LogDelegate)localObject).printLog(LogDelegate.Level.INFO, "[audio]WebAudioPlugin", "resumeWebAudioContext fail so has not loaded", null);
       }
-    }
-    do
-    {
       return;
-      localObject = this.webAudioManager;
-    } while (localObject == null);
-    ((WebAudioManager)localObject).resumeAudioContext();
+    }
+    Object localObject = this.webAudioManager;
+    if (localObject != null) {
+      ((WebAudioManager)localObject).resumeAudioContext();
+    }
   }
   
   private final String setBufferSourceLoop(Argument paramArgument)
@@ -407,17 +410,16 @@ public final class WebAudioPlugin
   
   private final String setSourceBuffer(Argument paramArgument)
   {
-    WebAudioManager localWebAudioManager2 = null;
-    WebAudioManager localWebAudioManager1 = null;
     int i = paramArgument.getParams().getInt("channelId");
     int j = paramArgument.getParams().optInt("bufferId", -1);
     int k = paramArgument.getParams().optInt("decodeId", -1);
+    WebAudioManager localWebAudioManager1 = null;
+    paramArgument = null;
     if (j != -1)
     {
-      localWebAudioManager2 = this.webAudioManager;
-      paramArgument = localWebAudioManager1;
-      if (localWebAudioManager2 != null) {
-        paramArgument = localWebAudioManager2.setSourceBuffer(i, j);
+      localWebAudioManager1 = this.webAudioManager;
+      if (localWebAudioManager1 != null) {
+        paramArgument = localWebAudioManager1.setSourceBuffer(i, j);
       }
       paramArgument = ApiUtil.wrapCallbackOk("setWebAudioSourceBuffer", paramArgument).toString();
       Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…Id, bufferId)).toString()");
@@ -425,10 +427,10 @@ public final class WebAudioPlugin
     }
     if (k != -1)
     {
-      localWebAudioManager1 = this.webAudioManager;
-      paramArgument = localWebAudioManager2;
-      if (localWebAudioManager1 != null) {
-        paramArgument = localWebAudioManager1.setDecodingQueueBuffer(i, k);
+      WebAudioManager localWebAudioManager2 = this.webAudioManager;
+      paramArgument = localWebAudioManager1;
+      if (localWebAudioManager2 != null) {
+        paramArgument = localWebAudioManager2.setDecodingQueueBuffer(i, k);
       }
       paramArgument = ApiUtil.wrapCallbackOk("setWebAudioSourceBuffer", paramArgument).toString();
       Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…Id, decodeId)).toString()");
@@ -447,13 +449,14 @@ public final class WebAudioPlugin
     int m = paramArgument.getParams().optInt("offset", 0);
     int n = paramArgument.getParams().optInt("duration", -1);
     WebAudioManager localWebAudioManager = this.webAudioManager;
-    if (localWebAudioManager != null) {}
-    for (paramArgument = localWebAudioManager.sourceStart(paramArgument, i, j, k, m, n);; paramArgument = null)
-    {
-      paramArgument = ApiUtil.wrapCallbackOk("sourceStart", paramArgument).toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…et, duration)).toString()");
-      return paramArgument;
+    if (localWebAudioManager != null) {
+      paramArgument = localWebAudioManager.sourceStart(paramArgument, i, j, k, m, n);
+    } else {
+      paramArgument = null;
     }
+    paramArgument = ApiUtil.wrapCallbackOk("sourceStart", paramArgument).toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…et, duration)).toString()");
+    return paramArgument;
   }
   
   private final String sourceStop(Argument paramArgument)
@@ -462,31 +465,30 @@ public final class WebAudioPlugin
     int j = paramArgument.getParams().getInt("channelId");
     int k = paramArgument.getParams().optInt("when", 0);
     paramArgument = this.webAudioManager;
-    if (paramArgument != null) {}
-    for (paramArgument = paramArgument.sourceStop(i, j, k);; paramArgument = null)
-    {
-      paramArgument = ApiUtil.wrapCallbackOk("sourceStop", paramArgument).toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…ceId, `when`)).toString()");
-      return paramArgument;
+    if (paramArgument != null) {
+      paramArgument = paramArgument.sourceStop(i, j, k);
+    } else {
+      paramArgument = null;
     }
+    paramArgument = ApiUtil.wrapCallbackOk("sourceStop", paramArgument).toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramArgument, "ApiUtil.wrapCallbackOk(A…ceId, `when`)).toString()");
+    return paramArgument;
   }
   
   private final void suspendWebAudioContext()
   {
-    Object localObject;
     if (!this.hasSoLoaded)
     {
       localObject = this.logger;
       if (localObject != null) {
         ((LogDelegate)localObject).printLog(LogDelegate.Level.INFO, "[audio]WebAudioPlugin", "suspendWebAudioContext fail so has not loaded", null);
       }
-    }
-    do
-    {
       return;
-      localObject = this.webAudioManager;
-    } while (localObject == null);
-    ((WebAudioManager)localObject).suspendAudioContext();
+    }
+    Object localObject = this.webAudioManager;
+    if (localObject != null) {
+      ((WebAudioManager)localObject).suspendAudioContext();
+    }
   }
   
   @NotNull
@@ -500,105 +502,138 @@ public final class WebAudioPlugin
   {
     Intrinsics.checkParameterIsNotNull(paramString, "eventName");
     Intrinsics.checkParameterIsNotNull(paramArgument, "arguments");
-    LogDelegate localLogDelegate = this.logger;
-    if (localLogDelegate != null) {
-      LogDelegate.DefaultImpls.printLog$default(localLogDelegate, LogDelegate.Level.INFO, "[audio]WebAudioPlugin", "onCall eventName=" + paramString + " hasSoLoaded=" + this.hasSoLoaded, null, 8, null);
-    }
-    if (!this.hasSoLoaded) {}
-    do
+    Object localObject = this.logger;
+    if (localObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                do
-                                {
-                                  do
-                                  {
-                                    do
-                                    {
-                                      do
-                                      {
-                                        do
-                                        {
-                                          do
-                                          {
-                                            do
-                                            {
-                                              do
-                                              {
-                                                return null;
-                                                switch (paramString.hashCode())
-                                                {
-                                                default: 
-                                                  return null;
-                                                }
-                                              } while (!paramString.equals("decodeWebAudioData"));
-                                              return decodeWebAudioData(paramArgument);
-                                            } while (!paramString.equals("audioBufferCopyFromChannel"));
-                                            return copyFormChannel(paramArgument);
-                                          } while (!paramString.equals("setWebAudioBufferSourceLoop"));
-                                          return setBufferSourceLoop(paramArgument);
-                                        } while (!paramString.equals("getWebAudioBufferChannelData"));
-                                        return getBufferChannelData(paramArgument);
-                                      } while (!paramString.equals("webAudioConnectAudioNode"));
-                                      return connectWebAudioNode(paramArgument);
-                                    } while (!paramString.equals("getWebAudioCurrentGain"));
-                                    return getCurrentGain(paramArgument);
-                                  } while (!paramString.equals("getWebAudioSampleRate"));
-                                  return getWebAudioSampleRate(paramArgument);
-                                } while (!paramString.equals("sourceStart"));
-                                return sourceStart(paramArgument);
-                              } while (!paramString.equals("audioBufferCopyToChannel"));
-                              return copyToChannel(paramArgument);
-                            } while (!paramString.equals("createWebAudioContextBuffer"));
-                            return createBuffer(paramArgument);
-                          } while (!paramString.equals("operateWebAudioContext"));
-                          return oprateWebAudioContext(paramArgument);
-                        } while (!paramString.equals("createWebAudioBufferSource"));
-                        return createWebAudioBufferSource(paramArgument);
-                      } while (!paramString.equals("createWebAudioScriptProcessor"));
-                      return createWebAudioScriptProcessor(paramArgument);
-                    } while (!paramString.equals("getWebAudioDestination"));
-                    return getWebAudioDestination(paramArgument);
-                  } while (!paramString.equals("setWebAudioSourceBuffer"));
-                  return setSourceBuffer(paramArgument);
-                } while (!paramString.equals("closeWebAudioContext"));
-                return closeWebAudioContext(paramArgument);
-              } while (!paramString.equals("createWebAudioGain"));
-              return createGainNode(paramArgument);
-            } while (!paramString.equals("audioProcessingEventSetQueueBuffer"));
-            return setQueueBuffer(paramArgument);
-          } while (!paramString.equals("createWebAudioContext"));
-          return createWebAudioContext(paramArgument);
-        } while (!paramString.equals("setWebAudioCurrentGain"));
+      LogDelegate.Level localLevel = LogDelegate.Level.INFO;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall eventName=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" hasSoLoaded=");
+      localStringBuilder.append(this.hasSoLoaded);
+      LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject, localLevel, "[audio]WebAudioPlugin", localStringBuilder.toString(), null, 8, null);
+    }
+    boolean bool = this.hasSoLoaded;
+    localObject = null;
+    if (!bool) {
+      return null;
+    }
+    switch (paramString.hashCode())
+    {
+    default: 
+      return null;
+    case 1943975281: 
+      if (paramString.equals("createWebAudioContextBuffer")) {
+        return createBuffer(paramArgument);
+      }
+      break;
+    case 1902976409: 
+      if (paramString.equals("createWebAudioBufferSource")) {
+        return createWebAudioBufferSource(paramArgument);
+      }
+      break;
+    case 1451060777: 
+      if (paramString.equals("createWebAudioScriptProcessor")) {
+        return createWebAudioScriptProcessor(paramArgument);
+      }
+      break;
+    case 1360624096: 
+      if (paramString.equals("audioProcessingEventSetQueueBuffer")) {
+        return setQueueBuffer(paramArgument);
+      }
+      break;
+    case 1135871536: 
+      if (paramString.equals("webAudioConnectAudioNode")) {
+        return connectWebAudioNode(paramArgument);
+      }
+      break;
+    case 799668671: 
+      if (paramString.equals("setWebAudioSourceBuffer")) {
+        return setSourceBuffer(paramArgument);
+      }
+      break;
+    case 719352470: 
+      if (paramString.equals("getWebAudioDestination")) {
+        return getWebAudioDestination(paramArgument);
+      }
+      break;
+    case 294903293: 
+      if (paramString.equals("audioBufferCopyToChannel")) {
+        return copyToChannel(paramArgument);
+      }
+      break;
+    case 212415010: 
+      if (paramString.equals("getWebAudioSampleRate")) {
+        return getWebAudioSampleRate(paramArgument);
+      }
+      break;
+    case 141268433: 
+      if (paramString.equals("createWebAudioContext")) {
+        return createWebAudioContext(paramArgument);
+      }
+      break;
+    case -95730425: 
+      if (paramString.equals("sourceStart")) {
+        return sourceStart(paramArgument);
+      }
+      break;
+    case -106116946: 
+      if (paramString.equals("audioBufferCopyFromChannel")) {
+        return copyFormChannel(paramArgument);
+      }
+      break;
+    case -231799148: 
+      if (paramString.equals("setWebAudioCurrentGain")) {
         return setCurrentGain(paramArgument);
-      } while (!paramString.equals("sourceStop"));
-      return sourceStop(paramArgument);
-    } while (!paramString.equals("getWebAudioCurrentTime"));
-    return getWebAudioCurrentTime(paramArgument);
+      }
+      break;
+    case -817189219: 
+      if (paramString.equals("createWebAudioGain")) {
+        return createGainNode(paramArgument);
+      }
+      break;
+    case -1111466307: 
+      if (paramString.equals("sourceStop")) {
+        return sourceStop(paramArgument);
+      }
+      break;
+    case -1131299979: 
+      if (paramString.equals("getWebAudioBufferChannelData")) {
+        return getBufferChannelData(paramArgument);
+      }
+      break;
+    case -1365570487: 
+      if (paramString.equals("operateWebAudioContext")) {
+        return oprateWebAudioContext(paramArgument);
+      }
+      break;
+    case -1513995947: 
+      if (paramString.equals("closeWebAudioContext")) {
+        return closeWebAudioContext(paramArgument);
+      }
+      break;
+    case -1544532370: 
+      if (paramString.equals("getWebAudioCurrentTime")) {
+        return getWebAudioCurrentTime(paramArgument);
+      }
+      break;
+    case -1544927456: 
+      if (paramString.equals("getWebAudioCurrentGain")) {
+        return getCurrentGain(paramArgument);
+      }
+      break;
+    case -1809797821: 
+      if (paramString.equals("setWebAudioBufferSourceLoop")) {
+        return setBufferSourceLoop(paramArgument);
+      }
+      break;
+    case -2076546886: 
+      if (paramString.equals("decodeWebAudioData")) {
+        localObject = decodeWebAudioData(paramArgument);
+      }
+      break;
+    }
+    return localObject;
   }
   
   public void onCreate(@NotNull TritonEngine paramTritonEngine)
@@ -640,16 +675,22 @@ public final class WebAudioPlugin
   public final void setWebAudioSoPath(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "soPath");
-    WebAudioManager localWebAudioManager = this.webAudioManager;
-    if (localWebAudioManager != null) {}
-    for (boolean bool = localWebAudioManager.loadWebAudioSo(paramString);; bool = false)
+    Object localObject = this.webAudioManager;
+    boolean bool;
+    if (localObject != null) {
+      bool = ((WebAudioManager)localObject).loadWebAudioSo(paramString);
+    } else {
+      bool = false;
+    }
+    this.hasSoLoaded = bool;
+    paramString = this.logger;
+    if (paramString != null)
     {
-      this.hasSoLoaded = bool;
-      paramString = this.logger;
-      if (paramString != null) {
-        LogDelegate.DefaultImpls.printLog$default(paramString, LogDelegate.Level.INFO, "[audio]WebAudioPlugin", "setWebAudioSoPath hasSoLoaded=" + this.hasSoLoaded, null, 8, null);
-      }
-      return;
+      localObject = LogDelegate.Level.INFO;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setWebAudioSoPath hasSoLoaded=");
+      localStringBuilder.append(this.hasSoLoaded);
+      LogDelegate.DefaultImpls.printLog$default(paramString, (LogDelegate.Level)localObject, "[audio]WebAudioPlugin", localStringBuilder.toString(), null, 8, null);
     }
   }
   
@@ -661,7 +702,7 @@ public final class WebAudioPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.WebAudioPlugin
  * JD-Core Version:    0.7.0.1
  */

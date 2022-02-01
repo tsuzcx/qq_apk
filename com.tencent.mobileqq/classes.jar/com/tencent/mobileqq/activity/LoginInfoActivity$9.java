@@ -16,21 +16,17 @@ class LoginInfoActivity$9
         LoginInfoActivity.access$2200(this.this$0).dismiss();
         LoginInfoActivity.access$2200(this.this$0).cancel();
       }
-      LoginInfoActivity.access$2202(this.this$0, null);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    LoginInfoActivity.access$2202(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.FileExecutor;
-import java.util.concurrent.Executor;
+import com.tencent.mobileqq.filemanager.uftwrapper.QFileC2CTransferWrapper;
+import com.tencent.mobileqq.filemanager.uftwrapper.QFileC2CTransferWrapper.C2CFileMultiFwdInfo;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 class QFileMsgForwardManager$BuddyUploadTaskExcuter
   extends QFileMsgForwardManager.TaskExcuter
@@ -27,19 +29,27 @@ class QFileMsgForwardManager$BuddyUploadTaskExcuter
     this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
   }
   
-  void a(String paramString, int paramInt) {}
+  void a(String paramString, int paramInt)
+  {
+    QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager).getFileManagerEngine().a().a(this.jdField_b_of_type_Long);
+  }
   
   void a(String paramString, int paramInt, QFileMsgForwardManager.OnUploadCallback paramOnUploadCallback)
   {
     this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "1");
     this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
     this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    FileManagerUtil.FileExecutor.a().execute(new QFileMsgForwardManager.BuddyUploadTaskExcuter.1(this, paramString, paramOnUploadCallback));
+    this.jdField_a_of_type_Long = FileManagerUtil.a(this.jdField_b_of_type_JavaLangString);
+    QFileC2CTransferWrapper.C2CFileMultiFwdInfo localC2CFileMultiFwdInfo = new QFileC2CTransferWrapper.C2CFileMultiFwdInfo();
+    localC2CFileMultiFwdInfo.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localC2CFileMultiFwdInfo.jdField_b_of_type_JavaLangString = paramString;
+    localC2CFileMultiFwdInfo.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Long = QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager).getFileManagerEngine().a().a(localC2CFileMultiFwdInfo, new QFileMsgForwardManager.BuddyUploadTaskExcuter.1(this, paramOnUploadCallback));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.BuddyUploadTaskExcuter
  * JD-Core Version:    0.7.0.1
  */

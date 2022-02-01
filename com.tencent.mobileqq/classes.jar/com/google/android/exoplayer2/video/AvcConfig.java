@@ -35,56 +35,62 @@ public final class AvcConfig
   
   public static AvcConfig parse(ParsableByteArray paramParsableByteArray)
   {
-    int j = -1;
-    int k = 0;
-    int m;
     try
     {
       paramParsableByteArray.skipBytes(4);
-      m = (paramParsableByteArray.readUnsignedByte() & 0x3) + 1;
-      if (m == 3) {
-        throw new IllegalStateException();
+      k = (paramParsableByteArray.readUnsignedByte() & 0x3) + 1;
+      if (k == 3) {
+        break label165;
       }
-    }
-    catch (ArrayIndexOutOfBoundsException paramParsableByteArray)
-    {
-      throw new ParserException("Error parsing AVC config", paramParsableByteArray);
-    }
-    ArrayList localArrayList = new ArrayList();
-    int n = paramParsableByteArray.readUnsignedByte() & 0x1F;
-    int i = 0;
-    while (i < n)
-    {
-      localArrayList.add(buildNalUnitForChild(paramParsableByteArray));
-      i += 1;
-    }
-    int i1 = paramParsableByteArray.readUnsignedByte();
-    i = k;
-    while (i < i1)
-    {
-      localArrayList.add(buildNalUnitForChild(paramParsableByteArray));
-      i += 1;
-    }
-    float f = 1.0F;
-    if (n > 0)
-    {
+      localArrayList = new ArrayList();
+      j = paramParsableByteArray.readUnsignedByte() & 0x1F;
+      i = 0;
+      while (i < j)
+      {
+        localArrayList.add(buildNalUnitForChild(paramParsableByteArray));
+        i += 1;
+      }
+      int m = paramParsableByteArray.readUnsignedByte();
+      i = 0;
+      while (i < m)
+      {
+        localArrayList.add(buildNalUnitForChild(paramParsableByteArray));
+        i += 1;
+      }
+      if (j <= 0) {
+        break label193;
+      }
       paramParsableByteArray = (byte[])localArrayList.get(0);
-      paramParsableByteArray = NalUnitUtil.parseSpsNalUnit((byte[])localArrayList.get(0), m, paramParsableByteArray.length);
+      paramParsableByteArray = NalUnitUtil.parseSpsNalUnit((byte[])localArrayList.get(0), k, paramParsableByteArray.length);
       i = paramParsableByteArray.width;
       j = paramParsableByteArray.height;
       f = paramParsableByteArray.pixelWidthAspectRatio;
     }
-    for (;;)
+    catch (ArrayIndexOutOfBoundsException paramParsableByteArray)
     {
-      paramParsableByteArray = new AvcConfig(localArrayList, m, i, j, f);
-      return paramParsableByteArray;
-      i = -1;
+      for (;;)
+      {
+        int k;
+        ArrayList localArrayList;
+        label165:
+        paramParsableByteArray = new ParserException("Error parsing AVC config", paramParsableByteArray);
+        for (;;)
+        {
+          throw paramParsableByteArray;
+        }
+        label193:
+        int i = -1;
+        int j = -1;
+        float f = 1.0F;
+      }
     }
+    return new AvcConfig(localArrayList, k, i, j, f);
+    throw new IllegalStateException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.video.AvcConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ public class LocationMessageUtil
     return a(((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getMessagesFromDB(paramString, paramInt, 9223372036854775807L, 3, 9223372036854775807L, new int[] { -2076 }, 2147483647));
   }
   
-  private static List<MessageRecord> a(List<Entity> paramList)
+  private static List<MessageRecord> a(List<MessageRecord> paramList)
   {
     if (paramList == null) {
       return null;
@@ -51,23 +51,17 @@ public class LocationMessageUtil
     if (paramString != null)
     {
       paramInt = 0;
-      if (paramInt < paramString.size())
+      while (paramInt < paramString.size())
       {
         MessageRecord localMessageRecord = (MessageRecord)paramString.get(paramInt);
-        if ((localMessageRecord instanceof MessageForLocationShare))
-        {
-          if (paramInt != paramString.size() - 1) {
-            break label69;
+        if ((localMessageRecord instanceof MessageForLocationShare)) {
+          if (paramInt == paramString.size() - 1) {
+            a(paramAppInterface, localMessageRecord, paramBoolean);
+          } else {
+            a(paramAppInterface, localMessageRecord, false);
           }
-          a(paramAppInterface, localMessageRecord, paramBoolean);
         }
-        for (;;)
-        {
-          paramInt += 1;
-          break;
-          label69:
-          a(paramAppInterface, localMessageRecord, false);
-        }
+        paramInt += 1;
       }
     }
     if (QLog.isColorLevel()) {
@@ -85,32 +79,26 @@ public class LocationMessageUtil
   
   public static void a(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    MessageForLocationShare localMessageForLocationShare;
     if ((paramMessageRecord instanceof MessageForLocationShare))
     {
-      localMessageForLocationShare = (MessageForLocationShare)paramMessageRecord;
-      if (localMessageForLocationShare.isSharingLocation == paramBoolean) {
-        break label88;
+      MessageForLocationShare localMessageForLocationShare = (MessageForLocationShare)paramMessageRecord;
+      if (localMessageForLocationShare.isSharingLocation != paramBoolean)
+      {
+        localMessageForLocationShare.isSharingLocation = paramBoolean;
+        ((IMessageFacade)paramAppRuntime.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, localMessageForLocationShare.convertToMsgData());
       }
-      localMessageForLocationShare.isSharingLocation = paramBoolean;
-      ((IMessageFacade)paramAppRuntime.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, localMessageForLocationShare.convertToMsgData());
-    }
-    for (;;)
-    {
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("LocationMessageUtil", 2, "updateMsgSharingState: invoked. state ok, no need update. ");
+      }
       if (QLog.isColorLevel()) {
         QLog.d("LocationMessageUtil", 2, new Object[] { "updateMsgSharingState: invoked. updateMsgContentByUniseq to false ", " locationShare: ", localMessageForLocationShare });
-      }
-      return;
-      label88:
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationMessageUtil", 2, "updateMsgSharingState: invoked. state ok, no need update. ");
       }
     }
   }
   
   public static boolean a(PBBytesField paramPBBytesField)
   {
-    boolean bool = true;
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
     paramPBBytesField = paramPBBytesField.get().toByteArray();
     qq_lbs_share.C2CRelationInfo localC2CRelationInfo = new qq_lbs_share.C2CRelationInfo();
@@ -124,29 +112,24 @@ public class LocationMessageUtil
       }
       if (localAppRuntime.getLongAccountUin() == l1)
       {
-        if (l2 <= 0L) {
-          break label158;
+        if (l2 > 0L) {
+          return true;
         }
-        return true;
       }
-      long l3 = localAppRuntime.getLongAccountUin();
-      if (l3 == l2)
+      else
       {
-        if (l1 <= 0L) {
-          return false;
+        long l3 = localAppRuntime.getLongAccountUin();
+        if (l3 == l2) {
+          return l1 > 0L;
         }
-      }
-      else {
         return false;
       }
     }
     catch (Exception paramPBBytesField)
     {
       QLog.e("LocationMessageUtil", 1, "isC2cSharingLocation: failed. ", paramPBBytesField);
-      bool = false;
+      return false;
     }
-    return bool;
-    label158:
     return false;
   }
   
@@ -157,7 +140,7 @@ public class LocationMessageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.LocationMessageUtil
  * JD-Core Version:    0.7.0.1
  */

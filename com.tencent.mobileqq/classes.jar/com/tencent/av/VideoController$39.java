@@ -8,17 +8,12 @@ class VideoController$39
   public void run()
   {
     VideoController localVideoController = this.this$0;
-    if (!this.this$0.l) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localVideoController.a("onGAudioUserEnterOrLeave", bool, this.a);
-      return;
-    }
+    localVideoController.a("onGAudioUserEnterOrLeave", localVideoController.k ^ true, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.39
  * JD-Core Version:    0.7.0.1
  */

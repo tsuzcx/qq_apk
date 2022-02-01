@@ -29,6 +29,8 @@ public class MiniProgramReportConst
   public static final String PAGE_VIEW_SUB_ACTION_EXPO = "expo";
   public static final String PAGE_VIEW_SUB_ACTION_GAME_CLICK = "game_click";
   public static final String PAGE_VIEW_SUB_ACTION_GAME_EXPO = "game_expo";
+  public static final String PAGE_VIEW_SUB_ACTION_STORE_CLICK = "store_click";
+  public static final String PAGE_VIEW_SUB_ACTION_STORE_EXPO = "store_expo";
   public static final String PROFILE_CARD_ACTION = "id_card";
   public static final String RECENT_COLOR_SIGN_ACTION_CLICK = "click";
   public static final String RECENT_COLOR_SIGN_ACTION_EXPO = "expo";
@@ -48,7 +50,7 @@ public class MiniProgramReportConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.api.MiniProgramReportConst
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ public final class JDSearch$JdPicSearchDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdPicSearchDetail
  * JD-Core Version:    0.7.0.1
  */

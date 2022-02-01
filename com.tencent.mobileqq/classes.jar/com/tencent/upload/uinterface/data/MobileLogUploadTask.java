@@ -37,32 +37,33 @@ public class MobileLogUploadTask
   {
     try
     {
-      byte[] arrayOfByte1 = FileUtils.toByteArray(getFilePath());
-      byte[] arrayOfByte2 = arrayOfByte1;
-      if (arrayOfByte1 == null) {
-        arrayOfByte2 = new byte[0];
-      }
-      return arrayOfByte2;
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      for (;;)
-      {
-        UploadLog.e("MobileLogUploadTask", localFileNotFoundException.toString() + "path:" + getFilePath());
-        Object localObject1 = null;
-      }
+      byte[] arrayOfByte = FileUtils.toByteArray(getFilePath());
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        UploadLog.e("MobileLogUploadTask", localIOException.toString() + "path:" + getFilePath());
-        Object localObject2 = null;
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(localIOException.toString());
+      ((StringBuilder)localObject2).append("path:");
+      ((StringBuilder)localObject2).append(getFilePath());
+      UploadLog.e("MobileLogUploadTask", ((StringBuilder)localObject2).toString());
     }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(localFileNotFoundException.toString());
+      ((StringBuilder)localObject2).append("path:");
+      ((StringBuilder)localObject2).append(getFilePath());
+      UploadLog.e("MobileLogUploadTask", ((StringBuilder)localObject2).toString());
+    }
+    Object localObject1 = null;
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = new byte[0];
+    }
+    return localObject2;
   }
   
-  public UploadRequest getControlRequest()
+  protected UploadRequest getControlRequest()
   {
     Object localObject = TokenProvider.getAuthToken(this.vLoginData, this.vLoginKey);
     this.mCheckType = CheckType.TYPE_SHA1;
@@ -70,7 +71,10 @@ public class MobileLogUploadTask
     buildEnv();
     this.mModel = UploadModel.MODEL_NORMAL;
     this.mStEnv = UploadGlobalConfig.getEnv();
-    localObject = new FileControlRequest(this.iUin + "", this.mAppid, (AuthToken)localObject, this.mChecksum, this.mCheckType, this.mDataLength, this.mStEnv, this.mModel, this.mSessionId, this.mNeedIpRedirect, true, this.iSync, null, this.mExtend_info);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.iUin);
+    localStringBuilder.append("");
+    localObject = new FileControlRequest(localStringBuilder.toString(), this.mAppid, (AuthToken)localObject, this.mChecksum, this.mCheckType, this.mDataLength, this.mStEnv, this.mModel, this.mSessionId, this.mNeedIpRedirect, true, this.iSync, null, this.mExtend_info);
     ((FileControlRequest)localObject).setExtraParam(buildExtra());
     return localObject;
   }
@@ -85,40 +89,66 @@ public class MobileLogUploadTask
     return TaskTypeConfig.MobileLogUploadTaskType;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (!this.mKeepFileAfterUpload) {
       FileUtils.deleteTempFile(this.mFilePath);
     }
   }
   
-  public void onFileControlResponse(JceStruct paramJceStruct, UploadResponse paramUploadResponse)
+  protected void onFileControlResponse(JceStruct paramJceStruct, UploadResponse paramUploadResponse)
   {
     if (paramJceStruct == null)
     {
-      UploadLog.d("MobileLogUploadTask", "onFileControlResponse rsp == null " + hashCode());
+      paramJceStruct = new StringBuilder();
+      paramJceStruct.append("onFileControlResponse rsp == null ");
+      paramJceStruct.append(hashCode());
+      UploadLog.d("MobileLogUploadTask", paramJceStruct.toString());
       onError(Const.UploadRetCode.RESPONSE_IS_NULL.getCode(), Const.UploadRetCode.RESPONSE_IS_NULL.getDesc());
       return;
     }
     paramJceStruct = (FileControlRsp)paramJceStruct;
-    UploadLog.d("[transfer] MobileLogUploadTask", "recv Response taskId=" + getTaskId() + " reqId=" + paramUploadResponse.getRequestSequence() + " cmd=" + paramUploadResponse.getCmd() + " ret=" + paramJceStruct.result.ret + " flag=" + paramJceStruct.result.flag + " msg=" + paramJceStruct.result.msg + " retry=" + this.mRetryCount + " offset=" + paramJceStruct.offset + " slice_size=" + paramJceStruct.slice_size + " session=" + paramJceStruct.session);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("recv Response taskId=");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" reqId=");
+    localStringBuilder.append(paramUploadResponse.getRequestSequence());
+    localStringBuilder.append(" cmd=");
+    localStringBuilder.append(paramUploadResponse.getCmd());
+    localStringBuilder.append(" ret=");
+    localStringBuilder.append(paramJceStruct.result.ret);
+    localStringBuilder.append(" flag=");
+    localStringBuilder.append(paramJceStruct.result.flag);
+    localStringBuilder.append(" msg=");
+    localStringBuilder.append(paramJceStruct.result.msg);
+    localStringBuilder.append(" retry=");
+    localStringBuilder.append(this.mRetryCount);
+    localStringBuilder.append(" offset=");
+    localStringBuilder.append(paramJceStruct.offset);
+    localStringBuilder.append(" slice_size=");
+    localStringBuilder.append(paramJceStruct.slice_size);
+    localStringBuilder.append(" session=");
+    localStringBuilder.append(paramJceStruct.session);
+    UploadLog.d("[transfer] MobileLogUploadTask", localStringBuilder.toString());
     if (paramJceStruct.result.ret == 0)
     {
       paramJceStruct = new MobileLogUploadResult(this.iUin, this.flowId);
       if (this.uploadTaskCallback != null)
       {
-        UploadLog.d("MobileLogUploadTask", "onUploadSucceed flowid = " + this.flowId + " filepath = " + getFilePath());
+        paramUploadResponse = new StringBuilder();
+        paramUploadResponse.append("onUploadSucceed flowid = ");
+        paramUploadResponse.append(this.flowId);
+        paramUploadResponse.append(" filepath = ");
+        paramUploadResponse.append(getFilePath());
+        UploadLog.d("MobileLogUploadTask", paramUploadResponse.toString());
         this.uploadTaskCallback.onUploadSucceed(this, paramJceStruct);
       }
     }
-    for (;;)
+    else if (this.uploadTaskCallback != null)
     {
-      processUploadLogRsp();
-      return;
-      if (this.uploadTaskCallback != null) {
-        this.uploadTaskCallback.onUploadError(this, paramJceStruct.result.ret, paramJceStruct.result.msg);
-      }
+      this.uploadTaskCallback.onUploadError(this, paramJceStruct.result.ret, paramJceStruct.result.msg);
     }
+    processUploadLogRsp();
   }
   
   protected void processUploadLogRsp()
@@ -129,7 +159,7 @@ public class MobileLogUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.MobileLogUploadTask
  * JD-Core Version:    0.7.0.1
  */

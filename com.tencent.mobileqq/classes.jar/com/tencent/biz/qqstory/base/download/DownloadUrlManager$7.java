@@ -36,33 +36,34 @@ class DownloadUrlManager$7
       ((DownloadUrlManager)SuperManager.a(28)).a(paramGetVideoFullInfoListResponse.b);
       this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager.c(this.jdField_a_of_type_JavaLangString, 0);
     }
+    else
+    {
+      SLog.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url fail , vid : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      for (;;)
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        try
-        {
-          if (this.b.get()) {
-            this.jdField_a_of_type_JavaLangObject.notifyAll();
-          }
-          return;
-          SLog.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url fail , vid : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+        if (!this.b.get()) {
+          break label181;
         }
-        catch (Exception paramGetVideoFullInfoListResponse)
-        {
-          for (;;)
-          {
-            SLog.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary lock error");
-          }
-        }
+        this.jdField_a_of_type_JavaLangObject.notifyAll();
       }
+      catch (Exception paramGetVideoFullInfoListResponse)
+      {
+        label174:
+        label181:
+        break label174;
+      }
+      SLog.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary lock error");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager.7
  * JD-Core Version:    0.7.0.1
  */

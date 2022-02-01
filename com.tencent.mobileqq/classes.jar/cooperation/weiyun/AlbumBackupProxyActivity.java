@@ -27,7 +27,7 @@ public class AlbumBackupProxyActivity
     localIntent.putExtra("weiyun_backup_source", paramString2);
     paramString2 = new IPluginManager.PluginParams(0);
     paramString2.b = "WeiyunPlugin.apk";
-    paramString2.e = paramActivity.getResources().getString(2131720662);
+    paramString2.e = paramActivity.getResources().getString(2131720381);
     paramString2.jdField_a_of_type_JavaLangString = paramString1;
     paramString2.f = "com.weiyun.plugin.cloudalbum.activity.CloudAlbumActivity";
     paramString2.jdField_a_of_type_JavaLangClass = AlbumBackupProxyActivity.class;
@@ -61,7 +61,7 @@ public class AlbumBackupProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.weiyun.AlbumBackupProxyActivity
  * JD-Core Version:    0.7.0.1
  */

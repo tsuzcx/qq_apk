@@ -4,10 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedDisplayInfo;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
@@ -25,17 +25,22 @@ public class RedPointBroadcastReceiver
   
   private String a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPointBroadcastReceiver getRedInfo", 2, "path = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("path = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("RedPointBroadcastReceiver getRedInfo", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.a == null)
+    Object localObject = this.a;
+    if (localObject == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RedPointBroadcastReceiver getRedInfo", 2, "qqapp = null");
       }
       return null;
     }
-    paramString = ((RedTouchManager)this.a.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramString);
+    paramString = ((IRedTouchManager)((QQAppInterface)localObject).getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath(paramString);
     if (paramString == null)
     {
       if (QLog.isColorLevel()) {
@@ -43,77 +48,94 @@ public class RedPointBroadcastReceiver
       }
       return null;
     }
-    int j = paramString.iNewFlag.get();
+    int k = paramString.iNewFlag.get();
+    int j = 0;
     paramString = paramString.red_display_info.red_type_info.get();
-    if ((paramString != null) && (paramString.size() >= 2))
+    int i = j;
+    if (paramString != null)
     {
-      paramString = (BusinessInfoCheckUpdate.RedTypeInfo)paramString.get(1);
-      if (paramString == null) {}
-    }
-    for (int i = paramString.red_type.get();; i = 0)
-    {
-      paramString = new JSONObject();
-      try
+      i = j;
+      if (paramString.size() >= 2)
       {
-        paramString.put("iNewFlag", j);
-        paramString.put("type", i);
-        paramString = paramString.toString();
-        return paramString;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("RedPointBroadcastReceiver getRedInfo", 2, "jsonexception");
+        paramString = (BusinessInfoCheckUpdate.RedTypeInfo)paramString.get(1);
+        i = j;
+        if (paramString != null) {
+          i = paramString.red_type.get();
         }
-        return null;
       }
     }
+    paramString = new JSONObject();
+    try
+    {
+      paramString.put("iNewFlag", k);
+      paramString.put("type", i);
+      paramString = paramString.toString();
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPointBroadcastReceiver getRedInfo", 2, "jsonexception");
+      }
+    }
+    return null;
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPointBroadcastReceiver clearRed", 2, "path = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("path = ");
+      localStringBuilder.append(paramString);
+      QLog.d("RedPointBroadcastReceiver clearRed", 2, localStringBuilder.toString());
     }
-    ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(paramString);
+    ((IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick(paramString);
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPointBroadcastReceiver reportRedInfo", 2, "path = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("path = ");
+      paramQQAppInterface.append(paramString);
+      QLog.d("RedPointBroadcastReceiver reportRedInfo", 2, paramQQAppInterface.toString());
     }
+    int i;
     try
     {
-      if (paramString.contains("\\.")) {}
-      for (i = Integer.parseInt(paramString.split("\\.")[0]);; i = Integer.parseInt(paramString))
-      {
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          paramString = ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramString);
-          localJSONObject.put("service_type", 0);
-          localJSONObject.put("act_id", paramInt);
-          localJSONObject.put("obj_id", "");
-          localJSONObject.put("pay_amt", 0);
-          localJSONObject.put("service_id", i);
-          ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).c(paramString, localJSONObject.toString());
-          return;
-        }
-        catch (JSONException paramQQAppInterface)
-        {
-          paramQQAppInterface.printStackTrace();
-        }
+      if (paramString.contains("\\.")) {
+        i = Integer.parseInt(paramString.split("\\.")[0]);
+      } else {
+        i = Integer.parseInt(paramString);
       }
     }
-    catch (NumberFormatException localNumberFormatException)
+    catch (NumberFormatException paramQQAppInterface)
     {
-      for (;;)
-      {
-        localNumberFormatException.printStackTrace();
-        int i = 0;
-      }
+      paramQQAppInterface.printStackTrace();
+      i = 0;
+    }
+    paramQQAppInterface = new JSONObject();
+    try
+    {
+      IRedTouchManager localIRedTouchManager = (IRedTouchManager)this.a.getRuntimeService(IRedTouchManager.class, "");
+      paramString = localIRedTouchManager.getAppInfoByPath(paramString);
+      paramQQAppInterface.put("service_type", 0);
+      paramQQAppInterface.put("act_id", paramInt);
+      paramQQAppInterface.put("obj_id", "");
+      paramQQAppInterface.put("pay_amt", 0);
+      paramQQAppInterface.put("service_id", i);
+      localIRedTouchManager.onReportBusinessRedTouch(paramString, paramQQAppInterface.toString());
+      return;
+    }
+    catch (JSONException paramQQAppInterface)
+    {
+      paramString = new StringBuilder();
+      paramString.append("report redinfo error ");
+      paramString.append(paramQQAppInterface);
+      QLog.e("RedPointBroadcastReceiver", 1, paramString.toString());
     }
   }
   
@@ -131,32 +153,31 @@ public class RedPointBroadcastReceiver
       {
         paramIntent.putExtra("redPointResp", a(paramIntent.getStringExtra("path")));
         this.a.getApplication().sendBroadcast(paramIntent);
+        return;
+      }
+      paramIntent.putExtra("redPointResp", "");
+      paramContext.getApplication().sendBroadcast(paramIntent);
+      return;
+    }
+    if ("com.tencent.redpoint.report".equals(str))
+    {
+      if (this.a != null)
+      {
+        paramContext = paramIntent.getStringExtra("path");
+        int i = paramIntent.getIntExtra("actId", 1001);
+        a(this.a, paramContext, i);
       }
     }
-    do
+    else if (("com.tencent.redpoint.clear".equals(str)) && (this.a != null))
     {
-      do
-      {
-        return;
-        paramIntent.putExtra("redPointResp", "");
-        paramContext.getApplication().sendBroadcast(paramIntent);
-        return;
-        if (!"com.tencent.redpoint.report".equals(str)) {
-          break;
-        }
-      } while (this.a == null);
       paramContext = paramIntent.getStringExtra("path");
-      int i = paramIntent.getIntExtra("actId", 1001);
-      a(this.a, paramContext, i);
-      return;
-    } while ((!"com.tencent.redpoint.clear".equals(str)) || (this.a == null));
-    paramContext = paramIntent.getStringExtra("path");
-    a(this.a, paramContext);
+      a(this.a, paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedPointBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

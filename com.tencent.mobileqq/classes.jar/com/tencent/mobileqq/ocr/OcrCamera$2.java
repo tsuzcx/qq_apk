@@ -11,23 +11,24 @@ class OcrCamera$2
   public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
     this.a.c = false;
-    if (paramBoolean) {}
-    try
-    {
-      Camera.Parameters localParameters = paramCamera.getParameters();
-      CameraParameters.a(localParameters);
-      paramCamera.setParameters(localParameters);
-      return;
-    }
-    catch (Exception paramCamera)
-    {
-      paramCamera.printStackTrace();
+    if (paramBoolean) {
+      try
+      {
+        Camera.Parameters localParameters = paramCamera.getParameters();
+        CameraParameters.a(localParameters);
+        paramCamera.setParameters(localParameters);
+        return;
+      }
+      catch (Exception paramCamera)
+      {
+        paramCamera.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrCamera.2
  * JD-Core Version:    0.7.0.1
  */

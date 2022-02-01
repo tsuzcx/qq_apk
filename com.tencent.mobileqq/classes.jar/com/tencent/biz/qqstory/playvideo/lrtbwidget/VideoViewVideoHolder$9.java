@@ -16,23 +16,23 @@ class VideoViewVideoHolder$9
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.g(this.a.jdField_a_of_type_AndroidViewView.getContext())) {
-      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694457, 0).a();
-    }
-    for (;;)
+    if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_AndroidViewView.getContext()))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694422, 0).a();
+    }
+    else
+    {
       SLog.d(this.a.jdField_a_of_type_JavaLangString, "video view error, retry, show loading view");
       this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
       this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
       this.a.a(10, true, "retry play");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.9
  * JD-Core Version:    0.7.0.1
  */

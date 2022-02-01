@@ -1,7 +1,8 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
 import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.pic.api.ICompressOperator;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.util.HashMap;
@@ -18,34 +19,31 @@ class PublicAccountH5AbilityPluginImpl$2
   {
     CompressInfo localCompressInfo = new CompressInfo(this.this$0.cameraPath, 0);
     localCompressInfo.f = 0;
-    CompressOperator.a(localCompressInfo);
-    String str;
+    ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(localCompressInfo);
     if (!StringUtil.a(localCompressInfo.e))
     {
-      str = "mqqpa://resourceid/" + this.this$0.cameraUUid;
-      PublicAccountH5AbilityPluginImpl.localIdMap.put(str, localCompressInfo.e);
-    }
-    for (;;)
-    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mqqpa://resourceid/");
+      ((StringBuilder)localObject).append(this.this$0.cameraUUid);
+      localObject = ((StringBuilder)localObject).toString();
+      PublicAccountH5AbilityPluginImpl.localIdMap.put(localObject, localCompressInfo.e);
       try
       {
-        this.jdField_a_of_type_OrgJsonJSONArray.put(0, str);
+        this.jdField_a_of_type_OrgJsonJSONArray.put(0, localObject);
         this.jdField_a_of_type_OrgJsonJSONObject.put("value", this.jdField_a_of_type_OrgJsonJSONArray);
         this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 0);
         this.jdField_a_of_type_OrgJsonJSONObject.put("msg", "Success");
         this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "camera");
         this.this$0.callJs(this.this$0.cameraCallback, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
         ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
-        this.this$0.cameraPath = "";
-        this.this$0.cameraCallback = "";
-        this.this$0.cameraUUid = "";
-        return;
       }
       catch (JSONException localJSONException1)
       {
         localJSONException1.printStackTrace();
-        continue;
       }
+    }
+    else
+    {
       try
       {
         this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", -1);
@@ -59,11 +57,15 @@ class PublicAccountH5AbilityPluginImpl$2
         localJSONException2.printStackTrace();
       }
     }
+    PublicAccountH5AbilityPluginImpl localPublicAccountH5AbilityPluginImpl = this.this$0;
+    localPublicAccountH5AbilityPluginImpl.cameraPath = "";
+    localPublicAccountH5AbilityPluginImpl.cameraCallback = "";
+    localPublicAccountH5AbilityPluginImpl.cameraUUid = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.2
  * JD-Core Version:    0.7.0.1
  */

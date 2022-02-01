@@ -18,24 +18,25 @@ class AccountManageActivity$AnimationEndClearListener
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    paramAnimation = this.jdField_a_of_type_AndroidViewView;
+    if (paramAnimation == null) {
       return;
     }
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 1)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidViewView.getId() == 2131364705)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
-        continue;
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      if (i == 2) {
+        paramAnimation.setVisibility(8);
       }
     }
+    else
+    {
+      paramAnimation.setVisibility(0);
+      if (this.jdField_a_of_type_AndroidViewView.getId() == 2131364592) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
+      }
+    }
+    this.jdField_a_of_type_AndroidViewView.clearAnimation();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -44,7 +45,7 @@ class AccountManageActivity$AnimationEndClearListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.AnimationEndClearListener
  * JD-Core Version:    0.7.0.1
  */

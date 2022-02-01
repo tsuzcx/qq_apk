@@ -5,7 +5,6 @@ public class ArkAppMgr$AppPathInfo
   public static final int FROM_CACHE = 1;
   public static final int FROM_DOWNLOAD = 0;
   public static final int FROM_LOCAL = 2;
-  public ArkAppInfo.AppTemplateView appTempInfo;
   public ArkAppInfo.AppDesc desc = new ArkAppInfo.AppDesc();
   public int from;
   public String path;

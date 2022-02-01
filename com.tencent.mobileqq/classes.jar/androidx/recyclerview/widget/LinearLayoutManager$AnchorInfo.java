@@ -17,65 +17,67 @@ class LinearLayoutManager$AnchorInfo
   
   void assignCoordinateFromPadding()
   {
-    if (this.mLayoutFromEnd) {}
-    for (int i = this.mOrientationHelper.getEndAfterPadding();; i = this.mOrientationHelper.getStartAfterPadding())
-    {
-      this.mCoordinate = i;
-      return;
+    int i;
+    if (this.mLayoutFromEnd) {
+      i = this.mOrientationHelper.getEndAfterPadding();
+    } else {
+      i = this.mOrientationHelper.getStartAfterPadding();
     }
+    this.mCoordinate = i;
   }
   
   public void assignFromView(View paramView, int paramInt)
   {
-    if (this.mLayoutFromEnd) {}
-    for (this.mCoordinate = (this.mOrientationHelper.getDecoratedEnd(paramView) + this.mOrientationHelper.getTotalSpaceChange());; this.mCoordinate = this.mOrientationHelper.getDecoratedStart(paramView))
-    {
-      this.mPosition = paramInt;
-      return;
+    if (this.mLayoutFromEnd) {
+      this.mCoordinate = (this.mOrientationHelper.getDecoratedEnd(paramView) + this.mOrientationHelper.getTotalSpaceChange());
+    } else {
+      this.mCoordinate = this.mOrientationHelper.getDecoratedStart(paramView);
     }
+    this.mPosition = paramInt;
   }
   
   public void assignFromViewAndKeepVisibleRect(View paramView, int paramInt)
   {
     int i = this.mOrientationHelper.getTotalSpaceChange();
-    if (i >= 0) {
-      assignFromView(paramView, paramInt);
-    }
-    do
+    if (i >= 0)
     {
-      int j;
-      do
+      assignFromView(paramView, paramInt);
+      return;
+    }
+    this.mPosition = paramInt;
+    int j;
+    int k;
+    if (this.mLayoutFromEnd)
+    {
+      paramInt = this.mOrientationHelper.getEndAfterPadding() - i - this.mOrientationHelper.getDecoratedEnd(paramView);
+      this.mCoordinate = (this.mOrientationHelper.getEndAfterPadding() - paramInt);
+      if (paramInt > 0)
       {
-        do
-        {
-          do
-          {
-            return;
-            this.mPosition = paramInt;
-            if (!this.mLayoutFromEnd) {
-              break;
-            }
-            paramInt = this.mOrientationHelper.getEndAfterPadding() - i - this.mOrientationHelper.getDecoratedEnd(paramView);
-            this.mCoordinate = (this.mOrientationHelper.getEndAfterPadding() - paramInt);
-          } while (paramInt <= 0);
-          i = this.mOrientationHelper.getDecoratedMeasurement(paramView);
-          j = this.mCoordinate;
-          k = this.mOrientationHelper.getStartAfterPadding();
-          i = j - i - (k + Math.min(this.mOrientationHelper.getDecoratedStart(paramView) - k, 0));
-        } while (i >= 0);
+        i = this.mOrientationHelper.getDecoratedMeasurement(paramView);
         j = this.mCoordinate;
-        this.mCoordinate = (Math.min(paramInt, -i) + j);
-        return;
-        j = this.mOrientationHelper.getDecoratedStart(paramView);
-        paramInt = j - this.mOrientationHelper.getStartAfterPadding();
-        this.mCoordinate = j;
-      } while (paramInt <= 0);
-      int k = this.mOrientationHelper.getDecoratedMeasurement(paramView);
-      int m = this.mOrientationHelper.getEndAfterPadding();
-      int n = this.mOrientationHelper.getDecoratedEnd(paramView);
-      i = this.mOrientationHelper.getEndAfterPadding() - Math.min(0, m - i - n) - (j + k);
-    } while (i >= 0);
-    this.mCoordinate -= Math.min(paramInt, -i);
+        k = this.mOrientationHelper.getStartAfterPadding();
+        i = j - i - (k + Math.min(this.mOrientationHelper.getDecoratedStart(paramView) - k, 0));
+        if (i < 0) {
+          this.mCoordinate += Math.min(paramInt, -i);
+        }
+      }
+    }
+    else
+    {
+      j = this.mOrientationHelper.getDecoratedStart(paramView);
+      paramInt = j - this.mOrientationHelper.getStartAfterPadding();
+      this.mCoordinate = j;
+      if (paramInt > 0)
+      {
+        k = this.mOrientationHelper.getDecoratedMeasurement(paramView);
+        int m = this.mOrientationHelper.getEndAfterPadding();
+        int n = this.mOrientationHelper.getDecoratedEnd(paramView);
+        i = this.mOrientationHelper.getEndAfterPadding() - Math.min(0, m - i - n) - (j + k);
+        if (i < 0) {
+          this.mCoordinate -= Math.min(paramInt, -i);
+        }
+      }
+    }
   }
   
   boolean isViewValidAsAnchor(View paramView, RecyclerView.State paramState)
@@ -94,12 +96,22 @@ class LinearLayoutManager$AnchorInfo
   
   public String toString()
   {
-    return "AnchorInfo{mPosition=" + this.mPosition + ", mCoordinate=" + this.mCoordinate + ", mLayoutFromEnd=" + this.mLayoutFromEnd + ", mValid=" + this.mValid + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AnchorInfo{mPosition=");
+    localStringBuilder.append(this.mPosition);
+    localStringBuilder.append(", mCoordinate=");
+    localStringBuilder.append(this.mCoordinate);
+    localStringBuilder.append(", mLayoutFromEnd=");
+    localStringBuilder.append(this.mLayoutFromEnd);
+    localStringBuilder.append(", mValid=");
+    localStringBuilder.append(this.mValid);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.LinearLayoutManager.AnchorInfo
  * JD-Core Version:    0.7.0.1
  */

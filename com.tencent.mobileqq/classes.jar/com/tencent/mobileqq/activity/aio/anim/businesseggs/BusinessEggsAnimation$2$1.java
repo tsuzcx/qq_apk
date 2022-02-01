@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.anim.businesseggs;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Queue;
 
 class BusinessEggsAnimation$2$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   BusinessEggsAnimation$2$1(BusinessEggsAnimation.2 param2) {}
   
@@ -31,7 +31,7 @@ class BusinessEggsAnimation$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation.2.1
  * JD-Core Version:    0.7.0.1
  */

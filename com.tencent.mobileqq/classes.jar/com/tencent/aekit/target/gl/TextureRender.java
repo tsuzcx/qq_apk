@@ -15,52 +15,69 @@ public class TextureRender
   private static final int TRIANGLE_VERTICES_DATA_STRIDE_BYTES = 20;
   private static final int TRIANGLE_VERTICES_DATA_UV_OFFSET = 3;
   private static final String VERTEX_SHADER = "attribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n  gl_Position = aPosition;\n  vTextureCoord = aTextureCoord.xy;\n}\n";
-  private final String TAG = "TextureRender-" + Integer.toHexString(hashCode());
-  private float[] mMVPMatrix = new float[16];
-  private int mProgram = 0;
-  private FloatBuffer mTriangleVertices = ByteBuffer.allocateDirect(this.mTriangleVerticesData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-  private float[] mTriangleVerticesData = { -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
-  private int maPositionHandle = 0;
-  private int maTextureHandle = 0;
+  private final String TAG;
+  private float[] mMVPMatrix;
+  private int mProgram;
+  private FloatBuffer mTriangleVertices;
+  private float[] mTriangleVerticesData;
+  private int maPositionHandle;
+  private int maTextureHandle;
   
   public TextureRender()
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TextureRender-");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.TAG = localStringBuilder.toString();
+    this.mTriangleVerticesData = new float[] { -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
+    this.mMVPMatrix = new float[16];
+    this.mProgram = 0;
+    this.maPositionHandle = 0;
+    this.maTextureHandle = 0;
+    this.mTriangleVertices = ByteBuffer.allocateDirect(this.mTriangleVerticesData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.mTriangleVertices.put(this.mTriangleVerticesData).position(0);
   }
   
   private int createProgram(String paramString1, String paramString2)
   {
     int i = loadShader(35633, paramString1);
-    int j = loadShader(35632, paramString2);
-    int k = GLES20.glCreateProgram();
-    GLES20.glAttachShader(k, i);
-    GLES20.glAttachShader(k, j);
-    GLES20.glLinkProgram(k);
+    int k = loadShader(35632, paramString2);
+    int j = GLES20.glCreateProgram();
+    GLES20.glAttachShader(j, i);
+    GLES20.glAttachShader(j, k);
+    GLES20.glLinkProgram(j);
     paramString1 = new int[1];
-    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
+    GLES20.glGetProgramiv(j, 35714, paramString1, 0);
+    i = j;
     if (paramString1[0] != 1)
     {
       LogUtils.e(this.TAG, "Could not link program:");
-      LogUtils.e(this.TAG, GLES20.glGetProgramInfoLog(k));
-      GLES20.glDeleteProgram(k);
-      return 0;
+      LogUtils.e(this.TAG, GLES20.glGetProgramInfoLog(j));
+      GLES20.glDeleteProgram(j);
+      i = 0;
     }
-    return k;
+    return i;
   }
   
   private int loadShader(int paramInt, String paramString)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
+    int j = GLES20.glCreateShader(paramInt);
+    GLES20.glShaderSource(j, paramString);
+    GLES20.glCompileShader(j);
     paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    GLES20.glGetShaderiv(j, 35713, paramString, 0);
+    int i = j;
     if (paramString[0] == 0)
     {
-      LogUtils.e(this.TAG, "Could not compile shader(TYPE=" + paramInt + "):");
-      LogUtils.e(this.TAG, GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
+      paramString = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Could not compile shader(TYPE=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("):");
+      LogUtils.e(paramString, localStringBuilder.toString());
+      LogUtils.e(this.TAG, GLES20.glGetShaderInfoLog(j));
+      GLES20.glDeleteShader(j);
+      i = 0;
     }
     return i;
   }
@@ -89,26 +106,31 @@ public class TextureRender
   public void prepare()
   {
     this.mProgram = createProgram("attribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n  gl_Position = aPosition;\n  vTextureCoord = aTextureCoord.xy;\n}\n", "precision mediump float;\nvarying vec2 vTextureCoord;\nuniform sampler2D sTexture;\nvoid main() {\n  gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n");
-    if (this.mProgram == 0) {
-      throw new RuntimeException("failed creating program");
-    }
-    this.maPositionHandle = GLES20.glGetAttribLocation(this.mProgram, "aPosition");
-    GlUtil.checkGlError("glGetAttribLocation aPosition");
-    if (this.maPositionHandle == -1) {
+    int i = this.mProgram;
+    if (i != 0)
+    {
+      this.maPositionHandle = GLES20.glGetAttribLocation(i, "aPosition");
+      GlUtil.checkGlError("glGetAttribLocation aPosition");
+      if (this.maPositionHandle != -1)
+      {
+        this.maTextureHandle = GLES20.glGetAttribLocation(this.mProgram, "aTextureCoord");
+        GlUtil.checkGlError("glGetAttribLocation aTextureCoord");
+        if (this.maTextureHandle != -1) {
+          return;
+        }
+        throw new RuntimeException("Could not get attrib location for aTextureCoord");
+      }
       throw new RuntimeException("Could not get attrib location for aPosition");
     }
-    this.maTextureHandle = GLES20.glGetAttribLocation(this.mProgram, "aTextureCoord");
-    GlUtil.checkGlError("glGetAttribLocation aTextureCoord");
-    if (this.maTextureHandle == -1) {
-      throw new RuntimeException("Could not get attrib location for aTextureCoord");
-    }
+    throw new RuntimeException("failed creating program");
   }
   
   public void release()
   {
-    if (this.mProgram != 0)
+    int i = this.mProgram;
+    if (i != 0)
     {
-      GLES20.glDeleteProgram(this.mProgram);
+      GLES20.glDeleteProgram(i);
       this.mProgram = 0;
     }
   }

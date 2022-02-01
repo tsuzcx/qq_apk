@@ -32,17 +32,19 @@ public final class EventMessageEncoder
     boolean bool;
     if (paramLong >= 0L) {
       bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkArgument(bool);
+    this.byteArrayOutputStream.reset();
     for (;;)
     {
-      Assertions.checkArgument(bool);
-      this.byteArrayOutputStream.reset();
       try
       {
         writeNullTerminatedString(this.dataOutputStream, paramEventMessage.schemeIdUri);
-        if (paramEventMessage.value != null) {}
-        for (String str = paramEventMessage.value;; str = "")
+        if (paramEventMessage.value != null)
         {
+          str = paramEventMessage.value;
           writeNullTerminatedString(this.dataOutputStream, str);
           writeUnsignedInt(this.dataOutputStream, paramLong);
           long l = Util.scaleLargeTimestamp(paramEventMessage.presentationTimeUs, paramLong, 1000000L);
@@ -52,20 +54,21 @@ public final class EventMessageEncoder
           writeUnsignedInt(this.dataOutputStream, paramEventMessage.id);
           this.dataOutputStream.write(paramEventMessage.messageData);
           this.dataOutputStream.flush();
-          return this.byteArrayOutputStream.toByteArray();
+          paramEventMessage = this.byteArrayOutputStream.toByteArray();
+          return paramEventMessage;
         }
-        bool = false;
       }
       catch (IOException paramEventMessage)
       {
         throw new RuntimeException(paramEventMessage);
       }
+      String str = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.emsg.EventMessageEncoder
  * JD-Core Version:    0.7.0.1
  */

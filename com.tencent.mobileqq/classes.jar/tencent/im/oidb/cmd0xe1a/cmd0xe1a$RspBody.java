@@ -9,15 +9,21 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class cmd0xe1a$RspBody
   extends MessageMicro<RspBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "have_red_packet", "opened_red_packet", "wording", "wording2" }, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false), "", "" }, RspBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField have_red_packet = PBField.initBool(false);
   public final PBBoolField opened_red_packet = PBField.initBool(false);
   public final PBStringField wording = PBField.initString("");
   public final PBStringField wording2 = PBField.initString("");
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "have_red_packet", "opened_red_packet", "wording", "wording2" }, new Object[] { localBoolean, localBoolean, "", "" }, RspBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe1a.cmd0xe1a.RspBody
  * JD-Core Version:    0.7.0.1
  */

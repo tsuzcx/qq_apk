@@ -1,26 +1,20 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewGroup;
 
 class PublishHomeWorkFragment$18
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   PublishHomeWorkFragment$18(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    PublishHomeWorkFragment.a(this.a);
+    this.this$0.e.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.18
  * JD-Core Version:    0.7.0.1
  */

@@ -20,26 +20,22 @@ class MaxHistory$TestComparator
   
   public int compare(Description paramDescription1, Description paramDescription2)
   {
-    int i;
     if (this.this$0.isNewTest(paramDescription1)) {
-      i = -1;
+      return -1;
     }
-    int j;
-    do
-    {
+    if (this.this$0.isNewTest(paramDescription2)) {
+      return 1;
+    }
+    int i = getFailure(paramDescription2).compareTo(getFailure(paramDescription1));
+    if (i != 0) {
       return i;
-      if (this.this$0.isNewTest(paramDescription2)) {
-        return 1;
-      }
-      j = getFailure(paramDescription2).compareTo(getFailure(paramDescription1));
-      i = j;
-    } while (j != 0);
+    }
     return this.this$0.getTestDuration(paramDescription1).compareTo(this.this$0.getTestDuration(paramDescription2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.experimental.max.MaxHistory.TestComparator
  * JD-Core Version:    0.7.0.1
  */

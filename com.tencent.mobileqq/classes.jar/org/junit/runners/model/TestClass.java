@@ -48,26 +48,19 @@ public class TestClass
     Annotation[] arrayOfAnnotation = paramT.getAnnotations();
     int j = arrayOfAnnotation.length;
     int i = 0;
-    Class localClass;
-    List localList;
-    if (i < j)
+    while (i < j)
     {
-      localClass = arrayOfAnnotation[i].annotationType();
-      localList = getAnnotatedMembers(paramMap, localClass, true);
-      if (!paramT.isShadowedBy(localList)) {}
-    }
-    else
-    {
-      return;
-    }
-    if (runsTopToBottom(localClass)) {
-      localList.add(0, paramT);
-    }
-    for (;;)
-    {
+      Class localClass = arrayOfAnnotation[i].annotationType();
+      List localList = getAnnotatedMembers(paramMap, localClass, true);
+      if (paramT.isShadowedBy(localList)) {
+        return;
+      }
+      if (runsTopToBottom(localClass)) {
+        localList.add(0, paramT);
+      } else {
+        localList.add(paramT);
+      }
       i += 1;
-      break;
-      localList.add(paramT);
     }
   }
   
@@ -131,19 +124,17 @@ public class TestClass
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (TestClass)paramObject;
-    } while (this.clazz == paramObject.clazz);
-    return false;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (getClass() != paramObject.getClass()) {
+      return false;
+    }
+    paramObject = (TestClass)paramObject;
+    return this.clazz == paramObject.clazz;
   }
   
   public <T> List<T> getAnnotatedFieldValues(Object paramObject, Class<? extends Annotation> paramClass, Class<T> paramClass1)
@@ -193,7 +184,10 @@ public class TestClass
       }
       catch (Throwable paramObject)
       {
-        throw new RuntimeException("Exception in " + paramClass.getName(), paramObject);
+        paramClass1 = new StringBuilder();
+        paramClass1.append("Exception in ");
+        paramClass1.append(paramClass.getName());
+        throw new RuntimeException(paramClass1.toString(), paramObject);
       }
     }
     return localArrayList;
@@ -213,18 +207,20 @@ public class TestClass
   
   public <T extends Annotation> T getAnnotation(Class<T> paramClass)
   {
-    if (this.clazz == null) {
+    Class localClass = this.clazz;
+    if (localClass == null) {
       return null;
     }
-    return this.clazz.getAnnotation(paramClass);
+    return localClass.getAnnotation(paramClass);
   }
   
   public Annotation[] getAnnotations()
   {
-    if (this.clazz == null) {
+    Class localClass = this.clazz;
+    if (localClass == null) {
       return new Annotation[0];
     }
-    return this.clazz.getAnnotations();
+    return localClass.getAnnotations();
   }
   
   public Class<?> getJavaClass()
@@ -234,10 +230,11 @@ public class TestClass
   
   public String getName()
   {
-    if (this.clazz == null) {
+    Class localClass = this.clazz;
+    if (localClass == null) {
       return "null";
     }
-    return this.clazz.getName();
+    return localClass.getName();
   }
   
   public Constructor<?> getOnlyConstructor()
@@ -249,10 +246,11 @@ public class TestClass
   
   public int hashCode()
   {
-    if (this.clazz == null) {
+    Class localClass = this.clazz;
+    if (localClass == null) {
       return 0;
     }
-    return this.clazz.hashCode();
+    return localClass.hashCode();
   }
   
   public boolean isANonStaticInnerClass()
@@ -272,17 +270,18 @@ public class TestClass
     {
       Object localObject = (Class)localIterator.next();
       Method[] arrayOfMethod = MethodSorter.getDeclaredMethods((Class)localObject);
-      int j = arrayOfMethod.length;
+      int k = arrayOfMethod.length;
+      int j = 0;
       int i = 0;
-      while (i < j)
+      while (i < k)
       {
         addToAnnotationLists(new FrameworkMethod(arrayOfMethod[i]), paramMap);
         i += 1;
       }
       localObject = getSortedDeclaredFields((Class)localObject);
-      j = localObject.length;
-      i = 0;
-      while (i < j)
+      k = localObject.length;
+      i = j;
+      while (i < k)
       {
         addToAnnotationLists(new FrameworkField(localObject[i]), paramMap1);
         i += 1;
@@ -292,7 +291,7 @@ public class TestClass
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.runners.model.TestClass
  * JD-Core Version:    0.7.0.1
  */

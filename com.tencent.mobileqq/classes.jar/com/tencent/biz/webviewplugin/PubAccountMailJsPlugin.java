@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomContextMenuDialog;
@@ -45,20 +46,22 @@ public class PubAccountMailJsPlugin
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      Activity localActivity = this.mRuntime.a();
-      if ((localActivity instanceof AppActivity))
+      Object localObject = this.mRuntime.a();
+      if ((localObject instanceof AppActivity))
       {
-        if (((AppActivity)localActivity).checkSelfPermission("android.permission.CALL_PHONE") != 0) {
-          ((AppActivity)localActivity).requestPermissions(new PubAccountMailJsPlugin.2(this), 1, new String[] { "android.permission.CALL_PHONE" });
+        localObject = (AppActivity)localObject;
+        if (((AppActivity)localObject).checkSelfPermission("android.permission.CALL_PHONE") != 0)
+        {
+          ((AppActivity)localObject).requestPermissions(new PubAccountMailJsPlugin.2(this), 1, new String[] { "android.permission.CALL_PHONE" });
+          return;
         }
+        c();
       }
-      else {
-        return;
-      }
-      c();
-      return;
     }
-    c();
+    else
+    {
+      c();
+    }
   }
   
   private void c()
@@ -74,27 +77,32 @@ public class PubAccountMailJsPlugin
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      Activity localActivity = this.mRuntime.a();
-      if ((localActivity instanceof AppActivity))
+      Object localObject = this.mRuntime.a();
+      if ((localObject instanceof AppActivity))
       {
-        if (((AppActivity)localActivity).checkSelfPermission("android.permission.SEND_SMS") != 0) {
-          ((AppActivity)localActivity).requestPermissions(new PubAccountMailJsPlugin.3(this), 1, new String[] { "android.permission.SEND_SMS" });
+        localObject = (AppActivity)localObject;
+        if (((AppActivity)localObject).checkSelfPermission("android.permission.SEND_SMS") != 0)
+        {
+          ((AppActivity)localObject).requestPermissions(new PubAccountMailJsPlugin.3(this), 1, new String[] { "android.permission.SEND_SMS" });
+          return;
         }
+        e();
       }
-      else {
-        return;
-      }
-      e();
-      return;
     }
-    e();
+    else
+    {
+      e();
+    }
   }
   
   private void e()
   {
     ReportController.b(null, "CliOper", "", "", "0X8004B44", "0X8004B44", 0, 0, "", "", "", "");
-    Intent localIntent = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
-    this.mRuntime.a().startActivity(localIntent);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("smsto:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    localObject = new Intent("android.intent.action.SENDTO", Uri.parse(((StringBuilder)localObject).toString()));
+    this.mRuntime.a().startActivity((Intent)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("PubAccountMailJsPlugin", 2, String.format("Send SMS to %s success", new Object[] { this.jdField_a_of_type_JavaLangString }));
     }
@@ -104,37 +112,40 @@ public class PubAccountMailJsPlugin
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      Activity localActivity = this.mRuntime.a();
-      if ((localActivity instanceof AppActivity))
+      Object localObject = this.mRuntime.a();
+      if ((localObject instanceof AppActivity))
       {
-        if (((AppActivity)localActivity).checkSelfPermission("android.permission.WRITE_CONTACTS") != 0) {
-          ((AppActivity)localActivity).requestPermissions(new PubAccountMailJsPlugin.4(this), 1, new String[] { "android.permission.WRITE_CONTACTS" });
+        localObject = (AppActivity)localObject;
+        if (((AppActivity)localObject).checkSelfPermission("android.permission.WRITE_CONTACTS") != 0)
+        {
+          ((AppActivity)localObject).requestPermissions(new PubAccountMailJsPlugin.4(this), 1, new String[] { "android.permission.WRITE_CONTACTS" });
+          return;
         }
+        g();
       }
-      else {
-        return;
-      }
-      g();
-      return;
     }
-    g();
+    else
+    {
+      g();
+    }
   }
   
   private void g()
   {
     Activity localActivity = this.mRuntime.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog == null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog;
+    if (localObject == null)
     {
-      QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-      localQQCustomMenu.a(1, localActivity.getString(2131699702));
-      localQQCustomMenu.a(2, localActivity.getString(2131699703));
-      localQQCustomMenu.a(String.format(localActivity.getString(2131699701), new Object[] { this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog = DialogUtil.a(localActivity, localQQCustomMenu, new PubAccountMailJsPlugin.5(this));
+      localObject = new QQCustomMenu();
+      ((QQCustomMenu)localObject).a(1, localActivity.getString(2131699835));
+      ((QQCustomMenu)localObject).a(2, localActivity.getString(2131699836));
+      ((QQCustomMenu)localObject).a(String.format(localActivity.getString(2131699834), new Object[] { this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog = DialogUtil.a(localActivity, (QQCustomMenu)localObject, new PubAccountMailJsPlugin.5(this));
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog != null) {}
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog.setTitle(String.format(localActivity.getString(2131699701), new Object[] { this.jdField_a_of_type_JavaLangString }));
+      ((QQCustomContextMenuDialog)localObject).setTitle(String.format(localActivity.getString(2131699834), new Object[] { this.jdField_a_of_type_JavaLangString }));
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog.show();
   }
@@ -149,17 +160,18 @@ public class PubAccountMailJsPlugin
       }
       this.jdField_a_of_type_AndroidTextClipboardManager.setText(this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Copy %s success", new Object[] { this.jdField_a_of_type_JavaLangString }));
-      }
-      return;
       if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
         this.jdField_a_of_type_AndroidContentClipboardManager = ((android.content.ClipboardManager)this.mRuntime.a().getSystemService("clipboard"));
       }
       ClipData localClipData = ClipData.newPlainText("qqMailTel", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidContentClipboardManager.setPrimaryClip(localClipData);
+      android.content.ClipboardManager localClipboardManager = this.jdField_a_of_type_AndroidContentClipboardManager;
+      ClipboardMonitor.setPrimaryClip(localClipboardManager, localClipData);
+      localClipboardManager.setPrimaryClip(localClipData);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PubAccountMailJsPlugin", 2, String.format("Copy %s success", new Object[] { this.jdField_a_of_type_JavaLangString }));
     }
   }
   
@@ -177,87 +189,95 @@ public class PubAccountMailJsPlugin
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
+    ActionSheet localActionSheet = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if (localActionSheet == null)
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.create(this.mRuntime.a());
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131691678), this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131699704);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131699701);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131691372);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131691600), this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131699837);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131699834);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131691294);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(new PubAccountMailJsPlugin.1(this));
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
-      return;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.updateButton(0, String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131691678), this.jdField_a_of_type_JavaLangString }));
+      localActionSheet.updateButton(0, String.format("%s%s", new Object[] { this.mRuntime.a().getString(2131691600), this.jdField_a_of_type_JavaLangString }));
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.e("PubAccountMailJsPlugin", 2, "handleJsRequest url: " + paramString1 + "pkgName:" + paramString2 + "method:" + paramString3);
-    }
-    if ((TextUtils.isEmpty(paramString2)) || (!paramString2.startsWith("mail"))) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PubAccountMailJsPlugin", 2, "pkgName is null");
-      }
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return false;
-        if (!TextUtils.isEmpty(paramString3)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("PubAccountMailJsPlugin", 2, "method is null");
-      return false;
-      if ((paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("PubAccountMailJsPlugin", 2, "args is empty");
-    return false;
-    paramJsBridgeListener = paramVarArgs[0];
-    if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMailJsPlugin", 2, String.format("Params phone is %s", new Object[] { paramJsBridgeListener }));
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest url: ");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append("pkgName:");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append("method:");
+      paramJsBridgeListener.append(paramString3);
+      QLog.e("PubAccountMailJsPlugin", 2, paramJsBridgeListener.toString());
     }
-    if (!TextUtils.isEmpty(paramJsBridgeListener))
+    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith("mail")))
     {
-      if (!paramString3.equals("showMenu")) {
-        break label274;
-      }
-      if (((this.jdField_a_of_type_ComTencentWidgetActionSheet == null) || (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) && ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog == null) || (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog.isShowing())))
+      if (TextUtils.isEmpty(paramString3))
       {
-        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener;
-        a();
-      }
-    }
-    for (;;)
-    {
-      return bool;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("PubAccountMailJsPlugin", 2, "mSheet or mDialog is showing, so ignore request");
-        bool = false;
-        continue;
         if (QLog.isColorLevel()) {
+          QLog.e("PubAccountMailJsPlugin", 2, "method is null");
+        }
+        return false;
+      }
+      if ((paramVarArgs != null) && (paramVarArgs.length >= 1))
+      {
+        paramJsBridgeListener = paramVarArgs[0];
+        if (QLog.isColorLevel()) {
+          QLog.d("PubAccountMailJsPlugin", 2, String.format("Params phone is %s", new Object[] { paramJsBridgeListener }));
+        }
+        if (!TextUtils.isEmpty(paramJsBridgeListener))
+        {
+          if (paramString3.equals("showMenu"))
+          {
+            paramString1 = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+            if ((paramString1 == null) || (!paramString1.isShowing()))
+            {
+              paramString1 = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomContextMenuDialog;
+              if ((paramString1 == null) || (!paramString1.isShowing())) {}
+            }
+            else
+            {
+              if (!QLog.isColorLevel()) {
+                break label253;
+              }
+              QLog.d("PubAccountMailJsPlugin", 2, "mSheet or mDialog is showing, so ignore request");
+              return false;
+            }
+            this.jdField_a_of_type_JavaLangString = paramJsBridgeListener;
+            a();
+            return true;
+          }
+        }
+        else if (QLog.isColorLevel()) {
           QLog.e("PubAccountMailJsPlugin", 2, "Phone is empty");
         }
+        label253:
+        return false;
       }
-      label274:
-      bool = false;
+      if (QLog.isColorLevel()) {
+        QLog.e("PubAccountMailJsPlugin", 2, "args is empty");
+      }
+      return false;
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("PubAccountMailJsPlugin", 2, "pkgName is null");
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountMailJsPlugin
  * JD-Core Version:    0.7.0.1
  */

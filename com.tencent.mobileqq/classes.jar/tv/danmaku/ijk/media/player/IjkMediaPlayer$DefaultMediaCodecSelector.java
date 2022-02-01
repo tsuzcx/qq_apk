@@ -28,78 +28,64 @@ public class IjkMediaPlayer$DefaultMediaCodecSelector
     Object localObject1 = new ArrayList();
     int i = MediaCodecList.getCodecCount();
     paramInt1 = 0;
-    if (paramInt1 < i)
+    while (paramInt1 < i)
     {
       paramIMediaPlayer = MediaCodecList.getCodecInfoAt(paramInt1);
       Log.d(IjkMediaPlayer.access$100(), String.format(Locale.US, "  found codec: %s", new Object[] { paramIMediaPlayer.getName() }));
-      if (paramIMediaPlayer.isEncoder()) {}
-      String[] arrayOfString;
-      do
+      if (!paramIMediaPlayer.isEncoder())
       {
-        paramInt1 += 1;
-        break;
-        arrayOfString = paramIMediaPlayer.getSupportedTypes();
-      } while (arrayOfString == null);
-      int j = arrayOfString.length;
-      paramInt2 = 0;
-      label143:
-      Object localObject2;
-      if (paramInt2 < j)
-      {
-        localObject2 = arrayOfString[paramInt2];
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label174;
-        }
-      }
-      for (;;)
-      {
-        paramInt2 += 1;
-        break label143;
-        break;
-        label174:
-        Log.d(IjkMediaPlayer.access$100(), String.format(Locale.US, "    mime: %s", new Object[] { localObject2 }));
-        if (((String)localObject2).equalsIgnoreCase(paramString))
+        String[] arrayOfString = paramIMediaPlayer.getSupportedTypes();
+        if (arrayOfString != null)
         {
-          localObject2 = IjkMediaCodecInfo.setupCandidate(paramIMediaPlayer, paramString);
-          if (localObject2 != null)
+          int j = arrayOfString.length;
+          paramInt2 = 0;
+          while (paramInt2 < j)
           {
-            ((ArrayList)localObject1).add(localObject2);
-            Log.i(IjkMediaPlayer.access$100(), String.format(Locale.US, "candidate codec: %s rank=%d", new Object[] { paramIMediaPlayer.getName(), Integer.valueOf(((IjkMediaCodecInfo)localObject2).mRank) }));
-            ((IjkMediaCodecInfo)localObject2).dumpProfileLevels(paramString);
+            Object localObject2 = arrayOfString[paramInt2];
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            {
+              Log.d(IjkMediaPlayer.access$100(), String.format(Locale.US, "    mime: %s", new Object[] { localObject2 }));
+              if (((String)localObject2).equalsIgnoreCase(paramString))
+              {
+                localObject2 = IjkMediaCodecInfo.setupCandidate(paramIMediaPlayer, paramString);
+                if (localObject2 != null)
+                {
+                  ((ArrayList)localObject1).add(localObject2);
+                  Log.i(IjkMediaPlayer.access$100(), String.format(Locale.US, "candidate codec: %s rank=%d", new Object[] { paramIMediaPlayer.getName(), Integer.valueOf(((IjkMediaCodecInfo)localObject2).mRank) }));
+                  ((IjkMediaCodecInfo)localObject2).dumpProfileLevels(paramString);
+                }
+              }
+            }
+            paramInt2 += 1;
           }
         }
       }
+      paramInt1 += 1;
     }
     if (((ArrayList)localObject1).isEmpty()) {
       return null;
     }
     paramIMediaPlayer = (IjkMediaCodecInfo)((ArrayList)localObject1).get(0);
     localObject1 = ((ArrayList)localObject1).iterator();
-    if (((Iterator)localObject1).hasNext())
+    while (((Iterator)localObject1).hasNext())
     {
       paramString = (IjkMediaCodecInfo)((Iterator)localObject1).next();
-      if (paramString.mRank <= paramIMediaPlayer.mRank) {
-        break label425;
+      if (paramString.mRank > paramIMediaPlayer.mRank) {
+        paramIMediaPlayer = paramString;
       }
-      paramIMediaPlayer = paramString;
     }
-    label425:
-    for (;;)
+    if (paramIMediaPlayer.mRank < 600)
     {
-      break;
-      if (paramIMediaPlayer.mRank < 600)
-      {
-        Log.w(IjkMediaPlayer.access$100(), String.format(Locale.US, "unaccetable codec: %s", new Object[] { paramIMediaPlayer.mCodecInfo.getName() }));
-        return null;
-      }
-      Log.i(IjkMediaPlayer.access$100(), String.format(Locale.US, "selected codec: %s rank=%d", new Object[] { paramIMediaPlayer.mCodecInfo.getName(), Integer.valueOf(paramIMediaPlayer.mRank) }));
-      return paramIMediaPlayer.mCodecInfo.getName();
+      Log.w(IjkMediaPlayer.access$100(), String.format(Locale.US, "unaccetable codec: %s", new Object[] { paramIMediaPlayer.mCodecInfo.getName() }));
+      return null;
     }
+    Log.i(IjkMediaPlayer.access$100(), String.format(Locale.US, "selected codec: %s rank=%d", new Object[] { paramIMediaPlayer.mCodecInfo.getName(), Integer.valueOf(paramIMediaPlayer.mRank) }));
+    return paramIMediaPlayer.mCodecInfo.getName();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.IjkMediaPlayer.DefaultMediaCodecSelector
  * JD-Core Version:    0.7.0.1
  */

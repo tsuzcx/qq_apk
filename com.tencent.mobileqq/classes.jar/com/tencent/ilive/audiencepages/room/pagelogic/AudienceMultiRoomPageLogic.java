@@ -45,6 +45,12 @@ public class AudienceMultiRoomPageLogic
     this.audQualityService.setEnterRoomCode(hashCode());
   }
   
+  public void exitRoom()
+  {
+    this.audRoomController.exitRoomToServer();
+    this.audRoomController.switchRoom();
+  }
+  
   public void initAction()
   {
     this.audRoomController.onInitAction();
@@ -64,8 +70,9 @@ public class AudienceMultiRoomPageLogic
   
   public void onDestroy()
   {
-    if (this.audRoomController != null) {
-      this.audRoomController.onDestroy();
+    AudienceRoomController localAudienceRoomController = this.audRoomController;
+    if (localAudienceRoomController != null) {
+      localAudienceRoomController.onDestroy();
     }
     this.mRoomPageActionInterface = null;
   }
@@ -97,36 +104,23 @@ public class AudienceMultiRoomPageLogic
   
   public void onSwitchRoomBefore(SwitchRoomInfo paramSwitchRoomInfo, AudienceRoomFragment paramAudienceRoomFragment)
   {
-    boolean bool2 = true;
-    Object localObject = paramSwitchRoomInfo.videoUrl;
+    String str = paramSwitchRoomInfo.videoUrl;
+    VideoType localVideoType1 = paramSwitchRoomInfo.videoType;
+    VideoType localVideoType2 = VideoType.LIVE;
+    boolean bool = false;
     int i;
-    if (paramSwitchRoomInfo.videoType == VideoType.LIVE)
-    {
+    if (localVideoType1 == localVideoType2) {
       i = 0;
-      if (!PreloadUtil.a((String)localObject, i)) {
-        break label134;
-      }
+    } else {
+      i = 1;
     }
-    label134:
-    for (boolean bool1 = ((AVPreloadServiceInterface)BizEngineMgr.getInstance().getUserEngine().getService(AVPreloadServiceInterface.class)).b(paramSwitchRoomInfo.videoUrl);; bool1 = false)
-    {
-      localObject = this.audQualityService;
-      long l = paramSwitchRoomInfo.roomId;
-      if (!TextUtils.isEmpty(paramSwitchRoomInfo.videoUrl)) {}
-      for (;;)
-      {
-        ((AudQualityServiceInterface)localObject).reportSwitchRoom(l, bool2, bool1);
-        paramAudienceRoomFragment = (RoomBootBizModules)paramAudienceRoomFragment.getBootBizModules();
-        if (paramAudienceRoomFragment != null) {
-          paramAudienceRoomFragment.onSwitchRoom(paramSwitchRoomInfo);
-        }
-        this.audRoomController.exitRoomToServer();
-        this.audRoomController.exitRoomToPage(false);
-        return;
-        i = 1;
-        break;
-        bool2 = false;
-      }
+    if (PreloadUtil.a(str, i)) {
+      bool = ((AVPreloadServiceInterface)BizEngineMgr.getInstance().getUserEngine().getService(AVPreloadServiceInterface.class)).b(paramSwitchRoomInfo.videoUrl);
+    }
+    this.audQualityService.reportSwitchRoom(paramSwitchRoomInfo.roomId, true ^ TextUtils.isEmpty(paramSwitchRoomInfo.videoUrl), bool);
+    paramAudienceRoomFragment = (RoomBootBizModules)paramAudienceRoomFragment.getBootBizModules();
+    if (paramAudienceRoomFragment != null) {
+      paramAudienceRoomFragment.onSwitchRoom(paramSwitchRoomInfo);
     }
   }
   
@@ -140,7 +134,7 @@ public class AudienceMultiRoomPageLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.AudienceMultiRoomPageLogic
  * JD-Core Version:    0.7.0.1
  */

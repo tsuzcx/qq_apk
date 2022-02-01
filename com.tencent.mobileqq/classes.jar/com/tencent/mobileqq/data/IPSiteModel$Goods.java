@@ -42,7 +42,39 @@ public class IPSiteModel$Goods
   
   public String toString()
   {
-    return "Goods{cover='" + this.cover + '\'' + ", goodsTags='" + this.goodsTags + '\'' + ", id='" + this.id + '\'' + ", name='" + this.name + '\'' + ", price='" + this.price + '\'' + ", saleTags='" + this.saleTags + '\'' + ", svipPrice='" + this.svipPrice + '\'' + ", url='" + this.url + '\'' + ", moreUrl='" + this.moreUrl + '\'' + ", saleNum='" + this.saleNum + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Goods{cover='");
+    localStringBuilder.append(this.cover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", goodsTags='");
+    localStringBuilder.append(this.goodsTags);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", price='");
+    localStringBuilder.append(this.price);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", saleTags='");
+    localStringBuilder.append(this.saleTags);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", svipPrice='");
+    localStringBuilder.append(this.svipPrice);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", moreUrl='");
+    localStringBuilder.append(this.moreUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", saleNum='");
+    localStringBuilder.append(this.saleNum);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -61,7 +93,7 @@ public class IPSiteModel$Goods
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Goods
  * JD-Core Version:    0.7.0.1
  */

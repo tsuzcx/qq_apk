@@ -31,10 +31,10 @@ public class LebaTableMgrTitleBizProxy
   {
     if (this.jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Class localClass = (Class)localIterator.next();
+        Class localClass = (Class)((Iterator)localObject).next();
         try
         {
           this.jdField_a_of_type_JavaUtilList.add(localClass.newInstance());
@@ -44,7 +44,10 @@ public class LebaTableMgrTitleBizProxy
           QLog.e("LebaTableMgrTitleBizProxy", 1, localException, new Object[0]);
         }
       }
-      QLog.i("LebaTableMgrTitleBizProxy", 1, "initBizList size = " + this.jdField_a_of_type_JavaUtilList.size());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initBizList size = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+      QLog.i("LebaTableMgrTitleBizProxy", 1, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -58,7 +61,7 @@ public class LebaTableMgrTitleBizProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.LebaTableMgrTitleBizProxy
  * JD-Core Version:    0.7.0.1
  */

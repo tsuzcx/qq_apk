@@ -54,25 +54,25 @@ final class OperatorBufferWithSize$BufferSkip<T>
       this.buffer = ((List)localObject);
     }
     l += 1L;
-    if (l == this.skip) {}
-    for (this.index = 0L;; this.index = l)
+    if (l == this.skip) {
+      this.index = 0L;
+    } else {
+      this.index = l;
+    }
+    if (localObject != null)
     {
-      if (localObject != null)
+      ((List)localObject).add(paramT);
+      if (((List)localObject).size() == this.count)
       {
-        ((List)localObject).add(paramT);
-        if (((List)localObject).size() == this.count)
-        {
-          this.buffer = null;
-          this.actual.onNext(localObject);
-        }
+        this.buffer = null;
+        this.actual.onNext(localObject);
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorBufferWithSize.BufferSkip
  * JD-Core Version:    0.7.0.1
  */

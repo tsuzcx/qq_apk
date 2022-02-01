@@ -9,6 +9,7 @@ class AudienceRoomController$DefaultUserInitStateCallback
   implements UserInitStateCallback
 {
   public boolean a;
+  public boolean b;
   
   AudienceRoomController$DefaultUserInitStateCallback(AudienceRoomController paramAudienceRoomController) {}
   
@@ -18,31 +19,37 @@ class AudienceRoomController$DefaultUserInitStateCallback
   
   public void onLoginFail(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController.getLog().e("RoomController", "doEnterRoom -login busy -to-  login onFail-errCode=" + paramInt, new Object[0]);
+    Object localObject = this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doEnterRoom -login busy -to-  login onFail-errCode=");
+    localStringBuilder.append(paramInt);
+    ((LogInterface)localObject).e("RoomController", localStringBuilder.toString(), new Object[0]);
     if (this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController.isPageExit) {
       return;
     }
-    if ((AudienceRoomController.access$700(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController) != null) && (!AudienceRoomController.access$700(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController).isLiteSdk)) {
-      AudienceRoomController.access$900(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController, "进房失败：鉴权失败", AudienceRoomController.access$800(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController));
+    if ((AudienceRoomController.access$800(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController) != null) && (!AudienceRoomController.access$800(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController).isLiteSdk))
+    {
+      localObject = this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController;
+      AudienceRoomController.access$1000((AudienceRoomController)localObject, "进房失败：鉴权失败", AudienceRoomController.access$900((AudienceRoomController)localObject));
     }
-    AudienceRoomController.access$1000(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController).reportLoginFail(paramInt);
+    AudienceRoomController.access$1100(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController).reportLoginFail(paramInt);
   }
   
   public void onLoginSucceed()
   {
     this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController.getLog().i("RoomController", "doEnterRoom -login busy -to- login success", new Object[0]);
-    if (this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController.isPageExit) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController.isPageExit) {
       return;
-      AudienceRoomController.access$500(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController).reportLoginSuc();
-    } while (!this.jdField_a_of_type_Boolean);
-    AudienceRoomController.access$600(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController, true);
+    }
+    AudienceRoomController.access$600(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController).reportLoginSuc();
+    if (this.jdField_a_of_type_Boolean) {
+      AudienceRoomController.access$700(this.jdField_a_of_type_ComTencentIliveAudiencepagesRoomPagelogicControllerAudienceRoomController, this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.pagelogic.controller.AudienceRoomController.DefaultUserInitStateCallback
  * JD-Core Version:    0.7.0.1
  */

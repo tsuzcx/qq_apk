@@ -29,7 +29,8 @@ public class TroopAioBlueTipsView
   
   boolean a()
   {
-    return (this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView.getVisibility() != 8);
+    View localView = this.jdField_b_of_type_AndroidViewView;
+    return (localView != null) && (localView.getVisibility() != 8);
   }
   
   protected void c()
@@ -48,35 +49,37 @@ public class TroopAioBlueTipsView
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController.a(null);
+    AIOTipsController localAIOTipsController = this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController;
+    if (localAIOTipsController != null) {
+      localAIOTipsController.a(null);
     }
   }
   
   public void onClick(View paramView)
   {
+    Object localObject;
     if (!StringUtil.a(this.jdField_a_of_type_JavaLangString))
     {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("hide_more_button", true);
-      paramView.getContext().startActivity(localIntent);
+      localObject = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
+      ((Intent)localObject).putExtra("hide_operation_bar", true);
+      ((Intent)localObject).putExtra("hide_more_button", true);
+      paramView.getContext().startActivity((Intent)localObject);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController.a(null);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioAIOTipsController;
+      if (localObject != null) {
+        ((AIOTipsController)localObject).a(null);
       }
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "sys_msg", "Clk_notice", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioBlueTipsView
  * JD-Core Version:    0.7.0.1
  */

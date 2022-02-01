@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.troop.api.impl;
 
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
+import java.util.List;
 
 class TroopMemberInfoServiceImpl$2
-  implements Runnable
+  extends TroopObserver
 {
-  TroopMemberInfoServiceImpl$2(TroopMemberInfoServiceImpl paramTroopMemberInfoServiceImpl, String paramString1, String paramString2) {}
+  TroopMemberInfoServiceImpl$2(TroopMemberInfoServiceImpl paramTroopMemberInfoServiceImpl) {}
   
-  public void run()
+  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    TroopMemberInfo localTroopMemberInfo = this.this$0.getTroopMemberInfoFromDb(this.a, this.b);
-    ThreadManager.getUIHandler().post(new TroopMemberInfoServiceImpl.2.1(this, localTroopMemberInfo));
+    TroopMemberInfoServiceImpl.access$100(this.a, paramString, paramBoolean, paramList, paramInt1, paramLong, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopMemberInfoServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

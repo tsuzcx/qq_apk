@@ -23,12 +23,9 @@ public class MiniAppChangeShareImageUrlServlet
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-    PROTOCAL.StQWebRsp localStQWebRsp;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
-      localStQWebRsp = new PROTOCAL.StQWebRsp();
-    }
-    for (;;)
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
     {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
       try
       {
         localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
@@ -37,17 +34,18 @@ public class MiniAppChangeShareImageUrlServlet
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         localBundle.putString("imageUrl", localStAdaptSharePicRsp.picUrl.get());
         notifyObserver(paramIntent, 1029, true, localBundle, MiniAppObserver.class);
-        doReport(paramIntent, paramFromServiceMsg);
-        return;
       }
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         localInvalidProtocolBufferMicroException.printStackTrace();
         notifyObserver(paramIntent, 1029, false, localBundle, MiniAppObserver.class);
-        continue;
       }
+    }
+    else
+    {
       notifyObserver(paramIntent, 1029, false, localBundle, MiniAppObserver.class);
     }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -65,7 +63,7 @@ public class MiniAppChangeShareImageUrlServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppChangeShareImageUrlServlet
  * JD-Core Version:    0.7.0.1
  */

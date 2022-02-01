@@ -14,27 +14,28 @@ class ChatTextSizeSettingActivity$1
   {
     switch (paramView.getId())
     {
-    case 2131379234: 
+    case 2131378596: 
     default: 
       this.a.a = 0;
-    }
-    for (;;)
-    {
-      this.a.a(this.a.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      break;
+    case 2131378598: 
       this.a.a = 1;
-      continue;
+      break;
+    case 2131378597: 
       this.a.a = 2;
-      continue;
+      break;
+    case 2131378595: 
       this.a.a = 3;
     }
+    ChatTextSizeSettingActivity localChatTextSizeSettingActivity = this.a;
+    localChatTextSizeSettingActivity.a(localChatTextSizeSettingActivity.a);
+    ReportController.b(this.a.app, "CliOper", "", "", "Trends_tab", "Font_size", 0, 0, Integer.toString(this.a.a), "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatTextSizeSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -36,21 +36,33 @@ public class VSEntranceWidgetHelper$StyleConfig
   
   public void a(String paramString)
   {
-    paramString = paramString + "/" + this.jdField_a_of_type_JavaLangString;
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists())
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("/");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    paramString = ((StringBuilder)localObject1).toString();
+    localObject1 = new File(paramString);
+    if (((File)localObject1).exists())
     {
-      localObject = Arrays.asList(((File)localObject).list());
-      if (((List)localObject).contains("take_video@2x.png"))
+      localObject1 = Arrays.asList(((File)localObject1).list());
+      if (((List)localObject1).contains("take_video@2x.png"))
       {
-        String str = paramString + "/" + "take_video@2x.png";
-        if (new File(str).exists()) {
-          this.f = str;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append("/");
+        ((StringBuilder)localObject2).append("take_video@2x.png");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        if (new File((String)localObject2).exists()) {
+          this.f = ((String)localObject2);
         }
       }
-      if (((List)localObject).contains("take_video_no_bg@2x.png"))
+      if (((List)localObject1).contains("take_video_no_bg@2x.png"))
       {
-        paramString = paramString + "/" + "take_video_no_bg@2x.png";
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append("/");
+        ((StringBuilder)localObject1).append("take_video_no_bg@2x.png");
+        paramString = ((StringBuilder)localObject1).toString();
         if (new File(paramString).exists()) {
           this.g = paramString;
         }
@@ -60,7 +72,7 @@ public class VSEntranceWidgetHelper$StyleConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidgetHelper.StyleConfig
  * JD-Core Version:    0.7.0.1
  */

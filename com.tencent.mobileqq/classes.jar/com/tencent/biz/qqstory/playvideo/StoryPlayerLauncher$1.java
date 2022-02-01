@@ -22,18 +22,19 @@ final class StoryPlayerLauncher$1
     {
       paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
       OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
-      if (paramStoryVideoItem.mInteractStatus == 1) {}
-      for (paramInt = 1;; paramInt = 2)
-      {
-        localUIStyle.bottomWidgetShowFlag = paramInt;
-        paramString.mUIStyle.mPlayerRepeatMode = 1;
-        StoryPlayerLauncher.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
-        return;
+      if (paramStoryVideoItem.mInteractStatus == 1) {
+        paramInt = 1;
+      } else {
+        paramInt = 2;
       }
+      localUIStyle.bottomWidgetShowFlag = paramInt;
+      paramString.mUIStyle.mPlayerRepeatMode = 1;
+      StoryPlayerLauncher.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
+      return;
     }
     if (paramInt == 10100)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, HardCodeUtil.a(2131714423), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, HardCodeUtil.a(2131714344), 0).a();
       return;
     }
     if (!TextUtils.isEmpty(paramString))
@@ -41,12 +42,16 @@ final class StoryPlayerLauncher$1
       QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, HardCodeUtil.a(2131714424) + paramInt, 0).a();
+    paramString = this.jdField_a_of_type_AndroidContentContext.getApplicationContext();
+    paramStoryVideoItem = new StringBuilder();
+    paramStoryVideoItem.append(HardCodeUtil.a(2131714345));
+    paramStoryVideoItem.append(paramInt);
+    QQToast.a(paramString, 1, paramStoryVideoItem.toString(), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerLauncher.1
  * JD-Core Version:    0.7.0.1
  */

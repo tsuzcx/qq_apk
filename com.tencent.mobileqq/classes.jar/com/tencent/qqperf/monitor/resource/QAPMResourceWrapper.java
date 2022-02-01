@@ -22,41 +22,51 @@ public class QAPMResourceWrapper
   
   public void a(String paramString)
   {
-    if (n_()) {
+    if (o_()) {
       QAPM.beginScene(paramString, QAPM.ModeResource);
     }
   }
   
   public void b()
   {
-    com.tencent.qapmsdk.base.config.SDKConfig.RES_TYPE = DefaultPluginConfig.ResourcePlugin.ResourceType.OUTSIDE_TAG.getValue();
+    com.tencent.qapmsdk.base.config.SDKConfig.RES_TYPE = DefaultPluginConfig.ResourcePlugin.ResourceType.OUTSIDE_TAG.getValue() | DefaultPluginConfig.ResourcePlugin.ResourceType.OPEN_TAG.getValue();
     QAPM.setProperty(114, this);
   }
   
   public void b(String paramString)
   {
-    if (n_()) {
+    if (o_()) {
       QAPM.endScene(paramString, QAPM.ModeResource);
     }
   }
   
   public void onEndScene(SceneMeta paramSceneMeta)
   {
-    double d = 100.0D * paramSceneMeta.cpu;
-    if (QLog.isColorLevel()) {
-      QLog.i("QAPM_QQ_Impl", 2, "reportToDenta" + paramSceneMeta.stage + " " + d + " " + paramSceneMeta.memory + " " + paramSceneMeta.duration);
+    double d = paramSceneMeta.cpu * 100.0D;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportToDenta");
+      ((StringBuilder)localObject).append(paramSceneMeta.stage);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(d);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramSceneMeta.memory);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramSceneMeta.duration);
+      QLog.i("QAPM_QQ_Impl", 2, ((StringBuilder)localObject).toString());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpuUsage", String.valueOf(d));
-    localHashMap.put("memory", String.valueOf(paramSceneMeta.memory));
-    localHashMap.put("scene", String.valueOf(paramSceneMeta.stage));
-    localHashMap.put("duration", String.valueOf(paramSceneMeta.duration));
-    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance("", "actScenePerf", true, 0L, 0L, localHashMap, "");
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("cpuUsage", String.valueOf(d));
+    ((HashMap)localObject).put("memory", String.valueOf(paramSceneMeta.memory));
+    ((HashMap)localObject).put("scene", String.valueOf(paramSceneMeta.stage));
+    ((HashMap)localObject).put("duration", String.valueOf(paramSceneMeta.duration));
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance("", "actScenePerf", true, 0L, 0L, (HashMap)localObject, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.resource.QAPMResourceWrapper
  * JD-Core Version:    0.7.0.1
  */

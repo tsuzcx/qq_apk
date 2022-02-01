@@ -49,20 +49,23 @@ public final class FileCommitReq
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.session, 1);
-    if (this.biz_req != null) {
-      paramJceOutputStream.write(this.biz_req, 2);
+    Object localObject = this.biz_req;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
-    if (this.appid != null) {
-      paramJceOutputStream.write(this.appid, 3);
+    localObject = this.appid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.dumpReq != null) {
-      paramJceOutputStream.write(this.dumpReq, 4);
+    localObject = this.dumpReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.FileCommitReq
  * JD-Core Version:    0.7.0.1
  */

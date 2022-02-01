@@ -13,11 +13,8 @@ class AccountManageActivity$21
   public void onClick(View paramView)
   {
     View localView = (View)paramView.getParent();
-    if ((localView == null) || (localView.getTag() == null)) {}
-    for (;;)
+    if ((localView != null) && (localView.getTag() != null))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       int i = ((Integer)localView.getTag()).intValue();
       if ((i != 0) || (AccountManageActivity.b(this.a)))
       {
@@ -25,11 +22,12 @@ class AccountManageActivity$21
         ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.21
  * JD-Core Version:    0.7.0.1
  */

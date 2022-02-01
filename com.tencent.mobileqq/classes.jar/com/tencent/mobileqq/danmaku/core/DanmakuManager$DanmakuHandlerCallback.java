@@ -24,45 +24,45 @@ class DanmakuManager$DanmakuHandlerCallback
     {
     default: 
       return false;
-    case 1: 
-      DanmakuManager.a(localDanmakuManager, paramMessage);
-      DanmakuManager.a(localDanmakuManager);
+    case 11: 
+      DanmakuManager.g(localDanmakuManager);
+      return false;
+    case 10: 
+      DanmakuManager.f(localDanmakuManager);
+      return false;
+    case 9: 
+      DanmakuManager.e(localDanmakuManager);
+      return false;
+    case 8: 
+      localDanmakuManager.k();
+      return false;
+    case 7: 
+      DanmakuManager.d(localDanmakuManager);
+      return false;
+    case 6: 
+      DanmakuManager.c(localDanmakuManager);
+      return false;
+    case 5: 
+      localDanmakuManager.a(paramMessage);
+      return false;
+    case 4: 
+      localDanmakuManager.j();
+      return false;
+    case 3: 
+      DanmakuManager.b(localDanmakuManager);
       return false;
     case 2: 
       DanmakuManager.a(localDanmakuManager);
       return false;
-    case 4: 
-      DanmakuManager.b(localDanmakuManager);
-      return false;
-    case 3: 
-      DanmakuManager.c(localDanmakuManager);
-      return false;
-    case 5: 
-      DanmakuManager.b(localDanmakuManager, paramMessage);
-      return false;
-    case 6: 
-      DanmakuManager.d(localDanmakuManager);
-      return false;
-    case 7: 
-      DanmakuManager.e(localDanmakuManager);
-      return false;
-    case 8: 
-      DanmakuManager.f(localDanmakuManager);
-      return false;
-    case 9: 
-      DanmakuManager.g(localDanmakuManager);
-      return false;
-    case 10: 
-      DanmakuManager.h(localDanmakuManager);
-      return false;
     }
-    DanmakuManager.i(localDanmakuManager);
+    DanmakuManager.a(localDanmakuManager, paramMessage);
+    DanmakuManager.a(localDanmakuManager);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuManager.DanmakuHandlerCallback
  * JD-Core Version:    0.7.0.1
  */

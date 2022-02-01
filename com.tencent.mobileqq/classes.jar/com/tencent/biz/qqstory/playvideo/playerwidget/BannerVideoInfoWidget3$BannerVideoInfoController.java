@@ -43,25 +43,26 @@ public abstract class BannerVideoInfoWidget3$BannerVideoInfoController
   
   public void a()
   {
-    Iterator localIterator;
-    Object localObject;
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!this.jdField_a_of_type_JavaUtilMap.isEmpty()))
+    Object localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject2;
+    if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
     {
-      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-        StoryDispatcher.a().unRegisterSubscriber((Subscriber)localObject);
+        localObject2 = (Subscriber)((Map.Entry)((Iterator)localObject1).next()).getKey();
+        StoryDispatcher.a().unRegisterSubscriber((Subscriber)localObject2);
       }
       this.jdField_a_of_type_JavaUtilMap.clear();
     }
-    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!this.jdField_a_of_type_JavaUtilSet.isEmpty()))
+    localObject1 = this.jdField_a_of_type_JavaUtilSet;
+    if ((localObject1 != null) && (!((Set)localObject1).isEmpty()))
     {
-      localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (ActivityLifeCycle)localIterator.next();
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b((ActivityLifeCycle)localObject);
+        localObject2 = (ActivityLifeCycle)((Iterator)localObject1).next();
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b((ActivityLifeCycle)localObject2);
       }
       this.jdField_a_of_type_JavaUtilSet.clear();
     }
@@ -126,7 +127,7 @@ public abstract class BannerVideoInfoWidget3$BannerVideoInfoController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BannerVideoInfoWidget3.BannerVideoInfoController
  * JD-Core Version:    0.7.0.1
  */

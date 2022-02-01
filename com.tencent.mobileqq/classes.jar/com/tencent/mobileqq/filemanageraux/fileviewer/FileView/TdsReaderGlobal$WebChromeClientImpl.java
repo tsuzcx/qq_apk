@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.filemanageraux.fileviewer.FileView;
 
 import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
 import com.tencent.smtt.export.external.interfaces.JsPromptResult;
@@ -20,24 +19,24 @@ final class TdsReaderGlobal$WebChromeClientImpl
   
   public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
-      return super.onConsoleMessage(paramConsoleMessage);
+    IHostInterface.IWebClient localIWebClient = this.a;
+    if ((localIWebClient != null) && (localIWebClient.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
+      return true;
     }
-    return true;
+    return super.onConsoleMessage(paramConsoleMessage);
   }
   
   public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {}
-    do
+    IHostInterface.IWebClient localIWebClient = this.a;
+    if ((localIWebClient != null) && (localIWebClient.onJsPrompt(paramWebView, paramString1, paramString2, paramString3)))
     {
-      return true;
-      if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
-        return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+      if (paramJsPromptResult != null) {
+        paramJsPromptResult.cancel();
       }
-    } while (paramJsPromptResult == null);
-    paramJsPromptResult.cancel();
-    return true;
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
   }
   
   @Override
@@ -49,7 +48,7 @@ final class TdsReaderGlobal$WebChromeClientImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsReaderGlobal.WebChromeClientImpl
  * JD-Core Version:    0.7.0.1
  */

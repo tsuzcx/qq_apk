@@ -10,7 +10,9 @@ public class LiveConfig
   public String channelID;
   public int clientType;
   public String guid;
+  public boolean initTpplatform;
   public boolean isDebug;
+  public boolean isHoldPlayerLog;
   public boolean isRelease;
   public boolean liteSdk;
   public LiveCaseConfig liveCaseConfig = new LiveCaseConfig();
@@ -27,7 +29,7 @@ public class LiveConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.LiveConfig
  * JD-Core Version:    0.7.0.1
  */

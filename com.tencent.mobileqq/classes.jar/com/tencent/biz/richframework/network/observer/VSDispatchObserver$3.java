@@ -15,14 +15,31 @@ class VSDispatchObserver$3
       VSDispatchObserver.access$200(this.this$0, this.val$request, this.val$busiBuffData);
     }
     VSDispatchObserver.access$100(this.this$0, this.val$request, this.val$cb, this.val$retCode, this.val$errMsg, this.val$isSuccess, this.val$finalRsp);
-    if (VSNetworkHelper.isValidLog(this.val$request.getCmdName())) {
-      RFLog.d("VSNetworkHelper", RFLog.USR, "VSDispatchObserver: onReceive: dispatch Success CmdName:" + this.val$request.getCmdName() + " | TraceId:" + this.val$request.getTraceId() + " | SeqId:" + this.val$request.getCurrentSeq() + " | retCode:" + this.val$retCode + " | retMessage:" + this.val$errMsg + " | busiBuff size:" + this.val$busiBuffData.length + " | final dispatch costTime:" + (System.currentTimeMillis() - this.val$dispatchStartTimeStamp));
+    if (VSNetworkHelper.isValidLog(this.val$request.getCmdName()))
+    {
+      int i = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("VSDispatchObserver: onReceive: dispatch Success CmdName:");
+      localStringBuilder.append(this.val$request.getCmdName());
+      localStringBuilder.append(" | TraceId:");
+      localStringBuilder.append(this.val$request.getTraceId());
+      localStringBuilder.append(" | SeqId:");
+      localStringBuilder.append(this.val$request.getCurrentSeq());
+      localStringBuilder.append(" | retCode:");
+      localStringBuilder.append(this.val$retCode);
+      localStringBuilder.append(" | retMessage:");
+      localStringBuilder.append(this.val$errMsg);
+      localStringBuilder.append(" | busiBuff size:");
+      localStringBuilder.append(this.val$busiBuffData.length);
+      localStringBuilder.append(" | final dispatch costTime:");
+      localStringBuilder.append(System.currentTimeMillis() - this.val$dispatchStartTimeStamp);
+      RFLog.d("VSNetworkHelper", i, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.observer.VSDispatchObserver.3
  * JD-Core Version:    0.7.0.1
  */

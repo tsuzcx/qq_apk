@@ -58,15 +58,25 @@ public class Setting
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("[uin:").append(this.uin);
-    localStringBuilder.append(",headImgTimestamp:").append(this.headImgTimestamp);
-    localStringBuilder.append(",systemHeadId:").append(this.systemHeadID);
-    localStringBuilder.append(",bFaceFlags:").append(this.bFaceFlags);
-    localStringBuilder.append(",bUsrType:").append(this.bUsrType);
-    localStringBuilder.append(",bHeadType:").append(this.bHeadType);
-    localStringBuilder.append(",bSourceType:").append(this.bSourceType);
-    localStringBuilder.append(",updateTimestamp:").append(this.updateTimestamp);
-    localStringBuilder.append(",url:").append(this.url).append("]");
+    localStringBuilder.append("[uin:");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(",headImgTimestamp:");
+    localStringBuilder.append(this.headImgTimestamp);
+    localStringBuilder.append(",systemHeadId:");
+    localStringBuilder.append(this.systemHeadID);
+    localStringBuilder.append(",bFaceFlags:");
+    localStringBuilder.append(this.bFaceFlags);
+    localStringBuilder.append(",bUsrType:");
+    localStringBuilder.append(this.bUsrType);
+    localStringBuilder.append(",bHeadType:");
+    localStringBuilder.append(this.bHeadType);
+    localStringBuilder.append(",bSourceType:");
+    localStringBuilder.append(this.bSourceType);
+    localStringBuilder.append(",updateTimestamp:");
+    localStringBuilder.append(this.updateTimestamp);
+    localStringBuilder.append(",url:");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   
@@ -85,7 +95,7 @@ public class Setting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.Setting
  * JD-Core Version:    0.7.0.1
  */

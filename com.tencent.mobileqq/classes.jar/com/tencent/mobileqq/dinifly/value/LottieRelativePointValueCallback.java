@@ -18,10 +18,10 @@ public class LottieRelativePointValueCallback
   
   public PointF getOffset(LottieFrameInfo<PointF> paramLottieFrameInfo)
   {
-    if (this.value == null) {
-      throw new IllegalArgumentException("You must provide a static value in the constructor , call setValue, or override getValue.");
+    if (this.value != null) {
+      return (PointF)this.value;
     }
-    return (PointF)this.value;
+    throw new IllegalArgumentException("You must provide a static value in the constructor , call setValue, or override getValue.");
   }
   
   public final PointF getValue(LottieFrameInfo<PointF> paramLottieFrameInfo)
@@ -34,7 +34,7 @@ public class LottieRelativePointValueCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.value.LottieRelativePointValueCallback
  * JD-Core Version:    0.7.0.1
  */

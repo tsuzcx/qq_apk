@@ -13,18 +13,15 @@ class MsgBackupPCAuthFragment$2
     if (paramInt == 1)
     {
       if (MsgBackupPCAuthFragment.a(this.a)) {
-        this.a.k();
+        this.a.l();
       }
       this.a.onBackEvent();
-    }
-    while (paramInt != 2) {
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment.2
  * JD-Core Version:    0.7.0.1
  */

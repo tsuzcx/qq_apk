@@ -44,22 +44,23 @@ public final class StoreModelConvert
   public final List<CutModelKt> restoreClipTimeRange(@NotNull List<CutModelKt> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "data");
-    List localList = CollectionsKt.toMutableList((Collection)paramList);
-    paramList = ((Iterable)RangesKt.reversed((IntProgression)CollectionsKt.getIndices((Collection)paramList))).iterator();
-    while (paramList.hasNext())
+    Object localObject = (Collection)paramList;
+    paramList = CollectionsKt.toMutableList((Collection)localObject);
+    localObject = ((Iterable)RangesKt.reversed((IntProgression)CollectionsKt.getIndices((Collection)localObject))).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      int i = ((IntIterator)paramList).nextInt();
-      CutModelKt localCutModelKt = (CutModelKt)localList.get(i);
+      int i = ((IntIterator)localObject).nextInt();
+      CutModelKt localCutModelKt = (CutModelKt)paramList.get(i);
       if (localCutModelKt.getResource().getSelectTimeDuration() < localCutModelKt.getResource().getCutTimeDuration()) {
-        localList.set(i, CutModelKt.copy$default(localCutModelKt, null, VideoResourceModelKt.copy$default(localCutModelKt.getResource(), null, 0, ((float)localCutModelKt.getResource().getCutTimeDuration() / localCutModelKt.getResource().getScaleSpeed()), 0L, 0L, 0L, 0L, localCutModelKt.getResource().getCutTimeStart(), localCutModelKt.getResource().getCutTimeDuration(), 0L, localCutModelKt.getResource().getCutTimeDuration() * 1000, 0L, 0L, 0, 0, 0, 64123, null), null, null, 13, null));
+        paramList.set(i, CutModelKt.copy$default(localCutModelKt, null, VideoResourceModelKt.copy$default(localCutModelKt.getResource(), null, 0, ((float)localCutModelKt.getResource().getCutTimeDuration() / localCutModelKt.getResource().getScaleSpeed()), 0L, 0L, 0L, 0L, localCutModelKt.getResource().getCutTimeStart(), localCutModelKt.getResource().getCutTimeDuration(), 0L, localCutModelKt.getResource().getCutTimeDuration() * 1000, 0L, 0L, 0, 0, 0, 64123, null), null, null, 13, null));
       }
     }
-    return localList;
+    return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.StoreModelConvert
  * JD-Core Version:    0.7.0.1
  */

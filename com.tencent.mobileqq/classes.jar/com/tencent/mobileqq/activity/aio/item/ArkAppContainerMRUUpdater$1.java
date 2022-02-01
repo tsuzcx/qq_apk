@@ -17,35 +17,39 @@ class ArkAppContainerMRUUpdater$1
   {
     if (paramMessage.obj == null)
     {
-      switch (paramMessage.what)
+      i = paramMessage.what;
+      if (i != 4)
       {
-      default: 
-        return;
-      case 4: 
-        ArkAppContainerMRUUpdater.a(this.a);
+        if (i != 5) {
+          return;
+        }
+        ArkAppContainerMRUUpdater.a(this.a, true);
         return;
       }
-      ArkAppContainerMRUUpdater.a(this.a, true);
+      ArkAppContainerMRUUpdater.a(this.a);
       return;
     }
     WeakReference localWeakReference = (WeakReference)paramMessage.obj;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      ArkAppContainerMRUUpdater.a(this.a, localWeakReference);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        ArkAppContainerMRUUpdater.c(this.a, localWeakReference);
+        return;
+      }
       ArkAppContainerMRUUpdater.b(this.a, localWeakReference);
       return;
     }
-    ArkAppContainerMRUUpdater.c(this.a, localWeakReference);
+    ArkAppContainerMRUUpdater.a(this.a, localWeakReference);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppContainerMRUUpdater.1
  * JD-Core Version:    0.7.0.1
  */

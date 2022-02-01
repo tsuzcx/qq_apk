@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RespGetNeighbors
   extends JceStruct
@@ -88,30 +89,36 @@ public final class RespGetNeighbors
   {
     paramJceOutputStream.write(this.stHeader, 0);
     paramJceOutputStream.write(this.RespTime, 1);
-    if (this.vNeighborInfos != null) {
-      paramJceOutputStream.write(this.vNeighborInfos, 2);
+    Object localObject = this.vNeighborInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.vGroupList != null) {
-      paramJceOutputStream.write(this.vGroupList, 3);
+    localObject = this.vGroupList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.stUserData != null) {
-      paramJceOutputStream.write(this.stUserData, 4);
+    localObject = this.stUserData;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.stUDLinfo != null) {
-      paramJceOutputStream.write(this.stUDLinfo, 5);
+    localObject = this.stUDLinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.stEctFmt != null) {
-      paramJceOutputStream.write(this.stEctFmt, 6);
+    localObject = this.stEctFmt;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
     paramJceOutputStream.write(this.iSessionTotalNumber, 7);
-    if (this.nearbyGroupResp != null) {
-      paramJceOutputStream.write(this.nearbyGroupResp, 8);
+    localObject = this.nearbyGroupResp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.RespGetNeighbors
  * JD-Core Version:    0.7.0.1
  */

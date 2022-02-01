@@ -38,14 +38,23 @@ public class ThreadCenter$TaskProxy
   {
     if (this.stackElements != null)
     {
-      String str = this.stackElements[3].getClassName() + "(line " + this.stackElements[3].getLineNumber() + "):" + this.stackElements[3].getMethodName();
-      Log.e("taskproxy_log", "one task has consumed too long time:\n" + str);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.stackElements[3].getClassName());
+      ((StringBuilder)localObject).append("(line ");
+      ((StringBuilder)localObject).append(this.stackElements[3].getLineNumber());
+      ((StringBuilder)localObject).append("):");
+      ((StringBuilder)localObject).append(this.stackElements[3].getMethodName());
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("one task has consumed too long time:\n");
+      localStringBuilder.append((String)localObject);
+      Log.e("taskproxy_log", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.ThreadCenter.TaskProxy
  * JD-Core Version:    0.7.0.1
  */

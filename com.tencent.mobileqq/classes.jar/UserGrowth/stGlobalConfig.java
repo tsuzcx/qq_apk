@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -106,54 +107,66 @@ public final class stGlobalConfig
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.jumpinfo != null) {
-      paramJceOutputStream.write(this.jumpinfo, 0);
+    Object localObject = this.jumpinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.windows_config != null) {
-      paramJceOutputStream.write(this.windows_config, 1);
+    localObject = this.windows_config;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
     paramJceOutputStream.write(this.is_call_weishi, 2);
     paramJceOutputStream.write(this.link_strategy_type, 3);
     paramJceOutputStream.write(this.open_4g_autodownload, 4);
-    if (this.pendant != null) {
-      paramJceOutputStream.write(this.pendant, 5);
+    localObject = this.pendant;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
     paramJceOutputStream.write(this.cache_size, 6);
     paramJceOutputStream.write(this.is_direct_open, 7);
-    if (this.download != null) {
-      paramJceOutputStream.write(this.download, 8);
+    localObject = this.download;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 8);
     }
-    if (this.encrypted_deviceid != null) {
-      paramJceOutputStream.write(this.encrypted_deviceid, 9);
+    localObject = this.encrypted_deviceid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.linkConfig != null) {
-      paramJceOutputStream.write(this.linkConfig, 10);
+    localObject = this.linkConfig;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
-    if (this.red_dot_window != null) {
-      paramJceOutputStream.write(this.red_dot_window, 11);
+    localObject = this.red_dot_window;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
     paramJceOutputStream.write(this.isHalfAppStoreScreen, 12);
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 13);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
-    if (this.callinfo != null) {
-      paramJceOutputStream.write(this.callinfo, 14);
+    localObject = this.callinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
-    if (this.user_auth != null) {
-      paramJceOutputStream.write(this.user_auth, 15);
+    localObject = this.user_auth;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
-    if (this.commentConfig != null) {
-      paramJceOutputStream.write(this.commentConfig, 16);
+    localObject = this.commentConfig;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 16);
     }
-    if (this.aioAction != null) {
-      paramJceOutputStream.write(this.aioAction, 17);
+    localObject = this.aioAction;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 17);
     }
     paramJceOutputStream.write(this.playerType, 18);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stGlobalConfig
  * JD-Core Version:    0.7.0.1
  */

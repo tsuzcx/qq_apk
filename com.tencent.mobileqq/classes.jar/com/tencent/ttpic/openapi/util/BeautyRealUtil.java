@@ -18,33 +18,34 @@ public class BeautyRealUtil
     ArrayList localArrayList = new ArrayList();
     float f = paramInt1 / 100.0F;
     paramDistortParam = paramDistortParam.getItems().iterator();
-    if (paramDistortParam.hasNext())
+    while (paramDistortParam.hasNext())
     {
       DistortionItem localDistortionItem = ((DistortionItem)paramDistortParam.next()).clone();
-      if (paramInt2 == BeautyRealConfig.TYPE.CHIN.value) {
+      if (paramInt2 == BeautyRealConfig.TYPE.CHIN.value)
+      {
         if (paramInt1 < 0)
         {
           localDistortionItem.strength *= -f;
           localDistortionItem.direction = 2;
         }
-      }
-      for (;;)
-      {
-        localArrayList.add(localDistortionItem);
-        break;
-        localDistortionItem.strength *= f;
-        localDistortionItem.direction = 4;
-        continue;
-        if (paramInt2 == BeautyRealConfig.TYPE.EYE.value)
-        {
-          localDistortionItem.strength *= f;
-          localDistortionItem.strength = ((float)(localDistortionItem.strength * 0.75D));
-        }
         else
         {
           localDistortionItem.strength *= f;
+          localDistortionItem.direction = 4;
         }
       }
+      else if (paramInt2 == BeautyRealConfig.TYPE.EYE.value)
+      {
+        localDistortionItem.strength *= f;
+        double d = localDistortionItem.strength;
+        Double.isNaN(d);
+        localDistortionItem.strength = ((float)(d * 0.75D));
+      }
+      else
+      {
+        localDistortionItem.strength *= f;
+      }
+      localArrayList.add(localDistortionItem);
     }
     localDistortParam.setLevel(paramInt1);
     localDistortParam.setItems(localArrayList);
@@ -60,25 +61,26 @@ public class BeautyRealUtil
     ArrayList localArrayList = new ArrayList();
     float f = paramInt1 / 100.0F;
     paramDistortParam = paramDistortParam.getItems().iterator();
-    if (paramDistortParam.hasNext())
+    while (paramDistortParam.hasNext())
     {
       DistortionItem localDistortionItem = ((DistortionItem)paramDistortParam.next()).clone();
-      if (paramInt2 == BeautyRealConfig.TYPE.CHIN.value) {
+      if (paramInt2 == BeautyRealConfig.TYPE.CHIN.value)
+      {
         if (paramInt1 < 0)
         {
           localDistortionItem.strength *= -f;
           localDistortionItem.direction = 2;
         }
+        else
+        {
+          localDistortionItem.strength *= f;
+          localDistortionItem.direction = 4;
+        }
       }
-      for (;;)
-      {
-        localArrayList.add(localDistortionItem);
-        break;
-        localDistortionItem.strength *= f;
-        localDistortionItem.direction = 4;
-        continue;
+      else {
         localDistortionItem.strength *= f;
       }
+      localArrayList.add(localDistortionItem);
     }
     localDistortParam.setLevel(paramInt1);
     localDistortParam.setItems(localArrayList);
@@ -87,7 +89,7 @@ public class BeautyRealUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.BeautyRealUtil
  * JD-Core Version:    0.7.0.1
  */

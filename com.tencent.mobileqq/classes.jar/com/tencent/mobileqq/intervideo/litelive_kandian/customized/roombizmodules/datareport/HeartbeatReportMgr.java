@@ -53,22 +53,41 @@ public class HeartbeatReportMgr
     this.jdField_a_of_type_JavaUtilMap = paramMap;
     ThreadCenter.removeDefaultUITask(this.jdField_a_of_type_JavaLangRunnable);
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    QLog.i("DataReportMgr", 1, "reportFinalHeartbeat roomId = " + (String)paramMap.get("roomid") + ", program_id = " + (String)paramMap.get("program_id") + ", realTS = " + l + ", background = " + this.jdField_a_of_type_Boolean + ", play_state = " + this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportIPlayerState.a() + ", state = " + (String)paramMap.get("state") + ", zt_int4 = " + (String)paramMap.get("zt_int4") + ", zt_int5 = " + (String)paramMap.get("zt_int5") + ", anchor = " + (String)paramMap.get("anchor"));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("reportFinalHeartbeat roomId = ");
+    ((StringBuilder)localObject).append((String)paramMap.get("roomid"));
+    ((StringBuilder)localObject).append(", program_id = ");
+    ((StringBuilder)localObject).append((String)paramMap.get("program_id"));
+    ((StringBuilder)localObject).append(", realTS = ");
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(", background = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(", play_state = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportIPlayerState.a());
+    ((StringBuilder)localObject).append(", state = ");
+    ((StringBuilder)localObject).append((String)paramMap.get("state"));
+    ((StringBuilder)localObject).append(", zt_int4 = ");
+    ((StringBuilder)localObject).append((String)paramMap.get("zt_int4"));
+    ((StringBuilder)localObject).append(", zt_int5 = ");
+    ((StringBuilder)localObject).append((String)paramMap.get("zt_int5"));
+    ((StringBuilder)localObject).append(", anchor = ");
+    ((StringBuilder)localObject).append((String)paramMap.get("anchor"));
+    QLog.i("DataReportMgr", 1, ((StringBuilder)localObject).toString());
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "2";; str = "1")
-    {
-      paramMap.put("zt_int2", str);
-      paramMap.put("zt_int3", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportIPlayerState.a());
-      paramMap.put("timelong", String.valueOf(l));
-      DataReportUtil.b("room_page", "房间", "room", "房间", "final_heart_beat", "最终心跳（不足5秒时的最后一次心跳）", paramMap);
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      localObject = "2";
+    } else {
+      localObject = "1";
     }
+    paramMap.put("zt_int2", localObject);
+    paramMap.put("zt_int3", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportIPlayerState.a());
+    paramMap.put("timelong", String.valueOf(l));
+    DataReportUtil.b("room_page", "房间", "room", "房间", "final_heart_beat", "最终心跳（不足5秒时的最后一次心跳）", paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.HeartbeatReportMgr
  * JD-Core Version:    0.7.0.1
  */

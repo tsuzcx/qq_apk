@@ -17,12 +17,26 @@ public abstract class ReplaceBaseLog
   
   public String build()
   {
-    return this.packageName + "|" + this.versionCode + "|" + filterSplitStr(this.downloadUrl) + "|" + this.yybApkId + "|" + this.yybAppId + "|" + this.traceId + "|" + this.isTDownloadApp;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.packageName);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.versionCode);
+    localStringBuilder.append("|");
+    localStringBuilder.append(filterSplitStr(this.downloadUrl));
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.yybApkId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.yybAppId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.traceId);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.isTDownloadApp);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.st.ReplaceBaseLog
  * JD-Core Version:    0.7.0.1
  */

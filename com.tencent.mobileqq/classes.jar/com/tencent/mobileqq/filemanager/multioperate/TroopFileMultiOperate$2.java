@@ -14,19 +14,23 @@ class TroopFileMultiOperate$2
     if (paramInt == 1)
     {
       TroopFileMultiOperate.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateTroopFileMultiOperate, this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback.a(1, 0);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback;
+      if (paramDialogInterface != null) {
+        paramDialogInterface.a(1, 0);
       }
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback == null) {
-      return;
+    else
+    {
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback;
+      if (paramDialogInterface != null) {
+        paramDialogInterface.a(1, 1);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateQFileMultiOperateCallback.a(1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.TroopFileMultiOperate.2
  * JD-Core Version:    0.7.0.1
  */

@@ -31,41 +31,45 @@ public class TroopGameCardConfigProcessor
   
   private void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGameCardConfigProcessor", 2, "[notifyListeners]:" + this.a.size());
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("[notifyListeners]:");
+      ((StringBuilder)???).append(this.a.size());
+      QLog.d("TroopGameCardConfigProcessor", 2, ((StringBuilder)???).toString());
     }
     ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
     try
     {
       synchronized (this.a)
       {
-        if (this.a.size() <= 0) {
-          break label162;
-        }
-        Iterator localIterator = this.a.iterator();
-        while (localIterator.hasNext())
+        if (this.a.size() > 0)
         {
-          TroopGameCardConfigProcessor.OnGetConfigListener localOnGetConfigListener = (TroopGameCardConfigProcessor.OnGetConfigListener)localIterator.next();
-          try
+          Iterator localIterator = this.a.iterator();
+          while (localIterator.hasNext())
           {
-            localOnGetConfigListener.a(paramInt);
+            TroopGameCardConfigProcessor.OnGetConfigListener localOnGetConfigListener = (TroopGameCardConfigProcessor.OnGetConfigListener)localIterator.next();
+            try
+            {
+              localOnGetConfigListener.a(paramInt);
+            }
+            catch (Throwable localThrowable2) {}
+            if (QLog.isColorLevel()) {
+              QLog.e("TroopGameCardConfigProcessor", 1, localThrowable2, new Object[0]);
+            }
           }
-          catch (Throwable localThrowable2) {}
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopGameCardConfigProcessor", 1, localThrowable2, new Object[0]);
-          }
+          this.a.clear();
         }
+        return;
       }
-      this.a.clear();
+      return;
     }
     catch (Throwable localThrowable1)
     {
       if (QLog.isColorLevel()) {
         QLog.e("TroopGameCardConfigProcessor", 1, localThrowable1, new Object[0]);
       }
-      return;
     }
-    label162:
   }
   
   private void b(TroopGameCardConfig paramTroopGameCardConfig)
@@ -79,7 +83,10 @@ public class TroopGameCardConfigProcessor
   @NonNull
   public TroopGameCardConfig a(int paramInt)
   {
-    QLog.d("TroopGameCardConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopGameCardConfigProcessor", 2, localStringBuilder.toString());
     return new TroopGameCardConfig();
   }
   
@@ -97,8 +104,12 @@ public class TroopGameCardConfigProcessor
   
   public void a(TroopGameCardConfig paramTroopGameCardConfig)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGameCardConfigProcessor", 1, "onUpdate, newConf = " + paramTroopGameCardConfig);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate, newConf = ");
+      localStringBuilder.append(paramTroopGameCardConfig);
+      QLog.d("TroopGameCardConfigProcessor", 1, localStringBuilder.toString());
     }
     ThreadManager.getSubThreadHandler().post(new TroopGameCardConfigProcessor.3(this, paramTroopGameCardConfig));
   }
@@ -150,7 +161,10 @@ public class TroopGameCardConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TroopGameCardConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopGameCardConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -160,7 +174,7 @@ public class TroopGameCardConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

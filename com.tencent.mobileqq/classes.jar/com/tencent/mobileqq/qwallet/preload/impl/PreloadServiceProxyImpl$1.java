@@ -23,8 +23,14 @@ class PreloadServiceProxyImpl$1
       paramInt = paramBundle.getInt("result");
       String str2 = paramBundle.getString("path");
       paramBundle = (ResourceInfo)paramBundle.getSerializable("res_info");
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadServiceProxy", 2, "PreloadServiceProxyImpl downloadModule" + str2 + "|" + paramBundle);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PreloadServiceProxyImpl downloadModule");
+        localStringBuilder.append(str2);
+        localStringBuilder.append("|");
+        localStringBuilder.append(paramBundle);
+        QLog.d("PreloadServiceProxy", 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$DownloadCallback.onDownloadResFinished(str1, paramInt, str2, paramBundle);
       return;
@@ -37,7 +43,7 @@ class PreloadServiceProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

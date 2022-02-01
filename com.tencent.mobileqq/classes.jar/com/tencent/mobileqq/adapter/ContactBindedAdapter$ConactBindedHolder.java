@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.data.PhoneContact;
 
 public class ContactBindedAdapter$ConactBindedHolder
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends FacePreloadHolder.ViewHolder
 {
   public View a;
   public Button a;
@@ -26,7 +26,7 @@ public class ContactBindedAdapter$ConactBindedHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ContactBindedAdapter.ConactBindedHolder
  * JD-Core Version:    0.7.0.1
  */

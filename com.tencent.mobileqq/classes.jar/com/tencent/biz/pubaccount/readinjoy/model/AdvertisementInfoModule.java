@@ -2,37 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.content.Context;
 import android.os.Build;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.dataline.util.DatalineMathUtil;
 import com.tencent.biz.pubaccount.Advertisement.util.PublicAccountAdUtil;
 import com.tencent.biz.pubaccount.NativeAd.data.AdRequestData;
 import com.tencent.biz.pubaccount.NativeAd.report.AdSessionManager;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.api.IPublicAccountReportUtils;
 import com.tencent.biz.pubaccount.api.IPublicAccountServlet;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ValueReference;
-import com.tencent.biz.pubaccount.readinjoy.config.handlers.DailyModeConfigHandler;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJFeedsType;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyFixPosArticleManager;
-import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadHelper;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyOidbHelper;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyRequestParams.Request0x68bParams;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime.RealTimeController;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdReportData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementExtInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.ext.AdRequestExtKt;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.manager.AdExposeFreshManager;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.manager.AdReqFreshManager;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdDeviceInfoUtil;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdUtils;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyPatchAdUtils;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.video.strategy.VideoAdTimeLoadManager;
@@ -42,14 +24,42 @@ import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdService;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.ad.api.constant.RIJAdConstants.AdvertisementInfoModule;
+import com.tencent.mobileqq.kandian.ad.api.entity.IRIJAdvertisementInfoModule;
+import com.tencent.mobileqq.kandian.base.msf.api.IReadInJoyEngineModuleConstants;
+import com.tencent.mobileqq.kandian.base.utils.RIJPBFieldUtils;
+import com.tencent.mobileqq.kandian.base.utils.ValueReference;
+import com.tencent.mobileqq.kandian.base.utils.api.IReadInJoyOidbHelper;
+import com.tencent.mobileqq.kandian.biz.ad.IRIJAdvertisementRequestProxy;
+import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.kandian.biz.daily.api.IReadInJoyDailySettingModel;
+import com.tencent.mobileqq.kandian.biz.feeds.api.FixPosArticleInterface.FixPosArticleAsyncListener;
+import com.tencent.mobileqq.kandian.biz.feeds.api.IFeedsPreloadHelper;
+import com.tencent.mobileqq.kandian.biz.feeds.api.IReadInJoyFixPosArticleManager;
+import com.tencent.mobileqq.kandian.biz.framework.api.IRIJFeedsType;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.pts.api.IReadInJoyProteusFamilyUtil;
+import com.tencent.mobileqq.kandian.biz.pts.api.IRealTimeController;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngine;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngineFactory;
+import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyMSFHandlerUtils;
+import com.tencent.mobileqq.kandian.repo.daily.api.IDailyModeConfigHandler;
+import com.tencent.mobileqq.kandian.repo.dislike.DislikeInfo;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyRequestParams.Request0x68bParams;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -58,7 +68,6 @@ import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -70,13 +79,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
+import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 import tencent.im.oidb.articlesummary.articlesummary.AdInfo;
+import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
+import tencent.im.oidb.articlesummary.articlesummary.FeedsInfo;
+import tencent.im.oidb.articlesummary.articlesummary.PosAdInfo;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.AdPosMap;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.AdReqInfo;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PhoneInfo;
@@ -85,33 +97,21 @@ import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqBody;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspBody;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.RspBody;
+import tencent.im.oidb.cmd0xf30.oidb_cmd0xf30.InsertArticle;
 
 public class AdvertisementInfoModule
-  extends ReadInJoyEngineModule
+  implements IRIJAdvertisementInfoModule, IReadInJoyEngineModuleConstants
 {
-  public static int a;
-  public static int b;
-  public static int c;
   private LinkedHashMap<Integer, Long> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private ConcurrentHashMap<Integer, WeakReference<FixPosArticleInterface.FixPosArticleAsyncListener>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private LinkedHashMap<Integer, Long> jdField_b_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   private ConcurrentHashMap<Integer, HashSet<String>> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private LinkedHashMap<Integer, ConcurrentHashMap<Integer, AdvertisementInfo>> c;
-  private LinkedHashMap<Integer, Pair<Integer, Integer>> d;
+  private LinkedHashMap<Integer, ConcurrentHashMap<Integer, AdvertisementInfo>> c = new LinkedHashMap();
+  private LinkedHashMap<Integer, Pair<Integer, Integer>> d = new LinkedHashMap();
   private LinkedHashMap<Integer, Boolean> e = new LinkedHashMap();
   
-  static
+  public AdvertisementInfoModule()
   {
-    jdField_a_of_type_Int = 15;
-    jdField_b_of_type_Int = 10;
-    jdField_c_of_type_Int = 10;
-  }
-  
-  public AdvertisementInfoModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
-  {
-    super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
-    this.jdField_c_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-    this.jdField_d_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
     if (QLog.isColorLevel()) {
       QLog.d("AdvertisementInfoModule", 2, "construct!");
     }
@@ -119,26 +119,43 @@ public class AdvertisementInfoModule
   
   private int a()
   {
-    switch (NetworkUtil.a(BaseApplication.getContext()))
+    int j = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    int i = 0;
+    if (j != 0)
     {
-    case 0: 
-    default: 
-      return 0;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
-    case 4: 
-      return 3;
+      if (j != 1) {
+        if (j != 2)
+        {
+          if (j != 3)
+          {
+            if (j != 4)
+            {
+              if (j != 5) {
+                return 0;
+              }
+            }
+            else {
+              return 3;
+            }
+          }
+          else {
+            return 2;
+          }
+        }
+        else {
+          return 1;
+        }
+      }
+      i = 4;
     }
-    return 4;
+    return i;
   }
   
   private int a(int paramInt)
   {
-    int i = 1;
     Object localObject1 = new ArrayList();
-    Object localObject2 = (ConcurrentHashMap)this.jdField_c_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt));
+    Object localObject2 = (ConcurrentHashMap)this.c.get(Integer.valueOf(paramInt));
+    int i = 1;
     paramInt = i;
     if (localObject2 != null)
     {
@@ -155,359 +172,490 @@ public class AdvertisementInfoModule
         if (localObject1 != null)
         {
           paramInt = i;
-          if (((AdvertisementInfo)localObject1).mAdKdPos <= 100) {
-            if (!((AdvertisementInfo)localObject1).hasAddExposure) {
-              break label132;
+          if (((AdvertisementInfo)localObject1).mAdKdPos <= 100)
+          {
+            if (((AdvertisementInfo)localObject1).hasAddExposure) {
+              return 1;
             }
+            paramInt = 2;
           }
         }
       }
     }
-    label132:
-    for (paramInt = 1;; paramInt = 2) {
-      return paramInt;
-    }
+    return paramInt;
   }
   
   private String a(String paramString, AdvertisementInfo paramAdvertisementInfo)
   {
     int i = (int)paramAdvertisementInfo.mChannelID;
-    if (DailyModeConfigHandler.c(i)) {
+    if (((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(i)) {
       paramString = "RIJAdRefreshSceneDaily";
     }
-    for (;;)
-    {
-      if (i == 0) {
-        paramString = "RIJAdRefreshSceneMainFeeds";
-      }
-      if (56 == i) {
-        paramString = "RIJAdRefreshSceneVideoTab";
-      }
-      if ((78888888 == i) || (78888889 == i) || (88888888 == i)) {
-        paramString = "RIJAdRefreshSceneFloatVideo";
-      }
-      return paramString;
+    if (i == 0) {
+      paramString = "RIJAdRefreshSceneMainFeeds";
     }
+    if (56 == i) {
+      paramString = "RIJAdRefreshSceneVideoTab";
+    }
+    if ((78888888 == i) || (78888889 == i) || (88888888 == i)) {
+      paramString = "RIJAdRefreshSceneFloatVideo";
+    }
+    return paramString;
   }
   
   /* Error */
-  private List<AdvertisementInfo> a(int paramInt, ValueReference<Integer> paramValueReference, long paramLong1, ValueReference<Boolean> paramValueReference1, ValueReference<Boolean> paramValueReference2, long paramLong2, List<tencent.im.oidb.articlesummary.articlesummary.ArticleSummary> paramList)
+  private List<AdvertisementInfo> a(int paramInt, ValueReference<Integer> paramValueReference, long paramLong1, ValueReference<Boolean> paramValueReference1, ValueReference<Boolean> paramValueReference2, long paramLong2, List<articlesummary.ArticleSummary> paramList)
   {
     // Byte code:
-    //   0: new 80	java/util/ArrayList
+    //   0: new 75	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 81	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 76	java/util/ArrayList:<init>	()V
     //   7: astore 17
     //   9: aload 9
-    //   11: invokeinterface 169 1 0
+    //   11: invokeinterface 172 1 0
     //   16: astore 9
     //   18: iconst_0
     //   19: istore 10
     //   21: aload 9
-    //   23: invokeinterface 109 1 0
-    //   28: ifeq +670 -> 698
+    //   23: invokeinterface 104 1 0
+    //   28: ifeq +825 -> 853
     //   31: aload 9
-    //   33: invokeinterface 113 1 0
-    //   38: checkcast 171	tencent/im/oidb/articlesummary/articlesummary$ArticleSummary
+    //   33: invokeinterface 108 1 0
+    //   38: checkcast 174	tencent/im/oidb/articlesummary/articlesummary$ArticleSummary
     //   41: astore 19
     //   43: aload 19
-    //   45: getfield 175	tencent/im/oidb/articlesummary/articlesummary$ArticleSummary:msg_feeds_info	Ltencent/im/oidb/articlesummary/articlesummary$FeedsInfo;
-    //   48: invokevirtual 180	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo:has	()Z
-    //   51: ifeq +653 -> 704
+    //   45: getfield 178	tencent/im/oidb/articlesummary/articlesummary$ArticleSummary:msg_feeds_info	Ltencent/im/oidb/articlesummary/articlesummary$FeedsInfo;
+    //   48: invokevirtual 183	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo:has	()Z
+    //   51: ifeq +799 -> 850
     //   54: aload 19
-    //   56: getfield 175	tencent/im/oidb/articlesummary/articlesummary$ArticleSummary:msg_feeds_info	Ltencent/im/oidb/articlesummary/articlesummary$FeedsInfo;
-    //   59: invokevirtual 183	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   62: checkcast 177	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo
-    //   65: getfield 187	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo:msg_pos_ad_info	Ltencent/im/oidb/articlesummary/articlesummary$PosAdInfo;
-    //   68: invokevirtual 190	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:has	()Z
-    //   71: ifeq +633 -> 704
+    //   56: getfield 178	tencent/im/oidb/articlesummary/articlesummary$ArticleSummary:msg_feeds_info	Ltencent/im/oidb/articlesummary/articlesummary$FeedsInfo;
+    //   59: invokevirtual 186	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   62: checkcast 180	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo
+    //   65: getfield 190	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo:msg_pos_ad_info	Ltencent/im/oidb/articlesummary/articlesummary$PosAdInfo;
+    //   68: invokevirtual 193	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:has	()Z
+    //   71: ifeq +779 -> 850
     //   74: aload 19
-    //   76: getfield 175	tencent/im/oidb/articlesummary/articlesummary$ArticleSummary:msg_feeds_info	Ltencent/im/oidb/articlesummary/articlesummary$FeedsInfo;
-    //   79: invokevirtual 183	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   82: checkcast 177	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo
-    //   85: getfield 187	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo:msg_pos_ad_info	Ltencent/im/oidb/articlesummary/articlesummary$PosAdInfo;
-    //   88: invokevirtual 191	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   91: checkcast 189	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo
+    //   76: getfield 178	tencent/im/oidb/articlesummary/articlesummary$ArticleSummary:msg_feeds_info	Ltencent/im/oidb/articlesummary/articlesummary$FeedsInfo;
+    //   79: invokevirtual 186	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   82: checkcast 180	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo
+    //   85: getfield 190	tencent/im/oidb/articlesummary/articlesummary$FeedsInfo:msg_pos_ad_info	Ltencent/im/oidb/articlesummary/articlesummary$PosAdInfo;
+    //   88: invokevirtual 194	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   91: checkcast 192	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo
     //   94: astore 18
     //   96: aload 18
-    //   98: ifnull +606 -> 704
+    //   98: ifnull +752 -> 850
     //   101: aload 18
-    //   103: getfield 195	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:int32_ret	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   106: invokevirtual 199	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   109: ifne +595 -> 704
+    //   103: getfield 198	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:int32_ret	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   106: invokevirtual 202	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   109: ifne +741 -> 850
     //   112: aload 18
-    //   114: getfield 203	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:enum_pos_layout	Lcom/tencent/mobileqq/pb/PBEnumField;
-    //   117: invokevirtual 206	com/tencent/mobileqq/pb/PBEnumField:get	()I
+    //   114: getfield 206	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:enum_pos_layout	Lcom/tencent/mobileqq/pb/PBEnumField;
+    //   117: invokevirtual 209	com/tencent/mobileqq/pb/PBEnumField:get	()I
     //   120: istore 11
     //   122: aload 18
-    //   124: getfield 210	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:uint64_pos_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   127: invokevirtual 215	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   124: getfield 213	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:uint64_pos_id	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   127: invokevirtual 218	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   130: lstore 12
     //   132: aload 18
-    //   134: getfield 218	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:is_auto_play	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   137: invokevirtual 215	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   134: getfield 221	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:is_auto_play	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   137: invokevirtual 218	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
     //   140: lstore 14
     //   142: aload 18
-    //   144: getfield 222	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:msg_ad_info	Ltencent/im/oidb/articlesummary/articlesummary$AdInfo;
-    //   147: invokevirtual 225	tencent/im/oidb/articlesummary/articlesummary$AdInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   150: checkcast 224	tencent/im/oidb/articlesummary/articlesummary$AdInfo
+    //   144: getfield 225	tencent/im/oidb/articlesummary/articlesummary$PosAdInfo:msg_ad_info	Ltencent/im/oidb/articlesummary/articlesummary$AdInfo;
+    //   147: invokevirtual 228	tencent/im/oidb/articlesummary/articlesummary$AdInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   150: checkcast 227	tencent/im/oidb/articlesummary/articlesummary$AdInfo
     //   153: astore 18
     //   155: aload_0
     //   156: iload_1
     //   157: aload_2
     //   158: aload 18
-    //   160: invokespecial 228	com/tencent/biz/pubaccount/readinjoy/model/AdvertisementInfoModule:a	(ILcom/tencent/biz/pubaccount/readinjoy/common/ValueReference;Ltencent/im/oidb/articlesummary/articlesummary$AdInfo;)V
-    //   163: new 115	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo
+    //   160: invokespecial 231	com/tencent/biz/pubaccount/readinjoy/model/AdvertisementInfoModule:a	(ILcom/tencent/mobileqq/kandian/base/utils/ValueReference;Ltencent/im/oidb/articlesummary/articlesummary$AdInfo;)V
+    //   163: new 110	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo
     //   166: dup
     //   167: aload 18
-    //   169: invokespecial 231	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:<init>	(Ltencent/im/oidb/articlesummary/articlesummary$AdInfo;)V
+    //   169: invokespecial 234	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:<init>	(Ltencent/im/oidb/articlesummary/articlesummary$AdInfo;)V
     //   172: astore 18
-    //   174: aload 18
-    //   176: invokestatic 236	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdUtils:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)V
-    //   179: aload 19
-    //   181: aload_2
-    //   182: invokevirtual 240	com/tencent/biz/pubaccount/readinjoy/common/ValueReference:a	()Ljava/lang/Object;
-    //   185: checkcast 83	java/lang/Integer
-    //   188: invokevirtual 243	java/lang/Integer:intValue	()I
-    //   191: iconst_0
-    //   192: aload 18
-    //   194: invokestatic 248	com/tencent/biz/pubaccount/readinjoy/protocol/ReadInJoyMSFHandlerUtils:a	(Ltencent/im/oidb/articlesummary/articlesummary$ArticleSummary;IILcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;)Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;
-    //   197: pop
-    //   198: aload 18
-    //   200: lload_3
-    //   201: putfield 251	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdFetchTime	J
-    //   204: aload 18
-    //   206: iload 11
-    //   208: putfield 254	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdPosLayout	I
-    //   211: aload 18
-    //   213: lload 12
-    //   215: putfield 257	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdPosID	J
+    //   174: ldc 236
+    //   176: invokestatic 149	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   179: checkcast 236	com/tencent/mobileqq/kandian/ad/api/IRIJAdUtilService
+    //   182: aload 18
+    //   184: invokeinterface 240 2 0
+    //   189: ldc 242
+    //   191: invokestatic 149	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   194: checkcast 242	com/tencent/mobileqq/kandian/glue/msf/api/IReadInJoyMSFHandlerUtils
+    //   197: aload 19
+    //   199: aload_2
+    //   200: invokevirtual 246	com/tencent/mobileqq/kandian/base/utils/ValueReference:a	()Ljava/lang/Object;
+    //   203: checkcast 78	java/lang/Integer
+    //   206: invokevirtual 249	java/lang/Integer:intValue	()I
+    //   209: iconst_0
+    //   210: aload 18
+    //   212: invokeinterface 253 5 0
+    //   217: pop
     //   218: aload 18
-    //   220: lload 14
-    //   222: putfield 260	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mADVideoAutoPlay	J
-    //   225: ldc_w 262
-    //   228: new 264	java/lang/StringBuilder
-    //   231: dup
-    //   232: invokespecial 265	java/lang/StringBuilder:<init>	()V
-    //   235: ldc_w 267
-    //   238: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: aload 18
-    //   243: getfield 136	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdKdPos	I
-    //   246: invokevirtual 274	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   249: invokevirtual 278	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: invokestatic 283	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdLog:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   255: lload 7
-    //   257: ldc2_w 284
-    //   260: lcmp
-    //   261: ifne +440 -> 701
-    //   264: iload 10
-    //   266: ifne +435 -> 701
-    //   269: aload 18
-    //   271: getfield 289	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdvertisementExtInfo	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdvertisementExtInfo;
-    //   274: ifnull +427 -> 701
-    //   277: aload 18
-    //   279: getfield 289	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdvertisementExtInfo	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdvertisementExtInfo;
-    //   282: getfield 294	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdvertisementExtInfo:f	I
-    //   285: ifle +416 -> 701
-    //   288: aload_0
-    //   289: aload_2
-    //   290: aload 18
-    //   292: invokespecial 297	com/tencent/biz/pubaccount/readinjoy/model/AdvertisementInfoModule:a	(Lcom/tencent/biz/pubaccount/readinjoy/common/ValueReference;Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)V
-    //   295: iconst_1
-    //   296: istore 10
-    //   298: invokestatic 301	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyProteusFamilyUtil:a	()Z
-    //   301: ifeq +13 -> 314
-    //   304: invokestatic 304	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyProteusFamilyUtil:a	()Lcom/tencent/biz/pubaccount/readinjoy/common/ReadInJoyProteusFamilyUtil;
-    //   307: aload 19
-    //   309: aload 18
-    //   311: invokevirtual 307	com/tencent/biz/pubaccount/readinjoy/common/ReadInJoyProteusFamilyUtil:a	(Ltencent/im/oidb/articlesummary/articlesummary$ArticleSummary;Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;)V
-    //   314: getstatic 312	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdExperimentInitUtil:a	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdExperimentInitUtil;
-    //   317: aload 18
-    //   319: invokevirtual 313	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdExperimentInitUtil:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)V
-    //   322: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   325: ifeq +61 -> 386
-    //   328: ldc 60
-    //   330: iconst_2
-    //   331: new 264	java/lang/StringBuilder
-    //   334: dup
-    //   335: invokespecial 265	java/lang/StringBuilder:<init>	()V
-    //   338: ldc_w 315
-    //   341: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   344: aload 18
-    //   346: getfield 136	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdKdPos	I
-    //   349: invokevirtual 274	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   352: ldc_w 317
-    //   355: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   358: aload 18
-    //   360: invokevirtual 318	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:toString	()Ljava/lang/String;
-    //   363: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   366: ldc_w 320
-    //   369: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   372: aload 18
-    //   374: getfield 324	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdExtInfo	Ljava/lang/String;
-    //   377: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   380: invokevirtual 278	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   383: invokestatic 65	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   386: aload 18
-    //   388: getfield 324	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdExtInfo	Ljava/lang/String;
-    //   391: invokestatic 330	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   394: istore 16
-    //   396: iload 16
-    //   398: ifne +154 -> 552
-    //   401: new 332	org/json/JSONObject
-    //   404: dup
-    //   405: aload 18
-    //   407: getfield 324	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdExtInfo	Ljava/lang/String;
-    //   410: invokespecial 335	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   413: astore 19
-    //   415: aload 19
-    //   417: ldc_w 337
-    //   420: invokevirtual 340	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   423: ifeq +33 -> 456
-    //   426: aload 19
-    //   428: ldc_w 337
-    //   431: invokevirtual 344	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   434: iconst_2
-    //   435: if_icmpne +21 -> 456
-    //   438: aload 6
-    //   440: iconst_1
-    //   441: invokestatic 349	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   444: invokevirtual 352	com/tencent/biz/pubaccount/readinjoy/common/ValueReference:a	(Ljava/lang/Object;)V
-    //   447: ldc 60
-    //   449: iconst_1
-    //   450: ldc_w 354
-    //   453: invokestatic 65	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   456: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   459: ifeq +33 -> 492
-    //   462: ldc 60
-    //   464: iconst_2
-    //   465: new 264	java/lang/StringBuilder
-    //   468: dup
-    //   469: invokespecial 265	java/lang/StringBuilder:<init>	()V
-    //   472: ldc_w 356
-    //   475: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   478: aload 19
-    //   480: invokevirtual 357	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   483: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   486: invokevirtual 278	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   489: invokestatic 65	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   492: getstatic 362	com/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskDataMgr:a	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskDataMgr;
-    //   495: aload 18
-    //   497: invokevirtual 363	com/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskDataMgr:a	(Ljava/lang/Object;)V
-    //   500: aload 18
-    //   502: invokestatic 368	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyPatchAdUtils:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)Z
-    //   505: ifeq +47 -> 552
-    //   508: aload 5
-    //   510: iconst_1
-    //   511: invokestatic 349	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   514: invokevirtual 352	com/tencent/biz/pubaccount/readinjoy/common/ValueReference:a	(Ljava/lang/Object;)V
-    //   517: goto -496 -> 21
-    //   520: astore 19
-    //   522: ldc 60
-    //   524: iconst_1
-    //   525: new 264	java/lang/StringBuilder
-    //   528: dup
-    //   529: invokespecial 265	java/lang/StringBuilder:<init>	()V
-    //   532: ldc_w 370
-    //   535: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   538: aload 19
-    //   540: invokevirtual 373	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   543: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   546: invokevirtual 278	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   549: invokestatic 375	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   552: aload_0
-    //   553: aload 18
-    //   555: invokespecial 376	com/tencent/biz/pubaccount/readinjoy/model/AdvertisementInfoModule:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)Z
-    //   558: ifne +100 -> 658
-    //   561: aload 18
-    //   563: aconst_null
-    //   564: invokestatic 381	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdSwitchUtil:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;Lcom/tencent/biz/pubaccount/VideoAdInfo;)Z
-    //   567: ifeq +68 -> 635
-    //   570: new 332	org/json/JSONObject
-    //   573: dup
-    //   574: invokespecial 382	org/json/JSONObject:<init>	()V
-    //   577: astore 19
-    //   579: aload 19
-    //   581: ldc_w 384
-    //   584: iconst_0
-    //   585: invokevirtual 388	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   588: pop
-    //   589: aload 19
-    //   591: ldc_w 390
-    //   594: iconst_1
-    //   595: invokevirtual 388	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   598: pop
-    //   599: new 392	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData
-    //   602: dup
-    //   603: invokespecial 393	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:<init>	()V
-    //   606: invokestatic 72	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   609: invokevirtual 396	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:a	(Landroid/content/Context;)Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;
-    //   612: bipush 80
-    //   614: invokevirtual 399	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:a	(I)Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;
-    //   617: bipush 12
-    //   619: invokevirtual 401	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:b	(I)Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;
-    //   622: aload 18
-    //   624: invokevirtual 404	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;
-    //   627: aload 19
-    //   629: invokevirtual 407	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:b	(Lorg/json/JSONObject;)Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;
-    //   632: invokestatic 412	com/tencent/biz/pubaccount/NativeAd/util/NativeAdUtils:a	(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;)V
-    //   635: aload 17
-    //   637: aload 18
-    //   639: invokeinterface 413 2 0
-    //   644: pop
-    //   645: goto -624 -> 21
-    //   648: astore 20
-    //   650: aload 20
-    //   652: invokevirtual 416	org/json/JSONException:printStackTrace	()V
-    //   655: goto -56 -> 599
-    //   658: invokestatic 58	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   661: ifeq +33 -> 694
-    //   664: ldc 60
-    //   666: iconst_2
-    //   667: new 264	java/lang/StringBuilder
-    //   670: dup
-    //   671: invokespecial 265	java/lang/StringBuilder:<init>	()V
-    //   674: ldc_w 418
-    //   677: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   680: aload 18
-    //   682: invokevirtual 421	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:toSString	()Ljava/lang/String;
-    //   685: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   688: invokevirtual 278	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   691: invokestatic 65	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   694: goto -49 -> 645
-    //   697: astore_2
-    //   698: aload 17
-    //   700: areturn
-    //   701: goto -403 -> 298
-    //   704: goto -59 -> 645
+    //   220: lload_3
+    //   221: putfield 256	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdFetchTime	J
+    //   224: aload 18
+    //   226: iload 11
+    //   228: putfield 259	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdPosLayout	I
+    //   231: aload 18
+    //   233: lload 12
+    //   235: putfield 262	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdPosID	J
+    //   238: aload 18
+    //   240: lload 14
+    //   242: putfield 265	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mADVideoAutoPlay	J
+    //   245: ldc_w 267
+    //   248: invokestatic 149	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   251: checkcast 267	com/tencent/mobileqq/kandian/ad/api/IRIJAdLogService
+    //   254: astore 20
+    //   256: new 269	java/lang/StringBuilder
+    //   259: dup
+    //   260: invokespecial 270	java/lang/StringBuilder:<init>	()V
+    //   263: astore 21
+    //   265: aload 21
+    //   267: ldc_w 272
+    //   270: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   273: pop
+    //   274: aload 21
+    //   276: aload 18
+    //   278: getfield 132	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdKdPos	I
+    //   281: invokevirtual 279	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   284: pop
+    //   285: aload 20
+    //   287: ldc_w 281
+    //   290: aload 21
+    //   292: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   295: invokeinterface 288 3 0
+    //   300: lload 7
+    //   302: ldc2_w 289
+    //   305: lcmp
+    //   306: ifne +40 -> 346
+    //   309: iload 10
+    //   311: ifne +35 -> 346
+    //   314: aload 18
+    //   316: getfield 294	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdvertisementExtInfo	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdvertisementExtInfo;
+    //   319: ifnull +27 -> 346
+    //   322: aload 18
+    //   324: getfield 294	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdvertisementExtInfo	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdvertisementExtInfo;
+    //   327: getfield 299	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdvertisementExtInfo:f	I
+    //   330: ifle +16 -> 346
+    //   333: aload_0
+    //   334: aload_2
+    //   335: aload 18
+    //   337: invokespecial 302	com/tencent/biz/pubaccount/readinjoy/model/AdvertisementInfoModule:a	(Lcom/tencent/mobileqq/kandian/base/utils/ValueReference;Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)V
+    //   340: iconst_1
+    //   341: istore 10
+    //   343: goto +3 -> 346
+    //   346: ldc_w 304
+    //   349: invokestatic 149	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   352: checkcast 304	com/tencent/mobileqq/kandian/biz/pts/api/IReadInJoyProteusFamilyUtil
+    //   355: invokeinterface 307 1 0
+    //   360: ifeq +21 -> 381
+    //   363: ldc_w 304
+    //   366: invokestatic 149	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   369: checkcast 304	com/tencent/mobileqq/kandian/biz/pts/api/IReadInJoyProteusFamilyUtil
+    //   372: aload 19
+    //   374: aload 18
+    //   376: invokeinterface 311 3 0
+    //   381: getstatic 316	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdExperimentInitUtil:a	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdExperimentInitUtil;
+    //   384: aload 18
+    //   386: invokevirtual 318	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdExperimentInitUtil:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)V
+    //   389: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   392: ifeq +83 -> 475
+    //   395: new 269	java/lang/StringBuilder
+    //   398: dup
+    //   399: invokespecial 270	java/lang/StringBuilder:<init>	()V
+    //   402: astore 19
+    //   404: aload 19
+    //   406: ldc_w 320
+    //   409: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   412: pop
+    //   413: aload 19
+    //   415: aload 18
+    //   417: getfield 132	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdKdPos	I
+    //   420: invokevirtual 279	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   423: pop
+    //   424: aload 19
+    //   426: ldc_w 322
+    //   429: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   432: pop
+    //   433: aload 19
+    //   435: aload 18
+    //   437: invokevirtual 323	java/lang/Object:toString	()Ljava/lang/String;
+    //   440: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   443: pop
+    //   444: aload 19
+    //   446: ldc_w 325
+    //   449: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   452: pop
+    //   453: aload 19
+    //   455: aload 18
+    //   457: getfield 329	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdExtInfo	Ljava/lang/String;
+    //   460: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   463: pop
+    //   464: ldc 53
+    //   466: iconst_2
+    //   467: aload 19
+    //   469: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   472: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   475: aload 18
+    //   477: getfield 329	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdExtInfo	Ljava/lang/String;
+    //   480: invokestatic 335	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   483: istore 16
+    //   485: iload 16
+    //   487: ifne +146 -> 633
+    //   490: new 337	org/json/JSONObject
+    //   493: dup
+    //   494: aload 18
+    //   496: getfield 329	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:mAdExtInfo	Ljava/lang/String;
+    //   499: invokespecial 340	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   502: astore 19
+    //   504: aload 19
+    //   506: ldc_w 342
+    //   509: invokevirtual 345	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   512: ifeq +348 -> 860
+    //   515: aload 19
+    //   517: ldc_w 342
+    //   520: invokevirtual 349	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   523: iconst_2
+    //   524: if_icmpne +336 -> 860
+    //   527: aload 6
+    //   529: iconst_1
+    //   530: invokestatic 354	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   533: invokevirtual 357	com/tencent/mobileqq/kandian/base/utils/ValueReference:a	(Ljava/lang/Object;)V
+    //   536: ldc 53
+    //   538: iconst_1
+    //   539: ldc_w 359
+    //   542: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   545: goto +3 -> 548
+    //   548: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   551: ifeq +43 -> 594
+    //   554: new 269	java/lang/StringBuilder
+    //   557: dup
+    //   558: invokespecial 270	java/lang/StringBuilder:<init>	()V
+    //   561: astore 20
+    //   563: aload 20
+    //   565: ldc_w 361
+    //   568: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   571: pop
+    //   572: aload 20
+    //   574: aload 19
+    //   576: invokevirtual 362	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   579: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   582: pop
+    //   583: ldc 53
+    //   585: iconst_2
+    //   586: aload 20
+    //   588: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   591: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   594: ldc_w 364
+    //   597: invokestatic 149	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   600: checkcast 364	com/tencent/mobileqq/kandian/ad/api/IRIJSuperMaskService
+    //   603: aload 18
+    //   605: invokeinterface 367 2 0
+    //   610: aload 18
+    //   612: invokestatic 372	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyPatchAdUtils:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)Z
+    //   615: ifeq +15 -> 630
+    //   618: aload 5
+    //   620: iconst_1
+    //   621: invokestatic 354	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   624: invokevirtual 357	com/tencent/mobileqq/kandian/base/utils/ValueReference:a	(Ljava/lang/Object;)V
+    //   627: goto +223 -> 850
+    //   630: goto +48 -> 678
+    //   633: goto +45 -> 678
+    //   636: astore 19
+    //   638: new 269	java/lang/StringBuilder
+    //   641: dup
+    //   642: invokespecial 270	java/lang/StringBuilder:<init>	()V
+    //   645: astore 20
+    //   647: aload 20
+    //   649: ldc_w 374
+    //   652: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   655: pop
+    //   656: aload 20
+    //   658: aload 19
+    //   660: invokevirtual 377	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   663: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   666: pop
+    //   667: ldc 53
+    //   669: iconst_1
+    //   670: aload 20
+    //   672: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   675: invokestatic 379	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   678: aload_0
+    //   679: aload 18
+    //   681: invokespecial 380	com/tencent/biz/pubaccount/readinjoy/model/AdvertisementInfoModule:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)Z
+    //   684: ifne +117 -> 801
+    //   687: aload 18
+    //   689: aconst_null
+    //   690: invokestatic 385	com/tencent/biz/pubaccount/readinjoyAd/ad/utils/ReadInJoyAdSwitchUtil:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;Lcom/tencent/mobileqq/kandian/biz/ad/entity/VideoAdInfo;)Z
+    //   693: ifeq +95 -> 788
+    //   696: new 337	org/json/JSONObject
+    //   699: dup
+    //   700: invokespecial 386	org/json/JSONObject:<init>	()V
+    //   703: astore 19
+    //   705: aload 19
+    //   707: ldc_w 388
+    //   710: iconst_0
+    //   711: invokevirtual 392	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   714: pop
+    //   715: aload 19
+    //   717: ldc_w 394
+    //   720: iconst_1
+    //   721: invokevirtual 392	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   724: pop
+    //   725: goto +13 -> 738
+    //   728: astore 20
+    //   730: goto +3 -> 733
+    //   733: aload 20
+    //   735: invokevirtual 397	org/json/JSONException:printStackTrace	()V
+    //   738: ldc_w 399
+    //   741: invokestatic 149	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   744: checkcast 399	com/tencent/mobileqq/kandian/ad/api/IRIJAdService
+    //   747: new 401	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData
+    //   750: dup
+    //   751: invokespecial 402	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:<init>	()V
+    //   754: invokestatic 66	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   757: invokevirtual 405	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:a	(Landroid/content/Context;)Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;
+    //   760: bipush 80
+    //   762: invokevirtual 408	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:a	(I)Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;
+    //   765: bipush 12
+    //   767: invokevirtual 410	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:b	(I)Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;
+    //   770: aload 18
+    //   772: invokevirtual 413	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:a	(Lcom/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo;)Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;
+    //   775: aload 19
+    //   777: invokevirtual 416	com/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData:b	(Lorg/json/JSONObject;)Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;
+    //   780: invokeinterface 420 2 0
+    //   785: goto +3 -> 788
+    //   788: aload 17
+    //   790: aload 18
+    //   792: invokeinterface 421 2 0
+    //   797: pop
+    //   798: goto +49 -> 847
+    //   801: invokestatic 51	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   804: ifeq +43 -> 847
+    //   807: new 269	java/lang/StringBuilder
+    //   810: dup
+    //   811: invokespecial 270	java/lang/StringBuilder:<init>	()V
+    //   814: astore 19
+    //   816: aload 19
+    //   818: ldc_w 423
+    //   821: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   824: pop
+    //   825: aload 19
+    //   827: aload 18
+    //   829: invokevirtual 426	com/tencent/biz/pubaccount/readinjoy/struct/AdvertisementInfo:toSString	()Ljava/lang/String;
+    //   832: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   835: pop
+    //   836: ldc 53
+    //   838: iconst_2
+    //   839: aload 19
+    //   841: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   844: invokestatic 58	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   847: goto +3 -> 850
+    //   850: goto -829 -> 21
+    //   853: aload 17
+    //   855: areturn
+    //   856: astore_2
+    //   857: aload 17
+    //   859: areturn
+    //   860: goto -312 -> 548
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	707	0	this	AdvertisementInfoModule
-    //   0	707	1	paramInt	int
-    //   0	707	2	paramValueReference	ValueReference<Integer>
-    //   0	707	3	paramLong1	long
-    //   0	707	5	paramValueReference1	ValueReference<Boolean>
-    //   0	707	6	paramValueReference2	ValueReference<Boolean>
-    //   0	707	7	paramLong2	long
-    //   0	707	9	paramList	List<tencent.im.oidb.articlesummary.articlesummary.ArticleSummary>
-    //   19	278	10	i	int
-    //   120	87	11	j	int
-    //   130	84	12	l1	long
-    //   140	81	14	l2	long
-    //   394	3	16	bool	boolean
-    //   7	692	17	localArrayList	ArrayList
-    //   94	587	18	localObject1	Object
-    //   41	438	19	localObject2	Object
-    //   520	19	19	localException	Exception
-    //   577	51	19	localJSONObject	JSONObject
-    //   648	3	20	localJSONException	JSONException
+    //   0	863	0	this	AdvertisementInfoModule
+    //   0	863	1	paramInt	int
+    //   0	863	2	paramValueReference	ValueReference<Integer>
+    //   0	863	3	paramLong1	long
+    //   0	863	5	paramValueReference1	ValueReference<Boolean>
+    //   0	863	6	paramValueReference2	ValueReference<Boolean>
+    //   0	863	7	paramLong2	long
+    //   0	863	9	paramList	List<articlesummary.ArticleSummary>
+    //   19	323	10	i	int
+    //   120	107	11	j	int
+    //   130	104	12	l1	long
+    //   140	101	14	l2	long
+    //   483	3	16	bool	boolean
+    //   7	851	17	localArrayList	ArrayList
+    //   94	734	18	localObject1	Object
+    //   41	534	19	localObject2	Object
+    //   636	23	19	localException	Exception
+    //   703	137	19	localObject3	Object
+    //   254	417	20	localObject4	Object
+    //   728	6	20	localJSONException	JSONException
+    //   263	28	21	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   386	396	520	java/lang/Exception
-    //   579	599	648	org/json/JSONException
-    //   401	456	697	java/lang/Exception
-    //   456	492	697	java/lang/Exception
-    //   492	517	697	java/lang/Exception
+    //   475	485	636	java/lang/Exception
+    //   705	725	728	org/json/JSONException
+    //   490	545	856	java/lang/Exception
+    //   548	594	856	java/lang/Exception
+    //   594	627	856	java/lang/Exception
+  }
+  
+  private List<AbsBaseArticleInfo> a(List<articlesummary.ArticleSummary> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject2 = (articlesummary.ArticleSummary)paramList.next();
+      if ((((articlesummary.ArticleSummary)localObject2).msg_feeds_info.has()) && (((articlesummary.FeedsInfo)((articlesummary.ArticleSummary)localObject2).msg_feeds_info.get()).msg_pos_ad_info.has()))
+      {
+        Object localObject1 = (articlesummary.PosAdInfo)((articlesummary.FeedsInfo)((articlesummary.ArticleSummary)localObject2).msg_feeds_info.get()).msg_pos_ad_info.get();
+        if ((localObject1 != null) && (((articlesummary.PosAdInfo)localObject1).int32_ret.get() == 0))
+        {
+          int i = ((articlesummary.PosAdInfo)localObject1).enum_pos_layout.get();
+          long l1 = ((articlesummary.PosAdInfo)localObject1).uint64_pos_id.get();
+          long l2 = ((articlesummary.PosAdInfo)localObject1).is_auto_play.get();
+          Object localObject3 = (articlesummary.AdInfo)((articlesummary.PosAdInfo)localObject1).msg_ad_info.get();
+          localObject1 = new AdvertisementInfo((articlesummary.AdInfo)localObject3);
+          ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).preLoadAdForMiniProgram((AdvertisementInfo)localObject1);
+          String str1 = RIJPBFieldUtils.a(((articlesummary.AdInfo)localObject3).bytes_txt, "");
+          String str2 = RIJPBFieldUtils.a(((articlesummary.AdInfo)localObject3).bytes_img, "");
+          String str3 = RIJPBFieldUtils.a(((articlesummary.AdInfo)localObject3).bytes_rl, "");
+          localObject3 = RIJPBFieldUtils.a(((articlesummary.AdInfo)localObject3).bytes_desc, "");
+          ((IReadInJoyMSFHandlerUtils)QRoute.api(IReadInJoyMSFHandlerUtils.class)).convertArticleInfo((articlesummary.ArticleSummary)localObject2, 0, 0, (AbsBaseArticleInfo)localObject1);
+          ((AdvertisementInfo)localObject1).mAdPosLayout = i;
+          ((AdvertisementInfo)localObject1).mAdPosID = l1;
+          ((AdvertisementInfo)localObject1).mADVideoAutoPlay = l2;
+          IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("parseAdvertisementInfoList kd_pos= ");
+          localStringBuilder.append(((AdvertisementInfo)localObject1).mAdKdPos);
+          localIRIJAdLogService.d("AdDataLink", localStringBuilder.toString());
+          if (((IReadInJoyProteusFamilyUtil)QRoute.api(IReadInJoyProteusFamilyUtil.class)).checkPermission()) {
+            ((IReadInJoyProteusFamilyUtil)QRoute.api(IReadInJoyProteusFamilyUtil.class)).recordAdArticleInfo((articlesummary.ArticleSummary)localObject2, (AbsBaseArticleInfo)localObject1);
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("async handleAdvertisementResp adinfo pos= +");
+            ((StringBuilder)localObject2).append(((AdvertisementInfo)localObject1).mAdKdPos);
+            ((StringBuilder)localObject2).append("info=");
+            ((StringBuilder)localObject2).append(localObject1.toString());
+            ((StringBuilder)localObject2).append("info.mAdExtInfo= +");
+            ((StringBuilder)localObject2).append(((AdvertisementInfo)localObject1).mAdExtInfo);
+            QLog.d("AdvertisementInfoModule", 2, ((StringBuilder)localObject2).toString());
+          }
+          ((AdvertisementInfo)localObject1).mTitle = str1;
+          ((AdvertisementInfo)localObject1).mFirstPagePicUrl = str2;
+          ((AdvertisementInfo)localObject1).mArticleContentUrl = str3;
+          ((AdvertisementInfo)localObject1).mSummary = ((String)localObject3);
+          if (!a((AdvertisementInfo)localObject1))
+          {
+            localArrayList.add(localObject1);
+          }
+          else if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("filterAdvertisementInfo info = ");
+            ((StringBuilder)localObject2).append(((AdvertisementInfo)localObject1).toSString());
+            QLog.d("AdvertisementInfoModule", 2, ((StringBuilder)localObject2).toString());
+          }
+        }
+      }
+    }
+    return localArrayList;
   }
   
   private void a(int paramInt, ValueReference<Integer> paramValueReference, articlesummary.AdInfo paramAdInfo)
@@ -515,139 +663,162 @@ public class AdvertisementInfoModule
     if ((paramAdInfo != null) && (paramInt == 0))
     {
       paramValueReference.a(Integer.valueOf((int)paramAdInfo.uint64_channel_id.get()));
-      ReadInJoyAdLog.a("AdDataLink", "handleAdvertisementResp channelID from AdInfo:" + paramValueReference.a());
+      paramAdInfo = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleAdvertisementResp channelID from AdInfo:");
+      localStringBuilder.append(paramValueReference.a());
+      paramAdInfo.d("AdDataLink", localStringBuilder.toString());
     }
   }
   
   private void a(ValueReference<Integer> paramValueReference, long paramLong, ArrayList<AdvertisementInfo> paramArrayList)
   {
-    if (paramArrayList.size() == 0) {
+    if (paramArrayList.size() == 0)
+    {
       paramArrayList = new JSONObject();
-    }
-    try
-    {
-      paramArrayList.put("svrresp_result", 1);
-      paramArrayList.put("svrresp_fail_type", 1);
-      NativeAdUtils.a(new AdReportData().a(BaseApplication.getContext()).a(80).b(12).b(paramArrayList));
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementInfoModule", 1, "handleAdvertisementResp channelID=" + paramValueReference.a() + ", fetchTime=" + paramLong + " parsedAdvertisementList empty!");
+      try
+      {
+        paramArrayList.put("svrresp_result", 1);
+        paramArrayList.put("svrresp_fail_type", 1);
       }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
+      }
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(BaseApplication.getContext()).a(80).b(12).b(paramArrayList));
+      if (QLog.isColorLevel())
+      {
+        paramArrayList = new StringBuilder();
+        paramArrayList.append("handleAdvertisementResp channelID=");
+        paramArrayList.append(paramValueReference.a());
+        paramArrayList.append(", fetchTime=");
+        paramArrayList.append(paramLong);
+        paramArrayList.append(" parsedAdvertisementList empty!");
+        QLog.d("AdvertisementInfoModule", 1, paramArrayList.toString());
       }
     }
   }
   
   private void a(ValueReference<Integer> paramValueReference, AdvertisementInfo paramAdvertisementInfo)
   {
-    jdField_a_of_type_Int = paramAdvertisementInfo.mAdvertisementExtInfo.f;
-    ReadInJoyAdLog.a("AdDataLink", "async handleAdvertisementResp refreshLastPosX= +" + jdField_a_of_type_Int);
-    a(((Integer)paramValueReference.a()).intValue(), 0, jdField_a_of_type_Int);
+    RIJAdConstants.AdvertisementInfoModule.jdField_a_of_type_Int = paramAdvertisementInfo.mAdvertisementExtInfo.f;
+    Object localObject = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("async handleAdvertisementResp refreshLastPosX= +");
+    localStringBuilder.append(RIJAdConstants.AdvertisementInfoModule.jdField_a_of_type_Int);
+    ((IRIJAdLogService)localObject).d("AdDataLink", localStringBuilder.toString());
+    a(((Integer)paramValueReference.a()).intValue(), 0, RIJAdConstants.AdvertisementInfoModule.jdField_a_of_type_Int);
     if (paramAdvertisementInfo.mAdvertisementExtInfo.h > 0)
     {
-      jdField_b_of_type_Int = paramAdvertisementInfo.mAdvertisementExtInfo.h;
-      ReadInJoyAdLog.a("AdDataLink", "async handleAdvertisementResp refreshLastPosZ= +" + jdField_b_of_type_Int);
+      RIJAdConstants.AdvertisementInfoModule.b = paramAdvertisementInfo.mAdvertisementExtInfo.h;
+      paramValueReference = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("async handleAdvertisementResp refreshLastPosZ= +");
+      ((StringBuilder)localObject).append(RIJAdConstants.AdvertisementInfoModule.b);
+      paramValueReference.d("AdDataLink", ((StringBuilder)localObject).toString());
     }
     if (paramAdvertisementInfo.mAdvertisementExtInfo.g > 0)
     {
-      jdField_c_of_type_Int = paramAdvertisementInfo.mAdvertisementExtInfo.g;
-      ReadInJoyAdLog.a("AdDataLink", "async handleAdvertisementResp refreshLastPosY= +" + jdField_c_of_type_Int);
+      RIJAdConstants.AdvertisementInfoModule.c = paramAdvertisementInfo.mAdvertisementExtInfo.g;
+      paramValueReference = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      paramAdvertisementInfo = new StringBuilder();
+      paramAdvertisementInfo.append("async handleAdvertisementResp refreshLastPosY= +");
+      paramAdvertisementInfo.append(RIJAdConstants.AdvertisementInfoModule.c);
+      paramValueReference.d("AdDataLink", paramAdvertisementInfo.toString());
     }
   }
   
   private void a(ValueReference<Integer> paramValueReference, ConcurrentHashMap<Integer, AdvertisementInfo> paramConcurrentHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "handleAdvertisementResp dropAdvertisements size = " + paramConcurrentHashMap.size());
-    }
-    Iterator localIterator = paramConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel())
     {
-      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)localIterator.next();
-      ReadInJoyLogicEngine.a().a(((Integer)paramValueReference.a()).intValue(), localAdvertisementInfo);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleAdvertisementResp dropAdvertisements size = ");
+      ((StringBuilder)localObject).append(paramConcurrentHashMap.size());
+      QLog.d("AdvertisementInfoModule", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = paramConcurrentHashMap.values().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)((Iterator)localObject).next();
+      ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().a(((Integer)paramValueReference.a()).intValue(), localAdvertisementInfo);
     }
     paramConcurrentHashMap.clear();
   }
   
   private void a(ReadInJoyRequestParams.Request0x68bParams paramRequest0x68bParams, int paramInt1, int paramInt2, int paramInt3, int paramInt4, AdRequestData paramAdRequestData, qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo, oidb_cmd0x68b.ReqAdvertisePara paramReqAdvertisePara)
   {
-    JSONObject localJSONObject;
-    for (;;)
+    try
     {
-      try
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("adPosType", paramInt2);
+      localJSONObject.put("adStartPos", paramInt3);
+      localJSONObject.put("adEndPos", paramInt4);
+      localJSONObject.put("carrier_code", AdDeviceInfoUtil.b());
+      if ((paramAdRequestData != null) && (paramAdRequestData.a()))
       {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("adPosType", paramInt2);
-        localJSONObject.put("adStartPos", paramInt3);
-        localJSONObject.put("adEndPos", paramInt4);
-        localJSONObject.put("carrier_code", AdDeviceInfoUtil.b());
-        if ((paramAdRequestData != null) && (paramAdRequestData.a()))
-        {
-          localJSONObject.put("MaterialId", paramAdRequestData.jdField_a_of_type_Int);
-          localJSONObject.put("RepeatedReqFlag", paramAdRequestData.jdField_b_of_type_Int);
-          localJSONObject.put("KdPos", paramAdRequestData.jdField_c_of_type_Int);
-          localJSONObject.put("adPosId", paramAdRequestData.jdField_a_of_type_Long);
-        }
-        if (!FeedsPreloadHelper.b(paramRequest0x68bParams)) {
-          break label356;
-        }
+        localJSONObject.put("MaterialId", paramAdRequestData.jdField_a_of_type_Int);
+        localJSONObject.put("RepeatedReqFlag", paramAdRequestData.b);
+        localJSONObject.put("KdPos", paramAdRequestData.c);
+        localJSONObject.put("adPosId", paramAdRequestData.jdField_a_of_type_Long);
+      }
+      boolean bool = ((IFeedsPreloadHelper)QRoute.api(IFeedsPreloadHelper.class)).isFeedsPreloadRequest(paramRequest0x68bParams);
+      if (bool)
+      {
         localJSONObject.put("adRequestFlag", a(paramInt1));
-        if (this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1)) == null)
-        {
+        long l;
+        if (this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1)) == null) {
           l = 0L;
-          localJSONObject.put("lastRefreshTime", l);
-          AdRequestExtKt.a(paramAdRequestData, localJSONObject, paramInt1, paramInt2);
-          AdRequestExtKt.a(paramAdRequestData, localJSONObject, paramInt2);
-          AdRequestExtKt.b(paramAdRequestData, localJSONObject, paramInt2);
-          if (StudyModeManager.a()) {
-            localJSONObject.put("reqLearningPatternFlag", 1);
-          }
-          AdRequestExtKt.a(paramAdRequestData, localJSONObject);
-          localJSONObject.put("reqTimeVVAdload", 1);
-          if (paramDeviceInfo != null) {
-            localJSONObject.put("device_ext", paramDeviceInfo.device_ext.get());
-          }
-          if (!AdExposeFreshManager.a().a()) {
-            break label379;
-          }
-          paramAdRequestData = AdReqFreshManager.a().a();
-          paramRequest0x68bParams = new JSONArray();
-          if ((paramAdRequestData == null) || (paramAdRequestData.size() <= 0)) {
-            break;
-          }
-          paramAdRequestData = paramAdRequestData.iterator();
-          if (!paramAdRequestData.hasNext()) {
-            break;
-          }
-          paramRequest0x68bParams.put((Long)paramAdRequestData.next());
-          continue;
+        } else {
+          l = ((Long)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1))).longValue();
         }
-        long l = ((Long)this.jdField_b_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1))).longValue();
+        localJSONObject.put("lastRefreshTime", l);
       }
-      catch (JSONException paramRequest0x68bParams)
+      else
       {
-        paramRequest0x68bParams.printStackTrace();
-        return;
+        localJSONObject.put("adRequestFlag", 0);
       }
-      continue;
-      label356:
-      localJSONObject.put("adRequestFlag", 0);
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).fillSuperMaskParams(paramAdRequestData, localJSONObject, paramInt1, paramInt2);
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).fillPatchParams(paramAdRequestData, localJSONObject, paramInt2);
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).fillSocialParams(paramAdRequestData, localJSONObject, paramInt2);
+      if (StudyModeManager.a()) {
+        localJSONObject.put("reqLearningPatternFlag", 1);
+      }
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).fillTimeLoadParams(paramAdRequestData, localJSONObject);
+      localJSONObject.put("reqTimeVVAdload", 1);
+      if (paramDeviceInfo != null) {
+        localJSONObject.put("device_ext", paramDeviceInfo.device_ext.get());
+      }
+      if (AdExposeFreshManager.a().a())
+      {
+        paramAdRequestData = AdReqFreshManager.a().a();
+        paramRequest0x68bParams = new JSONArray();
+        if ((paramAdRequestData != null) && (paramAdRequestData.size() > 0))
+        {
+          paramAdRequestData = paramAdRequestData.iterator();
+          while (paramAdRequestData.hasNext()) {
+            paramRequest0x68bParams.put((Long)paramAdRequestData.next());
+          }
+        }
+        localJSONObject.put("noExposeList", paramRequest0x68bParams);
+      }
+      if (paramInt1 == 0)
+      {
+        localJSONObject.put("scene_trace_id", AdSessionManager.a().a());
+        localJSONObject.put("scene_series_num", AdSessionManager.a().b());
+        localJSONObject.put("refresh_series_num", AdSessionManager.a().a());
+      }
+      paramReqAdvertisePara.bytes_ad_user_info.set(ByteStringMicro.copyFromUtf8(localJSONObject.toString()));
+      paramRequest0x68bParams = new StringBuilder();
+      paramRequest0x68bParams.append("async makeReqAdvertisePara adinfo,");
+      paramRequest0x68bParams.append(localJSONObject.toString());
+      QLog.d("AdvertisementInfoModule", 1, paramRequest0x68bParams.toString());
+      return;
     }
-    localJSONObject.put("noExposeList", paramRequest0x68bParams);
-    label379:
-    if (paramInt1 == 0)
+    catch (JSONException paramRequest0x68bParams)
     {
-      localJSONObject.put("sceneTraceID", AdSessionManager.a().a());
-      localJSONObject.put("sceneSeriesNum", AdSessionManager.a().b());
-      localJSONObject.put("refreshSeriesNum", AdSessionManager.a().a());
+      paramRequest0x68bParams.printStackTrace();
     }
-    paramReqAdvertisePara.bytes_ad_user_info.set(ByteStringMicro.copyFromUtf8(localJSONObject.toString()));
-    QLog.d("AdvertisementInfoModule", 1, "async makeReqAdvertisePara adinfo," + localJSONObject.toString());
   }
   
   private void a(ArrayList<AdvertisementInfo> paramArrayList)
@@ -657,61 +828,65 @@ public class AdvertisementInfoModule
       if (paramArrayList.size() > 0)
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("handleAdvertisementResp \n").append("[ ");
+        localStringBuilder.append("handleAdvertisementResp \n");
+        localStringBuilder.append("[ ");
         paramArrayList = paramArrayList.iterator();
         while (paramArrayList.hasNext())
         {
           AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramArrayList.next();
-          localStringBuilder.append("channelId = ").append(localAdvertisementInfo.mChannelID).append(" title = ").append(localAdvertisementInfo.mTitle).append(" pos = ").append(localAdvertisementInfo.mAdKdPos);
+          localStringBuilder.append("channelId = ");
+          localStringBuilder.append(localAdvertisementInfo.mChannelID);
+          localStringBuilder.append(" title = ");
+          localStringBuilder.append(localAdvertisementInfo.mTitle);
+          localStringBuilder.append(" pos = ");
+          localStringBuilder.append(localAdvertisementInfo.mAdKdPos);
         }
-        ReadInJoyAdLog.a("AdDataLink", " ]");
+        paramArrayList = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+        localStringBuilder.append(" ]");
+        paramArrayList.d("AdDataLink", localStringBuilder.toString());
+        return;
       }
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AdDataLink", "handleAdvertisementResp no advertisementInfo");
     }
-    else {
-      return;
-    }
-    ReadInJoyAdLog.a("AdDataLink", "handleAdvertisementResp no advertisementInfo");
   }
   
   private void a(List<AdvertisementInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    HashSet localHashSet1 = new HashSet(paramList.size());
-    HashSet localHashSet2 = new HashSet();
-    Object localObject2 = null;
-    int i = 0;
-    if (i < paramList.size())
+    if (paramList != null)
     {
-      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramList.get(i);
-      Object localObject1;
-      if ((localAdvertisementInfo.mAdvertisementExtInfo != null) && (localAdvertisementInfo.mAdvertisementExtInfo.j != 32)) {
-        localObject1 = localObject2;
+      if (paramList.size() == 0) {
+        return;
       }
-      for (;;)
+      HashSet localHashSet1 = new HashSet(paramList.size());
+      HashSet localHashSet2 = new HashSet();
+      Object localObject2 = null;
+      int i = 0;
+      while (i < paramList.size())
       {
-        i += 1;
-        localObject2 = localObject1;
-        break;
-        localObject1 = localObject2;
+        AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramList.get(i);
+        Object localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           localObject1 = a((String)localObject2, localAdvertisementInfo);
         }
         localAdvertisementInfo.scene = ((String)localObject1);
-        localObject2 = AdExposeFreshManager.a().a((String)localObject1, localAdvertisementInfo);
-        paramList.set(i, localObject2);
-        localHashSet1.add(Long.valueOf(((AdvertisementInfo)localObject2).mAdAid));
-        localHashSet2.add(localObject2);
+        if ((localAdvertisementInfo.mAdvertisementExtInfo == null) || (localAdvertisementInfo.mAdvertisementExtInfo.j == 32))
+        {
+          localObject2 = AdExposeFreshManager.a().a((String)localObject1, localAdvertisementInfo);
+          paramList.set(i, localObject2);
+          localHashSet1.add(Long.valueOf(((AdvertisementInfo)localObject2).mAdAid));
+          localHashSet2.add(localObject2);
+        }
+        i += 1;
+        localObject2 = localObject1;
       }
+      if (localObject2 == null)
+      {
+        QLog.d("AdvertisementInfoModule", 2, "handleAdFreshness,scene is null");
+        return;
+      }
+      AdReqFreshManager.a().a((String)localObject2, localHashSet1);
+      AdExposeFreshManager.a().c((String)localObject2, localHashSet2);
     }
-    if (localObject2 == null)
-    {
-      QLog.d("AdvertisementInfoModule", 2, "handleAdFreshness,scene is null");
-      return;
-    }
-    AdReqFreshManager.a().a((String)localObject2, localHashSet1);
-    AdExposeFreshManager.a().c((String)localObject2, localHashSet2);
   }
   
   private void a(qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo, oidb_cmd0x68b.PhoneInfo paramPhoneInfo)
@@ -734,8 +909,18 @@ public class AdvertisementInfoModule
     if (paramDeviceInfo.client_ipv4.has()) {
       paramPhoneInfo.string_client_ipv4.set(paramDeviceInfo.client_ipv4.get());
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("AdvertisementInfoModule", 2, "makeReqAdvertisePara: deviceInfo: ma=" + paramPhoneInfo.string_androidid.get() + ", mm=" + paramPhoneInfo.string_mac.get() + ", oa=" + paramPhoneInfo.string_oaid.get() + ", ta=" + paramPhoneInfo.string_taid.get());
+    if (QLog.isColorLevel())
+    {
+      paramDeviceInfo = new StringBuilder();
+      paramDeviceInfo.append("makeReqAdvertisePara: deviceInfo: ma=");
+      paramDeviceInfo.append(paramPhoneInfo.string_androidid.get());
+      paramDeviceInfo.append(", mm=");
+      paramDeviceInfo.append(paramPhoneInfo.string_mac.get());
+      paramDeviceInfo.append(", oa=");
+      paramDeviceInfo.append(paramPhoneInfo.string_oaid.get());
+      paramDeviceInfo.append(", ta=");
+      paramDeviceInfo.append(paramPhoneInfo.string_taid.get());
+      QLog.i("AdvertisementInfoModule", 2, paramDeviceInfo.toString());
     }
   }
   
@@ -746,132 +931,227 @@ public class AdvertisementInfoModule
       paramRspChannelArticle = (oidb_cmd0x68b.AdPosMap)paramRspChannelArticle.msg_ad_pos_map.get();
       if (paramRspChannelArticle.bytes_ads_context.has())
       {
-        NativeAdUtils.a(paramRspChannelArticle.bytes_ads_context.get().toStringUtf8());
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).saveAdCookie(paramRspChannelArticle.bytes_ads_context.get().toStringUtf8());
         return;
       }
-      NativeAdUtils.a("");
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).saveAdCookie("");
       return;
     }
-    NativeAdUtils.a("");
+    ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).saveAdCookie("");
   }
   
   private boolean a(AdvertisementInfo paramAdvertisementInfo)
   {
-    boolean bool = false;
-    if (paramAdvertisementInfo == null) {}
-    while (TextUtils.isEmpty(paramAdvertisementInfo.mTitle)) {
+    boolean bool2 = true;
+    if (paramAdvertisementInfo == null) {
+      return true;
+    }
+    if (ReadInJoyAdUtils.t(paramAdvertisementInfo)) {
+      return false;
+    }
+    if (TextUtils.isEmpty(paramAdvertisementInfo.mTitle)) {
       return true;
     }
     if (ReadInJoyAdUtils.i(paramAdvertisementInfo))
     {
-      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", "filterAdvertisementInfo: isSuperMaskNormalAdType");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoySuperMaskAd", "filterAdvertisementInfo: isSuperMaskNormalAdType");
       return true;
     }
     if (!TextUtils.isEmpty(paramAdvertisementInfo.mJsonVideoList))
     {
-      if ((TextUtils.isEmpty(paramAdvertisementInfo.mAdLandingPage)) || (TextUtils.isEmpty(paramAdvertisementInfo.mSubscribeName)) || (TextUtils.isEmpty(paramAdvertisementInfo.mAdVideoUrl))) {
-        bool = true;
+      boolean bool1 = bool2;
+      if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdLandingPage))
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramAdvertisementInfo.mSubscribeName))
+        {
+          if (TextUtils.isEmpty(paramAdvertisementInfo.mAdVideoUrl)) {
+            return true;
+          }
+          bool1 = false;
+        }
       }
-      return bool;
+      return bool1;
     }
     return false;
+  }
+  
+  private boolean a(ToServiceMsg paramToServiceMsg)
+  {
+    int i;
+    int k;
+    if (paramToServiceMsg.getAttribute("CountOfRequest_0x68b") != null)
+    {
+      i = ((Integer)paramToServiceMsg.getAttribute("CountOfRequest_0x68b")).intValue();
+      if (i == 2) {
+        k = 1;
+      } else {
+        k = 0;
+      }
+      QLog.d("AdvertisementInfoModule", 1, new Object[] { "is68bRetryReq = ", Boolean.valueOf(k), ", retryTimes = ", Integer.valueOf(i) });
+    }
+    else
+    {
+      k = 0;
+    }
+    int m = k;
+    if (paramToServiceMsg.getAttribute("retryIndex") != null)
+    {
+      int j = ((Integer)paramToServiceMsg.getAttribute("retryIndex")).intValue();
+      if (j > 0) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      m = k | i;
+      QLog.d("AdvertisementInfoModule", 1, new Object[] { "is68bRetryReq = ", Boolean.valueOf(m), ", fastResendRetryIndex = ", Integer.valueOf(j) });
+    }
+    if (m != 0) {
+      QLog.d("AdvertisementInfoModule", 1, " isRetryRequest | 68b Retry");
+    }
+    return m;
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     oidb_cmd0x68b.RspBody localRspBody = new oidb_cmd0x68b.RspBody();
-    int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, localRspBody);
-    int k = ((Integer)paramToServiceMsg.getAttribute(h, Integer.valueOf(0))).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "handle0x68bGetAdvertisementList! result=" + i + ",repeatedreqFlag=" + k);
+    int i = ((IReadInJoyOidbHelper)QRoute.api(IReadInJoyOidbHelper.class)).parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+    paramFromServiceMsg = Integer.valueOf(0);
+    int m = ((Integer)paramToServiceMsg.getAttribute("repeatedReqFlag", paramFromServiceMsg)).intValue();
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("handle0x68bGetAdvertisementList! result=");
+      paramObject.append(i);
+      paramObject.append(",repeatedreqFlag=");
+      paramObject.append(m);
+      QLog.d("AdvertisementInfoModule", 2, paramObject.toString());
     }
-    int j = ((Integer)paramToServiceMsg.getAttribute(i, Integer.valueOf(0))).intValue();
-    ((Integer)paramToServiceMsg.getAttribute(j, Integer.valueOf(-1))).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "handle0x68bGetAdvertisementList! result=" + i + ",asyncChannelId=" + j);
+    int j = ((Integer)paramToServiceMsg.getAttribute("asyncRequestChannelFlag", paramFromServiceMsg)).intValue();
+    ((Integer)paramToServiceMsg.getAttribute("asyncAdRequestFlag", Integer.valueOf(-1))).intValue();
+    if (QLog.isColorLevel())
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("handle0x68bGetAdvertisementList! result=");
+      paramFromServiceMsg.append(i);
+      paramFromServiceMsg.append(",asyncChannelId=");
+      paramFromServiceMsg.append(j);
+      QLog.d("AdvertisementInfoModule", 2, paramFromServiceMsg.toString());
     }
     VideoAdTimeLoadManager.a(j);
-    ReadInJoyAdLog.a("AdDataLink", "handle0x68bGetAdvertisementList result = " + i);
-    if (i == 0) {
-      if (!localRspBody.uint64_uin.has()) {
-        break label801;
-      }
-    }
-    label798:
-    label801:
-    for (long l = localRspBody.uint64_uin.get();; l = -1L)
+    paramFromServiceMsg = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    paramObject = new StringBuilder();
+    paramObject.append("handle0x68bGetAdvertisementList result = ");
+    paramObject.append(i);
+    paramFromServiceMsg.d("AdDataLink", paramObject.toString());
+    if (i == 0)
     {
-      if ((localRspBody.rspChannelArticle.has()) && (localRspBody.rspChannelArticle.get() != null) && (String.valueOf(l).equals(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())))
+      long l;
+      if (localRspBody.uint64_uin.has()) {
+        l = localRspBody.uint64_uin.get();
+      } else {
+        l = -1L;
+      }
+      if ((localRspBody.rspChannelArticle.has()) && (localRspBody.rspChannelArticle.get() != null) && (String.valueOf(l).equals(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getCurrentAccountUin())))
       {
         paramFromServiceMsg = (oidb_cmd0x68b.RspChannelArticle)localRspBody.rspChannelArticle.get();
-        i = (int)paramFromServiceMsg.uint64_channel_id.get();
-        if ((i != 0) || (j == 0)) {
-          break label798;
+        int k = (int)paramFromServiceMsg.uint64_channel_id.get();
+        i = k;
+        if (k == 0)
+        {
+          i = k;
+          if (j != 0) {
+            i = j;
+          }
         }
-        i = j;
-      }
-      for (;;)
-      {
-        ReadInJoyAdLog.a("AdDataLink", "handleAdvertisementResp 处理广告");
+        ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AdDataLink", "handleAdvertisementResp 处理广告");
         boolean bool;
         if ((paramFromServiceMsg.rpt_advertise_list.has()) && (paramFromServiceMsg.rpt_advertise_list.get() != null))
         {
-          ReadInJoyAdLog.a("AdDataLink", "handleAdvertisementResp in ad Request");
+          ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AdDataLink", "handleAdvertisementResp in ad Request");
           paramObject = new ValueReference(Boolean.valueOf(false));
-          a(paramToServiceMsg, paramFromServiceMsg, k, j, false, paramObject);
+          a(paramToServiceMsg, paramFromServiceMsg, m, j, false, paramObject);
           bool = ((Boolean)paramObject.a()).booleanValue();
         }
-        for (;;)
+        else
         {
-          if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(i))) && (!bool))
+          if (m == 1)
           {
-            paramToServiceMsg = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
-            if ((paramToServiceMsg != null) && (paramToServiceMsg.get() != null))
-            {
-              QLog.d("AdvertisementInfoModule", 1, "handle0x68bGetAdvertisementList listener = " + paramToServiceMsg.toString());
-              ((FixPosArticleInterface.FixPosArticleAsyncListener)paramToServiceMsg.get()).a(i);
-            }
-          }
-          return;
-          if (k == 1)
-          {
-            ReadInJoyAdLog.a("AdDataLink", "handle0x68bGetAdvertisementList 重复曝光加载数据返回空");
-            bool = true;
+            ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("AdDataLink", "handle0x68bGetAdvertisementList 重复曝光加载数据返回空");
           }
           else
           {
-            ReadInJoyAdLog.a("AdDataLink", "handleAdvertisementResp channelArticle.rpt_advertise_list.has() = " + paramFromServiceMsg.rpt_advertise_list.has() + " channelArticle.rpt_advertise_list.get() = " + paramFromServiceMsg.rpt_advertise_list.get() + " repeatedreqFlag = " + k);
-            bool = true;
+            paramToServiceMsg = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+            paramObject = new StringBuilder();
+            paramObject.append("handleAdvertisementResp channelArticle.rpt_advertise_list.has() = ");
+            paramObject.append(paramFromServiceMsg.rpt_advertise_list.has());
+            paramObject.append(" channelArticle.rpt_advertise_list.get() = ");
+            paramObject.append(paramFromServiceMsg.rpt_advertise_list.get());
+            paramObject.append(" repeatedreqFlag = ");
+            paramObject.append(m);
+            paramToServiceMsg.d("AdDataLink", paramObject.toString());
           }
+          bool = true;
         }
-        ReadInJoyAdLog.a("AdDataLink", "handle0x68bGetAdvertisementList resp.rspChannelArticle.has() = " + localRspBody.rspChannelArticle.has() + " uin = " + l + " currentUin = " + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-        return;
-        j = ((Integer)paramToServiceMsg.getAttribute(f)).intValue();
-        ReadInJoyAdLog.a("AdDataLink", "handle0x68bGetAdvertisementList Error result = " + i + " requestCount = " + j);
-        if ((i == 154) && (j == 1))
+        if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(i))) && (!bool))
         {
-          paramToServiceMsg.getAttributes().put(f, Integer.valueOf(2));
-          a(paramToServiceMsg);
-          ReadInJoyAdLog.a("AdDataLink", "handle0x68bGetAdvertisementList timeout retry : requestCount = " + j);
-          return;
-        }
-        paramToServiceMsg = new JSONObject();
-        try
-        {
-          paramToServiceMsg.put("svrresp_result", 1);
-          paramToServiceMsg.put("svrresp_fail_type", 2);
-          paramToServiceMsg.put("svrresp_fail_code", i);
-          NativeAdUtils.a(new AdReportData().a(BaseApplication.getContext()).a(80).b(12).b(paramToServiceMsg));
-          return;
-        }
-        catch (JSONException paramFromServiceMsg)
-        {
-          for (;;)
+          paramToServiceMsg = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+          if ((paramToServiceMsg != null) && (paramToServiceMsg.get() != null))
           {
-            paramFromServiceMsg.printStackTrace();
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("handle0x68bGetAdvertisementList listener = ");
+            paramFromServiceMsg.append(paramToServiceMsg.toString());
+            QLog.d("AdvertisementInfoModule", 1, paramFromServiceMsg.toString());
+            ((FixPosArticleInterface.FixPosArticleAsyncListener)paramToServiceMsg.get()).a(i);
           }
         }
       }
+      else
+      {
+        paramToServiceMsg = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handle0x68bGetAdvertisementList resp.rspChannelArticle.has() = ");
+        paramFromServiceMsg.append(localRspBody.rspChannelArticle.has());
+        paramFromServiceMsg.append(" uin = ");
+        paramFromServiceMsg.append(l);
+        paramFromServiceMsg.append(" currentUin = ");
+        paramFromServiceMsg.append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getCurrentAccountUin());
+        paramToServiceMsg.d("AdDataLink", paramFromServiceMsg.toString());
+      }
+    }
+    else
+    {
+      j = ((Integer)paramToServiceMsg.getAttribute("CountOfRequest_0x68b")).intValue();
+      paramFromServiceMsg = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      paramObject = new StringBuilder();
+      paramObject.append("handle0x68bGetAdvertisementList Error result = ");
+      paramObject.append(i);
+      paramObject.append(" requestCount = ");
+      paramObject.append(j);
+      paramFromServiceMsg.d("AdDataLink", paramObject.toString());
+      if ((i == 154) && (j == 1))
+      {
+        paramToServiceMsg.getAttributes().put("CountOfRequest_0x68b", Integer.valueOf(2));
+        ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().a().a(paramToServiceMsg);
+        paramToServiceMsg = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handle0x68bGetAdvertisementList timeout retry : requestCount = ");
+        paramFromServiceMsg.append(j);
+        paramToServiceMsg.d("AdDataLink", paramFromServiceMsg.toString());
+        return;
+      }
+      paramToServiceMsg = new JSONObject();
+      try
+      {
+        paramToServiceMsg.put("svrresp_result", 1);
+        paramToServiceMsg.put("svrresp_fail_type", 2);
+        paramToServiceMsg.put("svrresp_fail_code", i);
+      }
+      catch (JSONException paramFromServiceMsg)
+      {
+        paramFromServiceMsg.printStackTrace();
+      }
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(BaseApplication.getContext()).a(80).b(12).b(paramToServiceMsg));
     }
   }
   
@@ -880,40 +1160,63 @@ public class AdvertisementInfoModule
     if (QLog.isColorLevel()) {
       QLog.d("AdvertisementInfoModule", 2, "handle0x886AdvertisementReportResp!");
     }
-    int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, new oidb_cmd0x886.RspBody());
+    oidb_cmd0x886.RspBody localRspBody = new oidb_cmd0x886.RspBody();
+    int i = ((IReadInJoyOidbHelper)QRoute.api(IReadInJoyOidbHelper.class)).parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
     if (i != 0)
     {
-      int j = ((Integer)paramToServiceMsg.getAttribute(g)).intValue();
+      int j = ((Integer)paramToServiceMsg.getAttribute("CountOfRequest_0x886")).intValue();
       if ((i == 154) && (j == 1))
       {
-        paramToServiceMsg.getAttributes().put(g, Integer.valueOf(2));
-        a(paramToServiceMsg);
+        paramToServiceMsg.getAttributes().put("CountOfRequest_0x886", Integer.valueOf(2));
+        ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().a().a(paramToServiceMsg);
       }
     }
   }
   
   public Pair<Integer, Integer> a(int paramInt)
   {
-    return (Pair)this.jdField_d_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt));
+    return (Pair)this.d.get(Integer.valueOf(paramInt));
   }
   
   public Pair<Integer, Integer> a(int paramInt1, int paramInt2)
   {
+    Object localObject2;
     if (!a(paramInt1))
     {
-      ReadInJoyAdLog.a("AdDataLink", "async getPreloadAdvertisementAtPostion channelid=" + paramInt1 + "   !needRequestAdvertisement ");
+      localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("async getPreloadAdvertisementAtPostion channelid=");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append("   !needRequestAdvertisement ");
+      ((IRIJAdLogService)localObject1).d("AdDataLink", ((StringBuilder)localObject2).toString());
       return null;
     }
-    Pair localPair = (Pair)this.jdField_d_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1));
-    if (localPair != null)
+    Object localObject1 = (Pair)this.d.get(Integer.valueOf(paramInt1));
+    if (localObject1 != null)
     {
-      if (paramInt2 + jdField_c_of_type_Int <= ((Integer)localPair.second).intValue()) {
+      if (RIJAdConstants.AdvertisementInfoModule.c + paramInt2 <= ((Integer)((Pair)localObject1).second).intValue()) {
         return null;
       }
-      int i = ((Integer)localPair.second).intValue();
-      int j = jdField_b_of_type_Int + i;
-      ReadInJoyAdLog.a("AdDataLink", "first = " + localPair.first + " second = " + localPair.second);
-      ReadInJoyAdLog.a("AdDataLink", "async getPreloadAdvertisementAtPostion channelid=" + paramInt1 + "  position=" + paramInt2 + "  startpos=" + i + "  endpos=" + j);
+      int i = ((Integer)((Pair)localObject1).second).intValue();
+      int j = RIJAdConstants.AdvertisementInfoModule.b + i;
+      localObject2 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("first = ");
+      localStringBuilder.append(((Pair)localObject1).first);
+      localStringBuilder.append(" second = ");
+      localStringBuilder.append(((Pair)localObject1).second);
+      ((IRIJAdLogService)localObject2).d("AdDataLink", localStringBuilder.toString());
+      localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("async getPreloadAdvertisementAtPostion channelid=");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append("  position=");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append("  startpos=");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append("  endpos=");
+      ((StringBuilder)localObject2).append(j);
+      ((IRIJAdLogService)localObject1).d("AdDataLink", ((StringBuilder)localObject2).toString());
       return new Pair(Integer.valueOf(i), Integer.valueOf(j));
     }
     return null;
@@ -921,107 +1224,142 @@ public class AdvertisementInfoModule
   
   public AdvertisementInfo a(int paramInt1, int paramInt2)
   {
-    Object localObject = (ConcurrentHashMap)this.jdField_c_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1));
-    if (localObject == null)
+    Object localObject1 = (ConcurrentHashMap)this.c.get(Integer.valueOf(paramInt1));
+    Object localObject2;
+    if (localObject1 == null)
     {
-      ReadInJoyAdLog.a("AdVideoDataLink", "getAdvertisementInfo channelId=" + paramInt1 + " map is null!");
+      localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getAdvertisementInfo channelId=");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append(" map is null!");
+      ((IRIJAdLogService)localObject1).d("AdVideoDataLink", ((StringBuilder)localObject2).toString());
       return null;
     }
-    localObject = (AdvertisementInfo)((ConcurrentHashMap)localObject).get(Integer.valueOf(paramInt2));
-    if (localObject != null)
+    localObject1 = (AdvertisementInfo)((ConcurrentHashMap)localObject1).get(Integer.valueOf(paramInt2));
+    if (localObject1 != null)
     {
-      ReadInJoyAdLog.a("AdVideoDataLink", "getAdvertisementInfo channelId=" + paramInt1 + " advertisementInfo = " + ((AdvertisementInfo)localObject).mTitle + " pos = " + ((AdvertisementInfo)localObject).mAdKdPos);
-      return localObject;
+      localObject2 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getAdvertisementInfo channelId=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" advertisementInfo = ");
+      localStringBuilder.append(((AdvertisementInfo)localObject1).mTitle);
+      localStringBuilder.append(" pos = ");
+      localStringBuilder.append(((AdvertisementInfo)localObject1).mAdKdPos);
+      ((IRIJAdLogService)localObject2).d("AdVideoDataLink", localStringBuilder.toString());
+      return localObject1;
     }
     return null;
   }
   
-  public ArrayList<BaseArticleInfo> a(int paramInt)
+  public Object a(Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4, AdRequestData paramAdRequestData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "getFixPosArticleListSync channelId=" + paramInt);
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(b(paramInt));
-    return localArrayList;
-  }
-  
-  public oidb_cmd0x68b.ReqAdvertisePara a(ReadInJoyRequestParams.Request0x68bParams paramRequest0x68bParams, int paramInt1, int paramInt2, int paramInt3, int paramInt4, AdRequestData paramAdRequestData)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "makeReqAdvertisePara channelID=" + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("makeReqAdvertisePara channelID=");
+      ((StringBuilder)localObject1).append(paramInt1);
+      QLog.d("AdvertisementInfoModule", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = new GdtDeviceInfoHelper.Params();
     ((GdtDeviceInfoHelper.Params)localObject1).jdField_a_of_type_JavaLangString = "ce2d9f";
     Object localObject3 = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject1);
-    oidb_cmd0x68b.ReqAdvertisePara localReqAdvertisePara;
-    Object localObject2;
-    if (localObject3 != null)
-    {
+    if (localObject3 != null) {
       localObject1 = ((GdtDeviceInfoHelper.Result)localObject3).a;
-      localReqAdvertisePara = new oidb_cmd0x68b.ReqAdvertisePara();
-      localReqAdvertisePara.uint64_channel_id.set(paramInt1, true);
-      localObject2 = localReqAdvertisePara.uint64_last_time;
-      if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1)) != null) {
-        break label509;
-      }
-    }
-    label258:
-    label509:
-    for (long l = 0L;; l = ((Long)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1))).longValue())
-    {
-      ((PBUInt64Field)localObject2).set(l, true);
-      localObject2 = new oidb_cmd0x68b.PhoneInfo();
-      if ((localObject3 != null) && (((GdtDeviceInfoHelper.Result)localObject3).a != null) && (((GdtDeviceInfoHelper.Result)localObject3).a.muid != null) && (((GdtDeviceInfoHelper.Result)localObject3).a.muid_type != null))
-      {
-        ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_muid.set(ByteStringMicro.copyFromUtf8(((GdtDeviceInfoHelper.Result)localObject3).a.muid.get()));
-        ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_muid_type.set(((GdtDeviceInfoHelper.Result)localObject3).a.muid_type.get());
-      }
-      localObject3 = AdDeviceInfoUtil.b();
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        ((oidb_cmd0x68b.PhoneInfo)localObject2).string_imei.set((String)localObject3);
-      }
-      int i = PublicAccountAdUtil.a();
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_conn.set(i);
-      i = 0;
-      try
-      {
-        int j = DeviceInfoUtil.f();
-        i = j;
-      }
-      catch (Exception localException)
-      {
-        break label258;
-      }
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_carrier.set(i);
-      localObject3 = DeviceInfoUtil.e();
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_os_ver.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-      localObject3 = DeviceInfoUtil.c();
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_qq_ver.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-      i = AppSetting.a();
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
-      localObject3 = DatalineMathUtil.a(DatalineMathUtil.a());
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_client_ip.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_os_type.set(2);
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).uint64_func_flag.set(1L);
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_ads_context.set(ByteStringMicro.copyFromUtf8(NativeAdUtils.a()));
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_manufacturer.set(ByteStringMicro.copyFromUtf8(Build.BRAND));
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_device_brand_and_model.set(ByteStringMicro.copyFromUtf8(Build.MODEL));
-      if (localObject1 != null) {
-        a((qq_ad_get.QQAdGet.DeviceInfo)localObject1, (oidb_cmd0x68b.PhoneInfo)localObject2);
-      }
-      ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_wx_ver.set(ByteStringMicro.copyFrom(AdDeviceInfoUtil.a(BaseApplication.getContext()).getBytes()));
-      localReqAdvertisePara.msg_phone_info.set((MessageMicro)localObject2, true);
-      if (paramInt3 != paramInt4) {
-        a(paramRequest0x68bParams, paramInt1, paramInt2, paramInt3, paramInt4, paramAdRequestData, (qq_ad_get.QQAdGet.DeviceInfo)localObject1, localReqAdvertisePara);
-      }
-      paramRequest0x68bParams = new oidb_cmd0x68b.AdReqInfo();
-      paramRequest0x68bParams.uint64_ad_channel_id.set(paramInt1);
-      localReqAdvertisePara.msg_ad_req_info.set(paramRequest0x68bParams);
-      return localReqAdvertisePara;
+    } else {
       localObject1 = null;
-      break;
     }
+    oidb_cmd0x68b.ReqAdvertisePara localReqAdvertisePara = new oidb_cmd0x68b.ReqAdvertisePara();
+    Object localObject2 = localReqAdvertisePara.uint64_channel_id;
+    long l2 = paramInt1;
+    ((PBUInt64Field)localObject2).set(l2, true);
+    localObject2 = localReqAdvertisePara.uint64_last_time;
+    long l1;
+    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1)) == null) {
+      l1 = 0L;
+    } else {
+      l1 = ((Long)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1))).longValue();
+    }
+    ((PBUInt64Field)localObject2).set(l1, true);
+    localObject2 = new oidb_cmd0x68b.PhoneInfo();
+    if ((localObject3 != null) && (((GdtDeviceInfoHelper.Result)localObject3).a != null) && (((GdtDeviceInfoHelper.Result)localObject3).a.muid != null) && (((GdtDeviceInfoHelper.Result)localObject3).a.muid_type != null))
+    {
+      ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_muid.set(ByteStringMicro.copyFromUtf8(((GdtDeviceInfoHelper.Result)localObject3).a.muid.get()));
+      ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_muid_type.set(((GdtDeviceInfoHelper.Result)localObject3).a.muid_type.get());
+    }
+    localObject3 = AdDeviceInfoUtil.b();
+    if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+      ((oidb_cmd0x68b.PhoneInfo)localObject2).string_imei.set((String)localObject3);
+    }
+    int i = PublicAccountAdUtil.a();
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_conn.set(i);
+    i = 0;
+    try
+    {
+      int j = DeviceInfoUtil.g();
+      i = j;
+    }
+    catch (Exception localException)
+    {
+      label304:
+      break label304;
+    }
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_carrier.set(i);
+    localObject3 = DeviceInfoUtil.e();
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_os_ver.set(ByteStringMicro.copyFromUtf8((String)localObject3));
+    localObject3 = DeviceInfoUtil.c();
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_qq_ver.set(ByteStringMicro.copyFromUtf8((String)localObject3));
+    i = AppSetting.a();
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_appid.set(ByteStringMicro.copyFromUtf8(String.valueOf(i)));
+    localObject3 = DatalineMathUtil.a(DatalineMathUtil.a());
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_client_ip.set(ByteStringMicro.copyFromUtf8((String)localObject3));
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).uint32_os_type.set(2);
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).uint64_func_flag.set(1L);
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_ads_context.set(ByteStringMicro.copyFromUtf8(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getAdCookie()));
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_manufacturer.set(ByteStringMicro.copyFromUtf8(Build.BRAND));
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_device_brand_and_model.set(ByteStringMicro.copyFromUtf8(Build.MODEL));
+    if (localObject1 != null) {
+      a((qq_ad_get.QQAdGet.DeviceInfo)localObject1, (oidb_cmd0x68b.PhoneInfo)localObject2);
+    }
+    ((oidb_cmd0x68b.PhoneInfo)localObject2).bytes_wx_ver.set(ByteStringMicro.copyFrom(AdDeviceInfoUtil.a(BaseApplication.getContext()).getBytes()));
+    localReqAdvertisePara.msg_phone_info.set((MessageMicro)localObject2, true);
+    if (paramInt3 != paramInt4) {
+      a((ReadInJoyRequestParams.Request0x68bParams)paramObject, paramInt1, paramInt2, paramInt3, paramInt4, paramAdRequestData, (qq_ad_get.QQAdGet.DeviceInfo)localObject1, localReqAdvertisePara);
+    }
+    paramObject = new oidb_cmd0x68b.AdReqInfo();
+    paramObject.uint64_ad_channel_id.set(l2);
+    localReqAdvertisePara.msg_ad_req_info.set(paramObject);
+    return localReqAdvertisePara;
+  }
+  
+  public ArrayList<AbsBaseArticleInfo> a(int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getFixPosArticleListSync channelId=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AdvertisementInfoModule", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new ArrayList();
+    ((ArrayList)localObject).addAll(b(paramInt));
+    return localObject;
+  }
+  
+  public List<AbsBaseArticleInfo> a(oidb_cmd0xf30.InsertArticle paramInsertArticle)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramInsertArticle != null)
+    {
+      if (paramInsertArticle.rpt_ad_list == null) {
+        return localArrayList;
+      }
+      if ((paramInsertArticle.rpt_ad_list.has()) && (paramInsertArticle.rpt_ad_list.get() != null)) {
+        return a(paramInsertArticle.rpt_ad_list.get());
+      }
+    }
+    return localArrayList;
   }
   
   public void a()
@@ -1029,7 +1367,7 @@ public class AdvertisementInfoModule
     if (QLog.isColorLevel()) {
       QLog.d("AdvertisementInfoModule", 2, "unInitialize!");
     }
-    this.jdField_c_of_type_JavaUtilLinkedHashMap.clear();
+    this.c.clear();
     this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
     this.jdField_b_of_type_JavaUtilLinkedHashMap.clear();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
@@ -1039,177 +1377,248 @@ public class AdvertisementInfoModule
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "removeFixPosArticleAsyncListener channelID=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeFixPosArticleAsyncListener channelID=");
+      localStringBuilder.append(paramInt);
+      QLog.d("AdvertisementInfoModule", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    Pair localPair = (Pair)this.jdField_d_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1));
-    if (localPair == null) {
-      localPair = new Pair(Integer.valueOf(0), Integer.valueOf(0));
+    Object localObject2 = (Pair)this.d.get(Integer.valueOf(paramInt1));
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new Pair(Integer.valueOf(0), Integer.valueOf(0));
     }
-    for (;;)
+    int i = paramInt3;
+    if (paramInt2 != 0)
     {
-      int i = paramInt3;
-      if (paramInt2 != 0)
-      {
-        i = paramInt3;
-        if (paramInt3 < ((Integer)localPair.second).intValue()) {
-          i = ((Integer)localPair.second).intValue();
-        }
+      i = paramInt3;
+      if (paramInt3 < ((Integer)((Pair)localObject1).second).intValue()) {
+        i = ((Integer)((Pair)localObject1).second).intValue();
       }
-      ReadInJoyAdLog.a("AdDataLink", "async setLocalAdvertisementRange channelid=" + paramInt1 + "  adStart=" + paramInt2 + "  adEnd=" + i);
-      localPair = new Pair(Integer.valueOf(paramInt2), Integer.valueOf(i));
-      this.jdField_d_of_type_JavaUtilLinkedHashMap.remove(Integer.valueOf(paramInt1));
-      this.jdField_d_of_type_JavaUtilLinkedHashMap.put(Integer.valueOf(paramInt1), localPair);
-      return;
     }
+    localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("async setLocalAdvertisementRange channelid=");
+    ((StringBuilder)localObject2).append(paramInt1);
+    ((StringBuilder)localObject2).append("  adStart=");
+    ((StringBuilder)localObject2).append(paramInt2);
+    ((StringBuilder)localObject2).append("  adEnd=");
+    ((StringBuilder)localObject2).append(i);
+    ((IRIJAdLogService)localObject1).d("AdDataLink", ((StringBuilder)localObject2).toString());
+    localObject1 = new Pair(Integer.valueOf(paramInt2), Integer.valueOf(i));
+    this.d.remove(Integer.valueOf(paramInt1));
+    this.d.put(Integer.valueOf(paramInt1), localObject1);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, AdRequestData paramAdRequestData)
   {
-    ReadInJoyAdLog.a("AdDataLink", "refreshChannelAdvertisementFormServer channelId=" + paramInt1 + " adPosType = " + paramInt2 + " adStart = " + paramInt3 + " adEnd = " + paramInt4 + " 请求广告");
+    Object localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("refreshChannelAdvertisementFormServer channelId=");
+    ((StringBuilder)localObject2).append(paramInt1);
+    ((StringBuilder)localObject2).append(" adPosType = ");
+    ((StringBuilder)localObject2).append(paramInt2);
+    ((StringBuilder)localObject2).append(" adStart = ");
+    ((StringBuilder)localObject2).append(paramInt3);
+    ((StringBuilder)localObject2).append(" adEnd = ");
+    ((StringBuilder)localObject2).append(paramInt4);
+    ((StringBuilder)localObject2).append(" 请求广告");
+    ((IRIJAdLogService)localObject1).d("AdDataLink", ((StringBuilder)localObject2).toString());
     if (paramInt1 == 0) {
       AdSessionManager.a().a();
     }
     if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt1)))
     {
-      QLog.d("AdvertisementInfoModule", 1, "refreshChannelAdvertisementFormServer channelId=" + paramInt1 + " not contained in mChannelID2FixPosArticleAsyncListener");
-      ReadinjoyFixPosArticleManager.a().a(paramInt1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("refreshChannelAdvertisementFormServer channelId=");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append(" not contained in mChannelID2FixPosArticleAsyncListener");
+      QLog.d("AdvertisementInfoModule", 1, ((StringBuilder)localObject1).toString());
+      ((IReadInJoyFixPosArticleManager)QRoute.api(IReadInJoyFixPosArticleManager.class)).registerReommendADListener(paramInt1);
     }
-    Object localObject;
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt1)))
     {
-      localObject = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
-      if ((localObject == null) || (((WeakReference)localObject).get() == null))
+      localObject1 = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
+      if ((localObject1 == null) || (((WeakReference)localObject1).get() == null))
       {
-        QLog.d("AdvertisementInfoModule", 1, "refreshChannelAdvertisementFormServer channelId=" + paramInt1 + " listener is null");
-        ReadinjoyFixPosArticleManager.a().a(paramInt1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("refreshChannelAdvertisementFormServer channelId=");
+        ((StringBuilder)localObject1).append(paramInt1);
+        ((StringBuilder)localObject1).append(" listener is null");
+        QLog.d("AdvertisementInfoModule", 1, ((StringBuilder)localObject1).toString());
+        ((IReadInJoyFixPosArticleManager)QRoute.api(IReadInJoyFixPosArticleManager.class)).registerReommendADListener(paramInt1);
       }
     }
     oidb_cmd0x68b.ReqBody localReqBody = new oidb_cmd0x68b.ReqBody();
-    long l = Long.valueOf(ReadInJoyUtils.a()).longValue();
+    long l = Long.valueOf(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount()).longValue();
     localReqBody.uint64_uin.set(l);
     localReqBody.uint32_network_type.set(a());
-    localReqBody.req_advertise_para.set(a(null, paramInt1, paramInt2, paramInt3, paramInt4, paramAdRequestData));
-    ToServiceMsg localToServiceMsg = ReadInJoyOidbHelper.a("OidbSvc.0x68b", 1675, 0, localReqBody.toByteArray());
-    localToServiceMsg.getAttributes().put(jdField_d_of_type_JavaLangString, Long.valueOf(paramInt3));
-    if ((paramAdRequestData != null) && (paramAdRequestData.jdField_b_of_type_Int == 1))
+    localReqBody.req_advertise_para.set((oidb_cmd0x68b.ReqAdvertisePara)a(null, paramInt1, paramInt2, paramInt3, paramInt4, paramAdRequestData));
+    localObject2 = ((IReadInJoyOidbHelper)QRoute.api(IReadInJoyOidbHelper.class)).makeOIDBPkg("OidbSvc.0x68b", 1675, 0, localReqBody.toByteArray());
+    localObject1 = ((ToServiceMsg)localObject2).getAttributes();
+    l = paramInt3;
+    ((HashMap)localObject1).put("BeginSeq", Long.valueOf(l));
+    if ((paramAdRequestData != null) && (paramAdRequestData.b == 1))
     {
-      localToServiceMsg.getAttributes().put(h, Integer.valueOf(paramAdRequestData.jdField_b_of_type_Int));
-      localToServiceMsg.getAttributes().put(f, Integer.valueOf(0));
+      ((ToServiceMsg)localObject2).getAttributes().put("repeatedReqFlag", Integer.valueOf(paramAdRequestData.b));
+      ((ToServiceMsg)localObject2).getAttributes().put("CountOfRequest_0x68b", Integer.valueOf(0));
     }
-    for (;;)
+    else
     {
-      localToServiceMsg.getAttributes().put("adpostype_0x68b", Integer.valueOf(paramInt2));
-      if (!DailyModeConfigHandler.c(paramInt1))
+      ((ToServiceMsg)localObject2).getAttributes().put("CountOfRequest_0x68b", Integer.valueOf(1));
+    }
+    ((ToServiceMsg)localObject2).getAttributes().put("adpostype_0x68b", Integer.valueOf(paramInt2));
+    if (!((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(paramInt1))
+    {
+      localObject1 = localObject2;
+      if (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isDailyChildFeeds(paramInt1)) {}
+    }
+    else
+    {
+      localReqBody.bytes_style_version.set(ByteStringMicro.copyFromUtf8(((IRealTimeController)QRoute.api(IRealTimeController.class)).getRealTimeLocalVersion("default_feeds")));
+      localObject1 = localObject2;
+      if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).use0xcbaRefreshCmd())
       {
-        localObject = localToServiceMsg;
-        if (!ReadInJoyHelper.a(paramInt1)) {}
-      }
-      else
-      {
-        localReqBody.bytes_style_version.set(ByteStringMicro.copyFromUtf8(RealTimeController.a("default_feeds")));
-        localObject = localToServiceMsg;
-        if (ReadInJoyHelper.z())
-        {
-          localObject = ReadInJoyDailySettingModel.a(paramInt1);
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            localReqBody.bytes_nearby_cookie.set(ByteStringMicro.copyFromUtf8((String)localObject));
-          }
-          localObject = ReadInJoyOidbHelper.a("OidbSvc.0xcba", 3258, 0, localReqBody.toByteArray());
-          ((ToServiceMsg)localObject).getAttributes().put("realTimeServiceKey", "default_feeds");
-          ((ToServiceMsg)localObject).getAttributes().put(jdField_d_of_type_JavaLangString, Long.valueOf(paramInt3));
+        localObject1 = ((IReadInJoyDailySettingModel)QRoute.api(IReadInJoyDailySettingModel.class)).getKvResult(paramInt1);
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          localReqBody.bytes_nearby_cookie.set(ByteStringMicro.copyFromUtf8((String)localObject1));
         }
+        localObject1 = ((IReadInJoyOidbHelper)QRoute.api(IReadInJoyOidbHelper.class)).makeOIDBPkg("OidbSvc.0xcba", 3258, 0, localReqBody.toByteArray());
+        ((ToServiceMsg)localObject1).getAttributes().put("realTimeServiceKey", "default_feeds");
+        ((ToServiceMsg)localObject1).getAttributes().put("BeginSeq", Long.valueOf(l));
       }
-      if ((paramAdRequestData != null) && (paramAdRequestData.jdField_a_of_type_Boolean))
-      {
-        ((ToServiceMsg)localObject).getAttributes().put(i, Integer.valueOf(paramInt1));
-        ((ToServiceMsg)localObject).getAttributes().put(j, Integer.valueOf(1));
-        ((ToServiceMsg)localObject).getAttributes().put(f, Integer.valueOf(0));
-      }
-      a((ToServiceMsg)localObject);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007BA7", "0X8007BA7", 0, 0, "", "", "", "");
-      return;
-      localToServiceMsg.getAttributes().put(f, Integer.valueOf(1));
     }
+    if ((paramAdRequestData != null) && (paramAdRequestData.jdField_a_of_type_Boolean))
+    {
+      ((ToServiceMsg)localObject1).getAttributes().put("asyncRequestChannelFlag", Integer.valueOf(paramInt1));
+      ((ToServiceMsg)localObject1).getAttributes().put("asyncAdRequestFlag", Integer.valueOf(1));
+      ((ToServiceMsg)localObject1).getAttributes().put("CountOfRequest_0x68b", Integer.valueOf(0));
+    }
+    ((ToServiceMsg)localObject1).getAttributes().put("isRetryRequest", Boolean.valueOf(a((ToServiceMsg)localObject1)));
+    ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().a().a((ToServiceMsg)localObject1);
+    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007BA7", "0X8007BA7", 0, 0, "", "", "", "");
   }
   
   public void a(int paramInt, FixPosArticleInterface.FixPosArticleAsyncListener paramFixPosArticleAsyncListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "setFixPosArticleAsyncListener channelID=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setFixPosArticleAsyncListener channelID=");
+      localStringBuilder.append(paramInt);
+      QLog.d("AdvertisementInfoModule", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), new WeakReference(paramFixPosArticleAsyncListener));
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "async setChannelNeedRequestAdvertisement channelid=" + paramInt + "  bNeed= " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("async setChannelNeedRequestAdvertisement channelid=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("  bNeed= ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("AdvertisementInfoModule", 2, localStringBuilder.toString());
     }
     this.e.put(Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean));
   }
   
   public void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo, long paramLong, ArrayList<DislikeInfo> paramArrayList, boolean paramBoolean)
   {
-    if (paramAdvertisementInfo == null) {}
-    do
-    {
+    if (paramAdvertisementInfo == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementInfoModule", 2, "doUninterestAdvertisement tagId=" + paramLong + ", channelId=" + paramAdvertisementInfo.mChannelID + ", pos=" + paramAdvertisementInfo.mAdKdPos + ", traceID=" + paramAdvertisementInfo.mAdTraceId);
-      }
-      localObject1 = (ConcurrentHashMap)this.jdField_c_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf((int)paramAdvertisementInfo.mChannelID));
-      if (localObject1 != null) {
-        ((ConcurrentHashMap)localObject1).remove(Integer.valueOf(paramAdvertisementInfo.mAdKdPos));
-      }
-    } while (paramBoolean);
-    String str1 = "";
-    Object localObject1 = "";
-    Object localObject2 = localObject1;
-    String str2 = str1;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("doUninterestAdvertisement tagId=");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(", channelId=");
+      ((StringBuilder)localObject1).append(paramAdvertisementInfo.mChannelID);
+      ((StringBuilder)localObject1).append(", pos=");
+      ((StringBuilder)localObject1).append(paramAdvertisementInfo.mAdKdPos);
+      ((StringBuilder)localObject1).append(", traceID=");
+      ((StringBuilder)localObject1).append(paramAdvertisementInfo.mAdTraceId);
+      QLog.d("AdvertisementInfoModule", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = (ConcurrentHashMap)this.c.get(Integer.valueOf((int)paramAdvertisementInfo.mChannelID));
+    if (localObject1 != null) {
+      ((ConcurrentHashMap)localObject1).remove(Integer.valueOf(paramAdvertisementInfo.mAdKdPos));
+    }
+    if (paramBoolean) {
+      return;
+    }
+    Object localObject2 = "";
     int i;
     if (paramArrayList != null)
     {
       i = 0;
-      localObject2 = localObject1;
-      str2 = str1;
-      if (i < paramArrayList.size())
+      localObject1 = "";
+      for (;;)
       {
-        localObject2 = (DislikeInfo)paramArrayList.get(i);
-        if (localObject2 == null) {
-          break label412;
+        localObject4 = localObject1;
+        localObject3 = localObject2;
+        if (i >= paramArrayList.size()) {
+          break;
         }
-        str1 = str1 + ((DislikeInfo)localObject2).jdField_a_of_type_Long;
-        localObject1 = (String)localObject1 + ((DislikeInfo)localObject2).jdField_a_of_type_JavaLangString;
-        if (i == paramArrayList.size() - 1) {
-          break label415;
+        DislikeInfo localDislikeInfo = (DislikeInfo)paramArrayList.get(i);
+        localObject4 = localObject1;
+        localObject3 = localObject2;
+        if (localDislikeInfo != null)
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject2);
+          ((StringBuilder)localObject3).append(localDislikeInfo.jdField_a_of_type_Long);
+          localObject2 = ((StringBuilder)localObject3).toString();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append((String)localObject1);
+          ((StringBuilder)localObject3).append(localDislikeInfo.jdField_a_of_type_JavaLangString);
+          localObject1 = ((StringBuilder)localObject3).toString();
+          localObject4 = localObject1;
+          localObject3 = localObject2;
+          if (i != paramArrayList.size() - 1)
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append((String)localObject2);
+            ((StringBuilder)localObject3).append(",");
+            localObject3 = ((StringBuilder)localObject3).toString();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append(",");
+            localObject4 = ((StringBuilder)localObject2).toString();
+          }
         }
-        str1 = str1 + ",";
-        localObject1 = (String)localObject1 + ",";
+        i += 1;
+        localObject1 = localObject4;
+        localObject2 = localObject3;
       }
     }
-    label412:
-    label415:
-    for (;;)
+    Object localObject4 = "";
+    Object localObject3 = localObject2;
+    if (paramAdvertisementInfo.mChannelID == 56L)
     {
-      i += 1;
-      break;
-      if (paramAdvertisementInfo.mChannelID == 56L)
-      {
-        NativeAdUtils.a(new AdReportData().a(paramContext).a(3).b(4).a(paramAdvertisementInfo).a((int)paramLong).a(str2).b((String)localObject2));
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramContext).a(3).b(4).a(paramAdvertisementInfo).a((int)paramLong).a((String)localObject3).b((String)localObject4));
+      return;
+    }
+    if ((!ReadInJoyAdUtils.s(paramAdvertisementInfo)) && (!ReadInJoyAdUtils.r(paramAdvertisementInfo)))
+    {
+      if (ReadInJoyAdUtils.t(paramAdvertisementInfo)) {
         return;
       }
-      if (RIJFeedsType.a(paramAdvertisementInfo)) {}
-      for (i = 11;; i = 3)
-      {
-        NativeAdUtils.a(new AdReportData().a(paramContext).a(3).b(i).a(paramAdvertisementInfo).a((int)paramLong).a(str2).b((String)localObject2));
-        return;
+      if (((IRIJFeedsType)QRoute.api(IRIJFeedsType.class)).isVideoArticle(paramAdvertisementInfo)) {
+        i = 11;
+      } else {
+        i = 3;
       }
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramContext).a(3).b(i).a(paramAdvertisementInfo).a((int)paramLong).a((String)localObject3).b((String)localObject4));
     }
   }
   
@@ -1222,41 +1631,36 @@ public class AdvertisementInfoModule
       ((JSONObject)localObject1).put("traceid", paramAdvertisementInfo.mAdTraceId);
       ((JSONObject)localObject1).put("rl", paramAdvertisementInfo.mAdRl);
       ((JSONObject)localObject1).put("productid", paramAdvertisementInfo.mAdProductId);
-      if (localObject2 == null)
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("videoUrl", paramAdvertisementInfo.mVideoVid);
+      localJSONObject.put("coverUrl", paramAdvertisementInfo.mVideoCoverUrl);
+      localJSONObject.put("duration", paramAdvertisementInfo.mVideoDuration);
+      ((JSONObject)localObject1).put("video", localJSONObject);
+      ((JSONObject)localObject1).put("native", ((JSONObject)localObject2).getJSONObject("native"));
+      localObject2 = new JSONArray();
+      ((JSONArray)localObject2).put(localObject1);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("uin", paramAppInterface.getAccount());
+      ((JSONObject)localObject1).put("type", 3);
+      ((JSONObject)localObject1).put("ads", localObject2);
+      localObject1 = ((JSONObject)localObject1).toString();
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementInfoModule", 2, "native object is null");
-        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("get ad app json: ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("AdvertisementInfoModule", 2, ((StringBuilder)localObject2).toString());
       }
-      else
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("videoUrl", paramAdvertisementInfo.mVideoVid);
-        localJSONObject.put("coverUrl", paramAdvertisementInfo.mVideoCoverUrl);
-        localJSONObject.put("duration", paramAdvertisementInfo.mVideoDuration);
-        ((JSONObject)localObject1).put("video", localJSONObject);
-        ((JSONObject)localObject1).put("native", ((JSONObject)localObject2).getJSONObject("native"));
-        localObject2 = new JSONArray();
-        ((JSONArray)localObject2).put(localObject1);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("uin", paramAppInterface.getAccount());
-        ((JSONObject)localObject1).put("type", 3);
-        ((JSONObject)localObject1).put("ads", localObject2);
-        localObject2 = ((JSONObject)localObject1).toString();
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementInfoModule", 2, "get ad app json: " + (String)localObject2);
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          localObject1 = new WebSsoBody.WebSsoRequestBody();
-          ((WebSsoBody.WebSsoRequestBody)localObject1).data.set((String)localObject2);
-          localObject2 = new NewIntent(paramAppInterface.getApplication(), ((IPublicAccountServlet)QRoute.api(IPublicAccountServlet.class)).getServletClass());
-          ((NewIntent)localObject2).putExtra("cmd", "KdAdReportSsoSvr.kandian_ad_native");
-          ((NewIntent)localObject2).putExtra("data", ((WebSsoBody.WebSsoRequestBody)localObject1).toByteArray());
-          ((NewIntent)localObject2).setObserver(new AdvertisementInfoModule.3(this, paramAdvertisementInfo));
-          paramAppInterface.startServlet((NewIntent)localObject2);
-          return;
-        }
+        localObject2 = new WebSsoBody.WebSsoRequestBody();
+        ((WebSsoBody.WebSsoRequestBody)localObject2).data.set((String)localObject1);
+        localObject1 = new NewIntent(paramAppInterface.getApplication(), ((IPublicAccountServlet)QRoute.api(IPublicAccountServlet.class)).getServletClass());
+        ((NewIntent)localObject1).putExtra("cmd", "KdAdReportSsoSvr.kandian_ad_native");
+        ((NewIntent)localObject1).putExtra("data", ((WebSsoBody.WebSsoRequestBody)localObject2).toByteArray());
+        ((NewIntent)localObject1).setObserver(new AdvertisementInfoModule.3(this, paramAdvertisementInfo));
+        paramAppInterface.startServlet((NewIntent)localObject1);
+        return;
       }
     }
     catch (JSONException paramAppInterface)
@@ -1267,131 +1671,194 @@ public class AdvertisementInfoModule
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    ReadInJoyAdLog.a("AdDataLink", "onReceiveAD response cmd=" + paramFromServiceMsg.getServiceCmd() + " 广告回包");
-    if ((paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x68b")) || (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xcba"))) {
+    IRIJAdLogService localIRIJAdLogService = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceiveAD response cmd=");
+    localStringBuilder.append(paramFromServiceMsg.getServiceCmd());
+    localStringBuilder.append(" 广告回包");
+    localIRIJAdLogService.d("AdDataLink", localStringBuilder.toString());
+    if ((!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x68b")) && (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xcba")))
+    {
+      if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x886")) {
+        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      }
+    }
+    else {
       b(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
-    while (!paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x886")) {
-      return;
-    }
-    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, oidb_cmd0x68b.RspChannelArticle paramRspChannelArticle, int paramInt1, int paramInt2, boolean paramBoolean, ValueReference<Boolean> paramValueReference)
+  public void a(ToServiceMsg paramToServiceMsg, Object paramObject1, int paramInt1, int paramInt2, boolean paramBoolean, Object paramObject2)
   {
-    if (paramRspChannelArticle == null)
+    Object localObject3 = (ValueReference)paramObject2;
+    Object localObject4 = (oidb_cmd0x68b.RspChannelArticle)paramObject1;
+    Boolean localBoolean = Boolean.valueOf(true);
+    if (localObject4 == null)
     {
-      paramValueReference.a(Boolean.valueOf(true));
+      ((ValueReference)localObject3).a(localBoolean);
       return;
     }
-    ValueReference localValueReference1 = new ValueReference(Integer.valueOf((int)paramRspChannelArticle.uint64_channel_id.get()));
-    if ((((Integer)localValueReference1.a()).intValue() == 0) && (paramInt2 != 0)) {
-      localValueReference1.a(Integer.valueOf(paramInt2));
+    paramObject2 = new ValueReference(Integer.valueOf((int)((oidb_cmd0x68b.RspChannelArticle)localObject4).uint64_channel_id.get()));
+    if ((((Integer)paramObject2.a()).intValue() == 0) && (paramInt2 != 0)) {
+      paramObject2.a(Integer.valueOf(paramInt2));
     }
-    long l1 = paramRspChannelArticle.uint64_pos_ad_time.get();
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new ValueReference(Boolean.valueOf(false));
-    ValueReference localValueReference2 = new ValueReference(Boolean.valueOf(false));
-    long l2 = ((Long)paramToServiceMsg.getAttribute(jdField_d_of_type_JavaLangString)).longValue();
-    if ((paramRspChannelArticle.rpt_advertise_list.has()) && (paramRspChannelArticle.rpt_advertise_list.get() != null))
+    long l1 = ((oidb_cmd0x68b.RspChannelArticle)localObject4).uint64_pos_ad_time.get();
+    paramObject1 = new ArrayList();
+    ValueReference localValueReference = new ValueReference(Boolean.valueOf(false));
+    Object localObject2 = new ValueReference(Boolean.valueOf(false));
+    long l2 = ((Long)paramToServiceMsg.getAttribute("BeginSeq")).longValue();
+    if ((((oidb_cmd0x68b.RspChannelArticle)localObject4).rpt_advertise_list.has()) && (((oidb_cmd0x68b.RspChannelArticle)localObject4).rpt_advertise_list.get() != null))
     {
-      List localList = paramRspChannelArticle.rpt_advertise_list.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementInfoModule", 2, "handleAdvertisementResp resp.rpt_advertise_list size " + localList.size());
-      }
-      localList = a(paramInt2, localValueReference1, l1, (ValueReference)localObject, localValueReference2, l2, localList);
-      a(localList);
-      localArrayList.addAll(localList);
-      a(localArrayList);
-      if (((Boolean)((ValueReference)localObject).a()).booleanValue())
+      List localList = ((oidb_cmd0x68b.RspChannelArticle)localObject4).rpt_advertise_list.get();
+      if (QLog.isColorLevel())
       {
-        a(localValueReference1, l1, localArrayList);
-        paramValueReference.a(Boolean.valueOf(true));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handleAdvertisementResp resp.rpt_advertise_list size ");
+        ((StringBuilder)localObject1).append(localList.size());
+        QLog.d("AdvertisementInfoModule", 2, ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = paramObject1;
+      localList = a(paramInt2, paramObject2, l1, localValueReference, (ValueReference)localObject2, l2, localList);
+      a(localList);
+      ((ArrayList)localObject1).addAll(localList);
+      a((ArrayList)localObject1);
+      if (((Boolean)localValueReference.a()).booleanValue())
+      {
+        a(paramObject2, l1, (ArrayList)localObject1);
+        ((ValueReference)localObject3).a(localBoolean);
         return;
       }
-      a(paramRspChannelArticle);
+      a((oidb_cmd0x68b.RspChannelArticle)localObject4);
     }
-    if (((Boolean)localValueReference2.a()).booleanValue()) {
-      a(((Integer)localValueReference1.a()).intValue(), false);
+    Object localObject1 = paramObject1;
+    if (((Boolean)((ValueReference)localObject2).a()).booleanValue()) {
+      a(((Integer)paramObject2.a()).intValue(), false);
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localValueReference1.a(), Long.valueOf(l1));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramObject2.a(), Long.valueOf(l1));
     if ((paramBoolean) && (l1 > 0L)) {
-      this.jdField_b_of_type_JavaUtilLinkedHashMap.put(localValueReference1.a(), Long.valueOf(l1));
+      this.jdField_b_of_type_JavaUtilLinkedHashMap.put(paramObject2.a(), Long.valueOf(l1));
     }
-    ReadInJoyAdLog.a("AdvertisementInfoModule", "async makeReqAdvertisePara adinfo, fromRefresh=" + paramBoolean + ", list.size()=" + localArrayList.size() + ",fetchTime=" + l1);
-    paramRspChannelArticle = (ConcurrentHashMap)this.jdField_c_of_type_JavaUtilLinkedHashMap.get(localValueReference1.a());
-    if (paramRspChannelArticle == null)
+    paramObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("async makeReqAdvertisePara adinfo, fromRefresh=");
+    ((StringBuilder)localObject2).append(paramBoolean);
+    ((StringBuilder)localObject2).append(", list.size()=");
+    ((StringBuilder)localObject2).append(((ArrayList)localObject1).size());
+    ((StringBuilder)localObject2).append(",fetchTime=");
+    ((StringBuilder)localObject2).append(l1);
+    paramObject1.d("AdvertisementInfoModule", ((StringBuilder)localObject2).toString());
+    localObject2 = (ConcurrentHashMap)this.c.get(paramObject2.a());
+    paramObject1 = localObject2;
+    if (localObject2 == null)
     {
-      paramRspChannelArticle = new ConcurrentHashMap();
-      this.jdField_c_of_type_JavaUtilLinkedHashMap.put(localValueReference1.a(), paramRspChannelArticle);
+      paramObject1 = new ConcurrentHashMap();
+      this.c.put(paramObject2.a(), paramObject1);
     }
-    for (;;)
+    localObject2 = new ConcurrentHashMap();
+    paramBoolean = ((IFeedsPreloadHelper)QRoute.api(IFeedsPreloadHelper.class)).isFeedsPreloadRequest(paramToServiceMsg);
+    if (QLog.isColorLevel())
     {
-      paramValueReference = new ConcurrentHashMap();
-      paramBoolean = FeedsPreloadHelper.a(paramToServiceMsg);
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementInfoModule", 2, "handleAdvertisementResp beginSeq = " + l2 + ",isFeedsPreload=" + paramBoolean + ",advertisementInfoMap size " + paramRspChannelArticle.size() + ", channelId=" + localValueReference1.a() + ", fetchTime=" + l1 + ",repeatedreqFlag=" + paramInt1);
-      }
-      if ((paramBoolean) && (localArrayList.size() <= 0)) {}
-      for (paramToServiceMsg = paramValueReference;; paramToServiceMsg = paramRspChannelArticle)
-      {
-        VideoAdTimeLoadManager.a(((Integer)localValueReference1.a()).intValue(), localArrayList);
-        a(localValueReference1, paramToServiceMsg);
-        paramToServiceMsg = new StringBuilder("handleAdvertisementResp channelID=" + localValueReference1.a() + ", fetchTime=" + l1 + "\n");
-        paramValueReference = localArrayList.iterator();
-        while (paramValueReference.hasNext())
-        {
-          localObject = (AdvertisementInfo)paramValueReference.next();
-          paramRspChannelArticle.put(Integer.valueOf(((AdvertisementInfo)localObject).mAdKdPos), localObject);
-          paramToServiceMsg.append("[pos=").append(((AdvertisementInfo)localObject).mAdKdPos).append(", traceID=").append(((AdvertisementInfo)localObject).mAdTraceId).append("]\n");
-          if ((((AdvertisementInfo)localObject).mAdJumpMode == 4) && (TextUtils.isEmpty(((AdvertisementInfo)localObject).mAdAppJson))) {
-            a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (AdvertisementInfo)localObject);
-          }
-        }
-        if (l2 != -1L) {
-          break;
-        }
-      }
-      localObject = localArrayList.iterator();
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handleAdvertisementResp beginSeq = ");
+      paramToServiceMsg.append(l2);
+      paramToServiceMsg.append(",isFeedsPreload=");
+      paramToServiceMsg.append(paramBoolean);
+      paramToServiceMsg.append(",advertisementInfoMap size ");
+      paramToServiceMsg.append(paramObject1.size());
+      paramToServiceMsg.append(", channelId=");
+      paramToServiceMsg.append(paramObject2.a());
+      paramToServiceMsg.append(", fetchTime=");
+      paramToServiceMsg.append(l1);
+      paramToServiceMsg.append(",repeatedreqFlag=");
+      paramToServiceMsg.append(paramInt1);
+      QLog.d("AdvertisementInfoModule", 2, paramToServiceMsg.toString());
+    }
+    if ((paramBoolean) && (((ArrayList)localObject1).size() <= 0))
+    {
+      paramToServiceMsg = (ToServiceMsg)localObject2;
+    }
+    else if (l2 == -1L)
+    {
+      paramToServiceMsg = paramObject1;
+    }
+    else
+    {
+      localObject3 = ((ArrayList)localObject1).iterator();
       for (;;)
       {
-        paramToServiceMsg = paramValueReference;
-        if (!((Iterator)localObject).hasNext()) {
+        paramToServiceMsg = (ToServiceMsg)localObject2;
+        if (!((Iterator)localObject3).hasNext()) {
           break;
         }
-        paramToServiceMsg = (AdvertisementInfo)((Iterator)localObject).next();
-        if (paramRspChannelArticle.get(Integer.valueOf(paramToServiceMsg.mAdKdPos)) != null)
+        paramToServiceMsg = (AdvertisementInfo)((Iterator)localObject3).next();
+        if (paramObject1.get(Integer.valueOf(paramToServiceMsg.mAdKdPos)) != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("AdvertisementInfoModule", 2, "handleAdvertisementResp dropAdvertisements info = " + paramToServiceMsg.toSString());
+          if (QLog.isColorLevel())
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("handleAdvertisementResp dropAdvertisements info = ");
+            ((StringBuilder)localObject4).append(paramToServiceMsg.toSString());
+            QLog.d("AdvertisementInfoModule", 2, ((StringBuilder)localObject4).toString());
           }
-          paramValueReference.put(Integer.valueOf(paramToServiceMsg.mAdKdPos), paramRspChannelArticle.get(Integer.valueOf(paramToServiceMsg.mAdKdPos)));
-          paramRspChannelArticle.remove(Integer.valueOf(paramToServiceMsg.mAdKdPos));
+          ((ConcurrentHashMap)localObject2).put(Integer.valueOf(paramToServiceMsg.mAdKdPos), paramObject1.get(Integer.valueOf(paramToServiceMsg.mAdKdPos)));
+          paramObject1.remove(Integer.valueOf(paramToServiceMsg.mAdKdPos));
         }
       }
-      QLog.d("AdvertisementInfoModule", 1, paramToServiceMsg.toString());
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementInfoModule", 2, "handleAdvertisementResp advertisementInfoMap size " + paramRspChannelArticle.size() + ", channelId=" + localValueReference1.a());
+    }
+    VideoAdTimeLoadManager.a(((Integer)paramObject2.a()).intValue(), (ArrayList)localObject1);
+    a(paramObject2, paramToServiceMsg);
+    paramToServiceMsg = new StringBuilder();
+    paramToServiceMsg.append("handleAdvertisementResp channelID=");
+    paramToServiceMsg.append(paramObject2.a());
+    paramToServiceMsg.append(", fetchTime=");
+    paramToServiceMsg.append(l1);
+    paramToServiceMsg.append("\n");
+    paramToServiceMsg = new StringBuilder(paramToServiceMsg.toString());
+    localObject2 = ((ArrayList)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = (AdvertisementInfo)((Iterator)localObject2).next();
+      paramObject1.put(Integer.valueOf(((AdvertisementInfo)localObject3).mAdKdPos), localObject3);
+      paramToServiceMsg.append("[pos=");
+      paramToServiceMsg.append(((AdvertisementInfo)localObject3).mAdKdPos);
+      paramToServiceMsg.append(", traceID=");
+      paramToServiceMsg.append(((AdvertisementInfo)localObject3).mAdTraceId);
+      paramToServiceMsg.append("]\n");
+      if ((((AdvertisementInfo)localObject3).mAdJumpMode == 4) && (TextUtils.isEmpty(((AdvertisementInfo)localObject3).mAdAppJson))) {
+        a((AppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime(), (AdvertisementInfo)localObject3);
       }
-      if (localArrayList.size() != 0) {
-        break;
-      }
+    }
+    QLog.d("AdvertisementInfoModule", 1, paramToServiceMsg.toString());
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handleAdvertisementResp advertisementInfoMap size ");
+      paramToServiceMsg.append(paramObject1.size());
+      paramToServiceMsg.append(", channelId=");
+      paramToServiceMsg.append(paramObject2.a());
+      QLog.d("AdvertisementInfoModule", 2, paramToServiceMsg.toString());
+    }
+    if (((ArrayList)localObject1).size() == 0)
+    {
       paramToServiceMsg = new JSONObject();
       try
       {
         paramToServiceMsg.put("svrresp_result", 1);
         paramToServiceMsg.put("svrresp_fail_type", 1);
-        NativeAdUtils.a(new AdReportData().a(BaseApplication.getContext()).a(80).b(12).b(paramToServiceMsg));
-        ReadInJoyAdLog.a("AdDataLink", "handleAdvertisementResp channelID=" + localValueReference1.a() + ", fetchTime=" + l1 + " parsedAdvertisementList empty!");
-        return;
       }
-      catch (JSONException paramRspChannelArticle)
+      catch (JSONException paramObject1)
       {
-        for (;;)
-        {
-          paramRspChannelArticle.printStackTrace();
-        }
+        paramObject1.printStackTrace();
       }
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(BaseApplication.getContext()).a(80).b(12).b(paramToServiceMsg));
+      paramToServiceMsg = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      paramObject1 = new StringBuilder();
+      paramObject1.append("handleAdvertisementResp channelID=");
+      paramObject1.append(paramObject2.a());
+      paramObject1.append(", fetchTime=");
+      paramObject1.append(l1);
+      paramObject1.append(" parsedAdvertisementList empty!");
+      paramToServiceMsg.d("AdDataLink", paramObject1.toString());
     }
   }
   
@@ -1405,42 +1872,68 @@ public class AdvertisementInfoModule
   
   public int[] a(int paramInt)
   {
-    ArrayList localArrayList = b(paramInt);
-    if (localArrayList.size() <= 0)
+    Object localObject2 = b(paramInt);
+    int j = ((ArrayList)localObject2).size();
+    int i = 0;
+    if (j <= 0)
     {
-      ReadInJoyAdLog.a("AdDataLink", "getFixPositionSync channelID=" + paramInt + " return empty!");
+      localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("getFixPositionSync channelID=");
+      localStringBuilder1.append(paramInt);
+      localStringBuilder1.append(" return empty!");
+      ((IRIJAdLogService)localObject1).d("AdDataLink", localStringBuilder1.toString());
       return new int[0];
     }
-    int[] arrayOfInt = new int[localArrayList.size()];
-    StringBuilder localStringBuilder = new StringBuilder("[");
-    int i = 0;
-    while (i < localArrayList.size())
+    Object localObject1 = new int[((ArrayList)localObject2).size()];
+    StringBuilder localStringBuilder1 = new StringBuilder("[");
+    while (i < ((ArrayList)localObject2).size())
     {
-      arrayOfInt[i] = ((AdvertisementInfo)localArrayList.get(i)).mAdKdPos;
-      localStringBuilder.append(arrayOfInt[i]);
-      if (i != localArrayList.size() - 1) {
-        localStringBuilder.append(", ");
+      localObject1[i] = ((AdvertisementInfo)((ArrayList)localObject2).get(i)).mAdKdPos;
+      localStringBuilder1.append(localObject1[i]);
+      if (i != ((ArrayList)localObject2).size() - 1) {
+        localStringBuilder1.append(", ");
       }
       i += 1;
     }
-    localStringBuilder.append("]");
-    ReadInJoyAdLog.a("AdDataLink", "getFixPositionSync channelID=" + paramInt + " return " + localStringBuilder.toString());
-    return arrayOfInt;
+    localStringBuilder1.append("]");
+    localObject2 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("getFixPositionSync channelID=");
+    localStringBuilder2.append(paramInt);
+    localStringBuilder2.append(" return ");
+    localStringBuilder2.append(localStringBuilder1.toString());
+    ((IRIJAdLogService)localObject2).d("AdDataLink", localStringBuilder2.toString());
+    return localObject1;
   }
   
   public AdvertisementInfo b(int paramInt1, int paramInt2)
   {
-    Object localObject = (ConcurrentHashMap)this.jdField_c_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt1));
-    if (localObject == null)
+    Object localObject1 = (ConcurrentHashMap)this.c.get(Integer.valueOf(paramInt1));
+    Object localObject2;
+    if (localObject1 == null)
     {
-      ReadInJoyAdLog.a("AdVideoDataLink", "removeAdvertisementInfo channelId=" + paramInt1 + " map is null!");
+      localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("removeAdvertisementInfo channelId=");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append(" map is null!");
+      ((IRIJAdLogService)localObject1).d("AdVideoDataLink", ((StringBuilder)localObject2).toString());
       return null;
     }
-    localObject = (AdvertisementInfo)((ConcurrentHashMap)localObject).remove(Integer.valueOf(paramInt2));
-    if (localObject != null)
+    localObject1 = (AdvertisementInfo)((ConcurrentHashMap)localObject1).remove(Integer.valueOf(paramInt2));
+    if (localObject1 != null)
     {
-      ReadInJoyAdLog.a("AdVideoDataLink", "removeAdvertisementInfo channelId=" + paramInt1 + " advertisementInfo = " + ((AdvertisementInfo)localObject).mTitle + " pos = " + ((AdvertisementInfo)localObject).mAdKdPos);
-      return localObject;
+      localObject2 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("removeAdvertisementInfo channelId=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" advertisementInfo = ");
+      localStringBuilder.append(((AdvertisementInfo)localObject1).mTitle);
+      localStringBuilder.append(" pos = ");
+      localStringBuilder.append(((AdvertisementInfo)localObject1).mAdKdPos);
+      ((IRIJAdLogService)localObject2).d("AdVideoDataLink", localStringBuilder.toString());
+      return localObject1;
     }
     return null;
   }
@@ -1448,30 +1941,42 @@ public class AdvertisementInfoModule
   public ArrayList<AdvertisementInfo> b(int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = (ConcurrentHashMap)this.jdField_c_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt));
-    if ((localObject != null) && (((ConcurrentHashMap)localObject).size() > 0))
+    Object localObject1 = (ConcurrentHashMap)this.c.get(Integer.valueOf(paramInt));
+    if ((localObject1 != null) && (((ConcurrentHashMap)localObject1).size() > 0))
     {
-      localObject = ((ConcurrentHashMap)localObject).values().iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localArrayList.add((AdvertisementInfo)((Iterator)localObject).next());
+      localObject1 = ((ConcurrentHashMap)localObject1).values().iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        localArrayList.add((AdvertisementInfo)((Iterator)localObject1).next());
       }
       Collections.sort(localArrayList, new AdvertisementInfoModule.1(this));
     }
     if (!QLog.isColorLevel()) {
       return localArrayList;
     }
-    localObject = new StringBuilder("\n");
+    localObject1 = new StringBuilder("\n");
     int i = 0;
     while (i < localArrayList.size())
     {
-      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)localArrayList.get(i);
-      ((StringBuilder)localObject).append("[pos=").append(localAdvertisementInfo.mAdKdPos).append(", traceID=").append(localAdvertisementInfo.mAdTraceId).append(", title=").append(localAdvertisementInfo.mTitle).append("]");
+      localObject2 = (AdvertisementInfo)localArrayList.get(i);
+      ((StringBuilder)localObject1).append("[pos=");
+      ((StringBuilder)localObject1).append(((AdvertisementInfo)localObject2).mAdKdPos);
+      ((StringBuilder)localObject1).append(", traceID=");
+      ((StringBuilder)localObject1).append(((AdvertisementInfo)localObject2).mAdTraceId);
+      ((StringBuilder)localObject1).append(", title=");
+      ((StringBuilder)localObject1).append(((AdvertisementInfo)localObject2).mTitle);
+      ((StringBuilder)localObject1).append("]");
       if (i != localArrayList.size() - 1) {
-        ((StringBuilder)localObject).append("\n");
+        ((StringBuilder)localObject1).append("\n");
       }
       i += 1;
     }
-    ReadInJoyAdLog.a("AdDataLink", "loadChannelAdvertisement channelId=" + paramInt + " return " + ((StringBuilder)localObject).toString());
+    Object localObject2 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadChannelAdvertisement channelId=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" return ");
+    localStringBuilder.append(((StringBuilder)localObject1).toString());
+    ((IRIJAdLogService)localObject2).d("AdDataLink", localStringBuilder.toString());
     return localArrayList;
   }
   
@@ -1484,7 +1989,7 @@ public class AdvertisementInfoModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule
  * JD-Core Version:    0.7.0.1
  */

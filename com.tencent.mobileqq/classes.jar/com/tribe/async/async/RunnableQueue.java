@@ -14,12 +14,20 @@ public class RunnableQueue
   
   public void dump()
   {
-    Iterator localIterator = this.mQueue.iterator();
-    Runnable localRunnable;
-    for (String str = "["; localIterator.hasNext(); str = str + "," + localRunnable.toString()) {
-      localRunnable = (Runnable)localIterator.next();
+    Object localObject = this.mQueue.iterator();
+    StringBuilder localStringBuilder;
+    for (String str = "["; ((Iterator)localObject).hasNext(); str = localStringBuilder.toString())
+    {
+      Runnable localRunnable = (Runnable)((Iterator)localObject).next();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(",");
+      localStringBuilder.append(localRunnable.toString());
     }
-    SLog.d("async.boss.RunnableQueue", str + "]");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("]");
+    SLog.d("async.boss.RunnableQueue", ((StringBuilder)localObject).toString());
   }
   
   public void enqueue(Runnable paramRunnable)
@@ -37,7 +45,7 @@ public class RunnableQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.RunnableQueue
  * JD-Core Version:    0.7.0.1
  */

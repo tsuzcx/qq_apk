@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
 import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.BaseTransProcessor;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,43 +63,48 @@ public class NearbyPeoplePicUpHandler
   {
     Object localObject = paramProtoResp.resp;
     byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
-    paramProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
-    RichProto.RichProtoResp localRichProtoResp = paramProtoReq.resp;
+    RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
+    RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
     StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
     if (((FromServiceMsg)localObject).getResultCode() != 1000)
     {
       int i = ((FromServiceMsg)localObject).getResultCode();
-      if ((i == 1002) || (i == 1013)) {
-        setResult(-1, 9311, MessageHandler.a((FromServiceMsg)localObject), "", localStatictisInfo, localRichProtoResp.resps);
-      }
-      for (;;)
-      {
-        RichProtoProc.onBusiProtoResp(paramProtoReq, localRichProtoResp);
-        return;
-        setResult(-1, 9044, MessageHandler.a((FromServiceMsg)localObject), "", localStatictisInfo, localRichProtoResp.resps);
+      if ((i != 1002) && (i != 1013)) {
+        setResult(-1, 9044, BaseMessageHandler.a((FromServiceMsg)localObject), "", localStatictisInfo, localRichProtoResp.resps);
+      } else {
+        setResult(-1, 9311, BaseMessageHandler.a((FromServiceMsg)localObject), "", localStatictisInfo, localRichProtoResp.resps);
       }
     }
-    for (;;)
+    else
     {
       try
       {
-        paramProtoResp = ((subcmd0x501.SubCmd0x501Rspbody)((subcmd0x501.RspBody)new subcmd0x501.RspBody().mergeFrom(arrayOfByte)).msg_subcmd_0x501_rsp_body.get()).bytes_httpconn_sig_session.get();
-        if ((paramProtoResp == null) || (paramProtoResp.toByteArray().length <= 0)) {
-          break label264;
+        paramProtoResp = (subcmd0x501.RspBody)new subcmd0x501.RspBody().mergeFrom(arrayOfByte);
+        paramProtoReq = null;
+        localObject = ((subcmd0x501.SubCmd0x501Rspbody)paramProtoResp.msg_subcmd_0x501_rsp_body.get()).bytes_httpconn_sig_session.get();
+        paramProtoResp = paramProtoReq;
+        if (localObject != null)
+        {
+          paramProtoResp = paramProtoReq;
+          if (((ByteStringMicro)localObject).toByteArray().length > 0) {
+            paramProtoResp = ((ByteStringMicro)localObject).toByteArray();
+          }
         }
-        paramProtoResp = paramProtoResp.toByteArray();
-        localObject = (RichProto.RichProtoResp.NearbyPeoplePicUpResp)localRichProtoResp.resps.get(0);
-        ((RichProto.RichProtoResp.NearbyPeoplePicUpResp)localObject).sessionKey = paramProtoResp;
-        setResult(0, 0, "", "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject);
+        paramProtoReq = (RichProto.RichProtoResp.NearbyPeoplePicUpResp)localRichProtoResp.resps.get(0);
+        paramProtoReq.sessionKey = paramProtoResp;
+        setResult(0, 0, "", "", localStatictisInfo, paramProtoReq);
       }
       catch (Exception paramProtoResp)
       {
-        setResult(-1, -9527, BaseTransProcessor.getServerReason("P", -9529L), paramProtoResp.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localStatictisInfo, localRichProtoResp.resps);
+        paramProtoReq = ProcessorReport.getServerReason("P", -9529L);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramProtoResp.getMessage());
+        ((StringBuilder)localObject).append(" hex:");
+        ((StringBuilder)localObject).append(HexUtil.bytes2HexStr(arrayOfByte));
+        setResult(-1, -9527, paramProtoReq, ((StringBuilder)localObject).toString(), localStatictisInfo, localRichProtoResp.resps);
       }
-      break;
-      label264:
-      paramProtoResp = null;
     }
+    RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
   }
   
   public void sendRichProtoReq(RichProto.RichProtoReq paramRichProtoReq)
@@ -117,7 +122,7 @@ public class NearbyPeoplePicUpHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.NearbyPeoplePicUpHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -17,9 +17,8 @@ import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.AppInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.statistics.b;
+import com.tencent.ad.tangram.settings.AdSettingsManager;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.ad.tangram.util.AdAppReceiver;
 import com.tencent.ad.tangram.util.AdAppUtil;
 import com.tencent.ad.tangram.util.AdClickUtil;
@@ -45,88 +44,76 @@ final class c
     localParams.enableAutoDownload = true;
     localParams.appReceiver = paramWeakReference1;
     localParams.isAppPreOrderPublished = true;
-    if (paramAdAppPreOrderTask != null) {}
-    for (paramWeakReference = paramAdAppPreOrderTask.taskId;; paramWeakReference = null)
-    {
-      if (!TextUtils.isEmpty(paramWeakReference))
-      {
-        if (localParams.extrasForIntent == null) {
-          localParams.extrasForIntent = new Bundle();
-        }
-        localParams.extrasForIntent.putString("APP_PREORDER_TASK_ID", paramWeakReference);
-      }
-      return localParams;
+    if (paramAdAppPreOrderTask != null) {
+      paramWeakReference = paramAdAppPreOrderTask.taskId;
+    } else {
+      paramWeakReference = null;
     }
+    if (!TextUtils.isEmpty(paramWeakReference))
+    {
+      if (localParams.extrasForIntent == null) {
+        localParams.extrasForIntent = new Bundle();
+      }
+      localParams.extrasForIntent.putString("APP_PREORDER_TASK_ID", paramWeakReference);
+    }
+    return localParams;
   }
   
   private static AdClickUtil.Result click(WeakReference<Activity> paramWeakReference, AdAppPreOrderTask paramAdAppPreOrderTask, Bundle paramBundle, String paramString, WeakReference<AdAppReceiver> paramWeakReference1, boolean paramBoolean)
   {
     Context localContext;
-    if ((paramWeakReference != null) && (paramWeakReference.get() != null))
-    {
+    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
       localContext = ((Activity)paramWeakReference.get()).getApplicationContext();
-      if (paramBoolean) {
-        break label73;
-      }
-      label28:
-      if (paramBoolean) {
-        break label229;
-      }
+    } else {
+      localContext = null;
     }
-    for (;;)
+    Object localObject;
+    if ((paramBoolean) && (localContext != null) && (!AdAppUtil.isInstalled(localContext, paramAdAppPreOrderTask.content.ad_info.app_info.app_package_name)) && (AdDownloader.getDownloader().isPkgExist(localContext, paramAdAppPreOrderTask.content.ad_info.app_info.app_package_name, paramAdAppPreOrderTask.content.ad_info.app_info.pkg_url)))
     {
-      label33:
-      AdLog.e("AdAppPreOrderManagerForQQReminder", "click handle error");
-      paramAdAppPreOrderTask = new AdClickUtil.Result(AdBrowser.showWithoutAd(paramWeakReference, paramString, paramBundle), 1);
-      paramAdAppPreOrderTask.urlType = 0;
-      paramAdAppPreOrderTask.errorHandled = true;
-      label73:
-      label229:
-      do
+      localObject = AdDownloader.getDownloader().getDownloadInfoByUrl(paramAdAppPreOrderTask.content.ad_info.app_info.pkg_url);
+      if (localObject != null) {}
+    }
+    else
+    {
+      if (paramBoolean)
       {
-        return paramAdAppPreOrderTask;
-        localContext = null;
-        break;
-        if ((localContext == null) || (AdAppUtil.isInstalled(localContext, paramAdAppPreOrderTask.content.ad_info.app_info.app_package_name)) || (!AdDownloader.getDownloader().isPkgExist(localContext, paramAdAppPreOrderTask.content.ad_info.app_info.app_package_name, paramAdAppPreOrderTask.content.ad_info.app_info.pkg_url))) {
-          break label28;
-        }
-        Object localObject = AdDownloader.getDownloader().getDownloadInfoByUrl(paramAdAppPreOrderTask.content.ad_info.app_info.pkg_url);
-        if (localObject == null) {
-          break label28;
-        }
-        paramWeakReference = build(paramWeakReference, paramAdAppPreOrderTask, paramBundle, paramWeakReference1);
-        if (paramWeakReference1.get() != null)
-        {
-          ((AdAppReceiver)paramWeakReference1.get()).register(localContext);
-          ((AdAppReceiver)paramWeakReference1.get()).observe(paramWeakReference);
-        }
-        AdDownloader.getDownloader().installDownload(localObject);
-        return new AdClickUtil.Result(0, 11);
         if ((paramWeakReference1 != null) && (paramWeakReference1.get() != null)) {
           ((AdAppReceiver)paramWeakReference1.get()).register(localContext);
         }
-        paramWeakReference1 = AdClickUtil.handle(build(paramWeakReference, paramAdAppPreOrderTask, paramBundle, paramWeakReference1));
-        if (paramWeakReference1 == null) {
-          break label33;
+        paramAdAppPreOrderTask = AdClickUtil.handle(build(paramWeakReference, paramAdAppPreOrderTask, paramBundle, paramWeakReference1));
+        if ((paramAdAppPreOrderTask != null) && (paramAdAppPreOrderTask.action != 0)) {
+          return paramAdAppPreOrderTask;
         }
-        paramAdAppPreOrderTask = paramWeakReference1;
-      } while (paramWeakReference1.action != 0);
+      }
+      AdLog.e("AdAppPreOrderManagerForQQReminder", "click handle error");
+      paramWeakReference = new AdClickUtil.Result(AdBrowser.showWithoutAd(paramWeakReference, paramString, paramBundle), 1);
+      paramWeakReference.urlType = 0;
+      paramWeakReference.errorHandled = true;
+      return paramWeakReference;
     }
+    paramWeakReference = build(paramWeakReference, paramAdAppPreOrderTask, paramBundle, paramWeakReference1);
+    if (paramWeakReference1.get() != null)
+    {
+      ((AdAppReceiver)paramWeakReference1.get()).register(localContext);
+      ((AdAppReceiver)paramWeakReference1.get()).observe(paramWeakReference);
+    }
+    AdDownloader.getDownloader().installDownload(localObject);
+    return new AdClickUtil.Result(0, 11);
   }
   
   private static long getScheduleTimeMillis(Context paramContext)
   {
-    paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-    if (paramContext != null) {}
-    Date localDate;
-    for (long l1 = paramContext.settingsForAppPreOrder.intervalMillisOfSchedulingReminder;; l1 = 300000L)
-    {
-      long l2 = AdTime.INSTANCE.getServerTimeMillis();
-      paramContext = new Date(l2);
-      localDate = new Date(paramContext.getYear(), paramContext.getMonth(), paramContext.getDate() + 1);
-      if (localDate.getTime() - paramContext.getTime() < l1) {
-        break;
-      }
+    paramContext = AdSettingsManager.INSTANCE.getCache();
+    long l1;
+    if (paramContext != null) {
+      l1 = paramContext.settingsForAppPreOrder.intervalMillisOfSchedulingReminder;
+    } else {
+      l1 = 300000L;
+    }
+    long l2 = AdTime.INSTANCE.getServerTimeMillis();
+    paramContext = new Date(l2);
+    Date localDate = new Date(paramContext.getYear(), paramContext.getMonth(), paramContext.getDate() + 1);
+    if (localDate.getTime() - paramContext.getTime() >= l1) {
       return l2;
     }
     localDate.setMinutes(5);
@@ -135,191 +122,171 @@ final class c
   
   public static void onClicked(WeakReference<Activity> paramWeakReference, AdAppPreOrderTask paramAdAppPreOrderTask, String paramString1, Bundle paramBundle, String paramString2, WeakReference<AdAppReceiver> paramWeakReference1, boolean paramBoolean)
   {
+    Object localObject = null;
     Context localContext;
-    boolean bool;
-    if ((paramWeakReference != null) && (paramWeakReference.get() != null))
-    {
+    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
       localContext = ((Activity)paramWeakReference.get()).getApplicationContext();
-      bool = false;
-      if ((paramBoolean) && (paramAdAppPreOrderTask != null) && (paramAdAppPreOrderTask.isValid(localContext))) {
-        break label171;
-      }
-      AdLog.e("AdAppPreOrderManagerForQQReminder", "onClicked error");
-      paramBoolean = bool;
-      label55:
-      paramString1 = click(paramWeakReference, paramAdAppPreOrderTask, paramBundle, paramString2, paramWeakReference1, paramBoolean);
-      AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("onClicked actionId:%d errorCode:%d", new Object[] { Integer.valueOf(paramString1.action), Integer.valueOf(paramString1.getErrorCode()) }));
-      paramWeakReference = AdBuilder.INSTANCE.build(paramAdAppPreOrderTask.content.ad_info);
-      b.reportAsync(new WeakReference(localContext), paramWeakReference, 319);
-      if (paramAdAppPreOrderTask == null) {
-        break label619;
-      }
-    }
-    label171:
-    label619:
-    for (paramWeakReference = String.valueOf(paramAdAppPreOrderTask.content.ad_info.report_info.trace_info.aid);; paramWeakReference = null)
-    {
-      AdReporterForAnalysis.reportForAppPreOrderClicked(localContext, paramWeakReference, paramString1);
-      return;
+    } else {
       localContext = null;
-      break;
+    }
+    if ((paramBoolean) && (paramAdAppPreOrderTask != null) && (paramAdAppPreOrderTask.isValid(localContext)))
+    {
       int j = paramAdAppPreOrderTask.getQQReminderIndex(paramString1);
       int k = AdAppPreOrderTask.a.getIndex(paramAdAppPreOrderTask.status);
       int i = AdAppPreOrderTask.a.getStage(paramAdAppPreOrderTask.status);
       AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("onClicked taskId:%s status:%d indexFromStatus:%d indexFromReminderId:%d stage:%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) }));
-      if ((paramAdAppPreOrderTask.status < 12) || (paramAdAppPreOrderTask.status > AdAppPreOrderTask.Status.QQREMINDER_END) || (j == -2147483648) || (j != k))
+      if ((paramAdAppPreOrderTask.status >= 12) && (paramAdAppPreOrderTask.status <= AdAppPreOrderTask.Status.QQREMINDER_END) && (j != -2147483648) && (j == k))
+      {
+        k = AdAppPreOrderTask.a.getStatus(4, j);
+        int m = AdAppPreOrderTask.a.getStatus(5, j);
+        j = AdAppPreOrderTask.a.getStatus(6, j);
+        if (i == 0)
+        {
+          AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("onClicked error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
+        }
+        else if (i == 1)
+        {
+          AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("onClicked error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
+        }
+        else if (i == 2)
+        {
+          AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("onClicked error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
+        }
+        else
+        {
+          if (i == 3)
+          {
+            AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, k);
+            AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, m);
+            AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, j);
+          }
+          do
+          {
+            for (;;)
+            {
+              paramBoolean = true;
+              break label487;
+              if (i == 4)
+              {
+                AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, m);
+                AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, j);
+              }
+              else
+              {
+                if (i != 5) {
+                  break;
+                }
+                AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, j);
+              }
+            }
+          } while (i == 6);
+          AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("onClicked error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
+        }
+      }
+      else
       {
         AdLog.e("AdAppPreOrderManagerForQQReminder", "onClicked error");
-        paramBoolean = bool;
-        break label55;
       }
-      k = AdAppPreOrderTask.a.getStatus(4, j);
-      int m = AdAppPreOrderTask.a.getStatus(5, j);
-      j = AdAppPreOrderTask.a.getStatus(6, j);
-      if (i == 0)
-      {
-        AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("onClicked error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
-        paramBoolean = bool;
-        break label55;
-      }
-      if (i == 1)
-      {
-        AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("onClicked error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
-        paramBoolean = bool;
-        break label55;
-      }
-      if (i == 2)
-      {
-        AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("onClicked error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
-        paramBoolean = bool;
-        break label55;
-      }
-      if (i == 3)
-      {
-        AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, k);
-        AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, m);
-        AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, j);
-        paramBoolean = true;
-        break label55;
-      }
-      if (i == 4)
-      {
-        AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, m);
-        AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, j);
-        paramBoolean = true;
-        break label55;
-      }
-      if (i == 5)
-      {
-        AdAppPreOrderManager.INSTANCE.setTaskStatus(paramAdAppPreOrderTask.taskId, j);
-        paramBoolean = true;
-        break label55;
-      }
-      if (i == 6)
-      {
-        paramBoolean = true;
-        break label55;
-      }
-      AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("onClicked error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
-      paramBoolean = bool;
-      break label55;
     }
+    else
+    {
+      AdLog.e("AdAppPreOrderManagerForQQReminder", "onClicked error");
+    }
+    paramBoolean = false;
+    label487:
+    paramString1 = click(paramWeakReference, paramAdAppPreOrderTask, paramBundle, paramString2, paramWeakReference1, paramBoolean);
+    AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("onClicked actionId:%d errorCode:%d", new Object[] { Integer.valueOf(paramString1.action), Integer.valueOf(paramString1.getErrorCode()) }));
+    paramWeakReference = AdBuilder.INSTANCE.build(paramAdAppPreOrderTask.content.ad_info);
+    com.tencent.ad.tangram.statistics.c.reportAsync(new WeakReference(localContext), paramWeakReference, 319);
+    paramWeakReference = localObject;
+    if (paramAdAppPreOrderTask != null) {
+      paramWeakReference = String.valueOf(paramAdAppPreOrderTask.content.ad_info.report_info.trace_info.aid);
+    }
+    AdAnalysisHelperForUtil.reportForAppPreOrderClicked(localContext, paramWeakReference, paramString1);
   }
   
   public static void onDisplayed(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask, String paramString, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (paramAdAppPreOrderTask == null) || (!paramAdAppPreOrderTask.isValid(paramContext)))
+    if ((paramBoolean) && (paramAdAppPreOrderTask != null) && (paramAdAppPreOrderTask.isValid(paramContext)))
     {
-      AdLog.e("AdAppPreOrderManagerForQQReminder", "onDisplayed error");
-      return;
-    }
-    int j = paramAdAppPreOrderTask.getQQReminderIndex(paramString);
-    int k = AdAppPreOrderTask.a.getIndex(paramAdAppPreOrderTask.status);
-    int i = AdAppPreOrderTask.a.getStage(paramAdAppPreOrderTask.status);
-    AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("onDisplayed taskId:%s status:%d indexFromStatus:%d indexFromReminderId:%d stage:%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) }));
-    if ((paramAdAppPreOrderTask.status < 12) || (paramAdAppPreOrderTask.status > AdAppPreOrderTask.Status.QQREMINDER_END) || (j == -2147483648) || (j != k))
-    {
-      AdLog.e("AdAppPreOrderManagerForQQReminder", "onDisplayed error");
-      return;
-    }
-    k = AdAppPreOrderTask.a.getStatus(4, j);
-    j = AdAppPreOrderTask.a.getStatus(5, j);
-    if (i == 0) {}
-    for (;;)
-    {
-      paramAdAppPreOrderTask = AdBuilder.INSTANCE.build(paramAdAppPreOrderTask.content.ad_info);
-      b.reportAsync(new WeakReference(paramContext), paramAdAppPreOrderTask, 318);
-      return;
-      if ((i != 1) && (i != 2)) {
-        if (i == 3)
-        {
-          AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, k);
-          AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, j);
+      int j = paramAdAppPreOrderTask.getQQReminderIndex(paramString);
+      int k = AdAppPreOrderTask.a.getIndex(paramAdAppPreOrderTask.status);
+      int i = AdAppPreOrderTask.a.getStage(paramAdAppPreOrderTask.status);
+      AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("onDisplayed taskId:%s status:%d indexFromStatus:%d indexFromReminderId:%d stage:%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) }));
+      if ((paramAdAppPreOrderTask.status >= 12) && (paramAdAppPreOrderTask.status <= AdAppPreOrderTask.Status.QQREMINDER_END) && (j != -2147483648) && (j == k))
+      {
+        k = AdAppPreOrderTask.a.getStatus(4, j);
+        j = AdAppPreOrderTask.a.getStatus(5, j);
+        if ((i != 0) && (i != 1) && (i != 2)) {
+          if (i == 3)
+          {
+            AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, k);
+            AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, j);
+          }
+          else if (i == 4)
+          {
+            AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, j);
+          }
+          else if ((i != 5) && (i != 6))
+          {
+            AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("onDisplayed error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
+          }
         }
-        else if (i == 4)
-        {
-          AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, j);
-        }
-        else if ((i != 5) && (i != 6))
-        {
-          AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("onDisplayed error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
-        }
+        paramAdAppPreOrderTask = AdBuilder.INSTANCE.build(paramAdAppPreOrderTask.content.ad_info);
+        com.tencent.ad.tangram.statistics.c.reportAsync(new WeakReference(paramContext), paramAdAppPreOrderTask, 318);
+        return;
       }
+      AdLog.e("AdAppPreOrderManagerForQQReminder", "onDisplayed error");
+      return;
     }
+    AdLog.e("AdAppPreOrderManagerForQQReminder", "onDisplayed error");
   }
   
   private static void reschedule(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask, int paramInt)
   {
-    Object localObject = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
+    Object localObject = AdSettingsManager.INSTANCE.getCache();
     long l;
-    int i;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       l = ((gdt_settings.Settings)localObject).settingsForAppPreOrder.intervalMillisOfReschedulingReminder;
-      if (localObject == null) {
-        break label75;
-      }
-      i = ((gdt_settings.Settings)localObject).settingsForAppPreOrder.maxCountOfReschedulingReminder;
-      label38:
-      localObject = paramAdAppPreOrderTask.getQQReminder(paramInt);
-      if ((localObject != null) && (((AdAppPreOrderTask.a)localObject).isValid())) {
-        break label80;
-      }
-      AdLog.e("AdAppPreOrderManagerForQQReminder", "reschedule error, reminder is null or not valid");
-    }
-    label75:
-    label80:
-    while (l + ((AdAppPreOrderTask.a)localObject).scheduleTimeMillis >= AdTime.INSTANCE.getServerTimeMillis())
-    {
-      return;
+    } else {
       l = 3000L;
-      break;
-      i = 3;
-      break label38;
     }
-    if (paramAdAppPreOrderTask.reminderRescheduleCount >= i)
+    int i;
+    if (localObject != null) {
+      i = ((gdt_settings.Settings)localObject).settingsForAppPreOrder.maxCountOfReschedulingReminder;
+    } else {
+      i = 3;
+    }
+    localObject = paramAdAppPreOrderTask.getQQReminder(paramInt);
+    if ((localObject != null) && (((AdAppPreOrderTask.a)localObject).isValid()))
     {
-      AdAppPreOrderManager.INSTANCE.setTaskFinishedAndCommit(paramAdAppPreOrderTask.taskId, 221);
+      if (((AdAppPreOrderTask.a)localObject).scheduleTimeMillis + l >= AdTime.INSTANCE.getServerTimeMillis()) {
+        return;
+      }
+      if (paramAdAppPreOrderTask.reminderRescheduleCount >= i)
+      {
+        AdAppPreOrderManager.INSTANCE.setTaskFinishedAndCommit(paramAdAppPreOrderTask.taskId, 221);
+        return;
+      }
+      AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("reschedule taskId:%s status:%d index:%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(paramInt) }));
+      AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, paramAdAppPreOrderTask.status, paramAdAppPreOrderTask.reminderSwichOnCount, paramAdAppPreOrderTask.reminderRescheduleCount + 1, paramAdAppPreOrderTask.reminders);
+      schedule(paramContext, paramAdAppPreOrderTask, paramInt);
       return;
     }
-    AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("reschedule taskId:%s status:%d index:%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(paramInt) }));
-    AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, paramAdAppPreOrderTask.status, paramAdAppPreOrderTask.reminderSwichOnCount, paramAdAppPreOrderTask.reminderRescheduleCount + 1, paramAdAppPreOrderTask.reminders);
-    schedule(paramContext, paramAdAppPreOrderTask, paramInt);
+    AdLog.e("AdAppPreOrderManagerForQQReminder", "reschedule error, reminder is null or not valid");
   }
   
   public static void runTask(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = AdAppPreOrderTask.a.getStage(paramAdAppPreOrderTask.status);
     AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("runTask taskId:%s status:%d stage:%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(i) }));
-    if (paramAdAppPreOrderTask.status == 10) {
-      runTaskOnDownloadSuccess(paramContext, paramAdAppPreOrderTask);
-    }
-    do
+    if (paramAdAppPreOrderTask.status == 10)
     {
-      do
-      {
-        return;
-      } while ((paramAdAppPreOrderTask.status < 12) || (paramAdAppPreOrderTask.status > AdAppPreOrderTask.Status.QQREMINDER_END));
+      runTaskOnDownloadSuccess(paramContext, paramAdAppPreOrderTask);
+      return;
+    }
+    if ((paramAdAppPreOrderTask.status >= 12) && (paramAdAppPreOrderTask.status <= AdAppPreOrderTask.Status.QQREMINDER_END))
+    {
       if (i == 0)
       {
         runTaskOnSwichOnStart(paramContext, paramAdAppPreOrderTask, paramBoolean1);
@@ -345,13 +312,16 @@ final class c
         runTaskOnNotified(paramContext, paramAdAppPreOrderTask);
         return;
       }
-    } while (i == 5);
-    if (i == 6)
-    {
-      runTaskOnClicked(paramContext, paramAdAppPreOrderTask);
-      return;
+      if (i == 5) {
+        return;
+      }
+      if (i == 6)
+      {
+        runTaskOnClicked(paramContext, paramAdAppPreOrderTask);
+        return;
+      }
+      AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("runTask error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
     }
-    AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("runTask error taskId:%s status%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
   }
   
   private static void runTaskOnClicked(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask)
@@ -369,38 +339,37 @@ final class c
   
   private static void runTaskOnNotified(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask)
   {
-    Object localObject1 = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
+    Object localObject1 = AdSettingsManager.INSTANCE.getCache();
     int i;
-    int j;
-    Object localObject2;
-    if (localObject1 != null)
-    {
+    if (localObject1 != null) {
       i = ((gdt_settings.Settings)localObject1).settingsForAppPreOrder.maxCountOfReminder;
-      j = AdAppPreOrderTask.a.getIndex(paramAdAppPreOrderTask.status);
-      localObject2 = paramAdAppPreOrderTask.getQQReminder(j);
-      if ((j >= 0) && (localObject2 != null) && (((AdAppPreOrderTask.a)localObject2).isValid())) {
-        break label69;
-      }
-      AdLog.e("AdAppPreOrderManagerForQQReminder", "runTaskOnNoticed error, index < 0 or scheduleTimeMillis is null");
-    }
-    label69:
-    do
-    {
-      return;
+    } else {
       i = 3;
-      break;
+    }
+    int j = AdAppPreOrderTask.a.getIndex(paramAdAppPreOrderTask.status);
+    Object localObject2 = paramAdAppPreOrderTask.getQQReminder(j);
+    if ((j >= 0) && (localObject2 != null) && (((AdAppPreOrderTask.a)localObject2).isValid()))
+    {
       localObject1 = new Date(AdTime.INSTANCE.getServerTimeMillis());
       localObject1 = new Date(((Date)localObject1).getYear(), ((Date)localObject1).getMonth(), ((Date)localObject1).getDay());
       localObject2 = new Date(((AdAppPreOrderTask.a)localObject2).scheduleTimeMillis);
       localObject2 = new Date(((Date)localObject2).getYear(), ((Date)localObject2).getMonth(), ((Date)localObject2).getDay());
       AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("runTaskOnNotified taskId:%s status%d index%d currentDate:%s scheduleDate:%s", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(j), localObject1, localObject2 }));
-    } while ((j == i - 1) || (((Date)localObject2).equals(localObject1)));
-    if (((Date)localObject2).before((Date)localObject1))
-    {
-      schedule(paramContext, paramAdAppPreOrderTask, j + 1);
+      if (j == i - 1) {
+        return;
+      }
+      if (((Date)localObject2).equals(localObject1)) {
+        return;
+      }
+      if (((Date)localObject2).before((Date)localObject1))
+      {
+        schedule(paramContext, paramAdAppPreOrderTask, j + 1);
+        return;
+      }
+      AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("runTaskOnNotified error taskId:%s status%d scheduleDate after currentDate ", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
       return;
     }
-    AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("runTaskOnNotified error taskId:%s status%d scheduleDate after currentDate ", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status) }));
+    AdLog.e("AdAppPreOrderManagerForQQReminder", "runTaskOnNoticed error, index < 0 or scheduleTimeMillis is null");
   }
   
   private static void runTaskOnScheduled(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask)
@@ -408,19 +377,19 @@ final class c
     int i = AdAppPreOrderTask.a.getIndex(paramAdAppPreOrderTask.status);
     int j = AdAppPreOrderTask.a.getStatus(4, i);
     AdAppPreOrderTask.a locala = paramAdAppPreOrderTask.getQQReminder(i);
-    if ((i < 0) || (j < 0) || (locala == null) || (!locala.isValid()))
+    if ((i >= 0) && (j >= 0) && (locala != null) && (locala.isValid()))
     {
-      AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("runTaskOnScheduled failed taskId:%s status:%d index:%d statusNotified:%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(i), Integer.valueOf(j) }));
+      boolean bool = AdQQReminderManager.INSTANCE.isQQReminderNotified(locala.id, paramAdAppPreOrderTask.taskId);
+      AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("runTaskOnScheduled taskId:%s status:%d index:%d reminderId:%s notified:%b", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(i), locala.id, Boolean.valueOf(bool) }));
+      if (bool)
+      {
+        AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, j);
+        return;
+      }
+      reschedule(paramContext, paramAdAppPreOrderTask, i);
       return;
     }
-    boolean bool = AdQQReminderManager.INSTANCE.isQQReminderNotified(locala.id, paramAdAppPreOrderTask.taskId);
-    AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("runTaskOnScheduled taskId:%s status:%d index:%d reminderId:%s notified:%b", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(i), locala.id, Boolean.valueOf(bool) }));
-    if (bool)
-    {
-      AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, j);
-      return;
-    }
-    reschedule(paramContext, paramAdAppPreOrderTask, i);
+    AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("runTaskOnScheduled failed taskId:%s status:%d index:%d statusNotified:%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(i), Integer.valueOf(j) }));
   }
   
   private static void runTaskOnSwichOnFailed(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask, boolean paramBoolean)
@@ -436,17 +405,18 @@ final class c
       return;
     }
     int j = AdAppPreOrderTask.a.getIndex(paramAdAppPreOrderTask.status);
-    if (AdQQReminderManager.INSTANCE.isQQReminderSwichOn()) {}
-    for (int i = 2;; i = 1)
+    if (AdQQReminderManager.INSTANCE.isQQReminderSwichOn()) {
+      i = 2;
+    } else {
+      i = 1;
+    }
+    int i = AdAppPreOrderTask.a.getStatus(i, j);
+    if ((j >= 0) && (i >= 0))
     {
-      i = AdAppPreOrderTask.a.getStatus(i, j);
-      if ((j >= 0) && (i >= 0)) {
-        break;
-      }
-      AdLog.e("AdAppPreOrderManagerForQQReminder", "runTaskOnSwichOnStart error");
+      AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, i);
       return;
     }
-    AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, i);
+    AdLog.e("AdAppPreOrderManagerForQQReminder", "runTaskOnSwichOnStart error");
   }
   
   private static void runTaskOnSwichOnSuccess(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask)
@@ -468,67 +438,49 @@ final class c
     }
     boolean bool = AdQQReminderManager.INSTANCE.isQQReminderSwichOn();
     AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("schedule taskId:%s status:%d index:%d switchOn:%b", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
-    Object localObject;
     if (bool)
     {
-      localObject = (AdAppPreOrderTask.a[])paramAdAppPreOrderTask.reminders.clone();
-      if (paramInt <= paramAdAppPreOrderTask.getQQRemindersSize() - 1) {
-        break label285;
+      Object localObject2 = (AdAppPreOrderTask.a[])paramAdAppPreOrderTask.reminders.clone();
+      Object localObject1 = localObject2;
+      if (paramInt > paramAdAppPreOrderTask.getQQRemindersSize() - 1)
+      {
+        localObject1 = new AdAppPreOrderTask.a();
+        ((AdAppPreOrderTask.a)localObject1).id = AdQQReminderManager.INSTANCE.generateQQReminderId();
+        localObject2 = new ArrayList(Arrays.asList((Object[])localObject2));
+        ((ArrayList)localObject2).add(localObject1);
+        localObject1 = (AdAppPreOrderTask.a[])((ArrayList)localObject2).toArray(new AdAppPreOrderTask.a[0]);
       }
-      AdAppPreOrderTask.a locala = new AdAppPreOrderTask.a();
-      locala.id = AdQQReminderManager.INSTANCE.generateQQReminderId();
-      localObject = new ArrayList(Arrays.asList((Object[])localObject));
-      ((ArrayList)localObject).add(locala);
-      localObject = (AdAppPreOrderTask.a[])((ArrayList)localObject).toArray(new AdAppPreOrderTask.a[0]);
-    }
-    label285:
-    for (;;)
-    {
-      localObject[paramInt].scheduleTimeMillis = getScheduleTimeMillis(paramContext);
-      if (!localObject[paramInt].isValid())
+      localObject1[paramInt].scheduleTimeMillis = getScheduleTimeMillis(paramContext);
+      if (!localObject1[paramInt].isValid())
       {
         AdLog.e("AdAppPreOrderManagerForQQReminder", "schedule error, newReminder is not valid");
         return;
       }
       int i = AdAppPreOrderTask.a.getStatus(3, paramInt);
-      AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, i, paramAdAppPreOrderTask.reminderSwichOnCount, paramAdAppPreOrderTask.reminderRescheduleCount, (AdAppPreOrderTask.a[])localObject);
-      AdQQReminderManager.INSTANCE.scheduleQQReminder(localObject[paramInt].id, paramAdAppPreOrderTask.taskId, paramAdAppPreOrderTask.content.str_title, paramAdAppPreOrderTask.content.str_content, paramAdAppPreOrderTask.content.str_button_txt, paramAdAppPreOrderTask.content.str_img_url, localObject[paramInt].scheduleTimeMillis);
-      return;
-      swichOn(paramContext, paramAdAppPreOrderTask);
+      AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, i, paramAdAppPreOrderTask.reminderSwichOnCount, paramAdAppPreOrderTask.reminderRescheduleCount, (AdAppPreOrderTask.a[])localObject1);
+      AdQQReminderManager.INSTANCE.scheduleQQReminder(localObject1[paramInt].id, paramAdAppPreOrderTask.taskId, paramAdAppPreOrderTask.content.str_title, paramAdAppPreOrderTask.content.str_content, paramAdAppPreOrderTask.content.str_button_txt, paramAdAppPreOrderTask.content.str_img_url, localObject1[paramInt].scheduleTimeMillis);
       return;
     }
+    swichOn(paramContext, paramAdAppPreOrderTask);
   }
   
   private static void swichOn(Context paramContext, AdAppPreOrderTask paramAdAppPreOrderTask)
   {
-    gdt_settings.Settings localSettings = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
+    gdt_settings.Settings localSettings = AdSettingsManager.INSTANCE.getCache();
     int i;
-    int j;
-    label38:
-    int k;
-    int m;
-    if (localSettings != null)
-    {
+    if (localSettings != null) {
       i = localSettings.settingsForAppPreOrder.maxCountOfSwitchingOnReminder;
-      j = AdAppPreOrderTask.a.getIndex(paramAdAppPreOrderTask.status);
-      if (j == -2147483648) {
-        break label127;
-      }
-      k = AdAppPreOrderTask.a.getStatus(0, j);
-      m = AdAppPreOrderTask.a.getStatus(2, j);
-      if ((j >= 0) && (k >= 0) && (m >= 0)) {
-        break label132;
-      }
-      AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("swichOn failed taskId:%s status%d index%d statusSwitchOnStart:%d statusSwitchOnSuccess%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) }));
-    }
-    label127:
-    do
-    {
-      return;
+    } else {
       i = 3;
-      break;
+    }
+    int j = AdAppPreOrderTask.a.getIndex(paramAdAppPreOrderTask.status);
+    if (j == -2147483648) {
       j = 0;
-      break label38;
+    }
+    int k = AdAppPreOrderTask.a.getStatus(0, j);
+    int m = AdAppPreOrderTask.a.getStatus(2, j);
+    if ((j >= 0) && (k >= 0) && (m >= 0))
+    {
       AdLog.i("AdAppPreOrderManagerForQQReminder", String.format("swichOn taskId:%s status:%d index:%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(j) }));
       if (AdQQReminderManager.INSTANCE.isQQReminderSwichOn())
       {
@@ -541,10 +493,14 @@ final class c
         AdAppPreOrderManager.INSTANCE.setTaskFinishedAndCommit(paramAdAppPreOrderTask.taskId, 220);
         return;
       }
-    } while (!AdNet.isNetValid(paramContext));
-    label132:
-    AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, k, paramAdAppPreOrderTask.reminderSwichOnCount + 1, paramAdAppPreOrderTask.reminderRescheduleCount, paramAdAppPreOrderTask.reminders);
-    AdQQReminderManager.INSTANCE.swichOnQQReminder();
+      if (AdNet.isNetValid(paramContext))
+      {
+        AdAppPreOrderManager.INSTANCE.setTaskStatusAndCommit(paramAdAppPreOrderTask.taskId, k, 1 + paramAdAppPreOrderTask.reminderSwichOnCount, paramAdAppPreOrderTask.reminderRescheduleCount, paramAdAppPreOrderTask.reminders);
+        AdQQReminderManager.INSTANCE.swichOnQQReminder();
+      }
+      return;
+    }
+    AdLog.e("AdAppPreOrderManagerForQQReminder", String.format("swichOn failed taskId:%s status%d index%d statusSwitchOnStart:%d statusSwitchOnSuccess%d", new Object[] { paramAdAppPreOrderTask.taskId, Integer.valueOf(paramAdAppPreOrderTask.status), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) }));
   }
 }
 

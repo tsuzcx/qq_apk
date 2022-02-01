@@ -25,17 +25,21 @@ class HttpCmdManager$1
       this.val$result.onCmdListener(false, new JSONObject());
       return;
     }
-    if (this.val$result != null) {
-      this.val$result.onCmdListener(false, new JSONObject());
+    paramArrayOfByte = this.val$result;
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.onCmdListener(false, new JSONObject());
     }
-    QLog.e("HttpCmdManager", 1, "sendRequest, retCode: " + paramInt);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("sendRequest, retCode: ");
+    paramArrayOfByte.append(paramInt);
+    QLog.e("HttpCmdManager", 1, paramArrayOfByte.toString());
   }
   
   public void onProgressUpdate(int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.network.http.HttpCmdManager.1
  * JD-Core Version:    0.7.0.1
  */

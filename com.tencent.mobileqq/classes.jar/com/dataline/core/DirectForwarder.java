@@ -56,96 +56,114 @@ public class DirectForwarder
   private int a(String paramString, int paramInt, boolean paramBoolean, DirectForwarder.CallBack paramCallBack)
   {
     StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_image");
-    if ((paramString == null) || (paramString.equals("")))
+    if ((paramString != null) && (!paramString.equals("")))
+    {
+      ArrayList localArrayList = new ArrayList();
+      String[] arrayOfString = paramString.split(";");
+      int i = 0;
+      for (int j = 0; i < arrayOfString.length; j = k)
+      {
+        if (FileUtil.a(arrayOfString[i])) {
+          paramString = arrayOfString[i];
+        }
+        try
+        {
+          paramString = URLDecoder.decode(arrayOfString[i], "UTF-8");
+        }
+        catch (UnsupportedEncodingException paramString)
+        {
+          int k;
+          StringBuilder localStringBuilder;
+          break label266;
+        }
+        catch (IllegalArgumentException paramString)
+        {
+          label103:
+          break label103;
+        }
+        paramString = arrayOfString[i];
+        if (!TextUtils.isEmpty(paramString))
+        {
+          if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
+          {
+            localArrayList.add(paramString);
+            k = j;
+          }
+          else
+          {
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800492E", "0X800492E", 0, 0, "", "", "", "");
+            if (QLog.isColorLevel()) {
+              QLog.e("qqdataline", 2, "shareFromMigSdk|report send link:0X800492E.");
+            }
+            k = j;
+            if (d(paramString, paramInt, paramBoolean, paramCallBack) == 0) {
+              k = 1;
+            }
+          }
+        }
+        else
+        {
+          k = j;
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("forwardImage|file path invalid. path=");
+            localStringBuilder.append(paramString);
+            QLog.e("qqdataline", 2, localStringBuilder.toString());
+            k = j;
+            break label315;
+            label266:
+            k = j;
+            if (QLog.isColorLevel())
+            {
+              paramString = new StringBuilder();
+              paramString.append("forwardImage. decode exp. imageUrls[i]=");
+              paramString.append(arrayOfString[i]);
+              QLog.e("qqdataline", 2, paramString.toString());
+              k = j;
+            }
+          }
+        }
+        label315:
+        i += 1;
+      }
+      if (!localArrayList.isEmpty())
+      {
+        if (paramBoolean) {
+          if (localArrayList.size() > 1)
+          {
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004930", "0X8004930", 0, 0, "", "", "", "");
+            if (QLog.isColorLevel()) {
+              QLog.e("qqdataline", 2, "forwardImage shareFromMigSdk|report send multi pic:0X8004930.");
+            }
+          }
+          else if (localArrayList.size() == 1)
+          {
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800492F", "0X800492F", 0, 0, "", "", "", "");
+            if (QLog.isColorLevel()) {
+              QLog.e("qqdataline", 2, "forwardImage shareFromMigSdk|report single pics:0X800492F.");
+            }
+          }
+        }
+        if (a(localArrayList, 1, paramInt, paramBoolean, paramCallBack) != 0)
+        {
+          if (j != 0) {
+            return 0;
+          }
+          return 8;
+        }
+        return 0;
+      }
+      if (j != 0) {
+        return 0;
+      }
+      return 4;
+    }
+    else
     {
       QLog.e(jdField_a_of_type_JavaLangString, 2, "forwardPhoto. path=null");
       return 4;
     }
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = paramString.split(";");
-    int j = 0;
-    int i = 0;
-    if (j < arrayOfString.length)
-    {
-      if (FileUtil.b(arrayOfString[j]))
-      {
-        paramString = arrayOfString[j];
-        label94:
-        if (TextUtils.isEmpty(paramString)) {
-          break label257;
-        }
-        if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://"))) {
-          break label247;
-        }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800492E", "0X800492E", 0, 0, "", "", "", "");
-        if (QLog.isColorLevel()) {
-          QLog.e("qqdataline", 2, "shareFromMigSdk|report send link:0X800492E.");
-        }
-        if (d(paramString, paramInt, paramBoolean, paramCallBack) == 0) {
-          i = 1;
-        }
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          j += 1;
-          break;
-          try
-          {
-            paramString = URLDecoder.decode(arrayOfString[j], "UTF-8");
-          }
-          catch (UnsupportedEncodingException paramString)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("qqdataline", 2, "forwardImage. decode exp. imageUrls[i]=" + arrayOfString[j]);
-            }
-          }
-          catch (IllegalArgumentException paramString)
-          {
-            paramString = arrayOfString[j];
-          }
-        }
-        break label94;
-        label247:
-        localArrayList.add(paramString);
-        continue;
-        label257:
-        if (QLog.isColorLevel()) {
-          QLog.e("qqdataline", 2, "forwardImage|file path invalid. path=" + paramString);
-        }
-      }
-    }
-    if (!localArrayList.isEmpty())
-    {
-      if (paramBoolean)
-      {
-        if (localArrayList.size() <= 1) {
-          break label374;
-        }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004930", "0X8004930", 0, 0, "", "", "", "");
-        if (QLog.isColorLevel()) {
-          QLog.e("qqdataline", 2, "forwardImage shareFromMigSdk|report send multi pic:0X8004930.");
-        }
-      }
-      while ((a(localArrayList, 1, paramInt, paramBoolean, paramCallBack) == 0) || (i != 0))
-      {
-        return 0;
-        label374:
-        if (localArrayList.size() == 1)
-        {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800492F", "0X800492F", 0, 0, "", "", "", "");
-          if (QLog.isColorLevel()) {
-            QLog.e("qqdataline", 2, "forwardImage shareFromMigSdk|report single pics:0X800492F.");
-          }
-        }
-      }
-      return 8;
-    }
-    if (i != 0) {
-      return 0;
-    }
-    return 4;
   }
   
   private int a(ArrayList<String> paramArrayList, int paramInt1, int paramInt2, boolean paramBoolean, DirectForwarder.CallBack paramCallBack)
@@ -162,12 +180,15 @@ public class DirectForwarder
     }
     if (paramBoolean)
     {
-      int i = 0;
       localObject = "";
+      int i = 0;
       while (i < paramArrayList.size())
       {
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800492D", "0X800492D", 0, 0, "", "", "", "");
-        localObject = (String)localObject + "sendMultipleFile shareFromMigSdk|report send one from sdk:0X800492D.";
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("sendMultipleFile shareFromMigSdk|report send one from sdk:0X800492D.");
+        localObject = localStringBuilder.toString();
         i += 1;
       }
       if (QLog.isColorLevel()) {
@@ -183,7 +204,7 @@ public class DirectForwarder
       }
       return 128;
     }
-    if ((NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) && (!NetworkUtil.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) && (l > 3145728L))
+    if ((NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) && (!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) && (l > 3145728L))
     {
       if (paramCallBack != null) {
         paramCallBack.a((AsyncTask)localObject, paramInt1);
@@ -196,16 +217,16 @@ public class DirectForwarder
   
   private long a(ArrayList<String> paramArrayList)
   {
+    long l = 0L;
     if (paramArrayList == null) {
       return 0L;
     }
     paramArrayList = paramArrayList.iterator();
-    long l = 0L;
     while (paramArrayList.hasNext())
     {
       String str = (String)paramArrayList.next();
       if (str != null) {
-        l = new VFSFile(str).length() + l;
+        l += new VFSFile(str).length();
       }
     }
     return l;
@@ -214,13 +235,13 @@ public class DirectForwarder
   private DataLineMsgRecord a(ForwardFileInfo paramForwardFileInfo, boolean paramBoolean, int paramInt)
   {
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.b());
-    if (localFileManagerEntity == null) {}
-    int k;
-    do
-    {
+    if (localFileManagerEntity == null) {
       return null;
-      k = DataLineHandler.a(localFileManagerEntity);
-    } while (!DataLineHandler.d(k));
+    }
+    int k = DataLineHandler.a(localFileManagerEntity);
+    if (!DataLineHandler.d(k)) {
+      return null;
+    }
     int j = DataLineHandler.a(paramForwardFileInfo.d(), paramBoolean);
     int i = j;
     if (!paramBoolean)
@@ -244,10 +265,13 @@ public class DirectForwarder
     if (!TextUtils.isEmpty(localFileManagerEntity.peerUin)) {
       localDataLineMsgRecord.uOwnerUin = Long.parseLong(localFileManagerEntity.peerUin.replace("+", ""));
     }
-    if (TextUtils.isEmpty(paramForwardFileInfo.a())) {}
-    for (localDataLineMsgRecord.path = paramForwardFileInfo.d();; localDataLineMsgRecord.path = paramForwardFileInfo.a()) {
+    if (TextUtils.isEmpty(paramForwardFileInfo.a()))
+    {
+      localDataLineMsgRecord.path = paramForwardFileInfo.d();
       return localDataLineMsgRecord;
     }
+    localDataLineMsgRecord.path = paramForwardFileInfo.a();
+    return localDataLineMsgRecord;
   }
   
   public static void a(int paramInt1, int paramInt2)
@@ -261,182 +285,217 @@ public class DirectForwarder
   public static void a(Context paramContext, int paramInt)
   {
     QQToast localQQToast = new QQToast(paramContext);
-    localQQToast.a(2130839690);
+    localQQToast.a(2130839548);
     localQQToast.d(2000);
     localQQToast.c(paramInt);
-    localQQToast.b(paramContext.getResources().getDimensionPixelSize(2131299166) - (int)DisplayUtils.a(paramContext, 5.0F));
+    localQQToast.b(paramContext.getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(paramContext, 5.0F));
   }
   
   public static void a(Context paramContext, AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt, FMDialogUtil.FMDialogInterface paramFMDialogInterface)
   {
-    FMDialogUtil.a(paramContext, 2131692609, 2131692614, new DirectForwarder.2(paramAsyncTask, paramInt, paramFMDialogInterface));
+    FMDialogUtil.a(paramContext, 2131692561, 2131692566, new DirectForwarder.2(paramAsyncTask, paramInt, paramFMDialogInterface));
   }
   
   public static void a(String paramString, int paramInt)
   {
     Context localContext = BaseApplicationImpl.getApplication().getBaseContext();
-    QQToast.a(localContext, paramInt, paramString, 1).b(localContext.getResources().getDimensionPixelSize(2131299166) - (int)DisplayUtils.a(localContext, 5.0F));
+    QQToast.a(localContext, paramInt, paramString, 1).b(localContext.getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(localContext, 5.0F));
   }
   
   private boolean a(Bundle paramBundle, ForwardFileInfo paramForwardFileInfo, int paramInt1, int paramInt2)
   {
-    int i = 7;
-    if (paramForwardFileInfo == null) {}
-    FileManagerEntity localFileManagerEntity1;
-    boolean bool;
-    do
+    if (paramForwardFileInfo == null) {
+      return false;
+    }
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.b());
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      do
+      localObject1 = localObject2;
+      if (paramForwardFileInfo.d() == 10)
       {
-        return false;
-        FileManagerEntity localFileManagerEntity2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramForwardFileInfo.b());
-        localFileManagerEntity1 = localFileManagerEntity2;
-        if (localFileManagerEntity2 == null)
-        {
-          localFileManagerEntity1 = localFileManagerEntity2;
-          if (paramForwardFileInfo.d() == 10) {
-            localFileManagerEntity1 = QfavHelper.a(paramBundle, paramForwardFileInfo.a() + "", 7);
-          }
-        }
-      } while (localFileManagerEntity1 == null);
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "ForwardOfflineFile forwardFileType: " + paramInt1 + " devType:" + paramInt2);
-      int j = DataLineHandler.a(localFileManagerEntity1);
-      switch (j)
-      {
-      case 4: 
-      case 5: 
-      default: 
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "ForwardOfflineFile fileFrom " + j + " is not handled");
-        return false;
-      case 3: 
-        if (paramInt1 != 101) {
-          break label247;
-        }
-        bool = true;
-        paramBundle = a(paramForwardFileInfo, bool, paramInt2);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramForwardFileInfo.a());
+        ((StringBuilder)localObject1).append("");
+        localObject1 = QfavHelper.a(paramBundle, ((StringBuilder)localObject1).toString(), 7);
       }
-    } while (paramBundle == null);
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramBundle, false);
-    for (;;)
+    }
+    if (localObject1 == null) {
+      return false;
+    }
+    paramBundle = jdField_a_of_type_JavaLangString;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("ForwardOfflineFile forwardFileType: ");
+    ((StringBuilder)localObject2).append(paramInt1);
+    ((StringBuilder)localObject2).append(" devType:");
+    ((StringBuilder)localObject2).append(paramInt2);
+    QLog.i(paramBundle, 1, ((StringBuilder)localObject2).toString());
+    int i = DataLineHandler.a((FileManagerEntity)localObject1);
+    if (i != 1)
     {
-      return true;
-      label247:
-      bool = false;
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(3, paramForwardFileInfo.b(), paramInt2);
-      continue;
-      paramInt1 = i;
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 6)
+          {
+            paramBundle = jdField_a_of_type_JavaLangString;
+            paramForwardFileInfo = new StringBuilder();
+            paramForwardFileInfo.append("ForwardOfflineFile fileFrom ");
+            paramForwardFileInfo.append(i);
+            paramForwardFileInfo.append(" is not handled");
+            QLog.w(paramBundle, 1, paramForwardFileInfo.toString());
+            return false;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a((FileManagerEntity)localObject1, "7", 6000, paramForwardFileInfo.jdField_a_of_type_Int);
+          return true;
+        }
+        boolean bool;
+        if (paramInt1 == 101) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        paramBundle = a(paramForwardFileInfo, bool, paramInt2);
+        if (paramBundle == null) {
+          return false;
+        }
+        ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramBundle, false);
+        return true;
+      }
       if (paramInt2 == 1) {
         paramInt1 = 6003;
+      } else {
+        paramInt1 = 7;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramForwardFileInfo.b(), paramForwardFileInfo.e(), paramForwardFileInfo.a(), Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), paramInt1, paramForwardFileInfo.a());
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localFileManagerEntity1, "7", 6000, paramForwardFileInfo.jdField_a_of_type_Int);
+      return true;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(3, paramForwardFileInfo.b(), paramInt2);
+    return true;
   }
   
   private int b(String paramString, int paramInt, boolean paramBoolean, DirectForwarder.CallBack paramCallBack)
   {
     StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_file");
-    if ((paramString == null) || (paramString.equals("")))
+    if ((paramString != null) && (!paramString.equals("")))
+    {
+      ArrayList localArrayList = new ArrayList();
+      String[] arrayOfString = paramString.split(";");
+      int i = 0;
+      for (int j = 0; i < arrayOfString.length; j = k)
+      {
+        if (FileUtil.a(arrayOfString[i])) {
+          paramString = arrayOfString[i];
+        }
+        try
+        {
+          paramString = URLDecoder.decode(arrayOfString[i], "UTF-8");
+        }
+        catch (UnsupportedEncodingException paramString)
+        {
+          int k;
+          StringBuilder localStringBuilder;
+          break label227;
+        }
+        catch (IllegalArgumentException paramString)
+        {
+          label104:
+          break label104;
+        }
+        paramString = arrayOfString[i];
+        if (!TextUtils.isEmpty(paramString))
+        {
+          if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
+          {
+            localArrayList.add(paramString);
+            k = j;
+          }
+          else
+          {
+            k = j;
+            if (d(paramString, paramInt, paramBoolean, paramCallBack) == 0) {
+              k = 1;
+            }
+          }
+        }
+        else
+        {
+          k = j;
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("forwardFile|file path invalid. path=");
+            localStringBuilder.append(paramString);
+            QLog.e("qqdataline", 2, localStringBuilder.toString());
+            k = j;
+            break label277;
+            label227:
+            k = j;
+            if (QLog.isColorLevel())
+            {
+              paramString = new StringBuilder();
+              paramString.append("forwardFile|decode exp. imageUrls[i]=");
+              paramString.append(arrayOfString[i]);
+              QLog.e("qqdataline", 2, paramString.toString());
+              k = j;
+            }
+          }
+        }
+        label277:
+        i += 1;
+      }
+      if (!localArrayList.isEmpty())
+      {
+        if (paramBoolean)
+        {
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004932", "0X8004932", 0, 0, "", "", "", "");
+          if (QLog.isColorLevel()) {
+            QLog.e("qqdataline", 2, "forwardFile shareFromMigSdk|report send file:0X8004932.");
+          }
+        }
+        if (a(localArrayList, 0, paramInt, paramBoolean, paramCallBack) != 0)
+        {
+          if (j != 0) {
+            return 0;
+          }
+          return 8;
+        }
+        return 0;
+      }
+      if (j != 0) {
+        return 0;
+      }
+      return 4;
+    }
+    else
     {
       QLog.e(jdField_a_of_type_JavaLangString, 2, "forwardFile. path=null");
       return 4;
     }
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = paramString.split(";");
-    int j = 0;
-    int i = 0;
-    if (j < arrayOfString.length)
-    {
-      if (FileUtil.b(arrayOfString[j]))
-      {
-        paramString = arrayOfString[j];
-        label96:
-        if (TextUtils.isEmpty(paramString)) {
-          break label219;
-        }
-        if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://"))) {
-          break label209;
-        }
-        if (d(paramString, paramInt, paramBoolean, paramCallBack) == 0) {
-          i = 1;
-        }
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          j += 1;
-          break;
-          try
-          {
-            paramString = URLDecoder.decode(arrayOfString[j], "UTF-8");
-          }
-          catch (UnsupportedEncodingException paramString)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("qqdataline", 2, "forwardFile|decode exp. imageUrls[i]=" + arrayOfString[j]);
-            }
-          }
-          catch (IllegalArgumentException paramString)
-          {
-            paramString = arrayOfString[j];
-          }
-        }
-        break label96;
-        label209:
-        localArrayList.add(paramString);
-        continue;
-        label219:
-        if (QLog.isColorLevel()) {
-          QLog.e("qqdataline", 2, "forwardFile|file path invalid. path=" + paramString);
-        }
-      }
-    }
-    if (!localArrayList.isEmpty())
-    {
-      if (paramBoolean)
-      {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004932", "0X8004932", 0, 0, "", "", "", "");
-        if (QLog.isColorLevel()) {
-          QLog.e("qqdataline", 2, "forwardFile shareFromMigSdk|report send file:0X8004932.");
-        }
-      }
-      if ((a(localArrayList, 0, paramInt, paramBoolean, paramCallBack) == 0) || (i != 0)) {
-        return 0;
-      }
-      return 8;
-    }
-    if (i != 0) {
-      return 0;
-    }
-    return 4;
   }
   
   public static void b(Context paramContext, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 1: 
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
-    case 2: 
-    case 4: 
-      a(paramContext, 2131693811);
-      return;
-    case 8: 
-      a(HardCodeUtil.a(2131703358), 1);
-      return;
-    case 0: 
-      a(2131692688, 2);
+      if ((paramInt != 2) && (paramInt != 4))
+      {
+        if (paramInt != 8)
+        {
+          if (paramInt != 9) {
+            return;
+          }
+          a(2131694475, 0);
+          return;
+        }
+        a(HardCodeUtil.a(2131703490), 1);
+        return;
+      }
+      a(paramContext, 2131693764);
       return;
     }
-    a(2131694510, 0);
+    a(2131692645, 2);
   }
   
   private int c(String paramString, int paramInt, boolean paramBoolean, DirectForwarder.CallBack paramCallBack)
@@ -445,12 +504,10 @@ public class DirectForwarder
     {
       if (Patterns.d.matcher(paramString).find()) {
         StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_link");
-      }
-      for (;;)
-      {
-        return d(paramString, paramInt, paramBoolean, paramCallBack);
+      } else {
         StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_text");
       }
+      return d(paramString, paramInt, paramBoolean, paramCallBack);
     }
     return 4;
   }
@@ -484,112 +541,109 @@ public class DirectForwarder
   
   public int a(String paramString, Bundle paramBundle, DirectForwarder.CallBack paramCallBack)
   {
-    int j = 0;
-    if (!NetworkUtil.d(BaseApplication.getContext()))
-    {
-      j = 9;
-      return j;
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+      return 9;
     }
-    int m = paramBundle.getInt("dataline_forward_type", -1);
+    int j = paramBundle.getInt("dataline_forward_type", -1);
     Object localObject = paramBundle.getStringArrayList("dataline_forward_pathlist");
     ArrayList localArrayList = paramBundle.getParcelableArrayList("fileinfo_array");
     boolean bool = paramBundle.getBoolean("isMigSdkShare", false);
     DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    if (AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(paramString)) {
-      localDataLineHandler.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
-    }
-    int k;
-    for (localDataLineHandler.jdField_a_of_type_Int = 0;; localDataLineHandler.jdField_a_of_type_Int = 1)
+    if (AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(paramString))
     {
-      k = localDataLineHandler.jdField_a_of_type_Int;
-      if (m != -1) {
-        break label141;
-      }
-      return 2;
+      localDataLineHandler.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
+      localDataLineHandler.jdField_a_of_type_Int = 0;
+    }
+    else
+    {
       if (!AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(paramString)) {
-        break;
+        break label402;
       }
       localDataLineHandler.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_IPAD_UIN;
+      localDataLineHandler.jdField_a_of_type_Int = 1;
     }
-    return 8;
-    label141:
-    if (m == 100) {}
-    for (int i = 0;; i = 1)
+    int k = localDataLineHandler.jdField_a_of_type_Int;
+    if (j == -1) {
+      return 2;
+    }
+    if (j == 100) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (localObject == null)
     {
-      if (localObject == null) {
-        if (localArrayList == null) {
-          break label399;
-        }
-      }
+      paramCallBack = null;
+      paramString = paramCallBack;
+      if (localArrayList == null) {}
+    }
+    try
+    {
+      paramString = (ArrayList)localArrayList;
+    }
+    catch (ClassCastException paramString)
+    {
       for (;;)
       {
-        try
-        {
-          paramString = (ArrayList)localArrayList;
-          if (paramString == null) {
-            return 4;
-          }
-        }
-        catch (ClassCastException paramString)
-        {
-          paramString = null;
-          continue;
-          paramCallBack = new ArrayList();
-          paramString = paramString.iterator();
-          i = 0;
-          if (paramString.hasNext())
-          {
-            localObject = (ForwardFileInfo)paramString.next();
-            if (a(paramBundle, (ForwardFileInfo)localObject, m, k))
-            {
-              i = 1;
-              continue;
-            }
-            localObject = a((ForwardFileInfo)localObject, false, k);
-            if (localObject != null)
-            {
-              if (DataLineMsgSet.isSingle((DataLineMsgRecord)localObject))
-              {
-                localArrayList = new ArrayList();
-                localArrayList.add(localObject);
-                localDataLineHandler.a(localArrayList, false);
-                i = 1;
-                continue;
-              }
-              paramCallBack.add(localObject);
-            }
-            continue;
-          }
-          if (paramCallBack.size() > 0)
-          {
-            localDataLineHandler.a(paramCallBack, false);
-            return 0;
-          }
-        }
-        if (i != 0) {
-          break;
-        }
-        return 4;
-        paramString = ((ArrayList)localObject).iterator();
-        while (paramString.hasNext())
-        {
-          paramBundle = (String)paramString.next();
-          if ((paramBundle == null) || (paramBundle.equals("/"))) {
-            paramString.remove();
-          }
-        }
-        if (!((ArrayList)localObject).isEmpty())
-        {
-          if (a((ArrayList)localObject, i, k, bool, paramCallBack) != 0) {
-            break;
-          }
-          return 0;
-        }
-        return 4;
-        label399:
-        paramString = null;
+        paramString = paramCallBack;
       }
     }
+    if (paramString == null) {
+      return 4;
+    }
+    paramCallBack = new ArrayList();
+    paramString = paramString.iterator();
+    int i = 0;
+    while (paramString.hasNext())
+    {
+      localObject = (ForwardFileInfo)paramString.next();
+      if (a(paramBundle, (ForwardFileInfo)localObject, j, k)) {}
+      for (;;)
+      {
+        i = 1;
+        break;
+        localObject = a((ForwardFileInfo)localObject, false, k);
+        if (localObject == null) {
+          break;
+        }
+        if (!DataLineMsgSet.isSingle((DataLineMsgRecord)localObject)) {
+          break label284;
+        }
+        localArrayList = new ArrayList();
+        localArrayList.add(localObject);
+        localDataLineHandler.a(localArrayList, false);
+      }
+      label284:
+      paramCallBack.add(localObject);
+    }
+    if (paramCallBack.size() > 0)
+    {
+      localDataLineHandler.a(paramCallBack, false);
+      return 0;
+    }
+    if (i == 0) {
+      return 4;
+    }
+    return 0;
+    paramString = ((ArrayList)localObject).iterator();
+    while (paramString.hasNext())
+    {
+      paramBundle = (String)paramString.next();
+      if ((paramBundle == null) || (paramBundle.equals("/"))) {
+        paramString.remove();
+      }
+    }
+    if (!((ArrayList)localObject).isEmpty())
+    {
+      i = a((ArrayList)localObject, i, k, bool, paramCallBack);
+      if (i == 0) {
+        return 0;
+      }
+      return i;
+    }
+    return 4;
+    label402:
+    return 8;
   }
   
   public void a()
@@ -599,59 +653,62 @@ public class DirectForwarder
   
   public boolean a(DataLineMsgRecord paramDataLineMsgRecord, int paramInt1, int paramInt2)
   {
-    boolean bool2;
+    boolean bool1 = false;
     if (paramDataLineMsgRecord == null)
     {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "reForwardOfflineFile msg=null ");
-      bool2 = false;
-      return bool2;
+      return false;
     }
-    boolean bool1 = false;
     if (paramDataLineMsgRecord.nOpType == 31)
     {
       TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDataLineMsgRecord.uOwnerUin).a(paramInt2, paramDataLineMsgRecord.uOwnerUin, paramDataLineMsgRecord.busId, Long.valueOf(paramDataLineMsgRecord.selfuin).longValue(), paramDataLineMsgRecord.istroop, paramDataLineMsgRecord.filename, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filesize, paramDataLineMsgRecord.fileUuid, true, paramDataLineMsgRecord.sessionid, FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1));
       paramDataLineMsgRecord.fileMsgStatus = 0L;
       paramDataLineMsgRecord.issuc = true;
-      bool1 = true;
     }
     for (;;)
     {
-      bool2 = bool1;
-      if (3 != paramDataLineMsgRecord.fileFrom) {
+      bool1 = true;
+      break;
+      if (paramDataLineMsgRecord.nOpType != 29) {
         break;
       }
-      bool2 = bool1;
-      if (TextUtils.isEmpty(paramDataLineMsgRecord.fileUuid)) {
-        break;
-      }
-      ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramDataLineMsgRecord, true);
-      return true;
-      if (paramDataLineMsgRecord.nOpType == 29)
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(3, paramDataLineMsgRecord.trans2Entity(), paramInt1))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(3, paramDataLineMsgRecord.trans2Entity(), paramInt1))
-        {
-          paramDataLineMsgRecord.fileMsgStatus = 0L;
-          paramDataLineMsgRecord.issuc = true;
-        }
-        bool1 = true;
+        paramDataLineMsgRecord.fileMsgStatus = 0L;
+        paramDataLineMsgRecord.issuc = true;
       }
     }
+    boolean bool2 = bool1;
+    if (3 == paramDataLineMsgRecord.fileFrom)
+    {
+      bool2 = bool1;
+      if (!TextUtils.isEmpty(paramDataLineMsgRecord.fileUuid))
+      {
+        ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(paramDataLineMsgRecord, true);
+        bool2 = true;
+      }
+    }
+    return bool2;
   }
   
   public boolean a(FileManagerEntity paramFileManagerEntity)
   {
     Bundle localBundle = new Bundle();
+    boolean bool = false;
     localBundle.putInt("forward_type", 0);
     localBundle.putBoolean("not_forward", true);
     localBundle.putInt("dataline_forward_type", 100);
     localBundle.putString("dataline_forward_path", paramFileManagerEntity.getFilePath());
     localBundle.putParcelable("fileinfo", ForwardFileOption.a(paramFileManagerEntity));
-    return b(AppConstants.DATALINE_PC_UIN, localBundle, null) == 0;
+    if (b(AppConstants.DATALINE_PC_UIN, localBundle, null) == 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public int b(String paramString, Bundle paramBundle, DirectForwarder.CallBack paramCallBack)
   {
-    if (!NetworkUtil.d(BaseApplication.getContext())) {
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
       return 9;
     }
     int i = paramBundle.getInt("dataline_forward_type", -1);
@@ -660,47 +717,48 @@ public class DirectForwarder
     boolean bool = paramBundle.getBoolean("isMigSdkShare", false);
     ForwardFileInfo localForwardFileInfo = (ForwardFileInfo)paramBundle.getParcelable("fileinfo");
     DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    if (AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(paramString)) {
-      localDataLineHandler.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
-    }
-    int j;
-    for (localDataLineHandler.jdField_a_of_type_Int = 0;; localDataLineHandler.jdField_a_of_type_Int = 1)
+    if (AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(paramString))
     {
-      j = localDataLineHandler.jdField_a_of_type_Int;
-      if (i != -1) {
-        break label146;
-      }
-      return 2;
+      localDataLineHandler.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
+      localDataLineHandler.jdField_a_of_type_Int = 0;
+    }
+    else
+    {
       if (!AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(paramString)) {
-        break;
+        break label267;
       }
       localDataLineHandler.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_IPAD_UIN;
+      localDataLineHandler.jdField_a_of_type_Int = 1;
     }
-    return 8;
-    label146:
+    int j = localDataLineHandler.jdField_a_of_type_Int;
+    if (i == -1) {
+      return 2;
+    }
     if (a(paramBundle, localForwardFileInfo, i, j)) {
       return 0;
     }
-    if (paramBundle.getBoolean("filepath_copy", false)) {}
-    for (paramString = QFileUtils.a(str1);; paramString = str1)
-    {
-      switch (i)
-      {
-      default: 
-        StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_other");
-        return 4;
-      case 101: 
-        return a(paramString, j, bool, paramCallBack);
-      case 100: 
-        return b(paramString, j, bool, paramCallBack);
-      }
-      return c(str2, j, bool, paramCallBack);
+    paramString = str1;
+    if (paramBundle.getBoolean("filepath_copy", false)) {
+      paramString = QFileUtils.a(str1);
     }
+    switch (i)
+    {
+    default: 
+      StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "dl_forwardin_other");
+      return 4;
+    case 102: 
+      return c(str2, j, bool, paramCallBack);
+    case 101: 
+      return a(paramString, j, bool, paramCallBack);
+    }
+    return b(paramString, j, bool, paramCallBack);
+    label267:
+    return 8;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.core.DirectForwarder
  * JD-Core Version:    0.7.0.1
  */

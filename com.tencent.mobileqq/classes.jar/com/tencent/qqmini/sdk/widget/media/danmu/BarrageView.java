@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.RelativeLayout;
@@ -88,7 +89,10 @@ public class BarrageView
     paramBarrage = new RelativeLayout.LayoutParams(-2, -2);
     paramBarrage.addRule(10);
     paramBarrage.topMargin = paramInt2;
-    Log.i("BarrageView", "createTextByBarrage: " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("createTextByBarrage: ");
+    localStringBuilder.append(paramInt2);
+    Log.i("BarrageView", localStringBuilder.toString());
     localTextView.setLayoutParams(paramBarrage);
     return localTextView;
   }
@@ -100,32 +104,34 @@ public class BarrageView
   
   private void showBarrage(List<Integer> paramList)
   {
-    Log.i("BarrageView", "showBarrage: " + Arrays.toString(paramList.toArray()));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("showBarrage: ");
+    ((StringBuilder)localObject).append(Arrays.toString(paramList.toArray()));
+    Log.i("BarrageView", ((StringBuilder)localObject).toString());
     int j = getRight() - getLeft() - getPaddingLeft();
     int k = this.minTextSize;
     paramList = paramList.iterator();
     int i = 10;
-    TextView localTextView;
     Animation localAnimation;
     while (paramList.hasNext())
     {
       int m = ((Integer)paramList.next()).intValue();
       if (this.animCache.get(m) == null)
       {
-        localTextView = createTextByBarrage((Barrage)this.barrages.get(m), k, i);
-        localAnimation = createBarrageAnim(j, new BarrageView.1(this, localTextView, m));
-        startBarrageAnim(localTextView, localAnimation);
+        localObject = createTextByBarrage((Barrage)this.barrages.get(m), k, i);
+        i += k * 3;
+        localAnimation = createBarrageAnim(j, new BarrageView.1(this, (View)localObject, m));
+        startBarrageAnim((TextView)localObject, localAnimation);
         this.animCache.put(m, localAnimation);
-        i = k * 3 + i;
       }
     }
     paramList = this.transientBarrages.iterator();
     while (paramList.hasNext())
     {
-      localTextView = createTextByBarrage((Barrage)paramList.next(), k, i);
+      localObject = createTextByBarrage((Barrage)paramList.next(), k, i);
       i += k * 3;
-      localAnimation = createBarrageAnim(j, new BarrageView.2(this, localTextView));
-      startBarrageAnim(localTextView, localAnimation);
+      localAnimation = createBarrageAnim(j, new BarrageView.2(this, (View)localObject));
+      startBarrageAnim((TextView)localObject, localAnimation);
       this.transientAnimCache.add(localAnimation);
     }
     this.transientBarrages.clear();
@@ -169,14 +175,18 @@ public class BarrageView
   
   public void setBarrages(List<Barrage> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    do
+    if (paramList != null)
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       Collections.sort(paramList, this);
-    } while (this.barrages.equals(paramList));
-    destroy();
-    this.barrages.addAll(paramList);
+      if (this.barrages.equals(paramList)) {
+        return;
+      }
+      destroy();
+      this.barrages.addAll(paramList);
+    }
   }
   
   public void showBarrageNextTime(Barrage paramBarrage)
@@ -186,42 +196,45 @@ public class BarrageView
   
   public void updateTime(long paramLong)
   {
-    if ((paramLong < 0L) || (paramLong == this.lastUpdateTime)) {
-      return;
-    }
-    if (paramLong < this.lastUpdateTime) {
-      this.lastShowBarrageIndex = -1;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    int i = this.lastShowBarrageIndex + 1;
-    for (;;)
+    if (paramLong >= 0L)
     {
-      long l;
-      if (i < this.barrages.size())
-      {
-        l = ((Barrage)this.barrages.get(i)).time * 1000L;
-        if (l <= paramLong) {}
-      }
-      else
-      {
-        this.lastUpdateTime = paramLong;
-        if ((localLinkedList.size() <= 0) && (this.transientBarrages.size() <= 0)) {
-          break;
-        }
-        showBarrage(localLinkedList);
+      long l = this.lastUpdateTime;
+      if (paramLong == l) {
         return;
       }
-      this.lastShowBarrageIndex += 1;
-      if (paramLong - l < 400L) {
-        localLinkedList.add(Integer.valueOf(i));
+      if (paramLong < l) {
+        this.lastShowBarrageIndex = -1;
       }
-      i += 1;
+      LinkedList localLinkedList = new LinkedList();
+      int i = this.lastShowBarrageIndex;
+      for (;;)
+      {
+        int j = i + 1;
+        if (j >= this.barrages.size()) {
+          break;
+        }
+        l = ((Barrage)this.barrages.get(j)).time * 1000L;
+        if (l > paramLong) {
+          break;
+        }
+        this.lastShowBarrageIndex += 1;
+        i = j;
+        if (paramLong - l < 400L)
+        {
+          localLinkedList.add(Integer.valueOf(j));
+          i = j;
+        }
+      }
+      this.lastUpdateTime = paramLong;
+      if ((localLinkedList.size() > 0) || (this.transientBarrages.size() > 0)) {
+        showBarrage(localLinkedList);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.danmu.BarrageView
  * JD-Core Version:    0.7.0.1
  */

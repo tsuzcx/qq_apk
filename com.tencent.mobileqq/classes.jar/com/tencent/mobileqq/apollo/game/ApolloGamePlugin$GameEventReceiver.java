@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloGamePlugin$GameEventReceiver
@@ -14,27 +13,30 @@ public class ApolloGamePlugin$GameEventReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {
-      QLog.e("ApolloGamePlugin", 1, "[onReceive] intent null");
-    }
-    do
+    if (paramIntent == null)
     {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloGamePlugin", 2, new Object[] { "[onReceive] action=", paramContext });
-        }
-      } while ((CmGameUtil.a() == null) || (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
-      paramContext = paramIntent.getStringExtra("data");
-    } while (TextUtils.isEmpty(ApolloGamePlugin.a(this.a)));
-    this.a.a(0, "sc.apolloGameWebMessage.local", paramContext);
+      QLog.e("[cmshow]ApolloGamePlugin", 1, "[onReceive] intent null");
+      return;
+    }
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow]ApolloGamePlugin", 2, new Object[] { "[onReceive] action=", paramContext });
+    }
+    if (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) {
+      return;
+    }
+    if (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))) {
+      return;
+    }
+    paramContext = paramIntent.getStringExtra("data");
+    if (!TextUtils.isEmpty(ApolloGamePlugin.a(this.a))) {
+      this.a.a(0, "sc.apolloGameWebMessage.local", paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGamePlugin.GameEventReceiver
  * JD-Core Version:    0.7.0.1
  */

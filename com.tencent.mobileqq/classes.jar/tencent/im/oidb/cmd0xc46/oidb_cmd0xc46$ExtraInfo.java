@@ -26,13 +26,14 @@ public final class oidb_cmd0xc46$ExtraInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 56, 66, 72, 88, 98 }, new String[] { "hot_next", "hot_page_cookie", "hidden_comment_count", "show_mask", "jump_kva_schema", "family_oc_info", "is_pgc_author", "label", "is_show_label", "is_show_follow_button", "default_input" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), "" }, ExtraInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50, 56, 66, 72, 88, 98 }, new String[] { "hot_next", "hot_page_cookie", "hidden_comment_count", "show_mask", "jump_kva_schema", "family_oc_info", "is_pgc_author", "label", "is_show_label", "is_show_follow_button", "default_input" }, new Object[] { localInteger, localByteStringMicro, localInteger, localInteger, "", "", localInteger, null, localInteger, localInteger, "" }, ExtraInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xc46.oidb_cmd0xc46.ExtraInfo
  * JD-Core Version:    0.7.0.1
  */

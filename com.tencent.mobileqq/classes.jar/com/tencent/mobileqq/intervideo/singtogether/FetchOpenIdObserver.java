@@ -10,9 +10,7 @@ public class FetchOpenIdObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
     a(paramBoolean, paramBundle.getInt("appId"), paramBundle.getLong("uin", 0L), paramBundle.getString("openId"), paramBundle.getString("error_msg"));
@@ -20,7 +18,7 @@ public class FetchOpenIdObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.singtogether.FetchOpenIdObserver
  * JD-Core Version:    0.7.0.1
  */

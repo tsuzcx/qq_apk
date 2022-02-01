@@ -18,7 +18,10 @@ public class MD5Util
       i = paramByte + 256;
     }
     paramByte = i / 16;
-    return strDigits[paramByte] + strDigits[(i % 16)];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(strDigits[paramByte]);
+    localStringBuilder.append(strDigits[(i % 16)]);
+    return localStringBuilder.toString();
   }
   
   private static String byteToString(byte[] paramArrayOfByte)
@@ -55,13 +58,17 @@ public class MD5Util
       paramString = getMD5Code(URLEncoder.encode(paramString, "utf-8"));
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label12:
+      break label12;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.utils.MD5Util
  * JD-Core Version:    0.7.0.1
  */

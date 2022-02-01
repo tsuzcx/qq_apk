@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.applets;
 
-import com.tencent.mobileqq.activity.weather.WeatherDCReportHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.weather.api.IWeatherReportApi;
 
 final class PublicAccountEventReport$1
   implements Runnable
@@ -10,12 +11,12 @@ final class PublicAccountEventReport$1
   
   public void run()
   {
-    WeatherDCReportHelper.a().a(this.a);
+    ((IWeatherReportApi)QRoute.api(IWeatherReportApi.class)).reportWeatherMessageExpose(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountEventReport.1
  * JD-Core Version:    0.7.0.1
  */

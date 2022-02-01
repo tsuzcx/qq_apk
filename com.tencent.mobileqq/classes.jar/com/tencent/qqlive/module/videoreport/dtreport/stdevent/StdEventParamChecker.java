@@ -20,20 +20,29 @@ public class StdEventParamChecker
   
   public static boolean checkParamBuilder(StdEventCode paramStdEventCode, IEventParamsBuilder paramIEventParamsBuilder)
   {
-    Class localClass = (Class)CODE_BUILDER_MAP.get(paramStdEventCode);
-    if (localClass == null)
+    Object localObject = (Class)CODE_BUILDER_MAP.get(paramStdEventCode);
+    if (localObject == null)
     {
-      paramIEventParamsBuilder = new StringBuilder().append("校验错误, 事件 [");
-      if (paramStdEventCode == null) {}
-      for (paramStdEventCode = null;; paramStdEventCode = paramStdEventCode.codeName)
-      {
-        handleError(paramStdEventCode + "] 不支持!");
-        return false;
+      paramIEventParamsBuilder = new StringBuilder();
+      paramIEventParamsBuilder.append("校验错误, 事件 [");
+      if (paramStdEventCode == null) {
+        paramStdEventCode = null;
+      } else {
+        paramStdEventCode = paramStdEventCode.codeName;
       }
+      paramIEventParamsBuilder.append(paramStdEventCode);
+      paramIEventParamsBuilder.append("] 不支持!");
+      handleError(paramIEventParamsBuilder.toString());
+      return false;
     }
-    if (!localClass.isInstance(paramIEventParamsBuilder))
+    if (!((Class)localObject).isInstance(paramIEventParamsBuilder))
     {
-      handleError("校验错误, 事件 [" + paramStdEventCode.codeName + "] 需要使用 " + localClass.getSimpleName());
+      paramIEventParamsBuilder = new StringBuilder();
+      paramIEventParamsBuilder.append("校验错误, 事件 [");
+      paramIEventParamsBuilder.append(paramStdEventCode.codeName);
+      paramIEventParamsBuilder.append("] 需要使用 ");
+      paramIEventParamsBuilder.append(((Class)localObject).getSimpleName());
+      handleError(paramIEventParamsBuilder.toString());
       return false;
     }
     if ((paramIEventParamsBuilder instanceof BaseEventParamsBuilder))
@@ -41,7 +50,12 @@ public class StdEventParamChecker
       paramIEventParamsBuilder = ((BaseEventParamsBuilder)paramIEventParamsBuilder).checkValidity();
       if (!paramIEventParamsBuilder.success)
       {
-        handleError("校验错误, 事件 [" + paramStdEventCode.codeName + "] 参数有误：\n" + paramIEventParamsBuilder.errMsg);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("校验错误, 事件 [");
+        ((StringBuilder)localObject).append(paramStdEventCode.codeName);
+        ((StringBuilder)localObject).append("] 参数有误：\n");
+        ((StringBuilder)localObject).append(paramIEventParamsBuilder.errMsg);
+        handleError(((StringBuilder)localObject).toString());
         return false;
       }
     }
@@ -58,7 +72,7 @@ public class StdEventParamChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventParamChecker
  * JD-Core Version:    0.7.0.1
  */

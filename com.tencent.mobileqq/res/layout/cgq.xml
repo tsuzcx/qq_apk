@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/u_" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀内网环境代理" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/t1" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀动作素材删除" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/to" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀装扮素材删除" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/uo" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀角色素材删除" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/uq" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀脚本文件删除" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvl" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀表情缓存删除" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ty" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀游戏资源包删除" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/u3" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="true" formItem:switchText="厘米秀游戏资源校验和更新" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lwn" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" formItem:bgType="iwf" formItem:switchChecked="true" formItem:switchText="厘米秀3d表情包测试" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvw" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀新角色测试" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvx" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀抽屉页大人物" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvr" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀新人物细眉毛" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvv" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀新人物光头" />
-            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/lvu" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="厘米秀新人物不显示睫毛" />
-            <LinearLayout android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="30.0dip" />
-        </LinearLayout>
-    </com.tencent.mobileqq.widget.BounceScrollView>
-</LinearLayout>
+<RelativeLayout android:id="@id/mk0" android:layout_width="fill_parent" android:layout_height="88.0px" android:minHeight="88.0px"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mj_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="70.0px" android:layout_marginRight="48.0px">
+        <ImageView android:id="@id/mj5" android:layout_width="64.0px" android:layout_height="64.0px" android:layout_marginLeft="68.0px" />
+        <TextView android:textSize="32.0px" android:textColor="#fffeffff" android:id="@id/mji" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0px" android:singleLine="true" />
+    </LinearLayout>
+    <TextView android:textSize="28.0px" android:textColor="#fffeffff" android:gravity="center" android:id="@id/mjk" android:layout_width="72.0px" android:layout_height="56.0px" android:layout_marginLeft="40.0px" android:text="1" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+</RelativeLayout>

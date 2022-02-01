@@ -34,23 +34,24 @@ public class QrCodeConfBean
           localQrCodeConfBean.a.add(paramString);
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QrCodeDisplay.QrCodeConfBean", 2, "parse: " + localQrCodeConfBean.a.size());
-      }
-      return localQrCodeConfBean;
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("parse: ");
+      paramString.append(localQrCodeConfBean.a.size());
+      QLog.d("QrCodeDisplay.QrCodeConfBean", 2, paramString.toString());
+    }
+    return localQrCodeConfBean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QrCodeConfBean
  * JD-Core Version:    0.7.0.1
  */

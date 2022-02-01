@@ -34,65 +34,68 @@ public class ActionBridge<T>
   {
     try
     {
-      localObject = (String)ACTION_CLASS.get(paramString);
-      localAction2 = (Action)MiniAppDexLoader.g().create((String)localObject);
+      localObject1 = (String)ACTION_CLASS.get(paramString);
+      localObject1 = (Action)MiniAppDexLoader.g().create((String)localObject1);
+      try
+      {
+        Field localField = localObject1.getClass().getDeclaredField("what");
+        if (localField != null)
+        {
+          localField.setAccessible(true);
+          localField.set(localObject1, Integer.valueOf(paramInt));
+        }
+      }
+      catch (Throwable localThrowable1)
+      {
+        localThrowable1.printStackTrace();
+      }
+      if (paramMap != null)
+      {
+        paramMap = paramMap.entrySet().iterator();
+        while (paramMap.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)paramMap.next();
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("set action field:");
+          ((StringBuilder)localObject2).append((String)localEntry.getKey());
+          ((StringBuilder)localObject2).append(" valud:");
+          ((StringBuilder)localObject2).append(localEntry.getValue());
+          QMLog.i("ActionBridge", ((StringBuilder)localObject2).toString());
+          try
+          {
+            localObject2 = localObject1.getClass().getDeclaredField((String)localEntry.getKey());
+            if (localObject2 != null)
+            {
+              ((Field)localObject2).setAccessible(true);
+              ((Field)localObject2).set(localObject1, localEntry.getValue());
+            }
+          }
+          catch (Throwable localThrowable2)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("getField exception! actionName=");
+            ((StringBuilder)localObject2).append(paramString);
+            QMLog.e("ActionBridge", ((StringBuilder)localObject2).toString(), localThrowable2);
+          }
+        }
+      }
+      return localObject1;
     }
     catch (Throwable paramMap)
     {
-      Object localObject;
-      Action localAction2;
-      label55:
-      QMLog.e("ActionBridge", "obtain action exception! actionName=" + paramString, paramMap);
-      Action localAction1 = null;
-      return localAction1;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("obtain action exception! actionName=");
+      ((StringBuilder)localObject1).append(paramString);
+      QMLog.e("ActionBridge", ((StringBuilder)localObject1).toString(), paramMap);
     }
-    try
-    {
-      localObject = localAction2.getClass().getDeclaredField("what");
-      if (localObject != null)
-      {
-        ((Field)localObject).setAccessible(true);
-        ((Field)localObject).set(localAction2, Integer.valueOf(paramInt));
-      }
-    }
-    catch (Throwable localThrowable2)
-    {
-      localThrowable2.printStackTrace();
-      break label55;
-    }
-    localObject = localAction2;
-    if (paramMap != null)
-    {
-      paramMap = paramMap.entrySet().iterator();
-      for (;;)
-      {
-        localObject = localAction2;
-        if (!paramMap.hasNext()) {
-          break;
-        }
-        localObject = (Map.Entry)paramMap.next();
-        QMLog.i("ActionBridge", "set action field:" + (String)((Map.Entry)localObject).getKey() + " valud:" + ((Map.Entry)localObject).getValue());
-        try
-        {
-          Field localField = localAction2.getClass().getDeclaredField((String)((Map.Entry)localObject).getKey());
-          if (localField != null)
-          {
-            localField.setAccessible(true);
-            localField.set(localAction2, ((Map.Entry)localObject).getValue());
-          }
-        }
-        catch (Throwable localThrowable1)
-        {
-          QMLog.e("ActionBridge", "getField exception! actionName=" + paramString, localThrowable1);
-        }
-      }
-    }
+    return null;
   }
   
   public T perform(BaseRuntime paramBaseRuntime)
   {
-    if (this.realAction != null) {
-      return this.realAction.perform(paramBaseRuntime);
+    Action localAction = this.realAction;
+    if (localAction != null) {
+      return localAction.perform(paramBaseRuntime);
     }
     return null;
   }
@@ -104,7 +107,7 @@ public class ActionBridge<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.action.ActionBridge
  * JD-Core Version:    0.7.0.1
  */

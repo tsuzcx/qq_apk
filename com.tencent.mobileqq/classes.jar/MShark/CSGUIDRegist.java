@@ -50,51 +50,64 @@ public final class CSGUIDRegist
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.imei, 0);
-    if (this.imsi != null) {
-      paramJceOutputStream.write(this.imsi, 1);
+    String str = this.imsi;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.mac != null) {
-      paramJceOutputStream.write(this.mac, 2);
+    str = this.mac;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.lc != null) {
-      paramJceOutputStream.write(this.lc, 3);
+    str = this.lc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.buildno != 0) {
-      paramJceOutputStream.write(this.buildno, 4);
+    int i = this.buildno;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-    if (this.channelid != null) {
-      paramJceOutputStream.write(this.channelid, 5);
+    str = this.channelid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.pkgname != null) {
-      paramJceOutputStream.write(this.pkgname, 6);
+    str = this.pkgname;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.build_brand != null) {
-      paramJceOutputStream.write(this.build_brand, 7);
+    str = this.build_brand;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.build_version_incremental != null) {
-      paramJceOutputStream.write(this.build_version_incremental, 8);
+    str = this.build_version_incremental;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
-    if (this.build_version_release != null) {
-      paramJceOutputStream.write(this.build_version_release, 9);
+    str = this.build_version_release;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.product != 0) {
-      paramJceOutputStream.write(this.product, 10);
+    i = this.product;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 10);
     }
-    if (this.platform != 0) {
-      paramJceOutputStream.write(this.platform, 11);
+    i = this.platform;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 11);
     }
-    if (this.subplatform != 0) {
-      paramJceOutputStream.write(this.subplatform, 12);
+    i = this.subplatform;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 12);
     }
     paramJceOutputStream.write(this.isbuildin, 13);
-    if (this.ua != null) {
-      paramJceOutputStream.write(this.ua, 14);
+    str = this.ua;
+    if (str != null) {
+      paramJceOutputStream.write(str, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MShark.CSGUIDRegist
  * JD-Core Version:    0.7.0.1
  */

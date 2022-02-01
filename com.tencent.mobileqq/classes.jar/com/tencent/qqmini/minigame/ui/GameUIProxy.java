@@ -87,12 +87,13 @@ public class GameUIProxy
   
   private void initOrientation(MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.isLandScape())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      setOrientation(bool);
-      return;
+    boolean bool;
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.isLandScape())) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    setOrientation(bool);
   }
   
   private void initStatusBar(MiniAppInfo paramMiniAppInfo)
@@ -118,17 +119,27 @@ public class GameUIProxy
   
   private void logOnAttachActivity(Activity paramActivity, MiniAppInfo paramMiniAppInfo, long paramLong)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (Build.VERSION.SDK_INT >= 22)
     {
       paramActivity = paramActivity.getReferrer();
-      localObject1 = localObject2;
-      if (paramActivity != null) {
-        localObject1 = paramActivity.toString();
+      if (paramActivity != null)
+      {
+        paramActivity = paramActivity.toString();
+        break label27;
       }
     }
-    QMLog.e("[minigame][timecost] ", "step[startActivity] cost time: " + paramLong + " startMode: " + this.mStartMode + " miniAppInfo: " + paramMiniAppInfo + " referrer: " + (String)localObject1);
+    paramActivity = null;
+    label27:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("step[startActivity] cost time: ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" startMode: ");
+    localStringBuilder.append(this.mStartMode);
+    localStringBuilder.append(" miniAppInfo: ");
+    localStringBuilder.append(paramMiniAppInfo);
+    localStringBuilder.append(" referrer: ");
+    localStringBuilder.append(paramActivity);
+    QMLog.e("[minigame][timecost] ", localStringBuilder.toString());
   }
   
   private void resetQuery()
@@ -148,13 +159,7 @@ public class GameUIProxy
   
   private void setOrientation(boolean paramBoolean)
   {
-    Activity localActivity = this.mActivity;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      localActivity.setRequestedOrientation(i);
-      return;
-    }
+    this.mActivity.setRequestedOrientation(paramBoolean ^ true);
   }
   
   private void showStatusBar()
@@ -185,10 +190,17 @@ public class GameUIProxy
   
   public String getLaunchMsg()
   {
-    if (this.mPkgDownloadFlag) {
-      return "firstLaunch" + this.mStartMode;
+    if (this.mPkgDownloadFlag)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("firstLaunch");
+      localStringBuilder.append(this.mStartMode);
+      return localStringBuilder.toString();
     }
-    return "twiceLaunch" + this.mStartMode;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("twiceLaunch");
+    localStringBuilder.append(this.mStartMode);
+    return localStringBuilder.toString();
   }
   
   LoadingUI getLoadingUI()
@@ -196,7 +208,7 @@ public class GameUIProxy
     return this.mLoadingUI;
   }
   
-  public AppRuntimeEventCenter.RuntimeStateObserver getRuntimeStateObserver()
+  protected AppRuntimeEventCenter.RuntimeStateObserver getRuntimeStateObserver()
   {
     return this.mGameRuntimeStateObserver;
   }
@@ -209,95 +221,91 @@ public class GameUIProxy
   public List<TaskExecutionStatics> getTaskStatics()
   {
     Object localObject = (GameRuntimeLoader)this.mCurrRuntimeLoader;
-    if (localObject == null) {}
-    for (localObject = new ArrayList();; localObject = ((GameRuntimeLoader)localObject).getTaskExecuteStatics())
-    {
-      ((List)localObject).add(0, new TaskExecutionStatics("StartActivity", this.mActivityStartDuration));
-      return localObject;
+    if (localObject == null) {
+      localObject = new ArrayList();
+    } else {
+      localObject = ((GameRuntimeLoader)localObject).getTaskExecuteStatics();
     }
+    ((List)localObject).add(0, new TaskExecutionStatics("StartActivity", this.mActivityStartDuration));
+    return localObject;
   }
   
   public void getTraceStatistics(GetTraceInfoCallback paramGetTraceInfoCallback)
   {
-    if (this.mRuntime != null)
+    Object localObject = this.mRuntime;
+    if (localObject != null)
     {
-      TritonEngine localTritonEngine = ((GameRuntime)this.mRuntime).getGameEngine();
-      if (localTritonEngine != null) {
-        localTritonEngine.getStatisticsManager().getTraceInfo(paramGetTraceInfoCallback);
+      localObject = ((GameRuntime)localObject).getGameEngine();
+      if (localObject != null) {
+        ((TritonEngine)localObject).getStatisticsManager().getTraceInfo(paramGetTraceInfoCallback);
       }
     }
   }
   
-  public void hideLoading()
+  protected void hideLoading()
   {
     this.hasCompletedLoading = true;
-    if (this.mLoadingUI == null) {
+    LoadingUI localLoadingUI = this.mLoadingUI;
+    if (localLoadingUI == null) {
       return;
     }
-    this.mLoadingUI.hide();
+    localLoadingUI.hide();
   }
   
   public void onAttachActivity(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
   {
-    long l2 = 0L;
     this.mBeginOnCreate = System.currentTimeMillis();
+    MiniAppInfo localMiniAppInfo = null;
     Intent localIntent;
-    long l1;
-    label36:
-    MiniAppInfo localMiniAppInfo;
-    if (paramActivity != null)
-    {
+    if (paramActivity != null) {
       localIntent = paramActivity.getIntent();
-      if (localIntent == null) {
-        break label164;
-      }
-      l1 = localIntent.getLongExtra("startDuration", 0L);
-      if (localIntent == null) {
-        break label170;
-      }
+    } else {
+      localIntent = null;
+    }
+    if (localIntent != null) {
+      l = localIntent.getLongExtra("startDuration", 0L);
+    } else {
+      l = 0L;
+    }
+    if (localIntent != null) {
       localMiniAppInfo = (MiniAppInfo)localIntent.getParcelableExtra("KEY_APPINFO");
-      label54:
-      this.mStartMode = localIntent.getIntExtra("start_mode", 3);
-      if (paramBundle != null) {
-        l1 = 0L;
-      }
-      if (l1 != 0L) {
-        l2 = this.mBeginOnCreate - l1;
-      }
-      this.mActivityStartDuration = l2;
-      if (localMiniAppInfo != null)
-      {
-        MiniReportManager.reportEventType(localMiniAppInfo, 1030, null, String.valueOf(this.mStartMode), null, 0, "1", l2, null);
-        logOnAttachActivity(paramActivity, localMiniAppInfo, l2);
-      }
-      if (isValidABI(localMiniAppInfo)) {
-        break label176;
-      }
+    }
+    this.mStartMode = localIntent.getIntExtra("start_mode", 3);
+    if (paramBundle != null) {
+      l = 0L;
+    }
+    if (l != 0L) {
+      l = this.mBeginOnCreate - l;
+    } else {
+      l = 0L;
+    }
+    this.mActivityStartDuration = l;
+    if (localMiniAppInfo != null)
+    {
+      MiniReportManager.reportEventType(localMiniAppInfo, 1030, null, String.valueOf(this.mStartMode), null, 0, "1", l, null);
+      logOnAttachActivity(paramActivity, localMiniAppInfo, l);
+    }
+    if (!isValidABI(localMiniAppInfo))
+    {
       MiniToast.makeText(paramActivity, "小游戏不支持该设备", 1).show();
       paramActivity.finish();
-    }
-    label164:
-    label170:
-    label176:
-    do
-    {
       return;
-      localIntent = null;
-      break;
-      l1 = 0L;
-      break label36;
-      localMiniAppInfo = null;
-      break label54;
-      this.mGameRuntimeStateObserver.setOnCreateTimeStamp();
-      createGameActivityStatusWatcher(paramActivity);
-      createLoadingUI(paramActivity);
-      super.onAttachActivity(paramActivity, paramBundle, paramViewGroup);
-      initOrientation(localMiniAppInfo);
-      initStatusBar(localMiniAppInfo);
-      l1 = System.currentTimeMillis() - this.mBeginOnCreate;
-    } while (localMiniAppInfo == null);
-    MiniReportManager.reportEventType(localMiniAppInfo, 1031, null, String.valueOf(this.mStartMode), null, 0, "1", l1, null);
-    QMLog.e("[minigame][timecost] ", "step[doOnCreate] cost time: " + l1);
+    }
+    this.mGameRuntimeStateObserver.setOnCreateTimeStamp();
+    createGameActivityStatusWatcher(paramActivity);
+    createLoadingUI(paramActivity);
+    super.onAttachActivity(paramActivity, paramBundle, paramViewGroup);
+    initOrientation(localMiniAppInfo);
+    initStatusBar(localMiniAppInfo);
+    long l = System.currentTimeMillis() - this.mBeginOnCreate;
+    if (localMiniAppInfo != null)
+    {
+      MiniReportManager.reportEventType(localMiniAppInfo, 1031, null, String.valueOf(this.mStartMode), null, 0, "1", l, null);
+      paramActivity = new StringBuilder();
+      paramActivity.append("step[doOnCreate] cost time: ");
+      paramActivity.append(l);
+      QMLog.e("[minigame][timecost] ", paramActivity.toString());
+    }
   }
   
   public boolean onBackPressed(Activity paramActivity)
@@ -323,30 +331,42 @@ public class GameUIProxy
   
   public void onMiniResume()
   {
+    StringBuilder localStringBuilder;
     if (this.mCurrRuntimeLoader == null)
     {
-      QMLog.e("minisdk-start_UIProxy", this + " GameUIProxy.onMiniResume() current runtime loader is null!");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this);
+      localStringBuilder.append(" GameUIProxy.onMiniResume() current runtime loader is null!");
+      QMLog.e("minisdk-start_UIProxy", localStringBuilder.toString());
       return;
     }
     long l = System.currentTimeMillis();
     if (this.mCurrRuntimeLoader.isLoadSucceed())
     {
-      QMLog.d("minisdk-start_UIProxy", "onResume(). runtime is loaded. warm boot. " + this.mCurrRuntimeLoader.getMiniAppInfo());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume(). runtime is loaded. warm boot. ");
+      localStringBuilder.append(this.mCurrRuntimeLoader.getMiniAppInfo());
+      QMLog.d("minisdk-start_UIProxy", localStringBuilder.toString());
       this.mCurrRuntimeLoader.notifyRuntimeEvent(2051, new Object[0]);
     }
-    for (;;)
+    else
     {
-      super.onMiniResume();
-      l = System.currentTimeMillis() - l;
-      if (this.mHasReportStepOnResume) {
-        break;
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume(). runtime is loading. start cold boot. ");
+      localStringBuilder.append(this.mCurrRuntimeLoader.getMiniAppInfo());
+      QMLog.d("minisdk-start_UIProxy", localStringBuilder.toString());
+      this.mCurrRuntimeLoader.start();
+    }
+    super.onMiniResume();
+    l = System.currentTimeMillis() - l;
+    if (!this.mHasReportStepOnResume)
+    {
       this.mHasReportStepOnResume = true;
       MiniReportManager.reportEventType(this.mCurrRuntimeLoader.getMiniAppInfo(), 1035, null, String.valueOf(this.mStartMode), null, 0, "1", l, null);
-      QMLog.e("[minigame][timecost] ", "step[onResume] cost time: " + l);
-      return;
-      QMLog.d("minisdk-start_UIProxy", "onResume(). runtime is loading. start cold boot. " + this.mCurrRuntimeLoader.getMiniAppInfo());
-      this.mCurrRuntimeLoader.start();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("step[onResume] cost time: ");
+      localStringBuilder.append(l);
+      QMLog.e("[minigame][timecost] ", localStringBuilder.toString());
     }
   }
   
@@ -372,15 +392,15 @@ public class GameUIProxy
     }
   }
   
-  public void onRuntimeReady()
+  protected void onRuntimeReady()
   {
     QMLog.i("minisdk-start_UIProxy", "GameRuntime onRuntimeReady. Here we go, start the runtime lifecycle");
     this.mMiniAppInfo = this.mCurrRuntimeLoader.getMiniAppInfo();
     this.mRuntime = this.mCurrRuntimeLoader.getRuntime();
-    Object localObject;
-    if (this.mRuntime != null)
+    Object localObject = this.mRuntime;
+    if (localObject != null)
     {
-      localObject = (GameRuntime)this.mRuntime;
+      localObject = (GameRuntime)localObject;
       ((GameRuntime)localObject).setPackageDownloadFlag(this.mPkgDownloadFlag);
       ((GameRuntime)localObject).setStartMode(this.mStartMode);
     }
@@ -388,33 +408,33 @@ public class GameUIProxy
     {
       SDKMiniProgramLpReportDC04239.reportPageView(this.mMiniAppInfo, "1", null, "load_fail", "not_ready");
       MiniAppReportManager2.reportPageView("2launch_fail", "not_ready", null, this.mMiniAppInfo);
-    }
-    MiniAppInfo localMiniAppInfo;
-    do
-    {
       return;
-      if (NetworkUtil.getActiveNetworkType(getActivity()) == 0)
+    }
+    if (NetworkUtil.getActiveNetworkType(getActivity()) == 0)
+    {
+      localObject = this.mMiniAppInfo;
+      if ((localObject != null) && (!((MiniAppInfo)localObject).isSupportOffline))
       {
-        if ((this.mMiniAppInfo != null) && (!this.mMiniAppInfo.isSupportOffline))
-        {
-          SDKMiniProgramLpReportDC04239.reportPageView(this.mMiniAppInfo, "1", null, "load_fail", "offline_not_support");
-          MiniAppReportManager2.reportPageView("2launch_fail", "offline_not_support", null, this.mMiniAppInfo);
-          MiniToast.makeText(getActivity(), "此游戏暂不支持离线模式", 0).show();
-          return;
-        }
-        if ((this.mMiniAppInfo != null) && (!GpkgManager.isOfflineResourceReady(this.mMiniAppInfo)))
-        {
-          SDKMiniProgramLpReportDC04239.reportPageView(this.mMiniAppInfo, "1", null, "load_fail", "offline_not_ready");
-          MiniAppReportManager2.reportPageView("2launch_fail", "offline_not_ready", null, this.mMiniAppInfo);
-          MiniToast.makeText(getActivity(), "游戏资源未加载完成，请联网后重试", 0).show();
-          return;
-        }
+        SDKMiniProgramLpReportDC04239.reportPageView(this.mMiniAppInfo, "1", null, "load_fail", "offline_not_support");
+        MiniAppReportManager2.reportPageView("2launch_fail", "offline_not_support", null, this.mMiniAppInfo);
+        MiniToast.makeText(getActivity(), "此游戏暂不支持离线模式", 0).show();
+        return;
       }
-      this.mMainHandler.post(new GameUIProxy.2(this));
-      localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      localMiniAppInfo = getMiniAppInfo();
-    } while ((localObject == null) || (localMiniAppInfo == null));
-    ((ChannelProxy)localObject).syncForceGroundAndRefreshBadge(this.mActivity, localMiniAppInfo.appId, AppLoaderFactory.g().getProcessName());
+      localObject = this.mMiniAppInfo;
+      if ((localObject != null) && (!GpkgManager.isOfflineResourceReady((MiniAppInfo)localObject)))
+      {
+        SDKMiniProgramLpReportDC04239.reportPageView(this.mMiniAppInfo, "1", null, "load_fail", "offline_not_ready");
+        MiniAppReportManager2.reportPageView("2launch_fail", "offline_not_ready", null, this.mMiniAppInfo);
+        MiniToast.makeText(getActivity(), "游戏资源未加载完成，请联网后重试", 0).show();
+        return;
+      }
+    }
+    this.mMainHandler.post(new GameUIProxy.2(this));
+    localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    MiniAppInfo localMiniAppInfo = getMiniAppInfo();
+    if ((localObject != null) && (localMiniAppInfo != null)) {
+      ((ChannelProxy)localObject).syncForceGroundAndRefreshBadge(this.mActivity, localMiniAppInfo.appId, AppLoaderFactory.g().getProcessName());
+    }
   }
   
   public void preloadLoadingAd()
@@ -424,7 +444,7 @@ public class GameUIProxy
     MiniLoadingAdManager.getInstance().preloadLoadingAd(this.mActivity, this.mMiniAppInfo);
   }
   
-  public void reloadMiniAppInfoIfNeed(BaseRuntimeLoader paramBaseRuntimeLoader, MiniAppInfo paramMiniAppInfo)
+  protected void reloadMiniAppInfoIfNeed(BaseRuntimeLoader paramBaseRuntimeLoader, MiniAppInfo paramMiniAppInfo)
   {
     if (paramBaseRuntimeLoader.isLoadSucceed())
     {
@@ -433,90 +453,100 @@ public class GameUIProxy
       }
       paramBaseRuntimeLoader.onAttachActivity(this.mActivity, null, this.mRootLayout);
       hideLoading();
-    }
-    do
-    {
       return;
-      showLoading(paramMiniAppInfo);
-      paramBaseRuntimeLoader.setRuntimeLoadListener(createRuntimeLoaderListener());
-    } while (paramBaseRuntimeLoader.isRunning());
-    paramBaseRuntimeLoader.start();
+    }
+    showLoading(paramMiniAppInfo);
+    paramBaseRuntimeLoader.setRuntimeLoadListener(createRuntimeLoaderListener());
+    if (!paramBaseRuntimeLoader.isRunning()) {
+      paramBaseRuntimeLoader.start();
+    }
   }
   
   void setPackageDownloadFlag(boolean paramBoolean)
   {
     this.mPkgDownloadFlag = paramBoolean;
-    if (this.mRuntime != null) {
-      ((GameRuntime)this.mRuntime).setPackageDownloadFlag(paramBoolean);
+    BaseRuntime localBaseRuntime = this.mRuntime;
+    if (localBaseRuntime != null) {
+      ((GameRuntime)localBaseRuntime).setPackageDownloadFlag(paramBoolean);
     }
   }
   
-  public void showLoading(MiniAppInfo paramMiniAppInfo)
+  protected void showLoading(MiniAppInfo paramMiniAppInfo)
   {
     this.hasCompletedLoading = false;
-    if (this.mLoadingUI == null) {
+    Object localObject = this.mLoadingUI;
+    if (localObject == null) {
       return;
     }
-    this.mLoadingUI.initUIData(paramMiniAppInfo).show(this.mRootLayout);
-    if (this.mRuntime != null) {
-      ((GameRuntime)this.mRuntime).setLoadingAdStatus(1);
+    ((LoadingUI)localObject).initUIData(paramMiniAppInfo).show(this.mRootLayout);
+    localObject = this.mRuntime;
+    if (localObject != null) {
+      ((GameRuntime)localObject).setLoadingAdStatus(1);
     }
     processSelectLoadingAdLogic(this.mActivity, paramMiniAppInfo);
   }
   
   public void showUpdateMobileQQDialog()
   {
-    Object localObject1 = "";
+    Object localObject3 = "";
+    Object localObject1 = localObject3;
+    Object localObject2;
+    Throwable localThrowable2;
     try
     {
-      Object localObject3 = GameWnsUtils.getQQUpdateUrl();
-      String str = "";
-      localObject1 = localObject3;
-      if (getMiniAppInfo() != null)
+      localObject2 = GameWnsUtils.getQQUpdateUrl();
+      try
       {
-        localObject1 = localObject3;
-        str = getMiniAppInfo().appId;
-      }
-      Object localObject2 = localObject3;
-      localObject1 = localObject3;
-      if (((String)localObject3).contains("{appid}"))
-      {
-        localObject2 = localObject3;
-        localObject1 = localObject3;
-        if (!TextUtils.isEmpty(str))
-        {
-          localObject1 = localObject3;
-          localObject2 = ((String)localObject3).replace("{appid}", str);
+        if (getMiniAppInfo() != null) {
+          localObject3 = getMiniAppInfo().appId;
         }
+        if ((((String)localObject2).contains("{appid}")) && (!TextUtils.isEmpty((CharSequence)localObject3)))
+        {
+          localObject1 = ((String)localObject2).replace("{appid}", (CharSequence)localObject3);
+          localObject2 = localObject1;
+        }
+        localObject1 = localObject2;
+        localObject3 = new StringBuilder();
+        localObject1 = localObject2;
+        ((StringBuilder)localObject3).append("showUpdateMobileQQDialog jump to upgrate page:");
+        localObject1 = localObject2;
+        ((StringBuilder)localObject3).append((String)localObject2);
+        localObject1 = localObject2;
+        QMLog.i("minisdk-start_UIProxy", ((StringBuilder)localObject3).toString());
+        localObject1 = localObject2;
+        localObject3 = new Intent();
+        localObject1 = localObject2;
+        ((Intent)localObject3).putExtra("hide_more_button", true);
+        localObject1 = localObject2;
+        ((Intent)localObject3).putExtra("hide_operation_bar", true);
+        localObject1 = localObject2;
+        ((Intent)localObject3).putExtra("url", (String)localObject2);
+        localObject1 = localObject2;
+        ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).startBrowserActivity(getActivity(), (Intent)localObject3);
+        return;
       }
-      localObject1 = localObject2;
-      QMLog.i("minisdk-start_UIProxy", "showUpdateMobileQQDialog jump to upgrate page:" + (String)localObject2);
-      localObject1 = localObject2;
-      localObject3 = new Intent();
-      localObject1 = localObject2;
-      ((Intent)localObject3).putExtra("hide_more_button", true);
-      localObject1 = localObject2;
-      ((Intent)localObject3).putExtra("hide_operation_bar", true);
-      localObject1 = localObject2;
-      ((Intent)localObject3).putExtra("url", (String)localObject2);
-      localObject1 = localObject2;
-      ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).startBrowserActivity(getActivity(), (Intent)localObject3);
-      return;
+      catch (Throwable localThrowable1) {}
+      localStringBuilder = new StringBuilder();
     }
-    catch (Throwable localThrowable)
+    catch (Throwable localThrowable3)
     {
-      QMLog.e("minisdk-start", "jump to upgrate page exception! url=" + (String)localObject1, localThrowable);
+      localObject2 = localThrowable1;
+      localThrowable2 = localThrowable3;
     }
+    StringBuilder localStringBuilder;
+    localStringBuilder.append("jump to upgrate page exception! url=");
+    localStringBuilder.append((String)localObject2);
+    QMLog.e("minisdk-start", localStringBuilder.toString(), localThrowable2);
   }
   
-  public void updateLoadingAdUI(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong1, long paramLong2)
+  protected void updateLoadingAdUI(Activity paramActivity, MiniAppInfo paramMiniAppInfo, String paramString, long paramLong1, long paramLong2)
   {
     paramActivity.runOnUiThread(new GameUIProxy.3(this, paramMiniAppInfo, paramActivity, paramString, paramLong1, paramLong2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.GameUIProxy
  * JD-Core Version:    0.7.0.1
  */

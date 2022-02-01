@@ -47,12 +47,25 @@ public class NowDownloadTaskInfo
   
   public String toString()
   {
-    return "appid = " + this.jdField_a_of_type_JavaLangString + ", url = " + this.b + ", downloadDir = " + this.g + ", fileName = " + this.h + ", taskSource = " + this.e + ", appName = " + this.f;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appid = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", url = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", downloadDir = ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", fileName = ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", taskSource = ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", appName = ");
+    localStringBuilder.append(this.f);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.download.NowDownloadTaskInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -39,20 +39,22 @@ public final class QzmallCustomBubbleSkin
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strBubbleZipUrl != null) {
-      paramJceOutputStream.write(this.strBubbleZipUrl, 1);
+    String str = this.strBubbleZipUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.lUin, 2);
     paramJceOutputStream.write(this.lHeadBgColor, 3);
     paramJceOutputStream.write(this.lTextColor, 4);
-    if (this.strFeedsPicUrl != null) {
-      paramJceOutputStream.write(this.strFeedsPicUrl, 5);
+    str = this.strFeedsPicUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallCustomBubbleSkin
  * JD-Core Version:    0.7.0.1
  */

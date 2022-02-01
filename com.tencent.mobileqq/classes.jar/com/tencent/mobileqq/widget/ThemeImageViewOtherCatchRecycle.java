@@ -16,7 +16,7 @@ public class ThemeImageViewOtherCatchRecycle
     setMaskShape(ThemeImageWrapper.MODE_OTHER);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     try
     {
@@ -25,14 +25,17 @@ public class ThemeImageViewOtherCatchRecycle
     }
     catch (Exception paramCanvas)
     {
-      while (!QLog.isColorLevel()) {}
+      label6:
+      break label6;
+    }
+    if (QLog.isColorLevel()) {
       QLog.d("ThemeImageViewOtherCatchRecycle", 2, "onDraw() Canvas: trying to use a recycled bitmap");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ThemeImageViewOtherCatchRecycle
  * JD-Core Version:    0.7.0.1
  */

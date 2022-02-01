@@ -2,44 +2,48 @@ package com.tencent.biz.webviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 final class NewReportPlugin$1
   implements Runnable
 {
-  NewReportPlugin$1(int paramInt, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  NewReportPlugin$1(int paramInt, QBaseActivity paramQBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
   public void run()
   {
     try
     {
-      Bundle localBundle = NewReportPlugin.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, null);
-      String str2 = this.c;
-      String str1 = str2;
+      Bundle localBundle = NewReportPlugin.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, null);
+      Object localObject2 = this.c;
+      Object localObject1 = localObject2;
       if (TextUtils.isEmpty(this.c))
       {
-        str1 = str2;
-        if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null) {
-          str1 = "avgame";
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime() == null) {
+          localObject1 = "avgame";
         }
       }
-      str1 = NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, null, null, this.b, this.d, this.e, this.jdField_a_of_type_Int, NewReportPlugin.a(this.jdField_a_of_type_Int), str1, "", "", "", "", "", "", "", localBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("NewReportPlugin", 2, "safetyNewReport postData=" + str1);
+      localObject1 = NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_JavaLangString, null, null, this.b, this.d, this.e, this.jdField_a_of_type_Int, NewReportPlugin.a(this.jdField_a_of_type_Int), (String)localObject1, "", "", "", "", "", "", "", localBundle);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("safetyNewReport postData=");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("NewReportPlugin", 2, ((StringBuilder)localObject2).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new NewReportPlugin.1.1(this, str1));
+      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.runOnUiThread(new NewReportPlugin.1.1(this, (String)localObject1));
       return;
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new NewReportPlugin.1.2(this, localException));
+      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.runOnUiThread(new NewReportPlugin.1.2(this, localException));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.1
  * JD-Core Version:    0.7.0.1
  */

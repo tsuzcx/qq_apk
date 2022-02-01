@@ -7,19 +7,19 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Scroller;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class WSDragLayout
   extends LinearLayout
 {
   float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 1;
-  private ListView jdField_a_of_type_AndroidWidgetListView;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
   private WSDragLayout.TouchListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener;
   boolean jdField_a_of_type_Boolean = false;
@@ -27,11 +27,15 @@ public class WSDragLayout
   private int jdField_b_of_type_Int = 0;
   boolean jdField_b_of_type_Boolean;
   float jdField_c_of_type_Float = 0.0F;
+  private int jdField_c_of_type_Int = 0;
   private boolean jdField_c_of_type_Boolean = false;
   private float jdField_d_of_type_Float = 0.0F;
   private boolean jdField_d_of_type_Boolean = true;
   private boolean e = false;
   private boolean f = false;
+  private boolean g = false;
+  private boolean h;
+  private boolean i;
   
   public WSDragLayout(@NonNull Context paramContext)
   {
@@ -53,19 +57,25 @@ public class WSDragLayout
   
   private int a()
   {
-    int i = 0;
-    int k;
-    for (int j = 0; i < getChildCount(); j = k)
+    int j = 0;
+    int k = 0;
+    while (j < getChildCount())
     {
-      View localView = getChildAt(i);
-      k = j;
-      if (localView.getVisibility() == 0) {
-        k = j + localView.getHeight();
+      View localView = getChildAt(j);
+      if (localView.getVisibility() == 0)
+      {
+        int m = k + localView.getHeight();
+        k = m;
+        if (j == 0)
+        {
+          this.jdField_c_of_type_Int = localView.getHeight();
+          k = m;
+        }
       }
-      i += 1;
+      j += 1;
     }
-    this.jdField_b_of_type_Int = j;
-    return j / 4;
+    this.jdField_b_of_type_Int = k;
+    return k / 4;
   }
   
   private void a()
@@ -76,40 +86,39 @@ public class WSDragLayout
   
   private void a(float paramFloat)
   {
-    boolean bool = true;
     float f1 = -(paramFloat - this.jdField_d_of_type_Float);
     float f2 = a(f1);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener != null) && (this.jdField_b_of_type_Int > 0)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener.a(Math.abs(getScrollY() + f2) / this.jdField_b_of_type_Int);
+    WSDragLayout.TouchListener localTouchListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener;
+    if ((localTouchListener != null) && (this.jdField_b_of_type_Int > 0)) {
+      localTouchListener.a(Math.abs(getScrollY() + f2) / this.jdField_b_of_type_Int);
     }
-    WSDragLayout.TouchListener localTouchListener;
-    if ((this.jdField_c_of_type_Boolean) && (f2 != 0.0F))
-    {
+    boolean bool1 = this.jdField_c_of_type_Boolean;
+    boolean bool2 = false;
+    if ((bool1) && (f2 != 0.0F)) {
       scrollBy(0, (int)f2);
-      if (Math.abs(f1) > 5.0F) {
-        this.e = true;
-      }
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener != null)
-      {
-        localTouchListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener;
-        if (getScrollY() <= 0) {
-          break label142;
-        }
-      }
-    }
-    for (;;)
-    {
-      localTouchListener.a(bool);
-      this.jdField_d_of_type_Float = paramFloat;
-      return;
-      if (f2 <= 0.0F) {
-        break;
-      }
+    } else if (f2 > 0.0F) {
       scrollBy(0, (int)f2);
-      break;
-      label142:
-      bool = false;
     }
+    if (Math.abs(f1) > 5.0F)
+    {
+      this.e = true;
+      if (f2 >= 0.0F) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      this.i = bool1;
+    }
+    localTouchListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener;
+    if (localTouchListener != null)
+    {
+      bool1 = bool2;
+      if (getScrollY() > 0) {
+        bool1 = true;
+      }
+      localTouchListener.a(bool1);
+    }
+    this.jdField_d_of_type_Float = paramFloat;
   }
   
   private boolean a(MotionEvent paramMotionEvent)
@@ -121,72 +130,79 @@ public class WSDragLayout
     }
     paramMotionEvent.setAction(3);
     super.dispatchTouchEvent(paramMotionEvent);
-    int i;
-    if ((Math.sqrt(Math.pow(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float, 2.0D) + Math.pow(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float, 2.0D)) < a()) || (getScrollY() >= 0) || (Math.abs(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float) < ScreenUtil.dip2px(5.0F)))
+    a();
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Float = 0.0F;
+    if (this.i)
     {
-      i = 1;
-      this.jdField_b_of_type_Float = 0.0F;
-      this.jdField_a_of_type_Float = 0.0F;
-      if (i == 0) {
-        break label132;
-      }
+      this.g = true;
       a(0);
-    }
-    for (;;)
-    {
       return false;
-      i = 0;
-      break;
-      label132:
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener != null)
-      {
-        this.f = true;
-        a(-this.jdField_b_of_type_Int);
-      }
     }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener != null)
+    {
+      this.f = true;
+      int j = this.jdField_c_of_type_Int;
+      if (j > 0) {
+        j = this.jdField_b_of_type_Int - j;
+      } else {
+        j = this.jdField_b_of_type_Int;
+      }
+      a(-j);
+    }
+    return false;
   }
   
   public static boolean a(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView == null) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    int n;
-    int i1;
-    do
-    {
+    if (paramView == null) {
       return false;
-      i = (int)paramMotionEvent.getRawY();
-      j = (int)paramMotionEvent.getRawX();
-      paramMotionEvent = new int[2];
-      paramView.getLocationOnScreen(paramMotionEvent);
-      k = paramMotionEvent[0];
-      m = paramMotionEvent[1];
-      n = paramView.getMeasuredWidth();
-      i1 = paramView.getMeasuredHeight();
-    } while ((i < m) || (i > i1 + m) || (j < k) || (j > n + k));
-    return true;
+    }
+    int j = (int)paramMotionEvent.getRawY();
+    int k = (int)paramMotionEvent.getRawX();
+    paramMotionEvent = new int[2];
+    paramView.getLocationOnScreen(paramMotionEvent);
+    int m = paramMotionEvent[0];
+    int n = paramMotionEvent[1];
+    int i1 = paramView.getMeasuredWidth();
+    int i2 = paramView.getMeasuredHeight();
+    return (j >= n) && (j <= i2 + n) && (k >= m) && (k <= i1 + m);
   }
   
   private boolean b(MotionEvent paramMotionEvent)
   {
+    if ((getChildAt(0).isShown()) && (b(getChildAt(0), paramMotionEvent))) {
+      return false;
+    }
     if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1))
     {
       this.jdField_c_of_type_Float = 0.0F;
       this.jdField_b_of_type_Boolean = false;
     }
-    if (((this.jdField_a_of_type_AndroidWidgetListView != null) && (this.jdField_a_of_type_AndroidWidgetListView.canScrollVertically(-1))) || (paramMotionEvent.getRawY() < this.jdField_c_of_type_Float))
+    WSDragLayout.TouchListener localTouchListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener;
+    int j;
+    if ((localTouchListener != null) && (localTouchListener.a())) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if ((!this.jdField_a_of_type_AndroidViewViewGroup.canScrollVertically(-1)) && (j == 0)) {
+      j = 0;
+    } else {
+      j = 1;
+    }
+    if ((j != 0) || (paramMotionEvent.getRawY() < this.jdField_c_of_type_Float))
     {
       this.jdField_c_of_type_Float = paramMotionEvent.getRawY();
       this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
       this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-      if (getScrollY() == 0) {
+      if (getScrollY() == 0)
+      {
         this.jdField_b_of_type_Boolean = true;
+        return true;
       }
     }
-    while (this.jdField_b_of_type_Boolean) {
+    if (this.jdField_b_of_type_Boolean) {
       return true;
     }
     this.jdField_c_of_type_Float = paramMotionEvent.getRawY();
@@ -198,96 +214,165 @@ public class WSDragLayout
     if (this.jdField_c_of_type_Boolean) {
       return true;
     }
-    if ((!this.jdField_d_of_type_Boolean) || (a(paramView, paramMotionEvent)))
-    {
-      this.jdField_c_of_type_Boolean = true;
-      return true;
+    if ((this.jdField_d_of_type_Boolean) && (!a(paramView, paramMotionEvent))) {
+      return false;
     }
-    return false;
+    this.jdField_c_of_type_Boolean = true;
+    return true;
   }
   
   public float a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    int i;
-    for (float f1 = 0.0F;; f1 = 20.0F)
-    {
-      i = AIOUtils.a(f1, getContext().getResources());
-      if ((int)(getScrollY() + paramFloat) >= i) {
-        break;
-      }
+    float f1;
+    if (this.jdField_a_of_type_Boolean) {
+      f1 = 0.0F;
+    } else {
+      f1 = 20.0F;
+    }
+    int j = AIOUtils.b(f1, getContext().getResources());
+    if ((int)(getScrollY() + paramFloat) < j) {
       return paramFloat;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener.a();
-    }
-    return i - getScrollY();
+    return j - getScrollY();
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller != null)
+    Scroller localScroller = this.jdField_a_of_type_AndroidWidgetScroller;
+    if (localScroller != null)
     {
-      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, getScrollY(), 0, paramInt - getScrollY());
+      localScroller.startScroll(0, getScrollY(), 0, paramInt - getScrollY());
       invalidate();
       return;
     }
     scrollTo(0, paramInt);
   }
   
+  public void a(int paramInt1, int paramInt2)
+  {
+    Scroller localScroller = this.jdField_a_of_type_AndroidWidgetScroller;
+    if (localScroller != null)
+    {
+      localScroller.startScroll(0, getScrollY(), 0, paramInt1 - getScrollY(), paramInt2);
+      invalidate();
+      return;
+    }
+    scrollTo(0, paramInt1);
+  }
+  
+  public boolean a()
+  {
+    return this.h;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.h = true;
+    this.f = true;
+    if (this.jdField_c_of_type_Int > 0)
+    {
+      a(-(getHeight() - this.jdField_c_of_type_Int), paramInt);
+      return;
+    }
+    getViewTreeObserver().addOnGlobalLayoutListener(new WSDragLayout.1(this, paramInt));
+  }
+  
+  public void c(int paramInt)
+  {
+    this.h = false;
+    this.g = true;
+    if (this.jdField_c_of_type_Int > 0)
+    {
+      a(0, paramInt);
+      return;
+    }
+    getViewTreeObserver().addOnGlobalLayoutListener(new WSDragLayout.2(this, paramInt));
+  }
+  
   public void computeScroll()
   {
     super.computeScroll();
-    if ((this.jdField_a_of_type_AndroidWidgetScroller != null) && (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset()))
+    Object localObject = this.jdField_a_of_type_AndroidWidgetScroller;
+    if ((localObject != null) && (((Scroller)localObject).computeScrollOffset()))
     {
       scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
-      WSLog.a("WSDragLayout", "scrollY = " + this.jdField_a_of_type_AndroidWidgetScroller.getCurrY() + "; dis = " + this.jdField_b_of_type_Int);
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener != null) && (this.jdField_b_of_type_Int > 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener.a(Math.abs(this.jdField_a_of_type_AndroidWidgetScroller.getCurrY()) / this.jdField_b_of_type_Int);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("scrollY = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+      ((StringBuilder)localObject).append("; dis = ");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      WSLog.a("WSDragLayout", ((StringBuilder)localObject).toString());
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener;
+      if ((localObject != null) && (this.jdField_b_of_type_Int > 0)) {
+        ((WSDragLayout.TouchListener)localObject).a(Math.abs(this.jdField_a_of_type_AndroidWidgetScroller.getCurrY()) / this.jdField_b_of_type_Int);
       }
       invalidate();
+      return;
     }
-    do
+    if (this.f)
     {
-      do
-      {
-        return;
-      } while (!this.f);
       this.f = false;
-    } while (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener == null);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener.a(1.0F);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener.a(this.jdField_a_of_type_Int);
+      this.h = true;
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener;
+      if (localObject != null)
+      {
+        ((WSDragLayout.TouchListener)localObject).a(1.0F);
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener.a(this.jdField_a_of_type_Int);
+      }
+    }
+    else if (this.g)
+    {
+      this.g = false;
+      this.h = false;
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener;
+      if (localObject != null)
+      {
+        ((WSDragLayout.TouchListener)localObject).a(0.0F);
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout$TouchListener.a();
+      }
+    }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!b(getChildAt(0), paramMotionEvent)) && (this.jdField_a_of_type_Int != 1)) {
+    if (!b(getChildAt(0), paramMotionEvent)) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     if (b(paramMotionEvent)) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     float f1 = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    int j = paramMotionEvent.getAction();
+    if (j != 0)
     {
-    }
-    do
-    {
+      if (j != 1) {
+        if (j != 2)
+        {
+          if (j != 3) {
+            return false;
+          }
+        }
+        else
+        {
+          a(f1);
+          return true;
+        }
+      }
+      if (a(paramMotionEvent)) {
+        return super.dispatchTouchEvent(paramMotionEvent);
+      }
       return false;
-      this.jdField_b_of_type_Boolean = false;
-      this.e = false;
-      this.jdField_d_of_type_Float = paramMotionEvent.getY();
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-      super.dispatchTouchEvent(paramMotionEvent);
-      return true;
-      a(f1);
-      return true;
-    } while (!a(paramMotionEvent));
-    return super.dispatchTouchEvent(paramMotionEvent);
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.e = false;
+    this.jdField_d_of_type_Float = paramMotionEvent.getY();
+    this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+    this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+    super.dispatchTouchEvent(paramMotionEvent);
+    return true;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     a();
@@ -298,6 +383,11 @@ public class WSDragLayout
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
+  public void setContentView(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
   public void setControlLitTongue(boolean paramBoolean)
   {
     this.jdField_d_of_type_Boolean = paramBoolean;
@@ -306,11 +396,6 @@ public class WSDragLayout
   public void setDisableMinScrollY(boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void setListView(ListView paramListView)
-  {
-    this.jdField_a_of_type_AndroidWidgetListView = paramListView;
   }
   
   public void setMode(int paramInt)
@@ -325,7 +410,7 @@ public class WSDragLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -34,51 +34,50 @@ public class JsonUtils
     if ((paramObject instanceof JSONArray))
     {
       paramObject = (JSONArray)paramObject;
-      if (paramObject.length() >= 2) {
-        try
-        {
-          double d = Double.parseDouble(paramObject.get(0).toString());
-          paramObject = paramObject.get(1).toString();
-          if ((!TextUtils.isEmpty(paramObject)) && (d > 0.0D))
-          {
-            if ("YES".equalsIgnoreCase(paramObject))
-            {
-              paramArrayOfDouble[0] = d;
-              return 1;
-            }
-            if ("NO".equalsIgnoreCase(paramObject))
-            {
-              paramArrayOfDouble[0] = d;
-              return 2;
-            }
-          }
-          else
-          {
-            return 0;
-          }
-        }
-        catch (Exception paramArrayOfDouble) {}
-      }
+      if (paramObject.length() < 2) {}
     }
+    try
+    {
+      double d = Double.parseDouble(paramObject.get(0).toString());
+      paramObject = paramObject.get(1).toString();
+      if (!TextUtils.isEmpty(paramObject))
+      {
+        if (d <= 0.0D) {
+          return 0;
+        }
+        if ("YES".equalsIgnoreCase(paramObject))
+        {
+          paramArrayOfDouble[0] = d;
+          return 1;
+        }
+        if ("NO".equalsIgnoreCase(paramObject))
+        {
+          paramArrayOfDouble[0] = d;
+          return 2;
+        }
+      }
+      return 0;
+    }
+    catch (Exception paramArrayOfDouble) {}
     return 0;
   }
   
   public static Object getObjectFromJsonArray(Object paramObject, int paramInt)
   {
-    if (!(paramObject instanceof JSONArray)) {}
-    do
-    {
+    if (!(paramObject instanceof JSONArray)) {
       return null;
-      paramObject = (JSONArray)paramObject;
-    } while (paramObject.length() <= paramInt);
-    try
-    {
-      paramObject = paramObject.get(paramInt);
-      return paramObject;
     }
-    catch (Exception paramObject)
-    {
-      LogUtil.QLog.i("JsonUtils", 2, "parse json error", paramObject);
+    paramObject = (JSONArray)paramObject;
+    if (paramObject.length() > paramInt) {
+      try
+      {
+        paramObject = paramObject.get(paramInt);
+        return paramObject;
+      }
+      catch (Exception paramObject)
+      {
+        LogUtil.QLog.i("JsonUtils", 2, "parse json error", paramObject);
+      }
     }
     return null;
   }
@@ -88,35 +87,32 @@ public class JsonUtils
     if ((paramObject instanceof JSONArray))
     {
       paramObject = (JSONArray)paramObject;
-      if (paramObject.length() > paramInt) {}
-    }
-    while (!(paramObject instanceof String)) {
-      for (;;)
-      {
+      if (paramObject.length() <= paramInt) {
         return null;
-        try
-        {
-          paramObject = paramObject.get(paramInt);
-          if ((paramObject instanceof String)) {
-            return (String)paramObject;
-          }
-        }
-        catch (JSONException paramObject)
-        {
-          for (;;)
-          {
-            paramObject.printStackTrace();
-            paramObject = null;
-          }
-        }
       }
+      try
+      {
+        paramObject = paramObject.get(paramInt);
+      }
+      catch (JSONException paramObject)
+      {
+        paramObject.printStackTrace();
+        paramObject = null;
+      }
+      if ((paramObject instanceof String)) {
+        return (String)paramObject;
+      }
+      return null;
     }
-    return (String)paramObject;
+    if ((paramObject instanceof String)) {
+      return (String)paramObject;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.JsonUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -28,14 +28,15 @@ public final class cmd0x7f5$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 53, 58, 66, 72, 80, 88, 96 }, new String[] { "uint32_max_count", "uint32_max_distance", "uint32_loc_type", "msg_gps", "bytes_route_mac", "uint32_ipv4", "rpt_msg_wifi_mac", "bytes_req_context", "uint32_area_count", "uint32_sort_type", "uint32_filter_id", "uint32_strategy" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro1, Integer.valueOf(0), null, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 53, 58, 66, 72, 80, 88, 96 }, new String[] { "uint32_max_count", "uint32_max_distance", "uint32_loc_type", "msg_gps", "bytes_route_mac", "uint32_ipv4", "rpt_msg_wifi_mac", "bytes_req_context", "uint32_area_count", "uint32_sort_type", "uint32_filter_id", "uint32_strategy" }, new Object[] { localInteger, localInteger, localInteger, null, localByteStringMicro1, localInteger, null, localByteStringMicro2, localInteger, localInteger, localInteger, localInteger }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7f5.cmd0x7f5.ReqBody
  * JD-Core Version:    0.7.0.1
  */

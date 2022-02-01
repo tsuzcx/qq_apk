@@ -15,7 +15,7 @@ public class DefaultStorageAdapter
   static final int MAX_SQL_KEYS = 999;
   private Executor mExecutor;
   private ExecutorService mExecutorService;
-  private IHippySQLiteHelper mSQLiteHelper;
+  private final IHippySQLiteHelper mSQLiteHelper;
   
   public DefaultStorageAdapter(Context paramContext)
   {
@@ -38,7 +38,11 @@ public class DefaultStorageAdapter
   {
     String[] arrayOfString = new String[paramInt];
     Arrays.fill(arrayOfString, "?");
-    return "key IN (" + TextUtils.join(", ", arrayOfString) + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key IN (");
+    localStringBuilder.append(TextUtils.join(", ", arrayOfString));
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   static String[] buildKeySelectionArgs(HippyArray paramHippyArray, int paramInt1, int paramInt2)
@@ -69,13 +73,15 @@ public class DefaultStorageAdapter
   
   public void destroyIfNeed()
   {
-    if ((this.mExecutorService != null) && (!this.mExecutorService.isShutdown()))
+    Object localObject = this.mExecutorService;
+    if ((localObject != null) && (!((ExecutorService)localObject).isShutdown()))
     {
       this.mExecutorService.shutdown();
       this.mExecutorService = null;
     }
-    if (this.mSQLiteHelper != null) {
-      this.mSQLiteHelper.onDestroy();
+    localObject = this.mSQLiteHelper;
+    if (localObject != null) {
+      ((IHippySQLiteHelper)localObject).onDestroy();
     }
   }
   
@@ -101,7 +107,7 @@ public class DefaultStorageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.storage.DefaultStorageAdapter
  * JD-Core Version:    0.7.0.1
  */

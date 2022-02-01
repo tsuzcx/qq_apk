@@ -2,8 +2,8 @@ package com.tencent.av.wtogether.adapter;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.av.wtogether.callback.C2CFileClickListener;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class QVideoC2CFileExpandableListAdapter$1
   implements View.OnClickListener
@@ -13,33 +13,29 @@ class QVideoC2CFileExpandableListAdapter$1
   public void onClick(View paramView)
   {
     FileManagerEntity localFileManagerEntity = (FileManagerEntity)((QVideoC2CFileExpandableListAdapter.RecentItemHolder)paramView.getTag()).a;
-    Object localObject2 = localFileManagerEntity.Uuid;
+    Object localObject = localFileManagerEntity.Uuid;
     QVideoC2CFileExpandableListAdapter localQVideoC2CFileExpandableListAdapter = this.a;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).equalsIgnoreCase(QVideoC2CFileExpandableListAdapter.a(this.a))) {
-      localObject1 = null;
+    paramView = (View)localObject;
+    if (((String)localObject).equalsIgnoreCase(QVideoC2CFileExpandableListAdapter.a(localQVideoC2CFileExpandableListAdapter))) {
+      paramView = null;
     }
-    QVideoC2CFileExpandableListAdapter.a(localQVideoC2CFileExpandableListAdapter, (String)localObject1);
+    QVideoC2CFileExpandableListAdapter.a(localQVideoC2CFileExpandableListAdapter, paramView);
     this.a.notifyDataSetChanged();
     if (QVideoC2CFileExpandableListAdapter.a(this.a) != null)
     {
-      localObject2 = QVideoC2CFileExpandableListAdapter.a(this.a);
-      if (QVideoC2CFileExpandableListAdapter.a(this.a) == null) {
-        break label113;
+      localObject = QVideoC2CFileExpandableListAdapter.a(this.a);
+      if (QVideoC2CFileExpandableListAdapter.a(this.a) != null) {
+        paramView = localFileManagerEntity;
+      } else {
+        paramView = null;
       }
-    }
-    label113:
-    for (localObject1 = localFileManagerEntity;; localObject1 = null)
-    {
-      ((QVideoC2CFileExpandableListAdapter.UIEvent)localObject2).a((FileManagerEntity)localObject1);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      ((C2CFileClickListener)localObject).a(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.adapter.QVideoC2CFileExpandableListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

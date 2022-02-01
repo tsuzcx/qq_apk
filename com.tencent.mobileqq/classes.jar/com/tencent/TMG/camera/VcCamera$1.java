@@ -14,35 +14,30 @@ class VcCamera$1
       return;
     }
     if (this.val$needRestartPreview) {
-      for (;;)
+      try
       {
-        try
-        {
-          if (this.this$0.mCallbackBufferAddStrategy.getIsUseBuffer())
-          {
-            this.this$0.mCamera.setPreviewCallbackWithBuffer(null);
-            this.this$0.mCamera.stopPreview();
-            VcCamera.access$000(this.this$0, this.val$fps);
-            this.this$0.mCallbackBufferAddStrategy.setCameraCaptureSettings(this.this$0.VideoChatSettings);
-            this.this$0.mCallbackBufferAddStrategy.fistAdd(this.this$0.mCamera);
-            if (!this.this$0.mCallbackBufferAddStrategy.getIsUseBuffer()) {
-              break label167;
-            }
-            this.this$0.mCamera.setPreviewCallbackWithBuffer(VcCamera.access$100(this.this$0));
-            this.this$0.mCamera.startPreview();
-            return;
-          }
+        if (this.this$0.mCallbackBufferAddStrategy.getIsUseBuffer()) {
+          this.this$0.mCamera.setPreviewCallbackWithBuffer(null);
+        } else {
+          this.this$0.mCamera.setPreviewCallback(null);
         }
-        catch (Exception localException)
-        {
-          QLog.d("VcCamera", 0, "setCameraParaDynamic error", localException);
-          localException.printStackTrace();
-          return;
+        this.this$0.mCamera.stopPreview();
+        VcCamera.access$000(this.this$0, this.val$fps);
+        this.this$0.mCallbackBufferAddStrategy.setCameraCaptureSettings(this.this$0.VideoChatSettings);
+        this.this$0.mCallbackBufferAddStrategy.fistAdd(this.this$0.mCamera);
+        if (this.this$0.mCallbackBufferAddStrategy.getIsUseBuffer()) {
+          this.this$0.mCamera.setPreviewCallbackWithBuffer(VcCamera.access$100(this.this$0));
+        } else {
+          this.this$0.mCamera.setPreviewCallback(VcCamera.access$100(this.this$0));
         }
-        this.this$0.mCamera.setPreviewCallback(null);
-        continue;
-        label167:
-        this.this$0.mCamera.setPreviewCallback(VcCamera.access$100(this.this$0));
+        this.this$0.mCamera.startPreview();
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("VcCamera", 0, "setCameraParaDynamic error", localException);
+        localException.printStackTrace();
+        return;
       }
     }
     VcCamera.access$000(this.this$0, this.val$fps);

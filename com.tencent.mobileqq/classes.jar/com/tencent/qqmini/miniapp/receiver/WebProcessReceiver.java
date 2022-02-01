@@ -24,7 +24,10 @@ public class WebProcessReceiver
     if (sTBSDownloading.compareAndSet(false, true))
     {
       long l = System.currentTimeMillis();
-      Object localObject = paramContext.getSharedPreferences(paramContext.getPackageName() + "_preferences", 4);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext.getPackageName());
+      ((StringBuilder)localObject).append("_preferences");
+      localObject = paramContext.getSharedPreferences(((StringBuilder)localObject).toString(), 4);
       QbSdk.setTbsListener(new WebProcessReceiver.2(this, (SharedPreferences)localObject, l));
       QMLog.d("TBS_update", "tbs start download");
       localObject = ((SharedPreferences)localObject).edit();
@@ -39,36 +42,36 @@ public class WebProcessReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str;
     if (paramIntent != null)
     {
-      str = paramIntent.getAction();
-      if (str != null) {
-        break label16;
+      String str = paramIntent.getAction();
+      if (str == null) {
+        return;
       }
-    }
-    label16:
-    do
-    {
-      return;
-      QMLog.d("WebProcessReceiver", "action=" + str);
-    } while (!"action_download_tbs".equals(str));
-    if (("1|1" != null) && ("1|1".charAt(0) == '1')) {}
-    for (int i = 1;; i = 0)
-    {
-      boolean bool1 = paramIntent.getBooleanExtra("isDownloadForeground", false);
-      boolean bool2 = paramIntent.getBooleanExtra("fromMiniApp", false);
-      if (i == 0) {
-        break;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("action=");
+      localStringBuilder.append(str);
+      QMLog.d("WebProcessReceiver", localStringBuilder.toString());
+      if ("action_download_tbs".equals(str))
+      {
+        int i;
+        if ("1|1".charAt(0) == '1') {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        boolean bool1 = paramIntent.getBooleanExtra("isDownloadForeground", false);
+        boolean bool2 = paramIntent.getBooleanExtra("fromMiniApp", false);
+        if (i != 0) {
+          ThreadManager.getSubThreadHandler().post(new WebProcessReceiver.1(this, paramContext, bool1, bool2));
+        }
       }
-      ThreadManager.getSubThreadHandler().post(new WebProcessReceiver.1(this, paramContext, bool1, bool2));
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.receiver.WebProcessReceiver
  * JD-Core Version:    0.7.0.1
  */

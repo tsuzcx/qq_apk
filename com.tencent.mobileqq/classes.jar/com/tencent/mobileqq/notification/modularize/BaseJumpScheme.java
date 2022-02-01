@@ -17,12 +17,12 @@ public abstract class BaseJumpScheme
 {
   private final PendingIntent e(PushComponent paramPushComponent)
   {
-    BaseApplication localBaseApplication = BaseApplication.context;
-    Intent localIntent = new Intent((Context)localBaseApplication, SplashActivity.class);
+    Context localContext = (Context)BaseApplication.context;
+    Intent localIntent = new Intent(localContext, SplashActivity.class);
     localIntent.putExtra("tab_index", FrameControllerUtil.a);
     localIntent.putExtra("fragment_id", 1);
     localIntent.setFlags(335544320);
-    paramPushComponent = PendingIntent.getActivity((Context)localBaseApplication, paramPushComponent.jdField_d_of_type_Int, localIntent, 134217728);
+    paramPushComponent = PendingIntent.getActivity(localContext, paramPushComponent.jdField_d_of_type_Int, localIntent, 134217728);
     Intrinsics.checkExpressionValueIsNotNull(paramPushComponent, "jumpPendingIntent");
     return paramPushComponent;
   }
@@ -52,13 +52,13 @@ public abstract class BaseJumpScheme
     if (Intrinsics.areEqual(paramPushComponent.jdField_d_of_type_JavaLangString, "")) {
       return e(paramPushComponent);
     }
-    BaseApplication localBaseApplication = BaseApplication.context;
-    Intent localIntent = new Intent((Context)localBaseApplication, QQBrowserActivity.class);
+    Context localContext = (Context)BaseApplication.context;
+    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
     localIntent.putExtra("url", paramPushComponent.jdField_d_of_type_JavaLangString);
     localIntent.addFlags(268435456);
     PushUtil.a(localIntent, paramPushComponent);
     localIntent.putExtra("param_notifyid", paramPushComponent.jdField_d_of_type_Int);
-    paramPushComponent = PendingIntent.getActivity((Context)localBaseApplication, paramPushComponent.jdField_d_of_type_Int, localIntent, 134217728);
+    paramPushComponent = PendingIntent.getActivity(localContext, paramPushComponent.jdField_d_of_type_Int, localIntent, 134217728);
     Intrinsics.checkExpressionValueIsNotNull(paramPushComponent, "jumpPendingIntent");
     return paramPushComponent;
   }
@@ -76,7 +76,7 @@ public abstract class BaseJumpScheme
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.BaseJumpScheme
  * JD-Core Version:    0.7.0.1
  */

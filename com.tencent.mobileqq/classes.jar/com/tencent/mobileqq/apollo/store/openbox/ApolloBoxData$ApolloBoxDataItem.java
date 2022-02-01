@@ -32,14 +32,16 @@ public class ApolloBoxData$ApolloBoxDataItem
   
   public int a(ApolloBoxDataItem paramApolloBoxDataItem)
   {
-    if (paramApolloBoxDataItem == null) {}
-    do
-    {
+    if (paramApolloBoxDataItem == null) {
       return -1;
-      if (this.jdField_a_of_type_Boolean == paramApolloBoxDataItem.jdField_a_of_type_Boolean) {
-        return -(int)(this.c - paramApolloBoxDataItem.c);
-      }
-    } while (this.jdField_a_of_type_Boolean);
+    }
+    boolean bool = this.jdField_a_of_type_Boolean;
+    if (bool == paramApolloBoxDataItem.jdField_a_of_type_Boolean) {
+      return -(int)(this.c - paramApolloBoxDataItem.c);
+    }
+    if (bool) {
+      return -1;
+    }
     return 0;
   }
   
@@ -50,7 +52,7 @@ public class ApolloBoxData$ApolloBoxDataItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.ApolloBoxData.ApolloBoxDataItem
  * JD-Core Version:    0.7.0.1
  */

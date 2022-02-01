@@ -16,31 +16,26 @@ class GaInviteActivity$DialogInterfaceOnClickListener
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (this.jdField_a_of_type_Int)
+    paramInt = this.jdField_a_of_type_Int;
+    if (paramInt != 0)
     {
+      if ((paramInt == 1) || (paramInt == 2)) {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
+      }
     }
-    for (;;)
+    else
     {
-      paramDialogInterface.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e(true);
+      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.d) {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.n();
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
-        break;
-        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.d) {
-          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l();
-        }
-      }
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
     }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteActivity.DialogInterfaceOnClickListener
  * JD-Core Version:    0.7.0.1
  */

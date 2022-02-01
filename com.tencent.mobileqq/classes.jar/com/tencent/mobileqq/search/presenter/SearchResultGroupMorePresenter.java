@@ -2,10 +2,11 @@ package com.tencent.mobileqq.search.presenter;
 
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.search.model.GroupSearchModelMoreItem;
+import com.tencent.mobileqq.search.base.presenter.IPresenter;
+import com.tencent.mobileqq.search.base.view.ISearchResultGroupView;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelMoreItem;
 import com.tencent.mobileqq.search.model.IModel;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.view.ISearchResultGroupView;
 import com.tencent.mobileqq.statistics.ReportController;
 
 public class SearchResultGroupMorePresenter
@@ -23,7 +24,7 @@ public class SearchResultGroupMorePresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchResultGroupMorePresenter
  * JD-Core Version:    0.7.0.1
  */

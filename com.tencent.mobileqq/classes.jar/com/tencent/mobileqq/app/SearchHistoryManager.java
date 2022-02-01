@@ -2,37 +2,35 @@ package com.tencent.mobileqq.app;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.data.SearchHistory;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import mqq.manager.Manager;
 
 public class SearchHistoryManager
   implements Manager
 {
-  public static boolean a;
+  public static boolean a = false;
   private final int jdField_a_of_type_Int = 10000;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  protected EntityManager a;
   private final int b = 10001;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
   
   public SearchHistoryManager(QQAppInterface paramQQAppInterface)
   {
@@ -42,43 +40,64 @@ public class SearchHistoryManager
   
   public static String a(QQAppInterface paramQQAppInterface)
   {
-    return PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).getString("search_keyword" + paramQQAppInterface.getCurrentAccountUin(), "");
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("search_keyword");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    return localSharedPreferences.getString(localStringBuilder.toString(), "");
   }
   
   private String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject1 = null;
+    if (bool) {
       return null;
     }
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    paramString = localFriendsManager.e(paramString);
-    if (paramString != null)
+    Object localObject2 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Friends localFriends = ((FriendsManager)localObject2).e(paramString);
+    paramString = localObject1;
+    if (localFriends != null)
     {
-      paramString = localFriendsManager.a(paramString.groupid + "");
-      if (paramString == null) {}
+      paramString = new StringBuilder();
+      paramString.append(localFriends.groupid);
+      paramString.append("");
+      localObject2 = ((FriendsManager)localObject2).a(paramString.toString());
+      paramString = localObject1;
+      if (localObject2 != null) {
+        paramString = ((Groups)localObject2).group_name;
+      }
     }
-    for (paramString = paramString.group_name;; paramString = null) {
-      return paramString;
-    }
+    return paramString;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     jdField_a_of_type_Boolean = true;
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
-    localEditor.putString("search_keyword" + paramQQAppInterface.getCurrentAccountUin(), paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("search_keyword");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    localEditor.putString(localStringBuilder.toString(), paramString);
     localEditor.commit();
   }
   
-  private boolean a(SearchHistory paramSearchHistory, PhoneContactManagerImp paramPhoneContactManagerImp)
+  private boolean a(SearchHistory paramSearchHistory, IPhoneContactService paramIPhoneContactService)
   {
-    if (!paramPhoneContactManagerImp.i()) {}
-    do
-    {
+    boolean bool2 = paramIPhoneContactService.isBindedIgnoreUpload();
+    boolean bool1 = true;
+    if (!bool2) {
       return true;
-      paramSearchHistory = paramPhoneContactManagerImp.c(paramSearchHistory.uin);
-    } while ((paramSearchHistory == null) || (!"0".equals(paramSearchHistory.uin)));
-    return false;
+    }
+    paramSearchHistory = paramIPhoneContactService.queryContactByCodeNumber(paramSearchHistory.uin);
+    if (paramSearchHistory != null)
+    {
+      if (!"0".equals(paramSearchHistory.uin)) {
+        return true;
+      }
+      bool1 = false;
+    }
+    return bool1;
   }
   
   private boolean c(SearchHistory paramSearchHistory)
@@ -89,11 +108,11 @@ public class SearchHistoryManager
   
   private boolean d(SearchHistory paramSearchHistory)
   {
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-    if (localPhoneContactManagerImp.i()) {
+    IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+    if (localIPhoneContactService.isBindedIgnoreUpload()) {
       return true;
     }
-    paramSearchHistory = localPhoneContactManagerImp.c(paramSearchHistory.uin);
+    paramSearchHistory = localIPhoneContactService.queryContactByCodeNumber(paramSearchHistory.uin);
     if (paramSearchHistory == null) {
       return true;
     }
@@ -103,232 +122,142 @@ public class SearchHistoryManager
   private boolean e(SearchHistory paramSearchHistory)
   {
     Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((FriendsManager)localObject).b(paramSearchHistory.uin)) {
-        bool1 = true;
-      }
+    boolean bool3 = true;
+    boolean bool1;
+    if ((localObject != null) && (((FriendsManager)localObject).b(paramSearchHistory.uin))) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
     if (paramSearchHistory.type == 1000)
     {
       localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      if (((TroopManager)localObject).b(((TroopManager)localObject).c(paramSearchHistory.troopUin), paramSearchHistory.uin) != null) {}
-    }
-    else
-    {
-      do
-      {
+      if (((TroopManager)localObject).b(((TroopManager)localObject).c(paramSearchHistory.troopUin), paramSearchHistory.uin) == null) {
         return true;
-        if (paramSearchHistory.type != 1004) {
-          break;
-        }
-        paramSearchHistory = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramSearchHistory.troopUin);
-      } while ((paramSearchHistory == null) || (paramSearchHistory.isDiscussHrMeeting()) || (paramSearchHistory.isHidden()));
+      }
     }
-    return bool1;
+    else if (paramSearchHistory.type == 1004)
+    {
+      paramSearchHistory = ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramSearchHistory.troopUin);
+      bool2 = bool3;
+      if (paramSearchHistory == null) {
+        return bool2;
+      }
+      bool2 = bool3;
+      if (paramSearchHistory.isDiscussHrMeeting()) {
+        return bool2;
+      }
+      if (paramSearchHistory.isHidden()) {
+        return true;
+      }
+    }
+    boolean bool2 = bool1;
+    return bool2;
   }
   
-  /* Error */
-  public java.util.ArrayList<SearchHistory> a()
+  public ArrayList<SearchHistory> a()
   {
-    // Byte code:
-    //   0: new 203	java/util/ArrayList
-    //   3: dup
-    //   4: invokespecial 204	java/util/ArrayList:<init>	()V
-    //   7: astore 4
-    //   9: aload_0
-    //   10: getfield 41	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   13: iconst_0
-    //   14: ldc 140
-    //   16: invokevirtual 209	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   19: aconst_null
-    //   20: aconst_null
-    //   21: aconst_null
-    //   22: aconst_null
-    //   23: aconst_null
-    //   24: ldc 211
-    //   26: aconst_null
-    //   27: invokevirtual 217	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   30: astore_3
-    //   31: aload_3
-    //   32: ifnull +259 -> 291
-    //   35: aload_3
-    //   36: invokeinterface 222 1 0
-    //   41: ifeq +250 -> 291
-    //   44: iconst_0
-    //   45: istore_1
-    //   46: new 140	com/tencent/mobileqq/data/SearchHistory
-    //   49: dup
-    //   50: invokespecial 223	com/tencent/mobileqq/data/SearchHistory:<init>	()V
-    //   53: astore 5
-    //   55: aload 5
-    //   57: aload_3
-    //   58: aload_3
-    //   59: ldc 225
-    //   61: invokeinterface 229 2 0
-    //   66: invokeinterface 232 2 0
-    //   71: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   74: aload 5
-    //   76: aload_3
-    //   77: aload_3
-    //   78: ldc 236
-    //   80: invokeinterface 229 2 0
-    //   85: invokeinterface 232 2 0
-    //   90: putfield 238	com/tencent/mobileqq/data/SearchHistory:displayName	Ljava/lang/String;
-    //   93: aload 5
-    //   95: aload_3
-    //   96: aload_3
-    //   97: ldc 239
-    //   99: invokeinterface 229 2 0
-    //   104: invokeinterface 232 2 0
-    //   109: putfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   112: aload 5
-    //   114: aload_3
-    //   115: aload_3
-    //   116: ldc 240
-    //   118: invokeinterface 229 2 0
-    //   123: invokeinterface 232 2 0
-    //   128: putfield 190	com/tencent/mobileqq/data/SearchHistory:troopUin	Ljava/lang/String;
-    //   131: aload 5
-    //   133: aload_3
-    //   134: aload_3
-    //   135: ldc 241
-    //   137: invokeinterface 229 2 0
-    //   142: invokeinterface 245 2 0
-    //   147: putfield 182	com/tencent/mobileqq/data/SearchHistory:type	I
-    //   150: aload 5
-    //   152: aload_3
-    //   153: aload_3
-    //   154: ldc 247
-    //   156: invokeinterface 229 2 0
-    //   161: invokeinterface 232 2 0
-    //   166: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   169: aload 5
-    //   171: aload_3
-    //   172: aload_3
-    //   173: ldc 251
-    //   175: invokeinterface 229 2 0
-    //   180: invokeinterface 245 2 0
-    //   185: putfield 253	com/tencent/mobileqq/data/SearchHistory:count	I
-    //   188: aload 5
-    //   190: aload_3
-    //   191: aload_3
-    //   192: ldc 255
-    //   194: invokeinterface 229 2 0
-    //   199: invokeinterface 259 2 0
-    //   204: putfield 262	com/tencent/mobileqq/data/SearchHistory:time	J
-    //   207: aload 5
-    //   209: aload_3
-    //   210: aload_3
-    //   211: ldc_w 264
-    //   214: invokeinterface 229 2 0
-    //   219: invokeinterface 245 2 0
-    //   224: i2l
-    //   225: invokevirtual 268	com/tencent/mobileqq/data/SearchHistory:setId	(J)V
-    //   228: aload_0
-    //   229: aload 5
-    //   231: invokevirtual 270	com/tencent/mobileqq/app/SearchHistoryManager:a	(Lcom/tencent/mobileqq/data/SearchHistory;)Z
-    //   234: istore_2
-    //   235: iload_1
-    //   236: iconst_5
-    //   237: if_icmplt +5 -> 242
-    //   240: iconst_1
-    //   241: istore_2
-    //   242: iload_2
-    //   243: ifeq +61 -> 304
-    //   246: aload_0
-    //   247: getfield 41	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   250: ldc 140
-    //   252: aload 5
-    //   254: getfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   257: invokevirtual 274	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   260: checkcast 140	com/tencent/mobileqq/data/SearchHistory
-    //   263: astore 5
-    //   265: aload 5
-    //   267: ifnull +13 -> 280
-    //   270: aload_0
-    //   271: getfield 41	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   274: aload 5
-    //   276: invokevirtual 278	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   279: pop
-    //   280: aload_3
-    //   281: invokeinterface 281 1 0
-    //   286: istore_2
-    //   287: iload_2
-    //   288: ifne +75 -> 363
-    //   291: aload_3
-    //   292: ifnull +9 -> 301
-    //   295: aload_3
-    //   296: invokeinterface 284 1 0
-    //   301: aload 4
-    //   303: areturn
-    //   304: iload_1
-    //   305: iconst_5
-    //   306: if_icmpge -26 -> 280
-    //   309: aload 4
-    //   311: aload 5
-    //   313: invokevirtual 287	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   316: pop
-    //   317: goto -37 -> 280
-    //   320: astore 5
-    //   322: aload_3
-    //   323: ifnull -22 -> 301
-    //   326: aload_3
-    //   327: invokeinterface 284 1 0
-    //   332: aload 4
-    //   334: areturn
-    //   335: astore 4
-    //   337: aconst_null
-    //   338: astore_3
-    //   339: aload_3
-    //   340: ifnull +9 -> 349
-    //   343: aload_3
-    //   344: invokeinterface 284 1 0
-    //   349: aload 4
-    //   351: athrow
-    //   352: astore 4
-    //   354: goto -15 -> 339
-    //   357: astore_3
-    //   358: aconst_null
-    //   359: astore_3
-    //   360: goto -38 -> 322
-    //   363: iload_1
-    //   364: iconst_1
-    //   365: iadd
-    //   366: istore_1
-    //   367: goto -321 -> 46
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	370	0	this	SearchHistoryManager
-    //   45	322	1	i	int
-    //   234	54	2	bool	boolean
-    //   30	314	3	localCursor	android.database.Cursor
-    //   357	1	3	localException1	java.lang.Exception
-    //   359	1	3	localObject1	Object
-    //   7	326	4	localArrayList	java.util.ArrayList
-    //   335	15	4	localObject2	Object
-    //   352	1	4	localObject3	Object
-    //   53	259	5	localSearchHistory	SearchHistory
-    //   320	1	5	localException2	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   35	44	320	java/lang/Exception
-    //   46	235	320	java/lang/Exception
-    //   246	265	320	java/lang/Exception
-    //   270	280	320	java/lang/Exception
-    //   280	287	320	java/lang/Exception
-    //   309	317	320	java/lang/Exception
-    //   9	31	335	finally
-    //   35	44	352	finally
-    //   46	235	352	finally
-    //   246	265	352	finally
-    //   270	280	352	finally
-    //   280	287	352	finally
-    //   309	317	352	finally
-    //   9	31	357	java/lang/Exception
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = null;
+    Object localObject3 = null;
+    try
+    {
+      try
+      {
+        Cursor localCursor = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(false, SearchHistory.class.getSimpleName(), null, null, null, null, null, "time desc", null);
+        int i = 0;
+        if (localCursor != null)
+        {
+          localObject3 = localCursor;
+          localObject1 = localCursor;
+          if (localCursor.moveToFirst())
+          {
+            boolean bool;
+            do
+            {
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              SearchHistory localSearchHistory = new SearchHistory();
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              localSearchHistory.key = localCursor.getString(localCursor.getColumnIndex("key"));
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              localSearchHistory.displayName = localCursor.getString(localCursor.getColumnIndex("displayName"));
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              localSearchHistory.uin = localCursor.getString(localCursor.getColumnIndex("uin"));
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              localSearchHistory.troopUin = localCursor.getString(localCursor.getColumnIndex("troopUin"));
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              localSearchHistory.type = localCursor.getInt(localCursor.getColumnIndex("type"));
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              localSearchHistory.extralInfo = localCursor.getString(localCursor.getColumnIndex("extralInfo"));
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              localSearchHistory.count = localCursor.getInt(localCursor.getColumnIndex("count"));
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              localSearchHistory.time = localCursor.getLong(localCursor.getColumnIndex("time"));
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              localSearchHistory.setId(localCursor.getInt(localCursor.getColumnIndex("_id")));
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              bool = a(localSearchHistory);
+              if (i >= 5) {
+                bool = true;
+              }
+              if (bool)
+              {
+                localObject3 = localCursor;
+                localObject1 = localCursor;
+                localSearchHistory = (SearchHistory)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(SearchHistory.class, localSearchHistory.key);
+                if (localSearchHistory != null)
+                {
+                  localObject3 = localCursor;
+                  localObject1 = localCursor;
+                  this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localSearchHistory);
+                }
+              }
+              else if (i < 5)
+              {
+                localObject3 = localCursor;
+                localObject1 = localCursor;
+                localArrayList.add(localSearchHistory);
+              }
+              i += 1;
+              localObject3 = localCursor;
+              localObject1 = localCursor;
+              bool = localCursor.moveToNext();
+            } while (bool);
+          }
+        }
+        if (localCursor == null) {
+          break label487;
+        }
+        localObject1 = localCursor;
+      }
+      finally
+      {
+        if (localObject3 != null) {
+          localObject3.close();
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      label477:
+      break label477;
+    }
+    if (localObject2 != null) {
+      localObject2.close();
+    }
+    label487:
+    return localArrayList;
   }
   
   /* Error */
@@ -337,456 +266,539 @@ public class SearchHistoryManager
     // Byte code:
     //   0: aload_1
     //   1: iconst_1
-    //   2: putfield 253	com/tencent/mobileqq/data/SearchHistory:count	I
+    //   2: putfield 256	com/tencent/mobileqq/data/SearchHistory:count	I
     //   5: aload_1
-    //   6: invokestatic 296	java/lang/System:currentTimeMillis	()J
-    //   9: putfield 262	com/tencent/mobileqq/data/SearchHistory:time	J
+    //   6: invokestatic 299	java/lang/System:currentTimeMillis	()J
+    //   9: putfield 265	com/tencent/mobileqq/data/SearchHistory:time	J
     //   12: aload_1
-    //   13: getfield 182	com/tencent/mobileqq/data/SearchHistory:type	I
-    //   16: lookupswitch	default:+124->140, 0:+125->141, 1:+273->289, 1000:+393->409, 1004:+433->449, 1006:+353->369, 1008:+513->529, 1021:+473->489, 3000:+313->329, 7220:+566->582, 56938:+353->369, 56939:+353->369, 56940:+353->369, 56941:+353->369, 56942:+353->369
-    //   141: aload_1
-    //   142: aload_0
-    //   143: aload_1
-    //   144: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   147: invokespecial 298	com/tencent/mobileqq/app/SearchHistoryManager:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   150: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   153: aload_1
-    //   154: getfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   157: ifnonnull +13 -> 170
-    //   160: aload_1
-    //   161: ldc_w 299
-    //   164: invokestatic 303	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   167: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   170: aload_1
-    //   171: new 56	java/lang/StringBuilder
-    //   174: dup
-    //   175: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   13: getfield 185	com/tencent/mobileqq/data/SearchHistory:type	I
+    //   16: istore_2
+    //   17: iload_2
+    //   18: ifeq +476 -> 494
+    //   21: iload_2
+    //   22: iconst_1
+    //   23: if_icmpeq +425 -> 448
+    //   26: iload_2
+    //   27: sipush 1000
+    //   30: if_icmpeq +372 -> 402
+    //   33: iload_2
+    //   34: sipush 1004
+    //   37: if_icmpeq +319 -> 356
+    //   40: iload_2
+    //   41: sipush 1006
+    //   44: if_icmpeq +266 -> 310
+    //   47: iload_2
+    //   48: sipush 1008
+    //   51: if_icmpeq +200 -> 251
+    //   54: iload_2
+    //   55: sipush 1021
+    //   58: if_icmpeq +147 -> 205
+    //   61: iload_2
+    //   62: sipush 3000
+    //   65: if_icmpeq +94 -> 159
+    //   68: iload_2
+    //   69: sipush 7220
+    //   72: if_icmpeq +41 -> 113
+    //   75: iload_2
+    //   76: tableswitch	default:+36 -> 112, 56938:+234->310, 56939:+234->310, 56940:+234->310, 56941:+234->310, 56942:+234->310
+    //   113: aload_1
+    //   114: ldc_w 300
+    //   117: invokestatic 304	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   120: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   123: new 55	java/lang/StringBuilder
+    //   126: dup
+    //   127: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   130: astore_3
+    //   131: aload_3
+    //   132: aload_1
+    //   133: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   136: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: pop
+    //   140: aload_3
+    //   141: sipush 10001
+    //   144: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   147: pop
+    //   148: aload_1
+    //   149: aload_3
+    //   150: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: putfield 237	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
+    //   156: goto +400 -> 556
+    //   159: aload_1
+    //   160: ldc_w 305
+    //   163: invokestatic 304	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   166: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   169: new 55	java/lang/StringBuilder
+    //   172: dup
+    //   173: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   176: astore_3
+    //   177: aload_3
     //   178: aload_1
-    //   179: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   182: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   185: sipush 10001
-    //   188: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   191: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   194: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   197: aload_0
-    //   198: getfield 41	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   201: ldc 140
-    //   203: aload_1
-    //   204: getfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   207: invokevirtual 274	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   210: checkcast 140	com/tencent/mobileqq/data/SearchHistory
-    //   213: astore_2
-    //   214: aload_2
-    //   215: ifnull +407 -> 622
-    //   218: aload_2
-    //   219: aload_1
-    //   220: getfield 262	com/tencent/mobileqq/data/SearchHistory:time	J
-    //   223: putfield 262	com/tencent/mobileqq/data/SearchHistory:time	J
-    //   226: aload_2
-    //   227: aload_2
-    //   228: getfield 253	com/tencent/mobileqq/data/SearchHistory:count	I
-    //   231: iconst_1
-    //   232: iadd
-    //   233: putfield 253	com/tencent/mobileqq/data/SearchHistory:count	I
-    //   236: aload_2
-    //   237: getfield 182	com/tencent/mobileqq/data/SearchHistory:type	I
+    //   179: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   182: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: aload_3
+    //   187: sipush 10000
+    //   190: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   193: pop
+    //   194: aload_1
+    //   195: aload_3
+    //   196: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   199: putfield 237	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
+    //   202: goto +354 -> 556
+    //   205: aload_1
+    //   206: ldc_w 306
+    //   209: invokestatic 304	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   212: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   215: new 55	java/lang/StringBuilder
+    //   218: dup
+    //   219: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   222: astore_3
+    //   223: aload_3
+    //   224: aload_1
+    //   225: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   228: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: pop
+    //   232: aload_3
+    //   233: sipush 10001
+    //   236: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   239: pop
     //   240: aload_1
-    //   241: getfield 182	com/tencent/mobileqq/data/SearchHistory:type	I
-    //   244: if_icmpeq +35 -> 279
-    //   247: aload_2
-    //   248: aload_1
-    //   249: getfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   252: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   255: aload_2
-    //   256: aload_1
-    //   257: getfield 182	com/tencent/mobileqq/data/SearchHistory:type	I
-    //   260: putfield 182	com/tencent/mobileqq/data/SearchHistory:type	I
-    //   263: aload_2
+    //   241: aload_3
+    //   242: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   245: putfield 237	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
+    //   248: goto +308 -> 556
+    //   251: aload_1
+    //   252: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   255: getstatic 311	com/tencent/mobileqq/app/AppConstants:NEW_KANDIAN_UIN	Ljava/lang/String;
+    //   258: invokestatic 314	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   261: ifeq +295 -> 556
     //   264: aload_1
-    //   265: getfield 190	com/tencent/mobileqq/data/SearchHistory:troopUin	Ljava/lang/String;
-    //   268: putfield 190	com/tencent/mobileqq/data/SearchHistory:troopUin	Ljava/lang/String;
-    //   271: aload_2
-    //   272: aload_1
-    //   273: getfield 238	com/tencent/mobileqq/data/SearchHistory:displayName	Ljava/lang/String;
-    //   276: putfield 238	com/tencent/mobileqq/data/SearchHistory:displayName	Ljava/lang/String;
-    //   279: aload_0
-    //   280: getfield 41	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   283: aload_2
-    //   284: invokevirtual 306	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   287: pop
-    //   288: return
-    //   289: aload_1
-    //   290: ldc_w 307
-    //   293: invokestatic 303	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   296: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   265: ldc_w 315
+    //   268: invokestatic 304	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   271: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   274: new 55	java/lang/StringBuilder
+    //   277: dup
+    //   278: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   281: astore_3
+    //   282: aload_3
+    //   283: aload_1
+    //   284: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   287: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: pop
+    //   291: aload_3
+    //   292: sipush 10001
+    //   295: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   298: pop
     //   299: aload_1
-    //   300: new 56	java/lang/StringBuilder
-    //   303: dup
-    //   304: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   307: aload_1
-    //   308: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   311: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   314: sipush 10000
-    //   317: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   320: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   323: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   326: goto -129 -> 197
+    //   300: aload_3
+    //   301: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   304: putfield 237	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
+    //   307: goto +249 -> 556
+    //   310: aload_1
+    //   311: ldc_w 316
+    //   314: invokestatic 304	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   317: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   320: new 55	java/lang/StringBuilder
+    //   323: dup
+    //   324: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   327: astore_3
+    //   328: aload_3
     //   329: aload_1
-    //   330: ldc_w 308
-    //   333: invokestatic 303	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   336: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   339: aload_1
-    //   340: new 56	java/lang/StringBuilder
-    //   343: dup
-    //   344: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   347: aload_1
-    //   348: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   351: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   354: sipush 10000
-    //   357: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   360: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   363: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   366: goto -169 -> 197
-    //   369: aload_1
-    //   370: ldc_w 309
-    //   373: invokestatic 303	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   376: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   379: aload_1
-    //   380: new 56	java/lang/StringBuilder
-    //   383: dup
-    //   384: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   387: aload_1
-    //   388: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   391: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   394: sipush 10001
-    //   397: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   400: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   403: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   406: goto -209 -> 197
-    //   409: aload_1
-    //   410: ldc_w 310
-    //   413: invokestatic 303	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   416: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   419: aload_1
-    //   420: new 56	java/lang/StringBuilder
-    //   423: dup
-    //   424: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   427: aload_1
-    //   428: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   431: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   434: sipush 10001
-    //   437: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   440: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   443: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   446: goto -249 -> 197
-    //   449: aload_1
-    //   450: ldc_w 311
-    //   453: invokestatic 303	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   456: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   459: aload_1
-    //   460: new 56	java/lang/StringBuilder
-    //   463: dup
-    //   464: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   330: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   333: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   336: pop
+    //   337: aload_3
+    //   338: sipush 10001
+    //   341: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   344: pop
+    //   345: aload_1
+    //   346: aload_3
+    //   347: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   350: putfield 237	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
+    //   353: goto +203 -> 556
+    //   356: aload_1
+    //   357: ldc_w 317
+    //   360: invokestatic 304	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   363: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   366: new 55	java/lang/StringBuilder
+    //   369: dup
+    //   370: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   373: astore_3
+    //   374: aload_3
+    //   375: aload_1
+    //   376: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   379: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   382: pop
+    //   383: aload_3
+    //   384: sipush 10001
+    //   387: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   390: pop
+    //   391: aload_1
+    //   392: aload_3
+    //   393: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   396: putfield 237	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
+    //   399: goto +157 -> 556
+    //   402: aload_1
+    //   403: ldc_w 318
+    //   406: invokestatic 304	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   409: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   412: new 55	java/lang/StringBuilder
+    //   415: dup
+    //   416: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   419: astore_3
+    //   420: aload_3
+    //   421: aload_1
+    //   422: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   425: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   428: pop
+    //   429: aload_3
+    //   430: sipush 10001
+    //   433: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   436: pop
+    //   437: aload_1
+    //   438: aload_3
+    //   439: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   442: putfield 237	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
+    //   445: goto +111 -> 556
+    //   448: aload_1
+    //   449: ldc_w 319
+    //   452: invokestatic 304	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   455: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   458: new 55	java/lang/StringBuilder
+    //   461: dup
+    //   462: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   465: astore_3
+    //   466: aload_3
     //   467: aload_1
-    //   468: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   471: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   474: sipush 10001
-    //   477: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   480: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   483: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   486: goto -289 -> 197
-    //   489: aload_1
-    //   490: ldc_w 312
-    //   493: invokestatic 303	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   496: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   499: aload_1
-    //   500: new 56	java/lang/StringBuilder
-    //   503: dup
-    //   504: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   507: aload_1
-    //   508: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   511: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   514: sipush 10001
-    //   517: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   520: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   523: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   526: goto -329 -> 197
-    //   529: aload_1
-    //   530: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   533: getstatic 317	com/tencent/mobileqq/app/AppConstants:NEW_KANDIAN_UIN	Ljava/lang/String;
-    //   536: invokestatic 320	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-    //   539: ifeq -342 -> 197
-    //   542: aload_1
-    //   543: ldc_w 321
-    //   546: invokestatic 303	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   549: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   552: aload_1
-    //   553: new 56	java/lang/StringBuilder
-    //   556: dup
-    //   557: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   560: aload_1
-    //   561: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   564: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   567: sipush 10001
-    //   570: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   573: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   576: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   579: goto -382 -> 197
-    //   582: aload_1
-    //   583: ldc_w 322
-    //   586: invokestatic 303	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
-    //   589: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   592: aload_1
-    //   593: new 56	java/lang/StringBuilder
-    //   596: dup
-    //   597: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   600: aload_1
-    //   601: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   604: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   607: sipush 10001
-    //   610: invokevirtual 108	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   613: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   616: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   619: goto -422 -> 197
-    //   622: aload_0
-    //   623: getfield 41	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   626: iconst_0
-    //   627: ldc 140
-    //   629: invokevirtual 209	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   632: aconst_null
-    //   633: aconst_null
-    //   634: aconst_null
-    //   635: aconst_null
-    //   636: aconst_null
-    //   637: ldc_w 324
-    //   640: aconst_null
-    //   641: invokevirtual 217	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   644: astore_3
-    //   645: aload_3
-    //   646: ifnull +173 -> 819
-    //   649: aload_3
-    //   650: astore_2
-    //   651: iconst_5
-    //   652: aload_3
-    //   653: invokeinterface 328 1 0
-    //   658: if_icmpgt +161 -> 819
-    //   661: aload_3
-    //   662: astore_2
-    //   663: aload_3
-    //   664: invokeinterface 222 1 0
-    //   669: ifeq +139 -> 808
-    //   672: aload_3
-    //   673: astore_2
-    //   674: aload_3
-    //   675: aload_3
-    //   676: ldc 225
-    //   678: invokeinterface 229 2 0
-    //   683: invokeinterface 232 2 0
-    //   688: astore 4
-    //   690: aload_3
-    //   691: astore_2
-    //   692: aload_0
-    //   693: getfield 41	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   696: ldc 140
-    //   698: aload 4
-    //   700: invokevirtual 274	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   703: checkcast 140	com/tencent/mobileqq/data/SearchHistory
-    //   706: astore 4
-    //   708: aload_3
-    //   709: astore_2
-    //   710: aload 4
-    //   712: aload_1
-    //   713: getfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   716: putfield 234	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
-    //   719: aload_3
-    //   720: astore_2
-    //   721: aload 4
-    //   723: aload_1
-    //   724: getfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   727: putfield 143	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
-    //   730: aload_3
-    //   731: astore_2
-    //   732: aload 4
-    //   734: aload_1
-    //   735: getfield 190	com/tencent/mobileqq/data/SearchHistory:troopUin	Ljava/lang/String;
-    //   738: putfield 190	com/tencent/mobileqq/data/SearchHistory:troopUin	Ljava/lang/String;
-    //   741: aload_3
-    //   742: astore_2
-    //   743: aload 4
-    //   745: aload_1
-    //   746: getfield 262	com/tencent/mobileqq/data/SearchHistory:time	J
-    //   749: putfield 262	com/tencent/mobileqq/data/SearchHistory:time	J
-    //   752: aload_3
-    //   753: astore_2
-    //   754: aload 4
-    //   756: aload_1
-    //   757: getfield 238	com/tencent/mobileqq/data/SearchHistory:displayName	Ljava/lang/String;
-    //   760: putfield 238	com/tencent/mobileqq/data/SearchHistory:displayName	Ljava/lang/String;
-    //   763: aload_3
-    //   764: astore_2
-    //   765: aload 4
-    //   767: aload_1
-    //   768: getfield 182	com/tencent/mobileqq/data/SearchHistory:type	I
-    //   771: putfield 182	com/tencent/mobileqq/data/SearchHistory:type	I
-    //   774: aload_3
-    //   775: astore_2
-    //   776: aload 4
-    //   778: aload_1
-    //   779: getfield 253	com/tencent/mobileqq/data/SearchHistory:count	I
-    //   782: putfield 253	com/tencent/mobileqq/data/SearchHistory:count	I
-    //   785: aload_3
-    //   786: astore_2
-    //   787: aload 4
-    //   789: aload_1
-    //   790: getfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   793: putfield 249	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
-    //   796: aload_3
-    //   797: astore_2
-    //   798: aload_0
-    //   799: getfield 41	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   468: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   471: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   474: pop
+    //   475: aload_3
+    //   476: sipush 10000
+    //   479: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   482: pop
+    //   483: aload_1
+    //   484: aload_3
+    //   485: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   488: putfield 237	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
+    //   491: goto +65 -> 556
+    //   494: aload_1
+    //   495: aload_0
+    //   496: aload_1
+    //   497: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   500: invokespecial 321	com/tencent/mobileqq/app/SearchHistoryManager:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   503: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   506: aload_1
+    //   507: getfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   510: ifnonnull +13 -> 523
+    //   513: aload_1
+    //   514: ldc_w 322
+    //   517: invokestatic 304	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   520: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   523: new 55	java/lang/StringBuilder
+    //   526: dup
+    //   527: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   530: astore_3
+    //   531: aload_3
+    //   532: aload_1
+    //   533: getfield 144	com/tencent/mobileqq/data/SearchHistory:uin	Ljava/lang/String;
+    //   536: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   539: pop
+    //   540: aload_3
+    //   541: sipush 10001
+    //   544: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   547: pop
+    //   548: aload_1
+    //   549: aload_3
+    //   550: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   553: putfield 237	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
+    //   556: aload_0
+    //   557: getfield 40	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   560: ldc 141
+    //   562: aload_1
+    //   563: getfield 237	com/tencent/mobileqq/data/SearchHistory:key	Ljava/lang/String;
+    //   566: invokevirtual 277	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   569: checkcast 141	com/tencent/mobileqq/data/SearchHistory
+    //   572: astore_3
+    //   573: aload_3
+    //   574: ifnull +74 -> 648
+    //   577: aload_3
+    //   578: aload_1
+    //   579: getfield 265	com/tencent/mobileqq/data/SearchHistory:time	J
+    //   582: putfield 265	com/tencent/mobileqq/data/SearchHistory:time	J
+    //   585: aload_3
+    //   586: aload_3
+    //   587: getfield 256	com/tencent/mobileqq/data/SearchHistory:count	I
+    //   590: iconst_1
+    //   591: iadd
+    //   592: putfield 256	com/tencent/mobileqq/data/SearchHistory:count	I
+    //   595: aload_3
+    //   596: getfield 185	com/tencent/mobileqq/data/SearchHistory:type	I
+    //   599: aload_1
+    //   600: getfield 185	com/tencent/mobileqq/data/SearchHistory:type	I
+    //   603: if_icmpeq +35 -> 638
+    //   606: aload_3
+    //   607: aload_1
+    //   608: getfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   611: putfield 252	com/tencent/mobileqq/data/SearchHistory:extralInfo	Ljava/lang/String;
+    //   614: aload_3
+    //   615: aload_1
+    //   616: getfield 185	com/tencent/mobileqq/data/SearchHistory:type	I
+    //   619: putfield 185	com/tencent/mobileqq/data/SearchHistory:type	I
+    //   622: aload_3
+    //   623: aload_1
+    //   624: getfield 193	com/tencent/mobileqq/data/SearchHistory:troopUin	Ljava/lang/String;
+    //   627: putfield 193	com/tencent/mobileqq/data/SearchHistory:troopUin	Ljava/lang/String;
+    //   630: aload_3
+    //   631: aload_1
+    //   632: getfield 241	com/tencent/mobileqq/data/SearchHistory:displayName	Ljava/lang/String;
+    //   635: putfield 241	com/tencent/mobileqq/data/SearchHistory:displayName	Ljava/lang/String;
+    //   638: aload_0
+    //   639: getfield 40	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   642: aload_3
+    //   643: invokevirtual 325	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   646: pop
+    //   647: return
+    //   648: aconst_null
+    //   649: astore_3
+    //   650: aconst_null
+    //   651: astore 4
+    //   653: aload_0
+    //   654: getfield 40	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   657: iconst_0
+    //   658: ldc 141
+    //   660: invokevirtual 212	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   663: aconst_null
+    //   664: aconst_null
+    //   665: aconst_null
+    //   666: aconst_null
+    //   667: aconst_null
+    //   668: ldc_w 327
+    //   671: aconst_null
+    //   672: invokevirtual 220	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   675: astore 5
+    //   677: aload 5
+    //   679: ifnull +69 -> 748
+    //   682: aload 5
+    //   684: astore 4
+    //   686: aload 5
+    //   688: astore_3
+    //   689: iconst_5
+    //   690: aload 5
+    //   692: invokeinterface 331 1 0
+    //   697: if_icmpgt +51 -> 748
+    //   700: aload 5
+    //   702: astore 4
+    //   704: aload 5
+    //   706: astore_3
+    //   707: aload 5
+    //   709: invokeinterface 225 1 0
+    //   714: ifeq +49 -> 763
+    //   717: aload 5
+    //   719: astore 4
+    //   721: aload 5
+    //   723: astore_3
+    //   724: aload_0
+    //   725: aload_1
+    //   726: aload 5
+    //   728: aload 5
+    //   730: ldc 228
+    //   732: invokeinterface 232 2 0
+    //   737: invokeinterface 235 2 0
+    //   742: invokevirtual 334	com/tencent/mobileqq/app/SearchHistoryManager:a	(Lcom/tencent/mobileqq/data/SearchHistory;Ljava/lang/String;)V
+    //   745: goto +18 -> 763
+    //   748: aload 5
+    //   750: astore 4
+    //   752: aload 5
+    //   754: astore_3
+    //   755: aload_0
+    //   756: getfield 40	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   759: aload_1
+    //   760: invokevirtual 338	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   763: aload 5
+    //   765: ifnull +31 -> 796
+    //   768: aload 5
+    //   770: astore_3
+    //   771: goto +19 -> 790
+    //   774: astore_1
+    //   775: goto +22 -> 797
+    //   778: astore_1
+    //   779: aload_3
+    //   780: astore 4
+    //   782: aload_1
+    //   783: invokevirtual 341	java/lang/Exception:printStackTrace	()V
+    //   786: aload_3
+    //   787: ifnull +9 -> 796
+    //   790: aload_3
+    //   791: invokeinterface 290 1 0
+    //   796: return
+    //   797: aload 4
+    //   799: ifnull +10 -> 809
     //   802: aload 4
-    //   804: invokevirtual 306	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   807: pop
-    //   808: aload_3
-    //   809: ifnull -669 -> 140
-    //   812: aload_3
-    //   813: invokeinterface 284 1 0
-    //   818: return
-    //   819: aload_3
-    //   820: astore_2
-    //   821: aload_0
-    //   822: getfield 41	com/tencent/mobileqq/app/SearchHistoryManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   825: aload_1
-    //   826: invokevirtual 332	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
-    //   829: goto -21 -> 808
-    //   832: astore_1
-    //   833: aload_3
-    //   834: astore_2
-    //   835: aload_1
-    //   836: invokevirtual 335	java/lang/Exception:printStackTrace	()V
-    //   839: aload_3
-    //   840: ifnull -700 -> 140
-    //   843: aload_3
-    //   844: invokeinterface 284 1 0
-    //   849: return
-    //   850: astore_1
-    //   851: aconst_null
-    //   852: astore_2
-    //   853: aload_2
-    //   854: ifnull +9 -> 863
-    //   857: aload_2
-    //   858: invokeinterface 284 1 0
-    //   863: aload_1
-    //   864: athrow
-    //   865: astore_1
-    //   866: goto -13 -> 853
-    //   869: astore_1
-    //   870: aconst_null
-    //   871: astore_3
-    //   872: goto -39 -> 833
+    //   804: invokeinterface 290 1 0
+    //   809: aload_1
+    //   810: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	875	0	this	SearchHistoryManager
-    //   0	875	1	paramSearchHistory	SearchHistory
-    //   213	645	2	localObject1	Object
-    //   644	228	3	localCursor	android.database.Cursor
-    //   688	115	4	localObject2	Object
+    //   0	811	0	this	SearchHistoryManager
+    //   0	811	1	paramSearchHistory	SearchHistory
+    //   16	60	2	i	int
+    //   130	661	3	localObject1	Object
+    //   651	152	4	localObject2	Object
+    //   675	94	5	localCursor	Cursor
     // Exception table:
     //   from	to	target	type
-    //   651	661	832	java/lang/Exception
-    //   663	672	832	java/lang/Exception
-    //   674	690	832	java/lang/Exception
-    //   692	708	832	java/lang/Exception
-    //   710	719	832	java/lang/Exception
-    //   721	730	832	java/lang/Exception
-    //   732	741	832	java/lang/Exception
-    //   743	752	832	java/lang/Exception
-    //   754	763	832	java/lang/Exception
-    //   765	774	832	java/lang/Exception
-    //   776	785	832	java/lang/Exception
-    //   787	796	832	java/lang/Exception
-    //   798	808	832	java/lang/Exception
-    //   821	829	832	java/lang/Exception
-    //   622	645	850	finally
-    //   651	661	865	finally
-    //   663	672	865	finally
-    //   674	690	865	finally
-    //   692	708	865	finally
-    //   710	719	865	finally
-    //   721	730	865	finally
-    //   732	741	865	finally
-    //   743	752	865	finally
-    //   754	763	865	finally
-    //   765	774	865	finally
-    //   776	785	865	finally
-    //   787	796	865	finally
-    //   798	808	865	finally
-    //   821	829	865	finally
-    //   835	839	865	finally
-    //   622	645	869	java/lang/Exception
+    //   653	677	774	finally
+    //   689	700	774	finally
+    //   707	717	774	finally
+    //   724	745	774	finally
+    //   755	763	774	finally
+    //   782	786	774	finally
+    //   653	677	778	java/lang/Exception
+    //   689	700	778	java/lang/Exception
+    //   707	717	778	java/lang/Exception
+    //   724	745	778	java/lang/Exception
+    //   755	763	778	java/lang/Exception
+  }
+  
+  public void a(SearchHistory paramSearchHistory, String paramString)
+  {
+    paramString = (SearchHistory)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(SearchHistory.class, paramString);
+    if (paramString != null)
+    {
+      paramString.key = paramSearchHistory.key;
+      paramString.uin = paramSearchHistory.uin;
+      paramString.troopUin = paramSearchHistory.troopUin;
+      paramString.time = paramSearchHistory.time;
+      paramString.displayName = paramSearchHistory.displayName;
+      paramString.type = paramSearchHistory.type;
+      paramString.count = paramSearchHistory.count;
+      paramString.extralInfo = paramSearchHistory.extralInfo;
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramString);
+      return;
+    }
+    QLog.i("SearchHistoryManager", 1, "original == null");
   }
   
   boolean a(SearchHistory paramSearchHistory)
   {
     Object localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-    switch (paramSearchHistory.type)
+    IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+    int i = paramSearchHistory.type;
+    boolean bool2 = true;
+    if (i != 0)
     {
-    }
-    do
-    {
-      do
+      if (i != 1)
       {
-        do
+        if ((i != 1000) && (i != 1004))
         {
-          return false;
-        } while (((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramSearchHistory.uin));
-        return true;
-        return e(paramSearchHistory);
+          if (i != 1008)
+          {
+            bool1 = bool2;
+            if (i == 1021) {
+              return bool1;
+            }
+            if (i != 3000)
+            {
+              if (i != 7220)
+              {
+                switch (i)
+                {
+                default: 
+                  break;
+                case 56942: 
+                  paramSearchHistory = localIPhoneContactService.queryContactByCodeNumber(paramSearchHistory.uin);
+                  if (paramSearchHistory == null) {
+                    break;
+                  }
+                  bool1 = bool2;
+                  if (!TextUtils.isEmpty(paramSearchHistory.uin)) {
+                    return bool1;
+                  }
+                  break;
+                case 56941: 
+                  return a(paramSearchHistory, localIPhoneContactService);
+                case 56940: 
+                  return d(paramSearchHistory);
+                case 56939: 
+                  paramSearchHistory = localIPhoneContactService.queryContactByCodeNumber(paramSearchHistory.uin);
+                  bool1 = bool2;
+                  if (paramSearchHistory == null) {
+                    return bool1;
+                  }
+                  bool1 = bool2;
+                  if (TextUtils.isEmpty(paramSearchHistory.uin)) {
+                    return bool1;
+                  }
+                  if (!"0".equals(paramSearchHistory.uin)) {
+                    break;
+                  }
+                  return true;
+                }
+              }
+              else
+              {
+                bool1 = bool2;
+                if (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isInReadinjoyFolderMergerStyle()) {
+                  return bool1;
+                }
+                if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowMainRecommendTab()) {
+                  return true;
+                }
+                paramSearchHistory.displayName = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getMergerKandianName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+              }
+            }
+            else {
+              return c(paramSearchHistory);
+            }
+          }
+          else
+          {
+            bool1 = bool2;
+            if (!TextUtils.equals(paramSearchHistory.uin, AppConstants.NEW_KANDIAN_UIN)) {
+              return bool1;
+            }
+            if (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isInReadinjoyFolderMergerStyle()) {
+              return true;
+            }
+            paramSearchHistory.displayName = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getXinKandianName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+          }
+        }
+        else {
+          return e(paramSearchHistory);
+        }
+      }
+      else
+      {
         localObject = ((TroopManager)localObject).b(paramSearchHistory.uin);
         if (localObject == null) {
           return true;
         }
         paramSearchHistory.displayName = ((TroopInfo)localObject).getNewTroopNameOrTroopName();
-        return false;
-        return c(paramSearchHistory);
-        return true;
-        if ((!TextUtils.equals(paramSearchHistory.uin, AppConstants.NEW_KANDIAN_UIN)) || (ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-          return true;
-        }
-        paramSearchHistory.displayName = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getXinKandianName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
-        return false;
-        if ((!ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (ReadInJoyHelper.o())) {
-          return true;
-        }
-        paramSearchHistory.displayName = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getMergerKandianName(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
-        return false;
-        return d(paramSearchHistory);
-        return a(paramSearchHistory, localPhoneContactManagerImp);
-        paramSearchHistory = localPhoneContactManagerImp.c(paramSearchHistory.uin);
-      } while ((paramSearchHistory != null) && (!TextUtils.isEmpty(paramSearchHistory.uin)) && (!"0".equals(paramSearchHistory.uin)));
+      }
+    }
+    else if (!((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramSearchHistory.uin)) {
       return true;
-      paramSearchHistory = localPhoneContactManagerImp.c(paramSearchHistory.uin);
-    } while (paramSearchHistory == null);
-    return !TextUtils.isEmpty(paramSearchHistory.uin);
+    }
+    boolean bool1 = false;
+    return bool1;
   }
   
   public boolean b(SearchHistory paramSearchHistory)
   {
-    boolean bool = false;
     if (paramSearchHistory != null)
     {
       paramSearchHistory.setStatus(1001);
-      bool = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramSearchHistory);
+      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramSearchHistory);
     }
-    return bool;
+    return false;
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SearchHistoryManager
  * JD-Core Version:    0.7.0.1
  */

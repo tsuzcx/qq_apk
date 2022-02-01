@@ -18,24 +18,30 @@ class TroopRemarkEditFragment$6
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    QQText localQQText = new QQText(paramCharSequence, 3);
+    Object localObject = new QQText(paramCharSequence, 3);
     try
     {
-      if ((localQQText.toString().getBytes("utf-8").length > TroopRemarkEditFragment.a) && ((paramCharSequence instanceof Editable))) {
+      if ((((QQText)localObject).toString().getBytes("utf-8").length > TroopRemarkEditFragment.a) && ((paramCharSequence instanceof Editable)))
+      {
         TextUtils.backspace(TroopRemarkEditFragment.a(this.a));
+        return;
       }
-      return;
     }
     catch (UnsupportedEncodingException paramCharSequence)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("TroopRemarkEditFragment", 2, "UnsupportedEncodingException" + paramCharSequence.getMessage());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("UnsupportedEncodingException");
+        ((StringBuilder)localObject).append(paramCharSequence.getMessage());
+        QLog.d("TroopRemarkEditFragment", 2, ((StringBuilder)localObject).toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.fragment.TroopRemarkEditFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,11 @@ class OverlappingImgLayout$1
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null) || (OverlappingImgLayout.a(this.a) == null) || (paramString.length() == 0)) {}
-    do
+    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null) && (OverlappingImgLayout.a(this.a) != null))
     {
-      return;
+      if (paramString.length() == 0) {
+        return;
+      }
       paramInt1 = 0;
       while (paramInt1 < OverlappingImgLayout.a(this.a).length)
       {
@@ -30,13 +31,21 @@ class OverlappingImgLayout$1
         }
         paramInt1 += 1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("OverlappingImgLayout", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+      if (QLog.isColorLevel())
+      {
+        paramBitmap = new StringBuilder();
+        paramBitmap.append("onDecodeTaskCompleted, uin: ");
+        paramBitmap.append(paramString);
+        paramBitmap.append(", type: ");
+        paramBitmap.append(paramInt2);
+        QLog.d("OverlappingImgLayout", 2, paramBitmap.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.festivalstage.questionoption.OverlappingImgLayout.1
  * JD-Core Version:    0.7.0.1
  */

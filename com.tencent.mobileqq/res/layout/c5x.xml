@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ic3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/m0p" android:background="@color/fx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" />
-    <View android:id="@id/lcc" android:background="@color/al5" android:layout_width="1.0dip" android:layout_height="16.0dip" android:layout_marginTop="16.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="15.0sp" android:textColor="@color/alt" android:gravity="center" android:id="@id/lhq" android:paddingTop="14.0dip" android:layout_width="fill_parent" android:layout_height="33.0dip" android:text="@string/j6g" android:layout_toLeftOf="@id/lcc" android:layout_alignParentTop="true" />
-    <TextView android:textSize="15.0sp" android:textColor="@color/alt" android:gravity="center" android:id="@id/la7" android:paddingTop="14.0dip" android:layout_width="fill_parent" android:layout_height="33.0dip" android:text="@string/j6m" android:layout_toRightOf="@id/lcc" android:layout_alignParentTop="true" />
-    <FrameLayout android:id="@id/m0o" android:layout_width="fill_parent" android:layout_height="162.0dip" android:layout_below="@id/la7" />
-</RelativeLayout>

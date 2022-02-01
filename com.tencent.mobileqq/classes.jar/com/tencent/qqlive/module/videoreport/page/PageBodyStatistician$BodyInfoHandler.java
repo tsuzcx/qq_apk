@@ -29,13 +29,14 @@ class PageBodyStatistician$BodyInfoHandler
   
   private void transferDataToPage()
   {
-    if (this.mPageInfo == null) {}
-    for (Object localObject = null;; localObject = this.mPageInfo.getPage())
-    {
-      if (localObject != null) {
-        DataRWProxy.setInnerParam(localObject, "page_body_info", this.mPageBodyInfo);
-      }
-      return;
+    Object localObject = this.mPageInfo;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((PageInfo)localObject).getPage();
+    }
+    if (localObject != null) {
+      DataRWProxy.setInnerParam(localObject, "page_body_info", this.mPageBodyInfo);
     }
   }
   
@@ -53,11 +54,23 @@ class PageBodyStatistician$BodyInfoHandler
     int k = paramPageBodyInfo.getRangeEnd();
     int i = paramPageBodyInfo.getPageArea();
     paramInt = Math.max(j, Math.min(k, paramInt)) - j + 1;
-    if (i == 0) {}
-    for (double d = 0.0D; d > paramPageBodyInfo.getProgressRate(); d = paramInt / i)
+    double d1;
+    if (i == 0)
+    {
+      d1 = 0.0D;
+    }
+    else
+    {
+      d1 = paramInt;
+      double d2 = i;
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      d1 /= d2;
+    }
+    if (d1 > paramPageBodyInfo.getProgressRate())
     {
       paramPageBodyInfo.setProgressArea(paramInt);
-      paramPageBodyInfo.setProgressRate(d);
+      paramPageBodyInfo.setProgressRate(d1);
       return true;
     }
     return false;
@@ -74,8 +87,12 @@ class PageBodyStatistician$BodyInfoHandler
   
   public void onScrolled(int paramInt)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageBodyStatistician", "BodyInfoHandler.onScrolled: scrollEnd = " + paramInt);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("BodyInfoHandler.onScrolled: scrollEnd = ");
+      localStringBuilder.append(paramInt);
+      Log.d("PageBodyStatistician", localStringBuilder.toString());
     }
     if (updateProgress(this.mPageBodyInfo, paramInt))
     {
@@ -96,7 +113,7 @@ class PageBodyStatistician$BodyInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageBodyStatistician.BodyInfoHandler
  * JD-Core Version:    0.7.0.1
  */

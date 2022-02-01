@@ -21,17 +21,17 @@ final class TypeAdapters$24
   
   public void write(JsonWriter paramJsonWriter, UUID paramUUID)
   {
-    if (paramUUID == null) {}
-    for (paramUUID = null;; paramUUID = paramUUID.toString())
-    {
-      paramJsonWriter.value(paramUUID);
-      return;
+    if (paramUUID == null) {
+      paramUUID = null;
+    } else {
+      paramUUID = paramUUID.toString();
     }
+    paramJsonWriter.value(paramUUID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.24
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public final class msg_svc$NearByAssistantTmp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msf.msgsvc.msg_svc.NearByAssistantTmp
  * JD-Core Version:    0.7.0.1
  */

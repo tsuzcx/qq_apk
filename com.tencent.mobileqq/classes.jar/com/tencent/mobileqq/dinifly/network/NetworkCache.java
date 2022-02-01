@@ -2,8 +2,13 @@ package com.tencent.mobileqq.dinifly.network;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.annotation.WorkerThread;
+import android.util.Pair;
 import com.tencent.mobileqq.dinifly.L;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 class NetworkCache
 {
@@ -18,11 +23,16 @@ class NetworkCache
   
   private static String filenameForUrl(String paramString, FileExtension paramFileExtension, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("lottie_cache_").append(paramString.replaceAll("\\W+", ""));
-    if (paramBoolean) {}
-    for (paramString = paramFileExtension.tempExtension();; paramString = paramFileExtension.extension) {
-      return paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lottie_cache_");
+    localStringBuilder.append(paramString.replaceAll("\\W+", ""));
+    if (paramBoolean) {
+      paramString = paramFileExtension.tempExtension();
+    } else {
+      paramString = paramFileExtension.extension;
     }
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   @Nullable
@@ -30,86 +40,42 @@ class NetworkCache
   {
     File localFile = new File(this.appContext.getCacheDir(), filenameForUrl(paramString, FileExtension.JSON, false));
     if (localFile.exists()) {
-      paramString = localFile;
+      return localFile;
     }
-    do
-    {
+    paramString = new File(this.appContext.getCacheDir(), filenameForUrl(paramString, FileExtension.ZIP, false));
+    if (paramString.exists()) {
       return paramString;
-      localFile = new File(this.appContext.getCacheDir(), filenameForUrl(paramString, FileExtension.ZIP, false));
-      paramString = localFile;
-    } while (localFile.exists());
+    }
     return null;
   }
   
-  /* Error */
   @Nullable
-  @android.support.annotation.WorkerThread
-  android.util.Pair<FileExtension, java.io.InputStream> fetch()
+  @WorkerThread
+  Pair<FileExtension, InputStream> fetch()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_0
-    //   2: getfield 23	com/tencent/mobileqq/dinifly/network/NetworkCache:url	Ljava/lang/String;
-    //   5: invokespecial 90	com/tencent/mobileqq/dinifly/network/NetworkCache:getCachedFile	(Ljava/lang/String;)Ljava/io/File;
-    //   8: astore_2
-    //   9: aload_2
-    //   10: ifnonnull +5 -> 15
-    //   13: aconst_null
-    //   14: areturn
-    //   15: new 92	java/io/FileInputStream
-    //   18: dup
-    //   19: aload_2
-    //   20: invokespecial 95	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   23: astore_3
-    //   24: aload_2
-    //   25: invokevirtual 98	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   28: ldc 100
-    //   30: invokevirtual 104	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   33: ifeq +54 -> 87
-    //   36: getstatic 82	com/tencent/mobileqq/dinifly/network/FileExtension:ZIP	Lcom/tencent/mobileqq/dinifly/network/FileExtension;
-    //   39: astore_1
-    //   40: new 28	java/lang/StringBuilder
-    //   43: dup
-    //   44: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   47: ldc 106
-    //   49: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: aload_0
-    //   53: getfield 23	com/tencent/mobileqq/dinifly/network/NetworkCache:url	Ljava/lang/String;
-    //   56: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: ldc 108
-    //   61: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: aload_2
-    //   65: invokevirtual 98	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   68: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   74: invokestatic 114	com/tencent/mobileqq/dinifly/L:debug	(Ljava/lang/String;)V
-    //   77: new 116	android/util/Pair
-    //   80: dup
-    //   81: aload_1
-    //   82: aload_3
-    //   83: invokespecial 119	android/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   86: areturn
-    //   87: getstatic 70	com/tencent/mobileqq/dinifly/network/FileExtension:JSON	Lcom/tencent/mobileqq/dinifly/network/FileExtension;
-    //   90: astore_1
-    //   91: goto -51 -> 40
-    //   94: astore_1
-    //   95: aconst_null
-    //   96: areturn
-    //   97: astore_1
-    //   98: aconst_null
-    //   99: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	this	NetworkCache
-    //   39	52	1	localFileExtension	FileExtension
-    //   94	1	1	localFileNotFoundException1	java.io.FileNotFoundException
-    //   97	1	1	localFileNotFoundException2	java.io.FileNotFoundException
-    //   8	57	2	localFile	File
-    //   23	60	3	localFileInputStream	java.io.FileInputStream
-    // Exception table:
-    //   from	to	target	type
-    //   15	24	94	java/io/FileNotFoundException
-    //   0	9	97	java/io/FileNotFoundException
+    try
+    {
+      File localFile = getCachedFile(this.url);
+      if (localFile == null) {
+        return null;
+      }
+      FileInputStream localFileInputStream = new FileInputStream(localFile);
+      FileExtension localFileExtension;
+      if (localFile.getAbsolutePath().endsWith(".zip")) {
+        localFileExtension = FileExtension.ZIP;
+      } else {
+        localFileExtension = FileExtension.JSON;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Cache hit for ");
+      localStringBuilder.append(this.url);
+      localStringBuilder.append(" at ");
+      localStringBuilder.append(localFile.getAbsolutePath());
+      L.debug(localStringBuilder.toString());
+      return new Pair(localFileExtension, localFileInputStream);
+    }
+    catch (FileNotFoundException localFileNotFoundException) {}
+    return null;
   }
   
   void renameTempFile(FileExtension paramFileExtension)
@@ -118,14 +84,25 @@ class NetworkCache
     paramFileExtension = new File(this.appContext.getCacheDir(), paramFileExtension);
     File localFile = new File(paramFileExtension.getAbsolutePath().replace(".temp", ""));
     boolean bool = paramFileExtension.renameTo(localFile);
-    L.debug("Copying temp file to real file (" + localFile + ")");
-    if (!bool) {
-      L.warn("Unable to rename cache file " + paramFileExtension.getAbsolutePath() + " to " + localFile.getAbsolutePath() + ".");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Copying temp file to real file (");
+    localStringBuilder.append(localFile);
+    localStringBuilder.append(")");
+    L.debug(localStringBuilder.toString());
+    if (!bool)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to rename cache file ");
+      localStringBuilder.append(paramFileExtension.getAbsolutePath());
+      localStringBuilder.append(" to ");
+      localStringBuilder.append(localFile.getAbsolutePath());
+      localStringBuilder.append(".");
+      L.warn(localStringBuilder.toString());
     }
   }
   
   /* Error */
-  File writeTempCacheFile(java.io.InputStream paramInputStream, FileExtension paramFileExtension)
+  File writeTempCacheFile(InputStream paramInputStream, FileExtension paramFileExtension)
   {
     // Byte code:
     //   0: aload_0
@@ -156,75 +133,83 @@ class NetworkCache
     //   50: istore_3
     //   51: iload_3
     //   52: iconst_m1
-    //   53: if_icmpeq +53 -> 106
+    //   53: if_icmpeq +14 -> 67
     //   56: aload_2
     //   57: aload 5
     //   59: iconst_0
     //   60: iload_3
     //   61: invokevirtual 170	java/io/OutputStream:write	([BII)V
     //   64: goto -20 -> 44
-    //   67: astore 5
-    //   69: new 28	java/lang/StringBuilder
-    //   72: dup
-    //   73: invokespecial 29	java/lang/StringBuilder:<init>	()V
-    //   76: ldc 172
-    //   78: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: aload 5
-    //   83: invokevirtual 175	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   86: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: invokestatic 151	com/tencent/mobileqq/dinifly/L:warn	(Ljava/lang/String;)V
-    //   95: aload_2
-    //   96: invokevirtual 178	java/io/OutputStream:close	()V
-    //   99: aload_1
-    //   100: invokevirtual 179	java/io/InputStream:close	()V
-    //   103: aload 4
-    //   105: areturn
-    //   106: aload_2
-    //   107: invokevirtual 182	java/io/OutputStream:flush	()V
-    //   110: aload_2
-    //   111: invokevirtual 178	java/io/OutputStream:close	()V
-    //   114: goto -15 -> 99
-    //   117: astore_2
-    //   118: aload_1
-    //   119: invokevirtual 179	java/io/InputStream:close	()V
-    //   122: aload_2
-    //   123: athrow
-    //   124: astore 4
-    //   126: aload_2
-    //   127: invokevirtual 178	java/io/OutputStream:close	()V
-    //   130: aload 4
-    //   132: athrow
+    //   67: aload_2
+    //   68: invokevirtual 173	java/io/OutputStream:flush	()V
+    //   71: aload_2
+    //   72: invokevirtual 176	java/io/OutputStream:close	()V
+    //   75: goto +49 -> 124
+    //   78: astore 4
+    //   80: goto +51 -> 131
+    //   83: astore 5
+    //   85: new 28	java/lang/StringBuilder
+    //   88: dup
+    //   89: invokespecial 29	java/lang/StringBuilder:<init>	()V
+    //   92: astore 6
+    //   94: aload 6
+    //   96: ldc 178
+    //   98: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: pop
+    //   102: aload 6
+    //   104: aload 5
+    //   106: invokevirtual 181	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   109: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: pop
+    //   113: aload 6
+    //   115: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   118: invokestatic 151	com/tencent/mobileqq/dinifly/L:warn	(Ljava/lang/String;)V
+    //   121: goto -50 -> 71
+    //   124: aload_1
+    //   125: invokevirtual 182	java/io/InputStream:close	()V
+    //   128: aload 4
+    //   130: areturn
+    //   131: aload_2
+    //   132: invokevirtual 176	java/io/OutputStream:close	()V
+    //   135: aload 4
+    //   137: athrow
+    //   138: astore_2
+    //   139: aload_1
+    //   140: invokevirtual 182	java/io/InputStream:close	()V
+    //   143: goto +5 -> 148
+    //   146: aload_2
+    //   147: athrow
+    //   148: goto -2 -> 146
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	133	0	this	NetworkCache
-    //   0	133	1	paramInputStream	java.io.InputStream
-    //   0	133	2	paramFileExtension	FileExtension
+    //   0	151	0	this	NetworkCache
+    //   0	151	1	paramInputStream	InputStream
+    //   0	151	2	paramFileExtension	FileExtension
     //   50	11	3	i	int
-    //   25	79	4	localFile	File
-    //   124	7	4	localObject	Object
+    //   25	7	4	localFile1	File
+    //   78	58	4	localFile2	File
     //   42	16	5	arrayOfByte	byte[]
-    //   67	15	5	localException	java.lang.Exception
+    //   83	22	5	localException	java.lang.Exception
+    //   92	22	6	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   37	44	67	java/lang/Exception
-    //   44	51	67	java/lang/Exception
-    //   56	64	67	java/lang/Exception
-    //   106	110	67	java/lang/Exception
-    //   27	37	117	finally
-    //   95	99	117	finally
-    //   110	114	117	finally
-    //   126	133	117	finally
-    //   37	44	124	finally
-    //   44	51	124	finally
-    //   56	64	124	finally
-    //   69	95	124	finally
-    //   106	110	124	finally
+    //   37	44	78	finally
+    //   44	51	78	finally
+    //   56	64	78	finally
+    //   67	71	78	finally
+    //   85	121	78	finally
+    //   37	44	83	java/lang/Exception
+    //   44	51	83	java/lang/Exception
+    //   56	64	83	java/lang/Exception
+    //   67	71	83	java/lang/Exception
+    //   27	37	138	finally
+    //   71	75	138	finally
+    //   131	138	138	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.network.NetworkCache
  * JD-Core Version:    0.7.0.1
  */

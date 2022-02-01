@@ -14,25 +14,24 @@ class AvatarPendantActivity$12
   
   public void onClick(View paramView)
   {
-    VasH5PayUtil.a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, "mvip.gxh.android.faceaddon_nati_dft", this.jdField_a_of_type_Int, "1450000515", this.jdField_a_of_type_JavaLangString, this.b, "");
-    String str = "0";
-    if (!TextUtils.isEmpty(this.b)) {
-      if (!"QQ会员".equals(this.b)) {
-        break label91;
+    VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, "mvip.gxh.android.faceaddon_nati_dft", this.jdField_a_of_type_Int, "1450000515", this.jdField_a_of_type_JavaLangString, this.b, "");
+    boolean bool = TextUtils.isEmpty(this.b);
+    String str2 = "0";
+    String str1 = str2;
+    if (!bool) {
+      if ("QQ会员".equals(this.b)) {
+        str1 = str2;
+      } else {
+        str1 = "1";
       }
     }
-    label91:
-    for (str = "0";; str = "1")
-    {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, str, "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, str1, "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.12
  * JD-Core Version:    0.7.0.1
  */

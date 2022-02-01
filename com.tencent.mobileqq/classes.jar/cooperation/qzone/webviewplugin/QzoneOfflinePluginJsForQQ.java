@@ -17,7 +17,7 @@ import com.tencent.qzonehub.api.IDataUtils;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebView;
 import common.config.service.QzoneConfig;
-import cooperation.qzone.font.FontInterface;
+import cooperation.qzone.font.FontManager;
 import cooperation.qzone.util.QzoneBanApkDownloadHelper;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
@@ -36,7 +36,7 @@ public class QzoneOfflinePluginJsForQQ
   extends QzoneInternalWebViewPlugin
 {
   public static final boolean DEBUG_OFFLINE = false;
-  private static final int INPUTSTREAM_BUFFER_SIZE;
+  private static final int INPUTSTREAM_BUFFER_SIZE = QzoneConfig.getInstance().getConfig("QzUrlCache", "OfflineCacheBufferSize", 16384);
   public static final int MIN_VERSON_SUPPORT_SHARPP = 36521;
   private static final String SECONDARY_KEY_OFFLINE_CACHE_EXT_LIST_DEFAULT = "{'html':'text/html','css':'text/css','js':'application/javascript','jpg':'image/jpeg','jpeg':'image/jpeg','png':'image/png','bmp':'image/bmp','image':'image','webp':'image/webp'}";
   private static final int SECONDARY_KEY_OFFLINE_CACHE_SUPPORT_GZIP_DEFAULT = 1;
@@ -44,92 +44,71 @@ public class QzoneOfflinePluginJsForQQ
   private static final String SECONDARY_KEY_OFFLINE_CACHE_WHITELIST_DEFAULT = ".qzonestyle.gtimg.cn,qzonestyle.gtimg.cn,qzs.qzone.qq.com,imgcache.qq.com,p.qpic.cn,imgcache.gtimg.cn,.qq.com,.myqcloud.com,.qqopenapp.com,.qzoneapp.com,.twsapp.com,7.url.cn,8.url.cn,9.url.cn,i.gtimg.cn";
   private static final String TAG = "QzoneOfflinePluginJsForQQ";
   private static final boolean gEnalbeQzoneOffline;
-  private static String gOfflineDomainWhiteList;
+  private static String gOfflineDomainWhiteList = QzoneConfig.getInstance().getConfig("QzUrlCache", "OfflineCacheWhiteList", ".qzonestyle.gtimg.cn,qzonestyle.gtimg.cn,qzs.qzone.qq.com,imgcache.qq.com,p.qpic.cn,imgcache.gtimg.cn,.qq.com,.myqcloud.com,.qqopenapp.com,.qzoneapp.com,.twsapp.com,7.url.cn,8.url.cn,9.url.cn,i.gtimg.cn");
   public static WeakReference<Activity> mActivity;
   public static WeakReference<CustomWebView> mWebView;
   
   static
   {
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
     boolean bool = true;
-    if (1 == QzoneConfig.getInstance().getConfig("QzUrlCache", "OfflineCacheEnable", 1)) {}
-    for (;;)
-    {
-      gEnalbeQzoneOffline = bool;
-      INPUTSTREAM_BUFFER_SIZE = QzoneConfig.getInstance().getConfig("QzUrlCache", "OfflineCacheBufferSize", 16384);
-      gOfflineDomainWhiteList = QzoneConfig.getInstance().getConfig("QzUrlCache", "OfflineCacheWhiteList", ".qzonestyle.gtimg.cn,qzonestyle.gtimg.cn,qzs.qzone.qq.com,imgcache.qq.com,p.qpic.cn,imgcache.gtimg.cn,.qq.com,.myqcloud.com,.qqopenapp.com,.qzoneapp.com,.twsapp.com,7.url.cn,8.url.cn,9.url.cn,i.gtimg.cn");
-      return;
+    if (1 != localQzoneConfig.getConfig("QzUrlCache", "OfflineCacheEnable", 1)) {
       bool = false;
     }
+    gEnalbeQzoneOffline = bool;
   }
   
   public static boolean checkDownloadFont(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || ((!paramString.contains("?_offline=1")) && (!paramString.contains("&_offline=1")))) {}
-    while ((!paramString.contains("&fontId=")) && (!paramString.contains("?fontId="))) {
-      return false;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if ((!paramString.contains("?_offline=1")) && (!paramString.contains("&_offline=1"))) {
+        return false;
+      }
+      return (paramString.contains("&fontId=")) || (paramString.contains("?fontId="));
     }
-    return true;
+    return false;
   }
   
   public static boolean checkOfflineUrl(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (TextUtils.isEmpty(paramString)) {
-      bool1 = bool2;
+      return false;
     }
-    do
+    if ((!paramString.contains("?_offline=1")) && (!paramString.contains("&_offline=1"))) {
+      return false;
+    }
+    if (checkDownloadFont(paramString)) {
+      return false;
+    }
+    if (!gEnalbeQzoneOffline) {
+      return false;
+    }
+    if ((paramString.contains("_proxy=")) && ((paramString.contains("?_proxy=1")) || (paramString.contains("&_proxy=1")) || (paramString.contains("?_proxy=true")) || (paramString.contains("&_proxy=true")))) {
+      return false;
+    }
+    boolean bool = isDomainInWhiteList(getDomain(paramString));
+    if (bool)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return bool1;
-                    if (paramString.contains("?_offline=1")) {
-                      break;
-                    }
-                    bool1 = bool2;
-                  } while (!paramString.contains("&_offline=1"));
-                  bool1 = bool2;
-                } while (checkDownloadFont(paramString));
-                bool1 = bool2;
-              } while (!gEnalbeQzoneOffline);
-              if (!paramString.contains("_proxy=")) {
-                break;
-              }
-              bool1 = bool2;
-            } while (paramString.contains("?_proxy=1"));
-            bool1 = bool2;
-          } while (paramString.contains("&_proxy=1"));
-          bool1 = bool2;
-        } while (paramString.contains("?_proxy=true"));
-        bool1 = bool2;
-      } while (paramString.contains("&_proxy=true"));
-      bool2 = isDomainInWhiteList(getDomain(paramString));
-      bool1 = bool2;
-    } while (!bool2);
-    detaillog("走offline url=" + paramString);
-    return bool2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("走offline url=");
+      localStringBuilder.append(paramString);
+      detaillog(localStringBuilder.toString());
+    }
+    return bool;
   }
   
   public static void detaillog(String paramString) {}
   
   private static void devlog(String paramString)
   {
-    if ((!QLog.isDevelopLevel()) || (TextUtils.isEmpty(paramString))) {
-      return;
+    if (QLog.isDevelopLevel())
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      QLog.i("QzoneOfflinePluginJsForQQ", 4, paramString);
     }
-    QLog.i("QzoneOfflinePluginJsForQQ", 4, paramString);
   }
   
   public static HashMap<String, String> getCacheHeadersOfFile(File paramFile)
@@ -137,8 +116,14 @@ public class QzoneOfflinePluginJsForQQ
     if (paramFile == null) {
       return null;
     }
-    paramFile = paramFile.getPath() + ".headers";
-    detaillog("> getCacheHeadersOfFile: " + paramFile);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramFile.getPath());
+    localStringBuilder.append(".headers");
+    paramFile = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("> getCacheHeadersOfFile: ");
+    localStringBuilder.append(paramFile);
+    detaillog(localStringBuilder.toString());
     paramFile = new File(paramFile);
     if (paramFile.exists()) {
       try
@@ -167,51 +152,65 @@ public class QzoneOfflinePluginJsForQQ
       paramString = new URL(paramString).getHost();
       return paramString;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      label14:
+      break label14;
+    }
     return null;
   }
   
   public static String getFileExt(String paramString)
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      try
+      paramString = new URL(paramString);
+      localObject1 = paramString.getQuery();
+      if (localObject1 == null) {
+        break label98;
+      }
+      localObject1 = ((String)localObject1).split("&");
+      if (localObject1 == null) {
+        break label98;
+      }
+      j = localObject1.length;
+      i = 0;
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
       {
-        paramString = new URL(paramString);
-        Object localObject1 = paramString.getQuery();
-        if (localObject1 != null)
+        Object localObject1;
+        int j;
+        int i;
+        Object localObject2;
+        int k;
+        label98:
+        continue;
+        i += 1;
+      }
+    }
+    if (i < j)
+    {
+      localObject2 = localObject1[i];
+      k = localObject2.indexOf('=');
+      if ((k > 0) && (k < localObject2.length() - 1) && ("_fileExt".equalsIgnoreCase(localObject2.substring(0, k)))) {
+        return localObject2.substring(k + 1);
+      }
+    }
+    else
+    {
+      paramString = paramString.getPath();
+      if (paramString != null)
+      {
+        i = paramString.lastIndexOf(".");
+        if ((i >= 0) && (i < paramString.length() - 1))
         {
-          localObject1 = ((String)localObject1).split("&");
-          if (localObject1 != null)
-          {
-            int j = localObject1.length;
-            if (i < j)
-            {
-              Object localObject2 = localObject1[i];
-              int k = localObject2.indexOf('=');
-              if ((k <= 0) || (k >= localObject2.length() - 1) || (!"_fileExt".equalsIgnoreCase(localObject2.substring(0, k)))) {
-                break label141;
-              }
-              return localObject2.substring(k + 1);
-            }
-          }
-        }
-        paramString = paramString.getPath();
-        if (paramString != null)
-        {
-          i = paramString.lastIndexOf(".");
-          if ((i >= 0) && (i < paramString.length() - 1))
-          {
-            paramString = paramString.substring(i + 1);
-            return paramString;
-          }
+          paramString = paramString.substring(i + 1);
+          return paramString;
         }
       }
-      catch (Throwable paramString) {}
       return null;
-      label141:
-      i += 1;
     }
   }
   
@@ -247,47 +246,51 @@ public class QzoneOfflinePluginJsForQQ
   
   public static String getMimeTypeFromUrl(String paramString, int paramInt)
   {
-    int j = 0;
     StringBuilder localStringBuilder = new StringBuilder();
+    int j = 1;
     int i;
-    boolean bool;
-    if (paramInt > 36521)
-    {
+    if (paramInt > 36521) {
       i = 1;
-      if (paramInt > 0) {
-        j = 1;
-      }
-      bool = isSupportWebpAndSharpp();
-      if (!checkOfflineUrl(paramString)) {
-        break label201;
-      }
+    } else {
+      i = 0;
+    }
+    if (paramInt > 0) {
+      paramInt = j;
+    } else {
+      paramInt = 0;
+    }
+    boolean bool = isSupportWebpAndSharpp();
+    if (checkOfflineUrl(paramString))
+    {
       HashMap localHashMap = getConfigExtMap();
       paramString = getFileExt(paramString);
       if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
         localStringBuilder.append((String)localHashMap.get(paramString));
       }
     }
-    for (;;)
+    else if (checkDownloadFont(paramString))
     {
-      paramString = localStringBuilder.toString();
-      if ((paramString != null) && (paramString.startsWith("image")))
-      {
-        if ((bool) && (j != 0) && (!paramString.contains("webp"))) {
-          localStringBuilder.append(",").append("image/webp");
-        }
-        if ((bool) && (i != 0) && (!paramString.contains("sharpp"))) {
-          localStringBuilder.append(",").append("image/sharpp");
-        }
-        localStringBuilder.append(",").append("image/*").append(",").append("*/*");
-      }
-      return localStringBuilder.toString();
-      i = 0;
-      break;
-      label201:
-      if (checkDownloadFont(paramString)) {
-        localStringBuilder.append("application/octet-stream");
-      }
+      localStringBuilder.append("application/octet-stream");
     }
+    paramString = localStringBuilder.toString();
+    if ((paramString != null) && (paramString.startsWith("image")))
+    {
+      if ((bool) && (paramInt != 0) && (!paramString.contains("webp")))
+      {
+        localStringBuilder.append(",");
+        localStringBuilder.append("image/webp");
+      }
+      if ((bool) && (i != 0) && (!paramString.contains("sharpp")))
+      {
+        localStringBuilder.append(",");
+        localStringBuilder.append("image/sharpp");
+      }
+      localStringBuilder.append(",");
+      localStringBuilder.append("image/*");
+      localStringBuilder.append(",");
+      localStringBuilder.append("*/*");
+    }
+    return localStringBuilder.toString();
   }
   
   private static Object interceptDownloadFontRequest(String paramString)
@@ -295,68 +298,83 @@ public class QzoneOfflinePluginJsForQQ
     int i = getFontIdByUrl(paramString);
     if (i > 0)
     {
-      Object localObject2 = FontInterface.getTrueTypeFont(i, paramString, null, null);
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      Object localObject1 = FontManager.getInstance().getTrueTypeFont(i, paramString, null, true, null);
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        Object localObject1 = new File((String)localObject2);
-        if (!((File)localObject1).exists())
+        Object localObject2 = new File((String)localObject1);
+        if (!((File)localObject2).exists())
         {
-          QLog.e("QzoneOfflinePluginJsForQQ", 1, "getResponse local file not exists :" + (String)localObject2);
+          paramString = new StringBuilder();
+          paramString.append("getResponse local file not exists :");
+          paramString.append((String)localObject1);
+          QLog.e("QzoneOfflinePluginJsForQQ", 1, paramString.toString());
           return null;
         }
         try
         {
-          localObject2 = new WebResourceResponse("application/octet-stream", "utf-8", new FileInputStream((String)localObject2));
+          localObject1 = new WebResourceResponse("application/octet-stream", "utf-8", new FileInputStream((String)localObject1));
           if (QLog.isColorLevel()) {
             QLog.i("QzoneOfflinePluginJsForQQ", 2, String.format("[SUCC] get offline cache,url : %s,mineType : %s", new Object[] { paramString, "application/octet-stream" }));
           }
-          localObject1 = getCacheHeadersOfFile((File)localObject1);
-          if (localObject1 != null) {
-            ((WebResourceResponse)localObject2).setResponseHeaders((Map)localObject1);
+          localObject2 = getCacheHeadersOfFile((File)localObject2);
+          if (localObject2 != null) {
+            ((WebResourceResponse)localObject1).setResponseHeaders((Map)localObject2);
           }
-          return localObject2;
+          return localObject1;
         }
         catch (Exception localException)
         {
-          QLog.e("QzoneOfflinePluginJsForQQ", 1, "interceptDownloadFontRequest Exception: " + localException);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("interceptDownloadFontRequest Exception: ");
+          ((StringBuilder)localObject2).append(localException);
+          QLog.e("QzoneOfflinePluginJsForQQ", 1, ((StringBuilder)localObject2).toString());
         }
       }
     }
-    QLog.e("QzoneOfflinePluginJsForQQ", 1, "[FAIL] interceptDownloadFontRequest fontId: +" + i + ",url : " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[FAIL] interceptDownloadFontRequest fontId: +");
+    localStringBuilder.append(i);
+    localStringBuilder.append(",url : ");
+    localStringBuilder.append(paramString);
+    QLog.e("QzoneOfflinePluginJsForQQ", 1, localStringBuilder.toString());
     return null;
   }
   
   public static boolean isDomainInWhiteList(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return false;
-    }
-    Object localObject = gOfflineDomainWhiteList;
-    if ((localObject == null) || (((String)localObject).length() == 0)) {
-      return false;
-    }
-    localObject = ((String)localObject).split(",");
-    int j = localObject.length;
-    int i = 0;
-    if (i < j)
+    if (paramString != null)
     {
-      String str = localObject[i];
-      if (str == null) {}
-      label93:
-      do
+      if (paramString.length() == 0) {
+        return false;
+      }
+      Object localObject = gOfflineDomainWhiteList;
+      if (localObject != null)
       {
-        do
+        if (((String)localObject).length() == 0) {
+          return false;
+        }
+        localObject = ((String)localObject).split(",");
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
         {
-          i += 1;
-          break;
-          str = str.trim();
-          if (!str.startsWith(".")) {
-            break label93;
+          String str = localObject[i];
+          if (str != null)
+          {
+            str = str.trim();
+            if (str.startsWith("."))
+            {
+              if (paramString.endsWith(str)) {
+                return true;
+              }
+            }
+            else if (paramString.equals(str)) {
+              return true;
+            }
           }
-        } while (!paramString.endsWith(str));
-        return true;
-      } while (!paramString.equals(str));
-      return true;
+          i += 1;
+        }
+      }
     }
     return false;
   }
@@ -373,320 +391,307 @@ public class QzoneOfflinePluginJsForQQ
   
   private static HashMap<String, String> jsonString2Map(String paramString)
   {
-    Object localObject;
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      localObject = null;
-      return localObject;
+    if (paramString != null) {
+      if (paramString.length() == 0) {
+        return null;
+      }
     }
     for (;;)
     {
       try
       {
-        localJSONObject = new JSONObject(paramString);
-        localIterator = localJSONObject.keys();
-        if (localIterator == null) {
-          break label125;
+        JSONObject localJSONObject = new JSONObject(paramString);
+        Iterator localIterator = localJSONObject.keys();
+        if (localIterator != null)
+        {
+          if (!localIterator.hasNext())
+          {
+            return null;
+            if (localIterator.hasNext())
+            {
+              String str1 = (String)localIterator.next();
+              if (str1 == null) {
+                continue;
+              }
+              String str2 = localJSONObject.optString(str1);
+              if (str2 == null) {
+                continue;
+              }
+              Object localObject = paramString;
+              if (paramString == null) {
+                localObject = new HashMap();
+              }
+              ((HashMap)localObject).put(str1, str2);
+              paramString = (String)localObject;
+              continue;
+            }
+            return paramString;
+          }
         }
-        if (localIterator.hasNext()) {
-          break label120;
+        else {
+          return null;
         }
       }
       catch (Throwable paramString)
       {
-        JSONObject localJSONObject;
-        Iterator localIterator;
-        String str1;
-        String str2;
         return null;
       }
-      localObject = paramString;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      str1 = (String)localIterator.next();
-      localObject = paramString;
-      if (str1 != null)
-      {
-        str2 = localJSONObject.optString(str1);
-        localObject = paramString;
-        if (str2 != null)
-        {
-          localObject = paramString;
-          if (paramString == null) {
-            localObject = new HashMap();
-          }
-          ((HashMap)localObject).put(str1, str2);
-        }
-      }
-      paramString = (String)localObject;
-      continue;
-      label120:
       paramString = null;
     }
-    label125:
-    return null;
   }
   
   /* Error */
   public static String readFile(File paramFile)
   {
     // Byte code:
-    //   0: new 292	java/io/FileInputStream
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 369	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   8: astore_1
-    //   9: aload_1
-    //   10: astore_0
-    //   11: aload_1
-    //   12: invokevirtual 372	java/io/FileInputStream:available	()I
-    //   15: iconst_1
-    //   16: iadd
-    //   17: newarray byte
-    //   19: astore_2
-    //   20: aload_1
-    //   21: astore_0
-    //   22: aload_1
-    //   23: aload_2
-    //   24: invokevirtual 376	java/io/FileInputStream:read	([B)I
+    //   0: aconst_null
+    //   1: astore_1
+    //   2: aconst_null
+    //   3: astore_3
+    //   4: new 295	java/io/FileInputStream
+    //   7: dup
+    //   8: aload_0
+    //   9: invokespecial 372	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   12: astore_0
+    //   13: aload_0
+    //   14: invokevirtual 375	java/io/FileInputStream:available	()I
+    //   17: iconst_1
+    //   18: iadd
+    //   19: newarray byte
+    //   21: astore_1
+    //   22: aload_0
+    //   23: aload_1
+    //   24: invokevirtual 379	java/io/FileInputStream:read	([B)I
     //   27: pop
-    //   28: aload_1
-    //   29: astore_0
-    //   30: new 76	java/lang/String
-    //   33: dup
-    //   34: aload_2
-    //   35: ldc_w 378
-    //   38: invokespecial 381	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   41: astore_2
-    //   42: aload_1
-    //   43: ifnull +7 -> 50
-    //   46: aload_1
-    //   47: invokevirtual 384	java/io/FileInputStream:close	()V
-    //   50: aload_2
-    //   51: areturn
-    //   52: astore_2
-    //   53: aconst_null
-    //   54: astore_1
-    //   55: aload_1
-    //   56: astore_0
-    //   57: aload_2
-    //   58: invokevirtual 385	java/lang/Exception:printStackTrace	()V
-    //   61: aload_1
-    //   62: ifnull +7 -> 69
-    //   65: aload_1
-    //   66: invokevirtual 384	java/io/FileInputStream:close	()V
-    //   69: ldc_w 387
-    //   72: areturn
-    //   73: astore_0
-    //   74: aconst_null
-    //   75: astore_0
-    //   76: aload_0
-    //   77: ifnull +7 -> 84
-    //   80: aload_0
-    //   81: invokevirtual 384	java/io/FileInputStream:close	()V
-    //   84: ldc_w 387
-    //   87: areturn
-    //   88: astore_1
-    //   89: goto -13 -> 76
-    //   92: astore_2
-    //   93: goto -38 -> 55
+    //   28: new 76	java/lang/String
+    //   31: dup
+    //   32: aload_1
+    //   33: ldc_w 381
+    //   36: invokespecial 384	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   39: astore_1
+    //   40: aload_0
+    //   41: invokevirtual 387	java/io/FileInputStream:close	()V
+    //   44: aload_1
+    //   45: areturn
+    //   46: goto +33 -> 79
+    //   49: astore_2
+    //   50: goto +11 -> 61
+    //   53: aload_1
+    //   54: astore_0
+    //   55: goto +24 -> 79
+    //   58: astore_2
+    //   59: aload_3
+    //   60: astore_0
+    //   61: aload_0
+    //   62: astore_1
+    //   63: aload_2
+    //   64: invokevirtual 388	java/lang/Exception:printStackTrace	()V
+    //   67: aload_0
+    //   68: ifnull +7 -> 75
+    //   71: aload_0
+    //   72: invokevirtual 387	java/io/FileInputStream:close	()V
+    //   75: ldc_w 390
+    //   78: areturn
+    //   79: aload_0
+    //   80: ifnull +7 -> 87
+    //   83: aload_0
+    //   84: invokevirtual 387	java/io/FileInputStream:close	()V
+    //   87: ldc_w 390
+    //   90: areturn
+    //   91: astore_0
+    //   92: goto -39 -> 53
+    //   95: astore_1
+    //   96: goto -50 -> 46
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	96	0	paramFile	File
-    //   8	58	1	localFileInputStream	FileInputStream
-    //   88	1	1	localObject1	Object
-    //   19	32	2	localObject2	Object
-    //   52	6	2	localException1	Exception
-    //   92	1	2	localException2	Exception
+    //   0	99	0	paramFile	File
+    //   1	62	1	localObject1	Object
+    //   95	1	1	localObject2	Object
+    //   49	1	2	localException1	Exception
+    //   58	6	2	localException2	Exception
+    //   3	57	3	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   0	9	52	java/lang/Exception
-    //   0	9	73	finally
-    //   11	20	88	finally
-    //   22	28	88	finally
-    //   30	42	88	finally
-    //   57	61	88	finally
-    //   11	20	92	java/lang/Exception
-    //   22	28	92	java/lang/Exception
-    //   30	42	92	java/lang/Exception
+    //   13	40	49	java/lang/Exception
+    //   4	13	58	java/lang/Exception
+    //   4	13	91	finally
+    //   63	67	91	finally
+    //   13	40	95	finally
   }
   
   @TargetApi(11)
   public static Object shouldInterceptRequest(AppInterface paramAppInterface, WebView paramWebView, String paramString1, String paramString2)
   {
-    Object localObject2;
     Object localObject1;
     if ((paramWebView != null) && (WebSoPlugin.a(paramWebView)) && (WebSoUtils.b(paramString1)) && (!checkOfflineUrl(paramString1)) && (!checkDownloadFont(paramString1)))
     {
-      localObject2 = paramWebView.getTag(2131374839);
-      localObject1 = paramWebView.getTag(2131374840);
+      Object localObject2 = paramWebView.getTag(2131374373);
+      localObject1 = paramWebView.getTag(2131374374);
       if ((localObject2 instanceof String))
       {
         localObject2 = (String)localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {}
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          try
+          {
+            paramAppInterface = new BufferedInputStream(new ByteArrayInputStream(((String)localObject2).getBytes("UTF-8")), INPUTSTREAM_BUFFER_SIZE);
+            paramWebView.setTag(2131374373, null);
+            paramWebView.setTag(2131374374, null);
+            paramAppInterface = new WebResourceResponse("text/html", "UTF-8", paramAppInterface);
+            if (QLog.isColorLevel())
+            {
+              long l2 = 0L;
+              long l1 = l2;
+              if (localObject1 != null)
+              {
+                l1 = l2;
+                if ((localObject1 instanceof Long)) {
+                  l1 = ((Long)localObject1).longValue();
+                }
+              }
+              l2 = System.currentTimeMillis();
+              paramWebView = new StringBuilder();
+              paramWebView.append("webview use WebSo! url: ");
+              paramWebView.append(paramString1);
+              paramWebView.append(" , time cost=");
+              paramWebView.append(l2 - l1);
+              QLog.i("WebSo", 2, paramWebView.toString());
+            }
+            return paramAppInterface;
+          }
+          catch (Exception paramAppInterface)
+          {
+            QLog.w("QzoneOfflinePluginJsForQQ", 1, "get buffer input stream fail", paramAppInterface);
+            return null;
+          }
+        }
+      }
+    }
+    if (checkOfflineUrl(paramString1))
+    {
+      paramWebView = getConfigExtMap();
+      localObject1 = getFileExt(paramString1);
+      if ((paramWebView != null) && (paramWebView.containsKey(localObject1))) {
+        paramWebView = (String)paramWebView.get(localObject1);
+      } else {
+        paramWebView = null;
+      }
+      if ((paramWebView != null) && (paramWebView.length() != 0))
+      {
+        if (QzoneZipCacheHelper.checkDownloadZip(paramString1)) {
+          paramString2 = QzoneZipCacheHelper.getFileIfExists(paramAppInterface, paramString1);
+        } else {
+          paramString2 = QzoneOfflineCacheHelper.downLoadFileIfNeeded(paramAppInterface, paramString1, null, true, paramString2);
+        }
+        if ((paramString2 != null) && (paramString2.exists()))
+        {
+          localObject1 = getCacheHeadersOfFile(paramString2);
+          paramAppInterface = paramWebView;
+          if (localObject1 != null)
+          {
+            paramAppInterface = paramWebView;
+            if (((HashMap)localObject1).get("Content-Type") != null)
+            {
+              paramAppInterface = (String)((HashMap)localObject1).get("Content-Type");
+              paramWebView = new StringBuilder();
+              paramWebView.append("Use real Content-Type header as MIME type: ");
+              paramWebView.append(paramAppInterface);
+              detaillog(paramWebView.toString());
+            }
+          }
+        }
       }
     }
     for (;;)
     {
       try
       {
-        paramAppInterface = new BufferedInputStream(new ByteArrayInputStream(((String)localObject2).getBytes("UTF-8")), INPUTSTREAM_BUFFER_SIZE);
-        paramWebView.setTag(2131374839, null);
-        paramWebView.setTag(2131374840, null);
-        paramWebView = new WebResourceResponse("text/html", "UTF-8", paramAppInterface);
-        if (QLog.isColorLevel())
+        paramWebView = new BufferedInputStream(new FileInputStream(paramString2), INPUTSTREAM_BUFFER_SIZE);
+        if ((localObject1 == null) || (!"gzip".equalsIgnoreCase((String)((HashMap)localObject1).get("Content-Encoding")))) {
+          break label723;
+        }
+        if (!isSupportGZIP())
         {
-          if ((localObject1 == null) || (!(localObject1 instanceof Long))) {
-            break label690;
-          }
-          l1 = ((Long)localObject1).longValue();
-          long l2 = System.currentTimeMillis();
-          QLog.i("WebSo", 2, "webview use WebSo! url: " + paramString1 + " , time cost=" + (l2 - l1));
+          ((IDataUtils)QRoute.api(IDataUtils.class)).closeDataObject(paramWebView);
+          return null;
+        }
+        ((HashMap)localObject1).remove("Content-Encoding");
+        detaillog("make gzip inputstream");
+        i = 1;
+        if (i != 0) {
+          paramWebView = new WebResourceResponse(paramAppInterface, "utf-8", new GZIPInputStream(paramWebView));
+        } else {
+          paramWebView = new WebResourceResponse(paramAppInterface, "utf-8", paramWebView);
+        }
+        detaillog(String.format("[SUCC] get offline cache,url:%s ,minetype:%s", new Object[] { paramString1, paramAppInterface }));
+        if (localObject1 != null) {
+          paramWebView.setResponseHeaders((Map)localObject1);
         }
         return paramWebView;
       }
       catch (Exception paramAppInterface)
       {
-        QLog.w("QzoneOfflinePluginJsForQQ", 1, "get buffer input stream fail", paramAppInterface);
+        paramWebView = new StringBuilder();
+        paramWebView.append("shouldInterceptRequest Exception: ");
+        paramWebView.append(paramAppInterface);
+        QLog.e("QzoneOfflinePluginJsForQQ", 1, paramWebView.toString());
         return null;
       }
-      if (checkOfflineUrl(paramString1))
-      {
-        paramWebView = getConfigExtMap();
-        localObject1 = getFileExt(paramString1);
-        if ((paramWebView == null) || (!paramWebView.containsKey(localObject1))) {
-          break label685;
-        }
+      devlog(String.format("not get offline cache,start download,url:%s ,minetype:%s", new Object[] { paramString1, paramWebView }));
+      return null;
+      devlog(String.format("not support this ext,url:%s ,minetype:%s", new Object[] { paramString1, paramWebView }));
+      return null;
+      if (checkDownloadFont(paramString1)) {
+        return interceptDownloadFontRequest(paramString1);
       }
-      label679:
-      label685:
-      for (paramWebView = (String)paramWebView.get(localObject1);; paramWebView = null)
-      {
-        if ((paramWebView == null) || (paramWebView.length() == 0))
-        {
-          devlog(String.format("not support this ext,url:%s ,minetype:%s", new Object[] { paramString1, paramWebView }));
-          return null;
-        }
-        if (QzoneZipCacheHelper.checkDownloadZip(paramString1)) {}
-        for (paramAppInterface = QzoneZipCacheHelper.getFileIfExists(paramAppInterface, paramString1); (paramAppInterface == null) || (!paramAppInterface.exists()); paramAppInterface = QzoneOfflineCacheHelper.downLoadFileIfNeeded(paramAppInterface, paramString1, null, true, paramString2))
-        {
-          devlog(String.format("not get offline cache,start download,url:%s ,minetype:%s", new Object[] { paramString1, paramWebView }));
-          return null;
-        }
-        localObject1 = getCacheHeadersOfFile(paramAppInterface);
-        paramString2 = paramWebView;
-        if (localObject1 != null)
-        {
-          paramString2 = paramWebView;
-          if (((HashMap)localObject1).get("Content-Type") != null)
-          {
-            paramString2 = (String)((HashMap)localObject1).get("Content-Type");
-            detaillog("Use real Content-Type header as MIME type: " + paramString2);
-          }
-        }
-        for (;;)
-        {
-          try
-          {
-            paramAppInterface = new BufferedInputStream(new FileInputStream(paramAppInterface), INPUTSTREAM_BUFFER_SIZE);
-            if ((localObject1 == null) || (!"gzip".equalsIgnoreCase((String)((HashMap)localObject1).get("Content-Encoding")))) {
-              break label679;
-            }
-            if (!isSupportGZIP())
-            {
-              ((IDataUtils)QRoute.api(IDataUtils.class)).closeDataObject(paramAppInterface);
-              return null;
-            }
-            ((HashMap)localObject1).remove("Content-Encoding");
-            detaillog("make gzip inputstream");
-            i = 1;
-            if (i != 0)
-            {
-              paramAppInterface = new WebResourceResponse(paramString2, "utf-8", new GZIPInputStream(paramAppInterface));
-              detaillog(String.format("[SUCC] get offline cache,url:%s ,minetype:%s", new Object[] { paramString1, paramString2 }));
-              paramWebView = paramAppInterface;
-              if (localObject1 == null) {
-                break;
-              }
-              paramAppInterface.setResponseHeaders((Map)localObject1);
-              return paramAppInterface;
-            }
-          }
-          catch (Exception paramAppInterface)
-          {
-            QLog.e("QzoneOfflinePluginJsForQQ", 1, "shouldInterceptRequest Exception: " + paramAppInterface);
-          }
-          for (;;)
-          {
-            return null;
-            paramAppInterface = new WebResourceResponse(paramString2, "utf-8", paramAppInterface);
-            break;
-            if (checkDownloadFont(paramString1)) {
-              return interceptDownloadFontRequest(paramString1);
-            }
-            if ((QzoneBanApkDownloadHelper.isDomainInBlackList(paramString2)) && (QzoneBanApkDownloadHelper.isUrlMatchQzoneCallAppUrlList(paramString1))) {
-              return new WebResourceResponse("text/javascript", "utf-8", new ByteArrayInputStream("if(1===1){};".getBytes()));
-            }
-            detaillog(String.format("not get offline cache,not offline,url:%s", new Object[] { paramString1 }));
-          }
-          int i = 0;
-        }
+      if ((QzoneBanApkDownloadHelper.isDomainInBlackList(paramString2)) && (QzoneBanApkDownloadHelper.isUrlMatchQzoneCallAppUrlList(paramString1))) {
+        return new WebResourceResponse("text/javascript", "utf-8", new ByteArrayInputStream("if(1===1){};".getBytes()));
       }
-      label690:
-      long l1 = 0L;
+      detaillog(String.format("not get offline cache,not offline,url:%s", new Object[] { paramString1 }));
+      return null;
+      label723:
+      int i = 0;
     }
   }
   
   public Object handleEvent(String paramString, long paramLong)
   {
-    Object localObject1 = null;
+    CustomWebView localCustomWebView = null;
     if (paramLong == 8L)
     {
-      if ((this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {
-        break label192;
-      }
-      localObject1 = this.parentPlugin.mRuntime.a();
-      mWebView = new WeakReference(this.parentPlugin.mRuntime.a());
-      mActivity = new WeakReference(this.parentPlugin.mRuntime.a());
-    }
-    for (;;)
-    {
-      Object localObject2;
+      AppInterface localAppInterface;
       if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null))
       {
-        localObject2 = this.parentPlugin.mRuntime.a();
-        if (localObject2 == null) {
-          break label174;
-        }
-        localObject2 = ((Activity)localObject2).getIntent();
-        label121:
-        if (localObject2 == null) {
-          break label180;
-        }
-        localObject2 = ((Intent)localObject2).getStringExtra("url");
-        label136:
-        if (mWebView == null) {
-          break label186;
-        }
+        localAppInterface = this.parentPlugin.mRuntime.a();
+        mWebView = new WeakReference(this.parentPlugin.mRuntime.a());
+        mActivity = new WeakReference(this.parentPlugin.mRuntime.a());
       }
-      label174:
-      label180:
-      label186:
-      for (CustomWebView localCustomWebView = (CustomWebView)mWebView.get();; localCustomWebView = null)
+      else
       {
-        localObject1 = shouldInterceptRequest((AppInterface)localObject1, localCustomWebView, paramString, (String)localObject2);
-        return localObject1;
-        localObject2 = null;
-        break;
-        localObject2 = null;
-        break label121;
-        localObject2 = null;
-        break label136;
+        localAppInterface = null;
       }
-      label192:
-      localObject1 = null;
+      Object localObject;
+      if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null)) {
+        localObject = this.parentPlugin.mRuntime.a();
+      } else {
+        localObject = null;
+      }
+      if (localObject != null) {
+        localObject = ((Activity)localObject).getIntent();
+      } else {
+        localObject = null;
+      }
+      if (localObject != null) {
+        localObject = ((Intent)localObject).getStringExtra("url");
+      } else {
+        localObject = null;
+      }
+      WeakReference localWeakReference = mWebView;
+      if (localWeakReference != null) {
+        localCustomWebView = (CustomWebView)localWeakReference.get();
+      }
+      return shouldInterceptRequest(localAppInterface, localCustomWebView, paramString, (String)localObject);
     }
+    return null;
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -696,7 +701,7 @@ public class QzoneOfflinePluginJsForQQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneOfflinePluginJsForQQ
  * JD-Core Version:    0.7.0.1
  */

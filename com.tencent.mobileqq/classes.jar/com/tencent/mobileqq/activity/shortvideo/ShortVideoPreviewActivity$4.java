@@ -16,17 +16,26 @@ class ShortVideoPreviewActivity$4
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
-    }
-    if ((this.a.h == 1) && (this.a.g > 0))
+    if (QLog.isColorLevel())
     {
-      this.a.a(this.a.g);
-      this.a.g = 0;
-      this.a.h = 0;
+      paramSurfaceHolder = new StringBuilder();
+      paramSurfaceHolder.append("surfaceCreated: mSavedCurPosition:");
+      paramSurfaceHolder.append(this.a.mSavedCurPosition);
+      paramSurfaceHolder.append(",mSavedPlayState : ");
+      ShortVideoPreviewActivity localShortVideoPreviewActivity = this.a;
+      paramSurfaceHolder.append(localShortVideoPreviewActivity.getPlayStateStr(localShortVideoPreviewActivity.mSavedPlayState));
+      QLog.d("ShortVideoPreviewActivity", 2, paramSurfaceHolder.toString());
+    }
+    if ((this.a.mSavedPlayState == 1) && (this.a.mSavedCurPosition > 0))
+    {
+      paramSurfaceHolder = this.a;
+      paramSurfaceHolder.play(paramSurfaceHolder.mSavedCurPosition);
+      paramSurfaceHolder = this.a;
+      paramSurfaceHolder.mSavedCurPosition = 0;
+      paramSurfaceHolder.mSavedPlayState = 0;
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.mCover.setVisibility(0);
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
@@ -34,17 +43,17 @@ class ShortVideoPreviewActivity$4
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.c();
+    if (this.a.mMediaPlayer != null) {
+      this.a.mMediaPlayer.c();
     }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    if (this.a.updateBarHandler != null) {
+      this.a.updateBarHandler.removeCallbacks(this.a.updateSeekBarThread);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.4
  * JD-Core Version:    0.7.0.1
  */

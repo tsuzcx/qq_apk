@@ -12,32 +12,36 @@ public class BatchGetFeedLikeRequest$FeedLikeInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (FeedLikeInfo)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
+      String str = this.a;
+      if (str != null) {
+        return str.equals(paramObject.a);
       }
-    } while (paramObject.a == null);
+      return paramObject.a == null;
+    }
     return false;
   }
   
   public int hashCode()
   {
-    if (this.a != null) {
-      return this.a.hashCode();
+    String str = this.a;
+    if (str != null) {
+      return str.hashCode();
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.BatchGetFeedLikeRequest.FeedLikeInfo
  * JD-Core Version:    0.7.0.1
  */

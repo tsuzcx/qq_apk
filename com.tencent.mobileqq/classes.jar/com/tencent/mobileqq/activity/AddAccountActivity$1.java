@@ -14,33 +14,32 @@ class AddAccountActivity$1
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+    if (paramView == this.a.mAutoTextAccount)
+    {
       if (true == paramBoolean)
       {
-        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
-          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
+        if (this.a.mAutoTextAccount.isPopupShowing()) {
+          this.a.mAutoTextAccount.dismissDropDown();
         }
-        if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        if ((this.a.mDelIcon != null) && (this.a.mAutoTextAccount.getText().length() > 0)) {
+          this.a.mDelIcon.setVisibility(0);
         }
-        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
+        this.a.mAutoTextAccount.setSelection(this.a.mAutoTextAccount.getText().length());
+        return;
+      }
+      if ((this.a.mDelIcon != null) && (this.a.mDelIcon.isShown())) {
+        this.a.mDelIcon.setVisibility(8);
       }
     }
-    while ((paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText) || (true != paramBoolean))
+    else if ((paramView == this.a.mPwdEdit) && (true == paramBoolean))
     {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_AndroidWidgetImageView == null) || (!this.a.jdField_a_of_type_AndroidWidgetImageView.isShown()));
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
+      this.a.mPwdEdit.setSelection(this.a.mPwdEdit.getText().length());
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().length());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity.1
  * JD-Core Version:    0.7.0.1
  */

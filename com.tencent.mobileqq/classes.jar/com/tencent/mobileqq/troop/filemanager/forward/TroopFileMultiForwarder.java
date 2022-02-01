@@ -4,12 +4,13 @@ import android.text.TextUtils;
 import com.tencent.biz.troop.file.TroopFileProtocol;
 import com.tencent.biz.troop.file.protocol.TroopFileReqCopyToObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.troop.filemanager.TroopFileDataCenter;
 import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
 import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
 import com.tencent.mobileqq.troop.utils.TroopFileError.SimpleErrorInfo;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import cooperation.weiyun.ResponseHandler;
+import com.tencent.mobileqq.weiyun.api.IWeiyunResponseHandler;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -60,47 +61,64 @@ public class TroopFileMultiForwarder
     if (!paramBoolean) {}
     try
     {
-      ResponseHandler.a(-1);
+      ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(-1);
       this.b.put(paramItem.Id, Integer.valueOf(-1));
-      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun fail. isSuc:" + paramBoolean);
+      paramInt1 = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramString1 = new StringBuilder();
+      paramString1.append("[");
+      paramString1.append(paramItem.Id.toString());
+      paramString1.append("] onRspMultiCopyToWeiyun fail. isSuc:");
+      paramString1.append(paramBoolean);
+      TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", paramInt1, paramString1.toString());
       return;
     }
-    finally {}
-    TroopFileTransferUtil.Log.c("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun retCode:" + paramInt1);
-    ResponseHandler.a(paramInt1);
-    if (paramInt1 == 0)
+    finally
     {
+      break label384;
+    }
+    paramInt2 = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    paramString1 = new StringBuilder();
+    paramString1.append("[");
+    paramString1.append(paramItem.Id.toString());
+    paramString1.append("] onRspMultiCopyToWeiyun retCode:");
+    paramString1.append(paramInt1);
+    TroopFileTransferUtil.Log.c("TroopFileFromTroopForwarder", paramInt2, paramString1.toString());
+    ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt1);
+    if (paramInt1 == 0) {
       this.b.remove(paramItem.Id);
-      if (this.b.size() != 0) {
-        break label212;
-      }
+    } else {
+      this.b.put(paramItem.Id, Integer.valueOf(paramInt1));
+    }
+    if (this.b.size() == 0)
+    {
       paramString1 = new TroopFileError.SimpleErrorInfo(paramItem.FileName, this.jdField_a_of_type_Long, 5, 604);
       TroopFileDataCenter.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
     }
-    label316:
-    for (;;)
+    else
     {
-      return;
-      this.b.put(paramItem.Id, Integer.valueOf(paramInt1));
-      break;
-      label212:
-      paramString1 = this.b.keySet().iterator();
+      paramString1 = this.b.keySet();
+      paramInt2 = 1;
+      paramString1 = paramString1.iterator();
       do
       {
+        paramInt1 = paramInt2;
         if (!paramString1.hasNext()) {
           break;
         }
         paramString2 = (UUID)paramString1.next();
       } while (((Integer)this.b.get(paramString2)).intValue() != 2147483647);
-      for (paramInt1 = 0;; paramInt1 = 1)
+      paramInt1 = 0;
+      if (paramInt1 != 0)
       {
-        if (paramInt1 == 0) {
-          break label316;
-        }
         paramString1 = new TroopFileError.SimpleErrorInfo(paramItem.FileName, this.jdField_a_of_type_Long, 5, 605);
         TroopFileDataCenter.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
-        break;
       }
+    }
+    return;
+    label384:
+    for (;;)
+    {
+      throw paramItem;
     }
   }
   
@@ -124,23 +142,42 @@ public class TroopFileMultiForwarder
       {
         TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardTroopuin=0");
       }
-      else if (localItem.BusId != 25)
-      {
-        TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "multiTroop2weiyun. BusId err:" + localItem.BusId);
-      }
-      else if (TextUtils.isEmpty(localItem.ForwardPath))
-      {
-        TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardPath=null");
-      }
       else
       {
-        TroopFileTransferUtil.Log.c("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + localItem.Id.toString() + "] multiTroop2weiyun. BusId:" + localItem.BusId + " ForwardBusId:" + localItem.ForwardBusId + " ForwardPath:" + localItem.ForwardPath);
-        try
+        int i;
+        StringBuilder localStringBuilder;
+        if (localItem.BusId != 25)
         {
-          this.b.put(localItem.Id, Integer.valueOf(2147483647));
-          TroopFileProtocol.a(localQQAppInterface, true, this.jdField_a_of_type_Long, localItem, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqCopyToObserver);
+          i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("multiTroop2weiyun. BusId err:");
+          localStringBuilder.append(localItem.BusId);
+          TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", i, localStringBuilder.toString());
         }
-        finally {}
+        else if (TextUtils.isEmpty(localItem.ForwardPath))
+        {
+          TroopFileTransferUtil.Log.a("TroopFileFromTroopForwarder", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardPath=null");
+        }
+        else
+        {
+          i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[");
+          localStringBuilder.append(localItem.Id.toString());
+          localStringBuilder.append("] multiTroop2weiyun. BusId:");
+          localStringBuilder.append(localItem.BusId);
+          localStringBuilder.append(" ForwardBusId:");
+          localStringBuilder.append(localItem.ForwardBusId);
+          localStringBuilder.append(" ForwardPath:");
+          localStringBuilder.append(localItem.ForwardPath);
+          TroopFileTransferUtil.Log.c("TroopFileFromTroopForwarder", i, localStringBuilder.toString());
+          try
+          {
+            this.b.put(localItem.Id, Integer.valueOf(2147483647));
+            TroopFileProtocol.a(localQQAppInterface, true, this.jdField_a_of_type_Long, localItem, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_ComTencentBizTroopFileProtocolTroopFileReqCopyToObserver);
+          }
+          finally {}
+        }
       }
     }
     return 0;
@@ -156,7 +193,7 @@ public class TroopFileMultiForwarder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.forward.TroopFileMultiForwarder
  * JD-Core Version:    0.7.0.1
  */

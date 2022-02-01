@@ -22,9 +22,7 @@ class WebViewProgressBarController$MainThreadHandler
     if (localWebViewProgressBarController == null) {
       return;
     }
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 200) {
       return;
     }
     localWebViewProgressBarController.e();
@@ -32,7 +30,7 @@ class WebViewProgressBarController$MainThreadHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WebViewProgressBarController.MainThreadHandler
  * JD-Core Version:    0.7.0.1
  */

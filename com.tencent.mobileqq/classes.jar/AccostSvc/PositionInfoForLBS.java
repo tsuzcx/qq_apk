@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class PositionInfoForLBS
   extends JceStruct
@@ -60,23 +61,27 @@ public final class PositionInfoForLBS
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bPositionInfoType, 1);
-    if (this.stGps != null) {
-      paramJceOutputStream.write(this.stGps, 2);
+    Object localObject = this.stGps;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.vMacs != null) {
-      paramJceOutputStream.write(this.vMacs, 3);
+    localObject = this.vMacs;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.vCells != null) {
-      paramJceOutputStream.write(this.vCells, 4);
+    localObject = this.vCells;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.vLBSKeyData != null) {
-      paramJceOutputStream.write(this.vLBSKeyData, 5);
+    localObject = this.vLBSKeyData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     AccostSvc.PositionInfoForLBS
  * JD-Core Version:    0.7.0.1
  */

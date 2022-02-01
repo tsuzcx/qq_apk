@@ -12,12 +12,17 @@ class GLTextureView$2
     if (GLTextureView.access$000(this.this$0) != 1.0F) {
       GLTextureView.access$100(this.this$0, 1.0F);
     }
-    QLog.d("GLTextureView", 1, "TextureView mCheckSurfaceChangeTask, ableToDraw:" + this.this$0.mGLThread.a() + ",alpha:" + GLTextureView.access$000(this.this$0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TextureView mCheckSurfaceChangeTask, ableToDraw:");
+    localStringBuilder.append(GLTextureView.access$200(this.this$0).a());
+    localStringBuilder.append(",alpha:");
+    localStringBuilder.append(GLTextureView.access$000(this.this$0));
+    QLog.d("[ApolloGL][GLTextureView]", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.GLTextureView.2
  * JD-Core Version:    0.7.0.1
  */

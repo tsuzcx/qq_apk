@@ -13,6 +13,7 @@ import com.tencent.falco.base.libapi.http.HttpInterface;
 import com.tencent.falco.base.libapi.imageloader.ImageLoaderInterface;
 import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.falco.base.libapi.login.LoginServiceInterface;
+import com.tencent.falco.base.libapi.lottie.LottieServiceInterface;
 import com.tencent.ilive.base.component.ComponentFactory;
 import com.tencent.ilive.base.component.ComponentFactory.ComponentsBuilder;
 import com.tencent.ilive.base.event.ModuleEvent;
@@ -21,7 +22,6 @@ import com.tencent.ilive.litepages.room.webmodule.event.LiteShowLuxuryAnimationE
 import com.tencent.ilive.litepages.room.webmodule.event.PreloadLuxuryAnimationEvent;
 import com.tencent.ilive.litepages.room.webmodule.event.StopLuxuryAnimationPlayEvent;
 import com.tencent.ilive.pages.room.bizmodule.RoomBizModule;
-import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.LottieServiceInterface;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.LuxuryGiftComponent;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.LuxuryGiftData;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.LuxuryGiftInfo;
@@ -62,6 +62,14 @@ public class LiteLuxuryGiftModule
   Observer showLuxuryAnimationEvent = new LiteLuxuryGiftModule.2(this);
   Observer stopLuxuryAnimationPlayEvent = new LiteLuxuryGiftModule.5(this);
   
+  private ImageLoaderInterface getImageLoaderInterface()
+  {
+    if (this.mImageLoaderInterface == null) {
+      this.mImageLoaderInterface = ((ImageLoaderInterface)getRoomEngine().getService(ImageLoaderInterface.class));
+    }
+    return this.mImageLoaderInterface;
+  }
+  
   private void initLuxuryGiftComponent(View paramView)
   {
     this.mLuxuryGiftComponent = ((LuxuryGiftComponent)getComponentFactory().getComponent(LuxuryGiftComponent.class).setRootView(paramView).build());
@@ -75,15 +83,16 @@ public class LiteLuxuryGiftModule
     this.mLogInterface = ((LogInterface)getRoomEngine().getService(LogInterface.class));
     this.mActivityLifeService = ((ActivityLifeService)getRoomEngine().getService(ActivityLifeService.class));
     this.mAppGeneralInfoService = ((AppGeneralInfoService)getRoomEngine().getService(AppGeneralInfoService.class));
-    this.mImageLoaderInterface = ((ImageLoaderInterface)getRoomEngine().getService(ImageLoaderInterface.class));
-    this.mGiftServiceInterface = ((GiftServiceInterface)getRoomEngine().getService(GiftServiceInterface.class));
     this.mLoginServiceInterface = ((LoginServiceInterface)getRoomEngine().getService(LoginServiceInterface.class));
     this.mLottieServiceInterface = ((LottieServiceInterface)getRoomEngine().getService(LottieServiceInterface.class));
   }
   
   private void preloadLuxuryGift(PreloadLuxuryAnimationEvent paramPreloadLuxuryAnimationEvent)
   {
-    this.mGiftServiceInterface.queryH264GiftInfo(paramPreloadLuxuryAnimationEvent.effectIds, new LiteLuxuryGiftModule.4(this));
+    if (getGiftServiceInterface() == null) {
+      return;
+    }
+    getGiftServiceInterface().queryH264GiftInfo(paramPreloadLuxuryAnimationEvent.effectIds, new LiteLuxuryGiftModule.4(this));
   }
   
   private void startListenLuxuryGiftMessage()
@@ -92,8 +101,8 @@ public class LiteLuxuryGiftModule
     getEvent().observe(ClearLuxuryQueueEvent.class, this.clearLuxuryQueueEvent);
     getEvent().observe(PreloadLuxuryAnimationEvent.class, this.preloadLuxuryAnimationEvent);
     getEvent().observe(StopLuxuryAnimationPlayEvent.class, this.stopLuxuryAnimationPlayEvent);
-    if (this.mGiftServiceInterface != null) {
-      this.mGiftServiceInterface.addReceiveGiftMessageListener(this.receiveGiftMessageListener);
+    if (getGiftServiceInterface() != null) {
+      getGiftServiceInterface().addReceiveGiftMessageListener(this.receiveGiftMessageListener);
     }
   }
   
@@ -103,8 +112,8 @@ public class LiteLuxuryGiftModule
     getEvent().removeObserver(ClearLuxuryQueueEvent.class, this.clearLuxuryQueueEvent);
     getEvent().removeObserver(PreloadLuxuryAnimationEvent.class, this.preloadLuxuryAnimationEvent);
     getEvent().removeObserver(StopLuxuryAnimationPlayEvent.class, this.stopLuxuryAnimationPlayEvent);
-    if (this.mGiftServiceInterface != null) {
-      this.mGiftServiceInterface.delReceiveGiftMessageListener(this.receiveGiftMessageListener);
+    if (getGiftServiceInterface() != null) {
+      getGiftServiceInterface().delReceiveGiftMessageListener(this.receiveGiftMessageListener);
     }
   }
   
@@ -261,6 +270,14 @@ public class LiteLuxuryGiftModule
     return localGiftEffectResourceInfo;
   }
   
+  public GiftServiceInterface getGiftServiceInterface()
+  {
+    if (this.mGiftServiceInterface == null) {
+      this.mGiftServiceInterface = ((GiftServiceInterface)getRoomEngine().getService(GiftServiceInterface.class));
+    }
+    return this.mGiftServiceInterface;
+  }
+  
   public void onCreate(Context paramContext)
   {
     super.onCreate(paramContext);
@@ -278,11 +295,11 @@ public class LiteLuxuryGiftModule
     startListenLuxuryGiftMessage();
   }
   
-  public void onInflateComponent()
+  protected void onInflateComponent()
   {
     initServiceInterface();
-    ViewStub localViewStub = (ViewStub)getRootView().findViewById(2131370868);
-    localViewStub.setLayoutResource(2131559362);
+    ViewStub localViewStub = (ViewStub)getRootView().findViewById(2131370501);
+    localViewStub.setLayoutResource(2131559237);
     initLuxuryGiftComponent((FrameLayout)localViewStub.inflate());
   }
   
@@ -307,7 +324,7 @@ public class LiteLuxuryGiftModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule
  * JD-Core Version:    0.7.0.1
  */

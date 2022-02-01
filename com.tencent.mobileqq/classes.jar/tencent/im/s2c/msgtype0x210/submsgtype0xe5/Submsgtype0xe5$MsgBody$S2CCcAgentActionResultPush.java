@@ -23,13 +23,14 @@ public final class Submsgtype0xe5$MsgBody$S2CCcAgentActionResultPush
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 56 }, new String[] { "uint32_type", "str_callid", "uint32_result", "uint32_timestamp", "uint32_status", "bytes_target_name", "uint64_target_kfext" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L) }, S2CCcAgentActionResultPush.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 56 }, new String[] { "uint32_type", "str_callid", "uint32_result", "uint32_timestamp", "uint32_status", "bytes_target_name", "uint64_target_kfext" }, new Object[] { localInteger, "", localInteger, localInteger, localInteger, localByteStringMicro, Long.valueOf(0L) }, S2CCcAgentActionResultPush.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0xe5.Submsgtype0xe5.MsgBody.S2CCcAgentActionResultPush
  * JD-Core Version:    0.7.0.1
  */

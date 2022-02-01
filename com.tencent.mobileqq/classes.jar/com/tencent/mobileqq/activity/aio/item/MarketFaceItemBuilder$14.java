@@ -11,12 +11,14 @@ final class MarketFaceItemBuilder$14
   
   public void run()
   {
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidContentContext.getString(2131719906), this.jdField_a_of_type_JavaLangString);
+    int i = this.jdField_a_of_type_Int;
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    MarketFaceItemBuilder.a(i, localContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, localContext.getString(2131719638), this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.14
  * JD-Core Version:    0.7.0.1
  */

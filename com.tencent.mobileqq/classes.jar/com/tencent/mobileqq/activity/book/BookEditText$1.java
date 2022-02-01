@@ -14,16 +14,15 @@ class BookEditText$1
     this.a.a(paramSpanned.toString());
     if (this.a.a(paramCharSequence.toString()) == 0) {
       BookEditText.a(this.a);
+    } else if (QQEmojiUtil.containsEmoji(paramCharSequence.toString())) {
+      return "";
     }
-    while (!QQEmojiUtil.containsEmoji(paramCharSequence.toString())) {
-      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
-    }
-    return "";
+    return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.book.BookEditText.1
  * JD-Core Version:    0.7.0.1
  */

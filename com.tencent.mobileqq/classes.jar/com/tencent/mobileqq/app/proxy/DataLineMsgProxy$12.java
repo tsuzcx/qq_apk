@@ -16,13 +16,14 @@ class DataLineMsgProxy$12
       localDataLineMsgRecord.issuc = false;
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("issuc", Boolean.valueOf(false));
-      this.this$0.a(this.this$0.a, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
+      DataLineMsgProxy localDataLineMsgProxy = this.this$0;
+      localDataLineMsgProxy.a(localDataLineMsgProxy.a, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.12
  * JD-Core Version:    0.7.0.1
  */

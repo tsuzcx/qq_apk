@@ -34,22 +34,22 @@ public class SettingUncommUsedContactsActivity
   
   void a()
   {
-    setContentViewB(2131561630);
-    setTitle(2131719140);
-    this.leftView.setText(2131690778);
+    setContentViewB(2131561472);
+    setTitle(2131718858);
+    this.leftView.setText(2131690706);
     this.rightViewText.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131372101));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371692));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), this.app.getNotAllowedSeeMyDongtai(false));
-    this.b = ((FormSwitchItem)findViewById(2131378016));
+    this.b = ((FormSwitchItem)findViewById(2131377440));
     this.b.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     a(this.b.a(), this.app.getShieldHisDongtai(false));
     if (AppSetting.d)
     {
-      this.centerView.setContentDescription(getString(2131719140));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131694524));
+      this.centerView.setContentDescription(getString(2131718858));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131694489));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setFocusable(true);
-      this.b.setContentDescription(getString(2131719331));
+      this.b.setContentDescription(getString(2131719049));
       this.b.setFocusable(true);
     }
   }
@@ -68,7 +68,7 @@ public class SettingUncommUsedContactsActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
@@ -76,13 +76,13 @@ public class SettingUncommUsedContactsActivity
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     ((FriendListHandler)this.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getDongtaiPermission(this.app.getCurrentAccountUin(), 3);
@@ -97,7 +97,7 @@ public class SettingUncommUsedContactsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity
  * JD-Core Version:    0.7.0.1
  */

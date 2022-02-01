@@ -23,22 +23,17 @@ public final class FrameworkMediaDrm
   private FrameworkMediaDrm(UUID paramUUID)
   {
     Assertions.checkNotNull(paramUUID);
-    if (!C.COMMON_PSSH_UUID.equals(paramUUID)) {}
-    for (boolean bool = true;; bool = false)
+    Assertions.checkArgument(C.COMMON_PSSH_UUID.equals(paramUUID) ^ true, "Use C.CLEARKEY_UUID instead");
+    UUID localUUID = paramUUID;
+    if (Util.SDK_INT < 27)
     {
-      Assertions.checkArgument(bool, "Use C.CLEARKEY_UUID instead");
-      UUID localUUID = paramUUID;
-      if (Util.SDK_INT < 27)
-      {
-        localUUID = paramUUID;
-        if (C.CLEARKEY_UUID.equals(paramUUID)) {
-          localUUID = C.COMMON_PSSH_UUID;
-        }
+      localUUID = paramUUID;
+      if (C.CLEARKEY_UUID.equals(paramUUID)) {
+        localUUID = C.COMMON_PSSH_UUID;
       }
-      this.uuid = localUUID;
-      this.mediaDrm = new MediaDrm(localUUID);
-      return;
     }
+    this.uuid = localUUID;
+    this.mediaDrm = new MediaDrm(localUUID);
   }
   
   public static FrameworkMediaDrm newInstance(UUID paramUUID)
@@ -48,13 +43,13 @@ public final class FrameworkMediaDrm
       paramUUID = new FrameworkMediaDrm(paramUUID);
       return paramUUID;
     }
-    catch (UnsupportedSchemeException paramUUID)
-    {
-      throw new UnsupportedDrmException(1, paramUUID);
-    }
     catch (Exception paramUUID)
     {
       throw new UnsupportedDrmException(2, paramUUID);
+    }
+    catch (UnsupportedSchemeException paramUUID)
+    {
+      throw new UnsupportedDrmException(1, paramUUID);
     }
   }
   
@@ -65,10 +60,13 @@ public final class FrameworkMediaDrm
   
   public FrameworkMediaCrypto createMediaCrypto(byte[] paramArrayOfByte)
   {
-    if ((Util.SDK_INT < 21) && (C.WIDEVINE_UUID.equals(this.uuid)) && ("L3".equals(getPropertyString("securityLevel")))) {}
-    for (boolean bool = true;; bool = false) {
-      return new FrameworkMediaCrypto(new MediaCrypto(this.uuid, paramArrayOfByte), bool);
+    boolean bool;
+    if ((Util.SDK_INT < 21) && (C.WIDEVINE_UUID.equals(this.uuid)) && ("L3".equals(getPropertyString("securityLevel")))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return new FrameworkMediaCrypto(new MediaCrypto(this.uuid, paramArrayOfByte), bool);
   }
   
   public ExoMediaDrm.KeyRequest getKeyRequest(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString, int paramInt, HashMap<String, String> paramHashMap)
@@ -126,26 +124,28 @@ public final class FrameworkMediaDrm
   public void setOnEventListener(ExoMediaDrm.OnEventListener<? super FrameworkMediaCrypto> paramOnEventListener)
   {
     MediaDrm localMediaDrm = this.mediaDrm;
-    if (paramOnEventListener == null) {}
-    for (paramOnEventListener = null;; paramOnEventListener = new FrameworkMediaDrm.1(this, paramOnEventListener))
-    {
-      localMediaDrm.setOnEventListener(paramOnEventListener);
-      return;
+    if (paramOnEventListener == null) {
+      paramOnEventListener = null;
+    } else {
+      paramOnEventListener = new FrameworkMediaDrm.1(this, paramOnEventListener);
     }
+    localMediaDrm.setOnEventListener(paramOnEventListener);
   }
   
   public void setOnKeyStatusChangeListener(ExoMediaDrm.OnKeyStatusChangeListener<? super FrameworkMediaCrypto> paramOnKeyStatusChangeListener)
   {
-    if (Util.SDK_INT < 23) {
-      throw new UnsupportedOperationException();
-    }
-    MediaDrm localMediaDrm = this.mediaDrm;
-    if (paramOnKeyStatusChangeListener == null) {}
-    for (paramOnKeyStatusChangeListener = null;; paramOnKeyStatusChangeListener = new FrameworkMediaDrm.2(this, paramOnKeyStatusChangeListener))
+    if (Util.SDK_INT >= 23)
     {
+      MediaDrm localMediaDrm = this.mediaDrm;
+      if (paramOnKeyStatusChangeListener == null) {
+        paramOnKeyStatusChangeListener = null;
+      } else {
+        paramOnKeyStatusChangeListener = new FrameworkMediaDrm.2(this, paramOnKeyStatusChangeListener);
+      }
       localMediaDrm.setOnKeyStatusChangeListener(paramOnKeyStatusChangeListener, null);
       return;
     }
+    throw new UnsupportedOperationException();
   }
   
   public void setPropertyByteArray(String paramString, byte[] paramArrayOfByte)
@@ -160,7 +160,7 @@ public final class FrameworkMediaDrm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.FrameworkMediaDrm
  * JD-Core Version:    0.7.0.1
  */

@@ -33,16 +33,17 @@ public final class oidb_0x935$RgroupInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 56, 64, 72, 82, 90, 98, 104, 112, 120 }, new String[] { "uint64_group_code", "uint64_owner_uin", "bytes_group_name", "bytes_group_memo", "uint32_member_num", "rpt_group_label", "uint32_group_flag_ext", "uint32_group_flag", "source", "tag_wording", "bytes_algorithm", "bytes_join_group_auth", "uint32_activity", "uint32_member_max_num", "int32_uin_privilege" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), null, localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RgroupInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 50, 56, 64, 72, 82, 90, 98, 104, 112, 120 }, new String[] { "uint64_group_code", "uint64_owner_uin", "bytes_group_name", "bytes_group_memo", "uint32_member_num", "rpt_group_label", "uint32_group_flag_ext", "uint32_group_flag", "source", "tag_wording", "bytes_algorithm", "bytes_join_group_auth", "uint32_activity", "uint32_member_max_num", "int32_uin_privilege" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localInteger, null, localInteger, localInteger, Integer.valueOf(1), null, localByteStringMicro3, localByteStringMicro4, localInteger, localInteger, localInteger }, RgroupInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x935.oidb_0x935.RgroupInfo
  * JD-Core Version:    0.7.0.1
  */

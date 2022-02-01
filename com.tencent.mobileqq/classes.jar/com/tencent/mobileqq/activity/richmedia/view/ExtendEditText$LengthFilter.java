@@ -26,40 +26,35 @@ class ExtendEditText$LengthFilter
     if (localLengthConvertor == null)
     {
       paramInt3 = paramSpanned.length() - (paramInt4 - paramInt3);
-      if (localLengthConvertor != null) {
-        break label95;
-      }
-      paramInt2 -= paramInt1;
     }
-    for (;;)
+    else
     {
-      paramInt3 = this.jdField_a_of_type_Int - paramInt3;
-      if (paramInt3 > 0) {
-        break label109;
-      }
-      a();
-      return "";
-      paramInt3 = localLengthConvertor.a(paramSpanned, 0, paramInt3) + localLengthConvertor.a(paramSpanned, paramInt4, paramSpanned.length());
-      break;
-      label95:
+      paramInt3 = localLengthConvertor.a(paramSpanned, 0, paramInt3);
+      paramInt3 = localLengthConvertor.a(paramSpanned, paramInt4, paramSpanned.length()) + paramInt3;
+    }
+    if (localLengthConvertor == null) {
+      paramInt2 -= paramInt1;
+    } else {
       paramInt2 = localLengthConvertor.a(paramCharSequence, paramInt1, paramInt2);
     }
-    label109:
+    paramInt3 = this.jdField_a_of_type_Int - paramInt3;
+    if (paramInt3 <= 0)
+    {
+      a();
+      return "";
+    }
     if (paramInt3 >= paramInt2) {
       return null;
     }
     a();
+    paramInt2 = paramInt3;
     if (localLengthConvertor != null)
     {
-      paramInt3 = localLengthConvertor.b(paramCharSequence, paramInt1, paramInt1 + paramInt3);
+      paramInt3 = localLengthConvertor.b(paramCharSequence, paramInt1, paramInt3 + paramInt1);
       paramInt2 = paramInt3;
       if (paramInt3 <= 0) {
         return "";
       }
-    }
-    else
-    {
-      paramInt2 = paramInt3;
     }
     paramInt3 = paramInt2 + paramInt1;
     paramInt2 = paramInt3;
@@ -76,7 +71,7 @@ class ExtendEditText$LengthFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthFilter
  * JD-Core Version:    0.7.0.1
  */

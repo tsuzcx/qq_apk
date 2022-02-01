@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_acti
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_action/download_action/AdAppDownloadUtil$DownloadStateInfo;", "", "()V", "pkgName", "", "getPkgName", "()Ljava/lang/String;", "setPkgName", "(Ljava/lang/String;)V", "progress", "", "getProgress", "()I", "setProgress", "(I)V", "state", "getState", "setState", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_action/download_action/AdAppDownloadUtil$DownloadStateInfo;", "", "()V", "pkgName", "", "getPkgName", "()Ljava/lang/String;", "setPkgName", "(Ljava/lang/String;)V", "progress", "", "getProgress", "()I", "setProgress", "(I)V", "state", "getState", "setState", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class AdAppDownloadUtil$DownloadStateInfo
 {
   private int jdField_a_of_type_Int;
@@ -33,7 +33,7 @@ public final class AdAppDownloadUtil$DownloadStateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action.AdAppDownloadUtil.DownloadStateInfo
  * JD-Core Version:    0.7.0.1
  */

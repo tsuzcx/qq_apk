@@ -25,32 +25,37 @@ public class ExtraTextureRender
   
   public GLTexture a(GLTexture paramGLTexture, int paramInt1, int paramInt2)
   {
-    if ((paramGLTexture == null) || (paramGLTexture.b == -1) || (paramInt1 == 0) || (paramInt2 == 0)) {
-      return null;
-    }
-    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (paramInt1 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getWidth()) || (paramInt2 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getHeight()))
+    if ((paramGLTexture != null) && (paramGLTexture.b != -1) && (paramInt1 != 0) && (paramInt2 != 0))
     {
-      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      RenderBuffer localRenderBuffer = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+      if ((localRenderBuffer == null) || (paramInt1 != localRenderBuffer.getWidth()) || (paramInt2 != this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getHeight()))
+      {
+        localRenderBuffer = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+        if (localRenderBuffer != null) {
+          localRenderBuffer.destroy();
+        }
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
       }
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramInt1, paramInt2, 33984);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramGLTexture.b, this.jdField_a_of_type_ArrayOfFloat, this.b);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+      return GLTexture.a(0, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
     }
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramGLTexture.b, this.jdField_a_of_type_ArrayOfFloat, this.b);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-    return GLTexture.a(0, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
+    return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
+    Object localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      ((RenderBuffer)localObject).destroy();
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
     }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
+    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      ((TextureRender)localObject).release();
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
     }
   }
@@ -63,18 +68,17 @@ public class ExtraTextureRender
     Matrix.setIdentityM(this.b, 0);
     if (paramInt == 1) {
       Matrix.scaleM(this.b, 0, -1.0F, 1.0F, 1.0F);
+    } else if (paramInt == 2) {
+      Matrix.scaleM(this.b, 0, 1.0F, -1.0F, 1.0F);
     }
-    for (;;)
+    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isDevelopLevel())
     {
-      this.jdField_a_of_type_Int = paramInt;
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.i("ExtraRender", 4, "updateMatrix, mirrorFlag[" + paramInt + "]");
-      return;
-      if (paramInt == 2) {
-        Matrix.scaleM(this.b, 0, 1.0F, -1.0F, 1.0F);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateMatrix, mirrorFlag[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.i("ExtraRender", 4, localStringBuilder.toString());
     }
   }
   
@@ -85,7 +89,7 @@ public class ExtraTextureRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.ExtraTextureRender
  * JD-Core Version:    0.7.0.1
  */

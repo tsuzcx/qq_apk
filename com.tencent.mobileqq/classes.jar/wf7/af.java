@@ -33,20 +33,23 @@ public final class af
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bZ != 0) {
-      paramJceOutputStream.write(this.bZ, 0);
+    int i = this.bZ;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.ca != 0) {
-      paramJceOutputStream.write(this.ca, 1);
+    i = this.ca;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.cr != null) {
-      paramJceOutputStream.write(this.cr, 2);
+    ArrayList localArrayList = this.cr;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.af
  * JD-Core Version:    0.7.0.1
  */

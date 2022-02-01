@@ -48,20 +48,25 @@ public class Config
     if (!paramBoolean) {
       return "veryhigh";
     }
-    if ((Build.BRAND.toLowerCase().startsWith("huawei")) || (Build.BRAND.toLowerCase().startsWith("honor"))) {
-      return "and-smallest";
-    }
-    switch (getPhonePrefLevel())
+    if (!Build.BRAND.toLowerCase().startsWith("huawei"))
     {
-    default: 
-      return "and-small";
-    case 1: 
-    case 2: 
-      return "and-smallest";
-    case 3: 
-      return "and-small";
+      if (Build.BRAND.toLowerCase().startsWith("honor")) {
+        return "and-smallest";
+      }
+      int i = getPhonePrefLevel();
+      if ((i != 1) && (i != 2))
+      {
+        if (i != 3)
+        {
+          if ((i != 4) && (i != 5)) {
+            return "and-small";
+          }
+          return "high";
+        }
+        return "and-small";
+      }
     }
-    return "high";
+    return "and-smallest";
   }
   
   private int getPhonePrefLevel()
@@ -111,6 +116,8 @@ public class Config
     }
   }
   
+  public native String getCurrentPerfReportData();
+  
   public LightFaceData getFaceData()
   {
     LightFaceData localLightFaceData = nativeGetFaceData();
@@ -148,6 +155,8 @@ public class Config
   
   public native String nativeGetHandInfo();
   
+  public native int[] nativeGetViewPoint();
+  
   public native void nativeSetFaceData(LightFaceData paramLightFaceData);
   
   public native void onLowMemory();
@@ -184,7 +193,18 @@ public class Config
     long l4 = System.currentTimeMillis();
     nativeSetConfigData(paramMap);
     long l5 = System.currentTimeMillis();
-    Log.i("[performance]", "setConfigData cost time:" + (l5 - l1) + "\n[performance]setConfigData new JSONObject cost time:" + (l2 - l1) + "\n[performance]setConfigData entryset cost time:" + (l3 - l2) + "\n[performance]setConfigData json2string cost time:" + (l4 - l3) + "\n[performance]setConfigData  nativeSetConfigData cost time:" + (l5 - l4));
+    paramMap = new StringBuilder();
+    paramMap.append("setConfigData cost time:");
+    paramMap.append(l5 - l1);
+    paramMap.append("\n[performance]setConfigData new JSONObject cost time:");
+    paramMap.append(l2 - l1);
+    paramMap.append("\n[performance]setConfigData entryset cost time:");
+    paramMap.append(l3 - l2);
+    paramMap.append("\n[performance]setConfigData json2string cost time:");
+    paramMap.append(l4 - l3);
+    paramMap.append("\n[performance]setConfigData  nativeSetConfigData cost time:");
+    paramMap.append(l5 - l4);
+    Log.i("[performance]", paramMap.toString());
   }
   
   public native void setDetectShorterEdgeLength(int paramInt, String paramString);
@@ -202,30 +222,48 @@ public class Config
   
   public void setLightAIModelPath(String paramString1, String paramString2)
   {
-    if ("BG_SEG_AGENT".equals(paramString2)) {}
-    for (String str = aiModelLevelForBgSegAgent(true);; str = aiModelLevelByDefault())
-    {
-      Log.i("config phoneLevel", "LEVEL :" + str);
-      setLightAIModelPath(paramString1, str, paramString2);
-      return;
+    String str;
+    if ("BG_SEG_AGENT".equals(paramString2)) {
+      str = aiModelLevelForBgSegAgent(true);
+    } else {
+      str = aiModelLevelByDefault();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LEVEL :");
+    localStringBuilder.append(str);
+    Log.i("config phoneLevel", localStringBuilder.toString());
+    setLightAIModelPath(paramString1, str, paramString2);
   }
   
   public native void setLightAIModelPath(String paramString1, String paramString2, String paramString3);
+  
+  public native void setLightBenchConfig(String paramString);
+  
+  public native void setLightBenchConfigWithValue(String paramString, float paramFloat);
+  
+  public native void setLightBenchEnable(boolean paramBoolean);
+  
+  public native void setLightBenchEnableWithValue(boolean paramBoolean, float paramFloat);
+  
+  public native void setLightPerformanceGenerateEnable(boolean paramBoolean);
   
   public native void setOnClickWatermarkListener(IOnClickWatermarkListener paramIOnClickWatermarkListener);
   
   public void setOnGetQQNumberEventListener(OnGetQQNumberEventListener paramOnGetQQNumberEventListener) {}
   
+  public native void setPerfEnable(boolean paramBoolean1, boolean paramBoolean2);
+  
   public native void setRenderSize(int paramInt1, int paramInt2);
   
   public native void setSyncMode(boolean paramBoolean);
+  
+  public native void setUseFenceForDetectDrawSync(boolean paramBoolean);
   
   public native void setWatermarkDelegate(String paramString, WatermarkDelegate paramWatermarkDelegate);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.Config
  * JD-Core Version:    0.7.0.1
  */

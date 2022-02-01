@@ -21,12 +21,12 @@ class NewMsgNotificationManager$2
   public void updateDrawState(TextPaint paramTextPaint)
   {
     paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqMessageNewmsgNewMsgNotificationManager.a.getApp().getResources().getColor(2131167041));
+    paramTextPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqMessageNewmsgNewMsgNotificationManager.a.getApp().getResources().getColor(2131167064));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.message.newmsg.NewMsgNotificationManager.2
  * JD-Core Version:    0.7.0.1
  */

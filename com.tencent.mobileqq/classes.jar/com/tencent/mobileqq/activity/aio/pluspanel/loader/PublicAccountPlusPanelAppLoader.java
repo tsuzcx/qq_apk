@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.pluspanel.loader;
 
 import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.C2CPlusPanelAppConfigHelper;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.PublicAccountInfo;
@@ -25,7 +25,7 @@ public class PublicAccountPlusPanelAppLoader
     a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 218);
     if (paramSessionInfo.jdField_a_of_type_Int == 1008)
     {
-      paramSessionInfo = ((PublicAccountDataManager)paramQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER)).b(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      paramSessionInfo = (PublicAccountInfo)((IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all")).findPublicAccountInfo(paramSessionInfo.jdField_a_of_type_JavaLangString);
       if ((paramSessionInfo != null) && ((paramSessionInfo.accountFlag & 0x20000000) != 0) && (ShortVideoUtils.sSupportShortVideo) && (VideoEnvironment.supportShortVideoRecordAndPlay())) {
         a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1104788673);
       }
@@ -62,7 +62,7 @@ public class PublicAccountPlusPanelAppLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.PublicAccountPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ class CreateFaceToFaceDiscussionActivity$7
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0.0F);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
-    paramAnimation = (FrameLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    paramAnimation.setMargins(0, 0, 0, this.a.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight());
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramAnimation);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.mLayoutAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0.0F);
+    this.a.contentLayout.setAnimation(this.a.mLayoutAnimation);
+    paramAnimation = (FrameLayout.LayoutParams)this.a.contentLayout.getLayoutParams();
+    paramAnimation.setMargins(0, 0, 0, this.a.bottomLayout.getHeight());
+    this.a.contentLayout.setLayoutParams(paramAnimation);
+    this.a.mTextviewTip.setVisibility(8);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -28,7 +28,7 @@ class CreateFaceToFaceDiscussionActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.7
  * JD-Core Version:    0.7.0.1
  */

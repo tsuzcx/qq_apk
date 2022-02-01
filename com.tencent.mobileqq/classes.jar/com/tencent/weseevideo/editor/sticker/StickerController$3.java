@@ -19,14 +19,15 @@ class StickerController$3
       while (((Iterator)localObject).hasNext())
       {
         TAVSticker localTAVSticker = (TAVSticker)((Iterator)localObject).next();
-        StickerController.access$200(this.this$0, this.this$0.getStickerContext(), localTAVSticker);
+        StickerController localStickerController = this.this$0;
+        StickerController.access$200(localStickerController, localStickerController.getStickerContext(), localTAVSticker);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.StickerController.3
  * JD-Core Version:    0.7.0.1
  */

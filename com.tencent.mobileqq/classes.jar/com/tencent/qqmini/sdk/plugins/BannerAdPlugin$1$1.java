@@ -75,13 +75,18 @@ class BannerAdPlugin$1$1
   
   public void onNoAD(int paramInt, String paramString)
   {
-    QMLog.i("BannerAdPlugin", "onNoAD, errCode = " + paramInt + ", errMsg = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onNoAD, errCode = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errMsg = ");
+    localStringBuilder.append(paramString);
+    QMLog.i("BannerAdPlugin", localStringBuilder.toString());
     BannerAdPlugin.access$300(this.this$1.this$0, this.this$1.val$req, paramInt, paramString, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.BannerAdPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

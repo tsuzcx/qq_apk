@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class CommentBubble
   extends JceStruct
 {
-  static int cache_eType = 0;
+  static int cache_eType;
   static BubbleSource cache_stSource = new BubbleSource();
   public int eType = 0;
   public int iFrameRate = 0;
@@ -47,28 +47,33 @@ public final class CommentBubble
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strTextColor != null) {
-      paramJceOutputStream.write(this.strTextColor, 1);
+    Object localObject = this.strTextColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.strAndBgUrl != null) {
-      paramJceOutputStream.write(this.strAndBgUrl, 2);
+    localObject = this.strAndBgUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.strIosBgUrl != null) {
-      paramJceOutputStream.write(this.strIosBgUrl, 3);
+    localObject = this.strIosBgUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.eType, 4);
-    if (this.stSource != null) {
-      paramJceOutputStream.write(this.stSource, 5);
+    localObject = this.stSource;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
-    if (this.strFrameZip != null) {
-      paramJceOutputStream.write(this.strFrameZip, 6);
+    localObject = this.strFrameZip;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.iFrameRate, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.CommentBubble
  * JD-Core Version:    0.7.0.1
  */

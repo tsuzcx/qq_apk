@@ -33,37 +33,32 @@ public class FeedCommentDataProvider$GetCommentListResponse
   
   public void a()
   {
-    boolean bool = false;
     Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.comment_list.get();
     ArrayList localArrayList = new ArrayList();
     FeedCommentDataProvider.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.cookie.get().toStringUtf8());
     UserManager localUserManager = (UserManager)SuperManager.a(2);
+    boolean bool = false;
     int i = 0;
-    if (i < ((List)localObject).size())
+    while (i < ((List)localObject).size())
     {
       CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((List)localObject).get(i));
       QQUserUIItem localQQUserUIItem = localUserManager.c(localCommentEntry.authorUnionId);
-      if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable()))
-      {
+      if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
+        localCommentEntry.authorName = localQQUserUIItem.nickName;
+      } else {
         localCommentEntry.authorName = PlayModeUtils.b;
-        label114:
-        if (!TextUtils.isEmpty(localCommentEntry.replyUin))
-        {
-          localQQUserUIItem = localUserManager.c(localCommentEntry.replierUnionId);
-          if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
-            break label187;
-          }
+      }
+      if (!TextUtils.isEmpty(localCommentEntry.replyUin))
+      {
+        localQQUserUIItem = localUserManager.c(localCommentEntry.replierUnionId);
+        if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
+          localCommentEntry.replierName = localQQUserUIItem.nickName;
+        } else {
+          localCommentEntry.replierName = PlayModeUtils.b;
         }
       }
-      label187:
-      for (localCommentEntry.replierName = PlayModeUtils.b;; localCommentEntry.replierName = localQQUserUIItem.nickName)
-      {
-        localArrayList.add(localCommentEntry);
-        i += 1;
-        break;
-        localCommentEntry.authorName = localQQUserUIItem.nickName;
-        break label114;
-      }
+      localArrayList.add(localCommentEntry);
+      i += 1;
     }
     localObject = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider;
     if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetCommentList.is_end.get() == 1) {
@@ -85,14 +80,20 @@ public class FeedCommentDataProvider$GetCommentListResponse
   public void a(int paramInt, String paramString)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentDataProvider.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.d();
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "ReqGetCommentList fails: " + paramInt + "|" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ReqGetCommentList fails: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramString);
+      QLog.e("Q.qqstory:FeedCommentDataProvider", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentDataProvider.GetCommentListResponse
  * JD-Core Version:    0.7.0.1
  */

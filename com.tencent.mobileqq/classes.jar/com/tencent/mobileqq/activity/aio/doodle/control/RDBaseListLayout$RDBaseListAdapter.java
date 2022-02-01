@@ -34,43 +34,41 @@ class RDBaseListLayout$RDBaseListAdapter
   {
     Object localObject2 = RDBaseListLayout.a(this.a).get(paramInt);
     Object localObject1;
-    if (paramView == null) {
+    if (paramView == null)
+    {
       localObject1 = this.a.a(paramInt, localObject2);
     }
-    for (;;)
+    else
     {
-      if (localObject1 == null)
-      {
-        localObject2 = null;
-        localObject1 = paramView;
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-        return localObject2;
-        localObject1 = (RDBaseListLayout.ViewTagData)paramView.getTag();
-        if (localObject1 == null) {
-          break label141;
-        }
+      localObject1 = (RDBaseListLayout.ViewTagData)paramView.getTag();
+      if (localObject1 != null) {
         localObject1 = ((RDBaseListLayout.ViewTagData)localObject1).a;
-        break;
-        this.a.a(paramInt, localObject2, localObject1);
-        localObject2 = ((RDBaseViewHolder)localObject1).a();
-        if (localObject2 != null) {
-          ((View)localObject2).setTag(new RDBaseListLayout.ViewTagData(this.a, paramInt, localObject1));
-        }
-        paramView = (View)localObject2;
-        localObject1 = localObject2;
-        localObject2 = paramView;
+      } else {
+        localObject1 = null;
       }
-      label141:
-      localObject1 = null;
     }
+    if (localObject1 == null)
+    {
+      localObject2 = null;
+      localObject1 = paramView;
+      paramView = localObject2;
+    }
+    else
+    {
+      this.a.a(paramInt, localObject2, localObject1);
+      paramView = ((RDBaseViewHolder)localObject1).a();
+      if (paramView != null) {
+        paramView.setTag(new RDBaseListLayout.ViewTagData(this.a, paramInt, localObject1));
+      }
+      localObject1 = paramView;
+    }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout.RDBaseListAdapter
  * JD-Core Version:    0.7.0.1
  */

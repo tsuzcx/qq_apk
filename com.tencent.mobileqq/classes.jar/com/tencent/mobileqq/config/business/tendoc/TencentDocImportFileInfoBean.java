@@ -17,101 +17,114 @@ public class TencentDocImportFileInfoBean
   
   public static TencentDocImportFileInfoBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    int j = 0;
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      return null;
-    }
-    TencentDocImportFileInfoBean localTencentDocImportFileInfoBean = new TencentDocImportFileInfoBean();
-    try
+    TencentDocImportFileInfoBean localTencentDocImportFileInfoBean;
+    int j;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
-      if (!paramArrayOfQConfItem.has("DocsImportFileInfo")) {
-        break label412;
-      }
-      paramArrayOfQConfItem = paramArrayOfQConfItem.getJSONObject("DocsImportFileInfo");
-      if (paramArrayOfQConfItem.has("importFileMaxSize"))
-      {
-        localObject1 = paramArrayOfQConfItem.getString("importFileMaxSize");
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localTencentDocImportFileInfoBean.jdField_a_of_type_Long = Long.parseLong((String)localObject1);
-        }
-      }
-      if (!paramArrayOfQConfItem.has("importFileType")) {
-        break label245;
-      }
-      localObject1 = paramArrayOfQConfItem.getJSONArray("importFileType");
-      localStringBuilder = new StringBuilder();
-      localObject2 = new StringBuilder();
-      if ((localObject1 == null) || (((JSONArray)localObject1).length() <= 0)) {
-        break label227;
-      }
-      i = 0;
+      localTencentDocImportFileInfoBean = new TencentDocImportFileInfoBean();
+      j = 0;
     }
-    catch (JSONException paramArrayOfQConfItem)
+    for (;;)
     {
-      label412:
-      for (;;)
+      int i;
+      try
       {
-        Object localObject1;
-        StringBuilder localStringBuilder;
-        Object localObject2;
-        int i;
-        JSONObject localJSONObject;
-        label227:
-        label245:
-        if (QLog.isColorLevel())
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        if (paramArrayOfQConfItem.has("DocsImportFileInfo"))
         {
-          QLog.e("TencentDocImportFileInfoBean", 1, "exception = " + paramArrayOfQConfItem.toString());
-          continue;
-          i += 1;
-          continue;
-          i += 1;
-        }
-      }
-    }
-    if (i < ((JSONArray)localObject1).length())
-    {
-      localJSONObject = (JSONObject)((JSONArray)localObject1).get(i);
-      if (localJSONObject.has("suffix"))
-      {
-        localStringBuilder.append(localJSONObject.getString("suffix"));
-        ((StringBuilder)localObject2).append(localJSONObject.getString("suffix"));
-        if (localJSONObject.has("maxSize")) {
-          ((StringBuilder)localObject2).append("_").append(localJSONObject.getString("maxSize")).append("#");
-        }
-      }
-    }
-    else
-    {
-      localTencentDocImportFileInfoBean.b = ((StringBuilder)localObject2).toString();
-      localTencentDocImportFileInfoBean.c = localStringBuilder.toString();
-      if (paramArrayOfQConfItem.has("fileGroupType"))
-      {
-        localObject1 = paramArrayOfQConfItem.getJSONArray("fileGroupType");
-        localStringBuilder = new StringBuilder();
-        if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
-        {
-          i = j;
-          if (i < ((JSONArray)localObject1).length())
+          paramArrayOfQConfItem = paramArrayOfQConfItem.getJSONObject("DocsImportFileInfo");
+          if (paramArrayOfQConfItem.has("importFileMaxSize"))
           {
-            localObject2 = (JSONObject)((JSONArray)localObject1).get(i);
-            if ((!((JSONObject)localObject2).has("group")) || (!((JSONObject)localObject2).has("suffix"))) {
-              break label459;
+            localObject1 = paramArrayOfQConfItem.getString("importFileMaxSize");
+            if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+              localTencentDocImportFileInfoBean.jdField_a_of_type_Long = Long.parseLong((String)localObject1);
             }
-            localStringBuilder.append(((JSONObject)localObject2).getString("group") + "_" + ((JSONObject)localObject2).getString("suffix") + "&");
-            break label459;
+          }
+          boolean bool = paramArrayOfQConfItem.has("importFileType");
+          StringBuilder localStringBuilder;
+          Object localObject2;
+          Object localObject3;
+          if (bool)
+          {
+            localObject1 = paramArrayOfQConfItem.getJSONArray("importFileType");
+            localStringBuilder = new StringBuilder();
+            localObject2 = new StringBuilder();
+            if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+            {
+              i = 0;
+              if (i < ((JSONArray)localObject1).length())
+              {
+                localObject3 = (JSONObject)((JSONArray)localObject1).get(i);
+                if (!((JSONObject)localObject3).has("suffix")) {
+                  break label496;
+                }
+                localStringBuilder.append(((JSONObject)localObject3).getString("suffix"));
+                ((StringBuilder)localObject2).append(((JSONObject)localObject3).getString("suffix"));
+                if (!((JSONObject)localObject3).has("maxSize")) {
+                  break label496;
+                }
+                ((StringBuilder)localObject2).append("_");
+                ((StringBuilder)localObject2).append(((JSONObject)localObject3).getString("maxSize"));
+                ((StringBuilder)localObject2).append("#");
+                break label496;
+              }
+            }
+            localTencentDocImportFileInfoBean.b = ((StringBuilder)localObject2).toString();
+            localTencentDocImportFileInfoBean.c = localStringBuilder.toString();
+          }
+          if (paramArrayOfQConfItem.has("fileGroupType"))
+          {
+            localObject1 = paramArrayOfQConfItem.getJSONArray("fileGroupType");
+            localStringBuilder = new StringBuilder();
+            if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+            {
+              i = j;
+              if (i < ((JSONArray)localObject1).length())
+              {
+                localObject2 = (JSONObject)((JSONArray)localObject1).get(i);
+                if ((!((JSONObject)localObject2).has("group")) || (!((JSONObject)localObject2).has("suffix"))) {
+                  break label503;
+                }
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append(((JSONObject)localObject2).getString("group"));
+                ((StringBuilder)localObject3).append("_");
+                ((StringBuilder)localObject3).append(((JSONObject)localObject2).getString("suffix"));
+                ((StringBuilder)localObject3).append("&");
+                localStringBuilder.append(((StringBuilder)localObject3).toString());
+                break label503;
+              }
+            }
+            localTencentDocImportFileInfoBean.d = localStringBuilder.toString();
+          }
+          if (paramArrayOfQConfItem.has("importFileTips"))
+          {
+            paramArrayOfQConfItem = paramArrayOfQConfItem.getString("importFileTips");
+            if (!TextUtils.isEmpty(paramArrayOfQConfItem))
+            {
+              localTencentDocImportFileInfoBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem;
+              return localTencentDocImportFileInfoBean;
+            }
           }
         }
-        localTencentDocImportFileInfoBean.d = localStringBuilder.toString();
       }
-      if (paramArrayOfQConfItem.has("importFileTips"))
+      catch (JSONException paramArrayOfQConfItem)
       {
-        paramArrayOfQConfItem = paramArrayOfQConfItem.getString("importFileTips");
-        if (!TextUtils.isEmpty(paramArrayOfQConfItem)) {
-          localTencentDocImportFileInfoBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem;
+        Object localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("exception = ");
+          ((StringBuilder)localObject1).append(paramArrayOfQConfItem.toString());
+          QLog.e("TencentDocImportFileInfoBean", 1, ((StringBuilder)localObject1).toString());
         }
       }
       return localTencentDocImportFileInfoBean;
+      return null;
+      label496:
+      i += 1;
+      continue;
+      label503:
+      i += 1;
     }
   }
   
@@ -147,7 +160,7 @@ public class TencentDocImportFileInfoBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocImportFileInfoBean
  * JD-Core Version:    0.7.0.1
  */

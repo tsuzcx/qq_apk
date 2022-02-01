@@ -11,8 +11,16 @@ class QzoneConfig$2$1
   public void run()
   {
     String str = QzoneConfig.getLastUpdate();
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneConfig", 2, "QZoneConfigService onChange from:" + str + " ,processName:" + MobileQQ.processName + " ,selfChange:" + this.val$selfChange);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QZoneConfigService onChange from:");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" ,processName:");
+      localStringBuilder.append(MobileQQ.processName);
+      localStringBuilder.append(" ,selfChange:");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      QLog.d("QzoneConfig", 2, localStringBuilder.toString());
     }
     if ((str != null) && (!str.equals(MobileQQ.processName)))
     {
@@ -20,12 +28,12 @@ class QzoneConfig$2$1
       QzoneConfig.getInstance().loadAllConfigs();
       return;
     }
-    QzoneConfig.access$000(this.this$1.this$0);
+    QzoneConfig.access$000(this.jdField_a_of_type_CommonConfigServiceQzoneConfig$2.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     common.config.service.QzoneConfig.2.1
  * JD-Core Version:    0.7.0.1
  */

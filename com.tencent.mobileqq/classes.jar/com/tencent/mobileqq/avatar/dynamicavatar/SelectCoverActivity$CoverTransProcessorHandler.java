@@ -22,25 +22,28 @@ class SelectCoverActivity$CoverTransProcessorHandler
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     SelectCoverActivity localSelectCoverActivity = (SelectCoverActivity)this.b.get();
-    if ((localQQAppInterface == null) || (localSelectCoverActivity == null)) {
-      return;
-    }
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    switch (paramMessage.what)
+    if (localQQAppInterface != null)
     {
-    case 1004: 
-    default: 
-      return;
-    case 1003: 
+      if (localSelectCoverActivity == null) {
+        return;
+      }
+      FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+      int i = paramMessage.what;
+      if (i != 1003)
+      {
+        if (i != 1005) {
+          return;
+        }
+        SelectCoverActivity.a(localSelectCoverActivity, localFileMsg);
+        return;
+      }
       SelectCoverActivity.a(localQQAppInterface, localSelectCoverActivity, localFileMsg);
-      return;
     }
-    SelectCoverActivity.a(localSelectCoverActivity, localFileMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.CoverTransProcessorHandler
  * JD-Core Version:    0.7.0.1
  */

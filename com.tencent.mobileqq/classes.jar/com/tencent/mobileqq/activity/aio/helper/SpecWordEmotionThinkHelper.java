@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.helper.OnFinishListener;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class SpecWordEmotionThinkHelper
-  implements ILifeCycleHelper
+  implements OnFinishListener, ILifeCycleHelper
 {
   private int jdField_a_of_type_Int = 0;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
@@ -15,14 +16,26 @@ public class SpecWordEmotionThinkHelper
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
+  public int a()
+  {
+    a();
+    return 0;
+  }
+  
   public String a()
   {
-    String str = null;
+    String str;
     if (this.jdField_a_of_type_Int == 1) {
-      str = HardCodeUtil.a(2131714191);
+      str = HardCodeUtil.a(2131714120);
+    } else {
+      str = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " getSpecKeyWord:  mSpecWordType=" + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getSpecKeyWord:  mSpecWordType=");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("SpecWordEmotionThinkHelper", 2, localStringBuilder.toString());
     }
     return str;
   }
@@ -35,15 +48,27 @@ public class SpecWordEmotionThinkHelper
   public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " setSpecWordType:  mSpecWordType=" + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" setSpecWordType:  mSpecWordType=");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("SpecWordEmotionThinkHelper", 2, localStringBuilder.toString());
     }
   }
   
   public void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecWordEmotionThinkHelper", 2, " beforeTextChanged:  start=" + paramInt1 + " after=" + paramInt3 + " count=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      paramCharSequence = new StringBuilder();
+      paramCharSequence.append(" beforeTextChanged:  start=");
+      paramCharSequence.append(paramInt1);
+      paramCharSequence.append(" after=");
+      paramCharSequence.append(paramInt3);
+      paramCharSequence.append(" count=");
+      paramCharSequence.append(paramInt2);
+      QLog.d("SpecWordEmotionThinkHelper", 2, paramCharSequence.toString());
     }
     if ((paramInt2 > paramInt3) || (paramInt3 == 0)) {
       b();
@@ -52,16 +77,29 @@ public class SpecWordEmotionThinkHelper
   
   public boolean a()
   {
+    int i = this.jdField_a_of_type_Int;
     boolean bool = true;
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SpecWordEmotionThinkHelper", 2, " needSendMixMsg:  mSpecWordType=" + this.jdField_a_of_type_Int);
-      }
-      return bool;
+    if (i != 1) {
       bool = false;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" needSendMixMsg:  mSpecWordType=");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("SpecWordEmotionThinkHelper", 2, localStringBuilder.toString());
+    }
+    return bool;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    return false;
   }
   
   public void b()
@@ -72,6 +110,8 @@ public class SpecWordEmotionThinkHelper
     }
   }
   
+  public void d(int paramInt) {}
+  
   public String getTag()
   {
     return "SpecWordEmotionThinkHelper";
@@ -79,14 +119,12 @@ public class SpecWordEmotionThinkHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 14, 19 };
+    return new int[] { 15, 19 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 15) && (paramInt != 19)) {
       return;
     }
     b();
@@ -94,7 +132,7 @@ public class SpecWordEmotionThinkHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.SpecWordEmotionThinkHelper
  * JD-Core Version:    0.7.0.1
  */

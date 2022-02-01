@@ -20,52 +20,49 @@ public final class MultiFormatOneDReader
   public MultiFormatOneDReader(Map<DecodeHintType, ?> paramMap)
   {
     Collection localCollection;
-    if (paramMap == null)
-    {
+    if (paramMap == null) {
       localCollection = null;
-      if ((paramMap == null) || (paramMap.get(DecodeHintType.ASSUME_CODE_39_CHECK_DIGIT) == null)) {
-        break label376;
-      }
+    } else {
+      localCollection = (Collection)paramMap.get(DecodeHintType.POSSIBLE_FORMATS);
     }
-    label376:
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((paramMap != null) && (paramMap.get(DecodeHintType.ASSUME_CODE_39_CHECK_DIGIT) != null)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ArrayList localArrayList = new ArrayList();
+    if (localCollection != null)
     {
-      ArrayList localArrayList = new ArrayList();
-      if (localCollection != null)
-      {
-        if ((localCollection.contains(BarcodeFormat.EAN_13)) || (localCollection.contains(BarcodeFormat.UPC_A)) || (localCollection.contains(BarcodeFormat.EAN_8)) || (localCollection.contains(BarcodeFormat.UPC_E))) {
-          localArrayList.add(new MultiFormatUPCEANReader(paramMap));
-        }
-        if (localCollection.contains(BarcodeFormat.CODE_39)) {
-          localArrayList.add(new Code39Reader(bool));
-        }
-        if (localCollection.contains(BarcodeFormat.CODE_93)) {
-          localArrayList.add(new Code93Reader());
-        }
-        if (localCollection.contains(BarcodeFormat.CODE_128)) {
-          localArrayList.add(new Code128Reader());
-        }
-        if (localCollection.contains(BarcodeFormat.ITF)) {
-          localArrayList.add(new ITFReader());
-        }
-        if (localCollection.contains(BarcodeFormat.CODABAR)) {
-          localArrayList.add(new CodaBarReader());
-        }
-      }
-      if (localArrayList.isEmpty())
-      {
+      if ((localCollection.contains(BarcodeFormat.EAN_13)) || (localCollection.contains(BarcodeFormat.UPC_A)) || (localCollection.contains(BarcodeFormat.EAN_8)) || (localCollection.contains(BarcodeFormat.UPC_E))) {
         localArrayList.add(new MultiFormatUPCEANReader(paramMap));
-        localArrayList.add(new Code39Reader());
-        localArrayList.add(new CodaBarReader());
+      }
+      if (localCollection.contains(BarcodeFormat.CODE_39)) {
+        localArrayList.add(new Code39Reader(bool));
+      }
+      if (localCollection.contains(BarcodeFormat.CODE_93)) {
         localArrayList.add(new Code93Reader());
+      }
+      if (localCollection.contains(BarcodeFormat.CODE_128)) {
         localArrayList.add(new Code128Reader());
+      }
+      if (localCollection.contains(BarcodeFormat.ITF)) {
         localArrayList.add(new ITFReader());
       }
-      this.readers = ((OneDReader[])localArrayList.toArray(EMPTY_ONED_ARRAY));
-      return;
-      localCollection = (Collection)paramMap.get(DecodeHintType.POSSIBLE_FORMATS);
-      break;
+      if (localCollection.contains(BarcodeFormat.CODABAR)) {
+        localArrayList.add(new CodaBarReader());
+      }
     }
+    if (localArrayList.isEmpty())
+    {
+      localArrayList.add(new MultiFormatUPCEANReader(paramMap));
+      localArrayList.add(new Code39Reader());
+      localArrayList.add(new CodaBarReader());
+      localArrayList.add(new Code93Reader());
+      localArrayList.add(new Code128Reader());
+      localArrayList.add(new ITFReader());
+    }
+    this.readers = ((OneDReader[])localArrayList.toArray(EMPTY_ONED_ARRAY));
   }
   
   public Result decodeRow(int paramInt, BitArray paramBitArray, Map<DecodeHintType, ?> paramMap)
@@ -83,10 +80,16 @@ public final class MultiFormatOneDReader
       }
       catch (ReaderException localReaderException)
       {
-        i += 1;
+        label41:
+        break label41;
       }
+      i += 1;
     }
-    throw NotFoundException.getNotFoundInstance();
+    paramBitArray = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramBitArray;
+    }
   }
   
   public void reset()
@@ -103,7 +106,7 @@ public final class MultiFormatOneDReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.MultiFormatOneDReader
  * JD-Core Version:    0.7.0.1
  */

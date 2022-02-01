@@ -1,28 +1,31 @@
 package com.tencent.mobileqq.vas.qvip.util;
 
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class QQVipHelper$1$1
   implements Runnable
 {
-  QQVipHelper$1$1(QQVipHelper.1 param1, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
+  QQVipHelper$1$1(QQVipHelper.1 param1, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    AccountDetail localAccountDetail = new AccountDetail(this.a);
-    EntityManager localEntityManager = this.this$0.a.getEntityManagerFactory(this.this$0.a.getAccount()).createEntityManager();
-    if (localEntityManager != null) {
-      localEntityManager.persistOrReplace(localAccountDetail);
+    IPublicAccountDetail localIPublicAccountDetail = (IPublicAccountDetail)QRoute.api(IPublicAccountDetail.class);
+    localIPublicAccountDetail.init(this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject = ((QQAppInterface)localObject).getEntityManagerFactory(((QQAppInterface)localObject).getAccount()).createEntityManager();
+    if (localObject != null) {
+      ((EntityManager)localObject).persistOrReplace(localIPublicAccountDetail.getEntity());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.util.QQVipHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

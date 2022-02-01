@@ -51,20 +51,41 @@ public class TypefaceCompatUtil
     }
   }
   
+  /* Error */
   public static boolean copyToFile(File paramFile, Resources paramResources, int paramInt)
   {
-    Resources localResources = null;
-    try
-    {
-      paramResources = paramResources.openRawResource(paramInt);
-      localResources = paramResources;
-      boolean bool = copyToFile(paramFile, paramResources);
-      return bool;
-    }
-    finally
-    {
-      closeQuietly(localResources);
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: iload_2
+    //   2: invokevirtual 59	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   5: astore_1
+    //   6: aload_0
+    //   7: aload_1
+    //   8: invokestatic 62	androidx/core/graphics/TypefaceCompatUtil:copyToFile	(Ljava/io/File;Ljava/io/InputStream;)Z
+    //   11: istore_3
+    //   12: aload_1
+    //   13: invokestatic 64	androidx/core/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   16: iload_3
+    //   17: ireturn
+    //   18: astore_0
+    //   19: goto +6 -> 25
+    //   22: astore_0
+    //   23: aconst_null
+    //   24: astore_1
+    //   25: aload_1
+    //   26: invokestatic 64	androidx/core/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   29: aload_0
+    //   30: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	31	0	paramFile	File
+    //   0	31	1	paramResources	Resources
+    //   0	31	2	paramInt	int
+    //   11	6	3	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   6	12	18	finally
+    //   0	6	22	finally
   }
   
   /* Error */
@@ -72,129 +93,152 @@ public class TypefaceCompatUtil
   {
     // Byte code:
     //   0: invokestatic 70	android/os/StrictMode:allowThreadDiskWrites	()Landroid/os/StrictMode$ThreadPolicy;
-    //   3: astore 4
-    //   5: new 72	java/io/FileOutputStream
-    //   8: dup
-    //   9: aload_0
-    //   10: iconst_0
-    //   11: invokespecial 75	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   14: astore_3
-    //   15: aload_3
-    //   16: astore_0
-    //   17: sipush 1024
-    //   20: newarray byte
-    //   22: astore 5
-    //   24: aload_3
-    //   25: astore_0
+    //   3: astore 5
+    //   5: aconst_null
+    //   6: astore 4
+    //   8: aconst_null
+    //   9: astore_3
+    //   10: new 72	java/io/FileOutputStream
+    //   13: dup
+    //   14: aload_0
+    //   15: iconst_0
+    //   16: invokespecial 75	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   19: astore_0
+    //   20: sipush 1024
+    //   23: newarray byte
+    //   25: astore_3
     //   26: aload_1
-    //   27: aload 5
-    //   29: invokevirtual 81	java/io/InputStream:read	([B)I
-    //   32: istore_2
-    //   33: iload_2
-    //   34: iconst_m1
-    //   35: if_icmpeq +62 -> 97
+    //   27: aload_3
+    //   28: invokevirtual 81	java/io/InputStream:read	([B)I
+    //   31: istore_2
+    //   32: iload_2
+    //   33: iconst_m1
+    //   34: if_icmpeq +13 -> 47
+    //   37: aload_0
     //   38: aload_3
-    //   39: astore_0
-    //   40: aload_3
-    //   41: aload 5
-    //   43: iconst_0
-    //   44: iload_2
-    //   45: invokevirtual 85	java/io/FileOutputStream:write	([BII)V
-    //   48: goto -24 -> 24
-    //   51: astore_0
-    //   52: aload_3
-    //   53: astore_1
-    //   54: aload_0
-    //   55: astore_3
-    //   56: aload_1
-    //   57: astore_0
-    //   58: ldc 15
-    //   60: new 87	java/lang/StringBuilder
-    //   63: dup
-    //   64: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   67: ldc 90
-    //   69: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: aload_3
-    //   73: invokevirtual 98	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   76: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 107	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   85: pop
-    //   86: aload_1
-    //   87: invokestatic 64	androidx/core/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
-    //   90: aload 4
-    //   92: invokestatic 111	android/os/StrictMode:setThreadPolicy	(Landroid/os/StrictMode$ThreadPolicy;)V
-    //   95: iconst_0
-    //   96: ireturn
-    //   97: aload_3
-    //   98: invokestatic 64	androidx/core/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   39: iconst_0
+    //   40: iload_2
+    //   41: invokevirtual 85	java/io/FileOutputStream:write	([BII)V
+    //   44: goto -18 -> 26
+    //   47: aload_0
+    //   48: invokestatic 64	androidx/core/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   51: aload 5
+    //   53: invokestatic 89	android/os/StrictMode:setThreadPolicy	(Landroid/os/StrictMode$ThreadPolicy;)V
+    //   56: iconst_1
+    //   57: ireturn
+    //   58: astore_1
+    //   59: aload_0
+    //   60: astore_3
+    //   61: aload_1
+    //   62: astore_0
+    //   63: goto +72 -> 135
+    //   66: astore_1
+    //   67: goto +11 -> 78
+    //   70: astore_0
+    //   71: goto +64 -> 135
+    //   74: astore_1
+    //   75: aload 4
+    //   77: astore_0
+    //   78: aload_0
+    //   79: astore_3
+    //   80: new 91	java/lang/StringBuilder
+    //   83: dup
+    //   84: invokespecial 92	java/lang/StringBuilder:<init>	()V
+    //   87: astore 4
+    //   89: aload_0
+    //   90: astore_3
+    //   91: aload 4
+    //   93: ldc 94
+    //   95: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: pop
+    //   99: aload_0
+    //   100: astore_3
     //   101: aload 4
-    //   103: invokestatic 111	android/os/StrictMode:setThreadPolicy	(Landroid/os/StrictMode$ThreadPolicy;)V
-    //   106: iconst_1
-    //   107: ireturn
-    //   108: astore_1
-    //   109: aconst_null
-    //   110: astore_0
+    //   103: aload_1
+    //   104: invokevirtual 102	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   107: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: pop
     //   111: aload_0
-    //   112: invokestatic 64	androidx/core/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   112: astore_3
+    //   113: ldc 15
     //   115: aload 4
-    //   117: invokestatic 111	android/os/StrictMode:setThreadPolicy	(Landroid/os/StrictMode$ThreadPolicy;)V
-    //   120: aload_1
-    //   121: athrow
-    //   122: astore_1
-    //   123: goto -12 -> 111
-    //   126: astore_3
-    //   127: aconst_null
-    //   128: astore_1
-    //   129: goto -73 -> 56
+    //   117: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokestatic 111	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   123: pop
+    //   124: aload_0
+    //   125: invokestatic 64	androidx/core/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   128: aload 5
+    //   130: invokestatic 89	android/os/StrictMode:setThreadPolicy	(Landroid/os/StrictMode$ThreadPolicy;)V
+    //   133: iconst_0
+    //   134: ireturn
+    //   135: aload_3
+    //   136: invokestatic 64	androidx/core/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   139: aload 5
+    //   141: invokestatic 89	android/os/StrictMode:setThreadPolicy	(Landroid/os/StrictMode$ThreadPolicy;)V
+    //   144: goto +5 -> 149
+    //   147: aload_0
+    //   148: athrow
+    //   149: goto -2 -> 147
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	132	0	paramFile	File
-    //   0	132	1	paramInputStream	java.io.InputStream
-    //   32	13	2	i	int
-    //   14	84	3	localObject	Object
-    //   126	1	3	localIOException	IOException
-    //   3	113	4	localThreadPolicy	android.os.StrictMode.ThreadPolicy
-    //   22	20	5	arrayOfByte	byte[]
+    //   0	152	0	paramFile	File
+    //   0	152	1	paramInputStream	java.io.InputStream
+    //   31	10	2	i	int
+    //   9	127	3	localObject	Object
+    //   6	110	4	localStringBuilder	StringBuilder
+    //   3	137	5	localThreadPolicy	android.os.StrictMode.ThreadPolicy
     // Exception table:
     //   from	to	target	type
-    //   17	24	51	java/io/IOException
-    //   26	33	51	java/io/IOException
-    //   40	48	51	java/io/IOException
-    //   5	15	108	finally
-    //   17	24	122	finally
-    //   26	33	122	finally
-    //   40	48	122	finally
-    //   58	86	122	finally
-    //   5	15	126	java/io/IOException
+    //   20	26	58	finally
+    //   26	32	58	finally
+    //   37	44	58	finally
+    //   20	26	66	java/io/IOException
+    //   26	32	66	java/io/IOException
+    //   37	44	66	java/io/IOException
+    //   10	20	70	finally
+    //   80	89	70	finally
+    //   91	99	70	finally
+    //   101	111	70	finally
+    //   113	124	70	finally
+    //   10	20	74	java/io/IOException
   }
   
   @Nullable
   public static File getTempFile(Context paramContext)
   {
     paramContext = paramContext.getCacheDir();
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return null;
-      String str = ".font" + Process.myPid() + "-" + Process.myTid() + "-";
-      int i = 0;
-      while (i < 100)
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(".font");
+    ((StringBuilder)localObject1).append(Process.myPid());
+    ((StringBuilder)localObject1).append("-");
+    ((StringBuilder)localObject1).append(Process.myTid());
+    ((StringBuilder)localObject1).append("-");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    int i = 0;
+    while (i < 100)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(i);
+      localObject2 = new File(paramContext, ((StringBuilder)localObject2).toString());
+      try
       {
-        File localFile = new File(paramContext, str + i);
-        try
-        {
-          boolean bool = localFile.createNewFile();
-          if (bool) {
-            return localFile;
-          }
-        }
-        catch (IOException localIOException)
-        {
-          i += 1;
+        boolean bool = ((File)localObject2).createNewFile();
+        if (bool) {
+          return localObject2;
         }
       }
+      catch (IOException localIOException)
+      {
+        label120:
+        break label120;
+      }
+      i += 1;
     }
+    return null;
   }
   
   /* Error */
@@ -211,173 +255,84 @@ public class TypefaceCompatUtil
     //   7: ldc 146
     //   9: aload_1
     //   10: invokevirtual 152	android/content/ContentResolver:openFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/os/ParcelFileDescriptor;
-    //   13: astore_2
-    //   14: aload_2
-    //   15: ifnonnull +35 -> 50
-    //   18: aload_2
-    //   19: ifnull +11 -> 30
-    //   22: iconst_0
-    //   23: ifeq +20 -> 43
-    //   26: aload_2
-    //   27: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
-    //   30: aconst_null
-    //   31: astore_1
-    //   32: aload_1
-    //   33: areturn
-    //   34: astore_0
-    //   35: new 157	java/lang/NullPointerException
-    //   38: dup
-    //   39: invokespecial 158	java/lang/NullPointerException:<init>	()V
-    //   42: athrow
-    //   43: aload_2
-    //   44: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
-    //   47: goto -17 -> 30
-    //   50: new 160	java/io/FileInputStream
-    //   53: dup
-    //   54: aload_2
-    //   55: invokevirtual 164	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   58: invokespecial 167	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
-    //   61: astore 5
-    //   63: aload 5
-    //   65: invokevirtual 171	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   68: astore_0
-    //   69: aload_0
-    //   70: invokevirtual 177	java/nio/channels/FileChannel:size	()J
-    //   73: lstore_3
-    //   74: aload_0
-    //   75: getstatic 183	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
-    //   78: lconst_0
-    //   79: lload_3
-    //   80: invokevirtual 187	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   83: astore_0
-    //   84: aload 5
-    //   86: ifnull +12 -> 98
-    //   89: iconst_0
-    //   90: ifeq +60 -> 150
-    //   93: aload 5
-    //   95: invokevirtual 188	java/io/FileInputStream:close	()V
-    //   98: aload_0
-    //   99: astore_1
-    //   100: aload_2
-    //   101: ifnull -69 -> 32
-    //   104: iconst_0
-    //   105: ifeq +59 -> 164
-    //   108: aload_2
-    //   109: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
-    //   112: aload_0
-    //   113: areturn
-    //   114: astore_0
-    //   115: new 157	java/lang/NullPointerException
-    //   118: dup
-    //   119: invokespecial 158	java/lang/NullPointerException:<init>	()V
-    //   122: athrow
-    //   123: astore_0
-    //   124: new 157	java/lang/NullPointerException
-    //   127: dup
-    //   128: invokespecial 158	java/lang/NullPointerException:<init>	()V
-    //   131: athrow
-    //   132: astore_1
-    //   133: aload_1
-    //   134: athrow
-    //   135: astore_0
-    //   136: aload_2
-    //   137: ifnull +11 -> 148
-    //   140: aload_1
-    //   141: ifnull +77 -> 218
-    //   144: aload_2
-    //   145: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
-    //   148: aload_0
-    //   149: athrow
-    //   150: aload 5
-    //   152: invokevirtual 188	java/io/FileInputStream:close	()V
-    //   155: goto -57 -> 98
-    //   158: astore_0
-    //   159: aconst_null
-    //   160: astore_1
-    //   161: goto -25 -> 136
-    //   164: aload_2
-    //   165: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
-    //   168: aload_0
-    //   169: areturn
-    //   170: astore_1
-    //   171: aload_1
-    //   172: athrow
-    //   173: astore_0
-    //   174: aload 5
-    //   176: ifnull +12 -> 188
-    //   179: aload_1
-    //   180: ifnull +21 -> 201
-    //   183: aload 5
-    //   185: invokevirtual 188	java/io/FileInputStream:close	()V
-    //   188: aload_0
-    //   189: athrow
-    //   190: astore 5
-    //   192: aload_1
-    //   193: aload 5
-    //   195: invokevirtual 192	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   198: goto -10 -> 188
-    //   201: aload 5
-    //   203: invokevirtual 188	java/io/FileInputStream:close	()V
-    //   206: goto -18 -> 188
-    //   209: astore_2
-    //   210: aload_1
-    //   211: aload_2
-    //   212: invokevirtual 192	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   215: goto -67 -> 148
-    //   218: aload_2
-    //   219: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
-    //   222: goto -74 -> 148
-    //   225: astore_0
-    //   226: aconst_null
-    //   227: astore_1
-    //   228: goto -54 -> 174
-    //   231: astore_0
-    //   232: aconst_null
-    //   233: areturn
+    //   13: astore_0
+    //   14: aload_0
+    //   15: ifnonnull +13 -> 28
+    //   18: aload_0
+    //   19: ifnull +7 -> 26
+    //   22: aload_0
+    //   23: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
+    //   26: aconst_null
+    //   27: areturn
+    //   28: new 157	java/io/FileInputStream
+    //   31: dup
+    //   32: aload_0
+    //   33: invokevirtual 161	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   36: invokespecial 164	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   39: astore_1
+    //   40: aload_1
+    //   41: invokevirtual 168	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   44: astore_2
+    //   45: aload_2
+    //   46: invokevirtual 174	java/nio/channels/FileChannel:size	()J
+    //   49: lstore_3
+    //   50: aload_2
+    //   51: getstatic 180	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
+    //   54: lconst_0
+    //   55: lload_3
+    //   56: invokevirtual 184	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
+    //   59: astore_2
+    //   60: aload_1
+    //   61: invokevirtual 185	java/io/FileInputStream:close	()V
+    //   64: aload_0
+    //   65: ifnull +7 -> 72
+    //   68: aload_0
+    //   69: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
+    //   72: aload_2
+    //   73: areturn
+    //   74: astore_2
+    //   75: aload_1
+    //   76: invokevirtual 185	java/io/FileInputStream:close	()V
+    //   79: aload_2
+    //   80: athrow
+    //   81: astore_1
+    //   82: aload_0
+    //   83: ifnull +7 -> 90
+    //   86: aload_0
+    //   87: invokevirtual 155	android/os/ParcelFileDescriptor:close	()V
+    //   90: aload_1
+    //   91: athrow
+    //   92: astore_0
+    //   93: aconst_null
+    //   94: areturn
+    //   95: astore_1
+    //   96: goto -17 -> 79
+    //   99: astore_0
+    //   100: goto -10 -> 90
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	234	0	paramContext	Context
-    //   0	234	1	paramCancellationSignal	android.os.CancellationSignal
-    //   0	234	2	paramUri	android.net.Uri
-    //   73	7	3	l	long
-    //   61	123	5	localFileInputStream	java.io.FileInputStream
-    //   190	12	5	localThrowable	java.lang.Throwable
+    //   0	103	0	paramContext	Context
+    //   0	103	1	paramCancellationSignal	android.os.CancellationSignal
+    //   0	103	2	paramUri	android.net.Uri
+    //   49	7	3	l	long
     // Exception table:
     //   from	to	target	type
-    //   26	30	34	java/lang/Throwable
-    //   108	112	114	java/lang/Throwable
-    //   93	98	123	java/lang/Throwable
-    //   50	63	132	java/lang/Throwable
-    //   124	132	132	java/lang/Throwable
-    //   150	155	132	java/lang/Throwable
-    //   188	190	132	java/lang/Throwable
-    //   192	198	132	java/lang/Throwable
-    //   201	206	132	java/lang/Throwable
-    //   133	135	135	finally
-    //   50	63	158	finally
-    //   93	98	158	finally
-    //   124	132	158	finally
-    //   150	155	158	finally
-    //   183	188	158	finally
-    //   188	190	158	finally
-    //   192	198	158	finally
-    //   201	206	158	finally
-    //   63	84	170	java/lang/Throwable
-    //   171	173	173	finally
-    //   183	188	190	java/lang/Throwable
-    //   144	148	209	java/lang/Throwable
-    //   63	84	225	finally
-    //   5	14	231	java/io/IOException
-    //   26	30	231	java/io/IOException
-    //   35	43	231	java/io/IOException
-    //   43	47	231	java/io/IOException
-    //   108	112	231	java/io/IOException
-    //   115	123	231	java/io/IOException
-    //   144	148	231	java/io/IOException
-    //   148	150	231	java/io/IOException
-    //   164	168	231	java/io/IOException
-    //   210	215	231	java/io/IOException
-    //   218	222	231	java/io/IOException
+    //   40	60	74	java/lang/Throwable
+    //   28	40	81	java/lang/Throwable
+    //   60	64	81	java/lang/Throwable
+    //   79	81	81	java/lang/Throwable
+    //   5	14	92	java/io/IOException
+    //   22	26	92	java/io/IOException
+    //   28	40	92	java/io/IOException
+    //   40	60	92	java/io/IOException
+    //   60	64	92	java/io/IOException
+    //   68	72	92	java/io/IOException
+    //   75	79	92	java/io/IOException
+    //   79	81	92	java/io/IOException
+    //   86	90	92	java/io/IOException
+    //   90	92	92	java/io/IOException
+    //   75	79	95	java/lang/Throwable
+    //   86	90	99	java/lang/Throwable
   }
   
   /* Error */
@@ -386,95 +341,58 @@ public class TypefaceCompatUtil
   private static ByteBuffer mmap(File paramFile)
   {
     // Byte code:
-    //   0: new 160	java/io/FileInputStream
+    //   0: new 157	java/io/FileInputStream
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 195	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   8: astore 4
-    //   10: aload 4
-    //   12: invokevirtual 171	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   15: astore_0
-    //   16: aload_0
-    //   17: invokevirtual 177	java/nio/channels/FileChannel:size	()J
-    //   20: lstore_1
-    //   21: aload_0
-    //   22: getstatic 183	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
-    //   25: lconst_0
-    //   26: lload_1
-    //   27: invokevirtual 187	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   30: astore_0
-    //   31: aload 4
-    //   33: ifnull +12 -> 45
-    //   36: iconst_0
-    //   37: ifeq +19 -> 56
-    //   40: aload 4
-    //   42: invokevirtual 188	java/io/FileInputStream:close	()V
-    //   45: aload_0
-    //   46: areturn
-    //   47: astore_0
-    //   48: new 157	java/lang/NullPointerException
-    //   51: dup
-    //   52: invokespecial 158	java/lang/NullPointerException:<init>	()V
-    //   55: athrow
-    //   56: aload 4
-    //   58: invokevirtual 188	java/io/FileInputStream:close	()V
-    //   61: aload_0
-    //   62: areturn
-    //   63: astore_3
-    //   64: aload_3
-    //   65: athrow
-    //   66: astore_0
-    //   67: aload 4
-    //   69: ifnull +12 -> 81
-    //   72: aload_3
-    //   73: ifnull +21 -> 94
-    //   76: aload 4
-    //   78: invokevirtual 188	java/io/FileInputStream:close	()V
-    //   81: aload_0
-    //   82: athrow
-    //   83: astore 4
-    //   85: aload_3
-    //   86: aload 4
-    //   88: invokevirtual 192	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   91: goto -10 -> 81
-    //   94: aload 4
-    //   96: invokevirtual 188	java/io/FileInputStream:close	()V
-    //   99: goto -18 -> 81
-    //   102: astore_0
-    //   103: aconst_null
-    //   104: astore_3
-    //   105: goto -38 -> 67
-    //   108: astore_0
-    //   109: aconst_null
-    //   110: areturn
+    //   5: invokespecial 188	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   8: astore_0
+    //   9: aload_0
+    //   10: invokevirtual 168	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   13: astore_3
+    //   14: aload_3
+    //   15: invokevirtual 174	java/nio/channels/FileChannel:size	()J
+    //   18: lstore_1
+    //   19: aload_3
+    //   20: getstatic 180	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
+    //   23: lconst_0
+    //   24: lload_1
+    //   25: invokevirtual 184	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
+    //   28: astore_3
+    //   29: aload_0
+    //   30: invokevirtual 185	java/io/FileInputStream:close	()V
+    //   33: aload_3
+    //   34: areturn
+    //   35: astore_3
+    //   36: aload_0
+    //   37: invokevirtual 185	java/io/FileInputStream:close	()V
+    //   40: aload_3
+    //   41: athrow
+    //   42: aconst_null
+    //   43: areturn
+    //   44: astore_0
+    //   45: goto -3 -> 42
+    //   48: astore_0
+    //   49: goto -9 -> 40
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	111	0	paramFile	File
-    //   20	7	1	l	long
-    //   63	23	3	localThrowable1	java.lang.Throwable
-    //   104	1	3	localObject	Object
-    //   8	69	4	localFileInputStream	java.io.FileInputStream
-    //   83	12	4	localThrowable2	java.lang.Throwable
+    //   0	52	0	paramFile	File
+    //   18	7	1	l	long
+    //   13	21	3	localObject	Object
+    //   35	6	3	localThrowable	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   40	45	47	java/lang/Throwable
-    //   10	31	63	java/lang/Throwable
-    //   64	66	66	finally
-    //   76	81	83	java/lang/Throwable
-    //   10	31	102	finally
-    //   0	10	108	java/io/IOException
-    //   40	45	108	java/io/IOException
-    //   48	56	108	java/io/IOException
-    //   56	61	108	java/io/IOException
-    //   76	81	108	java/io/IOException
-    //   81	83	108	java/io/IOException
-    //   85	91	108	java/io/IOException
-    //   94	99	108	java/io/IOException
+    //   9	29	35	java/lang/Throwable
+    //   0	9	44	java/io/IOException
+    //   9	29	44	java/io/IOException
+    //   29	33	44	java/io/IOException
+    //   36	40	44	java/io/IOException
+    //   40	42	44	java/io/IOException
+    //   36	40	48	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.graphics.TypefaceCompatUtil
  * JD-Core Version:    0.7.0.1
  */

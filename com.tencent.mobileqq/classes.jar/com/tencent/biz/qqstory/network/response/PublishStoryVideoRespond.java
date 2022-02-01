@@ -48,12 +48,31 @@ public class PublishStoryVideoRespond
   
   public String toString()
   {
-    return "PublishStoryVideoRespond{createTime=" + this.jdField_a_of_type_Long + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", storyId='" + this.d + '\'' + ", videoIndex=" + this.b + ", vid=" + this.e + ", addShareGroupFeeds=" + this.jdField_a_of_type_JavaUtilList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PublishStoryVideoRespond{createTime=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", feedId='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", date='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", storyId='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoIndex=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", vid=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", addShareGroupFeeds=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.PublishStoryVideoRespond
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,13 @@ class OpenDataCommonJsPlugin$15
   public void onCancel(DialogInterface paramDialogInterface)
   {
     QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE share cancel");
-    OpenDataCommonJsPlugin.access$1000(this.a, OpenDataCommonJsPlugin.access$1200(this.a), "share_modifyFriendInteractiveStorage", "fail", 2, "cancel");
+    paramDialogInterface = this.a;
+    OpenDataCommonJsPlugin.access$1000(paramDialogInterface, OpenDataCommonJsPlugin.access$1200(paramDialogInterface), "share_modifyFriendInteractiveStorage", "fail", 2, "cancel");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.15
  * JD-Core Version:    0.7.0.1
  */

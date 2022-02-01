@@ -19,11 +19,14 @@ final class AttribPool$1
     int i = 0;
     while (i < paramAttribPool.jdField_a_of_type_Int)
     {
-      Pair localPair = (Pair)paramAttribPool.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i);
+      Object localObject = (Pair)paramAttribPool.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(i);
       JsonArray localJsonArray = new JsonArray();
-      localJsonArray.add((String)localPair.first);
-      localJsonArray.add((String)localPair.second);
-      paramJsonSerializationContext.add(i + "", localJsonArray);
+      localJsonArray.add((String)((Pair)localObject).first);
+      localJsonArray.add((String)((Pair)localObject).second);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("");
+      paramJsonSerializationContext.add(((StringBuilder)localObject).toString(), localJsonArray);
       i += 1;
     }
     paramType.add("numToAttrib", paramJsonSerializationContext);
@@ -33,7 +36,7 @@ final class AttribPool$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.AttribPool.1
  * JD-Core Version:    0.7.0.1
  */

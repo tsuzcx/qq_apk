@@ -21,6 +21,7 @@ import com.tencent.mobileqq.intervideo.lite_now_biz.services.VoiceRoomServiceBui
 import com.tencent.mobileqq.litelivesdk.LiteLiveSDKFactory;
 import com.tencent.mobileqq.litelivesdk.api.ILiveSDK;
 import com.tencent.mobileqq.litelivesdk.api.business.BusinessConfig;
+import java.util.List;
 import java.util.Map;
 
 public class NowLiteStrategy
@@ -51,6 +52,8 @@ public class NowLiteStrategy
     localBusinessConfig.c = 0;
     localBusinessConfig.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     localBusinessConfig.jdField_d_of_type_JavaLangString = paramBundle.getString("fromid");
+    localBusinessConfig.jdField_a_of_type_JavaUtilList.clear();
+    localBusinessConfig.jdField_a_of_type_JavaUtilList.add("https://now.qq.com/");
     return localBusinessConfig;
   }
   
@@ -88,24 +91,21 @@ public class NowLiteStrategy
       LiteLiveSDKFactory.a().a(paramBundle, RoomSwitchInterface.class, NowSwitchRoomBuilder.class);
       LiteLiveSDKFactory.a().a(paramBundle, HostProxyInterface.class, NowHostProxyBuilder.class);
     }
-    for (;;)
+    else if ("od".equals(paramBundle))
     {
-      return true;
-      if ("od".equals(paramBundle))
-      {
-        LiteLiveSDKFactory.a().a(paramBundle, 7, ODRoomModules.class);
-        LiteLiveSDKFactory.a().a(paramBundle, RoomSwitchInterface.class, ODSwitchRoomBuilder.class);
-        LiteLiveSDKFactory.a().a(paramBundle, HostProxyInterface.class, NowHostProxyBuilder.class);
-        LiteLiveSDKFactory.a().a(paramBundle, RoomServiceInterface.class, VoiceRoomServiceBuilder.class);
-      }
-      else if ("multi_voice".equals(paramBundle))
-      {
-        LiteLiveSDKFactory.a().a(paramBundle, 7, MultiVoiceRoomModules.class);
-        LiteLiveSDKFactory.a().a(paramBundle, RoomSwitchInterface.class, ODSwitchRoomBuilder.class);
-        LiteLiveSDKFactory.a().a(paramBundle, HostProxyInterface.class, NowHostProxyBuilder.class);
-        LiteLiveSDKFactory.a().a(paramBundle, RoomServiceInterface.class, VoiceRoomServiceBuilder.class);
-      }
+      LiteLiveSDKFactory.a().a(paramBundle, 7, ODRoomModules.class);
+      LiteLiveSDKFactory.a().a(paramBundle, RoomSwitchInterface.class, ODSwitchRoomBuilder.class);
+      LiteLiveSDKFactory.a().a(paramBundle, HostProxyInterface.class, NowHostProxyBuilder.class);
+      LiteLiveSDKFactory.a().a(paramBundle, RoomServiceInterface.class, VoiceRoomServiceBuilder.class);
     }
+    else if ("multi_voice".equals(paramBundle))
+    {
+      LiteLiveSDKFactory.a().a(paramBundle, 7, MultiVoiceRoomModules.class);
+      LiteLiveSDKFactory.a().a(paramBundle, RoomSwitchInterface.class, ODSwitchRoomBuilder.class);
+      LiteLiveSDKFactory.a().a(paramBundle, HostProxyInterface.class, NowHostProxyBuilder.class);
+      LiteLiveSDKFactory.a().a(paramBundle, RoomServiceInterface.class, VoiceRoomServiceBuilder.class);
+    }
+    return true;
   }
   
   public boolean a(String paramString)
@@ -120,7 +120,7 @@ public class NowLiteStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.strategy.NowLiteStrategy
  * JD-Core Version:    0.7.0.1
  */

@@ -37,41 +37,41 @@ public class QQStoryVideoPlayerErrorView
     if (paramInt == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTipsText(StoryApi.a(2131699790));
-      setTipsIcon(2130846764);
+      setTipsText(StoryApi.a(2131699931));
+      setTipsIcon(2130846644);
       setTipsTextSize(16.0F);
-    }
-    do
-    {
       return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        setTipsText(HardCodeUtil.a(2131711065));
-        setTipsIcon(2130846922);
-        setTipsTextSize(14.0F);
-        return;
-      }
-    } while (paramInt != 2);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      setTipsText(HardCodeUtil.a(2131711041));
+      setTipsIcon(2130846800);
+      setTipsTextSize(14.0F);
+      return;
+    }
+    if (paramInt == 2) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
   }
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561990, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131379394));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131369611));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561826, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378745));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131369319));
   }
   
   public void setCloseViewVisibility(boolean paramBoolean)
   {
     ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localImageView.setVisibility(i);
   }
   
   public void setOnCloseClickListener(View.OnClickListener paramOnClickListener)
@@ -94,8 +94,10 @@ public class QQStoryVideoPlayerErrorView
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      SLog.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
+      label21:
+      break label21;
     }
+    SLog.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
   }
   
   public void setTipsText(String paramString)
@@ -110,7 +112,7 @@ public class QQStoryVideoPlayerErrorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView
  * JD-Core Version:    0.7.0.1
  */

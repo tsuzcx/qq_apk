@@ -36,15 +36,17 @@ public class EmoJiEmotion
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (EmoJiEmotion)paramObject;
-    } while ((this.emoJiResourceId == paramObject.emoJiResourceId) && (ObjectUtil.equals(this.emoJiShowName, paramObject.emoJiShowName)));
+      return (this.emoJiResourceId == paramObject.emoJiResourceId) && (ObjectUtil.equals(this.emoJiShowName, paramObject.emoJiShowName));
+    }
     return false;
   }
   
@@ -55,7 +57,14 @@ public class EmoJiEmotion
   
   public String toString()
   {
-    return "EmoJiEmotion{emoJiShowName='" + this.emoJiShowName + '\'' + ", emoJiResourceId=" + this.emoJiResourceId + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EmoJiEmotion{emoJiShowName='");
+    localStringBuilder.append(this.emoJiShowName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", emoJiResourceId=");
+    localStringBuilder.append(this.emoJiResourceId);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -66,7 +75,7 @@ public class EmoJiEmotion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.model.EmoJiEmotion
  * JD-Core Version:    0.7.0.1
  */

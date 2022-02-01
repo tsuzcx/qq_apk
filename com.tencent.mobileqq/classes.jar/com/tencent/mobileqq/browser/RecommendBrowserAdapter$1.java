@@ -13,9 +13,11 @@ class RecommendBrowserAdapter$1
   
   public void onClick(View paramView)
   {
-    if (RecommendBrowserAdapter.a(this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter) != this.jdField_a_of_type_Int)
+    int i = RecommendBrowserAdapter.a(this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter);
+    int j = this.jdField_a_of_type_Int;
+    if (i != j)
     {
-      RecommendBrowserAdapter.a(this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter, this.jdField_a_of_type_Int);
+      RecommendBrowserAdapter.a(this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter, j);
       this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter.notifyDataSetChanged();
     }
     ReportHelperKt.a("0X800ADEB");
@@ -27,7 +29,7 @@ class RecommendBrowserAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.browser.RecommendBrowserAdapter.1
  * JD-Core Version:    0.7.0.1
  */

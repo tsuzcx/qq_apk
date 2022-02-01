@@ -23,15 +23,20 @@ public class DesktopRecommendModuleInfo
   
   public String toString()
   {
-    if (this.moduleInfo != null) {
-      return this.moduleInfo.title.get() + "_" + this.mModuleType;
+    if (this.moduleInfo != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.moduleInfo.title.get());
+      localStringBuilder.append("_");
+      localStringBuilder.append(this.mModuleType);
+      return localStringBuilder.toString();
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopRecommendModuleInfo
  * JD-Core Version:    0.7.0.1
  */

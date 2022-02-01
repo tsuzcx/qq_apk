@@ -49,7 +49,7 @@ public class DetailCommentSegment
     super(paramContext);
   }
   
-  public void R_()
+  public void P_()
   {
     if (((StoryDetailListView)a()).a())
     {
@@ -61,171 +61,164 @@ public class DetailCommentSegment
   
   public int a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem != null)) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(this.b).size();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+      if (localDetailFeedItem != null) {
+        return localDetailFeedItem.a(this.b).size();
+      }
     }
     return 0;
   }
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem == null) || (paramInt > this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(this.b).size()))
+    paramViewGroup = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+    if ((paramViewGroup != null) && (paramInt <= paramViewGroup.a(this.b).size()))
     {
-      SLog.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. position is out of bound.");
-      return paramBaseViewHolder.a();
-    }
-    CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(this.b).get(paramInt);
-    if (localCommentEntry == null)
-    {
-      SLog.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. data is null.");
-      return paramBaseViewHolder.a();
-    }
-    paramViewGroup = (ImageView)paramBaseViewHolder.a(2131363196);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131372273);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131365059);
-    Object localObject1 = (LinearLayout)paramBaseViewHolder.a(2131365053);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131370716);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131365070);
-    ProgressBar localProgressBar = (ProgressBar)paramBaseViewHolder.a(2131365093);
-    if (localCommentEntry.type == 1)
-    {
-      paramViewGroup.setVisibility(8);
-      ((LinearLayout)localObject1).setVisibility(8);
-      localTextView3.setVisibility(0);
-      localTextView3.setText(localCommentEntry.content);
+      CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(this.b).get(paramInt);
+      if (localCommentEntry == null)
+      {
+        SLog.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. data is null.");
+        return paramBaseViewHolder.a();
+      }
+      ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131363135);
+      TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371862);
+      TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131364942);
+      paramViewGroup = (LinearLayout)paramBaseViewHolder.a(2131364936);
+      TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131370353);
+      ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131364953);
+      ProgressBar localProgressBar = (ProgressBar)paramBaseViewHolder.a(2131364974);
+      if (localCommentEntry.type == 1)
+      {
+        localImageView2.setVisibility(8);
+        paramViewGroup.setVisibility(8);
+        localTextView3.setVisibility(0);
+        localTextView3.setText(localCommentEntry.content);
+      }
+      else
+      {
+        localImageView2.setVisibility(0);
+        paramViewGroup.setVisibility(0);
+        localTextView3.setVisibility(8);
+        paramViewGroup = new StringBuilder();
+        paramViewGroup.append(localCommentEntry.commentId);
+        paramViewGroup.append(localCommentEntry.feedId);
+        paramViewGroup.append(localCommentEntry.status);
+        paramViewGroup.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback.hashCode());
+        paramViewGroup.append("bubble_style");
+        paramViewGroup = paramViewGroup.toString();
+        Object localObject = StoryQQTextCacher.a().a(paramViewGroup);
+        if (localObject != null)
+        {
+          localTextView2.setText((CharSequence)localObject);
+        }
+        else
+        {
+          localObject = SpannableStringUtils.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a, localCommentEntry, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback);
+          localTextView2.setText((CharSequence)localObject);
+          StoryQQTextCacher.a().a(paramViewGroup, (CharSequence)localObject);
+        }
+        paramViewGroup = ((UserManager)SuperManager.a(2)).c(localCommentEntry.authorUnionId);
+        Drawable localDrawable = ImageUtil.e();
+        String str = "";
+        if (paramViewGroup == null) {
+          localObject = "";
+        } else {
+          localObject = paramViewGroup.getUserIconUrl();
+        }
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          str = "V";
+        }
+        if (paramViewGroup == null) {
+          localImageView2.setImageDrawable(localDrawable);
+        }
+        for (;;)
+        {
+          break;
+          if ((!paramViewGroup.isVipButNoFriend()) && (!paramViewGroup.isNotDovUser()))
+          {
+            if (!TextUtils.isEmpty(paramViewGroup.qq)) {
+              localImageView2.setImageDrawable(FaceDrawable.getFaceDrawable(PlayModeUtils.a(), 1, paramViewGroup.qq, 3, localDrawable, localDrawable));
+            } else if (HttpUtil.isValidUrl(paramViewGroup.headUrl)) {
+              UIUtils.b(localImageView2, paramViewGroup.headUrl, 60, 60, localDrawable, "QQStory_player");
+            } else {
+              localImageView2.setImageDrawable(localDrawable);
+            }
+          }
+          else {
+            UIUtils.b(localImageView2, paramViewGroup.headUrl, 60, 60, localDrawable, "QQStory_player");
+          }
+        }
+        if ((paramViewGroup != null) && (paramViewGroup.isAvailable()))
+        {
+          if (paramViewGroup.isVipButNoFriend()) {
+            paramViewGroup = new SpannableStringBuilder(paramViewGroup.nickName);
+          } else {
+            paramViewGroup = new SpannableStringBuilder(paramViewGroup.getDisplayName());
+          }
+        }
+        else {
+          paramViewGroup = new SpannableStringBuilder(PlayModeUtils.b);
+        }
+        if ((bool ^ true))
+        {
+          paramInt = paramViewGroup.length();
+          paramViewGroup.append(str);
+          SpannableStringUtils.a(paramViewGroup, (String)localObject, paramInt, paramViewGroup.length());
+        }
+        localTextView1.setText(paramViewGroup);
+        if (localCommentEntry.status == 2)
+        {
+          localImageView1.setVisibility(0);
+          localProgressBar.setVisibility(8);
+        }
+        else
+        {
+          localImageView1.setVisibility(8);
+          if (localCommentEntry.status == 1) {
+            localProgressBar.setVisibility(0);
+          } else {
+            localProgressBar.setVisibility(8);
+          }
+        }
+        localTextView2.setOnTouchListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$CommentTextOnTouchListener);
+        localTextView2.setSpannableFactory(QQText.SPANNABLE_FACTORY);
+        localTextView2.setTextColor(-16777216);
+      }
       if (QQStoryContext.a())
       {
-        localTextView2.setBackgroundResource(2130846808);
-        localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166514));
-        localTextView2.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166514));
-        localTextView3.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166512));
+        localTextView2.setBackgroundResource(2130846688);
+        localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166528));
+        localTextView2.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166528));
+        localTextView3.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166526));
       }
       return paramBaseViewHolder.a();
     }
-    paramViewGroup.setVisibility(0);
-    ((LinearLayout)localObject1).setVisibility(0);
-    localTextView3.setVisibility(8);
-    localObject1 = localCommentEntry.commentId + localCommentEntry.feedId + localCommentEntry.status + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback.hashCode() + "bubble_style";
-    Object localObject2 = StoryQQTextCacher.a().a((String)localObject1);
-    label352:
-    QQUserUIItem localQQUserUIItem;
-    Drawable localDrawable;
-    if (localObject2 != null)
-    {
-      localTextView2.setText((CharSequence)localObject2);
-      localQQUserUIItem = ((UserManager)SuperManager.a(2)).c(localCommentEntry.authorUnionId);
-      localDrawable = ImageUtil.c();
-      if (localQQUserUIItem != null) {
-        break label565;
-      }
-      localObject1 = "";
-      label383:
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label575;
-      }
-      paramInt = 1;
-      label393:
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label580;
-      }
-      localObject2 = "V";
-      label405:
-      if (localQQUserUIItem != null) {
-        break label587;
-      }
-      paramViewGroup.setImageDrawable(localDrawable);
-      label416:
-      if ((localQQUserUIItem != null) && (localQQUserUIItem.isAvailable())) {
-        break label700;
-      }
-      paramViewGroup = new SpannableStringBuilder(PlayModeUtils.b);
-      label440:
-      if (paramInt != 0)
-      {
-        paramInt = paramViewGroup.length();
-        paramViewGroup.append((CharSequence)localObject2);
-        SpannableStringUtils.a(paramViewGroup, (String)localObject1, paramInt, paramViewGroup.length());
-      }
-      localTextView1.setText(paramViewGroup);
-      if (localCommentEntry.status != 2) {
-        break label740;
-      }
-      localImageView.setVisibility(0);
-      localProgressBar.setVisibility(8);
-    }
-    for (;;)
-    {
-      localTextView2.setOnTouchListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$CommentTextOnTouchListener);
-      localTextView2.setSpannableFactory(QQText.SPANNABLE_FACTORY);
-      localTextView2.setTextColor(-16777216);
-      break;
-      localObject2 = SpannableStringUtils.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a, localCommentEntry, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback);
-      localTextView2.setText((CharSequence)localObject2);
-      StoryQQTextCacher.a().a((String)localObject1, (CharSequence)localObject2);
-      break label352;
-      label565:
-      localObject1 = localQQUserUIItem.getUserIconUrl();
-      break label383;
-      label575:
-      paramInt = 0;
-      break label393;
-      label580:
-      localObject2 = "";
-      break label405;
-      label587:
-      if ((localQQUserUIItem.isVipButNoFriend()) || (localQQUserUIItem.isNotDovUser()))
-      {
-        UIUtils.b(paramViewGroup, localQQUserUIItem.headUrl, 60, 60, localDrawable, "QQStory_player");
-        break label416;
-      }
-      if (!TextUtils.isEmpty(localQQUserUIItem.qq))
-      {
-        paramViewGroup.setImageDrawable(FaceDrawable.getFaceDrawable(PlayModeUtils.a(), 1, localQQUserUIItem.qq, 3, localDrawable, localDrawable));
-        break label416;
-      }
-      if (HttpUtil.isValidUrl(localQQUserUIItem.headUrl))
-      {
-        UIUtils.b(paramViewGroup, localQQUserUIItem.headUrl, 60, 60, localDrawable, "QQStory_player");
-        break label416;
-      }
-      paramViewGroup.setImageDrawable(localDrawable);
-      break label416;
-      label700:
-      if (localQQUserUIItem.isVipButNoFriend())
-      {
-        paramViewGroup = new SpannableStringBuilder(localQQUserUIItem.nickName);
-        break label440;
-      }
-      paramViewGroup = new SpannableStringBuilder(localQQUserUIItem.getDisplayName());
-      break label440;
-      label740:
-      localImageView.setVisibility(8);
-      if (localCommentEntry.status == 1) {
-        localProgressBar.setVisibility(0);
-      } else {
-        localProgressBar.setVisibility(8);
-      }
-    }
+    SLog.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. position is out of bound.");
+    return paramBaseViewHolder.a();
   }
   
   public CommentEntry a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem == null) || (paramInt >= this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(this.b).size())) {
-      return null;
+    DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+    if ((localDetailFeedItem != null) && (paramInt < localDetailFeedItem.a(this.b).size())) {
+      return (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(this.b).get(paramInt);
     }
-    return (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(this.b).get(paramInt);
+    return null;
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561803, paramViewGroup, false));
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561659, paramViewGroup, false));
     paramViewGroup.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$OnChildViewClickListener);
-    paramViewGroup.a(2131363196).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131372273).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131365060).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131365060).setOnLongClickListener(paramViewGroup);
-    paramViewGroup.a(2131370716).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131370716).setOnLongClickListener(paramViewGroup);
+    paramViewGroup.a(2131363135).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131371862).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131364943).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131364943).setOnLongClickListener(paramViewGroup);
+    paramViewGroup.a(2131370353).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131370353).setOnLongClickListener(paramViewGroup);
     return paramViewGroup;
   }
   
@@ -248,7 +241,7 @@ public class DetailCommentSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailCommentSegment
  * JD-Core Version:    0.7.0.1
  */

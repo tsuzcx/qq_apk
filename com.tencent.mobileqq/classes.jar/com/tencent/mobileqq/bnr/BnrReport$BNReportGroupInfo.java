@@ -10,13 +10,19 @@ public final class BnrReport$BNReportGroupInfo
 {
   public static final int ID_FIELD_NUMBER = 1;
   public static final int SEQNO_FIELD_NUMBER = 2;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "id", "seqno" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, BNReportGroupInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field id = PBField.initUInt32(0);
   public final PBUInt32Field seqno = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "id", "seqno" }, new Object[] { localInteger, localInteger }, BNReportGroupInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bnr.BnrReport.BNReportGroupInfo
  * JD-Core Version:    0.7.0.1
  */

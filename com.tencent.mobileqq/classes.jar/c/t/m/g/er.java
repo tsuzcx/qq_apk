@@ -42,20 +42,19 @@ final class er
   
   private void a(List<ScanResult> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      d();
-    }
-    for (;;)
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      paramList = new ex(paramList, this.g, this.f.getWifiState());
-      this.b.b(paramList);
-      return;
       if (fq.a)
       {
         fq.a = false;
         d();
       }
     }
+    else {
+      d();
+    }
+    paramList = new ex(paramList, this.g, this.f.getWifiState());
+    this.b.b(paramList);
   }
   
   private void c()
@@ -75,95 +74,105 @@ final class er
       }
       this.g = System.currentTimeMillis();
       a(this.i);
-    }
-    int m;
-    do
-    {
       return;
-      m = this.h.size();
-      if (m != this.i.size())
-      {
-        this.h.clear();
-        localIterator = this.i.iterator();
-        while (localIterator.hasNext())
-        {
-          localScanResult = (ScanResult)localIterator.next();
-          this.h.add(localScanResult.BSSID + localScanResult.level);
-        }
-        this.g = System.currentTimeMillis();
-        a(this.i);
-        return;
-      }
+    }
+    int m = this.h.size();
+    HashSet localHashSet;
+    StringBuilder localStringBuilder;
+    if (m != this.i.size())
+    {
+      this.h.clear();
       localIterator = this.i.iterator();
       while (localIterator.hasNext())
       {
         localScanResult = (ScanResult)localIterator.next();
-        this.h.add(localScanResult.BSSID + localScanResult.level);
+        localHashSet = this.h;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localScanResult.BSSID);
+        localStringBuilder.append(localScanResult.level);
+        localHashSet.add(localStringBuilder.toString());
       }
-    } while (m == this.h.size());
-    this.h.clear();
+      this.g = System.currentTimeMillis();
+      a(this.i);
+      return;
+    }
     Iterator localIterator = this.i.iterator();
     while (localIterator.hasNext())
     {
       localScanResult = (ScanResult)localIterator.next();
-      this.h.add(localScanResult.BSSID + localScanResult.level);
+      localHashSet = this.h;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localScanResult.BSSID);
+      localStringBuilder.append(localScanResult.level);
+      localHashSet.add(localStringBuilder.toString());
     }
-    this.g = System.currentTimeMillis();
-    a(this.i);
+    if (m != this.h.size())
+    {
+      this.h.clear();
+      localIterator = this.i.iterator();
+      while (localIterator.hasNext())
+      {
+        localScanResult = (ScanResult)localIterator.next();
+        localHashSet = this.h;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localScanResult.BSSID);
+        localStringBuilder.append(localScanResult.level);
+        localHashSet.add(localStringBuilder.toString());
+      }
+      this.g = System.currentTimeMillis();
+      a(this.i);
+    }
   }
   
   private void d()
   {
-    m = 1;
     n = this.f.getWifiState();
-    if (n == 3) {
+    m = 1;
+    if (n == 3)
+    {
       a(0L);
     }
-    for (;;)
+    else if (n == 1)
     {
-      n = m;
-      try
+      m = 0;
+      localObject = this.i;
+      if (localObject != null) {
+        ((List)localObject).clear();
+      }
+      this.b.b(ex.a);
+    }
+    else
+    {
+      m = -1;
+    }
+    n = m;
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 23)
       {
-        if (Build.VERSION.SDK_INT >= 23)
+        n = m;
+        if (!this.b.h.isProviderEnabled("network"))
         {
+          boolean bool = this.b.h.isProviderEnabled("gps");
           n = m;
-          if (!this.b.h.isProviderEnabled("network"))
-          {
-            boolean bool = this.b.h.isProviderEnabled("gps");
-            n = m;
-            if (!bool) {
-              n = 5;
-            }
+          if (!bool) {
+            n = 5;
           }
         }
       }
-      catch (Exception localException)
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          Message localMessage;
-          n = m;
-        }
-      }
-      localMessage = new Message();
-      localMessage.what = 12999;
-      localMessage.arg1 = 12001;
-      localMessage.arg2 = n;
-      this.b.b(localMessage);
-      return;
-      if (n == 1)
-      {
-        m = 0;
-        if (this.i != null) {
-          this.i.clear();
-        }
-        this.b.b(ex.a);
-      }
-      else
-      {
-        m = -1;
+        n = m;
       }
     }
+    Object localObject = new Message();
+    ((Message)localObject).what = 12999;
+    ((Message)localObject).arg1 = 12001;
+    ((Message)localObject).arg2 = n;
+    this.b.b(localObject);
   }
   
   public final void a()
@@ -209,10 +218,10 @@ final class er
   
   final boolean b()
   {
-    if ((!fq.b(this.b)) || (this.c)) {
-      return false;
+    if ((fq.b(this.b)) && (!this.c)) {
+      return fq.a(this.f);
     }
-    return fq.a(this.f);
+    return false;
   }
   
   public final void onReceive(Context paramContext, Intent paramIntent)
@@ -220,48 +229,54 @@ final class er
     if (paramIntent == null) {
       return;
     }
-    try
+    label163:
+    for (;;)
     {
-      synchronized (this.k)
+      try
       {
-        paramContext = paramIntent.getAction();
-        if ("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) {
-          d();
-        }
-        if (("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) || ("android.net.wifi.SCAN_RESULTS".equals(paramContext)))
+        synchronized (this.k)
         {
-          paramContext = fq.b(this.f);
-          if ((paramContext == null) || (paramContext.size() <= 0)) {
-            break label132;
+          paramContext = paramIntent.getAction();
+          if ("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) {
+            d();
           }
-          this.i = new ArrayList(paramContext);
-          es.a(this.i);
-          if ((this.i != null) && (this.i.size() > 0))
+          if (("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) || ("android.net.wifi.SCAN_RESULTS".equals(paramContext)))
           {
-            Collections.sort(this.i, l);
-            c();
+            paramContext = fq.b(this.f);
+            if ((paramContext != null) && (paramContext.size() > 0))
+            {
+              this.i = new ArrayList(paramContext);
+              es.a(this.i);
+              if ((this.i != null) && (this.i.size() > 0))
+              {
+                Collections.sort(this.i, l);
+                c();
+              }
+            }
+            else
+            {
+              paramIntent = new StringBuilder("ScanResult list is ");
+              if (paramContext != null) {
+                break label163;
+              }
+              paramContext = "null";
+              paramIntent.append(paramContext);
+            }
           }
+          return;
         }
+        paramContext = "size=0";
+      }
+      catch (Exception paramContext)
+      {
         return;
       }
-      paramIntent = new StringBuilder("ScanResult list is ");
-    }
-    catch (Exception paramContext)
-    {
-      return;
-    }
-    label132:
-    if (paramContext == null) {}
-    for (paramContext = "null";; paramContext = "size=0")
-    {
-      paramIntent.append(paramContext);
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.er
  * JD-Core Version:    0.7.0.1
  */

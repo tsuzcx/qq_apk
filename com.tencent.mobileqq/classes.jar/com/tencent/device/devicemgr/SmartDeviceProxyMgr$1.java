@@ -21,72 +21,71 @@ class SmartDeviceProxyMgr$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    int i = 0;
+    int j = paramMessage.what;
     boolean bool1 = false;
-    switch (paramMessage.what)
+    int i = 0;
+    switch (j)
     {
+    default: 
+      return true;
     }
-    for (;;)
+    try
     {
-      return true;
-      this.a.a();
-      return true;
-      try
-      {
-        paramMessage = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        boolean bool2 = SmartDevicePluginLoader.a().a(paramMessage);
-        boolean bool3 = NetworkUtil.h(BaseApplicationImpl.getContext());
-        boolean bool4 = DeviceInfoUtil.f();
-        if (FileUtils.a() <= 1.048576E+008F) {
-          bool1 = true;
-        }
-        SmartDeviceProxyMgr.a(this.a, "SmartDeviceProxyMgr check plugin: isInstalled " + bool2 + " isWifiConnected " + bool3 + " lowPhone = " + bool4 + " lowMemory = " + bool1);
-        if ((bool2) || (!bool3) || (bool4) || (bool1)) {
-          continue;
-        }
-        SmartDevicePluginLoader.a().a();
+      if (SmartDeviceProxyMgr.a(this.a) == null) {
         return true;
       }
-      catch (Exception paramMessage)
+      paramMessage = new Bundle();
+      paramMessage.putString("notify_cmd", "getServerDeviceList");
+      paramMessage = SmartDeviceProxyMgr.a(this.a).a(paramMessage);
+      if (paramMessage != null)
       {
-        return true;
-      }
-      try
-      {
-        if (SmartDeviceProxyMgr.a(this.a) != null)
+        paramMessage = paramMessage.getParcelableArray("devicelist");
+        if (paramMessage != null)
         {
-          paramMessage = new Bundle();
-          paramMessage.putString("notify_cmd", "getServerDeviceList");
-          paramMessage = SmartDeviceProxyMgr.a(this.a).a(paramMessage);
-          if (paramMessage != null)
+          Object localObject = new DeviceInfo[paramMessage.length];
+          while (i < paramMessage.length)
           {
-            paramMessage = paramMessage.getParcelableArray("devicelist");
-            if (paramMessage != null)
-            {
-              DeviceInfo[] arrayOfDeviceInfo = new DeviceInfo[paramMessage.length];
-              while (i < paramMessage.length)
-              {
-                arrayOfDeviceInfo[i] = ((DeviceInfo)paramMessage[i]);
-                i += 1;
-              }
-              SmartDeviceProxyMgr.a(this.a, arrayOfDeviceInfo);
-              if (arrayOfDeviceInfo != null)
-              {
-                this.a.notifyUI(1, true, new ArrayList(Arrays.asList(arrayOfDeviceInfo)));
-                return true;
-              }
-            }
+            localObject[i] = ((DeviceInfo)paramMessage[i]);
+            i += 1;
+          }
+          SmartDeviceProxyMgr.a(this.a, (DeviceInfo[])localObject);
+          this.a.notifyUI(1, true, new ArrayList(Arrays.asList((Object[])localObject)));
+          return true;
+          paramMessage = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          boolean bool2 = SmartDevicePluginLoader.a().a(paramMessage);
+          boolean bool3 = NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext());
+          boolean bool4 = DeviceInfoUtil.h();
+          if (FileUtils.getAvailableInnernalMemorySize() <= 1.048576E+008F) {
+            bool1 = true;
+          }
+          paramMessage = this.a;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("SmartDeviceProxyMgr check plugin: isInstalled ");
+          ((StringBuilder)localObject).append(bool2);
+          ((StringBuilder)localObject).append(" isWifiConnected ");
+          ((StringBuilder)localObject).append(bool3);
+          ((StringBuilder)localObject).append(" lowPhone = ");
+          ((StringBuilder)localObject).append(bool4);
+          ((StringBuilder)localObject).append(" lowMemory = ");
+          ((StringBuilder)localObject).append(bool1);
+          SmartDeviceProxyMgr.a(paramMessage, ((StringBuilder)localObject).toString());
+          if ((!bool2) && (bool3) && (!bool4) && (!bool1))
+          {
+            SmartDevicePluginLoader.a().a();
+            return true;
+            this.a.a();
           }
         }
       }
-      catch (Exception paramMessage) {}
+      return true;
     }
+    catch (Exception paramMessage) {}
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.devicemgr.SmartDeviceProxyMgr.1
  * JD-Core Version:    0.7.0.1
  */

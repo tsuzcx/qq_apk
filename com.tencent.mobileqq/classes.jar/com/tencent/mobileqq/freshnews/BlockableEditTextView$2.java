@@ -24,55 +24,69 @@ class BlockableEditTextView$2
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int == 0)) {}
-    while (this.jdField_a_of_type_Int >= 0) {
-      return;
-    }
-    if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-      this.jdField_a_of_type_Boolean = false;
-      return;
+      int i = this.jdField_a_of_type_Int;
+      if (i == 0) {
+        return;
+      }
+      if (i < 0)
+      {
+        if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 2)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+          this.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        paramEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView;
+        CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+        paramEditable.setText(TextUtils.concat(new CharSequence[] { localCharSequence.subSequence(this.c, localCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
+      }
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setText(TextUtils.concat(new CharSequence[] { this.jdField_a_of_type_JavaLangCharSequence.subSequence(this.c, this.jdField_a_of_type_JavaLangCharSequence.length()), this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, this.b) }));
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.setSelection(this.b);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_Boolean) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0)) {}
-    do
+    if (!this.jdField_a_of_type_Boolean)
     {
-      Editable localEditable;
-      BlockableEditTextView.BlockAble[] arrayOfBlockAble;
-      do
+      if (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) {
+        return;
+      }
+      this.jdField_a_of_type_Int = 0;
+      if (paramInt3 != paramInt2)
       {
-        do
+        Editable localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
+        if (localEditable == null) {
+          return;
+        }
+        BlockableEditTextView.BlockAble[] arrayOfBlockAble = (BlockableEditTextView.BlockAble[])localEditable.getSpans(paramInt1, paramInt1, BlockableEditTextView.BlockAble.class);
+        if ((arrayOfBlockAble != null) && (arrayOfBlockAble.length > 0))
         {
-          do
+          this.b = localEditable.getSpanStart(arrayOfBlockAble[0]);
+          this.c = localEditable.getSpanEnd(arrayOfBlockAble[0]);
+          int i = this.c;
+          if ((i >= 0) && (i >= this.b) && (paramInt2 > paramInt3) && (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) != 0) && (paramInt1 != this.b))
           {
-            return;
-            this.jdField_a_of_type_Int = 0;
-          } while (paramInt3 == paramInt2);
-          localEditable = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getEditableText();
-        } while (localEditable == null);
-        arrayOfBlockAble = (BlockableEditTextView.BlockAble[])localEditable.getSpans(paramInt1, paramInt1, BlockableEditTextView.BlockAble.class);
-      } while ((arrayOfBlockAble == null) || (arrayOfBlockAble.length <= 0));
-      this.b = localEditable.getSpanStart(arrayOfBlockAble[0]);
-      this.c = localEditable.getSpanEnd(arrayOfBlockAble[0]);
-    } while ((this.c < 0) || (this.c < this.b) || (paramInt2 <= paramInt3) || (BlockableEditTextView.a(this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView) == 0) || (paramInt1 == this.b) || (paramInt1 == this.c));
-    this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
-    this.jdField_a_of_type_Int = -1;
+            if (paramInt1 == this.c) {
+              return;
+            }
+            this.jdField_a_of_type_JavaLangCharSequence = new SpannableStringBuilder(paramCharSequence).subSequence(0, paramCharSequence.length());
+            this.jdField_a_of_type_Int = -1;
+          }
+        }
+      }
+    }
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.BlockableEditTextView.2
  * JD-Core Version:    0.7.0.1
  */

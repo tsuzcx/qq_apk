@@ -28,18 +28,30 @@ class ReadInJoyAdBubbleView$SingleBubble
   
   public void a()
   {
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    Object localObject;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_Int == 3) {
-        this.jdField_a_of_type_Int = 0;
+      if (i != 1)
+      {
+        if (i == 2) {
+          ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetTextView, "translationY", new float[] { -AIOUtils.b(59.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -AIOUtils.b(110.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) }).setDuration(300L).start();
+        }
       }
-      return;
-      Object localObject = new GradientDrawable();
-      ((GradientDrawable)localObject).setCornerRadius(AIOUtils.a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      else
+      {
+        localObject = new GradientDrawable();
+        ((GradientDrawable)localObject).setCornerRadius(AIOUtils.b(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -AIOUtils.b(29.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -AIOUtils.b(59.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) });
+        localValueAnimator.setDuration(300L);
+        localValueAnimator.addUpdateListener(new ReadInJoyAdBubbleView.SingleBubble.1(this, (GradientDrawable)localObject));
+        localValueAnimator.start();
+      }
+    }
+    else
+    {
+      localObject = new GradientDrawable();
+      ((GradientDrawable)localObject).setCornerRadius(AIOUtils.b(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
       ((GradientDrawable)localObject).setColor(Color.argb(102, 0, 0, 0));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.argb(255, 255, 255, 255));
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject);
@@ -47,22 +59,17 @@ class ReadInJoyAdBubbleView$SingleBubble
       this.jdField_a_of_type_JavaUtilQueue.offer(localObject);
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetTextView, "translationY", new float[] { 0.0F, -AIOUtils.a(29.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) }).setDuration(300L).start();
-      continue;
-      localObject = new GradientDrawable();
-      ((GradientDrawable)localObject).setCornerRadius(AIOUtils.a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -AIOUtils.a(29.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -AIOUtils.a(59.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) });
-      localValueAnimator.setDuration(300L);
-      localValueAnimator.addUpdateListener(new ReadInJoyAdBubbleView.SingleBubble.1(this, (GradientDrawable)localObject));
-      localValueAnimator.start();
-      continue;
-      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetTextView, "translationY", new float[] { -AIOUtils.a(59.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -AIOUtils.a(110.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) }).setDuration(300L).start();
+      ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetTextView, "translationY", new float[] { 0.0F, -AIOUtils.b(29.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) }).setDuration(300L).start();
+    }
+    this.jdField_a_of_type_Int += 1;
+    if (this.jdField_a_of_type_Int == 3) {
+      this.jdField_a_of_type_Int = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdBubbleView.SingleBubble
  * JD-Core Version:    0.7.0.1
  */

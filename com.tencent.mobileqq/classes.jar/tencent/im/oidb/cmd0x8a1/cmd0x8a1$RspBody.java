@@ -27,13 +27,14 @@ public final class cmd0x8a1$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "uint32_create_option", "uint32_group_code", "uint32_group_uin", "uint64_owner_uin", "uint32_group_size", "string_sign" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "uint32_create_option", "uint32_group_code", "uint32_group_uin", "uint64_owner_uin", "uint32_group_size", "string_sign" }, new Object[] { localInteger, localInteger, localInteger, Long.valueOf(0L), localInteger, localByteStringMicro }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a1.cmd0x8a1.RspBody
  * JD-Core Version:    0.7.0.1
  */

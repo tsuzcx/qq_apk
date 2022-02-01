@@ -70,10 +70,10 @@
                         <TextView android:id="@id/aq9" android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/e3b" android:layout_centerVertical="true" style="@style/tl" />
                         <TextView android:textColor="@color/tr" android:id="@id/aq7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/q31" android:singleLine="true" android:maxLength="10" android:layout_toRightOf="@id/aq9" android:layout_centerVertical="true" style="@style/to" />
                     </RelativeLayout>
-                    <RelativeLayout android:orientation="horizontal" android:id="@id/mot" android:background="@drawable/a3q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                    <RelativeLayout android:orientation="horizontal" android:id="@id/mp_" android:background="@drawable/a3q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="46.0dip">
                         <View android:layout_marginLeft="12.0dip" android:layout_alignParentTop="true" style="@style/sr" />
-                        <TextView android:id="@id/not" android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/x8l" android:layout_centerVertical="true" style="@style/tl" />
-                        <TextView android:textColor="@color/tr" android:id="@id/oe8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/x8n" android:singleLine="true" android:maxLength="10" android:layout_toRightOf="@id/not" android:layout_centerVertical="true" style="@style/to" />
+                        <TextView android:id="@id/nrc" android:layout_width="92.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/x9o" android:layout_centerVertical="true" style="@style/tl" />
+                        <TextView android:textColor="@color/tr" android:id="@id/ohb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/x9q" android:singleLine="true" android:maxLength="10" android:layout_toRightOf="@id/nrc" android:layout_centerVertical="true" style="@style/to" />
                     </RelativeLayout>
                 </LinearLayout>
                 <View android:id="@id/a_3" android:layout_marginLeft="12.0dip" style="@style/sr" />

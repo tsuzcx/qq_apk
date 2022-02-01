@@ -1,60 +1,30 @@
 package com.tencent.gdtad.jsbridge;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.gdtad.basics.motivevideo.js.GdtMvWebJsActionHelper;
 
 public class GdtMvWebJsCallHandler
   implements GdtJsCallHandler
 {
-  private static GdtMvWebJsCallHandler.Action a;
-  
-  public static void a(GdtMvWebJsCallHandler.Action paramAction)
-  {
-    a = paramAction;
-  }
-  
-  public static void c()
-  {
-    a = null;
-  }
+  GdtMvWebJsActionHelper a = new GdtMvWebJsActionHelper();
   
   protected String a(String paramString)
   {
-    if (a == null)
-    {
-      QLog.i("WebGdtMvWebJsCallHandler", 1, "onGetAdInfo mAction == null");
-      return "";
-    }
-    return a.a(paramString);
+    return this.a.a(paramString);
   }
   
   protected void a()
   {
-    if (a == null)
-    {
-      QLog.i("WebGdtMvWebJsCallHandler", 1, "onVideoClose mAction == null");
-      return;
-    }
-    a.a();
+    this.a.b();
   }
   
   protected void a(String paramString)
   {
-    if (a == null)
-    {
-      QLog.i("WebGdtMvWebJsCallHandler", 1, "onReportAntiSpam mAction == null");
-      return;
-    }
-    a.a(paramString);
+    this.a.a(paramString);
   }
   
   protected void a(String paramString, boolean paramBoolean)
   {
-    if (a == null)
-    {
-      QLog.i("WebGdtMvWebJsCallHandler", 1, "onHandleRewardVideoClick mAction == null");
-      return;
-    }
-    a.a(paramString, paramBoolean);
+    this.a.a(paramString, paramBoolean);
   }
   
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
@@ -64,17 +34,12 @@ public class GdtMvWebJsCallHandler
   
   protected void b()
   {
-    if (a == null)
-    {
-      QLog.i("WebGdtMvWebJsCallHandler", 1, "onVideoMute mAction == null");
-      return;
-    }
-    a.b();
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtMvWebJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

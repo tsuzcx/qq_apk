@@ -18,19 +18,27 @@ class QCircleReportOutboxTaskQueue$2$1
         QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0).removeCallbacks(QCircleReportOutboxTaskQueue.access$200(this.this$1.this$0));
         QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0).post(QCircleReportOutboxTaskQueue.access$200(this.this$1.this$0));
       }
-      return;
     }
-    if (QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0) != null)
+    else
     {
-      QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0).removeCallbacks(QCircleReportOutboxTaskQueue.access$300(this.this$1.this$0));
-      QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0).postDelayed(QCircleReportOutboxTaskQueue.access$300(this.this$1.this$0), 10000L);
+      if (QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0) != null)
+      {
+        QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0).removeCallbacks(QCircleReportOutboxTaskQueue.access$300(this.this$1.this$0));
+        QCircleReportOutboxTaskQueue.access$100(this.this$1.this$0).postDelayed(QCircleReportOutboxTaskQueue.access$300(this.this$1.this$0), 10000L);
+      }
+      int i = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("detectQCirclenNetConnection blocked,retry again!retCode:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(",errMsg:");
+      localStringBuilder.append(paramString);
+      RFLog.d("QCircleReportOutboxTaskQueue", i, localStringBuilder.toString());
     }
-    RFLog.d("QCircleReportOutboxTaskQueue", RFLog.USR, "detectQCirclenNetConnection blocked,retry again!retCode:" + paramLong + ",errMsg:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue.2.1
  * JD-Core Version:    0.7.0.1
  */

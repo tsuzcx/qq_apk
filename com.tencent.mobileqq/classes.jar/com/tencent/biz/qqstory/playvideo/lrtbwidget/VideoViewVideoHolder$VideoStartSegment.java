@@ -41,11 +41,6 @@ class VideoViewVideoHolder$VideoStartSegment
       if ((VideoViewVideoHolder.a(paramVideoViewVideoHolder) != null) && (VideoViewVideoHolder.a(paramVideoViewVideoHolder).getWidth() == paramTextureView.getWidth() / 16) && (VideoViewVideoHolder.a(paramVideoViewVideoHolder).getHeight() == paramTextureView.getHeight() / 16))
       {
         paramTextureView = paramTextureView.getBitmap(VideoViewVideoHolder.a(paramVideoViewVideoHolder));
-        if (StoryPlayerTest.a(paramTextureView, 4, 16))
-        {
-          SLog.a(paramVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d", Long.valueOf(paramLong));
-          return true;
-        }
       }
       else
       {
@@ -54,27 +49,28 @@ class VideoViewVideoHolder$VideoStartSegment
         }
         int i = paramTextureView.getWidth() / 16;
         int j = paramTextureView.getHeight() / 16;
-        if ((i > 0) && (j > 0))
-        {
-          if (Build.VERSION.SDK_INT >= 17) {
-            VideoViewVideoHolder.a(paramVideoViewVideoHolder, Bitmap.createBitmap(paramTextureView.getResources().getDisplayMetrics(), i, j, Bitmap.Config.ARGB_8888));
-          }
-          for (;;)
-          {
-            paramTextureView = paramTextureView.getBitmap(VideoViewVideoHolder.a(paramVideoViewVideoHolder));
-            break;
-            VideoViewVideoHolder.a(paramVideoViewVideoHolder, Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
-          }
+        if ((i <= 0) || (j <= 0)) {
+          break label198;
         }
-        return false;
+        if (Build.VERSION.SDK_INT >= 17) {
+          VideoViewVideoHolder.a(paramVideoViewVideoHolder, Bitmap.createBitmap(paramTextureView.getResources().getDisplayMetrics(), i, j, Bitmap.Config.ARGB_8888));
+        } else {
+          VideoViewVideoHolder.a(paramVideoViewVideoHolder, Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
+        }
+        paramTextureView = paramTextureView.getBitmap(VideoViewVideoHolder.a(paramVideoViewVideoHolder));
+      }
+      if (StoryPlayerTest.a(paramTextureView, 4, 16))
+      {
+        SLog.a(paramVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack CheckVideoViewRealStartRunnable find dark bitmap ! current = %d", Long.valueOf(paramLong));
+        return true;
       }
       SLog.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack StoryPlayerTest.isBlack false. treat as not-black frame");
-    }
-    for (;;)
-    {
       return false;
-      SLog.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
+      label198:
+      return false;
     }
+    SLog.d(this.this$0.jdField_a_of_type_JavaLangString, "isCurrentFrameBlack targetView.isAvailable() false. treat as not-black frame");
+    return false;
   }
   
   protected void a(StoryVideoItem paramStoryVideoItem)
@@ -93,13 +89,15 @@ class VideoViewVideoHolder$VideoStartSegment
       if (!this.this$0.a().mUIStyle.mForDebug) {
         VideoViewVideoHolder.b(this.this$0, paramStoryVideoItem);
       }
-      return;
     }
-    SLog.e(this.this$0.jdField_a_of_type_JavaLangString, "onPrepared, is not on foreground, do not start video view !!");
-    notifyError(new ErrorMessage(0, "onPrepared, is not on foreground"));
+    else
+    {
+      SLog.e(this.this$0.jdField_a_of_type_JavaLangString, "onPrepared, is not on foreground, do not start video view !!");
+      notifyError(new ErrorMessage(0, "onPrepared, is not on foreground"));
+    }
   }
   
-  public void onCancel()
+  protected void onCancel()
   {
     super.onCancel();
     SLog.b(this.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment onCancel");
@@ -164,7 +162,7 @@ class VideoViewVideoHolder$VideoStartSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoStartSegment
  * JD-Core Version:    0.7.0.1
  */

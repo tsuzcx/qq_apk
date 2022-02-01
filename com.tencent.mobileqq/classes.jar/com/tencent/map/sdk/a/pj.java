@@ -15,10 +15,11 @@ public final class pj
   
   public final boolean onIndoorBuildingDeactivated()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return false;
     }
-    this.a.onIndoorBuildingDeactivated();
+    localpn.onIndoorBuildingDeactivated();
     if (this.a.y != null) {
       this.a.y.onIndoorBuildingDeactivated();
     }
@@ -27,10 +28,11 @@ public final class pj
   
   public final boolean onIndoorBuildingFocused()
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return false;
     }
-    this.a.onIndoorBuildingFocused();
+    localpn.onIndoorBuildingFocused();
     if (this.a.y != null) {
       this.a.y.onIndoorBuildingFocused();
     }
@@ -39,10 +41,11 @@ public final class pj
   
   public final boolean onIndoorLevelActivated(IndoorBuilding paramIndoorBuilding)
   {
-    if (this.a == null) {
+    pn localpn = this.a;
+    if (localpn == null) {
       return false;
     }
-    this.a.onIndoorLevelActivated(paramIndoorBuilding);
+    localpn.onIndoorLevelActivated(paramIndoorBuilding);
     if (this.a.y != null) {
       this.a.y.onIndoorLevelActivated(paramIndoorBuilding);
     }
@@ -51,7 +54,7 @@ public final class pj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.pj
  * JD-Core Version:    0.7.0.1
  */

@@ -37,15 +37,19 @@ public class DTParamsNewsFlattenFormatter
       {
         localObject = ((ReportData)localObject).getId();
         int i = ((Integer)BaseUtils.getOrDefault(localHashMap, localObject, Integer.valueOf(0))).intValue();
-        if (i == 0) {
+        if (i == 0)
+        {
           localArrayList.add("");
         }
-        for (;;)
+        else
         {
-          localHashMap.put(localObject, Integer.valueOf(i + 1));
-          break;
-          localArrayList.add("p" + i + "_");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("p");
+          localStringBuilder.append(i);
+          localStringBuilder.append("_");
+          localArrayList.add(localStringBuilder.toString());
         }
+        localHashMap.put(localObject, Integer.valueOf(i + 1));
       }
     }
     return localArrayList;
@@ -60,7 +64,14 @@ public class DTParamsNewsFlattenFormatter
     if (paramMap != null) {
       localStringBuilder.append(new JSONObject(new TreeMap(paramMap)));
     }
-    Log.i("DTParamsNewsFlatten_" + paramString, "打平参数： \n\n" + localStringBuilder.toString());
+    paramMap = new StringBuilder();
+    paramMap.append("DTParamsNewsFlatten_");
+    paramMap.append(paramString);
+    paramString = paramMap.toString();
+    paramMap = new StringBuilder();
+    paramMap.append("打平参数： \n\n");
+    paramMap.append(localStringBuilder.toString());
+    Log.i(paramString, paramMap.toString());
   }
   
   protected void formatElements(@NonNull List<ReportData> paramList, Map<String, Object> paramMap)
@@ -84,10 +95,16 @@ public class DTParamsNewsFlattenFormatter
           while (((Iterator)localObject).hasNext())
           {
             Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-            paramMap.put(str1 + (String)localEntry.getKey(), localEntry.getValue());
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str1);
+            localStringBuilder.append((String)localEntry.getKey());
+            paramMap.put(localStringBuilder.toString(), localEntry.getValue());
           }
         }
-        localArrayList.add(0, str1 + str2);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str1);
+        ((StringBuilder)localObject).append(str2);
+        localArrayList.add(0, ((StringBuilder)localObject).toString());
       }
     }
     paramMap.put("element_path", localArrayList);
@@ -109,7 +126,7 @@ public class DTParamsNewsFlattenFormatter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.formatter.DTParamsNewsFlattenFormatter
  * JD-Core Version:    0.7.0.1
  */

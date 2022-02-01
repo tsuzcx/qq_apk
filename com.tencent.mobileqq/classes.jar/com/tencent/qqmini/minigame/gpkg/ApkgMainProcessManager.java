@@ -34,12 +34,7 @@ public class ApkgMainProcessManager
   
   public static void checkShouldLoadPkgInMainProcess(MiniAppInfo paramMiniAppInfo, MiniCmdCallback paramMiniCmdCallback, boolean paramBoolean)
   {
-    if (!paramMiniAppInfo.isEngineTypeMiniGame()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      checkShouldLoadPkgInMainProcess(paramMiniAppInfo, paramMiniCmdCallback, paramBoolean, bool);
-      return;
-    }
+    checkShouldLoadPkgInMainProcess(paramMiniAppInfo, paramMiniCmdCallback, paramBoolean, paramMiniAppInfo.isEngineTypeMiniGame() ^ true);
   }
   
   private static void checkShouldLoadPkgInMainProcess(MiniAppInfo paramMiniAppInfo, MiniCmdCallback paramMiniCmdCallback, boolean paramBoolean1, boolean paramBoolean2)
@@ -76,11 +71,17 @@ public class ApkgMainProcessManager
     }
     if (this.subProcessLoadTaskSet.contains(localMiniAppInfo.appId))
     {
-      QMLog.w("ApkgMainProcessManager", "pkg already download in sub process! " + localMiniAppInfo);
+      paramBundle = new StringBuilder();
+      paramBundle.append("pkg already download in sub process! ");
+      paramBundle.append(localMiniAppInfo);
+      QMLog.w("ApkgMainProcessManager", paramBundle.toString());
       return;
     }
     this.cmdCallbackHashMap.put(localMiniAppInfo.appId, new CopyOnWriteArrayList(Collections.singletonList(paramMiniCmdCallback)));
-    QMLog.d("ApkgMainProcessManager", "load apkg in main process start " + localMiniAppInfo);
+    paramBundle = new StringBuilder();
+    paramBundle.append("load apkg in main process start ");
+    paramBundle.append(localMiniAppInfo);
+    QMLog.d("ApkgMainProcessManager", paramBundle.toString());
     if (localMiniAppInfo.isEngineTypeMiniGame())
     {
       loadGpkg(localMiniAppInfo);
@@ -99,7 +100,7 @@ public class ApkgMainProcessManager
     try
     {
       paramBundle.setClassLoader(ApkgMainProcessManager.class.getClassLoader());
-      localMiniAppInfo = (MiniAppInfo)paramBundle.getParcelable("key_mini_app_config");
+      MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramBundle.getParcelable("key_mini_app_config");
       if (localMiniAppInfo == null) {
         return;
       }
@@ -108,13 +109,29 @@ public class ApkgMainProcessManager
         getInstance().queueSubProcessLoadTask(localMiniAppInfo.appId);
         return;
       }
+      if ("cmd_remove_mini_process_load_apkg".equals(paramString))
+      {
+        getInstance().removeSubProcessLoadTask(localMiniAppInfo.appId);
+        return;
+      }
+      if ("cmd_main_process_load_pkg".equals(paramString))
+      {
+        getInstance().checkShouldPerformMainProcessLoadPkg(paramBundle, paramMiniCmdCallback);
+        return;
+      }
+      if ("cmd_main_process_download_pkg".equals(paramString)) {
+        return;
+      }
+      if ("cmd_update_triton_engine".equals(paramString))
+      {
+        EnginePackageManager.checkTritonUpdate();
+        return;
+      }
     }
     catch (Throwable paramString)
     {
-      MiniAppInfo localMiniAppInfo;
       QMLog.d("ApkgMainProcessManager", "handleMiniAppCmd ", paramString);
-      if (paramMiniCmdCallback != null)
-      {
+      if (paramMiniCmdCallback != null) {
         try
         {
           paramMiniCmdCallback.onCmdResult(true, new Bundle());
@@ -123,20 +140,6 @@ public class ApkgMainProcessManager
         catch (RemoteException paramString)
         {
           QMLog.d("ApkgMainProcessManager", "handleMiniAppCmd ", paramString);
-          return;
-        }
-        if ("cmd_remove_mini_process_load_apkg".equals(paramString))
-        {
-          getInstance().removeSubProcessLoadTask(localMiniAppInfo.appId);
-          return;
-        }
-        if ("cmd_main_process_load_pkg".equals(paramString))
-        {
-          getInstance().checkShouldPerformMainProcessLoadPkg(paramBundle, paramMiniCmdCallback);
-          return;
-        }
-        if ((!"cmd_main_process_download_pkg".equals(paramString)) && ("cmd_update_triton_engine".equals(paramString))) {
-          EnginePackageManager.checkTritonUpdate();
         }
       }
     }
@@ -187,7 +190,7 @@ public class ApkgMainProcessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.ApkgMainProcessManager
  * JD-Core Version:    0.7.0.1
  */

@@ -21,42 +21,31 @@ class QQstoryAction$3
     int i = ((Activity)this.a.a).getIntent().getIntExtra("firsttab", -1);
     int j = ((Activity)this.a.a).getIntent().getIntExtra("secondtab", -1);
     String str2 = ((Activity)this.a.a).getIntent().getStringExtra("itemid");
-    String str3 = ((Activity)this.a.a).getIntent().getStringExtra("story_game_id");
     int k = ((Activity)this.a.a).getIntent().getIntExtra("key_finish_jump_to_page", 1);
-    String str4 = ((Activity)this.a.a).getIntent().getStringExtra("web_dispatch_event");
-    String str5 = ((Activity)this.a.a).getIntent().getStringExtra("story_capture_album_id");
+    String str3 = ((Activity)this.a.a).getIntent().getStringExtra("web_dispatch_event");
     Bundle localBundle = new Bundle();
-    if (TextUtils.equals(str1, "msgTab"))
-    {
+    if (TextUtils.equals(str1, "msgTab")) {
       localBundle.putInt("entrance_type", 103);
-      localBundle.putInt("key_finish_jump_to_page", k);
-      if (!TextUtils.isEmpty(str4)) {
-        localBundle.putString("web_dispatch_event", str4);
-      }
-      if (paramInt == -1) {
-        break label322;
-      }
-      paramString.a((Activity)this.a.a, localBundle, 2, paramInt, i, j, str2, str3, str5, true, 20000);
-    }
-    for (;;)
-    {
-      SLog.c("Q.qqstory.publish.QQstoryAction", "launchNewVideoTakeActivity by StoryPublishLauncher");
-      return;
-      if (TextUtils.equals(str1, "msgTabNew"))
-      {
-        localBundle.putInt("entrance_type", 119);
-        break;
-      }
+    } else if (TextUtils.equals(str1, "msgTabNew")) {
+      localBundle.putInt("entrance_type", 119);
+    } else {
       localBundle.putInt("entrance_type", 15);
-      break;
-      label322:
+    }
+    localBundle.putInt("key_finish_jump_to_page", k);
+    if (!TextUtils.isEmpty(str3)) {
+      localBundle.putString("web_dispatch_event", str3);
+    }
+    if (paramInt != -1) {
+      paramString.a((Activity)this.a.a, localBundle, 2, paramInt, i, j, str2, "", "", true, 20000);
+    } else {
       paramString.a((Activity)this.a.a, localBundle, 20000);
     }
+    SLog.c("Q.qqstory.publish.QQstoryAction", "launchNewVideoTakeActivity by StoryPublishLauncher");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQstoryAction.3
  * JD-Core Version:    0.7.0.1
  */

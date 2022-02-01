@@ -17,18 +17,35 @@ class PublicAccountJavascriptInterfaceImpl$18
     try
     {
       this.jdField_a_of_type_OrgJsonJSONObject.put("follow", bool);
-      this.this$0.callJs(this.b, new String[] { "{ret:0, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+      localPublicAccountJavascriptInterfaceImpl = this.this$0;
+      str = this.b;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{ret:0, response:");
+      localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+      localStringBuilder.append("}");
+      localPublicAccountJavascriptInterfaceImpl.callJs(str, new String[] { localStringBuilder.toString() });
       return;
     }
     catch (JSONException localJSONException)
     {
-      this.this$0.callJs(this.b, new String[] { "{ret:-2, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+      PublicAccountJavascriptInterfaceImpl localPublicAccountJavascriptInterfaceImpl;
+      String str;
+      StringBuilder localStringBuilder;
+      label99:
+      break label99;
     }
+    localPublicAccountJavascriptInterfaceImpl = this.this$0;
+    str = this.b;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{ret:-2, response:");
+    localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+    localStringBuilder.append("}");
+    localPublicAccountJavascriptInterfaceImpl.callJs(str, new String[] { localStringBuilder.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountJavascriptInterfaceImpl.18
  * JD-Core Version:    0.7.0.1
  */

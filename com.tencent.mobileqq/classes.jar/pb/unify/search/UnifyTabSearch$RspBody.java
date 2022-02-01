@@ -9,6 +9,7 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import unify.search.UnifySearchCommon.ResultItemGroup;
 
 public final class UnifyTabSearch$RspBody
   extends MessageMicro<RspBody>
@@ -31,17 +32,18 @@ public final class UnifyTabSearch$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 72, 80, 810, 818, 1608, 8002 }, new String[] { "result_code", "error_msg", "item_groups", "is_end", "cookie", "search_ver", "hot_words", "sub_hot_top_wording", "dont_need_merge", "exhibition_flags", "extension", "process_datas", "key_word_prop", "origin_rpt_highlight_words" }, new Object[] { Integer.valueOf(0), "", null, Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, null, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro4, null, Integer.valueOf(0), localByteStringMicro5 }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 66, 72, 80, 810, 818, 1608, 8002 }, new String[] { "result_code", "error_msg", "item_groups", "is_end", "cookie", "search_ver", "hot_words", "sub_hot_top_wording", "dont_need_merge", "exhibition_flags", "extension", "process_datas", "key_word_prop", "origin_rpt_highlight_words" }, new Object[] { localInteger, "", null, localInteger, localByteStringMicro1, localByteStringMicro2, null, localByteStringMicro3, localInteger, localInteger, localByteStringMicro4, null, localInteger, localByteStringMicro5 }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     pb.unify.search.UnifyTabSearch.RspBody
  * JD-Core Version:    0.7.0.1
  */

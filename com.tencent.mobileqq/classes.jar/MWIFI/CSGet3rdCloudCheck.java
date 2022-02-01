@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CSGet3rdCloudCheck
   extends JceStruct
@@ -42,32 +43,39 @@ public final class CSGet3rdCloudCheck
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.networkType != 0) {
-      paramJceOutputStream.write(this.networkType, 0);
+    int i = this.networkType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
     }
-    if (this.operType != 0) {
-      paramJceOutputStream.write(this.operType, 1);
+    i = this.operType;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.wifiInfo != null) {
-      paramJceOutputStream.write(this.wifiInfo, 2);
+    Object localObject = this.wifiInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.vecDns != null) {
-      paramJceOutputStream.write(this.vecDns, 3);
+    localObject = this.vecDns;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.vid != null) {
-      paramJceOutputStream.write(this.vid, 4);
+    localObject = this.vid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.mac != null) {
-      paramJceOutputStream.write(this.mac, 5);
+    localObject = this.mac;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.imei != null) {
-      paramJceOutputStream.write(this.imei, 6);
+    localObject = this.imei;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     MWIFI.CSGet3rdCloudCheck
  * JD-Core Version:    0.7.0.1
  */

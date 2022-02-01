@@ -6,7 +6,7 @@ import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
 class QzoneGiftFullScreenViewController$3
   implements QzoneGiftFullScreenActionManager.MagicfaceActionListener
 {
-  QzoneGiftFullScreenViewController$3(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController, long paramLong, QzoneGiftFullScreenViewController.GiftFullScreenPlayListener paramGiftFullScreenPlayListener) {}
+  QzoneGiftFullScreenViewController$3(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController, long paramLong, IQzoneGiftFullScreenViewController.GiftFullScreenPlayListener paramGiftFullScreenPlayListener) {}
   
   public void magicfaceActionEnd(ActionGlobalData paramActionGlobalData)
   {
@@ -24,7 +24,7 @@ class QzoneGiftFullScreenViewController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenViewController.3
  * JD-Core Version:    0.7.0.1
  */

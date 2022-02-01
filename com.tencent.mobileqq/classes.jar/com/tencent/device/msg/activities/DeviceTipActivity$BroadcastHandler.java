@@ -26,43 +26,45 @@ class DeviceTipActivity$BroadcastHandler
         this.a.finish();
       }
     }
-    long l;
-    do
+    else
     {
-      do
+      if (paramContext.equals("android.intent.action.SCREEN_OFF"))
       {
-        do
-        {
-          return;
-          if (paramContext.equals("android.intent.action.SCREEN_OFF"))
-          {
-            AudioUtil.a();
-            return;
-          }
-          if (paramContext.equals("android.intent.action.SCREEN_ON"))
-          {
-            AudioUtil.a(2131230742, -1, null);
-            return;
-          }
-          if (!paramContext.equals("SmartDevice_receiveDPMsg")) {
-            break;
-          }
-        } while ((DataPoint)paramIntent.getExtras().getParcelable("dataPoint") != null);
+        AudioUtil.a();
         return;
-      } while (!paramContext.equals("On_OccupyMicrophoneNotify_Push"));
-      if (QLog.isColorLevel()) {
-        QLog.d(DeviceTipActivity.a, 2, "DeviceTipActivity intent.getExtras() : " + paramIntent.getExtras());
       }
-      paramContext = paramIntent.getExtras();
-      l = paramContext.getLong("din", 0L);
-      paramContext = paramContext.getString("uin", "");
-    } while ((!this.a.b.equals(String.valueOf(Long.valueOf(l)))) || (TextUtils.isEmpty(paramContext)));
-    this.a.finish();
+      if (paramContext.equals("android.intent.action.SCREEN_ON"))
+      {
+        AudioUtil.a(2131230746, -1, null);
+        return;
+      }
+      if (paramContext.equals("SmartDevice_receiveDPMsg"))
+      {
+        if ((DataPoint)paramIntent.getExtras().getParcelable("dataPoint") != null) {}
+      }
+      else if (paramContext.equals("On_OccupyMicrophoneNotify_Push"))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramContext = DeviceTipActivity.a;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("DeviceTipActivity intent.getExtras() : ");
+          localStringBuilder.append(paramIntent.getExtras());
+          QLog.d(paramContext, 2, localStringBuilder.toString());
+        }
+        paramContext = paramIntent.getExtras();
+        long l = paramContext.getLong("din", 0L);
+        paramContext = paramContext.getString("uin", "");
+        if ((this.a.b.equals(String.valueOf(Long.valueOf(l)))) && (!TextUtils.isEmpty(paramContext))) {
+          this.a.finish();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.activities.DeviceTipActivity.BroadcastHandler
  * JD-Core Version:    0.7.0.1
  */

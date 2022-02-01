@@ -13,35 +13,33 @@ class MultiCardManager$3
   
   public void run()
   {
-    ArrayList localArrayList = MultiCardManager.a(this.this$0, this.jdField_a_of_type_Long);
-    if (localArrayList != null) {}
-    for (;;)
-    {
+    ArrayList localArrayList1 = MultiCardManager.a(this.this$0, this.jdField_a_of_type_Long);
+    if (localArrayList1 != null) {
       synchronized (MultiCardManager.a(this.this$0))
       {
-        MultiCardManager.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), (ArrayList)localArrayList.clone());
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder().append("callbackWithNativeUinList ").append(this.jdField_a_of_type_Long).append(" ");
-          if (localArrayList != null)
-          {
-            ??? = localArrayList.toString();
-            QLog.d("MultiCardManager", 2, (String)???);
-          }
-        }
-        else
-        {
-          ThreadManager.getUIHandler().post(new MultiCardManager.3.1(this, localArrayList));
-          return;
-        }
+        MultiCardManager.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), (ArrayList)localArrayList1.clone());
       }
-      ??? = "null";
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("callbackWithNativeUinList ");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(" ");
+      if (localArrayList2 != null) {
+        ??? = localArrayList2.toString();
+      } else {
+        ??? = "null";
+      }
+      localStringBuilder.append((String)???);
+      QLog.d("MultiCardManager", 2, localStringBuilder.toString());
+    }
+    ThreadManager.getUIHandler().post(new MultiCardManager.3.1(this, localArrayList2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.3
  * JD-Core Version:    0.7.0.1
  */

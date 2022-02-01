@@ -27,81 +27,74 @@ public class SharpReport_OffLine
   
   private int a()
   {
-    int i = 0;
-    String str = NetworkUtil.a(BaseApplication.getContext());
-    if ("wifi".equals(str)) {
+    Object localObject = NetworkUtil.getApn(BaseApplication.getContext());
+    int i;
+    if ("wifi".equals(localObject)) {
       i = 1;
+    } else if ("cmnet".equals(localObject)) {
+      i = 3;
+    } else if ("cmwap".equals(localObject)) {
+      i = 2;
+    } else if ("ctnet".equals(localObject)) {
+      i = 7;
+    } else if ("ctwap".equals(localObject)) {
+      i = 6;
+    } else if ("uninet".equals(localObject)) {
+      i = 5;
+    } else if ("uniwap".equals(localObject)) {
+      i = 4;
+    } else if ("3gnet".equals(localObject)) {
+      i = 9;
+    } else if ("3gwap".equals(localObject)) {
+      i = 8;
+    } else {
+      i = 0;
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SharpReport_OffLine", 2, "getApn: " + i);
-      }
-      return i;
-      if ("cmnet".equals(str)) {
-        i = 3;
-      } else if ("cmwap".equals(str)) {
-        i = 2;
-      } else if ("ctnet".equals(str)) {
-        i = 7;
-      } else if ("ctwap".equals(str)) {
-        i = 6;
-      } else if ("uninet".equals(str)) {
-        i = 5;
-      } else if ("uniwap".equals(str)) {
-        i = 4;
-      } else if ("3gnet".equals(str)) {
-        i = 9;
-      } else if ("3gwap".equals(str)) {
-        i = 8;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getApn: ");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("SharpReport_OffLine", 2, ((StringBuilder)localObject).toString());
     }
+    return i;
   }
   
   private int a(int paramInt)
   {
-    int i;
     if (this.jdField_a_of_type_ArrayOfByte == null) {
-      i = -1;
+      return -1;
     }
-    int j;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return i;
-                b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_a_of_type_JavaLangString.length());
-                j = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_a_of_type_JavaLangString);
-                i = j;
-              } while (j < 0);
-              b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_b_of_type_JavaLangString.length());
-              j = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_b_of_type_JavaLangString);
-              i = j;
-            } while (j < 0);
-            b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_c_of_type_JavaLangString.length());
-            j = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_c_of_type_JavaLangString);
-            i = j;
-          } while (j < 0);
-          b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.f.length());
-          j = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.f);
-          i = j;
-        } while (j < 0);
-        b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.d.length());
-        j = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.d);
-        i = j;
-      } while (j < 0);
-      b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.e.length());
-      j = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.e);
-      i = j;
-    } while (j < 0);
+    b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_a_of_type_JavaLangString.length());
+    int i = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_a_of_type_JavaLangString);
+    if (i < 0) {
+      return i;
+    }
+    b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_b_of_type_JavaLangString.length());
+    i = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_b_of_type_JavaLangString);
+    if (i < 0) {
+      return i;
+    }
+    b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_c_of_type_JavaLangString.length());
+    i = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_c_of_type_JavaLangString);
+    if (i < 0) {
+      return i;
+    }
+    b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.f.length());
+    i = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.f);
+    if (i < 0) {
+      return i;
+    }
+    b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.d.length());
+    i = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.d);
+    if (i < 0) {
+      return i;
+    }
+    b(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.e.length());
+    i = a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.e);
+    if (i < 0) {
+      return i;
+    }
     a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_c_of_type_Long);
     a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_a_of_type_Long);
     a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_a_of_type_Int);
@@ -113,58 +106,58 @@ public class SharpReport_OffLine
   
   private int a(long paramLong, byte[] paramArrayOfByte)
   {
-    if ((this.jdField_a_of_type_JavaUtilMap == null) || (this.jdField_a_of_type_ComQqJceWupUniPacket == null) || (this.jdField_a_of_type_ComTencentAvVideoJceQQServiceStrupbuff == null)) {
-      return 0;
-    }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilMap.put("617", new ArrayList());
-    ((ArrayList)this.jdField_a_of_type_JavaUtilMap.get("617")).add(paramArrayOfByte);
-    this.jdField_a_of_type_ComQqJceWupUniPacket.put("Data", this.jdField_a_of_type_ComTencentAvVideoJceQQServiceStrupbuff);
-    paramArrayOfByte = this.jdField_a_of_type_ComQqJceWupUniPacket.encode();
-    ToServiceMsg localToServiceMsg = new ToServiceMsg(MsfServiceSdk.get().getMsfServiceName(), String.valueOf(paramLong), "CliLogSvc.UploadReq");
-    localToServiceMsg.setNeedCallback(false);
-    localToServiceMsg.putWupBuffer(paramArrayOfByte);
-    localToServiceMsg.setNeedRemindSlowNetwork(false);
-    try
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if ((localObject != null) && (this.jdField_a_of_type_ComQqJceWupUniPacket != null))
     {
-      int i = MsfServiceSdk.get().sendMsg(localToServiceMsg);
-      if (i >= 0) {
-        return 1;
+      if (this.jdField_a_of_type_ComTencentAvVideoJceQQServiceStrupbuff == null) {
+        return 0;
       }
-      return 0;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+      ((Map)localObject).clear();
+      this.jdField_a_of_type_JavaUtilMap.put("617", new ArrayList());
+      ((ArrayList)this.jdField_a_of_type_JavaUtilMap.get("617")).add(paramArrayOfByte);
+      this.jdField_a_of_type_ComQqJceWupUniPacket.put("Data", this.jdField_a_of_type_ComTencentAvVideoJceQQServiceStrupbuff);
+      paramArrayOfByte = this.jdField_a_of_type_ComQqJceWupUniPacket.encode();
+      localObject = new ToServiceMsg(MsfServiceSdk.get().getMsfServiceName(), String.valueOf(paramLong), "CliLogSvc.UploadReq");
+      ((ToServiceMsg)localObject).setNeedCallback(false);
+      ((ToServiceMsg)localObject).putWupBuffer(paramArrayOfByte);
+      ((ToServiceMsg)localObject).setNeedRemindSlowNetwork(false);
+      try
+      {
+        int i = MsfServiceSdk.get().sendMsg((ToServiceMsg)localObject);
+        if (i >= 0) {
+          return 1;
+        }
+        return 0;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
     return 0;
   }
   
   private int a(String paramString)
   {
-    int k = 0;
     try
     {
       paramString = paramString.getBytes("utf-8");
       int i = 0;
-      int j;
-      for (;;)
+      while (i < paramString.length)
       {
-        j = k;
-        if (i >= paramString.length) {
-          break;
-        }
-        this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = paramString[i];
-        this.jdField_a_of_type_Int += 1;
+        byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+        int j = this.jdField_a_of_type_Int;
+        arrayOfByte[j] = paramString[i];
+        this.jdField_a_of_type_Int = (j + 1);
         i += 1;
       }
-      return j;
+      return 0;
     }
     catch (UnsupportedEncodingException paramString)
     {
       paramString.printStackTrace();
-      j = -1;
     }
+    return -1;
   }
   
   public static SharpReport_OffLine a()
@@ -183,8 +176,10 @@ public class SharpReport_OffLine
   private void a(int paramInt)
   {
     int i = (byte)(paramInt & 0xFF);
-    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = i;
-    this.jdField_a_of_type_Int += 1;
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    paramInt = this.jdField_a_of_type_Int;
+    arrayOfByte[paramInt] = i;
+    this.jdField_a_of_type_Int = (paramInt + 1);
   }
   
   private void a(long paramLong)
@@ -196,16 +191,18 @@ public class SharpReport_OffLine
     int n = (byte)(int)(paramLong >> 24 & 0xFF);
     int i1 = (byte)(int)(paramLong >> 16 & 0xFF);
     int i2 = (byte)(int)(paramLong >> 8 & 0xFF);
-    int i3 = (byte)(int)(0xFF & paramLong);
-    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = i;
-    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 1)] = j;
-    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 2)] = k;
-    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 3)] = m;
-    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 4)] = n;
-    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 5)] = i1;
-    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 6)] = i2;
-    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 7)] = i3;
-    this.jdField_a_of_type_Int += 8;
+    int i3 = (byte)(int)(paramLong & 0xFF);
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    int i4 = this.jdField_a_of_type_Int;
+    arrayOfByte[i4] = i;
+    arrayOfByte[(i4 + 1)] = j;
+    arrayOfByte[(i4 + 2)] = k;
+    arrayOfByte[(i4 + 3)] = m;
+    arrayOfByte[(i4 + 4)] = n;
+    arrayOfByte[(i4 + 5)] = i1;
+    arrayOfByte[(i4 + 6)] = i2;
+    arrayOfByte[(i4 + 7)] = i3;
+    this.jdField_a_of_type_Int = (i4 + 8);
   }
   
   public static void a(long paramLong1, long paramLong2, int paramInt)
@@ -219,66 +216,72 @@ public class SharpReport_OffLine
   {
     int i = (byte)(paramInt >> 8 & 0xFF);
     int j = (byte)(paramInt & 0xFF);
-    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = i;
-    this.jdField_a_of_type_ArrayOfByte[(this.jdField_a_of_type_Int + 1)] = j;
-    this.jdField_a_of_type_Int += 2;
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    paramInt = this.jdField_a_of_type_Int;
+    arrayOfByte[paramInt] = i;
+    arrayOfByte[(paramInt + 1)] = j;
+    this.jdField_a_of_type_Int = (paramInt + 2);
   }
   
   public int a(int paramInt1, int paramInt2, long paramLong)
   {
-    int i = 0;
     if (this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader == null) {
-      paramInt2 = -1;
+      return -1;
     }
-    do
+    int i = a();
+    Object localObject = this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader;
+    ((SharpReport_OffLine.ReportHeader)localObject).e = jdField_a_of_type_ArrayOfJavaLangString[i];
+    ((SharpReport_OffLine.ReportHeader)localObject).d = a();
+    localObject = this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader;
+    ((SharpReport_OffLine.ReportHeader)localObject).jdField_a_of_type_Int = 0;
+    ((SharpReport_OffLine.ReportHeader)localObject).jdField_b_of_type_Int = paramInt2;
+    if (paramLong != 0L) {
+      ((SharpReport_OffLine.ReportHeader)localObject).jdField_b_of_type_Long = paramLong;
+    }
+    this.jdField_a_of_type_Int = 0;
+    if (a(paramInt1) < 0) {
+      return -1;
+    }
+    paramInt2 = this.jdField_a_of_type_Int;
+    if (paramInt2 > 0)
     {
-      return paramInt2;
-      int j = a();
-      this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.e = jdField_a_of_type_ArrayOfJavaLangString[j];
-      this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.d = a();
-      this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_b_of_type_Int = paramInt2;
-      if (paramLong != 0L) {
-        this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_b_of_type_Long = paramLong;
-      }
-      this.jdField_a_of_type_Int = 0;
-      if (a(paramInt1) < 0) {
-        return -1;
-      }
-      if (this.jdField_a_of_type_Int <= 0) {
-        break;
-      }
-      byte[] arrayOfByte = new byte[this.jdField_a_of_type_Int];
+      localObject = new byte[paramInt2];
       paramInt2 = 0;
       while (paramInt2 < this.jdField_a_of_type_Int)
       {
-        arrayOfByte[paramInt2] = this.jdField_a_of_type_ArrayOfByte[paramInt2];
+        localObject[paramInt2] = this.jdField_a_of_type_ArrayOfByte[paramInt2];
         paramInt2 += 1;
       }
-      a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_a_of_type_Long, arrayOfByte);
+      a(this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_a_of_type_Long, (byte[])localObject);
       this.jdField_a_of_type_Int = 0;
-      paramInt2 = i;
-    } while (!QLog.isColorLevel());
-    QLog.d("SharpReport_Node", 2, "report_node is" + paramInt1);
-    return 0;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("report_node is");
+        ((StringBuilder)localObject).append(paramInt1);
+        QLog.d("SharpReport_Node", 2, ((StringBuilder)localObject).toString());
+      }
+      return 0;
+    }
     return -1;
   }
   
   public void a(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader == null) {
+    SharpReport_OffLine.ReportHeader localReportHeader = this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader;
+    if (localReportHeader == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_b_of_type_Long = paramLong3;
-    this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_c_of_type_Long = paramLong1;
-    this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.jdField_c_of_type_JavaLangString = String.valueOf(AppSetting.a());
+    localReportHeader.jdField_b_of_type_Long = paramLong3;
+    localReportHeader.jdField_a_of_type_Long = paramLong2;
+    localReportHeader.jdField_c_of_type_Long = paramLong1;
+    localReportHeader.jdField_c_of_type_JavaLangString = String.valueOf(AppSetting.a());
     this.jdField_a_of_type_ComTencentAvSharpReport_OffLine$ReportHeader.f = AppSetting.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.SharpReport_OffLine
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:name="shape_phone_bind_button"
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="13.0dip" />
-    <size android:height="26.0dip" />
-    <solid android:color="#ffebedf4" />
+    <solid android:color="#fff5f6fa" />
+    <corners android:radius="12.0px" />
 </shape>

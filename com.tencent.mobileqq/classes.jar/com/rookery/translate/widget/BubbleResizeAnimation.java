@@ -31,8 +31,11 @@ public class BubbleResizeAnimation
     super.applyTransformation(paramFloat, paramTransformation);
     if (paramFloat < 1.0F)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = (this.b + (int)((this.d - this.b) * paramFloat));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = (this.jdField_a_of_type_Int + (int)((this.c - this.jdField_a_of_type_Int) * paramFloat));
+      paramTransformation = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+      int i = this.b;
+      paramTransformation.height = (i + (int)((this.d - i) * paramFloat));
+      i = this.jdField_a_of_type_Int;
+      paramTransformation.width = (i + (int)((this.c - i) * paramFloat));
       this.jdField_a_of_type_AndroidViewView.requestLayout();
     }
   }

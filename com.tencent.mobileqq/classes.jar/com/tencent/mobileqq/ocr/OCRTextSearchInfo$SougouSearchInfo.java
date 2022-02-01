@@ -20,17 +20,27 @@ public class OCRTextSearchInfo$SougouSearchInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nSougouSearchInfo");
-    localStringBuilder.append("\n |-").append("title:").append(this.title);
-    localStringBuilder.append("\n |-").append("jumpURL:").append(this.jumpURL);
-    localStringBuilder.append("\n |-").append("summaryPic:").append(this.summaryPic);
-    localStringBuilder.append("\n |-").append("titleKeyWords:").append(this.titleKeyWords);
-    localStringBuilder.append("\n |-").append("abstractStrKeyWords:").append(this.abstractStrKeyWords);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("title:");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("jumpURL:");
+    localStringBuilder.append(this.jumpURL);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("summaryPic:");
+    localStringBuilder.append(this.summaryPic);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("titleKeyWords:");
+    localStringBuilder.append(this.titleKeyWords);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("abstractStrKeyWords:");
+    localStringBuilder.append(this.abstractStrKeyWords);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo
  * JD-Core Version:    0.7.0.1
  */

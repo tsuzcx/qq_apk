@@ -15,10 +15,14 @@ class ConfigHandler$1
   public void run()
   {
     File localFile = new File(this.this$0.a.getApplication().getFilesDir(), "qq_safe_jump_whitelist.zip");
-    String str = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
-    int i = HttpDownloadUtil.downloadData(this.this$0.a, str, localFile);
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpWhiteList", 2, "handleJumpWhiteList download: " + i);
+    Object localObject = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
+    int i = HttpDownloadUtil.downloadData(this.this$0.a, (String)localObject, localFile);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleJumpWhiteList download: ");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("JumpWhiteList", 2, ((StringBuilder)localObject).toString());
     }
     if (i == 0)
     {
@@ -30,7 +34,7 @@ class ConfigHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.1
  * JD-Core Version:    0.7.0.1
  */

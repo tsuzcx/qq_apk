@@ -3,6 +3,7 @@ package com.tencent.mobileqq.activity.shortvideo;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -12,9 +13,10 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
+import com.tencent.aelight.camera.videoplay.IHWVideoPlay;
 import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.common.GloableValue;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
@@ -28,7 +30,7 @@ public class PreviewVideoActivity
   implements View.OnClickListener, ImageViewVideoPlayer.IMPlayerEndListener
 {
   private int jdField_a_of_type_Int;
-  private HWVideoPlayView jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView;
+  private GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
   private ImageViewVideoPlayer jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer;
   private String jdField_a_of_type_JavaLangString;
   
@@ -43,19 +45,25 @@ public class PreviewVideoActivity
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
+    int i = paramView.getId();
+    if (i != 2131364037) {
+      if (i != 2131364052)
+      {
+        if (i != 2131365132) {
+          break label50;
+        }
+      }
+      else
+      {
+        setResult(-1);
+        finish();
+        break label50;
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      finish();
-      overridePendingTransition(2130771999, 2130772003);
-      continue;
-      setResult(-1);
-      finish();
-    }
+    finish();
+    overridePendingTransition(2130772011, 2130772015);
+    label50:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -67,94 +75,101 @@ public class PreviewVideoActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    this.mNeedStatusTrans = true;
-    this.mActNeedImmersive = false;
+    this.i = true;
+    this.j = false;
     super.onCreate(paramBundle);
-    setContentView(2131562661);
+    setContentView(2131562473);
     try
     {
-      if (VideoEnvironment.loadAVCodecSo() != 0)
-      {
-        QLog.e("PreviewVideoActivity", 4, "load so failed");
-        finish();
+      if (VideoEnvironment.loadAVCodecSo() == 0) {
+        break label54;
       }
-      GloableValue.a();
-      if (getIntent() == null)
-      {
-        Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131708400), 1).show();
-        finish();
-        return;
-      }
+      QLog.e("PreviewVideoActivity", 4, "load so failed");
+      finish();
     }
     catch (Exception paramBundle)
     {
-      for (;;)
-      {
-        QLog.e("PreviewVideoActivity", 4, "load so failed");
-        finish();
-      }
+      label42:
+      label54:
       Object localObject1;
       Object localObject2;
-      if (getIntent().getBooleanExtra("from_qzone_camera", false))
-      {
-        localObject1 = getIntent().getStringExtra("video_path");
-        localObject2 = getIntent().getStringExtra("audio_path");
-        if (TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131708399), 1).show();
-          QLog.e("PreviewVideoActivity", 4, "videoPath is null");
-          finish();
-          return;
-        }
-        paramBundle = new EncodeVideoUtil.VideoInfo();
-        paramBundle.jdField_a_of_type_JavaLangString = ((String)localObject1);
-        paramBundle.b = ((String)localObject2);
-        findViewById(2131377209).setVisibility(0);
-        findViewById(2131364116).setOnClickListener(this);
-        findViewById(2131364131).setOnClickListener(this);
-      }
+      int i;
       FrameLayout.LayoutParams localLayoutParams;
-      for (;;)
-      {
-        localObject1 = (FrameLayout)findViewById(2131381625);
-        localObject2 = getResources().getDisplayMetrics();
-        localLayoutParams = new FrameLayout.LayoutParams(((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels, 17);
-        if (paramBundle == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView = new HWVideoPlayView(this);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.setFilePath(paramBundle.jdField_a_of_type_JavaLangString, paramBundle.b);
-        ((FrameLayout)localObject1).addView(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView, localLayoutParams);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.b();
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.setRepeat(true);
-        return;
-        int i = getIntent().getIntExtra("video_type", -1);
-        if ((i != 0) && (i != 1))
-        {
-          Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131708398), 1).show();
-          QLog.e("PreviewVideoActivity", 4, "init error, mVideoType=" + i);
-          finish();
-          return;
-        }
-        this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("video_source_path");
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131708401), 1).show();
-          QLog.e("PreviewVideoActivity", 4, "init error, mSourcePath=" + this.jdField_a_of_type_JavaLangString);
-          finish();
-          return;
-        }
-        findViewById(2131379091).setVisibility(0);
-        findViewById(2131365255).setOnClickListener(this);
-        paramBundle = EncodeVideoUtil.a(this.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_Int = getIntent().getBundleExtra("encode_video_params").getInt("sv_total_frame_count");
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer = new ImageViewVideoPlayer(getApplicationContext());
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setCyclePlay(true);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.updateUISize(((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels, false, ScreenUtil.dip2px(5.0F));
-      ((FrameLayout)localObject1).addView(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer, localLayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setIMPlayerEndListener(this);
+      break label42;
     }
+    QLog.e("PreviewVideoActivity", 4, "load so failed");
+    finish();
+    GloableValue.a();
+    if (getIntent() == null)
+    {
+      Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131708406), 1).show();
+      finish();
+      return;
+    }
+    if (getIntent().getBooleanExtra("from_qzone_camera", false))
+    {
+      localObject1 = getIntent().getStringExtra("video_path");
+      localObject2 = getIntent().getStringExtra("audio_path");
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131708405), 1).show();
+        QLog.e("PreviewVideoActivity", 4, "videoPath is null");
+        finish();
+        return;
+      }
+      paramBundle = new EncodeVideoUtil.VideoInfo();
+      paramBundle.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      paramBundle.b = ((String)localObject2);
+      findViewById(2131376669).setVisibility(0);
+      findViewById(2131364037).setOnClickListener(this);
+      findViewById(2131364052).setOnClickListener(this);
+    }
+    else
+    {
+      i = getIntent().getIntExtra("video_type", -1);
+      if ((i != 0) && (i != 1))
+      {
+        Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131708404), 1).show();
+        paramBundle = new StringBuilder();
+        paramBundle.append("init error, mVideoType=");
+        paramBundle.append(i);
+        QLog.e("PreviewVideoActivity", 4, paramBundle.toString());
+        finish();
+        return;
+      }
+      this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("video_source_path");
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131708407), 1).show();
+        paramBundle = new StringBuilder();
+        paramBundle.append("init error, mSourcePath=");
+        paramBundle.append(this.jdField_a_of_type_JavaLangString);
+        QLog.e("PreviewVideoActivity", 4, paramBundle.toString());
+        finish();
+        return;
+      }
+      findViewById(2131378460).setVisibility(0);
+      findViewById(2131365132).setOnClickListener(this);
+      paramBundle = EncodeVideoUtil.a(this.jdField_a_of_type_JavaLangString);
+    }
+    localObject1 = (FrameLayout)findViewById(2131380856);
+    localObject2 = getResources().getDisplayMetrics();
+    localLayoutParams = new FrameLayout.LayoutParams(((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels, 17);
+    if (paramBundle != null)
+    {
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView = ((IHWVideoPlay)QRoute.api(IHWVideoPlay.class)).getHWVideoPlayView(this);
+      ((IHWVideoPlay)QRoute.api(IHWVideoPlay.class)).setFilePath(this.jdField_a_of_type_AndroidOpenglGLSurfaceView, paramBundle.jdField_a_of_type_JavaLangString, paramBundle.b);
+      ((FrameLayout)localObject1).addView(this.jdField_a_of_type_AndroidOpenglGLSurfaceView, localLayoutParams);
+      ((IHWVideoPlay)QRoute.api(IHWVideoPlay.class)).startPlay(this.jdField_a_of_type_AndroidOpenglGLSurfaceView);
+      ((IHWVideoPlay)QRoute.api(IHWVideoPlay.class)).setRepeat(this.jdField_a_of_type_AndroidOpenglGLSurfaceView, true);
+      return;
+    }
+    this.jdField_a_of_type_Int = getIntent().getBundleExtra("encode_video_params").getInt("sv_total_frame_count");
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer = new ImageViewVideoPlayer(getApplicationContext());
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setCyclePlay(true);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.updateUISize(((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels, false, ScreenUtil.dip2px(5.0F));
+    ((FrameLayout)localObject1).addView(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer, localLayoutParams);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setIMPlayerEndListener(this);
   }
   
   public void onDestroy()
@@ -163,29 +178,32 @@ public class PreviewVideoActivity
       QLog.d("PreviewVideoActivity", 2, "onDestroy");
     }
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer != null)
+    ImageViewVideoPlayer localImageViewVideoPlayer = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer;
+    if (localImageViewVideoPlayer != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.stopPlayer();
+      localImageViewVideoPlayer.stopPlayer();
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.releasePlayer();
     }
     GloableValue.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView != null)
+    if (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.f();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView = null;
+      ((IHWVideoPlay)QRoute.api(IHWVideoPlay.class)).stopPlay(this.jdField_a_of_type_AndroidOpenglGLSurfaceView);
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView = null;
     }
   }
   
   public void onDrawLastFrameEnd() {}
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.stopPlayer();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer;
+    if (localObject != null) {
+      ((ImageViewVideoPlayer)localObject).stopPlayer();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.onPause();
+    localObject = this.jdField_a_of_type_AndroidOpenglGLSurfaceView;
+    if (localObject != null) {
+      ((GLSurfaceView)localObject).onPause();
     }
   }
   
@@ -200,7 +218,7 @@ public class PreviewVideoActivity
   
   public void onPlayerRecyle() {}
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
@@ -208,22 +226,24 @@ public class PreviewVideoActivity
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.initPlayer(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.startPlayer();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.onResume();
+    GLSurfaceView localGLSurfaceView = this.jdField_a_of_type_AndroidOpenglGLSurfaceView;
+    if (localGLSurfaceView != null) {
+      localGLSurfaceView.onResume();
     }
   }
   
-  public void onStop()
+  protected void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.stopPlayer();
+    ImageViewVideoPlayer localImageViewVideoPlayer = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer;
+    if (localImageViewVideoPlayer != null) {
+      localImageViewVideoPlayer.stopPlayer();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.PreviewVideoActivity
  * JD-Core Version:    0.7.0.1
  */

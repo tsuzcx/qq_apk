@@ -24,35 +24,42 @@ class SearchResultAdapter$SearchResultViewHolder$1
   
   public void onClick(View paramView)
   {
-    try
+    for (;;)
     {
-      ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-      paramView = this.val$activity;
-      MiniAppInfo localMiniAppInfo = this.val$miniAppInfo;
-      if (this.val$searchInfo.getType() == 5) {}
-      for (int i = 3028;; i = 3026)
+      try
       {
-        MiniAppController.launchMiniAppByAppInfo(paramView, localMiniAppInfo, i);
-        ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).updateHistorySearchList(this.val$keyword);
-        paramView = new MiniAppConfig(this.val$miniAppInfo);
-        paramView.launchParam.scene = 3026;
-        if (this.val$searchInfo.getType() == 5) {
-          paramView.launchParam.scene = 3028;
+        ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+        paramView = this.val$activity;
+        localObject = this.val$miniAppInfo;
+        if (this.val$searchInfo.getType() == 5)
+        {
+          i = 3028;
+          MiniAppController.launchMiniAppByAppInfo(paramView, (MiniAppInfo)localObject, i);
+          ((MiniAppSearchDataManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_SEARCH_MANAGER)).updateHistorySearchList(this.val$keyword);
+          paramView = new MiniAppConfig(this.val$miniAppInfo);
+          paramView.launchParam.scene = 3026;
+          if (this.val$searchInfo.getType() == 5) {
+            paramView.launchParam.scene = 3028;
+          }
+          MiniProgramLpReportDC04239.reportAsync(paramView, "desktop", "search", this.val$reserves_click, this.val$keyword);
+          return;
         }
-        MiniProgramLpReportDC04239.reportAsync(paramView, "desktop", "search", this.val$reserves_click, this.val$keyword);
+      }
+      catch (Exception paramView)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("SearchResultAdapter, start miniApp exception: ");
+        ((StringBuilder)localObject).append(Log.getStackTraceString(paramView));
+        QLog.e("SearchResultAdapter", 1, ((StringBuilder)localObject).toString());
         return;
       }
-      return;
-    }
-    catch (Exception paramView)
-    {
-      QLog.e("SearchResultAdapter", 1, "SearchResultAdapter, start miniApp exception: " + Log.getStackTraceString(paramView));
+      int i = 3026;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchResultAdapter.SearchResultViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

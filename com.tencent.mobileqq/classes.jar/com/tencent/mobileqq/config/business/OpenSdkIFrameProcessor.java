@@ -13,12 +13,14 @@ public class OpenSdkIFrameProcessor
   public static boolean a()
   {
     OpenSdkIFrameBean localOpenSdkIFrameBean = (OpenSdkIFrameBean)QConfigManager.a().a(675);
-    if (localOpenSdkIFrameBean != null) {}
-    for (boolean bool = localOpenSdkIFrameBean.a();; bool = true)
-    {
-      QLog.d("OpenSdkIFrameProcessor", 1, new Object[] { "isEnableIFrame = ", Boolean.valueOf(bool) });
-      return bool;
+    boolean bool;
+    if (localOpenSdkIFrameBean != null) {
+      bool = localOpenSdkIFrameBean.a();
+    } else {
+      bool = true;
     }
+    QLog.d("OpenSdkIFrameProcessor", 1, new Object[] { "isEnableIFrame = ", Boolean.valueOf(bool) });
+    return bool;
   }
   
   @NonNull
@@ -31,24 +33,26 @@ public class OpenSdkIFrameProcessor
   public OpenSdkIFrameBean a(QConfItem[] paramArrayOfQConfItem)
   {
     int i = 0;
-    if (paramArrayOfQConfItem == null) {}
-    for (;;)
+    if (paramArrayOfQConfItem != null) {
+      i = paramArrayOfQConfItem.length;
+    }
+    QLog.d("OpenSdkIFrameProcessor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      QLog.d("OpenSdkIFrameProcessor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
-      if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-        break;
-      }
       new OpenSdkIFrameBean();
       return OpenSdkIFrameBean.a(paramArrayOfQConfItem);
-      i = paramArrayOfQConfItem.length;
     }
     return null;
   }
   
   public void a(OpenSdkIFrameBean paramOpenSdkIFrameBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenSdkIFrameProcessor", 2, "onUpdate " + paramOpenSdkIFrameBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramOpenSdkIFrameBean.toString());
+      QLog.d("OpenSdkIFrameProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -81,7 +85,7 @@ public class OpenSdkIFrameProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkIFrameProcessor
  * JD-Core Version:    0.7.0.1
  */

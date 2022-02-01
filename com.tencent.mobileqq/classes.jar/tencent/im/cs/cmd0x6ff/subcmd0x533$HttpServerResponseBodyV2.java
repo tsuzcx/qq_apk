@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class subcmd0x533$HttpServerResponseBodyV2
   extends MessageMicro<HttpServerResponseBodyV2>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58, 64, 72 }, new String[] { "int32_tencent_errorcode", "string_tencent_errormsg", "int32_sougou_errorcode", "string_sougou_errormsg", "rpt_msg_cards", "string_request_class", "rpt_msg_container_properties", "bool_is_recommended", "int64_session_id" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), "", null, "", null, Boolean.valueOf(false), Long.valueOf(0L) }, HttpServerResponseBodyV2.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_is_recommended = PBField.initBool(false);
   public final PBInt32Field int32_sougou_errorcode = PBField.initInt32(0);
   public final PBInt32Field int32_tencent_errorcode = PBField.initInt32(0);
@@ -22,10 +22,16 @@ public final class subcmd0x533$HttpServerResponseBodyV2
   public final PBStringField string_request_class = PBField.initString("");
   public final PBStringField string_sougou_errormsg = PBField.initString("");
   public final PBStringField string_tencent_errormsg = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50, 58, 64, 72 }, new String[] { "int32_tencent_errorcode", "string_tencent_errormsg", "int32_sougou_errorcode", "string_sougou_errormsg", "rpt_msg_cards", "string_request_class", "rpt_msg_container_properties", "bool_is_recommended", "int64_session_id" }, new Object[] { localInteger, "", localInteger, "", null, "", null, Boolean.valueOf(false), Long.valueOf(0L) }, HttpServerResponseBodyV2.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x533.HttpServerResponseBodyV2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,23 +8,24 @@ import java.util.List;
 
 public class ClientSettings
 {
-  private String a;
-  private String b;
-  private List<Scope> c;
-  private String d;
-  private List<String> e;
-  private String f;
-  private SubAppInfo g;
-  private WeakReference<Activity> h;
-  private boolean i;
+  private List<String> apiName;
+  private String appId;
+  private String clientClassName;
+  private String clientPackageName;
+  private WeakReference<Activity> cpActivity;
+  private boolean hasActivity;
+  private String innerHmsPkg;
+  private String mCpID;
+  private List<Scope> scopes;
+  private SubAppInfo subAppId;
   
   public ClientSettings(String paramString1, String paramString2, List<Scope> paramList, String paramString3, List<String> paramList1)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramList;
-    this.d = paramString3;
-    this.e = paramList1;
+    this.clientPackageName = paramString1;
+    this.clientClassName = paramString2;
+    this.scopes = paramList;
+    this.appId = paramString3;
+    this.apiName = paramList1;
   }
   
   public ClientSettings(String paramString1, String paramString2, List<Scope> paramList, String paramString3, List<String> paramList1, SubAppInfo paramSubAppInfo)
@@ -35,96 +36,107 @@ public class ClientSettings
   
   public List<String> getApiName()
   {
-    return this.e;
+    return this.apiName;
   }
   
   public String getAppID()
   {
-    return this.d;
+    return this.appId;
   }
   
   public String getClientClassName()
   {
-    return this.b;
+    return this.clientClassName;
   }
   
   public String getClientPackageName()
   {
-    return this.a;
+    return this.clientPackageName;
   }
   
   public Activity getCpActivity()
   {
-    if (this.h == null) {
+    WeakReference localWeakReference = this.cpActivity;
+    if (localWeakReference == null) {
       return null;
     }
-    return (Activity)this.h.get();
+    return (Activity)localWeakReference.get();
   }
   
   public String getCpID()
   {
-    return this.f;
+    return this.mCpID;
+  }
+  
+  public String getInnerHmsPkg()
+  {
+    return this.innerHmsPkg;
   }
   
   public List<Scope> getScopes()
   {
-    return this.c;
+    return this.scopes;
   }
   
   public SubAppInfo getSubAppID()
   {
-    return this.g;
+    return this.subAppId;
   }
   
   public boolean isHasActivity()
   {
-    return this.i;
+    return this.hasActivity;
   }
   
   public void setApiName(List<String> paramList)
   {
-    this.e = paramList;
+    this.apiName = paramList;
   }
   
   public void setAppID(String paramString)
   {
-    this.d = paramString;
+    this.appId = paramString;
   }
   
   public void setClientClassName(String paramString)
   {
-    this.b = paramString;
+    this.clientClassName = paramString;
   }
   
   public void setClientPackageName(String paramString)
   {
-    this.a = paramString;
+    this.clientPackageName = paramString;
   }
   
   public void setCpActivity(Activity paramActivity)
   {
-    this.h = new WeakReference(paramActivity);
-    this.i = true;
+    this.cpActivity = new WeakReference(paramActivity);
+    this.hasActivity = true;
   }
   
   public void setCpID(String paramString)
   {
-    this.f = paramString;
+    this.mCpID = paramString;
+  }
+  
+  public void setInnerHmsPkg(String paramString)
+  {
+    this.innerHmsPkg = paramString;
   }
   
   public void setScopes(List<Scope> paramList)
   {
-    this.c = paramList;
+    this.scopes = paramList;
   }
   
   public void setSubAppId(SubAppInfo paramSubAppInfo)
   {
-    this.g = paramSubAppInfo;
+    this.subAppId = paramSubAppInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.ClientSettings
  * JD-Core Version:    0.7.0.1
  */

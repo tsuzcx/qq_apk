@@ -11,26 +11,26 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.dpc.api.IDPCApi;
 import com.tencent.mobileqq.dpc.enumname.DPCNames;
-import com.tencent.mobileqq.extendfriend.apollo.face.IConst;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.hotpic.HotPicData;
 import com.tencent.mobileqq.hotpic.HotPicDownLoader;
 import com.tencent.mobileqq.hotpic.HotPicManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.CaptureParam;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.QQCrashReportManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,12 +45,7 @@ import java.util.Set;
 public class CleanCache
   extends AsyncStep
 {
-  public static final String[] a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { AppConstants.S_DCARD_COLLECTION };
-  }
+  public static final String[] a = { AppConstants.S_DCARD_COLLECTION };
   
   private int a(int paramInt)
   {
@@ -58,531 +53,507 @@ public class CleanCache
     arrayOfString[0] = AppConstants.PATH_HEAD_HD;
     arrayOfString[1] = "/data/data/com.tencent.mobileqq/files/head/_hd/";
     int k = arrayOfString.length;
-    int i = 0;
-    int j = paramInt;
-    paramInt = i;
-    if (paramInt < k)
+    int i = paramInt;
+    paramInt = 0;
+    while (paramInt < k)
     {
       Object localObject = new File(arrayOfString[paramInt]);
-      i = j;
-      int m;
+      int j = i;
       if (((File)localObject).exists())
       {
-        i = j;
+        j = i;
         if (((File)localObject).isDirectory())
         {
           localObject = ((File)localObject).listFiles();
-          i = j;
+          j = i;
           if (localObject != null)
           {
-            i = j;
+            j = i;
             if (localObject.length > 3000)
             {
-              m = localObject.length;
               i = localObject.length;
-              j = m - 2500;
+              int m = localObject.length;
+              j = i - 2500;
               localObject = a((File[])localObject);
-              i = i - localObject.length + 0;
-              if (QLog.isColorLevel()) {
-                QLog.d("QQInitHandler", 2, "onCleanCache. after delTemporaryQQHead. totalCount=" + m + ", currNeedDelCount=" + j + ", delCount=" + i);
+              m = m - localObject.length + 0;
+              StringBuilder localStringBuilder;
+              if (QLog.isColorLevel())
+              {
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("onCleanCache. after delTemporaryQQHead. totalCount=");
+                localStringBuilder.append(i);
+                localStringBuilder.append(", currNeedDelCount=");
+                localStringBuilder.append(j);
+                localStringBuilder.append(", delCount=");
+                localStringBuilder.append(m);
+                QLog.d("QQInitHandler", 2, localStringBuilder.toString());
               }
-              if (i < j) {
-                break label192;
+              if (m < j)
+              {
+                Arrays.sort((Object[])localObject, new CleanCache.2(this));
+                int n = localObject.length;
+                localObject = a((File[])localObject, m, j);
+                m += n - localObject.length;
+                if (QLog.isColorLevel())
+                {
+                  localStringBuilder = new StringBuilder();
+                  localStringBuilder.append("onCleanCache. after delSecondaryQQHead. totalCount=");
+                  localStringBuilder.append(i);
+                  localStringBuilder.append(", currNeedDelCount=");
+                  localStringBuilder.append(j);
+                  localStringBuilder.append(", delCount=");
+                  localStringBuilder.append(m);
+                  QLog.d("QQInitHandler", 2, localStringBuilder.toString());
+                }
+                if (m < j) {
+                  a((File[])localObject, m, j, i);
+                }
               }
-              i = j;
             }
           }
         }
       }
-      for (;;)
-      {
-        paramInt += 1;
-        j = i;
-        break;
-        label192:
-        Arrays.sort((Object[])localObject, new CleanCache.2(this));
-        int n = localObject.length;
-        localObject = a((File[])localObject, i, j);
-        n = i + (n - localObject.length);
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 2, "onCleanCache. after delSecondaryQQHead. totalCount=" + m + ", currNeedDelCount=" + j + ", delCount=" + n);
-        }
-        i = j;
-        if (n < j)
-        {
-          a((File[])localObject, n, j, m);
-          i = j;
-        }
-      }
+      paramInt += 1;
+      i = j;
     }
-    return j;
+    return i;
   }
   
-  /* Error */
   private int a(File paramFile, int paramInt1, int paramInt2)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokevirtual 37	java/io/File:exists	()Z
-    //   4: ifeq +496 -> 500
-    //   7: aload_1
-    //   8: invokevirtual 40	java/io/File:isDirectory	()Z
-    //   11: ifeq +489 -> 500
-    //   14: aload_1
-    //   15: invokevirtual 44	java/io/File:listFiles	()[Ljava/io/File;
-    //   18: astore 14
-    //   20: aload 14
-    //   22: ifnonnull +5 -> 27
-    //   25: iconst_0
-    //   26: ireturn
-    //   27: aload 14
-    //   29: arraylength
-    //   30: istore 5
-    //   32: lconst_0
-    //   33: lstore 8
-    //   35: aload_1
-    //   36: getstatic 112	com/tencent/mobileqq/transfile/URLDrawableHelper:diskCachePath	Ljava/io/File;
-    //   39: if_acmpne +40 -> 79
-    //   42: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   45: ifeq +34 -> 79
-    //   48: ldc 54
-    //   50: iconst_2
-    //   51: new 56	java/lang/StringBuilder
-    //   54: dup
-    //   55: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   58: ldc 114
-    //   60: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: iload 5
-    //   65: invokevirtual 66	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   68: ldc 116
-    //   70: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   79: iload 5
-    //   81: iload_2
-    //   82: if_icmple +406 -> 488
-    //   85: aload 14
-    //   87: new 118	com/tencent/mobileqq/app/automator/step/CleanCache$3
-    //   90: dup
-    //   91: aload_0
-    //   92: invokespecial 119	com/tencent/mobileqq/app/automator/step/CleanCache$3:<init>	(Lcom/tencent/mobileqq/app/automator/step/CleanCache;)V
-    //   95: invokestatic 89	java/util/Arrays:sort	([Ljava/lang/Object;Ljava/util/Comparator;)V
-    //   98: aload 14
-    //   100: arraylength
-    //   101: istore 7
-    //   103: iconst_0
-    //   104: istore 6
-    //   106: iload 5
-    //   108: istore 4
-    //   110: lload 8
-    //   112: lstore 10
-    //   114: iload 4
-    //   116: istore_2
-    //   117: iload 6
-    //   119: iload 7
-    //   121: if_icmpge +40 -> 161
-    //   124: aload 14
-    //   126: iload 6
-    //   128: aaload
-    //   129: astore 15
-    //   131: lload 8
-    //   133: aload 15
-    //   135: invokevirtual 123	java/io/File:length	()J
-    //   138: ladd
-    //   139: lstore 8
-    //   141: aload 15
-    //   143: invokevirtual 126	java/io/File:delete	()Z
-    //   146: pop
-    //   147: iload 4
-    //   149: iconst_1
-    //   150: isub
-    //   151: istore_2
-    //   152: iload_2
-    //   153: iload_3
-    //   154: if_icmpgt +146 -> 300
-    //   157: lload 8
-    //   159: lstore 10
-    //   161: iload 5
-    //   163: iload_3
-    //   164: isub
-    //   165: istore_3
-    //   166: invokestatic 131	java/lang/System:currentTimeMillis	()J
-    //   169: lstore 12
-    //   171: aload 14
-    //   173: arraylength
-    //   174: istore 4
-    //   176: iload 4
-    //   178: iload_2
-    //   179: isub
-    //   180: istore 4
-    //   182: iload_3
-    //   183: istore_2
-    //   184: iload 4
-    //   186: aload 14
-    //   188: arraylength
-    //   189: if_icmpge +146 -> 335
-    //   192: aload 14
-    //   194: iload 4
-    //   196: aaload
-    //   197: astore 15
-    //   199: lload 10
-    //   201: lstore 8
-    //   203: iload_2
-    //   204: istore_3
-    //   205: aload 15
-    //   207: invokevirtual 37	java/io/File:exists	()Z
-    //   210: ifeq +273 -> 483
-    //   213: lload 10
-    //   215: lstore 8
-    //   217: iload_2
-    //   218: istore_3
-    //   219: aload 15
-    //   221: invokevirtual 134	java/io/File:isFile	()Z
-    //   224: ifeq +259 -> 483
-    //   227: lload 12
-    //   229: aload 15
-    //   231: invokevirtual 137	java/io/File:lastModified	()J
-    //   234: lsub
-    //   235: ldc2_w 138
-    //   238: lcmp
-    //   239: ifle +96 -> 335
-    //   242: lload 10
-    //   244: aload 15
-    //   246: invokevirtual 123	java/io/File:length	()J
-    //   249: ladd
-    //   250: lstore 10
-    //   252: aload 15
-    //   254: invokevirtual 126	java/io/File:delete	()Z
-    //   257: pop
-    //   258: iload_2
-    //   259: iconst_1
-    //   260: iadd
-    //   261: istore_2
-    //   262: lload 10
-    //   264: lstore 8
-    //   266: iload_2
-    //   267: istore_3
-    //   268: iload 4
-    //   270: sipush 200
-    //   273: irem
-    //   274: ifne +209 -> 483
-    //   277: ldc2_w 140
-    //   280: invokestatic 147	java/lang/Thread:sleep	(J)V
-    //   283: lload 10
-    //   285: lstore 8
-    //   287: iload 4
-    //   289: iconst_1
-    //   290: iadd
-    //   291: istore 4
-    //   293: lload 8
-    //   295: lstore 10
-    //   297: goto -113 -> 184
-    //   300: iload_2
-    //   301: sipush 200
-    //   304: irem
-    //   305: ifne +9 -> 314
-    //   308: ldc2_w 140
-    //   311: invokestatic 147	java/lang/Thread:sleep	(J)V
-    //   314: iload 6
-    //   316: iconst_1
-    //   317: iadd
-    //   318: istore 6
-    //   320: iload_2
-    //   321: istore 4
-    //   323: goto -213 -> 110
-    //   326: astore 15
-    //   328: lload 10
-    //   330: lstore 8
-    //   332: goto -45 -> 287
-    //   335: iload_2
-    //   336: istore_3
-    //   337: aload_1
-    //   338: getstatic 112	com/tencent/mobileqq/transfile/URLDrawableHelper:diskCachePath	Ljava/io/File;
-    //   341: if_acmpne +135 -> 476
-    //   344: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   347: ifeq +46 -> 393
-    //   350: ldc 54
-    //   352: iconst_2
-    //   353: new 56	java/lang/StringBuilder
-    //   356: dup
-    //   357: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   360: ldc 149
-    //   362: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   365: iload_2
-    //   366: invokevirtual 66	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   369: ldc 151
-    //   371: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   374: lload 10
-    //   376: ldc2_w 152
-    //   379: ldiv
-    //   380: ldc2_w 152
-    //   383: ldiv
-    //   384: invokevirtual 156	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   387: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   390: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   393: iload_2
-    //   394: istore_3
-    //   395: iload_2
-    //   396: ifle +80 -> 476
-    //   399: aload_0
-    //   400: getfield 159	com/tencent/mobileqq/app/automator/step/CleanCache:jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   403: getfield 164	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   406: invokevirtual 169	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   409: invokestatic 174	com/tencent/mobileqq/utils/SharedPreUtils:a	(Ljava/lang/String;)J
-    //   412: lstore 8
-    //   414: invokestatic 179	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
-    //   417: ldc2_w 180
-    //   420: ldiv
-    //   421: lstore 10
-    //   423: lload 8
-    //   425: lconst_0
-    //   426: lcmp
-    //   427: ifeq +34 -> 461
-    //   430: lload 10
-    //   432: lload 8
-    //   434: lcmp
-    //   435: ifle +26 -> 461
-    //   438: invokestatic 187	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   441: invokestatic 193	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   444: aconst_null
-    //   445: ldc 195
-    //   447: iconst_1
-    //   448: lload 10
-    //   450: lload 8
-    //   452: lsub
-    //   453: iload_2
-    //   454: i2l
-    //   455: aconst_null
-    //   456: ldc 197
-    //   458: invokevirtual 201	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
-    //   461: aload_0
-    //   462: getfield 159	com/tencent/mobileqq/app/automator/step/CleanCache:jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   465: getfield 164	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   468: invokevirtual 169	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   471: invokestatic 203	com/tencent/mobileqq/utils/SharedPreUtils:a	(Ljava/lang/String;)V
-    //   474: iload_2
-    //   475: istore_3
-    //   476: iload_3
-    //   477: ireturn
-    //   478: astore 15
-    //   480: goto -166 -> 314
-    //   483: iload_3
-    //   484: istore_2
-    //   485: goto -198 -> 287
-    //   488: iconst_0
-    //   489: istore_3
-    //   490: iload 5
-    //   492: istore_2
-    //   493: lload 8
-    //   495: lstore 10
-    //   497: goto -331 -> 166
-    //   500: iconst_0
-    //   501: istore_3
-    //   502: goto -26 -> 476
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	505	0	this	CleanCache
-    //   0	505	1	paramFile	File
-    //   0	505	2	paramInt1	int
-    //   0	505	3	paramInt2	int
-    //   108	214	4	i	int
-    //   30	461	5	j	int
-    //   104	215	6	k	int
-    //   101	21	7	m	int
-    //   33	461	8	l1	long
-    //   112	384	10	l2	long
-    //   169	59	12	l3	long
-    //   18	175	14	arrayOfFile	File[]
-    //   129	124	15	localFile	File
-    //   326	1	15	localInterruptedException1	java.lang.InterruptedException
-    //   478	1	15	localInterruptedException2	java.lang.InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   277	283	326	java/lang/InterruptedException
-    //   308	314	478	java/lang/InterruptedException
-  }
-  
-  private int a(File[] paramArrayOfFile, int paramInt1, int paramInt2, int paramInt3)
-  {
-    int i = 0;
-    if (i < paramArrayOfFile.length)
-    {
-      File localFile = paramArrayOfFile[i];
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-      paramArrayOfFile[i] = null;
-      paramInt1 += 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQInitHandler", 2, "onCleanCache->delRemainQQHead. delete QQHead,filePath=" + localFile.getAbsolutePath());
-      }
-      if (paramInt1 >= paramInt2) {
-        i = paramInt1;
-      }
-    }
-    do
-    {
-      return i;
-      i += 1;
-      break;
-      i = paramInt1;
-    } while (!QLog.isColorLevel());
-    QLog.d("QQInitHandler", 2, "onCleanCache. after delRemainQQHead. totalCount=" + paramInt3 + ", currNeedDelCount=" + paramInt2 + ", delCount=" + paramInt1);
-    return paramInt1;
-  }
-  
-  private void a(EntityManager paramEntityManager, List<Setting> paramList1, int paramInt1, List<Setting> paramList2, int paramInt2)
-  {
+    boolean bool = paramFile.exists();
+    int m = 0;
+    int j = 0;
+    int k = 0;
+    int i = j;
+    File[] arrayOfFile;
     Object localObject;
-    if ((paramList1 != null) && (paramInt1 > paramInt2))
+    if (bool)
     {
-      localObject = paramList2;
-      if (paramList2 == null) {
-        localObject = new ArrayList();
-      }
-      paramList1 = paramList1.iterator();
-      for (;;)
+      i = j;
+      if (paramFile.isDirectory())
       {
-        if (paramList1.hasNext())
+        arrayOfFile = paramFile.listFiles();
+        if (arrayOfFile == null) {
+          return 0;
+        }
+        j = arrayOfFile.length;
+        if ((paramFile == URLDrawableHelper.diskCachePath) && (QLog.isColorLevel()))
         {
-          paramList2 = (Setting)paramList1.next();
-          if ((paramList2 != null) && (!TextUtils.isEmpty(paramList2.uin)))
-          {
-            paramInt2 = 200;
-            if (paramList2.bUsrType == 32)
-            {
-              paramInt2 = 202;
-              paramInt1 = 0;
-            }
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("before onCleanCache diskCachePath. ");
+          ((StringBuilder)localObject).append(j);
+          ((StringBuilder)localObject).append(" cache file(s)");
+          QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
+        }
+        if (j > paramInt1)
+        {
+          Arrays.sort(arrayOfFile, new CleanCache.3(this));
+          m = arrayOfFile.length;
+          i = j;
+          l1 = 0L;
         }
       }
     }
     for (;;)
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCustomFaceFilePathBySetting(paramList2, paramInt2, paramInt1);
-      if ((TextUtils.isEmpty(str)) || (new File(str).exists())) {
-        break;
-      }
-      ((List)localObject).add(paramList2);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQInitHandler", 2, "cleanSetingData," + paramList2.uin + "," + paramList2.bUsrType + "," + this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCustomFaceFilePathBySetting(paramList2, paramInt2, 0));
-      break;
-      if (paramList2.bUsrType == 16)
+      l2 = l1;
+      paramInt1 = i;
+      if (k < m)
       {
-        paramInt1 = 0;
-        paramInt2 = 16;
+        localObject = arrayOfFile[k];
+        l1 += ((File)localObject).length();
+        ((File)localObject).delete();
+        paramInt1 = i - 1;
+        if (paramInt1 <= paramInt2) {
+          l2 = l1;
+        } else if (paramInt1 % 200 != 0) {}
       }
-      else if (paramList2.bUsrType == 116)
+      try
       {
-        paramInt1 = IConst.a;
+        Thread.sleep(100L);
+        label209:
+        k += 1;
+        i = paramInt1;
         continue;
-        if ((((List)localObject).size() > 0) && (paramEntityManager.isOpen())) {}
-        try
+        l1 = l2;
+        paramInt2 = j - paramInt2;
+        break label242;
+        paramInt1 = j;
+        l1 = 0L;
+        paramInt2 = m;
+        label242:
+        long l3 = System.currentTimeMillis();
+        i = arrayOfFile.length - paramInt1;
+        l2 = l1;
+        paramInt1 = paramInt2;
+        while (i < arrayOfFile.length)
         {
-          paramEntityManager.getTransaction().begin();
-          paramList1 = ((List)localObject).iterator();
-          while (paramList1.hasNext())
+          localObject = arrayOfFile[i];
+          paramInt2 = paramInt1;
+          l1 = l2;
+          if (((File)localObject).exists())
           {
-            paramList2 = (Setting)paramList1.next();
-            if (paramList2 != null) {
-              paramEntityManager.remove(paramList2);
+            paramInt2 = paramInt1;
+            l1 = l2;
+            if (((File)localObject).isFile())
+            {
+              if (l3 - ((File)localObject).lastModified() <= 2592000000L) {
+                break;
+              }
+              l2 += ((File)localObject).length();
+              ((File)localObject).delete();
+              paramInt1 += 1;
+              paramInt2 = paramInt1;
+              l1 = l2;
+              if (i % 200 != 0) {}
             }
           }
-          paramInt1 = 0;
-        }
-        catch (Exception paramList1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("QQInitHandler", 2, "cleanSetingData,", paramList1);
+          try
+          {
+            Thread.sleep(100L);
+            l1 = l2;
+            paramInt2 = paramInt1;
           }
-          return;
-          paramEntityManager.getTransaction().commit();
-          return;
+          catch (InterruptedException localInterruptedException2)
+          {
+            for (;;)
+            {
+              paramInt2 = paramInt1;
+              l1 = l2;
+            }
+          }
+          i += 1;
+          paramInt1 = paramInt2;
+          l2 = l1;
         }
-        finally
+        i = paramInt1;
+        if (paramFile == URLDrawableHelper.diskCachePath)
         {
-          paramEntityManager.getTransaction().end();
+          if (QLog.isColorLevel())
+          {
+            paramFile = new StringBuilder();
+            paramFile.append("after onCleanCache diskCachePath delete ");
+            paramFile.append(paramInt1);
+            paramFile.append(" cache file(s) sumSize:");
+            paramFile.append(l2 / 1024L / 1024L);
+            QLog.d("QQInitHandler", 2, paramFile.toString());
+          }
+          i = paramInt1;
+          if (paramInt1 > 0)
+          {
+            l1 = SharedPreUtils.a(this.mAutomator.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+            l2 = NetConnInfoCenter.getServerTime() / 3600L;
+            if ((l1 != 0L) && (l2 > l1)) {
+              StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "CleanDiskCache", true, l2 - l1, paramInt1, null, "");
+            }
+            SharedPreUtils.a(this.mAutomator.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+            i = paramInt1;
+          }
         }
+        return i;
+      }
+      catch (InterruptedException localInterruptedException1)
+      {
+        break label209;
       }
     }
   }
   
+  private int a(File[] paramArrayOfFile, int paramInt1, int paramInt2, int paramInt3)
+  {
+    int j = 0;
+    int i = paramInt1;
+    paramInt1 = j;
+    while (paramInt1 < paramArrayOfFile.length)
+    {
+      File localFile = paramArrayOfFile[paramInt1];
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      paramArrayOfFile[paramInt1] = null;
+      i += 1;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onCleanCache->delRemainQQHead. delete QQHead,filePath=");
+        localStringBuilder.append(localFile.getAbsolutePath());
+        QLog.d("QQInitHandler", 2, localStringBuilder.toString());
+      }
+      if (i >= paramInt2) {
+        return i;
+      }
+      paramInt1 += 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfFile = new StringBuilder();
+      paramArrayOfFile.append("onCleanCache. after delRemainQQHead. totalCount=");
+      paramArrayOfFile.append(paramInt3);
+      paramArrayOfFile.append(", currNeedDelCount=");
+      paramArrayOfFile.append(paramInt2);
+      paramArrayOfFile.append(", delCount=");
+      paramArrayOfFile.append(i);
+      QLog.d("QQInitHandler", 2, paramArrayOfFile.toString());
+    }
+    return i;
+  }
+  
+  /* Error */
+  private void a(EntityManager paramEntityManager, List<Setting> paramList1, int paramInt1, List<Setting> paramList2, int paramInt2)
+  {
+    // Byte code:
+    //   0: aload_2
+    //   1: ifnull +401 -> 402
+    //   4: iload_3
+    //   5: iload 5
+    //   7: if_icmple +395 -> 402
+    //   10: aload 4
+    //   12: astore 7
+    //   14: aload 4
+    //   16: ifnonnull +12 -> 28
+    //   19: new 218	java/util/ArrayList
+    //   22: dup
+    //   23: invokespecial 219	java/util/ArrayList:<init>	()V
+    //   26: astore 7
+    //   28: aload_2
+    //   29: invokeinterface 225 1 0
+    //   34: astore_2
+    //   35: aload_2
+    //   36: invokeinterface 230 1 0
+    //   41: ifeq +243 -> 284
+    //   44: aload_2
+    //   45: invokeinterface 234 1 0
+    //   50: checkcast 236	com/tencent/mobileqq/data/Setting
+    //   53: astore 4
+    //   55: aload 4
+    //   57: ifnull -22 -> 35
+    //   60: aload 4
+    //   62: getfield 239	com/tencent/mobileqq/data/Setting:uin	Ljava/lang/String;
+    //   65: invokestatic 245	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   68: ifeq +6 -> 74
+    //   71: goto -36 -> 35
+    //   74: sipush 200
+    //   77: istore 5
+    //   79: aload 4
+    //   81: getfield 249	com/tencent/mobileqq/data/Setting:bUsrType	B
+    //   84: bipush 32
+    //   86: if_icmpne +13 -> 99
+    //   89: sipush 202
+    //   92: istore_3
+    //   93: iconst_0
+    //   94: istore 6
+    //   96: goto +40 -> 136
+    //   99: aload 4
+    //   101: getfield 249	com/tencent/mobileqq/data/Setting:bUsrType	B
+    //   104: bipush 16
+    //   106: if_icmpne +9 -> 115
+    //   109: bipush 16
+    //   111: istore_3
+    //   112: goto -19 -> 93
+    //   115: iload 5
+    //   117: istore_3
+    //   118: aload 4
+    //   120: getfield 249	com/tencent/mobileqq/data/Setting:bUsrType	B
+    //   123: bipush 116
+    //   125: if_icmpne -32 -> 93
+    //   128: getstatic 254	com/tencent/mobileqq/extendfriend/apollo/face/IConst:a	I
+    //   131: istore 6
+    //   133: iload 5
+    //   135: istore_3
+    //   136: aload_0
+    //   137: getfield 160	com/tencent/mobileqq/app/automator/step/CleanCache:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   140: getfield 257	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   143: aload 4
+    //   145: iload_3
+    //   146: iload 6
+    //   148: invokevirtual 263	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePathBySetting	(Lcom/tencent/mobileqq/data/Setting;II)Ljava/lang/String;
+    //   151: astore 8
+    //   153: aload 8
+    //   155: invokestatic 245	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   158: ifne -123 -> 35
+    //   161: new 30	java/io/File
+    //   164: dup
+    //   165: aload 8
+    //   167: invokespecial 33	java/io/File:<init>	(Ljava/lang/String;)V
+    //   170: invokevirtual 37	java/io/File:exists	()Z
+    //   173: ifne -138 -> 35
+    //   176: aload 7
+    //   178: aload 4
+    //   180: invokeinterface 267 2 0
+    //   185: pop
+    //   186: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   189: ifeq -154 -> 35
+    //   192: new 54	java/lang/StringBuilder
+    //   195: dup
+    //   196: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   199: astore 8
+    //   201: aload 8
+    //   203: ldc_w 269
+    //   206: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: pop
+    //   210: aload 8
+    //   212: aload 4
+    //   214: getfield 239	com/tencent/mobileqq/data/Setting:uin	Ljava/lang/String;
+    //   217: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: pop
+    //   221: aload 8
+    //   223: ldc_w 271
+    //   226: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: pop
+    //   230: aload 8
+    //   232: aload 4
+    //   234: getfield 249	com/tencent/mobileqq/data/Setting:bUsrType	B
+    //   237: invokevirtual 64	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   240: pop
+    //   241: aload 8
+    //   243: ldc_w 271
+    //   246: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: pop
+    //   250: aload 8
+    //   252: aload_0
+    //   253: getfield 160	com/tencent/mobileqq/app/automator/step/CleanCache:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   256: getfield 257	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   259: aload 4
+    //   261: iload_3
+    //   262: iconst_0
+    //   263: invokevirtual 263	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePathBySetting	(Lcom/tencent/mobileqq/data/Setting;II)Ljava/lang/String;
+    //   266: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: pop
+    //   270: ldc 70
+    //   272: iconst_2
+    //   273: aload 8
+    //   275: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   278: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   281: goto -246 -> 35
+    //   284: aload 7
+    //   286: invokeinterface 275 1 0
+    //   291: ifle +111 -> 402
+    //   294: aload_1
+    //   295: invokevirtual 280	com/tencent/mobileqq/persistence/EntityManager:isOpen	()Z
+    //   298: ifeq +104 -> 402
+    //   301: aload_1
+    //   302: invokevirtual 284	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   305: invokevirtual 289	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   308: aload 7
+    //   310: invokeinterface 225 1 0
+    //   315: astore_2
+    //   316: aload_2
+    //   317: invokeinterface 230 1 0
+    //   322: ifeq +32 -> 354
+    //   325: aload_2
+    //   326: invokeinterface 234 1 0
+    //   331: checkcast 236	com/tencent/mobileqq/data/Setting
+    //   334: astore 4
+    //   336: aload 4
+    //   338: ifnonnull +6 -> 344
+    //   341: goto -25 -> 316
+    //   344: aload_1
+    //   345: aload 4
+    //   347: invokevirtual 293	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   350: pop
+    //   351: goto -35 -> 316
+    //   354: aload_1
+    //   355: invokevirtual 284	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   358: invokevirtual 296	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   361: goto +24 -> 385
+    //   364: astore_2
+    //   365: goto +28 -> 393
+    //   368: astore_2
+    //   369: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   372: ifeq +13 -> 385
+    //   375: ldc 70
+    //   377: iconst_2
+    //   378: ldc_w 269
+    //   381: aload_2
+    //   382: invokestatic 300	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   385: aload_1
+    //   386: invokevirtual 284	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   389: invokevirtual 303	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   392: return
+    //   393: aload_1
+    //   394: invokevirtual 284	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   397: invokevirtual 303	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   400: aload_2
+    //   401: athrow
+    //   402: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	403	0	this	CleanCache
+    //   0	403	1	paramEntityManager	EntityManager
+    //   0	403	2	paramList1	List<Setting>
+    //   0	403	3	paramInt1	int
+    //   0	403	4	paramList2	List<Setting>
+    //   0	403	5	paramInt2	int
+    //   94	53	6	i	int
+    //   12	297	7	localObject1	Object
+    //   151	123	8	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   301	316	364	finally
+    //   316	336	364	finally
+    //   344	351	364	finally
+    //   354	361	364	finally
+    //   369	385	364	finally
+    //   301	316	368	java/lang/Exception
+    //   316	336	368	java/lang/Exception
+    //   344	351	368	java/lang/Exception
+    //   354	361	368	java/lang/Exception
+  }
+  
   public static final void a(String paramString)
   {
-    paramString = new File(paramString + ".nomedia");
-    if (!paramString.exists()) {}
-    try
-    {
-      paramString.createNewFile();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQInitHandler", 2, "create nomedia file:" + paramString.getAbsolutePath());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".nomedia");
+    paramString = new File(localStringBuilder.toString());
+    if (!paramString.exists()) {
+      try
+      {
+        paramString.createNewFile();
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("create nomedia file:");
+          localStringBuilder.append(paramString.getAbsolutePath());
+          QLog.d("QQInitHandler", 2, localStringBuilder.toString());
+          return;
+        }
       }
-      return;
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
+      catch (IOException paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
   private void a(List<Setting> paramList)
   {
-    Object localObject;
-    int j;
-    int i;
-    int k;
     if (paramList != null)
     {
-      localObject = paramList.iterator();
-      j = 0;
-      for (i = 0;; i = k) {
-        for (;;)
-        {
-          if (((Iterator)localObject).hasNext())
-          {
-            Setting localSetting = (Setting)((Iterator)localObject).next();
-            if ((localSetting != null) && (!TextUtils.isEmpty(localSetting.uin)))
-            {
-              if (localSetting == null) {
-                break label209;
-              }
-              if ((localSetting.bSourceType == 1) || (localSetting.bUsrType == 32))
-              {
-                k = j + 1;
-                j = i;
-              }
-            }
+      Object localObject = paramList.iterator();
+      int k = 0;
+      int j = 0;
+      int i = 0;
+      while (((Iterator)localObject).hasNext())
+      {
+        Setting localSetting = (Setting)((Iterator)localObject).next();
+        if ((localSetting != null) && (!TextUtils.isEmpty(localSetting.uin)) && (localSetting != null)) {
+          if ((localSetting.bSourceType != 1) && (localSetting.bUsrType != 32)) {
+            j += 1;
+          } else {
+            i += 1;
           }
         }
       }
-    }
-    for (;;)
-    {
-      k = j;
-      j = i;
-      i = k;
-      break;
-      k = i + 1;
-      i = j;
-      j = k;
-      continue;
       localObject = new HashMap();
-      if (paramList != null) {}
-      for (k = paramList.size();; k = 0)
-      {
-        ((HashMap)localObject).put("dataSize", String.valueOf(k));
-        ((HashMap)localObject).put("highSize", String.valueOf(i));
-        ((HashMap)localObject).put("lowSize", String.valueOf(j));
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "qq_head_setting", false, 0L, 0L, (HashMap)localObject, "");
-        return;
+      if (paramList != null) {
+        k = paramList.size();
       }
-      label209:
-      k = i;
-      i = j;
-      j = k;
+      ((HashMap)localObject).put("dataSize", String.valueOf(k));
+      ((HashMap)localObject).put("highSize", String.valueOf(j));
+      ((HashMap)localObject).put("lowSize", String.valueOf(i));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.mAutomator.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "qq_head_setting", false, 0L, 0L, (HashMap)localObject, "");
     }
   }
   
@@ -590,554 +561,695 @@ public class CleanCache
   private File[] a(File[] paramArrayOfFile)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 8
-    //   3: aconst_null
-    //   4: astore 9
-    //   6: aconst_null
-    //   7: astore 10
-    //   9: iconst_0
-    //   10: istore 5
-    //   12: aload_0
-    //   13: getfield 159	com/tencent/mobileqq/app/automator/step/CleanCache:jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   16: getfield 252	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   19: invokevirtual 345	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   22: invokevirtual 351	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   25: astore 7
-    //   27: aload 7
+    //   0: aload_1
+    //   1: astore 7
+    //   3: aload_0
+    //   4: getfield 160	com/tencent/mobileqq/app/automator/step/CleanCache:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   7: getfield 257	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   10: invokevirtual 345	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   13: invokevirtual 351	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   16: astore 8
+    //   18: ldc 236
+    //   20: invokevirtual 356	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   23: astore_1
+    //   24: iconst_0
+    //   25: istore 5
+    //   27: aload 8
     //   29: iconst_0
-    //   30: ldc 236
-    //   32: invokevirtual 356	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   35: iconst_2
-    //   36: anewarray 10	java/lang/String
-    //   39: dup
-    //   40: iconst_0
-    //   41: ldc_w 357
-    //   44: aastore
-    //   45: dup
-    //   46: iconst_1
-    //   47: ldc_w 358
-    //   50: aastore
-    //   51: ldc_w 360
-    //   54: iconst_1
-    //   55: anewarray 10	java/lang/String
-    //   58: dup
-    //   59: iconst_0
-    //   60: ldc_w 362
-    //   63: aastore
-    //   64: aconst_null
-    //   65: aconst_null
-    //   66: aconst_null
-    //   67: aconst_null
-    //   68: invokevirtual 366	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   71: astore 8
-    //   73: aload 10
-    //   75: astore 9
-    //   77: aload 8
-    //   79: ifnull +96 -> 175
-    //   82: aload 10
-    //   84: astore 9
-    //   86: aload 8
-    //   88: invokeinterface 371 1 0
-    //   93: ifeq +82 -> 175
-    //   96: new 323	java/util/HashMap
-    //   99: dup
-    //   100: aload 8
-    //   102: invokeinterface 374 1 0
-    //   107: invokespecial 377	java/util/HashMap:<init>	(I)V
-    //   110: astore 9
-    //   112: aload 8
-    //   114: iconst_0
-    //   115: invokeinterface 380 2 0
-    //   120: astore 10
-    //   122: aload 8
-    //   124: iconst_1
-    //   125: invokeinterface 384 2 0
-    //   130: istore_2
-    //   131: aload_0
-    //   132: getfield 159	com/tencent/mobileqq/app/automator/step/CleanCache:jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
-    //   135: getfield 252	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   138: astore 11
-    //   140: iload_2
-    //   141: iconst_4
-    //   142: if_icmpne +412 -> 554
-    //   145: iconst_1
-    //   146: istore 6
-    //   148: aload 9
-    //   150: aload 11
-    //   152: iload 6
-    //   154: aload 10
-    //   156: invokevirtual 388	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePath	(ZLjava/lang/String;)Ljava/lang/String;
-    //   159: aload 10
-    //   161: invokevirtual 334	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   164: pop
-    //   165: aload 8
-    //   167: invokeinterface 391 1 0
-    //   172: ifne -60 -> 112
-    //   175: aload 7
-    //   177: new 56	java/lang/StringBuilder
-    //   180: dup
-    //   181: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   184: ldc_w 393
-    //   187: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: ldc 236
-    //   192: invokevirtual 356	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   195: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: aload_1
+    //   31: iconst_2
+    //   32: anewarray 10	java/lang/String
+    //   35: dup
+    //   36: iconst_0
+    //   37: ldc_w 357
+    //   40: aastore
+    //   41: dup
+    //   42: iconst_1
+    //   43: ldc_w 358
+    //   46: aastore
+    //   47: ldc_w 360
+    //   50: iconst_1
+    //   51: anewarray 10	java/lang/String
+    //   54: dup
+    //   55: iconst_0
+    //   56: ldc_w 362
+    //   59: aastore
+    //   60: aconst_null
+    //   61: aconst_null
+    //   62: aconst_null
+    //   63: aconst_null
+    //   64: invokevirtual 366	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   67: astore 9
+    //   69: aload 9
+    //   71: ifnull +487 -> 558
+    //   74: aload 9
+    //   76: invokeinterface 371 1 0
+    //   81: ifeq +477 -> 558
+    //   84: new 323	java/util/HashMap
+    //   87: dup
+    //   88: aload 9
+    //   90: invokeinterface 374 1 0
+    //   95: invokespecial 377	java/util/HashMap:<init>	(I)V
+    //   98: astore_1
+    //   99: aload 9
+    //   101: iconst_0
+    //   102: invokeinterface 380 2 0
+    //   107: astore 10
+    //   109: aload 9
+    //   111: iconst_1
+    //   112: invokeinterface 384 2 0
+    //   117: istore_2
+    //   118: aload_0
+    //   119: getfield 160	com/tencent/mobileqq/app/automator/step/CleanCache:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   122: getfield 257	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   125: astore 11
+    //   127: iload_2
+    //   128: iconst_4
+    //   129: if_icmpne +423 -> 552
+    //   132: iconst_1
+    //   133: istore 6
+    //   135: goto +3 -> 138
+    //   138: aload_1
+    //   139: aload 11
+    //   141: iload 6
+    //   143: aload 10
+    //   145: invokevirtual 388	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePath	(ZLjava/lang/String;)Ljava/lang/String;
+    //   148: aload 10
+    //   150: invokevirtual 334	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   153: pop
+    //   154: aload 9
+    //   156: invokeinterface 391 1 0
+    //   161: ifne -62 -> 99
+    //   164: goto +3 -> 167
+    //   167: new 54	java/lang/StringBuilder
+    //   170: dup
+    //   171: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   174: astore 10
+    //   176: aload 10
+    //   178: ldc_w 393
+    //   181: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: pop
+    //   185: aload 10
+    //   187: ldc 236
+    //   189: invokevirtual 356	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   192: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: pop
+    //   196: aload 10
     //   198: ldc_w 395
-    //   201: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   204: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   207: invokevirtual 399	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
-    //   210: pop
-    //   211: aload 9
-    //   213: ifnull +347 -> 560
-    //   216: aload 9
-    //   218: invokevirtual 400	java/util/HashMap:size	()I
-    //   221: ifle +339 -> 560
-    //   224: iconst_0
-    //   225: istore_3
-    //   226: iconst_0
-    //   227: istore_2
-    //   228: iload_2
-    //   229: istore 4
-    //   231: iload_3
-    //   232: aload_1
-    //   233: arraylength
-    //   234: if_icmpge +101 -> 335
-    //   237: aload_1
-    //   238: iload_3
-    //   239: aaload
-    //   240: astore 10
-    //   242: aload 10
-    //   244: invokevirtual 208	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   201: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: pop
+    //   205: aload 8
+    //   207: aload 10
+    //   209: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   212: invokevirtual 399	com/tencent/mobileqq/persistence/EntityManager:execSQL	(Ljava/lang/String;)Z
+    //   215: pop
+    //   216: aload_1
+    //   217: ifnull +357 -> 574
+    //   220: aload_1
+    //   221: invokevirtual 400	java/util/HashMap:size	()I
+    //   224: ifle +350 -> 574
+    //   227: iconst_0
+    //   228: istore 4
+    //   230: iconst_0
+    //   231: istore_2
+    //   232: iload_2
+    //   233: istore_3
+    //   234: iload 4
+    //   236: aload 7
+    //   238: arraylength
+    //   239: if_icmpge +124 -> 363
+    //   242: aload 7
+    //   244: iload 4
+    //   246: aaload
     //   247: astore 11
-    //   249: iload_2
-    //   250: istore 4
-    //   252: aload 9
-    //   254: aload 11
-    //   256: invokevirtual 403	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   259: ifeq +285 -> 544
-    //   262: aload 10
-    //   264: invokevirtual 37	java/io/File:exists	()Z
-    //   267: ifeq +9 -> 276
-    //   270: aload 10
-    //   272: invokevirtual 126	java/io/File:delete	()Z
-    //   275: pop
-    //   276: aload_1
-    //   277: iload_3
-    //   278: aconst_null
-    //   279: aastore
-    //   280: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   283: ifeq +256 -> 539
-    //   286: ldc 54
-    //   288: iconst_2
-    //   289: new 56	java/lang/StringBuilder
-    //   292: dup
-    //   293: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   296: ldc_w 405
-    //   299: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   302: aload 9
-    //   304: aload 11
-    //   306: invokevirtual 409	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   309: checkcast 10	java/lang/String
-    //   312: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: ldc_w 411
-    //   318: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   321: aload 11
-    //   323: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   326: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   329: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   332: goto +207 -> 539
-    //   335: aload_1
-    //   336: astore 9
-    //   338: iload 4
-    //   340: ifle +59 -> 399
-    //   343: aload_1
-    //   344: arraylength
-    //   345: iload 4
-    //   347: isub
-    //   348: anewarray 30	java/io/File
-    //   351: astore 9
-    //   353: iconst_0
-    //   354: istore_2
-    //   355: iload 5
-    //   357: istore_3
-    //   358: iload_3
-    //   359: aload_1
-    //   360: arraylength
-    //   361: if_icmpge +38 -> 399
-    //   364: iload_2
-    //   365: aload 9
-    //   367: arraylength
-    //   368: if_icmpge +31 -> 399
-    //   371: aload_1
-    //   372: iload_3
-    //   373: aaload
-    //   374: ifnull +162 -> 536
-    //   377: iload_2
-    //   378: iconst_1
-    //   379: iadd
-    //   380: istore 4
-    //   382: aload 9
+    //   249: aload 11
+    //   251: invokevirtual 209	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   254: astore 10
+    //   256: iload_2
+    //   257: istore_3
+    //   258: aload_1
+    //   259: aload 10
+    //   261: invokevirtual 403	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   264: ifeq +299 -> 563
+    //   267: aload 11
+    //   269: invokevirtual 37	java/io/File:exists	()Z
+    //   272: ifeq +9 -> 281
+    //   275: aload 11
+    //   277: invokevirtual 126	java/io/File:delete	()Z
+    //   280: pop
+    //   281: aload 7
+    //   283: iload 4
+    //   285: aconst_null
+    //   286: aastore
+    //   287: iload_2
+    //   288: iconst_1
+    //   289: iadd
+    //   290: istore_2
+    //   291: iload_2
+    //   292: istore_3
+    //   293: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   296: ifeq +267 -> 563
+    //   299: new 54	java/lang/StringBuilder
+    //   302: dup
+    //   303: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   306: astore 11
+    //   308: aload 11
+    //   310: ldc_w 405
+    //   313: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: pop
+    //   317: aload 11
+    //   319: aload_1
+    //   320: aload 10
+    //   322: invokevirtual 409	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   325: checkcast 10	java/lang/String
+    //   328: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   331: pop
+    //   332: aload 11
+    //   334: ldc_w 411
+    //   337: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   340: pop
+    //   341: aload 11
+    //   343: aload 10
+    //   345: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   348: pop
+    //   349: ldc 70
+    //   351: iconst_2
+    //   352: aload 11
+    //   354: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   357: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   360: goto +205 -> 565
+    //   363: aload 7
+    //   365: astore_1
+    //   366: iload_3
+    //   367: ifle +62 -> 429
+    //   370: aload 7
+    //   372: arraylength
+    //   373: iload_3
+    //   374: isub
+    //   375: anewarray 30	java/io/File
+    //   378: astore_1
+    //   379: iconst_0
+    //   380: istore_3
+    //   381: iload 5
+    //   383: istore_2
     //   384: iload_2
+    //   385: aload 7
+    //   387: arraylength
+    //   388: if_icmpge +41 -> 429
+    //   391: iload_3
+    //   392: aload_1
+    //   393: arraylength
+    //   394: if_icmpge +35 -> 429
+    //   397: iload_3
+    //   398: istore 4
+    //   400: aload 7
+    //   402: iload_2
+    //   403: aaload
+    //   404: ifnull +15 -> 419
+    //   407: aload_1
+    //   408: iload_3
+    //   409: aload 7
+    //   411: iload_2
+    //   412: aaload
+    //   413: aastore
+    //   414: iload_3
+    //   415: iconst_1
+    //   416: iadd
+    //   417: istore 4
+    //   419: iload_2
+    //   420: iconst_1
+    //   421: iadd
+    //   422: istore_2
+    //   423: iload 4
+    //   425: istore_3
+    //   426: goto -42 -> 384
+    //   429: aload 9
+    //   431: ifnull +10 -> 441
+    //   434: aload 9
+    //   436: invokeinterface 414 1 0
+    //   441: aload 8
+    //   443: ifnull +8 -> 451
+    //   446: aload 8
+    //   448: invokevirtual 415	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   451: aload_1
+    //   452: areturn
+    //   453: astore_1
+    //   454: aload 9
+    //   456: astore 7
+    //   458: goto +29 -> 487
+    //   461: aload 9
+    //   463: astore_1
+    //   464: goto +53 -> 517
+    //   467: astore_1
+    //   468: aconst_null
+    //   469: astore 7
+    //   471: goto +16 -> 487
+    //   474: aconst_null
+    //   475: astore_1
+    //   476: goto +41 -> 517
+    //   479: astore_1
+    //   480: aconst_null
+    //   481: astore 8
+    //   483: aload 8
+    //   485: astore 7
+    //   487: aload 7
+    //   489: ifnull +10 -> 499
+    //   492: aload 7
+    //   494: invokeinterface 414 1 0
+    //   499: aload 8
+    //   501: ifnull +8 -> 509
+    //   504: aload 8
+    //   506: invokevirtual 415	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   509: aload_1
+    //   510: athrow
+    //   511: aconst_null
+    //   512: astore 8
+    //   514: aload 8
+    //   516: astore_1
+    //   517: aload_1
+    //   518: ifnull +9 -> 527
+    //   521: aload_1
+    //   522: invokeinterface 414 1 0
+    //   527: aload 8
+    //   529: ifnull +8 -> 537
+    //   532: aload 8
+    //   534: invokevirtual 415	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   537: aload 7
+    //   539: areturn
+    //   540: astore_1
+    //   541: goto -30 -> 511
+    //   544: astore_1
+    //   545: goto -71 -> 474
+    //   548: astore_1
+    //   549: goto -88 -> 461
+    //   552: iconst_0
+    //   553: istore 6
+    //   555: goto -417 -> 138
+    //   558: aconst_null
+    //   559: astore_1
+    //   560: goto -393 -> 167
+    //   563: iload_3
+    //   564: istore_2
+    //   565: iload 4
+    //   567: iconst_1
+    //   568: iadd
+    //   569: istore 4
+    //   571: goto -339 -> 232
+    //   574: iconst_0
+    //   575: istore_3
+    //   576: goto -213 -> 363
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	579	0	this	CleanCache
+    //   0	579	1	paramArrayOfFile	File[]
+    //   117	448	2	i	int
+    //   233	343	3	j	int
+    //   228	342	4	k	int
+    //   25	357	5	m	int
+    //   133	421	6	bool	boolean
+    //   1	537	7	localObject1	Object
+    //   16	517	8	localEntityManager	EntityManager
+    //   67	395	9	localCursor	android.database.Cursor
+    //   107	237	10	localObject2	Object
+    //   125	228	11	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   74	99	453	finally
+    //   99	127	453	finally
+    //   138	164	453	finally
+    //   167	216	453	finally
+    //   220	227	453	finally
+    //   234	242	453	finally
+    //   249	256	453	finally
+    //   258	281	453	finally
+    //   293	360	453	finally
+    //   370	379	453	finally
+    //   384	397	453	finally
+    //   18	24	467	finally
+    //   27	69	467	finally
+    //   3	18	479	finally
+    //   3	18	540	java/lang/Exception
+    //   18	24	544	java/lang/Exception
+    //   27	69	544	java/lang/Exception
+    //   74	99	548	java/lang/Exception
+    //   99	127	548	java/lang/Exception
+    //   138	164	548	java/lang/Exception
+    //   167	216	548	java/lang/Exception
+    //   220	227	548	java/lang/Exception
+    //   234	242	548	java/lang/Exception
+    //   249	256	548	java/lang/Exception
+    //   258	281	548	java/lang/Exception
+    //   293	360	548	java/lang/Exception
+    //   370	379	548	java/lang/Exception
+    //   384	397	548	java/lang/Exception
+  }
+  
+  /* Error */
+  private File[] a(File[] paramArrayOfFile, int paramInt1, int paramInt2)
+  {
+    // Byte code:
+    //   0: new 417	java/util/LinkedList
+    //   3: dup
+    //   4: invokespecial 418	java/util/LinkedList:<init>	()V
+    //   7: astore 9
+    //   9: aload_0
+    //   10: getfield 160	com/tencent/mobileqq/app/automator/step/CleanCache:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   13: getfield 257	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   16: invokevirtual 345	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   19: invokevirtual 351	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   22: astore 8
+    //   24: iconst_0
+    //   25: istore 7
+    //   27: aload 8
+    //   29: ldc_w 420
+    //   32: iconst_0
+    //   33: ldc_w 422
+    //   36: iconst_1
+    //   37: anewarray 10	java/lang/String
+    //   40: dup
+    //   41: iconst_0
+    //   42: ldc_w 424
+    //   45: aastore
+    //   46: aconst_null
+    //   47: aconst_null
+    //   48: aconst_null
+    //   49: aconst_null
+    //   50: invokevirtual 427	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   53: checkcast 218	java/util/ArrayList
+    //   56: astore 10
+    //   58: aload 10
+    //   60: ifnull +67 -> 127
+    //   63: aload 10
+    //   65: invokevirtual 428	java/util/ArrayList:size	()I
+    //   68: ifeq +59 -> 127
+    //   71: iconst_0
+    //   72: istore 4
+    //   74: iload 4
+    //   76: aload 10
+    //   78: invokevirtual 428	java/util/ArrayList:size	()I
+    //   81: if_icmpge +46 -> 127
+    //   84: aload 10
+    //   86: iload 4
+    //   88: invokevirtual 431	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   91: checkcast 420	com/tencent/mobileqq/data/Friends
+    //   94: astore 11
+    //   96: aload 9
+    //   98: aload_0
+    //   99: getfield 160	com/tencent/mobileqq/app/automator/step/CleanCache:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   102: getfield 257	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   105: iconst_0
+    //   106: aload 11
+    //   108: getfield 432	com/tencent/mobileqq/data/Friends:uin	Ljava/lang/String;
+    //   111: invokevirtual 388	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePath	(ZLjava/lang/String;)Ljava/lang/String;
+    //   114: invokevirtual 433	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   117: pop
+    //   118: iload 4
+    //   120: iconst_1
+    //   121: iadd
+    //   122: istore 4
+    //   124: goto -50 -> 74
+    //   127: aload 8
+    //   129: ldc_w 435
+    //   132: iconst_0
+    //   133: aconst_null
+    //   134: aconst_null
+    //   135: aconst_null
+    //   136: aconst_null
+    //   137: aconst_null
+    //   138: aconst_null
+    //   139: invokevirtual 427	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   142: checkcast 218	java/util/ArrayList
+    //   145: astore 10
+    //   147: aload 10
+    //   149: ifnull +325 -> 474
+    //   152: aload 10
+    //   154: invokevirtual 428	java/util/ArrayList:size	()I
+    //   157: ifle +317 -> 474
+    //   160: iconst_0
+    //   161: istore 4
+    //   163: iload 4
+    //   165: aload 10
+    //   167: invokevirtual 428	java/util/ArrayList:size	()I
+    //   170: if_icmpge +304 -> 474
+    //   173: aload 10
+    //   175: iload 4
+    //   177: invokevirtual 431	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   180: checkcast 435	com/tencent/mobileqq/data/troop/TroopInfo
+    //   183: astore 11
+    //   185: aload 9
+    //   187: aload_0
+    //   188: getfield 160	com/tencent/mobileqq/app/automator/step/CleanCache:mAutomator	Lcom/tencent/mobileqq/app/automator/Automator;
+    //   191: getfield 257	com/tencent/mobileqq/app/automator/Automator:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   194: iconst_1
+    //   195: aload 11
+    //   197: getfield 438	com/tencent/mobileqq/data/troop/TroopInfo:troopuin	Ljava/lang/String;
+    //   200: invokevirtual 388	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePath	(ZLjava/lang/String;)Ljava/lang/String;
+    //   203: invokevirtual 433	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   206: pop
+    //   207: iload 4
+    //   209: iconst_1
+    //   210: iadd
+    //   211: istore 4
+    //   213: goto -50 -> 163
+    //   216: iload 4
+    //   218: istore 6
+    //   220: iload 5
+    //   222: aload_1
+    //   223: arraylength
+    //   224: if_icmpge +122 -> 346
+    //   227: aload_1
+    //   228: iload 5
+    //   230: aaload
+    //   231: astore 10
+    //   233: aload 10
+    //   235: invokevirtual 209	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   238: astore 11
+    //   240: aload 9
+    //   242: aload 11
+    //   244: invokevirtual 441	java/util/LinkedList:contains	(Ljava/lang/Object;)Z
+    //   247: ifne +251 -> 498
+    //   250: aload 11
+    //   252: ldc_w 443
+    //   255: invokevirtual 447	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   258: ifge +240 -> 498
+    //   261: aload 11
+    //   263: ldc_w 449
+    //   266: invokevirtual 447	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   269: ifge +229 -> 498
+    //   272: aload 10
+    //   274: invokevirtual 37	java/io/File:exists	()Z
+    //   277: ifeq +9 -> 286
+    //   280: aload 10
+    //   282: invokevirtual 126	java/io/File:delete	()Z
+    //   285: pop
+    //   286: aload_1
+    //   287: iload 5
+    //   289: aconst_null
+    //   290: aastore
+    //   291: iload 4
+    //   293: iconst_1
+    //   294: iadd
+    //   295: istore 6
+    //   297: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   300: ifeq +183 -> 483
+    //   303: new 54	java/lang/StringBuilder
+    //   306: dup
+    //   307: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   310: astore 11
+    //   312: aload 11
+    //   314: ldc_w 451
+    //   317: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   320: pop
+    //   321: aload 11
+    //   323: aload 10
+    //   325: invokevirtual 209	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   328: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   331: pop
+    //   332: ldc 70
+    //   334: iconst_2
+    //   335: aload 11
+    //   337: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   340: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   343: goto +140 -> 483
+    //   346: aload_1
+    //   347: astore 9
+    //   349: iload 6
+    //   351: ifle +62 -> 413
+    //   354: aload_1
+    //   355: arraylength
+    //   356: iload 6
+    //   358: isub
+    //   359: anewarray 30	java/io/File
+    //   362: astore 9
+    //   364: iconst_0
+    //   365: istore_3
+    //   366: iload 7
+    //   368: istore_2
+    //   369: iload_2
+    //   370: aload_1
+    //   371: arraylength
+    //   372: if_icmpge +41 -> 413
+    //   375: iload_3
+    //   376: aload 9
+    //   378: arraylength
+    //   379: if_icmpge +34 -> 413
+    //   382: iload_3
+    //   383: istore 4
     //   385: aload_1
-    //   386: iload_3
+    //   386: iload_2
     //   387: aaload
-    //   388: aastore
-    //   389: iload 4
-    //   391: istore_2
-    //   392: iload_3
-    //   393: iconst_1
-    //   394: iadd
-    //   395: istore_3
-    //   396: goto -38 -> 358
-    //   399: aload 8
-    //   401: ifnull +10 -> 411
-    //   404: aload 8
-    //   406: invokeinterface 414 1 0
-    //   411: aload 9
-    //   413: astore 10
-    //   415: aload 7
-    //   417: ifnull +12 -> 429
-    //   420: aload 7
-    //   422: invokevirtual 415	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   425: aload 9
-    //   427: astore 10
-    //   429: aload 10
-    //   431: areturn
-    //   432: astore 7
+    //   388: ifnull +15 -> 403
+    //   391: aload 9
+    //   393: iload_3
+    //   394: aload_1
+    //   395: iload_2
+    //   396: aaload
+    //   397: aastore
+    //   398: iload_3
+    //   399: iconst_1
+    //   400: iadd
+    //   401: istore 4
+    //   403: iload_2
+    //   404: iconst_1
+    //   405: iadd
+    //   406: istore_2
+    //   407: iload 4
+    //   409: istore_3
+    //   410: goto -41 -> 369
+    //   413: aload 8
+    //   415: ifnull +8 -> 423
+    //   418: aload 8
+    //   420: invokevirtual 415	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   423: aload 9
+    //   425: areturn
+    //   426: astore_1
+    //   427: goto +10 -> 437
+    //   430: goto +22 -> 452
+    //   433: astore_1
     //   434: aconst_null
-    //   435: astore 7
-    //   437: aload 7
-    //   439: ifnull +10 -> 449
-    //   442: aload 7
-    //   444: invokeinterface 414 1 0
-    //   449: aload_1
-    //   450: astore 10
+    //   435: astore 8
+    //   437: aload 8
+    //   439: ifnull +8 -> 447
+    //   442: aload 8
+    //   444: invokevirtual 415	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   447: aload_1
+    //   448: athrow
+    //   449: aconst_null
+    //   450: astore 8
     //   452: aload 8
-    //   454: ifnull -25 -> 429
+    //   454: ifnull +8 -> 462
     //   457: aload 8
     //   459: invokevirtual 415	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   462: aload_1
     //   463: areturn
-    //   464: astore_1
-    //   465: aconst_null
-    //   466: astore 8
-    //   468: aload 9
-    //   470: astore 7
-    //   472: aload 8
-    //   474: ifnull +10 -> 484
-    //   477: aload 8
-    //   479: invokeinterface 414 1 0
-    //   484: aload 7
-    //   486: ifnull +8 -> 494
-    //   489: aload 7
-    //   491: invokevirtual 415	com/tencent/mobileqq/persistence/EntityManager:close	()V
-    //   494: aload_1
-    //   495: athrow
-    //   496: astore_1
-    //   497: aconst_null
-    //   498: astore 8
-    //   500: goto -28 -> 472
-    //   503: astore_1
-    //   504: goto -32 -> 472
-    //   507: astore 8
-    //   509: aload 7
-    //   511: astore 8
-    //   513: aconst_null
-    //   514: astore 7
-    //   516: goto -79 -> 437
-    //   519: astore 9
-    //   521: aload 7
-    //   523: astore 9
-    //   525: aload 8
-    //   527: astore 7
-    //   529: aload 9
-    //   531: astore 8
-    //   533: goto -96 -> 437
-    //   536: goto -144 -> 392
-    //   539: iload_2
-    //   540: iconst_1
-    //   541: iadd
-    //   542: istore 4
-    //   544: iload_3
-    //   545: iconst_1
-    //   546: iadd
-    //   547: istore_3
-    //   548: iload 4
-    //   550: istore_2
-    //   551: goto -323 -> 228
-    //   554: iconst_0
-    //   555: istore 6
-    //   557: goto -409 -> 148
-    //   560: iconst_0
-    //   561: istore 4
-    //   563: goto -228 -> 335
+    //   464: astore 8
+    //   466: goto -17 -> 449
+    //   469: astore 9
+    //   471: goto -41 -> 430
+    //   474: iconst_0
+    //   475: istore 5
+    //   477: iconst_0
+    //   478: istore 4
+    //   480: goto -264 -> 216
+    //   483: iload 6
+    //   485: istore 4
+    //   487: iload_2
+    //   488: iload 6
+    //   490: iadd
+    //   491: iload_3
+    //   492: if_icmplt +6 -> 498
+    //   495: goto -149 -> 346
+    //   498: iload 5
+    //   500: iconst_1
+    //   501: iadd
+    //   502: istore 5
+    //   504: goto -288 -> 216
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	566	0	this	CleanCache
-    //   0	566	1	paramArrayOfFile	File[]
-    //   130	421	2	i	int
-    //   225	323	3	j	int
-    //   229	333	4	k	int
-    //   10	346	5	m	int
-    //   146	410	6	bool	boolean
-    //   25	396	7	localEntityManager	EntityManager
-    //   432	1	7	localException1	Exception
-    //   435	93	7	localObject1	Object
-    //   1	498	8	localCursor	android.database.Cursor
-    //   507	1	8	localException2	Exception
-    //   511	21	8	localObject2	Object
-    //   4	465	9	localObject3	Object
-    //   519	1	9	localException3	Exception
-    //   523	7	9	localObject4	Object
-    //   7	444	10	localObject5	Object
-    //   138	184	11	localObject6	Object
+    //   0	507	0	this	CleanCache
+    //   0	507	1	paramArrayOfFile	File[]
+    //   0	507	2	paramInt1	int
+    //   0	507	3	paramInt2	int
+    //   72	414	4	i	int
+    //   220	283	5	j	int
+    //   218	273	6	k	int
+    //   25	342	7	m	int
+    //   22	436	8	localEntityManager	EntityManager
+    //   464	1	8	localException1	Exception
+    //   7	417	9	localObject1	Object
+    //   469	1	9	localException2	Exception
+    //   56	268	10	localObject2	Object
+    //   94	242	11	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   12	27	432	java/lang/Exception
-    //   12	27	464	finally
-    //   27	73	496	finally
-    //   86	112	503	finally
-    //   112	140	503	finally
-    //   148	175	503	finally
-    //   175	211	503	finally
-    //   216	224	503	finally
-    //   231	237	503	finally
-    //   242	249	503	finally
-    //   252	276	503	finally
-    //   280	332	503	finally
-    //   343	353	503	finally
-    //   358	371	503	finally
-    //   27	73	507	java/lang/Exception
-    //   86	112	519	java/lang/Exception
-    //   112	140	519	java/lang/Exception
-    //   148	175	519	java/lang/Exception
-    //   175	211	519	java/lang/Exception
-    //   216	224	519	java/lang/Exception
-    //   231	237	519	java/lang/Exception
-    //   242	249	519	java/lang/Exception
-    //   252	276	519	java/lang/Exception
-    //   280	332	519	java/lang/Exception
-    //   343	353	519	java/lang/Exception
-    //   358	371	519	java/lang/Exception
+    //   27	58	426	finally
+    //   63	71	426	finally
+    //   74	118	426	finally
+    //   127	147	426	finally
+    //   152	160	426	finally
+    //   163	207	426	finally
+    //   220	227	426	finally
+    //   233	286	426	finally
+    //   297	343	426	finally
+    //   354	364	426	finally
+    //   369	382	426	finally
+    //   0	24	433	finally
+    //   0	24	464	java/lang/Exception
+    //   27	58	469	java/lang/Exception
+    //   63	71	469	java/lang/Exception
+    //   74	118	469	java/lang/Exception
+    //   127	147	469	java/lang/Exception
+    //   152	160	469	java/lang/Exception
+    //   163	207	469	java/lang/Exception
+    //   220	227	469	java/lang/Exception
+    //   233	286	469	java/lang/Exception
+    //   297	343	469	java/lang/Exception
+    //   354	364	469	java/lang/Exception
+    //   369	382	469	java/lang/Exception
   }
   
-  private File[] a(File[] paramArrayOfFile, int paramInt1, int paramInt2)
-  {
-    int m = 0;
-    EntityManager localEntityManager = null;
-    localObject2 = localEntityManager;
-    for (;;)
-    {
-      try
-      {
-        localObject3 = new LinkedList();
-        localObject2 = localEntityManager;
-        localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        localObject2 = localEntityManager;
-      }
-      catch (Exception localException)
-      {
-        Object localObject4;
-        Object localObject5;
-        Object localObject3 = paramArrayOfFile;
-        if (localObject2 == null) {
-          continue;
-        }
-        ((EntityManager)localObject2).close();
-        return paramArrayOfFile;
-      }
-      finally
-      {
-        Object localObject1 = null;
-        if (localObject1 != null) {
-          localObject1.close();
-        }
-      }
-      try
-      {
-        localObject4 = (ArrayList)localEntityManager.query(Friends.class, false, "groupid>=?", new String[] { "0" }, null, null, null, null);
-        if (localObject4 != null)
-        {
-          localObject2 = localEntityManager;
-          if (((ArrayList)localObject4).size() != 0)
-          {
-            i = 0;
-            localObject2 = localEntityManager;
-            if (i < ((ArrayList)localObject4).size())
-            {
-              localObject2 = localEntityManager;
-              localObject5 = (Friends)((ArrayList)localObject4).get(i);
-              localObject2 = localEntityManager;
-              ((LinkedList)localObject3).add(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCustomFaceFilePath(false, ((Friends)localObject5).uin));
-              i += 1;
-              continue;
-            }
-          }
-        }
-        localObject2 = localEntityManager;
-        localObject4 = (ArrayList)localEntityManager.query(TroopInfo.class, false, null, null, null, null, null, null);
-        if (localObject4 == null) {
-          break label589;
-        }
-        localObject2 = localEntityManager;
-        if (((ArrayList)localObject4).size() <= 0) {
-          break label589;
-        }
-        i = 0;
-        localObject2 = localEntityManager;
-        if (i >= ((ArrayList)localObject4).size()) {
-          break label589;
-        }
-        localObject2 = localEntityManager;
-        localObject5 = (TroopInfo)((ArrayList)localObject4).get(i);
-        localObject2 = localEntityManager;
-        ((LinkedList)localObject3).add(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCustomFaceFilePath(true, ((TroopInfo)localObject5).troopuin));
-        i += 1;
-        continue;
-      }
-      finally
-      {
-        continue;
-        continue;
-        j = 0;
-        i = 0;
-        continue;
-        k = i;
-        if (paramInt1 + i < paramInt2) {
-          continue;
-        }
-        k = i;
-        continue;
-      }
-      k = i;
-      localObject2 = localEntityManager;
-      if (j < paramArrayOfFile.length)
-      {
-        localObject4 = paramArrayOfFile[j];
-        localObject2 = localEntityManager;
-        localObject5 = ((File)localObject4).getAbsolutePath();
-        k = i;
-        localObject2 = localEntityManager;
-        if (!((LinkedList)localObject3).contains(localObject5))
-        {
-          k = i;
-          localObject2 = localEntityManager;
-          if (((String)localObject5).indexOf("discussion_") < 0)
-          {
-            k = i;
-            localObject2 = localEntityManager;
-            if (((String)localObject5).indexOf("sys_") < 0)
-            {
-              localObject2 = localEntityManager;
-              if (((File)localObject4).exists())
-              {
-                localObject2 = localEntityManager;
-                ((File)localObject4).delete();
-              }
-              paramArrayOfFile[j] = null;
-              i += 1;
-              localObject2 = localEntityManager;
-              if (!QLog.isColorLevel()) {
-                break label598;
-              }
-              localObject2 = localEntityManager;
-              QLog.d("QQInitHandler", 2, "onCleanCache->delSecondaryQQHead. delete QQHead,filePath=" + ((File)localObject4).getAbsolutePath());
-              break label598;
-            }
-          }
-        }
-      }
-      else
-      {
-        localObject2 = paramArrayOfFile;
-        if (k <= 0) {
-          continue;
-        }
-        localObject2 = localEntityManager;
-        localObject3 = new File[paramArrayOfFile.length - k];
-        paramInt1 = 0;
-        paramInt2 = m;
-        localObject2 = localEntityManager;
-        if (paramInt2 >= paramArrayOfFile.length) {
-          continue;
-        }
-        localObject2 = localEntityManager;
-        if (paramInt1 >= localObject3.length) {
-          continue;
-        }
-        if (paramArrayOfFile[paramInt2] == null) {
-          break label586;
-        }
-        i = paramInt1 + 1;
-        localObject3[paramInt1] = paramArrayOfFile[paramInt2];
-        paramInt1 = i;
-        paramInt2 += 1;
-        continue;
-      }
-      j += 1;
-      i = k;
-    }
-    localObject2 = localObject3;
-    localObject3 = localObject2;
-    if (localEntityManager != null)
-    {
-      localEntityManager.close();
-      localObject3 = localObject2;
-    }
-    return localObject3;
-  }
-  
-  private void f()
+  private void d()
   {
     String[] arrayOfString = new String[2];
     arrayOfString[0] = AppConstants.PATH_HEAD_STRANGER;
     arrayOfString[1] = "/data/data/com.tencent.mobileqq/files/head/_stranger/";
     int m = arrayOfString.length;
     int i = 0;
-    if (i < m)
+    while (i < m)
     {
       Object localObject1 = new File(arrayOfString[i]);
-      int n;
-      int j;
-      int k;
       if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
       {
         localObject1 = ((File)localObject1).listFiles();
         if ((localObject1 != null) && (localObject1.length > 300))
         {
           Arrays.sort((Object[])localObject1, new CleanCache.5(this));
-          n = localObject1.length;
-          j = 0;
-          k = 0;
-        }
-      }
-      for (;;)
-      {
-        if (j < n)
-        {
-          Object localObject2 = localObject1[j];
-          if (localObject2.exists()) {
-            localObject2.delete();
+          int n = localObject1.length;
+          int j = 0;
+          int k = 0;
+          while (j < n)
+          {
+            Object localObject2 = localObject1[j];
+            if (localObject2.exists()) {
+              localObject2.delete();
+            }
+            localObject1[j] = null;
+            k += 1;
+            if (n - k <= 20) {
+              break;
+            }
+            j += 1;
           }
-          localObject1[j] = null;
-          k += 1;
-          if (n - k > 20) {}
-        }
-        else
-        {
           if (QLog.isColorLevel()) {
             QLog.d("QQInitHandler", 2, "onCleanCache. delete stranger head...");
           }
-          i += 1;
-          break;
         }
-        j += 1;
       }
+      i += 1;
     }
   }
   
-  private void g()
+  private void e()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ZhituManager", 2, "cleanZhituCache...");
@@ -1147,183 +1259,210 @@ public class CleanCache
       return;
     }
     ZhituManager.d(true);
-    Object localObject1 = AppConstants.SDCARD_PATH + "zhitu";
-    localObject1 = new File(VFSAssistantUtils.getSDKPrivatePath((String)localObject1 + "/" + "origin/"));
-    int n;
-    int k;
-    int j;
-    label158:
-    int i;
-    int m;
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH);
+    ((StringBuilder)localObject).append("zhitu");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append((String)localObject);
+    localStringBuilder1.append("/");
+    localStringBuilder1.append("origin/");
+    localObject = new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder1.toString()));
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
     {
-      localObject1 = ((File)localObject1).listFiles();
-      if (localObject1 != null)
+      localObject = ((File)localObject).listFiles();
+      if (localObject != null)
       {
-        n = localObject1.length;
-        if (n > 200)
+        int k = localObject.length;
+        i = k;
+        if (k <= 200) {
+          break label302;
+        }
+        Arrays.sort((Object[])localObject, new CleanCache.8(this));
+        int i1 = localObject.length;
+        int m = 0;
+        i = 0;
+        for (;;)
         {
-          Arrays.sort((Object[])localObject1, new CleanCache.8(this));
-          int i1 = localObject1.length;
-          k = 0;
-          j = 0;
-          i = j;
-          m = n;
-          if (k < i1)
-          {
-            Object localObject2 = localObject1[k];
-            if (QLog.isColorLevel()) {
-              QLog.d("QQInitHandler", 2, "cleanZhituCache ===> deleteCount=" + j + ", delete dir=" + localObject2.getAbsolutePath());
-            }
-            FileUtils.a(localObject2.getAbsolutePath());
-            i = j + 1;
-            if (i < n - 50) {
-              break label334;
-            }
-            m = n;
+          n = k;
+          j = i;
+          if (m >= i1) {
+            break;
           }
+          localStringBuilder1 = localObject[m];
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("cleanZhituCache ===> deleteCount=");
+            localStringBuilder2.append(i);
+            localStringBuilder2.append(", delete dir=");
+            localStringBuilder2.append(localStringBuilder1.getAbsolutePath());
+            QLog.d("QQInitHandler", 2, localStringBuilder2.toString());
+          }
+          FileUtils.deleteDirectory(localStringBuilder1.getAbsolutePath());
+          i += 1;
+          if (i >= k - 50)
+          {
+            n = k;
+            j = i;
+            break;
+          }
+          m += 1;
         }
       }
     }
-    for (;;)
+    int i = 0;
+    label302:
+    int j = 0;
+    int n = i;
+    long l2 = System.currentTimeMillis();
+    ZhituManager.d(false);
+    if (QLog.isColorLevel())
     {
-      long l2 = System.currentTimeMillis();
-      ZhituManager.d(false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQInitHandler", 2, "delShortVideoCache(), totalCount=" + m + ", deleteCount= " + i + ", targetDeleteCount=" + (m - 50) + ", cost: " + (l2 - l1) + " ms");
-      return;
-      label334:
-      k += 1;
-      j = i;
-      break label158;
-      i = 0;
-      m = n;
-      continue;
-      i = 0;
-      m = 0;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("delShortVideoCache(), totalCount=");
+      ((StringBuilder)localObject).append(n);
+      ((StringBuilder)localObject).append(", deleteCount= ");
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(", targetDeleteCount=");
+      ((StringBuilder)localObject).append(n - 50);
+      ((StringBuilder)localObject).append(", cost: ");
+      ((StringBuilder)localObject).append(l2 - l1);
+      ((StringBuilder)localObject).append(" ms");
+      QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
   }
   
-  private void h()
+  private void f()
   {
-    int i = 0;
-    int j = 0;
     if (QLog.isColorLevel()) {
       QLog.d("ZhituManager", 2, "cleanLightVideoCache...");
     }
     long l1 = System.currentTimeMillis();
     Object localObject1 = new File(CameraCaptureView.CaptureParam.a);
-    int n;
-    int k;
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    boolean bool = ((File)localObject1).exists();
+    int j = 0;
+    int k = 0;
+    if ((bool) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();
       if (localObject1 != null)
       {
-        n = localObject1.length;
-        m = n;
-        if (n > 25)
-        {
-          Arrays.sort((Object[])localObject1, new CleanCache.9(this));
-          int i1 = localObject1.length;
-          k = 0;
-          i = j;
-          m = n;
-          if (k < i1)
-          {
-            Object localObject2 = localObject1[k];
-            if (QLog.isColorLevel()) {
-              QLog.d("QQInitHandler", 2, "cleanLightVideoCache ===> deleteCount=" + j + ", delete dir=" + localObject2.getAbsolutePath());
-            }
-            FileUtils.a(localObject2.getAbsolutePath());
-            i = j + 1;
-            if (i < n - 10) {
-              break label273;
-            }
-          }
+        int m = localObject1.length;
+        i = m;
+        if (m <= 25) {
+          break label221;
         }
+        Arrays.sort((Object[])localObject1, new CleanCache.9(this));
+        int n = localObject1.length;
+        i = 0;
+        for (;;)
+        {
+          j = i;
+          if (k >= n) {
+            break;
+          }
+          Object localObject2 = localObject1[k];
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("cleanLightVideoCache ===> deleteCount=");
+            localStringBuilder.append(i);
+            localStringBuilder.append(", delete dir=");
+            localStringBuilder.append(localObject2.getAbsolutePath());
+            QLog.d("QQInitHandler", 2, localStringBuilder.toString());
+          }
+          FileUtils.deleteDirectory(localObject2.getAbsolutePath());
+          i += 1;
+          if (i >= m - 10)
+          {
+            j = i;
+            break;
+          }
+          k += 1;
+        }
+        i = m;
+        break label221;
       }
     }
-    for (int m = n;; m = 0)
+    int i = 0;
+    label221:
+    long l2 = System.currentTimeMillis();
+    if (QLog.isColorLevel())
     {
-      long l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQInitHandler", 2, "cleanLightVideoCache(), totalCount=" + m + ", deleteCount= " + i + ", targetDeleteCount=" + (m - 10) + ", cost: " + (l2 - l1) + " ms");
-      }
-      return;
-      label273:
-      k += 1;
-      j = i;
-      break;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("cleanLightVideoCache(), totalCount=");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(", deleteCount= ");
+      ((StringBuilder)localObject1).append(j);
+      ((StringBuilder)localObject1).append(", targetDeleteCount=");
+      ((StringBuilder)localObject1).append(i - 10);
+      ((StringBuilder)localObject1).append(", cost: ");
+      ((StringBuilder)localObject1).append(l2 - l1);
+      ((StringBuilder)localObject1).append(" ms");
+      QLog.d("QQInitHandler", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
-  private void i()
+  private void g()
   {
     Object localObject2 = new File(HotPicDownLoader.a);
     Object localObject1 = ((File)localObject2).listFiles();
-    if ((((File)localObject2).exists()) && (((File)localObject2).isDirectory()) && (localObject1.length > 500)) {}
-    for (;;)
+    int i;
+    if ((((File)localObject2).exists()) && (((File)localObject2).isDirectory()))
     {
-      try
-      {
-        Arrays.sort((Object[])localObject1, new CleanCache.10(this));
-        localObject2 = new HashSet();
-        if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("QQInitHandler", 2, "Arrays.sort error");
-        continue;
-        Object localObject3 = ((LinkedList)HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a().clone()).iterator();
-        File localFile;
-        if (((Iterator)localObject3).hasNext())
-        {
-          localFile = HotPicDownLoader.a(((HotPicData)((Iterator)localObject3).next()).url);
-          if (localFile == null) {
-            continue;
-          }
-          localException.add(localFile);
-          continue;
-        }
-        localObject3 = new ArrayList();
-        int i = 500;
-        if (i < localObject1.length)
-        {
-          localFile = localObject1[i];
-          if (localException.contains(localFile))
-          {
-            localException.remove(localFile);
-            i += 1;
-            continue;
-          }
-          ((List)localObject3).add(localFile);
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 2, "cleanResource,delete files count:" + ((List)localObject3).size());
-        }
-        localObject1 = ((List)localObject3).iterator();
-      }
-      while (((Iterator)localObject1).hasNext()) {
-        ((File)((Iterator)localObject1).next()).delete();
+      int j = localObject1.length;
+      i = 500;
+      if (j <= 500) {}
+    }
+    try
+    {
+      Arrays.sort((Object[])localObject1, new CleanCache.10(this));
+    }
+    catch (Exception localException)
+    {
+      label63:
+      Object localObject3;
+      File localFile;
+      break label63;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "Arrays.sort error");
+    }
+    localObject2 = new HashSet();
+    if (this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return;
+    }
+    localObject3 = ((LinkedList)HotPicManager.a(this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a().clone()).iterator();
+    while (((Iterator)localObject3).hasNext())
+    {
+      localFile = HotPicDownLoader.a(((HotPicData)((Iterator)localObject3).next()).url);
+      if (localFile != null) {
+        ((Set)localObject2).add(localFile);
       }
     }
-  }
-  
-  public int a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("HEAD", 0).edit().clear().commit();
-    a();
-    ThreadManager.post(new CleanCache.1(this), 2, null, false);
-    return 7;
+    localObject3 = new ArrayList();
+    while (i < localObject1.length)
+    {
+      localFile = localObject1[i];
+      if (((Set)localObject2).contains(localFile)) {
+        ((Set)localObject2).remove(localFile);
+      } else {
+        ((List)localObject3).add(localFile);
+      }
+      i += 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("cleanResource,delete files count:");
+      ((StringBuilder)localObject1).append(((List)localObject3).size());
+      QLog.d("QQInitHandler", 2, ((StringBuilder)localObject1).toString());
+    }
+    localObject1 = ((List)localObject3).iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      ((File)((Iterator)localObject1).next()).delete();
+    }
   }
   
   void a()
@@ -1333,35 +1472,42 @@ public class CleanCache
     }
     CardHandler.c();
     FileManagerUtil.a();
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = a;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
       String str = arrayOfString[i];
-      if (FileUtils.a(str)) {
+      if (FileUtils.fileExists(str)) {
         a(str);
       }
       i += 1;
     }
   }
   
-  void d()
+  void b()
   {
-    int i = 10;
     try
     {
-      Object localObject = new File("/data/data/com.tencent.mobileqq/files/crashinfo/");
-      if ((localObject != null) && (((File)localObject).exists()))
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(QQCrashReportManager.b);
+      ((StringBuilder)localObject).append("crashinfo/");
+      localObject = new File(((StringBuilder)localObject).toString());
+      if (((File)localObject).exists())
       {
         localObject = ((File)localObject).listFiles(new CleanCache.6(this));
-        if ((localObject != null) && (localObject.length > 10))
+        if (localObject != null)
         {
-          Arrays.sort((Object[])localObject, new CleanCache.7(this));
-          while (i < localObject.length)
+          int j = localObject.length;
+          int i = 10;
+          if (j > 10)
           {
-            localObject[i].delete();
-            i += 1;
+            Arrays.sort((Object[])localObject, new CleanCache.7(this));
+            while (i < localObject.length)
+            {
+              localObject[i].delete();
+              i += 1;
+            }
           }
         }
       }
@@ -1373,50 +1519,56 @@ public class CleanCache
     }
   }
   
-  void e()
+  void c()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     List localList = localEntityManager.query(Setting.class, new Setting().getTableName(), false, null, null, null, null, null, null);
     int i;
     if (localList != null) {
       i = localList.size();
+    } else {
+      i = 0;
     }
-    for (;;)
-    {
-      ArrayList localArrayList = new ArrayList();
-      int k = 3500;
-      String[] arrayOfString = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.headCfg.name(), "24|3500|1|0").split("\\|");
-      int j = k;
-      if (arrayOfString.length > 1) {}
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValueWithoutAccountManager(DPCNames.headCfg.name(), "24|3500|1|0").split("\\|");
+    int j;
+    if (arrayOfString.length > 1) {
       try
       {
         j = Integer.parseInt(arrayOfString[1]);
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 2, new Object[] { "cleanSetingData", i + "," + j });
-        }
-        a(localEntityManager, localList, i, localArrayList, j);
-        a(localList);
-        return;
-        i = 0;
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          j = k;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("QQInitHandler", 2, "cleanSetingData,", localException);
-            j = k;
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("QQInitHandler", 2, "cleanSetingData,", localException);
         }
       }
+    } else {
+      j = 3500;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i);
+      localStringBuilder.append(",");
+      localStringBuilder.append(j);
+      QLog.d("QQInitHandler", 2, new Object[] { "cleanSetingData", localStringBuilder.toString() });
+    }
+    a(localEntityManager, localList, i, localArrayList, j);
+    a(localList);
+  }
+  
+  protected int doStep()
+  {
+    this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("HEAD", 0).edit().clear().commit();
+    a();
+    ThreadManager.post(new CleanCache.1(this), 2, null, false);
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CleanCache
  * JD-Core Version:    0.7.0.1
  */

@@ -41,10 +41,14 @@ public final class QQMiniErrorListener
   {
     Intrinsics.checkParameterIsNotNull(paramString, "message");
     Intrinsics.checkParameterIsNotNull(paramTritonException, "exception");
-    GameLog.getInstance().e("MiniErrorListener", "On TritonError " + paramString, (Throwable)paramTritonException);
+    GameLog localGameLog = GameLog.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("On TritonError ");
+    localStringBuilder.append(paramString);
+    localGameLog.e("MiniErrorListener", localStringBuilder.toString(), (Throwable)paramTritonException);
     if ((paramTritonException.getError().getSeverity().compareTo((Enum)ErrorSeverity.SEVER) >= 0) && (GameWnsUtils.getGameErrorDialogEnable()) && (!GameWnsUtils.getGameErrorDialogIsBlack()))
     {
-      paramString = DialogUtil.a(this.context, 230, null, (CharSequence)GameWnsUtils.getGameErrorDialogContent(), HardCodeUtil.a(2131710194), HardCodeUtil.a(2131710195), (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.1.INSTANCE, (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.2.INSTANCE);
+      paramString = DialogUtil.a(this.context, 230, null, (CharSequence)GameWnsUtils.getGameErrorDialogContent(), HardCodeUtil.a(2131710175), HardCodeUtil.a(2131710176), (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.1.INSTANCE, (DialogInterface.OnClickListener)QQMiniErrorListener.onError.dialog.2.INSTANCE);
       paramString.setCanceledOnTouchOutside(false);
       paramString.show();
       MiniReportManager.reportEventType(this.miniAppInfo, 1024, "1");
@@ -55,13 +59,17 @@ public final class QQMiniErrorListener
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "message");
     Intrinsics.checkParameterIsNotNull(paramString2, "stack");
-    MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 23, paramString1 + paramString2, "1");
+    MiniAppConfig localMiniAppConfig = MiniProgramReportHelper.miniAppConfigForPreload();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    MiniReportManager.reportEventType(localMiniAppConfig, 23, localStringBuilder.toString(), "1");
     this.gameReportManager.onJsError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.api.QQMiniErrorListener
  * JD-Core Version:    0.7.0.1
  */

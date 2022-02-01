@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 class VInfoCacheMgr
 {
-  private static final String TAG = VInfoCacheMgr.class.getSimpleName();
+  private static final String TAG = "VInfoCacheMgr";
   private static final int VINFO_CACHE_SAVE_TIME_MILLIS = 7200000;
   private static ConcurrentHashMap<String, SuperPlayerVideoInfo> mVinfoCache = new ConcurrentHashMap();
   
@@ -19,19 +19,28 @@ class VInfoCacheMgr
   
   private static boolean checkVInfoUpdateTimeIsValid(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
   {
-    if ((paramSuperPlayerVideoInfo == null) || (paramSuperPlayerVideoInfo.getTVideoNetInfo() == null)) {}
-    long l;
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramSuperPlayerVideoInfo != null)
     {
-      return false;
-      l = paramSuperPlayerVideoInfo.getTVideoNetInfo().getUpdateTimeMillis();
-    } while (System.currentTimeMillis() - l >= 7200000L);
-    return true;
+      if (paramSuperPlayerVideoInfo.getTVideoNetInfo() == null) {
+        return false;
+      }
+      long l = paramSuperPlayerVideoInfo.getTVideoNetInfo().getUpdateTimeMillis();
+      bool1 = bool2;
+      if (System.currentTimeMillis() - l < 7200000L) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private static String getKeyFromVInfo(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
   {
-    return paramSuperPlayerVideoInfo.getVid() + paramSuperPlayerVideoInfo.getRequestDefinition();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramSuperPlayerVideoInfo.getVid());
+    localStringBuilder.append(paramSuperPlayerVideoInfo.getRequestDefinition());
+    return localStringBuilder.toString();
   }
   
   static SuperPlayerVideoInfo getVInfoFromCache(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
@@ -39,17 +48,21 @@ class VInfoCacheMgr
     if (!checkVInfoIsValid(paramSuperPlayerVideoInfo)) {
       return null;
     }
-    paramSuperPlayerVideoInfo = getKeyFromVInfo(paramSuperPlayerVideoInfo);
-    SuperPlayerVideoInfo localSuperPlayerVideoInfo = (SuperPlayerVideoInfo)mVinfoCache.get(paramSuperPlayerVideoInfo);
-    if (localSuperPlayerVideoInfo == null) {
+    String str = getKeyFromVInfo(paramSuperPlayerVideoInfo);
+    paramSuperPlayerVideoInfo = (SuperPlayerVideoInfo)mVinfoCache.get(str);
+    if (paramSuperPlayerVideoInfo == null) {
       return null;
     }
-    if (checkVInfoUpdateTimeIsValid(localSuperPlayerVideoInfo))
+    if (checkVInfoUpdateTimeIsValid(paramSuperPlayerVideoInfo))
     {
-      LogUtil.d(TAG, "腾讯视频换链命中本地缓存, cacheInfo = " + localSuperPlayerVideoInfo.toString());
-      return localSuperPlayerVideoInfo;
+      str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("腾讯视频换链命中本地缓存, cacheInfo = ");
+      localStringBuilder.append(paramSuperPlayerVideoInfo.toString());
+      LogUtil.d(str, localStringBuilder.toString());
+      return paramSuperPlayerVideoInfo;
     }
-    mVinfoCache.remove(paramSuperPlayerVideoInfo);
+    mVinfoCache.remove(str);
     return null;
   }
   
@@ -73,7 +86,7 @@ class VInfoCacheMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.vinfo.VInfoCacheMgr
  * JD-Core Version:    0.7.0.1
  */

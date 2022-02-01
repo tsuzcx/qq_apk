@@ -14,30 +14,35 @@ class MiniAppEntryAdapter$3
   
   public void onClick(View paramView)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if ((paramView instanceof TextView))
     {
-      CharSequence localCharSequence = ((TextView)paramView).getText();
-      localObject1 = localObject2;
-      if (localCharSequence != null) {
-        localObject1 = localCharSequence.toString();
+      localObject = ((TextView)paramView).getText();
+      if (localObject != null)
+      {
+        localObject = ((CharSequence)localObject).toString();
+        break label31;
       }
     }
+    Object localObject = null;
+    label31:
     int i = paramView.getId();
     if ((i >= 0) && (i < MiniAppEntryAdapter.access$400(this.this$0).size()))
     {
       paramView = (MiniAppInfo)MiniAppEntryAdapter.access$400(this.this$0).get(i);
-      MiniAppEntryAdapter.access$500(this.this$0, (String)localObject1, paramView);
+      MiniAppEntryAdapter.access$500(this.this$0, (String)localObject, paramView);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("MiniAppEntryAdapter", 2, "onClick. onMenuItemSelected, position = " + i);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onClick. onMenuItemSelected, position = ");
+      paramView.append(i);
+      QLog.i("MiniAppEntryAdapter", 2, paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryAdapter.3
  * JD-Core Version:    0.7.0.1
  */

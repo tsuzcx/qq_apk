@@ -19,16 +19,19 @@ public class o
   
   public static int a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if ((paramString.equals("46000")) || (paramString.equals("46002")) || (paramString.equals("46007"))) {
+    if (!TextUtils.isEmpty(paramString)) {
+      if ((!paramString.equals("46000")) && (!paramString.equals("46002")) && (!paramString.equals("46007")))
+      {
+        if (paramString.equals("46001")) {
+          return 1;
+        }
+        if (paramString.equals("46003")) {
+          return 2;
+        }
+      }
+      else
+      {
         return 0;
-      }
-      if (paramString.equals("46001")) {
-        return 1;
-      }
-      if (paramString.equals("46003")) {
-        return 2;
       }
     }
     return -1;
@@ -36,7 +39,7 @@ public class o
   
   public static boolean a()
   {
-    return !TextUtils.isEmpty(Proxy.getDefaultHost());
+    return TextUtils.isEmpty(Proxy.getDefaultHost()) ^ true;
   }
   
   public static boolean a(Context paramContext)
@@ -56,65 +59,63 @@ public class o
   private static e b(Context paramContext)
   {
     e locale = new e();
-    for (;;)
+    localObject2 = null;
+    NetworkInfo localNetworkInfo = null;
+    localObject1 = localObject2;
+    try
     {
-      try
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)paramContext.getSystemService("connectivity");
+      if (localConnectivityManager != null)
       {
-        Object localObject1 = (ConnectivityManager)paramContext.getSystemService("connectivity");
-        Object localObject3;
-        if (localObject1 != null)
-        {
-          localObject1 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
-          if (localObject1 != null) {
-            localObject3 = localObject1;
-          }
-        }
-        Throwable localThrowable3;
-        Object localObject2 = null;
+        localObject1 = localObject2;
+        localNetworkInfo = localConnectivityManager.getActiveNetworkInfo();
       }
-      catch (Throwable localThrowable1)
+      if (localNetworkInfo != null)
       {
-        try
-        {
-          if (((NetworkInfo)localObject1).isAvailable()) {
-            continue;
-          }
-          a = false;
-          locale.a = a.m;
-          return locale;
-        }
-        catch (Throwable localThrowable2)
-        {
-          localThrowable3 = localThrowable1;
-          continue;
-        }
-        localThrowable1 = localThrowable1;
-        localObject3 = null;
-        a = true;
-        if ((localObject3 != null) && (localObject3.getType() == 1))
-        {
-          locale.a = a.b;
-          paramContext = (WifiManager)GlobalUtil.getInstance().getContext().getSystemService("wifi");
-          if (paramContext != null) {}
-          try
-          {
-            paramContext = paramContext.getConnectionInfo();
-            if (paramContext != null)
-            {
-              locale.e = paramContext.getBSSID();
-              locale.f = paramContext.getSSID();
-            }
-          }
-          catch (Throwable paramContext)
-          {
-            paramContext.printStackTrace();
-            continue;
-          }
-          return locale;
-        }
-        return c(paramContext);
+        localObject2 = localNetworkInfo;
+        localObject1 = localNetworkInfo;
+        if (localNetworkInfo.isAvailable()) {}
+      }
+      else
+      {
+        localObject1 = localNetworkInfo;
+        a = false;
+        localObject1 = localNetworkInfo;
+        locale.a = a.m;
+        return locale;
       }
     }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localObject2 = localObject1;
+      }
+    }
+    a = true;
+    if ((localObject2 != null) && (localObject2.getType() == 1))
+    {
+      locale.a = a.b;
+      paramContext = (WifiManager)GlobalUtil.getInstance().getContext().getSystemService("wifi");
+      if (paramContext != null) {
+        try
+        {
+          paramContext = paramContext.getConnectionInfo();
+          if (paramContext != null)
+          {
+            locale.e = paramContext.getBSSID();
+            locale.f = paramContext.getSSID();
+            return locale;
+          }
+        }
+        catch (Throwable paramContext)
+        {
+          paramContext.printStackTrace();
+        }
+      }
+      return locale;
+    }
+    return c(paramContext);
   }
   
   private static e c(Context paramContext)
@@ -127,86 +128,119 @@ public class o
     locale.b = str;
     int i = paramContext.getNetworkType();
     locale.c = i;
-    switch (a(str))
+    int j = a(str);
+    if (j != 0)
     {
-    default: 
-      if (!bool) {
-        break;
+      if (j != 1)
+      {
+        if (j != 2)
+        {
+          if (bool)
+          {
+            locale.a = a.l;
+            return locale;
+          }
+          locale.a = a.k;
+          return locale;
+        }
+        if (i != 13)
+        {
+          if (bool)
+          {
+            locale.a = a.i;
+            return locale;
+          }
+          locale.a = a.j;
+          return locale;
+        }
+        if (bool)
+        {
+          locale.a = a.n;
+          return locale;
+        }
+        locale.a = a.o;
+        return locale;
       }
-    }
-    for (locale.a = a.l;; locale.a = a.k)
-    {
+      if ((i != 1) && (i != 2))
+      {
+        if ((i != 3) && (i != 8) && (i != 10)) {
+          if (i != 13)
+          {
+            if (i != 15)
+            {
+              if (bool)
+              {
+                locale.a = a.l;
+                return locale;
+              }
+              locale.a = a.k;
+              return locale;
+            }
+          }
+          else
+          {
+            if (bool)
+            {
+              locale.a = a.n;
+              return locale;
+            }
+            locale.a = a.o;
+            return locale;
+          }
+        }
+        if (bool)
+        {
+          locale.a = a.g;
+          return locale;
+        }
+        locale.a = a.h;
+        return locale;
+      }
+      if (bool)
+      {
+        locale.a = a.e;
+        return locale;
+      }
+      locale.a = a.f;
       return locale;
-      switch (i)
-      {
-      default: 
-        if (!bool) {
-          break;
-        }
-      }
-      for (locale.a = a.l;; locale.a = a.k)
-      {
-        return locale;
-        if (bool) {}
-        for (locale.a = a.n;; locale.a = a.o) {
-          return locale;
-        }
-        if (bool) {}
-        for (locale.a = a.c;; locale.a = a.d) {
-          return locale;
-        }
-        if (bool) {}
-        for (locale.a = a.c;; locale.a = a.d) {
-          return locale;
-        }
-      }
-      switch (i)
-      {
-      case 4: 
-      case 5: 
-      case 6: 
-      case 7: 
-      case 9: 
-      case 11: 
-      case 12: 
-      case 14: 
-      default: 
-        if (!bool) {
-          break;
-        }
-      }
-      for (locale.a = a.l;; locale.a = a.k)
-      {
-        return locale;
-        if (bool) {}
-        for (locale.a = a.n;; locale.a = a.o) {
-          return locale;
-        }
-        if (bool) {}
-        for (locale.a = a.g;; locale.a = a.h) {
-          return locale;
-        }
-        if (bool) {}
-        for (locale.a = a.e;; locale.a = a.f) {
-          return locale;
-        }
-      }
-      switch (i)
-      {
-      default: 
-        if (!bool) {
-          break;
-        }
-      }
-      for (locale.a = a.i;; locale.a = a.j)
-      {
-        return locale;
-        if (bool) {}
-        for (locale.a = a.n;; locale.a = a.o) {
-          return locale;
-        }
-      }
     }
+    if ((i != 1) && (i != 2))
+    {
+      if (i != 13)
+      {
+        if (i != 16)
+        {
+          if (bool)
+          {
+            locale.a = a.l;
+            return locale;
+          }
+          locale.a = a.k;
+          return locale;
+        }
+        if (bool)
+        {
+          locale.a = a.c;
+          return locale;
+        }
+        locale.a = a.d;
+        return locale;
+      }
+      if (bool)
+      {
+        locale.a = a.n;
+        return locale;
+      }
+      locale.a = a.o;
+      return locale;
+    }
+    if (bool)
+    {
+      locale.a = a.c;
+      return locale;
+    }
+    locale.a = a.d;
+    return locale;
   }
   
   public static void c()
@@ -218,7 +252,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.o
  * JD-Core Version:    0.7.0.1
  */

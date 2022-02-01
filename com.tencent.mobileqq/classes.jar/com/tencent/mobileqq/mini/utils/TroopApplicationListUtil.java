@@ -30,7 +30,7 @@ public class TroopApplicationListUtil
   public static final String ADD_TROOP_APPLICATION_API = "app.qun.qq.com/cgi-bin/api/inner_setunifiedapp";
   public static final String CHECK_MINIAPP_IN_TROOP_APPLICATION_LIST = "app.qun.qq.com/cgi-bin/api/inner_checkunifiedapp";
   private static final String CONTENT_TYPE_FORM_URLENCODED = "application/x-www-form-urlencoded";
-  public static final int START_TROOP_ACTIVITY_REQUEST_CODE = 1048576;
+  public static final int START_TROOP_ACTIVITY_REQUEST_CODE = 107;
   public static final int STATUS_CODE_ADDED_TROOP = 44012;
   public static final int STATUS_CODE_EXCEED_MAX_SIZE = 41005;
   public static final int STATUS_CODE_HAS_ADDED = 41012;
@@ -74,45 +74,63 @@ public class TroopApplicationListUtil
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt == 1000)
     {
-      localStringBuilder.append("gc=").append(paramString1).append("&appid=").append(paramString2);
+      localStringBuilder.append("gc=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("&appid=");
+      localStringBuilder.append(paramString2);
       localCgiReqInfo.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/miniapp/proxy/wnscgi/{api}".replace("{api}", "app.qun.qq.com/cgi-bin/api/inner_checkunifiedapp");
     }
-    for (;;)
+    else
     {
-      localStringBuilder.append("&sourcekey=qzone").append("&qqver=").append("8.5.5").append(".").append("5105").append("&platform=2");
-      localCgiReqInfo.c = "{}";
-      localCgiReqInfo.jdField_a_of_type_Int = 60000;
-      localCgiReqInfo.e = "application/x-www-form-urlencoded";
-      paramString1 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString1 = "POST";
-      }
-      localCgiReqInfo.b = paramString1;
-      localCgiReqInfo.jdField_a_of_type_Boolean = false;
-      localCgiReqInfo.d = localStringBuilder.toString();
-      try
+      localStringBuilder.append("gc=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("&append_appid=");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("&add_type=1");
+      localStringBuilder.append("&append_source=1");
+      localCgiReqInfo.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/miniapp/proxy/wnscgi/{api}".replace("{api}", "app.qun.qq.com/cgi-bin/api/inner_setunifiedapp");
+    }
+    localStringBuilder.append("&sourcekey=qzone");
+    localStringBuilder.append("&qqver=");
+    localStringBuilder.append("8.7.0");
+    localStringBuilder.append(".");
+    localStringBuilder.append("5295");
+    localStringBuilder.append("&platform=2");
+    localCgiReqInfo.c = "{}";
+    localCgiReqInfo.jdField_a_of_type_Int = 60000;
+    localCgiReqInfo.e = "application/x-www-form-urlencoded";
+    paramString1 = paramString3;
+    if (TextUtils.isEmpty(paramString3)) {
+      paramString1 = "POST";
+    }
+    localCgiReqInfo.b = paramString1;
+    localCgiReqInfo.jdField_a_of_type_Boolean = false;
+    localCgiReqInfo.d = localStringBuilder.toString();
+    try
+    {
+      paramInt = getBkn(localCgiReqInfo.jdField_a_of_type_JavaLangString);
+      if (paramInt != -1)
       {
-        paramInt = getBkn(localCgiReqInfo.jdField_a_of_type_JavaLangString);
-        if (paramInt != -1)
+        if (localCgiReqInfo.jdField_a_of_type_JavaLangString.contains("?"))
         {
-          if (localCgiReqInfo.jdField_a_of_type_JavaLangString.contains("?")) {
-            localCgiReqInfo.jdField_a_of_type_JavaLangString = (localCgiReqInfo.jdField_a_of_type_JavaLangString + "&bkn=" + paramInt);
-          }
-        }
-        else
-        {
+          paramString1 = new StringBuilder();
+          paramString1.append(localCgiReqInfo.jdField_a_of_type_JavaLangString);
+          paramString1.append("&bkn=");
+          paramString1.append(paramInt);
+          localCgiReqInfo.jdField_a_of_type_JavaLangString = paramString1.toString();
           return localCgiReqInfo;
-          localStringBuilder.append("gc=").append(paramString1).append("&append_appid=").append(paramString2).append("&add_type=1").append("&append_source=1");
-          localCgiReqInfo.jdField_a_of_type_JavaLangString = "https://h5.qzone.qq.com/miniapp/proxy/wnscgi/{api}".replace("{api}", "app.qun.qq.com/cgi-bin/api/inner_setunifiedapp");
-          continue;
         }
-        localCgiReqInfo.jdField_a_of_type_JavaLangString = (localCgiReqInfo.jdField_a_of_type_JavaLangString + "?bkn=" + paramInt);
+        paramString1 = new StringBuilder();
+        paramString1.append(localCgiReqInfo.jdField_a_of_type_JavaLangString);
+        paramString1.append("?bkn=");
+        paramString1.append(paramInt);
+        localCgiReqInfo.jdField_a_of_type_JavaLangString = paramString1.toString();
         return localCgiReqInfo;
       }
-      catch (Throwable paramString1)
-      {
-        QLog.e("TroopApplicationListUtil", 1, "get bkn fail.", paramString1);
-      }
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("TroopApplicationListUtil", 1, "get bkn fail.", paramString1);
     }
     return localCgiReqInfo;
   }
@@ -122,53 +140,55 @@ public class TroopApplicationListUtil
     TicketManager localTicketManager = (TicketManager)BaseApplicationImpl.getApplication().getRuntime().getManager(2);
     String str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     String str2 = localTicketManager.getPskey(str1, AuthorizeConfig.a().c(SwiftBrowserCookieMonster.b(paramString)));
-    if (!TextUtils.isEmpty(str2)) {}
-    for (int i = getGTK(str2);; i = -1)
+    if (!TextUtils.isEmpty(str2)) {
+      i = getGTK(str2);
+    } else {
+      i = -1;
+    }
+    int j = i;
+    if (i == -1)
     {
-      int k = i;
-      if (i == -1)
+      paramString = SwiftBrowserCookieMonster.c(paramString);
+      j = i;
+      if (!TextUtils.isEmpty(paramString))
       {
-        paramString = SwiftBrowserCookieMonster.c(paramString);
-        k = i;
-        if (!TextUtils.isEmpty(paramString))
+        j = i;
+        if (paramString.contains("p_skey"))
         {
-          k = i;
-          if (paramString.contains("p_skey"))
+          paramString = paramString.split(";");
+          int m = paramString.length;
+          int k = 0;
+          for (;;)
           {
-            paramString = paramString.split(";");
-            int m = paramString.length;
-            int j = 0;
-            for (;;)
+            j = i;
+            if (k >= m) {
+              break;
+            }
+            str2 = paramString[k];
+            j = i;
+            if (!TextUtils.isEmpty(str2))
             {
-              k = i;
-              if (j >= m) {
-                break;
-              }
-              str2 = paramString[j];
-              k = i;
-              if (!TextUtils.isEmpty(str2))
+              j = i;
+              if (str2.contains("p_skey"))
               {
-                k = i;
-                if (str2.contains("p_skey"))
-                {
-                  str2 = str2.substring(str2.indexOf("=") + 1, str2.length());
-                  k = i;
-                  if (!TextUtils.isEmpty(str2)) {
-                    k = getGTK(str2);
-                  }
+                str2 = str2.substring(str2.indexOf("=") + 1, str2.length());
+                j = i;
+                if (!TextUtils.isEmpty(str2)) {
+                  j = getGTK(str2);
                 }
               }
-              j += 1;
-              i = k;
             }
+            k += 1;
+            i = j;
           }
         }
       }
-      if (k == -1) {
-        return getGTK(localTicketManager.getSkey(str1));
-      }
-      return k;
     }
+    int i = j;
+    if (j == -1) {
+      i = getGTK(localTicketManager.getSkey(str1));
+    }
+    return i;
   }
   
   public static String getCookie(String paramString)
@@ -191,7 +211,10 @@ public class TroopApplicationListUtil
   public static boolean isAdminOrCreated()
   {
     boolean bool = TroopUtils.a();
-    QLog.d("TroopApplicationListUtil", 1, "isAdminOrCreated: " + bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isAdminOrCreated: ");
+    localStringBuilder.append(bool);
+    QLog.d("TroopApplicationListUtil", 1, localStringBuilder.toString());
     return bool;
   }
   
@@ -211,31 +234,30 @@ public class TroopApplicationListUtil
   {
     int i = 0;
     String str;
-    if ((paramInt == 0) || (paramInt == 41012))
+    if ((paramInt != 0) && (paramInt != 41012))
     {
-      str = BaseApplicationImpl.getApplication().getResources().getString(2131694159);
-      paramInt = 5;
-    }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new TroopApplicationListUtil.4(paramInt, str));
-      return;
       if (paramInt == 41005)
       {
-        str = BaseApplicationImpl.getApplication().getResources().getString(2131694166);
+        str = BaseApplicationImpl.getApplication().getResources().getString(2131694121);
         paramInt = i;
       }
       else if (paramInt == 41004)
       {
-        str = BaseApplicationImpl.getApplication().getResources().getString(2131694177);
+        str = BaseApplicationImpl.getApplication().getResources().getString(2131694136);
         paramInt = i;
       }
       else
       {
-        str = BaseApplicationImpl.getApplication().getResources().getString(2131694158);
+        str = BaseApplicationImpl.getApplication().getResources().getString(2131694113);
         paramInt = i;
       }
     }
+    else
+    {
+      str = BaseApplicationImpl.getApplication().getResources().getString(2131694114);
+      paramInt = 5;
+    }
+    ThreadManager.getUIHandler().post(new TroopApplicationListUtil.4(paramInt, str));
   }
   
   public static void startTroopActivityAndAddTroopApplication(Activity paramActivity, String paramString, AsyncResult paramAsyncResult)
@@ -249,12 +271,12 @@ public class TroopApplicationListUtil
     paramString.putExtra("key_tab_mode", 0);
     paramString.putExtra("is_select_troop", true);
     paramString.putExtra("key_from", 3);
-    paramActivity.startActivityForResult(paramString, 1048576);
+    paramActivity.startActivityForResult(paramString, 107);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.utils.TroopApplicationListUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -15,21 +15,22 @@ class WakeManager$ServiceHelloQQCallback
   
   public void a(boolean paramBoolean)
   {
-    this.a.b = false;
+    Object localObject = this.a;
+    ((WakeManager)localObject).b = false;
     if (paramBoolean) {
-      this.a.a("ServiceHelloQQCallback onInit success");
-    }
-    for (;;)
-    {
-      AssistantUtils.a("HelloQQWake", "HelloQQHelper init isMonitor：" + this.a.b);
-      return;
+      ((WakeManager)localObject).a("ServiceHelloQQCallback onInit success");
+    } else {
       AssistantUtils.a("HelloQQWake", "HelloQQHelper init failure");
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("HelloQQHelper init isMonitor：");
+    ((StringBuilder)localObject).append(this.a.b);
+    AssistantUtils.a("HelloQQWake", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.wake.WakeManager.ServiceHelloQQCallback
  * JD-Core Version:    0.7.0.1
  */

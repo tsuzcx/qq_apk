@@ -52,8 +52,9 @@ public class QQMovieFilter
   
   private void stopPlay()
   {
-    if (this.mDecodePlayer != null) {
-      this.mDecodePlayer.stopPlay();
+    DecodePlayer localDecodePlayer = this.mDecodePlayer;
+    if (localDecodePlayer != null) {
+      localDecodePlayer.stopPlay();
     }
   }
   
@@ -64,91 +65,117 @@ public class QQMovieFilter
   
   public void onDrawFrame()
   {
-    if ((this.mDecodePlayer != null) && (this.mDecodePlayer.getCurrentState() == 3) && (this.surfaceTexture != null))
+    Object localObject = this.mDecodePlayer;
+    if ((localObject != null) && (((DecodePlayer)localObject).getCurrentState() == 3) && (this.surfaceTexture != null))
     {
       if (!this.isSurfaceCreated) {
         onSurfaceCreateInternal();
       }
-      if ((this.surfaceWidth == getQQFilterRenderManager().getFilterWidth()) || (this.surfaceHeight == getQQFilterRenderManager().getFilterHeight())) {
-        break label281;
+      if ((this.surfaceWidth != getQQFilterRenderManager().getFilterWidth()) && (this.surfaceHeight != getQQFilterRenderManager().getFilterHeight()))
+      {
+        onSurfaceChangeInternal(getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
+        this.sizeChange = true;
       }
-      onSurfaceChangeInternal(getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
-      this.sizeChange = true;
+      else
+      {
+        this.sizeChange = false;
+      }
     }
-    while ((this.isSurfaceCreated) && (this.mDecodePlayer != null) && (this.mDecodePlayer.getCurrentState() == 3) && (this.surfaceTexture != null))
+    if (this.isSurfaceCreated)
     {
-      if ((this.mRenderFBO == null) || (this.mRenderFBO.getWidth() <= 0) || (this.mRenderFBO.getWidth() <= 0) || (this.sizeChange)) {
-        this.mRenderFBO = new RenderBuffer(true, getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight(), 33984);
-      }
-      try
+      localObject = this.mDecodePlayer;
+      if ((localObject != null) && (((DecodePlayer)localObject).getCurrentState() == 3) && (this.surfaceTexture != null))
       {
-        this.mRenderFBO.setTexId(this.mInputTextureID);
-        this.mRenderFBO.bind();
-        GPUBaseFilter localGPUBaseFilter = this.mBaseFilter;
-        GPUBaseFilter.checkGlError("fbo bind");
-        i = GLES20.glCheckFramebufferStatus(36160);
-        if (i == 36053) {
-          break label289;
+        localObject = this.mRenderFBO;
+        if ((localObject == null) || (((RenderBuffer)localObject).getWidth() <= 0) || (this.mRenderFBO.getWidth() <= 0) || (this.sizeChange)) {
+          this.mRenderFBO = new RenderBuffer(true, getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight(), 33984);
         }
-        SLog.e("QQMovieFilter", "fbo status incomplete, status: " + i);
-        throw new RuntimeException("fbo status incomplete");
+        try
+        {
+          this.mRenderFBO.setTexId(this.mInputTextureID);
+          this.mRenderFBO.bind();
+          localObject = this.mBaseFilter;
+          GPUBaseFilter.checkGlError("fbo bind");
+          int i = GLES20.glCheckFramebufferStatus(36160);
+          if (i == 36053)
+          {
+            this.surfaceTexture.updateTexImage();
+            localObject = new float[16];
+            this.surfaceTexture.getTransformMatrix((float[])localObject);
+            this.mOESMovieFilter.drawTexture(this.textureId, (float[])localObject);
+            localObject = this.mBaseFilter;
+            GPUBaseFilter.checkGlError("oes draw");
+            this.mRenderFBO.unbind();
+            this.mRenderFBO.recoverInitialTexId();
+            this.mRenderFBO.bind();
+            i = GLES20.glCheckFramebufferStatus(36160);
+            if (i == 36053)
+            {
+              localObject = this.mBaseFilter;
+              GPUBaseFilter.checkGlError("pre clear");
+              this.mBaseFilter.drawTexture(this.mInputTextureID, null, null);
+              this.mRenderFBO.unbind();
+              this.mOutputTextureID = this.mRenderFBO.getTexId();
+              return;
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("fbo status2 incomplete, status: ");
+            ((StringBuilder)localObject).append(i);
+            SLog.e("QQMovieFilter", ((StringBuilder)localObject).toString());
+            throw new RuntimeException("fbo status incomplete");
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("fbo status incomplete, status: ");
+          ((StringBuilder)localObject).append(i);
+          SLog.e("QQMovieFilter", ((StringBuilder)localObject).toString());
+          throw new RuntimeException("fbo status incomplete");
+        }
+        catch (Throwable localThrowable)
+        {
+          this.mOutputTextureID = this.mInputTextureID;
+          SdkContext.getInstance().getLogger().e("QQMovieFilter", "onDrawFrame error.", localThrowable);
+          return;
+        }
       }
-      catch (Throwable localThrowable)
-      {
-        this.mOutputTextureID = this.mInputTextureID;
-        SdkContext.getInstance().getLogger().e("QQMovieFilter", "onDrawFrame error.", localThrowable);
-        return;
-      }
-      label281:
-      this.sizeChange = false;
-      continue;
-      label289:
-      this.surfaceTexture.updateTexImage();
-      Object localObject = new float[16];
-      this.surfaceTexture.getTransformMatrix((float[])localObject);
-      this.mOESMovieFilter.drawTexture(this.textureId, (float[])localObject);
-      localObject = this.mBaseFilter;
-      GPUBaseFilter.checkGlError("oes draw");
-      this.mRenderFBO.unbind();
-      this.mRenderFBO.recoverInitialTexId();
-      this.mRenderFBO.bind();
-      int i = GLES20.glCheckFramebufferStatus(36160);
-      if (i != 36053)
-      {
-        SLog.e("QQMovieFilter", "fbo status2 incomplete, status: " + i);
-        throw new RuntimeException("fbo status incomplete");
-      }
-      localObject = this.mBaseFilter;
-      GPUBaseFilter.checkGlError("pre clear");
-      this.mBaseFilter.drawTexture(this.mInputTextureID, null, null);
-      this.mRenderFBO.unbind();
-      this.mOutputTextureID = this.mRenderFBO.getTexId();
-      return;
     }
     this.mOutputTextureID = this.mInputTextureID;
   }
   
   public void onMusicOriginalChange(boolean paramBoolean)
   {
-    if ((isFilterWork()) && (this.movieProcessHandler != null) && (this.movieProcessThread != null) && (this.movieProcessThread.isAlive())) {
-      if (!paramBoolean) {
-        break label84;
-      }
-    }
-    label84:
-    for (int i = 3;; i = 4)
+    if ((isFilterWork()) && (this.movieProcessHandler != null))
     {
-      Message localMessage = Message.obtain(this.movieProcessHandler, i);
-      this.movieProcessHandler.sendMessage(localMessage);
-      SLog.i("QQMovieFilter", "send movie filter msg, what = " + localMessage.what);
-      return;
+      Object localObject = this.movieProcessThread;
+      if ((localObject != null) && (((HandlerThread)localObject).isAlive()))
+      {
+        int i;
+        if (paramBoolean) {
+          i = 3;
+        } else {
+          i = 4;
+        }
+        localObject = Message.obtain(this.movieProcessHandler, i);
+        this.movieProcessHandler.sendMessage((Message)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("send movie filter msg, what = ");
+        localStringBuilder.append(((Message)localObject).what);
+        SLog.i("QQMovieFilter", localStringBuilder.toString());
+      }
     }
   }
   
   public void onSurfaceChangeInternal(int paramInt1, int paramInt2)
   {
-    if (SdkContext.getInstance().getLogger().isEnable()) {
-      SdkContext.getInstance().getLogger().d("QQMovieFilter", "onSurfaceChanged : " + paramInt1 + ";" + paramInt2);
+    Object localObject;
+    if (SdkContext.getInstance().getLogger().isEnable())
+    {
+      localObject = SdkContext.getInstance().getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSurfaceChanged : ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(";");
+      localStringBuilder.append(paramInt2);
+      ((Logger)localObject).d("QQMovieFilter", localStringBuilder.toString());
     }
     this.surfaceWidth = paramInt1;
     this.surfaceHeight = paramInt2;
@@ -157,8 +184,11 @@ public class QQMovieFilter
       int i = GLES20.glGetError();
       if ((i != 0) && (SdkContext.getInstance().getLogger().isEnable()))
       {
-        String str = "previousUnknownError: glError 0x" + Integer.toHexString(i);
-        SdkContext.getInstance().getLogger().e("QQMovieFilter", str);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("previousUnknownError: glError 0x");
+        ((StringBuilder)localObject).append(Integer.toHexString(i));
+        localObject = ((StringBuilder)localObject).toString();
+        SdkContext.getInstance().getLogger().e("QQMovieFilter", (String)localObject);
       }
       if (this.mOESMovieFilter != null)
       {
@@ -167,10 +197,11 @@ public class QQMovieFilter
           this.mOESMovieFilter.adjustVideo(VideoUtil.getHeightWidthRatioOfVideo(this.videoFilePath), this.xOffset, this.yOffset);
         }
       }
-      if (this.mBaseFilter != null) {
+      if (this.mBaseFilter != null)
+      {
         this.mBaseFilter.onOutputSizeChanged(paramInt1, paramInt2);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -198,8 +229,11 @@ public class QQMovieFilter
         int i = GLES20.glGetError();
         if ((i != 0) && (SdkContext.getInstance().getLogger().isEnable()))
         {
-          String str = "previousUnknownError: glError 0x" + Integer.toHexString(i);
-          SdkContext.getInstance().getLogger().e("QQMovieFilter", str);
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("previousUnknownError: glError 0x");
+          ((StringBuilder)localObject).append(Integer.toHexString(i));
+          localObject = ((StringBuilder)localObject).toString();
+          SdkContext.getInstance().getLogger().e("QQMovieFilter", (String)localObject);
         }
         if (this.mOESMovieFilter == null)
         {
@@ -217,8 +251,8 @@ public class QQMovieFilter
         }
         GPUBaseFilter.checkGlError("filter init");
         this.isSurfaceCreated = true;
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -233,21 +267,25 @@ public class QQMovieFilter
     if (SdkContext.getInstance().getLogger().isEnable()) {
       SdkContext.getInstance().getLogger().d("QQMovieFilter", "surfaceDestroyed");
     }
-    if (this.mRenderFBO != null) {
-      this.mRenderFBO.destroy();
+    Object localObject = this.mRenderFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.mOESMovieFilter != null) {
-      this.mOESMovieFilter.destroy();
+    localObject = this.mOESMovieFilter;
+    if (localObject != null) {
+      ((GPUOESMovieFilter)localObject).destroy();
     }
-    if (this.mBaseFilter != null) {
-      this.mBaseFilter.destroy();
+    localObject = this.mBaseFilter;
+    if (localObject != null) {
+      ((GPUBaseFilter)localObject).destroy();
     }
     if (this.movieProcessHandler != null) {
       this.movieProcessHandler = null;
     }
-    if (this.movieProcessThread != null)
+    localObject = this.movieProcessThread;
+    if (localObject != null)
     {
-      if (this.movieProcessThread.isAlive()) {
+      if (((HandlerThread)localObject).isAlive()) {
         this.movieProcessThread.quit();
       }
       this.movieProcessThread = null;
@@ -265,31 +303,36 @@ public class QQMovieFilter
   
   public void startPlay(String paramString1, String paramString2, boolean paramBoolean, float paramFloat1, float paramFloat2, HWDecodeListener paramHWDecodeListener)
   {
-    if ((this.movieProcessThread == null) || (!this.movieProcessThread.isAlive()))
+    Object localObject = this.movieProcessThread;
+    if ((localObject == null) || (!((HandlerThread)localObject).isAlive()))
     {
       this.movieProcessThread = new HandlerThread("movieTouchThread");
       this.movieProcessThread.start();
       this.movieProcessHandler = new QQMovieFilter.1(this, this.movieProcessThread.getLooper());
     }
-    if (this.onFrameAvailableListener != null) {
-      this.onFrameAvailableListener.disable();
+    localObject = this.onFrameAvailableListener;
+    if (localObject != null) {
+      ((QQMovieFilter.MovieOnFrameAvailableListener)localObject).disable();
     }
     this.surfaceTexture = null;
-    if (FileUtil.fileExistsAndNotEmpty(paramString1)) {}
-    for (paramString1 = Message.obtain(this.movieProcessHandler, 2, new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), paramHWDecodeListener });; paramString1 = Message.obtain(this.movieProcessHandler, 1))
-    {
-      this.movieProcessHandler.removeMessages(2);
-      this.movieProcessHandler.removeMessages(1);
-      this.movieProcessHandler.sendMessage(paramString1);
-      this.lastSendMessage = paramString1.what;
-      SLog.i("QQMovieFilter", "send movie filter msg, what = " + this.lastSendMessage);
-      return;
+    if (FileUtil.fileExistsAndNotEmpty(paramString1)) {
+      paramString1 = Message.obtain(this.movieProcessHandler, 2, new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), paramHWDecodeListener });
+    } else {
+      paramString1 = Message.obtain(this.movieProcessHandler, 1);
     }
+    this.movieProcessHandler.removeMessages(2);
+    this.movieProcessHandler.removeMessages(1);
+    this.movieProcessHandler.sendMessage(paramString1);
+    this.lastSendMessage = paramString1.what;
+    paramString1 = new StringBuilder();
+    paramString1.append("send movie filter msg, what = ");
+    paramString1.append(this.lastSendMessage);
+    SLog.i("QQMovieFilter", paramString1.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQMovieFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -44,26 +44,31 @@ public class QzoneVideoTabJsPlugin
   {
     try
     {
-      QLog.i(this.TAG, 1, "getLocalProxyUrl. json=" + paramString);
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).getJSONArray("playList");
-      localObject = ((JSONObject)localObject).getString("callback");
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.getProxyCallback = ((String)localObject);
+      Object localObject1 = this.TAG;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getLocalProxyUrl. json=");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+      localObject1 = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject1).getJSONArray("playList");
+      localObject1 = ((JSONObject)localObject1).getString("callback");
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        this.getProxyCallback = ((String)localObject1);
       }
-      localObject = new ArrayList();
-      ArrayList localArrayList = new ArrayList();
+      localObject1 = new ArrayList();
+      localObject2 = new ArrayList();
       int i = 0;
       while (i < paramString.length())
       {
-        ((ArrayList)localObject).add(paramString.getJSONObject(i).getString("url"));
-        localArrayList.add(paramString.getJSONObject(i).getString("vid"));
+        ((ArrayList)localObject1).add(paramString.getJSONObject(i).getString("url"));
+        ((ArrayList)localObject2).add(paramString.getJSONObject(i).getString("vid"));
         i += 1;
       }
-      if (((ArrayList)localObject).size() > 0) {
-        this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.2(this, (ArrayList)localObject, localArrayList));
+      if (((ArrayList)localObject1).size() > 0)
+      {
+        this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.2(this, (ArrayList)localObject1, (ArrayList)localObject2));
+        return;
       }
-      return;
     }
     catch (JSONException paramString)
     {
@@ -73,16 +78,14 @@ public class QzoneVideoTabJsPlugin
   
   private static Activity getRealActivity(Activity paramActivity)
   {
-    Activity localActivity;
     if (paramActivity == null) {
-      localActivity = null;
+      return null;
     }
-    do
-    {
-      return localActivity;
-      localActivity = paramActivity;
-    } while (!(paramActivity instanceof BasePluginActivity));
-    return ((BasePluginActivity)paramActivity).getOutActivity();
+    Activity localActivity = paramActivity;
+    if ((paramActivity instanceof BasePluginActivity)) {
+      localActivity = ((BasePluginActivity)paramActivity).getOutActivity();
+    }
+    return localActivity;
   }
   
   private void setPlayState(String paramString)
@@ -100,10 +103,11 @@ public class QzoneVideoTabJsPlugin
         localArrayList2.add(localJSONObject.getString("state"));
         i += 1;
       }
-      if (localArrayList1.size() > 0) {
+      if (localArrayList1.size() > 0)
+      {
         this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneVideoTabJsPlugin.3(this, localArrayList1, localArrayList2));
+        return;
       }
-      return;
     }
     catch (JSONException paramString)
     {
@@ -118,32 +122,35 @@ public class QzoneVideoTabJsPlugin
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!paramString2.equals("Qzone")) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {
-      return false;
-    }
-    if (("videoProxyGetLocalProxyURL".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+    if ((paramString2.equals("Qzone")) && (this.parentPlugin != null))
     {
-      RemoteHandleManager.getInstance().addWebEventListener(this);
-      getLocalProxyUrl(paramVarArgs[0]);
-      return true;
-    }
-    if (("videoProxySetPlayState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
-    {
-      RemoteHandleManager.getInstance().addWebEventListener(this);
-      setPlayState(paramVarArgs[0]);
-      return true;
-    }
-    if ("videoProxyStopAll".equals(paramString3))
-    {
-      RemoteHandleManager.getInstance().addWebEventListener(this);
-      stopAll();
-      return true;
-    }
-    if ("videoProxySaveVideoToAlbum".equals(paramString3))
-    {
-      paramJsBridgeListener = this.parentPlugin.mRuntime.a();
-      if ((paramJsBridgeListener != null) && (QZonePermission.requestStoragePermission(paramJsBridgeListener, new QzoneVideoTabJsPlugin.1(this, paramVarArgs, paramJsBridgeListener), 1))) {
-        downloadVideo(paramVarArgs[0]);
+      if (this.parentPlugin.mRuntime == null) {
+        return false;
+      }
+      if (("videoProxyGetLocalProxyURL".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+      {
+        RemoteHandleManager.getInstance().addWebEventListener(this);
+        getLocalProxyUrl(paramVarArgs[0]);
+        return true;
+      }
+      if (("videoProxySetPlayState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+      {
+        RemoteHandleManager.getInstance().addWebEventListener(this);
+        setPlayState(paramVarArgs[0]);
+        return true;
+      }
+      if ("videoProxyStopAll".equals(paramString3))
+      {
+        RemoteHandleManager.getInstance().addWebEventListener(this);
+        stopAll();
+        return true;
+      }
+      if ("videoProxySaveVideoToAlbum".equals(paramString3))
+      {
+        paramJsBridgeListener = this.parentPlugin.mRuntime.a();
+        if ((paramJsBridgeListener != null) && (QZonePermission.requestStoragePermission(paramJsBridgeListener, new QzoneVideoTabJsPlugin.1(this, paramVarArgs, paramJsBridgeListener), 1))) {
+          downloadVideo(paramVarArgs[0]);
+        }
       }
     }
     return false;
@@ -157,56 +164,60 @@ public class QzoneVideoTabJsPlugin
   
   public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    do
+    if (paramBundle != null)
     {
-      do
-      {
+      if (!paramBundle.containsKey("data")) {
         return;
-        paramBundle = paramBundle.getBundle("data");
-        if (paramBundle == null)
-        {
-          QLog.e(this.TAG, 1, "call js function,bundle is empty");
-          return;
-        }
-      } while (!"cmd.videoGetLocalProxyUrl".equals(paramString));
-      paramString = paramBundle.getStringArrayList("param.videoLocalUrls");
-      ArrayList localArrayList = paramBundle.getStringArrayList("param.videoId");
-      paramBundle = new JSONObject();
-      JSONArray localJSONArray = new JSONArray();
-      if ((paramString != null) && (localArrayList != null)) {}
-      try
+      }
+      Object localObject = paramBundle.getBundle("data");
+      if (localObject == null)
       {
-        if (paramString.size() == localArrayList.size())
+        QLog.e(this.TAG, 1, "call js function,bundle is empty");
+        return;
+      }
+      if ("cmd.videoGetLocalProxyUrl".equals(paramString))
+      {
+        paramBundle = ((Bundle)localObject).getStringArrayList("param.videoLocalUrls");
+        localObject = ((Bundle)localObject).getStringArrayList("param.videoId");
+        paramString = new JSONObject();
+        JSONArray localJSONArray = new JSONArray();
+        if ((paramBundle != null) && (localObject != null)) {}
+        try
         {
-          int i = 0;
-          while (i < paramString.size())
+          if (paramBundle.size() == ((ArrayList)localObject).size())
           {
-            String str = (String)paramString.get(i);
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("vid", localArrayList.get(i));
-            localJSONObject.put("url", str);
-            localJSONArray.put(localJSONObject);
-            i += 1;
+            int i = 0;
+            while (i < paramBundle.size())
+            {
+              String str = (String)paramBundle.get(i);
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("vid", ((ArrayList)localObject).get(i));
+              localJSONObject.put("url", str);
+              localJSONArray.put(localJSONObject);
+              i += 1;
+            }
           }
+          paramString.put("proxyList", localJSONArray);
         }
-        paramBundle.put("proxyList", localJSONArray);
-      }
-      catch (JSONException paramString)
-      {
-        for (;;)
+        catch (JSONException paramBundle)
         {
-          QLog.w(this.TAG, 2, "getLocalProxyUrl result is invalid.", paramString);
+          QLog.w(this.TAG, 2, "getLocalProxyUrl result is invalid.", paramBundle);
+        }
+        paramBundle = this.TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getLocalProxyUrl result=");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.i(paramBundle, 1, ((StringBuilder)localObject).toString());
+        if (!TextUtils.isEmpty(this.getProxyCallback)) {
+          this.parentPlugin.callJs(this.getProxyCallback, new String[] { paramString.toString() });
         }
       }
-      QLog.i(this.TAG, 1, "getLocalProxyUrl result=" + paramBundle);
-    } while (TextUtils.isEmpty(this.getProxyCallback));
-    this.parentPlugin.callJs(this.getProxyCallback, new String[] { paramBundle.toString() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin
  * JD-Core Version:    0.7.0.1
  */

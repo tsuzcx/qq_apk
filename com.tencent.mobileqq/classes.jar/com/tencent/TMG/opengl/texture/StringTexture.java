@@ -59,20 +59,16 @@ public class StringTexture
   
   private static StringTexture newInstance(String paramString, TextPaint paramTextPaint)
   {
-    int j = 1;
     Paint.FontMetricsInt localFontMetricsInt = paramTextPaint.getFontMetricsInt();
-    int m = (int)FloatMath.ceil(paramTextPaint.measureText(paramString));
-    int k = localFontMetricsInt.bottom - localFontMetricsInt.top;
-    int i = m;
-    if (m <= 0) {
+    int i = (int)FloatMath.ceil(paramTextPaint.measureText(paramString));
+    int j = localFontMetricsInt.bottom - localFontMetricsInt.top;
+    if (i <= 0) {
       i = 1;
     }
-    if (k <= 0) {}
-    for (;;)
-    {
-      return new StringTexture(paramString, paramTextPaint, localFontMetricsInt, i, j);
-      j = k;
+    if (j <= 0) {
+      j = 1;
     }
+    return new StringTexture(paramString, paramTextPaint, localFontMetricsInt, i, j);
   }
   
   protected void onFreeBitmap(Bitmap paramBitmap)

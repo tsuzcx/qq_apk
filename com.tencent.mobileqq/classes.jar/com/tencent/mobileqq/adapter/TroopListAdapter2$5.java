@@ -1,27 +1,36 @@
 package com.tencent.mobileqq.adapter;
 
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.troop.adapter.contact.TroopListItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class TroopListAdapter2$5
-  implements Runnable
+  implements View.OnClickListener
 {
-  TroopListAdapter2$5(TroopListAdapter2 paramTroopListAdapter2, TroopManager paramTroopManager, String paramString, TroopListAdapter2.TroopListItem paramTroopListItem, boolean paramBoolean) {}
+  TroopListAdapter2$5(TroopListAdapter2 paramTroopListAdapter2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.d(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopListAdapter2", 2, "itemTag.troopInfo.troopcode == null, queryDB");
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof TroopListAdapter2.TroopListViewItemTag))
+    {
+      localObject = (TroopListAdapter2.TroopListViewItemTag)localObject;
+      if ((((TroopListAdapter2.TroopListViewItemTag)localObject).a != null) && (((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener.a(((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, ((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_Int);
+      }
+      if ((((TroopListAdapter2.TroopListViewItemTag)localObject).a != null) && (((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener.a(((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo);
+      }
+      new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
     }
-    ThreadManager.getUIHandler().post(new TroopListAdapter2.5.1(this, str));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopListAdapter2.5
  * JD-Core Version:    0.7.0.1
  */

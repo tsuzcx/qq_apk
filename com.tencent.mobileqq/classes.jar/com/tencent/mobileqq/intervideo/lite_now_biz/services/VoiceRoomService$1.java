@@ -42,14 +42,16 @@ class VoiceRoomService$1
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      VoiceRoomService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).getLogger().e("AbstractCustomRoomService", "enterRoom,Exception:", new Object[0]);
-      onError(false, -1, "enterRoom Exception");
+      label74:
+      break label74;
     }
+    VoiceRoomService.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesVoiceRoomService).getLogger().e("AbstractCustomRoomService", "enterRoom,Exception:", new Object[0]);
+    onError(false, -1, "enterRoom Exception");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.VoiceRoomService.1
  * JD-Core Version:    0.7.0.1
  */

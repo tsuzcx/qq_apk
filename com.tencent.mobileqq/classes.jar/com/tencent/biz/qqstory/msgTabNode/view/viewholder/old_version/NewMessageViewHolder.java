@@ -7,7 +7,7 @@ import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
 public class NewMessageViewHolder
   extends BaseViewHolder
 {
-  protected TextView c = (TextView)a(2131380940);
+  protected TextView c = (TextView)a(2131380206);
   
   public NewMessageViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
@@ -26,7 +26,7 @@ public class NewMessageViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.NewMessageViewHolder
  * JD-Core Version:    0.7.0.1
  */

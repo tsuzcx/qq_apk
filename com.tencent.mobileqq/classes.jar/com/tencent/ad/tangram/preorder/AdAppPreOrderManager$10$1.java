@@ -1,7 +1,7 @@
 package com.tencent.ad.tangram.preorder;
 
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 
 class AdAppPreOrderManager$10$1
   implements Runnable
@@ -12,7 +12,7 @@ class AdAppPreOrderManager$10$1
   {
     AdLog.i("AdAppPreOrderManager", "onForeground");
     if (AdAppPreOrderManager.access$100(this.this$1.this$0) != 0L) {
-      AdReporterForAnalysis.reportForAppPreOrderBackgroundTimeMillis(this.this$1.this$0.getContext(), System.currentTimeMillis() - AdAppPreOrderManager.access$100(this.this$1.this$0));
+      AdAnalysisHelperForUtil.reportForAppPreOrderBackgroundTimeMillis(this.this$1.this$0.getContext(), System.currentTimeMillis() - AdAppPreOrderManager.access$100(this.this$1.this$0));
     }
     AdAppPreOrderManager.access$102(this.this$1.this$0, 0L);
   }

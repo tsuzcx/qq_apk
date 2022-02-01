@@ -22,13 +22,14 @@ public final class MqqLbsPack$ReqGetPOIList
   
   static
   {
+    Integer localInteger = Integer.valueOf(900000000);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 82, 90, 96, 106 }, new String[] { "int32_lat", "int32_lon", "msg_lbs_sig", "msg_lbs_info", "uint32_lbs_accuracy", "bytes_encrypt_sig" }, new Object[] { Integer.valueOf(900000000), Integer.valueOf(900000000), null, null, Integer.valueOf(0), localByteStringMicro }, ReqGetPOIList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 82, 90, 96, 106 }, new String[] { "int32_lat", "int32_lon", "msg_lbs_sig", "msg_lbs_info", "uint32_lbs_accuracy", "bytes_encrypt_sig" }, new Object[] { localInteger, localInteger, null, null, Integer.valueOf(0), localByteStringMicro }, ReqGetPOIList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.ReqGetPOIList
  * JD-Core Version:    0.7.0.1
  */

@@ -41,23 +41,29 @@ public class LoadFaceItemManager
   
   public void clear()
   {
-    if (this.mImageTask != null) {
-      this.mImageTask.cancel(true);
+    AsyncTask localAsyncTask = this.mImageTask;
+    if (localAsyncTask != null) {
+      localAsyncTask.cancel(true);
     }
-    if (this.mGrayImageTask != null) {
-      this.mGrayImageTask.cancel(true);
+    localAsyncTask = this.mGrayImageTask;
+    if (localAsyncTask != null) {
+      localAsyncTask.cancel(true);
     }
-    if (this.mGrayImageTask2 != null) {
-      this.mGrayImageTask2.cancel(true);
+    localAsyncTask = this.mGrayImageTask2;
+    if (localAsyncTask != null) {
+      localAsyncTask.cancel(true);
     }
-    if (this.mGrayImageTask3 != null) {
-      this.mGrayImageTask3.cancel(true);
+    localAsyncTask = this.mGrayImageTask3;
+    if (localAsyncTask != null) {
+      localAsyncTask.cancel(true);
     }
-    if (this.mGrayImageTask4 != null) {
-      this.mGrayImageTask4.cancel(true);
+    localAsyncTask = this.mGrayImageTask4;
+    if (localAsyncTask != null) {
+      localAsyncTask.cancel(true);
     }
-    if (this.mFaceImageTask != null) {
-      this.mFaceImageTask.cancel(true);
+    localAsyncTask = this.mFaceImageTask;
+    if (localAsyncTask != null) {
+      localAsyncTask.cancel(true);
     }
   }
   
@@ -83,43 +89,57 @@ public class LoadFaceItemManager
   
   public Bitmap loadImage(int paramInt)
   {
-    String str = VideoMaterial.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + paramInt + ".png";
-    return (Bitmap)this.mCache.get(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(VideoMaterial.getMaterialId(this.dataPath));
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.item.id);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(".png");
+    localObject = ((StringBuilder)localObject).toString();
+    return (Bitmap)this.mCache.get(localObject);
   }
   
   public Bitmap loadImage(String paramString)
   {
-    paramString = VideoMaterial.getMaterialId(this.dataPath) + File.separator + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(VideoMaterial.getMaterialId(this.dataPath));
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    paramString = localStringBuilder.toString();
     return (Bitmap)this.mCache.get(paramString);
   }
   
   public void prepareImages()
   {
-    int i = 0;
-    try
+    for (;;)
     {
-      this.mGrayImageTask = new LoadGrayImageTask(this.mGrayCache, this.item.featureType, this.sampleSize);
-      if (this.mGrayImageTask.getStatus() != AsyncTask.Status.RUNNING) {
-        this.mGrayImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-      }
-      this.mGrayImageTask2 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FeatureType.MASK, this.sampleSize);
-      if (this.mGrayImageTask2.getStatus() != AsyncTask.Status.RUNNING) {
-        this.mGrayImageTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-      }
-      this.mGrayImageTask3 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FeatureType.NOSE_MASK, this.sampleSize);
-      if (this.mGrayImageTask3.getStatus() != AsyncTask.Status.RUNNING) {
-        this.mGrayImageTask3.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-      }
-      this.mGrayImageTask4 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FeatureType.LIPS_MASK, this.sampleSize);
-      if (this.mGrayImageTask4.getStatus() != AsyncTask.Status.RUNNING) {
-        this.mGrayImageTask4.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-      }
-      ArrayList localArrayList = new ArrayList();
-      if (!TextUtils.isEmpty(this.item.lipsStyleMask)) {
-        localArrayList.add(this.item.lipsStyleMask);
-      }
-      if (TextUtils.isEmpty(this.item.id))
+      int i;
+      try
       {
+        this.mGrayImageTask = new LoadGrayImageTask(this.mGrayCache, this.item.featureType, this.sampleSize);
+        if (this.mGrayImageTask.getStatus() != AsyncTask.Status.RUNNING) {
+          this.mGrayImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        }
+        this.mGrayImageTask2 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FeatureType.MASK, this.sampleSize);
+        if (this.mGrayImageTask2.getStatus() != AsyncTask.Status.RUNNING) {
+          this.mGrayImageTask2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        }
+        this.mGrayImageTask3 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FeatureType.NOSE_MASK, this.sampleSize);
+        if (this.mGrayImageTask3.getStatus() != AsyncTask.Status.RUNNING) {
+          this.mGrayImageTask3.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        }
+        this.mGrayImageTask4 = new LoadGrayImageTask(this.mGrayCache, FaceOffUtil.FeatureType.LIPS_MASK, this.sampleSize);
+        if (this.mGrayImageTask4.getStatus() != AsyncTask.Status.RUNNING) {
+          this.mGrayImageTask4.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        }
+        localArrayList = new ArrayList();
+        if (!TextUtils.isEmpty(this.item.lipsStyleMask)) {
+          localArrayList.add(this.item.lipsStyleMask);
+        }
+        if (!TextUtils.isEmpty(this.item.id)) {
+          break label534;
+        }
         localArrayList.add(this.item.faceExchangeImage);
         if (this.item.blendMode == 14) {
           localArrayList.add(this.item.irisImage);
@@ -128,18 +148,39 @@ public class LoadFaceItemManager
         this.mFaceImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
         return;
       }
-      while (i < this.item.frames)
+      catch (Exception localException)
       {
-        localArrayList.add(this.item.id + "_" + i + ".png");
+        ArrayList localArrayList;
+        StringBuilder localStringBuilder;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("prepareImages():Exception-");
+        ((StringBuilder)localObject).append(localException.getMessage());
+        LogUtils.e("LoadFaceItemManager", ((StringBuilder)localObject).toString());
+        return;
+      }
+      if (i < this.item.frames)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.item.id);
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(".png");
+        localArrayList.add(((StringBuilder)localObject).toString());
         i += 1;
       }
-      this.mImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath + File.separator + this.item.id, VideoMaterial.getMaterialId(this.dataPath), this.sampleSize);
-      this.mImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtils.e("LoadFaceItemManager", "prepareImages():Exception-" + localException.getMessage());
+      else
+      {
+        localObject = this.mCache;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.dataPath);
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(this.item.id);
+        this.mImageTask = new LoadImageTask((Map)localObject, localArrayList, localStringBuilder.toString(), VideoMaterial.getMaterialId(this.dataPath), this.sampleSize);
+        this.mImageTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+        return;
+        label534:
+        i = 0;
+      }
     }
   }
   
@@ -147,7 +188,7 @@ public class LoadFaceItemManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.cache.LoadFaceItemManager
  * JD-Core Version:    0.7.0.1
  */

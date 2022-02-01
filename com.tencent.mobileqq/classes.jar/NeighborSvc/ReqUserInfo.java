@@ -7,6 +7,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ReqUserInfo
   extends JceStruct
@@ -101,20 +102,23 @@ public final class ReqUserInfo
     paramJceOutputStream.write(this.strAuthPassword, 4);
     paramJceOutputStream.write(this.eListType, 5);
     paramJceOutputStream.write(this.eLocalInfo, 6);
-    if (this.vLBSKeyData != null) {
-      paramJceOutputStream.write(this.vLBSKeyData, 7);
+    Object localObject = this.vLBSKeyData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 7);
     }
-    if (this.vSOSOMac != null) {
-      paramJceOutputStream.write(this.vSOSOMac, 8);
+    localObject = this.vSOSOMac;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
-    if (this.vSOSOCells != null) {
-      paramJceOutputStream.write(this.vSOSOCells, 9);
+    localObject = this.vSOSOCells;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NeighborSvc.ReqUserInfo
  * JD-Core Version:    0.7.0.1
  */

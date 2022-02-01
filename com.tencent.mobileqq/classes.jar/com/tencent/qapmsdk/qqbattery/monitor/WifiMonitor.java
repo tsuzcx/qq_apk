@@ -71,241 +71,242 @@ public class WifiMonitor
   
   private final void writeLockReport(boolean paramBoolean)
   {
-    HashMap localHashMap2 = this.fg30MinLockMap;
-    long l = 0L;
+    localHashMap2 = this.fg30MinLockMap;
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      int j;
-      try
+      localHashMap1 = this.fg30MinLockMap;
+      break label28;
+      localHashMap1 = this.bg5MinLockMap;
+      label28:
+      localObject2 = localHashMap1.values().iterator();
+      l1 = 0L;
+      i = 0;
+      if (((Iterator)localObject2).hasNext())
       {
-        HashMap localHashMap1 = this.fg30MinLockMap;
-        localObject2 = localHashMap1.values().iterator();
-        i = 0;
-        if (((Iterator)localObject2).hasNext())
+        localObject3 = (WifiMonitor.ReportEntity)((Iterator)localObject2).next();
+        int j = i + ((WifiMonitor.ReportEntity)localObject3).useList.size();
+        localObject3 = ((WifiMonitor.ReportEntity)localObject3).useList.iterator();
+        for (long l2 = l1;; l2 += ((Long)((Pair)((Iterator)localObject3).next()).second).longValue())
         {
-          localObject3 = (WifiMonitor.ReportEntity)((Iterator)localObject2).next();
-          j = ((WifiMonitor.ReportEntity)localObject3).useList.size();
-          localObject3 = ((WifiMonitor.ReportEntity)localObject3).useList.iterator();
+          i = j;
+          l1 = l2;
           if (!((Iterator)localObject3).hasNext()) {
-            break label424;
+            break;
           }
-          l = ((Long)((Pair)((Iterator)localObject3).next()).second).longValue() + l;
-          continue;
-          localHashMap1 = this.bg5MinLockMap;
-          continue;
         }
-        if (!paramBoolean) {
-          break label434;
-        }
-        localObject2 = "fg30WFLCount";
-        writeReportLog(new String[] { localObject2, "|", String.valueOf(i), "|", String.valueOf(l), "|0" });
-        Iterator localIterator = localHashMap1.keySet().iterator();
-        if (!localIterator.hasNext()) {
-          break label415;
-        }
-        String str = (String)localIterator.next();
-        localObject3 = (WifiMonitor.ReportEntity)localHashMap1.get(str);
-        StringBuilder localStringBuilder = ThreadTool.getReuseStringBuilder();
-        localObject2 = ((WifiMonitor.ReportEntity)localObject3).useList.iterator();
-        i = 0;
-        if (((Iterator)localObject2).hasNext())
+      }
+      if (!paramBoolean) {
+        break label447;
+      }
+      localObject2 = "fg30WFLCount";
+    }
+    finally
+    {
+      for (;;)
+      {
+        HashMap localHashMap1;
+        long l1;
+        int i;
+        Object localObject3;
+        Iterator localIterator;
+        for (;;)
         {
-          Pair localPair = (Pair)((Iterator)localObject2).next();
-          localStringBuilder.append(localPair.first).append(",").append(localPair.second);
-          i += 1;
-          if (i >= ((WifiMonitor.ReportEntity)localObject3).useList.size()) {
-            break label431;
-          }
-          localStringBuilder.append("#");
-          break label431;
+          throw localObject1;
         }
-        if (paramBoolean)
-        {
-          localObject2 = "fg30WFLDetail";
-          if (((WifiMonitor.ReportEntity)localObject3).tag != null) {
-            break label397;
-          }
-          localObject3 = "";
-          writeReportLog(new String[] { localObject2, "|", localObject3, "|0|", str, "|", localStringBuilder.toString() });
-          continue;
-        }
+        Object localObject2 = "bg5WFLCount";
+        continue;
+        continue;
         localObject2 = "bg5WFSDetail";
       }
-      finally {}
-      continue;
-      label397:
-      Object localObject3 = ((WifiMonitor.ReportEntity)localObject3).tag.replace("|", "_");
-      continue;
-      label415:
-      localObject1.clear();
-      return;
-      label424:
-      int i = j + i;
-      continue;
-      label431:
-      continue;
-      label434:
-      Object localObject2 = "bg5WFLCount";
     }
+    writeReportLog(new String[] { localObject2, "|", String.valueOf(i), "|", String.valueOf(l1), "|0" });
+    localIterator = localHashMap1.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localObject3 = (WifiMonitor.ReportEntity)localHashMap1.get(str);
+      StringBuilder localStringBuilder = ThreadTool.getReuseStringBuilder();
+      localObject2 = ((WifiMonitor.ReportEntity)localObject3).useList.iterator();
+      i = 0;
+      if (((Iterator)localObject2).hasNext())
+      {
+        Pair localPair = (Pair)((Iterator)localObject2).next();
+        localStringBuilder.append(localPair.first);
+        localStringBuilder.append(",");
+        localStringBuilder.append(localPair.second);
+        i += 1;
+        if (i >= ((WifiMonitor.ReportEntity)localObject3).useList.size()) {
+          break label454;
+        }
+        localStringBuilder.append("#");
+        break label454;
+      }
+      if (!paramBoolean) {
+        break label457;
+      }
+      localObject2 = "fg30WFLDetail";
+      if (((WifiMonitor.ReportEntity)localObject3).tag == null) {
+        localObject3 = "";
+      } else {
+        localObject3 = ((WifiMonitor.ReportEntity)localObject3).tag.replace("|", "_");
+      }
+      writeReportLog(new String[] { localObject2, "|", localObject3, "|0|", str, "|", localStringBuilder.toString() });
+    }
+    localHashMap1.clear();
   }
   
   public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
     if (!this.isRunning) {
-      break label7;
-    }
-    for (;;)
-    {
-      label7:
       return;
-      if (paramMethodHookParam != null)
-      {
-        Object localObject3;
-        for (;;)
+    }
+    if (paramMethodHookParam == null) {
+      return;
+    }
+    try
+    {
+      ??? = getAppStack().toString();
+      Object localObject3;
+      if ("release".equals(paramMethodHookParam.method.getName())) {
+        synchronized (this.map)
         {
-          WifiMonitor.WifiLockEntity localWifiLockEntity;
-          try
+          localObject3 = this.map.keySet().iterator();
+          while (((Iterator)localObject3).hasNext())
           {
-            ??? = getAppStack().toString();
-            if (!"release".equals(paramMethodHookParam.method.getName())) {
-              break label277;
-            }
-            WeakReference localWeakReference;
-            synchronized (this.map)
+            WeakReference localWeakReference = (WeakReference)((Iterator)localObject3).next();
+            WifiMonitor.WifiLockEntity localWifiLockEntity = (WifiMonitor.WifiLockEntity)this.map.get(localWeakReference);
+            if (localWeakReference.get() == paramMethodHookParam.thisObject)
             {
-              localObject3 = this.map.keySet().iterator();
-              if (!((Iterator)localObject3).hasNext()) {
-                break;
-              }
-              localWeakReference = (WeakReference)((Iterator)localObject3).next();
-              localWifiLockEntity = (WifiMonitor.WifiLockEntity)this.map.get(localWeakReference);
-              if (localWeakReference.get() == paramMethodHookParam.thisObject)
+              writeCommonLog(new String[] { "wf_rl|", localWifiLockEntity.uuid, "|", ??? });
+              if (!((WifiManager.WifiLock)paramMethodHookParam.thisObject).isHeld())
               {
-                writeCommonLog(new String[] { "wf_rl|", localWifiLockEntity.uuid, "|", ??? });
-                if (!((WifiManager.WifiLock)paramMethodHookParam.thisObject).isHeld())
-                {
-                  writeCommonLog(new String[] { "wf_time|", localWifiLockEntity.uuid, "|", String.valueOf(SystemClock.uptimeMillis() - localWifiLockEntity.firstAcquireTimeStamp) });
-                  ((Iterator)localObject3).remove();
-                }
-                doLockReport(localWifiLockEntity, 9);
+                writeCommonLog(new String[] { "wf_time|", localWifiLockEntity.uuid, "|", String.valueOf(SystemClock.uptimeMillis() - localWifiLockEntity.firstAcquireTimeStamp) });
+                ((Iterator)localObject3).remove();
               }
+              doLockReport(localWifiLockEntity, 9);
             }
-            if (localWeakReference.get() != null) {
-              continue;
+            else if (localWeakReference.get() == null)
+            {
+              writeCommonLog(new String[] { "wf_alarm|", localWifiLockEntity.uuid });
+              ((Iterator)localObject3).remove();
+              doLockReport(localWifiLockEntity, 10);
             }
           }
-          catch (Throwable paramMethodHookParam)
-          {
-            Logger.INSTANCE.exception("QAPM_battery_WifiLock", paramMethodHookParam);
-            return;
-          }
-          writeCommonLog(new String[] { "wf_alarm|", localWifiLockEntity.uuid });
-          ((Iterator)localObject3).remove();
-          doLockReport(localWifiLockEntity, 10);
+          return;
         }
-        return;
-        label277:
-        if (!"createWifiLock".equals(paramMethodHookParam.method.getName())) {
-          break;
-        }
+      }
+      if ("createWifiLock".equals(paramMethodHookParam.method.getName()))
+      {
         ??? = new WifiMonitor.WifiLockEntity(this, null);
         ((WifiMonitor.WifiLockEntity)???).uuid = String.valueOf(???.hashCode());
         ((WifiMonitor.WifiLockEntity)???).createStack = ((String)???);
-        if ((paramMethodHookParam.args != null) && (paramMethodHookParam.args.length == 2))
-        {
+        if ((paramMethodHookParam.args != null) && (paramMethodHookParam.args.length == 2)) {
           ((WifiMonitor.WifiLockEntity)???).tag = ((String)paramMethodHookParam.args[1]);
-          label350:
-          localObject3 = new WeakReference((WifiManager.WifiLock)paramMethodHookParam.result);
+        } else if ((paramMethodHookParam.args != null) && (paramMethodHookParam.args.length == 1)) {
+          ((WifiMonitor.WifiLockEntity)???).tag = ((String)paramMethodHookParam.args[0]);
         }
+        localObject3 = new WeakReference((WifiManager.WifiLock)paramMethodHookParam.result);
         synchronized (this.map)
         {
           this.map.put(localObject3, ???);
-          if (paramMethodHookParam.args != null) {
-            if (paramMethodHookParam.args.length == 1)
-            {
-              writeCommonLog(new String[] { "wf_new|", ((WifiMonitor.WifiLockEntity)???).uuid, "|0|", String.valueOf(paramMethodHookParam.args[0]) });
-              return;
-              if ((paramMethodHookParam.args == null) || (paramMethodHookParam.args.length != 1)) {
-                break label350;
-              }
-              ((WifiMonitor.WifiLockEntity)???).tag = ((String)paramMethodHookParam.args[0]);
-            }
+          if (paramMethodHookParam.args == null) {
+            return;
           }
+          if (paramMethodHookParam.args.length == 1)
+          {
+            writeCommonLog(new String[] { "wf_new|", ((WifiMonitor.WifiLockEntity)???).uuid, "|0|", String.valueOf(paramMethodHookParam.args[0]) });
+            return;
+          }
+          writeCommonLog(new String[] { "wf_new|", ((WifiMonitor.WifiLockEntity)???).uuid, "|", String.valueOf(paramMethodHookParam.args[0]), "|", String.valueOf(paramMethodHookParam.args[1]) });
+          return;
         }
       }
+      return;
     }
-    writeCommonLog(new String[] { "wf_new|", ((WifiMonitor.WifiLockEntity)???).uuid, "|", String.valueOf(paramMethodHookParam.args[0]), "|", String.valueOf(paramMethodHookParam.args[1]) });
+    catch (Throwable paramMethodHookParam)
+    {
+      Logger.INSTANCE.exception("QAPM_battery_WifiLock", paramMethodHookParam);
+    }
   }
   
   public void beforeHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    if (!this.isRunning) {}
-    String str;
-    do
-    {
+    if (!this.isRunning) {
       return;
-      try
+    }
+    try
+    {
+      String str = getAppStack().toString();
+      if (Logger.debug)
       {
-        str = getAppStack().toString();
-        if (Logger.debug) {
-          printLog(paramMethodHookParam.method.getName() + str);
-        }
-        if ("startScan".equals(paramMethodHookParam.method.getName()))
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append(paramMethodHookParam.method.getName());
+        ((StringBuilder)???).append(str);
+        printLog(((StringBuilder)???).toString());
+      }
+      if ("startScan".equals(paramMethodHookParam.method.getName()))
+      {
+        writeCommonLog(new String[] { "wfScan", "|", str });
+        paramMethodHookParam = this.detector1.onAction(str);
+        if ((paramMethodHookParam != null) && (paramMethodHookParam.size() > 0))
         {
-          writeCommonLog(new String[] { "wfScan", "|", str });
-          paramMethodHookParam = this.detector1.onAction(str);
-          if ((paramMethodHookParam != null) && (paramMethodHookParam.size() > 0))
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("Wifi scan is too frequently(");
+          ((StringBuilder)???).append(this.maxCallTimeInShortTime);
+          ((StringBuilder)???).append(" in ");
+          ((StringBuilder)???).append(this.shortTime / 60L / 1000L);
+          ((StringBuilder)???).append(" seconds");
+          onUsageAlarm(5, 0, 0, ((StringBuilder)???).toString(), HighFrequencyDetector.getDescription(paramMethodHookParam));
+          this.detector1.trimCache();
+        }
+        paramMethodHookParam = this.detector2.onAction(str);
+        if ((paramMethodHookParam != null) && (paramMethodHookParam.size() > 0))
+        {
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("Wifi scan is too frequently(");
+          ((StringBuilder)???).append(this.maxCallTimeInLongTime);
+          ((StringBuilder)???).append(" in ");
+          ((StringBuilder)???).append(this.longTime / 60L / 1000L);
+          ((StringBuilder)???).append(" seconds");
+          onUsageAlarm(5, 0, 0, ((StringBuilder)???).toString(), HighFrequencyDetector.getDescription(paramMethodHookParam));
+          this.detector2.trimCache();
+        }
+        paramMethodHookParam = new Bundle();
+        paramMethodHookParam.putInt("key_action", 8);
+        paramMethodHookParam.putString("key_stack", str);
+        onOtherProcReport(paramMethodHookParam);
+        return;
+      }
+      if ("acquire".equals(paramMethodHookParam.method.getName())) {
+        synchronized (this.map)
+        {
+          Iterator localIterator = this.map.keySet().iterator();
+          while (localIterator.hasNext())
           {
-            onUsageAlarm(5, 0, 0, "Wifi scan is too frequently(" + this.maxCallTimeInShortTime + " in " + this.shortTime / 60L / 1000L + " seconds", HighFrequencyDetector.getDescription(paramMethodHookParam));
-            this.detector1.trimCache();
+            WeakReference localWeakReference = (WeakReference)localIterator.next();
+            WifiMonitor.WifiLockEntity localWifiLockEntity = (WifiMonitor.WifiLockEntity)this.map.get(localWeakReference);
+            if (localWeakReference.get() == paramMethodHookParam.thisObject)
+            {
+              writeCommonLog(new String[] { "wf_ac|", localWifiLockEntity.uuid, "|", str });
+              if (!((WifiManager.WifiLock)paramMethodHookParam.thisObject).isHeld()) {
+                localWifiLockEntity.firstAcquireTimeStamp = SystemClock.uptimeMillis();
+              }
+            }
+            else if (localWeakReference.get() == null)
+            {
+              writeCommonLog(new String[] { "wf_alarm|", localWifiLockEntity.uuid });
+              localIterator.remove();
+            }
           }
-          paramMethodHookParam = this.detector2.onAction(str);
-          if ((paramMethodHookParam != null) && (paramMethodHookParam.size() > 0))
-          {
-            onUsageAlarm(5, 0, 0, "Wifi scan is too frequently(" + this.maxCallTimeInLongTime + " in " + this.longTime / 60L / 1000L + " seconds", HighFrequencyDetector.getDescription(paramMethodHookParam));
-            this.detector2.trimCache();
-          }
-          paramMethodHookParam = new Bundle();
-          paramMethodHookParam.putInt("key_action", 8);
-          paramMethodHookParam.putString("key_stack", str);
-          onOtherProcReport(paramMethodHookParam);
           return;
         }
       }
-      catch (Throwable paramMethodHookParam)
-      {
-        Logger.INSTANCE.exception("QAPM_battery_WifiLock", paramMethodHookParam);
-        return;
-      }
-    } while (!"acquire".equals(paramMethodHookParam.method.getName()));
-    for (;;)
+      return;
+    }
+    catch (Throwable paramMethodHookParam)
     {
-      Iterator localIterator;
-      WeakReference localWeakReference;
-      WifiMonitor.WifiLockEntity localWifiLockEntity;
-      synchronized (this.map)
-      {
-        localIterator = this.map.keySet().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localWeakReference = (WeakReference)localIterator.next();
-        localWifiLockEntity = (WifiMonitor.WifiLockEntity)this.map.get(localWeakReference);
-        if (localWeakReference.get() == paramMethodHookParam.thisObject)
-        {
-          writeCommonLog(new String[] { "wf_ac|", localWifiLockEntity.uuid, "|", str });
-          if (((WifiManager.WifiLock)paramMethodHookParam.thisObject).isHeld()) {
-            continue;
-          }
-          localWifiLockEntity.firstAcquireTimeStamp = SystemClock.uptimeMillis();
-        }
-      }
-      if (localWeakReference.get() == null)
-      {
-        writeCommonLog(new String[] { "wf_alarm|", localWifiLockEntity.uuid });
-        localIterator.remove();
-      }
+      Logger.INSTANCE.exception("QAPM_battery_WifiLock", paramMethodHookParam);
     }
   }
   
@@ -315,183 +316,173 @@ public class WifiMonitor
     synchronized (this.fg30MinScanMap)
     {
       this.bg5MinScanMap.clear();
-    }
-    synchronized (this.fg30MinLockMap)
-    {
-      this.bg5MinLockMap.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
+      synchronized (this.fg30MinLockMap)
+      {
+        this.bg5MinLockMap.clear();
+        return;
+      }
     }
   }
   
   public void onOtherProcReport(Bundle paramBundle)
   {
-    if (!this.isRunning) {}
-    int i;
-    String str;
-    do
-    {
+    if (!this.isRunning) {
       return;
-      i = paramBundle.getInt("key_action");
-      str = paramBundle.getString("key_stack");
-      ??? = paramBundle.getString("key_tag");
-      long l = paramBundle.getLong("key_duration");
-      Object localObject1;
-      if (i == 8)
+    }
+    int i = paramBundle.getInt("key_action");
+    String str = paramBundle.getString("key_stack");
+    ??? = paramBundle.getString("key_tag");
+    long l = paramBundle.getLong("key_duration");
+    Object localObject1;
+    if (i == 8)
+    {
+      Logger.INSTANCE.d(new String[] { "QAPM_battery_WifiLock", "WiFi.onOtherProcReport: scan:", str });
+      synchronized (this.fg30MinScanMap)
       {
-        Logger.INSTANCE.d(new String[] { "QAPM_battery_WifiLock", "WiFi.onOtherProcReport: scan:", str });
-        synchronized (this.fg30MinScanMap)
+        if (this.isBeforeRun30Min)
         {
-          if (this.isBeforeRun30Min)
+          localObject1 = (HashSet)this.fg30MinScanMap.get(str);
+          paramBundle = (Bundle)localObject1;
+          if (localObject1 == null)
           {
-            localObject1 = (HashSet)this.fg30MinScanMap.get(str);
-            paramBundle = (Bundle)localObject1;
-            if (localObject1 == null)
-            {
-              paramBundle = new HashSet();
-              this.fg30MinScanMap.put(str, paramBundle);
-            }
-            paramBundle.add(Long.valueOf(System.currentTimeMillis()));
+            paramBundle = new HashSet();
+            this.fg30MinScanMap.put(str, paramBundle);
           }
-          if ((this.isAppBackground) && (this.isInFirstBg5min))
-          {
-            localObject1 = (HashSet)this.bg5MinScanMap.get(str);
-            paramBundle = (Bundle)localObject1;
-            if (localObject1 == null)
-            {
-              paramBundle = new HashSet();
-              this.bg5MinScanMap.put(str, paramBundle);
-            }
-            paramBundle.add(Long.valueOf(System.currentTimeMillis()));
-          }
-          return;
+          paramBundle.add(Long.valueOf(System.currentTimeMillis()));
         }
-      }
-      if (i == 9) {
-        synchronized (this.fg30MinLockMap)
+        if ((this.isAppBackground) && (this.isInFirstBg5min))
         {
-          if (this.isBeforeRun30Min)
+          localObject1 = (HashSet)this.bg5MinScanMap.get(str);
+          paramBundle = (Bundle)localObject1;
+          if (localObject1 == null)
           {
-            localObject1 = (WifiMonitor.ReportEntity)this.fg30MinLockMap.get(str);
-            paramBundle = (Bundle)localObject1;
-            if (localObject1 == null)
-            {
-              paramBundle = new WifiMonitor.ReportEntity(this, null);
-              paramBundle.tag = ((String)???);
-              paramBundle.createStack = str;
-              this.fg30MinLockMap.put(str, paramBundle);
-            }
-            paramBundle.useList.add(new Pair(Long.valueOf(System.currentTimeMillis()), Long.valueOf(l)));
+            paramBundle = new HashSet();
+            this.bg5MinScanMap.put(str, paramBundle);
           }
-          if ((this.isAppBackground) && (this.isInFirstBg5min))
-          {
-            localObject1 = (WifiMonitor.ReportEntity)this.bg5MinLockMap.get(str);
-            paramBundle = (Bundle)localObject1;
-            if (localObject1 == null)
-            {
-              paramBundle = new WifiMonitor.ReportEntity(this, null);
-              paramBundle.tag = ((String)???);
-              paramBundle.createStack = str;
-              this.bg5MinLockMap.put(str, paramBundle);
-            }
-            paramBundle.useList.add(new Pair(Long.valueOf(System.currentTimeMillis()), Long.valueOf(l)));
-          }
-          return;
+          paramBundle.add(Long.valueOf(System.currentTimeMillis()));
         }
+        return;
       }
-    } while (i != 10);
-    writeReportLog(new String[] { "wflNotRelease", "|", str, "|", ???, "|0|0" });
+    }
+    if (i == 9) {
+      synchronized (this.fg30MinLockMap)
+      {
+        if (this.isBeforeRun30Min)
+        {
+          localObject1 = (WifiMonitor.ReportEntity)this.fg30MinLockMap.get(str);
+          paramBundle = (Bundle)localObject1;
+          if (localObject1 == null)
+          {
+            paramBundle = new WifiMonitor.ReportEntity(this, null);
+            paramBundle.tag = ((String)???);
+            paramBundle.createStack = str;
+            this.fg30MinLockMap.put(str, paramBundle);
+          }
+          paramBundle.useList.add(new Pair(Long.valueOf(System.currentTimeMillis()), Long.valueOf(l)));
+        }
+        if ((this.isAppBackground) && (this.isInFirstBg5min))
+        {
+          localObject1 = (WifiMonitor.ReportEntity)this.bg5MinLockMap.get(str);
+          paramBundle = (Bundle)localObject1;
+          if (localObject1 == null)
+          {
+            paramBundle = new WifiMonitor.ReportEntity(this, null);
+            paramBundle.tag = ((String)???);
+            paramBundle.createStack = str;
+            this.bg5MinLockMap.put(str, paramBundle);
+          }
+          paramBundle.useList.add(new Pair(Long.valueOf(System.currentTimeMillis()), Long.valueOf(l)));
+        }
+        return;
+      }
+    }
+    if (i == 10) {
+      writeReportLog(new String[] { "wflNotRelease", "|", str, "|", ???, "|0|0" });
+    }
   }
   
   public void onProcessBG5Min()
   {
     super.onProcessBG5Min();
-    if ((this.isRunning) && (!this.fg30MinScanMap.isEmpty())) {}
-    label265:
-    for (;;)
-    {
+    if ((this.isRunning) && (!this.fg30MinScanMap.isEmpty())) {
       synchronized (this.fg30MinScanMap)
       {
         Iterator localIterator1 = this.bg5MinScanMap.values().iterator();
         int i = 0;
-        if (localIterator1.hasNext())
-        {
-          i = ((HashSet)localIterator1.next()).size() + i;
-          continue;
+        while (localIterator1.hasNext()) {
+          i += ((HashSet)localIterator1.next()).size();
         }
         writeReportLog(new String[] { "bg5WFSCount", "|", String.valueOf(i) });
         localIterator1 = this.bg5MinScanMap.keySet().iterator();
-        if (localIterator1.hasNext())
+        while (localIterator1.hasNext())
         {
           String str = (String)localIterator1.next();
           StringBuilder localStringBuilder = ThreadTool.getReuseStringBuilder();
           HashSet localHashSet = (HashSet)this.bg5MinScanMap.get(str);
           Iterator localIterator2 = localHashSet.iterator();
           i = 0;
-          if (localIterator2.hasNext())
+          while (localIterator2.hasNext())
           {
             localStringBuilder.append((Long)localIterator2.next());
-            i += 1;
-            if (i >= localHashSet.size()) {
-              break label265;
+            int j = i + 1;
+            i = j;
+            if (j < localHashSet.size())
+            {
+              localStringBuilder.append("#");
+              i = j;
             }
-            localStringBuilder.append("#");
-            break label265;
           }
           writeReportLog(new String[] { "bg5WFSDetail", "|", str, "|", localStringBuilder.toString() });
         }
+        this.bg5MinScanMap.clear();
+        writeLockReport(false);
+        return;
       }
-      this.bg5MinScanMap.clear();
-      writeLockReport(false);
-      return;
     }
   }
   
   public void onProcessRun30Min()
   {
     super.onProcessRun30Min();
-    label257:
-    label265:
-    for (;;)
+    synchronized (this.fg30MinScanMap)
     {
-      synchronized (this.fg30MinScanMap)
+      if ((this.isRunning) && (!this.fg30MinScanMap.isEmpty()))
       {
-        if ((!this.isRunning) || (this.fg30MinScanMap.isEmpty())) {
-          break label257;
-        }
         Iterator localIterator1 = this.fg30MinScanMap.values().iterator();
         int i = 0;
-        if (localIterator1.hasNext())
-        {
-          i = ((HashSet)localIterator1.next()).size() + i;
-          continue;
+        while (localIterator1.hasNext()) {
+          i += ((HashSet)localIterator1.next()).size();
         }
         writeReportLog(new String[] { "fg30WFSCount", "|", String.valueOf(i) });
         localIterator1 = this.fg30MinScanMap.keySet().iterator();
-        if (localIterator1.hasNext())
+        while (localIterator1.hasNext())
         {
           String str = (String)localIterator1.next();
           StringBuilder localStringBuilder = ThreadTool.getReuseStringBuilder();
           HashSet localHashSet = (HashSet)this.fg30MinScanMap.get(str);
           Iterator localIterator2 = localHashSet.iterator();
           i = 0;
-          if (localIterator2.hasNext())
+          while (localIterator2.hasNext())
           {
             localStringBuilder.append((Long)localIterator2.next());
-            i += 1;
-            if (i >= localHashSet.size()) {
-              break label265;
+            int j = i + 1;
+            i = j;
+            if (j < localHashSet.size())
+            {
+              localStringBuilder.append("#");
+              i = j;
             }
-            localStringBuilder.append("#");
-            break label265;
           }
           writeReportLog(new String[] { "fg30WFSDetail", "|", str, "|", localStringBuilder.toString() });
         }
+        this.fg30MinScanMap.clear();
       }
-      this.fg30MinScanMap.clear();
       writeLockReport(true);
       return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -499,7 +490,7 @@ public class WifiMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.monitor.WifiMonitor
  * JD-Core Version:    0.7.0.1
  */

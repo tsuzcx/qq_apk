@@ -33,11 +33,16 @@ public class RecentTabHaloPresenter
   
   private void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentTabHaloPresenter", 2, "invalidateHalo: invoked.  mCallback: " + this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("invalidateHalo: invoked.  mCallback: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback);
+      QLog.i("RecentTabHaloPresenter", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback.a();
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback;
+    if (localObject != null) {
+      ((RecentTabHaloPresenter.Callback)localObject).a();
     }
   }
   
@@ -54,8 +59,12 @@ public class RecentTabHaloPresenter
   
   public void a(RecentTabHaloPresenter.Callback paramCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentTabHaloPresenter", 2, "setCallback: invoked. Message: callback: " + paramCallback);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setCallback: invoked. Message: callback: ");
+      localStringBuilder.append(paramCallback);
+      QLog.i("RecentTabHaloPresenter", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter$Callback = paramCallback;
   }
@@ -67,12 +76,12 @@ public class RecentTabHaloPresenter
   
   public boolean isValidate()
   {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter
  * JD-Core Version:    0.7.0.1
  */

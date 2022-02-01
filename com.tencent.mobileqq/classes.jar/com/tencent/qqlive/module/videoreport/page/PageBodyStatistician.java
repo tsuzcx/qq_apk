@@ -18,38 +18,59 @@ public class PageBodyStatistician
   
   public void markAsPageBodyView(View paramView, IScrollReader paramIScrollReader)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageBodyStatistician", "markAsPageBodyView: view = " + paramView + ", scrollReader = " + paramIScrollReader);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("markAsPageBodyView: view = ");
+      localStringBuilder.append(paramView);
+      localStringBuilder.append(", scrollReader = ");
+      localStringBuilder.append(paramIScrollReader);
+      Log.d("PageBodyStatistician", localStringBuilder.toString());
     }
-    if ((paramView == null) || (this.mHandlerMap.containsKey(paramView))) {
-      return;
+    if (paramView != null)
+    {
+      if (this.mHandlerMap.containsKey(paramView)) {
+        return;
+      }
+      paramIScrollReader = new PageBodyStatistician.BodyInfoHandler(paramView, paramIScrollReader);
+      this.mHandlerMap.put(paramView, paramIScrollReader);
     }
-    paramIScrollReader = new PageBodyStatistician.BodyInfoHandler(paramView, paramIScrollReader);
-    this.mHandlerMap.put(paramView, paramIScrollReader);
   }
   
   public void setPageBodyContentRange(View paramView, int paramInt1, int paramInt2)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageBodyStatistician", "setPageBodyContentRange: rangeStart = " + paramInt1 + ", rangeEnd = " + paramInt2 + ", view = " + paramView);
-    }
-    if (paramView == null) {}
-    do
+    if (VideoReportInner.getInstance().isDebugMode())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setPageBodyContentRange: rangeStart = ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", rangeEnd = ");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append(", view = ");
+      ((StringBuilder)localObject).append(paramView);
+      Log.d("PageBodyStatistician", ((StringBuilder)localObject).toString());
+    }
+    if (paramView == null) {
       return;
-      PageBodyStatistician.BodyInfoHandler localBodyInfoHandler = (PageBodyStatistician.BodyInfoHandler)this.mHandlerMap.get(paramView);
-      if (localBodyInfoHandler != null)
-      {
-        localBodyInfoHandler.updateRange(paramInt1, paramInt2);
-        return;
-      }
-    } while (!VideoReportInner.getInstance().isDebugMode());
-    Log.d("PageBodyStatistician", "please mark view as page body first, view = " + paramView);
+    }
+    Object localObject = (PageBodyStatistician.BodyInfoHandler)this.mHandlerMap.get(paramView);
+    if (localObject != null)
+    {
+      ((PageBodyStatistician.BodyInfoHandler)localObject).updateRange(paramInt1, paramInt2);
+      return;
+    }
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("please mark view as page body first, view = ");
+      ((StringBuilder)localObject).append(paramView);
+      Log.d("PageBodyStatistician", ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageBodyStatistician
  * JD-Core Version:    0.7.0.1
  */

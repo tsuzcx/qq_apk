@@ -10,7 +10,7 @@ class AVGameCameraAssistant$4
 {
   AVGameCameraAssistant$4(AVGameCameraAssistant paramAVGameCameraAssistant) {}
   
-  public void a(long paramLong)
+  protected void a(long paramLong)
   {
     try
     {
@@ -30,7 +30,7 @@ class AVGameCameraAssistant$4
     }
   }
   
-  public void a(long paramLong, boolean paramBoolean)
+  protected void a(long paramLong, boolean paramBoolean)
   {
     try
     {
@@ -50,7 +50,7 @@ class AVGameCameraAssistant$4
     }
   }
   
-  public void a(long paramLong, boolean paramBoolean, int paramInt)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
     try
     {
@@ -70,7 +70,7 @@ class AVGameCameraAssistant$4
     }
   }
   
-  public void b(long paramLong, boolean paramBoolean)
+  protected void b(long paramLong, boolean paramBoolean)
   {
     try
     {
@@ -92,7 +92,7 @@ class AVGameCameraAssistant$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.AVGameCameraAssistant.4
  * JD-Core Version:    0.7.0.1
  */

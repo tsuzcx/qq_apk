@@ -3,20 +3,19 @@ package com.tencent.mobileqq.studyroom.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.activity.QPublicTransFragmentActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
 import com.tencent.mobileqq.studyroom.utils.PluginUtils;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -24,7 +23,7 @@ import java.util.Set;
 import java.util.concurrent.Future;
 
 public class StudyRoomLoadingFragment
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
 {
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private Future<?> jdField_a_of_type_JavaUtilConcurrentFuture = null;
@@ -33,22 +32,22 @@ public class StudyRoomLoadingFragment
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
-    if (paramMap == null) {}
-    for (paramMap = new HashMap();; paramMap = new HashMap(paramMap))
-    {
-      paramMap.put("action", paramString);
-      localIntent.putExtra("param", paramMap);
-      PublicFragmentActivity.Launcher.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
-      return;
+    if (paramMap == null) {
+      paramMap = new HashMap();
+    } else {
+      paramMap = new HashMap(paramMap);
     }
+    paramMap.put("action", paramString);
+    localIntent.putExtra("param", paramMap);
+    QPublicFragmentActivity.Launcher.a(localIntent, QPublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
   }
   
   private void b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getActivity(), 40);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131707805));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getQBaseActivity(), 40);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131707828));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnCancelListener(new StudyRoomLoadingFragment.1(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
@@ -56,16 +55,17 @@ public class StudyRoomLoadingFragment
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if (localQQProgressDialog != null) {
+      localQQProgressDialog.dismiss();
     }
   }
   
   public void a()
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.finish();
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    if (localQBaseActivity != null) {
+      localQBaseActivity.finish();
     }
   }
   
@@ -95,14 +95,14 @@ public class StudyRoomLoadingFragment
   {
     paramLayoutInflater = new FrameLayout(paramViewGroup.getContext());
     paramLayoutInflater.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
-  public void onDestroy()
+  public void onDestroyView()
   {
-    super.onDestroy();
-    if ((this.jdField_a_of_type_JavaUtilConcurrentFuture != null) && (!this.jdField_a_of_type_JavaUtilConcurrentFuture.isDone()))
+    super.onDestroyView();
+    Future localFuture = this.jdField_a_of_type_JavaUtilConcurrentFuture;
+    if ((localFuture != null) && (!localFuture.isDone()))
     {
       this.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
       QLog.i("studyroom.StudyRoomLoadingFragment", 4, "cancel load plugin");
@@ -120,13 +120,14 @@ public class StudyRoomLoadingFragment
       paramBundle = paramBundle.getSerializable("param");
       if ((paramBundle instanceof HashMap))
       {
-        Iterator localIterator = ((HashMap)paramBundle).keySet().iterator();
+        paramBundle = (HashMap)paramBundle;
+        Iterator localIterator = paramBundle.keySet().iterator();
         while (localIterator.hasNext())
         {
           Object localObject1 = localIterator.next();
           if ((localObject1 instanceof String))
           {
-            Object localObject2 = ((HashMap)paramBundle).get(localObject1);
+            Object localObject2 = paramBundle.get(localObject1);
             if ((localObject2 instanceof String)) {
               paramView.putString((String)localObject1, (String)localObject2);
             }
@@ -134,12 +135,12 @@ public class StudyRoomLoadingFragment
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = PluginUtils.a(getActivity().getApplicationContext(), paramView, false, new StudyRoomLoadingFragment.WeakCallback(this));
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = PluginUtils.a(getQBaseActivity().getApplicationContext(), paramView, false, new StudyRoomLoadingFragment.WeakCallback(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

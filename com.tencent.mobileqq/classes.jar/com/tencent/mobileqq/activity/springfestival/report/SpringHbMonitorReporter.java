@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import com.tencent.avgame.gamelogic.gameres.CJPreloadMonitorReporter;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.springfestival.Utils;
 import com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfigManager;
 import com.tencent.mobileqq.activity.springfestival.entry.model.EntryConfigBean;
@@ -21,6 +21,8 @@ import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.IQWalletApi;
 import com.tencent.mobileqq.qwallet.preload.IPreloadModule;
 import com.tencent.mobileqq.qwallet.preload.IPreloadResource;
 import com.tencent.mobileqq.qwallet.preload.IPreloadService;
@@ -43,12 +45,18 @@ public class SpringHbMonitorReporter
   public static int a(int paramInt)
   {
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    int i = 0;
     if (localObject != null)
     {
       localObject = ((QQAppInterface)localObject).getCurrentUin();
-      return a("conf_taskid_" + paramInt + "_" + (String)localObject, 0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("conf_taskid_");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("_");
+      localStringBuilder.append((String)localObject);
+      i = a(localStringBuilder.toString(), 0);
     }
-    return 0;
+    return i;
   }
   
   private static int a(String paramString, int paramInt)
@@ -77,7 +85,12 @@ public class SpringHbMonitorReporter
     if (localQQAppInterface != null)
     {
       String str = localQQAppInterface.getCurrentUin();
-      return c(localQQAppInterface, "conf_content_md5" + paramInt + "_" + str);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("conf_content_md5");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("_");
+      localStringBuilder.append(str);
+      return c(localQQAppInterface, localStringBuilder.toString());
     }
     return "";
   }
@@ -91,7 +104,10 @@ public class SpringHbMonitorReporter
   {
     try
     {
-      paramAppInterface = c(paramAppInterface, "res_cover_tag" + paramAppInterface.getCurrentAccountUin());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("res_cover_tag");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      paramAppInterface = c(paramAppInterface, localStringBuilder.toString());
       return paramAppInterface;
     }
     catch (Exception paramAppInterface)
@@ -105,7 +121,12 @@ public class SpringHbMonitorReporter
   {
     try
     {
-      paramAppInterface = c(paramAppInterface, "res_hit_tag" + paramAppInterface.getCurrentAccountUin() + "_" + paramInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("res_hit_tag");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt);
+      paramAppInterface = c(paramAppInterface, localStringBuilder.toString());
       return paramAppInterface;
     }
     catch (Exception paramAppInterface)
@@ -131,7 +152,12 @@ public class SpringHbMonitorReporter
     if (localObject != null)
     {
       localObject = ((QQAppInterface)localObject).getCurrentUin();
-      a("conf_taskid_" + paramInt1 + "_" + (String)localObject, paramInt2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("conf_taskid_");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("_");
+      localStringBuilder.append((String)localObject);
+      a(localStringBuilder.toString(), paramInt2);
     }
   }
   
@@ -139,59 +165,73 @@ public class SpringHbMonitorReporter
   {
     try
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("ext1", "" + paramInt3);
-      localHashMap.put("ext2", "" + paramInt4);
-      localHashMap.put("ext3", "" + paramInt5);
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
-        localHashMap.put("ext4", "" + paramVarArgs[0]);
+      localObject = new HashMap();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt3);
+      ((Map)localObject).put("ext1", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt4);
+      ((Map)localObject).put("ext2", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt5);
+      ((Map)localObject).put("ext3", localStringBuilder.toString());
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(paramVarArgs[0]);
+        ((Map)localObject).put("ext4", localStringBuilder.toString());
       }
-      SpringHbReporter.a(ReportConstant.Event.b, paramInt1, paramInt2, localHashMap, ReportConstant.ConfigConstant.a(paramInt1), paramBoolean);
+      SpringHbReporter.a(ReportConstant.Event.b, paramInt1, paramInt2, (Map)localObject, ReportConstant.ConfigConstant.a(paramInt1), paramBoolean);
       return;
     }
     catch (Throwable paramVarArgs)
     {
-      QLog.e("shua2021report_SpringHbMonitorReporter", 1, "configReport: " + paramVarArgs);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("configReport: ");
+      ((StringBuilder)localObject).append(paramVarArgs);
+      QLog.e("shua2021report_SpringHbMonitorReporter", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   private static void a(int paramInt, AppInterface paramAppInterface)
   {
-    if (paramAppInterface == null) {}
-    Object localObject;
-    String str;
-    do
+    if (paramAppInterface == null) {
+      return;
+    }
+    if ((paramInt != 1) && (paramInt != 2)) {
+      return;
+    }
+    Object localObject = a(paramAppInterface, paramInt);
+    String str = a();
+    if (QLog.isColorLevel()) {
+      QLog.i("shua2021report_SpringHbMonitorReporter", 2, String.format("[reportResHitInner] lastTag=%s curTag=%s hitAction=%s", new Object[] { localObject, str, Integer.valueOf(paramInt) }));
+    }
+    if (TextUtils.equals((CharSequence)localObject, str))
     {
-      do
-      {
-        return;
-      } while ((paramInt != 1) && (paramInt != 2));
-      localObject = a(paramAppInterface, paramInt);
-      str = a();
       if (QLog.isColorLevel()) {
-        QLog.i("shua2021report_SpringHbMonitorReporter", 2, String.format("[reportResHitInner] lastTag=%s curTag=%s hitAction=%s", new Object[] { localObject, str, Integer.valueOf(paramInt) }));
+        QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[reportResHitInner] no need to report.");
       }
-      if (!TextUtils.equals((CharSequence)localObject, str)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[reportResHitInner] no need to report.");
-    return;
-    if (paramInt == 1) {
+      return;
+    }
+    if (paramInt == 1)
+    {
       a(true);
     }
-    for (;;)
+    else
     {
-      a(paramAppInterface, paramInt, str);
-      return;
       if (paramInt != 2) {
-        break;
+        return;
       }
       localObject = b(BaseApplicationImpl.sApplication.getRuntime());
       if (localObject != null) {
         ThreadManagerV2.executeOnFileThread(new SpringHbMonitorReporter.1((SpringHbMonitorReporter.OfflineReportInfo)localObject));
       }
     }
+    a(paramAppInterface, paramInt, str);
   }
   
   public static void a(int paramInt, String paramString)
@@ -200,7 +240,12 @@ public class SpringHbMonitorReporter
     if (localQQAppInterface != null)
     {
       String str = localQQAppInterface.getCurrentUin();
-      c(localQQAppInterface, "conf_content_md5" + paramInt + "_" + str, paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("conf_content_md5");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("_");
+      localStringBuilder.append(str);
+      c(localQQAppInterface, localStringBuilder.toString(), paramString);
     }
   }
   
@@ -214,58 +259,66 @@ public class SpringHbMonitorReporter
   
   public static void a(int paramInt, Throwable paramThrowable, String... paramVarArgs)
   {
-    for (;;)
+    Object localObject;
+    try
     {
-      Object localObject;
-      int j;
-      try
-      {
-        localObject = ((SpringFestivalRedpacketConfigManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.SPRING_FESTIVAL_RED_PACKET_MANAGER)).b();
-        int i;
-        if (localObject == null)
-        {
-          i = 0;
-          break label340;
-          if (QLog.isColorLevel()) {
-            QLog.i("shua2021report_SpringHbMonitorReporter", 2, String.format("[reportExCatch] pos=[%d] ver=%d taskId=%d e.msg=%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), paramThrowable.getMessage() }));
-          }
-          localObject = new HashMap();
-          ((Map)localObject).put("ext1", "" + paramInt);
-          ((Map)localObject).put("ext2", "" + j);
-          ((Map)localObject).put("ext3", "" + i);
-          ((Map)localObject).put("ext4", "" + paramThrowable.getMessage());
-          if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-            continue;
-          }
-          paramThrowable = new StringBuilder();
-          i = paramVarArgs.length;
-          paramInt = 0;
-          if (paramInt < i)
-          {
-            paramThrowable.append(paramVarArgs[paramInt]).append(";");
-            paramInt += 1;
-            continue;
-          }
-        }
-        else
-        {
-          i = ((EntryConfigBean)localObject).version;
-          break label340;
-          j = ((EntryConfigBean)localObject).taskId;
-          continue;
-        }
-        ((Map)localObject).put("ext5", "" + paramThrowable.toString());
-        SpringHbReporter.a(ReportConstant.Event.q, 0, 0, (Map)localObject, "excp", false);
-        return;
-      }
-      catch (Exception paramThrowable)
-      {
-        QLog.e("shua2021report_SpringHbMonitorReporter", 1, "[reportExCatch] fail.", paramThrowable);
-        return;
-      }
-      label340:
+      localObject = ((SpringFestivalRedpacketConfigManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.SPRING_FESTIVAL_RED_PACKET_MANAGER)).b();
+      k = 0;
       if (localObject == null) {
-        j = 0;
+        i = 0;
+      } else {
+        i = ((EntryConfigBean)localObject).version;
+      }
+    }
+    catch (Exception paramThrowable)
+    {
+      int k;
+      int i;
+      QLog.e("shua2021report_SpringHbMonitorReporter", 1, "[reportExCatch] fail.", paramThrowable);
+      return;
+    }
+    for (int j = ((EntryConfigBean)localObject).taskId;; j = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("shua2021report_SpringHbMonitorReporter", 2, String.format("[reportExCatch] pos=[%d] ver=%d taskId=%d e.msg=%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), paramThrowable.getMessage() }));
+      }
+      localObject = new HashMap();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt);
+      ((Map)localObject).put("ext1", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(j);
+      ((Map)localObject).put("ext2", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(i);
+      ((Map)localObject).put("ext3", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramThrowable.getMessage());
+      ((Map)localObject).put("ext4", localStringBuilder.toString());
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+      {
+        paramThrowable = new StringBuilder();
+        i = paramVarArgs.length;
+        paramInt = k;
+        while (paramInt < i)
+        {
+          paramThrowable.append(paramVarArgs[paramInt]);
+          paramThrowable.append(";");
+          paramInt += 1;
+        }
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append("");
+        paramVarArgs.append(paramThrowable.toString());
+        ((Map)localObject).put("ext5", paramVarArgs.toString());
+      }
+      SpringHbReporter.a(ReportConstant.Event.q, 0, 0, (Map)localObject, "excp", false);
+      return;
+      if (localObject != null) {
+        break;
       }
     }
   }
@@ -276,42 +329,78 @@ public class SpringHbMonitorReporter
     try
     {
       if (!QLog.isColorLevel()) {
-        return;
+        break label404;
       }
       QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[reportConfigCoverageDaily] taskid == 0");
       return;
     }
     catch (Exception paramAppInterface)
     {
+      String str;
+      Object localObject;
+      StringBuilder localStringBuilder;
       QLog.e("shua2021report_SpringHbMonitorReporter", 1, "[reportConfigCoverageDaily] fail.", paramAppInterface);
       return;
     }
-    String str = c(paramAppInterface);
+    str = c(paramAppInterface);
     paramString = a(paramInt3, paramInt5, paramString, paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[reportConfigCoverageDaily] currentCfgTags == " + paramString + " cfgTags: " + str);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[reportConfigCoverageDaily] currentCfgTags == ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" cfgTags: ");
+      ((StringBuilder)localObject).append(str);
+      QLog.i("shua2021report_SpringHbMonitorReporter", 2, ((StringBuilder)localObject).toString());
     }
     if (a(str, paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[reportConfigCoverageDaily] no need to report " + paramInt3);
+      if (QLog.isColorLevel())
+      {
+        paramAppInterface = new StringBuilder();
+        paramAppInterface.append("[reportConfigCoverageDaily] no need to report ");
+        paramAppInterface.append(paramInt3);
+        QLog.i("shua2021report_SpringHbMonitorReporter", 2, paramAppInterface.toString());
       }
     }
     else
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("ext1", "" + paramInt3);
-      localHashMap.put("ext2", "" + paramInt4);
-      localHashMap.put("ext3", "" + paramInt5);
-      localHashMap.put("ext4", "" + paramInt2);
-      SpringHbReporter.a(ReportConstant.Event.b, paramInt1, paramInt2, localHashMap, ReportConstant.ConfigConstant.a(paramInt1), paramBoolean);
-      if (StringUtil.a(str)) {}
-      for (;;)
-      {
-        c(paramAppInterface, paramString);
-        return;
-        paramString = str + "|" + paramString;
+      localObject = new HashMap();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt3);
+      ((Map)localObject).put("ext1", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt4);
+      ((Map)localObject).put("ext2", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt5);
+      ((Map)localObject).put("ext3", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramInt2);
+      ((Map)localObject).put("ext4", localStringBuilder.toString());
+      SpringHbReporter.a(ReportConstant.Event.b, paramInt1, paramInt2, (Map)localObject, ReportConstant.ConfigConstant.a(paramInt1), paramBoolean);
+      if (StringUtil.a(str)) {
+        break label406;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("|");
+      ((StringBuilder)localObject).append(paramString);
+      paramString = ((StringBuilder)localObject).toString();
+      break label406;
+    }
+    label404:
+    label406:
+    for (;;)
+    {
+      c(paramAppInterface, paramString);
+      return;
+      return;
+      return;
     }
   }
   
@@ -319,7 +408,12 @@ public class SpringHbMonitorReporter
   {
     try
     {
-      c(paramAppInterface, "res_hit_tag" + paramAppInterface.getCurrentAccountUin() + "_" + paramInt, paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("res_hit_tag");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt);
+      c(paramAppInterface, localStringBuilder.toString(), paramString);
       return;
     }
     catch (Exception paramAppInterface)
@@ -332,7 +426,10 @@ public class SpringHbMonitorReporter
   {
     try
     {
-      c(paramAppInterface, "res_cover_tag" + paramAppInterface.getCurrentAccountUin(), paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("res_cover_tag");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      c(paramAppInterface, localStringBuilder.toString(), paramString);
       return;
     }
     catch (Exception paramAppInterface)
@@ -344,52 +441,64 @@ public class SpringHbMonitorReporter
   public static void a(SpringHbReportManager.ReportInfo paramReportInfo)
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramReportInfo == null) || ((localObject instanceof QQAppInterface))) {}
-    do
+    if (paramReportInfo != null)
     {
-      return;
+      if ((localObject instanceof QQAppInterface)) {
+        return;
+      }
       localObject = (QQAppInterface)localObject;
-    } while ((!"sy.zhc.ym".equals(paramReportInfo.eventName)) || (paramReportInfo.action != 0));
-    System.currentTimeMillis();
+      if (("sy.zhc.ym".equals(paramReportInfo.eventName)) && (paramReportInfo.action == 0)) {
+        System.currentTimeMillis();
+      }
+    }
   }
   
   public static void a(IPreloadModule paramIPreloadModule, int paramInt1, String paramString, int paramInt2)
   {
-    if ((paramIPreloadModule == null) || (TextUtils.isEmpty(paramIPreloadModule.getName()))) {
-      return;
-    }
-    String str2;
-    String str3;
-    if (paramIPreloadModule.getName().equals("2021_shuayishua"))
+    if (paramIPreloadModule != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[reportResPreload] result=" + paramInt1 + ",url=" + paramString);
+      if (TextUtils.isEmpty(paramIPreloadModule.getName())) {
+        return;
       }
-      String str1 = QWalletTools.c(paramString);
-      str2 = a(719) + "";
-      str3 = c(719) + "";
-      if (!TextUtils.isEmpty(str1))
+      if (paramIPreloadModule.getName().equals("2021_shuayishua"))
       {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("ext1", str1);
-        localHashMap.put("ext2", str2);
-        localHashMap.put("ext3", str3);
-        localHashMap.put("ext4", paramInt2 + "");
-        SpringHbReporter.a(ReportConstant.Event.jdField_a_of_type_JavaLangString, 2, paramInt1, localHashMap, ReportConstant.Res.a(2));
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("[reportResPreload] result=");
+          ((StringBuilder)localObject1).append(paramInt1);
+          ((StringBuilder)localObject1).append(",url=");
+          ((StringBuilder)localObject1).append(paramString);
+          QLog.i("shua2021report_SpringHbMonitorReporter", 2, ((StringBuilder)localObject1).toString());
+        }
+        Object localObject1 = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getEncodeUrl(paramString);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(a(719));
+        ((StringBuilder)localObject2).append("");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(c(719));
+        ((StringBuilder)localObject3).append("");
+        localObject3 = ((StringBuilder)localObject3).toString();
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("ext1", localObject1);
+          localHashMap.put("ext2", localObject2);
+          localHashMap.put("ext3", localObject3);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramInt2);
+          ((StringBuilder)localObject1).append("");
+          localHashMap.put("ext4", ((StringBuilder)localObject1).toString());
+          SpringHbReporter.a(ReportConstant.Event.jdField_a_of_type_JavaLangString, 2, paramInt1, localHashMap, ReportConstant.Res.a(2));
+        }
+        if (paramInt1 == 0) {
+          a();
+        } else if (paramInt2 == 404) {
+          a(paramString, 1, true, (String)localObject2, (String)localObject3);
+        }
       }
-      if (paramInt1 != 0) {
-        break label243;
-      }
-      a();
-    }
-    for (;;)
-    {
       CJPreloadMonitorReporter.a(paramIPreloadModule, paramInt1, paramString, paramInt2);
-      return;
-      label243:
-      if (paramInt2 == 404) {
-        a(paramString, 1, true, str2, str3);
-      }
     }
   }
   
@@ -418,88 +527,110 @@ public class SpringHbMonitorReporter
   {
     for (;;)
     {
-      Object localObject1;
-      Object localObject2;
       try
       {
-        if (StringUtil.a(paramString)) {
-          break label472;
-        }
-        new StringBuilder().append(BaseApplicationImpl.sApplication.getRuntime().getLongAccountUin()).append("").toString();
-        localObject1 = paramString.split("\\|");
-        if ((localObject1 == null) || (localObject1.length <= 0)) {
-          break label472;
-        }
-        int j = localObject1.length;
-        i = 0;
-        if (i >= j) {
-          break label466;
-        }
-        if (Utils.a(localObject1[i])) {
-          break label473;
-        }
-        bool = false;
-        localObject1 = QWalletTools.a();
-        if (localObject1 == null) {
-          return;
-        }
-        if (paramBoolean)
+        if (!StringUtil.a(paramString))
         {
-          localObject2 = new HashMap();
-          ((Map)localObject2).put("ext1", "" + paramString);
-          ((Map)localObject2).put("ext2", "" + paramInt1);
-          ((Map)localObject2).put("ext3", "" + paramInt2);
-          localObject3 = ReportConstant.Event.f;
-          if (bool)
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(BaseApplicationImpl.sApplication.getRuntime().getLongAccountUin());
+          ((StringBuilder)localObject1).append("");
+          ((StringBuilder)localObject1).toString();
+          localObject1 = paramString.split("\\|");
+          if ((localObject1 != null) && (localObject1.length > 0))
           {
+            int j = localObject1.length;
             i = 0;
-            SpringHbReporter.a((String)localObject3, 2, i, (Map)localObject2, "", false);
+            if (i >= j) {
+              break label556;
+            }
+            if (Utils.a(localObject1[i])) {
+              break label547;
+            }
+            bool = false;
+            localObject1 = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getQQAppInterface();
+            if (localObject1 == null) {
+              return;
+            }
+            if (paramBoolean)
+            {
+              localObject2 = new HashMap();
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("");
+              ((StringBuilder)localObject3).append(paramString);
+              ((Map)localObject2).put("ext1", ((StringBuilder)localObject3).toString());
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("");
+              ((StringBuilder)localObject3).append(paramInt1);
+              ((Map)localObject2).put("ext2", ((StringBuilder)localObject3).toString());
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("");
+              ((StringBuilder)localObject3).append(paramInt2);
+              ((Map)localObject2).put("ext3", ((StringBuilder)localObject3).toString());
+              localObject3 = ReportConstant.Event.f;
+              if (!bool) {
+                break label562;
+              }
+              i = 0;
+              SpringHbReporter.a((String)localObject3, 2, i, (Map)localObject2, "", false);
+            }
+            Object localObject3 = b((AppInterface)localObject1);
+            Object localObject2 = a(bool, paramInt2);
+            if (QLog.isColorLevel()) {
+              QLog.i("shua2021report_SpringHbMonitorReporter", 2, String.format("[reportOfflinePakcageCoverage] lastTag=%s curTag=%s isFromHit=%s", new Object[] { localObject3, localObject2, Boolean.valueOf(paramBoolean) }));
+            }
+            if (TextUtils.equals((CharSequence)localObject3, (CharSequence)localObject2))
+            {
+              if (!QLog.isColorLevel()) {
+                break label568;
+              }
+              QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[reportOfflinePakcageCoverage] no need to report.");
+              return;
+            }
+            localObject3 = new HashMap();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("");
+            localStringBuilder.append(paramString);
+            ((Map)localObject3).put("ext1", localStringBuilder.toString());
+            paramString = new StringBuilder();
+            paramString.append("");
+            paramString.append(paramInt1);
+            ((Map)localObject3).put("ext2", paramString.toString());
+            paramString = new StringBuilder();
+            paramString.append("");
+            paramString.append(paramInt2);
+            ((Map)localObject3).put("ext3", paramString.toString());
+            paramString = ReportConstant.Event.c;
+            if (!bool) {
+              break label569;
+            }
+            paramInt1 = 0;
+            SpringHbReporter.a(paramString, 1, paramInt1, (Map)localObject3, "", true);
+            b((AppInterface)localObject1, (String)localObject2);
+            return;
           }
-        }
-        else
-        {
-          localObject3 = b((AppInterface)localObject1);
-          localObject2 = a(bool, paramInt2);
-          if (QLog.isColorLevel()) {
-            QLog.i("shua2021report_SpringHbMonitorReporter", 2, String.format("[reportOfflinePakcageCoverage] lastTag=%s curTag=%s isFromHit=%s", new Object[] { localObject3, localObject2, Boolean.valueOf(paramBoolean) }));
-          }
-          if (!TextUtils.equals((CharSequence)localObject3, (CharSequence)localObject2)) {
-            break label335;
-          }
-          if (!QLog.isColorLevel()) {
-            break label472;
-          }
-          QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[reportOfflinePakcageCoverage] no need to report.");
-          return;
         }
       }
       catch (Throwable paramString)
       {
-        QLog.e("shua2021report_SpringHbMonitorReporter", 1, "reportOfflinePakcageCoverage: " + paramString);
-        return;
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("reportOfflinePakcageCoverage: ");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.e("shua2021report_SpringHbMonitorReporter", 1, ((StringBuilder)localObject1).toString());
       }
-      int i = 1;
+      return;
+      label547:
+      i += 1;
       continue;
-      label335:
-      Object localObject3 = new HashMap();
-      ((Map)localObject3).put("ext1", "" + paramString);
-      ((Map)localObject3).put("ext2", "" + paramInt1);
-      ((Map)localObject3).put("ext3", "" + paramInt2);
-      paramString = ReportConstant.Event.c;
-      if (bool) {}
-      for (paramInt1 = 0;; paramInt1 = 1)
-      {
-        SpringHbReporter.a(paramString, 1, paramInt1, (Map)localObject3, "", true);
-        b((AppInterface)localObject1, (String)localObject2);
-        return;
-      }
-      label466:
+      label556:
       boolean bool = true;
       continue;
-      label472:
+      label562:
+      int i = 1;
+      continue;
+      label568:
       return;
-      label473:
-      i += 1;
+      label569:
+      paramInt1 = 1;
     }
   }
   
@@ -513,70 +644,77 @@ public class SpringHbMonitorReporter
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("ext1", paramString1);
+    String str = "";
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
     localHashMap.put("ext2", paramString1);
-    paramString1 = paramString3;
     if (paramString3 == null) {
-      paramString1 = "";
+      paramString3 = str;
     }
-    localHashMap.put("ext3", paramString1);
+    localHashMap.put("ext3", paramString3);
     SpringHbReporter.a(ReportConstant.Event.jdField_a_of_type_JavaLangString, 4, paramInt, localHashMap, ReportConstant.Res.a(4));
   }
   
   public static void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[checkResCover] begin, isFromHitReport=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[checkResCover] begin, isFromHitReport=");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("shua2021report_SpringHbMonitorReporter", 2, localStringBuilder.toString());
     }
     ThreadManagerV2.executeOnFileThread(new SpringHbMonitorReporter.3(paramBoolean));
   }
   
   public static void a(boolean paramBoolean1, int paramInt, AppInterface paramAppInterface, boolean paramBoolean2)
   {
-    Object localObject1;
     if (paramBoolean2)
     {
       localObject1 = new HashMap();
-      ((Map)localObject1).put("ext1", paramInt + "");
-      ((Map)localObject1).put("ext2", a(719) + "");
-      ((Map)localObject1).put("ext3", c(719) + "");
-      localObject2 = ReportConstant.Event.f;
-      if (!paramBoolean1) {
-        break label218;
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append("");
+      ((Map)localObject1).put("ext1", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(a(719));
+      ((StringBuilder)localObject2).append("");
+      ((Map)localObject1).put("ext2", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(c(719));
+      ((StringBuilder)localObject2).append("");
+      ((Map)localObject1).put("ext3", ((StringBuilder)localObject2).toString());
+      SpringHbReporter.a(ReportConstant.Event.f, 1, paramBoolean1 ^ true, (Map)localObject1, "", false);
     }
-    label218:
-    for (int i = 0;; i = 1)
+    Object localObject2 = a(paramAppInterface);
+    Object localObject1 = a(paramBoolean1, c(719));
+    if (QLog.isColorLevel()) {
+      QLog.i("shua2021report_SpringHbMonitorReporter", 2, String.format("[reportResCover] lastTag=%s curTag=%s isFromHit=%s", new Object[] { localObject2, localObject1, Boolean.valueOf(paramBoolean2) }));
+    }
+    if (TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
     {
-      SpringHbReporter.a((String)localObject2, 1, i, (Map)localObject1, "", false);
-      localObject2 = a(paramAppInterface);
-      localObject1 = a(paramBoolean1, c(719));
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021report_SpringHbMonitorReporter", 2, String.format("[reportResCover] lastTag=%s curTag=%s isFromHit=%s", new Object[] { localObject2, localObject1, Boolean.valueOf(paramBoolean2) }));
-      }
-      if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1)) {
-        break;
-      }
       if (QLog.isColorLevel()) {
         QLog.i("shua2021report_SpringHbMonitorReporter", 2, "[reportResCover] no need to report.");
       }
       return;
     }
-    Object localObject2 = new HashMap();
-    ((Map)localObject2).put("ext1", paramInt + "");
-    ((Map)localObject2).put("ext2", a(719) + "");
-    ((Map)localObject2).put("ext3", c(719) + "");
-    String str = ReportConstant.Event.jdField_a_of_type_JavaLangString;
-    if (paramBoolean1) {}
-    for (paramInt = 0;; paramInt = 1)
-    {
-      SpringHbReporter.a(str, 1, paramInt, (Map)localObject2, ReportConstant.Res.a(1), true);
-      a(paramAppInterface, (String)localObject1);
-      return;
-    }
+    localObject2 = new HashMap();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("");
+    ((Map)localObject2).put("ext1", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(719));
+    localStringBuilder.append("");
+    ((Map)localObject2).put("ext2", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c(719));
+    localStringBuilder.append("");
+    ((Map)localObject2).put("ext3", localStringBuilder.toString());
+    SpringHbReporter.a(ReportConstant.Event.jdField_a_of_type_JavaLangString, 1, paramBoolean1 ^ true, (Map)localObject2, ReportConstant.Res.a(1), true);
+    a(paramAppInterface, (String)localObject1);
   }
   
   public static boolean a(String paramString)
@@ -584,11 +722,11 @@ public class SpringHbMonitorReporter
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    Object localObject = QWalletTools.a();
+    Object localObject = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getQQAppInterface();
     if (localObject == null) {
       return false;
     }
-    localObject = (IPreloadService)((QQAppInterface)localObject).getRuntimeService(IPreloadService.class, "");
+    localObject = (IPreloadService)((BaseQQAppInterface)localObject).getRuntimeService(IPreloadService.class, "");
     if (localObject != null)
     {
       localObject = ((IPreloadService)localObject).getModuleByName("2021_shuayishua");
@@ -607,120 +745,106 @@ public class SpringHbMonitorReporter
   
   private static boolean a(String paramString1, String paramString2)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if (StringUtil.a(paramString1)) {
-      return bool2;
+    boolean bool = StringUtil.a(paramString1);
+    int i = 0;
+    if (bool) {
+      return false;
     }
     paramString1 = paramString1.split("\\|");
     int j = paramString1.length;
-    int i = 0;
-    for (;;)
+    bool = false;
+    while (i < j)
     {
-      bool2 = bool1;
-      if (i >= j) {
-        break;
-      }
       if (paramString1[i].equals(paramString2)) {
-        bool1 = true;
+        bool = true;
       }
       i += 1;
     }
+    return bool;
   }
   
   @NonNull
   private static SpringHbMonitorReporter.OfflineReportInfo b(AppRuntime paramAppRuntime)
   {
-    int m = 0;
-    int i = 0;
+    Object localObject2 = null;
     SpringHbMonitorReporter.OfflineReportInfo localOfflineReportInfo = new SpringHbMonitorReporter.OfflineReportInfo(null);
-    Object localObject = "";
-    int k = -1;
-    label68:
-    label75:
+    boolean bool = paramAppRuntime instanceof QQAppInterface;
+    Object localObject1 = "";
+    int n = 0;
+    int k = 0;
+    int m = -1;
+    int i;
     int j;
-    if ((paramAppRuntime instanceof QQAppInterface))
+    if (bool)
     {
-      paramAppRuntime = (SpringFestivalRedpacketConfigManager)((QQAppInterface)paramAppRuntime).getManager(QQManagerFactory.SPRING_FESTIVAL_RED_PACKET_MANAGER);
-      if (paramAppRuntime == null) {
-        break label266;
-      }
-      localObject = paramAppRuntime.a();
-      if (localObject == null)
+      Object localObject3 = (SpringFestivalRedpacketConfigManager)((QQAppInterface)paramAppRuntime).getManager(QQManagerFactory.SPRING_FESTIVAL_RED_PACKET_MANAGER);
+      paramAppRuntime = (AppRuntime)localObject1;
+      i = n;
+      j = m;
+      if (localObject3 != null)
       {
-        paramAppRuntime = null;
-        if (paramAppRuntime == null) {
-          break label116;
+        localObject3 = ((SpringFestivalRedpacketConfigManager)localObject3).a();
+        if (localObject3 != null) {
+          localObject2 = ((EntryConfigBean)localObject3).htmlOfflineCheckConfig;
         }
-        paramAppRuntime = paramAppRuntime.bids;
-        if (localObject != null) {
-          break label122;
+        paramAppRuntime = (AppRuntime)localObject1;
+        if (localObject2 != null) {
+          paramAppRuntime = ((HtmlOfflineCheckConfig)localObject2).bids;
         }
-        i = 0;
-        if (localObject != null) {
-          break label131;
+        if (localObject3 == null) {
+          i = 0;
+        } else {
+          i = ((EntryConfigBean)localObject3).taskId;
         }
-        j = 0;
-      }
-    }
-    for (;;)
-    {
-      label82:
-      localObject = paramAppRuntime;
-      for (;;)
-      {
-        localOfflineReportInfo.jdField_a_of_type_JavaLangString = ((String)localObject);
-        localOfflineReportInfo.b = j;
-        localOfflineReportInfo.jdField_a_of_type_Int = i;
-        return localOfflineReportInfo;
-        paramAppRuntime = ((EntryConfigBean)localObject).htmlOfflineCheckConfig;
-        break;
-        label116:
-        paramAppRuntime = "";
-        break label68;
-        label122:
-        i = ((EntryConfigBean)localObject).taskId;
-        break label75;
-        label131:
-        j = ((EntryConfigBean)localObject).version;
-        break label82;
-        EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("SpringHbIPCModule", "GetHtmlOffline", null);
-        paramAppRuntime = (AppRuntime)localObject;
-        if (localEIPCResult != null)
-        {
-          paramAppRuntime = (AppRuntime)localObject;
-          if (localEIPCResult.data != null) {
-            paramAppRuntime = localEIPCResult.data.getString("bids");
-          }
-        }
-        localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("SpringHbIPCModule", "GetCfgInfo", null);
-        i = m;
-        j = k;
-        localObject = paramAppRuntime;
-        if (localEIPCResult != null)
-        {
-          i = m;
+        if (localObject3 == null) {
           j = k;
-          localObject = paramAppRuntime;
-          if (localEIPCResult.data != null)
-          {
-            i = localEIPCResult.data.getInt("task_id");
-            j = localEIPCResult.data.getInt("cfg_version");
-            localObject = paramAppRuntime;
-          }
+        } else {
+          j = ((EntryConfigBean)localObject3).version;
         }
       }
-      label266:
-      j = -1;
-      paramAppRuntime = "";
     }
+    else
+    {
+      paramAppRuntime = QIPCClientHelper.getInstance().getClient().callServer("SpringHbIPCModule", "GetHtmlOffline", null);
+      localObject2 = localObject1;
+      if (paramAppRuntime != null)
+      {
+        localObject2 = localObject1;
+        if (paramAppRuntime.data != null) {
+          localObject2 = paramAppRuntime.data.getString("bids");
+        }
+      }
+      localObject1 = QIPCClientHelper.getInstance().getClient().callServer("SpringHbIPCModule", "GetCfgInfo", null);
+      paramAppRuntime = (AppRuntime)localObject2;
+      i = n;
+      j = m;
+      if (localObject1 != null)
+      {
+        paramAppRuntime = (AppRuntime)localObject2;
+        i = n;
+        j = m;
+        if (((EIPCResult)localObject1).data != null)
+        {
+          i = ((EIPCResult)localObject1).data.getInt("task_id");
+          j = ((EIPCResult)localObject1).data.getInt("cfg_version");
+          paramAppRuntime = (AppRuntime)localObject2;
+        }
+      }
+    }
+    localOfflineReportInfo.jdField_a_of_type_JavaLangString = paramAppRuntime;
+    localOfflineReportInfo.b = j;
+    localOfflineReportInfo.jdField_a_of_type_Int = i;
+    return localOfflineReportInfo;
   }
   
   private static String b(AppInterface paramAppInterface)
   {
     try
     {
-      paramAppInterface = c(paramAppInterface, "offline_cover_tag" + paramAppInterface.getCurrentAccountUin());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("offline_cover_tag");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      paramAppInterface = c(paramAppInterface, localStringBuilder.toString());
       return paramAppInterface;
     }
     catch (Exception paramAppInterface)
@@ -734,7 +858,12 @@ public class SpringHbMonitorReporter
   {
     try
     {
-      paramAppInterface = c(paramAppInterface, "offline_report_tag" + paramAppInterface.getCurrentAccountUin() + "_" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("offline_report_tag");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString);
+      paramAppInterface = c(paramAppInterface, localStringBuilder.toString());
       return paramAppInterface;
     }
     catch (Exception paramAppInterface)
@@ -753,7 +882,10 @@ public class SpringHbMonitorReporter
   {
     try
     {
-      c(paramAppInterface, "offline_cover_tag" + paramAppInterface.getCurrentAccountUin(), paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("offline_cover_tag");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      c(paramAppInterface, localStringBuilder.toString(), paramString);
       return;
     }
     catch (Exception paramAppInterface)
@@ -766,7 +898,12 @@ public class SpringHbMonitorReporter
   {
     try
     {
-      c(paramAppInterface, "offline_report_tag" + paramAppInterface.getCurrentAccountUin() + "_" + paramString2, paramString1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("offline_report_tag");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString2);
+      c(paramAppInterface, localStringBuilder.toString(), paramString1);
       return;
     }
     catch (Exception paramAppInterface)
@@ -782,18 +919,21 @@ public class SpringHbMonitorReporter
   
   private static int c(int paramInt)
   {
-    QQAppInterface localQQAppInterface = QWalletTools.a();
-    if (localQQAppInterface == null) {
+    BaseQQAppInterface localBaseQQAppInterface = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getQQAppInterface();
+    if (localBaseQQAppInterface == null) {
       return 0;
     }
-    return QConfigManager.a().a(paramInt, localQQAppInterface.getCurrentAccountUin());
+    return QConfigManager.a().a(paramInt, localBaseQQAppInterface.getCurrentAccountUin());
   }
   
   private static String c(AppInterface paramAppInterface)
   {
     try
     {
-      paramAppInterface = c(paramAppInterface, "cfg_cover_tag" + paramAppInterface.getCurrentAccountUin());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cfg_cover_tag");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      paramAppInterface = c(paramAppInterface, localStringBuilder.toString());
       return paramAppInterface;
     }
     catch (Exception paramAppInterface)
@@ -821,7 +961,10 @@ public class SpringHbMonitorReporter
   {
     try
     {
-      c(paramAppInterface, "cfg_cover_tag" + paramAppInterface.getCurrentAccountUin(), paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cfg_cover_tag");
+      localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+      c(paramAppInterface, localStringBuilder.toString(), paramString);
       return;
     }
     catch (Exception paramAppInterface)
@@ -845,7 +988,7 @@ public class SpringHbMonitorReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbMonitorReporter
  * JD-Core Version:    0.7.0.1
  */

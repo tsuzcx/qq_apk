@@ -28,84 +28,82 @@ public class ProtocolUtils
       paramArrayOfInt[0] = -1000000;
     }
     Object localObject1 = new WNSStream();
-    label388:
-    for (;;)
+    try
     {
-      try
+      paramArrayOfByte = ((WNSStream)localObject1).unpack(WupUtil.b(paramArrayOfByte));
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.WnsCode == 0))
       {
-        paramArrayOfByte = ((WNSStream)localObject1).unpack(WupUtil.b(paramArrayOfByte));
-        if ((paramArrayOfByte != null) && (paramArrayOfByte.WnsCode == 0))
+        localObject1 = new UniAttribute();
+        ((UniAttribute)localObject1).setEncodeName("utf-8");
+        ((UniAttribute)localObject1).decode(paramArrayOfByte.Extra);
+        Object localObject2 = (QmfBusiControl)((UniAttribute)localObject1).get("busiCompCtl");
+        if ((localObject2 != null) && (1 == ((QmfBusiControl)localObject2).compFlag))
         {
-          localObject1 = new UniAttribute();
-          ((UniAttribute)localObject1).setEncodeName("utf-8");
-          ((UniAttribute)localObject1).decode(paramArrayOfByte.Extra);
-          Object localObject2 = (QmfBusiControl)((UniAttribute)localObject1).get("busiCompCtl");
-          if ((localObject2 != null) && (1 == ((QmfBusiControl)localObject2).compFlag))
+          localObject2 = WNSStream.decompress(paramArrayOfByte.BusiBuff);
+          if (localObject2 != null)
           {
-            localObject2 = WNSStream.decompress(paramArrayOfByte.BusiBuff);
-            if (localObject2 != null) {
-              paramArrayOfByte.BusiBuff = ((byte[])localObject2);
-            }
+            paramArrayOfByte.BusiBuff = ((byte[])localObject2);
           }
           else
           {
-            localObject1 = new UniAttribute();
-            ((UniAttribute)localObject1).setEncodeName("utf-8");
-            ((UniAttribute)localObject1).decode(paramArrayOfByte.BusiBuff);
-            i = paramArrayOfByte.BizCode;
-            paramArrayOfByte = ((UniAttribute)localObject1).get("ret", Short.valueOf(paramArrayOfByte.BizCode));
-            if (!(paramArrayOfByte instanceof Short)) {
-              continue;
-            }
-            i = ((Short)paramArrayOfByte).intValue();
             if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
-              paramArrayOfInt[0] = i;
+              paramArrayOfInt[0] = 1000002;
             }
             getServerMsg((UniAttribute)localObject1, paramArrayOfString);
-            return (JceStruct)((UniAttribute)localObject1).get(paramString);
+            return null;
           }
-          if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
-            paramArrayOfInt[0] = 1000002;
-          }
-          getServerMsg((UniAttribute)localObject1, paramArrayOfString);
-          return null;
-          if (!(paramArrayOfByte instanceof Integer)) {
-            break label388;
-          }
-          int i = ((Integer)paramArrayOfByte).intValue();
-          continue;
         }
-        if ((paramArrayOfByte != null) && (paramArrayOfByte.WnsCode != 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("ProtocolUtils", 2, "decode " + paramString + " error:" + WnsError.getErrorMessage(paramArrayOfByte.WnsCode));
-          }
-          if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
-            paramArrayOfInt[0] = paramArrayOfByte.WnsCode;
-          }
-          if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0)) {
-            break;
-          }
-          paramArrayOfString[0] = WnsError.getErrorMessage(paramArrayOfByte.WnsCode);
-          break;
+        localObject1 = new UniAttribute();
+        ((UniAttribute)localObject1).setEncodeName("utf-8");
+        ((UniAttribute)localObject1).decode(paramArrayOfByte.BusiBuff);
+        int i = paramArrayOfByte.BizCode;
+        paramArrayOfByte = ((UniAttribute)localObject1).get("ret", Short.valueOf(paramArrayOfByte.BizCode));
+        if ((paramArrayOfByte instanceof Short)) {
+          i = ((Short)paramArrayOfByte).intValue();
+        } else if ((paramArrayOfByte instanceof Integer)) {
+          i = ((Integer)paramArrayOfByte).intValue();
         }
-        if (paramArrayOfByte == null)
-        {
-          if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
-            paramArrayOfInt[0] = 1000003;
-          }
-          return null;
-        }
-      }
-      catch (Throwable paramArrayOfByte)
-      {
         if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
-          paramArrayOfInt[0] = 1000001;
+          paramArrayOfInt[0] = i;
         }
+        getServerMsg((UniAttribute)localObject1, paramArrayOfString);
+        return (JceStruct)((UniAttribute)localObject1).get(paramString);
+      }
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.WnsCode != 0))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("decode ");
+          ((StringBuilder)localObject1).append(paramString);
+          ((StringBuilder)localObject1).append(" error:");
+          ((StringBuilder)localObject1).append(WnsError.getErrorMessage(paramArrayOfByte.WnsCode));
+          QLog.e("ProtocolUtils", 2, ((StringBuilder)localObject1).toString());
+        }
+        if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
+          paramArrayOfInt[0] = paramArrayOfByte.WnsCode;
+        }
+        if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0)) {
+          break label407;
+        }
+        paramArrayOfString[0] = WnsError.getErrorMessage(paramArrayOfByte.WnsCode);
         return null;
+      }
+      if ((paramArrayOfByte == null) && (paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
+        paramArrayOfInt[0] = 1000003;
       }
       return null;
     }
+    catch (Throwable paramArrayOfByte)
+    {
+      label387:
+      break label387;
+    }
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
+      paramArrayOfInt[0] = 1000001;
+    }
+    return null;
+    label407:
     return null;
   }
   
@@ -114,9 +112,9 @@ public class ProtocolUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: ifnull +13 -> 14
+    //   1: ifnull +68 -> 69
     //   4: aload_1
-    //   5: ifnull +9 -> 14
+    //   5: ifnull +64 -> 69
     //   8: aload_1
     //   9: arraylength
     //   10: iconst_1
@@ -127,14 +125,14 @@ public class ProtocolUtils
     //   17: aload_0
     //   18: ldc 140
     //   20: ldc 142
-    //   22: invokevirtual 91	com/qq/jce/wup/UniAttribute:get	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   22: invokevirtual 96	com/qq/jce/wup/UniAttribute:get	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   25: checkcast 144	java/lang/String
     //   28: checkcast 144	java/lang/String
     //   31: aastore
     //   32: aload_1
     //   33: iconst_0
     //   34: aaload
-    //   35: ifnonnull -21 -> 14
+    //   35: ifnonnull +34 -> 69
     //   38: aload_1
     //   39: iconst_0
     //   40: ldc 146
@@ -144,13 +142,13 @@ public class ProtocolUtils
     //   45: aload_1
     //   46: iconst_0
     //   47: aaload
-    //   48: ifnonnull -34 -> 14
+    //   48: ifnonnull +8 -> 56
     //   51: aload_1
     //   52: iconst_0
     //   53: ldc 146
     //   55: aastore
-    //   56: return
-    //   57: astore_0
+    //   56: aload_0
+    //   57: athrow
     //   58: aload_1
     //   59: iconst_0
     //   60: aaload
@@ -159,21 +157,22 @@ public class ProtocolUtils
     //   65: iconst_0
     //   66: ldc 146
     //   68: aastore
-    //   69: aload_0
-    //   70: athrow
+    //   69: return
+    //   70: astore_0
+    //   71: goto -13 -> 58
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	71	0	paramUniAttribute	UniAttribute
-    //   0	71	1	paramArrayOfString	String[]
+    //   0	74	0	paramUniAttribute	UniAttribute
+    //   0	74	1	paramArrayOfString	String[]
     // Exception table:
     //   from	to	target	type
-    //   15	32	44	java/lang/Throwable
-    //   15	32	57	finally
+    //   15	32	44	finally
+    //   15	32	70	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.ProtocolUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -14,23 +14,36 @@ public final class AdLocation
   
   public static AdLocation merge(AdLocation paramAdLocation1, AdLocation paramAdLocation2)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramAdLocation1 != null)
+    if ((paramAdLocation1 == null) || (!paramAdLocation1.isValid())) {
+      paramAdLocation1 = null;
+    }
+    AdLocation localAdLocation = paramAdLocation1;
+    if (paramAdLocation2 != null)
     {
-      localObject1 = localObject2;
-      if (paramAdLocation1.isValid()) {
-        localObject1 = paramAdLocation1;
+      localAdLocation = paramAdLocation1;
+      if (paramAdLocation2.isValid()) {
+        if ((paramAdLocation1 != null) && ((paramAdLocation1.timeMillis != -2147483648L) || (paramAdLocation2.timeMillis == -2147483648L)))
+        {
+          long l1 = paramAdLocation1.timeMillis;
+          localAdLocation = paramAdLocation1;
+          if (l1 != -2147483648L)
+          {
+            long l2 = paramAdLocation2.timeMillis;
+            localAdLocation = paramAdLocation1;
+            if (l2 != -2147483648L)
+            {
+              localAdLocation = paramAdLocation1;
+              if (l1 >= l2) {}
+            }
+          }
+        }
+        else
+        {
+          localAdLocation = paramAdLocation2;
+        }
       }
     }
-    if ((paramAdLocation2 != null) && (paramAdLocation2.isValid()))
-    {
-      if (localObject1 == null) {}
-      while (((((AdLocation)localObject1).timeMillis == -2147483648L) && (paramAdLocation2.timeMillis != -2147483648L)) || ((((AdLocation)localObject1).timeMillis != -2147483648L) && (paramAdLocation2.timeMillis != -2147483648L) && (((AdLocation)localObject1).timeMillis < paramAdLocation2.timeMillis))) {
-        return paramAdLocation2;
-      }
-    }
-    return localObject1;
+    return localAdLocation;
   }
   
   public boolean isValid()

@@ -15,27 +15,23 @@ class PrinterOptionActivity$2
     if (paramBoolean)
     {
       PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131691447);
+      PrinterOptionActivity.a(this.a).setText(2131691369);
     }
-    for (;;)
+    else if (PrinterOptionActivity.b(this.a))
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if (PrinterOptionActivity.b(this.a))
-      {
-        PrinterOptionActivity.a(this.a).setVisibility(0);
-        PrinterOptionActivity.a(this.a).setText(2131691427);
-      }
-      else
-      {
-        PrinterOptionActivity.a(this.a).setVisibility(4);
-      }
+      PrinterOptionActivity.a(this.a).setVisibility(0);
+      PrinterOptionActivity.a(this.a).setText(2131691349);
     }
+    else
+    {
+      PrinterOptionActivity.a(this.a).setVisibility(4);
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.PrinterOptionActivity.2
  * JD-Core Version:    0.7.0.1
  */

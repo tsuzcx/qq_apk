@@ -1,49 +1,35 @@
 package com.tencent.hippy.qq.adapter;
 
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mtt.hippy.adapter.image.HippyDrawable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
 
 class HippyQQImageLoader$3
-  implements URLDrawable.URLDrawableListener
+  implements Runnable
 {
-  HippyQQImageLoader$3(HippyQQImageLoader paramHippyQQImageLoader, HippyQQImageLoader.HippyImageInfo paramHippyImageInfo) {}
+  HippyQQImageLoader$3(HippyQQImageLoader paramHippyQQImageLoader, HippyQQImageLoader.HippyImageInfo paramHippyImageInfo, Throwable paramThrowable, String paramString, HippyDrawable paramHippyDrawable) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HippyImageAdapter", 2, "fetchImage url:" + this.val$imageInfo.url + " onLoadCanceled");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("decodeImage url:");
+      ((StringBuilder)localObject).append(this.val$imageInfo.url);
+      ((StringBuilder)localObject).append(" useLocal onRequestSuccess");
+      QLog.i("HippyImageAdapter", 2, ((StringBuilder)localObject).toString());
     }
-    HippyQQImageLoader.access$400(this.this$0).remove(paramURLDrawable);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("HippyImageAdapter", 2, "fetchImage url:" + this.val$imageInfo.url + " onLoadFialed + linsenter:" + this);
+    Object localObject = this.val$finalThrowable;
+    if (localObject != null)
+    {
+      this.val$imageInfo.onRequestFail((Throwable)localObject, this.val$finalErrorMsg);
+      return;
     }
-    HippyQQImageLoader.access$300(this.this$0, paramURLDrawable, paramThrowable, this.val$imageInfo);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HippyImageAdapter", 2, "fetchImage url:" + this.val$imageInfo.url + " onLoadProgressed:" + paramInt);
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("HippyImageAdapter", 2, "fetchImage url:" + this.val$imageInfo.url + " onLoadSuccessed");
-    }
-    HippyQQImageLoader.access$200(this.this$0, this.val$imageInfo, paramURLDrawable);
+    this.val$imageInfo.onRequestSuccess(this.val$hippyTarget);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.adapter.HippyQQImageLoader.3
  * JD-Core Version:    0.7.0.1
  */

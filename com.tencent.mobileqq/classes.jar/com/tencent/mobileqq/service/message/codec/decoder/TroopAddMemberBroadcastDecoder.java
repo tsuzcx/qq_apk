@@ -12,7 +12,6 @@ import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.MessageHandlerUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.MessageForGrayTips;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -27,7 +26,9 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.service.message.DecodeProtoPkgContext;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import com.tencent.mobileqq.troop.api.ITroopCreateInfoService;
+import com.tencent.mobileqq.troop.onlinepush.api.ITroopOnlinePushHandler;
+import com.tencent.mobileqq.troop.troopfriend.api.ITroopBatchAddFriendService;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
@@ -39,6 +40,7 @@ import java.util.List;
 import msf.msgcomm.msg_comm.ExtGroupKeyInfo;
 import msf.msgcomm.msg_comm.Msg;
 import msf.msgcomm.msg_comm.MsgHead;
+import org.jetbrains.annotations.NotNull;
 import tencent.im.group.broadcast.BroadcastMsgCtr.ExtGroupInfo;
 import tencent.im.group.broadcast.BroadcastMsgCtr.ExtJoinGroupInfo;
 import tencent.im.msg.im_msg_body.MsgBody;
@@ -46,260 +48,231 @@ import tencent.im.msg.im_msg_body.MsgBody;
 public class TroopAddMemberBroadcastDecoder
   implements Decoder<MessageHandler>
 {
-  private void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, msg_comm.MsgHead paramMsgHead)
+  private void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString1, long paramLong1, long paramLong2, String paramString2, Long paramLong, String paramString3, long paramLong3, long paramLong4, long paramLong5, int paramInt2, String paramString4, long paramLong6)
   {
-    Object localObject2 = paramQQAppInterface.getCurrentAccountUin();
-    Long localLong = Long.valueOf(Long.parseLong((String)localObject2));
-    String str2 = String.valueOf(paramLong1);
-    Object localObject1 = (msg_comm.ExtGroupKeyInfo)paramMsgHead.ext_group_key_info.get();
-    long l2 = ((msg_comm.ExtGroupKeyInfo)localObject1).cur_max_seq.get();
-    long l3 = ((msg_comm.ExtGroupKeyInfo)localObject1).cur_time.get();
-    paramLong2 = 0L;
-    int j = 0;
-    Object localObject3 = new BroadcastMsgCtr.ExtGroupInfo();
-    long l1 = paramLong2;
-    if (((msg_comm.ExtGroupKeyInfo)localObject1).bytes_ext_group_info.has()) {
-      l1 = paramLong2;
-    }
-    for (;;)
+    Object localObject1;
+    Object localObject2;
+    boolean bool;
+    if (paramLong5 > 0L)
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString4);
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701508));
+      localObject2 = ((StringBuilder)localObject1).toString();
+      localObject1 = MessageHandlerUtils.a(paramQQAppInterface, String.valueOf(paramLong5), paramString3);
+      if ((!TextUtils.isEmpty(paramString2)) && (paramString2.equals(String.valueOf(paramLong5)))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      if (paramInt2 == 1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append((String)localObject2);
+        paramString2.append(HardCodeUtil.a(2131701507));
+        localObject2 = paramString2.toString();
+        paramString2 = new StringBuilder();
+        paramString2.append((String)localObject2);
+        paramString2.append((String)localObject1);
+        paramString2.append(HardCodeUtil.a(2131701509));
+        paramString2 = paramString2.toString();
+      }
+      else
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append((String)localObject2);
+        paramString2.append((String)localObject1);
+        paramString2.append(HardCodeUtil.a(2131701510));
+        paramString2 = paramString2.toString();
+      }
+    }
+    else
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString4);
+      paramString2.append(HardCodeUtil.a(2131701497));
+      paramString2 = paramString2.toString();
+      localObject1 = "";
+      localObject2 = localObject1;
+      bool = false;
+    }
+    Object localObject3 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    TroopInfo localTroopInfo = ((TroopManager)localObject3).c(((TroopManager)localObject3).c(paramString3));
+    Object localObject4;
+    if ((localTroopInfo != null) && (localTroopInfo.cGroupOption == 2))
+    {
+      localObject3 = paramQQAppInterface.getApp().getApplicationContext().getString(2131697425);
+      if (a(paramString3, paramQQAppInterface))
+      {
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(paramString2);
+        ((StringBuilder)localObject4).append("，");
+        ((StringBuilder)localObject4).append((String)localObject3);
+        paramString2 = ((StringBuilder)localObject4).toString();
+      }
+      localObject4 = "";
+    }
+    else
+    {
+      localObject4 = paramQQAppInterface.getApp().getApplicationContext().getString(2131697426);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(paramString2);
+      ((StringBuilder)localObject3).append("，");
+      ((StringBuilder)localObject3).append((String)localObject4);
+      paramString2 = ((StringBuilder)localObject3).toString();
+      localObject3 = "";
+    }
+    a(paramQQAppInterface, paramInt1, paramString1, paramLong1, paramLong2, paramLong, paramString3, paramString2, a(paramQQAppInterface, paramString1, paramLong1, paramLong2, paramLong, paramString3, paramLong3, paramLong4, paramLong5, paramString4, paramLong6, paramString2, (String)localObject3, (String)localObject4, (String)localObject1, bool, (String)localObject2, localTroopInfo));
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3, Long paramLong, String paramString4, long paramLong3, long paramLong4, String paramString5, String paramString6, long paramLong5)
+  {
+    if (((ITroopCreateInfoService)paramQQAppInterface.getRuntimeService(ITroopCreateInfoService.class, "")).isInInviteList(paramString4, paramString5)) {
+      return;
+    }
+    paramString5 = MessageHandlerUtils.a(paramQQAppInterface, paramString2, paramString4);
+    boolean bool;
+    if ((!TextUtils.isEmpty(paramString3)) && (paramString3.equals(paramString2)))
+    {
+      paramString3 = HardCodeUtil.a(2131701496);
+      bool = true;
+    }
+    else
+    {
+      paramString3 = paramString5;
+      bool = false;
+    }
+    if (bool)
+    {
+      paramString5 = new StringBuilder();
+      paramString5.append(paramString3);
+      paramString5.append(HardCodeUtil.a(2131701498));
+      paramString5 = paramString5.toString();
+    }
+    else
+    {
+      paramString5 = new StringBuilder();
+      paramString5.append(paramString3);
+      paramString5.append(HardCodeUtil.a(2131701503));
+      paramString5 = paramString5.toString();
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString5);
+    ((StringBuilder)localObject).append(paramString6);
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131701505));
+    String str = ((StringBuilder)localObject).toString();
+    localObject = paramQQAppInterface.getApp().getApplicationContext().getString(2131697426);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("，");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    a(paramQQAppInterface, paramInt, paramString1, paramLong1, paramLong2, paramLong, paramString4, str, a(paramString1, paramString2, paramLong1, paramLong2, paramLong, paramString4, paramLong3, paramLong4, paramString6, paramLong5, paramString3, bool, paramString5, str, (String)localObject));
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong, msg_comm.MsgHead paramMsgHead)
+  {
+    long l3 = paramMsgHead.msg_seq.get();
+    String str1 = paramQQAppInterface.getCurrentAccountUin();
+    Long localLong = Long.valueOf(Long.parseLong(str1));
+    String str2 = String.valueOf(paramLong);
+    msg_comm.ExtGroupKeyInfo localExtGroupKeyInfo = (msg_comm.ExtGroupKeyInfo)paramMsgHead.ext_group_key_info.get();
+    long l4 = localExtGroupKeyInfo.cur_max_seq.get();
+    long l5 = localExtGroupKeyInfo.cur_time.get();
+    Object localObject2 = new BroadcastMsgCtr.ExtGroupInfo();
+    boolean bool = localExtGroupKeyInfo.bytes_ext_group_info.has();
+    int i = 0;
+    long l1;
+    if (bool) {
       try
       {
-        ((BroadcastMsgCtr.ExtGroupInfo)localObject3).mergeFrom(((msg_comm.ExtGroupKeyInfo)localObject1).bytes_ext_group_info.get().toByteArray());
-        l1 = paramLong2;
-        if (!((BroadcastMsgCtr.ExtGroupInfo)localObject3).ext_join_group_info.has()) {
-          break label2152;
-        }
-        l1 = paramLong2;
-        paramLong2 = ((BroadcastMsgCtr.ExtGroupInfo)localObject3).ext_join_group_info.uint64_share_uin.get();
-        l1 = paramLong2;
-        i = ((BroadcastMsgCtr.ExtGroupInfo)localObject3).ext_join_group_info.enmum_join_group_type.get();
-        j = i;
-        if (QLog.isColorLevel()) {
-          QLog.d("GrayTipsForTroop", 2, "0x21 troopUin = " + paramLong1 + " maxseq = " + l2 + ", maxTime = " + l3 + ", member = " + paramString1 + ", adminUin" + paramString2 + ", cOpt" + paramInt);
-        }
-        localObject3 = "" + paramMsgHead.auth_uin.get();
-        localObject1 = paramMsgHead.auth_nick.get();
-        paramMsgHead.auth_sex.get();
-        if ((TextUtils.isEmpty((CharSequence)localObject3)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject3).equals(paramString1))) {
-          break label2145;
-        }
-        paramMsgHead = (msg_comm.MsgHead)localObject1;
-        if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(paramString1))) {
-          break label355;
-        }
-        HardCodeUtil.a(2131701359);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
-      paramLong2 = l1;
-      continue;
-      label355:
-      if (TextUtils.isEmpty(paramMsgHead)) {}
-      for (Object localObject4 = MessageHandlerUtils.a(paramQQAppInterface, paramString1, str2);; localObject4 = paramMsgHead) {
-        for (;;)
+        ((BroadcastMsgCtr.ExtGroupInfo)localObject2).mergeFrom(localExtGroupKeyInfo.bytes_ext_group_info.get().toByteArray());
+        if (((BroadcastMsgCtr.ExtGroupInfo)localObject2).ext_join_group_info.has())
         {
-          String str1;
-          Object localObject5;
-          Object localObject6;
-          boolean bool;
+          l1 = ((BroadcastMsgCtr.ExtGroupInfo)localObject2).ext_join_group_info.uint64_share_uin.get();
           try
           {
-            l1 = Long.parseLong((String)localObject3);
-            if ((paramInt == -126) || (paramInt == 2))
-            {
-              int k = 0;
-              if (paramLong2 > 0L)
-              {
-                paramMsgHead = (String)localObject4 + HardCodeUtil.a(2131701368);
-                paramString2 = MessageHandlerUtils.a(paramQQAppInterface, String.valueOf(paramLong2), str2);
-                i = k;
-                if (!TextUtils.isEmpty((CharSequence)localObject2))
-                {
-                  i = k;
-                  if (((String)localObject2).equals(String.valueOf(paramLong2))) {
-                    i = 1;
-                  }
-                }
-                if (j == 1)
-                {
-                  paramMsgHead = paramMsgHead + HardCodeUtil.a(2131701367);
-                  localObject2 = paramMsgHead + paramString2 + HardCodeUtil.a(2131701369);
-                  str1 = paramString2;
-                  paramString2 = (String)localObject2;
-                  localObject2 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-                  localObject5 = ((TroopManager)localObject2).c(((TroopManager)localObject2).c(str2));
-                  if ((localObject5 == null) || (((TroopInfo)localObject5).cGroupOption != 2)) {
-                    continue;
-                  }
-                  localObject3 = paramQQAppInterface.getApp().getApplicationContext().getString(2131697406);
-                  if (!a(str2, paramQQAppInterface)) {
-                    break label2131;
-                  }
-                  paramString2 = paramString2 + "，" + (String)localObject3;
-                  localObject2 = "";
-                  localObject6 = (MessageForGrayTips)MessageRecordFactory.a(-1012);
-                  ((MessageForGrayTips)localObject6).init(localLong.longValue(), paramLong1, l1, paramString2, l3, -1012, 1, paramLong3);
-                  ((MessageForGrayTips)localObject6).shmsgseq = l2;
-                  ((MessageForGrayTips)localObject6).switch2HightlightMsg();
-                  Bundle localBundle = new Bundle();
-                  localBundle.putInt("key_action", 5);
-                  localBundle.putString("troop_mem_uin", paramString1);
-                  localBundle.putBoolean("need_update_nick", false);
-                  ((MessageForGrayTips)localObject6).addHightlightItem(0, ((String)localObject4).length(), localBundle);
-                  ((MessageForGrayTips)localObject6).saveExtInfoToExtStr("troop_new_member_uin", paramString1);
-                  if ((!str1.isEmpty()) && (i == 0))
-                  {
-                    localObject4 = new Bundle();
-                    ((Bundle)localObject4).putInt("key_action", 5);
-                    ((Bundle)localObject4).putString("troop_mem_uin", String.valueOf(paramLong2));
-                    ((Bundle)localObject4).putBoolean("need_update_nick", false);
-                    ((MessageForGrayTips)localObject6).addHightlightItem(paramMsgHead.length(), paramMsgHead.length() + str1.length(), (Bundle)localObject4);
-                    ((MessageForGrayTips)localObject6).saveExtInfoToExtStr("troop_new_member_uin", String.valueOf(paramLong2));
-                  }
-                  if ((localObject5 == null) || (((TroopInfo)localObject5).cGroupOption != 2)) {
-                    continue;
-                  }
-                  if (a(str2, paramQQAppInterface))
-                  {
-                    paramMsgHead = new Bundle();
-                    paramMsgHead.putInt("key_action", 19);
-                    paramMsgHead.putString("troop_mem_uin", paramString1);
-                    paramMsgHead.putString("troopUin", str2);
-                    ((MessageForGrayTips)localObject6).addHightlightItem(paramString2.length() - ((String)localObject3).length(), paramString2.length(), paramMsgHead);
-                  }
-                  ((MessageForGrayTips)localObject6).isread = true;
-                  paramMsgHead = (TroopTipsMsgMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_TIPS_MSG_MANAGER);
-                  if ((!a((MessageRecord)localObject6, paramQQAppInterface)) && (!paramMsgHead.a(paramLong1 + "", paramLong3))) {
-                    continue;
-                  }
-                  bool = true;
-                  if (!bool)
-                  {
-                    paramQQAppInterface.getMessageFacade().a((MessageRecord)localObject6, String.valueOf(localLong));
-                    paramMsgHead = ((TroopHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a();
-                    if ((paramMsgHead.b("newMember")) && (paramMsgHead.a(str2))) {
-                      paramMsgHead.c(str2, paramString1);
-                    }
-                    new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("exp_bar").a(new String[] { str2, "", "" + TroopUtils.b(paramQQAppInterface, str2) }).a();
-                  }
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("TroopAddMemberBroadcast", 2, "seq:" + paramLong3 + "|cOpt:" + paramInt + "|tips:" + paramString2 + "|msgFilter:" + bool);
-                  return;
-                }
-              }
-            }
+            i = ((BroadcastMsgCtr.ExtGroupInfo)localObject2).ext_join_group_info.enmum_join_group_type.get();
           }
-          catch (Exception paramMsgHead)
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
           {
-            QLog.e("GrayTipsForTroop", 1, "senderUin=" + 0L, paramMsgHead);
-            l1 = paramLong1;
-            continue;
-            localObject2 = paramMsgHead + paramString2 + HardCodeUtil.a(2131701370);
-            str1 = paramString2;
-            paramString2 = (String)localObject2;
-            continue;
-            paramString2 = (String)localObject4 + HardCodeUtil.a(2131701357);
-            paramMsgHead = "";
-            i = 0;
-            str1 = "";
-            continue;
-            localObject2 = paramQQAppInterface.getApp().getApplicationContext().getString(2131697407);
-            paramString2 = paramString2 + "，" + (String)localObject2;
-            localObject3 = "";
-            continue;
-            paramMsgHead = new Bundle();
-            paramMsgHead.putInt("key_action", 48);
-            paramMsgHead.putString("troop_mem_uin", paramString1);
-            paramMsgHead.putString("troopUin", str2);
-            ((MessageForGrayTips)localObject6).addHightlightItem(paramString2.length() - ((String)localObject2).length(), paramString2.length(), paramMsgHead);
-            continue;
-            bool = false;
-            continue;
+            break label168;
           }
-          if (((paramInt != -125) && (paramInt != 3)) || (((TroopCreateLogic)paramQQAppInterface.getManager(QQManagerFactory.MGR_TROOP_CREATE)).a(str2, (String)localObject3))) {
-            break;
-          }
-          paramMsgHead = MessageHandlerUtils.a(paramQQAppInterface, paramString2, str2);
-          i = 0;
-          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equals(paramString2)))
-          {
-            paramMsgHead = HardCodeUtil.a(2131701356);
-            i = 1;
-          }
-          for (;;)
-          {
-            if (i != 0)
-            {
-              str1 = paramMsgHead + HardCodeUtil.a(2131701358);
-              label1522:
-              localObject2 = str1 + (String)localObject4 + HardCodeUtil.a(2131701365);
-              localObject3 = paramQQAppInterface.getApp().getApplicationContext().getString(2131697407);
-              localObject2 = (String)localObject2 + "，" + (String)localObject3;
-              localObject5 = (MessageForGrayTips)MessageRecordFactory.a(-1012);
-              ((MessageForGrayTips)localObject5).init(localLong.longValue(), paramLong1, l1, (String)localObject2, l3, -1012, 1, paramLong3);
-              ((MessageForGrayTips)localObject5).switch2HightlightMsg();
-              ((MessageForGrayTips)localObject5).shmsgseq = l2;
-              if (i == 0)
-              {
-                localObject6 = new Bundle();
-                ((Bundle)localObject6).putInt("key_action", 5);
-                ((Bundle)localObject6).putString("troop_mem_uin", paramString2);
-                ((Bundle)localObject6).putBoolean("need_update_nick", false);
-                ((MessageForGrayTips)localObject5).addHightlightItem(0, paramMsgHead.length(), (Bundle)localObject6);
-              }
-              paramString2 = new Bundle();
-              paramString2.putInt("key_action", 5);
-              paramString2.putString("troop_mem_uin", paramString1);
-              paramString2.putBoolean("need_update_nick", false);
-              ((MessageForGrayTips)localObject5).addHightlightItem(str1.length(), str1.length() + ((String)localObject4).length(), paramString2);
-              ((MessageForGrayTips)localObject5).saveExtInfoToExtStr("troop_new_member_uin", paramString1);
-              paramString2 = new Bundle();
-              paramString2.putInt("key_action", 48);
-              paramString2.putString("troop_mem_uin", paramString1);
-              paramString2.putString("troopUin", str2);
-              ((MessageForGrayTips)localObject5).addHightlightItem(((String)localObject2).length() - ((String)localObject3).length(), ((String)localObject2).length(), paramString2);
-              ((MessageForGrayTips)localObject5).isread = true;
-              paramString2 = (TroopTipsMsgMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_TIPS_MSG_MANAGER);
-              if ((!a((MessageRecord)localObject5, paramQQAppInterface)) && (!paramString2.a(paramLong1 + "", paramLong3))) {
-                break label2122;
-              }
-            }
-            label2122:
-            for (bool = true;; bool = false)
-            {
-              if (!bool)
-              {
-                paramQQAppInterface.getMessageFacade().a((MessageRecord)localObject5, String.valueOf(localLong));
-                paramString2 = ((TroopHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a();
-                if ((paramString2.b("newMember")) && (paramString2.a(str2))) {
-                  paramString2.c(str2, paramString1);
-                }
-                new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("exp_bar").a(new String[] { str2, "", "" + TroopUtils.b(paramQQAppInterface, str2) }).a();
-              }
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("TroopAddMemberBroadcast", 2, "seq:" + paramLong3 + "|cOpt:" + paramInt + "|tips:" + (String)localObject2 + "|msgFilter:" + bool);
-              return;
-              str1 = paramMsgHead + HardCodeUtil.a(2131701363);
-              break label1522;
-            }
-          }
-          label2131:
-          localObject2 = "";
+        }
+        else
+        {
+          l1 = 0L;
         }
       }
-      label2145:
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+      {
+        l1 = 0L;
+        label168:
+        localInvalidProtocolBufferMicroException2.printStackTrace();
+        break label179;
+      }
+    } else {
+      l1 = 0L;
+    }
+    label179:
+    i = 0;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("0x21 troopUin = ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(" maxseq = ");
+      ((StringBuilder)localObject1).append(l4);
+      ((StringBuilder)localObject1).append(", maxTime = ");
+      ((StringBuilder)localObject1).append(l5);
+      ((StringBuilder)localObject1).append(", member = ");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(", adminUin");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(", cOpt");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("GrayTipsForTroop", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(paramMsgHead.auth_uin.get());
+    localObject2 = ((StringBuilder)localObject1).toString();
+    localObject1 = paramMsgHead.auth_nick.get();
+    paramMsgHead.auth_sex.get();
+    if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject2).equals(paramString1))) {
+      paramMsgHead = (msg_comm.MsgHead)localObject1;
+    } else {
       paramMsgHead = "";
-      continue;
-      label2152:
-      int i = 0;
+    }
+    if ((!TextUtils.isEmpty(str1)) && (str1.equals(paramString1)))
+    {
+      HardCodeUtil.a(2131701499);
+      return;
+    }
+    if (TextUtils.isEmpty(paramMsgHead)) {
+      paramMsgHead = MessageHandlerUtils.a(paramQQAppInterface, paramString1, str2);
+    }
+    long l2;
+    try
+    {
+      l2 = Long.parseLong((String)localObject2);
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("senderUin=");
+      localStringBuilder.append(0L);
+      QLog.e("GrayTipsForTroop", 1, localStringBuilder.toString(), localException);
+      l2 = paramLong;
+    }
+    if ((paramInt != -126) && (paramInt != 2))
+    {
+      if ((paramInt == -125) || (paramInt == 3)) {
+        a(paramQQAppInterface, paramInt, paramString1, paramString2, paramLong, l3, str1, localLong, str2, l4, l5, (String)localObject2, paramMsgHead, l2);
+      }
+    }
+    else {
+      a(paramQQAppInterface, paramInt, paramString1, paramLong, l3, str1, localLong, str2, l4, l5, l1, i, paramMsgHead, l2);
     }
   }
   
@@ -308,35 +281,155 @@ public class TroopAddMemberBroadcastDecoder
     return MessageHandlerUtils.a(paramQQAppInterface, paramMessageRecord, false);
   }
   
+  @NotNull
+  public MessageForGrayTips a(QQAppInterface paramQQAppInterface, String paramString1, long paramLong1, long paramLong2, Long paramLong, String paramString2, long paramLong3, long paramLong4, long paramLong5, String paramString3, long paramLong6, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean, String paramString8, TroopInfo paramTroopInfo)
+  {
+    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)MessageRecordFactory.a(-1012);
+    localMessageForGrayTips.init(paramLong.longValue(), paramLong1, paramLong6, paramString4, paramLong4, -1012, 1, paramLong2);
+    localMessageForGrayTips.shmsgseq = paramLong3;
+    localMessageForGrayTips.switch2HightlightMsg();
+    paramLong = new Bundle();
+    paramLong.putInt("key_action", 5);
+    paramLong.putString("troop_mem_uin", paramString1);
+    paramLong.putBoolean("need_update_nick", false);
+    localMessageForGrayTips.addHightlightItem(0, paramString3.length(), paramLong);
+    localMessageForGrayTips.saveExtInfoToExtStr("troop_new_member_uin", paramString1);
+    if ((!TextUtils.isEmpty(paramString7)) && (!paramBoolean))
+    {
+      paramLong = new Bundle();
+      paramLong.putInt("key_action", 5);
+      paramLong.putString("troop_mem_uin", String.valueOf(paramLong5));
+      paramLong.putBoolean("need_update_nick", false);
+      localMessageForGrayTips.addHightlightItem(paramString8.length(), paramString8.length() + paramString7.length(), paramLong);
+      localMessageForGrayTips.saveExtInfoToExtStr("troop_new_member_uin", String.valueOf(paramLong5));
+    }
+    if ((paramTroopInfo != null) && (paramTroopInfo.cGroupOption == 2))
+    {
+      if (a(paramString2, paramQQAppInterface))
+      {
+        paramQQAppInterface = new Bundle();
+        paramQQAppInterface.putInt("key_action", 19);
+        paramQQAppInterface.putString("troop_mem_uin", paramString1);
+        paramQQAppInterface.putString("troopUin", paramString2);
+        localMessageForGrayTips.addHightlightItem(paramString4.length() - paramString5.length(), paramString4.length(), paramQQAppInterface);
+      }
+    }
+    else
+    {
+      paramQQAppInterface = new Bundle();
+      paramQQAppInterface.putInt("key_action", 48);
+      paramQQAppInterface.putString("troop_mem_uin", paramString1);
+      paramQQAppInterface.putString("troopUin", paramString2);
+      localMessageForGrayTips.addHightlightItem(paramString4.length() - paramString6.length(), paramString4.length(), paramQQAppInterface);
+    }
+    localMessageForGrayTips.isread = true;
+    return localMessageForGrayTips;
+  }
+  
+  @NotNull
+  public MessageForGrayTips a(String paramString1, String paramString2, long paramLong1, long paramLong2, Long paramLong, String paramString3, long paramLong3, long paramLong4, String paramString4, long paramLong5, String paramString5, boolean paramBoolean, String paramString6, String paramString7, String paramString8)
+  {
+    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)MessageRecordFactory.a(-1012);
+    localMessageForGrayTips.init(paramLong.longValue(), paramLong1, paramLong5, paramString7, paramLong4, -1012, 1, paramLong2);
+    localMessageForGrayTips.switch2HightlightMsg();
+    localMessageForGrayTips.shmsgseq = paramLong3;
+    if (!paramBoolean)
+    {
+      paramLong = new Bundle();
+      paramLong.putInt("key_action", 5);
+      paramLong.putString("troop_mem_uin", paramString2);
+      paramLong.putBoolean("need_update_nick", false);
+      localMessageForGrayTips.addHightlightItem(0, paramString5.length(), paramLong);
+    }
+    paramString2 = new Bundle();
+    paramString2.putInt("key_action", 5);
+    paramString2.putString("troop_mem_uin", paramString1);
+    paramString2.putBoolean("need_update_nick", false);
+    localMessageForGrayTips.addHightlightItem(paramString6.length(), paramString6.length() + paramString4.length(), paramString2);
+    localMessageForGrayTips.saveExtInfoToExtStr("troop_new_member_uin", paramString1);
+    paramString2 = new Bundle();
+    paramString2.putInt("key_action", 48);
+    paramString2.putString("troop_mem_uin", paramString1);
+    paramString2.putString("troopUin", paramString3);
+    localMessageForGrayTips.addHightlightItem(paramString7.length() - paramString8.length(), paramString7.length(), paramString2);
+    localMessageForGrayTips.isread = true;
+    return localMessageForGrayTips;
+  }
+  
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
     paramList = (msg_comm.MsgHead)paramMsg.msg_head.get();
-    paramMsg = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-    long l1 = Utils.a(paramMsg, 0);
-    int i = paramMsg[4];
-    String str = String.valueOf(Utils.a(paramMsg, 5));
-    i = paramMsg[9];
-    long l2 = Utils.a(paramMsg, 10);
-    int j = paramMsg[14];
+    Object localObject = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+    long l1 = Utils.a((byte[])localObject, 0);
+    int i = localObject[4];
+    paramMsg = String.valueOf(Utils.a((byte[])localObject, 5));
+    i = localObject[9];
+    long l2 = Utils.a((byte[])localObject, 10);
+    int j = localObject[14];
     try
     {
-      new String(paramMsg, 15, j, "GBK");
-      if (!paramDecodeProtoPkgContext.d)
-      {
-        a(paramMessageHandler.a, i, str, String.valueOf(l2), l1, paramList.msg_time.get(), paramList.msg_seq.get(), paramList);
-        ((TroopHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(l1 + "", str, paramList.auth_nick.get());
-        paramMsg = new ArrayList();
-        paramMsg.add(new Pair(Long.valueOf(paramList.from_uin.get()), Long.valueOf(paramList.msg_time.get())));
-        ((C2CMessageProcessor)paramMessageHandler.a("c2c_processor")).a(paramMsg);
-      }
-      return;
+      new String((byte[])localObject, 15, j, "GBK");
     }
     catch (Exception localException)
     {
-      for (;;)
+      label99:
+      break label99;
+    }
+    new String((byte[])localObject, 15, j);
+    if (!paramDecodeProtoPkgContext.d)
+    {
+      a(paramMessageHandler.a, i, paramMsg, String.valueOf(l2), l1, paramList);
+      paramDecodeProtoPkgContext = (ITroopOnlinePushHandler)paramMessageHandler.a.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_PUSH_HANDLER);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append("");
+      paramDecodeProtoPkgContext.a(((StringBuilder)localObject).toString(), paramMsg, paramList.auth_nick.get());
+      paramMsg = new ArrayList();
+      paramMsg.add(new Pair(Long.valueOf(paramList.from_uin.get()), Long.valueOf(paramList.msg_time.get())));
+      ((C2CMessageProcessor)paramMessageHandler.a("c2c_processor")).a(paramMsg);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, long paramLong1, long paramLong2, Long paramLong, String paramString2, String paramString3, MessageForGrayTips paramMessageForGrayTips)
+  {
+    TroopTipsMsgMgr localTroopTipsMsgMgr = (TroopTipsMsgMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_TIPS_MSG_MANAGER);
+    if (!a(paramMessageForGrayTips, paramQQAppInterface))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("");
+      if (!localTroopTipsMsgMgr.a(localStringBuilder.toString(), paramLong2))
       {
-        new String(paramMsg, 15, j);
+        bool = false;
+        break label74;
       }
+    }
+    boolean bool = true;
+    label74:
+    if (!bool)
+    {
+      paramQQAppInterface.getMessageFacade().a(paramMessageForGrayTips, String.valueOf(paramLong));
+      paramLong = ((ITroopBatchAddFriendService)paramQQAppInterface.getRuntimeService(ITroopBatchAddFriendService.class, "")).getTroopBatchAddFriendMgr();
+      if ((paramLong.b("newMember")) && (paramLong.a(paramString2))) {
+        paramLong.c(paramString2, paramString1);
+      }
+      paramString1 = new ReportTask(paramQQAppInterface).a("dc00899").b("Grp_AIO").c("newman_join").d("exp_bar");
+      paramLong = new StringBuilder();
+      paramLong.append("");
+      paramLong.append(TroopUtils.b(paramQQAppInterface, paramString2));
+      paramString1.a(new String[] { paramString2, "", paramLong.toString() }).a();
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder("seq:");
+      paramQQAppInterface.append(paramLong2);
+      paramQQAppInterface.append("|cOpt:");
+      paramQQAppInterface.append(paramInt);
+      paramQQAppInterface.append("|tips:");
+      paramQQAppInterface.append(paramString3);
+      paramQQAppInterface.append("|msgFilter:");
+      paramQQAppInterface.append(bool);
+      QLog.d("TroopAddMemberBroadcast", 2, paramQQAppInterface.toString());
     }
   }
   
@@ -355,7 +448,7 @@ public class TroopAddMemberBroadcastDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.TroopAddMemberBroadcastDecoder
  * JD-Core Version:    0.7.0.1
  */

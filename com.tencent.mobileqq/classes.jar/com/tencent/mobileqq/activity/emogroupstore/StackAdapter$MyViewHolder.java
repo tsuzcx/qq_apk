@@ -12,12 +12,12 @@ class StackAdapter$MyViewHolder
   StackAdapter$MyViewHolder(StackAdapter paramStackAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378395));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377809));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.StackAdapter.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

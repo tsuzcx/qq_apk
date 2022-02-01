@@ -36,7 +36,6 @@ public class OskPlayerCore
   
   private static void initConfig(OskPlayerConfig paramOskPlayerConfig)
   {
-    PlayerConfig localPlayerConfig;
     if (paramOskPlayerConfig != null)
     {
       sConfig = paramOskPlayerConfig;
@@ -49,20 +48,17 @@ public class OskPlayerCore
       PlayerConfig.g().setContentTypeList(sConfig.getAllowedContentType());
       PlayerConfig.g().setDataSourceMaxRetryCount(sConfig.getConnectionRetryCount());
       PlayerConfig.g().setVideoKeyGenerator(new OskVideoKeyGenerator(sConfig.getCacheKeyGenerator()));
-      localPlayerConfig = PlayerConfig.g();
-      if (paramOskPlayerConfig.getNativeLibLoader() != null) {
-        break label191;
+      PlayerConfig localPlayerConfig = PlayerConfig.g();
+      if (paramOskPlayerConfig.getNativeLibLoader() == null) {
+        paramOskPlayerConfig = new DefaultNativeLibLoader();
+      } else {
+        paramOskPlayerConfig = paramOskPlayerConfig.getNativeLibLoader();
       }
-    }
-    label191:
-    for (paramOskPlayerConfig = new DefaultNativeLibLoader();; paramOskPlayerConfig = paramOskPlayerConfig.getNativeLibLoader())
-    {
       localPlayerConfig.setNativeLibLoader(paramOskPlayerConfig);
       PlayerConfig.g().setEnableHLSCache(sConfig.isEnableHLSCache());
       PlayerConfig.g().setLogger(sConfig.getLogger());
       PlayerConfig.g().setGlobalExtraHeader(sConfig.getGlobalExtraHeader());
       PlayerConfig.g().setEnableProxySecret(sConfig.isEnableProxySecret());
-      return;
     }
   }
   
@@ -103,7 +99,7 @@ public class OskPlayerCore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.OskPlayerCore
  * JD-Core Version:    0.7.0.1
  */

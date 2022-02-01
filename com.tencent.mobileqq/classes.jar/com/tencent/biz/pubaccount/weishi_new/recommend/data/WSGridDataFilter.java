@@ -16,69 +16,65 @@ public class WSGridDataFilter
   
   private String a(StringBuilder paramStringBuilder)
   {
-    String str = "";
     if (paramStringBuilder.length() > 1)
     {
-      str = paramStringBuilder.substring(0, paramStringBuilder.length() - 1);
-      WSLog.g("WSGridDataFilter", "[getRepetitiveFeedIds] repetitive feedIds:" + str);
+      paramStringBuilder = paramStringBuilder.substring(0, paramStringBuilder.length() - 1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getRepetitiveFeedIds] repetitive feedIds:");
+      localStringBuilder.append(paramStringBuilder);
+      WSLog.g("WSGridDataFilter", localStringBuilder.toString());
+      return paramStringBuilder;
     }
-    return str;
+    return "";
   }
   
   private String a(HashSet<String> paramHashSet)
   {
-    Object localObject = "";
     if (paramHashSet.size() > 0)
     {
-      localObject = new StringBuilder();
+      StringBuilder localStringBuilder = new StringBuilder();
       paramHashSet = paramHashSet.iterator();
-      while (paramHashSet.hasNext()) {
-        ((StringBuilder)localObject).append((String)paramHashSet.next()).append("_");
+      while (paramHashSet.hasNext())
+      {
+        localStringBuilder.append((String)paramHashSet.next());
+        localStringBuilder.append("_");
       }
-      localObject = ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1);
-      WSLog.g("WSGridDataFilter", "[getRepetitiveTraceIds] repetitive traceIds:" + (String)localObject);
+      paramHashSet = localStringBuilder.substring(0, localStringBuilder.length() - 1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getRepetitiveTraceIds] repetitive traceIds:");
+      localStringBuilder.append(paramHashSet);
+      WSLog.g("WSGridDataFilter", localStringBuilder.toString());
+      return paramHashSet;
     }
-    return localObject;
+    return "";
   }
   
   private boolean a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    Object localObject;
-    if (paramstSimpleMetaFeed != null)
+    boolean bool = false;
+    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.video_type == 9))
     {
-      bool1 = bool2;
-      if (paramstSimpleMetaFeed.video_type == 9)
+      paramstSimpleMetaFeed = paramstSimpleMetaFeed.cardInfo;
+      if (paramstSimpleMetaFeed != null)
       {
-        paramstSimpleMetaFeed = paramstSimpleMetaFeed.cardInfo;
-        if (paramstSimpleMetaFeed != null)
+        Object localObject = paramstSimpleMetaFeed.collectionCardInfo;
+        if (localObject != null)
         {
-          localObject = paramstSimpleMetaFeed.collectionCardInfo;
-          if (localObject != null)
-          {
-            paramstSimpleMetaFeed = ((stCollectionCardInfo)localObject).collectionList;
-            if (paramstSimpleMetaFeed != null) {
-              break label56;
-            }
+          paramstSimpleMetaFeed = ((stCollectionCardInfo)localObject).collectionList;
+          if (paramstSimpleMetaFeed == null) {
+            return true;
           }
+          localObject = ((stCollectionCardInfo)localObject).title;
+          int i = paramstSimpleMetaFeed.size();
+          if ((TextUtils.isEmpty((CharSequence)localObject)) || (i <= 0)) {
+            bool = true;
+          }
+          return bool;
         }
-        bool1 = true;
       }
+      return true;
     }
-    label56:
-    int i;
-    do
-    {
-      return bool1;
-      localObject = ((stCollectionCardInfo)localObject).title;
-      i = paramstSimpleMetaFeed.size();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
-      }
-      bool1 = bool2;
-    } while (i > 0);
-    return true;
+    return false;
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, ArrayList<stSimpleMetaFeed> paramArrayList, String paramString)
@@ -88,7 +84,7 @@ public class WSGridDataFilter
     }
     Object localObject = new ArrayList(paramArrayList);
     HashSet localHashSet = new HashSet();
-    StringBuilder localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder1 = new StringBuilder();
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -97,25 +93,44 @@ public class WSGridDataFilter
       {
         paramArrayList.remove(localstSimpleMetaFeed);
       }
-      else if (this.a.contains(localstSimpleMetaFeed.id))
+      else
       {
-        WSLog.d("WSGridDataFilter", "[filterRepetitiveFeedList] removeFromList feedId:" + localstSimpleMetaFeed.id + ", traceId:" + localstSimpleMetaFeed.traceId + ", title:" + localstSimpleMetaFeed.feed_desc);
-        localStringBuilder.append(localstSimpleMetaFeed.id).append("_");
-        localHashSet.add(localstSimpleMetaFeed.traceId);
-        paramArrayList.remove(localstSimpleMetaFeed);
-      }
-      else if (!TextUtils.isEmpty(localstSimpleMetaFeed.id))
-      {
-        WSLog.e("WSGridDataFilter", "[filterRepetitiveFeedList] addToHashSet feedId:" + localstSimpleMetaFeed.id + ", traceId:" + localstSimpleMetaFeed.traceId + ", title:" + localstSimpleMetaFeed.feed_desc);
-        this.a.add(localstSimpleMetaFeed.id);
+        StringBuilder localStringBuilder2;
+        if (this.a.contains(localstSimpleMetaFeed.id))
+        {
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("[filterRepetitiveFeedList] removeFromList feedId:");
+          localStringBuilder2.append(localstSimpleMetaFeed.id);
+          localStringBuilder2.append(", traceId:");
+          localStringBuilder2.append(localstSimpleMetaFeed.traceId);
+          localStringBuilder2.append(", title:");
+          localStringBuilder2.append(localstSimpleMetaFeed.feed_desc);
+          WSLog.d("WSGridDataFilter", localStringBuilder2.toString());
+          localStringBuilder1.append(localstSimpleMetaFeed.id);
+          localStringBuilder1.append("_");
+          localHashSet.add(localstSimpleMetaFeed.traceId);
+          paramArrayList.remove(localstSimpleMetaFeed);
+        }
+        else if (!TextUtils.isEmpty(localstSimpleMetaFeed.id))
+        {
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("[filterRepetitiveFeedList] addToHashSet feedId:");
+          localStringBuilder2.append(localstSimpleMetaFeed.id);
+          localStringBuilder2.append(", traceId:");
+          localStringBuilder2.append(localstSimpleMetaFeed.traceId);
+          localStringBuilder2.append(", title:");
+          localStringBuilder2.append(localstSimpleMetaFeed.feed_desc);
+          WSLog.e("WSGridDataFilter", localStringBuilder2.toString());
+          this.a.add(localstSimpleMetaFeed.id);
+        }
       }
     }
-    WSGridBeaconReport.a(paramBoolean1, paramBoolean2, 0, a(localStringBuilder), a(localHashSet), paramString);
+    WSGridBeaconReport.a(paramBoolean1, paramBoolean2, 0, a(localStringBuilder1), a(localHashSet), paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSGridDataFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.msglist.MsgList;
-import com.tencent.mobileqq.activity.aio.rebuild.msglist.PAListUI;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class PublicAccountChatPie$51
-  extends PublicAccountObserver
+  implements View.OnClickListener
 {
-  PublicAccountChatPie$51(PublicAccountChatPie paramPublicAccountChatPie) {}
+  PublicAccountChatPie$51(PublicAccountChatPie paramPublicAccountChatPie, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
   
-  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-    }
-  }
-  
-  public void onGetHistoryMsgRet(int paramInt)
-  {
-    ((PAListUI)PublicAccountChatPie.a(this.a).a()).c(paramInt);
-  }
-  
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0)
-    {
-      if ((paramPublicAccountInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramPublicAccountInfo.getUin()))) {
-        this.a.b(1);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-  }
-  
-  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-    }
-    if ((paramBoolean) && (!PublicAccountChatPie.b(this.a)))
-    {
-      localObject = (PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
-      if (localObject == null) {
-        break label103;
-      }
-    }
-    label103:
-    for (Object localObject = ((PublicAccountDataManager)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
-    {
-      if ((localObject != null) && (this.a.m != null) && (!PublicAccountChatPie.c(this.a))) {
-        this.a.bj();
-      }
-      return;
-    }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.51
  * JD-Core Version:    0.7.0.1
  */

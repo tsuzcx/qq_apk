@@ -40,6 +40,9 @@ class CacheInterceptor$1
         }
         return -1L;
       }
+      paramBuffer.copyTo(this.val$cacheBody.buffer(), paramBuffer.size() - paramLong, paramLong);
+      this.val$cacheBody.emitCompleteSegments();
+      return paramLong;
     }
     catch (IOException paramBuffer)
     {
@@ -50,9 +53,6 @@ class CacheInterceptor$1
       }
       throw paramBuffer;
     }
-    paramBuffer.copyTo(this.val$cacheBody.buffer(), paramBuffer.size() - paramLong, paramLong);
-    this.val$cacheBody.emitCompleteSegments();
-    return paramLong;
   }
   
   public Timeout timeout()
@@ -62,7 +62,7 @@ class CacheInterceptor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.cache.CacheInterceptor.1
  * JD-Core Version:    0.7.0.1
  */

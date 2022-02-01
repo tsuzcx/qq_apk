@@ -16,7 +16,7 @@ public final class group_mgr$HwCreateGroupReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.hw.group_mgr.HwCreateGroupReq
  * JD-Core Version:    0.7.0.1
  */

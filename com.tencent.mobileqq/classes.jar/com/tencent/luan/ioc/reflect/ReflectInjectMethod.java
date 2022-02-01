@@ -21,23 +21,30 @@ class ReflectInjectMethod
   
   public void invoke(Object paramObject, Injector paramInjector)
   {
-    if (this.param.name.isEmpty()) {}
-    for (paramInjector = paramInjector.getOrCreateObject(this.param.type);; paramInjector = paramInjector.getOrCreateObject(this.param.name)) {
-      try
-      {
-        this.method.invoke(paramObject, new Object[] { paramInjector });
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        throw new InjectException("failed to invoke inject method " + this.method.getDeclaringClass().getName() + "#" + this.method.getName(), paramObject);
-      }
+    if (this.param.name.isEmpty()) {
+      paramInjector = paramInjector.getOrCreateObject(this.param.type);
+    } else {
+      paramInjector = paramInjector.getOrCreateObject(this.param.name);
+    }
+    try
+    {
+      this.method.invoke(paramObject, new Object[] { paramInjector });
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      paramInjector = new StringBuilder();
+      paramInjector.append("failed to invoke inject method ");
+      paramInjector.append(this.method.getDeclaringClass().getName());
+      paramInjector.append("#");
+      paramInjector.append(this.method.getName());
+      throw new InjectException(paramInjector.toString(), paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.luan.ioc.reflect.ReflectInjectMethod
  * JD-Core Version:    0.7.0.1
  */

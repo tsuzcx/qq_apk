@@ -79,15 +79,12 @@ public class MiniAppDialog
     paramBundle.gravity = 81;
     int i = ViewUtils.getScreenWidth();
     int j = ViewUtils.getScreenHeight();
-    if (i < j) {}
-    for (;;)
-    {
-      paramBundle.width = i;
-      getWindow().setAttributes(paramBundle);
-      setCanceledOnTouchOutside(true);
-      return;
+    if (i >= j) {
       i = j;
     }
+    paramBundle.width = i;
+    getWindow().setAttributes(paramBundle);
+    setCanceledOnTouchOutside(true);
   }
   
   public void setContentView(int paramInt)
@@ -112,14 +109,15 @@ public class MiniAppDialog
   {
     super.show();
     animateUp();
-    if (this.mOnBottomSheetShowListener != null) {
-      this.mOnBottomSheetShowListener.onShow();
+    MiniAppDialog.OnBottomSheetShowListener localOnBottomSheetShowListener = this.mOnBottomSheetShowListener;
+    if (localOnBottomSheetShowListener != null) {
+      localOnBottomSheetShowListener.onShow();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniAppDialog
  * JD-Core Version:    0.7.0.1
  */

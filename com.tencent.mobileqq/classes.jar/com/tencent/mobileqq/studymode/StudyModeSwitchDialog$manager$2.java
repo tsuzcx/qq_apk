@@ -24,15 +24,15 @@ final class StudyModeSwitchDialog$manager$2
   public final ModeSwitchManager invoke()
   {
     Manager localManager = StudyModeSwitchDialog.a(this.this$0).app.getManager(QQManagerFactory.STUDY_MODE_SWITCHER_MANAGER);
-    if (localManager == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.studymode.ModeSwitchManager");
+    if (localManager != null) {
+      return (ModeSwitchManager)localManager;
     }
-    return (ModeSwitchManager)localManager;
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.studymode.ModeSwitchManager");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialog.manager.2
  * JD-Core Version:    0.7.0.1
  */

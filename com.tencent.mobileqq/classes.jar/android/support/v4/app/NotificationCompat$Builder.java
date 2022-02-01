@@ -43,11 +43,11 @@ public class NotificationCompat$Builder
     if (paramBoolean)
     {
       localNotification = this.mNotification;
-      localNotification.flags |= paramInt;
+      localNotification.flags = (paramInt | localNotification.flags);
       return;
     }
     Notification localNotification = this.mNotification;
-    localNotification.flags &= (paramInt ^ 0xFFFFFFFF);
+    localNotification.flags = ((paramInt ^ 0xFFFFFFFF) & localNotification.flags);
   }
   
   public Builder addAction(int paramInt, CharSequence paramCharSequence, PendingIntent paramPendingIntent)
@@ -111,10 +111,9 @@ public class NotificationCompat$Builder
   
   public Builder setDefaults(int paramInt)
   {
-    this.mNotification.defaults = paramInt;
-    if ((paramInt & 0x4) != 0)
-    {
-      Notification localNotification = this.mNotification;
+    Notification localNotification = this.mNotification;
+    localNotification.defaults = paramInt;
+    if ((paramInt & 0x4) != 0) {
       localNotification.flags |= 0x1;
     }
     return this;
@@ -141,28 +140,18 @@ public class NotificationCompat$Builder
   
   public Builder setLights(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 1;
-    this.mNotification.ledARGB = paramInt1;
-    this.mNotification.ledOnMS = paramInt2;
-    this.mNotification.ledOffMS = paramInt3;
-    Notification localNotification;
-    if ((this.mNotification.ledOnMS != 0) && (this.mNotification.ledOffMS != 0))
-    {
+    Notification localNotification = this.mNotification;
+    localNotification.ledARGB = paramInt1;
+    localNotification.ledOnMS = paramInt2;
+    localNotification.ledOffMS = paramInt3;
+    if ((localNotification.ledOnMS != 0) && (this.mNotification.ledOffMS != 0)) {
       paramInt1 = 1;
-      localNotification = this.mNotification;
-      paramInt2 = this.mNotification.flags;
-      if (paramInt1 == 0) {
-        break label88;
-      }
-    }
-    label88:
-    for (paramInt1 = i;; paramInt1 = 0)
-    {
-      localNotification.flags = (paramInt2 & 0xFFFFFFFE | paramInt1);
-      return this;
+    } else {
       paramInt1 = 0;
-      break;
     }
+    localNotification = this.mNotification;
+    localNotification.flags = (paramInt1 | localNotification.flags & 0xFFFFFFFE);
+    return this;
   }
   
   public Builder setNumber(int paramInt)
@@ -205,22 +194,25 @@ public class NotificationCompat$Builder
   
   public Builder setSmallIcon(int paramInt1, int paramInt2)
   {
-    this.mNotification.icon = paramInt1;
-    this.mNotification.iconLevel = paramInt2;
+    Notification localNotification = this.mNotification;
+    localNotification.icon = paramInt1;
+    localNotification.iconLevel = paramInt2;
     return this;
   }
   
   public Builder setSound(Uri paramUri)
   {
-    this.mNotification.sound = paramUri;
-    this.mNotification.audioStreamType = -1;
+    Notification localNotification = this.mNotification;
+    localNotification.sound = paramUri;
+    localNotification.audioStreamType = -1;
     return this;
   }
   
   public Builder setSound(Uri paramUri, int paramInt)
   {
-    this.mNotification.sound = paramUri;
-    this.mNotification.audioStreamType = paramInt;
+    Notification localNotification = this.mNotification;
+    localNotification.sound = paramUri;
+    localNotification.audioStreamType = paramInt;
     return this;
   }
   
@@ -229,8 +221,9 @@ public class NotificationCompat$Builder
     if (this.mStyle != paramStyle)
     {
       this.mStyle = paramStyle;
-      if (this.mStyle != null) {
-        this.mStyle.setBuilder(this);
+      paramStyle = this.mStyle;
+      if (paramStyle != null) {
+        paramStyle.setBuilder(this);
       }
     }
     return this;

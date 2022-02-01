@@ -62,26 +62,19 @@ public class QzoneVerticalVideoTopicInfo
   
   public String getThumbImgUrl()
   {
-    Object localObject;
-    if ((TextUtils.isEmpty(this.thumbUrl)) || (URLUtil.isHttpUrl(this.thumbUrl)) || (URLUtil.isHttpsUrl(this.thumbUrl))) {
-      localObject = this.thumbUrl;
-    }
-    String str;
-    do
+    if ((!TextUtils.isEmpty(this.thumbUrl)) && (!URLUtil.isHttpUrl(this.thumbUrl)) && (!URLUtil.isHttpsUrl(this.thumbUrl)))
     {
-      do
+      Object localObject = Pattern.compile("img:(.*?),").matcher(this.thumbUrl);
+      if (((Matcher)localObject).find())
       {
-        return localObject;
-        localObject = Pattern.compile("img:(.*?),").matcher(this.thumbUrl);
-        if (!((Matcher)localObject).find()) {
-          break;
+        localObject = ((Matcher)localObject).group().replace("img:", "").replace(",", "");
+        if ((URLUtil.isHttpUrl((String)localObject)) || (URLUtil.isHttpsUrl((String)localObject))) {
+          return localObject;
         }
-        str = ((Matcher)localObject).group().replace("img:", "").replace(",", "");
-        localObject = str;
-      } while (URLUtil.isHttpUrl(str));
-      localObject = str;
-    } while (URLUtil.isHttpsUrl(str));
-    return null;
+      }
+      return null;
+    }
+    return this.thumbUrl;
   }
   
   public String getThumbUrl()
@@ -173,7 +166,7 @@ public class QzoneVerticalVideoTopicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.video.QzoneVerticalVideoTopicInfo
  * JD-Core Version:    0.7.0.1
  */

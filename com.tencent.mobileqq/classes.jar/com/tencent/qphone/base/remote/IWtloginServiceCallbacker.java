@@ -32,7 +32,7 @@ public abstract interface IWtloginServiceCallbacker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.remote.IWtloginServiceCallbacker
  * JD-Core Version:    0.7.0.1
  */

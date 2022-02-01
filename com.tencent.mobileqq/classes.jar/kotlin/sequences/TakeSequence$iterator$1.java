@@ -38,11 +38,13 @@ public final class TakeSequence$iterator$1
   
   public T next()
   {
-    if (this.left == 0) {
-      throw ((Throwable)new NoSuchElementException());
+    int i = this.left;
+    if (i != 0)
+    {
+      this.left = (i - 1);
+      return this.iterator.next();
     }
-    this.left -= 1;
-    return this.iterator.next();
+    throw ((Throwable)new NoSuchElementException());
   }
   
   public void remove()
@@ -57,7 +59,7 @@ public final class TakeSequence$iterator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.sequences.TakeSequence.iterator.1
  * JD-Core Version:    0.7.0.1
  */

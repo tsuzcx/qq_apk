@@ -26,12 +26,11 @@ public class SimpleArrayMap<K, V>
       this.f = ContainerHelpers.a;
       this.g = ContainerHelpers.c;
     }
-    for (;;)
+    else
     {
-      this.h = 0;
-      return;
       a(paramInt);
     }
+    this.h = 0;
   }
   
   public SimpleArrayMap(SimpleArrayMap paramSimpleArrayMap)
@@ -44,9 +43,7 @@ public class SimpleArrayMap<K, V>
   
   private void a(int paramInt)
   {
-    if (paramInt == 8) {}
-    for (;;)
-    {
+    if (paramInt == 8) {
       try
       {
         if (d != null)
@@ -60,29 +57,27 @@ public class SimpleArrayMap<K, V>
           e -= 1;
           return;
         }
-        this.f = new int[paramInt];
-        this.g = new Object[paramInt << 1];
-        return;
       }
       finally {}
-      if (paramInt == 4) {
-        try
+    } else if (paramInt == 4) {
+      try
+      {
+        if (b != null)
         {
-          if (b != null)
-          {
-            Object[] arrayOfObject2 = b;
-            this.g = arrayOfObject2;
-            b = (Object[])arrayOfObject2[0];
-            this.f = ((int[])arrayOfObject2[1]);
-            arrayOfObject2[1] = null;
-            arrayOfObject2[0] = null;
-            c -= 1;
-            return;
-          }
+          Object[] arrayOfObject2 = b;
+          this.g = arrayOfObject2;
+          b = (Object[])arrayOfObject2[0];
+          this.f = ((int[])arrayOfObject2[1]);
+          arrayOfObject2[1] = null;
+          arrayOfObject2[0] = null;
+          c -= 1;
+          return;
         }
-        finally {}
       }
+      finally {}
     }
+    this.f = new int[paramInt];
+    this.g = new Object[paramInt << 1];
   }
   
   private static void a(int[] paramArrayOfInt, Object[] paramArrayOfObject, int paramInt)
@@ -95,18 +90,14 @@ public class SimpleArrayMap<K, V>
           paramArrayOfObject[0] = d;
           paramArrayOfObject[1] = paramArrayOfInt;
           paramInt = (paramInt << 1) - 1;
-          break label117;
+          break label118;
           d = paramArrayOfObject;
           e += 1;
         }
         return;
       }
       finally {}
-    } else {
-      if (paramArrayOfInt.length != 4) {
-        break label133;
-      }
-    }
+    } else if (paramArrayOfInt.length != 4) {}
     for (;;)
     {
       try
@@ -123,15 +114,14 @@ public class SimpleArrayMap<K, V>
         return;
       }
       finally {}
-      label117:
+      return;
+      label118:
       while (paramInt >= 2)
       {
         paramArrayOfObject[paramInt] = null;
         paramInt -= 1;
       }
       break;
-      label133:
-      return;
       label134:
       while (paramInt >= 2)
       {
@@ -143,56 +133,44 @@ public class SimpleArrayMap<K, V>
   
   int a()
   {
-    int m = this.h;
-    int i;
-    if (m == 0) {
-      i = -1;
+    int j = this.h;
+    if (j == 0) {
+      return -1;
     }
-    int j;
-    do
+    int k = ContainerHelpers.a(this.f, j, 0);
+    if (k < 0) {
+      return k;
+    }
+    if (this.g[(k << 1)] == null) {
+      return k;
+    }
+    int i = k + 1;
+    while ((i < j) && (this.f[i] == 0))
     {
-      do
-      {
+      if (this.g[(i << 1)] == null) {
         return i;
-        j = ContainerHelpers.a(this.f, m, 0);
-        i = j;
-      } while (j < 0);
-      i = j;
-    } while (this.g[(j << 1)] == null);
-    int k = j + 1;
-    while ((k < m) && (this.f[k] == 0))
-    {
-      if (this.g[(k << 1)] == null) {
-        return k;
       }
-      k += 1;
+      i += 1;
     }
-    j -= 1;
-    for (;;)
+    j = k - 1;
+    while ((j >= 0) && (this.f[j] == 0))
     {
-      if ((j < 0) || (this.f[j] != 0)) {
-        break label121;
-      }
-      i = j;
       if (this.g[(j << 1)] == null) {
-        break;
+        return j;
       }
       j -= 1;
     }
-    label121:
-    return k ^ 0xFFFFFFFF;
+    return i ^ 0xFFFFFFFF;
   }
   
   int a(Object paramObject)
   {
-    int i = 1;
-    int j = 1;
-    int k = this.h * 2;
+    int j = this.h * 2;
     Object[] arrayOfObject = this.g;
     if (paramObject == null)
     {
-      i = j;
-      while (i < k)
+      i = 1;
+      while (i < j)
       {
         if (arrayOfObject[i] == null) {
           return i >> 1;
@@ -200,64 +178,55 @@ public class SimpleArrayMap<K, V>
         i += 2;
       }
     }
-    do
+    int i = 1;
+    while (i < j)
     {
-      i += 2;
-      if (i >= k) {
-        break;
+      if (paramObject.equals(arrayOfObject[i])) {
+        return i >> 1;
       }
-    } while (!paramObject.equals(arrayOfObject[i]));
-    return i >> 1;
+      i += 2;
+    }
     return -1;
   }
   
   int a(Object paramObject, int paramInt)
   {
-    int m = this.h;
-    int i;
-    if (m == 0) {
-      i = -1;
+    int j = this.h;
+    if (j == 0) {
+      return -1;
     }
-    int j;
-    do
+    int k = ContainerHelpers.a(this.f, j, paramInt);
+    if (k < 0) {
+      return k;
+    }
+    if (paramObject.equals(this.g[(k << 1)])) {
+      return k;
+    }
+    int i = k + 1;
+    while ((i < j) && (this.f[i] == paramInt))
     {
-      do
-      {
+      if (paramObject.equals(this.g[(i << 1)])) {
         return i;
-        j = ContainerHelpers.a(this.f, m, paramInt);
-        i = j;
-      } while (j < 0);
-      i = j;
-    } while (paramObject.equals(this.g[(j << 1)]));
-    int k = j + 1;
-    while ((k < m) && (this.f[k] == paramInt))
-    {
-      if (paramObject.equals(this.g[(k << 1)])) {
-        return k;
       }
-      k += 1;
+      i += 1;
     }
-    j -= 1;
-    for (;;)
+    j = k - 1;
+    while ((j >= 0) && (this.f[j] == paramInt))
     {
-      if ((j < 0) || (this.f[j] != paramInt)) {
-        break label156;
-      }
-      i = j;
       if (paramObject.equals(this.g[(j << 1)])) {
-        break;
+        return j;
       }
       j -= 1;
     }
-    label156:
-    return k ^ 0xFFFFFFFF;
+    return i ^ 0xFFFFFFFF;
   }
   
   public void clear()
   {
-    if (this.h != 0)
+    int i = this.h;
+    if (i != 0)
     {
-      a(this.f, this.g, this.h);
+      a(this.f, this.g, i);
       this.f = ContainerHelpers.a;
       this.g = ContainerHelpers.c;
       this.h = 0;
@@ -266,13 +235,14 @@ public class SimpleArrayMap<K, V>
   
   public boolean containsKey(Object paramObject)
   {
-    if (paramObject == null) {
-      if (a() < 0) {}
-    }
-    while (a(paramObject, paramObject.hashCode()) >= 0)
+    if (paramObject == null)
     {
+      if (a() >= 0) {
+        return true;
+      }
+    }
+    else if (a(paramObject, paramObject.hashCode()) >= 0) {
       return true;
-      return false;
     }
     return false;
   }
@@ -284,14 +254,15 @@ public class SimpleArrayMap<K, V>
   
   public void ensureCapacity(int paramInt)
   {
-    if (this.f.length < paramInt)
+    int[] arrayOfInt = this.f;
+    if (arrayOfInt.length < paramInt)
     {
-      int[] arrayOfInt = this.f;
       Object[] arrayOfObject = this.g;
       a(paramInt);
-      if (this.h > 0)
+      paramInt = this.h;
+      if (paramInt > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.f, 0, this.h);
+        System.arraycopy(arrayOfInt, 0, this.f, 0, paramInt);
         System.arraycopy(arrayOfObject, 0, this.g, 0, this.h << 1);
       }
       a(arrayOfInt, arrayOfObject, this.h);
@@ -300,62 +271,63 @@ public class SimpleArrayMap<K, V>
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    for (;;)
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject instanceof Map))
-      {
-        paramObject = (Map)paramObject;
-        if (size() != paramObject.size()) {
-          return false;
-        }
-        int i = 0;
-        try
-        {
-          while (i < this.h)
-          {
-            Object localObject1 = keyAt(i);
-            Object localObject2 = valueAt(i);
-            Object localObject3 = paramObject.get(localObject1);
-            if (localObject2 == null)
-            {
-              if (localObject3 != null) {
-                break label121;
-              }
-              if (!paramObject.containsKey(localObject1)) {
-                break label121;
-              }
-            }
-            else
-            {
-              boolean bool = localObject2.equals(localObject3);
-              if (!bool) {
-                return false;
-              }
-            }
-            i += 1;
-          }
-          return false;
-        }
-        catch (NullPointerException paramObject)
-        {
-          return false;
-        }
-        catch (ClassCastException paramObject)
-        {
-          return false;
-        }
-      }
     }
-    label121:
+    int i;
+    if ((paramObject instanceof Map))
+    {
+      paramObject = (Map)paramObject;
+      if (size() != paramObject.size()) {
+        return false;
+      }
+      i = 0;
+    }
+    try
+    {
+      while (i < this.h)
+      {
+        Object localObject1 = keyAt(i);
+        Object localObject2 = valueAt(i);
+        Object localObject3 = paramObject.get(localObject1);
+        if (localObject2 == null)
+        {
+          if (localObject3 != null) {
+            break label119;
+          }
+          if (!paramObject.containsKey(localObject1)) {
+            return false;
+          }
+        }
+        else
+        {
+          boolean bool = localObject2.equals(localObject3);
+          if (!bool) {
+            return false;
+          }
+        }
+        i += 1;
+      }
+      return true;
+    }
+    catch (NullPointerException|ClassCastException paramObject)
+    {
+      return false;
+    }
+    return false;
+    label119:
     return false;
   }
   
   public V get(Object paramObject)
   {
-    if (paramObject == null) {}
-    for (int i = a(); i >= 0; i = a(paramObject, paramObject.hashCode())) {
+    int i;
+    if (paramObject == null) {
+      i = a();
+    } else {
+      i = a(paramObject, paramObject.hashCode());
+    }
+    if (i >= 0) {
       return this.g[((i << 1) + 1)];
     }
     return null;
@@ -366,21 +338,22 @@ public class SimpleArrayMap<K, V>
     int[] arrayOfInt = this.f;
     Object[] arrayOfObject = this.g;
     int n = this.h;
-    int i = 1;
     int j = 0;
     int k = 0;
-    if (j < n)
+    int i = 1;
+    while (j < n)
     {
       Object localObject = arrayOfObject[i];
       int i1 = arrayOfInt[j];
-      if (localObject == null) {}
-      for (int m = 0;; m = localObject.hashCode())
-      {
-        k += (m ^ i1);
-        j += 1;
-        i += 2;
-        break;
+      int m;
+      if (localObject == null) {
+        m = 0;
+      } else {
+        m = localObject.hashCode();
       }
+      k += (m ^ i1);
+      j += 1;
+      i += 2;
     }
     return k;
   }
@@ -397,66 +370,72 @@ public class SimpleArrayMap<K, V>
   
   public V put(K paramK, V paramV)
   {
-    int k = 8;
-    int i;
     int j;
     if (paramK == null)
     {
       i = a();
       j = 0;
     }
-    while (i >= 0)
+    else
     {
-      i = (i << 1) + 1;
-      paramK = this.g[i];
-      this.g[i] = paramV;
-      return paramK;
       j = paramK.hashCode();
       i = a(paramK, j);
     }
-    int m = i ^ 0xFFFFFFFF;
-    if (this.h >= this.f.length)
+    if (i >= 0)
     {
-      if (this.h < 8) {
-        break label267;
-      }
-      i = this.h + (this.h >> 1);
+      i = (i << 1) + 1;
+      paramK = this.g;
+      localObject = paramK[i];
+      paramK[i] = paramV;
+      return localObject;
     }
-    for (;;)
+    int k = i ^ 0xFFFFFFFF;
+    int m = this.h;
+    if (m >= this.f.length)
     {
-      int[] arrayOfInt = this.f;
+      i = 4;
+      if (m >= 8) {
+        i = (m >> 1) + m;
+      } else if (m >= 4) {
+        i = 8;
+      }
+      localObject = this.f;
       Object[] arrayOfObject = this.g;
       a(i);
-      if (this.f.length > 0)
+      int[] arrayOfInt = this.f;
+      if (arrayOfInt.length > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.f, 0, arrayOfInt.length);
+        System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
         System.arraycopy(arrayOfObject, 0, this.g, 0, arrayOfObject.length);
       }
-      a(arrayOfInt, arrayOfObject, this.h);
-      if (m < this.h)
-      {
-        System.arraycopy(this.f, m, this.f, m + 1, this.h - m);
-        System.arraycopy(this.g, m << 1, this.g, m + 1 << 1, this.h - m << 1);
-      }
-      this.f[m] = j;
-      this.g[(m << 1)] = paramK;
-      this.g[((m << 1) + 1)] = paramV;
-      this.h += 1;
-      return null;
-      label267:
-      i = k;
-      if (this.h < 4) {
-        i = 4;
-      }
+      a((int[])localObject, arrayOfObject, this.h);
     }
+    int i = this.h;
+    if (k < i)
+    {
+      localObject = this.f;
+      m = k + 1;
+      System.arraycopy(localObject, k, localObject, m, i - k);
+      localObject = this.g;
+      System.arraycopy(localObject, k << 1, localObject, m << 1, this.h - k << 1);
+    }
+    this.f[k] = j;
+    Object localObject = this.g;
+    i = k << 1;
+    localObject[i] = paramK;
+    localObject[(i + 1)] = paramV;
+    this.h += 1;
+    return null;
   }
   
   public void putAll(SimpleArrayMap<? extends K, ? extends V> paramSimpleArrayMap)
   {
-    int i = 0;
     int j = paramSimpleArrayMap.h;
     ensureCapacity(this.h + j);
-    if (this.h == 0) {
+    int k = this.h;
+    int i = 0;
+    if (k == 0)
+    {
       if (j > 0)
       {
         System.arraycopy(paramSimpleArrayMap.f, 0, this.f, 0, j);
@@ -464,9 +443,7 @@ public class SimpleArrayMap<K, V>
         this.h = j;
       }
     }
-    for (;;)
-    {
-      return;
+    else {
       while (i < j)
       {
         put(paramSimpleArrayMap.keyAt(i), paramSimpleArrayMap.valueAt(i));
@@ -477,8 +454,13 @@ public class SimpleArrayMap<K, V>
   
   public V remove(Object paramObject)
   {
-    if (paramObject == null) {}
-    for (int i = a(); i >= 0; i = a(paramObject, paramObject.hashCode())) {
+    int i;
+    if (paramObject == null) {
+      i = a();
+    } else {
+      i = a(paramObject, paramObject.hashCode());
+    }
+    if (i >= 0) {
       return removeAt(i);
     }
     return null;
@@ -486,55 +468,70 @@ public class SimpleArrayMap<K, V>
   
   public V removeAt(int paramInt)
   {
-    int i = 8;
-    Object localObject = this.g[((paramInt << 1) + 1)];
-    if (this.h <= 1)
+    Object localObject = this.g;
+    int j = paramInt << 1;
+    V ? = localObject[(j + 1)];
+    int k = this.h;
+    if (k <= 1)
     {
-      a(this.f, this.g, this.h);
+      a(this.f, (Object[])localObject, k);
       this.f = ContainerHelpers.a;
       this.g = ContainerHelpers.c;
       this.h = 0;
+      return ?;
     }
-    int[] arrayOfInt;
-    Object[] arrayOfObject;
-    do
+    localObject = this.f;
+    int m = localObject.length;
+    int i = 8;
+    if ((m > 8) && (k < localObject.length / 3))
     {
-      return localObject;
-      if ((this.f.length <= 8) || (this.h >= this.f.length / 3)) {
-        break;
+      if (k > 8) {
+        i = k + (k >> 1);
       }
-      if (this.h > 8) {
-        i = this.h + (this.h >> 1);
-      }
-      arrayOfInt = this.f;
-      arrayOfObject = this.g;
+      localObject = this.f;
+      Object[] arrayOfObject = this.g;
       a(i);
       this.h -= 1;
       if (paramInt > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.f, 0, paramInt);
-        System.arraycopy(arrayOfObject, 0, this.g, 0, paramInt << 1);
+        System.arraycopy(localObject, 0, this.f, 0, paramInt);
+        System.arraycopy(arrayOfObject, 0, this.g, 0, j);
       }
-    } while (paramInt >= this.h);
-    System.arraycopy(arrayOfInt, paramInt + 1, this.f, paramInt, this.h - paramInt);
-    System.arraycopy(arrayOfObject, paramInt + 1 << 1, this.g, paramInt << 1, this.h - paramInt << 1);
-    return localObject;
-    this.h -= 1;
-    if (paramInt < this.h)
-    {
-      System.arraycopy(this.f, paramInt + 1, this.f, paramInt, this.h - paramInt);
-      System.arraycopy(this.g, paramInt + 1 << 1, this.g, paramInt << 1, this.h - paramInt << 1);
+      i = this.h;
+      if (paramInt < i)
+      {
+        k = paramInt + 1;
+        System.arraycopy(localObject, k, this.f, paramInt, i - paramInt);
+        System.arraycopy(arrayOfObject, k << 1, this.g, j, this.h - paramInt << 1);
+        return ?;
+      }
     }
-    this.g[(this.h << 1)] = null;
-    this.g[((this.h << 1) + 1)] = null;
-    return localObject;
+    else
+    {
+      this.h -= 1;
+      i = this.h;
+      if (paramInt < i)
+      {
+        localObject = this.f;
+        k = paramInt + 1;
+        System.arraycopy(localObject, k, localObject, paramInt, i - paramInt);
+        localObject = this.g;
+        System.arraycopy(localObject, k << 1, localObject, j, this.h - paramInt << 1);
+      }
+      localObject = this.g;
+      paramInt = this.h;
+      localObject[(paramInt << 1)] = null;
+      localObject[((paramInt << 1) + 1)] = null;
+    }
+    return ?;
   }
   
   public V setValueAt(int paramInt, V paramV)
   {
     paramInt = (paramInt << 1) + 1;
-    Object localObject = this.g[paramInt];
-    this.g[paramInt] = paramV;
+    Object[] arrayOfObject = this.g;
+    Object localObject = arrayOfObject[paramInt];
+    arrayOfObject[paramInt] = paramV;
     return localObject;
   }
   
@@ -551,32 +548,25 @@ public class SimpleArrayMap<K, V>
     StringBuilder localStringBuilder = new StringBuilder(this.h * 28);
     localStringBuilder.append('{');
     int i = 0;
-    if (i < this.h)
+    while (i < this.h)
     {
       if (i > 0) {
         localStringBuilder.append(", ");
       }
       Object localObject = keyAt(i);
-      if (localObject != this)
-      {
+      if (localObject != this) {
         localStringBuilder.append(localObject);
-        label70:
-        localStringBuilder.append('=');
-        localObject = valueAt(i);
-        if (localObject == this) {
-          break label111;
-        }
-        localStringBuilder.append(localObject);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append("(this Map)");
-        break label70;
-        label111:
+      } else {
         localStringBuilder.append("(this Map)");
       }
+      localStringBuilder.append('=');
+      localObject = valueAt(i);
+      if (localObject != this) {
+        localStringBuilder.append(localObject);
+      } else {
+        localStringBuilder.append("(this Map)");
+      }
+      i += 1;
     }
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -589,7 +579,7 @@ public class SimpleArrayMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.utils.struct.SimpleArrayMap
  * JD-Core Version:    0.7.0.1
  */

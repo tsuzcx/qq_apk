@@ -35,8 +35,8 @@ public class CameraRendererable
   implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer
 {
   private static String jdField_a_of_type_JavaLangString = "AREngine_CameraRendererable";
-  private static int f = 0;
-  private static int g = 0;
+  private static int f;
+  private static int g;
   private float jdField_a_of_type_Float = 1.0F;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 0L;
@@ -112,36 +112,42 @@ public class CameraRendererable
     this.n = GLES20.glGetUniformLocation(this.h, "cameraScanNetTexture");
     this.o = GLES20.glGetUniformLocation(this.h, "cameraScanNoiseTexture");
     this.p = GLES20.glGetUniformLocation(this.h, "noiseMode");
-    Object localObject = new int[3];
-    GLES20.glGenTextures(3, (int[])localObject, 0);
-    this.r = localObject[0];
-    this.s = localObject[1];
-    this.t = localObject[2];
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "textureLightId:" + this.r + "   textureNetId:" + this.s + "   textureNoiseId:" + this.t);
+    Object localObject1 = new int[3];
+    GLES20.glGenTextures(3, (int[])localObject1, 0);
+    this.r = localObject1[0];
+    this.s = localObject1[1];
+    this.t = localObject1[2];
+    if (QLog.isColorLevel())
+    {
+      localObject1 = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("textureLightId:");
+      localStringBuilder.append(this.r);
+      localStringBuilder.append("   textureNetId:");
+      localStringBuilder.append(this.s);
+      localStringBuilder.append("   textureNoiseId:");
+      localStringBuilder.append(this.t);
+      QLog.d((String)localObject1, 1, localStringBuilder.toString());
     }
     GLES20.glBindTexture(3553, this.r);
     GLES20.glTexParameterf(3553, 10241, 9728.0F);
     GLES20.glTexParameterf(3553, 10240, 9729.0F);
     try
     {
-      localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
-      localObject = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130845008, (BitmapFactory.Options)localObject);
-      if (localObject != null)
+      localObject1 = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject1).inPreferredConfig = Bitmap.Config.ARGB_8888;
+      localObject1 = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130844884, (BitmapFactory.Options)localObject1);
+      if (localObject1 != null)
       {
-        GLUtils.texImage2D(3553, 0, (Bitmap)localObject, 0);
-        ((Bitmap)localObject).recycle();
+        GLUtils.texImage2D(3553, 0, (Bitmap)localObject1, 0);
+        ((Bitmap)localObject1).recycle();
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError1)
     {
-      for (;;)
-      {
-        localOutOfMemoryError1.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "getGLSLValues", localOutOfMemoryError1);
-        }
+      localOutOfMemoryError1.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "getGLSLValues", localOutOfMemoryError1);
       }
     }
     GLES20.glBindTexture(3553, this.s);
@@ -149,23 +155,20 @@ public class CameraRendererable
     GLES20.glTexParameterf(3553, 10240, 9729.0F);
     try
     {
-      localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
-      localObject = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a().getResources(), 2130845009, (BitmapFactory.Options)localObject);
-      if (localObject != null)
+      Object localObject2 = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject2).inPreferredConfig = Bitmap.Config.ARGB_8888;
+      localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a().getResources(), 2130844885, (BitmapFactory.Options)localObject2);
+      if (localObject2 != null)
       {
-        GLUtils.texImage2D(3553, 0, (Bitmap)localObject, 0);
-        ((Bitmap)localObject).recycle();
+        GLUtils.texImage2D(3553, 0, (Bitmap)localObject2, 0);
+        ((Bitmap)localObject2).recycle();
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError2)
     {
-      for (;;)
-      {
-        localOutOfMemoryError2.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "getGLSLValues 2 ", localOutOfMemoryError2);
-        }
+      localOutOfMemoryError2.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "getGLSLValues 2 ", localOutOfMemoryError2);
       }
     }
     GLES20.glBindTexture(3553, this.t);
@@ -215,121 +218,150 @@ public class CameraRendererable
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_d_of_type_Float <= 0.0F) || (this.jdField_e_of_type_Float <= 0.0F)) {
-      return;
+    if (this.jdField_d_of_type_Float > 0.0F)
+    {
+      if (this.jdField_e_of_type_Float <= 0.0F) {
+        return;
+      }
+      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+      GLES20.glClear(16384);
+      GLES20.glDrawArrays(5, paramInt1, paramInt2);
     }
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    GLES20.glClear(16384);
-    GLES20.glDrawArrays(5, paramInt1, paramInt2);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     f = paramInt3;
     g = paramInt4;
-    float f4 = f / g;
-    float f5 = paramInt2 / paramInt1;
-    float f3 = 1.0F;
-    float f2 = 1.0F;
-    DrawView2.jdField_d_of_type_Int = g;
+    float f1 = f;
+    paramInt3 = g;
+    f1 /= paramInt3;
+    float f4 = paramInt2;
+    float f5 = paramInt1;
+    float f2 = f4 / f5;
+    DrawView2.jdField_d_of_type_Int = paramInt3;
     DrawView2.jdField_c_of_type_Int = f;
     DrawView2.jdField_b_of_type_Int = paramInt1 / 2;
     DrawView2.jdField_a_of_type_Int = paramInt2 / 2;
-    float f1;
-    if (f4 < f5)
+    if (f1 < f2)
     {
-      f1 = g * f5 / f;
+      f1 = f2 * g / f;
       DrawView2.jdField_a_of_type_Float = f1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[debugRay] setPreviewFrameSize  height = " + paramInt1 + ",width = " + paramInt2 + ",screenWidth = " + f + ",screenHeight = " + g + ",scaleX = " + f1 + ",scaleY = " + f2);
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[debugRay] setPreviewFrameSize  DrawView2.scaleX = " + DrawView2.jdField_a_of_type_Float + ",DrawView2.scaleY = " + DrawView2.jdField_b_of_type_Float);
-      }
-      Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-      Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, f1, f2, 1.0F);
-      this.jdField_a_of_type_Float = f2;
-      this.jdField_d_of_type_Float = paramInt2;
-      this.jdField_e_of_type_Float = paramInt1;
-      if (paramInt2 <= paramInt1) {
-        break label473;
-      }
-      paramInt3 = paramInt1;
-      label260:
-      if (paramInt2 <= paramInt1) {
-        break label478;
-      }
-      paramInt1 = paramInt2;
     }
-    label473:
-    label478:
-    for (;;)
+    else
     {
-      if (paramInt3 > 0)
+      if (f1 > f2)
       {
-        paramInt2 = paramInt1;
-        if (paramInt1 > 0) {}
+        f1 = f / (f2 * g);
+        DrawView2.jdField_b_of_type_Float = f1;
+        f2 = 1.0F;
+        break label140;
       }
-      else
-      {
-        paramInt3 = 720;
-        paramInt2 = 1280;
-      }
-      paramInt3 = (int)(paramInt3 * 0.42D);
-      paramInt4 = (int)(paramInt2 * 0.6D * 0.25D * 0.42D);
-      paramInt2 = paramInt4;
-      paramInt1 = paramInt3;
-      if (paramInt3 < 240)
-      {
-        f1 = paramInt4 * 1.0F / paramInt3;
-        paramInt1 = 240;
-        paramInt2 = (int)(f1 * 'ð');
-      }
-      try
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "create noiseBmp width:", Integer.valueOf(paramInt1), " height:", Integer.valueOf(paramInt2) });
-        }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ALPHA_8);
-        this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        localOutOfMemoryError.printStackTrace();
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "create noiseBmp error ", localOutOfMemoryError);
-        return;
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        localException.printStackTrace();
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "create noiseBmp error2 ", localException);
-      }
-      f1 = f3;
-      if (f4 <= f5) {
-        break;
-      }
-      f2 = f / (g * f5);
-      DrawView2.jdField_b_of_type_Float = f2;
-      f1 = f3;
-      break;
+      f1 = 1.0F;
+    }
+    float f3 = 1.0F;
+    f2 = f1;
+    f1 = f3;
+    label140:
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[debugRay] setPreviewFrameSize  height = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",width = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(",screenWidth = ");
+      localStringBuilder.append(f);
+      localStringBuilder.append(",screenHeight = ");
+      localStringBuilder.append(g);
+      localStringBuilder.append(",scaleX = ");
+      localStringBuilder.append(f2);
+      localStringBuilder.append(",scaleY = ");
+      localStringBuilder.append(f1);
+      QLog.d(str, 2, localStringBuilder.toString());
+      str = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[debugRay] setPreviewFrameSize  DrawView2.scaleX = ");
+      localStringBuilder.append(DrawView2.jdField_a_of_type_Float);
+      localStringBuilder.append(",DrawView2.scaleY = ");
+      localStringBuilder.append(DrawView2.jdField_b_of_type_Float);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    Matrix.scaleM(this.jdField_a_of_type_ArrayOfFloat, 0, f2, f1, 1.0F);
+    this.jdField_a_of_type_Float = f1;
+    this.jdField_d_of_type_Float = f4;
+    this.jdField_e_of_type_Float = f5;
+    if (paramInt2 > paramInt1) {
+      paramInt3 = paramInt1;
+    } else {
       paramInt3 = paramInt2;
-      break label260;
+    }
+    paramInt4 = paramInt1;
+    if (paramInt2 > paramInt1) {
+      paramInt4 = paramInt2;
+    }
+    if (paramInt3 > 0)
+    {
+      paramInt1 = paramInt4;
+      if (paramInt4 > 0) {}
+    }
+    else
+    {
+      paramInt3 = 720;
+      paramInt1 = 1280;
+    }
+    double d1 = paramInt3;
+    Double.isNaN(d1);
+    paramInt3 = (int)(d1 * 0.42D);
+    d1 = paramInt1;
+    Double.isNaN(d1);
+    paramInt4 = (int)(d1 * 0.6D * 0.25D * 0.42D);
+    paramInt2 = paramInt4;
+    paramInt1 = paramInt3;
+    if (paramInt3 < 240)
+    {
+      paramInt2 = (int)(paramInt4 * 1.0F / paramInt3 * 'ð');
+      paramInt1 = 240;
+    }
+    try
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "create noiseBmp width:", Integer.valueOf(paramInt1), " height:", Integer.valueOf(paramInt2) });
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ALPHA_8);
+      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      localException.printStackTrace();
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "create noiseBmp error2 ", localException);
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      localOutOfMemoryError.printStackTrace();
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "create noiseBmp error ", localOutOfMemoryError);
     }
   }
   
   public void a(int paramInt, SurfaceTexture paramSurfaceTexture)
   {
     this.u = 1;
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.c = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.jdField_b_of_type_Long = 0L;
-    if ((this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != paramSurfaceTexture))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager;
+    ((ARRenerArumentManager)localObject).jdField_a_of_type_Long = 0L;
+    ((ARRenerArumentManager)localObject).c = 0L;
+    ((ARRenerArumentManager)localObject).jdField_b_of_type_Long = 0L;
+    localObject = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    if ((localObject != null) && (localObject != paramSurfaceTexture))
     {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
+      ((SurfaceTexture)localObject).setOnFrameAvailableListener(null);
       if (!Build.MODEL.equalsIgnoreCase("NX512J")) {
         this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
       }
@@ -338,8 +370,9 @@ public class CameraRendererable
     }
     this.q = paramInt;
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    paramSurfaceTexture = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.setOnFrameAvailableListener(this);
     }
     this.jdField_a_of_type_Boolean = true;
   }
@@ -348,10 +381,14 @@ public class CameraRendererable
   public void a(FloatBuffer paramFloatBuffer, Size paramSize)
   {
     this.jdField_a_of_type_JavaNioFloatBuffer = paramFloatBuffer;
-    if ((this.jdField_a_of_type_AndroidUtilSize == null) && (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelBackgroundRenderer != null))
+    if (this.jdField_a_of_type_AndroidUtilSize == null)
     {
-      this.jdField_a_of_type_AndroidUtilSize = paramSize;
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelBackgroundRenderer.a(paramSize.getHeight(), paramSize.getWidth(), UniformGLRenderManagerImpl.jdField_a_of_type_Int, UniformGLRenderManagerImpl.jdField_b_of_type_Int);
+      paramFloatBuffer = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelBackgroundRenderer;
+      if (paramFloatBuffer != null)
+      {
+        this.jdField_a_of_type_AndroidUtilSize = paramSize;
+        paramFloatBuffer.a(paramSize.getHeight(), paramSize.getWidth(), UniformGLRenderManagerImpl.jdField_a_of_type_Int, UniformGLRenderManagerImpl.jdField_b_of_type_Int);
+      }
     }
   }
   
@@ -367,33 +404,36 @@ public class CameraRendererable
       if (this.jdField_b_of_type_Long == -1L) {
         this.jdField_b_of_type_Long = System.currentTimeMillis();
       }
-      long l1 = System.currentTimeMillis() - this.jdField_b_of_type_Long;
-      if ((float)l1 < 4000.0F)
+      float f1 = (float)(System.currentTimeMillis() - this.jdField_b_of_type_Long);
+      if (f1 < 4000.0F)
       {
-        float f1 = (float)l1 * 1.0F / 4000.0F;
-        this.jdField_b_of_type_Float = (f1 * (f1 * f1));
+        f1 = f1 * 1.0F / 4000.0F;
+        this.jdField_b_of_type_Float = (f1 * f1 * f1);
         this.jdField_b_of_type_Float *= 1.35F;
       }
+      else
+      {
+        this.jdField_b_of_type_Float = 0.0F;
+        this.jdField_b_of_type_Long = System.currentTimeMillis();
+      }
+      this.w = 1;
     }
-    for (this.w = 1;; this.w = 0)
+    else
     {
-      GLES20.glUniform1f(this.i, this.jdField_d_of_type_Float);
-      GLES20.glUniform1f(this.j, this.jdField_e_of_type_Float);
-      GLES20.glUniform1f(this.k, this.jdField_b_of_type_Float);
-      GLES20.glUniform1f(this.l, this.jdField_c_of_type_Float);
-      GLES20.glUniformMatrix4fv(this.jdField_b_of_type_Int, 1, false, paramArrayOfFloat1, 0);
-      GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, paramArrayOfFloat2, 0);
-      GLES20.glEnableVertexAttribArray(this.jdField_a_of_type_Int);
-      GLES20.glVertexAttribPointer(this.jdField_a_of_type_Int, paramInt1, 5126, false, paramInt2, paramFloatBuffer1);
-      GLES20.glEnableVertexAttribArray(this.jdField_d_of_type_Int);
-      GLES20.glVertexAttribPointer(this.jdField_d_of_type_Int, 2, 5126, false, paramInt3, paramFloatBuffer2);
-      return;
-      this.jdField_b_of_type_Float = 0.0F;
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      break;
       this.jdField_b_of_type_Float = 0.0F;
       this.jdField_b_of_type_Long = -1L;
+      this.w = 0;
     }
+    GLES20.glUniform1f(this.i, this.jdField_d_of_type_Float);
+    GLES20.glUniform1f(this.j, this.jdField_e_of_type_Float);
+    GLES20.glUniform1f(this.k, this.jdField_b_of_type_Float);
+    GLES20.glUniform1f(this.l, this.jdField_c_of_type_Float);
+    GLES20.glUniformMatrix4fv(this.jdField_b_of_type_Int, 1, false, paramArrayOfFloat1, 0);
+    GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, paramArrayOfFloat2, 0);
+    GLES20.glEnableVertexAttribArray(this.jdField_a_of_type_Int);
+    GLES20.glVertexAttribPointer(this.jdField_a_of_type_Int, paramInt1, 5126, false, paramInt2, paramFloatBuffer1);
+    GLES20.glEnableVertexAttribArray(this.jdField_d_of_type_Int);
+    GLES20.glVertexAttribPointer(this.jdField_d_of_type_Int, 2, 5126, false, paramInt3, paramFloatBuffer2);
   }
   
   public boolean a()
@@ -416,98 +456,102 @@ public class CameraRendererable
   public void c()
   {
     this.jdField_a_of_type_Long += 1L;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.w == 0) || (this.jdField_a_of_type_Long % 3L != 1L)) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilRandom == null) {
-      this.jdField_a_of_type_JavaUtilRandom = new Random();
-    }
-    System.currentTimeMillis();
-    int i5 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    int i6 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    int i7 = this.v;
-    int i2 = 0;
-    int i1 = 0;
-    float f1 = 1.0F / i6;
-    float f2 = 5.0F / i6;
-    int i4 = 0;
-    CameraRendererable.Noise localNoise2;
-    label184:
-    CameraRendererable.Noise localNoise1;
-    int i3;
-    if (i4 < 300)
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.w != 0))
     {
-      localNoise2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqArARRenderModelCameraRendererable$Noise[i4];
-      if ((localNoise2 != null) && (!localNoise2.jdField_a_of_type_Boolean))
-      {
-        if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() > 0.7F - localNoise2.jdField_b_of_type_Float * 0.35F - Math.abs(localNoise2.jdField_a_of_type_Float * 0.3F - 0.15F)) {
-          localNoise2.jdField_a_of_type_Boolean = true;
-        }
+      if (this.jdField_a_of_type_Long % 3L != 1L) {
+        return;
       }
-      else
+      if (this.jdField_a_of_type_JavaUtilRandom == null) {
+        this.jdField_a_of_type_JavaUtilRandom = new Random();
+      }
+      System.currentTimeMillis();
+      int i6 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      int i1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      int i7 = this.v;
+      float f2 = i1;
+      float f3 = 1.0F / f2;
+      float f1 = 5.0F / f2;
+      int i3 = 0;
+      int i4 = 0;
+      int i2 = 0;
+      while (i3 < 300)
       {
-        if (localNoise2 != null)
-        {
-          localNoise1 = localNoise2;
-          i3 = i2;
-          if (!localNoise2.jdField_a_of_type_Boolean) {
-            break label370;
+        CameraRendererable.Noise localNoise = this.jdField_a_of_type_ArrayOfComTencentMobileqqArARRenderModelCameraRendererable$Noise[i3];
+        float f4;
+        if ((localNoise != null) && (!localNoise.jdField_a_of_type_Boolean)) {
+          if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() > 0.7F - localNoise.jdField_b_of_type_Float * 0.35F - Math.abs(localNoise.jdField_a_of_type_Float * 0.3F - 0.15F))
+          {
+            localNoise.jdField_a_of_type_Boolean = true;
+          }
+          else
+          {
+            f4 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
+            localNoise.jdField_b_of_type_Float += f4 * 0.3F + localNoise.jdField_b_of_type_Float * 0.2F + f1;
+            if (localNoise.jdField_b_of_type_Float > 1.0D) {
+              localNoise.jdField_a_of_type_Boolean = true;
+            }
           }
         }
-        if (i2 <= i7) {
-          break label281;
+        Object localObject;
+        if (localNoise != null)
+        {
+          i1 = i2;
+          localObject = localNoise;
+          if (!localNoise.jdField_a_of_type_Boolean) {}
         }
-      }
-    }
-    for (;;)
-    {
-      i4 += 1;
-      break;
-      float f3 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
-      float f4 = localNoise2.jdField_b_of_type_Float;
-      localNoise2.jdField_b_of_type_Float = (f3 * 0.3F + 0.2F * localNoise2.jdField_b_of_type_Float + f2 + f4);
-      if (localNoise2.jdField_b_of_type_Float <= 1.0D) {
-        break label184;
-      }
-      localNoise2.jdField_a_of_type_Boolean = true;
-      break label184;
-      label281:
-      localNoise1 = localNoise2;
-      if (localNoise2 == null)
-      {
-        localNoise1 = new CameraRendererable.Noise(this);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqArARRenderModelCameraRendererable$Noise[i4] = localNoise1;
-      }
-      f3 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
-      if (f3 < 0.4D) {
-        localNoise1.jdField_a_of_type_Float = (f3 * 2.35F + 0.02F);
-      }
-      for (;;)
-      {
-        localNoise1.jdField_b_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * 0.05F + f1);
-        localNoise1.jdField_a_of_type_Boolean = false;
-        i3 = i2 + 1;
-        label370:
-        if ((localNoise1 == null) || (localNoise1.jdField_a_of_type_Boolean) || (localNoise1.jdField_b_of_type_Float >= 1.0D)) {
-          break label542;
+        else
+        {
+          if (i2 > i7)
+          {
+            i5 = i4;
+            break label511;
+          }
+          localObject = localNoise;
+          if (localNoise == null)
+          {
+            localObject = new CameraRendererable.Noise(this);
+            this.jdField_a_of_type_ArrayOfComTencentMobileqqArARRenderModelCameraRendererable$Noise[i3] = localObject;
+          }
+          f4 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
+          if (f4 < 0.4D) {
+            ((CameraRendererable.Noise)localObject).jdField_a_of_type_Float = (f4 * 2.35F + 0.02F);
+          } else if (f4 > 0.6F) {
+            ((CameraRendererable.Noise)localObject).jdField_a_of_type_Float = ((1.0F - f4) * 2.35F + 0.02F);
+          }
+          ((CameraRendererable.Noise)localObject).jdField_b_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * 0.05F + f3);
+          ((CameraRendererable.Noise)localObject).jdField_a_of_type_Boolean = false;
+          i1 = i2 + 1;
         }
-        this.jdField_c_of_type_ArrayOfFloat[(i1 * 2)] = (this.jdField_a_of_type_ArrayOfComTencentMobileqqArARRenderModelCameraRendererable$Noise[i4].jdField_a_of_type_Float * i5);
-        this.jdField_c_of_type_ArrayOfFloat[(i1 * 2 + 1)] = (this.jdField_a_of_type_ArrayOfComTencentMobileqqArARRenderModelCameraRendererable$Noise[i4].jdField_b_of_type_Float * i6);
-        i1 += 1;
-        i2 = i3;
-        break;
-        if (f3 > 0.6F) {
-          localNoise1.jdField_a_of_type_Float = ((1.0F - f3) * 2.35F + 0.02F);
+        int i5 = i4;
+        i2 = i1;
+        if (localObject != null)
+        {
+          i5 = i4;
+          i2 = i1;
+          if (!((CameraRendererable.Noise)localObject).jdField_a_of_type_Boolean)
+          {
+            i5 = i4;
+            i2 = i1;
+            if (((CameraRendererable.Noise)localObject).jdField_b_of_type_Float < 1.0D)
+            {
+              localObject = this.jdField_c_of_type_ArrayOfFloat;
+              i2 = i4 * 2;
+              localObject[i2] = (this.jdField_a_of_type_ArrayOfComTencentMobileqqArARRenderModelCameraRendererable$Noise[i3].jdField_a_of_type_Float * i6);
+              this.jdField_c_of_type_ArrayOfFloat[(i2 + 1)] = (this.jdField_a_of_type_ArrayOfComTencentMobileqqArARRenderModelCameraRendererable$Noise[i3].jdField_b_of_type_Float * f2);
+              i5 = i4 + 1;
+              i2 = i1;
+            }
+          }
         }
+        label511:
+        i3 += 1;
+        i4 = i5;
       }
       this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      this.jdField_a_of_type_AndroidGraphicsCanvas.drawPoints(this.jdField_c_of_type_ArrayOfFloat, 0, i1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_AndroidGraphicsCanvas.drawPoints(this.jdField_c_of_type_ArrayOfFloat, 0, i4, this.jdField_a_of_type_AndroidGraphicsPaint);
       GLUtils.texImage2D(3553, 0, this.jdField_a_of_type_AndroidGraphicsBitmap, 0);
-      return;
-      label542:
-      i2 = i3;
     }
   }
   
@@ -529,9 +573,10 @@ public class CameraRendererable
   
   public void g()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+    SurfaceTexture localSurfaceTexture = this.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    if (localSurfaceTexture != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
+      localSurfaceTexture.setOnFrameAvailableListener(null);
       this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
       this.q = 0;
       this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
@@ -547,47 +592,9 @@ public class CameraRendererable
       return;
     }
     System.currentTimeMillis();
-    if ((this.jdField_a_of_type_AndroidGraphicsSurfaceTexture == null) || (this.u != 1) || (Build.MODEL.equalsIgnoreCase("MI 5C"))) {}
-    for (;;)
-    {
-      try
+    if ((this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (this.u == 1)) {
+      if (Build.MODEL.equalsIgnoreCase("MI 5C"))
       {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-        if ((this.u != 1) || (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture == null)) {
-          break label318;
-        }
-        b();
-        a(this.q);
-        paramGL10 = new float[16];
-        if (this.u != 1) {
-          break label310;
-        }
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(paramGL10);
-        a(this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.a(), this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.d(), this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.b(), paramGL10, this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.b(), this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.c());
-        a(0, this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.a());
-        d();
-        e();
-        f();
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30L);
-        return;
-      }
-      catch (Exception paramGL10)
-      {
-        paramGL10.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "onDrawFrame updateTexImage error", paramGL10);
-        continue;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.jdField_a_of_type_Long == 0L) {
-        break;
-      }
-      while (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.c > this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.jdField_b_of_type_Long)
-      {
-        paramGL10 = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager;
-        paramGL10.jdField_b_of_type_Long += 1L;
         try
         {
           this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
@@ -595,20 +602,61 @@ public class CameraRendererable
         catch (Exception paramGL10)
         {
           paramGL10.printStackTrace();
+          if (!QLog.isColorLevel()) {
+            break label171;
+          }
         }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "onDrawFrame updateTexImage error", paramGL10);
-        }
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "onDrawFrame updateTexImage error", paramGL10);
       }
-      continue;
-      label310:
-      Matrix.setIdentityM(paramGL10, 0);
-      continue;
-      label318:
-      if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelBackgroundRenderer != null) && (this.u == 2)) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRenderModelBackgroundRenderer.a(this.jdField_a_of_type_JavaNioFloatBuffer);
+      else
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.jdField_a_of_type_Long == 0L) {
+          return;
+        }
+        while (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.c > this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.jdField_b_of_type_Long)
+        {
+          paramGL10 = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager;
+          paramGL10.jdField_b_of_type_Long += 1L;
+          try
+          {
+            this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+          }
+          catch (Exception paramGL10)
+          {
+            paramGL10.printStackTrace();
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "onDrawFrame updateTexImage error", paramGL10);
+          }
+        }
       }
     }
+    label171:
+    if ((this.u == 1) && (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null))
+    {
+      b();
+      a(this.q);
+      paramGL10 = new float[16];
+      if (this.u == 1) {
+        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(paramGL10);
+      } else {
+        Matrix.setIdentityM(paramGL10, 0);
+      }
+      a(this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.a(), this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.d(), this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.b(), paramGL10, this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.b(), this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.c());
+      a(0, this.jdField_a_of_type_ComHiarSdkUtilsDrawable2d.a());
+      d();
+      e();
+      f();
+    }
+    else
+    {
+      paramGL10 = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelBackgroundRenderer;
+      if ((paramGL10 != null) && (this.u == 2)) {
+        paramGL10.a(this.jdField_a_of_type_JavaNioFloatBuffer);
+      }
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30L);
   }
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture) {}
@@ -629,7 +677,7 @@ public class CameraRendererable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.CameraRendererable
  * JD-Core Version:    0.7.0.1
  */

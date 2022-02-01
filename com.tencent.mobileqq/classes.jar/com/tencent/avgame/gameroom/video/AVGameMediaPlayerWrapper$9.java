@@ -9,15 +9,18 @@ class AVGameMediaPlayerWrapper$9
   
   public void run()
   {
-    if ((AVGameMediaPlayerWrapper.a(this.this$0) == null) || (!AVGameMediaPlayerWrapper.c(this.this$0))) {
-      return;
+    if (AVGameMediaPlayerWrapper.a(this.this$0) != null)
+    {
+      if (!AVGameMediaPlayerWrapper.c(this.this$0)) {
+        return;
+      }
+      AVGameMediaPlayerWrapper.a(this.this$0).start();
     }
-    AVGameMediaPlayerWrapper.a(this.this$0).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameMediaPlayerWrapper.9
  * JD-Core Version:    0.7.0.1
  */

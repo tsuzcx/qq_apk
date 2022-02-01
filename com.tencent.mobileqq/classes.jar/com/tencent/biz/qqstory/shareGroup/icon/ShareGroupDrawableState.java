@@ -34,23 +34,30 @@ class ShareGroupDrawableState
   
   public ShareGroupDrawableState(String paramString, Context paramContext, Drawable paramDrawable)
   {
-    if ((paramString == null) || (paramContext == null) || (paramDrawable == null)) {
-      throw new IllegalArgumentException("params should not be null");
+    if ((paramString != null) && (paramContext != null) && (paramDrawable != null))
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      paramString = new StringBuilder();
+      paramString.append(this.b);
+      paramString.append("[");
+      paramString.append(System.identityHashCode(this));
+      paramString.append("]");
+      this.b = paramString.toString();
+      return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.b = (this.b + "[" + System.identityHashCode(this) + "]");
+    throw new IllegalArgumentException("params should not be null");
   }
   
   private void a(boolean paramBoolean)
   {
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        ShareGroupDrawableState.CallBackWeakWrapper localCallBackWeakWrapper = (ShareGroupDrawableState.CallBackWeakWrapper)localIterator.next();
+        ShareGroupDrawableState.CallBackWeakWrapper localCallBackWeakWrapper = (ShareGroupDrawableState.CallBackWeakWrapper)((Iterator)localObject).next();
         if (ShareGroupDrawableState.CallBackWeakWrapper.a(localCallBackWeakWrapper))
         {
           if (paramBoolean) {
@@ -65,23 +72,31 @@ class ShareGroupDrawableState
           this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localCallBackWeakWrapper);
         }
       }
+      return;
     }
-    throw new IllegalStateException("notifyCallBack should be at Main-Thread");
+    Object localObject = new IllegalStateException("notifyCallBack should be at Main-Thread");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   private void b(boolean paramBoolean)
   {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) || (paramBoolean))
+    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) && (!paramBoolean))
+    {
+      if ((this.jdField_a_of_type_JavaLangError != null) && (Math.abs(this.jdField_a_of_type_Long - SystemClock.uptimeMillis()) > 10000L))
+      {
+        IconLog.b(this.b, "load again, oldError=%s", this.jdField_a_of_type_JavaLangError);
+        this.jdField_a_of_type_JavaLangError = null;
+        b(true);
+      }
+    }
+    else
     {
       IconLog.a(this.b, "startLoad");
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState$StreamCreator.a(this).subscribe(new ShareGroupDrawableState.1(this));
     }
-    while ((this.jdField_a_of_type_JavaLangError == null) || (Math.abs(this.jdField_a_of_type_Long - SystemClock.uptimeMillis()) <= 10000L)) {
-      return;
-    }
-    IconLog.b(this.b, "load again, oldError=%s", this.jdField_a_of_type_JavaLangError);
-    this.jdField_a_of_type_JavaLangError = null;
-    b(true);
   }
   
   Bitmap a()
@@ -136,7 +151,7 @@ class ShareGroupDrawableState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.icon.ShareGroupDrawableState
  * JD-Core Version:    0.7.0.1
  */

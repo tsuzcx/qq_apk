@@ -7,12 +7,13 @@ final class en$1
   
   public final void run()
   {
-    this.a.h = new en.b(this.a);
+    en localen = this.a;
+    localen.h = new en.b(localen);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.en.1
  * JD-Core Version:    0.7.0.1
  */

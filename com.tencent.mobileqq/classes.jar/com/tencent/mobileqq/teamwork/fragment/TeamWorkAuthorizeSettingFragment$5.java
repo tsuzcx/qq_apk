@@ -23,42 +23,41 @@ class TeamWorkAuthorizeSettingFragment$5
     TimDocSSOMsg.UinRightInfo localUinRightInfo = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter$Holder.a;
     if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
       paramInt = -1;
+    } else {
+      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
     }
     switch (paramInt)
     {
     default: 
-    case 2131719778: 
-    case 2131719779: 
-      for (;;)
-      {
-        TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.a.notifyDataSetChanged();
-        if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-          this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        }
-        return;
-        paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
-        break;
-        localUinRightInfo.uint32_right.set(1);
-        continue;
-        localUinRightInfo.uint32_right.set(2);
-      }
-    }
-    if ((localUinRightInfo.uint32_right.get() == 1) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b == 1)) {}
-    for (paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131719775);; paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131719774))
-    {
-      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getActivity(), 230, HardCodeUtil.a(2131714636), paramView, 2131690800, 2131691558, new TeamWorkAuthorizeSettingFragment.5.1(this, localUinRightInfo), new TeamWorkAuthorizeSettingFragment.5.2(this)).show();
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b != 1) {
-        break;
-      }
-      ReportController.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment), "dc00898", "", "", "0x8007CFC", "0x8007CFC", 0, 0, "", "", "", "");
       break;
+    case 2131719503: 
+      localUinRightInfo.uint32_right.set(2);
+      break;
+    case 2131719502: 
+      localUinRightInfo.uint32_right.set(1);
+      break;
+    case 2131690788: 
+      if ((localUinRightInfo.uint32_right.get() == 1) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b == 1)) {
+        paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131719499);
+      } else {
+        paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131719498);
+      }
+      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getBaseActivity(), 230, HardCodeUtil.a(2131714565), paramView, 2131690728, 2131691479, new TeamWorkAuthorizeSettingFragment.5.1(this, localUinRightInfo), new TeamWorkAuthorizeSettingFragment.5.2(this)).show();
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b == 1) {
+        ReportController.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment), "dc00898", "", "", "0x8007CFC", "0x8007CFC", 0, 0, "", "", "", "");
+      }
+      break;
+    }
+    TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.a.notifyDataSetChanged();
+    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

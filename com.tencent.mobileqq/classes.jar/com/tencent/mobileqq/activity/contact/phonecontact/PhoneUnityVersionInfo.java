@@ -31,8 +31,10 @@ public class PhoneUnityVersionInfo
     }
     catch (Exception paramString)
     {
-      localPhoneUnityVersionInfo.jdField_a_of_type_Int = -1;
+      label76:
+      break label76;
     }
+    localPhoneUnityVersionInfo.jdField_a_of_type_Int = -1;
     return localPhoneUnityVersionInfo;
   }
   
@@ -46,25 +48,34 @@ public class PhoneUnityVersionInfo
       localJSONObject.put("leftShowNum", this.jdField_b_of_type_Long);
       localJSONObject.put("showCountEveryDay", this.jdField_b_of_type_Int);
       localJSONObject.put("leftLoginNum", this.c);
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString();
   }
   
   public String toString()
   {
-    return "MobileUnityVersionInfo [version=" + this.jdField_a_of_type_Int + ", showDate=" + this.jdField_a_of_type_Long + ", leftShowNum=" + this.jdField_b_of_type_Long + ", leftLoginNum = " + this.c + ", showCountEveryDay=" + this.jdField_b_of_type_Int + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MobileUnityVersionInfo [version=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", showDate=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", leftShowNum=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", leftLoginNum = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", showCountEveryDay=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.phonecontact.PhoneUnityVersionInfo
  * JD-Core Version:    0.7.0.1
  */

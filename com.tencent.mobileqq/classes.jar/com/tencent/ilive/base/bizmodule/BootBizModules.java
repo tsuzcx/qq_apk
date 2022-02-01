@@ -9,6 +9,7 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import com.tencent.ilive.base.component.ComponentFactory;
 import com.tencent.ilive.base.event.ModuleEvent;
+import com.tencent.ilive.uicomponent.PageLifeCycle;
 import com.tencent.ilivesdk.domain.factory.LiveCaseFactory;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -27,9 +28,12 @@ public abstract class BootBizModules
   public static final int TOP_EXTERNAL_LEVEL0 = 5;
   public static final int TOP_EXTERNAL_LEVEL1 = 6;
   public static final int TOP_LAYOUT_LEVEL = 4;
+  private final PageLifeCycle activityLifeCycleDispatch = new BootBizModules.1(this);
+  protected LifecycleOwner activityLifecycleOwner;
   protected Set<BizModule> bizModules = new HashSet();
   protected ComponentFactory componentFactory;
   protected Context context;
+  private boolean isDestroyed = false;
   protected LifecycleOwner lifecycleOwner;
   protected LiveCaseFactory liveCaseFactory;
   protected ModuleEvent moduleEvent = new ModuleEvent();
@@ -39,17 +43,15 @@ public abstract class BootBizModules
   private void initBizModulesAdapter()
   {
     BizModuleBaseAdapter localBizModuleBaseAdapter = getBizModuleAdapter();
-    if (localBizModuleBaseAdapter == null) {}
-    for (;;)
-    {
+    if (localBizModuleBaseAdapter == null) {
       return;
-      Iterator localIterator = this.bizModules.iterator();
-      while (localIterator.hasNext())
-      {
-        BizModule localBizModule = (BizModule)localIterator.next();
-        if (localBizModule != null) {
-          localBizModule.setBizModuleBaseAdapter(localBizModuleBaseAdapter);
-        }
+    }
+    Iterator localIterator = this.bizModules.iterator();
+    while (localIterator.hasNext())
+    {
+      BizModule localBizModule = (BizModule)localIterator.next();
+      if (localBizModule != null) {
+        localBizModule.setBizModuleBaseAdapter(localBizModuleBaseAdapter);
       }
     }
   }
@@ -68,62 +70,80 @@ public abstract class BootBizModules
   
   public boolean addBizModules(BizModule paramBizModule)
   {
-    boolean bool = false;
-    if (getBizModuleContext() == null) {
-      throw new RuntimeException("biz module context is null");
-    }
-    if (getComponentFactory() == null) {
+    if (getBizModuleContext() != null)
+    {
+      if (getComponentFactory() != null)
+      {
+        if (this.activityLifecycleOwner != null)
+        {
+          if (this.lifecycleOwner != null)
+          {
+            boolean bool2 = this.bizModules.contains(paramBizModule);
+            boolean bool1 = false;
+            if (bool2) {
+              return false;
+            }
+            if (getScreenOrientation() == 0) {
+              bool1 = true;
+            }
+            paramBizModule.setOrientation(bool1);
+            paramBizModule.setBizLogicContext(getBizModuleContext());
+            paramBizModule.setComponentFactory(getComponentFactory());
+            paramBizModule.setLiveCaseFactory(getLiveCaseFactory());
+            addBizModuleExtData(paramBizModule);
+            paramBizModule.setEvent(this.moduleEvent);
+            this.activityLifecycleOwner.getLifecycle().addObserver(this.activityLifeCycleDispatch);
+            this.lifecycleOwner.getLifecycle().addObserver(paramBizModule);
+            paramBizModule.onCreate(this.context);
+            this.bizModules.add(paramBizModule);
+            return true;
+          }
+          throw new RuntimeException("BootBizModules has not lifecycleOwner !");
+        }
+        throw new RuntimeException("BootBizModules has not activity lifecycleOwner !");
+      }
       throw new RuntimeException("biz module create ui factory is null");
     }
-    if (this.lifecycleOwner == null) {
-      throw new RuntimeException("BootBizModules has not lifecycleOwner !");
-    }
-    if (this.bizModules.contains(paramBizModule)) {
-      return false;
-    }
-    if (getScreenOrientation() == 0) {
-      bool = true;
-    }
-    paramBizModule.setOrientation(bool);
-    paramBizModule.setBizLogicContext(getBizModuleContext());
-    paramBizModule.setComponentFactory(getComponentFactory());
-    paramBizModule.setLiveCaseFactory(getLiveCaseFactory());
-    addBizModuleExtData(paramBizModule);
-    paramBizModule.setEvent(this.moduleEvent);
-    this.lifecycleOwner.getLifecycle().addObserver(paramBizModule);
-    paramBizModule.onCreate(this.context);
-    this.bizModules.add(paramBizModule);
-    return true;
+    throw new RuntimeException("biz module context is null");
   }
   
   protected boolean addBottomLayoutBizModules(BizModule paramBizModule)
   {
-    if (paramBizModule == null) {
-      throw new RuntimeException("biz module is null");
-    }
-    if ((this.uiLayoutList.size() < 7) || (this.uiLayoutList.get(2) == null)) {
+    if (paramBizModule != null)
+    {
+      if ((this.uiLayoutList.size() >= 7) && (this.uiLayoutList.get(2) != null))
+      {
+        paramBizModule.setRootView((ViewGroup)this.uiLayoutList.get(2));
+        return addBizModules(paramBizModule);
+      }
       throw new RuntimeException("uiLayoutList bottom has not bottom layout, please check getBottomLayout()");
     }
-    paramBizModule.setRootView((ViewGroup)this.uiLayoutList.get(2));
-    return addBizModules(paramBizModule);
+    throw new RuntimeException("biz module is null");
   }
   
   protected boolean addNormalLayoutBizModules(BizModule paramBizModule)
   {
-    if ((this.uiLayoutList.size() < 7) || (this.uiLayoutList.get(3) == null)) {
-      throw new RuntimeException("uiLayoutList normal has not normal layout, please check getNormalLayout()");
+    if ((this.uiLayoutList.size() >= 7) && (this.uiLayoutList.get(3) != null))
+    {
+      paramBizModule.setRootView((ViewGroup)this.uiLayoutList.get(3));
+      return addBizModules(paramBizModule);
     }
-    paramBizModule.setRootView((ViewGroup)this.uiLayoutList.get(3));
-    return addBizModules(paramBizModule);
+    throw new RuntimeException("uiLayoutList normal has not normal layout, please check getNormalLayout()");
   }
   
   protected boolean addTopLayoutBizModules(BizModule paramBizModule)
   {
-    if ((this.uiLayoutList.size() < 7) || (this.uiLayoutList.get(4) == null)) {
-      throw new RuntimeException("uiLayoutList top has not top layout, please check getTopLayout()");
+    if ((this.uiLayoutList.size() >= 7) && (this.uiLayoutList.get(4) != null))
+    {
+      paramBizModule.setRootView((ViewGroup)this.uiLayoutList.get(4));
+      return addBizModules(paramBizModule);
     }
-    paramBizModule.setRootView((ViewGroup)this.uiLayoutList.get(4));
-    return addBizModules(paramBizModule);
+    throw new RuntimeException("uiLayoutList top has not top layout, please check getTopLayout()");
+  }
+  
+  public void bindActivityLifeCycleOwner(LifecycleOwner paramLifecycleOwner)
+  {
+    this.activityLifecycleOwner = paramLifecycleOwner;
   }
   
   public void bindLifeCycleOwner(LifecycleOwner paramLifecycleOwner)
@@ -172,14 +192,16 @@ public abstract class BootBizModules
   
   public boolean onBackPressed()
   {
-    if ((this.bizModules == null) || (this.bizModules.size() == 0)) {
-      return true;
+    Object localObject = this.bizModules;
+    if ((localObject != null) && (((Set)localObject).size() != 0))
+    {
+      localObject = this.bizModules.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BizModule)((Iterator)localObject).next()).onBackPressed();
+      }
+      return false;
     }
-    Iterator localIterator = this.bizModules.iterator();
-    while (localIterator.hasNext()) {
-      ((BizModule)localIterator.next()).onBackPressed();
-    }
-    return false;
+    return true;
   }
   
   public void onCreate(Context paramContext)
@@ -193,7 +215,7 @@ public abstract class BootBizModules
   
   protected void onCreateBizLayout()
   {
-    this.rootView = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131559369, null));
+    this.rootView = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131559244, null));
     ViewGroup localViewGroup1 = onCreateBottomLayout();
     ViewGroup localViewGroup2 = onNormalLayoutCreated(onCreateNormalLayout());
     ViewGroup localViewGroup3 = onCreateTopLayout();
@@ -237,19 +259,25 @@ public abstract class BootBizModules
   
   public void onCreateView()
   {
-    if ((this.bizModules == null) || (this.bizModules.size() == 0)) {}
-    for (;;)
+    Object localObject = this.bizModules;
+    if (localObject != null)
     {
-      return;
-      Iterator localIterator = this.bizModules.iterator();
-      while (localIterator.hasNext()) {
-        ((BizModule)localIterator.next()).onCreateView();
+      if (((Set)localObject).size() == 0) {
+        return;
+      }
+      localObject = this.bizModules.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BizModule)((Iterator)localObject).next()).onCreateView();
       }
     }
   }
   
   public void onDestroy()
   {
+    if (this.isDestroyed) {
+      return;
+    }
+    this.isDestroyed = true;
     Iterator localIterator = this.bizModules.iterator();
     while (localIterator.hasNext())
     {
@@ -257,6 +285,8 @@ public abstract class BootBizModules
       this.lifecycleOwner.getLifecycle().removeObserver(localBizModule);
       localBizModule.onDestroy();
     }
+    this.activityLifecycleOwner.getLifecycle().removeObserver(this.activityLifeCycleDispatch);
+    this.componentFactory.onDestroy();
     this.moduleEvent.onDestroy();
     this.bizModules.clear();
     this.bizModules = null;
@@ -264,44 +294,81 @@ public abstract class BootBizModules
     this.componentFactory = null;
     this.uiLayoutList.clear();
     this.uiLayoutList = null;
+    this.activityLifecycleOwner = null;
     this.lifecycleOwner = null;
   }
   
   public void onDestroyView()
   {
-    if ((this.bizModules == null) || (this.bizModules.size() == 0)) {}
-    for (;;)
+    Object localObject = this.bizModules;
+    if (localObject != null)
     {
-      return;
-      Iterator localIterator = this.bizModules.iterator();
-      while (localIterator.hasNext()) {
-        ((BizModule)localIterator.next()).onDestroyView();
+      if (((Set)localObject).size() == 0) {
+        return;
+      }
+      localObject = this.bizModules.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BizModule)((Iterator)localObject).next()).onDestroyView();
       }
     }
   }
   
   public void onExtActive()
   {
-    if ((this.bizModules == null) || (this.bizModules.size() == 0)) {}
-    for (;;)
+    Object localObject = this.bizModules;
+    if (localObject != null)
     {
-      return;
-      Iterator localIterator = this.bizModules.iterator();
-      while (localIterator.hasNext()) {
-        ((BizModule)localIterator.next()).onExtActive();
+      if (((Set)localObject).size() == 0) {
+        return;
+      }
+      localObject = this.bizModules.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BizModule)((Iterator)localObject).next()).onExtActive();
       }
     }
   }
   
   public void onExtDeActive()
   {
-    if ((this.bizModules == null) || (this.bizModules.size() == 0)) {}
-    for (;;)
+    Object localObject = this.bizModules;
+    if (localObject != null)
     {
-      return;
-      Iterator localIterator = this.bizModules.iterator();
-      while (localIterator.hasNext()) {
-        ((BizModule)localIterator.next()).onExtDeActive();
+      if (((Set)localObject).size() == 0) {
+        return;
+      }
+      localObject = this.bizModules.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BizModule)((Iterator)localObject).next()).onExtDeActive();
+      }
+    }
+  }
+  
+  public void onExtOnStart()
+  {
+    Object localObject = this.bizModules;
+    if (localObject != null)
+    {
+      if (((Set)localObject).size() == 0) {
+        return;
+      }
+      localObject = this.bizModules.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BizModule)((Iterator)localObject).next()).onExtOnStart();
+      }
+    }
+  }
+  
+  public void onExtOnStop()
+  {
+    Object localObject = this.bizModules;
+    if (localObject != null)
+    {
+      if (((Set)localObject).size() == 0) {
+        return;
+      }
+      localObject = this.bizModules.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BizModule)((Iterator)localObject).next()).onExtOnStop();
       }
     }
   }
@@ -325,20 +392,22 @@ public abstract class BootBizModules
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
-    if ((this.bizModules == null) || (this.bizModules.size() == 0)) {}
-    for (;;)
+    Object localObject = this.bizModules;
+    if (localObject != null)
     {
-      return;
-      Iterator localIterator = this.bizModules.iterator();
-      while (localIterator.hasNext()) {
-        ((BizModule)localIterator.next()).onVisibleToUser(paramBoolean);
+      if (((Set)localObject).size() == 0) {
+        return;
+      }
+      localObject = this.bizModules.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BizModule)((Iterator)localObject).next()).onVisibleToUser(paramBoolean);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.base.bizmodule.BootBizModules
  * JD-Core Version:    0.7.0.1
  */

@@ -37,9 +37,10 @@ public class VideoDrawable
   
   private void a()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap != null)
     {
-      this.c = this.jdField_a_of_type_AndroidGraphicsBitmap.getScaledWidth(this.jdField_b_of_type_Int);
+      this.c = localBitmap.getScaledWidth(this.jdField_b_of_type_Int);
       this.d = this.jdField_a_of_type_AndroidGraphicsBitmap.getScaledHeight(this.jdField_b_of_type_Int);
     }
   }
@@ -70,14 +71,21 @@ public class VideoDrawable
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
       copyBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-      if ((!this.jdField_a_of_type_Boolean) || (jdField_b_of_type_AndroidGraphicsBitmap != null)) {}
-    }
-    try
-    {
-      jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), Bitmap.Config.ARGB_4444);
-      Canvas localCanvas = new Canvas(jdField_b_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      localCanvas.drawOval(new RectF(0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height()), this.jdField_a_of_type_AndroidGraphicsPaint);
+      if ((this.jdField_a_of_type_Boolean) && (jdField_b_of_type_AndroidGraphicsBitmap == null)) {
+        try
+        {
+          jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), Bitmap.Config.ARGB_4444);
+          Canvas localCanvas = new Canvas(jdField_b_of_type_AndroidGraphicsBitmap);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+          localCanvas.drawOval(new RectF(0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height()), this.jdField_a_of_type_AndroidGraphicsPaint);
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("VideoDrawable", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
+          }
+        }
+      }
       if (Build.VERSION.SDK_INT >= 21)
       {
         int i = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
@@ -90,15 +98,6 @@ public class VideoDrawable
         }
         paramCanvas.restoreToCount(i);
         return;
-      }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("VideoDrawable", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
-        }
       }
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
@@ -141,7 +140,7 @@ public class VideoDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.VideoDrawable
  * JD-Core Version:    0.7.0.1
  */

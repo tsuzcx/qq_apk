@@ -9,12 +9,18 @@ public final class StoryVideoUploadManager$OneVideoInfo
   
   public String toString()
   {
-    return "{mFakeStoryVideoItem=" + this.a + ", mSucStoryVideoItem=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{mFakeStoryVideoItem=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", mSucStoryVideoItem=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.OneVideoInfo
  * JD-Core Version:    0.7.0.1
  */

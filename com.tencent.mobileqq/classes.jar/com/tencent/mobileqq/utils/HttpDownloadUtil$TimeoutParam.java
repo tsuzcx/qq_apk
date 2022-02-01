@@ -8,41 +8,52 @@ public class HttpDownloadUtil$TimeoutParam
   public static int d = 20000;
   public static int e = 15000;
   public static int f = 10000;
-  public static int g = 0;
+  public static int g;
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return a;
-    case 1: 
-    case 4: 
-    case 5: 
-      return c;
+    if (paramInt != 1) {
+      if (paramInt != 3)
+      {
+        if ((paramInt != 4) && (paramInt != 5)) {
+          return a;
+        }
+      }
+      else {
+        return b;
+      }
     }
-    return b;
+    return c;
   }
   
   public static int b(int paramInt)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return d + g;
-    case 1: 
-    case 4: 
-    case 5: 
-      return f + g;
+    int i;
+    if (paramInt != 1) {
+      if (paramInt != 3)
+      {
+        if ((paramInt == 4) || (paramInt == 5)) {
+          break label43;
+        }
+        i = d;
+        paramInt = g;
+      }
     }
-    return e + g;
+    for (;;)
+    {
+      return i + paramInt;
+      i = e;
+      paramInt = g;
+      continue;
+      label43:
+      i = f;
+      paramInt = g;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.HttpDownloadUtil.TimeoutParam
  * JD-Core Version:    0.7.0.1
  */

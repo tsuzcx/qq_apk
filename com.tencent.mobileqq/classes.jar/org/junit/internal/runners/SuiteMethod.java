@@ -15,25 +15,26 @@ public class SuiteMethod
   
   public static Test testFromSuiteMethod(Class<?> paramClass)
   {
-    Method localMethod;
     try
     {
-      localMethod = paramClass.getMethod("suite", new Class[0]);
-      if (!Modifier.isStatic(localMethod.getModifiers())) {
-        throw new Exception(paramClass.getName() + ".suite() must be static");
+      Object localObject = paramClass.getMethod("suite", new Class[0]);
+      if (Modifier.isStatic(((Method)localObject).getModifiers())) {
+        return (Test)((Method)localObject).invoke(null, new Object[0]);
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramClass.getName());
+      ((StringBuilder)localObject).append(".suite() must be static");
+      throw new Exception(((StringBuilder)localObject).toString());
     }
     catch (InvocationTargetException paramClass)
     {
       throw paramClass.getCause();
     }
-    paramClass = (Test)localMethod.invoke(null, new Object[0]);
-    return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.internal.runners.SuiteMethod
  * JD-Core Version:    0.7.0.1
  */

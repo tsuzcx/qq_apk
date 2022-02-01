@@ -9,8 +9,6 @@ import com.tencent.biz.qqstory.base.QQStoryObserver;
 import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.biz.qqstory.model.StoryManager;
 import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
@@ -68,113 +66,122 @@ public class MsgTabStoryNodeDelegate
     ArrayList localArrayList = new ArrayList(paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.size());
     localArrayList.addAll(paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList);
     int i = 0;
-    String str;
-    Object localObject;
-    if (i < localArrayList.size()) {
-      if (TextUtils.equals(((MsgTabNodeVideoInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString, paramString))
-      {
-        if (i + 1 >= localArrayList.size()) {
-          break label244;
-        }
-        str = ((MsgTabNodeVideoInfo)localArrayList.get(i + 1)).jdField_a_of_type_JavaLangString;
-        localObject = ((MsgTabNodeVideoInfo)localArrayList.get(i + 1)).b;
-      }
-    }
+    Object localObject1;
     for (;;)
     {
-      StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
-      StoryVideoItem localStoryVideoItem;
-      if (str != null)
+      int j = localArrayList.size();
+      localObject1 = null;
+      if (i >= j) {
+        break;
+      }
+      if (TextUtils.equals(((MsgTabNodeVideoInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString, paramString))
       {
-        localStoryVideoItem = localStoryManager.a(str);
-        if (localStoryVideoItem != null)
+        j = i + 1;
+        if (j < localArrayList.size())
         {
-          SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "findLoadedVideo, unionId=%s curVid=%s", paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, str);
-          localStoryVideoItem.mAttachedFeedId = ((String)localObject);
-          return localStoryVideoItem;
-          i += 1;
+          localObject3 = ((MsgTabNodeVideoInfo)localArrayList.get(j)).jdField_a_of_type_JavaLangString;
+          localObject2 = ((MsgTabNodeVideoInfo)localArrayList.get(j)).b;
+          break label151;
+        }
+        localObject2 = null;
+        localObject3 = localObject2;
+        break label151;
+      }
+      i += 1;
+    }
+    Object localObject2 = null;
+    Object localObject3 = localObject2;
+    i = -1;
+    label151:
+    StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
+    if (localObject3 != null)
+    {
+      StoryVideoItem localStoryVideoItem = localStoryManager.a((String)localObject3);
+      localObject1 = localStoryVideoItem;
+      if (localStoryVideoItem != null)
+      {
+        SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "findLoadedVideo, unionId=%s curVid=%s", paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, localObject3);
+        localStoryVideoItem.mAttachedFeedId = ((String)localObject2);
+        return localStoryVideoItem;
+      }
+    }
+    localObject2 = localObject1;
+    if (i != -1) {
+      for (;;)
+      {
+        localObject2 = localObject1;
+        if (i <= 0) {
           break;
         }
-      }
-      for (localObject = localStoryVideoItem;; localObject = null)
-      {
-        if (i != -1)
+        localObject1 = localStoryManager.a(((MsgTabNodeVideoInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString);
+        if (localObject1 != null)
         {
-          while (i > 0)
-          {
-            localObject = localStoryManager.a(((MsgTabNodeVideoInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString);
-            if (localObject != null)
-            {
-              SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "findLoadedVideo, unionId=%s curVid=%s", paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, paramString);
-              return localObject;
-            }
-            i -= 1;
-          }
-          return localObject;
+          SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "findLoadedVideo, unionId=%s curVid=%s", paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, paramString);
+          return localObject1;
         }
-        return localObject;
+        i -= 1;
       }
-      label244:
-      localObject = null;
-      str = null;
-      continue;
-      i = -1;
-      localObject = null;
-      str = null;
     }
+    return localObject2;
   }
   
   private void a(IDataProvider.GroupId paramGroupId, String paramString)
   {
     SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "onMsgTabStoryDataUpdate. groupId=%s, vid=%s", paramGroupId, paramString);
-    if (!(paramGroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId)) {}
-    MsgTabNodeInfo localMsgTabNodeInfo;
-    do
-    {
+    boolean bool = paramGroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId;
+    if (!bool) {
       return;
-      localMsgTabNodeInfo = ((MsgTabStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).a(((MsgTabPlayPageLoader.MsgTabGroupId)paramGroupId).a());
-      if (localMsgTabNodeInfo == null)
-      {
-        SLog.e("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "onMsgTabStoryDataUpdate. groupId=%s, vid=%s, nodeInfo is null! return!", new Object[] { paramGroupId, paramString });
-        return;
-      }
-    } while ((localMsgTabNodeInfo.jdField_a_of_type_Int != 12) || (!(paramGroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId)));
-    Bosses.get().postJob(new MsgTabStoryNodeDelegate.4(this, "Q.qqstory.msgTab.MsgTabStoryNodeDelegate", localMsgTabNodeInfo, paramString));
+    }
+    MsgTabNodeInfo localMsgTabNodeInfo = ((MsgTabStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).a(((MsgTabPlayPageLoader.MsgTabGroupId)paramGroupId).a());
+    if (localMsgTabNodeInfo == null)
+    {
+      SLog.e("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "onMsgTabStoryDataUpdate. groupId=%s, vid=%s, nodeInfo is null! return!", new Object[] { paramGroupId, paramString });
+      return;
+    }
+    if (localMsgTabNodeInfo.jdField_a_of_type_Int != 12) {
+      return;
+    }
+    if (bool) {
+      Bosses.get().postJob(new MsgTabStoryNodeDelegate.4(this, "Q.qqstory.msgTab.MsgTabStoryNodeDelegate", localMsgTabNodeInfo, paramString));
+    }
   }
   
   private void b(MsgTabNodeInfo paramMsgTabNodeInfo, int paramInt)
   {
-    List localList;
     if ((this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter != null) && (paramMsgTabNodeInfo != null))
     {
       SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "insertOrReplaceStoryNodeItem, changedData:%s, insertPosition:%s, AdapterList:%s, headerView:%s", paramMsgTabNodeInfo, Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.b()));
-      localList = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a();
-      if (localList == null) {
-        break label90;
+      List localList = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a();
+      int i;
+      if (localList != null) {
+        i = localList.size();
+      } else {
+        i = 0;
       }
-    }
-    label90:
-    for (int i = localList.size(); (paramInt < 0) || (paramInt >= i); i = 0)
-    {
+      if ((paramInt >= 0) && (paramInt < i))
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(paramMsgTabNodeInfo, paramInt);
+        return;
+      }
       SLog.d("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "insertOrReplaceStoryNodeItem, insertPosition illegal, list size = %s", new Object[] { Integer.valueOf(i) });
-      return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(paramMsgTabNodeInfo, paramInt);
   }
   
   private void b(List<MsgTabNodeInfo> paramList)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter != null) && (paramList != null))
+    MsgTabStoryNodeAdapter localMsgTabStoryNodeAdapter = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter;
+    if ((localMsgTabStoryNodeAdapter != null) && (paramList != null))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(paramList);
+      localMsgTabStoryNodeAdapter.a(paramList);
       a(paramList);
     }
   }
   
   private void c(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter != null) && (paramMsgTabNodeInfo != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(paramMsgTabNodeInfo);
+    MsgTabStoryNodeAdapter localMsgTabStoryNodeAdapter = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter;
+    if ((localMsgTabStoryNodeAdapter != null) && (paramMsgTabNodeInfo != null)) {
+      localMsgTabStoryNodeAdapter.a(paramMsgTabNodeInfo);
     }
   }
   
@@ -194,12 +201,13 @@ public class MsgTabStoryNodeDelegate
   
   protected void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader;
+    if (localObject != null)
     {
-      Iterator localIterator = new ArrayList(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.a()).iterator();
-      while (localIterator.hasNext())
+      localObject = new ArrayList(((MsgTabNodeListLoader)localObject).a()).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)localIterator.next();
+        MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)((Iterator)localObject).next();
         if ((localMsgTabNodeInfo != null) && (localMsgTabNodeInfo.jdField_a_of_type_Int == paramInt)) {
           a(localMsgTabNodeInfo);
         }
@@ -209,61 +217,59 @@ public class MsgTabStoryNodeDelegate
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter != null) && (paramMsgTabNodeInfo != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(paramMsgTabNodeInfo);
+    MsgTabStoryNodeAdapter localMsgTabStoryNodeAdapter = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter;
+    if ((localMsgTabStoryNodeAdapter != null) && (paramMsgTabNodeInfo != null)) {
+      localMsgTabStoryNodeAdapter.a(paramMsgTabNodeInfo);
     }
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo, int paramInt)
   {
-    QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).b(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
-    if (localQQUserUIItem == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", 2, "SUBSCRIBE failed: user is null, unionId = " + paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
-      }
-      return;
-    }
-    paramMsgTabNodeInfo = (QQStoryHandler)PlayModeUtils.a().getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER);
-    if (localQQUserUIItem.isVip()) {}
-    for (int i = 1;; i = 0)
-    {
-      paramMsgTabNodeInfo.a(i, localQQUserUIItem.uid, paramInt, 14);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    }
-    for (;;)
-    {
-      if ((paramBoolean1) && (paramMsgTabNodeInfo != null) && (paramMsgTabNodeInfo.jdField_a_of_type_Int == 8) && (!TextUtils.isEmpty(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString))) {
-        new GetShareGroupInfoHandler(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, String.valueOf(System.currentTimeMillis())).a();
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", 2, "singleDataChange, data=" + paramMsgTabNodeInfo + ", type=" + paramInt1);
-      }
-      return;
-      b(paramMsgTabNodeInfo, paramInt2);
-      a(Collections.singletonList(paramMsgTabNodeInfo));
-      if ((paramBoolean1) && (paramBoolean2))
+      if (paramInt1 != 2)
       {
-        SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "onSingleDataChange, startBreath TYPE_INSERT_OR_REPLACE");
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.g();
-        continue;
+        if (paramInt1 == 3) {
+          c(paramMsgTabNodeInfo);
+        }
+      }
+      else
+      {
         a(paramMsgTabNodeInfo);
         a(Collections.singletonList(paramMsgTabNodeInfo));
         if ((paramBoolean1) && (paramBoolean2))
         {
           SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "onSingleDataChange, startBreath TYPE_UPDATE");
           this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.g();
-          continue;
-          c(paramMsgTabNodeInfo);
         }
       }
+    }
+    else
+    {
+      b(paramMsgTabNodeInfo, paramInt2);
+      a(Collections.singletonList(paramMsgTabNodeInfo));
+      if ((paramBoolean1) && (paramBoolean2))
+      {
+        SLog.b("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "onSingleDataChange, startBreath TYPE_INSERT_OR_REPLACE");
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.g();
+      }
+    }
+    if ((paramBoolean1) && (paramMsgTabNodeInfo != null) && (paramMsgTabNodeInfo.jdField_a_of_type_Int == 8) && (!TextUtils.isEmpty(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString))) {
+      new GetShareGroupInfoHandler(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, String.valueOf(System.currentTimeMillis())).a();
+    }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("singleDataChange, data=");
+      localStringBuilder.append(paramMsgTabNodeInfo);
+      localStringBuilder.append(", type=");
+      localStringBuilder.append(paramInt1);
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", 2, localStringBuilder.toString());
     }
   }
   
@@ -281,341 +287,224 @@ public class MsgTabStoryNodeDelegate
   
   public void a(String paramString, int paramInt)
   {
-    int i9 = 0;
+    StringBuilder localStringBuilder = new StringBuilder("{");
+    int i14 = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.getItemCount();
+    Object localObject1 = "";
+    int i10 = 0;
+    long l1 = 0L;
+    int m = 0;
     int i8 = 0;
     int i7 = 0;
     int i6 = 0;
     int i5 = 0;
-    int i4 = 0;
-    int i3 = 1;
+    int i13 = 0;
+    int i4 = 1;
+    int i3 = 0;
     int i2 = 0;
     int i1 = 0;
-    int n = 0;
-    int m = 0;
-    int i10 = 0;
     int k = 0;
+    int j = 0;
     int i = 0;
-    long l1 = 0L;
-    String str = "";
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    int j = 2;
-    int i25 = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.getItemCount();
-    int i23 = 0;
-    MsgTabNodeInfo localMsgTabNodeInfo;
-    if (i23 < i25)
+    int n = 0;
+    int i9 = 2;
+    Object localObject3;
+    label310:
+    label326:
+    Object localObject2;
+    while (i13 < i14)
     {
-      localMsgTabNodeInfo = (MsgTabNodeInfo)this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(i23);
-      if (localMsgTabNodeInfo != null) {}
-    }
-    for (;;)
-    {
-      i23 += 1;
-      break;
-      int i21;
-      int i20;
-      int i19;
-      int i18;
-      int i17;
-      int i16;
-      int i15;
-      int i14;
-      int i13;
+      localObject3 = (MsgTabNodeInfo)this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a(i13);
       int i12;
       int i11;
-      int i22;
-      long l2;
-      switch (localMsgTabNodeInfo.jdField_a_of_type_Int)
+      if (localObject3 == null)
       {
-      default: 
-        i21 = i9;
-        i20 = i8;
-        i19 = i7;
-        i18 = i6;
-        i17 = i5;
-        i16 = i4;
-        i15 = i3;
-        i14 = i2;
-        i13 = i1;
-        i12 = n;
-        i11 = m;
-        i22 = k;
-        l2 = l1;
+        i12 = m;
+        i11 = i;
       }
-      Object localObject;
-      for (;;)
+      else
       {
-        if (localMsgTabNodeInfo.b != 0) {
-          j = 1;
-        }
-        if (!localMsgTabNodeInfo.c) {
-          break label1523;
-        }
-        i += 1;
-        l1 = l2;
-        k = i22;
-        m = i11;
-        n = i12;
-        i1 = i13;
-        i2 = i14;
-        i3 = i15;
-        i4 = i16;
-        i5 = i17;
-        i6 = i18;
-        i7 = i19;
-        i8 = i20;
-        i9 = i21;
-        break;
-        i21 = i9 + 1;
-        l2 = l1;
-        i22 = k;
-        i11 = m;
-        i12 = n;
-        i13 = i1;
-        i14 = i2;
-        i15 = i3;
-        i16 = i4;
-        i17 = i5;
-        i18 = i6;
-        i19 = i7;
-        i20 = i8;
-        continue;
-        i20 = i8 + 1;
-        l2 = l1;
-        i22 = k;
-        i11 = m;
-        i12 = n;
-        i13 = i1;
-        i14 = i2;
-        i15 = i3;
-        i16 = i4;
-        i17 = i5;
-        i18 = i6;
-        i19 = i7;
-        i21 = i9;
-        continue;
-        i19 = i7 + 1;
-        l2 = l1;
-        i22 = k;
-        i11 = m;
-        i12 = n;
-        i13 = i1;
-        i14 = i2;
-        i15 = i3;
-        i16 = i4;
-        i17 = i5;
-        i18 = i6;
-        i20 = i8;
-        i21 = i9;
-        continue;
-        i18 = i6 + 1;
-        l2 = l1;
-        i22 = k;
-        i11 = m;
-        i12 = n;
-        i13 = i1;
-        i14 = i2;
-        i15 = i3;
-        i16 = i4;
-        i17 = i5;
-        i19 = i7;
-        i20 = i8;
-        i21 = i9;
-        continue;
-        i17 = i5 + 1;
-        l2 = l1;
-        i22 = k;
-        i11 = m;
-        i12 = n;
-        i13 = i1;
-        i14 = i2;
-        i15 = i3;
-        i16 = i4;
-        i18 = i6;
-        i19 = i7;
-        i20 = i8;
-        i21 = i9;
-        continue;
-        i16 = i4 + 1;
-        l2 = l1;
-        i22 = k;
-        i11 = m;
-        i12 = n;
-        i13 = i1;
-        i14 = i2;
-        i15 = i3;
-        i17 = i5;
-        i18 = i6;
-        i19 = i7;
-        i20 = i8;
-        i21 = i9;
-        continue;
-        i15 = i3 + 1;
-        l2 = l1;
-        i22 = k;
-        i11 = m;
-        i12 = n;
-        i13 = i1;
-        i14 = i2;
-        i16 = i4;
-        i17 = i5;
-        i18 = i6;
-        i19 = i7;
-        i20 = i8;
-        i21 = i9;
-        continue;
-        i14 = i2 + 1;
-        l2 = l1;
-        i22 = k;
-        i11 = m;
-        i12 = n;
-        i13 = i1;
-        i15 = i3;
-        i16 = i4;
-        i17 = i5;
-        i18 = i6;
-        i19 = i7;
-        i20 = i8;
-        i21 = i9;
-        continue;
-        i13 = i1 + 1;
-        l2 = l1;
-        i22 = k;
-        i11 = m;
-        i12 = n;
-        i14 = i2;
-        i15 = i3;
-        i16 = i4;
-        i17 = i5;
-        i18 = i6;
-        i19 = i7;
-        i20 = i8;
-        i21 = i9;
-        continue;
-        i12 = n + 1;
-        l2 = l1;
-        i22 = k;
-        i11 = m;
-        i13 = i1;
-        i14 = i2;
-        i15 = i3;
-        i16 = i4;
-        i17 = i5;
-        i18 = i6;
-        i19 = i7;
-        i20 = i8;
-        i21 = i9;
-        continue;
-        i11 = m + 1;
-        if (localMsgTabNodeInfo.d > 0) {}
-        for (localObject = "2";; localObject = "1")
+        switch (((MsgTabNodeInfo)localObject3).jdField_a_of_type_Int)
         {
-          localStringBuilder.append("\"mystory\":").append((String)localObject);
-          l2 = l1;
-          i22 = k;
+        default: 
+          i12 = k;
+          i11 = j;
+          k = i;
+          j = i12;
+          i = i11;
+        }
+        for (;;)
+        {
+          i11 = i8;
+          i8 = n;
+          n = i;
+          i = m;
+          break label603;
+          i12 = i8 + 1;
+          i11 = n;
+          i8 = m;
+          n = i12;
+          m = i11;
+          break label326;
+          m += 1;
+          long l2 = l1;
+          i11 = m;
           i12 = n;
-          i13 = i1;
-          i14 = i2;
-          i15 = i3;
-          i16 = i4;
-          i17 = i5;
-          i18 = i6;
-          i19 = i7;
-          i20 = i8;
-          i21 = i9;
+          if (l1 == 0L)
+          {
+            localObject1 = ((MsgTabNodeInfo)localObject3).jdField_e_of_type_JavaLangString;
+            l2 = ((MsgTabNodeInfo)localObject3).a((String)localObject1);
+            i11 = m;
+            i12 = n;
+            break label310;
+            i12 = n + 1;
+            i11 = m;
+            l2 = l1;
+          }
+          l1 = l2;
+          m = i12;
+          n = i8;
+          i8 = i11;
+          i11 = n;
+          i12 = i;
+          n = j;
+          j = k;
+          i = i8;
+          k = i12;
+          i8 = m;
+          break label603;
+          i += 1;
           break;
-        }
-        int i24 = i10 + 1;
-        l2 = l1;
-        i22 = k;
-        i10 = i24;
-        i11 = m;
-        i12 = n;
-        i13 = i1;
-        i14 = i2;
-        i15 = i3;
-        i16 = i4;
-        i17 = i5;
-        i18 = i6;
-        i19 = i7;
-        i20 = i8;
-        i21 = i9;
-        if (l1 == 0L)
-        {
-          str = localMsgTabNodeInfo.jdField_e_of_type_JavaLangString;
-          l2 = localMsgTabNodeInfo.a(str);
-          i22 = k;
-          i10 = i24;
-          i11 = m;
-          i12 = n;
-          i13 = i1;
-          i14 = i2;
-          i15 = i3;
-          i16 = i4;
-          i17 = i5;
-          i18 = i6;
-          i19 = i7;
-          i20 = i8;
-          i21 = i9;
+          i11 = i;
+          i = j + 1;
+          j = k;
+          k = i11;
           continue;
-          i22 = k + 1;
-          l2 = l1;
-          i11 = m;
-          i12 = n;
-          i13 = i1;
-          i14 = i2;
-          i15 = i3;
-          i16 = i4;
-          i17 = i5;
-          i18 = i6;
-          i19 = i7;
-          i20 = i8;
-          i21 = i9;
+          i11 = i;
+          k += 1;
+          i = j;
+          j = k;
+          k = i11;
+          continue;
+          i11 = i;
+          i5 += 1;
+          i = j;
+          j = k;
+          k = i11;
+          continue;
+          i11 = i;
+          i7 += 1;
+          i = j;
+          j = k;
+          k = i11;
+          continue;
+          i11 = i;
+          if (((MsgTabNodeInfo)localObject3).d > 0) {
+            localObject2 = "2";
+          } else {
+            localObject2 = "1";
+          }
+          localStringBuilder.append("\"mystory\":");
+          localStringBuilder.append((String)localObject2);
+          i6 += 1;
+          i = j;
+          j = k;
+          k = i11;
+          continue;
+          i11 = i;
+          i1 += 1;
+          i = j;
+          j = k;
+          k = i11;
+          continue;
+          i11 = i;
+          i2 += 1;
+          i = j;
+          j = k;
+          k = i11;
+          continue;
+          i11 = i;
+          i3 += 1;
+          i = j;
+          j = k;
+          k = i11;
+          continue;
+          i11 = i;
+          i4 += 1;
+          i = j;
+          j = k;
+          k = i11;
         }
+        label603:
+        if (((MsgTabNodeInfo)localObject3).b != 0) {
+          i9 = 1;
+        }
+        m = i10;
+        if (((MsgTabNodeInfo)localObject3).c) {
+          m = i10 + 1;
+        }
+        i12 = n;
+        i10 = i11;
+        n = i8;
+        i8 = j;
+        i11 = k;
+        j = i12;
+        k = i8;
+        i8 = i10;
+        i12 = i;
+        i10 = m;
       }
+      i13 += 1;
+      m = i12;
+      i = i11;
+    }
+    label1085:
+    for (;;)
+    {
       try
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put(String.valueOf(6), i9);
-        ((JSONObject)localObject).put(String.valueOf(7), i8);
-        ((JSONObject)localObject).put(String.valueOf(8), i7);
-        ((JSONObject)localObject).put(String.valueOf(9), i6);
-        ((JSONObject)localObject).put(String.valueOf(11), i5);
-        ((JSONObject)localObject).put(String.valueOf(10), i4);
-        ((JSONObject)localObject).put(String.valueOf(1), i3);
-        ((JSONObject)localObject).put(String.valueOf(2), i2);
-        ((JSONObject)localObject).put(String.valueOf(3), i1);
-        ((JSONObject)localObject).put(String.valueOf(4), n);
-        ((JSONObject)localObject).put(String.valueOf(5), m);
-        ((JSONObject)localObject).put(String.valueOf(12), i10 + ":" + str + ":" + l1);
-        ((JSONObject)localObject).put(String.valueOf(13), k);
-        if (TextUtils.equals("exp_story", paramString))
-        {
-          localStringBuilder.append(",\"text\":").append("\"").append(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgNodeShotView.a()).append("\"");
-          localStringBuilder.append(",\"msg\":").append(i);
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put(String.valueOf(6), i7);
+        ((JSONObject)localObject2).put(String.valueOf(7), i5);
+        ((JSONObject)localObject2).put(String.valueOf(8), k);
+        ((JSONObject)localObject2).put(String.valueOf(9), j);
+        ((JSONObject)localObject2).put(String.valueOf(11), n);
+        ((JSONObject)localObject2).put(String.valueOf(10), i);
+        ((JSONObject)localObject2).put(String.valueOf(1), i4);
+        ((JSONObject)localObject2).put(String.valueOf(2), i3);
+        ((JSONObject)localObject2).put(String.valueOf(3), i2);
+        ((JSONObject)localObject2).put(String.valueOf(4), i1);
+        ((JSONObject)localObject2).put(String.valueOf(5), i6);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(m);
+        ((StringBuilder)localObject3).append(":");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append(":");
+        ((StringBuilder)localObject3).append(l1);
+        ((JSONObject)localObject2).put(String.valueOf(12), ((StringBuilder)localObject3).toString());
+        ((JSONObject)localObject2).put(String.valueOf(13), i8);
+        if (!TextUtils.equals("exp_story", paramString)) {
+          break label1085;
         }
-        localStringBuilder.append("}");
-        StoryReportor.a("msg_tab", paramString, 0, j, new String[] { ((JSONObject)localObject).toString(), String.valueOf(i25), localStringBuilder.toString(), String.valueOf(paramInt) });
-        return;
+        localStringBuilder.append(",\"text\":");
+        localStringBuilder.append("\"");
+        try
+        {
+          localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgNodeShotView.a());
+          localStringBuilder.append("\"");
+          localStringBuilder.append(",\"msg\":");
+          localStringBuilder.append(i10);
+          localStringBuilder.append("}");
+          StoryReportor.a("msg_tab", paramString, 0, i9, new String[] { ((JSONObject)localObject2).toString(), String.valueOf(i14), localStringBuilder.toString(), String.valueOf(paramInt) });
+          return;
+        }
+        catch (JSONException paramString) {}
+        localObject1 = new StringBuilder();
       }
-      catch (JSONException paramString)
-      {
-        SLog.e("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "ReportError:" + paramString.getMessage());
-        return;
-      }
-      label1523:
-      l1 = l2;
-      k = i22;
-      m = i11;
-      n = i12;
-      i1 = i13;
-      i2 = i14;
-      i3 = i15;
-      i4 = i16;
-      i5 = i17;
-      i6 = i18;
-      i7 = i19;
-      i8 = i20;
-      i9 = i21;
+      catch (JSONException paramString) {}
+      ((StringBuilder)localObject1).append("ReportError:");
+      ((StringBuilder)localObject1).append(paramString.getMessage());
+      SLog.e("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", ((StringBuilder)localObject1).toString());
+      return;
     }
   }
   
@@ -641,22 +530,19 @@ public class MsgTabStoryNodeDelegate
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_Long = 0L;
       }
     }
-    while ((paramArrayList != null) && (!paramArrayList.isEmpty()))
+    else
+    {
+      c(paramArrayList);
+    }
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = paramArrayList.iterator();
-      for (;;)
+      while (localIterator.hasNext())
       {
-        if (localIterator.hasNext())
-        {
-          MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)localIterator.next();
-          if ((localMsgTabNodeInfo.jdField_a_of_type_Int == 8) && (!TextUtils.isEmpty(localMsgTabNodeInfo.jdField_a_of_type_JavaLangString)))
-          {
-            localArrayList.add(localMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
-            continue;
-            c(paramArrayList);
-            break;
-          }
+        MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)localIterator.next();
+        if ((localMsgTabNodeInfo.jdField_a_of_type_Int == 8) && (!TextUtils.isEmpty(localMsgTabNodeInfo.jdField_a_of_type_JavaLangString))) {
+          localArrayList.add(localMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
         }
       }
       if (!localArrayList.isEmpty()) {
@@ -671,8 +557,12 @@ public class MsgTabStoryNodeDelegate
   public void a(List<MsgTabNodeInfo> paramList)
   {
     Context localContext = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_AndroidContentContext;
-    if ((!paramList.isEmpty()) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a(localContext, paramList);
+    if (!paramList.isEmpty())
+    {
+      MsgTabStoryVideoPreloader localMsgTabStoryVideoPreloader = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader;
+      if (localMsgTabStoryVideoPreloader != null) {
+        localMsgTabStoryVideoPreloader.a(localContext, paramList);
+      }
     }
   }
   
@@ -744,13 +634,18 @@ public class MsgTabStoryNodeDelegate
         }
         this.jdField_a_of_type_JavaUtilList.clear();
       }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader != null) {
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a();
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a();
+      return;
     }
     finally {}
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a();
+    for (;;)
+    {
+      throw localObject;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeAdapter.a();
   }
   
   public void d() {}
@@ -762,7 +657,7 @@ public class MsgTabStoryNodeDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate
  * JD-Core Version:    0.7.0.1
  */

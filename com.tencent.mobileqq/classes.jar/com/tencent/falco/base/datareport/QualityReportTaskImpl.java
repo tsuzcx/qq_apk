@@ -43,22 +43,25 @@ public class QualityReportTaskImpl
   
   public void send()
   {
-    if (TextUtils.isEmpty(this.mActType)) {
-      throw new NullPointerException("缺少上报基础字段，请检查 actType以及他们的描述");
-    }
-    if (this.mQualityType == 2) {
-      this.mDataReportInterface.reportAudienceQualityEvent(this.mActType, this.map, this.isRealTime);
-    }
-    do
+    if (!TextUtils.isEmpty(this.mActType))
     {
-      return;
-      if (this.mQualityType == 1)
+      int i = this.mQualityType;
+      if (i == 2)
+      {
+        this.mDataReportInterface.reportAudienceQualityEvent(this.mActType, this.map, this.isRealTime);
+        return;
+      }
+      if (i == 1)
       {
         this.mDataReportInterface.reportAnchorQualityEvent(this.mActType, this.map, this.isRealTime);
         return;
       }
-    } while (this.mQualityType != 3);
-    this.mDataReportInterface.reportQualityEvent(this.map, this.isRealTime);
+      if (i == 3) {
+        this.mDataReportInterface.reportQualityEvent(this.map, this.isRealTime);
+      }
+      return;
+    }
+    throw new NullPointerException("缺少上报基础字段，请检查 actType以及他们的描述");
   }
   
   public QualityReportTask setActType(String paramString)
@@ -116,7 +119,7 @@ public class QualityReportTaskImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.datareport.QualityReportTaskImpl
  * JD-Core Version:    0.7.0.1
  */

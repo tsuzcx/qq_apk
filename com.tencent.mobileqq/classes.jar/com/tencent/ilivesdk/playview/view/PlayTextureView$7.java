@@ -12,25 +12,33 @@ class PlayTextureView$7
   {
     if ((PlayTextureView.access$2000(this.this$0) == true) && (PlayTextureView.access$2500(this.this$0) != null) && (PlayTextureView.access$1400(this.this$0) != null) && (PlayTextureView.access$2600(this.this$0) != null))
     {
-      PlayTextureView.access$2302(this.this$0, PlayTextureView.access$2700(this.this$0));
-      LogUtils.i("Render|PlayTextureView", " mHardDecoder.createDecoder mFilepath =" + PlayTextureView.access$1400(this.this$0));
+      Object localObject = this.this$0;
+      PlayTextureView.access$2302((PlayTextureView)localObject, PlayTextureView.access$2700((PlayTextureView)localObject));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" mHardDecoder.createDecoder mFilepath =");
+      ((StringBuilder)localObject).append(PlayTextureView.access$1400(this.this$0));
+      LogUtils.i("Render|PlayTextureView", ((StringBuilder)localObject).toString());
       int i = PlayTextureView.access$2500(this.this$0).createDecoder(PlayTextureView.access$1400(this.this$0), PlayTextureView.access$2600(this.this$0));
-      LogUtils.i("Render|PlayTextureView", " ret =" + i);
-      LogUtils.i("Render|PlayTextureView", "===============hardware decode create return = " + i);
-      if (i == 1) {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" ret =");
+      ((StringBuilder)localObject).append(i);
+      LogUtils.i("Render|PlayTextureView", ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("===============hardware decode create return = ");
+      ((StringBuilder)localObject).append(i);
+      LogUtils.i("Render|PlayTextureView", ((StringBuilder)localObject).toString());
+      if (i == 1)
+      {
         PlayTextureView.access$2500(this.this$0).decode();
+        return;
       }
+      LogUtils.i("Render|PlayTextureView", " 不开始解码。。。。 ");
     }
-    else
-    {
-      return;
-    }
-    LogUtils.i("Render|PlayTextureView", " 不开始解码。。。。 ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.playview.view.PlayTextureView.7
  * JD-Core Version:    0.7.0.1
  */

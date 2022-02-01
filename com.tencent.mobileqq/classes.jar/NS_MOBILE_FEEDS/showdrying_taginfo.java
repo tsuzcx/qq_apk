@@ -36,23 +36,27 @@ public final class showdrying_taginfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iTagType, 0);
-    if (this.strContent != null) {
-      paramJceOutputStream.write(this.strContent, 1);
+    String str = this.strContent;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strIcon != null) {
-      paramJceOutputStream.write(this.strIcon, 2);
+    str = this.strIcon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strShowInfo != null) {
-      paramJceOutputStream.write(this.strShowInfo, 3);
+    str = this.strShowInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 4);
+    str = this.strUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.showdrying_taginfo
  * JD-Core Version:    0.7.0.1
  */

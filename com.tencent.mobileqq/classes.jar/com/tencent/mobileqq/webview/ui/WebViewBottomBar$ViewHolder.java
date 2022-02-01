@@ -18,11 +18,11 @@ public class WebViewBottomBar$ViewHolder
   
   public WebViewBottomBar$ViewHolder(WebViewBottomBar paramWebViewBottomBar, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371180));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371186));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371887));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378011));
-    this.c = ((TextView)paramView.findViewById(2131376840));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370804));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370811));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371508));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377432));
+    this.c = ((TextView)paramView.findViewById(2131376331));
   }
   
   public void a(int paramInt)
@@ -54,7 +54,7 @@ public class WebViewBottomBar$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewBottomBar.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

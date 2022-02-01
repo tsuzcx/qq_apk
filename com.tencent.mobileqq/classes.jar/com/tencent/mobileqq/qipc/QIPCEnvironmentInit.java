@@ -19,41 +19,35 @@ public class QIPCEnvironmentInit
       QLog.d("QIPCEnvironmentInit", 2, "initEnvironment");
     }
     IPluginAdapterProxy.setProxy(new PluginAdapterImpl());
-    for (;;)
+    try
     {
-      try
-      {
-        if (!TextUtils.equals(MobileQQ.processName, BaseApplicationImpl.sApplication.getApplicationContext().getPackageName())) {
-          continue;
-        }
+      if (TextUtils.equals(MobileQQ.processName, BaseApplicationImpl.sApplication.getApplicationContext().getPackageName())) {
         QIPCServerHelper.getInstance().getServer().setModuleFactory(new QIPCEnvironmentInit.1());
-        if (BaseApplicationImpl.useQIPCStart(MobileQQ.processName))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QIPCEnvironmentInit", 2, "connectMainProc");
-          }
-          QIPCClientHelper.getInstance().getClient().connect(null);
-        }
+      } else {
+        QIPCClientHelper.getInstance().getClient().guardServerProcList.add(MobileQQ.sMobileQQ.getPackageName());
       }
-      catch (Exception localException)
+      if (BaseApplicationImpl.useQIPCStart(MobileQQ.processName))
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("QIPCEnvironmentInit", 2, "connectMainProc");
         }
-        QLog.d("QIPCEnvironmentInit", 2, "initEnvironment", localException);
-        continue;
+        QIPCClientHelper.getInstance().getClient().connect(null);
       }
+    }
+    catch (Exception localException)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("QIPCEnvironmentInit", 2, "registerNFCEventCallback");
+        QLog.d("QIPCEnvironmentInit", 2, "initEnvironment", localException);
       }
-      return;
-      QIPCClientHelper.getInstance().getClient().guardServerProcList.add(MobileQQ.sMobileQQ.getPackageName());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QIPCEnvironmentInit", 2, "registerNFCEventCallback");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.QIPCEnvironmentInit
  * JD-Core Version:    0.7.0.1
  */

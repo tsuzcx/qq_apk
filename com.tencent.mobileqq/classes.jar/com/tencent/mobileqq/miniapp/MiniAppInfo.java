@@ -39,7 +39,11 @@ public class MiniAppInfo
   
   public static String a(String paramString, int paramInt)
   {
-    return paramInt + "_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static String[] a(String paramString)
@@ -59,12 +63,31 @@ public class MiniAppInfo
   
   public String toString()
   {
-    return "MiniAppInfo: appId=" + this.jdField_a_of_type_JavaLangString + ", appType=" + this.jdField_a_of_type_Int + ", platform=" + this.jdField_b_of_type_Int + ", appName=" + this.jdField_b_of_type_JavaLangString + ", appState=" + this.jdField_c_of_type_Int + ", appVersion=" + this.d + ", appPkgUrl=" + this.f + ", wording=" + this.g + ", infoNextReqMillis=" + this.jdField_a_of_type_Long;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniAppInfo: appId=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", appType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", platform=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", appName=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", appState=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", appVersion=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", appPkgUrl=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", wording=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", infoNextReqMillis=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -17,88 +17,96 @@ public class KandianLiveCfgBean
   
   public static KandianLiveCfgBean a(String paramString)
   {
-    int j = 0;
     if (TextUtils.isEmpty(paramString)) {
       return new KandianLiveCfgBean();
     }
     KandianLiveCfgBean localKandianLiveCfgBean = new KandianLiveCfgBean();
-    try
+    for (;;)
     {
-      paramString = new JSONObject(paramString);
-      if (Integer.parseInt(paramString.getString("isLite")) != 1) {
-        break label208;
-      }
-      bool = true;
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
+      try
       {
-        Object localObject;
-        ArrayList localArrayList;
-        int i;
-        QLog.e("KandianLiveCfgBean", 1, "error parse bean " + paramString);
-        continue;
-        boolean bool = false;
+        paramString = new JSONObject(paramString);
+        int i = Integer.parseInt(paramString.getString("isLite"));
+        int j = 0;
+        if (i != 1) {
+          break label223;
+        }
+        bool = true;
+        localKandianLiveCfgBean.jdField_a_of_type_Boolean = bool;
+        localObject = paramString.optJSONArray("blackList");
+        if (localObject != null)
+        {
+          ArrayList localArrayList = new ArrayList();
+          i = 0;
+          if (i < ((JSONArray)localObject).length())
+          {
+            localArrayList.add((String)((JSONArray)localObject).get(i));
+            i += 1;
+            continue;
+          }
+          localKandianLiveCfgBean.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+        }
+        paramString = paramString.optJSONArray("black_version_list");
+        if (paramString != null)
+        {
+          localObject = new ArrayList();
+          i = j;
+          if (i < paramString.length())
+          {
+            ((ArrayList)localObject).add((Integer)paramString.get(i));
+            i += 1;
+            continue;
+          }
+          localKandianLiveCfgBean.b = ((ArrayList)localObject);
+          return localKandianLiveCfgBean;
+        }
       }
-    }
-    localKandianLiveCfgBean.jdField_a_of_type_Boolean = bool;
-    localObject = paramString.optJSONArray("blackList");
-    if (localObject != null)
-    {
-      localArrayList = new ArrayList();
-      i = 0;
-      while (i < ((JSONArray)localObject).length())
+      catch (Throwable paramString)
       {
-        localArrayList.add((String)((JSONArray)localObject).get(i));
-        i += 1;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("error parse bean ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.e("KandianLiveCfgBean", 1, ((StringBuilder)localObject).toString());
       }
-      localKandianLiveCfgBean.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+      return localKandianLiveCfgBean;
+      label223:
+      boolean bool = false;
     }
-    paramString = paramString.optJSONArray("black_version_list");
-    if (paramString != null)
-    {
-      localObject = new ArrayList();
-      i = j;
-      while (i < paramString.length())
-      {
-        ((ArrayList)localObject).add((Integer)paramString.get(i));
-        i += 1;
-      }
-      localKandianLiveCfgBean.b = ((ArrayList)localObject);
-    }
-    return localKandianLiveCfgBean;
   }
   
   public boolean a()
   {
-    QLog.i("KandianLiveCfgBean", 1, "useLiteSdk------mIsLite = " + this.jdField_a_of_type_Boolean);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("useLiteSdk------mIsLite = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    QLog.i("KandianLiveCfgBean", 1, ((StringBuilder)localObject).toString());
     if (!this.jdField_a_of_type_Boolean) {
       return false;
     }
-    if ((this.b != null) && (this.b.size() > 0))
+    localObject = this.b;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
+      localObject = this.b.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Integer localInteger = (Integer)localIterator.next();
+        Integer localInteger = (Integer)((Iterator)localObject).next();
         if ((localInteger != null) && (localInteger.intValue() == Build.VERSION.SDK_INT))
         {
           QLog.e("KandianLiveCfgBean", 1, "useLiteSdk----version is Invalid, will not user LiteSDK");
           return false;
         }
       }
-      QLog.e("KandianLiveCfgBean", 1, "useLiteSdk----KandianLiveCfgBean has not data , currentVersion = " + Build.VERSION.SDK_INT);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("useLiteSdk----KandianLiveCfgBean has not data , currentVersion = ");
+      ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+      QLog.e("KandianLiveCfgBean", 1, ((StringBuilder)localObject).toString());
     }
-    if (!ConfigUtil.a(this.jdField_a_of_type_JavaUtilArrayList)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return ConfigUtil.a(this.jdField_a_of_type_JavaUtilArrayList) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.config.KandianLiveCfgBean
  * JD-Core Version:    0.7.0.1
  */

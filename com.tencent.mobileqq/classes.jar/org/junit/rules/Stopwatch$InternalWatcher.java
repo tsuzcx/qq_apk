@@ -11,18 +11,21 @@ class Stopwatch$InternalWatcher
   protected void failed(Throwable paramThrowable, Description paramDescription)
   {
     Stopwatch.access$300(this.this$0);
-    this.this$0.failed(Stopwatch.access$200(this.this$0), paramThrowable, paramDescription);
+    Stopwatch localStopwatch = this.this$0;
+    localStopwatch.failed(Stopwatch.access$200(localStopwatch), paramThrowable, paramDescription);
   }
   
   protected void finished(Description paramDescription)
   {
-    this.this$0.finished(Stopwatch.access$200(this.this$0), paramDescription);
+    Stopwatch localStopwatch = this.this$0;
+    localStopwatch.finished(Stopwatch.access$200(localStopwatch), paramDescription);
   }
   
   protected void skipped(AssumptionViolatedException paramAssumptionViolatedException, Description paramDescription)
   {
     Stopwatch.access$300(this.this$0);
-    this.this$0.skipped(Stopwatch.access$200(this.this$0), paramAssumptionViolatedException, paramDescription);
+    Stopwatch localStopwatch = this.this$0;
+    localStopwatch.skipped(Stopwatch.access$200(localStopwatch), paramAssumptionViolatedException, paramDescription);
   }
   
   protected void starting(Description paramDescription)
@@ -33,12 +36,13 @@ class Stopwatch$InternalWatcher
   protected void succeeded(Description paramDescription)
   {
     Stopwatch.access$300(this.this$0);
-    this.this$0.succeeded(Stopwatch.access$200(this.this$0), paramDescription);
+    Stopwatch localStopwatch = this.this$0;
+    localStopwatch.succeeded(Stopwatch.access$200(localStopwatch), paramDescription);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.rules.Stopwatch.InternalWatcher
  * JD-Core Version:    0.7.0.1
  */

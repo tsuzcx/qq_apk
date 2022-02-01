@@ -122,7 +122,14 @@ public class DataPoint
   
   public String toString()
   {
-    return "[datapoint din=" + this.mDin + " id=" + this.mProperityId + " value=" + this.mValue;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[datapoint din=");
+    localStringBuilder.append(this.mDin);
+    localStringBuilder.append(" id=");
+    localStringBuilder.append(this.mProperityId);
+    localStringBuilder.append(" value=");
+    localStringBuilder.append(this.mValue);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -140,7 +147,7 @@ public class DataPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.JNICallCenter.DataPoint
  * JD-Core Version:    0.7.0.1
  */

@@ -19,18 +19,22 @@ class PreloadManager$PreloadThread
     synchronized (this.this$0.b)
     {
       PreloadManager.a(this.this$0).clear();
-      if (PreloadManager.b(this.this$0).size() > 0)
-      {
+      if (PreloadManager.b(this.this$0).size() > 0) {
         this.this$0.a();
-        return;
+      } else {
+        this.this$0.a = false;
       }
-      this.this$0.a = false;
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PreloadManager.PreloadThread
  * JD-Core Version:    0.7.0.1
  */

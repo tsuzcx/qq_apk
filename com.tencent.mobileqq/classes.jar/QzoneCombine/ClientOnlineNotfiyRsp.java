@@ -29,14 +29,15 @@ public final class ClientOnlineNotfiyRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.AttachInfo != null) {
-      paramJceOutputStream.write(this.AttachInfo, 0);
+    byte[] arrayOfByte = this.AttachInfo;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QzoneCombine.ClientOnlineNotfiyRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -23,12 +23,14 @@ public class ScoreValueUpdater
   
   public void a()
   {
-    if (this.jdField_a_of_type_Long > this.b) {
+    long l1 = this.jdField_a_of_type_Long;
+    long l2 = this.b;
+    if (l1 > l2) {
       return;
     }
-    long l = this.b - this.jdField_a_of_type_Long;
-    if (l > this.c * 75L) {
-      this.c = ((l + 75L - 1L) / 75L);
+    l1 = l2 - l1;
+    if (l1 > this.c * 75L) {
+      this.c = ((l1 + 75L - 1L) / 75L);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_Long));
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 40L);
@@ -37,19 +39,21 @@ public class ScoreValueUpdater
   public void run()
   {
     this.jdField_a_of_type_Long += this.c;
-    if (this.jdField_a_of_type_Long >= this.b)
+    long l1 = this.jdField_a_of_type_Long;
+    long l2 = this.b;
+    if (l1 >= l2)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.b));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(l2));
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(l1));
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 40L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.overlay.ScoreValueUpdater
  * JD-Core Version:    0.7.0.1
  */

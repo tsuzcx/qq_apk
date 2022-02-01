@@ -22,7 +22,7 @@ public class ImaxAdPresenter$IMaxServiceObserver
 {
   int jdField_a_of_type_Int = 0;
   AdvertisementItem jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem;
-  WeakReference<QQAppInterface> c;
+  WeakReference<QQAppInterface> b;
   
   public ImaxAdPresenter$IMaxServiceObserver(ImaxAdPresenter paramImaxAdPresenter, int paramInt)
   {
@@ -32,14 +32,18 @@ public class ImaxAdPresenter$IMaxServiceObserver
   public ImaxAdPresenter$IMaxServiceObserver(ImaxAdPresenter paramImaxAdPresenter, AdvertisementItem paramAdvertisementItem, QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem = paramAdvertisementItem;
-    this.c = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramQQAppInterface);
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     paramBundle = new IMaxService.RspBody();
-    if (QLog.isColorLevel()) {
-      QLog.i("ImaxAdNetPresenter", 2, "errorCode == " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("errorCode == ");
+      localStringBuilder.append(paramInt);
+      QLog.i("ImaxAdNetPresenter", 2, localStringBuilder.toString());
     }
     if (paramInt == 0)
     {
@@ -50,46 +54,47 @@ public class ImaxAdPresenter$IMaxServiceObserver
         }
         paramBundle.mergeFrom(paramArrayOfByte);
         if ((!paramBundle.has()) || (paramBundle.int32_ret.get() != 0)) {
-          return;
+          break label326;
         }
         paramInt = paramBundle.int32_type.get();
         if ((paramInt == 2) && (this.jdField_a_of_type_Int == 3))
         {
-          Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131705764), 0).show();
+          Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131705825), 0).show();
           return;
         }
         if (paramInt != 1) {
-          return;
+          break label326;
         }
-        if (paramBundle.int32_exposure_flag.get() != 1) {
-          break label264;
-        }
-        paramArrayOfByte = (QQAppInterface)this.c.get();
-        if (paramArrayOfByte == null)
+        if (paramBundle.int32_exposure_flag.get() == 1)
         {
-          if (!QLog.isColorLevel()) {
+          paramArrayOfByte = (QQAppInterface)this.b.get();
+          if (paramArrayOfByte == null)
+          {
+            if (!QLog.isColorLevel()) {
+              return;
+            }
+            QLog.d("ImaxAdNetPresenter", 2, "request EXPOSURE succ ,but app == null");
             return;
           }
-          QLog.d("ImaxAdNetPresenter", 2, "request EXPOSURE succ ,but app == null");
+          AdvertisementRecentUserManager.a().a(paramArrayOfByte, 1, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
+          this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_Boolean = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("ImaxAdNetPresenter", 2, "do exposure Report");
+          }
+          this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
+          ReportController.a(paramArrayOfByte, "dc00898", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8009129", "0X8009129", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
           return;
         }
+        if (!QLog.isColorLevel()) {
+          break label326;
+        }
+        QLog.d("ImaxAdNetPresenter", 2, "exposure already limited");
+        return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
         paramArrayOfByte.printStackTrace();
         return;
-      }
-      AdvertisementRecentUserManager.a().a(paramArrayOfByte, 1, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdNetPresenter", 2, "do exposure Report");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
-      ReportController.a(paramArrayOfByte, "dc00898", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8009129", "0X8009129", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
-      return;
-      label264:
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdNetPresenter", 2, "exposure already limited");
       }
     }
     else
@@ -98,14 +103,16 @@ public class ImaxAdPresenter$IMaxServiceObserver
         QLog.e("ImaxAdNetPresenter", 2, "request service fail");
       }
       if (this.jdField_a_of_type_Int == 3) {
-        Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131705763), 0).show();
+        Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131705824), 0).show();
       }
     }
+    label326:
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdPresenter.IMaxServiceObserver
  * JD-Core Version:    0.7.0.1
  */

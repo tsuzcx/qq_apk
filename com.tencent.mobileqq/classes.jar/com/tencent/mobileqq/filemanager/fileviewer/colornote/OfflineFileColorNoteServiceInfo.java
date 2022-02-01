@@ -51,25 +51,38 @@ public class OfflineFileColorNoteServiceInfo
     }
     ColorNote.Builder localBuilder = new ColorNote.Builder();
     localBuilder.a(17039360);
-    String str = QFileUtils.b(1, this.a.nSessionId + "");
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "] fileId[" + this.a.Uuid + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.a.nSessionId);
+    ((StringBuilder)localObject).append("");
+    localObject = QFileUtils.a(1, ((StringBuilder)localObject).toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getColorNote: file colorNote key [");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("] fileId[");
+      localStringBuilder.append(this.a.Uuid);
+      localStringBuilder.append("]");
+      QLog.i("OfflineFileColorNoteServiceInfo", 2, localStringBuilder.toString());
     }
-    localBuilder.a(str);
+    localBuilder.a((String)localObject);
     localBuilder.b(this.a.fileName);
     localBuilder.c(FileUtil.a(this.a.fileSize));
     int i = FileManagerUtil.a(FileManagerUtil.a(this.a.fileName));
-    localBuilder.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localBuilder.a(str.getBytes());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("resdrawable://");
+    ((StringBuilder)localObject).append(i);
+    localBuilder.d(((StringBuilder)localObject).toString());
+    localObject = a();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localBuilder.a(((String)localObject).getBytes());
     }
     return localBuilder.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.colornote.OfflineFileColorNoteServiceInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -11,33 +11,35 @@ public class WSFragmentDelegateImpl<V extends IWSBaseView, P extends IWSPresente
   
   public WSFragmentDelegateImpl(IWSDelegateCallback<V, P> paramIWSDelegateCallback)
   {
-    if (paramIWSDelegateCallback == null) {
-      throw new NullPointerException("IWSDelegateCallback is null!");
+    if (paramIWSDelegateCallback != null)
+    {
+      this.a = paramIWSDelegateCallback;
+      return;
     }
-    this.a = paramIWSDelegateCallback;
+    throw new NullPointerException("IWSDelegateCallback is null!");
   }
   
   private V a()
   {
     IWSBaseView localIWSBaseView = this.a.a();
-    if (localIWSBaseView == null) {
-      throw new NullPointerException("View returned from getMvpView() is null");
+    if (localIWSBaseView != null) {
+      return localIWSBaseView;
     }
-    return localIWSBaseView;
+    throw new NullPointerException("View returned from getMvpView() is null");
   }
   
   private P a()
   {
     IWSPresenter localIWSPresenter = this.a.b();
-    if (localIWSPresenter == null) {
-      throw new NullPointerException("Presenter returned from getPresenter() is null");
+    if (localIWSPresenter != null) {
+      return localIWSPresenter;
     }
-    return localIWSPresenter;
+    throw new NullPointerException("Presenter returned from getPresenter() is null");
   }
   
   public void a()
   {
-    a().c();
+    a().a();
   }
   
   public void a(Bundle paramBundle)
@@ -57,12 +59,12 @@ public class WSFragmentDelegateImpl<V extends IWSBaseView, P extends IWSPresente
   
   public void b()
   {
-    a().d();
+    a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSFragmentDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,9 @@ import com.Vas.ColorFont.FastColorFontHelper;
 import com.Vas.ColorFont.FreeTypeLib;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.vas.font.api.FontManagerConstants;
 import com.tencent.mobileqq.vas.util.VasSoUtils;
+import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResultCallback;
 import java.util.Observable;
 import java.util.concurrent.ConcurrentHashMap;
@@ -52,121 +54,79 @@ public class FontManagerForTool
   
   private boolean a(int paramInt, boolean paramBoolean)
   {
-    String str3 = "";
-    String str4 = "";
-    String str1 = str4;
-    String str2 = str3;
-    switch (paramInt)
+    String str1 = "";
+    boolean bool = true;
+    String str2;
+    if (paramInt != 1)
     {
-    default: 
-      str2 = str3;
-      str1 = str4;
-    case 2: 
-    case 3: 
-      switch (VasSoUtils.a(VasSoUtils.a(), str2))
+      if (paramInt != 4)
       {
+        str2 = "";
       }
-      break;
+      else
+      {
+        str1 = VasFontIPCModule.b;
+        str2 = "libFounderColorFont_818.so";
+      }
     }
-    do
+    else
     {
-      return false;
-      str2 = "libvipfont8417.so";
       str1 = VasFontIPCModule.a;
-      break;
-      str2 = "libFounderColorFont_818.so";
-      str1 = VasFontIPCModule.b;
-      break;
-    } while (!paramBoolean);
-    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", str1, null, this.jdField_b_of_type_EipcEIPCResultCallback);
-    return false;
-    return true;
+      str2 = "libvipfont8417.so";
+    }
+    paramInt = VasSoUtils.a(VasSoUtils.a(), str2);
+    if (paramInt != 0)
+    {
+      if (((paramInt == 1) || (paramInt == 2)) && (paramBoolean)) {
+        QIPCClientHelper.getInstance().callServer("VasFontIPCModule", str1, null, this.jdField_b_of_type_EipcEIPCResultCallback);
+      }
+      bool = false;
+    }
+    return bool;
   }
   
-  /* Error */
   private boolean a(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: iconst_0
-    //   3: istore 4
-    //   5: iconst_0
-    //   6: istore_3
-    //   7: aload_0
-    //   8: iconst_1
-    //   9: iload_1
-    //   10: invokespecial 132	com/etrump/mixlayout/FontManagerForTool:a	(IZ)Z
-    //   13: ifeq +77 -> 90
-    //   16: aload_0
-    //   17: invokestatic 137	com/etrump/mixlayout/ETEngine:getInstance	()Lcom/etrump/mixlayout/ETEngine;
-    //   20: putfield 139	com/etrump/mixlayout/FontManagerForTool:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   23: aload_0
-    //   24: invokestatic 142	com/etrump/mixlayout/ETEngine:getInstanceForAnimation	()Lcom/etrump/mixlayout/ETEngine;
-    //   27: putfield 144	com/etrump/mixlayout/FontManagerForTool:jdField_b_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   30: getstatic 147	com/etrump/mixlayout/ETEngine:isSOLoaded	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   33: iconst_1
-    //   34: invokevirtual 150	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   37: iload 4
-    //   39: istore_2
-    //   40: aload_0
-    //   41: getfield 139	com/etrump/mixlayout/FontManagerForTool:jdField_a_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   44: iconst_5
-    //   45: ldc 151
-    //   47: invokevirtual 155	com/etrump/mixlayout/ETEngine:initEngine	(II)Z
-    //   50: istore 4
-    //   52: iload_3
-    //   53: istore_1
-    //   54: iload 4
-    //   56: ifeq +22 -> 78
-    //   59: aload_0
-    //   60: getfield 144	com/etrump/mixlayout/FontManagerForTool:jdField_b_of_type_ComEtrumpMixlayoutETEngine	Lcom/etrump/mixlayout/ETEngine;
-    //   63: iconst_3
-    //   64: ldc 156
-    //   66: invokevirtual 155	com/etrump/mixlayout/ETEngine:initEngine	(II)Z
-    //   69: istore_2
-    //   70: iload_3
-    //   71: istore_1
-    //   72: iload_2
-    //   73: ifeq +5 -> 78
-    //   76: iconst_1
-    //   77: istore_1
-    //   78: iload_1
-    //   79: istore_2
-    //   80: aload_0
-    //   81: getfield 27	com/etrump/mixlayout/FontManagerForTool:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   84: iload_1
-    //   85: invokevirtual 150	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   88: iload_1
-    //   89: istore_2
-    //   90: iload_2
-    //   91: ireturn
-    //   92: astore 5
-    //   94: ldc 158
-    //   96: iconst_1
-    //   97: ldc 160
-    //   99: aload 5
-    //   101: invokestatic 166	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   104: iload_2
-    //   105: ireturn
-    //   106: astore 5
-    //   108: iload 4
-    //   110: istore_2
-    //   111: goto -17 -> 94
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	114	0	this	FontManagerForTool
-    //   0	114	1	paramBoolean	boolean
-    //   1	110	2	bool1	boolean
-    //   6	65	3	bool2	boolean
-    //   3	106	4	bool3	boolean
-    //   92	8	5	localException1	java.lang.Exception
-    //   106	1	5	localException2	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   40	52	92	java/lang/Exception
-    //   80	88	92	java/lang/Exception
-    //   59	70	106	java/lang/Exception
+    boolean bool3 = a(1, paramBoolean);
+    paramBoolean = false;
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (bool3)
+    {
+      this.jdField_a_of_type_ComEtrumpMixlayoutETEngine = ETEngine.getInstance();
+      this.jdField_b_of_type_ComEtrumpMixlayoutETEngine = ETEngine.getInstanceForAnimation();
+      ETEngine.isSOLoaded.set(true);
+      bool1 = paramBoolean;
+      try
+      {
+        bool3 = this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.initEngine(5, 2097152);
+        paramBoolean = bool2;
+        if (bool3) {
+          try
+          {
+            bool1 = this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.initEngine(3, 1048576);
+            paramBoolean = bool2;
+            if (bool1) {
+              paramBoolean = true;
+            }
+          }
+          catch (Exception localException1)
+          {
+            bool1 = bool3;
+            break label105;
+          }
+        }
+        bool1 = paramBoolean;
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+        return paramBoolean;
+      }
+      catch (Exception localException2)
+      {
+        label105:
+        QLog.e("FontManagerConstants.TOOL", 1, "initHYEngine error: ", localException2);
+      }
+    }
+    return bool1;
   }
   
   private boolean a(boolean paramBoolean1, boolean paramBoolean2)
@@ -197,61 +157,90 @@ public class FontManagerForTool
   
   public FontInfo a(int paramInt1, int paramInt2)
   {
-    int i = 1;
     FontInfo localFontInfo = (FontInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
-    boolean bool;
+    Object localObject = localFontInfo;
     if (localFontInfo == null)
     {
-      bool = FontManager.a(paramInt1, paramInt2);
-      localObject = FontManager.a(paramInt1, paramInt2);
+      boolean bool = FontManagerConstants.checkFontExist(paramInt1, paramInt2);
+      String str = FontManagerConstants.getTTFPath(paramInt1, paramInt2);
       if (!bool)
       {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("id", paramInt1);
-        localBundle.putInt("font_type", paramInt2);
-        QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.c, localBundle, this.jdField_a_of_type_EipcEIPCResultCallback);
+        localObject = new Bundle();
+        ((Bundle)localObject).putInt("id", paramInt1);
+        ((Bundle)localObject).putInt("font_type", paramInt2);
+        QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.c, (Bundle)localObject, this.jdField_a_of_type_EipcEIPCResultCallback);
       }
-      switch (paramInt2)
+      int j = 0;
+      if (paramInt2 != 1)
       {
+        if (paramInt2 != 2)
+        {
+          if ((paramInt2 != 3) && (paramInt2 != 4)) {
+            return localFontInfo;
+          }
+          if (this.d.compareAndSet(false, true)) {
+            b(true);
+          }
+          localObject = localFontInfo;
+          if (this.c.get())
+          {
+            localObject = localFontInfo;
+            if (bool)
+            {
+              FastColorFontHelper.a().a(paramInt1, str);
+              localObject = new FontInfo(paramInt1, 4, str);
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject);
+              return localObject;
+            }
+          }
+        }
+        else
+        {
+          localObject = localFontInfo;
+          if (bool)
+          {
+            localObject = new FontInfo(paramInt1, paramInt2, str);
+            ((FontInfo)localObject).a = Typeface.createFromFile(str);
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject);
+            return localObject;
+          }
+        }
+      }
+      else
+      {
+        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+          a(true);
+        }
+        localObject = localFontInfo;
+        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+        {
+          localObject = localFontInfo;
+          if (bool)
+          {
+            int i = j;
+            if (this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_loadFont(str, paramInt1, false))
+            {
+              i = j;
+              if (this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.native_loadFont(str, paramInt1, false)) {
+                i = 1;
+              }
+            }
+            localObject = localFontInfo;
+            if (i != 0)
+            {
+              localObject = new FontInfo(paramInt1, paramInt2, str);
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject);
+            }
+          }
+        }
       }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return localFontInfo;
-          if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-            a(true);
-          }
-        } while ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (!bool));
-        if ((this.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_loadFont((String)localObject, paramInt1, false)) && (this.jdField_b_of_type_ComEtrumpMixlayoutETEngine.native_loadFont((String)localObject, paramInt1, false))) {}
-        while (i != 0)
-        {
-          localObject = new FontInfo(paramInt1, paramInt2, (String)localObject);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject);
-          return localObject;
-          i = 0;
-        }
-      } while (!bool);
-      localFontInfo = new FontInfo(paramInt1, paramInt2, (String)localObject);
-      localFontInfo.a = Typeface.createFromFile((String)localObject);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localFontInfo);
-      return localFontInfo;
-      if (this.d.compareAndSet(false, true)) {
-        b(true);
-      }
-    } while ((!this.c.get()) || (!bool));
-    FastColorFontHelper.a().a(paramInt1, (String)localObject);
-    Object localObject = new FontInfo(paramInt1, 4, (String)localObject);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManagerForTool
  * JD-Core Version:    0.7.0.1
  */

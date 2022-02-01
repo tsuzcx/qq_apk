@@ -14,8 +14,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.avatar.api.IQQAvatarService;
 import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.troop.api.handler.ITroopMemberListHandler;
 import com.tencent.mobileqq.troop.api.observer.TroopObserver;
-import com.tencent.mobileqq.troop.handler.TroopMemberInfoHandler;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -23,7 +23,7 @@ import mqq.os.MqqHandler;
 public class ForwardPreviewTroopMemberController
   extends ForwardPreviewBaseController
 {
-  public static int a;
+  public static int a = 0;
   public static int b = 1;
   private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
   private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new ForwardPreviewTroopMemberController.4(this);
@@ -34,11 +34,6 @@ public class ForwardPreviewTroopMemberController
   private ForwardPreviewTroopMemberController.TroopMemberRecyclerViewAdapter jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$TroopMemberRecyclerViewAdapter;
   private TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new ForwardPreviewTroopMemberController.2(this);
   private String jdField_a_of_type_JavaLangString = "";
-  
-  static
-  {
-    jdField_a_of_type_Int = 0;
-  }
   
   public ForwardPreviewTroopMemberController(QQCustomDialog paramQQCustomDialog)
   {
@@ -63,7 +58,7 @@ public class ForwardPreviewTroopMemberController
       this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(this.jdField_a_of_type_AndroidContentContext, 5);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      int i = AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int i = AIOUtils.b(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       localLayoutParams.rightMargin = i;
       localLayoutParams.leftMargin = i;
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutParams(localLayoutParams);
@@ -74,7 +69,12 @@ public class ForwardPreviewTroopMemberController
   
   public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    QLog.i("Forward.Preview.Dialog", 1, "bindData title: " + paramString1 + " uin: " + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bindData title: ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" uin: ");
+    localStringBuilder.append(paramString2);
+    QLog.i("Forward.Preview.Dialog", 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     paramQQAppInterface = paramString2;
     if (TextUtils.isEmpty(paramString2)) {
@@ -89,27 +89,29 @@ public class ForwardPreviewTroopMemberController
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPreviewTroopMemberController$TroopMemberRecyclerViewAdapter);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
     d();
-    if (paramInt == 1) {
-      ((TroopMemberInfoHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER)).a(this.jdField_a_of_type_JavaLangString);
-    }
-    while (paramInt != 3000) {
+    if (paramInt == 1)
+    {
+      ((ITroopMemberListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER)).a(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    b(this.jdField_a_of_type_JavaLangString);
+    if (paramInt == 3000) {
+      b(this.jdField_a_of_type_JavaLangString);
+    }
   }
   
   protected void c()
   {
     QLog.i("Forward.Preview.Dialog", 1, "onDestroy.");
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (localIFaceDecoder != null) {
+      localIFaceDecoder.destory();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController
  * JD-Core Version:    0.7.0.1
  */

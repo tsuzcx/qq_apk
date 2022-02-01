@@ -25,13 +25,14 @@ public final class FeedCloudMeta$StLike
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 56, 64, 74 }, new String[] { "id", "count", "status", "vecUser", "busiData", "postUser", "hasLikedCount", "ownerStatus", "jumpUrl" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0), "" }, StLike.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 56, 64, 74 }, new String[] { "id", "count", "status", "vecUser", "busiData", "postUser", "hasLikedCount", "ownerStatus", "jumpUrl" }, new Object[] { "", localInteger, localInteger, null, localByteStringMicro, null, localInteger, localInteger, "" }, StLike.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StLike
  * JD-Core Version:    0.7.0.1
  */

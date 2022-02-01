@@ -17,40 +17,32 @@ public class b
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    String str1;
-    String str2;
-    String str3;
-    long l;
-    ClassLoader localClassLoader;
     if (paramIntent != null)
     {
-      str1 = paramIntent.getStringExtra("dexPath");
-      str2 = paramIntent.getStringExtra("dexName");
-      str3 = paramIntent.getStringExtra("optimizedDirectory");
+      String str1 = paramIntent.getStringExtra("dexPath");
+      String str2 = paramIntent.getStringExtra("dexName");
+      String str3 = paramIntent.getStringExtra("optimizedDirectory");
       paramIntent = paramIntent.getStringExtra("librarySearchPath");
-      l = System.currentTimeMillis();
+      long l = System.currentTimeMillis();
       f.a("Optimizing dex %s in standalone service", new Object[] { str1 });
-      localClassLoader = this.a.getClassLoader();
-    }
-    try
-    {
-      new DexClassLoader(str1, str3, paramIntent, localClassLoader);
-      com.tencent.tbs.one.impl.a.c.b(c.a(str3, str2));
-      f.a("Optimized dex %s in standalone service, cost %dms", new Object[] { str1, Long.valueOf(System.currentTimeMillis() - l) });
-      return 1;
-    }
-    catch (Exception paramIntent)
-    {
-      for (;;)
+      ClassLoader localClassLoader = this.a.getClassLoader();
+      try
+      {
+        new DexClassLoader(str1, str3, paramIntent, localClassLoader);
+        com.tencent.tbs.one.impl.a.c.b(c.a(str3, str2));
+      }
+      catch (Exception paramIntent)
       {
         f.c("Failed to optimize dex %s", new Object[] { str1, paramIntent });
       }
+      f.a("Optimized dex %s in standalone service, cost %dms", new Object[] { str1, Long.valueOf(System.currentTimeMillis() - l) });
     }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.a.b
  * JD-Core Version:    0.7.0.1
  */

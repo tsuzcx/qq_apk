@@ -46,7 +46,15 @@ public class ck
   
   public static boolean O(int paramInt)
   {
-    return (paramInt == 1) || (paramInt == 24);
+    boolean bool = true;
+    if (paramInt != 1)
+    {
+      if (paramInt == 24) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public static boolean P(int paramInt)
@@ -116,7 +124,7 @@ public class ck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ck
  * JD-Core Version:    0.7.0.1
  */

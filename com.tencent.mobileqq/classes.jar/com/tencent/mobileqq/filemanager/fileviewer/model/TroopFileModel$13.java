@@ -16,43 +16,53 @@ class TroopFileModel$13
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener != null)
-    {
-      if (paramInt1 == 0) {
-        break label144;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener;
+    if (localObject != null) {
+      if (paramInt1 != 0) {
+        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).am_();
+      } else {
+        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).an_();
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.au_();
     }
-    while (paramInt1 != 0)
+    if (paramInt1 != 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.au_();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener;
+      if (localObject != null) {
+        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).am_();
       }
       ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_troopfile_video_cloudPlay", "online_play_show", 0, 0, "0", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.mTroopFileVideoIsWhite = paramInt1;
-      this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.mTroopFileVideoReqInterval = (System.currentTimeMillis() + paramInt2 * 1000);
-      ThreadManager.post(new TroopFileModel.13.1(this), 5, null, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "OfflineVideoFileView initVarView() is_white = " + paramInt1 + ", req_interval = " + paramInt2);
-      }
-      return;
-      label144:
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.av_();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener.av_();
-    }
-    if (TbsVideo.canUseYunbo(BaseApplicationImpl.getContext())) {}
-    for (String str = "0";; str = "-1")
+    else
     {
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_troopfile_video_cloudPlay", "online_play_show", 0, 0, "-1", str, "-1", "-1");
-      break;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnPreviewVideoOnlineListener;
+      if (localObject != null) {
+        ((FileBrowserModelBase.OnPreviewVideoOnlineListener)localObject).an_();
+      }
+      if (TbsVideo.canUseYunbo(BaseApplicationImpl.getContext())) {
+        localObject = "0";
+      } else {
+        localObject = "-1";
+      }
+      ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_troopfile_video_cloudPlay", "online_play_show", 0, 0, "-1", (String)localObject, "-1", "-1");
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
+    ((TroopInfo)localObject).mTroopFileVideoIsWhite = paramInt1;
+    ((TroopInfo)localObject).mTroopFileVideoReqInterval = (System.currentTimeMillis() + paramInt2 * 1000);
+    ThreadManager.post(new TroopFileModel.13.1(this), 5, null, true);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OfflineVideoFileView initVarView() is_white = ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", req_interval = ");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("zivonchen", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.13
  * JD-Core Version:    0.7.0.1
  */

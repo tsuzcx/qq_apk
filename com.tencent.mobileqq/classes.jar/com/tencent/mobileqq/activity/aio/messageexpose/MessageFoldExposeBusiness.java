@@ -11,30 +11,25 @@ public class MessageFoldExposeBusiness
 {
   public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    int i = 1;
-    if (MessageFoldable.a(paramMessageRecord)) {
-      if (paramMessageRecord.istroop != 0) {
-        break label41;
-      }
-    }
-    for (;;)
+    if (MessageFoldable.a(paramMessageRecord))
     {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800B154", "0X800B154", i, 0, "", "", "", "");
-      return;
-      label41:
-      if (paramMessageRecord.istroop == 1) {
+      int i;
+      if (paramMessageRecord.istroop == 0) {
+        i = 1;
+      } else if (paramMessageRecord.istroop == 1) {
         i = 2;
       } else if (ChatActivityUtils.a(paramMessageRecord.istroop)) {
         i = 3;
       } else {
         i = 4;
       }
+      ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800B154", "0X800B154", i, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.messageexpose.MessageFoldExposeBusiness
  * JD-Core Version:    0.7.0.1
  */

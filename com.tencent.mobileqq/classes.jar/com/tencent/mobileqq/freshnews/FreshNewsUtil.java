@@ -18,63 +18,65 @@ public class FreshNewsUtil
     if (paramRichText == null) {
       return "";
     }
-    if (paramRichText.rpt_msg_elems.has()) {}
-    for (paramRichText = paramRichText.rpt_msg_elems.get(); (paramRichText == null) || (paramRichText.isEmpty()); paramRichText = null) {
-      return "";
+    if (paramRichText.rpt_msg_elems.has()) {
+      paramRichText = paramRichText.rpt_msg_elems.get();
+    } else {
+      paramRichText = null;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = paramRichText.iterator();
-    label135:
-    label187:
-    label190:
-    label192:
-    label195:
-    while (localIterator.hasNext())
+    if (paramRichText != null)
     {
-      appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
-      if (localElem != null)
+      if (paramRichText.isEmpty()) {
+        return "";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = paramRichText.iterator();
+      while (localIterator.hasNext())
       {
-        if (localElem.str_content.has())
+        appoint_define.Elem localElem = (appoint_define.Elem)localIterator.next();
+        if (localElem != null)
         {
-          paramRichText = localElem.str_content.get();
-          label106:
+          if (localElem.str_content.has()) {
+            paramRichText = localElem.str_content.get();
+          } else {
+            paramRichText = "";
+          }
           localStringBuilder.append(paramRichText);
-          if (!localElem.msg_face_info.has()) {
-            break label187;
+          if (localElem.msg_face_info.has()) {
+            paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
+          } else {
+            paramRichText = null;
           }
-          paramRichText = (appoint_define.Face)localElem.msg_face_info.get();
-          if (paramRichText == null) {
-            break label190;
+          if (paramRichText != null)
+          {
+            int i;
+            if (paramRichText.uint32_index.has()) {
+              i = paramRichText.uint32_index.get();
+            } else {
+              i = -1;
+            }
+            if (i >= 0)
+            {
+              localStringBuilder.append('\024');
+              localStringBuilder.append((char)QQSysFaceUtil.convertToLocal(i));
+            }
           }
-          if (!paramRichText.uint32_index.has()) {
-            break label192;
-          }
-        }
-        for (int i = paramRichText.uint32_index.get();; i = -1)
-        {
-          if (i < 0) {
-            break label195;
-          }
-          localStringBuilder.append('\024');
-          localStringBuilder.append((char)QQSysFaceUtil.convertToLocal(i));
-          break;
-          paramRichText = "";
-          break label106;
-          paramRichText = null;
-          break label135;
-          break;
         }
       }
+      if (QLog.isDevelopLevel())
+      {
+        paramRichText = new StringBuilder();
+        paramRichText.append("getStringFromRichText, result=");
+        paramRichText.append(localStringBuilder.toString());
+        QLog.d("FreshNewsUtil", 4, paramRichText.toString());
+      }
+      return localStringBuilder.toString();
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FreshNewsUtil", 4, "getStringFromRichText, result=" + localStringBuilder.toString());
-    }
-    return localStringBuilder.toString();
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.FreshNewsUtil
  * JD-Core Version:    0.7.0.1
  */

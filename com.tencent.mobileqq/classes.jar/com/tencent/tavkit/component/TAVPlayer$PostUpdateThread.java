@@ -30,8 +30,9 @@ class TAVPlayer$PostUpdateThread
     if (this.msgLock)
     {
       this.msgLock = false;
-      if (this.templateSource != null) {
-        update(this.templateSource, this.autoPlay);
+      TAVPlayer.ICompositionBuilder localICompositionBuilder = this.templateSource;
+      if (localICompositionBuilder != null) {
+        update(localICompositionBuilder, this.autoPlay);
       }
     }
   }
@@ -59,7 +60,11 @@ class TAVPlayer$PostUpdateThread
   {
     try
     {
-      Logger.d(TAVPlayer.access$500(this.this$0), "unlockMsg() called thread = " + Thread.currentThread().getName());
+      String str = TAVPlayer.access$500(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unlockMsg() called thread = ");
+      localStringBuilder.append(Thread.currentThread().getName());
+      Logger.d(str, localStringBuilder.toString());
       this.handler.removeMessages(95);
       this.handler.sendEmptyMessageDelayed(95, paramInt);
       return;
@@ -75,7 +80,16 @@ class TAVPlayer$PostUpdateThread
   {
     try
     {
-      Logger.d(TAVPlayer.access$500(this.this$0), "update() called with: thread = " + Thread.currentThread().getName() + ", templateSource = [" + paramICompositionBuilder + "], autoPlay = [" + paramBoolean + "]");
+      String str = TAVPlayer.access$500(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("update() called with: thread = ");
+      localStringBuilder.append(Thread.currentThread().getName());
+      localStringBuilder.append(", templateSource = [");
+      localStringBuilder.append(paramICompositionBuilder);
+      localStringBuilder.append("], autoPlay = [");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("]");
+      Logger.d(str, localStringBuilder.toString());
       this.templateSource = paramICompositionBuilder;
       this.autoPlay = paramBoolean;
       this.handler.removeMessages(223);
@@ -91,17 +105,26 @@ class TAVPlayer$PostUpdateThread
   
   public boolean handleMessage(Message paramMessage)
   {
-    Logger.d(TAVPlayer.access$500(this.this$0), "handleMessage() called with: msg = [" + paramMessage + "] msgLock = " + this.msgLock + ",templateSource = " + this.templateSource);
-    switch (paramMessage.what)
+    String str = TAVPlayer.access$500(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleMessage() called with: msg = [");
+    localStringBuilder.append(paramMessage);
+    localStringBuilder.append("] msgLock = ");
+    localStringBuilder.append(this.msgLock);
+    localStringBuilder.append(",templateSource = ");
+    localStringBuilder.append(this.templateSource);
+    Logger.d(str, localStringBuilder.toString());
+    int i = paramMessage.what;
+    if (i != 95)
     {
+      if (i == 223) {
+        doUpdateMsg();
+      }
     }
-    for (;;)
-    {
-      return true;
-      doUpdateMsg();
-      continue;
+    else {
       doUnlockMsg();
     }
+    return true;
   }
   
   protected void onLooperPrepared()
@@ -112,9 +135,10 @@ class TAVPlayer$PostUpdateThread
   public void release()
   {
     this.templateSource = null;
-    if (this.handler != null)
+    Handler localHandler = this.handler;
+    if (localHandler != null)
     {
-      this.handler.removeCallbacksAndMessages(null);
+      localHandler.removeCallbacksAndMessages(null);
       this.handler = null;
     }
     quit();
@@ -137,7 +161,7 @@ class TAVPlayer$PostUpdateThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVPlayer.PostUpdateThread
  * JD-Core Version:    0.7.0.1
  */

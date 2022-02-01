@@ -13,9 +13,10 @@ public class MyDrawable
   @TargetApi(11)
   public void draw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    Drawable localDrawable = this.a;
+    if (localDrawable != null)
     {
-      this.a.setCallback(getCallback());
+      localDrawable.setCallback(getCallback());
       this.a.draw(paramCanvas);
     }
   }
@@ -31,7 +32,7 @@ public class MyDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.MyDrawable
  * JD-Core Version:    0.7.0.1
  */

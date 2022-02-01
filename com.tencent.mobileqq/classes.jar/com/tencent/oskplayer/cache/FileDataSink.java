@@ -29,13 +29,19 @@ public class FileDataSink
   
   public static String getLocalFile(String paramString, File paramFile)
   {
-    if (paramFile == null) {}
-    for (paramFile = OskFile.ensureFilesDir("oskfile");; paramFile = paramFile.getAbsolutePath())
-    {
-      paramString = new File(paramFile + File.separator + PlayerUtils.parseVideoKey(paramString) + "." + PlayerUtils.guessExtension(paramString));
-      if ((!paramString.exists()) || (!paramString.isFile())) {
-        break;
-      }
+    if (paramFile == null) {
+      paramFile = OskFile.ensureFilesDir("oskfile");
+    } else {
+      paramFile = paramFile.getAbsolutePath();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramFile);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(PlayerUtils.parseVideoKey(paramString));
+    localStringBuilder.append(".");
+    localStringBuilder.append(PlayerUtils.guessExtension(paramString));
+    paramString = new File(localStringBuilder.toString());
+    if ((paramString.exists()) && (paramString.isFile())) {
       return paramString.getAbsolutePath();
     }
     return null;
@@ -43,38 +49,51 @@ public class FileDataSink
   
   protected void commitFile()
   {
-    if (!this.file.exists()) {
-      this.dstFile = null;
-    }
-    long l;
-    label199:
-    do
+    if (!this.file.exists())
     {
-      do
-      {
-        return;
-        if (this.dstFile.exists()) {
-          this.dstFile.delete();
-        }
-        l = this.file.length();
-        if (this.totalLength <= 0L) {
-          break label199;
-        }
-        if (this.totalLength != this.file.length()) {
-          break;
-        }
-      } while (this.file.renameTo(this.dstFile));
       this.dstFile = null;
-      Logger.g().e("FileDataSink", "failed rename file " + this.file);
-      throw new IOException("rename failed");
+      return;
+    }
+    if (this.dstFile.exists()) {
+      this.dstFile.delete();
+    }
+    long l = this.file.length();
+    if (this.totalLength > 0L)
+    {
+      if (this.totalLength == this.file.length())
+      {
+        if (this.file.renameTo(this.dstFile)) {
+          return;
+        }
+        this.dstFile = null;
+        localILogger = Logger.g();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("failed rename file ");
+        localStringBuilder.append(this.file);
+        localILogger.e("FileDataSink", localStringBuilder.toString());
+        throw new IOException("rename failed");
+      }
       this.file.delete();
       this.dstFile = null;
-      Logger.g().w("FileDataSink", "commitFile failed totalLength=" + this.totalLength + ",current total=" + this.file.length());
+      localILogger = Logger.g();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("commitFile failed totalLength=");
+      localStringBuilder.append(this.totalLength);
+      localStringBuilder.append(",current total=");
+      localStringBuilder.append(this.file.length());
+      localILogger.w("FileDataSink", localStringBuilder.toString());
       throw new IOException("length not match");
-    } while (l != 0L);
+    }
+    if (l != 0L) {
+      return;
+    }
     this.file.delete();
     this.dstFile = null;
-    Logger.g().w("FileDataSink", "commitFile failed file_length=" + this.file.length());
+    ILogger localILogger = Logger.g();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("commitFile failed file_length=");
+    localStringBuilder.append(this.file.length());
+    localILogger.w("FileDataSink", localStringBuilder.toString());
     throw new IOException("length is zero");
   }
   
@@ -115,22 +134,36 @@ public class FileDataSink
   
   protected void startFile()
   {
-    if (this.sinkDir == null) {}
-    for (String str1 = OskFile.ensureFilesDir("oskfile");; str1 = this.sinkDir.getAbsolutePath())
-    {
-      String str2 = this.dataSpec.key + ".temp";
-      this.file = new File(str1 + File.separator + str2);
-      this.dstFile = new File(str1 + File.separator + this.dataSpec.key + "." + this.extensionName);
-      if ((this.file.exists()) && (this.file.isFile())) {
-        this.file.delete();
-      }
-      return;
+    Object localObject1 = this.sinkDir;
+    if (localObject1 == null) {
+      localObject1 = OskFile.ensureFilesDir("oskfile");
+    } else {
+      localObject1 = ((File)localObject1).getAbsolutePath();
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.dataSpec.key);
+    ((StringBuilder)localObject2).append(".temp");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append((String)localObject2);
+    this.file = new File(localStringBuilder.toString());
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append(this.dataSpec.key);
+    ((StringBuilder)localObject2).append(".");
+    ((StringBuilder)localObject2).append(this.extensionName);
+    this.dstFile = new File(((StringBuilder)localObject2).toString());
+    if ((this.file.exists()) && (this.file.isFile())) {
+      this.file.delete();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.cache.FileDataSink
  * JD-Core Version:    0.7.0.1
  */

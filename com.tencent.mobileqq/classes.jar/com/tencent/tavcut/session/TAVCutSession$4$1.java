@@ -19,22 +19,22 @@ class TAVCutSession$4$1
       TAVCutSession.access$000(this.this$1.this$0, localTAVSticker);
     }
     this.this$1.val$stickerController.resignCurrentSticker();
-    if ((this.this$1.val$stickerModel instanceof SubtitleModel)) {}
-    for (localTAVSticker = StickerConverter.subtitleModel2TavSticker((SubtitleModel)this.this$1.val$stickerModel);; localTAVSticker = StickerUtil.stickerModel2TavSticker(this.this$1.val$stickerModel))
-    {
-      if (localTAVSticker != null) {
-        this.this$1.val$stickerController.addSticker(localTAVSticker);
-      }
-      if (this.this$1.this$0.stickerOperationCallback != null) {
-        this.this$1.this$0.stickerOperationCallback.onAddStickerDone(localTAVSticker.getStickerId());
-      }
-      return;
+    if ((this.this$1.val$stickerModel instanceof SubtitleModel)) {
+      localTAVSticker = StickerConverter.subtitleModel2TavSticker((SubtitleModel)this.this$1.val$stickerModel);
+    } else {
+      localTAVSticker = StickerUtil.stickerModel2TavSticker(this.this$1.val$stickerModel);
+    }
+    if (localTAVSticker != null) {
+      this.this$1.val$stickerController.addSticker(localTAVSticker, this.this$1.val$needSelect);
+    }
+    if (this.this$1.this$0.stickerOperationCallback != null) {
+      this.this$1.this$0.stickerOperationCallback.onAddStickerDone(localTAVSticker.getStickerId());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutSession.4.1
  * JD-Core Version:    0.7.0.1
  */

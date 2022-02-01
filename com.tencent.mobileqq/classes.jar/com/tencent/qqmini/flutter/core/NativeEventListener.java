@@ -33,7 +33,13 @@ public class NativeEventListener
   
   public void onAppRoute(String paramString1, String paramString2, int paramInt)
   {
-    SpeedUtil.DEFAULT.event("onAppRoute " + paramInt + " " + paramString2);
+    SpeedUtil localSpeedUtil = SpeedUtil.DEFAULT;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAppRoute ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramString2);
+    localSpeedUtil.event(localStringBuilder.toString());
     super.onAppRoute(paramString1, paramString2, paramInt);
   }
   
@@ -47,31 +53,32 @@ public class NativeEventListener
   
   public void onWebViewEvent(String paramString1, String paramString2, int paramInt)
   {
-    if (paramString1.contains("GenerateFuncReady")) {
+    if (paramString1.contains("GenerateFuncReady"))
+    {
       SpeedUtil.DEFAULT.event("GenerateFuncReady");
     }
-    for (;;)
+    else if ((paramString2 != null) && (paramString2.contains("__DOMReady")))
     {
-      super.onWebViewEvent(paramString1, paramString2, paramInt);
-      return;
-      if ((paramString2 != null) && (paramString2.contains("__DOMReady")))
-      {
-        SpeedUtil.DEFAULT.event("domReady");
-        SpeedUtil.DEFAULT.report(new String[0]);
-        SpeedUtil.DEFAULT.clear();
-      }
+      SpeedUtil.DEFAULT.event("domReady");
+      SpeedUtil.DEFAULT.report(new String[0]);
+      SpeedUtil.DEFAULT.clear();
     }
+    super.onWebViewEvent(paramString1, paramString2, paramInt);
   }
   
   public void onWebViewReady(String paramString1, String paramString2, int paramInt)
   {
-    SpeedUtil.DEFAULT.event("onWebViewReady " + paramInt);
+    SpeedUtil localSpeedUtil = SpeedUtil.DEFAULT;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onWebViewReady ");
+    localStringBuilder.append(paramInt);
+    localSpeedUtil.event(localStringBuilder.toString());
     super.onWebViewReady(paramString1, paramString2, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.NativeEventListener
  * JD-Core Version:    0.7.0.1
  */

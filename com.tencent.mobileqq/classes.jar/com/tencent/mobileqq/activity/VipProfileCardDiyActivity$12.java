@@ -13,24 +13,23 @@ class VipProfileCardDiyActivity$12
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    switch (paramInt)
+    if (paramInt != 1001)
     {
-    default: 
-    case 1001: 
-      do
-      {
+      if (paramInt != 1002) {
         return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
+    if (a() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.12
  * JD-Core Version:    0.7.0.1
  */

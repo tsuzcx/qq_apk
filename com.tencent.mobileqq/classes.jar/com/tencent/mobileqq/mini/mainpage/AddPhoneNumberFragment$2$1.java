@@ -16,7 +16,14 @@ class AddPhoneNumberFragment$2$1
   {
     super.onFailedResponse(paramString1, paramInt, paramString2);
     AppBrandTask.runTaskOnUiThread(new AddPhoneNumberFragment.2.1.1(this, paramString2));
-    QLog.e("AddPhoneNumberFragment", 1, "send onFailedResponse cmd : " + paramString1 + ", code : " + paramInt + "; message : " + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("send onFailedResponse cmd : ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", code : ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("; message : ");
+    localStringBuilder.append(paramString2);
+    QLog.e("AddPhoneNumberFragment", 1, localStringBuilder.toString());
   }
   
   public void sendSmsCodeSuccess(oidb_0x87a.RspBody paramRspBody)
@@ -41,7 +48,7 @@ class AddPhoneNumberFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.AddPhoneNumberFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

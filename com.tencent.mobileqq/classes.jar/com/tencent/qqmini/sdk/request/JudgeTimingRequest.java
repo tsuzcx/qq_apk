@@ -60,25 +60,23 @@ public class JudgeTimingRequest
     try
     {
       localStJudgeTimingRsp.mergeFrom(paramArrayOfByte);
-      if (localStJudgeTimingRsp != null)
-      {
-        paramJSONObject.put("response", localStJudgeTimingRsp);
-        paramJSONObject.put("resultCode", 0);
-        return paramJSONObject;
-      }
+      paramJSONObject.put("response", localStJudgeTimingRsp);
+      paramJSONObject.put("resultCode", 0);
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("JudgeTimingRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("JudgeTimingRequest", paramJSONObject.toString());
     }
-    QMLog.d("JudgeTimingRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.JudgeTimingRequest
  * JD-Core Version:    0.7.0.1
  */

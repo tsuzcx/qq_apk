@@ -11,24 +11,25 @@ class UpgradeDetailActivity$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      UpgradeController.a().b(false);
+      if (paramInt != 1) {
+        return;
+      }
+      UpgradeDetailActivity localUpgradeDetailActivity = this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity;
+      UpgradeDetailActivity.a(localUpgradeDetailActivity, localUpgradeDetailActivity, this.jdField_a_of_type_Int);
       paramDialogInterface.dismiss();
-      UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 3);
+      UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 2);
       return;
     }
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int);
+    UpgradeController.a().b(false);
     paramDialogInterface.dismiss();
-    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 2);
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeActivityUpgradeDetailActivity, this.jdField_a_of_type_Int, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity.1
  * JD-Core Version:    0.7.0.1
  */

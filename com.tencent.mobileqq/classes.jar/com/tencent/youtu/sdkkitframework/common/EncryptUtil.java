@@ -34,17 +34,18 @@ public class EncryptUtil
     paramString4 = paramString4.digest();
     localObject = new StringBuffer();
     int i = 0;
-    if (i < paramString4.length)
+    while (i < paramString4.length)
     {
-      if (Integer.toHexString(paramString4[i] & 0xFF).length() == 1) {
-        ((StringBuffer)localObject).append("0").append(Integer.toHexString(paramString4[i] & 0xFF));
-      }
-      for (;;)
+      if (Integer.toHexString(paramString4[i] & 0xFF).length() == 1)
       {
-        i += 1;
-        break;
+        ((StringBuffer)localObject).append("0");
         ((StringBuffer)localObject).append(Integer.toHexString(paramString4[i] & 0xFF));
       }
+      else
+      {
+        ((StringBuffer)localObject).append(Integer.toHexString(paramString4[i] & 0xFF));
+      }
+      i += 1;
     }
     localFaceLiveReq.sign = ((StringBuffer)localObject).toString();
     paramString4 = Cipher.getInstance("AES/CBC/PKCS5Padding");
@@ -60,7 +61,7 @@ public class EncryptUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.EncryptUtil
  * JD-Core Version:    0.7.0.1
  */

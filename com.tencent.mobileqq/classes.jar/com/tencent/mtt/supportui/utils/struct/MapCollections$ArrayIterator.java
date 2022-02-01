@@ -31,18 +31,20 @@ final class MapCollections$ArrayIterator<T>
   
   public void remove()
   {
-    if (!this.d) {
-      throw new IllegalStateException();
+    if (this.d)
+    {
+      this.c -= 1;
+      this.b -= 1;
+      this.d = false;
+      this.e.colRemoveAt(this.c);
+      return;
     }
-    this.c -= 1;
-    this.b -= 1;
-    this.d = false;
-    this.e.colRemoveAt(this.c);
+    throw new IllegalStateException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.utils.struct.MapCollections.ArrayIterator
  * JD-Core Version:    0.7.0.1
  */

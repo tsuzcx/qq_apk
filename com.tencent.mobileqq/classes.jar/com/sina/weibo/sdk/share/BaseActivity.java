@@ -16,31 +16,26 @@ public class BaseActivity
 {
   private boolean l()
   {
+    boolean bool1 = false;
     try
     {
       TypedArray localTypedArray = obtainStyledAttributes((int[])Class.forName("com.android.internal.R$styleable").getField("Window").get(null));
       Method localMethod = ActivityInfo.class.getMethod("isTranslucentOrFloating", new Class[] { TypedArray.class });
       localMethod.setAccessible(true);
-      bool = ((Boolean)localMethod.invoke(null, new Object[] { localTypedArray })).booleanValue();
-      localException1.printStackTrace();
-    }
-    catch (Exception localException1)
-    {
+      boolean bool2 = ((Boolean)localMethod.invoke(null, new Object[] { localTypedArray })).booleanValue();
       try
       {
         localMethod.setAccessible(false);
-        return bool;
+        return bool2;
       }
-      catch (Exception localException2)
+      catch (Exception localException1)
       {
-        boolean bool;
-        break label77;
+        bool1 = bool2;
       }
-      localException1 = localException1;
-      bool = false;
+      localException2.printStackTrace();
     }
-    label77:
-    return bool;
+    catch (Exception localException2) {}
+    return bool1;
   }
   
   private boolean m()

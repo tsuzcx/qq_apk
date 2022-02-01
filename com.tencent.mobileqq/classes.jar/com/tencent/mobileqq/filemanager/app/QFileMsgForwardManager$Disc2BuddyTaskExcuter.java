@@ -35,26 +35,36 @@ class QFileMsgForwardManager$Disc2BuddyTaskExcuter
   {
     if ("1".equals(this.g))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("start Disc2BuddyTaskExcuter:");
+        paramString.append(this.jdField_a_of_type_JavaLangString);
+        paramString.append(" faild, file is upload paused");
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
       }
       paramOnUploadCallback.a(QFileMsgForwardManager.a(this.jdField_a_of_type_Long, false), false);
       return;
     }
-    if ((this.b == null) || (this.b.length() == 0))
+    String str = this.b;
+    if ((str != null) && (str.length() != 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild uuid is null");
-      }
-      paramOnUploadCallback.a(QFileMsgForwardManager.a(this.jdField_a_of_type_Long, true), false);
+      QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager).getFileManagerEngine().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new QFileMsgForwardManager.Disc2BuddyTaskExcuter.1(this, paramString, paramOnUploadCallback));
       return;
     }
-    QFileMsgForwardManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager).getFileManagerEngine().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new QFileMsgForwardManager.Disc2BuddyTaskExcuter.1(this, paramString, paramOnUploadCallback));
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(" Disc2BuddyTaskExcuter send faild uuid is null");
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
+    }
+    paramOnUploadCallback.a(QFileMsgForwardManager.a(this.jdField_a_of_type_Long, true), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.Disc2BuddyTaskExcuter
  * JD-Core Version:    0.7.0.1
  */

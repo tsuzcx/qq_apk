@@ -71,52 +71,51 @@ public class RollangleImageView
     }
     try
     {
-      localObject1 = BitmapFactory.decodeResource((Resources)localObject5, 2130842696);
+      localObject1 = BitmapFactory.decodeResource((Resources)localObject5, 2130842595);
       jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put("troopfilerollangleimage://", localObject1);
       localObject3 = localObject1;
       localObject2 = localObject4;
-      if (localObject4 == null)
-      {
-        localObject2 = BitmapFactory.decodeResource((Resources)localObject5, 2130842695);
-        jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put("troopfilerollangleimageborder://", localObject2);
-        localObject3 = localObject1;
+      if (localObject4 != null) {
+        break label140;
       }
-      localObject1 = ImageUtil.a(new BitmapFactory.Options(), paramString, 128);
-      i = paramString.getWidth();
+      localObject2 = BitmapFactory.decodeResource((Resources)localObject5, 2130842594);
+      jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put("troopfilerollangleimageborder://", localObject2);
+      localObject3 = localObject1;
     }
     catch (OutOfMemoryError paramString)
     {
-      try
-      {
-        paramString = ImageUtil.a(paramString, (BitmapFactory.Options)localObject1);
-        if (paramString != null) {
-          break label181;
-        }
+      for (;;) {}
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("RollangleImageView", 4, "decode maskBmp borderBmp OutOfMemoryError error");
+    }
+    return null;
+    label140:
+    Object localObject1 = ImageUtil.a(new BitmapFactory.Options(), paramString, 128);
+    try
+    {
+      paramString = ImageUtil.a(paramString, (BitmapFactory.Options)localObject1);
+      if (paramString == null) {
         return null;
       }
-      catch (OutOfMemoryError paramString)
-      {
-        if (!QLog.isColorLevel()) {
-          break label179;
-        }
-        QLog.e("RollangleImageView", 4, "decode srcBmp OutOfMemoryError error");
+      i = paramString.getWidth();
+      j = paramString.getHeight();
+      k = Math.max(i, j);
+      if (k <= 0) {
         return null;
       }
-      paramString = paramString;
-      if (QLog.isColorLevel()) {
-        QLog.e("RollangleImageView", 4, "decode maskBmp borderBmp OutOfMemoryError error");
-      }
-      return null;
+      localObject1 = new Rect(0, 0, k, k);
     }
-    label179:
-    label181:
-    int i;
-    int j = paramString.getHeight();
-    int k = Math.max(i, j);
-    if (k <= 0) {
-      return null;
+    catch (OutOfMemoryError paramString)
+    {
+      int i;
+      int j;
+      int k;
+      Rect localRect;
+      label412:
+      label428:
+      break label428;
     }
-    Object localObject1 = new Rect(0, 0, k, k);
     try
     {
       localBitmap = Bitmap.createBitmap(k, k, Bitmap.Config.ARGB_8888);
@@ -129,7 +128,7 @@ public class RollangleImageView
       ((Rect)localObject3).top = ((k - j) / 2);
       ((Rect)localObject3).right = (((Rect)localObject3).left + i);
       ((Rect)localObject3).bottom = (((Rect)localObject3).top + j);
-      Rect localRect = new Rect(0, 0, i, j);
+      localRect = new Rect(0, 0, i, j);
       ((Paint)localObject5).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
       ((Canvas)localObject4).drawBitmap(paramString, localRect, (Rect)localObject3, (Paint)localObject5);
       localObject3 = new Rect(0, 0, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight());
@@ -140,26 +139,28 @@ public class RollangleImageView
     }
     catch (OutOfMemoryError paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("RollangleImageView", 2, "generateRollAngleThumb, rollAngleBmp, OutOfMemoryError");
-      }
+      break label412;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("RollangleImageView", 2, "generateRollAngleThumb, rollAngleBmp, OutOfMemoryError");
+    }
+    return null;
+    if (QLog.isColorLevel()) {
+      QLog.e("RollangleImageView", 4, "decode srcBmp OutOfMemoryError error");
     }
     return null;
   }
   
   private Bitmap a(boolean paramBoolean)
   {
-    Bitmap localBitmap = null;
     if (!TextUtils.isEmpty(this.b))
     {
       if (paramBoolean) {
-        localBitmap = RollangleImageView.ImageCache.a().b(this.b, this);
+        return RollangleImageView.ImageCache.a().b(this.b, this);
       }
+      return RollangleImageView.ImageCache.a().a(this.b, this);
     }
-    else {
-      return localBitmap;
-    }
-    return RollangleImageView.ImageCache.a().a(this.b, this);
+    return null;
   }
   
   public static void setSuspendLoad(boolean paramBoolean)
@@ -169,9 +170,10 @@ public class RollangleImageView
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView$MyUpdateImageAsyncTask != null)
+    RollangleImageView.MyUpdateImageAsyncTask localMyUpdateImageAsyncTask = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView$MyUpdateImageAsyncTask;
+    if (localMyUpdateImageAsyncTask != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView$MyUpdateImageAsyncTask.cancel(true);
+      localMyUpdateImageAsyncTask.cancel(true);
       this.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView$MyUpdateImageAsyncTask = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView$MyUpdateImageAsyncTask = new RollangleImageView.MyUpdateImageAsyncTask(this);
@@ -208,7 +210,7 @@ public class RollangleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RollangleImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -26,26 +26,24 @@ public class ViewUtils
     if ((localObject instanceof GradientDrawable))
     {
       paramResources = (GradientDrawable)localObject;
-      if (((Drawable)localObject).getIntrinsicWidth() > 0)
-      {
+      if (((Drawable)localObject).getIntrinsicWidth() > 0) {
         paramInt = ((Drawable)localObject).getIntrinsicWidth();
-        if (((Drawable)localObject).getIntrinsicHeight() <= 0) {
-          break label122;
-        }
-      }
-      label122:
-      for (int i = ((Drawable)localObject).getIntrinsicHeight();; i = paramInteger2.intValue())
-      {
-        paramInteger1 = Bitmap.createBitmap(paramInt, i, Bitmap.Config.ARGB_8888);
-        paramInteger2 = new Canvas(paramInteger1);
-        paramResources.setBounds(0, 0, paramInt, i);
-        paramResources.setStroke(1, -16777216);
-        paramResources.setFilterBitmap(true);
-        paramResources.draw(paramInteger2);
-        return paramInteger1;
+      } else {
         paramInt = paramInteger1.intValue();
-        break;
       }
+      int i;
+      if (((Drawable)localObject).getIntrinsicHeight() > 0) {
+        i = ((Drawable)localObject).getIntrinsicHeight();
+      } else {
+        i = paramInteger2.intValue();
+      }
+      paramInteger1 = Bitmap.createBitmap(paramInt, i, Bitmap.Config.ARGB_8888);
+      paramInteger2 = new Canvas(paramInteger1);
+      paramResources.setBounds(0, 0, paramInt, i);
+      paramResources.setStroke(1, -16777216);
+      paramResources.setFilterBitmap(true);
+      paramResources.draw(paramInteger2);
+      return paramInteger1;
     }
     if ((localObject instanceof ColorDrawable))
     {
@@ -78,7 +76,7 @@ public class ViewUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.ViewUtils
  * JD-Core Version:    0.7.0.1
  */

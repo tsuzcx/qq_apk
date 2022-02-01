@@ -18,25 +18,31 @@ public class VasCommonManagerImpl
 {
   public boolean copyFile(String paramString1, String paramString2)
   {
-    boolean bool = false;
     paramString1 = new File(paramString1);
-    if (paramString1.exists()) {}
-    try
-    {
-      bool = FileUtils.a(paramString1, FileUtils.a(paramString2));
-      return bool;
-    }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
+    if (paramString1.exists()) {
+      try
+      {
+        boolean bool = FileUtils.copyFile(paramString1, FileUtils.createFile(paramString2));
+        return bool;
+      }
+      catch (Throwable paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
     return false;
   }
   
   public boolean filePatch(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_CommonManagerImpl", 2, "bsPatch: srcFile = " + paramString1 + " patchFile = " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bsPatch: srcFile = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" patchFile = ");
+      localStringBuilder.append(paramString2);
+      QLog.d("VasUpdate_CommonManagerImpl", 2, localStringBuilder.toString());
     }
     return ((IVasQuickUpdateAdapter)QRoute.api(IVasQuickUpdateAdapter.class)).patch(paramString1, paramString2, paramString1);
   }
@@ -44,9 +50,9 @@ public class VasCommonManagerImpl
   public String getAppVersion()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_CommonManagerImpl", 2, "getAppVersion = 8.5.5");
+      QLog.d("VasUpdate_CommonManagerImpl", 2, "getAppVersion = 8.7.0");
     }
-    return "8.5.5";
+    return "8.7.0";
   }
   
   public Context getApplicationContext()
@@ -61,34 +67,44 @@ public class VasCommonManagerImpl
   
   public int getNetType()
   {
-    int j = 0;
-    int i = j;
-    switch (HttpUtil.getNetWorkType())
+    int i;
+    switch ()
     {
+    case -1: 
     default: 
-      i = j;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VasUpdate_CommonManagerImpl", 2, "getNetType netType = " + i + " local = " + HttpUtil.getNetWorkType());
-      }
-      return i;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 5;
-      continue;
-      i = 4;
-      continue;
+      i = 0;
+      break;
+    case 4: 
       i = 3;
+      break;
+    case 3: 
+      i = 4;
+      break;
+    case 2: 
+      i = 5;
+      break;
+    case 1: 
+    case 5: 
+      i = 2;
+      break;
+    case 0: 
+      i = 1;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNetType netType = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" local = ");
+      localStringBuilder.append(HttpUtil.getNetWorkType());
+      QLog.d("VasUpdate_CommonManagerImpl", 2, localStringBuilder.toString());
+    }
+    return i;
   }
   
   public String getReportVersion()
   {
-    return "8.5.5.5105";
+    return "8.7.0.5295";
   }
   
   public String getSeqConfigPath()
@@ -108,51 +124,63 @@ public class VasCommonManagerImpl
   
   public String unCompressFile(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_CommonManagerImpl", 2, "uncompressZip: type = " + paramInt + " srcFile = " + paramString);
-    }
-    if (paramInt != 1) {}
-    for (;;)
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("uncompressZip: type = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" srcFile = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("VasUpdate_CommonManagerImpl", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramInt != 1) {
       return null;
-      Object localObject = new File(paramString);
-      if (!((File)localObject).exists())
+    }
+    Object localObject = new File(paramString);
+    if (!((File)localObject).exists())
+    {
+      QLog.e("VasUpdate_CommonManagerImpl", 1, "uncompressZip file un exist");
+      return null;
+    }
+    paramString = new StringBuilder();
+    paramString.append(((File)localObject).getParent());
+    paramString.append(File.separator);
+    paramString = paramString.toString();
+    try
+    {
+      localObject = VasUpdateUtil.a((File)localObject, paramString);
+      if (localObject != null)
       {
-        QLog.e("VasUpdate_CommonManagerImpl", 1, "uncompressZip file un exist");
-        return null;
-      }
-      paramString = ((File)localObject).getParent() + File.separator;
-      try
-      {
-        localObject = VasUpdateUtil.a((File)localObject, paramString);
-        if (localObject != null)
-        {
-          paramString = paramString + (String)localObject;
-          if (QLog.isColorLevel()) {
-            QLog.d("VasUpdate_CommonManagerImpl", 2, "uncompressZip result = " + paramString);
-          }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append((String)localObject);
+        paramString = localStringBuilder.toString();
+        if (!QLog.isColorLevel()) {
+          return paramString;
         }
-        else
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e("VasUpdate_CommonManagerImpl", 2, "uncompressZip fail");
-          return null;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("uncompressZip result = ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("VasUpdate_CommonManagerImpl", 2, ((StringBuilder)localObject).toString());
+        return paramString;
       }
-      catch (Throwable paramString)
+      if (QLog.isColorLevel())
       {
-        QLog.e("VasUpdate_CommonManagerImpl", 1, "uncompressZip error : ", paramString);
+        QLog.e("VasUpdate_CommonManagerImpl", 2, "uncompressZip fail");
         return null;
       }
     }
+    catch (Throwable paramString)
+    {
+      QLog.e("VasUpdate_CommonManagerImpl", 1, "uncompressZip error : ", paramString);
+    }
+    return null;
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasCommonManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -27,9 +27,10 @@ public class PobingUpdateCallback
   
   public static NinePatchDrawable createNinePatchDrawable(Resources paramResources, Bitmap paramBitmap)
   {
-    int i = 0;
     int[] arrayOfInt1 = new int[2];
-    arrayOfInt1[0] = (paramBitmap.getWidth() / 2);
+    int j = paramBitmap.getWidth() / 2;
+    int i = 0;
+    arrayOfInt1[0] = j;
     arrayOfInt1[1] = (paramBitmap.getWidth() / 2 + 1);
     int[] arrayOfInt2 = new int[2];
     arrayOfInt2[0] = (paramBitmap.getHeight() / 2);
@@ -71,14 +72,18 @@ public class PobingUpdateCallback
   @Nullable
   public Bitmap decodeBitmap(String paramString)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inDensity = 320;
-    localOptions.inTargetDensity = 320;
+    Object localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inDensity = 320;
+    ((BitmapFactory.Options)localObject).inTargetDensity = 320;
     BitmapManager.BitmapDecodeResult localBitmapDecodeResult = new BitmapManager.BitmapDecodeResult();
-    BitmapManager.a(paramString, localOptions, localBitmapDecodeResult);
+    BitmapManager.a(paramString, (BitmapFactory.Options)localObject, localBitmapDecodeResult);
     if (localBitmapDecodeResult.jdField_a_of_type_Int != 0)
     {
-      QLog.e("PobingUpdateCallback", 1, paramString + " decodeFail: " + localBitmapDecodeResult.jdField_a_of_type_Int);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" decodeFail: ");
+      ((StringBuilder)localObject).append(localBitmapDecodeResult.jdField_a_of_type_Int);
+      QLog.e("PobingUpdateCallback", 1, ((StringBuilder)localObject).toString());
       return null;
     }
     return localBitmapDecodeResult.jdField_a_of_type_AndroidGraphicsBitmap;
@@ -92,7 +97,11 @@ public class PobingUpdateCallback
   public String getFilePathById(Context paramContext, int paramInt, String paramString)
   {
     paramContext = getDir(paramContext, getScid(paramInt));
-    return paramContext + File.separator + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   protected String getRootDir()
@@ -107,8 +116,11 @@ public class PobingUpdateCallback
   
   public boolean isCardExists(Context paramContext, int paramInt)
   {
-    String str = "newComeCard." + paramInt;
-    paramContext = sInstance.getDir(paramContext, str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("newComeCard.");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    paramContext = sInstance.getDir(paramContext, (String)localObject);
     if (!new File(paramContext).exists()) {
       return false;
     }
@@ -117,7 +129,7 @@ public class PobingUpdateCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.quickupdate.PobingUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

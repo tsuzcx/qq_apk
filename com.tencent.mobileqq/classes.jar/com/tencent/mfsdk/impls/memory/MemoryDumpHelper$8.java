@@ -12,12 +12,12 @@ class MemoryDumpHelper$8
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext().getApplicationContext(), 2, HardCodeUtil.a(2131706556), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext().getApplicationContext(), 2, HardCodeUtil.a(2131706582), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mfsdk.impls.memory.MemoryDumpHelper.8
  * JD-Core Version:    0.7.0.1
  */

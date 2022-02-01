@@ -2,6 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.SystemClock;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import java.util.HashMap;
 
 class ShortVideoUploadProcessor$2
@@ -23,31 +24,31 @@ class ShortVideoUploadProcessor$2
   {
     long l = SystemClock.uptimeMillis();
     this.this$0.log("<BDH_LOG> onSwitch2BackupChannel()");
-    this.this$0.mReportInfo.put("param_switchChannel", String.valueOf(l - this.val$startTime));
+    this.this$0.mProcessorReport.mReportInfo.put("param_switchChannel", String.valueOf(l - this.val$startTime));
   }
   
   public void onTransStart()
   {
     this.this$0.log("<BDH_LOG> onTransStart()");
-    this.this$0.mStepTrans.startTime = 0L;
-    this.this$0.mStepTrans.logStartTime();
+    this.this$0.mProcessorReport.mStepTrans.startTime = 0L;
+    this.this$0.mProcessorReport.mStepTrans.logStartTime();
   }
   
   public void onUpdateProgress(int paramInt)
   {
     ShortVideoUploadProcessor localShortVideoUploadProcessor = this.this$0;
-    FileMsg localFileMsg = this.this$0.file;
+    FileMsg localFileMsg = localShortVideoUploadProcessor.file;
     long l = paramInt;
     localFileMsg.transferedSize = l;
     localShortVideoUploadProcessor.mTransferedSize = l;
-    if ((paramInt < this.this$0.mFileSize) && (!this.this$0.mIsCancel) && (!this.this$0.mIsPause)) {
+    if ((l < this.this$0.mFileSize) && (!this.this$0.mIsCancel) && (!this.this$0.mIsPause)) {
       this.this$0.sendProgressMessage();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoUploadProcessor.2
  * JD-Core Version:    0.7.0.1
  */

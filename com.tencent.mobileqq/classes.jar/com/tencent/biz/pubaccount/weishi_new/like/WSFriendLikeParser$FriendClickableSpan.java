@@ -43,11 +43,14 @@ class WSFriendLikeParser$FriendClickableSpan
   
   public void onClick(@androidx.annotation.NonNull View paramView)
   {
-    WSLog.a("WSFriendLikeUtil", "schema = " + this.jdField_a_of_type_UserGrowthStSchema.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("schema = ");
+    localStringBuilder.append(this.jdField_a_of_type_UserGrowthStSchema.toString());
+    WSLog.a("WSFriendLikeUtil", localStringBuilder.toString());
     if (WeishiUtils.c()) {
       return;
     }
-    new WSStSchemaJumpManager(paramView.getContext()).a(this.jdField_a_of_type_UserGrowthStSchema).a(a(this.jdField_a_of_type_UserGrowthStSchema.schema)).a(new WSFriendLikeParser.FriendClickableSpan.1(this)).a();
+    new WSStSchemaJumpManager(paramView.getContext()).a(this.jdField_a_of_type_UserGrowthStSchema).a(a(this.jdField_a_of_type_UserGrowthStSchema.schema)).a(new WSFriendLikeParser.FriendClickableSpan.1(this)).c();
   }
   
   public void updateDrawState(@android.support.annotation.NonNull TextPaint paramTextPaint)
@@ -57,7 +60,7 @@ class WSFriendLikeParser$FriendClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.like.WSFriendLikeParser.FriendClickableSpan
  * JD-Core Version:    0.7.0.1
  */

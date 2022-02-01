@@ -3,12 +3,11 @@ package com.tencent.mobileqq.webview.swift;
 import com.tencent.biz.webviewplugin.OfflinePlugin;
 import com.tencent.biz.webviewplugin.OpenCenterPlugin;
 import com.tencent.biz.webviewplugin.PtloginPlugin;
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
 import com.tencent.biz.webviewplugin.ReportPlugin;
 import com.tencent.biz.webviewplugin.WebSoPlugin;
+import com.tencent.gamecenter.wadl.biz.jsplugin.GameCenterInterruptPlugin;
 import com.tencent.gdtad.web.GdtWebReportPlugin;
 import com.tencent.mobileqq.antiphing.AntiphingHandler;
-import com.tencent.mobileqq.gamecenter.util.GameCenterInterruptPlugin;
 import com.tencent.mobileqq.jsp.EventApiPlugin;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
@@ -18,6 +17,7 @@ import com.tencent.mobileqq.webview.WebForceHttpsPlugin;
 import com.tencent.mobileqq.webview.WebSecurityPluginV2;
 import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneWebViewOfflinePlugin;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -67,7 +67,7 @@ public class CommonJsPluginFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.CommonJsPluginFactory
  * JD-Core Version:    0.7.0.1
  */

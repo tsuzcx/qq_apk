@@ -41,18 +41,18 @@ public class AudioFrame
     this.sample_rate_hz_ = paramAudioFrame.sample_rate_hz_;
     this.num_channels_ = paramAudioFrame.num_channels_;
     this.offset_ = paramAudioFrame.offset_;
-    int i = this.samples_per_channel_;
-    i = this.num_channels_ * i;
-    if (i < kMaxDataSizeSamples) {}
-    for (boolean bool = true;; bool = false)
+    int i = this.samples_per_channel_ * this.num_channels_;
+    boolean bool;
+    if (i < kMaxDataSizeSamples) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Assertions.checkArgument(bool);
+    if (!paramAudioFrame.muted())
     {
-      Assertions.checkArgument(bool);
-      if (paramAudioFrame.muted()) {
-        break;
-      }
       System.arraycopy(paramAudioFrame.data(), 0, this.data_, 0, i * kSizeOfShort);
       this.muted_ = false;
-      return;
     }
   }
   
@@ -77,14 +77,16 @@ public class AudioFrame
     this.sample_rate_hz_ = paramInt;
     this.num_channels_ = paramShort2;
     paramInt = paramShort1 * paramShort2;
-    if (paramInt < kMaxDataSizeSamples) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (paramInt < kMaxDataSizeSamples) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Assertions.checkArgument(bool);
+    if (paramArrayOfByte != null)
     {
-      Assertions.checkArgument(bool);
-      if (paramArrayOfByte == null) {
-        break;
-      }
-      System.arraycopy(paramArrayOfByte, 0, this.data_, 0, kSizeOfShort * paramInt);
+      System.arraycopy(paramArrayOfByte, 0, this.data_, 0, paramInt * kSizeOfShort);
       this.muted_ = false;
       return;
     }
@@ -93,76 +95,64 @@ public class AudioFrame
   
   int UpdateFrameChunk(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, short paramShort)
   {
-    boolean bool2 = true;
     if (this.timestamp_ == -9223372036854775807L) {
       this.timestamp_ = paramLong;
     }
-    if (paramInt3 > 0)
+    boolean bool2 = true;
+    boolean bool1;
+    if (paramInt3 > 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    int i = this.sample_rate_hz_;
+    if ((i != 0) && (i != paramInt3)) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    Assertions.checkArgument(bool1);
+    this.sample_rate_hz_ = paramInt3;
+    if (paramShort > 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    paramInt3 = this.num_channels_;
+    if ((paramInt3 != 0) && (paramInt3 != paramShort)) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    Assertions.checkArgument(bool1);
+    this.num_channels_ = paramShort;
+    paramInt3 = kMaxDataSizeBytes - this.offset_;
+    paramInt2 = Math.min(paramInt2, paramInt3);
+    if ((paramInt2 > 0) && (paramArrayOfByte != null))
     {
-      bool1 = true;
-      Assertions.checkArgument(bool1);
-      if ((this.sample_rate_hz_ != 0) && (this.sample_rate_hz_ != paramInt3)) {
-        break label238;
-      }
-      bool1 = true;
-      label51:
-      Assertions.checkArgument(bool1);
-      this.sample_rate_hz_ = paramInt3;
-      if (paramShort <= 0) {
-        break label244;
-      }
-      bool1 = true;
-      label70:
-      Assertions.checkArgument(bool1);
-      if ((this.num_channels_ != 0) && (this.num_channels_ != paramShort)) {
-        break label250;
-      }
-      bool1 = true;
-      label94:
-      Assertions.checkArgument(bool1);
-      this.num_channels_ = paramShort;
-      paramInt3 = kMaxDataSizeBytes - this.offset_;
-      paramInt2 = Math.min(paramInt2, paramInt3);
-      if ((paramInt2 > 0) && (paramArrayOfByte != null))
-      {
-        System.arraycopy(paramArrayOfByte, paramInt1, this.data_, this.offset_, paramInt2);
-        this.muted_ = false;
-        if (paramInt3 % kSizeOfShort != 0) {
-          break label256;
-        }
+      System.arraycopy(paramArrayOfByte, paramInt1, this.data_, this.offset_, paramInt2);
+      this.muted_ = false;
+      if (paramInt3 % kSizeOfShort == 0) {
         bool1 = true;
-        label166:
-        Assertions.checkArgument(bool1);
-        this.samples_per_channel_ = ((short)(this.samples_per_channel_ + paramInt2 / kSizeOfShort / this.num_channels_));
-        this.offset_ += paramInt2;
+      } else {
+        bool1 = false;
       }
-      if (paramInt3 <= 0) {
-        break label262;
-      }
-    }
-    label256:
-    label262:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
       Assertions.checkArgument(bool1);
-      if (paramInt3 - paramInt2 == 0) {
-        onFrameAvailable();
-      }
-      return paramInt2;
-      bool1 = false;
-      break;
-      label238:
-      bool1 = false;
-      break label51;
-      label244:
-      bool1 = false;
-      break label70;
-      label250:
-      bool1 = false;
-      break label94;
-      bool1 = false;
-      break label166;
+      this.samples_per_channel_ = ((short)(this.samples_per_channel_ + paramInt2 / kSizeOfShort / this.num_channels_));
+      this.offset_ += paramInt2;
     }
+    if (paramInt3 > 0) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    Assertions.checkArgument(bool1);
+    if (paramInt3 - paramInt2 == 0) {
+      onFrameAvailable();
+    }
+    return paramInt2;
   }
   
   int available()
@@ -180,7 +170,11 @@ public class AudioFrame
   
   double duration()
   {
-    return this.samples_per_channel_ / this.sample_rate_hz_;
+    double d1 = this.samples_per_channel_;
+    double d2 = this.sample_rate_hz_;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    return d1 / d2;
   }
   
   byte[] mutable_data()
@@ -200,7 +194,7 @@ public class AudioFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ext.audio.AudioFrame
  * JD-Core Version:    0.7.0.1
  */

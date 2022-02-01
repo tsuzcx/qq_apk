@@ -14,7 +14,7 @@ public final class AnimatorProxy
   extends Animation
 {
   public static final boolean NEEDS_PROXY;
-  private static final WeakHashMap<View, AnimatorProxy> PROXIES;
+  private static final WeakHashMap<View, AnimatorProxy> PROXIES = new WeakHashMap();
   private final RectF mAfter = new RectF();
   private float mAlpha = 1.0F;
   private final RectF mBefore = new RectF();
@@ -34,13 +34,13 @@ public final class AnimatorProxy
   
   static
   {
-    if (Integer.valueOf(Build.VERSION.SDK).intValue() < 11) {}
-    for (boolean bool = true;; bool = false)
-    {
-      NEEDS_PROXY = bool;
-      PROXIES = new WeakHashMap();
-      return;
+    boolean bool;
+    if (Integer.valueOf(Build.VERSION.SDK).intValue() < 11) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    NEEDS_PROXY = bool;
   }
   
   private AnimatorProxy(View paramView)
@@ -77,13 +77,16 @@ public final class AnimatorProxy
   private void invalidateAfterUpdate()
   {
     View localView = (View)this.mView.get();
-    if ((localView == null) || (localView.getParent() == null)) {
-      return;
+    if (localView != null)
+    {
+      if (localView.getParent() == null) {
+        return;
+      }
+      RectF localRectF = this.mAfter;
+      computeRect(localRectF, localView);
+      localRectF.union(this.mBefore);
+      ((View)localView.getParent()).invalidate((int)Math.floor(localRectF.left), (int)Math.floor(localRectF.top), (int)Math.ceil(localRectF.right), (int)Math.ceil(localRectF.bottom));
     }
-    RectF localRectF = this.mAfter;
-    computeRect(localRectF, localView);
-    localRectF.union(this.mBefore);
-    ((View)localView.getParent()).invalidate((int)Math.floor(localRectF.left), (int)Math.floor(localRectF.top), (int)Math.ceil(localRectF.right), (int)Math.ceil(localRectF.bottom));
   }
   
   private void prepareForUpdate()
@@ -100,43 +103,40 @@ public final class AnimatorProxy
     float f4 = paramView.getHeight();
     boolean bool = this.mHasPivot;
     float f1;
-    if (bool)
-    {
+    if (bool) {
       f1 = this.mPivotX;
-      if (!bool) {
-        break label226;
-      }
-    }
-    label226:
-    for (float f2 = this.mPivotY;; f2 = f4 / 2.0F)
-    {
-      float f5 = this.mRotationX;
-      float f6 = this.mRotationY;
-      float f7 = this.mRotationZ;
-      if ((f5 != 0.0F) || (f6 != 0.0F) || (f7 != 0.0F))
-      {
-        paramView = this.mCamera;
-        paramView.save();
-        paramView.rotateX(f5);
-        paramView.rotateY(f6);
-        paramView.rotateZ(-f7);
-        paramView.getMatrix(paramMatrix);
-        paramView.restore();
-        paramMatrix.preTranslate(-f1, -f2);
-        paramMatrix.postTranslate(f1, f2);
-      }
-      f5 = this.mScaleX;
-      f6 = this.mScaleY;
-      if ((f5 != 1.0F) || (f6 != 1.0F))
-      {
-        paramMatrix.postScale(f5, f6);
-        paramMatrix.postTranslate(-(f1 / f3) * (f5 * f3 - f3), -(f2 / f4) * (f6 * f4 - f4));
-      }
-      paramMatrix.postTranslate(this.mTranslationX, this.mTranslationY);
-      return;
+    } else {
       f1 = f3 / 2.0F;
-      break;
     }
+    float f2;
+    if (bool) {
+      f2 = this.mPivotY;
+    } else {
+      f2 = f4 / 2.0F;
+    }
+    float f5 = this.mRotationX;
+    float f6 = this.mRotationY;
+    float f7 = this.mRotationZ;
+    if ((f5 != 0.0F) || (f6 != 0.0F) || (f7 != 0.0F))
+    {
+      paramView = this.mCamera;
+      paramView.save();
+      paramView.rotateX(f5);
+      paramView.rotateY(f6);
+      paramView.rotateZ(-f7);
+      paramView.getMatrix(paramMatrix);
+      paramView.restore();
+      paramMatrix.preTranslate(-f1, -f2);
+      paramMatrix.postTranslate(f1, f2);
+    }
+    f5 = this.mScaleX;
+    f6 = this.mScaleY;
+    if ((f5 != 1.0F) || (f6 != 1.0F))
+    {
+      paramMatrix.postScale(f5, f6);
+      paramMatrix.postTranslate(-(f1 / f3) * (f5 * f3 - f3), -(f2 / f4) * (f6 * f4 - f4));
+    }
+    paramMatrix.postTranslate(this.mTranslationX, this.mTranslationY);
   }
   
   public static AnimatorProxy wrap(View paramView)
@@ -390,7 +390,7 @@ public final class AnimatorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.view.animation.AnimatorProxy
  * JD-Core Version:    0.7.0.1
  */

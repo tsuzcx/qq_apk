@@ -27,28 +27,25 @@ final class GpkgManager$MergedOnInitListener
   
   private void handleFinish()
   {
-    GpkgManager.OnInitGpkgListener localOnInitGpkgListener;
-    MiniGamePkg localMiniGamePkg;
     if ((this.mGpkgDone) && (this.mPluginDone))
     {
-      if (this.mGpkgDownloadInfo != null) {
-        this.mGpkgDownloadInfo.plugin = this.mPluginDownloadInfo;
+      Object localObject = this.mGpkgDownloadInfo;
+      if (localObject != null) {
+        ((GpkgManager.Info)localObject).plugin = this.mPluginDownloadInfo;
       }
       if (!this.mPluginSuccess)
       {
-        localOnInitGpkgListener = this.mMergedResultListener;
-        localMiniGamePkg = this.mGpkgPkg;
-        if (this.mPluginError == null) {
-          break label105;
+        GpkgManager.OnInitGpkgListener localOnInitGpkgListener = this.mMergedResultListener;
+        MiniGamePkg localMiniGamePkg = this.mGpkgPkg;
+        localObject = this.mPluginError;
+        if (localObject != null) {
+          localObject = ((Throwable)localObject).getMessage();
+        } else {
+          localObject = "download plugin fail";
         }
+        localOnInitGpkgListener.onInitGpkgInfo(2022, localMiniGamePkg, (String)localObject, this.mGpkgDownloadInfo);
       }
-    }
-    label105:
-    for (String str = this.mPluginError.getMessage();; str = "download plugin fail")
-    {
-      localOnInitGpkgListener.onInitGpkgInfo(2022, localMiniGamePkg, str, this.mGpkgDownloadInfo);
       this.mMergedResultListener.onInitGpkgInfo(this.mGpkgResCode, this.mGpkgPkg, this.mGpkgErrorMsg, this.mGpkgDownloadInfo);
-      return;
     }
   }
   
@@ -84,8 +81,15 @@ final class GpkgManager$MergedOnInitListener
       this.mPluginSuccess = paramBoolean;
       this.mPluginError = paramThrowable;
       this.mPluginDownloadInfo = paramInfo;
-      if (paramInfo != null) {
-        paramInfo.message = (this.mGameConfig.miniGamePluginInfo.name + "/" + this.mGameConfig.miniGamePluginInfo.id + " " + paramInfo.message);
+      if (paramInfo != null)
+      {
+        paramThrowable = new StringBuilder();
+        paramThrowable.append(this.mGameConfig.miniGamePluginInfo.name);
+        paramThrowable.append("/");
+        paramThrowable.append(this.mGameConfig.miniGamePluginInfo.id);
+        paramThrowable.append(" ");
+        paramThrowable.append(paramInfo.message);
+        paramInfo.message = paramThrowable.toString();
       }
       handleFinish();
       return;
@@ -95,7 +99,7 @@ final class GpkgManager$MergedOnInitListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.GpkgManager.MergedOnInitListener
  * JD-Core Version:    0.7.0.1
  */

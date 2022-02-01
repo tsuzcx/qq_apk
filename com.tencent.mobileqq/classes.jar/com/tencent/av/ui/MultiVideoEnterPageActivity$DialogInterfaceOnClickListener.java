@@ -19,31 +19,36 @@ class MultiVideoEnterPageActivity$DialogInterfaceOnClickListener
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (this.jdField_a_of_type_Int)
+    paramInt = this.jdField_a_of_type_Int;
+    if (paramInt != 0)
     {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString, 2, "DialogInterfaceOnClickListener-->Wrong type.mode=" + this.jdField_a_of_type_Int);
+      if (paramInt != 1)
+      {
+        if (QLog.isColorLevel())
+        {
+          String str = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("DialogInterfaceOnClickListener-->Wrong type.mode=");
+          localStringBuilder.append(this.jdField_a_of_type_Int);
+          QLog.e(str, 2, localStringBuilder.toString());
+        }
+        paramDialogInterface.dismiss();
+        return;
       }
       paramDialogInterface.dismiss();
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.sendBroadcast(new Intent("com.gvideo.com.tencent.av.EXIT_GROUP_VIDEO"));
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.sendBroadcast(new Intent("tencent.video.v2g.exitAVGame"));
-      paramDialogInterface.dismiss();
-      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.l()) {
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.e(true);
-      }
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a().F, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a().g, 81);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.f);
       return;
     }
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.sendBroadcast(new Intent("com.gvideo.com.tencent.av.EXIT_GROUP_VIDEO"));
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.sendBroadcast(new Intent("tencent.video.v2g.exitAVGame"));
     paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a().E, this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a().f, 81);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiMultiVideoEnterPageActivity;
+    paramDialogInterface.f(paramDialogInterface.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoEnterPageActivity.DialogInterfaceOnClickListener
  * JD-Core Version:    0.7.0.1
  */

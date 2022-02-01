@@ -81,13 +81,17 @@ public final class CodecWrapperPool
   
   public void clear()
   {
-    LogUtils.i("CodecWrapperPool", "CodecWrapperPool clear:" + this.storeSet);
-    Iterator localIterator = this.storeSet.iterator();
-    while (localIterator.hasNext())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("CodecWrapperPool clear:");
+    ((StringBuilder)localObject).append(this.storeSet);
+    LogUtils.i("CodecWrapperPool", ((StringBuilder)localObject).toString());
+    localObject = this.storeSet.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      ReuseCodecWrapper localReuseCodecWrapper = (ReuseCodecWrapper)localIterator.next();
-      if (this.actionCallback != null) {
-        this.actionCallback.onErase(localReuseCodecWrapper);
+      ReuseCodecWrapper localReuseCodecWrapper = (ReuseCodecWrapper)((Iterator)localObject).next();
+      PoolActionCallback localPoolActionCallback = this.actionCallback;
+      if (localPoolActionCallback != null) {
+        localPoolActionCallback.onErase(localReuseCodecWrapper);
       }
     }
     this.storeSet.clear();
@@ -107,8 +111,12 @@ public final class CodecWrapperPool
   public ReuseCodecWrapper obtain(@NonNull FormatWrapper paramFormatWrapper)
   {
     paramFormatWrapper = pickSuitableCodecWrapper(paramFormatWrapper);
-    if (LogUtils.isLogEnable()) {
-      LogUtils.d("CodecWrapperPool", "obtain codecWrapper:" + paramFormatWrapper);
+    if (LogUtils.isLogEnable())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("obtain codecWrapper:");
+      localStringBuilder.append(paramFormatWrapper);
+      LogUtils.d("CodecWrapperPool", localStringBuilder.toString());
     }
     if (paramFormatWrapper != null)
     {
@@ -128,14 +136,24 @@ public final class CodecWrapperPool
   
   public void remove(@NonNull ReuseCodecWrapper paramReuseCodecWrapper)
   {
+    Object localObject;
     if (this.storeSet.remove(paramReuseCodecWrapper))
     {
-      if (this.actionCallback != null) {
-        this.actionCallback.onErase(paramReuseCodecWrapper);
+      localObject = this.actionCallback;
+      if (localObject != null) {
+        ((PoolActionCallback)localObject).onErase(paramReuseCodecWrapper);
       }
-      return;
     }
-    LogUtils.w("CodecWrapperPool", "pool:" + this.name + " remove " + paramReuseCodecWrapper + " not found");
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("pool:");
+      ((StringBuilder)localObject).append(this.name);
+      ((StringBuilder)localObject).append(" remove ");
+      ((StringBuilder)localObject).append(paramReuseCodecWrapper);
+      ((StringBuilder)localObject).append(" not found");
+      LogUtils.w("CodecWrapperPool", ((StringBuilder)localObject).toString());
+    }
   }
   
   public final void setActionCallback(@NonNull PoolActionCallback paramPoolActionCallback)
@@ -146,12 +164,17 @@ public final class CodecWrapperPool
   @NonNull
   public String toString()
   {
-    return "size:" + this.storeSet.size() + " elements:" + this.storeSet;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("size:");
+    localStringBuilder.append(this.storeSet.size());
+    localStringBuilder.append(" elements:");
+    localStringBuilder.append(this.storeSet);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.pools.CodecWrapperPool
  * JD-Core Version:    0.7.0.1
  */

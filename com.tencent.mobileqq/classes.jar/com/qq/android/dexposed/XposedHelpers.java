@@ -54,18 +54,18 @@ public class XposedHelpers
       paramObject = findMethodBestMatch(paramObject.getClass(), paramString, paramArrayOfClass, paramVarArgs).invoke(paramObject, paramVarArgs);
       return paramObject;
     }
-    catch (IllegalAccessException paramObject)
+    catch (InvocationTargetException paramObject)
     {
-      DexposedBridge.log(paramObject);
-      throw new IllegalAccessError(paramObject.getMessage());
+      throw new XposedHelpers.InvocationTargetError(paramObject.getCause());
     }
     catch (IllegalArgumentException paramObject)
     {
       throw paramObject;
     }
-    catch (InvocationTargetException paramObject)
+    catch (IllegalAccessException paramObject)
     {
-      throw new XposedHelpers.InvocationTargetError(paramObject.getCause());
+      DexposedBridge.log(paramObject);
+      throw new IllegalAccessError(paramObject.getMessage());
     }
   }
   
@@ -76,18 +76,18 @@ public class XposedHelpers
       paramObject = findMethodBestMatch(paramObject.getClass(), paramString, paramVarArgs).invoke(paramObject, paramVarArgs);
       return paramObject;
     }
-    catch (IllegalAccessException paramObject)
+    catch (InvocationTargetException paramObject)
     {
-      DexposedBridge.log(paramObject);
-      throw new IllegalAccessError(paramObject.getMessage());
+      throw new XposedHelpers.InvocationTargetError(paramObject.getCause());
     }
     catch (IllegalArgumentException paramObject)
     {
       throw paramObject;
     }
-    catch (InvocationTargetException paramObject)
+    catch (IllegalAccessException paramObject)
     {
-      throw new XposedHelpers.InvocationTargetError(paramObject.getCause());
+      DexposedBridge.log(paramObject);
+      throw new IllegalAccessError(paramObject.getMessage());
     }
   }
   
@@ -98,18 +98,18 @@ public class XposedHelpers
       paramClass = findMethodBestMatch(paramClass, paramString, paramArrayOfClass, paramVarArgs).invoke(null, paramVarArgs);
       return paramClass;
     }
-    catch (IllegalAccessException paramClass)
+    catch (InvocationTargetException paramClass)
     {
-      DexposedBridge.log(paramClass);
-      throw new IllegalAccessError(paramClass.getMessage());
+      throw new XposedHelpers.InvocationTargetError(paramClass.getCause());
     }
     catch (IllegalArgumentException paramClass)
     {
       throw paramClass;
     }
-    catch (InvocationTargetException paramClass)
+    catch (IllegalAccessException paramClass)
     {
-      throw new XposedHelpers.InvocationTargetError(paramClass.getCause());
+      DexposedBridge.log(paramClass);
+      throw new IllegalAccessError(paramClass.getMessage());
     }
   }
   
@@ -120,18 +120,18 @@ public class XposedHelpers
       paramClass = findMethodBestMatch(paramClass, paramString, paramVarArgs).invoke(null, paramVarArgs);
       return paramClass;
     }
-    catch (IllegalAccessException paramClass)
+    catch (InvocationTargetException paramClass)
     {
-      DexposedBridge.log(paramClass);
-      throw new IllegalAccessError(paramClass.getMessage());
+      throw new XposedHelpers.InvocationTargetError(paramClass.getCause());
     }
     catch (IllegalArgumentException paramClass)
     {
       throw paramClass;
     }
-    catch (InvocationTargetException paramClass)
+    catch (IllegalAccessException paramClass)
     {
-      throw new XposedHelpers.InvocationTargetError(paramClass.getCause());
+      DexposedBridge.log(paramClass);
+      throw new IllegalAccessError(paramClass.getMessage());
     }
   }
   
@@ -160,10 +160,9 @@ public class XposedHelpers
     localObject = ((StringBuilder)localObject).toString();
     if (constructorCache.containsKey(localObject))
     {
-      paramVarArgs = (Constructor)constructorCache.get(localObject);
-      paramClass = paramVarArgs;
-      if (paramVarArgs != null) {
-        break label95;
+      paramClass = (Constructor)constructorCache.get(localObject);
+      if (paramClass != null) {
+        return paramClass;
       }
       throw new NoSuchMethodError((String)localObject);
     }
@@ -171,30 +170,28 @@ public class XposedHelpers
     {
       paramVarArgs = findConstructorExact(paramClass, paramVarArgs);
       constructorCache.put(localObject, paramVarArgs);
-      paramClass = paramVarArgs;
-      label95:
-      return paramClass;
+      return paramVarArgs;
     }
     catch (NoSuchMethodError paramVarArgs)
     {
-      paramVarArgs = paramClass.getDeclaredConstructors();
-      int j = paramVarArgs.length;
-      int i = 0;
-      for (;;)
+      label95:
+      int j;
+      int i;
+      break label95;
+    }
+    paramClass = paramClass.getDeclaredConstructors();
+    j = paramClass.length;
+    i = 0;
+    for (;;)
+    {
+      if (i >= j)
       {
-        if (i >= j)
-        {
-          if (0 == 0) {
-            break;
-          }
-          throw new NullPointerException();
-        }
-        paramClass = paramVarArgs[i];
-        i += 1;
+        paramClass = new NoSuchMethodError((String)localObject);
+        constructorCache.put(localObject, null);
+        throw paramClass;
       }
-      paramClass = new NoSuchMethodError((String)localObject);
-      constructorCache.put(localObject, null);
-      throw paramClass;
+      paramVarArgs = paramClass[i];
+      i += 1;
     }
   }
   
@@ -202,20 +199,21 @@ public class XposedHelpers
   {
     Object localObject1 = null;
     int i = 0;
-    if (i >= paramArrayOfClass.length) {
-      return findConstructorBestMatch(paramClass, paramArrayOfClass);
-    }
-    if (paramArrayOfClass[i] != null) {}
     for (;;)
     {
-      i += 1;
-      break;
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = getParameterTypes(paramArrayOfObject);
+      if (i >= paramArrayOfClass.length) {
+        return findConstructorBestMatch(paramClass, paramArrayOfClass);
       }
-      paramArrayOfClass[i] = localObject2[i];
-      localObject1 = localObject2;
+      if (paramArrayOfClass[i] == null)
+      {
+        Object localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = getParameterTypes(paramArrayOfObject);
+        }
+        paramArrayOfClass[i] = localObject2[i];
+        localObject1 = localObject2;
+      }
+      i += 1;
     }
   }
   
@@ -232,10 +230,9 @@ public class XposedHelpers
     localObject = ((StringBuilder)localObject).toString();
     if (constructorCache.containsKey(localObject))
     {
-      paramVarArgs = (Constructor)constructorCache.get(localObject);
-      paramClass = paramVarArgs;
-      if (paramVarArgs != null) {
-        break label89;
+      paramClass = (Constructor)constructorCache.get(localObject);
+      if (paramClass != null) {
+        return paramClass;
       }
       throw new NoSuchMethodError((String)localObject);
     }
@@ -244,14 +241,15 @@ public class XposedHelpers
       paramClass = paramClass.getDeclaredConstructor(paramVarArgs);
       paramClass.setAccessible(true);
       constructorCache.put(localObject, paramClass);
-      label89:
       return paramClass;
     }
     catch (NoSuchMethodException paramClass)
     {
-      constructorCache.put(localObject, null);
-      throw new NoSuchMethodError((String)localObject);
+      label91:
+      break label91;
     }
+    constructorCache.put(localObject, null);
+    throw new NoSuchMethodError((String)localObject);
   }
   
   public static Field findField(Class<?> paramClass, String paramString)
@@ -262,10 +260,9 @@ public class XposedHelpers
     localObject = ((StringBuilder)localObject).toString();
     if (fieldCache.containsKey(localObject))
     {
-      paramString = (Field)fieldCache.get(localObject);
-      paramClass = paramString;
-      if (paramString != null) {
-        break label86;
+      paramClass = (Field)fieldCache.get(localObject);
+      if (paramClass != null) {
+        return paramClass;
       }
       throw new NoSuchFieldError((String)localObject);
     }
@@ -274,14 +271,15 @@ public class XposedHelpers
       paramClass = findFieldRecursiveImpl(paramClass, paramString);
       paramClass.setAccessible(true);
       fieldCache.put(localObject, paramClass);
-      label86:
       return paramClass;
     }
     catch (NoSuchFieldException paramClass)
     {
-      fieldCache.put(localObject, null);
-      throw new NoSuchFieldError((String)localObject);
+      label88:
+      break label88;
     }
+    fieldCache.put(localObject, null);
+    throw new NoSuchFieldError((String)localObject);
   }
   
   private static Field findFieldRecursiveImpl(Class<?> paramClass, String paramString)
@@ -295,36 +293,38 @@ public class XposedHelpers
     for (;;)
     {
       paramClass = paramClass.getSuperclass();
-      if ((paramClass == null) || (paramClass.equals(Object.class))) {
-        throw localNoSuchFieldException1;
-      }
+      if ((paramClass != null) && (!paramClass.equals(Object.class))) {}
       try
       {
         Field localField2 = paramClass.getDeclaredField(paramString);
         return localField2;
       }
       catch (NoSuchFieldException localNoSuchFieldException2) {}
+      throw localNoSuchFieldException1;
     }
   }
   
   public static Field findFirstFieldByExactType(Class<?> paramClass1, Class<?> paramClass2)
   {
-    Object localObject1 = paramClass1;
-    Object localObject2 = ((Class)localObject1).getDeclaredFields();
-    int j = localObject2.length;
+    Object localObject = paramClass1;
+    Field[] arrayOfField = ((Class)localObject).getDeclaredFields();
+    int j = arrayOfField.length;
     int i = 0;
     for (;;)
     {
       if (i >= j)
       {
-        localObject2 = ((Class)localObject1).getSuperclass();
-        localObject1 = localObject2;
-        if (localObject2 != null) {
+        localObject = ((Class)localObject).getSuperclass();
+        if (localObject != null) {
           break;
         }
-        throw new NoSuchFieldError("Field of type " + paramClass2.getName() + " in class " + paramClass1.getName());
+        localObject = new StringBuilder("Field of type ");
+        ((StringBuilder)localObject).append(paramClass2.getName());
+        ((StringBuilder)localObject).append(" in class ");
+        ((StringBuilder)localObject).append(paramClass1.getName());
+        throw new NoSuchFieldError(((StringBuilder)localObject).toString());
       }
-      Field localField = localObject2[i];
+      Field localField = arrayOfField[i];
       if (localField.getType() == paramClass2)
       {
         localField.setAccessible(true);
@@ -344,53 +344,49 @@ public class XposedHelpers
     localObject = ((StringBuilder)localObject).toString();
     if (methodCache.containsKey(localObject))
     {
-      paramString = (Method)methodCache.get(localObject);
-      paramClass = paramString;
-      if (paramString != null) {
-        break label111;
+      paramClass = (Method)methodCache.get(localObject);
+      if (paramClass != null) {
+        return paramClass;
       }
       throw new NoSuchMethodError((String)localObject);
     }
-    label111:
-    int i;
     try
     {
       paramString = findMethodExact(paramClass, paramString, paramVarArgs);
       methodCache.put(localObject, paramString);
-      paramClass = paramString;
-      return paramClass;
+      return paramString;
     }
     catch (NoSuchMethodError paramString)
     {
-      i = 1;
+      label111:
+      int i;
+      int k;
+      int j;
+      break label111;
     }
+    i = 1;
+    paramString = paramClass.getDeclaredMethods();
+    k = paramString.length;
+    j = 0;
     for (;;)
     {
-      paramVarArgs = paramClass.getDeclaredMethods();
-      int k = paramVarArgs.length;
-      int j = 0;
-      for (;;)
+      if (j >= k)
       {
-        if (j >= k)
+        paramClass = paramClass.getSuperclass();
+        if (paramClass == null)
         {
-          paramClass = paramClass.getSuperclass();
-          if (paramClass != null) {
-            break label206;
-          }
-          if (0 == 0) {
-            break;
-          }
-          throw new NullPointerException();
+          paramClass = new NoSuchMethodError((String)localObject);
+          methodCache.put(localObject, null);
+          throw paramClass;
         }
-        paramString = paramVarArgs[j];
-        if ((i == 0) && (Modifier.isPrivate(paramString.getModifiers()))) {}
-        j += 1;
+        i = 0;
+        break;
       }
-      paramClass = new NoSuchMethodError((String)localObject);
-      methodCache.put(localObject, null);
-      throw paramClass;
-      label206:
-      i = 0;
+      paramVarArgs = paramString[j];
+      if (i == 0) {
+        Modifier.isPrivate(paramVarArgs.getModifiers());
+      }
+      j += 1;
     }
   }
   
@@ -398,20 +394,21 @@ public class XposedHelpers
   {
     Object localObject1 = null;
     int i = 0;
-    if (i >= paramArrayOfClass.length) {
-      return findMethodBestMatch(paramClass, paramString, paramArrayOfClass);
-    }
-    if (paramArrayOfClass[i] != null) {}
     for (;;)
     {
-      i += 1;
-      break;
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = getParameterTypes(paramArrayOfObject);
+      if (i >= paramArrayOfClass.length) {
+        return findMethodBestMatch(paramClass, paramString, paramArrayOfClass);
       }
-      paramArrayOfClass[i] = localObject2[i];
-      localObject1 = localObject2;
+      if (paramArrayOfClass[i] == null)
+      {
+        Object localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = getParameterTypes(paramArrayOfObject);
+        }
+        paramArrayOfClass[i] = localObject2[i];
+        localObject1 = localObject2;
+      }
+      i += 1;
     }
   }
   
@@ -430,10 +427,9 @@ public class XposedHelpers
     localObject = ((StringBuilder)localObject).toString();
     if (methodCache.containsKey(localObject))
     {
-      paramString = (Method)methodCache.get(localObject);
-      paramClass = paramString;
-      if (paramString != null) {
-        break label103;
+      paramClass = (Method)methodCache.get(localObject);
+      if (paramClass != null) {
+        return paramClass;
       }
       throw new NoSuchMethodError((String)localObject);
     }
@@ -442,57 +438,64 @@ public class XposedHelpers
       paramClass = paramClass.getDeclaredMethod(paramString, paramVarArgs);
       paramClass.setAccessible(true);
       methodCache.put(localObject, paramClass);
-      label103:
       return paramClass;
     }
     catch (NoSuchMethodException paramClass)
     {
-      methodCache.put(localObject, null);
-      throw new NoSuchMethodError((String)localObject);
+      label105:
+      break label105;
     }
+    methodCache.put(localObject, null);
+    throw new NoSuchMethodError((String)localObject);
   }
   
   public static Method findMethodExact(Class<?> paramClass, String paramString, Object... paramVarArgs)
   {
     int i = paramVarArgs.length - 1;
     Object localObject1 = null;
-    if (i < 0)
-    {
-      paramVarArgs = localObject1;
-      if (localObject1 == null) {
-        paramVarArgs = new Class[0];
-      }
-      return findMethodExact(paramClass, paramString, paramVarArgs);
-    }
-    Object localObject3 = paramVarArgs[i];
-    if (localObject3 == null) {
-      throw new XposedHelpers.ClassNotFoundError("parameter type must not be null", null);
-    }
-    if ((localObject3 instanceof XC_MethodHook)) {}
     for (;;)
     {
-      i -= 1;
-      break;
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = new Class[i + 1];
-      }
-      if ((localObject3 instanceof Class))
+      if (i < 0)
       {
-        localObject2[i] = ((Class)localObject3);
-        localObject1 = localObject2;
-      }
-      else
-      {
-        if (!(localObject3 instanceof String)) {
-          break label141;
+        paramVarArgs = localObject1;
+        if (localObject1 == null) {
+          paramVarArgs = new Class[0];
         }
-        localObject2[i] = findClass((String)localObject3, paramClass.getClassLoader());
-        localObject1 = localObject2;
+        return findMethodExact(paramClass, paramString, paramVarArgs);
       }
+      Object localObject3 = paramVarArgs[i];
+      if (localObject3 == null) {
+        break label141;
+      }
+      if (!(localObject3 instanceof XC_MethodHook))
+      {
+        Object localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = new Class[i + 1];
+        }
+        if ((localObject3 instanceof Class))
+        {
+          localObject2[i] = ((Class)localObject3);
+          localObject1 = localObject2;
+        }
+        else
+        {
+          if (!(localObject3 instanceof String)) {
+            break;
+          }
+          localObject2[i] = findClass((String)localObject3, paramClass.getClassLoader());
+          localObject1 = localObject2;
+        }
+      }
+      i -= 1;
     }
-    label141:
     throw new XposedHelpers.ClassNotFoundError("parameter type must either be specified as Class or String", null);
+    label141:
+    paramClass = new XposedHelpers.ClassNotFoundError("parameter type must not be null", null);
+    for (;;)
+    {
+      throw paramClass;
+    }
   }
   
   public static Method findMethodExact(String paramString1, ClassLoader paramClassLoader, String paramString2, Object... paramVarArgs)
@@ -510,52 +513,62 @@ public class XposedHelpers
       return (Method[])localLinkedList.toArray(new Method[localLinkedList.size()]);
     }
     Object localObject = paramClass1[i];
-    if ((paramClass2 != null) && (paramClass2 != localObject.getReturnType())) {}
     Class[] arrayOfClass;
-    do
+    int j;
+    if ((paramClass2 == null) || (paramClass2 == localObject.getReturnType()))
     {
-      i += 1;
-      break;
       arrayOfClass = localObject.getParameterTypes();
-    } while (paramVarArgs.length != arrayOfClass.length);
-    int j = 0;
+      if (paramVarArgs.length == arrayOfClass.length) {
+        j = 0;
+      }
+    }
     for (;;)
     {
-      if (j >= paramVarArgs.length) {}
-      for (j = 1;; j = 0)
+      if (j >= paramVarArgs.length)
       {
-        if (j == 0) {
-          break label140;
+        j = 1;
+      }
+      else
+      {
+        if (paramVarArgs[j] == arrayOfClass[j]) {
+          break label148;
         }
+        j = 0;
+      }
+      if (j != 0)
+      {
         localObject.setAccessible(true);
         localLinkedList.add(localObject);
-        break;
-        if (paramVarArgs[j] == arrayOfClass[j]) {
-          break label142;
-        }
       }
-      label140:
+      i += 1;
       break;
-      label142:
+      label148:
       j += 1;
     }
   }
   
   public static Object getAdditionalInstanceField(Object paramObject, String paramString)
   {
-    if (paramObject == null) {
-      throw new NullPointerException("object must not be null");
-    }
-    if (paramString == null) {
+    if (paramObject != null)
+    {
+      if (paramString != null) {
+        synchronized (additionalFields)
+        {
+          paramObject = (HashMap)additionalFields.get(paramObject);
+          if (paramObject == null) {
+            return null;
+          }
+          try
+          {
+            paramString = paramObject.get(paramString);
+            return paramString;
+          }
+          finally {}
+        }
+      }
       throw new NullPointerException("key must not be null");
     }
-    synchronized (additionalFields)
-    {
-      paramObject = (HashMap)additionalFields.get(paramObject);
-      if (paramObject == null) {
-        return null;
-      }
-    }
+    throw new NullPointerException("object must not be null");
   }
   
   public static Object getAdditionalStaticField(Class<?> paramClass, String paramString)
@@ -575,14 +588,14 @@ public class XposedHelpers
       boolean bool = findField(paramObject.getClass(), paramString).getBoolean(paramObject);
       return bool;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -593,14 +606,14 @@ public class XposedHelpers
       byte b = findField(paramObject.getClass(), paramString).getByte(paramObject);
       return b;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -611,14 +624,14 @@ public class XposedHelpers
       char c = findField(paramObject.getClass(), paramString).getChar(paramObject);
       return c;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -634,14 +647,14 @@ public class XposedHelpers
       double d = findField(paramObject.getClass(), paramString).getDouble(paramObject);
       return d;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -652,14 +665,14 @@ public class XposedHelpers
       float f = findField(paramObject.getClass(), paramString).getFloat(paramObject);
       return f;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -670,14 +683,14 @@ public class XposedHelpers
       int i = findField(paramObject.getClass(), paramString).getInt(paramObject);
       return i;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -688,14 +701,14 @@ public class XposedHelpers
       long l = findField(paramObject.getClass(), paramString).getLong(paramObject);
       return l;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -716,9 +729,13 @@ public class XposedHelpers
         }
         localMessageDigest.update(arrayOfByte, 0, i);
       }
-      return "";
     }
-    catch (NoSuchAlgorithmException paramString) {}
+    catch (NoSuchAlgorithmException paramString)
+    {
+      label64:
+      break label64;
+    }
+    return "";
   }
   
   public static Object getObjectField(Object paramObject, String paramString)
@@ -728,14 +745,14 @@ public class XposedHelpers
       paramObject = findField(paramObject.getClass(), paramString).get(paramObject);
       return paramObject;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -743,47 +760,47 @@ public class XposedHelpers
   {
     Class[] arrayOfClass = new Class[paramVarArgs.length];
     int i = 0;
-    if (i >= paramVarArgs.length) {
-      return arrayOfClass;
-    }
-    if (paramVarArgs[i] != null) {}
-    for (Class localClass = paramVarArgs[i].getClass();; localClass = null)
+    for (;;)
     {
+      if (i >= paramVarArgs.length) {
+        return arrayOfClass;
+      }
+      Class localClass;
+      if (paramVarArgs[i] != null) {
+        localClass = paramVarArgs[i].getClass();
+      } else {
+        localClass = null;
+      }
       arrayOfClass[i] = localClass;
       i += 1;
-      break;
     }
   }
   
   private static String getParametersString(Class<?>... paramVarArgs)
   {
     StringBuilder localStringBuilder = new StringBuilder("(");
-    int j = 1;
     int k = paramVarArgs.length;
     int i = 0;
-    if (i >= k)
-    {
-      localStringBuilder.append(")");
-      return localStringBuilder.toString();
-    }
-    Class<?> localClass = paramVarArgs[i];
-    if (j != 0)
-    {
-      j = 0;
-      label50:
-      if (localClass == null) {
-        break label85;
-      }
-      localStringBuilder.append(localClass.getCanonicalName());
-    }
+    int j = 1;
     for (;;)
     {
+      if (i >= k)
+      {
+        localStringBuilder.append(")");
+        return localStringBuilder.toString();
+      }
+      Class<?> localClass = paramVarArgs[i];
+      if (j != 0) {
+        j = 0;
+      } else {
+        localStringBuilder.append(",");
+      }
+      if (localClass != null) {
+        localStringBuilder.append(localClass.getCanonicalName());
+      } else {
+        localStringBuilder.append("null");
+      }
       i += 1;
-      break;
-      localStringBuilder.append(",");
-      break label50;
-      label85:
-      localStringBuilder.append("null");
     }
   }
   
@@ -794,14 +811,14 @@ public class XposedHelpers
       short s = findField(paramObject.getClass(), paramString).getShort(paramObject);
       return s;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -812,14 +829,14 @@ public class XposedHelpers
       boolean bool = findField(paramClass, paramString).getBoolean(null);
       return bool;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -830,14 +847,14 @@ public class XposedHelpers
       byte b = findField(paramClass, paramString).getByte(null);
       return b;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -848,14 +865,14 @@ public class XposedHelpers
       char c = findField(paramClass, paramString).getChar(null);
       return c;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -866,14 +883,14 @@ public class XposedHelpers
       double d = findField(paramClass, paramString).getDouble(null);
       return d;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -884,14 +901,14 @@ public class XposedHelpers
       float f = findField(paramClass, paramString).getFloat(null);
       return f;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -902,14 +919,14 @@ public class XposedHelpers
       int i = findField(paramClass, paramString).getInt(null);
       return i;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -920,14 +937,14 @@ public class XposedHelpers
       long l = findField(paramClass, paramString).getLong(null);
       return l;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -938,14 +955,14 @@ public class XposedHelpers
       paramClass = findField(paramClass, paramString).get(null);
       return paramClass;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -956,14 +973,14 @@ public class XposedHelpers
       short s = findField(paramClass, paramString).getShort(null);
       return s;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -979,22 +996,22 @@ public class XposedHelpers
       paramClass = findConstructorBestMatch(paramClass, paramArrayOfClass, paramVarArgs).newInstance(paramVarArgs);
       return paramClass;
     }
-    catch (IllegalAccessException paramClass)
+    catch (InstantiationException paramClass)
     {
-      DexposedBridge.log(paramClass);
-      throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
+      throw new InstantiationError(paramClass.getMessage());
     }
     catch (InvocationTargetException paramClass)
     {
       throw new XposedHelpers.InvocationTargetError(paramClass.getCause());
     }
-    catch (InstantiationException paramClass)
+    catch (IllegalArgumentException paramClass)
     {
-      throw new InstantiationError(paramClass.getMessage());
+      throw paramClass;
+    }
+    catch (IllegalAccessException paramClass)
+    {
+      DexposedBridge.log(paramClass);
+      throw new IllegalAccessError(paramClass.getMessage());
     }
   }
   
@@ -1005,40 +1022,47 @@ public class XposedHelpers
       paramClass = findConstructorBestMatch(paramClass, paramVarArgs).newInstance(paramVarArgs);
       return paramClass;
     }
-    catch (IllegalAccessException paramClass)
+    catch (InstantiationException paramClass)
     {
-      DexposedBridge.log(paramClass);
-      throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
+      throw new InstantiationError(paramClass.getMessage());
     }
     catch (InvocationTargetException paramClass)
     {
       throw new XposedHelpers.InvocationTargetError(paramClass.getCause());
     }
-    catch (InstantiationException paramClass)
+    catch (IllegalArgumentException paramClass)
     {
-      throw new InstantiationError(paramClass.getMessage());
+      throw paramClass;
+    }
+    catch (IllegalAccessException paramClass)
+    {
+      DexposedBridge.log(paramClass);
+      throw new IllegalAccessError(paramClass.getMessage());
     }
   }
   
   public static Object removeAdditionalInstanceField(Object paramObject, String paramString)
   {
-    if (paramObject == null) {
-      throw new NullPointerException("object must not be null");
-    }
-    if (paramString == null) {
+    if (paramObject != null)
+    {
+      if (paramString != null) {
+        synchronized (additionalFields)
+        {
+          paramObject = (HashMap)additionalFields.get(paramObject);
+          if (paramObject == null) {
+            return null;
+          }
+          try
+          {
+            paramString = paramObject.remove(paramString);
+            return paramString;
+          }
+          finally {}
+        }
+      }
       throw new NullPointerException("key must not be null");
     }
-    synchronized (additionalFields)
-    {
-      paramObject = (HashMap)additionalFields.get(paramObject);
-      if (paramObject == null) {
-        return null;
-      }
-    }
+    throw new NullPointerException("object must not be null");
   }
   
   public static Object removeAdditionalStaticField(Class<?> paramClass, String paramString)
@@ -1053,27 +1077,29 @@ public class XposedHelpers
   
   public static Object setAdditionalInstanceField(Object paramObject1, String paramString, Object paramObject2)
   {
-    if (paramObject1 == null) {
-      throw new NullPointerException("object must not be null");
-    }
-    if (paramString == null) {
-      throw new NullPointerException("key must not be null");
-    }
-    for (;;)
+    if (paramObject1 != null)
     {
-      HashMap localHashMap;
-      synchronized (additionalFields)
-      {
-        localHashMap = (HashMap)additionalFields.get(paramObject1);
-        if (localHashMap == null)
+      if (paramString != null) {
+        synchronized (additionalFields)
         {
-          localHashMap = new HashMap();
-          additionalFields.put(paramObject1, localHashMap);
-          paramObject1 = localHashMap;
+          HashMap localHashMap2 = (HashMap)additionalFields.get(paramObject1);
+          HashMap localHashMap1 = localHashMap2;
+          if (localHashMap2 == null)
+          {
+            localHashMap1 = new HashMap();
+            additionalFields.put(paramObject1, localHashMap1);
+          }
+          try
+          {
+            paramObject1 = localHashMap1.put(paramString, paramObject2);
+            return paramObject1;
+          }
+          finally {}
         }
       }
-      paramObject1 = localHashMap;
+      throw new NullPointerException("key must not be null");
     }
+    throw new NullPointerException("object must not be null");
   }
   
   public static Object setAdditionalStaticField(Class<?> paramClass, String paramString, Object paramObject)
@@ -1093,14 +1119,14 @@ public class XposedHelpers
       findField(paramObject.getClass(), paramString).setBoolean(paramObject, paramBoolean);
       return;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -1111,14 +1137,14 @@ public class XposedHelpers
       findField(paramObject.getClass(), paramString).setByte(paramObject, paramByte);
       return;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -1129,14 +1155,14 @@ public class XposedHelpers
       findField(paramObject.getClass(), paramString).setChar(paramObject, paramChar);
       return;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -1147,14 +1173,14 @@ public class XposedHelpers
       findField(paramObject.getClass(), paramString).setDouble(paramObject, paramDouble);
       return;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -1165,14 +1191,14 @@ public class XposedHelpers
       findField(paramObject.getClass(), paramString).setFloat(paramObject, paramFloat);
       return;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -1183,14 +1209,14 @@ public class XposedHelpers
       findField(paramObject.getClass(), paramString).setInt(paramObject, paramInt);
       return;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -1201,14 +1227,14 @@ public class XposedHelpers
       findField(paramObject.getClass(), paramString).setLong(paramObject, paramLong);
       return;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -1219,14 +1245,14 @@ public class XposedHelpers
       findField(paramObject1.getClass(), paramString).set(paramObject1, paramObject2);
       return;
     }
+    catch (IllegalArgumentException paramObject1)
+    {
+      throw paramObject1;
+    }
     catch (IllegalAccessException paramObject1)
     {
       DexposedBridge.log(paramObject1);
       throw new IllegalAccessError(paramObject1.getMessage());
-    }
-    catch (IllegalArgumentException paramObject1)
-    {
-      throw paramObject1;
     }
   }
   
@@ -1237,14 +1263,14 @@ public class XposedHelpers
       findField(paramObject.getClass(), paramString).setShort(paramObject, paramShort);
       return;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       DexposedBridge.log(paramObject);
       throw new IllegalAccessError(paramObject.getMessage());
-    }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
     }
   }
   
@@ -1255,14 +1281,14 @@ public class XposedHelpers
       findField(paramClass, paramString).setBoolean(null, paramBoolean);
       return;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -1273,14 +1299,14 @@ public class XposedHelpers
       findField(paramClass, paramString).setByte(null, paramByte);
       return;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -1291,14 +1317,14 @@ public class XposedHelpers
       findField(paramClass, paramString).setChar(null, paramChar);
       return;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -1309,14 +1335,14 @@ public class XposedHelpers
       findField(paramClass, paramString).setDouble(null, paramDouble);
       return;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -1327,14 +1353,14 @@ public class XposedHelpers
       findField(paramClass, paramString).setFloat(null, paramFloat);
       return;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -1345,14 +1371,14 @@ public class XposedHelpers
       findField(paramClass, paramString).setInt(null, paramInt);
       return;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -1363,14 +1389,14 @@ public class XposedHelpers
       findField(paramClass, paramString).setLong(null, paramLong);
       return;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -1381,14 +1407,14 @@ public class XposedHelpers
       findField(paramClass, paramString).set(null, paramObject);
       return;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
   
@@ -1399,14 +1425,14 @@ public class XposedHelpers
       findField(paramClass, paramString).setShort(null, paramShort);
       return;
     }
+    catch (IllegalArgumentException paramClass)
+    {
+      throw paramClass;
+    }
     catch (IllegalAccessException paramClass)
     {
       DexposedBridge.log(paramClass);
       throw new IllegalAccessError(paramClass.getMessage());
-    }
-    catch (IllegalArgumentException paramClass)
-    {
-      throw paramClass;
     }
   }
 }

@@ -13,9 +13,18 @@ public class SimpleConfigHandler
   @CallSuper
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    Log.d("SimpleConfigHandler", "onReceiveConfig: id=" + paramInt1 + ", version=" + paramInt2);
-    if (Log.isDebugVersion()) {
-      Log.d("SimpleConfigHandler", "onReceiveConfig: content=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceiveConfig: id=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", version=");
+    localStringBuilder.append(paramInt2);
+    Log.d("SimpleConfigHandler", localStringBuilder.toString());
+    if (Log.isDebugVersion())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceiveConfig: content=");
+      localStringBuilder.append(paramString);
+      Log.d("SimpleConfigHandler", localStringBuilder.toString());
     }
     return Aladdin.getConfig(paramInt1).update(paramString);
   }
@@ -23,7 +32,10 @@ public class SimpleConfigHandler
   @CallSuper
   public void onWipeConfig(int paramInt)
   {
-    Log.d("SimpleConfigHandler", "onWipeConfig: id=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onWipeConfig: id=");
+    localStringBuilder.append(paramInt);
+    Log.d("SimpleConfigHandler", localStringBuilder.toString());
     Aladdin.getConfig(paramInt).clear();
   }
 }

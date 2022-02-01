@@ -1,5 +1,7 @@
 package com.tencent.mtt.supportui.utils.struct;
 
+import com.tencent.mtt.hippy.utils.LogUtils;
+
 public class Pools$SimplePool<T>
   implements Pools.Pool<T>
 {
@@ -8,40 +10,37 @@ public class Pools$SimplePool<T>
   
   public Pools$SimplePool(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("The max pool size must be > 0");
+    if (paramInt > 0)
+    {
+      this.a = new Object[paramInt];
+      return;
     }
-    this.a = new Object[paramInt];
+    throw new IllegalArgumentException("The max pool size must be > 0");
   }
   
   private boolean a(T paramT)
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < this.b)
     {
-      boolean bool1 = bool2;
-      if (i < this.b)
-      {
-        if (this.a[i] == paramT) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (this.a[i] == paramT) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public T acquire()
   {
-    if (this.b > 0)
+    int i = this.b;
+    if (i > 0)
     {
-      int i = this.b - 1;
-      Object localObject = this.a[i];
-      this.a[i] = null;
-      this.b -= 1;
+      int j = i - 1;
+      Object[] arrayOfObject = this.a;
+      Object localObject = arrayOfObject[j];
+      arrayOfObject[j] = null;
+      this.b = (i - 1);
       return localObject;
     }
     return null;
@@ -49,21 +48,28 @@ public class Pools$SimplePool<T>
   
   public boolean release(T paramT)
   {
-    if (a(paramT)) {
-      throw new IllegalStateException("Already in the pool!");
-    }
-    if ((this.b >= 0) && (this.b < this.a.length))
+    if (a(paramT))
     {
-      this.a[this.b] = paramT;
-      this.b += 1;
-      return true;
+      LogUtils.e("Pools", "Already in the pool!");
+      return false;
+    }
+    int i = this.b;
+    if (i >= 0)
+    {
+      Object[] arrayOfObject = this.a;
+      if (i < arrayOfObject.length)
+      {
+        arrayOfObject[i] = paramT;
+        this.b = (i + 1);
+        return true;
+      }
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.utils.struct.Pools.SimplePool
  * JD-Core Version:    0.7.0.1
  */

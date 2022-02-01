@@ -16,29 +16,23 @@ class DeviceMsgHandle$1
   
   private List<DeviceFileObserver> a(Session paramSession)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramSession != null)
-    {
-      str1 = str2;
-      if (paramSession.actionInfo != null) {
-        str1 = paramSession.actionInfo.strServiceName;
-      }
+    if ((paramSession != null) && (paramSession.actionInfo != null)) {
+      paramSession = paramSession.actionInfo.strServiceName;
+    } else {
+      paramSession = "";
     }
-    return a(str1);
+    return a(paramSession);
   }
   
   private List<DeviceFileObserver> a(String paramString)
   {
-    if (paramString != null) {}
-    for (;;)
-    {
-      if (paramString != null) {
-        return (List)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      }
-      return null;
+    if (paramString == null) {
       paramString = "";
     }
+    if (paramString != null) {
+      return (List)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    }
+    return null;
   }
   
   public void a(Bundle paramBundle)
@@ -58,28 +52,36 @@ class DeviceMsgHandle$1
   
   public void a(Session paramSession)
   {
-    if (paramSession.isFileAssist) {}
-    for (;;)
-    {
+    if (paramSession.isFileAssist) {
       return;
-      if (QLog.isDevelopLevel()) {
-        QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "onServiceSessionNew:" + paramSession.uSessionID);
-      }
-      Object localObject = a(paramSession);
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((DeviceFileObserver)((Iterator)localObject).next()).a(paramSession);
-        }
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onServiceSessionNew:");
+      localStringBuilder.append(paramSession.uSessionID);
+      QLog.d((String)localObject, 4, localStringBuilder.toString());
+    }
+    Object localObject = a(paramSession);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((DeviceFileObserver)((Iterator)localObject).next()).a(paramSession);
       }
     }
   }
   
   public void a(Session paramSession, float paramFloat)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "onServiceSessionProgress:" + paramSession.uSessionID);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onServiceSessionProgress:");
+      localStringBuilder.append(paramSession.uSessionID);
+      QLog.d((String)localObject, 4, localStringBuilder.toString());
     }
     Object localObject = a(paramSession);
     if (localObject != null)
@@ -93,8 +95,13 @@ class DeviceMsgHandle$1
   
   public void a(Session paramSession, boolean paramBoolean)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "onServiceSessionComplete:" + paramSession.uSessionID);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onServiceSessionComplete:");
+      localStringBuilder.append(paramSession.uSessionID);
+      QLog.d((String)localObject, 4, localStringBuilder.toString());
     }
     Object localObject = a(paramSession);
     if (localObject != null)
@@ -123,8 +130,13 @@ class DeviceMsgHandle$1
   
   public void b(Session paramSession)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(DeviceMsgHandle.jdField_a_of_type_JavaLangString, 4, "onServiceSessionStart:" + paramSession.uSessionID);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = DeviceMsgHandle.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onServiceSessionStart:");
+      localStringBuilder.append(paramSession.uSessionID);
+      QLog.d((String)localObject, 4, localStringBuilder.toString());
     }
     Object localObject = a(paramSession);
     if (localObject != null)
@@ -138,7 +150,7 @@ class DeviceMsgHandle$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceMsgHandle.1
  * JD-Core Version:    0.7.0.1
  */

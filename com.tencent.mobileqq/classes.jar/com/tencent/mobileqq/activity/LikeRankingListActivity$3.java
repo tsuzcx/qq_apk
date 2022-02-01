@@ -10,10 +10,14 @@ class LikeRankingListActivity$3
 {
   LikeRankingListActivity$3(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void onGetProfileCard(boolean paramBoolean, Object paramObject)
+  protected void onGetProfileCard(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListActivity", 2, "onCardDownload isSuccess=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCardDownload isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("LikeRankingListActivity", 2, localStringBuilder.toString());
     }
     if ((paramBoolean) && ((paramObject instanceof Card)))
     {
@@ -26,7 +30,7 @@ class LikeRankingListActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.3
  * JD-Core Version:    0.7.0.1
  */

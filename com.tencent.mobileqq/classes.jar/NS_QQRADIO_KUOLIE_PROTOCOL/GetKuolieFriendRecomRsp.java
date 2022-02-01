@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetKuolieFriendRecomRsp
   extends JceStruct
@@ -39,20 +40,23 @@ public final class GetKuolieFriendRecomRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.commInfo != null) {
-      paramJceOutputStream.write(this.commInfo, 0);
+    Object localObject = this.commInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.roomInfo != null) {
-      paramJceOutputStream.write(this.roomInfo, 1);
+    localObject = this.roomInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.userList != null) {
-      paramJceOutputStream.write(this.userList, 2);
+    localObject = this.userList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_KUOLIE_PROTOCOL.GetKuolieFriendRecomRsp
  * JD-Core Version:    0.7.0.1
  */

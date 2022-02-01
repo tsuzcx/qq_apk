@@ -25,14 +25,15 @@ public class MiniAppPushControl
   
   public static MiniAppPushControl getInstance(String paramString)
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new MiniAppPushControl(paramString);
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new MiniAppPushControl(paramString);
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   public void processControlInfo(MiniAppControlInfo paramMiniAppControlInfo)
@@ -41,10 +42,13 @@ public class MiniAppPushControl
     {
       if (this.pushActions.containsKey(paramMiniAppControlInfo.cmd))
       {
-        QLog.d("MiniAppPushControl", 1, "MiniAppPushControl processControlInfo cmd:" + paramMiniAppControlInfo);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("MiniAppPushControl processControlInfo cmd:");
+        localStringBuilder.append(paramMiniAppControlInfo);
+        QLog.d("MiniAppPushControl", 1, localStringBuilder.toString());
         ((PushAction)this.pushActions.get(paramMiniAppControlInfo.cmd)).exec(paramMiniAppControlInfo);
+        return;
       }
-      return;
     }
     catch (Exception paramMiniAppControlInfo)
     {
@@ -54,7 +58,7 @@ public class MiniAppPushControl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.push.MiniAppPushControl
  * JD-Core Version:    0.7.0.1
  */

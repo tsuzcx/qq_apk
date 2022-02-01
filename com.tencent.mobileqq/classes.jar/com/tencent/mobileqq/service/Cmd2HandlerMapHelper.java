@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MobileQQ;
 
 public class Cmd2HandlerMapHelper
 {
@@ -17,74 +16,73 @@ public class Cmd2HandlerMapHelper
   private static Map<String, Set<String>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private static boolean jdField_a_of_type_Boolean;
   
-  private static Map<String, String[]> a()
+  private static Map<String, String[]> a(AppInterface paramAppInterface)
   {
-    if (!jdField_a_of_type_Boolean)
+    if ((!jdField_a_of_type_Boolean) && (paramAppInterface != null))
     {
-      Object localObject = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getMobileQQService();
-      if (localObject != null)
+      paramAppInterface = paramAppInterface.getMobileQQService();
+      if (paramAppInterface != null)
       {
-        localObject = ((MobileQQServiceBase)localObject).getCompatibleCmd2HandlerMap();
-        a(jdField_a_of_type_JavaUtilMap, (Map)localObject);
+        paramAppInterface = paramAppInterface.getCompatibleCmd2HandlerMap();
+        a(jdField_a_of_type_JavaUtilMap, paramAppInterface);
       }
       jdField_a_of_type_Boolean = true;
     }
     return null;
   }
   
-  protected static Set<String> a(String paramString)
+  protected static Set<String> a(AppInterface paramAppInterface, String paramString)
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      a();
-      paramString = (Set)jdField_a_of_type_JavaUtilMap.get(paramString);
-      return paramString;
+      a(paramAppInterface);
+      paramAppInterface = (Set)jdField_a_of_type_JavaUtilMap.get(paramString);
+      return paramAppInterface;
     }
   }
   
   public static void a(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString1))
     {
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
       synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (jdField_a_of_type_JavaUtilMap.isEmpty()) {
-          a();
-        }
-        if (paramString2 != null)
-        {
+        Set localSet = (Set)jdField_a_of_type_JavaUtilMap.get(paramString1);
+        if (localSet == null) {
           jdField_a_of_type_JavaUtilMap.put(paramString1, new HashSet(Arrays.asList(new String[] { paramString2 })));
-          return;
+        } else {
+          localSet.add(paramString2);
         }
+        return;
       }
-      ((Set)jdField_a_of_type_JavaUtilMap.get(paramString1)).add(paramString2);
     }
   }
   
   public static void a(String paramString, Set<String> paramSet)
   {
-    if ((paramSet == null) || (paramSet.isEmpty())) {
-      return;
-    }
-    for (;;)
+    if ((paramSet != null) && (!paramSet.isEmpty()))
     {
-      String str;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
       synchronized (jdField_a_of_type_JavaLangObject)
       {
         paramSet = paramSet.iterator();
-        if (!paramSet.hasNext()) {
-          break;
+        while (paramSet.hasNext())
+        {
+          String str = (String)paramSet.next();
+          Set localSet = (Set)jdField_a_of_type_JavaUtilMap.get(str);
+          if (localSet != null) {
+            localSet.add(paramString);
+          } else {
+            jdField_a_of_type_JavaUtilMap.put(str, new Cmd2HandlerMapHelper.1(paramString));
+          }
         }
-        str = (String)paramSet.next();
-        Set localSet = (Set)jdField_a_of_type_JavaUtilMap.get(str);
-        if (localSet != null) {
-          localSet.add(paramString);
-        }
+        return;
       }
-      jdField_a_of_type_JavaUtilMap.put(str, new Cmd2HandlerMapHelper.1(paramString));
     }
   }
   
@@ -93,38 +91,40 @@ public class Cmd2HandlerMapHelper
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    for (;;)
+    Object localObject = jdField_a_of_type_JavaLangObject;
+    if (paramArrayOfString != null) {}
+    try
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (jdField_a_of_type_JavaUtilMap.isEmpty()) {
-          a();
-        }
-        if (paramArrayOfString != null)
-        {
-          jdField_a_of_type_JavaUtilMap.put(paramString, new HashSet(Arrays.asList(paramArrayOfString)));
-          return;
-        }
-      }
+      jdField_a_of_type_JavaUtilMap.put(paramString, new HashSet(Arrays.asList(paramArrayOfString)));
+      break label52;
       jdField_a_of_type_JavaUtilMap.remove(paramString);
+      label52:
+      return;
     }
+    finally {}
   }
   
   private static void a(Map<String, Set<String>> paramMap, Map<String, String[]> paramMap1)
   {
-    paramMap1 = paramMap1.entrySet().iterator();
-    while (paramMap1.hasNext())
+    if (paramMap != null)
     {
-      Object localObject = (Map.Entry)paramMap1.next();
-      String str = (String)((Map.Entry)localObject).getKey();
-      localObject = (String[])((Map.Entry)localObject).getValue();
-      if (localObject != null)
+      if (paramMap1 == null) {
+        return;
+      }
+      paramMap1 = paramMap1.entrySet().iterator();
+      while (paramMap1.hasNext())
       {
-        Set localSet = (Set)paramMap.get(str);
-        if (localSet == null) {
-          paramMap.put(str, new HashSet(Arrays.asList((Object[])localObject)));
-        } else {
-          localSet.addAll(new HashSet(Arrays.asList((Object[])localObject)));
+        Object localObject = (Map.Entry)paramMap1.next();
+        String str = (String)((Map.Entry)localObject).getKey();
+        localObject = (String[])((Map.Entry)localObject).getValue();
+        if (localObject != null)
+        {
+          Set localSet = (Set)paramMap.get(str);
+          if (localSet == null) {
+            paramMap.put(str, new HashSet(Arrays.asList((Object[])localObject)));
+          } else {
+            localSet.addAll(new HashSet(Arrays.asList((Object[])localObject)));
+          }
         }
       }
     }
@@ -137,7 +137,7 @@ public class Cmd2HandlerMapHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.Cmd2HandlerMapHelper
  * JD-Core Version:    0.7.0.1
  */

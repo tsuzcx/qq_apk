@@ -8,13 +8,14 @@ class GalleryManager$2
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = false;
-    GalleryManager.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene);
+    GalleryManager localGalleryManager = this.this$0;
+    GalleryManager.a(localGalleryManager, localGalleryManager.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene);
     this.this$0.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.GalleryManager.2
  * JD-Core Version:    0.7.0.1
  */

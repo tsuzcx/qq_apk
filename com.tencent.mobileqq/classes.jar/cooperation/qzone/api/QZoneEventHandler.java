@@ -1,9 +1,8 @@
 package cooperation.qzone.api;
 
 import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.core.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.drawer.BaseChatDrawer;
-import cooperation.qzone.util.QZLog;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.IQZoneEventHandlerProxy;
 
 public class QZoneEventHandler
 {
@@ -11,21 +10,12 @@ public class QZoneEventHandler
   
   public static boolean handleActivityEvent(Object paramObject, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QZLog.i("QZoneEventHandler", "handleActivityEvent: " + paramInt1 + " " + paramInt2);
-    switch (paramInt1)
-    {
-    default: 
-      return false;
-    }
-    if (((paramObject instanceof FriendChatPie)) && (((FriendChatPie)paramObject).a != null)) {
-      ((FriendChatPie)paramObject).a.a(paramInt1, paramInt2, paramIntent);
-    }
-    return true;
+    return ((IQZoneEventHandlerProxy)QRoute.api(IQZoneEventHandlerProxy.class)).handleActivityEvent(paramObject, paramInt1, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.api.QZoneEventHandler
  * JD-Core Version:    0.7.0.1
  */

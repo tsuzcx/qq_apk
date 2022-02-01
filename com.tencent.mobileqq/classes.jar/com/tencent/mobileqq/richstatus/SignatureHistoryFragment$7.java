@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richstatus;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.vas.signature.SignatureEditManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
@@ -16,8 +16,16 @@ class SignatureHistoryFragment$7
   {
     if (paramInt == 0)
     {
-      VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "" + this.jdField_a_of_type_Int, "", "", "", "", 0, 0, 0, 0);
-      SignatureEditManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().app, 0, "signature_history", -1, this.b, this.c, null);
+      paramView = new StringBuilder();
+      paramView.append("");
+      paramView.append(this.jdField_a_of_type_Int);
+      VasWebviewUtil.a("signature_history", "sheet", "", 0, 0, 0, "", "", paramView.toString(), "", "", "", "", 0, 0, 0, 0);
+      if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).equals(SignatureHistoryFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment))) {
+        paramInt = 49;
+      } else {
+        paramInt = 50;
+      }
+      SignatureEditManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getBaseActivity().app, 0, "signature_history", -1, this.b, this.c, null, paramInt);
     }
     if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) != null) {
       SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).dismiss();
@@ -26,7 +34,7 @@ class SignatureHistoryFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.7
  * JD-Core Version:    0.7.0.1
  */

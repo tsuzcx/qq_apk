@@ -27,13 +27,13 @@ public class QAPMTraceEngine
         notifyObserverEnterMethod(new g(paramString, getSegmentType(paramArrayList).a()));
         return;
       }
+      notifyObserverAsyncEnterMethod(new g(paramString, getSegmentType(paramArrayList).a()));
+      return;
     }
     catch (Throwable paramg)
     {
       Logger.INSTANCE.exception("QAPM_Impl_QAPMTraceEngine", "error happend in enterMethod:", paramg);
-      return;
     }
-    notifyObserverAsyncEnterMethod(new g(paramString, getSegmentType(paramArrayList).a()));
   }
   
   public static void enterMethod(String paramString, ArrayList<String> paramArrayList)
@@ -147,8 +147,10 @@ public class QAPMTraceEngine
   
   public static void registerListener(b paramb)
   {
-    if (paramb == null) {}
-    while (metricEventListeners.contains(paramb)) {
+    if (paramb == null) {
+      return;
+    }
+    if (metricEventListeners.contains(paramb)) {
       return;
     }
     metricEventListeners.add(paramb);
@@ -179,7 +181,7 @@ public class QAPMTraceEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMTraceEngine
  * JD-Core Version:    0.7.0.1
  */

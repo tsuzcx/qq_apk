@@ -14,13 +14,14 @@ class QFlutterFaceLoader$2
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int j = 0;
-    if ((paramIntent == null) || (!"com.tencent.qqhead.changed".equals(paramIntent.getAction()))) {}
-    for (;;)
+    if (paramIntent != null)
     {
-      return;
+      if (!"com.tencent.qqhead.changed".equals(paramIntent.getAction())) {
+        return;
+      }
       paramContext = paramIntent.getStringExtra("uin");
       int k = paramIntent.getIntExtra("faceType", -1);
+      int j = 0;
       QLog.i("QFlutter.qqface", 1, String.format("mQQFaceChangeReceiver.onReceive uin=%s", new Object[] { paramContext }));
       if (!TextUtils.isEmpty(paramContext))
       {
@@ -48,7 +49,7 @@ class QFlutterFaceLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFaceLoader.2
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,9 @@ public enum AdToast
   
   private static AdToastAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdToastAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdToastAdapter)localWeakReference.get();
     }
     return null;
   }

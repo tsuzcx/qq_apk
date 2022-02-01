@@ -14,15 +14,16 @@ public class TeleScreenObserver
   
   public static TeleScreenObserver a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqBigbrotherTeleScreenObserver == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqBigbrotherTeleScreenObserver == null) {
-        jdField_a_of_type_ComTencentMobileqqBigbrotherTeleScreenObserver = new TeleScreenObserver();
+    if (jdField_a_of_type_ComTencentMobileqqBigbrotherTeleScreenObserver == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqBigbrotherTeleScreenObserver == null) {
+          jdField_a_of_type_ComTencentMobileqqBigbrotherTeleScreenObserver = new TeleScreenObserver();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqBigbrotherTeleScreenObserver;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqBigbrotherTeleScreenObserver;
   }
   
   public int a(Context paramContext, DownloadListener paramDownloadListener)
@@ -52,22 +53,21 @@ public class TeleScreenObserver
   {
     int i = paramBundle.getInt("req_id");
     TeleScreenListenerWrapper localTeleScreenListenerWrapper = (TeleScreenListenerWrapper)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    switch (paramInt)
+    if (paramInt != 3)
     {
+      if (paramInt == 4) {
+        localTeleScreenListenerWrapper.b(paramBoolean, paramBundle.getInt("jump", 0), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"));
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
-      return;
+    else {
       localTeleScreenListenerWrapper.b(paramBoolean, paramBundle.getBoolean("allow_download", true), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"), paramBundle.getString("jump_url"));
-      continue;
-      localTeleScreenListenerWrapper.b(paramBoolean, paramBundle.getInt("jump", 0), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"));
     }
+    this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.TeleScreenObserver
  * JD-Core Version:    0.7.0.1
  */

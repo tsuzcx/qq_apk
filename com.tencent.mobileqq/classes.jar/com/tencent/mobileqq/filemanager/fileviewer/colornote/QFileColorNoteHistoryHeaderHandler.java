@@ -1,37 +1,44 @@
 package com.tencent.mobileqq.filemanager.fileviewer.colornote;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.colornote.settings.IOnHeaderClickHandler;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.filemanager.api.IQQFileSelector;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 
 public class QFileColorNoteHistoryHeaderHandler
   implements IOnHeaderClickHandler
 {
+  public int a()
+  {
+    return 17039360;
+  }
+  
   public String a()
   {
-    return HardCodeUtil.a(2131699139);
+    return HardCodeUtil.a(2131699243);
   }
   
   public void a(View paramView, int paramInt)
   {
-    if (paramView == null) {}
-    while (paramInt != 17039360) {
+    if (paramView == null) {
       return;
     }
+    if (paramInt != 17039360) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     paramView = paramView.getContext();
-    Intent localIntent = new Intent(paramView, FileAssistantActivity.class);
-    localIntent.putExtra("from", "FileAssistant");
-    paramView.startActivity(localIntent);
+    ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).openFileSelectorByColorNoteHistory(paramView);
     ReportController.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.colornote.QFileColorNoteHistoryHeaderHandler
  * JD-Core Version:    0.7.0.1
  */

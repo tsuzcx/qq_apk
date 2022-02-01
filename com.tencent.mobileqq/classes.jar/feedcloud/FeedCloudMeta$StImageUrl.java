@@ -20,13 +20,14 @@ public final class FeedCloudMeta$StImageUrl
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42 }, new String[] { "levelType", "url", "width", "height", "busiData" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, StImageUrl.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42 }, new String[] { "levelType", "url", "width", "height", "busiData" }, new Object[] { localInteger, "", localInteger, localInteger, localByteStringMicro }, StImageUrl.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StImageUrl
  * JD-Core Version:    0.7.0.1
  */

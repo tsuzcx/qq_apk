@@ -25,16 +25,12 @@ public class VideoLayerUI$MultiVideoOpenAnimation
   
   public void run()
   {
-    if (this.b == 9) {
+    if (this.b == 9)
+    {
       this.this$0.c(false);
     }
-    for (;;)
+    else
     {
-      this.b += 1;
-      if (this.b <= 9) {
-        this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 30L);
-      }
-      return;
       GLVideoView localGLVideoView = this.this$0.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[this.jdField_a_of_type_Int];
       Rect localRect = localGLVideoView.b();
       int i = (int)(localRect.left - this.jdField_a_of_type_Float);
@@ -42,11 +38,15 @@ public class VideoLayerUI$MultiVideoOpenAnimation
       localGLVideoView.b(i, localRect.top, j + i, localRect.bottom);
       localGLVideoView.b();
     }
+    this.b += 1;
+    if (this.b <= 9) {
+      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 30L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI.MultiVideoOpenAnimation
  * JD-Core Version:    0.7.0.1
  */

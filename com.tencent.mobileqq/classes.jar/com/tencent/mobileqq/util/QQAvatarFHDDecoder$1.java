@@ -14,65 +14,69 @@ class QQAvatarFHDDecoder$1
 {
   QQAvatarFHDDecoder$1(QQAvatarFHDDecoder paramQQAvatarFHDDecoder) {}
   
-  public void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfo ").append(paramBoolean).append(" ");
-      if (paramSetting == null) {
-        break label99;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetHeadInfo ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" ");
+      String str;
+      if (paramSetting != null) {
+        str = paramSetting.uin;
+      } else {
+        str = "";
       }
+      localStringBuilder.append(str);
+      QLog.i("QQAvatarFHDDecoder", 2, localStringBuilder.toString());
     }
-    label99:
-    for (String str = paramSetting.uin;; str = "")
-    {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if ((paramSetting != null) && (paramSetting.uin != null) && (paramSetting.uin.equals(QQAvatarFHDDecoder.a(this.a)))) {
-        ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.1(this, paramSetting), 128, null, true);
-      }
-      return;
+    if ((paramSetting != null) && (paramSetting.uin != null) && (paramSetting.uin.equals(QQAvatarFHDDecoder.a(this.a)))) {
+      ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.1(this, paramSetting), 128, null, true);
     }
   }
   
   public void onGetHeadInfoEmpty(boolean paramBoolean, int paramInt, List<String> paramList)
   {
-    StringBuilder localStringBuilder;
+    String str;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfoEmpty ").append(paramBoolean).append(" ").append(paramInt).append(" ");
-      if (paramList == null) {
-        break label138;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetHeadInfoEmpty ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" ");
+      if (paramList != null) {
+        str = paramList.toString();
+      } else {
+        str = "";
       }
+      localStringBuilder.append(str);
+      QLog.i("QQAvatarFHDDecoder", 2, localStringBuilder.toString());
     }
-    label138:
-    for (String str = paramList.toString();; str = "")
+    if (paramList != null)
     {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if (paramList != null)
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
+        str = (String)paramList.next();
+        if ((str != null) && (str.equals(QQAvatarFHDDecoder.a(this.a))))
         {
-          str = (String)paramList.next();
-          if ((str != null) && (str.equals(QQAvatarFHDDecoder.a(this.a))))
+          if (paramBoolean)
           {
-            if (!paramBoolean) {
-              break label145;
-            }
             ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.2(this, str), 128, null, true);
+            return;
           }
+          QQAvatarFHDDecoder.a(this.a).obtainMessage(1).sendToTarget();
         }
       }
-      return;
     }
-    label145:
-    QQAvatarFHDDecoder.a(this.a).obtainMessage(1).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQAvatarFHDDecoder.1
  * JD-Core Version:    0.7.0.1
  */

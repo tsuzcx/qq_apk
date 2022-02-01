@@ -44,25 +44,25 @@ class ARTransferPromotionRenderable$7
       if (ARTransferPromotionRenderable.a(this.this$0) != null) {
         ThreadManager.getUIHandler().post(new ARTransferPromotionRenderable.7.1(this));
       }
-    }
-    synchronized (ARTransferPromotionRenderable.a(this.this$0))
-    {
-      ARTransferPromotionRenderable.a(this.this$0).clear();
-      ARTransferPromotionRenderable.a(this.this$0).c();
-      ARTransferPromotionRenderable.a(this.this$0);
-      if (ARTransferPromotionRenderable.a(this.this$0) != null)
+      synchronized (ARTransferPromotionRenderable.a(this.this$0))
       {
-        ARTransferPromotionRenderable.a(this.this$0).b();
-        ARTransferPromotionRenderable.a(this.this$0).a();
-        ARTransferPromotionRenderable.a(this.this$0, null);
+        ARTransferPromotionRenderable.a(this.this$0).clear();
+        ARTransferPromotionRenderable.a(this.this$0).c();
+        ARTransferPromotionRenderable.a(this.this$0);
+        if (ARTransferPromotionRenderable.a(this.this$0) != null)
+        {
+          ARTransferPromotionRenderable.a(this.this$0).b();
+          ARTransferPromotionRenderable.a(this.this$0).a();
+          ARTransferPromotionRenderable.a(this.this$0, null);
+          return;
+        }
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.7
  * JD-Core Version:    0.7.0.1
  */

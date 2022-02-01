@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class FastAuthorize$AuthorizeRequest
   extends MessageMicro<AuthorizeRequest>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 42, 50, 58, 66, 74, 80, 90, 98, 106 }, new String[] { "uin", "client_id", "pf", "qqv", "sdkp", "skey", "vkey", "version", "flags", "os", "sid", "apk_sign" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "", "", "", "", "", "1.0", Integer.valueOf(0), "", "", "" }, AuthorizeRequest.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField apk_sign = PBField.initString("");
   public final PBInt64Field client_id = PBField.initInt64(0L);
   public final PBInt32Field flags = PBField.initInt32(0);
@@ -23,10 +23,16 @@ public final class FastAuthorize$AuthorizeRequest
   public final PBInt64Field uin = PBField.initInt64(0L);
   public final PBStringField version = PBField.initString("1.0");
   public final PBStringField vkey = PBField.initString("");
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 42, 50, 58, 66, 74, 80, 90, 98, 106 }, new String[] { "uin", "client_id", "pf", "qqv", "sdkp", "skey", "vkey", "version", "flags", "os", "sid", "apk_sign" }, new Object[] { localLong, localLong, "", "", "", "", "", "1.0", Integer.valueOf(0), "", "", "" }, AuthorizeRequest.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeRequest
  * JD-Core Version:    0.7.0.1
  */

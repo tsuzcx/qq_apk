@@ -10,25 +10,23 @@ final class IMCoreProxyRegister$4
 {
   public String a(BaseQQAppInterface paramBaseQQAppInterface, String paramString, boolean paramBoolean)
   {
-    String str = paramString;
     if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
-      str = ContactUtils.c((QQAppInterface)paramBaseQQAppInterface, paramString, true);
+      return ContactUtils.a((QQAppInterface)paramBaseQQAppInterface, paramString, true);
     }
-    return str;
+    return paramString;
   }
   
   public String b(BaseQQAppInterface paramBaseQQAppInterface, String paramString, boolean paramBoolean)
   {
-    String str = paramString;
     if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
-      str = ContactUtils.a((QQAppInterface)paramBaseQQAppInterface, paramString, true);
+      return ContactUtils.a((QQAppInterface)paramBaseQQAppInterface, paramString, true);
     }
-    return str;
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.IMCoreProxyRegister.4
  * JD-Core Version:    0.7.0.1
  */

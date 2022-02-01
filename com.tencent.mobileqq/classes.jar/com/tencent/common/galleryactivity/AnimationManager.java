@@ -33,50 +33,63 @@ public class AnimationManager
   
   private Drawable a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, GalleryImage paramGalleryImage, boolean paramBoolean)
   {
-    if (paramGalleryImage == null) {}
-    Drawable localDrawable;
-    do
-    {
+    Object localObject = null;
+    if (paramGalleryImage == null) {
       return null;
-      localDrawable = paramGalleryImage.getAnimationDrawable();
-      paramRect1 = paramGalleryImage.getThumbRect();
-    } while ((paramRect1 == null) || (localDrawable == null) || (!paramGalleryImage.needAnimation(paramBoolean)));
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    int k = localDrawable.getIntrinsicWidth();
-    int m = localDrawable.getIntrinsicHeight();
-    paramRect2.set(0, 0, k, m);
-    paramRect3.set(paramRect1);
-    if ((paramGalleryImage instanceof AIORichMediaInfo)) {}
-    for (paramRect2 = ((AIORichMediaInfo)paramGalleryImage).a;; paramRect2 = null)
+    }
+    Drawable localDrawable = paramGalleryImage.getAnimationDrawable();
+    paramRect1 = paramGalleryImage.getThumbRect();
+    if ((paramRect1 != null) && (localDrawable != null))
     {
-      if ((!VersionUtils.e()) && ((localDrawable instanceof URLDrawable)) && ((((URLDrawable)localDrawable).getCurrDrawable() instanceof GifDrawable))) {}
-      for (paramRect1 = AnimationUtils.a(k, m, i, j, false, paramRect2);; paramRect1 = null)
+      if (!paramGalleryImage.needAnimation(paramBoolean)) {
+        return null;
+      }
+      int i = this.jdField_a_of_type_AndroidViewView.getWidth();
+      int j = this.jdField_a_of_type_AndroidViewView.getHeight();
+      int k = localDrawable.getIntrinsicWidth();
+      int m = localDrawable.getIntrinsicHeight();
+      paramRect2.set(0, 0, k, m);
+      paramRect3.set(paramRect1);
+      if ((paramGalleryImage instanceof AIORichMediaInfo)) {
+        paramRect2 = ((AIORichMediaInfo)paramGalleryImage).a;
+      } else {
+        paramRect2 = null;
+      }
+      paramRect1 = localObject;
+      if (!VersionUtils.e())
       {
-        if (paramRect1 == null) {
-          paramRect1 = AnimationUtils.a(k, m, i, j, paramRect2);
-        }
-        for (;;)
+        paramRect1 = localObject;
+        if ((localDrawable instanceof URLDrawable))
         {
-          paramRect4.set(paramRect1);
-          return localDrawable;
+          paramRect1 = localObject;
+          if ((((URLDrawable)localDrawable).getCurrDrawable() instanceof GifDrawable)) {
+            paramRect1 = AnimationUtils.a(k, m, i, j, false, paramRect2);
+          }
         }
       }
+      paramRect3 = paramRect1;
+      if (paramRect1 == null) {
+        paramRect3 = AnimationUtils.a(k, m, i, j, paramRect2);
+      }
+      paramRect4.set(paramRect3);
+      return localDrawable;
     }
+    return null;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367677);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362741));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131377356);
-    this.c = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363419);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367431);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362696));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131376809);
+    this.c = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363349);
   }
   
   public boolean b()
   {
-    boolean bool = true;
-    if (a()) {
+    boolean bool2 = a();
+    boolean bool1 = true;
+    if (bool2) {
       return true;
     }
     if (this.jdField_a_of_type_AndroidViewView == null) {
@@ -92,20 +105,16 @@ public class AnimationManager
     Rect localRect4 = new Rect();
     Drawable localDrawable = a(null, localRect4, localRect1, localRect2, localGalleryImage, true);
     this.jdField_a_of_type_Boolean = true;
-    if (localDrawable != null)
+    if (localDrawable == null) {
+      bool1 = false;
+    }
+    this.jdField_b_of_type_Boolean = bool1;
+    if (!this.jdField_b_of_type_Boolean)
     {
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label126;
-      }
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
     }
-    for (;;)
+    else
     {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
-      break;
-      label126:
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localGalleryImage.isImgCenterCropMode;
@@ -115,11 +124,14 @@ public class AnimationManager
         this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect3, localRect4, localRect1, localRect2, this.jdField_a_of_type_Long);
       }
     }
+    return this.jdField_b_of_type_Boolean;
   }
   
   public boolean c()
   {
-    if (a()) {
+    boolean bool2 = a();
+    boolean bool1 = true;
+    if (bool2) {
       return true;
     }
     if (this.jdField_a_of_type_AndroidViewView == null) {
@@ -135,22 +147,16 @@ public class AnimationManager
     Rect localRect4 = new Rect();
     Drawable localDrawable = a(localRect1, localRect4, localRect2, localRect3, localGalleryImage, false);
     this.jdField_a_of_type_Boolean = true;
-    boolean bool;
-    if (localDrawable != null)
+    if (localDrawable == null) {
+      bool1 = false;
+    }
+    this.jdField_b_of_type_Boolean = bool1;
+    if (!this.jdField_b_of_type_Boolean)
     {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label127;
-      }
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
     }
-    for (;;)
+    else
     {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
-      break;
-      label127:
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
       this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localGalleryImage.isImgCenterCropMode;
@@ -161,6 +167,7 @@ public class AnimationManager
         this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.b(localDrawable, localRect1, localRect4, localRect2, localRect3, this.jdField_a_of_type_Long);
       }
     }
+    return this.jdField_b_of_type_Boolean;
   }
   
   public void f()
@@ -203,7 +210,7 @@ public class AnimationManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AnimationManager
  * JD-Core Version:    0.7.0.1
  */

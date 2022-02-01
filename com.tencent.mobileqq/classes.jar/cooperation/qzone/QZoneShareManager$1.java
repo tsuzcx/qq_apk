@@ -18,36 +18,35 @@ final class QZoneShareManager$1
     if ((paramBoolean) && (paramHashMap != null))
     {
       paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
-        break label30;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label30:
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
+      if (paramHashMap != null)
       {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.val$appID;
-          localOpenID.openID = ((String)localObject);
-          if (this.val$observer != null) {
-            this.val$observer.onUpdate(1, true, localOpenID);
-          }
+        if (paramHashMap.SigList == null) {
+          return;
         }
-        i += 1;
+        int i = 0;
+        while (i < paramHashMap.SigList.size())
+        {
+          Object localObject1 = (CustomSigContent)paramHashMap.SigList.get(i);
+          if ((((CustomSigContent)localObject1).sResult == 0) && (((CustomSigContent)localObject1).ulSigType == 16L))
+          {
+            Object localObject2 = new String(((CustomSigContent)localObject1).SigContent);
+            localObject1 = new OpenID();
+            ((OpenID)localObject1).appID = this.val$appID;
+            ((OpenID)localObject1).openID = ((String)localObject2);
+            localObject2 = this.val$observer;
+            if (localObject2 != null) {
+              ((BusinessObserver)localObject2).onUpdate(1, true, localObject1);
+            }
+          }
+          i += 1;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneShareManager.1
  * JD-Core Version:    0.7.0.1
  */

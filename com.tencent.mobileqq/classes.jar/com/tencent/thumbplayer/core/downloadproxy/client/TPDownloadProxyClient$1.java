@@ -107,29 +107,26 @@ class TPDownloadProxyClient$1
     if (paramList != null)
     {
       localObject = localInteger;
-      if (!paramList.isEmpty())
-      {
-        if (paramList.size() != 1) {
-          break label67;
+      if (!paramList.isEmpty()) {
+        if (paramList.size() == 1)
+        {
+          localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), null, null, null);
         }
-        localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), null, null, null);
+        else if (paramList.size() == 2)
+        {
+          localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), paramList.get(1), null, null);
+        }
+        else
+        {
+          localObject = localInteger;
+          if (paramList.size() == 3) {
+            localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), paramList.get(1), paramList.get(2), null);
+          }
+        }
       }
     }
-    while (localObject.getClass() != Integer.class)
-    {
+    if (localObject.getClass() != Integer.class) {
       return -1;
-      label67:
-      if (paramList.size() == 2)
-      {
-        localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), paramList.get(1), null, null);
-      }
-      else
-      {
-        localObject = localInteger;
-        if (paramList.size() == 3) {
-          localObject = this.val$playListener.onPlayCallback(paramInt, paramList.get(0), paramList.get(1), paramList.get(2), null);
-        }
-      }
     }
     return ((Integer)localObject).intValue();
   }
@@ -156,7 +153,7 @@ class TPDownloadProxyClient$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.client.TPDownloadProxyClient.1
  * JD-Core Version:    0.7.0.1
  */

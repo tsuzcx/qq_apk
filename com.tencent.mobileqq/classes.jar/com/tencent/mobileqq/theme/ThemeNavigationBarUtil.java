@@ -17,70 +17,74 @@ public class ThemeNavigationBarUtil
   
   public static void a(@NonNull Window paramWindow)
   {
-    try
-    {
-      bool1 = TripleGraySwitchUtil.b(MobileQQ.getMobileQQ(), "KEY_DISABLE_NAVIGATION_BAR", true);
-      QLog.d("ThemeNavigationBarUtil", 2, new Object[] { "[NavigationBar] enableNavigationBarColor =", Boolean.valueOf(bool1) });
-      if (bool1) {
-        return;
-      }
-      if ((ImmersiveUtils.isVivoAndLOLLIPOP()) || (SystemUtil.d()))
-      {
-        QLog.d("ThemeNavigationBarUtil", 2, "[NavigationBar] not support machine");
-        return;
-      }
-    }
-    catch (Throwable paramWindow)
-    {
-      QLog.d("ThemeNavigationBarUtil", 2, "[NavigationBar] setNavigationBarColor throwable=", paramWindow);
-      return;
-    }
-    if ((a == 2147483647) && (Build.VERSION.SDK_INT >= 21)) {
-      a = paramWindow.getNavigationBarColor();
-    }
-    boolean bool1 = QQTheme.c();
-    boolean bool2 = QQTheme.a();
-    QLog.d("ThemeNavigationBarUtil", 2, new Object[] { "[NavigationBar] setNavigationBarColor sLightThemeNavigationBarColor=", Integer.valueOf(a), " isCurNightMode=", Boolean.valueOf(bool2), " isLastNightMode=", Boolean.valueOf(bool1) });
-    if (!bool2) {
-      if (bool1) {
-        break label174;
-      }
-    }
     for (;;)
     {
-      a(paramWindow, i);
-      return;
-      label174:
-      do
+      boolean bool2;
+      int i;
+      try
       {
-        i = a;
-        break;
-        return;
-      } while (!bool2);
-      int i = -16777216;
+        boolean bool1 = TripleGraySwitchUtil.b(MobileQQ.getMobileQQ(), "KEY_DISABLE_NAVIGATION_BAR", true);
+        QLog.d("ThemeNavigationBarUtil", 2, new Object[] { "[NavigationBar] enableNavigationBarColor =", Boolean.valueOf(bool1) });
+        if (bool1) {
+          return;
+        }
+        if ((!ImmersiveUtils.isVivoAndLOLLIPOP()) && (!SystemUtil.d()))
+        {
+          if ((a == 2147483647) && (Build.VERSION.SDK_INT >= 21)) {
+            a = paramWindow.getNavigationBarColor();
+          }
+          bool1 = QQTheme.c();
+          bool2 = QQTheme.a();
+          QLog.d("ThemeNavigationBarUtil", 2, new Object[] { "[NavigationBar] setNavigationBarColor sLightThemeNavigationBarColor=", Integer.valueOf(a), " isCurNightMode=", Boolean.valueOf(bool2), " isLastNightMode=", Boolean.valueOf(bool1) });
+          if (bool2) {
+            break label173;
+          }
+          if (bool1)
+          {
+            break label173;
+            i = a;
+            a(paramWindow, i);
+          }
+        }
+        else
+        {
+          QLog.d("ThemeNavigationBarUtil", 2, "[NavigationBar] not support machine");
+          return;
+        }
+      }
+      catch (Throwable paramWindow)
+      {
+        QLog.d("ThemeNavigationBarUtil", 2, "[NavigationBar] setNavigationBarColor throwable=", paramWindow);
+      }
+      return;
+      label173:
+      if (bool2) {
+        i = -16777216;
+      }
     }
   }
   
   public static void a(@NonNull Window paramWindow, @ColorInt int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       QLog.d("ThemeNavigationBarUtil", 1, new Object[] { "[NavigationBar] setImmersiveNavigationBarColor activity=", paramWindow, " color=", Integer.valueOf(paramInt) });
-    }
-    try
-    {
-      paramWindow.addFlags(-2147483648);
-      paramWindow.setNavigationBarColor(paramInt);
-      return;
-    }
-    catch (Throwable paramWindow)
-    {
-      QLog.d("ThemeNavigationBarUtil", 1, "[NavigationBar] setNavigationBarColor =", paramWindow);
+      try
+      {
+        paramWindow.addFlags(-2147483648);
+        paramWindow.setNavigationBarColor(paramInt);
+        return;
+      }
+      catch (Throwable paramWindow)
+      {
+        QLog.d("ThemeNavigationBarUtil", 1, "[NavigationBar] setNavigationBarColor =", paramWindow);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeNavigationBarUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -28,12 +28,22 @@ public class LaunchResult
   
   public String toString()
   {
-    return "LaunchResult{errorCode=" + this.jdField_a_of_type_Int + ", isFirstLaunch=" + this.jdField_a_of_type_Boolean + ", isDebugMode=" + this.b + ", launchTrace=" + this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LaunchResult{errorCode=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", isFirstLaunch=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", isDebugMode=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", launchTrace=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchTrace);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.LaunchResult
  * JD-Core Version:    0.7.0.1
  */

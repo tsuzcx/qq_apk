@@ -11,9 +11,9 @@ class RecordSoundPanel$9
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
+    ((AudioPanelAioHelper)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(128)).b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
     this.this$0.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-    ListenPanel localListenPanel = (ListenPanel)this.this$0.f.findViewById(2131370497);
+    ListenPanel localListenPanel = (ListenPanel)this.this$0.f.findViewById(2131370157);
     localListenPanel.setVisibility(0);
     localListenPanel.setAudioPath(this.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_Double, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
     localListenPanel.setJumpSource(ListenPanel.b);
@@ -24,7 +24,7 @@ class RecordSoundPanel$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel.9
  * JD-Core Version:    0.7.0.1
  */

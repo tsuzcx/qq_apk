@@ -36,14 +36,18 @@ public class QQIndividualityRemoteProxy
   
   private boolean a()
   {
-    if ((this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface == null) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    if ((this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface == null) && (!this.jdField_a_of_type_Boolean))
     {
-      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAppRuntime != null)
+      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
       {
-        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqindividuality.ipc.QQIndividualityRemoteProxyService");
-        this.jdField_a_of_type_Boolean = true;
-        return true;
+        localObject = (AppRuntime)((WeakReference)localObject).get();
+        if (localObject != null)
+        {
+          QQIndividualityPluginProxyService.a((AppRuntime)localObject, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqindividuality.ipc.QQIndividualityRemoteProxyService");
+          this.jdField_a_of_type_Boolean = true;
+          return true;
+        }
       }
     }
     return false;
@@ -56,14 +60,18 @@ public class QQIndividualityRemoteProxy
   
   private boolean b()
   {
-    if ((this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    if (this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null)
     {
-      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAppRuntime != null)
+      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
       {
-        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
-        this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface = null;
-        this.jdField_a_of_type_Boolean = false;
+        localObject = (AppRuntime)((WeakReference)localObject).get();
+        if (localObject != null)
+        {
+          QQIndividualityPluginProxyService.a((AppRuntime)localObject, this.jdField_a_of_type_AndroidContentServiceConnection);
+          this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface = null;
+          this.jdField_a_of_type_Boolean = false;
+        }
       }
     }
     return true;
@@ -74,13 +82,11 @@ public class QQIndividualityRemoteProxy
     if ((this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null) && (paramQQIndividualityRemoteProxyCallWrapper != null))
     {
       Looper localLooper = Looper.getMainLooper();
-      if (Thread.currentThread() != localLooper.getThread()) {
+      if (Thread.currentThread() != localLooper.getThread())
+      {
         new Handler(localLooper).post(new QQIndividualityRemoteProxy.1(this, paramQQIndividualityRemoteProxyCallWrapper));
+        return;
       }
-    }
-    else
-    {
-      return;
     }
     try
     {
@@ -105,15 +111,16 @@ public class QQIndividualityRemoteProxy
     if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
     {
       paramString = new QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper(this, paramInt, paramBundle);
-      if (this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null) {
+      if (this.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null)
+      {
         a(paramString);
       }
-      for (;;)
+      else
       {
-        return true;
         a(paramString);
         a();
       }
+      return true;
     }
     return false;
   }
@@ -132,7 +139,7 @@ public class QQIndividualityRemoteProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy
  * JD-Core Version:    0.7.0.1
  */

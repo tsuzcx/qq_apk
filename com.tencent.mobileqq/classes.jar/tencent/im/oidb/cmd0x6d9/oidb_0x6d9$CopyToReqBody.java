@@ -27,15 +27,17 @@ public final class oidb_0x6d9$CopyToReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 322, 802, 810, 818, 824 }, new String[] { "uint64_group_code", "uint32_app_id", "uint32_src_bus_id", "str_src_file_id", "uint32_dst_bus_id", "uint64_dst_uin", "str_new_file_name", "bytes_tim_cloud_pdir_key", "bytes_tim_cloud_ppdir_key", "bytes_tim_cloud_extension_info", "uint32_tim_file_exist_option" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Long.valueOf(0L), "", localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0) }, CopyToReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 322, 802, 810, 818, 824 }, new String[] { "uint64_group_code", "uint32_app_id", "uint32_src_bus_id", "str_src_file_id", "uint32_dst_bus_id", "uint64_dst_uin", "str_new_file_name", "bytes_tim_cloud_pdir_key", "bytes_tim_cloud_ppdir_key", "bytes_tim_cloud_extension_info", "uint32_tim_file_exist_option" }, new Object[] { localLong, localInteger, localInteger, "", localInteger, localLong, "", localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger }, CopyToReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6d9.oidb_0x6d9.CopyToReqBody
  * JD-Core Version:    0.7.0.1
  */

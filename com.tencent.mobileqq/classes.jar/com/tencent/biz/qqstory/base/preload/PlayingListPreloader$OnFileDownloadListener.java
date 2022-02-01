@@ -22,41 +22,45 @@ class PlayingListPreloader$OnFileDownloadListener
   protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, DownloadTask paramDownloadTask)
   {
     PlayingListPreloader.CurrentVid localCurrentVid = this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$CurrentVid;
-    if (localCurrentVid == null) {}
-    label14:
-    label169:
-    do
+    if (localCurrentVid == null) {
+      return;
+    }
+    if (!TextUtils.equals(paramString, localCurrentVid.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if (paramErrorMessage.isFail())
     {
-      break label14;
-      do
+      if (TextUtils.isEmpty(localCurrentVid.b))
       {
-        return;
-      } while (!TextUtils.equals(paramString, localCurrentVid.jdField_a_of_type_JavaLangString));
-      if (paramErrorMessage.isFail()) {
-        if (!TextUtils.isEmpty(localCurrentVid.b)) {
-          break label136;
-        }
+        paramErrorMessage = paramErrorMessage.errorMsg;
       }
-      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
+      else
       {
-        localCurrentVid.b = paramErrorMessage;
-        localCurrentVid.jdField_a_of_type_Int = (paramInt + 1000);
-        if ((!paramDownloadTask.a.containsKey("handleCallback")) || (localCurrentVid.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        localCurrentVid.jdField_a_of_type_Boolean = true;
-        if (!this.a.a(paramString)) {
-          break label169;
-        }
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener == null) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, paramInt);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramErrorMessage.errorMsg);
+        localStringBuilder.append(" | ");
+        localStringBuilder.append(paramErrorMessage.errorMsg);
+        paramErrorMessage = localStringBuilder.toString();
+      }
+      localCurrentVid.b = paramErrorMessage;
+      localCurrentVid.jdField_a_of_type_Int = (paramInt + 1000);
+    }
+    if (paramDownloadTask.a.containsKey("handleCallback"))
+    {
+      if (localCurrentVid.jdField_a_of_type_Boolean) {
         return;
       }
-    } while (this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener == null);
-    label136:
-    this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, localCurrentVid.a(), paramInt);
+      localCurrentVid.jdField_a_of_type_Boolean = true;
+      if (this.a.a(paramString))
+      {
+        if (this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener != null) {
+          this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, paramInt);
+        }
+      }
+      else if (this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener != null) {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, localCurrentVid.a(), paramInt);
+      }
+    }
   }
   
   public void b(String paramString, int paramInt, DownloadTask paramDownloadTask)
@@ -75,7 +79,7 @@ class PlayingListPreloader$OnFileDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PlayingListPreloader.OnFileDownloadListener
  * JD-Core Version:    0.7.0.1
  */

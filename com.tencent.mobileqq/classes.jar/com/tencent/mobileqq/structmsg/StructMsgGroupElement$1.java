@@ -13,53 +13,46 @@ class StructMsgGroupElement$1
   
   public void onClick(View paramView)
   {
-    if (StructMsgGroupElement.a(this.a) == null)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    for (;;)
-    {
-      int i;
+    if (StructMsgGroupElement.a(this.a) != null) {
       try
       {
         int j = Integer.parseInt(String.valueOf(paramView.getTag()));
-        i = 0;
-        if (i >= this.a.a.size()) {
-          break;
+        int i = 0;
+        while (i < this.a.a.size())
+        {
+          Object localObject = (View)StructMsgGroupElement.a(this.a).get(i);
+          if (localObject != null) {
+            if (i != j)
+            {
+              AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)this.a.a.get(i);
+              if ((localAbsStructMsgElement != null) && ((localAbsStructMsgElement instanceof StructMsgGroupItemElement))) {
+                ((StructMsgGroupItemElement)localAbsStructMsgElement).a();
+              } else {
+                ((View)localObject).setVisibility(8);
+              }
+            }
+            else
+            {
+              localObject = (AbsStructMsgElement)this.a.a.get(i);
+              if ((localObject != null) && ((localObject instanceof StructMsgGroupItemElement))) {
+                ((StructMsgGroupItemElement)localObject).b();
+              }
+            }
+          }
+          i += 1;
         }
-        View localView = (View)StructMsgGroupElement.a(this.a).get(i);
-        if (localView == null) {
-          break label174;
-        }
-        if (i == j) {
-          break label135;
-        }
-        AbsStructMsgElement localAbsStructMsgElement2 = (AbsStructMsgElement)this.a.a.get(i);
-        if ((localAbsStructMsgElement2 != null) && ((localAbsStructMsgElement2 instanceof StructMsgGroupItemElement))) {
-          ((StructMsgGroupItemElement)localAbsStructMsgElement2).a();
-        } else {
-          localView.setVisibility(8);
-        }
+        EventCollector.getInstance().onViewClicked(paramView);
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
       }
-      break;
-      label135:
-      AbsStructMsgElement localAbsStructMsgElement1 = (AbsStructMsgElement)this.a.a.get(i);
-      if ((localAbsStructMsgElement1 != null) && ((localAbsStructMsgElement1 instanceof StructMsgGroupItemElement))) {
-        ((StructMsgGroupItemElement)localAbsStructMsgElement1).b();
-      }
-      label174:
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgGroupElement.1
  * JD-Core Version:    0.7.0.1
  */

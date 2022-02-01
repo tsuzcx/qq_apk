@@ -10,12 +10,12 @@ final class FriendsStatusUtil$4
 {
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131704961), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299166));
+    QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131705037), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.FriendsStatusUtil.4
  * JD-Core Version:    0.7.0.1
  */

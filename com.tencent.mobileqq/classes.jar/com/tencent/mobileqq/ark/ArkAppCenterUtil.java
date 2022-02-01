@@ -7,16 +7,11 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import com.etrump.mixlayout.FontManager;
-import com.tencent.ark.ArkEnvironmentManager;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.ark.ark;
-import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.TextPreviewActivity;
@@ -27,8 +22,8 @@ import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.service.message.MessageConstants;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vas.font.api.FontManagerConstants;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -64,49 +59,23 @@ public class ArkAppCenterUtil
   public static String a()
   {
     JSONObject localJSONObject1 = new JSONObject();
-    for (;;)
+    try
     {
-      try
-      {
-        localJSONObject2 = new JSONObject();
-        if (!SimpleUIUtil.a()) {
-          continue;
-        }
+      JSONObject localJSONObject2 = new JSONObject();
+      boolean bool = SimpleUIUtil.a();
+      if (bool) {
         localJSONObject2.put("mode", "concise");
-        localJSONObject2.put("themeId", ThemeUtil.getCurrentThemeId());
-        localJSONObject1.put("theme", localJSONObject2);
+      } else {
+        localJSONObject2.put("mode", "default");
       }
-      catch (JSONException localJSONException)
-      {
-        JSONObject localJSONObject2;
-        QLog.e("ArkApp.ArkAppCenterUtil", 1, "Exception=", localJSONException);
-        continue;
-      }
-      return localJSONObject1.toString();
-      localJSONObject2.put("mode", "default");
+      localJSONObject2.put("themeId", ThemeUtil.getCurrentThemeId());
+      localJSONObject1.put("theme", localJSONObject2);
     }
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    catch (JSONException localJSONException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppCenterUtil", 2, "AAShare.CopyFileToCache appName is null or local path is null");
-      }
-      paramString1 = null;
+      QLog.e("ArkApp.ArkAppCenterUtil", 1, "Exception=", localJSONException);
     }
-    String str;
-    do
-    {
-      return paramString1;
-      str = ArkEnvironmentManager.getInstance().getAppResPath(paramString1);
-      int i = (int)(Math.random() * 10.0D);
-      paramString1 = String.format("share_%d_%02d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i) });
-      str = str + "/" + paramString1;
-      paramString1 = "res:" + paramString1;
-    } while (FileUtils.d(paramString2, str));
-    return "";
+    return localJSONObject1.toString();
   }
   
   public static void a()
@@ -137,7 +106,7 @@ public class ArkAppCenterUtil
     {
       jdField_a_of_type_Boolean = true;
       c = 840;
-      jdField_a_of_type_Int = (int)(c - 108.0F * a());
+      jdField_a_of_type_Int = (int)(c - a() * 108.0F);
       b = jdField_a_of_type_Int - BaseChatItemLayout.j - BaseChatItemLayout.k;
       QLog.e("ArkApp.ArkAppCenterUtil", 1, new Object[] { "ArkFold.checkArkSize handle fold screen sChatBubbleMaxWidth=", Integer.valueOf(jdField_a_of_type_Int), ",sDisplayWith=", Integer.valueOf(c), ",sChatTextViewMaxWidth=", Integer.valueOf(b) });
     }
@@ -158,46 +127,43 @@ public class ArkAppCenterUtil
     localIntent.putExtra("sessionType", paramInt);
     localIntent.putExtra("isMultiMsg", paramMessageForArkApp.isMultiMsg);
     String str = paramMessageForArkApp.getExtInfoFromExtStr("vip_font_effect_id");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isDigitsOnly(str))) {}
-    for (int i = Integer.valueOf(str).intValue();; i = 0)
+    if ((!TextUtils.isEmpty(str)) && (TextUtils.isDigitsOnly(str))) {
+      i = Integer.valueOf(str).intValue();
+    } else {
+      i = 0;
+    }
+    paramInt = i;
+    if (i == 0)
     {
       paramInt = i;
-      if (i == 0)
-      {
-        paramInt = i;
-        if (FontManager.a(paramMessageForArkApp)) {
-          paramInt = 1;
-        }
+      if (FontManagerConstants.parseMagicFont(paramMessageForArkApp)) {
+        paramInt = 1;
       }
+    }
+    int i = paramInt;
+    if (paramInt != 0)
+    {
       i = paramInt;
-      if (paramInt != 0)
+      if (1 == paramMessageForArkApp.istroop)
       {
         i = paramInt;
-        if (1 == paramMessageForArkApp.istroop)
-        {
-          i = paramInt;
-          if (AnonymousChatHelper.a(paramMessageForArkApp)) {
-            i = 0;
-          }
-        }
-      }
-      localIntent.putExtra("fontEffectId", i);
-      if (paramMessageForArkApp.isSend()) {
-        paramMessageForArkApp = paramMessageForArkApp.selfuin;
-      }
-      for (;;)
-      {
-        localIntent.putExtra("real_msg_sender_uin", paramMessageForArkApp);
-        ((Activity)paramContext).startActivityForResult(localIntent, 14001);
-        ((Activity)paramContext).overridePendingTransition(2130772012, 0);
-        return;
-        if ((paramMessageForArkApp.istroop == 1000) || (paramMessageForArkApp.istroop == 1020) || (paramMessageForArkApp.istroop == 1004)) {
-          paramMessageForArkApp = paramMessageForArkApp.frienduin;
-        } else {
-          paramMessageForArkApp = paramMessageForArkApp.senderuin;
+        if (AnonymousChatHelper.a(paramMessageForArkApp)) {
+          i = 0;
         }
       }
     }
+    localIntent.putExtra("fontEffectId", i);
+    if (paramMessageForArkApp.isSend()) {
+      paramMessageForArkApp = paramMessageForArkApp.selfuin;
+    } else if ((paramMessageForArkApp.istroop != 1000) && (paramMessageForArkApp.istroop != 1020) && (paramMessageForArkApp.istroop != 1004)) {
+      paramMessageForArkApp = paramMessageForArkApp.senderuin;
+    } else {
+      paramMessageForArkApp = paramMessageForArkApp.frienduin;
+    }
+    localIntent.putExtra("real_msg_sender_uin", paramMessageForArkApp);
+    paramContext = (Activity)paramContext;
+    paramContext.startActivityForResult(localIntent, 14001);
+    paramContext.overridePendingTransition(2130772021, 0);
   }
   
   public static void a(Configuration paramConfiguration)
@@ -212,17 +178,6 @@ public class ArkAppCenterUtil
     }
   }
   
-  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2)
-  {
-    if ((paramAppInterface == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.ArkAppCenterUtil", 2, new Object[] { "preDownloadArkApp download start,appName: ", paramString1, ",appView=", paramString2 });
-    }
-    ArkAppMgr.getInstance().getAppPathByName(paramString1, paramString2, "0.0.0.1", null, new ArkAppCenterUtil.1());
-  }
-  
   public static void a(String paramString, Context paramContext)
   {
     String str = paramString;
@@ -233,11 +188,25 @@ public class ArkAppCenterUtil
     {
       DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
       paramString = new StringBuilder("print density info:");
-      paramString.append("\n model=").append(Build.MODEL).append(", ver=").append(Build.VERSION.RELEASE).append(",SDK=").append(Build.VERSION.SDK_INT).append("\n BaseChatItemLayout.density=").append(BaseChatItemLayout.jdField_d_of_type_Float).append("\n application density=").append(localDisplayMetrics.density).append("-").append(localDisplayMetrics.scaledDensity);
+      paramString.append("\n model=");
+      paramString.append(Build.MODEL);
+      paramString.append(", ver=");
+      paramString.append(Build.VERSION.RELEASE);
+      paramString.append(",SDK=");
+      paramString.append(Build.VERSION.SDK_INT);
+      paramString.append("\n BaseChatItemLayout.density=");
+      paramString.append(BaseChatItemLayout.jdField_d_of_type_Float);
+      paramString.append("\n application density=");
+      paramString.append(localDisplayMetrics.density);
+      paramString.append("-");
+      paramString.append(localDisplayMetrics.scaledDensity);
       if (paramContext != null)
       {
         paramContext = paramContext.getResources().getDisplayMetrics();
-        paramString.append("\n activity density=").append(paramContext.density).append("-").append(paramContext.scaledDensity);
+        paramString.append("\n activity density=");
+        paramString.append(paramContext.density);
+        paramString.append("-");
+        paramString.append(paramContext.scaledDensity);
       }
       QLog.i(str, 1, paramString.toString());
       return;
@@ -250,15 +219,11 @@ public class ArkAppCenterUtil
   
   public static boolean a()
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    if ((BaseActivity.sTopActivity instanceof BaseActivity))
     {
-      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (localObject != null)
-      {
-        localObject = ((ChatFragment)localObject).a();
-        if ((localObject != null) && ((localObject instanceof PublicAccountChatPie))) {
-          return true;
-        }
+      ChatFragment localChatFragment = (ChatFragment)BaseActivity.sTopActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if ((localChatFragment != null) && ((localChatFragment.a() instanceof PublicAccountChatPie))) {
+        return true;
       }
     }
     return false;
@@ -266,7 +231,7 @@ public class ArkAppCenterUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAppCenterUtil
  * JD-Core Version:    0.7.0.1
  */

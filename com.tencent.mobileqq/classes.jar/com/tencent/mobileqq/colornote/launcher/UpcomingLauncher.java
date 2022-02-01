@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.colornote.launcher;
 
 import android.content.Context;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,6 +21,11 @@ public class UpcomingLauncher
     return null;
   }
   
+  public int getType()
+  {
+    return 17235968;
+  }
+  
   public void launch(Context paramContext, ColorNote paramColorNote)
   {
     QQAppInterface localQQAppInterface = a();
@@ -27,10 +33,12 @@ public class UpcomingLauncher
       ((UpComingMsgManager)localQQAppInterface.getManager(QQManagerFactory.UPCOMING_MSG_PRE_MANAGER)).a(paramContext, paramColorNote);
     }
   }
+  
+  public void onCreate(Context paramContext, ColorNote paramColorNote, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.launcher.UpcomingLauncher
  * JD-Core Version:    0.7.0.1
  */

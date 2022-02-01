@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.nearby.interestTag.InterestTag;
 import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -21,7 +21,7 @@ public abstract class LabelBaseCtrl
   public static final String[] a;
   public static final int[] b;
   public static final String[] b;
-  public static final String[] c = { HardCodeUtil.a(2131706001), HardCodeUtil.a(2131706003), HardCodeUtil.a(2131705997), HardCodeUtil.a(2131706002), HardCodeUtil.a(2131706000), HardCodeUtil.a(2131705998), HardCodeUtil.a(2131705999) };
+  public static final String[] c = { HardCodeUtil.a(2131706053), HardCodeUtil.a(2131706055), HardCodeUtil.a(2131706049), HardCodeUtil.a(2131706054), HardCodeUtil.a(2131706052), HardCodeUtil.a(2131706050), HardCodeUtil.a(2131706051) };
   public static final String[] d = { "0X800554B", "0X800554C", "0X800554D", "0X800554E", "0X800554F", "0X8005550", "0X8005551" };
   protected Context a;
   protected LayoutInflater a;
@@ -31,7 +31,7 @@ public abstract class LabelBaseCtrl
   static
   {
     jdField_a_of_type_ArrayOfInt = new int[] { 5, 6, 7, 1, 2, 3, 4, 8 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130841539, 2130841548, 2130841534, 2130841542, 2130841530, 2130841524, 2130841547 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130841420, 2130841429, 2130841415, 2130841423, 2130841411, 2130841405, 2130841428 };
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#F1F1F5", "#DCEBFF" };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "#777777", "#777777", "#777777", "#777777", "#777777", "#777777", "#777777", "#4B83D3" };
   }
@@ -39,9 +39,13 @@ public abstract class LabelBaseCtrl
   public static int a(int paramInt)
   {
     int i = 0;
-    while (i < jdField_a_of_type_ArrayOfInt.length)
+    for (;;)
     {
-      if (paramInt == jdField_a_of_type_ArrayOfInt[i]) {
+      int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+      if (i >= arrayOfInt.length) {
+        break;
+      }
+      if (paramInt == arrayOfInt[i]) {
         return i;
       }
       i += 1;
@@ -62,18 +66,20 @@ public abstract class LabelBaseCtrl
   
   protected void a(int paramInt, LabelContainer paramLabelContainer, ArrayList<InterestTagInfo> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    for (;;)
+    if (paramArrayList != null)
     {
-      return;
-      int j = DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-      int k = DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 5.0F);
-      int m = DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 2.0F);
+      if (paramArrayList.size() == 0) {
+        return;
+      }
+      int j = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+      int k = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
+      int m = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F);
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
         InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramArrayList.next();
         TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+        int i = 0;
         localTextView.setIncludeFontPadding(false);
         localTextView.setTextSize(1, 14.0F);
         localTextView.setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
@@ -82,9 +88,7 @@ public abstract class LabelBaseCtrl
         localGradientDrawable.setCornerRadius(m);
         localTextView.setBackgroundDrawable(localGradientDrawable);
         localTextView.setTextColor(Color.parseColor(jdField_b_of_type_ArrayOfJavaLangString[paramInt]));
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTag != null)
-        {
-          int i = 0;
+        if (this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTag != null) {
           while (i < this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTag.jdField_a_of_type_JavaUtilArrayList.size())
           {
             if (((InterestTagInfo)this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTag.jdField_a_of_type_JavaUtilArrayList.get(i)).tagName.equals(localInterestTagInfo.tagName))
@@ -129,45 +133,41 @@ public abstract class LabelBaseCtrl
   public boolean a(InterestTag[] paramArrayOfInterestTag)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    boolean bool2;
-    if ((paramArrayOfInterestTag == null) || (paramArrayOfInterestTag.length == 0)) {
-      bool2 = false;
-    }
-    int i;
-    boolean bool1;
-    do
+    if (paramArrayOfInterestTag != null)
     {
-      return bool2;
-      i = 0;
-      bool1 = false;
-      bool2 = bool1;
-    } while (i >= jdField_a_of_type_ArrayOfInt.length);
-    int j = 0;
-    for (;;)
-    {
-      bool2 = bool1;
-      if (j < paramArrayOfInterestTag.length)
+      if (paramArrayOfInterestTag.length == 0) {
+        return false;
+      }
+      int i = 0;
+      boolean bool2;
+      for (boolean bool1 = false; i < jdField_a_of_type_ArrayOfInt.length; bool1 = bool2)
       {
-        if ((jdField_a_of_type_ArrayOfInt[i] == paramArrayOfInterestTag[j].jdField_a_of_type_Int) && ((a()) || ((paramArrayOfInterestTag[j].jdField_a_of_type_JavaUtilArrayList != null) && (paramArrayOfInterestTag[j].jdField_a_of_type_JavaUtilArrayList.size() > 0))))
+        int j = 0;
+        for (;;)
         {
-          View localView = a(i, paramArrayOfInterestTag[j], paramArrayOfInterestTag.length);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
-          bool2 = true;
+          bool2 = bool1;
+          if (j >= paramArrayOfInterestTag.length) {
+            break;
+          }
+          if ((jdField_a_of_type_ArrayOfInt[i] == paramArrayOfInterestTag[j].jdField_a_of_type_Int) && ((a()) || ((paramArrayOfInterestTag[j].jdField_a_of_type_JavaUtilArrayList != null) && (paramArrayOfInterestTag[j].jdField_a_of_type_JavaUtilArrayList.size() > 0))))
+          {
+            View localView = a(i, paramArrayOfInterestTag[j], paramArrayOfInterestTag.length);
+            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
+            bool2 = true;
+            break;
+          }
+          j += 1;
         }
-      }
-      else
-      {
         i += 1;
-        bool1 = bool2;
-        break;
       }
-      j += 1;
+      return bool1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.LabelBaseCtrl
  * JD-Core Version:    0.7.0.1
  */

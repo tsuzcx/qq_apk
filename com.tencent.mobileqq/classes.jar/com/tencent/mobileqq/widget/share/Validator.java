@@ -84,19 +84,16 @@ public class Validator
       if (!TextUtils.isEmpty(((Intent)localObject).getStringExtra("big_brother_source_key"))) {
         return true;
       }
-      if (!TextUtils.isEmpty(((Intent)localObject).getStringExtra("url"))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
+      return TextUtils.isEmpty(((Intent)localObject).getStringExtra("url")) ^ true;
     }
     return false;
   }
   
   public boolean a()
   {
+    boolean bool2 = this.jdField_a_of_type_Boolean;
     boolean bool1 = true;
-    boolean bool2 = false;
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!bool2) {
       return true;
     }
     if (!e())
@@ -117,17 +114,14 @@ public class Validator
     if (!b())
     {
       a("share component item invalid");
-      bool1 = bool2;
+      bool1 = false;
     }
-    for (;;)
-    {
-      return bool1;
-    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.Validator
  * JD-Core Version:    0.7.0.1
  */

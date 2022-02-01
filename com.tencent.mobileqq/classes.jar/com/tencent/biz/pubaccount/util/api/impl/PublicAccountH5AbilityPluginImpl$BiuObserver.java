@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
@@ -21,7 +21,13 @@ class PublicAccountH5AbilityPluginImpl$BiuObserver
   public void a(long paramLong, int paramInt, String paramString)
   {
     super.a(paramLong, paramInt, paramString);
-    QLog.d("PublicAccountH5AbilityPlugin", 2, "[onBiuResult] " + paramLong + " " + paramInt + " errorMsg");
+    paramString = new StringBuilder();
+    paramString.append("[onBiuResult] ");
+    paramString.append(paramLong);
+    paramString.append(" ");
+    paramString.append(paramInt);
+    paramString.append(" errorMsg");
+    QLog.d("PublicAccountH5AbilityPlugin", 2, paramString.toString());
     try
     {
       paramString = new JSONObject();
@@ -40,7 +46,7 @@ class PublicAccountH5AbilityPluginImpl$BiuObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.BiuObserver
  * JD-Core Version:    0.7.0.1
  */

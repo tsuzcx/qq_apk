@@ -21,14 +21,15 @@ public final class BatchGetGiftReq
   
   public static BatchGetGiftReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new BatchGetGiftReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new BatchGetGiftReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static BatchGetGiftReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -50,31 +51,41 @@ public final class BatchGetGiftReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int i = 0;
     int k = super.computeSerializedSize();
-    if ((this.giftIds != null) && (this.giftIds.length > 0))
+    int[] arrayOfInt = this.giftIds;
+    int j = k;
+    if (arrayOfInt != null)
     {
-      j = 0;
-      while (i < this.giftIds.length)
+      j = k;
+      if (arrayOfInt.length > 0)
       {
-        j += CodedOutputByteBufferNano.computeUInt32SizeNoTag(this.giftIds[i]);
-        i += 1;
+        i = 0;
+        j = 0;
+        for (;;)
+        {
+          arrayOfInt = this.giftIds;
+          if (i >= arrayOfInt.length) {
+            break;
+          }
+          j += CodedOutputByteBufferNano.computeUInt32SizeNoTag(arrayOfInt[i]);
+          i += 1;
+        }
+        j = k + j + arrayOfInt.length * 1;
       }
     }
-    for (int j = k + j + this.giftIds.length * 1;; j = k)
-    {
-      i = j;
-      if (this.roomId != 0L) {
-        i = j + CodedOutputByteBufferNano.computeUInt64Size(2, this.roomId);
-      }
-      j = i;
-      if (this.needFullUrl != 0) {
-        j = i + CodedOutputByteBufferNano.computeUInt32Size(4, this.needFullUrl);
-      }
-      return j;
+    long l = this.roomId;
+    int i = j;
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(2, l);
     }
+    k = this.needFullUrl;
+    j = i;
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, k);
+    }
+    return j;
   }
   
   public BatchGetGiftReq mergeFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -82,51 +93,48 @@ public final class BatchGetGiftReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
+      if (i == 0) {
+        break;
+      }
       int j;
       int[] arrayOfInt;
-      switch (i)
+      if (i != 8)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 8);
-        if (this.giftIds == null) {}
-        for (i = 0;; i = this.giftIds.length)
+        if (i != 10)
         {
-          arrayOfInt = new int[j + i];
-          j = i;
-          if (i != 0)
+          if (i != 16)
           {
-            System.arraycopy(this.giftIds, 0, arrayOfInt, 0, i);
-            j = i;
+            if (i != 32)
+            {
+              if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                return this;
+              }
+            }
+            else {
+              this.needFullUrl = paramCodedInputByteBufferNano.readUInt32();
+            }
           }
-          while (j < arrayOfInt.length - 1)
+          else {
+            this.roomId = paramCodedInputByteBufferNano.readUInt64();
+          }
+        }
+        else
+        {
+          int k = paramCodedInputByteBufferNano.pushLimit(paramCodedInputByteBufferNano.readRawVarint32());
+          i = paramCodedInputByteBufferNano.getPosition();
+          j = 0;
+          while (paramCodedInputByteBufferNano.getBytesUntilLimit() > 0)
           {
-            arrayOfInt[j] = paramCodedInputByteBufferNano.readUInt32();
-            paramCodedInputByteBufferNano.readTag();
+            paramCodedInputByteBufferNano.readUInt32();
             j += 1;
           }
-        }
-        arrayOfInt[j] = paramCodedInputByteBufferNano.readUInt32();
-        this.giftIds = arrayOfInt;
-        break;
-      case 10: 
-        int k = paramCodedInputByteBufferNano.pushLimit(paramCodedInputByteBufferNano.readRawVarint32());
-        i = paramCodedInputByteBufferNano.getPosition();
-        j = 0;
-        while (paramCodedInputByteBufferNano.getBytesUntilLimit() > 0)
-        {
-          paramCodedInputByteBufferNano.readUInt32();
-          j += 1;
-        }
-        paramCodedInputByteBufferNano.rewindToPosition(i);
-        if (this.giftIds == null) {}
-        for (i = 0;; i = this.giftIds.length)
-        {
+          paramCodedInputByteBufferNano.rewindToPosition(i);
+          arrayOfInt = this.giftIds;
+          if (arrayOfInt == null) {
+            i = 0;
+          } else {
+            i = arrayOfInt.length;
+          }
           arrayOfInt = new int[j + i];
           j = i;
           if (i != 0)
@@ -139,41 +147,69 @@ public final class BatchGetGiftReq
             arrayOfInt[j] = paramCodedInputByteBufferNano.readUInt32();
             j += 1;
           }
+          this.giftIds = arrayOfInt;
+          paramCodedInputByteBufferNano.popLimit(k);
         }
-        this.giftIds = arrayOfInt;
-        paramCodedInputByteBufferNano.popLimit(k);
-        break;
-      case 16: 
-        this.roomId = paramCodedInputByteBufferNano.readUInt64();
-        break;
       }
-      this.needFullUrl = paramCodedInputByteBufferNano.readUInt32();
+      else
+      {
+        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 8);
+        arrayOfInt = this.giftIds;
+        if (arrayOfInt == null) {
+          i = 0;
+        } else {
+          i = arrayOfInt.length;
+        }
+        arrayOfInt = new int[j + i];
+        j = i;
+        if (i != 0)
+        {
+          System.arraycopy(this.giftIds, 0, arrayOfInt, 0, i);
+          j = i;
+        }
+        while (j < arrayOfInt.length - 1)
+        {
+          arrayOfInt[j] = paramCodedInputByteBufferNano.readUInt32();
+          paramCodedInputByteBufferNano.readTag();
+          j += 1;
+        }
+        arrayOfInt[j] = paramCodedInputByteBufferNano.readUInt32();
+        this.giftIds = arrayOfInt;
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if ((this.giftIds != null) && (this.giftIds.length > 0))
+    int[] arrayOfInt = this.giftIds;
+    if ((arrayOfInt != null) && (arrayOfInt.length > 0))
     {
-      int i = 0;
-      while (i < this.giftIds.length)
+      i = 0;
+      for (;;)
       {
-        paramCodedOutputByteBufferNano.writeUInt32(1, this.giftIds[i]);
+        arrayOfInt = this.giftIds;
+        if (i >= arrayOfInt.length) {
+          break;
+        }
+        paramCodedOutputByteBufferNano.writeUInt32(1, arrayOfInt[i]);
         i += 1;
       }
     }
-    if (this.roomId != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(2, this.roomId);
+    long l = this.roomId;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(2, l);
     }
-    if (this.needFullUrl != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(4, this.needFullUrl);
+    int i = this.needFullUrl;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(4, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveGiftInfoNew.nano.BatchGetGiftReq
  * JD-Core Version:    0.7.0.1
  */

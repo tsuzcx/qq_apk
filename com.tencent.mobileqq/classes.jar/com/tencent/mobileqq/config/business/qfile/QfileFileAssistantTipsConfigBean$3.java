@@ -20,22 +20,18 @@ class QfileFileAssistantTipsConfigBean$3
       localIntent.setAction(QfileFileAssistantTipsConfigBean.a(this.a));
       localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
     }
-    for (;;)
+    else if (Build.VERSION.SDK_INT <= 8)
     {
-      paramContext.startActivity(localIntent);
-      return;
-      if (Build.VERSION.SDK_INT <= 8)
-      {
-        localIntent.setAction("android.intent.action.VIEW");
-        localIntent.setClassName("com.android.settings", QfileFileAssistantTipsConfigBean.a(this.a));
-        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
-      }
+      localIntent.setAction("android.intent.action.VIEW");
+      localIntent.setClassName("com.android.settings", QfileFileAssistantTipsConfigBean.a(this.a));
+      localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
     }
+    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QfileFileAssistantTipsConfigBean.3
  * JD-Core Version:    0.7.0.1
  */

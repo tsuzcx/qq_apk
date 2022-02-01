@@ -24,15 +24,15 @@ public final class hx
     if (this.a.get() == null) {
       return Boolean.FALSE;
     }
-    Context localContext = (Context)this.a.get();
+    Object localObject = (Context)this.a.get();
     try
     {
-      NetResponse localNetResponse = ((OverSeaRequest)((nh)MapServiceManager.getService(nh.class)).c()).checkAuth(pz.a, "4.2.8", gf.a(localContext).b("worldMapProtocolVersion"), fz.a(), gf.a(localContext).b("worldMapFrontierVersion"));
-      if ((localNetResponse == null) || (!localNetResponse.available())) {
-        return Boolean.FALSE;
+      NetResponse localNetResponse = ((OverSeaRequest)((nh)MapServiceManager.getService(nh.class)).c()).checkAuth(pz.a, "4.2.8", gf.a((Context)localObject).b("worldMapProtocolVersion"), fz.a(), gf.a((Context)localObject).b("worldMapFrontierVersion"));
+      if ((localNetResponse != null) && (localNetResponse.available())) {
+        return Boolean.valueOf(a((Context)localObject, localNetResponse.toString()));
       }
-      boolean bool = a(localContext, localNetResponse.toString());
-      return Boolean.valueOf(bool);
+      localObject = Boolean.FALSE;
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
@@ -45,396 +45,406 @@ public final class hx
   private static boolean a(Context paramContext, java.lang.String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 8
-    //   3: iconst_1
-    //   4: istore_2
-    //   5: aload_1
-    //   6: ifnull +10 -> 16
-    //   9: aload_1
-    //   10: invokevirtual 114	java/lang/String:length	()I
-    //   13: ifne +5 -> 18
-    //   16: iconst_0
-    //   17: ireturn
-    //   18: new 116	org/json/JSONObject
-    //   21: dup
-    //   22: aload_1
-    //   23: invokespecial 119	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   26: astore_1
-    //   27: aload_1
-    //   28: ldc 121
-    //   30: ldc 122
-    //   32: invokevirtual 126	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   35: ifeq +57 -> 92
-    //   38: invokestatic 131	com/tencent/map/sdk/a/jx:d	()Z
-    //   41: iconst_0
-    //   42: ixor
-    //   43: iconst_0
-    //   44: ior
-    //   45: istore 7
-    //   47: iconst_0
-    //   48: invokestatic 134	com/tencent/map/sdk/a/jx:a	(Z)V
-    //   51: aload_0
-    //   52: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   55: ldc 136
-    //   57: iconst_0
-    //   58: invokevirtual 139	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;Z)Z
-    //   61: pop
-    //   62: aload_1
-    //   63: ldc 141
-    //   65: invokevirtual 145	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   68: astore 12
-    //   70: aload 12
-    //   72: ifnonnull +47 -> 119
-    //   75: iload 7
-    //   77: ireturn
-    //   78: astore_1
-    //   79: aload_0
-    //   80: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   83: ldc 68
-    //   85: iconst_0
-    //   86: invokevirtual 148	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
-    //   89: pop
-    //   90: iconst_0
-    //   91: ireturn
-    //   92: invokestatic 131	com/tencent/map/sdk/a/jx:d	()Z
-    //   95: iconst_1
-    //   96: ixor
-    //   97: iconst_0
-    //   98: ior
-    //   99: istore 7
-    //   101: iconst_1
-    //   102: invokestatic 134	com/tencent/map/sdk/a/jx:a	(Z)V
-    //   105: aload_0
-    //   106: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   109: ldc 136
-    //   111: iconst_1
-    //   112: invokevirtual 139	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;Z)Z
-    //   115: pop
-    //   116: goto -54 -> 62
-    //   119: aload 12
-    //   121: ldc 150
-    //   123: invokevirtual 152	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   126: istore 6
-    //   128: iload 6
-    //   130: invokestatic 155	com/tencent/map/sdk/a/jx:f	()I
-    //   133: if_icmpeq +17 -> 150
-    //   136: iload 7
-    //   138: iload_2
-    //   139: ior
-    //   140: istore 7
-    //   142: iload 7
-    //   144: ifne +11 -> 155
-    //   147: iload 7
-    //   149: ireturn
-    //   150: iconst_0
-    //   151: istore_2
-    //   152: goto -16 -> 136
-    //   155: aload 12
-    //   157: ldc 157
-    //   159: invokevirtual 145	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   162: astore_1
-    //   163: aload_1
-    //   164: ifnull +21 -> 185
-    //   167: aload_1
-    //   168: ldc 159
-    //   170: invokevirtual 163	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   173: astore_1
-    //   174: aload_1
-    //   175: ifnull +10 -> 185
-    //   178: aload_1
-    //   179: invokevirtual 114	java/lang/String:length	()I
-    //   182: ifne +140 -> 322
-    //   185: aload 12
-    //   187: ldc 165
-    //   189: invokevirtual 145	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   192: astore_1
-    //   193: iconst_0
-    //   194: newarray int
-    //   196: astore 9
-    //   198: ldc 167
-    //   200: astore 11
-    //   202: aload_1
-    //   203: ifnull +470 -> 673
-    //   206: aload_1
-    //   207: ldc 169
-    //   209: sipush 1000
-    //   212: invokevirtual 126	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   215: istore_3
-    //   216: aload_1
-    //   217: ldc 171
-    //   219: getstatic 176	com/tencent/map/sdk/a/jy:a	I
-    //   222: invokevirtual 126	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   225: istore 4
-    //   227: aload_1
-    //   228: ldc 150
-    //   230: getstatic 178	com/tencent/map/sdk/a/jy:b	I
-    //   233: invokevirtual 126	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   236: istore 5
-    //   238: aload_1
-    //   239: ldc 180
-    //   241: invokevirtual 163	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   244: astore 10
-    //   246: aload_1
-    //   247: ldc 182
-    //   249: invokevirtual 186	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   252: astore 13
-    //   254: aload 11
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: aload_1
+    //   3: ifnull +704 -> 707
+    //   6: aload_1
+    //   7: invokevirtual 114	java/lang/String:length	()I
+    //   10: ifne +5 -> 15
+    //   13: iconst_0
+    //   14: ireturn
+    //   15: new 116	org/json/JSONObject
+    //   18: dup
+    //   19: aload_1
+    //   20: invokespecial 119	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   23: astore_1
+    //   24: aload_1
+    //   25: ldc 121
+    //   27: ldc 122
+    //   29: invokevirtual 126	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   32: istore 4
+    //   34: iconst_1
+    //   35: istore_2
+    //   36: iload 4
+    //   38: ifeq +30 -> 68
+    //   41: invokestatic 131	com/tencent/map/sdk/a/jx:d	()Z
+    //   44: iconst_0
+    //   45: ixor
+    //   46: iconst_0
+    //   47: ior
+    //   48: istore 8
+    //   50: iconst_0
+    //   51: invokestatic 134	com/tencent/map/sdk/a/jx:a	(Z)V
+    //   54: aload_0
+    //   55: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   58: ldc 136
+    //   60: iconst_0
+    //   61: invokevirtual 139	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;Z)Z
+    //   64: pop
+    //   65: goto +27 -> 92
+    //   68: invokestatic 131	com/tencent/map/sdk/a/jx:d	()Z
+    //   71: iconst_1
+    //   72: ixor
+    //   73: iconst_0
+    //   74: ior
+    //   75: istore 8
+    //   77: iconst_1
+    //   78: invokestatic 134	com/tencent/map/sdk/a/jx:a	(Z)V
+    //   81: aload_0
+    //   82: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   85: ldc 136
+    //   87: iconst_1
+    //   88: invokevirtual 139	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;Z)Z
+    //   91: pop
+    //   92: aload_1
+    //   93: ldc 141
+    //   95: invokevirtual 145	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   98: astore 13
+    //   100: aload 13
+    //   102: ifnonnull +6 -> 108
+    //   105: iload 8
+    //   107: ireturn
+    //   108: aload 13
+    //   110: ldc 147
+    //   112: invokevirtual 149	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   115: istore 7
+    //   117: iload 7
+    //   119: invokestatic 152	com/tencent/map/sdk/a/jx:f	()I
+    //   122: if_icmpeq +6 -> 128
+    //   125: goto +5 -> 130
+    //   128: iconst_0
+    //   129: istore_2
+    //   130: iload 8
+    //   132: iload_2
+    //   133: ior
+    //   134: istore 8
+    //   136: iload 8
+    //   138: ifne +6 -> 144
+    //   141: iload 8
+    //   143: ireturn
+    //   144: aload 13
+    //   146: ldc 154
+    //   148: invokevirtual 145	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   151: astore_1
+    //   152: aconst_null
+    //   153: astore 9
+    //   155: aload_1
+    //   156: ifnull +167 -> 323
+    //   159: aload_1
+    //   160: ldc 156
+    //   162: invokevirtual 160	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   165: astore_1
+    //   166: aload_1
+    //   167: ifnull +156 -> 323
+    //   170: aload_1
+    //   171: invokevirtual 114	java/lang/String:length	()I
+    //   174: ifne +6 -> 180
+    //   177: goto +146 -> 323
+    //   180: new 162	java/net/URL
+    //   183: dup
+    //   184: aload_1
+    //   185: invokespecial 163	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   188: invokevirtual 167	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   191: checkcast 169	java/net/HttpURLConnection
+    //   194: astore_1
+    //   195: aload_1
+    //   196: ldc 171
+    //   198: ldc 173
+    //   200: invokevirtual 177	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   203: aload_1
+    //   204: invokevirtual 180	java/net/HttpURLConnection:getResponseCode	()I
+    //   207: sipush 200
+    //   210: if_icmpne +107 -> 317
+    //   213: aload_1
+    //   214: ldc 182
+    //   216: invokevirtual 185	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   219: astore 10
+    //   221: aload 10
+    //   223: ifnull +22 -> 245
+    //   226: aload 10
+    //   228: invokevirtual 114	java/lang/String:length	()I
+    //   231: ifle +14 -> 245
+    //   234: aload 10
+    //   236: invokevirtual 188	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   239: ldc 173
+    //   241: invokevirtual 192	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   244: pop
+    //   245: new 194	java/util/zip/GZIPInputStream
+    //   248: dup
+    //   249: aload_1
+    //   250: invokevirtual 198	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   253: invokespecial 201	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   256: astore_1
-    //   257: aload 9
-    //   259: astore 8
-    //   261: aload 10
-    //   263: invokestatic 191	com/tencent/map/sdk/a/nl:a	(Ljava/lang/String;)Z
-    //   266: ifne +203 -> 469
-    //   269: aload 11
-    //   271: astore_1
-    //   272: aload 9
-    //   274: astore 8
-    //   276: aload 13
-    //   278: ifnull +191 -> 469
-    //   281: aload 13
-    //   283: invokevirtual 194	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   286: astore_1
-    //   287: aload 13
-    //   289: invokevirtual 195	org/json/JSONArray:length	()I
-    //   292: newarray int
-    //   294: astore 8
-    //   296: iconst_0
-    //   297: istore_2
-    //   298: iload_2
-    //   299: aload 8
-    //   301: arraylength
-    //   302: if_icmpge +167 -> 469
-    //   305: aload 8
-    //   307: iload_2
-    //   308: aload 13
-    //   310: iload_2
-    //   311: invokevirtual 198	org/json/JSONArray:optInt	(I)I
-    //   314: iastore
-    //   315: iload_2
-    //   316: iconst_1
-    //   317: iadd
-    //   318: istore_2
-    //   319: goto -21 -> 298
-    //   322: new 200	java/net/URL
-    //   325: dup
-    //   326: aload_1
-    //   327: invokespecial 201	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   330: invokevirtual 205	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   333: checkcast 207	java/net/HttpURLConnection
-    //   336: astore_1
-    //   337: aload_1
-    //   338: ldc 209
-    //   340: ldc 211
-    //   342: invokevirtual 215	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   345: aload_1
-    //   346: invokevirtual 218	java/net/HttpURLConnection:getResponseCode	()I
-    //   349: sipush 200
-    //   352: if_icmpne +345 -> 697
+    //   257: new 110	java/lang/String
+    //   260: dup
+    //   261: aload_1
+    //   262: invokestatic 206	com/tencent/map/sdk/a/on:a	(Ljava/io/InputStream;)[B
+    //   265: invokespecial 209	java/lang/String:<init>	([B)V
+    //   268: astore 9
+    //   270: invokestatic 214	com/tencent/map/sdk/a/jv:a	()Lcom/tencent/map/sdk/a/jv;
+    //   273: pop
+    //   274: aload 9
+    //   276: invokestatic 215	com/tencent/map/sdk/a/jv:b	(Ljava/lang/String;)I
+    //   279: istore_2
+    //   280: aload_0
+    //   281: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   284: ldc 78
+    //   286: iload_2
+    //   287: invokevirtual 218	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
+    //   290: pop
+    //   291: invokestatic 214	com/tencent/map/sdk/a/jv:a	()Lcom/tencent/map/sdk/a/jv;
+    //   294: aload 9
+    //   296: invokevirtual 221	com/tencent/map/sdk/a/jv:a	(Ljava/lang/String;)Z
+    //   299: pop
+    //   300: goto +19 -> 319
+    //   303: astore_0
+    //   304: goto +7 -> 311
+    //   307: astore_0
+    //   308: aload 9
+    //   310: astore_1
+    //   311: aload_1
+    //   312: invokestatic 224	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   315: aload_0
+    //   316: athrow
+    //   317: aconst_null
+    //   318: astore_1
+    //   319: aload_1
+    //   320: invokestatic 224	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   323: aload 13
+    //   325: ldc 226
+    //   327: invokevirtual 145	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   330: astore_1
+    //   331: iconst_0
+    //   332: newarray int
+    //   334: astore 10
+    //   336: ldc 228
+    //   338: astore 12
+    //   340: aload_1
+    //   341: ifnull +208 -> 549
+    //   344: aload_1
+    //   345: ldc 230
+    //   347: sipush 1000
+    //   350: invokevirtual 126	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   353: istore 5
     //   355: aload_1
-    //   356: ldc 220
-    //   358: invokevirtual 223	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   361: astore 9
-    //   363: aload 9
-    //   365: ifnull +22 -> 387
-    //   368: aload 9
-    //   370: invokevirtual 114	java/lang/String:length	()I
-    //   373: ifle +14 -> 387
-    //   376: aload 9
-    //   378: invokevirtual 226	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   381: ldc 211
-    //   383: invokevirtual 230	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   386: pop
-    //   387: new 232	java/util/zip/GZIPInputStream
-    //   390: dup
-    //   391: aload_1
-    //   392: invokevirtual 236	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   395: invokespecial 239	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
-    //   398: astore_1
-    //   399: new 110	java/lang/String
-    //   402: dup
-    //   403: aload_1
-    //   404: invokestatic 244	com/tencent/map/sdk/a/on:a	(Ljava/io/InputStream;)[B
-    //   407: invokespecial 247	java/lang/String:<init>	([B)V
-    //   410: astore 8
-    //   412: invokestatic 252	com/tencent/map/sdk/a/jv:a	()Lcom/tencent/map/sdk/a/jv;
-    //   415: pop
-    //   416: aload 8
-    //   418: invokestatic 253	com/tencent/map/sdk/a/jv:b	(Ljava/lang/String;)I
-    //   421: istore_2
-    //   422: aload_0
-    //   423: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   426: ldc 78
-    //   428: iload_2
-    //   429: invokevirtual 148	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
-    //   432: pop
-    //   433: invokestatic 252	com/tencent/map/sdk/a/jv:a	()Lcom/tencent/map/sdk/a/jv;
-    //   436: aload 8
-    //   438: invokevirtual 254	com/tencent/map/sdk/a/jv:a	(Ljava/lang/String;)Z
-    //   441: pop
-    //   442: aload_1
-    //   443: invokestatic 257	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   446: goto -261 -> 185
-    //   449: astore_1
-    //   450: aconst_null
-    //   451: astore_1
-    //   452: aload_1
-    //   453: invokestatic 257	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   456: goto -271 -> 185
-    //   459: astore_0
-    //   460: aload 8
-    //   462: astore_1
-    //   463: aload_1
-    //   464: invokestatic 257	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   467: aload_0
-    //   468: athrow
+    //   356: ldc 232
+    //   358: getstatic 237	com/tencent/map/sdk/a/jy:a	I
+    //   361: invokevirtual 126	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   364: istore 4
+    //   366: aload_1
+    //   367: ldc 147
+    //   369: getstatic 239	com/tencent/map/sdk/a/jy:b	I
+    //   372: invokevirtual 126	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   375: istore 6
+    //   377: aload_1
+    //   378: ldc 241
+    //   380: invokevirtual 160	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   383: astore 11
+    //   385: aload_1
+    //   386: ldc 243
+    //   388: invokevirtual 247	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   391: astore 14
+    //   393: aload 10
+    //   395: astore 9
+    //   397: aload 12
+    //   399: astore_1
+    //   400: aload 11
+    //   402: invokestatic 250	com/tencent/map/sdk/a/nl:a	(Ljava/lang/String;)Z
+    //   405: ifne +56 -> 461
+    //   408: aload 10
+    //   410: astore 9
+    //   412: aload 12
+    //   414: astore_1
+    //   415: aload 14
+    //   417: ifnull +44 -> 461
+    //   420: aload 14
+    //   422: invokevirtual 253	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   425: astore_1
+    //   426: aload 14
+    //   428: invokevirtual 254	org/json/JSONArray:length	()I
+    //   431: newarray int
+    //   433: astore 9
+    //   435: iload_3
+    //   436: istore_2
+    //   437: iload_2
+    //   438: aload 9
+    //   440: arraylength
+    //   441: if_icmpge +20 -> 461
+    //   444: aload 9
+    //   446: iload_2
+    //   447: aload 14
+    //   449: iload_2
+    //   450: invokevirtual 257	org/json/JSONArray:optInt	(I)I
+    //   453: iastore
+    //   454: iload_2
+    //   455: iconst_1
+    //   456: iadd
+    //   457: istore_2
+    //   458: goto -21 -> 437
+    //   461: iload 6
+    //   463: invokestatic 259	com/tencent/map/sdk/a/jx:c	()I
+    //   466: if_icmpne +11 -> 477
     //   469: iload 5
-    //   471: invokestatic 259	com/tencent/map/sdk/a/jx:c	()I
-    //   474: if_icmpne +10 -> 484
-    //   477: iload_3
-    //   478: invokestatic 261	com/tencent/map/sdk/a/jx:a	()I
-    //   481: if_icmpeq +43 -> 524
-    //   484: new 263	java/io/File
-    //   487: dup
-    //   488: new 265	java/lang/StringBuilder
-    //   491: dup
-    //   492: invokespecial 266	java/lang/StringBuilder:<init>	()V
-    //   495: aload_0
-    //   496: invokestatic 272	com/tencent/tencentmap/io/QStorageManager:getStorageRootPath	(Landroid/content/Context;)Ljava/lang/String;
-    //   499: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   502: getstatic 279	java/io/File:separator	Ljava/lang/String;
-    //   505: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   508: ldc_w 281
-    //   511: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   514: invokevirtual 282	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   517: invokespecial 283	java/io/File:<init>	(Ljava/lang/String;)V
-    //   520: invokestatic 288	com/tencent/map/sdk/a/om:b	(Ljava/io/File;)Z
-    //   523: pop
-    //   524: iload 5
-    //   526: istore_2
-    //   527: aload_1
-    //   528: astore 9
-    //   530: aload 10
-    //   532: astore_1
-    //   533: aload 12
-    //   535: ldc_w 290
-    //   538: invokevirtual 186	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   541: astore 11
-    //   543: ldc_w 292
-    //   546: astore 10
-    //   548: aload 11
-    //   550: ifnull +10 -> 560
-    //   553: aload 11
-    //   555: invokevirtual 194	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   558: astore 10
-    //   560: iload 4
-    //   562: iload_3
-    //   563: iload_2
-    //   564: iload 6
-    //   566: aload_1
-    //   567: aload 8
-    //   569: aload 10
-    //   571: invokestatic 295	com/tencent/map/sdk/a/jx:a	(IIIILjava/lang/String;[ILjava/lang/String;)V
-    //   574: aload_0
-    //   575: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   578: ldc_w 297
-    //   581: aload_1
-    //   582: invokevirtual 300	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   585: pop
-    //   586: aload_0
-    //   587: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   590: ldc_w 302
-    //   593: aload 9
-    //   595: invokevirtual 300	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   598: pop
-    //   599: aload_0
-    //   600: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   603: ldc_w 304
-    //   606: iload_2
-    //   607: invokevirtual 148	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
-    //   610: pop
-    //   611: aload_0
-    //   612: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   615: ldc_w 306
-    //   618: iload_3
-    //   619: invokevirtual 148	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
-    //   622: pop
-    //   623: aload_0
-    //   624: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   627: ldc_w 308
-    //   630: iload 4
-    //   632: invokevirtual 148	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
-    //   635: pop
-    //   636: aload_0
-    //   637: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   640: ldc_w 310
-    //   643: aload 10
-    //   645: invokevirtual 300	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   648: pop
-    //   649: aload_0
-    //   650: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
-    //   653: ldc 68
-    //   655: iload 6
-    //   657: invokevirtual 148	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
-    //   660: pop
-    //   661: iload 7
-    //   663: ireturn
-    //   664: astore_0
-    //   665: goto -202 -> 463
-    //   668: astore 8
-    //   670: goto -218 -> 452
-    //   673: ldc 167
-    //   675: astore 10
-    //   677: aconst_null
-    //   678: astore_1
-    //   679: iconst_m1
-    //   680: istore_2
-    //   681: iconst_m1
-    //   682: istore 4
-    //   684: iconst_m1
-    //   685: istore_3
-    //   686: aload 9
-    //   688: astore 8
-    //   690: aload 10
-    //   692: astore 9
-    //   694: goto -161 -> 533
-    //   697: aconst_null
-    //   698: astore_1
-    //   699: goto -257 -> 442
+    //   471: invokestatic 261	com/tencent/map/sdk/a/jx:a	()I
+    //   474: if_icmpeq +56 -> 530
+    //   477: new 263	java/lang/StringBuilder
+    //   480: dup
+    //   481: invokespecial 264	java/lang/StringBuilder:<init>	()V
+    //   484: astore 10
+    //   486: aload 10
+    //   488: aload_0
+    //   489: invokestatic 270	com/tencent/tencentmap/io/QStorageManager:getStorageRootPath	(Landroid/content/Context;)Ljava/lang/String;
+    //   492: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   495: pop
+    //   496: aload 10
+    //   498: getstatic 279	java/io/File:separator	Ljava/lang/String;
+    //   501: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   504: pop
+    //   505: aload 10
+    //   507: ldc_w 281
+    //   510: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   513: pop
+    //   514: new 276	java/io/File
+    //   517: dup
+    //   518: aload 10
+    //   520: invokevirtual 282	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   523: invokespecial 283	java/io/File:<init>	(Ljava/lang/String;)V
+    //   526: invokestatic 288	com/tencent/map/sdk/a/om:b	(Ljava/io/File;)Z
+    //   529: pop
+    //   530: iload 6
+    //   532: istore_2
+    //   533: aload 9
+    //   535: astore 10
+    //   537: iload 5
+    //   539: istore_3
+    //   540: aload_1
+    //   541: astore 9
+    //   543: aload 11
+    //   545: astore_1
+    //   546: goto +16 -> 562
+    //   549: aconst_null
+    //   550: astore_1
+    //   551: ldc 228
+    //   553: astore 9
+    //   555: iconst_m1
+    //   556: istore_3
+    //   557: iconst_m1
+    //   558: istore 4
+    //   560: iconst_m1
+    //   561: istore_2
+    //   562: aload 13
+    //   564: ldc_w 290
+    //   567: invokevirtual 247	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   570: astore 11
+    //   572: aload 11
+    //   574: ifnull +13 -> 587
+    //   577: aload 11
+    //   579: invokevirtual 253	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   582: astore 11
+    //   584: goto +8 -> 592
+    //   587: ldc_w 292
+    //   590: astore 11
+    //   592: iload 4
+    //   594: iload_3
+    //   595: iload_2
+    //   596: iload 7
+    //   598: aload_1
+    //   599: aload 10
+    //   601: aload 11
+    //   603: invokestatic 295	com/tencent/map/sdk/a/jx:a	(IIIILjava/lang/String;[ILjava/lang/String;)V
+    //   606: aload_0
+    //   607: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   610: ldc_w 297
+    //   613: aload_1
+    //   614: invokevirtual 300	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   617: pop
+    //   618: aload_0
+    //   619: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   622: ldc_w 302
+    //   625: aload 9
+    //   627: invokevirtual 300	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   630: pop
+    //   631: aload_0
+    //   632: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   635: ldc_w 304
+    //   638: iload_2
+    //   639: invokevirtual 218	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
+    //   642: pop
+    //   643: aload_0
+    //   644: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   647: ldc_w 306
+    //   650: iload_3
+    //   651: invokevirtual 218	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
+    //   654: pop
+    //   655: aload_0
+    //   656: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   659: ldc_w 308
+    //   662: iload 4
+    //   664: invokevirtual 218	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
+    //   667: pop
+    //   668: aload_0
+    //   669: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   672: ldc_w 310
+    //   675: aload 11
+    //   677: invokevirtual 300	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   680: pop
+    //   681: aload_0
+    //   682: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   685: ldc 68
+    //   687: iload 7
+    //   689: invokevirtual 218	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
+    //   692: pop
+    //   693: iload 8
+    //   695: ireturn
+    //   696: aload_0
+    //   697: invokestatic 66	com/tencent/map/sdk/a/gf:a	(Landroid/content/Context;)Lcom/tencent/map/sdk/a/gf;
+    //   700: ldc 68
+    //   702: iconst_0
+    //   703: invokevirtual 218	com/tencent/map/sdk/a/gf:a	(Ljava/lang/String;I)Z
+    //   706: pop
+    //   707: iconst_0
+    //   708: ireturn
+    //   709: astore_1
+    //   710: goto -14 -> 696
+    //   713: astore_1
+    //   714: goto -397 -> 317
+    //   717: astore 9
+    //   719: goto -400 -> 319
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	702	0	paramContext	Context
-    //   0	702	1	paramString	java.lang.String
-    //   4	677	2	i	int
-    //   215	471	3	j	int
-    //   225	458	4	k	int
-    //   236	289	5	m	int
-    //   126	530	6	n	int
-    //   45	617	7	i1	int
-    //   1	567	8	localObject1	Object
-    //   668	1	8	localThrowable	Throwable
-    //   688	1	8	localObject2	Object
-    //   196	497	9	localObject3	Object
-    //   244	447	10	str	java.lang.String
-    //   200	354	11	localObject4	Object
-    //   68	466	12	localJSONObject	org.json.JSONObject
-    //   252	57	13	localJSONArray	org.json.JSONArray
+    //   0	722	0	paramContext	Context
+    //   0	722	1	paramString	java.lang.String
+    //   35	604	2	i	int
+    //   1	650	3	j	int
+    //   32	631	4	k	int
+    //   353	185	5	m	int
+    //   375	156	6	n	int
+    //   115	573	7	i1	int
+    //   48	646	8	i2	int
+    //   153	473	9	localObject1	Object
+    //   717	1	9	localThrowable	Throwable
+    //   219	381	10	localObject2	Object
+    //   383	293	11	localObject3	Object
+    //   338	75	12	str	java.lang.String
+    //   98	465	13	localJSONObject	org.json.JSONObject
+    //   391	57	14	localJSONArray	org.json.JSONArray
     // Exception table:
     //   from	to	target	type
-    //   18	27	78	java/lang/Exception
-    //   322	363	449	java/lang/Throwable
-    //   368	387	449	java/lang/Throwable
-    //   387	399	449	java/lang/Throwable
-    //   322	363	459	finally
-    //   368	387	459	finally
-    //   387	399	459	finally
-    //   399	442	664	finally
-    //   399	442	668	java/lang/Throwable
+    //   257	300	303	finally
+    //   180	221	307	finally
+    //   226	245	307	finally
+    //   245	257	307	finally
+    //   15	24	709	java/lang/Exception
+    //   180	221	713	java/lang/Throwable
+    //   226	245	713	java/lang/Throwable
+    //   245	257	713	java/lang/Throwable
+    //   257	300	717	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.hx
  * JD-Core Version:    0.7.0.1
  */

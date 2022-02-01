@@ -29,8 +29,12 @@ public class SingTogetherConfProcessor
   
   public void a(SingTogetherConfigBean paramSingTogetherConfigBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onUpdate " + paramSingTogetherConfigBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramSingTogetherConfigBean.toString());
+      QLog.d("SingTogetherConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -71,7 +75,7 @@ public class SingTogetherConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.SingTogetherConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -14,19 +14,19 @@ class SessionClearFragment$SessionListAdapter$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionHolder.a.isChecked()) {}
-    for (((CleanMessageItemInfo)this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a.get(this.jdField_a_of_type_Int)).a = false;; ((CleanMessageItemInfo)this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a.get(this.jdField_a_of_type_Int)).a = true)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.notifyItemChanged(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionHolder.a.isChecked()) {
+      ((CleanMessageItemInfo)this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a.get(this.jdField_a_of_type_Int)).a = false;
+    } else {
+      ((CleanMessageItemInfo)this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a.get(this.jdField_a_of_type_Int)).a = true;
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.notifyItemChanged(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityWeatherSessionClearFragment$SessionListAdapter.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment.SessionListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -32,8 +32,9 @@ public final class PhotoInformation
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sUrl != null) {
-      paramJceOutputStream.write(this.sUrl, 0);
+    String str = this.sUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.iWidth, 1);
     paramJceOutputStream.write(this.iHight, 2);
@@ -42,7 +43,7 @@ public final class PhotoInformation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.PhotoInformation
  * JD-Core Version:    0.7.0.1
  */

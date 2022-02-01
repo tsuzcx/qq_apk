@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr;
 
-import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJQQAppInterfaceUtil;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialHandler;
-import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.base.utils.api.IRIJRuntimeUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 
@@ -16,16 +16,23 @@ final class SuperMaskPreloadMgr$preloadSuperMaskRes$1
   
   public final void run()
   {
-    BusinessHandler localBusinessHandler = RIJQQAppInterfaceUtil.a().getBusinessHandler(BusinessHandlerFactory.READINJOY_AD_MATERIAL_HANDLER);
-    if (localBusinessHandler == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialHandler");
+    Object localObject = (QQAppInterface)((IRIJRuntimeUtils)QRoute.api(IRIJRuntimeUtils.class)).getAppRuntime();
+    if (localObject != null) {
+      localObject = ((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.READINJOY_AD_MATERIAL_HANDLER);
+    } else {
+      localObject = null;
     }
-    ((AdMaterialHandler)localBusinessHandler).a();
+    if (localObject != null)
+    {
+      ((AdMaterialHandler)localObject).a();
+      return;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialHandler");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskPreloadMgr.preloadSuperMaskRes.1
  * JD-Core Version:    0.7.0.1
  */

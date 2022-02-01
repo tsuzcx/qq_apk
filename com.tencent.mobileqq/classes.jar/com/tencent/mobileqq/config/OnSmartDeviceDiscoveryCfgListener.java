@@ -11,33 +11,64 @@ import org.json.JSONObject;
 public class OnSmartDeviceDiscoveryCfgListener
   implements CfgProcess.OnGetConfigListener
 {
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, CfgProcess.CfgParseResult paramCfgParseResult)
+  public void onGetConfig(QQAppInterface paramQQAppInterface, int paramInt, String paramString, CfgProcess.CfgParseResult paramCfgParseResult)
   {
-    if ((paramCfgParseResult != null) && ("smart_devices_discovery_config".equals(paramString))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramCfgParseResult.a);
+    if ((paramCfgParseResult != null) && ("smart_devices_discovery_config".equals(paramString)))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("handleConfigForTag smartDeviceDiscoverCfg content = ");
+        paramString.append(paramCfgParseResult.a);
+        QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, paramString.toString());
       }
+      paramInt = 1;
     }
     try
     {
-      paramInt = new JSONObject(paramCfgParseResult.a).optInt("smart_device_discovery_config_switch");
-      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", paramInt).apply();
-      return;
+      try
+      {
+        int i = new JSONObject(paramCfgParseResult.a).optInt("smart_device_discovery_config_switch");
+        paramCfgParseResult = BaseApplication.getContext();
+        paramString = new StringBuilder();
+        paramInt = i;
+      }
+      finally
+      {
+        break label178;
+      }
     }
     catch (JSONException paramString)
     {
-      paramString.printStackTrace();
+      for (;;)
+      {
+        paramString.printStackTrace();
+        paramCfgParseResult = BaseApplication.getContext();
+        paramString = new StringBuilder();
+      }
+      paramCfgParseResult = BaseApplication.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append("smart_device_discovery_config_file");
+      paramCfgParseResult.getSharedPreferences(localStringBuilder.toString(), 0).edit().putInt("smart_device_discovery_config_switch", 1).apply();
+      throw paramString;
       return;
     }
-    catch (Exception paramString) {}finally
+    catch (Exception paramString)
     {
-      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", 1).apply();
+      label99:
+      break label99;
     }
+    paramCfgParseResult = BaseApplication.getContext();
+    paramString = new StringBuilder();
+    paramString.append(paramQQAppInterface.getCurrentAccountUin());
+    paramString.append("smart_device_discovery_config_file");
+    paramCfgParseResult.getSharedPreferences(paramString.toString(), 0).edit().putInt("smart_device_discovery_config_switch", paramInt).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.OnSmartDeviceDiscoveryCfgListener
  * JD-Core Version:    0.7.0.1
  */

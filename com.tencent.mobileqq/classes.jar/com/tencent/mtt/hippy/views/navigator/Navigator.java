@@ -34,7 +34,7 @@ public class Navigator
     post(new Navigator.1(this, localView));
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt2 = getChildCount();
     paramInt1 = 0;
@@ -58,113 +58,120 @@ public class Navigator
       switch (str.hashCode())
       {
       default: 
-        switch (i)
-        {
-        default: 
-          paramString = ObjectAnimator.ofFloat(localView, "translationX", new float[] { 0.0F, getWidth() });
+        break;
+      case 108511772: 
+        if (str.equals("right")) {
+          i = 3;
+        }
+        break;
+      case 3317767: 
+        if (str.equals("left")) {
+          i = 2;
+        }
+        break;
+      case 115029: 
+        if (str.equals("top")) {
+          i = 0;
+        }
+        break;
+      case -1383228885: 
+        if (str.equals("bottom")) {
+          i = 1;
         }
         break;
       }
-      for (;;)
+      if (i != 0)
       {
-        if (paramString != null)
+        if (i != 1)
         {
-          paramString.addListener(this);
-          paramString.start();
+          if (i != 2) {
+            paramString = ObjectAnimator.ofFloat(localView, "translationX", new float[] { 0.0F, getWidth() });
+          } else {
+            paramString = ObjectAnimator.ofFloat(localView, "translationX", new float[] { 0.0F, -getWidth() });
+          }
         }
-        return;
-        if (!str.equals("top")) {
-          break;
+        else {
+          paramString = ObjectAnimator.ofFloat(localView, "translationY", new float[] { 0.0F, getHeight() });
         }
-        i = 0;
-        break;
-        if (!str.equals("bottom")) {
-          break;
-        }
-        i = 1;
-        break;
-        if (!str.equals("left")) {
-          break;
-        }
-        i = 2;
-        break;
-        if (!str.equals("right")) {
-          break;
-        }
-        i = 3;
-        break;
+      }
+      else {
         paramString = ObjectAnimator.ofFloat(localView, "translationY", new float[] { 0.0F, -getHeight() });
-        continue;
-        paramString = ObjectAnimator.ofFloat(localView, "translationY", new float[] { 0.0F, getHeight() });
-        continue;
-        paramString = ObjectAnimator.ofFloat(localView, "translationX", new float[] { 0.0F, -getWidth() });
+      }
+      if (paramString != null)
+      {
+        paramString.addListener(this);
+        paramString.start();
       }
     }
-    NavigatorController.destroyInstance(localView);
-    removeView(localView);
+    else
+    {
+      NavigatorController.destroyInstance(localView);
+      removeView(localView);
+    }
   }
   
   public void push(HippyRootView paramHippyRootView, boolean paramBoolean, String paramString)
   {
     addView(paramHippyRootView);
     paramHippyRootView.layout(0, 0, getWidth(), getHeight());
-    String str;
-    int i;
     if (paramBoolean)
     {
-      str = paramString;
+      String str = paramString;
       if (paramString == null) {
         str = "";
       }
-      i = -1;
+      int i = -1;
       switch (str.hashCode())
       {
       default: 
-        switch (i)
-        {
-        default: 
-          paramHippyRootView = ObjectAnimator.ofFloat(paramHippyRootView, "translationX", new float[] { getWidth(), 0.0F });
+        break;
+      case 108511772: 
+        if (str.equals("right")) {
+          i = 3;
+        }
+        break;
+      case 3317767: 
+        if (str.equals("left")) {
+          i = 2;
+        }
+        break;
+      case 115029: 
+        if (str.equals("top")) {
+          i = 0;
+        }
+        break;
+      case -1383228885: 
+        if (str.equals("bottom")) {
+          i = 1;
         }
         break;
       }
-    }
-    for (;;)
-    {
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2) {
+            paramHippyRootView = ObjectAnimator.ofFloat(paramHippyRootView, "translationX", new float[] { getWidth(), 0.0F });
+          } else {
+            paramHippyRootView = ObjectAnimator.ofFloat(paramHippyRootView, "translationX", new float[] { -getWidth(), 0.0F });
+          }
+        }
+        else {
+          paramHippyRootView = ObjectAnimator.ofFloat(paramHippyRootView, "translationY", new float[] { getHeight(), 0.0F });
+        }
+      }
+      else {
+        paramHippyRootView = ObjectAnimator.ofFloat(paramHippyRootView, "translationY", new float[] { -getHeight(), 0.0F });
+      }
       if (paramHippyRootView != null) {
         paramHippyRootView.start();
       }
-      return;
-      if (!str.equals("top")) {
-        break;
-      }
-      i = 0;
-      break;
-      if (!str.equals("bottom")) {
-        break;
-      }
-      i = 1;
-      break;
-      if (!str.equals("left")) {
-        break;
-      }
-      i = 2;
-      break;
-      if (!str.equals("right")) {
-        break;
-      }
-      i = 3;
-      break;
-      paramHippyRootView = ObjectAnimator.ofFloat(paramHippyRootView, "translationY", new float[] { -getHeight(), 0.0F });
-      continue;
-      paramHippyRootView = ObjectAnimator.ofFloat(paramHippyRootView, "translationY", new float[] { getHeight(), 0.0F });
-      continue;
-      paramHippyRootView = ObjectAnimator.ofFloat(paramHippyRootView, "translationX", new float[] { -getWidth(), 0.0F });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.navigator.Navigator
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,16 @@ class ShareScreenAppInfo$6
   public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqScreenShareAsk paramReqScreenShareAsk, ReqGroupVideo.RspScreenShareAsk paramRspScreenShareAsk, Object paramObject)
   {
     int i = MessageHandler.a((common.ErrorInfo)paramRspScreenShareAsk.result.get());
-    QLog.d("ShareScreenAppInfo", 1, "onSendMsgRsp RspScreenShareAsk errCode[" + i + "]");
+    paramReqScreenShareAsk = new StringBuilder();
+    paramReqScreenShareAsk.append("onSendMsgRsp RspScreenShareAsk errCode[");
+    paramReqScreenShareAsk.append(i);
+    paramReqScreenShareAsk.append("]");
+    QLog.d("ShareScreenAppInfo", 1, paramReqScreenShareAsk.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ShareScreenAppInfo.6
  * JD-Core Version:    0.7.0.1
  */

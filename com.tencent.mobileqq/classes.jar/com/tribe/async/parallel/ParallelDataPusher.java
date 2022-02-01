@@ -30,8 +30,9 @@ class ParallelDataPusher<IN, OUT>
   {
     AssertUtils.checkNotNull(paramObserver);
     paramObserver.addObserverFunction(Integer.valueOf(this.mFunction.hashCode()));
-    if (this.mUpDataPusher != null) {
-      this.mUpDataPusher.apply(paramObserver);
+    DataPusher localDataPusher = this.mUpDataPusher;
+    if (localDataPusher != null) {
+      localDataPusher.apply(paramObserver);
     }
     this.mFunction.observe(new ParallelDataPusher.1(this, paramObserver));
     this.mFunction.apply(this.in);
@@ -44,7 +45,7 @@ class ParallelDataPusher<IN, OUT>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.parallel.ParallelDataPusher
  * JD-Core Version:    0.7.0.1
  */

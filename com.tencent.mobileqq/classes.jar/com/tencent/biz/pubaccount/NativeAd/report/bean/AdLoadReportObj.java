@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/AdLoadReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "lastAdDistance", "", "lastAdDistanceVV", "lastAdTime", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/NativeAd/report/bean/AdLoadReportObj;", "Lcom/tencent/biz/pubaccount/NativeAd/report/IReportObj;", "()V", "lastAdDistance", "", "lastAdDistanceVV", "lastAdTime", "getKey", "parseAdReportData", "", "adReportData", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/data/AdReportData;", "toJsonObject", "Lorg/json/JSONObject;", "valid", "", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class AdLoadReportObj
   extends IReportObj
 {
@@ -26,45 +26,46 @@ public final class AdLoadReportObj
   @Nullable
   public JSONObject a()
   {
-    Object localObject2 = null;
-    localJSONObject = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      Object localObject1 = this.a;
-      if (localObject1 != null)
-      {
-        localObject1 = Integer.valueOf(Integer.parseInt((String)localObject1));
-        ReportExKt.a(localJSONObject, "lastAdDistance", localObject1);
-        localObject1 = this.b;
-        if (localObject1 == null) {
-          break label89;
-        }
-        localObject1 = Integer.valueOf(Integer.parseInt((String)localObject1));
-        label51:
-        ReportExKt.a(localJSONObject, "lastAdDuration", localObject1);
-        localObject1 = this.c;
-        if (localObject1 == null) {
-          break label94;
-        }
+      localObject1 = this.a;
+      localObject3 = null;
+      if (localObject1 == null) {
+        break label131;
       }
-      label89:
-      label94:
-      for (localObject1 = Integer.valueOf(Integer.parseInt((String)localObject1));; localObject1 = localObject2)
-      {
-        ReportExKt.a(localJSONObject, "lastAdDistanceVV", localObject1);
-        return localJSONObject;
-        localObject1 = null;
-        break;
-        localObject1 = null;
-        break label51;
-      }
-      return localJSONObject;
+      localObject1 = Integer.valueOf(Integer.parseInt((String)localObject1));
     }
     catch (Exception localException)
     {
+      for (;;)
+      {
+        Object localObject1;
+        Object localObject3;
+        String str;
+        continue;
+        Object localObject2 = null;
+        continue;
+        localObject2 = null;
+      }
+    }
+    ReportExKt.a(localJSONObject, "lastAdDistance", localObject1);
+    localObject1 = this.b;
+    if (localObject1 != null)
+    {
+      localObject1 = Integer.valueOf(Integer.parseInt((String)localObject1));
+      ReportExKt.a(localJSONObject, "lastAdDuration", localObject1);
+      str = this.c;
+      localObject1 = localObject3;
+      if (str != null) {
+        localObject1 = Integer.valueOf(Integer.parseInt(str));
+      }
+      ReportExKt.a(localJSONObject, "lastAdDistanceVV", localObject1);
+      return localJSONObject;
       ReportExKt.a(localJSONObject, "lastAdDistance", Integer.valueOf(0));
       ReportExKt.a(localJSONObject, "lastAdDuration", Integer.valueOf(0));
       ReportExKt.a(localJSONObject, "lastAdDistanceVV", Integer.valueOf(0));
+      return localJSONObject;
     }
   }
   
@@ -89,7 +90,7 @@ public final class AdLoadReportObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.AdLoadReportObj
  * JD-Core Version:    0.7.0.1
  */

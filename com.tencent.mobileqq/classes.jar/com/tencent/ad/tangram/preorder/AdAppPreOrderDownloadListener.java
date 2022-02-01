@@ -15,7 +15,8 @@ public enum AdAppPreOrderDownloadListener
   
   public static IAdDownloader.Callback getAdapter()
   {
-    if ((INSTANCE.adapter != null) && (INSTANCE.adapter.get() != null)) {
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       return (IAdDownloader.Callback)INSTANCE.adapter.get();
     }
     return null;

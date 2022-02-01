@@ -32,23 +32,27 @@ public final class PartnerPlugin
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.gameurl != null) {
-      paramJceOutputStream.write(this.gameurl, 0);
+    String str = this.gameurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.iconurl != null) {
-      paramJceOutputStream.write(this.iconurl, 1);
+    str = this.iconurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.text1 != null) {
-      paramJceOutputStream.write(this.text1, 2);
+    str = this.text1;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.text2 != null) {
-      paramJceOutputStream.write(this.text2, 3);
+    str = this.text2;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_WIDGET.PartnerPlugin
  * JD-Core Version:    0.7.0.1
  */

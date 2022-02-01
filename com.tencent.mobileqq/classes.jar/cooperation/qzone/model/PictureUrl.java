@@ -33,10 +33,11 @@ public class PictureUrl
   
   public boolean contains(String paramString)
   {
-    if (this.url == null) {
+    String str = this.url;
+    if (str == null) {
       return false;
     }
-    return this.url.equalsIgnoreCase(paramString);
+    return str.equalsIgnoreCase(paramString);
   }
   
   public int describeContents()
@@ -51,7 +52,17 @@ public class PictureUrl
   
   public String toString()
   {
-    return "PictureUrl [url=" + this.url + ", width=" + this.width + ", height=" + this.height + ", pictureType=" + this.pictureType + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PictureUrl [url=");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", pictureType=");
+    localStringBuilder.append(this.pictureType);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -67,7 +78,7 @@ public class PictureUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.PictureUrl
  * JD-Core Version:    0.7.0.1
  */

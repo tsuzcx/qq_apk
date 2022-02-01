@@ -12,28 +12,29 @@ class QGOfflineDownloader$1
     if (((paramInt != 0) || (paramString == null) || (!paramString.contains("url"))) && (paramInt != 7)) {
       QGLoader.a.set(false);
     }
-    this.jdField_a_of_type_ComTencentQgLoaderQGOfflineDownloader.a = -1;
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 6: 
-    default: 
-      this.jdField_a_of_type_ComTencentQgLoaderQGOfflineDownloader.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject = this.jdField_a_of_type_ComTencentQgLoaderQGOfflineDownloader;
+    ((QGOfflineDownloader)localObject).a = -1;
+    if (paramInt != -1) {
+      if (paramInt != 0)
+      {
+        if ((paramInt != 5) && (paramInt != 7)) {
+          if (paramInt != 8) {
+            ((QGOfflineDownloader)localObject).a(this.jdField_a_of_type_JavaLangString);
+          } else {
+            ((QGOfflineDownloader)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+          }
+        }
+      }
+      else if (paramString == null) {
+        ((QGOfflineDownloader)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+      }
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QGDownloader.offline", 2, new Object[] { "onSoDownload loaded. code = ", Integer.valueOf(paramInt), ", param1:", paramString, ", DownloadStatus = " + this.jdField_a_of_type_ComTencentQgLoaderQGOfflineDownloader.a });
-      }
-      return;
-      this.jdField_a_of_type_ComTencentQgLoaderQGOfflineDownloader.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-      continue;
-      if (paramString == null) {
-        this.jdField_a_of_type_ComTencentQgLoaderQGOfflineDownloader.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", DownloadStatus = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentQgLoaderQGOfflineDownloader.a);
+      QLog.d("QGDownloader.offline", 2, new Object[] { "onSoDownload loaded. code = ", Integer.valueOf(paramInt), ", param1:", paramString, ((StringBuilder)localObject).toString() });
     }
   }
   
@@ -44,7 +45,7 @@ class QGOfflineDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.loader.QGOfflineDownloader.1
  * JD-Core Version:    0.7.0.1
  */

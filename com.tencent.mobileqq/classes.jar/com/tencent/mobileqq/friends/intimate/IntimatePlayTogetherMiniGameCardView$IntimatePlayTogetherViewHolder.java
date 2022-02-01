@@ -21,13 +21,13 @@ class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherViewHolder
   IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369201));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369203));
-    this.b = ((TextView)paramView.findViewById(2131369206));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131369199));
-    this.c = ((TextView)paramView.findViewById(2131369205));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131369204));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369200);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368931));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368933));
+    this.b = ((TextView)paramView.findViewById(2131368936));
+    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368929));
+    this.c = ((TextView)paramView.findViewById(2131368935));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368934));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368930);
   }
   
   View a()
@@ -62,7 +62,7 @@ class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder
  * JD-Core Version:    0.7.0.1
  */

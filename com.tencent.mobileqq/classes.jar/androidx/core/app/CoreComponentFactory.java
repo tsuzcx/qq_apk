@@ -19,16 +19,14 @@ public class CoreComponentFactory
 {
   static <T> T checkCompatWrapper(T paramT)
   {
-    Object localObject1 = paramT;
     if ((paramT instanceof CoreComponentFactory.CompatWrapped))
     {
-      Object localObject2 = ((CoreComponentFactory.CompatWrapped)paramT).getWrapper();
-      localObject1 = paramT;
-      if (localObject2 != null) {
-        localObject1 = localObject2;
+      Object localObject = ((CoreComponentFactory.CompatWrapped)paramT).getWrapper();
+      if (localObject != null) {
+        return localObject;
       }
     }
-    return localObject1;
+    return paramT;
   }
   
   @NonNull
@@ -63,7 +61,7 @@ public class CoreComponentFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.CoreComponentFactory
  * JD-Core Version:    0.7.0.1
  */

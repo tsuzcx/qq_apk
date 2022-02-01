@@ -16,15 +16,17 @@ public class BaseVideoThumbAssetCache$LRUKey
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (LRUKey)paramObject;
-    } while ((this.time == paramObject.time) && (TextUtils.equals(this.assetId, paramObject.assetId)));
+      return (this.time == paramObject.time) && (TextUtils.equals(this.assetId, paramObject.assetId));
+    }
     return false;
   }
   
@@ -35,7 +37,7 @@ public class BaseVideoThumbAssetCache$LRUKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.BaseVideoThumbAssetCache.LRUKey
  * JD-Core Version:    0.7.0.1
  */

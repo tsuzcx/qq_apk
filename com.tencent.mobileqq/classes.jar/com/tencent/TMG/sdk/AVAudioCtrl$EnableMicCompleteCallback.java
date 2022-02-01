@@ -8,7 +8,10 @@ public class AVAudioCtrl$EnableMicCompleteCallback
   
   protected void onComplete(boolean paramBoolean, int paramInt)
   {
-    Log.d("SdkJni", "EnableMicCompleteCallback.OnComplete. result = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EnableMicCompleteCallback.OnComplete. result = ");
+    localStringBuilder.append(paramInt);
+    Log.d("SdkJni", localStringBuilder.toString());
   }
 }
 

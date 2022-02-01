@@ -10,13 +10,13 @@ public final class POITYPE
   public static final POITYPE POI_FOOD;
   public static final POITYPE POI_HEALTH;
   public static final POITYPE POI_HOTEL;
-  public static final POITYPE POI_INFRA;
+  public static final POITYPE POI_INFRA = new POITYPE(10, 270000, "POI_INFRA");
   public static final POITYPE POI_ORG;
   public static final POITYPE POI_PLACE;
   public static final POITYPE POI_SERVICE;
   public static final POITYPE POI_SHOPPING;
   public static final POITYPE POI_TOUR;
-  public static final POITYPE POI_WORK;
+  public static final POITYPE POI_WORK = new POITYPE(11, 280000, "POI_WORK");
   public static final int _POI_CULTURE = 170000;
   public static final int _POI_ENTM = 160000;
   public static final int _POI_FOOD = 100000;
@@ -29,31 +29,22 @@ public final class POITYPE
   public static final int _POI_SHOPPING = 130000;
   public static final int _POI_TOUR = 220000;
   public static final int _POI_WORK = 280000;
-  private static POITYPE[] a;
+  private static POITYPE[] a = new POITYPE[12];
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!POITYPE.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new POITYPE[12];
-      POI_FOOD = new POITYPE(0, 100000, "POI_FOOD");
-      POI_ORG = new POITYPE(1, 120000, "POI_ORG");
-      POI_SHOPPING = new POITYPE(2, 130000, "POI_SHOPPING");
-      POI_SERVICE = new POITYPE(3, 140000, "POI_SERVICE");
-      POI_ENTM = new POITYPE(4, 160000, "POI_ENTM");
-      POI_CULTURE = new POITYPE(5, 170000, "POI_CULTURE");
-      POI_HEALTH = new POITYPE(6, 200000, "POI_HEALTH");
-      POI_HOTEL = new POITYPE(7, 210000, "POI_HOTEL");
-      POI_TOUR = new POITYPE(8, 220000, "POI_TOUR");
-      POI_PLACE = new POITYPE(9, 260000, "POI_PLACE");
-      POI_INFRA = new POITYPE(10, 270000, "POI_INFRA");
-      POI_WORK = new POITYPE(11, 280000, "POI_WORK");
-      return;
-    }
+    POI_FOOD = new POITYPE(0, 100000, "POI_FOOD");
+    POI_ORG = new POITYPE(1, 120000, "POI_ORG");
+    POI_SHOPPING = new POITYPE(2, 130000, "POI_SHOPPING");
+    POI_SERVICE = new POITYPE(3, 140000, "POI_SERVICE");
+    POI_ENTM = new POITYPE(4, 160000, "POI_ENTM");
+    POI_CULTURE = new POITYPE(5, 170000, "POI_CULTURE");
+    POI_HEALTH = new POITYPE(6, 200000, "POI_HEALTH");
+    POI_HOTEL = new POITYPE(7, 210000, "POI_HOTEL");
+    POI_TOUR = new POITYPE(8, 220000, "POI_TOUR");
+    POI_PLACE = new POITYPE(9, 260000, "POI_PLACE");
   }
   
   private POITYPE(int paramInt1, int paramInt2, String paramString)
@@ -66,15 +57,16 @@ public final class POITYPE
   public static POITYPE convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      POITYPE[] arrayOfPOITYPE = a;
+      if (i >= arrayOfPOITYPE.length) {
+        break;
+      }
+      if (arrayOfPOITYPE[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -82,15 +74,16 @@ public final class POITYPE
   public static POITYPE convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      POITYPE[] arrayOfPOITYPE = a;
+      if (i >= arrayOfPOITYPE.length) {
+        break;
+      }
+      if (arrayOfPOITYPE[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -107,7 +100,7 @@ public final class POITYPE
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBSAddrProtocol.POITYPE
  * JD-Core Version:    0.7.0.1
  */

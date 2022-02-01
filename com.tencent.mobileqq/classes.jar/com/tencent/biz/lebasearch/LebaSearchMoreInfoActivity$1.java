@@ -12,9 +12,7 @@ class LebaSearchMoreInfoActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1001) {
       return;
     }
     paramMessage = (Bundle)paramMessage.obj;
@@ -23,7 +21,7 @@ class LebaSearchMoreInfoActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity.1
  * JD-Core Version:    0.7.0.1
  */

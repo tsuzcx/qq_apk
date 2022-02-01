@@ -41,50 +41,42 @@ public class StyleCustomNormalFilter
   
   public void updateLut(String paramString1, String paramString2)
   {
+    boolean bool = "lut1".equals(paramString2);
     int i = 33987;
     String str = "inputLutTexture1";
-    if ("lut1".equals(paramString2)) {
-      str = "inputLutTexture1";
-    }
-    for (;;)
-    {
-      addParam(new TextureResParam(str, paramString1, i));
-      return;
+    if (!bool) {
       if ("lut2".equals(paramString2))
       {
-        str = "inputLutTexture2";
         i = 33988;
+        str = "inputLutTexture2";
       }
       else if ("lut3".equals(paramString2))
       {
-        str = "inputLutTexture3";
         i = 33989;
+        str = "inputLutTexture3";
       }
     }
+    addParam(new TextureResParam(str, paramString1, i));
   }
   
   public void updateMaterial(String paramString1, String paramString2)
   {
+    boolean bool = "material1".equals(paramString2);
     int i = 33990;
     String str = "inputMaterialTexture1";
-    if ("material1".equals(paramString2)) {
-      str = "inputMaterialTexture1";
-    }
-    for (;;)
-    {
-      addParam(new TextureResParam(str, paramString1, i));
-      return;
+    if (!bool) {
       if ("material2".equals(paramString2))
       {
-        str = "inputMaterialTexture2";
         i = 33991;
+        str = "inputMaterialTexture2";
       }
       else if ("material3".equals(paramString2))
       {
-        str = "inputMaterialTexture3";
         i = 33992;
+        str = "inputMaterialTexture3";
       }
     }
+    addParam(new TextureResParam(str, paramString1, i));
   }
   
   public void updateWidthHeightParam(float paramFloat1, float paramFloat2)
@@ -95,7 +87,7 @@ public class StyleCustomNormalFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.stylizefilter.customFilter.StyleCustomNormalFilter
  * JD-Core Version:    0.7.0.1
  */

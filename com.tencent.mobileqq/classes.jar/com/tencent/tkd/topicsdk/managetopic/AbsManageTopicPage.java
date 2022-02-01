@@ -27,18 +27,17 @@ import com.tencent.tkd.topicsdk.TopicSDK;
 import com.tencent.tkd.topicsdk.TopicSDK.Companion;
 import com.tencent.tkd.topicsdk.TopicSDKConfig;
 import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig;
+import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig.Companion;
 import com.tencent.tkd.topicsdk.bean.ImageInfo;
-import com.tencent.tkd.topicsdk.bean.ManageTopicConfig;
 import com.tencent.tkd.topicsdk.bean.PublishArticleInfo;
 import com.tencent.tkd.topicsdk.bean.TopicInfo;
 import com.tencent.tkd.topicsdk.bean.TopicPublishInfo;
 import com.tencent.tkd.topicsdk.bean.VideoInfo;
+import com.tencent.tkd.topicsdk.bean.globalconfig.ManageTopicConfig;
 import com.tencent.tkd.topicsdk.common.DisplayUtils;
 import com.tencent.tkd.topicsdk.common.FileProvideHelper;
 import com.tencent.tkd.topicsdk.common.InputMethodUtils;
 import com.tencent.tkd.topicsdk.common.PictureUtil;
-import com.tencent.tkd.topicsdk.common.report.ReportKeys;
-import com.tencent.tkd.topicsdk.common.report.ReportValues;
 import com.tencent.tkd.topicsdk.framework.BaseSDKPage;
 import com.tencent.tkd.topicsdk.framework.ImageLoader;
 import com.tencent.tkd.topicsdk.framework.ImageLoader.Companion;
@@ -48,11 +47,10 @@ import com.tencent.tkd.topicsdk.framework.TopicSDKHelperKt;
 import com.tencent.tkd.topicsdk.framework.Uploader;
 import com.tencent.tkd.topicsdk.interfaces.BaseUploader;
 import com.tencent.tkd.topicsdk.interfaces.BaseUploader.UploaderType;
-import com.tencent.tkd.topicsdk.interfaces.IDataReporter.ACTION;
 import com.tencent.tkd.topicsdk.interfaces.IUserActionHandler;
 import com.tencent.tkd.topicsdk.widget.LimitWordEditText;
-import com.tencent.tkd.topicsdk.widget.SlidingUpDialog;
 import com.tencent.tkd.topicsdk.widget.dialog.CommonProgressDialog;
+import com.tencent.tkd.topicsdk.widget.dialog.SlidingUpDialog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -67,7 +65,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/managetopic/AbsManageTopicPage;", "Lcom/tencent/tkd/topicsdk/framework/BaseSDKPage;", "Lcom/tencent/tkd/topicsdk/managetopic/ManageTopicContract$IManageTopicView;", "Landroid/view/View$OnClickListener;", "()V", "addCoverTipView", "Landroid/widget/TextView;", "allowSubmitArrowView", "Landroid/widget/ImageView;", "allowSubmitContainer", "Landroid/view/View;", "allowSubmitDescView", "allowSubmitTitle", "", "allowSubmitTitleView", "callback", "getCallback", "()Ljava/lang/String;", "setCallback", "(Ljava/lang/String;)V", "cameraIconView", "changeCoverTipView", "coverImageView", "coverPath", "cropPicFile", "Ljava/io/File;", "currentAllowSubmit", "", "getCurrentAllowSubmit", "()Z", "setCurrentAllowSubmit", "(Z)V", "currentCoverUrl", "getCurrentCoverUrl", "setCurrentCoverUrl", "forbidSubmitArrowView", "forbidSubmitContainer", "forbidSubmitDescView", "forbidSubmitTitle", "forbidSubmitTitleView", "hasEditIntro", "getHasEditIntro", "hasSelectCover", "getHasSelectCover", "imageLoader", "Lcom/tencent/tkd/topicsdk/framework/ImageLoader;", "imageUploader", "Lcom/tencent/tkd/topicsdk/framework/Uploader;", "presenter", "Lcom/tencent/tkd/topicsdk/managetopic/ManageTopicPresenter;", "getPresenter", "()Lcom/tencent/tkd/topicsdk/managetopic/ManageTopicPresenter;", "publishingDialog", "Lcom/tencent/tkd/topicsdk/widget/dialog/CommonProgressDialog;", "scene", "getScene", "setScene", "submitDialog", "Lcom/tencent/tkd/topicsdk/widget/SlidingUpDialog;", "submitTextView", "tempPicFileForCrop", "titleCenterView", "getTitleCenterView", "()Landroid/widget/TextView;", "setTitleCenterView", "(Landroid/widget/TextView;)V", "titleLeftView", "titleRightView", "getTitleRightView", "setTitleRightView", "topicIntroView", "Lcom/tencent/tkd/topicsdk/widget/LimitWordEditText;", "getTopicIntroView", "()Lcom/tencent/tkd/topicsdk/widget/LimitWordEditText;", "setTopicIntroView", "(Lcom/tencent/tkd/topicsdk/widget/LimitWordEditText;)V", "topicTitleView", "getTopicTitleView", "setTopicTitleView", "uploadingCoverDialog", "urlMap", "", "afterActivityFinish", "", "bindTopicData", "topicInfo", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "buildPublishArticleInfo", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "buildPublisherConfig", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "buildTopicPublishInfo", "Lcom/tencent/tkd/topicsdk/bean/TopicPublishInfo;", "cutPicture", "path", "fixBlackBlockByInputMethod", "handleCoverLayoutWithExistCover", "handleCoverLayoutWithNoCover", "handleCoverViewClick", "handleLeftBtnClick", "handleRightClick", "hidePublishLoadingProgress", "hideUploadLoadingProgress", "initCoverView", "contentView", "initData", "initProgressDialog", "initSubmitDialog", "submitView", "initTextView", "initTitleBarView", "isModified", "isRightBtnClickable", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onClick", "v", "onCoverUploaded", "url", "localPath", "onCreateView", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "onDestroyView", "onTopicCreated", "isSuccess", "onTopicEdited", "reportTopicResultReturn", "type", "showPublishLoadingProgress", "showSaveDialog", "showTips", "tipsId", "tips", "showUploadLoadingProgress", "updateActionBtnStatus", "updateCoverLayout", "updateCoverPath", "updateSubmitStatus", "allowSubmit", "updateSubmitUIByConfig", "config", "Lcom/tencent/tkd/topicsdk/bean/ManageTopicConfig;", "updateUIByConfig", "updateViewElement", "uploadAndUpdateCover", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/managetopic/AbsManageTopicPage;", "Lcom/tencent/tkd/topicsdk/framework/BaseSDKPage;", "Lcom/tencent/tkd/topicsdk/managetopic/ManageTopicContract$IManageTopicView;", "Landroid/view/View$OnClickListener;", "()V", "addCoverTipView", "Landroid/widget/TextView;", "allowSubmitArrowView", "Landroid/widget/ImageView;", "allowSubmitContainer", "Landroid/view/View;", "allowSubmitDescView", "allowSubmitTitle", "", "allowSubmitTitleView", "callback", "getCallback", "()Ljava/lang/String;", "setCallback", "(Ljava/lang/String;)V", "cameraIconView", "changeCoverTipView", "coverImageView", "coverPath", "cropPicFile", "Ljava/io/File;", "currentAllowSubmit", "", "getCurrentAllowSubmit", "()Z", "setCurrentAllowSubmit", "(Z)V", "currentCoverUrl", "getCurrentCoverUrl", "setCurrentCoverUrl", "forbidSubmitArrowView", "forbidSubmitContainer", "forbidSubmitDescView", "forbidSubmitTitle", "forbidSubmitTitleView", "hasEditIntro", "getHasEditIntro", "hasSelectCover", "getHasSelectCover", "imageLoader", "Lcom/tencent/tkd/topicsdk/framework/ImageLoader;", "imageUploader", "Lcom/tencent/tkd/topicsdk/framework/Uploader;", "presenter", "Lcom/tencent/tkd/topicsdk/managetopic/ManageTopicPresenter;", "getPresenter", "()Lcom/tencent/tkd/topicsdk/managetopic/ManageTopicPresenter;", "publishingDialog", "Lcom/tencent/tkd/topicsdk/widget/dialog/CommonProgressDialog;", "scene", "getScene", "setScene", "submitDialog", "Lcom/tencent/tkd/topicsdk/widget/dialog/SlidingUpDialog;", "submitTextView", "tempPicFileForCrop", "titleCenterView", "getTitleCenterView", "()Landroid/widget/TextView;", "setTitleCenterView", "(Landroid/widget/TextView;)V", "titleLeftView", "titleRightView", "getTitleRightView", "setTitleRightView", "topicIntroView", "Lcom/tencent/tkd/topicsdk/widget/LimitWordEditText;", "getTopicIntroView", "()Lcom/tencent/tkd/topicsdk/widget/LimitWordEditText;", "setTopicIntroView", "(Lcom/tencent/tkd/topicsdk/widget/LimitWordEditText;)V", "topicTitleView", "getTopicTitleView", "setTopicTitleView", "uploadingCoverDialog", "urlMap", "", "afterActivityFinish", "", "bindTopicData", "topicInfo", "Lcom/tencent/tkd/topicsdk/bean/TopicInfo;", "buildPublishArticleInfo", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "buildPublisherConfig", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "buildTopicPublishInfo", "Lcom/tencent/tkd/topicsdk/bean/TopicPublishInfo;", "cutPicture", "path", "fixBlackBlockByInputMethod", "handleCoverLayoutWithExistCover", "handleCoverLayoutWithNoCover", "handleCoverViewClick", "handleLeftBtnClick", "handleRightClick", "hidePublishLoadingProgress", "hideUploadLoadingProgress", "initCoverView", "contentView", "initData", "initProgressDialog", "initSubmitDialog", "submitView", "initTextView", "initTitleBarView", "isModified", "isRightBtnClickable", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onClick", "v", "onCoverUploaded", "url", "localPath", "onCreateView", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "onDestroyView", "onTopicCreated", "isSuccess", "onTopicEdited", "showPublishLoadingProgress", "showSaveDialog", "showTips", "tipsId", "tips", "showUploadLoadingProgress", "updateActionBtnStatus", "updateCoverLayout", "updateCoverPath", "updateSubmitStatus", "allowSubmit", "updateSubmitUIByConfig", "config", "Lcom/tencent/tkd/topicsdk/bean/globalconfig/ManageTopicConfig;", "updateUIByConfig", "updateViewElement", "uploadAndUpdateCover", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public abstract class AbsManageTopicPage
   extends BaseSDKPage
   implements View.OnClickListener, ManageTopicContract.IManageTopicView
@@ -83,8 +81,8 @@ public abstract class AbsManageTopicPage
   private final ManageTopicPresenter jdField_a_of_type_ComTencentTkdTopicsdkManagetopicManageTopicPresenter = new ManageTopicPresenter((ManageTopicContract.IManageTopicModel)new ManageTopicModel());
   @NotNull
   public LimitWordEditText a;
-  private SlidingUpDialog jdField_a_of_type_ComTencentTkdTopicsdkWidgetSlidingUpDialog;
   private CommonProgressDialog jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
+  private SlidingUpDialog jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogSlidingUpDialog;
   private File jdField_a_of_type_JavaIoFile;
   @NotNull
   private String jdField_a_of_type_JavaLangString = "";
@@ -126,67 +124,55 @@ public abstract class AbsManageTopicPage
       Intrinsics.throwNpe();
     }
     Intrinsics.checkExpressionValueIsNotNull(localObject, "activity!!");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetSlidingUpDialog = new SlidingUpDialog((Context)localObject, paramView, new RelativeLayout.LayoutParams(-1, -2));
-    localObject = paramView.findViewById(R.id.m);
+    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogSlidingUpDialog = new SlidingUpDialog((Context)localObject, paramView, new RelativeLayout.LayoutParams(-1, -2));
+    localObject = paramView.findViewById(R.id.j);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.allow_submit_title)");
     this.f = ((TextView)localObject);
-    localObject = paramView.findViewById(R.id.j);
+    localObject = paramView.findViewById(R.id.g);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.allow_submit_content)");
     this.g = ((TextView)localObject);
-    localObject = paramView.findViewById(R.id.l);
+    localObject = paramView.findViewById(R.id.i);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.allow_submit_select_view)");
     this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localObject);
-    localObject = paramView.findViewById(R.id.k);
+    localObject = paramView.findViewById(R.id.h);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.allow_submit_layout)");
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
-    localObject = this.jdField_a_of_type_AndroidViewView;
-    if (localObject == null) {
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("allowSubmitContainer");
     }
-    ((View)localObject).setOnClickListener((View.OnClickListener)this);
-    localObject = paramView.findViewById(R.id.aa);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.forbid_submit_title)");
-    this.h = ((TextView)localObject);
-    localObject = paramView.findViewById(R.id.X);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.forbid_submit_content)");
-    this.i = ((TextView)localObject);
-    localObject = paramView.findViewById(R.id.Z);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.forbid_submit_select_view)");
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)localObject);
-    paramView = paramView.findViewById(R.id.Y);
+    localObject = (View.OnClickListener)this;
+    localView.setOnClickListener((View.OnClickListener)localObject);
+    localView = paramView.findViewById(R.id.L);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "findViewById(R.id.forbid_submit_title)");
+    this.h = ((TextView)localView);
+    localView = paramView.findViewById(R.id.I);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "findViewById(R.id.forbid_submit_content)");
+    this.i = ((TextView)localView);
+    localView = paramView.findViewById(R.id.K);
+    Intrinsics.checkExpressionValueIsNotNull(localView, "findViewById(R.id.forbid_submit_select_view)");
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)localView);
+    paramView = paramView.findViewById(R.id.J);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "findViewById(R.id.forbid_submit_layout)");
     this.jdField_b_of_type_AndroidViewView = paramView;
     paramView = this.jdField_b_of_type_AndroidViewView;
     if (paramView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("forbidSubmitContainer");
     }
-    paramView.setOnClickListener((View.OnClickListener)this);
-  }
-  
-  private final void a(TopicInfo paramTopicInfo, boolean paramBoolean, String paramString)
-  {
-    Map localMap = this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicManageTopicPresenter.a(this.jdField_a_of_type_JavaLangString, h(), g());
-    localMap.put(ReportKeys.a.h(), paramString);
-    localMap.put(ReportKeys.a.i(), String.valueOf(paramTopicInfo.getTopicId()));
-    if (paramBoolean)
-    {
-      TopicSDKHelperKt.a(IDataReporter.ACTION.ACTION_SUCCESS_TOPIC, localMap, null, 4, null);
-      return;
-    }
-    TopicSDKHelperKt.a(IDataReporter.ACTION.ACTION_FAIL_TOPIC, localMap, null, 4, null);
+    paramView.setOnClickListener((View.OnClickListener)localObject);
   }
   
   private final void a(boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicManageTopicPresenter.a(paramBoolean);
     this.jdField_a_of_type_Boolean = paramBoolean;
-    SlidingUpDialog localSlidingUpDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetSlidingUpDialog;
+    SlidingUpDialog localSlidingUpDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogSlidingUpDialog;
     if (localSlidingUpDialog == null) {
       Intrinsics.throwUninitializedPropertyAccessException("submitDialog");
     }
     if (localSlidingUpDialog.isShowing())
     {
-      localSlidingUpDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetSlidingUpDialog;
+      localSlidingUpDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogSlidingUpDialog;
       if (localSlidingUpDialog == null) {
         Intrinsics.throwUninitializedPropertyAccessException("submitDialog");
       }
@@ -196,60 +182,65 @@ public abstract class AbsManageTopicPage
   
   private final void b(View paramView)
   {
-    Object localObject = paramView.findViewById(R.id.as);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "contentView.findViewById(R.id.iv_title_left_btn)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject);
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (localObject == null) {
+    Object localObject1 = paramView.findViewById(R.id.ad);
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "contentView.findViewById(R.id.iv_title_left_btn)");
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject1);
+    Object localObject2 = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("titleLeftView");
     }
-    ((ImageView)localObject).setOnClickListener((View.OnClickListener)this);
-    localObject = paramView.findViewById(R.id.bO);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "contentView.findViewById(R.id.tv_title)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (localObject == null) {
+    localObject1 = (View.OnClickListener)this;
+    ((ImageView)localObject2).setOnClickListener((View.OnClickListener)localObject1);
+    localObject2 = paramView.findViewById(R.id.bi);
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "contentView.findViewById(R.id.tv_title)");
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
+    localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("titleCenterView");
     }
-    ((TextView)localObject).setOnClickListener((View.OnClickListener)this);
-    paramView = paramView.findViewById(R.id.bP);
+    ((TextView)localObject2).setOnClickListener((View.OnClickListener)localObject1);
+    paramView = paramView.findViewById(R.id.bj);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "contentView.findViewById(R.id.tv_title_right_btn)");
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView);
     paramView = this.jdField_b_of_type_AndroidWidgetTextView;
     if (paramView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("titleRightView");
     }
-    paramView.setOnClickListener((View.OnClickListener)this);
+    paramView.setOnClickListener((View.OnClickListener)localObject1);
   }
   
   private final void b(String paramString)
   {
     Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
-    {
+    int k = 0;
+    int j;
+    if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+      j = 0;
+    } else {
       j = 1;
-      if (j != 0) {
-        break label158;
+    }
+    if (j == 0)
+    {
+      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkUploader;
+      if (localObject != null) {
+        ((Uploader)localObject).b();
       }
       localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkUploader;
       if (localObject != null) {
-        ((Uploader)localObject).c();
+        localObject = ((Uploader)localObject).a();
+      } else {
+        localObject = null;
       }
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkUploader;
-      if (localObject == null) {
-        break label148;
-      }
-      localObject = ((Uploader)localObject).a();
-      label51:
       CharSequence localCharSequence = (CharSequence)localObject;
-      if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
-        break label153;
+      if (localCharSequence != null)
+      {
+        j = k;
+        if (localCharSequence.length() != 0) {}
       }
-    }
-    label148:
-    label153:
-    for (int j = 1;; j = 0)
-    {
+      else
+      {
+        j = 1;
+      }
       if (j == 0) {
         ThreadManagerKt.c((Function0)new AbsManageTopicPage.uploadAndUpdateCover.1((String)localObject));
       }
@@ -259,68 +250,60 @@ public abstract class AbsManageTopicPage
       this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicManageTopicPresenter.a((Uploader)localObject, paramString);
       this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkUploader = ((Uploader)localObject);
       return;
-      j = 0;
-      break;
-      localObject = null;
-      break label51;
     }
-    label158:
     TLog.a("AbsManageTopicPage", "onActivityResult,REQUEST_CODE_CUT_PHOTO cutPath = null");
   }
   
   private final void c(View paramView)
   {
-    Activity localActivity = a();
-    Object localObject;
-    if (localActivity != null)
+    Object localObject1 = a();
+    if (localObject1 != null)
     {
-      Intrinsics.checkExpressionValueIsNotNull(localActivity, "activity ?: return");
-      ((RelativeLayout)paramView.findViewById(R.id.bc)).setOnClickListener((View.OnClickListener)this);
-      paramView = paramView.findViewById(R.id.ao);
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "activity ?: return");
+      ((RelativeLayout)paramView.findViewById(R.id.aB)).setOnClickListener((View.OnClickListener)this);
+      paramView = paramView.findViewById(R.id.Z);
       Intrinsics.checkExpressionValueIsNotNull(paramView, "contentView.findViewById(R.id.iv_cover)");
       this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView);
-      paramView = ImageLoader.a.a((Context)localActivity, TopicSDK.a.a().a().a()).a(DisplayUtils.a.a((Context)localActivity, 12.0F));
-      localObject = localActivity.getResources();
-      if (localObject == null) {
-        break label194;
+      Object localObject2 = ImageLoader.a;
+      paramView = (Context)localObject1;
+      localObject2 = ((ImageLoader.Companion)localObject2).a(paramView, TopicSDK.a.a().a().a()).a(DisplayUtils.a.a(paramView, 12.0F));
+      localObject1 = ((Activity)localObject1).getResources();
+      int j;
+      if (localObject1 != null) {
+        j = ((Resources)localObject1).getColor(R.color.i);
+      } else {
+        j = 16119801;
       }
-    }
-    label194:
-    for (int j = ((Resources)localObject).getColor(R.color.d);; j = 15988215)
-    {
-      paramView = paramView.a((Drawable)new ColorDrawable(j));
-      localObject = this.jdField_c_of_type_AndroidWidgetImageView;
-      if (localObject == null) {
+      localObject1 = ((ImageLoader)localObject2).a((Drawable)new ColorDrawable(j));
+      localObject2 = this.jdField_c_of_type_AndroidWidgetImageView;
+      if (localObject2 == null) {
         Intrinsics.throwUninitializedPropertyAccessException("coverImageView");
       }
-      this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader = paramView.a((ImageView)localObject).a(DisplayUtils.a.a((Context)localActivity, 150.0F), DisplayUtils.a.a((Context)localActivity, 150.0F));
+      this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader = ((ImageLoader)localObject1).a((ImageView)localObject2).a(DisplayUtils.a.a(paramView, 150.0F), DisplayUtils.a.a(paramView, 150.0F));
       d("");
-      return;
     }
   }
   
   private final void c(String paramString)
   {
     Activity localActivity = a();
-    if (localActivity != null) {
-      if (Build.VERSION.SDK_INT < 24) {
-        break label73;
-      }
-    }
-    label73:
-    for (paramString = FileProvideHelper.a((Context)localActivity, TopicSDKHelperKt.c(), new File(paramString));; paramString = Uri.fromFile(new File(paramString)))
+    if (localActivity != null)
     {
+      if (Build.VERSION.SDK_INT >= 24) {
+        paramString = FileProvideHelper.a((Context)localActivity, TopicSDKHelperKt.d(), new File(paramString));
+      } else {
+        paramString = Uri.fromFile(new File(paramString));
+      }
       PictureUtil localPictureUtil = PictureUtil.a;
       Intrinsics.checkExpressionValueIsNotNull(localActivity, "it");
       Intrinsics.checkExpressionValueIsNotNull(paramString, "pictureUri");
       this.jdField_b_of_type_JavaIoFile = new File(localPictureUtil.a(localActivity, paramString, 3));
-      return;
     }
   }
   
   private final void d(View paramView)
   {
-    Object localObject = paramView.findViewById(R.id.M);
+    Object localObject = paramView.findViewById(R.id.x);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "contentView.findViewById(R.id.et_topic_title)");
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetLimitWordEditText = ((LimitWordEditText)localObject);
     localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetLimitWordEditText;
@@ -328,7 +311,7 @@ public abstract class AbsManageTopicPage
       Intrinsics.throwUninitializedPropertyAccessException("topicTitleView");
     }
     ((LimitWordEditText)localObject).setCountChangeListener((Function1)new AbsManageTopicPage.initTextView.1(this));
-    localObject = paramView.findViewById(R.id.L);
+    localObject = paramView.findViewById(R.id.w);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "contentView.findViewById(R.id.et_topic_intro)");
     this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetLimitWordEditText = ((LimitWordEditText)localObject);
     localObject = this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetLimitWordEditText;
@@ -336,7 +319,7 @@ public abstract class AbsManageTopicPage
       Intrinsics.throwUninitializedPropertyAccessException("topicIntroView");
     }
     ((LimitWordEditText)localObject).setDisableManualEnter(true);
-    paramView = paramView.findViewById(R.id.bL);
+    paramView = paramView.findViewById(R.id.bf);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "contentView.findViewById….id.tv_submit_permission)");
     this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView);
     paramView = this.jdField_e_of_type_AndroidWidgetTextView;
@@ -360,35 +343,29 @@ public abstract class AbsManageTopicPage
     Object localObject = a();
     if (localObject != null)
     {
-      localObject = ((Bundle)localObject).getSerializable("global_publisher_config");
-      localObject = (GlobalPublisherConfig)localObject;
-      if (localObject == null) {
-        break label69;
-      }
+      localObject = GlobalPublisherConfig.Companion.a((Bundle)localObject);
+      if (localObject != null) {}
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_JavaLangString = ((GlobalPublisherConfig)localObject).getScene();
-      localObject = ((GlobalPublisherConfig)localObject).getTopicConfig();
-      this.jdField_b_of_type_JavaLangString = ((ManageTopicConfig)localObject).getAllowSubmitTitle();
-      this.jdField_c_of_type_JavaLangString = ((ManageTopicConfig)localObject).getForbidSubmitTitle();
-      this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicManageTopicPresenter.a((ManageTopicConfig)localObject);
-      return;
-      localObject = null;
-      break;
-      label69:
       localObject = new GlobalPublisherConfig();
     }
+    this.jdField_a_of_type_JavaLangString = ((GlobalPublisherConfig)localObject).getScene();
+    localObject = ((GlobalPublisherConfig)localObject).getTopicConfig();
+    this.jdField_b_of_type_JavaLangString = ((ManageTopicConfig)localObject).getAllowSubmitTitle();
+    this.jdField_c_of_type_JavaLangString = ((ManageTopicConfig)localObject).getForbidSubmitTitle();
+    this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicManageTopicPresenter.a((ManageTopicConfig)localObject);
   }
   
   private final void p()
   {
-    Activity localActivity = a();
-    if (localActivity != null)
+    Object localObject = a();
+    if (localObject != null)
     {
-      Intrinsics.checkExpressionValueIsNotNull(localActivity, "this");
-      this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog = new CommonProgressDialog((Context)localActivity, 1);
-      this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog = new CommonProgressDialog((Context)localActivity, 1);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "this");
+      localObject = (Context)localObject;
+      this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog = new CommonProgressDialog((Context)localObject, 1);
+      this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog = new CommonProgressDialog((Context)localObject, 1);
     }
   }
   
@@ -410,26 +387,35 @@ public abstract class AbsManageTopicPage
   
   private final void r()
   {
-    if (((CharSequence)this.jdField_e_of_type_JavaLangString).length() == 0) {}
-    for (int j = 1; j != 0; j = 0)
+    int j = ((CharSequence)this.jdField_e_of_type_JavaLangString).length();
+    int k = 1;
+    if (j == 0) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if (j != 0)
     {
       s();
       return;
     }
     String str = (String)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_e_of_type_JavaLangString);
     CharSequence localCharSequence = (CharSequence)str;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (j = 1;; j = 0)
-    {
-      if (j != 0)
-      {
-        TLog.b("AbsManageTopicPage", "updateCoverLayout localPath is null or empty.");
-        str = this.jdField_e_of_type_JavaLangString;
+    j = k;
+    if (localCharSequence != null) {
+      if (localCharSequence.length() == 0) {
+        j = k;
+      } else {
+        j = 0;
       }
-      d(str);
-      t();
-      return;
     }
+    if (j != 0)
+    {
+      TLog.b("AbsManageTopicPage", "updateCoverLayout localPath is null or empty.");
+      str = this.jdField_e_of_type_JavaLangString;
+    }
+    d(str);
+    t();
   }
   
   private final void s()
@@ -479,18 +465,18 @@ public abstract class AbsManageTopicPage
     Intrinsics.checkExpressionValueIsNotNull(localView1, "contentView");
     b(localView1);
     c(localView1);
-    View localView2 = localView1.findViewById(R.id.al);
+    View localView2 = localView1.findViewById(R.id.U);
     Intrinsics.checkExpressionValueIsNotNull(localView2, "contentView.findViewById(R.id.iv_camera_icon)");
     this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView2);
-    localView2 = localView1.findViewById(R.id.bt);
+    localView2 = localView1.findViewById(R.id.aQ);
     Intrinsics.checkExpressionValueIsNotNull(localView2, "contentView.findViewById(R.id.tv_add_cover)");
     this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView2);
-    localView2 = localView1.findViewById(R.id.bw);
+    localView2 = localView1.findViewById(R.id.aR);
     Intrinsics.checkExpressionValueIsNotNull(localView2, "contentView.findViewById(R.id.tv_change_cover)");
     this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView2);
     d(localView1);
     p();
-    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.e, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.d, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramLayoutInflater, "submitView");
     a(paramLayoutInflater);
     f();
@@ -534,8 +520,8 @@ public abstract class AbsManageTopicPage
   @NotNull
   public final PublishArticleInfo a()
   {
-    Object localObject = null;
     PublishArticleInfo localPublishArticleInfo = new PublishArticleInfo();
+    Object localObject = null;
     localPublishArticleInfo.setVideoInfo((VideoInfo)null);
     if (Intrinsics.areEqual(this.jdField_d_of_type_JavaLangString, "")) {
       localObject = CollectionsKt.arrayListOf(new ImageInfo[] { new ImageInfo() });
@@ -582,9 +568,9 @@ public abstract class AbsManageTopicPage
   }
   
   @NotNull
-  public final String a()
+  protected final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_e_of_type_JavaLangString;
   }
   
   public void a()
@@ -592,7 +578,7 @@ public abstract class AbsManageTopicPage
     this.jdField_a_of_type_ComTencentTkdTopicsdkManagetopicManageTopicPresenter.a();
     Uploader localUploader = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkUploader;
     if (localUploader != null) {
-      localUploader.c();
+      localUploader.b();
     }
     super.a();
   }
@@ -611,82 +597,94 @@ public abstract class AbsManageTopicPage
   
   public void a(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
   {
-    String str = null;
     super.a(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == -1)
     {
-      if ((paramIntent == null) || (paramInt1 != 5)) {
-        break label266;
-      }
-      str = paramIntent.getStringExtra("select_path");
-      if (str != null)
+      String str = null;
+      Object localObject;
+      if ((paramIntent != null) && (paramInt1 == 5))
       {
-        if (((CharSequence)str).length() <= 0) {
-          break label208;
-        }
-        paramInt1 = 1;
-        if (paramInt1 != 0)
+        str = paramIntent.getStringExtra("select_path");
+        if (str != null)
         {
-          paramIntent = new File(TopicSDKHelperKt.a());
-          if (!paramIntent.exists()) {
-            paramIntent.mkdirs();
+          if (((CharSequence)str).length() > 0) {
+            paramInt1 = 1;
+          } else {
+            paramInt1 = 0;
           }
-          this.jdField_a_of_type_JavaIoFile = new File(paramIntent, "Image_" + System.currentTimeMillis() + ".jpg");
-          if (new File(str).exists()) {
-            break label220;
+          if (paramInt1 != 0)
+          {
+            paramIntent = new File(TopicSDKHelperKt.b());
+            if (!paramIntent.exists()) {
+              paramIntent.mkdirs();
+            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("Image_");
+            ((StringBuilder)localObject).append(System.currentTimeMillis());
+            ((StringBuilder)localObject).append(".jpg");
+            this.jdField_a_of_type_JavaIoFile = new File(paramIntent, ((StringBuilder)localObject).toString());
+            if (!new File(str).exists())
+            {
+              paramIntent = a();
+              if (paramIntent != null)
+              {
+                paramIntent = paramIntent.getResources();
+                if (paramIntent != null)
+                {
+                  paramIntent = paramIntent.getString(R.string.L);
+                  if (paramIntent != null) {
+                    break label190;
+                  }
+                }
+              }
+              paramIntent = "图片不存在，请重新选择";
+              label190:
+              TopicSDKHelperKt.a(paramIntent, false, null, 6, null);
+              paramIntent = new StringBuilder();
+              paramIntent.append("onSelectPhoto, path=");
+              paramIntent.append(str);
+              paramIntent.append(", but file is not exist");
+              TLog.d("AbsManageTopicPage", paramIntent.toString());
+              return;
+            }
+            paramIntent = this.jdField_a_of_type_JavaIoFile;
+            if (paramIntent != null)
+            {
+              FilesKt.copyTo$default(new File(str), paramIntent, false, 0, 6, null);
+              paramIntent = paramIntent.getAbsolutePath();
+              Intrinsics.checkExpressionValueIsNotNull(paramIntent, "it.absolutePath");
+              c(paramIntent);
+            }
           }
-          paramIntent = a();
-          if (paramIntent == null) {
-            break label213;
-          }
-          paramIntent = paramIntent.getResources();
-          if (paramIntent == null) {
-            break label213;
-          }
-          paramIntent = paramIntent.getString(R.string.Q);
-          if (paramIntent == null) {
-            break label213;
-          }
-          TopicSDKHelperKt.a(paramIntent, false, null, 6, null);
-          TLog.d("AbsManageTopicPage", "onSelectPhoto, path=" + str + ", but file is not exist");
         }
       }
-    }
-    label208:
-    label213:
-    label220:
-    while (paramInt1 != 3)
-    {
-      do
+      else if (paramInt1 == 3)
       {
-        for (;;)
+        ThreadManagerKt.c((Function0)new AbsManageTopicPage.onActivityResult.2(this));
+        localObject = this.jdField_b_of_type_JavaIoFile;
+        paramIntent = str;
+        if (localObject != null)
         {
-          return;
-          paramInt1 = 0;
-          continue;
-          paramIntent = "图片不存在，请重新选择";
+          localObject = ((File)localObject).getAbsoluteFile();
+          paramIntent = str;
+          if (localObject != null) {
+            paramIntent = ((File)localObject).getAbsolutePath();
+          }
         }
-        paramIntent = this.jdField_a_of_type_JavaIoFile;
-      } while (paramIntent == null);
-      FilesKt.copyTo$default(new File(str), paramIntent, false, 0, 6, null);
-      paramIntent = paramIntent.getAbsolutePath();
-      Intrinsics.checkExpressionValueIsNotNull(paramIntent, "it.absolutePath");
-      c(paramIntent);
-      return;
-    }
-    label266:
-    ThreadManagerKt.c((Function0)new AbsManageTopicPage.onActivityResult.2(this));
-    File localFile = this.jdField_b_of_type_JavaIoFile;
-    paramIntent = str;
-    if (localFile != null)
-    {
-      localFile = localFile.getAbsoluteFile();
-      paramIntent = str;
-      if (localFile != null) {
-        paramIntent = localFile.getAbsolutePath();
+        b(paramIntent);
       }
     }
-    b(paramIntent);
+  }
+  
+  public void a(@NotNull TopicInfo paramTopicInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramTopicInfo, "topicInfo");
+    b(paramTopicInfo);
+  }
+  
+  public void a(@NotNull TopicInfo paramTopicInfo, boolean paramBoolean)
+  {
+    Intrinsics.checkParameterIsNotNull(paramTopicInfo, "topicInfo");
   }
   
   public void a(@NotNull ManageTopicConfig paramManageTopicConfig)
@@ -715,18 +713,6 @@ public abstract class AbsManageTopicPage
     b(paramManageTopicConfig);
   }
   
-  public void a(@NotNull TopicInfo paramTopicInfo)
-  {
-    Intrinsics.checkParameterIsNotNull(paramTopicInfo, "topicInfo");
-    b(paramTopicInfo);
-  }
-  
-  public void a(@NotNull TopicInfo paramTopicInfo, boolean paramBoolean)
-  {
-    Intrinsics.checkParameterIsNotNull(paramTopicInfo, "topicInfo");
-    a(paramTopicInfo, paramBoolean, ReportValues.a.a());
-  }
-  
   public void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "tips");
@@ -741,6 +727,11 @@ public abstract class AbsManageTopicPage
     this.jdField_e_of_type_JavaLangString = paramString1;
     r();
     f();
+  }
+  
+  protected final boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
   
   @NotNull
@@ -761,92 +752,6 @@ public abstract class AbsManageTopicPage
       Intrinsics.throwUninitializedPropertyAccessException("topicIntroView");
     }
     return localLimitWordEditText;
-  }
-  
-  @NotNull
-  protected final String b()
-  {
-    return this.jdField_e_of_type_JavaLangString;
-  }
-  
-  public void b(@NotNull ManageTopicConfig paramManageTopicConfig)
-  {
-    int k = 8;
-    Intrinsics.checkParameterIsNotNull(paramManageTopicConfig, "config");
-    Object localObject;
-    if (paramManageTopicConfig.getShowSubmit())
-    {
-      localObject = this.jdField_e_of_type_AndroidWidgetTextView;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("submitTextView");
-      }
-      ((TextView)localObject).setVisibility(0);
-      localObject = this.f;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("allowSubmitTitleView");
-      }
-      ((TextView)localObject).setText((CharSequence)paramManageTopicConfig.getAllowSubmitTitle());
-      localObject = this.g;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("allowSubmitDescView");
-      }
-      ((TextView)localObject).setText((CharSequence)paramManageTopicConfig.getAllowSubmitDesc());
-      localObject = this.h;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("forbidSubmitTitleView");
-      }
-      ((TextView)localObject).setText((CharSequence)paramManageTopicConfig.getForbidSubmitTitle());
-      localObject = this.i;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("forbidSubmitDescView");
-      }
-      ((TextView)localObject).setText((CharSequence)paramManageTopicConfig.getForbidSubmitDesc());
-      TextView localTextView = this.jdField_e_of_type_AndroidWidgetTextView;
-      if (localTextView == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("submitTextView");
-      }
-      if (!paramManageTopicConfig.getCurrentAllowSubmit()) {
-        break label288;
-      }
-      localObject = (CharSequence)this.jdField_b_of_type_JavaLangString;
-      label189:
-      localTextView.setText((CharSequence)localObject);
-      localObject = this.jdField_d_of_type_AndroidWidgetImageView;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("allowSubmitArrowView");
-      }
-      if (!paramManageTopicConfig.getCurrentAllowSubmit()) {
-        break label300;
-      }
-      j = 0;
-      label222:
-      ((ImageView)localObject).setVisibility(j);
-      localObject = this.jdField_e_of_type_AndroidWidgetImageView;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("forbidSubmitArrowView");
-      }
-      if (!paramManageTopicConfig.getCurrentAllowSubmit()) {
-        break label306;
-      }
-    }
-    label288:
-    label300:
-    label306:
-    for (int j = k;; j = 0)
-    {
-      ((ImageView)localObject).setVisibility(j);
-      return;
-      localObject = this.jdField_e_of_type_AndroidWidgetTextView;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("submitTextView");
-      }
-      ((TextView)localObject).setVisibility(8);
-      break;
-      localObject = (CharSequence)this.jdField_c_of_type_JavaLangString;
-      break label189;
-      j = 8;
-      break label222;
-    }
   }
   
   protected final void b(@NotNull TopicInfo paramTopicInfo)
@@ -875,8 +780,81 @@ public abstract class AbsManageTopicPage
   public void b(@NotNull TopicInfo paramTopicInfo, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramTopicInfo, "topicInfo");
-    a(paramTopicInfo, paramBoolean, ReportValues.a.b());
   }
+  
+  public void b(@NotNull ManageTopicConfig paramManageTopicConfig)
+  {
+    Intrinsics.checkParameterIsNotNull(paramManageTopicConfig, "config");
+    boolean bool = paramManageTopicConfig.getShowSubmit();
+    int k = 0;
+    if (bool)
+    {
+      localObject = this.jdField_e_of_type_AndroidWidgetTextView;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("submitTextView");
+      }
+      ((TextView)localObject).setVisibility(0);
+    }
+    else
+    {
+      localObject = this.jdField_e_of_type_AndroidWidgetTextView;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("submitTextView");
+      }
+      ((TextView)localObject).setVisibility(8);
+    }
+    Object localObject = this.f;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("allowSubmitTitleView");
+    }
+    ((TextView)localObject).setText((CharSequence)paramManageTopicConfig.getAllowSubmitTitle());
+    localObject = this.g;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("allowSubmitDescView");
+    }
+    ((TextView)localObject).setText((CharSequence)paramManageTopicConfig.getAllowSubmitDesc());
+    localObject = this.h;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("forbidSubmitTitleView");
+    }
+    ((TextView)localObject).setText((CharSequence)paramManageTopicConfig.getForbidSubmitTitle());
+    localObject = this.i;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("forbidSubmitDescView");
+    }
+    ((TextView)localObject).setText((CharSequence)paramManageTopicConfig.getForbidSubmitDesc());
+    TextView localTextView = this.jdField_e_of_type_AndroidWidgetTextView;
+    if (localTextView == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("submitTextView");
+    }
+    if (paramManageTopicConfig.getCurrentAllowSubmit()) {
+      localObject = this.jdField_b_of_type_JavaLangString;
+    } else {
+      localObject = this.jdField_c_of_type_JavaLangString;
+    }
+    localTextView.setText((CharSequence)localObject);
+    localObject = this.jdField_d_of_type_AndroidWidgetImageView;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("allowSubmitArrowView");
+    }
+    if (paramManageTopicConfig.getCurrentAllowSubmit()) {
+      j = 0;
+    } else {
+      j = 8;
+    }
+    ((ImageView)localObject).setVisibility(j);
+    localObject = this.jdField_e_of_type_AndroidWidgetImageView;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("forbidSubmitArrowView");
+    }
+    int j = k;
+    if (paramManageTopicConfig.getCurrentAllowSubmit()) {
+      j = 8;
+    }
+    ((ImageView)localObject).setVisibility(j);
+  }
+  
+  protected abstract boolean b();
   
   public void d()
   {
@@ -886,7 +864,7 @@ public abstract class AbsManageTopicPage
   
   protected void f()
   {
-    if (i())
+    if (b())
     {
       localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
       if (localTextView == null) {
@@ -922,17 +900,7 @@ public abstract class AbsManageTopicPage
     localTextView.setAlpha(0.5F);
   }
   
-  protected final boolean f()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
   public void g() {}
-  
-  public final boolean g()
-  {
-    return ((CharSequence)this.jdField_d_of_type_JavaLangString).length() > 0;
-  }
   
   public void h()
   {
@@ -946,38 +914,30 @@ public abstract class AbsManageTopicPage
       localObject = ((Activity)localObject).getResources();
       if (localObject != null)
       {
-        localObject = ((Resources)localObject).getString(R.string.as);
-        if (localObject == null) {}
+        localObject = ((Resources)localObject).getString(R.string.ai);
+        if (localObject != null) {
+          break label51;
+        }
       }
     }
-    for (;;)
+    localObject = "";
+    label51:
+    localCommonProgressDialog.a((String)localObject);
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("uploadingCoverDialog");
+    }
+    if (!((CommonProgressDialog)localObject).isShowing())
     {
-      localCommonProgressDialog.a((String)localObject);
       localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("uploadingCoverDialog");
       }
-      if (!((CommonProgressDialog)localObject).isShowing())
-      {
-        localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
-        if (localObject == null) {
-          Intrinsics.throwUninitializedPropertyAccessException("uploadingCoverDialog");
-        }
-        ((CommonProgressDialog)localObject).show();
-      }
-      return;
-      localObject = "";
+      ((CommonProgressDialog)localObject).show();
     }
   }
   
-  public final boolean h()
-  {
-    LimitWordEditText localLimitWordEditText = this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetLimitWordEditText;
-    if (localLimitWordEditText == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("topicIntroView");
-    }
-    return ((CharSequence)localLimitWordEditText.a()).length() > 0;
-  }
+  protected abstract boolean h();
   
   public void i()
   {
@@ -995,8 +955,6 @@ public abstract class AbsManageTopicPage
     }
   }
   
-  protected abstract boolean i();
-  
   public void j()
   {
     CommonProgressDialog localCommonProgressDialog = this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
@@ -1009,36 +967,33 @@ public abstract class AbsManageTopicPage
       localObject = ((Activity)localObject).getResources();
       if (localObject != null)
       {
-        localObject = ((Resources)localObject).getString(R.string.t);
-        if (localObject == null) {}
+        localObject = ((Resources)localObject).getString(R.string.p);
+        if (localObject != null) {
+          break label51;
+        }
       }
     }
-    for (;;)
+    localObject = "";
+    label51:
+    localCommonProgressDialog.a((String)localObject);
+    localObject = this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("publishingDialog");
+    }
+    ((CommonProgressDialog)localObject).setCancelable(true);
+    localObject = this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
+    if (localObject == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("publishingDialog");
+    }
+    if (!((CommonProgressDialog)localObject).isShowing())
     {
-      localCommonProgressDialog.a((String)localObject);
       localObject = this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("publishingDialog");
       }
-      ((CommonProgressDialog)localObject).setCancelable(true);
-      localObject = this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
-      if (localObject == null) {
-        Intrinsics.throwUninitializedPropertyAccessException("publishingDialog");
-      }
-      if (!((CommonProgressDialog)localObject).isShowing())
-      {
-        localObject = this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
-        if (localObject == null) {
-          Intrinsics.throwUninitializedPropertyAccessException("publishingDialog");
-        }
-        ((CommonProgressDialog)localObject).show();
-      }
-      return;
-      localObject = "";
+      ((CommonProgressDialog)localObject).show();
     }
   }
-  
-  protected abstract boolean j();
   
   public void k()
   {
@@ -1090,53 +1045,53 @@ public abstract class AbsManageTopicPage
   
   public void onClick(@Nullable View paramView)
   {
-    int j;
     if (paramView != null)
     {
-      j = paramView.getId();
-      if (j != R.id.as) {
-        break label21;
+      int j = paramView.getId();
+      if (j == R.id.ad)
+      {
+        l();
+        return;
       }
-      l();
-    }
-    for (;;)
-    {
-      return;
-      label21:
-      if (j == R.id.bP)
+      if (j == R.id.bj)
       {
         m();
+        return;
       }
-      else if (j == R.id.bL)
+      if (j == R.id.bf)
       {
-        paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetSlidingUpDialog;
+        paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogSlidingUpDialog;
         if (paramView == null) {
           Intrinsics.throwUninitializedPropertyAccessException("submitDialog");
         }
         paramView.show();
+        return;
       }
-      else if (j == R.id.k)
+      if (j == R.id.h)
       {
         a(true);
+        return;
       }
-      else if (j == R.id.Y)
+      if (j == R.id.J)
       {
         a(false);
+        return;
       }
-      else if (j == R.id.bc)
+      if (j == R.id.aB)
       {
         n();
+        return;
       }
-      else
-      {
-        TLog.d("AbsManageTopicPage", "onClick, no handler, view = " + paramView.getClass().getSimpleName());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onClick, no handler, view = ");
+      localStringBuilder.append(paramView.getClass().getSimpleName());
+      TLog.d("AbsManageTopicPage", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.managetopic.AbsManageTopicPage
  * JD-Core Version:    0.7.0.1
  */

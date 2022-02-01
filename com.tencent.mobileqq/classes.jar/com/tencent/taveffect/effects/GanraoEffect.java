@@ -22,31 +22,25 @@ public class GanraoEffect
   
   private void generateRandomData()
   {
-    float f1 = RandomUtils.randomFloat(0.0F, 0.01F);
+    float f1 = 0.0F;
     float f2 = RandomUtils.randomFloat(0.0F, 0.01F);
+    float f3 = RandomUtils.randomFloat(0.0F, 0.01F);
     float[] arrayOfFloat1 = new float[4];
-    arrayOfFloat1[0] = f1;
-    arrayOfFloat1[1] = f2;
+    arrayOfFloat1[0] = f2;
+    arrayOfFloat1[1] = f3;
     arrayOfFloat1[2] = 0.0F;
     arrayOfFloat1[3] = 0.0F;
     int k = RandomUtils.randomInt(1, 3);
     float[] arrayOfFloat2 = new float[16];
     int i = 0;
-    f1 = 0.0F;
-    if (i < k)
+    while (i < k)
     {
       f2 = RandomUtils.randomFloat(f1, 0.9F);
       f1 = RandomUtils.randomFloat(0.05F + f2, 0.2F + f2);
-      if (f1 <= 0.99F) {}
-    }
-    for (;;)
-    {
-      GLES20.glUniform4f(this.shadowOffsetHandle, arrayOfFloat1[0], arrayOfFloat1[1], arrayOfFloat1[2], arrayOfFloat1[3]);
-      GLES20.glUniform1i(this.barNumHandle, i);
-      GLES20.glUniformMatrix4fv(this.barPositionsHandle, 1, false, arrayOfFloat2, 0);
-      GLES20.glUniform1i(this.shadowColorInitHandle, RandomUtils.randomInt(1, 2));
-      return;
-      float f3 = RandomUtils.randomFloat(0.005F, 0.02F);
+      if (f1 > 0.99F) {
+        break label150;
+      }
+      f3 = RandomUtils.randomFloat(0.005F, 0.02F);
       int m = RandomUtils.randomInt(1, 2);
       int j = m;
       if (m == 2) {
@@ -54,9 +48,13 @@ public class GanraoEffect
       }
       setRowForMatrix4(arrayOfFloat2, i, f2, f1, f3 * j, 0.0F);
       i += 1;
-      break;
-      i = k;
     }
+    i = k;
+    label150:
+    GLES20.glUniform4f(this.shadowOffsetHandle, arrayOfFloat1[0], arrayOfFloat1[1], arrayOfFloat1[2], arrayOfFloat1[3]);
+    GLES20.glUniform1i(this.barNumHandle, i);
+    GLES20.glUniformMatrix4fv(this.barPositionsHandle, 1, false, arrayOfFloat2, 0);
+    GLES20.glUniform1i(this.shadowColorInitHandle, RandomUtils.randomInt(1, 2));
   }
   
   private void recover()
@@ -114,10 +112,17 @@ public class GanraoEffect
   
   protected String getFragmentShaderCode(TAVTextureInfo paramTAVTextureInfo)
   {
-    if (paramTAVTextureInfo.textureType == 36197) {
-      return " #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES " + FRAGMENT_SHADER_CODE;
+    if (paramTAVTextureInfo.textureType == 36197)
+    {
+      paramTAVTextureInfo = new StringBuilder();
+      paramTAVTextureInfo.append(" #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES ");
+      paramTAVTextureInfo.append(FRAGMENT_SHADER_CODE);
+      return paramTAVTextureInfo.toString();
     }
-    return "uniform sampler2D " + FRAGMENT_SHADER_CODE;
+    paramTAVTextureInfo = new StringBuilder();
+    paramTAVTextureInfo.append("uniform sampler2D ");
+    paramTAVTextureInfo.append(FRAGMENT_SHADER_CODE);
+    return paramTAVTextureInfo.toString();
   }
   
   protected void initShader(TAVTextureInfo paramTAVTextureInfo)
@@ -135,7 +140,7 @@ public class GanraoEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.taveffect.effects.GanraoEffect
  * JD-Core Version:    0.7.0.1
  */

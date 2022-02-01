@@ -60,12 +60,12 @@ public class MapContext
   implements SensorEventListener, TencentMap.InfoWindowAdapter, TencentMap.OnCameraChangeListener, TencentMap.OnInfoWindowClickListener, TencentMap.OnMapClickListener, TencentMap.OnMapLoadedCallback, TencentMap.OnMarkerClickListener
 {
   private static float DEFAULT_ROTATE = 0.0F;
-  private static float DEFAULT_SCALE;
+  private static float DEFAULT_SCALE = 16.0F;
   private static float DEFAULT_SKEW = 0.0F;
-  private static String MAP_EVENT_CALLOUT_CLICK;
-  private static String MAP_EVENT_CLICK;
-  private static String MAP_EVENT_MARKER_CLICK;
-  private static String MAP_EVENT_REGION_CHANGE;
+  private static String MAP_EVENT_CALLOUT_CLICK = "onMapCalloutClick";
+  private static String MAP_EVENT_CLICK = "onMapClick";
+  private static String MAP_EVENT_MARKER_CLICK = "onMapMarkerClick";
+  private static String MAP_EVENT_REGION_CHANGE = "onMapRegionChange";
   public static String TAG = "MapContext";
   private ArrayList<Circle> circleArrayList;
   private Context context;
@@ -94,15 +94,6 @@ public class MapContext
   private SensorManager sensorManager;
   private boolean showCurrentLocationStatus = false;
   
-  static
-  {
-    MAP_EVENT_CLICK = "onMapClick";
-    MAP_EVENT_MARKER_CLICK = "onMapMarkerClick";
-    MAP_EVENT_CALLOUT_CLICK = "onMapCalloutClick";
-    MAP_EVENT_REGION_CHANGE = "onMapRegionChange";
-    DEFAULT_SCALE = 16.0F;
-  }
-  
   public MapContext(IMiniAppContext paramIMiniAppContext, CoverMapView paramCoverMapView, int paramInt1, int paramInt2)
   {
     this.mMiniAppContext = paramIMiniAppContext;
@@ -122,111 +113,101 @@ public class MapContext
     this.density = this.context.getResources().getDisplayMetrics().density;
     this.sensorManager = ((SensorManager)this.context.getSystemService("sensor"));
     this.sensor = this.sensorManager.getDefaultSensor(3);
-    this.markerMinSize = ((int)(this.density * 30.0F + 0.5D));
-    this.markerMaxSize = ((int)(this.density * 50.0F + 0.5D));
+    float f = this.density;
+    double d = 30.0F * f;
+    Double.isNaN(d);
+    this.markerMinSize = ((int)(d + 0.5D));
+    d = f * 50.0F;
+    Double.isNaN(d);
+    this.markerMaxSize = ((int)(d + 0.5D));
     try
     {
-      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841347);
-      this.markerSparseArray = new SparseArray();
-      this.circleArrayList = new ArrayList();
-      this.polylineArrayList = new ArrayList();
-      return;
+      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841228);
     }
     catch (Throwable paramIMiniAppContext)
     {
-      for (;;)
-      {
-        QMLog.e(TAG, "decodeResource error, ", paramIMiniAppContext);
-      }
+      QMLog.e(TAG, "decodeResource error, ", paramIMiniAppContext);
     }
+    this.markerSparseArray = new SparseArray();
+    this.circleArrayList = new ArrayList();
+    this.polylineArrayList = new ArrayList();
   }
   
   private void addCircle(JSONObject paramJSONObject)
   {
-    String str2;
-    String str1;
     if (QMLog.isColorLevel())
     {
-      str2 = TAG;
-      StringBuilder localStringBuilder = new StringBuilder().append("addCircles params=");
-      if (paramJSONObject != null)
-      {
-        str1 = paramJSONObject.toString();
-        QMLog.d(str2, str1);
-      }
-    }
-    else
-    {
+      str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addCircles params=");
       if (paramJSONObject != null) {
-        break label64;
+        localObject = paramJSONObject.toString();
+      } else {
+        localObject = "empty";
       }
+      localStringBuilder.append((String)localObject);
+      QMLog.d(str, localStringBuilder.toString());
     }
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      str1 = "empty";
-      break;
-      label64:
-      double d1 = paramJSONObject.optDouble("latitude", 0.0D);
-      double d2 = paramJSONObject.optDouble("longitude", 0.0D);
-      str1 = paramJSONObject.optString("color", "");
-      str2 = paramJSONObject.optString("fillColor", "");
-      double d3 = paramJSONObject.optDouble("radius", 0.0D);
-      float f = (float)paramJSONObject.optDouble("strokeWidth", 0.0D);
-      paramJSONObject = new CircleOptions();
-      paramJSONObject.center(new LatLng(d1, d2));
-      paramJSONObject.radius(d3);
-      if (!TextUtils.isEmpty(str2)) {}
-      try
-      {
-        paramJSONObject.fillColor(ColorUtils.parseColor(str2));
-        label176:
-        if (!TextUtils.isEmpty(str1)) {}
-        try
-        {
-          paramJSONObject.strokeColor(ColorUtils.parseColor(str1));
-          label194:
-          if (f > 0.0F) {
-            paramJSONObject.strokeWidth(f);
-          }
-          if (this.mTencentMap == null) {
-            continue;
-          }
-          paramJSONObject = this.mTencentMap.addCircle(paramJSONObject);
-          this.circleArrayList.add(paramJSONObject);
-          return;
-        }
-        catch (IllegalArgumentException localIllegalArgumentException1)
-        {
-          break label194;
-        }
-      }
-      catch (IllegalArgumentException localIllegalArgumentException2)
-      {
-        break label176;
-      }
+    }
+    double d1 = paramJSONObject.optDouble("latitude", 0.0D);
+    double d2 = paramJSONObject.optDouble("longitude", 0.0D);
+    Object localObject = paramJSONObject.optString("color", "");
+    String str = paramJSONObject.optString("fillColor", "");
+    double d3 = paramJSONObject.optDouble("radius", 0.0D);
+    float f = (float)paramJSONObject.optDouble("strokeWidth", 0.0D);
+    paramJSONObject = new CircleOptions();
+    paramJSONObject.center(new LatLng(d1, d2));
+    paramJSONObject.radius(d3);
+    if (!TextUtils.isEmpty(str)) {}
+    try
+    {
+      paramJSONObject.fillColor(ColorUtils.parseColor(str));
+    }
+    catch (IllegalArgumentException localIllegalArgumentException2)
+    {
+      label185:
+      break label185;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    try
+    {
+      paramJSONObject.strokeColor(ColorUtils.parseColor((String)localObject));
+    }
+    catch (IllegalArgumentException localIllegalArgumentException1)
+    {
+      label206:
+      break label206;
+    }
+    if (f > 0.0F) {
+      paramJSONObject.strokeWidth(f);
+    }
+    localObject = this.mTencentMap;
+    if (localObject != null)
+    {
+      paramJSONObject = ((TencentMap)localObject).addCircle(paramJSONObject);
+      this.circleArrayList.add(paramJSONObject);
     }
   }
   
   private void addControl(JSONObject paramJSONObject)
   {
-    String str2;
-    StringBuilder localStringBuilder;
     if (QMLog.isColorLevel())
     {
-      str2 = TAG;
-      localStringBuilder = new StringBuilder().append("addControl params=");
-      if (paramJSONObject == null) {
-        break label52;
-      }
-    }
-    label52:
-    for (String str1 = paramJSONObject.toString();; str1 = "empty")
-    {
-      QMLog.d(str2, str1);
+      String str2 = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addControl params=");
+      String str1;
       if (paramJSONObject != null) {
-        break;
+        str1 = paramJSONObject.toString();
+      } else {
+        str1 = "empty";
       }
+      localStringBuilder.append(str1);
+      QMLog.d(str2, localStringBuilder.toString());
+    }
+    if (paramJSONObject == null) {
       return;
     }
     paramJSONObject.optInt("id", 0);
@@ -239,31 +220,34 @@ public class MapContext
     }
     double d1 = paramJSONObject.optDouble("latitude", 0.0D);
     double d2 = paramJSONObject.optDouble("longitude", 0.0D);
-    Object localObject = paramJSONObject.optString("iconPath", "");
+    String str = paramJSONObject.optString("iconPath", "");
     int i = paramJSONObject.optInt("width", -2);
     int j = paramJSONObject.optInt("height", -2);
     MarkerOptions localMarkerOptions = new MarkerOptions(new LatLng(d1, d2));
     ImageView localImageView = createMarkerView(i, j);
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-    for (paramJSONObject = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath((String)localObject);; paramJSONObject = null) {
+    Object localObject = null;
+    paramJSONObject = (JSONObject)localObject;
+    if (!TextUtils.isEmpty(str))
+    {
+      paramJSONObject = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str);
       try
       {
         paramJSONObject = Drawable.createFromPath(paramJSONObject);
-        localObject = paramJSONObject;
-        if (paramJSONObject == null) {
-          localObject = this.context.getResources().getDrawable(2130841409);
-        }
-        localImageView.setImageDrawable((Drawable)localObject);
-        if (this.mTencentMap == null) {
-          break;
-        }
-        this.mTencentMap.addMarker(localMarkerOptions).setIcon(BitmapDescriptorFactory.fromView(localImageView));
-        return;
       }
       catch (OutOfMemoryError paramJSONObject)
       {
         QMLog.e(TAG, "markerDrawable error,", paramJSONObject);
+        paramJSONObject = (JSONObject)localObject;
       }
+    }
+    localObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localObject = this.context.getResources().getDrawable(2130841290);
+    }
+    localImageView.setImageDrawable((Drawable)localObject);
+    paramJSONObject = this.mTencentMap;
+    if (paramJSONObject != null) {
+      paramJSONObject.addMarker(localMarkerOptions).setIcon(BitmapDescriptorFactory.fromView(localImageView));
     }
   }
   
@@ -271,169 +255,168 @@ public class MapContext
   {
     if (QMLog.isColorLevel())
     {
-      str = TAG;
-      localObject3 = new StringBuilder().append("addMarker params=");
-      if (paramJSONObject == null) {
-        break label56;
-      }
-    }
-    label56:
-    for (Object localObject1 = paramJSONObject.toString();; localObject1 = "empty")
-    {
-      QMLog.d(str, (String)localObject1);
+      str1 = TAG;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("addMarker params=");
       if (paramJSONObject != null) {
-        break;
+        localObject1 = paramJSONObject.toString();
+      } else {
+        localObject1 = "empty";
       }
+      ((StringBuilder)localObject3).append((String)localObject1);
+      QMLog.d(str1, ((StringBuilder)localObject3).toString());
+    }
+    if (paramJSONObject == null) {
       return;
     }
     int i = paramJSONObject.optInt("id", 0);
     double d1 = paramJSONObject.optDouble("latitude", 0.0D);
     double d2 = paramJSONObject.optDouble("longitude", 0.0D);
-    String str = paramJSONObject.optString("title", "");
+    String str1 = paramJSONObject.optString("title", "");
     int j = paramJSONObject.optInt("zIndex", 0);
-    localObject1 = paramJSONObject.optString("iconPath", "");
+    String str2 = paramJSONObject.optString("iconPath", "");
     float f1 = (float)paramJSONObject.optDouble("rotate", 0.0D);
     float f2 = (float)paramJSONObject.optDouble("alpha", 1.0D);
     int k = paramJSONObject.optInt("width", -2);
     int m = paramJSONObject.optInt("height", -2);
-    Object localObject3 = paramJSONObject.optJSONObject("callout");
-    if (localObject3 != null) {
-      str = ((JSONObject)localObject3).optString("content");
+    Object localObject1 = paramJSONObject.optJSONObject("callout");
+    if (localObject1 != null) {
+      str1 = ((JSONObject)localObject1).optString("content");
     }
-    for (;;)
+    localObject1 = paramJSONObject.optJSONObject("anchor");
+    MarkerOptions localMarkerOptions = new MarkerOptions(new LatLng(d1, d2));
+    if (localObject1 != null) {
+      localMarkerOptions.anchor((float)((JSONObject)localObject1).optDouble("x", 0.5D), (float)((JSONObject)localObject1).optDouble("y", 1.0D));
+    }
+    Object localObject3 = null;
+    localObject1 = localObject3;
+    if (!TextUtils.isEmpty(str2))
     {
-      localObject3 = paramJSONObject.optJSONObject("anchor");
-      MarkerOptions localMarkerOptions = new MarkerOptions(new LatLng(d1, d2));
-      if (localObject3 != null) {
-        localMarkerOptions.anchor((float)((JSONObject)localObject3).optDouble("x", 0.5D), (float)((JSONObject)localObject3).optDouble("y", 1.0D));
+      localObject1 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(str2);
+      try
+      {
+        localObject1 = Drawable.createFromPath((String)localObject1);
       }
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-      Object localObject2;
-      for (localObject1 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath((String)localObject1);; localObject2 = null) {
-        try
-        {
-          localObject1 = Drawable.createFromPath((String)localObject1);
-          localObject3 = localObject1;
-          if (localObject1 == null) {
-            localObject3 = this.context.getResources().getDrawable(2130841409);
-          }
-          localObject1 = createMarkerView(k, m);
-          ((ImageView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(k, m));
-          ((ImageView)localObject1).setImageDrawable((Drawable)localObject3);
-          localMarkerOptions.icon(BitmapDescriptorFactory.fromView((View)localObject1));
-          localMarkerOptions.title(str);
-          localMarkerOptions.rotation(f1);
-          localMarkerOptions.alpha(f2);
-          localMarkerOptions.zIndex(j);
-          if (this.mTencentMap == null) {
-            break;
-          }
-          localObject1 = this.mTencentMap.addMarker(localMarkerOptions);
-          ((Marker)localObject1).setTag(paramJSONObject);
-          ((Marker)localObject1).setClickable(true);
-          this.markerSparseArray.put(i, localObject1);
-          return;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          QMLog.e(TAG, "markerDrawable error,", localOutOfMemoryError);
-        }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        QMLog.e(TAG, "markerDrawable error,", localOutOfMemoryError);
+        localObject2 = localObject3;
       }
+    }
+    localObject3 = localObject2;
+    if (localObject2 == null) {
+      localObject3 = this.context.getResources().getDrawable(2130841290);
+    }
+    Object localObject2 = createMarkerView(k, m);
+    ((ImageView)localObject2).setLayoutParams(new ViewGroup.LayoutParams(k, m));
+    ((ImageView)localObject2).setImageDrawable((Drawable)localObject3);
+    localMarkerOptions.icon(BitmapDescriptorFactory.fromView((View)localObject2));
+    localMarkerOptions.title(str1);
+    localMarkerOptions.rotation(f1);
+    localMarkerOptions.alpha(f2);
+    localMarkerOptions.zIndex(j);
+    localObject2 = this.mTencentMap;
+    if (localObject2 != null)
+    {
+      localObject2 = ((TencentMap)localObject2).addMarker(localMarkerOptions);
+      ((Marker)localObject2).setTag(paramJSONObject);
+      ((Marker)localObject2).setClickable(true);
+      this.markerSparseArray.put(i, localObject2);
     }
   }
   
   private void addPolyline(JSONObject paramJSONObject)
   {
-    Object localObject1 = TAG;
-    Object localObject2 = new StringBuilder().append("addPolyline params=");
-    String str1;
-    if (paramJSONObject != null)
+    Object localObject2 = TAG;
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("addPolyline params=");
+    if (paramJSONObject != null) {
+      localObject1 = paramJSONObject.toString();
+    } else {
+      localObject1 = "empty";
+    }
+    ((StringBuilder)localObject3).append((String)localObject1);
+    QMLog.d((String)localObject2, ((StringBuilder)localObject3).toString());
+    if (paramJSONObject == null) {
+      return;
+    }
+    localObject3 = paramJSONObject.optJSONArray("points");
+    String str = paramJSONObject.optString("color", "");
+    float f1 = ViewUtils.dip2px((float)paramJSONObject.optDouble("width", 0.0D));
+    boolean bool1 = paramJSONObject.optBoolean("dottedLine", false);
+    boolean bool3 = paramJSONObject.optBoolean("arrowLine", false);
+    localObject2 = paramJSONObject.optString("arrowIconPath", "");
+    Object localObject1 = paramJSONObject.optString("borderColor", "");
+    float f2 = (float)paramJSONObject.optDouble("borderWidth", 0.0D);
+    paramJSONObject = new PolylineOptions();
+    boolean bool2 = bool1;
+    if (localObject3 != null)
     {
-      str1 = paramJSONObject.toString();
-      QMLog.d((String)localObject1, str1);
-      if (paramJSONObject != null) {
-        break label58;
+      int i = 0;
+      for (;;)
+      {
+        bool2 = bool1;
+        if (i >= ((JSONArray)localObject3).length()) {
+          break;
+        }
+        JSONObject localJSONObject = ((JSONArray)localObject3).optJSONObject(i);
+        paramJSONObject.add(new LatLng(localJSONObject.optDouble("latitude", 0.0D), localJSONObject.optDouble("longitude", 0.0D)), new LatLng[0]);
+        i += 1;
       }
     }
-    for (;;)
+    if (f1 > 0.0F) {
+      paramJSONObject.width(f1);
+    }
+    if (!TextUtils.isEmpty(str)) {}
+    try
     {
-      return;
-      str1 = "empty";
-      break;
-      label58:
-      localObject2 = paramJSONObject.optJSONArray("points");
-      String str2 = paramJSONObject.optString("color", "");
-      float f1 = ViewUtils.dip2px((float)paramJSONObject.optDouble("width", 0.0D));
-      boolean bool1 = paramJSONObject.optBoolean("dottedLine", false);
-      boolean bool2 = paramJSONObject.optBoolean("arrowLine", false);
-      localObject1 = paramJSONObject.optString("arrowIconPath", "");
-      str1 = paramJSONObject.optString("borderColor", "");
-      float f2 = (float)paramJSONObject.optDouble("borderWidth", 0.0D);
-      paramJSONObject = new PolylineOptions();
-      if (localObject2 != null)
-      {
-        int i = 0;
-        while (i < ((JSONArray)localObject2).length())
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject2).optJSONObject(i);
-          paramJSONObject.add(new LatLng(localJSONObject.optDouble("latitude", 0.0D), localJSONObject.optDouble("longitude", 0.0D)), new LatLng[0]);
-          i += 1;
-        }
+      paramJSONObject.color(ColorUtils.parseColor(str));
+    }
+    catch (IllegalArgumentException localIllegalArgumentException2)
+    {
+      label272:
+      break label272;
+    }
+    if (bool2)
+    {
+      localObject3 = new ArrayList();
+      ((List)localObject3).add(Integer.valueOf((int)(paramJSONObject.getWidth() * 3.0F)));
+      ((List)localObject3).add(Integer.valueOf((int)paramJSONObject.getWidth()));
+      paramJSONObject.pattern((List)localObject3);
+    }
+    if ((bool3) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
+      localObject2 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath((String)localObject2);
+    }
+    try
+    {
+      localObject2 = BitmapFactory.decodeFile((String)localObject2, ImageUtil.scaleBitmap((String)localObject2, this.markerMaxSize));
+      if (localObject2 != null) {
+        paramJSONObject.arrowTexture(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject2));
       }
-      if (f1 > 0.0F) {
-        paramJSONObject.width(f1);
-      }
-      if (!TextUtils.isEmpty(str2)) {}
-      try
-      {
-        paramJSONObject.color(ColorUtils.parseColor(str2));
-        label255:
-        if (bool1)
-        {
-          localObject2 = new ArrayList();
-          ((List)localObject2).add(Integer.valueOf((int)(3.0F * paramJSONObject.getWidth())));
-          ((List)localObject2).add(Integer.valueOf((int)paramJSONObject.getWidth()));
-          paramJSONObject.pattern((List)localObject2);
-        }
-        if ((bool2) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-          localObject1 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath((String)localObject1);
-        }
-        try
-        {
-          localObject1 = BitmapFactory.decodeFile((String)localObject1, ImageUtil.scaleBitmap((String)localObject1, this.markerMaxSize));
-          if (localObject1 != null) {
-            paramJSONObject.arrowTexture(BitmapDescriptorFactory.fromBitmap((Bitmap)localObject1));
-          }
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          label378:
-          break label378;
-        }
-        if (!TextUtils.isEmpty(str1)) {}
-        try
-        {
-          paramJSONObject.borderColor(ColorUtils.parseColor(str1));
-          label396:
-          if (f2 > 0.0F) {
-            paramJSONObject.borderWidth(f2);
-          }
-          if (this.mTencentMap == null) {
-            continue;
-          }
-          paramJSONObject = this.mTencentMap.addPolyline(paramJSONObject);
-          this.polylineArrayList.add(paramJSONObject);
-          return;
-        }
-        catch (IllegalArgumentException localIllegalArgumentException1)
-        {
-          break label396;
-        }
-      }
-      catch (IllegalArgumentException localIllegalArgumentException2)
-      {
-        break label255;
-      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label398:
+      break label398;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    try
+    {
+      paramJSONObject.borderColor(ColorUtils.parseColor((String)localObject1));
+    }
+    catch (IllegalArgumentException localIllegalArgumentException1)
+    {
+      label419:
+      break label419;
+    }
+    if (f2 > 0.0F) {
+      paramJSONObject.borderWidth(f2);
+    }
+    localObject1 = this.mTencentMap;
+    if (localObject1 != null)
+    {
+      paramJSONObject = ((TencentMap)localObject1).addPolyline(paramJSONObject);
+      this.polylineArrayList.add(paramJSONObject);
     }
   }
   
@@ -442,8 +425,12 @@ public class MapContext
     ImageView localImageView = new ImageView(this.context);
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      localImageView.setMinimumWidth((int)(this.density * paramInt1 + 0.5D));
-      localImageView.setMinimumHeight((int)(this.density * paramInt2 + 0.5D));
+      double d = this.density * paramInt1;
+      Double.isNaN(d);
+      localImageView.setMinimumWidth((int)(d + 0.5D));
+      d = this.density * paramInt2;
+      Double.isNaN(d);
+      localImageView.setMinimumHeight((int)(d + 0.5D));
       return localImageView;
     }
     localImageView.setMinimumWidth(this.markerMinSize);
@@ -470,12 +457,15 @@ public class MapContext
     if (paramJSONObject.has("rotate"))
     {
       this.curRotate = ((float)Long.valueOf(paramJSONObject.optString("rotate")).longValue());
-      if ((this.curRotate < 0.0F) || (this.curRotate > 360.0F)) {
+      float f = this.curRotate;
+      if ((f < 0.0F) || (f > 360.0F)) {
         this.curRotate = 0.0F;
       }
-      return;
     }
-    this.curRotate = getRotate();
+    else
+    {
+      this.curRotate = getRotate();
+    }
   }
   
   private void setScale(JSONObject paramJSONObject)
@@ -483,12 +473,15 @@ public class MapContext
     if (paramJSONObject.has("scale"))
     {
       this.curScale = ((float)Long.valueOf(paramJSONObject.optString("scale")).longValue());
-      if ((this.curScale < 3.0F) || (this.curScale > 20.0F)) {
+      float f = this.curScale;
+      if ((f < 3.0F) || (f > 20.0F)) {
         this.curScale = DEFAULT_SCALE;
       }
-      return;
     }
-    this.curScale = getScale();
+    else
+    {
+      this.curScale = getScale();
+    }
   }
   
   private void setShowCompass(JSONObject paramJSONObject)
@@ -505,28 +498,34 @@ public class MapContext
     if (paramJSONObject.has("skew"))
     {
       this.curSkew = ((float)Long.valueOf(paramJSONObject.optString("skew")).longValue());
-      if ((this.curSkew < 0.0F) || (this.curSkew > 40.0F)) {
+      float f = this.curSkew;
+      if ((f < 0.0F) || (f > 40.0F)) {
         this.curSkew = 0.0F;
       }
-      return;
     }
-    this.curSkew = getSkew();
+    else
+    {
+      this.curSkew = getSkew();
+    }
   }
   
   private void updateMapCamera(double paramDouble1, double paramDouble2)
   {
-    if ((paramDouble1 != 0.0D) || (paramDouble2 != 0.0D)) {
-      this.curLatLng = new LatLng(paramDouble1, paramDouble2);
-    }
-    while (this.curLatLng == null)
+    if ((paramDouble1 == 0.0D) && (paramDouble2 == 0.0D))
     {
-      return;
       if (this.curLatLng == null) {
         this.curLatLng = this.mTencentMap.getCameraPosition().target;
       }
     }
-    CameraUpdate localCameraUpdate = CameraUpdateFactory.newCameraPosition(new CameraPosition(this.curLatLng, this.curScale, this.curSkew, this.curRotate));
-    this.mTencentMap.moveCamera(localCameraUpdate);
+    else {
+      this.curLatLng = new LatLng(paramDouble1, paramDouble2);
+    }
+    Object localObject = this.curLatLng;
+    if (localObject == null) {
+      return;
+    }
+    localObject = CameraUpdateFactory.newCameraPosition(new CameraPosition((LatLng)localObject, this.curScale, this.curSkew, this.curRotate));
+    this.mTencentMap.moveCamera((CameraUpdate)localObject);
   }
   
   private void updateMapViewPosition(JSONObject paramJSONObject)
@@ -588,54 +587,47 @@ public class MapContext
     if (paramJSONObject.has("showLocation"))
     {
       this.curShowLocationMarkerStatus = paramJSONObject.optBoolean("showLocation");
-      if (!this.curShowLocationMarkerStatus) {
-        break label249;
+      if (this.curShowLocationMarkerStatus)
+      {
+        location();
+        return;
       }
-      location();
+      paramJSONObject = this.locationMarker;
+      if (paramJSONObject != null) {
+        paramJSONObject.setVisible(false);
+      }
     }
-    label249:
-    while (this.locationMarker == null) {
-      return;
-    }
-    this.locationMarker.setVisible(false);
   }
   
   public void addMapCircles(JSONObject paramJSONObject)
   {
-    int i = 0;
-    if (paramJSONObject == null) {}
-    label99:
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      paramJSONObject = paramJSONObject.optJSONArray("circles");
-      if (paramJSONObject != null)
-      {
-        int j = paramJSONObject.length();
-        if (j > 0)
+    }
+    paramJSONObject = paramJSONObject.optJSONArray("circles");
+    if (paramJSONObject != null)
+    {
+      int k = paramJSONObject.length();
+      int j = 0;
+      int i = 0;
+      if (k > 0) {
+        while (i < k)
         {
-          while (i < j)
-          {
-            addCircle(paramJSONObject.optJSONObject(i));
-            i += 1;
-          }
+          addCircle(paramJSONObject.optJSONObject(i));
+          i += 1;
         }
-        else
+      }
+      paramJSONObject = this.circleArrayList;
+      if (paramJSONObject != null) {
+        i = paramJSONObject.size();
+      } else {
+        i = 0;
+      }
+      if (i > 0) {
+        while (j < i)
         {
-          if (this.circleArrayList != null) {}
-          for (i = this.circleArrayList.size();; i = 0)
-          {
-            if (i <= 0) {
-              break label99;
-            }
-            j = 0;
-            while (j < i)
-            {
-              ((Circle)this.circleArrayList.get(j)).remove();
-              j += 1;
-            }
-            break;
-          }
+          ((Circle)this.circleArrayList.get(j)).remove();
+          j += 1;
         }
       }
     }
@@ -643,39 +635,35 @@ public class MapContext
   
   public void addMapControls(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      paramJSONObject = paramJSONObject.optJSONArray("controls");
-      if (paramJSONObject != null)
+    }
+    paramJSONObject = paramJSONObject.optJSONArray("controls");
+    if (paramJSONObject != null)
+    {
+      int j = paramJSONObject.length();
+      int i = 0;
+      while (i < j)
       {
-        int j = paramJSONObject.length();
-        int i = 0;
-        while (i < j)
-        {
-          addControl(paramJSONObject.optJSONObject(i));
-          i += 1;
-        }
+        addControl(paramJSONObject.optJSONObject(i));
+        i += 1;
       }
     }
   }
   
   public void addMapCovers(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      paramJSONObject = paramJSONObject.optJSONArray("covers");
-      if (paramJSONObject != null)
+    }
+    paramJSONObject = paramJSONObject.optJSONArray("covers");
+    if (paramJSONObject != null)
+    {
+      int i = 0;
+      while (i < paramJSONObject.length())
       {
-        int i = 0;
-        while (i < paramJSONObject.length())
-        {
-          addCover(paramJSONObject.optJSONObject(i));
-          i += 1;
-        }
+        addCover(paramJSONObject.optJSONObject(i));
+        i += 1;
       }
     }
   }
@@ -696,36 +684,32 @@ public class MapContext
   
   public void addMapPolygons(JSONObject paramJSONObject)
   {
-    int k = 0;
-    if (paramJSONObject == null) {}
-    do
-    {
+    if (paramJSONObject == null) {
       return;
-      paramJSONObject = paramJSONObject.optJSONArray("polygons");
-    } while (paramJSONObject == null);
-    Object localObject1;
-    float f;
-    Object localObject2;
-    String str;
-    boolean bool;
-    if (paramJSONObject.length() > 0)
-    {
-      localObject1 = paramJSONObject.optJSONObject(0);
-      paramJSONObject = ((JSONObject)localObject1).optJSONArray("points");
-      f = (float)((JSONObject)localObject1).optDouble("strokeWidth");
-      localObject2 = ((JSONObject)localObject1).optString("strokeColor");
-      str = ((JSONObject)localObject1).optString("fillColor");
-      bool = ((JSONObject)localObject1).optBoolean("visible", true);
-      if (TextUtils.isEmpty(str)) {
-        break label254;
-      }
     }
-    label254:
-    for (int i = ColorUtils.parseColor(str);; i = 0)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
-      for (int j = ColorUtils.parseColor((String)localObject2);; j = 0)
+    paramJSONObject = paramJSONObject.optJSONArray("polygons");
+    if (paramJSONObject != null) {
+      if (paramJSONObject.length() > 0)
       {
+        int k = 0;
+        Object localObject1 = paramJSONObject.optJSONObject(0);
+        paramJSONObject = ((JSONObject)localObject1).optJSONArray("points");
+        float f = (float)((JSONObject)localObject1).optDouble("strokeWidth");
+        Object localObject2 = ((JSONObject)localObject1).optString("strokeColor");
+        String str = ((JSONObject)localObject1).optString("fillColor");
+        boolean bool = ((JSONObject)localObject1).optBoolean("visible", true);
+        int i;
+        if (!TextUtils.isEmpty(str)) {
+          i = ColorUtils.parseColor(str);
+        } else {
+          i = 0;
+        }
+        int j;
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          j = ColorUtils.parseColor((String)localObject2);
+        } else {
+          j = 0;
+        }
         localObject1 = new PolygonOptions();
         ((PolygonOptions)localObject1).fillColor(i);
         ((PolygonOptions)localObject1).visible(bool);
@@ -741,48 +725,54 @@ public class MapContext
             i += 1;
           }
         }
-        if (this.mTencentMap == null) {
-          break;
+        paramJSONObject = this.mTencentMap;
+        if (paramJSONObject != null) {
+          this.curPolygon = paramJSONObject.addPolygon((PolygonOptions)localObject1);
         }
-        this.curPolygon = this.mTencentMap.addPolygon((PolygonOptions)localObject1);
-        return;
-        if (this.curPolygon == null) {
-          break;
+      }
+      else
+      {
+        paramJSONObject = this.curPolygon;
+        if (paramJSONObject != null) {
+          paramJSONObject.remove();
         }
-        this.curPolygon.remove();
-        return;
       }
     }
   }
   
   public void addMapPolyline(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      paramJSONObject = paramJSONObject.optJSONArray("lines");
-      if (paramJSONObject != null)
+    }
+    paramJSONObject = paramJSONObject.optJSONArray("lines");
+    if (paramJSONObject != null)
+    {
+      ArrayList localArrayList = this.polylineArrayList;
+      int k = 0;
+      int i;
+      if (localArrayList != null) {
+        i = localArrayList.size();
+      } else {
+        i = 0;
+      }
+      if (i > 0)
       {
-        if (this.polylineArrayList != null) {}
-        for (int i = this.polylineArrayList.size(); i > 0; i = 0)
+        j = 0;
+        while (j < i)
         {
-          j = 0;
-          while (j < i)
-          {
-            ((Polyline)this.polylineArrayList.get(j)).remove();
-            j += 1;
-          }
+          ((Polyline)this.polylineArrayList.get(j)).remove();
+          j += 1;
         }
-        int j = paramJSONObject.length();
-        if (j > 0)
+      }
+      int j = paramJSONObject.length();
+      if (j > 0)
+      {
+        i = k;
+        while (i < j)
         {
-          i = 0;
-          while (i < j)
-          {
-            addPolyline(paramJSONObject.optJSONObject(i));
-            i += 1;
-          }
+          addPolyline(paramJSONObject.optJSONObject(i));
+          i += 1;
         }
       }
     }
@@ -795,7 +785,8 @@ public class MapContext
   
   public LatLng getCenterLocation()
   {
-    if ((this.mTencentMap != null) && (this.mTencentMap.getCameraPosition() != null) && (this.mTencentMap.getCameraPosition().target != null)) {
+    TencentMap localTencentMap = this.mTencentMap;
+    if ((localTencentMap != null) && (localTencentMap.getCameraPosition() != null) && (this.mTencentMap.getCameraPosition().target != null)) {
       return this.mTencentMap.getCameraPosition().target;
     }
     return null;
@@ -814,97 +805,114 @@ public class MapContext
   public JSONObject getRegion()
   {
     JSONObject localJSONObject1 = new JSONObject();
-    Projection localProjection;
-    if (this.mTencentMap != null) {
-      localProjection = this.mTencentMap.getProjection();
-    }
-    try
+    Object localObject = this.mTencentMap;
+    if (localObject != null)
     {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("longitude", localProjection.getVisibleRegion().latLngBounds.southwest.longitude);
-      localJSONObject2.put("latitude", localProjection.getVisibleRegion().latLngBounds.southwest.latitude);
-      localJSONObject1.put("southwest", localJSONObject2);
-      localJSONObject2 = new JSONObject();
-      localJSONObject2.put("longitude", localProjection.getVisibleRegion().latLngBounds.northeast.longitude);
-      localJSONObject2.put("latitude", localProjection.getVisibleRegion().latLngBounds.northeast.latitude);
-      localJSONObject1.put("northeast", localJSONObject2);
-      return localJSONObject1;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      localObject = ((TencentMap)localObject).getProjection();
+      try
+      {
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("longitude", ((Projection)localObject).getVisibleRegion().latLngBounds.southwest.longitude);
+        localJSONObject2.put("latitude", ((Projection)localObject).getVisibleRegion().latLngBounds.southwest.latitude);
+        localJSONObject1.put("southwest", localJSONObject2);
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("longitude", ((Projection)localObject).getVisibleRegion().latLngBounds.northeast.longitude);
+        localJSONObject2.put("latitude", ((Projection)localObject).getVisibleRegion().latLngBounds.northeast.latitude);
+        localJSONObject1.put("northeast", localJSONObject2);
+        return localJSONObject1;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
     return localJSONObject1;
   }
   
   public float getRotate()
   {
-    if ((this.mTencentMap == null) || (this.mTencentMap.getCameraPosition() == null)) {
-      return DEFAULT_ROTATE;
+    TencentMap localTencentMap = this.mTencentMap;
+    if ((localTencentMap != null) && (localTencentMap.getCameraPosition() != null)) {
+      return this.mTencentMap.getCameraPosition().bearing;
     }
-    return this.mTencentMap.getCameraPosition().bearing;
+    return DEFAULT_ROTATE;
   }
   
   public float getScale()
   {
-    if ((this.mTencentMap == null) || (this.mTencentMap.getCameraPosition() == null)) {
-      return DEFAULT_SCALE;
+    TencentMap localTencentMap = this.mTencentMap;
+    if ((localTencentMap != null) && (localTencentMap.getCameraPosition() != null)) {
+      return (int)this.mTencentMap.getCameraPosition().zoom;
     }
-    return (int)this.mTencentMap.getCameraPosition().zoom;
+    return DEFAULT_SCALE;
   }
   
   public float getSkew()
   {
-    if ((this.mTencentMap == null) || (this.mTencentMap.getCameraPosition() == null)) {
-      return DEFAULT_SKEW;
+    TencentMap localTencentMap = this.mTencentMap;
+    if ((localTencentMap != null) && (localTencentMap.getCameraPosition() != null)) {
+      return this.mTencentMap.getCameraPosition().tilt;
     }
-    return this.mTencentMap.getCameraPosition().tilt;
+    return DEFAULT_SKEW;
   }
   
   public void includeMapPoints(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      Object localObject1 = paramJSONObject.optJSONArray("points");
-      paramJSONObject = paramJSONObject.optJSONArray("padding");
-      if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+    }
+    Object localObject1 = paramJSONObject.optJSONArray("points");
+    paramJSONObject = paramJSONObject.optJSONArray("padding");
+    if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+    {
+      Object localObject2 = new double[((JSONArray)localObject1).length()];
+      double[] arrayOfDouble = new double[((JSONArray)localObject1).length()];
+      int i = 0;
+      while (i < ((JSONArray)localObject1).length())
       {
-        Object localObject2 = new double[((JSONArray)localObject1).length()];
-        double[] arrayOfDouble = new double[((JSONArray)localObject1).length()];
-        int i = 0;
-        while (i < ((JSONArray)localObject1).length())
+        JSONObject localJSONObject = ((JSONArray)localObject1).optJSONObject(i);
+        if (localJSONObject != null)
         {
-          JSONObject localJSONObject = ((JSONArray)localObject1).optJSONObject(i);
-          if (localJSONObject != null)
-          {
-            d1 = localJSONObject.optDouble("latitude", 0.0D);
-            d2 = localJSONObject.optDouble("longitude", 0.0D);
-            localObject2[i] = d1;
-            arrayOfDouble[i] = d2;
-          }
-          i += 1;
+          d1 = localJSONObject.optDouble("latitude", 0.0D);
+          d2 = localJSONObject.optDouble("longitude", 0.0D);
+          localObject2[i] = d1;
+          arrayOfDouble[i] = d2;
         }
-        Arrays.sort((double[])localObject2);
-        Arrays.sort(arrayOfDouble);
-        double d1 = localObject2[0];
-        double d2 = arrayOfDouble[0];
-        double d3 = localObject2[(localObject1.length() - 1)];
-        double d4 = arrayOfDouble[(localObject1.length() - 1)];
-        if (QMLog.isColorLevel()) {
-          QMLog.d(TAG, "includeMapPoints leftTopLatitude=" + d1 + ",leftTopLongitude=" + d2 + ",rightBottomLatitude=" + d3 + ",rightBottomLongitude=" + d4);
-        }
-        localObject1 = new LatLng(d1, d2);
-        localObject2 = new LatLng(d3, d4);
-        if ((paramJSONObject != null) && (paramJSONObject.length() > 0)) {}
-        for (i = paramJSONObject.optInt(0, 0); this.mTencentMap != null; i = 0)
-        {
-          this.showCurrentLocationStatus = false;
-          this.mTencentMap.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds((LatLng)localObject1, (LatLng)localObject2), i));
-          this.curLatLng = this.mTencentMap.getCameraPosition().target;
-          return;
-        }
+        i += 1;
+      }
+      Arrays.sort((double[])localObject2);
+      Arrays.sort(arrayOfDouble);
+      double d1 = localObject2[0];
+      double d2 = arrayOfDouble[0];
+      double d3 = localObject2[(localObject1.length() - 1)];
+      double d4 = arrayOfDouble[(localObject1.length() - 1)];
+      if (QMLog.isColorLevel())
+      {
+        localObject1 = TAG;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("includeMapPoints leftTopLatitude=");
+        ((StringBuilder)localObject2).append(d1);
+        ((StringBuilder)localObject2).append(",leftTopLongitude=");
+        ((StringBuilder)localObject2).append(d2);
+        ((StringBuilder)localObject2).append(",rightBottomLatitude=");
+        ((StringBuilder)localObject2).append(d3);
+        ((StringBuilder)localObject2).append(",rightBottomLongitude=");
+        ((StringBuilder)localObject2).append(d4);
+        QMLog.d((String)localObject1, ((StringBuilder)localObject2).toString());
+      }
+      localObject1 = new LatLng(d1, d2);
+      localObject2 = new LatLng(d3, d4);
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0)) {
+        i = paramJSONObject.optInt(0, 0);
+      } else {
+        i = 0;
+      }
+      paramJSONObject = this.mTencentMap;
+      if (paramJSONObject != null)
+      {
+        this.showCurrentLocationStatus = false;
+        paramJSONObject.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds((LatLng)localObject1, (LatLng)localObject2), i));
+        this.curLatLng = this.mTencentMap.getCameraPosition().target;
       }
     }
   }
@@ -1044,10 +1052,7 @@ public class MapContext
     }
     catch (JSONException paramMarker)
     {
-      for (;;)
-      {
-        paramMarker.printStackTrace();
-      }
+      paramMarker.printStackTrace();
     }
     return true;
   }
@@ -1055,56 +1060,54 @@ public class MapContext
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
     this.rotateDegree = (Math.round(paramSensorEvent.values[0] * 100.0F) / 100.0F);
-    if (this.locationMarker != null) {
-      this.locationMarker.setRotation(this.rotateDegree);
+    paramSensorEvent = this.locationMarker;
+    if (paramSensorEvent != null) {
+      paramSensorEvent.setRotation(this.rotateDegree);
     }
   }
   
   public void removeMapMarkers(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      paramJSONObject = paramJSONObject.optJSONArray("markers");
-      if (paramJSONObject != null)
+    }
+    paramJSONObject = paramJSONObject.optJSONArray("markers");
+    if (paramJSONObject != null)
+    {
+      int j = paramJSONObject.length();
+      int i = 0;
+      while (i < j)
       {
-        int j = paramJSONObject.length();
-        int i = 0;
-        while (i < j)
+        int k = paramJSONObject.optInt(i);
+        Marker localMarker = (Marker)this.markerSparseArray.get(k);
+        if (localMarker != null)
         {
-          int k = paramJSONObject.optInt(i);
-          Marker localMarker = (Marker)this.markerSparseArray.get(k);
-          if (localMarker != null)
-          {
-            localMarker.remove();
-            this.markerSparseArray.remove(k);
-          }
-          i += 1;
+          localMarker.remove();
+          this.markerSparseArray.remove(k);
         }
+        i += 1;
       }
     }
   }
   
   public void translateMapMarker(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    Marker localMarker;
-    do
+    if (paramJSONObject == null) {
+      return;
+    }
+    int i = paramJSONObject.optInt("markerId");
+    Marker localMarker = (Marker)this.markerSparseArray.get(i);
+    if (localMarker != null)
     {
-      do
+      paramJSONObject = paramJSONObject.optJSONArray("keyFrames");
+      if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
       {
-        do
-        {
-          return;
-          int i = paramJSONObject.optInt("markerId");
-          localMarker = (Marker)this.markerSparseArray.get(i);
-        } while (localMarker == null);
-        paramJSONObject = paramJSONObject.optJSONArray("keyFrames");
-      } while ((paramJSONObject == null) || (paramJSONObject.length() <= 0));
-      paramJSONObject = paramJSONObject.optJSONObject(0);
-    } while (paramJSONObject == null);
-    localMarker.setPosition(new LatLng(paramJSONObject.optDouble("latitude", 0.0D), paramJSONObject.optDouble("longitude", 0.0D)));
+        paramJSONObject = paramJSONObject.optJSONObject(0);
+        if (paramJSONObject != null) {
+          localMarker.setPosition(new LatLng(paramJSONObject.optDouble("latitude", 0.0D), paramJSONObject.optDouble("longitude", 0.0D)));
+        }
+      }
+    }
   }
   
   public void updateMap(JSONObject paramJSONObject)
@@ -1122,11 +1125,11 @@ public class MapContext
           updateMapViewPosition(paramJSONObject.optJSONObject("position"));
         }
         if (!paramJSONObject.has("centerLongitude")) {
-          break label173;
+          break label170;
         }
         d1 = paramJSONObject.optDouble("centerLongitude", 0.0D);
         if (!paramJSONObject.has("centerLatitude")) {
-          break label167;
+          break label175;
         }
         d2 = paramJSONObject.optDouble("centerLatitude", 0.0D);
       }
@@ -1149,13 +1152,11 @@ public class MapContext
       setShowCompass(paramJSONObject);
       updateOtherParams(paramJSONObject);
       return;
-      label167:
-      double d2 = 0.0D;
-      break label178;
-      label173:
+      label170:
       double d1 = 0.0D;
       continue;
-      label178:
+      label175:
+      double d2 = 0.0D;
       if (d2 == 0.0D) {
         if (d1 == 0.0D) {}
       }
@@ -1164,7 +1165,7 @@ public class MapContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.map.MapContext
  * JD-Core Version:    0.7.0.1
  */

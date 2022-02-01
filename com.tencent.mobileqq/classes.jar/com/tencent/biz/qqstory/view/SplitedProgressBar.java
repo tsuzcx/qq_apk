@@ -39,137 +39,175 @@ public class SplitedProgressBar
     this.jdField_a_of_type_Int = 1;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int k = super.getWidth();
+    int m = super.getWidth();
     if (this.b == 0) {
       return;
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
-    float f1 = (k - (this.j - this.i - 1) * this.h) / (this.j - this.i);
-    k = this.i;
-    label69:
-    int m;
-    int n;
-    if (k < this.j)
+    int n = this.j;
+    int k = this.i;
+    float f1 = (m - (n - k - 1) * this.h) / (n - k);
+    while (k < this.j)
     {
-      m = (int)((k - this.i) * (this.h + f1));
-      n = (int)((k - this.i) * (this.h + f1) + f1);
-      if (k >= this.c) {
-        break label213;
-      }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-      paramCanvas.drawLine(m + 1, 1.0F, n - 1, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-      paramCanvas.drawPoint(m, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawPoint(n - 1, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    for (;;)
-    {
-      k += 1;
-      break label69;
-      break;
-      label213:
-      if (k == this.c)
+      n = this.i;
+      float f2 = k - n;
+      int i1 = this.h;
+      m = (int)(f2 * (i1 + f1));
+      n = (int)((k - n) * (i1 + f1) + f1);
+      i1 = this.c;
+      float f3;
+      if (k < i1)
       {
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-        float f2 = m + 1;
-        float f3 = m;
-        paramCanvas.drawLine(f2, 1.0F, this.d * f1 / 100.0F + f3, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        f2 = m + 1;
+        f3 = n - 1;
+        paramCanvas.drawLine(f2, 1.0F, f3, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
         paramCanvas.drawPoint(m, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawPoint(f3, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+      else if (k == i1)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
+        f3 = m + 1;
+        f2 = m;
+        paramCanvas.drawLine(f3, 1.0F, f2 + this.d * f1 / 100.0F, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
+        paramCanvas.drawPoint(f2, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-        f2 = m;
-        paramCanvas.drawLine(this.d * f1 / 100.0F + f2, 1.0F, n - 1, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        f3 = this.d * f1 / 100.0F;
+        float f4 = n - 1;
+        paramCanvas.drawLine(f2 + f3, 1.0F, f4, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-        paramCanvas.drawPoint(n - 1, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawPoint(f4, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
       else
       {
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-        paramCanvas.drawLine(m + 1, 1.0F, n - 1, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        f2 = m + 1;
+        f3 = n - 1;
+        paramCanvas.drawLine(f2, 1.0F, f3, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
         paramCanvas.drawPoint(m, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-        paramCanvas.drawPoint(n - 1, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawPoint(f3, 1.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
+      k += 1;
     }
   }
   
   public void setProgress(int paramInt1, int paramInt2)
   {
-    if (this.b <= 0) {
+    int k = this.b;
+    if (k <= 0) {
       return;
     }
-    if ((paramInt1 < 0) || (paramInt1 >= this.b)) {
-      throw new IllegalArgumentException("setProgress Exception, progressIndex is < 0 or > mTotalCount, progressIndex = " + paramInt1 + ", mTotalCount = " + this.b);
-    }
-    if ((paramInt2 < 0) || (paramInt2 > 100)) {
-      throw new IllegalArgumentException("setProgress Exception, progress is < 0 or > 100, progress = " + paramInt2);
-    }
-    this.c = paramInt1;
-    this.d = paramInt2;
-    if (this.c < this.jdField_a_of_type_Int)
+    if ((paramInt1 >= 0) && (paramInt1 < k))
     {
-      this.i = 0;
-      this.j = this.jdField_a_of_type_Int;
-      if (Looper.myLooper() == Looper.getMainLooper()) {
-        super.invalidate();
-      }
-    }
-    else
-    {
-      for (this.i = this.jdField_a_of_type_Int; this.i + this.jdField_a_of_type_Int <= this.c; this.i += this.jdField_a_of_type_Int) {}
-      if (this.b < this.i + this.jdField_a_of_type_Int) {}
-      for (paramInt1 = this.b;; paramInt1 = this.i + this.jdField_a_of_type_Int)
+      if ((paramInt2 >= 0) && (paramInt2 <= 100))
       {
-        this.j = paramInt1;
-        break;
+        this.c = paramInt1;
+        this.d = paramInt2;
+        paramInt1 = this.c;
+        paramInt2 = this.jdField_a_of_type_Int;
+        if (paramInt1 < paramInt2)
+        {
+          this.i = 0;
+          this.j = paramInt2;
+        }
+        else
+        {
+          for (this.i = paramInt2;; this.i = (paramInt2 + k))
+          {
+            paramInt2 = this.i;
+            k = this.jdField_a_of_type_Int;
+            if (paramInt2 + k > this.c) {
+              break;
+            }
+          }
+          paramInt1 = this.b;
+          if (paramInt1 >= paramInt2 + k) {
+            paramInt1 = paramInt2 + k;
+          }
+          this.j = paramInt1;
+        }
+        if (Looper.myLooper() == Looper.getMainLooper())
+        {
+          super.invalidate();
+          return;
+        }
+        super.postInvalidate();
+        return;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setProgress Exception, progress is < 0 or > 100, progress = ");
+      ((StringBuilder)localObject).append(paramInt2);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    super.postInvalidate();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setProgress Exception, progressIndex is < 0 or > mTotalCount, progressIndex = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", mTotalCount = ");
+    ((StringBuilder)localObject).append(this.b);
+    localObject = new IllegalArgumentException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
   }
   
   public void setShowMaxCount(int paramInt)
   {
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("setShowMaxCount Exception, count is < 1, count = " + paramInt);
-    }
-    int k = paramInt;
-    if (paramInt > 50) {
-      k = 50;
-    }
-    this.jdField_a_of_type_Int = k;
-    if (Looper.myLooper() == Looper.getMainLooper())
+    if (paramInt >= 1)
     {
-      super.invalidate();
+      int k = paramInt;
+      if (paramInt > 50) {
+        k = 50;
+      }
+      this.jdField_a_of_type_Int = k;
+      if (Looper.myLooper() == Looper.getMainLooper())
+      {
+        super.invalidate();
+        return;
+      }
+      super.postInvalidate();
       return;
     }
-    super.postInvalidate();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setShowMaxCount Exception, count is < 1, count = ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void setTotalCount(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("setTotalCount Exception, count is < 0, count = " + paramInt);
-    }
-    this.b = paramInt;
-    setShowMaxCount(paramInt);
-    if (Looper.myLooper() == Looper.getMainLooper())
+    if (paramInt >= 0)
     {
-      super.invalidate();
+      this.b = paramInt;
+      setShowMaxCount(paramInt);
+      if (Looper.myLooper() == Looper.getMainLooper())
+      {
+        super.invalidate();
+        return;
+      }
+      super.postInvalidate();
       return;
     }
-    super.postInvalidate();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setTotalCount Exception, count is < 0, count = ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.SplitedProgressBar
  * JD-Core Version:    0.7.0.1
  */

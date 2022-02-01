@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class DownloadStateChangedReceiver
   extends BroadcastReceiver
 {
-  protected static final String a = DownloadStateChangedReceiver.class.getSimpleName();
-  protected static DownloadStateChangedReceiver b = null;
+  protected static final String a = "DownloadStateChangedReceiver";
+  protected static DownloadStateChangedReceiver b;
   protected HandlerThread c = new HandlerThread("downloadStateChangedThread");
   protected Handler d = null;
   protected boolean e = false;
@@ -40,31 +40,46 @@ public class DownloadStateChangedReceiver
   
   public void a(Context paramContext)
   {
-    ab.c(a, "context = " + paramContext);
-    IntentFilter localIntentFilter;
+    Object localObject = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("context = ");
+    localStringBuilder.append(paramContext);
+    ab.c((String)localObject, localStringBuilder.toString());
     if (!this.e)
     {
-      ab.c("DownloadStateChangedReceiver", "registeReceiver   context" + paramContext + "  receiver:" + this);
-      localIntentFilter = new IntentFilter("com.tencent.assistantOpenSDK.downloadStateChange.action");
-    }
-    try
-    {
-      paramContext = paramContext.registerReceiver(this, localIntentFilter);
-      ab.c("DownloadStateChangedReceiver", "" + paramContext);
-      this.e = true;
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      ab.c("DownloadStateChangedReceiver", "registeReceiver exception!!!");
-      this.e = false;
-      paramContext.printStackTrace();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("registeReceiver   context");
+      ((StringBuilder)localObject).append(paramContext);
+      ((StringBuilder)localObject).append("  receiver:");
+      ((StringBuilder)localObject).append(this);
+      ab.c("DownloadStateChangedReceiver", ((StringBuilder)localObject).toString());
+      localObject = new IntentFilter("com.tencent.assistantOpenSDK.downloadStateChange.action");
+      try
+      {
+        paramContext = paramContext.registerReceiver(this, (IntentFilter)localObject);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(paramContext);
+        ab.c("DownloadStateChangedReceiver", ((StringBuilder)localObject).toString());
+        this.e = true;
+        return;
+      }
+      catch (Throwable paramContext)
+      {
+        ab.c("DownloadStateChangedReceiver", "registeReceiver exception!!!");
+        this.e = false;
+        paramContext.printStackTrace();
+      }
     }
   }
   
   public void a(b paramb)
   {
-    ab.c(a, "listener = " + paramb);
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("listener = ");
+    localStringBuilder.append(paramb);
+    ab.c(str, localStringBuilder.toString());
     if ((paramb != null) && (!this.f.contains(paramb))) {
       this.f.add(paramb);
     }
@@ -72,30 +87,47 @@ public class DownloadStateChangedReceiver
   
   public void b(Context paramContext)
   {
-    if ((paramContext == null) || (b == null)) {
-      ab.c(a, "unRegisteReceiver fail! context = " + paramContext + ",mInstance = " + b);
-    }
-    while (!this.e) {
+    if ((paramContext != null) && (b != null))
+    {
+      if (this.e)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("realy unRegisteReceiver  context:");
+        ((StringBuilder)localObject).append(paramContext);
+        ((StringBuilder)localObject).append("  receiver:");
+        ((StringBuilder)localObject).append(this);
+        ab.c("DownloadStateChangedReceiver", ((StringBuilder)localObject).toString());
+        try
+        {
+          paramContext.unregisterReceiver(this);
+          this.e = false;
+          return;
+        }
+        catch (Throwable paramContext)
+        {
+          ab.a("DownloadStateChangedReceiver", "unRegisteReceiver exception!!!", paramContext);
+          this.e = false;
+          paramContext.printStackTrace();
+        }
+      }
       return;
     }
-    ab.c("DownloadStateChangedReceiver", "realy unRegisteReceiver  context:" + paramContext + "  receiver:" + this);
-    try
-    {
-      paramContext.unregisterReceiver(this);
-      this.e = false;
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      ab.a("DownloadStateChangedReceiver", "unRegisteReceiver exception!!!", paramContext);
-      this.e = false;
-      paramContext.printStackTrace();
-    }
+    Object localObject = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unRegisteReceiver fail! context = ");
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(",mInstance = ");
+    localStringBuilder.append(b);
+    ab.c((String)localObject, localStringBuilder.toString());
   }
   
   public void b(b paramb)
   {
-    ab.c(a, "listener = " + paramb);
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("listener = ");
+    localStringBuilder.append(paramb);
+    ab.c(str, localStringBuilder.toString());
     if (paramb != null) {
       this.f.remove(paramb);
     }
@@ -103,15 +135,22 @@ public class DownloadStateChangedReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ab.c(a, "context = " + paramContext + ",intent = " + paramIntent);
-    if (this.d != null) {
-      this.d.post(new a(this, paramIntent));
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("context = ");
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(",intent = ");
+    localStringBuilder.append(paramIntent);
+    ab.c(str, localStringBuilder.toString());
+    paramContext = this.d;
+    if (paramContext != null) {
+      paramContext.post(new a(this, paramIntent));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.DownloadStateChangedReceiver
  * JD-Core Version:    0.7.0.1
  */

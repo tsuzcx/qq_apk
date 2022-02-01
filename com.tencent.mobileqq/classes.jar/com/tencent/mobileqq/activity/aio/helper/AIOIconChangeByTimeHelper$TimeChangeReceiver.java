@@ -3,68 +3,45 @@ package com.tencent.mobileqq.activity.aio.helper;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Looper;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 import java.lang.ref.WeakReference;
-import java.util.Calendar;
-import mqq.os.MqqHandler;
 
 final class AIOIconChangeByTimeHelper$TimeChangeReceiver
   extends BroadcastReceiver
 {
-  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
-  private Calendar jdField_a_of_type_JavaUtilCalendar;
+  private WeakReference<BaseChatPie> a;
   
   private AIOIconChangeByTimeHelper$TimeChangeReceiver(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+    this.a = new WeakReference(paramBaseChatPie);
   }
   
   private void a()
   {
-    BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localBaseChatPie != null)
-    {
-      if (this.jdField_a_of_type_JavaUtilCalendar == null) {
-        this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
-      }
-      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-      int i = this.jdField_a_of_type_JavaUtilCalendar.get(11);
-      if ((i < 19) && (i >= 7)) {
-        break label91;
-      }
-    }
-    label91:
-    for (boolean bool = true; Looper.getMainLooper() == Looper.myLooper(); bool = false)
-    {
-      localBaseChatPie.a.b(bool, (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      return;
-    }
-    localBaseChatPie.a().post(new AIOIconChangeByTimeHelper.TimeChangeReceiver.1(this, localBaseChatPie, bool));
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if ("android.intent.action.TIME_TICK".equals(paramContext)) {
+    if ("android.intent.action.TIME_TICK".equals(paramContext))
+    {
+      a();
+      return;
+    }
+    if ("android.intent.action.TIME_SET".equals(paramContext))
+    {
+      a();
+      return;
+    }
+    if ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) {
       a();
     }
-    do
-    {
-      return;
-      if ("android.intent.action.TIME_SET".equals(paramContext))
-      {
-        a();
-        return;
-      }
-    } while (!"android.intent.action.TIMEZONE_CHANGED".equals(paramContext));
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.TimeChangeReceiver
  * JD-Core Version:    0.7.0.1
  */

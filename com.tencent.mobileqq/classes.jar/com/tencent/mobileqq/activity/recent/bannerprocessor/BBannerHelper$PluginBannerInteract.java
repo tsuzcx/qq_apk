@@ -56,30 +56,31 @@ class BBannerHelper$PluginBannerInteract
   
   public void onClose()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
+    }
     BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
   }
   
   public void onEnter()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {}
-    QQAppInterface localQQAppInterface;
-    BaseActivity localBaseActivity;
-    do
-    {
-      do
-      {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
+      return;
+    }
+    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {
+      return;
+    }
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (localBaseActivity != null) {
+      if (localBaseActivity.isFinishing()) {
         return;
-        localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localQQAppInterface == null);
-      localBaseActivity = BaseActivity.sTopActivity;
-    } while ((localBaseActivity == null) || (localBaseActivity.isFinishing()));
+      }
+    }
     try
     {
       Class localClass = Class.forName(this.b).asSubclass(Activity.class);
@@ -93,20 +94,25 @@ class BBannerHelper$PluginBannerInteract
       localPluginParams.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
       localPluginParams.c = -1;
       IPluginManager.a(localBaseActivity, localPluginParams);
-      BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+      BBannerHelper.a((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      QLog.e("Q.recent.banner", 1, "return to plugin error, can not find the ckass " + this.b);
+      label150:
+      break label150;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("return to plugin error, can not find the ckass ");
+    ((StringBuilder)localObject).append(this.b);
+    QLog.e("Q.recent.banner", 1, ((StringBuilder)localObject).toString());
   }
   
   public void onOverride() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.PluginBannerInteract
  * JD-Core Version:    0.7.0.1
  */

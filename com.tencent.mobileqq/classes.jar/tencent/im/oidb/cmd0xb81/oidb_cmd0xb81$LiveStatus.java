@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_cmd0xb81$LiveStatus
   extends MessageMicro<LiveStatus>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 122 }, new String[] { "uint32_liveing", "uint64_live_time", "uint32_source", "str_account", "str_roomid", "rowkey", "str_url" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), "", "", "", "" }, LiveStatus.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField rowkey = PBField.initString("");
   public final PBStringField str_account = PBField.initString("");
   public final PBStringField str_roomid = PBField.initString("");
@@ -18,10 +18,16 @@ public final class oidb_cmd0xb81$LiveStatus
   public final PBUInt32Field uint32_liveing = PBField.initUInt32(0);
   public final PBUInt32Field uint32_source = PBField.initUInt32(0);
   public final PBUInt64Field uint64_live_time = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 122 }, new String[] { "uint32_liveing", "uint64_live_time", "uint32_source", "str_account", "str_roomid", "rowkey", "str_url" }, new Object[] { localInteger, Long.valueOf(0L), localInteger, "", "", "", "" }, LiveStatus.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb81.oidb_cmd0xb81.LiveStatus
  * JD-Core Version:    0.7.0.1
  */

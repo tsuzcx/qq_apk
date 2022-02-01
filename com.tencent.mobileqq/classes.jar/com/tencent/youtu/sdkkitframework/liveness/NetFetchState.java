@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class NetFetchState
   extends YtFSMBaseState
 {
-  private static final String TAG = NetFetchState.class.getSimpleName();
+  private static final String TAG = "NetFetchState";
   private String actionSeqData = "";
   private String appId;
   private int backendProtoType = 0;
@@ -39,11 +39,14 @@ public class NetFetchState
     YtFSM.getInstance().sendFSMEvent(new NetFetchState.1(this));
     switch (NetFetchState.4.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
     {
-    case 1: 
     default: 
-      return;
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+      onReflectRequest();
     }
-    onReflectRequest();
   }
   
   public void enterFirst() {}
@@ -56,9 +59,9 @@ public class NetFetchState
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
     super.loadStateWith(paramString, paramJSONObject);
-    label350:
     for (;;)
     {
+      int i;
       try
       {
         this.appId = paramJSONObject.getString("app_id");
@@ -74,68 +77,80 @@ public class NetFetchState
         if (paramJSONObject.has("local_config_flag")) {
           this.needLocalConfig = paramJSONObject.getBoolean("local_config_flag");
         }
-        int i;
         if (paramJSONObject.has("action_default_seq"))
         {
           paramString = paramJSONObject.getJSONArray("action_default_seq");
           i = 0;
           if (i < paramString.length())
           {
-            this.actionSeqData += paramString.getString(i);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(this.actionSeqData);
+            localStringBuilder.append(paramString.getString(i));
+            this.actionSeqData = localStringBuilder.toString();
             if (i >= paramString.length() - 1) {
-              break label350;
+              break label382;
             }
-            this.actionSeqData += ",";
-            break label350;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(this.actionSeqData);
+            localStringBuilder.append(",");
+            this.actionSeqData = localStringBuilder.toString();
+            break label382;
           }
         }
         else
         {
           this.actionSeqData = "0";
         }
-        if (paramJSONObject.has("extra_config"))
-        {
+        if (paramJSONObject.has("extra_config")) {
           this.extraConfig = paramJSONObject.getString("extra_config");
-          if (paramJSONObject.has("control_config")) {
-            this.controlConfig = paramJSONObject.getString("control_config");
-          }
-          if (paramJSONObject.has("change_point_num")) {
-            this.changePointNum = paramJSONObject.getInt("change_point_num");
-          }
-          if (paramJSONObject.has("select_data")) {
-            this.selectData = paramJSONObject.getJSONObject("select_data");
-          }
-          if (paramJSONObject.has("backend_proto_type")) {
-            this.backendProtoType = paramJSONObject.getInt("backend_proto_type");
-          }
-          if (!paramJSONObject.has("net_request_timeout_ms")) {
-            break;
-          }
+        } else {
+          this.extraConfig = " version 2";
+        }
+        if (paramJSONObject.has("control_config")) {
+          this.controlConfig = paramJSONObject.getString("control_config");
+        }
+        if (paramJSONObject.has("change_point_num")) {
+          this.changePointNum = paramJSONObject.getInt("change_point_num");
+        }
+        if (paramJSONObject.has("select_data")) {
+          this.selectData = paramJSONObject.getJSONObject("select_data");
+        }
+        if (paramJSONObject.has("backend_proto_type")) {
+          this.backendProtoType = paramJSONObject.getInt("backend_proto_type");
+        }
+        if (paramJSONObject.has("net_request_timeout_ms"))
+        {
           YtSDKKitFramework.getInstance().setNetworkRequestTimeoutMS(paramJSONObject.getInt("net_request_timeout_ms"));
           return;
         }
-        this.extraConfig = " version 2";
-        continue;
-        i += 1;
       }
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
-        YtLogger.e(TAG, "Failed to parse json:" + paramString.getLocalizedMessage());
-        return;
+        paramJSONObject = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Failed to parse json:");
+        localStringBuilder.append(paramString.getLocalizedMessage());
+        YtLogger.e(paramJSONObject, localStringBuilder.toString());
       }
+      return;
+      label382:
+      i += 1;
     }
   }
   
   public void moveToNextState()
   {
     super.moveToNextState();
-    switch (NetFetchState.4.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
+    int i = NetFetchState.4.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()];
+    if ((i != 2) && (i != 3) && (i != 4) && (i != 5) && (i != 6))
     {
-    default: 
-      String str = "msg_param_error current unknown work mode:" + YtFSM.getInstance().getWorkMode();
-      YtSDKStats.getInstance().reportError(4194304, str);
-      YtFSM.getInstance().sendFSMEvent(new NetFetchState.2(this, str));
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("msg_param_error current unknown work mode:");
+      ((StringBuilder)localObject).append(YtFSM.getInstance().getWorkMode());
+      localObject = ((StringBuilder)localObject).toString();
+      YtSDKStats.getInstance().reportError(4194304, (String)localObject);
+      YtFSM.getInstance().sendFSMEvent(new NetFetchState.2(this, (String)localObject));
       return;
     }
     YtFSM.getInstance().transitNextRound(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
@@ -153,7 +168,7 @@ public class NetFetchState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.NetFetchState
  * JD-Core Version:    0.7.0.1
  */

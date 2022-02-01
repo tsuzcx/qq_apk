@@ -16,30 +16,40 @@ final class Common$1
       File[] arrayOfFile = localFile1.listFiles();
       int j = arrayOfFile.length;
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
         File localFile2 = arrayOfFile[i];
         if ((localFile2.getName().startsWith("system_old_")) || ((localFile2.isDirectory()) && (!localFile2.getName().equals("tmp")) && (!TextUtils.isEmpty(Common.q())) && (!localFile2.getName().equals(Common.q()))))
         {
-          if (!FileUtils.a(new File(localFile1 + File.separator + localFile2.getName()))) {
-            break label179;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localFile1);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append(localFile2.getName());
+          if (FileUtils.a(new File(localStringBuilder.toString())))
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("<initSystemFolder> delete temp file<");
+            localStringBuilder.append(localFile2.getName());
+            localStringBuilder.append("> successful");
+            LogUtility.b("Common", localStringBuilder.toString());
           }
-          LogUtility.b("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> successful");
+          else
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("<initSystemFolder> delete temp file<");
+            localStringBuilder.append(localFile2.getName());
+            localStringBuilder.append("> failed");
+            LogUtility.c("Common", localStringBuilder.toString());
+          }
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label179:
-          LogUtility.c("Common", "<initSystemFolder> delete temp file<" + localFile2.getName() + "> failed");
-        }
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.Common.1
  * JD-Core Version:    0.7.0.1
  */

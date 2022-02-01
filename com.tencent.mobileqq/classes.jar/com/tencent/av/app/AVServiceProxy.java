@@ -2,6 +2,7 @@ package com.tencent.av.app;
 
 import android.app.Application;
 import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
 import android.os.RemoteException;
 import com.tencent.av.AVLog;
@@ -31,81 +32,78 @@ public class AVServiceProxy
     try
     {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().startService(localIntent);
-      this.jdField_a_of_type_ComTencentAvAppAVServiceProxy$AVServiceForQQConnection = new AVServiceProxy.AVServiceForQQConnection(this);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().bindService(localIntent, this.jdField_a_of_type_ComTencentAvAppAVServiceProxy$AVServiceForQQConnection, 1);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        AVLog.printErrorLog(jdField_a_of_type_JavaLangString, "bindService " + localThrowable.getMessage());
-      }
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bindService ");
+      localStringBuilder.append(localThrowable.getMessage());
+      AVLog.printErrorLog(str, localStringBuilder.toString());
     }
+    this.jdField_a_of_type_ComTencentAvAppAVServiceProxy$AVServiceForQQConnection = new AVServiceProxy.AVServiceForQQConnection(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().bindService(localIntent, this.jdField_a_of_type_ComTencentAvAppAVServiceProxy$AVServiceForQQConnection, 1);
   }
   
   public void a(boolean paramBoolean, Notification paramNotification)
   {
     QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("setAVServiceForegroud start=%s mAvService=%s", new Object[] { Boolean.valueOf(paramBoolean), this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ }));
-    if (this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ != null) {}
-    for (;;)
-    {
+    Object localObject = this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ;
+    if (localObject != null) {
       try
       {
-        this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ.a(paramBoolean, paramNotification);
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        return;
-      }
-      catch (RemoteException paramNotification)
-      {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "setAVServiceForegroud fail.", paramNotification);
-        continue;
+        ((IAVServiceForQQ)localObject).a(paramBoolean, paramNotification);
       }
       catch (Throwable paramNotification)
       {
         QLog.d(jdField_a_of_type_JavaLangString, 1, "setAVServiceForegroud fail.", paramNotification);
-        continue;
       }
+      catch (RemoteException paramNotification)
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "setAVServiceForegroud fail.", paramNotification);
+      }
+    } else {
       try
       {
-        MobileQQ localMobileQQ = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication();
-        Intent localIntent = new Intent(localMobileQQ, AVServiceForQQ.class);
+        localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication();
+        Intent localIntent = new Intent((Context)localObject, AVServiceForQQ.class);
         localIntent.putExtra("setForeground", true);
         localIntent.putExtra("foreground", paramBoolean);
         localIntent.putExtra("notification", paramNotification);
-        localMobileQQ.startService(localIntent);
+        ((Application)localObject).startService(localIntent);
       }
       catch (Throwable paramNotification)
       {
         QLog.d(jdField_a_of_type_JavaLangString, 1, "setAVServiceForegroud fail.", paramNotification);
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   protected void b()
   {
     Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), AVServiceForQQ.class);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().stopService(localIntent);
-    if (this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unbindService(this.jdField_a_of_type_ComTencentAvAppAVServiceProxy$AVServiceForQQConnection);
-      return;
-    }
-    catch (Exception localException)
-    {
-      AVLog.printErrorLog(jdField_a_of_type_JavaLangString, "disconnect msg = " + localException.getMessage());
+    if (this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ != null) {
+      try
+      {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unbindService(this.jdField_a_of_type_ComTencentAvAppAVServiceProxy$AVServiceForQQConnection);
+        return;
+      }
+      catch (Exception localException)
+      {
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("disconnect msg = ");
+        localStringBuilder.append(localException.getMessage());
+        AVLog.printErrorLog(str, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.AVServiceProxy
  * JD-Core Version:    0.7.0.1
  */

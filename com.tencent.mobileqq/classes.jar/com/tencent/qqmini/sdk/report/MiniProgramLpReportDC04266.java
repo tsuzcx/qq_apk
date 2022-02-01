@@ -25,10 +25,10 @@ public class MiniProgramLpReportDC04266
   
   private static int getQualityDcId()
   {
-    if ((QUAUtil.isQQApp()) || (QUAUtil.isMicroApp())) {
-      return getDcId4266();
+    if ((!QUAUtil.isQQApp()) && (!QUAUtil.isMicroApp())) {
+      return getDcId5374();
     }
-    return getDcId5374();
+    return getDcId4266();
   }
   
   public static void report(MiniAppInfo paramMiniAppInfo, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong1, String paramString5, long paramLong2, String paramString6, String paramString7, String paramString8, String paramString9)
@@ -53,7 +53,7 @@ public class MiniProgramLpReportDC04266
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04266
  * JD-Core Version:    0.7.0.1
  */

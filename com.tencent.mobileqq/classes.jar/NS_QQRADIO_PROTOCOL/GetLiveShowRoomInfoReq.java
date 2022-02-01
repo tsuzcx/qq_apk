@@ -39,15 +39,18 @@ public final class GetLiveShowRoomInfoReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.commonInfo != null) {
-      paramJceOutputStream.write(this.commonInfo, 0);
+    Object localObject = this.commonInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.roomID != null) {
-      paramJceOutputStream.write(this.roomID, 1);
+    localObject = this.roomID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.infoType, 2);
-    if (this.uid != null) {
-      paramJceOutputStream.write(this.uid, 3);
+    localObject = this.uid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.pageType, 4);
     paramJceOutputStream.write(this.isHlsUrlSign, 5);
@@ -55,7 +58,7 @@ public final class GetLiveShowRoomInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_PROTOCOL.GetLiveShowRoomInfoReq
  * JD-Core Version:    0.7.0.1
  */

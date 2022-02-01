@@ -12,26 +12,20 @@ class SoConfig$1
   {
     int j = 0;
     int i;
-    if (paramQConfItem1 == null)
-    {
+    if (paramQConfItem1 == null) {
       i = 0;
-      if (paramQConfItem2 != null) {
-        break label26;
-      }
-    }
-    for (;;)
-    {
-      return j - i;
+    } else {
       i = paramQConfItem1.a;
-      break;
-      label26:
+    }
+    if (paramQConfItem2 != null) {
       j = paramQConfItem2.a;
     }
+    return j - i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.entity.SoConfig.1
  * JD-Core Version:    0.7.0.1
  */

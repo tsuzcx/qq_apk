@@ -18,7 +18,10 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl$3
       WSPlayerManager.b(this.a.a);
       ((WSPlayerWrapper)localObject).i();
       ((WSPlayerWrapper)localObject).j();
-      WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][checkPlayerLoop] mReplayCount:" + WSPlayerManager.c(this.a.a));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[WSPlayerManager.java][checkPlayerLoop] mReplayCount:");
+      ((StringBuilder)localObject).append(WSPlayerManager.c(this.a.a));
+      WSLog.d("WS_VIDEO_PLAYER", ((StringBuilder)localObject).toString());
     }
     if (WSPlayerManager.a(this.a.a) != null)
     {
@@ -31,7 +34,7 @@ class WSPlayerManager$MediaPlayListenerAdapterImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.MediaPlayListenerAdapterImpl.3
  * JD-Core Version:    0.7.0.1
  */

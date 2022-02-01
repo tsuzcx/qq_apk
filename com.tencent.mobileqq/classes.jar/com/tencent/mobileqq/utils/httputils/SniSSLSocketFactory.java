@@ -15,7 +15,7 @@ import javax.net.ssl.SSLSocketFactory;
 public class SniSSLSocketFactory
   extends SSLSocketFactory
 {
-  private final String TAG = "SniSSLSocketFactory";
+  private static final String TAG = "SniSSLSocketFactory";
   private HttpsURLConnection conn;
   HostnameVerifier mHostnameVerifier;
   private String mReqHost;
@@ -64,23 +64,26 @@ public class SniSSLSocketFactory
     if (Build.VERSION.SDK_INT >= 17) {
       localSSLCertificateSocketFactory.setHostname(paramSocket, this.mReqHost);
     }
-    for (;;)
+    try
     {
-      paramString = paramSocket.getSession();
-      if (this.mHostnameVerifier == null) {
-        this.mHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-      }
-      if (this.mHostnameVerifier.verify(this.mReqHost, paramString)) {
-        break;
-      }
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + this.mReqHost);
-      try
-      {
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.mReqHost });
-      }
-      catch (Exception paramString) {}
+      paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.mReqHost });
     }
-    return paramSocket;
+    catch (Exception paramString)
+    {
+      label100:
+      break label100;
+    }
+    paramString = paramSocket.getSession();
+    if (this.mHostnameVerifier == null) {
+      this.mHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
+    }
+    if (this.mHostnameVerifier.verify(this.mReqHost, paramString)) {
+      return paramSocket;
+    }
+    paramSocket = new StringBuilder();
+    paramSocket.append("Cannot verify hostname: ");
+    paramSocket.append(this.mReqHost);
+    throw new SSLPeerUnverifiedException(paramSocket.toString());
   }
   
   public String[] getDefaultCipherSuites()
@@ -95,7 +98,7 @@ public class SniSSLSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.httputils.SniSSLSocketFactory
  * JD-Core Version:    0.7.0.1
  */

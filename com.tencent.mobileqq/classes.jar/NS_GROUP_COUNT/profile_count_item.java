@@ -30,15 +30,16 @@ public final class profile_count_item
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.jumpSchema != null) {
-      paramJceOutputStream.write(this.jumpSchema, 1);
+    String str = this.jumpSchema;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.count, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_GROUP_COUNT.profile_count_item
  * JD-Core Version:    0.7.0.1
  */

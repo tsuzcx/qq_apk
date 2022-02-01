@@ -20,19 +20,20 @@ public class CustomerLoadingDialog
   
   public CustomerLoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131755409);
+    super(paramContext, 2131755683);
   }
   
   public CustomerLoadingDialog(Context paramContext, String paramString)
   {
-    super(paramContext, 2131755409);
+    super(paramContext, 2131755683);
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public View a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      return localView.findViewById(paramInt);
     }
     return null;
   }
@@ -40,18 +41,18 @@ public class CustomerLoadingDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = LayoutInflater.from(getContext()).inflate(2131561733, null);
+    paramBundle = LayoutInflater.from(getContext()).inflate(2131561576, null);
     Object localObject = getWindow();
     ((Window)localObject).setContentView(paramBundle);
     WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
     localLayoutParams.width = -2;
     localLayoutParams.height = -2;
     localLayoutParams.gravity = 48;
-    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131299253);
+    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131299256);
     ((Window)localObject).setAttributes(localLayoutParams);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      localObject = (TextView)paramBundle.findViewById(2131371913);
+      localObject = (TextView)paramBundle.findViewById(2131371534);
       if (localObject != null) {
         ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
       }
@@ -62,7 +63,7 @@ public class CustomerLoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.CustomerLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

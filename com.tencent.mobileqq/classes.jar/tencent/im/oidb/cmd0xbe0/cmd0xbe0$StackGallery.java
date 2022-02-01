@@ -22,13 +22,14 @@ public final class cmd0xbe0$StackGallery
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56 }, new String[] { "bytes_row_key", "uint32_place", "uint32_is_exposure", "uint32_is_clicked", "uint32_pic_count", "uint32_read_pic_count", "uint64_read_time" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, StackGallery.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56 }, new String[] { "bytes_row_key", "uint32_place", "uint32_is_exposure", "uint32_is_clicked", "uint32_pic_count", "uint32_read_pic_count", "uint64_read_time" }, new Object[] { localByteStringMicro, localInteger, localInteger, localInteger, localInteger, localInteger, Long.valueOf(0L) }, StackGallery.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbe0.cmd0xbe0.StackGallery
  * JD-Core Version:    0.7.0.1
  */

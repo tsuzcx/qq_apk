@@ -9,25 +9,22 @@ class BrandPageWebview$1
   
   public void onStateChanged()
   {
-    PageWebview localPageWebview;
     if (BrandPageWebview.access$000(this.this$0) != null)
     {
-      localPageWebview = BrandPageWebview.access$000(this.this$0);
-      if (this.this$0.getCurrState() != BrandPageWebview.access$100(this.this$0)) {
-        break label43;
+      PageWebview localPageWebview = BrandPageWebview.access$000(this.this$0);
+      boolean bool;
+      if (this.this$0.getCurrState() == BrandPageWebview.access$100(this.this$0)) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label43:
-    for (boolean bool = true;; bool = false)
-    {
       localPageWebview.setPageJsLoadSucc(bool);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.BrandPageWebview.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,28 +5,20 @@ import java.io.Serializable;
 public final class BATCH_TYPE
   implements Serializable
 {
-  public static final BATCH_TYPE GROUP_PHOTO;
+  public static final BATCH_TYPE GROUP_PHOTO = new BATCH_TYPE(2, 2, "GROUP_PHOTO");
   public static final BATCH_TYPE NONE;
   public static final BATCH_TYPE OIDB2;
   public static final int _GROUP_PHOTO = 2;
   public static final int _NONE = 0;
   public static final int _OIDB2 = 1;
-  private static BATCH_TYPE[] a;
+  private static BATCH_TYPE[] a = new BATCH_TYPE[3];
   private String __T = new String();
   private int __value;
   
   static
   {
-    if (!BATCH_TYPE.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new BATCH_TYPE[3];
-      NONE = new BATCH_TYPE(0, 0, "NONE");
-      OIDB2 = new BATCH_TYPE(1, 1, "OIDB2");
-      GROUP_PHOTO = new BATCH_TYPE(2, 2, "GROUP_PHOTO");
-      return;
-    }
+    NONE = new BATCH_TYPE(0, 0, "NONE");
+    OIDB2 = new BATCH_TYPE(1, 1, "OIDB2");
   }
   
   private BATCH_TYPE(int paramInt1, int paramInt2, String paramString)
@@ -39,15 +31,16 @@ public final class BATCH_TYPE
   public static BATCH_TYPE convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      BATCH_TYPE[] arrayOfBATCH_TYPE = a;
+      if (i >= arrayOfBATCH_TYPE.length) {
+        break;
+      }
+      if (arrayOfBATCH_TYPE[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -55,15 +48,16 @@ public final class BATCH_TYPE
   public static BATCH_TYPE convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      BATCH_TYPE[] arrayOfBATCH_TYPE = a;
+      if (i >= arrayOfBATCH_TYPE.length) {
+        break;
+      }
+      if (arrayOfBATCH_TYPE[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }

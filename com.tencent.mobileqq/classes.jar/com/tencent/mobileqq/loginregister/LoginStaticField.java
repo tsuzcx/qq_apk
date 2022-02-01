@@ -6,11 +6,6 @@ public class LoginStaticField
   public static long a;
   public static LoginSuccDialogMessage a;
   
-  static
-  {
-    jdField_a_of_type_Int = 0;
-  }
-  
   public static int a()
   {
     return jdField_a_of_type_Int;
@@ -38,7 +33,7 @@ public class LoginStaticField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.LoginStaticField
  * JD-Core Version:    0.7.0.1
  */

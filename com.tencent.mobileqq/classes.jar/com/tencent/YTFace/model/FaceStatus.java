@@ -24,7 +24,27 @@ public class FaceStatus
   
   public String toString()
   {
-    return "FaceStatus{ pitch=" + this.pitch + ", yaw=" + this.yaw + ", roll=" + this.roll + ", illumination_score=" + this.illumination_score + ", trace_id=" + this.trace_id + ", x=" + this.x + ", y=" + this.y + ", width=" + this.width + ", height=" + this.height + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FaceStatus{ pitch=");
+    localStringBuilder.append(this.pitch);
+    localStringBuilder.append(", yaw=");
+    localStringBuilder.append(this.yaw);
+    localStringBuilder.append(", roll=");
+    localStringBuilder.append(this.roll);
+    localStringBuilder.append(", illumination_score=");
+    localStringBuilder.append(this.illumination_score);
+    localStringBuilder.append(", trace_id=");
+    localStringBuilder.append(this.trace_id);
+    localStringBuilder.append(", x=");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", y=");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

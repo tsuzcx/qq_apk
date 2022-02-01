@@ -24,64 +24,78 @@ class VideoViewVideoHolder$17
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    int j = 1;
     for (;;)
     {
       try
       {
         paramJobContext = new JSONObject();
-        paramJobContext.put("author_id", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid + "");
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
+        paramVarArgs.append("");
+        paramJobContext.put("author_id", paramVarArgs.toString());
         paramJobContext.put("author_type", "1");
         paramJobContext.put("video_type", "1");
-        paramJobContext.put("video_time", this.jdField_a_of_type_Long + "");
-        paramJobContext.put("play_time", this.b + "");
-        paramJobContext.put("video_restrict", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mBanType + "");
-        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
-        {
-          i = 1;
-          paramJobContext.put("content_type", i);
-          if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalCreateTime > 0L) {
-            break label426;
-          }
-          i = j;
-          paramJobContext.put("content_origin", i);
-          paramJobContext.put("mobile_type", Build.MODEL);
-          paramJobContext.put("wifi_ssid", NetworkUtils.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
-          paramJobContext.put("wifi_mac", NetworkUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
-          long l1;
-          if (VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder) > 0L)
-          {
-            l1 = VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
-            paramJobContext.put("load_time", l1 + "");
-            StoryReportor.a("story_grp", "play_video_js", this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a().mReportData.from, this.jdField_a_of_type_Int, new String[] { paramJobContext.toString(), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-            this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.d = 3;
-          }
-          else
-          {
-            l1 = System.currentTimeMillis();
-            long l2 = VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
-            l1 -= l2;
-            continue;
-          }
-          return null;
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(this.jdField_a_of_type_Long);
+        paramVarArgs.append("");
+        paramJobContext.put("video_time", paramVarArgs.toString());
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(this.b);
+        paramVarArgs.append("");
+        paramJobContext.put("play_time", paramVarArgs.toString());
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mBanType);
+        paramVarArgs.append("");
+        paramJobContext.put("video_restrict", paramVarArgs.toString());
+        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture != 1) {
+          break label457;
         }
+        i = 1;
+        paramJobContext.put("content_type", i);
+        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalCreateTime > 0L) {
+          break label462;
+        }
+        i = 1;
+        paramJobContext.put("content_origin", i);
+        paramJobContext.put("mobile_type", Build.MODEL);
+        paramJobContext.put("wifi_ssid", NetworkUtils.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
+        paramJobContext.put("wifi_mac", NetworkUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
+        long l;
+        if (VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder) > 0L) {
+          l = VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
+        } else {
+          l = System.currentTimeMillis() - VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
+        }
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(l);
+        paramVarArgs.append("");
+        paramJobContext.put("load_time", paramVarArgs.toString());
+        StoryReportor.a("story_grp", "play_video_js", this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a().mReportData.from, this.jdField_a_of_type_Int, new String[] { paramJobContext.toString(), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.d = 3;
       }
       catch (JSONException paramJobContext)
       {
-        if (QLog.isColorLevel()) {
-          QLog.w(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, 2, "reportTroopVideo exception:" + QLog.getStackTraceString(paramJobContext));
+        if (QLog.isColorLevel())
+        {
+          paramVarArgs = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("reportTroopVideo exception:");
+          localStringBuilder.append(QLog.getStackTraceString(paramJobContext));
+          QLog.w(paramVarArgs, 2, localStringBuilder.toString());
         }
       }
+      return null;
+      label457:
       int i = 2;
       continue;
-      label426:
+      label462:
       i = 2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.17
  * JD-Core Version:    0.7.0.1
  */

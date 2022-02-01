@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class ReportExceptionInfo
   extends JceStruct
 {
-  static int cache_iCode = 0;
+  static int cache_iCode;
   public int iAppid = 0;
   public int iCode = 0;
   public int iTaskId = 0;
@@ -36,14 +36,15 @@ public final class ReportExceptionInfo
     paramJceOutputStream.write(this.iAppid, 0);
     paramJceOutputStream.write(this.iTaskId, 1);
     paramJceOutputStream.write(this.iCode, 2);
-    if (this.strMsg != null) {
-      paramJceOutputStream.write(this.strMsg, 3);
+    String str = this.strMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QBOSS_PROTO.ReportExceptionInfo
  * JD-Core Version:    0.7.0.1
  */

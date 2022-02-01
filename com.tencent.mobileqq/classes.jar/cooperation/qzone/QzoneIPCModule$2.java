@@ -13,14 +13,21 @@ class QzoneIPCModule$2
   
   public void onReceive(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
   {
-    QLog.i("QzoneIPCModule", 1, "flow qq circle resp " + paramBoolean + " " + paramLong + " " + paramString);
+    paramBaseRequest = new StringBuilder();
+    paramBaseRequest.append("flow qq circle resp ");
+    paramBaseRequest.append(paramBoolean);
+    paramBaseRequest.append(" ");
+    paramBaseRequest.append(paramLong);
+    paramBaseRequest.append(" ");
+    paramBaseRequest.append(paramString);
+    QLog.i("QzoneIPCModule", 1, paramBaseRequest.toString());
     this.val$isSuccessHolder[0] = paramBoolean;
     this.val$latch.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzoneIPCModule.2
  * JD-Core Version:    0.7.0.1
  */

@@ -55,8 +55,9 @@ final class DefaultEbmlReader
   
   private long readInteger(ExtractorInput paramExtractorInput, int paramInt)
   {
+    byte[] arrayOfByte = this.scratch;
     int i = 0;
-    paramExtractorInput.readFully(this.scratch, 0, paramInt);
+    paramExtractorInput.readFully(arrayOfByte, 0, paramInt);
     long l = 0L;
     while (i < paramInt)
     {
@@ -84,19 +85,18 @@ final class DefaultEbmlReader
   public boolean read(ExtractorInput paramExtractorInput)
   {
     boolean bool;
-    if (this.output != null)
-    {
+    if (this.output != null) {
       bool = true;
-      Assertions.checkState(bool);
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
     for (;;)
     {
       if ((!this.masterElementsStack.isEmpty()) && (paramExtractorInput.getPosition() >= DefaultEbmlReader.MasterElement.access$000((DefaultEbmlReader.MasterElement)this.masterElementsStack.peek())))
       {
         this.output.endMasterElement(DefaultEbmlReader.MasterElement.access$100((DefaultEbmlReader.MasterElement)this.masterElementsStack.pop()));
         return true;
-        bool = false;
-        break;
       }
       long l2;
       long l1;
@@ -119,40 +119,67 @@ final class DefaultEbmlReader
         this.elementState = 2;
       }
       int i = this.output.getElementType(this.elementId);
-      switch (i)
+      if (i != 0)
       {
-      default: 
-        throw new ParserException("Invalid element type " + i);
-      case 1: 
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i != 4)
+              {
+                if (i == 5)
+                {
+                  l1 = this.elementContentSize;
+                  if ((l1 != 4L) && (l1 != 8L))
+                  {
+                    paramExtractorInput = new StringBuilder();
+                    paramExtractorInput.append("Invalid float size: ");
+                    paramExtractorInput.append(this.elementContentSize);
+                    throw new ParserException(paramExtractorInput.toString());
+                  }
+                  this.output.floatElement(this.elementId, readFloat(paramExtractorInput, (int)this.elementContentSize));
+                  this.elementState = 0;
+                  return true;
+                }
+                paramExtractorInput = new StringBuilder();
+                paramExtractorInput.append("Invalid element type ");
+                paramExtractorInput.append(i);
+                throw new ParserException(paramExtractorInput.toString());
+              }
+              this.output.binaryElement(this.elementId, (int)this.elementContentSize, paramExtractorInput);
+              this.elementState = 0;
+              return true;
+            }
+            l1 = this.elementContentSize;
+            if (l1 <= 2147483647L)
+            {
+              this.output.stringElement(this.elementId, readString(paramExtractorInput, (int)l1));
+              this.elementState = 0;
+              return true;
+            }
+            paramExtractorInput = new StringBuilder();
+            paramExtractorInput.append("String element size: ");
+            paramExtractorInput.append(this.elementContentSize);
+            throw new ParserException(paramExtractorInput.toString());
+          }
+          l1 = this.elementContentSize;
+          if (l1 <= 8L)
+          {
+            this.output.integerElement(this.elementId, readInteger(paramExtractorInput, (int)l1));
+            this.elementState = 0;
+            return true;
+          }
+          paramExtractorInput = new StringBuilder();
+          paramExtractorInput.append("Invalid integer size: ");
+          paramExtractorInput.append(this.elementContentSize);
+          throw new ParserException(paramExtractorInput.toString());
+        }
         l1 = paramExtractorInput.getPosition();
         l2 = this.elementContentSize;
         this.masterElementsStack.add(new DefaultEbmlReader.MasterElement(this.elementId, l2 + l1, null));
         this.output.startMasterElement(this.elementId, l1, this.elementContentSize);
-        this.elementState = 0;
-        return true;
-      case 2: 
-        if (this.elementContentSize > 8L) {
-          throw new ParserException("Invalid integer size: " + this.elementContentSize);
-        }
-        this.output.integerElement(this.elementId, readInteger(paramExtractorInput, (int)this.elementContentSize));
-        this.elementState = 0;
-        return true;
-      case 5: 
-        if ((this.elementContentSize != 4L) && (this.elementContentSize != 8L)) {
-          throw new ParserException("Invalid float size: " + this.elementContentSize);
-        }
-        this.output.floatElement(this.elementId, readFloat(paramExtractorInput, (int)this.elementContentSize));
-        this.elementState = 0;
-        return true;
-      case 3: 
-        if (this.elementContentSize > 2147483647L) {
-          throw new ParserException("String element size: " + this.elementContentSize);
-        }
-        this.output.stringElement(this.elementId, readString(paramExtractorInput, (int)this.elementContentSize));
-        this.elementState = 0;
-        return true;
-      case 4: 
-        this.output.binaryElement(this.elementId, (int)this.elementContentSize, paramExtractorInput);
         this.elementState = 0;
         return true;
       }
@@ -170,7 +197,7 @@ final class DefaultEbmlReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mkv.DefaultEbmlReader
  * JD-Core Version:    0.7.0.1
  */

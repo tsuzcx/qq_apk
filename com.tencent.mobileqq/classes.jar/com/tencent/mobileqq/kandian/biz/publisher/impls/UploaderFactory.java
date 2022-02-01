@@ -17,14 +17,15 @@ public final class UploaderFactory
   public BaseUploader a(@NotNull BaseUploader.UploaderType paramUploaderType)
   {
     Intrinsics.checkParameterIsNotNull(paramUploaderType, "type");
-    switch (UploaderFactory.WhenMappings.a[paramUploaderType.ordinal()])
+    int i = UploaderFactory.WhenMappings.a[paramUploaderType.ordinal()];
+    if (i != 1)
     {
-    default: 
+      if (i == 2) {
+        return (BaseUploader)new VideoUploadImpl();
+      }
       throw new NoWhenBranchMatchedException();
-    case 1: 
-      return (BaseUploader)new ImageUploaderImpl();
     }
-    return (BaseUploader)new VideoUploadImpl();
+    return (BaseUploader)new ImageUploaderImpl();
   }
   
   public void a() {}
@@ -34,8 +35,6 @@ public final class UploaderFactory
     Intrinsics.checkParameterIsNotNull(paramString, "p0");
   }
   
-  public void b() {}
-  
   public void b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "p0");
@@ -43,7 +42,7 @@ public final class UploaderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.UploaderFactory
  * JD-Core Version:    0.7.0.1
  */

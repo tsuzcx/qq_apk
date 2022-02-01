@@ -33,20 +33,27 @@ public class ServiceSubscribeEvent
   
   public String perform(BaseRuntime paramBaseRuntime)
   {
-    QMLog.d("Action", "SubscribeEvent " + "eventName = " + this.event + "sourceWebViewId = " + this.sourceId);
-    if (this.target != null) {}
-    for (paramBaseRuntime = this.target;; paramBaseRuntime = paramBaseRuntime.getJsService())
-    {
-      if (paramBaseRuntime != null) {
-        paramBaseRuntime.evaluateSubscribeJS(this.event, this.jsonParams, this.sourceId);
-      }
-      return null;
+    Object localObject = new StringBuilder("SubscribeEvent ");
+    ((StringBuilder)localObject).append("eventName = ");
+    ((StringBuilder)localObject).append(this.event);
+    ((StringBuilder)localObject).append("sourceWebViewId = ");
+    ((StringBuilder)localObject).append(this.sourceId);
+    QMLog.d("Action", ((StringBuilder)localObject).toString());
+    localObject = this.target;
+    if (localObject != null) {
+      paramBaseRuntime = (BaseRuntime)localObject;
+    } else {
+      paramBaseRuntime = paramBaseRuntime.getJsService();
     }
+    if (paramBaseRuntime != null) {
+      paramBaseRuntime.evaluateSubscribeJS(this.event, this.jsonParams, this.sourceId);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.action.ServiceSubscribeEvent
  * JD-Core Version:    0.7.0.1
  */

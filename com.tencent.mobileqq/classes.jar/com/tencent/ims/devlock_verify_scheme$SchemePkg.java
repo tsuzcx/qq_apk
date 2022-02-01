@@ -20,7 +20,7 @@ public final class devlock_verify_scheme$SchemePkg
   public static final int U32_BUTTON2_TYPE_FIELD_NUMBER = 9;
   public static final int U32_USE_LOCAL_SCHEME_FIELD_NUMBER = 2;
   public static final int U32_VERIFY_TYPE_FIELD_NUMBER = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 58, 64, 72, 82, 88 }, new String[] { "u32_verify_type", "u32_use_local_scheme", "str_title", "str_text", "str_subtext", "u32_button1_type", "str_button1_caption", "u32_button1_auth", "u32_button2_type", "str_button2_caption", "u32_button2_auth" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", "", Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0) }, SchemePkg.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField str_button1_caption = PBField.initString("");
   public final PBStringField str_button2_caption = PBField.initString("");
   public final PBStringField str_subtext = PBField.initString("");
@@ -32,10 +32,16 @@ public final class devlock_verify_scheme$SchemePkg
   public final PBUInt32Field u32_button2_type = PBField.initUInt32(0);
   public final PBUInt32Field u32_use_local_scheme = PBField.initUInt32(0);
   public final PBUInt32Field u32_verify_type = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 58, 64, 72, 82, 88 }, new String[] { "u32_verify_type", "u32_use_local_scheme", "str_title", "str_text", "str_subtext", "u32_button1_type", "str_button1_caption", "u32_button1_auth", "u32_button2_type", "str_button2_caption", "u32_button2_auth" }, new Object[] { localInteger, localInteger, "", "", "", localInteger, "", localInteger, localInteger, "", localInteger }, SchemePkg.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.devlock_verify_scheme.SchemePkg
  * JD-Core Version:    0.7.0.1
  */

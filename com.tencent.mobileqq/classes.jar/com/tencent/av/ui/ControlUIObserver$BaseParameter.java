@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.AudioHelper;
 
 public class ControlUIObserver$BaseParameter
 {
@@ -16,8 +16,12 @@ public class ControlUIObserver$BaseParameter
   
   public long a()
   {
-    if ((this.jdField_a_of_type_Long == 0L) && (AudioHelper.d())) {
-      throw new IllegalArgumentException("seq未初始化:" + getClass().getSimpleName());
+    if ((this.jdField_a_of_type_Long == 0L) && (AudioHelper.a()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("seq未初始化:");
+      localStringBuilder.append(getClass().getSimpleName());
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
     return this.jdField_a_of_type_Long;
   }
@@ -38,7 +42,7 @@ public class ControlUIObserver$BaseParameter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ControlUIObserver.BaseParameter
  * JD-Core Version:    0.7.0.1
  */

@@ -18,62 +18,75 @@ final class DownloadJSApi$1
   
   public void run()
   {
-    boolean bool2 = true;
-    Object localObject1 = new StringBuilder().append("doDownloadAction pParams=").append(this.jdField_a_of_type_AndroidOsBundle).append(" source=").append(this.jdField_a_of_type_JavaLangString).append(" myAppConfig=").append(this.jdField_a_of_type_Int).append(" ac==null is");
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {}
-    for (boolean bool1 = true;; bool1 = false)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("doDownloadAction pParams=");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidOsBundle);
+    ((StringBuilder)localObject1).append(" source=");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(" myAppConfig=");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(" ac==null is");
+    Object localObject2 = this.jdField_a_of_type_AndroidAppActivity;
+    boolean bool2 = false;
+    boolean bool1;
+    if (localObject2 == null) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ((StringBuilder)localObject1).append(bool1);
+    LogUtility.a("DownloadJSApi", ((StringBuilder)localObject1).toString());
+    localObject1 = this.jdField_a_of_type_AndroidOsBundle;
+    if (localObject1 == null)
     {
-      LogUtility.a("DownloadJSApi", bool1);
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        break;
-      }
       LogUtility.e("DownloadJSApi", "doDownloadAction pParams == null return");
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.b);
-    this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.s, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putInt(DownloadConstants.F, 1);
-    String str = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.C);
+    localObject2 = ((Bundle)localObject1).getString(DownloadConstants.b);
+    this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.t, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putInt(DownloadConstants.G, 1);
+    String str = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.D);
     localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
     if ((TextUtils.isEmpty(str)) || (str.equals("0"))) {
-      this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.C, "");
+      this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.D, "");
     }
     localObject2 = DownloadManager.a().a((String)localObject2);
     if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
       ((DownloadInfo)localObject2).h = ((String)localObject1);
     }
-    if ((this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail != null) && (this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.updatemethod == 2) && (TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.j))) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url))) {
+    localObject1 = this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail;
+    if ((localObject1 != null) && (((ApkUpdateDetail)localObject1).updatemethod == 2) && (TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.j))) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url))) {
       this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.j, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url);
     }
     boolean bool3 = APNUtil.d(CommonDataAdapter.a().a());
     boolean bool4 = APNUtil.c(CommonDataAdapter.a().a());
-    if ((localObject2 == null) || (((DownloadInfo)localObject2).a() == 1))
-    {
+    if ((localObject2 != null) && (((DownloadInfo)localObject2).a() != 1)) {
+      bool1 = false;
+    } else {
       bool1 = true;
-      if (this.jdField_a_of_type_AndroidAppActivity != null) {
-        break label426;
-      }
     }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidAppActivity == null) {
+      bool2 = true;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("check wifi dialog isWifiActive=");
+    ((StringBuilder)localObject1).append(bool4);
+    ((StringBuilder)localObject1).append(" isFirstDownload=");
+    ((StringBuilder)localObject1).append(bool1);
+    ((StringBuilder)localObject1).append(" acIsNull=");
+    ((StringBuilder)localObject1).append(bool2);
+    LogUtility.a("DownloadJSApi", ((StringBuilder)localObject1).toString());
+    if ((bool3) && (!bool2) && (!bool4) && (bool1) && (this.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.s)))
     {
-      LogUtility.a("DownloadJSApi", "check wifi dialog isWifiActive=" + bool4 + " isFirstDownload=" + bool1 + " acIsNull=" + bool2);
-      if ((!bool3) || (bool2) || (bool4) || (!bool1) || (!this.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.r))) {
-        break label431;
-      }
       DownloadJSApi.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
       return;
-      bool1 = false;
-      break;
-      label426:
-      bool2 = false;
     }
-    label431:
     DownloadJSApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.js.DownloadJSApi.1
  * JD-Core Version:    0.7.0.1
  */

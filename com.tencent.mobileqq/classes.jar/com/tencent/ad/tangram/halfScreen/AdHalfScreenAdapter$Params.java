@@ -11,6 +11,7 @@ import java.lang.ref.WeakReference;
 public final class AdHalfScreenAdapter$Params
 {
   public static final int STYLE_CANVAS = 2;
+  public static final int STYLE_NO_AD = 0;
   public static final int STYLE_WEB = 1;
   public WeakReference<Activity> activity;
   public Ad ad;
@@ -21,7 +22,15 @@ public final class AdHalfScreenAdapter$Params
   
   public boolean isValid()
   {
-    return (this.activity != null) && (this.activity.get() != null) && (this.ad != null) && (this.ad.isValid()) && (!TextUtils.isEmpty(this.webUrl)) && (this.style != -2147483648);
+    Object localObject = this.activity;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
+    {
+      localObject = this.ad;
+      if ((localObject != null) && (((Ad)localObject).isValid()) && (!TextUtils.isEmpty(this.webUrl)) && (this.style != -2147483648)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 

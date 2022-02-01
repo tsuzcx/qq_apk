@@ -13,29 +13,27 @@ public class QAPMInstrumentation
   @QAPMWrapReturn
   public static URLConnection openConnection(URLConnection paramURLConnection)
   {
-    if (paramURLConnection == null) {}
-    for (;;)
-    {
+    if (paramURLConnection == null) {
       return paramURLConnection;
-      try
-      {
-        if (b.c())
-        {
-          Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMInstrumentation", "URLConnection openConnection gather  begin !!" });
-          if ((paramURLConnection instanceof HttpsURLConnection)) {
-            return new e((HttpsURLConnection)paramURLConnection);
-          }
-          if ((paramURLConnection instanceof HttpURLConnection))
-          {
-            d locald = new d((HttpURLConnection)paramURLConnection);
-            return locald;
-          }
-        }
+    }
+    try
+    {
+      if (!b.c()) {
+        return paramURLConnection;
       }
-      catch (Exception localException)
-      {
-        Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMInstrumentation", "QAPMInstrumentation openConnection() has an error : ", localException.toString() });
+      Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMInstrumentation", "URLConnection openConnection gather  begin !!" });
+      if ((paramURLConnection instanceof HttpsURLConnection)) {
+        return new e((HttpsURLConnection)paramURLConnection);
       }
+      Object localObject = paramURLConnection;
+      if ((paramURLConnection instanceof HttpURLConnection)) {
+        localObject = new d((HttpURLConnection)paramURLConnection);
+      }
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMInstrumentation", "QAPMInstrumentation openConnection() has an error : ", localException.toString() });
     }
     return paramURLConnection;
   }
@@ -43,36 +41,34 @@ public class QAPMInstrumentation
   @QAPMWrapReturn
   public static URLConnection openConnectionWithProxy(URLConnection paramURLConnection)
   {
-    if (paramURLConnection == null) {}
-    for (;;)
-    {
+    if (paramURLConnection == null) {
       return paramURLConnection;
-      try
-      {
-        if (b.c())
-        {
-          Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMInstrumentation", "URLConnection openConnectionWithProxy gather  begin !!" });
-          if ((paramURLConnection instanceof HttpsURLConnection)) {
-            return new e((HttpsURLConnection)paramURLConnection);
-          }
-          if ((paramURLConnection instanceof HttpURLConnection))
-          {
-            d locald = new d((HttpURLConnection)paramURLConnection);
-            return locald;
-          }
-        }
+    }
+    try
+    {
+      if (!b.c()) {
+        return paramURLConnection;
       }
-      catch (Exception localException)
-      {
-        Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMInstrumentation", "QAPMInstrumentation openConnectionWithProxy() has an error : ", localException.toString() });
+      Logger.INSTANCE.d(new String[] { "QAPM_Impl_QAPMInstrumentation", "URLConnection openConnectionWithProxy gather  begin !!" });
+      if ((paramURLConnection instanceof HttpsURLConnection)) {
+        return new e((HttpsURLConnection)paramURLConnection);
       }
+      Object localObject = paramURLConnection;
+      if ((paramURLConnection instanceof HttpURLConnection)) {
+        localObject = new d((HttpURLConnection)paramURLConnection);
+      }
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMInstrumentation", "QAPMInstrumentation openConnectionWithProxy() has an error : ", localException.toString() });
     }
     return paramURLConnection;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMInstrumentation
  * JD-Core Version:    0.7.0.1
  */

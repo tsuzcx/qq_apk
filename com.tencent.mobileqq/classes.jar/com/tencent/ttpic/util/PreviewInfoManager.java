@@ -23,17 +23,24 @@ public enum PreviewInfoManager
   
   public String getAllPreviewSizeString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.mAllPreviewSize == null) {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    Object localObject = this.mAllPreviewSize;
+    if (localObject == null) {
       return "";
     }
-    Iterator localIterator = this.mAllPreviewSize.iterator();
-    while (localIterator.hasNext())
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Camera.Size localSize = (Camera.Size)localIterator.next();
-      localStringBuilder.append("[" + localSize.width + ", " + localSize.height + "], ");
+      Camera.Size localSize = (Camera.Size)((Iterator)localObject).next();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("[");
+      localStringBuilder2.append(localSize.width);
+      localStringBuilder2.append(", ");
+      localStringBuilder2.append(localSize.height);
+      localStringBuilder2.append("], ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    return localStringBuilder.toString();
+    return localStringBuilder1.toString();
   }
   
   public SizeI getCameraPreviewSize()
@@ -73,7 +80,7 @@ public enum PreviewInfoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.PreviewInfoManager
  * JD-Core Version:    0.7.0.1
  */

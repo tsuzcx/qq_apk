@@ -36,32 +36,40 @@ final class XingSeeker
     int i = paramMpegAudioHeader.samplesPerFrame;
     int j = paramMpegAudioHeader.sampleRate;
     int k = paramParsableByteArray.readInt();
-    int m;
     if ((k & 0x1) == 1)
     {
-      m = paramParsableByteArray.readUnsignedIntToInt();
-      if (m != 0) {}
+      int m = paramParsableByteArray.readUnsignedIntToInt();
+      if (m != 0)
+      {
+        long l1 = Util.scaleLargeTimestamp(m, i * 1000000L, j);
+        if ((k & 0x6) != 6) {
+          return new XingSeeker(paramLong2, paramMpegAudioHeader.frameSize, l1);
+        }
+        long l2 = paramParsableByteArray.readUnsignedIntToInt();
+        long[] arrayOfLong = new long[100];
+        i = 0;
+        while (i < 100)
+        {
+          arrayOfLong[i] = paramParsableByteArray.readUnsignedByte();
+          i += 1;
+        }
+        if (paramLong1 != -1L)
+        {
+          long l3 = paramLong2 + l2;
+          if (paramLong1 != l3)
+          {
+            paramParsableByteArray = new StringBuilder();
+            paramParsableByteArray.append("XING data size mismatch: ");
+            paramParsableByteArray.append(paramLong1);
+            paramParsableByteArray.append(", ");
+            paramParsableByteArray.append(l3);
+            Log.w("XingSeeker", paramParsableByteArray.toString());
+          }
+        }
+        return new XingSeeker(paramLong2, paramMpegAudioHeader.frameSize, l1, l2, arrayOfLong);
+      }
     }
-    else
-    {
-      return null;
-    }
-    long l1 = Util.scaleLargeTimestamp(m, i * 1000000L, j);
-    if ((k & 0x6) != 6) {
-      return new XingSeeker(paramLong2, paramMpegAudioHeader.frameSize, l1);
-    }
-    long l2 = paramParsableByteArray.readUnsignedIntToInt();
-    long[] arrayOfLong = new long[100];
-    i = 0;
-    while (i < 100)
-    {
-      arrayOfLong[i] = paramParsableByteArray.readUnsignedByte();
-      i += 1;
-    }
-    if ((paramLong1 != -1L) && (paramLong1 != paramLong2 + l2)) {
-      Log.w("XingSeeker", "XING data size mismatch: " + paramLong1 + ", " + (paramLong2 + l2));
-    }
-    return new XingSeeker(paramLong2, paramMpegAudioHeader.frameSize, l1, l2, arrayOfLong);
+    return null;
   }
   
   private long getTimeUsForTableIndex(int paramInt)
@@ -80,50 +88,78 @@ final class XingSeeker
       return new SeekMap.SeekPoints(new SeekPoint(0L, this.dataStartPosition + this.xingFrameSize));
     }
     paramLong = Util.constrainValue(paramLong, 0L, this.durationUs);
-    double d2 = paramLong * 100.0D / this.durationUs;
-    if (d2 <= 0.0D) {}
-    for (double d1 = 0.0D;; d1 = 256.0D)
-    {
-      return new SeekMap.SeekPoints(new SeekPoint(paramLong, Util.constrainValue(Math.round(d1 / 256.0D * this.dataSize), this.xingFrameSize, this.dataSize - 1L) + this.dataStartPosition));
-      if (d2 < 100.0D) {
-        break;
+    double d1 = paramLong;
+    Double.isNaN(d1);
+    double d2 = this.durationUs;
+    Double.isNaN(d2);
+    d2 = d1 * 100.0D / d2;
+    d1 = 0.0D;
+    if (d2 > 0.0D) {
+      if (d2 >= 100.0D)
+      {
+        d1 = 256.0D;
+      }
+      else
+      {
+        int i = (int)d2;
+        long[] arrayOfLong = this.tableOfContents;
+        double d3 = arrayOfLong[i];
+        if (i == 99) {
+          d1 = 256.0D;
+        } else {
+          d1 = arrayOfLong[(i + 1)];
+        }
+        double d4 = i;
+        Double.isNaN(d4);
+        Double.isNaN(d3);
+        Double.isNaN(d3);
+        d1 = d3 + (d2 - d4) * (d1 - d3);
       }
     }
-    int i = (int)d2;
-    double d3 = this.tableOfContents[i];
-    if (i == 99) {}
-    for (d1 = 256.0D;; d1 = this.tableOfContents[(i + 1)])
-    {
-      d1 = (d1 - d3) * (d2 - i) + d3;
-      break;
-    }
+    d1 /= 256.0D;
+    d2 = this.dataSize;
+    Double.isNaN(d2);
+    long l = Util.constrainValue(Math.round(d1 * d2), this.xingFrameSize, this.dataSize - 1L);
+    return new SeekMap.SeekPoints(new SeekPoint(paramLong, this.dataStartPosition + l));
   }
   
   public long getTimeUs(long paramLong)
   {
     paramLong -= this.dataStartPosition;
-    if ((!isSeekable()) || (paramLong <= this.xingFrameSize)) {
-      return 0L;
-    }
-    double d = paramLong * 256.0D / this.dataSize;
-    int i = Util.binarySearchFloor(this.tableOfContents, d, true, true);
-    long l1 = getTimeUsForTableIndex(i);
-    long l2 = this.tableOfContents[i];
-    long l3 = getTimeUsForTableIndex(i + 1);
-    if (i == 99)
+    if ((isSeekable()) && (paramLong > this.xingFrameSize))
     {
-      paramLong = 256L;
-      if (l2 != paramLong) {
-        break label127;
+      double d1 = paramLong;
+      Double.isNaN(d1);
+      double d2 = this.dataSize;
+      Double.isNaN(d2);
+      d1 = d1 * 256.0D / d2;
+      int i = Util.binarySearchFloor(this.tableOfContents, d1, true, true);
+      long l1 = getTimeUsForTableIndex(i);
+      long l2 = this.tableOfContents[i];
+      int j = i + 1;
+      long l3 = getTimeUsForTableIndex(j);
+      if (i == 99) {
+        paramLong = 256L;
+      } else {
+        paramLong = this.tableOfContents[j];
       }
+      if (l2 == paramLong)
+      {
+        d1 = 0.0D;
+      }
+      else
+      {
+        d2 = l2;
+        Double.isNaN(d2);
+        double d3 = paramLong - l2;
+        Double.isNaN(d3);
+        d1 = (d1 - d2) / d3;
+      }
+      d2 = l3 - l1;
+      Double.isNaN(d2);
+      return l1 + Math.round(d1 * d2);
     }
-    label127:
-    for (d = 0.0D;; d = (d - l2) / (paramLong - l2))
-    {
-      return Math.round(d * (l3 - l1)) + l1;
-      paramLong = this.tableOfContents[(i + 1)];
-      break;
-    }
+    return 0L;
   }
   
   public boolean isSeekable()
@@ -133,7 +169,7 @@ final class XingSeeker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.mp3.XingSeeker
  * JD-Core Version:    0.7.0.1
  */

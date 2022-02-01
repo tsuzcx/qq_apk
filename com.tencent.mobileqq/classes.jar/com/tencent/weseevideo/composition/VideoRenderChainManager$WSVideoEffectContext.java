@@ -13,25 +13,25 @@ class VideoRenderChainManager$WSVideoEffectContext
   
   public TAVVideoEffect getGlobalVideoEffect()
   {
-    VideoRenderChainManager.access$700(this.this$0).setEffects(VideoRenderChainManager.access$600(this.this$0));
-    return VideoRenderChainManager.access$700(this.this$0);
+    VideoRenderChainManager.access$800(this.this$0).setEffects(VideoRenderChainManager.access$700(this.this$0));
+    return VideoRenderChainManager.access$800(this.this$0);
   }
   
   public TAVVideoEffect getSourceVideoEffect()
   {
-    VideoRenderChainManager.access$300(this.this$0).setEffects(VideoRenderChainManager.access$200(this.this$0));
-    return VideoRenderChainManager.access$300(this.this$0);
+    VideoRenderChainManager.access$400(this.this$0).setEffects(VideoRenderChainManager.access$300(this.this$0));
+    return VideoRenderChainManager.access$400(this.this$0);
   }
   
   public TAVVideoMixEffect getVideoMixEffect()
   {
-    VideoRenderChainManager.access$500(this.this$0).setEffects(VideoRenderChainManager.access$400(this.this$0));
-    return VideoRenderChainManager.access$500(this.this$0);
+    VideoRenderChainManager.access$600(this.this$0).setEffects(VideoRenderChainManager.access$500(this.this$0));
+    return VideoRenderChainManager.access$600(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.VideoRenderChainManager.WSVideoEffectContext
  * JD-Core Version:    0.7.0.1
  */

@@ -4,11 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class ProfilePersonalityLabelComponent$2
@@ -26,14 +26,14 @@ class ProfilePersonalityLabelComponent$2
         QLog.d("ProfilePersonalityLabelComponent", 2, String.format("onReceive addTag=%s", new Object[] { Boolean.valueOf(bool) }));
       }
       if (bool) {
-        ((PersonalityLabelHandler)ProfilePersonalityLabelComponent.access$500(this.this$0).getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(((ProfileCardInfo)ProfilePersonalityLabelComponent.access$600(this.this$0)).a.a, 0);
+        ((PersonalityLabelHandler)ProfilePersonalityLabelComponent.access$500(this.this$0).getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL)).a(((ProfileCardInfo)ProfilePersonalityLabelComponent.access$600(this.this$0)).allInOne.uin, 0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitylabel.ProfilePersonalityLabelComponent.2
  * JD-Core Version:    0.7.0.1
  */

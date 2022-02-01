@@ -23,14 +23,19 @@ final class BusinessUtils$1
     }
     catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("login", 2, "loginSuccessInit kingkong OnLogin throwable: " + localThrowable);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("loginSuccessInit kingkong OnLogin throwable: ");
+        localStringBuilder.append(localThrowable);
+        QLog.d("login", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.BusinessUtils.1
  * JD-Core Version:    0.7.0.1
  */

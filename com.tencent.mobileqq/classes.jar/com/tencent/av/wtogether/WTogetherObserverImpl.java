@@ -64,27 +64,27 @@ public abstract class WTogetherObserverImpl
   
   protected WTogetherMng a()
   {
-    WTogetherMng localWTogetherMng = null;
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      localWTogetherMng = (WTogetherMng)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(15);
+    VideoAppInterface localVideoAppInterface = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    if (localVideoAppInterface != null) {
+      return (WTogetherMng)localVideoAppInterface.a(16);
     }
-    return localWTogetherMng;
+    return null;
   }
   
   protected WTogetherRoom a()
   {
-    Object localObject = a();
+    SessionInfo localSessionInfo = a();
     WTogetherMng localWTogetherMng = a();
+    Object localObject = null;
     if (localWTogetherMng != null)
     {
-      localObject = localWTogetherMng.b((SessionInfo)localObject);
-      if (localObject != null) {}
+      localObject = localWTogetherMng.b(localSessionInfo);
+      if (localObject == null) {
+        return null;
+      }
+      localObject = ((WatchTogetherInfo)localObject).a;
     }
-    else
-    {
-      return null;
-    }
-    return ((WatchTogetherInfo)localObject).a;
+    return localObject;
   }
   
   protected abstract void a();
@@ -96,30 +96,53 @@ public abstract class WTogetherObserverImpl
   
   protected void a(WTogetherPlayInfo paramWTogetherPlayInfo, int paramInt, boolean paramBoolean)
   {
-    if ((paramWTogetherPlayInfo == null) || (!paramBoolean)) {}
-    for (;;)
+    if (paramWTogetherPlayInfo != null)
     {
-      return;
-      WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.a().a();
-      if (localWatchTogetherMediaPlayCtrl != null)
+      if (!paramBoolean) {
+        return;
+      }
+      Object localObject = VideoController.a().a();
+      if (localObject == null) {
+        return;
+      }
+      boolean bool = ((WatchTogetherMediaPlayCtrl)localObject).i();
+      long l = paramWTogetherPlayInfo.a();
+      float f = paramWTogetherPlayInfo.a();
+      int i = paramWTogetherPlayInfo.jdField_a_of_type_Int;
+      if (i != 0)
       {
-        boolean bool = localWatchTogetherMediaPlayCtrl.i();
-        long l = paramWTogetherPlayInfo.a();
-        float f = paramWTogetherPlayInfo.a();
-        switch (paramWTogetherPlayInfo.jdField_a_of_type_Int)
+        if (i != 1)
         {
+          if (i == 2) {
+            ((WatchTogetherMediaPlayCtrl)localObject).g();
+          }
         }
-        while (QLog.isColorLevel())
+        else
         {
-          QLog.d("WTogether.ObserverImpl", 2, "updatePlayState playInfo[" + paramWTogetherPlayInfo + "], forceFromAdmin[" + paramBoolean + "], isAdmin[" + bool + "], action[" + paramInt + "], curPlayTimeMs[" + l + "], curPlayRate[" + f + "]");
-          return;
-          localWatchTogetherMediaPlayCtrl.a();
-          localWatchTogetherMediaPlayCtrl.a(f);
-          continue;
-          a(localWatchTogetherMediaPlayCtrl, (int)l, f);
-          continue;
-          localWatchTogetherMediaPlayCtrl.g();
+          ((WatchTogetherMediaPlayCtrl)localObject).a();
+          ((WatchTogetherMediaPlayCtrl)localObject).a(f);
         }
+      }
+      else {
+        a((WatchTogetherMediaPlayCtrl)localObject, (int)l, f);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updatePlayState playInfo[");
+        ((StringBuilder)localObject).append(paramWTogetherPlayInfo);
+        ((StringBuilder)localObject).append("], forceFromAdmin[");
+        ((StringBuilder)localObject).append(paramBoolean);
+        ((StringBuilder)localObject).append("], isAdmin[");
+        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append("], action[");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("], curPlayTimeMs[");
+        ((StringBuilder)localObject).append(l);
+        ((StringBuilder)localObject).append("], curPlayRate[");
+        ((StringBuilder)localObject).append(f);
+        ((StringBuilder)localObject).append("]");
+        QLog.d("WTogether.ObserverImpl", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -128,103 +151,105 @@ public abstract class WTogetherObserverImpl
   
   protected void a(boolean paramBoolean, ReqComResult paramReqComResult)
   {
-    if (!paramBoolean)
-    {
-      if (paramReqComResult.b != 1019) {
-        break label29;
-      }
-      a(2131695997);
-    }
-    for (;;)
-    {
-      b(paramBoolean, true, "onStartWTogetherRet");
-      return;
-      label29:
-      if (paramReqComResult.b == 1020) {
-        a(2131695984);
+    if (!paramBoolean) {
+      if (paramReqComResult.b == 1019) {
+        a(2131696012);
+      } else if (paramReqComResult.b == 1020) {
+        a(2131695999);
       } else if (paramReqComResult.b == 1021) {
-        a(2131695985);
+        a(2131696000);
       } else {
-        a(2131696002);
+        a(2131696017);
       }
     }
+    b(paramBoolean, true, "onStartWTogetherRet");
   }
   
   protected void a(boolean paramBoolean, ReqVideoAction paramReqVideoAction)
   {
-    QLog.d("WTogether.ObserverImpl", 1, "onAdminUpdatePlayStateResult isSuccess：=" + paramBoolean + ";action:=" + paramReqVideoAction.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAdminUpdatePlayStateResult isSuccess：=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(";action:=");
+    localStringBuilder.append(paramReqVideoAction.toString());
+    QLog.d("WTogether.ObserverImpl", 1, localStringBuilder.toString());
   }
   
   protected void a(boolean paramBoolean, WTReqUrlResult paramWTReqUrlResult)
   {
-    WTogetherRoom localWTogetherRoom;
-    boolean bool1;
+    paramWTReqUrlResult = null;
     if (paramBoolean)
     {
-      localWTogetherRoom = a();
-      if (localWTogetherRoom == null) {
-        break label129;
+      WTogetherRoom localWTogetherRoom = a();
+      boolean bool1;
+      if (localWTogetherRoom != null)
+      {
+        paramWTReqUrlResult = localWTogetherRoom.a;
+        bool1 = localWTogetherRoom.e();
+        paramBoolean = localWTogetherRoom.b();
       }
-      paramWTReqUrlResult = localWTogetherRoom.a;
-      bool1 = localWTogetherRoom.e();
-      paramBoolean = localWTogetherRoom.b();
-    }
-    for (;;)
-    {
-      boolean bool2;
+      else
+      {
+        bool1 = false;
+        paramBoolean = false;
+      }
       if ((paramWTReqUrlResult != null) && (paramWTReqUrlResult.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo != null))
       {
-        bool2 = true;
+        boolean bool2 = true;
         a(bool1, paramWTReqUrlResult);
+        bool1 = bool2;
       }
-      for (bool1 = bool2;; bool1 = false)
+      else
       {
-        WTogetherMng localWTogetherMng = a();
-        if ((localWTogetherMng != null) && (paramWTReqUrlResult != null)) {
-          localWTogetherMng.a(a(), paramWTReqUrlResult.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo, bool1);
-        }
-        if (paramBoolean) {
-          localWTogetherRoom.b(false, "onReqVideoUrlResult");
-        }
-        return;
-        paramWTReqUrlResult = a();
-        if (paramWTReqUrlResult != null) {
-          paramWTReqUrlResult.a(a(), null, false);
-        }
-        a(2131695969);
-        return;
+        bool1 = false;
       }
-      label129:
-      paramWTReqUrlResult = null;
-      paramBoolean = false;
-      bool1 = false;
+      WTogetherMng localWTogetherMng = a();
+      if ((localWTogetherMng != null) && (paramWTReqUrlResult != null)) {
+        localWTogetherMng.a(a(), paramWTReqUrlResult.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo, bool1);
+      }
+      if (paramBoolean) {
+        localWTogetherRoom.b(false, "onReqVideoUrlResult");
+      }
+    }
+    else
+    {
+      paramWTReqUrlResult = a();
+      if (paramWTReqUrlResult != null) {
+        paramWTReqUrlResult.a(a(), null, false);
+      }
+      a(2131695984);
     }
   }
   
   protected void a(boolean paramBoolean, WTogetherPlayInfo paramWTogetherPlayInfo)
   {
-    if ((paramWTogetherPlayInfo == null) || (paramWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo == null)) {}
-    long l;
-    String str;
-    WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl;
-    do
+    if (paramWTogetherPlayInfo != null)
     {
-      do
-      {
+      if (paramWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo == null) {
         return;
-        l = SystemClock.elapsedRealtime();
-        str = paramWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.a();
-        if ((!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString)) || (Math.abs(l - this.jdField_a_of_type_Long) >= 500L)) {
-          break;
+      }
+      long l = SystemClock.elapsedRealtime();
+      Object localObject = paramWTogetherPlayInfo.jdField_a_of_type_ComTencentAvWtogetherDataWTVideoInfo.a();
+      if ((TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_JavaLangString)) && (Math.abs(l - this.jdField_a_of_type_Long) < 500L))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("startPlay, too frequency play same video. [");
+          ((StringBuilder)localObject).append(paramWTogetherPlayInfo);
+          ((StringBuilder)localObject).append("]");
+          QLog.i("WTogether.ObserverImpl", 2, ((StringBuilder)localObject).toString());
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("WTogether.ObserverImpl", 2, "startPlay, too frequency play same video. [" + paramWTogetherPlayInfo + "]");
-      return;
-      localWatchTogetherMediaPlayCtrl = VideoController.a().a();
-    } while (localWatchTogetherMediaPlayCtrl == null);
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_JavaLangString = str;
-    localWatchTogetherMediaPlayCtrl.a(paramWTogetherPlayInfo, (int)paramWTogetherPlayInfo.jdField_a_of_type_Long);
+        return;
+      }
+      WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.a().a();
+      if (localWatchTogetherMediaPlayCtrl != null)
+      {
+        this.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_JavaLangString = ((String)localObject);
+        localWatchTogetherMediaPlayCtrl.a(paramWTogetherPlayInfo, (int)paramWTogetherPlayInfo.jdField_a_of_type_Long);
+      }
+    }
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -240,13 +265,13 @@ public abstract class WTogetherObserverImpl
   protected void b()
   {
     WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.a().a();
-    if (localWatchTogetherMediaPlayCtrl == null) {}
-    do
-    {
+    if (localWatchTogetherMediaPlayCtrl == null) {
       return;
-      localWatchTogetherMediaPlayCtrl.f();
-    } while (!QLog.isColorLevel());
-    QLog.d("WTogether.ObserverImpl", 2, "onResourceExpire");
+    }
+    localWatchTogetherMediaPlayCtrl.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("WTogether.ObserverImpl", 2, "onResourceExpire");
+    }
   }
   
   protected void b(boolean paramBoolean, ReqComResult paramReqComResult)
@@ -256,73 +281,70 @@ public abstract class WTogetherObserverImpl
   
   protected void b(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    QLog.d("WTogether.ObserverImpl", 1, "onWatchTogetherModeChange, [ start:=" + paramBoolean1 + ",isAdmin:=" + paramBoolean2 + "], from[" + paramString + "]");
-    WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onWatchTogetherModeChange, [ start:=");
+    ((StringBuilder)localObject).append(paramBoolean1);
+    ((StringBuilder)localObject).append(",isAdmin:=");
+    ((StringBuilder)localObject).append(paramBoolean2);
+    ((StringBuilder)localObject).append("], from[");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("]");
+    QLog.d("WTogether.ObserverImpl", 1, ((StringBuilder)localObject).toString());
     if (paramBoolean1)
     {
-      localWatchTogetherMediaPlayCtrl = VideoController.a().a();
-      if ((localWatchTogetherMediaPlayCtrl != null) && (!localWatchTogetherMediaPlayCtrl.h())) {
-        localWatchTogetherMediaPlayCtrl.a(true, paramBoolean2);
+      localObject = VideoController.a().a();
+      if ((localObject != null) && (!((WatchTogetherMediaPlayCtrl)localObject).h())) {
+        ((WatchTogetherMediaPlayCtrl)localObject).a(true, paramBoolean2);
+      } else if ((localObject != null) && (((WatchTogetherMediaPlayCtrl)localObject).i() != paramBoolean2)) {
+        ((WatchTogetherMediaPlayCtrl)localObject).a(paramBoolean2, "onWatchTogetherModeChange");
       }
     }
-    for (;;)
+    else
     {
-      a(paramBoolean1, paramBoolean2, paramString);
-      return;
-      if ((localWatchTogetherMediaPlayCtrl != null) && (localWatchTogetherMediaPlayCtrl.i() != paramBoolean2))
-      {
-        localWatchTogetherMediaPlayCtrl.a(paramBoolean2, "onWatchTogetherModeChange");
-        continue;
-        localWatchTogetherMediaPlayCtrl = VideoController.a().a();
-        if ((localWatchTogetherMediaPlayCtrl != null) && (localWatchTogetherMediaPlayCtrl.h())) {
-          localWatchTogetherMediaPlayCtrl.a(false, paramBoolean2);
-        } else if ((localWatchTogetherMediaPlayCtrl != null) && (localWatchTogetherMediaPlayCtrl.i() != paramBoolean2)) {
-          localWatchTogetherMediaPlayCtrl.a(paramBoolean2, "onWatchTogetherModeChange");
-        }
+      localObject = VideoController.a().a();
+      if ((localObject != null) && (((WatchTogetherMediaPlayCtrl)localObject).h())) {
+        ((WatchTogetherMediaPlayCtrl)localObject).a(false, paramBoolean2);
+      } else if ((localObject != null) && (((WatchTogetherMediaPlayCtrl)localObject).i() != paramBoolean2)) {
+        ((WatchTogetherMediaPlayCtrl)localObject).a(paramBoolean2, "onWatchTogetherModeChange");
       }
     }
+    a(paramBoolean1, paramBoolean2, paramString);
   }
   
   protected void c(boolean paramBoolean, ReqComResult paramReqComResult)
   {
     WTogetherRoom localWTogetherRoom = a();
-    WTogetherPlayInfo localWTogetherPlayInfo;
-    int i;
-    if (paramBoolean) {
-      if (localWTogetherRoom == null)
-      {
+    if (paramBoolean)
+    {
+      WTogetherPlayInfo localWTogetherPlayInfo;
+      if (localWTogetherRoom == null) {
         localWTogetherPlayInfo = null;
-        if ((localWTogetherRoom != null) && (localWTogetherRoom.b()))
-        {
-          a(true, localWTogetherRoom.e());
-          localWTogetherRoom.b(false, "onQueryRoomInfoRet");
-        }
-        if ((localWTogetherPlayInfo != null) && (localWTogetherRoom.a()))
-        {
-          if (paramReqComResult.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction != null) {
-            break label125;
-          }
+      } else {
+        localWTogetherPlayInfo = localWTogetherRoom.a;
+      }
+      if ((localWTogetherRoom != null) && (localWTogetherRoom.b()))
+      {
+        a(true, localWTogetherRoom.e());
+        localWTogetherRoom.b(false, "onQueryRoomInfoRet");
+      }
+      if ((localWTogetherPlayInfo != null) && (localWTogetherRoom.a()))
+      {
+        int i;
+        if (paramReqComResult.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction == null) {
           i = -1;
-          label72:
-          a(localWTogetherPlayInfo, i, localWTogetherRoom.a());
-          localWTogetherRoom.a(false, "onQueryRoomInfoRet");
+        } else {
+          i = paramReqComResult.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction.jdField_a_of_type_Int;
         }
+        a(localWTogetherPlayInfo, i, localWTogetherRoom.a());
+        localWTogetherRoom.a(false, "onQueryRoomInfoRet");
       }
     }
-    for (;;)
+    else if ((localWTogetherRoom == null) || (localWTogetherRoom.a == null) || (!localWTogetherRoom.a.c()))
     {
-      if ((!paramReqComResult.jdField_a_of_type_Boolean) && (paramReqComResult.b == 1009)) {
-        a();
-      }
-      return;
-      localWTogetherPlayInfo = localWTogetherRoom.a;
-      break;
-      label125:
-      i = paramReqComResult.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction.jdField_a_of_type_Int;
-      break label72;
-      if ((localWTogetherRoom == null) || (localWTogetherRoom.a == null) || (!localWTogetherRoom.a.c())) {
-        a(2131695969);
-      }
+      a(2131695984);
+    }
+    if ((!paramReqComResult.jdField_a_of_type_Boolean) && (paramReqComResult.b == 1009)) {
+      a();
     }
   }
   
@@ -330,70 +352,65 @@ public abstract class WTogetherObserverImpl
   {
     a(paramBoolean, paramReqComResult.jdField_a_of_type_ComTencentAvWtogetherDataReqVideoAction);
     if (!paramBoolean) {
-      a(2131695988);
+      a(2131696003);
     }
   }
   
   protected void e(boolean paramBoolean, ReqComResult paramReqComResult)
   {
-    boolean bool = true;
     WTogetherRoom localWTogetherRoom = a();
+    boolean bool = true;
     if (paramBoolean)
     {
       if ((localWTogetherRoom != null) && (localWTogetherRoom.a != null) && (!localWTogetherRoom.a.b())) {
         a(true, localWTogetherRoom.e());
       }
-      return;
     }
-    if ((localWTogetherRoom != null) && (localWTogetherRoom.e())) {}
-    for (paramBoolean = bool;; paramBoolean = false)
+    else
     {
+      if ((localWTogetherRoom != null) && (localWTogetherRoom.e())) {
+        paramBoolean = bool;
+      } else {
+        paramBoolean = false;
+      }
       a(false, paramBoolean);
-      if (paramReqComResult.b != 1020) {
-        break;
+      if (paramReqComResult.b == 1020)
+      {
+        a(2131695999);
+        return;
+      }
+      if (paramReqComResult.b == 1021)
+      {
+        a(2131696000);
+        return;
       }
       a(2131695984);
-      return;
     }
-    if (paramReqComResult.b == 1021)
-    {
-      a(2131695985);
-      return;
-    }
-    a(2131695969);
   }
   
   protected void f(boolean paramBoolean, ReqComResult paramReqComResult)
   {
-    WTogetherRoom localWTogetherRoom;
-    WTogetherPlayInfo localWTogetherPlayInfo;
     if (paramBoolean)
     {
-      localWTogetherRoom = a();
-      if (localWTogetherRoom != null) {
-        break label54;
+      WTogetherRoom localWTogetherRoom = a();
+      WTogetherPlayInfo localWTogetherPlayInfo;
+      if (localWTogetherRoom == null) {
+        localWTogetherPlayInfo = null;
+      } else {
+        localWTogetherPlayInfo = localWTogetherRoom.a;
       }
-      localWTogetherPlayInfo = null;
-      if ((localWTogetherPlayInfo == null) || (!localWTogetherPlayInfo.a())) {
-        break label63;
+      if ((localWTogetherPlayInfo != null) && (localWTogetherPlayInfo.a()))
+      {
+        b();
       }
-      b();
-    }
-    for (;;)
-    {
-      if ((!paramReqComResult.jdField_a_of_type_Boolean) && (paramReqComResult.b == 1009)) {
-        a();
-      }
-      return;
-      label54:
-      localWTogetherPlayInfo = localWTogetherRoom.a;
-      break;
-      label63:
-      if ((localWTogetherPlayInfo != null) && (localWTogetherRoom.a()))
+      else if ((localWTogetherPlayInfo != null) && (localWTogetherRoom.a()))
       {
         a(localWTogetherPlayInfo, -1, localWTogetherRoom.a());
         localWTogetherRoom.a(false, "onSyncPlayInfoRet");
       }
+    }
+    if ((!paramReqComResult.jdField_a_of_type_Boolean) && (paramReqComResult.b == 1009)) {
+      a();
     }
   }
   
@@ -405,7 +422,7 @@ public abstract class WTogetherObserverImpl
   protected void h(boolean paramBoolean, ReqComResult paramReqComResult)
   {
     if ((!paramBoolean) && (paramReqComResult.b != 1009)) {
-      a(2131695975);
+      a(2131695990);
     }
     b(paramBoolean, false, "onEnterRoomRet");
   }
@@ -417,7 +434,7 @@ public abstract class WTogetherObserverImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.WTogetherObserverImpl
  * JD-Core Version:    0.7.0.1
  */

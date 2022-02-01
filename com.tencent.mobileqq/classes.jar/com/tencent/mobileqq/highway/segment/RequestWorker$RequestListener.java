@@ -38,10 +38,12 @@ class RequestWorker$RequestListener
   
   private void recordConnInfo(HwRequest paramHwRequest, long paramLong)
   {
-    int i = 0;
     Object localObject = ((RequestDataTrans)paramHwRequest).mInfo;
+    int i;
     if (localObject != null) {
       i = ((DataTransInfo)localObject).length;
+    } else {
+      i = 0;
     }
     if ((this.this$0.engine != null) && (this.this$0.engine.mConnManager != null))
     {
@@ -51,20 +53,32 @@ class RequestWorker$RequestListener
         localObject = (TcpConnection)localObject;
         ((TcpConnection)localObject).mLastDataSegSize = i;
         ((TcpConnection)localObject).mLastDataTransTime = paramLong;
-        BdhLogUtil.LogEvent("R", "recordConnInfo: conId = " + paramHwRequest.sendConnId + " record con.mLastDataTransTime = " + paramLong + " con.mLastDataSegSize = " + i);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("recordConnInfo: conId = ");
+        ((StringBuilder)localObject).append(paramHwRequest.sendConnId);
+        ((StringBuilder)localObject).append(" record con.mLastDataTransTime = ");
+        ((StringBuilder)localObject).append(paramLong);
+        ((StringBuilder)localObject).append(" con.mLastDataSegSize = ");
+        ((StringBuilder)localObject).append(i);
+        BdhLogUtil.LogEvent("R", ((StringBuilder)localObject).toString());
       }
     }
   }
   
   private void scheduleRetry(int paramInt, long paramLong)
   {
-    if ((!RequestWorker.access$400(this.this$0).get()) || (this.req.isCancel.get()) || (this.this$0.mRequestHandler == null)) {
-      return;
-    }
-    this.req.lastSendStartTime = SystemClock.uptimeMillis();
-    if (HwNetworkCenter.getInstance(this.this$0.engine.getAppContext()).getNetType() != 0) {}
-    for (boolean bool = true;; bool = false)
+    if ((RequestWorker.access$400(this.this$0).get()) && (!this.req.isCancel.get()))
     {
+      if (this.this$0.mRequestHandler == null) {
+        return;
+      }
+      this.req.lastSendStartTime = SystemClock.uptimeMillis();
+      boolean bool;
+      if (HwNetworkCenter.getInstance(this.this$0.engine.getAppContext()).getNetType() != 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       if ((this.req instanceof RequestDataTrans))
       {
         localObject = this.this$0.engine.mTransWorker.getTransactionById(this.req.transId);
@@ -72,183 +86,227 @@ class RequestWorker$RequestListener
           ((Transaction)localObject).getRetryRequests().put(Integer.valueOf(this.req.getHwSeq()), this.req);
         }
       }
-      BdhLogUtil.LogEvent("R", "conId:" + this.req.sendConnId + " ScheduleRetry : " + this.req.getHwSeq() + " retry:" + this.req.retryCount + " delay:" + paramLong + " hasNet:" + bool + " sentRequestsRetry.size()");
-      if (!bool) {
-        break label299;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("conId:");
+      ((StringBuilder)localObject).append(this.req.sendConnId);
+      ((StringBuilder)localObject).append(" ScheduleRetry : ");
+      ((StringBuilder)localObject).append(this.req.getHwSeq());
+      ((StringBuilder)localObject).append(" retry:");
+      ((StringBuilder)localObject).append(this.req.retryCount);
+      ((StringBuilder)localObject).append(" delay:");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" hasNet:");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append(" sentRequestsRetry.size()");
+      BdhLogUtil.LogEvent("R", ((StringBuilder)localObject).toString());
+      if (bool)
+      {
+        localObject = this.req;
+        ((HwRequest)localObject).retryCount += 1;
+        this.req.onRetry(paramInt);
+        if (paramLong != 0L)
+        {
+          this.this$0.mRequestHandler.postDelayed(new RequestWorker.RequestListener.4(this), paramLong);
+          return;
+        }
+        this.this$0.engine.mConnManager.wakeupConnectionToWrite(this.this$0.mCurrentRequests, false);
+        return;
       }
-      Object localObject = this.req;
-      ((HwRequest)localObject).retryCount += 1;
-      this.req.onRetry(paramInt);
-      if (paramLong == 0L) {
-        break;
-      }
-      this.this$0.mRequestHandler.postDelayed(new RequestWorker.RequestListener.4(this), paramLong);
-      return;
+      this.this$0.mRequestHandler.postDelayed(this.netDetectTimer, paramLong);
     }
-    this.this$0.engine.mConnManager.wakeupConnectionToWrite(this.this$0.mCurrentRequests, false);
-    return;
-    label299:
-    this.this$0.mRequestHandler.postDelayed(this.netDetectTimer, paramLong);
   }
   
   public void handleConnClosed() {}
   
   public void handleError(int paramInt, String paramString, IConnection paramIConnection)
   {
-    if (!(this.req instanceof RequestAck)) {
-      this.req.onError(paramInt);
+    Object localObject1 = this.req;
+    if (!(localObject1 instanceof RequestAck)) {
+      ((HwRequest)localObject1).onError(paramInt);
     }
-    boolean bool1 = true;
-    if (HwNetworkCenter.getInstance(this.this$0.engine.getAppContext()).getNetType() != 0L) {}
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      this.this$0.mRequestHandler.removeCallbacks(this.reqTimeoutTimer);
-      BdhLogUtil.LogEvent("R", "conId:" + this.req.sendConnId + " HandleError : Seq:" + this.req.getHwSeq() + " ErrCode:" + paramInt + " HasNet:" + bool2);
-      if (!this.req.isCancel.get()) {
-        break;
-      }
+    long l2 = HwNetworkCenter.getInstance(this.this$0.engine.getAppContext()).getNetType();
+    long l1 = 0L;
+    int j = 0;
+    boolean bool2;
+    if (l2 != 0L) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    this.this$0.mRequestHandler.removeCallbacks(this.reqTimeoutTimer);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("conId:");
+    ((StringBuilder)localObject1).append(this.req.sendConnId);
+    ((StringBuilder)localObject1).append(" HandleError : Seq:");
+    ((StringBuilder)localObject1).append(this.req.getHwSeq());
+    ((StringBuilder)localObject1).append(" ErrCode:");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append(" HasNet:");
+    ((StringBuilder)localObject1).append(bool2);
+    BdhLogUtil.LogEvent("R", ((StringBuilder)localObject1).toString());
+    if (this.req.isCancel.get()) {
       return;
     }
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = this.req.lastSendStartTime;
-    Object localObject1 = this.req;
-    ((HwRequest)localObject1).timeComsume = (l1 - l2 + ((HwRequest)localObject1).timeComsume);
-    int i = paramInt;
+    l2 = SystemClock.uptimeMillis();
+    long l3 = this.req.lastSendStartTime;
+    localObject1 = this.req;
+    ((HwRequest)localObject1).timeComsume += l2 - l3;
+    boolean bool1;
     if (paramInt == -1004)
     {
       if (this.req.hwCmd.equalsIgnoreCase("PicUp.DataUp")) {
         paramInt = ((RequestDataTrans)this.req).mInfo.errno;
       }
       bool1 = false;
-      i = paramInt;
     }
+    else
+    {
+      bool1 = true;
+    }
+    Transaction localTransaction = null;
     Object localObject2;
-    label336:
-    Object localObject3;
     boolean bool3;
-    label469:
-    int j;
-    if ((bool2) && (i != -1000))
+    if ((bool2) && (paramInt != -1000))
     {
       localObject1 = this.req;
       ((HwRequest)localObject1).continueErrCount += 1;
-      if (i == -1003)
+      if (paramInt == -1003)
       {
-        localObject1 = null;
         if (this.req.endpoint != null) {
           localObject1 = this.req.endpoint.host;
+        } else {
+          localObject1 = null;
         }
         if ((this.req.lastUseAddress != null) && (this.req.lastUseAddress.equalsIgnoreCase((String)localObject1)))
         {
           localObject2 = this.req;
           ((HwRequest)localObject2).continueConnClose += 1;
-          this.req.lastUseAddress = ((String)localObject1);
-          if (this.req.continueConnClose >= 3)
+        }
+        else
+        {
+          this.req.continueConnClose = 1;
+        }
+        localObject2 = this.req;
+        ((HwRequest)localObject2).lastUseAddress = ((String)localObject1);
+        bool3 = bool1;
+        if (((HwRequest)localObject2).continueConnClose >= 3)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("ContinueConnClose exceed the ContinueConnClosedLimitation. Host : ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append(" retryCount:");
+          ((StringBuilder)localObject2).append(this.req.retryCount);
+          BdhLogUtil.LogEvent("C", ((StringBuilder)localObject2).toString());
+          localObject2 = ConfigManager.getInstance(this.this$0.engine.getAppContext(), this.this$0.engine);
+          if (localObject2 != null)
           {
-            BdhLogUtil.LogEvent("C", "ContinueConnClose exceed the ContinueConnClosedLimitation. Host : " + (String)localObject1 + " retryCount:" + this.req.retryCount);
-            localObject2 = ConfigManager.getInstance(this.this$0.engine.getAppContext(), this.this$0.engine);
-            if (localObject2 != null)
-            {
-              localObject3 = this.this$0.engine.getAppContext();
-              AppRuntime localAppRuntime = this.this$0.engine.app;
-              String str = this.this$0.engine.currentUin;
-              if (paramIConnection != null) {
-                break label781;
-              }
+            Context localContext = this.this$0.engine.getAppContext();
+            AppRuntime localAppRuntime = this.this$0.engine.app;
+            String str = this.this$0.engine.currentUin;
+            if (paramIConnection == null) {
               bool3 = false;
-              ((ConfigManager)localObject2).onSrvAddrUnavailable((Context)localObject3, localAppRuntime, str, (String)localObject1, 9, bool3);
+            } else {
+              bool3 = paramIConnection.isIpv6();
             }
-            localObject1 = this.this$0.engine.mTransWorker.getTransactionById(this.req.transId);
-            if (localObject1 != null) {
-              ((Transaction)localObject1).onRequestFailed(i);
-            }
+            ((ConfigManager)localObject2).onSrvAddrUnavailable(localContext, localAppRuntime, str, (String)localObject1, 9, bool3);
           }
-          label520:
-          if (this.req.timeComsume < 600000L) {
-            break label817;
-          }
-          paramInt = 1;
-          label536:
-          if (this.req.continueErrCount < 10) {
-            break label822;
-          }
-          j = 1;
-          label551:
-          localObject1 = null;
-          if (!(this.req instanceof RequestAck))
+          localObject1 = this.this$0.engine.mTransWorker.getTransactionById(this.req.transId);
+          bool3 = bool1;
+          if (localObject1 != null)
           {
-            localObject2 = this.this$0.engine.mTransWorker.getTransactionById(this.req.transId);
-            if (localObject2 != null)
-            {
-              localObject3 = ((Transaction)localObject2).mTransReport;
-              if (this.req.protoType != 1) {
-                break label828;
-              }
-            }
+            ((Transaction)localObject1).onRequestFailed(paramInt);
+            bool3 = bool1;
           }
+        }
+      }
+      else
+      {
+        bool3 = bool1;
+        if (paramInt == -1014) {
+          bool3 = false;
         }
       }
     }
-    label781:
-    label817:
-    label822:
-    label828:
-    for (localObject1 = "TCP";; localObject1 = "HTTP")
+    else
     {
-      ((TransReport)localObject3).protoType = ((String)localObject1);
-      if (this.req.endpoint != null)
+      this.req.continueConnClose = 0;
+      bool3 = bool1;
+    }
+    int i;
+    if (this.req.timeComsume >= 600000L) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (this.req.continueErrCount >= 10) {
+      j = 1;
+    }
+    localObject1 = localTransaction;
+    if (!(this.req instanceof RequestAck))
+    {
+      localTransaction = this.this$0.engine.mTransWorker.getTransactionById(this.req.transId);
+      localObject1 = localTransaction;
+      if (localTransaction != null)
       {
-        ((Transaction)localObject2).mTransReport.ipIndex = this.req.endpoint.ipIndex;
-        if (paramIConnection != null) {
-          ((Transaction)localObject2).mTransReport.isIpv6 = paramIConnection.isIpv6();
+        localObject2 = localTransaction.mTransReport;
+        if (this.req.protoType == 1) {
+          localObject1 = "TCP";
+        } else {
+          localObject1 = "HTTP";
         }
-        ((Transaction)localObject2).mTransReport.mHasIpv6List = this.this$0.engine.mConnManager.mHasIpv6List;
-        ((Transaction)localObject2).mTransReport.mIPv6Fast = this.this$0.engine.mConnManager.isIpv6Fast();
+        ((TransReport)localObject2).protoType = ((String)localObject1);
+        localObject1 = localTransaction;
+        if (this.req.endpoint != null)
+        {
+          localTransaction.mTransReport.ipIndex = this.req.endpoint.ipIndex;
+          if (paramIConnection != null) {
+            localTransaction.mTransReport.isIpv6 = paramIConnection.isIpv6();
+          }
+          localTransaction.mTransReport.mHasIpv6List = this.this$0.engine.mConnManager.mHasIpv6List;
+          localTransaction.mTransReport.mIPv6Fast = this.this$0.engine.mConnManager.isIpv6Fast();
+          localObject1 = localTransaction;
+        }
       }
-      localObject1 = localObject2;
-      if ((!bool1) || (paramInt != 0) || (j != 0)) {
-        break label836;
-      }
-      l1 = 0L;
+    }
+    if ((bool3) && (i == 0) && (j == 0))
+    {
       if (!bool2) {
         l1 = 6000L;
       }
-      if ((this.req instanceof RequestHeartBreak)) {
-        break;
-      }
-      RequestWorker.access$100(this.this$0, this.req);
-      scheduleRetry(i, l1);
-      return;
-      this.req.continueConnClose = 1;
-      break label336;
-      bool3 = paramIConnection.isIpv6();
-      break label469;
-      if (i == -1014)
+      paramString = this.req;
+      if (!(paramString instanceof RequestHeartBreak))
       {
-        bool1 = false;
-        break label520;
-        this.req.continueConnClose = 0;
+        RequestWorker.access$100(this.this$0, paramString);
+        scheduleRetry(paramInt, l1);
       }
-      break label520;
-      paramInt = 0;
-      break label536;
-      j = 0;
-      break label551;
     }
-    label836:
-    BdhLogUtil.LogEvent("R", "HandleError : Seq:" + this.req.getHwSeq() + " NotifyError :" + i + "req.timeComsume:" + this.req.timeComsume + " allowRetry:" + bool1 + " req.continueErrCount:" + this.req.continueErrCount);
-    this.req.onError(i);
-    if (localObject1 != null)
+    else
     {
-      paramIConnection = new HwResponse();
-      paramIConnection.hwSeq = this.req.getHwSeq();
-      paramIConnection.errCode = i;
-      if (paramInt != 0) {
-        paramIConnection.errCode = -1005;
+      paramIConnection = new StringBuilder();
+      paramIConnection.append("HandleError : Seq:");
+      paramIConnection.append(this.req.getHwSeq());
+      paramIConnection.append(" NotifyError :");
+      paramIConnection.append(paramInt);
+      paramIConnection.append("req.timeComsume:");
+      paramIConnection.append(this.req.timeComsume);
+      paramIConnection.append(" allowRetry:");
+      paramIConnection.append(bool3);
+      paramIConnection.append(" req.continueErrCount:");
+      paramIConnection.append(this.req.continueErrCount);
+      BdhLogUtil.LogEvent("R", paramIConnection.toString());
+      this.req.onError(paramInt);
+      if (localObject1 != null)
+      {
+        paramIConnection = new HwResponse();
+        paramIConnection.hwSeq = this.req.getHwSeq();
+        paramIConnection.errCode = paramInt;
+        if (i != 0) {
+          paramIConnection.errCode = -1005;
+        }
+        ((Transaction)localObject1).onTransFailed(paramIConnection.errCode, paramString, 0, 0, this.req.retryCount, null);
       }
-      ((Transaction)localObject1).onTransFailed(paramIConnection.errCode, paramString, 0, 0, this.req.retryCount, null);
+      RequestWorker.access$300(this.this$0).remove(Integer.valueOf(this.req.getHwSeq()));
     }
-    RequestWorker.access$300(this.this$0).remove(Integer.valueOf(this.req.getHwSeq()));
   }
   
   public void handleResponse(HwResponse paramHwResponse)
@@ -257,8 +315,9 @@ class RequestWorker$RequestListener
     long l1 = paramHwResponse.recvTime - this.req.sendTime;
     long l2 = SystemClock.uptimeMillis();
     long l3 = paramHwResponse.recvTime;
-    if ((this.req instanceof RequestDataTrans)) {
-      recordConnInfo(this.req, l1);
+    HwRequest localHwRequest = this.req;
+    if ((localHwRequest instanceof RequestDataTrans)) {
+      recordConnInfo(localHwRequest, l1);
     }
     paramHwResponse.reqCost = l1;
     paramHwResponse.switchCost = (l2 - l3);
@@ -267,7 +326,12 @@ class RequestWorker$RequestListener
     if (localObject != null) {
       ((RequestWorker.RequestHandler)localObject).removeCallbacks(this.reqTimeoutTimer);
     }
-    BdhLogUtil.LogEvent("R", "HandleResp :" + paramHwResponse.dumpRespInfo() + " ,isCancle:" + this.req.isCancel);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("HandleResp :");
+    ((StringBuilder)localObject).append(paramHwResponse.dumpRespInfo());
+    ((StringBuilder)localObject).append(" ,isCancle:");
+    ((StringBuilder)localObject).append(this.req.isCancel);
+    BdhLogUtil.LogEvent("R", ((StringBuilder)localObject).toString());
     if ((this.req.isCancel.get()) && ("PicUp.Echo".equalsIgnoreCase(this.req.hwCmd)))
     {
       RequestWorker.access$300(this.this$0).remove(Integer.valueOf(this.req.getHwSeq()));
@@ -305,8 +369,9 @@ class RequestWorker$RequestListener
     {
       localRequestHandler.removeCallbacks(this.reqTimeoutTimer);
       localRequestHandler.removeCallbacks(this.netDetectTimer);
-      this.req.sendConnId = paramInt;
-      this.req.lastSendStartTime = SystemClock.uptimeMillis();
+      HwRequest localHwRequest = this.req;
+      localHwRequest.sendConnId = paramInt;
+      localHwRequest.lastSendStartTime = SystemClock.uptimeMillis();
       localRequestHandler.postDelayed(this.reqTimeoutTimer, this.req.timeOut);
       localRequestHandler.postDelayed(this.writeTimeoutTimer, this.req.timeOut);
       this.req.onSendBegin();
@@ -322,22 +387,22 @@ class RequestWorker$RequestListener
       ((RequestWorker.RequestHandler)localObject).removeCallbacks(this.writeTimeoutTimer);
     }
     this.req.onSendEnd();
-    if ((this.req instanceof RequestDataTrans))
+    localObject = this.req;
+    if ((localObject instanceof RequestDataTrans))
     {
-      localObject = ((RequestDataTrans)this.req).mInfo.parent;
+      localObject = ((RequestDataTrans)localObject).mInfo.parent;
       if (localObject != null)
       {
-        localAtomicInteger = (AtomicInteger)((Transaction)localObject).mTransReport.mDataFlowOfChannel.get(Integer.valueOf(paramInt1));
-        if (localAtomicInteger == null) {
-          break label112;
+        AtomicInteger localAtomicInteger = (AtomicInteger)((Transaction)localObject).mTransReport.mDataFlowOfChannel.get(Integer.valueOf(paramInt1));
+        if (localAtomicInteger != null)
+        {
+          localAtomicInteger.incrementAndGet();
+          return;
         }
-        localAtomicInteger.incrementAndGet();
+        localAtomicInteger = new AtomicInteger(1);
+        ((Transaction)localObject).mTransReport.mDataFlowOfChannel.put(Integer.valueOf(paramInt1), localAtomicInteger);
       }
     }
-    return;
-    label112:
-    AtomicInteger localAtomicInteger = new AtomicInteger(1);
-    ((Transaction)localObject).mTransReport.mDataFlowOfChannel.put(Integer.valueOf(paramInt1), localAtomicInteger);
   }
   
   public void handleSendTimeOut()
@@ -347,13 +412,18 @@ class RequestWorker$RequestListener
       RequestWorker.access$300(this.this$0).remove(Integer.valueOf(this.req.getHwSeq()));
       return;
     }
-    BdhLogUtil.LogEvent("R", "conId:" + this.req.sendConnId + " handleSendTimeOut->req.hwSeq:" + this.req.getHwSeq());
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("conId:");
+    ((StringBuilder)localObject1).append(this.req.sendConnId);
+    ((StringBuilder)localObject1).append(" handleSendTimeOut->req.hwSeq:");
+    ((StringBuilder)localObject1).append(this.req.getHwSeq());
+    BdhLogUtil.LogEvent("R", ((StringBuilder)localObject1).toString());
     this.req.onError(-1005);
     int i = this.req.sendConnId;
-    Object localObject1;
-    if ((this.req instanceof RequestHeartBreak))
+    localObject1 = this.req;
+    if ((localObject1 instanceof RequestHeartBreak))
     {
-      localObject1 = (RequestHeartBreak)this.req;
+      localObject1 = (RequestHeartBreak)localObject1;
       if (((RequestHeartBreak)localObject1).isUrgent) {
         try
         {
@@ -366,19 +436,23 @@ class RequestWorker$RequestListener
       }
     }
     this.this$0.engine.mConnManager.onRequestTimeOut(i);
-    if ((RequestWorker.access$500(this.this$0).get(Integer.valueOf(i)) != null) && (!((HwRequest)RequestWorker.access$500(this.this$0).get(Integer.valueOf(i))).isCancel.get()) && (((HwRequest)RequestWorker.access$500(this.this$0).get(Integer.valueOf(i))).status.get() != 4)) {
-      BdhLogUtil.LogEvent("R", "conId:" + i + " handleSendTimeOut->there has been a HB sending !");
-    }
-    for (;;)
+    if ((RequestWorker.access$500(this.this$0).get(Integer.valueOf(i)) != null) && (!((HwRequest)RequestWorker.access$500(this.this$0).get(Integer.valueOf(i))).isCancel.get()) && (((HwRequest)RequestWorker.access$500(this.this$0).get(Integer.valueOf(i))).status.get() != 4))
     {
-      localObject1 = this.req;
-      ((HwRequest)localObject1).timeOut += 15000L;
-      localObject1 = this.req;
-      ((HwRequest)localObject1).timeOutCount += 1;
-      handleError(-1005, "ReqTimeOut", (IConnection)this.this$0.engine.mConnManager.connections.get(Integer.valueOf(i)));
-      return;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("conId:");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(" handleSendTimeOut->there has been a HB sending !");
+      BdhLogUtil.LogEvent("R", ((StringBuilder)localObject1).toString());
+    }
+    else
+    {
       this.this$0.sendHeartBreak(i, true, true, 0);
     }
+    localObject1 = this.req;
+    ((HwRequest)localObject1).timeOut += 15000L;
+    localObject1 = this.req;
+    ((HwRequest)localObject1).timeOutCount += 1;
+    handleError(-1005, "ReqTimeOut", (IConnection)this.this$0.engine.mConnManager.connections.get(Integer.valueOf(i)));
   }
   
   public void handleWriteTimeout()
@@ -388,14 +462,19 @@ class RequestWorker$RequestListener
       RequestWorker.access$300(this.this$0).remove(Integer.valueOf(this.req.getHwSeq()));
       return;
     }
-    BdhLogUtil.LogEvent("R", "conId:" + this.req.sendConnId + " handleWriteTimeout->req.hwSeq:" + this.req.getHwSeq());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("conId:");
+    localStringBuilder.append(this.req.sendConnId);
+    localStringBuilder.append(" handleWriteTimeout->req.hwSeq:");
+    localStringBuilder.append(this.req.getHwSeq());
+    BdhLogUtil.LogEvent("R", localStringBuilder.toString());
     this.req.onError(-1006);
     this.this$0.engine.mConnManager.onRequestWriteTimeout(this.req.sendConnId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.RequestWorker.RequestListener
  * JD-Core Version:    0.7.0.1
  */

@@ -17,22 +17,26 @@ class WebInputHandler$MyOnGlobalLayoutListener
   
   public void onGlobalLayout()
   {
-    int[] arrayOfInt = new int[2];
-    this.webEditText.getLocationOnScreen(arrayOfInt);
-    int i = arrayOfInt[1];
+    Object localObject = new int[2];
+    this.webEditText.getLocationOnScreen((int[])localObject);
+    int i = localObject[1];
     i = DisplayUtil.getRealHeight(this.webEditText.getContext()) - (i + this.webEditText.getHeight()) - this.webEditText.getMarginBottom();
-    if ((this.webEditText.isFocused()) && (this.webEditText.isAdjustPosition()) && (WebInputHandler.access$100(this.this$0)) && (WebInputHandler.access$000(this.this$0) > i) && (WebInputHandler.access$200(this.this$0) != null) && (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() != null)) {
-      WebInputHandler.access$400(this.this$0, new float[] { 0.0F, -(WebInputHandler.access$000(this.this$0) - i) });
-    }
-    while ((WebInputHandler.access$100(this.this$0)) || (WebInputHandler.access$200(this.this$0) == null) || (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() == null)) {
+    if ((this.webEditText.isFocused()) && (this.webEditText.isAdjustPosition()) && (WebInputHandler.access$100(this.this$0)) && (WebInputHandler.access$000(this.this$0) > i) && (WebInputHandler.access$200(this.this$0) != null) && (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() != null))
+    {
+      localObject = this.this$0;
+      WebInputHandler.access$400((WebInputHandler)localObject, new float[] { 0.0F, -(WebInputHandler.access$000((WebInputHandler)localObject) - i) });
       return;
     }
-    WebInputHandler.access$400(this.this$0, new float[] { WebInputHandler.access$200(this.this$0).getPageWebviewContainer().getTranslationY(), 0.0F });
+    if ((!WebInputHandler.access$100(this.this$0)) && (WebInputHandler.access$200(this.this$0) != null) && (WebInputHandler.access$200(this.this$0).getPageWebviewContainer() != null))
+    {
+      localObject = this.this$0;
+      WebInputHandler.access$400((WebInputHandler)localObject, new float[] { WebInputHandler.access$200((WebInputHandler)localObject).getPageWebviewContainer().getTranslationY(), 0.0F });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.widget.WebInputHandler.MyOnGlobalLayoutListener
  * JD-Core Version:    0.7.0.1
  */

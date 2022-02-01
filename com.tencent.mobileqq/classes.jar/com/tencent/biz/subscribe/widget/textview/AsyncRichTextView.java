@@ -76,7 +76,7 @@ public class AsyncRichTextView
     super(paramContext, null);
     this.jdField_c_of_type_Boolean = false;
     this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167217);
+    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167242);
     this.jdField_c_of_type_Int = -1;
     this.jdField_c_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = new AsyncRichTextView.1(this);
     this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new AsyncRichTextView.AsyncRichImageLoadListener(this);
@@ -88,7 +88,7 @@ public class AsyncRichTextView
     super(paramContext, paramAttributeSet);
     this.jdField_c_of_type_Boolean = false;
     this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167217);
+    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167242);
     this.jdField_c_of_type_Int = -1;
     this.jdField_c_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = new AsyncRichTextView.1(this);
     this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new AsyncRichTextView.AsyncRichImageLoadListener(this);
@@ -100,7 +100,7 @@ public class AsyncRichTextView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_c_of_type_Boolean = false;
     this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167217);
+    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167242);
     this.jdField_c_of_type_Int = -1;
     this.jdField_c_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = new AsyncRichTextView.1(this);
     this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new AsyncRichTextView.AsyncRichImageLoadListener(this);
@@ -134,23 +134,23 @@ public class AsyncRichTextView
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanUserNameSapn$OnUserNameClickListener = paramOnUserNameClickListener;
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = paramCallback;
     paramCallback = new RichTextParser.TextImageSpanConfig();
-    paramCallback.jdField_a_of_type_Float = ((int)(getTextSize() * this.jdField_a_of_type_Double));
+    double d1 = getTextSize();
+    double d2 = this.jdField_a_of_type_Double;
+    Double.isNaN(d1);
+    paramCallback.jdField_a_of_type_Float = ((int)(d1 * d2));
     paramCallback.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
     paramCallback.jdField_a_of_type_JavaLangCharSequence = getText();
     paramCharSequence = RichTextParser.a(paramCallback, getContext(), paramCharSequence, paramColorStateList, paramInt1, this.jdField_e_of_type_Int, paramInt2, paramOnUserNameClickListener, this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomUrlSpan$OnCustomUrlClickListener, this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomSchemaSpan$OnCustomSchemaClickListener, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
-    if ((paramCharSequence != null) && (paramCharSequence.jdField_a_of_type_Boolean)) {
+    if ((paramCharSequence != null) && (paramCharSequence.jdField_a_of_type_Boolean))
+    {
       if (paramOnUserNameClickListener != null) {
         setMovementMethod(getDefaultMovementMethod());
       }
     }
-    for (;;)
-    {
-      super.setText(new QQText(a(paramCharSequence), 3, 16), null);
-      return;
-      if ((paramCharSequence != null) && (paramCharSequence.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomSchemaSpan$OnCustomSchemaClickListener != null)) {
-        setMovementMethod(getDefaultMovementMethod());
-      }
+    else if ((paramCharSequence != null) && (paramCharSequence.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomSchemaSpan$OnCustomSchemaClickListener != null)) {
+      setMovementMethod(getDefaultMovementMethod());
     }
+    super.setText(new QQText(a(paramCharSequence), 3, 16), null);
   }
   
   protected Spannable a(Spannable paramSpannable)
@@ -161,106 +161,87 @@ public class AsyncRichTextView
   @RequiresApi(api=16)
   protected void a()
   {
-    if (Build.VERSION.SDK_INT < 16) {}
-    do
-    {
+    if (Build.VERSION.SDK_INT < 16) {
       return;
-      this.jdField_e_of_type_Boolean = false;
-    } while ((getEllipsize() != TextUtils.TruncateAt.END) || (getLayout() == null) || (getLineCount() <= getMaxLines()) || (getMaxLines() <= 0));
-    int m = getLayout().getLineStart(getMaxLines() - 1);
-    Object localObject1 = TextUtils.ellipsize(getText().subSequence(m, getText().length()), getPaint(), getWidth() - getPaddingLeft() - getPaddingRight(), TextUtils.TruncateAt.END);
-    Object localObject2;
-    int i;
-    int j;
-    label244:
-    int k;
-    if (this.jdField_d_of_type_Boolean)
-    {
-      localObject2 = new SpannableStringBuilder(getText());
-      localObject2 = (ImageSpan[])((SpannableStringBuilder)localObject2).getSpans(((SpannableStringBuilder)localObject2).length() - 1, ((SpannableStringBuilder)localObject2).length(), ImageSpan.class);
-      if ((localObject2.length > 0) && (localObject2[0].getDrawable() != null))
-      {
-        i = localObject2[0].getDrawable().getIntrinsicWidth();
-        int n = 0 + i;
-        if (n <= 0) {
-          break label548;
-        }
-        localObject1 = ((CharSequence)localObject1).subSequence(0, ((CharSequence)localObject1).length() - 1);
-        int i1 = (int)Math.ceil(getPaint().measureText("...".toString()));
-        j = ((CharSequence)localObject1).length();
-        i = 0;
-        if (i >= n + i1) {
-          break label399;
-        }
-        if (!((CharSequence)localObject1).toString().endsWith("[/em]")) {
-          break label351;
-        }
-        Matcher localMatcher = Patterns.g.matcher((CharSequence)localObject1);
-        int i2;
-        do
-        {
-          if (!localMatcher.find()) {
-            break;
-          }
-          k = localMatcher.start();
-          i2 = localMatcher.end();
-        } while ((k >= j) || (i2 != j));
-        j = (int)(i + getTextSize());
-        i = k;
-      }
-      for (;;)
-      {
-        label322:
-        if (i < 0) {
-          break label530;
-        }
-        localObject1 = ((CharSequence)localObject1).subSequence(0, i);
-        k = j;
-        j = i;
-        i = k;
-        break label244;
-        i = 0;
-        break;
-        label351:
-        if (j <= 0) {
-          break label539;
-        }
-        k = (int)Math.floor(getPaint().measureText(((CharSequence)localObject1).subSequence(j - 1, j).toString()));
-        j -= 1;
-        k = i + k;
-        i = j;
-        j = k;
-      }
-      label399:
-      localObject1 = new SpannableStringBuilder((CharSequence)localObject1);
-      ((SpannableStringBuilder)localObject1).append("...");
-      ((SpannableStringBuilder)localObject1).append(" ");
-      ((SpannableStringBuilder)localObject1).setSpan(localObject2[0], ((SpannableStringBuilder)localObject1).length() - 1, ((SpannableStringBuilder)localObject1).length(), 33);
     }
-    label530:
-    label539:
-    label548:
-    for (;;)
+    this.jdField_e_of_type_Boolean = false;
+    if ((getEllipsize() == TextUtils.TruncateAt.END) && (getLayout() != null) && (getLineCount() > getMaxLines()) && (getMaxLines() > 0))
     {
+      int n = getLayout().getLineStart(getMaxLines() - 1);
+      Object localObject2 = TextUtils.ellipsize(getText().subSequence(n, getText().length()), getPaint(), getWidth() - getPaddingLeft() - getPaddingRight(), TextUtils.TruncateAt.END);
+      Object localObject1 = localObject2;
+      if (this.jdField_d_of_type_Boolean)
+      {
+        localObject1 = new SpannableStringBuilder(getText());
+        ImageSpan[] arrayOfImageSpan = (ImageSpan[])((SpannableStringBuilder)localObject1).getSpans(((SpannableStringBuilder)localObject1).length() - 1, ((SpannableStringBuilder)localObject1).length(), ImageSpan.class);
+        int i;
+        if ((arrayOfImageSpan.length > 0) && (arrayOfImageSpan[0].getDrawable() != null)) {
+          i = arrayOfImageSpan[0].getDrawable().getIntrinsicWidth();
+        } else {
+          i = 0;
+        }
+        int i1 = i + 0;
+        localObject1 = localObject2;
+        if (i1 > 0)
+        {
+          localObject1 = ((CharSequence)localObject2).subSequence(0, ((CharSequence)localObject2).length() - 1);
+          int i2 = (int)Math.ceil(getPaint().measureText("...".toString()));
+          int k = ((CharSequence)localObject1).length();
+          int m = 0;
+          while (m < i1 + i2)
+          {
+            int j;
+            if (((CharSequence)localObject1).toString().endsWith("[/em]"))
+            {
+              localObject2 = Patterns.g.matcher((CharSequence)localObject1);
+              do
+              {
+                i = m;
+                j = k;
+                if (!((Matcher)localObject2).find()) {
+                  break;
+                }
+                j = ((Matcher)localObject2).start();
+                i = ((Matcher)localObject2).end();
+              } while ((j >= k) || (i != k));
+              i = (int)(m + getTextSize());
+            }
+            else
+            {
+              i = m;
+              j = k;
+              if (k > 0)
+              {
+                i = m + (int)Math.floor(getPaint().measureText(((CharSequence)localObject1).subSequence(k - 1, k).toString()));
+                j = k - 1;
+              }
+            }
+            m = i;
+            k = j;
+            if (j >= 0)
+            {
+              localObject1 = ((CharSequence)localObject1).subSequence(0, j);
+              m = i;
+              k = j;
+            }
+          }
+          localObject1 = new SpannableStringBuilder((CharSequence)localObject1);
+          ((SpannableStringBuilder)localObject1).append("...");
+          ((SpannableStringBuilder)localObject1).append(" ");
+          ((SpannableStringBuilder)localObject1).setSpan(arrayOfImageSpan[0], ((SpannableStringBuilder)localObject1).length() - 1, ((SpannableStringBuilder)localObject1).length(), 33);
+        }
+      }
       localObject2 = new SpannableStringBuilder();
-      if (m > 0) {
-        ((SpannableStringBuilder)localObject2).append(getText().subSequence(0, m));
+      if (n > 0) {
+        ((SpannableStringBuilder)localObject2).append(getText().subSequence(0, n));
       }
       ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1);
       super.setText(new QQText((CharSequence)localObject2, 3, 16), null);
-      if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView$onTriggerEllipseListener != null) {
-        this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView$onTriggerEllipseListener.a();
+      localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView$onTriggerEllipseListener;
+      if (localObject1 != null) {
+        ((AsyncRichTextView.onTriggerEllipseListener)localObject1).a();
       }
       this.jdField_e_of_type_Boolean = true;
-      return;
-      k = j;
-      j = i;
-      i = k;
-      break;
-      k = i;
-      i = j;
-      j = k;
-      break label322;
     }
   }
   
@@ -281,7 +262,7 @@ public class AsyncRichTextView
     return false;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     CharSequence localCharSequence = getText();
@@ -291,7 +272,7 @@ public class AsyncRichTextView
   }
   
   @RequiresApi(api=16)
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((this.jdField_c_of_type_Boolean) && (Build.VERSION.SDK_INT > 16))
@@ -389,7 +370,7 @@ public class AsyncRichTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.AsyncRichTextView
  * JD-Core Version:    0.7.0.1
  */

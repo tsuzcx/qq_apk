@@ -10,14 +10,15 @@ class Face2FaceAddFriendActivity$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = false;
-    this.a.l = false;
-    this.a.doOnBackPressed();
+    paramDialogInterface = this.a;
+    paramDialogInterface.a = false;
+    paramDialogInterface.l = false;
+    paramDialogInterface.doOnBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.6
  * JD-Core Version:    0.7.0.1
  */

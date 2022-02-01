@@ -24,15 +24,18 @@ public class ScrollerHelper
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
     int j = this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a();
-    if (this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a()) {}
-    for (int i = j;; i = this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.b())
-    {
-      paramInt2 = Utils.a(i + paramInt1, paramInt2, paramInt3);
-      if (paramInt2 != j) {
-        this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a(j, 0, paramInt2 - j, 0, 0);
-      }
-      return i + paramInt1 - paramInt2;
+    int i;
+    if (this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a()) {
+      i = j;
+    } else {
+      i = this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.b();
     }
+    paramInt1 = i + paramInt1;
+    paramInt2 = Utils.a(paramInt1, paramInt2, paramInt3);
+    if (paramInt2 != j) {
+      this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller.a(j, 0, paramInt2 - j, 0, 0);
+    }
+    return paramInt1 - paramInt2;
   }
   
   public void a()
@@ -49,12 +52,13 @@ public class ScrollerHelper
   {
     int j = a();
     OverScroller localOverScroller = this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = 0)
-    {
-      localOverScroller.a(j, 0, paramInt1, 0, paramInt2, paramInt3, 0, 0, i, 0);
-      return;
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      i = this.jdField_a_of_type_Int;
+    } else {
+      i = 0;
     }
+    localOverScroller.a(j, 0, paramInt1, 0, paramInt2, paramInt3, 0, 0, i, 0);
   }
   
   public void a(boolean paramBoolean)
@@ -80,7 +84,7 @@ public class ScrollerHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.ui.ScrollerHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -22,12 +22,19 @@ public final class ParsableBitArray
   
   private void assertValidOffset()
   {
-    if ((this.byteOffset >= 0) && ((this.byteOffset < this.byteLimit) || ((this.byteOffset == this.byteLimit) && (this.bitOffset == 0)))) {}
-    for (boolean bool = true;; bool = false)
+    int i = this.byteOffset;
+    if (i >= 0)
     {
-      Assertions.checkState(bool);
-      return;
+      int j = this.byteLimit;
+      if ((i < j) || ((i == j) && (this.bitOffset == 0)))
+      {
+        bool = true;
+        break label38;
+      }
     }
+    boolean bool = false;
+    label38:
+    Assertions.checkState(bool);
   }
   
   public int bitsLeft()
@@ -47,12 +54,14 @@ public final class ParsableBitArray
   
   public int getBytePosition()
   {
-    if (this.bitOffset == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      return this.byteOffset;
+    boolean bool;
+    if (this.bitOffset == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    return this.byteOffset;
   }
   
   public int getPosition()
@@ -67,16 +76,14 @@ public final class ParsableBitArray
       i = paramInt1 & (1 << paramInt2) - 1;
     }
     int j = Math.min(8 - this.bitOffset, paramInt2);
-    paramInt1 = 8 - this.bitOffset - j;
-    int k = this.bitOffset;
+    int m = this.bitOffset;
+    paramInt1 = 8 - m - j;
     byte[] arrayOfByte = this.data;
-    int m = this.byteOffset;
-    arrayOfByte[m] = ((byte)((65280 >> k | (1 << paramInt1) - 1) & arrayOfByte[m]));
-    arrayOfByte = this.data;
-    k = this.byteOffset;
-    arrayOfByte[k] = ((byte)(i >>> paramInt2 - j << paramInt1 | arrayOfByte[k]));
-    paramInt1 = this.byteOffset + 1;
+    int k = this.byteOffset;
+    arrayOfByte[k] = ((byte)((65280 >> m | (1 << paramInt1) - 1) & arrayOfByte[k]));
     j = paramInt2 - j;
+    arrayOfByte[k] = ((byte)(i >>> j << paramInt1 | arrayOfByte[k]));
+    paramInt1 = k + 1;
     while (j > 8)
     {
       this.data[paramInt1] = ((byte)(i >>> j - 8));
@@ -86,20 +93,21 @@ public final class ParsableBitArray
     k = 8 - j;
     arrayOfByte = this.data;
     arrayOfByte[paramInt1] = ((byte)(arrayOfByte[paramInt1] & (1 << k) - 1));
-    arrayOfByte = this.data;
-    arrayOfByte[paramInt1] = ((byte)(((1 << j) - 1 & i) << k | arrayOfByte[paramInt1]));
+    arrayOfByte[paramInt1] = ((byte)((i & (1 << j) - 1) << k | arrayOfByte[paramInt1]));
     skipBits(paramInt2);
     assertValidOffset();
   }
   
   public boolean readBit()
   {
-    if ((this.data[this.byteOffset] & 128 >> this.bitOffset) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      skipBit();
-      return bool;
+    boolean bool;
+    if ((this.data[this.byteOffset] & 128 >> this.bitOffset) != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    skipBit();
+    return bool;
   }
   
   public int readBits(int paramInt)
@@ -109,36 +117,44 @@ public final class ParsableBitArray
     }
     this.bitOffset += paramInt;
     int i = 0;
-    while (this.bitOffset > 8)
+    int j;
+    for (;;)
     {
-      this.bitOffset -= 8;
-      byte[] arrayOfByte = this.data;
+      j = this.bitOffset;
+      if (j <= 8) {
+        break;
+      }
+      this.bitOffset = (j - 8);
+      arrayOfByte = this.data;
       j = this.byteOffset;
       this.byteOffset = (j + 1);
       i |= (arrayOfByte[j] & 0xFF) << this.bitOffset;
     }
-    int j = this.data[this.byteOffset];
-    int k = this.bitOffset;
-    if (this.bitOffset == 8)
+    byte[] arrayOfByte = this.data;
+    int k = this.byteOffset;
+    int m = arrayOfByte[k];
+    if (j == 8)
     {
       this.bitOffset = 0;
-      this.byteOffset += 1;
+      this.byteOffset = (k + 1);
     }
     assertValidOffset();
-    return (i | (j & 0xFF) >> 8 - k) & -1 >>> 32 - paramInt;
+    return -1 >>> 32 - paramInt & (i | (m & 0xFF) >> 8 - j);
   }
   
   public void readBits(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     int i = (paramInt2 >> 3) + paramInt1;
-    byte[] arrayOfByte;
     while (paramInt1 < i)
     {
       arrayOfByte = this.data;
       j = this.byteOffset;
       this.byteOffset = (j + 1);
-      paramArrayOfByte[paramInt1] = ((byte)(arrayOfByte[j] << this.bitOffset));
-      paramArrayOfByte[paramInt1] = ((byte)(paramArrayOfByte[paramInt1] | (this.data[this.byteOffset] & 0xFF) >> 8 - this.bitOffset));
+      k = arrayOfByte[j];
+      j = this.bitOffset;
+      paramArrayOfByte[paramInt1] = ((byte)(k << j));
+      k = paramArrayOfByte[paramInt1];
+      paramArrayOfByte[paramInt1] = ((byte)((0xFF & arrayOfByte[this.byteOffset]) >> 8 - j | k));
       paramInt1 += 1;
     }
     paramInt1 = paramInt2 & 0x7;
@@ -146,39 +162,43 @@ public final class ParsableBitArray
       return;
     }
     paramArrayOfByte[i] = ((byte)(paramArrayOfByte[i] & 255 >> paramInt1));
-    if (this.bitOffset + paramInt1 > 8)
+    paramInt2 = this.bitOffset;
+    if (paramInt2 + paramInt1 > 8)
     {
-      paramInt2 = paramArrayOfByte[i];
+      j = paramArrayOfByte[i];
       arrayOfByte = this.data;
-      j = this.byteOffset;
-      this.byteOffset = (j + 1);
-      paramArrayOfByte[i] = ((byte)(paramInt2 | (byte)((arrayOfByte[j] & 0xFF) << this.bitOffset)));
-      this.bitOffset -= 8;
+      k = this.byteOffset;
+      this.byteOffset = (k + 1);
+      paramArrayOfByte[i] = ((byte)(j | (byte)((arrayOfByte[k] & 0xFF) << paramInt2)));
+      this.bitOffset = (paramInt2 - 8);
     }
     this.bitOffset += paramInt1;
-    paramInt2 = this.data[this.byteOffset];
-    int j = this.bitOffset;
-    int k = paramArrayOfByte[i];
-    paramArrayOfByte[i] = ((byte)((byte)((paramInt2 & 0xFF) >> 8 - j << 8 - paramInt1) | k));
-    if (this.bitOffset == 8)
+    byte[] arrayOfByte = this.data;
+    paramInt2 = this.byteOffset;
+    int j = arrayOfByte[paramInt2];
+    int k = this.bitOffset;
+    int m = paramArrayOfByte[i];
+    paramArrayOfByte[i] = ((byte)((byte)((j & 0xFF) >> 8 - k << 8 - paramInt1) | m));
+    if (k == 8)
     {
       this.bitOffset = 0;
-      this.byteOffset += 1;
+      this.byteOffset = (paramInt2 + 1);
     }
     assertValidOffset();
   }
   
   public void readBytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.bitOffset == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      System.arraycopy(this.data, this.byteOffset, paramArrayOfByte, paramInt1, paramInt2);
-      this.byteOffset += paramInt2;
-      assertValidOffset();
-      return;
+    boolean bool;
+    if (this.bitOffset == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    System.arraycopy(this.data, this.byteOffset, paramArrayOfByte, paramInt1, paramInt2);
+    this.byteOffset += paramInt2;
+    assertValidOffset();
   }
   
   public void reset(ParsableByteArray paramParsableByteArray)
@@ -223,30 +243,32 @@ public final class ParsableBitArray
   {
     int i = paramInt / 8;
     this.byteOffset += i;
-    this.bitOffset = (paramInt - i * 8 + this.bitOffset);
-    if (this.bitOffset > 7)
+    this.bitOffset += paramInt - i * 8;
+    paramInt = this.bitOffset;
+    if (paramInt > 7)
     {
       this.byteOffset += 1;
-      this.bitOffset -= 8;
+      this.bitOffset = (paramInt - 8);
     }
     assertValidOffset();
   }
   
   public void skipBytes(int paramInt)
   {
-    if (this.bitOffset == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assertions.checkState(bool);
-      this.byteOffset += paramInt;
-      assertValidOffset();
-      return;
+    boolean bool;
+    if (this.bitOffset == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    Assertions.checkState(bool);
+    this.byteOffset += paramInt;
+    assertValidOffset();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.ParsableBitArray
  * JD-Core Version:    0.7.0.1
  */

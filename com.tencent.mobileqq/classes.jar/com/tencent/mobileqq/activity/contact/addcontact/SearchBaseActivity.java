@@ -5,9 +5,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
 import android.view.MotionEvent;
@@ -18,14 +15,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.regex.Pattern;
 
 public class SearchBaseActivity
-  extends FragmentActivity
+  extends BaseActivity
 {
   public static final Pattern a;
   public static final Pattern b = Pattern.compile("[^0-9]");
@@ -60,15 +60,18 @@ public class SearchBaseActivity
   protected boolean a(boolean paramBoolean, View paramView)
   {
     InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
-    if ((localInputMethodManager == null) || (paramView == null)) {
-      return false;
-    }
-    if (localInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0))
+    if (localInputMethodManager != null)
     {
-      if (paramBoolean) {
-        paramView.clearFocus();
+      if (paramView == null) {
+        return false;
       }
-      return true;
+      if (localInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0))
+      {
+        if (paramBoolean) {
+          paramView.clearFocus();
+        }
+        return true;
+      }
     }
     return false;
   }
@@ -89,24 +92,26 @@ public class SearchBaseActivity
   
   protected void c()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363942));
-    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131167041));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363868));
+    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(getResources().getColor(2131167064));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new SearchBaseActivity.1(this));
-    if (AppSetting.d) {
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidWidgetButton.getText());
+    if (AppSetting.d)
+    {
+      Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+      localButton.setContentDescription(localButton.getText());
     }
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366452));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(getResources().getString(2131689635));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366333));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(getResources().getString(2131689667));
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(64) });
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0, getResources().getDimension(2131299103));
+    this.jdField_a_of_type_AndroidWidgetEditText.setTextSize(0, getResources().getDimension(2131299108));
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
     this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
     this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new SearchBaseActivity.2(this));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368600));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368340));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new SearchBaseActivity.3(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369579));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369289));
     if (AppSetting.d) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131713562));
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(HardCodeUtil.a(2131713529));
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new SearchBaseActivity.4(this));
   }
@@ -120,12 +125,12 @@ public class SearchBaseActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561578);
-    paramBundle = super.findViewById(2131377356);
+    super.setContentView(2131561419);
+    paramBundle = super.findViewById(2131376809);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       paramBundle.setFitsSystemWindows(true);
     }
@@ -133,8 +138,9 @@ public class SearchBaseActivity
     b();
     c();
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment = a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment instanceof ClassificationSearchFragment)) {
-      ((ClassificationSearchFragment)this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment).a(this.i);
+    paramBundle = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment;
+    if ((paramBundle instanceof ClassificationSearchFragment)) {
+      ((ClassificationSearchFragment)paramBundle).a(this.i);
     }
     paramBundle = new Bundle();
     paramBundle.putInt("from_key", this.h);
@@ -144,21 +150,21 @@ public class SearchBaseActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.setArguments(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.jdField_a_of_type_AndroidOsHandler);
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131365255, this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment);
+    paramBundle.replace(2131365132, this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment);
     paramBundle.commit();
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     ViewFactory.a().a();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    setContentBackgroundResource(2130838980);
+    setContentBackgroundResource(2130838740);
   }
   
   @Override
@@ -168,14 +174,14 @@ public class SearchBaseActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity
  * JD-Core Version:    0.7.0.1
  */

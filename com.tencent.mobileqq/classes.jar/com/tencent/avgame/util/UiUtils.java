@@ -10,7 +10,7 @@ public class UiUtils
 {
   public static int a()
   {
-    return (int)(0.64F * ViewUtils.a());
+    return (int)(ViewUtils.a() * 0.64F);
   }
   
   public static int a(TextView paramTextView)
@@ -40,7 +40,7 @@ public class UiUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.util.UiUtils
  * JD-Core Version:    0.7.0.1
  */

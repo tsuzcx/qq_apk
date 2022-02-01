@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -76,34 +76,52 @@ public abstract class BaseMsgView
       paramBundle = URLDrawable.URLDrawableOptions.obtain();
       paramBundle.mUseApngImage = bool;
       paramBundle.mUseMemoryCache = true;
-      paramBundle.mMemoryCacheKeySuffix = (bool + "," + i);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(bool);
+      localStringBuilder.append(",");
+      localStringBuilder.append(i);
+      paramBundle.mMemoryCacheKeySuffix = localStringBuilder.toString();
       i = paramAppRuntime.getInt("key_width", 0);
       int j = paramAppRuntime.getInt("key_height", 0);
-      if ((i > 0) && (j > 0)) {
-        paramBundle.mRequestWidth = i;
-      }
-      for (paramBundle.mRequestHeight = j;; paramBundle.mRequestHeight = IMAGE_HEIGHT)
+      if ((i > 0) && (j > 0))
       {
-        paramBundle.mLoadingDrawable = paramDrawable;
-        paramBundle.mFailedDrawable = paramDrawable;
-        paramAppRuntime.putIntArray("key_tagId_arr", paramArrayOfInt);
-        paramAppRuntime.putString("key_name", paramString3);
-        paramBundle.mExtraInfo = paramAppRuntime;
-        paramAppRuntime = URLDrawable.getDrawable(new URL("qzonecontentboxdownloader", paramString1, paramString2), paramBundle);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("QZoneMsgManager.BaseMsgView", 2, "getApngDrawable ApngImage ok path:" + paramString1 + ", name=" + paramString3);
-        break;
+        paramBundle.mRequestWidth = i;
+        paramBundle.mRequestHeight = j;
+      }
+      else
+      {
         paramBundle.mRequestWidth = IMAGE_WIDTH;
+        paramBundle.mRequestHeight = IMAGE_HEIGHT;
+      }
+      paramBundle.mLoadingDrawable = paramDrawable;
+      paramBundle.mFailedDrawable = paramDrawable;
+      paramAppRuntime.putIntArray("key_tagId_arr", paramArrayOfInt);
+      paramAppRuntime.putString("key_name", paramString3);
+      paramBundle.mExtraInfo = paramAppRuntime;
+      paramAppRuntime = URLDrawable.getDrawable(new URL("qzonecontentboxdownloader", paramString1, paramString2), paramBundle);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("getApngDrawable ApngImage ok path:");
+        paramString2.append(paramString1);
+        paramString2.append(", name=");
+        paramString2.append(paramString3);
+        QLog.d("QZoneMsgManager.BaseMsgView", 2, paramString2.toString());
       }
       return paramAppRuntime;
     }
     catch (Exception paramAppRuntime)
     {
-      QLog.e("QZoneMsgManager.BaseMsgView", 1, "getApngDrawable ApngImage err:" + paramAppRuntime.toString() + ", path:" + paramString1 + ", name=" + paramString3);
-      return null;
+      paramString2 = new StringBuilder();
+      paramString2.append("getApngDrawable ApngImage err:");
+      paramString2.append(paramAppRuntime.toString());
+      paramString2.append(", path:");
+      paramString2.append(paramString1);
+      paramString2.append(", name=");
+      paramString2.append(paramString3);
+      QLog.e("QZoneMsgManager.BaseMsgView", 1, paramString2.toString());
     }
+    return null;
   }
   
   protected boolean doHandleMessage(Message paramMessage)
@@ -113,15 +131,22 @@ public abstract class BaseMsgView
   
   protected URLDrawable getApngDrawable()
   {
-    String str1 = this.mContext.getFilesDir() + "/qzone_msg_content_box/";
-    Object localObject = new File(str1);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdir();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.mContext.getFilesDir());
+    ((StringBuilder)localObject1).append("/qzone_msg_content_box/");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new File((String)localObject1);
+    if (!((File)localObject2).exists()) {
+      ((File)localObject2).mkdir();
     }
-    localObject = ((MQPhotoCell)this.mData.msgBody.photolist.get(0)).coverUrl;
-    String str2 = MD5.toMD5((String)localObject).substring(0, 20);
+    localObject2 = ((MQPhotoCell)this.mData.msgBody.photolist.get(0)).coverUrl;
+    String str = MD5.toMD5((String)localObject2).substring(0, 20);
     this.apngTag = (this.position + 10000);
-    return getApngDrawable(this.app, str1 + str2, (String)localObject, null, new int[] { this.apngTag }, "content-box", null);
+    QQAppInterface localQQAppInterface = this.app;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(str);
+    return getApngDrawable(localQQAppInterface, localStringBuilder.toString(), (String)localObject2, null, new int[] { this.apngTag }, "content-box", null);
   }
   
   protected URLDrawable getUrlDrawable(String paramString)
@@ -136,7 +161,7 @@ public abstract class BaseMsgView
   {
     try
     {
-      Field localField = Class.forName("android.support.v4.view.ViewPager").getDeclaredField("mScroller");
+      Field localField = Class.forName("androidx.viewpager.widget.ViewPager").getDeclaredField("mScroller");
       BaseMsgView.CustumScroller localCustumScroller = new BaseMsgView.CustumScroller(this.mContext, new CubicBezierInterpolator(0.25D, 0.1000000014901161D, 0.25D, 1.0D));
       localCustumScroller.setmDuration(400);
       localField.setAccessible(true);
@@ -151,11 +176,11 @@ public abstract class BaseMsgView
   
   public boolean isLargePhoto()
   {
-    if (this.mData == null) {}
-    while (this.mData.msgType == 6) {
+    MQMsg localMQMsg = this.mData;
+    if (localMQMsg == null) {
       return false;
     }
-    return true;
+    return localMQMsg.msgType != 6;
   }
   
   public void recycle()
@@ -184,37 +209,48 @@ public abstract class BaseMsgView
     if (this.mUiHandler == null) {
       return;
     }
-    if ((this.viewPager != null) && (this.viewPager.getVisibility() == 0) && (this.pagerAdapter != null) && (this.pagerAdapter.getCount() > 1))
+    Object localObject = this.viewPager;
+    if ((localObject != null) && (((QzoneMsgViewPager)localObject).getVisibility() == 0))
     {
-      this.reference = new WeakReference(this.viewPager);
-      Message localMessage = this.mUiHandler.obtainMessage(10000, this.pagerAdapter.getCount(), 0, this.reference);
-      this.mUiHandler.removeMessages(10000);
-      this.mUiHandler.sendMessageDelayed(localMessage, 3000L);
-      return;
+      localObject = this.pagerAdapter;
+      if ((localObject != null) && (((QzoneMsgPagerAdapter)localObject).getCount() > 1))
+      {
+        this.reference = new WeakReference(this.viewPager);
+        localObject = this.mUiHandler.obtainMessage(10000, this.pagerAdapter.getCount(), 0, this.reference);
+        this.mUiHandler.removeMessages(10000);
+        this.mUiHandler.sendMessageDelayed((Message)localObject, 3000L);
+        return;
+      }
     }
     ApngImage.playByTag(this.apngTag);
   }
   
   public void stopAll()
   {
-    if (this.mUiHandler == null) {
+    BaseMsgView.MyHandler localMyHandler = this.mUiHandler;
+    if (localMyHandler == null) {
       return;
     }
-    this.mUiHandler.removeMessages(10000);
+    localMyHandler.removeMessages(10000);
   }
   
   public void stopPlay()
   {
-    if ((this.mUiHandler == null) || (this.reference == null)) {
-      return;
+    BaseMsgView.MyHandler localMyHandler = this.mUiHandler;
+    if (localMyHandler != null)
+    {
+      WeakReference localWeakReference = this.reference;
+      if (localWeakReference == null) {
+        return;
+      }
+      localMyHandler.removeMessages(10000, localWeakReference);
+      ApngImage.pauseByTag(this.apngTag);
     }
-    this.mUiHandler.removeMessages(10000, this.reference);
-    ApngImage.pauseByTag(this.apngTag);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.BaseMsgView
  * JD-Core Version:    0.7.0.1
  */

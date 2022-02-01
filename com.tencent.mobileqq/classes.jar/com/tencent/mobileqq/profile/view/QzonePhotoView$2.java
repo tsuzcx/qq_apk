@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.profile.view;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import androidx.viewpager.widget.ViewPager.LayoutParams;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterViewPagerAdapter.AdapterViewFactory;
 
@@ -14,48 +14,41 @@ class QzonePhotoView$2
   
   public AdapterView a(Context paramContext, int paramInt)
   {
-    do
+    try
     {
+      paramContext = new GridView(paramContext);
       try
       {
-        paramContext = new GridView(paramContext);
-        ViewPager.LayoutParams localLayoutParams;
-        Context localContext = paramContext;
+        paramContext.setNumColumns(4);
+        paramContext.setFadingEdgeLength(0);
+        paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
+        paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
+        paramContext.setStretchMode(2);
+        paramContext.setScrollingCacheEnabled(false);
+        paramContext.setSelector(2131167333);
+        ViewPager.LayoutParams localLayoutParams = new ViewPager.LayoutParams();
+        localLayoutParams.gravity = 17;
+        localLayoutParams.height = -2;
+        localLayoutParams.width = -1;
+        paramContext.setLayoutParams(localLayoutParams);
+        return paramContext;
       }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        try
-        {
-          paramContext.setNumColumns(4);
-          paramContext.setFadingEdgeLength(0);
-          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setStretchMode(2);
-          paramContext.setScrollingCacheEnabled(false);
-          paramContext.setSelector(2131167305);
-          localLayoutParams = new ViewPager.LayoutParams();
-          localLayoutParams.gravity = 17;
-          localLayoutParams.height = -2;
-          localLayoutParams.width = -1;
-          paramContext.setLayoutParams(localLayoutParams);
-          localContext = paramContext;
-          return localContext;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          continue;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramContext = null;
+      catch (OutOfMemoryError localOutOfMemoryError1) {}
+      if (!QLog.isColorLevel()) {
+        return paramContext;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError2)
+    {
+      paramContext = null;
+    }
+    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError2);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.QzonePhotoView.2
  * JD-Core Version:    0.7.0.1
  */

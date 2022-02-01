@@ -20,119 +20,107 @@ public class FileSizeFormat
     }
     double d = l;
     int i;
-    int m;
-    int j;
-    label64:
-    int k;
-    label96:
-    char[] arrayOfChar;
-    if (l < 1048576L) {
+    if (l < 1048576L)
+    {
       if (l < 1024L)
       {
         i = 66;
-        m = (int)(0.005D + d);
-        if (m >= 100) {
-          break label259;
-        }
-        if (m >= 10) {
-          break label253;
-        }
-        j = 1;
-        if (i == 66) {
-          break label319;
-        }
-        if ((FontSettingManager.getFontLevel() <= 18.0F) || (paramInt >= 160)) {
-          break label293;
-        }
-        k = j + 2;
-        j = m;
-        if (k <= a.length) {
-          break label332;
-        }
-        arrayOfChar = new char[k];
-        label111:
-        m = k - 1;
-        arrayOfChar[m] = 'B';
-        if (i == 66) {
-          break label411;
-        }
-        if ((FontSettingManager.getFontLevel() <= 18.0F) || (paramInt >= 160)) {
-          break label340;
-        }
-        paramInt = m - 1;
-        arrayOfChar[paramInt] = i;
       }
-    }
-    for (;;)
-    {
-      paramInt -= 1;
-      arrayOfChar[paramInt] = b[(j % 10)];
-      m = j / 10;
-      j = m;
-      if (m <= 0)
+      else
       {
-        return new String(arrayOfChar, 0, k);
+        Double.isNaN(d);
         d /= 1024.0D;
         i = 75;
-        break;
-        if (l < 1073741824L)
-        {
-          d /= 1048576.0D;
-          i = 77;
-          break;
-        }
-        d /= 1073741824.0D;
-        i = 71;
-        break;
-        label253:
-        j = 2;
-        break label64;
-        label259:
-        if (m < 1000)
-        {
-          j = 3;
-          break label64;
-        }
-        if (m < 10000)
-        {
-          j = 4;
-          break label64;
-        }
-        j = 5;
-        break label64;
-        label293:
-        m = (int)(d * 100.0D + 0.5D);
-        k = j + 5;
-        j = m;
-        break label96;
-        label319:
-        k = j + 1;
-        j = m;
-        break label96;
-        label332:
-        arrayOfChar = a;
-        break label111;
-        label340:
-        paramInt = m - 1;
-        arrayOfChar[paramInt] = i;
-        paramInt -= 1;
-        arrayOfChar[paramInt] = b[(j % 10)];
-        j /= 10;
-        paramInt -= 1;
-        arrayOfChar[paramInt] = b[(j % 10)];
-        j /= 10;
-        paramInt -= 1;
-        arrayOfChar[paramInt] = '.';
-        continue;
-        label411:
-        paramInt = m;
       }
     }
+    else if (l < 1073741824L)
+    {
+      Double.isNaN(d);
+      d /= 1048576.0D;
+      i = 77;
+    }
+    else
+    {
+      Double.isNaN(d);
+      d /= 1073741824.0D;
+      i = 71;
+    }
+    int m = (int)(0.005D + d);
+    if (m < 100)
+    {
+      if (m < 10) {
+        j = 1;
+      } else {
+        j = 2;
+      }
+    }
+    else if (m < 1000) {
+      j = 3;
+    } else if (m < 10000) {
+      j = 4;
+    } else {
+      j = 5;
+    }
+    int k;
+    if (i != 66)
+    {
+      if ((FontSettingManager.getFontLevel() > 18.0F) && (paramInt < 160))
+      {
+        k = j + 2;
+      }
+      else
+      {
+        m = (int)(d * 100.0D + 0.5D);
+        k = j + 5;
+      }
+    }
+    else {
+      k = j + 1;
+    }
+    char[] arrayOfChar2 = a;
+    char[] arrayOfChar1 = arrayOfChar2;
+    if (k > arrayOfChar2.length) {
+      arrayOfChar1 = new char[k];
+    }
+    int i1 = k - 1;
+    arrayOfChar1[i1] = 'B';
+    int j = i1;
+    int n = m;
+    if (i != 66) {
+      if ((FontSettingManager.getFontLevel() > 18.0F) && (paramInt < 160))
+      {
+        j = i1 - 1;
+        arrayOfChar1[j] = i;
+        n = m;
+      }
+      else
+      {
+        paramInt = i1 - 1;
+        arrayOfChar1[paramInt] = i;
+        paramInt -= 1;
+        arrayOfChar2 = b;
+        arrayOfChar1[paramInt] = arrayOfChar2[(m % 10)];
+        j = m / 10;
+        paramInt -= 1;
+        arrayOfChar1[paramInt] = arrayOfChar2[(j % 10)];
+        n = j / 10;
+        j = paramInt - 1;
+        arrayOfChar1[j] = '.';
+      }
+    }
+    do
+    {
+      j -= 1;
+      arrayOfChar1[j] = b[(n % 10)];
+      paramInt = n / 10;
+      n = paramInt;
+    } while (paramInt > 0);
+    return new String(arrayOfChar1, 0, k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.FileSizeFormat
  * JD-Core Version:    0.7.0.1
  */

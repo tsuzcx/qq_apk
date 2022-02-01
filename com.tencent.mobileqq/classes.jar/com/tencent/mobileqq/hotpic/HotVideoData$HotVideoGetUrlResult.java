@@ -31,10 +31,8 @@ public class HotVideoData$HotVideoGetUrlResult
       }
       localStringBuilder.append("/");
     }
-    for (;;)
+    else
     {
-      localStringBuilder.append(this.b);
-      return localStringBuilder.toString();
       if (!this.c.startsWith("http://")) {
         localStringBuilder.append("http://");
       }
@@ -43,66 +41,85 @@ public class HotVideoData$HotVideoGetUrlResult
         localStringBuilder.append("/");
       }
     }
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
   
   public void a(RichProto.RichProtoResp.ShortVideoDownResp paramShortVideoDownResp)
   {
-    int i = 0;
-    StringBuilder localStringBuilder;
+    Object localObject;
     if (HotVideoData.access$000())
     {
       this.jdField_a_of_type_JavaUtilArrayList = paramShortVideoDownResp.mIpList;
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {}
-      if (paramShortVideoDownResp.result != 0) {
-        break label200;
-      }
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("onBusiProtoResp() cdn ---- mIpListSize:");
-        if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-          break label189;
-        }
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      if (localObject != null) {
+        ((ArrayList)localObject).size();
       }
     }
-    for (;;)
+    else
     {
-      QLog.d("HotVideoData", 2, i + " mHostType:" + paramShortVideoDownResp.mHostType + " domain:" + paramShortVideoDownResp.mDomain + " url:" + paramShortVideoDownResp.mUrl);
-      QLog.d("HotVideoData", 2, "onBusiProtoResp() cdn ---- downResp.previewMd5:" + HexUtil.bytes2HexStr(paramShortVideoDownResp.md5));
+      this.jdField_a_of_type_JavaUtilArrayList = paramShortVideoDownResp.mIpv6List;
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      if (localObject != null) {
+        ((ArrayList)localObject).size();
+      }
+    }
+    int j = paramShortVideoDownResp.result;
+    int i = 0;
+    if (j == 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onBusiProtoResp() cdn ---- mIpListSize:");
+        ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+        if (localArrayList != null) {
+          i = localArrayList.size();
+        }
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" mHostType:");
+        ((StringBuilder)localObject).append(paramShortVideoDownResp.mHostType);
+        ((StringBuilder)localObject).append(" domain:");
+        ((StringBuilder)localObject).append(paramShortVideoDownResp.mDomain);
+        ((StringBuilder)localObject).append(" url:");
+        ((StringBuilder)localObject).append(paramShortVideoDownResp.mUrl);
+        QLog.d("HotVideoData", 2, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onBusiProtoResp() cdn ---- downResp.previewMd5:");
+        ((StringBuilder)localObject).append(HexUtil.bytes2HexStr(paramShortVideoDownResp.md5));
+        QLog.d("HotVideoData", 2, ((StringBuilder)localObject).toString());
+      }
       this.b = paramShortVideoDownResp.mUrl;
       this.jdField_a_of_type_Boolean = true;
       return;
-      this.jdField_a_of_type_JavaUtilArrayList = paramShortVideoDownResp.mIpv6List;
-      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        break;
-      }
-      break;
-      label189:
-      i = this.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    label200:
     this.jdField_a_of_type_Boolean = false;
     if (-5100026 == paramShortVideoDownResp.errCode)
     {
       if (QLog.isColorLevel()) {
         QLog.d("HotVideoData", 2, "onBusiProtoResp()---- 安全打击");
       }
-      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705646);
+      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705712);
       return;
     }
     if ((-9527 == paramShortVideoDownResp.errCode) && ((paramShortVideoDownResp.errStr.equals("H_400_-5103017")) || (paramShortVideoDownResp.errStr.equals("H_400_-5103059"))))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotVideoData", 2, "onBusiProtoResp()---- 视频文件过期errCode=" + paramShortVideoDownResp.errCode);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onBusiProtoResp()---- 视频文件过期errCode=");
+        ((StringBuilder)localObject).append(paramShortVideoDownResp.errCode);
+        QLog.d("HotVideoData", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705647);
+      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705713);
       return;
     }
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705648);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705714);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlResult
  * JD-Core Version:    0.7.0.1
  */

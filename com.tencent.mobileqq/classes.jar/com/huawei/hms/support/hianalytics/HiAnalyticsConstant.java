@@ -18,6 +18,7 @@ public class HiAnalyticsConstant
   public static final String BI_TYPE_HMS_SDK_API = "60000";
   public static final String BI_TYPE_INTERFACE = "HMS_SDK_API_CALL";
   public static final String BI_TYPE_UPDATE = "HMS_SDK_UPDATE";
+  public static final String HA_SERVICE_TAG = "hms_config_tag";
   public static final String HMS_SDK_BASE_ACTIVITY_STARTED = "HMS_SDK_BASE_ACTIVITY_STARTED";
   public static final String HMS_SDK_BASE_API_CALLED = "HMS_SDK_BASE_API_CALLED";
   public static final String HMS_SDK_BASE_CALL_AIDL = "HMS_SDK_BASE_CALL_AIDL";
@@ -28,7 +29,7 @@ public class HiAnalyticsConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.hianalytics.HiAnalyticsConstant
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,10 @@ class ThumbDownloadManager$3
   
   public void run()
   {
-    if (ThumbDownloadManager.a(this.this$0).size() >= 8) {}
-    while (ThumbDownloadManager.a(this.this$0).size() == 0) {
+    if (ThumbDownloadManager.a(this.this$0).size() >= 8) {
+      return;
+    }
+    if (ThumbDownloadManager.a(this.this$0).size() == 0) {
       return;
     }
     ThumbDownloadManager.ThumbTask localThumbTask = (ThumbDownloadManager.ThumbTask)ThumbDownloadManager.a(this.this$0).get(0);
@@ -28,7 +30,7 @@ class ThumbDownloadManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.3
  * JD-Core Version:    0.7.0.1
  */

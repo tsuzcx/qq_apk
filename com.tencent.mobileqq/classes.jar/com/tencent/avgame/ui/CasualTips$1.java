@@ -9,7 +9,8 @@ class CasualTips$1
   
   public void run()
   {
-    if ((this.a != null) && (this.a.size() > 0))
+    ArrayList localArrayList = this.a;
+    if ((localArrayList != null) && (localArrayList.size() > 0))
     {
       this.this$0.a = ((int)(System.currentTimeMillis() % this.a.size()));
       CasualTips.a(this.this$0).addAll(this.a);
@@ -22,7 +23,7 @@ class CasualTips$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.CasualTips.1
  * JD-Core Version:    0.7.0.1
  */

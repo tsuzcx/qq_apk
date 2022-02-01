@@ -44,33 +44,39 @@ public class VidToSimpleInfoHandler
   public void a(@NonNull GetSimpleInfoListRequest paramGetSimpleInfoListRequest, @Nullable GetSimpleInfoListResponse paramGetSimpleInfoListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     paramGetSimpleInfoListRequest = new VidToSimpleInfoHandler.GetSimpleInfoListEvent();
-    if ((paramGetSimpleInfoListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramGetSimpleInfoListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      c();
+      b();
+      paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList);
+      paramGetSimpleInfoListRequest.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      paramGetSimpleInfoListResponse = paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramGetSimpleInfoListResponse.hasNext())
+      {
+        paramErrorMessage = (StoryVideoItem)paramGetSimpleInfoListResponse.next();
+        paramErrorMessage = new VideoCollectionItem.FakeVideoUIItem(paramErrorMessage.mVid, paramErrorMessage);
+        paramGetSimpleInfoListRequest.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
+      }
       StoryDispatcher.a().dispatch(paramGetSimpleInfoListRequest);
       return;
     }
-    b();
-    paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList);
-    paramGetSimpleInfoListRequest.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    paramGetSimpleInfoListResponse = paramGetSimpleInfoListResponse.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramGetSimpleInfoListResponse.hasNext())
-    {
-      paramErrorMessage = (StoryVideoItem)paramGetSimpleInfoListResponse.next();
-      paramErrorMessage = new VideoCollectionItem.FakeVideoUIItem(paramErrorMessage.mVid, paramErrorMessage);
-      paramGetSimpleInfoListRequest.jdField_a_of_type_JavaUtilList.add(paramErrorMessage);
-    }
+    c();
     StoryDispatcher.a().dispatch(paramGetSimpleInfoListRequest);
   }
   
   public String toString()
   {
-    return "VidToSimpleInfoHandler{mVidList=" + this.jdField_a_of_type_JavaUtilList + ", mCollectionId=" + this.jdField_a_of_type_JavaLangString + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VidToSimpleInfoHandler{mVidList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", mCollectionId=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -44,13 +44,16 @@ abstract class AbsActivityHandler
       }
       return new ActivityClassHandler(paramT, new DefaultActivityLauncher());
     }
-    StringBuilder localStringBuilder = new StringBuilder().append("invalid type for create activity handler, ");
-    if (paramT == null) {}
-    for (paramT = "(null)";; paramT = paramT.toString())
-    {
-      Logger.warning(paramT);
-      return null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("invalid type for create activity handler, ");
+    if (paramT == null) {
+      paramT = "(null)";
+    } else {
+      paramT = paramT.toString();
     }
+    localStringBuilder.append(paramT);
+    Logger.warning(localStringBuilder.toString());
+    return null;
   }
   
   protected abstract Intent createIntent(URIRequest paramURIRequest);
@@ -59,24 +62,33 @@ abstract class AbsActivityHandler
   {
     try
     {
-      Intent localIntent = createIntent(paramURIRequest);
-      if ((localIntent == null) || (localIntent.getComponent() == null))
+      localObject = createIntent(paramURIRequest);
+      if ((localObject != null) && (((Intent)localObject).getComponent() != null))
       {
-        Logger.warning("create intent fail, " + paramURIRequest.getURI().toString());
-        paramURIRequestCallback.onComplete(1000);
+        int i = this.activityLauncher.startActivity((Intent)localObject, paramURIRequest);
+        if (i != 0)
+        {
+          paramURIRequest = new StringBuilder();
+          paramURIRequest.append("start activity fail, code is ");
+          paramURIRequest.append(i);
+          Logger.info(paramURIRequest.toString());
+        }
+        paramURIRequestCallback.onComplete(i);
         return;
       }
-      localIntent.setData(paramURIRequest.getURI());
-      int i = this.activityLauncher.startActivity(localIntent, paramURIRequest);
-      if (i != 0) {
-        Logger.info("start activity fail, code is " + i);
-      }
-      paramURIRequestCallback.onComplete(i);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("create intent fail, ");
+      ((StringBuilder)localObject).append(paramURIRequest.getURI().toString());
+      Logger.warning(((StringBuilder)localObject).toString());
+      paramURIRequestCallback.onComplete(1000);
       return;
     }
     catch (Exception paramURIRequest)
     {
-      Logger.warning("handle activity uri fail, " + paramURIRequest.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handle activity uri fail, ");
+      ((StringBuilder)localObject).append(paramURIRequest.toString());
+      Logger.warning(((StringBuilder)localObject).toString());
       paramURIRequestCallback.onComplete(1000);
     }
   }
@@ -88,7 +100,7 @@ abstract class AbsActivityHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.route.AbsActivityHandler
  * JD-Core Version:    0.7.0.1
  */

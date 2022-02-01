@@ -2,7 +2,7 @@ package com.tencent.biz.qrcode.activity;
 
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 
 class QRDisplayActivity$7
   implements Runnable
@@ -13,41 +13,33 @@ class QRDisplayActivity$7
   {
     int i = this.this$0.jdField_c_of_type_AndroidViewView.getHeight();
     int j = this.this$0.b.getHeight();
-    View localView;
-    LinearLayout.LayoutParams localLayoutParams;
     if (j < i)
     {
-      localView = this.this$0.findViewById(2131375162);
-      localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      if (this.this$0.jdField_c_of_type_Int != 2) {
-        break label96;
-      }
-      localLayoutParams.topMargin = 0;
-      localLayoutParams.bottomMargin = 0;
-    }
-    for (;;)
-    {
-      if ("1103".equals(ThemeUtil.curThemeId)) {
-        localView.setBackgroundDrawable(null);
-      }
-      localView.setLayoutParams(localLayoutParams);
-      return;
-      label96:
-      if (this.this$0.jdField_c_of_type_Int == 5)
+      View localView = this.this$0.findViewById(2131374677);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
+      if (this.this$0.jdField_c_of_type_Int == 2)
       {
-        int k = localLayoutParams.topMargin;
-        localLayoutParams.topMargin = ((i - j) / 2 + k);
+        localLayoutParams.topMargin = 0;
+        localLayoutParams.bottomMargin = 0;
+      }
+      else if (this.this$0.jdField_c_of_type_Int == 5)
+      {
+        localLayoutParams.topMargin += (i - j) / 2;
       }
       else
       {
         localLayoutParams.topMargin = 50;
       }
+      if ("1103".equals(ThemeUtil.curThemeId)) {
+        localView.setBackgroundDrawable(null);
+      }
+      localView.setLayoutParams(localLayoutParams);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.7
  * JD-Core Version:    0.7.0.1
  */

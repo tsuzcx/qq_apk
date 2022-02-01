@@ -14,7 +14,7 @@ public class TroopNickNameBusiness
     if (paramString.exists()) {
       try
       {
-        paramString = (TroopNickNameBusiness.Config)JSONConverter.a(FileUtils.b(paramString), TroopNickNameBusiness.Config.class);
+        paramString = (TroopNickNameBusiness.Config)JSONConverter.a(FileUtils.readFileToString(paramString), TroopNickNameBusiness.Config.class);
         return paramString;
       }
       catch (IOException paramString)
@@ -52,7 +52,7 @@ public class TroopNickNameBusiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.business.TroopNickNameBusiness
  * JD-Core Version:    0.7.0.1
  */

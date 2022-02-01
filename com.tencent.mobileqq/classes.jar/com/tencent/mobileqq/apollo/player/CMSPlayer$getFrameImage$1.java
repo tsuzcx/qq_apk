@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.apollo.player;
 
-import com.tencent.mobileqq.apollo.api.player.action.CMSAction;
-import com.tencent.mobileqq.apollo.api.player.action.MODE;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import com.tencent.mobileqq.apollo.player.action.MODE;
 import com.tencent.mobileqq.apollo.player.manager.CMSBornPlayerManager;
 import com.tencent.mobileqq.apollo.screenshot.ApolloScreenshotController;
+import com.tencent.mobileqq.apollo.screenshot.ApolloScreenshotController.INSTANCE;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -26,11 +27,21 @@ final class CMSPlayer$getFrameImage$1
   public final void invoke()
   {
     Object localObject = CMSAction.a(this.$action, null, "frame", 1, null);
-    QLog.w("cmshow_scripted_[CMSPlayer]", 1, "getFrameImage, " + this.$action.d() + ", timeOffset:" + this.$timeOffset);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getFrameImage, ");
+    localStringBuilder.append(this.$action.d());
+    localStringBuilder.append(", timeOffset:");
+    localStringBuilder.append(this.$timeOffset);
+    QLog.w("[cmshow][scripted][CMSPlayer]", 1, localStringBuilder.toString());
     localObject = ApolloScreenshotController.a.a((String)localObject);
     if ((localObject != null) && (((File)localObject).exists()))
     {
-      QLog.w("cmshow_scripted_[CMSPlayer]", 1, "getFrameImage result from cache, " + this.$action.d() + ", path:" + ((File)localObject).getAbsolutePath());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getFrameImage result from cache, ");
+      localStringBuilder.append(this.$action.d());
+      localStringBuilder.append(", path:");
+      localStringBuilder.append(((File)localObject).getAbsolutePath());
+      QLog.w("[cmshow][scripted][CMSPlayer]", 1, localStringBuilder.toString());
       this.$callback.a(true, ((File)localObject).getAbsolutePath(), this.$action);
       return;
     }
@@ -39,12 +50,12 @@ final class CMSPlayer$getFrameImage$1
     ((CMSAction)localObject).a(MODE.ACTION_MODE_FRAME);
     ((CMSAction)localObject).a().b = CMSPlayer.Companion.a(CMSPlayer.a, this.$timeOffset);
     localObject = new CMSPlayer.GetFrameImageListener(this.$callback, l);
-    CMSBornPlayerManager.a.a(CMSPlayer.Companion.a(CMSPlayer.a, (int)DeviceInfoUtil.i(), CMSPlayer.a(this.this$0)), ViewUtils.b(CMSPlayer.b(this.this$0)), this.$action, (ICMSPlayerListener)localObject);
+    CMSBornPlayerManager.a.a((int)DeviceInfoUtil.i(), ViewUtils.b(CMSPlayer.a(this.this$0)), this.$action, (ICMSPlayerListener)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.CMSPlayer.getFrameImage.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,15 +18,17 @@ final class FWTouchUtils$sideAnimWhenOutOfScreen$3
     WindowManager.LayoutParams localLayoutParams = this.$params;
     Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+    if (paramValueAnimator != null)
+    {
+      localLayoutParams.y = ((Integer)paramValueAnimator).intValue();
+      return;
     }
-    localLayoutParams.y = ((Integer)paramValueAnimator).intValue();
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.appfloat.FWTouchUtils.sideAnimWhenOutOfScreen.3
  * JD-Core Version:    0.7.0.1
  */

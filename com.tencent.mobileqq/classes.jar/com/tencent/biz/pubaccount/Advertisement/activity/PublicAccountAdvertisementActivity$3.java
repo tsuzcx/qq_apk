@@ -7,6 +7,7 @@ import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
 import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager;
 import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -19,38 +20,42 @@ class PublicAccountAdvertisementActivity$3
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.c(this.a);
-      PublicAccountAdvertisementActivity.b(this.a);
-      AdvertisementRecentUserManager.a().a(this.a.getAppInterface(), 4, PublicAccountAdvertisementActivity.a(this.a));
-      PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
-      this.a.finish();
-      continue;
+    default: 
+      break;
+    case 2131380574: 
       if ((PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null))
       {
         PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
         PublicAccountAdvertisementActivity.b(this.a, 1);
-        continue;
-        this.a.b();
-        continue;
-        ReportController.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-        PublicAccountAdvertisementActivity.d(this.a);
-        continue;
-        PublicAccountAdvertisementActivity.a(this.a, 2);
-        continue;
-        PublicAccountAdvertisementActivity.a(this.a, 1);
       }
+      break;
+    case 2131380567: 
+      this.a.b();
+      break;
+    case 2131380545: 
+      PublicAccountAdvertisementActivity.a(this.a);
+      PublicAccountAdvertisementActivity.c(this.a);
+      PublicAccountAdvertisementActivity.b(this.a);
+      AdvertisementRecentUserManager.a().a((AppInterface)this.a.getAppRuntime(), 4, PublicAccountAdvertisementActivity.a(this.a));
+      PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
+      this.a.finish();
+      break;
+    case 2131371487: 
+      PublicAccountAdvertisementActivity.a(this.a, 2);
+      break;
+    case 2131362163: 
+      ReportController.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+      PublicAccountAdvertisementActivity.d(this.a);
+      break;
+    case 2131362152: 
+      PublicAccountAdvertisementActivity.a(this.a, 1);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.3
  * JD-Core Version:    0.7.0.1
  */

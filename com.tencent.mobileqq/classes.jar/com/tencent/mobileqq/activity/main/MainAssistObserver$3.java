@@ -15,48 +15,67 @@ class MainAssistObserver$3
   
   public void onPushPCActiveNotice(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver_PCActiveNotice", 2, "onPushPCActiveNotice.isSuccess=" + paramBoolean);
-    }
-    if (this.a.a == null) {}
-    Intent localIntent;
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-      } while ((!this.a.a.isResume()) || (!paramBoolean));
-      localIntent = new Intent("mqq.intent.action.PCACTIVE_TIPS");
-      localIntent.putExtra("uin", paramString1);
-      localIntent.putExtra("Message", paramString2);
-      localIntent.putExtra("lButton", paramString3);
-      localIntent.putExtra("rButton", paramString4);
-    } while (NotifyPCActiveActivity.a != null);
-    this.a.a.startActivity(localIntent);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPushPCActiveNotice.isSuccess=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("MainAssistObserver_PCActiveNotice", 2, ((StringBuilder)localObject).toString());
+    }
+    if (this.a.a == null) {
+      return;
+    }
+    if (!this.a.a.isResume()) {
+      return;
+    }
+    if (!paramBoolean) {
+      return;
+    }
+    Object localObject = new Intent("mqq.intent.action.PCACTIVE_TIPS");
+    ((Intent)localObject).putExtra("uin", paramString1);
+    ((Intent)localObject).putExtra("Message", paramString2);
+    ((Intent)localObject).putExtra("lButton", paramString3);
+    ((Intent)localObject).putExtra("rButton", paramString4);
+    if (NotifyPCActiveActivity.a == null) {
+      this.a.a.startActivity((Intent)localObject);
+    }
   }
   
   public void onPushRecommandDevLock(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, String paramString4, ArrayList<String> paramArrayList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.", 2, "onPushRecommandDevLock.isSuccess=" + paramBoolean1 + " canCancel=" + paramBoolean2 + " words=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPushRecommandDevLock.isSuccess=");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(" canCancel=");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      ((StringBuilder)localObject).append(" words=");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.d("Q.devlock.", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.a.a == null) {}
-    while ((!this.a.a.isResume()) || (!paramBoolean1)) {
+    if (this.a.a == null) {
       return;
     }
-    Intent localIntent = new Intent(this.a.a, DevlockPushActivity.class);
-    localIntent.putExtra("canCancel", paramBoolean2);
-    localIntent.putExtra("tipMsg", paramString1);
-    localIntent.putExtra("title", paramString2);
-    localIntent.putExtra("secondTitle", paramString3);
-    localIntent.putExtra("thirdTitle", paramString4);
-    localIntent.putStringArrayListExtra("wordsList", paramArrayList);
-    this.a.a.startActivity(localIntent);
+    if (!this.a.a.isResume()) {
+      return;
+    }
+    if (!paramBoolean1) {
+      return;
+    }
+    Object localObject = new Intent(this.a.a, DevlockPushActivity.class);
+    ((Intent)localObject).putExtra("canCancel", paramBoolean2);
+    ((Intent)localObject).putExtra("tipMsg", paramString1);
+    ((Intent)localObject).putExtra("title", paramString2);
+    ((Intent)localObject).putExtra("secondTitle", paramString3);
+    ((Intent)localObject).putExtra("thirdTitle", paramString4);
+    ((Intent)localObject).putStringArrayListExtra("wordsList", paramArrayList);
+    this.a.a.startActivity((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.3
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ class ShortVideoPlayActivity$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a != null) && (this.a.a.get() != null)) {
-      ((TVK_IMediaPlayer)this.a.a.get()).pauseDownload();
+    if ((this.a.mMediaPlayer != null) && (this.a.mMediaPlayer.get() != null)) {
+      ((TVK_IMediaPlayer)this.a.mMediaPlayer.get()).pauseDownload();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.4
  * JD-Core Version:    0.7.0.1
  */

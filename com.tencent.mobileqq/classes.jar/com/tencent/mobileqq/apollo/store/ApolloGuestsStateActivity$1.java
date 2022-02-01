@@ -13,24 +13,28 @@ class ApolloGuestsStateActivity$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
+      if (i != 1)
+      {
+        if (i != 3) {
+          return true;
+        }
+        this.a.mApprovalLayout.setAlpha(1.0F);
+        return true;
+      }
       this.a.mApprovalLayout.setAlpha(1.0F);
       this.a.mButtonRight.performClick();
-      continue;
-      this.a.mApprovalLayout.setAlpha(0.5F);
-      continue;
-      this.a.mApprovalLayout.setAlpha(1.0F);
+      return true;
     }
+    this.a.mApprovalLayout.setAlpha(0.5F);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.1
  * JD-Core Version:    0.7.0.1
  */

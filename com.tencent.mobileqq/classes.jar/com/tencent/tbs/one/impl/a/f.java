@@ -9,29 +9,44 @@ public final class f
   
   private static String a(String paramString, Throwable paramThrowable, Object... paramVarArgs)
   {
-    if ((paramVarArgs != null) && (((paramThrowable == null) && (paramVarArgs.length > 0)) || (paramVarArgs.length > 1))) {
-      paramString = String.format(Locale.US, paramString, paramVarArgs);
-    }
-    for (;;)
-    {
-      paramVarArgs = paramString;
-      if (paramThrowable != null) {
-        paramVarArgs = paramString + '\n' + Log.getStackTraceString(paramThrowable);
+    String str = paramString;
+    if (paramVarArgs != null) {
+      if ((paramThrowable != null) || (paramVarArgs.length <= 0))
+      {
+        str = paramString;
+        if (paramVarArgs.length <= 1) {}
       }
-      return paramVarArgs;
+      else
+      {
+        str = String.format(Locale.US, paramString, paramVarArgs);
+      }
     }
+    paramString = str;
+    if (paramThrowable != null)
+    {
+      paramString = new StringBuilder();
+      paramString.append(str);
+      paramString.append('\n');
+      paramString.append(Log.getStackTraceString(paramThrowable));
+      paramString = paramString.toString();
+    }
+    return paramString;
   }
   
   private static Throwable a(Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      return null;
+    if (paramArrayOfObject != null)
+    {
+      if (paramArrayOfObject.length == 0) {
+        return null;
+      }
+      paramArrayOfObject = paramArrayOfObject[(paramArrayOfObject.length - 1)];
+      if (!(paramArrayOfObject instanceof Throwable)) {
+        return null;
+      }
+      return (Throwable)paramArrayOfObject;
     }
-    paramArrayOfObject = paramArrayOfObject[(paramArrayOfObject.length - 1)];
-    if (!(paramArrayOfObject instanceof Throwable)) {
-      return null;
-    }
-    return (Throwable)paramArrayOfObject;
+    return null;
   }
   
   public static void a(f.b paramb)
@@ -64,7 +79,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.f
  * JD-Core Version:    0.7.0.1
  */

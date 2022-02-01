@@ -1,31 +1,32 @@
 package cooperation.qzone.video;
 
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginMangerHelper;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.WebEventListener;
 
 final class QzoneLiveVideoInterface$1
-  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
+  implements WebEventListener
 {
-  QzoneLiveVideoInterface$1(String paramString) {}
+  QzoneLiveVideoInterface$1(Handler paramHandler) {}
   
-  public void onQzonePluginClientReady(IQZonePluginManager paramIQZonePluginManager)
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    if (paramIQZonePluginManager == null) {
-      QZonePluginMangerHelper.getQzonePluginClient(QzoneLiveVideoInterface.getContext(), this);
-    }
-    do
+    if ("cmd.uploadCommentVideo".equals(paramString))
     {
-      return;
-      paramIQZonePluginManager = paramIQZonePluginManager.queryPlugin(this.val$pluginId);
-    } while (paramIQZonePluginManager == null);
-    QzoneLiveVideoInterface.access$002(paramIQZonePluginManager.ver);
+      paramString = new Message();
+      paramString.obj = paramBundle;
+      this.val$handler.sendMessage(paramString);
+      if ((paramBundle.getBundle("data") != null) && (paramBundle.getBundle("data").getInt("status") != 2)) {
+        RemoteHandleManager.getInstance().removeWebEventListener(this);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.video.QzoneLiveVideoInterface.1
  * JD-Core Version:    0.7.0.1
  */

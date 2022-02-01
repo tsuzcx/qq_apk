@@ -10,7 +10,7 @@ import kotlinx.android.parcel.Parcelize;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/CommunityInfo;", "Landroid/os/Parcelable;", "Ljava/io/Serializable;", "communityId", "", "coverUrl", "title", "intro", "state", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getCommunityId", "()Ljava/lang/String;", "setCommunityId", "(Ljava/lang/String;)V", "getCoverUrl", "setCoverUrl", "getIntro", "setIntro", "getState", "setState", "getTitle", "setTitle", "component1", "component2", "component3", "component4", "component5", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/CommunityInfo;", "Landroid/os/Parcelable;", "Ljava/io/Serializable;", "communityId", "", "jumpUrl", "coverUrl", "title", "intro", "state", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getCommunityId", "()Ljava/lang/String;", "setCommunityId", "(Ljava/lang/String;)V", "getCoverUrl", "setCoverUrl", "getIntro", "setIntro", "getJumpUrl", "setJumpUrl", "getState", "setState", "getTitle", "setTitle", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "topicsdk_release"}, k=1, mv={1, 1, 16})
 @Parcelize
 public final class CommunityInfo
   implements Parcelable, Serializable
@@ -23,22 +23,25 @@ public final class CommunityInfo
   @NotNull
   private String intro;
   @NotNull
+  private String jumpUrl;
+  @NotNull
   private String state;
   @NotNull
   private String title;
   
   public CommunityInfo()
   {
-    this(null, null, null, null, null, 31, null);
+    this(null, null, null, null, null, null, 63, null);
   }
   
-  public CommunityInfo(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5)
+  public CommunityInfo(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5, @NotNull String paramString6)
   {
     this.communityId = paramString1;
-    this.coverUrl = paramString2;
-    this.title = paramString3;
-    this.intro = paramString4;
-    this.state = paramString5;
+    this.jumpUrl = paramString2;
+    this.coverUrl = paramString3;
+    this.title = paramString4;
+    this.intro = paramString5;
+    this.state = paramString6;
   }
   
   @NotNull
@@ -50,36 +53,43 @@ public final class CommunityInfo
   @NotNull
   public final String component2()
   {
-    return this.coverUrl;
+    return this.jumpUrl;
   }
   
   @NotNull
   public final String component3()
   {
-    return this.title;
+    return this.coverUrl;
   }
   
   @NotNull
   public final String component4()
   {
-    return this.intro;
+    return this.title;
   }
   
   @NotNull
   public final String component5()
   {
+    return this.intro;
+  }
+  
+  @NotNull
+  public final String component6()
+  {
     return this.state;
   }
   
   @NotNull
-  public final CommunityInfo copy(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5)
+  public final CommunityInfo copy(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5, @NotNull String paramString6)
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "communityId");
-    Intrinsics.checkParameterIsNotNull(paramString2, "coverUrl");
-    Intrinsics.checkParameterIsNotNull(paramString3, "title");
-    Intrinsics.checkParameterIsNotNull(paramString4, "intro");
-    Intrinsics.checkParameterIsNotNull(paramString5, "state");
-    return new CommunityInfo(paramString1, paramString2, paramString3, paramString4, paramString5);
+    Intrinsics.checkParameterIsNotNull(paramString2, "jumpUrl");
+    Intrinsics.checkParameterIsNotNull(paramString3, "coverUrl");
+    Intrinsics.checkParameterIsNotNull(paramString4, "title");
+    Intrinsics.checkParameterIsNotNull(paramString5, "intro");
+    Intrinsics.checkParameterIsNotNull(paramString6, "state");
+    return new CommunityInfo(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6);
   }
   
   public int describeContents()
@@ -111,6 +121,12 @@ public final class CommunityInfo
   public final String getIntro()
   {
     return this.intro;
+  }
+  
+  @NotNull
+  public final String getJumpUrl()
+  {
+    return this.jumpUrl;
   }
   
   @NotNull
@@ -148,6 +164,12 @@ public final class CommunityInfo
     this.intro = paramString;
   }
   
+  public final void setJumpUrl(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.jumpUrl = paramString;
+  }
+  
   public final void setState(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
@@ -163,13 +185,28 @@ public final class CommunityInfo
   @NotNull
   public String toString()
   {
-    return "CommunityInfo(communityId=" + this.communityId + ", coverUrl=" + this.coverUrl + ", title=" + this.title + ", intro=" + this.intro + ", state=" + this.state + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommunityInfo(communityId=");
+    localStringBuilder.append(this.communityId);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append(", coverUrl=");
+    localStringBuilder.append(this.coverUrl);
+    localStringBuilder.append(", title=");
+    localStringBuilder.append(this.title);
+    localStringBuilder.append(", intro=");
+    localStringBuilder.append(this.intro);
+    localStringBuilder.append(", state=");
+    localStringBuilder.append(this.state);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
     paramParcel.writeString(this.communityId);
+    paramParcel.writeString(this.jumpUrl);
     paramParcel.writeString(this.coverUrl);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.intro);
@@ -178,7 +215,7 @@ public final class CommunityInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.CommunityInfo
  * JD-Core Version:    0.7.0.1
  */

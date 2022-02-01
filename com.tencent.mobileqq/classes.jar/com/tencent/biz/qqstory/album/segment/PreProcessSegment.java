@@ -27,20 +27,18 @@ public class PreProcessSegment
   extends JobSegment<List<StoryAlbum.PicInfo>, List<StoryAlbum.PicInfo>>
   implements BatchGetPoiListHandler.BatchGetPOIListener, CheckBlackGeoHashHandler.CheckBlackListener
 {
-  private ScanInfo jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo;
-  private HashMap<String, GeoHashPhotoGroup> jdField_a_of_type_JavaUtilHashMap;
-  
-  public PreProcessSegment(ScanInfo paramScanInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumSegmentScanInfo = paramScanInfo;
-  }
+  private HashMap<String, GeoHashPhotoGroup> a;
   
   public void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap)
   {
     SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handlePOIResult errorMessage=%s", new Object[] { paramErrorMessage.toString() });
     if (paramErrorMessage.isFail())
     {
-      notifyError(new ErrorMessage(paramErrorMessage.errorCode, "request POI list error:" + paramErrorMessage.getErrorMessage()));
+      int i = paramErrorMessage.errorCode;
+      paramHashMap = new StringBuilder();
+      paramHashMap.append("request POI list error:");
+      paramHashMap.append(paramErrorMessage.getErrorMessage());
+      notifyError(new ErrorMessage(i, paramHashMap.toString()));
       return;
     }
     Object localObject;
@@ -52,7 +50,7 @@ public class PreProcessSegment
         paramHashMap = (Map.Entry)paramErrorMessage.next();
         localObject = (String)paramHashMap.getKey();
         paramHashMap = (AddressItem)paramHashMap.getValue();
-        localObject = (GeoHashPhotoGroup)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+        localObject = (GeoHashPhotoGroup)this.a.get(localObject);
         ((GeoHashPhotoGroup)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem = paramHashMap;
         localObject = ((GeoHashPhotoGroup)localObject).jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext()) {
@@ -61,15 +59,20 @@ public class PreProcessSegment
       }
     }
     paramErrorMessage = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    paramHashMap = this.a;
+    if (paramHashMap != null)
     {
-      paramHashMap = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      paramHashMap = paramHashMap.entrySet().iterator();
       while (paramHashMap.hasNext())
       {
         localObject = (GeoHashPhotoGroup)((Map.Entry)paramHashMap.next()).getValue();
         paramErrorMessage.addAll(((GeoHashPhotoGroup)localObject).jdField_a_of_type_JavaUtilList);
-        if (((StoryAlbum.PicInfo)((GeoHashPhotoGroup)localObject).jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem == null) {
-          SLog.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "后台返回的POI数据里缺少了 ：" + ((GeoHashPhotoGroup)localObject).jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashUtils$Gps);
+        if (((StoryAlbum.PicInfo)((GeoHashPhotoGroup)localObject).jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem == null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("后台返回的POI数据里缺少了 ：");
+          localStringBuilder.append(((GeoHashPhotoGroup)localObject).jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashUtils$Gps);
+          SLog.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", localStringBuilder.toString());
         }
       }
     }
@@ -80,14 +83,20 @@ public class PreProcessSegment
   public void a(ErrorMessage paramErrorMessage, List<String> paramList)
   {
     String str = paramErrorMessage.toString();
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
+    int i;
+    if (paramList == null) {
+      i = 0;
+    } else {
+      i = paramList.size();
+    }
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handleBlackResult errorMessage=%s, blackGeohash count=%d", new Object[] { str, Integer.valueOf(i) });
+    if (paramErrorMessage.isFail())
     {
-      SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "handleBlackResult errorMessage=%s, blackGeohash count=%d", new Object[] { str, Integer.valueOf(i) });
-      if (!paramErrorMessage.isFail()) {
-        break;
-      }
-      notifyError(new ErrorMessage(paramErrorMessage.errorCode, "request black list error:" + paramErrorMessage.getErrorMessage()));
+      i = paramErrorMessage.errorCode;
+      paramList = new StringBuilder();
+      paramList.append("request black list error:");
+      paramList.append(paramErrorMessage.getErrorMessage());
+      notifyError(new ErrorMessage(i, paramList.toString()));
       return;
     }
     if ((paramList != null) && (paramList.size() > 0))
@@ -96,24 +105,24 @@ public class PreProcessSegment
       while (paramErrorMessage.hasNext())
       {
         paramList = (String)paramErrorMessage.next();
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramList);
+        this.a.remove(paramList);
       }
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.size() == 0)
+    if (this.a.size() == 0)
     {
       notifyResult(new ArrayList());
       return;
     }
-    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 1) && (this.jdField_a_of_type_JavaUtilHashMap.get("EMPTY") != null))
+    if ((this.a.size() == 1) && (this.a.get("EMPTY") != null))
     {
       a(new ErrorMessage(), null);
       return;
     }
     paramErrorMessage = new BatchGetPoiListHandler();
-    paramErrorMessage.a(this.jdField_a_of_type_JavaUtilHashMap);
+    paramErrorMessage.a(this.a);
     paramErrorMessage.a(this);
     paramErrorMessage.a();
-    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "sendPOIRequest total count:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "sendPOIRequest total count:%d", new Object[] { Integer.valueOf(this.a.size()) });
   }
   
   protected void a(JobContext paramJobContext, List<StoryAlbum.PicInfo> paramList)
@@ -126,45 +135,47 @@ public class PreProcessSegment
     }
     int i = ((StoryScanManager)SuperManager.a(30)).a().b();
     SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "PreProcessSegment geohashlevel=%d", new Object[] { Integer.valueOf(i) });
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.a = new HashMap();
     paramJobContext = paramList.iterator();
     while (paramJobContext.hasNext())
     {
       paramList = (StoryAlbum.PicInfo)paramJobContext.next();
-      if ((paramList.jdField_a_of_type_Double == 0.0D) && (paramList.b == 0.0D)) {}
-      for (paramList.c = "EMPTY";; paramList.c = GeoHashUtils.a(paramList.jdField_a_of_type_Double, paramList.b, i))
+      if ((paramList.jdField_a_of_type_Double == 0.0D) && (paramList.b == 0.0D)) {
+        paramList.c = "EMPTY";
+      } else {
+        paramList.c = GeoHashUtils.a(paramList.jdField_a_of_type_Double, paramList.b, i);
+      }
+      if (this.a.containsKey(paramList.c))
       {
-        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramList.c)) {
-          break label192;
+        ((GeoHashPhotoGroup)this.a.get(paramList.c)).jdField_a_of_type_JavaUtilList.add(paramList);
+      }
+      else
+      {
+        GeoHashPhotoGroup localGeoHashPhotoGroup = new GeoHashPhotoGroup(paramList.c);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(paramList);
+        localGeoHashPhotoGroup.jdField_a_of_type_JavaUtilList = localArrayList;
+        if ((!TextUtils.isEmpty(localGeoHashPhotoGroup.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(localGeoHashPhotoGroup.jdField_a_of_type_JavaLangString, "EMPTY"))) {
+          localGeoHashPhotoGroup.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashUtils$Gps = GeoHashUtils.a(localGeoHashPhotoGroup.jdField_a_of_type_JavaLangString);
         }
-        ((GeoHashPhotoGroup)this.jdField_a_of_type_JavaUtilHashMap.get(paramList.c)).jdField_a_of_type_JavaUtilList.add(paramList);
-        break;
+        this.a.put(paramList.c, localGeoHashPhotoGroup);
       }
-      label192:
-      GeoHashPhotoGroup localGeoHashPhotoGroup = new GeoHashPhotoGroup(paramList.c);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramList);
-      localGeoHashPhotoGroup.jdField_a_of_type_JavaUtilList = localArrayList;
-      if ((!TextUtils.isEmpty(localGeoHashPhotoGroup.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(localGeoHashPhotoGroup.jdField_a_of_type_JavaLangString, "EMPTY"))) {
-        localGeoHashPhotoGroup.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashUtils$Gps = GeoHashUtils.a(localGeoHashPhotoGroup.jdField_a_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramList.c, localGeoHashPhotoGroup);
     }
-    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "group by geohash count:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
-    if ((this.jdField_a_of_type_JavaUtilHashMap.size() == 1) && (this.jdField_a_of_type_JavaUtilHashMap.get("EMPTY") != null))
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.PreProcessSegment", "group by geohash count:%d", new Object[] { Integer.valueOf(this.a.size()) });
+    if ((this.a.size() == 1) && (this.a.get("EMPTY") != null))
     {
       a(new ErrorMessage(), null);
       return;
     }
     paramJobContext = new CheckBlackGeoHashHandler();
-    paramJobContext.a(this.jdField_a_of_type_JavaUtilHashMap);
+    paramJobContext.a(this.a);
     paramJobContext.a(this);
     paramJobContext.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.segment.PreProcessSegment
  * JD-Core Version:    0.7.0.1
  */

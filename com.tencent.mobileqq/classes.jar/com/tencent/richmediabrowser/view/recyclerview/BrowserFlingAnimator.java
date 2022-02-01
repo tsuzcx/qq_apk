@@ -38,43 +38,59 @@ public class BrowserFlingAnimator
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.flingEventListener != null) {
-      this.flingEventListener.onFlingAnimationCancel();
+    paramAnimator = this.flingEventListener;
+    if (paramAnimator != null) {
+      paramAnimator.onFlingAnimationCancel();
     }
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.flingEventListener != null) {
-      this.flingEventListener.onFlingAnimationEnd();
+    paramAnimator = this.flingEventListener;
+    if (paramAnimator != null) {
+      paramAnimator.onFlingAnimationEnd();
     }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
   {
-    if (this.flingEventListener != null) {
-      this.flingEventListener.onFlingAnimationRepeat();
+    paramAnimator = this.flingEventListener;
+    if (paramAnimator != null) {
+      paramAnimator.onFlingAnimationRepeat();
     }
   }
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.flingEventListener != null) {
-      this.flingEventListener.onFlingAnimationStart();
+    paramAnimator = this.flingEventListener;
+    if (paramAnimator != null) {
+      paramAnimator.onFlingAnimationStart();
     }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.mScroller.isFinished()) {}
-    while ((!this.mScroller.computeScrollOffset()) || (this.flingControlListener == null)) {
+    if (this.mScroller.isFinished()) {
       return;
     }
-    int i = this.mScroller.getCurrX();
-    int j = this.mScroller.getCurrY();
-    this.flingControlListener.startFling(this.mCurrentX - i, this.mCurrentY - j);
-    this.mCurrentX = i;
-    this.mCurrentY = j;
+    if ((this.mScroller.computeScrollOffset()) && (this.flingControlListener != null))
+    {
+      int i = this.mScroller.getCurrX();
+      int j = this.mScroller.getCurrY();
+      this.flingControlListener.startFling(this.mCurrentX - i, this.mCurrentY - j);
+      this.mCurrentX = i;
+      this.mCurrentY = j;
+    }
   }
   
   public void setBrowserFlingControlListener(IBrowserFlingControlListener paramIBrowserFlingControlListener)
@@ -89,47 +105,54 @@ public class BrowserFlingAnimator
   
   public void startFling(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.flingControlListener == null) {}
-    RectF localRectF;
-    do
-    {
+    Object localObject = this.flingControlListener;
+    if (localObject == null) {
       return;
-      localRectF = this.flingControlListener.getCurrentMatrixRectF();
-    } while (localRectF == null);
-    int i = Math.round(-localRectF.left);
+    }
+    localObject = ((IBrowserFlingControlListener)localObject).getCurrentMatrixRectF();
+    if (localObject == null) {
+      return;
+    }
+    int k = Math.round(-((RectF)localObject).left);
+    float f1 = ((RectF)localObject).width();
+    float f2 = paramInt1;
     int j;
-    int k;
-    int m;
-    if (localRectF.width() > paramInt1)
+    int i;
+    if (f1 > f2)
     {
-      j = Math.round(localRectF.width() - paramInt1);
+      j = Math.round(((RectF)localObject).width() - f2);
+      i = 0;
+    }
+    else
+    {
+      paramInt1 = k;
+      j = paramInt1;
+      i = paramInt1;
+    }
+    int m = Math.round(-((RectF)localObject).top);
+    f1 = ((RectF)localObject).height();
+    f2 = paramInt2;
+    if (f1 > f2)
+    {
+      paramInt2 = Math.round(((RectF)localObject).height() - f2);
       paramInt1 = 0;
-      k = Math.round(-localRectF.top);
-      if (localRectF.height() <= paramInt2) {
-        break label159;
-      }
-      m = Math.round(localRectF.height() - paramInt2);
     }
-    for (paramInt2 = 0;; paramInt2 = k)
+    else
     {
-      this.mCurrentX = i;
-      this.mCurrentY = k;
-      if ((i != j) || (k != m)) {
-        this.mScroller.fling(i, k, paramInt3, paramInt4, paramInt1, j, paramInt2, m);
-      }
-      start();
-      return;
-      j = i;
-      paramInt1 = i;
-      break;
-      label159:
-      m = k;
+      paramInt1 = m;
+      paramInt2 = paramInt1;
     }
+    this.mCurrentX = k;
+    this.mCurrentY = m;
+    if ((k != j) || (m != paramInt2)) {
+      this.mScroller.fling(k, m, paramInt3, paramInt4, i, j, paramInt1, paramInt2);
+    }
+    start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.recyclerview.BrowserFlingAnimator
  * JD-Core Version:    0.7.0.1
  */

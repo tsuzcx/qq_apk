@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge android:id="@id/root_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyPullToZoomHeaderXListView android:id="@id/j8a" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:cacheColorHint="@color/ajr" android:divider="@null" android:dividerHeight="0.0dip" tencent:showHeaderView="false" />
+    <com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyPullToZoomHeaderXListView android:id="@id/j8a" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:cacheColorHint="@color/ajr" android:divider="@null" android:dividerHeight="0.0dip" tencent:showHeaderView="false" />
     <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/abp" />
     <FrameLayout android:id="@id/cj7" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <TextView android:id="@id/gf8" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
@@ -14,8 +14,8 @@
         <ViewStub android:id="@id/i5r" android:layout="@layout/acn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         <ViewStub android:id="@id/hzr" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ViewStub android:layout_gravity="right" android:id="@id/jmk" android:layout="@layout/ah2" android:layout_width="wrap_content" android:layout_height="43.0dip" android:layout_marginTop="58.0dip" />
-        <com.tencent.biz.pubaccount.readinjoy.view.widget.ChannelTopPositionView android:layout_gravity="top" android:id="@id/m4z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="39.0dip" />
-        <com.tencent.biz.pubaccount.readinjoy.view.widget.DailyDianDianEntranceView android:layout_gravity="bottom|center|right" android:id="@id/lgh" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="34.0dip" android:src="@drawable/hip" />
+        <com.tencent.mobileqq.kandian.biz.tab.ChannelTopPositionView android:layout_gravity="top" android:id="@id/m4z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="39.0dip" />
+        <com.tencent.mobileqq.kandian.biz.diandian.view.DailyDianDianEntranceView android:layout_gravity="bottom|center|right" android:id="@id/lgh" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="34.0dip" android:src="@drawable/hip" />
         <ImageView android:layout_gravity="bottom|center|right" android:id="@id/du7" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginRight="28.0dip" android:layout_marginBottom="28.0dip" android:src="@drawable/b8h" />
     </FrameLayout>
 </merge>

@@ -1,6 +1,6 @@
 package com.tencent.biz.qcircleshadow.listenerproxy;
 
-import com.ae.light.camera.api.IAEEditorUICallbackListener;
+import com.tencent.aelight.camera.api.IAEEditorUICallbackListener;
 import com.tencent.biz.qcircleshadow.lib.listener.QCircleAEEditorUICallbackListener;
 import java.lang.ref.WeakReference;
 
@@ -24,7 +24,7 @@ public class QCircleAEEditorUICallbackListenerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.listenerproxy.QCircleAEEditorUICallbackListenerProxy
  * JD-Core Version:    0.7.0.1
  */

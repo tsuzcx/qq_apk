@@ -21,7 +21,7 @@ public class c
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return b(paramContext, 160.0F * paramFloat / 320.0F);
+    return b(paramContext, paramFloat * 160.0F / 320.0F);
   }
   
   public static int b(Context paramContext, float paramFloat)
@@ -29,7 +29,7 @@ public class c
     if (a == -1.0F) {
       b(paramContext);
     }
-    return (int)(a * paramFloat + 0.5F);
+    return (int)(paramFloat * a + 0.5F);
   }
   
   private static void b(Context paramContext)
@@ -46,7 +46,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.c
  * JD-Core Version:    0.7.0.1
  */

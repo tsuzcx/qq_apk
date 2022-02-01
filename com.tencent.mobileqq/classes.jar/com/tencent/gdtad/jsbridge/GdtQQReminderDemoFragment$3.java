@@ -1,8 +1,8 @@
 package com.tencent.gdtad.jsbridge;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.ad.tangram.analysis.AdUin;
 import com.tencent.ad.tangram.preorder.AdAppPreOrderManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -20,7 +20,7 @@ class GdtQQReminderDemoFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtQQReminderDemoFragment.3
  * JD-Core Version:    0.7.0.1
  */

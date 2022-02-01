@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now.model;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import com.tencent.mobileqq.nearby.now.protocol.INowShortVideoProtoManager.Callback;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -11,65 +11,85 @@ import com.tencent.qphone.base.util.QLog;
 import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 class PlayListDataModel$1
-  implements NowShortVideoProtoManager.Callback
+  implements INowShortVideoProtoManager.Callback
 {
   PlayListDataModel$1(PlayListDataModel paramPlayListDataModel) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    boolean bool = true;
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i(PlayListDataModel.a(this.a), 2, "errorCode:   " + paramInt);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      paramBundle = PlayListDataModel.a(this.a);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("errorCode:   ");
+      localStringBuilder.append(paramInt);
+      QLog.i(paramBundle, 2, localStringBuilder.toString());
     }
     if (paramArrayOfByte != null) {
       paramBundle = new oidb_0xada.RspBody();
     }
-    try
+    for (;;)
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i(PlayListDataModel.a(this.a), 2, "err_msg:   " + paramBundle.err_msg.get());
-      }
-      if (paramBundle.busi_buf.has())
+      try
       {
-        paramArrayOfByte = new FeedsProtocol.GetMediaDetailRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i(PlayListDataModel.a(this.a), 2, "GetMediaDetailRsp  error_code:   " + paramArrayOfByte.err_code.get() + ",err_msg:     " + paramArrayOfByte.err_msg.get().toStringUtf8() + ",total:  " + paramArrayOfByte.total.get());
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfByte = PlayListDataModel.a(this.a);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("err_msg:   ");
+          localStringBuilder.append(paramBundle.err_msg.get());
+          QLog.i(paramArrayOfByte, 2, localStringBuilder.toString());
         }
-        paramBundle = this.a;
-        if (paramArrayOfByte.is_end.get() == 0) {
-          break label309;
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new FeedsProtocol.GetMediaDetailRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (QLog.isColorLevel())
+          {
+            paramBundle = PlayListDataModel.a(this.a);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("GetMediaDetailRsp  error_code:   ");
+            localStringBuilder.append(paramArrayOfByte.err_code.get());
+            localStringBuilder.append(",err_msg:     ");
+            localStringBuilder.append(paramArrayOfByte.err_msg.get().toStringUtf8());
+            localStringBuilder.append(",total:  ");
+            localStringBuilder.append(paramArrayOfByte.total.get());
+            QLog.i(paramBundle, 2, localStringBuilder.toString());
+          }
+          paramBundle = this.a;
+          int i = paramArrayOfByte.is_end.get();
+          paramInt = 0;
+          if (i == 0) {
+            break label366;
+          }
+          bool = true;
+          paramBundle.jdField_a_of_type_Boolean = bool;
+          this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
+          PlayListDataModel.a(this.a, paramArrayOfByte);
+          PlayListDataModel.a(this.a, PlayListDataModel.a(this.a) + 10);
+          paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener;
+          if (paramArrayOfByte.err_code.has()) {
+            paramInt = paramArrayOfByte.err_code.get();
+          }
+          paramBundle.a(1, paramInt);
+          return;
         }
       }
-      for (;;)
+      catch (Exception paramArrayOfByte)
       {
-        paramBundle.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_a_of_type_Int = paramArrayOfByte.total.get();
-        PlayListDataModel.a(this.a, paramArrayOfByte);
-        PlayListDataModel.a(this.a, PlayListDataModel.a(this.a) + 10);
-        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener;
-        paramInt = i;
-        if (paramArrayOfByte.err_code.has()) {
-          paramInt = paramArrayOfByte.err_code.get();
-        }
-        paramBundle.a(1, paramInt);
-        return;
-        label309:
-        bool = false;
+        paramArrayOfByte.printStackTrace();
       }
       return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+      label366:
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.PlayListDataModel.1
  * JD-Core Version:    0.7.0.1
  */

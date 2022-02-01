@@ -10,13 +10,15 @@ public abstract interface FloatWindowPermissionInterface
   
   public abstract void init(FloatWindowPermissionAdapter paramFloatWindowPermissionAdapter);
   
+  public abstract void requestFWPermission(Activity paramActivity, FloatWindowPermissionInterface.OnRequestResult paramOnRequestResult);
+  
   public abstract void requestPermissionAndDoJump(Activity paramActivity, Runnable paramRunnable);
   
   public abstract void requestPermissionAndDoJump(Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.floatwindow.FloatWindowPermissionInterface
  * JD-Core Version:    0.7.0.1
  */

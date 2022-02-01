@@ -48,52 +48,55 @@ public class PopupCardDialog
     super(paramView, paramInt1, paramInt2);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus = new SoftPanelStatus(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    paramBaseActivity = (LayerDrawable)paramBaseActivity.getResources().getDrawable(2130838071);
+    paramBaseActivity = (LayerDrawable)paramBaseActivity.getResources().getDrawable(2130837918);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable();
     this.b = paramBaseActivity.getDrawable(1);
     this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)paramBaseActivity.mutate());
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131370053, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369735, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable);
   }
   
   private static View a(PopupCardDialog paramPopupCardDialog, Activity paramActivity, int paramInt)
   {
     View localView = paramPopupCardDialog.getContentView();
-    AtPanelTouchController localAtPanelTouchController = (AtPanelTouchController)localView.findViewById(2131365294);
-    int i = AIOUtils.a(60.0F, paramActivity.getResources());
-    IndexBar localIndexBar = (IndexBar)localView.findViewById(2131369039);
-    XListView localXListView = (XListView)localView.findViewById(2131379968);
+    AtPanelTouchController localAtPanelTouchController = (AtPanelTouchController)localView.findViewById(2131365169);
+    int i = AIOUtils.b(60.0F, paramActivity.getResources());
+    IndexBar localIndexBar = (IndexBar)localView.findViewById(2131368761);
+    XListView localXListView = (XListView)localView.findViewById(2131379297);
     ViewGroup.LayoutParams localLayoutParams = localXListView.getLayoutParams();
     localXListView.setOverScrollMode(2);
-    if (paramInt == 1) {
-      localIndexBar.setVisibility(8);
-    }
-    for (localLayoutParams.height = -2;; localLayoutParams.height = -1)
+    if (paramInt == 1)
     {
-      localAtPanelTouchController.a(0, 500);
-      localAtPanelTouchController.setAtPanelTouchListener(paramPopupCardDialog);
-      localAtPanelTouchController.setMode(paramInt);
-      localAtPanelTouchController.setPadding(0, i, 0, 0);
-      localXListView.setLayoutParams(localLayoutParams);
-      return localView;
+      localIndexBar.setVisibility(8);
+      localLayoutParams.height = -2;
+    }
+    else
+    {
       localIndexBar.setVisibility(0);
       ListAdapter localListAdapter = localXListView.getAdapter();
       if (((localListAdapter instanceof QuickAtListAdapter)) && (((QuickAtListAdapter)localListAdapter).b() == 1)) {
         localIndexBar.setVisibility(8);
       }
-      i = AIOUtils.a(40.0F, paramActivity.getResources());
+      i = AIOUtils.b(40.0F, paramActivity.getResources());
+      localLayoutParams.height = -1;
     }
+    localAtPanelTouchController.a(0, 500);
+    localAtPanelTouchController.setAtPanelTouchListener(paramPopupCardDialog);
+    localAtPanelTouchController.setMode(paramInt);
+    localAtPanelTouchController.setPadding(0, i, 0, 0);
+    localXListView.setLayoutParams(localLayoutParams);
+    return localView;
   }
   
   public static PopupCardDialog a(BaseActivity paramBaseActivity, int paramInt1, int paramInt2)
   {
-    View localView = LayoutInflater.from(paramBaseActivity).inflate(2131558669, null);
+    View localView = LayoutInflater.from(paramBaseActivity).inflate(2131558567, null);
     PopupCardDialog localPopupCardDialog = new PopupCardDialog(paramBaseActivity, localView, paramInt1, paramInt2);
     a(localPopupCardDialog, paramBaseActivity, 1);
     localPopupCardDialog.setFocusable(false);
     localView.setOnClickListener(localPopupCardDialog);
-    ((TextView)localView.findViewById(2131363077)).setOnClickListener(localPopupCardDialog);
-    ((RelativeLayout)localView.findViewById(2131363078)).setOnClickListener(localPopupCardDialog);
+    ((TextView)localView.findViewById(2131363018)).setOnClickListener(localPopupCardDialog);
+    ((RelativeLayout)localView.findViewById(2131363019)).setOnClickListener(localPopupCardDialog);
     localPopupCardDialog.setInputMethodMode(32);
     localPopupCardDialog.setInputMethodMode(1);
     localPopupCardDialog.setClippingEnabled(false);
@@ -106,40 +109,39 @@ public class PopupCardDialog
   
   public static void a(PopupWindow paramPopupWindow)
   {
-    int i = 0;
-    if (!AppSetting.d) {}
-    for (;;)
-    {
+    if (!AppSetting.d) {
       return;
-      Method[] arrayOfMethod = PopupWindow.class.getMethods();
-      int j = arrayOfMethod.length;
-      while (i < j)
-      {
-        Method localMethod = arrayOfMethod[i];
-        if (localMethod.getName().equals("setTouchModal")) {
-          try
-          {
-            localMethod.invoke(paramPopupWindow, new Object[] { Boolean.valueOf(false) });
-            return;
-          }
-          catch (Exception paramPopupWindow)
-          {
-            paramPopupWindow.printStackTrace();
-            return;
-          }
+    }
+    Method[] arrayOfMethod = PopupWindow.class.getMethods();
+    int j = arrayOfMethod.length;
+    int i = 0;
+    while (i < j)
+    {
+      Method localMethod = arrayOfMethod[i];
+      if (localMethod.getName().equals("setTouchModal")) {
+        try
+        {
+          localMethod.invoke(paramPopupWindow, new Object[] { Boolean.valueOf(false) });
+          return;
         }
-        i += 1;
+        catch (Exception paramPopupWindow)
+        {
+          paramPopupWindow.printStackTrace();
+          return;
+        }
       }
+      i += 1;
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    if (localObject != null)
     {
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView().getWindowToken(), 0);
+      localObject = (InputMethodManager)((BaseActivity)localObject).getSystemService("input_method");
+      if (localObject != null) {
+        ((InputMethodManager)localObject).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().getDecorView().getWindowToken(), 0);
       }
     }
   }
@@ -151,42 +153,40 @@ public class PopupCardDialog
   
   public void a(int paramInt1, int paramInt2)
   {
-    View localView = getContentView().findViewById(2131362467);
+    View localView = getContentView().findViewById(2131362423);
     if (localView == null) {
       return;
     }
     localView.setVisibility(paramInt1);
-    ((TextView)localView.findViewById(2131370757)).setText(localView.getResources().getText(paramInt2));
-    if (paramInt2 != 2131689914) {}
-    for (paramInt1 = 0;; paramInt1 = 8)
-    {
-      getContentView().findViewById(2131362374).setVisibility(paramInt1);
-      return;
+    ((TextView)localView.findViewById(2131370392)).setText(localView.getResources().getText(paramInt2));
+    if (paramInt2 != 2131689828) {
+      paramInt1 = 0;
+    } else {
+      paramInt1 = 8;
     }
+    getContentView().findViewById(2131362330).setVisibility(paramInt1);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     int j = getHeight();
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView == null) {
       paramInt3 = 0;
-      if (!SoftPanelStatus.a) {
-        break label67;
-      }
+    } else {
+      paramInt3 = localView.getHeight();
     }
-    label67:
-    for (int i = 0;; i = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
-    {
-      paramInt2 = paramInt2 - paramInt3 + i;
-      if (paramInt2 != j) {
-        update(0, 0, -1, paramInt2);
-      }
-      a(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramInt1);
-      return;
-      paramInt3 = this.jdField_a_of_type_AndroidViewView.getHeight();
-      break;
+    int i;
+    if (SoftPanelStatus.a) {
+      i = 0;
+    } else {
+      i = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     }
+    paramInt2 = paramInt2 - paramInt3 + i;
+    if (paramInt2 != j) {
+      update(0, 0, -1, paramInt2);
+    }
+    a(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramInt1);
   }
   
   public void a(PopupCardDialog.Listener paramListener)
@@ -197,15 +197,16 @@ public class PopupCardDialog
   public void a(boolean paramBoolean)
   {
     if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131370053, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369735, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131369735, this.b);
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PopupCardDialog", 2, "JSKJSSKSKSKSK+" + paramBoolean);
-      }
-      return;
-      this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setDrawableByLayerId(2131370053, this.b);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("JSKJSSKSKSKSK+");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("PopupCardDialog", 2, localStringBuilder.toString());
     }
   }
   
@@ -227,18 +228,24 @@ public class PopupCardDialog
     this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus.a();
     this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus.a(null);
     this.jdField_a_of_type_AndroidViewView = null;
-    if (Build.VERSION.SDK_INT >= 11) {
+    if (Build.VERSION.SDK_INT >= 11)
+    {
       super.dismiss();
-    }
-    while ((!isShowing()) || ((this.jdField_a_of_type_AndroidViewAnimationAnimation != null) && (!this.jdField_a_of_type_AndroidViewAnimationAnimation.hasEnded()))) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
+    if (isShowing())
     {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130772342);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
+      Animation localAnimation = this.jdField_a_of_type_AndroidViewAnimationAnimation;
+      if ((localAnimation != null) && (!localAnimation.hasEnded())) {
+        return;
+      }
+      if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
+      {
+        this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2130772372);
+        this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
+      }
+      getContentView().startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
     }
-    getContentView().startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
@@ -260,19 +267,18 @@ public class PopupCardDialog
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363077) {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiPopupCardDialog$Listener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiPopupCardDialog$Listener.a(paramView);
-      }
-    }
-    for (;;)
+    if (paramView.getId() == 2131363018)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() != 2131363078) {
-        dismiss();
+      PopupCardDialog.Listener localListener = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiPopupCardDialog$Listener;
+      if (localListener != null) {
+        localListener.a(paramView);
       }
     }
+    else if (paramView.getId() != 2131363019)
+    {
+      dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
@@ -285,7 +291,7 @@ public class PopupCardDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.PopupCardDialog
  * JD-Core Version:    0.7.0.1
  */

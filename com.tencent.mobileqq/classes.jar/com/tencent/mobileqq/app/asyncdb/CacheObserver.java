@@ -6,9 +6,7 @@ public class CacheObserver
   
   public void notifyEvent(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 0) {
       return;
     }
     onInit();
@@ -18,7 +16,7 @@ public class CacheObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.asyncdb.CacheObserver
  * JD-Core Version:    0.7.0.1
  */

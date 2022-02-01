@@ -21,55 +21,68 @@ public class NetworkReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    while (!paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE")) {
+    if (paramIntent == null) {
       return;
     }
-    paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-    int j;
-    if (paramContext == null)
+    if (paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE"))
     {
-      j = -1;
-      Log.i("NetworkReceiver", "cur type: " + j + " last type: " + lastType + " cur hash code" + hashCode());
-      if (lastType != j) {
-        break label144;
+      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      int j;
+      if (paramContext == null) {
+        j = -1;
+      } else {
+        j = paramContext.getType();
       }
-      Log.e("NetworkReceiver", "same type, ignore!");
-    }
-    label144:
-    label233:
-    for (;;)
-    {
-      lastType = j;
-      Log.e("NetworkReceiver", "Last Type: " + lastType);
-      return;
-      j = paramContext.getType();
-      break;
-      int i = 100;
-      switch (j)
+      paramContext = new StringBuilder();
+      paramContext.append("cur type: ");
+      paramContext.append(j);
+      paramContext.append(" last type: ");
+      paramContext.append(lastType);
+      paramContext.append(" cur hash code");
+      paramContext.append(hashCode());
+      Log.i("NetworkReceiver", paramContext.toString());
+      if (lastType == j)
       {
+        Log.e("NetworkReceiver", "same type, ignore!");
       }
-      for (;;)
+      else
       {
-        if (this.onNetworkCallback == null) {
-          break label233;
+        int i = 100;
+        if (j != -1)
+        {
+          if (j != 0)
+          {
+            if (j == 1)
+            {
+              Log.e("NetworkReceiver", "wifi avaiable!");
+              i = 101;
+            }
+          }
+          else
+          {
+            Log.e("NetworkReceiver", "3G/4G avaiable!");
+            i = 102;
+          }
         }
-        this.onNetworkCallback.handleNetwork(i);
-        break;
-        Log.e("NetworkReceiver", "network not avaiable!");
-        continue;
-        Log.e("NetworkReceiver", "3G/4G avaiable!");
-        i = 102;
-        continue;
-        Log.e("NetworkReceiver", "wifi avaiable!");
-        i = 101;
+        else {
+          Log.e("NetworkReceiver", "network not avaiable!");
+        }
+        paramContext = this.onNetworkCallback;
+        if (paramContext != null) {
+          paramContext.handleNetwork(i);
+        }
       }
+      lastType = j;
+      paramContext = new StringBuilder();
+      paramContext.append("Last Type: ");
+      paramContext.append(lastType);
+      Log.e("NetworkReceiver", paramContext.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.network.NetworkReceiver
  * JD-Core Version:    0.7.0.1
  */

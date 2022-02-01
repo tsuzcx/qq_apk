@@ -27,7 +27,7 @@ import java.util.Set;
 public class NavigateBarManager
   implements Handler.Callback
 {
-  private static int[] jdField_a_of_type_ArrayOfInt = { 2131374581, 2131374581 };
+  private static int[] jdField_a_of_type_ArrayOfInt = { 2131374119, 2131374119 };
   private int jdField_a_of_type_Int = 18;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
@@ -60,25 +60,27 @@ public class NavigateBarManager
   {
     Object localObject1 = null;
     int i = 0;
-    if (i < jdField_a_of_type_ArrayOfInt.length)
+    for (;;)
     {
-      View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(jdField_a_of_type_ArrayOfInt[i]);
-      Object localObject2;
+      Object localObject2 = jdField_a_of_type_ArrayOfInt;
+      if (i >= localObject2.length) {
+        break;
+      }
+      View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(localObject2[i]);
+      localObject2 = localObject1;
       if (localView != null) {
-        if (localObject1 == null) {
+        if (localObject1 != null)
+        {
+          localObject2 = localObject1;
+          if (localView.getBottom() <= localObject1.getBottom()) {}
+        }
+        else
+        {
           localObject2 = localView;
         }
       }
-      for (;;)
-      {
-        i += 1;
-        localObject1 = localObject2;
-        break;
-        localObject2 = localView;
-        if (localView.getBottom() <= localObject1.getBottom()) {
-          localObject2 = localObject1;
-        }
-      }
+      i += 1;
+      localObject1 = localObject2;
     }
     if (localObject1 != null) {
       return localObject1.getId();
@@ -88,64 +90,64 @@ public class NavigateBarManager
   
   private void a(NavigateBar paramNavigateBar)
   {
-    if (paramNavigateBar == null) {
-      QLog.d("NavigateBarManager", 1, "show navigate bar, navigateBar == null");
-    }
-    do
+    if (paramNavigateBar == null)
     {
+      QLog.d("NavigateBarManager", 1, "show navigate bar, navigateBar == null");
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar = paramNavigateBar;
-      Object localObject1 = paramNavigateBar.a();
-      if (localObject1 != null)
-      {
-        Object localObject2 = ((View)localObject1).getParent();
-        if ((localObject2 instanceof ViewGroup)) {
-          ((ViewGroup)localObject2).removeView((View)localObject1);
-        }
-        if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null)
-        {
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout.setMinimumHeight(ViewUtils.b(45.0F));
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-          this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-          localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-          ((RelativeLayout.LayoutParams)localObject2).addRule(11);
-          int i = a();
-          if (i != -1) {
-            ((RelativeLayout.LayoutParams)localObject2).addRule(3, i);
-          }
-          ((RelativeLayout.LayoutParams)localObject2).topMargin = ViewUtils.a(this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject2);
-        }
-        if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
-        {
-          this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 1.0F, 2, 0.0F, 2, 0.0F, 2, 0.0F);
-          this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
-          this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-        }
-        if (this.jdField_b_of_type_AndroidViewAnimationAnimation == null)
-        {
-          this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
-          this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(500L);
-          this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener);
-        }
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-        localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        if (paramNavigateBar.a() > 0L)
-        {
-          localObject1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-          ((Message)localObject1).arg1 = paramNavigateBar.jdField_a_of_type_Int;
-          this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject1, paramNavigateBar.a());
-        }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar = paramNavigateBar;
+    Object localObject1 = paramNavigateBar.a();
+    if (localObject1 != null)
+    {
+      Object localObject2 = ((View)localObject1).getParent();
+      if ((localObject2 instanceof ViewGroup)) {
+        ((ViewGroup)localObject2).removeView((View)localObject1);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("NavigateBarManager", 2, String.format("show navigate bar: %s", new Object[] { paramNavigateBar }));
+      if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null)
+      {
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setMinimumHeight(ViewUtils.b(45.0F));
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+        this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+        ((RelativeLayout.LayoutParams)localObject2).addRule(11);
+        int i = a();
+        if (i != -1) {
+          ((RelativeLayout.LayoutParams)localObject2).addRule(3, i);
+        }
+        ((RelativeLayout.LayoutParams)localObject2).topMargin = ViewUtils.a(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject2);
+      }
+      if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
+      {
+        this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 1.0F, 2, 0.0F, 2, 0.0F, 2, 0.0F);
+        this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
+        this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+      }
+      if (this.jdField_b_of_type_AndroidViewAnimationAnimation == null)
+      {
+        this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
+        this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(500L);
+        this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener);
+      }
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      if (paramNavigateBar.a() > 0L)
+      {
+        localObject1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+        ((Message)localObject1).arg1 = paramNavigateBar.jdField_a_of_type_Int;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject1, paramNavigateBar.a());
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NavigateBarManager", 2, String.format("show navigate bar: %s", new Object[] { paramNavigateBar }));
+    }
   }
   
   private void c()
@@ -153,14 +155,16 @@ public class NavigateBarManager
     if (QLog.isColorLevel()) {
       QLog.d("NavigateBarManager", 2, String.format("hide navigate bar: %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar }));
     }
-    if ((this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0))
+    Object localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    if ((localObject != null) && (((RelativeLayout)localObject).getVisibility() == 0))
     {
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar;
+    if (localObject != null)
     {
-      b(this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar.jdField_a_of_type_Int);
+      b(((NavigateBar)localObject).jdField_a_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar = null;
     }
   }
@@ -168,45 +172,52 @@ public class NavigateBarManager
   public void a()
   {
     this.jdField_a_of_type_JavaUtilHashMap.entrySet();
-    Object localObject1 = null;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    if (localIterator.hasNext())
+    label23:
+    NavigateBar localNavigateBar;
+    for (Object localObject = null; localIterator.hasNext(); localObject = localNavigateBar)
     {
-      NavigateBar localNavigateBar = (NavigateBar)((Map.Entry)localIterator.next()).getValue();
-      Object localObject2;
-      if (localObject1 == null) {
-        localObject2 = localNavigateBar;
-      }
-      for (;;)
-      {
-        localObject1 = localObject2;
-        break;
-        localObject2 = localNavigateBar;
-        if (localNavigateBar.b <= localObject1.b) {
-          localObject2 = localObject1;
-        }
+      localNavigateBar = (NavigateBar)((Map.Entry)localIterator.next()).getValue();
+      if ((localObject != null) && (localNavigateBar.b <= localObject.b)) {
+        break label23;
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.d("NavigateBarManager", 2, String.format("refresh navigate bar: %s", new Object[] { localObject1 }));
+      QLog.d("NavigateBarManager", 2, String.format("refresh navigate bar: %s", new Object[] { localObject }));
     }
-    if (localObject1 != null) {
-      a(localObject1);
+    if (localObject != null) {
+      a(localObject);
     }
   }
   
   public void a(int paramInt)
   {
-    Object localObject;
     if ((paramInt > 0) && (paramInt < 5))
     {
-      localObject = null;
-      switch (paramInt)
+      Object localObject;
+      if (paramInt != 1)
       {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {
+              localObject = null;
+            } else {
+              localObject = new TroopAppShortcutHasNewAppNavBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramInt, 4);
+            }
+          }
+          else {
+            localObject = new TroopAppShortcutNavBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramInt, 4);
+          }
+        }
+        else {
+          localObject = new TroopDNANavBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramInt, 4);
+        }
       }
-    }
-    for (;;)
-    {
+      else {
+        localObject = new IntimateInfoNavBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramInt, 4);
+      }
       if (localObject != null)
       {
         boolean bool = ((NavigateBar)localObject).a();
@@ -217,34 +228,29 @@ public class NavigateBarManager
           QLog.d("NavigateBarManager", 2, String.format("addTask, barId: %s, needShow: %s", new Object[] { Integer.valueOf(((NavigateBar)localObject).jdField_a_of_type_Int), Boolean.valueOf(bool) }));
         }
       }
-      return;
-      localObject = new IntimateInfoNavBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramInt, 4);
-      continue;
-      localObject = new TroopDNANavBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramInt, 4);
-      continue;
-      localObject = new TroopAppShortcutNavBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramInt, 4);
-      continue;
-      localObject = new TroopAppShortcutHasNewAppNavBar(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramInt, 4);
     }
   }
   
   public void b()
   {
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null)
+    Object localObject = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    if (localObject != null)
     {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      ((RelativeLayout)localObject).removeAllViews();
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_b_of_type_AndroidWidgetRelativeLayout) != -1) {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_b_of_type_AndroidWidgetRelativeLayout);
       }
       this.jdField_b_of_type_AndroidWidgetRelativeLayout = null;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar.d();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar;
+      if (localObject != null) {
+        ((NavigateBar)localObject).d();
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar = null;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject != null) {
+      ((HashMap)localObject).clear();
     }
     if (QLog.isColorLevel()) {
       QLog.d("NavigateBarManager", 2, "onDestroy");
@@ -266,39 +272,41 @@ public class NavigateBarManager
   
   public void d(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar.jdField_a_of_type_Int == paramInt)) {
+    NavigateBar localNavigateBar = this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar;
+    if ((localNavigateBar != null) && (localNavigateBar.jdField_a_of_type_Int == paramInt)) {
       c();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NavigateBarManager", 2, String.format("hide navigate bar id: %s", new Object[] { Integer.valueOf(paramInt) }));
-      }
-      return;
+    } else {
       b(paramInt);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NavigateBarManager", 2, String.format("hide navigate bar id: %s", new Object[] { Integer.valueOf(paramInt) }));
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 1)
     {
-    }
-    for (;;)
-    {
-      return false;
       int i = paramMessage.arg1;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar != null) && (i == this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar.jdField_a_of_type_Int)) {
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBar;
+      if ((paramMessage != null) && (i == paramMessage.jdField_a_of_type_Int))
+      {
         c();
-      } else {
-        QLog.d("NavigateBarManager", 1, "hide bar msg but not found, barId: " + i);
+      }
+      else
+      {
+        paramMessage = new StringBuilder();
+        paramMessage.append("hide bar msg but not found, barId: ");
+        paramMessage.append(i);
+        QLog.d("NavigateBarManager", 1, paramMessage.toString());
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.NavigateBarManager
  * JD-Core Version:    0.7.0.1
  */

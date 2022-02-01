@@ -14,23 +14,19 @@ class LoadDex$4
     try
     {
       QQAppInterface.getBatteryStats().a();
-      Step.AmStepFactory.b(29, this.this$0.mDirector, null).step();
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LoadDex", 2, "", localThrowable);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("LoadDex", 2, "", localThrowable);
       }
     }
+    Step.AmStepFactory.b(29, this.this$0.mDirector, null).step();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadDex.4
  * JD-Core Version:    0.7.0.1
  */

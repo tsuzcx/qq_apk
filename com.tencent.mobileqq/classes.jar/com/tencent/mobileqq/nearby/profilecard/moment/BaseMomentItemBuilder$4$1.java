@@ -2,11 +2,12 @@ package com.tencent.mobileqq.nearby.profilecard.moment;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.nearby.now.utils.INowVideoReporter;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 
 class BaseMomentItemBuilder$4$1
-  implements NearbyMomentManager.DeleteFeedCallback
+  implements DeleteFeedCallback
 {
   BaseMomentItemBuilder$4$1(BaseMomentItemBuilder.4 param4) {}
   
@@ -14,20 +15,22 @@ class BaseMomentItemBuilder$4$1
   {
     if (paramBoolean)
     {
-      NowVideoReporter localNowVideoReporter = new NowVideoReporter().h("data_card").i("feed_delete_suc").d("2").a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)).b(paramString).c(String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)));
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_Boolean) {}
-      for (paramString = "1";; paramString = "2")
-      {
-        localNowVideoReporter.e(paramString).b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
+      INowVideoReporter localINowVideoReporter = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("data_card").opName("feed_delete_suc");
+      String str = "2";
+      localINowVideoReporter = localINowVideoReporter.source("2").timelong(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)).feedid(paramString).feed_type(String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)));
+      paramString = str;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_Boolean) {
+        paramString = "1";
       }
+      localINowVideoReporter.d1(paramString).report(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131701112), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131701253), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder.4.1
  * JD-Core Version:    0.7.0.1
  */

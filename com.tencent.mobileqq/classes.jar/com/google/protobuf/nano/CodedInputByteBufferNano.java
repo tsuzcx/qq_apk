@@ -19,18 +19,18 @@ public final class CodedInputByteBufferNano
   {
     this.buffer = paramArrayOfByte;
     this.bufferStart = paramInt1;
-    this.bufferSize = (paramInt1 + paramInt2);
+    this.bufferSize = (paramInt2 + paramInt1);
     this.bufferPos = paramInt1;
   }
   
   public static int decodeZigZag32(int paramInt)
   {
-    return paramInt >>> 1 ^ -(paramInt & 0x1);
+    return -(paramInt & 0x1) ^ paramInt >>> 1;
   }
   
   public static long decodeZigZag64(long paramLong)
   {
-    return paramLong >>> 1 ^ -(1L & paramLong);
+    return -(paramLong & 1L) ^ paramLong >>> 1;
   }
   
   public static CodedInputByteBufferNano newInstance(byte[] paramArrayOfByte)
@@ -47,10 +47,11 @@ public final class CodedInputByteBufferNano
   {
     this.bufferSize += this.bufferSizeAfterLimit;
     int i = this.bufferSize;
-    if (i > this.currentLimit)
+    int j = this.currentLimit;
+    if (i > j)
     {
-      this.bufferSizeAfterLimit = (i - this.currentLimit);
-      this.bufferSize -= this.bufferSizeAfterLimit;
+      this.bufferSizeAfterLimit = (i - j);
+      this.bufferSize = (i - this.bufferSizeAfterLimit);
       return;
     }
     this.bufferSizeAfterLimit = 0;
@@ -58,18 +59,19 @@ public final class CodedInputByteBufferNano
   
   public void checkLastTagWas(int paramInt)
   {
-    if (this.lastTag != paramInt) {
-      throw InvalidProtocolBufferNanoException.invalidEndTag();
+    if (this.lastTag == paramInt) {
+      return;
     }
+    throw InvalidProtocolBufferNanoException.invalidEndTag();
   }
   
   public int getBytesUntilLimit()
   {
-    if (this.currentLimit == 2147483647) {
+    int i = this.currentLimit;
+    if (i == 2147483647) {
       return -1;
     }
-    int i = this.bufferPos;
-    return this.currentLimit - i;
+    return i - this.bufferPos;
   }
   
   public byte[] getData(int paramInt1, int paramInt2)
@@ -101,17 +103,19 @@ public final class CodedInputByteBufferNano
   
   public int pushLimit(int paramInt)
   {
-    if (paramInt < 0) {
-      throw InvalidProtocolBufferNanoException.negativeSize();
-    }
-    paramInt = this.bufferPos + paramInt;
-    int i = this.currentLimit;
-    if (paramInt > i) {
+    if (paramInt >= 0)
+    {
+      paramInt += this.bufferPos;
+      int i = this.currentLimit;
+      if (paramInt <= i)
+      {
+        this.currentLimit = paramInt;
+        recomputeBufferSizeAfterLimit();
+        return i;
+      }
       throw InvalidProtocolBufferNanoException.truncatedMessage();
     }
-    this.currentLimit = paramInt;
-    recomputeBufferSizeAfterLimit();
-    return i;
+    throw InvalidProtocolBufferNanoException.negativeSize();
   }
   
   public boolean readBool()
@@ -122,11 +126,13 @@ public final class CodedInputByteBufferNano
   public byte[] readBytes()
   {
     int i = readRawVarint32();
-    if ((i <= this.bufferSize - this.bufferPos) && (i > 0))
+    int j = this.bufferSize;
+    int k = this.bufferPos;
+    if ((i <= j - k) && (i > 0))
     {
       byte[] arrayOfByte = new byte[i];
-      System.arraycopy(this.buffer, this.bufferPos, arrayOfByte, 0, i);
-      this.bufferPos = (i + this.bufferPos);
+      System.arraycopy(this.buffer, k, arrayOfByte, 0, i);
+      this.bufferPos += i;
       return arrayOfByte;
     }
     if (i == 0) {
@@ -162,13 +168,16 @@ public final class CodedInputByteBufferNano
   
   public void readGroup(MessageNano paramMessageNano, int paramInt)
   {
-    if (this.recursionDepth >= this.recursionLimit) {
-      throw InvalidProtocolBufferNanoException.recursionLimitExceeded();
+    int i = this.recursionDepth;
+    if (i < this.recursionLimit)
+    {
+      this.recursionDepth = (i + 1);
+      paramMessageNano.mergeFrom(this);
+      checkLastTagWas(WireFormatNano.makeTag(paramInt, 4));
+      this.recursionDepth -= 1;
+      return;
     }
-    this.recursionDepth += 1;
-    paramMessageNano.mergeFrom(this);
-    checkLastTagWas(WireFormatNano.makeTag(paramInt, 4));
-    this.recursionDepth -= 1;
+    throw InvalidProtocolBufferNanoException.recursionLimitExceeded();
   }
   
   public int readInt32()
@@ -184,15 +193,17 @@ public final class CodedInputByteBufferNano
   public void readMessage(MessageNano paramMessageNano)
   {
     int i = readRawVarint32();
-    if (this.recursionDepth >= this.recursionLimit) {
-      throw InvalidProtocolBufferNanoException.recursionLimitExceeded();
+    if (this.recursionDepth < this.recursionLimit)
+    {
+      i = pushLimit(i);
+      this.recursionDepth += 1;
+      paramMessageNano.mergeFrom(this);
+      checkLastTagWas(0);
+      this.recursionDepth -= 1;
+      popLimit(i);
+      return;
     }
-    i = pushLimit(i);
-    this.recursionDepth += 1;
-    paramMessageNano.mergeFrom(this);
-    checkLastTagWas(0);
-    this.recursionDepth -= 1;
-    popLimit(i);
+    throw InvalidProtocolBufferNanoException.recursionLimitExceeded();
   }
   
   Object readPrimitiveField(int paramInt)
@@ -202,70 +213,77 @@ public final class CodedInputByteBufferNano
     case 10: 
     case 11: 
     default: 
-      throw new IllegalArgumentException("Unknown type " + paramInt);
-    case 1: 
-      return Double.valueOf(readDouble());
-    case 2: 
-      return Float.valueOf(readFloat());
-    case 3: 
-      return Long.valueOf(readInt64());
-    case 4: 
-      return Long.valueOf(readUInt64());
-    case 5: 
-      return Integer.valueOf(readInt32());
-    case 6: 
-      return Long.valueOf(readFixed64());
-    case 7: 
-      return Integer.valueOf(readFixed32());
-    case 8: 
-      return Boolean.valueOf(readBool());
-    case 9: 
-      return readString();
-    case 12: 
-      return readBytes();
-    case 13: 
-      return Integer.valueOf(readUInt32());
-    case 14: 
-      return Integer.valueOf(readEnum());
-    case 15: 
-      return Integer.valueOf(readSFixed32());
-    case 16: 
-      return Long.valueOf(readSFixed64());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unknown type ");
+      localStringBuilder.append(paramInt);
+      throw new IllegalArgumentException(localStringBuilder.toString());
+    case 18: 
+      return Long.valueOf(readSInt64());
     case 17: 
       return Integer.valueOf(readSInt32());
+    case 16: 
+      return Long.valueOf(readSFixed64());
+    case 15: 
+      return Integer.valueOf(readSFixed32());
+    case 14: 
+      return Integer.valueOf(readEnum());
+    case 13: 
+      return Integer.valueOf(readUInt32());
+    case 12: 
+      return readBytes();
+    case 9: 
+      return readString();
+    case 8: 
+      return Boolean.valueOf(readBool());
+    case 7: 
+      return Integer.valueOf(readFixed32());
+    case 6: 
+      return Long.valueOf(readFixed64());
+    case 5: 
+      return Integer.valueOf(readInt32());
+    case 4: 
+      return Long.valueOf(readUInt64());
+    case 3: 
+      return Long.valueOf(readInt64());
+    case 2: 
+      return Float.valueOf(readFloat());
     }
-    return Long.valueOf(readSInt64());
+    return Double.valueOf(readDouble());
   }
   
   public byte readRawByte()
   {
-    if (this.bufferPos == this.bufferSize) {
-      throw InvalidProtocolBufferNanoException.truncatedMessage();
-    }
-    byte[] arrayOfByte = this.buffer;
     int i = this.bufferPos;
-    this.bufferPos = (i + 1);
-    return arrayOfByte[i];
+    if (i != this.bufferSize)
+    {
+      byte[] arrayOfByte = this.buffer;
+      this.bufferPos = (i + 1);
+      return arrayOfByte[i];
+    }
+    throw InvalidProtocolBufferNanoException.truncatedMessage();
   }
   
   public byte[] readRawBytes(int paramInt)
   {
-    if (paramInt < 0) {
-      throw InvalidProtocolBufferNanoException.negativeSize();
-    }
-    if (this.bufferPos + paramInt > this.currentLimit)
+    if (paramInt >= 0)
     {
-      skipRawBytes(this.currentLimit - this.bufferPos);
+      int i = this.bufferPos;
+      int j = this.currentLimit;
+      if (i + paramInt <= j)
+      {
+        if (paramInt <= this.bufferSize - i)
+        {
+          byte[] arrayOfByte = new byte[paramInt];
+          System.arraycopy(this.buffer, i, arrayOfByte, 0, paramInt);
+          this.bufferPos += paramInt;
+          return arrayOfByte;
+        }
+        throw InvalidProtocolBufferNanoException.truncatedMessage();
+      }
+      skipRawBytes(j - i);
       throw InvalidProtocolBufferNanoException.truncatedMessage();
     }
-    if (paramInt <= this.bufferSize - this.bufferPos)
-    {
-      byte[] arrayOfByte = new byte[paramInt];
-      System.arraycopy(this.buffer, this.bufferPos, arrayOfByte, 0, paramInt);
-      this.bufferPos += paramInt;
-      return arrayOfByte;
-    }
-    throw InvalidProtocolBufferNanoException.truncatedMessage();
+    throw InvalidProtocolBufferNanoException.negativeSize();
   }
   
   public int readRawLittleEndian32()
@@ -290,44 +308,48 @@ public final class CodedInputByteBufferNano
   public int readRawVarint32()
   {
     int i = readRawByte();
-    if (i >= 0) {}
-    int k;
-    do
-    {
+    if (i >= 0) {
       return i;
-      i &= 0x7F;
-      j = readRawByte();
-      if (j >= 0) {
-        return i | j << 7;
-      }
-      i |= (j & 0x7F) << 7;
-      j = readRawByte();
-      if (j >= 0) {
-        return i | j << 14;
-      }
-      i |= (j & 0x7F) << 14;
-      k = readRawByte();
-      if (k >= 0) {
-        return i | k << 21;
-      }
-      j = readRawByte();
-      k = i | (k & 0x7F) << 21 | j << 28;
-      i = k;
-    } while (j >= 0);
-    int j = 0;
+    }
+    i &= 0x7F;
+    int j = readRawByte();
+    if (j >= 0) {
+      j <<= 7;
+    }
     for (;;)
     {
-      if (j >= 5) {
-        break label133;
+      return i | j;
+      i |= (j & 0x7F) << 7;
+      j = readRawByte();
+      if (j >= 0)
+      {
+        j <<= 14;
       }
-      i = k;
-      if (readRawByte() >= 0) {
-        break;
+      else
+      {
+        i |= (j & 0x7F) << 14;
+        j = readRawByte();
+        if (j < 0) {
+          break;
+        }
+        j <<= 21;
       }
-      j += 1;
     }
-    label133:
-    throw InvalidProtocolBufferNanoException.malformedVarint();
+    int k = readRawByte();
+    j = i | (j & 0x7F) << 21 | k << 28;
+    if (k < 0)
+    {
+      i = 0;
+      while (i < 5)
+      {
+        if (readRawByte() >= 0) {
+          return j;
+        }
+        i += 1;
+      }
+      throw InvalidProtocolBufferNanoException.malformedVarint();
+    }
+    return j;
   }
   
   public long readRawVarint64()
@@ -343,7 +365,11 @@ public final class CodedInputByteBufferNano
       }
       i += 7;
     }
-    throw InvalidProtocolBufferNanoException.malformedVarint();
+    InvalidProtocolBufferNanoException localInvalidProtocolBufferNanoException = InvalidProtocolBufferNanoException.malformedVarint();
+    for (;;)
+    {
+      throw localInvalidProtocolBufferNanoException;
+    }
   }
   
   public int readSFixed32()
@@ -369,10 +395,12 @@ public final class CodedInputByteBufferNano
   public String readString()
   {
     int i = readRawVarint32();
-    if ((i <= this.bufferSize - this.bufferPos) && (i > 0))
+    int j = this.bufferSize;
+    int k = this.bufferPos;
+    if ((i <= j - k) && (i > 0))
     {
-      String str = new String(this.buffer, this.bufferPos, i, InternalNano.UTF_8);
-      this.bufferPos = (i + this.bufferPos);
+      String str = new String(this.buffer, k, i, InternalNano.UTF_8);
+      this.bufferPos += i;
       return str;
     }
     return new String(readRawBytes(i), InternalNano.UTF_8);
@@ -386,10 +414,11 @@ public final class CodedInputByteBufferNano
       return 0;
     }
     this.lastTag = readRawVarint32();
-    if (this.lastTag == 0) {
-      throw InvalidProtocolBufferNanoException.invalidTag();
+    int i = this.lastTag;
+    if (i != 0) {
+      return i;
     }
-    return this.lastTag;
+    throw InvalidProtocolBufferNanoException.invalidTag();
   }
   
   public int readUInt32()
@@ -406,58 +435,89 @@ public final class CodedInputByteBufferNano
   
   public void rewindToPosition(int paramInt)
   {
-    if (paramInt > this.bufferPos - this.bufferStart) {
-      throw new IllegalArgumentException("Position " + paramInt + " is beyond current " + (this.bufferPos - this.bufferStart));
+    int i = this.bufferPos;
+    int j = this.bufferStart;
+    if (paramInt <= i - j)
+    {
+      if (paramInt >= 0)
+      {
+        this.bufferPos = (j + paramInt);
+        return;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Bad position ");
+      localStringBuilder.append(paramInt);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("Bad position " + paramInt);
-    }
-    this.bufferPos = (this.bufferStart + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Position ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" is beyond current ");
+    localStringBuilder.append(this.bufferPos - this.bufferStart);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public int setRecursionLimit(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("Recursion limit cannot be negative: " + paramInt);
+    if (paramInt >= 0)
+    {
+      int i = this.recursionLimit;
+      this.recursionLimit = paramInt;
+      return i;
     }
-    int i = this.recursionLimit;
-    this.recursionLimit = paramInt;
-    return i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Recursion limit cannot be negative: ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public int setSizeLimit(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("Size limit cannot be negative: " + paramInt);
+    if (paramInt >= 0)
+    {
+      int i = this.sizeLimit;
+      this.sizeLimit = paramInt;
+      return i;
     }
-    int i = this.sizeLimit;
-    this.sizeLimit = paramInt;
-    return i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Size limit cannot be negative: ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public boolean skipField(int paramInt)
   {
-    switch (WireFormatNano.getTagWireType(paramInt))
+    int i = WireFormatNano.getTagWireType(paramInt);
+    if (i != 0)
     {
-    default: 
-      throw InvalidProtocolBufferNanoException.invalidWireType();
-    case 0: 
-      readInt32();
-      return true;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i == 5)
+              {
+                readRawLittleEndian32();
+                return true;
+              }
+              throw InvalidProtocolBufferNanoException.invalidWireType();
+            }
+            return false;
+          }
+          skipMessage();
+          checkLastTagWas(WireFormatNano.makeTag(WireFormatNano.getTagFieldNumber(paramInt), 4));
+          return true;
+        }
+        skipRawBytes(readRawVarint32());
+        return true;
+      }
       readRawLittleEndian64();
       return true;
-    case 2: 
-      skipRawBytes(readRawVarint32());
-      return true;
-    case 3: 
-      skipMessage();
-      checkLastTagWas(WireFormatNano.makeTag(WireFormatNano.getTagFieldNumber(paramInt), 4));
-      return true;
-    case 4: 
-      return false;
     }
-    readRawLittleEndian32();
+    readInt32();
     return true;
   }
   
@@ -472,25 +532,28 @@ public final class CodedInputByteBufferNano
   
   public void skipRawBytes(int paramInt)
   {
-    if (paramInt < 0) {
-      throw InvalidProtocolBufferNanoException.negativeSize();
-    }
-    if (this.bufferPos + paramInt > this.currentLimit)
+    if (paramInt >= 0)
     {
-      skipRawBytes(this.currentLimit - this.bufferPos);
+      int i = this.bufferPos;
+      int j = this.currentLimit;
+      if (i + paramInt <= j)
+      {
+        if (paramInt <= this.bufferSize - i)
+        {
+          this.bufferPos = (i + paramInt);
+          return;
+        }
+        throw InvalidProtocolBufferNanoException.truncatedMessage();
+      }
+      skipRawBytes(j - i);
       throw InvalidProtocolBufferNanoException.truncatedMessage();
     }
-    if (paramInt <= this.bufferSize - this.bufferPos)
-    {
-      this.bufferPos += paramInt;
-      return;
-    }
-    throw InvalidProtocolBufferNanoException.truncatedMessage();
+    throw InvalidProtocolBufferNanoException.negativeSize();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.protobuf.nano.CodedInputByteBufferNano
  * JD-Core Version:    0.7.0.1
  */

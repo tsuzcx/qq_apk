@@ -7,7 +7,7 @@ public class ForwardTroopListFragment$MyAvatarObserver
 {
   protected ForwardTroopListFragment$MyAvatarObserver(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
       this.a.a();
@@ -16,7 +16,7 @@ public class ForwardTroopListFragment$MyAvatarObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardTroopListFragment.MyAvatarObserver
  * JD-Core Version:    0.7.0.1
  */

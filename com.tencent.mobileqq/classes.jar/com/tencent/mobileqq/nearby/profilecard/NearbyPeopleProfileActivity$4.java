@@ -13,52 +13,61 @@ class NearbyPeopleProfileActivity$4
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 101: 
-    case 100: 
-      do
+    int i = paramMessage.what;
+    if (i != 207) {
+      switch (i)
       {
-        do
+      default: 
+        switch (i)
         {
+        default: 
           return;
-          this.a.b();
-          ProfilePerformanceReport localProfilePerformanceReport = ProfilePerformanceReport.a;
-          if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a())) {
-            localProfilePerformanceReport.b(5);
-          }
-        } while (paramMessage.obj == null);
-        paramMessage = (NearbyPeopleCard)paramMessage.obj;
-        this.a.b = true;
-        this.a.a(paramMessage, true, false);
+        case 205: 
+          this.a.dismissWaittingDialog();
+          return;
+        case 204: 
+          paramMessage = this.a;
+          paramMessage.showWaitingDialog(paramMessage.getString(2131694409));
+          return;
+        case 203: 
+          NearbyPeopleProfileActivity.access$500(this.a).a(false);
+          return;
+        }
+        NearbyPeopleProfileActivity.access$500(this.a).a(true);
+        this.a.mHandler.sendEmptyMessageDelayed(203, 1500L);
         return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      NearbyPeopleProfileActivity.a(this.a).b();
-      return;
-    case 102: 
-      NearbyPeopleProfileActivity.a(this.a).b(paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 202: 
-      NearbyPeopleProfileActivity.a(this.a).a(true);
-      this.a.a.sendEmptyMessageDelayed(203, 1500L);
-      return;
-    case 203: 
-      NearbyPeopleProfileActivity.a(this.a).a(false);
-      return;
-    case 204: 
-      this.a.a(this.a.getString(2131694444));
-      return;
-    case 207: 
-      this.a.a(HardCodeUtil.a(2131707252));
-      return;
+      case 102: 
+        NearbyPeopleProfileActivity.access$500(this.a).a(paramMessage.arg1, paramMessage.arg2);
+        return;
+      case 101: 
+        this.a.dismissWaittingDialog();
+        Object localObject = ProfilePerformanceReport.a;
+        if ((localObject != null) && (((ProfilePerformanceReport)localObject).a())) {
+          ((ProfilePerformanceReport)localObject).b(5);
+        }
+        if (paramMessage.obj == null) {
+          break;
+        }
+        paramMessage = (NearbyPeopleCard)paramMessage.obj;
+        localObject = this.a;
+        ((NearbyPeopleProfileActivity)localObject).mHasFetchedProfile = true;
+        ((NearbyPeopleProfileActivity)localObject).handleNearbyProfileCard(paramMessage, true, false);
+        return;
+      case 100: 
+        if (NearbyPeopleProfileActivity.access$400(this.a) == null) {
+          break;
+        }
+        NearbyPeopleProfileActivity.access$400(this.a).b();
+        return;
+      }
+    } else {
+      this.a.showWaitingDialog(HardCodeUtil.a(2131707277));
     }
-    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.4
  * JD-Core Version:    0.7.0.1
  */

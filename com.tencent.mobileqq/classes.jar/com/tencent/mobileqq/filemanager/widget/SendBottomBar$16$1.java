@@ -1,25 +1,18 @@
 package com.tencent.mobileqq.filemanager.widget;
 
 import android.os.AsyncTask;
-import com.dataline.core.DirectForwarder;
-import com.tencent.device.msg.data.DeviceComnFileMsgProcessor;
-import com.tencent.device.msg.data.DeviceMsgHandle;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RouterHandler;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.app.IQQFavProxy;
+import com.tencent.mobileqq.filemanager.api.IQQFileEngine;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.data.FMDataCache;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import cooperation.troop.TroopFileProxyActivity;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 class SendBottomBar$16$1
   extends AsyncTask<Void, Void, Void>
@@ -30,101 +23,82 @@ class SendBottomBar$16$1
   {
     paramVarArgs = SendBottomBar.a(this.a.this$0).a();
     int i = SendBottomBar.a(this.a.this$0).a();
-    Object localObject1 = SendBottomBar.a(this.a.this$0).b();
+    Object localObject = SendBottomBar.a(this.a.this$0).b();
     if (i == 5)
     {
-      TroopFileProxyActivity.a.addAll(FMDataCache.a());
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendLocalFileToTroop(FMDataCache.a());
       return null;
     }
-    Object localObject2;
     if (paramVarArgs.equals(AppConstants.DATALINE_PC_UIN))
     {
-      localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(FMDataCache.a());
-      paramVarArgs = (DataLineHandler)SendBottomBar.a(this.a.this$0).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-      paramVarArgs.a((ArrayList)localObject1);
-      localObject1 = FMDataCache.b().iterator();
-      i = 0;
-      if (((Iterator)localObject1).hasNext())
+      paramVarArgs = new ArrayList();
+      paramVarArgs.addAll(FMDataCache.a());
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendFiles(paramVarArgs);
+      paramVarArgs = FMDataCache.b().iterator();
+      while (paramVarArgs.hasNext())
       {
-        localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
-        if (((FileManagerEntity)localObject2).nFileType == 13)
-        {
-          int j = i;
-          if (paramVarArgs.a((FileManagerEntity)localObject2) == 0L) {
-            j = i | 0x1;
-          }
-          i = j;
+        localObject = (FileManagerEntity)paramVarArgs.next();
+        if (((FileManagerEntity)localObject).nFileType == 13) {
+          ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendTencentDocEntity((FileManagerEntity)localObject);
+        } else if ((((FileManagerEntity)localObject).getCloudType() == 2) && (((FileManagerEntity)localObject).WeiYunFileId != null)) {
+          ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendWeiYunFile((FileManagerEntity)localObject);
+        } else {
+          ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).forwardFileManagerEntity((FileManagerEntity)localObject);
         }
       }
+      paramVarArgs = FMDataCache.d().iterator();
+      while (paramVarArgs.hasNext())
+      {
+        localObject = (WeiYunFileInfo)paramVarArgs.next();
+        ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendWeiYunFile((WeiYunFileInfo)localObject);
+      }
+      if (FMDataCache.e().size() > 0)
+      {
+        ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendFavFiles(FMDataCache.e(), AppConstants.DATALINE_PC_UIN, 6000, null);
+        return null;
+      }
     }
-    for (;;)
+    else
     {
-      break;
-      if ((((FileManagerEntity)localObject2).getCloudType() == 2) && (((FileManagerEntity)localObject2).WeiYunFileId != null))
+      if (i == 6002)
       {
-        paramVarArgs.a((FileManagerEntity)localObject2);
+        localObject = new ArrayList();
+        ((ArrayList)localObject).addAll(FMDataCache.a());
+        ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendFilesWithService((ArrayList)localObject, null, null, Long.parseLong(paramVarArgs));
+        return null;
       }
-      else if (!paramVarArgs.a().a((FileManagerEntity)localObject2))
+      if (i == 9501)
       {
-        i |= 0x4;
-        continue;
-        localObject1 = FMDataCache.d().iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          paramVarArgs.a((WeiYunFileInfo)((Iterator)localObject1).next());
+        localObject = new ArrayList();
+        ((ArrayList)localObject).addAll(FMDataCache.a());
+        ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).sendFilesToDevice(paramVarArgs, (ArrayList)localObject);
+        return null;
+      }
+      boolean bool = SendBottomBar.a(this.a.this$0).i();
+      ((IQQFileEngine)SendBottomBar.a(this.a.this$0).getRuntimeService(IQQFileEngine.class)).sendAllSelectedFiles(bool, (String)localObject, paramVarArgs, i);
+      int j = 0;
+      paramVarArgs = FMDataCache.b().iterator();
+      do
+      {
+        i = j;
+        if (!paramVarArgs.hasNext()) {
+          break;
         }
-        if (FMDataCache.e().size() > 0) {
-          SendBottomBar.a(this.a.this$0).getFileManagerEngine().a().sendFavFiles(FMDataCache.e(), AppConstants.DATALINE_PC_UIN, 6000, null);
-        }
-        if ((i & 0x2) != 0) {}
-        label611:
-        for (;;)
+      } while (((FileManagerEntity)paramVarArgs.next()).nFileType != 13);
+      i = 1;
+      if (i != 0)
+      {
+        if (SendBottomBar.a(this.a.this$0) == 3)
         {
+          ReportController.b(SendBottomBar.a(this.a.this$0).a, "dc00898", "", "", "0X800A088", "0X800A088", 0, 0, "", "", "", "");
           return null;
-          if (i == 6002)
-          {
-            localObject1 = new ArrayList();
-            ((ArrayList)localObject1).addAll(FMDataCache.a());
-            ((RouterHandler)SendBottomBar.a(this.a.this$0).getBusinessHandler(BusinessHandlerFactory.ROUTER_HANDLER)).a((ArrayList)localObject1, null, null, Long.parseLong(paramVarArgs));
-          }
-          else if (i == 9501)
-          {
-            localObject1 = (DeviceMsgHandle)SendBottomBar.a(this.a.this$0).getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
-            localObject2 = new ArrayList();
-            ((ArrayList)localObject2).addAll(FMDataCache.a());
-            ((DeviceMsgHandle)localObject1).a().a(paramVarArgs, (List)localObject2);
-          }
-          else
-          {
-            boolean bool = SendBottomBar.a(this.a.this$0).i();
-            SendBottomBar.a(this.a.this$0).getFileManagerEngine().a(bool, (String)localObject1, paramVarArgs, i);
-            paramVarArgs = FMDataCache.b().iterator();
-            do
-            {
-              if (!paramVarArgs.hasNext()) {
-                break;
-              }
-            } while (((FileManagerEntity)paramVarArgs.next()).nFileType != 13);
-            for (i = 1;; i = 0)
-            {
-              if (i == 0) {
-                break label611;
-              }
-              if (SendBottomBar.a(this.a.this$0) == 3)
-              {
-                ReportController.b(SendBottomBar.a(this.a.this$0).app, "dc00898", "", "", "0X800A088", "0X800A088", 0, 0, "", "", "", "");
-                break;
-              }
-              if (SendBottomBar.a(this.a.this$0) != 21) {
-                break;
-              }
-              ReportController.b(SendBottomBar.a(this.a.this$0).app, "dc00898", "", "", "0X800A08D", "0X800A08D", 0, 0, "", "", "", "");
-              break;
-            }
-          }
+        }
+        if (SendBottomBar.a(this.a.this$0) == 21) {
+          ReportController.b(SendBottomBar.a(this.a.this$0).a, "dc00898", "", "", "0X800A08D", "0X800A08D", 0, 0, "", "", "", "");
         }
       }
     }
+    return null;
   }
   
   protected void a(Void paramVoid)
@@ -137,7 +111,7 @@ class SendBottomBar$16$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.16.1
  * JD-Core Version:    0.7.0.1
  */

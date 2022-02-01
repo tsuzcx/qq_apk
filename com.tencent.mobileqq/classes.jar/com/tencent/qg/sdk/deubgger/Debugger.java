@@ -22,21 +22,18 @@ public class Debugger
   
   private static boolean createFile(File paramFile)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!paramFile.exists())
-    {
-      if ((paramFile.getParentFile() == null) || (paramFile.getParentFile().exists())) {
-        break label47;
+    if (!paramFile.exists()) {
+      if ((paramFile.getParentFile() != null) && (!paramFile.getParentFile().exists()))
+      {
+        if (paramFile.getParentFile().mkdirs()) {
+          return paramFile.createNewFile();
+        }
       }
-      bool1 = bool2;
-      if (paramFile.getParentFile().mkdirs()) {
-        bool1 = paramFile.createNewFile();
+      else {
+        return paramFile.createNewFile();
       }
     }
-    return bool1;
-    label47:
-    return paramFile.createNewFile();
+    return false;
   }
   
   public static boolean isJsDebugMode(Context paramContext)
@@ -55,20 +52,21 @@ public class Debugger
   {
     paramContext = new File(paramContext.getFilesDir(), "file_js_debug_mode");
     boolean bool = paramContext.exists();
-    if ((!paramBoolean) && (bool)) {
+    if ((!paramBoolean) && (bool))
+    {
       paramContext.delete();
-    }
-    while ((!paramBoolean) || (bool)) {
       return;
     }
-    try
-    {
-      createFile(paramContext);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
+    if ((paramBoolean) && (!bool)) {
+      try
+      {
+        createFile(paramContext);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
   }
   
@@ -76,20 +74,21 @@ public class Debugger
   {
     paramContext = new File(paramContext.getFilesDir(), "file_js_start_wait");
     boolean bool = paramContext.exists();
-    if ((!paramBoolean) && (bool)) {
+    if ((!paramBoolean) && (bool))
+    {
       paramContext.delete();
-    }
-    while ((!paramBoolean) || (bool)) {
       return;
     }
-    try
-    {
-      createFile(paramContext);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
+    if ((paramBoolean) && (!bool)) {
+      try
+      {
+        createFile(paramContext);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
   }
   
@@ -138,7 +137,7 @@ public class Debugger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.deubgger.Debugger
  * JD-Core Version:    0.7.0.1
  */

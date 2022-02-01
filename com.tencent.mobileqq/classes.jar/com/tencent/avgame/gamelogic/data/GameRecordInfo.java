@@ -37,17 +37,32 @@ public class GameRecordInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("gameType").append("=").append(this.gameType).append("|");
-    localStringBuilder.append("videoFilePath").append("=").append(this.videoFilePath).append("|");
-    localStringBuilder.append("photoFilePath").append("=").append(this.photoFilePath).append("|");
-    localStringBuilder.append("startGameTimeMills").append("=").append(this.startGameTimeMills).append("|");
-    localStringBuilder.append("extraJsonData").append("=").append(this.extraJsonData).append("|");
+    localStringBuilder.append("gameType");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.gameType);
+    localStringBuilder.append("|");
+    localStringBuilder.append("videoFilePath");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.videoFilePath);
+    localStringBuilder.append("|");
+    localStringBuilder.append("photoFilePath");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.photoFilePath);
+    localStringBuilder.append("|");
+    localStringBuilder.append("startGameTimeMills");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.startGameTimeMills);
+    localStringBuilder.append("|");
+    localStringBuilder.append("extraJsonData");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.extraJsonData);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.GameRecordInfo
  * JD-Core Version:    0.7.0.1
  */

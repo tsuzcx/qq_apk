@@ -1,6 +1,7 @@
 package com.google.android.exoplayer2.upstream;
 
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
 import com.google.android.exoplayer2.util.Assertions;
 import com.google.android.exoplayer2.util.Predicate;
@@ -21,6 +22,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DefaultHttpDataSource
@@ -79,172 +81,100 @@ public class DefaultHttpDataSource
   
   private void closeConnectionQuietly()
   {
-    if (this.connection != null) {}
-    try
+    HttpURLConnection localHttpURLConnection = this.connection;
+    if (localHttpURLConnection != null)
     {
-      this.connection.disconnect();
-      this.connection = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
+      {
+        localHttpURLConnection.disconnect();
+      }
+      catch (Exception localException)
       {
         Log.e("DefaultHttpDataSource", "Unexpected error while disconnecting", localException);
       }
+      this.connection = null;
     }
   }
   
-  /* Error */
   private static long getContentLength(HttpURLConnection paramHttpURLConnection)
   {
-    // Byte code:
-    //   0: ldc2_w 134
-    //   3: lstore_3
-    //   4: aload_0
-    //   5: ldc 137
-    //   7: invokevirtual 140	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   10: astore 7
-    //   12: lload_3
-    //   13: lstore_1
-    //   14: aload 7
-    //   16: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   19: ifne +9 -> 28
-    //   22: aload 7
-    //   24: invokestatic 152	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   27: lstore_1
-    //   28: aload_0
-    //   29: ldc 154
-    //   31: invokevirtual 140	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   34: astore_0
-    //   35: lload_1
-    //   36: lstore_3
-    //   37: aload_0
-    //   38: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   41: ifne +60 -> 101
-    //   44: getstatic 62	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:CONTENT_RANGE_HEADER	Ljava/util/regex/Pattern;
-    //   47: aload_0
-    //   48: invokevirtual 158	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   51: astore 8
-    //   53: lload_1
-    //   54: lstore_3
-    //   55: aload 8
-    //   57: invokevirtual 164	java/util/regex/Matcher:find	()Z
-    //   60: ifeq +41 -> 101
-    //   63: aload 8
-    //   65: iconst_2
-    //   66: invokevirtual 168	java/util/regex/Matcher:group	(I)Ljava/lang/String;
-    //   69: invokestatic 152	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   72: lstore_3
-    //   73: aload 8
-    //   75: iconst_1
-    //   76: invokevirtual 168	java/util/regex/Matcher:group	(I)Ljava/lang/String;
-    //   79: invokestatic 152	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   82: lstore 5
-    //   84: lload_3
-    //   85: lload 5
-    //   87: lsub
-    //   88: lconst_1
-    //   89: ladd
-    //   90: lstore 5
-    //   92: lload_1
-    //   93: lconst_0
-    //   94: lcmp
-    //   95: ifge +46 -> 141
-    //   98: lload 5
-    //   100: lstore_3
-    //   101: lload_3
-    //   102: lreturn
-    //   103: astore 8
-    //   105: ldc 22
-    //   107: new 170	java/lang/StringBuilder
-    //   110: dup
-    //   111: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   114: ldc 173
-    //   116: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: aload 7
-    //   121: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: ldc 179
-    //   126: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 186	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   135: pop
-    //   136: lload_3
-    //   137: lstore_1
-    //   138: goto -110 -> 28
-    //   141: lload_1
-    //   142: lstore_3
-    //   143: lload_1
-    //   144: lload 5
-    //   146: lcmp
-    //   147: ifeq -46 -> 101
-    //   150: ldc 22
-    //   152: new 170	java/lang/StringBuilder
-    //   155: dup
-    //   156: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   159: ldc 188
-    //   161: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: aload 7
-    //   166: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: ldc 190
-    //   171: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: aload_0
-    //   175: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: ldc 179
-    //   180: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   186: invokestatic 193	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   189: pop
-    //   190: lload_1
-    //   191: lload 5
-    //   193: invokestatic 199	java/lang/Math:max	(JJ)J
-    //   196: lstore_3
-    //   197: lload_3
-    //   198: lreturn
-    //   199: astore 7
-    //   201: ldc 22
-    //   203: new 170	java/lang/StringBuilder
-    //   206: dup
-    //   207: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   210: ldc 201
-    //   212: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   215: aload_0
-    //   216: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: ldc 179
-    //   221: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   224: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: invokestatic 186	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   230: pop
-    //   231: lload_1
-    //   232: lreturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	233	0	paramHttpURLConnection	HttpURLConnection
-    //   13	219	1	l1	long
-    //   3	195	3	l2	long
-    //   82	110	5	l3	long
-    //   10	155	7	str	String
-    //   199	1	7	localNumberFormatException1	java.lang.NumberFormatException
-    //   51	23	8	localMatcher	java.util.regex.Matcher
-    //   103	1	8	localNumberFormatException2	java.lang.NumberFormatException
-    // Exception table:
-    //   from	to	target	type
-    //   22	28	103	java/lang/NumberFormatException
-    //   63	84	199	java/lang/NumberFormatException
-    //   150	197	199	java/lang/NumberFormatException
+    Object localObject1 = paramHttpURLConnection.getHeaderField("Content-Length");
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    try
+    {
+      l1 = Long.parseLong((String)localObject1);
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      long l1;
+      label25:
+      Object localObject2;
+      break label25;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("Unexpected Content-Length [");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("]");
+    Log.e("DefaultHttpDataSource", ((StringBuilder)localObject2).toString());
+    l1 = -1L;
+    paramHttpURLConnection = paramHttpURLConnection.getHeaderField("Content-Range");
+    if (!TextUtils.isEmpty(paramHttpURLConnection))
+    {
+      localObject2 = CONTENT_RANGE_HEADER.matcher(paramHttpURLConnection);
+      if (!((Matcher)localObject2).find()) {}
+    }
+    try
+    {
+      long l2 = Long.parseLong(((Matcher)localObject2).group(2)) - Long.parseLong(((Matcher)localObject2).group(1)) + 1L;
+      if (l1 < 0L) {
+        return l2;
+      }
+      if (l1 == l2) {
+        break label250;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Inconsistent headers [");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("] [");
+      ((StringBuilder)localObject2).append(paramHttpURLConnection);
+      ((StringBuilder)localObject2).append("]");
+      Log.w("DefaultHttpDataSource", ((StringBuilder)localObject2).toString());
+      l2 = Math.max(l1, l2);
+      return l2;
+    }
+    catch (NumberFormatException localNumberFormatException1)
+    {
+      label207:
+      break label207;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Unexpected Content-Range [");
+    ((StringBuilder)localObject1).append(paramHttpURLConnection);
+    ((StringBuilder)localObject1).append("]");
+    Log.e("DefaultHttpDataSource", ((StringBuilder)localObject1).toString());
+    label250:
+    return l1;
   }
   
   private static URL handleRedirect(URL paramURL, String paramString)
   {
-    if (paramString == null) {
-      throw new ProtocolException("Null location redirect");
+    if (paramString != null)
+    {
+      paramString = new URL(paramURL, paramString);
+      paramURL = paramString.getProtocol();
+      if (!"https".equals(paramURL))
+      {
+        if ("http".equals(paramURL)) {
+          return paramString;
+        }
+        paramString = new StringBuilder();
+        paramString.append("Unsupported protocol redirect: ");
+        paramString.append(paramURL);
+        throw new ProtocolException(paramString.toString());
+      }
+      return paramString;
     }
-    paramURL = new URL(paramURL, paramString);
-    paramString = paramURL.getProtocol();
-    if ((!"https".equals(paramString)) && (!"http".equals(paramString))) {
-      throw new ProtocolException("Unsupported protocol redirect: " + paramString);
-    }
-    return paramURL;
+    throw new ProtocolException("Null location redirect");
   }
   
   private HttpURLConnection makeConnection(DataSpec paramDataSpec)
@@ -254,10 +184,8 @@ public class DefaultHttpDataSource
     long l1 = paramDataSpec.position;
     long l2 = paramDataSpec.length;
     boolean bool = paramDataSpec.isFlagSet(1);
-    if (!this.allowCrossProtocolRedirects)
-    {
-      localObject = makeConnection((URL)localObject, arrayOfByte, l1, l2, bool, true);
-      return localObject;
+    if (!this.allowCrossProtocolRedirects) {
+      return makeConnection((URL)localObject, arrayOfByte, l1, l2, bool, true);
     }
     int i = 0;
     paramDataSpec = (DataSpec)localObject;
@@ -266,32 +194,27 @@ public class DefaultHttpDataSource
     {
       j = i + 1;
       if (i > 20) {
-        break label190;
+        break;
       }
-      HttpURLConnection localHttpURLConnection = makeConnection(paramDataSpec, arrayOfByte, l1, l2, bool, false);
-      i = localHttpURLConnection.getResponseCode();
-      if ((i != 300) && (i != 301) && (i != 302) && (i != 303))
-      {
-        localObject = localHttpURLConnection;
-        if (arrayOfByte != null) {
-          break;
-        }
-        if (i != 307)
-        {
-          localObject = localHttpURLConnection;
-          if (i != 308) {
-            break;
-          }
-        }
+      localObject = makeConnection(paramDataSpec, arrayOfByte, l1, l2, bool, false);
+      i = ((HttpURLConnection)localObject).getResponseCode();
+      if ((i != 300) && (i != 301) && (i != 302) && (i != 303) && ((arrayOfByte != null) || ((i != 307) && (i != 308)))) {
+        return localObject;
       }
       arrayOfByte = null;
-      localObject = localHttpURLConnection.getHeaderField("Location");
-      localHttpURLConnection.disconnect();
-      paramDataSpec = handleRedirect(paramDataSpec, (String)localObject);
+      String str = ((HttpURLConnection)localObject).getHeaderField("Location");
+      ((HttpURLConnection)localObject).disconnect();
+      paramDataSpec = handleRedirect(paramDataSpec, str);
       i = j;
     }
-    label190:
-    throw new NoRouteToHostException("Too many redirects: " + j);
+    paramDataSpec = new StringBuilder();
+    paramDataSpec.append("Too many redirects: ");
+    paramDataSpec.append(j);
+    paramDataSpec = new NoRouteToHostException(paramDataSpec.toString());
+    for (;;)
+    {
+      throw paramDataSpec;
+    }
   }
   
   private HttpURLConnection makeConnection(URL paramURL, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
@@ -299,10 +222,11 @@ public class DefaultHttpDataSource
     HttpURLConnection localHttpURLConnection = (HttpURLConnection)paramURL.openConnection();
     localHttpURLConnection.setConnectTimeout(this.connectTimeoutMillis);
     localHttpURLConnection.setReadTimeout(this.readTimeoutMillis);
+    paramURL = this.defaultRequestProperties;
     Object localObject;
-    if (this.defaultRequestProperties != null)
+    if (paramURL != null)
     {
-      paramURL = this.defaultRequestProperties.getSnapshot().entrySet().iterator();
+      paramURL = paramURL.getSnapshot().entrySet().iterator();
       while (paramURL.hasNext())
       {
         localObject = (Map.Entry)paramURL.next();
@@ -317,10 +241,18 @@ public class DefaultHttpDataSource
     }
     if ((paramLong1 != 0L) || (paramLong2 != -1L))
     {
-      localObject = "bytes=" + paramLong1 + "-";
+      paramURL = new StringBuilder();
+      paramURL.append("bytes=");
+      paramURL.append(paramLong1);
+      paramURL.append("-");
+      localObject = paramURL.toString();
       paramURL = (URL)localObject;
-      if (paramLong2 != -1L) {
-        paramURL = (String)localObject + (paramLong1 + paramLong2 - 1L);
+      if (paramLong2 != -1L)
+      {
+        paramURL = new StringBuilder();
+        paramURL.append((String)localObject);
+        paramURL.append(paramLong1 + paramLong2 - 1L);
+        paramURL = paramURL.toString();
       }
       localHttpURLConnection.setRequestProperty("Range", paramURL);
     }
@@ -329,27 +261,27 @@ public class DefaultHttpDataSource
       localHttpURLConnection.setRequestProperty("Accept-Encoding", "identity");
     }
     localHttpURLConnection.setInstanceFollowRedirects(paramBoolean2);
-    if (paramArrayOfByte != null) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
+    if (paramArrayOfByte != null) {
+      paramBoolean1 = true;
+    } else {
+      paramBoolean1 = false;
+    }
+    localHttpURLConnection.setDoOutput(paramBoolean1);
+    if (paramArrayOfByte != null)
     {
-      localHttpURLConnection.setDoOutput(paramBoolean1);
-      if (paramArrayOfByte == null) {
-        break label365;
-      }
       localHttpURLConnection.setRequestMethod("POST");
-      if (paramArrayOfByte.length != 0) {
-        break;
+      if (paramArrayOfByte.length == 0)
+      {
+        localHttpURLConnection.connect();
+        return localHttpURLConnection;
       }
+      localHttpURLConnection.setFixedLengthStreamingMode(paramArrayOfByte.length);
       localHttpURLConnection.connect();
+      paramURL = localHttpURLConnection.getOutputStream();
+      paramURL.write(paramArrayOfByte);
+      paramURL.close();
       return localHttpURLConnection;
     }
-    localHttpURLConnection.setFixedLengthStreamingMode(paramArrayOfByte.length);
-    localHttpURLConnection.connect();
-    paramURL = localHttpURLConnection.getOutputStream();
-    paramURL.write(paramArrayOfByte);
-    paramURL.close();
-    return localHttpURLConnection;
-    label365:
     localHttpURLConnection.connect();
     return localHttpURLConnection;
   }
@@ -367,15 +299,15 @@ public class DefaultHttpDataSource
         if (paramLong == -1L)
         {
           if (paramHttpURLConnection.read() == -1) {
-            break;
+            return;
           }
           Object localObject = paramHttpURLConnection.getClass().getName();
-          if ((!((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$ChunkedInputStream")) && (!((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$FixedLengthInputStream"))) {
-            break;
+          if ((((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$ChunkedInputStream")) || (((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$FixedLengthInputStream")))
+          {
+            localObject = paramHttpURLConnection.getClass().getSuperclass().getDeclaredMethod("unexpectedEndOfInput", new Class[0]);
+            ((Method)localObject).setAccessible(true);
+            ((Method)localObject).invoke(paramHttpURLConnection, new Object[0]);
           }
-          localObject = paramHttpURLConnection.getClass().getSuperclass().getDeclaredMethod("unexpectedEndOfInput", new Class[0]);
-          ((Method)localObject).setAccessible(true);
-          ((Method)localObject).invoke(paramHttpURLConnection, new Object[0]);
           return;
         }
       }
@@ -388,35 +320,31 @@ public class DefaultHttpDataSource
   
   private int readInternal(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    int j = -1;
-    int i;
     if (paramInt2 == 0) {
-      i = 0;
+      return 0;
     }
-    do
+    long l = this.bytesToRead;
+    int i = paramInt2;
+    if (l != -1L)
     {
-      long l;
-      do
-      {
-        return i;
-        i = paramInt2;
-        if (this.bytesToRead == -1L) {
-          break;
-        }
-        l = this.bytesToRead - this.bytesRead;
-        i = j;
-      } while (l == 0L);
-      i = (int)Math.min(paramInt2, l);
-      paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, i);
-      if (paramInt1 != -1) {
-        break;
+      l -= this.bytesRead;
+      if (l == 0L) {
+        return -1;
       }
-      i = j;
-    } while (this.bytesToRead == -1L);
-    throw new EOFException();
+      i = (int)Math.min(paramInt2, l);
+    }
+    paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, i);
+    if (paramInt1 == -1)
+    {
+      if (this.bytesToRead == -1L) {
+        return -1;
+      }
+      throw new EOFException();
+    }
     this.bytesRead += paramInt1;
-    if (this.listener != null) {
-      this.listener.onBytesTransferred(this, paramInt1);
+    paramArrayOfByte = this.listener;
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.onBytesTransferred(this, paramInt1);
     }
     return paramInt1;
   }
@@ -426,27 +354,37 @@ public class DefaultHttpDataSource
     if (this.bytesSkipped == this.bytesToSkip) {
       return;
     }
-    byte[] arrayOfByte2 = (byte[])skipBufferReference.getAndSet(null);
-    byte[] arrayOfByte1 = arrayOfByte2;
-    if (arrayOfByte2 == null) {
-      arrayOfByte1 = new byte[4096];
+    Object localObject2 = (byte[])skipBufferReference.getAndSet(null);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4096];
     }
-    while (this.bytesSkipped != this.bytesToSkip)
+    for (;;)
     {
-      int i = (int)Math.min(this.bytesToSkip - this.bytesSkipped, arrayOfByte1.length);
-      i = this.inputStream.read(arrayOfByte1, 0, i);
+      long l1 = this.bytesSkipped;
+      long l2 = this.bytesToSkip;
+      if (l1 == l2) {
+        break label145;
+      }
+      int i = (int)Math.min(l2 - l1, localObject1.length);
+      i = this.inputStream.read((byte[])localObject1, 0, i);
       if (Thread.interrupted()) {
-        throw new InterruptedIOException();
+        break label137;
       }
       if (i == -1) {
-        throw new EOFException();
+        break;
       }
       this.bytesSkipped += i;
-      if (this.listener != null) {
-        this.listener.onBytesTransferred(this, i);
+      localObject2 = this.listener;
+      if (localObject2 != null) {
+        ((TransferListener)localObject2).onBytesTransferred(this, i);
       }
     }
-    skipBufferReference.set(arrayOfByte1);
+    throw new EOFException();
+    label137:
+    throw new InterruptedIOException();
+    label145:
+    skipBufferReference.set(localObject1);
   }
   
   protected final long bytesRead()
@@ -456,10 +394,11 @@ public class DefaultHttpDataSource
   
   protected final long bytesRemaining()
   {
-    if (this.bytesToRead == -1L) {
-      return this.bytesToRead;
+    long l = this.bytesToRead;
+    if (l == -1L) {
+      return l;
     }
-    return this.bytesToRead - this.bytesRead;
+    return l - this.bytesRead;
   }
   
   protected final long bytesSkipped()
@@ -478,81 +417,38 @@ public class DefaultHttpDataSource
     this.requestProperties.remove(paramString);
   }
   
-  /* Error */
   public void close()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 427	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
-    //   4: ifnull +21 -> 25
-    //   7: aload_0
-    //   8: getfield 116	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
-    //   11: aload_0
-    //   12: invokevirtual 477	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:bytesRemaining	()J
-    //   15: invokestatic 479	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:maybeTerminateInputStream	(Ljava/net/HttpURLConnection;J)V
-    //   18: aload_0
-    //   19: getfield 427	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
-    //   22: invokevirtual 480	java/io/InputStream:close	()V
-    //   25: aload_0
-    //   26: aconst_null
-    //   27: putfield 427	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
-    //   30: aload_0
-    //   31: invokespecial 482	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:closeConnectionQuietly	()V
-    //   34: aload_0
-    //   35: getfield 484	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:opened	Z
-    //   38: ifeq +25 -> 63
-    //   41: aload_0
-    //   42: iconst_0
-    //   43: putfield 484	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:opened	Z
-    //   46: aload_0
-    //   47: getfield 97	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   50: ifnull +13 -> 63
-    //   53: aload_0
-    //   54: getfield 97	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   57: aload_0
-    //   58: invokeinterface 487 2 0
-    //   63: return
-    //   64: astore_1
-    //   65: new 489	com/google/android/exoplayer2/upstream/HttpDataSource$HttpDataSourceException
-    //   68: dup
-    //   69: aload_1
-    //   70: aload_0
-    //   71: getfield 491	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:dataSpec	Lcom/google/android/exoplayer2/upstream/DataSpec;
-    //   74: iconst_3
-    //   75: invokespecial 494	com/google/android/exoplayer2/upstream/HttpDataSource$HttpDataSourceException:<init>	(Ljava/io/IOException;Lcom/google/android/exoplayer2/upstream/DataSpec;I)V
-    //   78: athrow
-    //   79: astore_1
-    //   80: aload_0
-    //   81: aconst_null
-    //   82: putfield 427	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
-    //   85: aload_0
-    //   86: invokespecial 482	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:closeConnectionQuietly	()V
-    //   89: aload_0
-    //   90: getfield 484	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:opened	Z
-    //   93: ifeq +25 -> 118
-    //   96: aload_0
-    //   97: iconst_0
-    //   98: putfield 484	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:opened	Z
-    //   101: aload_0
-    //   102: getfield 97	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   105: ifnull +13 -> 118
-    //   108: aload_0
-    //   109: getfield 97	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
-    //   112: aload_0
-    //   113: invokeinterface 487 2 0
-    //   118: aload_1
-    //   119: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	120	0	this	DefaultHttpDataSource
-    //   64	6	1	localIOException	IOException
-    //   79	40	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   18	25	64	java/io/IOException
-    //   0	18	79	finally
-    //   18	25	79	finally
-    //   65	79	79	finally
+    try
+    {
+      if (this.inputStream != null)
+      {
+        maybeTerminateInputStream(this.connection, bytesRemaining());
+        try
+        {
+          this.inputStream.close();
+        }
+        catch (IOException localIOException)
+        {
+          throw new HttpDataSource.HttpDataSourceException(localIOException, this.dataSpec, 3);
+        }
+      }
+      TransferListener localTransferListener1;
+      return;
+    }
+    finally
+    {
+      this.inputStream = null;
+      closeConnectionQuietly();
+      if (this.opened)
+      {
+        this.opened = false;
+        TransferListener localTransferListener2 = this.listener;
+        if (localTransferListener2 != null) {
+          localTransferListener2.onTransferEnd(this);
+        }
+      }
+    }
   }
   
   protected final HttpURLConnection getConnection()
@@ -562,107 +458,255 @@ public class DefaultHttpDataSource
   
   public Map<String, List<String>> getResponseHeaders()
   {
-    if (this.connection == null) {
+    HttpURLConnection localHttpURLConnection = this.connection;
+    if (localHttpURLConnection == null) {
       return null;
     }
-    return this.connection.getHeaderFields();
+    return localHttpURLConnection.getHeaderFields();
   }
   
   public Uri getUri()
   {
-    if (this.connection == null) {
+    HttpURLConnection localHttpURLConnection = this.connection;
+    if (localHttpURLConnection == null) {
       return null;
     }
-    return Uri.parse(this.connection.getURL().toString());
+    return Uri.parse(localHttpURLConnection.getURL().toString());
   }
   
+  /* Error */
   public long open(DataSpec paramDataSpec)
   {
-    long l2 = 0L;
-    this.dataSpec = paramDataSpec;
-    this.bytesRead = 0L;
-    this.bytesSkipped = 0L;
-    int i;
-    try
-    {
-      this.connection = makeConnection(paramDataSpec);
-      Map localMap;
-      str = this.connection.getContentType();
-    }
-    catch (IOException localIOException1)
-    {
-      try
-      {
-        i = this.connection.getResponseCode();
-        if ((i >= 200) && (i <= 299)) {
-          break label180;
-        }
-        localMap = this.connection.getHeaderFields();
-        closeConnectionQuietly();
-        paramDataSpec = new HttpDataSource.InvalidResponseCodeException(i, localMap, paramDataSpec);
-        if (i == 416) {
-          paramDataSpec.initCause(new DataSourceException(0));
-        }
-        throw paramDataSpec;
-      }
-      catch (IOException localIOException2)
-      {
-        closeConnectionQuietly();
-        throw new HttpDataSource.HttpDataSourceException("Unable to connect to " + paramDataSpec.uri.toString(), localIOException2, paramDataSpec, 1);
-      }
-      localIOException1 = localIOException1;
-      throw new HttpDataSource.HttpDataSourceException("Unable to connect to " + paramDataSpec.uri.toString(), localIOException1, paramDataSpec, 1);
-    }
-    label180:
-    String str;
-    if ((this.contentTypePredicate != null) && (!this.contentTypePredicate.evaluate(str)))
-    {
-      closeConnectionQuietly();
-      throw new HttpDataSource.InvalidContentTypeException(str, paramDataSpec);
-    }
-    long l1 = l2;
-    if (i == 200)
-    {
-      l1 = l2;
-      if (paramDataSpec.position != 0L) {
-        l1 = paramDataSpec.position;
-      }
-    }
-    this.bytesToSkip = l1;
-    if (!paramDataSpec.isFlagSet(1)) {
-      if (paramDataSpec.length != -1L) {
-        this.bytesToRead = paramDataSpec.length;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        this.inputStream = this.connection.getInputStream();
-        this.opened = true;
-        if (this.listener != null) {
-          this.listener.onTransferStart(this, paramDataSpec);
-        }
-        return this.bytesToRead;
-      }
-      catch (IOException localIOException3)
-      {
-        closeConnectionQuietly();
-        throw new HttpDataSource.HttpDataSourceException(localIOException3, paramDataSpec, 1);
-      }
-      l1 = getContentLength(this.connection);
-      if (l1 != -1L)
-      {
-        l1 -= this.bytesToSkip;
-        this.bytesToRead = l1;
-      }
-      else
-      {
-        l1 = -1L;
-        continue;
-        this.bytesToRead = paramDataSpec.length;
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: putfield 484	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:dataSpec	Lcom/google/android/exoplayer2/upstream/DataSpec;
+    //   5: lconst_0
+    //   6: lstore 5
+    //   8: aload_0
+    //   9: lconst_0
+    //   10: putfield 422	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:bytesRead	J
+    //   13: aload_0
+    //   14: lconst_0
+    //   15: putfield 441	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:bytesSkipped	J
+    //   18: aload_0
+    //   19: aload_0
+    //   20: aload_1
+    //   21: invokespecial 516	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:makeConnection	(Lcom/google/android/exoplayer2/upstream/DataSpec;)Ljava/net/HttpURLConnection;
+    //   24: putfield 116	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   27: aload_0
+    //   28: getfield 116	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   31: invokevirtual 263	java/net/HttpURLConnection:getResponseCode	()I
+    //   34: istore_2
+    //   35: iload_2
+    //   36: sipush 200
+    //   39: if_icmplt +234 -> 273
+    //   42: iload_2
+    //   43: sipush 299
+    //   46: if_icmple +6 -> 52
+    //   49: goto +224 -> 273
+    //   52: aload_0
+    //   53: getfield 116	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   56: invokevirtual 519	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
+    //   59: astore 7
+    //   61: aload_0
+    //   62: getfield 95	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:contentTypePredicate	Lcom/google/android/exoplayer2/util/Predicate;
+    //   65: astore 8
+    //   67: aload 8
+    //   69: ifnull +33 -> 102
+    //   72: aload 8
+    //   74: aload 7
+    //   76: invokeinterface 524 2 0
+    //   81: ifeq +6 -> 87
+    //   84: goto +18 -> 102
+    //   87: aload_0
+    //   88: invokespecial 489	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   91: new 526	com/google/android/exoplayer2/upstream/HttpDataSource$InvalidContentTypeException
+    //   94: dup
+    //   95: aload 7
+    //   97: aload_1
+    //   98: invokespecial 529	com/google/android/exoplayer2/upstream/HttpDataSource$InvalidContentTypeException:<init>	(Ljava/lang/String;Lcom/google/android/exoplayer2/upstream/DataSpec;)V
+    //   101: athrow
+    //   102: lload 5
+    //   104: lstore_3
+    //   105: iload_2
+    //   106: sipush 200
+    //   109: if_icmpne +20 -> 129
+    //   112: lload 5
+    //   114: lstore_3
+    //   115: aload_1
+    //   116: getfield 249	com/google/android/exoplayer2/upstream/DataSpec:position	J
+    //   119: lconst_0
+    //   120: lcmp
+    //   121: ifeq +8 -> 129
+    //   124: aload_1
+    //   125: getfield 249	com/google/android/exoplayer2/upstream/DataSpec:position	J
+    //   128: lstore_3
+    //   129: aload_0
+    //   130: lload_3
+    //   131: putfield 443	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:bytesToSkip	J
+    //   134: aload_1
+    //   135: iconst_1
+    //   136: invokevirtual 256	com/google/android/exoplayer2/upstream/DataSpec:isFlagSet	(I)Z
+    //   139: ifne +67 -> 206
+    //   142: aload_1
+    //   143: getfield 252	com/google/android/exoplayer2/upstream/DataSpec:length	J
+    //   146: lstore 5
+    //   148: ldc2_w 169
+    //   151: lstore_3
+    //   152: lload 5
+    //   154: ldc2_w 169
+    //   157: lcmp
+    //   158: ifeq +14 -> 172
+    //   161: aload_0
+    //   162: aload_1
+    //   163: getfield 252	com/google/android/exoplayer2/upstream/DataSpec:length	J
+    //   166: putfield 420	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:bytesToRead	J
+    //   169: goto +45 -> 214
+    //   172: aload_0
+    //   173: getfield 116	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   176: invokestatic 531	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:getContentLength	(Ljava/net/HttpURLConnection;)J
+    //   179: lstore 5
+    //   181: lload 5
+    //   183: ldc2_w 169
+    //   186: lcmp
+    //   187: ifeq +11 -> 198
+    //   190: lload 5
+    //   192: aload_0
+    //   193: getfield 443	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:bytesToSkip	J
+    //   196: lsub
+    //   197: lstore_3
+    //   198: aload_0
+    //   199: lload_3
+    //   200: putfield 420	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:bytesToRead	J
+    //   203: goto +11 -> 214
+    //   206: aload_0
+    //   207: aload_1
+    //   208: getfield 252	com/google/android/exoplayer2/upstream/DataSpec:length	J
+    //   211: putfield 420	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:bytesToRead	J
+    //   214: aload_0
+    //   215: aload_0
+    //   216: getfield 116	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   219: invokevirtual 380	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   222: putfield 427	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
+    //   225: aload_0
+    //   226: iconst_1
+    //   227: putfield 491	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:opened	Z
+    //   230: aload_0
+    //   231: getfield 97	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:listener	Lcom/google/android/exoplayer2/upstream/TransferListener;
+    //   234: astore 7
+    //   236: aload 7
+    //   238: ifnull +12 -> 250
+    //   241: aload 7
+    //   243: aload_0
+    //   244: aload_1
+    //   245: invokeinterface 535 3 0
+    //   250: aload_0
+    //   251: getfield 420	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:bytesToRead	J
+    //   254: lreturn
+    //   255: astore 7
+    //   257: aload_0
+    //   258: invokespecial 489	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   261: new 482	com/google/android/exoplayer2/upstream/HttpDataSource$HttpDataSourceException
+    //   264: dup
+    //   265: aload 7
+    //   267: aload_1
+    //   268: iconst_1
+    //   269: invokespecial 487	com/google/android/exoplayer2/upstream/HttpDataSource$HttpDataSourceException:<init>	(Ljava/io/IOException;Lcom/google/android/exoplayer2/upstream/DataSpec;I)V
+    //   272: athrow
+    //   273: aload_0
+    //   274: getfield 116	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   277: invokevirtual 500	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
+    //   280: astore 7
+    //   282: aload_0
+    //   283: invokespecial 489	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   286: new 537	com/google/android/exoplayer2/upstream/HttpDataSource$InvalidResponseCodeException
+    //   289: dup
+    //   290: iload_2
+    //   291: aload 7
+    //   293: aload_1
+    //   294: invokespecial 540	com/google/android/exoplayer2/upstream/HttpDataSource$InvalidResponseCodeException:<init>	(ILjava/util/Map;Lcom/google/android/exoplayer2/upstream/DataSpec;)V
+    //   297: astore_1
+    //   298: iload_2
+    //   299: sipush 416
+    //   302: if_icmpne +16 -> 318
+    //   305: aload_1
+    //   306: new 542	com/google/android/exoplayer2/upstream/DataSourceException
+    //   309: dup
+    //   310: iconst_0
+    //   311: invokespecial 544	com/google/android/exoplayer2/upstream/DataSourceException:<init>	(I)V
+    //   314: invokevirtual 548	com/google/android/exoplayer2/upstream/HttpDataSource$InvalidResponseCodeException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   317: pop
+    //   318: aload_1
+    //   319: athrow
+    //   320: astore 7
+    //   322: aload_0
+    //   323: invokespecial 489	com/google/android/exoplayer2/upstream/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   326: new 152	java/lang/StringBuilder
+    //   329: dup
+    //   330: invokespecial 153	java/lang/StringBuilder:<init>	()V
+    //   333: astore 8
+    //   335: aload 8
+    //   337: ldc_w 550
+    //   340: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   343: pop
+    //   344: aload 8
+    //   346: aload_1
+    //   347: getfield 238	com/google/android/exoplayer2/upstream/DataSpec:uri	Landroid/net/Uri;
+    //   350: invokevirtual 241	android/net/Uri:toString	()Ljava/lang/String;
+    //   353: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   356: pop
+    //   357: new 482	com/google/android/exoplayer2/upstream/HttpDataSource$HttpDataSourceException
+    //   360: dup
+    //   361: aload 8
+    //   363: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   366: aload 7
+    //   368: aload_1
+    //   369: iconst_1
+    //   370: invokespecial 553	com/google/android/exoplayer2/upstream/HttpDataSource$HttpDataSourceException:<init>	(Ljava/lang/String;Ljava/io/IOException;Lcom/google/android/exoplayer2/upstream/DataSpec;I)V
+    //   373: athrow
+    //   374: astore 7
+    //   376: new 152	java/lang/StringBuilder
+    //   379: dup
+    //   380: invokespecial 153	java/lang/StringBuilder:<init>	()V
+    //   383: astore 8
+    //   385: aload 8
+    //   387: ldc_w 550
+    //   390: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   393: pop
+    //   394: aload 8
+    //   396: aload_1
+    //   397: getfield 238	com/google/android/exoplayer2/upstream/DataSpec:uri	Landroid/net/Uri;
+    //   400: invokevirtual 241	android/net/Uri:toString	()Ljava/lang/String;
+    //   403: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   406: pop
+    //   407: new 482	com/google/android/exoplayer2/upstream/HttpDataSource$HttpDataSourceException
+    //   410: dup
+    //   411: aload 8
+    //   413: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   416: aload 7
+    //   418: aload_1
+    //   419: iconst_1
+    //   420: invokespecial 553	com/google/android/exoplayer2/upstream/HttpDataSource$HttpDataSourceException:<init>	(Ljava/lang/String;Ljava/io/IOException;Lcom/google/android/exoplayer2/upstream/DataSpec;I)V
+    //   423: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	424	0	this	DefaultHttpDataSource
+    //   0	424	1	paramDataSpec	DataSpec
+    //   34	269	2	i	int
+    //   104	96	3	l1	long
+    //   6	185	5	l2	long
+    //   59	183	7	localObject1	Object
+    //   255	11	7	localIOException1	IOException
+    //   280	12	7	localMap	Map
+    //   320	47	7	localIOException2	IOException
+    //   374	43	7	localIOException3	IOException
+    //   65	347	8	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   214	225	255	java/io/IOException
+    //   27	35	320	java/io/IOException
+    //   18	27	374	java/io/IOException
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -688,7 +732,7 @@ public class DefaultHttpDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.upstream.DefaultHttpDataSource
  * JD-Core Version:    0.7.0.1
  */

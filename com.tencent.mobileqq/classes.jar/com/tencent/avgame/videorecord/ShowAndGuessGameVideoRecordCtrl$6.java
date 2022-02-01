@@ -12,23 +12,18 @@ class ShowAndGuessGameVideoRecordCtrl$6
   
   public void run()
   {
-    float f1;
-    float f2;
-    float f3;
-    float f4;
     if (this.this$0.d())
     {
-      f1 = (this.jdField_a_of_type_Int >> 16 & 0xFF) / 255.0F;
-      f2 = (this.jdField_a_of_type_Int >> 8 & 0xFF) / 255.0F;
-      f3 = (this.jdField_a_of_type_Int & 0xFF) / 255.0F;
-      f4 = (this.jdField_a_of_type_Int >> 24 & 0xFF) / 255.0F;
-      if (f4 <= 0.0F) {
-        break label264;
+      int i = this.jdField_a_of_type_Int;
+      float f1 = (i >> 16 & 0xFF) / 255.0F;
+      float f2 = (i >> 8 & 0xFF) / 255.0F;
+      float f3 = (i & 0xFF) / 255.0F;
+      float f4 = (i >> 24 & 0xFF) / 255.0F;
+      if (f4 > 0.0F) {
+        this.this$0.a(true, f1, f2, f3, f4);
+      } else {
+        this.this$0.a(false, 0.0F, 0.0F, 0.0F, 0.0F);
       }
-      this.this$0.a(true, f1, f2, f3, f4);
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_AndroidViewView.destroyDrawingCache();
       Bitmap localBitmap = this.jdField_a_of_type_AndroidViewView.getDrawingCache();
       if (localBitmap != null)
@@ -36,7 +31,7 @@ class ShowAndGuessGameVideoRecordCtrl$6
         int k = this.jdField_a_of_type_AndroidViewView.getLeft();
         int m = this.jdField_a_of_type_AndroidViewView.getTop();
         int j = k;
-        int i = m;
+        i = m;
         if (ShowAndGuessGameVideoRecordCtrl.a(this.this$0) != null)
         {
           RectF localRectF = ShowAndGuessGameVideoRecordCtrl.a(this.this$0).a();
@@ -54,15 +49,12 @@ class ShowAndGuessGameVideoRecordCtrl$6
         }
         this.this$0.b(localBitmap, this.jdField_a_of_type_AndroidViewView.getWidth(), this.jdField_a_of_type_AndroidViewView.getHeight(), j, i);
       }
-      return;
-      label264:
-      this.this$0.a(false, 0.0F, 0.0F, 0.0F, 0.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.videorecord.ShowAndGuessGameVideoRecordCtrl.6
  * JD-Core Version:    0.7.0.1
  */

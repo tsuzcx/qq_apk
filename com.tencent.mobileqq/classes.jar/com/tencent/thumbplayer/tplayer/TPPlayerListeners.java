@@ -48,35 +48,37 @@ public class TPPlayerListeners
   {
     updateTag(paramString);
     this.EMPTY_LISTENERS = new TPPlayerListeners.TPPlayerListenersEmptyImpl(this.mTag);
-    this.mOnPreparedListener = this.EMPTY_LISTENERS;
-    this.mOnCompletionListener = this.EMPTY_LISTENERS;
-    this.mOnInfoListener = this.EMPTY_LISTENERS;
-    this.mOnErrorListener = this.EMPTY_LISTENERS;
-    this.mOnSeekCompleteListener = this.EMPTY_LISTENERS;
-    this.mOnVideoSizeChangedListener = this.EMPTY_LISTENERS;
-    this.mOnSubtitleDataListener = this.EMPTY_LISTENERS;
-    this.mOnSubtitleFrameOutListener = this.EMPTY_LISTENERS;
-    this.mOnVideoFrameOutListener = this.EMPTY_LISTENERS;
-    this.mOnAudioFrameOutListener = this.EMPTY_LISTENERS;
-    this.mOnVideoProcessFrameOutListener = this.EMPTY_LISTENERS;
-    this.mOnAudioProcessFrameOutListener = this.EMPTY_LISTENERS;
-    this.mOnPlayerStateChangeListener = this.EMPTY_LISTENERS;
-    this.mOnStopAsyncCompleteListener = this.EMPTY_LISTENERS;
+    paramString = this.EMPTY_LISTENERS;
+    this.mOnPreparedListener = paramString;
+    this.mOnCompletionListener = paramString;
+    this.mOnInfoListener = paramString;
+    this.mOnErrorListener = paramString;
+    this.mOnSeekCompleteListener = paramString;
+    this.mOnVideoSizeChangedListener = paramString;
+    this.mOnSubtitleDataListener = paramString;
+    this.mOnSubtitleFrameOutListener = paramString;
+    this.mOnVideoFrameOutListener = paramString;
+    this.mOnAudioFrameOutListener = paramString;
+    this.mOnVideoProcessFrameOutListener = paramString;
+    this.mOnAudioProcessFrameOutListener = paramString;
+    this.mOnPlayerStateChangeListener = paramString;
+    this.mOnStopAsyncCompleteListener = paramString;
   }
   
   public void clear()
   {
-    this.mOnPreparedListener = this.EMPTY_LISTENERS;
-    this.mOnCompletionListener = this.EMPTY_LISTENERS;
-    this.mOnInfoListener = this.EMPTY_LISTENERS;
-    this.mOnErrorListener = this.EMPTY_LISTENERS;
-    this.mOnSeekCompleteListener = this.EMPTY_LISTENERS;
-    this.mOnVideoSizeChangedListener = this.EMPTY_LISTENERS;
-    this.mOnSubtitleDataListener = this.EMPTY_LISTENERS;
-    this.mOnVideoFrameOutListener = this.EMPTY_LISTENERS;
-    this.mOnAudioFrameOutListener = this.EMPTY_LISTENERS;
-    this.mOnPlayerStateChangeListener = this.EMPTY_LISTENERS;
-    this.mOnStopAsyncCompleteListener = this.EMPTY_LISTENERS;
+    TPPlayerListeners.TPPlayerListenersEmptyImpl localTPPlayerListenersEmptyImpl = this.EMPTY_LISTENERS;
+    this.mOnPreparedListener = localTPPlayerListenersEmptyImpl;
+    this.mOnCompletionListener = localTPPlayerListenersEmptyImpl;
+    this.mOnInfoListener = localTPPlayerListenersEmptyImpl;
+    this.mOnErrorListener = localTPPlayerListenersEmptyImpl;
+    this.mOnSeekCompleteListener = localTPPlayerListenersEmptyImpl;
+    this.mOnVideoSizeChangedListener = localTPPlayerListenersEmptyImpl;
+    this.mOnSubtitleDataListener = localTPPlayerListenersEmptyImpl;
+    this.mOnVideoFrameOutListener = localTPPlayerListenersEmptyImpl;
+    this.mOnAudioFrameOutListener = localTPPlayerListenersEmptyImpl;
+    this.mOnPlayerStateChangeListener = localTPPlayerListenersEmptyImpl;
+    this.mOnStopAsyncCompleteListener = localTPPlayerListenersEmptyImpl;
   }
   
   public void onAudioFrameOut(ITPPlayer paramITPPlayer, TPAudioFrameBuffer paramTPAudioFrameBuffer)
@@ -281,19 +283,20 @@ public class TPPlayerListeners
   
   public void updateTag(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (this.mTag = "TPPlayerListenerS";; this.mTag = paramString)
-    {
-      if (this.EMPTY_LISTENERS != null) {
-        TPPlayerListeners.TPPlayerListenersEmptyImpl.access$002(this.EMPTY_LISTENERS, paramString);
-      }
-      return;
+    if (TextUtils.isEmpty(paramString)) {
+      this.mTag = "TPPlayerListenerS";
+    } else {
+      this.mTag = paramString;
+    }
+    TPPlayerListeners.TPPlayerListenersEmptyImpl localTPPlayerListenersEmptyImpl = this.EMPTY_LISTENERS;
+    if (localTPPlayerListenersEmptyImpl != null) {
+      TPPlayerListeners.TPPlayerListenersEmptyImpl.access$002(localTPPlayerListenersEmptyImpl, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayerListeners
  * JD-Core Version:    0.7.0.1
  */

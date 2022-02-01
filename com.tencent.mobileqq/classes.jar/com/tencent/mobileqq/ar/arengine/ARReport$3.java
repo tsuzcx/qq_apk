@@ -25,8 +25,9 @@ class ARReport$3
     if (ARReport.a(this.this$0, this.jdField_a_of_type_Int)) {
       localHashMap.put("cloud_upload_times", String.valueOf(this.jdField_a_of_type_Int));
     }
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      localHashMap.put("cloud_upload_imgid", this.jdField_a_of_type_JavaLangString);
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null) {
+      localHashMap.put("cloud_upload_imgid", str);
     }
     if (ARReport.a(this.this$0, this.jdField_b_of_type_Int)) {
       localHashMap.put("cloud_recognize_time", String.valueOf(this.jdField_b_of_type_Int));
@@ -37,7 +38,7 @@ class ARReport$3
     if (ARReport.a(this.this$0, this.e)) {
       localHashMap.put("cloud_time", String.valueOf(this.e));
     }
-    localHashMap.put("cloud_net_type", String.valueOf(NetworkUtil.a(BaseApplication.getContext())));
+    localHashMap.put("cloud_net_type", String.valueOf(NetworkUtil.getSystemNetwork(BaseApplication.getContext())));
     if (ARReport.a(this.this$0, this.f)) {
       localHashMap.put("cloud_all_time", String.valueOf(this.f));
     }
@@ -48,7 +49,7 @@ class ARReport$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.3
  * JD-Core Version:    0.7.0.1
  */

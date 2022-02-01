@@ -19,33 +19,33 @@ public class BadTokenHooker
   {
     try
     {
-      localClass1 = Class.forName("android.view.ViewRootImpl");
+      Class localClass1 = Class.forName("android.view.ViewRootImpl");
       JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new BadTokenHooker.1(localClass1) });
+    }
+    catch (ClassNotFoundException localClassNotFoundException1)
+    {
+      Utils.a(localClassNotFoundException1);
     }
     catch (NoSuchMethodException localNoSuchMethodException1)
     {
-      for (;;)
-      {
+      Utils.a(localNoSuchMethodException1);
+    }
+    try
+    {
+      Class localClass2 = Class.forName("android.view.WindowManagerImpl");
+      if (Build.VERSION.SDK_INT <= 16) {
         try
         {
-          localClass1 = Class.forName("android.view.WindowManagerImpl");
-          if (Build.VERSION.SDK_INT > 16) {
-            break;
+          Class localClass3 = Class.forName("android.view.CompatibilityInfoHolder");
+          if (localClass3 == null) {
+            break label162;
           }
+          JavaHookBridge.findAndHookMethod(localClass2, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, localClass3, Boolean.class, a });
+          return;
         }
         catch (ClassNotFoundException localClassNotFoundException2)
         {
-          Class localClass1;
-          Class localClass2;
           Utils.a(localClassNotFoundException2);
-          return;
-        }
-        try
-        {
-          localClass2 = Class.forName("android.view.CompatibilityInfoHolder");
-          if (localClass2 != null) {
-            JavaHookBridge.findAndHookMethod(localClass1, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, localClass2, Boolean.class, a });
-          }
           return;
         }
         catch (NoSuchMethodException localNoSuchMethodException2)
@@ -53,30 +53,23 @@ public class BadTokenHooker
           Utils.a(localNoSuchMethodException2);
           return;
         }
-        catch (ClassNotFoundException localClassNotFoundException3)
+      } else {
+        try
         {
-          Utils.a(localClassNotFoundException3);
+          JavaHookBridge.findAndHookMethod(localNoSuchMethodException2, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, a });
           return;
         }
-        localNoSuchMethodException1 = localNoSuchMethodException1;
-        Utils.a(localNoSuchMethodException1);
+        catch (NoSuchMethodException localNoSuchMethodException3)
+        {
+          Utils.a(localNoSuchMethodException3);
+        }
       }
-    }
-    catch (ClassNotFoundException localClassNotFoundException1)
-    {
-      for (;;)
-      {
-        Utils.a(localClassNotFoundException1);
-      }
-    }
-    try
-    {
-      JavaHookBridge.findAndHookMethod(localClassNotFoundException3, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, a });
+      label162:
       return;
     }
-    catch (NoSuchMethodException localNoSuchMethodException3)
+    catch (ClassNotFoundException localClassNotFoundException3)
     {
-      Utils.a(localNoSuchMethodException3);
+      Utils.a(localClassNotFoundException3);
     }
   }
   
@@ -87,7 +80,7 @@ public class BadTokenHooker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.BadTokenHooker
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,18 @@ class TraeAudioManager$TraeAudioManagerLooper$1
   
   public void onCompletion()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 0, "_ringPlayer onCompletion _activeMode:" + this.this$1.this$0._activeMode + " _preRingMode:" + this.this$1._preRingMode);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("_ringPlayer onCompletion _activeMode:");
+      ((StringBuilder)localObject).append(this.this$1.this$0._activeMode);
+      ((StringBuilder)localObject).append(" _preRingMode:");
+      ((StringBuilder)localObject).append(this.this$1._preRingMode);
+      QLog.w("TRAE", 0, ((StringBuilder)localObject).toString());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("PARAM_ISHOSTSIDE", Boolean.valueOf(true));
-    this.this$1.sendMessage(32783, localHashMap);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("PARAM_ISHOSTSIDE", Boolean.valueOf(true));
+    this.this$1.sendMessage(32783, (HashMap)localObject);
     this.this$1.notifyRingCompletion();
   }
 }

@@ -36,23 +36,22 @@ final class MediaPresenter$loadMedias$1
         localIView.a(paramArrayList, paramHashMap);
       }
     }
-    for (;;)
+    else
     {
-      paramArrayList = this.$callback;
-      if (paramArrayList != null) {
-        paramArrayList = (Unit)paramArrayList.invoke(this.$panelType);
-      }
-      return;
       paramArrayList = MediaPresenter.a(this.this$0);
       if (paramArrayList != null) {
         paramArrayList.a(true);
       }
     }
+    paramArrayList = this.$callback;
+    if (paramArrayList != null) {
+      paramArrayList = (Unit)paramArrayList.invoke(this.$panelType);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaPresenter.loadMedias.1
  * JD-Core Version:    0.7.0.1
  */

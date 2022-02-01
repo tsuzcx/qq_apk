@@ -18,17 +18,21 @@ public class ClearMemoryConfig$MemoryLevelInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("MemoryLevelInfo{");
-    localStringBuilder.append("MemoryPercent=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", delayTime=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", maxCacheSize=").append(this.jdField_a_of_type_Float);
-    localStringBuilder.append(", trimPercent=").append(this.jdField_b_of_type_Float);
+    localStringBuilder.append("MemoryPercent=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", delayTime=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", maxCacheSize=");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", trimPercent=");
+    localStringBuilder.append(this.jdField_b_of_type_Float);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.clearmemory.ClearMemoryConfig.MemoryLevelInfo
  * JD-Core Version:    0.7.0.1
  */

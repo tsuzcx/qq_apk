@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.qqfloatingwindow.impl;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class FloatingScreenContainer$6
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   FloatingScreenContainer$6(FloatingScreenContainer paramFloatingScreenContainer) {}
   
@@ -38,7 +38,7 @@ class FloatingScreenContainer$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenContainer.6
  * JD-Core Version:    0.7.0.1
  */

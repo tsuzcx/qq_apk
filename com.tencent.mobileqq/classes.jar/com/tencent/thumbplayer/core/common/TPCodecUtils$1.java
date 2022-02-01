@@ -7,14 +7,13 @@ final class TPCodecUtils$1
   {
     TPCodecUtils.getMediaCodecMaxCapabilityMap();
     TPCodecUtils.getVCodecSWMaxCapabilityMap();
-    TPCodecUtils.access$002(false);
-    TPCodecUtils.access$102(true);
+    TPCodecUtils.access$002(true);
     TPNativeLog.printLog(2, "TPCodecUtils", "new thread getDecoderMaxCapabilityMap done");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPCodecUtils.1
  * JD-Core Version:    0.7.0.1
  */

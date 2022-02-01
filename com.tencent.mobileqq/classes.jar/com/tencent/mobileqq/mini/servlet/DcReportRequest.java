@@ -15,19 +15,25 @@ public class DcReportRequest
   
   public static REPORT.StDcReportRsp onResponse(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {}
-    do
-    {
+    if (paramArrayOfByte == null) {
       return null;
-      REPORT.StDcReportRsp localStDcReportRsp = new REPORT.StDcReportRsp();
-      try
+    }
+    Object localObject = new REPORT.StDcReportRsp();
+    try
+    {
+      ((REPORT.StDcReportRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel())
       {
-        localStDcReportRsp.mergeFrom(decode(paramArrayOfByte));
-        return localStDcReportRsp;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("ProtoBufRequest", 2, ((StringBuilder)localObject).toString());
       }
-      catch (Exception paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("ProtoBufRequest", 2, "onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
@@ -38,7 +44,7 @@ public class DcReportRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.DcReportRequest
  * JD-Core Version:    0.7.0.1
  */

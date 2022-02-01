@@ -35,18 +35,20 @@ public class HorizontalOverScrollBounceEffectDecorator
     if (this.overScrollListener == null) {
       return;
     }
-    if (paramValueAnimator != null) {}
-    for (float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();; f = 0.0F)
-    {
-      this.overScrollListener.onOverScroll(f);
-      return;
+    float f;
+    if (paramValueAnimator != null) {
+      f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    } else {
+      f = 0.0F;
     }
+    this.overScrollListener.onOverScroll(f);
   }
   
   protected void translateView(View paramView, float paramFloat)
   {
-    if (this.overScrollListener != null) {
-      this.overScrollListener.onOverScroll(paramFloat);
+    OverScrollHelper.OverScrollListener localOverScrollListener = this.overScrollListener;
+    if (localOverScrollListener != null) {
+      localOverScrollListener.onOverScroll(paramFloat);
     }
     paramView.setTranslationX(paramFloat);
   }
@@ -59,7 +61,7 @@ public class HorizontalOverScrollBounceEffectDecorator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.overscroll.HorizontalOverScrollBounceEffectDecorator
  * JD-Core Version:    0.7.0.1
  */

@@ -11,41 +11,64 @@ class VideoPlayerView$5
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnDownloadListener error ! vid = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("  url = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("  errorCode=");
+      localStringBuilder.append(paramInt);
+      QLog.w("VideoPlayerView", 2, localStringBuilder.toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener.a(paramString1, 199, paramInt, "use sdk download error");
+    if (this.a.mReultListener != null) {
+      this.a.mReultListener.a(paramString1, 199, paramInt, "use sdk download error");
     }
   }
   
   public void a(String paramString1, String paramString2, long paramLong)
   {
-    this.a.jdField_a_of_type_Long = paramLong;
+    this.a.mFileSize = paramLong;
   }
   
   public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnDownloadListener onProgress   ! vid = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("  url = ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("  offset=");
+      localStringBuilder.append(paramLong2);
+      QLog.w("VideoPlayerView", 2, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_Long = paramLong1;
-    if (paramLong2 > this.a.b) {
-      this.a.b = paramLong2;
+    paramString1 = this.a;
+    paramString1.mFileSize = paramLong1;
+    if (paramLong2 > paramString1.mOffset) {
+      this.a.mOffset = paramLong2;
     }
   }
   
   public void a(String paramString1, String paramString2, File paramFile)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnDownloadListener onSuccess ! vid = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("  url = ");
+      localStringBuilder.append(paramString2);
+      QLog.i("VideoPlayerView", 2, localStringBuilder.toString());
     }
-    VideoPlayerView.a(paramFile);
+    VideoPlayerView.setFileCompleted(paramFile);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.VideoPlayerView.5
  * JD-Core Version:    0.7.0.1
  */

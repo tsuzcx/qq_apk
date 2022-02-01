@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.utils.RichMediaShareActionSheetUtil;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
@@ -40,7 +39,7 @@ public class FavoriteActionSheet
       paramActions = new ShareActionSheetV2.Param();
       paramActions.context = paramActivity;
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = ShareActionSheetFactory.create(paramActions);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetTitle(paramActivity.getString(2131692825));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetTitle(paramActivity.getString(2131692780));
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new FavoriteActionSheet.1(this));
     }
     b();
@@ -48,18 +47,19 @@ public class FavoriteActionSheet
   
   private void b()
   {
-    if (this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions != null) {
-      b(this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a());
+    FavoriteActionSheet.Actions localActions = this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions;
+    if (localActions != null) {
+      b(localActions.a());
     }
   }
   
   private void b(int paramInt)
   {
-    Object localObject1 = null;
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions != null)
+    Object localObject1 = this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions;
+    if (localObject1 != null)
     {
-      localObject1 = this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a();
+      localObject1 = ((FavoriteActionSheet.Actions)localObject1).a();
       if (localObject1 != null)
       {
         ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_qfav");
@@ -67,84 +67,82 @@ public class FavoriteActionSheet
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity((Intent)localObject1);
     }
+    else
+    {
+      localObject1 = null;
+    }
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
-    if (localObject1 != null)
-    {
+    if (localObject1 != null) {
       paramInt = 0;
-      if (localObject1 == null) {
-        break label351;
-      }
-    }
-    label351:
-    for (int i = 0;; i = 8)
-    {
-      ((ShareActionSheet)localObject2).setRowVisibility(paramInt, i, 0);
-      localObject1 = new ArrayList();
-      RichMediaShareActionSheetUtil.a(2, (ArrayList)localObject1);
-      if ((this.jdField_a_of_type_Int & 0x200) != 0) {
-        RichMediaShareActionSheetUtil.a(26, (ArrayList)localObject1);
-      }
-      if ((this.jdField_a_of_type_Int & 0x4000) != 0) {
-        RichMediaShareActionSheetUtil.a(64, (ArrayList)localObject1);
-      }
-      localObject2 = new ArrayList();
-      if ((this.jdField_a_of_type_Int & 0x80) != 0) {
-        RichMediaShareActionSheetUtil.a(70, (ArrayList)localObject2);
-      }
-      if ((this.jdField_a_of_type_Int & 0x100) != 0) {
-        RichMediaShareActionSheetUtil.a(82, (ArrayList)localObject2);
-      }
-      if ((this.jdField_a_of_type_Int & 0x8) != 0) {
-        RichMediaShareActionSheetUtil.a(39, (ArrayList)localObject2);
-      }
-      if ((this.jdField_a_of_type_Int & 0x400) != 0) {
-        RichMediaShareActionSheetUtil.a(130, (ArrayList)localObject2);
-      }
-      if ((this.jdField_a_of_type_Int & 0x8000) != 0) {
-        RichMediaShareActionSheetUtil.a(131, (ArrayList)localObject2);
-      }
-      if ((this.jdField_a_of_type_Int & 0x10) != 0) {
-        RichMediaShareActionSheetUtil.a(94, (ArrayList)localObject2);
-      }
-      if ((this.jdField_a_of_type_Int & 0x40) != 0) {
-        RichMediaShareActionSheetUtil.a(129, (ArrayList)localObject2);
-      }
-      if ((this.jdField_a_of_type_Int & 0x800) != 0) {
-        RichMediaShareActionSheetUtil.a(52, (ArrayList)localObject2);
-      }
-      if ((this.jdField_a_of_type_Int & 0x2000) != 0) {
-        RichMediaShareActionSheetUtil.a(55, (ArrayList)localObject2);
-      }
-      if ((this.jdField_a_of_type_Int & 0x1000) != 0) {
-        RichMediaShareActionSheetUtil.a(56, (ArrayList)localObject2);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems((List)localObject1, (List)localObject2);
-      return;
+    } else {
       paramInt = 8;
-      break;
     }
+    int i;
+    if (localObject1 != null) {
+      i = 0;
+    } else {
+      i = 8;
+    }
+    ((ShareActionSheet)localObject2).setRowVisibility(paramInt, i, 0);
+    localObject1 = new ArrayList();
+    RichMediaShareActionSheetUtil.a(2, (ArrayList)localObject1);
+    if ((this.jdField_a_of_type_Int & 0x200) != 0) {
+      RichMediaShareActionSheetUtil.a(26, (ArrayList)localObject1);
+    }
+    if ((this.jdField_a_of_type_Int & 0x4000) != 0) {
+      RichMediaShareActionSheetUtil.a(64, (ArrayList)localObject1);
+    }
+    localObject2 = new ArrayList();
+    if ((this.jdField_a_of_type_Int & 0x80) != 0) {
+      RichMediaShareActionSheetUtil.a(70, (ArrayList)localObject2);
+    }
+    if ((this.jdField_a_of_type_Int & 0x100) != 0) {
+      RichMediaShareActionSheetUtil.a(82, (ArrayList)localObject2);
+    }
+    if ((0x8 & this.jdField_a_of_type_Int) != 0) {
+      RichMediaShareActionSheetUtil.a(39, (ArrayList)localObject2);
+    }
+    if ((this.jdField_a_of_type_Int & 0x400) != 0) {
+      RichMediaShareActionSheetUtil.a(130, (ArrayList)localObject2);
+    }
+    if ((this.jdField_a_of_type_Int & 0x8000) != 0) {
+      RichMediaShareActionSheetUtil.a(131, (ArrayList)localObject2);
+    }
+    if ((this.jdField_a_of_type_Int & 0x10) != 0) {
+      RichMediaShareActionSheetUtil.a(94, (ArrayList)localObject2);
+    }
+    if ((0x40 & this.jdField_a_of_type_Int) != 0) {
+      RichMediaShareActionSheetUtil.a(129, (ArrayList)localObject2);
+    }
+    if ((this.jdField_a_of_type_Int & 0x800) != 0) {
+      RichMediaShareActionSheetUtil.a(52, (ArrayList)localObject2);
+    }
+    if ((this.jdField_a_of_type_Int & 0x2000) != 0) {
+      RichMediaShareActionSheetUtil.a(55, (ArrayList)localObject2);
+    }
+    if ((this.jdField_a_of_type_Int & 0x1000) != 0) {
+      RichMediaShareActionSheetUtil.a(56, (ArrayList)localObject2);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems((List)localObject1, (List)localObject2);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null)
+    ShareActionSheet localShareActionSheet = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    if (localShareActionSheet != null)
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing()) {
-        break label48;
+      if (localShareActionSheet.isShowing())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+        if (QLog.isDevelopLevel()) {
+          QLog.d("qqfav.FavoriteActionSheet", 4, "dismiss|showing");
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
-      if (QLog.isDevelopLevel()) {
-        QLog.d("qqfav.FavoriteActionSheet", 4, "dismiss|showing");
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = null;
-      return;
-      label48:
-      if (QLog.isDevelopLevel()) {
+      else if (QLog.isDevelopLevel())
+      {
         QLog.d("qqfav.FavoriteActionSheet", 4, "dismiss|not showing");
       }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = null;
     }
   }
   
@@ -159,61 +157,97 @@ public class FavoriteActionSheet
   
   protected void a(int paramInt, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2: 
-    case 73: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.e();
-      return;
-    case 72: 
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_req", ForwardRecentActivity.f);
-      localBundle.putInt("key_direct_show_uin_type", paramActionSheetItem.uinType);
-      localBundle.putString("key_direct_show_uin", paramActionSheetItem.uin);
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a(localBundle);
-      return;
-    case 26: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.g();
-      return;
-    case 39: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.f();
-      return;
-    case 130: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.h();
-      return;
-    case 131: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.n();
-      return;
-    case 94: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a();
-      return;
-    case 129: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.b();
-      return;
-    case 70: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.c();
-      return;
-    case 82: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.d();
-      return;
-    case 55: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.j();
-      return;
-    case 52: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.i();
-      return;
-    case 56: 
-      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.k();
-      return;
+    if (paramInt != 2) {
+      if (paramInt != 26)
+      {
+        if (paramInt != 39)
+        {
+          if (paramInt != 52)
+          {
+            if (paramInt != 64)
+            {
+              if (paramInt != 70)
+              {
+                if (paramInt != 82)
+                {
+                  if (paramInt != 94)
+                  {
+                    if (paramInt != 55)
+                    {
+                      if (paramInt != 56)
+                      {
+                        if (paramInt != 72)
+                        {
+                          if (paramInt != 73)
+                          {
+                            switch (paramInt)
+                            {
+                            default: 
+                              return;
+                            case 131: 
+                              this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.n();
+                              return;
+                            case 130: 
+                              this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.h();
+                              return;
+                            }
+                            this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.b();
+                          }
+                        }
+                        else
+                        {
+                          Bundle localBundle = new Bundle();
+                          localBundle.putInt("key_req", 1);
+                          localBundle.putInt("key_direct_show_uin_type", paramActionSheetItem.uinType);
+                          localBundle.putString("key_direct_show_uin", paramActionSheetItem.uin);
+                          this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a(localBundle);
+                        }
+                      }
+                      else {
+                        this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.k();
+                      }
+                    }
+                    else {
+                      this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.j();
+                    }
+                  }
+                  else {
+                    this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.a();
+                  }
+                }
+                else {
+                  this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.d();
+                }
+              }
+              else {
+                this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.c();
+              }
+            }
+            else {
+              this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.m();
+            }
+          }
+          else {
+            this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.i();
+          }
+        }
+        else {
+          this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.f();
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.g();
+        return;
+      }
     }
-    this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.m();
+    this.jdField_a_of_type_CooperationQqfavWidgetFavoriteActionSheet$Actions.e();
   }
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing()))
+    ShareActionSheet localShareActionSheet = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
+    if ((localShareActionSheet != null) && (!localShareActionSheet.isShowing()))
     {
       this.jdField_a_of_type_Boolean = false;
       b();
@@ -226,7 +260,7 @@ public class FavoriteActionSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.widget.FavoriteActionSheet
  * JD-Core Version:    0.7.0.1
  */

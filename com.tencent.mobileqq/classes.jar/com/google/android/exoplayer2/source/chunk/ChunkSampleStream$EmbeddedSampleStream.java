@@ -41,19 +41,14 @@ public final class ChunkSampleStream$EmbeddedSampleStream
   
   public int readData(FormatHolder paramFormatHolder, DecoderInputBuffer paramDecoderInputBuffer, boolean paramBoolean)
   {
-    int i;
     if (this.this$0.isPendingReset()) {
-      i = -3;
+      return -3;
     }
-    int j;
-    do
-    {
-      return i;
-      j = this.sampleQueue.read(paramFormatHolder, paramDecoderInputBuffer, paramBoolean, this.this$0.loadingFinished, this.this$0.decodeOnlyUntilPositionUs);
-      i = j;
-    } while (j != -4);
-    maybeNotifyTrackFormatChanged();
-    return j;
+    int i = this.sampleQueue.read(paramFormatHolder, paramDecoderInputBuffer, paramBoolean, this.this$0.loadingFinished, this.this$0.decodeOnlyUntilPositionUs);
+    if (i == -4) {
+      maybeNotifyTrackFormatChanged();
+    }
+    return i;
   }
   
   public void release()
@@ -65,26 +60,27 @@ public final class ChunkSampleStream$EmbeddedSampleStream
   public int skipData(long paramLong)
   {
     int i;
-    if ((this.this$0.loadingFinished) && (paramLong > this.sampleQueue.getLargestQueuedTimestampUs())) {
+    if ((this.this$0.loadingFinished) && (paramLong > this.sampleQueue.getLargestQueuedTimestampUs()))
+    {
       i = this.sampleQueue.advanceToEnd();
     }
-    for (;;)
+    else
     {
-      if (i > 0) {
-        maybeNotifyTrackFormatChanged();
-      }
-      return i;
       int j = this.sampleQueue.advanceTo(paramLong, true, true);
       i = j;
       if (j == -1) {
         i = 0;
       }
     }
+    if (i > 0) {
+      maybeNotifyTrackFormatChanged();
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.chunk.ChunkSampleStream.EmbeddedSampleStream
  * JD-Core Version:    0.7.0.1
  */

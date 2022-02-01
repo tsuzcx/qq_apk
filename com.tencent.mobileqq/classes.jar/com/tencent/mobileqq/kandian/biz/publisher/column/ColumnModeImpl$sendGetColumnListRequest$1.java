@@ -14,26 +14,26 @@ public final class ColumnModeImpl$sendGetColumnListRequest$1
 {
   ColumnModeImpl$sendGetColumnListRequest$1(IColumnModel.IColumnListCallback paramIColumnListCallback) {}
   
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
+  public void onResult(int paramInt, @Nullable byte[] paramArrayOfByte, @NotNull Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramBundle, "bundle");
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColumnModuleImpl", 2, "loadColumnListFromNetwork failed.");
-      }
-      paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherColumnIColumnModel$IColumnListCallback;
-      if (paramArrayOfByte != null) {
-        paramArrayOfByte.a(-1, "", null, true, null);
-      }
+      ColumnModeImpl.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherColumnColumnModeImpl, paramArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherColumnIColumnModel$IColumnListCallback);
       return;
     }
-    ColumnModeImpl.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherColumnColumnModeImpl, paramArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherColumnIColumnModel$IColumnListCallback);
+    if (QLog.isColorLevel()) {
+      QLog.d("ColumnModuleImpl", 2, "loadColumnListFromNetwork failed.");
+    }
+    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizPublisherColumnIColumnModel$IColumnListCallback;
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.a(-1, "", null, true, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.column.ColumnModeImpl.sendGetColumnListRequest.1
  * JD-Core Version:    0.7.0.1
  */

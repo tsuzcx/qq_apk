@@ -18,17 +18,18 @@ public class SecCenterConfigParser
     paramDocument = new Bundle();
     if ((localNodeList != null) && (localNodeList.getLength() >= 1))
     {
-      localNodeList = localNodeList.item(0).getChildNodes();
       int i = 0;
+      localNodeList = localNodeList.item(0).getChildNodes();
       while (i < localNodeList.getLength())
       {
-        Object localObject = localNodeList.item(i);
-        if ((localObject instanceof Element))
+        Object localObject1 = localNodeList.item(i);
+        if ((localObject1 instanceof Element))
         {
-          String str = ((Element)localObject).getAttribute("Name");
-          localObject = ((Element)localObject).getAttribute("Url");
-          if ((str != null) && (localObject != null) && (!str.equals("")) && (!((String)localObject).equals(""))) {
-            paramDocument.putString(str, (String)localObject);
+          Object localObject2 = (Element)localObject1;
+          localObject1 = ((Element)localObject2).getAttribute("Name");
+          localObject2 = ((Element)localObject2).getAttribute("Url");
+          if ((localObject1 != null) && (localObject2 != null) && (!((String)localObject1).equals("")) && (!((String)localObject2).equals(""))) {
+            paramDocument.putString((String)localObject1, (String)localObject2);
           }
         }
         i += 1;
@@ -55,14 +56,12 @@ public class SecCenterConfigParser
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          localThrowable.printStackTrace();
-        }
+        localThrowable.printStackTrace();
       }
       ((Bundle)localObject1).putInt("version", i);
       a(paramString, (Bundle)localObject1);
-      return new SecCenterConfig((Bundle)localObject1);
+      paramString = new SecCenterConfig((Bundle)localObject1);
+      return paramString;
     }
     catch (Exception paramString)
     {
@@ -73,7 +72,7 @@ public class SecCenterConfigParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqp.app.sec.SecCenterConfigParser
  * JD-Core Version:    0.7.0.1
  */

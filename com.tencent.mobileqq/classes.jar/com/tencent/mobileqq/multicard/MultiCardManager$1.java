@@ -18,6 +18,7 @@ class MultiCardManager$1
   public void run()
   {
     HashMap localHashMap = new HashMap(50);
+    Object localObject1;
     Object localObject2;
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
@@ -26,31 +27,37 @@ class MultiCardManager$1
       while (((Iterator)localObject2).hasNext())
       {
         Long localLong = (Long)((Iterator)localObject2).next();
-        String str = ((TroopManager)localObject1).a(this.jdField_a_of_type_Long + "", localLong + "");
-        if (str != null) {
-          localHashMap.put(localLong, str);
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject3).append("");
+        localObject3 = ((StringBuilder)localObject3).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localLong);
+        localStringBuilder.append("");
+        localObject3 = ((TroopManager)localObject1).a((String)localObject3, localStringBuilder.toString());
+        if (localObject3 != null) {
+          localHashMap.put(localLong, localObject3);
         }
       }
     }
     if (QLog.isColorLevel())
     {
-      localObject2 = new StringBuilder().append("callbackWithNativeMemberNick ").append(this.jdField_a_of_type_Long).append(" ");
-      if (localHashMap == null) {
-        break label218;
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("callbackWithNativeMemberNick ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(" ");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(localHashMap.size());
+      ((StringBuilder)localObject2).append(localHashMap.toString());
+      ((StringBuilder)localObject1).append(((StringBuilder)localObject2).toString());
+      QLog.d("MultiCardManager", 2, ((StringBuilder)localObject1).toString());
     }
-    label218:
-    for (Object localObject1 = localHashMap.size() + localHashMap.toString();; localObject1 = "null")
-    {
-      QLog.d("MultiCardManager", 2, (String)localObject1);
-      ThreadManager.getUIHandler().post(new MultiCardManager.1.1(this, localHashMap));
-      return;
-    }
+    ThreadManager.getUIHandler().post(new MultiCardManager.1.1(this, localHashMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.1
  * JD-Core Version:    0.7.0.1
  */

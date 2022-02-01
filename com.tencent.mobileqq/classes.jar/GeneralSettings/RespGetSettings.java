@@ -38,15 +38,16 @@ public final class RespGetSettings
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.Revision, 0);
-    if (this.Settings != null) {
-      paramJceOutputStream.write(this.Settings, 1);
+    ArrayList localArrayList = this.Settings;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
     paramJceOutputStream.write(this.Total, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     GeneralSettings.RespGetSettings
  * JD-Core Version:    0.7.0.1
  */

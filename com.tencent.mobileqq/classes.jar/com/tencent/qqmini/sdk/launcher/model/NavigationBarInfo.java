@@ -38,23 +38,24 @@ public class NavigationBarInfo
   public void updateInfo(JSONObject paramJSONObject)
   {
     String str = paramJSONObject.optString("navigationBarBackgroundColor");
-    if (TextUtils.isEmpty(str)) {}
-    for (int i = this.backgoundColor;; i = ColorUtils.parseColor(str))
-    {
-      this.backgoundColor = i;
-      this.textStyle = paramJSONObject.optString("navigationBarTextStyle", this.textStyle);
-      if ((!"white".equals(this.textStyle)) && (!"black".equals(this.textStyle))) {
-        this.textStyle = "white";
-      }
-      this.titleText = paramJSONObject.optString("navigationBarTitleText", this.titleText);
-      this.style = paramJSONObject.optString("navigationStyle", this.style);
-      return;
+    int i;
+    if (TextUtils.isEmpty(str)) {
+      i = this.backgoundColor;
+    } else {
+      i = ColorUtils.parseColor(str);
     }
+    this.backgoundColor = i;
+    this.textStyle = paramJSONObject.optString("navigationBarTextStyle", this.textStyle);
+    if ((!"white".equals(this.textStyle)) && (!"black".equals(this.textStyle))) {
+      this.textStyle = "white";
+    }
+    this.titleText = paramJSONObject.optString("navigationBarTitleText", this.titleText);
+    this.style = paramJSONObject.optString("navigationStyle", this.style);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.NavigationBarInfo
  * JD-Core Version:    0.7.0.1
  */

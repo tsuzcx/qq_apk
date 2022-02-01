@@ -82,18 +82,13 @@ public class PagRenderWorker
     if ((this.handler != null) && (this.handlerThread.isAlive()))
     {
       this.handler.removeCallbacksAndMessages(null);
-      if (Build.VERSION.SDK_INT <= 18) {
-        break label52;
+      if (Build.VERSION.SDK_INT > 18) {
+        this.handlerThread.quitSafely();
+      } else {
+        this.handlerThread.quit();
       }
-      this.handlerThread.quitSafely();
-    }
-    for (;;)
-    {
       this.handlerThread = null;
       this.handler = null;
-      return;
-      label52:
-      this.handlerThread.quit();
     }
   }
   
@@ -111,31 +106,33 @@ public class PagRenderWorker
     this.pagFileHeight = paramPAGFile.height();
     Object localObject = RenderUtils.getScaledImgSize(new Size(this.pagFileWidth, this.pagFileHeight), this.canvasSize);
     this.surfaceTexture.setDefaultBufferSize(((Size)localObject).width, ((Size)localObject).height);
-    if (this.scaleType == 0) {
-      this.pagPlayer.setScaleMode(1);
-    }
-    for (;;)
+    int j = this.scaleType;
+    int i = 1;
+    if (j == 0) {}
+    do
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("loadtime file path success:width::");
-      ((StringBuilder)localObject).append(paramPAGFile.width());
-      ((StringBuilder)localObject).append(", height:");
-      ((StringBuilder)localObject).append(paramPAGFile.height());
-      LogUtils.c("PagRenderWorker", ((StringBuilder)localObject).toString());
-      this.surface = new Surface(this.surfaceTexture);
-      this.pagSurface = PAGSurface.FromSurface(this.surface);
-      this.pagPlayer.setSurface(this.pagSurface);
-      this.pagPlayer.setComposition(paramPAGFile);
-      this.duration = this.pagPlayer.duration();
-      ThreadManager.getsInstance().execute(3, new PagRenderWorker.8(this));
-      doStartPlay();
-      return;
-      if (this.scaleType == 1) {
+      this.pagPlayer.setScaleMode(i);
+      break;
+      if (j == 1)
+      {
         this.pagPlayer.setScaleMode(3);
-      } else if (this.scaleType == 2) {
-        this.pagPlayer.setScaleMode(2);
+        break;
       }
-    }
+      i = 2;
+    } while (j == 2);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("loadtime file path success:width::");
+    ((StringBuilder)localObject).append(paramPAGFile.width());
+    ((StringBuilder)localObject).append(", height:");
+    ((StringBuilder)localObject).append(paramPAGFile.height());
+    LogUtils.c("PagRenderWorker", ((StringBuilder)localObject).toString());
+    this.surface = new Surface(this.surfaceTexture);
+    this.pagSurface = PAGSurface.FromSurface(this.surface);
+    this.pagPlayer.setSurface(this.pagSurface);
+    this.pagPlayer.setComposition(paramPAGFile);
+    this.duration = this.pagPlayer.duration();
+    ThreadManager.getsInstance().execute(3, new PagRenderWorker.8(this));
+    doStartPlay();
   }
   
   private void notifyErrorEvent(int paramInt)
@@ -143,8 +140,9 @@ public class PagRenderWorker
     HashMap localHashMap = new HashMap();
     localHashMap.put("event", "single_completed");
     localHashMap.put("data", Integer.valueOf(paramInt));
-    if (this.eventSink != null) {
-      this.eventSink.success(localHashMap);
+    QueuingEventSink localQueuingEventSink = this.eventSink;
+    if (localQueuingEventSink != null) {
+      localQueuingEventSink.success(localHashMap);
     }
   }
   
@@ -152,8 +150,9 @@ public class PagRenderWorker
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("event", "single_completed");
-    if (this.eventSink != null) {
-      this.eventSink.success(localHashMap);
+    QueuingEventSink localQueuingEventSink = this.eventSink;
+    if (localQueuingEventSink != null) {
+      localQueuingEventSink.success(localHashMap);
     }
   }
   
@@ -232,15 +231,17 @@ public class PagRenderWorker
     if (paramInt <= 0) {
       i = 0;
     }
-    if (this.animator != null) {
-      this.animator.setRepeatCount(i - 1);
+    ValueAnimator localValueAnimator = this.animator;
+    if (localValueAnimator != null) {
+      localValueAnimator.setRepeatCount(i - 1);
     }
   }
   
   public void setUpPagPlayer()
   {
-    if (this.eventChannel != null) {
-      this.eventChannel.setStreamHandler(new PagRenderWorker.6(this));
+    Object localObject = this.eventChannel;
+    if (localObject != null) {
+      ((EventChannel)localObject).setStreamHandler(new PagRenderWorker.6(this));
     }
     if (!AnimateImgInitManager.getsInstance().isSoLoad)
     {
@@ -256,25 +257,24 @@ public class PagRenderWorker
       {
         LogUtils.b("PagRenderWorker", "so exist and load error");
         notifyErrorEvent(2);
-        return;
       }
     }
-    for (this.isPagSoReady = true;; this.isPagSoReady = true)
+    else
     {
-      this.pagPlayer = new PAGPlayer();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setUpPagPlayer before");
-      localStringBuilder.append(this.url);
-      LogUtils.c("PagRenderWorker", localStringBuilder.toString());
-      startHandlerThread();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setUpPagPlayer after");
-      localStringBuilder.append(this.url);
-      LogUtils.c("PagRenderWorker", localStringBuilder.toString());
-      ThreadManager.getsInstance().execute(3, new PagRenderWorker.7(this));
-      return;
       LogUtils.c("PagRenderWorker", "setUpPagPlayer so found");
     }
+    this.isPagSoReady = true;
+    this.pagPlayer = new PAGPlayer();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setUpPagPlayer before");
+    ((StringBuilder)localObject).append(this.url);
+    LogUtils.c("PagRenderWorker", ((StringBuilder)localObject).toString());
+    startHandlerThread();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setUpPagPlayer after");
+    ((StringBuilder)localObject).append(this.url);
+    LogUtils.c("PagRenderWorker", ((StringBuilder)localObject).toString());
+    ThreadManager.getsInstance().execute(3, new PagRenderWorker.7(this));
   }
   
   public void startLoadResource()
@@ -300,7 +300,7 @@ public class PagRenderWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.renderer.PagRenderWorker
  * JD-Core Version:    0.7.0.1
  */

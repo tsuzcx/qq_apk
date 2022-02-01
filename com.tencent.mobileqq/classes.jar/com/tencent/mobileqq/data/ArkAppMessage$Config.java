@@ -17,30 +17,29 @@ public class ArkAppMessage$Config
   
   public boolean fromJson(JSONObject paramJSONObject)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramJSONObject == null) || (paramJSONObject.length() == 0))
+    if (paramJSONObject != null)
     {
-      bool1 = false;
-      return bool1;
-    }
-    int i = paramJSONObject.optInt("round", -1);
-    if (i != -1)
-    {
-      this.round = new Integer(i);
-      label43:
+      if (paramJSONObject.length() == 0) {
+        return false;
+      }
+      int i = paramJSONObject.optInt("round", -1);
+      if (i != -1) {
+        this.round = new Integer(i);
+      } else if (paramJSONObject.optBoolean("round")) {
+        this.round = new Integer(1);
+      }
       i = paramJSONObject.optInt("forward", -1);
-      if (i == -1) {
-        break label267;
+      if (i != -1) {
+        this.forward = new Integer(i);
+      } else if (paramJSONObject.optBoolean("forward")) {
+        this.forward = new Integer(1);
       }
-      this.forward = new Integer(i);
-      label68:
       i = paramJSONObject.optInt("autosize", -1);
-      if (i == -1) {
-        break label291;
+      if (i != -1) {
+        this.autoSize = new Integer(i);
+      } else if (paramJSONObject.optBoolean("autosize")) {
+        this.autoSize = new Integer(1);
       }
-      this.autoSize = new Integer(i);
-      label93:
       this.type = paramJSONObject.optString("type", null);
       if ((paramJSONObject.has("width")) && (paramJSONObject.has("height")))
       {
@@ -48,55 +47,30 @@ public class ArkAppMessage$Config
         this.height = Integer.valueOf(paramJSONObject.optInt("height", -1));
       }
       i = paramJSONObject.optInt("showSender", -1);
-      if (i == -1) {
-        break label315;
-      }
-      this.showSender = new Integer(i);
-    }
-    for (;;)
-    {
-      this.fitWidthAndCentered = Integer.valueOf(paramJSONObject.optInt("fitWidthAndCentered", 0));
-      bool1 = bool2;
-      if (!paramJSONObject.has("hintWidth")) {
-        break;
-      }
-      bool1 = bool2;
-      if (!paramJSONObject.has("hintHeight")) {
-        break;
-      }
-      this.hintWidth = Integer.valueOf(paramJSONObject.optInt("hintWidth", -1));
-      this.hintHeight = Integer.valueOf(paramJSONObject.optInt("hintHeight", -1));
-      return true;
-      if (!paramJSONObject.optBoolean("round")) {
-        break label43;
-      }
-      this.round = new Integer(1);
-      break label43;
-      label267:
-      if (!paramJSONObject.optBoolean("forward")) {
-        break label68;
-      }
-      this.forward = new Integer(1);
-      break label68;
-      label291:
-      if (!paramJSONObject.optBoolean("autosize")) {
-        break label93;
-      }
-      this.autoSize = new Integer(1);
-      break label93;
-      label315:
-      if (paramJSONObject.optBoolean("showSender", true)) {
+      if (i != -1) {
+        this.showSender = new Integer(i);
+      } else if (paramJSONObject.optBoolean("showSender", true)) {
         this.showSender = new Integer(1);
       } else {
         this.showSender = new Integer(0);
       }
+      this.fitWidthAndCentered = Integer.valueOf(paramJSONObject.optInt("fitWidthAndCentered", 0));
+      if ((paramJSONObject.has("hintWidth")) && (paramJSONObject.has("hintHeight")))
+      {
+        this.hintWidth = Integer.valueOf(paramJSONObject.optInt("hintWidth", -1));
+        this.hintHeight = Integer.valueOf(paramJSONObject.optInt("hintHeight", -1));
+      }
+      return true;
     }
+    return false;
   }
   
   public boolean fromString(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return false;
+    if (paramString != null) {
+      if (paramString.length() == 0) {
+        return false;
+      }
     }
     try
     {
@@ -105,47 +79,57 @@ public class ArkAppMessage$Config
     }
     catch (Exception paramString) {}
     return false;
+    return false;
   }
   
   public JSONObject toJson()
   {
-    JSONObject localJSONObject = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
     try
     {
       if (this.round != null) {
-        localJSONObject.put("round", this.round.intValue());
+        localJSONObject2.put("round", this.round.intValue());
       }
       if (this.forward != null) {
-        localJSONObject.put("forward", this.forward.intValue());
+        localJSONObject2.put("forward", this.forward.intValue());
       }
       if (this.autoSize != null) {
-        localJSONObject.put("autosize", this.autoSize.intValue());
+        localJSONObject2.put("autosize", this.autoSize.intValue());
       }
       if (this.type != null) {
-        localJSONObject.put("type", this.type);
+        localJSONObject2.put("type", this.type);
       }
       if (this.width != null) {
-        localJSONObject.put("width", this.width.intValue());
+        localJSONObject2.put("width", this.width.intValue());
       }
       if (this.height != null) {
-        localJSONObject.put("height", this.height.intValue());
+        localJSONObject2.put("height", this.height.intValue());
       }
       if (this.showSender != null) {
-        localJSONObject.put("showSender", this.showSender.intValue());
+        localJSONObject2.put("showSender", this.showSender.intValue());
       }
       if (this.fitWidthAndCentered != null) {
-        localJSONObject.put("fitWidthAndCentered", this.fitWidthAndCentered.intValue());
+        localJSONObject2.put("fitWidthAndCentered", this.fitWidthAndCentered.intValue());
       }
       if (this.hintWidth != null) {
-        localJSONObject.put("hintWidth", this.hintWidth.intValue());
+        localJSONObject2.put("hintWidth", this.hintWidth.intValue());
       }
-      if (this.hintHeight != null) {
-        localJSONObject.put("hintHeight", this.hintHeight.intValue());
+      localJSONObject1 = localJSONObject2;
+      if (this.hintHeight == null) {
+        break label221;
       }
-      return localJSONObject;
+      localJSONObject2.put("hintHeight", this.hintHeight.intValue());
+      return localJSONObject2;
     }
-    catch (Exception localException) {}
-    return null;
+    catch (Exception localException)
+    {
+      JSONObject localJSONObject1;
+      label219:
+      label221:
+      break label219;
+    }
+    localJSONObject1 = null;
+    return localJSONObject1;
   }
   
   public String toString()
@@ -159,7 +143,7 @@ public class ArkAppMessage$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.ArkAppMessage.Config
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/skin_searchbar_bg_theme_version2" android:focusable="true" android:layout_width="fill_parent" android:layout_height="60.0dip" android:contentDescription="@string/el9"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/ik9" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:id="@id/o38" android:clickable="true" layout="@layout/b1x" />
-        <include android:id="@id/o39" android:visibility="gone" android:clickable="true" layout="@layout/cvq" />
+    <Button android:textSize="17.0dip" android:textColor="@color/skin_search_button_theme_version2" android:id="@id/btn_cancel_search" android:background="@drawable/b2p" android:layout_width="49.0dip" android:layout_height="35.0dip" android:layout_marginLeft="0.0dip" android:layout_marginRight="10.0dip" android:text="@string/cancel" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <EditText android:textSize="15.0sp" android:textColor="@color/skin_input_theme_version2" android:textColorHint="@color/skin_hint_input_theme_version2" android:ellipsize="end" android:id="@id/et_search_keyword" android:background="@drawable/skin_searchbar_input_theme_version2" android:paddingLeft="10.0dip" android:paddingTop="8.0dip" android:paddingRight="30.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:hint="@string/el9" android:singleLine="true" android:maxLength="200" android:drawableLeft="@drawable/skin_searchbar_icon_theme_version2" android:drawablePadding="5.0dip" android:layout_toLeftOf="@id/btn_cancel_search" android:layout_centerVertical="true" android:inputType="textNoSuggestions" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ayb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/btn_cancel_search" android:layout_alignRight="@id/et_search_keyword" android:layout_centerVertical="true">
+        <TextView android:textSize="14.0dip" android:textColor="#ffa6a6a6" android:id="@id/kaf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="7.0dip" android:singleLine="true" android:maxLength="50" />
+        <ImageButton android:id="@id/ib_clear_text" android:background="@null" android:padding="0.0dip" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/cross_theme_version2" android:scaleType="centerCrop" android:contentDescription="@string/dn1" />
     </LinearLayout>
-    <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/nol" android:layout_width="fill_parent" android:layout_height="3.0dip" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.biz.ui.TouchWebView android:id="@id/om0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <View android:id="@id/olf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-</LinearLayout>
+</RelativeLayout>

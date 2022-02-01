@@ -44,10 +44,11 @@ public class ListItemRenderNode
   
   public void updateNode(HippyMap paramHippyMap)
   {
-    int i = this.mProps.getInt("itemViewType");
-    int j = paramHippyMap.getInt("itemViewType");
-    if ((this.b != null) && (i != j)) {
-      this.b.onRecycleItemTypeChanged(i, j, this);
+    int i = this.mProps.getInt("type");
+    int j = paramHippyMap.getInt("type");
+    IRecycleItemTypeChange localIRecycleItemTypeChange = this.b;
+    if ((localIRecycleItemTypeChange != null) && (i != j)) {
+      localIRecycleItemTypeChange.onRecycleItemTypeChanged(i, j, this);
     }
     super.updateNode(paramHippyMap);
     if (this.mProps.get("sticky") != null) {
@@ -57,7 +58,7 @@ public class ListItemRenderNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.ListItemRenderNode
  * JD-Core Version:    0.7.0.1
  */

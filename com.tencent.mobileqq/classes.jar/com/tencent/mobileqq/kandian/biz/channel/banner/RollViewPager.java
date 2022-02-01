@@ -1,0 +1,241 @@
+package com.tencent.mobileqq.kandian.biz.channel.banner;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewParent;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.PageTransformer;
+import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
+
+public class RollViewPager
+  extends ViewPager
+{
+  private static String jdField_a_of_type_JavaLangString = "BannerAdapter";
+  protected float a;
+  protected int a;
+  private ViewPager.PageTransformer jdField_a_of_type_AndroidxViewpagerWidgetViewPager$PageTransformer;
+  protected IBannerAdapter a;
+  private RollViewPager.OnTouchStateChangeListener jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager$OnTouchStateChangeListener;
+  private RollViewPager.OnUserFling jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager$OnUserFling;
+  protected float b;
+  private int b;
+  protected float c;
+  protected float d;
+  private float e = 1.0F;
+  private float f = 1.0F;
+  
+  public RollViewPager(Context paramContext)
+  {
+    this(paramContext, null);
+  }
+  
+  public RollViewPager(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+    a(paramContext, paramAttributeSet);
+  }
+  
+  private void a(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RollViewPager);
+    this.e = paramAttributeSet.getFloat(1, 1.0F);
+    this.f = paramAttributeSet.getFloat(0, 1.0F);
+    paramAttributeSet.recycle();
+    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+  }
+  
+  public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    super.addView(paramView, paramInt, paramLayoutParams);
+    int j = getCurrentItem();
+    if (this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$PageTransformer != null)
+    {
+      int i = paramInt;
+      if (paramInt < 0) {
+        i = getChildCount();
+      }
+      this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$PageTransformer.transformPage(paramView, i - j);
+    }
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    float f3 = Math.abs(f1 - this.c);
+    float f4 = Math.abs(f2 - this.d);
+    int i = paramMotionEvent.getAction();
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (i != 0)
+    {
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i == 261) {
+              break label312;
+            }
+            return false;
+          }
+        }
+        else
+        {
+          if (this.jdField_b_of_type_Int <= 1)
+          {
+            getParent().requestDisallowInterceptTouchEvent(false);
+            bool1 = bool2;
+          }
+          else
+          {
+            if ((f3 < f4) && (Math.abs(f2 - this.jdField_b_of_type_Float) > this.jdField_a_of_type_Int)) {
+              getParent().requestDisallowInterceptTouchEvent(false);
+            } else {
+              getParent().requestDisallowInterceptTouchEvent(true);
+            }
+            if ((f3 > f4) && (Math.abs(f1 - this.jdField_a_of_type_Float) > this.jdField_a_of_type_Int))
+            {
+              bool1 = super.dispatchTouchEvent(paramMotionEvent);
+            }
+            else
+            {
+              requestDisallowInterceptTouchEvent(false);
+              bool1 = bool2;
+            }
+          }
+          this.c = f1;
+          this.d = f2;
+          return bool1;
+        }
+      }
+      requestDisallowInterceptTouchEvent(false);
+      bool2 = super.dispatchTouchEvent(paramMotionEvent);
+      if ((Math.abs(f1 - this.jdField_a_of_type_Float) < this.jdField_a_of_type_Int) && (Math.abs(f2 - this.jdField_b_of_type_Float) < this.jdField_a_of_type_Int))
+      {
+        requestDisallowInterceptTouchEvent(false);
+        performClick();
+      }
+      else
+      {
+        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager$OnUserFling;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.c();
+        }
+        bool1 = bool2;
+      }
+      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager$OnTouchStateChangeListener;
+      bool2 = bool1;
+      if (paramMotionEvent == null) {
+        break label376;
+      }
+      paramMotionEvent.a(1);
+      return bool1;
+    }
+    label312:
+    this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerIBannerAdapter.a();
+    requestDisallowInterceptTouchEvent(true);
+    this.c = f1;
+    this.jdField_a_of_type_Float = f1;
+    this.d = f2;
+    this.jdField_b_of_type_Float = f2;
+    RollViewPager.OnTouchStateChangeListener localOnTouchStateChangeListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager$OnTouchStateChangeListener;
+    if (localOnTouchStateChangeListener != null) {
+      localOnTouchStateChangeListener.a(0);
+    }
+    bool2 = super.dispatchTouchEvent(paramMotionEvent);
+    label376:
+    return bool2;
+  }
+  
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    try
+    {
+      boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+      return bool;
+    }
+    catch (IllegalArgumentException paramMotionEvent)
+    {
+      TroopTechReportUtils.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      paramMotionEvent.printStackTrace();
+    }
+    return false;
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(paramInt1, paramInt2);
+    paramInt1 = View.MeasureSpec.getSize(paramInt1);
+    paramInt2 = View.MeasureSpec.getSize(paramInt2);
+    if (this.e == 1.0F)
+    {
+      f1 = this.f;
+      if (f1 != 1.0F)
+      {
+        paramInt2 = (int)(paramInt1 * f1);
+        getLayoutParams().height = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
+        setMeasuredDimension(paramInt1, paramInt2);
+        return;
+      }
+    }
+    float f1 = this.e;
+    if ((f1 != 1.0F) && (this.f == 1.0F))
+    {
+      paramInt1 = (int)(paramInt2 * f1);
+      getLayoutParams().width = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
+      setMeasuredDimension(paramInt1, paramInt2);
+    }
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    try
+    {
+      boolean bool = super.onTouchEvent(paramMotionEvent);
+      return bool;
+    }
+    catch (IllegalArgumentException paramMotionEvent)
+    {
+      TroopTechReportUtils.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      paramMotionEvent.printStackTrace();
+    }
+    return false;
+  }
+  
+  public void setAdapter(PagerAdapter paramPagerAdapter)
+  {
+    super.setAdapter(paramPagerAdapter);
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerIBannerAdapter = ((IBannerAdapter)paramPagerAdapter);
+  }
+  
+  public void setOnTouchStateChangeListener(RollViewPager.OnTouchStateChangeListener paramOnTouchStateChangeListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager$OnTouchStateChangeListener = paramOnTouchStateChangeListener;
+  }
+  
+  public void setOnUserFling(RollViewPager.OnUserFling paramOnUserFling)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizChannelBannerRollViewPager$OnUserFling = paramOnUserFling;
+  }
+  
+  public void setPageTransformer(boolean paramBoolean, ViewPager.PageTransformer paramPageTransformer)
+  {
+    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$PageTransformer = paramPageTransformer;
+    super.setPageTransformer(paramBoolean, paramPageTransformer);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+ * Qualified Name:     com.tencent.mobileqq.kandian.biz.channel.banner.RollViewPager
+ * JD-Core Version:    0.7.0.1
+ */

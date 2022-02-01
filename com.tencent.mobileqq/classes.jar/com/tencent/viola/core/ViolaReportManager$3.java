@@ -16,7 +16,11 @@ class ViolaReportManager$3
   public void onHttpFinish(HttpResponse paramHttpResponse)
   {
     int i = Integer.parseInt(paramHttpResponse.statusCode);
-    ViolaLogUtils.d("ViolaReportManager", "postToBeaconTest finish,resCode=" + i + ",eventName=default");
+    paramHttpResponse = new StringBuilder();
+    paramHttpResponse.append("postToBeaconTest finish,resCode=");
+    paramHttpResponse.append(i);
+    paramHttpResponse.append(",eventName=default");
+    ViolaLogUtils.d("ViolaReportManager", paramHttpResponse.toString());
   }
   
   public void onHttpStart()
@@ -26,7 +30,7 @@ class ViolaReportManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaReportManager.3
  * JD-Core Version:    0.7.0.1
  */

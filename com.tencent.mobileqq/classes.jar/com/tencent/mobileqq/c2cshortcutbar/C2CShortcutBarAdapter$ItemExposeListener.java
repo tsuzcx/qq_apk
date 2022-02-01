@@ -6,7 +6,7 @@ public abstract interface C2CShortcutBarAdapter$ItemExposeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarAdapter.ItemExposeListener
  * JD-Core Version:    0.7.0.1
  */

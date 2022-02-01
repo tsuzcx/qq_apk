@@ -33,11 +33,6 @@ public class IdentifierDrawable
   private int j = Color.argb(127, 255, 255, 255);
   private int k = -1;
   
-  static
-  {
-    jdField_a_of_type_Int = 0;
-  }
-  
   private void a()
   {
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 100 });
@@ -49,7 +44,8 @@ public class IdentifierDrawable
   
   private void c(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()) && (paramInt == 7)) {
+    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if ((localValueAnimator != null) && (localValueAnimator.isRunning()) && (paramInt == 7)) {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
   }
@@ -64,69 +60,74 @@ public class IdentifierDrawable
     if (this.g != paramInt)
     {
       this.g = paramInt;
-      if (this.g == 6) {
+      paramInt = this.g;
+      if (paramInt == 6)
+      {
         a();
+        return;
       }
+      c(paramInt);
+      this.k = -1;
+      invalidateSelf();
     }
-    else
-    {
-      return;
-    }
-    c(this.g);
-    this.k = -1;
-    invalidateSelf();
   }
   
   public void draw(@NonNull Canvas paramCanvas)
   {
     Object localObject = getBounds();
     paramCanvas.save();
-    int n = ((Rect)localObject).centerX();
-    int i1 = ((Rect)localObject).centerY();
-    int i2 = this.h;
+    int i1 = ((Rect)localObject).centerX();
+    int i2 = ((Rect)localObject).centerY();
+    int i3 = this.h;
     paramCanvas.clipRect((Rect)localObject);
     paramCanvas.drawColor(this.e);
-    int m;
     if (this.g > jdField_a_of_type_Int)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
       this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-      paramCanvas.drawCircle(n, i1, i2, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.g > 1)
+      float f1 = i1;
+      float f2 = i2;
+      float f3 = i3;
+      paramCanvas.drawCircle(f1, f2, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
+      int i4 = this.g;
+      if (i4 > 1)
       {
-        m = this.b;
-        switch (this.g)
+        int n = this.b;
+        int m = n;
+        switch (i4)
         {
+        default: 
+          m = n;
+          break;
+        case 7: 
+          m = -1;
+          break;
+        case 5: 
+        case 6: 
+          m = this.j;
+          break;
+        case 2: 
+        case 4: 
+          m = this.c;
+        }
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(m);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.i);
+        paramCanvas.drawCircle(f1, f2, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
+        if (this.k != -1)
+        {
+          localObject = new RectF(i1 - i3, i2 - i3, i1 + i3, i2 + i3);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.i);
+          paramCanvas.drawArc((RectF)localObject, 270.0F, this.k / 100.0F * 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(m);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.i);
-      paramCanvas.drawCircle(n, i1, i2, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.k != -1)
-      {
-        localObject = new RectF(n - i2, i1 - i2, n + i2, i1 + i2);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.i);
-        paramCanvas.drawArc((RectF)localObject, 270.0F, this.k / 100.0F * 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      paramCanvas.restore();
-      return;
-      m = -1;
-      continue;
-      m = this.b;
-      continue;
-      m = this.c;
-      continue;
-      m = this.j;
-    }
+    paramCanvas.restore();
   }
   
   public int getOpacity()
@@ -140,7 +141,7 @@ public class IdentifierDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IdentifierDrawable
  * JD-Core Version:    0.7.0.1
  */

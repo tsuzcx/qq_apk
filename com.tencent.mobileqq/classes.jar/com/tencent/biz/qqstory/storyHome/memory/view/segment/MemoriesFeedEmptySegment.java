@@ -13,7 +13,7 @@ public class MemoriesFeedEmptySegment
     super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
   }
   
-  public void S_()
+  protected void Q_()
   {
     SegmentView localSegmentView = a().a("FeedSegment");
     if ((localSegmentView != null) && (localSegmentView.a() == 0))
@@ -26,7 +26,7 @@ public class MemoriesFeedEmptySegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesFeedEmptySegment
  * JD-Core Version:    0.7.0.1
  */

@@ -18,16 +18,18 @@ class PositionMap<E>
   
   public PositionMap(int paramInt)
   {
-    if (paramInt == 0) {
-      this.mKeys = PositionMap.ContainerHelpers.EMPTY_INTS;
-    }
-    for (this.mValues = PositionMap.ContainerHelpers.EMPTY_OBJECTS;; this.mValues = new Object[paramInt])
+    if (paramInt == 0)
     {
-      this.mSize = 0;
-      return;
+      this.mKeys = PositionMap.ContainerHelpers.EMPTY_INTS;
+      this.mValues = PositionMap.ContainerHelpers.EMPTY_OBJECTS;
+    }
+    else
+    {
       paramInt = idealIntArraySize(paramInt);
       this.mKeys = new int[paramInt];
+      this.mValues = new Object[paramInt];
     }
+    this.mSize = 0;
   }
   
   private void gc()
@@ -65,20 +67,15 @@ class PositionMap<E>
   static int idealByteArraySize(int paramInt)
   {
     int i = 4;
-    for (;;)
+    while (i < 32)
     {
-      int j = paramInt;
-      if (i < 32)
-      {
-        if (paramInt <= (1 << i) - 12) {
-          j = (1 << i) - 12;
-        }
-      }
-      else {
+      int j = (1 << i) - 12;
+      if (paramInt <= j) {
         return j;
       }
       i += 1;
     }
+    return paramInt;
   }
   
   static int idealCharArraySize(int paramInt)
@@ -113,7 +110,8 @@ class PositionMap<E>
   
   public void append(int paramInt, E paramE)
   {
-    if ((this.mSize != 0) && (paramInt <= this.mKeys[(this.mSize - 1)]))
+    int i = this.mSize;
+    if ((i != 0) && (paramInt <= this.mKeys[(i - 1)]))
     {
       put(paramInt, paramE);
       return;
@@ -121,14 +119,16 @@ class PositionMap<E>
     if ((this.mGarbage) && (this.mSize >= this.mKeys.length)) {
       gc();
     }
-    int i = this.mSize;
+    i = this.mSize;
     if (i >= this.mKeys.length)
     {
       int j = idealIntArraySize(i + 1);
       int[] arrayOfInt = new int[j];
       Object[] arrayOfObject = new Object[j];
-      System.arraycopy(this.mKeys, 0, arrayOfInt, 0, this.mKeys.length);
-      System.arraycopy(this.mValues, 0, arrayOfObject, 0, this.mValues.length);
+      Object localObject = this.mKeys;
+      System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
+      localObject = this.mValues;
+      System.arraycopy(localObject, 0, arrayOfObject, 0, localObject.length);
       this.mKeys = arrayOfInt;
       this.mValues = arrayOfObject;
     }
@@ -153,13 +153,18 @@ class PositionMap<E>
   
   public PositionMap<E> clone()
   {
-    try
+    for (;;)
     {
-      PositionMap localPositionMap = (PositionMap)super.clone();
-      return localCloneNotSupportedException1;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException1)
-    {
+      try
+      {
+        localPositionMap = (PositionMap)super.clone();
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException1)
+      {
+        PositionMap localPositionMap;
+        continue;
+        return localCloneNotSupportedException1;
+      }
       try
       {
         localPositionMap.mKeys = ((int[])this.mKeys.clone());
@@ -167,18 +172,23 @@ class PositionMap<E>
         return localPositionMap;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
-      localCloneNotSupportedException1 = localCloneNotSupportedException1;
-      return null;
     }
+    return null;
   }
   
   public void delete(int paramInt)
   {
     paramInt = PositionMap.ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
-    if ((paramInt >= 0) && (this.mValues[paramInt] != DELETED))
+    if (paramInt >= 0)
     {
-      this.mValues[paramInt] = DELETED;
-      this.mGarbage = true;
+      Object[] arrayOfObject = this.mValues;
+      Object localObject1 = arrayOfObject[paramInt];
+      Object localObject2 = DELETED;
+      if (localObject1 != localObject2)
+      {
+        arrayOfObject[paramInt] = localObject2;
+        this.mGarbage = true;
+      }
     }
   }
   
@@ -190,10 +200,15 @@ class PositionMap<E>
   public E get(int paramInt, E paramE)
   {
     paramInt = PositionMap.ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
-    if ((paramInt < 0) || (this.mValues[paramInt] == DELETED)) {
-      return paramE;
+    if (paramInt >= 0)
+    {
+      Object[] arrayOfObject = this.mValues;
+      if (arrayOfObject[paramInt] == DELETED) {
+        return paramE;
+      }
+      return arrayOfObject[paramInt];
     }
-    return this.mValues[paramInt];
+    return paramE;
   }
   
   public int indexOfKey(int paramInt)
@@ -239,11 +254,16 @@ class PositionMap<E>
       return;
     }
     int j = i ^ 0xFFFFFFFF;
-    if ((j < this.mSize) && (this.mValues[j] == DELETED))
+    Object localObject1;
+    if (j < this.mSize)
     {
-      this.mKeys[j] = paramInt;
-      this.mValues[j] = paramE;
-      return;
+      localObject1 = this.mValues;
+      if (localObject1[j] == DELETED)
+      {
+        this.mKeys[j] = paramInt;
+        localObject1[j] = paramE;
+        return;
+      }
     }
     i = j;
     if (this.mGarbage)
@@ -255,20 +275,27 @@ class PositionMap<E>
         i = PositionMap.ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt) ^ 0xFFFFFFFF;
       }
     }
-    if (this.mSize >= this.mKeys.length)
+    j = this.mSize;
+    if (j >= this.mKeys.length)
     {
-      j = idealIntArraySize(this.mSize + 1);
-      int[] arrayOfInt = new int[j];
+      j = idealIntArraySize(j + 1);
+      localObject1 = new int[j];
       Object[] arrayOfObject = new Object[j];
-      System.arraycopy(this.mKeys, 0, arrayOfInt, 0, this.mKeys.length);
-      System.arraycopy(this.mValues, 0, arrayOfObject, 0, this.mValues.length);
-      this.mKeys = arrayOfInt;
+      Object localObject2 = this.mKeys;
+      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
+      localObject2 = this.mValues;
+      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
+      this.mKeys = ((int[])localObject1);
       this.mValues = arrayOfObject;
     }
-    if (this.mSize - i != 0)
+    j = this.mSize;
+    if (j - i != 0)
     {
-      System.arraycopy(this.mKeys, i, this.mKeys, i + 1, this.mSize - i);
-      System.arraycopy(this.mValues, i, this.mValues, i + 1, this.mSize - i);
+      localObject1 = this.mKeys;
+      int k = i + 1;
+      System.arraycopy(localObject1, i, localObject1, k, j - i);
+      localObject1 = this.mValues;
+      System.arraycopy(localObject1, i, localObject1, k, this.mSize - i);
     }
     this.mKeys[i] = paramInt;
     this.mValues[i] = paramE;
@@ -282,16 +309,19 @@ class PositionMap<E>
   
   public void removeAt(int paramInt)
   {
-    if (this.mValues[paramInt] != DELETED)
+    Object[] arrayOfObject = this.mValues;
+    Object localObject1 = arrayOfObject[paramInt];
+    Object localObject2 = DELETED;
+    if (localObject1 != localObject2)
     {
-      this.mValues[paramInt] = DELETED;
+      arrayOfObject[paramInt] = localObject2;
       this.mGarbage = true;
     }
   }
   
   public void removeAtRange(int paramInt1, int paramInt2)
   {
-    paramInt2 = Math.min(this.mSize, paramInt1 + paramInt2);
+    paramInt2 = Math.min(this.mSize, paramInt2 + paramInt1);
     while (paramInt1 < paramInt2)
     {
       removeAt(paramInt1);
@@ -325,7 +355,7 @@ class PositionMap<E>
     StringBuilder localStringBuilder = new StringBuilder(this.mSize * 28);
     localStringBuilder.append('{');
     int i = 0;
-    if (i < this.mSize)
+    while (i < this.mSize)
     {
       if (i > 0) {
         localStringBuilder.append(", ");
@@ -335,13 +365,10 @@ class PositionMap<E>
       Object localObject = valueAt(i);
       if (localObject != this) {
         localStringBuilder.append(localObject);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localStringBuilder.append("(this Map)");
       }
+      i += 1;
     }
     localStringBuilder.append('}');
     return localStringBuilder.toString();

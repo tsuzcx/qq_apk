@@ -19,17 +19,21 @@ class TeamWorkForceShare$2
     Object localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
     localObject = ImageUtil.a(str, (BitmapFactory.Options)localObject);
-    if ((localObject == null) || (((Bitmap)localObject).isRecycled()))
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
-      QLog.d(TeamWorkForceShare.a(), 1, "share to wx, image decode failed, url = " + TeamWorkForceShare.a(this.this$0));
+      ThreadManager.getUIHandler().post(new TeamWorkForceShare.2.1(this, str, (Bitmap)localObject));
       return;
     }
-    ThreadManager.getUIHandler().post(new TeamWorkForceShare.2.1(this, str, (Bitmap)localObject));
+    str = TeamWorkForceShare.a();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("share to wx, image decode failed, url = ");
+    ((StringBuilder)localObject).append(TeamWorkForceShare.a(this.this$0));
+    QLog.d(str, 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.2
  * JD-Core Version:    0.7.0.1
  */

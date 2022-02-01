@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class JudgeDownloadReq
   extends JceStruct
@@ -63,15 +64,18 @@ public final class JudgeDownloadReq
   {
     paramJceOutputStream.write(this.iActId, 0);
     paramJceOutputStream.write(this.iUin, 1);
-    if (this.vecResInfo != null) {
-      paramJceOutputStream.write(this.vecResInfo, 2);
+    Object localObject = this.vecResInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.sQQVersion != null) {
-      paramJceOutputStream.write(this.sQQVersion, 3);
+    localObject = this.sQQVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.iType, 4);
-    if (this.sPhoneType != null) {
-      paramJceOutputStream.write(this.sPhoneType, 5);
+    localObject = this.sPhoneType;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.fMinCPUFreq, 6);
     paramJceOutputStream.write(this.fMaxCPUFreq, 7);
@@ -83,7 +87,7 @@ public final class JudgeDownloadReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.JudgeDownloadReq
  * JD-Core Version:    0.7.0.1
  */

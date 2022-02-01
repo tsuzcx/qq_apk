@@ -44,23 +44,30 @@ public class DevLockSmsImpl
       EquipmentLockImpl.a().a(paramQBaseActivity.getAppRuntime(), this.jdField_a_of_type_Int);
     }
     boolean bool = GatewayLoginNewDevHelper.a();
-    QLog.i("DevLockSmsImpl", 1, "gateway_login_new_dev sendSms mVerifySeq=" + this.b + ",isGateWayFlow=" + bool);
-    HashMap localHashMap = null;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("gateway_login_new_dev sendSms mVerifySeq=");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(",isGateWayFlow=");
+    ((StringBuilder)localObject).append(bool);
+    QLog.i("DevLockSmsImpl", 1, ((StringBuilder)localObject).toString());
+    localObject = null;
     if (bool)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("key_business_seq", Integer.valueOf(this.b));
-      localHashMap.put("businessType", Integer.valueOf(2));
+      localObject = new HashMap();
+      ((HashMap)localObject).put("key_business_seq", Integer.valueOf(this.b));
+      ((HashMap)localObject).put("businessType", Integer.valueOf(2));
     }
-    int i = EquipmentLockImpl.a().a(paramQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqLoginregisterDevLockSmsImpl$DevLockSmsObserver, localHashMap);
-    if (i == 0) {
-      paramICommonSmsView.showLoadingDialog();
-    }
-    for (;;)
+    int i = EquipmentLockImpl.a().a(paramQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqLoginregisterDevLockSmsImpl$DevLockSmsObserver, (HashMap)localObject);
+    if (i == 0)
     {
+      paramICommonSmsView.showLoadingDialog();
       return true;
-      QLog.i("DevLockSmsImpl", 1, "gateway_login_new_devsendSms failed ret=" + i);
     }
+    paramQBaseActivity = new StringBuilder();
+    paramQBaseActivity.append("gateway_login_new_devsendSms failed ret=");
+    paramQBaseActivity.append(i);
+    QLog.i("DevLockSmsImpl", 1, paramQBaseActivity.toString());
+    return true;
   }
   
   public boolean a(QBaseActivity paramQBaseActivity, ICommonSmsView paramICommonSmsView, String paramString)
@@ -69,25 +76,34 @@ public class DevLockSmsImpl
       return false;
     }
     boolean bool = GatewayLoginNewDevHelper.a();
-    QLog.i("DevLockSmsImpl", 1, "gateway_login_new_dev submitSms smsCode=" + paramString + ",mVerifySeq=" + this.b + ",isGateWayFlow=" + bool);
-    HashMap localHashMap = null;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("gateway_login_new_dev submitSms smsCode=");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(",mVerifySeq=");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(",isGateWayFlow=");
+    ((StringBuilder)localObject).append(bool);
+    QLog.i("DevLockSmsImpl", 1, ((StringBuilder)localObject).toString());
+    localObject = null;
     if (bool)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("key_business_seq", Integer.valueOf(this.b));
-      localHashMap.put("businessType", Integer.valueOf(2));
-      localHashMap.put("phoneToken", GatewayLoginNewDevHelper.a());
+      localObject = new HashMap();
+      ((HashMap)localObject).put("key_business_seq", Integer.valueOf(this.b));
+      ((HashMap)localObject).put("businessType", Integer.valueOf(2));
+      ((HashMap)localObject).put("phoneToken", GatewayLoginNewDevHelper.a());
     }
-    int i = EquipmentLockImpl.a().a(paramQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqLoginregisterDevLockSmsImpl$DevLockSmsObserver, paramString, localHashMap);
-    if (i == 0) {
-      paramICommonSmsView.showLoadingDialog();
-    }
-    for (;;)
+    int i = EquipmentLockImpl.a().a(paramQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqLoginregisterDevLockSmsImpl$DevLockSmsObserver, paramString, (HashMap)localObject);
+    if (i == 0)
     {
+      paramICommonSmsView.showLoadingDialog();
       return true;
-      QLog.i("DevLockSmsImpl", 1, "gateway_login_new_dev submitSms failed ret=" + i);
-      QQToast.a(paramQBaseActivity, 1, 2131716998, 0).a();
     }
+    paramICommonSmsView = new StringBuilder();
+    paramICommonSmsView.append("gateway_login_new_dev submitSms failed ret=");
+    paramICommonSmsView.append(i);
+    QLog.i("DevLockSmsImpl", 1, paramICommonSmsView.toString());
+    QQToast.a(paramQBaseActivity, 1, 2131716651, 0).a();
+    return true;
   }
   
   public void b() {}
@@ -99,7 +115,7 @@ public class DevLockSmsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.DevLockSmsImpl
  * JD-Core Version:    0.7.0.1
  */

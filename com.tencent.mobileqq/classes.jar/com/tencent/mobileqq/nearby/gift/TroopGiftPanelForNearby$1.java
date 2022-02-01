@@ -14,28 +14,39 @@ class TroopGiftPanelForNearby$1
   
   public void a(int paramInt)
   {
-    NearbyFlowerManager.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
+    String str = this.a.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(TroopGiftPanelForNearby.a(this.a));
+    localStringBuilder.append("");
+    NearbyFlowerManager.a("gift_store", "suc_one", str, localStringBuilder.toString(), "", "");
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetThrowGiftResult() onError errorCode = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", errorMsg = ");
+      localStringBuilder.append(paramString);
+      QLog.d("zivonchen", 2, localStringBuilder.toString());
     }
     if (paramInt == 20007) {
-      QQToast.a(TroopGiftPanelForNearby.a(this.a), HardCodeUtil.a(2131715281), 0).b(this.a.getResources().getDimensionPixelSize(2131299166));
+      QQToast.a(TroopGiftPanelForNearby.a(this.a), HardCodeUtil.a(2131715204), 0).b(this.a.getResources().getDimensionPixelSize(2131299168));
+    } else {
+      QQToast.a(TroopGiftPanelForNearby.b(this.a), HardCodeUtil.a(2131715201), 0).b(this.a.getResources().getDimensionPixelSize(2131299168));
     }
-    for (;;)
-    {
-      NearbyFlowerManager.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
-      return;
-      QQToast.a(TroopGiftPanelForNearby.b(this.a), HardCodeUtil.a(2131715278), 0).b(this.a.getResources().getDimensionPixelSize(2131299166));
-    }
+    paramString = this.a.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(TroopGiftPanelForNearby.b(this.a));
+    localStringBuilder.append("");
+    NearbyFlowerManager.a("gift_store", "fail_one", paramString, localStringBuilder.toString(), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby.1
  * JD-Core Version:    0.7.0.1
  */

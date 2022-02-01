@@ -8,18 +8,20 @@ public class fg
 {
   public static int G(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return -1;
-      if ((paramString.startsWith("46000")) || (paramString.startsWith("46002")) || (paramString.startsWith("46007"))) {
-        return 0;
-      }
+    }
+    if ((!paramString.startsWith("46000")) && (!paramString.startsWith("46002")) && (!paramString.startsWith("46007")))
+    {
       if (paramString.startsWith("46001")) {
         return 1;
       }
-    } while (!paramString.startsWith("46003"));
-    return 2;
+      if (paramString.startsWith("46003")) {
+        return 2;
+      }
+      return -1;
+    }
+    return 0;
   }
   
   @SuppressLint({"MissingPermission"})
@@ -28,19 +30,19 @@ public class fg
     try
     {
       paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId();
-      Object localObject = paramContext;
-      if (paramContext == null) {
-        localObject = "000000000000000";
-      }
-      return localObject;
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        paramContext = null;
-      }
+      label16:
+      Object localObject;
+      break label16;
     }
+    paramContext = null;
+    localObject = paramContext;
+    if (paramContext == null) {
+      localObject = "000000000000000";
+    }
+    return localObject;
   }
   
   public static int l(Context paramContext)
@@ -50,7 +52,7 @@ public class fg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fg
  * JD-Core Version:    0.7.0.1
  */

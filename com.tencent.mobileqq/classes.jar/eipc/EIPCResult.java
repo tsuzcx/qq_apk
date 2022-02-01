@@ -34,8 +34,9 @@ public class EIPCResult
   {
     this.code = paramParcel.readInt();
     this.data = paramParcel.readBundle();
-    if (this.data != null) {
-      this.data.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
+    paramParcel = this.data;
+    if (paramParcel != null) {
+      paramParcel.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
     }
   }
   
@@ -81,7 +82,7 @@ public class EIPCResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     eipc.EIPCResult
  * JD-Core Version:    0.7.0.1
  */

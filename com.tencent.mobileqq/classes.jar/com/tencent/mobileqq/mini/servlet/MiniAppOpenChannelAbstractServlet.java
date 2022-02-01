@@ -29,24 +29,27 @@ public class MiniAppOpenChannelAbstractServlet
         localBundle.putByteArray("responsedata", WupUtil.b(paramFromServiceMsg.getWupBuffer()));
         notifyObserver(paramIntent, 1054, true, localBundle, MiniAppObserver.class);
       }
-      for (;;)
+      else
       {
-        doReport(paramIntent, paramFromServiceMsg);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniAppOpenChannelAbstractServlet", 2, "onReceive. rsp = " + paramFromServiceMsg);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("onReceive. rsp = ");
+          localStringBuilder1.append(paramFromServiceMsg);
+          QLog.d("MiniAppOpenChannelAbstractServlet", 2, localStringBuilder1.toString());
         }
         notifyObserver(paramIntent, 1054, false, localBundle, MiniAppObserver.class);
       }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.e("MiniAppOpenChannelAbstractServlet", 1, localThrowable + "onReceive error");
-        notifyObserver(paramIntent, 1054, false, localBundle, MiniAppObserver.class);
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(localThrowable);
+      localStringBuilder2.append("onReceive error");
+      QLog.e("MiniAppOpenChannelAbstractServlet", 1, localStringBuilder2.toString());
+      notifyObserver(paramIntent, 1054, false, localBundle, MiniAppObserver.class);
     }
+    doReport(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -64,7 +67,7 @@ public class MiniAppOpenChannelAbstractServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppOpenChannelAbstractServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,13 @@ class LiteActivity$27
 {
   LiteActivity$27(LiteActivity paramLiteActivity) {}
   
-  public void a()
+  protected void a()
   {
     this.a.runOnUiThread(new LiteActivity.27.10(this));
   }
   
   @TargetApi(11)
-  public void a(int paramInt, String paramString, long paramLong)
+  protected void a(int paramInt, String paramString, long paramLong)
   {
     paramInt = DataLineMsgRecord.getDevTypeBySeId(paramLong);
     if (Build.VERSION.SDK_INT < 11)
@@ -27,51 +27,51 @@ class LiteActivity$27
     this.a.runOnUiThread(new LiteActivity.27.8(this, paramString, paramInt));
   }
   
-  public void a(long paramLong)
+  protected void a(long paramLong)
   {
     this.a.runOnUiThread(new LiteActivity.27.9(this));
   }
   
-  public void a(long paramLong, float paramFloat)
+  protected void a(long paramLong, float paramFloat)
   {
     super.a(paramLong, paramFloat);
     this.a.runOnUiThread(new LiteActivity.27.3(this, paramLong, paramFloat));
   }
   
-  public void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
   {
     super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
     paramInt = DataLineMsgRecord.getDevTypeBySeId(paramLong1);
     this.a.runOnUiThread(new LiteActivity.27.4(this, paramInt, paramLong1));
   }
   
-  public void a(boolean paramBoolean, long paramLong)
+  protected void a(boolean paramBoolean, long paramLong)
   {
     super.a(paramBoolean, paramLong);
   }
   
-  public void a(boolean paramBoolean, long paramLong, String paramString)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
     super.a(paramBoolean, paramLong, paramString);
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
     this.a.runOnUiThread(new LiteActivity.27.2(this, paramBoolean, i, paramLong, paramString));
   }
   
-  public void a(boolean paramBoolean, Long paramLong, String paramString)
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
   {
     super.a(paramBoolean, paramLong, paramString);
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
     this.a.runOnUiThread(new LiteActivity.27.6(this, i));
   }
   
-  public void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
   {
     super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
     paramInt = DataLineMsgRecord.getDevTypeBySeId(paramLong1);
     this.a.runOnUiThread(new LiteActivity.27.5(this, paramInt, paramLong1));
   }
   
-  public void b(boolean paramBoolean, long paramLong, String paramString)
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
   {
     super.b(paramBoolean, paramLong, paramString);
     int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
@@ -80,7 +80,7 @@ class LiteActivity$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.27
  * JD-Core Version:    0.7.0.1
  */

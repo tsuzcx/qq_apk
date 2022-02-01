@@ -1,12 +1,15 @@
 package com.tencent.tavsticker.core;
 
 import android.content.Context;
+import android.graphics.PointF;
 import android.opengl.EGLContext;
 import android.support.annotation.MainThread;
+import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tavsticker.log.TLog;
 import com.tencent.tavsticker.model.TAVSourceImage;
@@ -26,11 +29,12 @@ import java.util.Map;
 public class TAVStickerContext
   extends TAVStickerRenderContext
 {
-  private static final String TAG = TAVStickerContext.class.getSimpleName();
+  private static final int CLICK_DURATION = 200;
+  private static final String TAG = "TAVStickerContext";
   private Context context = null;
   private TAVSticker currentSticker = null;
   private ITAVStickerContextDataSource dataSource = null;
-  private TAVStickerContentView.DispatchTouchEventListener dispatchTouchEventListener = new TAVStickerContext.1(this);
+  private TAVStickerContext.DispatchTouchEventListener dispatchTouchEventListener = new TAVStickerContext.DispatchTouchEventListener(this);
   private List<WeakReference<ITAVStickerContextObserver>> observerRefs = new ArrayList();
   private TAVStickerContext.OnTouchStickerOutsideListener onTouchStickerOutsideListener = null;
   private ViewGroup stickerContainer = null;
@@ -41,6 +45,11 @@ public class TAVStickerContext
   public TAVStickerContext(Context paramContext)
   {
     this.context = paramContext;
+  }
+  
+  private boolean checkClickInterval(MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime() < 200L;
   }
   
   private void checkObserverList()
@@ -77,14 +86,23 @@ public class TAVStickerContext
     return i;
   }
   
-  private TAVStickerContentView getTavStickerContentViewSafely()
+  private PointF getCovertCoordinate(PointF paramPointF)
   {
-    if (this.stickerContainerView == null)
-    {
-      this.stickerContainerView = new TAVStickerContentView(this.context);
-      this.stickerContainerView.setDispatchTouchEventListener(this.dispatchTouchEventListener);
+    float f1 = paramPointF.x;
+    float f2 = paramPointF.y;
+    if (getContainerWidth() != this.renderSize.width) {
+      f1 = TAVStickerUtil.covertCoordinate(paramPointF.x, getContainerWidth(), (int)this.renderSize.width);
     }
-    return this.stickerContainerView;
+    if (getContainerHeight() != this.renderSize.height) {
+      f2 = TAVStickerUtil.covertCoordinate(paramPointF.y, getContainerHeight(), (int)this.renderSize.height);
+    }
+    return new PointF(f1, f2);
+  }
+  
+  private TAVSticker getTouchStickerFromUI(PointF paramPointF)
+  {
+    paramPointF = getCovertCoordinate(paramPointF);
+    return getTouchedSticker(paramPointF.x, paramPointF.y);
   }
   
   private void notifyCurrentStickerStateChanged(boolean paramBoolean)
@@ -165,30 +183,12 @@ public class TAVStickerContext
     }
   }
   
-  private void renderStickerEditView(long paramLong)
-  {
-    TAVStickerEditView localTAVStickerEditView = getCurrentStickerEditView();
-    if ((localTAVStickerEditView != null) && (this.currentSticker != null)) {
-      if (!shouldShowSticker(this.currentSticker, paramLong)) {
-        break label59;
-      }
-    }
-    label59:
-    for (int i = 0;; i = 4)
-    {
-      if (i != localTAVStickerEditView.getVisibility()) {
-        localTAVStickerEditView.post(new TAVStickerContext.2(this, localTAVStickerEditView, i));
-      }
-      return;
-    }
-  }
-  
   private void resignStickerInner(TAVSticker paramTAVSticker, boolean paramBoolean)
   {
     if (paramTAVSticker != null)
     {
       paramTAVSticker.setMode(TAVStickerMode.INACTIVE);
-      getTavStickerContentViewSafely().removeAllViews();
+      removeAllViews();
       paramTAVSticker = paramTAVSticker.getUniqueId();
       checkStickerViewCacheMap();
       paramTAVSticker = (TAVStickerEditView)this.stickerViewCacheMap.get(paramTAVSticker);
@@ -206,15 +206,13 @@ public class TAVStickerContext
   
   private boolean shouldShowSticker(TAVSticker paramTAVSticker, long paramLong)
   {
-    if (paramTAVSticker == null) {}
-    do
-    {
+    if (paramTAVSticker == null) {
       return false;
-      if (this.renderContextDataSource != null) {
-        return this.renderContextDataSource.shouldRenderSticker(paramTAVSticker, paramLong);
-      }
-    } while ((!TAVStickerUtil.isPresentationTimeInStickerTimeRange(paramLong, paramTAVSticker)) || (TAVStickerMode.ACTIVE != paramTAVSticker.getMode()));
-    return true;
+    }
+    if (this.renderContextDataSource != null) {
+      return this.renderContextDataSource.shouldRenderSticker(paramTAVSticker, paramLong);
+    }
+    return (TAVStickerUtil.isPresentationTimeInStickerTimeRange(paramLong, paramTAVSticker)) && (TAVStickerMode.ACTIVE == paramTAVSticker.getMode());
   }
   
   private void updateAllStickerLayerIndex()
@@ -239,18 +237,19 @@ public class TAVStickerContext
   {
     if (paramTAVSticker != null)
     {
-      if ((this.currentSticker != null) && (!paramTAVSticker.equals(this.currentSticker))) {
+      Object localObject = this.currentSticker;
+      if ((localObject != null) && (!paramTAVSticker.equals(localObject))) {
         resignStickerInner(this.currentSticker, false);
       }
       paramTAVSticker.setMode(TAVStickerMode.ACTIVE);
       this.currentSticker = paramTAVSticker;
       checkStickerViewCacheMap();
-      Object localObject = paramTAVSticker.getUniqueId();
+      localObject = paramTAVSticker.getUniqueId();
       localObject = (TAVStickerEditView)this.stickerViewCacheMap.get(localObject);
       if (localObject != null)
       {
-        getTavStickerContentViewSafely().removeAllViews();
-        getTavStickerContentViewSafely().addView((View)localObject);
+        removeAllViews();
+        addView((View)localObject, true);
         ((TAVStickerEditView)localObject).setMode(TAVStickerMode.ACTIVE);
         if (paramTAVSticker.isAutoPlay()) {
           ((TAVStickerEditView)localObject).play(0);
@@ -259,6 +258,13 @@ public class TAVStickerContext
       }
       notifyCurrentStickerStateChanged(true);
       syncAllChildContext();
+    }
+  }
+  
+  public void addView(View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      getTavStickerContentViewSafely().addView(paramView);
     }
   }
   
@@ -279,6 +285,21 @@ public class TAVStickerContext
   public TAVStickerEditView getCurrentStickerEditView()
   {
     return fetchStickerView(this.currentSticker);
+  }
+  
+  public TAVStickerContext.DispatchTouchEventListener getDispatchTouchEventListener()
+  {
+    return this.dispatchTouchEventListener;
+  }
+  
+  protected TAVStickerContentView getTavStickerContentViewSafely()
+  {
+    if (this.stickerContainerView == null)
+    {
+      this.stickerContainerView = new TAVStickerContentView(this.context);
+      this.stickerContainerView.setDispatchTouchEventListener(this.dispatchTouchEventListener);
+    }
+    return this.stickerContainerView;
   }
   
   protected TAVSticker getTouchedSticker(float paramFloat1, float paramFloat2)
@@ -303,78 +324,65 @@ public class TAVStickerContext
   @MainThread
   public void loadSticker(TAVSticker paramTAVSticker, boolean paramBoolean)
   {
-    String str;
     if (paramTAVSticker != null)
     {
       checkStickerViewCacheMap();
-      str = paramTAVSticker.getUniqueId();
-      if (!this.stickerViewCacheMap.containsKey(paramTAVSticker.getUniqueId())) {}
-    }
-    else
-    {
-      return;
-    }
-    if ((this.currentSticker != null) && (!paramTAVSticker.equals(this.currentSticker))) {
-      resignStickerInner(this.currentSticker, false);
-    }
-    super.loadSticker(paramTAVSticker, paramBoolean);
-    Object localObject1;
-    label84:
-    label108:
-    Object localObject2;
-    if (paramBoolean)
-    {
-      localObject1 = TAVStickerMode.ACTIVE;
+      String str = paramTAVSticker.getUniqueId();
+      if (this.stickerViewCacheMap.containsKey(paramTAVSticker.getUniqueId())) {
+        return;
+      }
+      Object localObject1 = this.currentSticker;
+      if ((localObject1 != null) && (!paramTAVSticker.equals(localObject1))) {
+        resignStickerInner(this.currentSticker, false);
+      }
+      super.loadSticker(paramTAVSticker, paramBoolean);
+      if (paramBoolean) {
+        localObject1 = TAVStickerMode.ACTIVE;
+      } else {
+        localObject1 = TAVStickerMode.INACTIVE;
+      }
       paramTAVSticker.setMode((TAVStickerMode)localObject1);
-      if (!paramBoolean) {
-        break label210;
+      Object localObject2 = null;
+      if (paramBoolean) {
+        localObject1 = paramTAVSticker;
+      } else {
+        localObject1 = null;
       }
-      localObject1 = paramTAVSticker;
       this.currentSticker = ((TAVSticker)localObject1);
-      if (this.dataSource == null) {
-        break label215;
+      localObject1 = this.dataSource;
+      if (localObject1 != null)
+      {
+        localObject1 = ((ITAVStickerContextDataSource)localObject1).loadSticker(this, paramTAVSticker);
       }
-      localObject1 = this.dataSource.loadSticker(this, paramTAVSticker);
+      else
+      {
+        TLog.w(TAG, "loadSticker -> you did not call the setTavStickerContextDataSource method!");
+        localObject1 = localObject2;
+      }
       localObject2 = localObject1;
       if (localObject1 == null) {
         localObject2 = new TAVStickerEditView(this.context, paramTAVSticker);
       }
       this.stickerViewCacheMap.put(str, localObject2);
-      if (!paramBoolean) {
-        break label229;
-      }
-      paramTAVSticker = TAVStickerMode.ACTIVE;
-      label151:
-      ((TAVStickerEditView)localObject2).setMode(paramTAVSticker);
-      getTavStickerContentViewSafely().removeAllViews();
       if (paramBoolean) {
-        getTavStickerContentViewSafely().addView((View)localObject2);
+        paramTAVSticker = TAVStickerMode.ACTIVE;
+      } else {
+        paramTAVSticker = TAVStickerMode.INACTIVE;
+      }
+      ((TAVStickerEditView)localObject2).setMode(paramTAVSticker);
+      removeAllViews();
+      addView((View)localObject2, paramBoolean);
+      if (paramBoolean) {
+        this.dispatchTouchEventListener.a();
       }
       notifyStickerAdd((TAVStickerEditView)localObject2);
-      if (!paramBoolean) {
-        break label236;
+      if (paramBoolean) {
+        notifyStickerActive((TAVStickerEditView)localObject2);
+      } else {
+        notifyStickerResign((TAVStickerEditView)localObject2);
       }
-      notifyStickerActive((TAVStickerEditView)localObject2);
-    }
-    for (;;)
-    {
       notifyCurrentStickerStateChanged(paramBoolean);
       notifyStickerListChanged();
-      return;
-      localObject1 = TAVStickerMode.INACTIVE;
-      break;
-      label210:
-      localObject1 = null;
-      break label84;
-      label215:
-      TLog.w(TAG, "loadSticker -> you did not call the setTavStickerContextDataSource method!");
-      localObject1 = null;
-      break label108;
-      label229:
-      paramTAVSticker = TAVStickerMode.INACTIVE;
-      break label151;
-      label236:
-      notifyStickerResign((TAVStickerEditView)localObject2);
     }
   }
   
@@ -386,55 +394,27 @@ public class TAVStickerContext
     }
   }
   
-  /* Error */
   public void release()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokespecial 362	com/tencent/tavsticker/core/TAVStickerRenderContext:release	()V
-    //   6: aload_0
-    //   7: aconst_null
-    //   8: putfield 47	com/tencent/tavsticker/core/TAVStickerContext:stickerContainerView	Lcom/tencent/tavsticker/core/TAVStickerContentView;
-    //   11: aload_0
-    //   12: getfield 56	com/tencent/tavsticker/core/TAVStickerContext:observerRefs	Ljava/util/List;
-    //   15: invokeinterface 365 1 0
-    //   20: aload_0
-    //   21: getfield 61	com/tencent/tavsticker/core/TAVStickerContext:stickerViewCacheMap	Ljava/util/Map;
-    //   24: invokeinterface 366 1 0
-    //   29: aload_0
-    //   30: aconst_null
-    //   31: putfield 63	com/tencent/tavsticker/core/TAVStickerContext:currentSticker	Lcom/tencent/tavsticker/model/TAVSticker;
-    //   34: aload_0
-    //   35: aconst_null
-    //   36: putfield 65	com/tencent/tavsticker/core/TAVStickerContext:dataSource	Lcom/tencent/tavsticker/core/ITAVStickerContextDataSource;
-    //   39: aload_0
-    //   40: aconst_null
-    //   41: putfield 67	com/tencent/tavsticker/core/TAVStickerContext:onTouchStickerOutsideListener	Lcom/tencent/tavsticker/core/TAVStickerContext$OnTouchStickerOutsideListener;
-    //   44: aload_0
-    //   45: monitorexit
-    //   46: return
-    //   47: astore_1
-    //   48: aload_1
-    //   49: invokevirtual 369	java/lang/Exception:printStackTrace	()V
-    //   52: goto -8 -> 44
-    //   55: astore_1
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: aload_1
-    //   59: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	60	0	this	TAVStickerContext
-    //   47	2	1	localException	java.lang.Exception
-    //   55	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   6	44	47	java/lang/Exception
-    //   2	6	55	finally
-    //   6	44	55	finally
-    //   48	52	55	finally
+    try
+    {
+      super.release();
+      try
+      {
+        this.stickerContainerView = null;
+        this.observerRefs.clear();
+        this.stickerViewCacheMap.clear();
+        this.currentSticker = null;
+        this.dataSource = null;
+        this.onTouchStickerOutsideListener = null;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      return;
+    }
+    finally {}
   }
   
   @MainThread
@@ -495,6 +475,11 @@ public class TAVStickerContext
     setCurrentSticker(null);
   }
   
+  public void removeAllViews()
+  {
+    getTavStickerContentViewSafely().removeAllViews();
+  }
+  
   @MainThread
   public boolean removeCurrentSticker()
   {
@@ -513,7 +498,8 @@ public class TAVStickerContext
       if (localObject != null) {
         getTavStickerContentViewSafely().removeView((View)localObject);
       }
-      if ((this.currentSticker != null) && (paramTAVSticker.equals(this.currentSticker))) {
+      TAVSticker localTAVSticker = this.currentSticker;
+      if ((localTAVSticker != null) && (paramTAVSticker.equals(localTAVSticker))) {
         this.currentSticker = null;
       }
       notifyStickerRemove((TAVStickerEditView)localObject);
@@ -533,6 +519,27 @@ public class TAVStickerContext
   {
     renderStickerEditView(paramLong);
     return super.renderSticker(paramSurface, paramLong, paramList, paramEGLContext);
+  }
+  
+  protected void renderStickerEditView(long paramLong)
+  {
+    TAVStickerEditView localTAVStickerEditView = getCurrentStickerEditView();
+    if (localTAVStickerEditView != null)
+    {
+      TAVSticker localTAVSticker = this.currentSticker;
+      if (localTAVSticker != null)
+      {
+        int i;
+        if (shouldShowSticker(localTAVSticker, paramLong)) {
+          i = 0;
+        } else {
+          i = 4;
+        }
+        if (i != localTAVStickerEditView.getVisibility()) {
+          localTAVStickerEditView.post(new TAVStickerContext.1(this, localTAVStickerEditView, i));
+        }
+      }
+    }
   }
   
   @MainThread
@@ -604,7 +611,7 @@ public class TAVStickerContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerContext
  * JD-Core Version:    0.7.0.1
  */

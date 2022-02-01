@@ -17,18 +17,16 @@ class AntiphishingUrlConfig$2
       {
         QLog.d(AntiphishingUrlConfig.a(this.this$0), 1, "Successfully Update Config!");
         AntiphishingUrlConfig.a(this.this$0).sendEmptyMessage(AntiphishingUrlConfig.a(this.this$0));
+        return;
       }
+      AntiphishingUrlConfig.a(this.this$0).sendEmptyMessage(AntiphishingUrlConfig.b(this.this$0));
+      QLog.d(AntiphishingUrlConfig.a(this.this$0), 1, "Update Config Error!");
     }
-    else {
-      return;
-    }
-    AntiphishingUrlConfig.a(this.this$0).sendEmptyMessage(AntiphishingUrlConfig.b(this.this$0));
-    QLog.d(AntiphishingUrlConfig.a(this.this$0), 1, "Update Config Error!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.AntiphishingUrlConfig.2
  * JD-Core Version:    0.7.0.1
  */

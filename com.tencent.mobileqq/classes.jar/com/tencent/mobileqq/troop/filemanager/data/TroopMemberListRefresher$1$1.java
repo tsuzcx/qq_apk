@@ -22,7 +22,11 @@ class TroopMemberListRefresher$1$1
       if (TextUtils.isEmpty(str)) {
         return;
       }
-      this.a.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("last_update_time", 4).edit().putLong("key_last_update_time" + str, System.currentTimeMillis()).commit();
+      SharedPreferences.Editor localEditor = this.a.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("last_update_time", 4).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_last_update_time");
+      localStringBuilder.append(str);
+      localEditor.putLong(localStringBuilder.toString(), System.currentTimeMillis()).commit();
       this.a.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1).sendToTarget();
       return;
     }
@@ -31,7 +35,7 @@ class TroopMemberListRefresher$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher.1.1
  * JD-Core Version:    0.7.0.1
  */

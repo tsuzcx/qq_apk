@@ -22,23 +22,44 @@ class PreloadingFragment$8
       paramJSONObject = (MiniAppInfo)paramJSONObject.opt("appInfo");
       if ((l == 0L) && (paramJSONObject != null))
       {
-        if ((paramJSONObject.clearAuths == 1) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount()))) {}
-        return;
+        if (paramJSONObject.clearAuths == 1) {
+          TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+        }
       }
-      if (paramJSONObject == null)
+      else
       {
-        QLog.e("miniapp-db", 1, "getAppInfoByLink  onCmdListener appinfo==null retCode= " + l + "; errMsg : " + str);
-        return;
+        if (paramJSONObject == null)
+        {
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append("getAppInfoByLink  onCmdListener appinfo==null retCode= ");
+          paramJSONObject.append(l);
+          paramJSONObject.append("; errMsg : ");
+          paramJSONObject.append(str);
+          QLog.e("miniapp-db", 1, paramJSONObject.toString());
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getAppInfoByLink  onCmdListener retCode= ");
+        localStringBuilder.append(l);
+        localStringBuilder.append(" appid=");
+        localStringBuilder.append(paramJSONObject.appId);
+        localStringBuilder.append("; errMsg : ");
+        localStringBuilder.append(str);
+        QLog.e("miniapp-db", 1, localStringBuilder.toString());
       }
-      QLog.e("miniapp-db", 1, "getAppInfoByLink  onCmdListener retCode= " + l + " appid=" + paramJSONObject.appId + "; errMsg : " + str);
-      return;
     }
-    QLog.e("miniapp-db", 1, "launchMiniAppByLink cmd fail." + paramBoolean);
+    else
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("launchMiniAppByLink cmd fail.");
+      paramJSONObject.append(paramBoolean);
+      QLog.e("miniapp-db", 1, paramJSONObject.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.8
  * JD-Core Version:    0.7.0.1
  */

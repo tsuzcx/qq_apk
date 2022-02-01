@@ -17,7 +17,6 @@ public class ProfileContants
   public static final String CMD_GET_BIND_PHONE_SWITCH_INFO = "OidbSvc.0xc33_42220";
   public static final String CMD_GET_CAMPUS_INFO = "OidbSvc.0x93b";
   public static final String CMD_GET_DETAIL_INFO = "OidbSvc.0x480_9";
-  public static final String CMD_GET_GENERAL_SETTINGS = "ProfileService.ReqGetSettings";
   public static final String CMD_GET_KPL_INFO = "OidbSvc.0xa28";
   public static final String CMD_GET_LIKE_RANKING_LIST = "OidbSvc.0x7ba";
   public static final String CMD_GET_MEDALWALL_INFO = "OidbSvc.0x7a8";
@@ -31,7 +30,6 @@ public class ProfileContants
   public static final String CMD_GROUPMNGREQ = "ProfileService.GroupMngReq";
   public static final String CMD_IMPORT_QZONE_PHOTOES = "OidbSvc.0x5ea_3";
   public static final String CMD_KEY = "key";
-  public static final String CMD_LIFE_ACHIEVEMENT_PRAISE = "OidbSvc.0xe5f_2";
   public static final String CMD_PARAM_ARRAY_UIN = "array_uin";
   public static final String CMD_PARAM_AUTH = "Auth";
   public static final String CMD_PARAM_BACK_MSG = "back_msg";
@@ -80,7 +78,6 @@ public class ProfileContants
   public static final String CMD_SETCOMMENT = "ProfileService.ChangeFriendName";
   public static final String CMD_SETSIGNATURE = "ProfileService.SetRichSig";
   public static final String CMD_SET_DETAIL_INFO = "OidbSvc.0x4ff_9";
-  public static final String CMD_SET_GENERAL_SETTINGS = "ProfileService.ReqSetSettings";
   public static final String CMD_SET_NEARBY_PEOPLE_VIDEO_ID = "OidbSvc.0x5ea_6";
   public static final String CMD_SET_PRETTY_TROOP_OWNER_FLAG = "OidbSvc.0x4ff_42325";
   public static final String CMD_STATSVCREGISTER = "StatSvc.register";
@@ -191,22 +188,6 @@ public class ProfileContants
   public static final int FIELD_STICKY_NOTE_SWITCH = 42356;
   public static final int FIELD_STRANGER_VOTE_SWITCH = 40324;
   public static final int FIELD_SUBACCOUNT_DISPLAY_THIRD_QQ = 40348;
-  public static final short FIELD_TEMP_CONVERSATION_BLOCK_AUDIOROOM = -23161;
-  public static final int FIELD_TEMP_CONVERSATION_BLOCK_AUDIOROOM_INT = 42375;
-  public static final short FIELD_TEMP_CONVERSATION_BLOCK_CIRCLE = -23168;
-  public static final int FIELD_TEMP_CONVERSATION_BLOCK_CIRCLE_INT = 42368;
-  public static final short FIELD_TEMP_CONVERSATION_BLOCK_CONTACT = -23310;
-  public static final int FIELD_TEMP_CONVERSATION_BLOCK_CONTACT_INT = 42226;
-  public static final short FIELD_TEMP_CONVERSATION_BLOCK_GAME_BUDDY = -23158;
-  public static final int FIELD_TEMP_CONVERSATION_BLOCK_GAME_BUDDY_INT = 42378;
-  public static final short FIELD_TEMP_CONVERSATION_BLOCK_INTEREST = -23166;
-  public static final int FIELD_TEMP_CONVERSATION_BLOCK_INTEREST_INT = 42370;
-  public static final short FIELD_TEMP_CONVERSATION_BLOCK_NEARBY = -23312;
-  public static final int FIELD_TEMP_CONVERSATION_BLOCK_NEARBY_INT = 42224;
-  public static final short FIELD_TEMP_CONVERSATION_BLOCK_QQ_CONSULT = -23309;
-  public static final int FIELD_TEMP_CONVERSATION_BLOCK_QQ_CONSULT_INT = 42227;
-  public static final short FIELD_TEMP_CONVERSATION_BLOCK_TROOP = -23308;
-  public static final int FIELD_TEMP_CONVERSATION_BLOCK_TROOP_INT = 42228;
   public static final int FIELD_TENCENT_DOC_FLAG = 42166;
   public static final int FIELD_THEME_FONT_TYPE = 27373;
   public static final int FIELD_THEME_TYPE = 27262;
@@ -262,7 +243,7 @@ public class ProfileContants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.api.ProfileContants
  * JD-Core Version:    0.7.0.1
  */

@@ -41,17 +41,17 @@ public class NavigatorController
     return paramNavigator.getEngineManager().loadModule(localModuleLoadParams);
   }
   
-  public void addView(ViewGroup paramViewGroup, View paramView, int paramInt)
+  protected void addView(ViewGroup paramViewGroup, View paramView, int paramInt)
   {
     Log.d("Navigator", "addView");
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new Navigator(paramContext);
   }
   
-  public void deleteChild(ViewGroup paramViewGroup, View paramView)
+  protected void deleteChild(ViewGroup paramViewGroup, View paramView)
   {
     destroyInstance(paramView);
     Log.d("Navigator", "deleteChild");
@@ -59,56 +59,62 @@ public class NavigatorController
   
   public void dispatchFunction(Navigator paramNavigator, String paramString, HippyArray paramHippyArray)
   {
-    boolean bool2 = false;
     super.dispatchFunction(paramNavigator, paramString, paramHippyArray);
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    boolean bool2 = false;
+    if (i != 111185)
     {
-    default: 
-      switch (i)
+      if ((i == 3452698) && (paramString.equals("push")))
       {
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!paramString.equals("pop")) {
-          break;
-        }
-        i = 0;
-        break;
-        if (!paramString.equals("push")) {
-          break;
-        }
         i = 1;
-        break;
-        localObject = null;
-        paramString = (String)localObject;
+        break label66;
+      }
+    }
+    else if (paramString.equals("pop"))
+    {
+      i = 0;
+      break label66;
+    }
+    i = -1;
+    label66:
+    Object localObject;
+    boolean bool1;
+    if (i != 0)
+    {
+      if (i != 1) {
+        return;
+      }
+      if (paramHippyArray != null)
+      {
+        localObject = paramHippyArray.getMap(0);
+        if (localObject != null)
+        {
+          paramString = ((HippyMap)localObject).getString("routeName");
+          paramHippyArray = ((HippyMap)localObject).getMap("initProps");
+          bool1 = ((HippyMap)localObject).getBoolean("animated");
+          localObject = ((HippyMap)localObject).getString("fromDirection");
+          paramNavigator.push(loadNavPage(paramNavigator, paramString, paramHippyArray), bool1, (String)localObject);
+        }
+      }
+    }
+    else
+    {
+      localObject = null;
+      bool1 = bool2;
+      paramString = (String)localObject;
+      if (paramHippyArray != null)
+      {
+        paramHippyArray = paramHippyArray.getMap(0);
         bool1 = bool2;
+        paramString = (String)localObject;
         if (paramHippyArray != null)
         {
-          paramHippyArray = paramHippyArray.getMap(0);
-          paramString = (String)localObject;
-          bool1 = bool2;
-          if (paramHippyArray != null)
-          {
-            bool1 = paramHippyArray.getBoolean("animated");
-            paramString = paramHippyArray.getString("toDirection");
-          }
+          bool1 = paramHippyArray.getBoolean("animated");
+          paramString = paramHippyArray.getString("toDirection");
         }
-        paramNavigator.pop(bool1, paramString);
-        return;
-      } while (paramHippyArray == null);
-      localObject = paramHippyArray.getMap(0);
-    } while (localObject == null);
-    paramString = ((HippyMap)localObject).getString("routeName");
-    paramHippyArray = ((HippyMap)localObject).getMap("initProps");
-    boolean bool1 = ((HippyMap)localObject).getBoolean("animated");
-    Object localObject = ((HippyMap)localObject).getString("fromDirection");
-    paramNavigator.push(loadNavPage(paramNavigator, paramString, paramHippyArray), bool1, (String)localObject);
+      }
+      paramNavigator.pop(bool1, paramString);
+    }
   }
   
   @HippyControllerProps(defaultType="map", name="initialRoute")
@@ -119,7 +125,7 @@ public class NavigatorController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.navigator.NavigatorController
  * JD-Core Version:    0.7.0.1
  */

@@ -26,23 +26,8 @@ public class ApkClassLoader
       paramClass = paramClass.cast(loadClass(paramString).newInstance());
       return paramClass;
     }
-    catch (ClassNotFoundException paramClass)
-    {
-      throw new Exception(paramClass);
-    }
-    catch (ClassCastException paramClass)
-    {
-      break label16;
-    }
-    catch (InstantiationException paramClass)
-    {
-      break label16;
-    }
-    catch (IllegalAccessException paramClass)
-    {
-      label16:
-      break label16;
-    }
+    catch (IllegalAccessException paramClass) {}catch (ClassCastException paramClass) {}catch (InstantiationException paramClass) {}catch (ClassNotFoundException paramClass) {}
+    throw new Exception(paramClass);
   }
   
   public final <T> T a(Class<T> paramClass, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
@@ -52,77 +37,54 @@ public class ApkClassLoader
       paramClass = paramClass.cast(loadClass(paramString).getConstructor(paramArrayOfClass).newInstance(paramArrayOfObject));
       return paramClass;
     }
-    catch (ClassNotFoundException paramClass)
-    {
-      throw new Exception(paramClass);
-    }
-    catch (ClassCastException paramClass)
-    {
-      break label22;
-    }
-    catch (InstantiationException paramClass)
-    {
-      break label22;
-    }
-    catch (IllegalAccessException paramClass)
-    {
-      label22:
-      break label22;
-    }
+    catch (IllegalAccessException paramClass) {}catch (ClassCastException paramClass) {}catch (InstantiationException paramClass) {}catch (ClassNotFoundException paramClass) {}
+    throw new Exception(paramClass);
   }
   
   protected Class<?> loadClass(String paramString, boolean paramBoolean)
   {
     int i = paramString.lastIndexOf('.');
-    Object localObject1;
-    Object localObject2;
-    if (i != -1)
-    {
+    int k = 0;
+    if (i != -1) {
       localObject1 = paramString.substring(0, i);
-      localObject2 = this.b;
-      int j = localObject2.length;
-      i = 0;
-      label33:
-      if (i >= j) {
-        break label154;
-      }
-      if (!((String)localObject1).equals(localObject2[i])) {
-        break label75;
-      }
+    } else {
+      localObject1 = "";
     }
-    label154:
-    for (i = 1;; i = 0)
+    Object localObject2 = this.b;
+    int m = localObject2.length;
+    i = 0;
+    int j;
+    for (;;)
     {
-      if (i != 0) {
-        localObject1 = super.loadClass(paramString, paramBoolean);
+      j = k;
+      if (i >= m) {
+        break;
       }
-      label75:
-      Throwable localThrowable;
-      label112:
-      do
+      if (((String)localObject1).equals(localObject2[i]))
       {
-        do
-        {
-          return localObject1;
-          localObject1 = "";
-          break;
-          i += 1;
-          break label33;
-          localObject2 = findLoadedClass(paramString);
-          localObject1 = localObject2;
-        } while (localObject2 != null);
-        localThrowable = null;
-        try
-        {
-          localObject1 = findClass(paramString);
-          localObject2 = localObject1;
-        }
-        catch (ClassNotFoundException localClassNotFoundException)
-        {
-          break label112;
-        }
-        localObject1 = localObject2;
-      } while (localObject2 != null);
+        j = 1;
+        break;
+      }
+      i += 1;
+    }
+    if (j != 0) {
+      return super.loadClass(paramString, paramBoolean);
+    }
+    Object localObject1 = findLoadedClass(paramString);
+    localObject2 = localObject1;
+    if (localObject1 == null) {}
+    try
+    {
+      localObject2 = findClass(paramString);
+      localObject1 = localObject2;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      label117:
+      break label117;
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
       try
       {
         paramString = this.a.loadClass(paramString);
@@ -130,17 +92,16 @@ public class ApkClassLoader
       }
       catch (ClassNotFoundException paramString)
       {
-        if (Build.VERSION.SDK_INT >= 19) {
-          paramString.addSuppressed(localThrowable);
-        }
+        i = Build.VERSION.SDK_INT;
         throw paramString;
       }
     }
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hydevteam.common.classloader.ApkClassLoader
  * JD-Core Version:    0.7.0.1
  */

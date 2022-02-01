@@ -12,31 +12,38 @@ public class LruAvatarSettingCache
   
   public Setting a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.a == null)) {
-      return null;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      QQLruCache localQQLruCache = this.a;
+      if (localQQLruCache != null) {
+        return (Setting)localQQLruCache.get(paramString);
+      }
     }
-    return (Setting)this.a.get(paramString);
+    return null;
   }
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.evictAll();
+    QQLruCache localQQLruCache = this.a;
+    if (localQQLruCache != null) {
+      localQQLruCache.evictAll();
     }
   }
   
   public void a(String paramString)
   {
-    if (this.a != null) {
-      this.a.remove(paramString);
+    QQLruCache localQQLruCache = this.a;
+    if (localQQLruCache != null) {
+      localQQLruCache.remove(paramString);
     }
   }
   
   public boolean a(String paramString, Setting paramSetting)
   {
-    if (this.a != null)
+    QQLruCache localQQLruCache = this.a;
+    if (localQQLruCache != null)
     {
-      this.a.put(paramString, paramSetting);
+      localQQLruCache.put(paramString, paramSetting);
       return true;
     }
     return false;
@@ -49,7 +56,7 @@ public class LruAvatarSettingCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.cache.memory.avatarsetting.LruAvatarSettingCache
  * JD-Core Version:    0.7.0.1
  */

@@ -34,7 +34,8 @@ public class YybHandleUtil$InstallBaseTask
   
   protected void a()
   {
-    if ((this.jdField_a_of_type_AndroidAppProgressDialog != null) && (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
+    ProgressDialog localProgressDialog = this.jdField_a_of_type_AndroidAppProgressDialog;
+    if ((localProgressDialog != null) && (localProgressDialog.isShowing())) {
       this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
     }
   }
@@ -48,9 +49,10 @@ public class YybHandleUtil$InstallBaseTask
       if ((YybHandleUtil.a()) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
         StaticAnalyz.a("311", this.jdField_a_of_type_JavaLangString, "1101070898");
       }
-      return;
     }
-    ToastUtil.a().a(HardCodeUtil.a(2131716854), 1);
+    else {
+      ToastUtil.a().a(HardCodeUtil.a(2131716504), 1);
+    }
   }
   
   protected void onCancelled()
@@ -63,14 +65,15 @@ public class YybHandleUtil$InstallBaseTask
   {
     super.onPreExecute();
     this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this.jdField_a_of_type_AndroidAppActivity);
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
+    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.YybHandleUtil.InstallBaseTask
  * JD-Core Version:    0.7.0.1
  */

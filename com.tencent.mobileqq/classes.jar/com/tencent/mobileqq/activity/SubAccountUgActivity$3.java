@@ -10,9 +10,7 @@ class SubAccountUgActivity$3
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1980) {
       return;
     }
     this.a.finish();
@@ -20,7 +18,7 @@ class SubAccountUgActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountUgActivity.3
  * JD-Core Version:    0.7.0.1
  */

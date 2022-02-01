@@ -70,11 +70,13 @@ public class NoteItem
   {
     if (isNative())
     {
-      if (this.articleText != null) {
-        this.articleText.releaseNative();
+      Object localObject = this.articleText;
+      if (localObject != null) {
+        ((NoteItem.ArticleText)localObject).releaseNative();
       }
-      if (this.htmlText != null) {
-        this.htmlText.releaseNative();
+      localObject = this.htmlText;
+      if (localObject != null) {
+        ((NoteItem.HtmlText)localObject).releaseNative();
       }
     }
     super.releaseNative();
@@ -82,7 +84,7 @@ public class NoteItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.data.NoteItem
  * JD-Core Version:    0.7.0.1
  */

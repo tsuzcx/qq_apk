@@ -39,17 +39,10 @@ import java.util.regex.Pattern;
 
 public class WSFeedUtils
 {
-  public static int a;
+  public static int a = 1;
   private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[@#]\\w+", 2);
-  public static boolean a;
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Int = 1;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "[em]e212[/em]", "[em]e219[/em]", "[em]e226[/em]", "[em]e233[/em]", "[em]e234[/em]", "[em]e221[/em]", "[em]e228[/em]", "[em]e208[/em]", "[em]e222[/em]", "[em]e229[/em]", "[em]e223[/em]", "[em]e230[/em]", "[em]e240[/em]", "[em]e224[/em]", "[em]e231[/em]", "[em]e211[/em]", "[em]e218[/em]", "[em]e225[/em]", "[em]e232[/em]", "[em]e290[/em]", "[em]e291[/em]", "[em]e256[/em]", "[em]e261[/em]", "[em]e259[/em]", "[em]e235[/em]", "[em]e236[/em]", "[em]e239[/em]" };
-  }
+  public static boolean a = false;
+  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "[em]e212[/em]", "[em]e219[/em]", "[em]e226[/em]", "[em]e233[/em]", "[em]e234[/em]", "[em]e221[/em]", "[em]e228[/em]", "[em]e208[/em]", "[em]e222[/em]", "[em]e229[/em]", "[em]e223[/em]", "[em]e230[/em]", "[em]e240[/em]", "[em]e224[/em]", "[em]e231[/em]", "[em]e211[/em]", "[em]e218[/em]", "[em]e225[/em]", "[em]e232[/em]", "[em]e290[/em]", "[em]e291[/em]", "[em]e256[/em]", "[em]e261[/em]", "[em]e259[/em]", "[em]e235[/em]", "[em]e236[/em]", "[em]e239[/em]" };
   
   public static int a(float paramFloat)
   {
@@ -62,35 +55,41 @@ public class WSFeedUtils
     {
     default: 
       return -1;
-    case 1: 
-    case 2: 
-    case 4: 
-      return 2130851350;
-    case 3: 
-      return 2130851348;
+    case 6: 
+      return 2130851267;
     case 5: 
-      return 2130851349;
+      return 2130851265;
+    case 3: 
+      return 2130851264;
     }
-    return 2130851351;
+    return 2130851266;
   }
   
   public static int a(int paramInt, stMetaUgcVideoSeg paramstMetaUgcVideoSeg)
   {
-    if ((paramstMetaUgcVideoSeg == null) || (paramstMetaUgcVideoSeg.width == 0))
+    if ((paramstMetaUgcVideoSeg != null) && (paramstMetaUgcVideoSeg.width != 0))
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("[getClippedVideoHeight] ");
-      if (paramstMetaUgcVideoSeg == null) {}
-      for (paramstMetaUgcVideoSeg = "video is null";; paramstMetaUgcVideoSeg = "video width is zero")
-      {
-        WSLog.d("WSFeedUtils", paramstMetaUgcVideoSeg);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[getClippedVideoHeight] width: ");
+      localStringBuilder.append(paramstMetaUgcVideoSeg.width);
+      localStringBuilder.append(", height: ");
+      localStringBuilder.append(paramstMetaUgcVideoSeg.height);
+      WSLog.b("WSFeedUtils", localStringBuilder.toString());
+      if (paramstMetaUgcVideoSeg.height > paramstMetaUgcVideoSeg.width) {
         return paramInt * 4 / 3;
       }
+      return paramInt * paramstMetaUgcVideoSeg.height / paramstMetaUgcVideoSeg.width;
     }
-    WSLog.b("WSFeedUtils", "[getClippedVideoHeight] width: " + paramstMetaUgcVideoSeg.width + ", height: " + paramstMetaUgcVideoSeg.height);
-    if (paramstMetaUgcVideoSeg.height > paramstMetaUgcVideoSeg.width) {
-      return paramInt * 4 / 3;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getClippedVideoHeight] ");
+    if (paramstMetaUgcVideoSeg == null) {
+      paramstMetaUgcVideoSeg = "video is null";
+    } else {
+      paramstMetaUgcVideoSeg = "video width is zero";
     }
-    return paramstMetaUgcVideoSeg.height * paramInt / paramstMetaUgcVideoSeg.width;
+    localStringBuilder.append(paramstMetaUgcVideoSeg);
+    WSLog.d("WSFeedUtils", localStringBuilder.toString());
+    return paramInt * 4 / 3;
   }
   
   public static int a(View paramView)
@@ -104,21 +103,26 @@ public class WSFeedUtils
   
   public static stSimpleMetaFeed a(List<stSimpleMetaFeed> paramList)
   {
-    Object localObject = null;
     int i = paramList.size() - 1;
-    if (i >= 0)
+    Object localObject1 = null;
+    Object localObject2;
+    for (;;)
     {
-      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramList.get(i);
-      if (localstSimpleMetaFeed.video_type == 2) {}
-      do
-      {
-        i -= 1;
+      localObject2 = localObject1;
+      if (i < 0) {
         break;
-        localObject = localstSimpleMetaFeed;
-      } while (TextUtils.isEmpty(localstSimpleMetaFeed.feed_desc));
-      return localstSimpleMetaFeed;
+      }
+      localObject2 = (stSimpleMetaFeed)paramList.get(i);
+      if (((stSimpleMetaFeed)localObject2).video_type != 2)
+      {
+        if (!TextUtils.isEmpty(((stSimpleMetaFeed)localObject2).feed_desc)) {
+          break;
+        }
+        localObject1 = localObject2;
+      }
+      i -= 1;
     }
-    return localObject;
+    return localObject2;
   }
   
   public static Context a()
@@ -171,22 +175,38 @@ public class WSFeedUtils
   
   public static String a(int paramInt)
   {
-    WSLog.b("WSFeedUtils", "feed create time: " + paramInt + ", corresponding date: " + new Date(paramInt * 1000));
-    long l = System.currentTimeMillis() / 1000L - paramInt;
     StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("feed create time: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", corresponding date: ");
+    localStringBuilder.append(new Date(paramInt * 1000));
+    WSLog.b("WSFeedUtils", localStringBuilder.toString());
+    long l = System.currentTimeMillis() / 1000L - paramInt;
+    localStringBuilder = new StringBuilder();
     if ((l >= 0L) && (l < 60L)) {
-      return b(2131693544);
+      return b(2131693499);
     }
-    if ((l >= 60L) && (l < 3600L)) {
-      return l / 60L + b(2131693545);
+    if ((l >= 60L) && (l < 3600L))
+    {
+      localStringBuilder.append(l / 60L);
+      localStringBuilder.append(b(2131693500));
+      return localStringBuilder.toString();
     }
-    if ((l >= 3600L) && (l < 86400L)) {
-      return l / 3600L + b(2131693543);
+    if ((l >= 3600L) && (l < 86400L))
+    {
+      localStringBuilder.append(l / 3600L);
+      localStringBuilder.append(b(2131693498));
+      return localStringBuilder.toString();
     }
-    if ((l >= 86400L) && (l < 2592000L)) {
-      return l / 86400L + b(2131693539);
+    if ((l >= 86400L) && (l < 2592000L))
+    {
+      localStringBuilder.append(l / 86400L);
+      localStringBuilder.append(b(2131693494));
+      return localStringBuilder.toString();
     }
-    return 30 + b(2131693539);
+    localStringBuilder.append(30);
+    localStringBuilder.append(b(2131693494));
+    return localStringBuilder.toString();
   }
   
   public static String a(int paramInt, Object... paramVarArgs)
@@ -198,7 +218,7 @@ public class WSFeedUtils
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = b(2131693546);
+      str = b(2131693501);
     }
     return str;
   }
@@ -210,17 +230,19 @@ public class WSFeedUtils
     if (paramBoolean)
     {
       i = paramInt + 1;
-      while (i < paramInt + 1 + 3)
+      paramInt = i;
+      while (paramInt < i + 3)
       {
-        a(localArrayList, paramList, i);
-        i += 1;
+        a(localArrayList, paramList, paramInt);
+        paramInt += 1;
       }
     }
     int i = paramInt - 1;
-    while (i > paramInt - 1 - 3)
+    paramInt = i;
+    while (paramInt > i - 3)
     {
-      a(localArrayList, paramList, i);
-      i -= 1;
+      a(localArrayList, paramList, paramInt);
+      paramInt -= 1;
     }
     return localArrayList;
   }
@@ -254,18 +276,21 @@ public class WSFeedUtils
     if (paramstSchema == null) {
       return;
     }
-    switch (paramstSchema.type)
+    int i = paramstSchema.type;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      WeishiActivityHelper.a(paramActivity, paramstSchema.miniAppSchema, null);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        WeishiActivityHelper.a(paramActivity, paramstSchema.H5Url);
+        return;
+      }
       a(paramActivity, paramstSchema.schema, paramInt1, paramInt2, paramString);
       return;
     }
-    WeishiActivityHelper.a(paramActivity, paramstSchema.H5Url);
+    WeishiActivityHelper.a(paramActivity, paramstSchema.miniAppSchema, null);
   }
   
   public static void a(Activity paramActivity, stSchema paramstSchema, int paramInt, String paramString)
@@ -273,29 +298,33 @@ public class WSFeedUtils
     a(paramActivity, paramstSchema, paramInt);
     if (paramstSchema.type == 1)
     {
-      if (TextUtils.equals(paramString, WeishiUtils.d())) {
+      if (TextUtils.equals(paramString, WeishiUtils.d()))
+      {
         WeishiUtils.c("homepage_main");
+        return;
       }
+      WeishiUtils.c("homepage_guest");
     }
-    else {
-      return;
-    }
-    WeishiUtils.c("homepage_guest");
   }
   
   public static void a(Activity paramActivity, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    WSLog.b("WSFeedUtils", "[openWeishiViaScheme] scheme: " + paramString1 + ", eventId: " + paramInt1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[openWeishiViaScheme] scheme: ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", eventId: ");
+    ((StringBuilder)localObject).append(paramInt1);
+    WSLog.b("WSFeedUtils", ((StringBuilder)localObject).toString());
     if (paramActivity == null) {
       return;
     }
-    WSDownloadParams localWSDownloadParams = a(paramString1, paramInt1);
+    localObject = a(paramString1, paramInt1);
     if (WeishiGuideUtils.a(paramActivity))
     {
-      OuterInterceptManager.a(paramActivity, new WSFeedUtils.4(paramActivity, paramString1, localWSDownloadParams, paramString2, paramInt2));
+      OuterInterceptManager.a(paramActivity, new WSFeedUtils.4(paramActivity, paramString1, (WSDownloadParams)localObject, paramString2, paramInt2));
       return;
     }
-    WeishiDownloadUtil.a(paramActivity, localWSDownloadParams, true);
+    WeishiDownloadUtil.a(paramActivity, (WSDownloadParams)localObject, true);
   }
   
   public static void a(Context paramContext, ActionSheet.OnButtonClickListener paramOnButtonClickListener, ActionSheet.OnDismissListener paramOnDismissListener)
@@ -310,19 +339,20 @@ public class WSFeedUtils
   
   private static void a(SpannableStringBuilder paramSpannableStringBuilder)
   {
-    if (paramSpannableStringBuilder == null) {}
-    for (;;)
-    {
+    if (paramSpannableStringBuilder == null) {
       return;
-      Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramSpannableStringBuilder);
-      while (localMatcher.find())
-      {
-        int i = localMatcher.start();
-        int j = localMatcher.end();
-        String str = paramSpannableStringBuilder.subSequence(i, j).toString();
-        WSLog.c("WSFeedUtils", "subStr:" + str);
-        paramSpannableStringBuilder.setSpan(new StyleSpan(1), i, j, 33);
-      }
+    }
+    Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramSpannableStringBuilder);
+    while (localMatcher.find())
+    {
+      int i = localMatcher.start();
+      int j = localMatcher.end();
+      String str = paramSpannableStringBuilder.subSequence(i, j).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("subStr:");
+      localStringBuilder.append(str);
+      WSLog.c("WSFeedUtils", localStringBuilder.toString());
+      paramSpannableStringBuilder.setSpan(new StyleSpan(1), i, j, 33);
     }
   }
   
@@ -342,17 +372,20 @@ public class WSFeedUtils
   
   public static void a(TextView paramTextView, int paramInt, boolean paramBoolean)
   {
-    if ((paramTextView == null) || (paramBoolean)) {
-      return;
-    }
-    paramTextView.setVisibility(0);
-    paramInt = a(paramInt);
-    if (paramInt == -1)
+    if (paramTextView != null)
     {
-      paramTextView.setVisibility(8);
-      return;
+      if (paramBoolean) {
+        return;
+      }
+      paramTextView.setVisibility(0);
+      paramInt = a(paramInt);
+      if (paramInt == -1)
+      {
+        paramTextView.setVisibility(8);
+        return;
+      }
+      paramTextView.setBackgroundResource(paramInt);
     }
-    paramTextView.setBackgroundResource(paramInt);
   }
   
   private static void a(List<WSVideoPreDownloadManager.VideoPreDownloadParam> paramList, List<stFeed> paramList1, int paramInt)
@@ -360,13 +393,11 @@ public class WSFeedUtils
     if ((paramList1.size() > paramInt) && (paramInt >= 0))
     {
       paramList1 = (stFeed)paramList1.get(paramInt);
-      if (paramList1.feed != null) {}
+      if (paramList1.feed == null) {
+        return;
+      }
+      paramList.add(WSVerticalUtils.a(paramList1.feed));
     }
-    else
-    {
-      return;
-    }
-    paramList.add(WSVerticalUtils.a(paramList1.feed));
   }
   
   public static boolean a()
@@ -376,25 +407,33 @@ public class WSFeedUtils
   
   public static boolean a(int paramInt)
   {
-    return (paramInt == 1) || (paramInt == 3);
+    boolean bool = true;
+    if (paramInt != 1)
+    {
+      if (paramInt == 3) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public static boolean a(stSimpleMetaPerson paramstSimpleMetaPerson)
   {
-    boolean bool = true;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     if (paramstSimpleMetaPerson != null)
     {
       paramstSimpleMetaPerson = paramstSimpleMetaPerson.live;
-      if (paramstSimpleMetaPerson != null) {}
+      if (paramstSimpleMetaPerson == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (paramstSimpleMetaPerson.status == 1) {
+        bool1 = true;
+      }
     }
-    else
-    {
-      bool = false;
-    }
-    while (paramstSimpleMetaPerson.status == 1) {
-      return bool;
-    }
-    return false;
+    return bool1;
   }
   
   public static boolean a(List paramList)
@@ -414,12 +453,20 @@ public class WSFeedUtils
   
   public static boolean b(int paramInt)
   {
-    return (paramInt == 1) || (paramInt == 2);
+    boolean bool = true;
+    if (paramInt != 1)
+    {
+      if (paramInt == 2) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils
  * JD-Core Version:    0.7.0.1
  */

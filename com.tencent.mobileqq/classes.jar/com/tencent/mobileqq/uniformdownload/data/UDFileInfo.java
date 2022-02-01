@@ -14,13 +14,16 @@ public class UDFileInfo
   
   public UDFileInfo(String paramString)
   {
-    if ((paramString == null) || (paramString.length() < 1)) {}
-    do
+    if (paramString != null)
     {
-      return;
+      if (paramString.length() < 1) {
+        return;
+      }
       a(paramString);
-    } while (!this.jdField_a_of_type_JavaLangString.isEmpty());
-    this.jdField_a_of_type_JavaLangString = "nofilename.x";
+      if (this.jdField_a_of_type_JavaLangString.isEmpty()) {
+        this.jdField_a_of_type_JavaLangString = "nofilename.x";
+      }
+    }
   }
   
   /* Error */
@@ -29,194 +32,201 @@ public class UDFileInfo
     // Byte code:
     //   0: lconst_0
     //   1: lstore_3
-    //   2: aconst_null
-    //   3: astore 9
-    //   5: aconst_null
-    //   6: astore 7
+    //   2: iload_1
+    //   3: ifgt +5 -> 8
+    //   6: lconst_0
+    //   7: lreturn
     //   8: aconst_null
     //   9: astore 10
     //   11: aconst_null
     //   12: astore 11
-    //   14: iload_1
-    //   15: ifgt +7 -> 22
-    //   18: lconst_0
-    //   19: lstore_3
-    //   20: lload_3
-    //   21: lreturn
-    //   22: new 38	java/net/URL
-    //   25: dup
-    //   26: aload_0
-    //   27: invokespecial 40	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   30: invokevirtual 44	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   33: checkcast 46	java/net/HttpURLConnection
-    //   36: astore 8
-    //   38: aload 8
-    //   40: invokevirtual 49	java/net/HttpURLConnection:getResponseCode	()I
-    //   43: sipush 302
-    //   46: if_icmpne +39 -> 85
-    //   49: aload 8
-    //   51: ldc 51
-    //   53: invokevirtual 55	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   56: astore_0
-    //   57: lload_3
-    //   58: lstore 5
-    //   60: aload_0
-    //   61: astore 7
-    //   63: aload 8
-    //   65: ifnull +107 -> 172
-    //   68: aload 8
-    //   70: invokevirtual 58	java/net/HttpURLConnection:disconnect	()V
-    //   73: aload_0
-    //   74: ifnull -54 -> 20
-    //   77: aload_0
-    //   78: iload_1
-    //   79: iconst_1
-    //   80: isub
-    //   81: invokestatic 60	com/tencent/mobileqq/uniformdownload/data/UDFileInfo:a	(Ljava/lang/String;I)J
-    //   84: lreturn
-    //   85: aload 8
-    //   87: invokevirtual 63	java/net/HttpURLConnection:getContentLength	()I
-    //   90: istore_2
-    //   91: iload_2
-    //   92: i2l
-    //   93: lstore_3
-    //   94: aload 11
-    //   96: astore_0
-    //   97: goto -40 -> 57
-    //   100: astore 7
-    //   102: aconst_null
-    //   103: astore_0
-    //   104: aload 7
-    //   106: invokevirtual 66	java/lang/Exception:printStackTrace	()V
-    //   109: lload_3
-    //   110: lstore 5
-    //   112: aload 10
-    //   114: astore 7
-    //   116: aload_0
-    //   117: ifnull +55 -> 172
-    //   120: aload_0
-    //   121: invokevirtual 58	java/net/HttpURLConnection:disconnect	()V
-    //   124: lconst_0
-    //   125: lstore_3
+    //   14: aconst_null
+    //   15: astore 9
+    //   17: new 38	java/net/URL
+    //   20: dup
+    //   21: aload_0
+    //   22: invokespecial 40	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   25: invokevirtual 44	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   28: checkcast 46	java/net/HttpURLConnection
+    //   31: astore 7
+    //   33: aload 7
+    //   35: astore 8
+    //   37: aload 7
+    //   39: invokevirtual 49	java/net/HttpURLConnection:getResponseCode	()I
+    //   42: sipush 302
+    //   45: if_icmpne +18 -> 63
+    //   48: aload 7
+    //   50: astore 8
+    //   52: aload 7
+    //   54: ldc 51
+    //   56: invokevirtual 55	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   59: astore_0
+    //   60: goto +19 -> 79
+    //   63: aload 7
+    //   65: astore 8
+    //   67: aload 7
+    //   69: invokevirtual 58	java/net/HttpURLConnection:getContentLength	()I
+    //   72: istore_2
+    //   73: iload_2
+    //   74: i2l
+    //   75: lstore_3
+    //   76: aload 9
+    //   78: astore_0
+    //   79: lload_3
+    //   80: lstore 5
+    //   82: aload_0
+    //   83: astore 8
+    //   85: aload 7
+    //   87: ifnull +65 -> 152
+    //   90: aload_0
+    //   91: astore 8
+    //   93: aload 7
+    //   95: invokevirtual 61	java/net/HttpURLConnection:disconnect	()V
+    //   98: lload_3
+    //   99: lstore 5
+    //   101: goto +51 -> 152
+    //   104: astore 9
+    //   106: aload 7
+    //   108: astore_0
+    //   109: goto +14 -> 123
+    //   112: astore_0
+    //   113: aconst_null
+    //   114: astore 8
+    //   116: goto +54 -> 170
+    //   119: astore 9
+    //   121: aconst_null
+    //   122: astore_0
+    //   123: aload_0
+    //   124: astore 8
     //   126: aload 9
-    //   128: astore_0
-    //   129: goto -56 -> 73
-    //   132: astore_0
-    //   133: aload 7
-    //   135: ifnull +8 -> 143
-    //   138: aload 7
-    //   140: invokevirtual 58	java/net/HttpURLConnection:disconnect	()V
-    //   143: aload_0
-    //   144: athrow
-    //   145: astore_0
-    //   146: aload 8
-    //   148: astore 7
-    //   150: goto -17 -> 133
-    //   153: astore 8
-    //   155: aload_0
-    //   156: astore 7
-    //   158: aload 8
-    //   160: astore_0
-    //   161: goto -28 -> 133
-    //   164: astore 7
-    //   166: aload 8
-    //   168: astore_0
-    //   169: goto -65 -> 104
-    //   172: lload 5
-    //   174: lstore_3
-    //   175: aload 7
-    //   177: astore_0
-    //   178: goto -105 -> 73
+    //   128: invokevirtual 64	java/lang/Exception:printStackTrace	()V
+    //   131: lload_3
+    //   132: lstore 5
+    //   134: aload 11
+    //   136: astore 8
+    //   138: aload_0
+    //   139: ifnull +13 -> 152
+    //   142: aload 10
+    //   144: astore 8
+    //   146: aload_0
+    //   147: astore 7
+    //   149: goto -56 -> 93
+    //   152: aload 8
+    //   154: ifnull +12 -> 166
+    //   157: aload 8
+    //   159: iload_1
+    //   160: iconst_1
+    //   161: isub
+    //   162: invokestatic 66	com/tencent/mobileqq/uniformdownload/data/UDFileInfo:a	(Ljava/lang/String;I)J
+    //   165: lreturn
+    //   166: lload 5
+    //   168: lreturn
+    //   169: astore_0
+    //   170: aload 8
+    //   172: ifnull +8 -> 180
+    //   175: aload 8
+    //   177: invokevirtual 61	java/net/HttpURLConnection:disconnect	()V
+    //   180: goto +5 -> 185
+    //   183: aload_0
+    //   184: athrow
+    //   185: goto -2 -> 183
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	181	0	paramString	String
-    //   0	181	1	paramInt	int
-    //   90	2	2	i	int
-    //   1	174	3	l1	long
-    //   58	115	5	l2	long
-    //   6	56	7	str	String
-    //   100	5	7	localException1	java.lang.Exception
-    //   114	43	7	localObject1	Object
-    //   164	12	7	localException2	java.lang.Exception
-    //   36	111	8	localHttpURLConnection	HttpURLConnection
-    //   153	14	8	localObject2	Object
-    //   3	124	9	localObject3	Object
-    //   9	104	10	localObject4	Object
-    //   12	83	11	localObject5	Object
+    //   0	188	0	paramString	String
+    //   0	188	1	paramInt	int
+    //   72	2	2	i	int
+    //   1	131	3	l1	long
+    //   80	87	5	l2	long
+    //   31	117	7	localObject1	Object
+    //   35	141	8	localObject2	Object
+    //   15	62	9	localObject3	Object
+    //   104	1	9	localException1	java.lang.Exception
+    //   119	8	9	localException2	java.lang.Exception
+    //   9	134	10	localObject4	Object
+    //   12	123	11	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   22	38	100	java/lang/Exception
-    //   22	38	132	finally
-    //   38	57	145	finally
-    //   85	91	145	finally
-    //   104	109	153	finally
-    //   38	57	164	java/lang/Exception
-    //   85	91	164	java/lang/Exception
+    //   37	48	104	java/lang/Exception
+    //   52	60	104	java/lang/Exception
+    //   67	73	104	java/lang/Exception
+    //   17	33	112	finally
+    //   17	33	119	java/lang/Exception
+    //   37	48	169	finally
+    //   52	60	169	finally
+    //   67	73	169	finally
+    //   126	131	169	finally
   }
   
   private String a(String paramString)
   {
-    String str = new URL(paramString).getFile();
-    if ((str == null) || (!str.contains("."))) {
-      paramString = "";
-    }
-    int i;
-    do
+    paramString = new URL(paramString).getFile();
+    if ((paramString != null) && (paramString.contains(".")))
     {
-      return paramString;
-      i = str.lastIndexOf("/");
-      paramString = str;
-    } while (i == -1);
-    return str.substring(i + 1);
+      int i = paramString.lastIndexOf("/");
+      if (i == -1) {
+        return paramString;
+      }
+      return paramString.substring(i + 1);
+    }
+    return "";
   }
   
   private String a(HttpURLConnection paramHttpURLConnection)
   {
-    localObject = "";
-    for (;;)
+    Object localObject1 = "";
+    try
     {
+      String str2 = paramHttpURLConnection.getHeaderField("Content-Disposition");
+      if (str2 != null) {}
       try
       {
-        str = paramHttpURLConnection.getHeaderField("Content-Disposition");
-        if (str != null)
+        if (str2.length() >= 1)
         {
-          localObject = str;
-          if (str.length() >= 1) {
-            continue;
+          int i = str2.toLowerCase().indexOf("filename=");
+          if (i == -1) {
+            return "";
+          }
+          String str1 = URLDecoder.decode(str2.substring(i + 9), "utf-8");
+          paramHttpURLConnection = str1;
+          try
+          {
+            i = str1.indexOf(";");
+            localObject1 = str1;
+            if (-1 != i)
+            {
+              paramHttpURLConnection = str1;
+              localObject1 = str1.substring(0, i - 1);
+            }
+            paramHttpURLConnection = (HttpURLConnection)localObject1;
+            localObject1 = ((String)localObject1).replaceAll("\"", "");
+            paramHttpURLConnection = (HttpURLConnection)localObject1;
+          }
+          catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+          {
+            break label155;
           }
         }
-        localObject = str;
-        paramHttpURLConnection = paramHttpURLConnection.getURL().getFile();
-        localObject = paramHttpURLConnection;
-        paramHttpURLConnection = paramHttpURLConnection.substring(paramHttpURLConnection.lastIndexOf("/") + 1);
+        else
+        {
+          paramHttpURLConnection = paramHttpURLConnection.getURL().getFile();
+          HttpURLConnection localHttpURLConnection = paramHttpURLConnection;
+          paramHttpURLConnection = paramHttpURLConnection.substring(paramHttpURLConnection.lastIndexOf("/") + 1);
+        }
       }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      catch (UnsupportedEncodingException localUnsupportedEncodingException2)
       {
-        String str;
-        int i;
-        paramHttpURLConnection = (HttpURLConnection)localObject;
-        localUnsupportedEncodingException.printStackTrace();
-        continue;
+        paramHttpURLConnection = str2;
       }
-      return b(paramHttpURLConnection);
-      localObject = str;
-      i = str.toLowerCase().indexOf("filename=");
-      if (i == -1) {
-        return "";
-      }
-      localObject = str;
-      str = URLDecoder.decode(str.substring(i + "filename=".length()), "utf-8");
-      localObject = str;
-      i = str.indexOf(";");
-      paramHttpURLConnection = str;
-      if (-1 != i)
-      {
-        localObject = str;
-        paramHttpURLConnection = str.substring(0, i - 1);
-      }
-      localObject = paramHttpURLConnection;
-      paramHttpURLConnection = paramHttpURLConnection.replaceAll("\"", "");
+      Object localObject2;
+      localObject2.printStackTrace();
     }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException3)
+    {
+      paramHttpURLConnection = localUnsupportedEncodingException2;
+      localObject2 = localUnsupportedEncodingException3;
+    }
+    label155:
+    return b(paramHttpURLConnection);
   }
   
   /* Error */
@@ -224,9 +234,9 @@ public class UDFileInfo
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_2
-    //   2: aconst_null
-    //   3: astore 4
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_2
     //   5: new 38	java/net/URL
     //   8: dup
     //   9: aload_1
@@ -236,11 +246,11 @@ public class UDFileInfo
     //   19: astore_3
     //   20: aload_3
     //   21: ldc 127
-    //   23: ldc 108
+    //   23: ldc 101
     //   25: invokevirtual 131	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   28: aload_3
     //   29: ldc 133
-    //   31: ldc 108
+    //   31: ldc 101
     //   33: invokevirtual 131	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   36: aload_3
     //   37: invokevirtual 136	java/net/HttpURLConnection:connect	()V
@@ -253,7 +263,7 @@ public class UDFileInfo
     //   52: if_icmpne +40 -> 92
     //   55: aload_0
     //   56: aload_3
-    //   57: invokevirtual 63	java/net/HttpURLConnection:getContentLength	()I
+    //   57: invokevirtual 58	java/net/HttpURLConnection:getContentLength	()I
     //   60: i2l
     //   61: putfield 18	com/tencent/mobileqq/uniformdownload/data/UDFileInfo:jdField_a_of_type_Long	J
     //   64: aload_0
@@ -271,56 +281,57 @@ public class UDFileInfo
     //   86: invokespecial 140	com/tencent/mobileqq/uniformdownload/data/UDFileInfo:a	(Ljava/lang/String;)Ljava/lang/String;
     //   89: putfield 16	com/tencent/mobileqq/uniformdownload/data/UDFileInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   92: aload_3
-    //   93: ifnull +7 -> 100
+    //   93: ifnull +44 -> 137
     //   96: aload_3
-    //   97: invokevirtual 58	java/net/HttpURLConnection:disconnect	()V
+    //   97: invokevirtual 61	java/net/HttpURLConnection:disconnect	()V
     //   100: return
-    //   101: astore_3
-    //   102: aload 4
-    //   104: astore_1
-    //   105: aload_1
-    //   106: astore_2
-    //   107: aload_3
-    //   108: invokevirtual 66	java/lang/Exception:printStackTrace	()V
-    //   111: aload_1
-    //   112: ifnull -12 -> 100
-    //   115: aload_1
-    //   116: invokevirtual 58	java/net/HttpURLConnection:disconnect	()V
-    //   119: return
-    //   120: astore_1
-    //   121: aload_2
-    //   122: ifnull +7 -> 129
-    //   125: aload_2
-    //   126: invokevirtual 58	java/net/HttpURLConnection:disconnect	()V
+    //   101: astore_1
+    //   102: goto +36 -> 138
+    //   105: astore_2
+    //   106: aload_3
+    //   107: astore_1
+    //   108: aload_2
+    //   109: astore_3
+    //   110: goto +13 -> 123
+    //   113: astore_1
+    //   114: aload_2
+    //   115: astore_3
+    //   116: goto +22 -> 138
+    //   119: astore_3
+    //   120: aload 4
+    //   122: astore_1
+    //   123: aload_1
+    //   124: astore_2
+    //   125: aload_3
+    //   126: invokevirtual 64	java/lang/Exception:printStackTrace	()V
     //   129: aload_1
-    //   130: athrow
-    //   131: astore_1
-    //   132: aload_3
-    //   133: astore_2
-    //   134: goto -13 -> 121
-    //   137: astore_2
+    //   130: ifnull +7 -> 137
+    //   133: aload_1
+    //   134: invokevirtual 61	java/net/HttpURLConnection:disconnect	()V
+    //   137: return
     //   138: aload_3
-    //   139: astore_1
-    //   140: aload_2
-    //   141: astore_3
-    //   142: goto -37 -> 105
+    //   139: ifnull +7 -> 146
+    //   142: aload_3
+    //   143: invokevirtual 61	java/net/HttpURLConnection:disconnect	()V
+    //   146: aload_1
+    //   147: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	145	0	this	UDFileInfo
-    //   0	145	1	paramString	String
-    //   1	133	2	localObject1	Object
-    //   137	4	2	localException1	java.lang.Exception
-    //   19	78	3	localHttpURLConnection	HttpURLConnection
-    //   101	38	3	localException2	java.lang.Exception
-    //   141	1	3	localException3	java.lang.Exception
-    //   3	100	4	localObject2	Object
+    //   0	148	0	this	UDFileInfo
+    //   0	148	1	paramString	String
+    //   4	1	2	localObject1	Object
+    //   105	10	2	localException1	java.lang.Exception
+    //   124	1	2	str	String
+    //   19	97	3	localObject2	Object
+    //   119	24	3	localException2	java.lang.Exception
+    //   1	120	4	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   5	20	101	java/lang/Exception
-    //   5	20	120	finally
-    //   107	111	120	finally
-    //   20	92	131	finally
-    //   20	92	137	java/lang/Exception
+    //   20	92	101	finally
+    //   20	92	105	java/lang/Exception
+    //   5	20	113	finally
+    //   125	129	113	finally
+    //   5	20	119	java/lang/Exception
   }
   
   public static void a(String paramString, Bundle paramBundle)
@@ -336,20 +347,18 @@ public class UDFileInfo
   private String b(String paramString)
   {
     if (paramString == null) {
+      return "";
+    }
+    int i = paramString.indexOf("?");
+    String str = paramString;
+    if (i != -1) {
+      str = paramString.substring(0, i);
+    }
+    paramString = str;
+    if (str.contains(":")) {
       paramString = "";
     }
-    String str;
-    do
-    {
-      return paramString;
-      int i = paramString.indexOf("?");
-      str = paramString;
-      if (i != -1) {
-        str = paramString.substring(0, i);
-      }
-      paramString = str;
-    } while (!str.contains(":"));
-    return "";
+    return paramString;
   }
   
   public long a()
@@ -364,7 +373,7 @@ public class UDFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.data.UDFileInfo
  * JD-Core Version:    0.7.0.1
  */

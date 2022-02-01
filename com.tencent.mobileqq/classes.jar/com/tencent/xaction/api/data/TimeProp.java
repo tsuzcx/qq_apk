@@ -5,7 +5,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/TimeProp;", "", "()V", "autoPlay", "", "getAutoPlay", "()Z", "setAutoPlay", "(Z)V", "delay", "", "getDelay", "()J", "setDelay", "(J)V", "duration", "", "getDuration", "()I", "setDuration", "(I)V", "fps", "getFps", "setFps", "rc", "getRc", "setRc", "rm", "getRm", "setRm", "single", "getSingle", "setSingle", "set", "", "prop", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/TimeProp;", "", "()V", "autoPlay", "", "getAutoPlay", "()Z", "setAutoPlay", "(Z)V", "delay", "", "getDelay", "()J", "setDelay", "(J)V", "duration", "", "getDuration", "()I", "setDuration", "(I)V", "fps", "getFps", "setFps", "rc", "getRc", "setRc", "rm", "getRm", "setRm", "single", "getSingle", "setSingle", "set", "", "prop", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class TimeProp
 {
@@ -100,7 +100,7 @@ public final class TimeProp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.data.TimeProp
  * JD-Core Version:    0.7.0.1
  */

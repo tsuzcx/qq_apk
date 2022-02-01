@@ -11,8 +11,10 @@ class ItemTouchHelper$1
   {
     if ((this.this$0.mSelected != null) && (this.this$0.scrollIfNecessary()))
     {
-      if (this.this$0.mSelected != null) {
-        this.this$0.moveIfNecessary(this.this$0.mSelected);
+      if (this.this$0.mSelected != null)
+      {
+        ItemTouchHelper localItemTouchHelper = this.this$0;
+        localItemTouchHelper.moveIfNecessary(localItemTouchHelper.mSelected);
       }
       this.this$0.mRecyclerView.removeCallbacks(this.this$0.mScrollRunnable);
       ViewCompat.postOnAnimation(this.this$0.mRecyclerView, this);
@@ -21,7 +23,7 @@ class ItemTouchHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.ItemTouchHelper.1
  * JD-Core Version:    0.7.0.1
  */

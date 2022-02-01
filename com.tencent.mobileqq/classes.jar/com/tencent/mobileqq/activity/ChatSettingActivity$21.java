@@ -10,31 +10,33 @@ class ChatSettingActivity$21
 {
   ChatSettingActivity$21(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onGetProfileCard(boolean paramBoolean, Object paramObject)
+  protected void onGetProfileCard(boolean paramBoolean, Object paramObject)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    if ((paramObject instanceof Card)) {
+      paramObject = (Card)paramObject;
+    } else {
+      paramObject = null;
+    }
+    if ((paramBoolean) && (paramObject != null))
     {
-      if ((paramBoolean) && (paramObject != null))
+      if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.a(this.a).equals(paramObject.uin)))
       {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.a(this.a).equals(paramObject.uin)))
-        {
-          String str = ContactUtils.a(this.a.app, ChatSettingActivity.a(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.b(this.a)))) {
-            ChatSettingActivity.a(this.a, str);
-          }
-        }
-        if ((this.a.h != null) && (!TextUtils.isEmpty(ChatSettingActivity.a(this.a))) && (ChatSettingActivity.a(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a)), this.a.h);
+        String str = ContactUtils.a(this.a.app, ChatSettingActivity.a(this.a));
+        if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.b(this.a)))) {
+          ChatSettingActivity.a(this.a, str);
         }
       }
-      return;
+      if ((this.a.h != null) && (!TextUtils.isEmpty(ChatSettingActivity.a(this.a))) && (ChatSettingActivity.a(this.a).equals(paramObject.uin)))
+      {
+        paramObject = this.a;
+        ChatSettingActivity.a(paramObject, ChatSettingActivity.a(paramObject, ChatSettingActivity.a(paramObject)), this.a.h);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.21
  * JD-Core Version:    0.7.0.1
  */

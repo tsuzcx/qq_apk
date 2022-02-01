@@ -19,13 +19,17 @@ public class ReflectionUtil
       boolean bool = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
       return bool;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label15:
+      break label15;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ReflectionUtil
  * JD-Core Version:    0.7.0.1
  */

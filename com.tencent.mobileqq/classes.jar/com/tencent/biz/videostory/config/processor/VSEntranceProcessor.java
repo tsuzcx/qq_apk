@@ -22,7 +22,10 @@ public class VSEntranceProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       VSEntranceConfBean localVSEntranceConfBean = VSEntranceConfBean.a(paramArrayOfQConfItem[0].a);
-      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onParsed ");
+      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, localStringBuilder.toString());
       a(localVSEntranceConfBean);
       return localVSEntranceConfBean;
     }
@@ -37,7 +40,10 @@ public class VSEntranceProcessor
       VSConfigManager.a().a("mine_videostory_entrance", paramVSEntranceConfBean.a());
       VSConfigManager.a().a("enable_click_take_picture", paramVSEntranceConfBean.b());
       VSConfigManager.a().a("mine_videostory_drawer_entrance", paramVSEntranceConfBean.c());
-      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onUpdate:" + paramVSEntranceConfBean.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate:");
+      localStringBuilder.append(paramVSEntranceConfBean.toString());
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -75,7 +81,7 @@ public class VSEntranceProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSEntranceProcessor
  * JD-Core Version:    0.7.0.1
  */

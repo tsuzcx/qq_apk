@@ -2,7 +2,7 @@ package cooperation.qzone.contentbox;
 
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import java.lang.ref.WeakReference;
 
 public class BaseMsgView$MyHandler
@@ -19,19 +19,18 @@ public class BaseMsgView$MyHandler
   {
     super.handleMessage(paramMessage);
     BaseMsgView localBaseMsgView = (BaseMsgView)this.msgViewWeakReference.get();
-    if (localBaseMsgView == null) {}
-    ViewPager localViewPager;
-    do
-    {
+    if (localBaseMsgView == null) {
       return;
-      switch (paramMessage.what)
-      {
-      default: 
-        localBaseMsgView.doHandleMessage(paramMessage);
-        return;
-      }
-      localViewPager = (ViewPager)((WeakReference)paramMessage.obj).get();
-    } while (localViewPager == null);
+    }
+    if (paramMessage.what != 10000)
+    {
+      localBaseMsgView.doHandleMessage(paramMessage);
+      return;
+    }
+    ViewPager localViewPager = (ViewPager)((WeakReference)paramMessage.obj).get();
+    if (localViewPager == null) {
+      return;
+    }
     int i = paramMessage.arg1;
     localViewPager.setCurrentItem((localViewPager.getCurrentItem() + 1) % i, true);
     localBaseMsgView.startPlay();
@@ -39,7 +38,7 @@ public class BaseMsgView$MyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.BaseMsgView.MyHandler
  * JD-Core Version:    0.7.0.1
  */

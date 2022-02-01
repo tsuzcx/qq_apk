@@ -1,5 +1,6 @@
 package com.tencent.qqmini.sdk.plugins;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -17,7 +18,12 @@ class ImageJsPlugin$2$2
   {
     if (!ImageJsPlugin.access$500(this.this$1.this$0).openChoosePhotoActivity(ImageJsPlugin.access$400(this.this$1.this$0).getAttachedActivity(), this.this$1.val$count, new ImageJsPlugin.2.2.1(this)))
     {
-      MiniToast.makeText(ImageJsPlugin.access$600(this.this$1.this$0).getAttachedActivity(), 0, "暂不支持在" + QUAUtil.getApplicationName(ImageJsPlugin.access$700(this.this$1.this$0)) + "中选择图片", 1);
+      Activity localActivity = ImageJsPlugin.access$600(this.this$1.this$0).getAttachedActivity();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("暂不支持在");
+      localStringBuilder.append(QUAUtil.getApplicationName(ImageJsPlugin.access$700(this.this$1.this$0)));
+      localStringBuilder.append("中选择图片");
+      MiniToast.makeText(localActivity, 0, localStringBuilder.toString(), 1);
       this.this$1.val$req.fail();
     }
     if (paramDialogInterface != null) {
@@ -27,7 +33,7 @@ class ImageJsPlugin$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ImageJsPlugin.2.2
  * JD-Core Version:    0.7.0.1
  */

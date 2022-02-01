@@ -15,10 +15,13 @@ public class FeedSegment$GetVideoBasicInfoListReceiver
   
   public void a(@NonNull FeedSegment paramFeedSegment, @NonNull VidToBasicInfoHandler.GetVideoBasicInfoListEvent paramGetVideoBasicInfoListEvent)
   {
-    if ((paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null)) {
-      return;
+    if (!paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    {
+      if (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null) {
+        return;
+      }
+      paramFeedSegment.a(paramGetVideoBasicInfoListEvent);
     }
-    paramFeedSegment.a(paramGetVideoBasicInfoListEvent);
   }
   
   public Class acceptEventClass()
@@ -28,7 +31,7 @@ public class FeedSegment$GetVideoBasicInfoListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.GetVideoBasicInfoListReceiver
  * JD-Core Version:    0.7.0.1
  */

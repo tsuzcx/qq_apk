@@ -20,9 +20,17 @@ public class FlutterActivity
 {
   private static final String TAG = "FlutterActivity";
   private final FlutterActivityDelegate delegate = new FlutterActivityDelegate(this, this);
-  private final FlutterActivityEvents eventDelegate = this.delegate;
-  private final PluginRegistry pluginRegistry = this.delegate;
-  private final FlutterView.Provider viewProvider = this.delegate;
+  private final FlutterActivityEvents eventDelegate;
+  private final PluginRegistry pluginRegistry;
+  private final FlutterView.Provider viewProvider;
+  
+  public FlutterActivity()
+  {
+    FlutterActivityDelegate localFlutterActivityDelegate = this.delegate;
+    this.eventDelegate = localFlutterActivityDelegate;
+    this.viewProvider = localFlutterActivityDelegate;
+    this.pluginRegistry = localFlutterActivityDelegate;
+  }
   
   public FlutterNativeView createFlutterNativeView()
   {
@@ -158,7 +166,7 @@ public class FlutterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.app.FlutterActivity
  * JD-Core Version:    0.7.0.1
  */

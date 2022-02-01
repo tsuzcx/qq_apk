@@ -21,22 +21,23 @@ class LebaQzoneAndPluginPart$8$1
       }
       CustomWidgetUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.b, 9, this.jdField_a_of_type_Int, 0);
       if (AppSetting.d) {
-        AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.a, HardCodeUtil.a(2131706036), Button.class.getName());
+        AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.a, HardCodeUtil.a(2131706088), Button.class.getName());
       }
     }
-    do
+    else
     {
-      return;
       if (this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.b != null) {
         this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.b.setVisibility(8);
       }
-    } while (!AppSetting.d);
-    AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.a, HardCodeUtil.a(2131719716), Button.class.getName());
+      if (AppSetting.d) {
+        AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessMainbizLebaQzoneAndPluginPart$8.this$0.a, HardCodeUtil.a(2131719439), Button.class.getName());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.8.1
  * JD-Core Version:    0.7.0.1
  */

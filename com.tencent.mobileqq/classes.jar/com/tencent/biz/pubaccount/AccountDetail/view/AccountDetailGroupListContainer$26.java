@@ -1,46 +1,33 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.biz.pubaccount.api.IPublicAccountConfigAttr.PaConfigInfo;
 import com.tencent.widget.Switch;
 
 class AccountDetailGroupListContainer$26
   implements DialogInterface.OnClickListener
 {
-  AccountDetailGroupListContainer$26(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo, boolean paramBoolean, Switch paramSwitch) {}
+  AccountDetailGroupListContainer$26(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo, boolean paramBoolean, Switch paramSwitch) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      if ((3 == this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.e) && (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d == 0))
-      {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer;
-        localPaConfigInfo = this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo;
-        if (!this.jdField_a_of_type_Boolean) {
-          paramDialogInterface.a(localPaConfigInfo, bool);
-        }
+    if (paramInt == 0)
+    {
+      if ((3 == this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.e) && (this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo.d == 0)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo, true ^ this.jdField_a_of_type_Boolean);
       }
-      else
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-      }
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+      return;
     }
-    while (paramInt != 1) {
-      for (;;)
-      {
-        PaConfigAttr.PaConfigInfo localPaConfigInfo;
-        return;
-        bool = false;
-      }
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo, this.jdField_a_of_type_Boolean);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer.26
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.26
  * JD-Core Version:    0.7.0.1
  */

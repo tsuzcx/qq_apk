@@ -1,5 +1,6 @@
 package com.tencent.common.app;
 
+import android.content.Context;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
@@ -12,26 +13,30 @@ public class ToolRuntimePeak
   
   public AppRuntime onGetSubRuntime(String paramString)
   {
-    Object localObject = null;
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    Object localObject = BaseApplicationImpl.getApplication();
     if ("peak".equals(paramString)) {
-      localObject = new PeakAppInterface(localBaseApplicationImpl, "peak");
+      localObject = new PeakAppInterface((BaseApplicationImpl)localObject, "peak");
+    } else if ("Photoplus.apk".equals(paramString)) {
+      localObject = QZoneHelper.createPhotoPlusAppInterface((Context)localObject);
+    } else {
+      localObject = null;
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(a, 2, "ToolRuntimePeak.onGetSubRuntime() moduleId " + paramString + " appInstance = " + localObject);
-      }
-      return localObject;
-      if ("Photoplus.apk".equals(paramString)) {
-        localObject = QZoneHelper.createPhotoPlusAppInterface(localBaseApplicationImpl);
-      }
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ToolRuntimePeak.onGetSubRuntime() moduleId ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" appInstance = ");
+      localStringBuilder.append(localObject);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.ToolRuntimePeak
  * JD-Core Version:    0.7.0.1
  */

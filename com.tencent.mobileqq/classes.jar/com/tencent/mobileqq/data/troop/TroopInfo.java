@@ -16,10 +16,12 @@ import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.troop.api.ITroopNameHelperService;
 import com.tencent.mobileqq.troop.util.TroopInfoUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.ArrayList<Ljava.lang.String;>;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -73,7 +75,7 @@ public class TroopInfo
   public static final int PAY_PRIVILEGE_GROUP_FEE = 64;
   public static final int PAY_PRIVILEGE_PAY_TO_JOIN_TROOP = 128;
   public static final int QIDIAN_PRIVATE_TROOP_FLAG = 32;
-  public static final String QIDIAN_TROOP_MEMBER_DEF_NICK = HardCodeUtil.a(2131693314);
+  public static final String QIDIAN_TROOP_MEMBER_DEF_NICK = HardCodeUtil.a(2131693269);
   public static final int QZONE_TROOP_ENTRANCE = 131072;
   public static final int SET_DEFAULT_PIC = 1;
   public static final String TABLE_NAME = "TroopInfoV2";
@@ -246,20 +248,18 @@ public class TroopInfo
     StringBuilder localStringBuilder = new StringBuilder();
     paramArrayList = paramArrayList.iterator();
     int i = 0;
-    for (;;)
+    int j;
+    do
     {
-      if (paramArrayList.hasNext())
-      {
-        localStringBuilder.append((String)paramArrayList.next());
-        localStringBuilder.append("|");
-        i += 1;
-        if (i <= paramInt) {}
+      if (!paramArrayList.hasNext()) {
+        break;
       }
-      else
-      {
-        return localStringBuilder.toString();
-      }
-    }
+      localStringBuilder.append((String)paramArrayList.next());
+      localStringBuilder.append("|");
+      j = i + 1;
+      i = j;
+    } while (j <= paramInt);
+    return localStringBuilder.toString();
   }
   
   private void coverFrom_TroopLocal(oidb_0x88d.GroupInfo paramGroupInfo)
@@ -284,25 +284,21 @@ public class TroopInfo
   
   private void coverFrom_TroopMemo(oidb_0x88d.GroupInfo paramGroupInfo)
   {
-    if (paramGroupInfo.string_group_finger_memo.has())
-    {
+    if (paramGroupInfo.string_group_finger_memo.has()) {
       this.fingertroopmemo = paramGroupInfo.string_group_finger_memo.get().toStringUtf8();
-      if (!paramGroupInfo.string_group_rich_finger_memo.has()) {
-        break label77;
-      }
+    } else {
+      this.fingertroopmemo = "";
     }
-    label77:
-    for (this.mRichFingerMemo = paramGroupInfo.string_group_rich_finger_memo.get().toStringUtf8();; this.mRichFingerMemo = "")
+    if (paramGroupInfo.string_group_rich_finger_memo.has()) {
+      this.mRichFingerMemo = paramGroupInfo.string_group_rich_finger_memo.get().toStringUtf8();
+    } else {
+      this.mRichFingerMemo = "";
+    }
+    if (TextUtils.isEmpty(this.mRichFingerMemo))
     {
-      if (!TextUtils.isEmpty(this.mRichFingerMemo)) {
-        break label87;
-      }
       this.mRichFingerMemo = this.fingertroopmemo;
       return;
-      this.fingertroopmemo = "";
-      break;
     }
-    label87:
     this.mRichFingerMemo = TroopInfoUtil.a(this.mRichFingerMemo);
     this.mRichFingerMemo = TroopInfoUtil.b(this.mRichFingerMemo);
   }
@@ -326,7 +322,7 @@ public class TroopInfo
   {
     int i = paramCursor.getColumnIndex(paramString);
     if (i > 0) {
-      paramInt = paramCursor.getInt(i);
+      return paramCursor.getInt(i);
     }
     return paramInt;
   }
@@ -335,7 +331,7 @@ public class TroopInfo
   {
     int i = paramCursor.getColumnIndex(paramString);
     if (i > 0) {
-      paramLong = paramCursor.getLong(i);
+      return paramCursor.getLong(i);
     }
     return paramLong;
   }
@@ -344,7 +340,7 @@ public class TroopInfo
   {
     int i = paramCursor.getColumnIndex(paramString1);
     if (i > 0) {
-      paramString2 = paramCursor.getString(i);
+      return paramCursor.getString(i);
     }
     return paramString2;
   }
@@ -381,17 +377,17 @@ public class TroopInfo
   
   public static boolean hasPayPrivilege(long paramLong, int paramInt)
   {
-    return ((0x20 | paramLong) & paramInt) != 0L;
+    return ((paramLong | 0x20) & paramInt) != 0L;
   }
   
   public static boolean isCmdUinFlagEx2Open(long paramLong, int paramInt)
   {
-    return (paramInt & paramLong) != 0L;
+    return (paramLong & paramInt) != 0L;
   }
   
   public static boolean isQidianPrivateTroop(long paramLong)
   {
-    return (0x20 & paramLong) != 0L;
+    return (paramLong & 0x20) != 0L;
   }
   
   public static boolean isVisitorSpeakEnabled(int paramInt)
@@ -401,180 +397,106 @@ public class TroopInfo
   
   private void postRead_troopInfoExt()
   {
-    if (this.troopInfoExtByte != null) {}
-    try
-    {
-      oidb_0xef0.GroupInfoExt localGroupInfoExt = new oidb_0xef0.GroupInfoExt();
-      localGroupInfoExt.mergeFrom(this.troopInfoExtByte);
-      this.mTroopInfoExtObj = TroopInfoExt.parseFromGroupInfoExt(localGroupInfoExt);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      localInvalidProtocolBufferMicroException.printStackTrace();
+    if (this.troopInfoExtByte != null) {
+      try
+      {
+        oidb_0xef0.GroupInfoExt localGroupInfoExt = new oidb_0xef0.GroupInfoExt();
+        localGroupInfoExt.mergeFrom(this.troopInfoExtByte);
+        this.mTroopInfoExtObj = TroopInfoExt.parseFromGroupInfoExt(localGroupInfoExt);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        localInvalidProtocolBufferMicroException.printStackTrace();
+      }
     }
   }
   
   private void postRead_troopPicList()
   {
     ArrayList localArrayList = new ArrayList(8);
-    if (!TextUtils.isEmpty(this.mTroopPicListJson)) {}
-    for (;;)
-    {
-      int i;
+    if (!TextUtils.isEmpty(this.mTroopPicListJson)) {
       try
       {
         JSONArray localJSONArray = new JSONArray(this.mTroopPicListJson);
-        if ((localJSONArray != null) && (localJSONArray.length() > 0))
+        if (localJSONArray.length() > 0)
         {
-          i = 0;
-          if (i < localJSONArray.length())
+          int i = 0;
+          while (i < localJSONArray.length())
           {
             Object localObject = localJSONArray.getJSONObject(i);
             String str = ((JSONObject)localObject).getString("id");
             localObject = ((JSONObject)localObject).optString("clip");
-            if (TextUtils.isEmpty(str)) {
-              break label227;
+            if (!TextUtils.isEmpty(str))
+            {
+              TroopClipPic localTroopClipPic = new TroopClipPic();
+              if (str.equals(String.valueOf(this.mTroopAvatarId))) {
+                localTroopClipPic.type = 1;
+              }
+              localTroopClipPic.id = str;
+              localTroopClipPic.clipInfo = ((String)localObject);
+              localArrayList.add(localTroopClipPic);
             }
-            TroopClipPic localTroopClipPic = new TroopClipPic();
-            if (str.equals(String.valueOf(this.mTroopAvatarId))) {
-              localTroopClipPic.type = 1;
-            }
-            localTroopClipPic.id = str;
-            localTroopClipPic.clipInfo = ((String)localObject);
-            localArrayList.add(localTroopClipPic);
+            i += 1;
           }
         }
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
         this.mTroopPicList.clear();
-        this.mTroopPicList.addAll(localArrayList);
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopInfo", 2, String.format("postRead troopUin=%s avatarId=%d mTroopPicListJson=%s", new Object[] { this.troopuin, Integer.valueOf(this.mTroopAvatarId), this.mTroopPicListJson }));
-        }
-        return;
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
-        continue;
       }
-      label227:
-      i += 1;
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    this.mTroopPicList.addAll(localArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopInfo", 2, String.format("postRead troopUin=%s avatarId=%d mTroopPicListJson=%s", new Object[] { this.troopuin, Integer.valueOf(this.mTroopAvatarId), this.mTroopPicListJson }));
     }
   }
   
   private void prewrite_troopInfoExt()
   {
-    if (this.mTroopInfoExtObj != null) {
-      this.troopInfoExtByte = this.mTroopInfoExtObj.convToGroupInfoExt().toByteArray();
+    TroopInfoExt localTroopInfoExt = this.mTroopInfoExtObj;
+    if (localTroopInfoExt != null) {
+      this.troopInfoExtByte = localTroopInfoExt.convToGroupInfoExt().toByteArray();
     }
   }
   
-  /* Error */
   private void prewrite_troopPicList()
   {
-    // Byte code:
-    //   0: new 580	org/json/JSONArray
-    //   3: dup
-    //   4: invokespecial 659	org/json/JSONArray:<init>	()V
-    //   7: astore_1
-    //   8: aload_0
-    //   9: getfield 309	com/tencent/mobileqq/data/troop/TroopInfo:mTroopPicList	Ljava/util/List;
-    //   12: invokeinterface 540 1 0
-    //   17: astore_2
-    //   18: aload_2
-    //   19: invokeinterface 388 1 0
-    //   24: ifeq +83 -> 107
-    //   27: aload_2
-    //   28: invokeinterface 392 1 0
-    //   33: checkcast 542	com/tencent/mobileqq/data/troop/TroopClipPic
-    //   36: astore_3
-    //   37: aload_3
-    //   38: getfield 612	com/tencent/mobileqq/data/troop/TroopClipPic:id	Ljava/lang/String;
-    //   41: invokestatic 452	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   44: ifne -26 -> 18
-    //   47: new 594	org/json/JSONObject
-    //   50: dup
-    //   51: invokespecial 660	org/json/JSONObject:<init>	()V
-    //   54: astore 4
-    //   56: aload 4
-    //   58: ldc_w 592
-    //   61: aload_3
-    //   62: getfield 612	com/tencent/mobileqq/data/troop/TroopClipPic:id	Ljava/lang/String;
-    //   65: invokevirtual 664	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   68: pop
-    //   69: aload_3
-    //   70: getfield 615	com/tencent/mobileqq/data/troop/TroopClipPic:clipInfo	Ljava/lang/String;
-    //   73: invokestatic 452	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   76: ifne +16 -> 92
-    //   79: aload 4
-    //   81: ldc_w 598
-    //   84: aload_3
-    //   85: getfield 615	com/tencent/mobileqq/data/troop/TroopClipPic:clipInfo	Ljava/lang/String;
-    //   88: invokevirtual 664	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   91: pop
-    //   92: aload_1
-    //   93: aload 4
-    //   95: invokevirtual 667	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   98: pop
-    //   99: goto -81 -> 18
-    //   102: astore_2
-    //   103: aload_2
-    //   104: invokevirtual 616	org/json/JSONException:printStackTrace	()V
-    //   107: aload_0
-    //   108: aload_1
-    //   109: invokevirtual 668	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   112: putfield 318	com/tencent/mobileqq/data/troop/TroopInfo:mTroopPicListJson	Ljava/lang/String;
-    //   115: invokestatic 628	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   118: ifeq +43 -> 161
-    //   121: ldc 67
-    //   123: iconst_2
-    //   124: ldc_w 670
-    //   127: iconst_3
-    //   128: anewarray 632	java/lang/Object
-    //   131: dup
-    //   132: iconst_0
-    //   133: aload_0
-    //   134: getfield 634	com/tencent/mobileqq/data/troop/TroopInfo:troopuin	Ljava/lang/String;
-    //   137: aastore
-    //   138: dup
-    //   139: iconst_1
-    //   140: aload_0
-    //   141: getfield 604	com/tencent/mobileqq/data/troop/TroopInfo:mTroopAvatarId	I
-    //   144: invokestatic 639	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   147: aastore
-    //   148: dup
-    //   149: iconst_2
-    //   150: aload_0
-    //   151: getfield 318	com/tencent/mobileqq/data/troop/TroopInfo:mTroopPicListJson	Ljava/lang/String;
-    //   154: aastore
-    //   155: invokestatic 643	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   158: invokestatic 647	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   161: return
-    //   162: astore_2
-    //   163: aload_2
-    //   164: invokevirtual 648	java/lang/Exception:printStackTrace	()V
-    //   167: goto -60 -> 107
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	170	0	this	TroopInfo
-    //   7	102	1	localJSONArray	JSONArray
-    //   17	11	2	localIterator	Iterator
-    //   102	2	2	localJSONException	JSONException
-    //   162	2	2	localException	Exception
-    //   36	49	3	localTroopClipPic	TroopClipPic
-    //   54	40	4	localJSONObject	JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   8	18	102	org/json/JSONException
-    //   18	92	102	org/json/JSONException
-    //   92	99	102	org/json/JSONException
-    //   8	18	162	java/lang/Exception
-    //   18	92	162	java/lang/Exception
-    //   92	99	162	java/lang/Exception
+    JSONArray localJSONArray = new JSONArray();
+    try
+    {
+      Iterator localIterator = this.mTroopPicList.iterator();
+      while (localIterator.hasNext())
+      {
+        TroopClipPic localTroopClipPic = (TroopClipPic)localIterator.next();
+        if (!TextUtils.isEmpty(localTroopClipPic.id))
+        {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("id", localTroopClipPic.id);
+          if (!TextUtils.isEmpty(localTroopClipPic.clipInfo)) {
+            localJSONObject.put("clip", localTroopClipPic.clipInfo);
+          }
+          localJSONArray.put(localJSONObject);
+        }
+      }
+      this.mTroopPicListJson = localJSONArray.toString();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopInfo", 2, String.format("prewrite troopUin=%s avatarId=%d mTroopPicListJson=%s", new Object[] { this.troopuin, Integer.valueOf(this.mTroopAvatarId), this.mTroopPicListJson }));
+    }
   }
   
   public static String setTags(List<oidb_0x88d.TagRecord> paramList)
@@ -583,28 +505,25 @@ public class TroopInfo
     if ((paramList != null) && (paramList.size() > 0))
     {
       Iterator localIterator = paramList.iterator();
-      for (;;)
+      while (localIterator.hasNext())
       {
-        if (localIterator.hasNext())
+        paramList = (oidb_0x88d.TagRecord)localIterator.next();
+        if (paramList.bytes_tag_value.has())
         {
-          paramList = (oidb_0x88d.TagRecord)localIterator.next();
-          if (!paramList.bytes_tag_value.has()) {
-            continue;
-          }
           paramList = paramList.bytes_tag_value.get().toStringUtf8();
           try
           {
             paramList = new String(paramList.getBytes("utf-8"));
-            localStringBuffer.append(paramList + "\n");
           }
           catch (UnsupportedEncodingException paramList)
           {
-            for (;;)
-            {
-              paramList.printStackTrace();
-              paramList = "";
-            }
+            paramList.printStackTrace();
+            paramList = "";
           }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramList);
+          localStringBuilder.append("\n");
+          localStringBuffer.append(localStringBuilder.toString());
         }
       }
       localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
@@ -623,7 +542,9 @@ public class TroopInfo
       Object localObject = (Map.Entry)paramConcurrentHashMap.next();
       int k = ((Integer)((Map.Entry)localObject).getKey()).intValue();
       localObject = (String)((Map.Entry)localObject).getValue();
-      localStringBuilder.append(k).append("").append((String)localObject);
+      localStringBuilder.append(k);
+      localStringBuilder.append("");
+      localStringBuilder.append((String)localObject);
       if (i != j - 1) {
         localStringBuilder.append("\001");
       }
@@ -634,17 +555,16 @@ public class TroopInfo
   
   public boolean checkFlagExt4(int paramInt)
   {
-    return (this.groupFlagExt4 & paramInt) > 0;
+    return (paramInt & this.groupFlagExt4) > 0;
   }
   
   public boolean checkFreezeReason(int paramInt)
   {
-    return (this.groupFreezeReason & paramInt) > 0;
+    return (paramInt & this.groupFreezeReason) > 0;
   }
   
   public void coverFrom(oidb_0x88d.GroupInfo paramGroupInfo)
   {
-    boolean bool2 = false;
     if (paramGroupInfo.uint32_group_grade.has()) {
       this.nTroopGrade = paramGroupInfo.uint32_group_grade.get();
     }
@@ -663,103 +583,104 @@ public class TroopInfo
     if (paramGroupInfo.uint32_group_flagext3.has()) {
       this.dwGroupFlagExt3 = paramGroupInfo.uint32_group_flagext3.get();
     }
-    boolean bool1;
-    if (paramGroupInfo.uint32_no_finger_open_flag.has())
+    boolean bool1 = paramGroupInfo.uint32_no_finger_open_flag.has();
+    boolean bool2 = false;
+    if (bool1)
     {
-      if (paramGroupInfo.uint32_no_finger_open_flag.get() == 0)
-      {
+      if (paramGroupInfo.uint32_no_finger_open_flag.get() == 0) {
         bool1 = true;
-        this.mCanSearchByKeywords = bool1;
+      } else {
+        bool1 = false;
       }
+      this.mCanSearchByKeywords = bool1;
     }
-    else
+    if (paramGroupInfo.uint32_no_code_finger_open_flag.has())
     {
-      if (paramGroupInfo.uint32_no_code_finger_open_flag.has())
-      {
-        if (paramGroupInfo.uint32_no_code_finger_open_flag.get() != 0) {
-          break label828;
-        }
+      if (paramGroupInfo.uint32_no_code_finger_open_flag.get() == 0) {
         bool1 = true;
-        label192:
-        this.mCanSearchByTroopUin = bool1;
+      } else {
+        bool1 = false;
       }
-      if (paramGroupInfo.uint32_is_conf_group.has())
-      {
-        if (paramGroupInfo.uint32_is_conf_group.get() != 1) {
-          break label833;
-        }
-        bool1 = true;
-        label220:
-        this.isNewTroop = bool1;
-      }
-      if (paramGroupInfo.uint32_is_modify_conf_group_face.has())
-      {
-        if (paramGroupInfo.uint32_is_modify_conf_group_face.get() != 1) {
-          break label838;
-        }
-        bool1 = true;
-        label248:
-        this.hasSetNewTroopHead = bool1;
-      }
-      if (paramGroupInfo.uint32_is_modify_conf_group_name.has())
-      {
-        bool1 = bool2;
-        if (paramGroupInfo.uint32_is_modify_conf_group_name.get() == 1) {
-          bool1 = true;
-        }
-        this.hasSetNewTroopName = bool1;
-      }
-      if (paramGroupInfo.rpt_tag_record.has()) {
-        this.mTags = setTags(paramGroupInfo.rpt_tag_record.get());
-      }
-      if (paramGroupInfo.string_group_class_text.has()) {
-        this.mGroupClassExtText = paramGroupInfo.string_group_class_text.get().toStringUtf8();
-      }
-      if (paramGroupInfo.uint32_is_allow_recall_msg.has()) {
-        this.isAllowHistoryMsgFlag = paramGroupInfo.uint32_is_allow_recall_msg.get();
-      }
-      coverFrom_TroopLocal(paramGroupInfo);
-      this.wMemberMax = paramGroupInfo.uint32_group_member_max_num.get();
-      this.wMemberNum = paramGroupInfo.uint32_group_member_num.get();
-      this.wMemberNumClient = this.wMemberNum;
-      this.dwGroupFlagExt = paramGroupInfo.uint32_group_flag_ext.get();
-      this.troopTypeExt = paramGroupInfo.uint32_group_type_flag.get();
-      this.dwGroupFlag = paramGroupInfo.uint32_group_flag.get();
-      if (!isNewTroop()) {
-        break label843;
-      }
+      this.mCanSearchByTroopUin = bool1;
     }
-    label828:
-    label833:
-    label838:
-    label843:
-    for (this.maxInviteMemNum = paramGroupInfo.uint32_auto_agree_join_group_user_num_for_conf_group.get();; this.maxInviteMemNum = paramGroupInfo.uint32_auto_agree_join_group_user_num_for_normal_group.get())
+    if (paramGroupInfo.uint32_is_conf_group.has())
     {
-      this.allowMemberModifTroopName = paramGroupInfo.uint32_is_allow_conf_group_member_modify_group_name.get();
-      this.allowMemberKick = paramGroupInfo.uint32_is_allow_conf_group_member_nick.get();
-      this.allowMemberAtAll = paramGroupInfo.uint32_is_allow_conf_group_member_at_all.get();
-      coverFrom_longGroupName(paramGroupInfo);
-      if (paramGroupInfo.uint32_is_group_freeze.has()) {
-        this.mIsFreezed = paramGroupInfo.uint32_is_group_freeze.get();
+      if (paramGroupInfo.uint32_is_conf_group.get() == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      if (paramGroupInfo.uint32_cmduin_flag_ex2.has()) {
-        this.cmdUinFlagEx2 = paramGroupInfo.uint32_cmduin_flag_ex2.get();
+      this.isNewTroop = bool1;
+    }
+    if (paramGroupInfo.uint32_is_modify_conf_group_face.has())
+    {
+      if (paramGroupInfo.uint32_is_modify_conf_group_face.get() == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      if (paramGroupInfo.uint32_cmduin_ringtone_id.has()) {
-        this.udwCmdUinRingtoneID = paramGroupInfo.uint32_cmduin_ringtone_id.get();
+      this.hasSetNewTroopHead = bool1;
+    }
+    if (paramGroupInfo.uint32_is_modify_conf_group_name.has())
+    {
+      bool1 = bool2;
+      if (paramGroupInfo.uint32_is_modify_conf_group_name.get() == 1) {
+        bool1 = true;
       }
-      if (paramGroupInfo.uint32_cmduin_new_mobile_flag.has()) {
-        this.troopmask = paramGroupInfo.uint32_cmduin_new_mobile_flag.get();
-      }
-      this.groupFlagExt4 = paramGroupInfo.uint32_group_flagext4.get();
-      this.groupFreezeReason = paramGroupInfo.uint32_group_freeze_reason.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInfo", 1, "get flag ext4=" + this.groupFlagExt4 + " freeze reason=" + this.groupFreezeReason);
-      }
-      Object localObject;
-      if (paramGroupInfo.bytes_group_school_info.has()) {
-        localObject = new oidb_0x89a.GroupSchoolInfo();
-      }
+      this.hasSetNewTroopName = bool1;
+    }
+    if (paramGroupInfo.rpt_tag_record.has()) {
+      this.mTags = setTags(paramGroupInfo.rpt_tag_record.get());
+    }
+    if (paramGroupInfo.string_group_class_text.has()) {
+      this.mGroupClassExtText = paramGroupInfo.string_group_class_text.get().toStringUtf8();
+    }
+    if (paramGroupInfo.uint32_is_allow_recall_msg.has()) {
+      this.isAllowHistoryMsgFlag = paramGroupInfo.uint32_is_allow_recall_msg.get();
+    }
+    coverFrom_TroopLocal(paramGroupInfo);
+    this.wMemberMax = paramGroupInfo.uint32_group_member_max_num.get();
+    this.wMemberNum = paramGroupInfo.uint32_group_member_num.get();
+    this.wMemberNumClient = this.wMemberNum;
+    this.dwGroupFlagExt = paramGroupInfo.uint32_group_flag_ext.get();
+    this.troopTypeExt = paramGroupInfo.uint32_group_type_flag.get();
+    this.dwGroupFlag = paramGroupInfo.uint32_group_flag.get();
+    if (isNewTroop()) {
+      this.maxInviteMemNum = paramGroupInfo.uint32_auto_agree_join_group_user_num_for_conf_group.get();
+    } else {
+      this.maxInviteMemNum = paramGroupInfo.uint32_auto_agree_join_group_user_num_for_normal_group.get();
+    }
+    this.allowMemberModifTroopName = paramGroupInfo.uint32_is_allow_conf_group_member_modify_group_name.get();
+    this.allowMemberKick = paramGroupInfo.uint32_is_allow_conf_group_member_nick.get();
+    this.allowMemberAtAll = paramGroupInfo.uint32_is_allow_conf_group_member_at_all.get();
+    coverFrom_longGroupName(paramGroupInfo);
+    if (paramGroupInfo.uint32_is_group_freeze.has()) {
+      this.mIsFreezed = paramGroupInfo.uint32_is_group_freeze.get();
+    }
+    if (paramGroupInfo.uint32_cmduin_flag_ex2.has()) {
+      this.cmdUinFlagEx2 = paramGroupInfo.uint32_cmduin_flag_ex2.get();
+    }
+    if (paramGroupInfo.uint32_cmduin_ringtone_id.has()) {
+      this.udwCmdUinRingtoneID = paramGroupInfo.uint32_cmduin_ringtone_id.get();
+    }
+    if (paramGroupInfo.uint32_cmduin_new_mobile_flag.has()) {
+      this.troopmask = paramGroupInfo.uint32_cmduin_new_mobile_flag.get();
+    }
+    this.groupFlagExt4 = paramGroupInfo.uint32_group_flagext4.get();
+    this.groupFreezeReason = paramGroupInfo.uint32_group_freeze_reason.get();
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get flag ext4=");
+      ((StringBuilder)localObject).append(this.groupFlagExt4);
+      ((StringBuilder)localObject).append(" freeze reason=");
+      ((StringBuilder)localObject).append(this.groupFreezeReason);
+      QLog.d("TroopInfo", 1, ((StringBuilder)localObject).toString());
+    }
+    if (paramGroupInfo.bytes_group_school_info.has())
+    {
+      localObject = new oidb_0x89a.GroupSchoolInfo();
       try
       {
         oidb_0x89a.GroupSchoolInfo localGroupSchoolInfo = (oidb_0x89a.GroupSchoolInfo)((oidb_0x89a.GroupSchoolInfo)localObject).mergeFrom(paramGroupInfo.bytes_group_school_info.get().toByteArray());
@@ -767,10 +688,7 @@ public class TroopInfo
       }
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
-        for (;;)
-        {
-          localInvalidProtocolBufferMicroException.printStackTrace();
-        }
+        localInvalidProtocolBufferMicroException.printStackTrace();
       }
       if (((oidb_0x89a.GroupSchoolInfo)localObject).bytes_location.has()) {
         this.location = ((oidb_0x89a.GroupSchoolInfo)localObject).bytes_location.get().toStringUtf8();
@@ -781,30 +699,20 @@ public class TroopInfo
       if (((oidb_0x89a.GroupSchoolInfo)localObject).bytes_school.has()) {
         this.school = ((oidb_0x89a.GroupSchoolInfo)localObject).bytes_school.get().toStringUtf8();
       }
-      if (paramGroupInfo.uint64_alliance_id.has()) {
-        this.groupAllianceid = paramGroupInfo.uint64_alliance_id.get();
-      }
-      if (paramGroupInfo.st_group_info_ext.has()) {
-        this.mTroopInfoExtObj = TroopInfoExt.parseFromGroupInfoExt((oidb_0xef0.GroupInfoExt)paramGroupInfo.st_group_info_ext.get());
-      }
-      if (paramGroupInfo.uint32_cmduin_flag_ex3_grocery.has()) {
-        this.cmduinFlagEx3Grocery = paramGroupInfo.uint32_cmduin_flag_ex3_grocery.get();
-      }
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label192;
-      bool1 = false;
-      break label220;
-      bool1 = false;
-      break label248;
+    }
+    if (paramGroupInfo.uint64_alliance_id.has()) {
+      this.groupAllianceid = paramGroupInfo.uint64_alliance_id.get();
+    }
+    if (paramGroupInfo.st_group_info_ext.has()) {
+      this.mTroopInfoExtObj = TroopInfoExt.parseFromGroupInfoExt((oidb_0xef0.GroupInfoExt)paramGroupInfo.st_group_info_ext.get());
+    }
+    if (paramGroupInfo.uint32_cmduin_flag_ex3_grocery.has()) {
+      this.cmduinFlagEx3Grocery = paramGroupInfo.uint32_cmduin_flag_ex3_grocery.get();
     }
   }
   
-  public boolean entityByCursor(Cursor paramCursor)
+  protected boolean entityByCursor(Cursor paramCursor)
   {
-    boolean bool2 = false;
     this.Administrator = paramCursor.getString(paramCursor.getColumnIndex("Administrator"));
     this.cAlbumResult = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("cAlbumResult")));
     this.cGroupLevel = paramCursor.getShort(paramCursor.getColumnIndex("cGroupLevel"));
@@ -833,171 +741,165 @@ public class TroopInfo
     this.mComparePartInt = paramCursor.getInt(paramCursor.getColumnIndex("mComparePartInt"));
     this.mCompareSpell = paramCursor.getString(paramCursor.getColumnIndex("mCompareSpell"));
     this.mGroupClassExtText = paramCursor.getString(paramCursor.getColumnIndex("mGroupClassExtText"));
+    int i = paramCursor.getInt(paramCursor.getColumnIndex("mMemberInvitingFlag"));
+    boolean bool2 = false;
     boolean bool1;
-    if (paramCursor.getInt(paramCursor.getColumnIndex("mMemberInvitingFlag")) == 1) {
+    if (i == 1) {
       bool1 = true;
+    } else {
+      bool1 = false;
     }
-    for (;;)
+    this.mMemberInvitingFlag = bool1;
+    this.mQZonePhotoNum = paramCursor.getInt(paramCursor.getColumnIndex("mQZonePhotoNum"));
+    this.mRichFingerMemo = paramCursor.getString(paramCursor.getColumnIndex("mRichFingerMemo"));
+    this.mSomeMemberUins = paramCursor.getString(paramCursor.getColumnIndex("mSomeMemberUins"));
+    this.mHeaderUinsOld = paramCursor.getString(paramCursor.getColumnIndex("mHeaderUinsOld"));
+    this.mHeaderUinsNew = paramCursor.getString(paramCursor.getColumnIndex("mHeaderUinsNew"));
+    this.mTags = paramCursor.getString(paramCursor.getColumnIndex("mTags"));
+    this.mTroopAvatarId = paramCursor.getInt(paramCursor.getColumnIndex("mTroopAvatarId"));
+    this.mTroopPicListJson = paramCursor.getString(paramCursor.getColumnIndex("mTroopPicListJson"));
+    this.maxAdminNum = paramCursor.getInt(paramCursor.getColumnIndex("maxAdminNum"));
+    this.nTroopGrade = paramCursor.getInt(paramCursor.getColumnIndex("nTroopGrade"));
+    this.strLocation = paramCursor.getString(paramCursor.getColumnIndex("strLocation"));
+    this.strQZonePhotoUrls = paramCursor.getString(paramCursor.getColumnIndex("strQZonePhotoUrls"));
+    this.timeSec = paramCursor.getLong(paramCursor.getColumnIndex("timeSec"));
+    this.troopAuthenticateInfo = paramCursor.getString(paramCursor.getColumnIndex("troopAuthenticateInfo"));
+    this.troopCreateTime = paramCursor.getLong(paramCursor.getColumnIndex("troopCreateTime"));
+    this.troopLat = paramCursor.getInt(paramCursor.getColumnIndex("troopLat"));
+    this.troopLevelMap = paramCursor.getString(paramCursor.getColumnIndex("troopLevelMap"));
+    this.newTroopLevelMap = paramCursor.getString(paramCursor.getColumnIndex("newTroopLevelMap"));
+    this.troopLon = paramCursor.getInt(paramCursor.getColumnIndex("troopLon"));
+    this.troopTypeExt = paramCursor.getInt(paramCursor.getColumnIndex("troopTypeExt"));
+    this.troopcode = paramCursor.getString(paramCursor.getColumnIndex("troopcode"));
+    this.troopface = paramCursor.getShort(paramCursor.getColumnIndex("troopface"));
+    this.troopmask = paramCursor.getInt(paramCursor.getColumnIndex("troopmask"));
+    this.troopmemo = paramCursor.getString(paramCursor.getColumnIndex("troopmemo"));
+    this.troopname = paramCursor.getString(paramCursor.getColumnIndex("troopname"));
+    this.newTroopName = paramCursor.getString(paramCursor.getColumnIndex("newTroopName"));
+    this.newTroopNameTimeStamp = paramCursor.getLong(paramCursor.getColumnIndex("newTroopNameTimeStamp"));
+    this.troopowneruin = paramCursor.getString(paramCursor.getColumnIndex("troopowneruin"));
+    this.trooptype = paramCursor.getInt(paramCursor.getColumnIndex("trooptype"));
+    this.troopuin = paramCursor.getString(paramCursor.getColumnIndex("troopuin"));
+    this.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
+    this.wMemberMax = paramCursor.getInt(paramCursor.getColumnIndex("wMemberMax"));
+    this.wMemberNum = paramCursor.getInt(paramCursor.getColumnIndex("wMemberNum"));
+    this.wMemberNumClient = paramCursor.getInt(paramCursor.getColumnIndex("wMemberNumClient"));
+    this.wSpecialClass = paramCursor.getInt(paramCursor.getColumnIndex("wSpecialClass"));
+    this.troopPrivilegeFlag = paramCursor.getLong(paramCursor.getColumnIndex("troopPrivilegeFlag"));
+    this.associatePubAccount = paramCursor.getLong(paramCursor.getColumnIndex("associatePubAccount"));
+    this.mTroopNeedPayNumber = paramCursor.getFloat(paramCursor.getColumnIndex("mTroopNeedPayNumber"));
+    this.dwOfficeMode = paramCursor.getLong(paramCursor.getColumnIndex("dwOfficeMode"));
+    this.mMemberCardSeq = paramCursor.getLong(paramCursor.getColumnIndex("mMemberCardSeq"));
+    this.mOldMemberCardSeq = paramCursor.getLong(paramCursor.getColumnIndex("mOldMemberCardSeq"));
+    this.mMemberNumSeq = paramCursor.getLong(paramCursor.getColumnIndex("mMemberNumSeq"));
+    this.mOldMemberNumSeq = paramCursor.getLong(paramCursor.getColumnIndex("mOldMemberNumSeq"));
+    if (paramCursor.getInt(paramCursor.getColumnIndex("mCanSearchByKeywords")) == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.mCanSearchByKeywords = bool1;
+    if (paramCursor.getInt(paramCursor.getColumnIndex("mCanSearchByTroopUin")) == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.mCanSearchByTroopUin = bool1;
+    if (paramCursor.getInt(paramCursor.getColumnIndex("isNewTroop")) == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.isNewTroop = bool1;
+    if (paramCursor.getInt(paramCursor.getColumnIndex("hasSetNewTroopHead")) == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.hasSetNewTroopHead = bool1;
+    if (paramCursor.getInt(paramCursor.getColumnIndex("hasSetNewTroopName")) == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    this.hasSetNewTroopName = bool1;
+    this.eliminated = paramCursor.getInt(paramCursor.getColumnIndex("eliminated"));
+    this.feeds_id = paramCursor.getString(paramCursor.getColumnIndex("feeds_id"));
+    this.troopRepeatType = paramCursor.getInt(paramCursor.getColumnIndex("troopRepeatType"));
+    this.myHonorList = paramCursor.getString(paramCursor.getColumnIndex("myHonorList"));
+    this.myHonorRichFlag = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("myHonorRichFlag")));
+    try
     {
-      this.mMemberInvitingFlag = bool1;
-      this.mQZonePhotoNum = paramCursor.getInt(paramCursor.getColumnIndex("mQZonePhotoNum"));
-      this.mRichFingerMemo = paramCursor.getString(paramCursor.getColumnIndex("mRichFingerMemo"));
-      this.mSomeMemberUins = paramCursor.getString(paramCursor.getColumnIndex("mSomeMemberUins"));
-      this.mHeaderUinsOld = paramCursor.getString(paramCursor.getColumnIndex("mHeaderUinsOld"));
-      this.mHeaderUinsNew = paramCursor.getString(paramCursor.getColumnIndex("mHeaderUinsNew"));
-      this.mTags = paramCursor.getString(paramCursor.getColumnIndex("mTags"));
-      this.mTroopAvatarId = paramCursor.getInt(paramCursor.getColumnIndex("mTroopAvatarId"));
-      this.mTroopPicListJson = paramCursor.getString(paramCursor.getColumnIndex("mTroopPicListJson"));
-      this.maxAdminNum = paramCursor.getInt(paramCursor.getColumnIndex("maxAdminNum"));
-      this.nTroopGrade = paramCursor.getInt(paramCursor.getColumnIndex("nTroopGrade"));
-      this.strLocation = paramCursor.getString(paramCursor.getColumnIndex("strLocation"));
-      this.strQZonePhotoUrls = paramCursor.getString(paramCursor.getColumnIndex("strQZonePhotoUrls"));
-      this.timeSec = paramCursor.getLong(paramCursor.getColumnIndex("timeSec"));
-      this.troopAuthenticateInfo = paramCursor.getString(paramCursor.getColumnIndex("troopAuthenticateInfo"));
-      this.troopCreateTime = paramCursor.getLong(paramCursor.getColumnIndex("troopCreateTime"));
-      this.troopLat = paramCursor.getInt(paramCursor.getColumnIndex("troopLat"));
-      this.troopLevelMap = paramCursor.getString(paramCursor.getColumnIndex("troopLevelMap"));
-      this.newTroopLevelMap = paramCursor.getString(paramCursor.getColumnIndex("newTroopLevelMap"));
-      this.troopLon = paramCursor.getInt(paramCursor.getColumnIndex("troopLon"));
-      this.troopTypeExt = paramCursor.getInt(paramCursor.getColumnIndex("troopTypeExt"));
-      this.troopcode = paramCursor.getString(paramCursor.getColumnIndex("troopcode"));
-      this.troopface = paramCursor.getShort(paramCursor.getColumnIndex("troopface"));
-      this.troopmask = paramCursor.getInt(paramCursor.getColumnIndex("troopmask"));
-      this.troopmemo = paramCursor.getString(paramCursor.getColumnIndex("troopmemo"));
-      this.troopname = paramCursor.getString(paramCursor.getColumnIndex("troopname"));
-      this.newTroopName = paramCursor.getString(paramCursor.getColumnIndex("newTroopName"));
-      this.newTroopNameTimeStamp = paramCursor.getLong(paramCursor.getColumnIndex("newTroopNameTimeStamp"));
-      this.troopowneruin = paramCursor.getString(paramCursor.getColumnIndex("troopowneruin"));
-      this.trooptype = paramCursor.getInt(paramCursor.getColumnIndex("trooptype"));
-      this.troopuin = paramCursor.getString(paramCursor.getColumnIndex("troopuin"));
-      this.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      this.wMemberMax = paramCursor.getInt(paramCursor.getColumnIndex("wMemberMax"));
-      this.wMemberNum = paramCursor.getInt(paramCursor.getColumnIndex("wMemberNum"));
-      this.wMemberNumClient = paramCursor.getInt(paramCursor.getColumnIndex("wMemberNumClient"));
-      this.wSpecialClass = paramCursor.getInt(paramCursor.getColumnIndex("wSpecialClass"));
-      this.troopPrivilegeFlag = paramCursor.getLong(paramCursor.getColumnIndex("troopPrivilegeFlag"));
-      this.associatePubAccount = paramCursor.getLong(paramCursor.getColumnIndex("associatePubAccount"));
-      this.mTroopNeedPayNumber = paramCursor.getFloat(paramCursor.getColumnIndex("mTroopNeedPayNumber"));
-      this.dwOfficeMode = paramCursor.getLong(paramCursor.getColumnIndex("dwOfficeMode"));
-      this.mMemberCardSeq = paramCursor.getLong(paramCursor.getColumnIndex("mMemberCardSeq"));
-      this.mOldMemberCardSeq = paramCursor.getLong(paramCursor.getColumnIndex("mOldMemberCardSeq"));
-      this.mMemberNumSeq = paramCursor.getLong(paramCursor.getColumnIndex("mMemberNumSeq"));
-      this.mOldMemberNumSeq = paramCursor.getLong(paramCursor.getColumnIndex("mOldMemberNumSeq"));
-      if (paramCursor.getInt(paramCursor.getColumnIndex("mCanSearchByKeywords")) == 1)
-      {
+      this.ownerNameShow = paramCursor.getString(paramCursor.getColumnIndex("ownerNameShow"));
+      this.adminNameShow = paramCursor.getString(paramCursor.getColumnIndex("adminNameShow"));
+      this.dwAppPrivilegeFlag = paramCursor.getLong(paramCursor.getColumnIndex("dwAppPrivilegeFlag"));
+      this.topicId = paramCursor.getString(paramCursor.getColumnIndex("topicId"));
+      this.memberListToShow = paramCursor.getString(paramCursor.getColumnIndex("memberListToShow"));
+      this.maxInviteMemNum = paramCursor.getInt(paramCursor.getColumnIndex("maxInviteMemNum"));
+      this.allowMemberAtAll = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberAtAll"));
+      this.allowMemberKick = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberKick"));
+      this.allowMemberModifTroopName = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberModifTroopName"));
+      this.oldTroopName = paramCursor.getString(paramCursor.getColumnIndex("oldTroopName"));
+      this.mIsFreezed = paramCursor.getInt(paramCursor.getColumnIndex("mIsFreezed"));
+      label1851:
+      this.groupCardPrefixIntro = paramCursor.getString(paramCursor.getColumnIndex("groupCardPrefixIntro"));
+      this.groupCardPrefixJson = paramCursor.getString(paramCursor.getColumnIndex("groupCardPrefixJson"));
+      this.troopRemark = entityByCursor_getValue(paramCursor, "troopRemark", this.troopRemark);
+      this.troopInfoExtByte = paramCursor.getBlob(paramCursor.getColumnIndex("troopInfoExtByte"));
+      this.troopCreditLevel = entityByCursor_getValue(paramCursor, "troopCreditLevel", this.troopCreditLevel);
+      this.troopCreditLevelInfo = entityByCursor_getValue(paramCursor, "troopCreditLevelInfo", this.troopCreditLevelInfo);
+      bool1 = bool2;
+      if (paramCursor.getInt(paramCursor.getColumnIndex("isTroopBlocked")) == 1) {
         bool1 = true;
-        label1404:
-        this.mCanSearchByKeywords = bool1;
-        if (paramCursor.getInt(paramCursor.getColumnIndex("mCanSearchByTroopUin")) != 1) {
-          break label2411;
-        }
-        bool1 = true;
-        label1430:
-        this.mCanSearchByTroopUin = bool1;
-        if (paramCursor.getInt(paramCursor.getColumnIndex("isNewTroop")) != 1) {
-          break label2416;
-        }
-        bool1 = true;
-        label1456:
-        this.isNewTroop = bool1;
-        if (paramCursor.getInt(paramCursor.getColumnIndex("hasSetNewTroopHead")) != 1) {
-          break label2421;
-        }
-        bool1 = true;
-        label1482:
-        this.hasSetNewTroopHead = bool1;
-        if (paramCursor.getInt(paramCursor.getColumnIndex("hasSetNewTroopName")) != 1) {
-          break label2426;
-        }
-        bool1 = true;
-        this.hasSetNewTroopName = bool1;
-        this.eliminated = paramCursor.getInt(paramCursor.getColumnIndex("eliminated"));
-        this.feeds_id = paramCursor.getString(paramCursor.getColumnIndex("feeds_id"));
-        this.troopRepeatType = paramCursor.getInt(paramCursor.getColumnIndex("troopRepeatType"));
-        this.myHonorList = paramCursor.getString(paramCursor.getColumnIndex("myHonorList"));
-        this.myHonorRichFlag = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("myHonorRichFlag")));
       }
-      try
+      this.isTroopBlocked = bool1;
+      this.appealDeadline = entityByCursor_getValue(paramCursor, "appealDeadline", this.appealDeadline);
+      this.dwGroupFlagExt3 = entityByCursor_getValue(paramCursor, "dwGroupFlagExt3", this.dwGroupFlagExt3);
+      this.dwCmdUinJoinTime = entityByCursor_getValue(paramCursor, "dwCmdUinJoinTime", this.dwCmdUinJoinTime);
+      this.cmdUinFlagEx2 = entityByCursor_getValue(paramCursor, "cmdUinFlagEx2", this.cmdUinFlagEx2);
+      this.udwCmdUinRingtoneID = entityByCursor_getValue(paramCursor, "udwCmdUinRingtoneID", this.udwCmdUinRingtoneID);
+      this.dwLastInsertBAFTipTime = entityByCursor_getValue(paramCursor, "dwLastInsertBAFTipTime", this.dwLastInsertBAFTipTime);
+      this.wInsertBAFTipCount = entityByCursor_getValue(paramCursor, "wInsertBAFTipCount", this.wInsertBAFTipCount);
+      this.wClickBAFTipCount = entityByCursor_getValue(paramCursor, "wClickBAFTipCount", this.wClickBAFTipCount);
+      this.dwLastBAFTipMsgUniSeq = entityByCursor_getValue(paramCursor, "dwLastBAFTipMsgUniSeq", this.dwLastBAFTipMsgUniSeq);
+      this.dwLastBAFTipMsgUniSeq2 = entityByCursor_getValue(paramCursor, "dwLastBAFTipMsgUniSeq2", this.dwLastBAFTipMsgUniSeq2);
+      this.dailyNewMemberUins = entityByCursor_getValue(paramCursor, "dailyNewMemberUins", this.dailyNewMemberUins);
+      this.exitTroopReason = entityByCursor_getValue(paramCursor, "exitTroopReason", this.exitTroopReason);
+      this.eliminated = entityByCursor_getValue(paramCursor, "eliminated", this.eliminated);
+      this.strLastAnnouncement = entityByCursor_getValue(paramCursor, "strLastAnnouncement", this.strLastAnnouncement);
+      this.nMsgLimitFreq = entityByCursor_getValue(paramCursor, "nMsgLimitFreq", this.nMsgLimitFreq);
+      this.hlGuildAppid = entityByCursor_getValue(paramCursor, "hlGuildAppid", this.hlGuildAppid);
+      this.hlGuildSubType = entityByCursor_getValue(paramCursor, "hlGuildSubType", this.hlGuildSubType);
+      this.mAtOrReplyMeUins = entityByCursor_getValue(paramCursor, "mAtOrReplyMeUins", this.mAtOrReplyMeUins);
+      this.groupFreezeReason = entityByCursor_getValue(paramCursor, "groupFreezeReason", this.groupFreezeReason);
+      this.groupFlagExt4 = entityByCursor_getValue(paramCursor, "groupFlagExt4", this.groupFlagExt4);
+      this.troopHonorGrayFlag = entityByCursor_getValue(paramCursor, "troopHonorGrayFlag", this.troopHonorGrayFlag);
+      this.lastMsgUpdateMyHonorRichTime = entityByCursor_getValue(paramCursor, "lastMsgUpdateMyHonorRichTime", this.lastMsgUpdateMyHonorRichTime);
+      this.isAllowHistoryMsgFlag = entityByCursor_getValue(paramCursor, "isAllowHistoryMsgFlag", this.isAllowHistoryMsgFlag);
+      this.troopRepeatType = entityByCursor_getValue(paramCursor, "troopRepeatType", this.troopRepeatType);
+      this.cmduinFlagEx3Grocery = entityByCursor_getValue(paramCursor, "cmduinFlagEx3Grocery", this.cmduinFlagEx3Grocery);
+      if (QLog.isColorLevel())
       {
-        this.ownerNameShow = paramCursor.getString(paramCursor.getColumnIndex("ownerNameShow"));
-        this.adminNameShow = paramCursor.getString(paramCursor.getColumnIndex("adminNameShow"));
-        this.dwAppPrivilegeFlag = paramCursor.getLong(paramCursor.getColumnIndex("dwAppPrivilegeFlag"));
-        this.topicId = paramCursor.getString(paramCursor.getColumnIndex("topicId"));
-        this.memberListToShow = paramCursor.getString(paramCursor.getColumnIndex("memberListToShow"));
-        this.maxInviteMemNum = paramCursor.getInt(paramCursor.getColumnIndex("maxInviteMemNum"));
-        this.allowMemberAtAll = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberAtAll"));
-        this.allowMemberKick = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberKick"));
-        this.allowMemberModifTroopName = paramCursor.getInt(paramCursor.getColumnIndex("allowMemberModifTroopName"));
-        this.oldTroopName = paramCursor.getString(paramCursor.getColumnIndex("oldTroopName"));
-        this.mIsFreezed = paramCursor.getInt(paramCursor.getColumnIndex("mIsFreezed"));
-        label1818:
-        this.groupCardPrefixIntro = paramCursor.getString(paramCursor.getColumnIndex("groupCardPrefixIntro"));
-        this.groupCardPrefixJson = paramCursor.getString(paramCursor.getColumnIndex("groupCardPrefixJson"));
-        this.troopRemark = entityByCursor_getValue(paramCursor, "troopRemark", this.troopRemark);
-        this.troopInfoExtByte = paramCursor.getBlob(paramCursor.getColumnIndex("troopInfoExtByte"));
-        this.troopCreditLevel = entityByCursor_getValue(paramCursor, "troopCreditLevel", this.troopCreditLevel);
-        this.troopCreditLevelInfo = entityByCursor_getValue(paramCursor, "troopCreditLevelInfo", this.troopCreditLevelInfo);
-        bool1 = bool2;
-        if (paramCursor.getInt(paramCursor.getColumnIndex("isTroopBlocked")) == 1) {
-          bool1 = true;
-        }
-        this.isTroopBlocked = bool1;
-        this.appealDeadline = entityByCursor_getValue(paramCursor, "appealDeadline", this.appealDeadline);
-        this.dwGroupFlagExt3 = entityByCursor_getValue(paramCursor, "dwGroupFlagExt3", this.dwGroupFlagExt3);
-        this.dwCmdUinJoinTime = entityByCursor_getValue(paramCursor, "dwCmdUinJoinTime", this.dwCmdUinJoinTime);
-        this.cmdUinFlagEx2 = entityByCursor_getValue(paramCursor, "cmdUinFlagEx2", this.cmdUinFlagEx2);
-        this.udwCmdUinRingtoneID = entityByCursor_getValue(paramCursor, "udwCmdUinRingtoneID", this.udwCmdUinRingtoneID);
-        this.dwLastInsertBAFTipTime = entityByCursor_getValue(paramCursor, "dwLastInsertBAFTipTime", this.dwLastInsertBAFTipTime);
-        this.wInsertBAFTipCount = entityByCursor_getValue(paramCursor, "wInsertBAFTipCount", this.wInsertBAFTipCount);
-        this.wClickBAFTipCount = entityByCursor_getValue(paramCursor, "wClickBAFTipCount", this.wClickBAFTipCount);
-        this.dwLastBAFTipMsgUniSeq = entityByCursor_getValue(paramCursor, "dwLastBAFTipMsgUniSeq", this.dwLastBAFTipMsgUniSeq);
-        this.dwLastBAFTipMsgUniSeq2 = entityByCursor_getValue(paramCursor, "dwLastBAFTipMsgUniSeq2", this.dwLastBAFTipMsgUniSeq2);
-        this.dailyNewMemberUins = entityByCursor_getValue(paramCursor, "dailyNewMemberUins", this.dailyNewMemberUins);
-        this.exitTroopReason = entityByCursor_getValue(paramCursor, "exitTroopReason", this.exitTroopReason);
-        this.eliminated = entityByCursor_getValue(paramCursor, "eliminated", this.eliminated);
-        this.strLastAnnouncement = entityByCursor_getValue(paramCursor, "strLastAnnouncement", this.strLastAnnouncement);
-        this.nMsgLimitFreq = entityByCursor_getValue(paramCursor, "nMsgLimitFreq", this.nMsgLimitFreq);
-        this.hlGuildAppid = entityByCursor_getValue(paramCursor, "hlGuildAppid", this.hlGuildAppid);
-        this.hlGuildSubType = entityByCursor_getValue(paramCursor, "hlGuildSubType", this.hlGuildSubType);
-        this.mAtOrReplyMeUins = entityByCursor_getValue(paramCursor, "mAtOrReplyMeUins", this.mAtOrReplyMeUins);
-        this.groupFreezeReason = entityByCursor_getValue(paramCursor, "groupFreezeReason", this.groupFreezeReason);
-        this.groupFlagExt4 = entityByCursor_getValue(paramCursor, "groupFlagExt4", this.groupFlagExt4);
-        this.troopHonorGrayFlag = entityByCursor_getValue(paramCursor, "troopHonorGrayFlag", this.troopHonorGrayFlag);
-        this.lastMsgUpdateMyHonorRichTime = entityByCursor_getValue(paramCursor, "lastMsgUpdateMyHonorRichTime", this.lastMsgUpdateMyHonorRichTime);
-        this.isAllowHistoryMsgFlag = entityByCursor_getValue(paramCursor, "isAllowHistoryMsgFlag", this.isAllowHistoryMsgFlag);
-        this.troopRepeatType = entityByCursor_getValue(paramCursor, "troopRepeatType", this.troopRepeatType);
-        this.cmduinFlagEx3Grocery = entityByCursor_getValue(paramCursor, "cmduinFlagEx3Grocery", this.cmduinFlagEx3Grocery);
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopInfo", 2, "fightgag._troopinfo.dwGagTimeStamp_me = " + this.dwGagTimeStamp_me + ",troopuin = " + this.troopuin);
-        }
-        return true;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        break label1404;
-        label2411:
-        bool1 = false;
-        break label1430;
-        label2416:
-        bool1 = false;
-        break label1456;
-        label2421:
-        bool1 = false;
-        break label1482;
-        label2426:
-        bool1 = false;
+        paramCursor = new StringBuilder();
+        paramCursor.append("fightgag._troopinfo.dwGagTimeStamp_me = ");
+        paramCursor.append(this.dwGagTimeStamp_me);
+        paramCursor.append(",troopuin = ");
+        paramCursor.append(this.troopuin);
+        QLog.d("TroopInfo", 2, paramCursor.toString());
       }
-      catch (Exception localException)
-      {
-        break label1818;
-      }
+      return true;
+    }
+    catch (Exception localException)
+    {
+      break label1851;
     }
   }
   
   public int getFansTroopStarId()
   {
-    if (this.mTroopInfoExtObj != null) {
-      return this.mTroopInfoExtObj.starId;
+    TroopInfoExt localTroopInfoExt = this.mTroopInfoExtObj;
+    if (localTroopInfoExt != null) {
+      return localTroopInfoExt.starId;
     }
     return 0;
   }
@@ -1005,48 +907,44 @@ public class TroopInfo
   public ArrayList<String> getGroupCardPrefix()
   {
     ArrayList localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(this.groupCardPrefixJson)) {}
-    for (;;)
+    int i;
+    String str1;
+    if (!TextUtils.isEmpty(this.groupCardPrefixJson))
     {
-      int i;
-      String str2;
       try
       {
         JSONArray localJSONArray = new JSONArray(this.groupCardPrefixJson);
-        if (localJSONArray != null)
+        i = 0;
+        while (i < localJSONArray.length())
         {
-          i = 0;
-          if (i < localJSONArray.length())
-          {
-            str2 = localJSONArray.getString(i);
-            if (TextUtils.isEmpty(str2)) {
-              break label147;
-            }
-            localArrayList.add(str2);
+          str1 = localJSONArray.getString(i);
+          if (!TextUtils.isEmpty(str1)) {
+            localArrayList.add(str1);
           }
+          i += 1;
+        }
+        if (!QLog.isColorLevel()) {
+          break label141;
         }
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
       }
-      if (QLog.isColorLevel())
-      {
-        str2 = this.troopuin;
-        i = localArrayList.size();
-        if (this.groupCardPrefixJson != null) {
-          break label139;
-        }
-      }
-      label139:
-      for (String str1 = "";; str1 = this.groupCardPrefixJson)
-      {
-        QLog.d("TroopInfo", 2, String.format("getPresetNickWords troopUin=%s groupCardPrefix size=%d groupCardPrefixes=%s", new Object[] { str2, Integer.valueOf(i), str1 }));
-        return localArrayList;
-      }
-      label147:
-      i += 1;
     }
+    else
+    {
+      String str2 = this.troopuin;
+      i = localArrayList.size();
+      str1 = this.groupCardPrefixJson;
+      Object localObject = str1;
+      if (str1 == null) {
+        localObject = "";
+      }
+      QLog.d("TroopInfo", 2, String.format("getPresetNickWords troopUin=%s groupCardPrefix size=%d groupCardPrefixes=%s", new Object[] { str2, Integer.valueOf(i), localObject }));
+    }
+    label141:
+    return localArrayList;
   }
   
   public String getLatestMemo()
@@ -1065,40 +963,30 @@ public class TroopInfo
   
   public int getMemNumForAutoInviteIntoGroup(String paramString)
   {
-    int k = 0;
+    long l = this.troopPrivilegeFlag;
     int i;
-    if ((this.troopPrivilegeFlag & 0x100000) == 1048576L) {
+    if ((l & 0x100000) == 1048576L) {
       i = -1;
-    }
-    for (;;)
-    {
-      if ((isTroopOwner(paramString)) || (isTroopAdmin(paramString))) {}
-      for (int j = 1;; j = 0)
-      {
-        if ((hasInviteMemAuth()) || (j != 0))
-        {
-          if ((i != -1) && (j == 0)) {
-            break label114;
-          }
-          k = this.maxInviteMemNum;
-        }
-        return k;
-        if ((this.troopPrivilegeFlag & 0x2000000) == 33554432L)
-        {
-          i = 50;
-          break;
-        }
-        if ((this.troopPrivilegeFlag & 0x4000000) != 67108864L) {
-          break label123;
-        }
-        i = 100;
-        break;
-      }
-      label114:
-      return Math.min(this.maxInviteMemNum, i);
-      label123:
+    } else if ((l & 0x2000000) == 33554432L) {
+      i = 50;
+    } else if ((l & 0x4000000) == 67108864L) {
+      i = 100;
+    } else {
       i = 0;
     }
+    int j;
+    if ((!isTroopOwner(paramString)) && (!isTroopAdmin(paramString))) {
+      j = 0;
+    } else {
+      j = 1;
+    }
+    if ((!hasInviteMemAuth()) && (j == 0)) {
+      return 0;
+    }
+    if ((i != -1) && (j == 0)) {
+      return Math.min(this.maxInviteMemNum, i);
+    }
+    return this.maxInviteMemNum;
   }
   
   public int getMemberNum()
@@ -1114,41 +1002,51 @@ public class TroopInfo
   @SuppressLint({"UseSparseArrays"})
   public ConcurrentHashMap<Integer, String> getNewTroopLevelMap()
   {
-    if (((this.mCachedNewLevelMap == null) || (this.mCachedNewLevelMap.size() == 0)) && (this.mCachedNewLevelMap == null))
+    Object localObject = this.mCachedNewLevelMap;
+    if (((localObject == null) || (((ConcurrentHashMap)localObject).size() == 0)) && (this.mCachedNewLevelMap == null))
     {
       this.mCachedNewLevelMap = new ConcurrentHashMap();
-      if (this.newTroopLevelMap != null)
+      localObject = this.newTroopLevelMap;
+      if (localObject != null)
       {
-        String[] arrayOfString1 = this.newTroopLevelMap.split("\001");
-        if ((arrayOfString1 != null) && (arrayOfString1.length > 0))
+        localObject = ((String)localObject).split("\001");
+        if ((localObject != null) && (localObject.length > 0))
         {
           int i = 0;
-          for (;;)
+          while (i < localObject.length)
           {
-            if (i < arrayOfString1.length)
+            String[] arrayOfString = localObject[i].split("");
+            if (arrayOfString.length == 2) {}
+            try
             {
-              String[] arrayOfString2 = arrayOfString1[i].split("");
-              if (arrayOfString2.length == 2) {}
-              try
-              {
-                this.mCachedNewLevelMap.put(Integer.valueOf(Integer.parseInt(arrayOfString2[0])), arrayOfString2[1]);
-                i += 1;
-              }
-              catch (Exception localException)
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("TroopInfo", 2, "getNewTroopLevelMap, catch exception, key: " + arrayOfString2[0] + " value: " + arrayOfString2[1]);
-                  }
-                }
-              }
+              this.mCachedNewLevelMap.put(Integer.valueOf(Integer.parseInt(arrayOfString[0])), arrayOfString[1]);
             }
+            catch (Exception localException)
+            {
+              label107:
+              StringBuilder localStringBuilder;
+              break label107;
+            }
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("getNewTroopLevelMap, catch exception, key: ");
+              localStringBuilder.append(arrayOfString[0]);
+              localStringBuilder.append(" value: ");
+              localStringBuilder.append(arrayOfString[1]);
+              QLog.d("TroopInfo", 2, localStringBuilder.toString());
+            }
+            i += 1;
           }
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInfo", 2, "getNewTroopLevelMap:" + this.troopuin + ", create cache");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getNewTroopLevelMap:");
+        ((StringBuilder)localObject).append(this.troopuin);
+        ((StringBuilder)localObject).append(", create cache");
+        QLog.d("TroopInfo", 2, ((StringBuilder)localObject).toString());
       }
     }
     return this.mCachedNewLevelMap;
@@ -1160,52 +1058,55 @@ public class TroopInfo
       return this.troopname;
     }
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    String str = BaseApplication.processName;
     if (!TextUtils.isEmpty(this.newTroopName))
     {
-      if (System.currentTimeMillis() - this.newTroopNameTimeStamp > 86400000L) {
+      if ((System.currentTimeMillis() - this.newTroopNameTimeStamp > 86400000L) && (!TextUtils.isEmpty(str)) && (str.equals("com.tencent.mobileqq"))) {
         ((ITroopNameHelperService)localAppRuntime.getRuntimeService(ITroopNameHelperService.class, "")).updateTroopName(this.troopuin);
       }
       return this.newTroopName;
     }
-    ((ITroopNameHelperService)localAppRuntime.getRuntimeService(ITroopNameHelperService.class, "")).updateTroopName(this.troopuin);
+    if ((!TextUtils.isEmpty(str)) && (str.equals("com.tencent.mobileqq"))) {
+      ((ITroopNameHelperService)localAppRuntime.getRuntimeService(ITroopNameHelperService.class, "")).updateTroopName(this.troopuin);
+    }
     return this.troopname;
   }
   
   public List<String> getSomeMemberUins()
   {
     ArrayList localArrayList = new ArrayList();
-    if ((this.mSomeMemberUins != null) && (this.mSomeMemberUins.length() > 0))
+    Object localObject = this.mSomeMemberUins;
+    if ((localObject != null) && (((String)localObject).length() > 0))
     {
-      int j = 0;
-      int i = this.mSomeMemberUins.indexOf('|', 0);
+      int i = 0;
+      int j = this.mSomeMemberUins.indexOf('|', 0);
       int k = this.mSomeMemberUins.length();
-      String str2;
-      String str1;
-      while ((i >= j) && (i < k))
+      String str;
+      while ((j >= i) && (j < k))
       {
-        if (j < i)
+        if (i < j)
         {
-          str2 = this.mSomeMemberUins.substring(j, i);
-          str1 = str2;
-          if (str2 != null) {
-            str1 = str2.trim();
+          str = this.mSomeMemberUins.substring(i, j);
+          localObject = str;
+          if (str != null) {
+            localObject = str.trim();
           }
-          if ((str1 != null) && (str1.length() > 0)) {
-            localArrayList.add(str1);
+          if ((localObject != null) && (((String)localObject).length() > 0)) {
+            localArrayList.add(localObject);
           }
         }
-        j = i + 1;
-        i = this.mSomeMemberUins.indexOf('|', j);
+        i = j + 1;
+        j = this.mSomeMemberUins.indexOf('|', i);
       }
-      if (j < k)
+      if (i < k)
       {
-        str2 = this.mSomeMemberUins.substring(j, k);
-        str1 = str2;
-        if (str2 != null) {
-          str1 = str2.trim();
+        str = this.mSomeMemberUins.substring(i, k);
+        localObject = str;
+        if (str != null) {
+          localObject = str.trim();
         }
-        if ((str1 != null) && (str1.length() > 0)) {
-          localArrayList.add(str1);
+        if ((localObject != null) && (((String)localObject).length() > 0)) {
+          localArrayList.add(localObject);
         }
       }
     }
@@ -1233,41 +1134,51 @@ public class TroopInfo
   @SuppressLint({"UseSparseArrays"})
   public ConcurrentHashMap<Integer, String> getTroopLevelMap()
   {
-    if (((this.mCachedLevelMap == null) || (this.mCachedLevelMap.size() == 0)) && (this.mCachedLevelMap == null))
+    Object localObject = this.mCachedLevelMap;
+    if (((localObject == null) || (((ConcurrentHashMap)localObject).size() == 0)) && (this.mCachedLevelMap == null))
     {
       this.mCachedLevelMap = new ConcurrentHashMap();
-      if (this.troopLevelMap != null)
+      localObject = this.troopLevelMap;
+      if (localObject != null)
       {
-        String[] arrayOfString1 = this.troopLevelMap.split("\001");
-        if ((arrayOfString1 != null) && (arrayOfString1.length > 0))
+        localObject = ((String)localObject).split("\001");
+        if ((localObject != null) && (localObject.length > 0))
         {
           int i = 0;
-          for (;;)
+          while (i < localObject.length)
           {
-            if (i < arrayOfString1.length)
+            String[] arrayOfString = localObject[i].split("");
+            if (arrayOfString.length == 2) {}
+            try
             {
-              String[] arrayOfString2 = arrayOfString1[i].split("");
-              if (arrayOfString2.length == 2) {}
-              try
-              {
-                this.mCachedLevelMap.put(Integer.valueOf(Integer.parseInt(arrayOfString2[0])), arrayOfString2[1]);
-                i += 1;
-              }
-              catch (Exception localException)
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("TroopInfo", 2, "getOldTroopLevelMap, catch exception, key: " + arrayOfString2[0] + " value: " + arrayOfString2[1]);
-                  }
-                }
-              }
+              this.mCachedLevelMap.put(Integer.valueOf(Integer.parseInt(arrayOfString[0])), arrayOfString[1]);
             }
+            catch (Exception localException)
+            {
+              label107:
+              StringBuilder localStringBuilder;
+              break label107;
+            }
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("getOldTroopLevelMap, catch exception, key: ");
+              localStringBuilder.append(arrayOfString[0]);
+              localStringBuilder.append(" value: ");
+              localStringBuilder.append(arrayOfString[1]);
+              QLog.d("TroopInfo", 2, localStringBuilder.toString());
+            }
+            i += 1;
           }
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInfo", 2, "getOldTroopLevelMap:" + this.troopuin + ", create cache");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getOldTroopLevelMap:");
+        ((StringBuilder)localObject).append(this.troopuin);
+        ((StringBuilder)localObject).append(", create cache");
+        QLog.d("TroopInfo", 2, ((StringBuilder)localObject).toString());
       }
     }
     return this.mCachedLevelMap;
@@ -1280,33 +1191,31 @@ public class TroopInfo
   
   public boolean hasInviteMemAuth()
   {
-    boolean bool3 = true;
-    if ((hasPayPrivilege(this.troopPrivilegeFlag, 128)) && (hasPayPrivilege(this.troopPrivilegeFlag, 512))) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2;
-      if ((this.mMemberInvitingFlag) || (isAdmin()))
-      {
-        bool2 = bool3;
-        if (!isAdmin())
-        {
-          bool2 = bool3;
-          if (this.cGroupOption == 3)
-          {
-            bool2 = bool3;
-            if (bool1) {}
-          }
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(TroopInfo.class.getSimpleName(), 2, "hasInviteMemAuth：mMemberInvitingFlag=" + this.mMemberInvitingFlag + ", mTroopInfoData.isOwnerOrAdim() = " + isAdmin() + ", mTroopInfoData.cGroupOption=" + this.cGroupOption + ", isPayToJoinTroop=" + bool1);
-        }
-        bool2 = false;
-      }
-      return bool2;
+    boolean bool;
+    if ((hasPayPrivilege(this.troopPrivilegeFlag, 128)) && (hasPayPrivilege(this.troopPrivilegeFlag, 512))) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (((!this.mMemberInvitingFlag) && (!isAdmin())) || ((!isAdmin()) && (this.cGroupOption == 3) && (!bool)))
+    {
+      if (QLog.isColorLevel())
+      {
+        String str = TroopInfo.class.getSimpleName();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("hasInviteMemAuth：mMemberInvitingFlag=");
+        localStringBuilder.append(this.mMemberInvitingFlag);
+        localStringBuilder.append(", mTroopInfoData.isOwnerOrAdim() = ");
+        localStringBuilder.append(isAdmin());
+        localStringBuilder.append(", mTroopInfoData.cGroupOption=");
+        localStringBuilder.append(this.cGroupOption);
+        localStringBuilder.append(", isPayToJoinTroop=");
+        localStringBuilder.append(bool);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      return false;
+    }
+    return true;
   }
   
   public boolean hasOrgs()
@@ -1402,8 +1311,14 @@ public class TroopInfo
   
   public boolean isKingBattleTroop()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInfo", 2, "hlGuildAppid:" + this.hlGuildAppid + ",subType:" + this.hlGuildSubType);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hlGuildAppid:");
+      localStringBuilder.append(this.hlGuildAppid);
+      localStringBuilder.append(",subType:");
+      localStringBuilder.append(this.hlGuildSubType);
+      QLog.d("TroopInfo", 2, localStringBuilder.toString());
     }
     return (this.hlGuildAppid == 1104466820L) && (this.hlGuildSubType == 0L);
   }
@@ -1450,14 +1365,16 @@ public class TroopInfo
   
   public boolean isSharingLocation()
   {
-    if ((this.dwGroupFlagExt3 & 0x4000000) != 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInfo", 2, new Object[] { "isSharingLocation: invoked. ", " is: ", Boolean.valueOf(bool) });
-      }
-      return bool;
+    boolean bool;
+    if ((this.dwGroupFlagExt3 & 0x4000000) != 0L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInfo", 2, new Object[] { "isSharingLocation: invoked. ", " is: ", Boolean.valueOf(bool) });
+    }
+    return bool;
   }
   
   public boolean isShowMyGameCardEnabled()
@@ -1477,36 +1394,23 @@ public class TroopInfo
   
   public boolean isTroopAdmin(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int i;
-    if (this.Administrator != null)
+    Object localObject = this.Administrator;
+    if (localObject != null)
     {
-      arrayOfString = this.Administrator.split("\\|");
-      bool1 = bool2;
-      if (arrayOfString != null)
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length > 0))
       {
-        bool1 = bool2;
-        if (arrayOfString.length > 0) {
-          i = 0;
+        int i = 0;
+        while (i < localObject.length)
+        {
+          if ((paramString != null) && (paramString.equals(localObject[i]))) {
+            return true;
+          }
+          i += 1;
         }
       }
     }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < arrayOfString.length)
-      {
-        if ((paramString != null) && (paramString.equals(arrayOfString[i]))) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
+    return false;
   }
   
   public boolean isTroopGameCardEnabled()
@@ -1521,12 +1425,14 @@ public class TroopInfo
   
   public boolean isTroopIlive()
   {
-    if ((this.groupFlagExt4 & 0x400) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("IliveGroup", 1, String.format("isTroopIlive %s", new Object[] { Boolean.valueOf(bool) }));
-      return bool;
+    boolean bool;
+    if ((this.groupFlagExt4 & 0x400) != 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    QLog.i("IliveGroup", 1, String.format("isTroopIlive %s", new Object[] { Boolean.valueOf(bool) }));
+    return bool;
   }
   
   public boolean isTroopOwner(String paramString)
@@ -1547,41 +1453,47 @@ public class TroopInfo
   public ArrayList<Long> parseTroopMemeberList()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.memberListToShow != null)
+    Object localObject = this.memberListToShow;
+    if (localObject != null)
     {
-      String[] arrayOfString = this.memberListToShow.split("\\|");
+      localObject = ((String)localObject).split("\\|");
       int i = 0;
-      for (;;)
+      while (i < localObject.length)
       {
-        if (i < arrayOfString.length) {
-          try
-          {
-            localArrayList.add(Long.valueOf(Long.parseLong(arrayOfString[i])));
-            i += 1;
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("troopInfo_member", 2, "parse error: " + arrayOfString[i]);
-              }
-            }
-          }
+        try
+        {
+          localArrayList.add(Long.valueOf(Long.parseLong(localObject[i])));
         }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          label50:
+          StringBuilder localStringBuilder;
+          break label50;
+        }
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("parse error: ");
+          localStringBuilder.append(localObject[i]);
+          QLog.d("troopInfo_member", 2, localStringBuilder.toString());
+        }
+        i += 1;
       }
     }
-    return localArrayList;
+    else
+    {
+      return localArrayList;
+    }
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
     postRead_troopPicList();
     postRead_troopInfoExt();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
     prewrite_troopPicList();
@@ -1590,13 +1502,13 @@ public class TroopInfo
   
   public void setAutoApprovalOpen(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (this.dwGroupFlagExt3 |= 0x100000;; this.dwGroupFlagExt3 &= 0xFFEFFFFF)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopInfo", 2, String.format("setAutoApprovalOpen [%s, %s]", new Object[] { Long.valueOf(this.dwGroupFlagExt3), Boolean.valueOf(paramBoolean) }));
-      }
-      return;
+    if (paramBoolean) {
+      this.dwGroupFlagExt3 |= 0x100000;
+    } else {
+      this.dwGroupFlagExt3 &= 0xFFEFFFFF;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopInfo", 2, String.format("setAutoApprovalOpen [%s, %s]", new Object[] { Long.valueOf(this.dwGroupFlagExt3), Boolean.valueOf(paramBoolean) }));
     }
   }
   
@@ -1604,61 +1516,68 @@ public class TroopInfo
   {
     if (paramBoolean)
     {
-      this.cmdUinFlagEx2 |= paramInt;
+      l = this.cmdUinFlagEx2;
+      this.cmdUinFlagEx2 = (paramInt | l);
       return;
     }
-    this.cmdUinFlagEx2 &= (paramInt ^ 0xFFFFFFFF);
+    long l = this.cmdUinFlagEx2;
+    this.cmdUinFlagEx2 = ((paramInt ^ 0xFFFFFFFF) & l);
   }
   
   public void setCmduinFlagEx3Grocer4(boolean paramBoolean, int paramInt)
   {
     if (paramBoolean)
     {
-      this.cmduinFlagEx3Grocery |= paramInt;
+      l = this.cmduinFlagEx3Grocery;
+      this.cmduinFlagEx3Grocery = (paramInt | l);
       return;
     }
-    this.cmduinFlagEx3Grocery &= (paramInt ^ 0xFFFFFFFF);
+    long l = this.cmduinFlagEx3Grocery;
+    this.cmduinFlagEx3Grocery = ((paramInt ^ 0xFFFFFFFF) & l);
   }
   
   public void setGroupCardPrefix(ArrayList<String> paramArrayList)
   {
-    if (paramArrayList == null) {
+    if (paramArrayList == null)
+    {
       this.groupCardPrefixJson = "";
-    }
-    for (;;)
-    {
       return;
-      if (paramArrayList.isEmpty())
+    }
+    if (paramArrayList.isEmpty())
+    {
+      this.groupCardPrefixJson = "";
+      return;
+    }
+    Object localObject = new JSONArray();
+    try
+    {
+      Iterator localIterator = paramArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        this.groupCardPrefixJson = "";
-        return;
-      }
-      localObject = new JSONArray();
-      try
-      {
-        Iterator localIterator = paramArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str)) {
-            ((JSONArray)localObject).put(str);
-          }
+        String str2 = (String)localIterator.next();
+        if (!TextUtils.isEmpty(str2)) {
+          ((JSONArray)localObject).put(str2);
         }
-        if (!QLog.isColorLevel()) {}
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        this.groupCardPrefixJson = ((JSONArray)localObject).toString();
-      }
-    }
-    Object localObject = this.troopuin;
-    int i = paramArrayList.size();
-    if (this.groupCardPrefixJson == null) {}
-    for (paramArrayList = "";; paramArrayList = this.groupCardPrefixJson)
-    {
-      QLog.d("TroopInfo", 2, String.format("setPresetNickWords troopUin=%s groupCardPrefix size=%d groupCardPrefixes=%s", new Object[] { localObject, Integer.valueOf(i), paramArrayList }));
+      String str1;
+      int i;
       return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      this.groupCardPrefixJson = ((JSONArray)localObject).toString();
+      if (QLog.isColorLevel())
+      {
+        str1 = this.troopuin;
+        i = paramArrayList.size();
+        localObject = this.groupCardPrefixJson;
+        paramArrayList = (ArrayList<String>)localObject;
+        if (localObject == null) {
+          paramArrayList = "";
+        }
+        QLog.d("TroopInfo", 2, String.format("setPresetNickWords troopUin=%s groupCardPrefix size=%d groupCardPrefixes=%s", new Object[] { str1, Integer.valueOf(i), paramArrayList }));
+      }
     }
   }
   
@@ -1704,12 +1623,12 @@ public class TroopInfo
   
   public void setIsTroopLive(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (this.groupFlagExt4 |= 0x400;; this.groupFlagExt4 &= 0xFFFFFBFF)
-    {
-      QLog.i("IliveGroup", 1, String.format("setIsTroopLive %s %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(isTroopIlive()) }));
-      return;
+    if (paramBoolean) {
+      this.groupFlagExt4 |= 0x400;
+    } else {
+      this.groupFlagExt4 &= 0xFFFFFBFF;
     }
+    QLog.i("IliveGroup", 1, String.format("setIsTroopLive %s %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(isTroopIlive()) }));
   }
   
   public void setIsWatchTogether(boolean paramBoolean)
@@ -1725,13 +1644,25 @@ public class TroopInfo
   @SuppressLint({"UseSparseArrays"})
   public void setNewTroopLevelMap(ConcurrentHashMap<Integer, String> paramConcurrentHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInfo", 2, "setNewTroopLevelMap:" + this.troopuin + ", old=" + this.newTroopLevelMap);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setNewTroopLevelMap:");
+      localStringBuilder.append(this.troopuin);
+      localStringBuilder.append(", old=");
+      localStringBuilder.append(this.newTroopLevelMap);
+      QLog.d("TroopInfo", 2, localStringBuilder.toString());
     }
     this.newTroopLevelMap = troopLevelMapToString(paramConcurrentHashMap);
     this.mCachedNewLevelMap = paramConcurrentHashMap;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInfo", 2, "setNewTroopLevelMap:" + this.troopuin + ", new=" + this.newTroopLevelMap);
+    if (QLog.isColorLevel())
+    {
+      paramConcurrentHashMap = new StringBuilder();
+      paramConcurrentHashMap.append("setNewTroopLevelMap:");
+      paramConcurrentHashMap.append(this.troopuin);
+      paramConcurrentHashMap.append(", new=");
+      paramConcurrentHashMap.append(this.newTroopLevelMap);
+      QLog.d("TroopInfo", 2, paramConcurrentHashMap.toString());
     }
   }
   
@@ -1752,34 +1683,48 @@ public class TroopInfo
   
   public void setStudyRoomOpen(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (this.groupFlagExt4 |= 0x100;; this.groupFlagExt4 &= 0xFFFFFEFF)
-    {
-      QLog.i("StudyRoom", 2, String.format("setStudyRoomOpen %s %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(getStudyRoomOpen()) }));
-      return;
+    if (paramBoolean) {
+      this.groupFlagExt4 |= 0x100;
+    } else {
+      this.groupFlagExt4 &= 0xFFFFFEFF;
     }
+    QLog.i("StudyRoom", 2, String.format("setStudyRoomOpen %s %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(getStudyRoomOpen()) }));
   }
   
   public void setTogetherBusiness(boolean paramBoolean, int paramInt)
   {
     if (paramBoolean)
     {
-      this.dwGroupFlagExt3 |= paramInt;
+      l = this.dwGroupFlagExt3;
+      this.dwGroupFlagExt3 = (paramInt | l);
       return;
     }
-    this.dwGroupFlagExt3 &= (paramInt ^ 0xFFFFFFFF);
+    long l = this.dwGroupFlagExt3;
+    this.dwGroupFlagExt3 = ((paramInt ^ 0xFFFFFFFF) & l);
   }
   
   @SuppressLint({"UseSparseArrays"})
   public void setTroopLevelMap(ConcurrentHashMap<Integer, String> paramConcurrentHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInfo", 2, "setOldTroopLevelMap:" + this.troopuin + ", old=" + this.troopLevelMap);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setOldTroopLevelMap:");
+      localStringBuilder.append(this.troopuin);
+      localStringBuilder.append(", old=");
+      localStringBuilder.append(this.troopLevelMap);
+      QLog.d("TroopInfo", 2, localStringBuilder.toString());
     }
     this.troopLevelMap = troopLevelMapToString(paramConcurrentHashMap);
     this.mCachedLevelMap = paramConcurrentHashMap;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInfo", 2, "setOldTroopLevelMap:" + this.troopuin + ", new=" + this.troopLevelMap);
+    if (QLog.isColorLevel())
+    {
+      paramConcurrentHashMap = new StringBuilder();
+      paramConcurrentHashMap.append("setOldTroopLevelMap:");
+      paramConcurrentHashMap.append(this.troopuin);
+      paramConcurrentHashMap.append(", new=");
+      paramConcurrentHashMap.append(this.troopLevelMap);
+      QLog.d("TroopInfo", 2, paramConcurrentHashMap.toString());
     }
   }
   
@@ -1800,13 +1745,25 @@ public class TroopInfo
         ((ConcurrentHashMap)localObject).put(Integer.valueOf(localLevelName.uint32_level.get()), localLevelName.str_name.get().toStringUtf8());
         i += 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInfo", 2, "setTroopLevelMap787:" + this.troopuin + ", old=" + this.troopLevelMap);
+      if (QLog.isColorLevel())
+      {
+        paramList1 = new StringBuilder();
+        paramList1.append("setTroopLevelMap787:");
+        paramList1.append(this.troopuin);
+        paramList1.append(", old=");
+        paramList1.append(this.troopLevelMap);
+        QLog.d("TroopInfo", 2, paramList1.toString());
       }
       this.troopLevelMap = troopLevelMapToString((ConcurrentHashMap)localObject);
       this.mCachedLevelMap = ((ConcurrentHashMap)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInfo", 2, "setTroopLevelMap787:" + this.troopuin + ", new=" + this.troopLevelMap);
+      if (QLog.isColorLevel())
+      {
+        paramList1 = new StringBuilder();
+        paramList1.append("setTroopLevelMap787:");
+        paramList1.append(this.troopuin);
+        paramList1.append(", new=");
+        paramList1.append(this.troopLevelMap);
+        QLog.d("TroopInfo", 2, paramList1.toString());
       }
     }
     if ((paramList2 != null) && (paramList2.size() > 0))
@@ -1820,13 +1777,25 @@ public class TroopInfo
         paramList1.put(Integer.valueOf(((oidb_0x787.LevelName)localObject).uint32_level.get()), ((oidb_0x787.LevelName)localObject).str_name.get().toStringUtf8());
         i += 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInfo", 2, "setTroopLevelMap787 new:" + this.troopuin + ", old=" + this.newTroopLevelMap);
+      if (QLog.isColorLevel())
+      {
+        paramList2 = new StringBuilder();
+        paramList2.append("setTroopLevelMap787 new:");
+        paramList2.append(this.troopuin);
+        paramList2.append(", old=");
+        paramList2.append(this.newTroopLevelMap);
+        QLog.d("TroopInfo", 2, paramList2.toString());
       }
       this.newTroopLevelMap = troopLevelMapToString(paramList1);
       this.mCachedNewLevelMap = paramList1;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInfo", 2, "setTroopLevelMap787 new:" + this.troopuin + ", new=" + this.newTroopLevelMap);
+      if (QLog.isColorLevel())
+      {
+        paramList1 = new StringBuilder();
+        paramList1.append("setTroopLevelMap787 new:");
+        paramList1.append(this.troopuin);
+        paramList1.append(", new=");
+        paramList1.append(this.newTroopLevelMap);
+        QLog.d("TroopInfo", 2, paramList1.toString());
       }
     }
   }
@@ -1849,16 +1818,22 @@ public class TroopInfo
   public String toString()
   {
     Object localObject2 = this.troopuin;
-    String str = this.newTroopName;
+    Object localObject3 = this.newTroopName;
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = "[no uin]";
     }
-    localObject2 = str;
-    if (TextUtils.isEmpty(str)) {
+    localObject2 = localObject3;
+    if (TextUtils.isEmpty((CharSequence)localObject3)) {
       localObject2 = "[no name]";
     }
-    return "TroopInfo: {uin = " + (String)localObject1 + ", name = " + (String)localObject2 + "}";
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("TroopInfo: {uin = ");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append(", name = ");
+    ((StringBuilder)localObject3).append((String)localObject2);
+    ((StringBuilder)localObject3).append("}");
+    return ((StringBuilder)localObject3).toString();
   }
   
   public void updateHeadMemberList(String paramString)
@@ -1883,28 +1858,34 @@ public class TroopInfo
     if (this.strLastAnnouncement == null) {
       this.strLastAnnouncement = "";
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopInfo", 2, "updateLastMemoFromWeb : " + this.strLastAnnouncement);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("updateLastMemoFromWeb : ");
+      paramString.append(this.strLastAnnouncement);
+      QLog.i("TroopInfo", 2, paramString.toString());
     }
   }
   
   public void updateQZonePhotoUrls(ArrayList<String> paramArrayList)
   {
-    int j = 0;
     StringBuilder localStringBuilder = new StringBuilder();
+    int j = 0;
     int i;
     if (paramArrayList != null) {
       i = paramArrayList.size();
+    } else {
+      i = 0;
     }
     while (j < i)
     {
       String str = (String)paramArrayList.get(j);
-      if ((str != null) && (str.length() > 0)) {
-        localStringBuilder.append(str).append(";");
+      if ((str != null) && (str.length() > 0))
+      {
+        localStringBuilder.append(str);
+        localStringBuilder.append(";");
       }
       j += 1;
-      continue;
-      i = 0;
     }
     this.strQZonePhotoUrls = localStringBuilder.toString();
   }
@@ -1913,31 +1894,22 @@ public class TroopInfo
   {
     int j = 0;
     int i;
-    StringBuilder localStringBuilder;
-    label22:
-    oidb_0x899.memberlist localmemberlist;
-    if (paramList != null)
-    {
+    if (paramList != null) {
       i = paramList.size();
-      localStringBuilder = new StringBuilder();
-      if (j >= i) {
-        break label89;
-      }
-      localmemberlist = (oidb_0x899.memberlist)paramList.get(j);
-      if ((localmemberlist != null) && (localmemberlist.uint64_member_uin.has())) {
-        break label67;
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break label22;
+    } else {
       i = 0;
-      break;
-      label67:
-      localStringBuilder.append(localmemberlist.uint64_member_uin.get()).append('|');
     }
-    label89:
+    StringBuilder localStringBuilder = new StringBuilder();
+    while (j < i)
+    {
+      oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)paramList.get(j);
+      if ((localmemberlist != null) && (localmemberlist.uint64_member_uin.has()))
+      {
+        localStringBuilder.append(localmemberlist.uint64_member_uin.get());
+        localStringBuilder.append('|');
+      }
+      j += 1;
+    }
     this.mSomeMemberUins = localStringBuilder.toString();
     if ((i < 6) && (i > 0)) {
       this.wMemberNum = i;
@@ -1946,7 +1918,7 @@ public class TroopInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.troop.TroopInfo
  * JD-Core Version:    0.7.0.1
  */

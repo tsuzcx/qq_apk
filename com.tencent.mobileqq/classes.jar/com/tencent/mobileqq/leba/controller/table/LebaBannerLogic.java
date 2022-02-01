@@ -56,26 +56,34 @@ public class LebaBannerLogic
   
   private void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, View paramView)
   {
-    ((RoundRelativeLayout)paramView.findViewById(2131364203)).jdField_a_of_type_Int = ViewUtils.a(16.0F);
-    Object localObject = (LinearLayout)paramView.findViewById(2131370660);
-    if (ThemeUtil.a(this.jdField_a_of_type_MqqAppAppRuntime, false, null))
+    ((RoundRelativeLayout)paramView.findViewById(2131364120)).jdField_a_of_type_Int = ViewUtils.a(16.0F);
+    Object localObject = (LinearLayout)paramView.findViewById(2131370302);
+    if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_MqqAppAppRuntime, false, null)) {
+      ((LinearLayout)localObject).setBackgroundResource(2130840561);
+    } else {
+      ((LinearLayout)localObject).setBackgroundResource(2130839393);
+    }
+    if (this.jdField_a_of_type_Int == 1)
     {
-      ((LinearLayout)localObject).setBackgroundResource(2130840686);
-      if (this.jdField_a_of_type_Int != 1) {
-        break label258;
-      }
       ((LinearLayout)localObject).setPadding(0, 0, 0, 0);
-      label64:
-      if ((((LinearLayout)localObject).getTag() == null) || (!(((LinearLayout)localObject).getTag() instanceof RedTouch))) {
-        break label276;
-      }
+    }
+    else
+    {
+      int i = ViewUtils.a(8.0F);
+      ((LinearLayout)localObject).setPadding(0, i, 0, i);
+    }
+    if ((((LinearLayout)localObject).getTag() != null) && ((((LinearLayout)localObject).getTag() instanceof RedTouch)))
+    {
       paramView = (RedTouch)((LinearLayout)localObject).getTag();
     }
-    for (;;)
+    else
     {
-      if (paramAppInfo.red_display_info == null) {
-        break label328;
-      }
+      paramView = paramView.findViewById(2131370226);
+      paramView = new RedTouch(this.jdField_a_of_type_AndroidContentContext, paramView).d(ViewUtils.b(5.0F)).c(ViewUtils.b(1.0F)).b(19).a();
+      ((LinearLayout)localObject).setTag(paramView);
+    }
+    if (paramAppInfo.red_display_info != null)
+    {
       localObject = paramAppInfo.red_display_info.red_type_info.get().iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -84,7 +92,7 @@ public class LebaBannerLogic
           try
           {
             JSONObject localJSONObject = new JSONObject(localRedTypeInfo.red_desc.get());
-            localJSONObject.put("cr", String.format("#%06X", new Object[] { Integer.valueOf(0xFFFFFF & this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167040)) }));
+            localJSONObject.put("cr", String.format("#%06X", new Object[] { Integer.valueOf(0xFFFFFF & this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167063)) }));
             localRedTypeInfo.red_desc.set(localJSONObject.toString());
           }
           catch (Exception localException)
@@ -93,30 +101,18 @@ public class LebaBannerLogic
           }
         }
       }
-      ((LinearLayout)localObject).setBackgroundResource(2130839537);
-      break;
-      label258:
-      int i = ViewUtils.a(8.0F);
-      ((LinearLayout)localObject).setPadding(0, i, 0, i);
-      break label64;
-      label276:
-      paramView = paramView.findViewById(2131370570);
-      paramView = new RedTouch(this.jdField_a_of_type_AndroidContentContext, paramView).d(ViewUtils.b(5.0F)).c(ViewUtils.b(1.0F)).b(19).a();
-      ((LinearLayout)localObject).setTag(paramView);
     }
-    label328:
     paramView.a(paramAppInfo);
     if ((!this.jdField_a_of_type_JavaUtilHashSet.contains(Integer.valueOf(paramAppInfo.uiAppId.get()))) && (paramAppInfo.iNewFlag.get() != 0))
     {
       this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(paramAppInfo.uiAppId.get()));
-      if (this.jdField_a_of_type_MqqAppAppRuntime == null) {
+      localObject = this.jdField_a_of_type_MqqAppAppRuntime;
+      if (localObject == null)
+      {
         QLog.i("LebaBannerLogic", 1, "mRuntime == null");
+        return;
       }
-    }
-    for (;;)
-    {
-      return;
-      ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).reportLevelOneRedInfo(paramAppInfo.uiAppId.get(), 30);
+      ((IRedTouchManager)((AppRuntime)localObject).getRuntimeService(IRedTouchManager.class, "")).reportLevelOneRedInfo(paramAppInfo.uiAppId.get(), 30);
       localObject = paramAppInfo.buffer.get();
       paramAppInfo = paramAppInfo.missions.get();
       QLog.i("LebaBannerLogic", 1, String.format("reportExposure buffer = %s missions = %s", new Object[] { localObject, paramAppInfo }));
@@ -124,19 +120,14 @@ public class LebaBannerLogic
       {
         localObject = new JSONObject((String)localObject);
         a(((JSONObject)localObject).optString("_jump_url"), ((JSONObject)localObject).optString("_jump_type"), ((JSONObject)localObject).optString("_app_id"), paramAppInfo, 1);
-        if (!AppSetting.d) {
-          continue;
-        }
-        AccessibilityUtil.a(paramView, paramView.a(), Button.class.getName());
-        return;
       }
       catch (Exception paramAppInfo)
       {
-        for (;;)
-        {
-          QLog.i("LebaBannerLogic", 1, "parse json exception", paramAppInfo);
-        }
+        QLog.i("LebaBannerLogic", 1, "parse json exception", paramAppInfo);
       }
+    }
+    if (AppSetting.d) {
+      AccessibilityUtil.a(paramView, paramView.a(), Button.class.getName());
     }
   }
   
@@ -157,81 +148,70 @@ public class LebaBannerLogic
         this.jdField_a_of_type_ComTencentMobileqqLebaBusinessILebaBasisApi.jumpByScheme(this.jdField_a_of_type_AndroidContentContext, paramString1);
         return;
       }
+      LebaUtil.a("LebaBannerLogic", "jump", "BasisApi");
+      return;
     }
     catch (Exception paramString1)
     {
       QLog.i("LebaBannerLogic", 1, "jump exception ", paramString1);
-      return;
     }
-    LebaUtil.a("LebaBannerLogic", "jump", "BasisApi");
   }
   
   private void a(String paramString1, String paramString2, String paramString3, List<String> paramList, int paramInt)
   {
     int i = 0;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramList != null)
-    {
-      localObject1 = localObject2;
-      if (paramList.size() > 0) {
-        localObject1 = (String)paramList.get(0);
-      }
+    if ((paramList != null) && (paramList.size() > 0)) {
+      paramList = (String)paramList.get(0);
+    } else {
+      paramList = null;
     }
-    if ("url".equals(paramString2))
-    {
+    if ("url".equals(paramString2)) {
       i = 1;
-      if (paramInt != 1) {
-        break label131;
-      }
+    } else if ("scheme".equals(paramString2)) {
+      i = 2;
+    } else if ("miniapp".equals(paramString2)) {
+      i = 3;
+    }
+    if (paramInt == 1)
+    {
       paramString2 = LebaReportUtils.a("banner_exp");
       paramString2.jdField_b_of_type_Int = i;
       paramString2.a = paramString3;
-      paramString2.jdField_b_of_type_JavaLangString = ((String)localObject1);
+      paramString2.jdField_b_of_type_JavaLangString = paramList;
+      paramString2.e = paramString1;
+      EXReportController.a(this.jdField_a_of_type_MqqAppAppRuntime, paramString2);
+      return;
+    }
+    if (paramInt == 2)
+    {
+      paramString2 = LebaReportUtils.a("banner_clk");
+      paramString2.jdField_b_of_type_Int = i;
+      paramString2.a = paramString3;
+      paramString2.jdField_b_of_type_JavaLangString = paramList;
       paramString2.e = paramString1;
       EXReportController.a(this.jdField_a_of_type_MqqAppAppRuntime, paramString2);
     }
-    label131:
-    while (paramInt != 2)
-    {
-      return;
-      if ("scheme".equals(paramString2))
-      {
-        i = 2;
-        break;
-      }
-      if (!"miniapp".equals(paramString2)) {
-        break;
-      }
-      i = 3;
-      break;
-    }
-    paramString2 = LebaReportUtils.a("banner_clk");
-    paramString2.jdField_b_of_type_Int = i;
-    paramString2.a = paramString3;
-    paramString2.jdField_b_of_type_JavaLangString = ((String)localObject1);
-    paramString2.e = paramString1;
-    EXReportController.a(this.jdField_a_of_type_MqqAppAppRuntime, paramString2);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
+    FrameLayout localFrameLayout = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+    if (localFrameLayout != null)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(0, 0, 0, 0);
+      localFrameLayout.setPadding(0, 0, 0, 0);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
     }
   }
   
   public void a(int paramInt)
   {
-    if (paramInt == 0) {}
-    for (paramInt = 1;; paramInt = 2)
-    {
-      if (paramInt != this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Int = paramInt;
-      }
-      return;
+    if (paramInt == 0) {
+      paramInt = 1;
+    } else {
+      paramInt = 2;
+    }
+    if (paramInt != this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_Int = paramInt;
     }
   }
   
@@ -257,13 +237,12 @@ public class LebaBannerLogic
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null) {
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null)
+    {
       QLog.i("LebaBannerLogic", 1, "onClick mRootLayout == null");
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       long l = System.currentTimeMillis();
       a();
       IRedTouchManager localIRedTouchManager = (IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "");
@@ -281,26 +260,24 @@ public class LebaBannerLogic
           localObject2 = ((JSONObject)localObject2).optString("_app_id");
           a(str1, str2, (String)localObject2);
           a(str1, str2, (String)localObject2, (List)localObject1, 2);
-          localIRedTouchManager.reportLevelOneRedInfo(100000, 31);
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            QLog.i("LebaBannerLogic", 1, "parse json exception ", localException);
-          }
+          QLog.i("LebaBannerLogic", 1, "parse json exception ", localException);
         }
+        localIRedTouchManager.reportLevelOneRedInfo(100000, 31);
       }
       else
       {
         QLog.i("LebaBannerLogic", 1, "onClick appInfo no new");
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.controller.table.LebaBannerLogic
  * JD-Core Version:    0.7.0.1
  */

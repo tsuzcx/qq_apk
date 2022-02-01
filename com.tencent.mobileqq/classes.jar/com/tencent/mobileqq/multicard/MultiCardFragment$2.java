@@ -12,15 +12,20 @@ class MultiCardFragment$2
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onClick() called with: v = [" + paramView + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onClick() called with: v = [");
+      localStringBuilder.append(paramView);
+      localStringBuilder.append("]");
+      QLog.d("MultiCardFragment", 2, localStringBuilder.toString());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.2
  * JD-Core Version:    0.7.0.1
  */

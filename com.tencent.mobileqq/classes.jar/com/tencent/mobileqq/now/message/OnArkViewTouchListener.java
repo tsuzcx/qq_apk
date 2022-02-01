@@ -26,33 +26,40 @@ public class OnArkViewTouchListener
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      if (i != 1)
+      {
+        if (i == 2)
+        {
+          this.c += Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float);
+          this.d += Math.abs(paramMotionEvent.getY() - this.b);
+          this.jdField_a_of_type_Float = paramMotionEvent.getX();
+          this.b = paramMotionEvent.getY();
+        }
+      }
+      else if (((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 200L) || ((this.c <= 20.0F) && (this.d <= 20.0F))) && (onClick(paramView))) {
+        return true;
+      }
     }
-    while ((paramView instanceof ArkAppView))
+    else
     {
-      return ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
       this.b = paramMotionEvent.getY();
       this.c = 0.0F;
       this.d = 0.0F;
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      continue;
-      this.c += Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float);
-      this.d += Math.abs(paramMotionEvent.getY() - this.b);
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
-      continue;
-      if (((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 200L) || ((this.c <= 20.0F) && (this.d <= 20.0F))) && (onClick(paramView))) {
-        return true;
-      }
+    }
+    if ((paramView instanceof ArkAppView)) {
+      return ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.OnArkViewTouchListener
  * JD-Core Version:    0.7.0.1
  */

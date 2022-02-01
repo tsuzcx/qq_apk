@@ -29,7 +29,7 @@ public final class LaunchEngineUISteps
     super(paramContext, null);
   }
   
-  public void execute()
+  protected void execute()
   {
     this.steps.start();
   }
@@ -41,7 +41,7 @@ public final class LaunchEngineUISteps
   }
   
   @NotNull
-  public List<TaskExecutionStatics> getSubTaskExecutionStatics()
+  protected List<TaskExecutionStatics> getSubTaskExecutionStatics()
   {
     return this.steps.getStepExecutionStatics();
   }
@@ -65,15 +65,35 @@ public final class LaunchEngineUISteps
     Intrinsics.checkParameterIsNotNull(paramGameLaunchStatistic, "statics");
     long l1 = SystemClock.uptimeMillis() - this.launchGameBeginTime;
     long l2 = l1 - paramGameLaunchStatistic.getLaunchTimesMs();
-    Object localObject = (LaunchEngineUISteps.InitEngine)this.steps.getCurrentStepOrNull();
+    BaseTask localBaseTask = this.steps.getCurrentStepOrNull();
+    Object localObject = localBaseTask;
+    if (!(localBaseTask instanceof LaunchEngineUISteps.InitEngine)) {
+      localObject = null;
+    }
+    localObject = (LaunchEngineUISteps.InitEngine)localObject;
     if (localObject != null) {
       ((LaunchEngineUISteps.InitEngine)localObject).onTaskSucceed(paramGameLaunchStatistic.getEngineInitStatistic(), l2);
     }
-    localObject = (LaunchEngineUISteps.LaunchGame)this.steps.getCurrentStepOrNull();
+    localBaseTask = this.steps.getCurrentStepOrNull();
+    localObject = localBaseTask;
+    if (!(localBaseTask instanceof LaunchEngineUISteps.LaunchGame)) {
+      localObject = null;
+    }
+    localObject = (LaunchEngineUISteps.LaunchGame)localObject;
     if (localObject != null) {
       ((LaunchEngineUISteps.LaunchGame)localObject).onTaskSucceed(paramGameLaunchStatistic.getLaunchTimesMs(), paramGameLaunchStatistic.getGameScriptLoadStatics());
     }
-    QMLog.i("LaunchEngineUISteps", StringsKt.trimIndent("onGameLaunched launchGameEnd \n                        totalTimeSpendInLaunch: " + l1 + " \n                        effectivelyInitEngineTime: " + l2 + " \n                        engineInitTime: " + paramGameLaunchStatistic.getEngineInitStatistic().getTotalInitTimesMs() + " \n                        launchTime: " + paramGameLaunchStatistic.getLaunchTimesMs() + "\n                    "));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onGameLaunched launchGameEnd \n                        totalTimeSpendInLaunch: ");
+    ((StringBuilder)localObject).append(l1);
+    ((StringBuilder)localObject).append(" \n                        effectivelyInitEngineTime: ");
+    ((StringBuilder)localObject).append(l2);
+    ((StringBuilder)localObject).append(" \n                        engineInitTime: ");
+    ((StringBuilder)localObject).append(paramGameLaunchStatistic.getEngineInitStatistic().getTotalInitTimesMs());
+    ((StringBuilder)localObject).append(" \n                        launchTime: ");
+    ((StringBuilder)localObject).append(paramGameLaunchStatistic.getLaunchTimesMs());
+    ((StringBuilder)localObject).append("\n                    ");
+    QMLog.i("LaunchEngineUISteps", StringsKt.trimIndent(((StringBuilder)localObject).toString()));
   }
   
   public final void onRuntimeInitDone()
@@ -85,7 +105,7 @@ public final class LaunchEngineUISteps
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.task.LaunchEngineUISteps
  * JD-Core Version:    0.7.0.1
  */

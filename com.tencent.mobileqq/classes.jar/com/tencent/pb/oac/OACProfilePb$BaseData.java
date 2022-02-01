@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class OACProfilePb$BaseData
   extends MessageMicro<BaseData>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 56, 64, 72, 80, 240, 248, 256 }, new String[] { "puin", "name", "display_number", "summary", "unified_account_descrpition", "is_recv_msg", "is_recv_push", "account_type", "follow_type", "is_show_follow_button", "account_flag", "account_flag2", "account_flag3" }, new Object[] { Long.valueOf(0L), "", "", "", "", Boolean.valueOf(false), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L) }, BaseData.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field account_flag = PBField.initUInt32(0);
   public final PBUInt64Field account_flag2 = PBField.initUInt64(0L);
   public final PBUInt64Field account_flag3 = PBField.initUInt64(0L);
@@ -25,10 +25,18 @@ public final class OACProfilePb$BaseData
   public final PBUInt64Field puin = PBField.initUInt64(0L);
   public final PBStringField summary = PBField.initString("");
   public final PBStringField unified_account_descrpition = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Boolean localBoolean = Boolean.valueOf(false);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 56, 64, 72, 80, 240, 248, 256 }, new String[] { "puin", "name", "display_number", "summary", "unified_account_descrpition", "is_recv_msg", "is_recv_push", "account_type", "follow_type", "is_show_follow_button", "account_flag", "account_flag2", "account_flag3" }, new Object[] { localLong, "", "", "", "", localBoolean, localBoolean, localInteger, localInteger, localBoolean, localInteger, localLong, localLong }, BaseData.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.oac.OACProfilePb.BaseData
  * JD-Core Version:    0.7.0.1
  */

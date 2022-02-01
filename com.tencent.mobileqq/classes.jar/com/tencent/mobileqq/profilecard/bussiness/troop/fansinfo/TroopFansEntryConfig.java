@@ -17,21 +17,21 @@ public class TroopFansEntryConfig
   
   public static TroopFansEntryConfig parse(QConfItem[] paramArrayOfQConfItem)
   {
-    int i = 0;
     TroopFansEntryConfig localTroopFansEntryConfig = new TroopFansEntryConfig();
-    if (i < paramArrayOfQConfItem.length)
+    int i = 0;
+    while (i < paramArrayOfQConfItem.length)
     {
       Object localObject = paramArrayOfQConfItem[i].a;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
         try
         {
           localObject = new JSONObject((String)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.i("TroopFansEntryConfig", 2, "jsonObj:" + ((JSONObject)localObject).toString());
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("jsonObj:");
+            localStringBuilder.append(((JSONObject)localObject).toString());
+            QLog.i("TroopFansEntryConfig", 2, localStringBuilder.toString());
           }
           localTroopFansEntryConfig.mProfileCardEntranceSwitch = ((JSONObject)localObject).optInt("profileCardEntranceSwitch", 0);
           localTroopFansEntryConfig.mGroupEntranceSwitch = ((JSONObject)localObject).optInt("groupEntranceSwitch", 0);
@@ -42,9 +42,14 @@ public class TroopFansEntryConfig
           localJSONException.printStackTrace();
         }
       }
+      i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopFansEntryConfig", 2, "config:" + localTroopFansEntryConfig.toString());
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfQConfItem = new StringBuilder();
+      paramArrayOfQConfItem.append("config:");
+      paramArrayOfQConfItem.append(localTroopFansEntryConfig.toString());
+      QLog.i("TroopFansEntryConfig", 2, paramArrayOfQConfItem.toString());
     }
     return localTroopFansEntryConfig;
   }
@@ -67,15 +72,21 @@ public class TroopFansEntryConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mProfileCardEntranceSwitch:").append(this.mProfileCardEntranceSwitch).append("\r\n");
-    localStringBuilder.append("mGroupEntranceSwitch:").append(this.mGroupEntranceSwitch).append("\r\n");
-    localStringBuilder.append("mGuideSwitch:").append(this.mGuideSwitch).append("\r\n");
+    localStringBuilder.append("mProfileCardEntranceSwitch:");
+    localStringBuilder.append(this.mProfileCardEntranceSwitch);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mGroupEntranceSwitch:");
+    localStringBuilder.append(this.mGroupEntranceSwitch);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mGuideSwitch:");
+    localStringBuilder.append(this.mGuideSwitch);
+    localStringBuilder.append("\r\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.TroopFansEntryConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,7 @@ class RegisterProxy$ReconnectHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 100) {
       return;
     }
     RegisterProxy.a(this.a, false);
@@ -24,7 +22,7 @@ class RegisterProxy$ReconnectHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.RegisterProxy.ReconnectHandler
  * JD-Core Version:    0.7.0.1
  */

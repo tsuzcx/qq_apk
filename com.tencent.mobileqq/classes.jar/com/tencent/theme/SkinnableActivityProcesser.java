@@ -46,24 +46,22 @@ public class SkinnableActivityProcesser
       localObject = paramDrawable.getChildren();
       int j = paramDrawable.getChildCount();
       int i = 0;
-      bool2 = false;
-      if (i < j)
+      boolean bool1;
+      for (bool2 = false; i < j; bool2 = bool1)
       {
         Drawable localDrawable = localObject[i];
-        boolean bool1;
-        if ((localDrawable instanceof SkinnableNinePatchDrawable)) {
+        if ((localDrawable instanceof SkinnableNinePatchDrawable))
+        {
           bool1 = true;
         }
-        for (;;)
+        else
         {
-          i += 1;
-          bool2 = bool1;
-          break;
           bool1 = bool2;
           if ((localDrawable instanceof DrawableContainer)) {
             bool1 = bool2 | a(localDrawable);
           }
         }
+        i += 1;
       }
     }
     try
@@ -72,28 +70,25 @@ public class SkinnableActivityProcesser
       ((Field)localObject).setAccessible(true);
       ((Field)localObject).setBoolean(paramDrawable, false);
       label111:
-      if (bool2) {
-        try
-        {
-          localObject = DrawableContainer.DrawableContainerState.class.getDeclaredField("mPaddingChecked");
-          ((Field)localObject).setAccessible(true);
-          ((Field)localObject).setBoolean(paramDrawable, false);
-          localObject = DrawableContainer.DrawableContainerState.class.getDeclaredField("mConstantPadding");
-          ((Field)localObject).setAccessible(true);
-          ((Field)localObject).set(paramDrawable, null);
-          return true;
-        }
-        catch (Exception paramDrawable)
-        {
-          return true;
-        }
+      if (bool2) {}
+      try
+      {
+        localObject = DrawableContainer.DrawableContainerState.class.getDeclaredField("mPaddingChecked");
+        ((Field)localObject).setAccessible(true);
+        ((Field)localObject).setBoolean(paramDrawable, false);
+        localObject = DrawableContainer.DrawableContainerState.class.getDeclaredField("mConstantPadding");
+        ((Field)localObject).setAccessible(true);
+        ((Field)localObject).set(paramDrawable, null);
+        return true;
       }
+      catch (Exception paramDrawable) {}
       return false;
     }
     catch (Exception localException)
     {
       break label111;
     }
+    return true;
   }
   
   public void destory()
@@ -108,83 +103,83 @@ public class SkinnableActivityProcesser
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    j = 0;
-    if (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {}
-    View[] arrayOfView;
-    for (;;)
-    {
+    if (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
       return;
-      h.a("SkinEngine", 1, "SkinnableActivityProcesser on pre theme changed");
-      if (this.b != null) {
-        this.b.onPreThemeChanged();
-      }
-      try
-      {
-        paramContext = this.a.getWindow().getDecorView();
-        if (paramContext != null)
-        {
-          if (paramIntent.getBooleanExtra("isFont", false))
-          {
-            TextHook.getInstance().checkTypeface(paramContext.getContext());
-            TextHook.getInstance();
-            TextHook.updateFont(paramContext);
-          }
-          paramIntent = (ViewGroup)paramContext;
-          arrayOfView = new View[paramIntent.getChildCount()];
-          i = 0;
-          while (i < paramIntent.getChildCount())
-          {
-            arrayOfView[i] = paramIntent.getChildAt(i);
-            i += 1;
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          paramContext = null;
-        }
-      }
+    }
+    h.a("SkinEngine", 1, "SkinnableActivityProcesser on pre theme changed");
+    paramContext = this.b;
+    if (paramContext != null) {
+      paramContext.onPreThemeChanged();
     }
     try
     {
-      paramIntent.removeAllViews();
-      i = j;
+      paramContext = this.a.getWindow().getDecorView();
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
+    catch (Exception localIllegalArgumentException)
     {
       try
       {
-        for (;;)
-        {
-          View localView;
-          paramIntent.addView(localView);
-          i += 1;
-        }
-        SkinEngine.invalidateAll(paramContext);
-        if (this.b == null) {
-          break label185;
-        }
-        this.b.onPostThemeChanged();
-        h.a("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
-        return;
-        localIllegalArgumentException = localIllegalArgumentException;
+        View[] arrayOfView;
+        paramIntent.removeAllViews();
         i = j;
+        if (i >= arrayOfView.length) {
+          break label164;
+        }
+        localView = arrayOfView[i];
       }
-      catch (Exception localException)
+      catch (IllegalArgumentException localIllegalArgumentException)
       {
-        break label158;
+        try
+        {
+          int j;
+          for (;;)
+          {
+            View localView;
+            paramIntent.addView(localView);
+            i += 1;
+            continue;
+            SkinEngine.invalidateAll(paramContext);
+            paramContext = this.b;
+            if (paramContext != null) {
+              paramContext.onPostThemeChanged();
+            }
+            h.a("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
+            return;
+            paramContext = paramContext;
+          }
+          localIllegalArgumentException = localIllegalArgumentException;
+          int i = j;
+        }
+        catch (Exception localException)
+        {
+          break label157;
+        }
       }
     }
-    if (i < arrayOfView.length) {
-      localView = arrayOfView[i];
+    paramContext = null;
+    if (paramContext == null) {
+      return;
+    }
+    j = 0;
+    if (paramIntent.getBooleanExtra("isFont", false))
+    {
+      TextHook.getInstance().checkTypeface(paramContext.getContext());
+      TextHook.getInstance();
+      TextHook.updateFont(paramContext);
+    }
+    paramIntent = (ViewGroup)paramContext;
+    arrayOfView = new View[paramIntent.getChildCount()];
+    i = 0;
+    while (i < paramIntent.getChildCount())
+    {
+      arrayOfView[i] = paramIntent.getChildAt(i);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.theme.SkinnableActivityProcesser
  * JD-Core Version:    0.7.0.1
  */

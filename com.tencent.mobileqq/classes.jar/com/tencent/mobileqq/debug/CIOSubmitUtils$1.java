@@ -8,7 +8,10 @@ final class CIOSubmitUtils$1
 {
   public void run()
   {
-    Object localObject = Environment.getExternalStorageDirectory() + "/cio_mobile_qq";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory());
+    ((StringBuilder)localObject).append("/cio_mobile_qq");
+    localObject = ((StringBuilder)localObject).toString();
     CIOSubmitUtils.a((String)localObject);
     CIOSubmitUtils.a((String)localObject, this.a, this.b, this.c, this.d);
     localObject = CIOSubmitUtils.a((String)localObject, "com.tencent.mobileqq");
@@ -18,7 +21,7 @@ final class CIOSubmitUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.debug.CIOSubmitUtils.1
  * JD-Core Version:    0.7.0.1
  */

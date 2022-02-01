@@ -19,12 +19,13 @@ class FileJsPlugin$3
   
   private void reportUploadResult(long paramLong, int paramInt)
   {
-    if (FileJsPlugin.access$600(this.this$0)) {}
-    for (String str = "1";; str = "0")
-    {
-      MiniReportManager.reportEventType(FileJsPlugin.access$700(this.this$0), 641, null, null, null, paramInt, str, paramLong, null);
-      return;
+    String str;
+    if (FileJsPlugin.access$600(this.this$0)) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    MiniReportManager.reportEventType(FileJsPlugin.access$700(this.this$0), 641, null, null, null, paramInt, str, paramLong, null);
   }
   
   public void onUploadFailed(int paramInt, String paramString)
@@ -35,17 +36,13 @@ class FileJsPlugin$3
       paramString.put("uploadTaskId", this.val$uploadTaskId);
       paramString.put("state", "fail");
       MiniappHttpUtil.fillErrMsg("uploadFile", paramString, paramInt);
-      reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
-      this.val$req.jsService.evaluateSubscribeJS("onUploadTaskStateChange", paramString.toString(), 0);
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
+    this.val$req.jsService.evaluateSubscribeJS("onUploadTaskStateChange", paramString.toString(), 0);
   }
   
   public void onUploadHeadersReceived(int paramInt, Map<String, List<String>> paramMap)
@@ -63,8 +60,10 @@ class FileJsPlugin$3
     }
     catch (Exception paramMap)
     {
-      QMLog.e("FileJsPlugin", "httpUpload--headersReceived fail---");
+      label73:
+      break label73;
     }
+    QMLog.e("FileJsPlugin", "httpUpload--headersReceived fail---");
   }
   
   public void onUploadProgress(float paramFloat, long paramLong1, long paramLong2)
@@ -99,42 +98,39 @@ class FileJsPlugin$3
   
   public void onUploadSucceed(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        paramMap = new JSONObject();
-        paramMap.put("uploadTaskId", this.val$uploadTaskId);
-        paramMap.put("progress", 100);
-        paramMap.put("totalBytesSent", this.val$uploadFile.length());
-        paramMap.put("totalBytesExpectedToSend", this.val$uploadFile.length());
-        paramMap.put("state", "progressUpdate");
-        this.val$req.jsService.evaluateSubscribeJS("onUploadTaskStateChange", paramMap.toString(), 0);
-        if (paramArrayOfByte != null) {
-          continue;
-        }
+      paramMap = new JSONObject();
+      paramMap.put("uploadTaskId", this.val$uploadTaskId);
+      paramMap.put("progress", 100);
+      paramMap.put("totalBytesSent", this.val$uploadFile.length());
+      paramMap.put("totalBytesExpectedToSend", this.val$uploadFile.length());
+      paramMap.put("state", "progressUpdate");
+      this.val$req.jsService.evaluateSubscribeJS("onUploadTaskStateChange", paramMap.toString(), 0);
+      if (paramArrayOfByte == null) {
         paramArrayOfByte = "";
-        paramMap = new JSONObject();
-        paramMap.put("data", paramArrayOfByte);
-        paramMap.put("uploadTaskId", this.val$uploadTaskId);
-        paramMap.put("statusCode", paramInt);
-        paramMap.put("state", "success");
-        this.val$req.jsService.evaluateSubscribeJS("onUploadTaskStateChange", paramMap.toString(), 0);
+      } else {
+        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
       }
-      catch (Exception paramArrayOfByte)
-      {
-        QMLog.e("FileJsPlugin", "httpUpload--onUploadSucceed fail---");
-        continue;
-      }
-      reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
-      return;
-      paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
+      paramMap = new JSONObject();
+      paramMap.put("data", paramArrayOfByte);
+      paramMap.put("uploadTaskId", this.val$uploadTaskId);
+      paramMap.put("statusCode", paramInt);
+      paramMap.put("state", "success");
+      this.val$req.jsService.evaluateSubscribeJS("onUploadTaskStateChange", paramMap.toString(), 0);
     }
+    catch (Exception paramArrayOfByte)
+    {
+      label171:
+      break label171;
+    }
+    QMLog.e("FileJsPlugin", "httpUpload--onUploadSucceed fail---");
+    reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

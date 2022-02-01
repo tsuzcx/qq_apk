@@ -19,23 +19,23 @@ public class GetStoryFeedIdListRequest$GetStoryFeedIdListResponse
   public GetStoryFeedIdListRequest$GetStoryFeedIdListResponse(qqstory_service.RspStoryFeedIdList paramRspStoryFeedIdList)
   {
     super(paramRspStoryFeedIdList.result, paramRspStoryFeedIdList.is_end, paramRspStoryFeedIdList.next_cookie);
-    if (paramRspStoryFeedIdList.is_today_end.get() == 1) {}
-    for (;;)
-    {
-      this.b = bool;
-      paramRspStoryFeedIdList = paramRspStoryFeedIdList.feed_seq_info_list.get().iterator();
-      while (paramRspStoryFeedIdList.hasNext())
-      {
-        FeedIdListSeqInfo localFeedIdListSeqInfo = new FeedIdListSeqInfo((qqstory_struct.FeedSeqInfo)paramRspStoryFeedIdList.next());
-        this.a.add(localFeedIdListSeqInfo);
-      }
+    int i = paramRspStoryFeedIdList.is_today_end.get();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
+    }
+    this.b = bool;
+    paramRspStoryFeedIdList = paramRspStoryFeedIdList.feed_seq_info_list.get().iterator();
+    while (paramRspStoryFeedIdList.hasNext())
+    {
+      FeedIdListSeqInfo localFeedIdListSeqInfo = new FeedIdListSeqInfo((qqstory_struct.FeedSeqInfo)paramRspStoryFeedIdList.next());
+      this.a.add(localFeedIdListSeqInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetStoryFeedIdListRequest.GetStoryFeedIdListResponse
  * JD-Core Version:    0.7.0.1
  */

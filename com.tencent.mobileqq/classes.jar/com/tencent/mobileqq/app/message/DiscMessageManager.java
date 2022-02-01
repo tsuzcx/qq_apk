@@ -1,46 +1,48 @@
 package com.tencent.mobileqq.app.message;
 
 import android.content.res.Resources;
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.BaseMessageManager.AddMessageContext;
 import com.tencent.imcore.message.BaseMessageManagerForTroopAndDisc;
-import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.MsgPool;
 import com.tencent.imcore.message.MsgProxyUtils;
-import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.UinTypeUtil;
 import com.tencent.mobileqq.activity.recent.msg.RecentUserAppearLogic;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
 import com.tencent.mobileqq.model.TroopInfoManager;
+import com.tencent.mobileqq.msg.api.IConversationFacade;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.proxy.api.IRecentUserProxyService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils.ProcessTDFileScheduler;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtilsTemp;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateUpdateMsgInfoUtil;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class DiscMessageManager
   extends BaseMessageManagerForTroopAndDisc
 {
-  public DiscMessageManager(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, MsgPool paramMsgPool)
+  public DiscMessageManager(AppRuntime paramAppRuntime, MsgPool paramMsgPool)
   {
-    super(paramQQAppInterface, paramQQMessageFacade, paramMsgPool);
+    super(paramAppRuntime, paramMsgPool);
   }
   
   public String a(String paramString1, String paramString2)
   {
-    if (this.a.getCurrentAccountUin().equals(paramString1)) {
-      return this.a.getApp().getResources().getString(2131693939);
+    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin().equals(paramString1)) {
+      return this.jdField_a_of_type_MqqAppAppRuntime.getApp().getResources().getString(2131693894);
     }
-    return ContactUtils.c(this.a, paramString2, paramString1);
+    return ContactUtils.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, paramString2, paramString1);
   }
   
   public void a(MessageRecord paramMessageRecord, EntityManager paramEntityManager, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, BaseMessageManager.AddMessageContext paramAddMessageContext)
@@ -48,8 +50,12 @@ public class DiscMessageManager
     if (paramMessageRecord == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, "addMessageRecord:" + paramMessageRecord);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addMessageRecord:");
+      ((StringBuilder)localObject).append(paramMessageRecord);
+      QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, ((StringBuilder)localObject).toString());
     }
     Map localMap = paramAddMessageContext.jdField_a_of_type_JavaUtilMap;
     Object localObject = paramAddMessageContext.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
@@ -63,140 +69,174 @@ public class DiscMessageManager
     int k = paramMessageRecord.istroop;
     long l = paramMessageRecord.time;
     RecentUser localRecentUser = ((RecentUserProxy)localObject).a(str1, paramMessageRecord.istroop);
-    localObject = null;
-    TroopInfoManager localTroopInfoManager = paramAddMessageContext.jdField_a_of_type_ComTencentMobileqqModelTroopInfoManager;
-    String str2;
-    MessageInfo localMessageInfo;
+    TroopInfoManager localTroopInfoManager = (TroopInfoManager)paramAddMessageContext.jdField_a_of_type_MqqManagerManager;
+    StringBuilder localStringBuilder = null;
     if (localTroopInfoManager != null)
     {
-      str2 = str1 + "&" + 3000;
-      localMessageInfo = localTroopInfoManager.a(str2);
-      if (localMessageInfo == null) {
-        break label642;
-      }
-      if (localMessageInfo.b() == paramMessageRecord.shmsgseq) {
-        break label585;
-      }
-      localMessageInfo = null;
-      localObject = localMessageInfo;
-      if (QLog.isColorLevel())
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append("&");
+      ((StringBuilder)localObject).append(3000);
+      String str2 = ((StringBuilder)localObject).toString();
+      localObject = localTroopInfoManager.a(str2);
+      if (localObject != null)
       {
-        QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, "addMessageRecord:not the same msg:" + str2);
-        localObject = localMessageInfo;
+        if (((MessageInfo)localObject).b() != paramMessageRecord.shmsgseq)
+        {
+          localObject = localStringBuilder;
+          if (!QLog.isColorLevel()) {
+            break label384;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("addMessageRecord:not the same msg:");
+          ((StringBuilder)localObject).append(str2);
+          QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, ((StringBuilder)localObject).toString());
+          localObject = localStringBuilder;
+          break label384;
+        }
+        if (paramMessageRecord.isread)
+        {
+          localTroopInfoManager.b(str2);
+          localObject = localStringBuilder;
+          if (!QLog.isColorLevel()) {
+            break label384;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("addMessageRecord:readed msg been removed:");
+          ((StringBuilder)localObject).append(str2);
+          QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, ((StringBuilder)localObject).toString());
+          localObject = localStringBuilder;
+          break label384;
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addMessageRecord:msgInfo == null ");
+        localStringBuilder.append(str2);
+        QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, localStringBuilder.toString());
       }
     }
-    int i;
+    else
+    {
+      localObject = localStringBuilder;
+    }
+    label384:
     if ((localObject != null) && (((MessageInfo)localObject).a()))
     {
       i = ((MessageInfo)localObject).b();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, "addMessageRecord, bizType" + i + "|ru.msgType:" + localRecentUser.msgType);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addMessageRecord, bizType");
+        localStringBuilder.append(i);
+        localStringBuilder.append("|ru.msgType:");
+        localStringBuilder.append(localRecentUser.msgType);
+        QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, localStringBuilder.toString());
       }
       if (MessageInfo.a(i, localRecentUser.msgType))
       {
         localRecentUser.msgType = i;
-        localRecentUser.msg = TroopAioMsgNavigateUpdateMsgInfoUtil.a(this.a, str1, (MessageInfo)localObject, localRecentUser.msg, paramMessageRecord, false);
+        localRecentUser.msg = TroopAioMsgNavigateUpdateMsgInfoUtil.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, str1, (MessageInfo)localObject, localRecentUser.msg, paramMessageRecord, false);
         localMap.put(UinTypeUtil.a(str1, k), localRecentUser);
       }
     }
-    if (localMap.containsKey(UinTypeUtil.a(localRecentUser.uin, localRecentUser.getType()))) {}
-    for (localObject = (RecentUser)localMap.get(UinTypeUtil.a(localRecentUser.uin, localRecentUser.getType()));; localObject = localRecentUser)
+    localObject = localRecentUser;
+    if (localMap.containsKey(UinTypeUtil.a(localRecentUser.uin, localRecentUser.getType()))) {
+      localObject = (RecentUser)localMap.get(UinTypeUtil.a(localRecentUser.uin, localRecentUser.getType()));
+    }
+    boolean bool2 = MsgProxyUtils.b(paramMessageRecord.msgtype);
+    boolean bool1 = true;
+    int j = bool2 ^ true;
+    int i = j;
+    if (paramMessageRecord.isLongMsg())
     {
-      if (!MsgProxyUtils.b(paramMessageRecord.msgtype)) {}
-      for (i = 1;; i = 0)
+      i = j;
+      if (((MessageCache)this.jdField_a_of_type_MqqAppAppRuntime.getMsgCache()).a(paramMessageRecord))
       {
-        int j = i;
-        if (paramMessageRecord.isLongMsg())
+        j = 0;
+        i = j;
+        if (QLog.isColorLevel())
         {
-          j = i;
-          if (this.a.getMsgCache().a(paramMessageRecord))
-          {
-            i = 0;
-            j = i;
-            if (QLog.isColorLevel())
-            {
-              QLog.i("Q.msg.BaseMessageManager", 2, "addMessageRecord, long msg uncompleted");
-              j = i;
-            }
-          }
+          QLog.i("Q.msg.BaseMessageManager", 2, "addMessageRecord, long msg uncompleted");
+          i = j;
         }
-        if (j != 0)
-        {
-          ((RecentUser)localObject).uin = str1;
-          ((RecentUser)localObject).setType(k);
-          boolean bool = true;
-          if ((paramMessageRecord instanceof MessageForUniteGrayTip)) {
-            bool = ((MessageForUniteGrayTip)paramMessageRecord).tipParam.d;
-          }
-          if ((l > ((RecentUser)localObject).lastmsgtime) && (bool))
-          {
-            ((RecentUser)localObject).lastmsgtime = l;
-            localMap.put(UinTypeUtil.a(str1, k), localObject);
-          }
-        }
-        super.a(paramMessageRecord, paramEntityManager, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramAddMessageContext);
-        paramEntityManager = TeamWorkUtils.ProcessTDFileScheduler.a(this.a);
-        paramEntityManager.a(paramMessageRecord);
-        paramEntityManager.a();
-        return;
-        label585:
-        localObject = localMessageInfo;
-        if (!paramMessageRecord.isread) {
-          break;
-        }
-        localTroopInfoManager.b(str2);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, "addMessageRecord:readed msg been removed:" + str2);
-        }
-        localObject = null;
-        break;
-        label642:
-        localObject = localMessageInfo;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, "addMessageRecord:msgInfo == null " + str2);
-        localObject = localMessageInfo;
-        break;
       }
     }
+    if (i != 0)
+    {
+      ((RecentUser)localObject).uin = str1;
+      ((RecentUser)localObject).setType(k);
+      if ((paramMessageRecord instanceof MessageForUniteGrayTip)) {
+        bool1 = ((MessageForUniteGrayTip)paramMessageRecord).tipParam.d;
+      }
+      if ((l > ((RecentUser)localObject).lastmsgtime) && (bool1))
+      {
+        ((RecentUser)localObject).lastmsgtime = l;
+        localMap.put(UinTypeUtil.a(str1, k), localObject);
+      }
+    }
+    super.a(paramMessageRecord, paramEntityManager, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramAddMessageContext);
+    ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).tryAddTDFileMessageRecord((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime, paramMessageRecord);
   }
   
-  public void a(String paramString, int paramInt, long paramLong)
+  protected void a(String paramString, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, "afterCleanUnRead:" + paramString + "-" + paramInt + "-" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("afterCleanUnRead:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("-");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("-");
+      localStringBuilder.append(paramLong);
+      QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, localStringBuilder.toString());
     }
     super.a(paramString, paramInt, paramLong);
     c(paramString, paramInt, paramLong);
   }
   
-  public String b(String paramString1, String paramString2)
+  protected String b(String paramString1, String paramString2)
   {
     return a(paramString1, paramString2);
   }
   
   public void b(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, "afterCleanUnRead:" + paramString + "-" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("afterCleanUnRead:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("-");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, ((StringBuilder)localObject).toString());
     }
     super.b(paramString, paramInt);
-    ProxyManager localProxyManager = this.a.getProxyManager();
-    paramString = localProxyManager.a().a(paramString, paramInt);
-    if (RecentUserAppearLogic.a(this.a, paramString.msgType))
+    Object localObject = ((IRecentUserProxyService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
+    paramString = ((RecentUserProxy)localObject).a(paramString, paramInt);
+    if (RecentUserAppearLogic.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, paramString.msgType))
     {
       paramString.cleanMsgAndMsgData(paramString.msgType);
-      localProxyManager.a().b(paramString);
+      ((RecentUserProxy)localObject).b(paramString);
     }
   }
   
   public void b(String paramString, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, "afterCleanUnRead:" + paramString + "-" + paramInt + "-" + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("afterCleanUnRead:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("-");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("-");
+      localStringBuilder.append(paramLong);
+      QLog.d("Q.msg.BaseMessageManager_At_Me_DISC", 2, localStringBuilder.toString());
     }
-    if (this.a.getConversationFacade().a(paramString, paramInt) > 0) {
+    if (this.jdField_a_of_type_ComTencentMobileqqMsgApiIConversationFacade.getUnreadCount(paramString, paramInt) > 0) {
       c(paramString, paramInt, paramLong);
     }
     super.b(paramString, paramInt, paramLong);
@@ -204,7 +244,7 @@ public class DiscMessageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.DiscMessageManager
  * JD-Core Version:    0.7.0.1
  */

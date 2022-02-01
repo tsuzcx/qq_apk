@@ -18,14 +18,17 @@ public class UploadStatusVideoInfoWidget$StoryVideoPublishStatusReceiver
   
   public void a(@NonNull UploadStatusVideoInfoWidget paramUploadStatusVideoInfoWidget, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if ((paramUploadStatusVideoInfoWidget.a == null) || (paramStoryVideoPublishStatusEvent.a == null) || (!TextUtils.equals(paramUploadStatusVideoInfoWidget.a.a, paramStoryVideoPublishStatusEvent.a.mVid))) {}
-    do
+    if ((paramUploadStatusVideoInfoWidget.a != null) && (paramStoryVideoPublishStatusEvent.a != null))
     {
-      return;
+      if (!TextUtils.equals(paramUploadStatusVideoInfoWidget.a.a, paramStoryVideoPublishStatusEvent.a.mVid)) {
+        return;
+      }
       paramUploadStatusVideoInfoWidget.i();
       paramUploadStatusVideoInfoWidget = (VideoCoverListGroupHolder)paramUploadStatusVideoInfoWidget.a(VideoCoverListGroupHolder.class);
-    } while (paramUploadStatusVideoInfoWidget == null);
-    paramUploadStatusVideoInfoWidget.d();
+      if (paramUploadStatusVideoInfoWidget != null) {
+        paramUploadStatusVideoInfoWidget.d();
+      }
+    }
   }
   
   public Class acceptEventClass()
@@ -35,7 +38,7 @@ public class UploadStatusVideoInfoWidget$StoryVideoPublishStatusReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.UploadStatusVideoInfoWidget.StoryVideoPublishStatusReceiver
  * JD-Core Version:    0.7.0.1
  */

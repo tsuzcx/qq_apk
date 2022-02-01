@@ -40,33 +40,38 @@ public final class ComplexColorCompat
     {
       paramInt = localXmlResourceParser.next();
     } while ((paramInt != 2) && (paramInt != 1));
-    if (paramInt != 2) {
-      throw new XmlPullParserException("No start tag found");
-    }
-    String str = localXmlResourceParser.getName();
-    paramInt = -1;
-    switch (str.hashCode())
+    if (paramInt == 2)
     {
+      String str = localXmlResourceParser.getName();
+      paramInt = -1;
+      int i = str.hashCode();
+      if (i != 89650992)
+      {
+        if ((i == 1191572447) && (str.equals("selector"))) {
+          paramInt = 0;
+        }
+      }
+      else if (str.equals("gradient")) {
+        paramInt = 1;
+      }
+      if (paramInt != 0)
+      {
+        if (paramInt == 1) {
+          return from(GradientColorInflaterCompat.createFromXmlInner(paramResources, localXmlResourceParser, localAttributeSet, paramTheme));
+        }
+        paramResources = new StringBuilder();
+        paramResources.append(localXmlResourceParser.getPositionDescription());
+        paramResources.append(": unsupported complex color tag ");
+        paramResources.append(str);
+        throw new XmlPullParserException(paramResources.toString());
+      }
+      return from(ColorStateListInflaterCompat.createFromXmlInner(paramResources, localXmlResourceParser, localAttributeSet, paramTheme));
     }
+    paramResources = new XmlPullParserException("No start tag found");
     for (;;)
     {
-      switch (paramInt)
-      {
-      default: 
-        throw new XmlPullParserException(localXmlResourceParser.getPositionDescription() + ": unsupported complex color tag " + str);
-        if (str.equals("selector"))
-        {
-          paramInt = 0;
-          continue;
-          if (str.equals("gradient")) {
-            paramInt = 1;
-          }
-        }
-        break;
-      }
+      throw paramResources;
     }
-    return from(ColorStateListInflaterCompat.createFromXmlInner(paramResources, localXmlResourceParser, localAttributeSet, paramTheme));
-    return from(GradientColorInflaterCompat.createFromXmlInner(paramResources, localXmlResourceParser, localAttributeSet, paramTheme));
   }
   
   static ComplexColorCompat from(@ColorInt int paramInt)
@@ -118,24 +123,29 @@ public final class ComplexColorCompat
   
   public boolean isStateful()
   {
-    return (this.mShader == null) && (this.mColorStateList != null) && (this.mColorStateList.isStateful());
+    if (this.mShader == null)
+    {
+      ColorStateList localColorStateList = this.mColorStateList;
+      if ((localColorStateList != null) && (localColorStateList.isStateful())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean onStateChanged(int[] paramArrayOfInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (isStateful())
     {
-      int i = this.mColorStateList.getColorForState(paramArrayOfInt, this.mColorStateList.getDefaultColor());
-      bool1 = bool2;
+      ColorStateList localColorStateList = this.mColorStateList;
+      int i = localColorStateList.getColorForState(paramArrayOfInt, localColorStateList.getDefaultColor());
       if (i != this.mColor)
       {
-        bool1 = true;
         this.mColor = i;
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public void setColor(@ColorInt int paramInt)
@@ -150,7 +160,7 @@ public final class ComplexColorCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.content.res.ComplexColorCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 
@@ -55,10 +53,11 @@ public class BlockAdManager
   
   public int gameDpTopx(float paramFloat)
   {
-    if (this.mGameDensity > 0.0F) {
-      return Math.round(this.mGameDensity * paramFloat);
+    float f = this.mGameDensity;
+    if (f > 0.0F) {
+      return Math.round(paramFloat * f);
     }
-    return Math.round(getDensity() * paramFloat);
+    return Math.round(paramFloat * getDensity());
   }
   
   public BlockAdView genarateBlockAdView(Context paramContext, BlockAdInfo paramBlockAdInfo)
@@ -66,14 +65,16 @@ public class BlockAdManager
     if (paramBlockAdInfo == null) {
       return null;
     }
-    if (paramBlockAdInfo.getOri() == 90) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramContext = new BlockAdView(paramContext, bool);
-      paramContext.setData(paramBlockAdInfo);
-      this.blockAdViewMap.put(Integer.valueOf(paramBlockAdInfo.getCompId()), paramContext);
-      return paramContext;
+    boolean bool;
+    if (paramBlockAdInfo.getOri() == 90) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramContext = new BlockAdView(paramContext, bool);
+    paramContext.setData(paramBlockAdInfo);
+    this.blockAdViewMap.put(Integer.valueOf(paramBlockAdInfo.getCompId()), paramContext);
+    return paramContext;
   }
   
   public BlockAdInfo getBlockAdInfo(int paramInt)
@@ -83,10 +84,11 @@ public class BlockAdManager
   
   public BlockAdView getBlockAdView(int paramInt)
   {
-    if ((this.blockAdViewMap == null) || (!this.blockAdViewMap.containsKey(Integer.valueOf(paramInt)))) {
-      return null;
+    HashMap localHashMap = this.blockAdViewMap;
+    if ((localHashMap != null) && (localHashMap.containsKey(Integer.valueOf(paramInt)))) {
+      return (BlockAdView)this.blockAdViewMap.get(Integer.valueOf(paramInt));
     }
-    return (BlockAdView)this.blockAdViewMap.get(Integer.valueOf(paramInt));
+    return null;
   }
   
   public float getDensity()
@@ -132,8 +134,10 @@ public class BlockAdManager
   
   public void initActivitySize(Activity paramActivity)
   {
-    if (paramActivity == null) {}
-    while ((this.mGameDensity > 0.0F) && (this.mGameWidth > 0) && (this.mGameHeight > 0)) {
+    if (paramActivity == null) {
+      return;
+    }
+    if ((this.mGameDensity > 0.0F) && (this.mGameWidth > 0) && (this.mGameHeight > 0)) {
       return;
     }
     DisplayMetrics localDisplayMetrics = paramActivity.getResources().getDisplayMetrics();
@@ -146,152 +150,224 @@ public class BlockAdManager
     this.mGameWidth = localDisplayMetrics.widthPixels;
     this.mGameHeight = localDisplayMetrics.heightPixels;
     int i;
-    if (paramActivity.getResources().getConfiguration().orientation == 2) {
-      if (this.mGameHeight > this.mGameWidth)
-      {
-        i = this.mGameHeight;
-        this.mGameHeight = this.mGameWidth;
-        this.mGameWidth = i;
-      }
-    }
-    for (;;)
+    int j;
+    if (paramActivity.getResources().getConfiguration().orientation == 2)
     {
-      QLog.i("BlockAdManager", 1, "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + ViewUtils.a() + ", screenW = " + this.mGameWidth + ", screenH = " + this.mGameHeight);
-      return;
-      if (this.mGameWidth > this.mGameHeight)
+      i = this.mGameHeight;
+      j = this.mGameWidth;
+      if (i > j)
       {
-        i = this.mGameHeight;
-        this.mGameHeight = this.mGameWidth;
+        this.mGameHeight = j;
         this.mGameWidth = i;
       }
     }
+    else
+    {
+      i = this.mGameWidth;
+      j = this.mGameHeight;
+      if (i > j)
+      {
+        this.mGameHeight = i;
+        this.mGameWidth = j;
+      }
+    }
+    paramActivity = new StringBuilder();
+    paramActivity.append("density = ");
+    paramActivity.append(localDisplayMetrics.density);
+    paramActivity.append(", ViewUtils.density = ");
+    paramActivity.append(ViewUtils.a());
+    paramActivity.append(", screenW = ");
+    paramActivity.append(this.mGameWidth);
+    paramActivity.append(", screenH = ");
+    paramActivity.append(this.mGameHeight);
+    QLog.i("BlockAdManager", 1, paramActivity.toString());
   }
   
+  /* Error */
   public BlockAdInfo parseBlockAdInfoFromJson(String paramString)
   {
-    int n = -1;
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        int m;
-        int k;
-        int j;
-        int i;
-        label103:
-        Object localObject1;
-        try
-        {
-          localObject2 = new JSONObject(paramString);
-          str1 = ((JSONObject)localObject2).getString("adUnitId");
-        }
-        catch (Exception localException1)
-        {
-          String str1;
-          String str2;
-          boolean bool;
-          int i1;
-          j = -1;
-          k = -1;
-          i = -1;
-          localObject2 = "";
-          m = -1;
-          QLog.i("BlockAdManager", 2, "parseBannerAdPosInfoFromJson error " + paramString, localException1);
-          localObject1 = localObject2;
-          continue;
-        }
-        try
-        {
-          m = ((JSONObject)localObject2).getJSONObject("style").getInt("left");
-        }
-        catch (Exception localException2)
-        {
-          j = -1;
-          k = -1;
-          i = -1;
-          m = -1;
-          localObject2 = localObject1;
-          localObject1 = localException2;
-          continue;
-        }
-        try
-        {
-          k = ((JSONObject)localObject2).getJSONObject("style").getInt("top");
-        }
-        catch (Exception localException3)
-        {
-          j = -1;
-          i = -1;
-          k = -1;
-          localObject2 = localObject1;
-          localObject1 = localException3;
-          continue;
-        }
-        try
-        {
-          j = ((JSONObject)localObject2).optInt("size", 1);
-        }
-        catch (Exception localException4)
-        {
-          i = -1;
-          j = -1;
-          localObject2 = localObject1;
-          localObject1 = localException4;
-          continue;
-        }
-        for (;;)
-        {
-          try
-          {
-            str2 = ((JSONObject)localObject2).optString("orientation", "landscape");
-            bool = "landscape".equals(str2);
-            if (bool) {
-              i = 90;
-            }
-          }
-          catch (Exception localException5)
-          {
-            i = -1;
-            localObject2 = localObject1;
-            localObject1 = localException5;
-            break label214;
-            break label103;
-          }
-          try
-          {
-            i1 = ((JSONObject)localObject2).getInt("compId");
-            n = i1;
-            if ((TextUtils.isEmpty(str1)) || (m < 0) || (k < 0) || (n < 0) || (i < 0)) {
-              break;
-            }
-            paramString = new BlockAdInfo(str1, m, k, j, i, n);
-            this.blockAdInfoHashMap.put(Integer.valueOf(n), paramString);
-            return paramString;
-          }
-          catch (Exception localException6)
-          {
-            localObject2 = localObject1;
-            localObject1 = localException6;
-            break label214;
-            i = -1;
-          }
-        }
-      }
-      bool = "vertical".equals(str2);
-      if (!bool) {
-        break label337;
-      }
-      i = 0;
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 274	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifeq +5 -> 9
+    //   7: aconst_null
+    //   8: areturn
+    //   9: ldc_w 276
+    //   12: astore 9
+    //   14: iconst_m1
+    //   15: istore 6
+    //   17: aload 9
+    //   19: astore 10
+    //   21: new 278	org/json/JSONObject
+    //   24: dup
+    //   25: aload_1
+    //   26: invokespecial 281	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   29: astore 11
+    //   31: aload 9
+    //   33: astore 10
+    //   35: aload 11
+    //   37: ldc_w 283
+    //   40: invokevirtual 287	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   43: astore 9
+    //   45: aload 9
+    //   47: astore 10
+    //   49: aload 11
+    //   51: ldc_w 289
+    //   54: invokevirtual 293	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   57: ldc_w 295
+    //   60: invokevirtual 299	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   63: istore_3
+    //   64: aload 11
+    //   66: ldc_w 289
+    //   69: invokevirtual 293	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   72: ldc_w 301
+    //   75: invokevirtual 299	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   78: istore 4
+    //   80: aload 11
+    //   82: ldc_w 302
+    //   85: iconst_1
+    //   86: invokevirtual 306	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   89: istore 5
+    //   91: aload 11
+    //   93: ldc_w 307
+    //   96: ldc 8
+    //   98: invokevirtual 311	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   101: astore 10
+    //   103: ldc 8
+    //   105: aload 10
+    //   107: invokevirtual 316	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   110: ifeq +9 -> 119
+    //   113: bipush 90
+    //   115: istore_2
+    //   116: goto +24 -> 140
+    //   119: ldc 11
+    //   121: aload 10
+    //   123: invokevirtual 316	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   126: istore 8
+    //   128: iload 8
+    //   130: ifeq +8 -> 138
+    //   133: iconst_0
+    //   134: istore_2
+    //   135: goto +5 -> 140
+    //   138: iconst_m1
+    //   139: istore_2
+    //   140: aload 11
+    //   142: ldc_w 318
+    //   145: invokevirtual 299	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   148: istore 7
+    //   150: iload 7
+    //   152: istore 6
+    //   154: goto +84 -> 238
+    //   157: astore 10
+    //   159: goto +41 -> 200
+    //   162: astore 10
+    //   164: goto +34 -> 198
+    //   167: astore 10
+    //   169: goto +26 -> 195
+    //   172: astore 10
+    //   174: iconst_m1
+    //   175: istore 4
+    //   177: goto +18 -> 195
+    //   180: astore 11
+    //   182: iconst_m1
+    //   183: istore 4
+    //   185: iconst_m1
+    //   186: istore_3
+    //   187: aload 10
+    //   189: astore 9
+    //   191: aload 11
+    //   193: astore 10
+    //   195: iconst_m1
+    //   196: istore 5
+    //   198: iconst_m1
+    //   199: istore_2
+    //   200: new 236	java/lang/StringBuilder
+    //   203: dup
+    //   204: invokespecial 237	java/lang/StringBuilder:<init>	()V
+    //   207: astore 11
+    //   209: aload 11
+    //   211: ldc_w 320
+    //   214: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: pop
+    //   218: aload 11
+    //   220: aload_1
+    //   221: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: pop
+    //   225: ldc 14
+    //   227: iconst_2
+    //   228: aload 11
+    //   230: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   233: aload 10
+    //   235: invokestatic 323	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   238: aload 9
+    //   240: invokestatic 274	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   243: ifne +58 -> 301
+    //   246: iload_3
+    //   247: iflt +54 -> 301
+    //   250: iload 4
+    //   252: iflt +49 -> 301
+    //   255: iload 6
+    //   257: iflt +44 -> 301
+    //   260: iload_2
+    //   261: ifge +6 -> 267
+    //   264: goto +37 -> 301
+    //   267: new 85	com/tencent/mobileqq/minigame/data/BlockAdInfo
+    //   270: dup
+    //   271: aload 9
+    //   273: iload_3
+    //   274: iload 4
+    //   276: iload 5
+    //   278: iload_2
+    //   279: iload 6
+    //   281: invokespecial 326	com/tencent/mobileqq/minigame/data/BlockAdInfo:<init>	(Ljava/lang/String;IIIII)V
+    //   284: astore_1
+    //   285: aload_0
+    //   286: getfield 37	com/tencent/mobileqq/minigame/manager/BlockAdManager:blockAdInfoHashMap	Ljava/util/HashMap;
+    //   289: iload 6
+    //   291: invokestatic 62	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   294: aload_1
+    //   295: invokevirtual 105	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   298: pop
+    //   299: aload_1
+    //   300: areturn
+    //   301: aconst_null
+    //   302: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	303	0	this	BlockAdManager
+    //   0	303	1	paramString	String
+    //   115	164	2	i	int
+    //   63	211	3	j	int
+    //   78	197	4	k	int
+    //   89	188	5	m	int
+    //   15	275	6	n	int
+    //   148	3	7	i1	int
+    //   126	3	8	bool	boolean
+    //   12	260	9	localObject1	Object
+    //   19	103	10	localObject2	Object
+    //   157	1	10	localException1	java.lang.Exception
+    //   162	1	10	localException2	java.lang.Exception
+    //   167	1	10	localException3	java.lang.Exception
+    //   172	16	10	localException4	java.lang.Exception
+    //   193	41	10	localObject3	Object
+    //   29	112	11	localJSONObject	org.json.JSONObject
+    //   180	12	11	localException5	java.lang.Exception
+    //   207	22	11	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   140	150	157	java/lang/Exception
+    //   91	113	162	java/lang/Exception
+    //   119	128	162	java/lang/Exception
+    //   80	91	167	java/lang/Exception
+    //   64	80	172	java/lang/Exception
+    //   21	31	180	java/lang/Exception
+    //   35	45	180	java/lang/Exception
+    //   49	64	180	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.BlockAdManager
  * JD-Core Version:    0.7.0.1
  */

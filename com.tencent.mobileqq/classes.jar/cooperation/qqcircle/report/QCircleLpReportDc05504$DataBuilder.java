@@ -12,6 +12,10 @@ public class QCircleLpReportDc05504$DataBuilder
   private String ext12;
   private String ext13;
   private String ext14;
+  private String ext15;
+  private String ext16;
+  private String ext17;
+  private String ext18;
   private String ext2;
   private String ext3;
   private String ext4;
@@ -60,6 +64,10 @@ public class QCircleLpReportDc05504$DataBuilder
     this.ext12 = paramDataBuilder.ext12;
     this.ext13 = paramDataBuilder.ext13;
     this.ext14 = paramDataBuilder.ext14;
+    this.ext15 = paramDataBuilder.ext15;
+    this.ext16 = paramDataBuilder.ext16;
+    this.ext17 = paramDataBuilder.ext17;
+    this.ext18 = paramDataBuilder.ext18;
     this.feedReportInfo = paramDataBuilder.feedReportInfo;
     this.msgReportInfo = paramDataBuilder.msgReportInfo;
     this.commExtReportInfo = paramDataBuilder.commExtReportInfo;
@@ -112,6 +120,30 @@ public class QCircleLpReportDc05504$DataBuilder
   public DataBuilder setExt14(String paramString)
   {
     this.ext14 = paramString;
+    return this;
+  }
+  
+  public DataBuilder setExt15(String paramString)
+  {
+    this.ext15 = paramString;
+    return this;
+  }
+  
+  public DataBuilder setExt16(String paramString)
+  {
+    this.ext16 = paramString;
+    return this;
+  }
+  
+  public DataBuilder setExt17(String paramString)
+  {
+    this.ext17 = paramString;
+    return this;
+  }
+  
+  public DataBuilder setExt18(String paramString)
+  {
+    this.ext18 = paramString;
     return this;
   }
   
@@ -225,7 +257,7 @@ public class QCircleLpReportDc05504$DataBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05504.DataBuilder
  * JD-Core Version:    0.7.0.1
  */

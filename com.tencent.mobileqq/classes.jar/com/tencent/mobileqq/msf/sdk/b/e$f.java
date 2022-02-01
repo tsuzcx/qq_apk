@@ -23,20 +23,18 @@ public class e$f
   
   public void a(ToServiceMsg paramToServiceMsg, int paramInt)
   {
-    if (paramToServiceMsg == null) {}
-    long l1;
-    long l2;
-    do
+    if (paramToServiceMsg == null) {
+      return;
+    }
+    if (paramInt > 0)
     {
-      do
-      {
-        return;
-      } while (paramInt <= 0);
-      l1 = System.currentTimeMillis();
+      long l1 = System.currentTimeMillis();
       paramToServiceMsg.addAttribute("to_SendSuccTime", Long.valueOf(l1));
-      l2 = ((Long)paramToServiceMsg.getAttribute("to_appSendMsg", Long.valueOf(0L))).longValue();
-    } while (l2 <= 0L);
-    a(l1 - l2);
+      long l2 = ((Long)paramToServiceMsg.getAttribute("to_appSendMsg", Long.valueOf(0L))).longValue();
+      if (l2 > 0L) {
+        a(l1 - l2);
+      }
+    }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, boolean paramBoolean)
@@ -48,7 +46,7 @@ public class e$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.b.e.f
  * JD-Core Version:    0.7.0.1
  */

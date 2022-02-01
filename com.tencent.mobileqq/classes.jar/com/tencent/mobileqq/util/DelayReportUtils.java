@@ -57,91 +57,64 @@ public class DelayReportUtils
           return;
         }
         localObject = a.keySet().iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          HashMap localHashMap = (HashMap)a.get(str);
-          Iterator localIterator = paramList.iterator();
-          if (!localIterator.hasNext()) {
-            break label150;
-          }
-          if (!((IDelayReporter)localIterator.next()).a(str, localHashMap)) {
-            continue;
-          }
-          i = 1;
-          if (i != 0) {
-            continue;
-          }
-          QLog.e("DelayReportUtils", 1, new Object[] { "no reporter for this event : ", str });
+        if (!((Iterator)localObject).hasNext()) {
           continue;
         }
-        a.clear();
+        str = (String)((Iterator)localObject).next();
+        HashMap localHashMap = (HashMap)a.get(str);
+        Iterator localIterator = paramList.iterator();
+        if (!localIterator.hasNext()) {
+          continue;
+        }
+        if (!((IDelayReporter)localIterator.next()).a(str, localHashMap)) {
+          continue;
+        }
+        i = 1;
       }
-      finally {}
-      a = null;
-      continue;
-      label150:
-      int i = 0;
+      finally
+      {
+        String str;
+        continue;
+        throw paramList;
+        continue;
+        int i = 0;
+        continue;
+      }
+      if (i == 0) {
+        QLog.e("DelayReportUtils", 1, new Object[] { "no reporter for this event : ", str });
+      }
     }
+    a.clear();
+    a = null;
   }
   
-  /* Error */
   public static boolean a()
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: getstatic 14	com/tencent/mobileqq/util/DelayReportUtils:a	Ljava/util/Map;
-    //   8: astore_3
-    //   9: aload_3
-    //   10: ifnonnull +10 -> 20
-    //   13: iload_1
-    //   14: istore_0
-    //   15: ldc 2
-    //   17: monitorexit
-    //   18: iload_0
-    //   19: ireturn
-    //   20: getstatic 14	com/tencent/mobileqq/util/DelayReportUtils:a	Ljava/util/Map;
-    //   23: invokeinterface 36 1 0
-    //   28: astore_3
-    //   29: iload_1
-    //   30: istore_0
-    //   31: aload_3
-    //   32: ifnull -17 -> 15
-    //   35: aload_3
-    //   36: invokeinterface 80 1 0
-    //   41: istore_2
-    //   42: iload_1
-    //   43: istore_0
-    //   44: iload_2
-    //   45: ifne -30 -> 15
-    //   48: iconst_1
-    //   49: istore_0
-    //   50: goto -35 -> 15
-    //   53: astore_3
-    //   54: ldc 2
-    //   56: monitorexit
-    //   57: aload_3
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   14	36	0	bool1	boolean
-    //   1	42	1	bool2	boolean
-    //   41	4	2	bool3	boolean
-    //   8	28	3	localObject1	Object
-    //   53	5	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   5	9	53	finally
-    //   20	29	53	finally
-    //   35	42	53	finally
+    try
+    {
+      Object localObject1 = a;
+      boolean bool2 = false;
+      if (localObject1 == null) {
+        return false;
+      }
+      localObject1 = a.keySet();
+      boolean bool1 = bool2;
+      if (localObject1 != null)
+      {
+        boolean bool3 = ((Set)localObject1).isEmpty();
+        bool1 = bool2;
+        if (!bool3) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.DelayReportUtils
  * JD-Core Version:    0.7.0.1
  */

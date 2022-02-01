@@ -41,7 +41,7 @@ public class CacheStrategy$Factory
       paramRequest = paramResponse.headers();
       int i = 0;
       int j = paramRequest.size();
-      if (i < j)
+      while (i < j)
       {
         paramResponse = paramRequest.name(i);
         String str = paramRequest.value(i);
@@ -50,95 +50,89 @@ public class CacheStrategy$Factory
           this.servedDate = HttpDate.parse(str);
           this.servedDateString = str;
         }
-        for (;;)
+        else if ("Expires".equalsIgnoreCase(paramResponse))
         {
-          i += 1;
-          break;
-          if ("Expires".equalsIgnoreCase(paramResponse))
-          {
-            this.expires = HttpDate.parse(str);
-          }
-          else if ("Last-Modified".equalsIgnoreCase(paramResponse))
-          {
-            this.lastModified = HttpDate.parse(str);
-            this.lastModifiedString = str;
-          }
-          else if ("ETag".equalsIgnoreCase(paramResponse))
-          {
-            this.etag = str;
-          }
-          else if ("Age".equalsIgnoreCase(paramResponse))
-          {
-            this.ageSeconds = HttpHeaders.parseSeconds(str, -1);
-          }
+          this.expires = HttpDate.parse(str);
         }
+        else if ("Last-Modified".equalsIgnoreCase(paramResponse))
+        {
+          this.lastModified = HttpDate.parse(str);
+          this.lastModifiedString = str;
+        }
+        else if ("ETag".equalsIgnoreCase(paramResponse))
+        {
+          this.etag = str;
+        }
+        else if ("Age".equalsIgnoreCase(paramResponse))
+        {
+          this.ageSeconds = HttpHeaders.parseSeconds(str, -1);
+        }
+        i += 1;
       }
     }
   }
   
   private long cacheResponseAge()
   {
+    Date localDate = this.servedDate;
     long l1 = 0L;
-    if (this.servedDate != null) {
-      l1 = Math.max(0L, this.receivedResponseMillis - this.servedDate.getTime());
+    if (localDate != null) {
+      l1 = Math.max(0L, this.receivedResponseMillis - localDate.getTime());
     }
     long l2 = l1;
     if (this.ageSeconds != -1) {
       l2 = Math.max(l1, TimeUnit.SECONDS.toMillis(this.ageSeconds));
     }
-    return l2 + (this.receivedResponseMillis - this.sentRequestMillis) + (this.nowMillis - this.receivedResponseMillis);
+    l1 = this.receivedResponseMillis;
+    return l2 + (l1 - this.sentRequestMillis) + (this.nowMillis - l1);
   }
   
   private long computeFreshnessLifetime()
   {
-    long l2 = 0L;
-    CacheControl localCacheControl = this.cacheResponse.cacheControl();
-    if (localCacheControl.maxAgeSeconds() != -1) {
-      l1 = TimeUnit.SECONDS.toMillis(localCacheControl.maxAgeSeconds());
+    Object localObject = this.cacheResponse.cacheControl();
+    if (((CacheControl)localObject).maxAgeSeconds() != -1) {
+      return TimeUnit.SECONDS.toMillis(((CacheControl)localObject).maxAgeSeconds());
     }
-    label83:
-    do
+    localObject = this.expires;
+    long l1 = 0L;
+    if (localObject != null)
     {
-      do
-      {
-        return l1;
-        if (this.expires != null)
-        {
-          if (this.servedDate != null)
-          {
-            l1 = this.servedDate.getTime();
-            l1 = this.expires.getTime() - l1;
-            if (l1 <= 0L) {
-              break label83;
-            }
-          }
-          for (;;)
-          {
-            return l1;
-            l1 = this.receivedResponseMillis;
-            break;
-            l1 = 0L;
-          }
-        }
-        l1 = l2;
-      } while (this.lastModified == null);
-      l1 = l2;
-    } while (this.cacheResponse.request().url().query() != null);
-    if (this.servedDate != null) {}
-    for (long l1 = this.servedDate.getTime();; l1 = this.sentRequestMillis)
-    {
-      long l3 = l1 - this.lastModified.getTime();
-      l1 = l2;
-      if (l3 <= 0L) {
-        break;
+      localObject = this.servedDate;
+      if (localObject != null) {
+        l2 = ((Date)localObject).getTime();
+      } else {
+        l2 = this.receivedResponseMillis;
       }
-      return l3 / 10L;
+      l2 = this.expires.getTime() - l2;
+      if (l2 > 0L) {
+        l1 = l2;
+      }
+      return l1;
     }
+    long l2 = l1;
+    if (this.lastModified != null)
+    {
+      l2 = l1;
+      if (this.cacheResponse.request().url().query() == null)
+      {
+        localObject = this.servedDate;
+        if (localObject != null) {
+          l2 = ((Date)localObject).getTime();
+        } else {
+          l2 = this.sentRequestMillis;
+        }
+        long l3 = l2 - this.lastModified.getTime();
+        l2 = l1;
+        if (l3 > 0L) {
+          l2 = l3 / 10L;
+        }
+      }
+    }
+    return l2;
   }
   
   private CacheStrategy getCandidate()
   {
-    long l4 = 0L;
     if (this.cacheResponse == null) {
       return new CacheStrategy(this.request, null);
     }
@@ -149,19 +143,22 @@ public class CacheStrategy$Factory
       return new CacheStrategy(this.request, null);
     }
     Object localObject1 = this.request.cacheControl();
-    if ((((CacheControl)localObject1).noCache()) || (hasConditions(this.request))) {
-      return new CacheStrategy(this.request, null);
-    }
-    Object localObject2 = this.cacheResponse.cacheControl();
-    long l5 = cacheResponseAge();
-    long l2 = computeFreshnessLifetime();
-    long l1 = l2;
-    if (((CacheControl)localObject1).maxAgeSeconds() != -1) {
-      l1 = Math.min(l2, TimeUnit.SECONDS.toMillis(((CacheControl)localObject1).maxAgeSeconds()));
-    }
-    if (((CacheControl)localObject1).minFreshSeconds() != -1) {}
-    for (l2 = TimeUnit.SECONDS.toMillis(((CacheControl)localObject1).minFreshSeconds());; l2 = 0L)
+    if ((!((CacheControl)localObject1).noCache()) && (!hasConditions(this.request)))
     {
+      Object localObject2 = this.cacheResponse.cacheControl();
+      long l5 = cacheResponseAge();
+      long l2 = computeFreshnessLifetime();
+      long l1 = l2;
+      if (((CacheControl)localObject1).maxAgeSeconds() != -1) {
+        l1 = Math.min(l2, TimeUnit.SECONDS.toMillis(((CacheControl)localObject1).maxAgeSeconds()));
+      }
+      int i = ((CacheControl)localObject1).minFreshSeconds();
+      long l4 = 0L;
+      if (i != -1) {
+        l2 = TimeUnit.SECONDS.toMillis(((CacheControl)localObject1).minFreshSeconds());
+      } else {
+        l2 = 0L;
+      }
       long l3 = l4;
       if (!((CacheControl)localObject2).mustRevalidate())
       {
@@ -170,43 +167,45 @@ public class CacheStrategy$Factory
           l3 = TimeUnit.SECONDS.toMillis(((CacheControl)localObject1).maxStaleSeconds());
         }
       }
-      if ((!((CacheControl)localObject2).noCache()) && (l5 + l2 < l3 + l1))
+      if (!((CacheControl)localObject2).noCache())
       {
-        localObject1 = this.cacheResponse.newBuilder();
-        if (l2 + l5 >= l1) {
-          ((Response.Builder)localObject1).addHeader("Warning", "110 HttpURLConnection \"Response is stale\"");
+        l2 += l5;
+        if (l2 < l3 + l1)
+        {
+          localObject1 = this.cacheResponse.newBuilder();
+          if (l2 >= l1) {
+            ((Response.Builder)localObject1).addHeader("Warning", "110 HttpURLConnection \"Response is stale\"");
+          }
+          if ((l5 > 86400000L) && (isFreshnessLifetimeHeuristic())) {
+            ((Response.Builder)localObject1).addHeader("Warning", "113 HttpURLConnection \"Heuristic expiration\"");
+          }
+          return new CacheStrategy(null, ((Response.Builder)localObject1).build());
         }
-        if ((l5 > 86400000L) && (isFreshnessLifetimeHeuristic())) {
-          ((Response.Builder)localObject1).addHeader("Warning", "113 HttpURLConnection \"Heuristic expiration\"");
-        }
-        return new CacheStrategy(null, ((Response.Builder)localObject1).build());
       }
-      if (this.etag != null)
+      localObject1 = this.etag;
+      localObject2 = "If-Modified-Since";
+      if (localObject1 != null)
       {
         localObject2 = "If-None-Match";
-        localObject1 = this.etag;
       }
-      for (;;)
+      else if (this.lastModified != null)
       {
-        Headers.Builder localBuilder = this.request.headers().newBuilder();
-        Internal.instance.addLenient(localBuilder, (String)localObject2, (String)localObject1);
-        return new CacheStrategy(this.request.newBuilder().headers(localBuilder.build()).build(), this.cacheResponse);
-        if (this.lastModified != null)
-        {
-          localObject2 = "If-Modified-Since";
-          localObject1 = this.lastModifiedString;
-        }
-        else
-        {
-          if (this.servedDate == null) {
-            break;
-          }
-          localObject2 = "If-Modified-Since";
-          localObject1 = this.servedDateString;
-        }
+        localObject1 = this.lastModifiedString;
       }
+      else
+      {
+        if (this.servedDate == null) {
+          break label430;
+        }
+        localObject1 = this.servedDateString;
+      }
+      Headers.Builder localBuilder = this.request.headers().newBuilder();
+      Internal.instance.addLenient(localBuilder, (String)localObject2, (String)localObject1);
+      return new CacheStrategy(this.request.newBuilder().headers(localBuilder.build()).build(), this.cacheResponse);
+      label430:
       return new CacheStrategy(this.request, null);
     }
+    return new CacheStrategy(this.request, null);
   }
   
   private static boolean hasConditions(Request paramRequest)
@@ -235,7 +234,7 @@ public class CacheStrategy$Factory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.cache.CacheStrategy.Factory
  * JD-Core Version:    0.7.0.1
  */

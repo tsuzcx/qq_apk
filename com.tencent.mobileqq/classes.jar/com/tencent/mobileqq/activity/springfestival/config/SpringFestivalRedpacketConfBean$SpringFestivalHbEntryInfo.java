@@ -24,8 +24,35 @@ public class SpringFestivalRedpacketConfBean$SpringFestivalHbEntryInfo
   {
     try
     {
-      String str = "SpringFestivalHbEntryInfo{pendantEntryInfo=" + this.pendantEntryInfo + ", fixedEntryInfo=" + this.fixedEntryInfo + ", loadingInfo=" + this.loadingInfo + ", activityUrl='" + this.activityUrl + '\'' + ", emergencyUrl='" + this.emergencyUrl + '\'' + ", webType=" + this.webType + ", pendantSwitch=" + this.pendantSwitch + ", entrySwitch=" + this.entrySwitch + ", activityPrefix='" + this.activityPrefix + '\'' + ", entryShowTime=" + this.entryShowTime + ", pendantDelay=" + this.pendantDelay + '}';
-      return str;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SpringFestivalHbEntryInfo{pendantEntryInfo=");
+      ((StringBuilder)localObject).append(this.pendantEntryInfo);
+      ((StringBuilder)localObject).append(", fixedEntryInfo=");
+      ((StringBuilder)localObject).append(this.fixedEntryInfo);
+      ((StringBuilder)localObject).append(", loadingInfo=");
+      ((StringBuilder)localObject).append(this.loadingInfo);
+      ((StringBuilder)localObject).append(", activityUrl='");
+      ((StringBuilder)localObject).append(this.activityUrl);
+      ((StringBuilder)localObject).append('\'');
+      ((StringBuilder)localObject).append(", emergencyUrl='");
+      ((StringBuilder)localObject).append(this.emergencyUrl);
+      ((StringBuilder)localObject).append('\'');
+      ((StringBuilder)localObject).append(", webType=");
+      ((StringBuilder)localObject).append(this.webType);
+      ((StringBuilder)localObject).append(", pendantSwitch=");
+      ((StringBuilder)localObject).append(this.pendantSwitch);
+      ((StringBuilder)localObject).append(", entrySwitch=");
+      ((StringBuilder)localObject).append(this.entrySwitch);
+      ((StringBuilder)localObject).append(", activityPrefix='");
+      ((StringBuilder)localObject).append(this.activityPrefix);
+      ((StringBuilder)localObject).append('\'');
+      ((StringBuilder)localObject).append(", entryShowTime=");
+      ((StringBuilder)localObject).append(this.entryShowTime);
+      ((StringBuilder)localObject).append(", pendantDelay=");
+      ((StringBuilder)localObject).append(this.pendantDelay);
+      ((StringBuilder)localObject).append('}');
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
     }
     catch (Throwable localThrowable)
     {
@@ -36,7 +63,7 @@ public class SpringFestivalRedpacketConfBean$SpringFestivalHbEntryInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo
  * JD-Core Version:    0.7.0.1
  */

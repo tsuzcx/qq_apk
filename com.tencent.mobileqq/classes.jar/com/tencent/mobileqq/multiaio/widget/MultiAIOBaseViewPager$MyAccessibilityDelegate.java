@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.multiaio.widget;
 
 import android.os.Bundle;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
+import androidx.core.view.AccessibilityDelegateCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+import androidx.viewpager.widget.PagerAdapter;
 
 class MultiAIOBaseViewPager$MyAccessibilityDelegate
   extends AccessibilityDelegateCompat
@@ -48,21 +48,23 @@ class MultiAIOBaseViewPager$MyAccessibilityDelegate
     if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
       return true;
     }
-    switch (paramInt)
+    if (paramInt != 4096)
     {
-    default: 
-      return false;
-    case 4096: 
-      if (this.a.canScrollHorizontally(1))
+      if (paramInt != 8192) {
+        return false;
+      }
+      if (this.a.canScrollHorizontally(-1))
       {
-        this.a.setCurrentItem(this.a.b + 1);
+        paramView = this.a;
+        paramView.setCurrentItem(paramView.b - 1);
         return true;
       }
       return false;
     }
-    if (this.a.canScrollHorizontally(-1))
+    if (this.a.canScrollHorizontally(1))
     {
-      this.a.setCurrentItem(this.a.b - 1);
+      paramView = this.a;
+      paramView.setCurrentItem(paramView.b + 1);
       return true;
     }
     return false;
@@ -70,7 +72,7 @@ class MultiAIOBaseViewPager$MyAccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.MyAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

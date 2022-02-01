@@ -37,12 +37,28 @@ public class VFrame
   
   public String toString()
   {
-    return "VFrame{cameraId=" + this.cameraId + ", width=" + this.width + ", height=" + this.height + ", format=" + this.format + ", rotate=" + this.rotate + ", flip=" + this.flip + ", identifier='" + this.identifier + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder("VFrame{cameraId=");
+    localStringBuilder.append(this.cameraId);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", format=");
+    localStringBuilder.append(this.format);
+    localStringBuilder.append(", rotate=");
+    localStringBuilder.append(this.rotate);
+    localStringBuilder.append(", flip=");
+    localStringBuilder.append(this.flip);
+    localStringBuilder.append(", identifier='");
+    localStringBuilder.append(this.identifier);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.opensdk.params.VFrame
  * JD-Core Version:    0.7.0.1
  */

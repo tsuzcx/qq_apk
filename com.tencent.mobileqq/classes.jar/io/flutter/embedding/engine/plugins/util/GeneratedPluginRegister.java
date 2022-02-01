@@ -18,17 +18,20 @@ public class GeneratedPluginRegister
     }
     catch (Exception localException)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Tried to automatically register plugins with FlutterEngine (");
-      localStringBuilder.append(paramFlutterEngine);
-      localStringBuilder.append(") but could not find and invoke the GeneratedPluginRegistrant.");
-      Log.w("GeneratedPluginsRegister", localStringBuilder.toString());
+      label33:
+      StringBuilder localStringBuilder;
+      break label33;
     }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Tried to automatically register plugins with FlutterEngine (");
+    localStringBuilder.append(paramFlutterEngine);
+    localStringBuilder.append(") but could not find and invoke the GeneratedPluginRegistrant.");
+    Log.w("GeneratedPluginsRegister", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.util.GeneratedPluginRegister
  * JD-Core Version:    0.7.0.1
  */

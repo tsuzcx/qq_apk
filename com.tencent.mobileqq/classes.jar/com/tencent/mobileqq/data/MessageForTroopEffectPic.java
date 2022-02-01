@@ -29,21 +29,17 @@ public class MessageForTroopEffectPic
         try
         {
           localResvAttr.mergeFrom(localPicRec.bytes_pb_reserved.get().toByteArray());
-          if (localResvAttr.msg_image_show.has())
-          {
-            this.effectId = ((CustomFaceExtPb.AnimationImageShow)localResvAttr.msg_image_show.get()).int32_effect_id.get();
-            return;
-          }
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
         {
-          for (;;)
-          {
-            localInvalidProtocolBufferMicroException.printStackTrace();
-          }
+          localInvalidProtocolBufferMicroException.printStackTrace();
+        }
+        if (localResvAttr.msg_image_show.has())
+        {
+          this.effectId = ((CustomFaceExtPb.AnimationImageShow)localResvAttr.msg_image_show.get()).int32_effect_id.get();
+          return;
         }
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -73,7 +69,7 @@ public class MessageForTroopEffectPic
   
   public String getSummaryMsg()
   {
-    return HardCodeUtil.a(2131706586);
+    return HardCodeUtil.a(2131706608);
   }
   
   public boolean isReaded()
@@ -83,7 +79,7 @@ public class MessageForTroopEffectPic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopEffectPic
  * JD-Core Version:    0.7.0.1
  */

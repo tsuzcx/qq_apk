@@ -28,7 +28,7 @@ class CommentFloatDialog$OnCommentHelperCallback
 {
   private CommentFloatDialog$OnCommentHelperCallback(CommentFloatDialog paramCommentFloatDialog) {}
   
-  public void N_()
+  public void K_()
   {
     int i = CommentFloatDialog.a(this.a).b();
     CommentFloatDialog.a(this.a).setSelectionFromBottom(i, 0);
@@ -53,43 +53,40 @@ class CommentFloatDialog$OnCommentHelperCallback
     CommentFloatDialog.a(this.a).a(paramCommentEntry, bool);
     SLog.b("Q.qqstory.player.CommentFloatDialog", "after add comment. mCommentCount = %d, mFanCommentCount = %d, mFanCommentCount = %d.", Integer.valueOf(CommentFloatDialog.a(this.a).a.mCommentCount), Integer.valueOf(CommentFloatDialog.a(this.a).a.mFanCommentCount), Integer.valueOf(CommentFloatDialog.a(this.a).a.mFriendCommentCount));
     int i;
-    if (CommentFloatDialog.a(this.a).a.mDenyComment == 1)
-    {
+    if (CommentFloatDialog.a(this.a).a.mDenyComment == 1) {
       i = 1;
-      if (i != 0)
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131702364), 0).a();
+      paramCommentEntry.status = 2;
+    }
+    CommentFloatDialog.a(this.a).p();
+    ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.OnCommentHelperCallback.1(this), 50L);
+    CommentFloatDialog.a(this.a).a = ((CommentLikeFeedItem)localFeedManager.a(CommentFloatDialog.a(this.a).a));
+    if (CommentFloatDialog.a(this.a).a())
+    {
+      if (bool)
       {
-        QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131702230), 0).a();
-        paramCommentEntry.status = 2;
+        paramCommentEntry.type = 4;
+        paramCommentEntry.pbType = 1;
       }
-      CommentFloatDialog.a(this.a).p();
-      ThreadManager.getUIHandler().postDelayed(new CommentFloatDialog.OnCommentHelperCallback.1(this), 50L);
-      CommentFloatDialog.a(this.a).a = ((CommentLikeFeedItem)localFeedManager.a(CommentFloatDialog.a(this.a).a));
-      if (!CommentFloatDialog.a(this.a).a()) {
-        break label347;
+      else
+      {
+        paramCommentEntry.type = 3;
+        paramCommentEntry.pbType = 0;
       }
-      if (!bool) {
-        break label334;
-      }
-      paramCommentEntry.type = 4;
-      paramCommentEntry.pbType = 1;
-      label313:
       localCommentManager.a(paramCommentEntry);
     }
-    for (;;)
+    else
     {
-      if (i == 0) {
-        b(paramCommentEntry);
-      }
-      return;
-      i = 0;
-      break;
-      label334:
-      paramCommentEntry.type = 3;
-      paramCommentEntry.pbType = 0;
-      break label313;
-      label347:
       paramCommentEntry.pbType = CommentFloatDialog.a(this.a).a.getCommentLikeType();
       localCommentManager.b(paramCommentEntry);
+    }
+    if (i == 0) {
+      b(paramCommentEntry);
     }
   }
   
@@ -97,25 +94,25 @@ class CommentFloatDialog$OnCommentHelperCallback
   {
     boolean bool = CommentFloatDialog.a(this.a).a();
     Object localObject = CommentFloatDialog.a(this.a).a(bool);
-    if ((paramInt < 0) || (paramInt >= ((List)localObject).size()))
+    if ((paramInt >= 0) && (paramInt < ((List)localObject).size()))
     {
-      SLog.d("Q.qqstory.player.CommentFloatDialog", "delete comment error , IndexOutOfBoundsException , need index = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(((List)localObject).size()) });
+      localObject = (CommentEntry)CommentFloatDialog.a(this.a).a(bool).get(paramInt);
+      if (((CommentEntry)localObject).status != 0)
+      {
+        CommentFloatDialog.a(this.a).a((CommentEntry)localObject, bool);
+        return;
+      }
+      if (!NetworkUtil.isNetSupport(this.a.getContext()))
+      {
+        QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131702365), 0).a();
+        SLog.d("Q.qqstory.player.CommentFloatDialog", "delete comment failed. invalidate network.");
+        return;
+      }
+      ((CommentEntry)localObject).status = 1;
+      FeedCommentDataProvider.a((CommentEntry)localObject, new CommentFloatDialog.OnCommentHelperCallback.2(this, (CommentEntry)localObject, bool));
       return;
     }
-    localObject = (CommentEntry)CommentFloatDialog.a(this.a).a(bool).get(paramInt);
-    if (((CommentEntry)localObject).status != 0)
-    {
-      CommentFloatDialog.a(this.a).a((CommentEntry)localObject, bool);
-      return;
-    }
-    if (!NetworkUtil.d(this.a.getContext()))
-    {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131702231), 0).a();
-      SLog.d("Q.qqstory.player.CommentFloatDialog", "delete comment failed. invalidate network.");
-      return;
-    }
-    ((CommentEntry)localObject).status = 1;
-    FeedCommentDataProvider.a((CommentEntry)localObject, new CommentFloatDialog.OnCommentHelperCallback.2(this, (CommentEntry)localObject, bool));
+    SLog.d("Q.qqstory.player.CommentFloatDialog", "delete comment error , IndexOutOfBoundsException , need index = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(((List)localObject).size()) });
   }
   
   public void b(CommentEntry paramCommentEntry)
@@ -131,57 +128,40 @@ class CommentFloatDialog$OnCommentHelperCallback
     }
     localObject = CommentFloatDialog.a(this.a).getLayoutParams();
     if (localObject == null) {
-      localObject = new ViewGroup.LayoutParams(-1, this.a.getContext().getResources().getDimensionPixelOffset(2131299054));
+      localObject = new ViewGroup.LayoutParams(-1, this.a.getContext().getResources().getDimensionPixelOffset(2131299059));
+    } else {
+      ((ViewGroup.LayoutParams)localObject).height = this.a.getContext().getResources().getDimensionPixelOffset(2131299061);
     }
-    for (;;)
-    {
-      CommentFloatDialog.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-      return;
-      ((ViewGroup.LayoutParams)localObject).height = this.a.getContext().getResources().getDimensionPixelOffset(2131299056);
-    }
+    CommentFloatDialog.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
   public void d()
   {
-    boolean bool = false;
     Object localObject = CommentFloatDialog.a(this.a).a("CommentFloatDialog");
-    if (localObject != null)
-    {
-      if (CommentFloatDialog.a(this.a) != null)
-      {
-        if (!CommentFloatDialog.a(this.a).a(CommentFloatDialog.a(this.a).a())) {
-          bool = true;
-        }
-        ((LoadingMoreHelper)localObject).a(bool);
+    if (localObject != null) {
+      if (CommentFloatDialog.a(this.a) != null) {
+        ((LoadingMoreHelper)localObject).a(CommentFloatDialog.a(this.a).a(CommentFloatDialog.a(this.a).a()) ^ true);
+      } else {
+        ((LoadingMoreHelper)localObject).a(false);
       }
     }
-    else
-    {
-      localObject = CommentFloatDialog.a(this.a).getLayoutParams();
-      if (localObject != null) {
-        break label119;
-      }
-      localObject = new ViewGroup.LayoutParams(-1, this.a.getContext().getResources().getDimensionPixelOffset(2131299054));
+    localObject = CommentFloatDialog.a(this.a).getLayoutParams();
+    if (localObject == null) {
+      localObject = new ViewGroup.LayoutParams(-1, this.a.getContext().getResources().getDimensionPixelOffset(2131299059));
+    } else {
+      ((ViewGroup.LayoutParams)localObject).height = this.a.getContext().getResources().getDimensionPixelOffset(2131299059);
     }
-    for (;;)
-    {
-      CommentFloatDialog.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
-      return;
-      ((LoadingMoreHelper)localObject).a(false);
-      break;
-      label119:
-      ((ViewGroup.LayoutParams)localObject).height = this.a.getContext().getResources().getDimensionPixelOffset(2131299054);
-    }
+    CommentFloatDialog.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
-  public void h_(int paramInt)
+  public void e_(int paramInt)
   {
     CommentFloatDialog.a(this.a).setSelectionFromBottom(CommentFloatDialog.a(this.a).a() + paramInt, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentHelperCallback
  * JD-Core Version:    0.7.0.1
  */

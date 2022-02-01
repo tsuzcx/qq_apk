@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/apd" android:gravity="center" android:id="@id/mpt" android:background="@drawable/f3m" android:layout_width="88.0dip" android:layout_height="29.0dip" android:text="@string/ygh" android:shadowColor="@color/ape" android:shadowDx="1.0" android:shadowDy="3.0" android:shadowRadius="0.0" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/apd" android:gravity="center" android:id="@id/mpu" android:background="@drawable/f3m" android:layout_width="88.0dip" android:layout_height="29.0dip" android:layout_marginLeft="21.0dip" android:text="@string/ygj" android:shadowColor="@color/ape" android:shadowDx="1.0" android:shadowDy="3.0" android:shadowRadius="0.0" android:layout_toRightOf="@id/mpt" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/ncf" android:padding="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cbf" />
+    <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/oil" android:visibility="gone" android:layout_width="67.0dip" android:layout_height="wrap_content" android:text="置顶" />
+    <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ofh" android:visibility="gone" android:layout_width="67.0dip" android:layout_height="36.0dip" android:text="沉底" />
+    <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ofd" android:visibility="gone" android:layout_width="67.0dip" android:layout_height="wrap_content" android:text="@string/ye_" />
+    <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/k5w" android:layout_width="67.0dip" android:layout_height="36.0dip" android:text="Biu" />
+    <View android:background="#33ffffff" android:layout_width="0.049999952dip" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/k7b" android:layout_width="67.0dip" android:layout_height="wrap_content" android:text="@string/pun" />
+</LinearLayout>

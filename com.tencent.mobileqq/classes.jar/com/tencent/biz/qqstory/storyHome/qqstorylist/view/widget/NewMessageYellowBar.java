@@ -43,30 +43,31 @@ public class NewMessageYellowBar
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (paramInt2 != 0) {
-      if (paramInt2 > this.jdField_a_of_type_Int) {}
-    }
-    do
+    if (paramInt2 != 0)
     {
-      return;
-      this.jdField_a_of_type_Int = paramInt2;
-      if (paramInt1 > 0)
-      {
-        setVisibility(0);
-        post(new NewMessageYellowBar.2(this, paramInt1));
+      if (paramInt2 <= this.jdField_a_of_type_Int) {
         return;
       }
-      setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131707505));
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.0F);
-    } while (this.jdField_a_of_type_AndroidViewAnimationAnimationSet.hasEnded());
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+      this.jdField_a_of_type_Int = paramInt2;
+    }
+    if (paramInt1 > 0)
+    {
+      setVisibility(0);
+      post(new NewMessageYellowBar.2(this, paramInt1));
+      return;
+    }
+    setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131707530));
+    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.0F);
+    if (!this.jdField_a_of_type_AndroidViewAnimationAnimationSet.hasEnded()) {
+      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    }
   }
   
   public void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(getContext()).inflate(2131562009, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131382107));
+    LayoutInflater.from(getContext()).inflate(2131561842, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381309));
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(1000L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setStartOffset(1000L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(3000L);
@@ -79,7 +80,7 @@ public class NewMessageYellowBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar
  * JD-Core Version:    0.7.0.1
  */

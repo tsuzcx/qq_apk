@@ -4,11 +4,11 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberNewLevelView;
+import com.tencent.mobileqq.adapter.FacePreloadHolder.ViewHolder;
+import com.tencent.mobileqq.troop.widget.troopmemberlevel.TroopMemberNewLevelView;
 
 class SelectTroopMemberAdapter$ChildViewHolder
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends FacePreloadHolder.ViewHolder
 {
   public int a;
   public View a;
@@ -20,7 +20,7 @@ class SelectTroopMemberAdapter$ChildViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.SelectTroopMemberAdapter.ChildViewHolder
  * JD-Core Version:    0.7.0.1
  */

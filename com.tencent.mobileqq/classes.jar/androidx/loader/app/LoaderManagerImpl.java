@@ -34,49 +34,65 @@ class LoaderManagerImpl
   @NonNull
   private <D> Loader<D> createAndInstallLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks, @Nullable Loader<D> paramLoader)
   {
-    Loader localLoader;
     try
     {
       this.mLoaderViewModel.startCreatingLoader();
-      localLoader = paramLoaderCallbacks.onCreateLoader(paramInt, paramBundle);
-      if (localLoader == null) {
-        throw new IllegalArgumentException("Object returned from onCreateLoader must not be null");
+      Loader localLoader = paramLoaderCallbacks.onCreateLoader(paramInt, paramBundle);
+      if (localLoader != null)
+      {
+        if ((localLoader.getClass().isMemberClass()) && (!Modifier.isStatic(localLoader.getClass().getModifiers())))
+        {
+          paramBundle = new StringBuilder();
+          paramBundle.append("Object returned from onCreateLoader must not be a non-static inner member class: ");
+          paramBundle.append(localLoader);
+          throw new IllegalArgumentException(paramBundle.toString());
+        }
+        paramBundle = new LoaderManagerImpl.LoaderInfo(paramInt, paramBundle, localLoader, paramLoader);
+        if (DEBUG)
+        {
+          paramLoader = new StringBuilder();
+          paramLoader.append("  Created new loader ");
+          paramLoader.append(paramBundle);
+          Log.v("LoaderManager", paramLoader.toString());
+        }
+        this.mLoaderViewModel.putLoader(paramInt, paramBundle);
+        return paramBundle.setCallback(this.mLifecycleOwner, paramLoaderCallbacks);
       }
+      throw new IllegalArgumentException("Object returned from onCreateLoader must not be null");
     }
     finally
     {
       this.mLoaderViewModel.finishCreatingLoader();
     }
-    if ((localLoader.getClass().isMemberClass()) && (!Modifier.isStatic(localLoader.getClass().getModifiers()))) {
-      throw new IllegalArgumentException("Object returned from onCreateLoader must not be a non-static inner member class: " + localLoader);
-    }
-    paramBundle = new LoaderManagerImpl.LoaderInfo(paramInt, paramBundle, localLoader, paramLoader);
-    if (DEBUG) {
-      Log.v("LoaderManager", "  Created new loader " + paramBundle);
-    }
-    this.mLoaderViewModel.putLoader(paramInt, paramBundle);
-    this.mLoaderViewModel.finishCreatingLoader();
-    return paramBundle.setCallback(this.mLifecycleOwner, paramLoaderCallbacks);
   }
   
   @MainThread
   public void destroyLoader(int paramInt)
   {
-    if (this.mLoaderViewModel.isCreatingLoader()) {
-      throw new IllegalStateException("Called while creating a loader");
-    }
-    if (Looper.getMainLooper() != Looper.myLooper()) {
+    if (!this.mLoaderViewModel.isCreatingLoader())
+    {
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
+        if (DEBUG)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("destroyLoader in ");
+          ((StringBuilder)localObject).append(this);
+          ((StringBuilder)localObject).append(" of ");
+          ((StringBuilder)localObject).append(paramInt);
+          Log.v("LoaderManager", ((StringBuilder)localObject).toString());
+        }
+        Object localObject = this.mLoaderViewModel.getLoader(paramInt);
+        if (localObject != null)
+        {
+          ((LoaderManagerImpl.LoaderInfo)localObject).destroy(true);
+          this.mLoaderViewModel.removeLoader(paramInt);
+        }
+        return;
+      }
       throw new IllegalStateException("destroyLoader must be called on the main thread");
     }
-    if (DEBUG) {
-      Log.v("LoaderManager", "destroyLoader in " + this + " of " + paramInt);
-    }
-    LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
-    if (localLoaderInfo != null)
-    {
-      localLoaderInfo.destroy(true);
-      this.mLoaderViewModel.removeLoader(paramInt);
-    }
+    throw new IllegalStateException("Called while creating a loader");
   }
   
   @Deprecated
@@ -88,14 +104,15 @@ class LoaderManagerImpl
   @Nullable
   public <D> Loader<D> getLoader(int paramInt)
   {
-    if (this.mLoaderViewModel.isCreatingLoader()) {
-      throw new IllegalStateException("Called while creating a loader");
+    if (!this.mLoaderViewModel.isCreatingLoader())
+    {
+      LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
+      if (localLoaderInfo != null) {
+        return localLoaderInfo.getLoader();
+      }
+      return null;
     }
-    LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
-    if (localLoaderInfo != null) {
-      return localLoaderInfo.getLoader();
-    }
-    return null;
+    throw new IllegalStateException("Called while creating a loader");
   }
   
   public boolean hasRunningLoaders()
@@ -107,23 +124,35 @@ class LoaderManagerImpl
   @NonNull
   public <D> Loader<D> initLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks)
   {
-    if (this.mLoaderViewModel.isCreatingLoader()) {
-      throw new IllegalStateException("Called while creating a loader");
-    }
-    if (Looper.getMainLooper() != Looper.myLooper()) {
+    if (!this.mLoaderViewModel.isCreatingLoader())
+    {
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
+        LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
+        if (DEBUG)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("initLoader in ");
+          localStringBuilder.append(this);
+          localStringBuilder.append(": args=");
+          localStringBuilder.append(paramBundle);
+          Log.v("LoaderManager", localStringBuilder.toString());
+        }
+        if (localLoaderInfo == null) {
+          return createAndInstallLoader(paramInt, paramBundle, paramLoaderCallbacks, null);
+        }
+        if (DEBUG)
+        {
+          paramBundle = new StringBuilder();
+          paramBundle.append("  Re-using existing loader ");
+          paramBundle.append(localLoaderInfo);
+          Log.v("LoaderManager", paramBundle.toString());
+        }
+        return localLoaderInfo.setCallback(this.mLifecycleOwner, paramLoaderCallbacks);
+      }
       throw new IllegalStateException("initLoader must be called on the main thread");
     }
-    LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
-    if (DEBUG) {
-      Log.v("LoaderManager", "initLoader in " + this + ": args=" + paramBundle);
-    }
-    if (localLoaderInfo == null) {
-      return createAndInstallLoader(paramInt, paramBundle, paramLoaderCallbacks, null);
-    }
-    if (DEBUG) {
-      Log.v("LoaderManager", "  Re-using existing loader " + localLoaderInfo);
-    }
-    return localLoaderInfo.setCallback(this.mLifecycleOwner, paramLoaderCallbacks);
+    throw new IllegalStateException("Called while creating a loader");
   }
   
   public void markForRedelivery()
@@ -135,21 +164,29 @@ class LoaderManagerImpl
   @NonNull
   public <D> Loader<D> restartLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks)
   {
-    if (this.mLoaderViewModel.isCreatingLoader()) {
-      throw new IllegalStateException("Called while creating a loader");
-    }
-    if (Looper.getMainLooper() != Looper.myLooper()) {
+    if (!this.mLoaderViewModel.isCreatingLoader())
+    {
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
+        if (DEBUG)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("restartLoader in ");
+          ((StringBuilder)localObject).append(this);
+          ((StringBuilder)localObject).append(": args=");
+          ((StringBuilder)localObject).append(paramBundle);
+          Log.v("LoaderManager", ((StringBuilder)localObject).toString());
+        }
+        LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
+        Object localObject = null;
+        if (localLoaderInfo != null) {
+          localObject = localLoaderInfo.destroy(false);
+        }
+        return createAndInstallLoader(paramInt, paramBundle, paramLoaderCallbacks, (Loader)localObject);
+      }
       throw new IllegalStateException("restartLoader must be called on the main thread");
     }
-    if (DEBUG) {
-      Log.v("LoaderManager", "restartLoader in " + this + ": args=" + paramBundle);
-    }
-    LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
-    Loader localLoader = null;
-    if (localLoaderInfo != null) {
-      localLoader = localLoaderInfo.destroy(false);
-    }
-    return createAndInstallLoader(paramInt, paramBundle, paramLoaderCallbacks, localLoader);
+    throw new IllegalStateException("Called while creating a loader");
   }
   
   public String toString()
@@ -165,7 +202,7 @@ class LoaderManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.loader.app.LoaderManagerImpl
  * JD-Core Version:    0.7.0.1
  */

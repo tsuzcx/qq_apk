@@ -37,57 +37,56 @@ public class PluginLoaderService
       LogUtil.b("PluginLoaderService", "notifyLoadClassCompile: the listener is null", new Object[0]);
       return;
     }
-    if ((paramIPlugin == null) || (!paramIPlugin.a()))
-    {
-      paramClassLoaderListener.a(null, null);
-      DataReport.p("notifyLoadClassCompile: the plugin is null");
-      LogUtil.b("PluginLoaderService", "notifyLoadClassCompile: the plugin is null", new Object[0]);
-      return;
-    }
-    try
-    {
-      paramClass = paramIPlugin.a(paramClass, paramString);
-      if (paramClass == null)
+    if ((paramIPlugin != null) && (paramIPlugin.a())) {
+      try
       {
-        paramIPlugin = String.format("notifyLoadClassCompile: can not load class %s", new Object[] { paramString });
+        paramClass = paramIPlugin.a(paramClass, paramString);
+        if (paramClass == null)
+        {
+          paramIPlugin = String.format("notifyLoadClassCompile: can not load class %s", new Object[] { paramString });
+          DataReport.p(paramIPlugin);
+          LogUtil.b("PluginLoaderService", paramIPlugin, new Object[0]);
+          paramClassLoaderListener.a(null, null);
+          return;
+        }
+        if (a())
+        {
+          paramIPlugin = String.format("notifyLoadClassCompile: opensdk service is destroy load class [%s] fail.", new Object[] { paramString });
+          LogUtil.b("PluginLoaderService", paramIPlugin, new Object[0]);
+          DataReport.p(paramIPlugin);
+          paramClassLoaderListener.a(null, null);
+          return;
+        }
+        paramString = String.format("notifyLoadClassCompile: load class [%s] success", new Object[] { paramString });
+        LogUtil.b("PluginLoaderService", paramString, new Object[0]);
+        paramClassLoaderListener.a(paramClass, paramIPlugin.a(this.jdField_a_of_type_AndroidContentContext));
+        DataReport.q(paramString);
+        return;
+      }
+      catch (ClassNotFoundException paramIPlugin)
+      {
+        DataReport.p(String.format("notifyLoadClassCompile: ClassNotFoundException: %s", new Object[] { paramIPlugin.getCause() }));
+        LogUtil.c("PluginLoaderService", paramIPlugin.getMessage(), new Object[0]);
+        return;
+      }
+      catch (IllegalAccessException paramIPlugin)
+      {
+        paramIPlugin = String.format("notifyLoadClassCompile: IllegalAccessException: %s", new Object[] { paramIPlugin.getCause() });
         DataReport.p(paramIPlugin);
-        LogUtil.b("PluginLoaderService", paramIPlugin, new Object[0]);
-        paramClassLoaderListener.a(null, null);
+        LogUtil.c("PluginLoaderService", paramIPlugin, new Object[0]);
+        return;
+      }
+      catch (InstantiationException paramIPlugin)
+      {
+        paramIPlugin = String.format("notifyLoadClassCompile: InstantiationException: %s", new Object[] { paramIPlugin.getCause() });
+        DataReport.p(paramIPlugin);
+        LogUtil.c("PluginLoaderService", paramIPlugin, new Object[0]);
         return;
       }
     }
-    catch (InstantiationException paramIPlugin)
-    {
-      paramIPlugin = String.format("notifyLoadClassCompile: InstantiationException: %s", new Object[] { paramIPlugin.getCause() });
-      DataReport.p(paramIPlugin);
-      LogUtil.c("PluginLoaderService", paramIPlugin, new Object[0]);
-      return;
-      if (a())
-      {
-        paramIPlugin = String.format("notifyLoadClassCompile: opensdk service is destroy load class [%s] fail.", new Object[] { paramString });
-        LogUtil.b("PluginLoaderService", paramIPlugin, new Object[0]);
-        DataReport.p(paramIPlugin);
-        paramClassLoaderListener.a(null, null);
-        return;
-      }
-    }
-    catch (IllegalAccessException paramIPlugin)
-    {
-      paramIPlugin = String.format("notifyLoadClassCompile: IllegalAccessException: %s", new Object[] { paramIPlugin.getCause() });
-      DataReport.p(paramIPlugin);
-      LogUtil.c("PluginLoaderService", paramIPlugin, new Object[0]);
-      return;
-      paramString = String.format("notifyLoadClassCompile: load class [%s] success", new Object[] { paramString });
-      LogUtil.b("PluginLoaderService", paramString, new Object[0]);
-      paramClassLoaderListener.a(paramClass, paramIPlugin.a(this.jdField_a_of_type_AndroidContentContext));
-      DataReport.q(paramString);
-      return;
-    }
-    catch (ClassNotFoundException paramIPlugin)
-    {
-      DataReport.p(String.format("notifyLoadClassCompile: ClassNotFoundException: %s", new Object[] { paramIPlugin.getCause() }));
-      LogUtil.c("PluginLoaderService", paramIPlugin.getMessage(), new Object[0]);
-    }
+    paramClassLoaderListener.a(null, null);
+    DataReport.p("notifyLoadClassCompile: the plugin is null");
+    LogUtil.b("PluginLoaderService", "notifyLoadClassCompile: the plugin is null", new Object[0]);
   }
   
   public void a(IPluginLoaderServiceAdapter paramIPluginLoaderServiceAdapter)
@@ -97,7 +96,10 @@ public class PluginLoaderService
     LogUtil.a("PluginLoaderService", paramIPluginLoaderServiceAdapter.a());
     DataReport.a(paramIPluginLoaderServiceAdapter.a());
     Downloader.a(paramIPluginLoaderServiceAdapter.a());
-    LogUtil.b("PluginLoaderService", "init: need to install plugin size " + this.jdField_a_of_type_JavaUtilList.size(), new Object[0]);
+    paramIPluginLoaderServiceAdapter = new StringBuilder();
+    paramIPluginLoaderServiceAdapter.append("init: need to install plugin size ");
+    paramIPluginLoaderServiceAdapter.append(this.jdField_a_of_type_JavaUtilList.size());
+    LogUtil.b("PluginLoaderService", paramIPluginLoaderServiceAdapter.toString(), new Object[0]);
   }
   
   public <T> void a(Class<T> paramClass, String paramString, ClassLoaderListener paramClassLoaderListener)
@@ -113,12 +115,11 @@ public class PluginLoaderService
       LogUtil.b("PluginLoaderService", "load: the default  plugin is null", new Object[0]);
       DataReport.p("load: the default  plugin is null");
     }
-    for (;;)
+    else
     {
-      a(localIPlugin, paramClass, paramString, paramClassLoaderListener);
-      return;
       LogUtil.b("PluginLoaderService", "load: the default plugin[%s] load class %s", new Object[] { localIPlugin.c(), paramString });
     }
+    a(localIPlugin, paramClass, paramString, paramClassLoaderListener);
   }
   
   public <T> void a(String paramString1, Class<T> paramClass, String paramString2, ClassLoaderListener paramClassLoaderListener)
@@ -141,12 +142,11 @@ public class PluginLoaderService
       DataReport.p(paramString1);
       LogUtil.b("PluginLoaderService", paramString1, new Object[0]);
     }
-    for (;;)
+    else
     {
-      a(localIPlugin, paramClass, paramString2, paramClassLoaderListener);
-      return;
       LogUtil.b("PluginLoaderService", "load: the plugin[%s] load class %s", new Object[] { paramString1, paramString2 });
     }
+    a(localIPlugin, paramClass, paramString2, paramClassLoaderListener);
   }
   
   public boolean a()
@@ -171,7 +171,7 @@ public class PluginLoaderService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.PluginLoaderService
  * JD-Core Version:    0.7.0.1
  */

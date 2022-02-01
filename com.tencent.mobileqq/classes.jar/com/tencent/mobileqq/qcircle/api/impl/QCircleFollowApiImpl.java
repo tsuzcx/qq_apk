@@ -5,19 +5,20 @@ import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.qcircle.api.IQCircleFollowApi;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleDoFollowRequest;
 import cooperation.qqcircle.helpers.QCircleFollowManager;
-import cooperation.qqcircle.utils.QCircleDoubleFollowUserHepler;
+import cooperation.qqcircle.relation.QCircleRelationGroupManager;
 import feedcloud.FeedCloudCommon.StCommonExt;
 import feedcloud.FeedCloudMeta.StUser;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class QCircleFollowApiImpl
   implements IQCircleFollowApi
 {
   private static final String TAG = "QCircleConfigApiImpl";
   
-  public ArrayList<Entity> getFollowUserList()
+  public Map<String, List<Entity>> getCircleFriendMap()
   {
-    return QCircleDoubleFollowUserHepler.getInstance().getFollowUserList();
+    return QCircleRelationGroupManager.instance().getFriendGroupMap();
   }
   
   public BaseRequest getQCircleFollowRequest(FeedCloudMeta.StUser paramStUser, int paramInt, FeedCloudCommon.StCommonExt paramStCommonExt)
@@ -42,12 +43,12 @@ public class QCircleFollowApiImpl
   
   public void updateFollowUser(String paramString1, String paramString2, boolean paramBoolean)
   {
-    QCircleDoubleFollowUserHepler.getInstance().updateFollowUser(paramString1, paramString2, paramBoolean);
+    QCircleRelationGroupManager.instance().updateFollowFriendListToDB(paramString1, paramString2, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleFollowApiImpl
  * JD-Core Version:    0.7.0.1
  */

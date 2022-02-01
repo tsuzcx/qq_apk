@@ -37,12 +37,13 @@ class PTSSwiperView$PTSSwiperRecyclerView
         PTSLog.i("PTSSwiperView", "[dispatchTouchEvent] requestDisallowInterceptTouchEvent false");
       }
     }
-    do
+    else
     {
-      return;
       paramViewParent.requestDisallowInterceptTouchEvent(true);
-    } while (!PTSLog.isColorLevel());
-    PTSLog.i("PTSSwiperView", "[dispatchTouchEvent] requestDisallowInterceptTouchEvent true");
+      if (PTSLog.isColorLevel()) {
+        PTSLog.i("PTSSwiperView", "[dispatchTouchEvent] requestDisallowInterceptTouchEvent true");
+      }
+    }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -50,39 +51,62 @@ class PTSSwiperView$PTSSwiperRecyclerView
     float f2 = paramMotionEvent.getX();
     float f1 = paramMotionEvent.getY();
     ViewParent localViewParent = getParent();
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      this.touchBeginX = f2;
-      this.touchBeginY = f1;
-      this.hasDragged = false;
-      removeCallbacks(this.autoPlayRunnable);
-      continue;
+      Object localObject;
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3) {
+            break label248;
+          }
+        }
+        else
+        {
+          f2 -= this.touchBeginX;
+          f1 -= this.touchBeginY;
+          if (PTSLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[dispatchTouchEvent] dx = ");
+            ((StringBuilder)localObject).append(f2);
+            ((StringBuilder)localObject).append(", dy = ");
+            ((StringBuilder)localObject).append(f1);
+            PTSLog.d("PTSSwiperView", ((StringBuilder)localObject).toString());
+          }
+          if ((Math.abs(f2) > PTSSwiperView.access$1200()) || (Math.abs(f1) > PTSSwiperView.access$1200())) {
+            this.hasDragged = true;
+          }
+          setInterceptTouchEvent(localViewParent, f2, f1);
+          break label248;
+        }
+      }
       if (this.autoPlay) {
         postDelayed(this.autoPlayRunnable, this.autoPlayInterval);
       }
-      if ((this.hasDragged) && (this.ptsSwiperView != null)) {
-        PTSSwiperView.access$1100(this.ptsSwiperView);
+      if (this.hasDragged)
+      {
+        localObject = this.ptsSwiperView;
+        if (localObject != null) {
+          PTSSwiperView.access$1100((PTSSwiperView)localObject);
+        }
       }
       if (localViewParent != null)
       {
         localViewParent.requestDisallowInterceptTouchEvent(false);
         PTSLog.i("PTSSwiperView", "[dispatchTouchEvent] requestDisallowInterceptTouchEvent false");
-        continue;
-        f2 -= this.touchBeginX;
-        f1 -= this.touchBeginY;
-        if (PTSLog.isColorLevel()) {
-          PTSLog.d("PTSSwiperView", "[dispatchTouchEvent] dx = " + f2 + ", dy = " + f1);
-        }
-        if ((Math.abs(f2) > PTSSwiperView.access$1200()) || (Math.abs(f1) > PTSSwiperView.access$1200())) {
-          this.hasDragged = true;
-        }
-        setInterceptTouchEvent(localViewParent, f2, f1);
       }
     }
+    else
+    {
+      this.touchBeginX = f2;
+      this.touchBeginY = f1;
+      this.hasDragged = false;
+      removeCallbacks(this.autoPlayRunnable);
+    }
+    label248:
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public void setAutoPlay(boolean paramBoolean)
@@ -102,7 +126,7 @@ class PTSSwiperView$PTSSwiperRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSSwiperView.PTSSwiperRecyclerView
  * JD-Core Version:    0.7.0.1
  */

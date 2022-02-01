@@ -20,14 +20,15 @@ public final class SetRsp
   
   public static SetRsp[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new SetRsp[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new SetRsp[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static SetRsp parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -48,12 +49,13 @@ public final class SetRsp
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.ret;
     int i = j;
-    if (this.ret != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(1, this.ret);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
     j = i;
     if (!this.msg.equals("")) {
@@ -67,26 +69,33 @@ public final class SetRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.ret = paramCodedInputByteBufferNano.readInt32();
+      if (i == 0) {
         break;
       }
-      this.msg = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
+        }
+        else {
+          this.msg = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.ret = paramCodedInputByteBufferNano.readInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.ret != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(1, this.ret);
+    int i = this.ret;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
     if (!this.msg.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.msg);
@@ -96,7 +105,7 @@ public final class SetRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.SetRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -38,29 +38,27 @@ class WheelPickerLayout$InnerAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    Object localObject = paramView;
     if (paramView == null)
     {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+      localObject = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.getContext());
+      ((View)localObject).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      ((View)localObject).setFocusable(true);
+      ((View)localObject).setFocusableInTouchMode(true);
     }
-    for (;;)
-    {
-      String str = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(1, WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).b);
-      localWheelTextView.setTextColor(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).c);
-      localWheelTextView.setGravity(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).d);
-      localWheelTextView.setText(str);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    }
+    paramView = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.b, paramInt);
+    WheelTextView localWheelTextView = (WheelTextView)localObject;
+    localWheelTextView.setTextSize(1, WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).b);
+    localWheelTextView.setTextColor(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).c);
+    localWheelTextView.setGravity(WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).d);
+    localWheelTextView.setText(paramView);
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.WheelPickerLayout.InnerAdapter
  * JD-Core Version:    0.7.0.1
  */

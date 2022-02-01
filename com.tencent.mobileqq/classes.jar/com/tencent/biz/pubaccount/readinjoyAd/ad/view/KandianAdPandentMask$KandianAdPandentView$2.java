@@ -12,32 +12,33 @@ class KandianAdPandentMask$KandianAdPandentView$2
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return false;
-    case 1: 
-      if (System.currentTimeMillis() - KandianAdPandentMask.KandianAdPandentView.a(this.a) > 1500L)
-      {
-        KandianAdPandentMask.KandianAdPandentView.a(this.a, false);
-        QLog.d("ReadInJoySuperMaskAd", 2, "time up do not update volume");
-      }
-      if (KandianAdPandentMask.KandianAdPandentView.b(this.a))
-      {
-        KandianAdPandentMask.KandianAdPandentView.a(this.a).sendEmptyMessageDelayed(1, 300L);
-        this.a.d();
+      if (i != 2) {
         return false;
       }
-      KandianAdPandentMask.KandianAdPandentView.a(this.a).removeMessages(1);
+      KandianAdPandentMask.KandianAdPandentView.a(this.a);
       return false;
     }
-    KandianAdPandentMask.KandianAdPandentView.a(this.a);
+    if (System.currentTimeMillis() - KandianAdPandentMask.KandianAdPandentView.a(this.a) > 1500L)
+    {
+      KandianAdPandentMask.KandianAdPandentView.a(this.a, false);
+      QLog.d("ReadInJoySuperMaskAd", 2, "time up do not update volume");
+    }
+    if (KandianAdPandentMask.KandianAdPandentView.a(this.a))
+    {
+      KandianAdPandentMask.KandianAdPandentView.a(this.a).sendEmptyMessageDelayed(1, 300L);
+      this.a.d();
+      return false;
+    }
+    KandianAdPandentMask.KandianAdPandentView.a(this.a).removeMessages(1);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianAdPandentMask.KandianAdPandentView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,19 @@ public class FloatMapDialogUtil
 {
   public static void a(Activity paramActivity, QQCustomDialog paramQQCustomDialog)
   {
-    if (paramActivity != null) {}
-    try
-    {
-      if (!paramActivity.isFinishing()) {
-        paramQQCustomDialog.show();
+    if (paramActivity != null) {
+      try
+      {
+        if (!paramActivity.isFinishing())
+        {
+          paramQQCustomDialog.show();
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("FloatMapDialogUtil", 1, "showSafely: failed. ", paramActivity);
+      catch (Exception paramActivity)
+      {
+        QLog.e("FloatMapDialogUtil", 1, "showSafely: failed. ", paramActivity);
+      }
     }
   }
   
@@ -39,7 +41,7 @@ public class FloatMapDialogUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.FloatMapDialogUtil
  * JD-Core Version:    0.7.0.1
  */

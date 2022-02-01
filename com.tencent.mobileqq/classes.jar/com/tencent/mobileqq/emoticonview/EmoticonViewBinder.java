@@ -2,6 +2,7 @@ package com.tencent.mobileqq.emoticonview;
 
 public abstract class EmoticonViewBinder
 {
+  public static final int COLUMNNUM_SYSTEM_AND_EMOJI = 7;
   public static final int TYPE_BIG_EMOTICON = 6;
   public static final int TYPE_EMOJI = 2;
   public static final int TYPE_ENTRANCE_EMOTICON_SETTING = 101;
@@ -27,7 +28,7 @@ public abstract class EmoticonViewBinder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonViewBinder
  * JD-Core Version:    0.7.0.1
  */

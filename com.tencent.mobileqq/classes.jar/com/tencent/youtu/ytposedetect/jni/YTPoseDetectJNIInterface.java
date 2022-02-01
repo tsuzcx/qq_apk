@@ -38,15 +38,17 @@ public class YTPoseDetectJNIInterface
   
   public static void nativeLog(int paramInt, String paramString)
   {
-    if (loggerListener != null) {
-      loggerListener.log("[YTPoseDetectJNIInterface.nativeLog]", paramString);
+    YTPoseDetectJNIInterface.IYtLoggerListener localIYtLoggerListener = loggerListener;
+    if (localIYtLoggerListener != null) {
+      localIYtLoggerListener.log("[YTPoseDetectJNIInterface.nativeLog]", paramString);
     }
   }
   
   public static void nativeLog(String paramString1, String paramString2)
   {
-    if (loggerListener != null) {
-      loggerListener.log(paramString1, paramString2);
+    YTPoseDetectJNIInterface.IYtLoggerListener localIYtLoggerListener = loggerListener;
+    if (localIYtLoggerListener != null) {
+      localIYtLoggerListener.log(paramString1, paramString2);
     }
   }
   
@@ -69,7 +71,7 @@ public class YTPoseDetectJNIInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface
  * JD-Core Version:    0.7.0.1
  */

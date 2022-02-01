@@ -6,7 +6,7 @@ public abstract interface CsTask$OnCsError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError
  * JD-Core Version:    0.7.0.1
  */

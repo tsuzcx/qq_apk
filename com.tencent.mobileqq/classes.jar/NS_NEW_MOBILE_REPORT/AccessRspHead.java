@@ -27,14 +27,15 @@ public final class AccessRspHead
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.err_code, 0);
-    if (this.err_msg != null) {
-      paramJceOutputStream.write(this.err_msg, 1);
+    String str = this.err_msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_NEW_MOBILE_REPORT.AccessRspHead
  * JD-Core Version:    0.7.0.1
  */

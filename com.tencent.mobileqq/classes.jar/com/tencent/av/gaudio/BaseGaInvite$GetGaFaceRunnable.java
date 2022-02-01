@@ -40,7 +40,12 @@ public class BaseGaInvite$GetGaFaceRunnable
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "refreshUI[" + paramString + "], WaitDelayPost");
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshUI[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], WaitDelayPost");
+      QLog.w(str, 1, localStringBuilder.toString());
       return;
     }
     b(paramString);
@@ -55,27 +60,49 @@ public class BaseGaInvite$GetGaFaceRunnable
     Bitmap localBitmap = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, str, null, true, false);
     int j = AVUtil.c(this.jdField_b_of_type_Int);
     str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, str, null);
-    Object localObject;
     if ((localBitmap != null) && (!TextUtils.equals(str, this.jdField_b_of_type_JavaLangString)))
     {
       localObject = (BaseGaInvite.GetGaFaceRunnable.OnGetSink)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject == null) {}
-    }
-    for (boolean bool1 = ((BaseGaInvite.GetGaFaceRunnable.OnGetSink)localObject).a(localBitmap, str);; bool1 = false)
-    {
-      if (!bool1)
+      if (localObject != null)
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1500L);
+        bool1 = ((BaseGaInvite.GetGaFaceRunnable.OnGetSink)localObject).a(localBitmap, str);
+        break label111;
       }
-      localObject = this.jdField_a_of_type_JavaLangString;
-      paramString = new StringBuilder().append("setGaFace[").append(paramString).append("], mRelationType[").append(this.jdField_b_of_type_Int).append("], uinType_Group[").append(i).append("], mGroupId[").append(this.jdField_a_of_type_Long).append("], uinType_Invite[").append(j).append("], mInviterUin[").append(this.jdField_b_of_type_JavaLangString).append("], memberName[").append(str).append("], faceBitmap[");
-      if (localBitmap != null) {
-        bool2 = true;
-      }
-      QLog.w((String)localObject, 1, bool2 + "], mWaitDelayPost[" + this.jdField_a_of_type_Boolean + "], result[" + bool1 + "]");
-      return;
     }
+    boolean bool1 = false;
+    label111:
+    if (!bool1)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1500L);
+    }
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setGaFace[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], mRelationType[");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("], uinType_Group[");
+    localStringBuilder.append(i);
+    localStringBuilder.append("], mGroupId[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("], uinType_Invite[");
+    localStringBuilder.append(j);
+    localStringBuilder.append("], mInviterUin[");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("], memberName[");
+    localStringBuilder.append(str);
+    localStringBuilder.append("], faceBitmap[");
+    if (localBitmap != null) {
+      bool2 = true;
+    }
+    localStringBuilder.append(bool2);
+    localStringBuilder.append("], mWaitDelayPost[");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("], result[");
+    localStringBuilder.append(bool1);
+    localStringBuilder.append("]");
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
   }
   
   public void run()
@@ -85,7 +112,7 @@ public class BaseGaInvite$GetGaFaceRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.gaudio.BaseGaInvite.GetGaFaceRunnable
  * JD-Core Version:    0.7.0.1
  */

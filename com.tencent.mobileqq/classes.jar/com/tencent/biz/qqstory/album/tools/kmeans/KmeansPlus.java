@@ -17,113 +17,142 @@ public abstract class KmeansPlus<T>
   
   private String a(long[] paramArrayOfLong, List<List<List<T>>> paramList, List<List<T>> paramList1)
   {
-    int j = 0;
-    String[] arrayOfString = new String[paramArrayOfLong.length];
+    Object localObject1 = new String[paramArrayOfLong.length];
     paramList = paramList.iterator();
+    int j = 0;
     int i = 0;
     while (paramList.hasNext())
     {
-      Object localObject = (List)paramList.next();
-      arrayOfString[i] = ("k=" + i + ":");
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      Object localObject2 = (List)paramList.next();
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("k=");
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append(":");
+      localObject1[i] = ((StringBuilder)localObject3).toString();
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        List localList = (List)((Iterator)localObject).next();
-        arrayOfString[i] = (arrayOfString[i] + "+" + String.valueOf(localList.size()));
+        localObject3 = (List)((Iterator)localObject2).next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localObject1[i]);
+        localStringBuilder.append("+");
+        localStringBuilder.append(String.valueOf(((List)localObject3).size()));
+        localObject1[i] = localStringBuilder.toString();
       }
       i += 1;
     }
     paramArrayOfLong = Arrays.toString(paramArrayOfLong);
-    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.K_means", "kmeans run k=" + paramList1.size() + " sse : " + paramArrayOfLong + " temp=" + Arrays.toString(arrayOfString));
-    paramList1 = "(k=" + paramList1.size() + " " + paramArrayOfLong + ");";
-    paramArrayOfLong = (String)((StoryConfigManager)SuperManager.a(10)).b("key_album_debug_sse", "");
-    if (!TextUtils.isEmpty(paramArrayOfLong))
+    paramList = new StringBuilder();
+    paramList.append("kmeans run k=");
+    paramList.append(paramList1.size());
+    paramList.append(" sse : ");
+    paramList.append(paramArrayOfLong);
+    paramList.append(" temp=");
+    paramList.append(Arrays.toString((Object[])localObject1));
+    SLog.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.K_means", paramList.toString());
+    paramList = new StringBuilder();
+    paramList.append("(k=");
+    paramList.append(paramList1.size());
+    paramList.append(" ");
+    paramList.append(paramArrayOfLong);
+    paramList.append(");");
+    paramList1 = paramList.toString();
+    paramArrayOfLong = (StoryConfigManager)SuperManager.a(10);
+    paramList = "";
+    localObject1 = (String)paramArrayOfLong.b("key_album_debug_sse", "");
+    paramArrayOfLong = paramList1;
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      arrayOfString = paramArrayOfLong.split(";");
-      paramArrayOfLong = "";
+      localObject1 = ((String)localObject1).split(";");
+      paramArrayOfLong = paramList;
       i = j;
       for (;;)
       {
         paramList = paramArrayOfLong;
-        if (i < arrayOfString.length)
-        {
-          paramArrayOfLong = arrayOfString[i] + paramArrayOfLong;
-          if (i == 8) {
-            paramList = paramArrayOfLong;
-          }
+        if (i >= localObject1.length) {
+          break;
         }
-        else
+        paramList = new StringBuilder();
+        paramList.append(localObject1[i]);
+        paramList.append(paramArrayOfLong);
+        paramArrayOfLong = paramList.toString();
+        if (i == 8)
         {
-          return paramList1 + paramList;
+          paramList = paramArrayOfLong;
+          break;
         }
         i += 1;
       }
+      paramArrayOfLong = new StringBuilder();
+      paramArrayOfLong.append(paramList1);
+      paramArrayOfLong.append(paramList);
+      paramArrayOfLong = paramArrayOfLong.toString();
     }
-    return paramList1;
+    return paramArrayOfLong;
   }
   
   private List<T> a(List<List<T>> paramList)
   {
-    if ((paramList == null) || (paramList.size() < 2)) {
-      return this.a;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramList.size())
+    if ((paramList != null) && (paramList.size() >= 2))
     {
-      if (((List)paramList.get(i)).size() > 0) {
-        localArrayList.add(a((List)paramList.get(i)));
-      }
-      for (;;)
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramList.size())
       {
+        if (((List)paramList.get(i)).size() > 0) {
+          localArrayList.add(a((List)paramList.get(i)));
+        } else {
+          SLog.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.kmeans", "点位置相同时，有空的堆出现");
+        }
         i += 1;
-        break;
-        SLog.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.kmeans", "点位置相同时，有空的堆出现");
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return this.a;
   }
   
   private List<List<T>> a(List<T> paramList1, List<T> paramList2)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramList2 == null) || (paramList2.size() < 2))
+    if ((paramList2 != null) && (paramList2.size() >= 2))
     {
-      localArrayList.add(paramList1);
-      return localArrayList;
-    }
-    int j = paramList2.size();
-    int i = 0;
-    while (i < j)
-    {
-      localArrayList.add(new ArrayList());
-      i += 1;
-    }
-    j = 0;
-    while (j < paramList1.size())
-    {
-      Object localObject = paramList1.get(j);
-      i = 0;
-      int k = 0;
-      long l2;
-      for (long l1 = -1L; i < paramList2.size(); l1 = l2)
+      int j = paramList2.size();
+      int i = 0;
+      while (i < j)
       {
-        long l3 = a(localObject, paramList2.get(i));
-        if (l1 != -1L)
-        {
-          l2 = l1;
-          if (l1 <= l3) {}
-        }
-        else
-        {
-          k = i;
-          l2 = l3;
-        }
+        localArrayList.add(new ArrayList());
         i += 1;
       }
-      ((List)localArrayList.get(k)).add(localObject);
-      j += 1;
+      j = 0;
+      while (j < paramList1.size())
+      {
+        Object localObject = paramList1.get(j);
+        long l1 = -1L;
+        i = 0;
+        int k = 0;
+        while (i < paramList2.size())
+        {
+          long l3 = a(localObject, paramList2.get(i));
+          long l2;
+          if (l1 != -1L)
+          {
+            l2 = l1;
+            if (l1 <= l3) {}
+          }
+          else
+          {
+            k = i;
+            l2 = l3;
+          }
+          i += 1;
+          l1 = l2;
+        }
+        ((List)localArrayList.get(k)).add(localObject);
+        j += 1;
+      }
+      return localArrayList;
     }
+    localArrayList.add(paramList1);
     return localArrayList;
   }
   
@@ -133,44 +162,45 @@ public abstract class KmeansPlus<T>
       return false;
     }
     int i = 0;
-    for (;;)
+    while (i < paramList1.size())
     {
-      if (i >= paramList1.size()) {
-        break label57;
-      }
       if (!a(paramList1.get(i), paramList2.get(i))) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label57:
     return true;
   }
   
   private T b(List<T> paramList)
   {
-    int j = 0;
     long l2 = -1L;
     int i = 0;
-    long l1;
-    int k;
-    label30:
-    long l4;
-    if (i < this.b.size())
+    int j = 0;
+    while (i < this.b.size())
     {
-      l1 = -1L;
-      k = 0;
-      if (k >= paramList.size()) {
-        break label153;
+      long l1 = -1L;
+      int k = 0;
+      while (k < paramList.size())
+      {
+        long l4 = a(paramList.get(k), this.b.get(i));
+        if (l4 == 0L)
+        {
+          l1 = -1L;
+          break;
+        }
+        if (l1 >= 0L)
+        {
+          l3 = l1;
+          if (l4 >= l1) {}
+        }
+        else
+        {
+          l3 = l4;
+        }
+        k += 1;
+        l1 = l3;
       }
-      l4 = a(paramList.get(k), this.b.get(i));
-      if (l4 == 0L) {
-        l1 = -1L;
-      }
-    }
-    label153:
-    for (;;)
-    {
       long l3 = l2;
       if (l1 > l2)
       {
@@ -179,21 +209,8 @@ public abstract class KmeansPlus<T>
       }
       i += 1;
       l2 = l3;
-      break;
-      if (l1 >= 0L)
-      {
-        l3 = l1;
-        if (l4 >= l1) {}
-      }
-      else
-      {
-        l3 = l4;
-      }
-      k += 1;
-      l1 = l3;
-      break label30;
-      return this.b.get(j);
     }
+    return this.b.get(j);
   }
   
   protected abstract double a();
@@ -211,41 +228,30 @@ public abstract class KmeansPlus<T>
   {
     this.a = paramList;
     paramInt1 = 0;
-    long l;
-    if (paramInt1 < 50)
+    while (paramInt1 < 50)
     {
       this.c = a(this.b, this.a);
       paramList = a(this.c);
-      if (!a(this.a, paramList)) {}
-    }
-    else
-    {
-      l = 0L;
-      paramInt1 = 0;
-    }
-    for (;;)
-    {
-      if (paramInt1 >= this.c.size()) {
-        break label155;
+      if (a(this.a, paramList)) {
+        break;
       }
+      this.a = paramList;
+      paramInt1 += 1;
+    }
+    long l = 0L;
+    paramInt1 = 0;
+    while (paramInt1 < this.c.size())
+    {
       paramList = (List)this.c.get(paramInt1);
       Object localObject = this.a.get(paramInt1);
       int i = 0;
-      for (;;)
+      while (i < paramList.size())
       {
-        if (i < paramList.size())
-        {
-          l += a(localObject, paramList.get(i));
-          i += 1;
-          continue;
-          this.a = paramList;
-          paramInt1 += 1;
-          break;
-        }
+        l += a(localObject, paramList.get(i));
+        i += 1;
       }
       paramInt1 += 1;
     }
-    label155:
     if (paramArrayOfLong != null) {
       paramArrayOfLong[paramInt2] = l;
     }
@@ -269,77 +275,67 @@ public abstract class KmeansPlus<T>
   
   public List<List<T>> a(List<T> paramList, String[] paramArrayOfString)
   {
-    if (this.b == null) {}
+    Object localObject = this.b;
     this.b = paramList;
     int i = Math.min(Math.min(this.b.size() - 2, 20), a());
-    if (i > 0) {}
-    ArrayList localArrayList;
-    int j;
-    for (;;)
-    {
-      paramList = new long[i];
-      localArrayList = new ArrayList(i);
-      j = 0;
-      while (j < i)
-      {
-        localArrayList.add(a(j + 1, paramList, j));
-        j += 1;
-      }
+    if (i <= 0) {
       i = 1;
     }
-    int i1 = (paramList.length - 1) / 2;
-    int i2 = 1;
-    int n = 0;
-    int k = 0;
-    if (k < paramList.length)
+    paramList = new long[i];
+    localObject = new ArrayList(i);
+    for (int j = 0; j < i; j = k)
     {
-      int m;
+      k = j + 1;
+      ((List)localObject).add(a(k, paramList, j));
+    }
+    i = (paramList.length - 1) / 2;
+    int k = 0;
+    int m = 0;
+    j = 1;
+    while (k < paramList.length)
+    {
+      int n;
       if (k == 0)
       {
-        j = i1;
-        i = i2;
-        m = n;
-      }
-      for (;;)
-      {
-        k += 1;
         n = m;
-        i2 = i;
-        i1 = j;
-        break;
-        if (a(paramList[(k - 1)] - paramList[k]))
+      }
+      else
+      {
+        int i1 = k - 1;
+        if ((a(paramList[i1] - paramList[k])) && (m != 0))
         {
-          m = n;
-          i = i2;
-          j = i1;
-          if (n != 0) {}
+          n = m;
         }
         else
         {
-          double d = (paramList[(k - 1)] - paramList[k]) / paramList[(k - 1)];
-          if (((d < a()) || (a(paramList[(k - 1)] - paramList[k]))) && (i2 != 0))
+          double d1 = paramList[i1] - paramList[k];
+          double d2 = paramList[i1];
+          Double.isNaN(d1);
+          Double.isNaN(d2);
+          d1 /= d2;
+          if (((d1 < a()) || (a(paramList[i1] - paramList[k]))) && (j != 0))
           {
-            j = k - 1;
-            i = 0;
-            m = 1;
+            i = i1;
+            n = 1;
+            j = 0;
           }
           else
           {
-            m = n;
-            i = i2;
-            j = i1;
-            if (d > a())
+            n = m;
+            if (d1 > a())
             {
-              i = 1;
-              j = k - 1;
-              m = n;
+              i = i1;
+              j = 1;
+              n = m;
             }
           }
         }
       }
+      k += 1;
+      m = n;
     }
-    this.c = ((List)localArrayList.get(i1));
-    paramList = a(paramList, localArrayList, this.c);
+    this.c = ((List)((List)localObject).get(i));
+    paramList = a(paramList, (List)localObject, this.c);
     if (paramArrayOfString != null) {
       paramArrayOfString[0] = paramList;
     }
@@ -348,7 +344,7 @@ public abstract class KmeansPlus<T>
   
   public void a(List<T> paramList)
   {
-    if (this.b == null) {}
+    List localList = this.b;
     this.b = paramList;
   }
   
@@ -361,15 +357,16 @@ public abstract class KmeansPlus<T>
   
   protected int b()
   {
-    if (this.b == null) {
+    List localList = this.b;
+    if (localList == null) {
       return 0;
     }
-    return this.b.size();
+    return localList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.kmeans.KmeansPlus
  * JD-Core Version:    0.7.0.1
  */

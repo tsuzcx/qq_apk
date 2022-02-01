@@ -17,9 +17,7 @@ class PluginSplashDialog$InternalHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 0) {
       return;
     }
     try
@@ -32,7 +30,7 @@ class PluginSplashDialog$InternalHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginSplashDialog.InternalHandler
  * JD-Core Version:    0.7.0.1
  */

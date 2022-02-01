@@ -29,15 +29,15 @@ public class PicSelectAdapter$PicItemViewHolder
   public PicSelectAdapter$PicItemViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368939));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364727));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368973));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368940));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364728));
-    this.d = ((ImageView)paramView.findViewById(2131368974));
-    this.e = ((ImageView)paramView.findViewById(2131368941));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364729));
-    this.f = ((ImageView)paramView.findViewById(2131368975));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368660));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364614));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368695));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368661));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364615));
+    this.d = ((ImageView)paramView.findViewById(2131368696));
+    this.e = ((ImageView)paramView.findViewById(2131368662));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131364616));
+    this.f = ((ImageView)paramView.findViewById(2131368697));
     this.jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[] { this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_c_of_type_AndroidWidgetImageView, this.e };
     paramView = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView;
     int j = paramView.length;
@@ -58,18 +58,25 @@ public class PicSelectAdapter$PicItemViewHolder
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("picOnClick.1", 2, "v.getId: " + paramView.getId() + " itemView.getTag: " + this.itemView.getTag());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("v.getId: ");
+      ((StringBuilder)localObject).append(paramView.getId());
+      ((StringBuilder)localObject).append(" itemView.getTag: ");
+      ((StringBuilder)localObject).append(this.itemView.getTag());
+      QLog.i("picOnClick.1", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstorePicSelectAdapter$OnImgClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstorePicSelectAdapter$OnImgClickListener.a(((Integer)this.itemView.getTag()).intValue(), paramView.getId());
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstorePicSelectAdapter$OnImgClickListener;
+    if (localObject != null) {
+      ((PicSelectAdapter.OnImgClickListener)localObject).a(((Integer)this.itemView.getTag()).intValue(), paramView.getId());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter.PicItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

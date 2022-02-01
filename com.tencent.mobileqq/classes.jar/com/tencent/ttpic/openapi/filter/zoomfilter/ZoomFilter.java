@@ -38,15 +38,19 @@ public class ZoomFilter
   
   public Frame RenderProcess(Frame paramFrame)
   {
-    if ((this.effectZoomId == null) || (paramFrame == null) || (notNeedZoomProcess())) {
-      return paramFrame;
+    if ((this.effectZoomId != null) && (paramFrame != null))
+    {
+      if (notNeedZoomProcess()) {
+        return paramFrame;
+      }
+      this.mCanvans.x = paramFrame.width;
+      this.mCanvans.y = paramFrame.height;
+      updateParams(this.mTransScaleInfo.scaleValue, 0.0F, 1.0F, this.mTransScaleInfo.anchorPoint, this.TRANSLATE, this.mCanvans);
+      FrameUtil.clearFrame(this.mRotateScaleFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame.width, paramFrame.height);
+      RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mRotateScaleFrame);
+      return this.mRotateScaleFrame;
     }
-    this.mCanvans.x = paramFrame.width;
-    this.mCanvans.y = paramFrame.height;
-    updateParams(this.mTransScaleInfo.scaleValue, 0.0F, 1.0F, this.mTransScaleInfo.anchorPoint, this.TRANSLATE, this.mCanvans);
-    FrameUtil.clearFrame(this.mRotateScaleFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramFrame.width, paramFrame.height);
-    RenderProcess(paramFrame.getTextureId(), paramFrame.width, paramFrame.height, -1, 0.0D, this.mRotateScaleFrame);
-    return this.mRotateScaleFrame;
+    return paramFrame;
   }
   
   public void addItem(StickerItem paramStickerItem)
@@ -64,19 +68,21 @@ public class ZoomFilter
   {
     super.clearGLSLSelf();
     reset();
-    if (this.mZoomMap != null) {
-      this.mZoomMap.clear();
+    HashMap localHashMap = this.mZoomMap;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
     this.mRotateScaleFrame.clear();
   }
   
   public void reset()
   {
-    if (this.mZoomMap != null)
+    Object localObject = this.mZoomMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mZoomMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((ZoomInfo)localIterator.next()).reset();
+      localObject = ((HashMap)localObject).values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((ZoomInfo)((Iterator)localObject).next()).reset();
       }
     }
     this.effectZoomId = null;
@@ -90,25 +96,30 @@ public class ZoomFilter
   
   public void updateZoomParams(PTFaceAttr paramPTFaceAttr, PTDetectInfo paramPTDetectInfo, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.zoomModel == null) || (this.zoomModel.zoomId == null))
+    paramPTDetectInfo = this.zoomModel;
+    if ((paramPTDetectInfo != null) && (paramPTDetectInfo.zoomId != null))
     {
-      this.effectZoomId = null;
+      if (!this.zoomModel.zoomId.equals(this.effectZoomId))
+      {
+        paramPTDetectInfo = this.effectZoomId;
+        if (paramPTDetectInfo != null)
+        {
+          ((ZoomInfo)this.mZoomMap.get(paramPTDetectInfo)).reset();
+          this.mTransScaleInfo.reset();
+        }
+      }
+      this.effectZoomId = this.zoomModel.zoomId;
+      paramPTDetectInfo = (ZoomInfo)this.mZoomMap.get(this.effectZoomId);
+      paramPTDetectInfo.reset();
+      paramPTDetectInfo.updateZoomInfo(paramPTFaceAttr, paramInt1, paramInt2, this.zoomModel.frameIndex, this.mTransScaleInfo);
       return;
     }
-    if ((!this.zoomModel.zoomId.equals(this.effectZoomId)) && (this.effectZoomId != null))
-    {
-      ((ZoomInfo)this.mZoomMap.get(this.effectZoomId)).reset();
-      this.mTransScaleInfo.reset();
-    }
-    this.effectZoomId = this.zoomModel.zoomId;
-    paramPTDetectInfo = (ZoomInfo)this.mZoomMap.get(this.effectZoomId);
-    paramPTDetectInfo.reset();
-    paramPTDetectInfo.updateZoomInfo(paramPTFaceAttr, paramInt1, paramInt2, this.zoomModel.frameIndex, this.mTransScaleInfo);
+    this.effectZoomId = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.zoomfilter.ZoomFilter
  * JD-Core Version:    0.7.0.1
  */

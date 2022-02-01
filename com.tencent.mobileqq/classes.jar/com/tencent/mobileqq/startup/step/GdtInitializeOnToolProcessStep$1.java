@@ -14,7 +14,10 @@ class GdtInitializeOnToolProcessStep$1
     {
       long l = System.currentTimeMillis();
       GdtIPCManager.a().a(BaseApplicationImpl.getContext());
-      GdtInitializeOnToolProcessStep.a("GdtInitializeOnToolProcessStep", "ipc register durationMillis:" + (System.currentTimeMillis() - l), null);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ipc register durationMillis:");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      GdtInitializeOnToolProcessStep.a("GdtInitializeOnToolProcessStep", localStringBuilder.toString(), null);
       return;
     }
     catch (Throwable localThrowable)
@@ -25,7 +28,7 @@ class GdtInitializeOnToolProcessStep$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.GdtInitializeOnToolProcessStep.1
  * JD-Core Version:    0.7.0.1
  */

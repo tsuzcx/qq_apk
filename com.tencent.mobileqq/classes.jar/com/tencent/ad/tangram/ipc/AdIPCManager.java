@@ -21,7 +21,8 @@ public enum AdIPCManager
   
   public AdIPCManager.Handler getHandler(String paramString)
   {
-    if ((this.adapter != null) && (this.adapter.get() != null)) {
+    WeakReference localWeakReference = this.adapter;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       return ((AdIPCManager.Adapter)this.adapter.get()).getHandler(paramString);
     }
     return null;
@@ -30,26 +31,28 @@ public enum AdIPCManager
   public void init(Context paramContext, WeakReference<AdIPCManager.Adapter> paramWeakReference)
   {
     AdLog.i("AdIPCManager", String.format("init %b", new Object[] { Boolean.valueOf(this.initialized) }));
-    if (this.initialized) {}
-    do
-    {
+    if (this.initialized) {
       return;
-      try
-      {
-        if (this.initialized) {
-          return;
-        }
+    }
+    try
+    {
+      if (this.initialized) {
+        return;
       }
-      finally {}
       this.initialized = true;
       this.adapter = paramWeakReference;
-    } while ((paramWeakReference == null) || (paramWeakReference.get() == null));
-    ((AdIPCManager.Adapter)paramWeakReference.get()).init(paramContext);
+      if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+        ((AdIPCManager.Adapter)paramWeakReference.get()).init(paramContext);
+      }
+      return;
+    }
+    finally {}
   }
   
   public boolean register(String paramString, AdIPCManager.Handler paramHandler)
   {
-    if ((this.adapter != null) && (this.adapter.get() != null)) {
+    WeakReference localWeakReference = this.adapter;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       return ((AdIPCManager.Adapter)this.adapter.get()).register(paramString, paramHandler);
     }
     return false;
@@ -57,7 +60,8 @@ public enum AdIPCManager
   
   public AdIPCManager.Result send(Context paramContext, AdIPCManager.Params paramParams)
   {
-    if ((this.adapter != null) && (this.adapter.get() != null)) {
+    WeakReference localWeakReference = this.adapter;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       return ((AdIPCManager.Adapter)this.adapter.get()).send(paramContext, paramParams);
     }
     return null;
@@ -65,7 +69,8 @@ public enum AdIPCManager
   
   public void send(Context paramContext, AdIPCManager.Params paramParams, WeakReference<AdIPCManager.Callback> paramWeakReference)
   {
-    if ((this.adapter != null) && (this.adapter.get() != null)) {
+    WeakReference localWeakReference = this.adapter;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       ((AdIPCManager.Adapter)this.adapter.get()).send(paramContext, paramParams, paramWeakReference);
     }
   }

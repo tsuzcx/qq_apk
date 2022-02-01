@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class VPNGRendererManager
 {
-  private static VPNGRendererManager jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager = null;
+  private static VPNGRendererManager jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager;
   private ArrayList<VPNGRenderer> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   private LinkedList<Renderable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   
@@ -16,15 +16,16 @@ public class VPNGRendererManager
   
   public static VPNGRendererManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager == null) {
-        jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager = new VPNGRendererManager();
+    if (jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager == null) {
+          jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager = new VPNGRendererManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqVpngGlrendererVPNGRendererManager;
   }
   
   public VPNGRenderer a(Renderable paramRenderable, int paramInt1, int paramInt2)
@@ -59,7 +60,7 @@ public class VPNGRendererManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vpng.glrenderer.VPNGRendererManager
  * JD-Core Version:    0.7.0.1
  */

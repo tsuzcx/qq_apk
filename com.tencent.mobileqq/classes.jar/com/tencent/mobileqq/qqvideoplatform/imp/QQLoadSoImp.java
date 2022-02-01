@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.qqvideoplatform.imp;
 
-import com.tencent.mobileqq.soload.SoLoadManager;
-import com.tencent.mobileqq.soload.biz.entity.LoadExtResult;
+import com.tencent.mobileqq.qqvideoplatform.api.IVideoSoLoader;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
 import com.tencent.mobileqq.videoplatform.api.ILoadSo;
 import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
 import com.tencent.mobileqq.videoplatform.util.LogUtil;
@@ -23,25 +24,17 @@ public class QQLoadSoImp
   
   public boolean isDownProxyLoad()
   {
-    return this.a;
+    return VideoPlaySDKManager.getInstance().isSoLoadSuc();
   }
   
   public boolean isTPCoreLoad()
   {
-    return this.a;
+    return VideoPlaySDKManager.getInstance().isSoLoadSuc();
   }
   
   public boolean loadDownProxySync()
   {
-    boolean bool = false;
-    LoadExtResult localLoadExtResult = SoLoadManager.a().a("DownloadProxy");
-    if (localLoadExtResult != null) {
-      bool = localLoadExtResult.isSucc();
-    }
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadDownProxySync, bDownProxyResult  = " + bool);
-    }
-    return bool;
+    return ((IVideoSoLoader)QRoute.api(IVideoSoLoader.class)).loadDownProxySync();
   }
   
   public void loadSo(LoadSoCallback paramLoadSoCallback)
@@ -49,27 +42,17 @@ public class QQLoadSoImp
     if (LogUtil.isColorLevel()) {
       LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "initSDKAsync, loadSo begin.");
     }
-    SoLoadManager localSoLoadManager = SoLoadManager.a();
-    paramLoadSoCallback = new QQLoadSoImp.1(this, paramLoadSoCallback);
-    localSoLoadManager.a(new String[] { "TPCore-master", "DownloadProxy", "ckguard", "ckeygeneratorV2" }, paramLoadSoCallback);
+    ((IVideoSoLoader)QRoute.api(IVideoSoLoader.class)).loadSo(paramLoadSoCallback);
   }
   
   public boolean loadTPCoreSync()
   {
-    boolean bool = false;
-    LoadExtResult localLoadExtResult = SoLoadManager.a().a("TPCore-master");
-    if (localLoadExtResult != null) {
-      bool = localLoadExtResult.isSucc();
-    }
-    if (LogUtil.isColorLevel()) {
-      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "loadTPCoreSync, bTPCoreResult  = " + bool);
-    }
-    return bool;
+    return ((IVideoSoLoader)QRoute.api(IVideoSoLoader.class)).loadTPCoreSync();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqvideoplatform.imp.QQLoadSoImp
  * JD-Core Version:    0.7.0.1
  */

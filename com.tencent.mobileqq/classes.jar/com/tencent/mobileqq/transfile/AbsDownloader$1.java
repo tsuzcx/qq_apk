@@ -17,17 +17,17 @@ class AbsDownloader$1
     }
     catch (IOException localIOException)
     {
-      do
-      {
-        QLog.e("AbsDownloader", 2, localIOException.getMessage());
-      } while (this.val$editor == null);
-      this.val$editor.abort(false);
+      QLog.e("AbsDownloader", 2, localIOException.getMessage());
+      DiskCache.Editor localEditor = this.val$editor;
+      if (localEditor != null) {
+        localEditor.abort(false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AbsDownloader.1
  * JD-Core Version:    0.7.0.1
  */

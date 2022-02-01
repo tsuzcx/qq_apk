@@ -19,7 +19,10 @@ class RichTextParser$DrawableCallBack
   public void onCallBack(boolean paramBoolean, Drawable paramDrawable)
   {
     paramDrawable = (View)this.weakReference.get();
-    LogUtil.QLog.e("RichTextParser", 1, "onCallBack: isSuccess" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCallBack: isSuccess");
+    localStringBuilder.append(paramBoolean);
+    LogUtil.QLog.e("RichTextParser", 1, localStringBuilder.toString());
     if (paramDrawable != null)
     {
       paramDrawable.invalidate();
@@ -29,7 +32,7 @@ class RichTextParser$DrawableCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.RichTextParser.DrawableCallBack
  * JD-Core Version:    0.7.0.1
  */

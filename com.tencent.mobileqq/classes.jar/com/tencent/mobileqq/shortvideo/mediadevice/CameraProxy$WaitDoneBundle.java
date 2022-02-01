@@ -15,16 +15,17 @@ public class CameraProxy$WaitDoneBundle
   
   static void a(Message paramMessage)
   {
-    if (paramMessage == null) {}
-    while (!(paramMessage.obj instanceof WaitDoneBundle)) {
+    if (paramMessage == null) {
       return;
     }
-    ((WaitDoneBundle)paramMessage.obj).jdField_a_of_type_JavaLangRunnable.run();
+    if ((paramMessage.obj instanceof WaitDoneBundle)) {
+      ((WaitDoneBundle)paramMessage.obj).jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle
  * JD-Core Version:    0.7.0.1
  */

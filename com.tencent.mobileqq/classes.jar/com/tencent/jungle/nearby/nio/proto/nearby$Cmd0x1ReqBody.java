@@ -32,13 +32,16 @@ public final class nearby$Cmd0x1ReqBody
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 45, 48, 56, 64, 72, 82, 88, 96, 106, 112, 120 }, new String[] { "uint32_seq", "uint64_req_uid", "uint64_req_tinyid", "bytes_user_cookie", "uint32_client_addr", "bool_published", "bool_bars", "bool_fans", "uint64_user_uid", "user_login_sig", "uint32_from", "bool_face_score", "bytes_comm_param", "uint64_req_nowid", "uint32_req_id_type" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(false), Boolean.valueOf(false), Long.valueOf(0L), null, Integer.valueOf(0), Boolean.valueOf(false), null, Long.valueOf(0L), Integer.valueOf(0) }, Cmd0x1ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 45, 48, 56, 64, 72, 82, 88, 96, 106, 112, 120 }, new String[] { "uint32_seq", "uint64_req_uid", "uint64_req_tinyid", "bytes_user_cookie", "uint32_client_addr", "bool_published", "bool_bars", "bool_fans", "uint64_user_uid", "user_login_sig", "uint32_from", "bool_face_score", "bytes_comm_param", "uint64_req_nowid", "uint32_req_id_type" }, new Object[] { localInteger, localLong, localLong, localByteStringMicro, localInteger, localBoolean, localBoolean, localBoolean, localLong, null, localInteger, localBoolean, null, localLong, localInteger }, Cmd0x1ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jungle.nearby.nio.proto.nearby.Cmd0x1ReqBody
  * JD-Core Version:    0.7.0.1
  */

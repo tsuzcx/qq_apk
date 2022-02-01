@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -21,14 +20,13 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
 import com.tencent.mobileqq.log.VipWebViewReportLog;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.ViewExposeUtil;
 import com.tencent.mobileqq.statistics.ViewExposeUtil.ViewExposeUnit;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
@@ -44,7 +42,6 @@ import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallbac
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.SslError;
-import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
 import com.tencent.smtt.sdk.WebSettings;
@@ -58,8 +55,6 @@ import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class WebViewModule
   implements WebViewCallback
@@ -97,13 +92,14 @@ public class WebViewModule
   
   public boolean beforeWebViewEngineHandleOverrideUrl(WebView paramWebView, String paramString)
   {
-    if ((this.isDestroyed) || (this.webView == null)) {
-      return true;
+    if ((!this.isDestroyed) && (this.webView != null))
+    {
+      Util.a("urlInterceptManager");
+      SwiftWebViewUtils.b(paramString);
+      Util.b("urlInterceptManager");
+      return false;
     }
-    Util.a("urlInterceptManager");
-    SwiftWebViewUtils.a(paramString);
-    Util.b("urlInterceptManager");
-    return false;
+    return true;
   }
   
   void buildCookieForRedirect(String paramString1, String paramString2)
@@ -118,11 +114,12 @@ public class WebViewModule
       if (this.redirectCookie)
       {
         paramString1 = SwiftBrowserCookieMonster.a(paramString2);
-        if (paramString1 != null) {
+        if (paramString1 != null)
+        {
           paramString1.a(paramString2, null, null, this.intent);
+          return;
         }
       }
-      return;
     }
     catch (Throwable paramString1)
     {
@@ -135,8 +132,9 @@ public class WebViewModule
     this.webViewWrapper = new WebViewWrapper(this.mApp, this, this.intent, this.mContext, false);
     this.webViewWrapper.a(this.sonicClient);
     TouchWebView localTouchWebView = this.webViewWrapper.a();
-    if (this.sonicClient != null) {
-      this.sonicClient.bindWebView(localTouchWebView);
+    SonicClientImpl localSonicClientImpl = this.sonicClient;
+    if (localSonicClientImpl != null) {
+      localSonicClientImpl.bindWebView(localTouchWebView);
     }
     this.mPluginEngine.a(localTouchWebView);
     localTouchWebView.setPluginEngine(this.mPluginEngine);
@@ -152,9 +150,10 @@ public class WebViewModule
       QLog.d("WebViewModule", 2, "onDestroy");
     }
     this.isDestroyed = true;
-    if (this.webViewWrapper != null)
+    WebViewWrapper localWebViewWrapper = this.webViewWrapper;
+    if (localWebViewWrapper != null)
     {
-      this.webViewWrapper.a();
+      localWebViewWrapper.b();
       this.webViewWrapper = null;
       this.webView = null;
     }
@@ -163,11 +162,12 @@ public class WebViewModule
   
   protected boolean dispatchPluginEvent(long paramLong, Map<String, Object> paramMap)
   {
-    if (this.webView != null)
+    Object localObject = this.webView;
+    if (localObject != null)
     {
-      WebViewPluginEngine localWebViewPluginEngine = this.webView.getPluginEngine();
-      if (localWebViewPluginEngine != null) {
-        return localWebViewPluginEngine.a(this.webView.getUrl(), paramLong, paramMap);
+      localObject = ((TouchWebView)localObject).getPluginEngine();
+      if (localObject != null) {
+        return ((WebViewPluginEngine)localObject).a(this.webView.getUrl(), paramLong, paramMap);
       }
     }
     return false;
@@ -177,8 +177,8 @@ public class WebViewModule
   {
     Util.a("Web_qqbrowser_state_machine_init_FINAL");
     Util.a("Web_IPCSetup");
-    if (!WebIPCOperator.a().a()) {
-      WebIPCOperator.a().a().doBindService(BaseApplicationImpl.getApplication());
+    if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded()) {
+      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doBindService(BaseApplicationImpl.getApplication());
     }
     Util.b("Web_IPCSetup");
     SwiftBrowserIdleTaskHelper.a().a(new WebViewModule.4(this, 2));
@@ -212,47 +212,7 @@ public class WebViewModule
   
   protected int doCreateLoopStep_InitData(Bundle paramBundle)
   {
-    i = 1;
-    Util.a("Web_qqbrowser_state_machine_init_data");
-    QbSdk.setQQBuildNumber("5105");
-    paramBundle = this.intent.getStringExtra("options");
-    if (paramBundle != null) {}
-    try
-    {
-      paramBundle = new JSONObject(paramBundle);
-      this.intent.putExtra("url", paramBundle.getString("url"));
-      if (!this.intent.hasExtra("key_isReadModeEnabled")) {
-        this.intent.putExtra("key_isReadModeEnabled", true);
-      }
-      this.intent.putExtra("ba_is_login", paramBundle.optBoolean("ba_is_login", true));
-      this.intent.putExtra("isShowAd", paramBundle.optBoolean("isShowAd", true));
-      this.intent.putExtra("avoidLoginWeb", paramBundle.optBoolean("avoidLoginWeb", false));
-    }
-    catch (JSONException paramBundle)
-    {
-      for (;;)
-      {
-        boolean bool;
-        int j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("WebViewModule", 2, paramBundle.toString());
-          continue;
-          i = 0;
-        }
-      }
-    }
-    new StringBuilder().append(Build.MANUFACTURER).append("_").append(Build.MODEL).toString();
-    bool = this.intent.getBooleanExtra("fromNearby", false);
-    paramBundle = getClass();
-    j = hashCode();
-    if (bool)
-    {
-      ViewExposeUtil.a(paramBundle, j, i, this.mUrl);
-      Util.b("Web_qqbrowser_state_machine_init_data");
-      this.mCreateLoopNextStep = 4;
-      return 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   protected int doCreateLoopStep_InitWebView(Bundle paramBundle)
@@ -310,7 +270,6 @@ public class WebViewModule
   {
     if (1 != this.mCreateLoopNextStep)
     {
-      int i = this.mCreateLoopNextStep;
       this.mCreateLoopScheduler.b();
       this.mCreateLoopScheduler.a();
       this.mCreateLoopScheduler.a(new Bundle());
@@ -338,12 +297,15 @@ public class WebViewModule
           this.mPluginEngine.a(this.mApp, getActivity(), ((CommonJsPluginFactory)???).getCommonJsPlugin());
           WebAccelerateHelper.getInstance().bindFragment(this.mPluginEngine, null);
         }
-        return;
       }
+      else
+      {
+        this.mPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.mApp, getActivity(), null, WebViewModulePluginBuilder.a(this.intent), null);
+        WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.mPluginEngine, this.mApp, getActivity());
+        WebAccelerateHelper.getInstance().bindFragment(this.mPluginEngine, null);
+      }
+      return;
     }
-    this.mPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.mApp, getActivity(), null, WebViewModulePluginBuilder.a(this.intent), null);
-    WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.mPluginEngine, this.mApp, getActivity());
-    WebAccelerateHelper.getInstance().bindFragment(this.mPluginEngine, null);
   }
   
   protected Activity getActivity()
@@ -388,137 +350,154 @@ public class WebViewModule
     if (paramString == null) {
       return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewModule", 2, "initSonicSession url = :" + paramString);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("initSonicSession url = :");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("WebViewModule", 2, ((StringBuilder)localObject1).toString());
     }
     for (;;)
     {
-      int i;
       try
       {
-        SonicSessionConfig.Builder localBuilder = new SonicSessionConfig.Builder();
-        localBuilder.setSessionMode(1);
-        Object localObject = Uri.parse(paramString);
-        if (((Uri)localObject).isHierarchical())
+        localObject2 = new SonicSessionConfig.Builder();
+        ((SonicSessionConfig.Builder)localObject2).setSessionMode(1);
+        localObject1 = Uri.parse(paramString);
+        if (((Uri)localObject1).isHierarchical())
         {
-          localObject = ((Uri)localObject).getQueryParameter("_sonic_xv");
-          if (!TextUtils.isEmpty((CharSequence)localObject))
+          localObject1 = ((Uri)localObject1).getQueryParameter("_sonic_xv");
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
             HashMap localHashMap = new HashMap();
-            long l = Long.parseLong((String)localObject);
+            long l = Long.parseLong((String)localObject1);
             if ((0x2 & l) == 0L) {
-              break label332;
+              break label366;
             }
             bool = true;
-            localBuilder.setSupportLocalServer(bool);
+            ((SonicSessionConfig.Builder)localObject2).setSupportLocalServer(bool);
             if ((0x4 & l) == 0L) {
-              break label338;
+              break label372;
             }
             i = 1;
-            break label320;
-            label137:
-            localHashMap.put("cache-offline", localObject);
-            localBuilder.setCustomResponseHeaders(localHashMap);
+            break label374;
+            localHashMap.put("cache-offline", localObject1);
+            ((SonicSessionConfig.Builder)localObject2).setCustomResponseHeaders(localHashMap);
             if ((0x8 & l) == 0L) {
-              break label351;
+              break label394;
             }
             bool = true;
-            localBuilder.setSupportCacheControl(bool);
+            ((SonicSessionConfig.Builder)localObject2).setSupportCacheControl(bool);
           }
         }
-        localObject = WebAccelerateHelper.getSonicEngine();
-        if (localObject != null)
+        localObject1 = WebAccelerateHelper.getSonicEngine();
+        if (localObject1 != null)
         {
-          localObject = ((SonicEngine)localObject).createSession(paramString, localBuilder.build());
-          if (localObject != null)
+          localObject1 = ((SonicEngine)localObject1).createSession(paramString, ((SonicSessionConfig.Builder)localObject2).build());
+          if (localObject1 != null)
           {
-            this.sonicClient = new SonicClientImpl((SonicSession)localObject);
-            ((SonicSession)localObject).bindClient(this.sonicClient);
+            this.sonicClient = new SonicClientImpl((SonicSession)localObject1);
+            ((SonicSession)localObject1).bindClient(this.sonicClient);
             return true;
           }
-          QLog.d("WebViewModule", 1, "initSonicSession sonicSession = null, url = " + paramString);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("initSonicSession sonicSession = null, url = ");
+          ((StringBuilder)localObject1).append(paramString);
+          QLog.d("WebViewModule", 1, ((StringBuilder)localObject1).toString());
           return false;
         }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("initSonicSession sonicEngine = null, url = ");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.d("WebViewModule", 1, ((StringBuilder)localObject1).toString());
+        return false;
       }
       catch (Exception localException)
       {
-        QLog.e("WebViewModule", 1, "initSonicSession exception, url = " + paramString, localException);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("initSonicSession exception, url = ");
+        ((StringBuilder)localObject2).append(paramString);
+        QLog.e("WebViewModule", 1, ((StringBuilder)localObject2).toString(), localException);
         return false;
       }
-      QLog.d("WebViewModule", 1, "initSonicSession sonicEngine = null, url = " + paramString);
-      return false;
-      for (;;)
-      {
-        label320:
-        if (i == 0) {
-          break label343;
-        }
-        str = "store";
-        break label137;
-        label332:
-        bool = false;
-        break;
-        label338:
-        i = 0;
-      }
-      label343:
-      String str = "true";
-      continue;
-      label351:
+      label366:
       boolean bool = false;
+      continue;
+      label372:
+      int i = 0;
+      label374:
+      String str;
+      if (i != 0)
+      {
+        str = "store";
+      }
+      else
+      {
+        str = "true";
+        continue;
+        label394:
+        bool = false;
+      }
     }
   }
   
   protected void initWebView()
   {
-    int k = -1;
-    int j = 0;
-    int i;
     if (this.webView == null)
     {
       this.webView = createWebViewWrapper().a();
       System.currentTimeMillis();
-      i = k;
-      switch (this.intent.getIntExtra("reqType", -1))
+      Object localObject = this.intent;
+      int i = -1;
+      int k = ((Intent)localObject).getIntExtra("reqType", -1);
+      int j = 1;
+      if (k != 1)
       {
-      default: 
-        i = k;
+        if (k == 4) {
+          i = 0;
+        }
       }
-    }
-    for (;;)
-    {
+      else {
+        i = 2;
+      }
       if (AppSetting.g) {
         i = 2;
       }
       this.webView.getSettings().setCacheMode(i);
-      if (QLog.isColorLevel()) {
-        QLog.i("WebViewModule", 2, "setCacheMode=" + i);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setCacheMode=");
+        ((StringBuilder)localObject).append(i);
+        QLog.i("WebViewModule", 2, ((StringBuilder)localObject).toString());
       }
       this.webView.getSettings().setAllowFileAccessFromFileURLs(false);
       this.webView.getSettings().setAllowUniversalAccessFromFileURLs(false);
       System.currentTimeMillis();
       long l1 = System.currentTimeMillis();
-      IX5WebViewExtension localIX5WebViewExtension = this.webView.getX5WebViewExtension();
-      i = j;
-      if (localIX5WebViewExtension != null) {
-        i = 1;
+      localObject = this.webView.getX5WebViewExtension();
+      if (localObject != null) {
+        i = j;
+      } else {
+        i = 0;
       }
       if (i != 0)
       {
         Bundle localBundle = SwiftWebViewUtils.a();
         if (localBundle != null) {
-          localIX5WebViewExtension.invokeMiscMethod("setDomainsAndArgumentForImageRequest", localBundle);
+          ((IX5WebViewExtension)localObject).invokeMiscMethod("setDomainsAndArgumentForImageRequest", localBundle);
         }
       }
       long l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.i("WebViewModule", 2, "setDomainsAndArgumentForImageRequest, cost=" + (l2 - l1));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setDomainsAndArgumentForImageRequest, cost=");
+        ((StringBuilder)localObject).append(l2 - l1);
+        QLog.i("WebViewModule", 2, ((StringBuilder)localObject).toString());
       }
       this.mPluginEngine.a(this.mUrl, 8589934623L, null);
-      return;
-      i = 2;
-      continue;
-      i = 0;
     }
   }
   
@@ -526,23 +505,24 @@ public class WebViewModule
   {
     preInitData();
     doWebSoRequest();
-    if (!this.intent.getBooleanExtra("key_is_init_sonic_session", true)) {}
-    for (boolean bool = false;; bool = initSonicSession(getUrlFromIntent()))
-    {
-      if (!bool) {
-        ThreadManager.post(new WebViewModule.2(this), 5, null, true);
-      }
-      this.mNightMode = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-      this.authConfig = AuthorizeConfig.a();
-      this.isDestroyed = false;
-      this.mCreateLoopNextStep = 2;
-      if ((WebAccelerateHelper.isWebViewCache) || (SwiftReuseTouchWebView.c > 0)) {
-        this.mCreateLoopScheduler.a();
-      }
-      WebAccelerateHelper.isWebViewCache = true;
-      this.mCreateLoopScheduler.a(new Bundle());
-      return;
+    boolean bool;
+    if (!this.intent.getBooleanExtra("key_is_init_sonic_session", true)) {
+      bool = false;
+    } else {
+      bool = initSonicSession(getUrlFromIntent());
     }
+    if (!bool) {
+      ThreadManager.post(new WebViewModule.2(this), 5, null, true);
+    }
+    this.mNightMode = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
+    this.authConfig = AuthorizeConfig.a();
+    this.isDestroyed = false;
+    this.mCreateLoopNextStep = 2;
+    if ((WebAccelerateHelper.isWebViewCache) || (SwiftReuseTouchWebView.c > 0)) {
+      this.mCreateLoopScheduler.a();
+    }
+    WebAccelerateHelper.isWebViewCache = true;
+    this.mCreateLoopScheduler.a(new Bundle());
   }
   
   public void onDestroy()
@@ -552,71 +532,86 @@ public class WebViewModule
       this.mCreateLoopScheduler.b();
       this.mCreateLoopNextStep = 1;
     }
-    if (this.sonicClient != null)
+    Object localObject = this.sonicClient;
+    if (localObject != null)
     {
-      this.sonicClient.destroy();
+      ((SonicClientImpl)localObject).destroy();
       this.sonicClient = null;
     }
-    if (this.webView != null) {}
-    for (Object localObject = this.webView.getPluginEngine();; localObject = null)
-    {
-      if (localObject != null) {
-        ((WebViewPluginEngine)localObject).a(this.webView.getUrl(), 8589934596L, null);
-      }
-      new Bundle().putString("url", this.mUrl);
-      destroyWebView();
-      if (QQBrowserActivity.sQQBrowserActivityCounter == 0)
-      {
-        WebIPCOperator.a().a().doUnbindService(BaseApplicationImpl.getApplication());
-        com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.CrashStepStatsEntry.d = -1;
-      }
-      localObject = ViewExposeUtil.a(getClass(), hashCode());
-      if (localObject != null) {
-        ReportController.b(null, "CliOper", "", "", ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_JavaLangString, ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_JavaLangString, ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_Int, 0, Long.toString(SystemClock.elapsedRealtime() - ((ViewExposeUtil.ViewExposeUnit)localObject).b), "", "", "");
-      }
-      SwiftBrowserIdleTaskHelper.a().a(2);
-      return;
+    localObject = this.webView;
+    if (localObject != null) {
+      localObject = ((TouchWebView)localObject).getPluginEngine();
+    } else {
+      localObject = null;
     }
+    if (localObject != null) {
+      ((WebViewPluginEngine)localObject).a(this.webView.getUrl(), 8589934596L, null);
+    }
+    new Bundle().putString("url", this.mUrl);
+    destroyWebView();
+    if (QQBrowserActivity.sQQBrowserActivityCounter == 0)
+    {
+      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).doUnbindService(BaseApplicationImpl.getApplication());
+      com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.CrashStepStatsEntry.d = -1;
+    }
+    localObject = ViewExposeUtil.a(getClass(), hashCode());
+    if (localObject != null) {
+      ReportController.b(null, "CliOper", "", "", ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_JavaLangString, ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_JavaLangString, ((ViewExposeUtil.ViewExposeUnit)localObject).jdField_a_of_type_Int, 0, Long.toString(SystemClock.elapsedRealtime() - ((ViewExposeUtil.ViewExposeUnit)localObject).b), "", "", "");
+    }
+    SwiftBrowserIdleTaskHelper.a().a(2);
   }
   
   public void onDetectedBlankScreen(String paramString, int paramInt) {}
   
   public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewModule", 2, "onGeolocationPermissionsShowPrompt:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGeolocationPermissionsShowPrompt:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("WebViewModule", 2, ((StringBuilder)localObject).toString());
     }
-    String str = paramString;
+    Object localObject = paramString;
     if (paramString != null)
     {
-      str = paramString;
+      localObject = paramString;
       if (paramString.indexOf(':') == -1)
       {
-        str = paramString;
-        if (this.webView != null)
+        TouchWebView localTouchWebView = this.webView;
+        localObject = paramString;
+        if (localTouchWebView != null)
         {
-          str = paramString;
-          if (this.webView.getX5WebViewExtension() != null) {
-            str = "https://" + paramString + "/";
+          localObject = paramString;
+          if (localTouchWebView.getX5WebViewExtension() != null)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("https://");
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append("/");
+            localObject = ((StringBuilder)localObject).toString();
           }
         }
       }
     }
-    boolean bool2 = this.authConfig.a(str, "publicAccount.getLocation");
-    if (this.webView != null) {}
-    for (paramString = Util.a(this.webView.getUrl(), 2);; paramString = "")
-    {
-      boolean bool3 = ((IPublicAccountJavascriptInterface)QRoute.api(IPublicAccountJavascriptInterface.class)).getLocationPermissionGrant(this.uin, paramString);
-      if ((bool3) && (bool2)) {}
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("WebViewModule", 2, new Object[] { "onGeolocationPermissionsShowPrompt allow:", Boolean.valueOf(bool2), " granted:", Boolean.valueOf(bool3), " hasRight:", Boolean.valueOf(bool1), " uin:", this.uin, " urlHost:", paramString });
-        }
-        paramGeolocationPermissionsCallback.invoke(str, bool1, false);
-        return;
-      }
+    boolean bool2 = this.authConfig.a((String)localObject, "publicAccount.getLocation");
+    paramString = this.webView;
+    if (paramString != null) {
+      paramString = Util.a(paramString.getUrl(), 2);
+    } else {
+      paramString = "";
     }
+    boolean bool3 = ((IPublicAccountJavascriptInterface)QRoute.api(IPublicAccountJavascriptInterface.class)).getLocationPermissionGrant(this.uin, paramString);
+    boolean bool1;
+    if ((bool3) && (bool2)) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewModule", 2, new Object[] { "onGeolocationPermissionsShowPrompt allow:", Boolean.valueOf(bool2), " granted:", Boolean.valueOf(bool3), " hasRight:", Boolean.valueOf(bool1), " uin:", this.uin, " urlHost:", paramString });
+    }
+    paramGeolocationPermissionsCallback.invoke((String)localObject, bool1, false);
   }
   
   public void onHideCustomView() {}
@@ -628,25 +623,36 @@ public class WebViewModule
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if ((this.isDestroyed) || (this.webView == null)) {}
-    do
+    if (!this.isDestroyed)
     {
-      return;
+      if (this.webView == null) {
+        return;
+      }
       ensureCreateLoopFinished();
       this.redirectCookie = false;
-      if (this.sonicClient != null) {
-        this.sonicClient.pageFinish(paramString);
+      SonicClientImpl localSonicClientImpl = this.sonicClient;
+      if (localSonicClientImpl != null) {
+        localSonicClientImpl.pageFinish(paramString);
       }
-    } while ((Build.VERSION.SDK_INT < 19) || (this.isDestroyed) || (this.webViewWrapper == null) || (this.webViewWrapper.a() == null));
-    onReceivedTitle(paramWebView, paramWebView.getTitle());
+      if ((Build.VERSION.SDK_INT >= 19) && (!this.isDestroyed))
+      {
+        paramString = this.webViewWrapper;
+        if ((paramString != null) && (paramString.a() != null)) {
+          onReceivedTitle(paramWebView, paramWebView.getTitle());
+        }
+      }
+    }
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if ((this.isDestroyed) || (this.webView == null)) {
-      return;
+    if (!this.isDestroyed)
+    {
+      if (this.webView == null) {
+        return;
+      }
+      ensureCreateLoopFinished();
     }
-    ensureCreateLoopFinished();
   }
   
   public void onPause()
@@ -658,10 +664,13 @@ public class WebViewModule
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if ((this.isDestroyed) || (this.webView == null)) {
-      return;
+    if (!this.isDestroyed)
+    {
+      if (this.webView == null) {
+        return;
+      }
+      ensureCreateLoopFinished();
     }
-    ensureCreateLoopFinished();
   }
   
   public void onReceivedSslError(WebView paramWebView, SslError paramSslError) {}
@@ -670,8 +679,9 @@ public class WebViewModule
   
   public void onResume()
   {
-    if (this.webView != null) {
-      this.webView.onResume();
+    TouchWebView localTouchWebView = this.webView;
+    if (localTouchWebView != null) {
+      localTouchWebView.onResume();
     }
     dispatchPluginEvent(2L, null);
   }
@@ -683,8 +693,12 @@ public class WebViewModule
   
   public void onUrlChange(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WebViewModule", 2, "X5 webkit detect 302 url: " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("X5 webkit detect 302 url: ");
+      localStringBuilder.append(paramString2);
+      QLog.i("WebViewModule", 2, localStringBuilder.toString());
     }
     this.mRedirect302Url = paramString2;
     SwiftBrowserCookieMonster.d();
@@ -702,24 +716,36 @@ public class WebViewModule
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if ((this.isDestroyed) || (this.webView == null)) {
-      return true;
-    }
-    if (((paramString.startsWith("http://")) || (!paramString.startsWith("https://"))) || (((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://"))) && (!paramString.startsWith("http://")) && (paramString.startsWith("https://")))) {}
-    String str = SwiftWebViewUtils.a(paramString);
-    if (("http".equals(str)) || ("https".equals(str)))
+    if (!this.isDestroyed)
     {
-      paramWebView = paramWebView.getHitTestResult();
-      if ((paramWebView != null) && (paramWebView.getType() == 0))
-      {
-        QLog.i("WebViewModule", 1, "shouldOverrideUrlLoading detect 302, url: " + paramString);
-        paramWebView = this.mRedirect302Url;
-        this.mRedirect302Url = paramString;
-        SwiftBrowserCookieMonster.d();
-        buildCookieForRedirect(paramWebView, this.mRedirect302Url);
+      if (this.webView == null) {
+        return true;
       }
+      if (!paramString.startsWith("http://")) {
+        paramString.startsWith("https://");
+      }
+      if (((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://"))) && (!paramString.startsWith("http://"))) {
+        paramString.startsWith("https://");
+      }
+      String str = SwiftWebViewUtils.b(paramString);
+      if (("http".equals(str)) || ("https".equals(str)))
+      {
+        paramWebView = paramWebView.getHitTestResult();
+        if ((paramWebView != null) && (paramWebView.getType() == 0))
+        {
+          paramWebView = new StringBuilder();
+          paramWebView.append("shouldOverrideUrlLoading detect 302, url: ");
+          paramWebView.append(paramString);
+          QLog.i("WebViewModule", 1, paramWebView.toString());
+          paramWebView = this.mRedirect302Url;
+          this.mRedirect302Url = paramString;
+          SwiftBrowserCookieMonster.d();
+          buildCookieForRedirect(paramWebView, this.mRedirect302Url);
+        }
+      }
+      return false;
     }
-    return false;
+    return true;
   }
   
   public void showCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
@@ -727,21 +753,21 @@ public class WebViewModule
   public void startLoadUrl()
   {
     Util.a("Web_readyToLoadUrl");
-    if (this.webView == null) {}
-    do
-    {
+    if (this.webView == null) {
       return;
-      if (!TextUtils.isEmpty(this.mUrl)) {
-        this.webView.loadUrl(this.mUrl);
-      }
-      Util.b("Web_readyToLoadUrl");
-    } while (!this.webView.isPaused);
-    this.webView.onResume();
+    }
+    if (!TextUtils.isEmpty(this.mUrl)) {
+      this.webView.loadUrl(this.mUrl);
+    }
+    Util.b("Web_readyToLoadUrl");
+    if (this.webView.isPaused) {
+      this.webView.onResume();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewModule
  * JD-Core Version:    0.7.0.1
  */

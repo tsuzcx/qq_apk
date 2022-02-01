@@ -17,15 +17,16 @@ class DanmakuMeasureManager$2
     {
       BaseDanmaku localBaseDanmaku = (BaseDanmaku)localIterator.next();
       DanmakuMeasureManager.a(DanmakuMeasureManager.a(this.this$0), localBaseDanmaku);
-      if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuMeasureManager$IMeasureCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuMeasureManager$IMeasureCallback.a(localBaseDanmaku);
+      DanmakuMeasureManager.IMeasureCallback localIMeasureCallback = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuMeasureManager$IMeasureCallback;
+      if (localIMeasureCallback != null) {
+        localIMeasureCallback.a(localBaseDanmaku);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuMeasureManager.2
  * JD-Core Version:    0.7.0.1
  */

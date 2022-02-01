@@ -11,8 +11,13 @@ class RaffleJsPlugin$8
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ((paramBoolean) && (RaffleJsPlugin.access$1800(this.this$0, paramJSONObject))) {}
-    for (int i = 1; i != 0; i = 0)
+    int i;
+    if ((paramBoolean) && (RaffleJsPlugin.access$1800(this.this$0, paramJSONObject))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
       this.val$getGameRaffleMaterialInterface.onSuccess();
       RaffleJsPlugin.access$1900(this.this$0, this.val$context);
@@ -23,7 +28,7 @@ class RaffleJsPlugin$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.RaffleJsPlugin.8
  * JD-Core Version:    0.7.0.1
  */

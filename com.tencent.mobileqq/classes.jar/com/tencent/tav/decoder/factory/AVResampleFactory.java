@@ -8,11 +8,13 @@ import com.tencent.tavkit.resample.TAVResample;
 public class AVResampleFactory
 {
   private static final String TAG = "AVResampleFactory";
-  private static AVResampleFactory instance = null;
-  private boolean tavResampleEnable = false;
+  private static AVResampleFactory instance;
+  private boolean tavResampleEnable;
   
   public AVResampleFactory()
   {
+    boolean bool = false;
+    this.tavResampleEnable = false;
     try
     {
       if (Class.forName("com.tencent.tavkit.resample.TAVResample") != null) {
@@ -23,7 +25,10 @@ public class AVResampleFactory
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      Logger.w("AVResampleFactory", "newAVResample: " + localClassNotFoundException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("newAVResample: ");
+      localStringBuilder.append(localClassNotFoundException);
+      Logger.w("AVResampleFactory", localStringBuilder.toString());
     }
   }
   
@@ -65,7 +70,7 @@ public class AVResampleFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.factory.AVResampleFactory
  * JD-Core Version:    0.7.0.1
  */

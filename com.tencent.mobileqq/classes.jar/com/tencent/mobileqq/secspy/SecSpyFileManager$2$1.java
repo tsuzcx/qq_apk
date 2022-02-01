@@ -16,12 +16,17 @@ class SecSpyFileManager$2$1
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     long l = paramBundle.getLong("seq");
-    switch (paramInt)
+    if ((paramInt != -2) && (paramInt != -1))
     {
-    default: 
-      this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a(l, -1, new Object[] { "x5 log upload failed, x5 upload result code = " + paramInt });
-      return;
-    case 0: 
+      if (paramInt != 0)
+      {
+        paramBundle = this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("x5 log upload failed, x5 upload result code = ");
+        localStringBuilder.append(paramInt);
+        paramBundle.a(l, -1, new Object[] { localStringBuilder.toString() });
+        return;
+      }
       this.jdField_a_of_type_ComTencentMobileqqSecspySecSpyFileManager$2.this$0.a(l, 0, new Object[0]);
       return;
     }
@@ -30,7 +35,7 @@ class SecSpyFileManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.secspy.SecSpyFileManager.2.1
  * JD-Core Version:    0.7.0.1
  */

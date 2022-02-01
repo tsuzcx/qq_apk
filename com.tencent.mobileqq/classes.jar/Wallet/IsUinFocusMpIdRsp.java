@@ -41,28 +41,33 @@ public final class IsUinFocusMpIdRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.link_mp_id != null) {
-      paramJceOutputStream.write(this.link_mp_id, 0);
+    String str = this.link_mp_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.link_mp_id_admin_uin != null) {
-      paramJceOutputStream.write(this.link_mp_id_admin_uin, 1);
+    str = this.link_mp_id_admin_uin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.is_focus_link_mp_id, 2);
-    if (this.account_name != null) {
-      paramJceOutputStream.write(this.account_name, 3);
+    str = this.account_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.describe_content != null) {
-      paramJceOutputStream.write(this.describe_content, 4);
+    str = this.describe_content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.icon_url != null) {
-      paramJceOutputStream.write(this.icon_url, 5);
+    str = this.icon_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.status_code, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.IsUinFocusMpIdRsp
  * JD-Core Version:    0.7.0.1
  */

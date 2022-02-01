@@ -14,7 +14,7 @@ class ForwardSdkBaseOption$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
+    com.tencent.mobileqq.phonecontact.constant.PhoneContactFlags.a = false;
     paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
     paramDialogInterface.putExtra("tab_index", FrameControllerUtil.a);
     paramDialogInterface.putExtra("fragment_id", 1);
@@ -26,7 +26,7 @@ class ForwardSdkBaseOption$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.5
  * JD-Core Version:    0.7.0.1
  */

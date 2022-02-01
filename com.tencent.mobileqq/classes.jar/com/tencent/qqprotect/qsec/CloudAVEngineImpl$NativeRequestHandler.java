@@ -15,34 +15,50 @@ final class CloudAVEngineImpl$NativeRequestHandler
     }
     catch (Exception paramObject1)
     {
-      label62:
-      paramObject1.printStackTrace();
-      return -1;
-    }
-    if ((paramObject1 != null) && (paramObject2 != null) && (paramArrayOfObject1 != null))
-    {
-      if (paramArrayOfObject1.length >= 6) {
-        break label241;
-      }
-      break label238;
-      if (paramLong2 != 0L)
+      do
       {
-        paramArrayOfObject2 = new CloudAVEngineImpl.NativeEventListenerWrapper(paramLong2);
-        break label251;
-        if (((Integer)paramObject1).intValue() == 0) {
-          break label270;
+        int j;
+        int i;
+        break label249;
+      } while (paramArrayOfObject1[0] != null);
+      return 13;
+    }
+    j = 13;
+    i = j;
+    boolean bool2;
+    if (paramObject1 != null)
+    {
+      i = j;
+      if (paramObject2 != null)
+      {
+        i = j;
+        if (paramArrayOfObject1 != null)
+        {
+          if (paramArrayOfObject1.length >= 6) {
+            break label265;
+          }
+          return 13;
+          paramArrayOfObject2 = null;
+          if (paramLong2 == 0L) {
+            break label275;
+          }
+          paramArrayOfObject2 = new CloudAVEngineImpl.NativeEventListenerWrapper(paramLong2);
+          break label275;
+          if (((Integer)paramObject1).intValue() == 0) {
+            break label294;
+          }
+          bool2 = true;
         }
       }
     }
-    label270:
-    for (boolean bool2 = true;; bool2 = false)
+    for (;;)
     {
-      if (((Integer)paramObject2).intValue() == 1) {
+      if (((Integer)paramObject2).intValue() == 1)
+      {
         paramObject1 = new ICloudAVEngine.ApkDetectBundle((String)paramArrayOfObject1[2]);
       }
-      for (;;)
+      else
       {
-        return this.a.cloudDetect(paramObject1, bool1, bool2, paramArrayOfObject2);
         paramObject1 = new ICloudAVEngine.DetectBundle();
         paramObject1.jdField_a_of_type_Int = ((Integer)paramObject2).intValue();
         paramObject1.b = ((Integer)paramArrayOfObject1[0]).intValue();
@@ -52,29 +68,29 @@ final class CloudAVEngineImpl$NativeRequestHandler
         paramObject1.e = ((String)paramArrayOfObject1[4]);
         paramObject1.jdField_a_of_type_ArrayOfByte = ((byte[])paramArrayOfObject1[5]);
       }
-      paramArrayOfObject2 = null;
-      break label251;
-      label238:
-      return 13;
-      label241:
-      if (paramArrayOfObject1[0] != null) {
-        break;
-      }
-      return 13;
-      label251:
+      i = this.a.cloudDetect(paramObject1, bool1, bool2, paramArrayOfObject2);
+      return i;
+      label249:
+      paramObject1.printStackTrace();
+      i = -1;
+      return i;
+      label265:
+      label275:
       if (paramLong3 != 0L)
       {
         bool1 = true;
-        break label62;
+        break;
       }
       boolean bool1 = false;
-      break label62;
+      break;
+      label294:
+      bool2 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.NativeRequestHandler
  * JD-Core Version:    0.7.0.1
  */

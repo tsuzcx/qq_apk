@@ -60,7 +60,16 @@ public final class DropWhileSequence$iterator$1
     if (this.dropState == -1) {
       drop();
     }
-    return (this.dropState == 1) || (this.iterator.hasNext());
+    int i = this.dropState;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (this.iterator.hasNext()) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public T next()
@@ -95,7 +104,7 @@ public final class DropWhileSequence$iterator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.sequences.DropWhileSequence.iterator.1
  * JD-Core Version:    0.7.0.1
  */

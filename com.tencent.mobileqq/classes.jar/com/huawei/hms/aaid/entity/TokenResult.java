@@ -7,11 +7,11 @@ public class TokenResult
   extends Result
 {
   @Packed
-  private String belongId;
+  public String belongId;
   @Packed
-  private int retCode = 0;
+  public int retCode = 0;
   @Packed
-  private String token = "";
+  public String token = "";
   
   public String getBelongId()
   {
@@ -45,7 +45,7 @@ public class TokenResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.aaid.entity.TokenResult
  * JD-Core Version:    0.7.0.1
  */

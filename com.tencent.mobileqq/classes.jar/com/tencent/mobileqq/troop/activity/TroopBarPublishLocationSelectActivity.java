@@ -22,7 +22,7 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.soso.location.SosoInterfaceOnLocationListener;
 import com.tencent.mobileqq.soso.location.api.ISosoInterfaceApi;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.mobileqq.tribe.data.TroopBarPOI;
 import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
@@ -46,8 +46,8 @@ public class TroopBarPublishLocationSelectActivity
   protected Handler a;
   protected View a;
   protected SosoInterfaceOnLocationListener a;
-  protected TroopBarPublishLocationSelectActivity.LocationAdapter a;
   public final TroopBarPOI a;
+  protected TroopBarPublishLocationSelectActivity.LocationAdapter a;
   protected PullRefreshHeader a;
   protected XListView a;
   private String a;
@@ -59,7 +59,7 @@ public class TroopBarPublishLocationSelectActivity
   public TroopBarPublishLocationSelectActivity()
   {
     this.jdField_a_of_type_JavaLangString = "TroopBarPublishLocationSelectActivity";
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", HardCodeUtil.a(2131715084), 0, "", 0, "");
+    this.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI = new TroopBarPOI("-1", "", HardCodeUtil.a(2131715007), 0, "", 0, "");
     this.jdField_a_of_type_ComTencentWidgetXListView = null;
     this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter = null;
     this.jdField_a_of_type_JavaUtilArrayList = null;
@@ -86,22 +86,23 @@ public class TroopBarPublishLocationSelectActivity
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2131559765, this.jdField_a_of_type_ComTencentWidgetXListView, false));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2131559642, this.jdField_a_of_type_ComTencentWidgetXListView, false));
     Contacts.OverScrollViewTag localOverScrollViewTag = new Contacts.OverScrollViewTag();
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localOverScrollViewTag);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getResources().getDrawable(2130839540));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getResources().getDrawable(2130839396));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new TroopBarPublishLocationSelectActivity.2(this));
   }
   
   protected void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
+    if (localObject != null)
     {
-      Contacts.OverScrollViewTag localOverScrollViewTag = (Contacts.OverScrollViewTag)this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.getTag();
-      if (localOverScrollViewTag != null)
+      localObject = (Contacts.OverScrollViewTag)((PullRefreshHeader)localObject).getTag();
+      if (localObject != null)
       {
-        localOverScrollViewTag.jdField_a_of_type_Boolean = false;
+        ((Contacts.OverScrollViewTag)localObject).jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 800L);
         if (paramInt == 0) {
           this.jdField_a_of_type_Long = System.currentTimeMillis();
@@ -114,9 +115,10 @@ public class TroopBarPublishLocationSelectActivity
   protected void a(int paramInt, boolean paramBoolean)
   {
     b(true);
-    if (this.b != null)
+    TroopBarPOI localTroopBarPOI = this.b;
+    if (localTroopBarPOI != null)
     {
-      a(this, this.b.b, this.b.a, paramInt, paramBoolean, this);
+      a(this, localTroopBarPOI.b, this.b.a, paramInt, paramBoolean, this);
       return;
     }
     b();
@@ -124,92 +126,95 @@ public class TroopBarPublishLocationSelectActivity
   
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 3) {
       return;
     }
     b(false);
-    if (paramJSONObject != null) {}
+    boolean bool;
+    if (paramJSONObject != null) {
+      for (;;)
+      {
+        try
+        {
+          if (paramJSONObject.optInt("isend", -1) != 1) {
+            break label318;
+          }
+          bool = true;
+          a(bool);
+          localJSONArray = paramJSONObject.getJSONArray("poilist");
+          if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+            this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          }
+          if ((paramBundle != null) && (paramBundle.getBoolean("refresh_all_poi"))) {
+            this.jdField_a_of_type_JavaUtilArrayList.clear();
+          }
+          if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+            break label324;
+          }
+          this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI);
+        }
+        catch (JSONException paramBundle)
+        {
+          JSONArray localJSONArray;
+          label109:
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("TroopBar", 2, paramBundle.toString());
+          if (paramJSONObject.optInt("isend", -1) == 1) {
+            break label317;
+          }
+        }
+        if (paramInt < localJSONArray.length())
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(new TroopBarPOI(localJSONArray.getJSONObject(paramInt)));
+          paramInt += 1;
+        }
+        else
+        {
+          if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 1) {
+            break label329;
+          }
+          paramBundle = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(1);
+        }
+      }
+    }
     for (;;)
     {
-      boolean bool;
-      try
+      this.b = paramBundle;
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter.notifyDataSetChanged();
+      return;
+      paramInt = paramJSONObject.optInt("retcode", -1);
+      if (paramInt != 0)
       {
-        if (paramJSONObject.optInt("isend", -1) != 1) {
-          break label337;
-        }
-        bool = true;
-        a(bool);
-        localJSONArray = paramJSONObject.getJSONArray("poilist");
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        }
-        if ((paramBundle != null) && (paramBundle.getBoolean("refresh_all_poi"))) {
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-        }
-        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-          break label332;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI);
-      }
-      catch (JSONException paramBundle)
-      {
-        JSONArray localJSONArray;
-        if (!QLog.isColorLevel()) {
-          break label212;
-        }
-        QLog.d("TroopBar", 2, paramBundle.toString());
-      }
-      if (paramInt < localJSONArray.length())
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new TroopBarPOI(localJSONArray.getJSONObject(paramInt)));
-        paramInt += 1;
-      }
-      else
-      {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 1)
-        {
-          paramBundle = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(1);
-          this.b = paramBundle;
-          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter.notifyDataSetChanged();
-          return;
-          label212:
-          if (paramJSONObject.optInt("isend", -1) == 1) {
-            break;
-          }
-          paramInt = paramJSONObject.optInt("retcode", -1);
-          if (paramInt == 0) {
-            break label274;
-          }
-          QQToast.a(this, 1, getString(2131696254, new Object[] { Integer.valueOf(paramInt) }), 0).b(getTitleBarHeight());
-          return;
-        }
-        paramBundle = null;
-        continue;
-        label274:
-        QQToast.a(this, 1, getString(2131696254, new Object[] { Integer.valueOf(paramJSONObject.optInt("errno", -1)) }), 0).b(getTitleBarHeight());
+        QQToast.a(this, 1, getString(2131696273, new Object[] { Integer.valueOf(paramInt) }), 0).b(getTitleBarHeight());
         return;
-        QQToast.a(this, 1, 2131696253, 0).b(getTitleBarHeight());
-        return;
-        label332:
-        paramInt = 0;
-        continue;
-        label337:
-        bool = false;
       }
+      QQToast.a(this, 1, getString(2131696273, new Object[] { Integer.valueOf(paramJSONObject.optInt("errno", -1)) }), 0).b(getTitleBarHeight());
+      return;
+      QQToast.a(this, 1, 2131696272, 0).b(getTitleBarHeight());
+      label317:
+      return;
+      label318:
+      bool = false;
+      break;
+      label324:
+      paramInt = 0;
+      break label109;
+      label329:
+      paramBundle = null;
     }
   }
   
   protected void a(boolean paramBoolean)
   {
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376853);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376344);
     if (paramBoolean)
     {
-      localTextView.setText(2131719536);
+      localTextView.setText(2131719254);
       return;
     }
-    localTextView.setText(2131719531);
+    localTextView.setText(2131719249);
   }
   
   protected void b()
@@ -220,20 +225,25 @@ public class TroopBarPublishLocationSelectActivity
   
   protected void b(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       if ((this.centerView != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839545);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839401);
         this.centerView.setCompoundDrawablesWithIntrinsicBounds(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, null, null);
         ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).start();
       }
     }
-    while ((this.centerView == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-      return;
+    else if (this.centerView != null)
+    {
+      Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (localDrawable != null)
+      {
+        ((Animatable)localDrawable).stop();
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+        this.centerView.setCompoundDrawables(null, null, null, null);
+      }
     }
-    ((Animatable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).stop();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.centerView.setCompoundDrawables(null, null, null, null);
   }
   
   @Override
@@ -245,16 +255,16 @@ public class TroopBarPublishLocationSelectActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentWidgetXListView = new XListView(this);
     this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(getResources().getDrawable(2130840694));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(getResources().getDrawable(2130840569));
     this.jdField_a_of_type_ComTencentWidgetXListView.setDividerHeight(1);
     setContentView(this.jdField_a_of_type_ComTencentWidgetXListView);
-    setTitle(2131696213);
-    this.rightViewImg.setImageResource(2130842700);
+    setTitle(2131696232);
+    this.rightViewImg.setImageResource(2130842599);
     this.rightViewImg.setVisibility(0);
     this.rightViewImg.setOnClickListener(this);
     paramBundle = getIntent();
@@ -262,52 +272,45 @@ public class TroopBarPublishLocationSelectActivity
     this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("Transparent_Bg", false);
     this.c = ((TroopBarPOI)paramBundle.getParcelableExtra("key_selected_poi"));
     if (this.c == null) {
-      this.c = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI;
+      this.c = this.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    paramBundle = this.jdField_a_of_type_JavaUtilArrayList;
+    if (paramBundle != null)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-      {
+      if (paramBundle.isEmpty()) {
         paramBundle = null;
-        this.b = paramBundle;
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI);
+      } else {
+        paramBundle = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       }
+      this.b = paramBundle;
+      this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI);
     }
-    else
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label403;
-      }
+    if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(17170445);
+    } else {
+      this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838739);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131559765, null);
-      a();
-      paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376851);
-      TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376853);
-      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376859);
-      ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131376854);
-      localTextView1.setTextColor(-8355712);
-      localTextView1.setText(2131719531);
-      localTextView2.setVisibility(8);
-      paramBundle.setVisibility(8);
-      localProgressBar.setVisibility(8);
-      this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new TroopBarPublishLocationSelectActivity.1(this));
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter = new TroopBarPublishLocationSelectActivity.LocationAdapter(this, this, this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-      a(0, true);
-      return true;
-      paramBundle = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      break;
-      label403:
-      this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838979);
-    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131559642, null);
+    a();
+    paramBundle = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376342);
+    TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376344);
+    TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376350);
+    ProgressBar localProgressBar = (ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131376345);
+    localTextView1.setTextColor(-8355712);
+    localTextView1.setText(2131719249);
+    localTextView2.setVisibility(8);
+    paramBundle.setVisibility(8);
+    localProgressBar.setVisibility(8);
+    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new TroopBarPublishLocationSelectActivity.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter = new TroopBarPublishLocationSelectActivity.LocationAdapter(this, this, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
+    a(0, true);
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     if (this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener != null) {
@@ -317,15 +320,10 @@ public class TroopBarPublishLocationSelectActivity
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (paramView.getId() == 2131369216) {
       a(0, true);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -337,25 +335,29 @@ public class TroopBarPublishLocationSelectActivity
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return;
-    }
-    this.c = ((TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter.notifyDataSetChanged();
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI.equals(this.c)) {}
-    for (paramAdapterView = null;; paramAdapterView = this.c)
+    paramAdapterView = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((paramAdapterView != null) && (paramInt >= 0))
     {
+      if (paramInt >= paramAdapterView.size()) {
+        return;
+      }
+      this.c = ((TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity$LocationAdapter.notifyDataSetChanged();
+      if (this.jdField_a_of_type_ComTencentMobileqqTribeDataTroopBarPOI.equals(this.c)) {
+        paramAdapterView = null;
+      } else {
+        paramAdapterView = this.c;
+      }
       paramView = new Intent();
       paramView.putExtra("key_selected_poi", paramAdapterView);
       setResult(-1, paramView);
       finish();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity
  * JD-Core Version:    0.7.0.1
  */

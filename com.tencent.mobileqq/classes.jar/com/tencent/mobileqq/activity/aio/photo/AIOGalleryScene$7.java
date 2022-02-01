@@ -20,7 +20,7 @@ class AIOGalleryScene$7
       AIOImageData localAIOImageData = (AIOImageData)((AIORichMediaInfo)localObject).a;
       if ((localAIOImageData != null) && (localAIOImageData.a(4)) && (localAIOImageData.a(4) == null))
       {
-        this.a.c(true);
+        this.a.d(true);
         this.a.u();
       }
     }
@@ -29,32 +29,31 @@ class AIOGalleryScene$7
       localObject = (AIOFilePicData)((AIORichMediaInfo)localObject).a;
       if ((localObject != null) && (((AIOFilePicData)localObject).a(20)) && (((AIOFilePicData)localObject).a(20) == null))
       {
-        if ((!((AIOFilePicData)localObject).d) || (!MessageRecordInfo.a(((AIOFilePicData)localObject).b))) {
-          break label211;
+        if ((((AIOFilePicData)localObject).d) && (MessageRecordInfo.a(((AIOFilePicData)localObject).b)))
+        {
+          this.a.d(true);
+          this.a.c(false);
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress = null;
         }
-        this.a.c(true);
-        this.a.a(false);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress = null;
+        else if (((AIOFilePicData)localObject).e)
+        {
+          this.a.d(false);
+        }
+        else
+        {
+          this.a.d(true);
+        }
+        if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, AIOGalleryScene.d(this.a).getString(2131694999), new Object[] { FileUtil.a(((AIOFilePicData)localObject).a) }));
+        }
       }
     }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, AIOGalleryScene.d(this.a).getString(2131695009), new Object[] { FileUtil.a(((AIOFilePicData)localObject).a) }));
-      }
-      return false;
-      label211:
-      if (((AIOFilePicData)localObject).e) {
-        this.a.c(false);
-      } else {
-        this.a.c(true);
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.7
  * JD-Core Version:    0.7.0.1
  */

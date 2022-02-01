@@ -46,13 +46,13 @@ public class OcrImageTextBean
       this.jdField_a_of_type_JavaUtilList.addAll(paramPicOcrResultBean.jdField_a_of_type_JavaUtilArrayList);
     }
     paramPicOcrResultBean = (Point)this.jdField_a_of_type_JavaUtilList.get(0);
-    Point localPoint = (Point)this.jdField_a_of_type_JavaUtilList.get(1);
-    if (paramPicOcrResultBean.x > localPoint.x) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_c_of_type_Boolean = bool;
-      return;
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    boolean bool = true;
+    localObject = (Point)((List)localObject).get(1);
+    if (paramPicOcrResultBean.x <= ((Point)localObject).x) {
+      bool = false;
     }
+    this.jdField_c_of_type_Boolean = bool;
   }
   
   public Point a()
@@ -84,7 +84,7 @@ public class OcrImageTextBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.OcrImageTextBean
  * JD-Core Version:    0.7.0.1
  */

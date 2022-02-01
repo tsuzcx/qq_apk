@@ -28,21 +28,21 @@ class GdtBannerImageView
     if (Build.VERSION.SDK_INT >= 16) {
       setBackground(localGradientDrawable);
     }
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramString)))
     {
-      GdtLog.d("GdtBannerImageView", "constructor");
+      paramContext = new URLImageView(paramContext);
+      addView(paramContext);
+      this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader = new GdtDrawableLoader(paramString, new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener));
+      this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a();
+      paramContext.setImageDrawable(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a());
       return;
     }
-    paramContext = new URLImageView(paramContext);
-    addView(paramContext);
-    this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader = new GdtDrawableLoader(paramString, new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener));
-    this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a();
-    paramContext.setImageDrawable(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a());
+    GdtLog.d("GdtBannerImageView", "constructor");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.letter.GdtBannerImageView
  * JD-Core Version:    0.7.0.1
  */

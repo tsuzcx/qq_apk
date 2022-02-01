@@ -22,15 +22,18 @@ abstract class LookupTableInterpolator
     if (paramFloat <= 0.0F) {
       return 0.0F;
     }
-    int i = Math.min((int)((this.jdField_a_of_type_ArrayOfFloat.length - 1) * paramFloat), this.jdField_a_of_type_ArrayOfFloat.length - 2);
-    paramFloat = (paramFloat - i * this.jdField_a_of_type_Float) / this.jdField_a_of_type_Float;
-    float f = this.jdField_a_of_type_ArrayOfFloat[i];
-    return (this.jdField_a_of_type_ArrayOfFloat[(i + 1)] - this.jdField_a_of_type_ArrayOfFloat[i]) * paramFloat + f;
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    int i = Math.min((int)((arrayOfFloat.length - 1) * paramFloat), arrayOfFloat.length - 2);
+    float f1 = i;
+    float f2 = this.jdField_a_of_type_Float;
+    paramFloat = (paramFloat - f1 * f2) / f2;
+    arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    return arrayOfFloat[i] + paramFloat * (arrayOfFloat[(i + 1)] - arrayOfFloat[i]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.bounce.LookupTableInterpolator
  * JD-Core Version:    0.7.0.1
  */

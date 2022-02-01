@@ -21,17 +21,17 @@ final class TypeAdapters$23
   
   public void write(JsonWriter paramJsonWriter, InetAddress paramInetAddress)
   {
-    if (paramInetAddress == null) {}
-    for (paramInetAddress = null;; paramInetAddress = paramInetAddress.getHostAddress())
-    {
-      paramJsonWriter.value(paramInetAddress);
-      return;
+    if (paramInetAddress == null) {
+      paramInetAddress = null;
+    } else {
+      paramInetAddress = paramInetAddress.getHostAddress();
     }
+    paramJsonWriter.value(paramInetAddress);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.23
  * JD-Core Version:    0.7.0.1
  */

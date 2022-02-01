@@ -15,16 +15,6 @@ public final class HttpRsp
   public String body = "";
   public String rspinfo = "";
   
-  static
-  {
-    if (!HttpRsp.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public HttpRsp() {}
   
   public HttpRsp(String paramString)
@@ -34,34 +24,35 @@ public final class HttpRsp
   
   public static byte[] copyOfRange(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (paramInt1 > paramInt2) {
-      throw new IllegalArgumentException();
-    }
-    int i = paramArrayOfByte.length;
-    if ((paramInt1 < 0) || (paramInt1 > i)) {
+    if (paramInt1 <= paramInt2)
+    {
+      int i = paramArrayOfByte.length;
+      if ((paramInt1 >= 0) && (paramInt1 <= i))
+      {
+        paramInt2 -= paramInt1;
+        i = Math.min(paramInt2, i - paramInt1);
+        byte[] arrayOfByte = new byte[paramInt2];
+        System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, i);
+        return arrayOfByte;
+      }
       throw new ArrayIndexOutOfBoundsException();
     }
-    paramInt2 -= paramInt1;
-    i = Math.min(paramInt2, i - paramInt1);
-    byte[] arrayOfByte = new byte[paramInt2];
-    System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, i);
-    return arrayOfByte;
+    throw new IllegalArgumentException();
   }
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -99,44 +90,49 @@ public final class HttpRsp
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.rspinfo = paramJceInputStream.readString(0, true);
-    if (this.rspinfo == null) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.rspinfo.indexOf("HTTP") < 0);
-      i = this.rspinfo.indexOf("\r\n\r\n");
-    } while (i < 0);
-    this.body = this.rspinfo.substring(i + "\r\n\r\n".length());
+    paramJceInputStream = this.rspinfo;
+    if (paramJceInputStream == null) {
+      return;
+    }
+    if (paramJceInputStream.indexOf("HTTP") < 0) {
+      return;
+    }
+    int i = this.rspinfo.indexOf("\r\n\r\n");
+    if (i < 0) {
+      return;
+    }
+    this.body = this.rspinfo.substring(i + 4);
   }
   
   public int search(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length <= paramInt)) {
-      return -1;
-    }
-    if ((paramArrayOfByte2 == null) || (paramArrayOfByte1.length < paramArrayOfByte2.length))
+    if (paramArrayOfByte1 != null)
     {
-      return -1;
-      paramInt += 1;
-    }
-    if ((paramInt >= paramArrayOfByte1.length) || (paramArrayOfByte1.length < paramArrayOfByte2.length + paramInt) || (paramInt >= 2147483647)) {
-      return -1;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if ((i >= paramArrayOfByte2.length) || (paramArrayOfByte1[(paramInt + i)] != paramArrayOfByte2[i]))
-      {
-        if (i != paramArrayOfByte2.length) {
-          break;
-        }
-        return paramInt;
+      if (paramArrayOfByte1.length <= paramInt) {
+        return -1;
       }
-      i += 1;
+      if (paramArrayOfByte2 != null)
+      {
+        if (paramArrayOfByte1.length < paramArrayOfByte2.length) {
+          return -1;
+        }
+        while ((paramInt < paramArrayOfByte1.length) && (paramArrayOfByte1.length >= paramArrayOfByte2.length + paramInt))
+        {
+          if (paramInt >= 2147483647) {
+            return -1;
+          }
+          int i = 0;
+          while ((i < paramArrayOfByte2.length) && (paramArrayOfByte1[(paramInt + i)] == paramArrayOfByte2[i])) {
+            i += 1;
+          }
+          if (i == paramArrayOfByte2.length) {
+            return paramInt;
+          }
+          paramInt += 1;
+        }
+      }
     }
+    return -1;
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -146,7 +142,7 @@ public final class HttpRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wns_proxy.HttpRsp
  * JD-Core Version:    0.7.0.1
  */

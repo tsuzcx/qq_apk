@@ -8,6 +8,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.applets.PublicAccountEventReport;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -38,7 +39,6 @@ import cooperation.vip.pb.TianShuReport.UserActionMultiReportReq;
 import cooperation.vip.pb.TianShuReport.UserActionMultiReportRsp;
 import cooperation.vip.pb.TianShuReport.UserCommReport;
 import cooperation.vip.utils.Tools;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -48,7 +48,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
@@ -56,22 +55,24 @@ import org.json.JSONObject;
 
 public class TianShuManager
 {
+  public static final String KEY_VAS_NEXT_REQUEST_TIME = "next_request_time_";
   private static final String SP_NAME = "tianshu_manager";
   private static final String SP_TIME_DELAY_KEY = "time_delay";
   private static final String TAG = "TianShuManager";
-  private static TianShuManager mInstance = null;
+  private static TianShuManager mInstance;
+  private ConcurrentHashMap<Integer, TianShuGetAdvCallback> mCallbackHashMap = new ConcurrentHashMap();
   private final AtomicBoolean mLockFlag = new AtomicBoolean(false);
   private final ArrayList<TianShuReportData> mReportList = new ArrayList();
   private final ConcurrentHashMap<String, String> mTianshuTraceInfoCache = new ConcurrentHashMap();
   private long mTimeDelay = BaseApplicationImpl.getApplication().getSharedPreferences("tianshu_manager", 4).getLong("time_delay", 3000L);
-  private HashMap<Long, WeakReference<TianShuGetAdvCallback>> mWeakCallbackHashMap = new HashMap();
   
   private void cacheNecessaryDataForReport(List<TianShuAccess.RspEntry> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       Object localObject = new ArrayList();
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
@@ -89,16 +90,21 @@ public class TianShuManager
   
   private void cacheTraceInfo(TianShuAccess.AdItem paramAdItem)
   {
-    if (paramAdItem == null) {}
-    String str;
-    do
-    {
+    if (paramAdItem == null) {
       return;
-      str = String.valueOf(paramAdItem.iAdId.get());
-      paramAdItem = paramAdItem.traceinfo.get();
-    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramAdItem)));
-    this.mTianshuTraceInfoCache.put(str, paramAdItem);
-    QLog.i("TianShuManager", 1, "cacheTraceInfo mTianshuTraceInfoCache done:" + str + "---" + paramAdItem);
+    }
+    String str = String.valueOf(paramAdItem.iAdId.get());
+    paramAdItem = paramAdItem.traceinfo.get();
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramAdItem)))
+    {
+      this.mTianshuTraceInfoCache.put(str, paramAdItem);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cacheTraceInfo mTianshuTraceInfoCache done:");
+      localStringBuilder.append(str);
+      localStringBuilder.append("---");
+      localStringBuilder.append(paramAdItem);
+      QLog.i("TianShuManager", 1, localStringBuilder.toString());
+    }
   }
   
   private static TianShuAccess.AdPosItem convertAdItemToPb(TianShuAdPosItemData paramTianShuAdPosItemData)
@@ -123,22 +129,25 @@ public class TianShuManager
   
   private void doReport(ArrayList<TianShuReportData> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return;
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    TianShuReport.UserActionMultiReportReq localUserActionMultiReportReq = new TianShuReport.UserActionMultiReportReq();
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), TianShuServlet.class);
-    localUserActionMultiReportReq.user_comm_report.set(Tools.a());
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if (paramArrayList != null)
     {
-      TianShuReportData localTianShuReportData = (TianShuReportData)paramArrayList.next();
-      localUserActionMultiReportReq.report_infos.add(Tools.a(localTianShuReportData));
+      if (paramArrayList.size() <= 0) {
+        return;
+      }
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      TianShuReport.UserActionMultiReportReq localUserActionMultiReportReq = new TianShuReport.UserActionMultiReportReq();
+      NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), TianShuServlet.class);
+      localUserActionMultiReportReq.user_comm_report.set(Tools.a());
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        TianShuReportData localTianShuReportData = (TianShuReportData)paramArrayList.next();
+        localUserActionMultiReportReq.report_infos.add(Tools.a(localTianShuReportData));
+      }
+      localNewIntent.putExtra("data", WupUtil.a(localUserActionMultiReportReq.toByteArray()));
+      localNewIntent.putExtra("cmd", "TianShu.UserActionMultiReport");
+      localAppRuntime.startServlet(localNewIntent);
     }
-    localNewIntent.putExtra("data", WupUtil.a(localUserActionMultiReportReq.toByteArray()));
-    localNewIntent.putExtra("cmd", "TianShu.UserActionMultiReport");
-    localAppRuntime.startServlet(localNewIntent);
   }
   
   private void enqueueReport(TianShuReportData paramTianShuReportData)
@@ -171,38 +180,121 @@ public class TianShuManager
   
   public static TianShuManager getInstance()
   {
-    if (mInstance == null) {}
-    try
-    {
-      if (mInstance == null) {
-        mInstance = new TianShuManager();
+    if (mInstance == null) {
+      try
+      {
+        if (mInstance == null) {
+          mInstance = new TianShuManager();
+        }
       }
-      return mInstance;
+      finally {}
     }
-    finally {}
+    return mInstance;
+  }
+  
+  public static boolean isRequestEnable(int paramInt)
+  {
+    long l1 = NetConnInfoCenter.getServerTime();
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("tianshu_manager", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("next_request_time_");
+    localStringBuilder.append(paramInt);
+    long l2 = ((SharedPreferences)localObject).getLong(localStringBuilder.toString(), 0L);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("isRequestEnable :");
+    boolean bool2 = false;
+    if (l1 > l2) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    ((StringBuilder)localObject).append(bool1);
+    ((StringBuilder)localObject).append(" appid = ");
+    ((StringBuilder)localObject).append(paramInt);
+    QLog.i("TianShuManager", 1, ((StringBuilder)localObject).toString());
+    boolean bool1 = bool2;
+    if (l1 > l2) {
+      bool1 = true;
+    }
+    return bool1;
+  }
+  
+  public static void saveNextRequestTime(TianShuAccess.RspEntry paramRspEntry)
+  {
+    if (paramRspEntry != null)
+    {
+      if (paramRspEntry.value.get() == null) {
+        return;
+      }
+      Object localObject = (TianShuAccess.AdPlacementInfo)paramRspEntry.value.get();
+      int i = paramRspEntry.key.get();
+      long l2 = ((TianShuAccess.AdPlacementInfo)localObject).next_query_ts.get();
+      long l3 = NetConnInfoCenter.getServerTime() + 86400L;
+      long l1 = l2;
+      if (l2 > l3)
+      {
+        if (QLog.isDevelopLevel())
+        {
+          paramRspEntry = new StringBuilder();
+          paramRspEntry.append("saveNextRequestTime upper limit 24 :");
+          paramRspEntry.append(l3);
+          QLog.i("TianShuManager", 4, paramRspEntry.toString());
+        }
+        l1 = l3;
+      }
+      paramRspEntry = BaseApplicationImpl.getApplication().getSharedPreferences("tianshu_manager", 4).edit();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("next_request_time_");
+      ((StringBuilder)localObject).append(i);
+      paramRspEntry.putLong(((StringBuilder)localObject).toString(), l1);
+      paramRspEntry.commit();
+      if (QLog.isDevelopLevel())
+      {
+        paramRspEntry = new StringBuilder();
+        paramRspEntry.append("saveNextRequestTime appid = ");
+        paramRspEntry.append(i);
+        paramRspEntry.append(" nextRequestTime =  ");
+        paramRspEntry.append(l1);
+        QLog.i("TianShuManager", 4, paramRspEntry.toString());
+      }
+    }
   }
   
   private static void setLastClickAdId(TianShuReportData paramTianShuReportData)
   {
-    if (paramTianShuReportData == null) {}
-    while ((paramTianShuReportData.d != 102) && (paramTianShuReportData.d != 118) && (paramTianShuReportData.d != 123) && (paramTianShuReportData.d != 124) && (paramTianShuReportData.d != 125) && (paramTianShuReportData.d != 134) && (paramTianShuReportData.d != 138) && (paramTianShuReportData.d != 140) && (paramTianShuReportData.d != 142)) {
+    if (paramTianShuReportData == null) {
       return;
     }
-    String str2 = paramTianShuReportData.l;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = getInstance().getTraceInfoFromCache(paramTianShuReportData.g);
+    if ((paramTianShuReportData.d == 102) || (paramTianShuReportData.d == 118) || (paramTianShuReportData.d == 123) || (paramTianShuReportData.d == 124) || (paramTianShuReportData.d == 125) || (paramTianShuReportData.d == 134) || (paramTianShuReportData.d == 138) || (paramTianShuReportData.d == 140) || (paramTianShuReportData.d == 142))
+    {
+      String str2 = paramTianShuReportData.l;
+      String str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = getInstance().getTraceInfoFromCache(paramTianShuReportData.g);
+      }
+      setLastClickAdTraceInfo(paramTianShuReportData.g, str1);
     }
-    setLastClickAdTraceInfo(paramTianShuReportData.g, str1);
   }
   
   public static void setLastClickAdTraceInfo(String paramString1, String paramString2)
   {
-    String str = "{}";
-    if (QLog.isColorLevel()) {
-      QLog.i("TianShuManager", 1, "adId:" + paramString1 + " traceInfo:" + paramString2);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime == null)
+    {
+      QLog.w("TianShuManager", 1, "setLastClickAdTraceInfo error, appRuntime is null");
+      return;
     }
-    localObject = str;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("adId:");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" traceInfo:");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.i("TianShuManager", 1, ((StringBuilder)localObject).toString());
+    }
+    String str = "{}";
+    Object localObject = str;
     try
     {
       if (!TextUtils.isEmpty(paramString2))
@@ -219,13 +311,13 @@ public class TianShuManager
     }
     catch (JSONException paramString1)
     {
-      for (;;)
-      {
-        QLog.e("TianShuManager", 1, "setLastClickAdTraceInfo error," + paramString1);
-        localObject = "{}";
-      }
+      paramString2 = new StringBuilder();
+      paramString2.append("setLastClickAdTraceInfo error,");
+      paramString2.append(paramString1);
+      QLog.e("TianShuManager", 1, paramString2.toString());
+      localObject = str;
     }
-    ((IVasService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IVasService.class, "")).getTianshuWebManager().a((String)localObject);
+    ((IVasService)localAppRuntime.getRuntimeService(IVasService.class, "all")).getTianshuWebManager().setTraceInfoOfLastClick((String)localObject);
   }
   
   private void updateReportDelayTime(int paramInt)
@@ -241,15 +333,20 @@ public class TianShuManager
   
   public void cacheTraceInfo(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      str = PublicAccountEventReport.a(paramString);
-    } while (TextUtils.isEmpty(str));
-    this.mTianshuTraceInfoCache.put(str, paramString);
-    QLog.i("TianShuManager", 1, "cacheTraceInfo mTianshuTraceInfoCache done:" + str + "---" + paramString);
+    }
+    String str = PublicAccountEventReport.a(paramString);
+    if (!TextUtils.isEmpty(str))
+    {
+      this.mTianshuTraceInfoCache.put(str, paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cacheTraceInfo mTianshuTraceInfoCache done:");
+      localStringBuilder.append(str);
+      localStringBuilder.append("---");
+      localStringBuilder.append(paramString);
+      QLog.i("TianShuManager", 1, localStringBuilder.toString());
+    }
   }
   
   public void clearNecessaryDataCacheForReport()
@@ -271,87 +368,110 @@ public class TianShuManager
   
   void onGetTianShuAdvRsp(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    byte[] arrayOfByte = null;
+    Object localObject = null;
     if (paramIntent != null)
     {
-      long l = paramIntent.getLongExtra("requestKey", -1L);
-      if (this.mWeakCallbackHashMap.get(Long.valueOf(l)) != null)
+      i = paramIntent.getIntExtra("requestKey", -1);
+      if (QLog.isColorLevel())
       {
-        paramIntent = (TianShuGetAdvCallback)((WeakReference)this.mWeakCallbackHashMap.get(Long.valueOf(l))).get();
-        if (paramIntent != null) {
-          this.mWeakCallbackHashMap.remove(Long.valueOf(l));
+        paramIntent = new StringBuilder();
+        paramIntent.append("onGetTianShuAdvRsp , callbackKey = ");
+        paramIntent.append(i);
+        paramIntent.append(" map = ");
+        paramIntent.append(this.mCallbackHashMap.toString());
+        QLog.i("TianShuManager", 1, paramIntent.toString());
+      }
+      if (this.mCallbackHashMap.get(Integer.valueOf(i)) != null)
+      {
+        paramIntent = (TianShuGetAdvCallback)this.mCallbackHashMap.get(Integer.valueOf(i));
+        if (paramIntent == null) {
+          paramIntent = null;
         }
+        this.mCallbackHashMap.remove(Integer.valueOf(i));
+        break label129;
       }
     }
-    for (;;)
+    paramIntent = null;
+    label129:
+    if (paramFromServiceMsg.isSuccess())
     {
-      if (paramFromServiceMsg.isSuccess())
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      localObject = new byte[i];
+      PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    TianShuAccess.GetAdsRsp localGetAdsRsp = new TianShuAccess.GetAdsRsp();
+    int i = paramFromServiceMsg.getResultCode();
+    if (i == 1000)
+    {
+      try
       {
-        i = paramFromServiceMsg.getWupBuffer().length - 4;
-        arrayOfByte = new byte[i];
-        PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-      }
-      TianShuAccess.GetAdsRsp localGetAdsRsp = new TianShuAccess.GetAdsRsp();
-      int i = paramFromServiceMsg.getResultCode();
-      if (i == 1000)
-      {
-        try
+        localGetAdsRsp.mergeFrom((byte[])localObject);
+        i = localGetAdsRsp.code.get();
+        if (i == 0)
         {
-          localGetAdsRsp.mergeFrom(arrayOfByte);
-          i = localGetAdsRsp.code.get();
-          if (i != 0) {
-            break label269;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TianShuManager", 2, "onReceive success " + i);
+          if (QLog.isColorLevel())
+          {
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("onReceive success ");
+            paramFromServiceMsg.append(i);
+            QLog.d("TianShuManager", 2, paramFromServiceMsg.toString());
           }
           if (paramIntent != null) {
             paramIntent.onGetAdvs(true, localGetAdsRsp);
-          }
-          while (!localGetAdsRsp.mapAds.isEmpty())
-          {
-            cacheNecessaryDataForReport(localGetAdsRsp.mapAds.get());
-            return;
+          } else {
             QLog.e("TianShuManager", 1, "callback == null");
           }
-          paramIntent.onGetAdvs(false, localGetAdsRsp);
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          QLog.e("TianShuManager", 2, "onReceive exception " + paramFromServiceMsg);
-          if (paramIntent == null) {
+          if (localGetAdsRsp.mapAds.isEmpty()) {
             return;
           }
+          cacheNecessaryDataForReport(localGetAdsRsp.mapAds.get());
+          return;
         }
-        return;
-        label269:
-        QLog.d("TianShuManager", 2, "onReceive ret " + i);
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("onReceive ret ");
+        paramFromServiceMsg.append(i);
+        QLog.d("TianShuManager", 2, paramFromServiceMsg.toString());
         if (paramIntent == null) {
           return;
         }
         paramIntent.onGetAdvs(false, localGetAdsRsp);
         return;
       }
-      QLog.e("TianShuManager", 2, "onReceive result fail with result " + i);
-      if (paramIntent == null) {
-        return;
+      catch (Exception paramFromServiceMsg)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onReceive exception ");
+        ((StringBuilder)localObject).append(paramFromServiceMsg);
+        QLog.e("TianShuManager", 2, ((StringBuilder)localObject).toString());
+        if (paramIntent == null) {
+          return;
+        }
       }
       paramIntent.onGetAdvs(false, localGetAdsRsp);
-      return;
-      paramIntent = null;
-      break;
-      paramIntent = null;
+    }
+    else
+    {
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("onReceive result fail with result ");
+      paramFromServiceMsg.append(i);
+      QLog.e("TianShuManager", 2, paramFromServiceMsg.toString());
+      if (paramIntent != null) {
+        paramIntent.onGetAdvs(false, localGetAdsRsp);
+      }
     }
   }
   
   void onTianShuReport(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    paramIntent = null;
     if (paramFromServiceMsg.isSuccess())
     {
       i = paramFromServiceMsg.getWupBuffer().length - 4;
       paramIntent = new byte[i];
       PkgTools.copyData(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    else
+    {
+      paramIntent = null;
     }
     TianShuReport.UserActionMultiReportRsp localUserActionMultiReportRsp = new TianShuReport.UserActionMultiReportRsp();
     int i = paramFromServiceMsg.getResultCode();
@@ -362,22 +482,35 @@ public class TianShuManager
         i = localUserActionMultiReportRsp.err_code.get();
         if (i == 0)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("TianShuManager", 2, "onReceive ret " + i);
+          if (QLog.isColorLevel())
+          {
+            paramIntent = new StringBuilder();
+            paramIntent.append("onReceive ret ");
+            paramIntent.append(i);
+            QLog.d("TianShuManager", 2, paramIntent.toString());
           }
           updateReportDelayTime(localUserActionMultiReportRsp.multi_duration.get());
           return;
         }
-        QLog.d("TianShuManager", 2, "onReceive ret " + i);
+        paramIntent = new StringBuilder();
+        paramIntent.append("onReceive ret ");
+        paramIntent.append(i);
+        QLog.d("TianShuManager", 2, paramIntent.toString());
         return;
       }
       catch (Exception paramIntent)
       {
-        QLog.e("TianShuManager", 2, "onReceive exception " + paramIntent);
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("onReceive exception ");
+        paramFromServiceMsg.append(paramIntent);
+        QLog.e("TianShuManager", 2, paramFromServiceMsg.toString());
         return;
       }
     }
-    QLog.e("TianShuManager", 2, "onReceive result fail with result " + i);
+    paramIntent = new StringBuilder();
+    paramIntent.append("onReceive result fail with result ");
+    paramIntent.append(i);
+    QLog.e("TianShuManager", 2, paramIntent.toString());
   }
   
   public void report(TianShuReportData paramTianShuReportData)
@@ -392,30 +525,44 @@ public class TianShuManager
   
   public void requestAdv(List<TianShuAdPosItemData> paramList, TianShuGetAdvCallback paramTianShuGetAdvCallback)
   {
-    if ((paramList == null) || (paramList.size() <= 0) || (paramTianShuGetAdvCallback == null)) {
-      return;
-    }
-    long l = System.currentTimeMillis();
-    this.mWeakCallbackHashMap.put(Long.valueOf(l), new WeakReference(paramTianShuGetAdvCallback));
-    paramTianShuGetAdvCallback = BaseApplicationImpl.getApplication().getRuntime();
-    TianShuAccess.GetAdsReq localGetAdsReq = new TianShuAccess.GetAdsReq();
-    localGetAdsReq.stComminfo.set(getCommInfo());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      TianShuAdPosItemData localTianShuAdPosItemData = (TianShuAdPosItemData)paramList.next();
-      localGetAdsReq.lstPos.add(convertAdItemToPb(localTianShuAdPosItemData));
+      if (paramTianShuGetAdvCallback == null) {
+        return;
+      }
+      int i = paramTianShuGetAdvCallback.hashCode();
+      this.mCallbackHashMap.put(Integer.valueOf(i), paramTianShuGetAdvCallback);
+      if (QLog.isColorLevel())
+      {
+        paramTianShuGetAdvCallback = new StringBuilder();
+        paramTianShuGetAdvCallback.append("requestAdv , adblist = ");
+        paramTianShuGetAdvCallback.append(paramList.toString());
+        paramTianShuGetAdvCallback.append(" key = ");
+        paramTianShuGetAdvCallback.append(i);
+        paramTianShuGetAdvCallback.append("\n map =  ");
+        paramTianShuGetAdvCallback.append(this.mCallbackHashMap.toString());
+        QLog.i("TianShuManager", 1, paramTianShuGetAdvCallback.toString());
+      }
+      paramTianShuGetAdvCallback = BaseApplicationImpl.getApplication().getRuntime();
+      TianShuAccess.GetAdsReq localGetAdsReq = new TianShuAccess.GetAdsReq();
+      localGetAdsReq.stComminfo.set(getCommInfo());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        TianShuAdPosItemData localTianShuAdPosItemData = (TianShuAdPosItemData)paramList.next();
+        localGetAdsReq.lstPos.add(convertAdItemToPb(localTianShuAdPosItemData));
+      }
+      paramList = new NewIntent(paramTianShuGetAdvCallback.getApplication(), TianShuServlet.class);
+      paramList.putExtra("data", WupUtil.a(localGetAdsReq.toByteArray()));
+      paramList.putExtra("cmd", "TianShu.GetAds");
+      paramList.putExtra("requestKey", i);
+      paramTianShuGetAdvCallback.startServlet(paramList);
     }
-    paramList = new NewIntent(paramTianShuGetAdvCallback.getApplication(), TianShuServlet.class);
-    paramList.putExtra("data", WupUtil.a(localGetAdsReq.toByteArray()));
-    paramList.putExtra("cmd", "TianShu.GetAds");
-    paramList.putExtra("requestKey", l);
-    paramTianShuGetAdvCallback.startServlet(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.tianshu.TianShuManager
  * JD-Core Version:    0.7.0.1
  */

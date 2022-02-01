@@ -6,7 +6,7 @@ public class BrowserLogHelper
   
   public static BrowserLogHelper getInstance()
   {
-    return BrowserLogHelper.SingletonHolder.access$100();
+    return BrowserLogHelper.SingletonHolder.access$000();
   }
   
   public IBrowserLog getGalleryLog()
@@ -24,7 +24,7 @@ public class BrowserLogHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.log.BrowserLogHelper
  * JD-Core Version:    0.7.0.1
  */

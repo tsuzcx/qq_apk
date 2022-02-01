@@ -20,6 +20,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout.LayoutParams;
@@ -108,7 +109,12 @@ public class GamePage
     this.mGameContainerView = ((ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(R.layout.mini_sdk_game_layout, paramViewGroup, false));
     this.mGameSurfaceView = ((SurfaceView)this.mGameContainerView.findViewById(R.id.mini_sdk_game_layout_surface_view));
     paramViewGroup.addView(this.mGameContainerView, 0);
-    QMLog.i("GamePage", " createGameView width :" + this.mGameWidth + " height:" + this.mGameHeight);
+    paramViewGroup = new StringBuilder();
+    paramViewGroup.append(" createGameView width :");
+    paramViewGroup.append(this.mGameWidth);
+    paramViewGroup.append(" height:");
+    paramViewGroup.append(this.mGameHeight);
+    QMLog.i("GamePage", paramViewGroup.toString());
   }
   
   private void attachNavigationBar(ViewGroup paramViewGroup)
@@ -118,7 +124,8 @@ public class GamePage
       QMLog.w("GamePage", "Failed to attach navigation bar, root view is null");
       return;
     }
-    if ((this.mNavigationBar != null) && (this.mNavigationBar.getParent() != null)) {
+    GameNavigationBar localGameNavigationBar = this.mNavigationBar;
+    if ((localGameNavigationBar != null) && (localGameNavigationBar.getParent() != null)) {
       ((ViewGroup)this.mNavigationBar.getParent()).removeView(this.mNavigationBar);
     }
     paramViewGroup.addView(this.mNavigationBar);
@@ -126,27 +133,39 @@ public class GamePage
   
   private void attachVConsoleView(ViewGroup paramViewGroup)
   {
-    if (this.mGameInfo == null) {
-      QMLog.w("GamePage", "Failed to attach vConsole view, game info is null");
-    }
-    do
+    if (this.mGameInfo == null)
     {
-      do
-      {
-        return;
-      } while (!StorageUtil.getPreference().getBoolean(this.mGameInfo.getId() + "_debug", false));
+      QMLog.w("GamePage", "Failed to attach vConsole view, game info is null");
+      return;
+    }
+    SharedPreferences localSharedPreferences = StorageUtil.getPreference();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mGameInfo.getId());
+    localStringBuilder.append("_debug");
+    if (localSharedPreferences.getBoolean(localStringBuilder.toString(), false))
+    {
       this.vConsoleBtn = createVConsoleBtn();
       paramViewGroup.addView(this.vConsoleBtn);
       this.vConsoleBtn.bringToFront();
       this.vConsoleBtn.setVisibility(0);
-    } while (this.mGameInfo.getOrientation() != GamePackage.Orientation.LANDSCAPE);
-    this.vConsoleBtn.requestLandscapeLayout();
+      if (this.mGameInfo.getOrientation() == GamePackage.Orientation.LANDSCAPE) {
+        this.vConsoleBtn.requestLandscapeLayout();
+      }
+    }
   }
   
   private void changeWindowInfo(MiniAppInfo paramMiniAppInfo)
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    while ((paramMiniAppInfo == null) || (this.mActivity == null) || (QUAUtil.isMicroApp())) {
+    if (Build.VERSION.SDK_INT < 21) {
+      return;
+    }
+    if (paramMiniAppInfo == null) {
+      return;
+    }
+    if (this.mActivity == null) {
+      return;
+    }
+    if (QUAUtil.isMicroApp()) {
       return;
     }
     if (paramMiniAppInfo.isInternalApp())
@@ -159,102 +178,115 @@ public class GamePage
   
   private void checkGameLandscape()
   {
+    Object localObject;
     if (this.mGameInfo.getOrientation() == GamePackage.Orientation.LANDSCAPE)
     {
       this.mIsOrientationLandscape = true;
       this.mActivity.setRequestedOrientation(0);
-      if (this.mNavigationBar != null) {
-        this.mNavigationBar.requestLandscapeLayout();
+      localObject = this.mNavigationBar;
+      if (localObject != null) {
+        ((GameNavigationBar)localObject).requestLandscapeLayout();
       }
+    }
+    else
+    {
+      this.mIsOrientationLandscape = false;
+      this.mActivity.setRequestedOrientation(1);
     }
     try
     {
       boolean bool = new JSONObject(this.mGameInfo.getGameConfig()).optBoolean("showStatusBar", false);
-      QMLog.i("GamePage", "initGameUI game config showStatusBar=" + bool);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initGameUI game config showStatusBar=");
+      ((StringBuilder)localObject).append(bool);
+      QMLog.i("GamePage", ((StringBuilder)localObject).toString());
       if (!bool) {
         this.mActivity.getWindow().setFlags(1024, 1024);
       }
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        int k;
-        int i;
-        DisplayMetrics localDisplayMetrics;
-        continue;
-        int m = i;
-        int n = j;
-        continue;
-        int j = m;
-      }
+      label138:
+      int k;
+      int i;
+      int j;
+      int m;
+      int n;
+      break label138;
     }
     QMLog.i("GamePage", "initGameUI start create game SurfaceView & inject preload js");
     System.currentTimeMillis();
-    if (this.mGameInfo.getOrientation() == GamePackage.Orientation.LANDSCAPE)
-    {
+    if (this.mGameInfo.getOrientation() == GamePackage.Orientation.LANDSCAPE) {
       k = 1;
-      label137:
-      j = this.mActivity.getResources().getDisplayMetrics().widthPixels;
-      i = this.mActivity.getResources().getDisplayMetrics().heightPixels;
-      if (Build.VERSION.SDK_INT < 17) {
-        break label425;
-      }
-      localDisplayMetrics = new DisplayMetrics();
-      ((WindowManager)this.mActivity.getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
-      i = localDisplayMetrics.heightPixels;
-      m = localDisplayMetrics.widthPixels;
-      if (!Build.MANUFACTURER.equalsIgnoreCase("huawei")) {
-        break label333;
-      }
-      j = m;
-      if (Settings.Secure.getInt(this.mActivity.getContentResolver(), "display_notch_status", 0) == 1)
-      {
-        j = m;
-        if (k != 0) {
-          j = m - DisplayUtil.getStatusBarHeight(this.mActivity);
-        }
-      }
-    }
-    for (;;)
-    {
-      if (k != 0)
-      {
-        m = j;
-        n = i;
-        if (j <= i) {}
-      }
-      else
-      {
-        if ((k != 0) || (i > j)) {
-          break label410;
-        }
-        n = i;
-        m = j;
-      }
-      this.mGameWidth = n;
-      this.mGameHeight = m;
-      return;
-      this.mIsOrientationLandscape = false;
-      this.mActivity.setRequestedOrientation(1);
-      break;
+    } else {
       k = 0;
-      break label137;
-      label333:
-      if ((!Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) || (Settings.Global.getInt(this.mActivity.getContentResolver(), "force_black", 0) != 1)) {
-        break label419;
-      }
-      QMLog.i("GamePage", "xiaomi has notch");
-      if (k != 0)
+    }
+    i = this.mActivity.getResources().getDisplayMetrics().widthPixels;
+    j = this.mActivity.getResources().getDisplayMetrics().heightPixels;
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      localObject = new DisplayMetrics();
+      ((WindowManager)this.mActivity.getSystemService("window")).getDefaultDisplay().getRealMetrics((DisplayMetrics)localObject);
+      m = ((DisplayMetrics)localObject).heightPixels;
+      n = ((DisplayMetrics)localObject).widthPixels;
+      if (Build.MANUFACTURER.equalsIgnoreCase("huawei"))
       {
-        j = m - DisplayUtil.getStatusBarHeight(this.mActivity);
+        i = n;
+        j = m;
+        if (Settings.Secure.getInt(this.mActivity.getContentResolver(), "display_notch_status", 0) != 1) {
+          break label396;
+        }
+        i = n;
+        j = m;
+        if (k == 0) {
+          break label396;
+        }
+        i = DisplayUtil.getStatusBarHeight(this.mActivity);
       }
       else
       {
-        i -= DisplayUtil.getStatusBarHeight(this.mActivity);
+        i = n;
         j = m;
+        if (!Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) {
+          break label396;
+        }
+        i = n;
+        j = m;
+        if (Settings.Global.getInt(this.mActivity.getContentResolver(), "force_black", 0) != 1) {
+          break label396;
+        }
+        QMLog.i("GamePage", "xiaomi has notch");
+        if (k == 0) {
+          break label382;
+        }
+        i = DisplayUtil.getStatusBarHeight(this.mActivity);
+      }
+      i = n - i;
+      j = m;
+      break label396;
+      label382:
+      j = m - DisplayUtil.getStatusBarHeight(this.mActivity);
+      i = n;
+    }
+    label396:
+    if ((k == 0) || (i > j))
+    {
+      n = i;
+      m = j;
+      if (k == 0)
+      {
+        n = i;
+        m = j;
+        if (j > i) {}
       }
     }
+    else
+    {
+      m = i;
+      n = j;
+    }
+    this.mGameWidth = n;
+    this.mGameHeight = m;
   }
   
   private VConsoleDragView createVConsoleBtn()
@@ -292,67 +324,72 @@ public class GamePage
   
   private int getGameViewHeight()
   {
-    if (this.mGameContainerView != null) {
-      return this.mGameContainerView.getMeasuredHeight();
+    ViewGroup localViewGroup = this.mGameContainerView;
+    if (localViewGroup != null) {
+      return localViewGroup.getMeasuredHeight();
     }
     return 0;
   }
   
   private int getGameViewWidth()
   {
-    if (this.mGameContainerView != null) {
-      return this.mGameContainerView.getMeasuredWidth();
+    ViewGroup localViewGroup = this.mGameContainerView;
+    if (localViewGroup != null) {
+      return localViewGroup.getMeasuredWidth();
     }
     return 0;
   }
   
   private String getMenuButtonBoundingClientRect(NativeViewRequestEvent paramNativeViewRequestEvent)
   {
-    Object localObject = getCapsuleButton();
-    int j;
-    int i;
-    if (localObject != null)
+    Object localObject1 = getCapsuleButton();
+    if (localObject1 != null)
     {
-      j = (int)(((View)localObject).getWidth() / DisplayUtil.getDensity(this.mActivity));
-      i = (int)(((View)localObject).getHeight() / DisplayUtil.getDensity(this.mActivity));
-      int k = (int)(((View)localObject).getLeft() / DisplayUtil.getDensity(this.mActivity));
-      int m = (int)(((View)localObject).getTop() / DisplayUtil.getDensity(this.mActivity));
-      int n = (int)(((View)localObject).getRight() / DisplayUtil.getDensity(this.mActivity));
-      int i1 = (int)(((View)localObject).getBottom() / DisplayUtil.getDensity(this.mActivity));
-      localObject = new Rect(267, 34, 347, 64);
-      if (j == 0) {
-        break label334;
+      int i = (int)(((View)localObject1).getWidth() / DisplayUtil.getDensity(this.mActivity));
+      int j = (int)(((View)localObject1).getHeight() / DisplayUtil.getDensity(this.mActivity));
+      int k = (int)(((View)localObject1).getLeft() / DisplayUtil.getDensity(this.mActivity));
+      int m = (int)(((View)localObject1).getTop() / DisplayUtil.getDensity(this.mActivity));
+      int n = (int)(((View)localObject1).getRight() / DisplayUtil.getDensity(this.mActivity));
+      int i1 = (int)(((View)localObject1).getBottom() / DisplayUtil.getDensity(this.mActivity));
+      localObject1 = new Rect(267, 34, 347, 64);
+      if (i != 0)
+      {
+        localObject1 = new Rect(k, m, n, i1);
       }
-      localObject = new Rect(k, m, n, i1);
-    }
-    for (;;)
-    {
+      else
+      {
+        i = 80;
+        j = 30;
+      }
       try
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("width", j);
-        localJSONObject.put("height", i);
-        localJSONObject.put("top", ((Rect)localObject).top);
-        localJSONObject.put("right", ((Rect)localObject).right);
-        localJSONObject.put("bottom", ((Rect)localObject).bottom);
-        localJSONObject.put("left", ((Rect)localObject).left);
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("width", i);
+        ((JSONObject)localObject2).put("height", j);
+        ((JSONObject)localObject2).put("top", ((Rect)localObject1).top);
+        ((JSONObject)localObject2).put("right", ((Rect)localObject1).right);
+        ((JSONObject)localObject2).put("bottom", ((Rect)localObject1).bottom);
+        ((JSONObject)localObject2).put("left", ((Rect)localObject1).left);
         paramNativeViewRequestEvent.ok();
-        QMLog.d("GamePage", "getMenuButtonBoundingClientRect : " + localJSONObject.toString());
-        localObject = localJSONObject.toString();
-        return localObject;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getMenuButtonBoundingClientRect : ");
+        ((StringBuilder)localObject1).append(((JSONObject)localObject2).toString());
+        QMLog.d("GamePage", ((StringBuilder)localObject1).toString());
+        localObject1 = ((JSONObject)localObject2).toString();
+        return localObject1;
       }
       catch (JSONException localJSONException)
       {
-        QMLog.e("GamePage", paramNativeViewRequestEvent.event + " error.", localJSONException);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramNativeViewRequestEvent.event);
+        ((StringBuilder)localObject2).append(" error.");
+        QMLog.e("GamePage", ((StringBuilder)localObject2).toString(), localJSONException);
         return "";
       }
-      QMLog.e("GamePage", "EVENT_GET_MENU_BUTTON_RECT view is null.");
-      paramNativeViewRequestEvent.fail();
-      return getMenuButtonDefaultValue();
-      label334:
-      i = 30;
-      j = 80;
     }
+    QMLog.e("GamePage", "EVENT_GET_MENU_BUTTON_RECT view is null.");
+    paramNativeViewRequestEvent.fail();
+    return getMenuButtonDefaultValue();
   }
   
   private String getMenuButtonDefaultValue()
@@ -366,7 +403,10 @@ public class GamePage
       ((JSONObject)localObject).put("right", 347);
       ((JSONObject)localObject).put("bottom", 64);
       ((JSONObject)localObject).put("left", 267);
-      QMLog.d("GamePage", "getMenuButtonDefaultValue : " + ((JSONObject)localObject).toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getMenuButtonDefaultValue : ");
+      localStringBuilder.append(((JSONObject)localObject).toString());
+      QMLog.d("GamePage", localStringBuilder.toString());
       localObject = ((JSONObject)localObject).toString();
       return localObject;
     }
@@ -414,36 +454,39 @@ public class GamePage
   
   private boolean isMonitorViewShowing()
   {
-    return (this.mMiniAppMonitorInfoView != null) && (this.mMiniAppMonitorInfoView.getVisibility() == 0);
+    MiniAppMonitorInfoView localMiniAppMonitorInfoView = this.mMiniAppMonitorInfoView;
+    return (localMiniAppMonitorInfoView != null) && (localMiniAppMonitorInfoView.getVisibility() == 0);
   }
   
   private boolean isVConsoleViewShowing()
   {
-    return (this.vConsoleView != null) && (this.vConsoleView.getVisibility() == 0);
+    VConsoleView localVConsoleView = this.vConsoleView;
+    return (localVConsoleView != null) && (localVConsoleView.getVisibility() == 0);
   }
   
   public void checkPayForFriendLogic(MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.appId)) || (TextUtils.isEmpty(paramMiniAppInfo.prepayId))) {
-      QMLog.d("PayForFriendView", "checkPayForFriendLogic not payforfriend mode");
-    }
-    PayProxy localPayProxy;
-    do
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)) && (!TextUtils.isEmpty(paramMiniAppInfo.prepayId)))
     {
-      return;
-      if ((this.mPayForFriendView != null) && ((this.mPayForFriendView.getParent() instanceof ViewGroup))) {
+      Object localObject = this.mPayForFriendView;
+      if ((localObject != null) && ((((View)localObject).getParent() instanceof ViewGroup))) {
         ((ViewGroup)this.mPayForFriendView.getParent()).removeView(this.mPayForFriendView);
       }
-      localPayProxy = (PayProxy)ProxyManager.get(PayProxy.class);
-      this.mPayForFriendView = localPayProxy.getPayForFriendView(this.mActivity, paramMiniAppInfo.prepayId, paramMiniAppInfo.appId, paramMiniAppInfo.name, paramMiniAppInfo.iconUrl, paramMiniAppInfo.versionId, paramMiniAppInfo.verType);
-    } while (this.mPayForFriendView == null);
-    paramMiniAppInfo = new RelativeLayout.LayoutParams(-1, -1);
-    this.mPayForFriendView.setLayoutParams(paramMiniAppInfo);
-    this.mRootView.addView(this.mPayForFriendView);
-    this.mPayForFriendView.setVisibility(0);
-    this.mPayForFriendView.bringToFront();
-    QMLog.d("PayForFriendView", "checkPayForFriendLogic show webview success");
-    ActivityResultManager.g().addActivityResultListener(new GamePage.5(this, localPayProxy));
+      localObject = (PayProxy)ProxyManager.get(PayProxy.class);
+      this.mPayForFriendView = ((PayProxy)localObject).getPayForFriendView(this.mActivity, paramMiniAppInfo.prepayId, paramMiniAppInfo.appId, paramMiniAppInfo.name, paramMiniAppInfo.iconUrl, paramMiniAppInfo.versionId, paramMiniAppInfo.verType);
+      if (this.mPayForFriendView != null)
+      {
+        paramMiniAppInfo = new RelativeLayout.LayoutParams(-1, -1);
+        this.mPayForFriendView.setLayoutParams(paramMiniAppInfo);
+        this.mRootView.addView(this.mPayForFriendView);
+        this.mPayForFriendView.setVisibility(0);
+        this.mPayForFriendView.bringToFront();
+        QMLog.d("PayForFriendView", "checkPayForFriendLogic show webview success");
+        ActivityResultManager.g().addActivityResultListener(new GamePage.5(this, (PayProxy)localObject));
+      }
+      return;
+    }
+    QMLog.d("PayForFriendView", "checkPayForFriendLogic not payforfriend mode");
   }
   
   public String dispatchEventToNativeView(NativeViewRequestEvent paramNativeViewRequestEvent)
@@ -463,8 +506,9 @@ public class GamePage
   
   public CapsuleButton getCapsuleButton()
   {
-    if (this.mNavigationBar != null) {
-      return this.mNavigationBar.getCapsuleButton();
+    GameNavigationBar localGameNavigationBar = this.mNavigationBar;
+    if (localGameNavigationBar != null) {
+      return localGameNavigationBar.getCapsuleButton();
     }
     return null;
   }
@@ -501,25 +545,21 @@ public class GamePage
   
   public String getPageOrientation()
   {
-    String str = "";
     Object localObject = GetGameInfoManager.obtain(this.mMiniAppContext);
-    if (localObject != null)
-    {
+    if (localObject != null) {
       localObject = ((GameInfoManager)localObject).getMiniGamePkg();
-      if (localObject == null) {
-        break label50;
-      }
-    }
-    label50:
-    for (localObject = ((MiniGamePkg)localObject).mGameConfigJson;; localObject = null)
-    {
-      if (localObject != null) {
-        str = ((JSONObject)localObject).optString("deviceOrientation", null);
-      }
-      return str;
+    } else {
       localObject = null;
-      break;
     }
+    if (localObject != null) {
+      localObject = ((MiniGamePkg)localObject).mGameConfigJson;
+    } else {
+      localObject = null;
+    }
+    if (localObject != null) {
+      return ((JSONObject)localObject).optString("deviceOrientation", null);
+    }
+    return "";
   }
   
   public int getTabBarVisibility()
@@ -563,25 +603,29 @@ public class GamePage
   public void onDestroy()
   {
     this.mCustomButtonManager = null;
-    if (this.mFloatDragAdManager != null)
+    Object localObject = this.mFloatDragAdManager;
+    if (localObject != null)
     {
-      this.mFloatDragAdManager.removeDragAd();
+      ((FloatDragAdManager)localObject).removeDragAd();
       this.mFloatDragAdManager = null;
     }
-    if (this.mPendantManager != null)
+    localObject = this.mPendantManager;
+    if (localObject != null)
     {
-      this.mPendantManager.removePendantAd();
+      ((PendantManager)localObject).removePendantAd();
       this.mPendantManager = null;
     }
-    if ((this.mActivity != null) && (!this.mActivity.isFinishing())) {
+    localObject = this.mActivity;
+    if ((localObject != null) && (!((Activity)localObject).isFinishing())) {
       this.mActivity.finish();
     }
   }
   
   public void onDetachWindow(Activity paramActivity)
   {
-    if (this.mRootView != null) {
-      this.mRootView.removeAllViews();
+    paramActivity = this.mRootView;
+    if (paramActivity != null) {
+      paramActivity.removeAllViews();
     }
     this.mActivity = null;
     this.mRootView = null;
@@ -602,23 +646,19 @@ public class GamePage
   
   public boolean operateCustomButton(String paramString, long paramLong, JSONObject paramJSONObject, View.OnClickListener paramOnClickListener)
   {
-    Activity localActivity;
-    ViewGroup localViewGroup;
     if (this.mCustomButtonManager == null)
     {
-      localActivity = this.mActivity;
-      localViewGroup = this.mRootView;
-      if (this.mGameInfo == null) {
-        break label81;
+      Activity localActivity = this.mActivity;
+      ViewGroup localViewGroup = this.mRootView;
+      Object localObject = this.mGameInfo;
+      if (localObject != null) {
+        localObject = ((MiniGamePackage)localObject).getId();
+      } else {
+        localObject = "";
       }
+      this.mCustomButtonManager = new CustomButtonManager(localActivity, localViewGroup, (String)localObject, DisplayUtil.getDensity(this.mActivity));
     }
-    label81:
-    for (String str = this.mGameInfo.getId();; str = "")
-    {
-      this.mCustomButtonManager = new CustomButtonManager(localActivity, localViewGroup, str, DisplayUtil.getDensity(this.mActivity));
-      if (!"create".equals(paramString)) {
-        break;
-      }
+    if ("create".equals(paramString)) {
       return this.mCustomButtonManager.createCustomButton(paramJSONObject, paramOnClickListener);
     }
     if ("show".equals(paramString)) {
@@ -645,8 +685,12 @@ public class GamePage
       }
       return this.mFloatDragAdManager.showDragAd(paramFloatDragAdInfo);
     }
-    if (("remove".equals(paramString)) && (this.mFloatDragAdManager != null)) {
-      return this.mFloatDragAdManager.removeDragAd();
+    if ("remove".equals(paramString))
+    {
+      paramString = this.mFloatDragAdManager;
+      if (paramString != null) {
+        return paramString.removeDragAd();
+      }
     }
     return false;
   }
@@ -660,8 +704,12 @@ public class GamePage
       }
       return this.mPendantManager.showPendantAd(paramPendantAdInfo);
     }
-    if (("remove".equals(paramString)) && (this.mPendantManager != null)) {
-      return this.mPendantManager.removePendantAd();
+    if ("remove".equals(paramString))
+    {
+      paramString = this.mPendantManager;
+      if (paramString != null) {
+        return paramString.removePendantAd();
+      }
     }
     return false;
   }
@@ -677,53 +725,48 @@ public class GamePage
   
   void showKingCardTips()
   {
-    if ((this.mActivity == null) || (this.mActivity.isFinishing())) {}
-    while (getCapsuleButton() == null) {
-      return;
+    Object localObject = this.mActivity;
+    if (localObject != null)
+    {
+      if (((Activity)localObject).isFinishing()) {
+        return;
+      }
+      if (getCapsuleButton() == null) {
+        return;
+      }
+      localObject = getCapsuleButton().getMoreView();
+      ((KingCardProxy)ProxyManager.get(KingCardProxy.class)).showKingCardTips(this.mMiniAppContext, (ImageView)localObject);
     }
-    ImageView localImageView = getCapsuleButton().getMoreView();
-    ((KingCardProxy)ProxyManager.get(KingCardProxy.class)).showKingCardTips(this.mMiniAppContext, localImageView);
   }
   
   public boolean toggleDebugPanel()
   {
-    MiniAppInfo localMiniAppInfo;
-    if (this.mMiniAppContext != null)
-    {
-      localMiniAppInfo = this.mMiniAppContext.getMiniAppInfo();
-      if (DebugUtil.getDebugEnabled(localMiniAppInfo)) {
-        break label38;
-      }
+    Object localObject = this.mMiniAppContext;
+    if (localObject != null) {
+      localObject = ((IMiniAppContext)localObject).getMiniAppInfo();
+    } else {
+      localObject = null;
     }
-    label38:
-    for (boolean bool = true;; bool = false)
-    {
-      DebugUtil.setDebugEnabled(localMiniAppInfo, bool);
-      return bool;
-      localMiniAppInfo = null;
-      break;
-    }
+    boolean bool = DebugUtil.getDebugEnabled((MiniAppInfo)localObject) ^ true;
+    DebugUtil.setDebugEnabled((MiniAppInfo)localObject, bool);
+    return bool;
   }
   
   public boolean toggleMonitorPanel()
   {
     if (this.mRootView != null)
     {
-      if (this.mMiniAppMonitorInfoView != null) {
-        break label81;
+      Object localObject = this.mMiniAppMonitorInfoView;
+      if (localObject == null)
+      {
+        this.mMiniAppMonitorInfoView = new MiniAppMonitorInfoView(this.mActivity, null, 1);
+        localObject = new FrameLayout.LayoutParams(-2, -2);
+        ((FrameLayout.LayoutParams)localObject).gravity = 53;
+        this.mRootView.addView(this.mMiniAppMonitorInfoView, (ViewGroup.LayoutParams)localObject);
+        this.mMiniAppMonitorInfoView.setVisibility(0);
+        this.mMiniAppMonitorInfoView.startRefreshMonitorUi();
       }
-      this.mMiniAppMonitorInfoView = new MiniAppMonitorInfoView(this.mActivity, null, 1);
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-      localLayoutParams.gravity = 53;
-      this.mRootView.addView(this.mMiniAppMonitorInfoView, localLayoutParams);
-      this.mMiniAppMonitorInfoView.setVisibility(0);
-      this.mMiniAppMonitorInfoView.startRefreshMonitorUi();
-    }
-    for (;;)
-    {
-      return isMonitorViewShowing();
-      label81:
-      if (this.mMiniAppMonitorInfoView.getVisibility() == 0)
+      else if (((MiniAppMonitorInfoView)localObject).getVisibility() == 0)
       {
         this.mMiniAppMonitorInfoView.stopRefreshMonitorUi();
         this.mMiniAppMonitorInfoView.setVisibility(8);
@@ -734,6 +777,7 @@ public class GamePage
         this.mMiniAppMonitorInfoView.setVisibility(0);
       }
     }
+    return isMonitorViewShowing();
   }
   
   void updateDebuggerStatus(String paramString1, String paramString2, boolean paramBoolean)
@@ -750,7 +794,7 @@ public class GamePage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GamePage
  * JD-Core Version:    0.7.0.1
  */

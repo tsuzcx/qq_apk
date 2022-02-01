@@ -5,18 +5,16 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.config.api.IAppSettingApi;
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
 import com.tencent.mobileqq.qroute.QRoute;
-import cooperation.qqcircle.QCircleConfig;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
+import cooperation.qqcircle.utils.QCircleHostStubUtil;
+import cooperation.qzone.QUA;
 import feedcloud.FeedCloudCommon.Entry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 public class QCircleQualityReporter
 {
@@ -37,6 +35,7 @@ public class QCircleQualityReporter
   public static final String KEY_OBJ_ID = "obj_id";
   public static final String KEY_OUTBOX_TASK_RESEND_EVENT = "outbox_task_resend_event";
   public static final String KEY_OUTBOX_TASK_RESEND_EVENT_FINAL = "outbox_task_resend_event_final";
+  public static final String KEY_PAGE_LEAK_EVENT = "page_leak_event";
   public static final String KEY_PLATFORM = "platform";
   public static final String KEY_QUA = "qua";
   public static final String KEY_RATE = "rate";
@@ -51,7 +50,7 @@ public class QCircleQualityReporter
   public static final String KEY_URL = "url";
   public static final String KEY_VERSION = "version";
   public static final String KEY_VIDEO_PUBLISH_FULL_LINK = "video_publish_full_link";
-  private static String PERF_LEVEL = null;
+  private static String PERF_LEVEL;
   private static final String TAG = "QCircleQualityReporter";
   private static long sFinalUniqueId = 0L;
   private static boolean sIsSampled = true;
@@ -59,31 +58,51 @@ public class QCircleQualityReporter
   private static void checkIsSampled()
   {
     long l1 = getDaysSince1970();
-    long l2 = MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin();
+    long l2 = QCircleHostStubUtil.getCurrentAccountLongUin();
     if (l2 == 0L) {
       return;
     }
-    int i = (int)(l1 % 100);
-    if (i == l2 % 100) {}
-    for (boolean bool = true;; bool = false)
-    {
-      sIsSampled = bool;
-      if (RFLog.isDevelopLevel()) {
-        RFLog.d("QCircleQualityReporter", RFLog.DEV, "抽中的尾数： " + i);
-      }
-      RFLog.d("QCircleQualityReporter", RFLog.USR, "checkIsSampled:" + sIsSampled);
-      return;
+    long l3 = 100;
+    int i = (int)(l1 % l3);
+    boolean bool;
+    if (i == l2 % l3) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    sIsSampled = bool;
+    if (RFLog.isDevelopLevel())
+    {
+      int j = RFLog.DEV;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("抽中的尾数： ");
+      localStringBuilder.append(i);
+      RFLog.d("QCircleQualityReporter", j, localStringBuilder.toString());
+    }
+    i = RFLog.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkIsSampled:");
+    localStringBuilder.append(sIsSampled);
+    RFLog.d("QCircleQualityReporter", i, localStringBuilder.toString());
   }
   
   public static List<FeedCloudCommon.Entry> createBaseEntries(String paramString)
   {
-    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { QCircleReportHelper.newEntry("host_uin", String.valueOf(MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin())), QCircleReportHelper.newEntry("qua", QCircleServiceImpl.getQZoneService().getQUA3()), QCircleReportHelper.newEntry("network_type", QCircleReportHelper.getNetworkType()), QCircleReportHelper.newEntry("client_time", String.valueOf(System.currentTimeMillis())), QCircleReportHelper.newEntry("event_id", paramString), QCircleReportHelper.newEntry("mobile_type", Build.MODEL + "_" + Build.VERSION.RELEASE), QCircleReportHelper.newEntry("version", ((IAppSettingApi)QRoute.api(IAppSettingApi.class)).getReportVersionName()), QCircleReportHelper.newEntry("platform", "AND"), QCircleReportHelper.newEntry("unique_id", String.valueOf(obtainUniqueId())) }));
+    FeedCloudCommon.Entry localEntry1 = QCircleReportHelper.newEntry("host_uin", QCircleHostStubUtil.getCurrentAccount());
+    FeedCloudCommon.Entry localEntry2 = QCircleReportHelper.newEntry("qua", QUA.getQUA3());
+    FeedCloudCommon.Entry localEntry3 = QCircleReportHelper.newEntry("network_type", QCircleReportHelper.getNetworkType());
+    FeedCloudCommon.Entry localEntry4 = QCircleReportHelper.newEntry("client_time", String.valueOf(System.currentTimeMillis()));
+    paramString = QCircleReportHelper.newEntry("event_id", paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.MODEL);
+    localStringBuilder.append("_");
+    localStringBuilder.append(Build.VERSION.RELEASE);
+    return new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { localEntry1, localEntry2, localEntry3, localEntry4, paramString, QCircleReportHelper.newEntry("mobile_type", localStringBuilder.toString()), QCircleReportHelper.newEntry("version", ((IAppSettingApi)QRoute.api(IAppSettingApi.class)).getReportVersionName()), QCircleReportHelper.newEntry("platform", "AND"), QCircleReportHelper.newEntry("unique_id", String.valueOf(obtainUniqueId())) }));
   }
   
   private static void generateUniqueId()
   {
-    sFinalUniqueId = System.currentTimeMillis() / 1000L << 32 | MobileQQ.sMobileQQ.waitAppRuntime(null).getLongAccountUin();
+    sFinalUniqueId = System.currentTimeMillis() / 1000L << 32 | QCircleHostStubUtil.getCurrentAccountLongUin();
   }
   
   private static long getBeijingTimeInMillis(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
@@ -123,7 +142,10 @@ public class QCircleQualityReporter
     localArrayList.add(QCircleReportHelper.newEntry("time_cost", paramString2));
     localArrayList.add(QCircleReportHelper.newEntry("ret_code", paramString3));
     localArrayList.add(QCircleReportHelper.newEntry("url", paramString4));
-    localArrayList.add(QCircleReportHelper.newEntry("type", paramInt + ""));
+    paramString2 = new StringBuilder();
+    paramString2.append(paramInt);
+    paramString2.append("");
+    localArrayList.add(QCircleReportHelper.newEntry("type", paramString2.toString()));
     if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
       paramInt = 0;
@@ -138,7 +160,7 @@ public class QCircleQualityReporter
   
   public static void reportQualityEvent(int paramInt, String paramString, List<FeedCloudCommon.Entry> paramList, boolean paramBoolean)
   {
-    if ((paramBoolean) && (!sIsSampled) && (!RFLog.isColorLevel()) && (QCircleConfig.getQQCircleQualitySampleSwitchOpen()))
+    if ((paramBoolean) && (!sIsSampled) && (!RFLog.isColorLevel()) && (QCircleConfigHelper.c()))
     {
       RFLog.d("QCircleQualityReporter", RFLog.DEV, "reportQualityEvent miss hit Sample,direct return!");
       return;
@@ -153,7 +175,7 @@ public class QCircleQualityReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleQualityReporter
  * JD-Core Version:    0.7.0.1
  */

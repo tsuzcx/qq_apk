@@ -30,7 +30,18 @@ public class ArDefaultSetting
   
   public String toString()
   {
-    return "ArDefaultSetting{key='" + this.jdField_a_of_type_JavaLangString + '\'' + ", type=" + this.jdField_a_of_type_Int + ", modelLevel=" + this.b + ", traceLevel=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ArDefaultSetting{key='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", modelLevel=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", traceLevel=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -43,7 +54,7 @@ public class ArDefaultSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArDefaultSetting
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,44 @@
 package com.tencent.turingfd.sdk.xq;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
+import android.content.Context;
 
 public class Core
-  extends Thread
 {
-  public Core(Cranberry paramCranberry, byte[] paramArrayOfByte, AtomicBoolean paramAtomicBoolean, AtomicReference paramAtomicReference, Object paramObject) {}
+  public static Core Tg = new Core();
   
-  public void run()
+  public boolean a(Context paramContext, Cascara paramCascara)
   {
-    Object localObject3 = Cranberry.a(this.this$0).n();
-    try
-    {
-      Object localObject1 = this.Cj;
-      localObject3 = (throws)localObject3;
-      localObject1 = ((throws)localObject3).a(3, (byte[])localObject1, 8120, 18120);
+    long l3 = Cascara.L(paramContext);
+    long l2 = paramCascara.E(paramContext);
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = 14400000L;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        ??? = long.do.a(-100, new byte[0]);
-      }
-      this.Ej.set(???);
-      synchronized (this.Fj)
-      {
-        this.Fj.notify();
-        return;
-      }
+    int i;
+    if (Math.abs(l3 - System.currentTimeMillis()) >= l1) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    if (this.Dj.get()) {
-      return;
+    if (i == 0) {
+      return false;
+    }
+    l1 = paramCascara.f(paramContext, "112");
+    l2 = System.currentTimeMillis();
+    l3 = Coconut.Tg.aa(paramContext);
+    return Math.abs(l1 - l2) >= l3;
+  }
+  
+  public void ea(Context paramContext)
+  {
+    if (Cascara.L(paramContext) == 0L) {
+      Cascara.T(paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Core
  * JD-Core Version:    0.7.0.1
  */

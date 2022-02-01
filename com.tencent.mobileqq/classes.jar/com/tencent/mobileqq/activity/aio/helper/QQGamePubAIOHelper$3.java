@@ -1,36 +1,69 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import com.tencent.mobileqq.data.MessageForArkApp;
-import java.util.Comparator;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 class QQGamePubAIOHelper$3
-  implements Comparator<MessageForArkApp>
+  implements Runnable
 {
-  QQGamePubAIOHelper$3(QQGamePubAIOHelper paramQQGamePubAIOHelper) {}
+  QQGamePubAIOHelper$3(QQGamePubAIOHelper paramQQGamePubAIOHelper, List paramList) {}
   
-  public int a(MessageForArkApp paramMessageForArkApp1, MessageForArkApp paramMessageForArkApp2)
+  public void run()
   {
-    int i = 0;
-    try
+    for (;;)
     {
-      long l1 = QQGamePubAIOHelper.a(paramMessageForArkApp1).optLong("time");
-      long l2 = QQGamePubAIOHelper.a(paramMessageForArkApp2).optLong("time");
-      if (l1 < l2) {
-        i = 1;
+      int i;
+      try
+      {
+        if (!QQGamePubAIOHelper.a(this.this$0)) {
+          return;
+        }
+        if (!QQGamePubAIOHelper.a().isEmpty()) {
+          break label151;
+        }
+        return;
       }
-      while (l1 == l2) {
-        return i;
+      catch (Throwable localThrowable)
+      {
+        Object localObject;
+        if (!QLog.isColorLevel()) {
+          break label150;
+        }
+        QLog.e("QQGamePub_QQGamePubAIOHelper", 2, localThrowable, new Object[0]);
       }
-      return -1;
+      if (i < this.a.size())
+      {
+        localObject = QQGamePubAIOHelper.a().iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          if (((Iterator)localObject).next() != this.a.get(i)) {
+            continue;
+          }
+          ((Iterator)localObject).remove();
+          if (QLog.isDevelopLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("handleMsgDelete:");
+            ((StringBuilder)localObject).append(this.a.get(i));
+            QLog.i("QQGamePub_QQGamePubAIOHelper", 4, ((StringBuilder)localObject).toString());
+          }
+        }
+        i += 1;
+      }
+      else
+      {
+        label150:
+        return;
+        label151:
+        i = 0;
+      }
     }
-    catch (Throwable paramMessageForArkApp1) {}
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.3
  * JD-Core Version:    0.7.0.1
  */

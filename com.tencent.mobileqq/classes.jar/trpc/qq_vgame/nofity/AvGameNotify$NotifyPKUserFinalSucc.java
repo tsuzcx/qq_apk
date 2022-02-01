@@ -31,16 +31,17 @@ public final class AvGameNotify$NotifyPKUserFinalSucc
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 58, 66, 72, 82, 90, 98, 104 }, new String[] { "reason", "total", "final_ranking", "award_str", "award_url", "ranking", "award_url_str", "delay_award", "delay_award_tip", "draw_res", "win_tip", "score" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, null, localByteStringMicro3, Boolean.valueOf(false), localByteStringMicro4, null, "", Integer.valueOf(0) }, NotifyPKUserFinalSucc.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 58, 66, 72, 82, 90, 98, 104 }, new String[] { "reason", "total", "final_ranking", "award_str", "award_url", "ranking", "award_url_str", "delay_award", "delay_award_tip", "draw_res", "win_tip", "score" }, new Object[] { localInteger, localInteger, null, localByteStringMicro1, localByteStringMicro2, null, localByteStringMicro3, Boolean.valueOf(false), localByteStringMicro4, null, "", localInteger }, NotifyPKUserFinalSucc.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trpc.qq_vgame.nofity.AvGameNotify.NotifyPKUserFinalSucc
  * JD-Core Version:    0.7.0.1
  */

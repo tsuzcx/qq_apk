@@ -40,18 +40,20 @@ public final class interest_list
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.uinlist != null) {
-      paramJceOutputStream.write(this.uinlist, 0);
+    ArrayList localArrayList = this.uinlist;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
     paramJceOutputStream.write(this.allcount, 1);
-    if (this.users != null) {
-      paramJceOutputStream.write(this.users, 2);
+    localArrayList = this.users;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.interest_list
  * JD-Core Version:    0.7.0.1
  */

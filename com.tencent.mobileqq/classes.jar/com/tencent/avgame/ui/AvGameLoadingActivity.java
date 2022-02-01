@@ -12,56 +12,55 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.avgame.business.handler.AvGameRoomListHandler;
 import com.tencent.avgame.business.observer.AvGameRoomListObserver;
+import com.tencent.avgame.config.AvGameConfigUtil;
+import com.tencent.avgame.config.data.AvGameConfBean;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.avgame.gamelogic.gameres.AvGameResDownloadManager;
 import com.tencent.avgame.gamelogic.gameres.AvGameResDownloadManager.ResInfo;
 import com.tencent.avgame.gamelogic.gameres.AvGameResPreloadManager;
-import com.tencent.avgame.gamelogic.gameres.AvGameResPreloadManager.ConfInfo;
-import com.tencent.avgame.gamelogic.gameres.AvGameResPreloadManager.PathInfo;
+import com.tencent.avgame.gamelogic.gameres.IAvGameResPreloadManager.ConfInfo;
 import com.tencent.avgame.gameroom.AVGameLottieHelper;
-import com.tencent.avgame.gameroom.festivalreport.CJSurvivalFestivalReporter;
 import com.tencent.avgame.ipc.AVGameUtilService;
-import com.tencent.avgame.util.AVGameNodeReportUtil;
-import com.tencent.avgame.util.AVGamePerfReporter;
-import com.tencent.avgame.util.AvGameConfBean;
+import com.tencent.avgame.report.AVGameNodeReportUtil;
+import com.tencent.avgame.report.AVGamePerfReporter;
+import com.tencent.avgame.report.exception.AVGameExceptionReporter;
 import com.tencent.avgame.util.AvGameEntranceUtil;
+import com.tencent.avgame.widget.AutoBgImageView;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.config.business.AvGameConfProcessor;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
+import com.tencent.mobileqq.profilecard.api.IProfileDataService;
 import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.AutoBgImageView;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.qqperf.tools.DeviceInfoUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class AvGameLoadingActivity
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
   implements Handler.Callback
 {
   int jdField_a_of_type_Int = 0;
@@ -69,7 +68,6 @@ public class AvGameLoadingActivity
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new AvGameLoadingActivity.1(this);
   private Bundle jdField_a_of_type_AndroidOsBundle;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -78,8 +76,9 @@ public class AvGameLoadingActivity
   AvGameResDownloadManager jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager;
   private AVGameBackAction jdField_a_of_type_ComTencentAvgameUiAVGameBackAction = null;
   private CasualTips jdField_a_of_type_ComTencentAvgameUiCasualTips;
+  private AutoBgImageView jdField_a_of_type_ComTencentAvgameWidgetAutoBgImageView;
+  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
   private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  private AutoBgImageView jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView;
   String jdField_a_of_type_JavaLangString = null;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean = false;
@@ -132,56 +131,59 @@ public class AvGameLoadingActivity
   
   private void a(int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
-      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "createAvGameRoom activity finish ");
-    }
-    AvGameRoomListHandler localAvGameRoomListHandler;
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    if ((localObject != null) && (!((QBaseActivity)localObject).isFinishing()))
     {
+      localObject = (AvGameRoomListHandler)((AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getBusinessHandler(AvGameRoomListHandler.jdField_a_of_type_JavaLangString);
+      if (localObject != null) {
+        ((AvGameRoomListHandler)localObject).a(paramInt, paramString, this.jdField_a_of_type_Long, this.jdField_e_of_type_Int);
+      }
       return;
-      localAvGameRoomListHandler = (AvGameRoomListHandler)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER);
-    } while (localAvGameRoomListHandler == null);
-    localAvGameRoomListHandler.a(paramInt, paramString, this.jdField_a_of_type_Long, this.jdField_e_of_type_Int);
+    }
+    QLog.e("AvGameLoadingActivity", 1, "createAvGameRoom activity finish ");
   }
   
   private void a(int paramInt, String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
-      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "joinAvGameRoom activity finish");
-    }
-    AvGameRoomListHandler localAvGameRoomListHandler;
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    if ((localObject != null) && (!((QBaseActivity)localObject).isFinishing()))
     {
-      return;
       if (TextUtils.isEmpty(paramString1))
       {
-        QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131690573, 0).a();
-        QLog.e("AvGameManagerAvGameLoadingActivity", 1, "joinAvGameRoom with empty roomId!!");
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131690501, 0).a();
+        QLog.e("AvGameLoadingActivity", 1, "joinAvGameRoom with empty roomId!!");
         AVGameNodeReportUtil.b(-103);
         a(false, 114);
         return;
       }
-      localAvGameRoomListHandler = (AvGameRoomListHandler)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER);
-    } while (localAvGameRoomListHandler == null);
-    localAvGameRoomListHandler.a(paramInt, paramString1, paramString2, this.jdField_a_of_type_Long);
+      localObject = (AvGameRoomListHandler)((AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getBusinessHandler(AvGameRoomListHandler.jdField_a_of_type_JavaLangString);
+      if (localObject != null) {
+        ((AvGameRoomListHandler)localObject).a(paramInt, paramString1, paramString2, this.jdField_a_of_type_Long);
+      }
+      return;
+    }
+    QLog.e("AvGameLoadingActivity", 1, "joinAvGameRoom activity finish");
   }
   
   private void a(long paramLong)
   {
     if (paramLong != 0L)
     {
-      AvGameRoomListHandler localAvGameRoomListHandler = (AvGameRoomListHandler)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER);
-      if (localAvGameRoomListHandler != null) {
-        localAvGameRoomListHandler.a(paramLong);
+      localObject = (AvGameRoomListHandler)((AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getBusinessHandler(AvGameRoomListHandler.jdField_a_of_type_JavaLangString);
+      if (localObject != null) {
+        ((AvGameRoomListHandler)localObject).a(paramLong);
       }
     }
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "exitRoom " + paramLong);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("exitRoom ");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.d("AvGameLoadingActivity", 2, ((StringBuilder)localObject).toString());
   }
   
   private void a(AvGameResDownloadManager.ResInfo paramResInfo)
   {
     AVGamePerfReporter.a().a("param_StepResource");
-    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager = new AvGameResDownloadManager(getActivity().getAppInterface());
+    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager = new AvGameResDownloadManager((AppInterface)getQBaseActivity().getAppRuntime());
     this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager.a(paramResInfo, new AvGameLoadingActivity.5(this, paramResInfo));
   }
   
@@ -198,105 +200,158 @@ public class AvGameLoadingActivity
   
   private void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "finish, hasEnterGame[" + paramBoolean + "], action[" + this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction + "], retCode[" + paramInt + "]");
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("finish, hasEnterGame[");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("], action[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction);
+      ((StringBuilder)localObject).append("], retCode[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AvGameLoadingActivity", 2, ((StringBuilder)localObject).toString());
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction != null))
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction.a(getActivity());
-      if ("MsgPush".equals(this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction.jdField_a_of_type_JavaLangString)) {
+      localObject = this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction;
+      if (localObject != null)
+      {
+        ((AVGameBackAction)localObject).a(getActivity());
+        if (!"MsgPush".equals(this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction.jdField_a_of_type_JavaLangString)) {
+          return;
+        }
         ReportController.b(null, "dc00898", "", "", "0X800B247", "0X800B247", paramInt, 0, "", "", "", "");
+        return;
       }
     }
-    while ((!paramBoolean) || (this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction == null) || (!"MsgPush".equals(this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction.jdField_a_of_type_JavaLangString))) {
-      return;
+    if (paramBoolean)
+    {
+      localObject = this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction;
+      if ((localObject != null) && ("MsgPush".equals(((AVGameBackAction)localObject).jdField_a_of_type_JavaLangString))) {
+        ReportController.b(null, "dc00898", "", "", "0X800B246", "0X800B246", 0, 0, "", "", "", "");
+      }
     }
-    ReportController.b(null, "dc00898", "", "", "0X800B246", "0X800B246", 0, 0, "", "", "", "");
   }
   
   private void a(boolean paramBoolean, int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong1, long paramLong2)
   {
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "handleProtoEnterResult  bCreate:" + paramBoolean + " ret code " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleProtoEnterResult  bCreate:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" ret code ");
+    localStringBuilder.append(paramInt);
+    QLog.d("AvGameLoadingActivity", 2, localStringBuilder.toString());
     AVGamePerfReporter.a().a("param_StepRoomProto", 0);
-    int k = 0;
-    if (paramLong1 == this.jdField_a_of_type_Long) {
+    long l = this.jdField_a_of_type_Long;
+    int k = 1;
+    if (paramLong1 == l)
+    {
       if ((paramInt == 0) && (paramRoomInfo != null))
       {
         paramLong1 = paramRoomInfo.id;
-        if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()))
+        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+        if ((paramString != null) && (!paramString.isFinishing()))
         {
-          k = 1;
           if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Int == 2)) {
             this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
           }
-          this.jdField_d_of_type_JavaLangString = (paramLong1 + "");
+          paramString = new StringBuilder();
+          paramString.append(paramLong1);
+          paramString.append("");
+          this.jdField_d_of_type_JavaLangString = paramString.toString();
           AVGameNodeReportUtil.a(this.jdField_d_of_type_JavaLangString);
           this.jdField_e_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
           this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
           this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo = paramRoomInfo;
           f();
-          if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()))
-          {
-            if (!paramBoolean) {
-              break label542;
-            }
-            if (paramInt != 0) {
-              break label486;
-            }
-            ReportController.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800B018", "0X800B018", this.jdField_d_of_type_Int, 0, "", this.jdField_d_of_type_JavaLangString, "", "");
-            if (this.jdField_d_of_type_Int == 4) {
-              ReportController.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800B06C", "0X800B06C", this.jdField_e_of_type_Int, 0, "", this.jdField_d_of_type_JavaLangString, "", "");
-            }
-          }
-          label282:
-          if (k == 0)
-          {
-            QLog.e("AvGameManagerAvGameLoadingActivity", 2, "handleProtoEnterResult !bHandled bCreate:" + paramBoolean);
-            if (!paramBoolean) {
-              break label643;
-            }
-          }
+          break label359;
         }
+        paramString = new StringBuilder();
+        paramString.append("handleProtoEnterResult  ENTER WITH null activity bCreate:");
+        paramString.append(paramBoolean);
+        QLog.e("AvGameLoadingActivity", 2, paramString.toString());
+      }
+      else
+      {
+        paramRoomInfo = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+        if ((paramRoomInfo != null) && (!paramRoomInfo.isFinishing()))
+        {
+          if (this.jdField_d_of_type_Boolean)
+          {
+            m();
+            break label359;
+          }
+          a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, paramInt, paramBoolean, paramString, paramLong2);
+          break label359;
+        }
+        paramString = new StringBuilder();
+        paramString.append("mObserver handleProtoEnterResult alertDialogWithRetCode  WITH null activity  bCreate:");
+        paramString.append(paramBoolean);
+        QLog.e("AvGameLoadingActivity", 2, paramString.toString());
       }
     }
-    label643:
-    for (k = -102;; k = -103)
+    else
     {
+      paramString = new StringBuilder();
+      paramString.append("handleProtoEnterResult get observer not by self bCreate:");
+      paramString.append(paramBoolean);
+      QLog.i("AvGameLoadingActivity", 2, paramString.toString());
+    }
+    k = 0;
+    label359:
+    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    if ((paramString != null) && (!paramString.isFinishing()))
+    {
+      int m;
+      if (paramBoolean)
+      {
+        if (paramInt == 0)
+        {
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X800B018", "0X800B018", this.jdField_d_of_type_Int, 0, "", this.jdField_d_of_type_JavaLangString, "", "");
+          if (this.jdField_d_of_type_Int == 4) {
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X800B06C", "0X800B06C", this.jdField_e_of_type_Int, 0, "", this.jdField_d_of_type_JavaLangString, "", "");
+          }
+        }
+        else
+        {
+          paramString = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+          m = this.jdField_d_of_type_Int;
+          paramRoomInfo = new StringBuilder();
+          paramRoomInfo.append(paramInt);
+          paramRoomInfo.append("");
+          ReportController.b(paramString, "dc00898", "", "", "0X800B019", "0X800B019", m, 0, paramRoomInfo.toString(), "", "", "");
+        }
+      }
+      else if (paramInt == 0)
+      {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X800B026", "0X800B026", this.jdField_d_of_type_Int, 0, "", this.jdField_d_of_type_JavaLangString, "", "");
+      }
+      else
+      {
+        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+        m = this.jdField_d_of_type_Int;
+        paramRoomInfo = new StringBuilder();
+        paramRoomInfo.append(paramInt);
+        paramRoomInfo.append("");
+        ReportController.b(paramString, "dc00898", "", "", "0X800B027", "0X800B027", m, 0, paramRoomInfo.toString(), "", "", "");
+      }
+    }
+    if (k == 0)
+    {
+      paramString = new StringBuilder();
+      paramString.append("handleProtoEnterResult !bHandled bCreate:");
+      paramString.append(paramBoolean);
+      QLog.e("AvGameLoadingActivity", 2, paramString.toString());
+      if (paramBoolean) {
+        k = -102;
+      } else {
+        k = -103;
+      }
       AVGameNodeReportUtil.b(k);
       a(false, paramInt);
-      return;
-      QLog.e("AvGameManagerAvGameLoadingActivity", 2, "handleProtoEnterResult  ENTER WITH null activity bCreate:" + paramBoolean);
-      break;
-      if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()))
-      {
-        if (this.jdField_d_of_type_Boolean)
-        {
-          m();
-          k = 1;
-          break;
-        }
-        a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramInt, paramBoolean, paramString, paramLong2);
-        k = 1;
-        break;
-      }
-      QLog.e("AvGameManagerAvGameLoadingActivity", 2, "mObserver handleProtoEnterResult alertDialogWithRetCode  WITH null activity  bCreate:" + paramBoolean);
-      k = 0;
-      break;
-      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "handleProtoEnterResult get observer not by self bCreate:" + paramBoolean);
-      k = 0;
-      break;
-      label486:
-      ReportController.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800B019", "0X800B019", this.jdField_d_of_type_Int, 0, paramInt + "", "", "", "");
-      break label282;
-      label542:
-      if (paramInt == 0)
-      {
-        ReportController.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800B026", "0X800B026", this.jdField_d_of_type_Int, 0, "", this.jdField_d_of_type_JavaLangString, "", "");
-        break label282;
-      }
-      ReportController.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X800B027", "0X800B027", this.jdField_d_of_type_Int, 0, paramInt + "", "", "", "");
-      break label282;
     }
   }
   
@@ -305,8 +360,19 @@ public class AvGameLoadingActivity
     AVGamePerfReporter.a().a("param_StepLoading");
     paramBundle = a(paramBoolean, paramInt1, paramString1, paramString2, paramInt2, paramBundle);
     ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowClosedBroadcast(BaseApplicationImpl.getContext(), 56, 2);
-    PublicFragmentActivity.Launcher.a(paramBundle, PublicFragmentActivity.class, AvGameLoadingActivity.class);
-    QLog.e("AvGameManagerAvGameLoadingActivity", 2, " beCreate" + paramBoolean + " fromType" + paramInt1 + " roomId" + paramString2 + " peer" + paramString1 + "gt" + paramInt2);
+    QPublicFragmentActivity.Launcher.a(paramBundle, QPublicFragmentActivity.class, AvGameLoadingActivity.class);
+    paramBundle = new StringBuilder();
+    paramBundle.append(" beCreate");
+    paramBundle.append(paramBoolean);
+    paramBundle.append(" fromType");
+    paramBundle.append(paramInt1);
+    paramBundle.append(" roomId");
+    paramBundle.append(paramString2);
+    paramBundle.append(" peer");
+    paramBundle.append(paramString1);
+    paramBundle.append("gt");
+    paramBundle.append(paramInt2);
+    QLog.e("AvGameLoadingActivity", 2, paramBundle.toString());
   }
   
   public static void a(boolean paramBoolean1, Activity paramActivity, byte[] paramArrayOfByte, String paramString1, RoomInfo paramRoomInfo, String paramString2, boolean paramBoolean2, boolean paramBoolean3, Bundle paramBundle)
@@ -318,65 +384,91 @@ public class AvGameLoadingActivity
   {
     if (paramActivity == null)
     {
-      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "enterAvGameActivity with empty activity");
+      QLog.e("AvGameLoadingActivity", 1, "enterAvGameActivity with empty activity");
       return;
     }
     AVGamePerfReporter.a().a("param_StepPrepareGame");
-    Intent localIntent = new Intent(paramActivity, AVGameActivity.class);
+    Intent localIntent = new Intent();
     localIntent.putExtra("key_room_from_type", paramInt);
     localIntent.putExtra("key_room_is_create", paramBoolean4);
     if (paramString1 != null)
     {
       localIntent.putExtra("key_room_id", paramString1);
-      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "enterAvGameActivity roomId " + paramString1 + "be New:" + paramBoolean1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enterAvGameActivity roomId ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("be New:");
+      localStringBuilder.append(paramBoolean1);
+      QLog.e("AvGameLoadingActivity", 1, localStringBuilder.toString());
     }
-    for (;;)
+    else
     {
-      if (paramArrayOfByte != null)
-      {
-        localIntent.putExtra("key_sig", paramArrayOfByte);
-        QLog.d("AvGameManagerAvGameLoadingActivity", 2, "enterAvGameActivity sig");
-      }
-      if (paramRoomInfo != null)
-      {
-        paramArrayOfByte = new Bundle();
-        paramArrayOfByte.putSerializable("key_room_info", paramRoomInfo);
-        localIntent.putExtra("key_room_bundle", paramArrayOfByte);
-        QLog.d("AvGameManagerAvGameLoadingActivity", 2, "enterAvGameActivity roomInfo" + paramRoomInfo.toString());
-      }
-      localIntent.putExtra("key_room_be_new_enter", paramBoolean1);
-      if (paramString2 != null) {
-        localIntent.putExtra("key_room_friend_uin", paramString2);
-      }
-      paramArrayOfByte = AVGameBackAction.a(paramActivity.getIntent());
-      if (paramArrayOfByte != null) {
-        AVGameBackAction.a(localIntent, paramArrayOfByte);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("AvGameManagerAvGameLoadingActivity", 2, "enterAvGameActivity, action[" + paramArrayOfByte + "], activity[" + paramActivity + "]");
-      }
-      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "enterAvGameActivity startActivity    current time:" + System.currentTimeMillis() + " bNewEnter: " + paramBoolean1 + " match:" + paramBoolean2 + " survival:" + paramBoolean3);
-      localIntent.putExtra("key_start_time", SystemClock.elapsedRealtime());
-      localIntent.putExtra("key_start_match", paramBoolean2);
-      localIntent.putExtra("key_from_survival", paramBoolean3);
-      if (paramBundle != null)
-      {
-        if (paramBoolean3)
-        {
-          localIntent.putExtra("key_pk_type", paramBundle.getInt("key_pk_type", 0));
-          localIntent.putExtra("key_pk_qqcj", paramBundle.getBoolean("key_pk_qqcj", false));
-          localIntent.putExtra("key_pk_qqcj_source_type", paramBundle.getInt("key_pk_qqcj_source_type", 0));
-          localIntent.putExtra("key_pk_qqcj_qr_to_uin", paramBundle.getString("key_pk_qqcj_qr_to_uin", "0"));
-        }
-        localIntent.putExtra("key_match_game_type", paramBundle.getInt("key_game_type", 0));
-      }
-      AVGameNodeReportUtil.a(localIntent);
-      AVGamePerfReporter.a().b(localIntent);
-      paramActivity.startActivity(localIntent);
-      paramActivity.overridePendingTransition(2130772121, 2130772121);
-      return;
-      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "enterAvGameActivity roomId empty  be New:" + paramBoolean1);
+      paramString1 = new StringBuilder();
+      paramString1.append("enterAvGameActivity roomId empty  be New:");
+      paramString1.append(paramBoolean1);
+      QLog.e("AvGameLoadingActivity", 1, paramString1.toString());
     }
+    if (paramArrayOfByte != null)
+    {
+      localIntent.putExtra("key_sig", paramArrayOfByte);
+      QLog.d("AvGameLoadingActivity", 2, "enterAvGameActivity sig");
+    }
+    if (paramRoomInfo != null)
+    {
+      paramArrayOfByte = new Bundle();
+      paramArrayOfByte.putSerializable("key_room_info", paramRoomInfo);
+      localIntent.putExtra("key_room_bundle", paramArrayOfByte);
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("enterAvGameActivity roomInfo");
+      paramArrayOfByte.append(paramRoomInfo.toString());
+      QLog.d("AvGameLoadingActivity", 2, paramArrayOfByte.toString());
+    }
+    localIntent.putExtra("key_room_be_new_enter", paramBoolean1);
+    if (paramString2 != null) {
+      localIntent.putExtra("key_room_friend_uin", paramString2);
+    }
+    paramArrayOfByte = AVGameBackAction.a(paramActivity.getIntent());
+    if (paramArrayOfByte != null) {
+      AVGameBackAction.a(localIntent, paramArrayOfByte);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("enterAvGameActivity, action[");
+      paramString1.append(paramArrayOfByte);
+      paramString1.append("], activity[");
+      paramString1.append(paramActivity);
+      paramString1.append("]");
+      QLog.i("AvGameLoadingActivity", 2, paramString1.toString());
+    }
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("enterAvGameActivity startActivity    current time:");
+    paramArrayOfByte.append(System.currentTimeMillis());
+    paramArrayOfByte.append(" bNewEnter: ");
+    paramArrayOfByte.append(paramBoolean1);
+    paramArrayOfByte.append(" match:");
+    paramArrayOfByte.append(paramBoolean2);
+    paramArrayOfByte.append(" survival:");
+    paramArrayOfByte.append(paramBoolean3);
+    QLog.e("AvGameLoadingActivity", 1, paramArrayOfByte.toString());
+    localIntent.putExtra("key_start_time", SystemClock.elapsedRealtime());
+    localIntent.putExtra("key_start_match", paramBoolean2);
+    localIntent.putExtra("key_from_survival", paramBoolean3);
+    if (paramBundle != null)
+    {
+      if (paramBoolean3)
+      {
+        localIntent.putExtra("key_pk_type", paramBundle.getInt("key_pk_type", 0));
+        localIntent.putExtra("key_pk_qqcj", paramBundle.getBoolean("key_pk_qqcj", false));
+        localIntent.putExtra("key_pk_qqcj_source_type", paramBundle.getInt("key_pk_qqcj_source_type", 0));
+        localIntent.putExtra("key_pk_qqcj_qr_to_uin", paramBundle.getString("key_pk_qqcj_qr_to_uin", "0"));
+      }
+      localIntent.putExtra("key_match_game_type", paramBundle.getInt("key_game_type", 0));
+    }
+    AVGameNodeReportUtil.a(localIntent);
+    AVGamePerfReporter.a().b(localIntent);
+    RouteUtils.a(paramActivity, localIntent, "/business/avgame/avgameactivity");
+    paramActivity.overridePendingTransition(2130772147, 2130772147);
   }
   
   private boolean a()
@@ -386,52 +478,50 @@ public class AvGameLoadingActivity
   
   private void c()
   {
-    AvGameResPreloadManager.PathInfo localPathInfo = AvGameResPreloadManager.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app);
-    AvGameResPreloadManager.ConfInfo localConfInfo = AvGameResPreloadManager.a();
-    if ((TextUtils.isEmpty(localConfInfo.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localConfInfo.jdField_b_of_type_JavaLangString)))
+    IAvGameResPreloadManager.ConfInfo localConfInfo = AvGameResPreloadManager.a();
+    StringBuilder localStringBuilder;
+    if ((!TextUtils.isEmpty(localConfInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localConfInfo.jdField_b_of_type_JavaLangString)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("AvGameManagerAvGameLoadingActivity", 2, "checkResPreloadReady manage url or md5 empty:" + localConfInfo.jdField_a_of_type_JavaLangString + ", " + localConfInfo.jdField_b_of_type_JavaLangString);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
-      if (this.jdField_g_of_type_Boolean) {
-        CJSurvivalFestivalReporter.a(1, false, "-1", null, true);
-      }
-      return;
-    }
-    if (TextUtils.isEmpty(localPathInfo.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("AvGameManagerAvGameLoadingActivity", 2, "checkResPreloadReady mediaResPath empty as not ready, go with AvGameResDownloadManager");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AvGameManagerAvGameLoadingActivity", 2, "checkResPreloadReady checkResDownloadReady ResInfo:" + localConfInfo.jdField_a_of_type_JavaLangString + ", " + localConfInfo.jdField_b_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkResPreloadReady checkResDownloadReady ResInfo:");
+        localStringBuilder.append(localConfInfo.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(localConfInfo.jdField_b_of_type_JavaLangString);
+        QLog.d("AvGameLoadingActivity", 2, localStringBuilder.toString());
       }
       a(new AvGameResDownloadManager.ResInfo(localConfInfo.jdField_a_of_type_JavaLangString, localConfInfo.jdField_b_of_type_JavaLangString));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AvGameManagerAvGameLoadingActivity", 2, "checkResPreloadReady mediaResPath ready:" + localPathInfo.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkResPreloadReady manage url or md5 empty:");
+      localStringBuilder.append(localConfInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(localConfInfo.jdField_b_of_type_JavaLangString);
+      QLog.e("AvGameLoadingActivity", 2, localStringBuilder.toString());
     }
-    AvGameResDownloadManager.jdField_a_of_type_JavaLangString = localPathInfo.jdField_a_of_type_JavaLangString;
-    AvGameResPreloadManager.a(localPathInfo);
-    AvGameResPreloadManager.a(localConfInfo);
-    this.jdField_a_of_type_Int = 0;
-    k();
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
+    if (this.jdField_g_of_type_Boolean) {
+      AVGameExceptionReporter.a().a(1, null, null, null);
+    }
   }
   
   private void d()
   {
     AVGamePerfReporter.a().a("param_StepResource");
-    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager = new AvGameResDownloadManager(getActivity().getAppInterface());
-    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager.a(new AvGameResDownloadManager.ResInfo(AvGameConfProcessor.a().a(), AvGameConfProcessor.a().b()), new AvGameLoadingActivity.6(this));
+    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager = new AvGameResDownloadManager((AppInterface)getQBaseActivity().getAppRuntime());
+    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager.a(new AvGameResDownloadManager.ResInfo(AvGameConfigUtil.a().a(), AvGameConfigUtil.a().b()), new AvGameLoadingActivity.6(this));
   }
   
   private void e()
   {
-    if (this.jdField_a_of_type_AndroidOsBundle != null)
+    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    if (localBundle != null)
     {
-      this.jdField_d_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("key_stranger_match", false);
+      this.jdField_d_of_type_Boolean = localBundle.getBoolean("key_stranger_match", false);
       this.jdField_e_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("key_stranger_match_v2", false);
       this.jdField_f_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("key_stranger_match_v2_from", 0);
       this.jdField_g_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("key_pk_qqcj", false);
@@ -443,11 +533,11 @@ public class AvGameLoadingActivity
     AVGamePerfReporter.a().a("param_StepAvAlive");
     if (!AVGameUtilService.a())
     {
-      QLog.d("AvGameManagerAvGameLoadingActivity", 2, "preStartAvGameActivity  isAVGameAlive false ");
+      QLog.d("AvGameLoadingActivity", 2, "preStartAvGameActivity  isAVGameAlive false ");
       h();
       return;
     }
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "preStartAvGameActivity  isAVGameAlive true ");
+    QLog.d("AvGameLoadingActivity", 2, "preStartAvGameActivity  isAVGameAlive true ");
     j();
   }
   
@@ -455,24 +545,24 @@ public class AvGameLoadingActivity
   {
     if (AVGameUtilService.a())
     {
-      QLog.d("AvGameManagerAvGameLoadingActivity", 2, "checkAvGameProcessReady live ");
+      QLog.d("AvGameLoadingActivity", 2, "checkAvGameProcessReady live ");
       j();
       return;
     }
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "checkAvGameProcessReady not  live send  MSG_CHECK_AV_GAME_PROCESS_READY");
+    QLog.d("AvGameLoadingActivity", 2, "checkAvGameProcessReady not  live send  MSG_CHECK_AV_GAME_PROCESS_READY");
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 1000L);
   }
   
   private void h()
   {
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "startWaitProcessReady ");
+    QLog.d("AvGameLoadingActivity", 2, "startWaitProcessReady ");
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 1000L);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(5, 15000L);
   }
   
   private void i()
   {
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "stopWaitProcessReady ");
+    QLog.d("AvGameLoadingActivity", 2, "stopWaitProcessReady ");
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(5);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(8);
@@ -480,21 +570,24 @@ public class AvGameLoadingActivity
   
   private void j()
   {
-    boolean bool = false;
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "DoEnterActivity ");
+    QLog.d("AvGameLoadingActivity", 2, "DoEnterActivity ");
     a(100);
     i();
     b();
     AVGamePerfReporter.a().a("param_StepAvAlive", 0);
-    FragmentActivity localFragmentActivity = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    QBaseActivity localQBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
     byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
     String str1 = this.jdField_d_of_type_JavaLangString;
     RoomInfo localRoomInfo = this.jdField_a_of_type_ComTencentAvgameGamelogicDataRoomInfo;
     String str2 = this.jdField_a_of_type_JavaLangString;
-    if ((this.jdField_c_of_type_Int == 9) || (this.jdField_c_of_type_Int == 11) || (this.jdField_c_of_type_Int == 13)) {
+    int k = this.jdField_c_of_type_Int;
+    boolean bool;
+    if ((k != 9) && (k != 11) && (k != 13)) {
+      bool = false;
+    } else {
       bool = true;
     }
-    a(true, localFragmentActivity, arrayOfByte, str1, localRoomInfo, str2, bool, a(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_c_of_type_Int, this.jdField_b_of_type_Boolean);
+    a(true, localQBaseActivity, arrayOfByte, str1, localRoomInfo, str2, bool, a(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_c_of_type_Int, this.jdField_b_of_type_Boolean);
     this.jdField_e_of_type_JavaLangString = null;
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, this.jdField_g_of_type_Int);
   }
@@ -502,8 +595,10 @@ public class AvGameLoadingActivity
   private void k()
   {
     AVGamePerfReporter.a().a("param_StepResource", 0);
-    if (this.jdField_a_of_type_Int <= 100 / this.jdField_b_of_type_Int) {
-      this.jdField_a_of_type_Int = (100 / this.jdField_b_of_type_Int + (int)System.currentTimeMillis() % 5);
+    int k = this.jdField_a_of_type_Int;
+    int m = this.jdField_b_of_type_Int;
+    if (k <= 100 / m) {
+      this.jdField_a_of_type_Int = (100 / m + (int)System.currentTimeMillis() % 5);
     }
     a(this.jdField_a_of_type_Int);
     ThreadManager.getUIHandlerV2().postDelayed(new AvGameLoadingActivity.9(this), 150L);
@@ -511,86 +606,84 @@ public class AvGameLoadingActivity
   
   private void l()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "stopStrangerMatch " + this.jdField_h_of_type_Int + " " + this.jdField_b_of_type_ArrayOfByte);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stopStrangerMatch ");
+      localStringBuilder.append(this.jdField_h_of_type_Int);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(this.jdField_b_of_type_ArrayOfByte);
+      QLog.i("AvGameLoadingActivity", 2, localStringBuilder.toString());
     }
     if ((this.jdField_d_of_type_Boolean) && (this.jdField_h_of_type_Int != -1))
     {
-      ((AvGameRoomListHandler)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER)).a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getLongAccountUin(), 0, 0, this.jdField_h_of_type_Int);
+      ((AvGameRoomListHandler)((AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getBusinessHandler(AvGameRoomListHandler.jdField_a_of_type_JavaLangString)).a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getLongAccountUin(), 0, 0, this.jdField_h_of_type_Int);
       this.jdField_h_of_type_Int = -1;
     }
     if ((this.jdField_e_of_type_Boolean) && (this.jdField_b_of_type_ArrayOfByte != null))
     {
-      ((AvGameRoomListHandler)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER)).a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getLongAccountUin(), this.jdField_e_of_type_Int, this.jdField_b_of_type_ArrayOfByte, 0);
+      ((AvGameRoomListHandler)((AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getBusinessHandler(AvGameRoomListHandler.jdField_a_of_type_JavaLangString)).a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getLongAccountUin(), this.jdField_e_of_type_Int, this.jdField_b_of_type_ArrayOfByte, 0);
       this.jdField_b_of_type_ArrayOfByte = null;
     }
   }
   
   private void m()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "startStrangerMatch ");
+    boolean bool = QLog.isColorLevel();
+    int k = 2;
+    if (bool) {
+      QLog.i("AvGameLoadingActivity", 2, "startStrangerMatch ");
     }
-    AvGameRoomListHandler localAvGameRoomListHandler = (AvGameRoomListHandler)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER);
-    Card localCard;
-    int k;
+    AvGameRoomListHandler localAvGameRoomListHandler = (AvGameRoomListHandler)((AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getBusinessHandler(AvGameRoomListHandler.jdField_a_of_type_JavaLangString);
     if (localAvGameRoomListHandler != null)
     {
-      localCard = ((FriendsManager)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getCurrentUin());
-      if (localCard == null) {
-        break label146;
+      Card localCard = ((IProfileDataService)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getRuntimeService(IProfileDataService.class, "all")).getProfileCardFromCache(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getCurrentUin());
+      if (localCard != null)
+      {
+        if (localCard.shGender == 0) {
+          k = 1;
+        } else if (localCard.shGender == 1) {}
       }
-      if (localCard.shGender != 0) {
-        break label128;
+      else {
+        k = 0;
       }
-      k = 1;
-    }
-    for (;;)
-    {
-      localAvGameRoomListHandler.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getLongAccountUin(), 0, k);
+      localAvGameRoomListHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getLongAccountUin(), 0, k);
       a(true);
       this.jdField_h_of_type_Boolean = false;
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(9);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9, 10000L);
-      return;
-      label128:
-      if (localCard.shGender == 1)
-      {
-        k = 2;
-      }
-      else
-      {
-        k = 0;
-        continue;
-        label146:
-        k = 0;
-      }
     }
   }
   
   private void n()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "startStrangerMatchV2 " + this.jdField_e_of_type_Int + " " + this.jdField_f_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startStrangerMatchV2 ");
+      ((StringBuilder)localObject).append(this.jdField_e_of_type_Int);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(this.jdField_f_of_type_Int);
+      QLog.i("AvGameLoadingActivity", 2, ((StringBuilder)localObject).toString());
     }
-    AvGameRoomListHandler localAvGameRoomListHandler = (AvGameRoomListHandler)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getBusinessHandler(BusinessHandlerFactory.AV_GAME_HANDLER);
-    if (localAvGameRoomListHandler != null) {
-      localAvGameRoomListHandler.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getLongAccountUin(), this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+    Object localObject = (AvGameRoomListHandler)((AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime()).getBusinessHandler(AvGameRoomListHandler.jdField_a_of_type_JavaLangString);
+    if (localObject != null) {
+      ((AvGameRoomListHandler)localObject).b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getLongAccountUin(), this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
     }
   }
   
   private void o()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext().getString(2131690442));
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext().getString(2131690444));
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext().getString(2131690445));
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext().getString(2131690446));
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext().getString(2131690447));
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext().getString(2131690448));
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext().getString(2131690449));
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext().getString(2131690450));
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext().getString(2131690451));
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getBaseContext().getString(2131690443));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getBaseContext().getString(2131690366));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getBaseContext().getString(2131690368));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getBaseContext().getString(2131690369));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getBaseContext().getString(2131690370));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getBaseContext().getString(2131690371));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getBaseContext().getString(2131690372));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getBaseContext().getString(2131690373));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getBaseContext().getString(2131690374));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getBaseContext().getString(2131690375));
+    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getBaseContext().getString(2131690367));
   }
   
   public void a()
@@ -599,158 +692,191 @@ public class AvGameLoadingActivity
     if (getActivity() != null)
     {
       AVGamePerfReporter.a().a(2);
-      getActivity().superFinish();
-      getActivity().overridePendingTransition(2130772121, 2130772121);
-      QLog.d("AvGameManagerAvGameLoadingActivity", 2, "finish ");
+      getQBaseActivity().superFinish();
+      getActivity().overridePendingTransition(2130772147, 2130772147);
+      QLog.d("AvGameLoadingActivity", 2, "finish ");
       return;
     }
-    QLog.e("AvGameManagerAvGameLoadingActivity", 1, "finishFragment with null fragment");
+    QLog.e("AvGameLoadingActivity", 1, "finishFragment with null fragment");
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt, boolean paramBoolean, String paramString, long paramLong)
+  public void a(AppRuntime paramAppRuntime, Activity paramActivity, int paramInt, boolean paramBoolean, String paramString, long paramLong)
   {
-    if ((paramQQAppInterface == null) || (paramActivity == null) || (paramActivity.isFinishing()))
+    if ((paramAppRuntime != null) && (paramActivity != null) && (!paramActivity.isFinishing()))
     {
-      QLog.e("AvGameManagerAvGameLoadingActivity", 1, "alertDialogWithRetCode  null ac " + paramInt + " " + paramString);
-      return;
-    }
-    Object localObject = null;
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
-    String str;
-    if (paramBoolean)
-    {
-      str = AvGameEntranceUtil.a(paramBoolean, paramActivity, paramInt, paramLong, paramString);
-      paramActivity = localObject;
+      String str = null;
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
+      Object localObject;
+      if (paramBoolean)
+      {
+        paramActivity = AvGameEntranceUtil.a(paramBoolean, paramActivity, paramInt, paramLong, paramString);
+      }
+      else
+      {
+        localObject = AvGameEntranceUtil.a(paramBoolean, paramActivity, paramInt, paramLong, paramString);
+        str = AvGameEntranceUtil.a(paramActivity, paramInt);
+        paramActivity = (Activity)localObject;
+      }
       AVGameNodeReportUtil.a(paramInt);
-      if (localQQCustomDialog == null) {
-        break label260;
+      if (localQQCustomDialog != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("alertDialogWithRetCode  ");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("AvGameLoadingActivity", 2, ((StringBuilder)localObject).toString());
+        paramAppRuntime = new AvGameLoadingActivity.8(this, paramAppRuntime, paramBoolean, paramInt);
+        if ((!paramBoolean) && ((paramInt == 104) || (paramInt == 105) || (paramInt == 106) || (paramInt == 114)))
+        {
+          localQQCustomDialog.setPositiveButton(2131690492, paramAppRuntime);
+          localQQCustomDialog.setNegativeButton(2131690728, paramAppRuntime);
+        }
+        else
+        {
+          localQQCustomDialog.setNegativeButton(2131690499, paramAppRuntime);
+        }
+        localQQCustomDialog.setCancelable(false);
+        localQQCustomDialog.setMessage(paramActivity);
+        if (str != null) {
+          localQQCustomDialog.setTitle(str);
+        }
+        localQQCustomDialog.show();
+        return;
       }
-      QLog.d("AvGameManagerAvGameLoadingActivity", 2, "alertDialogWithRetCode  " + paramInt + " " + paramString);
-      paramQQAppInterface = new AvGameLoadingActivity.8(this, paramQQAppInterface, paramBoolean, paramInt);
-      if ((paramBoolean) || ((paramInt != 104) && (paramInt != 105) && (paramInt != 106) && (paramInt != 114))) {
-        break label247;
+      QLog.e("AvGameLoadingActivity", 2, "alertDialogWithRetCode null");
+      int k;
+      if (paramBoolean) {
+        k = -102;
+      } else {
+        k = -103;
       }
-      localQQCustomDialog.setPositiveButton(2131690565, paramQQAppInterface);
-      localQQCustomDialog.setNegativeButton(2131690800, paramQQAppInterface);
-    }
-    for (;;)
-    {
-      localQQCustomDialog.setCancelable(false);
-      localQQCustomDialog.setMessage(str);
-      if (paramActivity != null) {
-        localQQCustomDialog.setTitle(paramActivity);
-      }
-      localQQCustomDialog.show();
-      return;
-      str = AvGameEntranceUtil.a(paramBoolean, paramActivity, paramInt, paramLong, paramString);
-      paramActivity = AvGameEntranceUtil.a(paramActivity, paramInt);
-      break;
-      label247:
-      localQQCustomDialog.setNegativeButton(2131690571, paramQQAppInterface);
-    }
-    label260:
-    QLog.e("AvGameManagerAvGameLoadingActivity", 2, "alertDialogWithRetCode null");
-    if (paramBoolean) {}
-    for (int k = -102;; k = -103)
-    {
       AVGameNodeReportUtil.b(k);
       a(false, paramInt);
       return;
     }
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("alertDialogWithRetCode  null ac ");
+    paramAppRuntime.append(paramInt);
+    paramAppRuntime.append(" ");
+    paramAppRuntime.append(paramString);
+    QLog.e("AvGameLoadingActivity", 1, paramAppRuntime.toString());
   }
   
   void a(boolean paramBoolean)
   {
     this.jdField_f_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    if ((localObject != null) && (!((QBaseActivity)localObject).isFinishing()))
     {
-      QLog.e("AvGameManagerAvGameLoadingActivity", 2, "enableExit isFinishing" + paramBoolean);
+      if (paramBoolean)
+      {
+        this.jdField_a_of_type_ComTencentAvgameWidgetAutoBgImageView.setVisibility(0);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentAvgameWidgetAutoBgImageView.setVisibility(8);
       return;
     }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setVisibility(8);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("enableExit isFinishing");
+    ((StringBuilder)localObject).append(paramBoolean);
+    QLog.e("AvGameLoadingActivity", 2, ((StringBuilder)localObject).toString());
   }
   
   void b()
   {
     this.jdField_f_of_type_Boolean = false;
-    if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()))
+    QBaseActivity localQBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    if ((localQBaseActivity != null) && (!localQBaseActivity.isFinishing()))
     {
-      QLog.e("AvGameManagerAvGameLoadingActivity", 2, "unEnableExit isFinishing");
+      this.jdField_a_of_type_ComTencentAvgameWidgetAutoBgImageView.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setVisibility(8);
+    QLog.e("AvGameLoadingActivity", 2, "unEnableExit isFinishing");
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    }
-    do
-    {
-      do
+    default: 
+      return false;
+    case 10: 
+      if (getActivity() != null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-              QQToast.a(BaseApplicationImpl.getApplication(), 0, BaseApplicationImpl.getApplication().getString(2131690515), 0).a();
-            } while (getActivity() == null);
-            AVGameNodeReportUtil.b(-101);
-            getActivity().finish();
-            return false;
-          } while (!isAdded());
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131690399, new Object[] { Integer.valueOf(paramMessage.arg1) }));
-          return false;
-          a();
-          return false;
-          if (isAdded())
-          {
-            long l = System.currentTimeMillis() % 5L;
-            if (this.jdField_a_of_type_Int + (int)l < 100)
-            {
-              int k = this.jdField_a_of_type_Int;
-              this.jdField_a_of_type_Int = ((int)l + k);
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131690399, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-            }
-          }
-          g();
-          return false;
-          j();
-          return false;
-        } while ((!isAdded()) || (!(paramMessage.obj instanceof LottieDrawable)));
+        AVGameNodeReportUtil.b(-101);
+        getActivity().finish();
+        return false;
+      }
+      break;
+    case 9: 
+      QLog.d("AvGameLoadingActivity", 2, "stranger match timeout");
+      this.jdField_h_of_type_Boolean = false;
+      this.i = true;
+      if (isAdded())
+      {
+        a(null, getString(2131690395), getString(2131690499), new AvGameLoadingActivity.7(this), null, null);
+        return false;
+      }
+      break;
+    case 8: 
+      a(true);
+      return false;
+    case 7: 
+      a(false);
+      return false;
+    case 6: 
+      if ((isAdded()) && ((paramMessage.obj instanceof LottieDrawable)))
+      {
         this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = ((LottieDrawable)paramMessage.obj);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
         this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
         this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
         return false;
-        a(false);
-        return false;
-        a(true);
-        return false;
-        QLog.d("AvGameManagerAvGameLoadingActivity", 2, "stranger match timeout");
-        this.jdField_h_of_type_Boolean = false;
-        this.i = true;
-      } while (!isAdded());
-      a(null, getString(2131690471), getString(2131690571), new AvGameLoadingActivity.7(this), null, null);
+      }
+      break;
+    case 5: 
+      j();
       return false;
-    } while (getActivity() == null);
-    AVGameNodeReportUtil.b(-101);
-    getActivity().finish();
+    case 4: 
+      if (isAdded())
+      {
+        long l = System.currentTimeMillis();
+        int k = this.jdField_a_of_type_Int;
+        int m = (int)(l % 5L);
+        if (k + m < 100)
+        {
+          this.jdField_a_of_type_Int = (k + m);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131690323, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+        }
+      }
+      g();
+      return false;
+    case 3: 
+      a();
+      return false;
+    case 2: 
+      if (isAdded())
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131690323, new Object[] { Integer.valueOf(paramMessage.arg1) }));
+        return false;
+      }
+      break;
+    case 1: 
+      QQToast.a(BaseApplicationImpl.getApplication(), 0, BaseApplicationImpl.getApplication().getString(2131690440), 0).a();
+      if (getActivity() != null)
+      {
+        AVGameNodeReportUtil.b(-101);
+        getActivity().finish();
+      }
+      break;
+    }
     return false;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    paramActivity.setTheme(2131755476);
+    paramActivity.setTheme(2131755751);
   }
   
   public boolean needImmersive()
@@ -767,32 +893,36 @@ public class AvGameLoadingActivity
   {
     if (this.jdField_f_of_type_Boolean)
     {
-      QLog.d("AvGameManagerAvGameLoadingActivity", 2, "mExitBtn " + this.jdField_d_of_type_JavaLangString);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mExitBtn ");
+      ((StringBuilder)localObject).append(this.jdField_d_of_type_JavaLangString);
+      QLog.d("AvGameLoadingActivity", 2, ((StringBuilder)localObject).toString());
       ReportController.b(null, "dc00898", "", "", "0X800B042", "0X800B042", 0, 0, "", "", "", "");
-      if (this.jdField_d_of_type_JavaLangString != null) {
-        a(AvGameEntranceUtil.a(this.jdField_d_of_type_JavaLangString));
+      localObject = this.jdField_d_of_type_JavaLangString;
+      if (localObject != null) {
+        a(AvGameEntranceUtil.a((String)localObject));
       }
       AVGameNodeReportUtil.b(1);
       a(false, 0);
       return super.onBackEvent();
     }
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "bExitEnable not ");
+    QLog.d("AvGameLoadingActivity", 2, "bExitEnable not ");
     return true;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
+    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = getQBaseActivity();
     AVGamePerfReporter.a().a("param_StepEntrance", 0);
     if (ImmersiveUtils.couldSetStatusTextColor()) {
       ImmersiveUtils.setStatusTextColor(false, getActivity().getWindow());
     }
-    paramBundle = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+    paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getIntent();
     if (paramBundle == null)
     {
       a(false, 501);
-      QLog.e("AvGameManagerAvGameLoadingActivity", 2, " intent null");
+      QLog.e("AvGameLoadingActivity", 2, " intent null");
       return;
     }
     this.jdField_b_of_type_Boolean = paramBundle.getBooleanExtra("key_bCreate", true);
@@ -805,73 +935,84 @@ public class AvGameLoadingActivity
     this.jdField_a_of_type_AndroidOsBundle = paramBundle.getBundleExtra("key_extra_bundle");
     e();
     this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction = AVGameBackAction.a(paramBundle);
-    if ((this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction != null) && ("MsgPush".equals(this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction.jdField_a_of_type_JavaLangString))) {
+    paramBundle = this.jdField_a_of_type_ComTencentAvgameUiAVGameBackAction;
+    if ((paramBundle != null) && ("MsgPush".equals(paramBundle.jdField_a_of_type_JavaLangString))) {
       ReportController.b(null, "dc00898", "", "", "0X800B245", "0X800B245", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.addObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver);
+    paramBundle = (AppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+    if (paramBundle != null) {
+      paramBundle.addObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver);
+    }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     getActivity().sendBroadcast(new Intent("tencent.avgame.notify.voice.record.off"), "com.tencent.msg.permission.pushnotify");
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.avgame.ui.AvGameLoadingActivity.ACTION_LOADING_FINISH");
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    AVGameUtilService.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, true);
+    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+    AVGameUtilService.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), true);
     AVGameNodeReportUtil.a();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131558753, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380319));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView = ((AutoBgImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363248));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369712));
-    this.jdField_a_of_type_ComTencentAvgameUiCasualTips = ((CasualTips)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379408));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131558652, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379630));
+    this.jdField_a_of_type_ComTencentAvgameWidgetAutoBgImageView = ((AutoBgImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363180));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369411));
+    this.jdField_a_of_type_ComTencentAvgameUiCasualTips = ((CasualTips)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378759));
     if (this.jdField_a_of_type_ComTencentAvgameUiCasualTips != null)
     {
       o();
       this.jdField_a_of_type_ComTencentAvgameUiCasualTips.setTipsString(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131690399, new Object[] { Integer.valueOf(0) }));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgImageView.setOnClickListener(new AvGameLoadingActivity.3(this));
-    paramLayoutInflater = (AvGameConfBean)QConfigManager.a().a(642);
-    if (paramLayoutInflater != null) {}
-    for (int k = paramLayoutInflater.b();; k = 0)
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131690323, new Object[] { Integer.valueOf(0) }));
+    this.jdField_a_of_type_ComTencentAvgameWidgetAutoBgImageView.setOnClickListener(new AvGameLoadingActivity.3(this));
+    int k = AvGameConfigUtil.a().b();
+    if (k == 0)
     {
-      if (k == 0) {
-        a(true);
-      }
-      for (;;)
-      {
-        AVGameLottieHelper.a(getActivity(), "avgame_loading/data.json", "avgame_loading/images/", 27, 9, -1, new AvGameLoadingActivity.4(this));
-        paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup;
-        V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-        return paramLayoutInflater;
-        b();
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(8, k * 1000);
-      }
+      a(true);
     }
+    else
+    {
+      b();
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(8, k * 1000);
+    }
+    AVGameLottieHelper.a(getActivity(), "avgame_loading/data.json", "avgame_loading/images/", 27, 9, -1, new AvGameLoadingActivity.4(this));
+    paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup;
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.removeObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    if (localObject != null) {
+      ((AppInterface)((QBaseActivity)localObject).getAppRuntime()).removeObserver(this.jdField_a_of_type_ComTencentAvgameBusinessObserverAvGameRoomListObserver);
     }
-    if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null))
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      BroadcastReceiver localBroadcastReceiver = this.jdField_a_of_type_AndroidContentBroadcastReceiver;
+      if (localBroadcastReceiver != null)
+      {
+        ((QBaseActivity)localObject).unregisterReceiver(localBroadcastReceiver);
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      }
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
     }
-    if (this.jdField_a_of_type_ComTencentAvgameUiCasualTips != null) {
-      this.jdField_a_of_type_ComTencentAvgameUiCasualTips.a();
+    localObject = this.jdField_a_of_type_ComTencentAvgameUiCasualTips;
+    if (localObject != null) {
+      ((CasualTips)localObject).a();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating())) {
+    localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    if ((localObject != null) && (((LottieDrawable)localObject).isAnimating())) {
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.endAnimation();
     }
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager != null) {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager.a();
+    localObject = this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager;
+    if (localObject != null) {
+      ((AvGameResDownloadManager)localObject).b();
     }
     super.onDestroy();
   }
@@ -879,7 +1020,7 @@ public class AvGameLoadingActivity
   public void onFinish()
   {
     super.onFinish();
-    getActivity().overridePendingTransition(2130772121, 2130772121);
+    getActivity().overridePendingTransition(2130772147, 2130772147);
   }
   
   public void onPause()
@@ -889,21 +1030,21 @@ public class AvGameLoadingActivity
   
   public void onResume()
   {
-    QLog.i("AvGameManagerAvGameLoadingActivity", 4, "onResume");
+    QLog.i("AvGameLoadingActivity", 4, "onResume");
     super.onResume();
   }
   
   public void onStart()
   {
-    QLog.i("AvGameManagerAvGameLoadingActivity", 4, "onStart");
+    QLog.i("AvGameLoadingActivity", 4, "onStart");
     super.onStart();
   }
   
   public void onStop()
   {
-    QLog.i("AvGameManagerAvGameLoadingActivity", 4, "onStop");
+    QLog.i("AvGameLoadingActivity", 4, "onStop");
     super.onStop();
-    getActivity().overridePendingTransition(2130772121, 2130772121);
+    getActivity().overridePendingTransition(2130772147, 2130772147);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -911,25 +1052,26 @@ public class AvGameLoadingActivity
     super.onViewCreated(paramView, paramBundle);
     AVGamePerfReporter.a().a("param_StepSecure");
     AVGamePerfReporter.a().a("param_StepSecure", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("AvGameManagerAvGameLoadingActivity", 2, "onViewCreated mFromCJSurvivalScene:" + this.jdField_g_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onViewCreated mFromCJSurvivalScene:");
+      paramView.append(this.jdField_g_of_type_Boolean);
+      QLog.d("AvGameLoadingActivity", 2, paramView.toString());
     }
     if (this.jdField_g_of_type_Boolean) {
       c();
-    }
-    for (;;)
-    {
-      if ((DeviceInfoUtils.b()) && (DeviceInfoUtils.b())) {
-        this.jdField_g_of_type_Int = 8000;
-      }
-      return;
+    } else {
       d();
+    }
+    if ((DeviceInfoUtils.b()) && (DeviceInfoUtils.b())) {
+      this.jdField_g_of_type_Int = 8000;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AvGameLoadingActivity
  * JD-Core Version:    0.7.0.1
  */

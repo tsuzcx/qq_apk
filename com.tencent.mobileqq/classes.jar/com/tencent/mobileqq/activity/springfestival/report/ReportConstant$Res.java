@@ -4,23 +4,27 @@ public class ReportConstant$Res
 {
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return "";
-    case 1: 
-      return "cover";
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return "";
+          }
+          return "excp";
+        }
+        return "real";
+      }
       return "pre";
-    case 3: 
-      return "real";
     }
-    return "excp";
+    return "cover";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.ReportConstant.Res
  * JD-Core Version:    0.7.0.1
  */

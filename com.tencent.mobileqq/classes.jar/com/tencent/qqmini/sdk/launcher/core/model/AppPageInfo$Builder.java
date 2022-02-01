@@ -33,6 +33,12 @@ public class AppPageInfo$Builder
     return this;
   }
   
+  public Builder setWebViewUrl(String paramString)
+  {
+    this.appPageInfo.webViewUrl = paramString;
+    return this;
+  }
+  
   public Builder setWindowHeight(int paramInt)
   {
     this.appPageInfo.windowHeight = paramInt;
@@ -47,7 +53,7 @@ public class AppPageInfo$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.model.AppPageInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

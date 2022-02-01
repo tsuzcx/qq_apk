@@ -53,83 +53,62 @@ public class LiveRoomHelper
   
   public static AppRuntime createLiveRoomRuntime(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
+    if (paramBaseApplicationImpl != null)
     {
-      paramString = Class.forName("cooperation.liveroom.LiveRoomInterface");
-      paramBaseApplicationImpl = paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
+      if (paramString == null) {
+        return null;
+      }
       for (;;)
       {
         try
         {
-          QLog.e("LiveRoom", 1, "createLiveRoomRuntime load class fail");
-          return null;
+          try
+          {
+            paramString = Class.forName("cooperation.liveroom.LiveRoomInterface");
+            paramBaseApplicationImpl = paramString;
+          }
+          catch (Exception paramBaseApplicationImpl) {}catch (NoSuchMethodException paramBaseApplicationImpl) {}catch (InvocationTargetException paramBaseApplicationImpl) {}catch (InstantiationException paramBaseApplicationImpl) {}catch (IllegalAccessException paramBaseApplicationImpl) {}catch (IllegalArgumentException paramBaseApplicationImpl) {}
+        }
+        catch (ClassNotFoundException paramString)
+        {
+          continue;
+        }
+        try
+        {
+          paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "直播SDK");
+          paramBaseApplicationImpl = paramString.loadClass("cooperation.liveroom.LiveRoomInterface");
+          BasicClassTypeUtil.setClassLoader(true, paramString);
+          if (paramBaseApplicationImpl == null)
+          {
+            QLog.e("LiveRoom", 1, "createLiveRoomRuntime load class fail");
+            return null;
+          }
+          paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+          if ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime))) {
+            continue;
+          }
+          paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+          return paramBaseApplicationImpl;
         }
         catch (ClassNotFoundException paramBaseApplicationImpl)
         {
           paramBaseApplicationImpl.printStackTrace();
         }
-        paramString = paramString;
-        paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "直播SDK");
-        paramBaseApplicationImpl = paramString.loadClass("cooperation.liveroom.LiveRoomInterface");
-        BasicClassTypeUtil.setClassLoader(true, paramString);
       }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
-      paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
+      paramBaseApplicationImpl.printStackTrace();
+      return null;
     }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl != null) {}
+    return null;
   }
   
   public static void doReport()
@@ -175,16 +154,17 @@ public class LiveRoomHelper
   public static IPluginManager getPluginManagerInQQ()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject == null)
-      {
-        QLog.e("LiveRoomHelper", 1, "get AppRuntime fail");
-        return null;
-      }
-      return (IPluginManager)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_PLUGIN);
+    if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
+      localObject = (QQAppInterface)localObject;
+    } else {
+      localObject = null;
     }
+    if (localObject == null)
+    {
+      QLog.e("LiveRoomHelper", 1, "get AppRuntime fail");
+      return null;
+    }
+    return (IPluginManager)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_PLUGIN);
   }
   
   public static String getPluginVersionInTool()
@@ -194,18 +174,17 @@ public class LiveRoomHelper
   
   public static boolean isPluginInstalledInQQ()
   {
-    boolean bool = true;
-    if (isPluginInstalled) {
+    boolean bool2 = isPluginInstalled;
+    boolean bool1 = true;
+    if (bool2) {
       return true;
     }
     PluginInfo localPluginInfo = getPluginInfoInQQ();
-    if ((localPluginInfo != null) && (localPluginInfo.mState == 4)) {}
-    for (;;)
-    {
-      isPluginInstalled = bool;
-      return isPluginInstalled;
-      bool = false;
+    if ((localPluginInfo == null) || (localPluginInfo.mState != 4)) {
+      bool1 = false;
     }
+    isPluginInstalled = bool1;
+    return isPluginInstalled;
   }
   
   public static void release() {}
@@ -220,28 +199,33 @@ public class LiveRoomHelper
       localJSONObject.put("cost", paramLong);
       localJSONObject.put("platform", "androidqq");
       localJSONObject.put("platVersion", AppSetting.f());
-      String str = "";
-      if ("com.tencent.mobileqq:tool".equals(Common.r())) {
-        str = getPluginVersionInTool();
-      }
-      for (;;)
+      boolean bool = "com.tencent.mobileqq:tool".equals(Common.r());
+      Object localObject = "";
+      if (bool)
       {
-        localJSONObject.put("sdkVersion", str);
-        localJSONObject.put("from", paramString1);
-        localJSONObject.put("action", paramString2);
-        localJSONObject.put("result", paramString3);
-        localJSONObject.put("imei", DeviceInfoUtil.a());
-        localJSONObject.put("device", DeviceInfoUtil.i());
-        localJSONObject.put("uin", BaseApplicationImpl.sApplication.getRuntime().getAccount());
-        localJSONObject.put("network", NetworkUtil.b(BaseApplicationImpl.getContext()));
-        localJSONObject.put("os", DeviceInfoUtil.e());
-        reportJson.put(localJSONObject);
-        return;
+        localObject = getPluginVersionInTool();
+      }
+      else
+      {
         PluginInfo localPluginInfo = getPluginInfoInQQ();
-        if (localPluginInfo != null) {
-          str = "" + localPluginInfo.mCurVersion;
+        if (localPluginInfo != null)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("");
+          ((StringBuilder)localObject).append(localPluginInfo.mCurVersion);
+          localObject = ((StringBuilder)localObject).toString();
         }
       }
+      localJSONObject.put("sdkVersion", localObject);
+      localJSONObject.put("from", paramString1);
+      localJSONObject.put("action", paramString2);
+      localJSONObject.put("result", paramString3);
+      localJSONObject.put("imei", DeviceInfoUtil.a());
+      localJSONObject.put("device", DeviceInfoUtil.i());
+      localJSONObject.put("uin", BaseApplicationImpl.sApplication.getRuntime().getAccount());
+      localJSONObject.put("network", NetworkUtil.getNetworkType(BaseApplicationImpl.getContext()));
+      localJSONObject.put("os", DeviceInfoUtil.e());
+      reportJson.put(localJSONObject);
       return;
     }
     catch (Exception paramString1)
@@ -263,7 +247,7 @@ public class LiveRoomHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomHelper
  * JD-Core Version:    0.7.0.1
  */

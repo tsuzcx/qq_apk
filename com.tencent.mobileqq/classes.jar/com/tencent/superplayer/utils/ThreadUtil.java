@@ -14,20 +14,19 @@ import java.util.concurrent.TimeUnit;
 public class ThreadUtil
 {
   private static final int CORE_POOL_SIZE;
-  private static final int CPU_COUNT;
+  private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
   private static final int KEEP_ALIVE_SECONDS = 30;
   private static final int MAXIMUM_POOL_SIZE;
   public static final Executor THREAD_POOL_EXECUTOR;
-  private static volatile ThreadUtil.UIHandler sMainThreadHandler = null;
+  private static volatile ThreadUtil.UIHandler sMainThreadHandler;
   private static final BlockingQueue<Runnable> sPoolWorkQueue;
-  private static volatile HandlerThread sSubThread = null;
-  private static volatile Handler sSubThreadHandler = null;
+  private static volatile HandlerThread sSubThread;
+  private static volatile Handler sSubThreadHandler;
   private static final ThreadFactory sThreadFactory;
   private static final Executor sThreadPool = THREAD_POOL_EXECUTOR;
   
   static
   {
-    CPU_COUNT = Runtime.getRuntime().availableProcessors();
     CORE_POOL_SIZE = Math.max(2, Math.min(CPU_COUNT - 1, 4));
     MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
     sThreadFactory = new ThreadUtil.1();
@@ -39,15 +38,16 @@ public class ThreadUtil
   
   public static Handler getSubThreadHandler()
   {
-    if (sSubThreadHandler == null) {}
-    try
-    {
-      if (sSubThreadHandler == null) {
-        sSubThreadHandler = new Handler(getSubThreadLooper());
+    if (sSubThreadHandler == null) {
+      try
+      {
+        if (sSubThreadHandler == null) {
+          sSubThreadHandler = new Handler(getSubThreadLooper());
+        }
       }
-      return sSubThreadHandler;
+      finally {}
     }
-    finally {}
+    return sSubThreadHandler;
   }
   
   public static Looper getSubThreadLooper()
@@ -70,16 +70,17 @@ public class ThreadUtil
         if (sMainThreadHandler == null)
         {
           Looper localLooper = Looper.getMainLooper();
-          if (localLooper != null) {
+          if (localLooper != null)
+          {
             sMainThreadHandler = new ThreadUtil.UIHandler(localLooper);
           }
+          else
+          {
+            sMainThreadHandler = null;
+            throw new IllegalStateException("cannot get UI Thread looper!");
+          }
         }
-        else
-        {
-          return;
-        }
-        sMainThreadHandler = null;
-        throw new IllegalStateException("cannot get UI Thread looper!");
+        return;
       }
       finally {}
     }
@@ -108,20 +109,20 @@ public class ThreadUtil
   
   public static void runOnUiThread(Runnable paramRunnable)
   {
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      paramRunnable.run();
-    }
-    do
+    if (Looper.myLooper() == Looper.getMainLooper())
     {
+      paramRunnable.run();
       return;
-      initMainThreadHandler();
-    } while (sMainThreadHandler == null);
-    sMainThreadHandler.post(paramRunnable);
+    }
+    initMainThreadHandler();
+    if (sMainThreadHandler != null) {
+      sMainThreadHandler.post(paramRunnable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.utils.ThreadUtil
  * JD-Core Version:    0.7.0.1
  */

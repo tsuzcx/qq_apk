@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 import android.text.TextUtils;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.filemanager.excitingtransfer.ExcitingTransferAdapter;
+import com.tencent.mobileqq.filemanager.api.IExcitingTransferAdapter;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -13,15 +15,18 @@ public class ExcitingTransferNativeCallMe
 {
   public static boolean getConfigFromServer()
   {
-    return ExcitingTransferAdapter.a().e();
+    return ((IExcitingTransferAdapter)QQFileManagerUtil.a().getRuntimeService(IExcitingTransferAdapter.class, "")).getConfigFromServer();
   }
   
   public static long getFreeSpaceForFile(String paramString)
   {
+    long l;
     if (SystemUtil.a()) {
-      return SystemUtil.a() * 1024L;
+      l = SystemUtil.a();
+    } else {
+      l = SystemUtil.b();
     }
-    return SystemUtil.b() * 1024L;
+    return l * 1024L;
   }
   
   public static long getLastModifyTime(String paramString)
@@ -46,7 +51,7 @@ public class ExcitingTransferNativeCallMe
   
   public static long getSelfUin()
   {
-    return ExcitingTransferAdapter.a().e();
+    return ((IExcitingTransferAdapter)QQFileManagerUtil.a().getRuntimeService(IExcitingTransferAdapter.class, "")).getSelfUin();
   }
   
   public static String getVersion()
@@ -56,53 +61,55 @@ public class ExcitingTransferNativeCallMe
   
   public static void onLog(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    do
+    try
     {
-      do
+      String str = new String(paramArrayOfByte1, "UTF-8");
+      paramArrayOfByte2 = new String(paramArrayOfByte2, "UTF-8");
+      paramArrayOfByte1 = str;
+      if (TextUtils.isEmpty(str)) {
+        paramArrayOfByte1 = "unTag";
+      }
+      if ((paramInt != 0) && (paramInt != 1))
       {
-        do
+        if (paramInt != 2)
         {
-          try
+          if (paramInt != 3)
           {
-            String str = new String(paramArrayOfByte1, "UTF-8");
-            paramArrayOfByte2 = new String(paramArrayOfByte2, "UTF-8");
-            paramArrayOfByte1 = str;
-            if (TextUtils.isEmpty(str)) {
-              paramArrayOfByte1 = "unTag";
-            }
-            switch (paramInt)
+            if (paramInt != 4)
             {
-            default: 
               if (QLog.isColorLevel()) {
                 QLog.d(paramArrayOfByte1, 2, paramArrayOfByte2);
               }
-              return;
+            }
+            else if (QLog.isColorLevel()) {
+              QLog.d(paramArrayOfByte1, 2, paramArrayOfByte2);
             }
           }
-          catch (UnsupportedEncodingException paramArrayOfByte1)
-          {
-            do
-            {
-              paramArrayOfByte1.printStackTrace();
-            } while (!QLog.isDevelopLevel());
-            QLog.e("ExcitingT.", 4, "native log encoding utf8 failed");
-            return;
+          else if (QLog.isColorLevel()) {
+            QLog.i(paramArrayOfByte1, 2, paramArrayOfByte2);
           }
-          QLog.i(paramArrayOfByte1, 1, paramArrayOfByte2);
-          return;
-        } while (!QLog.isColorLevel());
-        QLog.w(paramArrayOfByte1, 2, paramArrayOfByte2);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i(paramArrayOfByte1, 2, paramArrayOfByte2);
+        }
+        else if (QLog.isColorLevel()) {
+          QLog.w(paramArrayOfByte1, 2, paramArrayOfByte2);
+        }
+      }
+      else {
+        QLog.i(paramArrayOfByte1, 1, paramArrayOfByte2);
+      }
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d(paramArrayOfByte1, 2, paramArrayOfByte2);
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte1)
+    {
+      paramArrayOfByte1.printStackTrace();
+      if (QLog.isDevelopLevel()) {
+        QLog.e("ExcitingT.", 4, "native log encoding utf8 failed");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferNativeCallMe
  * JD-Core Version:    0.7.0.1
  */

@@ -19,12 +19,16 @@ final class ApolloApngEncoder$Companion$loadLibIfNeed$1
       ApolloApngEncoder.a.a(true);
       return;
     }
-    QLog.e(ApolloApngEncoder.a.a(), 1, "loadLibIfNeed Error: " + paramInt);
+    paramLoadExtResult = ApolloApngEncoder.a.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadLibIfNeed Error: ");
+    localStringBuilder.append(paramInt);
+    QLog.e(paramLoadExtResult, 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloApngEncoder.Companion.loadLibIfNeed.1
  * JD-Core Version:    0.7.0.1
  */

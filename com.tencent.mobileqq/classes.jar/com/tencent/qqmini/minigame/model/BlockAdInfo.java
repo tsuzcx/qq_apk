@@ -77,7 +77,14 @@ public class BlockAdInfo
   
   public boolean isValid()
   {
-    return (this.mLeft >= 0) && (this.mTop >= 0) && (this.mSize > 0) && ((this.mOri == 0) || (this.mOri == 90));
+    if ((this.mLeft >= 0) && (this.mTop >= 0) && (this.mSize > 0))
+    {
+      int i = this.mOri;
+      if ((i == 0) || (i == 90)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void setLeft(int paramInt)
@@ -102,7 +109,7 @@ public class BlockAdInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.model.BlockAdInfo
  * JD-Core Version:    0.7.0.1
  */

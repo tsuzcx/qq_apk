@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class PostBar
   extends JceStruct
@@ -54,29 +55,35 @@ public final class PostBar
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.leadType, 0);
-    if (this.vecImage != null) {
-      paramJceOutputStream.write(this.vecImage, 1);
+    Object localObject = this.vecImage;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.userAvatar != null) {
-      paramJceOutputStream.write(this.userAvatar, 2);
+    localObject = this.userAvatar;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.icon != null) {
-      paramJceOutputStream.write(this.icon, 3);
+    localObject = this.icon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 4);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 5);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.bottom != null) {
-      paramJceOutputStream.write(this.bottom, 6);
+    localObject = this.bottom;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.PostBar
  * JD-Core Version:    0.7.0.1
  */

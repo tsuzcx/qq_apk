@@ -6,14 +6,11 @@ public abstract class o
   
   protected a a(i parami, int paramInt, a.a parama)
   {
-    switch (parami.d)
-    {
-    case 0: 
-    case 1: 
-    default: 
-      return null;
+    int i = parami.d;
+    if ((i != 0) && (i != 1) && (i == 2)) {
+      return new b(paramInt, ((j)parami).f, parami.e, 10000, parama);
     }
-    return new b(paramInt, ((j)parami).f, parami.e, 10000, parama);
+    return null;
   }
   
   public abstract void a();
@@ -28,7 +25,7 @@ public abstract class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.o
  * JD-Core Version:    0.7.0.1
  */

@@ -55,8 +55,9 @@ public final class Target
   
   private static void a(Target paramTarget)
   {
-    paramTarget.jdField_b_of_type_ArrayOfFloat[1] = 0.26F;
-    paramTarget.jdField_b_of_type_ArrayOfFloat[2] = 0.45F;
+    paramTarget = paramTarget.jdField_b_of_type_ArrayOfFloat;
+    paramTarget[1] = 0.26F;
+    paramTarget[2] = 0.45F;
   }
   
   private static void a(float[] paramArrayOfFloat)
@@ -68,34 +69,39 @@ public final class Target
   
   private void b()
   {
-    this.jdField_c_of_type_ArrayOfFloat[0] = 0.24F;
-    this.jdField_c_of_type_ArrayOfFloat[1] = 0.52F;
-    this.jdField_c_of_type_ArrayOfFloat[2] = 0.24F;
+    float[] arrayOfFloat = this.jdField_c_of_type_ArrayOfFloat;
+    arrayOfFloat[0] = 0.24F;
+    arrayOfFloat[1] = 0.52F;
+    arrayOfFloat[2] = 0.24F;
   }
   
   private static void b(Target paramTarget)
   {
-    paramTarget.jdField_b_of_type_ArrayOfFloat[0] = 0.3F;
-    paramTarget.jdField_b_of_type_ArrayOfFloat[1] = 0.5F;
-    paramTarget.jdField_b_of_type_ArrayOfFloat[2] = 0.7F;
+    paramTarget = paramTarget.jdField_b_of_type_ArrayOfFloat;
+    paramTarget[0] = 0.3F;
+    paramTarget[1] = 0.5F;
+    paramTarget[2] = 0.7F;
   }
   
   private static void c(Target paramTarget)
   {
-    paramTarget.jdField_b_of_type_ArrayOfFloat[0] = 0.55F;
-    paramTarget.jdField_b_of_type_ArrayOfFloat[1] = 0.74F;
+    paramTarget = paramTarget.jdField_b_of_type_ArrayOfFloat;
+    paramTarget[0] = 0.55F;
+    paramTarget[1] = 0.74F;
   }
   
   private static void d(Target paramTarget)
   {
-    paramTarget.jdField_a_of_type_ArrayOfFloat[0] = 0.35F;
-    paramTarget.jdField_a_of_type_ArrayOfFloat[1] = 1.0F;
+    paramTarget = paramTarget.jdField_a_of_type_ArrayOfFloat;
+    paramTarget[0] = 0.35F;
+    paramTarget[1] = 1.0F;
   }
   
   private static void e(Target paramTarget)
   {
-    paramTarget.jdField_a_of_type_ArrayOfFloat[1] = 0.3F;
-    paramTarget.jdField_a_of_type_ArrayOfFloat[2] = 0.4F;
+    paramTarget = paramTarget.jdField_a_of_type_ArrayOfFloat;
+    paramTarget[1] = 0.3F;
+    paramTarget[2] = 0.4F;
   }
   
   @FloatRange(from=0.0D, to=1.0D)
@@ -106,8 +112,8 @@ public final class Target
   
   void a()
   {
-    int j = 0;
     int k = this.jdField_c_of_type_ArrayOfFloat.length;
+    int j = 0;
     int i = 0;
     float f2;
     for (float f1 = 0.0F; i < k; f1 = f2)
@@ -125,9 +131,8 @@ public final class Target
       i = j;
       while (i < k)
       {
-        if (this.jdField_c_of_type_ArrayOfFloat[i] > 0.0F)
-        {
-          float[] arrayOfFloat = this.jdField_c_of_type_ArrayOfFloat;
+        float[] arrayOfFloat = this.jdField_c_of_type_ArrayOfFloat;
+        if (arrayOfFloat[i] > 0.0F) {
           arrayOfFloat[i] /= f1;
         }
         i += 1;
@@ -187,7 +192,7 @@ public final class Target
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.Target
  * JD-Core Version:    0.7.0.1
  */

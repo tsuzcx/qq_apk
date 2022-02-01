@@ -1,6 +1,6 @@
 package com.tencent.open.virtual;
 
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.agent.util.SSOLog;
 import java.net.URL;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -15,14 +15,14 @@ final class OpenSdkVirtualUtil$1
   {
     boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
     if (!bool) {
-      QLog.d("OpenSdkVirtualUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
+      SSOLog.a("BaseOpenSdkVirtualUtil", new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.virtual.OpenSdkVirtualUtil.1
  * JD-Core Version:    0.7.0.1
  */

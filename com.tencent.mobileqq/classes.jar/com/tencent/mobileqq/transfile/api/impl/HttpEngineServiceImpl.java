@@ -42,8 +42,12 @@ public class HttpEngineServiceImpl
   
   public HttpEngineServiceImpl(HttpCommunicator paramHttpCommunicator, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richmedia.HttpEngineServiceImpl", 2, "construct " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("construct ");
+      localStringBuilder.append(this);
+      QLog.d("Q.richmedia.HttpEngineServiceImpl", 2, localStringBuilder.toString());
     }
     this.mHttpExcuter = paramHttpCommunicator;
     this.mOwnCommunicator = paramBoolean;
@@ -82,9 +86,18 @@ public class HttpEngineServiceImpl
     }
   }
   
+  public static IHttpEngineService getEngineService()
+  {
+    return new HttpEngineServiceImpl(new HttpCommunicator(), true);
+  }
+  
   public static String getServerReason(String paramString, long paramLong)
   {
-    return paramString + "_" + paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramLong);
+    return localStringBuilder.toString();
   }
   
   public static String getTempPath(NetReq paramNetReq, String paramString1, String paramString2)
@@ -92,11 +105,17 @@ public class HttpEngineServiceImpl
     if ((paramNetReq != null) && (paramNetReq.mTempPath != null) && (paramNetReq.mTempPath.length() > 0)) {
       return paramNetReq.mTempPath;
     }
-    return paramString1 + "." + MD5.toMD5(TransFileUtil.getUrlResoursePath(paramString2, false)) + ".tmp";
+    paramNetReq = new StringBuilder();
+    paramNetReq.append(paramString1);
+    paramNetReq.append(".");
+    paramNetReq.append(MD5.toMD5(TransFileUtil.getUrlResoursePath(paramString2, false)));
+    paramNetReq.append(".tmp");
+    return paramNetReq.toString();
   }
   
   private HttpMsg makeNewHttpMsgFromNetReq(NetReq paramNetReq)
   {
+    Object localObject = null;
     if (paramNetReq == null) {
       return null;
     }
@@ -104,13 +123,17 @@ public class HttpEngineServiceImpl
     {
       HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
       OldHttpCommunicatorListener localOldHttpCommunicatorListener = (OldHttpCommunicatorListener)localHttpNetReq.mPrivate;
-      if ((localOldHttpCommunicatorListener == null) || (localOldHttpCommunicatorListener.mIsCancelled.get())) {
-        return null;
-      }
-      HttpMsg localHttpMsg = new HttpMsg(localHttpNetReq.mReqUrl, localHttpNetReq.mSendData, localOldHttpCommunicatorListener);
-      if (localHttpNetReq.mHttpMethod == 0) {}
-      for (Object localObject = "GET";; localObject = "POST")
+      if (localOldHttpCommunicatorListener != null)
       {
+        if (localOldHttpCommunicatorListener.mIsCancelled.get()) {
+          return null;
+        }
+        HttpMsg localHttpMsg = new HttpMsg(localHttpNetReq.mReqUrl, localHttpNetReq.mSendData, localOldHttpCommunicatorListener);
+        if (localHttpNetReq.mHttpMethod == 0) {
+          localObject = "GET";
+        } else {
+          localObject = "POST";
+        }
         localHttpMsg.setRequestMethod((String)localObject);
         localObject = localHttpNetReq.mReqProperties.entrySet().iterator();
         while (((Iterator)localObject).hasNext())
@@ -118,35 +141,41 @@ public class HttpEngineServiceImpl
           Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
           localHttpMsg.setRequestProperty((String)localEntry.getKey(), (String)localEntry.getValue());
         }
-      }
-      localHttpMsg.mIsHttps = localHttpNetReq.mIsHttps;
-      localHttpMsg.mReqHost = localHttpNetReq.mHostForHttpsVerify;
-      localHttpMsg.mIsHostIP = localHttpNetReq.mIsHostIP;
-      localHttpMsg.mIsPreStructPic = localHttpNetReq.mIsPreStructPic;
-      localHttpMsg.mHaveIpConnect = localHttpNetReq.mHaveIpConnect;
-      localHttpMsg.bReportRedirects = localHttpNetReq.mNeedRedirectCallback;
-      localHttpMsg.msgId = paramNetReq.mMsgId;
-      localHttpMsg.busiType = paramNetReq.mBusiProtoType;
-      localHttpMsg.fileType = paramNetReq.mFileType;
-      localHttpMsg.timeoutParam = localHttpNetReq.mTimeoutParam;
-      localHttpMsg.whiteList_type = localHttpNetReq.mWhiteListContentType;
-      localHttpMsg.mUseByteArrayPool = localHttpNetReq.mUseByteArrayPool;
-      localHttpMsg.mCanPrintUrl = paramNetReq.mCanPrintUrl;
-      localHttpMsg.mNeedNotReferer = localHttpNetReq.mNeedNotReferer;
-      switch (this.mCmwapConTypeFromDpc)
-      {
-      }
-      for (;;)
-      {
-        if (paramNetReq.mPrioty == 1)
+        localHttpMsg.mIsHttps = localHttpNetReq.mIsHttps;
+        localHttpMsg.mReqHost = localHttpNetReq.mHostForHttpsVerify;
+        localHttpMsg.mIsHostIP = localHttpNetReq.mIsHostIP;
+        localHttpMsg.mIsPreStructPic = localHttpNetReq.mIsPreStructPic;
+        localHttpMsg.mHaveIpConnect = localHttpNetReq.mHaveIpConnect;
+        localHttpMsg.bReportRedirects = localHttpNetReq.mNeedRedirectCallback;
+        localHttpMsg.msgId = paramNetReq.mMsgId;
+        localHttpMsg.busiType = paramNetReq.mBusiProtoType;
+        localHttpMsg.fileType = paramNetReq.mFileType;
+        localHttpMsg.timeoutParam = localHttpNetReq.mTimeoutParam;
+        localHttpMsg.whiteList_type = localHttpNetReq.mWhiteListContentType;
+        localHttpMsg.mUseByteArrayPool = localHttpNetReq.mUseByteArrayPool;
+        localHttpMsg.mCanPrintUrl = paramNetReq.mCanPrintUrl;
+        localHttpMsg.mNeedNotReferer = localHttpNetReq.mNeedNotReferer;
+        int i = this.mCmwapConTypeFromDpc;
+        if ((i != 1) && (i != 2))
         {
-          localHttpMsg.threadPriority = 201;
-          label339:
-          if ((localHttpNetReq.mOutStream != null) || (localHttpNetReq.mOutPath != null)) {
-            localHttpMsg.setDataSlice(true);
+          if ((i == 4) || (i == 8)) {
+            localHttpMsg.mCmwapConnectionType = (this.mCmwapConTypeFromDpc / 4);
           }
-          localOldHttpCommunicatorListener.httpMsg = localHttpMsg;
         }
+        else if (localHttpNetReq.mUseCmwapConnectionTypeFromDpc) {
+          localHttpMsg.mCmwapConnectionType = this.mCmwapConTypeFromDpc;
+        }
+        if (paramNetReq.mPrioty == 1) {
+          localHttpMsg.threadPriority = 201;
+        } else if (paramNetReq.mPrioty == 2) {
+          localHttpMsg.threadPriority = 202;
+        } else if (paramNetReq.mPrioty == 0) {
+          localHttpMsg.threadPriority = 200;
+        }
+        if ((localHttpNetReq.mOutStream != null) || (localHttpNetReq.mOutPath != null)) {
+          localHttpMsg.setDataSlice(true);
+        }
+        localOldHttpCommunicatorListener.httpMsg = localHttpMsg;
         try
         {
           paramNetReq = new URL(localHttpMsg.getUrl());
@@ -154,31 +183,14 @@ public class HttpEngineServiceImpl
           ((NetResp)localObject).mRespProperties.put("serverip", paramNetReq.getHost());
           ((NetResp)localObject).mRespProperties.put("param_url", localHttpMsg.getUrl());
           return localHttpMsg;
-          if (localHttpNetReq.mUseCmwapConnectionTypeFromDpc)
-          {
-            localHttpMsg.mCmwapConnectionType = this.mCmwapConTypeFromDpc;
-            continue;
-            localHttpMsg.mCmwapConnectionType = (this.mCmwapConTypeFromDpc / 4);
-            continue;
-            if (paramNetReq.mPrioty == 2)
-            {
-              localHttpMsg.threadPriority = 202;
-              break label339;
-            }
-            if (paramNetReq.mPrioty != 0) {
-              break label339;
-            }
-            localHttpMsg.threadPriority = 200;
-          }
         }
         catch (Exception paramNetReq)
         {
-          for (;;)
-          {
-            paramNetReq.printStackTrace();
-          }
+          paramNetReq.printStackTrace();
+          localObject = localHttpMsg;
         }
       }
+      return localObject;
     }
     if (paramNetReq.mCallback != null)
     {
@@ -190,45 +202,58 @@ public class HttpEngineServiceImpl
   
   public static NetResp transSync(NetReq paramNetReq)
   {
-    return new HttpEngineServiceImpl(new HttpCommunicator(), true).sendReqSync(paramNetReq);
+    return getEngineService().sendReqSync(paramNetReq);
   }
   
   public void cancelReq(NetReq paramNetReq)
   {
-    if (paramNetReq == null) {}
-    do
-    {
-      return;
-      if (paramNetReq.mKey != null) {
-        this.mDownloadingFiles.remove(paramNetReq.mKey);
-      }
-    } while (!OldHttpCommunicatorListener.class.isInstance(paramNetReq.mPrivate));
-    Object localObject1 = (HttpNetReq)paramNetReq;
-    Object localObject2 = TransFileUtil.getUinDesc(paramNetReq.mBusiProtoType);
-    if (((HttpNetReq)localObject1).mHttpMethod == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      TransFileUtil.log((String)localObject2, bool, String.valueOf(paramNetReq.mFileType), paramNetReq.mMsgId, "cancelReq", "");
-      localObject1 = (OldHttpCommunicatorListener)paramNetReq.mPrivate;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("HttpEngineServiceImpl", 2, "cancelReq ====== listener = " + localObject1);
-        if (localObject1 != null) {
-          QLog.d("HttpEngineServiceImpl", 2, "cancelReq ====== listener.mIsCancelled = " + ((OldHttpCommunicatorListener)localObject1).mIsCancelled);
-        }
-      }
-      if (localObject1 == null) {
-        break;
-      }
-      ((OldHttpCommunicatorListener)localObject1).mIsCancelled.set(true);
-      localObject2 = ((OldHttpCommunicatorListener)localObject1).httpMsg;
-      if ((this.mWorking.get()) && (this.mHttpExcuter != null)) {
-        this.mHttpExcuter.cancelMsg((HttpMsg)localObject2);
-      }
-      ((OldHttpCommunicatorListener)localObject1).release(paramNetReq);
-      ((OldHttpCommunicatorListener)localObject1).clearForGC();
+    if (paramNetReq == null) {
       return;
     }
+    if (paramNetReq.mKey != null) {
+      this.mDownloadingFiles.remove(paramNetReq.mKey);
+    }
+    if (!OldHttpCommunicatorListener.class.isInstance(paramNetReq.mPrivate)) {
+      return;
+    }
+    Object localObject1 = (HttpNetReq)paramNetReq;
+    Object localObject2 = TransFileUtil.getUinDesc(paramNetReq.mBusiProtoType);
+    boolean bool;
+    if (((HttpNetReq)localObject1).mHttpMethod == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    TransFileUtil.log((String)localObject2, bool, String.valueOf(paramNetReq.mFileType), paramNetReq.mMsgId, "cancelReq", "");
+    localObject1 = (OldHttpCommunicatorListener)paramNetReq.mPrivate;
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("cancelReq ====== listener = ");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("HttpEngineServiceImpl", 2, ((StringBuilder)localObject2).toString());
+      if (localObject1 != null)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("cancelReq ====== listener.mIsCancelled = ");
+        ((StringBuilder)localObject2).append(((OldHttpCommunicatorListener)localObject1).mIsCancelled);
+        QLog.d("HttpEngineServiceImpl", 2, ((StringBuilder)localObject2).toString());
+      }
+    }
+    if (localObject1 == null) {
+      return;
+    }
+    ((OldHttpCommunicatorListener)localObject1).mIsCancelled.set(true);
+    localObject2 = ((OldHttpCommunicatorListener)localObject1).httpMsg;
+    if (this.mWorking.get())
+    {
+      HttpCommunicator localHttpCommunicator = this.mHttpExcuter;
+      if (localHttpCommunicator != null) {
+        localHttpCommunicator.cancelMsg((HttpMsg)localObject2);
+      }
+    }
+    ((OldHttpCommunicatorListener)localObject1).release(paramNetReq);
+    ((OldHttpCommunicatorListener)localObject1).clearForGC();
   }
   
   public void destroy()
@@ -236,11 +261,20 @@ public class HttpEngineServiceImpl
     if (this.mWorking.get())
     {
       this.mWorking.set(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.richmedia.HttpEngineServiceImpl", 2, "destroy " + this);
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("destroy ");
+        ((StringBuilder)localObject).append(this);
+        QLog.d("Q.richmedia.HttpEngineServiceImpl", 2, ((StringBuilder)localObject).toString());
       }
-      if ((this.mOwnCommunicator) && (this.mHttpExcuter != null)) {
-        this.mHttpExcuter.close();
+      if (this.mOwnCommunicator)
+      {
+        localObject = this.mHttpExcuter;
+        if (localObject != null) {
+          ((HttpCommunicator)localObject).close();
+        }
       }
       this.mHttpExcuter = null;
     }
@@ -253,62 +287,66 @@ public class HttpEngineServiceImpl
   
   public void innerSendReq(NetReq paramNetReq, boolean paramBoolean)
   {
-    OldHttpCommunicatorListener localOldHttpCommunicatorListener;
-    do
+    try
     {
-      try
-      {
-        HttpMsg localHttpMsg1 = makeNewHttpMsgFromNetReq(paramNetReq);
-        localOldHttpCommunicatorListener = (OldHttpCommunicatorListener)paramNetReq.mPrivate;
-        if ((localHttpMsg1 != null) && (localOldHttpCommunicatorListener != null))
-        {
-          localHttpMsg1.mIsSync = paramBoolean;
-          NetResp localNetResp = paramNetReq.mResp;
-          localNetResp.mTryTime += 1;
-          localOldHttpCommunicatorListener.mLastReqReturnBytes = 0;
-          if (paramBoolean)
-          {
-            sendOldHttpMsgSync(localHttpMsg1);
-            return;
-          }
-        }
+      localHttpMsg1 = makeNewHttpMsgFromNetReq(paramNetReq);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError2)
+    {
+      HttpMsg localHttpMsg1;
+      label9:
+      HttpMsg localHttpMsg2;
+      OldHttpCommunicatorListener localOldHttpCommunicatorListener;
+      NetResp localNetResp;
+      break label9;
+    }
+    System.gc();
+    try
+    {
+      localHttpMsg1 = makeNewHttpMsgFromNetReq(paramNetReq);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.richmedia.HttpEngineServiceImpl", 2, "OOM in makeNewHttpMsgFromNetReq", localOutOfMemoryError1);
       }
-      catch (OutOfMemoryError localOutOfMemoryError1)
+      localHttpMsg2 = null;
+    }
+    localOldHttpCommunicatorListener = (OldHttpCommunicatorListener)paramNetReq.mPrivate;
+    if ((localHttpMsg2 != null) && (localOldHttpCommunicatorListener != null))
+    {
+      localHttpMsg2.mIsSync = paramBoolean;
+      localNetResp = paramNetReq.mResp;
+      localNetResp.mTryTime += 1;
+      localOldHttpCommunicatorListener.mLastReqReturnBytes = 0;
+      if (paramBoolean)
       {
-        HttpMsg localHttpMsg3;
-        for (;;)
-        {
-          System.gc();
-          try
-          {
-            HttpMsg localHttpMsg2 = makeNewHttpMsgFromNetReq(paramNetReq);
-          }
-          catch (OutOfMemoryError localOutOfMemoryError2)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("Q.richmedia.HttpEngineServiceImpl", 2, "OOM in makeNewHttpMsgFromNetReq", localOutOfMemoryError2);
-            }
-            localHttpMsg3 = null;
-          }
-        }
-        if (this.mWorking.get())
-        {
-          sendOldHttpMsg(localHttpMsg3);
-          return;
-        }
-        paramNetReq = paramNetReq.mResp;
-        paramNetReq.mErrCode = 9366;
-        paramNetReq.mErrDesc = "oldengine close";
-        paramNetReq.mResult = 1;
-        localOldHttpCommunicatorListener.onOutEngine();
+        sendOldHttpMsgSync(localHttpMsg2);
         return;
       }
-    } while ((localOldHttpCommunicatorListener == null) || (localOldHttpCommunicatorListener.mIsCancelled.get()));
-    paramNetReq = paramNetReq.mResp;
-    paramNetReq.mErrCode = 9369;
-    paramNetReq.mErrDesc = "Out of memory";
-    paramNetReq.mResult = 1;
-    localOldHttpCommunicatorListener.onOutEngine();
+      if (this.mWorking.get())
+      {
+        sendOldHttpMsg(localHttpMsg2);
+        return;
+      }
+      paramNetReq = paramNetReq.mResp;
+      paramNetReq.mErrCode = 9366;
+      paramNetReq.mErrDesc = "oldengine close";
+      paramNetReq.mResult = 1;
+      localOldHttpCommunicatorListener.onOutEngine();
+      return;
+    }
+    if (localOldHttpCommunicatorListener != null)
+    {
+      if (localOldHttpCommunicatorListener.mIsCancelled.get()) {
+        return;
+      }
+      paramNetReq = paramNetReq.mResp;
+      paramNetReq.mErrCode = 9369;
+      paramNetReq.mErrDesc = "Out of memory";
+      paramNetReq.mResult = 1;
+      localOldHttpCommunicatorListener.onOutEngine();
+    }
   }
   
   public void onCreate(AppRuntime paramAppRuntime) {}
@@ -320,47 +358,51 @@ public class HttpEngineServiceImpl
   
   public void sendOldHttpMsg(HttpMsg paramHttpMsg)
   {
-    if ((paramHttpMsg != null) && (this.mWorking.get()) && (this.mHttpExcuter != null)) {
-      this.mHttpExcuter.sendMsg(paramHttpMsg);
+    if ((paramHttpMsg != null) && (this.mWorking.get()))
+    {
+      HttpCommunicator localHttpCommunicator = this.mHttpExcuter;
+      if (localHttpCommunicator != null) {
+        localHttpCommunicator.sendMsg(paramHttpMsg);
+      }
     }
   }
   
   public void sendOldHttpMsgSync(HttpMsg paramHttpMsg)
   {
-    if ((paramHttpMsg != null) && (this.mHttpExcuter != null)) {
-      this.mHttpExcuter.sendMsgRealSync(paramHttpMsg);
+    if (paramHttpMsg != null)
+    {
+      HttpCommunicator localHttpCommunicator = this.mHttpExcuter;
+      if (localHttpCommunicator != null) {
+        localHttpCommunicator.sendMsgRealSync(paramHttpMsg);
+      }
     }
   }
   
   public void sendReq(NetReq paramNetReq)
   {
-    Object localObject2;
-    Object localObject3;
-    Object localObject1;
-    int i;
     if ((paramNetReq != null) && (paramNetReq.mCallback != null) && ((paramNetReq instanceof HttpNetReq)))
     {
-      localObject2 = null;
-      localObject3 = (HttpNetReq)paramNetReq;
-      localObject1 = localObject2;
-      if (((HttpNetReq)localObject3).mHttpMethod != 0) {
-        break label276;
+      Object localObject2 = null;
+      Object localObject3 = (HttpNetReq)paramNetReq;
+      Object localObject1 = localObject2;
+      if (((HttpNetReq)localObject3).mHttpMethod == 0)
+      {
+        localObject1 = localObject2;
+        if (paramNetReq.mOutPath != null)
+        {
+          localObject2 = getTempPath(paramNetReq, paramNetReq.mOutPath, ((HttpNetReq)localObject3).mReqUrl);
+          paramNetReq.mKey = ((String)localObject2);
+          localObject1 = localObject2;
+          if (this.mDownloadingFiles.putIfAbsent(localObject2, localObject2) != null)
+          {
+            i = 1;
+            localObject1 = localObject2;
+            break label96;
+          }
+        }
       }
-      localObject1 = localObject2;
-      if (paramNetReq.mOutPath == null) {
-        break label276;
-      }
-      localObject2 = getTempPath(paramNetReq, paramNetReq.mOutPath, ((HttpNetReq)localObject3).mReqUrl);
-      paramNetReq.mKey = ((String)localObject2);
-      localObject1 = localObject2;
-      if (this.mDownloadingFiles.putIfAbsent(localObject2, localObject2) == null) {
-        break label276;
-      }
-      i = 1;
-      localObject1 = localObject2;
-    }
-    for (;;)
-    {
+      int i = 0;
+      label96:
       doInnerDns((HttpNetReq)localObject3);
       ((HttpNetReq)localObject3).mResp = new NetResp((NetReq)localObject3);
       OldHttpCommunicatorListener localOldHttpCommunicatorListener = new OldHttpCommunicatorListener(this);
@@ -370,30 +412,33 @@ public class HttpEngineServiceImpl
       if (i == 0) {
         localOldHttpCommunicatorListener.init();
       }
-      if ((paramNetReq.mResp.mResult != 2) || (localOldHttpCommunicatorListener.initError))
+      if ((paramNetReq.mResp.mResult == 2) && (!localOldHttpCommunicatorListener.initError))
       {
-        localOldHttpCommunicatorListener.onOutEngine();
-        return;
-      }
-      if (i != 0)
-      {
-        if (QLog.isColorLevel())
+        if (i != 0)
         {
-          localObject3 = new StringBuilder().append("sendReq:").append(paramNetReq).append(" _id:").append(paramNetReq.mMsgId).append(" isDownloading key:");
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = "";
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("sendReq:");
+            ((StringBuilder)localObject3).append(paramNetReq);
+            ((StringBuilder)localObject3).append(" _id:");
+            ((StringBuilder)localObject3).append(paramNetReq.mMsgId);
+            ((StringBuilder)localObject3).append(" isDownloading key:");
+            localObject2 = localObject1;
+            if (localObject1 == null) {
+              localObject2 = "";
+            }
+            ((StringBuilder)localObject3).append((String)localObject2);
+            QLog.e("Q.richmedia.HttpEngineServiceImpl", 2, ((StringBuilder)localObject3).toString());
           }
-          QLog.e("Q.richmedia.HttpEngineServiceImpl", 2, (String)localObject2);
+          paramNetReq.mResp.mResult = 3;
+          localOldHttpCommunicatorListener.onOutEngine();
+          return;
         }
-        paramNetReq.mResp.mResult = 3;
-        localOldHttpCommunicatorListener.onOutEngine();
+        innerSendReq(paramNetReq, false);
         return;
       }
-      innerSendReq(paramNetReq, false);
-      return;
-      label276:
-      i = 0;
+      localOldHttpCommunicatorListener.onOutEngine();
     }
   }
   
@@ -418,7 +463,7 @@ public class HttpEngineServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.api.impl.HttpEngineServiceImpl
  * JD-Core Version:    0.7.0.1
  */

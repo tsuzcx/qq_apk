@@ -10,12 +10,16 @@ class MiscJavascriptInterface$2
   
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
-    MiscJavascriptInterface.access$100(this.this$0, "MiscJavascriptInterface", "resultCode = " + paramInt);
+    paramJSONObject = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("resultCode = ");
+    localStringBuilder.append(paramInt);
+    MiscJavascriptInterface.access$100(paramJSONObject, "MiscJavascriptInterface", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.webmodule.js.MiscJavascriptInterface.2
  * JD-Core Version:    0.7.0.1
  */

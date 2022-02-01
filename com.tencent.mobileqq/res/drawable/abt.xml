@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<transition
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:width="1.0dip" android:color="@color/al3" />
-    <solid android:color="#4d000000" />
-</shape>
+    <item android:drawable="@drawable/ft_" />
+    <item android:drawable="@drawable/fs0" />
+</transition>

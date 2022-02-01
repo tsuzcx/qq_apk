@@ -21,13 +21,18 @@ public class QCirclePluginSelectorAssetProcess
       QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginSelectorAssetProcess#checkAsset():No Asset Info");
       return null;
     }
-    QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginSelectorAssetProcess#checkAsset():use asset plugin , assetVersion:" + this.a.b() + " ,MiniSupportVersion:" + 8050500);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QCirclePluginSelectorAssetProcess#checkAsset():use asset plugin , assetVersion:");
+    localStringBuilder.append(this.a.b());
+    localStringBuilder.append(" ,MiniSupportVersion:");
+    localStringBuilder.append(80700);
+    QLog.i("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
     return new QCirclePluginUpdater(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.pluginselector.QCirclePluginSelectorAssetProcess
  * JD-Core Version:    0.7.0.1
  */

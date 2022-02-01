@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.HashMap;
@@ -27,13 +27,13 @@ class EcshopCacheTool$1
       }
     }
     if ((this.this$0.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment != null) && (this.this$0.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a != null)) {
-      this.this$0.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.getActivity().runOnUiThread(new EcshopCacheTool.1.1(this));
+      this.this$0.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.getQBaseActivity().runOnUiThread(new EcshopCacheTool.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool.1
  * JD-Core Version:    0.7.0.1
  */

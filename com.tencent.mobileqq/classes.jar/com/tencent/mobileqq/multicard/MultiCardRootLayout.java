@@ -76,39 +76,40 @@ public class MultiCardRootLayout
   
   private void a(Canvas paramCanvas)
   {
-    if (paramCanvas == null) {}
-    for (;;)
-    {
+    if (paramCanvas == null) {
       return;
-      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167080));
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167081));
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      }
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPath.reset();
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-        this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
-        paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-      }
-      paramCanvas.drawRect(0.0F, 0.0F, getWidth(), getHeight(), this.jdField_b_of_type_AndroidGraphicsPaint);
-      int j = (int)(0.203704F * getHeight());
-      int k = (int)(0.1034483F * getWidth());
-      int i = 0;
-      while (i < 5)
-      {
-        a(paramCanvas, k, j);
-        j += (int)(0.139918F * getHeight());
-        i += 1;
-      }
+    }
+    if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
+    {
+      this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167103));
+      this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167104));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
+      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+      float f = this.jdField_a_of_type_Float;
+      localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
+      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    }
+    paramCanvas.drawRect(0.0F, 0.0F, getWidth(), getHeight(), this.jdField_b_of_type_AndroidGraphicsPaint);
+    int j = (int)(getHeight() * 0.203704F);
+    int k = (int)(getWidth() * 0.1034483F);
+    int i = 0;
+    while (i < 5)
+    {
+      a(paramCanvas, k, j);
+      j += (int)(getHeight() * 0.139918F);
+      i += 1;
     }
   }
   
@@ -125,24 +126,32 @@ public class MultiCardRootLayout
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsPaint != null) && (paramCanvas != null)) {
-      paramCanvas.drawRect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4, this.jdField_a_of_type_AndroidGraphicsPaint);
+    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    if ((localPaint != null) && (paramCanvas != null)) {
+      paramCanvas.drawRect(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4, localPaint);
     }
   }
   
   private boolean a()
   {
-    if ((Build.VERSION.SDK_INT == 24) && ("Xiaomi".equals(Build.MANUFACTURER)) && ("MIX".equals(Build.MODEL))) {}
-    String str;
-    do
-    {
-      do
-      {
-        return true;
-      } while (((Build.VERSION.SDK_INT == 24) && ("HUAWEI".equals(Build.MANUFACTURER)) && ("BND-AL10".equals(Build.MODEL))) || ((Build.VERSION.SDK_INT == 24) && ("HUAWEI".equals(Build.MANUFACTURER)) && ("HUAWEI CAZ-AL10".equals(Build.MODEL))) || ((Build.VERSION.SDK_INT == 24) && ("Meizu".equals(Build.MANUFACTURER)) && ("M5 Note".equals(Build.MODEL))));
-      str = Build.MANUFACTURER + ";" + Build.MODEL;
-    } while (jdField_a_of_type_JavaUtilArrayList.contains(str));
-    return false;
+    if ((Build.VERSION.SDK_INT == 24) && ("Xiaomi".equals(Build.MANUFACTURER)) && ("MIX".equals(Build.MODEL))) {
+      return true;
+    }
+    if ((Build.VERSION.SDK_INT == 24) && ("HUAWEI".equals(Build.MANUFACTURER)) && ("BND-AL10".equals(Build.MODEL))) {
+      return true;
+    }
+    if ((Build.VERSION.SDK_INT == 24) && ("HUAWEI".equals(Build.MANUFACTURER)) && ("HUAWEI CAZ-AL10".equals(Build.MODEL))) {
+      return true;
+    }
+    if ((Build.VERSION.SDK_INT == 24) && ("Meizu".equals(Build.MANUFACTURER)) && ("M5 Note".equals(Build.MODEL))) {
+      return true;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append(";");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString();
+    return jdField_a_of_type_JavaUtilArrayList.contains(localObject);
   }
   
   public void a(boolean paramBoolean)
@@ -168,7 +177,10 @@ public class MultiCardRootLayout
     {
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
+      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+      float f = this.jdField_a_of_type_Float;
+      localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
       paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
     }
     super.dispatchDraw(paramCanvas);
@@ -194,7 +206,7 @@ public class MultiCardRootLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardRootLayout
  * JD-Core Version:    0.7.0.1
  */

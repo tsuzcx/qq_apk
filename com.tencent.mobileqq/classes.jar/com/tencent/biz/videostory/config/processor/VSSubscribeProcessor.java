@@ -23,7 +23,10 @@ public class VSSubscribeProcessor
     {
       VSSubscribeConfBean localVSSubscribeConfBean = VSSubscribeConfBean.a(paramArrayOfQConfItem[0].a);
       a(localVSSubscribeConfBean);
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onParsed ");
+      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, localStringBuilder.toString());
       return localVSSubscribeConfBean;
     }
     return null;
@@ -34,7 +37,10 @@ public class VSSubscribeProcessor
     QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate ");
     if (paramVSSubscribeConfBean != null)
     {
-      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate " + paramVSSubscribeConfBean.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramVSSubscribeConfBean.toString());
+      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, localStringBuilder.toString());
       VSConfigManager.a().a("subscribe_entrance_enable", paramVSSubscribeConfBean.a());
       VSConfigManager.a().a("is_open_sharing", paramVSSubscribeConfBean.b());
       VSConfigManager.a().a("subscribe_account_title", paramVSSubscribeConfBean.c());
@@ -77,7 +83,7 @@ public class VSSubscribeProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSSubscribeProcessor
  * JD-Core Version:    0.7.0.1
  */

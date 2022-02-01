@@ -13,7 +13,7 @@ class QQStoryCmdHandler$3
     super(paramString);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a().a(880001, "no network", null);
     return null;
@@ -21,7 +21,7 @@ class QQStoryCmdHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdHandler.3
  * JD-Core Version:    0.7.0.1
  */

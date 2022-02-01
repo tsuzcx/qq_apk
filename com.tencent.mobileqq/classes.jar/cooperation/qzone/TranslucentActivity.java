@@ -1,7 +1,6 @@
 package cooperation.qzone;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
@@ -13,16 +12,10 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
+import com.tencent.qzonehub.api.ITranslucentActivityProxy;
 import java.lang.reflect.Field;
 import mqq.app.AndroidOreoUtils;
 
@@ -48,39 +41,6 @@ public class TranslucentActivity
     return j;
   }
   
-  private void startPlugin(Intent paramIntent)
-  {
-    QQProgressDialog localQQProgressDialog;
-    if (!((IPluginManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(QQManagerFactory.MGR_PLUGIN)).isPlugininstalled("qzone_plugin.apk"))
-    {
-      localQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131299166));
-      localQQProgressDialog.a(HardCodeUtil.a(2131714928));
-      localQQProgressDialog.setOnDismissListener(new TranslucentActivity.1(this));
-    }
-    for (;;)
-    {
-      String str = QzonePluginProxyActivity.getActivityNameToIntent(paramIntent);
-      paramIntent.putExtra("userQqResources", 2);
-      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-      localPluginParams.b = "qzone_plugin.apk";
-      localPluginParams.e = "QZone";
-      localPluginParams.jdField_a_of_type_JavaLangString = "";
-      localPluginParams.f = str;
-      localPluginParams.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localPluginParams.c = -1;
-      localPluginParams.jdField_a_of_type_AndroidAppDialog = localQQProgressDialog;
-      localPluginParams.d = 10000;
-      localPluginParams.g = null;
-      IPluginManager.a(this, localPluginParams);
-      if (localQQProgressDialog == null) {
-        finish();
-      }
-      return;
-      localQQProgressDialog = null;
-    }
-  }
-  
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
@@ -92,7 +52,7 @@ public class TranslucentActivity
   
   public SharedPreferences getSharedPreferences(String paramString, int paramInt)
   {
-    return SharedPreferencesProxyManager.getInstance().getProxy(paramString, paramInt);
+    return ((ITranslucentActivityProxy)QRoute.api(ITranslucentActivityProxy.class)).getSharedPreferences(paramString, paramInt);
   }
   
   @Override
@@ -104,17 +64,20 @@ public class TranslucentActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    AndroidOreoUtils localAndroidOreoUtils = new AndroidOreoUtils(this);
-    if ((Build.VERSION.SDK_INT == 26) && (getApplicationInfo().targetSdkVersion >= 27) && (localAndroidOreoUtils.isTranslucentOrFloating()))
+    Object localObject = new AndroidOreoUtils(this);
+    if ((Build.VERSION.SDK_INT == 26) && (getApplicationInfo().targetSdkVersion >= 27) && (((AndroidOreoUtils)localObject).isTranslucentOrFloating()))
     {
-      boolean bool = localAndroidOreoUtils.fixOrientation();
-      QLog.i("TranslucentActivity", 1, "onCreate fixOrientation when Oreo, result = " + bool);
+      boolean bool = ((AndroidOreoUtils)localObject).fixOrientation();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCreate fixOrientation when Oreo, result = ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.i("TranslucentActivity", 1, ((StringBuilder)localObject).toString());
     }
     super.onCreate(paramBundle);
     paramBundle = super.getIntent();
     if (!TextUtils.isEmpty(QzonePluginProxyActivity.getActivityNameToIntent(paramBundle)))
     {
-      startPlugin(paramBundle);
+      ((ITranslucentActivityProxy)QRoute.api(ITranslucentActivityProxy.class)).startPlugin(paramBundle, this);
       return;
     }
     finish();
@@ -122,7 +85,7 @@ public class TranslucentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.TranslucentActivity
  * JD-Core Version:    0.7.0.1
  */

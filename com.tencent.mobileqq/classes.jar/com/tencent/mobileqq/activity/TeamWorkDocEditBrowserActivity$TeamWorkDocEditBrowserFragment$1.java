@@ -15,42 +15,44 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-    case 1: 
-      do
+      if (i != 2)
       {
-        do
-        {
+        if (i != 3) {
           return true;
-          paramMessage = (Intent)paramMessage.obj;
-          this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-          if ((55 == paramMessage.getIntExtra(AlbumConstants.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
-          {
-            ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
-            if ((localArrayList != null) && (localArrayList.size() > 0))
-            {
-              this.a.a(BaseApplicationImpl.getApplication(), localArrayList);
-              return true;
-            }
-          }
-        } while (!paramMessage.getBooleanExtra("IS_FROM_PREVIEW_ACTIVITY", false));
-        paramMessage = paramMessage.getStringArrayListExtra("key_photo_preview");
-      } while (paramMessage == null);
-      this.a.a(BaseApplicationImpl.getApplication(), paramMessage);
-      return true;
-    case 2: 
+        }
+        this.a.l();
+        return true;
+      }
       this.a.b(null);
       return true;
     }
-    this.a.l();
+    paramMessage = (Intent)paramMessage.obj;
+    this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+    if ((55 == paramMessage.getIntExtra(AlbumConstants.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
+    {
+      ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
+      if ((localArrayList != null) && (localArrayList.size() > 0))
+      {
+        this.a.a(BaseApplicationImpl.getApplication(), localArrayList);
+        return true;
+      }
+    }
+    if (paramMessage.getBooleanExtra("IS_FROM_PREVIEW_ACTIVITY", false))
+    {
+      paramMessage = paramMessage.getStringArrayListExtra("key_photo_preview");
+      if (paramMessage != null) {
+        this.a.a(BaseApplicationImpl.getApplication(), paramMessage);
+      }
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.1
  * JD-Core Version:    0.7.0.1
  */

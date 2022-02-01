@@ -25,20 +25,19 @@ public class LiveSdkPlayerHelper$PlayerParams
   public String getPlayUrl(int paramInt)
   {
     this.level = paramInt;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 2: 
-    default: 
-      return this.url;
-    case 1: 
-      return this.url_low;
+      if (paramInt != 3) {
+        return this.url;
+      }
+      return this.url_high;
     }
-    return this.url_high;
+    return this.url_low;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.LiveSdkPlayerHelper.PlayerParams
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,22 @@ class ApolloSSOConfig$1
   {
     long l = System.currentTimeMillis();
     ApolloSSOConfig.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloSSOConfig, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramBoolean, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloSSOConfig", 2, "checkRequestSendSSO, type:" + paramInt + "isSuccess:" + paramBoolean + "onReceive use:" + (System.currentTimeMillis() - l));
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("checkRequestSendSSO, type:");
+      paramBundle.append(paramInt);
+      paramBundle.append("isSuccess:");
+      paramBundle.append(paramBoolean);
+      paramBundle.append("onReceive use:");
+      paramBundle.append(System.currentTimeMillis() - l);
+      QLog.d("[cmshow]apollo_client_ApolloSSOConfig", 2, paramBundle.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig.1
  * JD-Core Version:    0.7.0.1
  */

@@ -32,7 +32,7 @@ public class MsgTabPlayInfo
     if ((paramInt == 1) && (TextUtils.isEmpty(paramString2))) {
       throw new IllegalArgumentException("uin can't empty for friend header play");
     }
-    AssertUtils.a(paramString1);
+    AssertUtils.checkNotEmpty(paramString1);
   }
   
   public MsgTabPlayInfo(@NonNull String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)
@@ -44,7 +44,7 @@ public class MsgTabPlayInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo
  * JD-Core Version:    0.7.0.1
  */

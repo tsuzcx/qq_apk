@@ -16,9 +16,11 @@ public class ExportConfig
   @Nullable
   private MediaFormat audioFormat;
   private int audioSampleRateHz = 44100;
+  private boolean enableBFrame = false;
   private boolean highProfile = false;
   private String outputFilePath;
   private int outputHeight;
+  private String outputVideoMimeType = "video/avc";
   private int outputWidth;
   private int videoBitRate = 8000000;
   @Nullable
@@ -48,15 +50,10 @@ public class ExportConfig
   
   private int findFormatValue(String paramString, int paramInt, MediaFormat paramMediaFormat)
   {
-    int i = paramInt;
-    if (paramMediaFormat != null)
-    {
-      i = paramInt;
-      if (paramMediaFormat.containsKey(paramString)) {
-        i = paramMediaFormat.getInteger(paramString);
-      }
+    if ((paramMediaFormat != null) && (paramMediaFormat.containsKey(paramString))) {
+      return paramMediaFormat.getInteger(paramString);
     }
-    return i;
+    return paramInt;
   }
   
   private int findVideoFormatValue(String paramString, int paramInt)
@@ -76,9 +73,16 @@ public class ExportConfig
   
   private void initHighProfile()
   {
-    if (this.highProfile) {
-      CodecHelper.selectProfileAndLevel(this.videoFormat);
+    MediaFormat localMediaFormat = this.videoFormat;
+    if (localMediaFormat == null) {
+      return;
     }
+    if (this.highProfile)
+    {
+      CodecHelper.selectProfileAndLevel(localMediaFormat, this.outputVideoMimeType);
+      return;
+    }
+    removeProfile(localMediaFormat);
   }
   
   private void initIFrameInterval()
@@ -86,16 +90,38 @@ public class ExportConfig
     setToVideoFormat("i-frame-interval", this.videoIFrameInterval);
   }
   
+  private void initMaxBFrame()
+  {
+    if (this.enableBFrame) {
+      setToFormat("max-bframes", 1, this.videoFormat);
+    }
+  }
+  
   private void initOutputSize()
   {
-    CGSize localCGSize = CodecHelper.correctSupportSize(getOutputSize(), "video/avc");
+    CGSize localCGSize = CodecHelper.correctSupportSize(getOutputSize(), this.outputVideoMimeType);
     setToVideoFormat("width", (int)localCGSize.width);
     setToVideoFormat("height", (int)localCGSize.height);
+  }
+  
+  private void initOutputVideoMimeType()
+  {
+    setToFormat("mime", this.outputVideoMimeType, this.videoFormat);
   }
   
   private void initVideoBitrate()
   {
     setToVideoFormat("bitrate", this.videoBitRate);
+  }
+  
+  private void removeProfile(MediaFormat paramMediaFormat)
+  {
+    if (paramMediaFormat.containsKey("profile")) {
+      setToFormat("profile", 0, paramMediaFormat);
+    }
+    if (paramMediaFormat.containsKey("level")) {
+      setToFormat("level", 0, paramMediaFormat);
+    }
   }
   
   private void setToFormat(String paramString, int paramInt, MediaFormat paramMediaFormat)
@@ -104,6 +130,14 @@ public class ExportConfig
       return;
     }
     paramMediaFormat.setInteger(paramString, paramInt);
+  }
+  
+  private void setToFormat(String paramString1, String paramString2, MediaFormat paramMediaFormat)
+  {
+    if (paramMediaFormat == null) {
+      return;
+    }
+    paramMediaFormat.setString(paramString1, paramString2);
   }
   
   private void setToVideoFormat(String paramString, int paramInt)
@@ -119,9 +153,12 @@ public class ExportConfig
   public ExportConfig clone()
   {
     ExportConfig localExportConfig = new ExportConfig(this.outputWidth, this.outputHeight);
+    localExportConfig.videoFormat = this.videoFormat;
+    localExportConfig.audioFormat = this.audioFormat;
     localExportConfig.videoBitRate = this.videoBitRate;
     localExportConfig.videoFrameRate = this.videoFrameRate;
     localExportConfig.videoIFrameInterval = this.videoIFrameInterval;
+    localExportConfig.outputVideoMimeType = this.outputVideoMimeType;
     localExportConfig.outputWidth = this.outputWidth;
     localExportConfig.outputHeight = this.outputHeight;
     localExportConfig.highProfile = this.highProfile;
@@ -130,6 +167,16 @@ public class ExportConfig
     localExportConfig.audioChannelCount = this.audioChannelCount;
     localExportConfig.audioSampleRateHz = this.audioSampleRateHz;
     return localExportConfig;
+  }
+  
+  public int getAudioAacProfile()
+  {
+    return this.audioAacProfile;
+  }
+  
+  public int getAudioBitRate()
+  {
+    return this.audioBitRate;
   }
   
   public int getAudioChannelCount()
@@ -172,6 +219,11 @@ public class ExportConfig
     return new CGSize(getOutputWidth(), getOutputHeight());
   }
   
+  public String getOutputVideoMimeType()
+  {
+    return this.outputVideoMimeType;
+  }
+  
   public int getOutputWidth()
   {
     return findVideoFormatValue("width", this.outputWidth);
@@ -188,13 +240,14 @@ public class ExportConfig
     if (this.videoFormat == null)
     {
       this.videoFormat = new MediaFormat();
-      this.videoFormat.setString("mime", "video/avc");
       this.videoFormat.setInteger("color-format", 2130708361);
       initOutputSize();
       initVideoBitrate();
       initFrameRate();
       initIFrameInterval();
+      initOutputVideoMimeType();
       initHighProfile();
+      initMaxBFrame();
     }
     return this.videoFormat;
   }
@@ -204,10 +257,32 @@ public class ExportConfig
     return findVideoFormatValue("frame-rate", this.videoFrameRate);
   }
   
+  public int getVideoIFrameInterval()
+  {
+    return this.videoIFrameInterval;
+  }
+  
+  public boolean isHighProfile()
+  {
+    return this.highProfile;
+  }
+  
+  public void reset()
+  {
+    this.audioFormat = null;
+    this.videoFormat = null;
+  }
+  
   public void setAudioChannelCount(int paramInt)
   {
     this.audioChannelCount = paramInt;
     initAudioChannelCount();
+  }
+  
+  public void setEnableBFrame(boolean paramBoolean)
+  {
+    this.enableBFrame = paramBoolean;
+    initMaxBFrame();
   }
   
   public void setHighProfile(boolean paramBoolean)
@@ -226,6 +301,12 @@ public class ExportConfig
     this.outputWidth = paramInt1;
     this.outputHeight = paramInt2;
     initOutputSize();
+  }
+  
+  public void setOutputVideoMimeType(String paramString)
+  {
+    this.outputVideoMimeType = paramString;
+    initOutputVideoMimeType();
   }
   
   public void setVideoBitRate(int paramInt)
@@ -248,7 +329,7 @@ public class ExportConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.ExportConfig
  * JD-Core Version:    0.7.0.1
  */

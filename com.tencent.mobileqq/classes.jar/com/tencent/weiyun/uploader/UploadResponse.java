@@ -51,7 +51,14 @@ public class UploadResponse
   
   public String toString()
   {
-    return "UploadResponse{code=" + this.mCode + ", errMsg='" + this.mErrMsg + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UploadResponse{code=");
+    localStringBuilder.append(this.mCode);
+    localStringBuilder.append(", errMsg='");
+    localStringBuilder.append(this.mErrMsg);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public long totalSize()
@@ -61,7 +68,7 @@ public class UploadResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.uploader.UploadResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,7 @@ package com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -19,13 +18,14 @@ public class ScenesRecommendUtils
 {
   private static ScenesRecommendItem a(ScenesRecommendItem.ScenesRecConfigItem paramScenesRecConfigItem)
   {
-    if ((paramScenesRecConfigItem == null) || (paramScenesRecConfigItem.jdField_a_of_type_JavaLangString == null)) {
-      return null;
+    if ((paramScenesRecConfigItem != null) && (paramScenesRecConfigItem.jdField_a_of_type_JavaLangString != null))
+    {
+      if (paramScenesRecConfigItem.jdField_a_of_type_JavaLangString.equalsIgnoreCase("redpacket_id001")) {
+        return new HongBaoScenesRecommendItem(paramScenesRecConfigItem);
+      }
+      return new ScenesRecommendItem(paramScenesRecConfigItem);
     }
-    if (paramScenesRecConfigItem.jdField_a_of_type_JavaLangString.equalsIgnoreCase("redpacket_id001")) {
-      return new HongBaoScenesRecommendItem(paramScenesRecConfigItem);
-    }
-    return new ScenesRecommendItem(paramScenesRecConfigItem);
+    return null;
   }
   
   private static ScenesRecommendItem a(JSONObject paramJSONObject)
@@ -34,128 +34,129 @@ public class ScenesRecommendUtils
       return null;
     }
     Object localObject2 = paramJSONObject.optString("scene", "");
-    String str3 = paramJSONObject.optString("title", "");
-    String str4 = paramJSONObject.optString("sceneId", "");
-    String str5 = paramJSONObject.optString("kvo", "");
+    String str4 = paramJSONObject.optString("title", "");
+    String str5 = paramJSONObject.optString("sceneId", "");
+    String str6 = paramJSONObject.optString("kvo", "");
     String str1 = paramJSONObject.optString("startDate", "");
-    String str2 = paramJSONObject.optString("expiryDate", "");
+    String str3 = paramJSONObject.optString("expiryDate", "");
     int i = paramJSONObject.optInt("switch");
     Object localObject1 = paramJSONObject.optJSONArray("keywords");
     ScenesRecommendItem.ScenesRecConfigItem localScenesRecConfigItem = new ScenesRecommendItem.ScenesRecConfigItem();
     localScenesRecConfigItem.jdField_a_of_type_Int = i;
-    localScenesRecConfigItem.jdField_a_of_type_JavaLangString = str4;
+    localScenesRecConfigItem.jdField_a_of_type_JavaLangString = str5;
     localScenesRecConfigItem.c = ((String)localObject2);
-    localScenesRecConfigItem.jdField_b_of_type_JavaLangString = str3;
-    localScenesRecConfigItem.d = str5;
-    if ((!StringUtil.a(str1)) && (!StringUtil.a(str2))) {
+    localScenesRecConfigItem.jdField_b_of_type_JavaLangString = str4;
+    localScenesRecConfigItem.d = str6;
+    if ((!StringUtil.a(str1)) && (!StringUtil.a(str3)))
+    {
       localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
-    }
-    try
-    {
-      localScenesRecConfigItem.jdField_a_of_type_JavaUtilDate = ((SimpleDateFormat)localObject2).parse(str1);
-      localScenesRecConfigItem.jdField_b_of_type_JavaUtilDate = ((SimpleDateFormat)localObject2).parse(str2);
-      if (localObject1 != null)
+      try
       {
-        localScenesRecConfigItem.jdField_a_of_type_JavaUtilList = new ArrayList();
-        i = 0;
-        while (i < ((JSONArray)localObject1).length())
-        {
-          str1 = ((JSONArray)localObject1).optString(i);
-          if (!StringUtil.a(str1)) {
-            localScenesRecConfigItem.jdField_a_of_type_JavaUtilList.add(str1);
-          }
-          i += 1;
-        }
+        localScenesRecConfigItem.jdField_a_of_type_JavaUtilDate = ((SimpleDateFormat)localObject2).parse(str1);
+        localScenesRecConfigItem.jdField_b_of_type_JavaUtilDate = ((SimpleDateFormat)localObject2).parse(str3);
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         QLog.d("ScenesRecommendUtils", 2, "parse invalidTime failed!", localException);
       }
-      localObject1 = a(localScenesRecConfigItem);
-      if (localObject1 == null) {
-        return null;
+    }
+    if (localObject1 != null)
+    {
+      localScenesRecConfigItem.jdField_a_of_type_JavaUtilList = new ArrayList();
+      i = 0;
+      while (i < ((JSONArray)localObject1).length())
+      {
+        String str2 = ((JSONArray)localObject1).optString(i);
+        if (!StringUtil.a(str2)) {
+          localScenesRecConfigItem.jdField_a_of_type_JavaUtilList.add(str2);
+        }
+        i += 1;
       }
-      if (!paramJSONObject.has("extra")) {}
     }
-    try
-    {
-      ((ScenesRecommendItem)localObject1).a(paramJSONObject.getJSONObject("extra"));
-      return new ScenesRecommendItem(localScenesRecConfigItem);
+    localObject1 = a(localScenesRecConfigItem);
+    if (localObject1 == null) {
+      return null;
     }
-    catch (JSONException paramJSONObject)
-    {
-      for (;;)
+    if (paramJSONObject.has("extra")) {
+      try
+      {
+        ((ScenesRecommendItem)localObject1).a(paramJSONObject.getJSONObject("extra"));
+      }
+      catch (JSONException paramJSONObject)
       {
         paramJSONObject.printStackTrace();
       }
     }
+    return new ScenesRecommendItem(localScenesRecConfigItem);
   }
   
-  public static String a(QQAppInterface paramQQAppInterface)
+  public static String a(AppInterface paramAppInterface)
   {
-    return paramQQAppInterface.getApp().getSharedPreferences("MOBILEQQ_SCENESRECOMMEND_CONFIG", 4).getString("SCENESRECOMMEND_CONTEXT" + paramQQAppInterface.getCurrentAccountUin(), "");
+    SharedPreferences localSharedPreferences = paramAppInterface.getApp().getSharedPreferences("MOBILEQQ_SCENESRECOMMEND_CONFIG", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SCENESRECOMMEND_CONTEXT");
+    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+    return localSharedPreferences.getString(localStringBuilder.toString(), "");
   }
   
   public static List<ScenesRecommendItem> a(String paramString)
   {
-    Object localObject1;
     if (StringUtil.a(paramString)) {
-      localObject1 = null;
+      return null;
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      return localObject1;
-      if (QLog.isColorLevel()) {
-        QLog.d("ScenesRecommendUtils", 2, "parseJson  strJson = " + paramString);
-      }
-      localArrayList = new ArrayList();
-      try
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parseJson  strJson = ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("ScenesRecommendUtils", 2, ((StringBuilder)localObject1).toString());
+    }
+    localObject1 = new ArrayList();
+    try
+    {
+      Object localObject2 = new JSONObject(paramString);
+      Object localObject3;
+      if (((JSONObject)localObject2).has("scenes"))
       {
-        Object localObject2 = new JSONObject(paramString);
-        localObject1 = localArrayList;
-        if (!((JSONObject)localObject2).has("scenes")) {
-          continue;
-        }
         localObject2 = ((JSONObject)localObject2).getJSONArray("scenes");
         int i = 0;
-        for (;;)
+        while (i < ((JSONArray)localObject2).length())
         {
-          localObject1 = localArrayList;
-          if (i >= ((JSONArray)localObject2).length()) {
-            break;
-          }
-          localObject1 = a(((JSONArray)localObject2).getJSONObject(i));
-          if (localObject1 != null) {
-            localArrayList.add(localObject1);
+          localObject3 = a(((JSONArray)localObject2).getJSONObject(i));
+          if (localObject3 != null) {
+            ((List)localObject1).add(localObject3);
           }
           i += 1;
         }
-        return localArrayList;
       }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        QLog.e("ScenesRecommendUtils", 2, "parseJson has exception strJson = " + paramString, localJSONException);
-      }
+      return localObject1;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("parseJson has exception strJson = ");
+      ((StringBuilder)localObject3).append(paramString);
+      QLog.e("ScenesRecommendUtils", 2, ((StringBuilder)localObject3).toString(), localJSONException);
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public static void a(AppInterface paramAppInterface, String paramString)
   {
     if (paramString == null) {
       return;
     }
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("MOBILEQQ_SCENESRECOMMEND_CONFIG", 4).edit();
-    localEditor.putString("SCENESRECOMMEND_CONTEXT" + paramQQAppInterface.getCurrentAccountUin(), paramString);
+    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("MOBILEQQ_SCENESRECOMMEND_CONFIG", 4).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SCENESRECOMMEND_CONTEXT");
+    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+    localEditor.putString(localStringBuilder.toString(), paramString);
     localEditor.apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.ScenesRecommendUtils
  * JD-Core Version:    0.7.0.1
  */

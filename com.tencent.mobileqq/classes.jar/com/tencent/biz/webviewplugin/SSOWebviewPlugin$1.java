@@ -1,12 +1,12 @@
 package com.tencent.biz.webviewplugin;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 class SSOWebviewPlugin$1
-  extends Client.OnRemoteRespObserver
+  extends OnRemoteRespObserver
 {
   SSOWebviewPlugin$1(SSOWebviewPlugin paramSSOWebviewPlugin) {}
   
@@ -18,21 +18,20 @@ class SSOWebviewPlugin$1
   
   public void onResponse(Bundle paramBundle)
   {
-    int i;
-    Object localObject;
     if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == SSOWebviewPlugin.a(this.a).key))
     {
-      i = paramBundle.getInt("failcode");
-      localObject = paramBundle.getBundle("request");
-      if (i == 1000) {
-        break label80;
+      int i = paramBundle.getInt("failcode");
+      Object localObject = paramBundle.getBundle("request");
+      if (i != 1000)
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("IPC failed ! failcode: ");
+        paramBundle.append(i);
+        paramBundle.append("  reqParams: ");
+        paramBundle.append(localObject);
+        QLog.e("SSOWebviewPlugin", 2, paramBundle.toString());
+        return;
       }
-      QLog.e("SSOWebviewPlugin", 2, "IPC failed ! failcode: " + i + "  reqParams: " + localObject);
-    }
-    for (;;)
-    {
-      return;
-      label80:
       String str = paramBundle.getString("cmd");
       paramBundle = paramBundle.getBundle("response");
       if (("ipc_cmd_certified_account_web_plugin_follow".equals(str)) && (localObject != null) && (paramBundle != null))
@@ -46,13 +45,19 @@ class SSOWebviewPlugin$1
           this.a.callJs((String)localObject, new String[] { paramBundle.toString() });
           if (QLog.isColorLevel())
           {
-            QLog.d("SSOWebviewPlugin", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW return! retCode: " + i);
+            paramBundle = new StringBuilder();
+            paramBundle.append("IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW return! retCode: ");
+            paramBundle.append(i);
+            QLog.d("SSOWebviewPlugin", 2, paramBundle.toString());
             return;
           }
         }
         catch (Throwable paramBundle)
         {
-          QLog.e("SSOWebviewPlugin", 2, "sso.PublicFollow failed! " + QLog.getStackTraceString(paramBundle));
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("sso.PublicFollow failed! ");
+          ((StringBuilder)localObject).append(QLog.getStackTraceString(paramBundle));
+          QLog.e("SSOWebviewPlugin", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
@@ -60,7 +65,7 @@ class SSOWebviewPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.SSOWebviewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

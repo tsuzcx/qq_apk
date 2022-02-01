@@ -14,23 +14,23 @@ class FriendChooser$4
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 100)
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
       this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
-      if (QLog.isColorLevel()) {
-        QLog.e("qqBaseActivity", 2, "" + this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width);
+        QLog.e("qqBaseActivity", 2, localStringBuilder.toString());
       }
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.FriendChooser.4
  * JD-Core Version:    0.7.0.1
  */

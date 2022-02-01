@@ -2,25 +2,27 @@ package com.tencent.mobileqq.search.mostused;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
+import com.tencent.mobileqq.search.base.model.SearchResultModelForEntrance;
+import com.tencent.mobileqq.search.business.contact.model.IContactSearchModel;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelFooter;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelFunction;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelLocalContact;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelMessage;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelMiniProgram;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelMostUsed;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateUniversalItem;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateUniversalItem.NormalWord;
 import com.tencent.mobileqq.search.ftsmsg.FTSGroupSearchModelMessage;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModel;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
 import com.tencent.mobileqq.search.model.GroupSearchModeTitle;
-import com.tencent.mobileqq.search.model.GroupSearchModelFooter;
-import com.tencent.mobileqq.search.model.GroupSearchModelFunction;
-import com.tencent.mobileqq.search.model.GroupSearchModelLocalContact;
 import com.tencent.mobileqq.search.model.GroupSearchModelLocalTroop;
-import com.tencent.mobileqq.search.model.GroupSearchModelMessage;
-import com.tencent.mobileqq.search.model.GroupSearchModelMiniProgram;
-import com.tencent.mobileqq.search.model.GroupSearchModelMostUsed;
-import com.tencent.mobileqq.search.model.IContactSearchModel;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
 import com.tencent.mobileqq.search.model.MiniProgramSearchResultModel;
+import com.tencent.mobileqq.search.model.NetSearchTemplateHorSlidingContainerItem;
+import com.tencent.mobileqq.search.model.NetSearchTemplateIndividuateContainerItem;
 import com.tencent.mobileqq.search.model.NetSearchTemplateMiniAppItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateUniversalItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateUniversalItem.NormalWord;
-import com.tencent.mobileqq.search.model.SearchResultModelForEntrance;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -33,20 +35,15 @@ public class MostUsedFilterForMultiGroupResultLists
   
   public static int a(ISearchResultGroupModel paramISearchResultGroupModel)
   {
-    int j = 1;
-    int i;
     if ((paramISearchResultGroupModel instanceof GroupSearchModelMiniProgram)) {
-      i = 2;
+      return 2;
     }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while ((paramISearchResultGroupModel instanceof GroupSearchModelLocalContact));
-      i = j;
-    } while ((paramISearchResultGroupModel instanceof GroupSearchModelLocalTroop));
+    if ((paramISearchResultGroupModel instanceof GroupSearchModelLocalContact)) {
+      return 1;
+    }
+    if ((paramISearchResultGroupModel instanceof GroupSearchModelLocalTroop)) {
+      return 1;
+    }
     if ((paramISearchResultGroupModel instanceof GroupSearchModelFunction)) {
       return 3;
     }
@@ -55,31 +52,27 @@ public class MostUsedFilterForMultiGroupResultLists
   
   private static int a(MostUsedCache.MostUsedSearchItemModel paramMostUsedSearchItemModel, List<ISearchResultModel> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return -1;
-    }
-    int j = 0;
-    while (j < paramList.size())
+    if (paramList != null)
     {
-      ISearchResultModel localISearchResultModel = (ISearchResultModel)paramList.get(j);
-      String str = "";
-      Object localObject;
-      int i;
-      if ((localISearchResultModel instanceof IContactSearchModel))
-      {
-        localObject = (IContactSearchModel)localISearchResultModel;
-        if ((((IContactSearchModel)localObject).a() instanceof String)) {
-          str = (String)((IContactSearchModel)localObject).a();
-        }
-        i = ((IContactSearchModel)localObject).e();
+      if (paramList.size() == 0) {
+        return -1;
       }
-      while ((str.equals(paramMostUsedSearchItemModel.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identify)) && (i == paramMostUsedSearchItemModel.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identifyType))
+      int j = 0;
+      while (j < paramList.size())
       {
-        paramMostUsedSearchItemModel.jdField_a_of_type_Boolean = true;
-        paramMostUsedSearchItemModel.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel = localISearchResultModel;
-        QLog.d("MostUsedFilterForMultiGroupResultListsMostUsedSearchResultManager", 2, "bEffective ");
-        return j;
-        if ((localISearchResultModel instanceof GroupBaseNetSearchModelItem))
+        ISearchResultModel localISearchResultModel = (ISearchResultModel)paramList.get(j);
+        String str = "";
+        Object localObject;
+        int i;
+        if ((localISearchResultModel instanceof IContactSearchModel))
+        {
+          localObject = (IContactSearchModel)localISearchResultModel;
+          if ((((IContactSearchModel)localObject).a() instanceof String)) {
+            str = (String)((IContactSearchModel)localObject).a();
+          }
+          i = ((IContactSearchModel)localObject).e();
+        }
+        else if ((localISearchResultModel instanceof GroupBaseNetSearchModelItem))
         {
           localObject = (GroupBaseNetSearchModelItem)localISearchResultModel;
           str = ((GroupBaseNetSearchModelItem)localObject).e();
@@ -90,8 +83,15 @@ public class MostUsedFilterForMultiGroupResultLists
           QLog.e("MostUsedFilterForMultiGroupResultListsMostUsedSearchResultManager", 2, "unknown type extends ISearchResultModel");
           i = -1;
         }
+        if ((str.equals(paramMostUsedSearchItemModel.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identify)) && (i == paramMostUsedSearchItemModel.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.identifyType))
+        {
+          paramMostUsedSearchItemModel.jdField_a_of_type_Boolean = true;
+          paramMostUsedSearchItemModel.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel = localISearchResultModel;
+          QLog.d("MostUsedFilterForMultiGroupResultListsMostUsedSearchResultManager", 2, "bEffective ");
+          return j;
+        }
+        j += 1;
       }
-      j += 1;
     }
     return -1;
   }
@@ -123,71 +123,74 @@ public class MostUsedFilterForMultiGroupResultLists
   
   public static ArrayList a(String paramString, ArrayList<MostUsedCache.MostUsedSearchItemModel> paramArrayList, List paramList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return new ArrayList(paramList);
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    Object localObject2;
-    if (i < paramList.size())
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      localObject1 = paramList.get(i);
-      localObject2 = a(localObject1);
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-      for (;;)
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      Object localObject2;
+      while (i < paramList.size())
       {
-        QLog.d("MostUsedFilterForMultiGroupResultListsMostUsed", 2, "the i name " + localArrayList.get(i).getClass().getName());
+        localObject1 = paramList.get(i);
+        localObject2 = a(localObject1);
+        if (localObject2 != null) {
+          localArrayList.add(localObject2);
+        } else {
+          localArrayList.add(localObject1);
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("the i name ");
+        ((StringBuilder)localObject1).append(localArrayList.get(i).getClass().getName());
+        QLog.d("MostUsedFilterForMultiGroupResultListsMostUsed", 2, ((StringBuilder)localObject1).toString());
         i += 1;
-        break;
-        localArrayList.add(localObject1);
       }
-    }
-    Object localObject1 = new ArrayList();
-    int j = 0;
-    i = 0;
-    int k;
-    label161:
-    boolean bool;
-    if (j < paramArrayList.size())
-    {
-      localObject2 = (MostUsedCache.MostUsedSearchItemModel)paramArrayList.get(j);
-      k = 0;
-      if (k < localArrayList.size())
+      Object localObject1 = new ArrayList();
+      int j = 0;
+      int k;
+      for (i = 0;; i = k)
       {
-        if ((localArrayList.get(k) instanceof ISearchResultGroupModel))
+        k = i;
+        if (j >= paramArrayList.size()) {
+          break;
+        }
+        localObject2 = (MostUsedCache.MostUsedSearchItemModel)paramArrayList.get(j);
+        k = 0;
+        while (k < localArrayList.size())
         {
-          int m = a((ISearchResultGroupModel)localArrayList.get(k));
-          if ((m == 0) || (((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.businessType != m)) {
-            break label465;
+          if ((localArrayList.get(k) instanceof ISearchResultGroupModel))
+          {
+            int m = a((ISearchResultGroupModel)localArrayList.get(k));
+            boolean bool;
+            if ((m != 0) && (((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.businessType == m)) {
+              bool = a((MostUsedCache.MostUsedSearchItemModel)localObject2, (ISearchResultGroupModel)localArrayList.get(k));
+            } else {
+              bool = false;
+            }
+            if (bool) {
+              break;
+            }
           }
-          bool = a((MostUsedCache.MostUsedSearchItemModel)localObject2, (ISearchResultGroupModel)localArrayList.get(k));
-          label234:
-          if (!bool) {}
+          k += 1;
         }
+        k = i;
+        if (((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_Boolean == true)
+        {
+          if ((((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel instanceof IContactSearchModel)) {
+            ((IContactSearchModel)((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel).a(((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.searchKey);
+          }
+          if ((((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel instanceof GroupBaseNetSearchModelItem)) {
+            ((GroupBaseNetSearchModelItem)((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel).a(((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.searchKey);
+          }
+          ((ArrayList)localObject1).add(((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel);
+          i += 1;
+          k = i;
+          if (i == 3)
+          {
+            k = i;
+            break;
+          }
+        }
+        j += 1;
       }
-      else
-      {
-        if (((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_Boolean != true) {
-          break label456;
-        }
-        if ((((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel instanceof IContactSearchModel)) {
-          ((IContactSearchModel)((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel).a(((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.searchKey);
-        }
-        if ((((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel instanceof GroupBaseNetSearchModelItem)) {
-          ((GroupBaseNetSearchModelItem)((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel).a(((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.searchKey);
-        }
-        ((ArrayList)localObject1).add(((MostUsedCache.MostUsedSearchItemModel)localObject2).jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel);
-        k = i + 1;
-        i = k;
-        if (k != 3) {
-          break label456;
-        }
-      }
-    }
-    for (;;)
-    {
       a(localArrayList);
       if (k > 0)
       {
@@ -196,18 +199,17 @@ public class MostUsedFilterForMultiGroupResultLists
         localArrayList.add(0, new GroupSearchModeTitle(paramString, paramString.a(), false));
         QLog.d("MostUsedFilterForMultiGroupResultListsMostUsedSearchResultManager", 2, "add GroupSearchModelMostUsed");
       }
-      QLog.d("MostUsedFilterForMultiGroupResultListsMostUsedSearchResultManager", 2, "the finish Wash orgList size " + paramList.size() + " match mostUsedList size" + paramArrayList.size() + " resultlist " + localArrayList.size());
+      paramString = new StringBuilder();
+      paramString.append("the finish Wash orgList size ");
+      paramString.append(paramList.size());
+      paramString.append(" match mostUsedList size");
+      paramString.append(paramArrayList.size());
+      paramString.append(" resultlist ");
+      paramString.append(localArrayList.size());
+      QLog.d("MostUsedFilterForMultiGroupResultListsMostUsedSearchResultManager", 2, paramString.toString());
       return localArrayList;
-      k += 1;
-      break label161;
-      label456:
-      j += 1;
-      break;
-      label465:
-      bool = false;
-      break label234;
-      k = i;
     }
+    return new ArrayList(paramList);
   }
   
   private static ArrayList<String> a(List paramList)
@@ -215,312 +217,369 @@ public class MostUsedFilterForMultiGroupResultLists
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     Object localObject;
-    do
+    while (paramList.hasNext())
     {
-      if (!paramList.hasNext()) {
-        break;
-      }
       localObject = paramList.next();
-    } while (!(localObject instanceof GroupSearchModelMostUsed));
-    for (paramList = (GroupSearchModelMostUsed)localObject;; paramList = null)
-    {
-      if (paramList != null)
+      if ((localObject instanceof GroupSearchModelMostUsed))
       {
-        paramList = paramList.a();
-        if ((paramList != null) && (paramList.size() > 0))
+        paramList = (GroupSearchModelMostUsed)localObject;
+        break label48;
+      }
+    }
+    paramList = null;
+    label48:
+    if (paramList != null)
+    {
+      paramList = paramList.a();
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
         {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
+          localObject = (ISearchResultModel)paramList.next();
+          if ((localObject != null) && ((localObject instanceof MiniProgramSearchResultModel)))
           {
-            localObject = (ISearchResultModel)paramList.next();
-            if ((localObject != null) && ((localObject instanceof MiniProgramSearchResultModel)))
+            localObject = (MiniProgramSearchResultModel)localObject;
+            if ((localObject != null) && (((MiniProgramSearchResultModel)localObject).a != null))
             {
-              localObject = (MiniProgramSearchResultModel)localObject;
-              if ((localObject != null) && (((MiniProgramSearchResultModel)localObject).a != null))
-              {
-                localObject = ((MiniProgramSearchResultModel)localObject).a.appId;
-                if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-                  localArrayList.add(localObject);
-                }
+              localObject = ((MiniProgramSearchResultModel)localObject).a.appId;
+              if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+                localArrayList.add(localObject);
               }
             }
           }
         }
       }
-      return localArrayList;
     }
+    return localArrayList;
   }
   
   private static void a(List paramList, int paramInt1, List<ISearchResultModel> paramList1, GroupBaseNetSearchModel paramGroupBaseNetSearchModel, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
   {
-    if ((paramList == null) || (paramList1 == null) || (paramList1.size() == 0))
+    if ((paramList != null) && (paramList1 != null) && (paramList1.size() != 0))
     {
-      QLog.e("MostUsedFilterForMultiGroupResultLists", 2, " no list to add");
-      return;
-    }
-    int i = paramInt1;
-    if (paramList.size() < paramInt1)
-    {
-      i = paramList.size();
-      QLog.e("MostUsedFilterForMultiGroupResultLists", 2, " INDEX OUT OF RANGE");
-    }
-    QLog.d("MostUsedFilterForMultiGroupResultLists", 2, "addListAndTitleToIndex " + paramList1.size());
-    if ((paramInt2 > 0) && (paramList1.size() > paramInt2))
-    {
-      paramInt1 = paramList1.size() - 1;
-      while (paramInt1 >= paramInt2)
+      if (paramList.size() < paramInt1)
       {
-        paramList1.remove(paramInt1);
-        paramInt1 -= 1;
+        paramInt1 = paramList.size();
+        QLog.e("MostUsedFilterForMultiGroupResultLists", 2, " INDEX OUT OF RANGE");
       }
-    }
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("addListAndTitleToIndex ");
+      localStringBuilder.append(paramList1.size());
+      QLog.d("MostUsedFilterForMultiGroupResultLists", 2, localStringBuilder.toString());
+      if ((paramInt2 > 0) && (paramList1.size() > paramInt2))
+      {
+        i = paramList1.size() - 1;
+        while (i >= paramInt2)
+        {
+          paramList1.remove(i);
+          i -= 1;
+        }
+        paramInt2 = 1;
+      }
+      else
+      {
+        paramInt2 = 0;
+      }
       if (paramGroupBaseNetSearchModel != null)
       {
         paramGroupBaseNetSearchModel = new GroupBaseNetSearchModel(paramGroupBaseNetSearchModel.b(), paramGroupBaseNetSearchModel.jdField_a_of_type_Long, paramGroupBaseNetSearchModel.a(), paramList1, paramList1.size(), paramGroupBaseNetSearchModel.d(), paramGroupBaseNetSearchModel.c(), paramGroupBaseNetSearchModel.jdField_b_of_type_JavaUtilList, paramGroupBaseNetSearchModel.jdField_a_of_type_Boolean, paramGroupBaseNetSearchModel.jdField_b_of_type_Boolean, paramGroupBaseNetSearchModel.c, paramGroupBaseNetSearchModel.d, paramGroupBaseNetSearchModel.e);
-        if ((!paramBoolean1) || (paramInt1 == 0)) {
-          break label303;
-        }
-        if (TextUtils.isEmpty(paramGroupBaseNetSearchModel.d())) {
-          break label288;
-        }
-        paramBoolean1 = true;
       }
-      for (;;)
+      else
       {
-        if (paramList1.size() <= 0) {
-          break label307;
+        paramGroupBaseNetSearchModel = new GroupBaseNetSearchModel();
+        paramGroupBaseNetSearchModel.jdField_a_of_type_JavaUtilList = paramList1;
+        QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "oldTitleGroupMode is empty");
+      }
+      int i = paramInt1;
+      if ((paramBoolean1) && (paramInt2 != 0))
+      {
+        if (!TextUtils.isEmpty(paramGroupBaseNetSearchModel.d())) {
+          paramBoolean1 = true;
+        } else {
+          QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "newModel.getMoreUrl() is empty");
         }
+      }
+      else {
+        paramBoolean1 = false;
+      }
+      if (paramList1.size() > 0)
+      {
         paramInt1 = paramList1.size() - 1;
         while (paramInt1 >= 0)
         {
           paramList.add(i, paramList1.get(paramInt1));
           paramInt1 -= 1;
         }
-        paramGroupBaseNetSearchModel = new GroupBaseNetSearchModel();
-        paramGroupBaseNetSearchModel.jdField_a_of_type_JavaUtilList = paramList1;
-        QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "oldTitleGroupMode is empty");
-        break;
-        label288:
-        paramBoolean1 = false;
-        QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "newModel.getMoreUrl() is empty");
-        continue;
-        label303:
-        paramBoolean1 = false;
+        paramList1 = new GroupSearchModeTitle(paramGroupBaseNetSearchModel, paramBoolean1, paramGroupBaseNetSearchModel.jdField_b_of_type_Boolean);
+        if (paramBoolean2) {
+          paramList1.jdField_b_of_type_Boolean = true;
+        }
+        paramList.add(i, paramList1);
       }
-      label307:
-      break;
-      paramList1 = new GroupSearchModeTitle(paramGroupBaseNetSearchModel, paramBoolean1, paramGroupBaseNetSearchModel.jdField_b_of_type_Boolean);
-      if (paramBoolean2) {
-        paramList1.jdField_b_of_type_Boolean = true;
-      }
-      paramList.add(i, paramList1);
       return;
     }
+    QLog.e("MostUsedFilterForMultiGroupResultLists", 2, " no list to add");
   }
   
   public static void a(List paramList, String paramString)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    ArrayList localArrayList5 = a(paramList);
-    ArrayList localArrayList3 = new ArrayList();
-    ArrayList localArrayList4 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    Object localObject2 = null;
-    Object localObject1 = null;
-    int i = paramList.size() - 1;
-    Object localObject5;
-    Object localObject3;
-    if (i >= 0)
+    if (paramList != null)
     {
-      localObject5 = paramList.get(i);
-      if ((localObject5 instanceof GroupSearchModeTitle))
-      {
-        localObject3 = ((GroupSearchModeTitle)localObject5).a();
-        if (((localObject3 instanceof GroupBaseNetSearchModel)) && (((GroupBaseNetSearchModel)localObject3).jdField_a_of_type_Long == 1701L))
-        {
-          localObject3 = (GroupBaseNetSearchModel)localObject3;
-          paramList.remove(i);
-          localObject2 = localObject1;
-          localObject1 = localObject3;
-        }
+      if (paramList.size() == 0) {
+        return;
       }
-    }
-    for (;;)
-    {
-      label148:
-      localObject3 = localObject1;
-      Object localObject4 = localObject2;
-      for (;;)
+      ArrayList localArrayList5 = a(paramList);
+      ArrayList localArrayList4 = new ArrayList();
+      ArrayList localArrayList3 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      ArrayList localArrayList1 = new ArrayList();
+      int i = paramList.size() - 1;
+      Object localObject1 = null;
+      Object localObject4 = localObject1;
+      Object localObject3 = localObject4;
+      Object localObject2 = localObject3;
+      boolean bool;
+      Object localObject5;
+      while (i >= 0)
       {
-        i -= 1;
-        localObject1 = localObject4;
-        localObject2 = localObject3;
-        break;
-        if ((!(localObject3 instanceof GroupBaseNetSearchModel)) || (((GroupBaseNetSearchModel)localObject3).jdField_a_of_type_Long != 1003L)) {
-          break label1020;
-        }
-        localObject3 = (GroupBaseNetSearchModel)localObject3;
-        paramList.remove(i);
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        break label148;
-        if (((localObject5 instanceof GroupSearchModelFooter)) && ((((GroupSearchModelFooter)localObject5).jdField_a_of_type_Long == 1701L) || (((GroupSearchModelFooter)localObject5).jdField_a_of_type_Long == 1003L)))
+        Object localObject8 = paramList.get(i);
+        Object localObject7;
+        Object localObject6;
+        if ((localObject8 instanceof GroupSearchModeTitle))
         {
-          paramList.remove(i);
-          localObject4 = localObject1;
-          localObject3 = localObject2;
-        }
-        else if ((localObject5 instanceof NetSearchTemplateMiniAppItem))
-        {
-          localObject5 = (NetSearchTemplateMiniAppItem)localObject5;
-          localObject4 = localObject1;
-          localObject3 = localObject2;
-          if (((NetSearchTemplateMiniAppItem)localObject5).a != null)
+          localObject8 = ((GroupSearchModeTitle)localObject8).a();
+          bool = localObject8 instanceof GroupBaseNetSearchModel;
+          if (bool)
           {
-            localObject4 = localObject1;
-            localObject3 = localObject2;
-            if (((NetSearchTemplateMiniAppItem)localObject5).a.a != null)
+            localObject5 = (GroupBaseNetSearchModel)localObject8;
+            if (((GroupBaseNetSearchModel)localObject5).jdField_a_of_type_Long == 1701L)
             {
-              String str = ((NetSearchTemplateMiniAppItem)localObject5).a.a.appId;
               paramList.remove(i);
-              localObject4 = localObject1;
-              localObject3 = localObject2;
-              if (!a(str, localArrayList5)) {
-                if (((NetSearchTemplateMiniAppItem)localObject5).jdField_b_of_type_Boolean)
-                {
-                  localArrayList3.add(0, localObject5);
-                  localObject4 = localObject1;
-                  localObject3 = localObject2;
-                }
-                else
-                {
-                  localArrayList4.add(0, localObject5);
-                  localObject4 = localObject1;
-                  localObject3 = localObject2;
-                }
-              }
+              localObject4 = localObject5;
+              break label696;
+            }
+          }
+          if (bool)
+          {
+            localObject7 = (GroupBaseNetSearchModel)localObject8;
+            if (((GroupBaseNetSearchModel)localObject7).jdField_a_of_type_Long == 1003L)
+            {
+              paramList.remove(i);
+              localObject5 = localObject1;
+              localObject6 = localObject3;
+              break label684;
+            }
+          }
+          localObject5 = localObject1;
+          localObject6 = localObject3;
+          localObject7 = localObject2;
+          if (bool)
+          {
+            localObject8 = (GroupBaseNetSearchModel)localObject8;
+            localObject5 = localObject1;
+            localObject6 = localObject3;
+            localObject7 = localObject2;
+            if (((GroupBaseNetSearchModel)localObject8).jdField_a_of_type_Long == 1105L)
+            {
+              paramList.remove(i);
+              localObject5 = localObject8;
+              localObject6 = localObject3;
+              localObject7 = localObject2;
             }
           }
         }
         else
         {
-          localObject4 = localObject1;
-          localObject3 = localObject2;
-          if ((localObject5 instanceof NetSearchTemplateUniversalItem))
+          if ((localObject8 instanceof GroupSearchModelFooter))
           {
-            localObject5 = (NetSearchTemplateUniversalItem)localObject5;
-            localObject4 = localObject1;
-            localObject3 = localObject2;
-            if (((NetSearchTemplateUniversalItem)localObject5).jdField_a_of_type_Long == 1003L)
+            localObject5 = (GroupSearchModelFooter)localObject8;
+            if ((((GroupSearchModelFooter)localObject5).jdField_a_of_type_Long == 1701L) || (((GroupSearchModelFooter)localObject5).jdField_a_of_type_Long == 1003L))
             {
               paramList.remove(i);
-              if ((a((NetSearchTemplateUniversalItem)localObject5, paramString)) && (localArrayList1.size() == 0))
+              localObject5 = localObject1;
+              localObject6 = localObject3;
+              localObject7 = localObject2;
+              break label684;
+            }
+          }
+          if ((localObject8 instanceof NetSearchTemplateMiniAppItem))
+          {
+            localObject8 = (NetSearchTemplateMiniAppItem)localObject8;
+            localObject5 = localObject1;
+            localObject6 = localObject3;
+            localObject7 = localObject2;
+            if (((NetSearchTemplateMiniAppItem)localObject8).a != null)
+            {
+              localObject5 = localObject1;
+              localObject6 = localObject3;
+              localObject7 = localObject2;
+              if (((NetSearchTemplateMiniAppItem)localObject8).a.a != null)
               {
-                ((NetSearchTemplateUniversalItem)localObject5).c = true;
-                localArrayList1.add(0, localObject5);
+                String str = ((NetSearchTemplateMiniAppItem)localObject8).a.a.appId;
+                paramList.remove(i);
+                localObject5 = localObject1;
+                localObject6 = localObject3;
+                localObject7 = localObject2;
+                if (!a(str, localArrayList5)) {
+                  if (((NetSearchTemplateMiniAppItem)localObject8).jdField_b_of_type_Boolean)
+                  {
+                    localArrayList4.add(0, localObject8);
+                    localObject5 = localObject1;
+                    localObject6 = localObject3;
+                    localObject7 = localObject2;
+                  }
+                  else
+                  {
+                    localArrayList3.add(0, localObject8);
+                    localObject5 = localObject1;
+                    localObject6 = localObject3;
+                    localObject7 = localObject2;
+                  }
+                }
+              }
+            }
+          }
+          else if ((localObject8 instanceof NetSearchTemplateUniversalItem))
+          {
+            localObject8 = (NetSearchTemplateUniversalItem)localObject8;
+            localObject5 = localObject1;
+            localObject6 = localObject3;
+            localObject7 = localObject2;
+            if (((NetSearchTemplateUniversalItem)localObject8).jdField_a_of_type_Long == 1003L)
+            {
+              paramList.remove(i);
+              if ((a((NetSearchTemplateUniversalItem)localObject8, paramString)) && (localArrayList2.size() == 0))
+              {
+                ((NetSearchTemplateUniversalItem)localObject8).c = true;
+                localArrayList2.add(0, localObject8);
                 ReportController.b(null, "dc00898", "", "", "0X800AC11", "0X800AC11", 0, 0, "", "", "", "");
-                localObject4 = localObject1;
-                localObject3 = localObject2;
+                localObject5 = localObject1;
+                localObject6 = localObject3;
+                localObject7 = localObject2;
               }
               else
               {
-                localArrayList2.add(0, localObject5);
-                localObject4 = localObject1;
-                localObject3 = localObject2;
+                localArrayList1.add(0, localObject8);
+                localObject5 = localObject1;
+                localObject6 = localObject3;
+                localObject7 = localObject2;
               }
             }
           }
+          else
+          {
+            localObject5 = localObject1;
+            localObject6 = localObject3;
+            localObject7 = localObject2;
+            if ((localObject8 instanceof NetSearchTemplateHorSlidingContainerItem))
+            {
+              localObject6 = (NetSearchTemplateHorSlidingContainerItem)localObject8;
+              paramList.remove(i);
+              localObject7 = localObject2;
+              localObject5 = localObject1;
+            }
+          }
         }
+        label684:
+        localObject2 = localObject7;
+        localObject3 = localObject6;
+        localObject1 = localObject5;
+        label696:
+        i -= 1;
       }
-      int k = 0;
-      i = 0;
       int j = 0;
-      label568:
-      if (k < paramList.size())
+      int k = 0;
+      for (i = 0; j < paramList.size(); i = m)
       {
-        localObject3 = paramList.get(k);
-        if (!(localObject3 instanceof GroupSearchModelMostUsed)) {
-          break label1017;
+        localObject5 = paramList.get(j);
+        bool = localObject5 instanceof GroupSearchModelMostUsed;
+        if (bool) {
+          k = j + 1;
         }
-        j = k + 1;
-      }
-      label1008:
-      label1017:
-      for (;;)
-      {
-        if ((((localObject3 instanceof GroupSearchModelFunction)) && (a((GroupSearchModelFunction)localObject3, paramString))) || ((((localObject3 instanceof GroupSearchModelMostUsed)) || ((localObject3 instanceof GroupSearchModelLocalContact)) || ((localObject3 instanceof GroupSearchModelLocalTroop)) || ((localObject3 instanceof SearchResultModelForEntrance))) && (i <= k))) {
-          i = k + 1;
-        }
-        for (;;)
+        if (((!(localObject5 instanceof GroupSearchModelFunction)) || (!a((GroupSearchModelFunction)localObject5, paramString))) && (!bool) && (!(localObject5 instanceof GroupSearchModelLocalContact)) && (!(localObject5 instanceof GroupSearchModelLocalTroop)))
         {
-          k += 1;
-          break label568;
-          if (localArrayList3.size() > 0)
-          {
-            a(paramList, j, localArrayList3, localObject2, false, a, true);
-            j = localArrayList3.size() + i + 1;
-            if (paramList.size() >= j)
-            {
-              QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "OUT OF INDEX OF MINI");
-              i = j;
-            }
-          }
-          for (;;)
-          {
-            if (localArrayList4.size() > 0) {
-              a(paramList, i, localArrayList4, localObject2, true, a, false);
-            }
-            k = 0;
-            i = 0;
-            j = 0;
-            label762:
-            if (k < paramList.size())
-            {
-              localObject2 = paramList.get(k);
-              if ((!(localObject2 instanceof GroupSearchModelMostUsed)) && ((!(localObject2 instanceof NetSearchTemplateMiniAppItem)) || (((NetSearchTemplateMiniAppItem)localObject2).jdField_b_of_type_Boolean != true)) && ((!(localObject2 instanceof GroupSearchModelFunction)) || (!a((GroupSearchModelFunction)localObject2, paramString)))) {
-                break label1008;
-              }
-              j = k + 1;
-            }
-            for (;;)
-            {
-              if ((((localObject2 instanceof GroupSearchModelFunction)) || ((localObject2 instanceof GroupSearchModelMostUsed)) || ((localObject2 instanceof GroupSearchModelLocalContact)) || ((localObject2 instanceof GroupSearchModelLocalTroop)) || ((localObject2 instanceof SearchResultModelForEntrance)) || ((localObject2 instanceof NetSearchTemplateMiniAppItem)) || ((localObject2 instanceof GroupSearchModelMessage)) || ((localObject2 instanceof FTSGroupSearchModelMessage))) && (i <= k)) {
-                i = k + 1;
-              }
-              for (;;)
-              {
-                k += 1;
-                break label762;
-                if (localArrayList1.size() > 0)
-                {
-                  a(paramList, j, localArrayList1, localObject1, false, a, true);
-                  j = localArrayList1.size() + i + 1;
-                  if (paramList.size() >= j)
-                  {
-                    QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "OUT OF INDEX OF PUBLLIC");
-                    i = j;
-                  }
-                }
-                while (localArrayList2.size() > 0)
-                {
-                  a(paramList, i, localArrayList2, localObject1, true, a, false);
-                  return;
-                }
-                break;
-              }
-            }
+          m = i;
+          if (!(localObject5 instanceof SearchResultModelForEntrance)) {}
+        }
+        else
+        {
+          m = i;
+          if (i <= j) {
+            m = j + 1;
           }
         }
+        j += 1;
       }
-      label1020:
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
+      if (localArrayList4.size() > 0)
+      {
+        a(paramList, k, localArrayList4, localObject4, false, a, true);
+        j = localArrayList4.size() + i + 1;
+        if (paramList.size() >= j)
+        {
+          QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "OUT OF INDEX OF MINI");
+          i = j;
+        }
+        else {}
+      }
+      if (localArrayList3.size() > 0) {
+        a(paramList, i, localArrayList3, localObject4, true, a, false);
+      }
+      j = 0;
+      int m = 0;
+      int n;
+      for (i = 0; j < paramList.size(); i = n)
+      {
+        localObject4 = paramList.get(j);
+        bool = localObject4 instanceof GroupSearchModelMostUsed;
+        if ((!bool) && ((!(localObject4 instanceof NetSearchTemplateMiniAppItem)) || (((NetSearchTemplateMiniAppItem)localObject4).jdField_b_of_type_Boolean != true)))
+        {
+          k = m;
+          if ((localObject4 instanceof GroupSearchModelFunction))
+          {
+            k = m;
+            if (!a((GroupSearchModelFunction)localObject4, paramString)) {}
+          }
+        }
+        else
+        {
+          k = j + 1;
+        }
+        if ((!(localObject4 instanceof GroupSearchModelFunction)) && (!bool) && (!(localObject4 instanceof GroupSearchModelLocalContact)) && (!(localObject4 instanceof GroupSearchModelLocalTroop)) && (!(localObject4 instanceof SearchResultModelForEntrance)) && (!(localObject4 instanceof NetSearchTemplateMiniAppItem)) && (!(localObject4 instanceof GroupSearchModelMessage)) && (!(localObject4 instanceof FTSGroupSearchModelMessage)))
+        {
+          n = i;
+          if (!(localObject4 instanceof NetSearchTemplateIndividuateContainerItem)) {}
+        }
+        else
+        {
+          n = i;
+          if (i <= j) {
+            n = j + 1;
+          }
+        }
+        j += 1;
+        m = k;
+      }
+      if (localArrayList2.size() > 0)
+      {
+        a(paramList, m, localArrayList2, localObject2, false, a, true);
+        j = localArrayList2.size() + i + 1;
+        if (paramList.size() >= j)
+        {
+          QLog.e("MostUsedFilterForMultiGroupResultLists", 2, "OUT OF INDEX OF PUBLLIC");
+          i = j;
+        }
+      }
+      j = i;
+      if (localObject3 != null)
+      {
+        paramList.add(i, localObject3);
+        paramList.add(i, new GroupSearchModeTitle(localObject1, true, localObject1.jdField_b_of_type_Boolean));
+        j = i + 2;
+      }
+      if (localArrayList1.size() > 0) {
+        a(paramList, j, localArrayList1, localObject2, true, a, false);
+      }
     }
   }
   
@@ -531,14 +590,17 @@ public class MostUsedFilterForMultiGroupResultLists
   
   private static boolean a(NetSearchTemplateUniversalItem paramNetSearchTemplateUniversalItem, String paramString)
   {
-    if ((paramNetSearchTemplateUniversalItem == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    if ((paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList != null) && (paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if (paramNetSearchTemplateUniversalItem != null)
     {
-      paramNetSearchTemplateUniversalItem = (NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.get(0);
-      if ((paramNetSearchTemplateUniversalItem != null) && (paramNetSearchTemplateUniversalItem.a.toString().equalsIgnoreCase(paramString))) {
-        return true;
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      if ((paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList != null) && (paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      {
+        paramNetSearchTemplateUniversalItem = (NetSearchTemplateUniversalItem.NormalWord)paramNetSearchTemplateUniversalItem.jdField_a_of_type_JavaUtilArrayList.get(0);
+        if ((paramNetSearchTemplateUniversalItem != null) && (paramNetSearchTemplateUniversalItem.a.toString().equalsIgnoreCase(paramString))) {
+          return true;
+        }
       }
     }
     return false;
@@ -546,26 +608,31 @@ public class MostUsedFilterForMultiGroupResultLists
   
   private static boolean a(MostUsedCache.MostUsedSearchItemModel paramMostUsedSearchItemModel, ISearchResultGroupModel paramISearchResultGroupModel)
   {
-    if (paramISearchResultGroupModel == null) {}
-    int i;
-    do
-    {
+    boolean bool = false;
+    if (paramISearchResultGroupModel == null) {
       return false;
-      i = a(paramMostUsedSearchItemModel, paramISearchResultGroupModel.a());
-    } while (i < 0);
-    paramISearchResultGroupModel.a().remove(i);
-    return true;
+    }
+    int i = a(paramMostUsedSearchItemModel, paramISearchResultGroupModel.a());
+    if (i >= 0)
+    {
+      paramISearchResultGroupModel.a().remove(i);
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean a(String paramString, ArrayList<String> paramArrayList)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return false;
-    }
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      if (paramString.equalsIgnoreCase((String)paramArrayList.next())) {
-        return true;
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayList != null))
+    {
+      if (paramArrayList.size() == 0) {
+        return false;
+      }
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        if (paramString.equalsIgnoreCase((String)paramArrayList.next())) {
+          return true;
+        }
       }
     }
     return false;
@@ -573,67 +640,101 @@ public class MostUsedFilterForMultiGroupResultLists
   
   public static boolean a(ArrayList paramArrayList)
   {
-    boolean bool2;
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      bool2 = false;
-    }
-    int i;
-    boolean bool1;
-    do
+    if (paramArrayList != null)
     {
-      return bool2;
-      i = paramArrayList.size() - 1;
-      bool1 = false;
-      bool2 = bool1;
-    } while (i < 0);
-    ISearchResultGroupModel localISearchResultGroupModel;
-    if ((paramArrayList.get(i) instanceof ISearchResultGroupModel))
-    {
-      localISearchResultGroupModel = (ISearchResultGroupModel)paramArrayList.get(i);
-      if ((localISearchResultGroupModel.a() != null) && (localISearchResultGroupModel.a().size() == 0)) {
-        if ((i - 1 < 0) || (!(paramArrayList.get(i - 1) instanceof GroupSearchModeTitle)) || (!((GroupSearchModeTitle)paramArrayList.get(i - 1)).a().equals(localISearchResultGroupModel.a()))) {
-          break label323;
-        }
+      if (paramArrayList.size() == 0) {
+        return false;
       }
-    }
-    label323:
-    for (int j = 1;; j = 0)
-    {
-      paramArrayList.remove(i);
-      if (j != 0)
+      int i = paramArrayList.size() - 1;
+      boolean bool2;
+      for (boolean bool1 = false; i >= 0; bool1 = bool2)
       {
-        i -= 1;
-        paramArrayList.remove(i);
-      }
-      for (;;)
-      {
-        bool1 = true;
-        for (;;)
+        int j = i;
+        bool2 = bool1;
+        if ((paramArrayList.get(i) instanceof ISearchResultGroupModel))
         {
-          i -= 1;
-          break;
-          if ((a(localISearchResultGroupModel) != 0) && (i - 1 >= 0) && ((paramArrayList.get(i - 1) instanceof GroupSearchModeTitle)) && (((GroupSearchModeTitle)paramArrayList.get(i - 1)).a().equals(localISearchResultGroupModel.a())))
+          ISearchResultGroupModel localISearchResultGroupModel = (ISearchResultGroupModel)paramArrayList.get(i);
+          int k;
+          if ((localISearchResultGroupModel.a() != null) && (localISearchResultGroupModel.a().size() == 0))
           {
-            GroupSearchModeTitle localGroupSearchModeTitle = (GroupSearchModeTitle)paramArrayList.get(i - 1);
-            if ((localGroupSearchModeTitle.a() != null) && (localISearchResultGroupModel.a() != null)) {
-              if (localGroupSearchModeTitle.a().a() != null) {
-                if (localGroupSearchModeTitle.a().a().size() != localISearchResultGroupModel.a().size())
+            k = i - 1;
+            if ((k >= 0) && ((paramArrayList.get(k) instanceof GroupSearchModeTitle)) && (((GroupSearchModeTitle)paramArrayList.get(k)).a().equals(localISearchResultGroupModel.a()))) {
+              j = 1;
+            } else {
+              j = 0;
+            }
+            paramArrayList.remove(i);
+            if (j != 0)
+            {
+              paramArrayList.remove(k);
+              i = k;
+            }
+            bool2 = true;
+            j = i;
+          }
+          else
+          {
+            j = i;
+            bool2 = bool1;
+            if (a(localISearchResultGroupModel) != 0)
+            {
+              k = i - 1;
+              j = i;
+              bool2 = bool1;
+              if (k >= 0)
+              {
+                j = i;
+                bool2 = bool1;
+                if ((paramArrayList.get(k) instanceof GroupSearchModeTitle))
                 {
-                  QLog.d("MostUsedFilterForMultiGroupResultLists", 2, "add new group title");
-                  paramArrayList.remove(i - 1);
-                  paramArrayList.add(i - 1, new GroupSearchModeTitle(localISearchResultGroupModel));
+                  j = i;
+                  bool2 = bool1;
+                  if (((GroupSearchModeTitle)paramArrayList.get(k)).a().equals(localISearchResultGroupModel.a()))
+                  {
+                    GroupSearchModeTitle localGroupSearchModeTitle = (GroupSearchModeTitle)paramArrayList.get(k);
+                    j = i;
+                    bool2 = bool1;
+                    if (localGroupSearchModeTitle.a() != null)
+                    {
+                      j = i;
+                      bool2 = bool1;
+                      if (localISearchResultGroupModel.a() != null) {
+                        if (localGroupSearchModeTitle.a().a() == null)
+                        {
+                          j = i;
+                          bool2 = bool1;
+                        }
+                        else
+                        {
+                          j = i;
+                          bool2 = bool1;
+                          if (localGroupSearchModeTitle.a().a().size() != localISearchResultGroupModel.a().size())
+                          {
+                            QLog.d("MostUsedFilterForMultiGroupResultLists", 2, "add new group title");
+                            paramArrayList.remove(k);
+                            paramArrayList.add(k, new GroupSearchModeTitle(localISearchResultGroupModel));
+                            bool2 = bool1;
+                            j = i;
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
           }
         }
+        i = j - 1;
       }
+      return bool1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.mostused.MostUsedFilterForMultiGroupResultLists
  * JD-Core Version:    0.7.0.1
  */

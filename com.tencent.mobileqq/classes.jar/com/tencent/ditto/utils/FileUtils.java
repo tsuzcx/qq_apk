@@ -13,32 +13,31 @@ public class FileUtils
     int i = 0;
     if (paramFile != null)
     {
-      if (!paramFile.isFile()) {
-        break label28;
-      }
-      if (paramFile.delete()) {
-        break label26;
-      }
-      paramFile.deleteOnExit();
-    }
-    label26:
-    label28:
-    while (!paramFile.isDirectory())
-    {
-      return false;
-      return true;
-    }
-    File[] arrayOfFile = paramFile.listFiles();
-    if (arrayOfFile != null)
-    {
-      int j = arrayOfFile.length;
-      while (i < j)
+      if (paramFile.isFile())
       {
-        deleteFile(arrayOfFile[i]);
-        i += 1;
+        if (!paramFile.delete())
+        {
+          paramFile.deleteOnExit();
+          return false;
+        }
+        return true;
+      }
+      if (paramFile.isDirectory())
+      {
+        File[] arrayOfFile = paramFile.listFiles();
+        if (arrayOfFile != null)
+        {
+          int j = arrayOfFile.length;
+          while (i < j)
+          {
+            deleteFile(arrayOfFile[i]);
+            i += 1;
+          }
+        }
+        return paramFile.delete();
       }
     }
-    return paramFile.delete();
+    return false;
   }
   
   /* Error */
@@ -46,29 +45,29 @@ public class FileUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: ifnull +17 -> 18
+    //   1: ifnull +123 -> 124
     //   4: aload_0
     //   5: invokevirtual 62	java/io/File:exists	()Z
-    //   8: ifeq +10 -> 18
+    //   8: ifeq +116 -> 124
     //   11: aload_0
     //   12: invokevirtual 47	java/io/File:isDirectory	()Z
-    //   15: ifeq +7 -> 22
+    //   15: ifeq +5 -> 20
     //   18: aconst_null
-    //   19: astore_2
-    //   20: aload_2
-    //   21: areturn
-    //   22: ldc 64
-    //   24: invokestatic 70	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   27: astore_2
-    //   28: aload_2
-    //   29: invokevirtual 73	java/security/MessageDigest:reset	()V
-    //   32: new 75	java/io/FileInputStream
-    //   35: dup
-    //   36: aload_0
-    //   37: invokespecial 78	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   19: areturn
+    //   20: ldc 64
+    //   22: invokestatic 70	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   25: astore_3
+    //   26: aload_3
+    //   27: invokevirtual 73	java/security/MessageDigest:reset	()V
+    //   30: new 75	java/io/FileInputStream
+    //   33: dup
+    //   34: aload_0
+    //   35: invokespecial 78	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   38: astore_2
+    //   39: aload_2
     //   40: astore_1
-    //   41: aload_2
-    //   42: aload_1
+    //   41: aload_3
+    //   42: aload_2
     //   43: invokevirtual 82	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   46: getstatic 88	java/nio/channels/FileChannel$MapMode:READ_ONLY	Ljava/nio/channels/FileChannel$MapMode;
     //   49: lconst_0
@@ -77,91 +76,89 @@ public class FileUtils
     //   54: invokevirtual 98	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
     //   57: invokevirtual 102	java/security/MessageDigest:update	(Ljava/nio/ByteBuffer;)V
     //   60: aload_2
-    //   61: invokevirtual 106	java/security/MessageDigest:digest	()[B
-    //   64: invokestatic 110	com/tencent/ditto/utils/FileUtils:toHexString	([B)Ljava/lang/String;
-    //   67: astore_0
-    //   68: aload_0
-    //   69: astore_2
-    //   70: aload_1
-    //   71: ifnull -51 -> 20
-    //   74: aload_1
-    //   75: invokevirtual 113	java/io/FileInputStream:close	()V
-    //   78: aload_0
-    //   79: areturn
-    //   80: astore_1
-    //   81: aload_0
-    //   82: areturn
-    //   83: astore_1
-    //   84: aconst_null
-    //   85: astore_0
-    //   86: ldc 115
-    //   88: ldc 117
-    //   90: aload_1
-    //   91: invokestatic 123	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   94: aload_0
-    //   95: ifnull +7 -> 102
-    //   98: aload_0
-    //   99: invokevirtual 113	java/io/FileInputStream:close	()V
-    //   102: aconst_null
-    //   103: areturn
-    //   104: astore_0
-    //   105: aconst_null
-    //   106: astore_1
-    //   107: aload_1
-    //   108: ifnull +7 -> 115
-    //   111: aload_1
-    //   112: invokevirtual 113	java/io/FileInputStream:close	()V
-    //   115: aload_0
-    //   116: athrow
-    //   117: astore_0
-    //   118: goto -16 -> 102
-    //   121: astore_1
-    //   122: goto -7 -> 115
-    //   125: astore_0
-    //   126: goto -19 -> 107
-    //   129: astore_2
-    //   130: aload_0
-    //   131: astore_1
-    //   132: aload_2
-    //   133: astore_0
-    //   134: goto -27 -> 107
-    //   137: astore_2
-    //   138: aload_1
-    //   139: astore_0
-    //   140: aload_2
-    //   141: astore_1
-    //   142: goto -56 -> 86
+    //   61: astore_1
+    //   62: aload_3
+    //   63: invokevirtual 106	java/security/MessageDigest:digest	()[B
+    //   66: invokestatic 110	com/tencent/ditto/utils/FileUtils:toHexString	([B)Ljava/lang/String;
+    //   69: astore_0
+    //   70: aload_2
+    //   71: invokevirtual 113	java/io/FileInputStream:close	()V
+    //   74: aload_0
+    //   75: areturn
+    //   76: astore_1
+    //   77: aload_2
+    //   78: astore_0
+    //   79: aload_1
+    //   80: astore_2
+    //   81: goto +12 -> 93
+    //   84: astore_0
+    //   85: aconst_null
+    //   86: astore_1
+    //   87: goto +27 -> 114
+    //   90: astore_2
+    //   91: aconst_null
+    //   92: astore_0
+    //   93: aload_0
+    //   94: astore_1
+    //   95: ldc 115
+    //   97: ldc 117
+    //   99: aload_2
+    //   100: invokestatic 123	com/tencent/ditto/utils/DittoLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   103: aload_0
+    //   104: ifnull +7 -> 111
+    //   107: aload_0
+    //   108: invokevirtual 113	java/io/FileInputStream:close	()V
+    //   111: aconst_null
+    //   112: areturn
+    //   113: astore_0
+    //   114: aload_1
+    //   115: ifnull +7 -> 122
+    //   118: aload_1
+    //   119: invokevirtual 113	java/io/FileInputStream:close	()V
+    //   122: aload_0
+    //   123: athrow
+    //   124: aconst_null
+    //   125: areturn
+    //   126: astore_1
+    //   127: aload_0
+    //   128: areturn
+    //   129: astore_0
+    //   130: aconst_null
+    //   131: areturn
+    //   132: astore_1
+    //   133: goto -11 -> 122
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	145	0	paramFile	File
-    //   40	35	1	localFileInputStream	java.io.FileInputStream
-    //   80	1	1	localIOException1	java.io.IOException
-    //   83	8	1	localException1	Exception
-    //   106	6	1	localObject1	Object
-    //   121	1	1	localIOException2	java.io.IOException
-    //   131	11	1	localObject2	Object
-    //   19	51	2	localObject3	Object
-    //   129	4	2	localObject4	Object
-    //   137	4	2	localException2	Exception
+    //   0	136	0	paramFile	File
+    //   40	22	1	localObject1	Object
+    //   76	4	1	localException1	Exception
+    //   86	33	1	localFile	File
+    //   126	1	1	localIOException1	java.io.IOException
+    //   132	1	1	localIOException2	java.io.IOException
+    //   38	43	2	localObject2	Object
+    //   90	10	2	localException2	Exception
+    //   25	38	3	localMessageDigest	MessageDigest
     // Exception table:
     //   from	to	target	type
-    //   74	78	80	java/io/IOException
-    //   22	41	83	java/lang/Exception
-    //   22	41	104	finally
-    //   98	102	117	java/io/IOException
-    //   111	115	121	java/io/IOException
-    //   41	68	125	finally
-    //   86	94	129	finally
-    //   41	68	137	java/lang/Exception
+    //   41	60	76	java/lang/Exception
+    //   62	70	76	java/lang/Exception
+    //   20	39	84	finally
+    //   20	39	90	java/lang/Exception
+    //   41	60	113	finally
+    //   62	70	113	finally
+    //   95	103	113	finally
+    //   70	74	126	java/io/IOException
+    //   107	111	129	java/io/IOException
+    //   118	122	132	java/io/IOException
   }
   
   public static String getMd5ByStream(InputStream paramInputStream)
   {
-    int i = 0;
     try
     {
       byte[] arrayOfByte = new byte[4096];
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      int i = 0;
       while (i != -1)
       {
         int j = paramInputStream.read(arrayOfByte);
@@ -173,13 +170,13 @@ public class FileUtils
         }
       }
       paramInputStream = toHexString(localMessageDigest.digest());
+      return paramInputStream;
     }
     catch (Exception paramInputStream)
     {
       DittoLog.e("DITTO_UI", "", paramInputStream);
-      return null;
     }
-    return paramInputStream;
+    return null;
   }
   
   public static String getMd5ByString(String paramString)
@@ -192,7 +189,11 @@ public class FileUtils
       paramString = toHexString(localMessageDigest.digest());
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label29:
+      break label29;
+    }
     return null;
   }
   
@@ -211,7 +212,7 @@ public class FileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.utils.FileUtils
  * JD-Core Version:    0.7.0.1
  */

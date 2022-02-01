@@ -11,49 +11,49 @@ class ArkFullScreenAppActivity$4
 {
   ArkFullScreenAppActivity$4(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void a()
+  public void a() {}
+  
+  public void b()
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkFullScreenAppActivity", 2, "arkview loadSucc: " + ArkFullScreenAppActivity.a(this.a));
-    }
     Object localObject;
-    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("arkview loadSucc: ");
+      ((StringBuilder)localObject).append(ArkFullScreenAppActivity.a(this.a));
+      QLog.i("ArkFullScreenAppActivity", 2, ((StringBuilder)localObject).toString());
+    }
     if (ArkFullScreenAppActivity.a(this.a) != null)
     {
       localObject = ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
       if (localObject != null)
       {
-        if ((!((ArkAppContainer)localObject).checkShare()) || (!ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
-          break label135;
+        boolean bool = ((ArkAppContainer)localObject).checkShare();
+        int i = 0;
+        if ((bool) && (ArkFullScreenAppActivity.a(this.a).jdField_a_of_type_Boolean)) {
+          bool = true;
+        } else {
+          bool = false;
         }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("ArkFullScreenAppActivity", 2, "supportShare: " + bool);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("supportShare: ");
+          ((StringBuilder)localObject).append(bool);
+          QLog.i("ArkFullScreenAppActivity", 2, ((StringBuilder)localObject).toString());
         }
         localObject = this.a.rightViewImg;
         if (!bool) {
-          break label140;
+          i = 4;
         }
+        ((ImageView)localObject).setVisibility(i);
       }
     }
-    for (;;)
-    {
-      ((ImageView)localObject).setVisibility(i);
-      return;
-      label135:
-      bool = false;
-      break;
-      label140:
-      i = 4;
-    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ArkFullScreenAppActivity.4
  * JD-Core Version:    0.7.0.1
  */

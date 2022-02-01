@@ -1,5 +1,6 @@
 package androidx.core.net;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -14,6 +15,7 @@ public final class ConnectivityManagerCompat
   public static final int RESTRICT_BACKGROUND_STATUS_ENABLED = 3;
   public static final int RESTRICT_BACKGROUND_STATUS_WHITELISTED = 2;
   
+  @SuppressLint({"ReferencesDeprecated"})
   @Nullable
   @RequiresPermission("android.permission.ACCESS_NETWORK_STATE")
   public static NetworkInfo getNetworkInfoFromBroadcast(@NonNull ConnectivityManager paramConnectivityManager, @NonNull Intent paramIntent)
@@ -36,35 +38,29 @@ public final class ConnectivityManagerCompat
   @RequiresPermission("android.permission.ACCESS_NETWORK_STATE")
   public static boolean isActiveNetworkMetered(@NonNull ConnectivityManager paramConnectivityManager)
   {
-    boolean bool2 = true;
     if (Build.VERSION.SDK_INT >= 16) {
-      bool1 = paramConnectivityManager.isActiveNetworkMetered();
+      return paramConnectivityManager.isActiveNetworkMetered();
     }
-    do
-    {
-      return bool1;
-      paramConnectivityManager = paramConnectivityManager.getActiveNetworkInfo();
-      bool1 = bool2;
-    } while (paramConnectivityManager == null);
-    boolean bool1 = bool2;
+    paramConnectivityManager = paramConnectivityManager.getActiveNetworkInfo();
+    if (paramConnectivityManager == null) {
+      return true;
+    }
     switch (paramConnectivityManager.getType())
     {
-    case 0: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
     case 8: 
     default: 
       return true;
+    case 1: 
+    case 7: 
+    case 9: 
+      return false;
     }
-    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.net.ConnectivityManagerCompat
  * JD-Core Version:    0.7.0.1
  */

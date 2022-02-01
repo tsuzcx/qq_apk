@@ -46,30 +46,34 @@ public class PagerIndicator
     super.setOrientation(0);
     super.setGravity(17);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
-    if (paramContext.hasValue(0)) {}
-    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(0);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(-7829368))
-    {
-      this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(1, this.jdField_a_of_type_Int);
-      this.b = paramContext.getInt(2, this.b);
-      paramContext.recycle();
-      a(0, this.b);
-      Log.d("PagerIndicator", "init");
-      return;
+    if (paramContext.hasValue(0)) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(0);
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(-7829368);
     }
+    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(1, this.jdField_a_of_type_Int);
+    this.b = paramContext.getInt(2, this.b);
+    paramContext.recycle();
+    a(0, this.b);
+    Log.d("PagerIndicator", "init");
   }
   
   protected void a(int paramInt1, int paramInt2)
   {
-    Log.d("PagerIndicator", "updatePoints : current item = " + paramInt1 + ", page count = " + paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updatePoints : current item = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(", page count = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    Log.d("PagerIndicator", ((StringBuilder)localObject).toString());
     int i = super.getChildCount();
-    Object localObject;
     if (i > paramInt2)
     {
       i -= 1;
       for (;;)
       {
         if (i < paramInt2) {
-          break label208;
+          break label224;
         }
         localObject = super.getChildAt(i);
         if (!(localObject instanceof PagerIndicator.InnerImageView)) {
@@ -97,44 +101,42 @@ public class PagerIndicator
         i += 1;
       }
     }
-    label208:
+    label224:
     i = 0;
-    if (i < paramInt2)
+    while (i < paramInt2)
     {
       localObject = super.getChildAt(i);
       if (paramInt1 == i) {
         ((View)localObject).setSelected(true);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         ((View)localObject).setSelected(false);
       }
+      i += 1;
     }
   }
   
   protected void a(int paramInt, @Nullable PagerIndicator.IndicatorAdapter paramIndicatorAdapter)
   {
     int i = 0;
-    if (paramIndicatorAdapter != null) {}
-    for (paramInt = paramIndicatorAdapter.a(paramInt);; paramInt = 0)
-    {
-      if (paramIndicatorAdapter != null) {
-        i = paramIndicatorAdapter.a();
-      }
-      a(paramInt, i);
-      return;
+    if (paramIndicatorAdapter != null) {
+      paramInt = paramIndicatorAdapter.a(paramInt);
+    } else {
+      paramInt = 0;
     }
+    if (paramIndicatorAdapter != null) {
+      i = paramIndicatorAdapter.a();
+    }
+    a(paramInt, i);
   }
   
   public void setViewPager(@Nullable EmptySupportViewPager paramEmptySupportViewPager)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager != paramEmptySupportViewPager)
+    EmptySupportViewPager localEmptySupportViewPager = this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager;
+    if (localEmptySupportViewPager != paramEmptySupportViewPager)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager != null)
+      if (localEmptySupportViewPager != null)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.removeOnPageChangeListener(this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener);
+        localEmptySupportViewPager.removeOnPageChangeListener(this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener);
         this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager = null;
       }
       if (paramEmptySupportViewPager != null)
@@ -147,32 +149,34 @@ public class PagerIndicator
   
   public void setViewPagerAdapter(@Nullable PagerIndicator.IndicatorAdapter paramIndicatorAdapter)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (PagerIndicator.IndicatorAdapter localIndicatorAdapter = (PagerIndicator.IndicatorAdapter)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localIndicatorAdapter = null)
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null) {
+      localObject = (PagerIndicator.IndicatorAdapter)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
+    }
+    if (localObject != paramIndicatorAdapter)
     {
-      if (localIndicatorAdapter != paramIndicatorAdapter)
+      if (localObject != null)
       {
-        if (localIndicatorAdapter != null)
-        {
-          localIndicatorAdapter.unregisterDataSetObserver(this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener);
-          this.jdField_a_of_type_JavaLangRefWeakReference = null;
-        }
-        if (paramIndicatorAdapter != null)
-        {
-          paramIndicatorAdapter.registerDataSetObserver(this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener);
-          this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIndicatorAdapter);
-        }
-        if (this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager != null) {
-          a(this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.getCurrentItem(), paramIndicatorAdapter);
-        }
+        ((PagerIndicator.IndicatorAdapter)localObject).unregisterDataSetObserver(this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener);
+        this.jdField_a_of_type_JavaLangRefWeakReference = null;
       }
-      return;
+      if (paramIndicatorAdapter != null)
+      {
+        paramIndicatorAdapter.registerDataSetObserver(this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener);
+        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIndicatorAdapter);
+      }
+      localObject = this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager;
+      if (localObject != null) {
+        a(((EmptySupportViewPager)localObject).getCurrentItem(), paramIndicatorAdapter);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.PagerIndicator
  * JD-Core Version:    0.7.0.1
  */

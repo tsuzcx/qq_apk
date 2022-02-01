@@ -21,7 +21,11 @@ public class UniformParam$Mat4Param
   
   public String toString()
   {
-    return this.name + " = " + Arrays.toString(this.mMatrix);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(Arrays.toString(this.mMatrix));
+    return localStringBuilder.toString();
   }
 }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.View;
+import com.tencent.mobileqq.vas.ui.VipPngPlayAnimationDrawable;
 
 class XBubbleAnimation$4
   extends View
@@ -13,12 +14,12 @@ class XBubbleAnimation$4
     super(paramContext);
   }
   
-  public boolean verifyDrawable(Drawable paramDrawable)
+  protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
       this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.1(this));
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqVasUiVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
       this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.4.2(this));
     }
     return true;
@@ -26,7 +27,7 @@ class XBubbleAnimation$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.4
  * JD-Core Version:    0.7.0.1
  */

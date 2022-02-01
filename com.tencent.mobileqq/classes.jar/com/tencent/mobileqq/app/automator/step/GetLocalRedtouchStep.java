@@ -10,18 +10,18 @@ import com.tencent.qphone.base.util.QLog;
 public class GetLocalRedtouchStep
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
     if (QLog.isColorLevel()) {
       QLog.i("LocalRedTouchManager", 2, "reconnect pullRedTouchs");
     }
-    ((LocalRedTouchManager)this.a.a.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER)).b();
+    ((LocalRedTouchManager)this.mAutomator.a.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER)).b();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetLocalRedtouchStep
  * JD-Core Version:    0.7.0.1
  */

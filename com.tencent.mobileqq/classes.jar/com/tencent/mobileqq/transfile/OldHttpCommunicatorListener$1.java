@@ -11,31 +11,34 @@ class OldHttpCommunicatorListener$1
   
   public void run()
   {
-    boolean bool = true;
-    String str;
-    if ((QLog.isColorLevel()) && (this.val$req != null))
+    if (QLog.isColorLevel())
     {
-      str = TransFileUtil.getUinDesc(this.val$req.mBusiProtoType);
-      if (this.val$req.mHttpMethod != 1) {
-        break label100;
+      Object localObject = this.val$req;
+      if (localObject != null)
+      {
+        localObject = TransFileUtil.getUinDesc(((HttpNetReq)localObject).mBusiProtoType);
+        int i = this.val$req.mHttpMethod;
+        boolean bool = true;
+        if (i != 1) {
+          bool = false;
+        }
+        i = this.val$req.mFileType;
+        String str = this.val$req.mMsgId;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mIsCancelled:");
+        localStringBuilder.append(this.this$0.mIsCancelled);
+        TransFileUtil.log((String)localObject, bool, String.valueOf(i), str, "scheduleRetry", localStringBuilder.toString());
       }
     }
-    for (;;)
-    {
-      TransFileUtil.log(str, bool, String.valueOf(this.val$req.mFileType), this.val$req.mMsgId, "scheduleRetry", "mIsCancelled:" + this.this$0.mIsCancelled);
-      if (!this.this$0.mIsCancelled.get()) {
-        break;
-      }
+    if (this.this$0.mIsCancelled.get()) {
       return;
-      label100:
-      bool = false;
     }
     OldHttpCommunicatorListener.access$000(this.this$0).innerSendReq(this.this$0.httpReq, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.OldHttpCommunicatorListener.1
  * JD-Core Version:    0.7.0.1
  */

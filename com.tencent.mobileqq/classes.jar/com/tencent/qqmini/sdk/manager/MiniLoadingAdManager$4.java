@@ -24,25 +24,34 @@ class MiniLoadingAdManager$4
   
   public void onAdClick(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      QMLog.e("MiniLoadingAdManager", "onAdClick, unknown type:" + paramInt);
-      return;
-    case 1: 
-      SDKMiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.val$miniAppInfo), null, "ad", "ad_loading", "click_bar", null);
+      if (paramInt != 1)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onAdClick, unknown type:");
+        ((StringBuilder)localObject).append(paramInt);
+        QMLog.e("MiniLoadingAdManager", ((StringBuilder)localObject).toString());
+        return;
+      }
+      localObject = this.val$miniAppInfo;
+      SDKMiniProgramLpReportDC04239.reportMiniAppEvent((MiniAppInfo)localObject, SDKMiniProgramLpReportDC04239.getAppType((MiniAppInfo)localObject), null, "ad", "ad_loading", "click_bar", null);
       return;
     }
-    SDKMiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.val$miniAppInfo), null, "ad", "ad_loading", "click", null);
+    Object localObject = this.val$miniAppInfo;
+    SDKMiniProgramLpReportDC04239.reportMiniAppEvent((MiniAppInfo)localObject, SDKMiniProgramLpReportDC04239.getAppType((MiniAppInfo)localObject), null, "ad", "ad_loading", "click", null);
   }
   
   public void onAdDismiss(boolean paramBoolean)
   {
-    if (paramBoolean) {
-      SDKMiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.val$miniAppInfo), null, "ad", "ad_loading", "skip", null);
+    if (paramBoolean)
+    {
+      localObject = this.val$miniAppInfo;
+      SDKMiniProgramLpReportDC04239.reportMiniAppEvent((MiniAppInfo)localObject, SDKMiniProgramLpReportDC04239.getAppType((MiniAppInfo)localObject), null, "ad", "ad_loading", "skip", null);
     }
-    if (this.val$onDismissListener != null) {
-      this.val$onDismissListener.onDismiss();
+    Object localObject = this.val$onDismissListener;
+    if (localObject != null) {
+      ((MiniLoadingAdManager.OnDismissListener)localObject).onDismiss();
     }
   }
   
@@ -57,16 +66,12 @@ class MiniLoadingAdManager$4
     String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAccount();
     if ((localViewGroup instanceof FrameLayout)) {
       localViewGroup.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
+    } else if ((localViewGroup instanceof RelativeLayout)) {
+      localViewGroup.addView(paramView, new RelativeLayout.LayoutParams(-1, -1));
     }
-    for (;;)
-    {
-      MiniLoadingAdManager.access$400(this.val$miniAppInfo.appId, str, 0);
-      SDKMiniProgramLpReportDC04239.reportMiniAppEvent(this.val$miniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.val$miniAppInfo), null, "ad", "ad_loading", "expo_success", null);
-      return;
-      if ((localViewGroup instanceof RelativeLayout)) {
-        localViewGroup.addView(paramView, new RelativeLayout.LayoutParams(-1, -1));
-      }
-    }
+    MiniLoadingAdManager.access$400(this.val$miniAppInfo.appId, str, 0);
+    paramView = this.val$miniAppInfo;
+    SDKMiniProgramLpReportDC04239.reportMiniAppEvent(paramView, SDKMiniProgramLpReportDC04239.getAppType(paramView), null, "ad", "ad_loading", "expo_success", null);
   }
   
   public void onDownloadAdEnd(String paramString1, long paramLong, String paramString2) {}
@@ -77,7 +82,7 @@ class MiniLoadingAdManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniLoadingAdManager.4
  * JD-Core Version:    0.7.0.1
  */

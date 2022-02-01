@@ -46,11 +46,31 @@ public class ShareElfFile$SectionHeader
   
   private ShareElfFile$SectionHeader(ByteBuffer paramByteBuffer, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      throw new IOException("Unexpected elf class: " + paramInt);
-    case 1: 
+      if (paramInt == 2)
+      {
+        this.shName = paramByteBuffer.getInt();
+        this.shType = paramByteBuffer.getInt();
+        this.shFlags = paramByteBuffer.getLong();
+        this.shAddr = paramByteBuffer.getLong();
+        this.shOffset = paramByteBuffer.getLong();
+        this.shSize = paramByteBuffer.getLong();
+        this.shLink = paramByteBuffer.getInt();
+        this.shInfo = paramByteBuffer.getInt();
+        this.shAddrAlign = paramByteBuffer.getLong();
+        this.shEntSize = paramByteBuffer.getLong();
+      }
+      else
+      {
+        paramByteBuffer = new StringBuilder();
+        paramByteBuffer.append("Unexpected elf class: ");
+        paramByteBuffer.append(paramInt);
+        throw new IOException(paramByteBuffer.toString());
+      }
+    }
+    else
+    {
       this.shName = paramByteBuffer.getInt();
       this.shType = paramByteBuffer.getInt();
       this.shFlags = paramByteBuffer.getInt();
@@ -60,26 +80,14 @@ public class ShareElfFile$SectionHeader
       this.shLink = paramByteBuffer.getInt();
       this.shInfo = paramByteBuffer.getInt();
       this.shAddrAlign = paramByteBuffer.getInt();
+      this.shEntSize = paramByteBuffer.getInt();
     }
-    for (this.shEntSize = paramByteBuffer.getInt();; this.shEntSize = paramByteBuffer.getLong())
-    {
-      this.shNameStr = null;
-      return;
-      this.shName = paramByteBuffer.getInt();
-      this.shType = paramByteBuffer.getInt();
-      this.shFlags = paramByteBuffer.getLong();
-      this.shAddr = paramByteBuffer.getLong();
-      this.shOffset = paramByteBuffer.getLong();
-      this.shSize = paramByteBuffer.getLong();
-      this.shLink = paramByteBuffer.getInt();
-      this.shInfo = paramByteBuffer.getInt();
-      this.shAddrAlign = paramByteBuffer.getLong();
-    }
+    this.shNameStr = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.ShareElfFile.SectionHeader
  * JD-Core Version:    0.7.0.1
  */

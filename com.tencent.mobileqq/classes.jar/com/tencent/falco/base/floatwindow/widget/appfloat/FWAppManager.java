@@ -30,7 +30,7 @@ public final class FWAppManager
     if (paramFloatWindowConfig == null) {
       Intrinsics.throwNpe();
     }
-    return !localMap.containsKey(paramFloatWindowConfig);
+    return localMap.containsKey(paramFloatWindowConfig) ^ true;
   }
   
   public final void create(@NotNull Context paramContext, @NotNull FloatWindowConfig paramFloatWindowConfig)
@@ -96,10 +96,10 @@ public final class FWAppManager
   public final FWAppOperator remove(@Nullable String paramString)
   {
     Map localMap = floatMap;
-    if (localMap == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
+    if (localMap != null) {
+      return (FWAppOperator)TypeIntrinsics.asMutableMap(localMap).remove(paramString);
     }
-    return (FWAppOperator)TypeIntrinsics.asMutableMap(localMap).remove(paramString);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
   }
   
   @Nullable
@@ -108,19 +108,21 @@ public final class FWAppManager
     paramString = (FWAppOperator)floatMap.get(getTag(paramString));
     if (paramString != null)
     {
-      if (paramBoolean1) {}
-      for (int i = 0;; i = 8)
-      {
-        paramString.setVisible(i, paramBoolean2);
-        return Unit.INSTANCE;
+      int i;
+      if (paramBoolean1) {
+        i = 0;
+      } else {
+        i = 8;
       }
+      paramString.setVisible(i, paramBoolean2);
+      return Unit.INSTANCE;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.appfloat.FWAppManager
  * JD-Core Version:    0.7.0.1
  */

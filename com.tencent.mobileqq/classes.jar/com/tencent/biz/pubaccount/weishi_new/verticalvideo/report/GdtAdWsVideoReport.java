@@ -27,80 +27,84 @@ public class GdtAdWsVideoReport
   
   private static String a(stSimpleMetaFeed paramstSimpleMetaFeed, WSPlayerParam paramWSPlayerParam)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramstSimpleMetaFeed != null)
+    if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.gdt_ad_type == 1) && (paramstSimpleMetaFeed.gdt_ad_info != null))
     {
-      str1 = str2;
-      if (paramstSimpleMetaFeed.gdt_ad_type == 1)
-      {
-        str1 = str2;
-        if (paramstSimpleMetaFeed.gdt_ad_info != null)
-        {
-          paramstSimpleMetaFeed = GdtAdUtil.a(paramstSimpleMetaFeed).report_info;
-          str1 = str2;
-          if (paramstSimpleMetaFeed != null)
-          {
-            str1 = str2;
-            if (paramstSimpleMetaFeed.exposure_url != null)
-            {
-              str1 = str2;
-              if (paramWSPlayerParam != null)
-              {
-                str1 = str2;
-                if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper != null) {
-                  str1 = paramstSimpleMetaFeed.exposure_url.get();
-                }
-              }
-            }
-          }
-        }
+      paramstSimpleMetaFeed = GdtAdUtil.a(paramstSimpleMetaFeed).report_info;
+      if ((paramstSimpleMetaFeed != null) && (paramstSimpleMetaFeed.exposure_url != null) && (paramWSPlayerParam != null) && (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper != null)) {
+        return paramstSimpleMetaFeed.exposure_url.get();
       }
     }
-    return str1;
+    return "";
   }
   
   public static String a(GdtAdWsVideoReportModel paramGdtAdWsVideoReportModel)
   {
-    int j = 1;
     if (paramGdtAdWsVideoReportModel == null) {
       return "";
     }
-    try
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("bt", paramGdtAdWsVideoReportModel.jdField_a_of_type_Long + "");
-      localJSONObject.put("et", paramGdtAdWsVideoReportModel.jdField_b_of_type_Long + "");
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (paramGdtAdWsVideoReportModel.jdField_a_of_type_Boolean)
+      try
       {
-        i = 1;
-        localJSONObject.put("bf", i + "");
+        localObject = new JSONObject();
         localStringBuilder = new StringBuilder();
-        if (!paramGdtAdWsVideoReportModel.jdField_b_of_type_Boolean) {
-          break label268;
+        localStringBuilder.append(paramGdtAdWsVideoReportModel.jdField_a_of_type_Long);
+        localStringBuilder.append("");
+        ((JSONObject)localObject).put("bt", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramGdtAdWsVideoReportModel.jdField_b_of_type_Long);
+        localStringBuilder.append("");
+        ((JSONObject)localObject).put("et", localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
+        boolean bool = paramGdtAdWsVideoReportModel.jdField_a_of_type_Boolean;
+        int j = 1;
+        if (bool)
+        {
+          i = 1;
+          localStringBuilder.append(i);
+          localStringBuilder.append("");
+          ((JSONObject)localObject).put("bf", localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          if (!paramGdtAdWsVideoReportModel.jdField_b_of_type_Boolean) {
+            break label393;
+          }
+          i = j;
+          localStringBuilder.append(i);
+          localStringBuilder.append("");
+          ((JSONObject)localObject).put("ef", localStringBuilder.toString());
+          ((JSONObject)localObject).put("pp", "11");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramGdtAdWsVideoReportModel.jdField_b_of_type_Int);
+          localStringBuilder.append("");
+          ((JSONObject)localObject).put("pa", localStringBuilder.toString());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramGdtAdWsVideoReportModel.c);
+          localStringBuilder.append("");
+          ((JSONObject)localObject).put("ft", localStringBuilder.toString());
+          if (paramGdtAdWsVideoReportModel.d != 0)
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramGdtAdWsVideoReportModel.d);
+            localStringBuilder.append("");
+            ((JSONObject)localObject).put("ps", localStringBuilder.toString());
+          }
+          paramGdtAdWsVideoReportModel = ((JSONObject)localObject).toString();
+          return paramGdtAdWsVideoReportModel;
         }
       }
-      label268:
-      for (int i = j;; i = 0)
+      catch (Exception paramGdtAdWsVideoReportModel)
       {
-        localJSONObject.put("ef", i + "");
-        localJSONObject.put("pp", "11");
-        localJSONObject.put("pa", paramGdtAdWsVideoReportModel.jdField_b_of_type_Int + "");
-        localJSONObject.put("ft", paramGdtAdWsVideoReportModel.c + "");
-        if (paramGdtAdWsVideoReportModel.d != 0) {
-          localJSONObject.put("ps", paramGdtAdWsVideoReportModel.d + "");
-        }
-        paramGdtAdWsVideoReportModel = localJSONObject.toString();
-        return paramGdtAdWsVideoReportModel;
-        i = 0;
-        break;
+        Object localObject = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" @getGdtInfo createGDTVideoAttachment");
+        localStringBuilder.append(paramGdtAdWsVideoReportModel.toString());
+        WSLog.a((String)localObject, localStringBuilder.toString());
+        return null;
       }
-      return null;
-    }
-    catch (Exception paramGdtAdWsVideoReportModel)
-    {
-      WSLog.a(a, " @getGdtInfo createGDTVideoAttachment" + paramGdtAdWsVideoReportModel.toString());
+      int i = 0;
+      continue;
+      label393:
+      i = 0;
     }
   }
   
@@ -108,21 +112,25 @@ public class GdtAdWsVideoReport
   {
     try
     {
-      StringBuffer localStringBuffer = new StringBuffer();
+      localObject = new StringBuffer();
       if (!TextUtils.isEmpty(paramString1)) {
-        localStringBuffer.append(paramString1);
+        ((StringBuffer)localObject).append(paramString1);
       }
       if (!TextUtils.isEmpty(paramString2))
       {
-        localStringBuffer.append("&video=");
-        localStringBuffer.append(URLEncoder.encode(paramString2));
+        ((StringBuffer)localObject).append("&video=");
+        ((StringBuffer)localObject).append(URLEncoder.encode(paramString2));
       }
-      paramString1 = localStringBuffer.toString();
+      paramString1 = ((StringBuffer)localObject).toString();
       return paramString1;
     }
     catch (Exception paramString1)
     {
-      WSLog.a(a, " @getGdtInfo getHttpVideoPlayUrl" + paramString1.toString());
+      paramString2 = a;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" @getGdtInfo getHttpVideoPlayUrl");
+      ((StringBuilder)localObject).append(paramString1.toString());
+      WSLog.a(paramString2, ((StringBuilder)localObject).toString());
     }
     return "";
   }
@@ -134,80 +142,57 @@ public class GdtAdWsVideoReport
     a(localBuilder.a(), paramString);
   }
   
-  public static void a(WSVerticalItemData paramWSVerticalItemData, WSPlayerParam paramWSPlayerParam)
+  public static void a(WSVerticalItemData paramWSVerticalItemData, WSPlayerParam paramWSPlayerParam, boolean paramBoolean, int paramInt)
   {
-    if ((paramWSVerticalItemData == null) || (paramWSPlayerParam == null) || (paramWSVerticalItemData.a() == null) || (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null) || (paramWSVerticalItemData.a() == null)) {}
-    do
+    if ((paramWSVerticalItemData != null) && (paramWSPlayerParam != null) && ((paramWSVerticalItemData.a() != null) || (paramWSVerticalItemData.a() != null)))
     {
-      return;
-      paramWSVerticalItemData.a().numbersOfGdtAdPlayed += 1;
-      localObject = paramWSVerticalItemData.a();
-    } while (!(localObject instanceof stSimpleMetaFeed));
-    Object localObject = a((stSimpleMetaFeed)localObject, paramWSPlayerParam);
-    int i;
-    long l1;
-    long l2;
-    if (paramWSVerticalItemData.a().numbersOfGdtAdPlayed > 1)
-    {
-      i = 13;
-      l1 = paramWSPlayerParam.jdField_a_of_type_Long;
-      l2 = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.c;
-      if (paramWSPlayerParam.jdField_a_of_type_Long != 0L) {
-        break label135;
-      }
-    }
-    label135:
-    for (boolean bool = true;; bool = false)
-    {
-      a(l1, l2, bool, true, 11, i, 3, 0, (String)localObject);
-      return;
-      i = 11;
-      break;
-    }
-  }
-  
-  public static void a(WSVerticalItemData paramWSVerticalItemData, WSPlayerParam paramWSPlayerParam, int paramInt)
-  {
-    boolean bool2 = false;
-    if ((paramWSVerticalItemData == null) || (paramWSPlayerParam == null) || ((paramWSVerticalItemData.a() == null) && (paramWSVerticalItemData.a() == null)) || (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null)) {}
-    Object localObject;
-    do
-    {
-      do
-      {
+      if (paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo == null) {
         return;
-        localObject = paramWSVerticalItemData.a();
-      } while (localObject == null);
-      localObject = a((stSimpleMetaFeed)localObject, paramWSPlayerParam);
-    } while ((paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper == null) || (TextUtils.isEmpty((CharSequence)localObject)));
-    WSPlayerWrapper localWSPlayerWrapper = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
-    long l1 = paramWSPlayerParam.jdField_a_of_type_Long;
-    long l2 = localWSPlayerWrapper.a();
-    int i = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.c;
-    if (l1 == 0L) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (l2 == i) {
-        bool2 = true;
       }
-      if (paramWSVerticalItemData.a().numbersOfGdtAdPlayed > 1) {}
-      for (i = 13;; i = 11)
+      Object localObject = paramWSVerticalItemData.a();
+      if (localObject != null)
       {
-        ThreadManager.b().post(new GdtAdWsVideoReport.1(l1, l2, bool1, bool2, i, paramInt, (String)localObject));
-        return;
+        localObject = a((stSimpleMetaFeed)localObject, paramWSPlayerParam);
+        if ((paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        {
+          WSPlayerWrapper localWSPlayerWrapper = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
+          long l1 = paramWSPlayerParam.jdField_a_of_type_Long;
+          long l2 = localWSPlayerWrapper.a();
+          int j = paramWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.c;
+          boolean bool;
+          if (l1 == 0L) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          int i;
+          if (paramWSVerticalItemData.a().numbersOfGdtAdPlayed != 0) {
+            i = 13;
+          } else {
+            i = 11;
+          }
+          ThreadManager.b().post(new GdtAdWsVideoReport.1(l1, paramBoolean, j, l2, bool, i, paramInt, (String)localObject));
+        }
       }
     }
   }
   
   private static void a(GdtAdWsVideoReportModel paramGdtAdWsVideoReportModel, String paramString)
   {
-    if ((paramGdtAdWsVideoReportModel == null) || (TextUtils.isEmpty(paramString))) {
-      return;
+    if (paramGdtAdWsVideoReportModel != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      paramGdtAdWsVideoReportModel = a(paramGdtAdWsVideoReportModel);
+      paramString = a(paramString, paramGdtAdWsVideoReportModel);
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportHttpVideoUrl = ");
+      localStringBuilder.append(paramGdtAdWsVideoReportModel);
+      WSLog.a(str, 2, localStringBuilder.toString());
+      a(paramString);
     }
-    paramGdtAdWsVideoReportModel = a(paramGdtAdWsVideoReportModel);
-    paramString = a(paramString, paramGdtAdWsVideoReportModel);
-    WSLog.a(a, 2, "reportHttpVideoUrl = " + paramGdtAdWsVideoReportModel);
-    a(paramString);
   }
   
   private static void a(String paramString)
@@ -217,7 +202,7 @@ public class GdtAdWsVideoReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.GdtAdWsVideoReport
  * JD-Core Version:    0.7.0.1
  */

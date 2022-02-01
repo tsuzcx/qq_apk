@@ -11,14 +11,14 @@ class SearchHippyEntryFragment$1
   public void run()
   {
     SearchHippyEntryFragment.access$000(this.this$0).setHotwordVisibility(this.val$isHotwordVisible);
-    if ((this.this$0.getActivity() instanceof UniteSearchActivity)) {
-      ((UniteSearchActivity)this.this$0.getActivity()).a(this.val$isHotwordVisible);
+    if ((this.this$0.getQBaseActivity() instanceof UniteSearchActivity)) {
+      ((UniteSearchActivity)this.this$0.getQBaseActivity()).a(this.val$isHotwordVisible);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.SearchHippyEntryFragment.1
  * JD-Core Version:    0.7.0.1
  */

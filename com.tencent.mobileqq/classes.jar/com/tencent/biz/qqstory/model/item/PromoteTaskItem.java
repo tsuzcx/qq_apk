@@ -47,12 +47,32 @@ public class PromoteTaskItem
   
   public String toString()
   {
-    return "PromoteTaskItem{taskId=" + this.jdField_a_of_type_Long + ", type=" + this.jdField_a_of_type_Int + ", unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", limitPromoteCount=" + this.jdField_b_of_type_Long + ", minimalVideoCount=" + this.c + ", expireTime=" + this.d + ", promoteCount=" + this.e + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PromoteTaskItem{taskId=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", unionId='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", feedId='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", limitPromoteCount=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", minimalVideoCount=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", expireTime=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", promoteCount=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.PromoteTaskItem
  * JD-Core Version:    0.7.0.1
  */

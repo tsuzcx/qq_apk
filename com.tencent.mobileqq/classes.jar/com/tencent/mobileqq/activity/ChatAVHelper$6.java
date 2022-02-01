@@ -14,15 +14,16 @@ final class ChatAVHelper$6
     if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.a) {
       ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    ChatActivityUtils.StartVideoListener localStartVideoListener = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener;
+    if (localStartVideoListener != null) {
+      localStartVideoListener.a();
     }
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatAVHelper.6
  * JD-Core Version:    0.7.0.1
  */

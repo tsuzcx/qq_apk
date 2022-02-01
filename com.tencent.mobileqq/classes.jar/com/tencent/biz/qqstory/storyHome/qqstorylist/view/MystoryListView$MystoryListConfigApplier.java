@@ -18,26 +18,32 @@ public class MystoryListView$MystoryListConfigApplier
 {
   public void a(SegmentList paramSegmentList)
   {
-    if (!(paramSegmentList instanceof MystoryListView)) {
-      throw new IllegalArgumentException("arg should match type!");
+    if ((paramSegmentList instanceof MystoryListView))
+    {
+      paramSegmentList = (MystoryListView)paramSegmentList;
+      Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
+      Object localObject = paramSegmentList.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView;
+      boolean bool = paramSegmentList.a();
+      paramSegmentList.a(StoryApi.a(localActivity, 5));
+      paramSegmentList.a(new NewMyStorySegment(localActivity, (IMyStoryListView)localObject));
+      paramSegmentList.a(new NewDividerSegment(localActivity));
+      paramSegmentList.a(new LocalVideoPushSegment(localActivity));
+      localObject = new FeedSegment(localActivity, localActivity, 10, (IMyStoryListView)localObject, bool);
+      paramSegmentList.a((SegmentView)localObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131707091));
+      localStringBuilder.append(QQStoryConstant.a);
+      localStringBuilder.append("\n拍摄一段视频，分享眼前的世界");
+      paramSegmentList.a(new PlaceholderSegment(localActivity, "FeedSegment", localStringBuilder.toString(), 2130846837, 2130846838));
+      ((FeedSegment)localObject).a_(true);
+      return;
     }
-    paramSegmentList = (MystoryListView)paramSegmentList;
-    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
-    Object localObject = paramSegmentList.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView;
-    boolean bool = paramSegmentList.a();
-    paramSegmentList.a(StoryApi.a(localActivity, 5));
-    paramSegmentList.a(new NewMyStorySegment(localActivity, (IMyStoryListView)localObject));
-    paramSegmentList.a(new NewDividerSegment(localActivity));
-    paramSegmentList.a(new LocalVideoPushSegment(localActivity));
-    localObject = new FeedSegment(localActivity, localActivity, 10, (IMyStoryListView)localObject, bool);
-    paramSegmentList.a((SegmentView)localObject);
-    paramSegmentList.a(new PlaceholderSegment(localActivity, "FeedSegment", HardCodeUtil.a(2131707069) + QQStoryConstant.a + "\n拍摄一段视频，分享眼前的世界", 2130846959, 2130846960));
-    ((FeedSegment)localObject).e_(true);
+    throw new IllegalArgumentException("arg should match type!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView.MystoryListConfigApplier
  * JD-Core Version:    0.7.0.1
  */

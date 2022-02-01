@@ -19,20 +19,46 @@ class TroopGiftPanel$18
   
   public void a(int paramInt)
   {
-    ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_suc", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    paramInt = this.jdField_a_of_type_Int;
+    String str1 = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.e);
+    localObject = ((StringBuilder)localObject).toString();
+    String str2 = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_suc", paramInt, 0, str1, (String)localObject, str2, localStringBuilder.toString());
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetThrowGiftResult() onError errorCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", errorMsg = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("zivonchen", 2, ((StringBuilder)localObject).toString());
     }
-    String str = paramString;
+    Object localObject = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = HardCodeUtil.a(2131715263);
+      localObject = HardCodeUtil.a(2131715186);
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299166)).show();
-    ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, (CharSequence)localObject, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299168)).show();
+    paramInt = this.jdField_a_of_type_Int;
+    paramString = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.e);
+    localObject = ((StringBuilder)localObject).toString();
+    String str = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", paramInt, 0, paramString, (String)localObject, str, localStringBuilder.toString());
   }
   
   public void b(int paramInt, String paramString)
@@ -40,14 +66,14 @@ class TroopGiftPanel$18
     super.b(paramInt, paramString);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = HardCodeUtil.a(2131715275);
+      str = HardCodeUtil.a(2131715198);
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299166)).show();
+    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299168)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.18
  * JD-Core Version:    0.7.0.1
  */

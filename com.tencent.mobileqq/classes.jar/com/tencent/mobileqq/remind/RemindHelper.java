@@ -20,16 +20,13 @@ import org.json.JSONObject;
 public class RemindHelper
 {
   private static IosTimepicker.FormatDataListener a;
-  public static String a;
-  public static boolean a;
-  public static String b;
+  public static String a = "1";
+  public static boolean a = true;
+  public static String b = "0";
   private static String c = "remind";
   
   static
   {
-    jdField_a_of_type_JavaLangString = "1";
-    b = "0";
-    jdField_a_of_type_Boolean = true;
     jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$FormatDataListener = new RemindHelper.1();
   }
   
@@ -41,41 +38,45 @@ public class RemindHelper
   public static Long a(String paramString)
   {
     long l2 = new Date().getTime() / 1000L;
+    long l1;
     try
     {
       l1 = Long.valueOf(paramString).longValue();
-      return Long.valueOf(l1);
     }
     catch (NumberFormatException paramString)
     {
-      for (;;)
+      l1 = l2;
+      if (QLog.isColorLevel())
       {
-        long l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(c, 2, "getLong error: " + paramString.getMessage());
-          paramString.printStackTrace();
-          l1 = l2;
-        }
+        String str = c;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getLong error: ");
+        localStringBuilder.append(paramString.getMessage());
+        QLog.d(str, 2, localStringBuilder.toString());
+        paramString.printStackTrace();
+        l1 = l2;
       }
     }
+    return Long.valueOf(l1);
   }
   
   public static String a(String paramString1, String paramString2)
   {
-    String str = "";
     try
     {
       paramString1 = new JSONObject(paramString1).optString(paramString2);
       return paramString1;
     }
-    catch (JSONException paramString2)
+    catch (JSONException paramString1)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        paramString1 = str;
-      } while (!QLog.isColorLevel());
-      QLog.d(c, 2, "getString from json error:" + paramString2.getMessage());
+        paramString2 = c;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getString from json error:");
+        localStringBuilder.append(paramString1.getMessage());
+        QLog.d(paramString2, 2, localStringBuilder.toString());
+      }
     }
     return "";
   }
@@ -83,13 +84,12 @@ public class RemindHelper
   public static void a(Context paramContext, long paramLong, IosTimepicker.OnTimePickerSelectListener paramOnTimePickerSelectListener, JsBridgeListener paramJsBridgeListener)
   {
     Object localObject = LayoutInflater.from(paramContext);
-    ActionSheet localActionSheet;
     if (jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = false;
-      localActionSheet = ActionSheet.createMenuSheet(paramContext);
-      ((DispatchActionMoveScrollView)localActionSheet.findViewById(2131361983)).jdField_a_of_type_Boolean = true;
-      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2131563232, null);
+      ActionSheet localActionSheet = ActionSheet.createMenuSheet(paramContext);
+      ((DispatchActionMoveScrollView)localActionSheet.findViewById(2131361999)).jdField_a_of_type_Boolean = true;
+      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2131563056, null);
       ((IosTimepicker)localObject).setMaxDays(25568);
       DayAdapter localDayAdapter = new DayAdapter(paramContext, 25);
       NumberAdapter localNumberAdapter1 = new NumberAdapter(paramContext, TimeHelper.a, 25);
@@ -104,16 +104,17 @@ public class RemindHelper
       }
       localActionSheet.setActionContentView((View)localObject, null);
       localActionSheet.setOnDismissListener(new RemindHelper.2((IosTimepicker)localObject, paramJsBridgeListener));
-    }
-    try
-    {
-      localActionSheet.show();
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(c, 2, paramContext.getMessage());
+      try
+      {
+        localActionSheet.show();
+        return;
+      }
+      catch (Throwable paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(c, 2, paramContext.getMessage());
+        }
+      }
     }
   }
   
@@ -124,7 +125,7 @@ public class RemindHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.remind.RemindHelper
  * JD-Core Version:    0.7.0.1
  */

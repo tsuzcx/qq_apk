@@ -16,39 +16,40 @@ class NoSSLv3SocketFactory$NoSSLv3SSLSocket
   
   public void setEnabledProtocols(String[] paramArrayOfString)
   {
-    String[] arrayOfString = paramArrayOfString;
+    Object localObject = paramArrayOfString;
     if (paramArrayOfString != null)
     {
-      arrayOfString = paramArrayOfString;
+      localObject = paramArrayOfString;
       if (paramArrayOfString.length == 1)
       {
-        arrayOfString = paramArrayOfString;
+        localObject = paramArrayOfString;
         if ("SSLv3".equals(paramArrayOfString[0]))
         {
           paramArrayOfString = new ArrayList(Arrays.asList(this.a.getEnabledProtocols()));
-          if (paramArrayOfString.size() <= 1) {
-            break label101;
+          if (paramArrayOfString.size() > 1)
+          {
+            paramArrayOfString.remove("SSLv3");
+            QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
           }
-          paramArrayOfString.remove("SSLv3");
-          QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
+          else
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("SSL stuck with protocol available for ");
+            ((StringBuilder)localObject).append(String.valueOf(paramArrayOfString));
+            QLog.i("setEnabledProtocols", 1, ((StringBuilder)localObject).toString());
+          }
+          localObject = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
         }
       }
     }
-    for (;;)
-    {
-      arrayOfString = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
-      if (arrayOfString != null) {
-        super.setEnabledProtocols(arrayOfString);
-      }
-      return;
-      label101:
-      QLog.i("setEnabledProtocols", 1, "SSL stuck with protocol available for " + String.valueOf(paramArrayOfString));
+    if (localObject != null) {
+      super.setEnabledProtocols((String[])localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory.NoSSLv3SSLSocket
  * JD-Core Version:    0.7.0.1
  */

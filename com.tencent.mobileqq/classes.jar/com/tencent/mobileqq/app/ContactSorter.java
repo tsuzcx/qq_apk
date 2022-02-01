@@ -30,121 +30,111 @@ public class ContactSorter
     if (paramInt1 < paramInt2) {
       return -1;
     }
-    String str = paramString1;
+    String str2 = "";
+    String str1 = paramString1;
     if (paramString1 == null) {
-      str = "";
+      str1 = "";
     }
-    paramString1 = paramString2;
     if (paramString2 == null) {
-      paramString1 = "";
+      paramString2 = str2;
     }
-    return str.compareTo(paramString1);
+    return str1.compareTo(paramString2);
   }
   
   public static int a(String paramString1, String paramString2)
   {
-    int k = 1;
     int i;
-    int j;
-    if (paramString1 != null)
-    {
+    if (paramString1 != null) {
       i = paramString1.length();
-      if (paramString2 == null) {
-        break label40;
-      }
-      j = paramString2.length();
-      label21:
-      if ((i != 0) && (j != 0)) {
-        break label45;
-      }
-      i -= j;
+    } else {
+      i = 0;
     }
-    label40:
-    label45:
-    char[] arrayOfChar1;
-    char[] arrayOfChar2;
-    label175:
-    label180:
-    label233:
-    do
+    int j;
+    if (paramString2 != null) {
+      j = paramString2.length();
+    } else {
+      j = 0;
+    }
+    if ((i != 0) && (j != 0))
     {
-      do
-      {
-        do
-        {
-          return i;
-          i = 0;
-          break;
-          j = 0;
-          break label21;
-          arrayOfChar1 = ChnToSpell.a(paramString1, 1).toCharArray();
-          arrayOfChar2 = ChnToSpell.a(paramString2, 1).toCharArray();
-          j = a(arrayOfChar1[0]);
-          m = a(arrayOfChar2[0]);
-          i = k;
-        } while (j > m);
-        if (j < m) {
-          return -1;
-        }
-        i = k;
-      } while (arrayOfChar1[0] > arrayOfChar2[0]);
+      char[] arrayOfChar1 = ChnToSpell.a(paramString1, 1).toCharArray();
+      char[] arrayOfChar2 = ChnToSpell.a(paramString2, 1).toCharArray();
+      i = a(arrayOfChar1[0]);
+      j = a(arrayOfChar2[0]);
+      if (i > j) {
+        return 1;
+      }
+      if (i < j) {
+        return -1;
+      }
+      if (arrayOfChar1[0] > arrayOfChar2[0]) {
+        return 1;
+      }
       if (arrayOfChar1[0] < arrayOfChar2[0]) {
         return -1;
       }
-      if (paramString1.charAt(0) < 'ÿ')
-      {
+      if (paramString1.charAt(0) < 'ÿ') {
         i = 1;
-        if (paramString2.charAt(0) >= 'ÿ') {
-          break label175;
-        }
-      }
-      for (j = 1;; j = 0)
-      {
-        if ((i ^ j) == 0) {
-          break label180;
-        }
-        return paramString1.charAt(0) - paramString2.charAt(0);
+      } else {
         i = 0;
-        break;
       }
-      int m = Math.min(arrayOfChar1.length, arrayOfChar2.length);
-      j = 1;
-      for (;;)
+      if (paramString2.charAt(0) < 'ÿ') {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      if ((i ^ j) != 0) {
+        return paramString1.charAt(0) - paramString2.charAt(0);
+      }
+      j = Math.min(arrayOfChar1.length, arrayOfChar2.length);
+      i = 1;
+      while (i < j)
       {
-        if (j >= m) {
-          break label233;
+        if (arrayOfChar1[i] > arrayOfChar2[i]) {
+          return 1;
         }
-        i = k;
-        if (arrayOfChar1[j] > arrayOfChar2[j]) {
-          break;
-        }
-        if (arrayOfChar1[j] < arrayOfChar2[j]) {
+        if (arrayOfChar1[i] < arrayOfChar2[i]) {
           return -1;
         }
-        j += 1;
+        i += 1;
       }
-      i = k;
-    } while (arrayOfChar1.length > arrayOfChar2.length);
-    if (arrayOfChar1.length < arrayOfChar2.length) {
-      return -1;
+      if (arrayOfChar1.length > arrayOfChar2.length) {
+        return 1;
+      }
+      if (arrayOfChar1.length < arrayOfChar2.length) {
+        return -1;
+      }
+      return 0;
     }
-    return 0;
+    return i - j;
   }
   
   public static String a(DiscussionInfo paramDiscussionInfo)
   {
-    return paramDiscussionInfo.discussionName + "-" + paramDiscussionInfo.uin;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramDiscussionInfo.discussionName);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramDiscussionInfo.uin);
+    return localStringBuilder.toString();
   }
   
   public static String a(Friends paramFriends)
   {
     String str = paramFriends.getFriendNick();
-    return str + "-" + paramFriends.uin;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramFriends.uin);
+    return localStringBuilder.toString();
   }
   
   public static String a(PublicAccountInfo paramPublicAccountInfo)
   {
-    return paramPublicAccountInfo.name + "-" + paramPublicAccountInfo.uin;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramPublicAccountInfo.name);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramPublicAccountInfo.uin);
+    return localStringBuilder.toString();
   }
   
   public static void a(DiscussionInfo paramDiscussionInfo)
@@ -170,32 +160,25 @@ public class ContactSorter
   
   public static int b(String paramString1, String paramString2)
   {
+    int j = 0;
     int k = paramString2.charAt(0);
     int i;
-    if (((k >= 65) && (k <= 90)) || ((k >= 97) && (k <= 122)))
-    {
+    if (((k >= 65) && (k <= 90)) || ((k >= 97) && (k <= 122))) {
       i = 65536;
-      if (paramString1.charAt(0) < 'ÿ') {
-        break label89;
-      }
-    }
-    label89:
-    for (int j = 1;; j = 0)
-    {
-      return j | k << 8 | i | 0x0;
-      if ((k >= 48) && (k <= 57))
-      {
-        i = 262144;
-        break;
-      }
+    } else if ((k >= 48) && (k <= 57)) {
+      i = 262144;
+    } else {
       i = 131072;
-      break;
     }
+    if (paramString1.charAt(0) >= 'ÿ') {
+      j = 1;
+    }
+    return k << 8 | i | 0x0 | j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ContactSorter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.activity;
 
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.EmoticonHandler;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.emosm.view.DragSortListView;
 import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
@@ -21,25 +20,25 @@ class EmosmActivity$13
   
   public void a(int paramInt)
   {
-    paramInt -= this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getHeaderViewsCount();
+    paramInt -= this.a.mListView.getHeaderViewsCount();
     if (paramInt < 0) {
       return;
     }
-    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (!NetworkUtil.d(this.a))
+    Object localObject = (EmoticonPackage)this.a.mEPDatas.get(paramInt);
+    if (!NetworkUtil.isNetSupport(this.a))
     {
       localObject = new QQToast(this.a);
-      ((QQToast)localObject).a(2130839690);
+      ((QQToast)localObject).a(2130839548);
       ((QQToast)localObject).d(1500);
-      ((QQToast)localObject).a(HardCodeUtil.a(2131704060));
+      ((QQToast)localObject).a(HardCodeUtil.a(2131704149));
       ((QQToast)localObject).b(0);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131692007));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    ((EmoticonHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.HANDLER_EMOSM)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
+    this.a.progressDialog.a(this.a.getString(2131691928));
+    this.a.progressDialog.show();
+    ((EmoticonHandler)this.a.app.getBusinessHandler(EmoticonHandler.a)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
     URLDrawable.clearMemoryCache();
-    if (this.a.b == 1)
+    if (this.a.mLaunchMode == 1)
     {
       ReportController.b(this.a.app, "dc00898", "", "", "0X800AB12", "0X800AB12", 1, 0, "", "", "", "");
       return;
@@ -49,7 +48,7 @@ class EmosmActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity.13
  * JD-Core Version:    0.7.0.1
  */

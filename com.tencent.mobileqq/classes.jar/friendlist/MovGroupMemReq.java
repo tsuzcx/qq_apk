@@ -42,7 +42,7 @@ public final class MovGroupMemReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.MovGroupMemReq
  * JD-Core Version:    0.7.0.1
  */

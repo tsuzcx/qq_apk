@@ -20,65 +20,29 @@ public class SupportZimu
   
   public int a(String paramString)
   {
-    int j = 0;
-    int i;
-    if ("750".equalsIgnoreCase(paramString)) {
-      i = this.c;
-    }
-    for (;;)
-    {
-      AVLog.printColorLog("SupportZimu", "isSupportPeer:" + paramString + "|" + i);
-      return i;
-      if ("735".equalsIgnoreCase(paramString))
-      {
-        i = this.d;
-      }
-      else
-      {
-        i = j;
-        if ("live".equalsIgnoreCase(paramString))
-        {
-          i = j;
-          if (this.jdField_a_of_type_Boolean) {
-            i = 1;
-          }
-        }
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean a(int paramInt, String paramString)
   {
-    AVLog.printColorLog("SupportZimu", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onReceiveSupportMessage type:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(paramString);
+    AVLog.printColorLog("SupportZimu", ((StringBuilder)localObject).toString());
     if (!TextUtils.isEmpty(paramString))
     {
-      String[] arrayOfString = paramString.split("\\|");
+      localObject = paramString.split("\\|");
       paramString = null;
-      if (arrayOfString.length > 0) {
-        paramString = arrayOfString[0];
+      if (localObject.length > 0) {
+        paramString = localObject[0];
       }
-      switch (paramInt)
+      if (paramInt != 7)
       {
-      }
-      while (("SUPPORT_TRUE".equalsIgnoreCase(paramString)) || ("SUPPORT_FALSE".equalsIgnoreCase(paramString)))
-      {
-        return true;
-        if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
+        if (paramInt != 12)
         {
-          this.c = 1;
-        }
-        else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
-        {
-          this.c = 0;
-          continue;
-          if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
-          {
-            this.d = 1;
-          }
-          else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
-          {
-            this.d = 0;
-            continue;
+          if (paramInt == 13) {
             if ("SUPPORT_TRUE".equalsIgnoreCase(paramString)) {
               this.jdField_a_of_type_Boolean = true;
             } else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString)) {
@@ -86,6 +50,19 @@ public class SupportZimu
             }
           }
         }
+        else if ("SUPPORT_TRUE".equalsIgnoreCase(paramString)) {
+          this.c = 1;
+        } else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString)) {
+          this.c = 0;
+        }
+      }
+      else if ("SUPPORT_TRUE".equalsIgnoreCase(paramString)) {
+        this.d = 1;
+      } else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString)) {
+        this.d = 0;
+      }
+      if (("SUPPORT_TRUE".equalsIgnoreCase(paramString)) || ("SUPPORT_FALSE".equalsIgnoreCase(paramString))) {
+        return true;
       }
     }
     return false;
@@ -113,7 +90,7 @@ public class SupportZimu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.support.SupportZimu
  * JD-Core Version:    0.7.0.1
  */

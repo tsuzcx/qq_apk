@@ -5,11 +5,12 @@ import QC.GetConciseThemeRsp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.vip.JceProtocol;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.api.IJce;
+import com.tencent.mobileqq.vas.api.IJce.Util;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
@@ -40,7 +41,11 @@ public class SimpleUIProtocolUtil
     if ((localObject instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)localObject;
-      SimpleUIUtil.d(MobileQQ.getContext().getSharedPreferences("key_simple_status_sp_" + ((QQAppInterface)localObject).getCurrentAccountUin(), 0).getInt("simple_ui_mode_switch", 0));
+      BaseApplication localBaseApplication = MobileQQ.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_simple_status_sp_");
+      localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
+      SimpleUIUtil.d(localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).getInt("simple_ui_mode_switch", 0));
     }
   }
   
@@ -51,7 +56,11 @@ public class SimpleUIProtocolUtil
     if ((localObject instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)localObject;
-      localObject = MobileQQ.getContext().getSharedPreferences("key_simple_status_sp_" + ((QQAppInterface)localObject).getCurrentAccountUin(), 0).edit();
+      BaseApplication localBaseApplication = MobileQQ.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_simple_status_sp_");
+      localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
+      localObject = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit();
       ((SharedPreferences.Editor)localObject).putInt("simple_ui_mode_switch", paramInt);
       ((SharedPreferences.Editor)localObject).apply();
     }
@@ -59,7 +68,7 @@ public class SimpleUIProtocolUtil
   
   public static void a(AppInterface paramAppInterface, boolean paramBoolean, String paramString)
   {
-    new JceProtocol("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetConciseThemeReq", "stReq", "stRsp").a("GetConciseTheme", new GetConciseThemeReq(JceProtocol.a()), new GetConciseThemeRsp(), new SimpleUIProtocolUtil.1(paramString, paramAppInterface, paramBoolean), false);
+    ((IJce)QRoute.api(IJce.class)).build("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetConciseThemeReq", "stReq", "stRsp").request("GetConciseTheme", new GetConciseThemeReq(IJce.Util.a()), new GetConciseThemeRsp(), new SimpleUIProtocolUtil.1(paramString, paramAppInterface, paramBoolean), false);
   }
   
   private static final void a(String paramString)
@@ -68,20 +77,18 @@ public class SimpleUIProtocolUtil
     if ((localObject != null) && (SimpleUIUtil.b() != -2147483648) && (SimpleUIUtil.a() != -2147483648) && (SimpleUIUtil.a(SimpleUIUtil.a())))
     {
       localObject = (SimpleUIHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.SIMPLE_UI_HANDLER);
-      if (SimpleUIUtil.b() != 1) {
-        break label137;
+      boolean bool;
+      if (SimpleUIUtil.b() == 1) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label137:
-    for (boolean bool = true;; bool = false)
-    {
       int i = SimpleUIUtil.a();
       ((SimpleUIHandler)localObject).a(bool, i);
       ((SimpleUIHandler)localObject).notifyUI(4, true, new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), paramString });
       if (QLog.isColorLevel()) {
         QLog.i("SimpleUIProtocolUtil", 1, String.format(Locale.getDefault(), "onGetSimpleUISwitchOnLogin [%b,%b]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) }));
       }
-      return;
     }
   }
   
@@ -111,25 +118,12 @@ public class SimpleUIProtocolUtil
   
   public static final void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    int i = 0;
-    QLog.d("SimpleUIProtocolUtil", 1, String.format("onGetSimpleUISwitch type=%d bSwitch=%b uin=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramString }));
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((localQQAppInterface != null) && (paramString.equals(localQQAppInterface.getCurrentAccountUin())))
-    {
-      if (paramBoolean) {
-        i = 1;
-      }
-      SimpleUIUtil.c(i);
-      ThemeUtil.getUinThemePreferences(localQQAppInterface).edit().putBoolean("key_simple_ui_switch", paramBoolean).commit();
-      if (paramInt == 1) {
-        a(paramString);
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIProtocolUtil
  * JD-Core Version:    0.7.0.1
  */

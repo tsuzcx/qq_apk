@@ -13,14 +13,15 @@ class AssistantSettingFragment$11
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AssistantSettingFragment.a(this.a, AssistantSettingFragment.a(this.a).a(), paramBoolean);
+    AssistantSettingFragment localAssistantSettingFragment = this.a;
+    AssistantSettingFragment.a(localAssistantSettingFragment, AssistantSettingFragment.a(localAssistantSettingFragment).a(), paramBoolean);
     AssistantSettingFragment.a(this.a).a(paramBoolean, true);
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.11
  * JD-Core Version:    0.7.0.1
  */

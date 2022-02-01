@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import com.tencent.mobileqq.apollo.api.data.impl.ApolloDaoManagerServiceImpl;
+import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
 
 class ApolloRecentManager$1
   implements Runnable
@@ -12,7 +12,7 @@ class ApolloRecentManager$1
     }
     if (this.a == null)
     {
-      ApolloDaoManagerServiceImpl.insertRencentData(this.this$0.a, this.b);
+      ApolloDaoManagerServiceImpl.insertRecentData(this.this$0.a, this.b);
       return;
     }
     ApolloDaoManagerServiceImpl.insertAndDeleteData(this.this$0.a, this.b, this.a);
@@ -20,7 +20,7 @@ class ApolloRecentManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloRecentManager.1
  * JD-Core Version:    0.7.0.1
  */

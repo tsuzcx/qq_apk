@@ -22,23 +22,22 @@ class DavWTogetherObserver$1
     if ((!this.jdField_a_of_type_Boolean) && (this.b) && (!localAVActivity.isFinishing()) && (WTogetherUtil.b()))
     {
       Object localObject = SessionMgr.a().a();
-      localObject = ((WTogetherMng)this.this$0.a.a(15)).b((SessionInfo)localObject);
-      if (((WatchTogetherInfo)localObject).jdField_a_of_type_Boolean) {
-        break label103;
+      localObject = ((WTogetherMng)this.this$0.a.a(16)).b((SessionInfo)localObject);
+      if (!((WatchTogetherInfo)localObject).jdField_a_of_type_Boolean)
+      {
+        ((WatchTogetherInfo)localObject).jdField_a_of_type_Boolean = true;
+        WTogetherUtil.a(localAVActivity, localAVActivity.getString(2131695998));
+        return;
       }
-      ((WatchTogetherInfo)localObject).jdField_a_of_type_Boolean = true;
-      WTogetherUtil.a(localAVActivity, localAVActivity.getString(2131695983));
+      if (QLog.isColorLevel()) {
+        QLog.i("WTogether", 2, "showNetTip, have shown. 2");
+      }
     }
-    label103:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("WTogether", 2, "showNetTip, have shown. 2");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.DavWTogetherObserver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,24 @@
 package com.tencent.mobileqq.ar.view;
 
-import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.model.QQARSession;
 
 class ARScanEntryView$31
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  ARScanEntryView$31(ARScanEntryView paramARScanEntryView, ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult, ArLBSActivity paramArLBSActivity) {}
+  ARScanEntryView$31(ARScanEntryView paramARScanEntryView) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ARScanEntryView.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.31
  * JD-Core Version:    0.7.0.1
  */

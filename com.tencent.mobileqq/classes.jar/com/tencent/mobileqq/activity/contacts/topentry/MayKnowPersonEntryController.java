@@ -59,8 +59,9 @@ public class MayKnowPersonEntryController
   
   private void g()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.b(this);
+    CTEntryMng localCTEntryMng = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng;
+    if (localCTEntryMng != null) {
+      localCTEntryMng.b(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng = null;
   }
@@ -81,11 +82,19 @@ public class MayKnowPersonEntryController
   
   protected void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CTEntryController", 2, "refreshData  hasdata:" + this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(2) + " mHasPaused:" + this.b);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshData  hasdata:");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(2));
+      localStringBuilder.append(" mHasPaused:");
+      localStringBuilder.append(this.b);
+      QLog.i("CTEntryController", 2, localStringBuilder.toString());
     }
-    if (this.b) {}
-    while (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(2)) {
+    if (this.b) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(2)) {
       return;
     }
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(2, paramLong);
@@ -97,7 +106,7 @@ public class MayKnowPersonEntryController
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter = new MayknowRecommendsAdapter(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 1, true);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131706489));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131706536));
     this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout.setOnClickListener(this);
   }
   
@@ -107,8 +116,9 @@ public class MayKnowPersonEntryController
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != paramQQAppInterface)
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.a(paramQQAppInterface);
+      MayknowRecommendsAdapter localMayknowRecommendsAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter;
+      if (localMayknowRecommendsAdapter != null) {
+        localMayknowRecommendsAdapter.a(paramQQAppInterface);
       }
     }
     f();
@@ -121,9 +131,33 @@ public class MayKnowPersonEntryController
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.a(paramBoolean);
+    super.a(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.i("CTEntryController", 2, "onResume");
     }
+    this.jdField_a_of_type_Boolean = false;
+    if (this.b)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter;
+      if (localObject != null) {
+        ((MayknowRecommendsAdapter)localObject).notifyDataSetChanged();
+      }
+      a(500L);
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(3, 500L);
+    }
+    else
+    {
+      a(0L);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.a();
+      if (localObject != null) {
+        ((CardViewController)localObject).b();
+      }
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter;
+    if (localObject != null) {
+      ((MayknowRecommendsAdapter)localObject).d();
+    }
+    this.b = false;
   }
   
   public void b()
@@ -132,46 +166,25 @@ public class MayKnowPersonEntryController
     f();
   }
   
-  public void b(boolean paramBoolean)
-  {
-    super.b(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.i("CTEntryController", 2, "onResume");
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.b)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.notifyDataSetChanged();
-      }
-      a(500L);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(3, 500L);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.d();
-      }
-      this.b = false;
-      return;
-      a(0L);
-      CardViewController localCardViewController = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.a();
-      if (localCardViewController != null) {
-        localCardViewController.b();
-      }
-    }
-  }
-  
   public void c()
   {
     super.c();
     if (QLog.isColorLevel()) {
       QLog.i("CTEntryController", 2, "onPause");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.b();
+    MayknowRecommendsAdapter localMayknowRecommendsAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter;
+    if (localMayknowRecommendsAdapter != null) {
+      localMayknowRecommendsAdapter.b();
     }
     this.b = true;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    MayknowRecommendsAdapter localMayknowRecommendsAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter;
+    if (localMayknowRecommendsAdapter != null) {
+      localMayknowRecommendsAdapter.a(paramBoolean);
+    }
   }
   
   public void d()
@@ -180,13 +193,15 @@ public class MayKnowPersonEntryController
     if (QLog.isColorLevel()) {
       QLog.i("CTEntryController", 2, "onDestroy");
     }
-    if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
+    Object localObject = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
+    if (localObject != null) {
+      ((WeakReferenceHandler)localObject).removeCallbacksAndMessages(null);
     }
     g();
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryController$OnCTEntryDataChangeListener = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.a();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter;
+    if (localObject != null) {
+      ((MayknowRecommendsAdapter)localObject).a();
     }
   }
   
@@ -202,8 +217,9 @@ public class MayKnowPersonEntryController
     if (this.jdField_a_of_type_ComTencentWidgetXListView != null) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.a();
+    MayknowRecommendsAdapter localMayknowRecommendsAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter;
+    if (localMayknowRecommendsAdapter != null) {
+      localMayknowRecommendsAdapter.a();
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter = null;
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
@@ -211,16 +227,34 @@ public class MayKnowPersonEntryController
   
   public boolean handleMessage(Message paramMessage)
   {
-    int j;
-    boolean bool2;
-    Object localObject1;
-    boolean bool1;
-    int i;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return false;
-    case 1: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return false;
+        }
+        paramMessage = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng;
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.a();
+          if (paramMessage != null)
+          {
+            paramMessage.b();
+            return false;
+          }
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
+        ThreadManager.excute(new MayKnowPersonEntryController.1(this), 16, null, true);
+        return false;
+      }
+    }
+    else
+    {
       this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
       paramMessage = (List)paramMessage.obj;
       if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter == null)
@@ -228,105 +262,97 @@ public class MayKnowPersonEntryController
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter = new MayknowRecommendsAdapter(a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentWidgetXListView, 1, true);
         this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter);
       }
-      j = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.getCount();
-      bool2 = a();
-      localObject1 = paramMessage.iterator();
-      bool1 = false;
+      int j = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.getCount();
+      boolean bool3 = a();
+      Object localObject1 = paramMessage.iterator();
       i = 0;
-      label120:
-      if (((Iterator)localObject1).hasNext())
+      boolean bool1 = false;
+      while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (CTEntry)((Iterator)localObject1).next();
-        if ((localObject2 == null) || (((CTEntry)localObject2).jdField_a_of_type_Int != 3) || (!bool2)) {
-          break label544;
+        if ((localObject2 != null) && (((CTEntry)localObject2).jdField_a_of_type_Int == 3) && (bool3))
+        {
+          boolean bool2 = ((CTEntry)localObject2).e;
+          bool1 = bool2;
+          if (!bool2)
+          {
+            bool1 = bool2;
+            if ((((CTEntry)localObject2).jdField_a_of_type_JavaLangObject instanceof List))
+            {
+              localObject2 = (List)((CTEntry)localObject2).jdField_a_of_type_JavaLangObject;
+              bool1 = bool2;
+              if (((List)localObject2).size() > 0)
+              {
+                this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.a((List)localObject2);
+                i = ((List)localObject2).size();
+                bool1 = bool2;
+              }
+            }
+          }
         }
-        bool1 = ((CTEntry)localObject2).e;
-        if ((bool1) || (!(((CTEntry)localObject2).jdField_a_of_type_JavaLangObject instanceof List))) {
-          break label541;
-        }
-        localObject2 = (List)((CTEntry)localObject2).jdField_a_of_type_JavaLangObject;
-        if (((List)localObject2).size() <= 0) {
-          break label541;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.a((List)localObject2);
-        i = ((List)localObject2).size();
       }
-      break;
-    }
-    label541:
-    label544:
-    for (;;)
-    {
-      break label120;
-      if (QLog.isColorLevel()) {
-        QLog.d("CTEntryController", 2, "MSG_UPDATE_ENTRY_LIST preCount:" + j + " size:" + i + " userClose:" + bool1 + " shouldShowRecommendEntry: " + bool2);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("MSG_UPDATE_ENTRY_LIST preCount:");
+        ((StringBuilder)localObject1).append(j);
+        ((StringBuilder)localObject1).append(" size:");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(" userClose:");
+        ((StringBuilder)localObject1).append(bool1);
+        ((StringBuilder)localObject1).append(" shouldShowRecommendEntry: ");
+        ((StringBuilder)localObject1).append(bool3);
+        QLog.d("CTEntryController", 2, ((StringBuilder)localObject1).toString());
       }
       if (i > 0)
       {
         localObject1 = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-        ((LinearLayout.LayoutParams)localObject1).height = AIOUtils.a(i * 60 + 28, this.jdField_a_of_type_AndroidWidgetFrameLayout.getResources());
+        ((LinearLayout.LayoutParams)localObject1).height = AIOUtils.b(i * 60 + 28, this.jdField_a_of_type_AndroidWidgetFrameLayout.getResources());
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
         i = 1;
       }
-      while (!this.jdField_a_of_type_Boolean)
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.a(null);
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+        if ((j > 0) && (!bool1)) {
+          h();
+        }
+        i = 0;
+      }
+      if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
         paramMessage = paramMessage.iterator();
-        for (;;)
+        while (paramMessage.hasNext())
         {
-          if (paramMessage.hasNext())
-          {
-            localObject1 = (CTEntry)paramMessage.next();
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800979E", "0X800979E", ((CTEntry)localObject1).jdField_a_of_type_Int, 0, "", "", "", "");
-            continue;
-            this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryMayknowRecommendsAdapter.a(null);
-            this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-            if ((j > 0) && (!bool1)) {
-              h();
-            }
-            i = 0;
-            break;
-          }
+          localObject1 = (CTEntry)paramMessage.next();
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800979E", "0X800979E", ((CTEntry)localObject1).jdField_a_of_type_Int, 0, "", "", "", "");
         }
         if (i != 0) {
           ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "banner_recomlist_exp");
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryController$OnCTEntryDataChangeListener == null) {
-        break;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryController$OnCTEntryDataChangeListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryController$OnCTEntryDataChangeListener.a();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryController$OnCTEntryDataChangeListener.a();
-      return false;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
-      ThreadManager.excute(new MayKnowPersonEntryController.1(this), 16, null, true);
-      return false;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng == null) {
-        break;
-      }
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.a();
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.b();
-      return false;
     }
+    return false;
   }
   
   public void onClick(View paramView)
   {
-    Intent localIntent;
-    if (paramView.getId() == 2131376755)
+    if (paramView.getId() == 2131376253)
     {
-      localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, RecommendFriendActivity.class);
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, RecommendFriendActivity.class);
       localIntent.putExtra("EntranceId", 8);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng != null) {
-        break label97;
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng;
+      if (localObject == null) {
+        localObject = null;
+      } else {
+        localObject = ((CTEntryMng)localObject).a();
       }
-    }
-    label97:
-    for (Object localObject = null;; localObject = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.a())
-    {
       if (localObject != null)
       {
         localObject = ((CardViewController)localObject).a();
@@ -336,14 +362,13 @@ public class MayKnowPersonEntryController
       }
       this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
       ContactReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "banner_recomlist_clk");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.MayKnowPersonEntryController
  * JD-Core Version:    0.7.0.1
  */

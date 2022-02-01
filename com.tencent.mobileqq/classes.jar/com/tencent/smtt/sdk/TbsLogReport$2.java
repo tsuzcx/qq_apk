@@ -10,12 +10,15 @@ class TbsLogReport$2
   
   public void a(int paramInt)
   {
-    TbsLog.i("TbsDownload", "[TbsApkDownloadStat.reportTbsLog] httpResponseCode=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[TbsApkDownloadStat.reportTbsLog] httpResponseCode=");
+    localStringBuilder.append(paramInt);
+    TbsLog.i("TbsDownload", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsLogReport.2
  * JD-Core Version:    0.7.0.1
  */

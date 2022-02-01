@@ -3,6 +3,7 @@ package com.tencent.mobileqq.ar.arengine;
 import android.annotation.TargetApi;
 import android.os.Environment;
 import android.text.TextUtils;
+import androidx.annotation.NonNull;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
@@ -13,78 +14,82 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ARResouceDir
 {
   public static String a()
   {
-    if (a()) {}
-    for (String str = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH);; str = BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath() + File.separator)
+    Object localObject;
+    if (a())
     {
-      QLog.d("AREngine_ARResouceDir", 1, "initArResourceFilePath rootPath:=" + str);
-      return str;
+      localObject = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH);
+    }
+    else
+    {
       if (QLog.isColorLevel()) {
         QLog.i("AREngine_ARResouceDir", 2, "no_sdcard");
       }
-      float f = FileUtils.a();
-      if ((f < 15728640.0F) && (QLog.isColorLevel())) {
-        QLog.i("AREngine_ARResouceDir", 2, "inner memory avail may not enough : " + f);
+      float f = FileUtils.getAvailableInnernalMemorySize();
+      if ((f < 15728640.0F) && (QLog.isColorLevel()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("inner memory avail may not enough : ");
+        ((StringBuilder)localObject).append(f);
+        QLog.i("AREngine_ARResouceDir", 2, ((StringBuilder)localObject).toString());
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(BaseApplicationImpl.sApplication.getFilesDir().getAbsolutePath());
+      ((StringBuilder)localObject).append(File.separator);
+      localObject = ((StringBuilder)localObject).toString();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initArResourceFilePath rootPath:=");
+    localStringBuilder.append((String)localObject);
+    QLog.d("AREngine_ARResouceDir", 1, localStringBuilder.toString());
+    return localObject;
   }
   
   public static String a(ArCloudConfigInfo paramArCloudConfigInfo)
   {
-    return paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d);
+    localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d);
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   public static String a(String paramString)
   {
-    return a() + "ar_cloud_transfer/" + paramString + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append("ar_cloud_transfer/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
-  /* Error */
-  public static void a(@androidx.annotation.NonNull String paramString)
+  public static void a(@NonNull String paramString)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: invokestatic 110	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
-    //   7: istore_1
-    //   8: iload_1
-    //   9: ifne +8 -> 17
-    //   12: aload_0
-    //   13: invokestatic 113	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/io/File;
-    //   16: pop
-    //   17: ldc 2
-    //   19: monitorexit
-    //   20: return
-    //   21: astore_0
-    //   22: invokestatic 49	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   25: ifeq -8 -> 17
-    //   28: ldc 28
-    //   30: iconst_2
-    //   31: ldc 115
-    //   33: aload_0
-    //   34: invokestatic 118	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   37: goto -20 -> 17
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	46	0	paramString	String
-    //   7	2	1	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   12	17	21	java/io/IOException
-    //   3	8	40	finally
-    //   12	17	40	finally
-    //   22	37	40	finally
+    try
+    {
+      boolean bool = FileUtils.fileExists(paramString);
+      if (!bool) {
+        try
+        {
+          FileUtils.createFile(paramString);
+        }
+        catch (IOException paramString)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("AREngine_ARResouceDir", 2, "createFileIfNotExits", paramString);
+          }
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   @TargetApi(18)
@@ -95,13 +100,20 @@ public class ARResouceDir
       boolean bool = Environment.getExternalStorageState().equals("mounted");
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label11:
+      break label11;
+    }
     return false;
   }
   
   public static String b()
   {
-    return a() + "ar_relationship/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append("ar_relationship/");
+    return localStringBuilder.toString();
   }
   
   public static String b(ArCloudConfigInfo paramArCloudConfigInfo)
@@ -111,13 +123,20 @@ public class ARResouceDir
       if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
         return "";
       }
-      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator;
+      localObject = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d);
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(File.separator);
+      paramArCloudConfigInfo = localStringBuilder.toString();
       return paramArCloudConfigInfo;
     }
     catch (Exception paramArCloudConfigInfo)
     {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelUnzipDir error " + paramArCloudConfigInfo.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get3DModelUnzipDir error ");
+      ((StringBuilder)localObject).append(paramArCloudConfigInfo.getMessage());
+      QLog.i("AREngine_ARResouceDir", 2, ((StringBuilder)localObject).toString());
     }
     return "";
   }
@@ -129,14 +148,22 @@ public class ARResouceDir
       if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
         return "";
       }
-      String str1 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
-      String str2 = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d;
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str1 + File.separator + str2;
+      localObject = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
+      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d);
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(str);
+      paramArCloudConfigInfo = localStringBuilder.toString();
       return paramArCloudConfigInfo;
     }
     catch (Exception paramArCloudConfigInfo)
     {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelLuaFilePath error " + paramArCloudConfigInfo.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get3DModelLuaFilePath error ");
+      ((StringBuilder)localObject).append(paramArCloudConfigInfo.getMessage());
+      QLog.i("AREngine_ARResouceDir", 2, ((StringBuilder)localObject).toString());
     }
     return "";
   }
@@ -148,16 +175,24 @@ public class ARResouceDir
       if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
         return "";
       }
-      String str = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
+      localObject = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.a;
       if (TextUtils.isEmpty(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c)) {
         return "";
       }
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + str + File.separator + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d);
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.c);
+      paramArCloudConfigInfo = localStringBuilder.toString();
       return paramArCloudConfigInfo;
     }
     catch (Exception paramArCloudConfigInfo)
     {
-      QLog.i("AREngine_ARResouceDir", 2, "get3DModelMusicFilePath error " + paramArCloudConfigInfo.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get3DModelMusicFilePath error ");
+      ((StringBuilder)localObject).append(paramArCloudConfigInfo.getMessage());
+      QLog.i("AREngine_ARResouceDir", 2, ((StringBuilder)localObject).toString());
     }
     return "";
   }
@@ -166,19 +201,26 @@ public class ARResouceDir
   {
     try
     {
-      paramArCloudConfigInfo = paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d + ((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).c + "_model.zip";
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.d);
+      localStringBuilder.append(((ArVideoResourceInfo)paramArCloudConfigInfo.jdField_a_of_type_JavaUtilArrayList.get(0)).c);
+      localStringBuilder.append("_model.zip");
+      paramArCloudConfigInfo = localStringBuilder.toString();
       return paramArCloudConfigInfo;
     }
     catch (Exception paramArCloudConfigInfo)
     {
-      QLog.i("AREngine_ARResouceDir", 2, "getVideoFilePath error " + paramArCloudConfigInfo.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getVideoFilePath error ");
+      localStringBuilder.append(paramArCloudConfigInfo.getMessage());
+      QLog.i("AREngine_ARResouceDir", 2, localStringBuilder.toString());
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARResouceDir
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public class MiniAppDialog
   
   public MiniAppDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755057);
+    super(paramContext, 2131755060);
   }
   
   private void animateDown()
@@ -77,15 +77,12 @@ public class MiniAppDialog
     paramBundle.gravity = 81;
     int i = ViewUtils.a();
     int j = ViewUtils.b();
-    if (i < j) {}
-    for (;;)
-    {
-      paramBundle.width = i;
-      getWindow().setAttributes(paramBundle);
-      setCanceledOnTouchOutside(true);
-      return;
+    if (i >= j) {
       i = j;
     }
+    paramBundle.width = i;
+    getWindow().setAttributes(paramBundle);
+    setCanceledOnTouchOutside(true);
   }
   
   public void setContentView(int paramInt)
@@ -110,14 +107,15 @@ public class MiniAppDialog
   {
     super.show();
     animateUp();
-    if (this.mOnBottomSheetShowListener != null) {
-      this.mOnBottomSheetShowListener.onShow();
+    MiniAppDialog.OnBottomSheetShowListener localOnBottomSheetShowListener = this.mOnBottomSheetShowListener;
+    if (localOnBottomSheetShowListener != null) {
+      localOnBottomSheetShowListener.onShow();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MiniAppDialog
  * JD-Core Version:    0.7.0.1
  */

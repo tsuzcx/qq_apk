@@ -20,25 +20,26 @@ class PngFrameManager$3$1
     }
     synchronized (this.a.this$0)
     {
-      if (this.a.this$0.a != null)
-      {
-        if (paramDownloadTask.a() != 3) {
+      if (this.a.this$0.a != null) {
+        if (paramDownloadTask.a() != 3)
+        {
           this.a.this$0.a.obtainMessage(226, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
         }
+        else
+        {
+          paramDownloadTask = PngGifEngine.a(this.a.jdField_a_of_type_JavaLangString);
+          this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.a = paramDownloadTask;
+          this.a.this$0.a.obtainMessage(227, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
+          GlobalImageCache.a.put(this.a.jdField_a_of_type_JavaLangString, paramDownloadTask);
+        }
       }
-      else {
-        return;
-      }
-      paramDownloadTask = PngGifEngine.a(this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.a = paramDownloadTask;
-      this.a.this$0.a.obtainMessage(227, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-      GlobalImageCache.a.put(this.a.jdField_a_of_type_JavaLangString, paramDownloadTask);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameManager.3.1
  * JD-Core Version:    0.7.0.1
  */

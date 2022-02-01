@@ -29,8 +29,14 @@ class ServiceAccountFolderFeedAdapter$6
   
   public void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.a + ", success:" + String.valueOf(paramBoolean));
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("do unfollow->uin:");
+      paramObject.append(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.a);
+      paramObject.append(", success:");
+      paramObject.append(String.valueOf(paramBoolean));
+      QLog.d("ServiceAccountFolderFeedAdapter", 2, paramObject.toString());
     }
     if ((ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter) != null) && (ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).isResume())) {
       ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).b(false);
@@ -46,7 +52,7 @@ class ServiceAccountFolderFeedAdapter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter.6
  * JD-Core Version:    0.7.0.1
  */

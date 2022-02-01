@@ -46,10 +46,13 @@ public class AnimatableValueParser
   
   public static AnimatableFloatValue parseFloat(JsonReader paramJsonReader, LottieComposition paramLottieComposition, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (float f = Utils.dpScale();; f = 1.0F) {
-      return new AnimatableFloatValue(parse(paramJsonReader, f, paramLottieComposition, FloatParser.INSTANCE));
+    float f;
+    if (paramBoolean) {
+      f = Utils.dpScale();
+    } else {
+      f = 1.0F;
     }
+    return new AnimatableFloatValue(parse(paramJsonReader, f, paramLottieComposition, FloatParser.INSTANCE));
   }
   
   static AnimatableGradientColorValue parseGradientColor(JsonReader paramJsonReader, LottieComposition paramLottieComposition, int paramInt)
@@ -79,7 +82,7 @@ public class AnimatableValueParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.AnimatableValueParser
  * JD-Core Version:    0.7.0.1
  */

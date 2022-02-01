@@ -15,8 +15,14 @@ public class ak$c
     if (this.b.i.c > 0L)
     {
       this.b.i.e = (System.currentTimeMillis() - this.b.i.c);
-      if (QLog.isColorLevel()) {
-        QLog.d("WeaknetNew", 2, "CheckConnTimer conn cost=" + this.b.i.e + " oldReason=" + Integer.toHexString(ak.a(this.b)));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("CheckConnTimer conn cost=");
+        localStringBuilder.append(this.b.i.e);
+        localStringBuilder.append(" oldReason=");
+        localStringBuilder.append(Integer.toHexString(ak.a(this.b)));
+        QLog.d("WeaknetNew", 2, localStringBuilder.toString());
       }
       ak.a(this.b, 1);
       ak.b(this.b);
@@ -25,7 +31,7 @@ public class ak$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.ak.c
  * JD-Core Version:    0.7.0.1
  */

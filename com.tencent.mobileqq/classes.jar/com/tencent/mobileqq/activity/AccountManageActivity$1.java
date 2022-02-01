@@ -17,25 +17,25 @@ class AccountManageActivity$1
       if (this.this$0.app != null)
       {
         FriendsManager localFriendsManager = (FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        if (localFriendsManager != null) {
+        if (localFriendsManager != null)
+        {
           AccountManageActivity.a(this.this$0, localFriendsManager.a(this.this$0.app.getCurrentAccountUin()));
+          return;
         }
       }
-      return;
     }
     catch (Exception localException)
     {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.w("AccountManageActivity", 2, "showLogoutDialog getCard Exception! ");
+      localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.w("AccountManageActivity", 2, "showLogoutDialog getCard Exception! ");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.1
  * JD-Core Version:    0.7.0.1
  */

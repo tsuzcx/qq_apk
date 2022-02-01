@@ -12,15 +12,22 @@ final class ApkgMainProcessManager$2
   
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.val$cmdCallback != null) {
-      this.val$cmdCallback.onCmdResult(paramBoolean, paramBundle);
+    Object localObject = this.val$cmdCallback;
+    if (localObject != null) {
+      ((MiniCmdCallback)localObject).onCmdResult(paramBoolean, paramBundle);
     }
-    QMLog.d("ApkgMainProcessManager", "onCmdResult() called with: succ = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onCmdResult() called with: succ = [");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append("], bundle = [");
+    ((StringBuilder)localObject).append(paramBundle);
+    ((StringBuilder)localObject).append("]");
+    QMLog.d("ApkgMainProcessManager", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.ApkgMainProcessManager.2
  * JD-Core Version:    0.7.0.1
  */

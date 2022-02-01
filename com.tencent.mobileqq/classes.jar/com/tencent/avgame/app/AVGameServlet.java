@@ -1,6 +1,7 @@
 package com.tencent.avgame.app;
 
 import android.content.Intent;
+import com.tencent.common.app.business.BaseAVGameAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -12,19 +13,19 @@ import mqq.app.Packet;
 public class AVGameServlet
   extends MSFServlet
 {
-  private AVGameAppInterface a = null;
+  private BaseAVGameAppInterface a = null;
   
   public String[] getPreferSSOCommands()
   {
     return new String[] { "OnlinePush.ReqPush" };
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime instanceof AVGameAppInterface)) {
-      this.a = ((AVGameAppInterface)localAppRuntime);
+    if ((localAppRuntime instanceof BaseAVGameAppInterface)) {
+      this.a = ((BaseAVGameAppInterface)localAppRuntime);
     }
   }
   
@@ -35,16 +36,21 @@ public class AVGameServlet
       paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
       paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    for (;;)
+    else
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AVGameServlet", 4, "onReceive, cmd[" + paramFromServiceMsg.getServiceCmd() + "]");
-      }
-      if (this.a != null) {
-        this.a.receiveToService(paramIntent, paramFromServiceMsg);
-      }
-      return;
       paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceive, cmd[");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.getServiceCmd());
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVGameServlet", 4, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((BaseAVGameAppInterface)localObject).receiveToService(paramIntent, paramFromServiceMsg);
     }
   }
   
@@ -62,8 +68,13 @@ public class AVGameServlet
         if (!paramIntent.isNeedCallback()) {
           paramPacket.setNoResponse();
         }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("AVGameServlet", 4, "send, cmd[" + paramIntent.getServiceCmd() + "]");
+        if (QLog.isDevelopLevel())
+        {
+          paramPacket = new StringBuilder();
+          paramPacket.append("send, cmd[");
+          paramPacket.append(paramIntent.getServiceCmd());
+          paramPacket.append("]");
+          QLog.i("AVGameServlet", 4, paramPacket.toString());
         }
       }
     }
@@ -71,7 +82,7 @@ public class AVGameServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.app.AVGameServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.video;
 
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "", "()V", "autoPlay", "", "getAutoPlay", "()I", "setAutoPlay", "(I)V", "endPos", "getEndPos", "setEndPos", "isClickReplay", "", "()Z", "setClickReplay", "(Z)V", "isFirstPlay", "setFirstPlay", "isPlayOnFirstFrame", "setPlayOnFirstFrame", "isPlayOnLastFrame", "setPlayOnLastFrame", "replayCount", "getReplayCount", "setReplayCount", "startPos", "getStartPos", "setStartPos", "videoDuration", "getVideoDuration", "setVideoDuration", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "", "()V", "autoPlay", "", "getAutoPlay", "()I", "setAutoPlay", "(I)V", "endPos", "getEndPos", "setEndPos", "isClickReplay", "", "()Z", "setClickReplay", "(Z)V", "isFirstPlay", "setFirstPlay", "isPlayOnFirstFrame", "setPlayOnFirstFrame", "isPlayOnLastFrame", "setPlayOnLastFrame", "replayCount", "getReplayCount", "setReplayCount", "startPos", "getStartPos", "setStartPos", "videoDuration", "getVideoDuration", "setVideoDuration", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public final class VideoAdReportData
 {
   private int jdField_a_of_type_Int;
@@ -107,7 +107,7 @@ public final class VideoAdReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.VideoAdReportData
  * JD-Core Version:    0.7.0.1
  */

@@ -42,25 +42,29 @@ public final class s_memory_seal_off
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.memory_time, 0);
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 1);
+    String str = this.summary;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.action_type, 2);
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 3);
+    str = this.action_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.button_text != null) {
-      paramJceOutputStream.write(this.button_text, 4);
+    str = this.button_text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.type, 5);
-    if (this.no_right_summary != null) {
-      paramJceOutputStream.write(this.no_right_summary, 6);
+    str = this.no_right_summary;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_memory_seal_off
  * JD-Core Version:    0.7.0.1
  */

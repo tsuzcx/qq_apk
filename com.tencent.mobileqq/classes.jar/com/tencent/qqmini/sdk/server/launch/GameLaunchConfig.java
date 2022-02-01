@@ -45,18 +45,18 @@ public final class GameLaunchConfig
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof GameLaunchConfig))
       {
         paramObject = (GameLaunchConfig)paramObject;
-        if ((this.enableProcessReuse != paramObject.enableProcessReuse) || (this.multiInstanceCount != paramObject.multiInstanceCount)) {}
+        if ((this.enableProcessReuse == paramObject.enableProcessReuse) && (this.multiInstanceCount == paramObject.multiInstanceCount)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final boolean getEnableMultiInstance()
@@ -87,12 +87,18 @@ public final class GameLaunchConfig
   @NotNull
   public String toString()
   {
-    return "GameLaunchConfig(enableProcessReuse=" + this.enableProcessReuse + ", multiInstanceCount=" + this.multiInstanceCount + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GameLaunchConfig(enableProcessReuse=");
+    localStringBuilder.append(this.enableProcessReuse);
+    localStringBuilder.append(", multiInstanceCount=");
+    localStringBuilder.append(this.multiInstanceCount);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.GameLaunchConfig
  * JD-Core Version:    0.7.0.1
  */

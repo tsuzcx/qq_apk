@@ -28,10 +28,10 @@ class FloatHeartServiceBuilder$1
   
   public long getAnchorUid()
   {
-    if ((((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo() == null) || (((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo == null)) {
-      return 0L;
+    if ((((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo() != null) && (((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo != null)) {
+      return ((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo.uid;
     }
-    return ((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo.uid;
+    return 0L;
   }
   
   public ChannelInterface getChannel()
@@ -73,18 +73,18 @@ class FloatHeartServiceBuilder$1
   
   public String getProgramId()
   {
-    if ((((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo() == null) || (((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().roomInfo == null)) {
-      return "";
+    if ((((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo() != null) && (((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().roomInfo != null)) {
+      return ((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().roomInfo.programId;
     }
-    return ((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().roomInfo.programId;
+    return "";
   }
   
   public long getRoomId()
   {
-    if ((((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo() == null) || (((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().roomInfo == null)) {
-      return 0L;
+    if ((((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo() != null) && (((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().roomInfo != null)) {
+      return ((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().roomInfo.roomId;
     }
-    return ((RoomServiceInterface)this.val$serviceManager.getService(RoomServiceInterface.class)).getLiveInfo().roomInfo.roomId;
+    return 0L;
   }
   
   public JSONObject updateGiftLogoFormatKey()
@@ -94,7 +94,7 @@ class FloatHeartServiceBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.floatheart.FloatHeartServiceBuilder.1
  * JD-Core Version:    0.7.0.1
  */

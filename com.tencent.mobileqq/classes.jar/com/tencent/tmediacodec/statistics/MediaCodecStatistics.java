@@ -63,32 +63,49 @@ public class MediaCodecStatistics
   {
     if (TextUtils.isEmpty(this.mCacheResultData))
     {
-      StringBuilder localStringBuilder = new StringBuilder("{");
-      localStringBuilder.append("\"isVideo\":");
-      localStringBuilder.append(this.mIsVideo + " ,");
+      StringBuilder localStringBuilder1 = new StringBuilder("{");
+      localStringBuilder1.append("\"isVideo\":");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mIsVideo);
+      ((StringBuilder)localObject).append(" ,");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
       if (this.mIsReuseHasSet)
       {
-        localStringBuilder.append("\"isReuse\":");
-        localStringBuilder.append(this.mIsReuse + " ,");
+        localStringBuilder1.append("\"isReuse\":");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.mIsReuse);
+        ((StringBuilder)localObject).append(" ,");
+        localStringBuilder1.append(((StringBuilder)localObject).toString());
       }
-      localStringBuilder.append("\"reuseEnable\":");
-      localStringBuilder.append(this.mReuseEnable + " ,");
-      Iterator localIterator = this.mStatisticsMap.entrySet().iterator();
-      long l2;
-      for (long l1 = 0L; localIterator.hasNext(); l1 = l2)
+      localStringBuilder1.append("\"reuseEnable\":");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mReuseEnable);
+      ((StringBuilder)localObject).append(" ,");
+      localStringBuilder1.append(((StringBuilder)localObject).toString());
+      long l1 = 0L;
+      localObject = this.mStatisticsMap.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        l2 = l1;
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        long l2 = l1;
         if (localEntry != null) {
           l2 = l1 + ((Number)localEntry.getValue()).longValue();
         }
-        localStringBuilder.append("\"" + localEntry.getKey() + "\":");
-        localStringBuilder.append(((Number)localEntry.getValue()).longValue() + " ,");
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("\"");
+        localStringBuilder2.append(localEntry.getKey());
+        localStringBuilder2.append("\":");
+        localStringBuilder1.append(localStringBuilder2.toString());
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(((Number)localEntry.getValue()).longValue());
+        localStringBuilder2.append(" ,");
+        localStringBuilder1.append(localStringBuilder2.toString());
+        l1 = l2;
       }
-      localStringBuilder.append("\"totalCodec\":");
-      localStringBuilder.append(l1);
-      localStringBuilder.append("}");
-      this.mCacheResultData = localStringBuilder.toString();
+      localStringBuilder1.append("\"totalCodec\":");
+      localStringBuilder1.append(l1);
+      localStringBuilder1.append("}");
+      this.mCacheResultData = localStringBuilder1.toString();
     }
     return this.mCacheResultData;
   }
@@ -105,7 +122,7 @@ public class MediaCodecStatistics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.statistics.MediaCodecStatistics
  * JD-Core Version:    0.7.0.1
  */

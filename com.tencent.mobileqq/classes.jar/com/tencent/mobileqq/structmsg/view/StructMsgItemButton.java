@@ -7,12 +7,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qwallet.config.IQWalletConfigService;
 import com.tencent.mobileqq.structmsg.AbsStructMsgTextElement;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.StructMsgNode;
@@ -42,36 +41,43 @@ public class StructMsgItemButton
   
   private void b()
   {
-    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (this.jdField_c_of_type_JavaLangString.equals("pay"))) {
-      if (!TextUtils.isEmpty(this.e)) {
-        break label130;
-      }
-    }
-    for (Object localObject = this.d;; localObject = this.e)
+    if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (this.jdField_c_of_type_JavaLangString.equals("pay")))
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-      try
-      {
-        localObject = new JSONObject((String)localObject);
-        if (((JSONObject)localObject).has("appId")) {
-          this.as = ((JSONObject)localObject).getString("appId");
-        }
-        if (((JSONObject)localObject).has("orderId")) {
-          this.at = ((JSONObject)localObject).getString("orderId");
-        }
-        if (((JSONObject)localObject).has("package")) {
-          this.av = ((JSONObject)localObject).getString("package");
-        }
-        if (((JSONObject)localObject).has("expireTime")) {
-          this.au = ((JSONObject)localObject).getString("expireTime");
-        }
-        return;
+      Object localObject;
+      if (TextUtils.isEmpty(this.e)) {
+        localObject = this.d;
+      } else {
+        localObject = this.e;
       }
-      catch (Exception localException)
-      {
-        label130:
-        while (!QLog.isColorLevel()) {}
-        QLog.e("StructMsgItemButton", 2, "read msg=" + localException.getMessage());
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          if (((JSONObject)localObject).has("appId")) {
+            this.as = ((JSONObject)localObject).getString("appId");
+          }
+          if (((JSONObject)localObject).has("orderId")) {
+            this.at = ((JSONObject)localObject).getString("orderId");
+          }
+          if (((JSONObject)localObject).has("package")) {
+            this.av = ((JSONObject)localObject).getString("package");
+          }
+          if (((JSONObject)localObject).has("expireTime"))
+          {
+            this.au = ((JSONObject)localObject).getString("expireTime");
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("read msg=");
+            localStringBuilder.append(localException.getMessage());
+            QLog.e("StructMsgItemButton", 2, localStringBuilder.toString());
+          }
+        }
       }
     }
   }
@@ -81,48 +87,44 @@ public class StructMsgItemButton
     int i = paramBundle.getInt("Layout3ButtonCount", 0);
     int j = paramBundle.getInt("Layout3ButtonIndex", -1);
     paramContext = (TextView)super.a(paramContext, paramView, paramBundle);
-    paramContext.setBackgroundResource(2130838418);
+    paramContext.setBackgroundResource(2130838254);
     if (i > 1) {
       if (j == 0)
       {
-        paramContext.setBackgroundResource(2130838411);
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      paramContext.setTag(2131378545, Integer.valueOf(i));
-      paramContext.setGravity(17);
-      paramContext.setSingleLine();
-      paramContext.setEllipsize(null);
-      if ((!b()) || ((b()) && (a())))
-      {
-        paramContext.setClickable(true);
-        paramContext.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramContext.setOnLongClickListener(new StructMsgItemButton.1(this));
-        paramContext.setOnTouchListener(new StructMsgItemButton.2(this));
-        return paramContext;
-        if (j == i - 1)
-        {
-          paramContext.setBackgroundResource(2130838415);
-          i = 2;
-        }
-        else
-        {
-          paramContext.setBackgroundResource(2130838413);
-          i = 1;
-        }
+        paramContext.setBackgroundResource(2130838247);
       }
       else
       {
-        paramContext.setClickable(false);
-        paramContext.setOnClickListener(null);
-        paramContext.setOnTouchListener(null);
-        paramContext.setOnLongClickListener(null);
-        return paramContext;
-        i = 0;
+        if (j == i - 1)
+        {
+          paramContext.setBackgroundResource(2130838251);
+          i = 2;
+          break label91;
+        }
+        paramContext.setBackgroundResource(2130838249);
+        i = 1;
+        break label91;
       }
     }
+    i = 0;
+    label91:
+    paramContext.setTag(2131377956, Integer.valueOf(i));
+    paramContext.setGravity(17);
+    paramContext.setSingleLine();
+    paramContext.setEllipsize(null);
+    if ((b()) && ((!b()) || (!a())))
+    {
+      paramContext.setClickable(false);
+      paramContext.setOnClickListener(null);
+      paramContext.setOnTouchListener(null);
+      paramContext.setOnLongClickListener(null);
+      return paramContext;
+    }
+    paramContext.setClickable(true);
+    paramContext.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramContext.setOnLongClickListener(new StructMsgItemButton.1(this));
+    paramContext.setOnTouchListener(new StructMsgItemButton.2(this));
+    return paramContext;
   }
   
   public String a()
@@ -150,122 +152,109 @@ public class StructMsgItemButton
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.b == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.jdField_c_of_type_JavaLangString != null) {
-        break label158;
-      }
-      str = "";
-      label32:
-      paramObjectOutput.writeUTF(str);
-      if (this.d != null) {
-        break label166;
-      }
-      str = "";
-      label49:
-      paramObjectOutput.writeUTF(str);
-      if (this.e != null) {
-        break label174;
-      }
-      str = "";
-      label66:
-      paramObjectOutput.writeUTF(str);
-      if (this.f != null) {
-        break label182;
-      }
-      str = "";
-      label83:
-      paramObjectOutput.writeUTF(str);
-      if (this.jdField_a_of_type_Int > 5)
-      {
-        if (this.j != null) {
-          break label190;
-        }
-        str = "";
-        label108:
-        paramObjectOutput.writeUTF(str);
-        if (this.k != null) {
-          break label198;
-        }
-        str = "";
-        label125:
-        paramObjectOutput.writeUTF(str);
-        if (this.l != null) {
-          break label206;
-        }
-      }
+    Object localObject = this.b;
+    String str = "";
+    if (localObject == null) {
+      localObject = "";
+    } else {
+      localObject = this.b;
     }
-    label158:
-    label166:
-    label174:
-    label182:
-    label190:
-    label198:
-    label206:
-    for (String str = "";; str = this.l)
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.jdField_c_of_type_JavaLangString == null) {
+      localObject = "";
+    } else {
+      localObject = this.jdField_c_of_type_JavaLangString;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.d == null) {
+      localObject = "";
+    } else {
+      localObject = this.d;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.e == null) {
+      localObject = "";
+    } else {
+      localObject = this.e;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.f == null) {
+      localObject = "";
+    } else {
+      localObject = this.f;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.jdField_a_of_type_Int > 5)
     {
-      paramObjectOutput.writeUTF(str);
-      return;
-      str = this.b;
-      break;
-      str = this.jdField_c_of_type_JavaLangString;
-      break label32;
-      str = this.d;
-      break label49;
-      str = this.e;
-      break label66;
-      str = this.f;
-      break label83;
-      str = this.j;
-      break label108;
-      str = this.k;
-      break label125;
+      if (this.j == null) {
+        localObject = "";
+      } else {
+        localObject = this.j;
+      }
+      paramObjectOutput.writeUTF((String)localObject);
+      if (this.k == null) {
+        localObject = "";
+      } else {
+        localObject = this.k;
+      }
+      paramObjectOutput.writeUTF((String)localObject);
+      if (this.l == null) {
+        localObject = str;
+      } else {
+        localObject = this.l;
+      }
+      paramObjectOutput.writeUTF((String)localObject);
     }
   }
   
   public void a(String paramString, MessageRecord paramMessageRecord, StructMsgForGeneralShare paramStructMsgForGeneralShare)
   {
-    int j = 999;
-    int i = j;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      i = Integer.valueOf(paramString).intValue();
-      if ((i != 23001027) && (i != 0) && (i != -4) && (i != -6))
+    int i;
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (!((QWalletConfigManager)paramString.getManager(QQManagerFactory.QWALLET_CONFIG_MANAGER)).a(paramMessageRecord.frienduin))
-        {
-          j = 1;
-          i = -4;
-          if (j != 0) {
-            paramStructMsgForGeneralShare.savePayInfo(paramString.getApplication(), this.at, i);
-          }
-          b(i);
-          return;
-        }
+        i = Integer.valueOf(paramString).intValue();
       }
-    }
-    catch (NumberFormatException paramString)
-    {
-      for (;;)
+      catch (NumberFormatException paramString)
       {
         paramString.printStackTrace();
-        i = j;
-        continue;
-        if (c())
+      }
+    } else {
+      i = 999;
+    }
+    int k = i;
+    if (i != 23001027)
+    {
+      k = i;
+      if (i != 0)
+      {
+        k = i;
+        if (i != -4)
         {
-          j = 1;
-          i = -6;
-        }
-        else
-        {
-          j = 0;
+          k = i;
+          if (i != -6)
+          {
+            paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+            boolean bool = ((IQWalletConfigService)paramString.getRuntimeService(IQWalletConfigService.class, "")).isPublicAccountSupportPay(paramMessageRecord.frienduin);
+            int j = 1;
+            if (!bool) {
+              i = -4;
+            } else if (c()) {
+              i = -6;
+            } else {
+              j = 0;
+            }
+            k = i;
+            if (j != 0)
+            {
+              paramStructMsgForGeneralShare.savePayInfo(paramString.getApplication(), this.at, i);
+              k = i;
+            }
+          }
         }
       }
     }
+    b(k);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
@@ -301,12 +290,8 @@ public class StructMsgItemButton
   
   public boolean a()
   {
-    switch (this.o)
-    {
-    default: 
-      return true;
-    }
-    return false;
+    int i = this.o;
+    return (i != -6) && (i != -4) && (i != 0) && (i != 23001027);
   }
   
   public boolean a(StructMsgNode paramStructMsgNode)
@@ -327,26 +312,34 @@ public class StructMsgItemButton
   public void b(int paramInt)
   {
     this.o = paramInt;
-    switch (paramInt)
+    if (paramInt != -6)
     {
-    case -3: 
-    case -2: 
-    case -1: 
-    default: 
-      return;
-    case 23001027: 
-      this.o = 0;
-    case 0: 
-      a(HardCodeUtil.a(2131714489));
+      if (paramInt != 23001027)
+      {
+        if (paramInt != -4)
+        {
+          if ((paramInt == -3) || (paramInt == -2) || (paramInt == -1)) {
+            return;
+          }
+          if (paramInt == 0) {}
+        }
+        else
+        {
+          a(HardCodeUtil.a(2131714417));
+          b("#ff777777");
+        }
+      }
+      else {
+        this.o = 0;
+      }
+      a(HardCodeUtil.a(2131714410));
       b("#ff777777");
-      return;
-    case -4: 
-      a(HardCodeUtil.a(2131714496));
-      b("#ff777777");
-      return;
     }
-    a(HardCodeUtil.a(2131714487));
-    b("#ff777777");
+    else
+    {
+      a(HardCodeUtil.a(2131714408));
+      b("#ff777777");
+    }
   }
   
   public boolean b()
@@ -354,9 +347,9 @@ public class StructMsgItemButton
     return (!TextUtils.isEmpty(this.as)) && (!TextUtils.isEmpty(this.au)) && (!TextUtils.isEmpty(this.at)) && ("pay".equals(this.jdField_c_of_type_JavaLangString));
   }
   
-  public int c()
+  protected int c()
   {
-    return 2131363969;
+    return 2131363896;
   }
   
   public boolean c()
@@ -369,7 +362,11 @@ public class StructMsgItemButton
         return false;
       }
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label20:
+      break label20;
+    }
     return true;
   }
   
@@ -385,7 +382,7 @@ public class StructMsgItemButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemButton
  * JD-Core Version:    0.7.0.1
  */

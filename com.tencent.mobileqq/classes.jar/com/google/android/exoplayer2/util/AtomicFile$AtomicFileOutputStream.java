@@ -29,16 +29,12 @@ final class AtomicFile$AtomicFileOutputStream
     try
     {
       this.fileOutputStream.getFD().sync();
-      this.fileOutputStream.close();
-      return;
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        Log.w("AtomicFile", "Failed to sync file descriptor:", localIOException);
-      }
+      Log.w("AtomicFile", "Failed to sync file descriptor:", localIOException);
     }
+    this.fileOutputStream.close();
   }
   
   public void flush()
@@ -63,7 +59,7 @@ final class AtomicFile$AtomicFileOutputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.AtomicFile.AtomicFileOutputStream
  * JD-Core Version:    0.7.0.1
  */

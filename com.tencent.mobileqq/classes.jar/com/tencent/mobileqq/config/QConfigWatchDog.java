@@ -33,8 +33,10 @@ public class QConfigWatchDog
       while (i < j)
       {
         String str = arrayOfStackTraceElement[i].toString();
-        if ((!str.contains("com.tencent.mobileqq.config.QConfigWatchDog")) && (!str.contains("com.qq.android.dexposed.DexposedBridge")) && (!str.contains("me.weishu.epic.art")) && (!str.contains("java.lang.reflect.Method.invoke")) && (!str.contains("dalvik.system.VMStack.getThreadStackTrace")) && (!str.contains("java.lang.Thread.getStackTrace")) && (!str.contains("org.json.JSONTokener")) && (!str.contains("org.json.JSONObject.<init>"))) {
-          localStringBuilder.append(str).append("\n");
+        if ((!str.contains("com.tencent.mobileqq.config.QConfigWatchDog")) && (!str.contains("com.qq.android.dexposed.DexposedBridge")) && (!str.contains("me.weishu.epic.art")) && (!str.contains("java.lang.reflect.Method.invoke")) && (!str.contains("dalvik.system.VMStack.getThreadStackTrace")) && (!str.contains("java.lang.Thread.getStackTrace")) && (!str.contains("org.json.JSONTokener")) && (!str.contains("org.json.JSONObject.<init>")))
+        {
+          localStringBuilder.append(str);
+          localStringBuilder.append("\n");
         }
         i += 1;
       }
@@ -50,16 +52,32 @@ public class QConfigWatchDog
   
   private static void b(Exception paramException, String paramString1, String paramString2)
   {
-    CaughtExceptionReportProxy.e(new QConfigureException(paramException, "TAG: " + paramString2 + " Message: " + paramException.getMessage()), paramString1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAG: ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" Message: ");
+    localStringBuilder.append(paramException.getMessage());
+    CaughtExceptionReportProxy.e(new QConfigureException(paramException, localStringBuilder.toString()), paramString1);
   }
   
   public void a(IQConfigProcessor paramIQConfigProcessor, QConfItem[] paramArrayOfQConfItem, int paramInt, Exception paramException)
   {
     int i = paramIQConfigProcessor.type();
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfigWatchDog", 2, "handleParsedJsonOrXmlException, parsed type=" + i + ", version=" + paramInt, paramException);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleParsedJsonOrXmlException, parsed type=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", version=");
+      localStringBuilder.append(paramInt);
+      QLog.d("QConfigWatchDog", 2, localStringBuilder.toString(), paramException);
     }
-    b(paramException, "parsed config failed, type=" + i + ", version=" + paramInt, "QConfigWatchDog_parsedConfig");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parsed config failed, type=");
+    localStringBuilder.append(i);
+    localStringBuilder.append(", version=");
+    localStringBuilder.append(paramInt);
+    b(paramException, localStringBuilder.toString(), "QConfigWatchDog_parsedConfig");
     b(paramIQConfigProcessor, paramArrayOfQConfItem, paramInt, paramException);
   }
   
@@ -83,7 +101,7 @@ public class QConfigWatchDog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.QConfigWatchDog
  * JD-Core Version:    0.7.0.1
  */

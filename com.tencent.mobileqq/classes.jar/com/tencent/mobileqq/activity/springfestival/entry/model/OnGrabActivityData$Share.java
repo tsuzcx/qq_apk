@@ -42,12 +42,44 @@ public class OnGrabActivityData$Share
   
   public String toString()
   {
-    return "Share{bgUrl='" + this.bgUrl + '\'' + ", shareBgUrl='" + this.shareBgUrl + '\'' + ", logoImgUrl='" + this.logoImgUrl + '\'' + ", nameWording='" + this.nameWording + '\'' + ", greetWording='" + this.greetWording + '\'' + ", qrImgUrl='" + this.qrImgUrl + '\'' + ", bottomWording='" + this.bottomWording + '\'' + ", btnImgUrl='" + this.btnImgUrl + '\'' + ", btnPressImgUrl='" + this.btnPressImgUrl + '\'' + ", btnImgApngUrl='" + this.btnImgApngUrl + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Share{bgUrl='");
+    localStringBuilder.append(this.bgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", shareBgUrl='");
+    localStringBuilder.append(this.shareBgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", logoImgUrl='");
+    localStringBuilder.append(this.logoImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", nameWording='");
+    localStringBuilder.append(this.nameWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", greetWording='");
+    localStringBuilder.append(this.greetWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", qrImgUrl='");
+    localStringBuilder.append(this.qrImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bottomWording='");
+    localStringBuilder.append(this.bottomWording);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", btnImgUrl='");
+    localStringBuilder.append(this.btnImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", btnPressImgUrl='");
+    localStringBuilder.append(this.btnPressImgUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", btnImgApngUrl='");
+    localStringBuilder.append(this.btnImgApngUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.OnGrabActivityData.Share
  * JD-Core Version:    0.7.0.1
  */

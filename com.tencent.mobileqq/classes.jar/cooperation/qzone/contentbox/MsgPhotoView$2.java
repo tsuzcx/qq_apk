@@ -13,20 +13,22 @@ class MsgPhotoView$2
   
   public void run()
   {
-    if ((this.this$0.mContext == null) || (this.this$0.mUiHandler == null)) {}
-    Object localObject;
-    do
+    if (this.this$0.mContext != null)
     {
-      return;
-      localObject = FaceDrawable.getDefaultDrawable(1, 3);
+      if (this.this$0.mUiHandler == null) {
+        return;
+      }
+      Object localObject = FaceDrawable.getDefaultDrawable(1, 3);
       localObject = FaceDrawable.getFaceDrawable(((BaseActivity)this.this$0.mContext).app, 1, this.val$data.user_avatar, 3, (Drawable)localObject, (Drawable)localObject, null);
-    } while (this.this$0.mUiHandler == null);
-    this.this$0.mUiHandler.obtainMessage(10001, localObject).sendToTarget();
+      if (this.this$0.mUiHandler != null) {
+        this.this$0.mUiHandler.obtainMessage(10001, localObject).sendToTarget();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgPhotoView.2
  * JD-Core Version:    0.7.0.1
  */

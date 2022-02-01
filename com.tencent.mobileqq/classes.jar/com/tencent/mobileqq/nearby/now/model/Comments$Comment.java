@@ -52,9 +52,10 @@ public class Comments$Comment
   
   public boolean equals(Object paramObject)
   {
+    boolean bool3 = paramObject instanceof Comment;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramObject instanceof Comment))
+    if (bool3)
     {
       paramObject = (Comment)paramObject;
       bool1 = bool2;
@@ -95,7 +96,7 @@ public class Comments$Comment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.Comments.Comment
  * JD-Core Version:    0.7.0.1
  */

@@ -22,17 +22,21 @@ public final class ah
   public final void a(j paramj)
   {
     paramj.a(this.a, 0);
-    if (this.d != null) {
-      paramj.a(this.d, 1);
+    String str = this.d;
+    if (str != null) {
+      paramj.a(str, 1);
     }
-    if (this.b != null) {
-      paramj.a(this.b, 2);
+    str = this.b;
+    if (str != null) {
+      paramj.a(str, 2);
     }
-    if (this.e != null) {
-      paramj.a(this.e, 3);
+    str = this.e;
+    if (str != null) {
+      paramj.a(str, 3);
     }
-    if (this.c != null) {
-      paramj.a(this.c, 4);
+    str = this.c;
+    if (str != null) {
+      paramj.a(str, 4);
     }
   }
   
@@ -40,7 +44,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.ah
  * JD-Core Version:    0.7.0.1
  */

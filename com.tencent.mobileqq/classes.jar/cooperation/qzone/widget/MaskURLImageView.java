@@ -24,16 +24,6 @@ public class MaskURLImageView
   private float playIconSize;
   private float textSize;
   
-  static
-  {
-    if (!MaskURLImageView.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public MaskURLImageView(Context paramContext)
   {
     super(paramContext);
@@ -54,25 +44,28 @@ public class MaskURLImageView
   
   private void drawMask(Canvas paramCanvas)
   {
-    if (this.needSowPlayIcon) {
+    if (this.needSowPlayIcon)
+    {
       drawPlayIcon(paramCanvas);
+      return;
     }
-    while (this.num <= 0) {
+    if (this.num <= 0) {
       return;
     }
     paramCanvas.drawColor(1711276032);
     int i = (int)(this.paint.measureText(String.valueOf(this.num)) + this.paddingSize + this.moreIconSize);
     int j = (getWidth() - i) / 2;
-    int k = (int)((getHeight() - this.moreIconSize) / 2.0F);
-    int m = (int)(j + this.moreIconSize);
-    int n = (int)(k + this.moreIconSize);
+    float f1 = getHeight();
+    float f2 = this.moreIconSize;
+    int k = (int)((f1 - f2) / 2.0F);
+    int m = (int)(j + f2);
+    int n = (int)(k + f2);
     Object localObject = this.paint.getFontMetrics();
-    float f1 = ((Paint.FontMetrics)localObject).bottom;
-    float f2 = ((Paint.FontMetrics)localObject).top;
+    f1 = ((Paint.FontMetrics)localObject).bottom;
+    f2 = ((Paint.FontMetrics)localObject).top;
     f1 = (getHeight() - (f1 - f2)) / 2.0F;
     f2 = ((Paint.FontMetrics)localObject).top;
-    localObject = getResources().getDrawable(2130848068);
-    assert (localObject != null);
+    localObject = getResources().getDrawable(2130847939);
     ((Drawable)localObject).setBounds(j, k, m, n);
     ((Drawable)localObject).draw(paramCanvas);
     paramCanvas.drawText(String.valueOf(this.num), i + j, f1 - f2, this.paint);
@@ -82,10 +75,12 @@ public class MaskURLImageView
   {
     int i = (int)((getWidth() - this.playIconSize) / 2.0F);
     int j = (int)((getHeight() - this.playIconSize) / 2.0F);
-    Drawable localDrawable = getResources().getDrawable(2130848683);
+    Drawable localDrawable = getResources().getDrawable(2130848562);
     if (localDrawable != null)
     {
-      localDrawable.setBounds(i, j, (int)(i + this.playIconSize), (int)(j + this.playIconSize));
+      float f1 = i;
+      float f2 = this.playIconSize;
+      localDrawable.setBounds(i, j, (int)(f1 + f2), (int)(j + f2));
       localDrawable.draw(paramCanvas);
     }
   }
@@ -104,7 +99,7 @@ public class MaskURLImageView
     this.paint.setTextAlign(Paint.Align.RIGHT);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     drawMask(paramCanvas);
@@ -139,7 +134,7 @@ public class MaskURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.widget.MaskURLImageView
  * JD-Core Version:    0.7.0.1
  */

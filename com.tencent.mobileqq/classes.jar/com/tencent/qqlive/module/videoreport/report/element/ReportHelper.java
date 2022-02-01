@@ -29,10 +29,10 @@ public class ReportHelper
       return null;
     }
     paramDataEntity = (WeakReference)DataEntityOperator.getInnerParam(paramDataEntity, "logic_parent");
-    if (paramDataEntity == null) {}
-    for (paramDataEntity = null;; paramDataEntity = (View)paramDataEntity.get()) {
-      return paramDataEntity;
+    if (paramDataEntity == null) {
+      return null;
     }
+    return (View)paramDataEntity.get();
   }
   
   static View findParent(View paramView, DataEntity paramDataEntity)
@@ -50,23 +50,20 @@ public class ReportHelper
   
   static View findPathParent(View paramView, DataEntity paramDataEntity)
   {
-    DataEntity localDataEntity = paramDataEntity;
-    paramDataEntity = paramView;
+    View localView;
     do
     {
-      paramView = findParent(paramDataEntity, localDataEntity);
-      if (paramView == null) {
-        paramDataEntity = null;
+      localView = findParent(paramView, paramDataEntity);
+      if (localView == null) {
+        return null;
       }
-      do
-      {
-        return paramDataEntity;
-        localDataEntity = DataBinder.getDataEntity(paramView);
-        paramDataEntity = paramView;
-      } while (PathDataUtils.canCollect(localDataEntity));
-      paramDataEntity = paramView;
-    } while (PageFinder.findRelatedPage(paramView) == null);
-    return paramView;
+      paramDataEntity = DataBinder.getDataEntity(localView);
+      if (PathDataUtils.canCollect(paramDataEntity)) {
+        return localView;
+      }
+      paramView = localView;
+    } while (PageFinder.findRelatedPage(localView) == null);
+    return localView;
   }
   
   @NonNull
@@ -87,12 +84,10 @@ public class ReportHelper
       return d;
     }
     paramDataEntity = (Double)DataEntityOperator.getInnerParam(paramDataEntity, "element_exposure_min_rate");
-    if (paramDataEntity == null) {}
-    for (;;)
-    {
+    if (paramDataEntity == null) {
       return d;
-      d = paramDataEntity.doubleValue();
     }
+    return paramDataEntity.doubleValue();
   }
   
   @NonNull
@@ -124,77 +119,91 @@ public class ReportHelper
       return l;
     }
     paramDataEntity = (Long)DataEntityOperator.getInnerParam(paramDataEntity, "element_exposure_min_time");
-    if (paramDataEntity == null) {}
-    for (;;)
-    {
+    if (paramDataEntity == null) {
       return l;
-      l = paramDataEntity.longValue();
     }
+    return paramDataEntity.longValue();
   }
   
   private static boolean handleReportFirstPolicy(Object paramObject, String paramString, View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    paramObject = ExposurePolicyHelper.getEleExposeInfo(paramObject, paramView, paramString);
+    if (paramObject == null) {
       return true;
-      paramObject = ExposurePolicyHelper.getEleExposeInfo(paramObject, paramView, paramString);
-    } while ((paramObject == null) || (!paramObject.hasReport()));
+    }
+    if (!paramObject.hasReport()) {
+      return true;
+    }
     return paramObject.reportOverTime();
   }
   
   static boolean isViewExposed(View paramView, double paramDouble)
   {
-    if (paramView == null) {}
-    double d;
-    do
-    {
+    boolean bool2 = false;
+    if (paramView == null) {
       return false;
-      d = getElementExposureMinRate(DataBinder.getDataEntity(paramView));
-    } while ((paramDouble <= 0.0D) || (paramDouble < d));
-    return true;
+    }
+    double d = getElementExposureMinRate(DataBinder.getDataEntity(paramView));
+    boolean bool1 = bool2;
+    if (paramDouble > 0.0D)
+    {
+      bool1 = bool2;
+      if (paramDouble >= d) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   static boolean reportClick(@Nullable DataEntity paramDataEntity)
   {
-    if (emptyElementId(paramDataEntity)) {}
-    while (getClickPolicy(paramDataEntity) != ClickPolicy.REPORT_ALL) {
+    boolean bool2 = emptyElementId(paramDataEntity);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if (getClickPolicy(paramDataEntity) == ClickPolicy.REPORT_ALL) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   static boolean reportEndExposure(@Nullable View paramView)
   {
     paramView = DataBinder.getDataEntity(paramView);
-    if (emptyElementId(paramView)) {}
-    while (EndExposurePolicy.REPORT_ALL != getEndExposePolicy(paramView)) {
+    boolean bool2 = emptyElementId(paramView);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if (EndExposurePolicy.REPORT_ALL == getEndExposePolicy(paramView)) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   static boolean reportExposure(Object paramObject, String paramString, View paramView)
   {
     Object localObject = DataBinder.getDataEntity(paramView);
-    if (emptyElementId((DataEntity)localObject)) {}
-    do
-    {
-      do
-      {
-        return false;
-        localObject = getExposePolicy((DataEntity)localObject);
-      } while (localObject == ExposurePolicy.REPORT_NONE);
-      if (localObject == ExposurePolicy.REPORT_ALL) {
-        return true;
-      }
-    } while (localObject != ExposurePolicy.REPORT_FIRST);
-    return handleReportFirstPolicy(paramObject, paramString, paramView);
+    if (emptyElementId((DataEntity)localObject)) {
+      return false;
+    }
+    localObject = getExposePolicy((DataEntity)localObject);
+    if (localObject == ExposurePolicy.REPORT_NONE) {
+      return false;
+    }
+    if (localObject == ExposurePolicy.REPORT_ALL) {
+      return true;
+    }
+    if (localObject == ExposurePolicy.REPORT_FIRST) {
+      return handleReportFirstPolicy(paramObject, paramString, paramView);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ReportHelper
  * JD-Core Version:    0.7.0.1
  */

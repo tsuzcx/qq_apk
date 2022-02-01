@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.forward;
 
 import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiManager;
 import com.tencent.mobileqq.emoticon.EmotionJsonUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.emoticon.api.EmojiManagerServiceConstant;
+import com.tencent.mobileqq.emoticonview.EmotionPanelConstans;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
@@ -17,9 +17,9 @@ class ForwardPluginShareStructMsgOption$2
   
   public void run()
   {
-    Object localObject1 = EmoticonUtils.emoticonJsonFilePath.replace("[epId]", this.a);
-    boolean bool = FileUtils.a((String)localObject1);
-    Object localObject2 = EmoticonUtils.smallEmoticonJsonUrl.replace("[epId]", this.a);
+    Object localObject1 = EmotionPanelConstans.emoticonJsonFilePath.replace("[epId]", this.a);
+    boolean bool = FileUtils.fileExists((String)localObject1);
+    Object localObject2 = EmotionPanelConstans.smallEmoticonJsonUrl.replace("[epId]", this.a);
     localObject1 = new File((String)localObject1);
     if (!bool)
     {
@@ -32,14 +32,14 @@ class ForwardPluginShareStructMsgOption$2
     localObject2 = new EmoticonPackage();
     ((EmoticonPackage)localObject2).epId = this.a;
     ((EmoticonPackage)localObject2).jobType = 4;
-    localObject1 = FileUtils.a((File)localObject1);
+    localObject1 = FileUtils.fileToBytes((File)localObject1);
     ArrayList localArrayList = new ArrayList();
-    EmotionJsonUtils.a(this.this$0.a, (EmoticonPackage)localObject2, EmojiManager.c, (byte[])localObject1, localArrayList);
+    EmotionJsonUtils.parseSmallJson(this.this$0.a, (EmoticonPackage)localObject2, EmojiManagerServiceConstant.JSON_EMOSM_MALL, (byte[])localObject1, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPluginShareStructMsgOption.2
  * JD-Core Version:    0.7.0.1
  */

@@ -53,31 +53,25 @@ public class PageWebview
   static
   {
     boolean bool2 = true;
-    if (WnsConfig.getConfig("qqminiapp", "enable_embedded_video", 1) == 1)
-    {
+    boolean bool1;
+    if (WnsConfig.getConfig("qqminiapp", "enable_embedded_video", 1) == 1) {
       bool1 = true;
-      enableEmbeddedVideoConfiog = bool1;
-      if (WnsConfig.getConfig("qqminiapp", "enable_embedded_live", 1) != 1) {
-        break label62;
-      }
+    } else {
+      bool1 = false;
+    }
+    enableEmbeddedVideoConfiog = bool1;
+    if (WnsConfig.getConfig("qqminiapp", "enable_embedded_live", 1) == 1) {
       bool1 = true;
-      label34:
-      enableEmbeddedLiveConfig = bool1;
-      if (WnsConfig.getConfig("qqminiapp", "enable_embedded_element", 1) != 1) {
-        break label67;
-      }
-    }
-    label62:
-    label67:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      enableEmbeddedElementConfig = bool1;
-      return;
+    } else {
       bool1 = false;
-      break;
-      bool1 = false;
-      break label34;
     }
+    enableEmbeddedLiveConfig = bool1;
+    if (WnsConfig.getConfig("qqminiapp", "enable_embedded_element", 1) == 1) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    enableEmbeddedElementConfig = bool1;
   }
   
   public PageWebview(IMiniAppContext paramIMiniAppContext, AppBrandPageContainer paramAppBrandPageContainer, BrandPageWebview paramBrandPageWebview)
@@ -122,64 +116,68 @@ public class PageWebview
   
   public static Bitmap screenShot(WebView paramWebView, int paramInt1, int paramInt2)
   {
-    if ((paramWebView == null) || (paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return null;
-    }
-    Bitmap localBitmap = createBitmap(paramInt1, paramInt2);
-    if (localBitmap == null) {
-      return null;
-    }
-    Canvas localCanvas = new Canvas(localBitmap);
-    PaintFlagsDrawFilter localPaintFlagsDrawFilter;
-    float f;
-    if (paramWebView.getX5WebViewExtension() != null)
+    if ((paramWebView != null) && (paramInt1 > 0))
     {
-      localPaintFlagsDrawFilter = new PaintFlagsDrawFilter(134, 64);
-      paramInt2 = QbSdk.getTbsVersion(paramWebView.getContext());
-      if ((paramInt2 >= 43000) && (paramInt2 < 43105))
-      {
-        f = paramInt1 / paramWebView.getMeasuredWidth();
-        localCanvas.scale(f, f);
-        localCanvas.setDrawFilter(localPaintFlagsDrawFilter);
-        paramWebView.getX5WebViewExtension().snapshotVisible(localCanvas, false, false, false, false);
-        QMLog.d("PageWebview", "snapshot with snapshotVisible()");
-        localCanvas.setDrawFilter(null);
+      if (paramInt2 <= 0) {
+        return null;
       }
-    }
-    for (;;)
-    {
-      return localBitmap;
-      f = paramInt1 / paramWebView.getContentWidth();
-      localCanvas.scale(f, f);
-      localCanvas.setDrawFilter(localPaintFlagsDrawFilter);
-      paramWebView.getX5WebViewExtension().snapshotWholePage(localCanvas, false, false);
-      QMLog.d("PageWebview", "snapshot with snapshotWholePage()");
-      break;
-      f = paramInt1 / paramWebView.getMeasuredWidth();
+      Bitmap localBitmap = createBitmap(paramInt1, paramInt2);
+      if (localBitmap == null) {
+        return null;
+      }
+      Canvas localCanvas = new Canvas(localBitmap);
+      if (paramWebView.getX5WebViewExtension() != null)
+      {
+        PaintFlagsDrawFilter localPaintFlagsDrawFilter = new PaintFlagsDrawFilter(134, 64);
+        paramInt2 = QbSdk.getTbsVersion(paramWebView.getContext());
+        if ((paramInt2 >= 43000) && (paramInt2 < 43105))
+        {
+          f = paramInt1 / paramWebView.getMeasuredWidth();
+          localCanvas.scale(f, f);
+          localCanvas.setDrawFilter(localPaintFlagsDrawFilter);
+          paramWebView.getX5WebViewExtension().snapshotVisible(localCanvas, false, false, false, false);
+          QMLog.d("PageWebview", "snapshot with snapshotVisible()");
+        }
+        else
+        {
+          f = paramInt1 / paramWebView.getContentWidth();
+          localCanvas.scale(f, f);
+          localCanvas.setDrawFilter(localPaintFlagsDrawFilter);
+          paramWebView.getX5WebViewExtension().snapshotWholePage(localCanvas, false, false);
+          QMLog.d("PageWebview", "snapshot with snapshotWholePage()");
+        }
+        localCanvas.setDrawFilter(null);
+        return localBitmap;
+      }
+      float f = paramInt1 / paramWebView.getMeasuredWidth();
       localCanvas.scale(f, f);
       paramWebView = paramWebView.capturePicture();
       if (paramWebView != null) {
         paramWebView.draw(localCanvas);
       }
+      return localBitmap;
     }
+    return null;
   }
   
   public void destroy()
   {
     super.destroy();
-    if (this.mAppBrandPageContainer != null) {
-      this.mAppBrandPageContainer.notifyOnPageWebViewDestory();
+    Object localObject = this.mAppBrandPageContainer;
+    if (localObject != null) {
+      ((AppBrandPageContainer)localObject).notifyOnPageWebViewDestory();
     }
-    if ((this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap() != null))
+    localObject = this.mEmbeddedWidgetClientFactory;
+    if ((localObject != null) && (((EmbeddedWidgetClientFactory)localObject).getEmbeddedWidgetClientHolderMap() != null))
     {
-      Iterator localIterator = this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap().entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap().entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)localIterator.next()).getValue();
+        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)((Iterator)localObject).next()).getValue();
         if (localEmbeddedWidgetClientHolder != null) {
           localEmbeddedWidgetClientHolder.webViewDestroy();
         }
-        localIterator.remove();
+        ((Iterator)localObject).remove();
       }
     }
   }
@@ -201,100 +199,116 @@ public class PageWebview
   
   public boolean handleBackPressed()
   {
-    if (this.mBrandPageWebview != null) {
-      return this.mBrandPageWebview.handleBackPressed();
+    BrandPageWebview localBrandPageWebview = this.mBrandPageWebview;
+    if (localBrandPageWebview != null) {
+      return localBrandPageWebview.handleBackPressed();
     }
     return false;
   }
   
   public void init()
   {
-    boolean bool4 = true;
+    boolean bool3 = false;
     setScrollBarStyle(0);
     if (getX5WebViewExtension() != null) {
       getX5WebViewExtension().setVerticalTrackDrawable(null);
     }
-    boolean bool3;
-    boolean bool1;
-    try
+    for (;;)
     {
-      if (getX5WebViewExtension() != null)
+      boolean bool5;
+      try
       {
-        long l = System.currentTimeMillis();
-        this.mEmbeddedWidgetClientFactory = new EmbeddedWidgetClientFactory();
-        Object localObject = getX5WebViewExtension();
-        EmbeddedWidgetClientFactory localEmbeddedWidgetClientFactory = this.mEmbeddedWidgetClientFactory;
-        bool3 = ((IX5WebViewExtension)localObject).registerEmbeddedWidget(new String[] { "video" }, localEmbeddedWidgetClientFactory);
-        QMLog.d("miniapp-embedded", "registerEmbeddedWidget : " + bool3 + "; " + (System.currentTimeMillis() - l));
-        if (!bool3) {
-          reportEmbeddedSupportResult(780, "registerEmbeddedWidget false");
-        }
-        localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-        if (((MiniAppProxy)localObject).isDebugVersion())
+        if (getX5WebViewExtension() != null)
         {
-          localObject = ((MiniAppProxy)localObject).getAccount();
-          bool1 = AppLoaderFactory.g().getContext().getSharedPreferences((String)localObject + "_user_embedded_video_", 0).getBoolean("_user_embedded_video_", true);
-          bool2 = AppLoaderFactory.g().getContext().getSharedPreferences((String)localObject + "_user_embedded_live_", 0).getBoolean("_user_embedded_live_", true);
-          if ((!bool3) || (!bool1)) {
-            break label359;
+          long l = System.currentTimeMillis();
+          this.mEmbeddedWidgetClientFactory = new EmbeddedWidgetClientFactory();
+          Object localObject1 = getX5WebViewExtension();
+          Object localObject2 = this.mEmbeddedWidgetClientFactory;
+          bool4 = ((IX5WebViewExtension)localObject1).registerEmbeddedWidget(new String[] { "video" }, localObject2);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("registerEmbeddedWidget : ");
+          ((StringBuilder)localObject1).append(bool4);
+          ((StringBuilder)localObject1).append("; ");
+          ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+          QMLog.d("miniapp-embedded", ((StringBuilder)localObject1).toString());
+          if (!bool4) {
+            reportEmbeddedSupportResult(780, "registerEmbeddedWidget false");
           }
-          bool1 = true;
-          break label346;
-          this.mEmbeddedState.setEnableEmbeddedVideo(bool1);
-          this.mEmbeddedState.setEnableEmbeddedLive(bool2);
-          this.mEmbeddedState.setEnableEmbeddedElement(bool3);
+          localObject1 = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+          if (((MiniAppProxy)localObject1).isDebugVersion())
+          {
+            localObject1 = ((MiniAppProxy)localObject1).getAccount();
+            localObject2 = AppLoaderFactory.g().getContext();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append("_user_embedded_video_");
+            bool1 = ((Context)localObject2).getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("_user_embedded_video_", true);
+            localObject2 = AppLoaderFactory.g().getContext();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append("_user_embedded_live_");
+            bool5 = ((Context)localObject2).getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("_user_embedded_live_", true);
+            if ((bool4) && (bool1))
+            {
+              bool1 = true;
+              break label410;
+            }
+          }
+          else
+          {
+            if ((!bool4) || (!enableEmbeddedVideoConfiog)) {
+              break label434;
+            }
+            bool1 = true;
+            if ((!bool4) || (!enableEmbeddedLiveConfig)) {
+              break label439;
+            }
+            bool2 = true;
+            if ((!bool4) || (!enableEmbeddedElementConfig)) {
+              break label444;
+            }
+            bool4 = true;
+            bool3 = bool1;
+            bool1 = bool4;
+            this.mEmbeddedState.setEnableEmbeddedVideo(bool3);
+            this.mEmbeddedState.setEnableEmbeddedLive(bool2);
+            this.mEmbeddedState.setEnableEmbeddedElement(bool1);
+          }
         }
         else
         {
-          if ((!bool3) || (!enableEmbeddedVideoConfiog)) {
-            break label372;
-          }
-          bool1 = true;
-          label293:
-          if ((!bool3) || (!enableEmbeddedLiveConfig)) {
-            break label377;
-          }
-          bool2 = true;
-          label305:
-          if ((!bool3) || (!enableEmbeddedElementConfig)) {
-            break label382;
-          }
-          bool3 = bool4;
-          break label369;
+          reportEmbeddedSupportResult(780, "getX5WebViewExtension null");
+          return;
         }
       }
-      else
+      catch (Throwable localThrowable)
       {
-        reportEmbeddedSupportResult(780, "getX5WebViewExtension null");
+        QMLog.e("miniapp-embedded", "registerEmbeddedWidget error,", localThrowable);
         return;
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.e("miniapp-embedded", "registerEmbeddedWidget error,", localThrowable);
-      return;
-    }
-    label346:
-    if ((bool3) && (bool2)) {}
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      break;
-      label359:
+      boolean bool1 = false;
+      label410:
+      boolean bool2 = bool3;
+      if (bool4)
+      {
+        bool2 = bool3;
+        if (bool5) {
+          bool2 = true;
+        }
+      }
+      bool3 = bool1;
+      bool1 = bool4;
+      continue;
+      label434:
       bool1 = false;
-      break label346;
-    }
-    for (;;)
-    {
-      label369:
-      break;
-      label372:
-      bool1 = false;
-      break label293;
-      label377:
+      continue;
+      label439:
       bool2 = false;
-      break label305;
-      label382:
-      bool3 = false;
+      continue;
+      label444:
+      boolean bool4 = false;
+      bool3 = bool1;
+      bool1 = bool4;
     }
   }
   
@@ -303,7 +317,12 @@ public class PageWebview
     if (this.mAppBrandPageContainer.getShowingPage() != null)
     {
       String str = this.mAppBrandPageContainer.getShowingPage().getCurShowingUrl();
-      QMLog.d("PageWebview", "onHide :" + str + "  id:" + this.mPageWebviewId);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onHide :");
+      localStringBuilder.append(str);
+      localStringBuilder.append("  id:");
+      localStringBuilder.append(this.mPageWebviewId);
+      QMLog.d("PageWebview", localStringBuilder.toString());
       ThreadManager.getSubThreadHandler().post(new PageWebview.2(this, str));
     }
   }
@@ -311,19 +330,25 @@ public class PageWebview
   public void onPause()
   {
     super.onPause();
-    QMLog.d("PageWebview", "pagewebview onPause, id is  " + this.mPageWebviewId);
-    if (this.mAppBrandPageContainer != null) {
-      this.mAppBrandPageContainer.notifyOnPageWebViewPause(this.mPageWebviewId);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("pagewebview onPause, id is  ");
+    ((StringBuilder)localObject).append(this.mPageWebviewId);
+    QMLog.d("PageWebview", ((StringBuilder)localObject).toString());
+    localObject = this.mAppBrandPageContainer;
+    if (localObject != null) {
+      ((AppBrandPageContainer)localObject).notifyOnPageWebViewPause(this.mPageWebviewId);
     }
-    if (this.mBrandPageWebview != null) {
-      this.mBrandPageWebview.evaluateJs("document.title=\"\"", null);
+    localObject = this.mBrandPageWebview;
+    if (localObject != null) {
+      ((BrandPageWebview)localObject).evaluateJs("document.title=\"\"", null);
     }
-    if ((this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap() != null))
+    localObject = this.mEmbeddedWidgetClientFactory;
+    if ((localObject != null) && (((EmbeddedWidgetClientFactory)localObject).getEmbeddedWidgetClientHolderMap() != null))
     {
-      Iterator localIterator = this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap().entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap().entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)localIterator.next()).getValue();
+        EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)((Map.Entry)((Iterator)localObject).next()).getValue();
         if (localEmbeddedWidgetClientHolder != null) {
           localEmbeddedWidgetClientHolder.webViewPause();
         }
@@ -335,53 +360,73 @@ public class PageWebview
   public void onResume()
   {
     super.onResume();
-    QMLog.d("PageWebview", "pagewebview onResume, id is " + this.mPageWebviewId);
-    if (this.mAppBrandPageContainer != null) {
-      this.mAppBrandPageContainer.notifyOnPageWebViewResume();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("pagewebview onResume, id is ");
+    ((StringBuilder)localObject1).append(this.mPageWebviewId);
+    QMLog.d("PageWebview", ((StringBuilder)localObject1).toString());
+    localObject1 = this.mAppBrandPageContainer;
+    if (localObject1 != null) {
+      ((AppBrandPageContainer)localObject1).notifyOnPageWebViewResume();
     }
-    if ((this.mBrandPageWebview != null) && (this.mAppBrandPageContainer != null) && (this.mContext != null)) {
-      if (this.mContext.getMiniAppInfo() == null) {
-        break label257;
+    Object localObject2;
+    if ((this.mBrandPageWebview != null) && (this.mAppBrandPageContainer != null))
+    {
+      localObject1 = this.mContext;
+      if (localObject1 != null)
+      {
+        if (((IMiniAppContext)localObject1).getMiniAppInfo() != null) {
+          localObject1 = this.mContext.getMiniAppInfo().appId;
+        } else {
+          localObject1 = null;
+        }
+        if (this.mAppBrandPageContainer.getShowingPage() != null) {
+          localObject2 = this.mAppBrandPageContainer.getShowingPage().getCurShowingUrl();
+        } else {
+          localObject2 = null;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("\"");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(":");
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(":VISIBLE\"");
+        localObject1 = localStringBuilder.toString();
+        localObject2 = this.mBrandPageWebview;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("document.title=");
+        localStringBuilder.append((String)localObject1);
+        ((BrandPageWebview)localObject2).evaluateJs(localStringBuilder.toString(), null);
       }
     }
-    label257:
-    for (Object localObject1 = this.mContext.getMiniAppInfo().appId;; localObject1 = null)
+    localObject1 = this.mEmbeddedWidgetClientFactory;
+    if ((localObject1 != null) && (((EmbeddedWidgetClientFactory)localObject1).getEmbeddedWidgetClientHolderMap() != null))
     {
-      if (this.mAppBrandPageContainer.getShowingPage() != null) {}
-      for (Object localObject2 = this.mAppBrandPageContainer.getShowingPage().getCurShowingUrl();; localObject2 = null)
+      localObject1 = this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap().entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject1 = "\"" + (String)localObject1 + ":" + (String)localObject2 + ":VISIBLE\"";
-        this.mBrandPageWebview.evaluateJs("document.title=" + (String)localObject1, null);
-        if ((this.mEmbeddedWidgetClientFactory != null) && (this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap() != null))
-        {
-          localObject1 = this.mEmbeddedWidgetClientFactory.getEmbeddedWidgetClientHolderMap().entrySet().iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (EmbeddedWidgetClientHolder)((Map.Entry)((Iterator)localObject1).next()).getValue();
-            if (localObject2 != null) {
-              ((EmbeddedWidgetClientHolder)localObject2).webViewResume();
-            }
-          }
+        localObject2 = (EmbeddedWidgetClientHolder)((Map.Entry)((Iterator)localObject1).next()).getValue();
+        if (localObject2 != null) {
+          ((EmbeddedWidgetClientHolder)localObject2).webViewResume();
         }
-        return;
       }
     }
   }
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.webviewScrollListenerList != null) && (this.webviewScrollListenerList.size() > 0))
+    Object localObject = this.webviewScrollListenerList;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      Iterator localIterator = this.webviewScrollListenerList.iterator();
-      while (localIterator.hasNext()) {
-        ((PageWebview.OnWebviewScrollListener)localIterator.next()).onVerticalScroll(paramInt2);
+      localObject = this.webviewScrollListenerList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PageWebview.OnWebviewScrollListener)((Iterator)localObject).next()).onVerticalScroll(paramInt2);
       }
     }
     this.scrollY = paramInt2;
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     JSONObject localJSONObject2 = new JSONObject();
@@ -391,26 +436,24 @@ public class PageWebview
       localJSONObject2.put("windowWidth", (int)(paramInt1 / DisplayUtil.getDensity(getContext())));
       localJSONObject2.put("windowHeight", (int)(paramInt2 / DisplayUtil.getDensity(getContext())));
       localJSONObject1.put("size", localJSONObject2);
-      this.mContext.performAction(ServiceSubscribeEvent.obtain("onViewDidResize", localJSONObject1.toString(), getPageWebViewId()));
-      if (this.mPageJsLoadSucc)
-      {
-        this.mBrandPageWebview.evaluateSubscribeJS("onViewDidResize", localJSONObject1.toString(), getPageWebViewId());
-        return;
-      }
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QMLog.e("PageWebview", "onSizeChanged, JSONException!", localJSONException);
-      }
-      QMLog.d("PageWebview", "page not ready, do nothing.");
+      QMLog.e("PageWebview", "onSizeChanged, JSONException!", localJSONException);
     }
+    this.mContext.performAction(ServiceSubscribeEvent.obtain("onViewDidResize", localJSONObject1.toString(), getPageWebViewId()));
+    if (this.mPageJsLoadSucc)
+    {
+      this.mBrandPageWebview.evaluateSubscribeJS("onViewDidResize", localJSONObject1.toString(), getPageWebViewId());
+      return;
+    }
+    QMLog.d("PageWebview", "page not ready, do nothing.");
   }
   
   public void removeWebviewScrollListener(PageWebview.OnWebviewScrollListener paramOnWebviewScrollListener)
   {
-    if ((this.webviewScrollListenerList != null) && (this.webviewScrollListenerList.contains(paramOnWebviewScrollListener))) {
+    ArrayList localArrayList = this.webviewScrollListenerList;
+    if ((localArrayList != null) && (localArrayList.contains(paramOnWebviewScrollListener))) {
       this.webviewScrollListenerList.remove(paramOnWebviewScrollListener);
     }
   }
@@ -435,7 +478,7 @@ public class PageWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.PageWebview
  * JD-Core Version:    0.7.0.1
  */

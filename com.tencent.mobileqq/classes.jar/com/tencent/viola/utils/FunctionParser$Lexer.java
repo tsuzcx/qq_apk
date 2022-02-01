@@ -91,24 +91,31 @@ class FunctionParser$Lexer
       char c = this.source.charAt(this.pointer);
       if (c == ' ')
       {
-        int j = this.pointer;
+        j = this.pointer;
         this.pointer = (j + 1);
-        if (i == j) {
-          i += 1;
+        if (i != j) {
+          break;
         }
+        i += 1;
       }
-      else if ((isCharacterOrDigit(c)) || (c == '.') || (c == '%') || (c == '-') || (c == '+'))
+      else
       {
-        this.pointer += 1;
-      }
-      else if (i == this.pointer)
-      {
+        if ((!isCharacterOrDigit(c)) && (c != '.') && (c != '%') && (c != '-') && (c != '+'))
+        {
+          j = this.pointer;
+          if (i != j) {
+            break;
+          }
+          this.pointer = (j + 1);
+          break;
+        }
         this.pointer += 1;
       }
     }
-    if (i != this.pointer)
+    int j = this.pointer;
+    if (i != j)
     {
-      moveOn(this.source.substring(i, this.pointer));
+      moveOn(this.source.substring(i, j));
       return true;
     }
     this.current = null;
@@ -118,7 +125,7 @@ class FunctionParser$Lexer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.utils.FunctionParser.Lexer
  * JD-Core Version:    0.7.0.1
  */

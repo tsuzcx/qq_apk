@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_comment
   extends JceStruct
@@ -55,24 +56,27 @@ public final class cell_comment
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.num, 0);
-    if (this.commments != null) {
-      paramJceOutputStream.write(this.commments, 1);
+    Object localObject = this.commments;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.main_comment != null) {
-      paramJceOutputStream.write(this.main_comment, 2);
+    localObject = this.main_comment;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
     paramJceOutputStream.write(this.unreadCnt, 3);
     paramJceOutputStream.write(this.actiontype, 4);
     paramJceOutputStream.write(this.iRealCount, 5);
     paramJceOutputStream.write(this.displayflag, 6);
-    if (this.plug_in_info != null) {
-      paramJceOutputStream.write(this.plug_in_info, 7);
+    localObject = this.plug_in_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_comment
  * JD-Core Version:    0.7.0.1
  */

@@ -5,18 +5,18 @@ import java.util.ArrayList;
 
 final class LocalBroadcastManager$BroadcastRecord
 {
-  final Intent jdField_a_of_type_AndroidContentIntent;
-  final ArrayList<LocalBroadcastManager.ReceiverRecord> jdField_a_of_type_JavaUtilArrayList;
+  final Intent intent;
+  final ArrayList<LocalBroadcastManager.ReceiverRecord> receivers;
   
   LocalBroadcastManager$BroadcastRecord(Intent paramIntent, ArrayList<LocalBroadcastManager.ReceiverRecord> paramArrayList)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.intent = paramIntent;
+    this.receivers = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.localbroadcastmanager.content.LocalBroadcastManager.BroadcastRecord
  * JD-Core Version:    0.7.0.1
  */

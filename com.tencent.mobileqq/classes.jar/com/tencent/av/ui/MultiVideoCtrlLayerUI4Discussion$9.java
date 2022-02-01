@@ -11,12 +11,17 @@ class MultiVideoCtrlLayerUI4Discussion$9
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.w(this.a.d, 1, "showConfirmBoxToHangup, no, mRelationId[" + this.a.b + "]");
+    paramDialogInterface = this.a.d;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showConfirmBoxToHangup, no, mRelationId[");
+    localStringBuilder.append(this.a.b);
+    localStringBuilder.append("]");
+    QLog.w(paramDialogInterface, 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion.9
  * JD-Core Version:    0.7.0.1
  */

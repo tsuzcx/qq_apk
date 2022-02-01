@@ -12,18 +12,19 @@ public class GestureMgr
   
   public static GestureMgr a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr == null)
+    if (jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr == null) {
+      try
       {
-        GestureMgr localGestureMgr = new GestureMgr();
-        localGestureMgr.b();
-        jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr = localGestureMgr;
+        if (jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr == null)
+        {
+          GestureMgr localGestureMgr = new GestureMgr();
+          localGestureMgr.b();
+          jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr = localGestureMgr;
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr;
   }
   
   public static void a()
@@ -55,7 +56,7 @@ public class GestureMgr
   
   public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrDownload.d();
+    return this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrDownload.c();
   }
   
   public boolean c()
@@ -67,15 +68,10 @@ public class GestureMgr
   {
     return this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrDownload.a == 1;
   }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrDownload.c();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureMgr
  * JD-Core Version:    0.7.0.1
  */

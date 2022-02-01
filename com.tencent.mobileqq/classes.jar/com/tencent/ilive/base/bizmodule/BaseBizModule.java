@@ -11,20 +11,21 @@ import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.ilive.base.component.ComponentFactory;
 import com.tencent.ilive.base.event.ModuleEvent;
 import com.tencent.ilive.enginemanager.BizEngineMgr;
+import com.tencent.ilive.uicomponent.ActivityLifeCycle;
 import com.tencent.ilive.uicomponent.PageLifeCycle;
 import com.tencent.ilivesdk.domain.factory.LiveCaseFactory;
 import com.tencent.livesdk.accountengine.UserEngine;
 import com.tencent.livesdk.liveengine.LiveEngine;
 
 public abstract class BaseBizModule
-  implements BizModule, PageLifeCycle
+  implements BizModule, ActivityLifeCycle, PageLifeCycle
 {
   protected BizModuleBaseAdapter bizModuleBaseAdapter;
   protected BizModuleContext bizModuleContext;
   protected ComponentFactory componentFactory;
-  public Context context;
+  protected Context context;
   protected ModuleEvent event;
-  public boolean isUserVisibleHint = false;
+  protected boolean isUserVisibleHint = false;
   protected boolean landscape;
   protected LiveCaseFactory liveCaseFactory;
   protected LifecycleOwner mLifecycleOwner;
@@ -129,11 +130,27 @@ public abstract class BaseBizModule
   
   public void onExtDeActive() {}
   
+  public void onExtOnStart() {}
+  
+  public void onExtOnStop() {}
+  
   protected abstract void onInflateComponent();
   
   protected abstract void onInitComponentEvent();
   
   public void onLifecycleChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent) {}
+  
+  public void onRealActivityCreate(LifecycleOwner paramLifecycleOwner) {}
+  
+  public void onRealActivityDestroy(LifecycleOwner paramLifecycleOwner) {}
+  
+  public void onRealActivityPause(LifecycleOwner paramLifecycleOwner) {}
+  
+  public void onRealActivityResume(LifecycleOwner paramLifecycleOwner) {}
+  
+  public void onRealActivityStart(LifecycleOwner paramLifecycleOwner) {}
+  
+  public void onRealActivityStop(LifecycleOwner paramLifecycleOwner) {}
   
   public void onVisibleToUser(boolean paramBoolean)
   {
@@ -177,7 +194,7 @@ public abstract class BaseBizModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.base.bizmodule.BaseBizModule
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -22,8 +22,8 @@ public class CommonTroopListActivity
   extends IphoneTitleBarFragment
 {
   private int jdField_a_of_type_Int = -1;
-  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new CommonTroopListActivity.1(this);
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private CommonTroopListActivity.CommonTroopAdapter jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity$CommonTroopAdapter;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
@@ -37,43 +37,44 @@ public class CommonTroopListActivity
     PublicFragmentActivity.a(paramContext, localIntent, CommonTroopListActivity.class);
   }
   
-  public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131365155));
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131365035));
+    paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    if (paramLayoutInflater != null)
     {
-      setTitle(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131693458));
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("report_friend_type", -1);
-      this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getParcelableArrayListExtra("common_troop_list");
+      setTitle(paramLayoutInflater.getString(2131693413));
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getIntExtra("report_friend_type", -1);
+      this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getParcelableArrayListExtra("common_troop_list");
       this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity$CommonTroopAdapter = new CommonTroopListActivity.CommonTroopAdapter(this, null);
       this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity$CommonTroopAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity$CommonTroopAdapter);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
     }
     ReportController.b(null, "dc00898", "", "", "0X8009F53", "0X8009F53", this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
   
-  public int getContentLayoutId()
+  protected int getContentLayoutId()
   {
-    return 2131559392;
+    return 2131559267;
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getBaseActivity();
   }
   
   public void onDetach()
   {
     super.onDetach();
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.CommonTroopListActivity
  * JD-Core Version:    0.7.0.1
  */

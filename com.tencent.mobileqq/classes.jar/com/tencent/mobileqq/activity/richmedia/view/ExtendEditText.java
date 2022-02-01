@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Build.VERSION;
@@ -91,9 +92,10 @@ public class ExtendEditText
     int j = 0;
     if (paramSuperFontInfo == null)
     {
-      if (this.jdField_a_of_type_AndroidContentResColorStateList != null)
+      paramSuperFontInfo = this.jdField_a_of_type_AndroidContentResColorStateList;
+      if (paramSuperFontInfo != null)
       {
-        setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+        setTextColor(paramSuperFontInfo);
         setHintTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
       }
       setShadowLayer(0.0F, 0.0F, 0.0F, 0);
@@ -110,54 +112,44 @@ public class ExtendEditText
       i = ExtendEditText.SuperFontInfo.a(paramSuperFontInfo.jdField_e_of_type_JavaLangString);
       setTextColor(i);
       setHintTextColor(i);
-      if ((paramSuperFontInfo.jdField_a_of_type_Long & 0x2) == 0L) {
-        break label271;
-      }
-      setShadowLayer(AIOUtils.a(paramSuperFontInfo.jdField_e_of_type_Int, getResources()), AIOUtils.a(paramSuperFontInfo.jdField_c_of_type_Int, getResources()), AIOUtils.a(paramSuperFontInfo.d, getResources()), ExtendEditText.SuperFontInfo.a(paramSuperFontInfo.jdField_f_of_type_JavaLangString));
     }
-    label158:
+    else
+    {
+      setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+      setHintTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+    }
+    if ((paramSuperFontInfo.jdField_a_of_type_Long & 0x2) != 0L) {
+      setShadowLayer(AIOUtils.b(paramSuperFontInfo.jdField_e_of_type_Int, getResources()), AIOUtils.b(paramSuperFontInfo.jdField_c_of_type_Int, getResources()), AIOUtils.b(paramSuperFontInfo.d, getResources()), ExtendEditText.SuperFontInfo.a(paramSuperFontInfo.jdField_f_of_type_JavaLangString));
+    } else {
+      setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    }
     Object localObject;
     int k;
-    for (;;)
+    if (((paramSuperFontInfo.jdField_a_of_type_Long & 0x8) != 0L) && (paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList != null) && (paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size() >= 2))
     {
-      if (((paramSuperFontInfo.jdField_a_of_type_Long & 0x8) != 0L) && (paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList != null) && (paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size() >= 2))
+      localObject = new ArrayList(paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size());
+      k = paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size();
+      i = 0;
+      while (i < k)
       {
-        localObject = new ArrayList(paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size());
-        k = paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.size();
-        i = 0;
-        for (;;)
-        {
-          if (i < k)
-          {
-            ((ArrayList)localObject).add(Integer.valueOf(ExtendEditText.SuperFontInfo.a((String)paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.get(i))));
-            i += 1;
-            continue;
-            setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-            setHintTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-            break;
-            label271:
-            setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-            break label158;
-          }
-        }
-        setTextColorAnimation((ArrayList)localObject, paramSuperFontInfo.g * (k - 1));
+        ((ArrayList)localObject).add(Integer.valueOf(ExtendEditText.SuperFontInfo.a((String)paramSuperFontInfo.jdField_c_of_type_JavaUtilArrayList.get(i))));
+        i += 1;
       }
+      setTextColorAnimation((ArrayList)localObject, paramSuperFontInfo.g * (k - 1));
     }
-    while (((paramSuperFontInfo.jdField_a_of_type_Long & 0x4) != 0L) && (paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.size() >= 2) && (paramSuperFontInfo.b != null) && (paramSuperFontInfo.b.size() >= 2))
+    else
+    {
+      setTextColorAnimation(null, 0);
+    }
+    if (((paramSuperFontInfo.jdField_a_of_type_Long & 0x4) != 0L) && (paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList != null) && (paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.size() >= 2) && (paramSuperFontInfo.b != null) && (paramSuperFontInfo.b.size() >= 2))
     {
       k = paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.size();
       localObject = new int[k];
       i = 0;
-      for (;;)
+      while (i < k)
       {
-        if (i < k)
-        {
-          localObject[i] = ExtendEditText.SuperFontInfo.a((String)paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.get(i));
-          i += 1;
-          continue;
-          setTextColorAnimation(null, 0);
-          break;
-        }
+        localObject[i] = ExtendEditText.SuperFontInfo.a((String)paramSuperFontInfo.jdField_a_of_type_JavaUtilArrayList.get(i));
+        i += 1;
       }
       k = paramSuperFontInfo.b.size();
       float[] arrayOfFloat = new float[k];
@@ -168,31 +160,38 @@ public class ExtendEditText
         i += 1;
       }
       GradientDrawable.Orientation localOrientation = GradientDrawable.Orientation.LEFT_RIGHT;
-      switch (paramSuperFontInfo.jdField_f_of_type_Int)
+      i = paramSuperFontInfo.jdField_f_of_type_Int;
+      if (i != 0)
       {
-      default: 
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              paramSuperFontInfo = GradientDrawable.Orientation.LEFT_RIGHT;
+            } else {
+              paramSuperFontInfo = GradientDrawable.Orientation.BL_TR;
+            }
+          }
+          else {
+            paramSuperFontInfo = GradientDrawable.Orientation.TL_BR;
+          }
+        }
+        else {
+          paramSuperFontInfo = GradientDrawable.Orientation.TOP_BOTTOM;
+        }
+      }
+      else {
         paramSuperFontInfo = GradientDrawable.Orientation.LEFT_RIGHT;
       }
-      for (;;)
-      {
-        setGradientColor((int[])localObject, arrayOfFloat, paramSuperFontInfo);
-        return;
-        paramSuperFontInfo = GradientDrawable.Orientation.LEFT_RIGHT;
-        continue;
-        paramSuperFontInfo = GradientDrawable.Orientation.BL_TR;
-        continue;
-        paramSuperFontInfo = GradientDrawable.Orientation.TOP_BOTTOM;
-        continue;
-        paramSuperFontInfo = GradientDrawable.Orientation.TL_BR;
-      }
+      setGradientColor((int[])localObject, arrayOfFloat, paramSuperFontInfo);
+      return;
     }
     setGradientColor(null, null, null);
   }
   
   private int b()
   {
-    int i = 0;
-    int j = 0;
     Layout localLayout = getLayout();
     if (TextUtils.isEmpty(getText()))
     {
@@ -204,100 +203,107 @@ public class ExtendEditText
           this.jdField_a_of_type_JavaLangString = localCharSequence.toString();
           this.jdField_e_of_type_Int = ((int)getPaint().measureText(localCharSequence.toString()));
         }
-        j = this.jdField_e_of_type_Int;
+        return this.jdField_e_of_type_Int;
       }
     }
-    int m;
+    int i = 0;
+    if (localLayout == null) {
+      return 0;
+    }
+    int n = localLayout.getLineCount();
     int k;
-    do
+    for (int j = 0; i < n; j = k)
     {
-      do
-      {
-        return j;
-      } while (localLayout == null);
-      m = localLayout.getLineCount();
-      k = 0;
-      j = i;
-    } while (k >= m);
-    j = (int)localLayout.getLineRight(k);
-    if (i < j) {
-      i = j;
+      int m = (int)localLayout.getLineRight(i);
+      k = j;
+      if (j < m) {
+        k = m;
+      }
+      i += 1;
     }
-    for (;;)
-    {
-      k += 1;
-      break;
-    }
+    return j;
   }
   
   private void d()
   {
-    if (this.jdField_b_of_type_Int >= 0) {
-      setFilters(new InputFilter[] { new ExtendEditText.LengthFilter(this, this.jdField_b_of_type_Int) });
+    int i = this.jdField_b_of_type_Int;
+    if (i >= 0) {
+      setFilters(new InputFilter[] { new ExtendEditText.LengthFilter(this, i) });
     }
   }
   
   private void e()
   {
-    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfFloat == null)) {}
-    int i;
-    do
+    if (this.jdField_a_of_type_ArrayOfInt != null)
     {
-      return;
-      i = b();
-    } while ((this.jdField_a_of_type_AndroidGraphicsLinearGradient != null) && (i == this.jdField_c_of_type_Int));
-    this.jdField_c_of_type_Int = i;
-    Rect localRect = new Rect(0, 0, this.jdField_c_of_type_Int, getMeasuredHeight());
-    float f1;
-    float f2;
-    float f3;
-    float f4;
-    switch (ExtendEditText.3.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation.ordinal()])
-    {
-    default: 
-      f1 = localRect.left;
-      f2 = localRect.top;
-      f3 = localRect.right * 1.0F;
-      f4 = 1.0F * localRect.bottom;
-    }
-    for (;;)
-    {
+      if (this.jdField_a_of_type_ArrayOfFloat == null) {
+        return;
+      }
+      int i = b();
+      if ((this.jdField_a_of_type_AndroidGraphicsLinearGradient != null) && (i == this.jdField_c_of_type_Int)) {
+        return;
+      }
+      this.jdField_c_of_type_Int = i;
+      Rect localRect = new Rect(0, 0, this.jdField_c_of_type_Int, getMeasuredHeight());
+      switch (ExtendEditText.3.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation.ordinal()])
+      {
+      default: 
+        f1 = localRect.left;
+        f2 = localRect.top;
+        f3 = localRect.right * 1.0F;
+        i = localRect.bottom;
+      case 7: 
+      case 6: 
+      case 5: 
+      case 4: 
+      case 3: 
+      case 2: 
+        for (;;)
+        {
+          f4 = i * 1.0F;
+          break label376;
+          f2 = localRect.left;
+          f1 = localRect.top;
+          i = localRect.right;
+          break label291;
+          f1 = localRect.left;
+          f2 = localRect.bottom;
+          f3 = localRect.right * 1.0F;
+          i = localRect.top;
+          continue;
+          f1 = localRect.left;
+          f2 = localRect.bottom;
+          i = localRect.top;
+          break;
+          f1 = localRect.right;
+          f2 = localRect.bottom;
+          f3 = localRect.left * 1.0F;
+          i = localRect.top;
+          continue;
+          f2 = localRect.right;
+          f1 = localRect.top;
+          i = localRect.left;
+          label291:
+          float f5 = i * 1.0F;
+          f3 = f2;
+          f2 = f1;
+          f4 = f2;
+          f1 = f3;
+          f3 = f5;
+          break label376;
+          f1 = localRect.right;
+          f2 = localRect.top;
+          f3 = localRect.left * 1.0F;
+          i = localRect.bottom;
+        }
+      }
+      float f1 = localRect.left;
+      float f2 = localRect.top;
+      i = localRect.bottom;
+      float f4 = i * 1.0F;
+      float f3 = f1;
+      label376:
       this.jdField_a_of_type_AndroidGraphicsLinearGradient = new LinearGradient(f1, f2, f3, f4, this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, Shader.TileMode.CLAMP);
-      return;
-      f3 = localRect.left;
-      f2 = localRect.top;
-      f4 = 1.0F * localRect.bottom;
-      f1 = f3;
-      continue;
-      f1 = localRect.right;
-      f2 = localRect.top;
-      f3 = localRect.left * 1.0F;
-      f4 = 1.0F * localRect.bottom;
-      continue;
-      f1 = localRect.right;
-      f4 = localRect.top;
-      f3 = 1.0F * localRect.left;
-      f2 = f4;
-      continue;
-      f1 = localRect.right;
-      f2 = localRect.bottom;
-      f3 = localRect.left * 1.0F;
-      f4 = 1.0F * localRect.top;
-      continue;
-      f3 = localRect.left;
-      f2 = localRect.bottom;
-      f4 = 1.0F * localRect.top;
-      f1 = f3;
-      continue;
-      f1 = localRect.left;
-      f2 = localRect.bottom;
-      f3 = localRect.right * 1.0F;
-      f4 = 1.0F * localRect.top;
-      continue;
-      f1 = localRect.left;
-      f4 = localRect.top;
-      f3 = 1.0F * localRect.right;
-      f2 = f4;
     }
   }
   
@@ -312,52 +318,52 @@ public class ExtendEditText
   @TargetApi(14)
   int a()
   {
-    int j = 0;
-    int i;
     try
     {
       if (getLayout() == null) {
         return 0;
       }
-      i = Build.VERSION.SDK_INT;
+      int i = Build.VERSION.SDK_INT;
       if (i > 13)
       {
         try
         {
           i = getOffsetForPosition(getX(), getY());
           i = getLayout().getLineForOffset(i);
-          return i;
         }
         catch (Exception localException1)
         {
-          i = j;
           if (!QLog.isColorLevel()) {
-            return i;
+            break label114;
           }
         }
         QLog.w("ExtendEditText", 2, "", localException1);
         return 0;
       }
+      else if (i > 10)
+      {
+        i = a(getY());
+      }
+      else
+      {
+        i = a(getTop());
+      }
+      return i;
     }
     catch (Exception localException2)
     {
-      i = j;
-      if (QLog.isColorLevel())
-      {
+      if (QLog.isColorLevel()) {
         QLog.w("ExtendEditText", 2, "", localException2);
-        return 0;
-        if (i > 10) {
-          return a(getY());
-        }
-        i = a(getTop());
       }
+      return 0;
     }
-    return i;
+    label114:
+    return 0;
   }
   
   int a(float paramFloat)
   {
-    if ((this == null) || (getLayout() == null)) {
+    if (getLayout() == null) {
       return 0;
     }
     paramFloat = Math.max(0.0F, paramFloat - getTotalPaddingTop());
@@ -372,18 +378,16 @@ public class ExtendEditText
     if (localLayout == null) {
       return;
     }
-    int j = a();
-    int i = localLayout.getLineTop(j);
-    j = localLayout.getLineBottom(j);
-    int m = getScrollY();
-    int k = getScrollX();
-    if (Math.abs(m - i) <= Math.abs(j - m)) {}
-    for (;;)
-    {
-      scrollTo(k, i);
-      return;
+    int i = a();
+    int j = localLayout.getLineTop(i);
+    int k = localLayout.getLineBottom(i);
+    int n = getScrollY();
+    int m = getScrollX();
+    i = k;
+    if (Math.abs(n - j) <= Math.abs(k - n)) {
       i = j;
     }
+    scrollTo(m, i);
   }
   
   protected void b()
@@ -404,22 +408,24 @@ public class ExtendEditText
   protected void c()
   {
     Layout localLayout = getLayout();
-    if (localLayout == null) {}
-    do
-    {
+    if (localLayout == null) {
       return;
-      i = a() - 1;
-    } while (i < 0);
-    int i = localLayout.getLineTop(i);
+    }
+    int i = a() - 1;
+    if (i < 0) {
+      return;
+    }
+    i = localLayout.getLineTop(i);
     scrollTo(getScrollX(), i);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     TextPaint localTextPaint = getPaint();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation;
+    if (localObject != null)
     {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
+      boolean bool = ((TextColorAnimation)localObject).getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation);
       int i = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.a();
       setTextColor(i);
       setHintTextColor(i);
@@ -428,8 +434,9 @@ public class ExtendEditText
       }
     }
     e();
-    if (this.jdField_a_of_type_AndroidGraphicsLinearGradient != null) {
-      localTextPaint.setShader(this.jdField_a_of_type_AndroidGraphicsLinearGradient);
+    localObject = this.jdField_a_of_type_AndroidGraphicsLinearGradient;
+    if (localObject != null) {
+      localTextPaint.setShader((Shader)localObject);
     }
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidGraphicsLinearGradient != null) {
@@ -458,16 +465,18 @@ public class ExtendEditText
   {
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     paramInt1 = getLineCount();
-    if (this.jdField_a_of_type_Int != paramInt1)
+    paramInt2 = this.jdField_a_of_type_Int;
+    if (paramInt2 != paramInt1)
     {
-      if (this.jdField_a_of_type_Int < paramInt1)
+      if (paramInt2 < paramInt1)
       {
         if (paramInt1 > this.d) {
           b();
         }
-        return;
       }
-      c();
+      else {
+        c();
+      }
       return;
     }
     a();
@@ -494,19 +503,17 @@ public class ExtendEditText
     this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
     this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable$Orientation = paramOrientation;
-    if (Build.VERSION.SDK_INT >= 11) {}
-    try
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      setLayerType(0, null);
-      setDrawingCacheEnabled(false);
-      return;
-    }
-    catch (Exception paramArrayOfInt)
-    {
-      for (;;)
+      try
+      {
+        setLayerType(0, null);
+      }
+      catch (Exception paramArrayOfInt)
       {
         paramArrayOfInt.printStackTrace();
       }
+      setDrawingCacheEnabled(false);
     }
   }
   
@@ -522,21 +529,22 @@ public class ExtendEditText
   
   public void setTextColorAnimation(ArrayList<Integer> paramArrayList, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.cancel();
+    TextColorAnimation localTextColorAnimation = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation;
+    if (localTextColorAnimation != null) {
+      localTextColorAnimation.cancel();
     }
-    if ((paramArrayList == null) || (paramArrayList.size() < 2) || (paramInt == 0))
+    if ((paramArrayList != null) && (paramArrayList.size() >= 2) && (paramInt != 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = null;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = new TextColorAnimation(paramArrayList);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setFillAfter(true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setRepeatCount(-1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setRepeatMode(2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setInterpolator(new LinearInterpolator());
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setDuration(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setStartTime(0L);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = new TextColorAnimation(paramArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setFillAfter(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setRepeatCount(-1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setRepeatMode(2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setDuration(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation.setStartTime(0L);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation = null;
   }
   
   public void setTextEffect(String paramString)
@@ -551,7 +559,7 @@ public class ExtendEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.ExtendEditText
  * JD-Core Version:    0.7.0.1
  */

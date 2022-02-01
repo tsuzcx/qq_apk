@@ -2,8 +2,8 @@ package com.tencent.mobileqq.redtouch;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.matchchat.MatchChatMsgUtil;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,62 +23,77 @@ public class GetRedPointInfoReq
   
   private RedAppInfo a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq getRedPointInfo", 2, "path = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("path = ");
+      localStringBuilder.append(paramString);
+      QLog.d("GetRedPointInfoReq getRedPointInfo", 2, localStringBuilder.toString());
     }
-    if ("7720.772004".equals(paramString)) {}
-    for (paramString = MatchChatMsgUtil.a(paramQQAppInterface, paramString);; paramString = ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramString)) {
-      return RedTouchUtils.a(paramString);
+    if ("7720.772004".equals(paramString)) {
+      paramString = MatchChatMsgUtil.a(paramQQAppInterface, paramString);
+    } else {
+      paramString = ((IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getAppInfoByPath(paramString);
     }
+    return RedTouchUtils.a(paramString);
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq clearRed", 2, "path = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("path = ");
+      localStringBuilder.append(paramString);
+      QLog.d("GetRedPointInfoReq clearRed", 2, localStringBuilder.toString());
     }
-    ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(paramString);
+    ((IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick(paramString);
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq reportRedInfo", 2, "path = " + paramString + "actId == " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("path = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("actId == ");
+      localStringBuilder.append(paramInt);
+      QLog.d("GetRedPointInfoReq reportRedInfo", 2, localStringBuilder.toString());
     }
     if (paramString == null) {
       return;
     }
+    int i;
     try
     {
-      if (paramString.contains("\\.")) {}
-      for (i = Integer.parseInt(paramString.split("\\.")[0]);; i = Integer.parseInt(paramString))
-      {
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          paramString = ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramString);
-          localJSONObject.put("service_type", 0);
-          localJSONObject.put("actId", paramInt);
-          localJSONObject.put("obj_id", "");
-          localJSONObject.put("pay_amt", 0);
-          localJSONObject.put("service_id", i);
-          ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).c(paramString, localJSONObject.toString());
-          return;
-        }
-        catch (JSONException paramQQAppInterface)
-        {
-          paramQQAppInterface.printStackTrace();
-          return;
-        }
+      if (paramString.contains("\\.")) {
+        i = Integer.parseInt(paramString.split("\\.")[0]);
+      } else {
+        i = Integer.parseInt(paramString);
       }
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        localNumberFormatException.printStackTrace();
-        int i = 0;
-      }
+      localNumberFormatException.printStackTrace();
+      i = 0;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      paramQQAppInterface = (IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+      paramString = paramQQAppInterface.getAppInfoByPath(paramString);
+      localJSONObject.put("service_type", 0);
+      localJSONObject.put("actId", paramInt);
+      localJSONObject.put("obj_id", "");
+      localJSONObject.put("pay_amt", 0);
+      localJSONObject.put("service_id", i);
+      paramQQAppInterface.onReportBusinessRedTouch(paramString, localJSONObject.toString());
+      return;
+    }
+    catch (JSONException paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
     }
   }
   
@@ -100,31 +115,43 @@ public class GetRedPointInfoReq
     Object localObject = paramBundle.getString("cmd");
     if ("getRedInfo".equals(localObject))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("cmd = ");
+        localStringBuilder.append((String)localObject);
+        QLog.d("GetRedPointInfoReq onReceive", 2, localStringBuilder.toString());
       }
       paramQQAppInterface = a(this.jdField_a_of_type_JavaLangString, paramQQAppInterface);
       localObject = new Bundle();
       ((Bundle)localObject).putParcelable("redInfoResp", paramQQAppInterface);
       paramBundle.putBundle("keyResponse", (Bundle)localObject);
       super.a(paramBundle);
-    }
-    do
-    {
       return;
-      if ("reportRedInfo".equals(localObject))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
-        }
-        a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-        return;
-      }
-    } while (!"clearRedInfo".equals(localObject));
-    if (QLog.isColorLevel()) {
-      QLog.d("GetRedPointInfoReq onReceive", 2, "cmd = " + (String)localObject);
     }
-    a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    if ("reportRedInfo".equals(localObject))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("cmd = ");
+        paramBundle.append((String)localObject);
+        QLog.d("GetRedPointInfoReq onReceive", 2, paramBundle.toString());
+      }
+      a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      return;
+    }
+    if ("clearRedInfo".equals(localObject))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("cmd = ");
+        paramBundle.append((String)localObject);
+        QLog.d("GetRedPointInfoReq onReceive", 2, paramBundle.toString());
+      }
+      a(paramQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    }
   }
   
   public void b(Bundle paramBundle)
@@ -137,7 +164,7 @@ public class GetRedPointInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.GetRedPointInfoReq
  * JD-Core Version:    0.7.0.1
  */

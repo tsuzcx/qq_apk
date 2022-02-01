@@ -15,7 +15,12 @@ public class ShortVideoOtherResourceMgr
   {
     String str = BaseApplicationImpl.getApplication().getSharedPreferences("other_res_short_video_mgr_sp", 4).getString("other_res_sv_md5_version_soname_key", "other_res000_0");
     boolean bool = PendantVersionManager.a(str, 1);
-    VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getCurrentPendantUnzipPath success=");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(",md5Version=");
+    localStringBuilder.append(str);
+    VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", localStringBuilder.toString(), null);
     if (bool) {
       return str;
     }
@@ -35,42 +40,59 @@ public class ShortVideoOtherResourceMgr
   static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
     paramQQAppInterface = b();
-    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-    File localFile = new File(paramQQAppInterface);
-    if (localFile.exists()) {
-      if ((a().equals(paramString1)) && (PendantVersionManager.a(paramQQAppInterface, "other_res_config_file"))) {
-        VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", "uncompressPendantZip:[checkUnzipFileListSizeIsOK]success=true", null);
-      }
-    }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramQQAppInterface);
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(File.separator);
+    paramQQAppInterface = ((StringBuilder)localObject).toString();
+    localObject = new File(paramQQAppInterface);
+    if (((File)localObject).exists())
     {
-      return false;
-      FileUtils.a(paramQQAppInterface);
-      VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
-      boolean bool = localFile.mkdirs();
-      VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool, null);
-      try
+      if ((a().equals(paramString1)) && (PendantVersionManager.a(paramQQAppInterface, "other_res_config_file")))
       {
-        FileUtils.a(paramString2, paramQQAppInterface, false);
-        bool = PendantVersionManager.a(paramQQAppInterface, "other_res_config_file");
-        VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK success=" + bool, null);
-        if (bool)
+        VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", "uncompressPendantZip:[checkUnzipFileListSizeIsOK]success=true", null);
+        return false;
+      }
+      FileUtils.deleteDirectory(paramQQAppInterface);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uncompressPendantZip:[deleteDirectory|already exists]unzipPath=");
+      localStringBuilder.append(paramQQAppInterface);
+      VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", localStringBuilder.toString(), null);
+    }
+    boolean bool = ((File)localObject).mkdirs();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uncompressPendantZip:[exists]mkOK=");
+    ((StringBuilder)localObject).append(bool);
+    VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", ((StringBuilder)localObject).toString(), null);
+    try
+    {
+      FileUtils.uncompressZip(paramString2, paramQQAppInterface, false);
+      bool = PendantVersionManager.a(paramQQAppInterface, "other_res_config_file");
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("uncompressPendantZip:checkUnzipFileListSizeIsOK success=");
+      paramQQAppInterface.append(bool);
+      VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", paramQQAppInterface.toString(), null);
+      if (bool)
+      {
+        bool = a(paramString1);
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("uncompressPendantZip:checkUnzipFileListSizeIsOK saveOK=");
+        paramQQAppInterface.append(bool);
+        VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", paramQQAppInterface.toString(), null);
+        if (!bool)
         {
           bool = a(paramString1);
-          VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK saveOK=" + bool, null);
-          if (bool) {
-            continue;
-          }
-          bool = a(paramString1);
-          VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool, null);
-          return false;
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("uncompressPendantZip:checkUnzipFileListSizeIsOK[two]saveOK=");
+          paramQQAppInterface.append(bool);
+          VideoEnvironment.LogDownLoad("ShortVideoOtherResourceMgr", paramQQAppInterface.toString(), null);
         }
+        return false;
       }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        return true;
-      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
     }
     return true;
   }
@@ -85,12 +107,16 @@ public class ShortVideoOtherResourceMgr
   public static String b()
   {
     String str = PtvFilterSoLoad.a();
-    return str + "other_res_cache" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("other_res_cache");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoOtherResourceMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -29,21 +29,34 @@ public class LogReporter
         paramObject = Collections.emptyMap();
       }
       paramObject = new TreeMap(paramObject);
-      if ("pgin".equals(paramString)) {
-        Log.d("LogReporter", "report: [" + paramString + "], " + new JSONObject(paramObject));
+      if ("pgin".equals(paramString))
+      {
+        paramMap = new StringBuilder();
+        paramMap.append("report: [");
+        paramMap.append(paramString);
+        paramMap.append("], ");
+        paramMap.append(new JSONObject(paramObject));
+        Log.d("LogReporter", paramMap.toString());
       }
       paramObject = paramObject.entrySet().iterator();
       while (paramObject.hasNext())
       {
         paramMap = (Map.Entry)paramObject.next();
-        Log.d("LogReporter", "    [" + paramString + "]  " + (String)paramMap.getKey() + ": " + paramMap.getValue());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("    [");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]  ");
+        localStringBuilder.append((String)paramMap.getKey());
+        localStringBuilder.append(": ");
+        localStringBuilder.append(paramMap.getValue());
+        Log.d("LogReporter", localStringBuilder.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inner.LogReporter
  * JD-Core Version:    0.7.0.1
  */

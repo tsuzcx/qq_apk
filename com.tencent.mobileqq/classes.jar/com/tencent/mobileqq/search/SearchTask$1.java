@@ -10,12 +10,15 @@ final class SearchTask$1
   
   public Thread newThread(Runnable paramRunnable)
   {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SearchTask #");
+    localStringBuilder.append(this.a.getAndIncrement());
+    return new Thread(paramRunnable, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchTask.1
  * JD-Core Version:    0.7.0.1
  */

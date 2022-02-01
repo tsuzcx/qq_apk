@@ -15,57 +15,92 @@ public final class c
   
   public static c a(String paramString)
   {
+    boolean bool = paramString.startsWith("HTTP/1.");
     int j = 9;
     int i;
-    if (paramString.startsWith("HTTP/1."))
+    if (bool)
     {
-      if ((paramString.length() < 9) || (paramString.charAt(8) != ' ')) {
-        throw new ProtocolException("Unexpected status line: " + paramString);
-      }
-      int k = paramString.charAt(7) - '0';
-      i = j;
-      if (k != 0)
+      if ((paramString.length() >= 9) && (paramString.charAt(8) == ' '))
       {
+        k = paramString.charAt(7) - '0';
         i = j;
-        if (k != 1) {
-          throw new ProtocolException("Unexpected status line: " + paramString);
+        if (k != 0) {
+          if (k == 1)
+          {
+            i = j;
+          }
+          else
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Unexpected status line: ");
+            localStringBuilder.append(paramString);
+            throw new ProtocolException(localStringBuilder.toString());
+          }
         }
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Unexpected status line: ");
+        localStringBuilder.append(paramString);
+        throw new ProtocolException(localStringBuilder.toString());
       }
     }
     else
     {
       if (!paramString.startsWith("ICY ")) {
-        break label157;
+        break label324;
       }
       i = 4;
     }
-    if (paramString.length() < i + 3)
-    {
-      throw new ProtocolException("Unexpected status line: " + paramString);
-      label157:
-      throw new ProtocolException("Unexpected status line: " + paramString);
-    }
+    int k = paramString.length();
+    j = i + 3;
+    if (k >= j) {}
     try
     {
-      j = Integer.parseInt(paramString.substring(i, i + 3));
-      if (paramString.length() > i + 3) {
-        if (paramString.charAt(i + 3) != ' ') {
-          throw new ProtocolException("Unexpected status line: " + paramString);
+      k = Integer.parseInt(paramString.substring(i, j));
+      if (paramString.length() > j)
+      {
+        if (paramString.charAt(j) == ' ')
+        {
+          paramString = paramString.substring(i + 4);
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Unexpected status line: ");
+          localStringBuilder.append(paramString);
+          throw new ProtocolException(localStringBuilder.toString());
         }
       }
+      else {
+        paramString = "";
+      }
+      return new c(k, paramString);
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      throw new ProtocolException("Unexpected status line: " + paramString);
+      label250:
+      break label250;
     }
-    for (paramString = paramString.substring(i + 4);; paramString = "") {
-      return new c(j, paramString);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unexpected status line: ");
+    localStringBuilder.append(paramString);
+    throw new ProtocolException(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unexpected status line: ");
+    localStringBuilder.append(paramString);
+    throw new ProtocolException(localStringBuilder.toString());
+    label324:
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unexpected status line: ");
+    localStringBuilder.append(paramString);
+    throw new ProtocolException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.b.c
  * JD-Core Version:    0.7.0.1
  */

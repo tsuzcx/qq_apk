@@ -18,6 +18,11 @@ public class IliveJumpParams
   public String f;
   public String g;
   
+  public IliveJumpParams(Context paramContext, String paramString1, String paramString2, int paramInt)
+  {
+    this(paramContext, paramString1, paramString2, "", false, null, "", paramInt);
+  }
+  
   public IliveJumpParams(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, ArrayList<String> paramArrayList, String paramString4, int paramInt)
   {
     this.jdField_b_of_type_Boolean = false;
@@ -33,7 +38,7 @@ public class IliveJumpParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.entity.IliveJumpParams
  * JD-Core Version:    0.7.0.1
  */

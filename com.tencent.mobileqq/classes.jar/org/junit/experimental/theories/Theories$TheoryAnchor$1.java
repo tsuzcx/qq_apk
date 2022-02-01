@@ -17,7 +17,7 @@ class Theories$TheoryAnchor$1
     super(paramClass);
   }
   
-  public void collectInitializationErrors(List<Throwable> paramList) {}
+  protected void collectInitializationErrors(List<Throwable> paramList) {}
   
   public Object createTest()
   {
@@ -33,14 +33,14 @@ class Theories$TheoryAnchor$1
     return new Theories.TheoryAnchor.1.1(this, super.methodBlock(paramFrameworkMethod));
   }
   
-  public Statement methodInvoker(FrameworkMethod paramFrameworkMethod, Object paramObject)
+  protected Statement methodInvoker(FrameworkMethod paramFrameworkMethod, Object paramObject)
   {
     return Theories.TheoryAnchor.access$100(this.this$0, paramFrameworkMethod, this.val$complete, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.experimental.theories.Theories.TheoryAnchor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,35 +21,31 @@ final class SystemProduct$Companion$isX86CPU$2
   
   public final boolean invoke()
   {
-    Object localObject2;
-    Object localObject1;
-    for (String str = null;; localObject1 = localObject2) {
-      try
-      {
-        localObject2 = Class.forName("android.os.SystemProperties");
-        localObject2 = ((Class)localObject2).getMethod("get", new Class[] { String.class, String.class }).invoke(localObject2, new Object[] { "ro.product.cpu.abi", "" });
-        if (!(localObject2 instanceof String))
-        {
-          str = (String)str;
-          if (str != null)
-          {
-            boolean bool = StringsKt.contains$default((CharSequence)str, (CharSequence)"x86", false, 2, null);
-            return bool;
-          }
-          return false;
-        }
+    try
+    {
+      Object localObject1 = Class.forName("android.os.SystemProperties");
+      Object localObject2 = ((Class)localObject1).getMethod("get", new Class[] { String.class, String.class }).invoke(localObject1, new Object[] { "ro.product.cpu.abi", "" });
+      localObject1 = localObject2;
+      if (!(localObject2 instanceof String)) {
+        localObject1 = null;
       }
-      catch (Exception localException)
+      localObject1 = (String)localObject1;
+      if (localObject1 != null)
       {
-        Logger.INSTANCE.exception("QAPM_common_SystemProduct", (Throwable)localException);
-        return false;
+        boolean bool = StringsKt.contains$default((CharSequence)localObject1, (CharSequence)"x86", false, 2, null);
+        return bool;
       }
     }
+    catch (Exception localException)
+    {
+      Logger.INSTANCE.exception("QAPM_common_SystemProduct", (Throwable)localException);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.SystemProduct.Companion.isX86CPU.2
  * JD-Core Version:    0.7.0.1
  */

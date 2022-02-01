@@ -10,7 +10,7 @@ import com.tencent.ttpic.openapi.offlineset.AEOfflineConfig;
 
 public class BlurMaskFilter
 {
-  private static final String TAG = "BlurMaskFilter:" + BlurMaskFilter.class.getSimpleName();
+  private static final String TAG;
   private int height = 0;
   private Frame mBlurFrame;
   private BlurMaskFilter.IBlurMaskFactory mBlurMaskFactory;
@@ -22,18 +22,26 @@ public class BlurMaskFilter
   private int originWidth = 0;
   private int width = 0;
   
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BlurMaskFilter:");
+    localStringBuilder.append(BlurMaskFilter.class.getSimpleName());
+    TAG = localStringBuilder.toString();
+  }
+  
   public BlurMaskFilter(BlurMaskParam paramBlurMaskParam)
   {
-    if ((paramBlurMaskParam == null) || (paramBlurMaskParam.maskType == 0))
+    if ((paramBlurMaskParam != null) && (paramBlurMaskParam.maskType != 0))
     {
-      this.mBlurType = 0;
-      this.mBlurStrength = 0.0D;
+      this.mBlurType = paramBlurMaskParam.blurType;
+      this.mBlurStrength = paramBlurMaskParam.blurStrength;
+      initMask(paramBlurMaskParam.maskType, null);
+      initFilter(paramBlurMaskParam.blurType, paramBlurMaskParam.blurStrength);
       return;
     }
-    this.mBlurType = paramBlurMaskParam.blurType;
-    this.mBlurStrength = paramBlurMaskParam.blurStrength;
-    initMask(paramBlurMaskParam.maskType, null);
-    initFilter(paramBlurMaskParam.blurType, paramBlurMaskParam.blurStrength);
+    this.mBlurType = 0;
+    this.mBlurStrength = 0.0D;
   }
   
   public BlurMaskFilter(BlurEffectItem paramBlurEffectItem)
@@ -53,90 +61,95 @@ public class BlurMaskFilter
   
   private void initFilter(int paramInt, double paramDouble)
   {
-    switch (paramInt)
-    {
-    default: 
+    boolean bool = true;
+    if (paramInt != 1) {
       return;
     }
+    Object localObject;
     if (paramDouble < 1.0D)
     {
       localObject = null;
-      this.mBlurMaskFilter = ((BlurMaskFilter.IBlurMaskFilter)localObject);
-      return;
     }
-    if (AEOfflineConfig.isGausResize())
+    else if (AEOfflineConfig.isGausResize())
     {
-      if (this.mBlurMaskFactory != null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localObject = new OptimGaussianMaskFilter(bool, (float)paramDouble, this.mBlurMaskFactory instanceof ImageMaskFactory);
-        break;
+      if (this.mBlurMaskFactory == null) {
+        bool = false;
       }
+      localObject = new OptimGaussianMaskFilter(bool, (float)paramDouble, this.mBlurMaskFactory instanceof ImageMaskFactory);
     }
-    if (this.mBlurMaskFactory != null) {}
-    for (Object localObject = GaussianMaskFilter.getGaussianFilter((float)paramDouble, this.mBlurMaskFactory instanceof ImageMaskFactory);; localObject = new GaussinNoMaskFilter((float)paramDouble))
+    else
     {
+      localObject = this.mBlurMaskFactory;
+      if (localObject != null) {
+        localObject = GaussianMaskFilter.getGaussianFilter((float)paramDouble, localObject instanceof ImageMaskFactory);
+      } else {
+        localObject = new GaussinNoMaskFilter((float)paramDouble);
+      }
       localObject = (BlurMaskFilter.IBlurMaskFilter)localObject;
-      break;
     }
+    this.mBlurMaskFilter = ((BlurMaskFilter.IBlurMaskFilter)localObject);
   }
   
   private void initMask(int paramInt, BlurEffectItem paramBlurEffectItem)
   {
-    switch (paramInt)
+    Object localObject = null;
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      if (paramBlurEffectItem.getImageMaskItem() != null)
+      if (paramInt != 1)
       {
-        this.mBlurMaskFactory = new ImageMaskFactory(paramBlurEffectItem.getImageMaskItem());
+        if (paramInt != 2) {
+          return;
+        }
+        if (paramBlurEffectItem == null) {
+          paramBlurEffectItem = localObject;
+        } else {
+          paramBlurEffectItem = paramBlurEffectItem.getFaceMaskItem();
+        }
+        if (paramBlurEffectItem == null) {
+          paramBlurEffectItem = new FaceMaskFilter();
+        } else {
+          paramBlurEffectItem = new FaceMaskFilter(paramBlurEffectItem);
+        }
+        this.mBlurMaskFactory = paramBlurEffectItem;
         return;
       }
-      this.mBlurMaskFactory = null;
-      return;
-    case 1: 
       this.mBlurMaskFactory = new BodySegMaskFactory();
       return;
     }
-    if (paramBlurEffectItem == null)
+    if (paramBlurEffectItem.getImageMaskItem() != null)
     {
-      paramBlurEffectItem = null;
-      if (paramBlurEffectItem != null) {
-        break label102;
-      }
-    }
-    label102:
-    for (paramBlurEffectItem = new FaceMaskFilter();; paramBlurEffectItem = new FaceMaskFilter(paramBlurEffectItem))
-    {
-      this.mBlurMaskFactory = paramBlurEffectItem;
+      this.mBlurMaskFactory = new ImageMaskFactory(paramBlurEffectItem.getImageMaskItem());
       return;
-      paramBlurEffectItem = paramBlurEffectItem.getFaceMaskItem();
-      break;
     }
+    this.mBlurMaskFactory = null;
   }
   
   public void ApplyGLSLFilter()
   {
-    if (this.mBlurMaskFilter != null) {
-      this.mBlurMaskFilter.applyFilterChain(false, this.width, this.height);
+    Object localObject = this.mBlurMaskFilter;
+    if (localObject != null) {
+      ((BlurMaskFilter.IBlurMaskFilter)localObject).applyFilterChain(false, this.width, this.height);
     }
-    if (this.mBlurMaskFactory != null) {
-      this.mBlurMaskFactory.apply();
+    localObject = this.mBlurMaskFactory;
+    if (localObject != null) {
+      ((BlurMaskFilter.IBlurMaskFactory)localObject).apply();
     }
     this.mBlurFrame = new Frame();
   }
   
   public void clear()
   {
-    if (this.mBlurMaskFilter != null) {
-      this.mBlurMaskFilter.clear();
+    Object localObject = this.mBlurMaskFilter;
+    if (localObject != null) {
+      ((BlurMaskFilter.IBlurMaskFilter)localObject).clear();
     }
-    if (this.mBlurMaskFactory != null) {
-      this.mBlurMaskFactory.clear();
+    localObject = this.mBlurMaskFactory;
+    if (localObject != null) {
+      ((BlurMaskFilter.IBlurMaskFactory)localObject).clear();
     }
-    if (this.mBlurFrame != null) {
-      this.mBlurFrame.clear();
+    localObject = this.mBlurFrame;
+    if (localObject != null) {
+      ((Frame)localObject).clear();
     }
   }
   
@@ -152,36 +165,35 @@ public class BlurMaskFilter
   
   public void pauseMask()
   {
-    if (this.mBlurMaskFactory != null) {
-      this.mBlurMaskFactory.pause();
+    BlurMaskFilter.IBlurMaskFactory localIBlurMaskFactory = this.mBlurMaskFactory;
+    if (localIBlurMaskFactory != null) {
+      localIBlurMaskFactory.pause();
     }
   }
   
   public Frame renderBlur(Frame paramFrame, PTFaceAttr paramPTFaceAttr, PTSegAttr paramPTSegAttr)
   {
-    Frame localFrame = paramFrame;
-    if (this.mBlurMaskFilter != null)
+    BlurMaskFilter.IBlurMaskFilter localIBlurMaskFilter = this.mBlurMaskFilter;
+    Object localObject = paramFrame;
+    if (localIBlurMaskFilter != null)
     {
-      if (this.mBlurMaskFactory == null) {
-        break label92;
-      }
-      paramPTFaceAttr = this.mBlurMaskFactory.renderMask(paramPTFaceAttr, paramPTSegAttr);
-      if (paramPTFaceAttr != null)
+      localObject = this.mBlurMaskFactory;
+      if (localObject != null)
       {
-        this.mBlurMaskFilter.setMaskTextureId(paramPTFaceAttr.getTextureId());
-        this.mBlurMaskFilter.updateVideoSize(this.width, this.height);
-        localFrame = this.mBlurMaskFilter.RenderProcess(paramFrame, this.mBlurFrame);
+        paramPTFaceAttr = ((BlurMaskFilter.IBlurMaskFactory)localObject).renderMask(paramPTFaceAttr, paramPTSegAttr);
+        if (paramPTFaceAttr != null)
+        {
+          this.mBlurMaskFilter.setMaskTextureId(paramPTFaceAttr.getTextureId());
+          this.mBlurMaskFilter.updateVideoSize(this.width, this.height);
+          return this.mBlurMaskFilter.RenderProcess(paramFrame, this.mBlurFrame);
+        }
+        LogUtils.e(TAG, "mBlurMaskFactory.renderMask outFrame is null!");
+        return paramFrame;
       }
+      localIBlurMaskFilter.updateVideoSize(this.width, this.height);
+      localObject = this.mBlurMaskFilter.RenderProcess(paramFrame, this.mBlurFrame);
     }
-    else
-    {
-      return localFrame;
-    }
-    LogUtils.e(TAG, "mBlurMaskFactory.renderMask outFrame is null!");
-    return paramFrame;
-    label92:
-    this.mBlurMaskFilter.updateVideoSize(this.width, this.height);
-    return this.mBlurMaskFilter.RenderProcess(paramFrame, this.mBlurFrame);
+    return localObject;
   }
   
   public Frame renderBlurAfter(Frame paramFrame, PTFaceAttr paramPTFaceAttr, PTSegAttr paramPTSegAttr)
@@ -204,15 +216,17 @@ public class BlurMaskFilter
   
   public void reset()
   {
-    if ((this.mBlurMaskFactory instanceof ImageMaskFactory)) {
-      ((ImageMaskFactory)this.mBlurMaskFactory).reset();
+    BlurMaskFilter.IBlurMaskFactory localIBlurMaskFactory = this.mBlurMaskFactory;
+    if ((localIBlurMaskFactory instanceof ImageMaskFactory)) {
+      ((ImageMaskFactory)localIBlurMaskFactory).reset();
     }
   }
   
   public void resumeMask()
   {
-    if (this.mBlurMaskFactory != null) {
-      this.mBlurMaskFactory.resume();
+    BlurMaskFilter.IBlurMaskFactory localIBlurMaskFactory = this.mBlurMaskFactory;
+    if (localIBlurMaskFactory != null) {
+      localIBlurMaskFactory.resume();
     }
   }
   
@@ -223,28 +237,41 @@ public class BlurMaskFilter
       this.originWidth = paramInt1;
       this.originHeight = paramInt2;
     }
-    if ((this.width != paramInt1) && (this.width != 0) && (this.originWidth != 0) && (this.mBlurMaskFilter != null))
+    int i = this.width;
+    if ((i != paramInt1) && (i != 0) && (this.originWidth != 0))
     {
-      this.mBlurMaskFilter.clear();
-      float f = paramInt1 / this.originWidth;
-      initFilter(this.mBlurType, this.mBlurStrength * f);
-      if (this.mBlurMaskFilter != null) {
-        this.mBlurMaskFilter.applyFilterChain(false, paramInt1, paramInt2);
+      localObject = this.mBlurMaskFilter;
+      if (localObject != null)
+      {
+        ((BlurMaskFilter.IBlurMaskFilter)localObject).clear();
+        float f1 = paramInt1;
+        float f2 = f1 / this.originWidth;
+        i = this.mBlurType;
+        double d1 = this.mBlurStrength;
+        double d2 = f2;
+        Double.isNaN(d2);
+        initFilter(i, d1 * d2);
+        localObject = this.mBlurMaskFilter;
+        if (localObject != null) {
+          ((BlurMaskFilter.IBlurMaskFilter)localObject).applyFilterChain(false, f1, paramInt2);
+        }
       }
     }
     this.width = paramInt1;
     this.height = paramInt2;
-    if (this.mBlurMaskFilter != null) {
-      this.mBlurMaskFilter.updateVideoSize(paramInt1, paramInt2);
+    Object localObject = this.mBlurMaskFilter;
+    if (localObject != null) {
+      ((BlurMaskFilter.IBlurMaskFilter)localObject).updateVideoSize(paramInt1, paramInt2);
     }
-    if (this.mBlurMaskFactory != null) {
-      this.mBlurMaskFactory.updateVideoSize(paramInt1, paramInt2, paramDouble);
+    localObject = this.mBlurMaskFactory;
+    if (localObject != null) {
+      ((BlurMaskFilter.IBlurMaskFactory)localObject).updateVideoSize(paramInt1, paramInt2, paramDouble);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.blurmaskfilter.BlurMaskFilter
  * JD-Core Version:    0.7.0.1
  */

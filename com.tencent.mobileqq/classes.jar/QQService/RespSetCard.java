@@ -42,14 +42,15 @@ public final class RespSetCard
   {
     paramJceOutputStream.write(this.stHeader, 0);
     paramJceOutputStream.write(this.eSubCmd, 1);
-    if (this.vRespSetTemplate != null) {
-      paramJceOutputStream.write(this.vRespSetTemplate, 2);
+    byte[] arrayOfByte = this.vRespSetTemplate;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespSetCard
  * JD-Core Version:    0.7.0.1
  */

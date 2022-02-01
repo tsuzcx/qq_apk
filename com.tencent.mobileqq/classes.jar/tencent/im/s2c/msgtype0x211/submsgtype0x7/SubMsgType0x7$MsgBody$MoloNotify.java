@@ -18,13 +18,14 @@ public final class SubMsgType0x7$MsgBody$MoloNotify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "bytes_buf", "uint32_group_id", "uint32_group_size", "uint32_group_curindex" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, MoloNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "bytes_buf", "uint32_group_id", "uint32_group_size", "uint32_group_curindex" }, new Object[] { localByteStringMicro, localInteger, localInteger, localInteger }, MoloNotify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MoloNotify
  * JD-Core Version:    0.7.0.1
  */

@@ -16,11 +16,13 @@ public final class d
   
   private d(m paramm, g paramg, Locale paramLocale)
   {
-    if (paramm == null) {
-      throw new IllegalArgumentException("Status line may not be null.");
+    if (paramm != null)
+    {
+      this.a = paramm;
+      Locale.getDefault();
+      return;
     }
-    this.a = paramm;
-    Locale.getDefault();
+    throw new IllegalArgumentException("Status line may not be null.");
   }
   
   public final void a(i parami)
@@ -40,7 +42,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.a.d
  * JD-Core Version:    0.7.0.1
  */

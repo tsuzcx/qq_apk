@@ -2,9 +2,9 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.game_component;
 
 import android.graphics.Color;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.videofeeds.VideoItemHolder;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdSwitchUtil;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.viewholder.VideoItemHolder;
 
 class VideoFeedsGameAdComManager$2
   implements Runnable
@@ -20,7 +20,7 @@ class VideoFeedsGameAdComManager$2
         VideoFeedsGameAdComManager.a(VideoFeedsGameAdComManager.a(this.this$0).C, Color.parseColor("#80000000"));
       }
       VideoFeedsGameAdComManager.a(VideoFeedsGameAdComManager.a(this.this$0).C, null, null, null, null);
-      VideoFeedsGameAdComManager.a(VideoFeedsGameAdComManager.a(this.this$0).C, HardCodeUtil.a(2131716043));
+      VideoFeedsGameAdComManager.a(VideoFeedsGameAdComManager.a(this.this$0).C, HardCodeUtil.a(2131715966));
       VideoFeedsGameAdComManager.a(this.this$0).C.setClickable(false);
       VideoFeedsGameAdComManager.a(this.this$0).C.setClickable(false);
     }
@@ -28,7 +28,7 @@ class VideoFeedsGameAdComManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.2
  * JD-Core Version:    0.7.0.1
  */

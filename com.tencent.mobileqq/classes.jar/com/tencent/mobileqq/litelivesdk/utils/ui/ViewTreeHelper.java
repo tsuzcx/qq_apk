@@ -49,7 +49,13 @@ public class ViewTreeHelper
     }
     int i = NotchUtil.getStatusBarHeight(BaseApplicationImpl.getContext());
     int j = DeviceManager.a(this.jdField_a_of_type_AndroidAppActivity);
-    LogFactory.a().c("ViewTreeHelper", "statusBarHeight = " + i + " navigationBarHeight = " + j);
+    LogInterface localLogInterface = LogFactory.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("statusBarHeight = ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" navigationBarHeight = ");
+    localStringBuilder.append(j);
+    localLogInterface.c("ViewTreeHelper", localStringBuilder.toString());
     return i + j;
   }
   
@@ -60,22 +66,24 @@ public class ViewTreeHelper
     {
       int k = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
       int j = k - i;
-      LogFactory.a().c("ViewTreeHelper", "possiblyResizeChildOfContent usableHeightSansKeyboard = " + k + " heightDifference = " + j);
-      if (j <= k / 4) {
-        break label102;
+      LogInterface localLogInterface = LogFactory.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("possiblyResizeChildOfContent usableHeightSansKeyboard = ");
+      localStringBuilder.append(k);
+      localStringBuilder.append(" heightDifference = ");
+      localStringBuilder.append(j);
+      localLogInterface.c("ViewTreeHelper", localStringBuilder.toString());
+      if (j > k / 4)
+      {
+        k = b();
+        this.jdField_a_of_type_AndroidViewViewGroup.scrollTo(0, j - k);
       }
-      k = b();
-      this.jdField_a_of_type_AndroidViewViewGroup.scrollTo(0, j - k);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewView.requestLayout();
-      this.jdField_a_of_type_Int = i;
-      return;
-      label102:
-      if (this.jdField_a_of_type_Int > 0) {
+      else if (this.jdField_a_of_type_Int > 0)
+      {
         this.jdField_a_of_type_AndroidViewViewGroup.scrollTo(0, 0);
       }
+      this.jdField_a_of_type_AndroidViewView.requestLayout();
+      this.jdField_a_of_type_Int = i;
     }
   }
   
@@ -96,7 +104,7 @@ public class ViewTreeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.ui.ViewTreeHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -22,14 +22,38 @@ public class RelativeFeedsAdapter$RelativeFeedVH
   
   private boolean a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if ((this.itemView instanceof BaseWidgetView))
+    boolean bool3 = this.itemView instanceof BaseWidgetView;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
     {
       CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((BaseWidgetView)this.itemView).a();
-      if ((localStFeed != null) && (paramStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get())) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
-        return (localStFeed.id.get().equals(paramStFeed.id.get())) && (localStFeed.likeInfo.count.get() == paramStFeed.likeInfo.count.get());
+      bool1 = bool2;
+      if (localStFeed != null)
+      {
+        bool1 = bool2;
+        if (paramStFeed != null)
+        {
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(localStFeed.id.get()))
+          {
+            bool1 = bool2;
+            if (!TextUtils.isEmpty(localStFeed.id.get()))
+            {
+              bool1 = bool2;
+              if (localStFeed.id.get().equals(paramStFeed.id.get()))
+              {
+                bool1 = bool2;
+                if (localStFeed.likeInfo.count.get() == paramStFeed.likeInfo.count.get()) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
       }
     }
-    return false;
+    return bool1;
   }
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo)
@@ -44,25 +68,21 @@ public class RelativeFeedsAdapter$RelativeFeedVH
       ((RelativeFeedItemView)this.itemView).setData(paramStFeed);
       ((RelativeFeedItemView)this.itemView).setDataPosInList(getAdapterPosition());
     }
-    for (;;)
+    else if ((this.itemView instanceof RelativeAdFeedItemView))
     {
-      if (RelativeFeedsAdapter.a(this.a) != null) {
-        this.itemView.setOnClickListener(new RelativeFeedsAdapter.RelativeFeedVH.1(this, paramStFeed));
-      }
-      this.itemView.setOnLongClickListener(new RelativeFeedsAdapter.RelativeFeedVH.2(this, paramExtraTypeInfo, paramStFeed));
-      return;
-      if ((this.itemView instanceof RelativeAdFeedItemView))
-      {
-        ((RelativeAdFeedItemView)this.itemView).setIsInNightMode(RelativeFeedsAdapter.a(this.a));
-        ((RelativeAdFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-        ((RelativeAdFeedItemView)this.itemView).setData(paramStFeed);
-      }
+      ((RelativeAdFeedItemView)this.itemView).setIsInNightMode(RelativeFeedsAdapter.a(this.a));
+      ((RelativeAdFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((RelativeAdFeedItemView)this.itemView).setData(paramStFeed);
     }
+    if (RelativeFeedsAdapter.a(this.a) != null) {
+      this.itemView.setOnClickListener(new RelativeFeedsAdapter.RelativeFeedVH.1(this, paramStFeed));
+    }
+    this.itemView.setOnLongClickListener(new RelativeFeedsAdapter.RelativeFeedVH.2(this, paramExtraTypeInfo, paramStFeed));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.RelativeFeedsAdapter.RelativeFeedVH
  * JD-Core Version:    0.7.0.1
  */

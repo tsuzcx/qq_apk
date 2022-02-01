@@ -33,17 +33,25 @@ public class PushMsg0x210C7Info
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PushMsg0x210_c7Info{");
-    localStringBuilder.append("fromUin:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("msgSeq:").append(this.jdField_b_of_type_Long).append(", ");
-    localStringBuilder.append("msgTime:").append(this.jdField_b_of_type_Int).append(", ");
-    localStringBuilder.append("onlinePush:").append(this.jdField_a_of_type_Boolean).append(", ");
+    localStringBuilder.append("fromUin:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("msgSeq:");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("msgTime:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("onlinePush:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", ");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.PushMsg0x210C7Info
  * JD-Core Version:    0.7.0.1
  */

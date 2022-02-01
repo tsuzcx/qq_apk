@@ -21,8 +21,9 @@ class NavigationJsPlugin$6
     super.onReceiveResult(paramInt, paramBundle);
     if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener.onLaunchResult(true, null);
+      paramBundle = this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener;
+      if (paramBundle != null) {
+        paramBundle.onLaunchResult(true, null);
       }
       if ((NavigationJsPlugin.a(this.jdField_a_of_type_ComTencentQqminiProxyimplNavigationJsPlugin).getAttachedActivity() != null) && (!NavigationJsPlugin.b(this.jdField_a_of_type_ComTencentQqminiProxyimplNavigationJsPlugin).getAttachedActivity().isFinishing()))
       {
@@ -30,17 +31,19 @@ class NavigationJsPlugin$6
         NavigationJsPlugin.c(this.jdField_a_of_type_ComTencentQqminiProxyimplNavigationJsPlugin).getAttachedActivity().finish();
       }
     }
-    do
+    else
     {
-      return;
       QLog.e("NavigationJsPlugin", 1, "navigateBackMiniApp failed");
-    } while (this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener.onLaunchResult(false, null);
+      paramBundle = this.jdField_a_of_type_ComTencentMobileqqMiniSdkMiniAppLauncher$MiniAppLaunchListener;
+      if (paramBundle != null) {
+        paramBundle.onLaunchResult(false, null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

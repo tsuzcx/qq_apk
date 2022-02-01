@@ -18,7 +18,6 @@ final class BufferUntilSubscriber$OnSubscribeAction<T>
   
   public void call(Subscriber<? super T> arg1)
   {
-    int i = 1;
     if (this.state.casObserverRef(null, ???)) {
       ???.add(Subscriptions.create(new BufferUntilSubscriber.OnSubscribeAction.1(this)));
     }
@@ -26,37 +25,42 @@ final class BufferUntilSubscriber$OnSubscribeAction<T>
     {
       synchronized (this.state.guard)
       {
-        if (this.state.emitting) {
-          break label164;
+        boolean bool = this.state.emitting;
+        i = 1;
+        if (bool) {
+          break label179;
         }
         this.state.emitting = true;
         if (i == 0) {
-          break;
+          break label178;
         }
         ??? = NotificationLite.instance();
-        Object localObject1 = this.state.buffer.poll();
-        if (localObject1 != null) {
-          ???.accept((Observer)this.state.get(), localObject1);
-        }
-      }
-      synchronized (this.state.guard)
-      {
-        if (this.state.buffer.isEmpty())
+        ??? = this.state.buffer.poll();
+        if (??? != null)
         {
-          this.state.emitting = false;
-          return;
+          ???.accept((Observer)this.state.get(), ???);
+          continue;
+        }
+        synchronized (this.state.guard)
+        {
+          if (this.state.buffer.isEmpty())
+          {
+            this.state.emitting = false;
+            return;
+          }
         }
       }
       ???.onError(new IllegalStateException("Only one subscriber allowed!"));
+      label178:
       return;
-      label164:
-      i = 0;
+      label179:
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.BufferUntilSubscriber.OnSubscribeAction
  * JD-Core Version:    0.7.0.1
  */

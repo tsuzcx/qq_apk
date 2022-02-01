@@ -20,7 +20,8 @@ class DefaultOggSeeker$OggSeekMap
       return new SeekMap.SeekPoints(new SeekPoint(0L, DefaultOggSeeker.access$100(this.this$0)));
     }
     long l = DefaultOggSeeker.access$200(this.this$0).convertTimeToGranule(paramLong);
-    return new SeekMap.SeekPoints(new SeekPoint(paramLong, DefaultOggSeeker.access$300(this.this$0, DefaultOggSeeker.access$100(this.this$0), l, 30000L)));
+    DefaultOggSeeker localDefaultOggSeeker = this.this$0;
+    return new SeekMap.SeekPoints(new SeekPoint(paramLong, DefaultOggSeeker.access$300(localDefaultOggSeeker, DefaultOggSeeker.access$100(localDefaultOggSeeker), l, 30000L)));
   }
   
   public boolean isSeekable()
@@ -30,7 +31,7 @@ class DefaultOggSeeker$OggSeekMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.DefaultOggSeeker.OggSeekMap
  * JD-Core Version:    0.7.0.1
  */

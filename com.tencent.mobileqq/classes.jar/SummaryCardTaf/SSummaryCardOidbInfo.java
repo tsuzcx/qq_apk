@@ -30,11 +30,13 @@ public final class SSummaryCardOidbInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.styleid, 1);
-    if (this.bgurl != null) {
-      paramJceOutputStream.write(this.bgurl, 2);
+    String str = this.bgurl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 3);
+    str = this.version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

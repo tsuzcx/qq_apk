@@ -14,22 +14,23 @@ class FontManager$1
   
   public void run()
   {
-    switch (VasSoUtils.a(VasSoUtils.a(), "libFounderColorFont_818.so"))
+    int i = VasSoUtils.a(VasSoUtils.a(), "libFounderColorFont_818.so");
+    if (i != 0)
     {
-    default: 
-      return;
-    case 1: 
-      ((IVasQuickUpdateService)this.this$0.a.getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "libColorFont_818", "FontManager_initFZEngine");
+      if (i != 1) {
+        return;
+      }
+      ((IVasQuickUpdateService)FontManager.a(this.this$0).getRuntimeService(IVasQuickUpdateService.class, "")).downloadItem(1004L, "libColorFont_818", "FontManager_initFZEngine");
       return;
     }
     FastColorFontHelper.a().b.set(true);
-    VasUtils.a(this.this$0.a);
+    VasUtils.a(FontManager.a(this.this$0));
     FontManager.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.1
  * JD-Core Version:    0.7.0.1
  */

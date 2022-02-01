@@ -11,22 +11,22 @@ public class DESUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 6
     //   3: aconst_null
-    //   4: astore 6
+    //   4: astore 5
     //   6: new 17	javax/crypto/spec/SecretKeySpec
     //   9: dup
     //   10: aload_2
     //   11: invokestatic 20	com/tencent/mobileqq/utils/DESUtil:a	([B)[B
     //   14: ldc 22
     //   16: invokespecial 25	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
-    //   19: astore 4
-    //   21: ldc 22
-    //   23: invokestatic 31	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
-    //   26: astore_2
-    //   27: aload_2
-    //   28: iconst_1
-    //   29: aload 4
+    //   19: astore_2
+    //   20: ldc 22
+    //   22: invokestatic 31	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   25: astore 7
+    //   27: aload 7
+    //   29: iconst_1
+    //   30: aload_2
     //   31: invokevirtual 35	javax/crypto/Cipher:init	(ILjava/security/Key;)V
     //   34: new 37	java/io/BufferedInputStream
     //   37: dup
@@ -35,409 +35,430 @@ public class DESUtil
     //   42: aload_0
     //   43: invokespecial 42	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   46: invokespecial 45	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   49: astore 4
-    //   51: new 47	java/io/FileOutputStream
-    //   54: dup
-    //   55: aload_1
-    //   56: invokespecial 48	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   59: astore_0
+    //   49: astore_2
+    //   50: new 47	java/io/FileOutputStream
+    //   53: dup
+    //   54: aload_1
+    //   55: invokespecial 48	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   58: astore 4
     //   60: new 50	javax/crypto/CipherInputStream
     //   63: dup
-    //   64: aload 4
-    //   66: aload_2
+    //   64: aload_2
+    //   65: aload 7
     //   67: invokespecial 53	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
-    //   70: astore_1
+    //   70: astore_0
     //   71: sipush 4096
     //   74: newarray byte
-    //   76: astore_2
-    //   77: aload_0
-    //   78: ldc 55
-    //   80: ldc 57
-    //   82: invokevirtual 63	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   85: invokevirtual 69	java/io/OutputStream:write	([B)V
-    //   88: aload_1
-    //   89: aload_2
-    //   90: invokevirtual 73	javax/crypto/CipherInputStream:read	([B)I
-    //   93: istore_3
-    //   94: iload_3
-    //   95: iconst_m1
-    //   96: if_icmpeq +83 -> 179
-    //   99: aload_0
-    //   100: aload_2
-    //   101: iconst_0
-    //   102: iload_3
-    //   103: invokevirtual 76	java/io/OutputStream:write	([BII)V
-    //   106: goto -18 -> 88
-    //   109: astore 5
-    //   111: aload_1
-    //   112: astore_2
-    //   113: aload_0
-    //   114: astore_1
-    //   115: aload 5
-    //   117: astore_0
-    //   118: invokestatic 82	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   121: ifeq +31 -> 152
-    //   124: ldc 84
-    //   126: iconst_2
-    //   127: new 86	java/lang/StringBuilder
-    //   130: dup
-    //   131: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   134: ldc 89
-    //   136: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: aload_0
-    //   140: invokevirtual 97	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   143: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   149: invokestatic 104	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   152: aload 4
-    //   154: ifnull +8 -> 162
-    //   157: aload 4
-    //   159: invokevirtual 107	java/io/BufferedInputStream:close	()V
-    //   162: aload_2
-    //   163: ifnull +7 -> 170
-    //   166: aload_2
-    //   167: invokevirtual 108	javax/crypto/CipherInputStream:close	()V
-    //   170: aload_1
-    //   171: ifnull +7 -> 178
-    //   174: aload_1
-    //   175: invokevirtual 109	java/io/OutputStream:close	()V
-    //   178: return
-    //   179: aload 4
-    //   181: ifnull +8 -> 189
-    //   184: aload 4
-    //   186: invokevirtual 107	java/io/BufferedInputStream:close	()V
-    //   189: aload_1
-    //   190: ifnull +7 -> 197
-    //   193: aload_1
-    //   194: invokevirtual 108	javax/crypto/CipherInputStream:close	()V
-    //   197: aload_0
-    //   198: ifnull -20 -> 178
-    //   201: aload_0
-    //   202: invokevirtual 109	java/io/OutputStream:close	()V
-    //   205: return
-    //   206: astore_0
-    //   207: aload_0
-    //   208: invokevirtual 112	java/io/IOException:printStackTrace	()V
-    //   211: return
-    //   212: astore_0
-    //   213: aload_0
-    //   214: invokevirtual 112	java/io/IOException:printStackTrace	()V
-    //   217: return
-    //   218: astore_0
-    //   219: aconst_null
-    //   220: astore 4
-    //   222: aconst_null
-    //   223: astore_1
-    //   224: aload 5
-    //   226: astore_2
-    //   227: aload 4
-    //   229: ifnull +8 -> 237
-    //   232: aload 4
-    //   234: invokevirtual 107	java/io/BufferedInputStream:close	()V
-    //   237: aload_2
-    //   238: ifnull +7 -> 245
-    //   241: aload_2
-    //   242: invokevirtual 108	javax/crypto/CipherInputStream:close	()V
-    //   245: aload_1
-    //   246: ifnull +7 -> 253
-    //   249: aload_1
-    //   250: invokevirtual 109	java/io/OutputStream:close	()V
-    //   253: aload_0
-    //   254: athrow
-    //   255: astore_1
-    //   256: aload_1
-    //   257: invokevirtual 112	java/io/IOException:printStackTrace	()V
-    //   260: goto -7 -> 253
-    //   263: astore_0
-    //   264: aconst_null
+    //   76: astore_1
+    //   77: aload 4
+    //   79: ldc 55
+    //   81: ldc 57
+    //   83: invokevirtual 63	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   86: invokevirtual 69	java/io/OutputStream:write	([B)V
+    //   89: aload_0
+    //   90: aload_1
+    //   91: invokevirtual 73	javax/crypto/CipherInputStream:read	([B)I
+    //   94: istore_3
+    //   95: iload_3
+    //   96: iconst_m1
+    //   97: if_icmpeq +14 -> 111
+    //   100: aload 4
+    //   102: aload_1
+    //   103: iconst_0
+    //   104: iload_3
+    //   105: invokevirtual 76	java/io/OutputStream:write	([BII)V
+    //   108: goto -19 -> 89
+    //   111: aload_2
+    //   112: invokevirtual 79	java/io/BufferedInputStream:close	()V
+    //   115: aload_0
+    //   116: invokevirtual 80	javax/crypto/CipherInputStream:close	()V
+    //   119: aload 4
+    //   121: invokevirtual 81	java/io/OutputStream:close	()V
+    //   124: return
+    //   125: astore_1
+    //   126: goto +10 -> 136
+    //   129: astore_1
+    //   130: goto +12 -> 142
+    //   133: astore_1
+    //   134: aconst_null
+    //   135: astore_0
+    //   136: goto +130 -> 266
+    //   139: astore_1
+    //   140: aconst_null
+    //   141: astore_0
+    //   142: goto +44 -> 186
+    //   145: astore_1
+    //   146: aconst_null
+    //   147: astore_0
+    //   148: aload 6
+    //   150: astore 4
+    //   152: goto +114 -> 266
+    //   155: astore_1
+    //   156: aconst_null
+    //   157: astore_0
+    //   158: aload 5
+    //   160: astore 4
+    //   162: goto +24 -> 186
+    //   165: astore_1
+    //   166: aconst_null
+    //   167: astore_0
+    //   168: aload_0
+    //   169: astore_2
+    //   170: aload 6
+    //   172: astore 4
+    //   174: goto +92 -> 266
+    //   177: astore_1
+    //   178: aconst_null
+    //   179: astore_0
+    //   180: aload_0
+    //   181: astore_2
+    //   182: aload 5
+    //   184: astore 4
+    //   186: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   189: ifeq +41 -> 230
+    //   192: new 89	java/lang/StringBuilder
+    //   195: dup
+    //   196: invokespecial 90	java/lang/StringBuilder:<init>	()V
+    //   199: astore 5
+    //   201: aload 5
+    //   203: ldc 92
+    //   205: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: pop
+    //   209: aload 5
+    //   211: aload_1
+    //   212: invokevirtual 100	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   215: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: pop
+    //   219: ldc 102
+    //   221: iconst_2
+    //   222: aload 5
+    //   224: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   227: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   230: aload_2
+    //   231: ifnull +10 -> 241
+    //   234: aload_2
+    //   235: invokevirtual 79	java/io/BufferedInputStream:close	()V
+    //   238: goto +3 -> 241
+    //   241: aload_0
+    //   242: ifnull +7 -> 249
+    //   245: aload_0
+    //   246: invokevirtual 80	javax/crypto/CipherInputStream:close	()V
+    //   249: aload 4
+    //   251: ifnull +13 -> 264
+    //   254: aload 4
+    //   256: invokevirtual 81	java/io/OutputStream:close	()V
+    //   259: return
+    //   260: aload_0
+    //   261: invokevirtual 112	java/io/IOException:printStackTrace	()V
+    //   264: return
     //   265: astore_1
-    //   266: aload 5
-    //   268: astore_2
-    //   269: goto -42 -> 227
-    //   272: astore_2
-    //   273: aload_0
-    //   274: astore_1
-    //   275: aload_2
-    //   276: astore_0
-    //   277: aload 5
-    //   279: astore_2
-    //   280: goto -53 -> 227
-    //   283: astore_2
-    //   284: aload_0
-    //   285: astore 5
-    //   287: aload_2
-    //   288: astore_0
-    //   289: aload_1
-    //   290: astore_2
-    //   291: aload 5
-    //   293: astore_1
-    //   294: goto -67 -> 227
-    //   297: astore_0
-    //   298: goto -71 -> 227
-    //   301: astore_0
-    //   302: aconst_null
-    //   303: astore 4
-    //   305: aconst_null
-    //   306: astore_1
-    //   307: aload 6
-    //   309: astore_2
-    //   310: goto -192 -> 118
-    //   313: astore_0
-    //   314: aconst_null
-    //   315: astore_1
-    //   316: aload 6
-    //   318: astore_2
-    //   319: goto -201 -> 118
-    //   322: astore_2
-    //   323: aload_0
-    //   324: astore_1
-    //   325: aload_2
-    //   326: astore_0
-    //   327: aload 6
-    //   329: astore_2
-    //   330: goto -212 -> 118
+    //   266: aload_2
+    //   267: ifnull +10 -> 277
+    //   270: aload_2
+    //   271: invokevirtual 79	java/io/BufferedInputStream:close	()V
+    //   274: goto +3 -> 277
+    //   277: aload_0
+    //   278: ifnull +7 -> 285
+    //   281: aload_0
+    //   282: invokevirtual 80	javax/crypto/CipherInputStream:close	()V
+    //   285: aload 4
+    //   287: ifnull +15 -> 302
+    //   290: aload 4
+    //   292: invokevirtual 81	java/io/OutputStream:close	()V
+    //   295: goto +7 -> 302
+    //   298: aload_0
+    //   299: invokevirtual 112	java/io/IOException:printStackTrace	()V
+    //   302: goto +5 -> 307
+    //   305: aload_1
+    //   306: athrow
+    //   307: goto -2 -> 305
+    //   310: astore_0
+    //   311: goto -51 -> 260
+    //   314: astore_0
+    //   315: goto -17 -> 298
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	333	0	paramFile1	File
-    //   0	333	1	paramFile2	File
-    //   0	333	2	paramArrayOfByte	byte[]
-    //   93	10	3	i	int
-    //   19	285	4	localObject1	Object
-    //   1	1	5	localObject2	Object
-    //   109	169	5	localException	java.lang.Exception
-    //   285	7	5	localFile	File
-    //   4	324	6	localObject3	Object
+    //   0	318	0	paramFile1	File
+    //   0	318	1	paramFile2	File
+    //   0	318	2	paramArrayOfByte	byte[]
+    //   94	11	3	i	int
+    //   58	233	4	localObject1	Object
+    //   4	219	5	localStringBuilder	StringBuilder
+    //   1	170	6	localObject2	Object
+    //   25	41	7	localCipher	javax.crypto.Cipher
     // Exception table:
     //   from	to	target	type
-    //   71	88	109	java/lang/Exception
-    //   88	94	109	java/lang/Exception
-    //   99	106	109	java/lang/Exception
-    //   184	189	206	java/io/IOException
-    //   193	197	206	java/io/IOException
-    //   201	205	206	java/io/IOException
-    //   157	162	212	java/io/IOException
-    //   166	170	212	java/io/IOException
-    //   174	178	212	java/io/IOException
-    //   6	51	218	finally
-    //   232	237	255	java/io/IOException
-    //   241	245	255	java/io/IOException
-    //   249	253	255	java/io/IOException
-    //   51	60	263	finally
-    //   60	71	272	finally
-    //   71	88	283	finally
-    //   88	94	283	finally
-    //   99	106	283	finally
-    //   118	152	297	finally
-    //   6	51	301	java/lang/Exception
-    //   51	60	313	java/lang/Exception
-    //   60	71	322	java/lang/Exception
+    //   71	89	125	finally
+    //   89	95	125	finally
+    //   100	108	125	finally
+    //   71	89	129	java/lang/Exception
+    //   89	95	129	java/lang/Exception
+    //   100	108	129	java/lang/Exception
+    //   60	71	133	finally
+    //   60	71	139	java/lang/Exception
+    //   50	60	145	finally
+    //   50	60	155	java/lang/Exception
+    //   6	50	165	finally
+    //   6	50	177	java/lang/Exception
+    //   186	230	265	finally
+    //   111	124	310	java/io/IOException
+    //   234	238	310	java/io/IOException
+    //   245	249	310	java/io/IOException
+    //   254	259	310	java/io/IOException
+    //   270	274	314	java/io/IOException
+    //   281	285	314	java/io/IOException
+    //   290	295	314	java/io/IOException
   }
   
   public static void a(String paramString1, String paramString2)
   {
     try
     {
-      if (a(paramString1))
+      boolean bool = a(paramString1);
+      if (bool)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("DESUtil", 2, "encrypt had encrypt,file:" + paramString1);
-        }
-      }
-      else
-      {
-        long l1 = System.currentTimeMillis();
-        Object localObject = paramString1 + ".tmp";
-        File localFile = new File(paramString1);
-        long l2 = localFile.length() / 1024L;
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-        a(localFile, (File)localObject, paramString2.getBytes("UTF-8"));
-        FileUtils.a((File)localObject, localFile);
-        ((File)localObject).delete();
-        if (QLog.isDevelopLevel())
-        {
-          QLog.d("DESUtil", 4, "DES Encrypt filePath:" + paramString1 + ",key:" + paramString2 + ",costTime:" + (System.currentTimeMillis() - l1) + ",fileSize:" + l2 + "KB");
+        if (!QLog.isDevelopLevel()) {
           return;
         }
+        paramString2 = new StringBuilder();
+        paramString2.append("encrypt had encrypt,file:");
+        paramString2.append(paramString1);
+        QLog.d("DESUtil", 2, paramString2.toString());
+        return;
+      }
+      long l1 = System.currentTimeMillis();
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(".tmp");
+      Object localObject2 = ((StringBuilder)localObject1).toString();
+      localObject1 = new File(paramString1);
+      long l2 = ((File)localObject1).length() / 1024L;
+      localObject2 = new File((String)localObject2);
+      if (((File)localObject2).exists()) {
+        ((File)localObject2).delete();
+      }
+      a((File)localObject1, (File)localObject2, paramString2.getBytes("UTF-8"));
+      FileUtils.copyFile((File)localObject2, (File)localObject1);
+      ((File)localObject2).delete();
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("DES Encrypt filePath:");
+        ((StringBuilder)localObject1).append(paramString1);
+        ((StringBuilder)localObject1).append(",key:");
+        ((StringBuilder)localObject1).append(paramString2);
+        ((StringBuilder)localObject1).append(",costTime:");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
+        ((StringBuilder)localObject1).append(",fileSize:");
+        ((StringBuilder)localObject1).append(l2);
+        ((StringBuilder)localObject1).append("KB");
+        QLog.d("DESUtil", 4, ((StringBuilder)localObject1).toString());
+        return;
       }
     }
     catch (UnsupportedEncodingException paramString1)
     {
       paramString1.printStackTrace();
     }
+    return;
   }
   
   public static void a(String paramString1, String paramString2, String paramString3)
   {
     try
     {
-      if (a(paramString1))
+      boolean bool = a(paramString1);
+      if (bool)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("DESUtil", 2, "encrypt had encrypt,file:" + paramString1);
-        }
-      }
-      else
-      {
-        long l1 = System.currentTimeMillis();
-        File localFile = new File(paramString1);
-        long l2 = localFile.length() / 1024L;
-        paramString2 = new File(paramString2);
-        if (paramString2.exists()) {
-          paramString2.delete();
-        }
-        a(localFile, paramString2, paramString3.getBytes("UTF-8"));
-        localFile.delete();
-        if (QLog.isDevelopLevel())
-        {
-          QLog.d("DESUtil", 4, "DES Encrypt filePath:" + paramString1 + ",key:" + paramString3 + ",costTime:" + (System.currentTimeMillis() - l1) + ",fileSize:" + l2 + "KB");
+        if (!QLog.isDevelopLevel()) {
           return;
         }
+        paramString2 = new StringBuilder();
+        paramString2.append("encrypt had encrypt,file:");
+        paramString2.append(paramString1);
+        QLog.d("DESUtil", 2, paramString2.toString());
+        return;
+      }
+      long l1 = System.currentTimeMillis();
+      File localFile = new File(paramString1);
+      long l2 = localFile.length() / 1024L;
+      paramString2 = new File(paramString2);
+      if (paramString2.exists()) {
+        paramString2.delete();
+      }
+      a(localFile, paramString2, paramString3.getBytes("UTF-8"));
+      localFile.delete();
+      if (QLog.isDevelopLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("DES Encrypt filePath:");
+        paramString2.append(paramString1);
+        paramString2.append(",key:");
+        paramString2.append(paramString3);
+        paramString2.append(",costTime:");
+        paramString2.append(System.currentTimeMillis() - l1);
+        paramString2.append(",fileSize:");
+        paramString2.append(l2);
+        paramString2.append("KB");
+        QLog.d("DESUtil", 4, paramString2.toString());
+        return;
       }
     }
     catch (UnsupportedEncodingException paramString1)
     {
       paramString1.printStackTrace();
     }
+    return;
   }
   
   /* Error */
   public static boolean a(String paramString)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore 4
-    //   3: new 39	java/io/FileInputStream
-    //   6: dup
-    //   7: aload_0
-    //   8: invokespecial 170	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   11: astore 5
-    //   13: aload 5
-    //   15: astore_0
-    //   16: ldc 55
-    //   18: ldc 57
-    //   20: invokevirtual 63	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   23: astore 6
-    //   25: iconst_0
-    //   26: istore_1
-    //   27: aload 5
-    //   29: astore_0
-    //   30: iload_1
-    //   31: aload 6
-    //   33: arraylength
-    //   34: if_icmpge +37 -> 71
-    //   37: aload 5
-    //   39: astore_0
-    //   40: aload 5
-    //   42: invokevirtual 175	java/io/InputStream:read	()I
-    //   45: istore_2
-    //   46: iload_2
-    //   47: iconst_m1
-    //   48: if_icmpeq +13 -> 61
-    //   51: aload 6
-    //   53: iload_1
-    //   54: baload
-    //   55: istore_3
-    //   56: iload_2
-    //   57: iload_3
-    //   58: if_icmpeq +6 -> 64
-    //   61: iconst_0
-    //   62: istore 4
-    //   64: iload_1
-    //   65: iconst_1
-    //   66: iadd
-    //   67: istore_1
-    //   68: goto -41 -> 27
-    //   71: aload 5
-    //   73: ifnull +8 -> 81
-    //   76: aload 5
-    //   78: invokevirtual 176	java/io/InputStream:close	()V
-    //   81: iload 4
-    //   83: ireturn
-    //   84: astore_0
-    //   85: aload_0
-    //   86: invokevirtual 112	java/io/IOException:printStackTrace	()V
-    //   89: iload 4
-    //   91: ireturn
+    //   0: aconst_null
+    //   1: astore 7
+    //   3: aconst_null
+    //   4: astore 5
+    //   6: new 39	java/io/FileInputStream
+    //   9: dup
+    //   10: aload_0
+    //   11: invokespecial 171	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   14: astore_0
+    //   15: ldc 55
+    //   17: ldc 57
+    //   19: invokevirtual 63	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   22: astore 5
+    //   24: iconst_0
+    //   25: istore_1
+    //   26: iconst_1
+    //   27: istore 4
+    //   29: iload_1
+    //   30: aload 5
+    //   32: arraylength
+    //   33: if_icmpge +33 -> 66
+    //   36: aload_0
+    //   37: invokevirtual 176	java/io/InputStream:read	()I
+    //   40: istore_2
+    //   41: iload_2
+    //   42: iconst_m1
+    //   43: if_icmpeq +13 -> 56
+    //   46: aload 5
+    //   48: iload_1
+    //   49: baload
+    //   50: istore_3
+    //   51: iload_2
+    //   52: iload_3
+    //   53: if_icmpeq +6 -> 59
+    //   56: iconst_0
+    //   57: istore 4
+    //   59: iload_1
+    //   60: iconst_1
+    //   61: iadd
+    //   62: istore_1
+    //   63: goto -34 -> 29
+    //   66: aload_0
+    //   67: invokevirtual 177	java/io/InputStream:close	()V
+    //   70: goto +8 -> 78
+    //   73: astore_0
+    //   74: aload_0
+    //   75: invokevirtual 112	java/io/IOException:printStackTrace	()V
+    //   78: iload 4
+    //   80: ireturn
+    //   81: astore 6
+    //   83: aload_0
+    //   84: astore 5
+    //   86: aload 6
+    //   88: astore_0
+    //   89: goto +94 -> 183
     //   92: astore 6
-    //   94: aconst_null
-    //   95: astore 5
-    //   97: aload 5
-    //   99: astore_0
-    //   100: invokestatic 121	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   103: ifeq +35 -> 138
-    //   106: aload 5
-    //   108: astore_0
-    //   109: ldc 84
-    //   111: iconst_2
-    //   112: new 86	java/lang/StringBuilder
-    //   115: dup
-    //   116: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   119: ldc 178
-    //   121: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: aload 6
-    //   126: invokevirtual 97	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   129: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 104	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   138: aload 5
-    //   140: ifnull +8 -> 148
-    //   143: aload 5
-    //   145: invokevirtual 176	java/io/InputStream:close	()V
-    //   148: iconst_0
-    //   149: ireturn
-    //   150: astore_0
-    //   151: aload_0
-    //   152: invokevirtual 112	java/io/IOException:printStackTrace	()V
-    //   155: iconst_0
-    //   156: ireturn
-    //   157: astore 5
-    //   159: aconst_null
-    //   160: astore_0
-    //   161: aload_0
-    //   162: ifnull +7 -> 169
-    //   165: aload_0
-    //   166: invokevirtual 176	java/io/InputStream:close	()V
-    //   169: aload 5
-    //   171: athrow
-    //   172: astore_0
-    //   173: aload_0
-    //   174: invokevirtual 112	java/io/IOException:printStackTrace	()V
-    //   177: goto -8 -> 169
-    //   180: astore 5
-    //   182: goto -21 -> 161
-    //   185: astore 6
-    //   187: goto -90 -> 97
+    //   94: goto +12 -> 106
+    //   97: astore_0
+    //   98: goto +85 -> 183
+    //   101: astore 6
+    //   103: aload 7
+    //   105: astore_0
+    //   106: aload_0
+    //   107: astore 5
+    //   109: invokestatic 121	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   112: ifeq +54 -> 166
+    //   115: aload_0
+    //   116: astore 5
+    //   118: new 89	java/lang/StringBuilder
+    //   121: dup
+    //   122: invokespecial 90	java/lang/StringBuilder:<init>	()V
+    //   125: astore 7
+    //   127: aload_0
+    //   128: astore 5
+    //   130: aload 7
+    //   132: ldc 179
+    //   134: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: pop
+    //   138: aload_0
+    //   139: astore 5
+    //   141: aload 7
+    //   143: aload 6
+    //   145: invokevirtual 100	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   148: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: pop
+    //   152: aload_0
+    //   153: astore 5
+    //   155: ldc 102
+    //   157: iconst_2
+    //   158: aload 7
+    //   160: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   166: aload_0
+    //   167: ifnull +14 -> 181
+    //   170: aload_0
+    //   171: invokevirtual 177	java/io/InputStream:close	()V
+    //   174: iconst_0
+    //   175: ireturn
+    //   176: astore_0
+    //   177: aload_0
+    //   178: invokevirtual 112	java/io/IOException:printStackTrace	()V
+    //   181: iconst_0
+    //   182: ireturn
+    //   183: aload 5
+    //   185: ifnull +18 -> 203
+    //   188: aload 5
+    //   190: invokevirtual 177	java/io/InputStream:close	()V
+    //   193: goto +10 -> 203
+    //   196: astore 5
+    //   198: aload 5
+    //   200: invokevirtual 112	java/io/IOException:printStackTrace	()V
+    //   203: goto +5 -> 208
+    //   206: aload_0
+    //   207: athrow
+    //   208: goto -2 -> 206
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	190	0	paramString	String
-    //   26	42	1	i	int
-    //   45	14	2	j	int
-    //   55	4	3	k	int
-    //   1	89	4	bool	boolean
-    //   11	133	5	localFileInputStream	java.io.FileInputStream
-    //   157	13	5	localObject1	Object
-    //   180	1	5	localObject2	Object
-    //   23	29	6	arrayOfByte	byte[]
-    //   92	33	6	localException1	java.lang.Exception
-    //   185	1	6	localException2	java.lang.Exception
+    //   0	211	0	paramString	String
+    //   25	38	1	i	int
+    //   40	14	2	j	int
+    //   50	4	3	k	int
+    //   27	52	4	bool	boolean
+    //   4	185	5	localObject1	Object
+    //   196	3	5	localIOException	java.io.IOException
+    //   81	6	6	localObject2	Object
+    //   92	1	6	localException1	java.lang.Exception
+    //   101	43	6	localException2	java.lang.Exception
+    //   1	158	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   76	81	84	java/io/IOException
-    //   3	13	92	java/lang/Exception
-    //   143	148	150	java/io/IOException
-    //   3	13	157	finally
-    //   165	169	172	java/io/IOException
-    //   16	25	180	finally
-    //   30	37	180	finally
-    //   40	46	180	finally
-    //   100	106	180	finally
-    //   109	138	180	finally
-    //   16	25	185	java/lang/Exception
-    //   30	37	185	java/lang/Exception
-    //   40	46	185	java/lang/Exception
+    //   66	70	73	java/io/IOException
+    //   15	24	81	finally
+    //   29	41	81	finally
+    //   15	24	92	java/lang/Exception
+    //   29	41	92	java/lang/Exception
+    //   6	15	97	finally
+    //   109	115	97	finally
+    //   118	127	97	finally
+    //   130	138	97	finally
+    //   141	152	97	finally
+    //   155	166	97	finally
+    //   6	15	101	java/lang/Exception
+    //   170	174	176	java/io/IOException
+    //   188	193	196	java/io/IOException
   }
   
   public static byte[] a(byte[] paramArrayOfByte)
@@ -466,221 +487,235 @@ public class DESUtil
     //   11: invokestatic 20	com/tencent/mobileqq/utils/DESUtil:a	([B)[B
     //   14: ldc 22
     //   16: invokespecial 25	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
-    //   19: astore_2
-    //   20: ldc 22
-    //   22: invokestatic 31	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
-    //   25: astore 6
-    //   27: aload 6
-    //   29: iconst_2
-    //   30: aload_2
+    //   19: astore 6
+    //   21: ldc 22
+    //   23: invokestatic 31	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   26: astore_2
+    //   27: aload_2
+    //   28: iconst_2
+    //   29: aload 6
     //   31: invokevirtual 35	javax/crypto/Cipher:init	(ILjava/security/Key;)V
-    //   34: new 185	java/io/RandomAccessFile
+    //   34: new 186	java/io/RandomAccessFile
     //   37: dup
     //   38: aload_0
-    //   39: ldc 187
-    //   41: invokespecial 190	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   44: astore_2
-    //   45: aload_2
+    //   39: ldc 188
+    //   41: invokespecial 191	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   44: astore_0
+    //   45: aload_0
     //   46: ldc 55
     //   48: ldc 57
     //   50: invokevirtual 63	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   53: arraylength
     //   54: i2l
-    //   55: invokevirtual 194	java/io/RandomAccessFile:seek	(J)V
-    //   58: new 196	javax/crypto/CipherOutputStream
+    //   55: invokevirtual 195	java/io/RandomAccessFile:seek	(J)V
+    //   58: new 197	javax/crypto/CipherOutputStream
     //   61: dup
     //   62: new 47	java/io/FileOutputStream
     //   65: dup
     //   66: aload_1
     //   67: invokespecial 48	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   70: aload 6
-    //   72: invokespecial 199	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
-    //   75: astore_0
-    //   76: sipush 1024
-    //   79: newarray byte
-    //   81: astore_1
-    //   82: aload_2
-    //   83: aload_1
-    //   84: invokevirtual 200	java/io/RandomAccessFile:read	([B)I
-    //   87: istore_3
-    //   88: iload_3
-    //   89: iconst_m1
-    //   90: if_icmpeq +71 -> 161
-    //   93: aload_0
-    //   94: aload_1
-    //   95: iconst_0
-    //   96: iload_3
-    //   97: invokevirtual 201	javax/crypto/CipherOutputStream:write	([BII)V
-    //   100: goto -18 -> 82
-    //   103: astore 4
-    //   105: aload_2
-    //   106: astore_1
-    //   107: aload 4
-    //   109: astore_2
-    //   110: invokestatic 82	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   113: ifeq +31 -> 144
-    //   116: ldc 84
-    //   118: iconst_2
-    //   119: new 86	java/lang/StringBuilder
-    //   122: dup
-    //   123: invokespecial 87	java/lang/StringBuilder:<init>	()V
-    //   126: ldc 203
-    //   128: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: aload_2
-    //   132: invokevirtual 97	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   135: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   141: invokestatic 104	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   144: aload_0
-    //   145: ifnull +7 -> 152
-    //   148: aload_0
-    //   149: invokevirtual 204	javax/crypto/CipherOutputStream:close	()V
-    //   152: aload_1
-    //   153: ifnull +7 -> 160
-    //   156: aload_1
-    //   157: invokevirtual 205	java/io/RandomAccessFile:close	()V
-    //   160: return
-    //   161: aload_0
-    //   162: ifnull +7 -> 169
-    //   165: aload_0
-    //   166: invokevirtual 204	javax/crypto/CipherOutputStream:close	()V
-    //   169: aload_2
-    //   170: ifnull -10 -> 160
-    //   173: aload_2
-    //   174: invokevirtual 205	java/io/RandomAccessFile:close	()V
-    //   177: return
-    //   178: astore_0
-    //   179: aload_0
-    //   180: invokevirtual 112	java/io/IOException:printStackTrace	()V
-    //   183: return
-    //   184: astore_0
-    //   185: aload_0
-    //   186: invokevirtual 112	java/io/IOException:printStackTrace	()V
-    //   189: return
-    //   190: astore_0
-    //   191: aconst_null
-    //   192: astore_2
-    //   193: aload 4
-    //   195: astore_1
-    //   196: aload_1
-    //   197: ifnull +7 -> 204
-    //   200: aload_1
-    //   201: invokevirtual 204	javax/crypto/CipherOutputStream:close	()V
-    //   204: aload_2
-    //   205: ifnull +7 -> 212
+    //   70: aload_2
+    //   71: invokespecial 200	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
+    //   74: astore_2
+    //   75: sipush 1024
+    //   78: newarray byte
+    //   80: astore_1
+    //   81: aload_0
+    //   82: aload_1
+    //   83: invokevirtual 201	java/io/RandomAccessFile:read	([B)I
+    //   86: istore_3
+    //   87: iload_3
+    //   88: iconst_m1
+    //   89: if_icmpeq +13 -> 102
+    //   92: aload_2
+    //   93: aload_1
+    //   94: iconst_0
+    //   95: iload_3
+    //   96: invokevirtual 202	javax/crypto/CipherOutputStream:write	([BII)V
+    //   99: goto -18 -> 81
+    //   102: aload_2
+    //   103: invokevirtual 203	javax/crypto/CipherOutputStream:close	()V
+    //   106: aload_0
+    //   107: invokevirtual 204	java/io/RandomAccessFile:close	()V
+    //   110: return
+    //   111: astore_1
+    //   112: goto +119 -> 231
+    //   115: astore 4
+    //   117: aload_2
+    //   118: astore_1
+    //   119: goto +14 -> 133
+    //   122: astore_1
+    //   123: aload 4
+    //   125: astore_2
+    //   126: goto +105 -> 231
+    //   129: astore 4
+    //   131: aconst_null
+    //   132: astore_1
+    //   133: aload_0
+    //   134: astore_2
+    //   135: aload_1
+    //   136: astore_0
+    //   137: goto +19 -> 156
+    //   140: astore_1
+    //   141: aconst_null
+    //   142: astore_0
+    //   143: aload 4
+    //   145: astore_2
+    //   146: goto +85 -> 231
+    //   149: astore 4
+    //   151: aconst_null
+    //   152: astore_0
+    //   153: aload 5
+    //   155: astore_2
+    //   156: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   159: ifeq +38 -> 197
+    //   162: new 89	java/lang/StringBuilder
+    //   165: dup
+    //   166: invokespecial 90	java/lang/StringBuilder:<init>	()V
+    //   169: astore_1
+    //   170: aload_1
+    //   171: ldc 206
+    //   173: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: pop
+    //   177: aload_1
+    //   178: aload 4
+    //   180: invokevirtual 100	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   183: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: pop
+    //   187: ldc 102
+    //   189: iconst_2
+    //   190: aload_1
+    //   191: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   194: invokestatic 109	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   197: aload_0
+    //   198: ifnull +10 -> 208
+    //   201: aload_0
+    //   202: invokevirtual 203	javax/crypto/CipherOutputStream:close	()V
+    //   205: goto +3 -> 208
     //   208: aload_2
-    //   209: invokevirtual 205	java/io/RandomAccessFile:close	()V
-    //   212: aload_0
-    //   213: athrow
-    //   214: astore_1
-    //   215: aload_1
-    //   216: invokevirtual 112	java/io/IOException:printStackTrace	()V
-    //   219: goto -7 -> 212
-    //   222: astore_0
-    //   223: aload 4
-    //   225: astore_1
-    //   226: goto -30 -> 196
-    //   229: astore 4
-    //   231: aload_0
-    //   232: astore_1
-    //   233: aload 4
-    //   235: astore_0
-    //   236: goto -40 -> 196
-    //   239: astore 4
-    //   241: aload_1
-    //   242: astore_2
-    //   243: aload_0
-    //   244: astore_1
-    //   245: aload 4
-    //   247: astore_0
-    //   248: goto -52 -> 196
-    //   251: astore_2
-    //   252: aconst_null
-    //   253: astore_0
-    //   254: aload 5
-    //   256: astore_1
-    //   257: goto -147 -> 110
-    //   260: astore 4
-    //   262: aconst_null
-    //   263: astore_0
-    //   264: aload_2
-    //   265: astore_1
-    //   266: aload 4
-    //   268: astore_2
-    //   269: goto -159 -> 110
+    //   209: ifnull +12 -> 221
+    //   212: aload_2
+    //   213: invokevirtual 204	java/io/RandomAccessFile:close	()V
+    //   216: return
+    //   217: aload_0
+    //   218: invokevirtual 112	java/io/IOException:printStackTrace	()V
+    //   221: return
+    //   222: astore_1
+    //   223: aload_2
+    //   224: astore 4
+    //   226: aload_0
+    //   227: astore_2
+    //   228: aload 4
+    //   230: astore_0
+    //   231: aload_2
+    //   232: ifnull +10 -> 242
+    //   235: aload_2
+    //   236: invokevirtual 203	javax/crypto/CipherOutputStream:close	()V
+    //   239: goto +3 -> 242
+    //   242: aload_0
+    //   243: ifnull +14 -> 257
+    //   246: aload_0
+    //   247: invokevirtual 204	java/io/RandomAccessFile:close	()V
+    //   250: goto +7 -> 257
+    //   253: aload_0
+    //   254: invokevirtual 112	java/io/IOException:printStackTrace	()V
+    //   257: goto +5 -> 262
+    //   260: aload_1
+    //   261: athrow
+    //   262: goto -2 -> 260
+    //   265: astore_0
+    //   266: goto -49 -> 217
+    //   269: astore_0
+    //   270: goto -17 -> 253
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	272	0	paramFile1	File
-    //   0	272	1	paramFile2	File
-    //   0	272	2	paramArrayOfByte	byte[]
-    //   87	10	3	i	int
+    //   0	273	0	paramFile1	File
+    //   0	273	1	paramFile2	File
+    //   0	273	2	paramArrayOfByte	byte[]
+    //   86	10	3	i	int
     //   1	1	4	localObject1	Object
-    //   103	121	4	localException1	java.lang.Exception
-    //   229	5	4	localObject2	Object
-    //   239	7	4	localObject3	Object
-    //   260	7	4	localException2	java.lang.Exception
-    //   4	251	5	localObject4	Object
-    //   25	46	6	localCipher	javax.crypto.Cipher
+    //   115	9	4	localException1	java.lang.Exception
+    //   129	15	4	localException2	java.lang.Exception
+    //   149	30	4	localException3	java.lang.Exception
+    //   224	5	4	arrayOfByte	byte[]
+    //   4	150	5	localObject2	Object
+    //   19	11	6	localSecretKeySpec	javax.crypto.spec.SecretKeySpec
     // Exception table:
     //   from	to	target	type
-    //   76	82	103	java/lang/Exception
-    //   82	88	103	java/lang/Exception
-    //   93	100	103	java/lang/Exception
-    //   165	169	178	java/io/IOException
-    //   173	177	178	java/io/IOException
-    //   148	152	184	java/io/IOException
-    //   156	160	184	java/io/IOException
-    //   6	45	190	finally
-    //   200	204	214	java/io/IOException
-    //   208	212	214	java/io/IOException
-    //   45	76	222	finally
-    //   76	82	229	finally
-    //   82	88	229	finally
-    //   93	100	229	finally
-    //   110	144	239	finally
-    //   6	45	251	java/lang/Exception
-    //   45	76	260	java/lang/Exception
+    //   75	81	111	finally
+    //   81	87	111	finally
+    //   92	99	111	finally
+    //   75	81	115	java/lang/Exception
+    //   81	87	115	java/lang/Exception
+    //   92	99	115	java/lang/Exception
+    //   45	75	122	finally
+    //   45	75	129	java/lang/Exception
+    //   6	45	140	finally
+    //   6	45	149	java/lang/Exception
+    //   156	197	222	finally
+    //   102	110	265	java/io/IOException
+    //   201	205	265	java/io/IOException
+    //   212	216	265	java/io/IOException
+    //   235	239	269	java/io/IOException
+    //   246	250	269	java/io/IOException
   }
   
   public static void b(String paramString1, String paramString2)
   {
     try
     {
-      if (!a(paramString1))
+      boolean bool = a(paramString1);
+      if (!bool)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("DESUtil", 2, "decrypt had no encrypt,file:" + paramString1);
-        }
-      }
-      else
-      {
-        long l1 = System.currentTimeMillis();
-        Object localObject = paramString1 + ".tmp";
-        File localFile = new File(paramString1);
-        long l2 = localFile.length() / 1024L;
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-        b(localFile, (File)localObject, paramString2.getBytes("UTF-8"));
-        FileUtils.a((File)localObject, localFile);
-        ((File)localObject).delete();
-        if (QLog.isDevelopLevel())
-        {
-          QLog.d("DESUtil", 4, "DES Decrypt filePath:" + paramString1 + ",key:" + paramString2 + ",costTime:" + (System.currentTimeMillis() - l1) + ",fileSize:" + l2 + "KB");
+        if (!QLog.isDevelopLevel()) {
           return;
         }
+        paramString2 = new StringBuilder();
+        paramString2.append("decrypt had no encrypt,file:");
+        paramString2.append(paramString1);
+        QLog.d("DESUtil", 2, paramString2.toString());
+        return;
+      }
+      long l1 = System.currentTimeMillis();
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(".tmp");
+      Object localObject2 = ((StringBuilder)localObject1).toString();
+      localObject1 = new File(paramString1);
+      long l2 = ((File)localObject1).length() / 1024L;
+      localObject2 = new File((String)localObject2);
+      if (((File)localObject2).exists()) {
+        ((File)localObject2).delete();
+      }
+      b((File)localObject1, (File)localObject2, paramString2.getBytes("UTF-8"));
+      FileUtils.copyFile((File)localObject2, (File)localObject1);
+      ((File)localObject2).delete();
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("DES Decrypt filePath:");
+        ((StringBuilder)localObject1).append(paramString1);
+        ((StringBuilder)localObject1).append(",key:");
+        ((StringBuilder)localObject1).append(paramString2);
+        ((StringBuilder)localObject1).append(",costTime:");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
+        ((StringBuilder)localObject1).append(",fileSize:");
+        ((StringBuilder)localObject1).append(l2);
+        ((StringBuilder)localObject1).append("KB");
+        QLog.d("DESUtil", 4, ((StringBuilder)localObject1).toString());
+        return;
       }
     }
     catch (UnsupportedEncodingException paramString1)
     {
       paramString1.printStackTrace();
     }
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.DESUtil
  * JD-Core Version:    0.7.0.1
  */

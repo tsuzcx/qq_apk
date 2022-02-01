@@ -3,7 +3,7 @@ package com.tencent.mobileqq.servlet;
 import KQQ.PluginInfo;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.observer.GameCenterObserver;
@@ -56,28 +56,32 @@ public class GameCenterServlet
       }
       else if (paramIntent != null)
       {
-        paramFromServiceMsg = "|wufbuf: " + HexUtil.bytes2HexStr(paramFromServiceMsg.getWupBuffer());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("|wufbuf: ");
+        ((StringBuilder)localObject).append(HexUtil.bytes2HexStr(paramFromServiceMsg.getWupBuffer()));
+        paramFromServiceMsg = ((StringBuilder)localObject).toString();
         localObject = new HashMap();
         ((HashMap)localObject).put("param_FailCode", String.valueOf(9045));
         ((HashMap)localObject).put("param_errorDesc", paramFromServiceMsg);
         StatisticCollector.getInstance(paramIntent.getApp()).collectPerformance(paramIntent.getCurrentAccountUin(), "actPluginUnread", false, this.b - this.a, 0L, (HashMap)localObject, "");
       }
     }
-    for (;;)
+    else if (paramIntent != null)
     {
-      paramIntent = new Bundle();
-      paramIntent.putInt("gc_notify_type", 2);
-      notifyObserver(null, 10000, false, paramIntent, GameCenterObserver.class);
-      return;
-      if (paramIntent != null)
-      {
-        paramFromServiceMsg = "|resultcode: " + paramFromServiceMsg.getResultCode() + "|reason: " + MessageHandler.a(paramFromServiceMsg);
-        localObject = new HashMap();
-        ((HashMap)localObject).put("param_FailCode", String.valueOf(9311));
-        ((HashMap)localObject).put("param_errorDesc", paramFromServiceMsg);
-        StatisticCollector.getInstance(paramIntent.getApp()).collectPerformance(paramIntent.getCurrentAccountUin(), "actPluginUnread", false, this.b - this.a, 0L, (HashMap)localObject, "");
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("|resultcode: ");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.getResultCode());
+      ((StringBuilder)localObject).append("|reason: ");
+      ((StringBuilder)localObject).append(BaseMessageHandler.a(paramFromServiceMsg));
+      paramFromServiceMsg = ((StringBuilder)localObject).toString();
+      localObject = new HashMap();
+      ((HashMap)localObject).put("param_FailCode", String.valueOf(9311));
+      ((HashMap)localObject).put("param_errorDesc", paramFromServiceMsg);
+      StatisticCollector.getInstance(paramIntent.getApp()).collectPerformance(paramIntent.getCurrentAccountUin(), "actPluginUnread", false, this.b - this.a, 0L, (HashMap)localObject, "");
     }
+    paramIntent = new Bundle();
+    paramIntent.putInt("gc_notify_type", 2);
+    notifyObserver(null, 10000, false, paramIntent, GameCenterObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -115,7 +119,7 @@ public class GameCenterServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.GameCenterServlet
  * JD-Core Version:    0.7.0.1
  */

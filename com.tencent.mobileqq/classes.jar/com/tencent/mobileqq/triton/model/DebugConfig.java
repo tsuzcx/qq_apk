@@ -60,18 +60,18 @@ public final class DebugConfig
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof DebugConfig))
       {
         paramObject = (DebugConfig)paramObject;
-        if ((this.debugEnabled != paramObject.debugEnabled) || (this.presentDetectIntervalMillis != paramObject.presentDetectIntervalMillis) || (this.noPresentDurationToCheckLimitMillis != paramObject.noPresentDurationToCheckLimitMillis) || (this.frameNoChangeToCheckLimit != paramObject.frameNoChangeToCheckLimit) || (this.noPresentTouchLimit != paramObject.noPresentTouchLimit)) {}
+        if ((this.debugEnabled == paramObject.debugEnabled) && (this.presentDetectIntervalMillis == paramObject.presentDetectIntervalMillis) && (this.noPresentDurationToCheckLimitMillis == paramObject.noPresentDurationToCheckLimitMillis) && (this.frameNoChangeToCheckLimit == paramObject.frameNoChangeToCheckLimit) && (this.noPresentTouchLimit == paramObject.noPresentTouchLimit)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final boolean getDebugEnabled()
@@ -107,12 +107,24 @@ public final class DebugConfig
   @NotNull
   public String toString()
   {
-    return "DebugConfig(debugEnabled=" + this.debugEnabled + ", presentDetectIntervalMillis=" + this.presentDetectIntervalMillis + ", noPresentDurationToCheckLimitMillis=" + this.noPresentDurationToCheckLimitMillis + ", frameNoChangeToCheckLimit=" + this.frameNoChangeToCheckLimit + ", noPresentTouchLimit=" + this.noPresentTouchLimit + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DebugConfig(debugEnabled=");
+    localStringBuilder.append(this.debugEnabled);
+    localStringBuilder.append(", presentDetectIntervalMillis=");
+    localStringBuilder.append(this.presentDetectIntervalMillis);
+    localStringBuilder.append(", noPresentDurationToCheckLimitMillis=");
+    localStringBuilder.append(this.noPresentDurationToCheckLimitMillis);
+    localStringBuilder.append(", frameNoChangeToCheckLimit=");
+    localStringBuilder.append(this.frameNoChangeToCheckLimit);
+    localStringBuilder.append(", noPresentTouchLimit=");
+    localStringBuilder.append(this.noPresentTouchLimit);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.model.DebugConfig
  * JD-Core Version:    0.7.0.1
  */

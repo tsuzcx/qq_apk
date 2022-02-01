@@ -4,29 +4,19 @@ public class LiveClientTypeUtil
 {
   public static int getAppIdFromClientType(int paramInt)
   {
-    int i = 0;
-    if (paramInt > 1000)
-    {
-      i = paramInt >> 4 & 0xFFFF;
-      return i;
+    if (paramInt > 1000) {
+      return 0xFFFF & paramInt >> 4;
     }
-    switch (paramInt)
-    {
-    }
+    if ((paramInt != 401) && (paramInt != 402)) {}
     return 0;
   }
   
   public static int getAppInfoFromClientType(int paramInt)
   {
-    int i = 0;
-    if (paramInt > 1000)
-    {
-      i = paramInt >> 20 & 0xF;
-      return i;
+    if (paramInt > 1000) {
+      return paramInt >> 20 & 0xF;
     }
-    switch (paramInt)
-    {
-    }
+    if ((paramInt != 401) && (paramInt != 402)) {}
     return 0;
   }
   
@@ -35,22 +25,23 @@ public class LiveClientTypeUtil
     if (paramInt > 1000) {
       return paramInt & 0xF;
     }
-    switch (paramInt)
+    if (paramInt != 401)
     {
-    case 403: 
-    default: 
-      return 0;
-    case 401: 
-      return 2;
-    case 402: 
+      if (paramInt != 402)
+      {
+        if (paramInt != 404) {
+          return 0;
+        }
+        return 3;
+      }
       return 1;
     }
-    return 3;
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.LiveClientTypeUtil
  * JD-Core Version:    0.7.0.1
  */

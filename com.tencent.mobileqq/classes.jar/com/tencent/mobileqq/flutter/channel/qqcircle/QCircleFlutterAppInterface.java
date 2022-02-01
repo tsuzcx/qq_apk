@@ -44,7 +44,7 @@ public class QCircleFlutterAppInterface
     QLog.e("QCircleFlutterAppInterface", 1, "[onBeforeExitProc]");
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     if (QLog.isColorLevel()) {
@@ -54,7 +54,10 @@ public class QCircleFlutterAppInterface
   
   public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
   {
-    QLog.w("QCircleFlutterAppInterface", 1, "[onReceiveAccountAction] s=" + paramString);
+    paramIntent = new StringBuilder();
+    paramIntent.append("[onReceiveAccountAction] s=");
+    paramIntent.append(paramString);
+    QLog.w("QCircleFlutterAppInterface", 1, paramIntent.toString());
     return false;
   }
   
@@ -66,7 +69,7 @@ public class QCircleFlutterAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.qqcircle.QCircleFlutterAppInterface
  * JD-Core Version:    0.7.0.1
  */

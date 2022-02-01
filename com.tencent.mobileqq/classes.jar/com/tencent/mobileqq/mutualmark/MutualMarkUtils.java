@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.FriendsManager;
@@ -15,6 +16,7 @@ import com.tencent.mobileqq.config.business.MutualMarkConfProcessor;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.mutualmark.alienation.MutualMarkAlienationUtils;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
+import com.tencent.mobileqq.webview.util.WebViewComUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -37,74 +39,88 @@ public class MutualMarkUtils
   
   static
   {
-    c.put("hot_reactive_gray_intimate_lover_1_icon", Integer.valueOf(2130850590));
-    c.put("hot_reactive_gray_intimate_lover_2_icon", Integer.valueOf(2130850591));
-    c.put("hot_reactive_gray_intimate_lover_3_icon", Integer.valueOf(2130850592));
-    c.put("hot_reactive_gray_intimate_guimi_1_icon", Integer.valueOf(2130850584));
-    c.put("hot_reactive_gray_intimate_guimi_2_icon", Integer.valueOf(2130850585));
-    c.put("hot_reactive_gray_intimate_guimi_3_icon", Integer.valueOf(2130850586));
-    c.put("hot_reactive_gray_intimate_jiyou_1_icon", Integer.valueOf(2130850587));
-    c.put("hot_reactive_gray_intimate_jiyou_2_icon", Integer.valueOf(2130850588));
-    c.put("hot_reactive_gray_intimate_jiyou_3_icon", Integer.valueOf(2130850589));
-    c.put("hot_reactive_gray_friendship_1_icon", Integer.valueOf(2130850581));
-    c.put("hot_reactive_gray_friendship_2_icon", Integer.valueOf(2130850582));
-    c.put("hot_reactive_gray_friendship_3_icon", Integer.valueOf(2130850583));
-    c.put("gray_small_fire", Integer.valueOf(2130850614));
-    c.put("gray_big_fire", Integer.valueOf(2130850561));
-    c.put("gray_small_zan", Integer.valueOf(2130850618));
-    c.put("gray_big_zan", Integer.valueOf(2130850565));
-    c.put("gray_small_lover", Integer.valueOf(2130850606));
-    c.put("gray_big_lover", Integer.valueOf(2130850605));
-    c.put("qzone_gray_qzone_visit_normal", Integer.valueOf(2130850612));
-    c.put("qzone_gray_qzone_visit_super", Integer.valueOf(2130850613));
-    c.put("gray_small_ship", Integer.valueOf(2130850617));
-    c.put("gray_big_ship", Integer.valueOf(2130850564));
+    Object localObject1 = c;
+    Integer localInteger1 = Integer.valueOf(2130850516);
+    ((HashMap)localObject1).put("hot_reactive_gray_intimate_lover_1_icon", localInteger1);
+    Object localObject2 = c;
+    localObject1 = Integer.valueOf(2130850517);
+    ((HashMap)localObject2).put("hot_reactive_gray_intimate_lover_2_icon", localObject1);
+    Object localObject3 = c;
+    localObject2 = Integer.valueOf(2130850518);
+    ((HashMap)localObject3).put("hot_reactive_gray_intimate_lover_3_icon", localObject2);
+    Object localObject4 = c;
+    localObject3 = Integer.valueOf(2130850510);
+    ((HashMap)localObject4).put("hot_reactive_gray_intimate_guimi_1_icon", localObject3);
+    Object localObject5 = c;
+    localObject4 = Integer.valueOf(2130850511);
+    ((HashMap)localObject5).put("hot_reactive_gray_intimate_guimi_2_icon", localObject4);
+    HashMap localHashMap = c;
+    localObject5 = Integer.valueOf(2130850512);
+    localHashMap.put("hot_reactive_gray_intimate_guimi_3_icon", localObject5);
+    localHashMap = c;
+    Integer localInteger2 = Integer.valueOf(2130850513);
+    localHashMap.put("hot_reactive_gray_intimate_jiyou_1_icon", localInteger2);
+    c.put("hot_reactive_gray_intimate_jiyou_2_icon", Integer.valueOf(2130850514));
+    c.put("hot_reactive_gray_intimate_jiyou_3_icon", Integer.valueOf(2130850515));
+    c.put("hot_reactive_gray_friendship_1_icon", Integer.valueOf(2130850507));
+    c.put("hot_reactive_gray_friendship_2_icon", Integer.valueOf(2130850508));
+    c.put("hot_reactive_gray_friendship_3_icon", Integer.valueOf(2130850509));
+    c.put("gray_small_fire", Integer.valueOf(2130850540));
+    c.put("gray_big_fire", Integer.valueOf(2130850487));
+    c.put("gray_small_zan", Integer.valueOf(2130850544));
+    c.put("gray_big_zan", Integer.valueOf(2130850491));
+    c.put("gray_small_lover", Integer.valueOf(2130850532));
+    c.put("gray_big_lover", Integer.valueOf(2130850531));
+    c.put("qzone_gray_qzone_visit_normal", Integer.valueOf(2130850538));
+    c.put("qzone_gray_qzone_visit_super", Integer.valueOf(2130850539));
+    c.put("gray_small_ship", Integer.valueOf(2130850543));
+    c.put("gray_big_ship", Integer.valueOf(2130850490));
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_small_fire", Integer.valueOf(2130850614));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_big_fire", Integer.valueOf(2130850561));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_1", Integer.valueOf(2130850572));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_2", Integer.valueOf(2130850573));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_3", Integer.valueOf(2130850574));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_4", Integer.valueOf(2130850575));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_5", Integer.valueOf(2130850576));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_6", Integer.valueOf(2130850577));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_small_flower", Integer.valueOf(2130850617));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_big_flower", Integer.valueOf(2130850564));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_small_praise", Integer.valueOf(2130850618));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_big_praise", Integer.valueOf(2130850565));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_lover_small", Integer.valueOf(2130850606));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_lover_big", Integer.valueOf(2130850605));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_qzone_visit_normal", Integer.valueOf(2130850612));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_qzone_visit_super", Integer.valueOf(2130850613));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_frdship_1", Integer.valueOf(2130850581));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_frdship_2", Integer.valueOf(2130850582));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_frdship_3", Integer.valueOf(2130850583));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_lover_1", Integer.valueOf(2130850590));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_lover_2", Integer.valueOf(2130850591));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_lover_3", Integer.valueOf(2130850592));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_guimi_1", Integer.valueOf(2130850584));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_guimi_2", Integer.valueOf(2130850585));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_guimi_3", Integer.valueOf(2130850586));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_sidang_1", Integer.valueOf(2130850596));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_sidang_2", Integer.valueOf(2130850597));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_sidang_3", Integer.valueOf(2130850598));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_jiyou_1", Integer.valueOf(2130850587));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_jiyou_2", Integer.valueOf(2130850588));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_jiyou_3", Integer.valueOf(2130850589));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_mutual_x_character_1", Integer.valueOf(2130850611));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_mentorship", Integer.valueOf(2130850609));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_mentorship_svip", Integer.valueOf(2130850608));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_mentorship_yellowvip", Integer.valueOf(2130850610));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_mentorship_newyear", Integer.valueOf(2130850607));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_kapu_1", Integer.valueOf(2130850599));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_kapu_2", Integer.valueOf(2130850600));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_kapu_3", Integer.valueOf(2130850601));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_forget_me_not_1", Integer.valueOf(2130850578));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_forget_me_not_2", Integer.valueOf(2130850579));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_forget_me_not_3", Integer.valueOf(2130850580));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_listen_together_1", Integer.valueOf(2130850602));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_listen_together_2", Integer.valueOf(2130850603));
-    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_listen_together_3", Integer.valueOf(2130850604));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_small_fire", Integer.valueOf(2130850540));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_big_fire", Integer.valueOf(2130850487));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_1", Integer.valueOf(2130850498));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_2", Integer.valueOf(2130850499));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_3", Integer.valueOf(2130850500));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_4", Integer.valueOf(2130850501));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_5", Integer.valueOf(2130850502));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_fire_6", Integer.valueOf(2130850503));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_small_flower", Integer.valueOf(2130850543));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_big_flower", Integer.valueOf(2130850490));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_small_praise", Integer.valueOf(2130850544));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_big_praise", Integer.valueOf(2130850491));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_lover_small", Integer.valueOf(2130850532));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_lover_big", Integer.valueOf(2130850531));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_qzone_visit_normal", Integer.valueOf(2130850538));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_qzone_visit_super", Integer.valueOf(2130850539));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_frdship_1", Integer.valueOf(2130850507));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_frdship_2", Integer.valueOf(2130850508));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_frdship_3", Integer.valueOf(2130850509));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_lover_1", localInteger1);
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_lover_2", localObject1);
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_lover_3", localObject2);
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_guimi_1", localObject3);
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_guimi_2", localObject4);
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_guimi_3", localObject5);
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_sidang_1", Integer.valueOf(2130850522));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_sidang_2", Integer.valueOf(2130850523));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_sidang_3", Integer.valueOf(2130850524));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_jiyou_1", localInteger2);
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_jiyou_2", Integer.valueOf(2130850514));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_intimate_jiyou_3", Integer.valueOf(2130850515));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_mutual_x_character_1", Integer.valueOf(2130850537));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_mentorship", Integer.valueOf(2130850535));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_mentorship_svip", Integer.valueOf(2130850534));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_mentorship_yellowvip", Integer.valueOf(2130850536));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_mentorship_newyear", Integer.valueOf(2130850533));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_kapu_1", Integer.valueOf(2130850525));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_kapu_2", Integer.valueOf(2130850526));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_kapu_3", Integer.valueOf(2130850527));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_forget_me_not_1", Integer.valueOf(2130850504));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_forget_me_not_2", Integer.valueOf(2130850505));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_forget_me_not_3", Integer.valueOf(2130850506));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_listen_together_1", Integer.valueOf(2130850528));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_listen_together_2", Integer.valueOf(2130850529));
+    jdField_a_of_type_JavaUtilHashMap.put("skin_icon_listen_together_3", Integer.valueOf(2130850530));
     b = new HashMap();
     b.putAll(c);
     b.putAll(jdField_a_of_type_JavaUtilHashMap);
@@ -119,21 +135,24 @@ public class MutualMarkUtils
   
   public static int a(long paramLong1, long paramLong2)
   {
-    return (int)(100000L + 10L * paramLong1 + paramLong2);
+    return (int)(paramLong1 * 10L + 100000L + paramLong2);
   }
   
   public static long a(String paramString)
   {
-    long l = 0L;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      l = Long.valueOf(Long.parseLong(paramString)).longValue() % 10L;
-      return l;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("MutualMarkUtils", 1, "getTypeLevel error:" + paramString.getMessage());
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        long l = Long.valueOf(Long.parseLong(paramString)).longValue();
+        return l % 10L;
+      }
+      catch (Exception paramString)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getTypeLevel error:");
+        localStringBuilder.append(paramString.getMessage());
+        QLog.e("MutualMarkUtils", 1, localStringBuilder.toString());
+      }
     }
     return 0L;
   }
@@ -146,82 +165,75 @@ public class MutualMarkUtils
     //   1: astore_1
     //   2: aconst_null
     //   3: astore_0
-    //   4: ldc_w 296
-    //   7: astore_3
-    //   8: invokestatic 302	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   11: invokevirtual 308	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
-    //   14: ldc_w 310
-    //   17: invokevirtual 316	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   20: astore_2
+    //   4: invokestatic 300	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   7: invokevirtual 306	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
+    //   10: ldc_w 308
+    //   13: invokevirtual 314	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   16: astore_2
+    //   17: aload_2
+    //   18: astore_0
+    //   19: aload_2
+    //   20: astore_1
     //   21: aload_2
-    //   22: astore_0
-    //   23: aload_2
-    //   24: astore_1
-    //   25: aload_2
-    //   26: invokestatic 321	com/tencent/biz/common/util/Util:a	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   29: astore 4
-    //   31: aload 4
-    //   33: astore_0
-    //   34: aload_0
-    //   35: astore_1
-    //   36: aload_2
-    //   37: ifnull +9 -> 46
-    //   40: aload_2
-    //   41: invokevirtual 326	java/io/InputStream:close	()V
-    //   44: aload_0
-    //   45: astore_1
-    //   46: aload_1
-    //   47: areturn
-    //   48: astore_2
-    //   49: aload_0
-    //   50: astore_1
-    //   51: aload_2
-    //   52: invokevirtual 329	java/lang/Throwable:printStackTrace	()V
-    //   55: aload_3
-    //   56: astore_1
-    //   57: aload_0
-    //   58: ifnull -12 -> 46
+    //   22: invokestatic 319	com/tencent/biz/common/util/Util:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   25: astore_3
+    //   26: aload_3
+    //   27: astore_0
+    //   28: aload_2
+    //   29: ifnull +32 -> 61
+    //   32: aload_2
+    //   33: invokevirtual 324	java/io/InputStream:close	()V
+    //   36: aload_3
+    //   37: areturn
+    //   38: astore_1
+    //   39: goto +24 -> 63
+    //   42: astore_2
+    //   43: aload_1
+    //   44: astore_0
+    //   45: aload_2
+    //   46: invokevirtual 327	java/lang/Throwable:printStackTrace	()V
+    //   49: aload_1
+    //   50: ifnull +7 -> 57
+    //   53: aload_1
+    //   54: invokevirtual 324	java/io/InputStream:close	()V
+    //   57: ldc_w 329
+    //   60: astore_0
     //   61: aload_0
-    //   62: invokevirtual 326	java/io/InputStream:close	()V
-    //   65: ldc_w 296
-    //   68: areturn
-    //   69: astore_0
-    //   70: ldc_w 296
-    //   73: areturn
-    //   74: astore_0
-    //   75: aload_1
-    //   76: ifnull +7 -> 83
-    //   79: aload_1
-    //   80: invokevirtual 326	java/io/InputStream:close	()V
-    //   83: aload_0
-    //   84: athrow
-    //   85: astore_1
-    //   86: aload_0
-    //   87: areturn
-    //   88: astore_1
-    //   89: goto -6 -> 83
+    //   62: areturn
+    //   63: aload_0
+    //   64: ifnull +7 -> 71
+    //   67: aload_0
+    //   68: invokevirtual 324	java/io/InputStream:close	()V
+    //   71: aload_1
+    //   72: athrow
+    //   73: astore_0
+    //   74: aload_3
+    //   75: areturn
+    //   76: astore_0
+    //   77: goto -20 -> 57
+    //   80: astore_0
+    //   81: goto -10 -> 71
     // Local variable table:
     //   start	length	slot	name	signature
-    //   3	59	0	localObject1	Object
-    //   69	1	0	localIOException1	java.io.IOException
-    //   74	13	0	str1	String
-    //   1	79	1	localObject2	Object
-    //   85	1	1	localIOException2	java.io.IOException
-    //   88	1	1	localIOException3	java.io.IOException
-    //   20	21	2	localInputStream	java.io.InputStream
-    //   48	4	2	localThrowable	java.lang.Throwable
-    //   7	49	3	str2	String
-    //   29	3	4	str3	String
+    //   3	65	0	localObject1	Object
+    //   73	1	0	localIOException1	java.io.IOException
+    //   76	1	0	localIOException2	java.io.IOException
+    //   80	1	0	localIOException3	java.io.IOException
+    //   1	20	1	localObject2	Object
+    //   38	34	1	localObject3	Object
+    //   16	17	2	localInputStream	java.io.InputStream
+    //   42	4	2	localThrowable	java.lang.Throwable
+    //   25	50	3	str	String
     // Exception table:
     //   from	to	target	type
-    //   8	21	48	java/lang/Throwable
-    //   25	31	48	java/lang/Throwable
-    //   61	65	69	java/io/IOException
-    //   8	21	74	finally
-    //   25	31	74	finally
-    //   51	55	74	finally
-    //   40	44	85	java/io/IOException
-    //   79	83	88	java/io/IOException
+    //   4	17	38	finally
+    //   21	26	38	finally
+    //   45	49	38	finally
+    //   4	17	42	java/lang/Throwable
+    //   21	26	42	java/lang/Throwable
+    //   32	36	73	java/io/IOException
+    //   53	57	76	java/io/IOException
+    //   67	71	80	java/io/IOException
   }
   
   public static String a(int paramInt)
@@ -248,7 +260,7 @@ public class MutualMarkUtils
   
   public static String a(long paramLong1, long paramLong2)
   {
-    return String.valueOf(100000L + 10L * paramLong1 + paramLong2);
+    return String.valueOf(paramLong1 * 10L + 100000L + paramLong2);
   }
   
   public static String a(String paramString)
@@ -257,8 +269,14 @@ public class MutualMarkUtils
     if (((Matcher)localObject).matches())
     {
       localObject = ((Matcher)localObject).group(1);
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkUtils", 2, "getMutualMarkImageUrlTemplateUrl. url:" + (String)localObject + " template:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMutualMarkImageUrlTemplateUrl. url:");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" template:");
+        localStringBuilder.append(paramString);
+        QLog.i("MutualMarkUtils", 2, localStringBuilder.toString());
       }
       return localObject;
     }
@@ -267,39 +285,53 @@ public class MutualMarkUtils
   
   public static String a(String paramString1, String paramString2)
   {
-    String str = paramString2;
+    Object localObject = paramString2;
     if (!TextUtils.isEmpty(paramString1))
     {
-      str = paramString2;
+      localObject = paramString2;
       if (!TextUtils.isEmpty(paramString2))
       {
-        str = paramString2;
+        localObject = paramString2;
         if (!b(paramString2))
         {
-          if ((!paramString1.endsWith("/")) || (!paramString2.startsWith("/"))) {
-            break label72;
+          if ((paramString1.endsWith("/")) && (paramString2.startsWith("/")))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString1);
+            ((StringBuilder)localObject).append(paramString2.substring(1));
+            return ((StringBuilder)localObject).toString();
           }
-          str = paramString1 + paramString2.substring(1);
+          if ((paramString1.endsWith("/")) && (!paramString2.startsWith("/")))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString1);
+            ((StringBuilder)localObject).append(paramString2);
+            return ((StringBuilder)localObject).toString();
+          }
+          if ((!paramString1.endsWith("/")) && (paramString2.startsWith("/")))
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString1);
+            ((StringBuilder)localObject).append(paramString2);
+            return ((StringBuilder)localObject).toString();
+          }
+          localObject = paramString2;
+          if (!paramString1.endsWith("/"))
+          {
+            localObject = paramString2;
+            if (!paramString2.startsWith("/"))
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(paramString1);
+              ((StringBuilder)localObject).append("/");
+              ((StringBuilder)localObject).append(paramString2);
+              localObject = ((StringBuilder)localObject).toString();
+            }
+          }
         }
       }
     }
-    label72:
-    do
-    {
-      do
-      {
-        return str;
-        if ((paramString1.endsWith("/")) && (!paramString2.startsWith("/"))) {
-          return paramString1 + paramString2;
-        }
-        if ((!paramString1.endsWith("/")) && (paramString2.startsWith("/"))) {
-          return paramString1 + paramString2;
-        }
-        str = paramString2;
-      } while (paramString1.endsWith("/"));
-      str = paramString2;
-    } while (paramString2.startsWith("/"));
-    return paramString1 + "/" + paramString2;
+    return localObject;
   }
   
   public static ArrayList<MutualMarkUtils.ImageUrlTemplateInfo> a(String paramString)
@@ -313,16 +345,23 @@ public class MutualMarkUtils
       localImageUrlTemplateInfo.jdField_a_of_type_Int = paramString.start();
       localImageUrlTemplateInfo.jdField_b_of_type_Int = (localImageUrlTemplateInfo.jdField_a_of_type_Int + localImageUrlTemplateInfo.jdField_a_of_type_JavaLangString.length());
       localImageUrlTemplateInfo.jdField_b_of_type_JavaLangString = paramString.group(1);
+      Object localObject;
       if ((!TextUtils.isEmpty(localImageUrlTemplateInfo.jdField_b_of_type_JavaLangString)) && (localImageUrlTemplateInfo.jdField_b_of_type_JavaLangString.contains("client/42px-")))
       {
-        Matcher localMatcher = Pattern.compile("x_character/([^\\)]+?)/client").matcher(localImageUrlTemplateInfo.jdField_b_of_type_JavaLangString);
-        if (localMatcher.find()) {
-          localImageUrlTemplateInfo.c = localMatcher.group(1);
+        localObject = Pattern.compile("x_character/([^\\)]+?)/client").matcher(localImageUrlTemplateInfo.jdField_b_of_type_JavaLangString);
+        if (((Matcher)localObject).find()) {
+          localImageUrlTemplateInfo.c = ((Matcher)localObject).group(1);
         }
       }
       localArrayList.add(localImageUrlTemplateInfo);
-      if (QLog.isColorLevel()) {
-        QLog.i("MutualMarkUtils", 2, "getMutualMarkImageUrlTemplateInfos. url:" + localImageUrlTemplateInfo.jdField_b_of_type_JavaLangString + " template:" + localImageUrlTemplateInfo.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getMutualMarkImageUrlTemplateInfos. url:");
+        ((StringBuilder)localObject).append(localImageUrlTemplateInfo.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(" template:");
+        ((StringBuilder)localObject).append(localImageUrlTemplateInfo.jdField_a_of_type_JavaLangString);
+        QLog.i("MutualMarkUtils", 2, ((StringBuilder)localObject).toString());
       }
     }
     return localArrayList;
@@ -337,122 +376,143 @@ public class MutualMarkUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {}
-    do
+    if (paramQQAppInterface != null)
     {
-      return;
+      if (paramContext == null) {
+        return;
+      }
       Object localObject = MutualMarkConfProcessor.a().a();
       boolean bool = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(false);
       paramQQAppInterface = MutualMarkConfProcessor.a().f;
       localObject = new StringBuilder((String)localObject);
       ((StringBuilder)localObject).append("?");
-      StringBuilder localStringBuilder = ((StringBuilder)localObject).append("switch=");
-      if (bool) {}
-      for (int i = 0;; i = 1)
+      ((StringBuilder)localObject).append("switch=");
+      ((StringBuilder)localObject).append(bool ^ true);
+      ((StringBuilder)localObject).append("&");
+      ((StringBuilder)localObject).append("prefix=");
+      ((StringBuilder)localObject).append(paramQQAppInterface);
+      ((StringBuilder)localObject).append("&");
+      ((StringBuilder)localObject).append("entry=");
+      ((StringBuilder)localObject).append(paramInt);
+      paramQQAppInterface = ((StringBuilder)localObject).toString();
+      if ((WebViewComUtils.a(1000L)) && (!TextUtils.isEmpty(paramQQAppInterface)))
       {
-        localStringBuilder.append(i).append("&");
-        ((StringBuilder)localObject).append("prefix=").append(paramQQAppInterface).append("&");
-        ((StringBuilder)localObject).append("entry=").append(paramInt);
-        paramQQAppInterface = ((StringBuilder)localObject).toString();
-        if ((!QQBrowserActivity.checkNotFrequentlyThenEnter(1000L)) || (TextUtils.isEmpty(paramQQAppInterface))) {
-          break;
-        }
         localObject = new Intent(paramContext, QQBrowserActivity.class);
         ((Intent)localObject).putExtra("url", paramQQAppInterface);
         paramContext.startActivity((Intent)localObject);
         return;
       }
-    } while (!(paramContext instanceof Activity));
-    QQToast.a(paramContext, 1, 2131698939, 0).a();
+      if ((paramContext instanceof Activity)) {
+        QQToast.a(paramContext, 1, 2131699018, 0).a();
+      }
+    }
   }
   
   public static boolean a(int paramInt)
   {
-    if ((paramInt <= 100000) || (paramInt >= 200000)) {}
-    while (b(String.valueOf(paramInt)) <= 0L) {
-      return false;
+    if (paramInt > 100000)
+    {
+      if (paramInt >= 200000) {
+        return false;
+      }
+      return b(String.valueOf(paramInt)) > 0L;
     }
-    return true;
+    return false;
   }
   
   public static boolean a(long paramLong)
   {
-    if (paramLong <= 0L) {}
-    int i;
-    do
-    {
-      return false;
-      i = a();
-    } while ((i < 18) || (i >= 24) || (TimeFormatterUtils.c(paramLong) == 2131719984));
-    return true;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null)) {
-      return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("hotDisableInteractive", 0) == 1;
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
     boolean bool2 = false;
+    if (paramLong <= 0L) {
+      return false;
+    }
+    int i = a();
     boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString))
+    if (i >= 18)
     {
       bool1 = bool2;
-      if (paramString.startsWith("#image_url"))
+      if (i < 24)
       {
-        bool1 = bool2;
-        if (Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString).matches()) {
-          bool1 = true;
+        if (TimeFormatterUtils.c(paramLong) == 2131719716) {
+          return false;
         }
+        bool1 = true;
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkUtils", 2, "isMutualMarkImageUrlTemplate. res:" + bool1 + " template:" + paramString);
     }
     return bool1;
   }
   
+  public static boolean a(AppInterface paramAppInterface)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramAppInterface != null)
+    {
+      bool1 = bool2;
+      if (paramAppInterface.getApp() != null)
+      {
+        bool1 = bool2;
+        if (paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin(), 0).getInt("hotDisableInteractive", 0) == 1) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("#image_url")) && (Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString).matches())) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isMutualMarkImageUrlTemplate. res:");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(" template:");
+      localStringBuilder.append(paramString);
+      QLog.i("MutualMarkUtils", 2, localStringBuilder.toString());
+    }
+    return bool;
+  }
+  
   public static boolean a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return true;
-          if ((TextUtils.isEmpty(paramString1)) || (!TextUtils.isEmpty(paramString2))) {
-            break;
-          }
-        } while (AppSetting.a(paramString1) >= 0);
-        return false;
-        if ((!TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-          break;
-        }
-      } while (AppSetting.a(paramString2) <= 0);
-      return false;
-    } while ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || ((AppSetting.a(paramString1) >= 0) && (AppSetting.a(paramString2) <= 0)));
-    return false;
+    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
+      return true;
+    }
+    if ((!TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
+      return AppSetting.a(paramString1) >= 0;
+    }
+    if ((TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      return AppSetting.a(paramString2) <= 0;
+    }
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      return (AppSetting.a(paramString1) >= 0) && (AppSetting.a(paramString2) <= 0);
+    }
+    return true;
   }
   
   public static long b(String paramString)
   {
-    long l = 0L;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = Long.valueOf(Long.parseLong(paramString));
-      l = (paramString.longValue() - 100000L - paramString.longValue() % 10L) / 10L;
-      return l;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("MutualMarkUtils", 1, "getType error:" + paramString.getMessage());
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = Long.valueOf(Long.parseLong(paramString));
+        long l = (paramString.longValue() - 100000L - paramString.longValue() % 10L) / 10L;
+        return l;
+      }
+      catch (Exception paramString)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getType error:");
+        localStringBuilder.append(paramString.getMessage());
+        QLog.e("MutualMarkUtils", 1, localStringBuilder.toString());
+      }
     }
     return 0L;
   }
@@ -497,28 +557,26 @@ public class MutualMarkUtils
   
   public static boolean c(long paramLong)
   {
-    long[] arrayOfLong;
-    int j;
-    int i;
     if (b(paramLong))
     {
-      arrayOfLong = jdField_a_of_type_ArrayOfLong;
-      j = arrayOfLong.length;
-      i = 0;
-    }
-    while (i < j)
-    {
-      if (arrayOfLong[i] == paramLong) {
-        return false;
+      long[] arrayOfLong = jdField_a_of_type_ArrayOfLong;
+      int j = arrayOfLong.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (arrayOfLong[i] == paramLong) {
+          return false;
+        }
+        i += 1;
       }
-      i += 1;
+      return true;
     }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.MutualMarkUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -29,26 +29,29 @@ public class WSGridDataManager
   {
     WSLog.e("WSGridDataManagerLog", "[WSGridDataManager.java][handleFeedResponse] successOnSubThread!");
     WSGridDataManager.WSGridRspModel localWSGridRspModel = new WSGridDataManager.WSGridRspModel(null);
-    if ((paramstSimpleGetFeedListRsp.feeds == null) || (paramstSimpleGetFeedListRsp.feeds.size() <= 0))
+    if ((paramstSimpleGetFeedListRsp.feeds != null) && (paramstSimpleGetFeedListRsp.feeds.size() > 0))
     {
-      WSLog.d("WSGridDataManagerLog", "[WSGridDataManager.java][handleFeedResponse] feeds.size(): 0");
+      this.jdField_a_of_type_JavaLangString = paramstSimpleGetFeedListRsp.attach_info;
+      this.b = paramstSimpleGetFeedListRsp.session;
+      if (paramRspHeaderBean != null)
+      {
+        WSRecommendReportManager.a().a(paramstSimpleGetFeedListRsp.trace_id, paramRspHeaderBean.a);
+        paramRspHeaderBean = new StringBuilder();
+        paramRspHeaderBean.append("[WSGridDataManager.java][handleFeedResponseForSuccess] onLoadDataSuccess traceId = ");
+        paramRspHeaderBean.append(paramstSimpleGetFeedListRsp.trace_id);
+        WSLog.e("WSGridDataManagerLog", paramRspHeaderBean.toString());
+      }
+      if (paramBoolean1) {
+        WSGlobalConfig.a().a(1, paramstSimpleGetFeedListRsp.config);
+      }
+      paramRspHeaderBean = paramstSimpleGetFeedListRsp.feeds;
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataWSGridDataFilter.a(paramBoolean1, paramBoolean2, paramRspHeaderBean, paramString);
+      WeishiUtils.a(paramRspHeaderBean);
+      localWSGridRspModel.a(paramRspHeaderBean);
+      localWSGridRspModel.a(paramstSimpleGetFeedListRsp.is_finished);
       return localWSGridRspModel;
     }
-    this.jdField_a_of_type_JavaLangString = paramstSimpleGetFeedListRsp.attach_info;
-    this.b = paramstSimpleGetFeedListRsp.session;
-    if (paramRspHeaderBean != null)
-    {
-      WSRecommendReportManager.a().a(paramstSimpleGetFeedListRsp.trace_id, paramRspHeaderBean.a);
-      WSLog.e("WSGridDataManagerLog", "[WSGridDataManager.java][handleFeedResponseForSuccess] onLoadDataSuccess traceId = " + paramstSimpleGetFeedListRsp.trace_id);
-    }
-    if (paramBoolean1) {
-      WSGlobalConfig.a().a(1, paramstSimpleGetFeedListRsp.config);
-    }
-    paramRspHeaderBean = paramstSimpleGetFeedListRsp.feeds;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendDataWSGridDataFilter.a(paramBoolean1, paramBoolean2, paramRspHeaderBean, paramString);
-    WeishiUtils.a(paramRspHeaderBean);
-    localWSGridRspModel.a(paramRspHeaderBean);
-    localWSGridRspModel.a(paramstSimpleGetFeedListRsp.is_finished);
+    WSLog.d("WSGridDataManagerLog", "[WSGridDataManager.java][handleFeedResponse] feeds.size(): 0");
     return localWSGridRspModel;
   }
   
@@ -71,27 +74,18 @@ public class WSGridDataManager
     String str1 = paramWSGridRequestParams.a();
     String str2 = paramWSGridRequestParams.c();
     String str3 = paramWSGridRequestParams.b();
-    paramWSGridRequestParams = paramWSGridRequestParams.a();
-    WSLog.a("WSGridDataManagerLog", "[WSGridDataManager.java][fetchGridData] isFirstFromService:" + bool2 + ", contentFeedIds:" + paramWSGridRequestParams);
+    ArrayList localArrayList = paramWSGridRequestParams.a();
+    paramWSGridRequestParams = paramWSGridRequestParams.b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSGridDataManager.java][fetchGridData] isFirstFromService:");
+    localStringBuilder.append(bool2);
+    localStringBuilder.append(", contentFeedIds:");
+    localStringBuilder.append(localArrayList);
+    localStringBuilder.append(", exposeFeedList.size:");
+    localStringBuilder.append(paramWSGridRequestParams.size());
+    WSLog.a("WSGridDataManagerLog", localStringBuilder.toString());
     a(bool1, bool2);
-    String str4 = this.jdField_a_of_type_JavaLangString;
-    byte b1;
-    if (bool1)
-    {
-      i = 1;
-      b1 = (byte)i;
-      if (!bool2) {
-        break label170;
-      }
-    }
-    label170:
-    for (int i = 1;; i = 0)
-    {
-      WSNetService.a(new WSRecommendRequest(str4, b1, (byte)i, paramWSGridRequestParams, 1, "", str2, this.b, str3, str1)).a(a(paramIWSGridRspListener, bool1, bool2, bool3, str1, l));
-      return;
-      i = 0;
-      break;
-    }
+    WSNetService.a(new WSRecommendRequest(this.jdField_a_of_type_JavaLangString, (byte)bool1, (byte)bool2, localArrayList, 1, "", str2, this.b, str3, str1, paramWSGridRequestParams)).a(a(paramIWSGridRspListener, bool1, bool2, bool3, str1, l));
   }
   
   public boolean a()
@@ -101,7 +95,7 @@ public class WSGridDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSGridDataManager
  * JD-Core Version:    0.7.0.1
  */

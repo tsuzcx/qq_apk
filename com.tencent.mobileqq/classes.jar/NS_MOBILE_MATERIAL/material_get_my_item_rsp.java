@@ -32,14 +32,15 @@ public final class material_get_my_item_rsp
   {
     paramJceOutputStream.write(this.iCode, 0);
     paramJceOutputStream.write(this.stUserItemInfo, 1);
-    if (this.strErrMsg != null) {
-      paramJceOutputStream.write(this.strErrMsg, 2);
+    String str = this.strErrMsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.material_get_my_item_rsp
  * JD-Core Version:    0.7.0.1
  */

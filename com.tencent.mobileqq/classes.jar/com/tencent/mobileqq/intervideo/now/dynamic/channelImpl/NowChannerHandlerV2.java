@@ -27,44 +27,45 @@ public class NowChannerHandlerV2
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = 0;
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("NowChannerHandler", 2, "handleLiveFeedNearbyAnchor req == null || res == null");
+      CommonCallback localCommonCallback = (CommonCallback)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
+      Bundle localBundle = new Bundle();
+      localBundle.putByteArray("BUFFER", (byte[])paramObject);
+      int i = 0;
+      localBundle.putInt("BIZCODE", 0);
+      localBundle.putString("ERRMSG", paramFromServiceMsg.getBusinessFailMsg());
+      if (paramFromServiceMsg.getResultCode() != 1000) {
+        i = -1;
+      }
+      localBundle.putInt("CHANNELCODE", i);
+      localBundle.putString("serviceCmd", (String)paramToServiceMsg.getAttribute("serviceCmd"));
+      if (localCommonCallback != null) {
+        localCommonCallback.onResult(localBundle);
       }
       return;
     }
-    CommonCallback localCommonCallback = (CommonCallback)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("BUFFER", (byte[])paramObject);
-    localBundle.putInt("BIZCODE", 0);
-    localBundle.putString("ERRMSG", paramFromServiceMsg.getBusinessFailMsg());
-    if (paramFromServiceMsg.getResultCode() == 1000) {}
-    for (;;)
-    {
-      localBundle.putInt("CHANNELCODE", i);
-      localBundle.putString("serviceCmd", (String)paramToServiceMsg.getAttribute("serviceCmd"));
-      if (localCommonCallback == null) {
-        break;
-      }
-      localCommonCallback.onResult(localBundle);
-      return;
-      i = -1;
+    if (QLog.isColorLevel()) {
+      QLog.i("NowChannerHandler", 2, "handleLiveFeedNearbyAnchor req == null || res == null");
     }
   }
   
   public void a(String paramString1, String paramString2, byte[] paramArrayOfByte, CommonCallback<Bundle> paramCommonCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("NowChannerHandler", 2, "send serviceName = " + paramString1 + " to SSO Service");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("send serviceName = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" to SSO Service");
+      QLog.w("NowChannerHandler", 2, ((StringBuilder)localObject).toString());
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("serviceCmd", paramString2);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("serviceCmd", paramString2);
     Cmd2HandlerMapHelper.a(paramString2, new String[] { BusinessHandlerFactory.NOW_CHANNEL_HANDLER_V2 });
     paramString1 = new ToServiceMsg(paramString1, getCurrentAccountUin(), paramString2);
     paramString1.putWupBuffer(paramArrayOfByte);
-    paramString1.setAttributes(localHashMap);
+    paramString1.setAttributes((HashMap)localObject);
     paramString1.setTimeout(15000L);
     sendPbReq(paramString1);
     int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
@@ -72,22 +73,28 @@ public class NowChannerHandlerV2
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCommonCallback);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return NowChannelObserver.class;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("NowChannerHandler", 2, "onReceive-----serviceName = " + paramToServiceMsg.getServiceName() + ", serviceCmd = " + paramToServiceMsg.getServiceCmd());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive-----serviceName = ");
+      localStringBuilder.append(paramToServiceMsg.getServiceName());
+      localStringBuilder.append(", serviceCmd = ");
+      localStringBuilder.append(paramToServiceMsg.getServiceCmd());
+      QLog.e("NowChannerHandler", 2, localStringBuilder.toString());
     }
     a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.channelImpl.NowChannerHandlerV2
  * JD-Core Version:    0.7.0.1
  */

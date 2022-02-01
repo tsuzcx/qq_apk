@@ -20,9 +20,11 @@ public class WSStSchemaJumpManager
   private IWSJumpFactory jdField_a_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory;
   private OuterInterceptManager.OnInterceptDialogClickListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilOuterInterceptManager$OnInterceptDialogClickListener;
   private MiniAppLaunchListener jdField_a_of_type_ComTencentMobileqqMiniApiMiniAppLaunchListener;
+  private Object jdField_a_of_type_JavaLangObject;
   private boolean jdField_a_of_type_Boolean = false;
   private IWSJumpFactory jdField_b_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory;
   private boolean jdField_b_of_type_Boolean = false;
+  private boolean c;
   
   public WSStSchemaJumpManager(Context paramContext)
   {
@@ -69,6 +71,12 @@ public class WSStSchemaJumpManager
     return this;
   }
   
+  public WSStSchemaJumpManager a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return this;
+  }
+  
   public WSStSchemaJumpManager a(boolean paramBoolean)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
@@ -85,33 +93,54 @@ public class WSStSchemaJumpManager
     return this.jdField_a_of_type_ComTencentMobileqqMiniApiMiniAppLaunchListener;
   }
   
-  public void a()
+  public Object a()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_UserGrowthStSchema == null))
-    {
-      WSLog.d("WSStSchemaJumpManager", "[WSStSchemaJumpManager.java][processStSchemaClickAction] mContext:" + this.jdField_a_of_type_AndroidContentContext + ", mStSchema" + this.jdField_a_of_type_UserGrowthStSchema);
-      return;
-    }
-    if (this.jdField_b_of_type_Boolean) {}
-    for (Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory;; localObject = this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory)
-    {
-      localObject = ((IWSJumpFactory)localObject).a(this);
-      if (localObject == null) {
-        break;
-      }
-      ((AbsWSJump)localObject).a();
-      return;
-    }
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
   public boolean a()
   {
     return this.jdField_a_of_type_Boolean;
   }
+  
+  public WSStSchemaJumpManager b(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    return this;
+  }
+  
+  public boolean b()
+  {
+    return this.c;
+  }
+  
+  public boolean c()
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_UserGrowthStSchema != null))
+    {
+      if (this.jdField_b_of_type_Boolean) {
+        localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory;
+      } else {
+        localObject = this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory;
+      }
+      localObject = ((IWSJumpFactory)localObject).a(this);
+      if (localObject != null) {
+        return ((AbsWSJump)localObject).a();
+      }
+      return true;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[WSStSchemaJumpManager.java][processStSchemaClickAction] mContext:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidContentContext);
+    ((StringBuilder)localObject).append(", mStSchema");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_UserGrowthStSchema);
+    WSLog.d("WSStSchemaJumpManager", ((StringBuilder)localObject).toString());
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.WSStSchemaJumpManager
  * JD-Core Version:    0.7.0.1
  */

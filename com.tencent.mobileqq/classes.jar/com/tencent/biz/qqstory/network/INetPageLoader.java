@@ -32,11 +32,17 @@ public abstract class INetPageLoader
   
   public void a(String paramString)
   {
-    long l2 = System.currentTimeMillis();
-    long l1 = this.b - this.jdField_a_of_type_Long;
-    l2 -= this.b;
-    SLog.c(paramString, "page network respond times " + l1);
-    SLog.c(paramString, "page db times " + l2);
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    long l3 = this.jdField_a_of_type_Long;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("page network respond times ");
+    localStringBuilder.append(l2 - l3);
+    SLog.c(paramString, localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("page db times ");
+    localStringBuilder.append(l1 - l2);
+    SLog.c(paramString, localStringBuilder.toString());
   }
   
   public void b()
@@ -51,7 +57,7 @@ public abstract class INetPageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.INetPageLoader
  * JD-Core Version:    0.7.0.1
  */

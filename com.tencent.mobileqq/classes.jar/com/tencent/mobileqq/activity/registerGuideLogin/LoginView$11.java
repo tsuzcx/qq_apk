@@ -15,8 +15,14 @@ class LoginView$11
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.LoginView", 2, "mScrollRootView.setOnTouch action=" + paramMotionEvent.getAction() + " im:" + LoginView.a(this.a));
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("mScrollRootView.setOnTouch action=");
+      paramView.append(paramMotionEvent.getAction());
+      paramView.append(" im:");
+      paramView.append(LoginView.a(this.a));
+      QLog.d("LoginActivity.LoginView", 2, paramView.toString());
     }
     if ((paramMotionEvent.getAction() == 1) && (LoginView.a(this.a) != null)) {
       LoginView.a(this.a).hideSoftInputFromWindow(this.a.a.getWindow().getDecorView().getWindowToken(), 0);
@@ -26,7 +32,7 @@ class LoginView$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.11
  * JD-Core Version:    0.7.0.1
  */

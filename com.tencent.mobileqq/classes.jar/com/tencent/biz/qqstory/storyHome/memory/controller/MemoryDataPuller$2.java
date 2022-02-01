@@ -31,105 +31,88 @@ class MemoryDataPuller$2
     paramJobContext = (MemoryManager)SuperManager.a(19);
     MemoryInfoEntry localMemoryInfoEntry = paramJobContext.a(DateCollectionListPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.jdField_b_of_type_JavaLangString));
     boolean bool1;
-    boolean bool2;
-    label56:
-    List localList;
-    if ((localMemoryInfoEntry != null) && (localMemoryInfoEntry.isEnd == 1))
-    {
+    if ((localMemoryInfoEntry != null) && (localMemoryInfoEntry.isEnd == 1)) {
       bool1 = true;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label250;
-      }
-      bool2 = true;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.jdField_b_of_type_Boolean) {
-        break label414;
-      }
-      localList = paramJobContext.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem, 10L);
-      paramVarArgs = new DateCollectionListPageLoader.GetCollectionListEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.c, new ErrorMessage());
-      paramVarArgs.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.jdField_b_of_type_JavaLangString;
-      paramVarArgs.jdField_b_of_type_Boolean = true;
-      paramVarArgs.c = bool2;
-      paramVarArgs.e = true;
-      paramVarArgs.jdField_a_of_type_Boolean = bool1;
-      paramVarArgs.jdField_a_of_type_JavaUtilList = localList;
-      if (localList.size() <= 0) {
-        break label256;
-      }
-      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
-      label177:
-      if (paramJobContext != null) {
-        break label285;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.jdField_b_of_type_Boolean = true;
-      if (!bool2) {
-        break label261;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a.a(null, 0);
-      label206:
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label274;
-      }
-    }
-    label256:
-    label261:
-    label274:
-    for (paramJobContext = "null";; paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key)
-    {
-      SLog.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , not found in db , start get from net , spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
-      return null;
+    } else {
       bool1 = false;
-      break;
-      label250:
-      bool2 = false;
-      break label56;
-      paramJobContext = null;
-      break label177;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a.c();
-      break label206;
     }
-    label285:
-    if ((localMemoryInfoEntry != null) && (paramJobContext.dbIndex >= localMemoryInfoEntry.maxCollectionIndex))
+    boolean bool2;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem == null) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.jdField_b_of_type_Boolean)
     {
-      paramVarArgs.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.jdField_b_of_type_Boolean = true;
-      label317:
-      StoryDispatcher.a().dispatch(paramVarArgs);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a(localList, false);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
-        break label397;
+      List localList = paramJobContext.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem, 10L);
+      DateCollectionListPageLoader.GetCollectionListEvent localGetCollectionListEvent = new DateCollectionListPageLoader.GetCollectionListEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.c, new ErrorMessage());
+      localGetCollectionListEvent.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.jdField_b_of_type_JavaLangString;
+      localGetCollectionListEvent.jdField_b_of_type_Boolean = true;
+      localGetCollectionListEvent.c = bool2;
+      localGetCollectionListEvent.e = true;
+      localGetCollectionListEvent.jdField_a_of_type_Boolean = bool1;
+      localGetCollectionListEvent.jdField_a_of_type_JavaUtilList = localList;
+      if (localList.size() > 0) {
+        paramVarArgs = (VideoCollectionItem)localList.get(localList.size() - 1);
+      } else {
+        paramVarArgs = null;
       }
       paramJobContext = "null";
-      label346:
-      if (!paramVarArgs.jdField_a_of_type_Boolean) {
-        break label408;
+      if (paramVarArgs == null)
+      {
+        paramVarArgs = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller;
+        paramVarArgs.jdField_b_of_type_Boolean = true;
+        if (bool2) {
+          paramVarArgs.a.a(null, 0);
+        } else {
+          paramVarArgs.a.c();
+        }
+        paramVarArgs = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem;
+        if (paramVarArgs != null) {
+          paramJobContext = paramVarArgs.key;
+        }
+        SLog.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , not found in db , start get from net , spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
+      }
+      else
+      {
+        if ((localMemoryInfoEntry != null) && (paramVarArgs.dbIndex >= localMemoryInfoEntry.maxCollectionIndex))
+        {
+          localGetCollectionListEvent.jdField_a_of_type_Boolean = bool1;
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.jdField_b_of_type_Boolean = true;
+        }
+        else
+        {
+          localGetCollectionListEvent.jdField_a_of_type_Boolean = false;
+        }
+        StoryDispatcher.a().dispatch(localGetCollectionListEvent);
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a(localList, false);
+        paramVarArgs = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem;
+        if (paramVarArgs != null) {
+          paramJobContext = paramVarArgs.key;
+        }
+        if (localGetCollectionListEvent.jdField_a_of_type_Boolean) {
+          paramVarArgs = "true";
+        } else {
+          paramVarArgs = "false";
+        }
+        SLog.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , isEnd = %s ,spend time = %d", new Object[] { paramJobContext, paramVarArgs, Long.valueOf(System.currentTimeMillis() - l) });
       }
     }
-    label397:
-    label408:
-    for (paramVarArgs = "true";; paramVarArgs = "false")
+    else
     {
-      SLog.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , isEnd = %s ,spend time = %d", new Object[] { paramJobContext, paramVarArgs, Long.valueOf(System.currentTimeMillis() - l) });
-      break;
-      paramVarArgs.jdField_a_of_type_Boolean = false;
-      break label317;
-      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key;
-      break label346;
-    }
-    label414:
-    if (bool2) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a.a(null, 0);
-    }
-    for (;;)
-    {
+      if (bool2) {
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a.a(null, 0);
+      } else {
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a.c();
+      }
       SLog.d("Q.qqstory.memories:MemoryDataPuller", String.format("Req from net ,  spend time = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
-      break;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a.c();
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller.2
  * JD-Core Version:    0.7.0.1
  */

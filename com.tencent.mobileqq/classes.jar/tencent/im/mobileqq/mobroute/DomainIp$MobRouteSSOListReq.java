@@ -9,17 +9,23 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class DomainIp$MobRouteSSOListReq
   extends MessageMicro<MobRouteSSOListReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50 }, new String[] { "uint32_uintype", "string_uin", "string_imsi", "uint32_nettype", "uint32_appid", "string_imei" }, new Object[] { Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "" }, MobRouteSSOListReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField string_imei = PBField.initString("");
   public final PBStringField string_imsi = PBField.initString("");
   public final PBStringField string_uin = PBField.initString("");
   public final PBUInt32Field uint32_appid = PBField.initUInt32(0);
   public final PBUInt32Field uint32_nettype = PBField.initUInt32(0);
   public final PBUInt32Field uint32_uintype = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50 }, new String[] { "uint32_uintype", "string_uin", "string_imsi", "uint32_nettype", "uint32_appid", "string_imei" }, new Object[] { localInteger, "", "", localInteger, localInteger, "" }, MobRouteSSOListReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.mobileqq.mobroute.DomainIp.MobRouteSSOListReq
  * JD-Core Version:    0.7.0.1
  */

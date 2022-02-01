@@ -17,22 +17,41 @@ class QZoneDNSAnalyzeJsPlugin$2
       try
       {
         String str = InetAddress.getByName("h5.qzone.qq.com").getHostAddress();
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.val$errorCode + ", Analyze h5.qzone.qq.com ip address : " + str);
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("netType: ");
+        localStringBuilder2.append(i);
+        localStringBuilder2.append(" error code: ");
+        localStringBuilder2.append(this.val$errorCode);
+        localStringBuilder2.append(", Analyze h5.qzone.qq.com ip address : ");
+        localStringBuilder2.append(str);
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, localStringBuilder2.toString());
         return;
       }
       catch (UnknownHostException localUnknownHostException)
       {
         localUnknownHostException.printStackTrace();
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.val$errorCode + ", UnknownHostException:Analyze  h5.qzone.qq.com  ip address failed");
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("netType: ");
+        localStringBuilder1.append(i);
+        localStringBuilder1.append(" error code: ");
+        localStringBuilder1.append(this.val$errorCode);
+        localStringBuilder1.append(", UnknownHostException:Analyze  h5.qzone.qq.com  ip address failed");
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, localStringBuilder1.toString());
         return;
       }
     }
-    QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "netType: " + i + " error code: " + this.val$errorCode + ", No ActiveNetwork, Analyze  h5.qzone.qq.com  ip address failed");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("netType: ");
+    localStringBuilder1.append(i);
+    localStringBuilder1.append(" error code: ");
+    localStringBuilder1.append(this.val$errorCode);
+    localStringBuilder1.append(", No ActiveNetwork, Analyze  h5.qzone.qq.com  ip address failed");
+    QLog.e("QZoneDNSAnalyzeJsPlugin", 1, localStringBuilder1.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneDNSAnalyzeJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

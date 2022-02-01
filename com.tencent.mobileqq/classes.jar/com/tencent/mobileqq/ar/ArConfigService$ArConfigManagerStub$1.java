@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
+import com.tencent.aelight.camera.download.old.api.AEOldDownloadCallBack;
+import com.tencent.aelight.camera.download.old.api.AEOldResInfo;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.old.AEOldResInfo;
-import dov.com.qq.im.ae.download.old.AEOldResManager.AEOldDownloadCallBack;
 
 class ArConfigService$ArConfigManagerStub$1
-  implements AEOldResManager.AEOldDownloadCallBack
+  implements AEOldDownloadCallBack
 {
   ArConfigService$ArConfigManagerStub$1(ArConfigService.ArConfigManagerStub paramArConfigManagerStub) {}
   
@@ -13,15 +13,30 @@ class ArConfigService$ArConfigManagerStub$1
   
   public void a(AEOldResInfo paramAEOldResInfo, String paramString, boolean paramBoolean, int paramInt)
   {
-    QLog.d("ArConfig_ArConfigService", 1, "downloadFaceResource onAEDownloadFinish downloaded = " + paramBoolean + ",errorType = " + paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "downloadFaceResource onAEDownloadFinish downloaded = " + paramBoolean + ",errorType = " + paramInt + ",localFilePath = " + paramString + ",aeResInfo = " + paramAEOldResInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("downloadFaceResource onAEDownloadFinish downloaded = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(",errorType = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("ArConfig_ArConfigService", 1, localStringBuilder.toString());
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadFaceResource onAEDownloadFinish downloaded = ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(",errorType = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",localFilePath = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",aeResInfo = ");
+      localStringBuilder.append(paramAEOldResInfo);
+      QLog.d("ArConfig_ArConfigService", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub.1
  * JD-Core Version:    0.7.0.1
  */

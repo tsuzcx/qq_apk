@@ -29,40 +29,40 @@ public class RatioLayout
   
   public void a(View paramView, float paramFloat1, float paramFloat2)
   {
-    a(paramView, (int)(getWidth() * paramFloat1), (int)(getHeight() * paramFloat2));
+    a(paramView, (int)(paramFloat1 * getWidth()), (int)(paramFloat2 * getHeight()));
   }
   
   public void a(View paramView, int paramInt1, int paramInt2)
   {
-    float f2 = 0.0F;
-    RatioLayout.LayoutParams localLayoutParams;
     if ((paramView != null) && (paramView.getParent() == this))
     {
-      localLayoutParams = (RatioLayout.LayoutParams)paramView.getLayoutParams();
-      if (localLayoutParams == null) {
-        break label100;
+      RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)paramView.getLayoutParams();
+      float f2 = 0.0F;
+      float f1;
+      if (localLayoutParams != null)
+      {
+        f2 = localLayoutParams.c;
+        f1 = localLayoutParams.d;
       }
-      f2 = localLayoutParams.c;
-    }
-    label100:
-    for (float f1 = localLayoutParams.d;; f1 = 0.0F)
-    {
+      else
+      {
+        f1 = 0.0F;
+      }
       int j = paramView.getWidth();
       int i = paramView.getHeight();
       j = (int)(f2 * j);
       i = (int)(f1 * i);
       paramView.offsetLeftAndRight(paramInt1 - j - paramView.getLeft());
       paramView.offsetTopAndBottom(paramInt2 - i - paramView.getTop());
-      return;
     }
   }
   
-  public boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     return paramLayoutParams instanceof RatioLayout.LayoutParams;
   }
   
-  public ViewGroup.LayoutParams generateDefaultLayoutParams()
+  protected ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     return new RatioLayout.LayoutParams(-2, -2, 0.0F, 0.0F);
   }
@@ -72,7 +72,7 @@ public class RatioLayout
     return new RatioLayout.LayoutParams(getContext(), paramAttributeSet);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt2 = getChildCount();
     paramInt1 = 0;
@@ -84,64 +84,51 @@ public class RatioLayout
         RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)localView.getLayoutParams();
         paramInt3 = localView.getMeasuredWidth();
         paramInt4 = localView.getMeasuredHeight();
-        int i = this.mPaddingLeft + (int)(localLayoutParams.a * getMeasuredWidth()) - (int)(localLayoutParams.c * paramInt3);
-        int j = this.mPaddingTop + (int)(localLayoutParams.b * getMeasuredHeight()) - (int)(localLayoutParams.d * paramInt4);
+        int i = getPaddingLeft() + (int)(localLayoutParams.a * getMeasuredWidth()) - (int)(localLayoutParams.c * paramInt3);
+        int j = getPaddingTop() + (int)(localLayoutParams.b * getMeasuredHeight()) - (int)(localLayoutParams.d * paramInt4);
         localView.layout(i, j, paramInt3 + i, paramInt4 + j);
       }
       paramInt1 += 1;
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int n = getChildCount();
+    int i1 = getChildCount();
     if (this.a)
     {
       super.onMeasure(paramInt1, paramInt2);
       return;
     }
     measureChildren(paramInt1, paramInt2);
-    int i1 = View.MeasureSpec.getSize(paramInt1);
-    int i2 = View.MeasureSpec.getSize(paramInt2);
+    int i2 = View.MeasureSpec.getSize(paramInt1);
+    int i3 = View.MeasureSpec.getSize(paramInt2);
     int k = 0;
     int j = 0;
-    int i = 0;
-    int m;
-    if (k < n)
+    for (int i = 0; k < i1; i = m)
     {
       View localView = getChildAt(k);
-      if (localView.getVisibility() == 8) {
-        break label258;
-      }
-      RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)localView.getLayoutParams();
-      m = localView.getMeasuredWidth();
-      int i3 = localView.getMeasuredHeight();
-      int i6 = (int)(localLayoutParams.a * i1);
-      int i7 = (int)(localLayoutParams.c * m);
-      int i4 = (int)(localLayoutParams.b * i2);
-      int i5 = (int)(localLayoutParams.d * i3);
-      m = Math.max(j, m + (i6 - i7));
-      j = Math.max(i, i3 + (i4 - i5));
-      i = m;
-    }
-    for (;;)
-    {
-      m = k + 1;
-      k = j;
-      j = i;
-      i = k;
-      k = m;
-      break;
-      k = this.mPaddingLeft;
-      m = this.mPaddingRight;
-      i = Math.max(this.mPaddingTop + this.mPaddingBottom + i, getSuggestedMinimumHeight());
-      setMeasuredDimension(resolveSize(Math.max(k + m + j, getSuggestedMinimumWidth()), paramInt1), resolveSize(i, paramInt2));
-      return;
-      label258:
+      int n = j;
       m = i;
-      i = j;
-      j = m;
+      if (localView.getVisibility() != 8)
+      {
+        RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)localView.getLayoutParams();
+        n = localView.getMeasuredWidth();
+        m = localView.getMeasuredHeight();
+        int i6 = (int)(localLayoutParams.a * i2);
+        int i7 = (int)(localLayoutParams.c * n);
+        int i4 = (int)(localLayoutParams.b * i3);
+        int i5 = (int)(localLayoutParams.d * m);
+        n = Math.max(j, i6 - i7 + n);
+        m = Math.max(i, i4 - i5 + m);
+      }
+      k += 1;
+      j = n;
     }
+    k = getPaddingLeft();
+    int m = getPaddingRight();
+    i = Math.max(i + (getPaddingTop() + getPaddingBottom()), getSuggestedMinimumHeight());
+    setMeasuredDimension(resolveSize(Math.max(j + (k + m), getSuggestedMinimumWidth()), paramInt1), resolveSize(i, paramInt2));
   }
   
   public void setSkipMeasure(boolean paramBoolean)
@@ -151,7 +138,7 @@ public class RatioLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RatioLayout
  * JD-Core Version:    0.7.0.1
  */

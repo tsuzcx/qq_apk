@@ -36,12 +36,12 @@ public class BirthdayPickHelper
     this.g = this.jdField_b_of_type_JavaUtilCalendar.get(1);
     this.h = (this.jdField_b_of_type_JavaUtilCalendar.get(2) + 1);
     this.i = this.jdField_b_of_type_JavaUtilCalendar.get(5);
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)LayoutInflater.from(paramContext).inflate(2131561289, null));
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)LayoutInflater.from(paramContext).inflate(2131561132, null));
     int j = this.d;
     int k = this.g;
     this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new BirthdayPickHelper.DateAdapter(this, j - k + 1));
     this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new BirthdayPickHelper.PickListener(this, null));
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setBackgroundColor(paramContext.getResources().getColor(2131167093));
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setBackgroundColor(paramContext.getResources().getColor(2131167116));
     a(paramInt);
     if (paramBoolean) {
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a();
@@ -51,38 +51,9 @@ public class BirthdayPickHelper
     }
   }
   
-  public static int a(int paramInt)
+  private int a(int paramInt)
   {
-    if (paramInt <= 0) {
-      return 0;
-    }
-    return a((0xFFFF0000 & paramInt) >>> 16, (0xFF00 & paramInt) >>> 8, paramInt & 0xFF);
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(System.currentTimeMillis());
-    int k = localCalendar1.get(1);
-    int j = localCalendar1.get(2);
-    int m = localCalendar1.get(5);
-    k -= paramInt1;
-    localCalendar1 = Calendar.getInstance();
-    localCalendar1.set(1, paramInt2, paramInt3);
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.set(1, j + 1, m);
-    j = k;
-    if (localCalendar1.after(localCalendar2)) {
-      j = k - 1;
-    }
-    k = j;
-    if (j < 0) {
-      k = 0;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BirthdayPickHelper", 2, String.format("calcuAgeByBirthday year:%d,month:%d,day:%d. age:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(k) }));
-    }
-    return k;
+    return this.g + paramInt;
   }
   
   private void a()
@@ -99,29 +70,25 @@ public class BirthdayPickHelper
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.c);
-    }
-    while (!localCalendar.after(this.jdField_a_of_type_JavaUtilCalendar)) {
       return;
     }
-    this.jdField_a_of_type_Int = (this.d - this.g);
-    this.jdField_b_of_type_Int = (this.e - 1);
-    this.c = (this.f - 1);
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.c);
+    if (localCalendar.after(this.jdField_a_of_type_JavaUtilCalendar))
+    {
+      this.jdField_a_of_type_Int = (this.d - this.g);
+      this.jdField_b_of_type_Int = (this.e - 1);
+      this.c = (this.f - 1);
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.c);
+    }
   }
   
   private int b(int paramInt)
   {
-    return this.g + paramInt;
-  }
-  
-  private int c(int paramInt)
-  {
     return paramInt + 1;
   }
   
-  private int d(int paramInt)
+  private int c(int paramInt)
   {
     return paramInt + 1;
   }
@@ -133,26 +100,28 @@ public class BirthdayPickHelper
   
   public void a(int paramInt)
   {
-    int j;
     int k;
+    int j;
     if (paramInt <= 0)
     {
-      paramInt = this.g;
+      k = 2000 - this.g;
+      paramInt = 0;
       j = 0;
-      k = 2000 - paramInt;
     }
-    for (paramInt = 0;; paramInt = (paramInt & 0xFF) - 1)
+    else
     {
-      this.jdField_a_of_type_Int = k;
-      this.jdField_b_of_type_Int = j;
-      this.c = paramInt;
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, k);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, j);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, paramInt);
-      return;
-      k = ((0xFFFF0000 & paramInt) >>> 16) - this.g;
+      k = this.g;
       j = ((0xFF00 & paramInt) >>> 8) - 1;
+      int m = (paramInt & 0xFF) - 1;
+      k = ((0xFFFF0000 & paramInt) >>> 16) - k;
+      paramInt = m;
     }
+    this.jdField_a_of_type_Int = k;
+    this.jdField_b_of_type_Int = j;
+    this.c = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, k);
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, j);
+    this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, paramInt);
   }
   
   public void a(BirthdayPickHelper.BirthdayChangeListener paramBirthdayChangeListener)
@@ -162,7 +131,7 @@ public class BirthdayPickHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BirthdayPickHelper
  * JD-Core Version:    0.7.0.1
  */

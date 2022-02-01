@@ -22,16 +22,12 @@ public class InnerSender
     {
       InfoRecognizer.j.flush();
       paramVoiceRecognizerResult.voiceRecordPCMData = InfoRecognizer.j.toByteArray();
-      InfoRecognizer.d.a(paramVoiceRecognizerResult);
-      return;
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-      }
+      localIOException.printStackTrace();
     }
+    InfoRecognizer.d.a(paramVoiceRecognizerResult);
   }
   
   private void e()
@@ -57,7 +53,11 @@ public class InnerSender
     }
     SDKVersion localSDKVersion = new SDKVersion();
     a(localSDKVersion);
-    LogTool.d("soVer: " + localSDKVersion.soVer + " binVer: " + localSDKVersion.binVer);
+    StringBuilder localStringBuilder = new StringBuilder("soVer: ");
+    localStringBuilder.append(localSDKVersion.soVer);
+    localStringBuilder.append(" binVer: ");
+    localStringBuilder.append(localSDKVersion.binVer);
+    LogTool.d(localStringBuilder.toString());
     return 0;
   }
   
@@ -135,124 +135,122 @@ public class InnerSender
           j = i;
           if (i == 0)
           {
-            Object localObject;
             VoiceRecognizerResult localVoiceRecognizerResult;
             try
             {
-              LogTool.d("Recognize " + localb.a.length + " bytes begin");
-              k = this.b.recognize(localb.a, localb.a.length);
-              LogTool.d("Recognize " + localb.a.length + " bytes finished");
+              Object localObject1 = new StringBuilder("Recognize ");
+              ((StringBuilder)localObject1).append(localb.a.length);
+              ((StringBuilder)localObject1).append(" bytes begin");
+              LogTool.d(((StringBuilder)localObject1).toString());
+              int k = this.b.recognize(localb.a, localb.a.length);
+              localObject1 = new StringBuilder("Recognize ");
+              ((StringBuilder)localObject1).append(localb.a.length);
+              ((StringBuilder)localObject1).append(" bytes finished");
+              LogTool.d(((StringBuilder)localObject1).toString());
               if (k < 0)
               {
                 InfoRecognizer.d.b(-203);
                 return;
               }
+              j = i;
+              if (k == 1)
+              {
+                localObject1 = new GrammarResult();
+                if (this.b.getResult((GrammarResult)localObject1) < 0)
+                {
+                  InfoRecognizer.d.b(-205);
+                  return;
+                }
+                j = i;
+                if (((GrammarResult)localObject1).text != null)
+                {
+                  j = i;
+                  if (!((GrammarResult)localObject1).text.isEmpty())
+                  {
+                    localVoiceRecognizerResult = new VoiceRecognizerResult(true);
+                    localVoiceRecognizerResult.text = ((GrammarResult)localObject1).text;
+                    a(localVoiceRecognizerResult);
+                    j = 1;
+                  }
+                }
+              }
             }
             catch (Exception localException)
             {
-              int k;
               localException.printStackTrace();
               j = i;
-              for (;;)
+            }
+            if (localb.b != InnerAudioState.end)
+            {
+              i = j;
+              if (localb.b != InnerAudioState.stop) {}
+            }
+            else
+            {
+              if (this.b.end() < 0)
               {
-                if (localb.b != InnerAudioState.end)
-                {
-                  i = j;
-                  if (localb.b != InnerAudioState.stop) {
-                    break label420;
-                  }
-                }
-                if (this.b.end() >= 0) {
-                  break;
-                }
                 InfoRecognizer.d.b(-204);
                 return;
-                j = i;
-                if (k == 1)
+              }
+              if (j == 0)
+              {
+                GrammarResult localGrammarResult = new GrammarResult();
+                if (this.b.getResult(localGrammarResult) < 0)
                 {
-                  localObject = new GrammarResult();
-                  if (this.b.getResult((GrammarResult)localObject) < 0)
-                  {
-                    InfoRecognizer.d.b(-205);
-                    return;
+                  InfoRecognizer.d.b(-205);
+                  return;
+                }
+                Object localObject2;
+                if (InfoRecognizer.f)
+                {
+                  if ((localGrammarResult.text == null) || (localGrammarResult.text.isEmpty())) {
+                    break label488;
                   }
-                  j = i;
-                  if (((GrammarResult)localObject).text != null)
+                  localObject2 = new VoiceRecognizerResult(true);
+                }
+                else
+                {
+                  localVoiceRecognizerResult = new VoiceRecognizerResult(false);
+                  localObject2 = localVoiceRecognizerResult;
+                  if (localGrammarResult.text != null)
                   {
-                    j = i;
-                    if (!((GrammarResult)localObject).text.isEmpty())
+                    localObject2 = localVoiceRecognizerResult;
+                    if (!localGrammarResult.text.isEmpty())
                     {
-                      localVoiceRecognizerResult = new VoiceRecognizerResult(true);
-                      localVoiceRecognizerResult.text = ((GrammarResult)localObject).text;
-                      a(localVoiceRecognizerResult);
-                      j = 1;
+                      localVoiceRecognizerResult.isEnd = true;
+                      localObject2 = localVoiceRecognizerResult;
                     }
                   }
                 }
+                ((VoiceRecognizerResult)localObject2).text = localGrammarResult.text;
+                a((VoiceRecognizerResult)localObject2);
               }
-              if (j != 0) {
-                break label418;
-              }
-            }
-            GrammarResult localGrammarResult = new GrammarResult();
-            if (this.b.getResult(localGrammarResult) < 0)
-            {
-              InfoRecognizer.d.b(-205);
-              return;
-            }
-            if (InfoRecognizer.f) {
-              if ((localGrammarResult.text != null) && (!localGrammarResult.text.isEmpty())) {
-                localObject = new VoiceRecognizerResult(true);
-              }
-            }
-            for (;;)
-            {
-              ((VoiceRecognizerResult)localObject).text = localGrammarResult.text;
-              a((VoiceRecognizerResult)localObject);
-              label418:
+              label488:
               i = 0;
-              try
+            }
+            try
+            {
+              if ((InfoRecognizer.g) || (InfoRecognizer.h))
               {
-                label420:
-                if ((InfoRecognizer.g) || (InfoRecognizer.h))
-                {
-                  if (localb.b == InnerAudioState.begin) {
-                    InfoRecognizer.j.reset();
-                  }
-                  InfoRecognizer.j.write(localb.a);
-                  if ((localb.b == InnerAudioState.end) || (localb.b == InnerAudioState.stop) || (i != 0))
-                  {
-                    InfoRecognizer.j.flush();
-                    if (InfoRecognizer.h) {
-                      Common.saveFile(InfoRecognizer.j.toByteArray(), "pcm", this.c);
-                    }
-                  }
+                if (localb.b == InnerAudioState.begin) {
+                  InfoRecognizer.j.reset();
                 }
-              }
-              catch (IOException localIOException)
-              {
-                for (;;)
+                InfoRecognizer.j.write(localb.a);
+                if ((localb.b == InnerAudioState.end) || (localb.b == InnerAudioState.stop) || (i != 0))
                 {
-                  localIOException.printStackTrace();
-                }
-              }
-              j = i;
-              if (localb.b != InnerAudioState.stop) {
-                break;
-              }
-              return;
-              localVoiceRecognizerResult = new VoiceRecognizerResult(false);
-              localObject = localVoiceRecognizerResult;
-              if (localGrammarResult.text != null)
-              {
-                localObject = localVoiceRecognizerResult;
-                if (!localGrammarResult.text.isEmpty())
-                {
-                  localVoiceRecognizerResult.isEnd = true;
-                  localObject = localVoiceRecognizerResult;
+                  InfoRecognizer.j.flush();
+                  if (InfoRecognizer.h) {
+                    Common.saveFile(InfoRecognizer.j.toByteArray(), "pcm", this.c);
+                  }
                 }
               }
             }
+            catch (IOException localIOException)
+            {
+              localIOException.printStackTrace();
+            }
+            j = i;
+            if (localb.b != InnerAudioState.stop) {}
           }
         }
       }

@@ -37,42 +37,52 @@ public class QRouteIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QRouteIPCModule", 2, "action:" + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.contains("$"))) {
-      paramString = EIPCResult.createExceptionResult(new IllegalStateException("wrong action"));
-    }
-    String[] arrayOfString;
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      return paramString;
-      arrayOfString = paramString.split("\\$");
-      if (arrayOfString.length != 3) {
-        return EIPCResult.createExceptionResult(new IllegalStateException("wrong action, action = " + paramString));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("action:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("QRouteIPCModule", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("$")))
+    {
+      localObject = paramString.split("\\$");
+      if (localObject.length != 3)
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("wrong action, action = ");
+        paramBundle.append(paramString);
+        return EIPCResult.createExceptionResult(new IllegalStateException(paramBundle.toString()));
       }
-      if (arrayOfString[0].compareTo("callApi") == 0)
+      if (localObject[0].compareTo("callApi") == 0)
       {
         paramString = QRemoteProxy.callInMainProcess(paramString, paramBundle, paramInt);
-        if (paramString == null) {
-          break;
+        if (paramString != null)
+        {
+          paramBundle = EIPCResult.createResult(paramString.code, paramString.data);
+          paramBundle.e = paramString.throwable;
+          return paramBundle;
         }
-        paramBundle = EIPCResult.createResult(paramString.code, paramString.data);
-        paramBundle.e = paramString.throwable;
-        return paramBundle;
       }
-      if (arrayOfString[0].compareTo("callService") != 0) {
-        break;
+      else if (localObject[0].compareTo("callService") == 0)
+      {
+        paramString = ServiceRemoteProxy.callInMainProcess(paramString, paramBundle, paramInt);
+        if (paramString != null) {
+          return paramString;
+        }
       }
-      paramBundle = ServiceRemoteProxy.callInMainProcess(paramString, paramBundle, paramInt);
-      paramString = paramBundle;
-    } while (paramBundle != null);
-    return EIPCResult.createExceptionResult(new IllegalStateException("QRemoteProxy.callInMainProcess result is null, callType=" + arrayOfString[0]));
+      paramString = new StringBuilder();
+      paramString.append("QRemoteProxy.callInMainProcess result is null, callType=");
+      paramString.append(localObject[0]);
+      return EIPCResult.createExceptionResult(new IllegalStateException(paramString.toString()));
+    }
+    return EIPCResult.createExceptionResult(new IllegalStateException("wrong action"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.QRouteIPCModule
  * JD-Core Version:    0.7.0.1
  */

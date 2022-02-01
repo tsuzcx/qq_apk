@@ -26,7 +26,7 @@ public abstract class VasBasePlugin
     return 0L;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     this.startOpenPageTime = getInfoIntent().getLongExtra("startOpenPageTime", System.currentTimeMillis());
     this.business = getInfoIntent().getLongExtra("business", 0L);
@@ -34,7 +34,7 @@ public abstract class VasBasePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasBasePlugin
  * JD-Core Version:    0.7.0.1
  */

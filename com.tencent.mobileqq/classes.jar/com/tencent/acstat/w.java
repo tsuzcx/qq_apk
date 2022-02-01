@@ -10,12 +10,13 @@ final class w
   
   public final void run()
   {
-    if ((this.a == null) || (this.a.trim().length() == 0))
+    String str = this.a;
+    if ((str != null) && (str.trim().length() != 0))
     {
-      StatServiceImpl.f().w("qq num is null or empty.");
+      StatServiceImpl.a(this.b, new StatAccount(this.a), this.c);
       return;
     }
-    StatServiceImpl.a(this.b, new StatAccount(this.a), this.c);
+    StatServiceImpl.f().w("qq num is null or empty.");
   }
 }
 

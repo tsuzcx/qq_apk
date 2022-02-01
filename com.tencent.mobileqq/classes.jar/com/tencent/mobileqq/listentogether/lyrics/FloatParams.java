@@ -75,13 +75,41 @@ public class FloatParams
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FloatParams[\niconCenterX:").append(this.jdField_a_of_type_Int).append("\niconCenterY:").append(this.jdField_b_of_type_Int).append("\nalignRight:").append(this.jdField_a_of_type_Boolean).append("\nuserClosed:").append(this.jdField_b_of_type_Boolean).append("\nalbumUrl:").append(this.jdField_a_of_type_JavaLangString).append("\nshowIcon:").append(this.jdField_c_of_type_Boolean).append("\nisForeground:").append(this.jdField_f_of_type_Boolean).append("\ntmpGoneForSomePage:").append(this.jdField_g_of_type_Boolean).append("\ncurrentListenType:").append(this.jdField_e_of_type_Int).append("\ncurrentListenUin:").append(this.jdField_b_of_type_JavaLangString).append("\ncurrentAIOType:").append(this.jdField_f_of_type_Int).append("\ncurrentAIOUin:").append(this.jdField_c_of_type_JavaLangString).append("\ntextNeedCenter:").append(this.jdField_e_of_type_Boolean).append("\nshowIconValueChanged:").append(this.jdField_d_of_type_Boolean).append("\n]");
+    localStringBuilder.append("FloatParams[\niconCenterX:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\niconCenterY:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\nalignRight:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("\nuserClosed:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\nalbumUrl:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\nshowIcon:");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append("\nisForeground:");
+    localStringBuilder.append(this.jdField_f_of_type_Boolean);
+    localStringBuilder.append("\ntmpGoneForSomePage:");
+    localStringBuilder.append(this.jdField_g_of_type_Boolean);
+    localStringBuilder.append("\ncurrentListenType:");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\ncurrentListenUin:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\ncurrentAIOType:");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append("\ncurrentAIOUin:");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("\ntextNeedCenter:");
+    localStringBuilder.append(this.jdField_e_of_type_Boolean);
+    localStringBuilder.append("\nshowIconValueChanged:");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append("\n]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.FloatParams
  * JD-Core Version:    0.7.0.1
  */

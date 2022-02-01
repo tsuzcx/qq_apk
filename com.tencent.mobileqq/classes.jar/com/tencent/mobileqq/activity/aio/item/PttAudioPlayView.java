@@ -14,7 +14,7 @@ public class PttAudioPlayView
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private boolean jdField_b_of_type_Boolean = false;
   private final int j = 12;
-  private int k = 2130838328;
+  private int k = 2130838157;
   
   public PttAudioPlayView(Context paramContext)
   {
@@ -49,10 +49,12 @@ public class PttAudioPlayView
   public void a()
   {
     super.a();
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
-    if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {
+    localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = null;
@@ -63,7 +65,7 @@ public class PttAudioPlayView
   {
     super.a(paramInt);
     this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.k);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130838329);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130838158);
   }
   
   protected void a(Canvas paramCanvas)
@@ -78,7 +80,15 @@ public class PttAudioPlayView
   
   protected boolean a()
   {
-    return (this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled()) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) && (this.c != null) && (!this.c.isRecycled());
+    Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
+      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if ((localBitmap != null) && (!localBitmap.isRecycled()) && (this.c != null) && (!this.c.isRecycled())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean b()
@@ -100,7 +110,7 @@ public class PttAudioPlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttAudioPlayView
  * JD-Core Version:    0.7.0.1
  */

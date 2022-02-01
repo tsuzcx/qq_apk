@@ -39,49 +39,53 @@ public abstract class AbsWSVideoItemView
       this.jdField_a_of_type_AndroidViewView = paramWSVerticalVideoHolder.itemView;
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalVideoHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
     }
-    d();
+    b();
   }
   
   private void e()
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381610);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout = ((WSVerticalVideoRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131381545));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380843);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout = ((WSVerticalVideoRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380780));
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
-      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381555);
+      localObject = (ViewStub)((View)localObject).findViewById(2131380791);
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup = new WSVerticalItemVideoAreaController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.a(localViewStub);
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.a((ViewStub)localObject);
       a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup);
     }
   }
   
   private void g()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
-      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381549);
+      localObject = (ViewStub)((View)localObject).findViewById(2131380785);
       this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup = new WSVerticalItemVideoProgressController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout);
-      this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.a(localViewStub);
+      this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.a((ViewStub)localObject);
       a(this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup);
     }
   }
   
   public View a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup instanceof WSVerticalItemVideoAreaController)) {
-      return ((WSVerticalItemVideoAreaController)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup).a();
+    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    if ((localAbsWsUIGroup instanceof WSVerticalItemVideoAreaController)) {
+      return ((WSVerticalItemVideoAreaController)localAbsWsUIGroup).b();
     }
     return null;
   }
   
   public FrameLayout a()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup instanceof WSVerticalItemVideoAreaController)) {
-      return ((WSVerticalItemVideoAreaController)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup).a();
+    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    if ((localAbsWsUIGroup instanceof WSVerticalItemVideoAreaController)) {
+      return ((WSVerticalItemVideoAreaController)localAbsWsUIGroup).a();
     }
     return null;
   }
@@ -93,22 +97,24 @@ public abstract class AbsWSVideoItemView
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((AbsWsUIGroup)((Map.Entry)localIterator.next()).getValue()).d();
+      localObject = ((Map)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((AbsWsUIGroup)((Map.Entry)((Iterator)localObject).next()).getValue()).d();
       }
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((AbsWsUIGroup)((Map.Entry)localIterator.next()).getValue()).b(paramInt);
+      localObject = ((Map)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((AbsWsUIGroup)((Map.Entry)((Iterator)localObject).next()).getValue()).b(paramInt);
       }
     }
   }
@@ -123,11 +129,12 @@ public abstract class AbsWSVideoItemView
   public void a(WSVerticalItemData paramWSVerticalItemData)
   {
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((AbsWsUIGroup)((Map.Entry)localIterator.next()).getValue()).a(paramWSVerticalItemData);
+      localObject = ((Map)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((AbsWsUIGroup)((Map.Entry)((Iterator)localObject).next()).getValue()).a(paramWSVerticalItemData);
       }
     }
   }
@@ -142,14 +149,22 @@ public abstract class AbsWSVideoItemView
     return this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
   }
   
+  public void b()
+  {
+    e();
+    f();
+    g();
+  }
+  
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = ((Map)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AbsWsUIGroup localAbsWsUIGroup = (AbsWsUIGroup)((Map.Entry)localIterator.next()).getValue();
+        AbsWsUIGroup localAbsWsUIGroup = (AbsWsUIGroup)((Map.Entry)((Iterator)localObject).next()).getValue();
         if ((localAbsWsUIGroup instanceof AbsWsVerticalUIGroup)) {
           ((AbsWsVerticalUIGroup)localAbsWsUIGroup).c(paramInt);
         }
@@ -159,33 +174,41 @@ public abstract class AbsWSVideoItemView
   
   public void b(WSVerticalItemData paramWSVerticalItemData) {}
   
-  public void c(WSVerticalItemData paramWSVerticalItemData)
+  public void c(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilMap == null) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject != null)
     {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = ((Map)localObject).entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if ((!TextUtils.equals((CharSequence)localEntry.getKey(), WSVerticalItemVideoAreaController.class.getName())) && (!TextUtils.equals((CharSequence)localEntry.getKey(), WSVerticalItemVideoProgressController.class.getName()))) {
-          ((AbsWsUIGroup)localEntry.getValue()).a(paramWSVerticalItemData);
+        AbsWsUIGroup localAbsWsUIGroup = (AbsWsUIGroup)((Map.Entry)((Iterator)localObject).next()).getValue();
+        if ((localAbsWsUIGroup instanceof AbsWsVerticalUIGroup)) {
+          ((AbsWsVerticalUIGroup)localAbsWsUIGroup).d(paramInt);
         }
       }
     }
   }
   
-  public void d()
+  public void c(WSVerticalItemData paramWSVerticalItemData)
   {
-    e();
-    f();
-    g();
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((Map)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      if ((!TextUtils.equals((CharSequence)localEntry.getKey(), WSVerticalItemVideoAreaController.class.getName())) && (!TextUtils.equals((CharSequence)localEntry.getKey(), WSVerticalItemVideoProgressController.class.getName()))) {
+        ((AbsWsUIGroup)localEntry.getValue()).a(paramWSVerticalItemData);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.AbsWSVideoItemView
  * JD-Core Version:    0.7.0.1
  */

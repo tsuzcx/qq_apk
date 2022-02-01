@@ -14,8 +14,8 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
@@ -25,6 +25,7 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebViewProviderInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -61,80 +62,94 @@ public class AvatarPendantJsPlugin
   
   private void getNumberPic(JSONObject paramJSONObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvatarPendantJsPlugin", 2, "getNumberPic: " + paramJSONObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getNumberPic: ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.i("AvatarPendantJsPlugin", 2, ((StringBuilder)localObject).toString());
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("params", paramJSONObject.toString());
-    super.sendRemoteReq(DataFactory.a("getPendantNumberPic", paramString, this.mOnRemoteResp.key, localBundle), false, false);
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("params", paramJSONObject.toString());
+    super.sendRemoteReq(DataFactory.a("getPendantNumberPic", paramString, this.mOnRemoteResp.key, (Bundle)localObject), false, false);
   }
   
   private Bitmap getRoundFaceBitmap(String paramString)
   {
-    if (new File(paramString).exists())
-    {
-      Object localObject = ImageUtil.a(new BitmapFactory.Options(), paramString, 200);
-      try
-      {
-        paramString = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-        int i = paramString.getWidth();
-        int j = paramString.getHeight();
-        localObject = ImageUtil.a(paramString, i, i, j);
-        paramString = (String)localObject;
-        if (localObject != null)
-        {
-          paramString = (String)localObject;
-          if (((Bitmap)localObject).getWidth() > 200) {
-            paramString = ImageUtil.a((Bitmap)localObject, 200);
-          }
-        }
-        return paramString;
-      }
-      catch (OutOfMemoryError paramString)
-      {
-        return null;
-      }
+    Object localObject;
+    if (new File(paramString).exists()) {
+      localObject = ImageUtil.a(new BitmapFactory.Options(), paramString, 200);
     }
-    return ImageUtil.c();
+    try
+    {
+      paramString = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
+      int i = paramString.getWidth();
+      int j = paramString.getHeight();
+      localObject = ImageUtil.a(paramString, i, i, j);
+      paramString = (String)localObject;
+      if (localObject == null) {
+        break label96;
+      }
+      paramString = (String)localObject;
+      if (((Bitmap)localObject).getWidth() <= 200) {
+        break label96;
+      }
+      paramString = ImageUtil.a((Bitmap)localObject, 200);
+      return paramString;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      label90:
+      label96:
+      break label90;
+    }
+    return null;
+    paramString = ImageUtil.f();
+    return paramString;
   }
   
   private void showDiyGuide(JSONObject paramJSONObject, String paramString)
   {
-    SharedPreferences localSharedPreferences = this.browserApp.getApp().getSharedPreferences("PendantSpName_" + this.browserApp.getCurrentAccountUin(), 0);
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject1 = this.browserApp.getApp();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("PendantSpName_");
+    ((StringBuilder)localObject2).append(this.browserApp.getCurrentAccountUin());
+    localObject2 = ((BaseApplication)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
+    localObject1 = new JSONObject();
     try
     {
-      localJSONObject.put("result", 0);
-      if (paramJSONObject.has("shown"))
+      ((JSONObject)localObject1).put("result", 0);
+      boolean bool = paramJSONObject.has("shown");
+      if (bool)
       {
-        boolean bool = paramJSONObject.optBoolean("shown", false);
-        localSharedPreferences.edit().putBoolean("PendantDiyGuideShown", bool).apply();
+        bool = paramJSONObject.optBoolean("shown", false);
+        ((SharedPreferences)localObject2).edit().putBoolean("PendantDiyGuideShown", bool).apply();
       }
-      for (;;)
+      else
       {
-        callJs(paramString, new String[] { localJSONObject.toString() });
-        return;
-        localJSONObject.put("shown", localSharedPreferences.getBoolean("PendantDiyGuideShown", false));
+        ((JSONObject)localObject1).put("shown", ((SharedPreferences)localObject2).getBoolean("PendantDiyGuideShown", false));
       }
     }
     catch (JSONException paramJSONObject)
     {
-      for (;;)
-      {
-        QLog.e("AvatarPendantJsPlugin", 1, new Object[] { "showDiyGuide error", paramJSONObject.getMessage() });
-      }
+      QLog.e("AvatarPendantJsPlugin", 1, new Object[] { "showDiyGuide error", paramJSONObject.getMessage() });
     }
+    callJs(paramString, new String[] { ((JSONObject)localObject1).toString() });
   }
   
   public void changeFace(JSONObject paramJSONObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvatarPendantJsPlugin", 2, "changeFace: " + paramJSONObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("changeFace: ");
+      localStringBuilder.append(paramJSONObject);
+      QLog.i("AvatarPendantJsPlugin", 2, localStringBuilder.toString());
     }
     paramJSONObject = (ActionSheet)ActionSheetHelper.a(this.mRuntime.a(), null);
-    paramJSONObject.addButton(HardCodeUtil.a(2131700960));
-    paramJSONObject.addButton(HardCodeUtil.a(2131700962));
-    paramJSONObject.addCancelButton(HardCodeUtil.a(2131700943));
+    paramJSONObject.addButton(HardCodeUtil.a(2131701103));
+    paramJSONObject.addButton(HardCodeUtil.a(2131701105));
+    paramJSONObject.addCancelButton(HardCodeUtil.a(2131701086));
     paramJSONObject.setOnButtonClickListener(new AvatarPendantJsPlugin.5(this, paramString, paramJSONObject));
     paramJSONObject.setOnDismissListener(new AvatarPendantJsPlugin.6(this, paramString));
     paramJSONObject.show();
@@ -142,8 +157,12 @@ public class AvatarPendantJsPlugin
   
   public void getFaceAddon(JSONObject paramJSONObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvatarPendantJsPlugin", 2, "getFaceAddon: " + paramJSONObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getFaceAddon: ");
+      localStringBuilder.append(paramJSONObject);
+      QLog.i("AvatarPendantJsPlugin", 2, localStringBuilder.toString());
     }
     ThreadManager.post(new AvatarPendantJsPlugin.1(this, paramString), 8, null, false);
   }
@@ -163,9 +182,8 @@ public class AvatarPendantJsPlugin
     return 128L;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    WebViewPluginEngine localWebViewPluginEngine = null;
     if (paramLong == 128L)
     {
       Object localObject = paramMap.get("intent");
@@ -174,183 +192,216 @@ public class AvatarPendantJsPlugin
         Intent localIntent = (Intent)localObject;
         if (localIntent.getBooleanExtra("keyFromPendantPhoto", false))
         {
-          if (this.mRuntime != null) {}
-          for (localObject = this.mRuntime.a();; localObject = null)
-          {
-            if (localObject != null) {
-              localWebViewPluginEngine = ((CustomWebView)localObject).getPluginEngine();
-            }
-            if (localWebViewPluginEngine != null)
-            {
-              new HashMap().put("intent", localIntent);
-              localWebViewPluginEngine.a(paramString, 8589934605L, paramMap);
-            }
-            return true;
+          localObject = this.mRuntime;
+          WebViewPluginEngine localWebViewPluginEngine = null;
+          if (localObject != null) {
+            localObject = this.mRuntime.a();
+          } else {
+            localObject = null;
           }
+          if (localObject != null) {
+            localWebViewPluginEngine = ((CustomWebView)localObject).getPluginEngine();
+          }
+          if (localWebViewPluginEngine != null)
+          {
+            new HashMap().put("intent", localIntent);
+            localWebViewPluginEngine.a(paramString, 8589934605L, paramMap);
+          }
+          return true;
         }
       }
     }
     return super.handleEvent(paramString, paramLong, paramMap);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantJsPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
-    }
-    if ((paramString1 == null) || (!"faceAddon".equals(paramString2)) || (paramString3 == null)) {
-      bool = false;
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      return bool;
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest, url=");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append(", pkgName=");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append(", methodName=");
+      paramJsBridgeListener.append(paramString3);
+      QLog.d("AvatarPendantJsPlugin", 2, paramJsBridgeListener.toString());
+    }
+    if ((paramString1 != null) && ("faceAddon".equals(paramString2)))
+    {
+      if (paramString3 == null) {
+        return false;
+      }
       paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-    } while (paramJsBridgeListener == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantJsPlugin", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
-    }
-    paramString1 = paramJsBridgeListener.optString("callback");
-    if (TextUtils.isEmpty(paramString1))
-    {
-      QLog.e("AvatarPendantJsPlugin", 1, "callback id is null, so return");
-      return true;
-    }
-    if ("getFaceAddon".equals(paramString3))
-    {
-      getFaceAddon(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("updateFaceAddon".equals(paramString3))
-    {
-      updateFaceAddon(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("showMsgBox".equals(paramString3))
-    {
-      showMsgBox(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("changeFace".equals(paramString3))
-    {
-      changeFace(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("showDiyGuide".equals(paramString3))
-    {
-      showDiyGuide(paramJsBridgeListener, paramString1);
-      return true;
-    }
-    if ("getNumberPic".equals(paramString3))
-    {
-      if (this.mNumPicRequests.isEmpty())
-      {
-        getNumberPic(paramJsBridgeListener, paramString1);
+      if (paramJsBridgeListener == null) {
         return true;
       }
-      this.mNumPicRequests.add(paramJsBridgeListener);
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("AvatarPendantJsPlugin", 2, "NOT support method " + paramString3 + " yet!!");
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("handleJsRequest JSON = ");
+        paramString1.append(paramJsBridgeListener.toString());
+        QLog.d("AvatarPendantJsPlugin", 2, paramString1.toString());
+      }
+      paramString1 = paramJsBridgeListener.optString("callback");
+      if (TextUtils.isEmpty(paramString1))
+      {
+        QLog.e("AvatarPendantJsPlugin", 1, "callback id is null, so return");
+        return true;
+      }
+      if ("getFaceAddon".equals(paramString3))
+      {
+        getFaceAddon(paramJsBridgeListener, paramString1);
+        return true;
+      }
+      if ("updateFaceAddon".equals(paramString3))
+      {
+        updateFaceAddon(paramJsBridgeListener, paramString1);
+        return true;
+      }
+      if ("showMsgBox".equals(paramString3))
+      {
+        showMsgBox(paramJsBridgeListener, paramString1);
+        return true;
+      }
+      if ("changeFace".equals(paramString3))
+      {
+        changeFace(paramJsBridgeListener, paramString1);
+        return true;
+      }
+      if ("showDiyGuide".equals(paramString3))
+      {
+        showDiyGuide(paramJsBridgeListener, paramString1);
+        return true;
+      }
+      if ("getNumberPic".equals(paramString3))
+      {
+        if (this.mNumPicRequests.isEmpty())
+        {
+          getNumberPic(paramJsBridgeListener, paramString1);
+          return true;
+        }
+        this.mNumPicRequests.add(paramJsBridgeListener);
+        return true;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("NOT support method ");
+        paramJsBridgeListener.append(paramString3);
+        paramJsBridgeListener.append(" yet!!");
+        QLog.w("AvatarPendantJsPlugin", 2, paramJsBridgeListener.toString());
+      }
     }
     return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     AppInterface localAppInterface = this.mRuntime.a();
-    if ((localAppInterface instanceof BrowserAppInterface)) {
+    if ((localAppInterface instanceof BrowserAppInterface))
+    {
       this.browserApp = ((BrowserAppInterface)localAppInterface);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.e("AvatarPendantJsPlugin", 2, "ERROR!!! Pendant market is not running in web process!");
+    if (QLog.isColorLevel()) {
+      QLog.e("AvatarPendantJsPlugin", 2, "ERROR!!! Pendant market is not running in web process!");
+    }
   }
   
   protected void onResponse(Bundle paramBundle)
   {
     if (paramBundle == null) {
-      break label4;
-    }
-    label4:
-    while (paramBundle.getInt("respkey", 0) != this.mOnRemoteResp.key) {
       return;
     }
-    String str1 = paramBundle.getString("cmd");
-    label515:
-    for (;;)
+    if (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key)
     {
+      String str1 = paramBundle.getString("cmd");
       try
       {
-        String str2 = paramBundle.getString("callbackid");
-        localObject1 = paramBundle.getBundle("request");
-        localObject2 = paramBundle.getBundle("response");
+        localObject1 = paramBundle.getString("callbackid");
+        Object localObject2 = paramBundle.getBundle("request");
+        Object localObject3 = paramBundle.getBundle("response");
         paramBundle = new JSONObject();
-        if (!"changeAvatar".equals(str1)) {
-          break label361;
+        boolean bool = "changeAvatar".equals(str1);
+        if (bool)
+        {
+          if (((Bundle)localObject3).getBoolean("updateResult"))
+          {
+            localObject2 = getRoundFaceBitmap(((Bundle)localObject2).getString("path"));
+            if (localObject2 == null)
+            {
+              paramBundle.put("result", 1002);
+            }
+            else
+            {
+              localObject3 = new ByteArrayOutputStream();
+              ((Bitmap)localObject2).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject3);
+              String str2 = Base64Util.encodeToString(((ByteArrayOutputStream)localObject3).toByteArray(), 2);
+              paramBundle.put("result", 1);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("data:image/png;base64,");
+              localStringBuilder.append(str2);
+              paramBundle.put("file", localStringBuilder.toString());
+              paramBundle.put("size", ((Bitmap)localObject2).getWidth());
+              ((ByteArrayOutputStream)localObject3).close();
+            }
+          }
+          else
+          {
+            localObject2 = this.mRuntime.a();
+            if ((localObject2 != null) && (((WebUiUtils.WebViewProviderInterface)localObject2).getWebTitleBarInterface() != null)) {
+              QQToast.a(this.mRuntime.a(), 2131718781, 0).b(((WebUiUtils.WebViewProviderInterface)localObject2).getWebTitleBarInterface().a());
+            }
+            paramBundle.put("result", 1001);
+          }
         }
-        if (!((Bundle)localObject2).getBoolean("updateResult")) {
-          break label291;
+        else if ("updatePendantId".equals(str1))
+        {
+          if (((Bundle)localObject3).getBoolean("updateResult", false)) {
+            paramBundle.put("result", 0);
+          } else {
+            paramBundle.put("result", -1);
+          }
         }
-        localObject1 = getRoundFaceBitmap(((Bundle)localObject1).getString("path"));
-        if (localObject1 != null) {
-          break label200;
+        else if ("getPendantNumberPic".equals(str1))
+        {
+          if (((Bundle)localObject3).getBoolean("updateResult", false))
+          {
+            paramBundle.put("result", 0);
+            paramBundle.put("file", ((Bundle)localObject3).getString("file"));
+          }
+          else
+          {
+            paramBundle.put("result", -1);
+            paramBundle.put("errMsg", ((Bundle)localObject3).getString("errMsg"));
+          }
+          if (!this.mNumPicRequests.isEmpty())
+          {
+            localObject2 = (JSONObject)this.mNumPicRequests.remove(0);
+            getNumberPic((JSONObject)localObject2, ((JSONObject)localObject2).optString("callback"));
+          }
         }
-        paramBundle.put("result", 1002);
-        super.callJs(str2 + "(" + paramBundle.toString() + ");");
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("(");
+        ((StringBuilder)localObject2).append(paramBundle.toString());
+        ((StringBuilder)localObject2).append(");");
+        super.callJs(((StringBuilder)localObject2).toString());
         return;
       }
-      catch (Exception paramBundle) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("AvatarPendantJsPlugin", 2, "Failed to handle cmd " + str1 + ", exception: " + paramBundle.getMessage());
-      return;
-      label200:
-      Object localObject2 = new ByteArrayOutputStream();
-      ((Bitmap)localObject1).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject2);
-      String str3 = Base64Util.encodeToString(((ByteArrayOutputStream)localObject2).toByteArray(), 2);
-      paramBundle.put("result", 1);
-      paramBundle.put("file", "data:image/png;base64," + str3);
-      paramBundle.put("size", ((Bitmap)localObject1).getWidth());
-      ((ByteArrayOutputStream)localObject2).close();
-      continue;
-      label291:
-      Object localObject1 = this.mRuntime.a(this.mRuntime.a());
-      if ((localObject1 != null) && ((localObject1 instanceof WebUiUtils.WebTitleBarInterface))) {
-        QQToast.a(this.mRuntime.a(), 2131719065, 0).b(((WebUiUtils.WebTitleBarInterface)localObject1).getTitleBarHeight());
-      }
-      paramBundle.put("result", 1001);
-      continue;
-      label361:
-      if ("updatePendantId".equals(str1))
+      catch (Exception paramBundle)
       {
-        if (((Bundle)localObject2).getBoolean("updateResult", false)) {
-          paramBundle.put("result", 0);
-        } else {
-          paramBundle.put("result", -1);
-        }
-      }
-      else if ("getPendantNumberPic".equals(str1))
-      {
-        if (((Bundle)localObject2).getBoolean("updateResult", false))
+        Object localObject1;
+        if (QLog.isColorLevel())
         {
-          paramBundle.put("result", 0);
-          paramBundle.put("file", ((Bundle)localObject2).getString("file"));
-        }
-        for (;;)
-        {
-          if (this.mNumPicRequests.isEmpty()) {
-            break label515;
-          }
-          localObject1 = (JSONObject)this.mNumPicRequests.remove(0);
-          getNumberPic((JSONObject)localObject1, ((JSONObject)localObject1).optString("callback"));
-          break;
-          paramBundle.put("result", -1);
-          paramBundle.put("errMsg", ((Bundle)localObject2).getString("errMsg"));
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("Failed to handle cmd ");
+          ((StringBuilder)localObject1).append(str1);
+          ((StringBuilder)localObject1).append(", exception: ");
+          ((StringBuilder)localObject1).append(paramBundle.getMessage());
+          QLog.e("AvatarPendantJsPlugin", 2, ((StringBuilder)localObject1).toString());
         }
       }
     }
@@ -358,19 +409,24 @@ public class AvatarPendantJsPlugin
   
   public void showMsgBox(JSONObject paramJSONObject, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvatarPendantJsPlugin", 2, "showMsgBox: " + paramJSONObject);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showMsgBox: ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.i("AvatarPendantJsPlugin", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      String str1 = paramJSONObject.getString("msg");
-      String str2 = paramJSONObject.getString("title");
+      localObject = paramJSONObject.getString("msg");
+      String str = paramJSONObject.getString("title");
       paramJSONObject = paramJSONObject.getJSONArray("button");
       if (paramJSONObject.length() >= 1)
       {
         QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.a(this.mRuntime.a(), 230);
-        localQQCustomDialogThreeBtns.a(str2);
-        localQQCustomDialogThreeBtns.b(str1);
+        localQQCustomDialogThreeBtns.a(str);
+        localQQCustomDialogThreeBtns.b((String)localObject);
         localQQCustomDialogThreeBtns.a(paramJSONObject.getString(0), new AvatarPendantJsPlugin.2(this, paramString));
         if (paramJSONObject.length() >= 2) {
           localQQCustomDialogThreeBtns.b(paramJSONObject.getString(1), new AvatarPendantJsPlugin.3(this, paramString));
@@ -380,18 +436,28 @@ public class AvatarPendantJsPlugin
         }
         localQQCustomDialogThreeBtns.show();
         paramJSONObject = new JSONObject();
-        super.callJs(paramString + "(" + paramJSONObject.toString() + ");");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("(");
+        ((StringBuilder)localObject).append(paramJSONObject.toString());
+        ((StringBuilder)localObject).append(");");
+        super.callJs(((StringBuilder)localObject).toString());
         return;
       }
-      if (QLog.isColorLevel()) {
+      boolean bool = QLog.isColorLevel();
+      if (bool) {
         QLog.e("AvatarPendantJsPlugin", 2, "no button message");
       }
       throw new Exception("no button message");
     }
     catch (Exception paramJSONObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("AvatarPendantJsPlugin", 2, "showMsgBox failed: " + paramJSONObject.getMessage());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showMsgBox failed: ");
+        ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+        QLog.e("AvatarPendantJsPlugin", 2, ((StringBuilder)localObject).toString());
       }
       super.callJsOnError(paramString, paramJSONObject.getMessage());
     }
@@ -399,49 +465,58 @@ public class AvatarPendantJsPlugin
   
   public void updateFaceAddon(JSONObject paramJSONObject, String paramString)
   {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("AvatarPendantJsPlugin", 2, "updateFaceAddon: " + paramJSONObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateFaceAddon: ");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      QLog.i("AvatarPendantJsPlugin", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
       long l = paramJSONObject.getLong("id");
-      Bundle localBundle = new Bundle();
-      localBundle.putString("uin", this.browserApp.getAccount());
-      localBundle.putLong("pendantId", l);
-      try
-      {
-        paramJSONObject.getLong("t");
-        bool1 = true;
-      }
-      catch (Exception paramJSONObject)
-      {
-        for (;;)
-        {
-          boolean bool1 = bool2;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("AvatarPendantJsPlugin", 2, "updateFaceAddon: isDiyPendant = false");
-            bool1 = bool2;
-          }
-        }
-      }
-      localBundle.putBoolean("is_diypendant", bool1);
-      super.sendRemoteReq(DataFactory.a("updatePendantId", paramString, this.mOnRemoteResp.key, localBundle), false, false);
-      return;
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("uin", this.browserApp.getAccount());
+      ((Bundle)localObject).putLong("pendantId", l);
     }
     catch (JSONException paramJSONObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("AvatarPendantJsPlugin", 2, "updateFaceAddon failed: " + paramJSONObject.getMessage());
+      label97:
+      label115:
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateFaceAddon failed: ");
+        ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+        QLog.e("AvatarPendantJsPlugin", 2, ((StringBuilder)localObject).toString());
       }
       super.callJsOnError(paramString, paramJSONObject.getMessage());
+      return;
+    }
+    try
+    {
+      paramJSONObject.getLong("t");
+      bool = true;
+    }
+    catch (Exception paramJSONObject)
+    {
+      break label97;
+      bool = false;
+      break label115;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.i("AvatarPendantJsPlugin", 2, "updateFaceAddon: isDiyPendant = false");
+      break label208;
+      ((Bundle)localObject).putBoolean("is_diypendant", bool);
+      super.sendRemoteReq(DataFactory.a("updatePendantId", paramString, this.mOnRemoteResp.key, (Bundle)localObject), false, false);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.AvatarPendantJsPlugin
  * JD-Core Version:    0.7.0.1
  */

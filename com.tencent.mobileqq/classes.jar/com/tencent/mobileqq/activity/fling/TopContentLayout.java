@@ -46,8 +46,9 @@ public class TopContentLayout
       int i = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
       int j = this.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
       movingViewTrans(i, j);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout$OnOutScreenListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout$OnOutScreenListener.outing(i, j, this);
+      TopContentLayout.OnOutScreenListener localOnOutScreenListener = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout$OnOutScreenListener;
+      if (localOnOutScreenListener != null) {
+        localOnOutScreenListener.outing(i, j, this);
       }
       invalidate();
     }
@@ -55,16 +56,18 @@ public class TopContentLayout
   
   public float getMovingViewTransX()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView.getTransX();
+    ContentWrapView localContentWrapView = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView;
+    if (localContentWrapView != null) {
+      return localContentWrapView.getTransX();
     }
     return 0.0F;
   }
   
   public int getMovingViewWidth()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView.getWidth();
+    ContentWrapView localContentWrapView = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView;
+    if (localContentWrapView != null) {
+      return localContentWrapView.getWidth();
     }
     return getWidth();
   }
@@ -76,18 +79,20 @@ public class TopContentLayout
   
   public void movingViewTrans(float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView != null)
+    ContentWrapView localContentWrapView = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView;
+    if (localContentWrapView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView.transX(paramFloat1);
+      localContentWrapView.transX(paramFloat1);
       this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView.transY(paramFloat2);
     }
   }
   
   public void movingViewTransBy(float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView != null)
+    ContentWrapView localContentWrapView = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView;
+    if (localContentWrapView != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView.transXBy(paramFloat1);
+      localContentWrapView.transXBy(paramFloat1);
       this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView.transYBy(paramFloat2);
     }
   }
@@ -95,57 +100,47 @@ public class TopContentLayout
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    int i;
-    int j;
     if ((paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = false;
-      i = getMovingViewWidth();
-      j = (int)Math.abs(getMovingViewTransX());
-      if (j <= i / 2) {
-        break label80;
+      int i = getMovingViewWidth();
+      int j = (int)Math.abs(getMovingViewTransX());
+      if (j > i / 2) {
+        i -= j;
+      } else {
+        i = -j;
       }
-      i -= j;
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll((int)getMovingViewTransX(), 0, i, 0, 350);
       invalidate();
-      return bool;
-      label80:
-      i = -j;
     }
+    return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
     this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    int j;
     if ((i == 1) && (this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = false;
       i = getMovingViewWidth();
-      j = (int)Math.abs(getMovingViewTransX());
-      if (j <= i / 2) {
-        break label80;
+      int j = (int)Math.abs(getMovingViewTransX());
+      if (j > i / 2) {
+        i -= j;
+      } else {
+        i = -j;
       }
-      i -= j;
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll((int)getMovingViewTransX(), 0, i, 0, 350);
       invalidate();
-      return true;
-      label80:
-      i = -j;
     }
+    return true;
   }
   
   public void setContent(ContentWrapView paramContentWrapView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView != null) {
-      removeView(this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView);
+    ContentWrapView localContentWrapView = this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView;
+    if (localContentWrapView != null) {
+      removeView(localContentWrapView);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView = paramContentWrapView;
     addView(this.jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView);
@@ -158,7 +153,7 @@ public class TopContentLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.TopContentLayout
  * JD-Core Version:    0.7.0.1
  */

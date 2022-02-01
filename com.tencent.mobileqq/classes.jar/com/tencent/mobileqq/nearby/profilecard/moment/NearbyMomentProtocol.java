@@ -2,7 +2,7 @@ package com.tencent.mobileqq.nearby.profilecard.moment;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.now.protocol.CsTask;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
+import com.tencent.mobileqq.nearby.now.protocol.INowShortVideoProtoManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -35,8 +35,14 @@ public class NearbyMomentProtocol
       localObject = ((SosoLbsInfo)localObject).mLocation;
       localReadNearUserFeedsReq.lat.set(ByteStringMicro.copyFromUtf8(String.valueOf(((SosoLocation)localObject).mLat02)));
       localReadNearUserFeedsReq.lng.set(ByteStringMicro.copyFromUtf8(String.valueOf(((SosoLocation)localObject).mLon02)));
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyMomentProtocol", 2, "getMomentList, req.lat=" + ((SosoLocation)localObject).mLat02 + ",req.lng=" + ((SosoLocation)localObject).mLon02);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMomentList, req.lat=");
+        localStringBuilder.append(((SosoLocation)localObject).mLat02);
+        localStringBuilder.append(",req.lng=");
+        localStringBuilder.append(((SosoLocation)localObject).mLon02);
+        QLog.i("NearbyMomentProtocol", 2, localStringBuilder.toString());
       }
     }
     new CsTask(paramQQAppInterface).a(971).b(1).a(new NearbyMomentProtocol.2(paramInt2, paramGetMomentListCallback)).a(new NearbyMomentProtocol.1(paramGetMomentListCallback, paramInt2)).a(localReadNearUserFeedsReq.toByteArray());
@@ -58,17 +64,17 @@ public class NearbyMomentProtocol
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, NearbyMomentProtocol.LikeCallback paramLikeCallback)
   {
-    new NowShortVideoProtoManager(paramQQAppInterface).a(paramString, new NearbyMomentProtocol.5(paramLikeCallback), null);
+    ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(paramQQAppInterface).feedsLike(paramString, new NearbyMomentProtocol.5(paramLikeCallback), null);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, NearbyMomentProtocol.UnLikeCallback paramUnLikeCallback)
   {
-    new NowShortVideoProtoManager(paramQQAppInterface).b(paramString, new NearbyMomentProtocol.6(paramUnLikeCallback), null);
+    ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(paramQQAppInterface).feedsUnLike(paramString, new NearbyMomentProtocol.6(paramUnLikeCallback), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol
  * JD-Core Version:    0.7.0.1
  */

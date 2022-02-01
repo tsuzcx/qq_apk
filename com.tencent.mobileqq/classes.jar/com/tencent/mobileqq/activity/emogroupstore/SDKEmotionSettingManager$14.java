@@ -15,7 +15,7 @@ class SDKEmotionSettingManager$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.14
  * JD-Core Version:    0.7.0.1
  */

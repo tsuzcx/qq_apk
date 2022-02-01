@@ -8,7 +8,7 @@ public abstract interface Camera2Control$Camera2Listener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.Camera2Listener
  * JD-Core Version:    0.7.0.1
  */

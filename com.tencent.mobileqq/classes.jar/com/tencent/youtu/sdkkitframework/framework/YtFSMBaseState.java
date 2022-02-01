@@ -7,9 +7,9 @@ import org.json.JSONObject;
 
 public abstract class YtFSMBaseState
 {
-  private static final String TAG = YtFSMBaseState.class.getSimpleName();
+  private static final String TAG = "YtFSMBaseState";
   protected boolean isFirstEnter = true;
-  public HashMap<String, Object> stateData;
+  protected HashMap<String, Object> stateData;
   protected String stateName;
   protected String stateSimpleName;
   
@@ -21,14 +21,22 @@ public abstract class YtFSMBaseState
       this.isFirstEnter = false;
       enterFirst();
     }
-    YtLogger.d(TAG, this.stateName + " enter");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.stateName);
+    localStringBuilder.append(" enter");
+    YtLogger.d(str, localStringBuilder.toString());
   }
   
   public abstract void enterFirst();
   
   public void exit()
   {
-    YtLogger.d(TAG, this.stateName + " exit");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.stateName);
+    localStringBuilder.append(" exit");
+    YtLogger.d(str, localStringBuilder.toString());
   }
   
   public Object getStateDataBy(String paramString)
@@ -56,25 +64,29 @@ public abstract class YtFSMBaseState
     try
     {
       this.stateSimpleName = Class.forName(paramString).getSimpleName();
-      YtLogger.i(TAG, "load " + this.stateSimpleName);
-      this.stateData = new HashMap();
-      YtSDKStats.getInstance().registerStateName(this.stateSimpleName);
-      return;
     }
     catch (Exception paramJSONObject)
     {
-      for (;;)
-      {
-        paramString = paramString.split("\\.");
-        this.stateSimpleName = paramString[(paramString.length - 1)];
-        paramJSONObject.printStackTrace();
-      }
+      paramString = paramString.split("\\.");
+      this.stateSimpleName = paramString[(paramString.length - 1)];
+      paramJSONObject.printStackTrace();
     }
+    paramString = TAG;
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("load ");
+    paramJSONObject.append(this.stateSimpleName);
+    YtLogger.i(paramString, paramJSONObject.toString());
+    this.stateData = new HashMap();
+    YtSDKStats.getInstance().registerStateName(this.stateSimpleName);
   }
   
   public void moveToNextState()
   {
-    YtLogger.d(TAG, this.stateName + " move to next");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.stateName);
+    localStringBuilder.append(" move to next");
+    YtLogger.d(str, localStringBuilder.toString());
   }
   
   public void onPause() {}
@@ -85,26 +97,43 @@ public abstract class YtFSMBaseState
   {
     this.isFirstEnter = true;
     this.stateData.clear();
-    YtLogger.i(TAG, this.stateName + " reset");
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.stateName);
+    localStringBuilder.append(" reset");
+    YtLogger.i(str, localStringBuilder.toString());
   }
   
   public void unload()
   {
-    YtLogger.i(TAG, "unload " + this.stateSimpleName);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unload ");
+    localStringBuilder.append(this.stateSimpleName);
+    YtLogger.i(str, localStringBuilder.toString());
     this.stateData.clear();
   }
   
   public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     YtSDKStats.getInstance().updateState(this.stateName);
-    YtLogger.d(TAG, this.stateName + " update image : " + paramInt1 + "x" + paramInt2 + " type " + paramInt3);
+    paramArrayOfByte = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.stateName);
+    localStringBuilder.append(" update image : ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("x");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" type ");
+    localStringBuilder.append(paramInt3);
+    YtLogger.d(paramArrayOfByte, localStringBuilder.toString());
   }
   
   public void updateSDKSetting(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtFSMBaseState
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,7 @@ class BaseAdapter$1
   
   public int getSpanSize(int paramInt)
   {
-    switch (this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseAdapter.getItemViewType(paramInt))
-    {
-    default: 
+    if (this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseAdapter.getItemViewType(paramInt) != 7) {
       return this.jdField_a_of_type_AndroidxRecyclerviewWidgetGridLayoutManager.getSpanCount();
     }
     return 1;
@@ -20,7 +18,7 @@ class BaseAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.rv.BaseAdapter.1
  * JD-Core Version:    0.7.0.1
  */

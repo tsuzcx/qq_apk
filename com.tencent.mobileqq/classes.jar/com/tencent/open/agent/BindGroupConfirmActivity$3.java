@@ -12,42 +12,39 @@ class BindGroupConfirmActivity$3
   
   public void run()
   {
-    if (this.this$0.a == null) {}
-    for (;;)
-    {
+    if (this.this$0.a == null) {
       return;
-      Object localObject2 = null;
-      try
-      {
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.this$0.a, 2130842800);
-        if (localBitmap == null) {
-          continue;
-        }
-        localBitmap = AuthorityUtil.a(this.this$0, localBitmap, 50, 50);
-        if (localBitmap == null) {
-          continue;
-        }
-        this.this$0.runOnUiThread(new BindGroupConfirmActivity.3.1(this, localBitmap));
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          Object localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("BindGroupConfirmActivity", 2, "initUI decodeResource has OutOfMemoryError!");
-            localObject1 = localObject2;
-          }
-        }
-      }
     }
+    Object localObject2 = null;
+    try
+    {
+      localObject1 = BitmapFactory.decodeResource(this.this$0.a, 2130842700);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      Object localObject1;
+      label29:
+      break label29;
+    }
+    localObject1 = localObject2;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("BindGroupConfirmActivity", 2, "initUI decodeResource has OutOfMemoryError!");
+      localObject1 = localObject2;
+    }
+    if (localObject1 == null) {
+      return;
+    }
+    localObject1 = AuthorityUtil.a(this.this$0, (Bitmap)localObject1, 50, 50);
+    if (localObject1 == null) {
+      return;
+    }
+    this.this$0.runOnUiThread(new BindGroupConfirmActivity.3.1(this, (Bitmap)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.3
  * JD-Core Version:    0.7.0.1
  */

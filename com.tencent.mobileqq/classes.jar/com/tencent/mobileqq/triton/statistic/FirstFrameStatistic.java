@@ -34,18 +34,18 @@ public final class FirstFrameStatistic
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof FirstFrameStatistic))
       {
         paramObject = (FirstFrameStatistic)paramObject;
-        if ((this.firstRenderTimeMs != paramObject.firstRenderTimeMs) || (this.drawCallCount != paramObject.drawCallCount)) {}
+        if ((this.firstRenderTimeMs == paramObject.firstRenderTimeMs) && (this.drawCallCount == paramObject.drawCallCount)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final long getDrawCallCount()
@@ -69,12 +69,18 @@ public final class FirstFrameStatistic
   @NotNull
   public String toString()
   {
-    return "FirstFrameStatistic(firstRenderTimeMs=" + this.firstRenderTimeMs + ", drawCallCount=" + this.drawCallCount + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FirstFrameStatistic(firstRenderTimeMs=");
+    localStringBuilder.append(this.firstRenderTimeMs);
+    localStringBuilder.append(", drawCallCount=");
+    localStringBuilder.append(this.drawCallCount);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.statistic.FirstFrameStatistic
  * JD-Core Version:    0.7.0.1
  */

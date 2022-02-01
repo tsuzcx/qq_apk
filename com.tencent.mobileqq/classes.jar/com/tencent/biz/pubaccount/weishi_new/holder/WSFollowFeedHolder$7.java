@@ -17,7 +17,7 @@ class WSFollowFeedHolder$7
   {
     if (!NetworkUtil.a(WSFollowFeedHolder.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder)))
     {
-      ToastUtil.a().a(2131720723);
+      ToastUtil.a().a(2131720447);
       return;
     }
     WSFollowFeedHolder.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newHolderWSFollowFeedHolder).a(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
@@ -28,7 +28,7 @@ class WSFollowFeedHolder$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.holder.WSFollowFeedHolder.7
  * JD-Core Version:    0.7.0.1
  */

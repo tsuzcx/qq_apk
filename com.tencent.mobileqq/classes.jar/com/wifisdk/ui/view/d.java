@@ -45,11 +45,12 @@ public class d
     if (this.uH.getHeaderViewsCount() > 0) {
       this.uH.removeHeaderView(this.vH);
     }
+    Object localObject;
     if (this.vH == null)
     {
       this.vH = new LinearLayout(this.vA);
       this.vH.setOrientation(1);
-      Object localObject = (RelativeLayout)LayoutInflater.from(this.vA).inflate(RProxy.layout.wifi_sdk_list_item_header, null);
+      localObject = (RelativeLayout)LayoutInflater.from(this.vA).inflate(RProxy.layout.wifi_sdk_list_item_header, null);
       ((TextView)((ViewGroup)localObject).findViewById(RProxy.id.tmsdk_wifi_list_header_text)).setText("当前WiFi");
       this.vH.addView((View)localObject);
       localObject = LayoutInflater.from(this.vA).inflate(RProxy.layout.wifi_sdk_list_view_item, null);
@@ -62,14 +63,14 @@ public class d
       this.vG.setVisibility(8);
       this.vH.addView((View)localObject, new LinearLayout.LayoutParams(-1, -1));
     }
-    for (;;)
+    else
     {
-      this.uH.addHeaderView(this.vH);
-      return;
-      if (this.vE != null) {
-        this.vE.setVisibility(8);
+      localObject = this.vE;
+      if (localObject != null) {
+        ((TextView)localObject).setVisibility(8);
       }
     }
+    this.uH.addHeaderView(this.vH);
   }
   
   public void a(TMSDKFreeWifiInfo paramTMSDKFreeWifiInfo)
@@ -91,15 +92,16 @@ public class d
   
   public void onDestroy()
   {
-    if (this.mHandler != null) {
-      this.mHandler.removeCallbacksAndMessages(null);
+    Handler localHandler = this.mHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
     }
     this.uH = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.wifisdk.ui.view.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,44 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
 import android.graphics.BitmapFactory.Options;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FavEmoRoamingHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.utils.DiySecureFileHelper;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.config.business.FavLocalEmoticonsProcessor.FavLocalEmoticonsConfig;
 import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
 import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.emosm.control.EmoCaptureAsyncControl;
 import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.pic.compress.Utils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.pic.api.ICompressOperator;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.BaseImageUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.CaptureContext;
-import dov.com.qq.im.capture.control.CaptureAsyncControl;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class FavEmoSendControl
 {
-  public static CaptureAsyncControl a = new CaptureAsyncControl();
+  public static EmoCaptureAsyncControl a = new EmoCaptureAsyncControl();
+  
+  public static BaseQQAppInterface a()
+  {
+    return (BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
   
   public static String a(String paramString)
   {
     CompressInfo localCompressInfo = new CompressInfo(paramString, 0, -1);
     localCompressInfo.g = true;
-    boolean bool = CompressOperator.a(localCompressInfo);
+    boolean bool = ((ICompressOperator)QRoute.api(ICompressOperator.class)).start(localCompressInfo);
     if (QLog.isColorLevel()) {
       QLog.d("FavEmoSendControl", 2, new Object[] { "compressBeforeUpload, success: ", Boolean.valueOf(bool) });
     }
@@ -50,156 +51,119 @@ public class FavEmoSendControl
   public static void a(List<String> paramList)
   {
     QLog.i("FavEmoSendControl", 1, "uploadCameraEmoList");
-    Object localObject1 = (QQAppInterface)CaptureContext.a();
-    FavroamingDBManager localFavroamingDBManager = (FavroamingDBManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FAVROAMING_DB_MANAGER);
-    FavEmoRoamingHandler localFavEmoRoamingHandler = (FavEmoRoamingHandler)((QQAppInterface)localObject1).getBusinessHandler(BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER);
-    String str1 = ((QQAppInterface)localObject1).getCurrentUin();
+    Object localObject1 = a();
+    IFavroamingDBManagerService localIFavroamingDBManagerService = (IFavroamingDBManagerService)((BaseQQAppInterface)localObject1).getRuntimeService(IFavroamingDBManagerService.class);
+    FavEmoRoamingHandler localFavEmoRoamingHandler = (FavEmoRoamingHandler)((BaseQQAppInterface)localObject1).getBusinessHandler(FavEmoRoamingHandler.a);
+    localObject1 = ((BaseQQAppInterface)localObject1).getCurrentUin();
     ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
     int k = 0;
     int j = 0;
-    Iterator localIterator = paramList.iterator();
-    String str2;
-    List localList;
     int i;
-    label110:
-    Object localObject2;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      str2 = (String)localIterator.next();
-      localList = localFavroamingDBManager.a();
-      localObject1 = localList.iterator();
+      String str1 = (String)localIterator.next();
+      List localList = localIFavroamingDBManagerService.getEmoticonDataList();
+      Object localObject2 = localList.iterator();
       i = 1;
-      if (((Iterator)localObject1).hasNext())
+      Object localObject3;
+      while (((Iterator)localObject2).hasNext())
       {
-        localObject2 = (CustomEmotionData)((Iterator)localObject1).next();
-        if (i >= ((CustomEmotionData)localObject2).emoId) {
-          break label741;
+        localObject3 = (CustomEmotionData)((Iterator)localObject2).next();
+        if (i < ((CustomEmotionData)localObject3).emoId) {
+          i = ((CustomEmotionData)localObject3).emoId;
         }
-        i = ((CustomEmotionData)localObject2).emoId;
       }
-    }
-    label422:
-    label738:
-    label741:
-    for (;;)
-    {
-      break label110;
-      CustomEmotionData localCustomEmotionData1 = new CustomEmotionData();
-      localCustomEmotionData1.uin = str1;
-      localCustomEmotionData1.emoId = (i + 1);
-      localCustomEmotionData1.emoOriginalPath = str2;
-      localCustomEmotionData1.RomaingType = "needUpload";
-      if (!a(localCustomEmotionData1.emoOriginalPath))
+      CustomEmotionData localCustomEmotionData = new CustomEmotionData();
+      localCustomEmotionData.uin = ((String)localObject1);
+      localCustomEmotionData.emoId = (i + 1);
+      localCustomEmotionData.emoOriginalPath = str1;
+      localCustomEmotionData.RomaingType = "needUpload";
+      if (!a(localCustomEmotionData.emoOriginalPath))
       {
-        QLog.e("FavEmoSendControl", 1, new Object[] { "doStep, checkPicFavEnable false, path ", localCustomEmotionData1.emoOriginalPath });
-        localCustomEmotionData1.emoPath = str2;
-        localCustomEmotionData1.RomaingType = "failed";
-        localFavroamingDBManager.c(localCustomEmotionData1);
+        QLog.e("FavEmoSendControl", 1, new Object[] { "doStep, checkPicFavEnable false, path ", localCustomEmotionData.emoOriginalPath });
+        localCustomEmotionData.emoPath = str1;
+        localCustomEmotionData.RomaingType = "failed";
+        localIFavroamingDBManagerService.insertCustomEmotion(localCustomEmotionData);
         k += 1;
         localFavEmoRoamingHandler.notifyUI(2, true, null);
-        a(false, 1, 0);
-        break;
+        FavEmoSendControlConstant.a(false, 1, 0);
       }
-      localObject1 = localCustomEmotionData1.emoOriginalPath;
-      if (a()) {
-        localObject1 = a(localCustomEmotionData1.emoOriginalPath);
-      }
-      String str3 = SecUtil.getFileMd5((String)localObject1);
-      localObject2 = ".jpg";
-      i = ((String)localObject1).lastIndexOf(".");
-      if (i > 0) {
-        localObject2 = ((String)localObject1).substring(i);
-      }
-      localObject2 = AppConstants.SDCARD_IMG_FAVORITE + DiySecureFileHelper.a(str1) + str3 + (String)localObject2;
-      boolean bool = FileUtils.d((String)localObject1, (String)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.d("FavEmoSendControl", 2, new Object[] { "doStep, copyFile completed, result:", Boolean.valueOf(bool) });
-      }
-      if (!((String)localObject1).equals(localCustomEmotionData1.emoOriginalPath)) {
-        FileUtils.e((String)localObject1);
-      }
-      localObject1 = localList.iterator();
-      i = 0;
-      int n = j;
-      int m = i;
-      CustomEmotionData localCustomEmotionData2;
-      if (((Iterator)localObject1).hasNext())
+      else
       {
-        localCustomEmotionData2 = (CustomEmotionData)((Iterator)localObject1).next();
-        if ((!((String)localObject2).equals(localCustomEmotionData2.emoPath)) && (!str3.equals(localCustomEmotionData2.md5))) {
-          break label738;
+        localObject2 = localCustomEmotionData.emoOriginalPath;
+        if (a()) {
+          localObject2 = a(localCustomEmotionData.emoOriginalPath);
         }
-        QLog.e("FavEmoSendControl", 1, new Object[] { "doStep fail, duplicate path, path:", localCustomEmotionData2.emoPath });
-        a(false, 2, 0);
-        if ("needDel".equals(localCustomEmotionData2.RomaingType))
+        String str2 = SecUtil.getFileMd5((String)localObject2);
+        i = ((String)localObject2).lastIndexOf(".");
+        if (i > 0) {
+          localObject3 = ((String)localObject2).substring(i);
+        } else {
+          localObject3 = ".jpg";
+        }
+        Object localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(AppConstants.SDCARD_IMG_FAVORITE);
+        ((StringBuilder)localObject4).append(DiySecureFileHelper.a((String)localObject1));
+        ((StringBuilder)localObject4).append(str2);
+        ((StringBuilder)localObject4).append((String)localObject3);
+        localObject3 = ((StringBuilder)localObject4).toString();
+        boolean bool = FileUtils.copyFile((String)localObject2, (String)localObject3);
+        if (QLog.isColorLevel()) {
+          QLog.d("FavEmoSendControl", 2, new Object[] { "doStep, copyFile completed, result:", Boolean.valueOf(bool) });
+        }
+        if (!((String)localObject2).equals(localCustomEmotionData.emoOriginalPath)) {
+          FileUtils.deleteFile((String)localObject2);
+        }
+        localObject2 = localList.iterator();
+        i = 0;
+        while (((Iterator)localObject2).hasNext())
         {
-          localFavroamingDBManager.a(localCustomEmotionData2, localList.indexOf(localCustomEmotionData2));
+          localObject4 = (CustomEmotionData)((Iterator)localObject2).next();
+          if ((!((String)localObject3).equals(((CustomEmotionData)localObject4).emoPath)) && (!str2.equals(((CustomEmotionData)localObject4).md5))) {
+            break label586;
+          }
+          QLog.e("FavEmoSendControl", 1, new Object[] { "doStep fail, duplicate path, path:", ((CustomEmotionData)localObject4).emoPath });
+          FavEmoSendControlConstant.a(false, 2, 0);
+          if ("needDel".equals(((CustomEmotionData)localObject4).RomaingType))
+          {
+            localIFavroamingDBManagerService.updateDeletedEmoticon((CustomEmotionData)localObject4, localList.indexOf(localObject4));
+            i = 1;
+          }
+          else
+          {
+            if (!"failed".equals(((CustomEmotionData)localObject4).RomaingType)) {
+              break label589;
+            }
+            localIFavroamingDBManagerService.deleteCustomEmotion((CustomEmotionData)localObject4);
+          }
+          label586:
+          continue;
+          label589:
+          j += 1;
           i = 1;
         }
-      }
-      for (;;)
-      {
-        break label422;
-        if ("failed".equals(localCustomEmotionData2.RomaingType))
+        if (i == 0)
         {
-          localFavroamingDBManager.a(localCustomEmotionData2);
-        }
-        else
-        {
-          m = 1;
-          n = j + 1;
-          j = n;
-          if (m != 0) {
-            break;
-          }
-          localCustomEmotionData1.md5 = str3;
-          localCustomEmotionData1.emoPath = ((String)localObject2);
-          localFavroamingDBManager.c(localCustomEmotionData1);
-          localArrayList.add(localCustomEmotionData1);
-          j = n;
-          if (paramList.indexOf(str2) % 4 != 3) {
-            break;
-          }
-          localFavEmoRoamingHandler.notifyUI(2, true, null);
-          j = n;
-          break;
-          if (!localArrayList.isEmpty())
-          {
+          localCustomEmotionData.md5 = str2;
+          localCustomEmotionData.emoPath = ((String)localObject3);
+          localIFavroamingDBManagerService.insertCustomEmotion(localCustomEmotionData);
+          localArrayList.add(localCustomEmotionData);
+          if (paramList.indexOf(str1) % 4 == 3) {
             localFavEmoRoamingHandler.notifyUI(2, true, null);
-            QLog.d("FavEmoSendControl", 1, "doStep, insert completed");
-            i = paramList.size();
-            a.a(String.valueOf(1011), new Object[] { localArrayList, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
-            return;
-          }
-          new CameraEmoAllSend().a(paramList.size(), 0, 0, k, j);
-          return;
+          } else {}
         }
       }
     }
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramBoolean)
+    if (!localArrayList.isEmpty())
     {
-      str = "1";
-      localHashMap.put("sucFlag", str);
-      localHashMap.put("retCode", String.valueOf(paramInt1));
-      localHashMap.put("serverRetCode", String.valueOf(paramInt2));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "FavEmoUploadLocal", false, 0L, 0L, localHashMap, null);
-      if (!paramBoolean) {
-        break label93;
-      }
-    }
-    label93:
-    for (String str = "0";; str = String.valueOf(paramInt1))
-    {
-      EmoticonManager.c(str, 1);
+      localFavEmoRoamingHandler.notifyUI(2, true, null);
+      QLog.d("FavEmoSendControl", 1, "doStep, insert completed");
+      i = paramList.size();
+      a.a(String.valueOf(1000), new Object[] { localArrayList, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
       return;
-      str = "0";
-      break;
     }
+    new CameraEmoAllSend().a(paramList.size(), 0, 0, k, j);
   }
   
   public static boolean a()
@@ -215,7 +179,7 @@ public class FavEmoSendControl
       if (new File(paramString).length() >= localFavLocalEmoticonsConfig.a) {
         return false;
       }
-      if (!Utils.a(paramString))
+      if (!BaseImageUtil.b(paramString))
       {
         BitmapFactory.Options localOptions = new BitmapFactory.Options();
         localOptions.inJustDecodeBounds = true;
@@ -241,7 +205,7 @@ public class FavEmoSendControl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.favroaming.FavEmoSendControl
  * JD-Core Version:    0.7.0.1
  */

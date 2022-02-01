@@ -28,96 +28,80 @@ public class RichmediaIpv6ConifgBean
   
   public static RichmediaIpv6ConifgBean a(String paramString)
   {
-    boolean bool5 = false;
     if (paramString == null) {
       return null;
     }
-    boolean bool1;
-    try
-    {
-      paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-      localNodeList = paramString.getElementsByTagName("bdh_ipv6_switch");
-      if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
-        break label405;
-      }
-      if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-        break label380;
-      }
-      bool1 = true;
-    }
-    catch (Exception paramString)
-    {
-      NodeList localNodeList;
-      label152:
-      QLog.e("RichmediaIpv6ConifgBean", 1, "onParsed failed" + paramString);
-      return null;
-    }
-    localNodeList = paramString.getElementsByTagName("bdh_dual_ipv6_switch");
-    if ((localNodeList != null) && (localNodeList.getLength() > 0)) {
-      if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() > 0)
-      {
-        bool1 = true;
-        break label415;
-        localNodeList = paramString.getElementsByTagName("richmedia_down_ipv6_switch");
-        if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
-          break label395;
-        }
-        if (Integer.valueOf(((Element)localNodeList.item(0)).getFirstChild().getNodeValue()).intValue() <= 0) {
-          break label390;
-        }
-        bool1 = true;
-        break label420;
-      }
-    }
-    label390:
-    label395:
-    label405:
-    label410:
-    label415:
-    label420:
     for (;;)
     {
-      paramString = paramString.getElementsByTagName("richmedia_down_dual_ipv6_switch");
-      boolean bool4 = bool5;
-      if (paramString != null)
+      try
       {
-        bool4 = bool5;
-        if (paramString.getLength() > 0)
+        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
+        localObject = paramString.getElementsByTagName("bdh_ipv6_switch");
+        boolean bool5 = false;
+        if ((localObject != null) && (((NodeList)localObject).getLength() > 0) && (Integer.valueOf(((Element)((NodeList)localObject).item(0)).getFirstChild().getNodeValue()).intValue() > 0))
         {
-          bool4 = bool5;
-          if (Integer.valueOf(((Element)paramString.item(0)).getFirstChild().getNodeValue()).intValue() > 0) {
-            bool4 = true;
+          bool1 = true;
+          localObject = paramString.getElementsByTagName("bdh_dual_ipv6_switch");
+          if ((localObject == null) || (((NodeList)localObject).getLength() <= 0) || (Integer.valueOf(((Element)((NodeList)localObject).item(0)).getFirstChild().getNodeValue()).intValue() <= 0)) {
+            break label413;
           }
+          bool2 = true;
+          localObject = paramString.getElementsByTagName("richmedia_down_ipv6_switch");
+          if ((localObject == null) || (((NodeList)localObject).getLength() <= 0) || (Integer.valueOf(((Element)((NodeList)localObject).item(0)).getFirstChild().getNodeValue()).intValue() <= 0)) {
+            break label418;
+          }
+          bool3 = true;
+          paramString = paramString.getElementsByTagName("richmedia_down_dual_ipv6_switch");
+          boolean bool4 = bool5;
+          if (paramString != null)
+          {
+            bool4 = bool5;
+            if (paramString.getLength() > 0)
+            {
+              bool4 = bool5;
+              if (Integer.valueOf(((Element)paramString.item(0)).getFirstChild().getNodeValue()).intValue() > 0) {
+                bool4 = true;
+              }
+            }
+          }
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("parse, bdh_ipv6_switch = ");
+            paramString.append(bool1);
+            paramString.append(", bdh_dual_ipv6_switch = ");
+            paramString.append(bool2);
+            paramString.append(", richmedia_down_ipv6_switch = ");
+            paramString.append(bool3);
+            paramString.append(", richmedia_down_dual_ipv6_switch = ");
+            paramString.append(bool4);
+            QLog.d("RichmediaIpv6ConifgBean", 2, paramString.toString());
+          }
+          paramString = new RichmediaIpv6ConifgBean(bool1, bool2, bool3, bool4);
+          return paramString;
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("RichmediaIpv6ConifgBean", 2, "parse, bdh_ipv6_switch = " + bool2 + ", bdh_dual_ipv6_switch = " + bool3 + ", richmedia_down_ipv6_switch = " + bool1 + ", richmedia_down_dual_ipv6_switch = " + bool4);
+      catch (Exception paramString)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onParsed failed");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.e("RichmediaIpv6ConifgBean", 1, ((StringBuilder)localObject).toString());
+        return null;
       }
-      paramString = new RichmediaIpv6ConifgBean(bool2, bool3, bool1, bool4);
-      return paramString;
-      label380:
-      bool1 = false;
-      break label410;
-      bool1 = false;
-      break label415;
-      bool1 = false;
-      break label420;
-      bool1 = false;
+      boolean bool1 = false;
       continue;
-      boolean bool3 = false;
-      break label152;
+      label413:
       boolean bool2 = false;
-      break;
-      bool2 = bool1;
-      break;
-      bool3 = bool1;
-      break label152;
+      continue;
+      label418:
+      boolean bool3 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.RichmediaIpv6ConifgBean
  * JD-Core Version:    0.7.0.1
  */

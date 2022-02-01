@@ -14,38 +14,39 @@ public class HWVideoDecoder
   
   private void a(DecodeConfig paramDecodeConfig, Surface paramSurface, HWDecodeListener paramHWDecodeListener)
   {
-    if ((paramDecodeConfig == null) || (paramSurface == null)) {
-      throw new IllegalArgumentException("both decodeConfig and surface should not be null");
-    }
-    TLog.a("HWVideoDecoder", "startDecode config = " + paramDecodeConfig);
-    Thread localThread;
-    if (this.jdField_a_of_type_JavaLangThread != null)
+    if ((paramDecodeConfig != null) && (paramSurface != null))
     {
-      localThread = this.jdField_a_of_type_JavaLangThread;
-      a();
-    }
-    try
-    {
-      localThread.join();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startDecode config = ");
+      ((StringBuilder)localObject).append(paramDecodeConfig);
+      TLog.a("HWVideoDecoder", ((StringBuilder)localObject).toString());
+      localObject = this.jdField_a_of_type_JavaLangThread;
+      if (localObject != null)
+      {
+        a();
+        try
+        {
+          ((Thread)localObject).join();
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          localInterruptedException.printStackTrace();
+        }
+      }
       this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder$DecodeRunnable = new HWVideoDecoder.DecodeRunnable(paramDecodeConfig.a, paramSurface, paramHWDecodeListener);
       this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder$DecodeRunnable.a(paramDecodeConfig);
       this.jdField_a_of_type_JavaLangThread = new Thread(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder$DecodeRunnable, "HWVideoDecoder-Thread");
       this.jdField_a_of_type_JavaLangThread.start();
       return;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    throw new IllegalArgumentException("both decodeConfig and surface should not be null");
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaLangThread != null) {
-      this.jdField_a_of_type_JavaLangThread.interrupt();
+    Thread localThread = this.jdField_a_of_type_JavaLangThread;
+    if (localThread != null) {
+      localThread.interrupt();
     }
     this.jdField_a_of_type_JavaLangThread = null;
     this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecDecoderHWVideoDecoder$DecodeRunnable = null;
@@ -58,7 +59,7 @@ public class HWVideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.decoder.HWVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

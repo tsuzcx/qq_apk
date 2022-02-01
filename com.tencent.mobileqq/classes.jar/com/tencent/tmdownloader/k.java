@@ -13,23 +13,33 @@ class k
   {
     try
     {
-      ab.c("RemoteOpProxy", "<requestShareUrl> process:" + s.e() + ", getServiceInterface()");
-      a locala = (a)this.a.getServiceInterface();
-      if (locala != null) {
-        locala.c();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("<requestShareUrl> process:");
+      ((StringBuilder)localObject).append(s.e());
+      ((StringBuilder)localObject).append(", getServiceInterface()");
+      ab.c("RemoteOpProxy", ((StringBuilder)localObject).toString());
+      localObject = (a)this.a.getServiceInterface();
+      if (localObject != null)
+      {
+        ((a)localObject).c();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      ab.c("RemoteOpProxy", "<requestShareUrl> process:" + s.e() + ", getServiceInterface() error, error msg = " + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<requestShareUrl> process:");
+      localStringBuilder.append(s.e());
+      localStringBuilder.append(", getServiceInterface() error, error msg = ");
+      localStringBuilder.append(localException.getMessage());
+      ab.c("RemoteOpProxy", localStringBuilder.toString());
       localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.k
  * JD-Core Version:    0.7.0.1
  */

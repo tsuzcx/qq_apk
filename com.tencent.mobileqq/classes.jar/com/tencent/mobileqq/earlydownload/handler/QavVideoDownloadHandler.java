@@ -33,12 +33,16 @@ public class QavVideoDownloadHandler
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download success: ");
+      localStringBuilder.append(paramString);
+      QLog.d("QavVideoDownloadHandler", 2, localStringBuilder.toString());
     }
     try
     {
-      FileUtils.a(paramString, ImageResUtil.c(), false);
+      FileUtils.uncompressZip(paramString, ImageResUtil.b(), false);
       return;
     }
     catch (Exception paramString)
@@ -75,7 +79,7 @@ public class QavVideoDownloadHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.QavVideoDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

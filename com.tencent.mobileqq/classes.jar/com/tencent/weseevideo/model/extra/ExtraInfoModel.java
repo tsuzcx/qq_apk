@@ -46,18 +46,18 @@ public final class ExtraInfoModel
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof ExtraInfoModel))
       {
         paramObject = (ExtraInfoModel)paramObject;
-        if ((!Intrinsics.areEqual(this.frameInfoModel, paramObject.frameInfoModel)) || (!Intrinsics.areEqual(this.faceInfoModel, paramObject.faceInfoModel))) {}
+        if ((Intrinsics.areEqual(this.frameInfoModel, paramObject.frameInfoModel)) && (Intrinsics.areEqual(this.faceInfoModel, paramObject.faceInfoModel))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @Nullable
@@ -74,28 +74,36 @@ public final class ExtraInfoModel
   
   public int hashCode()
   {
-    int j = 0;
     Object localObject = this.frameInfoModel;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.faceInfoModel;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      return i * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    localObject = this.faceInfoModel;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return i * 31 + j;
   }
   
   @NotNull
   public String toString()
   {
-    return "ExtraInfoModel(frameInfoModel=" + this.frameInfoModel + ", faceInfoModel=" + this.faceInfoModel + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtraInfoModel(frameInfoModel=");
+    localStringBuilder.append(this.frameInfoModel);
+    localStringBuilder.append(", faceInfoModel=");
+    localStringBuilder.append(this.faceInfoModel);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.extra.ExtraInfoModel
  * JD-Core Version:    0.7.0.1
  */

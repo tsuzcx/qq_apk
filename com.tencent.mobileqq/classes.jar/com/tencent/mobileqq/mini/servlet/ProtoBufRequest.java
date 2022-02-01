@@ -34,9 +34,11 @@ public abstract class ProtoBufRequest
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProtoBufRequest", 2, "inform QZoneGetGroupCountServlet resultcode fail.");
-      }
+      label27:
+      break label27;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProtoBufRequest", 2, "inform QZoneGetGroupCountServlet resultcode fail.");
     }
     return null;
   }
@@ -48,37 +50,38 @@ public abstract class ProtoBufRequest
   
   public byte[] encode(Intent paramIntent, int paramInt, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException("req traceId is null!");
-    }
-    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
-    localStQWebReq.Seq.set(paramInt);
-    localStQWebReq.qua.set(QUA.getQUA3());
-    localStQWebReq.deviceInfo.set(PlatformInfor.g().getDeviceInfor());
-    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(getBusiBuf()));
-    if (!TextUtils.isEmpty(paramString)) {
-      localStQWebReq.traceid.set(paramString);
-    }
-    if (paramIntent != null) {
-      paramIntent.putExtra("traceid", paramString);
-    }
-    if (StudyModeManager.a())
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramIntent = new COMM.Entry();
-      paramIntent.key.set("teenager");
-      paramIntent.value.set(String.valueOf(1));
-      paramString = new ArrayList();
-      paramString.add(paramIntent);
-      localStQWebReq.Extinfo.set(paramString);
+      PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+      localStQWebReq.Seq.set(paramInt);
+      localStQWebReq.qua.set(QUA.getQUA3());
+      localStQWebReq.deviceInfo.set(PlatformInfor.g().getDeviceInfor());
+      localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(getBusiBuf()));
+      if (!TextUtils.isEmpty(paramString)) {
+        localStQWebReq.traceid.set(paramString);
+      }
+      if (paramIntent != null) {
+        paramIntent.putExtra("traceid", paramString);
+      }
+      if (StudyModeManager.a())
+      {
+        paramIntent = new COMM.Entry();
+        paramIntent.key.set("teenager");
+        paramIntent.value.set(String.valueOf(1));
+        paramString = new ArrayList();
+        paramString.add(paramIntent);
+        localStQWebReq.Extinfo.set(paramString);
+      }
+      return localStQWebReq.toByteArray();
     }
-    return localStQWebReq.toByteArray();
+    throw new RuntimeException("req traceId is null!");
   }
   
   public abstract byte[] getBusiBuf();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.ProtoBufRequest
  * JD-Core Version:    0.7.0.1
  */

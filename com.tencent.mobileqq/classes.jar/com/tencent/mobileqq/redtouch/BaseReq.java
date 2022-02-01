@@ -20,22 +20,23 @@ public abstract class BaseReq
     }
     int i = paramBundle.getInt("redpoint.fromReceiverIPCCode", -1);
     Object localObject = (Class)jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    if (localObject != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseReq getReq", 2, "class name is " + ((Class)localObject).getName());
-      }
-      try
+    if (localObject != null) {
+      if (QLog.isColorLevel())
       {
-        localObject = (BaseReq)((Class)localObject).newInstance();
-        ((BaseReq)localObject).b(paramBundle);
-        return localObject;
-      }
-      catch (Exception paramBundle)
-      {
-        return null;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("class name is ");
+        localStringBuilder.append(((Class)localObject).getName());
+        QLog.d("BaseReq getReq", 2, localStringBuilder.toString());
       }
     }
+    try
+    {
+      localObject = (BaseReq)((Class)localObject).newInstance();
+      ((BaseReq)localObject).b(paramBundle);
+      return localObject;
+    }
+    catch (Exception paramBundle) {}
+    return null;
     return null;
   }
   
@@ -57,15 +58,19 @@ public abstract class BaseReq
   
   public final boolean a(Bundle paramBundle)
   {
-    if ((paramBundle == null) || (this.jdField_a_of_type_AndroidOsResultReceiver == null))
+    if (paramBundle != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseReq doCallback", 2, "bundle == null or fromReceiver == null");
+      ResultReceiver localResultReceiver = this.jdField_a_of_type_AndroidOsResultReceiver;
+      if (localResultReceiver != null)
+      {
+        localResultReceiver.send(0, paramBundle);
+        return true;
       }
-      return false;
     }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramBundle);
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseReq doCallback", 2, "bundle == null or fromReceiver == null");
+    }
+    return false;
   }
   
   public void b(Bundle paramBundle)
@@ -76,7 +81,7 @@ public abstract class BaseReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.BaseReq
  * JD-Core Version:    0.7.0.1
  */

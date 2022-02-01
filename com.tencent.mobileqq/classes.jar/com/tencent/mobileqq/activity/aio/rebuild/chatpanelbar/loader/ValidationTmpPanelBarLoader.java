@@ -20,7 +20,7 @@ public class ValidationTmpPanelBarLoader
     super(paramChatPanelBarContext);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     int i = paramSessionInfo.jdField_a_of_type_Int;
     if ((i == 1024) && (((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramSessionInfo.jdField_a_of_type_JavaLangString))) {
@@ -42,7 +42,7 @@ public class ValidationTmpPanelBarLoader
     return SessionTypeUtil.b(paramSessionInfo.jdField_a_of_type_Int);
   }
   
-  public void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().d();
     int i = paramSessionInfo.jdField_a_of_type_Int;
@@ -50,35 +50,31 @@ public class ValidationTmpPanelBarLoader
       this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.a);
     }
     List localList = this.jdField_a_of_type_JavaUtilList;
-    if (bool)
-    {
+    if (bool) {
       paramBaseChatPie = AIOPanelUtiles.p;
-      localList.add(paramBaseChatPie);
-      c();
-      localList = this.jdField_a_of_type_JavaUtilList;
-      if (!bool) {
-        break label188;
-      }
-    }
-    label188:
-    for (paramBaseChatPie = AIOPanelUtiles.i;; paramBaseChatPie = AIOPanelUtiles.e)
-    {
-      localList.add(paramBaseChatPie);
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.z);
-      if ((i == 1024) && (((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramSessionInfo.jdField_a_of_type_JavaLangString)))
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(AIOPanelUtiles.z);
-        this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.w);
-      }
-      return;
+    } else {
       paramBaseChatPie = AIOPanelUtiles.l;
-      break;
+    }
+    localList.add(paramBaseChatPie);
+    c();
+    localList = this.jdField_a_of_type_JavaUtilList;
+    if (bool) {
+      paramBaseChatPie = AIOPanelUtiles.i;
+    } else {
+      paramBaseChatPie = AIOPanelUtiles.e;
+    }
+    localList.add(paramBaseChatPie);
+    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.z);
+    if ((i == 1024) && (((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).f(paramSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(AIOPanelUtiles.z);
+      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.w);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.ValidationTmpPanelBarLoader
  * JD-Core Version:    0.7.0.1
  */

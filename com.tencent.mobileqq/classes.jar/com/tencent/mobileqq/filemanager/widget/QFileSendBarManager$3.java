@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import com.tencent.mobileqq.wifi.FreeWifiDialogListener;
+import com.tencent.mobileqq.wifi.FreeWifiHelper.FreeWifiDialogListener;
 
 class QFileSendBarManager$3
-  implements FreeWifiDialogListener
+  implements FreeWifiHelper.FreeWifiDialogListener
 {
   QFileSendBarManager$3(QFileSendBarManager paramQFileSendBarManager) {}
   
@@ -16,7 +16,7 @@ class QFileSendBarManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileSendBarManager.3
  * JD-Core Version:    0.7.0.1
  */

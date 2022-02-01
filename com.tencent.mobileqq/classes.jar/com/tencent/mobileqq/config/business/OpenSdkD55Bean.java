@@ -34,13 +34,18 @@ public class OpenSdkD55Bean
           }
           else
           {
-            localStringBuilder.append("config: ").append(str).append(",");
+            localStringBuilder.append("config: ");
+            localStringBuilder.append(str);
+            localStringBuilder.append(",");
             i += 1;
           }
         }
         else
         {
-          QLog.d("OpenSdkD55Processor", 1, "parse, content:" + localStringBuilder.toString());
+          paramArrayOfQConfItem = new StringBuilder();
+          paramArrayOfQConfItem.append("parse, content:");
+          paramArrayOfQConfItem.append(localStringBuilder.toString());
+          QLog.d("OpenSdkD55Processor", 1, paramArrayOfQConfItem.toString());
           return localOpenSdkD55Bean;
         }
       }
@@ -60,13 +65,15 @@ public class OpenSdkD55Bean
   
   public String toString()
   {
-    new StringBuilder().append("isSwitchOpen:").append(this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isSwitchOpen:");
+    localStringBuilder.append(this.a);
     return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkD55Bean
  * JD-Core Version:    0.7.0.1
  */

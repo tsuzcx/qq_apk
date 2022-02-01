@@ -23,27 +23,29 @@ public class XfermodeDrawable
   
   private static Paint a(Drawable paramDrawable)
   {
-    if (paramDrawable == null) {}
-    do
-    {
-      do
-      {
-        return null;
-      } while ((paramDrawable instanceof XfermodeDrawable));
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)paramDrawable).getPaint();
-      }
-      if ((paramDrawable instanceof NinePatchDrawable)) {
-        return ((NinePatchDrawable)paramDrawable).getPaint();
-      }
-      if ((paramDrawable instanceof ShapeDrawable)) {
-        return ((ShapeDrawable)paramDrawable).getPaint();
-      }
-      if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
-        return ((SkinnableBitmapDrawable)paramDrawable).getPaint();
-      }
-    } while (!(paramDrawable instanceof DrawableContainer));
-    return a(((DrawableContainer)paramDrawable).a());
+    Paint localPaint = null;
+    if (paramDrawable == null) {
+      return null;
+    }
+    if ((paramDrawable instanceof XfermodeDrawable)) {
+      return null;
+    }
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getPaint();
+    }
+    if ((paramDrawable instanceof NinePatchDrawable)) {
+      return ((NinePatchDrawable)paramDrawable).getPaint();
+    }
+    if ((paramDrawable instanceof ShapeDrawable)) {
+      return ((ShapeDrawable)paramDrawable).getPaint();
+    }
+    if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
+      return ((SkinnableBitmapDrawable)paramDrawable).getPaint();
+    }
+    if ((paramDrawable instanceof DrawableContainer)) {
+      localPaint = a(((DrawableContainer)paramDrawable).a());
+    }
+    return localPaint;
   }
   
   public void draw(Canvas paramCanvas)
@@ -58,7 +60,7 @@ public class XfermodeDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.XfermodeDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class CameraFocusView
   public CameraFocusView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    setDrawableRes(2130846877);
+    setDrawableRes(2130846757);
   }
   
   public void a()
@@ -45,7 +45,7 @@ public class CameraFocusView
     return a(paramMotionEvent.getX(), paramMotionEvent.getY());
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -62,7 +62,7 @@ public class CameraFocusView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.CameraFocusView
  * JD-Core Version:    0.7.0.1
  */

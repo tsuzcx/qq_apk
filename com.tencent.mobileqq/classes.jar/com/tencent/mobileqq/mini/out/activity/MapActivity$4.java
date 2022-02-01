@@ -10,33 +10,27 @@ class MapActivity$4
   
   public void run()
   {
-    int i = 0;
     Object localObject = this.this$0.poiAdapter;
     List localList = this.val$poiList;
+    int j = this.val$next;
+    int i = 0;
     boolean bool;
-    if (this.val$next > 0)
-    {
+    if (j > 0) {
       bool = true;
-      ((POIAdapter)localObject).addPoiList(localList, bool);
-      localObject = this.this$0.noResultView;
-      if (this.this$0.poiAdapter.getCount() >= 1) {
-        break label65;
-      }
-    }
-    for (;;)
-    {
-      ((TextView)localObject).setVisibility(i);
-      return;
+    } else {
       bool = false;
-      break;
-      label65:
+    }
+    ((POIAdapter)localObject).addPoiList(localList, bool);
+    localObject = this.this$0.noResultView;
+    if (this.this$0.poiAdapter.getCount() >= 1) {
       i = 8;
     }
+    ((TextView)localObject).setVisibility(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity.4
  * JD-Core Version:    0.7.0.1
  */

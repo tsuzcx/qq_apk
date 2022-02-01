@@ -22,14 +22,15 @@ public final class oidb_cmd0x64e$DynamicInsertCardReport
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50 }, new String[] { "uin", "seq_no", "action_type", "progress", "watch_time", "id" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, DynamicInsertCardReport.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50 }, new String[] { "uin", "seq_no", "action_type", "progress", "watch_time", "id" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localInteger, localInteger, localInteger, localByteStringMicro2 }, DynamicInsertCardReport.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.DynamicInsertCardReport
  * JD-Core Version:    0.7.0.1
  */

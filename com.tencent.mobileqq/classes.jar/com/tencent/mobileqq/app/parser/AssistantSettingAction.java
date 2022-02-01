@@ -7,10 +7,11 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.settings.config.SettingsConfigHelper;
 import com.tencent.mobileqq.settings.message.AssistantSettingFragment;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
 
 public class AssistantSettingAction
-  extends JumpActionBase
+  extends JumpAction
 {
   public AssistantSettingAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
@@ -21,34 +22,38 @@ public class AssistantSettingAction
   {
     try
     {
-      boolean bool = h_();
+      boolean bool = b();
       return bool;
     }
     catch (Exception localException)
     {
-      QLog.e("AssistantSettingAction", 1, "doAction error: " + localException.getMessage());
-      a("AssistantSettingAction");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAction error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("AssistantSettingAction", 1, localStringBuilder.toString());
+      b_("AssistantSettingAction");
     }
     return false;
   }
   
-  public boolean h_()
+  public boolean b()
   {
     Intent localIntent = new Intent();
-    if (SettingsConfigHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+    if (SettingsConfigHelper.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface))
+    {
       PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, localIntent, AssistantSettingFragment.class);
     }
-    for (;;)
+    else
     {
-      return true;
       localIntent.setClass(this.jdField_a_of_type_AndroidContentContext, AssistantSettingActivity.class);
       this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.AssistantSettingAction
  * JD-Core Version:    0.7.0.1
  */

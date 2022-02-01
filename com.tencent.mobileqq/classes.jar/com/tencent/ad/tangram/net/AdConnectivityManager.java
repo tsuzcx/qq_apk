@@ -14,48 +14,54 @@ public final class AdConnectivityManager
   extends BroadcastReceiver
 {
   private static final String TAG = "AdConnectivityManager";
-  private static volatile AdConnectivityManager sInstance = null;
+  private static volatile AdConnectivityManager sInstance;
   private volatile boolean initialized = false;
   private CopyOnWriteArrayList<AdConnectivityManager.Listener> listeners = new CopyOnWriteArrayList();
   
   public static AdConnectivityManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new AdConnectivityManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new AdConnectivityManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public void init(Context paramContext)
   {
-    if (this.initialized) {}
-    do
-    {
+    if (this.initialized) {
       return;
-      try
-      {
-        if (this.initialized) {
-          return;
-        }
-      }
-      finally {}
-      this.initialized = true;
-    } while ((paramContext == null) || (paramContext.getApplicationContext() == null));
+    }
     try
     {
-      IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-      paramContext.getApplicationContext().registerReceiver(this, localIntentFilter);
+      if (this.initialized) {
+        return;
+      }
+      this.initialized = true;
+      if (paramContext != null)
+      {
+        if (paramContext.getApplicationContext() == null) {
+          return;
+        }
+        try
+        {
+          IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+          paramContext.getApplicationContext().registerReceiver(this, localIntentFilter);
+          return;
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.e("AdConnectivityManager", "init error:", paramContext);
+        }
+      }
       return;
     }
-    catch (Throwable paramContext)
-    {
-      AdLog.e("AdConnectivityManager", "init error:", paramContext);
-    }
+    finally {}
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -73,14 +79,16 @@ public final class AdConnectivityManager
   
   public void registerListener(AdConnectivityManager.Listener paramListener)
   {
-    if ((this.listeners != null) && (!this.listeners.contains(paramListener))) {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.listeners;
+    if ((localCopyOnWriteArrayList != null) && (!localCopyOnWriteArrayList.contains(paramListener))) {
       this.listeners.add(paramListener);
     }
   }
   
   public void unRegisterListener(AdConnectivityManager.Listener paramListener)
   {
-    if ((this.listeners != null) && (this.listeners.contains(paramListener))) {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.listeners;
+    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.contains(paramListener))) {
       this.listeners.remove(paramListener);
     }
   }

@@ -7,7 +7,6 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class WSVerticalItemVideoProgressController$3
   implements SeekBar.OnSeekBarChangeListener
@@ -20,18 +19,25 @@ class WSVerticalItemVideoProgressController$3
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if ((paramSeekBar == null) || (WSVerticalItemVideoProgressController.a(this.a) == null) || (WSVerticalItemVideoProgressController.a(this.a) == null)) {}
-    for (;;)
+    if ((paramSeekBar != null) && (WSVerticalItemVideoProgressController.a(this.a) != null))
     {
-      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
-      return;
+      if (WSVerticalItemVideoProgressController.a(this.a) == null) {
+        return;
+      }
       WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)WSVerticalItemVideoProgressController.a(this.a).a;
       if ((localWSVerticalItemData != null) && ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed)))
       {
         float f = paramSeekBar.getProgress();
         int i = localWSVerticalItemData.a().video.duration;
         int j = (int)(f / 1000.0F * i);
-        WSLog.a("WS_VIDEO_seekBar", "WSVerticalItemVideoProgressController onStopTrackingTouch() progress:" + f + ", videoDuration:" + i + ", position:" + j);
+        paramSeekBar = new StringBuilder();
+        paramSeekBar.append("WSVerticalItemVideoProgressController onStopTrackingTouch() progress:");
+        paramSeekBar.append(f);
+        paramSeekBar.append(", videoDuration:");
+        paramSeekBar.append(i);
+        paramSeekBar.append(", position:");
+        paramSeekBar.append(j);
+        WSLog.a("WS_VIDEO_seekBar", paramSeekBar.toString());
         WSVerticalItemVideoProgressController.a(this.a).a(j, true);
       }
     }
@@ -39,7 +45,7 @@ class WSVerticalItemVideoProgressController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController.3
  * JD-Core Version:    0.7.0.1
  */

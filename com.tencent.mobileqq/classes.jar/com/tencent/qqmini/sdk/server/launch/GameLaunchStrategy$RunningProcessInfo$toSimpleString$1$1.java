@@ -25,27 +25,38 @@ final class GameLaunchStrategy$RunningProcessInfo$toSimpleString$1$1
     Intrinsics.checkParameterIsNotNull(paramRunningApp, "it");
     StringBuilder localStringBuilder = new StringBuilder();
     Object localObject = paramRunningApp.getState();
-    switch (GameLaunchStrategy.RunningProcessInfo.WhenMappings.$EnumSwitchMapping$1[localObject.ordinal()])
+    int i = GameLaunchStrategy.RunningProcessInfo.WhenMappings.$EnumSwitchMapping$1[localObject.ordinal()];
+    if (i != 1)
     {
-    default: 
-      throw new NoWhenBranchMatchedException();
-    case 1: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i == 4) {
+            localObject = "☠️S";
+          } else {
+            throw new NoWhenBranchMatchedException();
+          }
+        }
+        else {
+          localObject = "😴B";
+        }
+      }
+      else {
+        localObject = "😄F";
+      }
+    }
+    else {
       localObject = "🚀S";
     }
-    for (;;)
-    {
-      return (String)localObject + paramRunningApp.getId().toSimpleString();
-      localObject = "😄F";
-      continue;
-      localObject = "😴B";
-      continue;
-      localObject = "☠️S";
-    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(paramRunningApp.getId().toSimpleString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.GameLaunchStrategy.RunningProcessInfo.toSimpleString.1.1
  * JD-Core Version:    0.7.0.1
  */

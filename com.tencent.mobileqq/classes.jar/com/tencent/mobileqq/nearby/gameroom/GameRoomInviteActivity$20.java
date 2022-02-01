@@ -20,26 +20,38 @@ class GameRoomInviteActivity$20
     Object localObject1 = this.this$0.app.getCurrentAccountUin();
     String str = ((TicketManager)localObject2).getSkey(this.this$0.app.getCurrentAccountUin());
     localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("bkn", "" + TroopUtils.b(str));
-    ((Bundle)localObject2).putString("ver", "8.5.5");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(TroopUtils.a(str));
+    ((Bundle)localObject2).putString("bkn", localStringBuilder.toString());
+    ((Bundle)localObject2).putString("ver", "8.7.0");
     ((Bundle)localObject2).putString("src", "1");
     ((Bundle)localObject2).putString("platform", "android");
     ((Bundle)localObject2).putString("uin", this.this$0.app.getCurrentAccountUin());
     ((Bundle)localObject2).putString("count", "8");
-    ((Bundle)localObject2).putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + str);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=o");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(";skey=");
+    localStringBuilder.append(str);
+    ((Bundle)localObject2).putString("Cookie", localStringBuilder.toString());
     localObject1 = new HashMap();
     ((HashMap)localObject1).put("BUNDLE", localObject2);
     this.this$0.app.getApplication();
     ((HashMap)localObject1).put("CONTEXT", MobileQQ.getContext());
-    new HttpWebCgiAsyncTask("https://nearby.qq.com/cgi-bin/werewolf/get_friend_board_list", "GET", this.this$0.a, 0, null, true).execute(new HashMap[] { localObject1 });
-    if (QLog.isColorLevel()) {
-      QLog.d("GameRoomInviteActivity", 2, "get feed from server start: " + System.currentTimeMillis());
+    new HttpWebCgiAsyncTask("https://nearby.qq.com/cgi-bin/werewolf/get_friend_board_list", "GET", this.this$0.onGetRecommendData, 0, null, true).execute(new HashMap[] { localObject1 });
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("get feed from server start: ");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      QLog.d("GameRoomInviteActivity", 2, ((StringBuilder)localObject1).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.20
  * JD-Core Version:    0.7.0.1
  */

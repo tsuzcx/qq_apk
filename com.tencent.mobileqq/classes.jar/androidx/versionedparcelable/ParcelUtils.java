@@ -24,10 +24,10 @@ public class ParcelUtils
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public static <T extends VersionedParcelable> T fromParcelable(Parcelable paramParcelable)
   {
-    if (!(paramParcelable instanceof ParcelImpl)) {
-      throw new IllegalArgumentException("Invalid parcel");
+    if ((paramParcelable instanceof ParcelImpl)) {
+      return ((ParcelImpl)paramParcelable).getVersionedParcel();
     }
-    return ((ParcelImpl)paramParcelable).getVersionedParcel();
+    throw new IllegalArgumentException("Invalid parcel");
   }
   
   @Nullable
@@ -50,7 +50,7 @@ public class ParcelUtils
   @Nullable
   public static <T extends VersionedParcelable> List<T> getVersionedParcelableList(Bundle paramBundle, String paramString)
   {
-    localArrayList = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     try
     {
       paramBundle = (Bundle)paramBundle.getParcelable(paramString);
@@ -63,8 +63,10 @@ public class ParcelUtils
     }
     catch (RuntimeException paramBundle)
     {
-      return null;
+      label69:
+      break label69;
     }
+    return null;
   }
   
   public static void putVersionedParcelable(@NonNull Bundle paramBundle, @NonNull String paramString, @Nullable VersionedParcelable paramVersionedParcelable)
@@ -105,7 +107,7 @@ public class ParcelUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.versionedparcelable.ParcelUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -28,29 +28,23 @@ class VasQuickUpdateManager$TimeoutWrapper
   {
     if (this.isDone.compareAndSet(false, true))
     {
-      if (this.callback == null) {
-        break label32;
+      QueryItemCallback localQueryItemCallback = this.callback;
+      if (localQueryItemCallback != null)
+      {
+        localQueryItemCallback.onQueryItemVer(paramInt, paramString1, paramString2);
+        return;
       }
-      this.callback.a(paramInt, paramString1, paramString2);
-    }
-    label32:
-    QueryItemCallback localQueryItemCallback;
-    do
-    {
-      return;
       localQueryItemCallback = (QueryItemCallback)this.weakReference.get();
-    } while (localQueryItemCallback == null);
-    localQueryItemCallback.a(paramInt, paramString1, paramString2);
+      if (localQueryItemCallback != null) {
+        localQueryItemCallback.onQueryItemVer(paramInt, paramString1, paramString2);
+      }
+    }
   }
   
   public void onQueryItemVer(boolean paramBoolean, String paramString1, String paramString2)
   {
     ThreadManager.getSubThreadHandler().removeCallbacks(this);
-    int i = 0;
-    if (!paramBoolean) {
-      i = 1;
-    }
-    onResult(i, paramString1, paramString2);
+    onResult(paramBoolean ^ true, paramString1, paramString2);
   }
   
   public void run()
@@ -60,7 +54,7 @@ class VasQuickUpdateManager$TimeoutWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager.TimeoutWrapper
  * JD-Core Version:    0.7.0.1
  */

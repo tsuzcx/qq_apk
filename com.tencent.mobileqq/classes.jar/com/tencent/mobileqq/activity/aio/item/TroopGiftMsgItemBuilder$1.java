@@ -12,18 +12,17 @@ class TroopGiftMsgItemBuilder$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == TroopGiftMsgItemBuilder.b()) {}
-    for (;;)
+    if (paramMessage.what != TroopGiftMsgItemBuilder.b())
     {
-      super.handleMessage(paramMessage);
-      return;
-      if (paramMessage.what != TroopGiftMsgItemBuilder.c()) {}
+      int i = paramMessage.what;
+      TroopGiftMsgItemBuilder.c();
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

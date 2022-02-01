@@ -23,39 +23,32 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"addAll", "", "T", "", "elements", "", "(Ljava/util/Collection;[Ljava/lang/Object;)Z", "", "Lkotlin/sequences/Sequence;", "filterInPlace", "", "predicate", "Lkotlin/Function1;", "predicateResultToRemove", "filterInPlace$CollectionsKt__MutableCollectionsKt", "", "minusAssign", "", "element", "(Ljava/util/Collection;Ljava/lang/Object;)V", "(Ljava/util/Collection;[Ljava/lang/Object;)V", "plusAssign", "remove", "Lkotlin/internal/OnlyInputTypes;", "(Ljava/util/Collection;Ljava/lang/Object;)Z", "index", "", "(Ljava/util/List;I)Ljava/lang/Object;", "removeAll", "", "removeFirst", "(Ljava/util/List;)Ljava/lang/Object;", "removeFirstOrNull", "removeLast", "removeLastOrNull", "retainAll", "retainNothing", "retainNothing$CollectionsKt__MutableCollectionsKt", "shuffle", "random", "Lkotlin/random/Random;", "shuffled", "", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/CollectionsKt")
-public class CollectionsKt__MutableCollectionsKt
+class CollectionsKt__MutableCollectionsKt
   extends CollectionsKt__MutableCollectionsJVMKt
 {
   public static final <T> boolean addAll(@NotNull Collection<? super T> paramCollection, @NotNull Iterable<? extends T> paramIterable)
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "$this$addAll");
     Intrinsics.checkParameterIsNotNull(paramIterable, "elements");
-    boolean bool2;
-    if ((paramIterable instanceof Collection))
-    {
-      bool2 = paramCollection.addAll((Collection)paramIterable);
-      return bool2;
+    if ((paramIterable instanceof Collection)) {
+      return paramCollection.addAll((Collection)paramIterable);
     }
-    boolean bool1 = false;
+    boolean bool = false;
     paramIterable = paramIterable.iterator();
-    for (;;)
-    {
-      bool2 = bool1;
-      if (!paramIterable.hasNext()) {
-        break;
-      }
+    while (paramIterable.hasNext()) {
       if (paramCollection.add(paramIterable.next())) {
-        bool1 = true;
+        bool = true;
       }
     }
+    return bool;
   }
   
   public static final <T> boolean addAll(@NotNull Collection<? super T> paramCollection, @NotNull Sequence<? extends T> paramSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "$this$addAll");
     Intrinsics.checkParameterIsNotNull(paramSequence, "elements");
-    boolean bool = false;
     paramSequence = paramSequence.iterator();
+    boolean bool = false;
     while (paramSequence.hasNext()) {
       if (paramCollection.add(paramSequence.next())) {
         bool = true;
@@ -75,73 +68,65 @@ public class CollectionsKt__MutableCollectionsKt
   {
     paramIterable = paramIterable.iterator();
     boolean bool = false;
-    if (paramIterable.hasNext())
-    {
-      if (((Boolean)paramFunction1.invoke(paramIterable.next())).booleanValue() != paramBoolean) {
-        break label53;
+    while (paramIterable.hasNext()) {
+      if (((Boolean)paramFunction1.invoke(paramIterable.next())).booleanValue() == paramBoolean)
+      {
+        paramIterable.remove();
+        bool = true;
       }
-      paramIterable.remove();
-      bool = true;
     }
-    label53:
-    for (;;)
-    {
-      break;
-      return bool;
-    }
+    return bool;
   }
   
   private static final <T> boolean filterInPlace$CollectionsKt__MutableCollectionsKt(@NotNull List<T> paramList, Function1<? super T, Boolean> paramFunction1, boolean paramBoolean)
   {
-    boolean bool = false;
     if (!(paramList instanceof RandomAccess))
     {
-      if (paramList == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableIterable<T>");
+      if (paramList != null) {
+        return filterInPlace$CollectionsKt__MutableCollectionsKt(TypeIntrinsics.asMutableIterable(paramList), paramFunction1, paramBoolean);
       }
-      paramBoolean = filterInPlace$CollectionsKt__MutableCollectionsKt(TypeIntrinsics.asMutableIterable(paramList), paramFunction1, paramBoolean);
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableIterable<T>");
     }
-    int j;
-    label125:
-    do
+    int m = CollectionsKt.getLastIndex(paramList);
+    int i;
+    if (m >= 0)
     {
-      return paramBoolean;
-      int m = CollectionsKt.getLastIndex(paramList);
-      if (m <= 0)
+      int k = 0;
+      i = 0;
+      for (;;)
       {
-        int k = 0;
-        i = 0;
         Object localObject = paramList.get(k);
-        if (((Boolean)paramFunction1.invoke(localObject)).booleanValue() == paramBoolean) {}
-        for (;;)
+        if (((Boolean)paramFunction1.invoke(localObject)).booleanValue() != paramBoolean)
         {
-          j = i;
-          if (k == m) {
-            break label125;
-          }
-          k += 1;
-          break;
           if (i != k) {
             paramList.set(i, localObject);
           }
           i += 1;
         }
-      }
-      j = 0;
-      paramBoolean = bool;
-    } while (j >= paramList.size());
-    int i = CollectionsKt.getLastIndex(paramList);
-    if (i >= j) {
-      for (;;)
-      {
-        paramList.remove(i);
-        if (i == j) {
+        j = i;
+        if (k == m) {
           break;
         }
-        i -= 1;
+        k += 1;
       }
     }
-    return true;
+    int j = 0;
+    if (j < paramList.size())
+    {
+      i = CollectionsKt.getLastIndex(paramList);
+      if (i >= j) {
+        for (;;)
+        {
+          paramList.remove(i);
+          if (i == j) {
+            break;
+          }
+          i -= 1;
+        }
+      }
+      return true;
+    }
+    return false;
   }
   
   @InlineOnly
@@ -210,10 +195,10 @@ public class CollectionsKt__MutableCollectionsKt
   @InlineOnly
   private static final <T> boolean remove(@NotNull Collection<? extends T> paramCollection, T paramT)
   {
-    if (paramCollection == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
+    if (paramCollection != null) {
+      return TypeIntrinsics.asMutableCollection(paramCollection).remove(paramT);
     }
-    return TypeIntrinsics.asMutableCollection(paramCollection).remove(paramT);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
   }
   
   public static final <T> boolean removeAll(@NotNull Iterable<? extends T> paramIterable, @NotNull Function1<? super T, Boolean> paramFunction1)
@@ -234,47 +219,40 @@ public class CollectionsKt__MutableCollectionsKt
   @InlineOnly
   private static final <T> boolean removeAll(@NotNull Collection<? extends T> paramCollection1, Collection<? extends T> paramCollection2)
   {
-    if (paramCollection1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
+    if (paramCollection1 != null) {
+      return TypeIntrinsics.asMutableCollection(paramCollection1).removeAll(paramCollection2);
     }
-    return TypeIntrinsics.asMutableCollection(paramCollection1).removeAll(paramCollection2);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
   }
   
   public static final <T> boolean removeAll(@NotNull Collection<? super T> paramCollection, @NotNull Sequence<? extends T> paramSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "$this$removeAll");
     Intrinsics.checkParameterIsNotNull(paramSequence, "elements");
-    paramSequence = SequencesKt.toHashSet(paramSequence);
-    if (!((Collection)paramSequence).isEmpty()) {}
-    for (int i = 1; (i != 0) && (paramCollection.removeAll((Collection)paramSequence)); i = 0) {
-      return true;
-    }
-    return false;
+    paramSequence = (Collection)SequencesKt.toHashSet(paramSequence);
+    return ((paramSequence.isEmpty() ^ true)) && (paramCollection.removeAll(paramSequence));
   }
   
   public static final <T> boolean removeAll(@NotNull Collection<? super T> paramCollection, @NotNull T[] paramArrayOfT)
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "$this$removeAll");
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "elements");
-    if (paramArrayOfT.length == 0)
-    {
+    int i = paramArrayOfT.length;
+    boolean bool2 = false;
+    if (i == 0) {
       i = 1;
-      if (i != 0) {
-        break label52;
-      }
-    }
-    label52:
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) || (!paramCollection.removeAll((Collection)ArraysKt.toHashSet(paramArrayOfT)))) {
-        break label57;
-      }
-      return true;
+    } else {
       i = 0;
-      break;
     }
-    label57:
-    return false;
+    boolean bool1 = bool2;
+    if ((i ^ 0x1) != 0)
+    {
+      bool1 = bool2;
+      if (paramCollection.removeAll((Collection)ArraysKt.toHashSet(paramArrayOfT))) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static final <T> boolean removeAll(@NotNull List<T> paramList, @NotNull Function1<? super T, Boolean> paramFunction1)
@@ -289,10 +267,10 @@ public class CollectionsKt__MutableCollectionsKt
   public static final <T> T removeFirst(@NotNull List<T> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "$this$removeFirst");
-    if (paramList.isEmpty()) {
-      throw ((Throwable)new NoSuchElementException("List is empty."));
+    if (!paramList.isEmpty()) {
+      return paramList.remove(0);
     }
-    return paramList.remove(0);
+    throw ((Throwable)new NoSuchElementException("List is empty."));
   }
   
   @ExperimentalStdlibApi
@@ -312,10 +290,10 @@ public class CollectionsKt__MutableCollectionsKt
   public static final <T> T removeLast(@NotNull List<T> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "$this$removeLast");
-    if (paramList.isEmpty()) {
-      throw ((Throwable)new NoSuchElementException("List is empty."));
+    if (!paramList.isEmpty()) {
+      return paramList.remove(CollectionsKt.getLastIndex(paramList));
     }
-    return paramList.remove(CollectionsKt.getLastIndex(paramList));
+    throw ((Throwable)new NoSuchElementException("List is empty."));
   }
   
   @ExperimentalStdlibApi
@@ -348,47 +326,36 @@ public class CollectionsKt__MutableCollectionsKt
   @InlineOnly
   private static final <T> boolean retainAll(@NotNull Collection<? extends T> paramCollection1, Collection<? extends T> paramCollection2)
   {
-    if (paramCollection1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
+    if (paramCollection1 != null) {
+      return TypeIntrinsics.asMutableCollection(paramCollection1).retainAll(paramCollection2);
     }
-    return TypeIntrinsics.asMutableCollection(paramCollection1).retainAll(paramCollection2);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
   }
   
   public static final <T> boolean retainAll(@NotNull Collection<? super T> paramCollection, @NotNull Sequence<? extends T> paramSequence)
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "$this$retainAll");
     Intrinsics.checkParameterIsNotNull(paramSequence, "elements");
-    paramSequence = SequencesKt.toHashSet(paramSequence);
-    if (!((Collection)paramSequence).isEmpty()) {}
-    for (int i = 1; i != 0; i = 0) {
-      return paramCollection.retainAll((Collection)paramSequence);
+    paramSequence = (Collection)SequencesKt.toHashSet(paramSequence);
+    if ((paramSequence.isEmpty() ^ true)) {
+      return paramCollection.retainAll(paramSequence);
     }
     return retainNothing$CollectionsKt__MutableCollectionsKt(paramCollection);
   }
   
   public static final <T> boolean retainAll(@NotNull Collection<? super T> paramCollection, @NotNull T[] paramArrayOfT)
   {
-    int j = 1;
     Intrinsics.checkParameterIsNotNull(paramCollection, "$this$retainAll");
     Intrinsics.checkParameterIsNotNull(paramArrayOfT, "elements");
-    if (paramArrayOfT.length == 0)
-    {
+    int i;
+    if (paramArrayOfT.length == 0) {
       i = 1;
-      if (i != 0) {
-        break label51;
-      }
-    }
-    label51:
-    for (int i = j;; i = 0)
-    {
-      if (i == 0) {
-        break label56;
-      }
-      return paramCollection.retainAll((Collection)ArraysKt.toHashSet(paramArrayOfT));
+    } else {
       i = 0;
-      break;
     }
-    label56:
+    if ((i ^ 0x1) != 0) {
+      return paramCollection.retainAll((Collection)ArraysKt.toHashSet(paramArrayOfT));
+    }
     return retainNothing$CollectionsKt__MutableCollectionsKt(paramCollection);
   }
   
@@ -401,12 +368,9 @@ public class CollectionsKt__MutableCollectionsKt
   
   private static final boolean retainNothing$CollectionsKt__MutableCollectionsKt(@NotNull Collection<?> paramCollection)
   {
-    if (!paramCollection.isEmpty()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramCollection.clear();
-      return bool;
-    }
+    boolean bool = paramCollection.isEmpty();
+    paramCollection.clear();
+    return bool ^ true;
   }
   
   @SinceKotlin(version="1.3")
@@ -438,7 +402,7 @@ public class CollectionsKt__MutableCollectionsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.CollectionsKt__MutableCollectionsKt
  * JD-Core Version:    0.7.0.1
  */

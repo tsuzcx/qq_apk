@@ -43,39 +43,34 @@ public final class HorizontalListView$mOnGesture$1
   public void onLongPress(@Nullable MotionEvent paramMotionEvent)
   {
     ListAdapter localListAdapter = HorizontalListView.a(this.a);
-    int j;
-    int i;
     if (localListAdapter != null)
     {
-      if (paramMotionEvent == null) {
-        break label128;
-      }
-      j = this.a.getChildCount();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < j)
+      if (paramMotionEvent != null)
       {
-        View localView = this.a.getChildAt(i);
-        Intrinsics.checkExpressionValueIsNotNull(localView, "child");
-        if (!a(paramMotionEvent, localView)) {
-          break label134;
-        }
-        if (HorizontalListView.a(this.a) != null)
+        int j = this.a.getChildCount();
+        int i = 0;
+        while (i < j)
         {
-          paramMotionEvent = HorizontalListView.a(this.a);
-          if (paramMotionEvent != null) {
-            paramMotionEvent.onItemLongClick((AdapterView)this.a, localView, HorizontalListView.a(this.a) + 1 + i, localListAdapter.getItemId(i + (HorizontalListView.a(this.a) + 1)));
+          View localView = this.a.getChildAt(i);
+          Intrinsics.checkExpressionValueIsNotNull(localView, "child");
+          if (a(paramMotionEvent, localView))
+          {
+            if (HorizontalListView.a(this.a) == null) {
+              break;
+            }
+            paramMotionEvent = HorizontalListView.a(this.a);
+            if (paramMotionEvent == null) {
+              break;
+            }
+            HorizontalListView localHorizontalListView = this.a;
+            paramMotionEvent.onItemLongClick((AdapterView)localHorizontalListView, localView, HorizontalListView.a(localHorizontalListView) + 1 + i, localListAdapter.getItemId(HorizontalListView.a(this.a) + 1 + i));
+            return;
           }
+          i += 1;
         }
+        return;
       }
-      return;
-      label128:
       super.onLongPress(paramMotionEvent);
-      return;
-      label134:
-      i += 1;
     }
   }
   
@@ -93,54 +88,51 @@ public final class HorizontalListView$mOnGesture$1
   
   public boolean onSingleTapConfirmed(@Nullable MotionEvent paramMotionEvent)
   {
-    boolean bool = false;
     ListAdapter localListAdapter = HorizontalListView.a(this.a);
-    int j;
-    int i;
+    int i = 0;
     if (localListAdapter != null)
     {
-      if (paramMotionEvent == null) {
-        break label201;
-      }
-      j = this.a.getChildCount();
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < j)
+      if (paramMotionEvent != null)
       {
-        View localView = this.a.getChildAt(i);
-        Intrinsics.checkExpressionValueIsNotNull(localView, "child");
-        if (!a(paramMotionEvent, localView)) {
-          break label207;
-        }
-        if (HorizontalListView.a(this.a) != null)
+        int j = this.a.getChildCount();
+        while (i < j)
         {
-          paramMotionEvent = HorizontalListView.a(this.a);
-          if (paramMotionEvent != null) {
-            paramMotionEvent.onItemClick((AdapterView)this.a, localView, HorizontalListView.a(this.a) + 1 + i, localListAdapter.getItemId(HorizontalListView.a(this.a) + 1 + i));
+          View localView = this.a.getChildAt(i);
+          Intrinsics.checkExpressionValueIsNotNull(localView, "child");
+          if (a(paramMotionEvent, localView))
+          {
+            if (HorizontalListView.a(this.a) != null)
+            {
+              paramMotionEvent = HorizontalListView.a(this.a);
+              if (paramMotionEvent != null)
+              {
+                localHorizontalListView = this.a;
+                paramMotionEvent.onItemClick((AdapterView)localHorizontalListView, localView, HorizontalListView.a(localHorizontalListView) + 1 + i, localListAdapter.getItemId(HorizontalListView.a(this.a) + 1 + i));
+              }
+            }
+            if (HorizontalListView.a(this.a) == null) {
+              break;
+            }
+            paramMotionEvent = HorizontalListView.a(this.a);
+            if (paramMotionEvent == null) {
+              break;
+            }
+            HorizontalListView localHorizontalListView = this.a;
+            paramMotionEvent.onItemSelected((AdapterView)localHorizontalListView, localView, HorizontalListView.a(localHorizontalListView) + 1 + i, localListAdapter.getItemId(HorizontalListView.a(this.a) + 1 + i));
+            return true;
           }
+          i += 1;
         }
-        if (HorizontalListView.a(this.a) != null)
-        {
-          paramMotionEvent = HorizontalListView.a(this.a);
-          if (paramMotionEvent != null) {
-            paramMotionEvent.onItemSelected((AdapterView)this.a, localView, HorizontalListView.a(this.a) + 1 + i, localListAdapter.getItemId(HorizontalListView.a(this.a) + 1 + i));
-          }
-        }
+        return true;
       }
-      bool = true;
-      return bool;
-      label201:
       return super.onSingleTapConfirmed(paramMotionEvent);
-      label207:
-      i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.HorizontalListView.mOnGesture.1
  * JD-Core Version:    0.7.0.1
  */

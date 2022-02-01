@@ -23,6 +23,7 @@ import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import com.tencent.ttpic.util.PersonParam;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public abstract class FastSticker
@@ -59,89 +60,110 @@ public abstract class FastSticker
   
   private void avoidBodyPointsShake(PTDetectInfo paramPTDetectInfo)
   {
-    if ((paramPTDetectInfo.bodyPoints == null) || (paramPTDetectInfo.bodyPoints.isEmpty()))
+    if ((paramPTDetectInfo.bodyPoints != null) && (!paramPTDetectInfo.bodyPoints.isEmpty()))
     {
-      this.mHasBodyDetected = false;
-      if (this.mHasSeenValid)
-      {
-        if (System.currentTimeMillis() - this.mPreviousLostTime < this.mTimesForLostProtect) {
-          paramPTDetectInfo.bodyPoints = this.mPreviousBodyPoints;
-        }
-        return;
-      }
-      this.mHasSeenValid = false;
+      this.mHasBodyDetected = true;
+      this.mHasSeenValid = true;
+      this.mPreviousLostTime = System.currentTimeMillis();
+      this.mPreviousBodyPoints = paramPTDetectInfo.bodyPoints;
       return;
     }
-    this.mHasBodyDetected = true;
-    this.mHasSeenValid = true;
-    this.mPreviousLostTime = System.currentTimeMillis();
-    this.mPreviousBodyPoints = paramPTDetectInfo.bodyPoints;
+    this.mHasBodyDetected = false;
+    if (this.mHasSeenValid)
+    {
+      if (System.currentTimeMillis() - this.mPreviousLostTime < this.mTimesForLostProtect) {
+        paramPTDetectInfo.bodyPoints = this.mPreviousBodyPoints;
+      }
+    }
+    else {
+      this.mHasSeenValid = false;
+    }
   }
   
   private int getNextFrame(int paramInt)
   {
-    if ((this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.PAG) && (this.mVideoDecoder != null))
+    Object localObject;
+    if ((this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.PAG))
     {
-      this.mVideoDecoder.decodeFrame(paramInt);
-      this.mVideoDecoder.updateFrame();
-      this.isImageReady = true;
-      this.lastImageIndex = paramInt;
+      localObject = this.mVideoDecoder;
+      if (localObject != null)
+      {
+        ((ActVideoDecoder)localObject).decodeFrame(paramInt);
+        this.mVideoDecoder.updateFrame();
+        this.isImageReady = true;
+        this.lastImageIndex = paramInt;
+        break label333;
+      }
     }
-    label321:
-    for (;;)
-    {
-      return this.tex[0];
-      if (this.tex[0] != 0) {
-        if ((this.item.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
+    if (this.tex[0] != 0) {
+      if ((this.item.sourceType == VideoMaterial.ITEM_SOURCE_TYPE.PAG) && (!VideoMemoryManager.getInstance().isExtraStickerBitmap(this.item.id)))
+      {
+        if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0) {
+          this.isImageReady = true;
+        }
+        this.lastImageIndex = paramInt;
+      }
+      else
+      {
+        localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
+        int i;
+        if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.mIsRenderForBitmap)))
         {
-          if (VideoMemoryManager.getInstance().loadExtraStickerTxt(this.item.id, paramInt, this.tex[0]) >= 0) {
-            this.isImageReady = true;
-          }
-          this.lastImageIndex = paramInt;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(this.dataPath);
+          ((StringBuilder)localObject).append(File.separator);
+          ((StringBuilder)localObject).append(this.item.subFolder);
+          ((StringBuilder)localObject).append(File.separator);
+          ((StringBuilder)localObject).append(this.item.id);
+          ((StringBuilder)localObject).append("_");
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append(".png");
+          localObject = ((StringBuilder)localObject).toString();
+          localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+          i = 1;
         }
         else
         {
-          Object localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
-          if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.mIsRenderForBitmap)))
-          {
-            localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
-            localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
+          i = 0;
+        }
+        if (BitmapUtils.isLegal((Bitmap)localObject))
+        {
+          GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
+          if (i != 0) {
+            ((Bitmap)localObject).recycle();
+          } else {
+            VideoMemoryManager.getInstance().recycleBitmap(this.item.id, (Bitmap)localObject);
           }
-          for (int i = 1;; i = 0)
-          {
-            if (!BitmapUtils.isLegal((Bitmap)localObject)) {
-              break label321;
-            }
-            GlUtil.loadTexture(this.tex[0], (Bitmap)localObject);
-            if (i != 0) {
-              ((Bitmap)localObject).recycle();
-            }
-            for (;;)
-            {
-              this.isImageReady = true;
-              this.lastImageIndex = paramInt;
-              break;
-              VideoMemoryManager.getInstance().recycleBitmap(this.item.id, (Bitmap)localObject);
-            }
-          }
+          this.isImageReady = true;
+          this.lastImageIndex = paramInt;
         }
       }
     }
+    label333:
+    return this.tex[0];
   }
   
   private void initAudio()
   {
-    if (this.mPlayer != null) {}
-    while ((this.item == null) || (TextUtils.isEmpty(this.dataPath)) || (TextUtils.isEmpty(this.item.id)) || (TextUtils.isEmpty(this.item.audio))) {
+    if (this.mPlayer != null) {
       return;
     }
-    String str = this.dataPath + File.separator + this.item.id + File.separator + this.item.audio;
-    if (str.startsWith("assets://"))
+    if ((this.item != null) && (!TextUtils.isEmpty(this.dataPath)) && (!TextUtils.isEmpty(this.item.id)) && (!TextUtils.isEmpty(this.item.audio)))
     {
-      this.mPlayer = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), str.replace("assets://", ""), false);
-      return;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.dataPath);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.id);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.audio);
+      localObject = ((StringBuilder)localObject).toString();
+      if (((String)localObject).startsWith("assets://"))
+      {
+        this.mPlayer = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), ((String)localObject).replace("assets://", ""), false);
+        return;
+      }
+      this.mPlayer = PlayerUtil.createPlayerFromUri(AEModule.getContext(), (String)localObject, false);
     }
-    this.mPlayer = PlayerUtil.createPlayerFromUri(AEModule.getContext(), str, false);
   }
   
   private boolean isRangeValueHit()
@@ -151,56 +173,74 @@ public abstract class FastSticker
   
   private void updateHotArea(int paramInt)
   {
-    if ((this.triggered) && (this.item != null) && (this.item.hotArea != null) && (this.item.hotArea.length > 0) && (paramInt >= this.item.redPacketStartFrame) && (paramInt <= this.item.redPacketEndFrame))
+    if (this.triggered)
     {
-      int i = this.item.hotArea.length / 4;
-      ArrayList localArrayList = new ArrayList();
-      paramInt = 0;
-      while (paramInt < i)
+      Object localObject1 = this.item;
+      if ((localObject1 != null) && (((StickerItem)localObject1).hotArea != null) && (this.item.hotArea.length > 0) && (paramInt >= this.item.redPacketStartFrame) && (paramInt <= this.item.redPacketEndFrame))
       {
-        RedPacketPosition localRedPacketPosition = new RedPacketPosition();
-        localRedPacketPosition.x = this.item.hotArea[(paramInt * 4)];
-        localRedPacketPosition.y = this.item.hotArea[(paramInt * 4 + 1)];
-        localRedPacketPosition.width = this.item.hotArea[(paramInt * 4 + 2)];
-        localRedPacketPosition.height = this.item.hotArea[(paramInt * 4 + 3)];
-        localArrayList.add(localRedPacketPosition);
-        paramInt += 1;
-      }
-      if (this.hotAreaPositions != null) {
-        this.hotAreaPositions.addAll(localArrayList);
+        int i = this.item.hotArea.length / 4;
+        localObject1 = new ArrayList();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = new RedPacketPosition();
+          double[] arrayOfDouble = this.item.hotArea;
+          int j = paramInt * 4;
+          ((RedPacketPosition)localObject2).x = arrayOfDouble[j];
+          ((RedPacketPosition)localObject2).y = this.item.hotArea[(j + 1)];
+          ((RedPacketPosition)localObject2).width = this.item.hotArea[(j + 2)];
+          ((RedPacketPosition)localObject2).height = this.item.hotArea[(j + 3)];
+          ((ArrayList)localObject1).add(localObject2);
+          paramInt += 1;
+        }
+        Object localObject2 = this.hotAreaPositions;
+        if (localObject2 != null) {
+          ((ArrayList)localObject2).addAll((Collection)localObject1);
+        }
       }
     }
   }
   
   private void updateTriggerAudio(boolean paramBoolean)
   {
-    if (!this.triggered) {
-      destroyAudio();
-    }
-    do
+    if (!this.triggered)
     {
+      destroyAudio();
       return;
-      if ((VideoPrefsUtil.getMaterialMute()) || (this.mAudioPause)) {
-        break label61;
-      }
+    }
+    if ((!VideoPrefsUtil.getMaterialMute()) && (!this.mAudioPause))
+    {
       initAudio();
-      if (this.item.audioLoopCount <= 0) {
-        break;
+      if (this.item.audioLoopCount > 0)
+      {
+        if (paramBoolean) {
+          PlayerUtil.startPlayer(this.mPlayer, true);
+        }
       }
-    } while (!paramBoolean);
-    PlayerUtil.startPlayer(this.mPlayer, true);
-    return;
-    PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
-    return;
-    label61:
-    PlayerUtil.stopPlayer(this.mPlayer);
+      else {
+        PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
+      }
+    }
+    else
+    {
+      PlayerUtil.stopPlayer(this.mPlayer);
+    }
   }
   
   public void ApplyGLSLFilter()
   {
-    GLES20.glGenTextures(this.tex.length, this.tex, 0);
-    if ((this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.PAG)) {
-      this.mVideoDecoder = new ActVideoDecoder(this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + ".mp4", this.tex[0]);
+    Object localObject = this.tex;
+    GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
+    if ((this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.IMAGE) && (this.item.sourceType != VideoMaterial.ITEM_SOURCE_TYPE.PAG))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.dataPath);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.subFolder);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.item.id);
+      ((StringBuilder)localObject).append(".mp4");
+      this.mVideoDecoder = new ActVideoDecoder(((StringBuilder)localObject).toString(), this.tex[0]);
     }
   }
   
@@ -211,8 +251,9 @@ public abstract class FastSticker
   
   public void clearGLSLSelf()
   {
+    int[] arrayOfInt = this.tex;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     int i = 0;
-    GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
     try
     {
       while (i < this.tex.length)
@@ -228,6 +269,10 @@ public abstract class FastSticker
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   protected void clearTextureParam()
@@ -249,8 +294,12 @@ public abstract class FastSticker
   
   public String getItemID()
   {
-    if (this.item != null) {
-      return this.item.id + this.item.hashCode();
+    if (this.item != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.item.id);
+      localStringBuilder.append(this.item.hashCode());
+      return localStringBuilder.toString();
     }
     return null;
   }
@@ -288,11 +337,20 @@ public abstract class FastSticker
   
   public boolean needRender(int paramInt)
   {
-    if ((this.item.personID != -1) && (this.item.personID != paramInt)) {}
-    while ((!this.triggered) || (!this.isImageReady)) {
+    int i = this.item.personID;
+    boolean bool2 = false;
+    if ((i != -1) && (this.item.personID != paramInt)) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (this.triggered)
+    {
+      bool1 = bool2;
+      if (this.isImageReady) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public boolean needRenderTexture()
@@ -340,22 +398,24 @@ public abstract class FastSticker
   
   public void updatePreview(Object paramObject)
   {
-    int i;
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
       if (VideoMaterial.isBodyDetectItem(this.item)) {
         avoidBodyPointsShake(paramObject);
       }
-      if (this.triggerCtrlItem == null) {
-        break label226;
+      TriggerCtrlItem localTriggerCtrlItem = this.triggerCtrlItem;
+      int i;
+      if (localTriggerCtrlItem != null)
+      {
+        i = localTriggerCtrlItem.getFrameIndex();
+        updateTriggerAudio(this.triggerCtrlItem.isFirstTriggered());
+        this.triggered = this.triggerCtrlItem.isTriggered();
       }
-      i = this.triggerCtrlItem.getFrameIndex();
-      updateTriggerAudio(this.triggerCtrlItem.isFirstTriggered());
-      this.triggered = this.triggerCtrlItem.isTriggered();
-    }
-    for (;;)
-    {
+      else
+      {
+        i = 0;
+      }
       updateHotArea(i);
       if (!needRenderTexture())
       {
@@ -364,61 +424,53 @@ public abstract class FastSticker
         updateTextureParam(0);
         return;
       }
-      if (VideoMaterial.isFaceItem(this.item)) {
+      if (VideoMaterial.isFaceItem(this.item))
+      {
         updatePositions(paramObject.facePoints, paramObject.faceAngles);
       }
-      for (;;)
+      else if (VideoMaterial.isBodyDetectItem(this.item))
       {
-        updateTextureParam(i);
-        return;
-        if (VideoMaterial.isBodyDetectItem(this.item))
-        {
-          if (VideoMaterial.isBody4AnchorItem(this.item)) {
-            updatePositionsForMultiAnchor(paramObject.bodyPoints, 4);
-          }
-          for (;;)
-          {
-            if (this.mHasBodyDetected) {
-              break label202;
-            }
-            paramObject.bodyPoints = null;
-            break;
-            if (VideoMaterial.isBody2AnchorItem(this.item)) {
-              updatePositionsForMultiAnchor(paramObject.bodyPoints, 2);
-            } else {
-              updatePositions(paramObject.bodyPoints);
-            }
-          }
+        if (VideoMaterial.isBody4AnchorItem(this.item)) {
+          updatePositionsForMultiAnchor(paramObject.bodyPoints, 4);
+        } else if (VideoMaterial.isBody2AnchorItem(this.item)) {
+          updatePositionsForMultiAnchor(paramObject.bodyPoints, 2);
+        } else {
+          updatePositions(paramObject.bodyPoints);
         }
-        else
-        {
-          label202:
-          if (VideoMaterial.isGestureItem(this.item)) {
-            updatePositions(paramObject.handPoints, 0);
-          }
+        if (!this.mHasBodyDetected) {
+          paramObject.bodyPoints = null;
         }
       }
-      label226:
-      i = 0;
+      else if (VideoMaterial.isGestureItem(this.item))
+      {
+        updatePositions(paramObject.handPoints, 0);
+      }
+      updateTextureParam(i);
     }
   }
   
   protected void updateTextureParam(int paramInt)
   {
-    if (paramInt == this.lastImageIndex) {
+    int i = this.lastImageIndex;
+    if (paramInt == i) {
       return;
     }
-    if ((this.lastImageIndex > paramInt) && (this.mVideoDecoder != null)) {
-      this.mVideoDecoder.reset();
+    if (i > paramInt)
+    {
+      ActVideoDecoder localActVideoDecoder = this.mVideoDecoder;
+      if (localActVideoDecoder != null) {
+        localActVideoDecoder.reset();
+      }
     }
     this.renderParam.texture = getNextFrame(paramInt);
   }
   
   public void updateTextureParam(long paramLong)
   {
-    if (this.triggerCtrlItem != null)
+    TriggerCtrlItem localTriggerCtrlItem = this.triggerCtrlItem;
+    if (localTriggerCtrlItem != null)
     {
-      int i = this.triggerCtrlItem.getFrameIndex();
+      int i = localTriggerCtrlItem.getFrameIndex();
       try
       {
         updateTextureParam(i);
@@ -437,7 +489,7 @@ public abstract class FastSticker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.model.FastSticker
  * JD-Core Version:    0.7.0.1
  */

@@ -33,8 +33,9 @@ public final class operation_delfavour_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.vecFavID != null) {
-      paramJceOutputStream.write(this.vecFavID, 1);
+    String str = this.vecFavID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.appid, 2);
     paramJceOutputStream.write(this.subid, 3);
@@ -42,7 +43,7 @@ public final class operation_delfavour_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_delfavour_req
  * JD-Core Version:    0.7.0.1
  */

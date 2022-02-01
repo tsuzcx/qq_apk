@@ -12,59 +12,55 @@ class PtvTemplateManager$13
   
   public void run()
   {
-    if (PtvTemplateManager.b == null) {}
-    File[] arrayOfFile;
-    do
-    {
+    if (PtvTemplateManager.b == null) {
       return;
-      arrayOfFile = PtvTemplateManager.b.listFiles();
-    } while ((arrayOfFile == null) || (arrayOfFile.length == 0));
-    int k = arrayOfFile.length;
-    int i = 0;
-    label32:
-    File localFile;
-    if (i < k)
-    {
-      localFile = arrayOfFile[i];
-      if ((localFile != null) && (localFile.isFile())) {
-        break label63;
-      }
     }
-    label63:
-    label208:
-    for (;;)
+    File[] arrayOfFile = PtvTemplateManager.b.listFiles();
+    if (arrayOfFile != null)
     {
-      i += 1;
-      break label32;
-      break;
-      Object localObject = localFile.getName();
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).contains(".")))
+      if (arrayOfFile.length == 0) {
+        return;
+      }
+      int k = arrayOfFile.length;
+      int i = 0;
+      while (i < k)
       {
-        localObject = this.this$0.a.doodleInfos.iterator();
-        PtvTemplateManager.DoodleInfo localDoodleInfo;
-        do
+        File localFile = arrayOfFile[i];
+        if ((localFile != null) && (localFile.isFile()))
         {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
+          Object localObject = localFile.getName();
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).contains(".")))
+          {
+            localObject = this.this$0.a.doodleInfos.iterator();
+            while (((Iterator)localObject).hasNext())
+            {
+              PtvTemplateManager.DoodleInfo localDoodleInfo = (PtvTemplateManager.DoodleInfo)((Iterator)localObject).next();
+              if ((localDoodleInfo != null) && (!TextUtils.isEmpty(localDoodleInfo.doodleName)) && (localFile.getName().equalsIgnoreCase(localDoodleInfo.doodleName)))
+              {
+                j = 1;
+                break label167;
+              }
+            }
+            int j = 0;
+            label167:
+            if (j == 0)
+            {
+              localFile.deleteOnExit();
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(PtvTemplateManager.c);
+              ((StringBuilder)localObject).append(localFile.getName());
+              new File(((StringBuilder)localObject).toString()).deleteOnExit();
+            }
           }
-          localDoodleInfo = (PtvTemplateManager.DoodleInfo)((Iterator)localObject).next();
-        } while ((localDoodleInfo == null) || (TextUtils.isEmpty(localDoodleInfo.doodleName)) || (!localFile.getName().equalsIgnoreCase(localDoodleInfo.doodleName)));
-        for (int j = 1;; j = 0)
-        {
-          if (j != 0) {
-            break label208;
-          }
-          localFile.deleteOnExit();
-          new File(PtvTemplateManager.c + localFile.getName()).deleteOnExit();
-          break;
         }
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.13
  * JD-Core Version:    0.7.0.1
  */

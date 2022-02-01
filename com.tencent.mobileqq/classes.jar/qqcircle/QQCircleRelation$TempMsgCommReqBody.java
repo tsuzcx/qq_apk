@@ -20,13 +20,15 @@ public final class QQCircleRelation$TempMsgCommReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "uint64_from_uin", "uint64_to_uin", "uint32_c2c_type", "uint32_service_type", "bytes_pb_reserve" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, TempMsgCommReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "uint64_from_uin", "uint64_to_uin", "uint32_c2c_type", "uint32_service_type", "bytes_pb_reserve" }, new Object[] { localLong, localLong, localInteger, localInteger, localByteStringMicro }, TempMsgCommReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleRelation.TempMsgCommReqBody
  * JD-Core Version:    0.7.0.1
  */

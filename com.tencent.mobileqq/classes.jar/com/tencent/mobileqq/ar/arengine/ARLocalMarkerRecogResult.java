@@ -30,12 +30,34 @@ public class ARLocalMarkerRecogResult
   
   public String toString()
   {
-    return "ARLocalMarkerRecogResult{recogType = " + this.jdField_b_of_type_Long + ", frameIdx = " + this.jdField_a_of_type_Long + ", state = " + this.jdField_a_of_type_Int + ", markerName = " + this.jdField_a_of_type_JavaLangString + ", markerType = " + this.jdField_b_of_type_Int + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", markerDiameter = " + this.c + ", pose = " + this.jdField_a_of_type_ArrayOfFloat + ", arResourceInfo = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ARLocalMarkerRecogResult{recogType = ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", frameIdx = ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", state = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", markerName = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", markerType = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", markerWidth = ");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", markerHeight = ");
+    localStringBuilder.append(this.jdField_b_of_type_Float);
+    localStringBuilder.append(", markerDiameter = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", pose = ");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfFloat);
+    localStringBuilder.append(", arResourceInfo = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalMarkerRecogResult
  * JD-Core Version:    0.7.0.1
  */

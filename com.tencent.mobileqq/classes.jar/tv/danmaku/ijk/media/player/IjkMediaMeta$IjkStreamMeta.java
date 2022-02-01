@@ -32,10 +32,11 @@ public class IjkMediaMeta$IjkStreamMeta
   
   public String getBitrateInline()
   {
-    if (this.mBitrate <= 0L) {
+    long l = this.mBitrate;
+    if (l <= 0L) {
       return "N/A";
     }
-    if (this.mBitrate < 1000L) {
+    if (l < 1000L) {
       return String.format(Locale.US, "%d bit/s", new Object[] { Long.valueOf(this.mBitrate) });
     }
     return String.format(Locale.US, "%d kb/s", new Object[] { Long.valueOf(this.mBitrate / 1000L) });
@@ -43,13 +44,14 @@ public class IjkMediaMeta$IjkStreamMeta
   
   public String getChannelLayoutInline()
   {
-    if (this.mChannelLayout <= 0L) {
+    long l = this.mChannelLayout;
+    if (l <= 0L) {
       return "N/A";
     }
-    if (this.mChannelLayout == 4L) {
+    if (l == 4L) {
       return "mono";
     }
-    if (this.mChannelLayout == 3L) {
+    if (l == 3L) {
       return "stereo";
     }
     return String.format(Locale.US, "%x", new Object[] { Long.valueOf(this.mChannelLayout) });
@@ -76,10 +78,15 @@ public class IjkMediaMeta$IjkStreamMeta
   
   public String getFpsInline()
   {
-    if ((this.mFpsNum <= 0) || (this.mFpsDen <= 0)) {
-      return "N/A";
+    int i = this.mFpsNum;
+    if (i > 0)
+    {
+      int j = this.mFpsDen;
+      if (j > 0) {
+        return String.valueOf(i / j);
+      }
     }
-    return String.valueOf(this.mFpsNum / this.mFpsDen);
+    return "N/A";
   }
   
   public int getInt(String paramString)
@@ -124,13 +131,14 @@ public class IjkMediaMeta$IjkStreamMeta
   
   public String getResolutionInline()
   {
-    if ((this.mWidth <= 0) || (this.mHeight <= 0)) {
-      return "N/A";
-    }
-    if ((this.mSarNum <= 0) || (this.mSarDen <= 0)) {
+    if ((this.mWidth > 0) && (this.mHeight > 0))
+    {
+      if ((this.mSarNum > 0) && (this.mSarDen > 0)) {
+        return String.format(Locale.US, "%d x %d [SAR %d:%d]", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight), Integer.valueOf(this.mSarNum), Integer.valueOf(this.mSarDen) });
+      }
       return String.format(Locale.US, "%d x %d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
     }
-    return String.format(Locale.US, "%d x %d [SAR %d:%d]", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight), Integer.valueOf(this.mSarNum), Integer.valueOf(this.mSarDen) });
+    return "N/A";
   }
   
   public String getSampleRateInline()
@@ -148,7 +156,7 @@ public class IjkMediaMeta$IjkStreamMeta
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.IjkMediaMeta.IjkStreamMeta
  * JD-Core Version:    0.7.0.1
  */

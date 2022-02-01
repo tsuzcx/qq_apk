@@ -19,35 +19,46 @@ public final class TestTimeSource
   
   private final void overflow-LRDsOJo(double paramDouble)
   {
-    throw ((Throwable)new IllegalStateException("TestTimeSource will overflow if its reading " + this.reading + "ns is advanced by " + Duration.toString-impl(paramDouble) + '.'));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TestTimeSource will overflow if its reading ");
+    localStringBuilder.append(this.reading);
+    localStringBuilder.append("ns is advanced by ");
+    localStringBuilder.append(Duration.toString-impl(paramDouble));
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalStateException(localStringBuilder.toString()));
   }
   
   public final void plusAssign-LRDsOJo(double paramDouble)
   {
-    double d = Duration.toDouble-impl(paramDouble, getUnit());
-    long l3 = d;
-    long l2;
+    double d1 = Duration.toDouble-impl(paramDouble, getUnit());
+    long l3 = d1;
+    long l1;
     if ((l3 != -9223372036854775808L) && (l3 != 9223372036854775807L))
     {
-      l2 = this.reading + l3;
+      long l4 = this.reading;
+      long l2 = l4 + l3;
       l1 = l2;
-      if ((l3 ^ this.reading) >= 0L)
+      if ((l3 ^ l4) >= 0L)
       {
         l1 = l2;
-        if ((this.reading ^ l2) < 0L) {
+        if ((l4 ^ l2) < 0L)
+        {
           overflow-LRDsOJo(paramDouble);
+          l1 = l2;
         }
       }
     }
-    for (long l1 = l2;; l1 = d)
+    else
     {
-      this.reading = l1;
-      return;
-      d += this.reading;
-      if ((d > 9223372036854775807L) || (d < -9223372036854775808L)) {
+      double d2 = this.reading;
+      Double.isNaN(d2);
+      d1 = d2 + d1;
+      if ((d1 > 9223372036854775807L) || (d1 < -9223372036854775808L)) {
         overflow-LRDsOJo(paramDouble);
       }
+      l1 = d1;
     }
+    this.reading = l1;
   }
   
   protected long read()
@@ -57,7 +68,7 @@ public final class TestTimeSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.time.TestTimeSource
  * JD-Core Version:    0.7.0.1
  */

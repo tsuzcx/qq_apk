@@ -20,14 +20,32 @@ public class ZimuItemViewRibon
   public ZimuItemViewRibon(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
   {
     super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { paramInt1 / 4, (int)(paramInt1 / 3.8D), (int)(paramInt1 / 3.6D), (int)(paramInt1 / 3.4D), (int)(paramInt1 / 3.2D), paramInt1 / 3, (int)(paramInt1 / 2.8D), (int)(paramInt1 / 2.6D) };
+    paramInt2 = paramInt1 / 4;
+    double d = paramInt1;
+    Double.isNaN(d);
+    int i = (int)(d / 3.8D);
+    Double.isNaN(d);
+    int k = (int)(d / 3.6D);
+    Double.isNaN(d);
+    int m = (int)(d / 3.4D);
+    Double.isNaN(d);
+    int n = (int)(d / 3.2D);
+    paramInt1 /= 3;
+    Double.isNaN(d);
+    int i1 = (int)(d / 2.8D);
+    Double.isNaN(d);
+    this.jdField_a_of_type_ArrayOfInt = new int[] { paramInt2, i, k, m, n, paramInt1, i1, (int)(d / 2.6D) };
     paramInt1 = this.jdField_a_of_type_JavaUtilRandom.nextInt(8);
     this.j = this.jdField_a_of_type_ArrayOfInt[paramInt1];
   }
   
   protected int a(int paramInt)
   {
-    AVLog.printColorLog(this.jdField_a_of_type_JavaLangString, "getSPEED: " + this.j);
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getSPEED: ");
+    localStringBuilder.append(this.j);
+    AVLog.printColorLog(str, localStringBuilder.toString());
     return this.j;
   }
   
@@ -49,7 +67,7 @@ public class ZimuItemViewRibon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuItemViewRibon
  * JD-Core Version:    0.7.0.1
  */

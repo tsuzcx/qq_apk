@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.widget.bounce;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class OverScrollEffect$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   OverScrollEffect$1(OverScrollEffect paramOverScrollEffect) {}
   
@@ -18,7 +18,7 @@ class OverScrollEffect$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.bounce.OverScrollEffect.1
  * JD-Core Version:    0.7.0.1
  */

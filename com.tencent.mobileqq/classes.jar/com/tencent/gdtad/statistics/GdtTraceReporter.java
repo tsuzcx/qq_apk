@@ -6,11 +6,6 @@ import com.tencent.gdtad.log.GdtLog;
 
 public class GdtTraceReporter
 {
-  public static void a(int paramInt, String paramString1, String paramString2)
-  {
-    GdtReporter.doCgiReport("https://t.gdt.qq.com/conv/src/50/conv?" + "click_id={$clickid$}&product_id={$appid$}&conv_type={$convtype$}&conv_time={$convtime$}".replace("{$clickid$}", paramString1).replace("{$appid$}", paramString2).replace("{$convtype$}", new StringBuilder().append(paramInt).append("").toString()).replace("{$convtime$}", new StringBuilder().append(System.currentTimeMillis() / 1000L).append("").toString()));
-  }
-  
   public static void a(Ad paramAd, int paramInt)
   {
     if (TextUtils.isEmpty(paramAd.getUrlForEffect()))
@@ -24,7 +19,7 @@ public class GdtTraceReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtTraceReporter
  * JD-Core Version:    0.7.0.1
  */

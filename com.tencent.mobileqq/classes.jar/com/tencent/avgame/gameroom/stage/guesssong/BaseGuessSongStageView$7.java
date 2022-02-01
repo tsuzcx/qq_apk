@@ -14,7 +14,10 @@ class BaseGuessSongStageView$7
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.d("BaseGuessSongStageView", 2, "onLoadFialed " + paramThrowable);
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadFialed ");
+    paramURLDrawable.append(paramThrowable);
+    QLog.d("BaseGuessSongStageView", 2, paramURLDrawable.toString());
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
@@ -31,7 +34,7 @@ class BaseGuessSongStageView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guesssong.BaseGuessSongStageView.7
  * JD-Core Version:    0.7.0.1
  */

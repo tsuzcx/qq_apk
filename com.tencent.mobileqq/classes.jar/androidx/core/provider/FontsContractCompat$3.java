@@ -3,7 +3,7 @@ package androidx.core.provider;
 import androidx.collection.SimpleArrayMap;
 import java.util.ArrayList;
 
-final class FontsContractCompat$3
+class FontsContractCompat$3
   implements SelfDestructiveThread.ReplyCallback<FontsContractCompat.TypefaceResult>
 {
   FontsContractCompat$3(String paramString) {}
@@ -18,17 +18,22 @@ final class FontsContractCompat$3
       }
       FontsContractCompat.sPendingReplies.remove(this.val$id);
       int i = 0;
-      if (i < localArrayList.size())
+      while (i < localArrayList.size())
       {
         ((SelfDestructiveThread.ReplyCallback)localArrayList.get(i)).onReply(paramTypefaceResult);
         i += 1;
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramTypefaceResult;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.provider.FontsContractCompat.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,6 @@ class DetailFeedAllInfoPullSegment$Observer$1
   
   public void run()
   {
-    int i1 = 0;
     if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).isJobCancelled())
     {
       SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
@@ -19,38 +18,42 @@ class DetailFeedAllInfoPullSegment$Observer$1
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      Object localObject = (Integer)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.getFunctionResult(0);
+      Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer;
+      int i1 = 0;
+      localObject = (Integer)((DetailFeedAllInfoPullSegment.Observer)localObject).getFunctionResult(0);
       if (localObject != null) {
         DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a.mViewTotalTime = ((Integer)localObject).intValue();
       }
-      if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a()) {}
+      int j;
+      if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a()) {
+        j = 2;
+      } else {
+        j = 1;
+      }
+      int k = 0;
+      int i = 1;
       int m;
       int n;
-      for (int j = 2;; j = 1)
+      for (;;)
       {
-        int k = 0;
-        int i = 1;
-        for (;;)
-        {
-          m = i;
-          n = i1;
-          if (k >= j) {
-            break;
-          }
-          localObject = (DetailFeedAllInfoPullSegment.LikeData)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.getFunctionResult(i);
-          if (localObject != null)
-          {
-            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).b(((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_JavaUtilList, true, ((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_Boolean);
-            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).b(((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_Boolean, ((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_Int);
-            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a.mHadLike = ((DetailFeedAllInfoPullSegment.LikeData)localObject).b;
-          }
-          k += 1;
-          i += 1;
+        m = i1;
+        n = i;
+        if (k >= j) {
+          break;
         }
+        localObject = (DetailFeedAllInfoPullSegment.LikeData)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.getFunctionResult(i);
+        if (localObject != null)
+        {
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).b(((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_JavaUtilList, true, ((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_Boolean);
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).b(((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_Boolean, ((DetailFeedAllInfoPullSegment.LikeData)localObject).jdField_a_of_type_Int);
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a.mHadLike = ((DetailFeedAllInfoPullSegment.LikeData)localObject).b;
+        }
+        k += 1;
+        i += 1;
       }
-      while (n < j)
+      while (m < j)
       {
-        localObject = (DetailFeedAllInfoPullSegment.CommentData)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.getFunctionResult(m);
+        localObject = (DetailFeedAllInfoPullSegment.CommentData)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.getFunctionResult(n);
         if (localObject != null)
         {
           DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_JavaUtilList, true, ((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_Boolean);
@@ -58,8 +61,8 @@ class DetailFeedAllInfoPullSegment$Observer$1
           DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_Boolean, ((DetailFeedAllInfoPullSegment.CommentData)localObject).b);
           DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a).a(((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_Boolean, ((DetailFeedAllInfoPullSegment.CommentData)localObject).jdField_a_of_type_JavaLangString);
         }
-        n += 1;
         m += 1;
+        n += 1;
       }
       DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a, DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$Observer.a));
       return;
@@ -69,7 +72,7 @@ class DetailFeedAllInfoPullSegment$Observer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1
  * JD-Core Version:    0.7.0.1
  */

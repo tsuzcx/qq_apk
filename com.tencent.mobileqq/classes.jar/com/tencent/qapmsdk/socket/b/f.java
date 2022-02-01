@@ -22,15 +22,21 @@ class f
   private void a(int paramInt1, int paramInt2, byte paramByte)
   {
     f.a locala2 = new f.a(paramInt1, paramByte);
-    for (f.a locala1 = this.d; paramByte > 8; locala1 = locala1.a[paramInt1])
+    f.a locala1 = this.d;
+    while (paramByte > 8)
     {
       paramByte = (byte)(paramByte - 8);
       paramInt1 = paramInt2 >>> paramByte & 0xFF;
-      if (locala1.a == null) {
-        throw new IllegalStateException("invalid dictionary: prefix not unique");
+      if (locala1.a != null)
+      {
+        if (locala1.a[paramInt1] == null) {
+          locala1.a[paramInt1] = new f.a();
+        }
+        locala1 = locala1.a[paramInt1];
       }
-      if (locala1.a[paramInt1] == null) {
-        locala1.a[paramInt1] = new f.a();
+      else
+      {
+        throw new IllegalStateException("invalid dictionary: prefix not unique");
       }
     }
     paramByte = 8 - paramByte;
@@ -46,18 +52,22 @@ class f
   private void b()
   {
     int i = 0;
-    while (i < b.length)
+    for (;;)
     {
-      a(i, a[i], b[i]);
+      byte[] arrayOfByte = b;
+      if (i >= arrayOfByte.length) {
+        break;
+      }
+      a(i, a[i], arrayOfByte[i]);
       i += 1;
     }
   }
   
   byte[] a(byte[] paramArrayOfByte)
   {
-    int j = 0;
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     f.a locala1 = this.d;
+    int j = 0;
     int k = 0;
     int i = 0;
     int m;
@@ -87,22 +97,22 @@ class f
       }
       j += 1;
     }
-    do
+    while (m > 0)
     {
+      paramArrayOfByte = locala2.a[(k << 8 - m & 0xFF)];
+      if ((paramArrayOfByte.a != null) || (paramArrayOfByte.c > m)) {
+        break;
+      }
       localByteArrayOutputStream.write(paramArrayOfByte.b);
       m -= paramArrayOfByte.c;
       locala2 = this.d;
-      if (m <= 0) {
-        break;
-      }
-      paramArrayOfByte = locala2.a[(k << 8 - m & 0xFF)];
-    } while ((paramArrayOfByte.a == null) && (paramArrayOfByte.c <= m));
+    }
     return localByteArrayOutputStream.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.b.f
  * JD-Core Version:    0.7.0.1
  */

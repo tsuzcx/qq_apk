@@ -30,96 +30,86 @@ class AccessibilityViewEmbedder$ReflectionAccessors
   @SuppressLint({"PrivateApi"})
   private AccessibilityViewEmbedder$ReflectionAccessors()
   {
-    for (;;)
+    Object localObject3 = null;
+    Object localObject2 = null;
+    try
     {
-      Method localMethod4;
-      Object localObject4;
-      Field localField;
-      Object localObject3;
-      try
-      {
-        localMethod2 = AccessibilityNodeInfo.class.getMethod("getSourceNodeId", new Class[0]);
-      }
-      catch (NoSuchMethodException localNoSuchMethodException3)
-      {
-        try
-        {
-          localMethod3 = AccessibilityRecord.class.getMethod("getSourceNodeId", new Class[0]);
-          if (Build.VERSION.SDK_INT > 26) {}
-        }
-        catch (NoSuchMethodException localNoSuchMethodException3)
-        {
-          try
-          {
-            localObject1 = AccessibilityNodeInfo.class.getMethod("getParentNodeId", new Class[0]);
-          }
-          catch (NoSuchMethodException localNoSuchMethodException3)
-          {
-            try
-            {
-              Method localMethod1 = AccessibilityNodeInfo.class.getMethod("getChildId", new Class[] { Integer.TYPE });
-              localMethod4 = null;
-              localObject4 = localObject1;
-              Object localObject1 = localMethod4;
-              this.getSourceNodeId = localMethod2;
-              this.getParentNodeId = localObject4;
-              this.getRecordSourceNodeId = localMethod3;
-              this.getChildId = localMethod1;
-              this.childNodeIdsField = ((Field)localObject1);
-              this.longArrayGetIndex = localObject5;
-              return;
-              localNoSuchMethodException1 = localNoSuchMethodException1;
-              Log.w("AccessibilityBridge", "can't invoke AccessibilityNodeInfo#getSourceNodeId with reflection");
-              Method localMethod2 = null;
-              continue;
-              localNoSuchMethodException2 = localNoSuchMethodException2;
-              Log.w("AccessibilityBridge", "can't invoke AccessibiiltyRecord#getSourceNodeId with reflection");
-              Method localMethod3 = null;
-              continue;
-              localNoSuchMethodException3 = localNoSuchMethodException3;
-              Log.w("AccessibilityBridge", "can't invoke getParentNodeId with reflection");
-              localField = null;
-              continue;
-            }
-            catch (NoSuchMethodException localNoSuchMethodException5)
-            {
-              Log.w("AccessibilityBridge", "can't invoke getChildId with reflection");
-              localObject3 = null;
-              continue;
-            }
-          }
-        }
-      }
-      try
-      {
-        localField = AccessibilityNodeInfo.class.getDeclaredField("mChildNodeIds");
-        localField.setAccessible(true);
-        localMethod4 = Class.forName("android.util.LongArray").getMethod("get", new Class[] { Integer.TYPE });
-        localObject4 = null;
-        localObject3 = null;
-        localObject5 = localMethod4;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        Log.w("AccessibilityBridge", "can't access childNodeIdsField with reflection");
-        Object localObject2 = null;
-        localObject3 = null;
-        localObject4 = null;
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        break label218;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        break label218;
-      }
-      catch (NoSuchMethodException localNoSuchMethodException4)
-      {
-        label218:
-        break label218;
-      }
+      localMethod1 = AccessibilityNodeInfo.class.getMethod("getSourceNodeId", new Class[0]);
     }
+    catch (NoSuchMethodException localNoSuchMethodException1)
+    {
+      Method localMethod1;
+      label24:
+      label50:
+      break label24;
+    }
+    Log.w("AccessibilityBridge", "can't invoke AccessibilityNodeInfo#getSourceNodeId with reflection");
+    localMethod1 = null;
+    try
+    {
+      localMethod2 = AccessibilityRecord.class.getMethod("getSourceNodeId", new Class[0]);
+    }
+    catch (NoSuchMethodException localNoSuchMethodException2)
+    {
+      Method localMethod2;
+      break label50;
+    }
+    Log.w("AccessibilityBridge", "can't invoke AccessibiiltyRecord#getSourceNodeId with reflection");
+    localMethod2 = null;
+    if (Build.VERSION.SDK_INT <= 26) {}
+    try
+    {
+      localObject1 = AccessibilityNodeInfo.class.getMethod("getParentNodeId", new Class[0]);
+    }
+    catch (NoSuchMethodException localNoSuchMethodException3)
+    {
+      Object localObject1;
+      label84:
+      break label84;
+    }
+    Log.w("AccessibilityBridge", "can't invoke getParentNodeId with reflection");
+    localObject1 = null;
+    try
+    {
+      localObject2 = AccessibilityNodeInfo.class.getMethod("getChildId", new Class[] { Integer.TYPE });
+    }
+    catch (NoSuchMethodException localNoSuchMethodException4)
+    {
+      label115:
+      break label115;
+    }
+    Log.w("AccessibilityBridge", "can't invoke getChildId with reflection");
+    localObject2 = null;
+    localObject3 = localObject1;
+    localObject1 = localObject2;
+    localObject2 = localObject3;
+    try
+    {
+      localField = AccessibilityNodeInfo.class.getDeclaredField("mChildNodeIds");
+      localField.setAccessible(true);
+      localObject1 = Class.forName("android.util.LongArray").getMethod("get", new Class[] { Integer.TYPE });
+      localObject2 = localObject1;
+      localObject1 = null;
+    }
+    catch (NoSuchFieldException|ClassNotFoundException|NoSuchMethodException|NullPointerException localNoSuchFieldException)
+    {
+      Field localField;
+      label179:
+      Object localObject4;
+      break label179;
+    }
+    Log.w("AccessibilityBridge", "can't access childNodeIdsField with reflection");
+    localObject1 = null;
+    localObject4 = null;
+    localField = null;
+    localObject3 = localObject2;
+    localObject2 = localObject4;
+    this.getSourceNodeId = localMethod1;
+    this.getParentNodeId = localObject3;
+    this.getRecordSourceNodeId = localMethod2;
+    this.getChildId = ((Method)localObject1);
+    this.childNodeIdsField = localField;
+    this.longArrayGetIndex = ((Method)localObject2);
   }
   
   @Nullable
@@ -128,116 +118,78 @@ class AccessibilityViewEmbedder$ReflectionAccessors
     if ((this.getChildId == null) && ((this.childNodeIdsField == null) || (this.longArrayGetIndex == null))) {
       return null;
     }
-    if (this.getChildId != null) {}
-    for (;;)
+    Method localMethod = this.getChildId;
+    if (localMethod != null) {}
+    try
     {
-      try
-      {
-        paramAccessibilityNodeInfo = (Long)this.getChildId.invoke(paramAccessibilityNodeInfo, new Object[] { Integer.valueOf(paramInt) });
-        return paramAccessibilityNodeInfo;
-      }
-      catch (InvocationTargetException paramAccessibilityNodeInfo)
-      {
-        Log.w("AccessibilityBridge", paramAccessibilityNodeInfo);
-        return null;
-      }
-      catch (IllegalAccessException paramAccessibilityNodeInfo)
-      {
-        Log.w("AccessibilityBridge", paramAccessibilityNodeInfo);
-        continue;
-      }
+      paramAccessibilityNodeInfo = (Long)localMethod.invoke(paramAccessibilityNodeInfo, new Object[] { Integer.valueOf(paramInt) });
+      return paramAccessibilityNodeInfo;
+    }
+    catch (InvocationTargetException paramAccessibilityNodeInfo)
+    {
+      break label104;
       try
       {
         long l = ((Long)this.longArrayGetIndex.invoke(this.childNodeIdsField.get(paramAccessibilityNodeInfo), new Object[] { Integer.valueOf(paramInt) })).longValue();
         return Long.valueOf(l);
       }
-      catch (ArrayIndexOutOfBoundsException paramAccessibilityNodeInfo)
-      {
-        Log.w("AccessibilityBridge", paramAccessibilityNodeInfo);
-      }
-      catch (IllegalAccessException paramAccessibilityNodeInfo)
-      {
-        Log.w("AccessibilityBridge", paramAccessibilityNodeInfo);
-      }
-      catch (InvocationTargetException paramAccessibilityNodeInfo)
-      {
-        label115:
-        break label115;
-      }
+      catch (ArrayIndexOutOfBoundsException paramAccessibilityNodeInfo) {}
     }
+    catch (IllegalAccessException paramAccessibilityNodeInfo) {}
+    label104:
+    Log.w("AccessibilityBridge", paramAccessibilityNodeInfo);
+    return null;
   }
   
   @Nullable
   private Long getParentNodeId(@NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    if (this.getParentNodeId != null) {}
-    try
+    Method localMethod = this.getParentNodeId;
+    if (localMethod != null)
     {
-      long l = ((Long)this.getParentNodeId.invoke(paramAccessibilityNodeInfo, new Object[0])).longValue();
-      return Long.valueOf(l);
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      Log.w("AccessibilityBridge", localInvocationTargetException);
-      return yoinkParentIdFromParcel(paramAccessibilityNodeInfo);
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
+      try
       {
-        Log.w("AccessibilityBridge", localIllegalAccessException);
+        long l = ((Long)localMethod.invoke(paramAccessibilityNodeInfo, new Object[0])).longValue();
+        return Long.valueOf(l);
       }
+      catch (InvocationTargetException localInvocationTargetException) {}catch (IllegalAccessException localIllegalAccessException) {}
+      Log.w("AccessibilityBridge", localIllegalAccessException);
     }
+    return yoinkParentIdFromParcel(paramAccessibilityNodeInfo);
   }
   
   @Nullable
   private Long getRecordSourceNodeId(@NonNull AccessibilityRecord paramAccessibilityRecord)
   {
-    if (this.getRecordSourceNodeId == null) {
+    Method localMethod = this.getRecordSourceNodeId;
+    if (localMethod == null) {
       return null;
     }
     try
     {
-      paramAccessibilityRecord = (Long)this.getRecordSourceNodeId.invoke(paramAccessibilityRecord, new Object[0]);
+      paramAccessibilityRecord = (Long)localMethod.invoke(paramAccessibilityRecord, new Object[0]);
       return paramAccessibilityRecord;
     }
-    catch (InvocationTargetException paramAccessibilityRecord)
-    {
-      Log.w("AccessibilityBridge", paramAccessibilityRecord);
-      return null;
-    }
-    catch (IllegalAccessException paramAccessibilityRecord)
-    {
-      for (;;)
-      {
-        Log.w("AccessibilityBridge", paramAccessibilityRecord);
-      }
-    }
+    catch (InvocationTargetException paramAccessibilityRecord) {}catch (IllegalAccessException paramAccessibilityRecord) {}
+    Log.w("AccessibilityBridge", paramAccessibilityRecord);
+    return null;
   }
   
   @Nullable
   private Long getSourceNodeId(@NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    if (this.getSourceNodeId == null) {
+    Method localMethod = this.getSourceNodeId;
+    if (localMethod == null) {
       return null;
     }
     try
     {
-      paramAccessibilityNodeInfo = (Long)this.getSourceNodeId.invoke(paramAccessibilityNodeInfo, new Object[0]);
+      paramAccessibilityNodeInfo = (Long)localMethod.invoke(paramAccessibilityNodeInfo, new Object[0]);
       return paramAccessibilityNodeInfo;
     }
-    catch (InvocationTargetException paramAccessibilityNodeInfo)
-    {
-      Log.w("AccessibilityBridge", paramAccessibilityNodeInfo);
-      return null;
-    }
-    catch (IllegalAccessException paramAccessibilityNodeInfo)
-    {
-      for (;;)
-      {
-        Log.w("AccessibilityBridge", paramAccessibilityNodeInfo);
-      }
-    }
+    catch (InvocationTargetException paramAccessibilityNodeInfo) {}catch (IllegalAccessException paramAccessibilityNodeInfo) {}
+    Log.w("AccessibilityBridge", paramAccessibilityNodeInfo);
+    return null;
   }
   
   private static int getVirtualNodeId(long paramLong)
@@ -247,14 +199,15 @@ class AccessibilityViewEmbedder$ReflectionAccessors
   
   private static boolean isBitSet(long paramLong, int paramInt)
   {
-    return (1L << paramInt & paramLong) != 0L;
+    return (paramLong & 1L << paramInt) != 0L;
   }
   
   @Nullable
   private static Long yoinkParentIdFromParcel(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
+    int i = Build.VERSION.SDK_INT;
     Object localObject = null;
-    if (Build.VERSION.SDK_INT < 26)
+    if (i < 26)
     {
       Log.w("AccessibilityBridge", "Unexpected Android version. Unable to find the parent ID.");
       return null;
@@ -284,7 +237,7 @@ class AccessibilityViewEmbedder$ReflectionAccessors
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.view.AccessibilityViewEmbedder.ReflectionAccessors
  * JD-Core Version:    0.7.0.1
  */

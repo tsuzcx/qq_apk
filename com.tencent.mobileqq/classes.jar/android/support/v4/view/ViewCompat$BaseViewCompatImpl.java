@@ -30,60 +30,58 @@ class ViewCompat$BaseViewCompatImpl
     {
       this.mDispatchStartTemporaryDetach = View.class.getDeclaredMethod("dispatchStartTemporaryDetach", new Class[0]);
       this.mDispatchFinishTemporaryDetach = View.class.getDeclaredMethod("dispatchFinishTemporaryDetach", new Class[0]);
-      this.mTempDetachBound = true;
-      return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      for (;;)
-      {
-        Log.e("ViewCompat", "Couldn't find method", localNoSuchMethodException);
-      }
+      Log.e("ViewCompat", "Couldn't find method", localNoSuchMethodException);
     }
+    this.mTempDetachBound = true;
   }
   
   private boolean canScrollingViewScrollHorizontally(ScrollingView paramScrollingView, int paramInt)
   {
-    boolean bool = true;
     int i = paramScrollingView.computeHorizontalScrollOffset();
     int j = paramScrollingView.computeHorizontalScrollRange() - paramScrollingView.computeHorizontalScrollExtent();
+    boolean bool2 = false;
+    boolean bool1 = false;
     if (j == 0) {
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        if (paramInt >= 0) {
-          break;
-        }
-      } while (i > 0);
       return false;
-    } while (i < j - 1);
-    return false;
+    }
+    if (paramInt < 0)
+    {
+      if (i > 0) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool2;
+    if (i < j - 1) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private boolean canScrollingViewScrollVertically(ScrollingView paramScrollingView, int paramInt)
   {
-    boolean bool = true;
     int i = paramScrollingView.computeVerticalScrollOffset();
     int j = paramScrollingView.computeVerticalScrollRange() - paramScrollingView.computeVerticalScrollExtent();
+    boolean bool2 = false;
+    boolean bool1 = false;
     if (j == 0) {
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        if (paramInt >= 0) {
-          break;
-        }
-      } while (i > 0);
       return false;
-    } while (i < j - 1);
-    return false;
+    }
+    if (paramInt < 0)
+    {
+      if (i > 0) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool2;
+    if (i < j - 1) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public ViewPropertyAnimatorCompat animate(View paramView)
@@ -116,10 +114,11 @@ class ViewCompat$BaseViewCompatImpl
     if (!this.mTempDetachBound) {
       bindTempDetach();
     }
-    if (this.mDispatchFinishTemporaryDetach != null) {
+    Method localMethod = this.mDispatchFinishTemporaryDetach;
+    if (localMethod != null) {
       try
       {
-        this.mDispatchFinishTemporaryDetach.invoke(paramView, new Object[0]);
+        localMethod.invoke(paramView, new Object[0]);
         return;
       }
       catch (Exception paramView)
@@ -168,10 +167,11 @@ class ViewCompat$BaseViewCompatImpl
     if (!this.mTempDetachBound) {
       bindTempDetach();
     }
-    if (this.mDispatchStartTemporaryDetach != null) {
+    Method localMethod = this.mDispatchStartTemporaryDetach;
+    if (localMethod != null) {
       try
       {
-        this.mDispatchStartTemporaryDetach.invoke(paramView, new Object[0]);
+        localMethod.invoke(paramView, new Object[0]);
         return;
       }
       catch (Exception paramView)
@@ -426,8 +426,8 @@ class ViewCompat$BaseViewCompatImpl
   
   public boolean isOpaque(View paramView)
   {
-    boolean bool2 = false;
     paramView = paramView.getBackground();
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramView != null)
     {

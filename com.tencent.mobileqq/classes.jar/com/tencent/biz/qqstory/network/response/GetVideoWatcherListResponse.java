@@ -25,12 +25,20 @@ public class GetVideoWatcherListResponse
   
   public String toString()
   {
-    return "GetVideoWatcherListResponse{totalReadTime=" + this.b + "totalWatcherCount=" + this.jdField_a_of_type_Long + ", userList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetVideoWatcherListResponse{totalReadTime=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("totalWatcherCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", userList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetVideoWatcherListResponse
  * JD-Core Version:    0.7.0.1
  */

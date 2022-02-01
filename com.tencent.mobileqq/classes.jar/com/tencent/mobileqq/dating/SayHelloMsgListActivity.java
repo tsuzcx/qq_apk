@@ -28,64 +28,113 @@ import mqq.os.MqqHandler;
 public class SayHelloMsgListActivity
   extends BaseMsgBoxActivity
 {
-  NearbyRelevantObserver a;
+  NearbyRelevantObserver a = new SayHelloMsgListActivity.1(this);
   
-  public SayHelloMsgListActivity()
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver = new SayHelloMsgListActivity.1(this);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
+    return bool;
   }
   
-  protected List<RecentBaseData> a(List<MessageRecord> paramList)
+  protected boolean doOnCreate(Bundle paramBundle)
+  {
+    super.doOnCreate(paramBundle);
+    super.setTitle(2131699017);
+    this.app.addObserver(this.a, true);
+    return true;
+  }
+  
+  protected void doOnDestroy()
+  {
+    super.doOnDestroy();
+    removeObserver(this.a);
+  }
+  
+  public void finish()
+  {
+    if ((this.mBoxMsgType == 1001) && (AppConstants.LBS_SAY_HELLO_LIST_UIN.equals(this.mBoxUIN)))
+    {
+      this.app.getPreferences().edit().putLong("sp_key_say_hello_msg_clean_unread_time", NetConnInfoCenter.getServerTime()).commit();
+      this.app.getConversationFacade().a(this.mBoxUIN, this.mBoxMsgType, true);
+    }
+    super.finish();
+  }
+  
+  protected List<RecentBaseData> makeRecetBaseData(List<MessageRecord> paramList)
   {
     ArrayList localArrayList1 = new ArrayList();
     long l1 = System.currentTimeMillis();
     ArrayList localArrayList2 = new ArrayList();
     Iterator localIterator = paramList.iterator();
-    long l2;
-    if (localIterator.hasNext())
+    for (;;)
     {
-      paramList = (MessageRecord)localIterator.next();
-      String str = paramList.senderuin;
-      l2 = System.currentTimeMillis();
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        paramList = (RecentBaseData)this.jdField_a_of_type_JavaUtilMap.get(str);
-      }
-      for (;;)
+      long l2;
+      if (localIterator.hasNext())
       {
+        paramList = (MessageRecord)localIterator.next();
+        String str = paramList.senderuin;
+        l2 = System.currentTimeMillis();
+        if (this.mMsgItemCache.containsKey(str))
+        {
+          paramList = (RecentBaseData)this.mMsgItemCache.get(str);
+        }
+        else
+        {
+          paramList = new RecentSayHelloListItem(paramList);
+          this.mMsgItemCache.put(str, paramList);
+        }
+      }
+      try
+      {
+        localArrayList2.add(Long.valueOf(paramList.getRecentUserUin()));
+        label131:
         paramList.update(this.app, BaseApplication.getContext());
         localArrayList1.add(paramList);
         if (!QLog.isDevelopLevel()) {
-          break;
+          continue;
         }
-        QLog.d("Q.msg_box", 4, "item update time cost = " + (System.currentTimeMillis() - l2));
-        break;
-        paramList = new RecentSayHelloListItem(paramList);
-        this.jdField_a_of_type_JavaUtilMap.put(str, paramList);
-        try
+        paramList = new StringBuilder();
+        paramList.append("item update time cost = ");
+        paramList.append(System.currentTimeMillis() - l2);
+        QLog.d("Q.msg_box", 4, paramList.toString());
+        continue;
+        if (!localArrayList2.isEmpty()) {
+          ThreadManager.getFileThreadHandler().post(new SayHelloMsgListActivity.2(this, localArrayList2));
+        }
+        if (QLog.isDevelopLevel())
         {
-          localArrayList2.add(Long.valueOf(paramList.getRecentUserUin()));
+          l2 = System.currentTimeMillis();
+          paramList = new StringBuilder();
+          paramList.append("makeRecetBaseData |start cost time:");
+          paramList.append(l2 - l1);
+          QLog.d("Q.msg_box", 4, paramList.toString());
         }
-        catch (Exception localException) {}
+        return localArrayList1;
+      }
+      catch (Exception localException)
+      {
+        break label131;
       }
     }
-    if (!localArrayList2.isEmpty()) {
-      ThreadManager.getFileThreadHandler().post(new SayHelloMsgListActivity.2(this, localArrayList2));
-    }
-    if (QLog.isDevelopLevel())
-    {
-      l2 = System.currentTimeMillis();
-      QLog.d("Q.msg_box", 4, "makeRecetBaseData |start cost time:" + (l2 - l1));
-    }
-    return localArrayList1;
   }
   
-  protected void b(List<MessageRecord> paramList)
+  @Override
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    Object localObject2 = null;
+    super.onConfigurationChanged(paramConfiguration);
+    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void preProcessMessageList(List<MessageRecord> paramList)
+  {
     if (paramList.size() == 0) {
       return;
     }
     Iterator localIterator = paramList.iterator();
+    Object localObject2 = null;
     Object localObject1 = null;
     while (localIterator.hasNext())
     {
@@ -124,50 +173,10 @@ public class SayHelloMsgListActivity
     }
     paramList.addAll(0, (Collection)localObject3);
   }
-  
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
-  }
-  
-  public boolean doOnCreate(Bundle paramBundle)
-  {
-    super.doOnCreate(paramBundle);
-    super.setTitle(2131698938);
-    this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver, true);
-    return true;
-  }
-  
-  public void doOnDestroy()
-  {
-    super.doOnDestroy();
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver);
-  }
-  
-  public void finish()
-  {
-    if ((this.jdField_a_of_type_Int == 1001) && (AppConstants.LBS_SAY_HELLO_LIST_UIN.equals(this.jdField_a_of_type_JavaLangString)))
-    {
-      this.app.getPreferences().edit().putLong("sp_key_say_hello_msg_clean_unread_time", NetConnInfoCenter.getServerTime()).commit();
-      this.app.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
-    }
-    super.finish();
-  }
-  
-  @Override
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    super.onConfigurationChanged(paramConfiguration);
-    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.SayHelloMsgListActivity
  * JD-Core Version:    0.7.0.1
  */

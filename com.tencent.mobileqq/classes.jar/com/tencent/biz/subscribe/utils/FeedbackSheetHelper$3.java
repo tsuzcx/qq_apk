@@ -8,15 +8,16 @@ final class FeedbackSheetHelper$3
 {
   public void onDismiss()
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeUtilsFeedbackSheetHelper$ResultListener != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeUtilsFeedbackSheetHelper$ResultListener.a(false);
+    FeedbackSheetHelper.ResultListener localResultListener = this.jdField_a_of_type_ComTencentBizSubscribeUtilsFeedbackSheetHelper$ResultListener;
+    if (localResultListener != null) {
+      localResultListener.a(false);
     }
     this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.FeedbackSheetHelper.3
  * JD-Core Version:    0.7.0.1
  */

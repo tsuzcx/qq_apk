@@ -1,8 +1,5 @@
 package com.tencent.qqlive.module.videoreport.utils;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -33,35 +30,37 @@ public class ListenerMgr<T>
     }
     ConcurrentLinkedQueue localConcurrentLinkedQueue = this.mListenerQueue;
     int i = 0;
-    Object localObject;
     try
     {
       Iterator localIterator = this.mListenerQueue.iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         localObject = ((WeakReference)localIterator.next()).get();
         if (localObject != null) {
-          break label96;
+          break label99;
         }
         localIterator.remove();
       }
-      else
+      if (i == 0)
       {
-        if (i == 0)
-        {
-          paramT = new WeakReference(paramT);
-          this.mListenerQueue.add(paramT);
-        }
-        return;
+        paramT = new WeakReference(paramT);
+        this.mListenerQueue.add(paramT);
       }
+      return;
     }
-    finally {}
-    for (;;)
+    finally
     {
-      break;
-      label96:
-      if (localObject == paramT) {
-        i = 1;
+      for (;;)
+      {
+        Object localObject;
+        for (;;)
+        {
+          throw paramT;
+        }
+        label99:
+        if (localObject == paramT) {
+          i = 1;
+        }
       }
     }
   }
@@ -77,39 +76,17 @@ public class ListenerMgr<T>
   
   public void startNotify(ListenerMgr.INotifyCallback<T> paramINotifyCallback)
   {
-    Object localObject1 = null;
-    synchronized (this.mListenerQueue)
+    for (;;)
     {
-      if (this.mListenerQueue.size() > 0) {
-        localObject1 = new ConcurrentLinkedQueue(this.mListenerQueue);
-      }
-      if (localObject1 != null) {
-        try
+      synchronized (this.mListenerQueue)
+      {
+        if (this.mListenerQueue.size() > 0)
         {
-          localObject1 = ((ConcurrentLinkedQueue)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            ??? = ((WeakReference)((Iterator)localObject1).next()).get();
-            if (??? != null)
-            {
-              try
-              {
-                paramINotifyCallback.onNotify(???);
-              }
-              catch (Throwable localThrowable)
-              {
-                localThrowable.printStackTrace();
-                Log.e("crash", localThrowable.toString(), localThrowable);
-              }
-              if (isDebug) {
-                new Handler(Looper.getMainLooper()).post(new ListenerMgr.1(this, localThrowable));
-              }
-            }
-          }
-          return;
+          localObject1 = new ConcurrentLinkedQueue(this.mListenerQueue);
+          if (localObject1 == null) {}
         }
-        catch (Throwable paramINotifyCallback) {}
       }
+      Object localObject1 = null;
     }
   }
   
@@ -128,12 +105,17 @@ public class ListenerMgr<T>
           return;
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramT;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.ListenerMgr
  * JD-Core Version:    0.7.0.1
  */

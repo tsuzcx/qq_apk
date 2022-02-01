@@ -10,27 +10,31 @@ class fs$3
   
   public void a(int paramInt, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    String str;
-    do
-    {
+    if (paramIntent == null) {
       return;
-      switch (paramInt)
-      {
-      default: 
-        return;
-      case 1013: 
-        this.rx.d(false, false);
+    }
+    if (paramInt != 1013)
+    {
+      if (paramInt != 1034) {
         return;
       }
-      str = paramIntent.getAction();
-    } while ((TextUtils.isEmpty(str)) || (!"android.net.wifi.WIFI_STATE_CHANGED".equals(str)) || (paramIntent.getIntExtra("wifi_state", -1) != 3));
-    this.rx.d(true, false);
+      String str = paramIntent.getAction();
+      if (TextUtils.isEmpty(str)) {
+        return;
+      }
+      if (("android.net.wifi.WIFI_STATE_CHANGED".equals(str)) && (paramIntent.getIntExtra("wifi_state", -1) == 3)) {
+        this.rx.d(true, false);
+      }
+    }
+    else
+    {
+      this.rx.d(false, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fs.3
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.tencent.mtt.hippy.a.n;
 import com.tencent.mtt.hippy.adapter.exception.HippyExceptionHandlerAdapter;
 import com.tencent.mtt.hippy.bridge.a;
 import com.tencent.mtt.hippy.bridge.b;
+import com.tencent.mtt.hippy.common.Callback;
 import com.tencent.mtt.hippy.common.HippyJsException;
 import com.tencent.mtt.hippy.common.ThreadExecutor;
 import com.tencent.mtt.hippy.dom.DomManager;
@@ -27,52 +28,56 @@ public class HippyEngineManagerImpl$HippyEngineContextImpl
   public HippyEngineManagerImpl$HippyEngineContextImpl(HippyEngineManagerImpl paramHippyEngineManagerImpl, boolean paramBoolean, String paramString)
   {
     this.mModuleManager = new HippyModuleManagerImpl(this, paramHippyEngineManagerImpl.mAPIProviders);
-    this.mBridgeManager = new b(this, paramHippyEngineManagerImpl.mCoreBundleLoader, paramHippyEngineManagerImpl.getBridgeType(), paramHippyEngineManagerImpl.mEnableHippyBuffer, paramBoolean, paramString, HippyEngineManagerImpl.access$200(paramHippyEngineManagerImpl), HippyEngineManagerImpl.access$300(paramHippyEngineManagerImpl));
+    this.mBridgeManager = new b(this, paramHippyEngineManagerImpl.mCoreBundleLoader, paramHippyEngineManagerImpl.getBridgeType(), paramHippyEngineManagerImpl.mEnableHippyBuffer, paramBoolean, paramString, paramHippyEngineManagerImpl.mGroupId, HippyEngineManagerImpl.access$200(paramHippyEngineManagerImpl));
     this.mRenderManager = new RenderManager(this, paramHippyEngineManagerImpl.mAPIProviders);
     this.mDomManager = new DomManager(this);
   }
   
   public void addEngineLifecycleEventListener(HippyEngineLifecycleEventListener paramHippyEngineLifecycleEventListener)
   {
-    if (this.mEngineLifecycleEventListeners == null) {}
-    try
-    {
-      if (this.mEngineLifecycleEventListeners == null) {
-        this.mEngineLifecycleEventListeners = new CopyOnWriteArrayList();
+    if (this.mEngineLifecycleEventListeners == null) {
+      try
+      {
+        if (this.mEngineLifecycleEventListeners == null) {
+          this.mEngineLifecycleEventListeners = new CopyOnWriteArrayList();
+        }
       }
-      this.mEngineLifecycleEventListeners.add(paramHippyEngineLifecycleEventListener);
-      return;
+      finally {}
     }
-    finally {}
+    this.mEngineLifecycleEventListeners.add(paramHippyEngineLifecycleEventListener);
   }
   
   public void addInstanceLifecycleEventListener(HippyInstanceLifecycleEventListener paramHippyInstanceLifecycleEventListener)
   {
-    if (this.mInstanceLifecycleEventListeners == null) {}
-    try
-    {
-      if (this.mInstanceLifecycleEventListeners == null) {
-        this.mInstanceLifecycleEventListeners = new CopyOnWriteArrayList();
+    if (this.mInstanceLifecycleEventListeners == null) {
+      try
+      {
+        if (this.mInstanceLifecycleEventListeners == null) {
+          this.mInstanceLifecycleEventListeners = new CopyOnWriteArrayList();
+        }
       }
-      this.mInstanceLifecycleEventListeners.add(paramHippyInstanceLifecycleEventListener);
-      return;
+      finally {}
     }
-    finally {}
+    this.mInstanceLifecycleEventListeners.add(paramHippyInstanceLifecycleEventListener);
   }
   
   public void destroy()
   {
-    if (this.mBridgeManager != null) {
-      this.mBridgeManager.a();
+    Object localObject = this.mBridgeManager;
+    if (localObject != null) {
+      ((a)localObject).a();
     }
-    if (this.mModuleManager != null) {
-      this.mModuleManager.destroy();
+    localObject = this.mModuleManager;
+    if (localObject != null) {
+      ((HippyModuleManager)localObject).destroy();
     }
-    if (this.mDomManager != null) {
-      this.mDomManager.b();
+    localObject = this.mDomManager;
+    if (localObject != null) {
+      ((DomManager)localObject).b();
     }
-    if (this.mRenderManager != null) {
-      this.mRenderManager.a();
+    localObject = this.mRenderManager;
+    if (localObject != null) {
+      ((RenderManager)localObject).a();
     }
     if (this.mInstanceLifecycleEventListeners != null) {
       this.mInstanceLifecycleEventListeners.clear();
@@ -80,6 +85,11 @@ public class HippyEngineManagerImpl$HippyEngineContextImpl
     if (this.mEngineLifecycleEventListeners != null) {
       this.mEngineLifecycleEventListeners.clear();
     }
+  }
+  
+  public void destroyBridge(Callback<Boolean> paramCallback)
+  {
+    this.mBridgeManager.b(paramCallback);
   }
   
   public a getBridgeManager()
@@ -149,8 +159,10 @@ public class HippyEngineManagerImpl$HippyEngineContextImpl
     }
     if ((paramThrowable instanceof HippyJsException))
     {
-      this.this$0.mGlobalConfigs.getExceptionHandler().handleJsException((HippyJsException)paramThrowable);
-      this.this$0.mEngineContext.getBridgeManager().a((HippyJsException)paramThrowable);
+      HippyExceptionHandlerAdapter localHippyExceptionHandlerAdapter = this.this$0.mGlobalConfigs.getExceptionHandler();
+      paramThrowable = (HippyJsException)paramThrowable;
+      localHippyExceptionHandlerAdapter.handleJsException(paramThrowable);
+      this.this$0.mEngineContext.getBridgeManager().a(paramThrowable);
       return;
     }
     this.this$0.mGlobalConfigs.getExceptionHandler().handleNativeException(new RuntimeException(paramThrowable), true);
@@ -172,7 +184,7 @@ public class HippyEngineManagerImpl$HippyEngineContextImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngineManagerImpl.HippyEngineContextImpl
  * JD-Core Version:    0.7.0.1
  */

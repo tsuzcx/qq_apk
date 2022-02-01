@@ -69,44 +69,53 @@ public final class stSimpleMetaPerson
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.type, 1);
-    if (this.uid != null) {
-      paramJceOutputStream.write(this.uid, 2);
+    localObject = this.uid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.createtime, 3);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 4);
+    localObject = this.nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.avatar != null) {
-      paramJceOutputStream.write(this.avatar, 5);
+    localObject = this.avatar;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.schema_url != null) {
-      paramJceOutputStream.write(this.schema_url, 6);
+    localObject = this.schema_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.relation_type, 7);
     paramJceOutputStream.write(this.followStatus, 8);
     paramJceOutputStream.write(this.medal, 9);
-    if (this.nueric != null) {
-      paramJceOutputStream.write(this.nueric, 10);
+    localObject = this.nueric;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
-    if (this.recommendReason != null) {
-      paramJceOutputStream.write(this.recommendReason, 11);
+    localObject = this.recommendReason;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.sex, 12);
-    if (this.avatarSchema != null) {
-      paramJceOutputStream.write(this.avatarSchema, 13);
+    localObject = this.avatarSchema;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
-    if (this.live != null) {
-      paramJceOutputStream.write(this.live, 14);
+    localObject = this.live;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSimpleMetaPerson
  * JD-Core Version:    0.7.0.1
  */

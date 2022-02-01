@@ -12,7 +12,10 @@ class ChannelProxyDefault$3
   
   public void onRequestFailed(int paramInt, String paramString)
   {
-    QMLog.e("ChannelProxyDefault", "httpReport onRequestFailed code = " + paramInt);
+    paramString = new StringBuilder();
+    paramString.append("httpReport onRequestFailed code = ");
+    paramString.append(paramInt);
+    QMLog.e("ChannelProxyDefault", paramString.toString());
   }
   
   public void onRequestHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
@@ -24,7 +27,7 @@ class ChannelProxyDefault$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault.3
  * JD-Core Version:    0.7.0.1
  */

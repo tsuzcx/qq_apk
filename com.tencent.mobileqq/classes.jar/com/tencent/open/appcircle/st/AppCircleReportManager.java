@@ -23,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class AppCircleReportManager
   implements NetworkState.NetworkStateListener, StatReportHttpEngine.IStatReportListener
 {
-  private static AppCircleReportManager jdField_a_of_type_ComTencentOpenAppcircleStAppCircleReportManager = null;
+  private static AppCircleReportManager jdField_a_of_type_ComTencentOpenAppcircleStAppCircleReportManager;
   private long jdField_a_of_type_Long = 1800000L;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private SparseArray<ArrayList<StatItem>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
@@ -60,74 +60,105 @@ public class AppCircleReportManager
   
   public void a(int paramInt, DownloadInfo paramDownloadInfo)
   {
-    if (BaseApplicationImpl.sProcessId == 7) {}
-    for (int i = 1; (paramDownloadInfo == null) || (i == 0); i = 0) {
-      return;
+    int i;
+    if (BaseApplicationImpl.sProcessId == 7) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    long l = System.currentTimeMillis() / 1000L;
-    a(9, l + "|" + paramDownloadInfo.jdField_c_of_type_JavaLangString + "|" + paramDownloadInfo.b + "|" + paramDownloadInfo.e + "|" + paramDownloadInfo.jdField_c_of_type_Int + "|" + paramInt + "|" + paramDownloadInfo.jdField_c_of_type_Long + "|" + paramDownloadInfo.h);
+    if (paramDownloadInfo != null)
+    {
+      if (i == 0) {
+        return;
+      }
+      long l = System.currentTimeMillis() / 1000L;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(l);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramDownloadInfo.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramDownloadInfo.b);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramDownloadInfo.e);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramDownloadInfo.jdField_c_of_type_Int);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramDownloadInfo.jdField_c_of_type_Long);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramDownloadInfo.h);
+      a(9, localStringBuilder.toString());
+    }
   }
   
   public void a(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2)
   {
-    Log.i("selfupdeReport", "circleTest reportLog onReportFinish errorCode = " + paramInt2);
+    paramStatReportRequest = new StringBuilder();
+    paramStatReportRequest.append("circleTest reportLog onReportFinish errorCode = ");
+    paramStatReportRequest.append(paramInt2);
+    Log.i("selfupdeReport", paramStatReportRequest.toString());
     paramStatReportRequest = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-    if (paramStatReportRequest == null) {
-      paramStatReportRequest = (ArrayList)this.b.get(paramInt1);
-    }
-    for (int i = 1;; i = 0)
+    int j = 0;
+    int i;
+    if (paramStatReportRequest == null)
     {
-      if (paramInt2 != 0)
-      {
-        if ((paramStatReportRequest != null) && (paramStatReportRequest.size() > 0) && (i == 0))
-        {
-          SparseArray localSparseArray = new SparseArray();
-          Iterator localIterator = paramStatReportRequest.iterator();
-          while (localIterator.hasNext())
-          {
-            StatItem localStatItem = (StatItem)localIterator.next();
-            paramStatReportResponse = (List)localSparseArray.get(localStatItem.type);
-            paramStatReportRequest = paramStatReportResponse;
-            if (paramStatReportResponse == null)
-            {
-              paramStatReportRequest = new ArrayList();
-              localSparseArray.put(localStatItem.type, paramStatReportRequest);
-            }
-            paramStatReportRequest.addAll(localStatItem.records);
-          }
-          i = localSparseArray.size();
-          paramInt2 = 0;
-          while (paramInt2 < i)
-          {
-            int j = localSparseArray.keyAt(paramInt2);
-            paramStatReportResponse = (List)localSparseArray.get(j);
-            paramStatReportRequest = new ArrayList();
-            paramStatReportResponse = paramStatReportResponse.iterator();
-            while (paramStatReportResponse.hasNext()) {
-              paramStatReportRequest.add((String)paramStatReportResponse.next());
-            }
-            paramStatReportResponse = ReportDatabaseHelper.a().a(String.valueOf(j));
-            if (paramStatReportResponse != null) {
-              paramStatReportRequest.addAll(paramStatReportResponse);
-            }
-            ReportDatabaseHelper.a().a(String.valueOf(j), paramStatReportRequest);
-            paramInt2 += 1;
-          }
-        }
-      }
-      else if ((i != 0) && (paramStatReportRequest != null) && (paramStatReportRequest.size() > 0))
-      {
-        paramStatReportRequest = paramStatReportRequest.iterator();
-        while (paramStatReportRequest.hasNext())
-        {
-          paramStatReportResponse = (StatItem)paramStatReportRequest.next();
-          ReportDatabaseHelper.a().a(String.valueOf(paramStatReportResponse.type));
-        }
-      }
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt1);
-      this.b.delete(paramInt1);
-      return;
+      paramStatReportRequest = (ArrayList)this.b.get(paramInt1);
+      i = 1;
     }
+    else
+    {
+      i = 0;
+    }
+    if (paramInt2 != 0)
+    {
+      if ((paramStatReportRequest != null) && (paramStatReportRequest.size() > 0) && (i == 0))
+      {
+        SparseArray localSparseArray = new SparseArray();
+        Iterator localIterator = paramStatReportRequest.iterator();
+        while (localIterator.hasNext())
+        {
+          StatItem localStatItem = (StatItem)localIterator.next();
+          paramStatReportResponse = (List)localSparseArray.get(localStatItem.type);
+          paramStatReportRequest = paramStatReportResponse;
+          if (paramStatReportResponse == null)
+          {
+            paramStatReportRequest = new ArrayList();
+            localSparseArray.put(localStatItem.type, paramStatReportRequest);
+          }
+          paramStatReportRequest.addAll(localStatItem.records);
+        }
+        i = localSparseArray.size();
+        paramInt2 = j;
+        while (paramInt2 < i)
+        {
+          j = localSparseArray.keyAt(paramInt2);
+          paramStatReportResponse = (List)localSparseArray.get(j);
+          paramStatReportRequest = new ArrayList();
+          paramStatReportResponse = paramStatReportResponse.iterator();
+          while (paramStatReportResponse.hasNext()) {
+            paramStatReportRequest.add((String)paramStatReportResponse.next());
+          }
+          paramStatReportResponse = ReportDatabaseHelper.a().a(String.valueOf(j));
+          if (paramStatReportResponse != null) {
+            paramStatReportRequest.addAll(paramStatReportResponse);
+          }
+          ReportDatabaseHelper.a().a(String.valueOf(j), paramStatReportRequest);
+          paramInt2 += 1;
+        }
+      }
+    }
+    else if ((i != 0) && (paramStatReportRequest != null) && (paramStatReportRequest.size() > 0))
+    {
+      paramStatReportRequest = paramStatReportRequest.iterator();
+      while (paramStatReportRequest.hasNext())
+      {
+        paramStatReportResponse = (StatItem)paramStatReportRequest.next();
+        ReportDatabaseHelper.a().a(String.valueOf(paramStatReportResponse.type));
+      }
+    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt1);
+    this.b.delete(paramInt1);
   }
   
   public void a(int paramInt, String paramString)
@@ -149,20 +180,20 @@ public class AppCircleReportManager
   
   public void onNetworkConnect(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
       }
     }
-    while (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-      return;
+    else if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcircle.st.AppCircleReportManager
  * JD-Core Version:    0.7.0.1
  */

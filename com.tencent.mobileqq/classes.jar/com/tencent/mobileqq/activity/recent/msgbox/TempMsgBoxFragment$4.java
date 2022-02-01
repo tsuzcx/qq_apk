@@ -16,21 +16,18 @@ class TempMsgBoxFragment$4
   
   public void onClick(View paramView)
   {
-    if (SettingsConfigHelper.a(this.a.a)) {
-      PublicFragmentActivity.a(TempMsgBoxFragment.a(this.a), NewTempMsgSettingFragment.class);
+    if (SettingsConfigHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      PublicFragmentActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, NewTempMsgSettingFragment.class);
+    } else {
+      PublicFragmentActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, TempMsgSettingFragment.class);
     }
-    for (;;)
-    {
-      ReportController.b(this.a.a, "dc00898", "", "", "0X800B1C1", "0X800B1C1", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      PublicFragmentActivity.a(TempMsgBoxFragment.a(this.a), TempMsgSettingFragment.class);
-    }
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B1C1", "0X800B1C1", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxFragment.4
  * JD-Core Version:    0.7.0.1
  */

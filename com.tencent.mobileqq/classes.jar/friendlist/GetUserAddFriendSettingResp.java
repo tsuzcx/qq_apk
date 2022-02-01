@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetUserAddFriendSettingResp
   extends JceStruct
@@ -71,23 +72,26 @@ public final class GetUserAddFriendSettingResp
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.queryuin, 1);
     paramJceOutputStream.write(this.queryuinsetting, 2);
-    if (this.vecStrUserQuestion != null) {
-      paramJceOutputStream.write(this.vecStrUserQuestion, 3);
+    Object localObject = this.vecStrUserQuestion;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.result, 4);
     paramJceOutputStream.write(this.errorCode, 5);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 6);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 6);
     }
     paramJceOutputStream.write(this.contact_bothway_friend, 7);
-    if (this.name1 != null) {
-      paramJceOutputStream.write(this.name1, 8);
+    localObject = this.name1;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.GetUserAddFriendSettingResp
  * JD-Core Version:    0.7.0.1
  */

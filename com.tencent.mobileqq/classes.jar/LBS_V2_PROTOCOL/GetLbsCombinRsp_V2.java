@@ -47,14 +47,15 @@ public final class GetLbsCombinRsp_V2
     paramJceOutputStream.write(this.stPoiInfo, 2);
     paramJceOutputStream.write(this.stWeather, 3);
     paramJceOutputStream.write(this.iMood, 4);
-    if (this.request_id != null) {
-      paramJceOutputStream.write(this.request_id, 5);
+    String str = this.request_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.GetLbsCombinRsp_V2
  * JD-Core Version:    0.7.0.1
  */

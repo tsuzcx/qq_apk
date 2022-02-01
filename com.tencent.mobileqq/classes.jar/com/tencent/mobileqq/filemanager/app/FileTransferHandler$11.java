@@ -11,13 +11,17 @@ class FileTransferHandler$11
   
   public void run()
   {
-    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "] upload competed:");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OLfilesession[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("] upload competed:");
+    QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
     this.this$0.a.getOnlineFileSessionCenter().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.11
  * JD-Core Version:    0.7.0.1
  */

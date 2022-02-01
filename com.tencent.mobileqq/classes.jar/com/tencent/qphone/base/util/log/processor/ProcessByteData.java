@@ -26,14 +26,15 @@ public class ProcessByteData
   public ProcessByteData(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     this.bytes = paramArrayOfByte;
-    if (paramArrayOfByte == null) {}
-    for (int i = 0;; i = paramArrayOfByte.length)
-    {
-      this.capacity = i;
-      this.offset = paramInt1;
-      this.length = paramInt2;
-      return;
+    int i;
+    if (paramArrayOfByte == null) {
+      i = 0;
+    } else {
+      i = paramArrayOfByte.length;
     }
+    this.capacity = i;
+    this.offset = paramInt1;
+    this.length = paramInt2;
   }
   
   public void append(byte[] paramArrayOfByte, int paramInt)
@@ -77,7 +78,7 @@ public class ProcessByteData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.processor.ProcessByteData
  * JD-Core Version:    0.7.0.1
  */

@@ -20,16 +20,16 @@ public class HippyTKDImageViewController
   public static final String COMMAND_START_PLAY = "startPlay";
   private static final String TAG = "TKDImageViewController";
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyTKDImageView(paramContext);
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     paramContext = new HippyTKDImageView(paramContext);
     if (paramHippyMap != null) {
-      paramContext.setIniProps(paramHippyMap);
+      paramContext.setInitProps(paramHippyMap);
     }
     return paramContext;
   }
@@ -43,14 +43,15 @@ public class HippyTKDImageViewController
       paramHippyImageView = new HippyMap();
       paramHippyImageView.pushBoolean("result", true);
       paramPromise.resolve(paramHippyImageView);
-    }
-    while (!"pause".equals(paramString)) {
       return;
     }
-    paramHippyImageView.pause();
-    paramHippyImageView = new HippyMap();
-    paramHippyImageView.pushBoolean("result", true);
-    paramPromise.resolve(paramHippyImageView);
+    if ("pause".equals(paramString))
+    {
+      paramHippyImageView.pause();
+      paramHippyImageView = new HippyMap();
+      paramHippyImageView.pushBoolean("result", true);
+      paramPromise.resolve(paramHippyImageView);
+    }
   }
   
   public void setBackground(HippyImageView paramHippyImageView, int paramInt)
@@ -161,7 +162,7 @@ public class HippyTKDImageViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.image.HippyTKDImageViewController
  * JD-Core Version:    0.7.0.1
  */

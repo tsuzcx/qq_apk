@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.pluginshare.TenCookie;
+import cooperation.qwallet.pluginshare.ITenCookie;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,45 +24,54 @@ public class QWalletCommonJsPlugin$MyResultRecevicer
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("QWalletCommonJsPlugin", 2, "resultCode = " + paramInt + " resultData = " + paramBundle);
-    }
-    if ((this.mJsPlugin == null) || (paramBundle == null)) {
-      return;
-    }
-    String str2 = paramBundle.getString("detail");
-    if ((TextUtils.isEmpty(QWalletCommonJsPlugin.mParamForGarpHb)) && (!TextUtils.isEmpty(QWalletCommonJsPlugin.mListid))) {
-      QWalletCommonJsPlugin.mParamForGarpHb = TenCookie.a().b(QWalletCommonJsPlugin.mListid);
-    }
-    str1 = "";
-    paramBundle = str1;
-    if (paramInt == 0) {
-      paramBundle = new JSONObject();
-    }
-    try
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      if (!TextUtils.isEmpty(QWalletCommonJsPlugin.mParamForGarpHb)) {
-        paramBundle.put("param", QWalletCommonJsPlugin.mParamForGarpHb);
-      }
-      if (!TextUtils.isEmpty(str2)) {
-        paramBundle.put("detail", str2);
-      }
-      paramBundle = paramBundle.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("resultCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" resultData = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.i("QWalletCommonJsPlugin", 2, ((StringBuilder)localObject).toString());
     }
-    catch (JSONException paramBundle)
+    if (this.mJsPlugin != null)
     {
-      for (;;)
+      if (paramBundle == null) {
+        return;
+      }
+      paramBundle = paramBundle.getString("detail");
+      if ((TextUtils.isEmpty(QWalletCommonJsPlugin.mParamForGarpHb)) && (!TextUtils.isEmpty(QWalletCommonJsPlugin.mListid))) {
+        QWalletCommonJsPlugin.mParamForGarpHb = ((ITenCookie)QRoute.api(ITenCookie.class)).getTempArgs(QWalletCommonJsPlugin.mListid);
+      }
+      if (paramInt == 0)
       {
-        paramBundle.printStackTrace();
-        paramBundle = str1;
+        localObject = new JSONObject();
+        try
+        {
+          if (!TextUtils.isEmpty(QWalletCommonJsPlugin.mParamForGarpHb)) {
+            ((JSONObject)localObject).put("param", QWalletCommonJsPlugin.mParamForGarpHb);
+          }
+          if (!TextUtils.isEmpty(paramBundle)) {
+            ((JSONObject)localObject).put("detail", paramBundle);
+          }
+          paramBundle = ((JSONObject)localObject).toString();
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+        }
       }
+      else
+      {
+        paramBundle = "";
+      }
+      QWalletCommonJsPlugin.access$400(this.mJsPlugin, paramBundle);
     }
-    QWalletCommonJsPlugin.access$400(this.mJsPlugin, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.MyResultRecevicer
  * JD-Core Version:    0.7.0.1
  */

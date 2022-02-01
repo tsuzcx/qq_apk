@@ -3,10 +3,12 @@ package com.tencent.mobileqq.apollo.statistics.trace.sdk;
 import android.os.Bundle;
 import android.os.SystemClock;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.utils.ProcessUtil;
 import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class TraceReportInterceptor
 {
@@ -19,7 +21,7 @@ public class TraceReportInterceptor
     localBundle.putInt("featureId", paramInt);
     localBundle.putString("featureKey", paramString);
     localBundle.putLong("endTime", SystemClock.uptimeMillis());
-    if (BaseApplicationImpl.sProcessId == 1)
+    if (ProcessUtil.a())
     {
       TraceReportInstance.a().b(paramInt, paramString, localBundle);
       return;
@@ -44,28 +46,30 @@ public class TraceReportInterceptor
     paramVarArgs.putString("featureKey", paramString);
     paramVarArgs.putInt("spanId", paramInt2);
     paramVarArgs.putInt("errCode", paramInt3);
-    if (paramLong1 > 0L) {}
-    for (long l = paramLong1;; l = System.currentTimeMillis())
+    long l;
+    if (paramLong1 > 0L) {
+      l = paramLong1;
+    } else {
+      l = System.currentTimeMillis();
+    }
+    paramVarArgs.putLong("timestamp", l);
+    if ((paramInt3 == 0) || (paramInt3 == -100))
     {
-      paramVarArgs.putLong("timestamp", l);
-      if ((paramInt3 == 0) || (paramInt3 == -100))
-      {
-        l = paramLong1;
-        if (paramLong1 > 0L) {}
-      }
-      else
-      {
-        l = SystemClock.uptimeMillis();
-      }
-      paramVarArgs.putLong("serverTime", NetConnInfoCenter.getServerTimeMillis());
-      paramVarArgs.putLong("startTime", l);
-      paramVarArgs.putLong("endTime", l);
-      paramVarArgs.putString("msg", localStringBuilder.toString());
-      paramVarArgs.putInt("extKey", paramInt4);
-      paramVarArgs.putLong("extValue", paramLong2);
-      if (BaseApplicationImpl.sProcessId != 1) {
-        break;
-      }
+      l = paramLong1;
+      if (paramLong1 > 0L) {}
+    }
+    else
+    {
+      l = SystemClock.uptimeMillis();
+    }
+    paramVarArgs.putLong("serverTime", NetConnInfoCenter.getServerTimeMillis());
+    paramVarArgs.putLong("startTime", l);
+    paramVarArgs.putLong("endTime", l);
+    paramVarArgs.putString("msg", localStringBuilder.toString());
+    paramVarArgs.putInt("extKey", paramInt4);
+    paramVarArgs.putLong("extValue", paramLong2);
+    if (ProcessUtil.a())
+    {
       TraceReportInstance.a().c(paramInt1, paramString, paramVarArgs);
       return;
     }
@@ -85,7 +89,7 @@ public class TraceReportInterceptor
     localBundle.putLong("serverTime", NetConnInfoCenter.getServerTimeMillis());
     localBundle.putLong("startTime", SystemClock.uptimeMillis());
     localBundle.putLong("endTime", SystemClock.uptimeMillis());
-    if (BaseApplicationImpl.sProcessId == 1)
+    if (ProcessUtil.a())
     {
       TraceReportInstance.a().a(paramInt, paramString2, localBundle);
       return;
@@ -95,34 +99,34 @@ public class TraceReportInterceptor
   
   public static void a(int paramInt, String paramString1, String paramString2, int... paramVarArgs)
   {
-    int i = 0;
     if (!TraceReportInstance.a()) {
       return;
     }
     int j = 0;
     int m = 0;
     int k = 0;
-    while ((i < paramVarArgs.length) && (i < 3))
+    int i = 0;
+    while ((j < paramVarArgs.length) && (j < 3))
     {
-      if (i == 0) {
-        k = paramVarArgs[i];
+      if (j == 0) {
+        m = paramVarArgs[j];
       }
-      if (i == 1) {
-        m = paramVarArgs[i];
+      if (j == 1) {
+        k = paramVarArgs[j];
       }
-      if (i == 2) {
-        j = paramVarArgs[i];
+      if (j == 2) {
+        i = paramVarArgs[j];
       }
-      i += 1;
+      j += 1;
     }
     paramVarArgs = new Bundle();
     paramVarArgs.putInt("featureId", paramInt);
     paramVarArgs.putString("featureKey", paramString2);
     paramVarArgs.putString("tuid", paramString1);
-    paramVarArgs.putInt("extra1", k);
-    paramVarArgs.putInt("extra2", m);
-    paramVarArgs.putInt("extra3", j);
-    if (BaseApplicationImpl.sProcessId == 1)
+    paramVarArgs.putInt("extra1", m);
+    paramVarArgs.putInt("extra2", k);
+    paramVarArgs.putInt("extra3", i);
+    if (ProcessUtil.a())
     {
       TraceReportInstance.a().a(paramInt, paramVarArgs);
       return;
@@ -151,12 +155,20 @@ public class TraceReportInterceptor
     if (!TraceReportInstance.a()) {
       return;
     }
-    if (BaseApplicationImpl.sProcessId == 1)
+    if (ProcessUtil.a())
     {
       TraceReportInstance.a().a(paramTraceConfig);
       return;
     }
-    throw new IllegalArgumentException("config should init in PROCESS_QQ");
+    Bundle localBundle = new Bundle();
+    if (paramTraceConfig != null)
+    {
+      int i = paramTraceConfig.a();
+      paramTraceConfig = paramTraceConfig.a();
+      localBundle.putInt("appId", i);
+      localBundle.putString("currentAccount", paramTraceConfig);
+    }
+    a("action_init_trace", localBundle);
   }
   
   private static void a(String paramString, Bundle paramBundle)
@@ -166,14 +178,14 @@ public class TraceReportInterceptor
       b(paramString, paramBundle);
       return;
     }
-    if (!WebIPCOperator.a().a())
+    if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
     {
       b(paramString, paramBundle);
       return;
     }
     paramBundle.putString("action", paramString);
     paramString = DataFactory.a("ipc_trace_report", "", 0, paramBundle);
-    WebIPCOperator.a().a(paramString);
+    ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramString);
   }
   
   private static void b(String paramString, Bundle paramBundle)
@@ -186,7 +198,7 @@ public class TraceReportInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.TraceReportInterceptor
  * JD-Core Version:    0.7.0.1
  */

@@ -23,16 +23,20 @@ public class GetUserHealthDataRequest
   
   public static INTERFACE.StGetUserHealthDataRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetUserHealthDataRsp localStGetUserHealthDataRsp = new INTERFACE.StGetUserHealthDataRsp();
+    Object localObject = new INTERFACE.StGetUserHealthDataRsp();
     try
     {
-      localStGetUserHealthDataRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetUserHealthDataRsp;
+      ((INTERFACE.StGetUserHealthDataRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetUserHealthDataRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetUserHealthDataRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -45,7 +49,7 @@ public class GetUserHealthDataRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetUserHealthDataRequest
  * JD-Core Version:    0.7.0.1
  */

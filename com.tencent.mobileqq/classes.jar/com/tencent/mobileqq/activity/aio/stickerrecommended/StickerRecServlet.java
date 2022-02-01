@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
 import android.content.Intent;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.impl.StickerRecManagerImpl;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -16,7 +16,7 @@ public class StickerRecServlet
   {
     AppRuntime localAppRuntime = getAppRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
-      StickerRecManager.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
+      StickerRecManagerImpl.get((AppInterface)localAppRuntime).handleResponse(paramIntent, paramFromServiceMsg);
     }
   }
   
@@ -34,7 +34,7 @@ public class StickerRecServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecServlet
  * JD-Core Version:    0.7.0.1
  */

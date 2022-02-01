@@ -38,7 +38,15 @@ public class PluginInfo
   
   public String toString()
   {
-    return "PluginInfo{plugin_id='" + this.plugin_id + '\'' + ", inner_version='" + this.inner_version + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PluginInfo{plugin_id='");
+    localStringBuilder.append(this.plugin_id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", inner_version='");
+    localStringBuilder.append(this.inner_version);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -49,7 +57,7 @@ public class PluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.PluginInfo
  * JD-Core Version:    0.7.0.1
  */

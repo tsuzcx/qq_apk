@@ -26,7 +26,6 @@ import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.FaceRect;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageARSearchRes;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageARTag;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageTranslateReqInfo;
-import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImageTranslateRspResult;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImgRetrievalInfo;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ImgRetrievalResult;
 import com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.QuestionRes;
@@ -78,7 +77,6 @@ import com.tencent.mobileqq.highway.openup.SessionInfo;
 import com.tencent.mobileqq.highway.transaction.Transaction;
 import com.tencent.mobileqq.ocr.ARCloudReqOcrInfo;
 import com.tencent.mobileqq.ocr.data.ARCloudOcrResult;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -127,546 +125,477 @@ public class ARCloudFileUpload
   {
     ARCloudRecogResult localARCloudRecogResult = new ARCloudRecogResult();
     ARCloudRecogCommonPb.ARCloudRecogRsp localARCloudRecogRsp = new ARCloudRecogCommonPb.ARCloudRecogRsp();
-    long l1;
-    label72:
-    label100:
-    Object localObject1;
-    Object localObject2;
-    label161:
-    label188:
-    label239:
-    int k;
-    label266:
-    label292:
-    Object localObject3;
-    Object localObject4;
-    label394:
-    label420:
-    int j;
-    label447:
-    float f;
-    label475:
-    label503:
-    boolean bool;
     for (;;)
     {
       try
       {
         localARCloudRecogRsp.mergeFrom(paramArrayOfByte);
-        if (!localARCloudRecogRsp.str_session_id.has()) {
-          break label5299;
+        bool = localARCloudRecogRsp.str_session_id.has();
+        if (!bool) {
+          break label5713;
         }
         paramArrayOfByte = localARCloudRecogRsp.str_session_id.get();
         localARCloudRecogResult.jdField_a_of_type_JavaLangString = paramArrayOfByte;
         if (!localARCloudRecogRsp.uin64_req_recog_type.has()) {
-          break label5305;
+          break label5719;
         }
         l1 = localARCloudRecogRsp.uin64_req_recog_type.get();
         localARCloudRecogResult.jdField_a_of_type_Long = l1;
         if (!localARCloudRecogRsp.uin32_business_type.has()) {
-          break label5311;
+          break label5725;
         }
         i = localARCloudRecogRsp.uin32_business_type.get();
         localARCloudRecogResult.jdField_a_of_type_Int = i;
-        if (!localARCloudRecogRsp.msg_ar_marker_recog_result.has()) {
-          break label1292;
-        }
-        localObject1 = new ARCloudMarkerRecogResult();
-        localObject2 = (ARCloudRecogCustomPb.ARMarkerRecogResult)localARCloudRecogRsp.msg_ar_marker_recog_result.get();
-        if (!((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_errorcode.has()) {
-          break label5317;
-        }
-        i = ((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_errorcode.get();
-        ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_Int = i;
-        if (!((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_errormsg.has()) {
-          break label5323;
-        }
-        paramArrayOfByte = ((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_errormsg.get();
-        ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_JavaLangString = paramArrayOfByte;
-        if (!((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_res.has()) {
-          break label1245;
-        }
-        localObject2 = (ARCloudRecogCustomPb.ImageARSearchRes)((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_res.get();
-        if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errorcode.has()) {
-          break label5329;
-        }
-        i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errorcode.get();
-        ((ARCloudMarkerRecogResult)localObject1).jdField_b_of_type_Int = i;
-        if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errormsg.has()) {
-          break label5335;
-        }
-        paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errormsg.get();
-        ((ARCloudMarkerRecogResult)localObject1).jdField_c_of_type_JavaLangString = paramArrayOfByte;
-        if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).session_id.has()) {
-          break label5341;
-        }
-        paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).session_id.get();
-        ((ARCloudMarkerRecogResult)localObject1).jdField_d_of_type_JavaLangString = paramArrayOfByte;
-        if ((((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.has()) && (((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.size() > 0))
+        Object localObject2;
+        Object localObject3;
+        Object localObject4;
+        if (localARCloudRecogRsp.msg_ar_marker_recog_result.has())
         {
-          k = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.size();
-          ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag = new ARCloudMarkerRecogResult.ImageTag[k];
-          i = 0;
-          if (i < k)
-          {
-            localObject3 = new ARCloudMarkerRecogResult.ImageTag();
-            localObject4 = (ARCloudRecogCustomPb.ImageARTag)((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.get(i);
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).image_id.has()) {
-              break label5347;
-            }
-            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).image_id.get();
-            ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_a_of_type_JavaLangString = paramArrayOfByte;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_name.has()) {
-              break label5353;
-            }
-            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_name.get();
-            ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_b_of_type_JavaLangString = paramArrayOfByte;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence.has()) {
-              break label5359;
-            }
-            j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence.get();
-            ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_a_of_type_Int = j;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence_f.has()) {
-              break label5365;
-            }
-            f = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence_f.get();
-            ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_a_of_type_Float = f;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).need_check_lbs.has()) {
-              break label5371;
-            }
-            j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).need_check_lbs.get();
-            ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_b_of_type_Int = j;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_errorcode.has()) {
-              break label5377;
-            }
-            j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_errorcode.get();
-            label531:
-            ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_c_of_type_Int = j;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_res.has()) {
-              break label5383;
-            }
-            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_res.get().toByteArray();
-            label561:
-            ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-            ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag[i] = localObject3;
-            i += 1;
-            continue;
+          localObject1 = new ARCloudMarkerRecogResult();
+          localObject2 = (ARCloudRecogCustomPb.ARMarkerRecogResult)localARCloudRecogRsp.msg_ar_marker_recog_result.get();
+          if (!((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_errorcode.has()) {
+            break label5731;
           }
-          if (k > 0)
-          {
-            if (localObject1.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag[0].jdField_b_of_type_Int != 1) {
-              break label5388;
-            }
-            bool = true;
-            label608:
-            ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_Boolean = bool;
+          i = ((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_errorcode.get();
+          ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_Int = i;
+          if (!((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_errormsg.has()) {
+            break label5737;
           }
-          if (((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).time_ms.has())
+          paramArrayOfByte = ((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_errormsg.get();
+          ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_JavaLangString = paramArrayOfByte;
+          if (((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_res.has())
           {
+            localObject2 = (ARCloudRecogCustomPb.ImageARSearchRes)((ARCloudRecogCustomPb.ARMarkerRecogResult)localObject2).image_ar_search_res.get();
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errorcode.has()) {
+              break label5743;
+            }
+            i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errorcode.get();
+            ((ARCloudMarkerRecogResult)localObject1).jdField_b_of_type_Int = i;
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errormsg.has()) {
+              break label5749;
+            }
+            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errormsg.get();
+            ((ARCloudMarkerRecogResult)localObject1).jdField_c_of_type_JavaLangString = paramArrayOfByte;
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).session_id.has()) {
+              break label5755;
+            }
+            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).session_id.get();
+            ((ARCloudMarkerRecogResult)localObject1).jdField_d_of_type_JavaLangString = paramArrayOfByte;
+            if ((((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.has()) && (((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.size() > 0))
+            {
+              k = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.size();
+              ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag = new ARCloudMarkerRecogResult.ImageTag[k];
+              i = 0;
+              if (i < k)
+              {
+                localObject3 = new ARCloudMarkerRecogResult.ImageTag();
+                localObject4 = (ARCloudRecogCustomPb.ImageARTag)((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.get(i);
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).image_id.has()) {
+                  break label5761;
+                }
+                paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).image_id.get();
+                ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_a_of_type_JavaLangString = paramArrayOfByte;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_name.has()) {
+                  break label5767;
+                }
+                paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_name.get();
+                ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_b_of_type_JavaLangString = paramArrayOfByte;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence.has()) {
+                  break label5773;
+                }
+                j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence.get();
+                ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_a_of_type_Int = j;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence_f.has()) {
+                  break label5779;
+                }
+                f = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence_f.get();
+                ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_a_of_type_Float = f;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).need_check_lbs.has()) {
+                  break label5785;
+                }
+                j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).need_check_lbs.get();
+                ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_b_of_type_Int = j;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_errorcode.has()) {
+                  break label5791;
+                }
+                j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_errorcode.get();
+                ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_c_of_type_Int = j;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_res.has()) {
+                  break label5797;
+                }
+                paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_res.get().toByteArray();
+                ((ARCloudMarkerRecogResult.ImageTag)localObject3).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+                ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag[i] = localObject3;
+                i += 1;
+                continue;
+              }
+              if (k > 0)
+              {
+                if (localObject1.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag[0].jdField_b_of_type_Int != 1) {
+                  break label5802;
+                }
+                bool = true;
+                ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_Boolean = bool;
+              }
+            }
+            else
+            {
+              ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag = null;
+            }
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).time_ms.has()) {
+              break label5808;
+            }
             i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).time_ms.get();
             ((ARCloudMarkerRecogResult)localObject1).jdField_c_of_type_Int = i;
             if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).score.has()) {
-              break label1233;
+              break label5814;
             }
             i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).score.get();
             ((ARCloudMarkerRecogResult)localObject1).jdField_d_of_type_Int = i;
             if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).kpt_num.has()) {
-              break label1239;
+              break label5820;
             }
             i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).kpt_num.get();
             ((ARCloudMarkerRecogResult)localObject1).e = i;
-            localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult = ((ARCloudMarkerRecogResult)localObject1);
-            if (!localARCloudRecogRsp.msg_ar_object_classify_result.has()) {
-              break label2988;
-            }
-            localObject1 = new ARCloudObjectClassifyResult();
-            localObject2 = (ARCloudRecogCustomPb.ARObjectClassifyResult)localARCloudRecogRsp.msg_ar_object_classify_result.get();
-            if (!((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).ar_object_classify_errorcode.has()) {
-              break label5394;
-            }
-            i = ((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).ar_object_classify_errorcode.get();
-            label760:
-            ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_Int = i;
-            if (!((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).ar_object_classify_errormsg.has()) {
-              break label5400;
-            }
-            paramArrayOfByte = ((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).ar_object_classify_errormsg.get();
-            label787:
-            ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_JavaLangString = paramArrayOfByte;
-            if (!((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).image_ar_search_res.has()) {
-              break label2941;
-            }
-            localObject2 = (ARCloudRecogCustomPb.ImageARSearchRes)((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).image_ar_search_res.get();
-            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errorcode.has()) {
-              break label5406;
-            }
-            i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errorcode.get();
-            label838:
-            ((ARCloudObjectClassifyResult)localObject1).jdField_b_of_type_Int = i;
-            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errormsg.has()) {
-              break label5412;
-            }
-            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errormsg.get();
-            label865:
-            ((ARCloudObjectClassifyResult)localObject1).jdField_c_of_type_JavaLangString = paramArrayOfByte;
-            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).session_id.has()) {
-              break label5418;
-            }
-            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).session_id.get();
-            label891:
-            ((ARCloudObjectClassifyResult)localObject1).jdField_d_of_type_JavaLangString = paramArrayOfByte;
-            if ((!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.has()) || (((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.size() <= 0)) {
-              break label2932;
-            }
-            k = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.size();
-            ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag = new ARCloudObjectClassifyResult.ImageTag[k];
-            i = 0;
-            if (i >= k) {
-              break;
-            }
-            localObject3 = new ARCloudObjectClassifyResult.ImageTag();
-            localObject4 = (ARCloudRecogCustomPb.ImageARTag)((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.get(i);
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).image_id.has()) {
-              break label5424;
-            }
-            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).image_id.get();
-            label993:
-            ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_a_of_type_JavaLangString = paramArrayOfByte;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_name.has()) {
-              break label5430;
-            }
-            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_name.get();
-            label1019:
-            ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_b_of_type_JavaLangString = paramArrayOfByte;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence.has()) {
-              break label5436;
-            }
-            j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence.get();
-            label1046:
-            ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_a_of_type_Int = j;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence_f.has()) {
-              break label5442;
-            }
-            f = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence_f.get();
-            label1074:
-            ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_a_of_type_Float = f;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).need_check_lbs.has()) {
-              break label5448;
-            }
-            j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).need_check_lbs.get();
-            label1102:
-            ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_b_of_type_Int = j;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_errorcode.has()) {
-              break label5454;
-            }
-            j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_errorcode.get();
-            label1130:
-            ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_c_of_type_Int = j;
-            if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_res.has()) {
-              break label5460;
-            }
-            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_res.get().toByteArray();
-            label1160:
-            ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-            ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[i] = localObject3;
-            i += 1;
-            continue;
           }
+          else
+          {
+            ((ARCloudMarkerRecogResult)localObject1).jdField_b_of_type_Int = -1;
+            ((ARCloudMarkerRecogResult)localObject1).jdField_c_of_type_JavaLangString = "";
+            ((ARCloudMarkerRecogResult)localObject1).jdField_d_of_type_JavaLangString = "";
+            ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag = null;
+            ((ARCloudMarkerRecogResult)localObject1).jdField_c_of_type_Int = 0;
+            ((ARCloudMarkerRecogResult)localObject1).jdField_d_of_type_Int = 0;
+            ((ARCloudMarkerRecogResult)localObject1).e = 0;
+          }
+          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult = ((ARCloudMarkerRecogResult)localObject1);
         }
         else
         {
-          ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag = null;
-          continue;
+          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult = null;
         }
-        i = 0;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("AREngine_ARCloudFileUpload", 1, "deserialize pb failed. error msg = " + paramArrayOfByte.getMessage());
-        return null;
-      }
-      continue;
-      label1233:
-      i = 0;
-      continue;
-      label1239:
-      i = 0;
-      continue;
-      label1245:
-      ((ARCloudMarkerRecogResult)localObject1).jdField_b_of_type_Int = -1;
-      ((ARCloudMarkerRecogResult)localObject1).jdField_c_of_type_JavaLangString = "";
-      ((ARCloudMarkerRecogResult)localObject1).jdField_d_of_type_JavaLangString = "";
-      ((ARCloudMarkerRecogResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag = null;
-      ((ARCloudMarkerRecogResult)localObject1).jdField_c_of_type_Int = 0;
-      ((ARCloudMarkerRecogResult)localObject1).jdField_d_of_type_Int = 0;
-      ((ARCloudMarkerRecogResult)localObject1).e = 0;
-      continue;
-      label1292:
-      localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult = null;
-    }
-    label1323:
-    label1351:
-    label1379:
-    label1407:
-    double d;
-    if (k > 0)
-    {
-      if (localObject1.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[0].jdField_b_of_type_Int == 1)
-      {
-        bool = true;
-        ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_Boolean = bool;
-      }
-    }
-    else
-    {
-      if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).time_ms.has()) {
-        break label5471;
-      }
-      i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).time_ms.get();
-      ((ARCloudObjectClassifyResult)localObject1).jdField_c_of_type_Int = i;
-      if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).score.has()) {
-        break label5477;
-      }
-      i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).score.get();
-      ((ARCloudObjectClassifyResult)localObject1).jdField_d_of_type_Int = i;
-      if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).kpt_num.has()) {
-        break label5483;
-      }
-      i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).kpt_num.get();
-      ((ARCloudObjectClassifyResult)localObject1).e = i;
-      label1414:
-      localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult = ((ARCloudObjectClassifyResult)localObject1);
-      label1421:
-      localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult = null;
-      label1489:
-      label1516:
-      label1651:
-      label1784:
-      label1916:
-      Object localObject5;
-      if (localARCloudRecogRsp.msg_img_retrieval_result.has())
-      {
-        localObject1 = new ARMIGObjectClassifyResult();
-        ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
-        localObject2 = (ARCloudRecogCustomPb.ImgRetrievalResult)localARCloudRecogRsp.msg_img_retrieval_result.get();
-        if (!((ARCloudRecogCustomPb.ImgRetrievalResult)localObject2).errorcode.has()) {
-          break label5489;
-        }
-        i = ((ARCloudRecogCustomPb.ImgRetrievalResult)localObject2).errorcode.get();
-        ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_Int = i;
-        if (!((ARCloudRecogCustomPb.ImgRetrievalResult)localObject2).errormsg.has()) {
-          break label5495;
-        }
-        paramArrayOfByte = ((ARCloudRecogCustomPb.ImgRetrievalResult)localObject2).errormsg.get();
-        ((ARMIGObjectClassifyResult)localObject1).jdField_b_of_type_JavaLangString = paramArrayOfByte;
-        if (((ARCloudRecogCustomPb.ImgRetrievalResult)localObject2).jd_search_rsp.has()) {
-          ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult = ARMIGObjectClassifyResult.a((JDSearch.JdSearchRsp)((ARCloudRecogCustomPb.ImgRetrievalResult)localObject2).jd_search_rsp.get());
-        }
-        if (((ARCloudRecogCustomPb.ImgRetrievalResult)localObject2).msg_ir_logic_rsp.has())
+        if (localARCloudRecogRsp.msg_ar_object_classify_result.has())
         {
-          localObject2 = (ImageRetrievalLogic.IRLogicRsp)((ARCloudRecogCustomPb.ImgRetrievalResult)localObject2).msg_ir_logic_rsp.get();
-          if (!((ImageRetrievalLogic.IRLogicRsp)localObject2).iRetCode.has()) {
-            break label5501;
+          localObject1 = new ARCloudObjectClassifyResult();
+          localObject2 = (ARCloudRecogCustomPb.ARObjectClassifyResult)localARCloudRecogRsp.msg_ar_object_classify_result.get();
+          if (!((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).ar_object_classify_errorcode.has()) {
+            break label5826;
           }
-          i = ((ImageRetrievalLogic.IRLogicRsp)localObject2).iRetCode.get();
-          label1597:
-          ((ARMIGObjectClassifyResult)localObject1).jdField_b_of_type_Int = i;
-          if (!((ImageRetrievalLogic.IRLogicRsp)localObject2).sMsg.has()) {
-            break label5507;
+          i = ((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).ar_object_classify_errorcode.get();
+          ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_Int = i;
+          if (!((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).ar_object_classify_errormsg.has()) {
+            break label5832;
           }
-          paramArrayOfByte = ((ImageRetrievalLogic.IRLogicRsp)localObject2).sMsg.get();
-          label1624:
-          ((ARMIGObjectClassifyResult)localObject1).jdField_c_of_type_JavaLangString = paramArrayOfByte;
-          if (!((ImageRetrievalLogic.IRLogicRsp)localObject2).iBusiness.has()) {
-            break label5513;
-          }
-          i = ((ImageRetrievalLogic.IRLogicRsp)localObject2).iBusiness.get();
-          ((ARMIGObjectClassifyResult)localObject1).jdField_c_of_type_Int = i;
-          if (!((ImageRetrievalLogic.IRLogicRsp)localObject2).sKey.has()) {
-            break label5519;
-          }
-          paramArrayOfByte = ((ImageRetrievalLogic.IRLogicRsp)localObject2).sKey.get();
-          label1678:
-          ((ARMIGObjectClassifyResult)localObject1).jdField_d_of_type_JavaLangString = paramArrayOfByte;
-          ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox = null;
-          if (((ImageRetrievalLogic.IRLogicRsp)localObject2).stBBox.has())
+          paramArrayOfByte = ((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).ar_object_classify_errormsg.get();
+          ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_JavaLangString = paramArrayOfByte;
+          if (((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).image_ar_search_res.has())
           {
-            ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox = new ARMIGObjectClassifyResult.ObjectBox();
-            paramArrayOfByte = (ImageRetrievalComm.OD_BBox)((ImageRetrievalLogic.IRLogicRsp)localObject2).stBBox.get();
-            localObject3 = ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
-            if (!paramArrayOfByte.xmin.has()) {
-              break label5525;
+            localObject2 = (ARCloudRecogCustomPb.ImageARSearchRes)((ARCloudRecogCustomPb.ARObjectClassifyResult)localObject2).image_ar_search_res.get();
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errorcode.has()) {
+              break label5838;
             }
-            i = paramArrayOfByte.xmin.get();
-            label1751:
-            ((ARMIGObjectClassifyResult.ObjectBox)localObject3).jdField_a_of_type_Int = i;
-            localObject3 = ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
-            if (!paramArrayOfByte.xmax.has()) {
-              break label5531;
+            i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errorcode.get();
+            ((ARCloudObjectClassifyResult)localObject1).jdField_b_of_type_Int = i;
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errormsg.has()) {
+              break label5844;
             }
-            i = paramArrayOfByte.xmax.get();
-            ((ARMIGObjectClassifyResult.ObjectBox)localObject3).jdField_b_of_type_Int = i;
-            localObject3 = ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
-            if (!paramArrayOfByte.ymin.has()) {
-              break label5537;
+            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).errormsg.get();
+            ((ARCloudObjectClassifyResult)localObject1).jdField_c_of_type_JavaLangString = paramArrayOfByte;
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).session_id.has()) {
+              break label5850;
             }
-            i = paramArrayOfByte.ymin.get();
-            label1817:
-            ((ARMIGObjectClassifyResult.ObjectBox)localObject3).jdField_c_of_type_Int = i;
-            localObject3 = ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
-            if (!paramArrayOfByte.ymax.has()) {
-              break label5543;
-            }
-            i = paramArrayOfByte.ymax.get();
-            label1850:
-            ((ARMIGObjectClassifyResult.ObjectBox)localObject3).jdField_d_of_type_Int = i;
-            localObject3 = ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
-            if (!paramArrayOfByte.fScore.has()) {
-              break label5549;
-            }
-            f = paramArrayOfByte.fScore.get();
-            label1883:
-            ((ARMIGObjectClassifyResult.ObjectBox)localObject3).jdField_a_of_type_Float = f;
-            localObject3 = ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
-            if (!paramArrayOfByte.iLabelID.has()) {
-              break label5555;
-            }
-            i = paramArrayOfByte.iLabelID.get();
-            ((ARMIGObjectClassifyResult.ObjectBox)localObject3).e = i;
-            if (QLog.isColorLevel()) {
-              QLog.d("AREngine_ARCloudFileUpload", 2, "[MIGObjectclassifyResult 矩形区域原始数据打印]" + ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox.toString());
-            }
-          }
-          if ((((ImageRetrievalLogic.IRLogicRsp)localObject2).vClassInfo.has()) && (((ImageRetrievalLogic.IRLogicRsp)localObject2).vClassInfo.size() > 0))
-          {
-            int m = ((ImageRetrievalLogic.IRLogicRsp)localObject2).vClassInfo.size();
-            ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo = new ARMIGObjectClassifyResult.RetrievalClassInfo[m];
-            localObject2 = ((ImageRetrievalLogic.IRLogicRsp)localObject2).vClassInfo.get();
-            i = 0;
-            for (;;)
+            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).session_id.get();
+            ((ARCloudObjectClassifyResult)localObject1).jdField_d_of_type_JavaLangString = paramArrayOfByte;
+            if ((((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.has()) && (((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.size() > 0))
             {
-              if (i >= m) {
-                break label3016;
-              }
-              localObject3 = (ImageRetrievalLogic.RetrievalClassInfo)((List)localObject2).get(i);
-              localObject4 = new ARMIGObjectClassifyResult.RetrievalClassInfo();
-              if (!((ImageRetrievalLogic.RetrievalClassInfo)localObject3).iClass.has()) {
-                break label5561;
-              }
-              j = ((ImageRetrievalLogic.RetrievalClassInfo)localObject3).iClass.get();
-              label2069:
-              ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_a_of_type_Int = j;
-              if (!((ImageRetrievalLogic.RetrievalClassInfo)localObject3).iStatus.has()) {
-                break label5567;
-              }
-              j = ((ImageRetrievalLogic.RetrievalClassInfo)localObject3).iStatus.get();
-              label2097:
-              ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_b_of_type_Int = j;
-              if (!((ImageRetrievalLogic.RetrievalClassInfo)localObject3).dClassProb.has()) {
-                break label5573;
-              }
-              d = ((ImageRetrievalLogic.RetrievalClassInfo)localObject3).dClassProb.get();
-              label2124:
-              ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_a_of_type_Double = d;
-              if (!((ImageRetrievalLogic.RetrievalClassInfo)localObject3).sClass.has()) {
-                break label5578;
-              }
-              paramArrayOfByte = ((ImageRetrievalLogic.RetrievalClassInfo)localObject3).sClass.get();
-              label2150:
-              ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_a_of_type_JavaLangString = paramArrayOfByte;
-              if ((((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.has()) && (((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.size() > 0)) {
-                ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem = new ARMIGObjectClassifyResult.RetrievalItem[((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.size()];
-              }
-              if ((((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.has()) && (((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.size() > 0))
+              k = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.size();
+              ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag = new ARCloudObjectClassifyResult.ImageTag[k];
+              i = 0;
+              if (i < k)
               {
-                j = 0;
-                for (;;)
+                localObject3 = new ARCloudObjectClassifyResult.ImageTag();
+                localObject4 = (ARCloudRecogCustomPb.ImageARTag)((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).tags.get(i);
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).image_id.has()) {
+                  break label5856;
+                }
+                paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).image_id.get();
+                ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_a_of_type_JavaLangString = paramArrayOfByte;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_name.has()) {
+                  break label5862;
+                }
+                paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_name.get();
+                ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_b_of_type_JavaLangString = paramArrayOfByte;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence.has()) {
+                  break label5868;
+                }
+                j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence.get();
+                ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_a_of_type_Int = j;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence_f.has()) {
+                  break label5874;
+                }
+                f = ((ARCloudRecogCustomPb.ImageARTag)localObject4).tag_confidence_f.get();
+                ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_a_of_type_Float = f;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).need_check_lbs.has()) {
+                  break label5880;
+                }
+                j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).need_check_lbs.get();
+                ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_b_of_type_Int = j;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_errorcode.has()) {
+                  break label5886;
+                }
+                j = ((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_errorcode.get();
+                ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_c_of_type_Int = j;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_res.has()) {
+                  break label5892;
+                }
+                paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject4).cdb_res.get().toByteArray();
+                ((ARCloudObjectClassifyResult.ImageTag)localObject3).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+                ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[i] = localObject3;
+                i += 1;
+                continue;
+              }
+              if (k > 0)
+              {
+                if (localObject1.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[0].jdField_b_of_type_Int != 1) {
+                  break label5897;
+                }
+                bool = true;
+                ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_Boolean = bool;
+              }
+            }
+            else
+            {
+              ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag = null;
+            }
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).time_ms.has()) {
+              break label5903;
+            }
+            i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).time_ms.get();
+            ((ARCloudObjectClassifyResult)localObject1).jdField_c_of_type_Int = i;
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).score.has()) {
+              break label5909;
+            }
+            i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).score.get();
+            ((ARCloudObjectClassifyResult)localObject1).jdField_d_of_type_Int = i;
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).kpt_num.has()) {
+              break label5915;
+            }
+            i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject2).kpt_num.get();
+            ((ARCloudObjectClassifyResult)localObject1).e = i;
+          }
+          else
+          {
+            ((ARCloudObjectClassifyResult)localObject1).jdField_b_of_type_Int = -1;
+            ((ARCloudObjectClassifyResult)localObject1).jdField_c_of_type_JavaLangString = "";
+            ((ARCloudObjectClassifyResult)localObject1).jdField_d_of_type_JavaLangString = "";
+            ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag = null;
+            ((ARCloudObjectClassifyResult)localObject1).jdField_c_of_type_Int = 0;
+            ((ARCloudObjectClassifyResult)localObject1).jdField_d_of_type_Int = 0;
+            ((ARCloudObjectClassifyResult)localObject1).e = 0;
+          }
+          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult = ((ARCloudObjectClassifyResult)localObject1);
+        }
+        else
+        {
+          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult = null;
+        }
+        localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult = null;
+        Object localObject5;
+        if (localARCloudRecogRsp.msg_img_retrieval_result.has())
+        {
+          localObject2 = new ARMIGObjectClassifyResult();
+          ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_Long = System.currentTimeMillis();
+          localObject1 = (ARCloudRecogCustomPb.ImgRetrievalResult)localARCloudRecogRsp.msg_img_retrieval_result.get();
+          if (!((ARCloudRecogCustomPb.ImgRetrievalResult)localObject1).errorcode.has()) {
+            break label5921;
+          }
+          i = ((ARCloudRecogCustomPb.ImgRetrievalResult)localObject1).errorcode.get();
+          ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_Int = i;
+          if (!((ARCloudRecogCustomPb.ImgRetrievalResult)localObject1).errormsg.has()) {
+            break label5927;
+          }
+          paramArrayOfByte = ((ARCloudRecogCustomPb.ImgRetrievalResult)localObject1).errormsg.get();
+          ((ARMIGObjectClassifyResult)localObject2).jdField_b_of_type_JavaLangString = paramArrayOfByte;
+          if (((ARCloudRecogCustomPb.ImgRetrievalResult)localObject1).jd_search_rsp.has()) {
+            ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult = ARMIGObjectClassifyResult.a((JDSearch.JdSearchRsp)((ARCloudRecogCustomPb.ImgRetrievalResult)localObject1).jd_search_rsp.get());
+          }
+          if (((ARCloudRecogCustomPb.ImgRetrievalResult)localObject1).msg_ir_logic_rsp.has())
+          {
+            localObject1 = (ImageRetrievalLogic.IRLogicRsp)((ARCloudRecogCustomPb.ImgRetrievalResult)localObject1).msg_ir_logic_rsp.get();
+            if (!((ImageRetrievalLogic.IRLogicRsp)localObject1).iRetCode.has()) {
+              break label5933;
+            }
+            i = ((ImageRetrievalLogic.IRLogicRsp)localObject1).iRetCode.get();
+            ((ARMIGObjectClassifyResult)localObject2).jdField_b_of_type_Int = i;
+            if (!((ImageRetrievalLogic.IRLogicRsp)localObject1).sMsg.has()) {
+              break label5939;
+            }
+            paramArrayOfByte = ((ImageRetrievalLogic.IRLogicRsp)localObject1).sMsg.get();
+            ((ARMIGObjectClassifyResult)localObject2).jdField_c_of_type_JavaLangString = paramArrayOfByte;
+            if (!((ImageRetrievalLogic.IRLogicRsp)localObject1).iBusiness.has()) {
+              break label5945;
+            }
+            i = ((ImageRetrievalLogic.IRLogicRsp)localObject1).iBusiness.get();
+            ((ARMIGObjectClassifyResult)localObject2).jdField_c_of_type_Int = i;
+            if (!((ImageRetrievalLogic.IRLogicRsp)localObject1).sKey.has()) {
+              break label5951;
+            }
+            paramArrayOfByte = ((ImageRetrievalLogic.IRLogicRsp)localObject1).sKey.get();
+            ((ARMIGObjectClassifyResult)localObject2).jdField_d_of_type_JavaLangString = paramArrayOfByte;
+            ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox = null;
+            if (((ImageRetrievalLogic.IRLogicRsp)localObject1).stBBox.has())
+            {
+              ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox = new ARMIGObjectClassifyResult.ObjectBox();
+              paramArrayOfByte = (ImageRetrievalComm.OD_BBox)((ImageRetrievalLogic.IRLogicRsp)localObject1).stBBox.get();
+              localObject3 = ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
+              if (!paramArrayOfByte.xmin.has()) {
+                break label5957;
+              }
+              i = paramArrayOfByte.xmin.get();
+              ((ARMIGObjectClassifyResult.ObjectBox)localObject3).jdField_a_of_type_Int = i;
+              localObject3 = ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
+              if (!paramArrayOfByte.xmax.has()) {
+                break label5963;
+              }
+              i = paramArrayOfByte.xmax.get();
+              ((ARMIGObjectClassifyResult.ObjectBox)localObject3).jdField_b_of_type_Int = i;
+              localObject3 = ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
+              if (!paramArrayOfByte.ymin.has()) {
+                break label5969;
+              }
+              i = paramArrayOfByte.ymin.get();
+              ((ARMIGObjectClassifyResult.ObjectBox)localObject3).jdField_c_of_type_Int = i;
+              localObject3 = ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
+              if (!paramArrayOfByte.ymax.has()) {
+                break label5975;
+              }
+              i = paramArrayOfByte.ymax.get();
+              ((ARMIGObjectClassifyResult.ObjectBox)localObject3).jdField_d_of_type_Int = i;
+              localObject3 = ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
+              if (!paramArrayOfByte.fScore.has()) {
+                break label5981;
+              }
+              f = paramArrayOfByte.fScore.get();
+              ((ARMIGObjectClassifyResult.ObjectBox)localObject3).jdField_a_of_type_Float = f;
+              localObject3 = ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
+              if (!paramArrayOfByte.iLabelID.has()) {
+                break label5987;
+              }
+              i = paramArrayOfByte.iLabelID.get();
+              ((ARMIGObjectClassifyResult.ObjectBox)localObject3).e = i;
+              if (QLog.isColorLevel())
+              {
+                paramArrayOfByte = new StringBuilder();
+                paramArrayOfByte.append("[MIGObjectclassifyResult 矩形区域原始数据打印]");
+                paramArrayOfByte.append(((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox.toString());
+                QLog.d("AREngine_ARCloudFileUpload", 2, paramArrayOfByte.toString());
+              }
+            }
+            if ((((ImageRetrievalLogic.IRLogicRsp)localObject1).vClassInfo.has()) && (((ImageRetrievalLogic.IRLogicRsp)localObject1).vClassInfo.size() > 0))
+            {
+              int m = ((ImageRetrievalLogic.IRLogicRsp)localObject1).vClassInfo.size();
+              ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo = new ARMIGObjectClassifyResult.RetrievalClassInfo[m];
+              paramArrayOfByte = ((ImageRetrievalLogic.IRLogicRsp)localObject1).vClassInfo.get();
+              i = 0;
+              if (i < m)
+              {
+                localObject3 = (ImageRetrievalLogic.RetrievalClassInfo)paramArrayOfByte.get(i);
+                localObject4 = new ARMIGObjectClassifyResult.RetrievalClassInfo();
+                if (!((ImageRetrievalLogic.RetrievalClassInfo)localObject3).iClass.has()) {
+                  break label5993;
+                }
+                j = ((ImageRetrievalLogic.RetrievalClassInfo)localObject3).iClass.get();
+                ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_a_of_type_Int = j;
+                if (!((ImageRetrievalLogic.RetrievalClassInfo)localObject3).iStatus.has()) {
+                  break label5999;
+                }
+                j = ((ImageRetrievalLogic.RetrievalClassInfo)localObject3).iStatus.get();
+                ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_b_of_type_Int = j;
+                if (!((ImageRetrievalLogic.RetrievalClassInfo)localObject3).dClassProb.has()) {
+                  break label6005;
+                }
+                d = ((ImageRetrievalLogic.RetrievalClassInfo)localObject3).dClassProb.get();
+                ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_a_of_type_Double = d;
+                if (!((ImageRetrievalLogic.RetrievalClassInfo)localObject3).sClass.has()) {
+                  break label6010;
+                }
+                localObject1 = ((ImageRetrievalLogic.RetrievalClassInfo)localObject3).sClass.get();
+                ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_a_of_type_JavaLangString = ((String)localObject1);
+                if ((((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.has()) && (((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.size() > 0)) {
+                  ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem = new ARMIGObjectClassifyResult.RetrievalItem[((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.size()];
+                }
+                if ((((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.has()) && (((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.size() > 0))
                 {
+                  j = 0;
                   if (j < ((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.size())
                   {
                     localObject5 = new ARMIGObjectClassifyResult.RetrievalItem();
                     Object localObject6 = (ImageRetrievalLogic.RetrievalItem)((ImageRetrievalLogic.RetrievalClassInfo)localObject3).vItem.get(j);
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).iClass.has()) {
-                      break label5584;
+                      break label6017;
                     }
                     k = ((ImageRetrievalLogic.RetrievalItem)localObject6).iClass.get();
-                    label2277:
                     ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_Int = k;
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).sClass.has()) {
-                      break label5590;
+                      break label6023;
                     }
-                    paramArrayOfByte = ((ImageRetrievalLogic.RetrievalItem)localObject6).sClass.get();
-                    label2304:
-                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_JavaLangString = paramArrayOfByte;
+                    localObject1 = ((ImageRetrievalLogic.RetrievalItem)localObject6).sClass.get();
+                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject1);
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).dProb.has()) {
-                      break label5596;
+                      break label6030;
                     }
                     d = ((ImageRetrievalLogic.RetrievalItem)localObject6).dProb.get();
-                    label2330:
                     ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_Double = d;
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).sItemID.has()) {
-                      break label5601;
+                      break label6035;
                     }
-                    paramArrayOfByte = ((ImageRetrievalLogic.RetrievalItem)localObject6).sItemID.get();
-                    label2356:
-                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_b_of_type_JavaLangString = paramArrayOfByte;
+                    localObject1 = ((ImageRetrievalLogic.RetrievalItem)localObject6).sItemID.get();
+                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_b_of_type_JavaLangString = ((String)localObject1);
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).iSource.has()) {
-                      break label5607;
+                      break label6042;
                     }
                     k = ((ImageRetrievalLogic.RetrievalItem)localObject6).iSource.get();
-                    label2383:
                     ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_b_of_type_Int = k;
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).sPicUrl.has()) {
-                      break label5613;
+                      break label6048;
                     }
-                    paramArrayOfByte = ((ImageRetrievalLogic.RetrievalItem)localObject6).sPicUrl.get();
-                    label2410:
-                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_c_of_type_JavaLangString = paramArrayOfByte;
+                    localObject1 = ((ImageRetrievalLogic.RetrievalItem)localObject6).sPicUrl.get();
+                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_c_of_type_JavaLangString = ((String)localObject1);
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).sTitle.has()) {
-                      break label5619;
+                      break label6055;
                     }
-                    paramArrayOfByte = ((ImageRetrievalLogic.RetrievalItem)localObject6).sTitle.get();
-                    label2436:
-                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_d_of_type_JavaLangString = paramArrayOfByte;
+                    localObject1 = ((ImageRetrievalLogic.RetrievalItem)localObject6).sTitle.get();
+                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_d_of_type_JavaLangString = ((String)localObject1);
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).sWiki.has()) {
-                      break label5625;
+                      break label6062;
                     }
-                    paramArrayOfByte = ((ImageRetrievalLogic.RetrievalItem)localObject6).sWiki.get();
-                    label2462:
-                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).e = paramArrayOfByte;
+                    localObject1 = ((ImageRetrievalLogic.RetrievalItem)localObject6).sWiki.get();
+                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).e = ((String)localObject1);
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).sJumpUrl.has()) {
-                      break label5631;
+                      break label6069;
                     }
-                    paramArrayOfByte = ((ImageRetrievalLogic.RetrievalItem)localObject6).sJumpUrl.get();
-                    label2488:
-                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).f = paramArrayOfByte;
+                    localObject1 = ((ImageRetrievalLogic.RetrievalItem)localObject6).sJumpUrl.get();
+                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).f = ((String)localObject1);
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).sCdbRes.has()) {
-                      break label5637;
+                      break label6076;
                     }
-                    paramArrayOfByte = ((ImageRetrievalLogic.RetrievalItem)localObject6).sCdbRes.get().toByteArray();
-                    label2517:
-                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-                    if (!((ImageRetrievalLogic.RetrievalItem)localObject6).iAutoJump.has()) {
-                      break label5648;
-                    }
-                    if (((ImageRetrievalLogic.RetrievalItem)localObject6).iAutoJump.get() != 1) {
-                      break label5642;
+                    localObject1 = ((ImageRetrievalLogic.RetrievalItem)localObject6).sCdbRes.get().toByteArray();
+                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_ArrayOfByte = ((byte[])localObject1);
+                    if ((!((ImageRetrievalLogic.RetrievalItem)localObject6).iAutoJump.has()) || (((ImageRetrievalLogic.RetrievalItem)localObject6).iAutoJump.get() != 1)) {
+                      break label6082;
                     }
                     bool = true;
-                    label2549:
                     ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_Boolean = bool;
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).iNeedCheckLBS.has()) {
-                      break label5654;
+                      break label6088;
                     }
                     k = ((ImageRetrievalLogic.RetrievalItem)localObject6).iNeedCheckLBS.get();
-                    label2577:
                     ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_c_of_type_Int = k;
                     if (!((ImageRetrievalLogic.RetrievalItem)localObject6).sImageId.has()) {
-                      break label5660;
+                      break label6094;
                     }
-                    paramArrayOfByte = ((ImageRetrievalLogic.RetrievalItem)localObject6).sImageId.get();
-                    label2604:
-                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).g = paramArrayOfByte;
+                    localObject1 = ((ImageRetrievalLogic.RetrievalItem)localObject6).sImageId.get();
+                    ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).g = ((String)localObject1);
                     if (((ImageRetrievalLogic.RetrievalItem)localObject6).stLabel.has())
                     {
                       localObject6 = (ImageRetrievalLogic.LabelSource)((ImageRetrievalLogic.RetrievalItem)localObject6).stLabel.get();
@@ -676,783 +605,834 @@ public class ARCloudFileUpload
                       {
                         localLabelSource = ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource;
                         if (!((ImageRetrievalLogic.LabelSource)localObject6).stLabelComm.sLabel.has()) {
-                          break label5666;
+                          break label6101;
                         }
-                        paramArrayOfByte = ((ImageRetrievalLogic.LabelSource)localObject6).stLabelComm.sLabel.get();
-                        label2690:
-                        localLabelSource.jdField_a_of_type_JavaLangString = paramArrayOfByte;
+                        localObject1 = ((ImageRetrievalLogic.LabelSource)localObject6).stLabelComm.sLabel.get();
+                        localLabelSource.jdField_a_of_type_JavaLangString = ((String)localObject1);
                       }
                       if (((ImageRetrievalLogic.LabelSource)localObject6).stLable1003.has())
                       {
                         localLabelSource = ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource;
                         if (!((ImageRetrievalLogic.LabelSource)localObject6).stLable1003.sTitle.has()) {
-                          break label5672;
+                          break label6108;
                         }
-                        paramArrayOfByte = ((ImageRetrievalLogic.LabelSource)localObject6).stLable1003.sTitle.get();
-                        label2740:
-                        localLabelSource.jdField_b_of_type_JavaLangString = paramArrayOfByte;
+                        localObject1 = ((ImageRetrievalLogic.LabelSource)localObject6).stLable1003.sTitle.get();
+                        localLabelSource.jdField_b_of_type_JavaLangString = ((String)localObject1);
                         localLabelSource = ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource;
                         if (!((ImageRetrievalLogic.LabelSource)localObject6).stLable1003.sISBN.has()) {
-                          break label5678;
+                          break label6115;
                         }
-                        paramArrayOfByte = ((ImageRetrievalLogic.LabelSource)localObject6).stLable1003.sISBN.get();
-                        label2779:
-                        localLabelSource.jdField_c_of_type_JavaLangString = paramArrayOfByte;
+                        localObject1 = ((ImageRetrievalLogic.LabelSource)localObject6).stLable1003.sISBN.get();
+                        localLabelSource.jdField_c_of_type_JavaLangString = ((String)localObject1);
                       }
                       if (((ImageRetrievalLogic.LabelSource)localObject6).stLable1004.has())
                       {
                         localLabelSource = ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource;
                         if (!((ImageRetrievalLogic.LabelSource)localObject6).stLable1004.sCity.has()) {
-                          break label5684;
+                          break label6122;
                         }
-                        paramArrayOfByte = ((ImageRetrievalLogic.LabelSource)localObject6).stLable1004.sCity.get();
-                        label2829:
-                        localLabelSource.e = paramArrayOfByte;
+                        localObject1 = ((ImageRetrievalLogic.LabelSource)localObject6).stLable1004.sCity.get();
+                        localLabelSource.e = ((String)localObject1);
                         localLabelSource = ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource;
                         if (!((ImageRetrievalLogic.LabelSource)localObject6).stLable1004.sCountry.has()) {
-                          break label5690;
+                          break label6129;
                         }
-                        paramArrayOfByte = ((ImageRetrievalLogic.LabelSource)localObject6).stLable1004.sCountry.get();
-                        label2868:
-                        localLabelSource.jdField_d_of_type_JavaLangString = paramArrayOfByte;
+                        localObject1 = ((ImageRetrievalLogic.LabelSource)localObject6).stLable1004.sCountry.get();
+                        localLabelSource.jdField_d_of_type_JavaLangString = ((String)localObject1);
                         localLabelSource = ((ARMIGObjectClassifyResult.RetrievalItem)localObject5).jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource;
                         if (!((ImageRetrievalLogic.LabelSource)localObject6).stLable1004.sTour.has()) {
-                          break label5696;
+                          break label6136;
                         }
-                        paramArrayOfByte = ((ImageRetrievalLogic.LabelSource)localObject6).stLable1004.sTour.get();
-                        label2907:
-                        localLabelSource.f = paramArrayOfByte;
+                        localObject1 = ((ImageRetrievalLogic.LabelSource)localObject6).stLable1004.sTour.get();
+                        localLabelSource.f = ((String)localObject1);
                       }
                     }
                     ((ARMIGObjectClassifyResult.RetrievalClassInfo)localObject4).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem[j] = localObject5;
                     j += 1;
                     continue;
-                    label2932:
-                    ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag = null;
-                    break;
-                    label2941:
-                    ((ARCloudObjectClassifyResult)localObject1).jdField_b_of_type_Int = -1;
-                    ((ARCloudObjectClassifyResult)localObject1).jdField_c_of_type_JavaLangString = "";
-                    ((ARCloudObjectClassifyResult)localObject1).jdField_d_of_type_JavaLangString = "";
-                    ((ARCloudObjectClassifyResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag = null;
-                    ((ARCloudObjectClassifyResult)localObject1).jdField_c_of_type_Int = 0;
-                    ((ARCloudObjectClassifyResult)localObject1).jdField_d_of_type_Int = 0;
-                    ((ARCloudObjectClassifyResult)localObject1).e = 0;
-                    break label1414;
-                    label2988:
-                    localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult = null;
-                    break label1421;
                   }
                 }
+                ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[i] = localObject4;
+                i += 1;
+                continue;
               }
-              ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[i] = localObject4;
-              i += 1;
             }
           }
+          ((ARMIGObjectClassifyResult)localObject2).jdField_a_of_type_Boolean = ((ARMIGObjectClassifyResult)localObject2).d();
+          ((ARMIGObjectClassifyResult)localObject2).e = ((ARMIGObjectClassifyResult)localObject2).a();
+          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult = ((ARMIGObjectClassifyResult)localObject2);
         }
-        label3016:
-        ((ARMIGObjectClassifyResult)localObject1).jdField_a_of_type_Boolean = ((ARMIGObjectClassifyResult)localObject1).d();
-        ((ARMIGObjectClassifyResult)localObject1).e = ((ARMIGObjectClassifyResult)localObject1).a();
-        localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult = ((ARMIGObjectClassifyResult)localObject1);
-      }
-      if (localARCloudRecogRsp.msg_word_detect_result.has())
-      {
-        localObject1 = new ARCloudPreOcrResult();
-        if (!localARCloudRecogRsp.msg_word_detect_result.errorcode.has()) {
-          break label5702;
-        }
-        i = localARCloudRecogRsp.msg_word_detect_result.errorcode.get();
-        label3090:
-        ((ARCloudPreOcrResult)localObject1).jdField_a_of_type_Int = i;
-        if (!localARCloudRecogRsp.msg_word_detect_result.errormsg.has()) {
-          break label5708;
-        }
-        paramArrayOfByte = localARCloudRecogRsp.msg_word_detect_result.errormsg.get();
-        label3123:
-        ((ARCloudPreOcrResult)localObject1).jdField_a_of_type_JavaLangString = paramArrayOfByte;
-        if (!localARCloudRecogRsp.msg_word_detect_result.session_id.has()) {
-          break label5714;
-        }
-        paramArrayOfByte = localARCloudRecogRsp.msg_word_detect_result.session_id.get();
-        label3155:
-        ((ARCloudPreOcrResult)localObject1).jdField_b_of_type_JavaLangString = paramArrayOfByte;
-        if (!localARCloudRecogRsp.msg_word_detect_result.ar_word_detect_errorcode.has()) {
-          break label5720;
-        }
-        i = localARCloudRecogRsp.msg_word_detect_result.ar_word_detect_errorcode.get();
-        label3188:
-        ((ARCloudPreOcrResult)localObject1).jdField_b_of_type_Int = i;
-        if (!localARCloudRecogRsp.msg_word_detect_result.ar_word_detect_errormsg.has()) {
-          break label5726;
-        }
-        paramArrayOfByte = localARCloudRecogRsp.msg_word_detect_result.ar_word_detect_errormsg.get();
-        label3221:
-        ((ARCloudPreOcrResult)localObject1).jdField_c_of_type_JavaLangString = paramArrayOfByte;
-        if (!localARCloudRecogRsp.msg_word_detect_result.word_type.has()) {
-          break label5732;
-        }
-        i = localARCloudRecogRsp.msg_word_detect_result.word_type.get();
-        label3254:
-        ((ARCloudPreOcrResult)localObject1).jdField_c_of_type_Int = i;
-        if (!localARCloudRecogRsp.msg_word_detect_result.confidence.has()) {
-          break label5738;
-        }
-        f = localARCloudRecogRsp.msg_word_detect_result.confidence.get();
-        label3288:
-        ((ARCloudPreOcrResult)localObject1).jdField_a_of_type_Float = f;
-        if (((ARCloudPreOcrResult)localObject1).a())
+        if (localARCloudRecogRsp.msg_word_detect_result.has())
         {
-          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult = ((ARCloudPreOcrResult)localObject1);
-          if (!localARCloudRecogRsp.msg_ocr_result.has()) {
-            break label4151;
+          localObject1 = new ARCloudPreOcrResult();
+          if (!localARCloudRecogRsp.msg_word_detect_result.errorcode.has()) {
+            break label6143;
           }
+          i = localARCloudRecogRsp.msg_word_detect_result.errorcode.get();
+          ((ARCloudPreOcrResult)localObject1).jdField_a_of_type_Int = i;
+          if (!localARCloudRecogRsp.msg_word_detect_result.errormsg.has()) {
+            break label6149;
+          }
+          paramArrayOfByte = localARCloudRecogRsp.msg_word_detect_result.errormsg.get();
+          ((ARCloudPreOcrResult)localObject1).jdField_a_of_type_JavaLangString = paramArrayOfByte;
+          if (!localARCloudRecogRsp.msg_word_detect_result.session_id.has()) {
+            break label6155;
+          }
+          paramArrayOfByte = localARCloudRecogRsp.msg_word_detect_result.session_id.get();
+          ((ARCloudPreOcrResult)localObject1).jdField_b_of_type_JavaLangString = paramArrayOfByte;
+          if (!localARCloudRecogRsp.msg_word_detect_result.ar_word_detect_errorcode.has()) {
+            break label6161;
+          }
+          i = localARCloudRecogRsp.msg_word_detect_result.ar_word_detect_errorcode.get();
+          ((ARCloudPreOcrResult)localObject1).jdField_b_of_type_Int = i;
+          if (!localARCloudRecogRsp.msg_word_detect_result.ar_word_detect_errormsg.has()) {
+            break label6167;
+          }
+          paramArrayOfByte = localARCloudRecogRsp.msg_word_detect_result.ar_word_detect_errormsg.get();
+          ((ARCloudPreOcrResult)localObject1).jdField_c_of_type_JavaLangString = paramArrayOfByte;
+          if (!localARCloudRecogRsp.msg_word_detect_result.word_type.has()) {
+            break label6173;
+          }
+          i = localARCloudRecogRsp.msg_word_detect_result.word_type.get();
+          ((ARCloudPreOcrResult)localObject1).jdField_c_of_type_Int = i;
+          if (!localARCloudRecogRsp.msg_word_detect_result.confidence.has()) {
+            break label6179;
+          }
+          f = localARCloudRecogRsp.msg_word_detect_result.confidence.get();
+          ((ARCloudPreOcrResult)localObject1).jdField_a_of_type_Float = f;
+          if (((ARCloudPreOcrResult)localObject1).a())
+          {
+            localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult = ((ARCloudPreOcrResult)localObject1);
+          }
+          else
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ARCloudRecogResult", 2, ((ARCloudPreOcrResult)localObject1).toString());
+            }
+            localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult = null;
+          }
+        }
+        else
+        {
+          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult = null;
+        }
+        bool = localARCloudRecogRsp.msg_ocr_result.has();
+        long l2 = -1L;
+        if (bool)
+        {
           paramArrayOfByte = new ARCloudOcrResult();
           localObject1 = (ARCloudRecogCustomPb.AROcrResult)localARCloudRecogRsp.msg_ocr_result.get();
           if (!((ARCloudRecogCustomPb.AROcrResult)localObject1).uin64_ocr_recog_type.has()) {
-            break label5744;
+            break label6185;
           }
           l1 = ((ARCloudRecogCustomPb.AROcrResult)localObject1).uin64_ocr_recog_type.get();
-          label3363:
           if (((l1 & 1L) == 1L) && (((ARCloudRecogCustomPb.AROcrResult)localObject1).youtu_ocr_rsp.has())) {
             paramArrayOfByte.a = ARCloudOcrResult.a((YoutuOcr.YoutuOcrRsp)((ARCloudRecogCustomPb.AROcrResult)localObject1).youtu_ocr_rsp.get());
           }
           localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult = paramArrayOfByte;
         }
-      }
-      label3407:
-      label3677:
-      label3829:
-      for (;;)
-      {
-        label3703:
+        else
+        {
+          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult = null;
+        }
         if (localARCloudRecogRsp.msg_face_recog_result.has())
         {
           localObject2 = new ARCloudRecogRspFaceResult();
           localObject1 = (ARCloudRecogCustomPb.ARFaceRecogResult)localARCloudRecogRsp.msg_face_recog_result.get();
           if (!((ARCloudRecogCustomPb.ARFaceRecogResult)localObject1).ar_face_recog_errorcode.has()) {
-            break label5752;
+            break label6193;
           }
           i = ((ARCloudRecogCustomPb.ARFaceRecogResult)localObject1).ar_face_recog_errorcode.get();
           ((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_Int = i;
           if (!((ARCloudRecogCustomPb.ARFaceRecogResult)localObject1).ar_face_recog_errormsg.has()) {
-            break label5758;
+            break label6199;
           }
           paramArrayOfByte = ((ARCloudRecogCustomPb.ARFaceRecogResult)localObject1).ar_face_recog_errormsg.get();
           ((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_JavaLangString = paramArrayOfByte;
-          if (QLog.isColorLevel()) {
-            QLog.d("AREngine_ARCloudFileUpload", 2, "[ScanStarFace]deserialize  faceResult.errCode_MQ = " + ((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_Int + ",faceResult.errMsg_MQ = " + ((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_JavaLangString);
-          }
-          if (((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_Int != 0) {
-            break label4927;
-          }
-          if (!((ARCloudRecogCustomPb.ARFaceRecogResult)localObject1).image_ar_face_recog_res.has()) {
-            break label5764;
-          }
-          paramArrayOfByte = (ARCloudRecogCustomPb.ARFaceRecogRes)((ARCloudRecogCustomPb.ARFaceRecogResult)localObject1).image_ar_face_recog_res.get();
-          label3576:
-          if (paramArrayOfByte != null)
+          bool = QLog.isColorLevel();
+          if (bool)
           {
-            if (!paramArrayOfByte.errorcode.has()) {
-              break label5769;
-            }
-            i = paramArrayOfByte.errorcode.get();
-            ((ARCloudRecogRspFaceResult)localObject2).jdField_b_of_type_Int = i;
-            if (!paramArrayOfByte.errormsg.has()) {
-              break label5775;
-            }
-            localObject1 = paramArrayOfByte.errormsg.get();
-            ((ARCloudRecogRspFaceResult)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1);
-            if (!paramArrayOfByte.session_id.has()) {
-              break label5782;
-            }
-            localObject1 = paramArrayOfByte.session_id.get();
-            ((ARCloudRecogRspFaceResult)localObject2).jdField_c_of_type_JavaLangString = ((String)localObject1);
-            if (!paramArrayOfByte.time_ms.has()) {
-              break label5789;
-            }
-            i = paramArrayOfByte.time_ms.get();
-            ((ARCloudRecogRspFaceResult)localObject2).jdField_c_of_type_Int = i;
-            if (!paramArrayOfByte.group_size.has()) {
-              break label5795;
-            }
-            i = paramArrayOfByte.group_size.get();
-            ((ARCloudRecogRspFaceResult)localObject2).jdField_d_of_type_Int = i;
-            if (QLog.isColorLevel()) {
-              QLog.d("AREngine_ARCloudFileUpload", 2, "[ScanStarFace]deserialize  faceResult.errCode_YT = " + ((ARCloudRecogRspFaceResult)localObject2).jdField_b_of_type_Int + ",faceResult.errMsg_YT = " + ((ARCloudRecogRspFaceResult)localObject2).jdField_b_of_type_JavaLangString + ",faceResult.sessionID = " + ((ARCloudRecogRspFaceResult)localObject2).jdField_c_of_type_JavaLangString + ",faceResult.time_ms_YT = " + ((ARCloudRecogRspFaceResult)localObject2).jdField_c_of_type_Int + ",faceResult.group_size_YT = " + ((ARCloudRecogRspFaceResult)localObject2).jdField_d_of_type_Int);
-            }
-            if (((ARCloudRecogRspFaceResult)localObject2).jdField_b_of_type_Int != 0) {
-              break label4911;
-            }
-            if (!paramArrayOfByte.star_info.has()) {
-              break label5801;
-            }
-            paramArrayOfByte = paramArrayOfByte.star_info.get();
-            if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
-            {
-              localObject1 = new ArrayList();
-              localObject3 = paramArrayOfByte.iterator();
-              for (;;)
-              {
-                if (((Iterator)localObject3).hasNext())
-                {
-                  localObject4 = (ARCloudRecogCustomPb.StarInfo)((Iterator)localObject3).next();
-                  localObject5 = new ARCloudRecogRspFaceResult.StarInfo();
-                  if (!((ARCloudRecogCustomPb.StarInfo)localObject4).uin.has()) {
-                    break label5806;
-                  }
-                  l1 = ((ARCloudRecogCustomPb.StarInfo)localObject4).uin.get();
-                  ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_a_of_type_Long = l1;
-                  if (!((ARCloudRecogCustomPb.StarInfo)localObject4).face_rect_id.has()) {
-                    break label5814;
-                  }
-                  i = ((ARCloudRecogCustomPb.StarInfo)localObject4).face_rect_id.get();
-                  ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_a_of_type_Int = i;
-                  if (!((ARCloudRecogCustomPb.StarInfo)localObject4).name.has()) {
-                    break label5820;
-                  }
-                  paramArrayOfByte = ((ARCloudRecogCustomPb.StarInfo)localObject4).name.get();
-                  label3966:
-                  ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_a_of_type_JavaLangString = paramArrayOfByte;
-                  if (!((ARCloudRecogCustomPb.StarInfo)localObject4).pinyin_name.has()) {
-                    break label5826;
-                  }
-                  paramArrayOfByte = ((ARCloudRecogCustomPb.StarInfo)localObject4).pinyin_name.get();
-                  ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_b_of_type_JavaLangString = paramArrayOfByte;
-                  if (!((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki.has()) {
-                    break label5832;
-                  }
-                  paramArrayOfByte = ((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki.get();
-                  ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_c_of_type_JavaLangString = paramArrayOfByte;
-                  if (!((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki_title.has()) {
-                    break label5838;
-                  }
-                  paramArrayOfByte = ((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki_title.get();
-                  ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_d_of_type_JavaLangString = paramArrayOfByte;
-                  if (!((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki_jumpurl.has()) {
-                    break label5844;
-                  }
-                  paramArrayOfByte = ((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki_jumpurl.get();
-                  ((ARCloudRecogRspFaceResult.StarInfo)localObject5).e = paramArrayOfByte;
-                  if (!((ARCloudRecogCustomPb.StarInfo)localObject4).confidence.has()) {
-                    break label5850;
-                  }
-                  f = ((ARCloudRecogCustomPb.StarInfo)localObject4).confidence.get();
-                  ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_a_of_type_Float = f;
-                  ((ArrayList)localObject1).add(localObject5);
-                  continue;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("ARCloudRecogResult", 2, ((ARCloudPreOcrResult)localObject1).toString());
-                  }
-                  localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult = null;
-                  break;
-                  localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult = null;
-                  break;
-                  localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult = null;
-                  break label3407;
-                }
-              }
-              ((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
-            }
-            ((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus;
+            paramArrayOfByte = new StringBuilder();
+            paramArrayOfByte.append("[ScanStarFace]deserialize  faceResult.errCode_MQ = ");
+            paramArrayOfByte.append(((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_Int);
+            paramArrayOfByte.append(",faceResult.errMsg_MQ = ");
+            paramArrayOfByte.append(((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_JavaLangString);
+            QLog.d("AREngine_ARCloudFileUpload", 2, paramArrayOfByte.toString());
           }
+          if (((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_Int == 0)
+          {
+            if (!((ARCloudRecogCustomPb.ARFaceRecogResult)localObject1).image_ar_face_recog_res.has()) {
+              break label6205;
+            }
+            paramArrayOfByte = (ARCloudRecogCustomPb.ARFaceRecogRes)((ARCloudRecogCustomPb.ARFaceRecogResult)localObject1).image_ar_face_recog_res.get();
+            if (paramArrayOfByte != null)
+            {
+              if (!paramArrayOfByte.errorcode.has()) {
+                break label6210;
+              }
+              i = paramArrayOfByte.errorcode.get();
+              ((ARCloudRecogRspFaceResult)localObject2).jdField_b_of_type_Int = i;
+              if (!paramArrayOfByte.errormsg.has()) {
+                break label6216;
+              }
+              localObject1 = paramArrayOfByte.errormsg.get();
+              ((ARCloudRecogRspFaceResult)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1);
+              if (!paramArrayOfByte.session_id.has()) {
+                break label6223;
+              }
+              localObject1 = paramArrayOfByte.session_id.get();
+              ((ARCloudRecogRspFaceResult)localObject2).jdField_c_of_type_JavaLangString = ((String)localObject1);
+              if (!paramArrayOfByte.time_ms.has()) {
+                break label6230;
+              }
+              i = paramArrayOfByte.time_ms.get();
+              ((ARCloudRecogRspFaceResult)localObject2).jdField_c_of_type_Int = i;
+              if (!paramArrayOfByte.group_size.has()) {
+                break label6236;
+              }
+              i = paramArrayOfByte.group_size.get();
+              ((ARCloudRecogRspFaceResult)localObject2).jdField_d_of_type_Int = i;
+              if (QLog.isColorLevel())
+              {
+                localObject1 = new StringBuilder();
+                ((StringBuilder)localObject1).append("[ScanStarFace]deserialize  faceResult.errCode_YT = ");
+                ((StringBuilder)localObject1).append(((ARCloudRecogRspFaceResult)localObject2).jdField_b_of_type_Int);
+                ((StringBuilder)localObject1).append(",faceResult.errMsg_YT = ");
+                ((StringBuilder)localObject1).append(((ARCloudRecogRspFaceResult)localObject2).jdField_b_of_type_JavaLangString);
+                ((StringBuilder)localObject1).append(",faceResult.sessionID = ");
+                ((StringBuilder)localObject1).append(((ARCloudRecogRspFaceResult)localObject2).jdField_c_of_type_JavaLangString);
+                ((StringBuilder)localObject1).append(",faceResult.time_ms_YT = ");
+                ((StringBuilder)localObject1).append(((ARCloudRecogRspFaceResult)localObject2).jdField_c_of_type_Int);
+                ((StringBuilder)localObject1).append(",faceResult.group_size_YT = ");
+                ((StringBuilder)localObject1).append(((ARCloudRecogRspFaceResult)localObject2).jdField_d_of_type_Int);
+                QLog.d("AREngine_ARCloudFileUpload", 2, ((StringBuilder)localObject1).toString());
+              }
+              if (((ARCloudRecogRspFaceResult)localObject2).jdField_b_of_type_Int == 0)
+              {
+                if (!paramArrayOfByte.star_info.has()) {
+                  break label6242;
+                }
+                paramArrayOfByte = paramArrayOfByte.star_info.get();
+                if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
+                {
+                  localObject1 = new ArrayList();
+                  localObject3 = paramArrayOfByte.iterator();
+                  if (((Iterator)localObject3).hasNext())
+                  {
+                    localObject4 = (ARCloudRecogCustomPb.StarInfo)((Iterator)localObject3).next();
+                    localObject5 = new ARCloudRecogRspFaceResult.StarInfo();
+                    if (!((ARCloudRecogCustomPb.StarInfo)localObject4).uin.has()) {
+                      break label6247;
+                    }
+                    l1 = ((ARCloudRecogCustomPb.StarInfo)localObject4).uin.get();
+                    ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_a_of_type_Long = l1;
+                    if (!((ARCloudRecogCustomPb.StarInfo)localObject4).face_rect_id.has()) {
+                      break label6255;
+                    }
+                    i = ((ARCloudRecogCustomPb.StarInfo)localObject4).face_rect_id.get();
+                    ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_a_of_type_Int = i;
+                    if (!((ARCloudRecogCustomPb.StarInfo)localObject4).name.has()) {
+                      break label6261;
+                    }
+                    paramArrayOfByte = ((ARCloudRecogCustomPb.StarInfo)localObject4).name.get();
+                    ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_a_of_type_JavaLangString = paramArrayOfByte;
+                    if (!((ARCloudRecogCustomPb.StarInfo)localObject4).pinyin_name.has()) {
+                      break label6267;
+                    }
+                    paramArrayOfByte = ((ARCloudRecogCustomPb.StarInfo)localObject4).pinyin_name.get();
+                    ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_b_of_type_JavaLangString = paramArrayOfByte;
+                    if (!((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki.has()) {
+                      break label6273;
+                    }
+                    paramArrayOfByte = ((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki.get();
+                    ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_c_of_type_JavaLangString = paramArrayOfByte;
+                    if (!((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki_title.has()) {
+                      break label6279;
+                    }
+                    paramArrayOfByte = ((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki_title.get();
+                    ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_d_of_type_JavaLangString = paramArrayOfByte;
+                    if (!((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki_jumpurl.has()) {
+                      break label6285;
+                    }
+                    paramArrayOfByte = ((ARCloudRecogCustomPb.StarInfo)localObject4).star_wiki_jumpurl.get();
+                    ((ARCloudRecogRspFaceResult.StarInfo)localObject5).e = paramArrayOfByte;
+                    if (!((ARCloudRecogCustomPb.StarInfo)localObject4).confidence.has()) {
+                      break label6291;
+                    }
+                    f = ((ARCloudRecogCustomPb.StarInfo)localObject4).confidence.get();
+                    ((ARCloudRecogRspFaceResult.StarInfo)localObject5).jdField_a_of_type_Float = f;
+                    ((ArrayList)localObject1).add(localObject5);
+                    continue;
+                  }
+                  ((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
+                }
+                ((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus;
+              }
+              else
+              {
+                FaceCluster.getInstance().releaseFaceStatusArray(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus);
+              }
+            }
+          }
+          else
+          {
+            FaceCluster.getInstance().releaseFaceStatusArray(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus);
+            if (QLog.isColorLevel())
+            {
+              paramArrayOfByte = new StringBuilder();
+              paramArrayOfByte.append("[ScanStarFace]deserialize recog face failed from MQ, faceResult.errCode_MQ = ");
+              paramArrayOfByte.append(((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_Int);
+              paramArrayOfByte.append(",faceResult.errMsg_MQ = ");
+              paramArrayOfByte.append(((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_JavaLangString);
+              QLog.d("AREngine_ARCloudFileUpload", 2, paramArrayOfByte.toString());
+            }
+          }
+          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult = ((ARCloudRecogRspFaceResult)localObject2);
+          if (QLog.isColorLevel())
+          {
+            paramArrayOfByte = new StringBuilder();
+            paramArrayOfByte.append("[ScanStarFace]deserialize recog face result  = ");
+            paramArrayOfByte.append(localObject2);
+            QLog.d("AREngine_ARCloudFileUpload", 2, paramArrayOfByte.toString());
+          }
+          l1 = System.currentTimeMillis();
+          long l3 = paramARCloudReqInfo.jdField_c_of_type_Long;
+          ARFaceDataCollector.a().d = (l1 - l3);
+          ARFaceDataCollector.a(paramARCloudReqInfo, (ARCloudRecogRspFaceResult)localObject2);
         }
-      }
-      for (;;)
-      {
-        label3461:
-        label3488:
-        label3625:
-        label3651:
-        label3911:
-        label3939:
-        label4070:
-        localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult = ((ARCloudRecogRspFaceResult)localObject2);
-        label3599:
-        label3992:
-        label4018:
-        label4044:
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARCloudFileUpload", 2, "[ScanStarFace]deserialize recog face result  = " + localObject2);
-        }
-        label4097:
-        label4151:
-        l1 = System.currentTimeMillis();
-        long l2 = paramARCloudReqInfo.jdField_c_of_type_Long;
-        ARFaceDataCollector.a().d = (l1 - l2);
-        ARFaceDataCollector.a(paramARCloudReqInfo, (ARCloudRecogRspFaceResult)localObject2);
         if (localARCloudRecogRsp.msg_search_question_result.has())
         {
           paramArrayOfByte = (ARCloudRecogCustomPb.SearchQuestionResult)localARCloudRecogRsp.msg_search_question_result.get();
           paramARCloudReqInfo = new SearchQuestionResult();
           if (!paramArrayOfByte.search_question_errorcode.has()) {
-            break label5856;
+            break label6297;
           }
           i = paramArrayOfByte.search_question_errorcode.get();
-          label4298:
           paramARCloudReqInfo.jdField_a_of_type_Int = i;
           if (!paramArrayOfByte.search_question_errormsg.has()) {
-            break label5862;
+            break label6303;
           }
           paramArrayOfByte = paramArrayOfByte.search_question_errormsg.get();
-          label4322:
           paramARCloudReqInfo.jdField_a_of_type_JavaLangString = paramArrayOfByte;
           if (localARCloudRecogRsp.msg_search_question_result.question_res.has())
           {
             localObject1 = (ARCloudRecogCustomPb.QuestionRes)localARCloudRecogRsp.msg_search_question_result.question_res.get();
-            if (!((ARCloudRecogCustomPb.QuestionRes)localObject1).uin64_question_id.has()) {
-              break label5868;
+            l1 = l2;
+            if (((ARCloudRecogCustomPb.QuestionRes)localObject1).uin64_question_id.has()) {
+              l1 = ((ARCloudRecogCustomPb.QuestionRes)localObject1).uin64_question_id.get();
             }
-            l1 = ((ARCloudRecogCustomPb.QuestionRes)localObject1).uin64_question_id.get();
-            label4378:
             paramARCloudReqInfo.jdField_a_of_type_Long = l1;
             if (!((ARCloudRecogCustomPb.QuestionRes)localObject1).str_question_content.has()) {
-              break label5876;
+              break label6309;
             }
             paramArrayOfByte = ((ARCloudRecogCustomPb.QuestionRes)localObject1).str_question_content.get();
-            label4404:
             paramARCloudReqInfo.jdField_b_of_type_JavaLangString = paramArrayOfByte;
             if (!((ARCloudRecogCustomPb.QuestionRes)localObject1).str_jump_url.has()) {
-              break label5882;
+              break label6315;
             }
             paramArrayOfByte = ((ARCloudRecogCustomPb.QuestionRes)localObject1).str_jump_url.get();
-            label4429:
             paramARCloudReqInfo.jdField_c_of_type_JavaLangString = paramArrayOfByte;
           }
           localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineSearchQuestionResult = paramARCloudReqInfo;
         }
-        if (!localARCloudRecogRsp.msg_scene_classify_result.has()) {
-          break label5281;
-        }
-        paramARCloudReqInfo = new ARCloudSceneRecogResult();
-        localObject1 = (ARCloudRecogCustomPb.ARSceneClassifyResult)localARCloudRecogRsp.msg_scene_classify_result.get();
-        if (!((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).ar_errorcode.has()) {
-          break label5888;
-        }
-        i = ((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).ar_errorcode.get();
-        label4493:
-        paramARCloudReqInfo.jdField_a_of_type_Int = i;
-        if (!((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).ar_errormsg.has()) {
-          break label5894;
-        }
-        paramArrayOfByte = ((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).ar_errormsg.get();
-        label4519:
-        paramARCloudReqInfo.jdField_a_of_type_JavaLangString = paramArrayOfByte;
-        if (!((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).image_ar_search_res.has()) {
-          break label5241;
-        }
-        localObject1 = (ARCloudRecogCustomPb.ImageARSearchRes)((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).image_ar_search_res.get();
-        if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).errorcode.has()) {
-          break label5900;
-        }
-        i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).errorcode.get();
-        label4569:
-        paramARCloudReqInfo.jdField_b_of_type_Int = i;
-        if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).errormsg.has()) {
-          break label5906;
-        }
-        paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).errormsg.get();
-        label4595:
-        paramARCloudReqInfo.jdField_c_of_type_JavaLangString = paramArrayOfByte;
-        if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).session_id.has()) {
-          break label5912;
-        }
-        paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).session_id.get();
-        label4620:
-        paramARCloudReqInfo.jdField_d_of_type_JavaLangString = paramArrayOfByte;
-        if ((!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).tags.has()) || (((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).tags.size() <= 0)) {
-          break label5233;
-        }
-        k = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).tags.size();
-        paramARCloudReqInfo.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag = new ARCloudSceneRecogResult.ImageTag[k];
-        i = 0;
-        while (i < k)
+        if (localARCloudRecogRsp.msg_scene_classify_result.has())
         {
-          localObject2 = new ARCloudSceneRecogResult.ImageTag();
-          localObject3 = (ARCloudRecogCustomPb.ImageARTag)((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).tags.get(i);
-          if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).image_id.has()) {
-            break label5918;
+          paramARCloudReqInfo = new ARCloudSceneRecogResult();
+          localObject1 = (ARCloudRecogCustomPb.ARSceneClassifyResult)localARCloudRecogRsp.msg_scene_classify_result.get();
+          if (!((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).ar_errorcode.has()) {
+            break label6321;
           }
-          paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject3).image_id.get();
-          label4720:
-          ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_a_of_type_JavaLangString = paramArrayOfByte;
-          if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_name.has()) {
-            break label5924;
+          i = ((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).ar_errorcode.get();
+          paramARCloudReqInfo.jdField_a_of_type_Int = i;
+          if (!((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).ar_errormsg.has()) {
+            break label6327;
           }
-          paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_name.get();
-          label4746:
-          ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_b_of_type_JavaLangString = paramArrayOfByte;
-          if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_confidence.has()) {
-            break label5930;
+          paramArrayOfByte = ((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).ar_errormsg.get();
+          paramARCloudReqInfo.jdField_a_of_type_JavaLangString = paramArrayOfByte;
+          if (((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).image_ar_search_res.has())
+          {
+            localObject1 = (ARCloudRecogCustomPb.ImageARSearchRes)((ARCloudRecogCustomPb.ARSceneClassifyResult)localObject1).image_ar_search_res.get();
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).errorcode.has()) {
+              break label6333;
+            }
+            i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).errorcode.get();
+            paramARCloudReqInfo.jdField_b_of_type_Int = i;
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).errormsg.has()) {
+              break label6339;
+            }
+            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).errormsg.get();
+            paramARCloudReqInfo.jdField_c_of_type_JavaLangString = paramArrayOfByte;
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).session_id.has()) {
+              break label6345;
+            }
+            paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).session_id.get();
+            paramARCloudReqInfo.jdField_d_of_type_JavaLangString = paramArrayOfByte;
+            if ((((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).tags.has()) && (((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).tags.size() > 0))
+            {
+              k = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).tags.size();
+              paramARCloudReqInfo.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag = new ARCloudSceneRecogResult.ImageTag[k];
+              i = 0;
+              if (i < k)
+              {
+                localObject2 = new ARCloudSceneRecogResult.ImageTag();
+                localObject3 = (ARCloudRecogCustomPb.ImageARTag)((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).tags.get(i);
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).image_id.has()) {
+                  break label6351;
+                }
+                paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject3).image_id.get();
+                ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_a_of_type_JavaLangString = paramArrayOfByte;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_name.has()) {
+                  break label6357;
+                }
+                paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_name.get();
+                ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_b_of_type_JavaLangString = paramArrayOfByte;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_confidence.has()) {
+                  break label6363;
+                }
+                j = ((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_confidence.get();
+                ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_a_of_type_Int = j;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_confidence_f.has()) {
+                  break label6369;
+                }
+                f = ((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_confidence_f.get();
+                ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_a_of_type_Float = f;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).need_check_lbs.has()) {
+                  break label6375;
+                }
+                j = ((ARCloudRecogCustomPb.ImageARTag)localObject3).need_check_lbs.get();
+                ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_b_of_type_Int = j;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).cdb_errorcode.has()) {
+                  break label6381;
+                }
+                j = ((ARCloudRecogCustomPb.ImageARTag)localObject3).cdb_errorcode.get();
+                ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_c_of_type_Int = j;
+                if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).cdb_res.has()) {
+                  break label6387;
+                }
+                paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject3).cdb_res.get().toByteArray();
+                ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+                paramARCloudReqInfo.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag[i] = localObject2;
+                i += 1;
+                continue;
+              }
+              if (k > 0)
+              {
+                if (paramARCloudReqInfo.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag[0].jdField_b_of_type_Int != 1) {
+                  break label6392;
+                }
+                bool = true;
+                paramARCloudReqInfo.jdField_a_of_type_Boolean = bool;
+              }
+            }
+            else
+            {
+              paramARCloudReqInfo.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag = null;
+            }
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).time_ms.has()) {
+              break label6398;
+            }
+            i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).time_ms.get();
+            paramARCloudReqInfo.jdField_c_of_type_Int = i;
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).score.has()) {
+              break label6404;
+            }
+            i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).score.get();
+            paramARCloudReqInfo.jdField_d_of_type_Int = i;
+            if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).kpt_num.has()) {
+              break label6410;
+            }
+            i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).kpt_num.get();
+            paramARCloudReqInfo.e = i;
           }
-          j = ((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_confidence.get();
-          label4773:
-          ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_a_of_type_Int = j;
-          if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_confidence_f.has()) {
-            break label5936;
+          else
+          {
+            paramARCloudReqInfo.jdField_b_of_type_Int = -1;
+            paramARCloudReqInfo.jdField_c_of_type_JavaLangString = "";
+            paramARCloudReqInfo.jdField_d_of_type_JavaLangString = "";
+            paramARCloudReqInfo.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag = null;
+            paramARCloudReqInfo.jdField_c_of_type_Int = 0;
+            paramARCloudReqInfo.jdField_d_of_type_Int = 0;
+            paramARCloudReqInfo.e = 0;
           }
-          f = ((ARCloudRecogCustomPb.ImageARTag)localObject3).tag_confidence_f.get();
-          label4801:
-          ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_a_of_type_Float = f;
-          if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).need_check_lbs.has()) {
-            break label5942;
-          }
-          j = ((ARCloudRecogCustomPb.ImageARTag)localObject3).need_check_lbs.get();
-          label4829:
-          ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_b_of_type_Int = j;
-          if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).cdb_errorcode.has()) {
-            break label5948;
-          }
-          j = ((ARCloudRecogCustomPb.ImageARTag)localObject3).cdb_errorcode.get();
-          label4857:
-          ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_c_of_type_Int = j;
-          if (!((ARCloudRecogCustomPb.ImageARTag)localObject3).cdb_res.has()) {
-            break label5954;
-          }
-          paramArrayOfByte = ((ARCloudRecogCustomPb.ImageARTag)localObject3).cdb_res.get().toByteArray();
-          label4887:
-          ((ARCloudSceneRecogResult.ImageTag)localObject2).jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-          paramARCloudReqInfo.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag[i] = localObject2;
-          i += 1;
+          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult = paramARCloudReqInfo;
         }
-        label4911:
-        FaceCluster.getInstance().releaseFaceStatusArray(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus);
-        continue;
-        label4927:
-        FaceCluster.getInstance().releaseFaceStatusArray(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus);
-        if (QLog.isColorLevel()) {
-          QLog.d("AREngine_ARCloudFileUpload", 2, "[ScanStarFace]deserialize recog face failed from MQ, faceResult.errCode_MQ = " + ((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_Int + ",faceResult.errMsg_MQ = " + ((ARCloudRecogRspFaceResult)localObject2).jdField_a_of_type_JavaLangString);
+        else
+        {
+          localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult = null;
         }
-      }
-      if (k > 0)
-      {
-        if (paramARCloudReqInfo.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag[0].jdField_b_of_type_Int != 1) {
-          break label5959;
+        if (!localARCloudRecogRsp.uint64_uin.has()) {
+          break label6416;
         }
-        bool = true;
-        label5015:
-        paramARCloudReqInfo.jdField_a_of_type_Boolean = bool;
-      }
-      if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).time_ms.has()) {
-        break label5965;
-      }
-      i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).time_ms.get();
-      label5042:
-      paramARCloudReqInfo.jdField_c_of_type_Int = i;
-      if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).score.has()) {
-        break label5971;
-      }
-      i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).score.get();
-      label5069:
-      paramARCloudReqInfo.jdField_d_of_type_Int = i;
-      if (!((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).kpt_num.has()) {
-        break label5977;
-      }
-    }
-    label5281:
-    label5296:
-    label5299:
-    label5305:
-    label5311:
-    label5317:
-    label5323:
-    label5329:
-    label5335:
-    label5720:
-    label5977:
-    for (int i = ((ARCloudRecogCustomPb.ImageARSearchRes)localObject1).kpt_num.get();; i = 0)
-    {
-      paramARCloudReqInfo.e = i;
-      label5102:
-      localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult = paramARCloudReqInfo;
-      label5108:
-      if (localARCloudRecogRsp.msg_image_translate_rsp_result.has())
-      {
-        paramArrayOfByte = (ARCloudRecogCustomPb.ImageTranslateRspResult)localARCloudRecogRsp.msg_image_translate_rsp_result.get();
-        localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult = new TranslateResult(2);
-        localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult.a(paramArrayOfByte);
-      }
-      if (localARCloudRecogRsp.uint64_uin.has()) {}
-      for (l1 = localARCloudRecogRsp.uint64_uin.get();; l1 = 0L)
-      {
+        l1 = localARCloudRecogRsp.uint64_uin.get();
         localARCloudRecogResult.jdField_b_of_type_Long = l1;
-        if (localARCloudRecogResult.jdField_b_of_type_Long == Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())) {
-          break label5296;
+        l1 = localARCloudRecogResult.jdField_b_of_type_Long;
+        try
+        {
+          if (l1 != Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()))
+          {
+            paramArrayOfByte = new StringBuilder();
+            paramArrayOfByte.append("deserialize pb failed. error uin. recogResult.uin = ");
+            paramArrayOfByte.append(localARCloudRecogResult.jdField_b_of_type_Long);
+            QLog.i("AREngine_ARCloudFileUpload", 1, paramArrayOfByte.toString());
+            return null;
+          }
+          return localARCloudRecogResult;
         }
-        QLog.i("AREngine_ARCloudFileUpload", 1, "deserialize pb failed. error uin. recogResult.uin = " + localARCloudRecogResult.jdField_b_of_type_Long);
-        return null;
-        label5233:
-        paramARCloudReqInfo.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag = null;
-        break;
-        label5241:
-        paramARCloudReqInfo.jdField_b_of_type_Int = -1;
-        paramARCloudReqInfo.jdField_c_of_type_JavaLangString = "";
-        paramARCloudReqInfo.jdField_d_of_type_JavaLangString = "";
-        paramARCloudReqInfo.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag = null;
-        paramARCloudReqInfo.jdField_c_of_type_Int = 0;
-        paramARCloudReqInfo.jdField_d_of_type_Int = 0;
-        paramARCloudReqInfo.e = 0;
-        break label5102;
-        localARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult = null;
-        break label5108;
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+        paramARCloudReqInfo = new StringBuilder();
       }
-      return localARCloudRecogResult;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+      paramARCloudReqInfo.append("deserialize pb failed. error msg = ");
+      paramARCloudReqInfo.append(paramArrayOfByte.getMessage());
+      QLog.i("AREngine_ARCloudFileUpload", 1, paramARCloudReqInfo.toString());
+      return null;
+      label5713:
       paramArrayOfByte = "";
-      break;
-      l1 = 0L;
-      break label72;
+      continue;
+      label5719:
+      long l1 = 0L;
+      continue;
+      label5725:
+      int i = -1;
+      continue;
+      label5731:
       i = -1;
-      break label100;
+      continue;
+      label5737:
+      paramArrayOfByte = "";
+      continue;
+      label5743:
       i = -1;
-      break label161;
+      continue;
+      label5749:
       paramArrayOfByte = "";
-      break label188;
-      i = -1;
-      break label239;
+      continue;
+      label5755:
       paramArrayOfByte = "";
-      break label266;
-      label5341:
+      continue;
+      label5761:
       paramArrayOfByte = "";
-      break label292;
-      label5347:
+      continue;
+      label5767:
       paramArrayOfByte = "";
-      break label394;
-      label5353:
-      paramArrayOfByte = "";
-      break label420;
-      label5359:
+      continue;
+      label5773:
+      int j = 0;
+      continue;
+      label5779:
+      float f = 0.0F;
+      continue;
+      label5785:
       j = 0;
-      break label447;
-      label5365:
-      f = 0.0F;
-      break label475;
-      label5371:
-      j = 0;
-      break label503;
+      continue;
+      label5791:
       j = -1;
-      break label531;
+      continue;
+      label5797:
       paramArrayOfByte = null;
-      break label561;
-      bool = false;
-      break label608;
-      i = -1;
-      break label760;
-      paramArrayOfByte = "";
-      break label787;
-      i = -1;
-      break label838;
-      paramArrayOfByte = "";
-      break label865;
-      paramArrayOfByte = "";
-      break label891;
-      paramArrayOfByte = "";
-      break label993;
-      paramArrayOfByte = "";
-      break label1019;
-      j = 0;
-      break label1046;
-      f = 0.0F;
-      break label1074;
-      j = 0;
-      break label1102;
-      j = -1;
-      break label1130;
-      paramArrayOfByte = null;
-      break label1160;
-      bool = false;
-      break label1323;
-      label5471:
+      continue;
+      label5802:
+      boolean bool = false;
+      continue;
+      label5808:
       i = 0;
-      break label1351;
-      label5477:
+      continue;
+      label5814:
       i = 0;
-      break label1379;
-      label5483:
+      continue;
+      label5820:
       i = 0;
-      break label1407;
-      label5489:
+      continue;
+      label5826:
       i = -1;
-      break label1489;
-      label5495:
+      continue;
+      label5832:
       paramArrayOfByte = "";
-      break label1516;
-      label5501:
+      continue;
+      label5838:
       i = -1;
-      break label1597;
+      continue;
+      label5844:
       paramArrayOfByte = "";
-      break label1624;
-      i = -1;
-      break label1651;
-      paramArrayOfByte = "";
-      break label1678;
-      i = 0;
-      break label1751;
-      i = 0;
-      break label1784;
-      i = 0;
-      break label1817;
-      i = 0;
-      break label1850;
-      f = 0.0F;
-      break label1883;
-      i = 0;
-      break label1916;
-      j = 0;
-      break label2069;
-      j = 0;
-      break label2097;
-      d = 0.0D;
-      break label2124;
-      paramArrayOfByte = "";
-      break label2150;
-      k = 0;
-      break label2277;
-      paramArrayOfByte = "";
-      break label2304;
-      label5596:
-      d = 0.0D;
-      break label2330;
-      label5601:
-      paramArrayOfByte = "";
-      break label2356;
-      label5607:
-      k = 0;
-      break label2383;
-      label5613:
-      paramArrayOfByte = "";
-      break label2410;
-      label5619:
-      paramArrayOfByte = "";
-      break label2436;
-      label5625:
-      paramArrayOfByte = "";
-      break label2462;
-      label5631:
-      paramArrayOfByte = "";
-      break label2488;
-      paramArrayOfByte = null;
-      break label2517;
-      bool = false;
-      break label2549;
-      bool = false;
-      break label2549;
-      k = 0;
-      break label2577;
-      paramArrayOfByte = "";
-      break label2604;
-      paramArrayOfByte = "";
-      break label2690;
-      paramArrayOfByte = "";
-      break label2740;
-      paramArrayOfByte = "";
-      break label2779;
-      paramArrayOfByte = "";
-      break label2829;
-      paramArrayOfByte = "";
-      break label2868;
-      paramArrayOfByte = "";
-      break label2907;
-      i = -1;
-      break label3090;
-      paramArrayOfByte = "";
-      break label3123;
-      paramArrayOfByte = "";
-      break label3155;
-      i = -1;
-      break label3188;
-      label5726:
-      paramArrayOfByte = "";
-      break label3221;
-      label5732:
-      i = 0;
-      break label3254;
-      label5738:
-      f = 0.0F;
-      break label3288;
-      label5744:
-      l1 = -1L;
-      break label3363;
-      label5752:
-      i = -1;
-      break label3461;
-      label5758:
-      paramArrayOfByte = "";
-      break label3488;
-      paramArrayOfByte = null;
-      break label3576;
-      i = -1;
-      break label3599;
-      localObject1 = "";
-      break label3625;
-      localObject1 = "";
-      break label3651;
-      i = -1;
-      break label3677;
-      i = -1;
-      break label3703;
-      paramArrayOfByte = null;
-      break label3829;
-      l1 = -1L;
-      break label3911;
-      i = -1;
-      break label3939;
-      paramArrayOfByte = "";
-      break label3966;
-      paramArrayOfByte = "";
-      break label3992;
-      paramArrayOfByte = "";
-      break label4018;
-      paramArrayOfByte = "";
-      break label4044;
-      paramArrayOfByte = "";
-      break label4070;
+      continue;
       label5850:
-      f = 0.0F;
-      break label4097;
+      paramArrayOfByte = "";
+      continue;
       label5856:
-      i = -1;
-      break label4298;
+      paramArrayOfByte = "";
+      continue;
       label5862:
       paramArrayOfByte = "";
-      break label4322;
+      continue;
       label5868:
-      l1 = -1L;
-      break label4378;
-      label5876:
-      paramArrayOfByte = "";
-      break label4404;
-      label5882:
-      paramArrayOfByte = "";
-      break label4429;
-      i = -1;
-      break label4493;
-      paramArrayOfByte = "";
-      break label4519;
-      i = -1;
-      break label4569;
-      paramArrayOfByte = "";
-      break label4595;
-      paramArrayOfByte = "";
-      break label4620;
-      paramArrayOfByte = "";
-      break label4720;
-      paramArrayOfByte = "";
-      break label4746;
       j = 0;
-      break label4773;
+      continue;
+      label5874:
       f = 0.0F;
-      break label4801;
+      continue;
+      label5880:
       j = 0;
-      break label4829;
+      continue;
+      label5886:
       j = -1;
-      break label4857;
+      continue;
+      label5892:
       paramArrayOfByte = null;
-      break label4887;
+      continue;
+      label5897:
       bool = false;
-      break label5015;
+      continue;
+      label5903:
       i = 0;
-      break label5042;
+      continue;
+      label5909:
       i = 0;
-      break label5069;
+      continue;
+      label5915:
+      i = 0;
+      continue;
+      label5921:
+      i = -1;
+      continue;
+      label5927:
+      paramArrayOfByte = "";
+      continue;
+      label5933:
+      i = -1;
+      continue;
+      label5939:
+      paramArrayOfByte = "";
+      continue;
+      label5945:
+      i = -1;
+      continue;
+      label5951:
+      paramArrayOfByte = "";
+      continue;
+      label5957:
+      i = 0;
+      continue;
+      label5963:
+      i = 0;
+      continue;
+      label5969:
+      i = 0;
+      continue;
+      label5975:
+      i = 0;
+      continue;
+      label5981:
+      f = 0.0F;
+      continue;
+      label5987:
+      i = 0;
+      continue;
+      label5993:
+      j = 0;
+      continue;
+      label5999:
+      j = 0;
+      continue;
+      label6005:
+      double d = 0.0D;
+      continue;
+      label6010:
+      Object localObject1 = "";
+      continue;
+      label6017:
+      int k = 0;
+      continue;
+      label6023:
+      localObject1 = "";
+      continue;
+      label6030:
+      d = 0.0D;
+      continue;
+      label6035:
+      localObject1 = "";
+      continue;
+      label6042:
+      k = 0;
+      continue;
+      label6048:
+      localObject1 = "";
+      continue;
+      label6055:
+      localObject1 = "";
+      continue;
+      label6062:
+      localObject1 = "";
+      continue;
+      label6069:
+      localObject1 = "";
+      continue;
+      label6076:
+      localObject1 = null;
+      continue;
+      label6082:
+      bool = false;
+      continue;
+      label6088:
+      k = 0;
+      continue;
+      label6094:
+      localObject1 = "";
+      continue;
+      label6101:
+      localObject1 = "";
+      continue;
+      label6108:
+      localObject1 = "";
+      continue;
+      label6115:
+      localObject1 = "";
+      continue;
+      label6122:
+      localObject1 = "";
+      continue;
+      label6129:
+      localObject1 = "";
+      continue;
+      label6136:
+      localObject1 = "";
+      continue;
+      label6143:
+      i = -1;
+      continue;
+      label6149:
+      paramArrayOfByte = "";
+      continue;
+      label6155:
+      paramArrayOfByte = "";
+      continue;
+      label6161:
+      i = -1;
+      continue;
+      label6167:
+      paramArrayOfByte = "";
+      continue;
+      label6173:
+      i = 0;
+      continue;
+      label6179:
+      f = 0.0F;
+      continue;
+      label6185:
+      l1 = -1L;
+      continue;
+      label6193:
+      i = -1;
+      continue;
+      label6199:
+      paramArrayOfByte = "";
+      continue;
+      label6205:
+      paramArrayOfByte = null;
+      continue;
+      label6210:
+      i = -1;
+      continue;
+      label6216:
+      localObject1 = "";
+      continue;
+      label6223:
+      localObject1 = "";
+      continue;
+      label6230:
+      i = -1;
+      continue;
+      label6236:
+      i = -1;
+      continue;
+      label6242:
+      paramArrayOfByte = null;
+      continue;
+      label6247:
+      l1 = -1L;
+      continue;
+      label6255:
+      i = -1;
+      continue;
+      label6261:
+      paramArrayOfByte = "";
+      continue;
+      label6267:
+      paramArrayOfByte = "";
+      continue;
+      label6273:
+      paramArrayOfByte = "";
+      continue;
+      label6279:
+      paramArrayOfByte = "";
+      continue;
+      label6285:
+      paramArrayOfByte = "";
+      continue;
+      label6291:
+      f = 0.0F;
+      continue;
+      label6297:
+      i = -1;
+      continue;
+      label6303:
+      paramArrayOfByte = "";
+      continue;
+      label6309:
+      paramArrayOfByte = "";
+      continue;
+      label6315:
+      paramArrayOfByte = "";
+      continue;
+      label6321:
+      i = -1;
+      continue;
+      label6327:
+      paramArrayOfByte = "";
+      continue;
+      label6333:
+      i = -1;
+      continue;
+      label6339:
+      paramArrayOfByte = "";
+      continue;
+      label6345:
+      paramArrayOfByte = "";
+      continue;
+      label6351:
+      paramArrayOfByte = "";
+      continue;
+      label6357:
+      paramArrayOfByte = "";
+      continue;
+      label6363:
+      j = 0;
+      continue;
+      label6369:
+      f = 0.0F;
+      continue;
+      label6375:
+      j = 0;
+      continue;
+      label6381:
+      j = -1;
+      continue;
+      label6387:
+      paramArrayOfByte = null;
+      continue;
+      label6392:
+      bool = false;
+      continue;
+      label6398:
+      i = 0;
+      continue;
+      label6404:
+      i = 0;
+      continue;
+      label6410:
+      i = 0;
+      continue;
+      label6416:
+      l1 = 0L;
     }
   }
   
@@ -1498,92 +1478,89 @@ public class ARCloudFileUpload
       localARCloudRecogReq.msg_word_detect_info.set((MessageMicro)localObject1);
     }
     Object localObject2;
+    Object localObject3;
     if ((0x10 & l2) != 0L)
     {
       localObject1 = new ARCloudRecogCustomPb.AROcrInfo();
       localObject2 = new YoutuOcr.YoutuOcrReq();
       ((YoutuOcr.YoutuOcrReq)localObject2).uin32_timeout_ms.set(30000);
-      if ((paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo == null) || (TextUtils.isEmpty(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo.jdField_a_of_type_JavaLangString))) {
-        break label599;
+      if ((paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo != null) && (!TextUtils.isEmpty(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo.jdField_a_of_type_JavaLangString))) {
+        ((YoutuOcr.YoutuOcrReq)localObject2).language.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo.jdField_a_of_type_JavaLangString);
+      } else {
+        ((YoutuOcr.YoutuOcrReq)localObject2).language.set("auto");
       }
-      ((YoutuOcr.YoutuOcrReq)localObject2).language.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      Object localObject3 = new JDSearch.JdSearchReq();
+      localObject3 = new JDSearch.JdSearchReq();
       ((JDSearch.JdSearchReq)localObject3).uin32_timeout_ms.set(30000);
       ((ARCloudRecogCustomPb.AROcrInfo)localObject1).uin64_ocr_recog_type.set(17);
       ((ARCloudRecogCustomPb.AROcrInfo)localObject1).youtu_ocr_req.set((MessageMicro)localObject2);
       ((ARCloudRecogCustomPb.AROcrInfo)localObject1).jd_search_req.set((MessageMicro)localObject3);
       localARCloudRecogReq.msg_ocr_info.set((MessageMicro)localObject1);
-      l1 = l2;
-      if ((0x4 & l2) == 0L) {
-        break label672;
-      }
-      if ((paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo == null) || (paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus == null) || (paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length <= 0)) {
-        break label935;
-      }
-      localObject1 = new ARCloudRecogCustomPb.ARFaceRecogInfo();
-      localObject2 = new ArrayList();
-      int j = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length;
-      int i = 0;
-      while (i < j)
-      {
-        localObject3 = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i];
-        ARCloudRecogCustomPb.FaceRect localFaceRect = new ARCloudRecogCustomPb.FaceRect();
-        localFaceRect.face_rect_id.set(i);
-        localFaceRect.face_origin_x.set(((FaceStatus)localObject3).x);
-        localFaceRect.face_origin_y.set(((FaceStatus)localObject3).y);
-        localFaceRect.face_size_w.set(((FaceStatus)localObject3).width);
-        localFaceRect.face_size_h.set(((FaceStatus)localObject3).height);
-        ((ArrayList)localObject2).add(localFaceRect);
-        i += 1;
-      }
-      label599:
-      ((YoutuOcr.YoutuOcrReq)localObject2).language.set("auto");
     }
-    ((ARCloudRecogCustomPb.ARFaceRecogInfo)localObject1).uin32_timeout_ms.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_Int);
-    ((ARCloudRecogCustomPb.ARFaceRecogInfo)localObject1).face_rect.set((List)localObject2);
-    localARCloudRecogReq.msg_face_recog_info.set((MessageMicro)localObject1);
     long l1 = l2;
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARCloudFileUpload", 2, "[ScanStarFace] serialize add faceRectInfo");
-    }
-    label672:
-    label935:
-    for (l1 = l2;; l1 = l2 & 0xFFFFFFFB)
-    {
-      if ((0x200 & l1) != 0L)
+    if ((0x4 & l2) != 0L) {
+      if ((paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo != null) && (paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus != null) && (paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length > 0))
       {
-        localObject1 = new ARCloudRecogCustomPb.SearchQuestionInfo();
-        ((ARCloudRecogCustomPb.SearchQuestionInfo)localObject1).uin32_timeout_ms.set(30000);
-        ((ARCloudRecogCustomPb.SearchQuestionInfo)localObject1).uin64_pic_height.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_b_of_type_Int);
-        ((ARCloudRecogCustomPb.SearchQuestionInfo)localObject1).uin64_pic_width.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_c_of_type_Int);
-        localARCloudRecogReq.msg_search_question_info.set((MessageMicro)localObject1);
-      }
-      if ((0x800 & l1) != 0L)
-      {
-        localObject1 = new ARCloudRecogCustomPb.ARSceneClassifyInfo();
-        ((ARCloudRecogCustomPb.ARSceneClassifyInfo)localObject1).uin32_timeout_ms.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqSceneRecogInfo.jdField_a_of_type_Int);
-        localARCloudRecogReq.msg_scene_classify_info.set((MessageMicro)localObject1);
-      }
-      if ((0x2000 & l1) != 0L)
-      {
-        localObject1 = new ARCloudRecogCustomPb.ImageTranslateReqInfo();
-        if (paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqTranslateInfo != null)
+        localObject1 = new ARCloudRecogCustomPb.ARFaceRecogInfo();
+        localObject2 = new ArrayList();
+        int j = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length;
+        int i = 0;
+        while (i < j)
         {
-          ((ARCloudRecogCustomPb.ImageTranslateReqInfo)localObject1).session_uuid.set(ByteStringMicro.copyFromUtf8(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqTranslateInfo.jdField_a_of_type_JavaLangString));
-          ((ARCloudRecogCustomPb.ImageTranslateReqInfo)localObject1).source_lang.set(ByteStringMicro.copyFromUtf8(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqTranslateInfo.a()));
-          ((ARCloudRecogCustomPb.ImageTranslateReqInfo)localObject1).target_lang.set(ByteStringMicro.copyFromUtf8(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqTranslateInfo.b()));
-          ((ARCloudRecogCustomPb.ImageTranslateReqInfo)localObject1).plateform.set(ByteStringMicro.copyFromUtf8("android"));
+          localObject3 = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus[i];
+          ARCloudRecogCustomPb.FaceRect localFaceRect = new ARCloudRecogCustomPb.FaceRect();
+          localFaceRect.face_rect_id.set(i);
+          localFaceRect.face_origin_x.set(((FaceStatus)localObject3).x);
+          localFaceRect.face_origin_y.set(((FaceStatus)localObject3).y);
+          localFaceRect.face_size_w.set(((FaceStatus)localObject3).width);
+          localFaceRect.face_size_h.set(((FaceStatus)localObject3).height);
+          ((ArrayList)localObject2).add(localFaceRect);
+          i += 1;
         }
-        localARCloudRecogReq.msg_image_translate_req_info.set((MessageMicro)localObject1);
+        ((ARCloudRecogCustomPb.ARFaceRecogInfo)localObject1).uin32_timeout_ms.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_Int);
+        ((ARCloudRecogCustomPb.ARFaceRecogInfo)localObject1).face_rect.set((List)localObject2);
+        localARCloudRecogReq.msg_face_recog_info.set((MessageMicro)localObject1);
+        l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("AREngine_ARCloudFileUpload", 2, "[ScanStarFace] serialize add faceRectInfo");
+          l1 = l2;
+        }
       }
-      localARCloudRecogReq.uin64_req_recog_type.set(l1);
-      localARCloudRecogReq.str_clt_version.set(paramARCloudReqInfo.jdField_b_of_type_JavaLangString);
-      localARCloudRecogReq.uint64_uin.set(paramARCloudReqInfo.jdField_b_of_type_Long);
-      return localARCloudRecogReq.toByteArray();
+      else
+      {
+        l1 = l2 & 0xFFFFFFFB;
+      }
     }
+    if ((0x200 & l1) != 0L)
+    {
+      localObject1 = new ARCloudRecogCustomPb.SearchQuestionInfo();
+      ((ARCloudRecogCustomPb.SearchQuestionInfo)localObject1).uin32_timeout_ms.set(30000);
+      ((ARCloudRecogCustomPb.SearchQuestionInfo)localObject1).uin64_pic_height.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_b_of_type_Int);
+      ((ARCloudRecogCustomPb.SearchQuestionInfo)localObject1).uin64_pic_width.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_c_of_type_Int);
+      localARCloudRecogReq.msg_search_question_info.set((MessageMicro)localObject1);
+    }
+    if ((0x800 & l1) != 0L)
+    {
+      localObject1 = new ARCloudRecogCustomPb.ARSceneClassifyInfo();
+      ((ARCloudRecogCustomPb.ARSceneClassifyInfo)localObject1).uin32_timeout_ms.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqSceneRecogInfo.jdField_a_of_type_Int);
+      localARCloudRecogReq.msg_scene_classify_info.set((MessageMicro)localObject1);
+    }
+    if ((0x2000 & l1) != 0L)
+    {
+      localObject1 = new ARCloudRecogCustomPb.ImageTranslateReqInfo();
+      if (paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqTranslateInfo != null)
+      {
+        ((ARCloudRecogCustomPb.ImageTranslateReqInfo)localObject1).session_uuid.set(ByteStringMicro.copyFromUtf8(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqTranslateInfo.jdField_a_of_type_JavaLangString));
+        ((ARCloudRecogCustomPb.ImageTranslateReqInfo)localObject1).source_lang.set(ByteStringMicro.copyFromUtf8(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqTranslateInfo.a()));
+        ((ARCloudRecogCustomPb.ImageTranslateReqInfo)localObject1).target_lang.set(ByteStringMicro.copyFromUtf8(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqTranslateInfo.b()));
+        ((ARCloudRecogCustomPb.ImageTranslateReqInfo)localObject1).plateform.set(ByteStringMicro.copyFromUtf8("android"));
+      }
+      localARCloudRecogReq.msg_image_translate_req_info.set((MessageMicro)localObject1);
+    }
+    localARCloudRecogReq.uin64_req_recog_type.set(l1);
+    localARCloudRecogReq.str_clt_version.set(paramARCloudReqInfo.jdField_b_of_type_JavaLangString);
+    localARCloudRecogReq.uint64_uin.set(paramARCloudReqInfo.jdField_b_of_type_Long);
+    return localARCloudRecogReq.toByteArray();
   }
   
   /* Error */
@@ -1591,177 +1568,177 @@ public class ARCloudFileUpload
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 4
     //   3: aconst_null
-    //   4: astore 4
-    //   6: new 1295	java/io/File
+    //   4: astore 5
+    //   6: new 1277	java/io/File
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 1296	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 1278	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore 6
-    //   16: new 1298	java/io/FileInputStream
+    //   16: new 1280	java/io/FileInputStream
     //   19: dup
     //   20: aload 6
-    //   22: invokespecial 1301	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   22: invokespecial 1283	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   25: astore_3
     //   26: aload_3
     //   27: astore_2
     //   28: aload_3
     //   29: aload 6
-    //   31: invokevirtual 1304	java/io/File:length	()J
-    //   34: invokestatic 1310	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   31: invokevirtual 1286	java/io/File:length	()J
+    //   34: invokestatic 1292	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   37: astore 6
     //   39: aload 6
     //   41: astore_0
-    //   42: aload_0
-    //   43: astore_2
-    //   44: aload_3
-    //   45: ifnull +9 -> 54
-    //   48: aload_3
-    //   49: invokevirtual 1313	java/io/FileInputStream:close	()V
-    //   52: aload_0
-    //   53: astore_2
-    //   54: aload_2
-    //   55: areturn
-    //   56: astore_2
-    //   57: aload_3
-    //   58: astore_2
-    //   59: new 1295	java/io/File
-    //   62: dup
-    //   63: aload_0
-    //   64: invokespecial 1296	java/io/File:<init>	(Ljava/lang/String;)V
-    //   67: astore 6
-    //   69: aload_3
-    //   70: astore_2
-    //   71: aload 6
-    //   73: invokevirtual 1316	java/io/File:exists	()Z
-    //   76: istore_1
-    //   77: aload 4
-    //   79: astore_0
-    //   80: iload_1
-    //   81: ifeq -39 -> 42
-    //   84: aload_3
-    //   85: astore_2
-    //   86: aload 6
-    //   88: invokestatic 1321	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
-    //   91: astore_0
-    //   92: aload_0
-    //   93: ifnull +13 -> 106
-    //   96: aload_3
-    //   97: astore_2
-    //   98: aload_0
-    //   99: invokestatic 1326	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
-    //   102: astore_0
-    //   103: goto -61 -> 42
-    //   106: ldc 32
-    //   108: astore_0
-    //   109: goto -13 -> 96
-    //   112: astore_2
-    //   113: aload_2
-    //   114: invokevirtual 1329	java/io/IOException:printStackTrace	()V
-    //   117: aload_0
-    //   118: areturn
-    //   119: astore 4
+    //   42: goto +63 -> 105
+    //   45: astore_2
+    //   46: aload_3
+    //   47: astore_0
+    //   48: aload_2
+    //   49: astore_3
+    //   50: goto +79 -> 129
+    //   53: aload_3
+    //   54: astore_2
+    //   55: new 1277	java/io/File
+    //   58: dup
+    //   59: aload_0
+    //   60: invokespecial 1278	java/io/File:<init>	(Ljava/lang/String;)V
+    //   63: astore 6
+    //   65: aload_3
+    //   66: astore_2
+    //   67: aload 6
+    //   69: invokevirtual 1295	java/io/File:exists	()Z
+    //   72: istore_1
+    //   73: aload 5
+    //   75: astore_0
+    //   76: iload_1
+    //   77: ifeq +28 -> 105
+    //   80: aload_3
+    //   81: astore_2
+    //   82: aload 6
+    //   84: invokestatic 1300	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
+    //   87: astore_0
+    //   88: aload_0
+    //   89: ifnull +95 -> 184
+    //   92: goto +3 -> 95
+    //   95: aload_3
+    //   96: astore_2
+    //   97: aload_0
+    //   98: invokestatic 1305	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   101: astore_0
+    //   102: goto -60 -> 42
+    //   105: aload_0
+    //   106: astore_2
+    //   107: aload_3
+    //   108: invokevirtual 1308	java/io/FileInputStream:close	()V
+    //   111: aload_0
+    //   112: areturn
+    //   113: astore_0
+    //   114: aload_0
+    //   115: invokevirtual 1311	java/io/IOException:printStackTrace	()V
+    //   118: aload_2
+    //   119: areturn
+    //   120: astore_0
     //   121: aconst_null
-    //   122: astore_0
-    //   123: aload_0
-    //   124: astore_2
-    //   125: aload 4
-    //   127: invokevirtual 1330	java/lang/Exception:printStackTrace	()V
-    //   130: aload 5
-    //   132: astore_2
-    //   133: aload_0
-    //   134: ifnull -80 -> 54
-    //   137: aload_0
-    //   138: invokevirtual 1313	java/io/FileInputStream:close	()V
-    //   141: aconst_null
-    //   142: areturn
-    //   143: astore_0
-    //   144: aload_0
-    //   145: invokevirtual 1329	java/io/IOException:printStackTrace	()V
-    //   148: aconst_null
-    //   149: areturn
-    //   150: astore_0
-    //   151: aconst_null
-    //   152: astore_2
+    //   122: astore_2
+    //   123: goto +26 -> 149
+    //   126: astore_3
+    //   127: aconst_null
+    //   128: astore_0
+    //   129: aload_0
+    //   130: astore_2
+    //   131: aload_3
+    //   132: invokevirtual 1312	java/lang/Exception:printStackTrace	()V
+    //   135: aload_0
+    //   136: ifnull +10 -> 146
+    //   139: aload 4
+    //   141: astore_2
+    //   142: aload_0
+    //   143: invokevirtual 1308	java/io/FileInputStream:close	()V
+    //   146: aconst_null
+    //   147: areturn
+    //   148: astore_0
+    //   149: aload_2
+    //   150: ifnull +15 -> 165
     //   153: aload_2
-    //   154: ifnull +7 -> 161
-    //   157: aload_2
-    //   158: invokevirtual 1313	java/io/FileInputStream:close	()V
-    //   161: aload_0
-    //   162: athrow
-    //   163: astore_2
-    //   164: aload_2
-    //   165: invokevirtual 1329	java/io/IOException:printStackTrace	()V
-    //   168: goto -7 -> 161
-    //   171: astore_0
-    //   172: goto -19 -> 153
-    //   175: astore 4
-    //   177: aload_3
-    //   178: astore_0
-    //   179: goto -56 -> 123
-    //   182: astore_0
-    //   183: aload 4
-    //   185: astore_0
-    //   186: goto -144 -> 42
+    //   154: invokevirtual 1308	java/io/FileInputStream:close	()V
+    //   157: goto +8 -> 165
+    //   160: astore_2
+    //   161: aload_2
+    //   162: invokevirtual 1311	java/io/IOException:printStackTrace	()V
+    //   165: goto +5 -> 170
+    //   168: aload_0
+    //   169: athrow
+    //   170: goto -2 -> 168
+    //   173: astore_2
+    //   174: goto -121 -> 53
+    //   177: astore_0
+    //   178: aload 5
+    //   180: astore_0
+    //   181: goto -76 -> 105
+    //   184: ldc 32
+    //   186: astore_0
+    //   187: goto -92 -> 95
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	189	0	paramString	String
-    //   76	5	1	bool	boolean
-    //   27	28	2	localObject1	Object
-    //   56	1	2	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
-    //   58	40	2	localFileInputStream1	java.io.FileInputStream
-    //   112	2	2	localIOException1	java.io.IOException
-    //   124	34	2	localObject2	Object
-    //   163	2	2	localIOException2	java.io.IOException
-    //   25	153	3	localFileInputStream2	java.io.FileInputStream
-    //   4	74	4	localObject3	Object
-    //   119	7	4	localException1	java.lang.Exception
-    //   175	9	4	localException2	java.lang.Exception
-    //   1	130	5	localObject4	Object
-    //   14	73	6	localObject5	Object
+    //   0	190	0	paramString	String
+    //   72	5	1	bool	boolean
+    //   27	1	2	localObject1	Object
+    //   45	4	2	localException1	java.lang.Exception
+    //   54	100	2	localObject2	Object
+    //   160	2	2	localIOException	java.io.IOException
+    //   173	1	2	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
+    //   25	83	3	localObject3	Object
+    //   126	6	3	localException2	java.lang.Exception
+    //   1	139	4	localObject4	Object
+    //   4	175	5	localObject5	Object
+    //   14	69	6	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   28	39	56	java/lang/UnsatisfiedLinkError
-    //   48	52	112	java/io/IOException
-    //   6	26	119	java/lang/Exception
-    //   137	141	143	java/io/IOException
-    //   6	26	150	finally
-    //   157	161	163	java/io/IOException
-    //   28	39	171	finally
-    //   59	69	171	finally
-    //   71	77	171	finally
-    //   86	92	171	finally
-    //   98	103	171	finally
-    //   125	130	171	finally
-    //   28	39	175	java/lang/Exception
-    //   59	69	175	java/lang/Exception
-    //   71	77	175	java/lang/Exception
-    //   86	92	175	java/lang/Exception
-    //   98	103	175	java/lang/Exception
-    //   86	92	182	java/io/IOException
-    //   98	103	182	java/io/IOException
+    //   28	39	45	java/lang/Exception
+    //   55	65	45	java/lang/Exception
+    //   67	73	45	java/lang/Exception
+    //   82	88	45	java/lang/Exception
+    //   97	102	45	java/lang/Exception
+    //   107	111	113	java/io/IOException
+    //   142	146	113	java/io/IOException
+    //   6	26	120	finally
+    //   6	26	126	java/lang/Exception
+    //   28	39	148	finally
+    //   55	65	148	finally
+    //   67	73	148	finally
+    //   82	88	148	finally
+    //   97	102	148	finally
+    //   131	135	148	finally
+    //   153	157	160	java/io/IOException
+    //   28	39	173	java/lang/UnsatisfiedLinkError
+    //   82	88	177	java/io/IOException
+    //   97	102	177	java/io/IOException
   }
   
   public int a()
   {
-    int i = 0;
+    int i;
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
+      Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList;
+      i = 0;
+      if (localObject2 != null)
       {
         int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-        i = 0;
         while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          QLog.i("AREngine_ARCloudFileUpload", 1, "cancelTransactionTask. sessionId = " + ((ARCloudFileUpload.TaskInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_a_of_type_JavaLangString);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("cancelTransactionTask. sessionId = ");
+          ((StringBuilder)localObject2).append(((ARCloudFileUpload.TaskInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_a_of_type_JavaLangString);
+          QLog.i("AREngine_ARCloudFileUpload", 1, ((StringBuilder)localObject2).toString());
           this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(((ARCloudFileUpload.TaskInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
           i += 1;
         }
         this.jdField_a_of_type_JavaUtilArrayList.clear();
         i = j;
+        return i;
       }
-      return i;
     }
   }
   
@@ -1772,8 +1749,9 @@ public class ARCloudFileUpload
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().preConnect();
+    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if (localAppInterface != null) {
+      localAppInterface.getHwEngine().preConnect();
     }
   }
   
@@ -1788,66 +1766,78 @@ public class ARCloudFileUpload
   
   public boolean a(ARCloudReqInfo paramARCloudReqInfo, ARCloudFileUpload.ARCloudFileUploadCallback arg2)
   {
-    if ((paramARCloudReqInfo == null) || (??? == null)) {
-      QLog.i("AREngine_ARCloudFileUpload", 1, "reqInfo == null || callBack == null");
-    }
-    for (;;)
+    if ((paramARCloudReqInfo != null) && (??? != null))
     {
-      return false;
-      long l = 0L;
-      Object localObject1 = new File(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString);
-      if (localObject1 != null) {
-        l = ((File)localObject1).length();
-      }
-      localObject1 = new ARCloudFileUpload.2(this, paramARCloudReqInfo, l);
+      Object localObject1 = new ARCloudFileUpload.2(this, paramARCloudReqInfo, new File(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString).length());
       Object localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-      if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0)) {}
-      int i;
+      byte[] arrayOfByte1 = this.jdField_a_of_type_ArrayOfByte;
+      if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0)) {}
       try
       {
+        int i;
         if (SessionInfo.getInstance((String)localObject2).getHttpconn_sig_session() != null)
         {
           i = SessionInfo.getInstance((String)localObject2).getHttpconn_sig_session().length;
           this.jdField_a_of_type_ArrayOfByte = new byte[i];
           System.arraycopy(SessionInfo.getInstance((String)localObject2).getHttpconn_sig_session(), 0, this.jdField_a_of_type_ArrayOfByte, 0, i);
         }
-        if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0))
+        arrayOfByte1 = this.jdField_a_of_type_ArrayOfByte;
+        if ((arrayOfByte1 != null) && (arrayOfByte1.length != 0))
         {
-          HwServlet.getConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2);
-          QLog.i("AREngine_ARCloudFileUpload", 1, "requestToUpload failed. mSigSession == null || mSigSession.length == 0.");
+          arrayOfByte1 = a(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString);
+          if ((arrayOfByte1 != null) && (arrayOfByte1.length != 0))
+          {
+            byte[] arrayOfByte2 = a(paramARCloudReqInfo);
+            localObject1 = new Transaction((String)localObject2, 42, paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, arrayOfByte1, (ITransactionCallback)localObject1, arrayOfByte2);
+            localObject2 = new ARCloudFileUpload.TaskInfo();
+            ((ARCloudFileUpload.TaskInfo)localObject2).jdField_a_of_type_JavaLangString = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString;
+            ((ARCloudFileUpload.TaskInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo = paramARCloudReqInfo;
+            ((ARCloudFileUpload.TaskInfo)localObject2).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = ((Transaction)localObject1);
+            ((ARCloudFileUpload.TaskInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = ???;
+            synchronized (this.jdField_a_of_type_JavaLangObject)
+            {
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+              i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject1);
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("submitTransactionTask. retCode = ");
+              ((StringBuilder)localObject1).append(i);
+              ((StringBuilder)localObject1).append(", reqInfo = ");
+              ((StringBuilder)localObject1).append(paramARCloudReqInfo);
+              QLog.i("AREngine_ARCloudFileUpload", 1, ((StringBuilder)localObject1).toString());
+              if (i != 0) {
+                break label391;
+              }
+              return true;
+            }
+          }
+          QLog.i("AREngine_ARCloudFileUpload", 1, "requestToUpload failed. fileMd5 == null || fileMd5.length == 0.");
           return false;
         }
-      }
-      finally {}
-      byte[] arrayOfByte1 = a(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString);
-      if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0))
-      {
-        QLog.i("AREngine_ARCloudFileUpload", 1, "requestToUpload failed. fileMd5 == null || fileMd5.length == 0.");
+        HwServlet.getConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject2);
+        QLog.i("AREngine_ARCloudFileUpload", 1, "requestToUpload failed. mSigSession == null || mSigSession.length == 0.");
         return false;
       }
-      byte[] arrayOfByte2 = a(paramARCloudReqInfo);
-      localObject1 = new Transaction((String)localObject2, 42, paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, arrayOfByte1, (ITransactionCallback)localObject1, arrayOfByte2);
-      localObject2 = new ARCloudFileUpload.TaskInfo();
-      ((ARCloudFileUpload.TaskInfo)localObject2).jdField_a_of_type_JavaLangString = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString;
-      ((ARCloudFileUpload.TaskInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo = paramARCloudReqInfo;
-      ((ARCloudFileUpload.TaskInfo)localObject2).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = ((Transaction)localObject1);
-      ((ARCloudFileUpload.TaskInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = ???;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
-        i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject1);
-        QLog.i("AREngine_ARCloudFileUpload", 1, "submitTransactionTask. retCode = " + i + ", reqInfo = " + paramARCloudReqInfo);
-        if (i != 0) {
-          continue;
-        }
-        return true;
-      }
+      finally {}
     }
+    else
+    {
+      QLog.i("AREngine_ARCloudFileUpload", 1, "reqInfo == null || callBack == null");
+      return false;
+    }
+    label391:
+    return false;
   }
   
   public boolean a(String paramString, int paramInt1, int paramInt2, ARCloudFileUpload.ARCloudLBSLocationCheckCallback paramARCloudLBSLocationCheckCallback)
   {
-    QLog.i("AREngine_ARCloudFileUpload", 1, "requestToCheckLBSLocation. imageId = " + paramString + ", latitude = " + paramInt1 + ", longitude = " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("requestToCheckLBSLocation. imageId = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", latitude = ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", longitude = ");
+    localStringBuilder.append(paramInt2);
+    QLog.i("AREngine_ARCloudFileUpload", 1, localStringBuilder.toString());
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudLBSLocationCheckCallback = paramARCloudLBSLocationCheckCallback;
     ((ARLBSHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(ArMapConstant.jdField_b_of_type_JavaLangString)).a(paramString, paramInt1, paramInt2);
@@ -1856,14 +1846,15 @@ public class ARCloudFileUpload
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArARLBSObserver != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqArARLBSObserver);
+    ARLBSObserver localARLBSObserver = this.jdField_a_of_type_ComTencentMobileqqArARLBSObserver;
+    if (localARLBSObserver != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(localARLBSObserver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload
  * JD-Core Version:    0.7.0.1
  */

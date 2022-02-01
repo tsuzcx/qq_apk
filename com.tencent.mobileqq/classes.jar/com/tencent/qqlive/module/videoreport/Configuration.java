@@ -19,24 +19,28 @@ public class Configuration
   private int mAppTimeReportTimePinInterval;
   private int mAudioReportHeartBeatInterval;
   private int mAudioTimePinInterval;
-  private final long mClickReportInterval;
+  private long mClickReportInterval;
   private Configuration.Builder mConfigBuilder;
+  private Configuration.Builder mCurrentBuilder = DEFAULT_BUILDER;
   private boolean mDefaultDataCollectEnable;
   private boolean mDefaultReportEnable;
-  private final ClickPolicy mElementClickPolicy;
-  private final EndExposurePolicy mElementEndExposePolicy;
-  private final ExposurePolicy mElementExposePolicy;
-  private final double mElementExposureMinRate;
-  private final long mElementExposureMinTime;
+  private ClickPolicy mElementClickPolicy;
+  private EndExposurePolicy mElementEndExposePolicy;
+  private ExposurePolicy mElementExposePolicy;
+  private double mElementExposureMinRate;
+  private long mElementExposureMinTime;
   @Deprecated
-  private final ReportPolicy mElementReportPolicy;
+  private ReportPolicy mElementReportPolicy;
   private boolean mEnablePageLink;
-  private final IFormatter mFormatter;
+  private boolean mEnableToast;
+  private IFormatter mFormatter;
   private boolean mIndependentPageOut;
-  private final ILogger mLogger;
-  private final double mPageExposureMinRate;
-  private final long mPageExposureMinTime;
-  private final long mVisitBackgroundTime;
+  private ILogger mLogger;
+  private double mPageExposureMinRate;
+  private long mPageExposureMinTime;
+  private int mVideoHeartBeatInterval;
+  private int mVideoPageSwitch = 0;
+  private long mVisitBackgroundTime;
   
   private Configuration()
   {
@@ -44,6 +48,35 @@ public class Configuration
   }
   
   private Configuration(Configuration.Builder paramBuilder)
+  {
+    setConfig(paramBuilder);
+  }
+  
+  public static Configuration.Builder builder()
+  {
+    return new Configuration.Builder();
+  }
+  
+  public static Configuration getDefault()
+  {
+    if (sDefaultInstance == null) {
+      try
+      {
+        if (sDefaultInstance == null) {
+          sDefaultInstance = new Configuration();
+        }
+      }
+      finally {}
+    }
+    return sDefaultInstance;
+  }
+  
+  private boolean isDefaultReportEnable()
+  {
+    return this.mDefaultReportEnable;
+  }
+  
+  private void setConfig(Configuration.Builder paramBuilder)
   {
     this.mConfigBuilder = paramBuilder;
     this.mDefaultReportEnable = Configuration.Builder.access$000(paramBuilder);
@@ -59,41 +92,23 @@ public class Configuration
     this.mElementExposePolicy = Configuration.Builder.access$1000(paramBuilder);
     this.mElementEndExposePolicy = Configuration.Builder.access$1100(paramBuilder);
     this.mLogger = Configuration.Builder.access$1200(paramBuilder);
-    if (Configuration.Builder.access$1300(paramBuilder) != null) {}
-    for (Object localObject = Configuration.Builder.access$1300(paramBuilder);; localObject = new DTParamsNewsFlattenFormatter())
-    {
-      this.mFormatter = ((IFormatter)localObject);
-      this.mIndependentPageOut = Configuration.Builder.access$1400(paramBuilder);
-      this.mAppTimeReportHeartBeatInterval = Configuration.Builder.access$1500(paramBuilder);
-      this.mAppTimeReportTimePinInterval = Configuration.Builder.access$1600(paramBuilder);
-      this.mAudioReportHeartBeatInterval = Configuration.Builder.access$1700(paramBuilder);
-      this.mAudioTimePinInterval = Configuration.Builder.access$1800(paramBuilder);
-      this.mEnablePageLink = Configuration.Builder.access$1900(paramBuilder);
-      return;
+    Object localObject;
+    if (Configuration.Builder.access$1300(paramBuilder) != null) {
+      localObject = Configuration.Builder.access$1300(paramBuilder);
+    } else {
+      localObject = new DTParamsNewsFlattenFormatter();
     }
-  }
-  
-  public static Configuration.Builder builder()
-  {
-    return new Configuration.Builder();
-  }
-  
-  public static Configuration getDefault()
-  {
-    if (sDefaultInstance == null) {}
-    try
-    {
-      if (sDefaultInstance == null) {
-        sDefaultInstance = new Configuration();
-      }
-      return sDefaultInstance;
-    }
-    finally {}
-  }
-  
-  private boolean isDefaultReportEnable()
-  {
-    return this.mDefaultReportEnable;
+    this.mFormatter = ((IFormatter)localObject);
+    this.mIndependentPageOut = Configuration.Builder.access$1400(paramBuilder);
+    this.mAppTimeReportHeartBeatInterval = Configuration.Builder.access$1500(paramBuilder);
+    this.mAppTimeReportTimePinInterval = Configuration.Builder.access$1600(paramBuilder);
+    this.mAudioReportHeartBeatInterval = Configuration.Builder.access$1700(paramBuilder);
+    this.mAudioTimePinInterval = Configuration.Builder.access$1800(paramBuilder);
+    this.mVideoHeartBeatInterval = Configuration.Builder.access$1900(paramBuilder);
+    this.mEnablePageLink = Configuration.Builder.access$2000(paramBuilder);
+    this.mVideoPageSwitch = Configuration.Builder.access$2100(paramBuilder);
+    this.mEnableToast = Configuration.Builder.access$2200(paramBuilder);
+    this.mCurrentBuilder = paramBuilder;
   }
   
   private void setDefaultReportEnable(boolean paramBoolean)
@@ -124,6 +139,11 @@ public class Configuration
   public long getClickReportInterval()
   {
     return this.mClickReportInterval;
+  }
+  
+  public Configuration.Builder getCurrentBuilder()
+  {
+    return this.mCurrentBuilder;
   }
   
   public ClickPolicy getElementClickPolicy()
@@ -165,15 +185,17 @@ public class Configuration
   
   public int getLazyInitType()
   {
-    return Configuration.Builder.access$2000(this.mConfigBuilder);
+    return Configuration.Builder.access$2300(this.mConfigBuilder);
   }
   
   public ILogger getLogger()
   {
-    if (this.mLogger == null) {
-      return DEFAULT_LOGGER;
+    ILogger localILogger = this.mLogger;
+    Object localObject = localILogger;
+    if (localILogger == null) {
+      localObject = DEFAULT_LOGGER;
     }
-    return this.mLogger;
+    return localObject;
   }
   
   public double getPageExposureMinRate()
@@ -184,6 +206,16 @@ public class Configuration
   public long getPageExposureMinTime()
   {
     return this.mPageExposureMinTime;
+  }
+  
+  public int getVideoHeartBeatInterval()
+  {
+    return this.mVideoHeartBeatInterval;
+  }
+  
+  public int getVideoPageSwitch()
+  {
+    return this.mVideoPageSwitch;
   }
   
   public long getVisitBackgroundTime()
@@ -201,6 +233,11 @@ public class Configuration
     return this.mEnablePageLink;
   }
   
+  public boolean isEnableToast()
+  {
+    return this.mEnableToast;
+  }
+  
   public boolean isIndependentPageOut()
   {
     return this.mIndependentPageOut;
@@ -213,16 +250,49 @@ public class Configuration
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Configuration{mDefaultReportEnable=").append(this.mDefaultReportEnable).append(", mDefaultDataCollectEnable=").append(this.mDefaultDataCollectEnable).append(", mVisitBackgroundTime=").append(this.mVisitBackgroundTime).append(", mPageExposureMinTime=").append(this.mPageExposureMinTime).append(", mPageExposureMinRate=").append(this.mPageExposureMinRate).append(", mElementExposureMinTime=").append(this.mElementExposureMinTime).append(", mElementExposureMinRate=").append(this.mElementExposureMinRate).append(", mElementReportPolicy=").append(this.mElementReportPolicy.name()).append(", mElementClickPolicy=").append(this.mElementClickPolicy).append(", mElementExposePolicy=").append(this.mElementExposePolicy).append(", mElementEndExposePolicy=").append(this.mElementEndExposePolicy).append(", mLogger=");
-    if (this.mLogger != null) {}
-    for (String str = this.mLogger.getClass().getName();; str = "null") {
-      return str + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Configuration{mDefaultReportEnable=");
+    localStringBuilder.append(this.mDefaultReportEnable);
+    localStringBuilder.append(", mDefaultDataCollectEnable=");
+    localStringBuilder.append(this.mDefaultDataCollectEnable);
+    localStringBuilder.append(", mVisitBackgroundTime=");
+    localStringBuilder.append(this.mVisitBackgroundTime);
+    localStringBuilder.append(", mPageExposureMinTime=");
+    localStringBuilder.append(this.mPageExposureMinTime);
+    localStringBuilder.append(", mPageExposureMinRate=");
+    localStringBuilder.append(this.mPageExposureMinRate);
+    localStringBuilder.append(", mElementExposureMinTime=");
+    localStringBuilder.append(this.mElementExposureMinTime);
+    localStringBuilder.append(", mElementExposureMinRate=");
+    localStringBuilder.append(this.mElementExposureMinRate);
+    localStringBuilder.append(", mElementReportPolicy=");
+    localStringBuilder.append(this.mElementReportPolicy.name());
+    localStringBuilder.append(", mElementClickPolicy=");
+    localStringBuilder.append(this.mElementClickPolicy);
+    localStringBuilder.append(", mElementExposePolicy=");
+    localStringBuilder.append(this.mElementExposePolicy);
+    localStringBuilder.append(", mElementEndExposePolicy=");
+    localStringBuilder.append(this.mElementEndExposePolicy);
+    localStringBuilder.append(", mLogger=");
+    Object localObject = this.mLogger;
+    if (localObject != null) {
+      localObject = localObject.getClass().getName();
+    } else {
+      localObject = "null";
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
+  
+  public void update(@NonNull Configuration paramConfiguration)
+  {
+    setConfig(paramConfiguration.getCurrentBuilder());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.Configuration
  * JD-Core Version:    0.7.0.1
  */

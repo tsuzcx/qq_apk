@@ -19,20 +19,21 @@ public class GamePushServlet
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     MSFToWebViewConnector localMSFToWebViewConnector = SensorAPIJavaScript.getMsfToWebViewConnector();
-    if (localMSFToWebViewConnector != null) {
+    if (localMSFToWebViewConnector != null)
+    {
       localMSFToWebViewConnector.a(paramIntent, paramFromServiceMsg);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("GamePushServlet", 2, "WebView not connect to msf");
+    if (QLog.isColorLevel()) {
+      QLog.d("GamePushServlet", 2, "WebView not connect to msf");
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.game.GamePushServlet
  * JD-Core Version:    0.7.0.1
  */

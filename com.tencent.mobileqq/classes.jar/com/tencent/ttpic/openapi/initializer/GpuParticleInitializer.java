@@ -8,7 +8,7 @@ import java.util.List;
 public class GpuParticleInitializer
   extends Feature
 {
-  private static final String TAG = GpuParticleInitializer.class.getSimpleName();
+  private static final String TAG = "GpuParticleInitializer";
   private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("gpuParticleSystem") };
   
   private static boolean support()
@@ -46,7 +46,7 @@ public class GpuParticleInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.GpuParticleInitializer
  * JD-Core Version:    0.7.0.1
  */

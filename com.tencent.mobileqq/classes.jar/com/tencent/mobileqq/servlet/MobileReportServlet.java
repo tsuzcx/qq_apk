@@ -58,21 +58,29 @@ public class MobileReportServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    int i;
+    if (paramFromServiceMsg != null) {
+      i = paramFromServiceMsg.getResultCode();
+    } else {
+      i = -1;
+    }
+    paramIntent = new Bundle();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("servlet result code is ");
+    localStringBuilder.append(i);
+    paramIntent.putString("msg", localStringBuilder.toString());
+    QLog.d("MobileReport.Servlet", 2, "report onReceive onSend");
+    if (i == 1000)
     {
-      new Bundle().putString("msg", "servlet result code is " + i);
-      QLog.d("MobileReport.Servlet", 2, "report onReceive onSend");
-      if (i == 1000)
+      paramIntent = MobileReportRequest.onResponse(paramFromServiceMsg.getWupBuffer());
+      if ((paramIntent != null) && (paramIntent.report_interval > 0L))
       {
-        paramIntent = MobileReportRequest.onResponse(paramFromServiceMsg.getWupBuffer());
-        if ((paramIntent != null) && (paramIntent.report_interval > 0L))
-        {
-          com.tencent.mobileqq.vastrash.uec.UECPageStayReportManager.a = paramIntent.report_interval;
-          QLog.d("MobileReport.Servlet", 2, "get onReceive onSend sReportTime = " + paramIntent.report_interval);
-        }
+        com.tencent.mobileqq.vastrash.uec.UECPageStayReportManager.a = paramIntent.report_interval;
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("get onReceive onSend sReportTime = ");
+        paramFromServiceMsg.append(paramIntent.report_interval);
+        QLog.d("MobileReport.Servlet", 2, paramFromServiceMsg.toString());
       }
-      return;
     }
   }
   
@@ -86,7 +94,7 @@ public class MobileReportServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.MobileReportServlet
  * JD-Core Version:    0.7.0.1
  */

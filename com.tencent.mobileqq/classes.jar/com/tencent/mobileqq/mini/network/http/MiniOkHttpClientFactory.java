@@ -35,50 +35,61 @@ public class MiniOkHttpClientFactory
   private static OkHttpClient.Builder createClientWithTimeout(long paramLong, boolean paramBoolean)
   {
     OkHttpClient.Builder localBuilder = new OkHttpClient.Builder();
-    if (paramBoolean) {}
-    for (List localList = Arrays.asList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 });; localList = Arrays.asList(new Protocol[] { Protocol.HTTP_1_1 })) {
-      return localBuilder.protocols(localList).connectTimeout(paramLong, TimeUnit.MILLISECONDS).readTimeout(paramLong, TimeUnit.MILLISECONDS).writeTimeout(paramLong, TimeUnit.MILLISECONDS).connectionPool(mConnectionPool).dispatcher(mDispatcher);
+    List localList;
+    if (paramBoolean) {
+      localList = Arrays.asList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 });
+    } else {
+      localList = Arrays.asList(new Protocol[] { Protocol.HTTP_1_1 });
     }
+    return localBuilder.protocols(localList).connectTimeout(paramLong, TimeUnit.MILLISECONDS).readTimeout(paramLong, TimeUnit.MILLISECONDS).writeTimeout(paramLong, TimeUnit.MILLISECONDS).connectionPool(mConnectionPool).dispatcher(mDispatcher);
   }
   
   public static OkHttpClient getDownloadClient(boolean paramBoolean)
   {
-    if (downloadClient == null) {
-      throw new RuntimeException("client has not been initialized");
+    if (downloadClient != null)
+    {
+      if (!paramBoolean) {
+        return downloadClient;
+      }
+      return downloadClientWithCache;
     }
-    if (!paramBoolean) {
-      return downloadClient;
-    }
-    return downloadClientWithCache;
+    throw new RuntimeException("client has not been initialized");
   }
   
   public static OkHttpClient getRequestClient()
   {
-    if (requestClient == null) {
-      throw new RuntimeException("client has not been initialized");
+    if (requestClient != null) {
+      return requestClient;
     }
-    return requestClient;
+    throw new RuntimeException("client has not been initialized");
   }
   
   public static OkHttpClient getUploadClient()
   {
-    if (uploadClient == null) {
-      throw new RuntimeException("client has not been initialized");
+    if (uploadClient != null) {
+      return uploadClient;
     }
-    return uploadClient;
+    throw new RuntimeException("client has not been initialized");
   }
   
   public static void init(long paramLong1, long paramLong2, long paramLong3)
   {
     boolean bool = GameWnsUtils.enableHttp2();
-    QLog.e("MiniOkHttpClientFactory", 1, "MiniOkHttpClientFactory init requestTimeOut:" + paramLong1 + " uploadTimeOut:" + paramLong2 + " downloadTimeout:" + paramLong3);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("MiniOkHttpClientFactory init requestTimeOut:");
+    ((StringBuilder)localObject).append(paramLong1);
+    ((StringBuilder)localObject).append(" uploadTimeOut:");
+    ((StringBuilder)localObject).append(paramLong2);
+    ((StringBuilder)localObject).append(" downloadTimeout:");
+    ((StringBuilder)localObject).append(paramLong3);
+    QLog.e("MiniOkHttpClientFactory", 1, ((StringBuilder)localObject).toString());
     try
     {
       requestClient = createClientWithTimeout(paramLong1, bool).build();
       uploadClient = createClientWithTimeout(paramLong2, bool).build();
       downloadClient = createClientWithTimeout(paramLong3, bool).build();
-      Cache localCache = new Cache(new File(MiniAppGlobal.getMiniCacheFilePath(), "http_cache"), 10485760L);
-      downloadClientWithCache = createClientWithTimeout(paramLong3, bool).cache(localCache).build();
+      localObject = new Cache(new File(MiniAppGlobal.getMiniCacheFilePath(), "http_cache"), 10485760L);
+      downloadClientWithCache = createClientWithTimeout(paramLong3, bool).cache((Cache)localObject).build();
       return;
     }
     catch (Exception localException)
@@ -89,7 +100,7 @@ public class MiniOkHttpClientFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory
  * JD-Core Version:    0.7.0.1
  */

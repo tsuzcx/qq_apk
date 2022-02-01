@@ -7,28 +7,32 @@ public class DateUtils
 {
   public static final String BEFOREY_YESTERDAY;
   public static final String COLON = ":";
-  public static final String DAY = HardCodeUtil.a(2131702877);
+  public static final String DAY = HardCodeUtil.a(2131703008);
   public static final long DAY_MILLIS_SECOND = 86400000L;
   public static final int DAY_SECOND = 86400;
-  public static final String JUST_MINS = HardCodeUtil.a(2131702882);
+  public static final String JUST_MINS = HardCodeUtil.a(2131703012);
   public static final String MONTH;
   public static final String TODAY;
   public static final long TWO_DAY_MILLIS_SECOND = 172800000L;
   public static final String YEAR;
-  public static final String YESTERDAY = HardCodeUtil.a(2131702853);
+  public static final String YESTERDAY = HardCodeUtil.a(2131702984);
   
   static
   {
-    TODAY = HardCodeUtil.a(2131702834);
-    BEFOREY_YESTERDAY = HardCodeUtil.a(2131702874);
-    YEAR = HardCodeUtil.a(2131702844);
-    MONTH = HardCodeUtil.a(2131702838);
+    TODAY = HardCodeUtil.a(2131702966);
+    BEFOREY_YESTERDAY = HardCodeUtil.a(2131703005);
+    YEAR = HardCodeUtil.a(2131702975);
+    MONTH = HardCodeUtil.a(2131702970);
   }
   
   static String doubleD(int paramInt)
   {
-    if (paramInt < 10) {
-      return '0' + String.valueOf(paramInt);
+    if (paramInt < 10)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append('0');
+      localStringBuilder.append(String.valueOf(paramInt));
+      return localStringBuilder.toString();
     }
     return String.valueOf(paramInt);
   }
@@ -47,38 +51,81 @@ public class DateUtils
     int j = localCalendar.get(12);
     if (l1 - paramLong >= 0L)
     {
-      if (l2 < 0L) {
-        return TODAY + doubleD(i) + ":" + doubleD(j);
+      if (l2 < 0L)
+      {
+        paramCalendar = new StringBuilder();
+        paramCalendar.append(TODAY);
+        paramCalendar.append(doubleD(i));
+        paramCalendar.append(":");
+        paramCalendar.append(doubleD(j));
+        return paramCalendar.toString();
       }
-      if ((l2 >= 0L) && (l2 < 86400000L)) {
-        return YESTERDAY + doubleD(i) + ":" + doubleD(j);
+      if ((l2 >= 0L) && (l2 < 86400000L))
+      {
+        paramCalendar = new StringBuilder();
+        paramCalendar.append(YESTERDAY);
+        paramCalendar.append(doubleD(i));
+        paramCalendar.append(":");
+        paramCalendar.append(doubleD(j));
+        return paramCalendar.toString();
       }
-      if ((l2 >= 86400000L) && (l2 <= 172800500L)) {
-        return BEFOREY_YESTERDAY + doubleD(i) + ":" + doubleD(j);
+      if ((l2 >= 86400000L) && (l2 <= 172800500L))
+      {
+        paramCalendar = new StringBuilder();
+        paramCalendar.append(BEFOREY_YESTERDAY);
+        paramCalendar.append(doubleD(i));
+        paramCalendar.append(":");
+        paramCalendar.append(doubleD(j));
+        return paramCalendar.toString();
       }
     }
     else if ((l2 < 0L) && (isSameDay(paramCalendar.getTimeInMillis(), paramLong)))
     {
-      return TODAY + doubleD(i) + ":" + doubleD(j);
+      paramCalendar = new StringBuilder();
+      paramCalendar.append(TODAY);
+      paramCalendar.append(doubleD(i));
+      paramCalendar.append(":");
+      paramCalendar.append(doubleD(j));
+      return paramCalendar.toString();
     }
     int k = localCalendar.get(1);
     int m = localCalendar.get(2) + 1;
     int n = localCalendar.get(5);
-    if (paramCalendar.get(1) != k) {
-      return k + YEAR + doubleD(m) + MONTH + doubleD(n) + DAY + " " + doubleD(i) + ":" + doubleD(j);
+    if (paramCalendar.get(1) != k)
+    {
+      paramCalendar = new StringBuilder();
+      paramCalendar.append(k);
+      paramCalendar.append(YEAR);
+      paramCalendar.append(doubleD(m));
+      paramCalendar.append(MONTH);
+      paramCalendar.append(doubleD(n));
+      paramCalendar.append(DAY);
+      paramCalendar.append(" ");
+      paramCalendar.append(doubleD(i));
+      paramCalendar.append(":");
+      paramCalendar.append(doubleD(j));
+      return paramCalendar.toString();
     }
-    return doubleD(m) + MONTH + doubleD(n) + DAY + doubleD(i) + ":" + doubleD(j);
+    paramCalendar = new StringBuilder();
+    paramCalendar.append(doubleD(m));
+    paramCalendar.append(MONTH);
+    paramCalendar.append(doubleD(n));
+    paramCalendar.append(DAY);
+    paramCalendar.append(doubleD(i));
+    paramCalendar.append(":");
+    paramCalendar.append(doubleD(j));
+    return paramCalendar.toString();
   }
   
   public static final String getDisplayTimeForFeedEntry(long paramLong)
   {
-    Calendar localCalendar1 = Calendar.getInstance();
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTimeInMillis(paramLong);
-    paramLong = localCalendar1.getTimeInMillis();
-    long l2 = getTodayTime0(localCalendar1);
-    long l1 = localCalendar2.getTimeInMillis();
-    l2 -= localCalendar2.getTimeInMillis();
+    Object localObject = Calendar.getInstance();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(paramLong);
+    paramLong = ((Calendar)localObject).getTimeInMillis();
+    long l2 = getTodayTime0((Calendar)localObject);
+    long l1 = localCalendar.getTimeInMillis();
+    l2 -= localCalendar.getTimeInMillis();
     paramLong = (paramLong - l1) / 1000L;
     if ((paramLong >= 0L) && (paramLong < 7200L)) {
       return JUST_MINS;
@@ -89,8 +136,12 @@ public class DateUtils
     if ((l2 > 0L) && (l2 < 86400000L)) {
       return YESTERDAY;
     }
-    if ((l2 >= 86400000L) && (l2 <= 777600000L)) {
-      return (int)(l2 / 86400000L) + HardCodeUtil.a(2131702862);
+    if ((l2 >= 86400000L) && (l2 <= 777600000L))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append((int)(l2 / 86400000L));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131702993));
+      return ((StringBuilder)localObject).toString();
     }
     return "";
   }
@@ -111,7 +162,7 @@ public class DateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.DateUtils
  * JD-Core Version:    0.7.0.1
  */

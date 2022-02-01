@@ -49,18 +49,20 @@ public final class mobile_auth_get_hb_req
     paramJceOutputStream.write(this.huin, 0);
     paramJceOutputStream.write(this.huin_type, 1);
     paramJceOutputStream.write(this.cuin, 2);
-    if (this.hb_id != null) {
-      paramJceOutputStream.write(this.hb_id, 3);
+    Object localObject = this.hb_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.hb_type, 4);
-    if (this.ext_info != null) {
-      paramJceOutputStream.write(this.ext_info, 5);
+    localObject = this.ext_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_auth_get_hb_req
  * JD-Core Version:    0.7.0.1
  */

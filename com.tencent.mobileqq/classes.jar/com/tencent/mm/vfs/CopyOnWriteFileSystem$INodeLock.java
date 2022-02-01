@@ -8,21 +8,19 @@ final class CopyOnWriteFileSystem$INodeLock
   
   static void lock(long paramLong)
   {
-    synchronized (inodeTable)
+    for (;;)
     {
-      for (;;)
+      synchronized (inodeTable)
       {
         boolean bool = inodeTable.add(Long.valueOf(paramLong));
-        if (bool) {
-          break;
-        }
+        if (!bool) {}
         try
         {
           inodeTable.wait();
         }
         catch (InterruptedException localInterruptedException) {}
+        return;
       }
-      return;
     }
   }
   
@@ -39,7 +37,7 @@ final class CopyOnWriteFileSystem$INodeLock
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.CopyOnWriteFileSystem.INodeLock
  * JD-Core Version:    0.7.0.1
  */

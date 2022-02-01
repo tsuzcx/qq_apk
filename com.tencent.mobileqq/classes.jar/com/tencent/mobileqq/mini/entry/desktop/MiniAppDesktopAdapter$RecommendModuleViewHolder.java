@@ -37,16 +37,16 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
   public MiniAppDesktopAdapter$RecommendModuleViewHolder(View paramView)
   {
     super(paramView);
-    this.mBackGroundImage = ((ImageView)paramView.findViewById(2131371572));
-    this.mTitleIcon = ((ImageView)paramView.findViewById(2131371577));
-    this.mTitle = ((TextView)paramView.findViewById(2131371576));
-    this.mRecommendNumber = ((TextView)paramView.findViewById(2131371575));
-    this.mRecommendDesc = ((TextView)paramView.findViewById(2131371573));
-    this.mApps.add(paramView.findViewById(2131371566));
-    this.mApps.add(paramView.findViewById(2131371567));
-    this.mApps.add(paramView.findViewById(2131371568));
-    this.mApps.add(paramView.findViewById(2131371569));
-    this.mApps.add(paramView.findViewById(2131371570));
+    this.mBackGroundImage = ((ImageView)paramView.findViewById(2131371192));
+    this.mTitleIcon = ((ImageView)paramView.findViewById(2131371197));
+    this.mTitle = ((TextView)paramView.findViewById(2131371196));
+    this.mRecommendNumber = ((TextView)paramView.findViewById(2131371195));
+    this.mRecommendDesc = ((TextView)paramView.findViewById(2131371193));
+    this.mApps.add(paramView.findViewById(2131371186));
+    this.mApps.add(paramView.findViewById(2131371187));
+    this.mApps.add(paramView.findViewById(2131371188));
+    this.mApps.add(paramView.findViewById(2131371189));
+    this.mApps.add(paramView.findViewById(2131371190));
   }
   
   public void bindView(Activity paramActivity, DesktopRecommendModuleInfo paramDesktopRecommendModuleInfo)
@@ -54,15 +54,19 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
     INTERFACE.StModuleInfo localStModuleInfo = paramDesktopRecommendModuleInfo.moduleInfo;
     try
     {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130848766);
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      this.mBackGroundImage.setImageDrawable(MiniAppUtils.getDrawable(localStModuleInfo.backgroundPic.get(), localURLDrawableOptions));
+      Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
+      Object localObject2 = this.itemView.getContext().getResources().getDrawable(2130848646);
+      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
+      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
+      this.mBackGroundImage.setImageDrawable(MiniAppUtils.getDrawable(localStModuleInfo.backgroundPic.get(), (URLDrawable.URLDrawableOptions)localObject1));
       label62:
       MiniAppUtils.setImage(this.mTitleIcon, localStModuleInfo.titleIcon.get());
       this.mTitle.setText(localStModuleInfo.title.get());
-      this.mRecommendNumber.setText(localStModuleInfo.appTotalNum.get() + "");
+      localObject1 = this.mRecommendNumber;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(localStModuleInfo.appTotalNum.get());
+      ((StringBuilder)localObject2).append("");
+      ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
       this.mRecommendDesc.setText(localStModuleInfo.desc.get());
       int i = 0;
       int j;
@@ -101,7 +105,7 @@ class MiniAppDesktopAdapter$RecommendModuleViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.RecommendModuleViewHolder
  * JD-Core Version:    0.7.0.1
  */

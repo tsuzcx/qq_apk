@@ -24,8 +24,9 @@ public class AIOTroopQzoneRedDotManager
   
   public QQAppInterface a()
   {
-    if (this.a != null) {
-      return (QQAppInterface)this.a.get();
+    WeakReference localWeakReference = this.a;
+    if (localWeakReference != null) {
+      return (QQAppInterface)localWeakReference.get();
     }
     return null;
   }
@@ -74,12 +75,15 @@ public class AIOTroopQzoneRedDotManager
       QZLog.e("AIOTroopQzoneRedDotManager", "onReceive is failed, reqUinList.size() != rspUinList.size()");
       return;
     }
-    QZLog.e("AIOTroopQzoneRedDotManager", "onReceive is failed, msg == " + str);
+    paramBundle = new StringBuilder();
+    paramBundle.append("onReceive is failed, msg == ");
+    paramBundle.append(str);
+    QZLog.e("AIOTroopQzoneRedDotManager", paramBundle.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTroopQzoneRedDotManager
  * JD-Core Version:    0.7.0.1
  */

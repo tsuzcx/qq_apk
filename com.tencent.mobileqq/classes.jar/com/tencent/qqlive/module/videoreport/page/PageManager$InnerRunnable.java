@@ -17,20 +17,33 @@ class PageManager$InnerRunnable
   
   private boolean isPageVisible(@NonNull PageInfo paramPageInfo)
   {
-    View localView = paramPageInfo.getPageView();
-    if (localView == null) {}
-    double d1;
-    double d2;
-    do
-    {
+    Object localObject = paramPageInfo.getPageView();
+    boolean bool2 = false;
+    if (localObject == null) {
       return false;
-      d1 = VideoReportInner.getInstance().getConfiguration().getPageExposureMinRate();
-      d2 = UIUtils.getViewExposureRate(localView);
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.i("PageManager", "isPageVisible: pageInfo = " + paramPageInfo + ", exposureMinRate = " + d1 + ", exposureRate = " + d2);
+    }
+    double d1 = VideoReportInner.getInstance().getConfiguration().getPageExposureMinRate();
+    double d2 = UIUtils.getViewExposureRate((View)localObject);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isPageVisible: pageInfo = ");
+      ((StringBuilder)localObject).append(paramPageInfo);
+      ((StringBuilder)localObject).append(", exposureMinRate = ");
+      ((StringBuilder)localObject).append(d1);
+      ((StringBuilder)localObject).append(", exposureRate = ");
+      ((StringBuilder)localObject).append(d2);
+      Log.i("PageManager", ((StringBuilder)localObject).toString());
+    }
+    boolean bool1 = bool2;
+    if (d2 > 0.0D)
+    {
+      bool1 = bool2;
+      if (d2 >= d1) {
+        bool1 = true;
       }
-    } while ((d2 <= 0.0D) || (d2 < d1));
-    return true;
+    }
+    return bool1;
   }
   
   public void run()
@@ -38,25 +51,25 @@ class PageManager$InnerRunnable
     if (!isPageVisible(this.pageInfo)) {
       return;
     }
-    if ((!PageManager.access$400(this.this$0)) && (PageManager.access$500(this.this$0) != null) && (PageManager.access$500(this.this$0).getPage() != this.pageInfo.getPage())) {
-      PageManager.access$600(this.this$0, this.pageInfo, PageManager.access$500(this.this$0), false);
-    }
-    PageInfo localPageInfo = PageManager.access$500(this.this$0);
-    PageManager.access$502(this.this$0, this.pageInfo);
-    if (PageManager.access$700(this.this$0, this.pageInfo, localPageInfo, PageManager.access$400(this.this$0))) {
-      PageManager.access$800(this.this$0, this.pageInfo, localPageInfo, this.invokeFrom);
-    }
-    for (;;)
+    if ((!PageManager.access$400(this.this$0)) && (PageManager.access$500(this.this$0) != null) && (PageManager.access$500(this.this$0).getPage() != this.pageInfo.getPage()))
     {
-      PageManager.access$402(this.this$0, false);
-      return;
+      localObject = this.this$0;
+      PageManager.access$600((PageManager)localObject, this.pageInfo, PageManager.access$500((PageManager)localObject), false);
+    }
+    Object localObject = PageManager.access$500(this.this$0);
+    PageManager.access$502(this.this$0, this.pageInfo);
+    PageManager localPageManager = this.this$0;
+    if (PageManager.access$700(localPageManager, this.pageInfo, (PageInfo)localObject, PageManager.access$400(localPageManager))) {
+      PageManager.access$800(this.this$0, this.pageInfo, (PageInfo)localObject, this.invokeFrom);
+    } else {
       PageManager.access$900(this.this$0, this.pageInfo, this.invokeFrom);
     }
+    PageManager.access$402(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageManager.InnerRunnable
  * JD-Core Version:    0.7.0.1
  */

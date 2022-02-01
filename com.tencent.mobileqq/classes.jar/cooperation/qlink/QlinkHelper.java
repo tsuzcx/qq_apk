@@ -23,120 +23,102 @@ public class QlinkHelper
   
   public static AppInterface a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
+    if (paramBaseApplicationImpl != null)
     {
-      Class localClass1 = Class.forName("com.tencent.qlink.app.QlinkAppInterface");
-      if (localClass1 == null) {
+      if (paramString == null) {
+        return null;
+      }
+      for (;;)
+      {
+        try
+        {
+          try
+          {
+            localClass = Class.forName("com.tencent.qlink.app.QlinkAppInterface");
+          }
+          catch (Exception paramBaseApplicationImpl) {}catch (NoSuchMethodException paramBaseApplicationImpl) {}catch (InvocationTargetException paramBaseApplicationImpl) {}catch (InstantiationException paramBaseApplicationImpl) {}catch (IllegalAccessException paramBaseApplicationImpl) {}catch (IllegalArgumentException paramBaseApplicationImpl) {}
+        }
+        catch (ClassNotFoundException localClassNotFoundException)
+        {
+          Class localClass;
+          ClassLoader localClassLoader;
+          continue;
+          if (localClassNotFoundException != null) {
+            continue;
+          }
+        }
+        try
+        {
+          localClassLoader = QlinkPluginProxyActivity.a(paramBaseApplicationImpl);
+          localClass = localClassLoader.loadClass("com.tencent.qlink.app.QlinkAppInterface");
+          BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        }
+        catch (ClassNotFoundException paramBaseApplicationImpl)
+        {
+          paramBaseApplicationImpl.printStackTrace();
+        }
+      }
+      paramBaseApplicationImpl = localClass.getDeclaredConstructor(new Class[] { paramBaseApplicationImpl.getClass(), paramString.getClass() }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
+      if ((paramBaseApplicationImpl != null) && ((paramBaseApplicationImpl instanceof AppInterface)))
+      {
+        paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+        paramBaseApplicationImpl.printStackTrace();
+        return null;
+        paramBaseApplicationImpl.printStackTrace();
         return null;
       }
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass2;
-      try
-      {
-        ClassLoader localClassLoader = QlinkPluginProxyActivity.a(paramBaseApplicationImpl);
-        localClass2 = localClassLoader.loadClass("com.tencent.qlink.app.QlinkAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-      }
-      catch (ClassNotFoundException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { paramBaseApplicationImpl.getClass(), paramString.getClass() }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
-      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
+    return null;
+    return null;
   }
   
   public static QlinkHelper.QRScanInfo a(String paramString)
   {
-    int i = 0;
-    if (paramString == null) {}
-    QlinkHelper.QRScanInfo localQRScanInfo;
+    if (paramString == null) {
+      return null;
+    }
+    QlinkHelper.QRScanInfo localQRScanInfo = new QlinkHelper.QRScanInfo();
     Object localObject;
     int j;
+    int i;
     String str2;
-    for (;;)
+    try
     {
-      return null;
-      localQRScanInfo = new QlinkHelper.QRScanInfo();
-      try
-      {
-        if (paramString.startsWith("qqf2f://qf/?"))
-        {
-          localObject = paramString.substring("qqf2f://qf/?".length(), paramString.length()).split("&");
-          paramString = new Bundle();
-          j = localObject.length;
-        }
-      }
-      catch (Exception paramString)
-      {
-        int k;
-        String str1;
-        paramString.printStackTrace();
+      if (!paramString.startsWith("qqf2f://qf/?")) {
         return null;
       }
+      localObject = paramString.substring(12, paramString.length()).split("&");
+      paramString = new Bundle();
+      j = localObject.length;
+      i = 0;
+    }
+    catch (Exception paramString)
+    {
+      int k;
+      String str1;
+      paramString.printStackTrace();
+      return null;
     }
     k = str2.indexOf("=");
     if (-1 != k)
     {
-      str1 = str2.substring(0, k + 1);
-      str2 = str2.substring(k + 1, str2.length());
+      k += 1;
+      str1 = str2.substring(0, k);
+      str2 = str2.substring(k, str2.length());
       if ((str1 != null) && (str2 != null)) {
         paramString.putString(str1, str2);
       }
     }
-    label293:
+    label301:
     for (;;)
     {
       localQRScanInfo.a = paramString.getString("k=");
@@ -145,22 +127,30 @@ public class QlinkHelper
       if (localObject != null)
       {
         localQRScanInfo.c = URLDecoder.decode((String)localObject, "UTF-8");
-        if (localQRScanInfo.c != null) {}
+        if (localQRScanInfo.c == null) {
+          localQRScanInfo.c = localQRScanInfo.b;
+        }
       }
-      for (localQRScanInfo.c = localQRScanInfo.b;; localQRScanInfo.c = localQRScanInfo.b)
+      else
       {
-        localQRScanInfo.d = paramString.getString("o=");
-        localQRScanInfo.e = paramString.getString("p=");
-        localQRScanInfo.f = paramString.getString("d=");
-        if ((localQRScanInfo.a == null) || (localQRScanInfo.b == null) || (localQRScanInfo.d == null)) {
-          break;
+        localQRScanInfo.c = localQRScanInfo.b;
+      }
+      localQRScanInfo.d = paramString.getString("o=");
+      localQRScanInfo.e = paramString.getString("p=");
+      localQRScanInfo.f = paramString.getString("d=");
+      if ((localQRScanInfo.a != null) && (localQRScanInfo.b != null))
+      {
+        paramString = localQRScanInfo.d;
+        if (paramString == null) {
+          return null;
         }
         return localQRScanInfo;
       }
+      return null;
       for (;;)
       {
         if (i >= j) {
-          break label293;
+          break label301;
         }
         str2 = localObject[i];
         if (str2 != null) {
@@ -173,12 +163,12 @@ public class QlinkHelper
   
   public static String a(String paramString)
   {
-    int j = 0;
     if (paramString == null) {
       return null;
     }
     Object localObject = paramString.getBytes();
     paramString = new byte[localObject.length];
+    int j = 0;
     int i = 0;
     while (i < localObject.length)
     {
@@ -206,33 +196,33 @@ public class QlinkHelper
       boolean bool = ((Boolean)localMethod.invoke(localWifiManager, new Object[0])).booleanValue();
       return bool;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      return false;
+    }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
       localNoSuchMethodException.printStackTrace();
-      return false;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    return false;
   }
   
   public static String b(String paramString)
   {
-    int j = 0;
     if (paramString == null) {
       return null;
     }
     int k = paramString.length() / 2;
     byte[] arrayOfByte = new byte[k];
+    int j = 0;
     int i = 0;
-    while (i < k) {
+    while (i < k)
+    {
+      int m = i * 2;
       try
       {
-        arrayOfByte[i] = Integer.valueOf(paramString.substring(i * 2, i * 2 + 2), 16).byteValue();
+        arrayOfByte[i] = Integer.valueOf(paramString.substring(m, m + 2), 16).byteValue();
         i += 1;
       }
       catch (NumberFormatException paramString)
@@ -267,7 +257,11 @@ public class QlinkHelper
       long l = Long.valueOf(paramString).longValue();
       return String.valueOf(l ^ 0x3702D1C2 ^ 0x5891625D ^ 0xCF267E29);
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label25:
+      break label25;
+    }
     return null;
   }
   
@@ -278,13 +272,17 @@ public class QlinkHelper
       long l = Long.valueOf(paramString).longValue();
       return String.valueOf(l ^ 0xCF267E29 ^ 0x5891625D ^ 0x3702D1C2);
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label25:
+      break label25;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.QlinkHelper
  * JD-Core Version:    0.7.0.1
  */

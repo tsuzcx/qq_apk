@@ -2,11 +2,14 @@ package dov.com.qq.im.ae.download.old;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.tencent.aelight.camera.download.old.api.IAEOldPath;
+import com.tencent.aelight.camera.download.old.api.IAEOldResPendentVersion;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qmcf.QmcfManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.qmcf.QmcfDevicesStrategy;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
@@ -21,8 +24,13 @@ public class AEOldShortVideoArtResourceMgr
   public static String a()
   {
     String str = BaseApplicationImpl.getApplication().getSharedPreferences("QmcfConfig", 4).getString("art_res_old_sv_md5_version_soname_key", "artfilter000_0");
-    boolean bool = AEOldPendantVersionManager.a(str, 9);
-    VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
+    boolean bool = ((IAEOldResPendentVersion)QRoute.api(IAEOldResPendentVersion.class)).checkSignatureVersionIsOK(str, 9);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getCurrentPendantUnzipPath success=");
+    localStringBuilder.append(bool);
+    localStringBuilder.append(",md5Version=");
+    localStringBuilder.append(str);
+    VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", localStringBuilder.toString(), null);
     if (bool) {
       return str;
     }
@@ -49,57 +57,85 @@ public class AEOldShortVideoArtResourceMgr
     if (QLog.isColorLevel()) {
       QLog.d("AEOldShortVideoArtResourceMgr", 2, String.format("supportFrameType[%s]", new Object[] { Integer.valueOf(i) }));
     }
-    switch (i)
+    if (i != -2)
     {
-    }
-    for (;;)
-    {
-      return true;
+      if (i != 0)
+      {
+        if (i != 1) {
+          return true;
+        }
+        paramSVConfigItem.armv7a_url = paramSVConfigItem.extend1;
+        paramSVConfigItem.armv7a_md5 = paramSVConfigItem.extend2;
+        return true;
+      }
       QmcfManager.getInstance().setQmcfMobileNotSupport(QmcfDevicesStrategy.a);
-      return false;
-      paramSVConfigItem.armv7a_url = paramSVConfigItem.extend1;
-      paramSVConfigItem.armv7a_md5 = paramSVConfigItem.extend2;
     }
+    return false;
   }
   
   static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    boolean bool2 = false;
     paramQQAppInterface = b();
-    paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-    File localFile = new File(paramQQAppInterface);
-    if (localFile.exists())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramQQAppInterface);
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(File.separator);
+    paramQQAppInterface = ((StringBuilder)localObject).toString();
+    localObject = new File(paramQQAppInterface);
+    boolean bool1 = ((File)localObject).exists();
+    boolean bool2 = false;
+    if (bool1)
     {
-      if ((a().equals(paramString1)) && (AEOldPendantVersionManager.a(paramQQAppInterface, "artfilter_config_file")))
+      if ((a().equals(paramString1)) && (((IAEOldResPendentVersion)QRoute.api(IAEOldResPendentVersion.class)).checkConfigFileListIsOK(paramQQAppInterface, "artfilter_config_file")))
       {
         VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", "uncompressPendantZip:[checkConfigFileListIsOK]success=true", null);
         return false;
       }
-      FileUtils.a(paramQQAppInterface);
-      VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", "uncompressPendantZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
+      FileUtils.deleteDirectory(paramQQAppInterface);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uncompressPendantZip:[deleteDirectory|already exists]unzipPath=");
+      localStringBuilder.append(paramQQAppInterface);
+      VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", localStringBuilder.toString(), null);
     }
-    boolean bool1 = localFile.mkdirs();
-    VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", "uncompressPendantZip:[exists]mkOK=" + bool1, null);
+    bool1 = ((File)localObject).mkdirs();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uncompressPendantZip:[exists]mkOK=");
+    ((StringBuilder)localObject).append(bool1);
+    VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", ((StringBuilder)localObject).toString(), null);
     try
     {
-      FileUtils.a(paramString2, paramQQAppInterface, false);
-      bool1 = AEOldPendantVersionManager.a(paramQQAppInterface, "artfilter_config_file");
-      VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK success=" + bool1, null);
+      FileUtils.uncompressZip(paramString2, paramQQAppInterface, false);
+      bool1 = ((IAEOldResPendentVersion)QRoute.api(IAEOldResPendentVersion.class)).checkConfigFileListIsOK(paramQQAppInterface, "artfilter_config_file");
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("uncompressPendantZip:checkConfigFileListIsOK success=");
+      paramQQAppInterface.append(bool1);
+      VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", paramQQAppInterface.toString(), null);
       if (bool1)
       {
         boolean bool3 = a(paramString1);
-        VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK saveOK=" + bool3, null);
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("uncompressPendantZip:checkConfigFileListIsOK saveOK=");
+        paramQQAppInterface.append(bool3);
+        VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", paramQQAppInterface.toString(), null);
         bool1 = bool2;
         if (!bool3)
         {
           bool3 = a(paramString1);
-          VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", "uncompressPendantZip:checkConfigFileListIsOK[two]saveOK=" + bool3, null);
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("uncompressPendantZip:checkConfigFileListIsOK[two]saveOK=");
+          paramQQAppInterface.append(bool3);
+          VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", paramQQAppInterface.toString(), null);
           bool1 = bool2;
           if (!bool3)
           {
             VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
             bool1 = a("artfilter000_0");
-            VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", "uncompressPendantZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
+            paramQQAppInterface = new StringBuilder();
+            paramQQAppInterface.append("uncompressPendantZip:checkUnzipFileListSizeIsOK clearMemoryOK=");
+            paramQQAppInterface.append(bool1);
+            paramQQAppInterface.append(",signature=");
+            paramQQAppInterface.append(paramString1);
+            VideoEnvironment.LogDownLoad("AEOldShortVideoArtResourceMgr", paramQQAppInterface.toString(), null);
             bool1 = true;
           }
         }
@@ -110,7 +146,6 @@ public class AEOldShortVideoArtResourceMgr
     catch (Exception paramQQAppInterface)
     {
       paramQQAppInterface.printStackTrace();
-      return true;
     }
     return true;
   }
@@ -124,13 +159,17 @@ public class AEOldShortVideoArtResourceMgr
   
   public static String b()
   {
-    String str = PtvFilterSoLoad.b();
-    return str + "art_res_cache" + File.separator;
+    String str = ((IAEOldPath)QRoute.api(IAEOldPath.class)).getPendantBasePath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("art_res_cache");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     dov.com.qq.im.ae.download.old.AEOldShortVideoArtResourceMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -51,21 +51,22 @@ public class BaseRecentUserCache
   
   public static String a(String paramString)
   {
-    String str;
     if (paramString == null) {
-      str = "";
+      return "";
     }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (paramString.length() <= 4);
+    if (paramString.length() <= 4) {
+      return paramString;
+    }
     return paramString.substring(0, 4);
   }
   
   public static String a(String paramString, int paramInt)
   {
-    return paramString + "&" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("&");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
@@ -83,54 +84,68 @@ public class BaseRecentUserCache
   {
     EntityManager localEntityManager = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory().createEntityManager();
     Object localObject1 = Integer.toString(150);
-    localObject1 = localEntityManager.query(RecentUser.class, false, "type!=?", new String[] { String.valueOf(10007) }, null, null, "showUpTime desc, lastmsgtime desc", (String)localObject1);
+    List localList = localEntityManager.query(RecentUser.class, false, "type!=?", new String[] { String.valueOf(10007) }, null, null, "showUpTime desc, lastmsgtime desc", (String)localObject1);
     Object localObject2;
-    if (localObject1 == null) {
+    if (localList == null)
+    {
       localObject2 = new ArrayList(20);
     }
-    for (;;)
+    else
     {
-      localEntityManager.close();
-      return localObject2;
-      if (((List)localObject1).size() > 149)
+      localObject2 = localList;
+      if (localList.size() > 149)
       {
         long l = System.currentTimeMillis();
+        Object localObject3 = localList;
         try
         {
-          localObject2 = (RecentUser)((List)localObject1).get(140);
-          bool = localEntityManager.execSQL("delete from " + "recent" + " where showUpTime < " + ((RecentUser)localObject2).showUpTime + " or showUpTime = " + ((RecentUser)localObject2).showUpTime + " and max(lastmsgtime, lastmsgdrafttime) < " + Math.max(((RecentUser)localObject2).lastmsgtime, ((RecentUser)localObject2).lastmsgdrafttime) + "; ");
-          if (!bool) {
-            break label302;
-          }
-          localObject2 = new ArrayList(((List)localObject1).subList(0, 140));
-          localObject1 = localObject2;
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
+          localObject1 = (RecentUser)localList.get(140);
+          localObject3 = localList;
+          localObject2 = new StringBuilder();
+          localObject3 = localList;
+          ((StringBuilder)localObject2).append("delete from ");
+          localObject3 = localList;
+          ((StringBuilder)localObject2).append("recent");
+          localObject3 = localList;
+          ((StringBuilder)localObject2).append(" where showUpTime < ");
+          localObject3 = localList;
+          ((StringBuilder)localObject2).append(((RecentUser)localObject1).showUpTime);
+          localObject3 = localList;
+          ((StringBuilder)localObject2).append(" or showUpTime = ");
+          localObject3 = localList;
+          ((StringBuilder)localObject2).append(((RecentUser)localObject1).showUpTime);
+          localObject3 = localList;
+          ((StringBuilder)localObject2).append(" and max(lastmsgtime, lastmsgdrafttime) < ");
+          localObject3 = localList;
+          ((StringBuilder)localObject2).append(Math.max(((RecentUser)localObject1).lastmsgtime, ((RecentUser)localObject1).lastmsgdrafttime));
+          localObject3 = localList;
+          ((StringBuilder)localObject2).append("; ");
+          localObject3 = localList;
+          boolean bool = localEntityManager.execSQL(((StringBuilder)localObject2).toString());
+          localObject1 = localList;
+          if (bool)
           {
-            boolean bool;
+            localObject3 = localList;
+            localObject1 = new ArrayList(localList.subList(0, 140));
           }
-        }
-        localObject2 = localObject1;
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.db.Cache.RecentUserCache", 2, new Object[] { "doInit int recentUserProxy delete recent table >", Integer.valueOf(149), " isOk = ", Boolean.valueOf(bool), "; time = ", Long.valueOf(System.currentTimeMillis() - l) });
+          localObject3 = localObject1;
           localObject2 = localObject1;
+          if (QLog.isColorLevel())
+          {
+            localObject3 = localObject1;
+            QLog.d("Q.db.Cache.RecentUserCache", 2, new Object[] { "doInit int recentUserProxy delete recent table >", Integer.valueOf(149), " isOk = ", Boolean.valueOf(bool), "; time = ", Long.valueOf(System.currentTimeMillis() - l) });
+            localObject2 = localObject1;
+          }
         }
-        catch (Exception localException1)
+        catch (Exception localException)
         {
-          localException1.printStackTrace();
-          Object localObject3 = localObject1;
+          localException.printStackTrace();
+          localObject2 = localObject3;
         }
-        continue;
       }
-      label302:
-      Object localObject4 = localObject1;
     }
+    localEntityManager.close();
+    return localObject2;
   }
   
   private void c(RecentUser paramRecentUser)
@@ -181,7 +196,9 @@ public class BaseRecentUserCache
   
   public RecentUser a(String paramString, int paramInt)
   {
-    if ((paramInt >= 0) && (paramString != null) && (paramString.length() <= 2)) {}
+    if ((paramInt >= 0) && (paramString != null)) {
+      paramString.length();
+    }
     RecentUser localRecentUser = (RecentUser)this.cacheMap.get(a(paramString, paramInt));
     if (localRecentUser == null)
     {
@@ -189,18 +206,17 @@ public class BaseRecentUserCache
       paramString.displayName = paramString.uin;
       paramString.parse();
       c(paramString);
-    }
-    do
-    {
       return paramString;
-      paramString = localRecentUser;
-    } while (localRecentUser.msg != null);
-    if (localRecentUser.mIsParsed)
-    {
-      localRecentUser.reParse();
-      return localRecentUser;
     }
-    localRecentUser.parse();
+    if (localRecentUser.msg == null)
+    {
+      if (localRecentUser.mIsParsed)
+      {
+        localRecentUser.reParse();
+        return localRecentUser;
+      }
+      localRecentUser.parse();
+    }
     return localRecentUser;
   }
   
@@ -215,57 +231,56 @@ public class BaseRecentUserCache
   
   public RecentConvInfo a(String paramString, int paramInt)
   {
-    ArrayList localArrayList;
-    Object localObject;
-    try
+    for (;;)
     {
-      localArrayList = new ArrayList(this.cacheMap.size());
-      localObject = this.cacheMap.entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
+      try
       {
-        RecentUser localRecentUser = (RecentUser)((Map.Entry)((Iterator)localObject).next()).getValue();
-        localRecentUser.parse();
-        localArrayList.add(localRecentUser);
-      }
-      Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.db.Cache.RecentUserCache", 2, "getRecentConvInfo is error!", paramString);
-      }
-      return null;
-    }
-    paramString = (RecentUser)this.cacheMap.get(a(paramString, paramInt));
-    int i;
-    if (paramString != null)
-    {
-      i = localArrayList.indexOf(paramString) + 1;
-      long l = System.currentTimeMillis() / 1000L;
-      paramString = localArrayList.iterator();
-      do
-      {
-        if (!paramString.hasNext()) {
-          break;
+        ArrayList localArrayList = new ArrayList(this.cacheMap.size());
+        Object localObject = this.cacheMap.entrySet().iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          RecentUser localRecentUser = (RecentUser)((Map.Entry)((Iterator)localObject).next()).getValue();
+          localRecentUser.parse();
+          localArrayList.add(localRecentUser);
+          continue;
         }
-        localObject = (RecentUser)paramString.next();
-      } while (l - ((RecentUser)localObject).lastmsgtime <= MessageCacheStub.a);
-    }
-    for (paramInt = localArrayList.indexOf(localObject) + 1;; paramInt = -1)
-    {
-      if (paramInt == -1) {
-        paramInt = localArrayList.size();
+        Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
+        paramString = (RecentUser)this.cacheMap.get(a(paramString, paramInt));
+        if (paramString != null)
+        {
+          i = localArrayList.indexOf(paramString) + 1;
+          long l = System.currentTimeMillis() / 1000L;
+          paramString = localArrayList.iterator();
+          if (!paramString.hasNext()) {
+            break label262;
+          }
+          localObject = (RecentUser)paramString.next();
+          if (l - ((RecentUser)localObject).lastmsgtime <= MessageCacheStub.a) {
+            continue;
+          }
+          paramInt = localArrayList.indexOf(localObject) + 1;
+          int j = paramInt;
+          if (paramInt == -1) {
+            j = localArrayList.size();
+          }
+          paramString = new RecentConvInfo();
+          paramString.a = i;
+          paramString.b = j;
+          paramString.c = localArrayList.size();
+          return paramString;
+        }
       }
-      for (;;)
+      catch (Exception paramString)
       {
-        paramString = new RecentConvInfo();
-        paramString.a = i;
-        paramString.b = paramInt;
-        paramString.c = localArrayList.size();
-        return paramString;
-        i = -1;
-        break;
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.db.Cache.RecentUserCache", 2, "getRecentConvInfo is error!", paramString);
+        }
+        return null;
       }
+      int i = -1;
+      continue;
+      label262:
+      paramInt = -1;
     }
   }
   
@@ -283,24 +298,18 @@ public class BaseRecentUserCache
           localArrayList.add(localRecentUser);
         }
       }
-      if (!QLog.isColorLevel()) {
-        return localException;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.db.Cache.RecentUserCache", 2, String.format("getHiddenRecentList, size = %s", new Object[] { Integer.valueOf(localArrayList.size()) }));
       }
+      return localArrayList;
     }
     catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
         QLog.e("Q.db.Cache.RecentUserCache", 2, "getHiddenCacheList is error!", localException);
       }
-      return new ArrayList();
     }
-    if (localException == null) {}
-    for (int i = 0;; i = localException.size())
-    {
-      QLog.d("Q.db.Cache.RecentUserCache", 2, String.format("getHiddenRecentList, size = %s", new Object[] { Integer.valueOf(i) }));
-      break;
-    }
-    return localException;
+    return new ArrayList();
   }
   
   public List<RecentUser> a(boolean paramBoolean)
@@ -313,139 +322,41 @@ public class BaseRecentUserCache
     return a(paramBoolean1, paramBoolean2, true);
   }
   
-  /* Error */
   public List<RecentUser> a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    // Byte code:
-    //   0: new 139	java/util/ArrayList
-    //   3: dup
-    //   4: aload_0
-    //   5: getfield 52	com/tencent/mobileqq/app/asyncdb/cache/BaseRecentUserCache:cacheMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   8: invokevirtual 367	java/util/concurrent/ConcurrentHashMap:size	()I
-    //   11: invokespecial 140	java/util/ArrayList:<init>	(I)V
-    //   14: astore 5
-    //   16: aload_0
-    //   17: getfield 52	com/tencent/mobileqq/app/asyncdb/cache/BaseRecentUserCache:cacheMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   20: invokevirtual 371	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
-    //   23: invokeinterface 374 1 0
-    //   28: astore 6
-    //   30: aload 6
-    //   32: invokeinterface 325 1 0
-    //   37: ifeq +122 -> 159
-    //   40: aload 6
-    //   42: invokeinterface 329 1 0
-    //   47: checkcast 376	java/util/Map$Entry
-    //   50: invokeinterface 379 1 0
-    //   55: checkcast 19	com/tencent/mobileqq/data/RecentUser
-    //   58: astore 7
-    //   60: aload 7
-    //   62: invokevirtual 347	com/tencent/mobileqq/data/RecentUser:parse	()V
-    //   65: aload_0
-    //   66: aload 7
-    //   68: iload_2
-    //   69: invokespecial 433	com/tencent/mobileqq/app/asyncdb/cache/BaseRecentUserCache:a	(Lcom/tencent/mobileqq/data/RecentUser;Z)Z
-    //   72: ifeq +43 -> 115
-    //   75: aload 5
-    //   77: aload 7
-    //   79: invokeinterface 382 2 0
-    //   84: pop
-    //   85: goto -55 -> 30
-    //   88: astore 5
-    //   90: invokestatic 206	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   93: ifeq +14 -> 107
-    //   96: ldc 208
-    //   98: iconst_2
-    //   99: ldc_w 435
-    //   102: aload 5
-    //   104: invokestatic 388	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   107: new 139	java/util/ArrayList
-    //   110: dup
-    //   111: invokespecial 413	java/util/ArrayList:<init>	()V
-    //   114: areturn
-    //   115: ldc 208
-    //   117: iconst_2
-    //   118: iconst_4
-    //   119: anewarray 210	java/lang/Object
-    //   122: dup
-    //   123: iconst_0
-    //   124: ldc_w 437
-    //   127: aastore
-    //   128: dup
-    //   129: iconst_1
-    //   130: aload 7
-    //   132: getfield 244	com/tencent/mobileqq/data/RecentUser:uin	Ljava/lang/String;
-    //   135: aastore
-    //   136: dup
-    //   137: iconst_2
-    //   138: ldc_w 439
-    //   141: aastore
-    //   142: dup
-    //   143: iconst_3
-    //   144: aload 7
-    //   146: getfield 442	com/tencent/mobileqq/data/RecentUser:type	I
-    //   149: invokestatic 215	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   152: aastore
-    //   153: invokestatic 232	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   156: goto -126 -> 30
-    //   159: iload_1
-    //   160: ifeq +16 -> 176
-    //   163: iload_3
-    //   164: ifeq +53 -> 217
-    //   167: aload 5
-    //   169: aload_0
-    //   170: getfield 36	com/tencent/mobileqq/app/asyncdb/cache/BaseRecentUserCache:jdField_a_of_type_JavaUtilComparator	Ljava/util/Comparator;
-    //   173: invokestatic 316	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   176: invokestatic 206	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   179: ifeq +62 -> 241
-    //   182: aload 5
-    //   184: ifnonnull +45 -> 229
-    //   187: iconst_0
-    //   188: istore 4
-    //   190: ldc 208
-    //   192: iconst_2
-    //   193: ldc_w 444
-    //   196: iconst_1
-    //   197: anewarray 210	java/lang/Object
-    //   200: dup
-    //   201: iconst_0
-    //   202: iload 4
-    //   204: invokestatic 215	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   207: aastore
-    //   208: invokestatic 419	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   211: invokestatic 422	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   214: goto +27 -> 241
-    //   217: aload 5
-    //   219: aload_0
-    //   220: getfield 38	com/tencent/mobileqq/app/asyncdb/cache/BaseRecentUserCache:jdField_b_of_type_JavaUtilComparator	Ljava/util/Comparator;
-    //   223: invokestatic 316	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   226: goto -50 -> 176
-    //   229: aload 5
-    //   231: invokeinterface 148 1 0
-    //   236: istore 4
-    //   238: goto -48 -> 190
-    //   241: aload 5
-    //   243: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	244	0	this	BaseRecentUserCache
-    //   0	244	1	paramBoolean1	boolean
-    //   0	244	2	paramBoolean2	boolean
-    //   0	244	3	paramBoolean3	boolean
-    //   188	49	4	i	int
-    //   14	62	5	localArrayList	ArrayList
-    //   88	154	5	localException	Exception
-    //   28	13	6	localIterator	Iterator
-    //   58	87	7	localRecentUser	RecentUser
-    // Exception table:
-    //   from	to	target	type
-    //   0	30	88	java/lang/Exception
-    //   30	85	88	java/lang/Exception
-    //   115	156	88	java/lang/Exception
-    //   167	176	88	java/lang/Exception
-    //   176	182	88	java/lang/Exception
-    //   190	214	88	java/lang/Exception
-    //   217	226	88	java/lang/Exception
-    //   229	238	88	java/lang/Exception
+    try
+    {
+      ArrayList localArrayList = new ArrayList(this.cacheMap.size());
+      Iterator localIterator = this.cacheMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        RecentUser localRecentUser = (RecentUser)((Map.Entry)localIterator.next()).getValue();
+        localRecentUser.parse();
+        if (a(localRecentUser, paramBoolean2)) {
+          localArrayList.add(localRecentUser);
+        } else {
+          QLog.d("Q.db.Cache.RecentUserCache", 2, new Object[] { "getRecentList, filter =", localRecentUser.uin, "|", Integer.valueOf(localRecentUser.type) });
+        }
+      }
+      if (paramBoolean1) {
+        if (paramBoolean3) {
+          Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
+        } else {
+          Collections.sort(localArrayList, this.jdField_b_of_type_JavaUtilComparator);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.db.Cache.RecentUserCache", 2, String.format("getRecentList, size = %s", new Object[] { Integer.valueOf(localArrayList.size()) }));
+      }
+      return localArrayList;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.db.Cache.RecentUserCache", 2, "getCacheList is error!", localException);
+      }
+    }
+    return new ArrayList();
   }
   
   public void a()
@@ -455,8 +366,12 @@ public class BaseRecentUserCache
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RecentUserCache", 2, "deleteRecentUserByType, type:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("deleteRecentUserByType, type:");
+      ((StringBuilder)???).append(paramInt);
+      QLog.d("Q.db.Cache.RecentUserCache", 2, ((StringBuilder)???).toString());
     }
     if (this.cacheMap == null)
     {
@@ -477,6 +392,11 @@ public class BaseRecentUserCache
           }
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -487,8 +407,18 @@ public class BaseRecentUserCache
   
   public void a(RecentUser paramRecentUser, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RecentUserCache", 2, "delRecentUser user: " + a(paramRecentUser.uin) + " type " + paramRecentUser.getType() + " msgType " + paramRecentUser.msgType + ",uin = " + paramRecentUser.uin);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("delRecentUser user: ");
+      localStringBuilder.append(a(paramRecentUser.uin));
+      localStringBuilder.append(" type ");
+      localStringBuilder.append(paramRecentUser.getType());
+      localStringBuilder.append(" msgType ");
+      localStringBuilder.append(paramRecentUser.msgType);
+      localStringBuilder.append(",uin = ");
+      localStringBuilder.append(paramRecentUser.uin);
+      QLog.d("Q.db.Cache.RecentUserCache", 2, localStringBuilder.toString());
     }
     if (paramBoolean) {
       a(paramRecentUser.uin, paramRecentUser.getType(), 0);
@@ -500,24 +430,34 @@ public class BaseRecentUserCache
   public void a(String paramString)
   {
     Object localObject = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if ((localObject != null) && (!((ConcurrentHashMap)localObject).isEmpty()))
-    {
+    if ((localObject != null) && (!((ConcurrentHashMap)localObject).isEmpty())) {
       localObject = ((ConcurrentHashMap)localObject).keySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.db.Cache.RecentUserCache", 2, "findRecentUserByUin, uin:" + paramString + ",type:" + str);
-          }
-          int i = Integer.parseInt(str);
-          if (i != 7000) {
-            a(a(paramString, i));
-          }
-        }
-        catch (Exception localException) {}
+    }
+    for (;;)
+    {
+      String str;
+      if (((Iterator)localObject).hasNext()) {
+        str = (String)((Iterator)localObject).next();
       }
+      try
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("findRecentUserByUin, uin:");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(",type:");
+          localStringBuilder.append(str);
+          QLog.d("Q.db.Cache.RecentUserCache", 2, localStringBuilder.toString());
+        }
+        int i = Integer.parseInt(str);
+        if (i == 7000) {
+          continue;
+        }
+        a(a(paramString, i));
+      }
+      catch (Exception localException) {}
+      return;
     }
   }
   
@@ -526,33 +466,33 @@ public class BaseRecentUserCache
     int[] arrayOfInt = UinTypeUtil.c;
     int j = arrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      int k;
-      Object localObject;
-      if (i < j)
+      int k = arrayOfInt[i];
+      Object localObject = a(paramString, k);
+      if (this.cacheMap.containsKey(localObject))
       {
-        k = arrayOfInt[i];
-        localObject = a(paramString, k);
-        if (!this.cacheMap.containsKey(localObject)) {
-          break label163;
-        }
         localObject = (RecentUser)this.cacheMap.get(localObject);
-        if (localObject != null) {}
+        if (localObject == null) {
+          return;
+        }
+        if (paramBoolean) {
+          a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType(), 0);
+        }
+        ((RecentUser)localObject).setType(k);
+        removeCache((Entity)localObject);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("delRecentUser user: ");
+          localStringBuilder.append(a(((RecentUser)localObject).uin));
+          localStringBuilder.append(" type ");
+          localStringBuilder.append(((RecentUser)localObject).getType());
+          localStringBuilder.append(" msgType ");
+          localStringBuilder.append(((RecentUser)localObject).msgType);
+          QLog.d("Q.db.Cache.RecentUserCache", 2, localStringBuilder.toString());
+        }
       }
-      else
-      {
-        return;
-      }
-      if (paramBoolean) {
-        a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType(), 0);
-      }
-      ((RecentUser)localObject).setType(k);
-      removeCache((Entity)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.db.Cache.RecentUserCache", 2, "delRecentUser user: " + a(((RecentUser)localObject).uin) + " type " + ((RecentUser)localObject).getType() + " msgType " + ((RecentUser)localObject).msgType);
-      }
-      label163:
       i += 1;
     }
   }
@@ -582,34 +522,30 @@ public class BaseRecentUserCache
   
   public RecentUser b(String paramString, int paramInt)
   {
-    for (;;)
+    synchronized (this.cacheMap)
     {
-      synchronized (this.cacheMap)
-      {
-        paramString = (RecentUser)this.cacheMap.get(a(paramString, paramInt));
-        if (paramString == null) {
-          return null;
-        }
-        if (paramString.msg == null)
-        {
-          if (paramString.mIsParsed) {
-            paramString.reParse();
-          }
-        }
-        else {
-          return paramString;
+      paramString = (RecentUser)this.cacheMap.get(a(paramString, paramInt));
+      if (paramString == null) {
+        return null;
+      }
+      if (paramString.msg == null) {
+        if (paramString.mIsParsed) {
+          paramString.reParse();
+        } else {
+          paramString.parse();
         }
       }
-      paramString.parse();
+      return paramString;
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    localHandler.removeCallbacksAndMessages(null);
   }
   
   public void b(RecentUser paramRecentUser)
@@ -619,30 +555,37 @@ public class BaseRecentUserCache
   
   public void b(RecentUser paramRecentUser, boolean paramBoolean)
   {
-    if ((paramRecentUser == null) || (paramRecentUser.getType() < 0) || (paramRecentUser.uin == null) || (paramRecentUser.uin.length() <= 2)) {
-      if (paramRecentUser != null) {
-        c(paramRecentUser);
-      }
-    }
-    do
+    if ((paramRecentUser != null) && (paramRecentUser.getType() >= 0) && (paramRecentUser.uin != null) && (paramRecentUser.uin.length() > 2))
     {
-      do
+      if (QLog.isColorLevel())
       {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveRecentUser user: ");
+        localStringBuilder.append(paramRecentUser.uin);
+        localStringBuilder.append(" type ");
+        localStringBuilder.append(paramRecentUser.getType());
+        localStringBuilder.append(" msgType ");
+        localStringBuilder.append(paramRecentUser.msgType);
+        QLog.d("Q.db.Cache.RecentUserCache", 2, localStringBuilder.toString());
+      }
+      paramRecentUser = RecentUserCacheConfig.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramRecentUser, paramBoolean);
+      if (paramRecentUser == null) {
         return;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.db.Cache.RecentUserCache", 2, "saveRecentUser user: " + paramRecentUser.uin + " type " + paramRecentUser.getType() + " msgType " + paramRecentUser.msgType);
-        }
-        paramRecentUser = RecentUserCacheConfig.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramRecentUser, paramBoolean);
-      } while (paramRecentUser == null);
+      }
       c(paramRecentUser);
       addCache(paramRecentUser);
-    } while ((paramRecentUser.isHiddenChat != 0) || (!RecentParcelUtil.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface)));
+      if ((paramRecentUser.isHiddenChat != 0) || (!RecentParcelUtil.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface))) {}
+    }
     try
     {
       c(paramRecentUser, paramBoolean);
       return;
     }
     catch (Throwable paramRecentUser) {}
+    if (paramRecentUser != null) {
+      c(paramRecentUser);
+    }
+    return;
   }
   
   public boolean b(@NonNull String paramString)
@@ -674,37 +617,61 @@ public class BaseRecentUserCache
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RecentUserCache", 2, "preLoadTinyRecentUser is called. preCount = " + i + ", afterCount = " + this.cacheMap.size());
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("preLoadTinyRecentUser is called. preCount = ");
+      ((StringBuilder)???).append(i);
+      ((StringBuilder)???).append(", afterCount = ");
+      ((StringBuilder)???).append(this.cacheMap.size());
+      QLog.d("Q.db.Cache.RecentUserCache", 2, ((StringBuilder)???).toString());
     }
     localObject1.close();
   }
   
   public boolean c(String paramString)
   {
+    boolean bool2 = false;
     if (paramString == null) {
       return false;
     }
     paramString = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if ((paramString != null) && (!paramString.isEmpty()) && ((!paramString.containsKey(String.valueOf(7000))) || (paramString.keySet().size() > 1))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    boolean bool1 = bool2;
+    if (paramString != null)
+    {
+      bool1 = bool2;
+      if (!paramString.isEmpty()) {
+        if (paramString.containsKey(String.valueOf(7000)))
+        {
+          bool1 = bool2;
+          if (paramString.keySet().size() <= 1) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
   }
   
-  public void destroy() {}
+  protected void destroy() {}
   
-  public final String getKey(Entity paramEntity)
+  protected final String getKey(Entity paramEntity)
   {
     paramEntity = (RecentUser)paramEntity;
-    return paramEntity.uin + "&" + paramEntity.getType();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramEntity.uin);
+    localStringBuilder.append("&");
+    localStringBuilder.append(paramEntity.getType());
+    return localStringBuilder.toString();
   }
   
-  public void init() {}
+  protected void init() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.asyncdb.cache.BaseRecentUserCache
  * JD-Core Version:    0.7.0.1
  */

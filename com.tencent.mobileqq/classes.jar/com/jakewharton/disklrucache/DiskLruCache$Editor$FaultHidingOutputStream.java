@@ -21,8 +21,10 @@ class DiskLruCache$Editor$FaultHidingOutputStream
     }
     catch (IOException localIOException)
     {
-      DiskLruCache.Editor.access$2302(this.this$1, true);
+      label8:
+      break label8;
     }
+    DiskLruCache.Editor.access$2302(this.this$1, true);
   }
   
   public void flush()
@@ -34,8 +36,10 @@ class DiskLruCache$Editor$FaultHidingOutputStream
     }
     catch (IOException localIOException)
     {
-      DiskLruCache.Editor.access$2302(this.this$1, true);
+      label8:
+      break label8;
     }
+    DiskLruCache.Editor.access$2302(this.this$1, true);
   }
   
   public void write(int paramInt)
@@ -47,8 +51,10 @@ class DiskLruCache$Editor$FaultHidingOutputStream
     }
     catch (IOException localIOException)
     {
-      DiskLruCache.Editor.access$2302(this.this$1, true);
+      label9:
+      break label9;
     }
+    DiskLruCache.Editor.access$2302(this.this$1, true);
   }
   
   public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -60,13 +66,15 @@ class DiskLruCache$Editor$FaultHidingOutputStream
     }
     catch (IOException paramArrayOfByte)
     {
-      DiskLruCache.Editor.access$2302(this.this$1, true);
+      label11:
+      break label11;
     }
+    DiskLruCache.Editor.access$2302(this.this$1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.jakewharton.disklrucache.DiskLruCache.Editor.FaultHidingOutputStream
  * JD-Core Version:    0.7.0.1
  */

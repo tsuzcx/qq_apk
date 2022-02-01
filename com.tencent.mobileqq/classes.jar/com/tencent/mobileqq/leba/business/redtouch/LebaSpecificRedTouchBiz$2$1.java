@@ -17,10 +17,8 @@ class LebaSpecificRedTouchBiz$2$1
       this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.d();
       this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.this$0.a(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch, this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.b, this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_Long);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.b();
-      return;
       this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.a();
       BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
       this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.setMaxNum(99);
@@ -30,11 +28,12 @@ class LebaSpecificRedTouchBiz$2$1
       this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.a(localRedTypeInfo);
       LebaSpecificRedTouchBiz.b(this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.this$0, this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch);
     }
+    this.jdField_a_of_type_ComTencentMobileqqLebaBusinessRedtouchLebaSpecificRedTouchBiz$2.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.redtouch.LebaSpecificRedTouchBiz.2.1
  * JD-Core Version:    0.7.0.1
  */

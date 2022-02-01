@@ -26,16 +26,23 @@ class TenDocMessageSearchDialog$3
       TenDocMessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog).setVisibility(8);
       TenDocMessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog).setVisibility(8);
       TenDocMessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog).setVisibility(8);
-    }
-    while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramEditable)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TenDocMessageSearchDialog", 2, "afterTextChanged, mLastKeyword = " + this.jdField_a_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramEditable))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("afterTextChanged, mLastKeyword = ");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(",lastKeyWord:");
+        localStringBuilder.append(paramEditable);
+        QLog.i("TenDocMessageSearchDialog", 2, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_JavaLangString = paramEditable;
+      TenDocMessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog).setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog.a();
     }
-    this.jdField_a_of_type_JavaLangString = paramEditable;
-    TenDocMessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog).setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchTenDocMessageSearchDialog.a();
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -44,7 +51,7 @@ class TenDocMessageSearchDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.TenDocMessageSearchDialog.3
  * JD-Core Version:    0.7.0.1
  */

@@ -135,10 +135,10 @@ public final class UArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (UIntArray.isEmpty-impl(paramArrayOfInt)) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    if (!UIntArray.isEmpty-impl(paramArrayOfInt)) {
+      return UIntArray.get-impl(paramArrayOfInt, paramRandom.nextInt(UIntArray.getSize-impl(paramArrayOfInt)));
     }
-    return UIntArray.get-impl(paramArrayOfInt, paramRandom.nextInt(UIntArray.getSize-impl(paramArrayOfInt)));
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @JvmStatic
@@ -147,10 +147,10 @@ public final class UArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (ULongArray.isEmpty-impl(paramArrayOfLong)) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    if (!ULongArray.isEmpty-impl(paramArrayOfLong)) {
+      return ULongArray.get-impl(paramArrayOfLong, paramRandom.nextInt(ULongArray.getSize-impl(paramArrayOfLong)));
     }
-    return ULongArray.get-impl(paramArrayOfLong, paramRandom.nextInt(ULongArray.getSize-impl(paramArrayOfLong)));
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @JvmStatic
@@ -159,10 +159,10 @@ public final class UArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (UByteArray.isEmpty-impl(paramArrayOfByte)) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    if (!UByteArray.isEmpty-impl(paramArrayOfByte)) {
+      return UByteArray.get-impl(paramArrayOfByte, paramRandom.nextInt(UByteArray.getSize-impl(paramArrayOfByte)));
     }
-    return UByteArray.get-impl(paramArrayOfByte, paramRandom.nextInt(UByteArray.getSize-impl(paramArrayOfByte)));
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @JvmStatic
@@ -171,10 +171,10 @@ public final class UArraysKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$random");
     Intrinsics.checkParameterIsNotNull(paramRandom, "random");
-    if (UShortArray.isEmpty-impl(paramArrayOfShort)) {
-      throw ((Throwable)new NoSuchElementException("Array is empty."));
+    if (!UShortArray.isEmpty-impl(paramArrayOfShort)) {
+      return UShortArray.get-impl(paramArrayOfShort, paramRandom.nextInt(UShortArray.getSize-impl(paramArrayOfShort)));
     }
-    return UShortArray.get-impl(paramArrayOfShort, paramRandom.nextInt(UShortArray.getSize-impl(paramArrayOfShort)));
+    throw ((Throwable)new NoSuchElementException("Array is empty."));
   }
   
   @JvmStatic
@@ -247,7 +247,7 @@ public final class UArraysKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.UArraysKt
  * JD-Core Version:    0.7.0.1
  */

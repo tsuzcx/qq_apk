@@ -43,24 +43,28 @@ public final class opera_infomation
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 0);
+    Object localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 0);
     }
-    if (this.strFeedsKey != null) {
-      paramJceOutputStream.write(this.strFeedsKey, 1);
+    localObject = this.strFeedsKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.strOperaData != null) {
-      paramJceOutputStream.write(this.strOperaData, 2);
+    localObject = this.strOperaData;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.strSummary != null) {
-      paramJceOutputStream.write(this.strSummary, 3);
+    localObject = this.strSummary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.feedUin, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.opera_infomation
  * JD-Core Version:    0.7.0.1
  */

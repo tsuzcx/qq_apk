@@ -11,15 +11,21 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class CLIENT$StGetStoryReplyListRsp
   extends MessageMicro<StGetStoryReplyListRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "extInfo", "vecReply", "totalNum", "isFinish" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0) }, StGetStoryReplyListRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBUInt32Field isFinish = PBField.initUInt32(0);
   public final PBUInt32Field totalNum = PBField.initUInt32(0);
   public final PBRepeatMessageField<META.StReply> vecReply = PBField.initRepeatMessage(META.StReply.class);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "extInfo", "vecReply", "totalNum", "isFinish" }, new Object[] { null, null, localInteger, localInteger }, StGetStoryReplyListRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQ_STORY_CLIENT.CLIENT.StGetStoryReplyListRsp
  * JD-Core Version:    0.7.0.1
  */

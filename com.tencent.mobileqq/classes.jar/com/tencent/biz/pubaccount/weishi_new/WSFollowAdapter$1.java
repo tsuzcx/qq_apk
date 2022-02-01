@@ -13,7 +13,7 @@ class WSFollowAdapter$1
   
   public List<WSVideoPreDownloadManager.VideoPreDownloadParam> a(int paramInt, boolean paramBoolean)
   {
-    return WSFeedUtils.a(this.a.b(), paramInt, paramBoolean);
+    return WSFeedUtils.a(this.a.getDataList(), paramInt, paramBoolean);
   }
   
   public boolean a()
@@ -23,7 +23,7 @@ class WSFollowAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSFollowAdapter.1
  * JD-Core Version:    0.7.0.1
  */

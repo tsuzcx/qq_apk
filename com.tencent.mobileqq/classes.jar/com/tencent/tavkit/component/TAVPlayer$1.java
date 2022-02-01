@@ -7,9 +7,15 @@ import android.view.TextureView.SurfaceTextureListener;
 class TAVPlayer$1
   implements TextureView.SurfaceTextureListener
 {
-  private final String TAG = "GameTextureView@" + Integer.toHexString(hashCode());
+  private final String TAG;
   
-  TAVPlayer$1(TAVPlayer paramTAVPlayer) {}
+  TAVPlayer$1(TAVPlayer paramTAVPlayer)
+  {
+    paramTAVPlayer = new StringBuilder();
+    paramTAVPlayer.append("GameTextureView@");
+    paramTAVPlayer.append(Integer.toHexString(hashCode()));
+    this.TAG = paramTAVPlayer.toString();
+  }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
@@ -32,7 +38,7 @@ class TAVPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVPlayer.1
  * JD-Core Version:    0.7.0.1
  */

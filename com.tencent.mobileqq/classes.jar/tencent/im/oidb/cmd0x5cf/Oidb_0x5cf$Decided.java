@@ -20,7 +20,7 @@ public final class Oidb_0x5cf$Decided
   public static final int UINT64_FUIN_FIELD_NUMBER = 2;
   public static final int UINT64_GROUP_CODE_FIELD_NUMBER = 9;
   public static final int UINT64_UIN_FIELD_NUMBER = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 56, 64, 72 }, new String[] { "uint64_uin", "uint64_fuin", "uint32_reqtype", "uint32_time", "rpt_str_wording", "str_add_source", "uint32_sourceid", "uint32_sourcesubid", "uint64_group_code" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L) }, Decided.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatField<String> rpt_str_wording = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBStringField str_add_source = PBField.initString("");
   public final PBUInt32Field uint32_reqtype = PBField.initUInt32(0);
@@ -30,10 +30,17 @@ public final class Oidb_0x5cf$Decided
   public final PBUInt64Field uint64_fuin = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_group_code = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 56, 64, 72 }, new String[] { "uint64_uin", "uint64_fuin", "uint32_reqtype", "uint32_time", "rpt_str_wording", "str_add_source", "uint32_sourceid", "uint32_sourcesubid", "uint64_group_code" }, new Object[] { localLong, localLong, localInteger, localInteger, "", "", localInteger, localInteger, localLong }, Decided.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5cf.Oidb_0x5cf.Decided
  * JD-Core Version:    0.7.0.1
  */

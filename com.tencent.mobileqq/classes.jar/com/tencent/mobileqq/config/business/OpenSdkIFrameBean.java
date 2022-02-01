@@ -34,13 +34,18 @@ public class OpenSdkIFrameBean
           }
           else
           {
-            localStringBuilder.append("config: ").append(str).append(",");
+            localStringBuilder.append("config: ");
+            localStringBuilder.append(str);
+            localStringBuilder.append(",");
             i += 1;
           }
         }
         else
         {
-          QLog.d("OpenSdkIFrameProcessor", 1, "parse, content:" + localStringBuilder.toString());
+          paramArrayOfQConfItem = new StringBuilder();
+          paramArrayOfQConfItem.append("parse, content:");
+          paramArrayOfQConfItem.append(localStringBuilder.toString());
+          QLog.d("OpenSdkIFrameProcessor", 1, paramArrayOfQConfItem.toString());
           return localOpenSdkIFrameBean;
         }
       }
@@ -60,7 +65,7 @@ public class OpenSdkIFrameBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkIFrameBean
  * JD-Core Version:    0.7.0.1
  */

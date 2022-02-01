@@ -15,13 +15,13 @@ class LimitChatPie$SendImageListener
   
   public boolean b(PhotoListPanel paramPhotoListPanel)
   {
-    this.a.i("2");
+    this.a.d("2");
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.SendImageListener
  * JD-Core Version:    0.7.0.1
  */

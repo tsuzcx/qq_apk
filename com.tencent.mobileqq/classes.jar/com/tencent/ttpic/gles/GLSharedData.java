@@ -30,30 +30,23 @@ public class GLSharedData
   public TextureDataPipe getCurrentTexturePile()
   {
     int i;
-    int j;
-    if (this.mTexturePile[0].getTexureCurrentStatus() == 2)
-    {
+    if (this.mTexturePile[0].getTexureCurrentStatus() == 2) {
       i = 1;
-      if (this.mTexturePile[1].getTexureCurrentStatus() != 2) {
-        break label72;
-      }
-      j = 1;
+    } else {
+      i = 0;
     }
-    for (;;)
+    int j;
+    if (this.mTexturePile[1].getTexureCurrentStatus() == 2) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if ((i != 0) && (j != 0))
     {
-      if ((i != 0) && (j != 0))
-      {
-        if (this.mTexturePile[0].mTimestamp < this.mTexturePile[1].mTimestamp)
-        {
-          return this.mTexturePile[0];
-          i = 0;
-          break;
-          label72:
-          j = 0;
-          continue;
-        }
-        return this.mTexturePile[1];
+      if (this.mTexturePile[0].mTimestamp < this.mTexturePile[1].mTimestamp) {
+        return this.mTexturePile[0];
       }
+      return this.mTexturePile[1];
     }
     if (i != 0) {
       return this.mTexturePile[0];
@@ -67,13 +60,17 @@ public class GLSharedData
   public TextureDataPipe getFreeTexturePileMakeBusy()
   {
     int i = 0;
-    while (i < this.mTexturePile.length)
+    for (;;)
     {
-      if (this.mTexturePile[i].getTexureCurrentStatus() == 0)
+      Object localObject = this.mTexturePile;
+      if (i >= localObject.length) {
+        break;
+      }
+      if (localObject[i].getTexureCurrentStatus() == 0)
       {
-        TextureDataPipe localTextureDataPipe = this.mTexturePile[i];
-        localTextureDataPipe.makeBusy();
-        return localTextureDataPipe;
+        localObject = this.mTexturePile[i];
+        ((TextureDataPipe)localObject).makeBusy();
+        return localObject;
       }
       i += 1;
     }
@@ -82,16 +79,21 @@ public class GLSharedData
   
   public boolean judgeBrotherTextureIsReady(TextureDataPipe paramTextureDataPipe)
   {
-    TextureDataPipe localTextureDataPipe = this.mTexturePile[0];
-    if (this.mTexturePile[0] == paramTextureDataPipe) {
-      localTextureDataPipe = this.mTexturePile[1];
+    TextureDataPipe[] arrayOfTextureDataPipe = this.mTexturePile;
+    boolean bool = false;
+    TextureDataPipe localTextureDataPipe = arrayOfTextureDataPipe[0];
+    if (arrayOfTextureDataPipe[0] == paramTextureDataPipe) {
+      localTextureDataPipe = arrayOfTextureDataPipe[1];
     }
-    return localTextureDataPipe.getTexureCurrentStatus() == 2;
+    if (localTextureDataPipe.getTexureCurrentStatus() == 2) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.gles.GLSharedData
  * JD-Core Version:    0.7.0.1
  */

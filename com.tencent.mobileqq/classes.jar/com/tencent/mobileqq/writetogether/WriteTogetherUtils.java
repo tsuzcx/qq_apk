@@ -63,22 +63,22 @@ public class WriteTogetherUtils
     {
     default: 
       return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 3: 
-      return 3;
-    case 5: 
-      return 4;
-    case 7: 
-      return 5;
-    case 4: 
-      return 6;
     case 8: 
       return 7;
+    case 7: 
+      return 5;
+    case 6: 
+      return 8;
+    case 5: 
+      return 4;
+    case 4: 
+      return 6;
+    case 3: 
+      return 3;
+    case 2: 
+      return 2;
     }
-    return 8;
+    return 1;
   }
   
   public static int a(AppRuntime paramAppRuntime, String paramString)
@@ -100,7 +100,14 @@ public class WriteTogetherUtils
     paramString1.f = "2400002";
     paramString1.h = "25043";
     paramString1.g = "write_togethe";
-    paramString1.j = ("group_id:" + paramString2 + "|doc_id:" + paramString3 + "|base_version:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("group_id:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("|doc_id:");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append("|base_version:");
+    localStringBuilder.append(paramInt);
+    paramString1.j = localStringBuilder.toString();
     paramString1.s = paramString2;
     paramString1.jdField_d_of_type_JavaLangString = paramString4;
     return paramString1;
@@ -146,15 +153,17 @@ public class WriteTogetherUtils
     localOpenDocParam.jdField_b_of_type_Long = paramRspGetDocContent.uint64_sheetPosLen.get();
     localOpenDocParam.jdField_a_of_type_JavaUtilList = a(paramRspGetDocContent.rpt_edit_uin_list.get());
     localOpenDocParam.jdField_c_of_type_Long = paramRspGetDocContent.uint64_owner_uin.get();
-    if (paramRspGetDocContent.uint32_max_len.has()) {}
-    for (int i = paramRspGetDocContent.uint32_max_len.get();; i = 10000)
-    {
-      localOpenDocParam.jdField_e_of_type_Int = i;
-      if (localOpenDocParam.jdField_e_of_type_Int <= 0) {
-        localOpenDocParam.jdField_e_of_type_Int = 10000;
-      }
-      return localOpenDocParam;
+    int i;
+    if (paramRspGetDocContent.uint32_max_len.has()) {
+      i = paramRspGetDocContent.uint32_max_len.get();
+    } else {
+      i = 10000;
     }
+    localOpenDocParam.jdField_e_of_type_Int = i;
+    if (localOpenDocParam.jdField_e_of_type_Int <= 0) {
+      localOpenDocParam.jdField_e_of_type_Int = 10000;
+    }
+    return localOpenDocParam;
   }
   
   public static String a(CharSequence paramCharSequence)
@@ -167,17 +176,22 @@ public class WriteTogetherUtils
   
   public static String a(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.length() < 7)) {}
-    do
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
     {
-      return paramString;
-      if (paramString.startsWith("p.")) {
-        break;
+      if (paramString.length() < 7) {
+        return paramString;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("WriteTogetherUtils", 2, "userId is not start with p.");
-    return paramString;
-    return paramString.substring(2);
+      if (!paramString.startsWith("p."))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("WriteTogetherUtils", 2, "userId is not start with p.");
+        }
+        return paramString;
+      }
+      str = paramString.substring(2);
+    }
+    return str;
   }
   
   public static String a(String paramString, long paramLong)
@@ -213,7 +227,7 @@ public class WriteTogetherUtils
   
   public static void a(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    paramActivity = DialogUtil.a(paramActivity, HardCodeUtil.a(2131720731), 2131720698, 2131720737, paramOnClickListener2, paramOnClickListener1);
+    paramActivity = DialogUtil.a(paramActivity, HardCodeUtil.a(2131720456), 2131720417, 2131720462, paramOnClickListener2, paramOnClickListener1);
     if ((paramActivity != null) && (!paramActivity.isShowing())) {
       paramActivity.show();
     }
@@ -221,8 +235,8 @@ public class WriteTogetherUtils
   
   public static void a(Context paramContext, String paramString1, String paramString2, WriteTogetherUtils.OnDialogConfirmButtonClickListener paramOnDialogConfirmButtonClickListener)
   {
-    paramContext = new QQCustomDialog(paramContext, 2131755842);
-    paramContext.setContentView(2131559084);
+    paramContext = new QQCustomDialog(paramContext, 2131756189);
+    paramContext.setContentView(2131558978);
     paramContext.dismissMessage();
     ((RelativeLayout.LayoutParams)paramContext.getTitleTextView().getLayoutParams()).bottomMargin = ViewUtils.a(26.0F);
     paramContext.setCanceledOnTouchOutside(false);
@@ -244,7 +258,7 @@ public class WriteTogetherUtils
   public static void a(QBaseActivity paramQBaseActivity, WriteTogetherUtils.OnDialogConfirmButtonClickListener paramOnDialogConfirmButtonClickListener)
   {
     Resources localResources = paramQBaseActivity.getResources();
-    paramQBaseActivity = DialogUtil.a(paramQBaseActivity, localResources.getString(2131720752), localResources.getString(2131720740), localResources.getString(2131720744), new WriteTogetherUtils.1(paramOnDialogConfirmButtonClickListener));
+    paramQBaseActivity = DialogUtil.a(paramQBaseActivity, localResources.getString(2131720477), localResources.getString(2131720465), localResources.getString(2131720469), new WriteTogetherUtils.1(paramOnDialogConfirmButtonClickListener));
     paramQBaseActivity.setCancelable(false);
     paramQBaseActivity.show();
   }
@@ -256,7 +270,20 @@ public class WriteTogetherUtils
   
   public static boolean a(int paramInt)
   {
-    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 1)
+    {
+      bool1 = bool2;
+      if (paramInt != 2)
+      {
+        if (paramInt == 3) {
+          return true;
+        }
+        bool1 = false;
+      }
+    }
+    return bool1;
   }
   
   public static boolean a(long paramLong1, long paramLong2)
@@ -270,24 +297,45 @@ public class WriteTogetherUtils
   
   public static boolean a(AText paramAText)
   {
-    if ((paramAText == null) || (TextUtils.isEmpty(paramAText.jdField_a_of_type_JavaLangString))) {}
-    while (paramAText.jdField_a_of_type_JavaLangString.length() <= a()) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramAText != null)
+    {
+      if (TextUtils.isEmpty(paramAText.jdField_a_of_type_JavaLangString)) {
+        return false;
+      }
+      bool1 = bool2;
+      if (paramAText.jdField_a_of_type_JavaLangString.length() > a()) {
+        bool1 = true;
+      }
     }
-    return true;
+    return bool1;
   }
   
   public static boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    ((TroopInfoHandler)((AppInterface)paramAppRuntime).getBusinessHandler(TroopInfoHandler.class.getName())).a(paramString, false);
+    TroopInfoHandler localTroopInfoHandler = (TroopInfoHandler)((AppInterface)paramAppRuntime).getBusinessHandler(TroopInfoHandler.class.getName());
+    boolean bool2 = false;
+    localTroopInfoHandler.a(paramString, false);
     paramAppRuntime = ((ITroopInfoService)paramAppRuntime.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo(paramString);
-    return (paramAppRuntime != null) && ((paramAppRuntime.dwGroupFlagExt3 & 0x40000000) == 0L);
+    boolean bool1 = bool2;
+    if (paramAppRuntime != null)
+    {
+      bool1 = bool2;
+      if ((paramAppRuntime.dwGroupFlagExt3 & 0x40000000) == 0L) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private static SharedPreferences b()
   {
     String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-    str = WTConstants.jdField_a_of_type_JavaLangString + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(WTConstants.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
     return SharedPreferencesProxyManager.getInstance().getProxy(str, 0);
   }
   
@@ -314,7 +362,7 @@ public class WriteTogetherUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.WriteTogetherUtils
  * JD-Core Version:    0.7.0.1
  */

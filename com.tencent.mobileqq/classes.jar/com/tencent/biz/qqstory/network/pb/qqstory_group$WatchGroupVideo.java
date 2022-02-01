@@ -19,13 +19,14 @@ public final class qqstory_group$WatchGroupVideo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "story_id", "group_id", "source", "time" }, new Object[] { localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, WatchGroupVideo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "story_id", "group_id", "source", "time" }, new Object[] { localByteStringMicro, Long.valueOf(0L), localInteger, localInteger }, WatchGroupVideo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.WatchGroupVideo
  * JD-Core Version:    0.7.0.1
  */

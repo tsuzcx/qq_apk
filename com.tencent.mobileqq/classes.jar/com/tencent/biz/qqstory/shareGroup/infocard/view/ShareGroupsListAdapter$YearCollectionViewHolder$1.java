@@ -14,21 +14,23 @@ class ShareGroupsListAdapter$YearCollectionViewHolder$1
   public void onClick(View paramView)
   {
     ShareGroupsListAdapter.ChangeVideoSortEvent localChangeVideoSortEvent = new ShareGroupsListAdapter.ChangeVideoSortEvent();
-    if (this.a.a.a) {
-      this.a.a.a = false;
-    }
-    for (localChangeVideoSortEvent.a = 0;; localChangeVideoSortEvent.a = 1)
+    if (this.a.a.a)
     {
-      StoryDispatcher.a().dispatch(localChangeVideoSortEvent);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a.a = true;
+      this.a.a.a = false;
+      localChangeVideoSortEvent.a = 0;
     }
+    else
+    {
+      this.a.a.a = true;
+      localChangeVideoSortEvent.a = 1;
+    }
+    StoryDispatcher.a().dispatch(localChangeVideoSortEvent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.YearCollectionViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

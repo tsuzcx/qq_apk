@@ -8,7 +8,6 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.biz.PoiMapActivity;
@@ -19,18 +18,16 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
 import com.tencent.mobileqq.activity.activateFriend.QQNotifyUtils;
 import com.tencent.mobileqq.activity.activateFriend.QQNotifyUtils.QQNotifyListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.jsp.ShareMsgImpl;
 import com.tencent.mobileqq.jsp.ShareMsgImpl.ShareMsgImplListener;
 import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.takevideo.TribePublishLauncher;
 import com.tencent.mobileqq.troop.activity.PublicCommentWindow;
 import com.tencent.mobileqq.troop.activity.TroopBarCommentWindow;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.webview.swift.WebViewUtil;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -54,6 +51,7 @@ public class QQUiModule
   implements DialogInterface.OnCancelListener, QQNotifyUtils.QQNotifyListener, ActionSheet.OnButtonClickListener, ActionSheet.OnDismissListener, ActionSheet.WatchDismissActions
 {
   static final String CLASSNAME = "QQUiModule";
+  static final byte CODE_OPEN_CUSTOM_WEBVIEW = 14;
   private static final int CODE_OPEN_VIEW = 101;
   private static final int CODE_SUBSCRIBE = WebViewUtil.a("qw_mix") << 8;
   public static final String METHOD_ACTION_NOTIFY_NEW_SUBSCRIBE = "newSubscribe";
@@ -80,133 +78,83 @@ public class QQUiModule
   
   private void excuteOpenView(String paramString, Promise paramPromise)
   {
+    Activity localActivity = null;
     this.mOpenViewPromise = null;
-    Activity localActivity;
-    Object localObject1;
-    boolean bool2;
     try
     {
       paramString = new JSONObject(paramString);
       localActivity = getActivity();
-      localObject1 = getFragment();
-      if ((!(localActivity instanceof BaseActivity)) || (localActivity.isFinishing()) || (localObject1 == null))
+      Object localObject1 = getFragment();
+      boolean bool1 = localActivity instanceof QBaseActivity;
+      int j;
+      if ((bool1) && (!localActivity.isFinishing()) && (localObject1 != null))
       {
-        QLog.e("QQUiModule", 1, "shareMessage activity is finishing");
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString = null;
-      }
-      bool2 = false;
-      if (paramString == null) {
-        break label841;
-      }
-    }
-    if ((localActivity instanceof BaseActivity)) {}
-    for (;;)
-    {
-      Object localObject2;
-      String str1;
-      int i;
-      boolean bool1;
-      try
-      {
-        localObject2 = paramString.optString("viewType", "activity");
-        str1 = paramString.optString("name");
-        str2 = paramString.optString("options");
-        i = paramString.optInt("animation", -1);
-        bool1 = paramString.optBoolean("isNeedCloseCallback");
-      }
-      catch (Exception paramString)
-      {
-        String str2;
-        label197:
-        label220:
-        bool1 = false;
-        paramString = paramString;
-        continue;
-      }
-      try
-      {
-        paramString = new JSONObject(str2);
-        if ("popWindow".equals(localObject2))
-        {
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putString("options", paramString.toString());
-          if ("com.tencent.mobileqq.troop.activity.PublicCommentActivity".equals(str1))
+        j = 0;
+        if ((paramString != null) && (bool1)) {
+          try
           {
-            new PublicCommentWindow((BaseActivity)localActivity, (Bundle)localObject1).a(localActivity);
-            bool2 = false;
-            bool1 = bool2;
-            i = 1;
-            if ((bool1) && (i != 0)) {
-              break label881;
-            }
-            paramString = new HippyMap();
-            if (i == 0) {
-              break label876;
-            }
-            i = 0;
-            paramString.pushInt("code", i);
-            paramPromise.resolve(paramString);
-            return;
+            localObject2 = paramString.optString("viewType", "activity");
+            str1 = paramString.optString("name");
+            str2 = paramString.optString("options");
+            i = paramString.optInt("animation", -1);
+            bool2 = paramString.optBoolean("isNeedCloseCallback");
           }
+          catch (Exception paramString)
+          {
+            Object localObject2;
+            String str1;
+            String str2;
+            label132:
+            label441:
+            label480:
+            label491:
+            bool1 = false;
+          }
+        }
+      }
+      try
+      {
+        try
+        {
+          paramString = new JSONObject(str2);
+        }
+        catch (Exception paramString)
+        {
+          bool1 = bool2;
+          break label604;
         }
       }
       catch (JSONException paramString)
       {
-        paramString = new JSONObject();
-        continue;
+        break label132;
+        if (i == 1001) {
+          break label480;
+        }
+        break label491;
       }
-      catch (Exception paramString)
+      paramString = new JSONObject();
+      if ("popWindow".equals(localObject2))
       {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QQUiModule", 2, " openView startActivity failed");
-          QLog.d("QQUiModule", 2, QLog.getStackTraceString(paramString));
+        localObject1 = new Bundle();
+        ((Bundle)localObject1).putString("options", paramString.toString());
+        if ("com.tencent.mobileqq.troop.activity.PublicCommentActivity".equals(str1)) {
+          new PublicCommentWindow((QBaseActivity)localActivity, (Bundle)localObject1).a(localActivity);
+        } else if ("com.tencent.mobileqq.troop.activity.TroopBarCommentActivity".equals(str1)) {
+          new TroopBarCommentWindow((QBaseActivity)localActivity, (Bundle)localObject1).a(localActivity);
         }
-        i = 0;
-        continue;
-        if (!"com.tencent.mobileqq.troop.activity.TroopBarCommentActivity".equals(str1)) {
-          continue;
-        }
-        new TroopBarCommentWindow((BaseActivity)localActivity, (Bundle)localObject1).a(localActivity);
-        continue;
+        bool1 = false;
       }
-      if ("activity".equals(localObject2))
+      else if ("activity".equals(localObject2))
       {
         localObject2 = new Intent();
-        if ("cooperation.comic.VipComicJumpActivity".equals(str1))
-        {
+        if ("cooperation.comic.VipComicJumpActivity".equals(str1)) {
           ((Intent)localObject2).setComponent(new ComponentName(getActivity(), str1));
-          ((Intent)localObject2).putExtra("click_start_time", System.currentTimeMillis());
-          label375:
-          ((Intent)localObject2).putExtra("options", paramString.toString());
-          if (bool1) {
-            break label604;
-          }
-          ((Fragment)localObject1).startActivity((Intent)localObject2);
-          break label887;
         }
       }
-      for (;;)
+      try
       {
-        bool2 = bool1;
-        if (!PoiMapActivity.class.getName().equals(str1)) {
-          break;
-        }
-        if (this.mClient == null)
-        {
-          this.mClient = TroopMemberApiClient.a();
-          this.mClient.a();
-        }
-        this.mClient.c();
-        bool2 = bool1;
-        break;
+        ((Intent)localObject2).putExtra("click_start_time", System.currentTimeMillis());
+        break label441;
         if ("cooperation.qqindividuality.QQIndividualityBridgeActivity".equals(str1))
         {
           ((Intent)localObject2).setComponent(new ComponentName(localActivity, str1));
@@ -215,87 +163,94 @@ public class QQUiModule
           ((Intent)localObject2).putExtra(QQIndividualityUtils.l, 1);
           ((Intent)localObject2).putExtra(QQIndividualityUtils.e, "path");
           ((Intent)localObject2).putExtra(QQIndividualityUtils.f, "name");
-          break label375;
         }
-        if ("com.tencent.mobileqq.activity.AuthDevOpenUgActivity".equals(str1))
+        else if ("com.tencent.mobileqq.activity.AuthDevOpenUgActivity".equals(str1))
         {
           ((Intent)localObject2).setComponent(new ComponentName(localActivity, str1));
           ((Intent)localObject2).putExtra("AUTH_DEV_OPEN_UG_ACTIVITY", "true");
-          break label375;
         }
-        ((Intent)localObject2).setComponent(new ComponentName(localActivity, str1));
-        break label375;
-        label604:
-        ((Fragment)localObject1).startActivityForResult((Intent)localObject2, 101);
-        break label887;
-        localActivity.overridePendingTransition(2130771981, 2130771979);
-        continue;
-        bool2 = bool1;
-        if (!"activityWrapper".equals(localObject2)) {
-          break;
-        }
-        if (str1.equals("com.tencent.mobileqq.richmedia.capture.activity.CameraCaptureActivity"))
+        else
         {
-          bool2 = bool1;
-          if (paramString.optInt("openSource", 0) != 1) {
-            break;
-          }
-          str1 = paramString.optString("from", "");
-          paramString = TribePublishLauncher.a(localActivity, getAppInterface(), paramString.toString(), (byte)101, str1);
-          bool2 = bool1;
-          if (paramString == null) {
-            break;
-          }
-          downloadShortVideoFilterSo();
-          ((Fragment)localObject1).startActivityForResult(paramString, 101);
-          localActivity.overridePendingTransition(2130771981, 2130771979);
-          bool2 = bool1;
-          break;
+          ((Intent)localObject2).setComponent(new ComponentName(localActivity, str1));
         }
-        bool2 = bool1;
-        if (!str1.equals(TroopBarReplyActivity.class.getName())) {
-          break;
-        }
-        localObject2 = new Intent();
-        ((Intent)localObject2).setComponent(new ComponentName(localActivity, str1));
         ((Intent)localObject2).putExtra("options", paramString.toString());
-        if (!bool1)
+        if (!bool2) {
+          ((QBaseFragment)localObject1).startActivity((Intent)localObject2);
+        } else {
+          ((QBaseFragment)localObject1).startActivityForResult((Intent)localObject2, 101);
+        }
+      }
+      catch (Exception paramString)
+      {
+        bool1 = bool2;
+        break label604;
+      }
+      localActivity.overridePendingTransition(2130771993, 2130771991);
+      bool1 = bool2;
+      if (PoiMapActivity.class.getName().equals(str1))
+      {
+        if (this.mClient == null)
         {
-          ((Fragment)localObject1).startActivity((Intent)localObject2);
-          break label911;
-          localActivity.overridePendingTransition(2130771981, 2130771979);
-          bool2 = bool1;
-          break;
+          this.mClient = TroopMemberApiClient.a();
+          this.mClient.a();
         }
-        ((Fragment)localObject1).startActivityForResult((Intent)localObject2, 101);
-        break label911;
-        label841:
-        int j = 0;
-        i = j;
+        this.mClient.c();
         bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          break label197;
+        break label587;
+        bool1 = bool2;
+        if ("activityWrapper".equals(localObject2))
+        {
+          bool1 = bool2;
+          if (str1.equals("com.tencent.mobileqq.richmedia.capture.activity.CameraCaptureActivity"))
+          {
+            paramString.optInt("openSource", 0);
+            bool1 = bool2;
+          }
         }
-        QLog.d("QQUiModule", 2, "openView error, json is NULL-----");
-        i = j;
-        bool1 = bool2;
-        break label197;
-        label876:
-        i = -1;
-        break label220;
-        label881:
+      }
+      label587:
+      i = 1;
+      break label664;
+      label604:
+      boolean bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QQUiModule", 2, " openView startActivity failed");
+        QLog.d("QQUiModule", 2, QLog.getStackTraceString(paramString));
+        bool2 = bool1;
+        break label658;
+        if (QLog.isColorLevel()) {
+          QLog.d("QQUiModule", 2, "openView error, json is NULL-----");
+        }
+        bool2 = false;
+      }
+      label658:
+      i = 0;
+      bool1 = bool2;
+      label664:
+      if ((bool1) && (i != 0))
+      {
         this.mOpenViewPromise = paramPromise;
         return;
-        label887:
-        switch (i)
-        {
-        }
       }
-      label911:
-      switch (i)
+      paramString = new HippyMap();
+      if (i != 0) {
+        i = j;
+      } else {
+        i = -1;
+      }
+      paramString.pushInt("code", i);
+      paramPromise.resolve(paramString);
+      return;
+      QLog.e("QQUiModule", 1, "shareMessage activity is finishing");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
+        paramString = localActivity;
       }
-      bool2 = bool1;
     }
   }
   
@@ -307,15 +262,15 @@ public class QQUiModule
     this.mNotifyPromise = null;
     this.mNotifyPromise = paramPromise;
     HippyMap localHippyMap = new HippyMap();
-    if ((StringUtil.a(str1)) || (StringUtil.a(str2)))
+    if ((!StringUtil.a(str1)) && (!StringUtil.a(str2)))
     {
-      localHippyMap.pushInt("code", -1);
-      if (paramPromise != null) {
-        paramPromise.resolve(localHippyMap);
-      }
+      QQNotifyUtils.a(getActivity(), str1, paramJSONObject, str2, QQNotifySettingBaseFragment.a);
       return;
     }
-    QQNotifyUtils.a(getActivity(), str1, paramJSONObject, str2, QQNotifySettingBaseFragment.a);
+    localHippyMap.pushInt("code", -1);
+    if (paramPromise != null) {
+      paramPromise.resolve(localHippyMap);
+    }
   }
   
   private void onActionSheetCancel()
@@ -337,15 +292,15 @@ public class QQUiModule
     this.mNotifyPromise = null;
     this.mNotifyPromise = paramPromise;
     HippyMap localHippyMap = new HippyMap();
-    if ((StringUtil.a(str1)) || (StringUtil.a(str2)))
+    if ((!StringUtil.a(str1)) && (!StringUtil.a(str2)))
     {
-      localHippyMap.pushInt("code", -1);
-      if (paramPromise != null) {
-        paramPromise.resolve(localHippyMap);
-      }
+      QQNotifyUtils.a(str1, paramJSONObject, str2, this);
       return;
     }
-    QQNotifyUtils.a(str1, paramJSONObject, str2, this);
+    localHippyMap.pushInt("code", -1);
+    if (paramPromise != null) {
+      paramPromise.resolve(localHippyMap);
+    }
   }
   
   public void OnClick(View paramView, int paramInt)
@@ -354,31 +309,29 @@ public class QQUiModule
     {
       paramView = new HippyMap();
       paramView.pushInt("index", paramInt);
-      if ((!this.mActionSheetIsCancle) || (paramInt != 0)) {
-        break label67;
+      if ((this.mActionSheetIsCancle) && (paramInt == 0)) {
+        paramView.pushInt("type", 2);
+      } else {
+        paramView.pushInt("type", 0);
       }
-      paramView.pushInt("type", 2);
-    }
-    for (;;)
-    {
       this.mActionSheetPromise.resolve(paramView);
-      if (this.mActionSheet != null) {
-        this.mActionSheet.dismiss();
-      }
-      return;
-      label67:
-      paramView.pushInt("type", 0);
+    }
+    paramView = this.mActionSheet;
+    if (paramView != null) {
+      paramView.dismiss();
     }
   }
   
   public void destroy()
   {
     super.destroy();
-    if (this.mShareMsgImpl != null) {
-      this.mShareMsgImpl.a();
+    Object localObject = this.mShareMsgImpl;
+    if (localObject != null) {
+      ((ShareMsgImpl)localObject).a();
     }
-    if (this.mClient != null) {
-      this.mClient.b();
+    localObject = this.mClient;
+    if (localObject != null) {
+      ((TroopMemberApiClient)localObject).b();
     }
   }
   
@@ -392,50 +345,45 @@ public class QQUiModule
   
   public void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    switch (paramInt1)
+    if (paramInt1 != 101)
     {
-    default: 
-      if (this.mShareMsgImpl != null) {
-        this.mShareMsgImpl.a(paramIntent, (byte)paramInt1, paramInt2);
+      paramActivity = this.mShareMsgImpl;
+      if (paramActivity != null) {
+        paramActivity.a(paramIntent, (byte)paramInt1, paramInt2);
       }
-      if ((paramInt1 == CODE_SUBSCRIBE) && (this.mNotifyPromise != null))
+    }
+    else if (this.mOpenViewPromise != null)
+    {
+      HippyMap localHippyMap = new HippyMap();
+      if (paramInt2 == -1)
       {
-        paramActivity = new HippyMap();
-        if (paramInt2 != -1) {
-          break label192;
+        if (paramIntent == null) {
+          paramActivity = "";
+        } else {
+          paramActivity = paramIntent.getStringExtra("result");
         }
+        localHippyMap.pushInt("code", 0);
+        localHippyMap.pushString("result", paramActivity);
+      }
+      else
+      {
+        localHippyMap.pushInt("code", -1);
+      }
+      this.mOpenViewPromise.resolve(localHippyMap);
+    }
+    if ((paramInt1 == CODE_SUBSCRIBE) && (this.mNotifyPromise != null))
+    {
+      paramActivity = new HippyMap();
+      if ((paramInt2 == -1) && (paramIntent != null))
+      {
         paramActivity.pushInt("retcode", paramIntent.getIntExtra("errorCode", 0));
         paramActivity.pushString("retmsg", paramIntent.getStringExtra("msg"));
       }
-      break;
-    }
-    for (;;)
-    {
-      this.mNotifyPromise.resolve(paramActivity);
-      return;
-      if (this.mOpenViewPromise == null) {
-        break;
-      }
-      HippyMap localHippyMap = new HippyMap();
-      if (paramInt2 == -1) {
-        if (paramIntent == null)
-        {
-          paramActivity = "";
-          label138:
-          localHippyMap.pushInt("code", 0);
-          localHippyMap.pushString("result", paramActivity);
-        }
-      }
-      for (;;)
+      else
       {
-        this.mOpenViewPromise.resolve(localHippyMap);
-        break;
-        paramActivity = paramIntent.getStringExtra("result");
-        break label138;
-        localHippyMap.pushInt("code", -1);
+        paramActivity.pushInt("retcode", -1);
       }
-      label192:
-      paramActivity.pushInt("retcode", -1);
+      this.mNotifyPromise.resolve(paramActivity);
     }
   }
   
@@ -453,53 +401,60 @@ public class QQUiModule
   
   public void onDismissOperations()
   {
-    Object localObject = getActivity();
-    if ((localObject instanceof PublicFragmentActivity))
-    {
-      localObject = ((PublicFragmentActivity)localObject).a();
-      if ((localObject instanceof TribeVideoListPlayerFragment)) {
-        ((TribeVideoListPlayerFragment)localObject).a(this.mActionSheet);
-      }
+    Activity localActivity = getActivity();
+    if ((localActivity instanceof PublicFragmentActivity)) {
+      ((PublicFragmentActivity)localActivity).a();
     }
   }
   
   @HippyMethod(name="openMiniApp")
   public void openMiniApp(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQUiModule", 2, "openMiniApp:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("openMiniApp:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("QQUiModule", 2, ((StringBuilder)localObject).toString());
     }
-    Activity localActivity = getActivity();
-    if (localActivity == null)
+    Object localObject = getActivity();
+    if (localObject == null)
     {
       QLog.e("QQUiModule", 1, "openMiniApp activity is null");
       return;
     }
     try
     {
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(localActivity, paramString, 2016, null);
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp((Context)localObject, paramString, 2016, null);
       return;
     }
     catch (Exception paramString)
     {
-      QLog.e("QQUiModule", 1, "openMiniApp error: " + paramString.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("openMiniApp error: ");
+      ((StringBuilder)localObject).append(paramString.getMessage());
+      QLog.e("QQUiModule", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   @HippyMethod(name="openUrl")
   public void openUrl(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQUiModule", 2, "openUrl:" + paramString);
-    }
-    Activity localActivity = getActivity();
-    AppInterface localAppInterface = getAppInterface();
-    if ((localActivity == null) || (localAppInterface == null))
+    if (QLog.isColorLevel())
     {
-      QLog.e("QQUiModule", 1, "openUrl activity or appinterface is null");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("openUrl:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("QQUiModule", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = getActivity();
+    AppInterface localAppInterface = getAppInterface();
+    if ((localObject != null) && (localAppInterface != null))
+    {
+      UiApiPlugin.a((Activity)localObject, null, localAppInterface, paramString, true, true);
       return;
     }
-    UiApiPlugin.a(localActivity, null, localAppInterface, paramString, true, true);
+    QLog.e("QQUiModule", 1, "openUrl activity or appinterface is null");
   }
   
   @HippyMethod(name="openView")
@@ -529,7 +484,10 @@ public class QQUiModule
     }
     catch (Throwable paramString)
     {
-      QLog.e("QQUiModule", 2, "qqNotify error:" + paramString.getMessage());
+      paramPromise = new StringBuilder();
+      paramPromise.append("qqNotify error:");
+      paramPromise.append(paramString.getMessage());
+      QLog.e("QQUiModule", 2, paramPromise.toString());
     }
   }
   
@@ -544,8 +502,9 @@ public class QQUiModule
     if (i == 0) {
       paramBundle1.pushInt("has_subscribe", j);
     }
-    if (this.mNotifyPromise != null) {
-      this.mNotifyPromise.resolve(paramBundle1);
+    paramBundle2 = this.mNotifyPromise;
+    if (paramBundle2 != null) {
+      paramBundle2.resolve(paramBundle1);
     }
   }
   
@@ -564,38 +523,38 @@ public class QQUiModule
   @HippyMethod(name="shareMessage")
   public void shareMessage(String paramString, Promise paramPromise)
   {
-    AppInterface localAppInterface;
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = getActivity();
-      localAppInterface = getAppInterface();
-      if ((!(localObject instanceof BaseActivity)) || (localAppInterface == null)) {
-        QLog.e("QQUiModule", 1, "shareMessage activity isvnot BaseActivity or appinterface is null");
-      }
-    }
-    else
-    {
-      return;
-    }
-    Object localObject = (BaseActivity)localObject;
-    if (this.mShareMsgImpl == null) {
-      this.mShareMsgImpl = new ShareMsgImpl((Context)localObject, (Activity)localObject, localAppInterface, this.mShareMsgImplListener);
-    }
-    try
-    {
-      this.mShareMsgPromise = null;
-      paramString = new JSONObject(paramString);
-      if (paramPromise != null)
+      Object localObject = getActivity();
+      AppInterface localAppInterface = getAppInterface();
+      if (((localObject instanceof QBaseActivity)) && (localAppInterface != null))
       {
-        paramString.put("callback", paramPromise.getCallId());
-        this.mShareMsgPromise = paramPromise;
+        localObject = (QBaseActivity)localObject;
+        if (this.mShareMsgImpl == null) {
+          this.mShareMsgImpl = new ShareMsgImpl((Context)localObject, (Activity)localObject, localAppInterface, this.mShareMsgImplListener);
+        }
+        try
+        {
+          this.mShareMsgPromise = null;
+          paramString = new JSONObject(paramString);
+          if (paramPromise != null)
+          {
+            paramString.put("callback", paramPromise.getCallId());
+            this.mShareMsgPromise = paramPromise;
+          }
+          this.mShareMsgImpl.a(paramString.toString(), false);
+          return;
+        }
+        catch (Throwable paramString)
+        {
+          paramPromise = new StringBuilder();
+          paramPromise.append("shareMessage error:");
+          paramPromise.append(paramString);
+          QLog.e("QQUiModule", 1, paramPromise.toString());
+          return;
+        }
       }
-      this.mShareMsgImpl.a(paramString.toString(), false);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("QQUiModule", 1, "shareMessage error:" + paramString);
+      QLog.e("QQUiModule", 1, "shareMessage activity isvnot BaseActivity or appinterface is null");
     }
   }
   
@@ -616,9 +575,7 @@ public class QQUiModule
     try
     {
       paramString = new JSONObject(paramString);
-      if (paramString != null) {
-        ThreadManager.getUIHandler().post(new QQUiModule.4(this, paramPromise, paramString));
-      }
+      ThreadManager.getUIHandler().post(new QQUiModule.4(this, paramPromise, paramString));
       return;
     }
     catch (Throwable paramString)
@@ -630,21 +587,18 @@ public class QQUiModule
   @HippyMethod(name="showProfile")
   public void showProfile(String paramString)
   {
-    AppInterface localAppInterface;
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = getActivity();
-      localAppInterface = getAppInterface();
-      if ((!(localObject instanceof BaseActivity)) || (localAppInterface == null)) {
-        QLog.e("QQUiModule", 1, "showProfile activity isvnot BaseActivity or appInterface is null");
+      Object localObject = getActivity();
+      AppInterface localAppInterface = getAppInterface();
+      if (((localObject instanceof QBaseActivity)) && (localAppInterface != null))
+      {
+        localObject = (QBaseActivity)localObject;
+        ((IPublicAccountJavascriptInterface)QRoute.api(IPublicAccountJavascriptInterface.class)).excuteShowProfile(localAppInterface, (Context)localObject, paramString);
+        return;
       }
+      QLog.e("QQUiModule", 1, "showProfile activity isvnot BaseActivity or appInterface is null");
     }
-    else
-    {
-      return;
-    }
-    Object localObject = (BaseActivity)localObject;
-    ((IPublicAccountJavascriptInterface)QRoute.api(IPublicAccountJavascriptInterface.class)).excuteShowProfile(localAppInterface, (Context)localObject, paramString);
   }
   
   @HippyMethod(name="showTips")
@@ -657,7 +611,7 @@ public class QQUiModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQUiModule
  * JD-Core Version:    0.7.0.1
  */

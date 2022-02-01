@@ -35,18 +35,19 @@ public class OskDebug
       localStringBuilder.append("\n");
       i += 1;
     }
-    if ((paramThrowable instanceof InvocationTargetException)) {}
-    for (paramThrowable = ((InvocationTargetException)paramThrowable).getTargetException();; paramThrowable = paramThrowable.getCause())
-    {
-      if (paramThrowable != null)
-      {
-        localStringBuilder.append("caused by: ");
-        localStringBuilder.append(paramThrowable.toString());
-        localStringBuilder.append("\n");
-        localStringBuilder.append(getPrintableStackTrace(paramThrowable, true));
-      }
-      return localStringBuilder.toString();
+    if ((paramThrowable instanceof InvocationTargetException)) {
+      paramThrowable = ((InvocationTargetException)paramThrowable).getTargetException();
+    } else {
+      paramThrowable = paramThrowable.getCause();
     }
+    if (paramThrowable != null)
+    {
+      localStringBuilder.append("caused by: ");
+      localStringBuilder.append(paramThrowable.toString());
+      localStringBuilder.append("\n");
+      localStringBuilder.append(getPrintableStackTrace(paramThrowable, true));
+    }
+    return localStringBuilder.toString();
   }
   
   public static String getStackTrace()
@@ -67,7 +68,7 @@ public class OskDebug
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.support.util.OskDebug
  * JD-Core Version:    0.7.0.1
  */

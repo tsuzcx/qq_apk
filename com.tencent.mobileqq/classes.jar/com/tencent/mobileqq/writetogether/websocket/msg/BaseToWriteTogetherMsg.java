@@ -28,12 +28,16 @@ public abstract class BaseToWriteTogetherMsg<H extends BaseHeader, B>
   
   public String toShortStr()
   {
-    return "BaseToWriteTogetherMsg: {seq: " + this.seq + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BaseToWriteTogetherMsg: {seq: ");
+    localStringBuilder.append(this.seq);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.msg.BaseToWriteTogetherMsg
  * JD-Core Version:    0.7.0.1
  */

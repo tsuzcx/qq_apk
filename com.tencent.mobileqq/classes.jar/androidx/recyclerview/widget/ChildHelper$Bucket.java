@@ -18,17 +18,21 @@ class ChildHelper$Bucket
   {
     if (paramInt >= 64)
     {
-      if (this.mNext != null) {
-        this.mNext.clear(paramInt - 64);
+      Bucket localBucket = this.mNext;
+      if (localBucket != null) {
+        localBucket.clear(paramInt - 64);
       }
-      return;
     }
-    this.mData &= (1L << paramInt ^ 0xFFFFFFFF);
+    else
+    {
+      this.mData &= (1L << paramInt ^ 0xFFFFFFFF);
+    }
   }
   
   int countOnesBefore(int paramInt)
   {
-    if (this.mNext == null)
+    Bucket localBucket = this.mNext;
+    if (localBucket == null)
     {
       if (paramInt >= 64) {
         return Long.bitCount(this.mData);
@@ -38,7 +42,7 @@ class ChildHelper$Bucket
     if (paramInt < 64) {
       return Long.bitCount(this.mData & (1L << paramInt) - 1L);
     }
-    return this.mNext.countOnesBefore(paramInt - 64) + Long.bitCount(this.mData);
+    return localBucket.countOnesBefore(paramInt - 64) + Long.bitCount(this.mData);
   }
   
   boolean get(int paramInt)
@@ -57,73 +61,64 @@ class ChildHelper$Bucket
     {
       ensureNext();
       this.mNext.insert(paramInt - 64, paramBoolean);
-    }
-    label113:
-    label119:
-    for (;;)
-    {
       return;
-      boolean bool;
-      if ((this.mData & 0x0) != 0L)
-      {
-        bool = true;
-        long l1 = (1L << paramInt) - 1L;
-        long l2 = this.mData;
-        this.mData = (((l1 ^ 0xFFFFFFFF) & this.mData) << 1 | l2 & l1);
-        if (!paramBoolean) {
-          break label113;
-        }
-        set(paramInt);
-      }
-      for (;;)
-      {
-        if ((!bool) && (this.mNext == null)) {
-          break label119;
-        }
-        ensureNext();
-        this.mNext.insert(0, bool);
-        return;
-        bool = false;
-        break;
-        clear(paramInt);
-      }
+    }
+    boolean bool;
+    if ((this.mData & 0x0) != 0L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    long l1 = (1L << paramInt) - 1L;
+    long l2 = this.mData;
+    this.mData = ((l2 & (l1 ^ 0xFFFFFFFF)) << 1 | l2 & l1);
+    if (paramBoolean) {
+      set(paramInt);
+    } else {
+      clear(paramInt);
+    }
+    if ((bool) || (this.mNext != null))
+    {
+      ensureNext();
+      this.mNext.insert(0, bool);
     }
   }
   
   boolean remove(int paramInt)
   {
-    boolean bool2;
     if (paramInt >= 64)
     {
       ensureNext();
-      bool2 = this.mNext.remove(paramInt - 64);
-      return bool2;
+      return this.mNext.remove(paramInt - 64);
     }
     long l1 = 1L << paramInt;
-    if ((this.mData & l1) != 0L) {}
-    for (boolean bool1 = true;; bool1 = false)
+    boolean bool;
+    if ((this.mData & l1) != 0L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mData &= (l1 ^ 0xFFFFFFFF);
+    l1 -= 1L;
+    long l2 = this.mData;
+    this.mData = (Long.rotateRight(l2 & (l1 ^ 0xFFFFFFFF), 1) | l2 & l1);
+    Bucket localBucket = this.mNext;
+    if (localBucket != null)
     {
-      this.mData &= (l1 ^ 0xFFFFFFFF);
-      l1 -= 1L;
-      long l2 = this.mData;
-      this.mData = (Long.rotateRight((l1 ^ 0xFFFFFFFF) & this.mData, 1) | l2 & l1);
-      bool2 = bool1;
-      if (this.mNext == null) {
-        break;
-      }
-      if (this.mNext.get(0)) {
+      if (localBucket.get(0)) {
         set(63);
       }
       this.mNext.remove(0);
-      return bool1;
     }
+    return bool;
   }
   
   void reset()
   {
     this.mData = 0L;
-    if (this.mNext != null) {
-      this.mNext.reset();
+    Bucket localBucket = this.mNext;
+    if (localBucket != null) {
+      localBucket.reset();
     }
   }
   
@@ -143,12 +138,16 @@ class ChildHelper$Bucket
     if (this.mNext == null) {
       return Long.toBinaryString(this.mData);
     }
-    return this.mNext.toString() + "xx" + Long.toBinaryString(this.mData);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mNext.toString());
+    localStringBuilder.append("xx");
+    localStringBuilder.append(Long.toBinaryString(this.mData));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.ChildHelper.Bucket
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.biz.SoftKeyboardObserver;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class UrlCheckPlugin
   extends WebViewPlugin
 {
-  public static int a;
+  public static int a = 0;
   public static int b = 1;
   public static int c = 2;
   public static int d = 3;
@@ -31,18 +31,13 @@ public class UrlCheckPlugin
   TextView jdField_a_of_type_AndroidWidgetTextView = null;
   public SoftKeyboardObserver a;
   CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
+  QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = null;
   public Runnable a;
   boolean jdField_a_of_type_Boolean = false;
   public int e = jdField_a_of_type_Int;
   int f = 0;
   int g = 0;
   int h = 0;
-  
-  static
-  {
-    jdField_a_of_type_Int = 0;
-  }
   
   public UrlCheckPlugin()
   {
@@ -64,79 +59,96 @@ public class UrlCheckPlugin
     {
       localObject = ((Activity)localObject).getWindowManager();
       this.e = d;
-    }
-    try
-    {
-      ((WindowManager)localObject).removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(this.TAG, 2, "removeView Error:" + localIllegalArgumentException.getMessage());
+      try
+      {
+        ((WindowManager)localObject).removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+        return;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        if (QLog.isColorLevel())
+        {
+          String str = this.TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("removeView Error:");
+          localStringBuilder.append(localIllegalArgumentException.getMessage());
+          QLog.e(str, 2, localStringBuilder.toString());
+        }
+      }
     }
   }
   
   public void a(int paramInt)
   {
     Object localObject = this.mRuntime.a();
-    if (!(localObject instanceof BaseActivity)) {}
-    for (;;)
-    {
+    if (!(localObject instanceof QBaseActivity)) {
       return;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null) {
-        continue;
-      }
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = ((QBaseActivity)localObject);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getLayoutInflater().inflate(2131559002, null));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378963));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378959));
+      this.jdField_a_of_type_AndroidViewWindowManager = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getWindowManager();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources();
+    }
+    try
+    {
+      i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android"));
+    }
+    catch (Exception localException2)
+    {
+      int i;
+      label148:
+      double d1;
+      break label148;
+    }
+    d1 = ((Resources)localObject).getDisplayMetrics().density * 25.0F;
+    Double.isNaN(d1);
+    i = (int)(d1 + 0.5D);
+    localObject = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    ((WindowManager.LayoutParams)localObject).gravity = 49;
+    ((WindowManager.LayoutParams)localObject).y = (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getTitleBarHeight() + i);
+    localObject = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    ((WindowManager.LayoutParams)localObject).type = 1002;
+    ((WindowManager.LayoutParams)localObject).format = 1;
+    ((WindowManager.LayoutParams)localObject).flags = 262664;
+    ((WindowManager.LayoutParams)localObject).width = -1;
+    ((WindowManager.LayoutParams)localObject).height = -2;
+    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localObject != null) {
+      ((ImageView)localObject).setOnClickListener(new UrlCheckPlugin.3(this));
+    }
+    if (this.jdField_a_of_type_AndroidViewWindowManager == null) {
+      this.jdField_a_of_type_AndroidViewWindowManager = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getWindowManager();
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getText(paramInt));
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.h + this.g);
+    this.e = c;
+    try
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      return;
+    }
+    catch (Exception localException1)
+    {
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)localObject);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2131559108, null));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379617));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379612));
-        this.jdField_a_of_type_AndroidViewWindowManager = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager();
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+        String str = this.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addView exception:");
+        localStringBuilder.append(localException1.getMessage());
+        QLog.e(str, 2, localStringBuilder.toString());
       }
-      try
-      {
-        i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android"));
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 49;
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = (i + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 1002;
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = 1;
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 262664;
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
-        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
-        if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new UrlCheckPlugin.3(this));
-        }
-        if (this.jdField_a_of_type_AndroidViewWindowManager == null) {
-          this.jdField_a_of_type_AndroidViewWindowManager = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager();
-        }
-        if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getText(paramInt));
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.h + this.g);
-        this.e = c;
-        try
-        {
-          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-          return;
-        }
-        catch (Exception localException1) {}
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e(this.TAG, 2, "addView exception:" + localException1.getMessage());
-        return;
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          int i = (int)(localException1.getDisplayMetrics().density * 25.0F + 0.5D);
-        }
-      }
+      return;
     }
   }
   
@@ -147,44 +159,51 @@ public class UrlCheckPlugin
     this.h = paramInt3;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = this.mRuntime.a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          paramString = this.mRuntime.a();
-        } while (!(paramString instanceof BaseActivity));
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)paramString);
-        b();
-        if (paramLong != 8589934597L) {
-          break;
-        }
-        if (this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver != null)
-        {
-          this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver.a();
-          this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = null;
-        }
-      } while ((this.e != c) || (this.jdField_a_of_type_AndroidWidgetImageView == null));
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      a();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null) {
       return false;
-    } while ((paramLong != 8589934594L) || (this.f != 2) || (this.e == c));
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(new UrlCheckPlugin.1(this), this.g);
+    }
+    paramString = this.mRuntime.a();
+    if (!(paramString instanceof QBaseActivity)) {
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = ((QBaseActivity)paramString);
+    b();
+    if (paramLong == 8589934597L)
+    {
+      paramString = this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver;
+      if (paramString != null)
+      {
+        paramString.a();
+        this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = null;
+      }
+      if (this.e == c)
+      {
+        paramString = this.jdField_a_of_type_AndroidWidgetImageView;
+        if (paramString != null)
+        {
+          paramString.setOnClickListener(null);
+          this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+          a();
+          return false;
+        }
+      }
+    }
+    else if ((paramLong == 8589934594L) && (this.f == 2) && (this.e != c))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(new UrlCheckPlugin.1(this), this.g);
+    }
     return false;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver != null)
+    SoftKeyboardObserver localSoftKeyboardObserver = this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver;
+    if (localSoftKeyboardObserver != null)
     {
-      this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver.a();
+      localSoftKeyboardObserver.a();
       this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = null;
     }
     super.onDestroy();
@@ -192,7 +211,7 @@ public class UrlCheckPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.UrlCheckPlugin
  * JD-Core Version:    0.7.0.1
  */

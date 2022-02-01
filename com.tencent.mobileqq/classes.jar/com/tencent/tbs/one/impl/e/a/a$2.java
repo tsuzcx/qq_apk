@@ -18,19 +18,17 @@ final class a$2
     }
     if (this.e.d()) {
       h.a(1013, this.e.e);
-    }
-    for (;;)
-    {
-      int i = com.tencent.tbs.one.impl.e.f.c(com.tencent.tbs.one.impl.common.f.b(com.tencent.tbs.one.impl.common.f.a(this.a.getDir("tbs", 0), this.b), this.c));
-      a.a(this.e, this.a, this.b, this.c, this.d, this.e.d, i);
-      return;
+    } else {
       h.a(1003, this.e.e);
     }
+    int i = com.tencent.tbs.one.impl.e.f.c(com.tencent.tbs.one.impl.common.f.b(com.tencent.tbs.one.impl.common.f.a(this.a.getDir("tbs", 0), this.b), this.c));
+    a locala = this.e;
+    a.a(locala, this.a, this.b, this.c, this.d, locala.d, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.a.a.2
  * JD-Core Version:    0.7.0.1
  */

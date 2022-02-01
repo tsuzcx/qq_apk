@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.search.business.contact.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.selectmember.ResultRecord;
+import com.tencent.mobileqq.selectmember.SelectedAndSearchBar.ISelectedAndSearchBarCallback;
 
 class ForwardTroopListFragment$7
   implements SelectedAndSearchBar.ISelectedAndSearchBarCallback
@@ -19,14 +20,11 @@ class ForwardTroopListFragment$7
     paramEditable = paramEditable.toString();
     if (TextUtils.isEmpty(paramEditable)) {
       ForwardTroopListFragment.a(this.a).setVisibility(8);
-    }
-    for (;;)
-    {
-      if (ForwardTroopListFragment.a(this.a) != null) {
-        ForwardTroopListFragment.a(this.a).a(paramEditable);
-      }
-      return;
+    } else {
       ForwardTroopListFragment.a(this.a).setVisibility(0);
+    }
+    if (ForwardTroopListFragment.a(this.a) != null) {
+      ForwardTroopListFragment.a(this.a).a(paramEditable);
     }
   }
   
@@ -42,16 +40,17 @@ class ForwardTroopListFragment$7
   {
     if ((paramBoolean) && (ForwardTroopListFragment.a(this.a) == null))
     {
-      ForwardTroopListFragment.a(this.a, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a(this.a)));
-      FragmentTransaction localFragmentTransaction = this.a.getActivity().getSupportFragmentManager().beginTransaction();
-      localFragmentTransaction.add(2131376997, ForwardTroopListFragment.a(this.a));
-      localFragmentTransaction.commitAllowingStateLoss();
+      Object localObject = this.a;
+      ForwardTroopListFragment.a((ForwardTroopListFragment)localObject, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a((ForwardTroopListFragment)localObject)));
+      localObject = this.a.getBaseActivity().getSupportFragmentManager().beginTransaction();
+      ((FragmentTransaction)localObject).add(2131376483, ForwardTroopListFragment.a(this.a));
+      ((FragmentTransaction)localObject).commitAllowingStateLoss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardTroopListFragment.7
  * JD-Core Version:    0.7.0.1
  */

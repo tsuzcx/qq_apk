@@ -23,8 +23,9 @@ public class QZoneMsgNegativeManager
   
   public QQAppInterface getApp()
   {
-    if (this.mAppRef != null) {
-      return (QQAppInterface)this.mAppRef.get();
+    WeakReference localWeakReference = this.mAppRef;
+    if (localWeakReference != null) {
+      return (QQAppInterface)localWeakReference.get();
     }
     return null;
   }
@@ -52,7 +53,7 @@ public class QZoneMsgNegativeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgNegativeManager
  * JD-Core Version:    0.7.0.1
  */

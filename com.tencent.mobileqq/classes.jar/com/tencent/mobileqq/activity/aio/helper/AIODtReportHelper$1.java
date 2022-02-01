@@ -1,30 +1,24 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.troop.api.ITroopMemberInfoService.ITroopMemberInfoCallBack;
-import com.tencent.qqlive.module.videoreport.VideoReport;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.troopcatalog.GroupCatalogBean;
+import mqq.os.MqqHandler;
 
 class AIODtReportHelper$1
-  implements ITroopMemberInfoService.ITroopMemberInfoCallBack
+  implements Runnable
 {
-  AIODtReportHelper$1(AIODtReportHelper paramAIODtReportHelper) {}
+  AIODtReportHelper$1(AIODtReportHelper paramAIODtReportHelper, TroopInfo paramTroopInfo) {}
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void run()
   {
-    if (paramTroopMemberInfo == null) {}
-    for (int i = 4;; i = 3)
-    {
-      if (AIODtReportHelper.a(this.a) != null) {
-        VideoReport.setPageParams(AIODtReportHelper.a(this.a), "group_uin_type", String.valueOf(i));
-      }
-      AIODtReportHelper.a(this.a);
-      return;
-    }
+    GroupCatalogBean localGroupCatalogBean = AIODtReportHelper.a(this.this$0, String.valueOf(this.a.dwGroupClassExt));
+    ThreadManager.getUIHandler().post(new AIODtReportHelper.1.1(this, localGroupCatalogBean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIODtReportHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,30 +12,33 @@ class QRLoginMgrActivity$6$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a.finish();
-    }
-    do
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      return;
       if (QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a) != -1L)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
+        localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          LoginDevItem localLoginDevItem = (LoginDevItem)localIterator.next();
+          LoginDevItem localLoginDevItem = (LoginDevItem)((Iterator)localObject).next();
           if (localLoginDevItem.a == QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a)) {
             localLoginDevItem.c = QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a);
           }
         }
       }
-    } while (QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a) == null);
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a).a(this.jdField_a_of_type_JavaUtilList);
+      if (QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a) != null) {
+        QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a).a(this.jdField_a_of_type_JavaUtilList);
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity$6.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

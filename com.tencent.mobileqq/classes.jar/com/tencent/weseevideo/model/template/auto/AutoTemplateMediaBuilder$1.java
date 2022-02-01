@@ -1,12 +1,10 @@
 package com.tencent.weseevideo.model.template.auto;
 
-import android.graphics.Color;
 import com.tencent.autotemplate.TAVAutomaticRenderContext;
 import com.tencent.autotemplate.TAVAutomaticTemplate;
 import com.tencent.tavkit.composition.TAVComposition;
 import com.tencent.tavsticker.core.TAVStickerRenderContext;
 import com.tencent.tavsticker.model.TAVSticker;
-import com.tencent.tavsticker.model.TAVStickerSolidItem;
 import com.tencent.tavsticker.utils.CollectionUtil;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
 import com.tencent.weseevideo.composition.VideoRenderChainManager.IEffectNodeInterface;
@@ -21,79 +19,72 @@ import java.util.List;
 final class AutoTemplateMediaBuilder$1
   implements VideoRenderChainManager.IEffectNodeInterface
 {
-  AutoTemplateMediaBuilder$1(TAVAutomaticTemplate paramTAVAutomaticTemplate, boolean paramBoolean, MediaModel paramMediaModel) {}
+  AutoTemplateMediaBuilder$1(TAVAutomaticTemplate paramTAVAutomaticTemplate, AutomaticMediaTemplateModel paramAutomaticMediaTemplateModel, boolean paramBoolean, MediaModel paramMediaModel) {}
   
   public void insertEffectNode(VideoRenderChainManager paramVideoRenderChainManager, MediaEffectModel paramMediaEffectModel)
   {
     Object localObject1 = new ArrayList();
     Object localObject2 = this.val$automaticTemplate.getTransitionStickers();
-    Object localObject3;
-    Object localObject4;
+    Iterator localIterator;
+    TAVSticker localTAVSticker;
     if (!CollectionUtil.isEmptyList((List)localObject2))
     {
-      localObject3 = ((List)localObject2).iterator();
-      while (((Iterator)localObject3).hasNext())
+      localIterator = ((List)localObject2).iterator();
+      while (localIterator.hasNext())
       {
-        localObject4 = (TAVSticker)((Iterator)localObject3).next();
-        if (localObject4 != null) {
-          ((TAVSticker)localObject4).setLayerIndex(-100);
+        localTAVSticker = (TAVSticker)localIterator.next();
+        if (localTAVSticker != null) {
+          localTAVSticker.setLayerIndex(-100);
         }
       }
       ((List)localObject1).addAll((Collection)localObject2);
     }
     localObject2 = this.val$automaticTemplate.getFilterStickers();
-    Object localObject5;
     if (!CollectionUtil.isEmptyList((List)localObject2))
     {
-      localObject4 = paramMediaEffectModel.getParam("FRAME_PARAMS_KEY_IS_ON");
-      localObject3 = paramMediaEffectModel.getParam("FRAME_PARAMS_KEY_COLOR");
-      if ("1".equals(localObject4))
+      if (("1".equals(paramMediaEffectModel.getParam("FRAME_PARAMS_KEY_IS_ON"))) && (this.val$templateModel.getAEFrameModel() != null))
       {
-        localObject4 = ((List)localObject2).iterator();
-        if (((Iterator)localObject4).hasNext())
+        int i = this.val$templateModel.getAEFrameModel().getPagFillMode();
+        localIterator = ((List)localObject2).iterator();
+        while (localIterator.hasNext())
         {
-          localObject4 = (TAVSticker)((Iterator)localObject4).next();
-          localObject5 = ((TAVSticker)localObject4).getStickerSolidItems();
-          if (!CollectionUtil.isEmptyList((List)localObject5)) {
-            break label296;
+          localTAVSticker = (TAVSticker)localIterator.next();
+          if (i == 1)
+          {
+            localTAVSticker.setScaleMode(1);
+          }
+          else
+          {
+            localTAVSticker.setScaleMode(0);
+            this.val$automaticTemplate.setRenderSize(AutoTemplateMediaBuilder.access$000(localTAVSticker));
           }
         }
       }
-    }
-    for (;;)
-    {
       ((List)localObject1).addAll((Collection)localObject2);
-      if (!CollectionUtil.isEmptyList((List)localObject1))
-      {
-        localObject2 = paramVideoRenderChainManager.getPagChainRenderContext();
-        ((List)localObject1).addAll(((TAVStickerRenderContext)localObject2).getStickers());
-        if ((localObject2 instanceof TAVAutomaticRenderContext)) {
-          ((TAVAutomaticRenderContext)localObject2).setEffectStickers((List)localObject1);
-        }
-      }
-      localObject1 = this.val$automaticTemplate.getOverlayStickers();
-      if (!CollectionUtil.isEmptyList((List)localObject1))
-      {
-        localObject2 = paramVideoRenderChainManager.getStickerRenderContext();
-        ((List)localObject1).addAll(((TAVStickerRenderContext)localObject2).getStickers());
-        ((TAVStickerRenderContext)localObject2).reloadStickers((List)localObject1);
-      }
-      paramVideoRenderChainManager = paramVideoRenderChainManager.getComposition().getDuration();
-      AutoTemplateMediaBuilder.access$000(paramMediaEffectModel, this.val$automaticTemplate, this.val$isSwitchToTemplateByUser, paramVideoRenderChainManager);
-      this.val$model.getMediaTemplateModel().getAutomaticMediaTemplateModel().setSwitchToTemplateByUser(false);
-      return;
-      label296:
-      localObject5 = ((List)localObject5).iterator();
-      while (((Iterator)localObject5).hasNext()) {
-        ((TAVStickerSolidItem)((Iterator)localObject5).next()).setColor(Color.parseColor((String)localObject3));
-      }
-      ((TAVSticker)localObject4).updateLayerColor();
     }
+    if (!CollectionUtil.isEmptyList((List)localObject1))
+    {
+      localObject2 = paramVideoRenderChainManager.getPagChainRenderContext();
+      ((List)localObject1).addAll(((TAVStickerRenderContext)localObject2).getStickers());
+      if ((localObject2 instanceof TAVAutomaticRenderContext)) {
+        ((TAVAutomaticRenderContext)localObject2).setEffectStickers((List)localObject1);
+      }
+    }
+    localObject1 = this.val$automaticTemplate.getOverlayStickers();
+    if (!CollectionUtil.isEmptyList((List)localObject1))
+    {
+      localObject2 = paramVideoRenderChainManager.getStickerRenderContext();
+      ((List)localObject1).addAll(((TAVStickerRenderContext)localObject2).getStickers());
+      ((TAVStickerRenderContext)localObject2).reloadStickers((List)localObject1);
+    }
+    paramVideoRenderChainManager = paramVideoRenderChainManager.getComposition().getDuration();
+    AutoTemplateMediaBuilder.access$100(paramMediaEffectModel, this.val$automaticTemplate, this.val$isSwitchToTemplateByUser, paramVideoRenderChainManager);
+    this.val$model.getMediaTemplateModel().getAutomaticMediaTemplateModel().setSwitchToTemplateByUser(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.auto.AutoTemplateMediaBuilder.1
  * JD-Core Version:    0.7.0.1
  */

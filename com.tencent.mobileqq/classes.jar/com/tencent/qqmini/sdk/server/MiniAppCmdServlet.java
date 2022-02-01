@@ -31,14 +31,15 @@ public class MiniAppCmdServlet
   
   public static MiniAppCmdServlet g()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new MiniAppCmdServlet();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new MiniAppCmdServlet();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   private void launchReport(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
@@ -69,7 +70,11 @@ public class MiniAppCmdServlet
       MiniAppReportManager2.reportPageView(paramMiniCmdCallback, paramBundle.getString("reserves"), str, paramString);
       return;
     }
-    QMLog.e("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
+    paramBundle = new StringBuilder();
+    paramBundle.append("onMiniAppCmd cmd = ");
+    paramBundle.append(paramString);
+    paramBundle.append(", bundle is null");
+    QMLog.e("MiniAppCmdServlet", paramBundle.toString());
   }
   
   private void notifyEventInfo(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
@@ -96,19 +101,24 @@ public class MiniAppCmdServlet
       paramBundle = new JSONObject(paramString);
       paramString = paramBundle.getString("url");
       int i = paramBundle.getInt("size");
-      if ((TextUtils.isEmpty(paramString)) || (i == 0))
+      if ((!TextUtils.isEmpty(paramString)) && (i != 0))
       {
-        QMLog.e("MiniAppCmdServlet", "url is" + paramString + "  size:" + i);
+        paramBundle = MiniSDKConst.getMiniAppV8rtPath();
+        ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString, null, paramBundle, 60, new MiniAppCmdServlet.2(this, paramMiniCmdCallback));
         return;
       }
+      paramBundle = new StringBuilder();
+      paramBundle.append("url is");
+      paramBundle.append(paramString);
+      paramBundle.append("  size:");
+      paramBundle.append(i);
+      QMLog.e("MiniAppCmdServlet", paramBundle.toString());
+      return;
     }
     catch (Exception paramString)
     {
       QMLog.e("MiniAppCmdServlet", "parse v8rt_url failed", paramString);
-      return;
     }
-    paramBundle = MiniSDKConst.getMiniAppV8rtPath();
-    ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString, null, paramBundle, 60, new MiniAppCmdServlet.2(this, paramMiniCmdCallback));
   }
   
   private void preloadGameBaseLib(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
@@ -127,29 +137,33 @@ public class MiniAppCmdServlet
     if (paramBundle != null) {
       i = paramBundle.getInt("bundle_key_app_type", -1);
     }
-    QMLog.i("MiniAppCmdServlet", "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
-    EngineManager localEngineManager;
+    paramBundle = new StringBuilder();
+    paramBundle.append("[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:");
+    paramBundle.append(i);
+    QMLog.i("MiniAppCmdServlet", paramBundle.toString());
     if ((i == 0) || (i == 1))
     {
       paramBundle = new Bundle();
-      localEngineManager = EngineManager.g();
-      if (i != 1) {
-        break label100;
+      EngineManager localEngineManager = EngineManager.g();
+      if (i == 1) {
+        i = 2;
+      } else {
+        i = 3;
       }
-    }
-    for (i = 2;; i = 3)
-    {
       paramBundle.putParcelable("engineChannel", localEngineManager.getChannelForType(i));
-      if (paramMiniCmdCallback != null) {}
-      try
-      {
-        paramMiniCmdCallback.onCmdResult(true, paramBundle);
-        return;
-      }
-      catch (RemoteException paramBundle)
-      {
-        label100:
-        QMLog.e("MiniAppCmdServlet", "cmd response exception. cmd=" + paramString, paramBundle);
+      if (paramMiniCmdCallback != null) {
+        try
+        {
+          paramMiniCmdCallback.onCmdResult(true, paramBundle);
+          return;
+        }
+        catch (RemoteException paramBundle)
+        {
+          paramMiniCmdCallback = new StringBuilder();
+          paramMiniCmdCallback.append("cmd response exception. cmd=");
+          paramMiniCmdCallback.append(paramString);
+          QMLog.e("MiniAppCmdServlet", paramMiniCmdCallback.toString(), paramBundle);
+        }
       }
     }
   }
@@ -160,29 +174,33 @@ public class MiniAppCmdServlet
     if (paramBundle != null) {
       i = paramBundle.getInt("bundle_key_app_type", -1);
     }
-    QMLog.i("MiniAppCmdServlet", "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
-    EngineManager localEngineManager;
+    paramBundle = new StringBuilder();
+    paramBundle.append("[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:");
+    paramBundle.append(i);
+    QMLog.i("MiniAppCmdServlet", paramBundle.toString());
     if ((i == 0) || (i == 1))
     {
       paramBundle = new Bundle();
-      localEngineManager = EngineManager.g();
-      if (i != 1) {
-        break label100;
+      EngineManager localEngineManager = EngineManager.g();
+      if (i == 1) {
+        i = 2;
+      } else {
+        i = 3;
       }
-    }
-    for (i = 2;; i = 3)
-    {
       paramBundle.putParcelable("engineChannel", localEngineManager.getChannelForType(i));
-      if (paramMiniCmdCallback != null) {}
-      try
-      {
-        paramMiniCmdCallback.onCmdResult(true, paramBundle);
-        return;
-      }
-      catch (RemoteException paramBundle)
-      {
-        label100:
-        QMLog.e("MiniAppCmdServlet", "cmd response exception. cmd=" + paramString, paramBundle);
+      if (paramMiniCmdCallback != null) {
+        try
+        {
+          paramMiniCmdCallback.onCmdResult(true, paramBundle);
+          return;
+        }
+        catch (RemoteException paramBundle)
+        {
+          paramMiniCmdCallback = new StringBuilder();
+          paramMiniCmdCallback.append("cmd response exception. cmd=");
+          paramMiniCmdCallback.append(paramString);
+          QMLog.e("MiniAppCmdServlet", paramMiniCmdCallback.toString(), paramBundle);
+        }
       }
     }
   }
@@ -201,7 +219,11 @@ public class MiniAppCmdServlet
   
   private void updateAppForMiniGame(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
   {
-    QMLog.d("MiniAppCmdServlet", "handleUpdateAppForMiniGame() called with: bundle = [" + paramBundle + "]");
+    paramString = new StringBuilder();
+    paramString.append("handleUpdateAppForMiniGame() called with: bundle = [");
+    paramString.append(paramBundle);
+    paramString.append("]");
+    QMLog.d("MiniAppCmdServlet", paramString.toString());
     if (paramBundle == null) {
       return;
     }
@@ -212,7 +234,12 @@ public class MiniAppCmdServlet
       MiniServer.g().getLaunchManagerService().startMiniApp((Activity)AppLoaderFactory.g().getContext(), paramString, null, null);
       return;
     }
-    QMLog.e("MiniAppCmdServlet", "handleUpdateAppForMiniGame miniAppInfo = " + paramString + " activity = " + AppLoaderFactory.g().getContext());
+    paramBundle = new StringBuilder();
+    paramBundle.append("handleUpdateAppForMiniGame miniAppInfo = ");
+    paramBundle.append(paramString);
+    paramBundle.append(" activity = ");
+    paramBundle.append(AppLoaderFactory.g().getContext());
+    QMLog.e("MiniAppCmdServlet", paramBundle.toString());
   }
   
   private void updateBaseLib(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
@@ -225,69 +252,108 @@ public class MiniAppCmdServlet
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    QMLog.i("MiniAppCmdServlet", "sendCmd cmd=" + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendCmd cmd=");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.i("MiniAppCmdServlet", ((StringBuilder)localObject).toString());
     if ("cmd_exit_qq".equals(paramString))
     {
-      QMLog.i("MiniAppCmdServlet", "CMD_EXIT_QQ pid=" + Process.myPid());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CMD_EXIT_QQ pid=");
+      ((StringBuilder)localObject).append(Process.myPid());
+      QMLog.i("MiniAppCmdServlet", ((StringBuilder)localObject).toString());
       Process.killProcess(Process.myPid());
     }
-    for (;;)
+    else if ("cmd_update_baselib".equals(paramString))
     {
-      CmdProxy localCmdProxy = (CmdProxy)ProxyManager.get(CmdProxy.class);
-      if (localCmdProxy == null) {
-        break;
-      }
-      localCmdProxy.handleMiniAppCmd(paramString, paramBundle, paramMiniCmdCallback);
-      return;
-      if ("cmd_update_baselib".equals(paramString)) {
-        updateBaseLib(paramString, paramBundle, paramMiniCmdCallback);
-      } else if ("cmd_upload_ark_share_image".equals(paramString))
+      updateBaseLib(paramString, paramBundle, paramMiniCmdCallback);
+    }
+    else if ("cmd_upload_ark_share_image".equals(paramString))
+    {
+      if (paramBundle == null)
       {
-        if (paramBundle == null) {
-          QMLog.e("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onMiniAppCmd cmd = ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(", bundle is null");
+        QMLog.e("MiniAppCmdServlet", ((StringBuilder)localObject).toString());
       }
-      else if ("cmd_share_ark_async_message".equals(paramString))
+    }
+    else if ("cmd_share_ark_async_message".equals(paramString))
+    {
+      if (paramBundle == null)
       {
-        if (paramBundle == null) {
-          QMLog.e("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onMiniAppCmd cmd = ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(", bundle is null");
+        QMLog.e("MiniAppCmdServlet", ((StringBuilder)localObject).toString());
       }
-      else if ("cmd_add_qq_favorites".equals(paramString)) {
-        FavoritesJsPlugin.addFavoritesBundle(paramBundle, paramMiniCmdCallback);
-      } else if ("cmd_dc_report_log_key_data".equals(paramString)) {
-        MiniProgramLpReportDC04902.reportToServer(paramBundle);
-      } else if ("cmd_rebind_engine_channel".equals(paramString)) {
-        rebindEngineChannel(paramString, paramBundle, paramMiniCmdCallback);
-      } else if ("cmd_rebind_engine_channel_new".equals(paramString)) {
-        rebindEngineChannelNew(paramString, paramBundle, paramMiniCmdCallback);
-      } else if ("cmd_update_pull_down_entry_list".equals(paramString))
+    }
+    else if ("cmd_add_qq_favorites".equals(paramString))
+    {
+      FavoritesJsPlugin.addFavoritesBundle(paramBundle, paramMiniCmdCallback);
+    }
+    else if ("cmd_dc_report_log_key_data".equals(paramString))
+    {
+      MiniProgramLpReportDC04902.reportToServer(paramBundle);
+    }
+    else if ("cmd_rebind_engine_channel".equals(paramString))
+    {
+      rebindEngineChannel(paramString, paramBundle, paramMiniCmdCallback);
+    }
+    else if ("cmd_rebind_engine_channel_new".equals(paramString))
+    {
+      rebindEngineChannelNew(paramString, paramBundle, paramMiniCmdCallback);
+    }
+    else if ("cmd_update_pull_down_entry_list".equals(paramString))
+    {
+      if (paramBundle == null)
       {
-        if (paramBundle == null) {
-          QMLog.e("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onMiniAppCmd cmd = ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(", bundle is null");
+        QMLog.e("MiniAppCmdServlet", ((StringBuilder)localObject).toString());
       }
-      else if ("launch_report".equals(paramString)) {
-        launchReport(paramString, paramBundle, paramMiniCmdCallback);
-      } else if ("launch_report2".equals(paramString)) {
-        launchReport2(paramString, paramBundle, paramMiniCmdCallback);
-      } else if ("record_duration".equals(paramString)) {
-        recordDuration(paramString, paramBundle, paramMiniCmdCallback);
-      } else if ("cmd_update_app_for_mini_game".equals(paramString)) {
-        updateAppForMiniGame(paramString, paramBundle, paramMiniCmdCallback);
-      } else if ("cmd_on_preload_game_baselib".equals(paramString)) {
-        preloadGameBaseLib(paramString, paramBundle, paramMiniCmdCallback);
-      } else if ("cmd_notify_event_info".equals(paramString)) {
-        notifyEventInfo(paramString, paramBundle, paramMiniCmdCallback);
-      } else if ("cmd_update_v8rt".equals(paramString)) {
-        onUpdateV8rt(paramString, paramBundle, paramMiniCmdCallback);
-      }
+    }
+    else if ("launch_report".equals(paramString))
+    {
+      launchReport(paramString, paramBundle, paramMiniCmdCallback);
+    }
+    else if ("launch_report2".equals(paramString))
+    {
+      launchReport2(paramString, paramBundle, paramMiniCmdCallback);
+    }
+    else if ("record_duration".equals(paramString))
+    {
+      recordDuration(paramString, paramBundle, paramMiniCmdCallback);
+    }
+    else if ("cmd_update_app_for_mini_game".equals(paramString))
+    {
+      updateAppForMiniGame(paramString, paramBundle, paramMiniCmdCallback);
+    }
+    else if ("cmd_on_preload_game_baselib".equals(paramString))
+    {
+      preloadGameBaseLib(paramString, paramBundle, paramMiniCmdCallback);
+    }
+    else if ("cmd_notify_event_info".equals(paramString))
+    {
+      notifyEventInfo(paramString, paramBundle, paramMiniCmdCallback);
+    }
+    else if ("cmd_update_v8rt".equals(paramString))
+    {
+      onUpdateV8rt(paramString, paramBundle, paramMiniCmdCallback);
+    }
+    localObject = (CmdProxy)ProxyManager.get(CmdProxy.class);
+    if (localObject != null) {
+      ((CmdProxy)localObject).handleMiniAppCmd(paramString, paramBundle, paramMiniCmdCallback);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.MiniAppCmdServlet
  * JD-Core Version:    0.7.0.1
  */

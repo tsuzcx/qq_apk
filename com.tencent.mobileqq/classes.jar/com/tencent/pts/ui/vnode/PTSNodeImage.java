@@ -16,7 +16,7 @@ public class PTSNodeImage
   
   private void setImageSrc(String paramString) {}
   
-  protected void onParseValueFinished()
+  public void onParseValueFinished()
   {
     super.onParseValueFinished();
     setImageSrc(this.imageUrl);
@@ -37,7 +37,7 @@ public class PTSNodeImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeImage
  * JD-Core Version:    0.7.0.1
  */

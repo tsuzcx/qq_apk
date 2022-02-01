@@ -49,28 +49,36 @@ public class VsUtils
   
   public static byte[] encryDatas(byte[] paramArrayOfByte, int paramInt, String paramString)
   {
-    if ((paramArrayOfByte == null) || (paramInt != 3)) {
-      return paramArrayOfByte;
-    }
-    int i = paramString.length();
-    while (i < 16)
+    Object localObject = paramArrayOfByte;
+    if (paramArrayOfByte != null)
     {
-      paramString = paramString + "0";
-      i += 1;
+      if (paramInt != 3) {
+        return paramArrayOfByte;
+      }
+      int i = paramString.length();
+      while (i < 16)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("0");
+        paramString = ((StringBuilder)localObject).toString();
+        i += 1;
+      }
+      paramString = paramString.substring(0, 16);
+      VsLog.debug("enD:} %d %d", new Object[] { Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt) });
+      try
+      {
+        paramArrayOfByte = VsEncryptUtil.VsAesEncrypt(paramString, paramArrayOfByte);
+        return paramArrayOfByte;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        VsLog.printStackTrace(paramArrayOfByte);
+        VsLog.error("err enD: %s", new Object[] { paramArrayOfByte.toString() });
+        localObject = null;
+      }
     }
-    paramString = paramString.substring(0, 16);
-    VsLog.debug("enD:} %d %d", new Object[] { Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt) });
-    try
-    {
-      paramArrayOfByte = VsEncryptUtil.VsAesEncrypt(paramString, paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      VsLog.printStackTrace(paramArrayOfByte);
-      VsLog.error("err enD: %s", new Object[] { paramArrayOfByte.toString() });
-    }
-    return null;
+    return localObject;
   }
   
   public static String getTime()
@@ -114,17 +122,20 @@ public class VsUtils
   
   public static Date parseToDate(String paramString)
   {
-    if ((paramString == null) || (paramString.trim().length() <= 0)) {
-      return null;
-    }
-    try
+    if (paramString != null)
     {
-      paramString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).parse(paramString);
-      return paramString;
-    }
-    catch (ParseException paramString)
-    {
-      VsLog.printStackTrace(paramString);
+      if (paramString.trim().length() <= 0) {
+        return null;
+      }
+      try
+      {
+        paramString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).parse(paramString);
+        return paramString;
+      }
+      catch (ParseException paramString)
+      {
+        VsLog.printStackTrace(paramString);
+      }
     }
     return null;
   }
@@ -149,70 +160,91 @@ public class VsUtils
   
   public static byte[] unencryDatas(byte[] paramArrayOfByte, int paramInt, String paramString)
   {
-    if ((paramArrayOfByte == null) || (paramInt != 3)) {
-      return paramArrayOfByte;
-    }
-    paramInt = paramString.length();
-    while (paramInt < 16)
+    Object localObject = paramArrayOfByte;
+    if (paramArrayOfByte != null)
     {
-      paramString = paramString + "0";
-      paramInt += 1;
+      if (paramInt != 3) {
+        return paramArrayOfByte;
+      }
+      paramInt = paramString.length();
+      while (paramInt < 16)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("0");
+        paramString = ((StringBuilder)localObject).toString();
+        paramInt += 1;
+      }
+      paramString = paramString.substring(0, 16);
+      try
+      {
+        paramArrayOfByte = VsEncryptUtil.VsAesDecrypt(paramString, paramArrayOfByte);
+        return paramArrayOfByte;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        VsLog.printStackTrace(paramArrayOfByte);
+        VsLog.error("err unD: %s", new Object[] { paramArrayOfByte.toString() });
+        localObject = null;
+      }
     }
-    paramString = paramString.substring(0, 16);
-    try
-    {
-      paramArrayOfByte = VsEncryptUtil.VsAesDecrypt(paramString, paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      VsLog.printStackTrace(paramArrayOfByte);
-      VsLog.error("err unD: %s", new Object[] { paramArrayOfByte.toString() });
-    }
-    return null;
+    return localObject;
   }
   
   public static byte[] unzipDatas(byte[] paramArrayOfByte, int paramInt)
   {
-    if ((paramArrayOfByte == null) || (paramInt == -1)) {
-      return paramArrayOfByte;
-    }
-    VsLog.debug("unzp: %s len: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfByte.length) });
-    try
+    Object localObject = paramArrayOfByte;
+    if (paramArrayOfByte != null)
     {
-      paramArrayOfByte = CompressUtil.uncompress(paramInt, paramArrayOfByte);
-      return paramArrayOfByte;
+      if (paramInt == -1) {
+        return paramArrayOfByte;
+      }
+      VsLog.debug("unzp: %s len: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfByte.length) });
+      try
+      {
+        paramArrayOfByte = CompressUtil.uncompress(paramInt, paramArrayOfByte);
+        return paramArrayOfByte;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        VsLog.printStackTrace(paramArrayOfByte);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("err unzp}");
+        ((StringBuilder)localObject).append(paramArrayOfByte.toString());
+        VsLog.error(((StringBuilder)localObject).toString(), new Object[0]);
+        localObject = null;
+      }
     }
-    catch (Throwable paramArrayOfByte)
-    {
-      VsLog.printStackTrace(paramArrayOfByte);
-      VsLog.error("err unzp}" + paramArrayOfByte.toString(), new Object[0]);
-    }
-    return null;
+    return localObject;
   }
   
   public static byte[] zipDatas(byte[] paramArrayOfByte, int paramInt)
   {
-    if ((paramArrayOfByte == null) || (paramInt == -1)) {
-      return paramArrayOfByte;
-    }
-    VsLog.debug("zp: %s len: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfByte.length) });
-    try
+    byte[] arrayOfByte = paramArrayOfByte;
+    if (paramArrayOfByte != null)
     {
-      paramArrayOfByte = CompressUtil.compress(paramInt, paramArrayOfByte);
-      return paramArrayOfByte;
+      if (paramInt == -1) {
+        return paramArrayOfByte;
+      }
+      VsLog.debug("zp: %s len: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfByte.length) });
+      try
+      {
+        paramArrayOfByte = CompressUtil.compress(paramInt, paramArrayOfByte);
+        return paramArrayOfByte;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        VsLog.printStackTrace(paramArrayOfByte);
+        VsLog.error("err zp : %s", new Object[] { paramArrayOfByte.toString() });
+        arrayOfByte = null;
+      }
     }
-    catch (Throwable paramArrayOfByte)
-    {
-      VsLog.printStackTrace(paramArrayOfByte);
-      VsLog.error("err zp : %s", new Object[] { paramArrayOfByte.toString() });
-    }
-    return null;
+    return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsUtils
  * JD-Core Version:    0.7.0.1
  */

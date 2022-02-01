@@ -1,6 +1,6 @@
 package com.tencent.hippy.qq.exception;
 
-import com.tencent.mobileqq.statistics.CaughtException;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtException;
 
 public class QQHippyException
   extends CaughtException
@@ -17,7 +17,7 @@ public class QQHippyException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.exception.QQHippyException
  * JD-Core Version:    0.7.0.1
  */

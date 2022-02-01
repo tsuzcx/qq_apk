@@ -10,12 +10,23 @@ public class MiniAppNotifyProxyDefault
 {
   public void report(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong)
   {
-    QMLog.d("IMiniAppNotifyProxy", "appid:" + paramString1 + " scene:" + paramInt + " via:" + paramString2 + " event:" + paramString3 + " timestamp:" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("appid:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" scene:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" via:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" event:");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(" timestamp:");
+    localStringBuilder.append(paramLong);
+    QMLog.d("IMiniAppNotifyProxy", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.MiniAppNotifyProxyDefault
  * JD-Core Version:    0.7.0.1
  */

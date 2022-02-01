@@ -16,13 +16,13 @@ class OCRResultFragmentNew$7$2
       OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a).dismiss();
       OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a).a(0);
       OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a, true);
-      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a), 2, HardCodeUtil.a(2131707801), 1).a();
+      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a), 2, HardCodeUtil.a(2131707825), 1).a();
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
       {
         this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a.a(this.jdField_a_of_type_JavaLangString);
         return;
       }
-      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a), 1, HardCodeUtil.a(2131707795), 0).a();
+      QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$7.a), 1, HardCodeUtil.a(2131707819), 0).a();
       return;
     }
     catch (Exception localException)
@@ -33,7 +33,7 @@ class OCRResultFragmentNew$7$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.2
  * JD-Core Version:    0.7.0.1
  */

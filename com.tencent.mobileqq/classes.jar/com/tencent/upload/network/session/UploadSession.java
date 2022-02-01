@@ -55,12 +55,21 @@ public class UploadSession
   
   private void doCleanup(int paramInt)
   {
-    int i = 0;
-    UploadLog.d("UploadSession", "do Cleanup Session. sid=" + this.mId);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("do Cleanup Session. sid=");
+    ((StringBuilder)localObject).append(this.mId);
+    UploadLog.d("UploadSession", ((StringBuilder)localObject).toString());
     this.mReceivedBuffer.clear();
     Const.UploadRetCode localUploadRetCode = Const.getRetCode(paramInt);
-    UploadLog.d("UploadSession", "mActionRequests.size()=" + this.mActionRequests.size() + "mSendingMap.size()=" + this.mSendingMap.size() + "mTimeoutMap.size()=" + this.mTimeoutMap.size());
-    Object localObject = this.mActionRequests.iterator();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mActionRequests.size()=");
+    ((StringBuilder)localObject).append(this.mActionRequests.size());
+    ((StringBuilder)localObject).append("mSendingMap.size()=");
+    ((StringBuilder)localObject).append(this.mSendingMap.size());
+    ((StringBuilder)localObject).append("mTimeoutMap.size()=");
+    ((StringBuilder)localObject).append(this.mTimeoutMap.size());
+    UploadLog.d("UploadSession", ((StringBuilder)localObject).toString());
+    localObject = this.mActionRequests.iterator();
     while (((Iterator)localObject).hasNext())
     {
       IActionRequest localIActionRequest = (IActionRequest)((Iterator)localObject).next();
@@ -69,37 +78,36 @@ public class UploadSession
       }
     }
     this.mActionRequests.clear();
+    int i = 0;
     paramInt = 0;
-    if (paramInt < this.mSendingMap.size())
+    while (paramInt < this.mSendingMap.size())
     {
       int j = this.mSendingMap.keyAt(paramInt);
       localObject = (UploadSession.RequestWrapper)this.mTimeoutMap.get(j);
-      if ((localObject != null) && (((UploadSession.RequestWrapper)localObject).request != null)) {}
-      for (;;)
+      if ((localObject == null) || (((UploadSession.RequestWrapper)localObject).request == null))
       {
-        paramInt += 1;
-        break;
         localObject = (IActionRequest)this.mSendingMap.get(j);
         if ((localObject != null) && (((IActionRequest)localObject).getListener() != null)) {
           ((IActionRequest)localObject).getListener().onRequestError((IActionRequest)localObject, localUploadRetCode, this);
         }
       }
+      paramInt += 1;
     }
     this.mSendingMap.clear();
     paramInt = i;
-    if (paramInt < this.mTimeoutMap.size())
+    while (paramInt < this.mTimeoutMap.size())
     {
       i = this.mTimeoutMap.keyAt(paramInt);
       localObject = (UploadSession.RequestWrapper)this.mTimeoutMap.get(i);
-      if (localObject != null) {}
-      for (localObject = ((UploadSession.RequestWrapper)localObject).request;; localObject = null)
-      {
-        if ((localObject != null) && (((IActionRequest)localObject).getListener() != null)) {
-          ((IActionRequest)localObject).getListener().onRequestError((IActionRequest)localObject, localUploadRetCode, this);
-        }
-        paramInt += 1;
-        break;
+      if (localObject != null) {
+        localObject = ((UploadSession.RequestWrapper)localObject).request;
+      } else {
+        localObject = null;
       }
+      if ((localObject != null) && (((IActionRequest)localObject).getListener() != null)) {
+        ((IActionRequest)localObject).getListener().onRequestError((IActionRequest)localObject, localUploadRetCode, this);
+      }
+      paramInt += 1;
     }
     doClearAllTimeout();
   }
@@ -107,93 +115,117 @@ public class UploadSession
   private void doClearAllTimeout()
   {
     int i = 0;
-    if (i < this.mTimeoutMap.size())
+    while (i < this.mTimeoutMap.size())
     {
       int j = this.mTimeoutMap.keyAt(i);
       UploadSession.RequestWrapper localRequestWrapper = (UploadSession.RequestWrapper)this.mTimeoutMap.get(j);
-      if (localRequestWrapper == null) {}
-      for (;;)
+      if (localRequestWrapper != null)
       {
-        i += 1;
-        break;
         this.mHandler.removeCallbacks(localRequestWrapper.runnable);
         localRequestWrapper.runnable = null;
       }
+      i += 1;
     }
     this.mTimeoutMap.clear();
   }
   
   private void doDeleteTimeout(UploadResponse paramUploadResponse)
   {
-    if (paramUploadResponse == null) {}
-    int i;
-    UploadSession.RequestWrapper localRequestWrapper;
-    do
-    {
+    if (paramUploadResponse == null) {
       return;
-      i = paramUploadResponse.getRequestSequence();
-      paramUploadResponse = this.mTimeoutMap;
-      localRequestWrapper = (UploadSession.RequestWrapper)paramUploadResponse.get(i);
-    } while (localRequestWrapper == null);
+    }
+    int i = paramUploadResponse.getRequestSequence();
+    paramUploadResponse = this.mTimeoutMap;
+    UploadSession.RequestWrapper localRequestWrapper = (UploadSession.RequestWrapper)paramUploadResponse.get(i);
+    if (localRequestWrapper == null) {
+      return;
+    }
     this.mHandler.removeCallbacks(localRequestWrapper.runnable);
     paramUploadResponse.delete(i);
   }
   
   private byte[] doDivideReceivedBuffer()
   {
-    if (this.mReceivedBuffer.position() == 0) {
+    if (this.mReceivedBuffer.position() == 0)
+    {
+      UploadLog.w("UploadSession", "doDivideReceivedBuffer: mReceivedBuffer.position() == 0");
       return null;
     }
     if (this.mReceivedBuffer.position() < 4)
     {
-      UploadLog.w("UploadSession", "doDivideReceivedBuffer: size < 4 sid=" + this.mId);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doDivideReceivedBuffer: size < 4 sid=");
+      ((StringBuilder)localObject).append(this.mId);
+      UploadLog.w("UploadSession", ((StringBuilder)localObject).toString());
       return new byte[0];
     }
     int i = PDUtil.decodePDU(this.mReceivedBuffer.array());
-    if ((i > UploadConfiguration.getMaxSessionPacketSize()) || (i < 25))
+    if ((i <= UploadConfiguration.getMaxSessionPacketSize()) && (i >= 25))
     {
-      UploadLog.w("UploadSession", " doDivideReceivedBuffer size > max, size:" + i + " sid=" + this.mId);
-      return new byte[0];
+      if (i > this.mReceivedBuffer.position())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doDivideReceivedBuffer sid=");
+        ((StringBuilder)localObject).append(this.mId);
+        ((StringBuilder)localObject).append(" size:");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(" mReceivedBuffer position:");
+        ((StringBuilder)localObject).append(this.mReceivedBuffer.position());
+        UploadLog.w("UploadSession", ((StringBuilder)localObject).toString());
+        return null;
+      }
+      localObject = new byte[i];
+      this.mReceivedBuffer.flip();
+      this.mReceivedBuffer.get((byte[])localObject);
+      this.mReceivedBuffer.compact();
+      return localObject;
     }
-    if (i > this.mReceivedBuffer.position())
-    {
-      UploadLog.w("UploadSession", "doDivideReceivedBuffer sid=" + this.mId + " size:" + i + " mReceivedBuffer position:" + this.mReceivedBuffer.position());
-      return null;
-    }
-    byte[] arrayOfByte = new byte[i];
-    this.mReceivedBuffer.flip();
-    this.mReceivedBuffer.get(arrayOfByte);
-    this.mReceivedBuffer.compact();
-    return arrayOfByte;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" doDivideReceivedBuffer size > max, size:");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(" sid=");
+    ((StringBuilder)localObject).append(this.mId);
+    UploadLog.w("UploadSession", ((StringBuilder)localObject).toString());
+    return new byte[0];
   }
   
   private void doError(IConnectionCallback paramIConnectionCallback, int paramInt, String paramString)
   {
-    if (paramIConnectionCallback != this) {}
-    do
-    {
+    if (paramIConnectionCallback != this) {
       return;
-      UploadLog.e("UploadSession", "Session Error. sid=" + this.mId + " errorCode=" + paramInt + " msg=" + paramString + " currState=" + this.mSessionState.toString());
-      paramIConnectionCallback = (IUploadSessionCallback)this.mUploadSessionCallback.get();
-    } while ((paramIConnectionCallback == null) || (paramInt == 0));
-    setSessionState(IUploadSession.SessionState.NO_CONNECT);
-    doCleanup(paramInt);
-    paramIConnectionCallback.onSessionError(this, paramInt, paramString);
+    }
+    paramIConnectionCallback = new StringBuilder();
+    paramIConnectionCallback.append("Session Error. sid=");
+    paramIConnectionCallback.append(this.mId);
+    paramIConnectionCallback.append(" errorCode=");
+    paramIConnectionCallback.append(paramInt);
+    paramIConnectionCallback.append(" msg=");
+    paramIConnectionCallback.append(paramString);
+    paramIConnectionCallback.append(" currState=");
+    paramIConnectionCallback.append(this.mSessionState.toString());
+    UploadLog.e("UploadSession", paramIConnectionCallback.toString());
+    paramIConnectionCallback = (IUploadSessionCallback)this.mUploadSessionCallback.get();
+    if ((paramIConnectionCallback != null) && (paramInt != 0))
+    {
+      setSessionState(IUploadSession.SessionState.NO_CONNECT);
+      doCleanup(paramInt);
+      paramIConnectionCallback.onSessionError(this, paramInt, paramString);
+    }
   }
   
   private void doHandleResponse(UploadSession.RequestWrapper paramRequestWrapper, UploadResponse paramUploadResponse)
   {
-    if (paramRequestWrapper != null) {}
-    for (paramRequestWrapper = paramRequestWrapper.request;; paramRequestWrapper = null)
+    if (paramRequestWrapper != null) {
+      paramRequestWrapper = paramRequestWrapper.request;
+    } else {
+      paramRequestWrapper = null;
+    }
+    if ((this.mSessionState == IUploadSession.SessionState.ESTABLISHED) && (paramRequestWrapper != null) && (paramRequestWrapper.getListener() != null))
     {
-      if ((this.mSessionState == IUploadSession.SessionState.ESTABLISHED) && (paramRequestWrapper != null) && (paramRequestWrapper.getListener() != null))
-      {
-        if (paramUploadResponse != null) {
-          paramUploadResponse.setSid(this.mId);
-        }
-        paramRequestWrapper.getListener().onResponse(paramRequestWrapper, paramUploadResponse);
+      if (paramUploadResponse != null) {
+        paramUploadResponse.setSid(this.mId);
       }
-      return;
+      paramRequestWrapper.getListener().onResponse(paramRequestWrapper, paramUploadResponse);
     }
   }
   
@@ -205,11 +237,14 @@ public class UploadSession
     int i = this.mReceivedBuffer.position() + paramArrayOfByte.length;
     if (this.mReceivedBuffer.capacity() < i)
     {
-      UploadLog.d("UploadSession", "doReceiveBuffer mReceivedBuffer.capacity() size < " + i);
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(i);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doReceiveBuffer mReceivedBuffer.capacity() size < ");
+      ((StringBuilder)localObject).append(i);
+      UploadLog.d("UploadSession", ((StringBuilder)localObject).toString());
+      localObject = ByteBuffer.allocate(i);
       this.mReceivedBuffer.flip();
-      localByteBuffer.put(this.mReceivedBuffer);
-      this.mReceivedBuffer = localByteBuffer;
+      ((ByteBuffer)localObject).put(this.mReceivedBuffer);
+      this.mReceivedBuffer = ((ByteBuffer)localObject);
     }
     this.mReceivedBuffer.put(paramArrayOfByte);
   }
@@ -219,152 +254,205 @@ public class UploadSession
     recordLastActiveTime();
     doReceiveBuffer(paramArrayOfByte);
     paramIConnectionCallback = UploadResponse.DecodeResult.SUCCEED;
-    Object localObject;
-    label308:
     for (;;)
     {
       paramArrayOfByte = doDivideReceivedBuffer();
-      int i;
-      if (paramArrayOfByte == null) {
-        i = 0;
-      }
-      for (;;)
+      if (paramArrayOfByte == null)
       {
-        if (i == 0) {
-          break label311;
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append(this.mId);
+        paramArrayOfByte.append(" doDivideReceivedBuffer buf == null");
+        UploadLog.d("UploadSession", paramArrayOfByte.toString());
+      }
+      else
+      {
+        if (paramArrayOfByte.length != 0) {
+          break label103;
         }
-        if (this.mSessionState == IUploadSession.SessionState.ESTABLISHED)
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append(this.mId);
+        paramArrayOfByte.append(" doDivideReceivedBuffer buf.length == 0");
+        UploadLog.d("UploadSession", paramArrayOfByte.toString());
+      }
+      boolean bool = false;
+      break label215;
+      label103:
+      Object localObject1 = new UploadResponse();
+      try
+      {
+        paramArrayOfByte = ((UploadResponse)localObject1).decode(paramArrayOfByte);
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.mId);
+        ((StringBuilder)localObject2).append("decode error ");
+        UploadLog.e("UploadSession", ((StringBuilder)localObject2).toString(), paramArrayOfByte);
+        paramArrayOfByte = paramIConnectionCallback;
+      }
+      if (paramArrayOfByte.getCode() != 0)
+      {
+        paramIConnectionCallback = new StringBuilder();
+        paramIConnectionCallback.append(this.mId);
+        paramIConnectionCallback.append(" doRecv decode error ");
+        paramIConnectionCallback.append(paramArrayOfByte);
+        UploadLog.e("UploadSession", paramIConnectionCallback.toString());
+        paramIConnectionCallback = paramArrayOfByte;
+        bool = true;
+        label215:
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append(this.mId);
+        paramArrayOfByte.append(" doRecv... hasDivideError:");
+        paramArrayOfByte.append(bool);
+        UploadLog.d("UploadSession", paramArrayOfByte.toString());
+        if (bool)
         {
-          localObject = (IUploadSessionCallback)this.mUploadSessionCallback.get();
-          if (localObject != null)
+          if (this.mSessionState == IUploadSession.SessionState.ESTABLISHED)
           {
-            paramArrayOfByte = paramIConnectionCallback;
-            if (paramIConnectionCallback.getCode() == 0)
+            localObject1 = (IUploadSessionCallback)this.mUploadSessionCallback.get();
+            if (localObject1 != null)
             {
-              this.mRecvErrorCnt += 1;
-              paramArrayOfByte = UploadResponse.DecodeResult.DECODE_BUF_EMPTY_ERROR;
+              paramArrayOfByte = paramIConnectionCallback;
+              if (paramIConnectionCallback.getCode() == 0)
+              {
+                this.mRecvErrorCnt += 1;
+                paramArrayOfByte = UploadResponse.DecodeResult.DECODE_BUF_EMPTY_ERROR;
+              }
+              paramIConnectionCallback = new StringBuilder();
+              paramIConnectionCallback.append(this.mId);
+              paramIConnectionCallback.append(" doRecv sRecvErrorCnt ");
+              paramIConnectionCallback.append(this.mRecvErrorCnt);
+              paramIConnectionCallback.append(" ret:");
+              paramIConnectionCallback.append(paramArrayOfByte);
+              paramIConnectionCallback.append(" needCallBack:");
+              paramIConnectionCallback.append(true);
+              UploadLog.e("UploadSession", paramIConnectionCallback.toString());
+              this.mRecvErrorCnt = 0;
+              setSessionState(IUploadSession.SessionState.NO_CONNECT);
+              doCleanup(paramArrayOfByte.getCode());
+              ((IUploadSessionCallback)localObject1).onSessionError(this, paramArrayOfByte.getCode(), paramArrayOfByte.getMsg());
             }
-            UploadLog.e("UploadSession", this.mId + " doRecv sRecvErrorCnt " + this.mRecvErrorCnt + " ret:" + paramArrayOfByte + " needCallBack:" + true);
-            this.mRecvErrorCnt = 0;
-            setSessionState(IUploadSession.SessionState.NO_CONNECT);
-            doCleanup(paramArrayOfByte.getCode());
-            ((IUploadSessionCallback)localObject).onSessionError(this, paramArrayOfByte.getCode(), paramArrayOfByte.getMsg());
+            paramIConnectionCallback = new StringBuilder();
+            paramIConnectionCallback.append(this.mId);
+            paramIConnectionCallback.append(" doRecv... disconnect...");
+            UploadLog.d("UploadSession", paramIConnectionCallback.toString());
+            this.mConnection.disconnect();
           }
+        }
+        else {
+          this.mRecvErrorCnt = 0;
         }
         return;
-        if (paramArrayOfByte.length == 0) {
-          i = 1;
-        } else {
-          localObject = new UploadResponse();
-        }
-        try
-        {
-          paramArrayOfByte = ((UploadResponse)localObject).decode(paramArrayOfByte);
-          paramIConnectionCallback = paramArrayOfByte;
-        }
-        catch (Exception paramArrayOfByte)
-        {
-          for (;;)
-          {
-            UploadLog.e("UploadSession", this.mId + "decode error ", paramArrayOfByte);
-          }
-          paramArrayOfByte = (UploadSession.RequestWrapper)this.mTimeoutMap.get(((UploadResponse)localObject).getRequestSequence());
-          if (paramArrayOfByte == null) {
-            break label308;
-          }
-          doDeleteTimeout((UploadResponse)localObject);
-          doHandleResponse(paramArrayOfByte, (UploadResponse)localObject);
-        }
-        if (paramIConnectionCallback.getCode() == 0) {
-          break;
-        }
-        UploadLog.e("UploadSession", this.mId + " doRecv decode error " + paramIConnectionCallback);
-        i = 1;
+      }
+      Object localObject2 = (UploadSession.RequestWrapper)this.mTimeoutMap.get(((UploadResponse)localObject1).getRequestSequence());
+      paramIConnectionCallback = paramArrayOfByte;
+      if (localObject2 != null)
+      {
+        doDeleteTimeout((UploadResponse)localObject1);
+        doHandleResponse((UploadSession.RequestWrapper)localObject2, (UploadResponse)localObject1);
+        paramIConnectionCallback = paramArrayOfByte;
       }
     }
-    label311:
-    this.mRecvErrorCnt = 0;
   }
   
   private void doSendFirstRequest()
   {
-    if (this.mActionRequests.isEmpty()) {}
-    for (;;)
-    {
+    if (this.mActionRequests.isEmpty()) {
       return;
-      try
-      {
-        IActionRequest localIActionRequest = (IActionRequest)this.mActionRequests.remove();
-        if (localIActionRequest == null) {
-          continue;
-        }
-        UploadLog.d("[transfer] UploadSession", "Send Request Begin. sid=" + this.mId + " " + localIActionRequest.toString() + " sending:" + this.mSendingMap.size() + " waiting:" + this.mActionRequests.size());
-        this.mSendingMap.put(localIActionRequest.getRequestId(), localIActionRequest);
-        doSendRequest(localIActionRequest);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          UploadLog.e("UploadSession", "get send request exception.", localException);
-          Object localObject = null;
-        }
-      }
     }
+    Object localObject = null;
+    try
+    {
+      IActionRequest localIActionRequest = (IActionRequest)this.mActionRequests.remove();
+      localObject = localIActionRequest;
+    }
+    catch (Exception localException)
+    {
+      UploadLog.e("UploadSession", "get send request exception.", localException);
+    }
+    if (localObject == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Send Request Begin. sid=");
+    localStringBuilder.append(this.mId);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(localObject.toString());
+    localStringBuilder.append(" sending:");
+    localStringBuilder.append(this.mSendingMap.size());
+    localStringBuilder.append(" waiting:");
+    localStringBuilder.append(this.mActionRequests.size());
+    UploadLog.d("[transfer] UploadSession", localStringBuilder.toString());
+    this.mSendingMap.put(localObject.getRequestId(), localObject);
+    doSendRequest(localObject);
   }
   
   private void doSendRequest(IActionRequest paramIActionRequest)
   {
-    NetworkEngine localNetworkEngine = this.mConnection;
-    if (localNetworkEngine == null)
+    Object localObject = this.mConnection;
+    if (localObject == null)
     {
-      UploadLog.e("UploadSession", "Session has no connection! actionId=" + paramIActionRequest.getTaskId() + " reqId=" + paramIActionRequest.getRequestId() + " sid=" + this.mId);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Session has no connection! actionId=");
+      ((StringBuilder)localObject).append(paramIActionRequest.getTaskId());
+      ((StringBuilder)localObject).append(" reqId=");
+      ((StringBuilder)localObject).append(paramIActionRequest.getRequestId());
+      ((StringBuilder)localObject).append(" sid=");
+      ((StringBuilder)localObject).append(this.mId);
+      UploadLog.e("UploadSession", ((StringBuilder)localObject).toString());
       doError(this, Const.UploadRetCode.SESSION_WITHOUT_CONN.getCode(), Const.UploadRetCode.SESSION_WITHOUT_CONN.getDesc());
-    }
-    byte[] arrayOfByte;
-    for (;;)
-    {
       return;
-      try
+    }
+    try
+    {
+      byte[] arrayOfByte = paramIActionRequest.encode();
+      if (arrayOfByte == null)
       {
-        arrayOfByte = paramIActionRequest.encode();
-        if (arrayOfByte == null)
-        {
-          UploadLog.e("UploadSession", "decode request failed. actionId=" + paramIActionRequest.getTaskId() + " reqId=" + paramIActionRequest.getRequestId() + " cmd=" + paramIActionRequest.getCmdId() + " sid=" + this.mId);
-          this.mSendingMap.delete(paramIActionRequest.getRequestId());
-          if (paramIActionRequest.getListener() == null) {
-            continue;
-          }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("decode request failed. actionId=");
+        ((StringBuilder)localObject).append(paramIActionRequest.getTaskId());
+        ((StringBuilder)localObject).append(" reqId=");
+        ((StringBuilder)localObject).append(paramIActionRequest.getRequestId());
+        ((StringBuilder)localObject).append(" cmd=");
+        ((StringBuilder)localObject).append(paramIActionRequest.getCmdId());
+        ((StringBuilder)localObject).append(" sid=");
+        ((StringBuilder)localObject).append(this.mId);
+        UploadLog.e("UploadSession", ((StringBuilder)localObject).toString());
+        this.mSendingMap.delete(paramIActionRequest.getRequestId());
+        if (paramIActionRequest.getListener() != null) {
           paramIActionRequest.getListener().onRequestError(paramIActionRequest, Const.UploadRetCode.DATA_ENCODE_ERROR, this);
         }
-      }
-      catch (IOException localIOException)
-      {
-        if (paramIActionRequest.getListener() != null) {
-          paramIActionRequest.getListener().onRequestError(paramIActionRequest, Const.UploadRetCode.IO_EXCEPTION, this);
-        }
-        UploadLog.e("UploadSession", "", localIOException);
         return;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      int i = getSendTimeout(arrayOfByte.length);
+      if (!((NetworkEngine)localObject).sendAsync(arrayOfByte, paramIActionRequest.getRequestId(), i, i))
       {
-        if (paramIActionRequest.getListener() != null) {
-          paramIActionRequest.getListener().onRequestError(paramIActionRequest, Const.UploadRetCode.OOM, this);
-        }
-        UploadLog.e("UploadSession", "", localOutOfMemoryError);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("NetworkEngine SendAsync failed. sid=");
+        ((StringBuilder)localObject).append(this.mId);
+        UploadLog.e("UploadSession", ((StringBuilder)localObject).toString());
+        this.mSendingMap.delete(paramIActionRequest.getRequestId());
+        doError(this, Const.UploadRetCode.SESSION_CONN_SEND_FAILED.getCode(), Const.UploadRetCode.SESSION_CONN_SEND_FAILED.getDesc());
         return;
       }
-    }
-    int i = getSendTimeout(arrayOfByte.length);
-    if (!localOutOfMemoryError.sendAsync(arrayOfByte, paramIActionRequest.getRequestId(), i, i))
-    {
-      UploadLog.e("UploadSession", "NetworkEngine SendAsync failed. sid=" + this.mId);
-      this.mSendingMap.delete(paramIActionRequest.getRequestId());
-      doError(this, Const.UploadRetCode.SESSION_CONN_SEND_FAILED.getCode(), Const.UploadRetCode.SESSION_CONN_SEND_FAILED.getDesc());
+      ((NetworkEngine)localObject).wakeUp();
       return;
     }
-    localOutOfMemoryError.wakeUp();
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (paramIActionRequest.getListener() != null) {
+        paramIActionRequest.getListener().onRequestError(paramIActionRequest, Const.UploadRetCode.OOM, this);
+      }
+      UploadLog.e("UploadSession", "", localOutOfMemoryError);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      if (paramIActionRequest.getListener() != null) {
+        paramIActionRequest.getListener().onRequestError(paramIActionRequest, Const.UploadRetCode.IO_EXCEPTION, this);
+      }
+      UploadLog.e("UploadSession", "", localIOException);
+    }
   }
   
   private void doStartTimeout(IActionRequest paramIActionRequest)
@@ -375,7 +463,12 @@ public class UploadSession
     int i = paramIActionRequest.getRequestId();
     if ((UploadSession.RequestWrapper)this.mTimeoutMap.get(i) != null)
     {
-      UploadLog.w("UploadSession", "timeout runnable has been started. reqId=" + i + " sid=" + this.mId);
+      paramIActionRequest = new StringBuilder();
+      paramIActionRequest.append("timeout runnable has been started. reqId=");
+      paramIActionRequest.append(i);
+      paramIActionRequest.append(" sid=");
+      paramIActionRequest.append(this.mId);
+      UploadLog.w("UploadSession", paramIActionRequest.toString());
       return;
     }
     UploadSession.RequestWrapper localRequestWrapper = new UploadSession.RequestWrapper(paramIActionRequest);
@@ -412,112 +505,94 @@ public class UploadSession
     return UploadConfiguration.getCurrentNetworkCategory() == 3;
   }
   
-  /* Error */
   private void setSessionState(IUploadSession.SessionState paramSessionState)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 99	com/tencent/upload/network/session/UploadSession:mSessionState	Lcom/tencent/upload/network/session/IUploadSession$SessionState;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: aload_1
-    //   9: if_acmpne +6 -> 15
-    //   12: aload_0
-    //   13: monitorexit
-    //   14: return
-    //   15: ldc 15
-    //   17: new 170	java/lang/StringBuilder
-    //   20: dup
-    //   21: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   24: ldc_w 532
-    //   27: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: aload_0
-    //   31: getfield 65	com/tencent/upload/network/session/UploadSession:mId	Ljava/lang/String;
-    //   34: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: ldc_w 427
-    //   40: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: aload_0
-    //   44: getfield 99	com/tencent/upload/network/session/UploadSession:mSessionState	Lcom/tencent/upload/network/session/IUploadSession$SessionState;
-    //   47: invokevirtual 327	com/tencent/upload/network/session/IUploadSession$SessionState:toString	()Ljava/lang/String;
-    //   50: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: ldc_w 534
-    //   56: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: aload_1
-    //   60: invokevirtual 327	com/tencent/upload/network/session/IUploadSession$SessionState:toString	()Ljava/lang/String;
-    //   63: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   69: invokestatic 187	com/tencent/upload/utils/UploadLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   72: aload_0
-    //   73: aload_1
-    //   74: putfield 99	com/tencent/upload/network/session/UploadSession:mSessionState	Lcom/tencent/upload/network/session/IUploadSession$SessionState;
-    //   77: goto -65 -> 12
-    //   80: astore_1
-    //   81: aload_0
-    //   82: monitorexit
-    //   83: aload_1
-    //   84: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	this	UploadSession
-    //   0	85	1	paramSessionState	IUploadSession.SessionState
-    //   6	2	2	localSessionState	IUploadSession.SessionState
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	80	finally
-    //   15	77	80	finally
+    try
+    {
+      Object localObject = this.mSessionState;
+      if (localObject == paramSessionState) {
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("update state sid:");
+      ((StringBuilder)localObject).append(this.mId);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(this.mSessionState.toString());
+      ((StringBuilder)localObject).append("-->");
+      ((StringBuilder)localObject).append(paramSessionState.toString());
+      UploadLog.d("UploadSession", ((StringBuilder)localObject).toString());
+      this.mSessionState = paramSessionState;
+      return;
+    }
+    finally {}
   }
   
   public void cancel(int paramInt)
   {
-    int j = 0;
     Object localObject1 = this.mActionRequests.iterator();
     Object localObject2;
+    StringBuilder localStringBuilder;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (IActionRequest)((Iterator)localObject1).next();
       if ((localObject2 != null) && (((IActionRequest)localObject2).getTaskId() == paramInt))
       {
         ((Iterator)localObject1).remove();
-        UploadLog.d("UploadSession", this.mId + " cancel: mActionRequests remove: actSeq:" + paramInt + " request:" + ((IActionRequest)localObject2).getRequestId());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mId);
+        localStringBuilder.append(" cancel: mActionRequests remove: actSeq:");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" request:");
+        localStringBuilder.append(((IActionRequest)localObject2).getRequestId());
+        UploadLog.d("UploadSession", localStringBuilder.toString());
       }
     }
     localObject1 = new LinkedList();
     int k = this.mSendingMap.size();
+    int j = 0;
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       localObject2 = (IActionRequest)this.mSendingMap.valueAt(i);
-      if ((localObject2 == null) || (((IActionRequest)localObject2).getTaskId() != paramInt)) {}
-      for (;;)
+      if ((localObject2 != null) && (((IActionRequest)localObject2).getTaskId() == paramInt))
       {
-        i += 1;
-        break;
         int m = this.mSendingMap.keyAt(i);
         ((LinkedList)localObject1).add(Integer.valueOf(m));
-        UploadLog.d("UploadSession", this.mId + " cancel: mSendingMap remove: sendSeq:" + m + " actSeq:" + ((IActionRequest)localObject2).getTaskId() + " reqSeq:" + ((IActionRequest)localObject2).getRequestId());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mId);
+        localStringBuilder.append(" cancel: mSendingMap remove: sendSeq:");
+        localStringBuilder.append(m);
+        localStringBuilder.append(" actSeq:");
+        localStringBuilder.append(((IActionRequest)localObject2).getTaskId());
+        localStringBuilder.append(" reqSeq:");
+        localStringBuilder.append(((IActionRequest)localObject2).getRequestId());
+        UploadLog.d("UploadSession", localStringBuilder.toString());
       }
+      i += 1;
     }
     while (((LinkedList)localObject1).size() > 0) {
       this.mSendingMap.remove(((Integer)((LinkedList)localObject1).removeFirst()).intValue());
     }
     k = this.mTimeoutMap.size();
     i = j;
-    if (i < k)
+    while (i < k)
     {
       localObject2 = (UploadSession.RequestWrapper)this.mTimeoutMap.valueAt(i);
-      if ((localObject2 == null) || (((UploadSession.RequestWrapper)localObject2).request.getTaskId() != paramInt)) {}
-      for (;;)
+      if ((localObject2 != null) && (((UploadSession.RequestWrapper)localObject2).request.getTaskId() == paramInt))
       {
-        i += 1;
-        break;
         j = this.mTimeoutMap.keyAt(i);
         ((LinkedList)localObject1).add(Integer.valueOf(j));
-        UploadLog.d("UploadSession", this.mId + " cancel: mTimeoutMap remove runnable reqSeq:" + j + " actSeq:" + ((UploadSession.RequestWrapper)localObject2).request.getTaskId());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.mId);
+        localStringBuilder.append(" cancel: mTimeoutMap remove runnable reqSeq:");
+        localStringBuilder.append(j);
+        localStringBuilder.append(" actSeq:");
+        localStringBuilder.append(((UploadSession.RequestWrapper)localObject2).request.getTaskId());
+        UploadLog.d("UploadSession", localStringBuilder.toString());
         this.mHandler.removeCallbacks(((UploadSession.RequestWrapper)localObject2).runnable);
         ((UploadSession.RequestWrapper)localObject2).runnable = null;
       }
+      i += 1;
     }
     while (((LinkedList)localObject1).size() > 0) {
       this.mTimeoutMap.remove(((Integer)((LinkedList)localObject1).removeFirst()).intValue());
@@ -529,15 +604,19 @@ public class UploadSession
     if (this.mConnection == null) {
       return;
     }
-    UploadLog.w("[connect] UploadSession", "Close Session. sid=" + this.mId);
-    if (this.mConnection != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Close Session. sid=");
+    ((StringBuilder)localObject).append(this.mId);
+    UploadLog.w("[connect] UploadSession", ((StringBuilder)localObject).toString());
+    localObject = this.mConnection;
+    if (localObject != null)
     {
-      this.mConnection.stop();
+      ((NetworkEngine)localObject).stop();
       this.mConnection = null;
     }
-    IUploadSessionCallback localIUploadSessionCallback = (IUploadSessionCallback)this.mUploadSessionCallback.get();
-    if (localIUploadSessionCallback != null) {
-      localIUploadSessionCallback.onSessionClosed(this);
+    localObject = (IUploadSessionCallback)this.mUploadSessionCallback.get();
+    if (localObject != null) {
+      ((IUploadSessionCallback)localObject).onSessionClosed(this);
     }
     setSessionState(IUploadSession.SessionState.NO_CONNECT);
     this.mReceivedBuffer.clear();
@@ -568,22 +647,32 @@ public class UploadSession
   
   public boolean isExpired()
   {
-    if (System.currentTimeMillis() - this.mLastActiveTime > 60000L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      UploadLog.i("UploadSession", "session isExpired:" + bool);
-      return bool;
+    boolean bool;
+    if (System.currentTimeMillis() - this.mLastActiveTime > 60000L) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("session isExpired:");
+    localStringBuilder.append(bool);
+    UploadLog.i("UploadSession", localStringBuilder.toString());
+    return bool;
   }
   
   public boolean isIdle()
   {
-    if ((!this.mIsBusy) && (this.mActionRequests.size() == 0) && (this.mSendingMap.size() == 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      UploadLog.d("UploadSession", "isIdle --- " + bool);
-      return bool;
+    boolean bool;
+    if ((!this.mIsBusy) && (this.mActionRequests.size() == 0) && (this.mSendingMap.size() == 0)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isIdle --- ");
+    localStringBuilder.append(bool);
+    UploadLog.d("UploadSession", localStringBuilder.toString());
+    return bool;
   }
   
   public void onConnect(IConnectionCallback paramIConnectionCallback, boolean paramBoolean, int paramInt, String paramString)
@@ -626,7 +715,10 @@ public class UploadSession
     if (paramIConnectionCallback != this) {
       return;
     }
-    UploadLog.d("UploadSession", "Session onStart. sid=" + this.mId);
+    paramIConnectionCallback = new StringBuilder();
+    paramIConnectionCallback.append("Session onStart. sid=");
+    paramIConnectionCallback.append(this.mId);
+    UploadLog.d("UploadSession", paramIConnectionCallback.toString());
   }
   
   public boolean open(UploadRoute paramUploadRoute)
@@ -641,39 +733,54 @@ public class UploadSession
       UploadLog.w("[connect] UploadSession", "open route == null");
       return false;
     }
+    int i = paramInt;
     if (paramInt <= 0) {
-      paramInt = UploadConfiguration.getConnectionTimeout();
+      i = UploadConfiguration.getConnectionTimeout();
     }
-    for (;;)
+    NetworkEngine localNetworkEngine = this.mConnection;
+    if (localNetworkEngine != null)
     {
-      if (this.mConnection != null)
-      {
-        this.mConnection.stop();
-        this.mConnection = null;
-      }
-      if (this.mUploadRoute != null) {
-        this.mUploadRoute = null;
-      }
-      this.mConnection = new NetworkEngine(this, this.mId);
-      if (this.mConnection == null)
-      {
-        UploadLog.w("[connect] UploadSession", "Open NetworkEngine Failed! sid=" + this.mId + " state:" + this.mSessionState.toString());
-        return false;
-      }
-      if (!this.mConnection.start())
-      {
-        UploadLog.w("[connect] UploadSession", "NetworkEngine Start Failed! sid=" + this.mId + " state:" + this.mSessionState.toString());
-        return false;
-      }
-      boolean bool = this.mConnection.connectAsync(paramUploadRoute.getIp(), paramUploadRoute.getPort(), null, 0, paramInt);
-      if (bool)
-      {
-        this.mUploadRoute = paramUploadRoute;
-        setSessionState(IUploadSession.SessionState.CONNECTING);
-      }
-      UploadLog.d("[connect] UploadSession", "connectAsync success, sid=" + this.mId + " state:" + this.mSessionState.toString());
-      return bool;
+      localNetworkEngine.stop();
+      this.mConnection = null;
     }
+    if (this.mUploadRoute != null) {
+      this.mUploadRoute = null;
+    }
+    this.mConnection = new NetworkEngine(this, this.mId);
+    localNetworkEngine = this.mConnection;
+    if (localNetworkEngine == null)
+    {
+      paramUploadRoute = new StringBuilder();
+      paramUploadRoute.append("Open NetworkEngine Failed! sid=");
+      paramUploadRoute.append(this.mId);
+      paramUploadRoute.append(" state:");
+      paramUploadRoute.append(this.mSessionState.toString());
+      UploadLog.w("[connect] UploadSession", paramUploadRoute.toString());
+      return false;
+    }
+    if (!localNetworkEngine.start())
+    {
+      paramUploadRoute = new StringBuilder();
+      paramUploadRoute.append("NetworkEngine Start Failed! sid=");
+      paramUploadRoute.append(this.mId);
+      paramUploadRoute.append(" state:");
+      paramUploadRoute.append(this.mSessionState.toString());
+      UploadLog.w("[connect] UploadSession", paramUploadRoute.toString());
+      return false;
+    }
+    boolean bool = this.mConnection.connectAsync(paramUploadRoute.getIp(), paramUploadRoute.getPort(), null, 0, i);
+    if (bool)
+    {
+      this.mUploadRoute = paramUploadRoute;
+      setSessionState(IUploadSession.SessionState.CONNECTING);
+    }
+    paramUploadRoute = new StringBuilder();
+    paramUploadRoute.append("connectAsync success, sid=");
+    paramUploadRoute.append(this.mId);
+    paramUploadRoute.append(" state:");
+    paramUploadRoute.append(this.mSessionState.toString());
+    UploadLog.d("[connect] UploadSession", paramUploadRoute.toString());
+    return bool;
   }
   
   public void recordLastActiveTime()
@@ -685,7 +792,12 @@ public class UploadSession
   {
     if (this.mSessionState != IUploadSession.SessionState.ESTABLISHED)
     {
-      UploadLog.e("UploadSession", "Can't send request, state is illegel. CurrState=" + this.mSessionState.toString() + " sid=" + this.mId);
+      paramRequestListener = new StringBuilder();
+      paramRequestListener.append("Can't send request, state is illegel. CurrState=");
+      paramRequestListener.append(this.mSessionState.toString());
+      paramRequestListener.append(" sid=");
+      paramRequestListener.append(this.mId);
+      UploadLog.e("UploadSession", paramRequestListener.toString());
       if ((paramIActionRequest != null) && (paramIActionRequest.getListener() != null)) {
         paramIActionRequest.getListener().onRequestError(paramIActionRequest, Const.UploadRetCode.SESSION_STATE_ERROR, this);
       }
@@ -693,7 +805,10 @@ public class UploadSession
     }
     if (paramIActionRequest == null)
     {
-      UploadLog.e("UploadSession", "Can't send request, request is illegel. sid=" + this.mId);
+      paramIActionRequest = new StringBuilder();
+      paramIActionRequest.append("Can't send request, request is illegel. sid=");
+      paramIActionRequest.append(this.mId);
+      UploadLog.e("UploadSession", paramIActionRequest.toString());
       return false;
     }
     paramIActionRequest.setListener(paramRequestListener);
@@ -718,7 +833,7 @@ public class UploadSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.network.session.UploadSession
  * JD-Core Version:    0.7.0.1
  */

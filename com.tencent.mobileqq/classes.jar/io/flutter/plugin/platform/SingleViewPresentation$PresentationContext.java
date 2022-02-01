@@ -33,27 +33,16 @@ class SingleViewPresentation$PresentationContext
   
   private boolean isCalledFromAlertDialog()
   {
-    boolean bool2 = false;
     StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
     int i = 0;
-    for (;;)
+    while ((i < arrayOfStackTraceElement.length) && (i < 11))
     {
-      boolean bool1 = bool2;
-      if (i < arrayOfStackTraceElement.length)
-      {
-        bool1 = bool2;
-        if (i < 11)
-        {
-          if ((!arrayOfStackTraceElement[i].getClassName().equals(AlertDialog.class.getCanonicalName())) || (!arrayOfStackTraceElement[i].getMethodName().equals("<init>"))) {
-            break label66;
-          }
-          bool1 = true;
-        }
+      if ((arrayOfStackTraceElement[i].getClassName().equals(AlertDialog.class.getCanonicalName())) && (arrayOfStackTraceElement[i].getMethodName().equals("<init>"))) {
+        return true;
       }
-      return bool1;
-      label66:
       i += 1;
     }
+    return false;
   }
   
   public Object getSystemService(String paramString)
@@ -70,7 +59,7 @@ class SingleViewPresentation$PresentationContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation.PresentationContext
  * JD-Core Version:    0.7.0.1
  */

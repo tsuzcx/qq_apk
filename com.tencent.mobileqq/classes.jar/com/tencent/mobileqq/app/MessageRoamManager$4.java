@@ -12,7 +12,8 @@ class MessageRoamManager$4
   public void run()
   {
     Pair localPair = this.this$0.a((Calendar)this.a.clone());
-    int i = this.this$0.a(this.this$0.jdField_a_of_type_JavaLangString, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
+    MessageRoamManager localMessageRoamManager = this.this$0;
+    int i = localMessageRoamManager.a(localMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
     if (i >= 8)
     {
       this.this$0.a(0, null);
@@ -23,7 +24,7 @@ class MessageRoamManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view.opengl;
 
-import android.util.Log;
+import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
@@ -24,27 +24,29 @@ public class DefaultContextFactory
     arrayOfInt[1] = this.b;
     arrayOfInt[2] = 12344;
     EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
-    if (this.b != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+    if (this.b == 0) {
       arrayOfInt = null;
     }
+    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
   }
   
   public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
     if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
     {
-      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      Log.i("DefaultContextFactory", "tid=" + Thread.currentThread().getId());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("display:");
+      localStringBuilder.append(paramEGLDisplay);
+      localStringBuilder.append(" context: ");
+      localStringBuilder.append(paramEGLContext);
+      QLog.e("[ApolloGL][DefaultContextFactory]", 1, localStringBuilder.toString());
       EglHelper.a("eglDestroyContex", paramEGL10.eglGetError());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.DefaultContextFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,7 @@ class DeviceTipsController$CustomHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 256) {
       return;
     }
     DeviceTipsController.a(this.a);
@@ -24,7 +22,7 @@ class DeviceTipsController$CustomHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DeviceTipsController.CustomHandler
  * JD-Core Version:    0.7.0.1
  */

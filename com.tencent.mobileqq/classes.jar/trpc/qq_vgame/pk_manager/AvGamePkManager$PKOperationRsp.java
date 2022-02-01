@@ -12,7 +12,7 @@ import trpc.qq_vgame.common.AvGameCommon.Result;
 public final class AvGamePkManager$PKOperationRsp
   extends MessageMicro<PKOperationRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 58, 66, 74, 82, 88, 96, 104 }, new String[] { "res", "pool_id", "start_user_num", "scene", "mav_closed", "biz_title_pic_idx", "biz_titel_pic_url", "biz_ad_wording", "biz_ad_tip", "answer_tip", "sponsor_id", "curRound", "close_realtime_report" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false) }, PKOperationRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField answer_tip = PBField.initString("");
   public final PBStringField biz_ad_tip = PBField.initString("");
   public final PBStringField biz_ad_wording = PBField.initString("");
@@ -26,10 +26,19 @@ public final class AvGamePkManager$PKOperationRsp
   public final PBEnumField scene = PBField.initEnum(0);
   public final PBUInt32Field sponsor_id = PBField.initUInt32(0);
   public final PBUInt32Field start_user_num = PBField.initUInt32(0);
+  public final PBUInt32Field wait_res_timeout = PBField.initUInt32(0);
+  public final PBStringField waiting_background_url = PBField.initString("");
+  
+  static
+  {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 58, 66, 74, 82, 88, 96, 104, 112, 122 }, new String[] { "res", "pool_id", "start_user_num", "scene", "mav_closed", "biz_title_pic_idx", "biz_titel_pic_url", "biz_ad_wording", "biz_ad_tip", "answer_tip", "sponsor_id", "curRound", "close_realtime_report", "wait_res_timeout", "waiting_background_url" }, new Object[] { null, localInteger, localInteger, localInteger, localBoolean, "", "", "", "", "", localInteger, localInteger, localBoolean, localInteger, "" }, PKOperationRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trpc.qq_vgame.pk_manager.AvGamePkManager.PKOperationRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -51,13 +51,14 @@ public class EllipseContent
   
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    if (paramT == LottieProperty.ELLIPSE_SIZE) {
+    if (paramT == LottieProperty.ELLIPSE_SIZE)
+    {
       this.sizeAnimation.setValueCallback(paramLottieValueCallback);
-    }
-    while (paramT != LottieProperty.POSITION) {
       return;
     }
-    this.positionAnimation.setValueCallback(paramLottieValueCallback);
+    if (paramT == LottieProperty.POSITION) {
+      this.positionAnimation.setValueCallback(paramLottieValueCallback);
+    }
   }
   
   public String getName()
@@ -76,34 +77,57 @@ public class EllipseContent
       this.isPathValid = true;
       return this.path;
     }
-    PointF localPointF = (PointF)this.sizeAnimation.getValue();
-    float f1 = localPointF.x / 2.0F;
-    float f2 = localPointF.y / 2.0F;
-    float f3 = f1 * 0.55228F;
-    float f4 = f2 * 0.55228F;
+    Object localObject = (PointF)this.sizeAnimation.getValue();
+    float f2 = ((PointF)localObject).x / 2.0F;
+    float f1 = ((PointF)localObject).y / 2.0F;
+    float f3 = f2 * 0.55228F;
+    float f4 = 0.55228F * f1;
     this.path.reset();
+    float f5;
+    float f7;
+    float f6;
     if (this.circleShape.isReversed())
     {
-      this.path.moveTo(0.0F, -f2);
-      this.path.cubicTo(0.0F - f3, -f2, -f1, 0.0F - f4, -f1, 0.0F);
-      this.path.cubicTo(-f1, 0.0F + f4, 0.0F - f3, f2, 0.0F, f2);
-      this.path.cubicTo(0.0F + f3, f2, f1, 0.0F + f4, f1, 0.0F);
-      this.path.cubicTo(f1, 0.0F - f4, 0.0F + f3, -f2, 0.0F, -f2);
+      localObject = this.path;
+      f5 = -f1;
+      ((Path)localObject).moveTo(0.0F, f5);
+      localObject = this.path;
+      f7 = 0.0F - f3;
+      float f8 = -f2;
+      f6 = 0.0F - f4;
+      ((Path)localObject).cubicTo(f7, f5, f8, f6, f8, 0.0F);
+      localObject = this.path;
+      f4 += 0.0F;
+      ((Path)localObject).cubicTo(f8, f4, f7, f1, 0.0F, f1);
+      localObject = this.path;
+      f3 += 0.0F;
+      ((Path)localObject).cubicTo(f3, f1, f2, f4, f2, 0.0F);
+      this.path.cubicTo(f2, f6, f3, f5, 0.0F, f5);
     }
-    for (;;)
+    else
     {
-      localPointF = (PointF)this.positionAnimation.getValue();
-      this.path.offset(localPointF.x, localPointF.y);
-      this.path.close();
-      this.trimPaths.apply(this.path);
-      this.isPathValid = true;
-      return this.path;
-      this.path.moveTo(0.0F, -f2);
-      this.path.cubicTo(0.0F + f3, -f2, f1, 0.0F - f4, f1, 0.0F);
-      this.path.cubicTo(f1, 0.0F + f4, 0.0F + f3, f2, 0.0F, f2);
-      this.path.cubicTo(0.0F - f3, f2, -f1, 0.0F + f4, -f1, 0.0F);
-      this.path.cubicTo(-f1, 0.0F - f4, 0.0F - f3, -f2, 0.0F, -f2);
+      localObject = this.path;
+      f5 = -f1;
+      ((Path)localObject).moveTo(0.0F, f5);
+      localObject = this.path;
+      f7 = f3 + 0.0F;
+      f6 = 0.0F - f4;
+      ((Path)localObject).cubicTo(f7, f5, f2, f6, f2, 0.0F);
+      localObject = this.path;
+      f4 += 0.0F;
+      ((Path)localObject).cubicTo(f2, f4, f7, f1, 0.0F, f1);
+      localObject = this.path;
+      f3 = 0.0F - f3;
+      f2 = -f2;
+      ((Path)localObject).cubicTo(f3, f1, f2, f4, f2, 0.0F);
+      this.path.cubicTo(f2, f6, f3, f5, 0.0F, f5);
     }
+    localObject = (PointF)this.positionAnimation.getValue();
+    this.path.offset(((PointF)localObject).x, ((PointF)localObject).y);
+    this.path.close();
+    this.trimPaths.apply(this.path);
+    this.isPathValid = true;
+    return this.path;
   }
   
   public void onValueChanged()
@@ -122,11 +146,14 @@ public class EllipseContent
     while (i < paramList1.size())
     {
       paramList2 = (Content)paramList1.get(i);
-      if (((paramList2 instanceof TrimPathContent)) && (((TrimPathContent)paramList2).getType() == ShapeTrimPath.Type.SIMULTANEOUSLY))
+      if ((paramList2 instanceof TrimPathContent))
       {
         paramList2 = (TrimPathContent)paramList2;
-        this.trimPaths.addTrimPath(paramList2);
-        paramList2.addListener(this);
+        if (paramList2.getType() == ShapeTrimPath.Type.SIMULTANEOUSLY)
+        {
+          this.trimPaths.addTrimPath(paramList2);
+          paramList2.addListener(this);
+        }
       }
       i += 1;
     }
@@ -134,7 +161,7 @@ public class EllipseContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.EllipseContent
  * JD-Core Version:    0.7.0.1
  */

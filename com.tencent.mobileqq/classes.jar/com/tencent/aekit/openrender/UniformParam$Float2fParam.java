@@ -27,7 +27,13 @@ public class UniformParam$Float2fParam
   
   public String toString()
   {
-    return this.name + " = " + this.x + ", " + this.y;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.y);
+    return localStringBuilder.toString();
   }
 }
 

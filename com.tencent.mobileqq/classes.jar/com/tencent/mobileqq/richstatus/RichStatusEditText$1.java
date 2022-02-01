@@ -20,9 +20,12 @@ class RichStatusEditText$1
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = false;
+      paramEditable = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText;
+      paramEditable.jdField_a_of_type_Boolean = false;
       this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.getText().replace(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      paramEditable = paramEditable.getText();
+      int i = this.jdField_a_of_type_Int;
+      paramEditable.replace(i, this.jdField_b_of_type_Int + i, this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setSelection(this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.length());
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean = true;
     }
@@ -60,29 +63,32 @@ class RichStatusEditText$1
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {}
-    do
+    if (!this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
     {
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_Boolean);
-      ClickableImageSpan localClickableImageSpan = RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText, paramInt1 + paramInt3, true, false);
-      if ((localClickableImageSpan != null) && (RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText) != null) && (!RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).a(localClickableImageSpan)))
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText;
+      paramInt2 = paramInt3 + paramInt1;
+      localObject = RichStatusEditText.a((RichStatusEditText)localObject, paramInt2, true, false);
+      if ((localObject != null) && (RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText) != null) && (!RichStatusEditText.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText).a((ClickableImageSpan)localObject)))
       {
         this.jdField_a_of_type_JavaLangString = "";
         this.jdField_b_of_type_Boolean = true;
         return;
       }
-      this.jdField_a_of_type_JavaLangString = paramCharSequence.subSequence(paramInt1, paramInt1 + paramInt3).toString();
-    } while (!this.jdField_a_of_type_JavaLangString.contains("\n"));
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("\n", "");
+      this.jdField_a_of_type_JavaLangString = paramCharSequence.subSequence(paramInt1, paramInt2).toString();
+      if (this.jdField_a_of_type_JavaLangString.contains("\n"))
+      {
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("\n", "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.RichStatusEditText.1
  * JD-Core Version:    0.7.0.1
  */

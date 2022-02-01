@@ -11,15 +11,17 @@ public class RecmdLive
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (RecmdLive)paramObject;
-    } while ((this.userNum == paramObject.userNum) && (this.anchorType == paramObject.anchorType) && (Objects.equals(this.roomPic, paramObject.roomPic)) && (Objects.equals(this.jumpUrl, paramObject.jumpUrl)));
+      return (this.userNum == paramObject.userNum) && (this.anchorType == paramObject.anchorType) && (Objects.equals(this.roomPic, paramObject.roomPic)) && (Objects.equals(this.jumpUrl, paramObject.jumpUrl));
+    }
     return false;
   }
   
@@ -30,12 +32,24 @@ public class RecmdLive
   
   public String toString()
   {
-    return "RecmdLive{roomPic='" + this.roomPic + '\'' + ", userNum=" + this.userNum + ", jumpUrl='" + this.jumpUrl + '\'' + ", anchorType=" + this.anchorType + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RecmdLive{roomPic='");
+    localStringBuilder.append(this.roomPic);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", userNum=");
+    localStringBuilder.append(this.userNum);
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", anchorType=");
+    localStringBuilder.append(this.anchorType);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.liveoverservice_interface.model.RecmdLive
  * JD-Core Version:    0.7.0.1
  */

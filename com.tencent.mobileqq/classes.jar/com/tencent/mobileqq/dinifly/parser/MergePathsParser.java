@@ -8,52 +8,53 @@ class MergePathsParser
 {
   static MergePaths parse(JsonReader paramJsonReader)
   {
+    String str1 = null;
     MergePaths.MergePathsMode localMergePathsMode = null;
     boolean bool = false;
-    String str1 = null;
-    label7:
     while (paramJsonReader.hasNext())
     {
       String str2 = paramJsonReader.nextName();
       int i = -1;
-      switch (str2.hashCode())
+      int j = str2.hashCode();
+      if (j != 3324)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (j != 3488)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label7;
-          if (str2.equals("nm"))
-          {
+          if ((j == 3519) && (str2.equals("nm"))) {
             i = 0;
-            continue;
-            if (str2.equals("mm"))
-            {
-              i = 1;
-              continue;
-              if (str2.equals("hd")) {
-                i = 2;
-              }
-            }
           }
-          break;
+        }
+        else if (str2.equals("mm")) {
+          i = 1;
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localMergePathsMode = MergePaths.MergePathsMode.forId(paramJsonReader.nextInt());
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else if (str2.equals("hd")) {
+        i = 2;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2) {
+            paramJsonReader.skipValue();
+          } else {
+            bool = paramJsonReader.nextBoolean();
+          }
+        }
+        else {
+          localMergePathsMode = MergePaths.MergePathsMode.forId(paramJsonReader.nextInt());
+        }
+      }
+      else {
+        str1 = paramJsonReader.nextString();
+      }
     }
     return new MergePaths(str1, localMergePathsMode, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.MergePathsParser
  * JD-Core Version:    0.7.0.1
  */

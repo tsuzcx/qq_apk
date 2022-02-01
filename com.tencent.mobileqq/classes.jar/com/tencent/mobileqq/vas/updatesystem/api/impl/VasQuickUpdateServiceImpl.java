@@ -25,160 +25,159 @@ public class VasQuickUpdateServiceImpl
   
   public void addCallBacker(CallBacker paramCallBacker)
   {
-    if (this.mVasQuickUpdateManager != null) {
-      this.mVasQuickUpdateManager.addCallBacker(paramCallBacker);
+    VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (localVasQuickUpdateManager != null) {
+      localVasQuickUpdateManager.addCallBacker(paramCallBacker);
     }
   }
   
   public void addWeakCallback(CallBacker paramCallBacker)
   {
-    if (this.mVasQuickUpdateManager != null) {
-      this.mVasQuickUpdateManager.addWeakCallback(paramCallBacker);
+    VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (localVasQuickUpdateManager != null) {
+      localVasQuickUpdateManager.addWeakCallback(paramCallBacker);
     }
   }
   
   public void callBackToAll(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    if (this.mVasQuickUpdateManager != null) {
-      this.mVasQuickUpdateManager.callBackToAll(paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2);
+    VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (localVasQuickUpdateManager != null) {
+      localVasQuickUpdateManager.callBackToAll(paramLong, paramString1, paramString2, paramString3, paramInt1, paramInt2);
     }
   }
   
   public void cancelDwonloadItem(long paramLong, String paramString)
   {
-    if (this.mVasQuickUpdateManager != null) {
-      this.mVasQuickUpdateManager.cancelDwonloadItem(paramLong, paramString);
+    VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (localVasQuickUpdateManager != null) {
+      localVasQuickUpdateManager.cancelDwonloadItem(paramLong, paramString);
     }
   }
   
   public void cleanCache()
   {
-    if (this.mVasQuickUpdateManager != null)
-    {
-      VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (this.mVasQuickUpdateManager != null) {
       VasQuickUpdateManager.cleanCache();
     }
   }
   
   public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
   {
-    if (this.mVasQuickUpdateManager != null) {
-      this.mVasQuickUpdateManager.downloadGatherItem(paramLong, paramString1, paramArrayOfString, paramString2);
+    VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (localVasQuickUpdateManager != null) {
+      localVasQuickUpdateManager.downloadGatherItem(paramLong, paramString1, paramArrayOfString, paramString2);
     }
   }
   
   public void downloadItem(long paramLong, String paramString1, String paramString2)
   {
-    if (this.mVasQuickUpdateManager != null) {
-      this.mVasQuickUpdateManager.downloadItem(paramLong, paramString1, paramString2);
+    VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (localVasQuickUpdateManager != null) {
+      localVasQuickUpdateManager.downloadItem(paramLong, paramString1, paramString2);
     }
   }
   
   public BaseUpdateBusiness getBusinessCallback(long paramLong)
   {
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (this.mVasQuickUpdateManager != null)
-    {
-      localObject1 = localObject3;
-      if (this.mVasQuickUpdateManager.getVasEngine() == null) {}
-    }
-    try
-    {
-      localObject1 = this.mVasQuickUpdateManager.getVasEngine().getBusinessCallback(paramLong);
-      if (localObject1 == null) {}
-      return localObject1;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        localNullPointerException.printStackTrace();
-        Object localObject2 = localObject3;
-      }
-    }
-  }
-  
-  public <T extends IBusinessCallback> T getBusinessCallback(Class<T> paramClass)
-  {
-    Object localObject2;
-    if (paramClass == null)
-    {
-      localObject2 = null;
-      return localObject2;
-    }
-    if (this.mVasQuickUpdateManager != null) {}
-    for (;;)
-    {
+    Object localObject = this.mVasQuickUpdateManager;
+    if ((localObject != null) && (((VasQuickUpdateManager)localObject).getVasEngine() != null)) {
       try
       {
-        BaseUpdateBusiness localBaseUpdateBusiness = (BaseUpdateBusiness)this.mVasQuickUpdateManager.getVasEngine().getBusinessCallback(paramClass);
-        localObject2 = localBaseUpdateBusiness;
-        if (localBaseUpdateBusiness != null) {
-          break;
-        }
-        Object localObject1 = null;
+        localObject = this.mVasQuickUpdateManager.getVasEngine().getBusinessCallback(paramLong);
+        return localObject;
       }
       catch (NullPointerException localNullPointerException)
       {
-        try
-        {
-          QLog.e("VasQuickUpdateServiceIm", 1, "getBusinessCallback createTempBusiness , class = " + paramClass.getName());
-          paramClass = createTempBusiness(paramClass);
-          return paramClass;
-        }
-        catch (Exception paramClass)
-        {
-          paramClass.printStackTrace();
-        }
-        localNullPointerException = localNullPointerException;
         localNullPointerException.printStackTrace();
       }
     }
     return null;
   }
   
+  public <T extends IBusinessCallback> T getBusinessCallback(Class<T> paramClass)
+  {
+    if (paramClass == null) {
+      return null;
+    }
+    Object localObject = this.mVasQuickUpdateManager;
+    StringBuilder localStringBuilder;
+    if ((localObject != null) && (((VasQuickUpdateManager)localObject).getVasEngine() != null)) {
+      try
+      {
+        localObject = (BaseUpdateBusiness)this.mVasQuickUpdateManager.getVasEngine().getBusinessCallback(paramClass);
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        localNullPointerException.printStackTrace();
+      }
+    } else {
+      localStringBuilder = null;
+    }
+    if (localStringBuilder == null) {
+      try
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getBusinessCallback createTempBusiness , class = ");
+        localStringBuilder.append(paramClass.getName());
+        QLog.e("VasQuickUpdateServiceIm", 1, localStringBuilder.toString());
+        paramClass = createTempBusiness(paramClass);
+        return paramClass;
+      }
+      catch (Exception paramClass)
+      {
+        paramClass.printStackTrace();
+        return null;
+      }
+    }
+    return localStringBuilder;
+  }
+  
   public void onCreate(AppRuntime paramAppRuntime)
   {
-    if (paramAppRuntime != null) {}
-    for (paramAppRuntime = (VasQuickUpdateManager)paramAppRuntime.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);; paramAppRuntime = null)
-    {
-      this.mVasQuickUpdateManager = paramAppRuntime;
-      return;
+    if (paramAppRuntime != null) {
+      paramAppRuntime = (VasQuickUpdateManager)paramAppRuntime.getManager(QQManagerFactory.VAS_QUICKUPDATE_MANAGER);
+    } else {
+      paramAppRuntime = null;
     }
+    this.mVasQuickUpdateManager = paramAppRuntime;
   }
   
   public void onDestroy()
   {
-    if (this.mVasQuickUpdateManager != null) {
-      this.mVasQuickUpdateManager.onDestroy();
+    VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (localVasQuickUpdateManager != null) {
+      localVasQuickUpdateManager.onDestroy();
     }
   }
   
   public void onProgressToAll(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
   {
-    if (this.mVasQuickUpdateManager != null) {
-      this.mVasQuickUpdateManager.onProgressToAll(paramLong1, paramString1, paramString2, paramLong2, paramLong3);
+    VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (localVasQuickUpdateManager != null) {
+      localVasQuickUpdateManager.onProgressToAll(paramLong1, paramString1, paramString2, paramLong2, paramLong3);
     }
   }
   
   public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, QueryItemCallback paramQueryItemCallback)
   {
-    if (this.mVasQuickUpdateManager != null) {
-      this.mVasQuickUpdateManager.queryItemVersion(paramInt, paramString, paramBoolean1, paramBoolean2, paramLong, paramQueryItemCallback);
+    VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (localVasQuickUpdateManager != null) {
+      localVasQuickUpdateManager.queryItemVersion(paramInt, paramString, paramBoolean1, paramBoolean2, paramLong, paramQueryItemCallback);
     }
   }
   
   public void removeCallBacker(CallBacker paramCallBacker)
   {
-    if (this.mVasQuickUpdateManager != null) {
-      this.mVasQuickUpdateManager.removeCallBacker(paramCallBacker);
+    VasQuickUpdateManager localVasQuickUpdateManager = this.mVasQuickUpdateManager;
+    if (localVasQuickUpdateManager != null) {
+      localVasQuickUpdateManager.removeCallBacker(paramCallBacker);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.api.impl.VasQuickUpdateServiceImpl
  * JD-Core Version:    0.7.0.1
  */

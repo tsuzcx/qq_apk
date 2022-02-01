@@ -12,14 +12,15 @@ class BeautyToolbar$2
   {
     if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
     {
-      this.a.mIs1stShow = false;
-      this.a.updateTip(this.a.mSeek.getProgress());
+      BeautyToolbar localBeautyToolbar = this.a;
+      localBeautyToolbar.mIs1stShow = false;
+      localBeautyToolbar.updateTip(localBeautyToolbar.mSeek.getProgress());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.BeautyToolbar.2
  * JD-Core Version:    0.7.0.1
  */

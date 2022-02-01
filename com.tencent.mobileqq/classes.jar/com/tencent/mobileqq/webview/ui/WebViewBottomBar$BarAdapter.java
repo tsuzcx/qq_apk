@@ -31,48 +31,47 @@ class WebViewBottomBar$BarAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    boolean bool = false;
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131563225, paramViewGroup, false);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131563049, paramViewGroup, false);
       paramView = new WebViewBottomBar.ViewHolder(this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar, localView);
       localView.setTag(paramView);
-      paramView.jdField_a_of_type_Int = a(paramInt).jdField_a_of_type_Int;
-      if (!this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_a_of_type_JavaUtilList.contains(paramView)) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_a_of_type_JavaUtilList.add(paramView);
-      }
-      paramView.a(a(paramInt).jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_b_of_type_JavaUtilList.size() > paramInt)
-      {
-        paramView.a(a(paramInt).jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_b_of_type_Int != 0) {
-          paramView.b(this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_b_of_type_Int);
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_a_of_type_Int != getItemId(paramInt)) {
-        break label241;
-      }
     }
-    label241:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      paramView.a(bool);
-      Object localObject = (WebViewBottomBar.RedTouch)this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.jdField_a_of_type_Int));
-      if (localObject != null) {
-        ((WebViewBottomBar.RedTouch)localObject).a(paramView.jdField_a_of_type_Int);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject = (WebViewBottomBar.ViewHolder)paramView.getTag();
       localView = paramView;
       paramView = (View)localObject;
-      break;
     }
+    paramView.jdField_a_of_type_Int = a(paramInt).jdField_a_of_type_Int;
+    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_a_of_type_JavaUtilList.contains(paramView)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_a_of_type_JavaUtilList.add(paramView);
+    }
+    paramView.a(a(paramInt).jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_b_of_type_JavaUtilList.size() > paramInt)
+    {
+      paramView.a(a(paramInt).jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_b_of_type_Int != 0) {
+        paramView.b(this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_b_of_type_Int);
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_a_of_type_Int == getItemId(paramInt)) {
+      bool = true;
+    }
+    paramView.a(bool);
+    Object localObject = (WebViewBottomBar.RedTouch)this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewBottomBar.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.jdField_a_of_type_Int));
+    if (localObject != null) {
+      ((WebViewBottomBar.RedTouch)localObject).a(paramView.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewBottomBar.BarAdapter
  * JD-Core Version:    0.7.0.1
  */

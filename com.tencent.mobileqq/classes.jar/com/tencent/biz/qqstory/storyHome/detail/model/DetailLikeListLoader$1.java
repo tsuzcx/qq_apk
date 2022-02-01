@@ -16,33 +16,38 @@ class DetailLikeListLoader$1
   {
     Object localObject1 = (LikeManager)SuperManager.a(15);
     ??? = DetailLikeListLoader.a(this.this$0);
-    if (DetailLikeListLoader.a(this.this$0) == 1) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (DetailLikeListLoader.a(this.this$0) == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ??? = ((LikeManager)localObject1).a((String)???, bool);
+    localObject1 = new DetailLikeListLoader.GetLikeListEvent(new ErrorMessage(), DetailLikeListLoader.a(this.this$0));
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_b_of_type_Boolean = true;
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_a_of_type_Boolean = DetailLikeListLoader.a(this.this$0);
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_a_of_type_Int = DetailLikeListLoader.a(this.this$0);
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).c = -1;
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_b_of_type_Int = -1;
+    ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_a_of_type_JavaUtilList = ((List)???);
+    synchronized (this.this$0)
     {
-      ??? = ((LikeManager)localObject1).a((String)???, bool);
-      localObject1 = new DetailLikeListLoader.GetLikeListEvent(new ErrorMessage(), DetailLikeListLoader.a(this.this$0));
-      ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_b_of_type_Boolean = true;
-      ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_a_of_type_Boolean = DetailLikeListLoader.a(this.this$0);
-      ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_a_of_type_Int = DetailLikeListLoader.a(this.this$0);
-      ((DetailLikeListLoader.GetLikeListEvent)localObject1).c = -1;
-      ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_b_of_type_Int = -1;
-      ((DetailLikeListLoader.GetLikeListEvent)localObject1).jdField_a_of_type_JavaUtilList = ((List)???);
-      synchronized (this.this$0)
+      if (!DetailLikeListLoader.b(this.this$0))
       {
-        if (!DetailLikeListLoader.b(this.this$0))
-        {
-          StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject1);
-          SLog.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from cache: %s", localObject1);
-          return;
-        }
+        StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject1);
+        SLog.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from cache: %s", localObject1);
+      }
+      else
+      {
         SLog.d("Q.qqstory.detail:DetailLikeListLoader", "load cache data later than load from network");
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.1
  * JD-Core Version:    0.7.0.1
  */

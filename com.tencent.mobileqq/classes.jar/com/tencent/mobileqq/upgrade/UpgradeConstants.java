@@ -6,42 +6,56 @@ public final class UpgradeConstants
 {
   public static String a()
   {
-    switch ()
+    int i = HttpUtil.getNetWorkType();
+    if (i != 1)
     {
-    default: 
-      return "X";
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return "X";
+          }
+          return "4g";
+        }
+        return "3g";
+      }
       return "2g";
-    case 3: 
-      return "3g";
-    case 4: 
-      return "4g";
     }
     return "wifi";
   }
   
   public static String b()
   {
-    int i = 4;
-    switch (HttpUtil.getNetWorkType())
+    int j = HttpUtil.getNetWorkType();
+    int i = 3;
+    if (j != 1)
     {
+      if (j != 2)
+      {
+        if (j != 3)
+        {
+          if (j != 4) {
+            i = 4;
+          }
+        }
+        else {
+          i = 2;
+        }
+      }
+      else {
+        i = 1;
+      }
     }
-    for (;;)
-    {
-      return String.valueOf(i);
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
+    else {
       i = 0;
     }
+    return String.valueOf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeConstants
  * JD-Core Version:    0.7.0.1
  */

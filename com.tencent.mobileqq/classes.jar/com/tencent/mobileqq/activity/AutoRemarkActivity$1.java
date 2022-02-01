@@ -15,21 +15,19 @@ class AutoRemarkActivity$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    do
-    {
+    if ((paramMotionEvent.getAction() & 0xFF) != 2) {
       return false;
-      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    } while (!paramView.isActive());
-    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    }
+    paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    if (paramView.isActive()) {
+      paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoRemarkActivity.1
  * JD-Core Version:    0.7.0.1
  */

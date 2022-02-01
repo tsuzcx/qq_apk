@@ -19,34 +19,36 @@ public class MergeTextureFilter
   private float offsetX;
   private float offsetY;
   
-  public void beforeDraw(TAVTextureInfo paramTAVTextureInfo)
+  protected void beforeDraw(TAVTextureInfo paramTAVTextureInfo)
   {
-    if (this.offsetX == 0.0F)
+    float f = this.offsetX;
+    if (f == 0.0F)
     {
       GLES20.glUniform1f(this.blurOffsetXHandle, 0.0F);
       GLES20.glUniform1f(this.blurOffsetXEndHandle, 1.0F);
-      if (this.offsetY != 0.0F) {
-        break label110;
-      }
+    }
+    else
+    {
+      GLES20.glUniform1f(this.blurOffsetXHandle, f + 0.01F);
+      GLES20.glUniform1f(this.blurOffsetXEndHandle, 1.0F - this.offsetX - 0.01F);
+    }
+    f = this.offsetY;
+    if (f == 0.0F)
+    {
       GLES20.glUniform1f(this.blurOffsetYHandle, 0.0F);
       GLES20.glUniform1f(this.blurOffsetYEndHandle, 1.0F);
     }
-    for (;;)
+    else
     {
-      GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, this.blurTextureInfo.textureID);
-      GLES20.glUniform1i(this.blurTextureHandle, 1);
-      return;
-      GLES20.glUniform1f(this.blurOffsetXHandle, this.offsetX + 0.01F);
-      GLES20.glUniform1f(this.blurOffsetXEndHandle, 1.0F - this.offsetX - 0.01F);
-      break;
-      label110:
-      GLES20.glUniform1f(this.blurOffsetYHandle, this.offsetY + 0.01F);
+      GLES20.glUniform1f(this.blurOffsetYHandle, f + 0.01F);
       GLES20.glUniform1f(this.blurOffsetYEndHandle, 1.0F - this.offsetY - 0.01F);
     }
+    GLES20.glActiveTexture(33985);
+    GLES20.glBindTexture(3553, this.blurTextureInfo.textureID);
+    GLES20.glUniform1i(this.blurTextureHandle, 1);
   }
   
-  public String getFragmentShaderCode(TAVTextureInfo paramTAVTextureInfo)
+  protected String getFragmentShaderCode(TAVTextureInfo paramTAVTextureInfo)
   {
     if (paramTAVTextureInfo.textureType == 36197) {
       return " #extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES sTexture;\nuniform sampler2D blurTexture;\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform float blurOffsetX;  // x轴边框模糊偏移值\nuniform float blurOffsetY;  // y轴边框模糊偏移值\nuniform float blurOffsetXEnd;  // x轴边框模糊偏移值\nuniform float blurOffsetYEnd;  // y轴边框模糊偏移值\nvoid main() {\n   if (vTextureCoord.x >= blurOffsetX && vTextureCoord.x <= blurOffsetXEnd && vTextureCoord.y >= blurOffsetY && vTextureCoord.y <= blurOffsetYEnd) {\n       gl_FragColor = texture2D(sTexture, vTextureCoord);\n   } else {\n       gl_FragColor = texture2D(blurTexture, vTextureCoord);\n   }\n}";
@@ -54,7 +56,7 @@ public class MergeTextureFilter
     return "uniform sampler2D sTexture;\nuniform sampler2D blurTexture;\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform float blurOffsetX;  // x轴边框模糊偏移值\nuniform float blurOffsetY;  // y轴边框模糊偏移值\nuniform float blurOffsetXEnd;  // x轴边框模糊偏移值\nuniform float blurOffsetYEnd;  // y轴边框模糊偏移值\nvoid main() {\n   if (vTextureCoord.x >= blurOffsetX && vTextureCoord.x <= blurOffsetXEnd && vTextureCoord.y >= blurOffsetY && vTextureCoord.y <= blurOffsetYEnd) {\n       gl_FragColor = texture2D(sTexture, vTextureCoord);\n   } else {\n       gl_FragColor = texture2D(blurTexture, vTextureCoord);\n   }\n}";
   }
   
-  public void initShader(TAVTextureInfo paramTAVTextureInfo)
+  protected void initShader(TAVTextureInfo paramTAVTextureInfo)
   {
     super.initShader(paramTAVTextureInfo);
     this.blurOffsetXHandle = GLES20.glGetUniformLocation(this.program, "blurOffsetX");

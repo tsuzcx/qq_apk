@@ -20,17 +20,15 @@ public class CommonObserver
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     ToServiceMsg localToServiceMsg = (ToServiceMsg)paramBundle.getParcelable("req");
-    paramBundle = (FromServiceMsg)paramBundle.getParcelable("rsp");
-    if (paramInt == 1) {
-      if (!paramBoolean) {
-        break label94;
-      }
-    }
-    for (;;)
+    FromServiceMsg localFromServiceMsg = (FromServiceMsg)paramBundle.getParcelable("rsp");
+    localToServiceMsg = null;
+    paramBundle = null;
+    if (paramInt == 1)
     {
+      if (paramBoolean) {}
       try
       {
-        paramBundle = (LBSShare.LocationResp)new LBSShare.LocationResp().mergeFrom(paramBundle.getWupBuffer());
+        paramBundle = (LBSShare.LocationResp)new LBSShare.LocationResp().mergeFrom(localFromServiceMsg.getWupBuffer());
         onGetPoiList(paramBoolean, paramBundle);
         return;
       }
@@ -39,23 +37,20 @@ public class CommonObserver
         paramBundle.printStackTrace();
         return;
       }
-      if (paramInt == 2)
-      {
-        if (paramBoolean) {}
-        for (paramBundle = new String(paramBundle.getWupBuffer());; paramBundle = null)
-        {
-          onGetStreetUrl(paramBoolean, paramBundle);
-          return;
-        }
-        label94:
-        paramBundle = null;
+    }
+    if (paramInt == 2)
+    {
+      paramBundle = localToServiceMsg;
+      if (paramBoolean) {
+        paramBundle = new String(localFromServiceMsg.getWupBuffer());
       }
+      onGetStreetUrl(paramBoolean, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.CommonObserver
  * JD-Core Version:    0.7.0.1
  */

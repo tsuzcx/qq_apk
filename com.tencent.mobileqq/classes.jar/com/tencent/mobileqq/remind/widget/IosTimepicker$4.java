@@ -8,14 +8,14 @@ class IosTimepicker$4
 {
   IosTimepicker$4(IosTimepicker paramIosTimepicker) {}
   
-  public void b(VerticalGallery paramVerticalGallery)
+  public void onEndFling(VerticalGallery paramVerticalGallery)
   {
     IosTimepicker.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.remind.widget.IosTimepicker.4
  * JD-Core Version:    0.7.0.1
  */

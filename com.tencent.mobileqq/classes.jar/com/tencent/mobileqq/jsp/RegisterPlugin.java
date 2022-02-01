@@ -20,18 +20,18 @@ public class RegisterPlugin
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).getString("reg_sig");
       localObject = ((JSONObject)localObject).getString("face_result");
-      if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject)))
+      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
       {
-        QLog.e("RegisterPlugin", 1, "handleFaceRecogResult: regSig or faceResult is empty");
-        return false;
+        Intent localIntent = new Intent("action_qq_register_face_recognize_assist");
+        localIntent.setPackage(this.mRuntime.a().getPackageName());
+        localIntent.putExtra("reg_sig", paramString);
+        localIntent.putExtra("face_result", (String)localObject);
+        this.mRuntime.a().sendBroadcast(localIntent);
+        QLog.d("RegisterPlugin", 1, "handleFaceRecogResult: sendBroadcast.");
+        return true;
       }
-      Intent localIntent = new Intent("action_qq_register_face_recognize_assist");
-      localIntent.setPackage(this.mRuntime.a().getPackageName());
-      localIntent.putExtra("reg_sig", paramString);
-      localIntent.putExtra("face_result", (String)localObject);
-      this.mRuntime.a().sendBroadcast(localIntent);
-      QLog.d("RegisterPlugin", 1, "handleFaceRecogResult: sendBroadcast.");
-      return true;
+      QLog.e("RegisterPlugin", 1, "handleFaceRecogResult: regSig or faceResult is empty");
+      return false;
     }
     catch (JSONException paramString)
     {
@@ -40,26 +40,35 @@ public class RegisterPlugin
     return false;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    QLog.d("RegisterPlugin", 1, "handleJsRequest: " + paramString3);
-    if ((!"register".equals(paramString2)) || (this.mRuntime == null) || (this.mRuntime.a() == null)) {
-      QLog.d("RegisterPlugin", 1, "handleJsRequest: null check fail return false");
-    }
-    while (!"notifyFaceRecogResult".equals(paramString3)) {
-      return false;
-    }
-    if (paramVarArgs.length < 1)
+    paramJsBridgeListener = new StringBuilder();
+    paramJsBridgeListener.append("handleJsRequest: ");
+    paramJsBridgeListener.append(paramString3);
+    QLog.d("RegisterPlugin", 1, paramJsBridgeListener.toString());
+    if (("register".equals(paramString2)) && (this.mRuntime != null) && (this.mRuntime.a() != null))
     {
-      QLog.e("RegisterPlugin", 1, "handleJsRequest: args length: " + paramVarArgs.length);
+      if ("notifyFaceRecogResult".equals(paramString3))
+      {
+        if (paramVarArgs.length < 1)
+        {
+          paramJsBridgeListener = new StringBuilder();
+          paramJsBridgeListener.append("handleJsRequest: args length: ");
+          paramJsBridgeListener.append(paramVarArgs.length);
+          QLog.e("RegisterPlugin", 1, paramJsBridgeListener.toString());
+          return false;
+        }
+        return a(paramVarArgs[0]);
+      }
       return false;
     }
-    return a(paramVarArgs[0]);
+    QLog.d("RegisterPlugin", 1, "handleJsRequest: null check fail return false");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.RegisterPlugin
  * JD-Core Version:    0.7.0.1
  */

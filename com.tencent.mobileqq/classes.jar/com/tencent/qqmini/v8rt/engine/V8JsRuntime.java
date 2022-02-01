@@ -33,15 +33,16 @@ public class V8JsRuntime
   public void release()
   {
     this.jsRuntimeThread.release();
-    if (this.inspectorAgent != null) {
-      this.inspectorAgent.stop();
+    IInspectorAgent localIInspectorAgent = this.inspectorAgent;
+    if (localIInspectorAgent != null) {
+      localIInspectorAgent.stop();
     }
     Engine.getInstance().removeJsRuntime(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.engine.V8JsRuntime
  * JD-Core Version:    0.7.0.1
  */

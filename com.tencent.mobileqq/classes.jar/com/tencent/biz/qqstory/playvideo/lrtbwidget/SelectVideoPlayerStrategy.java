@@ -55,19 +55,22 @@ public class SelectVideoPlayerStrategy
   public void a()
   {
     SelectVideoPlayerStrategy.SelectedVideosEvent localSelectedVideosEvent = new SelectVideoPlayerStrategy.SelectedVideosEvent();
-    ArrayList localArrayList = new ArrayList();
+    Object localObject = new ArrayList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       String str = (String)localEntry.getKey();
       if (((Boolean)localEntry.getValue()).booleanValue()) {
-        localArrayList.add(str);
+        ((ArrayList)localObject).add(str);
       }
     }
     localSelectedVideosEvent.jdField_a_of_type_Boolean = true;
-    localSelectedVideosEvent.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-    SLog.b("SelectVideoPlayerStrategy", "onPagerItemClick onClick complete: " + localSelectedVideosEvent.jdField_a_of_type_JavaUtilArrayList.toString());
+    localSelectedVideosEvent.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onPagerItemClick onClick complete: ");
+    ((StringBuilder)localObject).append(localSelectedVideosEvent.jdField_a_of_type_JavaUtilArrayList.toString());
+    SLog.b("SelectVideoPlayerStrategy", ((StringBuilder)localObject).toString());
     StoryDispatcher.a().dispatch(localSelectedVideosEvent);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerContext.a().finish();
   }
@@ -86,119 +89,110 @@ public class SelectVideoPlayerStrategy
     if (TextUtils.isEmpty(paramStoryPlayerVideoData)) {
       return;
     }
-    ImageView localImageView = (ImageView)paramSelectVideoVideoHolder.jdField_a_of_type_AndroidViewView.findViewById(2131368831);
+    ImageView localImageView = (ImageView)paramSelectVideoVideoHolder.jdField_a_of_type_AndroidViewView.findViewById(2131368559);
     localImageView.setVisibility(0);
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramStoryPlayerVideoData)) && (((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramStoryPlayerVideoData)).booleanValue()))
-    {
-      localImageView.setImageResource(2130844851);
-      paramStoryPlayerVideoData = (TextView)paramSelectVideoVideoHolder.jdField_a_of_type_AndroidViewView.findViewById(2131379257);
-      paramStoryPlayerVideoData.setVisibility(0);
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-        break label155;
-      }
-      paramSelectVideoVideoHolder = HardCodeUtil.a(2131713723);
-      label118:
-      paramStoryPlayerVideoData.setText(paramSelectVideoVideoHolder);
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-        break label192;
-      }
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramStoryPlayerVideoData)) && (((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramStoryPlayerVideoData)).booleanValue())) {
+      localImageView.setImageResource(2130844727);
+    } else {
+      localImageView.setImageResource(2130845863);
     }
-    label155:
-    label192:
-    for (boolean bool = true;; bool = false)
+    paramStoryPlayerVideoData = (TextView)paramSelectVideoVideoHolder.jdField_a_of_type_AndroidViewView.findViewById(2131378618);
+    paramStoryPlayerVideoData.setVisibility(0);
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
     {
-      paramStoryPlayerVideoData.setEnabled(bool);
-      return;
-      localImageView.setImageResource(2130845988);
-      break;
-      paramSelectVideoVideoHolder = HardCodeUtil.a(2131713726) + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() + ")";
-      break label118;
+      paramSelectVideoVideoHolder = HardCodeUtil.a(2131713681);
     }
+    else
+    {
+      paramSelectVideoVideoHolder = new StringBuilder();
+      paramSelectVideoVideoHolder.append(HardCodeUtil.a(2131713684));
+      paramSelectVideoVideoHolder.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      paramSelectVideoVideoHolder.append(")");
+      paramSelectVideoVideoHolder = paramSelectVideoVideoHolder.toString();
+    }
+    paramStoryPlayerVideoData.setText(paramSelectVideoVideoHolder);
+    paramStoryPlayerVideoData.setEnabled(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty() ^ true);
   }
   
   public void a(SelectVideoVideoHolder paramSelectVideoVideoHolder, View paramView)
   {
     super.a(paramSelectVideoVideoHolder, paramView);
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131368559)
     {
-    default: 
-      return;
-    case 2131368831: 
-      paramSelectVideoVideoHolder = paramSelectVideoVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a;
-      AssertUtils.a(paramSelectVideoVideoHolder);
-      label87:
-      TextView localTextView;
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramSelectVideoVideoHolder))
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramSelectVideoVideoHolder);
-        ((ImageView)paramView).setImageResource(2130845988);
-        paramView = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        do
-        {
-          if (!paramView.hasNext()) {
-            break;
-          }
-          paramSelectVideoVideoHolder = (SelectVideoVideoHolder)((WeakReference)paramView.next()).get();
-        } while (paramSelectVideoVideoHolder == null);
-        localTextView = (TextView)paramSelectVideoVideoHolder.jdField_a_of_type_AndroidViewView.findViewById(2131379257);
-        if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-          break label285;
-        }
-        paramSelectVideoVideoHolder = HardCodeUtil.a(2131713725);
-        label147:
-        localTextView.setText(paramSelectVideoVideoHolder);
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-          break label323;
-        }
+      if (i != 2131378618) {
+        return;
       }
-      label285:
-      label323:
-      for (boolean bool = true;; bool = false)
+      a();
+      return;
+    }
+    paramSelectVideoVideoHolder = paramSelectVideoVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a;
+    AssertUtils.checkNotNull(paramSelectVideoVideoHolder);
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramSelectVideoVideoHolder))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramSelectVideoVideoHolder);
+      ((ImageView)paramView).setImageResource(2130845863);
+    }
+    else
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= this.jdField_a_of_type_Int)
       {
-        localTextView.setEnabled(bool);
-        break label87;
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() >= this.jdField_a_of_type_Int)
+        paramSelectVideoVideoHolder = DialogUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerContext.a(), 230);
+        paramSelectVideoVideoHolder.setMessage(String.format(HardCodeUtil.a(2131713686), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), QQStoryConstant.a }));
+        paramSelectVideoVideoHolder.setPositiveButton(HardCodeUtil.a(2131713680), new SelectVideoPlayerStrategy.1(this));
+        paramSelectVideoVideoHolder.show();
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramSelectVideoVideoHolder, Boolean.valueOf(true));
+      ((ImageView)paramView).setImageResource(2130844727);
+    }
+    paramView = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramView.hasNext())
+    {
+      paramSelectVideoVideoHolder = (SelectVideoVideoHolder)((WeakReference)paramView.next()).get();
+      if (paramSelectVideoVideoHolder != null)
+      {
+        TextView localTextView = (TextView)paramSelectVideoVideoHolder.jdField_a_of_type_AndroidViewView.findViewById(2131378618);
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
         {
-          paramSelectVideoVideoHolder = DialogUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerContext.a(), 230);
-          paramSelectVideoVideoHolder.setMessage(String.format(HardCodeUtil.a(2131713728), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), QQStoryConstant.a }));
-          paramSelectVideoVideoHolder.setPositiveButton(HardCodeUtil.a(2131713722), new SelectVideoPlayerStrategy.1(this));
-          paramSelectVideoVideoHolder.show();
-          return;
+          paramSelectVideoVideoHolder = HardCodeUtil.a(2131713683);
         }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramSelectVideoVideoHolder, Boolean.valueOf(true));
-        ((ImageView)paramView).setImageResource(2130844851);
-        break;
-        paramSelectVideoVideoHolder = HardCodeUtil.a(2131713721) + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() + ")";
-        break label147;
+        else
+        {
+          paramSelectVideoVideoHolder = new StringBuilder();
+          paramSelectVideoVideoHolder.append(HardCodeUtil.a(2131713679));
+          paramSelectVideoVideoHolder.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+          paramSelectVideoVideoHolder.append(")");
+          paramSelectVideoVideoHolder = paramSelectVideoVideoHolder.toString();
+        }
+        localTextView.setText(paramSelectVideoVideoHolder);
+        localTextView.setEnabled(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty() ^ true);
       }
     }
-    a();
   }
   
   public void a(SelectVideoVideoHolder paramSelectVideoVideoHolder, boolean paramBoolean)
   {
-    TextView localTextView = (TextView)paramSelectVideoVideoHolder.jdField_a_of_type_AndroidViewView.findViewById(2131379257);
+    TextView localTextView = (TextView)paramSelectVideoVideoHolder.jdField_a_of_type_AndroidViewView.findViewById(2131378618);
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())
     {
-      paramSelectVideoVideoHolder = HardCodeUtil.a(2131713724);
-      localTextView.setText(paramSelectVideoVideoHolder);
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
-        break label91;
-      }
+      paramSelectVideoVideoHolder = HardCodeUtil.a(2131713682);
     }
-    label91:
-    for (paramBoolean = true;; paramBoolean = false)
+    else
     {
-      localTextView.setEnabled(paramBoolean);
-      return;
-      paramSelectVideoVideoHolder = HardCodeUtil.a(2131713727) + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() + ")";
-      break;
+      paramSelectVideoVideoHolder = new StringBuilder();
+      paramSelectVideoVideoHolder.append(HardCodeUtil.a(2131713685));
+      paramSelectVideoVideoHolder.append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      paramSelectVideoVideoHolder.append(")");
+      paramSelectVideoVideoHolder = paramSelectVideoVideoHolder.toString();
     }
+    localTextView.setText(paramSelectVideoVideoHolder);
+    localTextView.setEnabled(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty() ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.SelectVideoPlayerStrategy
  * JD-Core Version:    0.7.0.1
  */

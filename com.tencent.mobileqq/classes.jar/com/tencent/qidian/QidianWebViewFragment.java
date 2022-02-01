@@ -1,39 +1,19 @@
 package com.tencent.qidian;
 
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 
 public class QidianWebViewFragment
   extends WebViewFragment
 {
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public WebViewKernelCallBack getWebViewKernelCallBack()
   {
-    if ((paramString.startsWith("mqqwpa://")) && (paramString.contains("request=videochat"))) {
-      try
-      {
-        JumpAction localJumpAction = JumpParser.a(null, getActivity(), paramString);
-        if (localJumpAction != null)
-        {
-          boolean bool = localJumpAction.a();
-          return bool;
-        }
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianWebViewFragment", 2, "shouldOverrideUrlLoading " + localException.getMessage());
-        }
-      }
-    }
-    return super.shouldOverrideUrlLoading(paramWebView, paramString);
+    return new QidianWebViewFragment.1(this, this.webViewSurface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

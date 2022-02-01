@@ -28,13 +28,14 @@ public final class oidb_0x875$UserFollowState
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 50, 56, 64, 74 }, new String[] { "uint32_state_type", "msg_userinfo", "msg_details", "bytes_from", "bytes_jump_schema", "uint64_time", "uint64_seq", "bytes_op_txt" }, new Object[] { Integer.valueOf(0), null, null, localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro3 }, UserFollowState.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 50, 56, 64, 74 }, new String[] { "uint32_state_type", "msg_userinfo", "msg_details", "bytes_from", "bytes_jump_schema", "uint64_time", "uint64_seq", "bytes_op_txt" }, new Object[] { Integer.valueOf(0), null, null, localByteStringMicro1, localByteStringMicro2, localLong, localLong, localByteStringMicro3 }, UserFollowState.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x875.oidb_0x875.UserFollowState
  * JD-Core Version:    0.7.0.1
  */

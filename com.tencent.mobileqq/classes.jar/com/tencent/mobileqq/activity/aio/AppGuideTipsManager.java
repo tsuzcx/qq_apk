@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.confess.ConfessMsgUtil;
@@ -14,8 +14,8 @@ import com.tencent.mobileqq.data.AppGuideTipsConfig;
 import com.tencent.mobileqq.data.MessageForTimDouFuGuide;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -32,7 +32,7 @@ import mqq.manager.Manager;
 public class AppGuideTipsManager
   implements Manager
 {
-  public static String a;
+  public static String a = "AppGuideTipsManager";
   private int jdField_a_of_type_Int = 0;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private AppGuideTipsConfig jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig = null;
@@ -40,11 +40,6 @@ public class AppGuideTipsManager
   private Map<String, AppGuideTipsConfig> jdField_a_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_a_of_type_Boolean = false;
   private boolean b = true;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "AppGuideTipsManager";
-  }
   
   public AppGuideTipsManager(QQAppInterface paramQQAppInterface)
   {
@@ -78,7 +73,7 @@ public class AppGuideTipsManager
     localObject = new MessageForUniteGrayTip();
     ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord);
     ((MessageForUniteGrayTip)localObject).appGuideTipsOpKey = paramAppGuideTipsConfig.opkey;
-    UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
+    UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
   }
   
   private void f()
@@ -104,8 +99,13 @@ public class AppGuideTipsManager
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "saveOfficeUserFlag: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveOfficeUserFlag: ");
+      localStringBuilder.append(paramInt);
+      QLog.d(str, 1, localStringBuilder.toString());
     }
     if (paramInt == this.jdField_a_of_type_Int) {
       return;
@@ -114,77 +114,73 @@ public class AppGuideTipsManager
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("tim_is_office_user", paramInt).apply();
   }
   
-  public void a(BaseChatPie paramBaseChatPie, MessageRecord paramMessageRecord)
+  public void a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, AppGuideTipsManager.TimTipsShower paramTimTipsShower)
   {
-    if ((this.b) || (this.jdField_a_of_type_Int != 1) || (this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig == null)) {
-      break label22;
-    }
-    label22:
-    while (ConfessMsgUtil.a(paramMessageRecord)) {
-      return;
-    }
-    AppGuideTipsConfig localAppGuideTipsConfig = this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig;
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    label92:
-    boolean bool1;
-    if ((!"0".equals(localAppGuideTipsConfig.switchKey)) && (l - localAppGuideTipsConfig.lastAddTime > localAppGuideTipsConfig.duration * 1000L) && (localAppGuideTipsConfig.addCount < localAppGuideTipsConfig.maxCount))
+    if ((!this.b) && (this.jdField_a_of_type_Int == 1))
     {
-      localAppGuideTipsConfig.allow = true;
-      bool1 = false;
-      if (localAppGuideTipsConfig.allow)
-      {
-        if (localAppGuideTipsConfig.msgTypeMap.isEmpty()) {
-          break label283;
-        }
-        paramMessageRecord = (Boolean)localAppGuideTipsConfig.msgTypeMap.get(Integer.valueOf(paramMessageRecord.msgtype));
-        if ((paramMessageRecord == null) || (!paramMessageRecord.booleanValue())) {
-          break label277;
-        }
-        bool1 = true;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig == null) {
+        return;
       }
-    }
-    for (;;)
-    {
+      if (ConfessMsgUtil.a(paramMessageRecord)) {
+        return;
+      }
+      AppGuideTipsConfig localAppGuideTipsConfig = this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig;
+      long l = NetConnInfoCenter.getServerTimeMillis();
+      if ((!"0".equals(localAppGuideTipsConfig.switchKey)) && (l - localAppGuideTipsConfig.lastAddTime > localAppGuideTipsConfig.duration * 1000L) && (localAppGuideTipsConfig.addCount < localAppGuideTipsConfig.maxCount)) {
+        localAppGuideTipsConfig.allow = true;
+      } else {
+        localAppGuideTipsConfig.allow = false;
+      }
+      if (localAppGuideTipsConfig.allow) {
+        if (!localAppGuideTipsConfig.msgTypeMap.isEmpty())
+        {
+          paramMessageRecord = (Boolean)localAppGuideTipsConfig.msgTypeMap.get(Integer.valueOf(paramMessageRecord.msgtype));
+          if ((paramMessageRecord == null) || (!paramMessageRecord.booleanValue())) {}
+        }
+        else
+        {
+          bool1 = true;
+          break label166;
+        }
+      }
+      boolean bool1 = false;
+      label166:
       boolean bool2 = bool1;
       if (bool1)
       {
         bool2 = bool1;
         if (!localAppGuideTipsConfig.aioTypes.isEmpty()) {
-          bool2 = localAppGuideTipsConfig.aioTypes.contains(Integer.valueOf(paramBaseChatPie.b()));
+          bool2 = localAppGuideTipsConfig.aioTypes.contains(Integer.valueOf(paramAIOContext.a().jdField_a_of_type_Int));
         }
       }
-      if ((!bool2) || (!paramBaseChatPie.r())) {
-        break;
+      if ((bool2) && (paramTimTipsShower.a(paramAIOContext)))
+      {
+        localAppGuideTipsConfig.allow = false;
+        localAppGuideTipsConfig.addCount += 1;
+        localAppGuideTipsConfig.lastAddTime = l;
+        b(localAppGuideTipsConfig);
+        ReportController.b(null, "dc00898", "", "", "0X8008947", "0X8008947", 0, 0, "", "", "", "");
       }
-      localAppGuideTipsConfig.allow = false;
-      localAppGuideTipsConfig.addCount += 1;
-      localAppGuideTipsConfig.lastAddTime = l;
-      b(localAppGuideTipsConfig);
-      ReportController.b(null, "dc00898", "", "", "0X8008947", "0X8008947", 0, 0, "", "", "", "");
-      return;
-      localAppGuideTipsConfig.allow = false;
-      break label92;
-      label277:
-      bool1 = false;
-      continue;
-      label283:
-      bool1 = true;
     }
   }
   
   public void a(AppGuideTipsConfig paramAppGuideTipsConfig)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("tim_office_user_tips_bar_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit();
+    Object localObject = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tim_office_user_tips_bar_");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
     try
     {
-      localEditor.putString("tim_gray_tips_switch", paramAppGuideTipsConfig.switchKey);
-      localEditor.putInt("tim_gray_tips_total", paramAppGuideTipsConfig.maxCount);
-      localEditor.putLong("tim_gray_tips_duration", paramAppGuideTipsConfig.duration);
-      localEditor.putString("tim_gray_tips_url", paramAppGuideTipsConfig.tipsUrl);
-      localEditor.putString("tim_gray_tips_txt", paramAppGuideTipsConfig.tipsMsg);
-      localEditor.putString("tim_gray_tips_types", paramAppGuideTipsConfig.msgTypeStr);
-      localEditor.putString("tim_tips_bar_aio_types", paramAppGuideTipsConfig.aioTypeStr);
-      localEditor.apply();
+      ((SharedPreferences.Editor)localObject).putString("tim_gray_tips_switch", paramAppGuideTipsConfig.switchKey);
+      ((SharedPreferences.Editor)localObject).putInt("tim_gray_tips_total", paramAppGuideTipsConfig.maxCount);
+      ((SharedPreferences.Editor)localObject).putLong("tim_gray_tips_duration", paramAppGuideTipsConfig.duration);
+      ((SharedPreferences.Editor)localObject).putString("tim_gray_tips_url", paramAppGuideTipsConfig.tipsUrl);
+      ((SharedPreferences.Editor)localObject).putString("tim_gray_tips_txt", paramAppGuideTipsConfig.tipsMsg);
+      ((SharedPreferences.Editor)localObject).putString("tim_gray_tips_types", paramAppGuideTipsConfig.msgTypeStr);
+      ((SharedPreferences.Editor)localObject).putString("tim_tips_bar_aio_types", paramAppGuideTipsConfig.aioTypeStr);
+      ((SharedPreferences.Editor)localObject).apply();
       return;
     }
     catch (Exception paramAppGuideTipsConfig)
@@ -197,38 +193,38 @@ public class AppGuideTipsManager
   {
     Object localObject = paramMessageRecord.getExtInfoFromExtStr("app_tail_id");
     if (TextUtils.isEmpty((CharSequence)localObject)) {
-      break label15;
-    }
-    for (;;)
-    {
-      label15:
       return;
-      if (!ConfessMsgUtil.a(paramMessageRecord))
+    }
+    if (ConfessMsgUtil.a(paramMessageRecord)) {
+      return;
+    }
+    localObject = (AppGuideTipsConfig)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+    if (localObject == null) {
+      return;
+    }
+    if (((AppGuideTipsConfig)localObject).allow)
+    {
+      Boolean localBoolean = (Boolean)((AppGuideTipsConfig)localObject).msgTypeMap.get(Integer.valueOf(paramMessageRecord.msgtype));
+      if ((localBoolean != null) && (localBoolean.booleanValue()))
       {
-        localObject = (AppGuideTipsConfig)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if (localObject == null) {
-          break;
-        }
-        if (((AppGuideTipsConfig)localObject).allow)
-        {
-          Boolean localBoolean = (Boolean)((AppGuideTipsConfig)localObject).msgTypeMap.get(Integer.valueOf(paramMessageRecord.msgtype));
-          if ((localBoolean == null) || (!localBoolean.booleanValue())) {}
-        }
-        for (int i = 1; i != 0; i = 0)
-        {
-          ((AppGuideTipsConfig)localObject).allow = false;
-          ((AppGuideTipsConfig)localObject).addCount += 1;
-          ((AppGuideTipsConfig)localObject).lastAddTime = System.currentTimeMillis();
-          a((Entity)localObject);
-          if ("1".equals(((AppGuideTipsConfig)localObject).tipsType))
-          {
-            a(paramMessageRecord, (AppGuideTipsConfig)localObject);
-            return;
-          }
-          b(paramMessageRecord, (AppGuideTipsConfig)localObject);
-          return;
-        }
+        i = 1;
+        break label91;
       }
+    }
+    int i = 0;
+    label91:
+    if (i != 0)
+    {
+      ((AppGuideTipsConfig)localObject).allow = false;
+      ((AppGuideTipsConfig)localObject).addCount += 1;
+      ((AppGuideTipsConfig)localObject).lastAddTime = System.currentTimeMillis();
+      a((Entity)localObject);
+      if ("1".equals(((AppGuideTipsConfig)localObject).tipsType))
+      {
+        a(paramMessageRecord, (AppGuideTipsConfig)localObject);
+        return;
+      }
+      b(paramMessageRecord, (AppGuideTipsConfig)localObject);
     }
   }
   
@@ -237,211 +233,300 @@ public class AppGuideTipsManager
   {
     // Byte code:
     //   0: aload_1
-    //   1: ifnull +12 -> 13
+    //   1: ifnull +450 -> 451
     //   4: aload_1
-    //   5: invokeinterface 398 1 0
+    //   5: invokeinterface 404 1 0
     //   10: ifne +4 -> 14
     //   13: return
     //   14: aconst_null
-    //   15: astore_3
-    //   16: aload_0
-    //   17: getfield 56	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   20: invokevirtual 404	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   23: astore 4
-    //   25: aload 4
-    //   27: astore_3
-    //   28: aload_3
-    //   29: invokevirtual 409	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   32: aload_0
-    //   33: getfield 34	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   36: invokeinterface 412 1 0
-    //   41: aload_0
-    //   42: iconst_0
-    //   43: putfield 29	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_Boolean	Z
-    //   46: iconst_0
-    //   47: istore_2
-    //   48: iload_2
-    //   49: aload_1
-    //   50: invokeinterface 398 1 0
-    //   55: if_icmpge +67 -> 122
-    //   58: aload_1
-    //   59: iload_2
-    //   60: invokeinterface 415 2 0
-    //   65: checkcast 100	com/tencent/mobileqq/data/AppGuideTipsConfig
-    //   68: astore 4
-    //   70: aload 4
-    //   72: ifnull +234 -> 306
-    //   75: aload_0
-    //   76: getfield 56	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   79: ldc 100
-    //   81: aload 4
-    //   83: getfield 388	com/tencent/mobileqq/data/AppGuideTipsConfig:tipsType	Ljava/lang/String;
-    //   86: invokevirtual 419	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   89: checkcast 100	com/tencent/mobileqq/data/AppGuideTipsConfig
-    //   92: astore 5
-    //   94: aload 5
-    //   96: ifnull +210 -> 306
-    //   99: aload 4
-    //   101: aload 5
-    //   103: getfield 257	com/tencent/mobileqq/data/AppGuideTipsConfig:addCount	I
-    //   106: putfield 257	com/tencent/mobileqq/data/AppGuideTipsConfig:addCount	I
-    //   109: aload 4
-    //   111: aload 5
-    //   113: getfield 249	com/tencent/mobileqq/data/AppGuideTipsConfig:lastAddTime	J
-    //   116: putfield 249	com/tencent/mobileqq/data/AppGuideTipsConfig:lastAddTime	J
-    //   119: goto +187 -> 306
-    //   122: new 100	com/tencent/mobileqq/data/AppGuideTipsConfig
-    //   125: dup
-    //   126: invokespecial 420	com/tencent/mobileqq/data/AppGuideTipsConfig:<init>	()V
-    //   129: astore 4
-    //   131: aload 4
-    //   133: sipush 1001
-    //   136: invokevirtual 423	com/tencent/mobileqq/data/AppGuideTipsConfig:setStatus	(I)V
-    //   139: aload_0
-    //   140: getfield 56	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   143: aload 4
-    //   145: ldc_w 425
-    //   148: iconst_1
-    //   149: anewarray 108	java/lang/String
-    //   152: dup
-    //   153: iconst_0
-    //   154: ldc 239
-    //   156: aastore
-    //   157: invokevirtual 429	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;Ljava/lang/String;[Ljava/lang/String;)Z
-    //   160: pop
-    //   161: iconst_0
-    //   162: istore_2
-    //   163: iload_2
-    //   164: aload_1
-    //   165: invokeinterface 398 1 0
-    //   170: if_icmpge +30 -> 200
-    //   173: aload_1
-    //   174: iload_2
-    //   175: invokeinterface 415 2 0
-    //   180: checkcast 100	com/tencent/mobileqq/data/AppGuideTipsConfig
-    //   183: astore 4
-    //   185: aload 4
-    //   187: ifnull +126 -> 313
-    //   190: aload_0
-    //   191: aload 4
-    //   193: invokevirtual 383	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   196: pop
-    //   197: goto +116 -> 313
-    //   200: aload_3
-    //   201: invokevirtual 432	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   204: aload_3
-    //   205: ifnull -192 -> 13
-    //   208: aload_3
-    //   209: invokevirtual 435	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   212: return
+    //   15: astore 4
+    //   17: aconst_null
+    //   18: astore 5
+    //   20: aload_0
+    //   21: getfield 54	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   24: invokevirtual 410	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   27: astore 6
+    //   29: aload 6
+    //   31: astore 5
+    //   33: aload 6
+    //   35: astore 4
+    //   37: aload 6
+    //   39: invokevirtual 415	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   42: aload 6
+    //   44: astore 5
+    //   46: aload 6
+    //   48: astore 4
+    //   50: aload_0
+    //   51: getfield 32	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   54: invokeinterface 418 1 0
+    //   59: iconst_0
+    //   60: istore_3
+    //   61: aload 6
+    //   63: astore 5
+    //   65: aload 6
+    //   67: astore 4
+    //   69: aload_0
+    //   70: iconst_0
+    //   71: putfield 27	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_Boolean	Z
+    //   74: iconst_0
+    //   75: istore_2
+    //   76: aload 6
+    //   78: astore 5
+    //   80: aload 6
+    //   82: astore 4
+    //   84: iload_2
+    //   85: aload_1
+    //   86: invokeinterface 404 1 0
+    //   91: if_icmpge +99 -> 190
+    //   94: aload 6
+    //   96: astore 5
+    //   98: aload 6
+    //   100: astore 4
+    //   102: aload_1
+    //   103: iload_2
+    //   104: invokeinterface 421 2 0
+    //   109: checkcast 98	com/tencent/mobileqq/data/AppGuideTipsConfig
+    //   112: astore 7
+    //   114: aload 7
+    //   116: ifnull +336 -> 452
+    //   119: aload 6
+    //   121: astore 5
+    //   123: aload 6
+    //   125: astore 4
+    //   127: aload_0
+    //   128: getfield 54	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   131: ldc 98
+    //   133: aload 7
+    //   135: getfield 394	com/tencent/mobileqq/data/AppGuideTipsConfig:tipsType	Ljava/lang/String;
+    //   138: invokevirtual 425	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   141: checkcast 98	com/tencent/mobileqq/data/AppGuideTipsConfig
+    //   144: astore 8
+    //   146: aload 8
+    //   148: ifnull +304 -> 452
+    //   151: aload 6
+    //   153: astore 5
+    //   155: aload 6
+    //   157: astore 4
+    //   159: aload 7
+    //   161: aload 8
+    //   163: getfield 257	com/tencent/mobileqq/data/AppGuideTipsConfig:addCount	I
+    //   166: putfield 257	com/tencent/mobileqq/data/AppGuideTipsConfig:addCount	I
+    //   169: aload 6
+    //   171: astore 5
+    //   173: aload 6
+    //   175: astore 4
+    //   177: aload 7
+    //   179: aload 8
+    //   181: getfield 249	com/tencent/mobileqq/data/AppGuideTipsConfig:lastAddTime	J
+    //   184: putfield 249	com/tencent/mobileqq/data/AppGuideTipsConfig:lastAddTime	J
+    //   187: goto +265 -> 452
+    //   190: aload 6
+    //   192: astore 5
+    //   194: aload 6
+    //   196: astore 4
+    //   198: new 98	com/tencent/mobileqq/data/AppGuideTipsConfig
+    //   201: dup
+    //   202: invokespecial 426	com/tencent/mobileqq/data/AppGuideTipsConfig:<init>	()V
+    //   205: astore 7
+    //   207: aload 6
+    //   209: astore 5
+    //   211: aload 6
     //   213: astore 4
-    //   215: aload_3
-    //   216: astore_1
-    //   217: aload 4
-    //   219: astore_3
-    //   220: aload_3
-    //   221: invokevirtual 363	java/lang/Exception:printStackTrace	()V
-    //   224: invokestatic 194	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   227: ifeq +33 -> 260
-    //   230: getstatic 22	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   233: iconst_2
-    //   234: new 196	java/lang/StringBuilder
-    //   237: dup
-    //   238: invokespecial 197	java/lang/StringBuilder:<init>	()V
-    //   241: ldc_w 437
-    //   244: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   247: aload_3
-    //   248: invokevirtual 440	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   251: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   254: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   257: invokestatic 443	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   260: aload_1
-    //   261: ifnull -248 -> 13
+    //   215: aload 7
+    //   217: sipush 1001
+    //   220: invokevirtual 429	com/tencent/mobileqq/data/AppGuideTipsConfig:setStatus	(I)V
+    //   223: aload 6
+    //   225: astore 5
+    //   227: aload 6
+    //   229: astore 4
+    //   231: aload_0
+    //   232: getfield 54	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   235: aload 7
+    //   237: ldc_w 431
+    //   240: iconst_1
+    //   241: anewarray 106	java/lang/String
+    //   244: dup
+    //   245: iconst_0
+    //   246: ldc 239
+    //   248: aastore
+    //   249: invokevirtual 435	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;Ljava/lang/String;[Ljava/lang/String;)Z
+    //   252: pop
+    //   253: iload_3
+    //   254: istore_2
+    //   255: aload 6
+    //   257: astore 5
+    //   259: aload 6
+    //   261: astore 4
+    //   263: iload_2
     //   264: aload_1
-    //   265: invokevirtual 435	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   268: return
-    //   269: astore_1
-    //   270: aconst_null
-    //   271: astore_3
-    //   272: aload_3
-    //   273: ifnull +7 -> 280
-    //   276: aload_3
-    //   277: invokevirtual 435	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   280: aload_1
-    //   281: athrow
-    //   282: astore_1
-    //   283: goto -11 -> 272
-    //   286: astore 4
-    //   288: aload_1
-    //   289: astore_3
-    //   290: aload 4
-    //   292: astore_1
-    //   293: goto -21 -> 272
-    //   296: astore 4
-    //   298: aload_3
-    //   299: astore_1
-    //   300: aload 4
-    //   302: astore_3
-    //   303: goto -83 -> 220
-    //   306: iload_2
-    //   307: iconst_1
-    //   308: iadd
-    //   309: istore_2
-    //   310: goto -262 -> 48
-    //   313: iload_2
-    //   314: iconst_1
-    //   315: iadd
-    //   316: istore_2
-    //   317: goto -154 -> 163
+    //   265: invokeinterface 404 1 0
+    //   270: if_icmpge +46 -> 316
+    //   273: aload 6
+    //   275: astore 5
+    //   277: aload 6
+    //   279: astore 4
+    //   281: aload_1
+    //   282: iload_2
+    //   283: invokeinterface 421 2 0
+    //   288: checkcast 98	com/tencent/mobileqq/data/AppGuideTipsConfig
+    //   291: astore 7
+    //   293: aload 7
+    //   295: ifnull +164 -> 459
+    //   298: aload 6
+    //   300: astore 5
+    //   302: aload 6
+    //   304: astore 4
+    //   306: aload_0
+    //   307: aload 7
+    //   309: invokevirtual 389	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   312: pop
+    //   313: goto +146 -> 459
+    //   316: aload 6
+    //   318: astore 5
+    //   320: aload 6
+    //   322: astore 4
+    //   324: aload 6
+    //   326: invokevirtual 438	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   329: aload 6
+    //   331: ifnull +107 -> 438
+    //   334: aload 6
+    //   336: astore 4
+    //   338: goto +95 -> 433
+    //   341: astore_1
+    //   342: goto +97 -> 439
+    //   345: astore_1
+    //   346: aload 4
+    //   348: astore 5
+    //   350: aload_1
+    //   351: invokevirtual 369	java/lang/Exception:printStackTrace	()V
+    //   354: aload 4
+    //   356: astore 5
+    //   358: invokestatic 192	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   361: ifeq +67 -> 428
+    //   364: aload 4
+    //   366: astore 5
+    //   368: getstatic 194	com/tencent/mobileqq/activity/aio/AppGuideTipsManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   371: astore 6
+    //   373: aload 4
+    //   375: astore 5
+    //   377: new 196	java/lang/StringBuilder
+    //   380: dup
+    //   381: invokespecial 197	java/lang/StringBuilder:<init>	()V
+    //   384: astore 7
+    //   386: aload 4
+    //   388: astore 5
+    //   390: aload 7
+    //   392: ldc_w 440
+    //   395: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   398: pop
+    //   399: aload 4
+    //   401: astore 5
+    //   403: aload 7
+    //   405: aload_1
+    //   406: invokevirtual 443	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   409: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   412: pop
+    //   413: aload 4
+    //   415: astore 5
+    //   417: aload 6
+    //   419: iconst_2
+    //   420: aload 7
+    //   422: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   425: invokestatic 446	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   428: aload 4
+    //   430: ifnull +8 -> 438
+    //   433: aload 4
+    //   435: invokevirtual 449	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   438: return
+    //   439: aload 5
+    //   441: ifnull +8 -> 449
+    //   444: aload 5
+    //   446: invokevirtual 449	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   449: aload_1
+    //   450: athrow
+    //   451: return
+    //   452: iload_2
+    //   453: iconst_1
+    //   454: iadd
+    //   455: istore_2
+    //   456: goto -380 -> 76
+    //   459: iload_2
+    //   460: iconst_1
+    //   461: iadd
+    //   462: istore_2
+    //   463: goto -208 -> 255
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	320	0	this	AppGuideTipsManager
-    //   0	320	1	paramList	java.util.List<AppGuideTipsConfig>
-    //   47	270	2	i	int
-    //   15	288	3	localObject1	Object
-    //   23	169	4	localObject2	Object
-    //   213	5	4	localException1	Exception
-    //   286	5	4	localObject3	Object
-    //   296	5	4	localException2	Exception
-    //   92	20	5	localAppGuideTipsConfig	AppGuideTipsConfig
+    //   0	466	0	this	AppGuideTipsManager
+    //   0	466	1	paramList	java.util.List<AppGuideTipsConfig>
+    //   75	388	2	i	int
+    //   60	194	3	j	int
+    //   15	419	4	localObject1	Object
+    //   18	427	5	localObject2	Object
+    //   27	391	6	localObject3	Object
+    //   112	309	7	localObject4	Object
+    //   144	36	8	localAppGuideTipsConfig	AppGuideTipsConfig
     // Exception table:
     //   from	to	target	type
-    //   16	25	213	java/lang/Exception
-    //   16	25	269	finally
-    //   28	46	282	finally
-    //   48	70	282	finally
-    //   75	94	282	finally
-    //   99	119	282	finally
-    //   122	161	282	finally
-    //   163	185	282	finally
-    //   190	197	282	finally
-    //   200	204	282	finally
-    //   220	260	286	finally
-    //   28	46	296	java/lang/Exception
-    //   48	70	296	java/lang/Exception
-    //   75	94	296	java/lang/Exception
-    //   99	119	296	java/lang/Exception
-    //   122	161	296	java/lang/Exception
-    //   163	185	296	java/lang/Exception
-    //   190	197	296	java/lang/Exception
-    //   200	204	296	java/lang/Exception
+    //   20	29	341	finally
+    //   37	42	341	finally
+    //   50	59	341	finally
+    //   69	74	341	finally
+    //   84	94	341	finally
+    //   102	114	341	finally
+    //   127	146	341	finally
+    //   159	169	341	finally
+    //   177	187	341	finally
+    //   198	207	341	finally
+    //   215	223	341	finally
+    //   231	253	341	finally
+    //   263	273	341	finally
+    //   281	293	341	finally
+    //   306	313	341	finally
+    //   324	329	341	finally
+    //   350	354	341	finally
+    //   358	364	341	finally
+    //   368	373	341	finally
+    //   377	386	341	finally
+    //   390	399	341	finally
+    //   403	413	341	finally
+    //   417	428	341	finally
+    //   20	29	345	java/lang/Exception
+    //   37	42	345	java/lang/Exception
+    //   50	59	345	java/lang/Exception
+    //   69	74	345	java/lang/Exception
+    //   84	94	345	java/lang/Exception
+    //   102	114	345	java/lang/Exception
+    //   127	146	345	java/lang/Exception
+    //   159	169	345	java/lang/Exception
+    //   177	187	345	java/lang/Exception
+    //   198	207	345	java/lang/Exception
+    //   215	223	345	java/lang/Exception
+    //   231	253	345	java/lang/Exception
+    //   263	273	345	java/lang/Exception
+    //   281	293	345	java/lang/Exception
+    //   306	313	345	java/lang/Exception
+    //   324	329	345	java/lang/Exception
   }
   
   public boolean a(Entity paramEntity)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen()) {}
-    do
+    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen();
+    boolean bool1 = false;
+    if (!bool2) {
+      return false;
+    }
+    if (paramEntity.getStatus() == 1000)
     {
-      do
-      {
-        return false;
-        if (paramEntity.getStatus() != 1000) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-      } while (paramEntity.getStatus() != 1001);
-      return true;
-    } while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002));
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+      if (paramEntity.getStatus() == 1001) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
+      return false;
+    }
     return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
   }
   
@@ -450,15 +535,17 @@ public class AppGuideTipsManager
     if (!this.jdField_a_of_type_Boolean) {
       a();
     }
-    if ((this.jdField_a_of_type_JavaUtilMap == null) || (this.jdField_a_of_type_JavaUtilMap.size() <= 0)) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject != null)
     {
-      return;
+      if (((Map)localObject).size() <= 0) {
+        return;
+      }
       long l = System.currentTimeMillis();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-      while (localIterator.hasNext())
+      localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AppGuideTipsConfig localAppGuideTipsConfig = (AppGuideTipsConfig)localIterator.next();
+        AppGuideTipsConfig localAppGuideTipsConfig = (AppGuideTipsConfig)((Iterator)localObject).next();
         if (localAppGuideTipsConfig != null) {
           if ((!"0".equals(localAppGuideTipsConfig.switchKey)) && (l - localAppGuideTipsConfig.lastAddTime > localAppGuideTipsConfig.duration * 1000L) && (localAppGuideTipsConfig.addCount < localAppGuideTipsConfig.maxCount)) {
             localAppGuideTipsConfig.allow = true;
@@ -475,16 +562,24 @@ public class AppGuideTipsManager
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "updateTimAIOTipsBarConfig, add count: ", Integer.valueOf(paramAppGuideTipsConfig.addCount) });
     }
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("tim_office_user_tips_bar_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit();
-    localEditor.putInt("tim_gray_tips_count", paramAppGuideTipsConfig.addCount);
-    localEditor.putLong("tim_gray_tips_time", paramAppGuideTipsConfig.lastAddTime);
-    localEditor.apply();
+    Object localObject = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tim_office_user_tips_bar_");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+    ((SharedPreferences.Editor)localObject).putInt("tim_gray_tips_count", paramAppGuideTipsConfig.addCount);
+    ((SharedPreferences.Editor)localObject).putLong("tim_gray_tips_time", paramAppGuideTipsConfig.lastAddTime);
+    ((SharedPreferences.Editor)localObject).apply();
   }
   
   public void c()
   {
     AppGuideTipsConfig localAppGuideTipsConfig = new AppGuideTipsConfig();
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("tim_office_user_tips_bar_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    Object localObject = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tim_office_user_tips_bar_");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     localAppGuideTipsConfig.switchKey = ((SharedPreferences)localObject).getString("tim_gray_tips_switch", "0");
     localAppGuideTipsConfig.maxCount = ((SharedPreferences)localObject).getInt("tim_gray_tips_total", 0);
     localAppGuideTipsConfig.duration = ((SharedPreferences)localObject).getLong("tim_gray_tips_duration", 0L);
@@ -502,23 +597,18 @@ public class AppGuideTipsManager
       if (localObject != null)
       {
         i = 0;
-        for (;;)
+        while (i < localObject.length)
         {
-          if (i < localObject.length) {
-            try
-            {
-              j = Integer.valueOf(localObject[i]).intValue();
-              localAppGuideTipsConfig.msgTypeMap.put(Integer.valueOf(j), Boolean.valueOf(true));
-              i += 1;
-            }
-            catch (Exception localException1)
-            {
-              for (;;)
-              {
-                localException1.printStackTrace();
-              }
-            }
+          try
+          {
+            j = Integer.valueOf(localObject[i]).intValue();
+            localAppGuideTipsConfig.msgTypeMap.put(Integer.valueOf(j), Boolean.valueOf(true));
           }
+          catch (Exception localException1)
+          {
+            localException1.printStackTrace();
+          }
+          i += 1;
         }
       }
     }
@@ -528,23 +618,18 @@ public class AppGuideTipsManager
       if (localObject != null)
       {
         i = 0;
-        for (;;)
+        while (i < localObject.length)
         {
-          if (i < localObject.length) {
-            try
-            {
-              j = Integer.valueOf(localObject[i]).intValue();
-              localAppGuideTipsConfig.aioTypes.add(Integer.valueOf(j));
-              i += 1;
-            }
-            catch (Exception localException2)
-            {
-              for (;;)
-              {
-                localException2.printStackTrace();
-              }
-            }
+          try
+          {
+            j = Integer.valueOf(localObject[i]).intValue();
+            localAppGuideTipsConfig.aioTypes.add(Integer.valueOf(j));
           }
+          catch (Exception localException2)
+          {
+            localException2.printStackTrace();
+          }
+          i += 1;
         }
       }
     }
@@ -559,7 +644,11 @@ public class AppGuideTipsManager
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "clearTimAIOGrayTipsBarConfig");
     }
-    BaseApplicationImpl.getApplication().getSharedPreferences("tim_office_user_tips_bar_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().clear().apply();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tim_office_user_tips_bar_");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).edit().clear().apply();
   }
   
   public void e()
@@ -571,7 +660,7 @@ public class AppGuideTipsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AppGuideTipsManager
  * JD-Core Version:    0.7.0.1
  */

@@ -44,48 +44,47 @@ public class RAServiceManager
   private void init(String paramString)
   {
     RLog.d("RAServiceManager", new Object[] { "init ..." });
-    for (;;)
+    try
     {
-      Object localObject;
-      Class localClass;
-      try
+      paramString = ((Map)Class.forName(paramString).getDeclaredField("sServicesMap").get(null)).entrySet().iterator();
+      while (paramString.hasNext())
       {
-        paramString = ((Map)Class.forName(paramString).getDeclaredField("sServicesMap").get(null)).entrySet().iterator();
-        if (!paramString.hasNext()) {
-          break;
-        }
-        localObject = (Map.Entry)paramString.next();
-        localClass = (Class)((Map.Entry)localObject).getKey();
-        localObject = (IServiceEntry)((Map.Entry)localObject).getValue();
-        IServiceEntry localIServiceEntry = (IServiceEntry)this.mServiceEntryMap.get(localClass);
-        if (localIServiceEntry == null)
-        {
-          this.mServiceEntryMap.put(localClass, localObject);
-          continue;
-        }
-        if (localIServiceEntry.getPriority() > ((IServiceEntry)localObject).getPriority()) {
-          continue;
+        Object localObject2 = (Map.Entry)paramString.next();
+        localObject1 = (Class)((Map.Entry)localObject2).getKey();
+        localObject2 = (IServiceEntry)((Map.Entry)localObject2).getValue();
+        IServiceEntry localIServiceEntry = (IServiceEntry)this.mServiceEntryMap.get(localObject1);
+        if (localIServiceEntry == null) {
+          this.mServiceEntryMap.put(localObject1, localObject2);
+        } else if (localIServiceEntry.getPriority() <= ((IServiceEntry)localObject2).getPriority()) {
+          this.mServiceEntryMap.put(localObject1, localObject2);
         }
       }
-      catch (Exception paramString)
-      {
-        RLog.w("RAServiceManager", new Object[] { "init entryMap error :" + paramString });
-        return;
-      }
-      this.mServiceEntryMap.put(localClass, localObject);
+      paramString = new StringBuilder();
+      paramString.append("init success :");
+      paramString.append(this.mServiceEntryMap);
+      RLog.d("RAServiceManager", new Object[] { paramString.toString() });
+      return;
     }
-    RLog.d("RAServiceManager", new Object[] { "init success :" + this.mServiceEntryMap });
+    catch (Exception paramString)
+    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("init entryMap error :");
+      ((StringBuilder)localObject1).append(paramString);
+      RLog.w("RAServiceManager", new Object[] { ((StringBuilder)localObject1).toString() });
+    }
   }
   
   private void putToCache(String paramString, ServiceWrapper paramServiceWrapper)
   {
-    if ((paramServiceWrapper.scope == RAFTConstants.Scope.SINGLETON) || (paramServiceWrapper.scope == RAFTConstants.Scope.LAZY_SINGLETON)) {
+    if ((paramServiceWrapper.scope != RAFTConstants.Scope.SINGLETON) && (paramServiceWrapper.scope != RAFTConstants.Scope.LAZY_SINGLETON))
+    {
+      if (paramServiceWrapper.scope == RAFTConstants.Scope.WEAK_SINGLETON) {
+        this.mWeakSingletonMap.put(paramString, new WeakReference(paramServiceWrapper.service));
+      }
+    }
+    else {
       this.mSingletonMap.put(paramString, paramServiceWrapper.service);
     }
-    while (paramServiceWrapper.scope != RAFTConstants.Scope.WEAK_SINGLETON) {
-      return;
-    }
-    this.mWeakSingletonMap.put(paramString, new WeakReference(paramServiceWrapper.service));
   }
   
   public void destroy()
@@ -100,7 +99,10 @@ public class RAServiceManager
     IServiceEntry localIServiceEntry = (IServiceEntry)this.mServiceEntryMap.get(paramClass);
     if (localIServiceEntry == null)
     {
-      RLog.w("RAServiceManager", new Object[] { "getService error :cannot found entry >> " + paramClass.getName() });
+      paramIServiceProvider = new StringBuilder();
+      paramIServiceProvider.append("getService error :cannot found entry >> ");
+      paramIServiceProvider.append(paramClass.getName());
+      RLog.w("RAServiceManager", new Object[] { paramIServiceProvider.toString() });
       return null;
     }
     String str = localIServiceEntry.getKey();
@@ -108,17 +110,18 @@ public class RAServiceManager
     if (paramClass != null) {
       return paramClass;
     }
-    if (paramIServiceProvider != null) {}
-    for (paramClass = paramIServiceProvider.provide();; paramClass = localIServiceEntry.createService())
-    {
-      putToCache(str, paramClass);
-      return paramClass.service;
+    if (paramIServiceProvider != null) {
+      paramClass = paramIServiceProvider.provide();
+    } else {
+      paramClass = localIServiceEntry.createService();
     }
+    putToCache(str, paramClass);
+    return paramClass.service;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.raftframework.service.RAServiceManager
  * JD-Core Version:    0.7.0.1
  */

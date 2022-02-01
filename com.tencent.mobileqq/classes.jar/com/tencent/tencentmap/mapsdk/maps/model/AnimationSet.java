@@ -16,8 +16,13 @@ public class AnimationSet
   
   public boolean addAnimation(Animation paramAnimation)
   {
-    if (paramAnimation == null) {}
-    while ((paramAnimation.glAnimation == null) || (this.glAnimation == null)) {
+    if (paramAnimation == null) {
+      return false;
+    }
+    if (paramAnimation.glAnimation == null) {
+      return false;
+    }
+    if (this.glAnimation == null) {
       return false;
     }
     ((GlAnimationSet)this.glAnimation).addAnimation(paramAnimation.glAnimation);
@@ -42,8 +47,10 @@ public class AnimationSet
   
   public void setInterpolator(Interpolator paramInterpolator)
   {
-    if (this.glAnimation == null) {}
-    while (paramInterpolator == null) {
+    if (this.glAnimation == null) {
+      return;
+    }
+    if (paramInterpolator == null) {
       return;
     }
     this.glAnimation.setInterpolator(paramInterpolator);
@@ -51,7 +58,7 @@ public class AnimationSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.AnimationSet
  * JD-Core Version:    0.7.0.1
  */

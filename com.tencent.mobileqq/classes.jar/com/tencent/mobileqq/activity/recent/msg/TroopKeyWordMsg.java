@@ -16,7 +16,7 @@ public class TroopKeyWordMsg
 {
   public TroopKeyWordMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131699386);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131699491);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
@@ -24,21 +24,18 @@ public class TroopKeyWordMsg
   {
     if ((paramObject instanceof TroopKeyWordMsg))
     {
-      paramMessageRecord = (TroopKeyWordMsg)paramObject;
-      paramObject = paramMessageRecord;
+      paramObject = (TroopKeyWordMsg)paramObject;
+      paramMessageRecord = paramObject;
     }
-    for (;;)
+    else
     {
-      paramMessageRecord.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
-      return paramObject;
       paramMessageRecord = new TroopKeyWordMsg(BaseApplication.getContext());
-      if (!(paramObject instanceof TroopSpecialAttentionMsg))
-      {
-        paramQQAppInterface = paramMessageRecord;
+      if (!(paramObject instanceof TroopSpecialAttentionMsg)) {
         paramObject = paramMessageRecord;
-        paramMessageRecord = paramQQAppInterface;
       }
     }
+    paramMessageRecord.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+    return paramObject;
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -52,10 +49,11 @@ public class TroopKeyWordMsg
       this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
       this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
       this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((this.c != null) && (this.c.length() != 0)) {
+      if ((this.c != null) && (this.c.length() != 0))
+      {
         this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(this.c);
+        return;
       }
-      return;
     }
     catch (JSONException paramArrayOfByte)
     {
@@ -78,20 +76,17 @@ public class TroopKeyWordMsg
       localJSONObject.put("color", this.jdField_b_of_type_Int);
       this.c = this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a();
       localJSONObject.put("messageNavInfo", this.c);
-      return localJSONObject.toString().getBytes();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", localJSONException);
-      }
+      QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", localJSONException);
     }
+    return localJSONObject.toString().getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopKeyWordMsg
  * JD-Core Version:    0.7.0.1
  */

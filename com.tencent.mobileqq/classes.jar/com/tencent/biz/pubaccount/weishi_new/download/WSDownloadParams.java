@@ -13,12 +13,23 @@ public class WSDownloadParams
   
   public String toString()
   {
-    return "WSDownloadParams{mScene=" + this.mScene + ", mLinkStrategyType=" + this.mLinkStrategyType + ", mEventId=" + this.mEventId + ", mTestId='" + this.mTestId + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSDownloadParams{mScene=");
+    localStringBuilder.append(this.mScene);
+    localStringBuilder.append(", mLinkStrategyType=");
+    localStringBuilder.append(this.mLinkStrategyType);
+    localStringBuilder.append(", mEventId=");
+    localStringBuilder.append(this.mEventId);
+    localStringBuilder.append(", mTestId='");
+    localStringBuilder.append(this.mTestId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams
  * JD-Core Version:    0.7.0.1
  */

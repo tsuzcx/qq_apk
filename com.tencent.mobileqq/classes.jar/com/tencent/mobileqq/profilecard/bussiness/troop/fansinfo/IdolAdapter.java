@@ -2,6 +2,7 @@ package com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
@@ -12,8 +13,9 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.troop.fans.data.TroopFansInfo.IdolItem;
 import com.tencent.mobileqq.troop.utils.FansTroopUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +42,12 @@ public class IdolAdapter
   {
     if ((paramInt >= 0) && (paramInt < getItemCount()))
     {
-      TroopFansInfo.IdolItem localIdolItem = (TroopFansInfo.IdolItem)this.mIdolItems.get(paramInt);
-      FansTroopUtils.a(this.mContext, localIdolItem.idolid, this.troopUin);
+      Object localObject = (TroopFansInfo.IdolItem)this.mIdolItems.get(paramInt);
+      FansTroopUtils.a(this.mContext, ((TroopFansInfo.IdolItem)localObject).jdField_a_of_type_Int, this.troopUin);
       ReportController.b(null, "dc00898", "", "", "0X800B598", "0X800B598", 0, 0, "", "", "", "");
-      if (this.mIdolAdapterCb != null) {
-        this.mIdolAdapterCb.gotoWeb();
+      localObject = this.mIdolAdapterCb;
+      if (localObject != null) {
+        ((IdolAdapter.IdolAdapterCallBack)localObject).gotoWeb();
       }
     }
   }
@@ -66,26 +69,34 @@ public class IdolAdapter
     }
     if (paramLong < 1000000L)
     {
-      String str2 = String.format("%.2f", new Object[] { Double.valueOf((float)paramLong / 10000.0F - 0.005D) });
-      String str1 = str2;
-      if (str2.length() > 2)
+      double d = (float)paramLong / 10000.0F;
+      Double.isNaN(d);
+      Object localObject2 = String.format("%.2f", new Object[] { Double.valueOf(d - 0.005D) });
+      localObject1 = localObject2;
+      if (((String)localObject2).length() > 2)
       {
-        str1 = str2;
-        if (str2.substring(str2.length() - 2).equals("00")) {
-          str1 = str2.substring(0, str2.length() - 3);
+        localObject1 = localObject2;
+        if (((String)localObject2).substring(((String)localObject2).length() - 2).equals("00")) {
+          localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 3);
         }
       }
-      return str1 + this.mContext.getString(2131699376);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(this.mContext.getString(2131699481));
+      return ((StringBuilder)localObject2).toString();
     }
-    return String.valueOf(paramLong / 10000L) + this.mContext.getString(2131699376);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(String.valueOf(paramLong / 10000L));
+    ((StringBuilder)localObject1).append(this.mContext.getString(2131699481));
+    return ((StringBuilder)localObject1).toString();
   }
   
   protected String getRankText(long paramLong)
   {
     if (paramLong <= 0L) {
-      return this.mContext.getString(2131699456);
+      return this.mContext.getString(2131699561);
     }
-    return String.format(this.mContext.getString(2131699372), new Object[] { String.valueOf(paramLong) });
+    return String.format(this.mContext.getString(2131699477), new Object[] { String.valueOf(paramLong) });
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -94,37 +105,33 @@ public class IdolAdapter
     TroopFansInfo.IdolItem localIdolItem = (TroopFansInfo.IdolItem)this.mIdolItems.get(paramInt);
     if (localIdolItem != null)
     {
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(localIdolItem.pic, null);
-      if ((localURLDrawable != null) && (1 != localURLDrawable.getStatus())) {
-        localURLDrawable.restartDownload();
+      Object localObject = URLDrawable.getDrawable(localIdolItem.c, null);
+      if ((localObject != null) && (1 != ((URLDrawable)localObject).getStatus())) {
+        ((URLDrawable)localObject).restartDownload();
       }
-      localMyViewHolder.ivHead.setImageDrawable(localURLDrawable);
-      if (this.mIdolAdapterCb != null) {
-        this.mIdolAdapterCb.onUpdateItemTheme(localMyViewHolder.tvQscoretitle);
+      localMyViewHolder.ivHead.setImageDrawable((Drawable)localObject);
+      localObject = this.mIdolAdapterCb;
+      if (localObject != null) {
+        ((IdolAdapter.IdolAdapterCallBack)localObject).onUpdateItemTheme(localMyViewHolder.tvQscoretitle);
       }
-      localMyViewHolder.tvQscore.setText(getQScoreText(localIdolItem.qScore));
-      localMyViewHolder.tvRank.setText(getRankText(localIdolItem.rank));
-      localMyViewHolder.tvRank.setContentDescription(getRankText(localIdolItem.rank));
-      localMyViewHolder.tvName.setText(localIdolItem.name);
-      localMyViewHolder.tvName.setContentDescription(localIdolItem.name);
+      localMyViewHolder.tvQscore.setText(getQScoreText(localIdolItem.b));
+      localMyViewHolder.tvRank.setText(getRankText(localIdolItem.jdField_a_of_type_Long));
+      localMyViewHolder.tvRank.setContentDescription(getRankText(localIdolItem.jdField_a_of_type_Long));
+      localMyViewHolder.tvName.setText(localIdolItem.jdField_a_of_type_JavaLangString);
+      localMyViewHolder.tvName.setContentDescription(localIdolItem.jdField_a_of_type_JavaLangString);
       localMyViewHolder.itemView.setOnClickListener(new IdolAdapter.1(this, paramInt));
-      if (!this.mIsNight) {
-        break label212;
+      if (this.mIsNight) {
+        localMyViewHolder.itemView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130841635));
+      } else {
+        localMyViewHolder.itemView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130841634));
       }
-      localMyViewHolder.itemView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130841749));
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      label212:
-      localMyViewHolder.itemView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130841748));
-    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new IdolAdapter.MyViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559701, paramViewGroup, false));
+    return new IdolAdapter.MyViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559577, paramViewGroup, false));
   }
   
   public void setList(List<TroopFansInfo.IdolItem> paramList)
@@ -139,7 +146,7 @@ public class IdolAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.IdolAdapter
  * JD-Core Version:    0.7.0.1
  */

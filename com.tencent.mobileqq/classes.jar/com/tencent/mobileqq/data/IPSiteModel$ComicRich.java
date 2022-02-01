@@ -30,7 +30,21 @@ public class IPSiteModel$ComicRich
   
   public String toString()
   {
-    return "ComicRich{extCover='" + this.extCover + '\'' + ", extName='" + this.extName + '\'' + ", extTitle='" + this.extTitle + '\'' + ", extUrl='" + this.extUrl + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ComicRich{extCover='");
+    localStringBuilder.append(this.extCover);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extName='");
+    localStringBuilder.append(this.extName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extTitle='");
+    localStringBuilder.append(this.extTitle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extUrl='");
+    localStringBuilder.append(this.extUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -43,7 +57,7 @@ public class IPSiteModel$ComicRich
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.ComicRich
  * JD-Core Version:    0.7.0.1
  */

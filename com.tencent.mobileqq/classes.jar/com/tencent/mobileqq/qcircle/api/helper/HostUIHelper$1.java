@@ -23,56 +23,68 @@ final class HostUIHelper$1
         ((HostUIHelper.HostEnvironmentLifeCycle)paramBundle.next()).onEnvironmentCreated(paramActivity);
       }
       HostUIHelper.access$300(paramActivity);
+      paramBundle = new StringBuilder();
+      paramBundle.append("onActivityCreated:");
+      paramBundle.append(paramActivity.hashCode());
+      QLog.d("HostUIHelper", 1, paramBundle.toString());
     }
-    QLog.d("HostUIHelper", 1, "onActivityCreated");
   }
   
   public void onActivityDestroyed(Activity paramActivity)
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      Iterator localIterator = HostUIHelper.access$200().iterator();
-      while (localIterator.hasNext()) {
-        ((HostUIHelper.HostEnvironmentLifeCycle)localIterator.next()).onEnvironmentDestroy(paramActivity);
+      Object localObject = HostUIHelper.access$200().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((HostUIHelper.HostEnvironmentLifeCycle)((Iterator)localObject).next()).onEnvironmentDestroy(paramActivity);
       }
       if ((HostUIHelper.access$100() != null) && (HostUIHelper.access$100().get() != null) && (paramActivity.hashCode() == ((Context)HostUIHelper.access$100().get()).hashCode())) {
         HostUIHelper.access$500();
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityDestroyed:");
+      ((StringBuilder)localObject).append(paramActivity.hashCode());
+      QLog.d("HostUIHelper", 1, ((StringBuilder)localObject).toString());
     }
     if ((HostUIHelper.isContextShadowActivity(paramActivity)) && (HostUIHelper.access$400() != null) && (HostUIHelper.access$400().get() == paramActivity)) {
       HostUIHelper.access$402(null);
     }
-    QLog.d("HostUIHelper", 1, "onActivityDestroyed");
   }
   
   public void onActivityPaused(Activity paramActivity)
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      Iterator localIterator = HostUIHelper.access$200().iterator();
-      while (localIterator.hasNext()) {
-        ((HostUIHelper.HostEnvironmentLifeCycle)localIterator.next()).onEnvironmentPause(paramActivity);
+      Object localObject = HostUIHelper.access$200().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((HostUIHelper.HostEnvironmentLifeCycle)((Iterator)localObject).next()).onEnvironmentPause(paramActivity);
       }
       if ((paramActivity.getIntent() != null) && (paramActivity.getIntent().getBooleanExtra("key_is_auto_close_host", false))) {
         HostUIHelper.closeHostEnvironment();
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityPaused:");
+      ((StringBuilder)localObject).append(paramActivity.hashCode());
+      QLog.d("HostUIHelper", 1, ((StringBuilder)localObject).toString());
     }
-    QLog.d("HostUIHelper", 1, "onActivityPaused");
   }
   
   public void onActivityResumed(Activity paramActivity)
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      Iterator localIterator = HostUIHelper.access$200().iterator();
-      while (localIterator.hasNext()) {
-        ((HostUIHelper.HostEnvironmentLifeCycle)localIterator.next()).onEnvironmentResume(paramActivity);
+      Object localObject = HostUIHelper.access$200().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((HostUIHelper.HostEnvironmentLifeCycle)((Iterator)localObject).next()).onEnvironmentResume(paramActivity);
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityResumed:");
+      ((StringBuilder)localObject).append(paramActivity.hashCode());
+      QLog.d("HostUIHelper", 1, ((StringBuilder)localObject).toString());
     }
     if (HostUIHelper.isContextShadowActivity(paramActivity)) {
       HostUIHelper.access$402(new WeakReference(paramActivity));
     }
-    QLog.d("HostUIHelper", 1, "onActivityResumed");
   }
   
   public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
@@ -81,29 +93,35 @@ final class HostUIHelper$1
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      Iterator localIterator = HostUIHelper.access$200().iterator();
-      while (localIterator.hasNext()) {
-        ((HostUIHelper.HostEnvironmentLifeCycle)localIterator.next()).onEnvironmentStarted(paramActivity);
+      Object localObject = HostUIHelper.access$200().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((HostUIHelper.HostEnvironmentLifeCycle)((Iterator)localObject).next()).onEnvironmentStarted(paramActivity);
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityStarted:");
+      ((StringBuilder)localObject).append(paramActivity.hashCode());
+      QLog.d("HostUIHelper", 1, ((StringBuilder)localObject).toString());
     }
-    QLog.d("HostUIHelper", 1, "onActivityStarted");
   }
   
   public void onActivityStopped(Activity paramActivity)
   {
     if (HostUIHelper.access$000(paramActivity))
     {
-      Iterator localIterator = HostUIHelper.access$200().iterator();
-      while (localIterator.hasNext()) {
-        ((HostUIHelper.HostEnvironmentLifeCycle)localIterator.next()).onEnvironmentStop(paramActivity);
+      Object localObject = HostUIHelper.access$200().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((HostUIHelper.HostEnvironmentLifeCycle)((Iterator)localObject).next()).onEnvironmentStop(paramActivity);
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityStopped:");
+      ((StringBuilder)localObject).append(paramActivity.hashCode());
+      QLog.d("HostUIHelper", 1, ((StringBuilder)localObject).toString());
     }
-    QLog.d("HostUIHelper", 1, "onActivityStopped");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.helper.HostUIHelper.1
  * JD-Core Version:    0.7.0.1
  */

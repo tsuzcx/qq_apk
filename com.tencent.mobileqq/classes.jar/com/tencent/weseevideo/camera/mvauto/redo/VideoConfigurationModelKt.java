@@ -87,13 +87,13 @@ public final class VideoConfigurationModelKt
     if (localList1 != null)
     {
       localList1 = CollectionsKt.toMutableList((Collection)localList1);
-      if (localList1 == null) {}
+      if (localList1 != null) {}
     }
-    for (;;)
+    else
     {
-      return new VideoConfigurationModel(i, localEditorPointF, f1, f2, localList2, localList1, this.rotate);
       localList1 = CollectionsKt.emptyList();
     }
+    return new VideoConfigurationModel(i, localEditorPointF, f1, f2, localList2, localList1, this.rotate);
   }
   
   @NotNull
@@ -105,18 +105,18 @@ public final class VideoConfigurationModelKt
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VideoConfigurationModelKt))
       {
         paramObject = (VideoConfigurationModelKt)paramObject;
-        if ((this.contentMode != paramObject.contentMode) || (!Intrinsics.areEqual(this.frameOrigin, paramObject.frameOrigin)) || (Float.compare(this.frameWidth, paramObject.frameWidth) != 0) || (Float.compare(this.frameHeight, paramObject.frameHeight) != 0) || (!Intrinsics.areEqual(this.matrix, paramObject.matrix)) || (!Intrinsics.areEqual(this.effects, paramObject.effects)) || (this.rotate != paramObject.rotate)) {}
+        if ((this.contentMode == paramObject.contentMode) && (Intrinsics.areEqual(this.frameOrigin, paramObject.frameOrigin)) && (Float.compare(this.frameWidth, paramObject.frameWidth) == 0) && (Float.compare(this.frameHeight, paramObject.frameHeight) == 0) && (Intrinsics.areEqual(this.matrix, paramObject.matrix)) && (Intrinsics.areEqual(this.effects, paramObject.effects)) && (this.rotate == paramObject.rotate)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final int getContentMode()
@@ -159,44 +159,56 @@ public final class VideoConfigurationModelKt
   
   public int hashCode()
   {
-    int k = 0;
     int m = this.contentMode;
     Object localObject = this.frameOrigin;
+    int k = 0;
     int i;
-    int n;
-    int i1;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      n = Float.floatToIntBits(this.frameWidth);
-      i1 = Float.floatToIntBits(this.frameHeight);
-      localObject = this.matrix;
-      if (localObject == null) {
-        break label120;
-      }
-    }
-    label120:
-    for (int j = localObject.hashCode();; j = 0)
-    {
-      localObject = this.effects;
-      if (localObject != null) {
-        k = localObject.hashCode();
-      }
-      return ((j + (((i + m * 31) * 31 + n) * 31 + i1) * 31) * 31 + k) * 31 + this.rotate;
+    } else {
       i = 0;
-      break;
     }
+    int n = Float.floatToIntBits(this.frameWidth);
+    int i1 = Float.floatToIntBits(this.frameHeight);
+    localObject = this.matrix;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.effects;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    }
+    return (((((m * 31 + i) * 31 + n) * 31 + i1) * 31 + j) * 31 + k) * 31 + this.rotate;
   }
   
   @NotNull
   public String toString()
   {
-    return "VideoConfigurationModelKt(contentMode=" + this.contentMode + ", frameOrigin=" + this.frameOrigin + ", frameWidth=" + this.frameWidth + ", frameHeight=" + this.frameHeight + ", matrix=" + this.matrix + ", effects=" + this.effects + ", rotate=" + this.rotate + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoConfigurationModelKt(contentMode=");
+    localStringBuilder.append(this.contentMode);
+    localStringBuilder.append(", frameOrigin=");
+    localStringBuilder.append(this.frameOrigin);
+    localStringBuilder.append(", frameWidth=");
+    localStringBuilder.append(this.frameWidth);
+    localStringBuilder.append(", frameHeight=");
+    localStringBuilder.append(this.frameHeight);
+    localStringBuilder.append(", matrix=");
+    localStringBuilder.append(this.matrix);
+    localStringBuilder.append(", effects=");
+    localStringBuilder.append(this.effects);
+    localStringBuilder.append(", rotate=");
+    localStringBuilder.append(this.rotate);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.camera.mvauto.redo.VideoConfigurationModelKt
  * JD-Core Version:    0.7.0.1
  */

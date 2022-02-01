@@ -18,11 +18,14 @@ public class ExpireFileSystem
   {
     VFSUtils.checkFileSystemVersion(paramParcel, ExpireFileSystem.class, 1);
     this.mFS = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
-    if (this.mFS == null) {
-      throw new IllegalArgumentException("Wrong wrapped filesystem.");
+    FileSystem localFileSystem = this.mFS;
+    if (localFileSystem != null)
+    {
+      this.mFSList = Collections.singletonList(localFileSystem);
+      this.mExpireTime = paramParcel.readLong();
+      return;
     }
-    this.mFSList = Collections.singletonList(this.mFS);
-    this.mExpireTime = paramParcel.readLong();
+    throw new IllegalArgumentException("Wrong wrapped filesystem.");
   }
   
   public ExpireFileSystem(FileSystem paramFileSystem, long paramLong)
@@ -71,7 +74,7 @@ public class ExpireFileSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.ExpireFileSystem
  * JD-Core Version:    0.7.0.1
  */

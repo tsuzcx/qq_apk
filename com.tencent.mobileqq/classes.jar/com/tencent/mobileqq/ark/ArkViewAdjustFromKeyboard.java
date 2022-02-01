@@ -22,13 +22,14 @@ public class ArkViewAdjustFromKeyboard
   
   private ArkViewAdjustFromKeyboard(Activity paramActivity, ArkAppView paramArkAppView)
   {
-    FrameLayout localFrameLayout = (FrameLayout)paramActivity.findViewById(16908290);
-    if (localFrameLayout == null) {
+    Object localObject = (FrameLayout)paramActivity.findViewById(16908290);
+    if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = localFrameLayout.getChildAt(0);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new ArkViewAdjustFromKeyboard.1(this));
+    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)localObject).getChildAt(0);
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {
+      ((View)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new ArkViewAdjustFromKeyboard.1(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = paramArkAppView;
     this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams = ((ViewGroup.MarginLayoutParams)paramArkAppView.getLayoutParams());
@@ -52,27 +53,25 @@ public class ArkViewAdjustFromKeyboard
     {
       int k = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
       int j = k - i;
-      if (j <= k / 4) {
-        break label104;
-      }
-      Rect localRect = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getInputRect();
-      int[] arrayOfInt = new int[2];
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLocationOnScreen(arrayOfInt);
-      k = localRect.bottom + arrayOfInt[1];
-      j = this.c - j;
-      if (j < k)
+      if (j > k / 4)
       {
-        this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = (j - k);
+        Rect localRect = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getInputRect();
+        int[] arrayOfInt = new int[2];
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLocationOnScreen(arrayOfInt);
+        k = localRect.bottom + arrayOfInt[1];
+        j = this.c - j;
+        if (j < k)
+        {
+          this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = (j - k);
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = this.b;
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
       }
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_Int = i;
-      return;
-      label104:
-      this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = this.b;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
     }
   }
   
@@ -83,7 +82,7 @@ public class ArkViewAdjustFromKeyboard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkViewAdjustFromKeyboard
  * JD-Core Version:    0.7.0.1
  */

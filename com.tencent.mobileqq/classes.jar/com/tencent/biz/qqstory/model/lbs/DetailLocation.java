@@ -7,11 +7,12 @@ public class DetailLocation
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       if (!super.equals(paramObject)) {
@@ -24,7 +25,8 @@ public class DetailLocation
       if (this.b != paramObject.b) {
         return false;
       }
-    } while (this.d == paramObject.d);
+      return this.d == paramObject.d;
+    }
     return false;
   }
   
@@ -35,7 +37,7 @@ public class DetailLocation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.lbs.DetailLocation
  * JD-Core Version:    0.7.0.1
  */

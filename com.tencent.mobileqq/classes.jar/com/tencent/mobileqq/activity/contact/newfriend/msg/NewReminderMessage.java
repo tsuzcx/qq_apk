@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity.contact.newfriend.msg;
 
+import com.tencent.mobileqq.newfriend.msg.NewFriendMessage;
+
 public class NewReminderMessage
   extends NewFriendMessage
 {
@@ -10,7 +12,7 @@ public class NewReminderMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.msg.NewReminderMessage
  * JD-Core Version:    0.7.0.1
  */

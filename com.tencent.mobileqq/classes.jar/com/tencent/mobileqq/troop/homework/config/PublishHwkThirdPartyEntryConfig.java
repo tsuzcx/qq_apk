@@ -29,137 +29,136 @@ public class PublishHwkThirdPartyEntryConfig
   
   public static PublishHwkThirdPartyEntryConfig a(QConfItem[] paramArrayOfQConfItem)
   {
-    localObject2 = "";
-    localObject1 = "";
-    localObject3 = "";
-    Object localObject9 = "";
+    Object localObject5 = "";
+    Object localObject4 = localObject5;
+    Object localObject6 = localObject4;
+    Object localObject9 = localObject6;
     int n = 0;
-    i = 0;
     int k = 0;
-    if (n < paramArrayOfQConfItem.length)
+    int i = 0;
+    while (n < paramArrayOfQConfItem.length)
     {
-      Object localObject4 = paramArrayOfQConfItem[n].jdField_a_of_type_JavaLangString;
-      if (TextUtils.isEmpty((CharSequence)localObject4))
+      Object localObject2 = paramArrayOfQConfItem[n].jdField_a_of_type_JavaLangString;
+      int j;
+      Object localObject1;
+      Object localObject8;
+      Object localObject10;
+      if (TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localObject7 = localObject9;
-        localObject6 = localObject3;
+        j = k;
+        localObject1 = localObject5;
+        localObject8 = localObject6;
+        localObject10 = localObject9;
       }
-      for (;;)
+      else
       {
-        n += 1;
-        localObject3 = localObject6;
-        localObject9 = localObject7;
-        break;
-        m = k;
+        j = k;
+        int m = i;
+        localObject1 = localObject5;
+        Object localObject7 = localObject4;
+        localObject8 = localObject6;
         try
         {
-          localJSONObject1 = new JSONObject((String)localObject4);
-          m = k;
-          j = localJSONObject1.optInt("globalOpen", 0);
-          m = j;
-          k = localJSONObject1.optInt("globalOpenTXDoc", 0);
-          m = k;
-          localObject8 = localObject2;
-          localObject7 = localObject1;
-          localObject6 = localObject3;
+          localObject10 = new JSONObject((String)localObject2);
+          j = k;
+          m = i;
+          localObject1 = localObject5;
+          localObject7 = localObject4;
+          localObject8 = localObject6;
+          k = ((JSONObject)localObject10).optInt("globalOpen", 0);
+          j = k;
+          m = i;
+          localObject1 = localObject5;
+          localObject7 = localObject4;
+          localObject8 = localObject6;
+          int i1 = ((JSONObject)localObject10).optInt("globalOpenTXDoc", 0);
+          j = k;
+          m = i1;
+          localObject1 = localObject5;
+          localObject7 = localObject4;
+          localObject8 = localObject6;
+          JSONObject localJSONObject = ((JSONObject)localObject10).optJSONObject("weikeUrls");
+          Object localObject3 = localObject5;
+          localObject2 = localObject4;
+          if (localJSONObject != null)
+          {
+            j = k;
+            m = i1;
+            localObject1 = localObject5;
+            localObject7 = localObject4;
+            localObject8 = localObject6;
+            localObject3 = localJSONObject.optString("choose_exam");
+            j = k;
+            m = i1;
+            localObject1 = localObject3;
+            localObject7 = localObject4;
+            localObject8 = localObject6;
+            localObject2 = localJSONObject.optString("get_exam_info");
+          }
+          j = k;
+          m = i1;
+          localObject1 = localObject3;
+          localObject7 = localObject2;
+          localObject8 = localObject6;
+          localJSONObject = ((JSONObject)localObject10).optJSONObject("txDocUrls");
+          j = k;
+          i = i1;
+          localObject1 = localObject3;
+          localObject4 = localObject2;
+          localObject8 = localObject6;
+          localObject10 = localObject9;
+          if (localJSONObject != null)
+          {
+            j = k;
+            m = i1;
+            localObject1 = localObject3;
+            localObject7 = localObject2;
+            localObject8 = localObject6;
+            localObject5 = localJSONObject.optString("choose_doc");
+            j = k;
+            m = i1;
+            localObject1 = localObject3;
+            localObject7 = localObject2;
+            localObject8 = localObject5;
+            localObject10 = localJSONObject.optString("get_doc_info");
+            j = k;
+            i = i1;
+            localObject1 = localObject3;
+            localObject4 = localObject2;
+            localObject8 = localObject5;
+          }
         }
-        catch (JSONException localJSONException1)
+        catch (JSONException localJSONException)
         {
-          try
-          {
-            localJSONObject2 = localJSONObject1.optJSONObject("weikeUrls");
-            localObject5 = localObject2;
-            localObject4 = localObject1;
-            if (localJSONObject2 != null)
-            {
-              localObject8 = localObject2;
-              localObject7 = localObject1;
-              localObject6 = localObject3;
-              localObject2 = localJSONObject2.optString("choose_exam");
-            }
-          }
-          catch (JSONException localJSONException2)
-          {
-            for (;;)
-            {
-              JSONObject localJSONObject1;
-              int j;
-              Object localObject8;
-              JSONObject localJSONObject2;
-              Object localObject5;
-              boolean bool1;
-              boolean bool2;
-              i = m;
-              localObject2 = localObject8;
-              localObject1 = localObject7;
-              localObject3 = localObject6;
-            }
-          }
-          try
-          {
-            localObject4 = localJSONObject2.optString("get_exam_info");
-            localObject5 = localObject2;
-            localObject8 = localObject5;
-            localObject7 = localObject4;
-            localObject6 = localObject3;
-            localJSONObject1 = localJSONObject1.optJSONObject("txDocUrls");
-            i = m;
-            k = j;
-            localObject2 = localObject5;
-            localObject1 = localObject4;
-            localObject6 = localObject3;
-            localObject7 = localObject9;
-            if (localJSONObject1 == null) {
-              continue;
-            }
-            localObject8 = localObject5;
-            localObject7 = localObject4;
-            localObject6 = localObject3;
-            localObject3 = localJSONObject1.optString("choose_doc");
-            localObject8 = localObject5;
-            localObject7 = localObject4;
-            localObject6 = localObject3;
-            localObject1 = localJSONObject1.optString("get_doc_info");
-            localObject7 = localObject1;
-            i = m;
-            k = j;
-            localObject2 = localObject5;
-            localObject1 = localObject4;
-            localObject6 = localObject3;
-          }
-          catch (JSONException localJSONException3)
-          {
-            i = m;
-            break label299;
-          }
-          localJSONException1 = localJSONException1;
-          j = m;
+          localJSONException.printStackTrace();
+          localObject10 = localObject9;
+          localObject4 = localObject7;
+          i = m;
         }
-        label299:
-        localJSONException1.printStackTrace();
-        k = j;
-        localObject6 = localObject3;
-        localObject7 = localObject9;
       }
+      n += 1;
+      k = j;
+      localObject5 = localObject1;
+      localObject6 = localObject8;
+      localObject9 = localObject10;
     }
-    if (k == 1)
-    {
+    boolean bool1;
+    if (k == 1) {
       bool1 = true;
-      if (i != 1) {
-        break label377;
-      }
-    }
-    label377:
-    for (bool2 = true;; bool2 = false)
-    {
-      paramArrayOfQConfItem = new PublishHwkThirdPartyEntryConfig(bool1, (String)localObject2, (String)localObject1, bool2, (String)localObject3, (String)localObject9);
-      if (QLog.isColorLevel()) {
-        QLog.i("PublishHwkThirdPartyEntryConfig", 2, paramArrayOfQConfItem.toString());
-      }
-      return paramArrayOfQConfItem;
+    } else {
       bool1 = false;
-      break;
     }
+    boolean bool2;
+    if (i == 1) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    paramArrayOfQConfItem = new PublishHwkThirdPartyEntryConfig(bool1, (String)localObject5, localObject4, bool2, localObject6, localObject9);
+    if (QLog.isColorLevel()) {
+      QLog.i("PublishHwkThirdPartyEntryConfig", 2, paramArrayOfQConfItem.toString());
+    }
+    return paramArrayOfQConfItem;
   }
   
   public String a()
@@ -195,18 +194,30 @@ public class PublishHwkThirdPartyEntryConfig
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mIsGlobalOpenWeiKe:").append(this.jdField_a_of_type_Boolean).append("\r\n");
-    localStringBuilder.append("mIsGlobalOpenTXDoc:").append(this.jdField_b_of_type_Boolean).append("\r\n");
-    localStringBuilder.append("mStrSelectWeiKeUrl:").append(this.jdField_a_of_type_JavaLangString).append("\r\n");
-    localStringBuilder.append("mStrDetailWeiKeUrl:").append(this.jdField_b_of_type_JavaLangString).append("\r\n");
-    localStringBuilder.append("mStrSelectDocUrl:").append(this.c).append("\r\n");
-    localStringBuilder.append("mStrDetailDocUrl:").append(this.d).append("\r\n");
+    localStringBuilder.append("mIsGlobalOpenWeiKe:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mIsGlobalOpenTXDoc:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mStrSelectWeiKeUrl:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mStrDetailWeiKeUrl:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mStrSelectDocUrl:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mStrDetailDocUrl:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("\r\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.config.PublishHwkThirdPartyEntryConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,19 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class oidb_cmd0xde0$ActiveZoneFeature
   extends MessageMicro<ActiveZoneFeature>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "top", "bottom" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, ActiveZoneFeature.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field bottom = PBField.initUInt32(0);
   public final PBUInt32Field top = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "top", "bottom" }, new Object[] { localInteger, localInteger }, ActiveZoneFeature.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xde0.oidb_cmd0xde0.ActiveZoneFeature
  * JD-Core Version:    0.7.0.1
  */

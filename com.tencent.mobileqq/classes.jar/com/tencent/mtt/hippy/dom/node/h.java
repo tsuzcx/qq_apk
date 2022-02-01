@@ -1,98 +1,35 @@
 package com.tencent.mtt.hippy.dom.node;
 
-import android.graphics.Picture;
-import android.os.Build.VERSION;
-import android.text.Layout;
-import android.text.StaticLayout;
-import com.tencent.mtt.hippy.common.HippyHandlerThread;
-import com.tencent.mtt.hippy.utils.LogUtils;
+import android.text.TextPaint;
+import android.text.style.MetricAffectingSpan;
 
 public class h
+  extends MetricAffectingSpan
 {
-  private HippyHandlerThread a = new HippyHandlerThread("text-warm-thread");
-  private Picture b = new Picture();
+  private final int a;
+  private final int b;
+  private final String c;
   
-  private int b(Layout paramLayout)
+  public h(int paramInt1, int paramInt2, String paramString)
   {
-    int j = 0;
-    if (paramLayout == null) {
-      return 0;
-    }
-    int i = j;
-    float f;
-    if (Build.VERSION.SDK_INT < 20)
-    {
-      i = j;
-      if ((paramLayout instanceof StaticLayout))
-      {
-        i = paramLayout.getLineAscent(paramLayout.getLineCount() - 1);
-        j = paramLayout.getLineDescent(paramLayout.getLineCount() - 1);
-        f = (j - i - paramLayout.getSpacingAdd()) / paramLayout.getSpacingMultiplier();
-        f = j - i - f;
-        if (f < 0.0F) {
-          break label98;
-        }
-      }
-    }
-    label98:
-    for (i = (int)(f + 0.5D);; i = -(int)(-f + 0.5D)) {
-      return paramLayout.getHeight() - i;
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramString;
   }
   
-  private int c(Layout paramLayout)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    int i = 0;
-    int k = 0;
-    if (paramLayout == null) {
-      return k;
-    }
-    int m = paramLayout.getLineCount();
-    int j = 0;
-    for (;;)
-    {
-      k = i;
-      if (j >= m) {
-        break;
-      }
-      i = Math.max(i, (int)paramLayout.getLineRight(j));
-      j += 1;
-    }
+    TypeFaceUtil.apply(paramTextPaint, this.a, this.b, this.c);
   }
   
-  private boolean d(Layout paramLayout)
+  public void updateMeasureState(TextPaint paramTextPaint)
   {
-    try
-    {
-      paramLayout.draw(this.b.beginRecording(c(paramLayout), b(paramLayout)));
-      this.b.endRecording();
-      return true;
-    }
-    catch (Exception paramLayout)
-    {
-      LogUtils.e("TextNode", "warmUpTextLayoutCache error", paramLayout);
-    }
-    return false;
-  }
-  
-  public void a()
-  {
-    if (this.a != null) {
-      this.a.quit();
-    }
-    this.a = null;
-  }
-  
-  public void a(Layout paramLayout)
-  {
-    if ((this.a != null) && (this.a.isThreadAlive())) {
-      this.a.runOnQueue(new h.1(this, paramLayout));
-    }
+    TypeFaceUtil.apply(paramTextPaint, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.h
  * JD-Core Version:    0.7.0.1
  */

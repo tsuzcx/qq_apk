@@ -15,7 +15,10 @@ final class BannerVideoInfoWidget3$1
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    SLog.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("failed to parse the url drawable, error ");
+    paramURLDrawable.append(paramThrowable);
+    SLog.d("BannerVideoInfoWidget", paramURLDrawable.toString());
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
@@ -28,7 +31,7 @@ final class BannerVideoInfoWidget3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BannerVideoInfoWidget3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,159 +37,184 @@ class VideoViewVideoHolder$16
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
-    if (localStoryVideoItem == null)
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
+    if (localObject1 == null)
     {
       SLog.e(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "video info empty , report error! vid :%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.jdField_a_of_type_JavaLangString });
       return null;
     }
-    paramJobContext = ((UserManager)SuperManager.a(2)).b(localStoryVideoItem.mOwnerUid);
+    paramJobContext = ((UserManager)SuperManager.a(2)).b(((StoryVideoItem)localObject1).mOwnerUid);
     for (;;)
     {
       try
       {
-        localJSONObject = new JSONObject();
-        localJSONObject.put("author_id", localStoryVideoItem.mOwnerUid + "");
-        if (localStoryVideoItem.mStoryType != 2) {
-          continue;
+        JSONObject localJSONObject = new JSONObject();
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(((StoryVideoItem)localObject1).mOwnerUid);
+        paramVarArgs.append("");
+        localJSONObject.put("author_id", paramVarArgs.toString());
+        i = ((StoryVideoItem)localObject1).mStoryType;
+        if (i == 2)
+        {
+          paramJobContext = "6";
         }
-        paramJobContext = "6";
+        else
+        {
+          if ((paramJobContext == null) || (!paramJobContext.isVip)) {
+            break label1125;
+          }
+          paramJobContext = "3";
+        }
         localJSONObject.put("author_type", paramJobContext);
         localJSONObject.put("video_type", "1");
-        localJSONObject.put("video_time", this.jdField_a_of_type_Long + "");
-        localJSONObject.put("play_time", this.b + "");
-        localJSONObject.put("video_restrict", localStoryVideoItem.mBanType + "");
-        if (localStoryVideoItem.mIsPicture != 1) {
-          break label1034;
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(this.jdField_a_of_type_Long);
+        paramVarArgs.append("");
+        localJSONObject.put("video_time", paramVarArgs.toString());
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(this.b);
+        paramVarArgs.append("");
+        localJSONObject.put("play_time", paramVarArgs.toString());
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(((StoryVideoItem)localObject1).mBanType);
+        paramVarArgs.append("");
+        localJSONObject.put("video_restrict", paramVarArgs.toString());
+        if (((StoryVideoItem)localObject1).mIsPicture != 1) {
+          break label1131;
         }
         i = 1;
         localJSONObject.put("content_type", i);
-        if (localStoryVideoItem.mLocalCreateTime > 0L) {
-          break label1039;
+        if (((StoryVideoItem)localObject1).mLocalCreateTime > 0L) {
+          break label1136;
         }
         i = 1;
         localJSONObject.put("content_origin", i);
-        localJSONObject.put("vote_id", StoryReportor.a(localStoryVideoItem));
-        if (VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder) <= 0L) {
-          continue;
+        localJSONObject.put("vote_id", StoryReportor.a((StoryVideoItem)localObject1));
+        long l;
+        if (VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder) > 0L) {
+          l = VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
+        } else {
+          l = System.currentTimeMillis() - VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
         }
-        l = VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
-        localVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
-        localJSONObject.put("load_time", l + "");
-        paramVarArgs = null;
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a();
-        if ((((OpenPlayerBuilder.Data)localObject).mInfo instanceof MsgTabPlayInfo)) {
-          paramVarArgs = ((MsgTabPlayInfo)((OpenPlayerBuilder.Data)localObject).mInfo).nodeUnionId;
+        Object localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(l);
+        paramVarArgs.append("");
+        localJSONObject.put("load_time", paramVarArgs.toString());
+        paramVarArgs = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a();
+        if (!(paramVarArgs.mInfo instanceof MsgTabPlayInfo)) {
+          break label1141;
         }
-        localJSONObject.put("viewer_id", StoryReportor.a(paramVarArgs, localVideoListFeedItem));
-        localJSONObject.put("sharefromapp", Integer.toString(StoryApi.a(2131427362)));
-        if (localStoryVideoItem.mTagInfoBase != null) {
-          localJSONObject.put("tag_id", localStoryVideoItem.mTagInfoBase.jdField_a_of_type_Long);
+        paramVarArgs = ((MsgTabPlayInfo)paramVarArgs.mInfo).nodeUnionId;
+        localJSONObject.put("viewer_id", StoryReportor.a(paramVarArgs, (VideoListFeedItem)localObject2));
+        localJSONObject.put("sharefromapp", Integer.toString(StoryApi.a(2131427366)));
+        if (((StoryVideoItem)localObject1).mTagInfoBase == null) {
+          break label1146;
         }
-        if (localStoryVideoItem.mSourceType == -1) {
-          break label1044;
+        localJSONObject.put("tag_id", ((StoryVideoItem)localObject1).mTagInfoBase.jdField_a_of_type_Long);
+        if (((StoryVideoItem)localObject1).mSourceType == -1) {
+          break label1149;
         }
         bool = true;
-        AssertUtils.a(bool, "storyVideoItem.mSourceType is illegal");
-        if (!TextUtils.isEmpty(localStoryVideoItem.mLinkInfoJson)) {
-          break label1050;
+        AssertUtils.assertTrue(bool, "storyVideoItem.mSourceType is illegal");
+        if (!TextUtils.isEmpty(((StoryVideoItem)localObject1).mLinkInfoJson)) {
+          break label1155;
         }
         i = 0;
         localJSONObject.put("video_url", i);
-        i = localStoryVideoItem.mSourceType;
-        if (localStoryVideoItem.mSourceTagType == 1) {
+        i = ((StoryVideoItem)localObject1).mSourceType;
+        if (((StoryVideoItem)localObject1).mSourceTagType == 1) {
           i = 1;
         }
         localJSONObject.put("video_origin", i);
-        paramVarArgs = VideoLinkInfo.a(localStoryVideoItem.mLinkInfoJson);
-        if ((paramVarArgs == null) || (paramVarArgs.jdField_a_of_type_Int != 5)) {
-          continue;
+        paramVarArgs = VideoLinkInfo.a(((StoryVideoItem)localObject1).mLinkInfoJson);
+        if ((paramVarArgs != null) && (paramVarArgs.jdField_a_of_type_Int == 5)) {
+          localJSONObject.put("video_transmit", 1);
+        } else {
+          localJSONObject.put("video_transmit", 0);
         }
-        localJSONObject.put("video_transmit", 1);
-        if ((localStoryVideoItem.mCompInfoBase == null) || (TextUtils.isEmpty(localStoryVideoItem.mCompInfoBase.c))) {
-          continue;
+        Object localObject3 = ((StoryVideoItem)localObject1).mCompInfoBase;
+        if ((localObject3 != null) && (!TextUtils.isEmpty(((StoryVideoItem)localObject1).mCompInfoBase.c))) {
+          localJSONObject.put("copruduction", 1);
+        } else if ((paramVarArgs != null) && (paramVarArgs.jdField_a_of_type_Int == 3)) {
+          localJSONObject.put("copruduction", 1);
+        } else {
+          localJSONObject.put("copruduction", 0);
         }
-        localJSONObject.put("copruduction", 1);
+        paramVarArgs = ((StoryVideoItem)localObject1).getVideoGameInfo();
+        if (paramVarArgs != null) {
+          localJSONObject.put("game_id", paramVarArgs.jdField_a_of_type_JavaLangString);
+        }
+        localJSONObject.put("mobile_type", Build.MODEL);
+        localJSONObject.put("wifi_ssid", NetworkUtils.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
+        localJSONObject.put("wifi_mac", NetworkUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
+        i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a().mReportData.from;
+        int j = this.jdField_a_of_type_Int;
+        localObject3 = localJSONObject.toString();
+        if (localObject2 == null) {
+          paramVarArgs = "";
+        } else {
+          paramVarArgs = ((VideoListFeedItem)localObject2).feedId;
+        }
+        StoryReportor.a("play_video", "video_all_js", i, j, new String[] { localObject3, paramVarArgs, this.jdField_a_of_type_JavaLangString, ((StoryVideoItem)localObject1).mVid });
+        j = this.jdField_a_of_type_Int;
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(((StoryVideoItem)localObject1).mOwnerUid);
+        paramVarArgs.append("");
+        StoryReportor.a("play_video", "video_property", i, j, new String[] { paramVarArgs.toString(), paramJobContext, "1", ((StoryVideoItem)localObject1).mVid });
+        j = this.jdField_a_of_type_Int;
+        paramJobContext = new StringBuilder();
+        paramJobContext.append(this.jdField_a_of_type_Long);
+        paramJobContext.append("");
+        paramJobContext = paramJobContext.toString();
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(this.b);
+        paramVarArgs.append("");
+        paramVarArgs = paramVarArgs.toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(l);
+        ((StringBuilder)localObject2).append("");
+        StoryReportor.a("play_video", "video_time", i, j, new String[] { paramJobContext, paramVarArgs, ((StringBuilder)localObject2).toString(), ((StoryVideoItem)localObject1).mVid });
+        SLog.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "report user video done , op_result : %d ,json :%s", Integer.valueOf(this.jdField_a_of_type_Int), localJSONObject);
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.d = 3;
       }
       catch (JSONException paramJobContext)
       {
-        JSONObject localJSONObject;
-        long l;
-        VideoListFeedItem localVideoListFeedItem;
-        Object localObject;
-        int j;
-        if (!QLog.isColorLevel()) {
-          break label1020;
+        if (QLog.isColorLevel())
+        {
+          paramVarArgs = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("reportViewVideo exception:");
+          ((StringBuilder)localObject1).append(QLog.getStackTraceString(paramJobContext));
+          QLog.w(paramVarArgs, 2, ((StringBuilder)localObject1).toString());
         }
-        QLog.w(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, 2, "reportViewVideo exception:" + QLog.getStackTraceString(paramJobContext));
-        break label1020;
-        if ((paramVarArgs == null) || (paramVarArgs.jdField_a_of_type_Int != 3)) {
-          continue;
-        }
-        localJSONObject.put("copruduction", 1);
-        continue;
-        localJSONObject.put("copruduction", 0);
-        continue;
-        paramVarArgs = localVideoListFeedItem.feedId;
-        continue;
       }
-      paramVarArgs = localStoryVideoItem.getVideoGameInfo();
-      if (paramVarArgs != null) {
-        localJSONObject.put("game_id", paramVarArgs.jdField_a_of_type_JavaLangString);
-      }
-      localJSONObject.put("mobile_type", Build.MODEL);
-      localJSONObject.put("wifi_ssid", NetworkUtils.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
-      localJSONObject.put("wifi_mac", NetworkUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a().mReportData.from;
-      j = this.jdField_a_of_type_Int;
-      localObject = localJSONObject.toString();
-      if (localVideoListFeedItem == null)
-      {
-        paramVarArgs = "";
-        StoryReportor.a("play_video", "video_all_js", i, j, new String[] { localObject, paramVarArgs, this.jdField_a_of_type_JavaLangString, localStoryVideoItem.mVid });
-        StoryReportor.a("play_video", "video_property", i, this.jdField_a_of_type_Int, new String[] { localStoryVideoItem.mOwnerUid + "", paramJobContext, "1", localStoryVideoItem.mVid });
-        StoryReportor.a("play_video", "video_time", i, this.jdField_a_of_type_Int, new String[] { this.jdField_a_of_type_Long + "", this.b + "", l + "", localStoryVideoItem.mVid });
-        SLog.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "report user video done , op_result : %d ,json :%s", Integer.valueOf(this.jdField_a_of_type_Int), localJSONObject);
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.d = 3;
-        break label1020;
-        if (paramJobContext == null) {
-          break label1028;
-        }
-        if (!paramJobContext.isVip) {
-          break label1022;
-        }
-        paramJobContext = "3";
-        continue;
-        l = System.currentTimeMillis() - VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
-        continue;
-        localJSONObject.put("video_transmit", 0);
-        continue;
-      }
-      label1020:
       return null;
-      label1022:
+      label1125:
       paramJobContext = "1";
       continue;
-      label1028:
-      paramJobContext = "1";
+      label1131:
+      int i = 2;
       continue;
-      label1034:
+      label1136:
       i = 2;
       continue;
-      label1039:
-      i = 2;
+      label1141:
+      paramVarArgs = null;
       continue;
-      label1044:
+      label1146:
+      continue;
+      label1149:
       boolean bool = false;
       continue;
-      label1050:
+      label1155:
       i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.16
  * JD-Core Version:    0.7.0.1
  */

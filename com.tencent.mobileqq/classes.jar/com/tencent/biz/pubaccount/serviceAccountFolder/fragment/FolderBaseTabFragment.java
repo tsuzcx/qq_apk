@@ -1,35 +1,26 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 
 public abstract class FolderBaseTabFragment
-  extends ReportV4Fragment
+  extends BaseFragment
 {
-  public static int a;
-  public static String a;
-  public static int b;
+  public static int a = 0;
+  public static String a = "FolderBaseTabFragment";
+  public static int b = 1;
   protected View a;
   protected boolean a;
-  protected String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "FolderBaseTabFragment";
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 1;
-  }
+  protected String b = "";
   
   public FolderBaseTabFragment()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = "";
   }
   
   protected abstract void a();
@@ -39,25 +30,29 @@ public abstract class FolderBaseTabFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    if (getActivity() != null) {
-      this.jdField_b_of_type_JavaLangString = getActivity().app.getAccount();
+    if (getBaseActivity() != null) {
+      this.b = getBaseActivity().app.getAccount();
+    }
+    if ((!this.jdField_a_of_type_Boolean) && (getBaseActivity() != null))
+    {
+      a();
+      this.jdField_a_of_type_Boolean = true;
     }
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
     super.setUserVisibleHint(paramBoolean);
-    if ((getUserVisibleHint()) && (!this.jdField_a_of_type_Boolean))
-    {
-      a();
-      this.jdField_a_of_type_Boolean = true;
-    }
-    QLog.d(jdField_a_of_type_JavaLangString, 4, "setUserVisibleHint :" + getUserVisibleHint());
+    String str = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setUserVisibleHint :");
+    localStringBuilder.append(getUserVisibleHint());
+    QLog.d(str, 4, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderBaseTabFragment
  * JD-Core Version:    0.7.0.1
  */

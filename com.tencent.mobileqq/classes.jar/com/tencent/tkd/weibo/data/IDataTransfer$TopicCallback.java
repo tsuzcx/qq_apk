@@ -1,6 +1,6 @@
 package com.tencent.tkd.weibo.data;
 
-import com.tencent.tkd.weibo.bean.TweetTopicItem;
+import com.tencent.tkd.topicsdk.bean.TweetTopicItem;
 import java.util.List;
 import org.jetbrains.annotations.Nullable;
 
@@ -10,7 +10,7 @@ public abstract interface IDataTransfer$TopicCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.data.IDataTransfer.TopicCallback
  * JD-Core Version:    0.7.0.1
  */

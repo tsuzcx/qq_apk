@@ -1,53 +1,41 @@
 package com.tencent.richmediabrowser.model.video;
 
-import android.graphics.drawable.Drawable;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import com.tencent.richmediabrowser.presenter.BasePresenter;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.richmediabrowser.core.IBaseModelBuilder;
+import com.tencent.richmediabrowser.core.IBasePresenterBuilder;
 import com.tencent.richmediabrowser.presenter.video.VideoPresenter;
 import java.io.File;
 
 public class VideoModel
-  extends BrowserBaseModel
+  implements IBaseModelBuilder
 {
   private VideoPresenter videoPresenter;
   
-  public VideoModel(BasePresenter paramBasePresenter)
+  public VideoModel(IBasePresenterBuilder paramIBasePresenterBuilder)
   {
-    if ((paramBasePresenter instanceof VideoPresenter)) {
-      this.videoPresenter = ((VideoPresenter)paramBasePresenter);
+    if ((paramIBasePresenterBuilder instanceof VideoPresenter)) {
+      this.videoPresenter = ((VideoPresenter)paramIBasePresenterBuilder);
     }
   }
   
-  public Drawable getAnimationDrawable(VideoData paramVideoData)
-  {
-    return null;
-  }
+  public void buildComplete() {}
   
-  public File getCacheFile(VideoData paramVideoData, int paramInt)
-  {
-    return null;
-  }
+  public void buildModel() {}
   
-  public int getCacheFileType(VideoData paramVideoData, String paramString)
-  {
-    return 0;
-  }
+  public void buildParams(Intent paramIntent) {}
   
-  public String getURL(VideoData paramVideoData, int paramInt)
+  public boolean isVideoFileExisits(VideoData paramVideoData)
   {
-    return null;
-  }
-  
-  public boolean hasFile(VideoData paramVideoData, int paramInt)
-  {
+    if ((paramVideoData != null) && (!TextUtils.isEmpty(paramVideoData.filePath))) {
+      return new File(paramVideoData.filePath).exists();
+    }
     return false;
   }
-  
-  public void imageDownloaded(VideoData paramVideoData, int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.model.video.VideoModel
  * JD-Core Version:    0.7.0.1
  */

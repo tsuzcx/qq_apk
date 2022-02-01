@@ -14,7 +14,7 @@ public final class VideoCaptureView$initCaptureOperateView$1
   
   public void a(int paramInt)
   {
-    VideoCaptureView.a(this.a).a(paramInt);
+    VideoCaptureView.a(this.a).b(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -24,7 +24,7 @@ public final class VideoCaptureView$initCaptureOperateView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCaptureView.initCaptureOperateView.1
  * JD-Core Version:    0.7.0.1
  */

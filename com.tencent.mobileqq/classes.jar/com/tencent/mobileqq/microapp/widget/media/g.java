@@ -12,7 +12,10 @@ final class g
   
   public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
   {
-    QLog.i("MiniAppCamera", 2, "setOnInfoListener|reson: " + paramInt1);
+    paramMediaRecorder = new StringBuilder();
+    paramMediaRecorder.append("setOnInfoListener|reson: ");
+    paramMediaRecorder.append(paramInt1);
+    QLog.i("MiniAppCamera", 2, paramMediaRecorder.toString());
     if (paramInt1 == 800) {
       this.d.b(this.a, this.b, this.c);
     }
@@ -20,7 +23,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.g
  * JD-Core Version:    0.7.0.1
  */

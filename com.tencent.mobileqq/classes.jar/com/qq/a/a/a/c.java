@@ -10,17 +10,21 @@ final class c
   
   static byte[] a(int paramInt)
   {
-    int i = b - paramInt % b;
-    paramInt = i;
-    if (i == 0) {
-      paramInt = b;
+    int i = b;
+    int j = i - paramInt % i;
+    paramInt = j;
+    if (j == 0) {
+      paramInt = i;
     }
     char c = (char)(byte)paramInt;
     String str = new String();
     i = 0;
     while (i < paramInt)
     {
-      str = str + c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(c);
+      str = localStringBuilder.toString();
       i += 1;
     }
     return str.getBytes(a);
@@ -44,7 +48,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qq.a.a.a.c
  * JD-Core Version:    0.7.0.1
  */

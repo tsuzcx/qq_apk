@@ -33,12 +33,34 @@ public class WTReqUrlResult
   
   public String toString()
   {
-    return "ReqUrlResult{seq: " + this.jdField_b_of_type_Int + ",  fileInfo: " + this.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo + ", retryCnt: " + this.jdField_c_of_type_Int + ", needHttpsUrl: " + this.jdField_a_of_type_Boolean + ", url: " + this.jdField_a_of_type_JavaLangString + ", cookie: " + this.jdField_b_of_type_JavaLangString + ", errCode: " + this.d + ", errMsg: " + this.jdField_c_of_type_JavaLangString + ", isSuccess: " + this.jdField_c_of_type_Boolean + ", retry: " + this.jdField_b_of_type_Boolean + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReqUrlResult{seq: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",  fileInfo: ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvWtogetherDataWTFileInfo);
+    localStringBuilder.append(", retryCnt: ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", needHttpsUrl: ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", url: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", cookie: ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", errCode: ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", errMsg: ");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", isSuccess: ");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(", retry: ");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.data.WTReqUrlResult
  * JD-Core Version:    0.7.0.1
  */

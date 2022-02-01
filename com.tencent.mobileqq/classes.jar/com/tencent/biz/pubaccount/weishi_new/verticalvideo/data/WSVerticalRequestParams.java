@@ -65,13 +65,11 @@ public class WSVerticalRequestParams
   
   public WSVerticalRequestParams b(String paramString)
   {
-    if (this.jdField_b_of_type_Boolean) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return this;
+    if (!this.jdField_b_of_type_Boolean) {
       paramString = "";
     }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
   public String b()
@@ -87,12 +85,25 @@ public class WSVerticalRequestParams
   @NotNull
   public String toString()
   {
-    return "WSVerticalRequestParams{mScene=" + this.jdField_a_of_type_Int + ", mIsRefresh=" + this.jdField_a_of_type_Boolean + ", mIsFirst=" + this.jdField_b_of_type_Boolean + ", mPushInfo='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mContextFeedIds=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSVerticalRequestParams{mScene=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mIsRefresh=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mIsFirst=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", mPushInfo='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mContextFeedIds=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalRequestParams
  * JD-Core Version:    0.7.0.1
  */

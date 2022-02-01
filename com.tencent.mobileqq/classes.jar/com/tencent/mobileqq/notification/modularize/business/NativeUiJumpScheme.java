@@ -16,13 +16,13 @@ public final class NativeUiJumpScheme
   extends BaseJumpScheme
 {
   @NotNull
-  public PendingIntent a(@NotNull PushComponent paramPushComponent)
+  protected PendingIntent a(@NotNull PushComponent paramPushComponent)
   {
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
     return e(paramPushComponent);
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return true;
   }
@@ -31,17 +31,17 @@ public final class NativeUiJumpScheme
   public final PendingIntent e(@NotNull PushComponent paramPushComponent)
   {
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
-    BaseApplication localBaseApplication = BaseApplication.context;
-    Intent localIntent = new Intent((Context)localBaseApplication, NotifyPushSettingActivity.class);
+    Context localContext = (Context)BaseApplication.context;
+    Intent localIntent = new Intent(localContext, NotifyPushSettingActivity.class);
     localIntent.addFlags(268435456);
-    paramPushComponent = PendingIntent.getActivity((Context)localBaseApplication, paramPushComponent.d, localIntent, 134217728);
+    paramPushComponent = PendingIntent.getActivity(localContext, paramPushComponent.d, localIntent, 134217728);
     Intrinsics.checkExpressionValueIsNotNull(paramPushComponent, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
     return paramPushComponent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.business.NativeUiJumpScheme
  * JD-Core Version:    0.7.0.1
  */

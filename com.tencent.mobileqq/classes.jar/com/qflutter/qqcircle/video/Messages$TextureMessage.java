@@ -13,15 +13,19 @@ public class Messages$TextureMessage
     if (paramHashMap == null)
     {
       paramHashMap = null;
-      localTextureMessage.textureId = paramHashMap;
-      return localTextureMessage;
     }
-    if ((paramHashMap instanceof Integer)) {}
-    for (long l = ((Integer)paramHashMap).intValue();; l = ((Long)paramHashMap).longValue())
+    else
     {
+      long l;
+      if ((paramHashMap instanceof Integer)) {
+        l = ((Integer)paramHashMap).intValue();
+      } else {
+        l = ((Long)paramHashMap).longValue();
+      }
       paramHashMap = Long.valueOf(l);
-      break;
     }
+    localTextureMessage.textureId = paramHashMap;
+    return localTextureMessage;
   }
   
   public Long getTextureId()
@@ -43,7 +47,7 @@ public class Messages$TextureMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqcircle.video.Messages.TextureMessage
  * JD-Core Version:    0.7.0.1
  */

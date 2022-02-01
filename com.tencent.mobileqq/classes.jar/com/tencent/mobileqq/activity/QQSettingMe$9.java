@@ -1,48 +1,25 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.res.Resources;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qqsettingme.IQQSettingMeProcessor;
+import com.tencent.mobileqq.activity.qqsettingme.QQSettingMeViewModel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class QQSettingMe$9
-  implements Runnable
+  implements View.OnClickListener
 {
   QQSettingMe$9(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = (int)this.this$0.a.getResources().getDimension(2131296943);
-    Object localObject = new int[2];
-    this.this$0.f.getLocationOnScreen((int[])localObject);
-    int j = this.this$0.g.getWidth();
-    int k = this.this$0.f.getWidth();
-    if ((j != 0) && (k != 0)) {
-      i -= (j - k) / 2;
-    }
-    for (;;)
-    {
-      localObject = this.this$0.h.getLayoutParams();
-      if ((i > 0) && ((localObject instanceof RelativeLayout.LayoutParams)))
-      {
-        ((RelativeLayout.LayoutParams)localObject).leftMargin = i;
-        this.this$0.h.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "setBottomBtnMarginLeft, diffMargin = " + i);
-      }
-      return;
-      i = (int)this.this$0.a.getResources().getDimension(2131296948);
-      QLog.e("QQSettingRedesign", 1, "setBottomBtnMarginLeft, but getWidth return 0");
-    }
+    QQSettingMe.a(this.a).a("d_pretty_num").onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.9
  * JD-Core Version:    0.7.0.1
  */

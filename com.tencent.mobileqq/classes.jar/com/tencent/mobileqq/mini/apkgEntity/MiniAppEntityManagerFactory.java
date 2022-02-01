@@ -4,7 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.app.SQLiteOpenHelper;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.SQLiteOpenHelperFacade;
 import com.tencent.mobileqq.persistence.TableBuilder;
 
 public class MiniAppEntityManagerFactory
@@ -21,13 +21,17 @@ public class MiniAppEntityManagerFactory
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "miniapp_" + paramString + ".db", null, 12);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("miniapp_");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(".db");
+      this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), 12);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
   }
   
-  public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
+  protected void createDatabase(SQLiteDatabase paramSQLiteDatabase)
   {
     QLog.d("miniapp-db", 1, "createDatabase");
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppInfoEntity()));
@@ -38,14 +42,19 @@ public class MiniAppEntityManagerFactory
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppInfoByLinkEntity()));
   }
   
-  public String getPackageName()
+  protected String getPackageName()
   {
     return getClass().getPackage().getName();
   }
   
-  public void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  protected void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    QLog.d("miniapp-db", 1, "upgradeDatabase --  oldVersion: " + paramInt1 + "; newVersion : " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("upgradeDatabase --  oldVersion: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("; newVersion : ");
+    localStringBuilder.append(paramInt2);
+    QLog.d("miniapp-db", 1, localStringBuilder.toString());
     if (paramInt1 < 8)
     {
       paramSQLiteDatabase.execSQL(TableBuilder.dropSQLStatement(MiniAppInfoEntity.class.getSimpleName()));
@@ -60,7 +69,7 @@ public class MiniAppEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkgEntity.MiniAppEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

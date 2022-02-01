@@ -43,49 +43,52 @@ public class MiniDexConfig
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    Object localObject;
-    String str1;
-    String str2;
-    String str3;
     try
     {
-      localObject = new JSONObject(paramString);
+      Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("app_version");
-      str1 = ((JSONObject)localObject).optString("ver");
-      str2 = ((JSONObject)localObject).optString("minjs");
-      str3 = ((JSONObject)localObject).optString("url");
+      String str1 = ((JSONObject)localObject).optString("ver");
+      String str2 = ((JSONObject)localObject).optString("minjs");
+      String str3 = ((JSONObject)localObject).optString("url");
       localObject = ((JSONObject)localObject).optString("md5");
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str3)))
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str3)))
       {
-        QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex config is invalid because of platformVersion or url is empty.");
-        return null;
+        MiniDexConfig localMiniDexConfig = new MiniDexConfig();
+        localMiniDexConfig.currPlatformVersion = paramString;
+        localMiniDexConfig.platformVersion = str1;
+        localMiniDexConfig.minBaselibVersion = str2;
+        localMiniDexConfig.dexUrl = str3;
+        localMiniDexConfig.md5 = ((String)localObject);
+        return localMiniDexConfig;
       }
+      QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex config is invalid because of platformVersion or url is empty.");
+      return null;
     }
     catch (Throwable paramString)
     {
       QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "", paramString);
-      return null;
     }
-    MiniDexConfig localMiniDexConfig = new MiniDexConfig();
-    localMiniDexConfig.currPlatformVersion = paramString;
-    localMiniDexConfig.platformVersion = str1;
-    localMiniDexConfig.minBaselibVersion = str2;
-    localMiniDexConfig.dexUrl = str3;
-    localMiniDexConfig.md5 = ((String)localObject);
-    return localMiniDexConfig;
+    return null;
   }
   
   public static String getDexFolder()
   {
-    if (TextUtils.isEmpty(DEX_FOLDER)) {
-      DEX_FOLDER = AppLoaderFactory.g().getContext().getFilesDir().getPath() + "/mini/dex/";
+    if (TextUtils.isEmpty(DEX_FOLDER))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AppLoaderFactory.g().getContext().getFilesDir().getPath());
+      localStringBuilder.append("/mini/dex/");
+      DEX_FOLDER = localStringBuilder.toString();
     }
     return DEX_FOLDER;
   }
   
   public static MiniDexConfig getValidDexConfig(String paramString)
   {
-    QMLog.i("minisdk-MiniAppDexLoader_DexConfig", "dex config: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dex config: ");
+    localStringBuilder.append(paramString);
+    QMLog.i("minisdk-MiniAppDexLoader_DexConfig", localStringBuilder.toString());
     paramString = convertFrom(paramString);
     if ((paramString != null) && (paramString.verifyDex())) {
       return paramString;
@@ -101,18 +104,43 @@ public class MiniDexConfig
         return;
       }
       Object localObject = SharedPreferencesUtil.getPreference().getString("dexcrash", "");
-      QMLog.i("minisdk-MiniAppDexLoader_DexConfig", "add crash info. dexUrl:" + this.dexUrl + " dexCrashInfo:" + (String)localObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("add crash info. dexUrl:");
+      localStringBuilder.append(this.dexUrl);
+      localStringBuilder.append(" dexCrashInfo:");
+      localStringBuilder.append((String)localObject);
+      QMLog.i("minisdk-MiniAppDexLoader_DexConfig", localStringBuilder.toString());
       localObject = ((String)localObject).split(";");
       if ((localObject.length == 3) && (this.dexUrl.equals(localObject[0])))
       {
         int i = Integer.parseInt(localObject[1]);
         long l = Long.parseLong(localObject[2]);
-        if (System.currentTimeMillis() - l > 7200000L) {
-          return;
+        if (System.currentTimeMillis() - l <= 7200000L)
+        {
+          i += 1;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("add crash count ");
+          ((StringBuilder)localObject).append(i);
+          QMLog.i("minisdk-MiniAppDexLoader_DexConfig", ((StringBuilder)localObject).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(this.dexUrl);
+          ((StringBuilder)localObject).append(";");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(";");
+          ((StringBuilder)localObject).append(System.currentTimeMillis());
+          localObject = ((StringBuilder)localObject).toString();
+          SharedPreferencesUtil.getPreference().edit().putString("dexcrash", (String)localObject).commit();
         }
-        i += 1;
-        QMLog.i("minisdk-MiniAppDexLoader_DexConfig", "add crash count " + i);
-        localObject = this.dexUrl + ";" + i + ";" + System.currentTimeMillis();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.dexUrl);
+        ((StringBuilder)localObject).append(";");
+        ((StringBuilder)localObject).append(1);
+        ((StringBuilder)localObject).append(";");
+        ((StringBuilder)localObject).append(System.currentTimeMillis());
+        localObject = ((StringBuilder)localObject).toString();
         SharedPreferencesUtil.getPreference().edit().putString("dexcrash", (String)localObject).commit();
         return;
       }
@@ -120,10 +148,7 @@ public class MiniDexConfig
     catch (Throwable localThrowable)
     {
       QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "", localThrowable);
-      return;
     }
-    String str = this.dexUrl + ";" + 1 + ";" + System.currentTimeMillis();
-    SharedPreferencesUtil.getPreference().edit().putString("dexcrash", str).commit();
   }
   
   public int describeContents()
@@ -140,11 +165,16 @@ public class MiniDexConfig
         if (TextUtils.isEmpty(this.dexUrl)) {
           return 0;
         }
-        String[] arrayOfString = SharedPreferencesUtil.getPreference().getString("dexcrash", "").split(";");
-        if ((arrayOfString.length == 3) && (this.dexUrl.equals(arrayOfString[0])))
+        Object localObject = SharedPreferencesUtil.getPreference().getString("dexcrash", "").split(";");
+        if ((localObject.length == 3) && (this.dexUrl.equals(localObject[0])))
         {
-          i = Integer.parseInt(arrayOfString[1]);
-          QMLog.i("minisdk-MiniAppDexLoader_DexConfig", "get crash count=" + i + " dexUrl:" + this.dexUrl);
+          i = Integer.parseInt(localObject[1]);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("get crash count=");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(" dexUrl:");
+          ((StringBuilder)localObject).append(this.dexUrl);
+          QMLog.i("minisdk-MiniAppDexLoader_DexConfig", ((StringBuilder)localObject).toString());
           return i;
         }
       }
@@ -164,74 +194,95 @@ public class MiniDexConfig
       QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex url is null.");
       return null;
     }
-    return getDexFolder() + this.dexUrl.hashCode() + ".jar";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getDexFolder());
+    localStringBuilder.append(this.dexUrl.hashCode());
+    localStringBuilder.append(".jar");
+    return localStringBuilder.toString();
   }
   
   public boolean isDexDownloaded()
   {
     String str = getDexPath();
-    if ((TextUtils.isEmpty(str)) || (!new File(str).exists()))
+    if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
     {
-      QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex file is not exist.");
-      return false;
-    }
-    if (!TextUtils.isEmpty(this.md5))
-    {
-      str = MD5Utils.encodeFileHexStr(str);
-      if ((TextUtils.isEmpty(str)) || (!this.md5.toLowerCase().equals(str.toLowerCase())))
+      if (!TextUtils.isEmpty(this.md5))
       {
-        QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "md5 is wrong! configMD5=" + this.md5 + " fileMD5=" + str);
-        return false;
+        str = MD5Utils.encodeFileHexStr(str);
+        if ((TextUtils.isEmpty(str)) || (!this.md5.toLowerCase().equals(str.toLowerCase())))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("md5 is wrong! configMD5=");
+          localStringBuilder.append(this.md5);
+          localStringBuilder.append(" fileMD5=");
+          localStringBuilder.append(str);
+          QMLog.e("minisdk-MiniAppDexLoader_DexConfig", localStringBuilder.toString());
+          return false;
+        }
       }
+      return true;
     }
-    return true;
+    QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex file is not exist.");
+    return false;
   }
   
   public boolean verifyDex()
   {
-    if (TextUtils.isEmpty(this.currPlatformVersion)) {
-      QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex is invalid because of currPlatformVersion is empty.");
-    }
-    do
+    if (TextUtils.isEmpty(this.currPlatformVersion))
     {
+      QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex is invalid because of currPlatformVersion is empty.");
       return false;
-      if (TextUtils.isEmpty(this.platformVersion))
+    }
+    if (TextUtils.isEmpty(this.platformVersion))
+    {
+      QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex is invalid because of platformVersion is empty.");
+      return false;
+    }
+    try
+    {
+      String str1 = this.currPlatformVersion;
+      if (!this.platformVersion.equals(str1))
       {
-        QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex is invalid because of platformVersion is empty.");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("platformVersion is not match. platformVersion=");
+        localStringBuilder.append(this.platformVersion);
+        localStringBuilder.append(" currQUA=");
+        localStringBuilder.append(str1);
+        QMLog.e("minisdk-MiniAppDexLoader_DexConfig", localStringBuilder.toString());
         return false;
       }
-      try
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder;
+      QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "", localThrowable);
+      if (TextUtils.isEmpty(this.minBaselibVersion))
       {
-        String str1 = this.currPlatformVersion;
-        if (!this.platformVersion.equals(str1))
+        String str2 = StorageUtil.getPreference().getString("version", "1.22.0.00008");
+        if (BaseLibInfo.needUpdateVersion(this.minBaselibVersion, str2))
         {
-          QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "platformVersion is not match. platformVersion=" + this.platformVersion + " currQUA=" + str1);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("baselib version is not match. minBaselibVersion=");
+          localStringBuilder.append(this.platformVersion);
+          localStringBuilder.append(" currBaselibVersion=");
+          localStringBuilder.append(str2);
+          QMLog.e("minisdk-MiniAppDexLoader_DexConfig", localStringBuilder.toString());
           return false;
         }
       }
-      catch (Throwable localThrowable)
+      if (TextUtils.isEmpty(this.dexUrl))
       {
-        QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "", localThrowable);
-        if (TextUtils.isEmpty(this.minBaselibVersion))
-        {
-          String str2 = StorageUtil.getPreference().getString("version", "1.22.0.00008");
-          if (BaseLibInfo.needUpdateVersion(this.minBaselibVersion, str2))
-          {
-            QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "baselib version is not match. minBaselibVersion=" + this.platformVersion + " currBaselibVersion=" + str2);
-            return false;
-          }
-        }
-        if (TextUtils.isEmpty(this.dexUrl))
-        {
-          QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex url is empty.");
-          return true;
-        }
+        QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex url is empty.");
+        return true;
       }
-    } while (!isDexDownloaded());
-    if (getDexCrashCount() >= 3)
-    {
-      QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex is invalid because of too many crashes!");
-      return false;
+      if (!isDexDownloaded()) {
+        return false;
+      }
+      if (getDexCrashCount() >= 3)
+      {
+        QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "dex is invalid because of too many crashes!");
+        return false;
+      }
     }
     return true;
   }
@@ -246,7 +297,7 @@ public class MiniDexConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.dynamic.MiniDexConfig
  * JD-Core Version:    0.7.0.1
  */

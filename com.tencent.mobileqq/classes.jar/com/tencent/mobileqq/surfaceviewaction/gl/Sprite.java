@@ -65,8 +65,9 @@ public class Sprite
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.c();
+    Texture localTexture = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
+    if (localTexture != null) {
+      localTexture.c();
     }
   }
   
@@ -89,11 +90,12 @@ public class Sprite
     g();
   }
   
-  protected void aC_()
+  protected void aP_()
   {
-    super.aC_();
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.b = false;
+    super.aP_();
+    Texture localTexture = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
+    if (localTexture != null) {
+      localTexture.b = false;
     }
   }
   
@@ -120,41 +122,48 @@ public class Sprite
     Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
     Matrix.translateM(this.jdField_b_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, -1.0E-004F);
     a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint);
-    float f2 = paramInt1 / paramInt2;
-    float f3 = paramInt1 / this.jdField_a_of_type_Float / (this.e * b());
-    float f4 = (2.0F * this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint.jdField_a_of_type_Float * b() - paramInt1) / paramInt2;
-    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b)) {}
-    for (float f1 = (-paramInt2 + 2.0F * this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint.jdField_b_of_type_Float * b()) / paramInt2;; f1 = (paramInt2 - 2.0F * this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint.jdField_b_of_type_Float * b()) / paramInt2)
-    {
-      Matrix.translateM(this.jdField_b_of_type_ArrayOfFloat, 0, f4, f1, 0.0F);
-      Matrix.rotateM(this.jdField_b_of_type_ArrayOfFloat, 0, -this.g, 0.0F, 0.0F, 1.0F);
-      Matrix.scaleM(this.jdField_b_of_type_ArrayOfFloat, 0, f2 / f3, f2 / f3 * (this.jdField_b_of_type_Float / this.jdField_a_of_type_Float), 1.0F);
-      float[] arrayOfFloat = new float[16];
-      Matrix.multiplyMM(arrayOfFloat, 0, paramArrayOfFloat, 0, this.jdField_b_of_type_ArrayOfFloat, 0);
-      GLES20.glUniformMatrix4fv(paramInt5, 1, false, arrayOfFloat, 0);
-      GLES20.glUniform1i(paramInt6, 0);
-      GLES20.glUniform1f(paramInt7, this.jdField_a_of_type_Int * b() / 255.0F / 255.0F);
-      GLES20.glDrawElements(4, this.jdField_a_of_type_ArrayOfShort.length, 5123, this.jdField_a_of_type_JavaNioShortBuffer);
-      GLES20.glDisableVertexAttribArray(paramInt3);
-      GLES20.glDisableVertexAttribArray(paramInt4);
-      return;
+    float f1 = paramInt1;
+    float f4 = paramInt2;
+    float f2 = f1 / f4;
+    float f3 = f1 / this.jdField_a_of_type_Float / (this.e * b());
+    float f5 = (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint.jdField_a_of_type_Float * 2.0F * b() - f1) / f4;
+    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b)) {
+      f1 = -paramInt2 + this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint.jdField_b_of_type_Float * 2.0F * b();
+    } else {
+      f1 = f4 - this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint.jdField_b_of_type_Float * 2.0F * b();
     }
+    f1 /= f4;
+    Matrix.translateM(this.jdField_b_of_type_ArrayOfFloat, 0, f5, f1, 0.0F);
+    Matrix.rotateM(this.jdField_b_of_type_ArrayOfFloat, 0, -this.g, 0.0F, 0.0F, 1.0F);
+    float[] arrayOfFloat = this.jdField_b_of_type_ArrayOfFloat;
+    f1 = f2 / f3;
+    Matrix.scaleM(arrayOfFloat, 0, f1, this.jdField_b_of_type_Float / this.jdField_a_of_type_Float * f1, 1.0F);
+    arrayOfFloat = new float[16];
+    Matrix.multiplyMM(arrayOfFloat, 0, paramArrayOfFloat, 0, this.jdField_b_of_type_ArrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(paramInt5, 1, false, arrayOfFloat, 0);
+    GLES20.glUniform1i(paramInt6, 0);
+    GLES20.glUniform1f(paramInt7, this.jdField_a_of_type_Int * b() / 255.0F / 255.0F);
+    GLES20.glDrawElements(4, this.jdField_a_of_type_ArrayOfShort.length, 5123, this.jdField_a_of_type_JavaNioShortBuffer);
+    GLES20.glDisableVertexAttribArray(paramInt3);
+    GLES20.glDisableVertexAttribArray(paramInt4);
   }
   
   public int d()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture == null) || (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      return (int)this.jdField_a_of_type_Float;
+    Texture localTexture = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
+    if ((localTexture != null) && (localTexture.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+    return (int)this.jdField_a_of_type_Float;
   }
   
   public int e()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture == null) || (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      return (int)this.jdField_b_of_type_Float;
+    Texture localTexture = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
+    if ((localTexture != null) && (localTexture.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    return (int)this.jdField_b_of_type_Float;
   }
   
   protected void f()
@@ -169,16 +178,20 @@ public class Sprite
   
   protected void g()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture == null) || (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
-      return;
+    Texture localTexture = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture;
+    if (localTexture != null)
+    {
+      if (localTexture.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+        return;
+      }
+      this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
     }
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Sprite
  * JD-Core Version:    0.7.0.1
  */

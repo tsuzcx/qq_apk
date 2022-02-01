@@ -40,15 +40,16 @@ class IOUtils
   
   public static void closeQuietly(Cursor paramCursor)
   {
-    if (paramCursor != null) {}
-    try
-    {
-      paramCursor.close();
-      return;
-    }
-    catch (Throwable paramCursor)
-    {
-      paramCursor.printStackTrace();
+    if (paramCursor != null) {
+      try
+      {
+        paramCursor.close();
+        return;
+      }
+      catch (Throwable paramCursor)
+      {
+        paramCursor.printStackTrace();
+      }
     }
   }
   
@@ -106,15 +107,21 @@ class IOUtils
     if (!(paramInputStream2 instanceof BufferedInputStream)) {
       paramInputStream1 = new BufferedInputStream(paramInputStream2);
     }
-    for (int i = ((InputStream)localObject).read(); -1 != i; i = ((InputStream)localObject).read()) {
-      if (i != paramInputStream1.read()) {
-        return false;
+    int i;
+    boolean bool;
+    do
+    {
+      i = ((InputStream)localObject).read();
+      bool = false;
+      if (-1 == i) {
+        break;
       }
+    } while (i == paramInputStream1.read());
+    return false;
+    if (paramInputStream1.read() == -1) {
+      bool = true;
     }
-    if (paramInputStream1.read() == -1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return bool;
   }
   
   public static boolean contentEquals(Reader paramReader1, Reader paramReader2)
@@ -127,15 +134,21 @@ class IOUtils
     if (!(paramReader2 instanceof BufferedReader)) {
       paramReader1 = new BufferedReader(paramReader2);
     }
-    for (int i = ((Reader)localObject).read(); -1 != i; i = ((Reader)localObject).read()) {
-      if (i != paramReader1.read()) {
-        return false;
+    int i;
+    boolean bool;
+    do
+    {
+      i = ((Reader)localObject).read();
+      bool = false;
+      if (-1 == i) {
+        break;
       }
+    } while (i == paramReader1.read());
+    return false;
+    if (paramReader1.read() == -1) {
+      bool = true;
     }
-    if (paramReader1.read() == -1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return bool;
   }
   
   public static int copy(InputStream paramInputStream, OutputStream paramOutputStream)
@@ -235,10 +248,15 @@ class IOUtils
   
   public static List readLines(Reader paramReader)
   {
-    BufferedReader localBufferedReader = new BufferedReader(paramReader);
+    paramReader = new BufferedReader(paramReader);
     ArrayList localArrayList = new ArrayList();
-    for (paramReader = localBufferedReader.readLine(); paramReader != null; paramReader = localBufferedReader.readLine()) {
-      localArrayList.add(paramReader);
+    for (;;)
+    {
+      String str = paramReader.readLine();
+      if (str == null) {
+        break;
+      }
+      localArrayList.add(str);
     }
     return localArrayList;
   }
@@ -297,10 +315,12 @@ class IOUtils
   
   public static InputStream toInputStream(String paramString1, String paramString2)
   {
-    if (paramString2 != null) {}
-    for (paramString1 = paramString1.getBytes(paramString2);; paramString1 = paramString1.getBytes()) {
-      return new ByteArrayInputStream(paramString1);
+    if (paramString2 != null) {
+      paramString1 = paramString1.getBytes(paramString2);
+    } else {
+      paramString1 = paramString1.getBytes();
     }
+    return new ByteArrayInputStream(paramString1);
   }
   
   public static String toString(InputStream paramInputStream)
@@ -348,14 +368,13 @@ class IOUtils
   {
     if (paramString1 != null)
     {
-      if (paramString2 == null) {
+      if (paramString2 == null)
+      {
         write(paramString1, paramOutputStream);
+        return;
       }
+      paramOutputStream.write(paramString1.getBytes(paramString2));
     }
-    else {
-      return;
-    }
-    paramOutputStream.write(paramString1.getBytes(paramString2));
   }
   
   public static void write(String paramString, Writer paramWriter)
@@ -376,14 +395,13 @@ class IOUtils
   {
     if (paramStringBuffer != null)
     {
-      if (paramString == null) {
+      if (paramString == null)
+      {
         write(paramStringBuffer, paramOutputStream);
+        return;
       }
+      paramOutputStream.write(paramStringBuffer.toString().getBytes(paramString));
     }
-    else {
-      return;
-    }
-    paramOutputStream.write(paramStringBuffer.toString().getBytes(paramString));
   }
   
   public static void write(StringBuffer paramStringBuffer, Writer paramWriter)
@@ -411,14 +429,13 @@ class IOUtils
   {
     if (paramArrayOfByte != null)
     {
-      if (paramString == null) {
+      if (paramString == null)
+      {
         write(paramArrayOfByte, paramWriter);
+        return;
       }
+      paramWriter.write(new String(paramArrayOfByte, paramString));
     }
-    else {
-      return;
-    }
-    paramWriter.write(new String(paramArrayOfByte, paramString));
   }
   
   public static void write(char[] paramArrayOfChar, OutputStream paramOutputStream)
@@ -432,14 +449,13 @@ class IOUtils
   {
     if (paramArrayOfChar != null)
     {
-      if (paramString == null) {
+      if (paramString == null)
+      {
         write(paramArrayOfChar, paramOutputStream);
+        return;
       }
+      paramOutputStream.write(new String(paramArrayOfChar).getBytes(paramString));
     }
-    else {
-      return;
-    }
-    paramOutputStream.write(new String(paramArrayOfChar).getBytes(paramString));
   }
   
   public static void write(char[] paramArrayOfChar, Writer paramWriter)
@@ -471,28 +487,26 @@ class IOUtils
   
   public static void writeLines(Collection paramCollection, String paramString1, OutputStream paramOutputStream, String paramString2)
   {
-    if (paramString2 == null) {
-      writeLines(paramCollection, paramString1, paramOutputStream);
-    }
-    for (;;)
+    if (paramString2 == null)
     {
+      writeLines(paramCollection, paramString1, paramOutputStream);
       return;
-      if (paramCollection != null)
-      {
-        String str = paramString1;
-        if (paramString1 == null) {
-          str = LINE_SEPARATOR;
-        }
-        paramCollection = paramCollection.iterator();
-        while (paramCollection.hasNext())
-        {
-          paramString1 = paramCollection.next();
-          if (paramString1 != null) {
-            paramOutputStream.write(paramString1.toString().getBytes(paramString2));
-          }
-          paramOutputStream.write(str.getBytes(paramString2));
-        }
+    }
+    if (paramCollection == null) {
+      return;
+    }
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = LINE_SEPARATOR;
+    }
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
+    {
+      paramString1 = paramCollection.next();
+      if (paramString1 != null) {
+        paramOutputStream.write(paramString1.toString().getBytes(paramString2));
       }
+      paramOutputStream.write(str.getBytes(paramString2));
     }
   }
   
@@ -518,7 +532,7 @@ class IOUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.IOUtils
  * JD-Core Version:    0.7.0.1
  */

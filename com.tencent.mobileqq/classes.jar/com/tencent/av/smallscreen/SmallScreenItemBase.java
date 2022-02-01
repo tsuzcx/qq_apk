@@ -48,12 +48,13 @@ public class SmallScreenItemBase
       paramLayoutParams.type = 2038;
       return;
     }
-    if (SmallScreenUtils.a()) {}
-    for (int m = 2005;; m = 2002)
-    {
-      paramLayoutParams.type = m;
-      return;
+    int m;
+    if (SmallScreenUtils.a()) {
+      m = 2005;
+    } else {
+      m = 2002;
     }
+    paramLayoutParams.type = m;
   }
   
   public void a(BaseSmallScreenService paramBaseSmallScreenService)
@@ -65,6 +66,8 @@ public class SmallScreenItemBase
   public void a(boolean paramBoolean, int paramInt)
   {
     boolean bool = a();
+    String str;
+    StringBuilder localStringBuilder;
     if (paramBoolean)
     {
       if (!this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenToast.b()) {
@@ -74,20 +77,30 @@ public class SmallScreenItemBase
       {
         this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setCurPosition(paramInt);
         this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.d();
-        if (QLog.isDevelopLevel()) {
-          QLog.w(this.jdField_a_of_type_JavaLangString, 4, "showOrHide, show toast view , tag[" + this.jdField_a_of_type_JavaLangString + "]");
+        if (QLog.isDevelopLevel())
+        {
+          str = this.jdField_a_of_type_JavaLangString;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("showOrHide, show toast view , tag[");
+          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append("]");
+          QLog.w(str, 4, localStringBuilder.toString());
         }
       }
     }
-    do
+    else if (bool)
     {
-      do
-      {
-        return;
-      } while (!bool);
       this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.e();
-    } while (!QLog.isDevelopLevel());
-    QLog.w(this.jdField_a_of_type_JavaLangString, 4, "showOrHide, hide toast view , tag[" + this.jdField_a_of_type_JavaLangString + "]");
+      if (QLog.isDevelopLevel())
+      {
+        str = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showOrHide, hide toast view , tag[");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("]");
+        QLog.w(str, 4, localStringBuilder.toString());
+      }
+    }
   }
   
   public boolean a()
@@ -97,7 +110,7 @@ public class SmallScreenItemBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenItemBase
  * JD-Core Version:    0.7.0.1
  */

@@ -61,14 +61,13 @@ public class Keyframe<T>
       return 1.0F;
     }
     if (this.endProgress == 1.4E-45F) {
-      if (this.endFrame != null) {
-        break label36;
+      if (this.endFrame == null) {
+        this.endProgress = 1.0F;
+      } else {
+        this.endProgress = (getStartProgress() + (this.endFrame.floatValue() - this.startFrame) / this.composition.getDurationFrames());
       }
     }
-    label36:
-    for (this.endProgress = 1.0F;; this.endProgress = (getStartProgress() + (this.endFrame.floatValue() - this.startFrame) / this.composition.getDurationFrames())) {
-      return this.endProgress;
-    }
+    return this.endProgress;
   }
   
   public float getEndValueFloat()
@@ -89,11 +88,12 @@ public class Keyframe<T>
   
   public float getStartProgress()
   {
-    if (this.composition == null) {
+    LottieComposition localLottieComposition = this.composition;
+    if (localLottieComposition == null) {
       return 0.0F;
     }
     if (this.startProgress == 1.4E-45F) {
-      this.startProgress = ((this.startFrame - this.composition.getStartFrame()) / this.composition.getDurationFrames());
+      this.startProgress = ((this.startFrame - localLottieComposition.getStartFrame()) / this.composition.getDurationFrames());
     }
     return this.startProgress;
   }
@@ -121,12 +121,24 @@ public class Keyframe<T>
   
   public String toString()
   {
-    return "Keyframe{startValue=" + this.startValue + ", endValue=" + this.endValue + ", startFrame=" + this.startFrame + ", endFrame=" + this.endFrame + ", interpolator=" + this.interpolator + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Keyframe{startValue=");
+    localStringBuilder.append(this.startValue);
+    localStringBuilder.append(", endValue=");
+    localStringBuilder.append(this.endValue);
+    localStringBuilder.append(", startFrame=");
+    localStringBuilder.append(this.startFrame);
+    localStringBuilder.append(", endFrame=");
+    localStringBuilder.append(this.endFrame);
+    localStringBuilder.append(", interpolator=");
+    localStringBuilder.append(this.interpolator);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.value.Keyframe
  * JD-Core Version:    0.7.0.1
  */

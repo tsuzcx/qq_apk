@@ -15,19 +15,16 @@ public class OpenAgentObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      if (paramBoolean)
+      if (paramInt != 1)
       {
-        a(paramBoolean, (List)paramObject, null);
+        if (paramInt != 2) {
+          return;
+        }
+        a(paramBoolean, (OpenAgentHandler.AuthItemResult)paramObject);
         return;
       }
-      a(paramBoolean, null, (String)paramObject);
-      return;
-    case 1: 
       if (paramBoolean)
       {
         a(paramBoolean, (List)paramObject);
@@ -36,12 +33,17 @@ public class OpenAgentObserver
       a(paramBoolean, null);
       return;
     }
-    a(paramBoolean, (OpenAgentHandler.AuthItemResult)paramObject);
+    if (paramBoolean)
+    {
+      a(paramBoolean, (List)paramObject, null);
+      return;
+    }
+    a(paramBoolean, null, (String)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.manager.OpenAgentObserver
  * JD-Core Version:    0.7.0.1
  */

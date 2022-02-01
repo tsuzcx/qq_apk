@@ -20,11 +20,15 @@ public abstract interface IWSStSchemaJumpFactor
   
   public abstract MiniAppLaunchListener a();
   
+  public abstract Object a();
+  
   public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.IWSStSchemaJumpFactor
  * JD-Core Version:    0.7.0.1
  */

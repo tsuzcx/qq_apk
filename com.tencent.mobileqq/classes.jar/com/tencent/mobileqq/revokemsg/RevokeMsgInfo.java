@@ -65,42 +65,43 @@ public class RevokeMsgInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        paramParcel.writeInt(this.jdField_a_of_type_Int);
-        paramParcel.writeLong(this.jdField_a_of_type_Long);
-        paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-        paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-        paramParcel.writeLong(this.jdField_b_of_type_Long);
-        paramParcel.writeLong(this.jdField_c_of_type_Long);
-        paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-        paramParcel.writeInt(this.jdField_e_of_type_Int);
-        paramParcel.writeInt(this.jdField_f_of_type_Int);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          paramInt = 1;
-          paramParcel.writeInt(paramInt);
-          paramParcel.writeInt(this.g);
-          paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
-          return;
-        }
+      paramParcel.writeInt(this.jdField_a_of_type_Int);
+      paramParcel.writeLong(this.jdField_a_of_type_Long);
+      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+      paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
+      paramParcel.writeLong(this.jdField_b_of_type_Long);
+      paramParcel.writeLong(this.jdField_c_of_type_Long);
+      paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
+      paramParcel.writeInt(this.jdField_e_of_type_Int);
+      paramParcel.writeInt(this.jdField_f_of_type_Int);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label125;
       }
-      catch (Exception paramParcel)
+      paramInt = 1;
+    }
+    catch (Exception paramParcel)
+    {
+      for (;;)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("revokeMsg", 2, "revokeMsgInfo writeToParcel failed");
+        continue;
+        label125:
+        paramInt = 0;
       }
-      paramInt = 0;
+    }
+    paramParcel.writeInt(paramInt);
+    paramParcel.writeInt(this.g);
+    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("revokeMsg", 2, "revokeMsgInfo writeToParcel failed");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.revokemsg.RevokeMsgInfo
  * JD-Core Version:    0.7.0.1
  */

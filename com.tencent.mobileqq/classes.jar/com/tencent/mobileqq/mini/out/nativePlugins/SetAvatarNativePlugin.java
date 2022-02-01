@@ -20,7 +20,10 @@ public class SetAvatarNativePlugin
   
   public void onInvoke(JSONObject paramJSONObject, JSContext paramJSContext)
   {
-    QLog.i("SetAvatarNativePlugin", 1, "onInvoke, param=" + paramJSONObject);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onInvoke, param=");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    QLog.i("SetAvatarNativePlugin", 1, ((StringBuilder)localObject).toString());
     try
     {
       paramJSONObject = paramJSONObject.optJSONObject("data");
@@ -32,9 +35,9 @@ public class SetAvatarNativePlugin
       paramJSONObject = paramJSONObject.optString("path", null);
       paramJSONObject = MiniAppFileManager.getInstance().getAbsolutePath(paramJSONObject);
       QLog.d("SetAvatarNativePlugin", 1, paramJSONObject);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("param_avatar_path", paramJSONObject);
-      QIPCClientHelper.getInstance().getClient().callServer("CommonModule", "set_avatar", localBundle, new SetAvatarNativePlugin.AvatarResultCallback(this, paramJSContext));
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("param_avatar_path", paramJSONObject);
+      QIPCClientHelper.getInstance().getClient().callServer("CommonModule", "set_avatar", (Bundle)localObject, new SetAvatarNativePlugin.AvatarResultCallback(this, paramJSContext));
       return;
     }
     catch (Throwable paramJSONObject)
@@ -45,7 +48,7 @@ public class SetAvatarNativePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.SetAvatarNativePlugin
  * JD-Core Version:    0.7.0.1
  */

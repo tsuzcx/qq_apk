@@ -5,11 +5,11 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.tencent.common.galleryactivity.AbstractImageListModel;
 import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryScene;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.picbrowser.PicBrowserGalleryAdapter;
+import com.tencent.mobileqq.picbrowser.PicBrowserGalleryScene;
+import com.tencent.mobileqq.picbrowser.PicBrowserImage;
+import com.tencent.mobileqq.picbrowser.PicBrowserModel;
+import com.tencent.mobileqq.picbrowser.PicInfo;
 
 public class FriendProfileCardPicScene
   extends PicBrowserGalleryScene
@@ -24,31 +24,30 @@ public class FriendProfileCardPicScene
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserModel != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserModel.b();
+    if (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.b();
     }
     return -1;
   }
   
-  public RelativeLayout a()
+  protected RelativeLayout a()
   {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561535, null);
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561376, null);
   }
   
   public PicInfo a()
   {
-    PicInfo localPicInfo = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserModel.a() != null) {
-      localPicInfo = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserModel.a().a;
+    if (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a() != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserModel.a().a;
     }
-    return localPicInfo;
+    return null;
   }
   
   public void a(ViewGroup paramViewGroup)
   {
     super.a(paramViewGroup);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+    if (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryAdapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
     }
   }
   
@@ -57,32 +56,34 @@ public class FriendProfileCardPicScene
     return false;
   }
   
-  public void d(int paramInt)
+  protected void b(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.c();
+    FriendProfilePicBrowserActivity localFriendProfilePicBrowserActivity = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity;
+    if (localFriendProfilePicBrowserActivity != null) {
+      localFriendProfilePicBrowserActivity.b();
     }
   }
   
   public void h()
   {
     super.h();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.b();
+    FriendProfilePicBrowserActivity localFriendProfilePicBrowserActivity = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity;
+    if (localFriendProfilePicBrowserActivity != null) {
+      localFriendProfilePicBrowserActivity.a();
     }
   }
   
   public void u()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter.a(null);
+    if (this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryAdapter != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPicbrowserPicBrowserGalleryAdapter.a(null);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.FriendProfileCardPicScene
  * JD-Core Version:    0.7.0.1
  */

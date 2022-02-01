@@ -1,0 +1,35 @@
+package com.tencent.mobileqq.newfriend.ui.holder;
+
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import com.tencent.mobileqq.phonecontact.data.PhoneContactAdd;
+import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+
+public class MoreSysMsgHolder
+  extends SwipRightMenuBuilder.SwipItemBaseHolder
+{
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public QIMNotifyAddFriend a;
+  public PhoneContactAdd a;
+  public String a;
+  public structmsg.StructMsg a;
+  public long b;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.mobileqq.newfriend.ui.holder.MoreSysMsgHolder
+ * JD-Core Version:    0.7.0.1
+ */

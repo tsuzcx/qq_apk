@@ -13,37 +13,60 @@ public class CameraObserver
   
   private void a(Object paramObject)
   {
-    long l = 0L;
     if (paramObject == null) {
       return;
     }
     paramObject = (Object[])paramObject;
     int i = ((Integer)paramObject[0]).intValue();
-    if (QLog.isDevelopLevel()) {
-      QLog.w("CameraObserver", 1, "onUpdate, msgType[" + i + "]");
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate, msgType[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("]");
+      QLog.w("CameraObserver", 1, localStringBuilder.toString());
     }
+    long l = 0L;
     boolean bool;
     switch (i)
     {
     default: 
       return;
-    case 1: 
-      if (paramObject.length > 1)
+    case 8: 
+      b(((Boolean)paramObject[1]).booleanValue());
+      return;
+    case 7: 
+      try
       {
-        bool = ((Boolean)paramObject[1]).booleanValue();
-        if (paramObject.length <= 2) {
-          break label317;
-        }
+        paramObject = (byte[])paramObject[1];
       }
-      break;
-    }
-    label317:
-    for (l = ((Long)paramObject[2]).longValue();; l = 0L)
-    {
-      a(l, bool);
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+        paramObject = null;
+      }
+      a(paramObject);
       return;
-      a();
+    case 6: 
+      a(((Boolean)paramObject[1]).booleanValue());
       return;
+    case 5: 
+      b();
+      return;
+    case 4: 
+      bool = ((Boolean)paramObject[1]).booleanValue();
+      if (paramObject.length > 2) {
+        l = ((Long)paramObject[2]).longValue();
+      }
+      b(l, bool);
+      return;
+    case 3: 
+      if (paramObject.length > 1) {
+        l = ((Long)paramObject[1]).longValue();
+      }
+      a(l);
+      return;
+    case 2: 
       bool = ((Boolean)paramObject[1]).booleanValue();
       i = ((Integer)paramObject[2]).intValue();
       if (paramObject.length > 3) {
@@ -51,38 +74,17 @@ public class CameraObserver
       }
       a(l, bool, i);
       return;
-      if (paramObject.length > 1) {
-        l = ((Long)paramObject[1]).longValue();
-      }
-      a(l);
-      return;
+    }
+    if (paramObject.length > 1)
+    {
       bool = ((Boolean)paramObject[1]).booleanValue();
       if (paramObject.length > 2) {
         l = ((Long)paramObject[2]).longValue();
       }
-      b(l, bool);
-      return;
-      b();
-      return;
-      a(((Boolean)paramObject[1]).booleanValue());
-      return;
-      try
-      {
-        paramObject = (byte[])paramObject[1];
-        a(paramObject);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        for (;;)
-        {
-          paramObject.printStackTrace();
-          paramObject = null;
-        }
-      }
-      b(((Boolean)paramObject[1]).booleanValue());
+      a(l, bool);
       return;
     }
+    a();
   }
   
   @Deprecated
@@ -120,7 +122,7 @@ public class CameraObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.camera.CameraObserver
  * JD-Core Version:    0.7.0.1
  */

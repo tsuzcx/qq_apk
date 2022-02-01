@@ -25,8 +25,8 @@ public class NumberAdapter
     this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
     paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.b = paramContext.getColor(2131167123);
-    this.c = paramContext.getColor(2131167093);
+    this.b = paramContext.getColor(2131167148);
+    this.c = paramContext.getColor(2131167116);
   }
   
   public View a(int paramInt)
@@ -36,8 +36,9 @@ public class NumberAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+    if (arrayOfString != null) {
+      return arrayOfString.length;
     }
     return 0;
   }
@@ -49,34 +50,36 @@ public class NumberAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject2 = null;
     Object localObject1;
     if (paramView == null)
     {
       localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
       ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      paramView = (WheelTextView)localObject1;
     }
-    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
+    else
     {
-      String str = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      localObject2 = paramView;
-      if (paramView == null) {
-        localObject2 = (WheelTextView)localObject1;
-      }
-      ((WheelTextView)localObject2).setTextSize(20.0F);
-      ((WheelTextView)localObject2).setTextColor(this.b);
-      ((WheelTextView)localObject2).setGravity(17);
-      ((WheelTextView)localObject2).setText(str);
-      ((WheelTextView)localObject2).setBackgroundColor(this.c);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
+      localObject2 = null;
       localObject1 = paramView;
+      paramView = (View)localObject2;
     }
+    String str = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    Object localObject2 = paramView;
+    if (paramView == null) {
+      localObject2 = (WheelTextView)localObject1;
+    }
+    ((WheelTextView)localObject2).setTextSize(20.0F);
+    ((WheelTextView)localObject2).setTextColor(this.b);
+    ((WheelTextView)localObject2).setGravity(17);
+    ((WheelTextView)localObject2).setText(str);
+    ((WheelTextView)localObject2).setBackgroundColor(this.c);
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.remind.NumberAdapter
  * JD-Core Version:    0.7.0.1
  */

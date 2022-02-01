@@ -60,7 +60,18 @@ public class StatSpecifyReportedInfo
   
   public String toString()
   {
-    return "StatSpecifyReportedInfo [appKey=" + this.a + ", installChannel=" + this.b + ", version=" + this.c + ", sendImmediately=" + this.d + ", isImportant=" + this.e + "]";
+    StringBuilder localStringBuilder = new StringBuilder("StatSpecifyReportedInfo [appKey=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", installChannel=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", version=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", sendImmediately=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", isImportant=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

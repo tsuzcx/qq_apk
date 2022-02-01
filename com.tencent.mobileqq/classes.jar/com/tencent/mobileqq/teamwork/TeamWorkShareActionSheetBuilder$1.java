@@ -14,34 +14,61 @@ class TeamWorkShareActionSheetBuilder$1
   
   public void run()
   {
-    Object localObject = (RelativeLayout.LayoutParams)TeamWorkShareActionSheetBuilder.a(this.this$0).getLayoutParams();
-    int j = TeamWorkShareActionSheetBuilder.a(this.this$0).getWidth() - ((RelativeLayout.LayoutParams)localObject).leftMargin - 80 - TeamWorkShareActionSheetBuilder.a(this.this$0).getWidth() - TeamWorkShareActionSheetBuilder.b(this.this$0).getWidth();
-    if (TeamWorkShareActionSheetBuilder.c(this.this$0).getPaint().measureText(this.a + this.b) > j)
+    Object localObject1 = (RelativeLayout.LayoutParams)TeamWorkShareActionSheetBuilder.a(this.this$0).getLayoutParams();
+    int i = TeamWorkShareActionSheetBuilder.a(this.this$0).getWidth();
+    int j = ((RelativeLayout.LayoutParams)localObject1).leftMargin;
+    int k = TeamWorkShareActionSheetBuilder.a(this.this$0).getWidth();
+    int m = TeamWorkShareActionSheetBuilder.b(this.this$0).getWidth();
+    localObject1 = TeamWorkShareActionSheetBuilder.c(this.this$0).getPaint();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.a);
+    ((StringBuilder)localObject2).append(this.b);
+    float f1 = ((TextPaint)localObject1).measureText(((StringBuilder)localObject2).toString());
+    float f2 = i - j - 80 - k - m;
+    if (f1 > f2)
     {
-      int i = 0;
-      for (;;)
+      i = 0;
+      while (i < this.a.length())
       {
-        if ((i >= this.a.length()) || (TeamWorkShareActionSheetBuilder.c(this.this$0).getPaint().measureText(this.a.substring(0, i) + TeamWorkShareActionSheetBuilder.a(this.this$0).getString(2131690300) + this.b) > j))
-        {
-          if (i == 0) {
-            break;
-          }
-          localObject = this.a.substring(0, i - 1);
-          TeamWorkShareActionSheetBuilder.c(this.this$0).setText(this.b + (String)localObject + TeamWorkShareActionSheetBuilder.a(this.this$0).getString(2131690300));
-          return;
+        localObject1 = TeamWorkShareActionSheetBuilder.c(this.this$0).getPaint();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.a.substring(0, i));
+        ((StringBuilder)localObject2).append(TeamWorkShareActionSheetBuilder.a(this.this$0).getString(2131690218));
+        ((StringBuilder)localObject2).append(this.b);
+        if (((TextPaint)localObject1).measureText(((StringBuilder)localObject2).toString()) > f2) {
+          break;
         }
         i += 1;
       }
-      TeamWorkShareActionSheetBuilder.c(this.this$0).setText(this.b + this.a.substring(0) + TeamWorkShareActionSheetBuilder.a(this.this$0).getString(2131690300));
+      if (i != 0)
+      {
+        localObject1 = this.a.substring(0, i - 1);
+        localObject2 = TeamWorkShareActionSheetBuilder.c(this.this$0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.b);
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(TeamWorkShareActionSheetBuilder.a(this.this$0).getString(2131690218));
+        ((TextView)localObject2).setText(localStringBuilder.toString());
+        return;
+      }
+      localObject1 = TeamWorkShareActionSheetBuilder.c(this.this$0);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.b);
+      ((StringBuilder)localObject2).append(this.a.substring(0));
+      ((StringBuilder)localObject2).append(TeamWorkShareActionSheetBuilder.a(this.this$0).getString(2131690218));
+      ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
       return;
     }
-    localObject = this.b + this.a;
-    TeamWorkShareActionSheetBuilder.c(this.this$0).setText((CharSequence)localObject);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append(this.a);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    TeamWorkShareActionSheetBuilder.c(this.this$0).setText((CharSequence)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder.1
  * JD-Core Version:    0.7.0.1
  */

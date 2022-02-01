@@ -34,18 +34,15 @@ class OperatorSkipLast$1
     }
     if (this.deque.size() == this.this$0.count) {
       this.val$subscriber.onNext(this.on.getValue(this.deque.removeFirst()));
-    }
-    for (;;)
-    {
-      this.deque.offerLast(this.on.next(paramT));
-      return;
+    } else {
       request(1L);
     }
+    this.deque.offerLast(this.on.next(paramT));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorSkipLast.1
  * JD-Core Version:    0.7.0.1
  */

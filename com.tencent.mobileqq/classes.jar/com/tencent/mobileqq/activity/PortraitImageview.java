@@ -78,15 +78,16 @@ public class PortraitImageview
   
   private int a(RectF paramRectF1, RectF paramRectF2)
   {
-    int m = 0;
     if (paramRectF1.left > paramRectF2.left) {
       m = 1;
+    } else {
+      m = 0;
     }
     int k = m;
     if (paramRectF1.right < paramRectF2.right) {
       k = m | 0x2;
     }
-    m = k;
+    int m = k;
     if (paramRectF1.top > paramRectF2.top) {
       m = k | 0x4;
     }
@@ -118,28 +119,32 @@ public class PortraitImageview
     paramMatrix.reset();
     float f3 = this.jdField_c_of_type_Int / paramBitmap.getWidth();
     float f4 = this.jdField_d_of_type_Int / paramBitmap.getHeight();
-    if ((f3 >= 1.0F) || (f4 >= 1.0F)) {
-      this.jdField_b_of_type_Float = Math.max(f3, f4);
-    }
-    for (;;)
+    if ((f3 < 1.0F) && (f4 < 1.0F))
     {
-      paramMatrix.setScale(this.jdField_b_of_type_Float, this.jdField_b_of_type_Float);
-      paramMatrix.postTranslate((f1 - paramBitmap.getWidth() * this.jdField_b_of_type_Float) / 2.0F, (f2 - paramBitmap.getHeight() * this.jdField_b_of_type_Float) / 2.0F);
-      this.jdField_b_of_type_AndroidGraphicsRectF.left = 0.0F;
-      this.jdField_b_of_type_AndroidGraphicsRectF.right = (this.jdField_b_of_type_AndroidGraphicsRectF.left + paramBitmap.getWidth());
-      this.jdField_b_of_type_AndroidGraphicsRectF.top = 0.0F;
-      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_AndroidGraphicsRectF.top + paramBitmap.getHeight());
-      paramMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF);
-      return;
       float f5 = f1 / paramBitmap.getWidth();
       float f6 = f2 / paramBitmap.getHeight();
       this.jdField_b_of_type_Float = Math.min(f5, f5);
-      if (this.jdField_b_of_type_Float >= 1.0F) {
+      float f7 = this.jdField_b_of_type_Float;
+      if (f7 >= 1.0F) {
         this.jdField_b_of_type_Float = 1.0F;
-      } else if ((this.jdField_b_of_type_Float < f3) || (this.jdField_b_of_type_Float < f4)) {
+      } else if ((f7 < f3) || (f7 < f4)) {
         this.jdField_b_of_type_Float = Math.max(f5, f6);
       }
     }
+    else
+    {
+      this.jdField_b_of_type_Float = Math.max(f3, f4);
+    }
+    f3 = this.jdField_b_of_type_Float;
+    paramMatrix.setScale(f3, f3);
+    paramMatrix.postTranslate((f1 - paramBitmap.getWidth() * this.jdField_b_of_type_Float) / 2.0F, (f2 - paramBitmap.getHeight() * this.jdField_b_of_type_Float) / 2.0F);
+    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    localRectF.left = 0.0F;
+    localRectF.right = (localRectF.left + paramBitmap.getWidth());
+    localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    localRectF.top = 0.0F;
+    localRectF.bottom = (localRectF.top + paramBitmap.getHeight());
+    paramMatrix.mapRect(this.jdField_b_of_type_AndroidGraphicsRectF);
   }
   
   public float a()
@@ -150,7 +155,7 @@ public class PortraitImageview
   float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     paramFloat1 = paramFloat1 / paramFloat4 - 1.0F;
-    return (paramFloat1 * (paramFloat1 * paramFloat1) + 1.0F) * paramFloat3 + paramFloat2;
+    return paramFloat3 * (paramFloat1 * paramFloat1 * paramFloat1 + 1.0F) + paramFloat2;
   }
   
   protected float a(Matrix paramMatrix)
@@ -212,9 +217,10 @@ public class PortraitImageview
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
+    float f2 = this.jdField_c_of_type_Float;
     float f1 = paramFloat1;
-    if (paramFloat1 > this.jdField_c_of_type_Float) {
-      f1 = this.jdField_c_of_type_Float;
+    if (paramFloat1 > f2) {
+      f1 = f2;
     }
     b(f1 / a(), paramFloat2, paramFloat3);
     setImageMatrix(a());
@@ -229,10 +235,11 @@ public class PortraitImageview
   
   protected float b()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap == null) {
       return 1.0F;
     }
-    return Math.max(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / this.jdField_g_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / this.h) * 16.0F;
+    return Math.max(localBitmap.getWidth() / this.jdField_g_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / this.h) * 16.0F;
   }
   
   public int b()
@@ -261,149 +268,183 @@ public class PortraitImageview
     this.jdField_e_of_type_AndroidGraphicsMatrix.set(this.jdField_b_of_type_AndroidGraphicsMatrix);
     this.jdField_e_of_type_AndroidGraphicsMatrix.postScale(paramFloat1, paramFloat1, paramFloat2, f2);
     this.jdField_e_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsRectF);
-    if (a(this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsRectF) == 0) {
-      this.jdField_b_of_type_AndroidGraphicsMatrix.set(this.jdField_e_of_type_AndroidGraphicsMatrix);
-    }
-    while ((this.jdField_c_of_type_AndroidGraphicsRectF.width() / this.jdField_a_of_type_AndroidGraphicsRectF.width() < 1.0F) || (this.jdField_c_of_type_AndroidGraphicsRectF.height() / this.jdField_a_of_type_AndroidGraphicsRectF.height() < 1.0F)) {
-      return;
-    }
-    this.jdField_b_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsRectF);
-    paramFloat2 = this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_c_of_type_AndroidGraphicsRectF.width();
-    paramFloat3 = this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.jdField_c_of_type_AndroidGraphicsRectF.height();
-    if (paramFloat2 >= paramFloat3) {}
-    for (;;)
+    if (a(this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsRectF) == 0)
     {
-      paramFloat3 = (this.jdField_a_of_type_AndroidGraphicsRectF.centerX() - this.jdField_c_of_type_AndroidGraphicsRectF.centerX() * paramFloat2) / (1.0F - paramFloat2);
-      paramFloat2 = (this.jdField_a_of_type_AndroidGraphicsRectF.centerY() - this.jdField_c_of_type_AndroidGraphicsRectF.centerY() * paramFloat2) / (1.0F - paramFloat2);
-      this.jdField_b_of_type_AndroidGraphicsMatrix.postScale(paramFloat1, paramFloat1, paramFloat3, paramFloat2);
+      this.jdField_b_of_type_AndroidGraphicsMatrix.set(this.jdField_e_of_type_AndroidGraphicsMatrix);
       return;
-      paramFloat2 = paramFloat3;
+    }
+    if ((this.jdField_c_of_type_AndroidGraphicsRectF.width() / this.jdField_a_of_type_AndroidGraphicsRectF.width() >= 1.0F) && (this.jdField_c_of_type_AndroidGraphicsRectF.height() / this.jdField_a_of_type_AndroidGraphicsRectF.height() >= 1.0F))
+    {
+      this.jdField_b_of_type_AndroidGraphicsMatrix.mapRect(this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_AndroidGraphicsRectF);
+      paramFloat2 = this.jdField_a_of_type_AndroidGraphicsRectF.width() / this.jdField_c_of_type_AndroidGraphicsRectF.width();
+      paramFloat3 = this.jdField_a_of_type_AndroidGraphicsRectF.height() / this.jdField_c_of_type_AndroidGraphicsRectF.height();
+      if (paramFloat2 < paramFloat3) {
+        paramFloat2 = paramFloat3;
+      }
+      f1 = this.jdField_a_of_type_AndroidGraphicsRectF.centerX();
+      f2 = this.jdField_c_of_type_AndroidGraphicsRectF.centerX();
+      paramFloat3 = 1.0F - paramFloat2;
+      f1 = (f1 - f2 * paramFloat2) / paramFloat3;
+      paramFloat2 = (this.jdField_a_of_type_AndroidGraphicsRectF.centerY() - this.jdField_c_of_type_AndroidGraphicsRectF.centerY() * paramFloat2) / paramFloat3;
+      this.jdField_b_of_type_AndroidGraphicsMatrix.postScale(paramFloat1, paramFloat1, f1, paramFloat2);
     }
   }
   
   public float c()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap == null) {
       return 1.0F;
     }
-    return Math.max(Math.min(this.jdField_g_of_type_Int / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.h / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()), 1.0F);
+    return Math.max(Math.min(this.jdField_g_of_type_Int / localBitmap.getWidth(), this.h / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()), 1.0F);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     int k = paramCanvas.save();
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-    {
-      if ((Build.VERSION.SDK_INT < 11) || (getLayerType() != 2)) {
-        break label57;
-      }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_AndroidGraphicsMatrix, null);
-    }
-    for (;;)
-    {
-      paramCanvas.restoreToCount(k);
-      return;
-      label57:
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Double > 250.0D)
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+      if ((Build.VERSION.SDK_INT >= 11) && (getLayerType() == 2))
       {
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_Double = System.currentTimeMillis();
+        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_AndroidGraphicsMatrix, null);
       }
       else
       {
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_AndroidGraphicsMatrix, null);
-        removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
-        postDelayed(this.jdField_c_of_type_JavaLangRunnable, 250L);
+        double d1 = System.currentTimeMillis();
+        double d2 = this.jdField_a_of_type_Double;
+        Double.isNaN(d1);
+        if (d1 - d2 > 250.0D)
+        {
+          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
+          this.jdField_a_of_type_Double = System.currentTimeMillis();
+        }
+        else
+        {
+          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_AndroidGraphicsMatrix, null);
+          removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
+          postDelayed(this.jdField_c_of_type_JavaLangRunnable, 250L);
+        }
       }
     }
+    paramCanvas.restoreToCount(k);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_g_of_type_Int = (paramInt3 - paramInt1);
     this.h = (paramInt4 - paramInt2);
-    Runnable localRunnable = this.jdField_b_of_type_JavaLangRunnable;
-    if (localRunnable != null)
+    Object localObject = this.jdField_b_of_type_JavaLangRunnable;
+    if (localObject != null)
     {
       this.jdField_b_of_type_JavaLangRunnable = null;
-      localRunnable.run();
+      ((Runnable)localObject).run();
     }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject != null)
     {
-      a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix);
+      a((Bitmap)localObject, this.jdField_a_of_type_AndroidGraphicsMatrix);
       setImageMatrix(a());
     }
     this.jdField_a_of_type_Int = (getWidth() / 2);
     this.jdField_b_of_type_Int = (getHeight() / 2);
     setRestrict(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_c_of_type_Int / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_c_of_type_Int / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_d_of_type_Int / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_d_of_type_Int / 2);
+    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    paramInt1 = this.jdField_a_of_type_Int;
+    paramInt2 = this.jdField_c_of_type_Int;
+    ((RectF)localObject).left = (paramInt1 - paramInt2 / 2);
+    ((RectF)localObject).right = (paramInt1 + paramInt2 / 2);
+    paramInt1 = this.jdField_b_of_type_Int;
+    paramInt2 = this.jdField_d_of_type_Int;
+    ((RectF)localObject).top = (paramInt1 - paramInt2 / 2);
+    ((RectF)localObject).bottom = (paramInt1 + paramInt2 / 2);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int k = 0;
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
       this.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
       if (!this.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()) {
         this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
       }
-      switch (paramMotionEvent.getAction() & 0xFF)
+      int m = paramMotionEvent.getAction() & 0xFF;
+      int k = 0;
+      float f1;
+      float f2;
+      if (m != 0)
       {
+        if (m != 1)
+        {
+          if (m != 2)
+          {
+            if (m != 3)
+            {
+              if (m != 6) {
+                return true;
+              }
+              m = (paramMotionEvent.getAction() & 0xFF00) >> 8;
+              if (paramMotionEvent.getPointerId(m) == this.j)
+              {
+                if (m == 0) {
+                  k = 1;
+                }
+                this.jdField_f_of_type_Float = paramMotionEvent.getX(k);
+                this.jdField_g_of_type_Float = paramMotionEvent.getY(k);
+                this.j = paramMotionEvent.getPointerId(k);
+                return true;
+              }
+            }
+            else
+            {
+              this.j = -1;
+              return true;
+            }
+          }
+          else
+          {
+            k = paramMotionEvent.findPointerIndex(this.j);
+            if ((k != -1) && (k < paramMotionEvent.getPointerCount()))
+            {
+              f1 = paramMotionEvent.getX(k);
+              f2 = paramMotionEvent.getY(k);
+              if (!this.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress())
+              {
+                float f3 = f1 - this.jdField_f_of_type_Float;
+                float f4 = f2 - this.jdField_g_of_type_Float;
+                if (this.jdField_a_of_type_AndroidGraphicsRectF != null)
+                {
+                  this.jdField_d_of_type_Float += f3;
+                  this.jdField_e_of_type_Float += f4;
+                }
+                else
+                {
+                  this.jdField_d_of_type_Float += f3;
+                  this.jdField_e_of_type_Float += f4;
+                }
+                invalidate();
+              }
+              this.jdField_f_of_type_Float = f1;
+              this.jdField_g_of_type_Float = f2;
+              return true;
+            }
+          }
+        }
+        else
+        {
+          this.j = -1;
+          return true;
+        }
       }
-    }
-    label231:
-    int m;
-    do
-    {
-      do
+      else
       {
-        return true;
         f1 = paramMotionEvent.getX();
         f2 = paramMotionEvent.getY();
         this.jdField_f_of_type_Float = f1;
         this.jdField_g_of_type_Float = f2;
         this.j = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-        return true;
-        k = paramMotionEvent.findPointerIndex(this.j);
-      } while ((k == -1) || (k >= paramMotionEvent.getPointerCount()));
-      float f1 = paramMotionEvent.getX(k);
-      float f2 = paramMotionEvent.getY(k);
-      float f3;
-      float f4;
-      if (!this.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress())
-      {
-        f3 = f1 - this.jdField_f_of_type_Float;
-        f4 = f2 - this.jdField_g_of_type_Float;
-        if (this.jdField_a_of_type_AndroidGraphicsRectF == null) {
-          break label231;
-        }
-        this.jdField_d_of_type_Float = (f3 + this.jdField_d_of_type_Float);
       }
-      for (this.jdField_e_of_type_Float += f4;; this.jdField_e_of_type_Float += f4)
-      {
-        invalidate();
-        this.jdField_f_of_type_Float = f1;
-        this.jdField_g_of_type_Float = f2;
-        return true;
-        this.jdField_d_of_type_Float = (f3 + this.jdField_d_of_type_Float);
-      }
-      this.j = -1;
-      return true;
-      this.j = -1;
-      return true;
-      m = (paramMotionEvent.getAction() & 0xFF00) >> 8;
-    } while (paramMotionEvent.getPointerId(m) != this.j);
-    if (m == 0) {
-      k = 1;
     }
-    this.jdField_f_of_type_Float = paramMotionEvent.getX(k);
-    this.jdField_g_of_type_Float = paramMotionEvent.getY(k);
-    this.j = paramMotionEvent.getPointerId(k);
     return true;
   }
   
@@ -417,17 +458,19 @@ public class PortraitImageview
       this.jdField_b_of_type_JavaLangRunnable = new PortraitImageview.2(this, paramBitmap);
       return;
     }
-    if (paramBitmap != null) {
-      a(paramBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix);
-    }
-    for (this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;; this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap)
+    if (paramBitmap != null)
     {
-      this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
-      setImageMatrix(a());
-      this.jdField_c_of_type_Float = b();
-      return;
-      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+      a(paramBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     }
+    else
+    {
+      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    }
+    this.jdField_b_of_type_AndroidGraphicsMatrix.reset();
+    setImageMatrix(a());
+    this.jdField_c_of_type_Float = b();
   }
   
   public void setImageMatrix(Matrix paramMatrix)
@@ -461,18 +504,27 @@ public class PortraitImageview
   {
     this.jdField_e_of_type_Int = paramInt1;
     this.jdField_f_of_type_Int = paramInt2;
-    if ((this.jdField_g_of_type_Int > 0) && ((this.jdField_e_of_type_Int > this.jdField_g_of_type_Int) || (this.jdField_f_of_type_Int > this.h)))
+    paramInt1 = this.jdField_g_of_type_Int;
+    if ((paramInt1 > 0) && ((this.jdField_e_of_type_Int > paramInt1) || (this.jdField_f_of_type_Int > this.h)))
     {
-      float f1 = (this.jdField_g_of_type_Int - i * this.jdField_a_of_type_Float) / this.jdField_e_of_type_Int;
-      float f2 = (this.h - i * this.jdField_a_of_type_Float) / this.jdField_f_of_type_Int;
-      if (f1 <= f2)
+      float f2 = this.jdField_g_of_type_Int;
+      paramInt2 = i;
+      float f3 = paramInt2;
+      float f1 = this.jdField_a_of_type_Float;
+      paramInt1 = this.jdField_e_of_type_Int;
+      f2 = (f2 - f3 * f1) / paramInt1;
+      f3 = this.h;
+      float f4 = paramInt2;
+      paramInt2 = this.jdField_f_of_type_Int;
+      f1 = (f3 - f4 * f1) / paramInt2;
+      if (f2 <= f1)
       {
-        this.jdField_c_of_type_Int = ((int)(this.jdField_e_of_type_Int * f1));
-        this.jdField_d_of_type_Int = ((int)(f1 * this.jdField_f_of_type_Int));
+        this.jdField_c_of_type_Int = ((int)(paramInt1 * f2));
+        this.jdField_d_of_type_Int = ((int)(paramInt2 * f2));
         return;
       }
-      this.jdField_c_of_type_Int = ((int)(this.jdField_e_of_type_Int * f2));
-      this.jdField_d_of_type_Int = ((int)(this.jdField_f_of_type_Int * f2));
+      this.jdField_c_of_type_Int = ((int)(paramInt1 * f1));
+      this.jdField_d_of_type_Int = ((int)(paramInt2 * f1));
       return;
     }
     this.jdField_c_of_type_Int = this.jdField_e_of_type_Int;
@@ -481,7 +533,7 @@ public class PortraitImageview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PortraitImageview
  * JD-Core Version:    0.7.0.1
  */

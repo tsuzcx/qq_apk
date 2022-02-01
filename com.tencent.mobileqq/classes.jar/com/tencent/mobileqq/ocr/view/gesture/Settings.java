@@ -3,7 +3,7 @@ package com.tencent.mobileqq.ocr.view.gesture;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqocr.impl.R.styleable;
 
 public class Settings
 {
@@ -84,52 +84,48 @@ public class Settings
     if (paramAttributeSet == null) {
       return;
     }
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.GestureView);
-    this.jdField_c_of_type_Int = paramAttributeSet.getDimensionPixelSize(14, this.jdField_c_of_type_Int);
-    this.jdField_d_of_type_Int = paramAttributeSet.getDimensionPixelSize(13, this.jdField_d_of_type_Int);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ak);
+    this.jdField_c_of_type_Int = paramAttributeSet.getDimensionPixelSize(R.styleable.o, this.jdField_c_of_type_Int);
+    this.jdField_d_of_type_Int = paramAttributeSet.getDimensionPixelSize(R.styleable.n, this.jdField_d_of_type_Int);
     boolean bool;
-    if ((this.jdField_c_of_type_Int > 0) && (this.jdField_d_of_type_Int > 0))
-    {
+    if ((this.jdField_c_of_type_Int > 0) && (this.jdField_d_of_type_Int > 0)) {
       bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Float = paramAttributeSet.getFloat(12, this.jdField_a_of_type_Float);
-      this.jdField_b_of_type_Float = paramAttributeSet.getFloat(11, this.jdField_b_of_type_Float);
-      this.jdField_c_of_type_Float = paramAttributeSet.getFloat(5, this.jdField_c_of_type_Float);
-      this.jdField_d_of_type_Float = paramAttributeSet.getFloat(17, this.jdField_d_of_type_Float);
-      this.jdField_e_of_type_Float = paramAttributeSet.getDimension(15, this.jdField_e_of_type_Float);
-      this.jdField_f_of_type_Float = paramAttributeSet.getDimension(16, this.jdField_f_of_type_Float);
-      this.jdField_b_of_type_Boolean = paramAttributeSet.getBoolean(7, this.jdField_b_of_type_Boolean);
-      this.jdField_g_of_type_Int = paramAttributeSet.getInt(10, this.jdField_g_of_type_Int);
-      int j = paramAttributeSet.getInteger(8, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$Fit.ordinal());
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$Fit = Settings.Fit.values()[j];
-      j = paramAttributeSet.getInteger(1, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$Bounds.ordinal());
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$Bounds = Settings.Bounds.values()[j];
-      this.jdField_c_of_type_Boolean = paramAttributeSet.getBoolean(18, this.jdField_c_of_type_Boolean);
-      this.jdField_d_of_type_Boolean = paramAttributeSet.getBoolean(9, this.jdField_d_of_type_Boolean);
-      this.jdField_e_of_type_Boolean = paramAttributeSet.getBoolean(21, this.jdField_e_of_type_Boolean);
-      this.jdField_f_of_type_Boolean = paramAttributeSet.getBoolean(20, this.jdField_f_of_type_Boolean);
-      this.jdField_g_of_type_Boolean = paramAttributeSet.getBoolean(19, this.jdField_g_of_type_Boolean);
-      this.jdField_h_of_type_Boolean = paramAttributeSet.getBoolean(4, this.jdField_h_of_type_Boolean);
-      if (!paramAttributeSet.getBoolean(6, true)) {
-        break label378;
-      }
-    }
-    label378:
-    for (paramContext = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$ExitType;; paramContext = Settings.ExitType.NONE)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$ExitType = paramContext;
-      this.jdField_a_of_type_Long = paramAttributeSet.getInt(0, (int)this.jdField_a_of_type_Long);
-      if (paramAttributeSet.getBoolean(3, false)) {
-        a();
-      }
-      if (paramAttributeSet.getBoolean(2, false)) {
-        b();
-      }
-      paramAttributeSet.recycle();
-      return;
+    } else {
       bool = false;
-      break;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_Float = paramAttributeSet.getFloat(R.styleable.m, this.jdField_a_of_type_Float);
+    this.jdField_b_of_type_Float = paramAttributeSet.getFloat(R.styleable.l, this.jdField_b_of_type_Float);
+    this.jdField_c_of_type_Float = paramAttributeSet.getFloat(R.styleable.jdField_f_of_type_Int, this.jdField_c_of_type_Float);
+    this.jdField_d_of_type_Float = paramAttributeSet.getFloat(R.styleable.r, this.jdField_d_of_type_Float);
+    this.jdField_e_of_type_Float = paramAttributeSet.getDimension(R.styleable.p, this.jdField_e_of_type_Float);
+    this.jdField_f_of_type_Float = paramAttributeSet.getDimension(R.styleable.q, this.jdField_f_of_type_Float);
+    this.jdField_b_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.jdField_h_of_type_Int, this.jdField_b_of_type_Boolean);
+    this.jdField_g_of_type_Int = paramAttributeSet.getInt(R.styleable.k, this.jdField_g_of_type_Int);
+    int j = paramAttributeSet.getInteger(R.styleable.i, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$Fit.ordinal());
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$Fit = Settings.Fit.values()[j];
+    j = paramAttributeSet.getInteger(R.styleable.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$Bounds.ordinal());
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$Bounds = Settings.Bounds.values()[j];
+    this.jdField_c_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.s, this.jdField_c_of_type_Boolean);
+    this.jdField_d_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.j, this.jdField_d_of_type_Boolean);
+    this.jdField_e_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.v, this.jdField_e_of_type_Boolean);
+    this.jdField_f_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.u, this.jdField_f_of_type_Boolean);
+    this.jdField_g_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.t, this.jdField_g_of_type_Boolean);
+    this.jdField_h_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.jdField_e_of_type_Int, this.jdField_h_of_type_Boolean);
+    if (paramAttributeSet.getBoolean(R.styleable.jdField_g_of_type_Int, true)) {
+      paramContext = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$ExitType;
+    } else {
+      paramContext = Settings.ExitType.NONE;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings$ExitType = paramContext;
+    this.jdField_a_of_type_Long = paramAttributeSet.getInt(R.styleable.jdField_a_of_type_Int, (int)this.jdField_a_of_type_Long);
+    if (paramAttributeSet.getBoolean(R.styleable.jdField_d_of_type_Int, false)) {
+      a();
+    }
+    if (paramAttributeSet.getBoolean(R.styleable.jdField_c_of_type_Int, false)) {
+      b();
+    }
+    paramAttributeSet.recycle();
   }
   
   public boolean a()
@@ -268,7 +264,7 @@ public class Settings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.Settings
  * JD-Core Version:    0.7.0.1
  */

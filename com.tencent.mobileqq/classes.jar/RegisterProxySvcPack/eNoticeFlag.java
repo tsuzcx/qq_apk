@@ -5,23 +5,11 @@ import java.io.Serializable;
 public final class eNoticeFlag
   implements Serializable
 {
-  public static final eNoticeFlag NOTICE_MSG_END;
+  public static final eNoticeFlag NOTICE_MSG_END = new eNoticeFlag(0, 1, "NOTICE_MSG_END");
   public static final int _NOTICE_MSG_END = 1;
-  private static eNoticeFlag[] a;
+  private static eNoticeFlag[] a = new eNoticeFlag[1];
   private String __T = new String();
   private int __value;
-  
-  static
-  {
-    if (!eNoticeFlag.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      a = new eNoticeFlag[1];
-      NOTICE_MSG_END = new eNoticeFlag(0, 1, "NOTICE_MSG_END");
-      return;
-    }
-  }
   
   private eNoticeFlag(int paramInt1, int paramInt2, String paramString)
   {
@@ -33,15 +21,16 @@ public final class eNoticeFlag
   public static eNoticeFlag convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].value() == paramInt) {
+      eNoticeFlag[] arrayOfeNoticeFlag = a;
+      if (i >= arrayOfeNoticeFlag.length) {
+        break;
+      }
+      if (arrayOfeNoticeFlag[i].value() == paramInt) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -49,15 +38,16 @@ public final class eNoticeFlag
   public static eNoticeFlag convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    for (;;)
     {
-      if (a[i].toString().equals(paramString)) {
+      eNoticeFlag[] arrayOfeNoticeFlag = a;
+      if (i >= arrayOfeNoticeFlag.length) {
+        break;
+      }
+      if (arrayOfeNoticeFlag[i].toString().equals(paramString)) {
         return a[i];
       }
       i += 1;
-    }
-    if (!$assertionsDisabled) {
-      throw new AssertionError();
     }
     return null;
   }
@@ -74,7 +64,7 @@ public final class eNoticeFlag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.eNoticeFlag
  * JD-Core Version:    0.7.0.1
  */

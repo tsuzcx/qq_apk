@@ -3,7 +3,6 @@ package com.tencent.mobileqq.emoticonview.api;
 import android.content.Context;
 import android.os.Parcelable;
 import android.widget.EditText;
-import com.tencent.mobileqq.emoticonview.IEmoticonPanelController;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import java.net.URL;
@@ -13,13 +12,9 @@ import mqq.app.AppRuntime;
 public abstract interface IHotPicSearchService
   extends QRouteApi
 {
-  public abstract int getFromType(IEmoticonPanelController paramIEmoticonPanelController);
-  
   public abstract int getReportFromType();
   
   public abstract URL getURL(String paramString);
-  
-  public abstract boolean isEmoPanelSearch(IEmoticonPanelController paramIEmoticonPanelController);
   
   public abstract boolean isRichTextLastTab(Context paramContext, String paramString);
   
@@ -27,7 +22,7 @@ public abstract interface IHotPicSearchService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.api.IHotPicSearchService
  * JD-Core Version:    0.7.0.1
  */

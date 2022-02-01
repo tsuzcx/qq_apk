@@ -23,12 +23,32 @@ public class DeleteStoryVideoEvent
   
   public String toString()
   {
-    return "DeleteStoryVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", groupId='" + this.c + '\'' + ", feedId='" + this.d + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", localDelete=" + this.jdField_a_of_type_Boolean + ", isRemoveMember=" + this.jdField_b_of_type_Boolean + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DeleteStoryVideoEvent{vid='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uid='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", groupId='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", feedId='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", videoIndex=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", localDelete=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", isRemoveMember=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.DeleteStoryVideoEvent
  * JD-Core Version:    0.7.0.1
  */

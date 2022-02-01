@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class ShareAlbumMemberData
   extends JceStruct
@@ -49,22 +50,25 @@ public class ShareAlbumMemberData
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 1);
+    Object localObject = this.nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.photo_cnt, 2);
     paramJceOutputStream.write(this.video_cnt, 3);
-    if (this.page != null) {
-      paramJceOutputStream.write(this.page, 4);
+    localObject = this.page;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.photos != null) {
-      paramJceOutputStream.write(this.photos, 5);
+    localObject = this.photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.ShareAlbumMemberData
  * JD-Core Version:    0.7.0.1
  */

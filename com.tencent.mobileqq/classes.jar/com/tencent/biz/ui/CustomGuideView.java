@@ -35,42 +35,41 @@ public class CustomGuideView
   public CustomGuideView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702740);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702873);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702740);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702873);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702740);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702873);
     a();
   }
   
   private int a(float paramFloat)
   {
-    return (int)(getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * getResources().getDisplayMetrics().density + 0.5F);
   }
   
   private int a(int paramInt1, int paramInt2)
   {
-    int j = View.MeasureSpec.getMode(paramInt2);
-    int i = View.MeasureSpec.getSize(paramInt2);
-    if (j == 1073741824) {
-      paramInt2 = i;
+    int i = View.MeasureSpec.getMode(paramInt2);
+    int j = View.MeasureSpec.getSize(paramInt2);
+    if (i == 1073741824) {
+      return j;
     }
-    do
-    {
-      return paramInt2;
-      paramInt2 = paramInt1;
-    } while (j != -2147483648);
-    return Math.min(paramInt1, i);
+    paramInt2 = paramInt1;
+    if (i == -2147483648) {
+      paramInt2 = Math.min(paramInt1, j);
+    }
+    return paramInt2;
   }
   
   public int a()
@@ -112,16 +111,12 @@ public class CustomGuideView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
     RectF localRectF = new RectF(0.0F, this.b, getWidth(), getHeight());
-    paramCanvas.drawRoundRect(localRectF, this.e, this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+    int i = this.e;
+    paramCanvas.drawRoundRect(localRectF, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.f);
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
     Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    String str = this.jdField_a_of_type_JavaLangString;
-    f1 = (getWidth() - this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString)) / 2.0F;
-    f2 = this.b;
-    float f3 = localRectF.height();
-    float f4 = localFontMetrics.ascent;
-    paramCanvas.drawText(str, f1, (f3 - (localFontMetrics.bottom + f4)) / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, (getWidth() - this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString)) / 2.0F, this.b + (localRectF.height() - (localFontMetrics.ascent + localFontMetrics.bottom)) / 2.0F, this.jdField_a_of_type_AndroidTextTextPaint);
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
@@ -131,7 +126,7 @@ public class CustomGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.CustomGuideView
  * JD-Core Version:    0.7.0.1
  */

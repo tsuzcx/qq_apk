@@ -10,9 +10,7 @@ class AccountManageActivity$2
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 5000) {
       return;
     }
     this.a.e();
@@ -20,7 +18,7 @@ class AccountManageActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.2
  * JD-Core Version:    0.7.0.1
  */

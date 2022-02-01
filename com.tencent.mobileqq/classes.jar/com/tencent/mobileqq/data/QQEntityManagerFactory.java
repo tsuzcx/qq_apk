@@ -17,8 +17,9 @@ import com.tencent.mobileqq.data.entitymanager.upgrade.IAfterDBUpgradeListener;
 import com.tencent.mobileqq.data.entitymanager.upgrade.IOnDBUpgradeListener;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.ISQLiteOpenHelper;
 import com.tencent.mobileqq.persistence.OGEntityManager;
+import com.tencent.mobileqq.persistence.SQLiteOpenHelperFacade;
 import com.tencent.mobileqq.persistence.TableBuilder;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.utils.SecurityUtile;
@@ -31,7 +32,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import mqq.app.MobileQQ;
 
 @TargetApi(11)
 public class QQEntityManagerFactory
@@ -65,97 +65,107 @@ public class QQEntityManagerFactory
   private void checkColumnChange(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
     Object localObject = this.mTableColumnCheckInterceptorList;
-    if ((localObject == null) || (((List)localObject).size() <= 0)) {
-      return;
-    }
-    Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
-    ArrayList localArrayList = new ArrayList();
-    if (localCursor1 != null)
+    if (localObject != null)
     {
-      localObject = new FindTableNameInterceptorChain(0, "", (List)localObject, paramInt1, paramInt2, paramSQLiteDatabase);
-      while (localCursor1.moveToNext())
-      {
-        String str = SecurityUtile.decode(localCursor1.getString(0));
-        Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
-        if (localCursor2 != null)
-        {
-          Class localClass = ((FindTableNameInterceptorChain)localObject).proceed(str);
-          if (localClass != null) {
-            OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, localClass);
-          }
-          localCursor2.close();
-        }
+      if (((List)localObject).size() <= 0) {
+        return;
       }
-      localCursor1.close();
+      Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
+      ArrayList localArrayList = new ArrayList();
+      if (localCursor1 != null)
+      {
+        localObject = new FindTableNameInterceptorChain(0, "", (List)localObject, paramInt1, paramInt2, paramSQLiteDatabase);
+        while (localCursor1.moveToNext())
+        {
+          String str = SecurityUtile.decode(localCursor1.getString(0));
+          Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
+          if (localCursor2 != null)
+          {
+            Class localClass = ((FindTableNameInterceptorChain)localObject).proceed(str);
+            if (localClass != null) {
+              OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, localClass);
+            }
+            localCursor2.close();
+          }
+        }
+        localCursor1.close();
+      }
+      updateColumnChange(paramSQLiteDatabase, localArrayList);
     }
-    updateColumnChange(paramSQLiteDatabase, localArrayList);
   }
   
   private String createKey(Class paramClass)
   {
-    return "local_hash_table_" + paramClass.getName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("local_hash_table_");
+    localStringBuilder.append(paramClass.getName());
+    return localStringBuilder.toString();
   }
   
   private boolean deleteFile(String paramString)
   {
-    boolean bool;
     if (TextUtils.isEmpty(paramString)) {
-      bool = false;
+      return false;
     }
-    do
-    {
-      return bool;
-      bool = true;
-      paramString = new File(paramString);
-    } while (!paramString.exists());
-    return paramString.delete();
+    boolean bool = true;
+    paramString = new File(paramString);
+    if (paramString.exists()) {
+      bool = paramString.delete();
+    }
+    return bool;
   }
   
   private void executeUpgradeDBSql(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt)
   {
-    label19:
-    Iterator localIterator;
-    if ((this.mDBUpgradeEntityList == null) || (this.mDBUpgradeEntityList.size() <= 0)) {
-      return;
-    } else {
-      localIterator = this.mDBUpgradeEntityList.iterator();
-    }
-    for (;;)
+    Object localObject1 = this.mDBUpgradeEntityList;
+    if (localObject1 != null)
     {
-      if (!localIterator.hasNext()) {
-        break label19;
+      if (((List)localObject1).size() <= 0) {
+        return;
       }
-      Object localObject = (DBUpgradeEntity)localIterator.next();
-      if ((localObject == null) || (paramInt >= ((DBUpgradeEntity)localObject).maxVersion())) {
-        break;
-      }
-      localObject = ((DBUpgradeEntity)localObject).sqlStatement();
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
+      localObject1 = this.mDBUpgradeEntityList.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        paramSQLiteDatabase.execSQL(localObject[i]);
-        i += 1;
+        Object localObject2 = (DBUpgradeEntity)((Iterator)localObject1).next();
+        if ((localObject2 != null) && (paramInt < ((DBUpgradeEntity)localObject2).maxVersion()))
+        {
+          localObject2 = ((DBUpgradeEntity)localObject2).sqlStatement();
+          int j = localObject2.length;
+          int i = 0;
+          while (i < j)
+          {
+            paramSQLiteDatabase.execSQL(localObject2[i]);
+            i += 1;
+          }
+        }
       }
     }
   }
   
   private String getChangeTableName(Map<String, Integer> paramMap, SharedPreferences paramSharedPreferences)
   {
-    Class[] arrayOfClass = getVerifyClassList();
-    int j = arrayOfClass.length;
+    Object localObject2 = getVerifyClassList();
+    int j = localObject2.length;
     int i = 0;
     while (i < j)
     {
-      Class localClass = arrayOfClass[i];
-      Object localObject = createKey(localClass);
-      int k = paramSharedPreferences.getInt((String)localObject, 0);
-      localObject = (Integer)paramMap.get(localObject);
-      if ((localObject != null) && (((Integer)localObject).intValue() != k))
+      Class localClass = localObject2[i];
+      Object localObject1 = createKey(localClass);
+      int k = paramSharedPreferences.getInt((String)localObject1, 0);
+      localObject1 = (Integer)paramMap.get(localObject1);
+      if ((localObject1 != null) && (((Integer)localObject1).intValue() != k))
       {
         paramMap = localClass.getName();
         paramMap = paramMap.substring(paramMap.lastIndexOf(".") + 1);
-        QLog.e(this.tag, 1, "getChangeTableName : " + paramMap + ", current hash : " + localObject + ", origin hash : " + k);
+        paramSharedPreferences = this.tag;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getChangeTableName : ");
+        ((StringBuilder)localObject2).append(paramMap);
+        ((StringBuilder)localObject2).append(", current hash : ");
+        ((StringBuilder)localObject2).append(localObject1);
+        ((StringBuilder)localObject2).append(", origin hash : ");
+        ((StringBuilder)localObject2).append(k);
+        QLog.e(paramSharedPreferences, 1, ((StringBuilder)localObject2).toString());
         return paramMap;
       }
       i += 1;
@@ -165,7 +175,8 @@ public class QQEntityManagerFactory
   
   private Class[] getVerifyClassList()
   {
-    if ((this.mVerifyClassList != null) && (this.mVerifyClassList.size() <= 0)) {
+    List localList = this.mVerifyClassList;
+    if ((localList != null) && (localList.size() <= 0)) {
       return (Class[])this.mVerifyClassList.toArray();
     }
     return new Class[0];
@@ -181,14 +192,19 @@ public class QQEntityManagerFactory
       Class localClass = paramArrayOfClass[i];
       Object localObject1 = localClass.getFields();
       StringBuilder localStringBuilder2 = new StringBuilder();
-      localStringBuilder2.append(localClass.getName()).append("[");
+      localStringBuilder2.append(localClass.getName());
+      localStringBuilder2.append("[");
       int m = localObject1.length;
       int j = 0;
       while (j < m)
       {
         Object localObject2 = localObject1[j];
-        if ((!Modifier.isStatic(localObject2.getModifiers())) && (localObject2.getAnnotation(notColumn.class) == null)) {
-          localStringBuilder2.append(localObject2.getName()).append("_").append(localObject2.getType()).append("&");
+        if ((!Modifier.isStatic(localObject2.getModifiers())) && (localObject2.getAnnotation(notColumn.class) == null))
+        {
+          localStringBuilder2.append(localObject2.getName());
+          localStringBuilder2.append("_");
+          localStringBuilder2.append(localObject2.getType());
+          localStringBuilder2.append("&");
         }
         j += 1;
       }
@@ -206,17 +222,32 @@ public class QQEntityManagerFactory
     if ((paramInt1 != paramInt2) && (paramInt3 >= this.mDBVersion))
     {
       paramMap = getChangeTableName(paramMap, paramSharedPreferences);
-      QLog.e(this.tag, 1, "db version config error for table " + paramMap + " changed, hash : " + paramInt1 + ", localHash : " + paramInt2 + ", localVersion : " + paramInt3 + ", DB_VERSION: " + this.mDBVersion);
-      if (this.mOnDBTableVerifyFailListener != null) {
-        this.mOnDBTableVerifyFailListener.onDBTableVerifyFailed(paramMap);
+      paramSharedPreferences = this.tag;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("db version config error for table ");
+      localStringBuilder.append(paramMap);
+      localStringBuilder.append(" changed, hash : ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", localHash : ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", localVersion : ");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(", DB_VERSION: ");
+      localStringBuilder.append(this.mDBVersion);
+      QLog.e(paramSharedPreferences, 1, localStringBuilder.toString());
+      paramSharedPreferences = this.mOnDBTableVerifyFailListener;
+      if (paramSharedPreferences != null) {
+        paramSharedPreferences.onDBTableVerifyFailed(paramMap);
       }
-      return;
     }
-    paramSharedPreferences = paramSharedPreferences.edit();
-    paramSharedPreferences.putInt("debug_local_hash", paramInt1);
-    paramSharedPreferences.putInt("debug_dbversion", this.mDBVersion);
-    saveTableHashToSp(paramMap, paramSharedPreferences);
-    paramSharedPreferences.apply();
+    else
+    {
+      paramSharedPreferences = paramSharedPreferences.edit();
+      paramSharedPreferences.putInt("debug_local_hash", paramInt1);
+      paramSharedPreferences.putInt("debug_dbversion", this.mDBVersion);
+      saveTableHashToSp(paramMap, paramSharedPreferences);
+      paramSharedPreferences.apply();
+    }
   }
   
   private void saveTableHashToMap(String paramString, Map<String, Integer> paramMap, Class paramClass)
@@ -224,7 +255,13 @@ public class QQEntityManagerFactory
     paramClass = createKey(paramClass);
     int i = paramString.hashCode();
     paramMap.put(paramClass, Integer.valueOf(i));
-    QLog.d(this.tag, 1, "key = " + paramClass + ", hash = " + i);
+    paramString = this.tag;
+    paramMap = new StringBuilder();
+    paramMap.append("key = ");
+    paramMap.append(paramClass);
+    paramMap.append(", hash = ");
+    paramMap.append(i);
+    QLog.d(paramString, 1, paramMap.toString());
   }
   
   private void saveTableHashToSp(Map<String, Integer> paramMap, SharedPreferences.Editor paramEditor)
@@ -254,14 +291,19 @@ public class QQEntityManagerFactory
         paramSQLiteDatabase.execSQL((String)paramList.next());
       }
       paramSQLiteDatabase.setTransactionSuccessful();
+      paramSQLiteDatabase.endTransaction();
+      com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+      return;
     }
     finally
     {
       paramSQLiteDatabase.endTransaction();
       com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
     }
-    paramSQLiteDatabase.endTransaction();
-    com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   private void verifyDBVersion() {}
@@ -271,58 +313,54 @@ public class QQEntityManagerFactory
     verifyDBVersion();
     if (this.dbHelper == null)
     {
-      if ((!VersionUtils.e()) || (this.mCorruptionInterceptorList == null)) {
-        break label184;
+      if ((VersionUtils.e()) && (this.mCorruptionInterceptorList != null))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(".db");
+        this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), this.mDBVersion, new QQDBErrorHandler(this.mCorruptionInterceptorList));
       }
-      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, this.mDBVersion, new QQDBErrorHandler(this.mCorruptionInterceptorList));
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(".db");
+        this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), this.mDBVersion);
+      }
+      paramString = this.tag;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("walFlag: ");
+      localStringBuilder.append(SQLiteOpenHelper.WAL_ENABLE);
+      QLog.d(paramString, 1, localStringBuilder.toString());
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
+      QLog.d(this.tag, 1, new Object[] { "new SQLiteOpenHelper = : ", this.dbHelper });
     }
-    for (;;)
-    {
-      if (1 == MobileQQ.sProcessId) {
-        paramString = new File(SQLiteOpenHelper.WAL_FLAG_FILE_PATH);
-      }
-      try
-      {
-        if (paramString.exists())
-        {
-          SQLiteOpenHelper.WAL_ENABLE = true;
-          deleteFile(SQLiteOpenHelper.WAL_FLAG_FILE_PATH);
-        }
-        QLog.d(this.tag, 1, "walFlag: " + SQLiteOpenHelper.WAL_ENABLE);
-        this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
-        QLog.d(this.tag, 1, new Object[] { "new SQLiteOpenHelper = : ", this.dbHelper });
-        return this.dbHelper;
-        label184:
-        this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, this.mDBVersion);
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          QLog.e(this.tag, 1, "build error", paramString);
-        }
-      }
+    return this.dbHelper;
+  }
+  
+  protected void cleanOverDueCorruptDatabase()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getPath());
+    ((StringBuilder)localObject).append("/tencent/msflogs/corruptInfo");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if ((((File)localObject).exists()) && (System.currentTimeMillis() - ((File)localObject).lastModified() > 604800000L)) {
+      ((File)localObject).delete();
     }
   }
   
-  public void cleanOverDueCorruptDatabase()
+  protected void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    File localFile = new File(Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/corruptInfo");
-    if ((localFile.exists()) && (System.currentTimeMillis() - localFile.lastModified() > 604800000L)) {
-      localFile.delete();
-    }
-  }
-  
-  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
-  {
-    if ((this.mTableEntityProvider == null) || (this.mTableEntityProvider.size() <= 0)) {}
-    for (;;)
+    Object localObject = this.mTableEntityProvider;
+    if (localObject != null)
     {
-      return;
-      Iterator localIterator = this.mTableEntityProvider.iterator();
-      while (localIterator.hasNext())
+      if (((List)localObject).size() <= 0) {
+        return;
+      }
+      localObject = this.mTableEntityProvider.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Entity localEntity = (Entity)localIterator.next();
+        Entity localEntity = (Entity)((Iterator)localObject).next();
         if (localEntity != null) {
           paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(localEntity));
         }
@@ -330,10 +368,11 @@ public class QQEntityManagerFactory
     }
   }
   
-  public void doAfterUpgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  protected void doAfterUpgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    if (this.mAfterDBUpgradeListener != null) {
-      this.mAfterDBUpgradeListener.afterDBUpgrade(paramSQLiteDatabase, paramInt1, paramInt2);
+    IAfterDBUpgradeListener localIAfterDBUpgradeListener = this.mAfterDBUpgradeListener;
+    if (localIAfterDBUpgradeListener != null) {
+      localIAfterDBUpgradeListener.afterDBUpgrade(paramSQLiteDatabase, paramInt1, paramInt2);
     }
   }
   
@@ -342,7 +381,7 @@ public class QQEntityManagerFactory
     return this.mOnDBUpgradeListener;
   }
   
-  public String getPackageName()
+  protected String getPackageName()
   {
     return "com.tencent.mobileqq.data";
   }
@@ -362,15 +401,16 @@ public class QQEntityManagerFactory
     this.dbHelper = build(this.name);
   }
   
-  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  protected void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
     if (paramInt1 < 20)
     {
-      this.mInnerDbHelper.dropAllTable();
+      this.mInnerDbHelper.a();
       return;
     }
-    if (this.mOnDBUpgradeListener != null) {
-      this.mOnDBUpgradeListener.onDBUpgrade(paramSQLiteDatabase, paramInt1, paramInt2);
+    IOnDBUpgradeListener localIOnDBUpgradeListener = this.mOnDBUpgradeListener;
+    if (localIOnDBUpgradeListener != null) {
+      localIOnDBUpgradeListener.onDBUpgrade(paramSQLiteDatabase, paramInt1, paramInt2);
     }
     executeUpgradeDBSql(paramSQLiteDatabase, paramInt1);
     checkColumnChange(paramSQLiteDatabase, paramInt1, paramInt2);
@@ -378,7 +418,7 @@ public class QQEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.QQEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

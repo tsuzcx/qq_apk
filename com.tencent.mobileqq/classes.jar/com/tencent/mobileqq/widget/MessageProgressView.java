@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.graphics.BlurMaskFilter;
 import android.graphics.BlurMaskFilter.Blur;
 import android.graphics.Canvas;
+import android.graphics.MaskFilter;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.FontMetrics;
@@ -152,21 +153,27 @@ public class MessageProgressView
   
   private float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if ((paramFloat3 < paramFloat1) || (paramFloat3 > paramFloat2)) {}
-    for (;;)
+    if (paramFloat3 >= paramFloat1)
     {
-      return paramFloat3;
-      paramFloat2 -= paramFloat1;
-      try
-      {
-        float f1 = new BigDecimal((paramFloat3 - paramFloat1) / paramFloat2).setScale(3, 4).floatValue();
-        f1 = this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator.getInterpolation(f1);
-        if ((f1 >= 0.0F) && (f1 <= 1.0F)) {
-          return paramFloat2 * f1 + paramFloat1;
-        }
+      if (paramFloat3 > paramFloat2) {
+        return paramFloat3;
       }
-      catch (Exception localException) {}
+      paramFloat2 -= paramFloat1;
     }
+    try
+    {
+      float f1 = new BigDecimal((paramFloat3 - paramFloat1) / paramFloat2).setScale(3, 4).floatValue();
+      f1 = this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator.getInterpolation(f1);
+      if (f1 >= 0.0F)
+      {
+        if (f1 > 1.0F) {
+          return paramFloat3;
+        }
+        return f1 * paramFloat2 + paramFloat1;
+      }
+      return paramFloat3;
+    }
+    catch (Exception localException) {}
     return paramFloat3;
   }
   
@@ -205,103 +212,115 @@ public class MessageProgressView
       this.jdField_b_of_type_AndroidGraphicsPath.reset();
       this.jdField_b_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
       this.jdField_b_of_type_AndroidGraphicsPath.close();
-      a(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_c_of_type_AndroidGraphicsPath);
-      return;
     }
-    Resources localResources = this.jdField_a_of_type_AndroidContentResResources;
-    label113:
-    float f1;
-    float f2;
-    float f3;
-    float f4;
-    if (this.jdField_a_of_type_Boolean)
+    else
     {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i1 - this.jdField_d_of_type_Float, i2);
-      this.jdField_b_of_type_AndroidGraphicsPath.reset();
-      f1 = a(this.j, localResources);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label350;
+      Resources localResources = this.jdField_a_of_type_AndroidContentResResources;
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i1 - this.jdField_d_of_type_Float, i2);
+      } else {
+        this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_Float, 0.0F, i1, i2);
       }
-      this.jdField_b_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
-      f2 = i1 - a(this.jdField_g_of_type_Float, localResources);
-      f3 = a(this.h, localResources);
-      this.jdField_b_of_type_AndroidGraphicsPath.moveTo(f2, f3);
-      f2 = i1;
-      f3 = this.i;
-      f4 = i1 - a(this.k, localResources);
-      float f5 = a(this.l, localResources);
-      this.jdField_b_of_type_AndroidGraphicsPath.quadTo(f4, f5, f2 - f3, f1);
-      f1 = i1 - a(this.m, localResources);
-      f2 = a(this.n, localResources);
-      f3 = i1 - a(this.o, localResources);
-      f4 = a(this.p, localResources);
-      this.jdField_b_of_type_AndroidGraphicsPath.quadTo(f3, f4, f1, f2);
-    }
-    for (;;)
-    {
+      this.jdField_b_of_type_AndroidGraphicsPath.reset();
+      float f1 = a(this.j, localResources);
+      float f2;
+      float f3;
+      float f4;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_b_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
+        f2 = i1 - a(this.jdField_g_of_type_Float, localResources);
+        f3 = a(this.h, localResources);
+        this.jdField_b_of_type_AndroidGraphicsPath.moveTo(f2, f3);
+        f2 = i1;
+        f3 = this.i;
+        f4 = i1 - a(this.k, localResources);
+        float f5 = a(this.l, localResources);
+        this.jdField_b_of_type_AndroidGraphicsPath.quadTo(f4, f5, f2 - f3, f1);
+        f1 = i1 - a(this.m, localResources);
+        f2 = a(this.n, localResources);
+        f3 = i1 - a(this.o, localResources);
+        f4 = a(this.p, localResources);
+        this.jdField_b_of_type_AndroidGraphicsPath.quadTo(f3, f4, f1, f2);
+      }
+      else
+      {
+        this.jdField_b_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CCW);
+        f2 = a(this.jdField_g_of_type_Float, localResources);
+        f3 = a(this.h, localResources);
+        this.jdField_b_of_type_AndroidGraphicsPath.moveTo(f2, f3);
+        f2 = this.i;
+        f3 = a(this.k, localResources);
+        f4 = a(this.l, localResources);
+        this.jdField_b_of_type_AndroidGraphicsPath.quadTo(f3, f4, f2, f1);
+        f1 = a(this.m, localResources);
+        f2 = a(this.n, localResources);
+        f3 = a(this.o, localResources);
+        f4 = a(this.p, localResources);
+        this.jdField_b_of_type_AndroidGraphicsPath.quadTo(f3, f4, f1, f2);
+      }
       this.jdField_b_of_type_AndroidGraphicsPath.close();
-      break;
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_d_of_type_Float, 0.0F, i1, i2);
-      break label113;
-      label350:
-      this.jdField_b_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CCW);
-      f2 = a(this.jdField_g_of_type_Float, localResources);
-      f3 = a(this.h, localResources);
-      this.jdField_b_of_type_AndroidGraphicsPath.moveTo(f2, f3);
-      f2 = this.i;
-      f3 = a(this.k, localResources);
-      f4 = a(this.l, localResources);
-      this.jdField_b_of_type_AndroidGraphicsPath.quadTo(f3, f4, f2, f1);
-      f1 = a(this.m, localResources);
-      f2 = a(this.n, localResources);
-      f3 = a(this.o, localResources);
-      f4 = a(this.p, localResources);
-      this.jdField_b_of_type_AndroidGraphicsPath.quadTo(f3, f4, f1, f2);
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_e_of_type_Int;
+    a(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_c_of_type_AndroidGraphicsPath);
   }
   
   protected void a(Canvas paramCanvas)
   {
-    if (this.jdField_e_of_type_Int < 0) {}
-    while (this.jdField_e_of_type_Int >= 100) {
+    int i1 = this.jdField_e_of_type_Int;
+    if (i1 < 0) {
       return;
     }
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Float - this.r, this.jdField_b_of_type_Float - this.r, this.jdField_a_of_type_Float + this.r, this.jdField_b_of_type_Float + this.r);
+    if (i1 >= 100) {
+      return;
+    }
+    Object localObject = this.jdField_b_of_type_AndroidGraphicsRectF;
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.r;
+    float f3 = this.jdField_b_of_type_Float;
+    ((RectF)localObject).set(f1 - f2, f3 - f2, f1 + f2, f3 + f2);
     this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
-    Paint.FontMetrics localFontMetrics = this.jdField_b_of_type_AndroidGraphicsPaint.getFontMetrics();
-    float f1 = localFontMetrics.top;
-    float f2 = localFontMetrics.bottom;
-    int i1 = (int)(this.jdField_b_of_type_AndroidGraphicsRectF.centerY() - f1 / 2.0F - f2 / 2.0F);
-    paramCanvas.drawText(this.jdField_e_of_type_Int + "%", this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), i1, this.jdField_b_of_type_AndroidGraphicsPaint);
+    localObject = this.jdField_b_of_type_AndroidGraphicsPaint.getFontMetrics();
+    f1 = ((Paint.FontMetrics)localObject).top;
+    f2 = ((Paint.FontMetrics)localObject).bottom;
+    i1 = (int)(this.jdField_b_of_type_AndroidGraphicsRectF.centerY() - f1 / 2.0F - f2 / 2.0F);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_e_of_type_Int);
+    ((StringBuilder)localObject).append("%");
+    paramCanvas.drawText(((StringBuilder)localObject).toString(), this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), i1, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
   protected void a(Canvas paramCanvas, float paramFloat)
   {
-    if (this.jdField_e_of_type_Int < 0) {
+    int i1 = this.jdField_e_of_type_Int;
+    if (i1 < 0)
+    {
       super.draw(paramCanvas);
-    }
-    while (this.jdField_e_of_type_Int >= 100) {
       return;
     }
-    float f1 = (this.t + this.s) / 2.0F;
-    float f2 = this.r + f1;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f1);
-    this.jdField_d_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Float - f2, this.jdField_b_of_type_Float - f2, this.jdField_a_of_type_Float + f2, f2 + this.jdField_b_of_type_Float);
+    if (i1 >= 100) {
+      return;
+    }
+    float f2 = (this.t + this.s) / 2.0F;
+    float f1 = this.r + f2;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f2);
+    RectF localRectF = this.jdField_d_of_type_AndroidGraphicsRectF;
+    f2 = this.jdField_a_of_type_Float;
+    float f3 = this.jdField_b_of_type_Float;
+    localRectF.set(f2 - f1, f3 - f1, f2 + f1, f3 + f1);
     paramCanvas.drawArc(this.jdField_d_of_type_AndroidGraphicsRectF, -90.0F, paramFloat * 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   protected void a(Canvas paramCanvas, String paramString)
   {
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Float - this.r, this.jdField_b_of_type_Float - this.r, this.jdField_a_of_type_Float + this.r, this.jdField_b_of_type_Float + this.r);
+    Object localObject = this.jdField_b_of_type_AndroidGraphicsRectF;
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.r;
+    float f3 = this.jdField_b_of_type_Float;
+    ((RectF)localObject).set(f1 - f2, f3 - f2, f1 + f2, f3 + f2);
     this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(a(10.0F, getResources()));
-    Paint.FontMetrics localFontMetrics = this.jdField_b_of_type_AndroidGraphicsPaint.getFontMetrics();
-    float f1 = localFontMetrics.top;
-    float f2 = localFontMetrics.bottom;
+    localObject = this.jdField_b_of_type_AndroidGraphicsPaint.getFontMetrics();
+    f1 = ((Paint.FontMetrics)localObject).top;
+    f2 = ((Paint.FontMetrics)localObject).bottom;
     int i1 = (int)(this.jdField_b_of_type_AndroidGraphicsRectF.centerY() - f1 / 2.0F - f2 / 2.0F);
     paramCanvas.drawText(paramString, this.jdField_b_of_type_AndroidGraphicsRectF.centerX(), i1, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
@@ -311,8 +330,14 @@ public class MessageProgressView
     RefreshProgressRunnable localRefreshProgressRunnable = MessageProgressController.a().a(paramString);
     if (localRefreshProgressRunnable != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageProgressView", 2, " bind  key=" + paramString + " animRunnable.mProgress = " + localRefreshProgressRunnable.jdField_a_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" bind  key=");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" animRunnable.mProgress = ");
+        localStringBuilder.append(localRefreshProgressRunnable.jdField_a_of_type_Int);
+        QLog.d("MessageProgressView", 2, localStringBuilder.toString());
       }
       localRefreshProgressRunnable.a(this, localRefreshProgressRunnable.jdField_a_of_type_Int);
     }
@@ -327,19 +352,25 @@ public class MessageProgressView
   {
     int i1 = getWidth();
     int i2 = getHeight();
-    if ((i1 <= 0) || (i2 <= 0)) {
-      super.draw(paramCanvas);
-    }
-    while (this.jdField_e_of_type_Int < 0) {
+    if ((i1 > 0) && (i2 > 0))
+    {
+      if (this.jdField_e_of_type_Int < 0) {
+        return;
+      }
+      h(paramCanvas);
       return;
     }
-    h(paramCanvas);
+    super.draw(paramCanvas);
   }
   
   public void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageProgressView", 2, " stopAnim  key=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" stopAnim  key=");
+      localStringBuilder.append(paramString);
+      QLog.d("MessageProgressView", 2, localStringBuilder.toString());
     }
     MessageProgressController.a().a(paramString);
   }
@@ -392,75 +423,102 @@ public class MessageProgressView
   
   protected void c(Canvas paramCanvas)
   {
-    if (this.jdField_e_of_type_Int < 0) {}
-    while (this.jdField_e_of_type_Int >= 100) {
+    int i1 = this.jdField_e_of_type_Int;
+    if (i1 < 0) {
       return;
     }
-    this.y = ((float)this.jdField_a_of_type_Long / (float)this.jdField_e_of_type_Long * (this.u - this.v) + this.v);
-    this.x = ((float)this.jdField_a_of_type_Long / (float)this.jdField_e_of_type_Long * (this.s - this.t) + this.t);
-    float f1 = a(this.v, this.u, this.y);
-    float f2 = a(this.t, this.s, this.x);
-    float f3 = this.r;
-    this.w = (f2 / 2.0F + f3);
+    if (i1 >= 100) {
+      return;
+    }
+    long l1 = this.jdField_a_of_type_Long;
+    float f1 = (float)l1;
+    long l2 = this.jdField_e_of_type_Long;
+    float f3 = f1 / (float)l2;
+    f1 = this.u;
+    float f2 = this.v;
+    this.y = (f3 * (f1 - f2) + f2);
+    f3 = (float)l1 / (float)l2;
+    float f4 = this.s;
+    float f5 = this.t;
+    this.x = (f3 * (f4 - f5) + f5);
+    f1 = a(f2, f1, this.y);
+    f2 = a(this.t, this.s, this.x);
+    this.w = (this.r + f2 / 2.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f1);
+    Object localObject2 = null;
+    Object localObject1;
     try
     {
-      BlurMaskFilter localBlurMaskFilter = new BlurMaskFilter(f1, BlurMaskFilter.Blur.SOLID);
-      if (localBlurMaskFilter != null) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(localBlurMaskFilter);
-      }
-      paramCanvas.drawCircle(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.w, this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
+      localObject1 = new BlurMaskFilter(f1, BlurMaskFilter.Blur.SOLID);
     }
     catch (Exception localException)
     {
-      for (;;)
+      localObject1 = localObject2;
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("MessageProgressView", 2, "create BlurMaskFilter exp:" + localException.getMessage());
-        }
-        Object localObject = null;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("create BlurMaskFilter exp:");
+        ((StringBuilder)localObject1).append(localException.getMessage());
+        QLog.e("MessageProgressView", 2, ((StringBuilder)localObject1).toString());
+        localObject1 = localObject2;
       }
     }
+    if (localObject1 != null) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter((MaskFilter)localObject1);
+    }
+    paramCanvas.drawCircle(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.w, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   protected void d()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.jdField_b_of_type_Boolean)
+    {
       if (this.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_Float = (getWidth() / 2.0F - this.jdField_d_of_type_Float / 2.0F);
+      } else {
+        this.jdField_a_of_type_Float = (getWidth() / 2.0F + this.jdField_d_of_type_Float / 2.0F);
       }
     }
-    for (;;)
-    {
-      this.jdField_b_of_type_Float = (getHeight() / 2);
-      if (Math.min(getWidth(), getHeight()) < this.jdField_e_of_type_Float)
-      {
-        this.r = a(10.0F, getResources());
-        this.t = a(1.25F, getResources());
-        this.s = a(2.5F, getResources());
-        this.u = a(4.0F, getResources());
-        this.v = a(2.0F, getResources());
-        this.jdField_a_of_type_Int = a(9.0F, getResources());
-        if (this.z > 0.0F) {
-          this.r = this.z;
-        }
-      }
-      return;
-      this.jdField_a_of_type_Float = (getWidth() / 2.0F + this.jdField_d_of_type_Float / 2.0F);
-      continue;
+    else {
       this.jdField_a_of_type_Float = (getWidth() / 2);
+    }
+    this.jdField_b_of_type_Float = (getHeight() / 2);
+    if (Math.min(getWidth(), getHeight()) < this.jdField_e_of_type_Float)
+    {
+      this.r = a(10.0F, getResources());
+      this.t = a(1.25F, getResources());
+      this.s = a(2.5F, getResources());
+      this.u = a(4.0F, getResources());
+      this.v = a(2.0F, getResources());
+      this.jdField_a_of_type_Int = a(9.0F, getResources());
+      float f1 = this.z;
+      if (f1 > 0.0F) {
+        this.r = f1;
+      }
     }
   }
   
   protected void d(Canvas paramCanvas)
   {
-    if ((this.jdField_e_of_type_Int == 100) && (this.jdField_g_of_type_Int == 1) && (this.jdField_a_of_type_Long >= this.jdField_c_of_type_Long) && (this.jdField_a_of_type_Long < this.jdField_d_of_type_Long))
+    if ((this.jdField_e_of_type_Int == 100) && (this.jdField_g_of_type_Int == 1))
     {
-      this.A = (((float)this.jdField_a_of_type_Long - (float)this.jdField_c_of_type_Long) / (float)(this.jdField_d_of_type_Long - this.jdField_c_of_type_Long) * 360.0F);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.s);
-      this.jdField_c_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Float - this.r, this.jdField_b_of_type_Float - this.r, this.jdField_a_of_type_Float + this.r, this.jdField_b_of_type_Float + this.r);
-      paramCanvas.drawArc(this.jdField_c_of_type_AndroidGraphicsRectF, -90.0F, -this.A, false, this.jdField_c_of_type_AndroidGraphicsPaint);
+      long l1 = this.jdField_a_of_type_Long;
+      long l2 = this.jdField_c_of_type_Long;
+      if (l1 >= l2)
+      {
+        long l3 = this.jdField_d_of_type_Long;
+        if (l1 < l3)
+        {
+          this.A = (((float)l1 - (float)l2) / (float)(l3 - l2) * 360.0F);
+          this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.s);
+          RectF localRectF = this.jdField_c_of_type_AndroidGraphicsRectF;
+          float f1 = this.jdField_a_of_type_Float;
+          float f2 = this.r;
+          float f3 = this.jdField_b_of_type_Float;
+          localRectF.set(f1 - f2, f3 - f2, f1 + f2, f3 + f2);
+          paramCanvas.drawArc(this.jdField_c_of_type_AndroidGraphicsRectF, -90.0F, -this.A, false, this.jdField_c_of_type_AndroidGraphicsPaint);
+        }
+      }
     }
   }
   
@@ -470,179 +528,196 @@ public class MessageProgressView
     {
       if (this.jdField_g_of_type_Int == 1)
       {
-        float f1 = this.r * 2.0F / 3.0F;
-        float f2 = (float)Math.sqrt(5.0F * f1 * f1 / 4.0F);
+        float f3 = this.r * 2.0F / 3.0F;
+        float f2 = (float)Math.sqrt(f3 * 5.0F * f3 / 4.0F);
         this.jdField_a_of_type_AndroidGraphicsPath.reset();
-        this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_Float - f1 / 2.0F + 5.0F, this.jdField_b_of_type_Float - f2 / 2.0F);
         Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-        float f3 = this.jdField_a_of_type_Float;
-        float f4 = f1 / 2.0F;
-        float f5 = this.jdField_b_of_type_Float;
-        localPath.lineTo(f3 - f4 + 5.0F, f2 / 2.0F + f5);
-        localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-        f2 = this.jdField_a_of_type_Float;
-        localPath.lineTo(f1 / 2.0F + f2 + 5.0F, this.jdField_b_of_type_Float);
+        float f1 = this.jdField_a_of_type_Float;
+        f3 /= 2.0F;
+        float f4 = this.jdField_b_of_type_Float;
+        f2 /= 2.0F;
+        localPath.moveTo(f1 - f3 + 5.0F, f4 - f2);
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Float - f3 + 5.0F, this.jdField_b_of_type_Float + f2);
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Float + f3 + 5.0F, this.jdField_b_of_type_Float);
         this.jdField_a_of_type_AndroidGraphicsPath.close();
-        if ((this.jdField_a_of_type_Long >= this.jdField_c_of_type_Long) && (this.jdField_a_of_type_Long < this.jdField_d_of_type_Long))
+        long l1 = this.jdField_a_of_type_Long;
+        long l2 = this.jdField_c_of_type_Long;
+        if (l1 >= l2)
         {
-          this.B = ((1.0F - ((float)this.jdField_a_of_type_Long - (float)this.jdField_c_of_type_Long) / (float)(this.jdField_d_of_type_Long - this.jdField_c_of_type_Long)) * this.jdField_f_of_type_Float);
-          this.C = (((float)this.jdField_a_of_type_Long - (float)this.jdField_c_of_type_Long) / (float)(this.jdField_d_of_type_Long - this.jdField_c_of_type_Long) * 1.0F);
-          paramCanvas.save();
-          paramCanvas.rotate(this.B, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
-          paramCanvas.scale(this.C, this.C, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
-          paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_d_of_type_AndroidGraphicsPaint);
-          paramCanvas.restore();
+          long l3 = this.jdField_d_of_type_Long;
+          if (l1 < l3)
+          {
+            this.B = ((1.0F - ((float)l1 - (float)l2) / (float)(l3 - l2)) * this.jdField_f_of_type_Float);
+            this.C = (((float)l1 - (float)l2) / (float)(l3 - l2) * 1.0F);
+            paramCanvas.save();
+            paramCanvas.rotate(this.B, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+            f1 = this.C;
+            paramCanvas.scale(f1, f1, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+            paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_d_of_type_AndroidGraphicsPaint);
+            paramCanvas.restore();
+          }
         }
       }
       if (this.jdField_a_of_type_Long >= this.jdField_d_of_type_Long)
       {
-        if (this.jdField_g_of_type_Int != 1) {
-          break label321;
+        int i1 = this.jdField_g_of_type_Int;
+        if (i1 == 1)
+        {
+          setDrawStatus(2);
+          return;
         }
-        setDrawStatus(2);
+        if (i1 == 2)
+        {
+          setDrawStatus(3);
+          setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        }
       }
     }
-    label321:
-    while (this.jdField_g_of_type_Int != 2) {
-      return;
-    }
-    setDrawStatus(3);
-    setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
   public void f(Canvas paramCanvas)
   {
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.s);
-    this.jdField_c_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Float - this.r, this.jdField_b_of_type_Float - this.r, this.jdField_a_of_type_Float + this.r, this.jdField_b_of_type_Float + this.r);
+    Object localObject = this.jdField_c_of_type_AndroidGraphicsRectF;
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.r;
+    float f3 = this.jdField_b_of_type_Float;
+    ((RectF)localObject).set(f1 - f2, f3 - f2, f1 + f2, f3 + f2);
     paramCanvas.drawArc(this.jdField_c_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, false, this.jdField_c_of_type_AndroidGraphicsPaint);
-    float f1 = this.r * 2.0F / 3.0F;
-    float f2 = (float)Math.sqrt(5.0F * f1 * f1 / 4.0F);
+    f3 = this.r * 2.0F / 3.0F;
+    f2 = (float)Math.sqrt(f3 * 5.0F * f3 / 4.0F);
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_Float - f1 / 2.0F + 5.0F, this.jdField_b_of_type_Float - f2 / 2.0F);
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    float f3 = this.jdField_a_of_type_Float;
-    float f4 = f1 / 2.0F;
-    float f5 = this.jdField_b_of_type_Float;
-    localPath.lineTo(f3 - f4 + 5.0F, f2 / 2.0F + f5);
-    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    f2 = this.jdField_a_of_type_Float;
-    localPath.lineTo(f1 / 2.0F + f2 + 5.0F, this.jdField_b_of_type_Float);
+    localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+    f1 = this.jdField_a_of_type_Float;
+    f3 /= 2.0F;
+    float f4 = this.jdField_b_of_type_Float;
+    f2 /= 2.0F;
+    ((Path)localObject).moveTo(f1 - f3 + 5.0F, f4 - f2);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Float - f3 + 5.0F, this.jdField_b_of_type_Float + f2);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_Float + f3 + 5.0F, this.jdField_b_of_type_Float);
     this.jdField_a_of_type_AndroidGraphicsPath.close();
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_d_of_type_AndroidGraphicsPaint);
   }
   
   public void g(Canvas paramCanvas)
   {
-    int i1;
-    float f1;
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)
+    Drawable localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    if (localDrawable != null)
     {
-      i1 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+      int i1 = localDrawable.getIntrinsicWidth();
       this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, i1, i1);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label114;
+      float f1;
+      if (this.jdField_b_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_Boolean) {
+          f1 = (getWidth() - i1) / 2.0F - this.jdField_d_of_type_Float / 2.0F;
+        } else {
+          f1 = (getWidth() - i1) / 2.0F + this.jdField_d_of_type_Float / 2.0F;
+        }
       }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label94;
+      else {
+        f1 = (getWidth() - i1) / 2.0F;
       }
-      f1 = (getWidth() - i1) / 2.0F - this.jdField_d_of_type_Float / 2.0F;
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_AndroidGraphicsRect.offset((int)f1, (getHeight() - i1) / 2);
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect);
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      return;
-      label94:
-      f1 = (getWidth() - i1) / 2.0F + this.jdField_d_of_type_Float / 2.0F;
-      continue;
-      label114:
-      f1 = (getWidth() - i1) / 2.0F;
     }
   }
   
   @TargetApi(11)
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_d_of_type_Int == 1)
+    int i1 = this.jdField_d_of_type_Int;
+    if (i1 == 1)
     {
       d();
       b(paramCanvas);
       c(paramCanvas);
-      if (this.jdField_c_of_type_JavaLangString != null)
-      {
-        a(paramCanvas, this.jdField_c_of_type_JavaLangString);
-        d(paramCanvas);
-        e(paramCanvas);
+      String str = this.jdField_c_of_type_JavaLangString;
+      if (str != null) {
+        a(paramCanvas, str);
+      } else {
+        a(paramCanvas);
       }
-    }
-    do
-    {
+      d(paramCanvas);
+      e(paramCanvas);
       return;
-      a(paramCanvas);
-      break;
-      if (this.jdField_d_of_type_Int == 2)
-      {
-        d();
-        f(paramCanvas);
-        return;
-      }
-    } while (this.jdField_d_of_type_Int != 3);
-    d();
-    g(paramCanvas);
+    }
+    if (i1 == 2)
+    {
+      d();
+      f(paramCanvas);
+      return;
+    }
+    if (i1 == 3)
+    {
+      d();
+      g(paramCanvas);
+    }
   }
   
   public void setAnimProgress(int paramInt, String paramString)
   {
     this.jdField_c_of_type_JavaLangString = null;
     this.jdField_e_of_type_Int = paramInt;
-    RefreshProgressRunnable localRefreshProgressRunnable;
     if (this.jdField_d_of_type_Int == 1)
     {
-      localRefreshProgressRunnable = MessageProgressController.a().a(paramString);
+      RefreshProgressRunnable localRefreshProgressRunnable = MessageProgressController.a().a(paramString);
       if (localRefreshProgressRunnable == null)
       {
         localRefreshProgressRunnable = new RefreshProgressRunnable(this, paramString, paramInt);
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString + " progress=" + paramInt);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" setAnimProgress new AnimRunnable key=");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" progress=");
+          localStringBuilder.append(paramInt);
+          QLog.d("MessageProgressView", 2, localStringBuilder.toString());
         }
         MessageProgressController.a().a(paramString, localRefreshProgressRunnable);
         ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
+        return;
       }
+      localRefreshProgressRunnable.a(this, paramInt);
     }
-    else
-    {
-      return;
-    }
-    localRefreshProgressRunnable.a(this, paramInt);
   }
   
   public void setAnimProgress(String paramString1, String paramString2)
   {
     this.jdField_c_of_type_JavaLangString = paramString1;
     this.jdField_e_of_type_Int = 0;
-    RefreshProgressRunnable localRefreshProgressRunnable;
     if (this.jdField_d_of_type_Int == 1)
     {
-      localRefreshProgressRunnable = MessageProgressController.a().a(paramString2);
+      RefreshProgressRunnable localRefreshProgressRunnable = MessageProgressController.a().a(paramString2);
+      StringBuilder localStringBuilder;
       if (localRefreshProgressRunnable == null)
       {
         localRefreshProgressRunnable = new RefreshProgressRunnable(this, paramString2, this.jdField_e_of_type_Int);
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageProgressView", 2, " setAnimProgress new AnimRunnable key=" + paramString2 + " text =" + paramString1);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" setAnimProgress new AnimRunnable key=");
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append(" text =");
+          localStringBuilder.append(paramString1);
+          QLog.d("MessageProgressView", 2, localStringBuilder.toString());
         }
         MessageProgressController.a().a(paramString2, localRefreshProgressRunnable);
         ViewCompat.postOnAnimation(this, localRefreshProgressRunnable);
+        return;
       }
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" setAnimProgress , animRunnable exist, key=");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(" text =");
+        localStringBuilder.append(paramString1);
+        QLog.d("MessageProgressView", 2, localStringBuilder.toString());
+      }
+      localRefreshProgressRunnable.a(this, this.jdField_e_of_type_Int);
     }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageProgressView", 2, " setAnimProgress , animRunnable exist, key=" + paramString2 + " text =" + paramString1);
-    }
-    localRefreshProgressRunnable.a(this, this.jdField_e_of_type_Int);
   }
   
   public void setAnimRunnableListener(MessageProgressView.AnimRunnableListener paramAnimRunnableListener)
@@ -662,9 +737,7 @@ public class MessageProgressView
   
   public void setCustomSize(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
     this.r = a(15.0F, getResources());
@@ -707,15 +780,13 @@ public class MessageProgressView
     if (getResources() != null)
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(paramInt);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
         this.jdField_g_of_type_Int = 2;
+        return;
       }
+      this.jdField_g_of_type_Int = 0;
     }
-    else
-    {
-      return;
-    }
-    this.jdField_g_of_type_Int = 0;
   }
   
   public void setDrawStatus(int paramInt)
@@ -752,8 +823,9 @@ public class MessageProgressView
     if (paramBoolean) {
       f1 = a(paramFloat, this.jdField_a_of_type_AndroidContentResResources);
     }
-    if (this.jdField_a_of_type_ArrayOfFloat != null) {
-      Arrays.fill(this.jdField_a_of_type_ArrayOfFloat, f1);
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    if (arrayOfFloat != null) {
+      Arrays.fill(arrayOfFloat, f1);
     }
   }
   
@@ -780,7 +852,7 @@ public class MessageProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MessageProgressView
  * JD-Core Version:    0.7.0.1
  */

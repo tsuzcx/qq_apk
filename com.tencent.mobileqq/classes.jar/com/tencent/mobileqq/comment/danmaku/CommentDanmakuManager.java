@@ -22,7 +22,7 @@ public class CommentDanmakuManager
   implements DanmakuManager.IDanmakuListener
 {
   private static final VideoDanmakuConfig.ILogger jdField_a_of_type_ComTencentMobileqqDanmakuInjectVideoDanmakuConfig$ILogger = new CommentDanmakuManager.1();
-  private static final String jdField_a_of_type_JavaLangString = CommentDanmakuManager.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "CommentDanmakuManager";
   private IDanmakuControlListener jdField_a_of_type_ComTencentMobileqqCommentDanmakuIDanmakuControlListener;
   private IPlayerTime jdField_a_of_type_ComTencentMobileqqCommentDanmakuIPlayerTime;
   private DanmakuManager jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
@@ -30,34 +30,39 @@ public class CommentDanmakuManager
   
   public BaseDanmaku a(CommentDanmaku paramCommentDanmaku)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (paramCommentDanmaku != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramCommentDanmaku);
+    DanmakuManager localDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+    if ((localDanmakuManager != null) && (paramCommentDanmaku != null)) {
+      return localDanmakuManager.a(-2147483647, paramCommentDanmaku);
     }
     return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a();
+    DanmakuManager localDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+    if (localDanmakuManager != null) {
+      localDanmakuManager.a();
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectWindowConfig != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectWindowConfig;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectWindowConfig.b(paramInt);
-      if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.h();
+      ((WindowConfig)localObject).b(paramInt);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+      if (localObject != null) {
+        ((DanmakuManager)localObject).h();
       }
     }
   }
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b(paramLong);
+    DanmakuManager localDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+    if (localDanmakuManager != null) {
+      localDanmakuManager.b(paramLong);
     }
   }
   
@@ -87,15 +92,16 @@ public class CommentDanmakuManager
       paramDanmuItemBean = new CommentDanmaku(paramDanmuItemBean);
       paramDanmuItemBean = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramDanmuItemBean);
       paramDanmuItemBean.e(true);
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramDanmuItemBean);
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b(paramDanmuItemBean);
     }
   }
   
   public void a(IDanmakuControlListener paramIDanmakuControlListener)
   {
     this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuIDanmakuControlListener = paramIDanmakuControlListener;
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(this);
+    paramIDanmakuControlListener = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+    if (paramIDanmakuControlListener != null) {
+      paramIDanmakuControlListener.a(this);
     }
   }
   
@@ -108,30 +114,34 @@ public class CommentDanmakuManager
   
   public void a(List<BaseDanmaku> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 4, "addDanmakuList danmakuList is null");
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      DanmakuManager localDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+      if (localDanmakuManager != null) {
+        localDanmakuManager.a(paramList);
       }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "addDanmakuList danmakuList is null");
+    }
   }
   
   public void a(boolean paramBoolean) {}
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d());
+    DanmakuManager localDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+    return (localDanmakuManager != null) && (localDanmakuManager.d());
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    DanmakuManager localDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+    if (localDanmakuManager != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.g();
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.l();
+      localDanmakuManager.g();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.p();
       this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = null;
     }
   }
@@ -145,42 +155,47 @@ public class CommentDanmakuManager
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a());
+    DanmakuManager localDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+    return (localDanmakuManager != null) && (localDanmakuManager.a());
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    DanmakuManager localDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+    if (localDanmakuManager != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d();
+      localDanmakuManager.d();
       this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.e();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.c();
+    DanmakuManager localDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+    if (localDanmakuManager != null) {
+      localDanmakuManager.c();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b();
+    DanmakuManager localDanmakuManager = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
+    if (localDanmakuManager != null) {
+      localDanmakuManager.b();
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuIDanmakuControlListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuIDanmakuControlListener.a();
+    IDanmakuControlListener localIDanmakuControlListener = this.jdField_a_of_type_ComTencentMobileqqCommentDanmakuIDanmakuControlListener;
+    if (localIDanmakuControlListener != null) {
+      localIDanmakuControlListener.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.comment.danmaku.CommentDanmakuManager
  * JD-Core Version:    0.7.0.1
  */

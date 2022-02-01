@@ -42,11 +42,12 @@ public class FrameAnimationViewWraper
   
   public void a(int paramInt, FrameAnimationViewWraper.OnEnterAnimationEndListener paramOnEnterAnimationEndListener)
   {
-    if (this.jdField_a_of_type_Int == paramInt) {
+    int i = this.jdField_a_of_type_Int;
+    if (i == paramInt) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqArViewFrameAnimationViewWraper$OnEnterAnimationEndListener = paramOnEnterAnimationEndListener;
-    a(this.jdField_a_of_type_Int, paramInt);
+    a(i, paramInt);
     this.jdField_a_of_type_Int = paramInt;
   }
   
@@ -59,7 +60,7 @@ public class FrameAnimationViewWraper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.FrameAnimationViewWraper
  * JD-Core Version:    0.7.0.1
  */

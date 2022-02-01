@@ -9,11 +9,11 @@ import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.mobileqq.vas.quickupdate.VipIconCallback;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -62,96 +62,89 @@ public class ChatBackgroundAuth
   private void a(FriendsManager paramFriendsManager, HashMap<String, Integer> paramHashMap, ArrayList<Hamlet> paramArrayList, int paramInt)
   {
     Iterator localIterator = paramHashMap.keySet().iterator();
-    Object localObject3;
-    Object localObject2;
-    Object localObject1;
-    UniBusinessItem localUniBusinessItem;
-    int i;
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
+      Object localObject2 = (String)localIterator.next();
+      Object localObject1 = (Integer)paramHashMap.get(localObject2);
+      String str = null;
+      if (localObject1 != null)
       {
-        localObject3 = (String)localIterator.next();
-        localObject2 = (Integer)paramHashMap.get(localObject3);
-        localObject1 = null;
-        if (localObject2 != null)
+        UniBusinessItem localUniBusinessItem = new UniBusinessItem(paramInt, ((Integer)localObject1).intValue(), "");
+        boolean bool = ((String)localObject2).contains("_");
+        int j = 1;
+        int i;
+        if (bool)
         {
-          localUniBusinessItem = new UniBusinessItem(paramInt, ((Integer)localObject2).intValue(), "");
-          if (((String)localObject3).contains("_"))
-          {
-            localObject3 = ((String)localObject3).split("_");
-            localObject1 = localObject3[0];
-            i = Integer.parseInt(localObject3[1]);
-            if (i > -1) {
-              i = b(i);
-            }
+          localObject2 = ((String)localObject2).split("_");
+          str = localObject2[0];
+          i = Integer.parseInt(localObject2[1]);
+          if (i > -1) {
+            i = b(i);
+          } else if (paramFriendsManager.b(str)) {
+            i = 2;
+          } else {
+            i = 3;
           }
         }
-      }
-    }
-    for (;;)
-    {
-      label117:
-      if (QLog.isColorLevel()) {
-        QLog.d("QQInitHandler", 2, "friendUin:" + (String)localObject1 + " serverUinType:" + i + " appId:" + paramInt + " id:" + localObject2);
-      }
-      localObject2 = a(paramArrayList, (String)localObject1, i);
-      if (localObject2 == null)
-      {
-        localObject2 = new ArrayList();
-        localObject1 = new Hamlet(Long.parseLong((String)localObject1), i, (ArrayList)localObject2);
-        paramArrayList.add(localObject1);
-      }
-      for (;;)
-      {
-        ((Hamlet)localObject1).itemlist.add(localUniBusinessItem);
-        break;
-        if (paramFriendsManager.b((String)localObject1))
+        else
         {
-          i = 2;
-          break label117;
+          i = j;
+          if ("null".equals(localObject2))
+          {
+            str = this.mAutomator.a.getCurrentUin();
+            i = j;
+          }
         }
-        i = 3;
-        break label117;
-        if (!"null".equals(localObject3)) {
-          break label300;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("friendUin:");
+          ((StringBuilder)localObject2).append(str);
+          ((StringBuilder)localObject2).append(" serverUinType:");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(" appId:");
+          ((StringBuilder)localObject2).append(paramInt);
+          ((StringBuilder)localObject2).append(" id:");
+          ((StringBuilder)localObject2).append(localObject1);
+          QLog.d("QQInitHandler", 2, ((StringBuilder)localObject2).toString());
         }
-        localObject1 = this.a.a.getCurrentUin();
-        i = 1;
-        break label117;
-        return;
+        localObject2 = a(paramArrayList, str, i);
         localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = new ArrayList();
+          localObject1 = new Hamlet(Long.parseLong(str), i, (ArrayList)localObject1);
+          paramArrayList.add(localObject1);
+        }
+        ((Hamlet)localObject1).itemlist.add(localUniBusinessItem);
       }
-      label300:
-      i = 1;
     }
   }
   
   public static int b(int paramInt)
   {
-    int i = 1;
     if (paramInt == 1) {
-      i = 3;
+      return 3;
     }
-    while (paramInt != 0) {
-      return i;
+    if (paramInt == 0) {
+      return 2;
     }
-    return 2;
+    return 1;
   }
   
-  public int a()
+  protected int doStep()
   {
-    SharedPreferences localSharedPreferences = this.a.a.getApp().getSharedPreferences("mobileQQ", 0);
+    SharedPreferences localSharedPreferences = this.mAutomator.a.getApp().getSharedPreferences("mobileQQ", 0);
     long l = localSharedPreferences.getLong("lastChabgAuthTime", 0L);
     if (System.currentTimeMillis() - l > 86400000L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "doStep start auth");
       }
-      Object localObject = (ChatBackgroundManager)this.a.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
+      Object localObject = (ChatBackgroundManager)this.mAutomator.a.getManager(QQManagerFactory.CHAT_BACKGROUND_MANAGER);
       HashMap localHashMap = ((ChatBackgroundManager)localObject).a();
       localObject = ((ChatBackgroundManager)localObject).c();
-      ((SVIPHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(a(localHashMap, (HashMap)localObject, (FriendsManager)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER), 8, 35), new ChatBackgroundAuth.ChatBgAuthBusinessObserver(this.a.a), true);
+      ((ISVIPHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(a(localHashMap, (HashMap)localObject, (FriendsManager)this.mAutomator.a.getManager(QQManagerFactory.FRIENDS_MANAGER), 8, 35), new ChatBackgroundAuth.ChatBgAuthBusinessObserver(this.mAutomator.a), true);
       localSharedPreferences.edit().putLong("lastChabgAuthTime", System.currentTimeMillis()).apply();
     }
     if (!VipIconCallback.sInstance.isFileExists("namePlate_UrlConfig")) {
@@ -162,7 +155,7 @@ public class ChatBackgroundAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.ChatBackgroundAuth
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,14 @@ import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.switchro
 public class IliveSwitchRoomModule
   extends CustomSwitchRoomModule
 {
-  public boolean a()
+  protected boolean a()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveSwitchRoomModule
  * JD-Core Version:    0.7.0.1
  */

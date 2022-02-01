@@ -35,7 +35,10 @@ public class MediaChooseJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("MediaJsPlugin", paramRequestEvent.event + " error,", localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error,");
+      QMLog.e("MediaJsPlugin", localStringBuilder.toString(), localThrowable);
       paramRequestEvent.fail();
     }
   }
@@ -55,29 +58,42 @@ public class MediaChooseJsPlugin
   
   public void onDestroy()
   {
-    if (this.mImpl != null) {
-      this.mImpl.destroy();
+    Object localObject = this.mImpl;
+    if (localObject != null) {
+      ((MediaChooseJsProxy)localObject).destroy();
     }
-    if (this.bridgeMap != null) {
-      this.bridgeMap.clear();
+    localObject = this.bridgeMap;
+    if (localObject != null) {
+      ((ConcurrentHashMap)localObject).clear();
     }
     super.onDestroy();
   }
   
   public boolean onInterceptJsEvent(RequestEvent paramRequestEvent)
   {
-    QMLog.d("MediaJsPlugin", "onInterceptJsEvent event=" + paramRequestEvent.event + ",jsonParams=" + paramRequestEvent.jsonParams + ",callbackId=" + paramRequestEvent.callbackId + ",webview=" + paramRequestEvent.jsService);
-    if (this.bridgeMap != null) {
-      this.bridgeMap.put(Integer.valueOf(paramRequestEvent.callbackId), paramRequestEvent);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onInterceptJsEvent event=");
+    ((StringBuilder)localObject).append(paramRequestEvent.event);
+    ((StringBuilder)localObject).append(",jsonParams=");
+    ((StringBuilder)localObject).append(paramRequestEvent.jsonParams);
+    ((StringBuilder)localObject).append(",callbackId=");
+    ((StringBuilder)localObject).append(paramRequestEvent.callbackId);
+    ((StringBuilder)localObject).append(",webview=");
+    ((StringBuilder)localObject).append(paramRequestEvent.jsService);
+    QMLog.d("MediaJsPlugin", ((StringBuilder)localObject).toString());
+    localObject = this.bridgeMap;
+    if (localObject != null) {
+      ((ConcurrentHashMap)localObject).put(Integer.valueOf(paramRequestEvent.callbackId), paramRequestEvent);
     }
     return super.onInterceptJsEvent(paramRequestEvent);
   }
   
   public void responseCancel(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    if (this.bridgeMap != null)
+    paramString = this.bridgeMap;
+    if (paramString != null)
     {
-      paramString = (RequestEvent)this.bridgeMap.get(Integer.valueOf(paramInt));
+      paramString = (RequestEvent)paramString.get(Integer.valueOf(paramInt));
       if (paramString != null) {
         paramString.cancel(paramJSONObject);
       }
@@ -86,9 +102,10 @@ public class MediaChooseJsPlugin
   
   public void responseFail(int paramInt, String paramString1, JSONObject paramJSONObject, String paramString2)
   {
-    if (this.bridgeMap != null)
+    paramString1 = this.bridgeMap;
+    if (paramString1 != null)
     {
-      paramString1 = (RequestEvent)this.bridgeMap.get(Integer.valueOf(paramInt));
+      paramString1 = (RequestEvent)paramString1.get(Integer.valueOf(paramInt));
       if (paramString1 != null) {
         paramString1.fail(paramString2);
       }
@@ -97,9 +114,10 @@ public class MediaChooseJsPlugin
   
   public void responseOk(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    if (this.bridgeMap != null)
+    paramString = this.bridgeMap;
+    if (paramString != null)
     {
-      paramString = (RequestEvent)this.bridgeMap.get(Integer.valueOf(paramInt));
+      paramString = (RequestEvent)paramString.get(Integer.valueOf(paramInt));
       if (paramString != null) {
         paramString.ok(paramJSONObject);
       }
@@ -108,7 +126,10 @@ public class MediaChooseJsPlugin
   
   public void showLoading(String paramString)
   {
-    QMLog.i("MediaJsPlugin", "showLoading " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showLoading ");
+    localStringBuilder.append(paramString);
+    QMLog.i("MediaJsPlugin", localStringBuilder.toString());
     AppBrandTask.runTaskOnUiThread(new MediaChooseJsPlugin.1(this, paramString));
   }
   
@@ -119,7 +140,7 @@ public class MediaChooseJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.MediaChooseJsPlugin
  * JD-Core Version:    0.7.0.1
  */

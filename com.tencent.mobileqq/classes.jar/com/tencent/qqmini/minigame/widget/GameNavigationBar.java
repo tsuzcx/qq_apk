@@ -44,43 +44,42 @@ public class GameNavigationBar
   
   private void changeNavIcon()
   {
-    if (this.mCapsuleButton != null) {
-      this.mCapsuleButton.changeNavIcon(this.mBarTextStyle);
+    CapsuleButton localCapsuleButton = this.mCapsuleButton;
+    if (localCapsuleButton != null) {
+      localCapsuleButton.changeNavIcon(this.mBarTextStyle);
     }
   }
   
   private void init()
   {
-    int i = 0;
     if ((getContext() != null) && (!this.hasInit))
     {
       this.mContainer = new RelativeLayout(getContext());
-      localObject = new ViewGroup.LayoutParams(-1, -2);
+      Object localObject = new ViewGroup.LayoutParams(-1, -2);
       this.mContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.mContainer.setClipChildren(false);
+      localObject = this.mContainer;
+      int i = 0;
+      ((RelativeLayout)localObject).setClipChildren(false);
       this.mCapsuleButton = new CapsuleButton(getContext());
       this.mCapsuleButton.setId(R.id.container_top_btns);
       localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 80.0F), DisplayUtil.dip2px(getContext(), 30.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
-      j = DisplayUtil.dip2px(getContext(), 9.0F);
+      int j = DisplayUtil.dip2px(getContext(), 9.0F);
       if (LiuHaiUtils.isLiuHaiUseValid()) {
         i = DisplayUtil.getStatusBarHeight(getContext());
       }
-      ((RelativeLayout.LayoutParams)localObject).topMargin = (i + j);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = (j + i);
       ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(getContext(), 12.5F);
       this.mContainer.addView(this.mCapsuleButton, (ViewGroup.LayoutParams)localObject);
       addView(this.mContainer);
       this.mContainer.setBackgroundColor(this.mBackGroundColor);
       changeNavIcon();
       this.hasInit = true;
-    }
-    while (!QMLog.isColorLevel())
-    {
-      Object localObject;
-      int j;
       return;
     }
-    QMLog.d("GameNavigationBar", "[init] context null");
+    if (QMLog.isColorLevel()) {
+      QMLog.d("GameNavigationBar", "[init] context null");
+    }
   }
   
   private void updateBarStyle()
@@ -110,12 +109,13 @@ public class GameNavigationBar
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mCapsuleButton.getLayoutParams();
     int j = DisplayUtil.dip2px(getContext(), 9.0F);
-    if (LiuHaiUtils.isLiuHaiUseValid()) {}
-    for (int i = DisplayUtil.getStatusBarHeight(getContext());; i = 0)
-    {
-      localLayoutParams.topMargin = (i + j);
-      return;
+    int i;
+    if (LiuHaiUtils.isLiuHaiUseValid()) {
+      i = DisplayUtil.getStatusBarHeight(getContext());
+    } else {
+      i = 0;
     }
+    localLayoutParams.topMargin = (j + i);
   }
   
   public GameNavigationBar setBarStyle(String paramString)
@@ -128,8 +128,9 @@ public class GameNavigationBar
   public GameNavigationBar setNavBackgroundColor(int paramInt)
   {
     this.mBackGroundColor = paramInt;
-    if (this.mContainer != null) {
-      this.mContainer.setBackgroundColor(this.mBackGroundColor);
+    RelativeLayout localRelativeLayout = this.mContainer;
+    if (localRelativeLayout != null) {
+      localRelativeLayout.setBackgroundColor(this.mBackGroundColor);
     }
     return this;
   }
@@ -138,15 +139,11 @@ public class GameNavigationBar
   {
     if ("black".equals(paramString)) {
       this.mBarTextStyle = -16777216;
+    } else if ("white".equals(paramString)) {
+      this.mBarTextStyle = -1;
     }
-    for (;;)
-    {
-      changeNavIcon();
-      return this;
-      if ("white".equals(paramString)) {
-        this.mBarTextStyle = -1;
-      }
-    }
+    changeNavIcon();
+    return this;
   }
   
   public GameNavigationBar setWindowInfo(WindowInfo paramWindowInfo)
@@ -170,7 +167,7 @@ public class GameNavigationBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.widget.GameNavigationBar
  * JD-Core Version:    0.7.0.1
  */

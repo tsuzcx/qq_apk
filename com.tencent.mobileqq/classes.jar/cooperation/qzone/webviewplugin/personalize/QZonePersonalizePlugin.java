@@ -26,13 +26,13 @@ public class QZonePersonalizePlugin
   
   public long getWebViewEventByNameSpace(String paramString)
   {
-    if (("qzcardstorre".equals(paramString)) || ("QzAvatar".equals(paramString)) || ("QzFloat".equals(paramString))) {
-      return 2L;
+    if ((!"qzcardstorre".equals(paramString)) && (!"QzAvatar".equals(paramString)) && (!"QzFloat".equals(paramString))) {
+      return super.getWebViewEventByNameSpace(paramString);
     }
-    return super.getWebViewEventByNameSpace(paramString);
+    return 2L;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if ((paramLong == 2L) && (paramString.equals(QZoneFloatJsHandleLogic.url))) {
       QZoneFloatJsHandleLogic.handleDownLoadFloatFinish(this.mRuntime, null);
@@ -40,10 +40,18 @@ public class QZonePersonalizePlugin
     return false;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePersonalizePlugin", 2, "handleJsRequest \n url: " + paramString1 + "\n pkgName:" + paramString2 + "\n method:" + paramString3);
+    if (QLog.isColorLevel())
+    {
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest \n url: ");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append("\n pkgName:");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append("\n method:");
+      paramJsBridgeListener.append(paramString3);
+      QLog.d("QZonePersonalizePlugin", 2, paramJsBridgeListener.toString());
     }
     if (QZoneJsConstants.isForce(paramString3))
     {
@@ -64,49 +72,47 @@ public class QZonePersonalizePlugin
         return true;
       }
     }
-    else
+    else if (paramString2.equals("QzAvatar"))
     {
-      if (!paramString2.equals("QzAvatar")) {
-        break label208;
-      }
-      if (!paramString3.equals("downloadAvatar")) {
-        break label162;
-      }
-      QZoneFacadeJsHandleLogic.handleDownloadFacadeFinish(this.mRuntime, paramVarArgs);
-    }
-    label162:
-    label208:
-    do
-    {
-      do
+      if (paramString3.equals("downloadAvatar"))
       {
-        for (;;)
-        {
-          return false;
-          if (paramString3.equals("setAvatar")) {
-            QZoneFacadeJsHandleLogic.handleSetFacadeFinish(this.mRuntime, paramVarArgs);
-          } else if (paramString3.equalsIgnoreCase("checkIdList")) {
-            QZoneFacadeJsHandleLogic.handleCheckDownloadedIdList(this.mRuntime, new String[0]);
-          }
-        }
-      } while (!paramString2.equals("QzFloat"));
+        QZoneFacadeJsHandleLogic.handleDownloadFacadeFinish(this.mRuntime, paramVarArgs);
+        return false;
+      }
+      if (paramString3.equals("setAvatar"))
+      {
+        QZoneFacadeJsHandleLogic.handleSetFacadeFinish(this.mRuntime, paramVarArgs);
+        return false;
+      }
+      if (paramString3.equalsIgnoreCase("checkIdList"))
+      {
+        QZoneFacadeJsHandleLogic.handleCheckDownloadedIdList(this.mRuntime, new String[0]);
+        return false;
+      }
+    }
+    else if (paramString2.equals("QzFloat"))
+    {
       if (paramString3.equals("downloadFloat"))
       {
         QZoneFloatJsHandleLogic.handleDownLoadFloatFinish(this.mRuntime, paramVarArgs);
         return true;
       }
-    } while (!paramString3.equals("setFloat"));
-    QZoneFloatJsHandleLogic.handleSetFloatFinish(this.mRuntime, paramVarArgs);
-    return true;
+      if (paramString3.equals("setFloat"))
+      {
+        QZoneFloatJsHandleLogic.handleSetFloatFinish(this.mRuntime, paramVarArgs);
+        return true;
+      }
+    }
+    return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     registerBroadcastReceiver();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     unRegisterBroadcastReceiver();
@@ -127,7 +133,7 @@ public class QZonePersonalizePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZonePersonalizePlugin
  * JD-Core Version:    0.7.0.1
  */

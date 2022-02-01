@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.contact.recommendtroop;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.contact.recommendtroop.base.CommonAdapter;
+import com.tencent.mobileqq.troop.adapter.CommonAdapter;
 
 class TroopRecommendFriendFragment$1
   extends RecyclerView.OnScrollListener
@@ -30,7 +30,7 @@ class TroopRecommendFriendFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -44,36 +44,100 @@ public class TroopAppShortcutContainer$TroopAppInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    while ((!(paramObject instanceof TroopAppInfo)) || (((TroopAppInfo)paramObject).jdField_b_of_type_Long != this.jdField_b_of_type_Long)) {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof TroopAppInfo))
+    {
+      bool1 = bool2;
+      if (((TroopAppInfo)paramObject).jdField_b_of_type_Long == this.jdField_b_of_type_Long) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String toString()
   {
-    int j = 0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("TroopAppInfo{app_showtype='" + this.jdField_a_of_type_Int + '\'' + ", app_type='" + this.jdField_a_of_type_Long + '\'' + ", app_appid='" + this.jdField_b_of_type_Long + '\'' + ", app_removable='" + this.jdField_b_of_type_Int + '\'' + ", app_source='" + this.jdField_c_of_type_Int + '\'' + ", app_name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", app_icon='" + this.jdField_b_of_type_JavaLangString + '\'' + ", app_url='" + this.jdField_c_of_type_JavaLangString + '\'' + ", app_desc='" + this.jdField_d_of_type_JavaLangString + '\'' + ", app_added='" + this.jdField_a_of_type_Boolean + '\'' + ", app_redpoint='" + this.jdField_d_of_type_Int + '\'' + ", app_trace='" + this.jdField_e_of_type_JavaLangString + '\'' + ", app_showframe='" + this.jdField_e_of_type_Int + '\'' + ", app_playingnum='" + this.f + '\'' + ", app_friend_playingnum='" + this.g + '\'' + ", app_total_playingnum='" + this.h + '\'');
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("TroopAppInfo{app_showtype='");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_type='");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_appid='");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_removable='");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_source='");
+    ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_name='");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_icon='");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_url='");
+    ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_desc='");
+    ((StringBuilder)localObject).append(this.jdField_d_of_type_JavaLangString);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_added='");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_redpoint='");
+    ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_trace='");
+    ((StringBuilder)localObject).append(this.jdField_e_of_type_JavaLangString);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_showframe='");
+    ((StringBuilder)localObject).append(this.jdField_e_of_type_Int);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_playingnum='");
+    ((StringBuilder)localObject).append(this.f);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_friend_playingnum='");
+    ((StringBuilder)localObject).append(this.g);
+    ((StringBuilder)localObject).append('\'');
+    ((StringBuilder)localObject).append(", app_total_playingnum='");
+    ((StringBuilder)localObject).append(this.h);
+    ((StringBuilder)localObject).append('\'');
+    localStringBuilder.append(((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_JavaUtilList;
+    int j = 0;
     int k;
     int i;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (localObject != null)
     {
       localStringBuilder.append(", app_playing_users='");
       k = this.jdField_a_of_type_JavaUtilList.size();
       i = 0;
-      if (i < k)
+      while (i < k)
       {
-        if (i == k - 1) {
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilList.get(i) + "'");
-        }
-        for (;;)
+        if (i == k - 1)
         {
-          i += 1;
-          break;
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilList.get(i) + "、 ");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append((String)this.jdField_a_of_type_JavaUtilList.get(i));
+          ((StringBuilder)localObject).append("'");
+          localStringBuilder.append(((StringBuilder)localObject).toString());
         }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append((String)this.jdField_a_of_type_JavaUtilList.get(i));
+          ((StringBuilder)localObject).append("、 ");
+          localStringBuilder.append(((StringBuilder)localObject).toString());
+        }
+        i += 1;
       }
     }
     if (this.jdField_b_of_type_JavaUtilList != null)
@@ -81,17 +145,23 @@ public class TroopAppShortcutContainer$TroopAppInfo
       localStringBuilder.append(", app_recommend_tags='");
       k = this.jdField_b_of_type_JavaUtilList.size();
       i = j;
-      if (i < k)
+      while (i < k)
       {
-        if (i == k - 1) {
-          localStringBuilder.append((String)this.jdField_b_of_type_JavaUtilList.get(i) + "'");
-        }
-        for (;;)
+        if (i == k - 1)
         {
-          i += 1;
-          break;
-          localStringBuilder.append((String)this.jdField_b_of_type_JavaUtilList.get(i) + "、 ");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append((String)this.jdField_b_of_type_JavaUtilList.get(i));
+          ((StringBuilder)localObject).append("'");
+          localStringBuilder.append(((StringBuilder)localObject).toString());
         }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append((String)this.jdField_b_of_type_JavaUtilList.get(i));
+          ((StringBuilder)localObject).append("、 ");
+          localStringBuilder.append(((StringBuilder)localObject).toString());
+        }
+        i += 1;
       }
     }
     localStringBuilder.append("}");
@@ -100,7 +170,7 @@ public class TroopAppShortcutContainer$TroopAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer.TroopAppInfo
  * JD-Core Version:    0.7.0.1
  */

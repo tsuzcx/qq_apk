@@ -30,34 +30,35 @@ class FlashChatTextEffectView$MyViewHolder
       this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
     }
     this.c = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramView.findViewById(2131362998));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramView.findViewById(2131370713));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramView.findViewById(2131362947));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)paramView.findViewById(2131370350));
     this.itemView.setOnClickListener(this);
     this.itemView.setOnTouchListener(paramOnHolderItemClickListener);
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener.a(paramView, getPosition(), this.c);
+    OnHolderItemClickListener localOnHolderItemClickListener = this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
+    if (localOnHolderItemClickListener != null) {
+      localOnHolderItemClickListener.a(paramView, getPosition(), this.c);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onLongClick(View paramView)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener != null)
+    OnHolderItemClickListener localOnHolderItemClickListener = this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener;
+    if (localOnHolderItemClickListener != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener.b(paramView, getPosition(), this.c);
-      bool = true;
+      localOnHolderItemClickListener.b(paramView, getPosition(), this.c);
+      return true;
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatTextEffectView.MyViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -6,12 +6,13 @@ public class libsafeedit
   
   public static byte[] byteSafeEditTextToMD5(Boolean paramBoolean)
   {
-    if (!paramBoolean.booleanValue()) {}
-    do
-    {
+    if (!paramBoolean.booleanValue()) {
       return null;
-      paramBoolean = getpwdText(paramBoolean.booleanValue());
-    } while (paramBoolean == null);
+    }
+    paramBoolean = getpwdText(paramBoolean.booleanValue());
+    if (paramBoolean == null) {
+      return null;
+    }
     return MD5.toMD5Byte(StringUtil.toSemiAngleString(paramBoolean));
   }
   
@@ -32,10 +33,13 @@ public class libsafeedit
   
   public static void getLoginLegal(String paramString)
   {
-    if ((paramString == null) || (paramString.toString().length() == 0)) {
-      return;
+    if (paramString != null)
+    {
+      if (paramString.toString().length() == 0) {
+        return;
+      }
+      mpwdText = paramString.toString();
     }
-    mpwdText = paramString.toString();
   }
   
   public static String getpwdText(boolean paramBoolean)
@@ -48,18 +52,19 @@ public class libsafeedit
   
   public static String strSafeEditTextToMD5(Boolean paramBoolean)
   {
-    if (!paramBoolean.booleanValue()) {}
-    do
-    {
+    if (!paramBoolean.booleanValue()) {
       return null;
-      paramBoolean = getpwdText(paramBoolean.booleanValue());
-    } while (paramBoolean == null);
+    }
+    paramBoolean = getpwdText(paramBoolean.booleanValue());
+    if (paramBoolean == null) {
+      return null;
+    }
     return MD5.toMD5(StringUtil.toSemiAngleString(paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mqsafeedit.libsafeedit
  * JD-Core Version:    0.7.0.1
  */

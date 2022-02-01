@@ -12,12 +12,18 @@ class MMApkFileSafeChecker$3
   
   public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
   {
-    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, "[MMApkCheck] onCheckResult. nSessionId=" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + " errCode:" + paramInt1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[MMApkCheck] onCheckResult. nSessionId=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    ((StringBuilder)localObject).append(" errCode:");
+    ((StringBuilder)localObject).append(paramInt1);
+    QLog.i("MMApkFileSafeChecker<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     if ((paramInt1 == 0) && (paramInt2 != 0) && (paramInt2 != 4))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeLevel = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeMsg = paramString1;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.apkSafeDetailUrl = paramString2;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+      ((FileManagerEntity)localObject).apkSafeLevel = paramInt2;
+      ((FileManagerEntity)localObject).apkSafeMsg = paramString1;
+      ((FileManagerEntity)localObject).apkSafeDetailUrl = paramString2;
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a != null) {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreMMApkFileSafeChecker.a.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       }
@@ -29,7 +35,7 @@ class MMApkFileSafeChecker$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.3
  * JD-Core Version:    0.7.0.1
  */

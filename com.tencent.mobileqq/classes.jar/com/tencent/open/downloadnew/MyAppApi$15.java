@@ -1,33 +1,20 @@
 package com.tencent.open.downloadnew;
 
-import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import mqq.os.MqqHandler;
 
 class MyAppApi$15
-  implements TicketUtils.TicketCallback
+  implements Runnable
 {
-  MyAppApi$15(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  MyAppApi$15(MyAppApi paramMyAppApi, DialogInterface.OnClickListener paramOnClickListener, MyAppDialog paramMyAppDialog) {}
   
-  public void a()
+  public void run()
   {
-    LogUtility.a("MyAppApi", "onGetA1Fail ---");
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.15.2(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.a("MyAppApi", "onGetA1 ---");
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.15.1(this, paramArrayOfByte, paramString));
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.15
  * JD-Core Version:    0.7.0.1
  */

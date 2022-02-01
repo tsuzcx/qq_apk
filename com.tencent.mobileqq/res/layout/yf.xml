@@ -11,8 +11,8 @@
         </RelativeLayout>
     </FrameLayout>
     <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/g90" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a5a" android:maxWidth="@dimen/a76" android:singleLine="true" android:layout_below="@id/g8n" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/g92" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/gwy" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
+    <ImageView android:id="@id/g92" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/gzf" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
     <ImageView android:id="@id/m0z" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
-    <ImageView android:id="@id/g8z" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/gws" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
+    <ImageView android:id="@id/g8z" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/gze" android:layout_alignRight="@id/g8n" android:layout_alignBottom="@id/g8n" />
     <ImageView android:id="@id/g8q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/d9i" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
 </RelativeLayout>

@@ -27,54 +27,68 @@ public class QzoneLoverService
   
   public static QzoneLoverService a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAppQzoneloverQzoneLoverService == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqAppQzoneloverQzoneLoverService == null) {
-        jdField_a_of_type_ComTencentMobileqqAppQzoneloverQzoneLoverService = new QzoneLoverService();
+    if (jdField_a_of_type_ComTencentMobileqqAppQzoneloverQzoneLoverService == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_ComTencentMobileqqAppQzoneloverQzoneLoverService == null) {
+          jdField_a_of_type_ComTencentMobileqqAppQzoneloverQzoneLoverService = new QzoneLoverService();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqAppQzoneloverQzoneLoverService;
     }
+    return jdField_a_of_type_ComTencentMobileqqAppQzoneloverQzoneLoverService;
   }
   
   private void a(boolean paramBoolean, Bundle paramBundle)
   {
     paramBundle = (sweet_upgrade_key_notify_rsp)paramBundle.getSerializable("rsp_data");
-    if ((paramBundle == null) || (!paramBoolean) || (paramBundle.req_comm == null))
+    if ((paramBundle != null) && (paramBoolean) && (paramBundle.req_comm != null))
     {
-      QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(false)");
-      c();
-    }
-    Object localObject;
-    long l;
-    do
-    {
-      do
+      if ((paramBundle.rsp_comm != null) && (paramBundle.rsp_comm.retcode == 0))
       {
-        return;
-        if ((paramBundle.rsp_comm == null) || (paramBundle.rsp_comm.retcode != 0))
-        {
-          localObject = new StringBuilder().append("onGetLoverCheckData succed(false), ret code: ");
-          if (paramBundle.rsp_comm == null) {}
-          for (paramBundle = "null";; paramBundle = String.valueOf(paramBundle.rsp_comm.retcode))
-          {
-            QLog.i("QzoneLoverService", 1, paramBundle);
-            c();
-            return;
-          }
-        }
         if (paramBundle.req_comm.uin != BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())
         {
-          QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(" + paramBoolean + "), uin: " + paramBundle.req_comm.uin + ", loginUin: " + BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onGetLoverCheckData succed(");
+          ((StringBuilder)localObject).append(paramBoolean);
+          ((StringBuilder)localObject).append("), uin: ");
+          ((StringBuilder)localObject).append(paramBundle.req_comm.uin);
+          ((StringBuilder)localObject).append(", loginUin: ");
+          ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+          QLog.i("QzoneLoverService", 1, ((StringBuilder)localObject).toString());
           return;
         }
         b();
-        l = paramBundle.req_comm.loveuin;
-      } while (l <= 10000L);
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(localObject instanceof QQAppInterface));
-    ((FriendListHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendDetailInfo(String.valueOf(l));
-    QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(" + paramBoolean + "), uin:" + paramBundle.req_comm.uin);
+        long l = paramBundle.req_comm.loveuin;
+        if (l <= 10000L) {
+          return;
+        }
+        localObject = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject instanceof QQAppInterface))
+        {
+          ((FriendListHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendDetailInfo(String.valueOf(l));
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onGetLoverCheckData succed(");
+          ((StringBuilder)localObject).append(paramBoolean);
+          ((StringBuilder)localObject).append("), uin:");
+          ((StringBuilder)localObject).append(paramBundle.req_comm.uin);
+          QLog.i("QzoneLoverService", 1, ((StringBuilder)localObject).toString());
+        }
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetLoverCheckData succed(false), ret code: ");
+      if (paramBundle.rsp_comm == null) {
+        paramBundle = "null";
+      } else {
+        paramBundle = String.valueOf(paramBundle.rsp_comm.retcode);
+      }
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.i("QzoneLoverService", 1, ((StringBuilder)localObject).toString());
+      c();
+      return;
+    }
+    QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(false)");
+    c();
   }
   
   private void b()
@@ -86,52 +100,64 @@ public class QzoneLoverService
   {
     this.b = false;
     paramBundle = (lighting_sweet_key_rsp)paramBundle.getSerializable("rsp_data");
-    if ((paramBundle == null) || (!paramBoolean))
+    if ((paramBundle != null) && (paramBoolean))
     {
-      QLog.i("QzoneLoverService", 1, "onGetLoverLightingData succed(false)");
+      if ((paramBundle.rsp_comm != null) && (paramBundle.rsp_comm.retcode == 0))
+      {
+        d();
+        paramBundle = new StringBuilder();
+        paramBundle.append("onGetLoverLightingData succed(");
+        paramBundle.append(paramBoolean);
+        paramBundle.append(")");
+        QLog.i("QzoneLoverService", 1, paramBundle.toString());
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetLoverLightingData succed(false), ret code: ");
+      if (paramBundle.rsp_comm == null) {
+        paramBundle = "null";
+      } else {
+        paramBundle = String.valueOf(paramBundle.rsp_comm.retcode);
+      }
+      localStringBuilder.append(paramBundle);
+      QLog.i("QzoneLoverService", 1, localStringBuilder.toString());
       e();
       return;
     }
-    if ((paramBundle.rsp_comm == null) || (paramBundle.rsp_comm.retcode != 0))
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("onGetLoverLightingData succed(false), ret code: ");
-      if (paramBundle.rsp_comm == null) {}
-      for (paramBundle = "null";; paramBundle = String.valueOf(paramBundle.rsp_comm.retcode))
-      {
-        QLog.i("QzoneLoverService", 1, paramBundle);
-        e();
-        return;
-      }
-    }
-    d();
-    QLog.i("QzoneLoverService", 1, "onGetLoverLightingData succed(" + paramBoolean + ")");
+    QLog.i("QzoneLoverService", 1, "onGetLoverLightingData succed(false)");
+    e();
   }
   
   private boolean b()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
-    if (System.currentTimeMillis() / 1000L / 3600L / 24L != localSharedPreferences.getLong("lightingQzoneLoverLastFailTime", 0L)) {}
-    while (localSharedPreferences.getInt("lightingQzoneLoverFailCount", 0) < QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneLoverMaxFailCount", 10)) {
+    Object localObject = BaseApplicationImpl.getApplication();
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    boolean bool = false;
+    localObject = ((BaseApplicationImpl)localObject).getSharedPreferences(str, 0);
+    if (System.currentTimeMillis() / 1000L / 3600L / 24L != ((SharedPreferences)localObject).getLong("lightingQzoneLoverLastFailTime", 0L)) {
       return false;
     }
-    return true;
+    if (((SharedPreferences)localObject).getInt("lightingQzoneLoverFailCount", 0) >= QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneLoverMaxFailCount", 10)) {
+      bool = true;
+    }
+    return bool;
   }
   
   private void c()
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
     long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
-    if (l != localSharedPreferences.getLong("checkQzoneLoverLastFailTime", 0L)) {
+    if (l != localSharedPreferences.getLong("checkQzoneLoverLastFailTime", 0L))
+    {
       localSharedPreferences.edit().putInt("checkQzoneLoverFailCount", 1);
     }
-    for (;;)
+    else
     {
-      localSharedPreferences.edit().putLong("checkQzoneLoverLastFailTime", l);
-      localSharedPreferences.edit().apply();
-      return;
       int i = localSharedPreferences.getInt("checkQzoneLoverFailCount", 0);
       localSharedPreferences.edit().putInt("checkQzoneLoverFailCount", i + 1);
     }
+    localSharedPreferences.edit().putLong("checkQzoneLoverLastFailTime", l);
+    localSharedPreferences.edit().apply();
   }
   
   private void d()
@@ -144,43 +170,42 @@ public class QzoneLoverService
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
     long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
-    if (l != localSharedPreferences.getLong("lightingQzoneLoverLastFailTime", 0L)) {
+    if (l != localSharedPreferences.getLong("lightingQzoneLoverLastFailTime", 0L))
+    {
       localSharedPreferences.edit().putInt("lightingQzoneLoverFailCount", 1);
     }
-    for (;;)
+    else
     {
-      localSharedPreferences.edit().putLong("lightingQzoneLoverLastFailTime", l);
-      localSharedPreferences.edit().apply();
-      return;
       int i = localSharedPreferences.getInt("lightingQzoneLoverFailCount", 0);
       localSharedPreferences.edit().putInt("lightingQzoneLoverFailCount", i + 1);
     }
+    localSharedPreferences.edit().putLong("lightingQzoneLoverLastFailTime", l);
+    localSharedPreferences.edit().apply();
   }
   
   public void a()
   {
-    if (this.b) {
+    if (this.b)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest sending...");
       }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (a()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest false");
       return;
-      if (!b()) {
-        break;
+    }
+    if (!a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest false");
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest fail count hit max count!!!");
-    return;
+      return;
+    }
+    if (b())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest fail count hit max count!!!");
+      }
+      return;
+    }
     this.b = true;
     QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest true");
     NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getContext(), QzoneLoverLightingServlet.class);
@@ -195,11 +220,20 @@ public class QzoneLoverService
   
   public boolean a()
   {
+    Object localObject = BaseApplicationImpl.getApplication();
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     boolean bool = false;
-    long l1 = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0).getLong("lightingQzoneLoverTime", 0L);
+    long l1 = ((BaseApplicationImpl)localObject).getSharedPreferences(str, 0).getLong("lightingQzoneLoverTime", 0L);
     long l2 = System.currentTimeMillis() / 1000L / 3600L / 24L;
-    if (QLog.isColorLevel()) {
-      QLog.i("QzoneLoverService", 2, "startQzoneLoverLightingRequest curDay(" + l2 + "), lastDay(" + l1 + ")");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startQzoneLoverLightingRequest curDay(");
+      ((StringBuilder)localObject).append(l2);
+      ((StringBuilder)localObject).append("), lastDay(");
+      ((StringBuilder)localObject).append(l1);
+      ((StringBuilder)localObject).append(")");
+      QLog.i("QzoneLoverService", 2, ((StringBuilder)localObject).toString());
     }
     if (l2 != l1) {
       bool = true;
@@ -209,18 +243,19 @@ public class QzoneLoverService
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt == 1) {
+    if (paramInt == 1)
+    {
       a(paramBoolean, paramBundle);
-    }
-    while (paramInt != 291) {
       return;
     }
-    b(paramBoolean, paramBundle);
+    if (paramInt == 291) {
+      b(paramBoolean, paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.qzonelover.QzoneLoverService
  * JD-Core Version:    0.7.0.1
  */

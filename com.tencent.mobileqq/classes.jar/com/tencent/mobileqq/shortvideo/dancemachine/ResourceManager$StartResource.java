@@ -2,15 +2,29 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class ResourceManager$StartResource
 {
-  private String prefix = ResourceManager.access$000(this.this$0) + "start/";
-  public String startPic = this.prefix + "start.png";
-  public String startSound = this.prefix + "start.mp3";
+  private String prefix;
+  public String startPic;
+  public String startSound;
   
-  public ResourceManager$StartResource(ResourceManager paramResourceManager) {}
+  public ResourceManager$StartResource(ResourceManager paramResourceManager)
+  {
+    paramResourceManager = new StringBuilder();
+    paramResourceManager.append(ResourceManager.access$000(this.this$0));
+    paramResourceManager.append("start/");
+    this.prefix = paramResourceManager.toString();
+    paramResourceManager = new StringBuilder();
+    paramResourceManager.append(this.prefix);
+    paramResourceManager.append("start.png");
+    this.startPic = paramResourceManager.toString();
+    paramResourceManager = new StringBuilder();
+    paramResourceManager.append(this.prefix);
+    paramResourceManager.append("start.mp3");
+    this.startSound = paramResourceManager.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.StartResource
  * JD-Core Version:    0.7.0.1
  */

@@ -9,28 +9,34 @@ class QIMUserManager$2
   
   public void run()
   {
-    if (QIMUserManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
+    if (QIMUserManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0)
+    {
       if (QIMUserManager.a(this.this$0, this.b))
       {
         QIMUserManager.a(this.this$0);
         QIMUserManager.a(this.this$0, 2);
       }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadQimTheme QimIconsState " + QIMUserManager.a(this.this$0));
+      else
+      {
+        QIMUserManager.a(this.this$0, 4);
       }
-      return;
-      QIMUserManager.a(this.this$0, 4);
-      continue;
+    }
+    else {
       QIMUserManager.a(this.this$0, 3);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(" startDownLoadQimTheme QimIconsState ");
+      localStringBuilder.append(QIMUserManager.a(this.this$0));
+      QLog.i("QIMUserManager", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.qim.QIMUserManager.2
  * JD-Core Version:    0.7.0.1
  */

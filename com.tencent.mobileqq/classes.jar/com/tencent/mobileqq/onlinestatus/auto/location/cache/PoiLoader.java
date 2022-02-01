@@ -7,9 +7,9 @@ import mqq.os.MqqHandler;
 public class PoiLoader
 {
   private int jdField_a_of_type_Int;
-  private DiskLoader jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheDiskLoader;
-  private MemoryLoader jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheMemoryLoader;
-  private NetworkLoader jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheNetworkLoader;
+  DiskLoader jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheDiskLoader;
+  MemoryLoader jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheMemoryLoader;
+  NetworkLoader jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheNetworkLoader;
   private final String jdField_a_of_type_JavaLangString;
   
   public PoiLoader(String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -18,7 +18,7 @@ public class PoiLoader
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheNetworkLoader = new NetworkLoader(paramString);
     this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheDiskLoader = new DiskLoader(paramString, paramInt3);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheMemoryLoader = new MemoryLoader(paramString, Math.max(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheDiskLoader.a() + paramInt2, 10));
+    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheMemoryLoader = new MemoryLoader(paramString, Math.max(paramInt2 + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCacheDiskLoader.a(), 10));
   }
   
   private void a(LatLng paramLatLng, int paramInt, PoiLoader.OnPoiLoadListener paramOnPoiLoadListener)
@@ -48,7 +48,7 @@ public class PoiLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiLoader
  * JD-Core Version:    0.7.0.1
  */

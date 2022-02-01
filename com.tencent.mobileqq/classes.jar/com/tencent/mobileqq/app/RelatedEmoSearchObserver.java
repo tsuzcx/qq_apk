@@ -13,24 +13,22 @@ public class RelatedEmoSearchObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if (paramInt != 1) {
       return;
-      if ((paramBoolean) && (paramObject != null))
-      {
-        onSearchRelatedEmoResponse((RelatedEmoticonManager.RelatedEmotionSearchResult)paramObject);
-        return;
-      }
-    } while (!(paramObject instanceof Integer));
-    onSearchRelatedEmoError(((Integer)paramObject).intValue());
+    }
+    if ((paramBoolean) && (paramObject != null))
+    {
+      onSearchRelatedEmoResponse((RelatedEmoticonManager.RelatedEmotionSearchResult)paramObject);
+      return;
+    }
+    if ((paramObject instanceof Integer)) {
+      onSearchRelatedEmoError(((Integer)paramObject).intValue());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.RelatedEmoSearchObserver
  * JD-Core Version:    0.7.0.1
  */

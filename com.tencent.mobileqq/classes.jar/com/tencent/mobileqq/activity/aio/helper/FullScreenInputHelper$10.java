@@ -11,29 +11,28 @@ class FullScreenInputHelper$10
   
   public boolean a()
   {
-    boolean bool = false;
     if (FullScreenInputHelper.a(this.a).a.length() > 0) {
-      bool = this.a.a(false);
+      return this.a.b(false);
     }
-    return bool;
+    return false;
   }
   
   public boolean b()
   {
     if (FullScreenInputHelper.a(this.a).a.length() > 0) {
-      return this.a.a(true);
+      return this.a.b(true);
     }
     return false;
   }
   
   public boolean c()
   {
-    return this.a.d();
+    return this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.10
  * JD-Core Version:    0.7.0.1
  */

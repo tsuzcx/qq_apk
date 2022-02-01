@@ -31,15 +31,13 @@ class FragmentAnim$EndViewTransitionAnimation
   {
     this.mAnimating = true;
     if (this.mEnded) {
-      if (this.mTransitionEnded) {}
+      return this.mTransitionEnded ^ true;
     }
-    while (super.getTransformation(paramLong, paramTransformation))
+    if (!super.getTransformation(paramLong, paramTransformation))
     {
-      return true;
-      return false;
+      this.mEnded = true;
+      OneShotPreDrawListener.add(this.mParent, this);
     }
-    this.mEnded = true;
-    OneShotPreDrawListener.add(this.mParent, this);
     return true;
   }
   
@@ -47,15 +45,13 @@ class FragmentAnim$EndViewTransitionAnimation
   {
     this.mAnimating = true;
     if (this.mEnded) {
-      if (this.mTransitionEnded) {}
+      return this.mTransitionEnded ^ true;
     }
-    while (super.getTransformation(paramLong, paramTransformation, paramFloat))
+    if (!super.getTransformation(paramLong, paramTransformation, paramFloat))
     {
-      return true;
-      return false;
+      this.mEnded = true;
+      OneShotPreDrawListener.add(this.mParent, this);
     }
-    this.mEnded = true;
-    OneShotPreDrawListener.add(this.mParent, this);
     return true;
   }
   
@@ -73,7 +69,7 @@ class FragmentAnim$EndViewTransitionAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentAnim.EndViewTransitionAnimation
  * JD-Core Version:    0.7.0.1
  */

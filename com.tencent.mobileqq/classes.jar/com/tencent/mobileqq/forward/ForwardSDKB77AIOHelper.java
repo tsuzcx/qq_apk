@@ -63,19 +63,20 @@ public class ForwardSDKB77AIOHelper
   private void a()
   {
     b();
-    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_b77_sdk_share");
-    if (TextUtils.isEmpty(str))
+    Object localObject = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("key_b77_sdk_share");
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
       QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "showB77ResultDialog cachedKey empty");
       return;
     }
     this.jdField_a_of_type_AndroidContentIntent.removeExtra("key_b77_sdk_share");
-    Map localMap = ((ForwardSdkStatusManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SDK_SHARE)).a(str);
+    Map localMap = ((ForwardSdkStatusManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SDK_SHARE)).a((String)localObject);
     if (localMap == null)
     {
       QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "initBroadcastReceiver");
-      b(str);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(93), 500L);
+      b((String)localObject);
+      localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+      ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(93), 500L);
       return;
     }
     QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "showB77ResultDialog_parseB77Result");
@@ -86,7 +87,8 @@ public class ForwardSDKB77AIOHelper
   {
     ForwardStatisticsReporter.a("KEY_STAGE_2_TOTAL", false);
     ForwardShareByServerHelper.a(this.jdField_a_of_type_AndroidOsBundle, a(), this.jdField_a_of_type_Long, false);
-    if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_mini_program_ark_from_sdk", false))) {
+    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    if ((localBundle != null) && (localBundle.getBoolean("forward_mini_program_ark_from_sdk", false))) {
       ReportController.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "dc00898", "", "", "0X8009F7C", "0X8009F7C", 0, 0, "2", String.valueOf(paramInt), "", "");
     }
     ForwardDialogMgr.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, new ForwardSDKB77AIOHelper.1(this, paramInt, paramString2));
@@ -102,12 +104,13 @@ public class ForwardSDKB77AIOHelper
         paramHelperProvider.a(paramActivity.getIntent());
       }
     }
-    do
+    else
     {
-      return;
       paramActivity = (ForwardSDKB77AIOHelper)paramHelperProvider.a(57);
-    } while (paramActivity == null);
-    paramActivity.a();
+      if (paramActivity != null) {
+        paramActivity.a();
+      }
+    }
   }
   
   private void a(String paramString)
@@ -122,17 +125,18 @@ public class ForwardSDKB77AIOHelper
   private void a(String paramString, Context paramContext)
   {
     QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { "jumpToErrorWeb: invoked. info: jumpUrl = ", paramString });
-    if ((!TextUtils.isEmpty(paramString)) && (paramContext != null)) {}
-    try
-    {
-      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramString);
-      paramContext.startActivity(localIntent);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "jumpToErrorWeb: Failed. info: exception = ", paramString);
+    if ((!TextUtils.isEmpty(paramString)) && (paramContext != null)) {
+      try
+      {
+        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", paramString);
+        paramContext.startActivity(localIntent);
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "jumpToErrorWeb: Failed. info: exception = ", paramString);
+      }
     }
   }
   
@@ -159,11 +163,28 @@ public class ForwardSDKB77AIOHelper
     c();
   }
   
+  private boolean a()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
+    {
+      localObject = this.jdField_a_of_type_AndroidAppDialog;
+      if ((localObject != null) && (((Dialog)localObject).isShowing())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   public static boolean a(MessageForArkApp paramMessageForArkApp)
   {
     paramMessageForArkApp = paramMessageForArkApp.getExtInfoFromExtStr(MessageConstants.w);
+    boolean bool = false;
     QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { "resend forbid msg openSdkShareState=", paramMessageForArkApp });
-    return 25201 == ForwardUtils.a(paramMessageForArkApp);
+    if (25201 == ForwardUtils.a(paramMessageForArkApp)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean a(MessageForArkApp paramMessageForArkApp, Context paramContext)
@@ -171,37 +192,42 @@ public class ForwardSDKB77AIOHelper
     String str = paramMessageForArkApp.getExtInfoFromExtStr(MessageConstants.w);
     QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { "resend forbid msg openSdkShareState=", str, ", uinseq=", Long.valueOf(paramMessageForArkApp.uniseq) });
     int i = ForwardUtils.a(str);
-    if ((i == 0) || (i == 25201) || (i == -2)) {
-      return false;
-    }
-    str = paramMessageForArkApp.getExtInfoFromExtStr(MessageConstants.y);
-    if (TextUtils.isEmpty(str))
+    if ((i != 0) && (i != 25201))
     {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "resendSdkFakeMsg fakeShareInfo empty");
-      return false;
-    }
-    ForwardSDKB77Sender localForwardSDKB77Sender = new ForwardSDKB77Sender();
-    try
-    {
-      localForwardSDKB77Sender.a(paramMessageForArkApp, paramContext, new JSONObject(str));
-      return true;
-    }
-    catch (Exception paramMessageForArkApp)
-    {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "Exception", paramMessageForArkApp);
+      if (i == -2) {
+        return false;
+      }
+      str = paramMessageForArkApp.getExtInfoFromExtStr(MessageConstants.y);
+      if (TextUtils.isEmpty(str))
+      {
+        QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "resendSdkFakeMsg fakeShareInfo empty");
+        return false;
+      }
+      ForwardSDKB77Sender localForwardSDKB77Sender = new ForwardSDKB77Sender();
+      try
+      {
+        localForwardSDKB77Sender.a(paramMessageForArkApp, paramContext, new JSONObject(str));
+        return true;
+      }
+      catch (Exception paramMessageForArkApp)
+      {
+        QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "Exception", paramMessageForArkApp);
+      }
     }
     return false;
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+      this.jdField_a_of_type_AndroidAppActivity = ((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
       this.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
       this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("req_share_id");
+      localObject = this.jdField_a_of_type_AndroidOsBundle;
+      if (localObject != null) {
+        this.jdField_a_of_type_Long = ((Bundle)localObject).getLong("req_share_id");
       }
     }
     QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { " updateCurrentInfo mExtra=", this.jdField_a_of_type_AndroidOsBundle, ", mShareAppId=", Long.valueOf(this.jdField_a_of_type_Long) });
@@ -218,14 +244,15 @@ public class ForwardSDKB77AIOHelper
   
   private void c()
   {
-    if (this.jdField_a_of_type_AndroidOsBundle != null)
+    Object localObject1 = this.jdField_a_of_type_AndroidOsBundle;
+    if (localObject1 != null)
     {
-      String str = this.jdField_a_of_type_AndroidOsBundle.getString("app_name");
-      Object localObject = StructMsgFactory.a(this.jdField_a_of_type_AndroidOsBundle);
-      if ((localObject instanceof AbsShareMsg))
+      localObject1 = ((Bundle)localObject1).getString("app_name");
+      Object localObject2 = StructMsgFactory.a(this.jdField_a_of_type_AndroidOsBundle);
+      if ((localObject2 instanceof AbsShareMsg))
       {
-        localObject = (AbsShareMsg)localObject;
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = ForwardShareByServerHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, ((AbsShareMsg)localObject).mSourceAppid, ((AbsShareMsg)localObject).mMsgServiceID, str);
+        localObject2 = (AbsShareMsg)localObject2;
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = ForwardShareByServerHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, ((AbsShareMsg)localObject2).mSourceAppid, ((AbsShareMsg)localObject2).mMsgServiceID, (String)localObject1);
       }
     }
     ForwardShareByServerHelper.a(this.jdField_a_of_type_AndroidOsBundle, a(), this.jdField_a_of_type_Long, true);
@@ -236,13 +263,15 @@ public class ForwardSDKB77AIOHelper
     this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(94);
     this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(93);
     f();
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localObject != null) {
+      ((QQCustomDialog)localObject).dismiss();
     }
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    localObject = this.jdField_a_of_type_AndroidContentBroadcastReceiver;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver((BroadcastReceiver)localObject);
       this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
     }
   }
@@ -250,31 +279,34 @@ public class ForwardSDKB77AIOHelper
   private void e()
   {
     QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "showWaitDialog");
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "showWaitDialog mActivity status invalid");
-    }
-    do
+    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      return;
-      if (this.jdField_a_of_type_AndroidAppDialog == null) {
-        break;
+      localObject = this.jdField_a_of_type_AndroidAppDialog;
+      if (localObject != null)
+      {
+        if (!((Dialog)localObject).isShowing()) {
+          this.jdField_a_of_type_AndroidAppDialog.show();
+        }
+        return;
       }
-    } while (this.jdField_a_of_type_AndroidAppDialog.isShowing());
-    this.jdField_a_of_type_AndroidAppDialog.show();
-    return;
-    this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_AndroidAppActivity, 2131755842);
-    this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559683);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131373066)).setText(2131694889);
-    this.jdField_a_of_type_AndroidAppDialog.show();
+      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_AndroidAppActivity, 2131756189);
+      this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131559561);
+      ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131372646)).setText(2131694878);
+      this.jdField_a_of_type_AndroidAppDialog.show();
+      return;
+    }
+    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "showWaitDialog mActivity status invalid");
   }
   
   private void f()
   {
     QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "hideWaiteDialog");
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ForwardSDKB77AIOHelper.4(this));
+    if (!a()) {
+      return;
     }
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new ForwardSDKB77AIOHelper.4(this));
   }
   
   public String getTag()
@@ -284,52 +316,55 @@ public class ForwardSDKB77AIOHelper
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 93)
     {
-    default: 
-    case 93: 
-      do
-      {
+      if (i != 94) {
         return true;
-      } while (!this.jdField_a_of_type_Boolean);
-      e();
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(94), 10000L);
-      return true;
-    }
-    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.jdField_a_of_type_Boolean))
-    {
+      }
+      paramMessage = this.jdField_a_of_type_AndroidAppActivity;
+      if ((paramMessage != null) && (!paramMessage.isFinishing()) && (this.jdField_a_of_type_Boolean))
+      {
+        ReportController.b(null, "dc00898", "", "", "0X8009CF9", "0X8009CF9", 0, 0, "", "", "", "");
+        f();
+        ForwardDialogMgr.a(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131704893), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+        return true;
+      }
       QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "msg_sdk_share_request_timeout_status mActivity == null || mActivity.isFinishing()");
       return true;
     }
-    ReportController.b(null, "dc00898", "", "", "0X8009CF9", "0X8009CF9", 0, 0, "", "", "", "");
-    f();
-    ForwardDialogMgr.a(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131704817), this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      e();
+      paramMessage = this.jdField_a_of_type_MqqOsMqqHandler;
+      paramMessage.sendMessageDelayed(paramMessage.obtainMessage(94), 10000L);
+    }
     return true;
   }
   
   public int[] interestedIn()
   {
-    return new int[] { 7, 14 };
+    return new int[] { 8, 15 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 8)
     {
-    default: 
-      return;
-    case 7: 
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onMoveToState SHOW_FIRST_BEGIN");
-      this.jdField_a_of_type_Boolean = true;
+      if (paramInt != 15) {
+        return;
+      }
+      d();
+      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onMoveToState DESTROY");
       return;
     }
-    d();
-    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onMoveToState DESTROY");
+    QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onMoveToState SHOW_FIRST_BEGIN");
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSDKB77AIOHelper
  * JD-Core Version:    0.7.0.1
  */

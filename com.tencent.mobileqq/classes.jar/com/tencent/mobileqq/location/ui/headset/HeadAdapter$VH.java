@@ -10,12 +10,12 @@ class HeadAdapter$VH
   
   public HeadAdapter$VH(View paramView)
   {
-    this.a = ((ImageView)HeadAdapter.a(paramView, 2131370790));
+    this.a = ((ImageView)HeadAdapter.a(paramView, 2131370423));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.headset.HeadAdapter.VH
  * JD-Core Version:    0.7.0.1
  */

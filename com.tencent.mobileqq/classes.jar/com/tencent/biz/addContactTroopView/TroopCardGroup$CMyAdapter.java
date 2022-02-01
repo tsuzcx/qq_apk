@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.adapter.FacePreloadHolder.ViewHolder;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -37,33 +37,29 @@ public class TroopCardGroup$CMyAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     searchtab.Item1 localItem1 = (searchtab.Item1)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    View localView = paramView;
     if (paramView == null) {
-      paramView = GroupViewAdapter.a(this.a.jdField_a_of_type_AndroidContentContext, paramViewGroup, 5, true, 1);
+      localView = GroupViewAdapter.a(this.a.jdField_a_of_type_AndroidContentContext, paramViewGroup, 5, true, 1);
     }
-    for (;;)
+    GroupViewAdapter.a(localView, this.a.jdField_a_of_type_AndroidContentContext, localItem1);
+    paramView = (FacePreloadHolder.ViewHolder)localView.getTag();
+    localView.setTag(-1, localItem1);
+    if (!TextUtils.isEmpty(localItem1.str_img_url.get()))
     {
-      GroupViewAdapter.a(paramView, this.a.jdField_a_of_type_AndroidContentContext, localItem1);
-      FacePreloadBaseAdapter.ViewHolder localViewHolder = (FacePreloadBaseAdapter.ViewHolder)paramView.getTag();
-      paramView.setTag(-1, localItem1);
-      if (!TextUtils.isEmpty(localItem1.str_img_url.get())) {
-        localViewHolder.c.setImageDrawable(URLDrawable.getDrawable(localItem1.str_img_url.get(), localViewHolder.c.getWidth(), localViewHolder.c.getHeight()));
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        if (localItem1.uint64_group_code.get() > 0L)
-        {
-          localViewHolder.a = String.valueOf(localItem1.uint64_group_code.get());
-          localViewHolder.c.setImageBitmap(a(4, String.valueOf(localItem1.uint64_group_code.get())));
-        }
-      }
+      paramView.c.setImageDrawable(URLDrawable.getDrawable(localItem1.str_img_url.get(), paramView.c.getWidth(), paramView.c.getHeight()));
     }
+    else if (localItem1.uint64_group_code.get() > 0L)
+    {
+      paramView.a = String.valueOf(localItem1.uint64_group_code.get());
+      paramView.c.setImageBitmap(a(4, String.valueOf(localItem1.uint64_group_code.get())));
+    }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.TroopCardGroup.CMyAdapter
  * JD-Core Version:    0.7.0.1
  */

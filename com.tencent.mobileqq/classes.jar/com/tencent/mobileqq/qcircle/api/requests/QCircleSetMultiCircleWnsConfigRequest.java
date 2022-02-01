@@ -41,7 +41,12 @@ public class QCircleSetMultiCircleWnsConfigRequest
                 String str2 = (String)((Map.Entry)localObject2).getKey();
                 localObject2 = (String)((Map.Entry)localObject2).getValue();
                 QQCircleSwitch.StSwitch localStSwitch = new QQCircleSwitch.StSwitch();
-                localStSwitch.key.set(str1 + "." + str2);
+                PBStringField localPBStringField = localStSwitch.key;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(str1);
+                localStringBuilder.append(".");
+                localStringBuilder.append(str2);
+                localPBStringField.set(localStringBuilder.toString());
                 localStSwitch.value.set((String)localObject2);
                 this.mReq.sws.add(localStSwitch);
               }
@@ -77,14 +82,14 @@ public class QCircleSetMultiCircleWnsConfigRequest
     return "FeedCloudSvr.trpc.videocircle.circleswitch.CircleSwitch.SetMultiCircleSwitch";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mReq.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.requests.QCircleSetMultiCircleWnsConfigRequest
  * JD-Core Version:    0.7.0.1
  */

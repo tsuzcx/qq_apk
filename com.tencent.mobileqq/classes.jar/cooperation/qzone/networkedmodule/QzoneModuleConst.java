@@ -146,76 +146,44 @@ public class QzoneModuleConst
     }
   }
   
-  public static String getModuleSavePath(Context paramContext, QzoneModuleConfigManager.QzoneModuleRecord paramQzoneModuleRecord)
+  public static String getModuleSavePath(Context paramContext, QzoneModuleRecord paramQzoneModuleRecord)
   {
-    return new File(paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0), paramQzoneModuleRecord.mMD5.toLowerCase() + "_" + paramQzoneModuleRecord.mModuleId).getAbsolutePath();
+    paramContext = paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQzoneModuleRecord.mMD5.toLowerCase());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramQzoneModuleRecord.mModuleId);
+    return new File(paramContext, localStringBuilder.toString()).getAbsolutePath();
   }
   
   private static String getSpKeyById(String paramString)
   {
-    return "qzone_module_" + paramString + "_last_crash_count";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qzone_module_");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_last_crash_count");
+    return localStringBuilder.toString();
   }
   
-  /* Error */
   public static boolean isLoadAccordingToCrashCount(String paramString)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: ldc_w 366
-    //   8: aload_0
-    //   9: invokestatic 370	cooperation/qzone/networkedmodule/QzoneModuleConst:getSpKeyById	(Ljava/lang/String;)Ljava/lang/String;
-    //   12: iconst_0
-    //   13: invokestatic 438	cooperation/qzone/LocalMultiProcConfig:getInt	(Ljava/lang/String;Ljava/lang/String;I)I
-    //   16: istore_1
-    //   17: ldc_w 309
-    //   20: iconst_1
-    //   21: new 400	java/lang/StringBuilder
-    //   24: dup
-    //   25: invokespecial 401	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 440
-    //   31: invokevirtual 414	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: iload_1
-    //   35: invokevirtual 443	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 422	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 446	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   44: iload_1
-    //   45: iconst_2
-    //   46: if_icmpne +28 -> 74
-    //   49: iload_3
-    //   50: istore_2
-    //   51: invokestatic 450	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   54: ifeq +15 -> 69
-    //   57: ldc_w 309
-    //   60: iconst_2
-    //   61: ldc_w 452
-    //   64: invokestatic 455	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   67: iload_3
-    //   68: istore_2
-    //   69: ldc 2
-    //   71: monitorexit
-    //   72: iload_2
-    //   73: ireturn
-    //   74: iconst_1
-    //   75: istore_2
-    //   76: goto -7 -> 69
-    //   79: astore_0
-    //   80: ldc 2
-    //   82: monitorexit
-    //   83: aload_0
-    //   84: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	85	0	paramString	String
-    //   16	31	1	i	int
-    //   50	26	2	bool1	boolean
-    //   1	67	3	bool2	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   5	44	79	finally
-    //   51	67	79	finally
+    try
+    {
+      int i = LocalMultiProcConfig.getInt("Qz_setting", getSpKeyById(paramString), 0);
+      paramString = new StringBuilder();
+      paramString.append("qzone module(map sdk) crash count:");
+      paramString.append(i);
+      QLog.i("QzoneModuleConst", 1, paramString.toString());
+      if (i == 2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneModuleConst", 2, "crash count 1->2, disable module.");
+        }
+        return false;
+      }
+      return true;
+    }
+    finally {}
   }
   
   public static void updateCrashInfo(String paramString, boolean paramBoolean)
@@ -225,42 +193,54 @@ public class QzoneModuleConst
       QLog.e("QzoneModuleCrash", 1, "errMsg is empty");
       return;
     }
-    if ((paramBoolean) && (paramString.contains("nativeResolvePatchClass"))) {
-      QLog.e("QzoneModuleCrash", 1, "load2QQClassLoader crash, native crash caused by nativeResolvePatchClass");
-    }
-    for (int i = 1;; i = 0)
+    int i;
+    if ((paramBoolean) && (paramString.contains("nativeResolvePatchClass")))
     {
-      Iterator localIterator = sCrashKeyWords.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (paramString.contains(str))
-        {
-          paramString = (String)sKeyWords2IdMap.get(str);
-          QLog.e("QzoneModuleCrash", 1, "loaded Module get a crash, module id:" + paramString);
-          i = 1;
-        }
+      QLog.e("QzoneModuleCrash", 1, "load2QQClassLoader crash, native crash caused by nativeResolvePatchClass");
+      i = 1;
+    }
+    else
+    {
+      i = 0;
+    }
+    Object localObject2 = null;
+    Iterator localIterator = sCrashKeyWords.iterator();
+    do
+    {
+      localObject1 = localObject2;
+      j = i;
+      if (!localIterator.hasNext()) {
+        break;
       }
-      while ((i != 0) && (!TextUtils.isEmpty(paramString)))
+      localObject1 = (String)localIterator.next();
+    } while (!paramString.contains((CharSequence)localObject1));
+    Object localObject1 = (String)sKeyWords2IdMap.get(localObject1);
+    paramString = new StringBuilder();
+    paramString.append("loaded Module get a crash, module id:");
+    paramString.append((String)localObject1);
+    QLog.e("QzoneModuleCrash", 1, paramString.toString());
+    int j = 1;
+    if ((j != 0) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+    {
+      i = LocalMultiProcConfig.getInt("Qz_setting", getSpKeyById((String)localObject1), 0);
+      if (i >= 2)
       {
-        i = LocalMultiProcConfig.getInt("Qz_setting", getSpKeyById(paramString), 0);
-        if (i >= 2)
-        {
-          QLog.e("QzoneModuleCrash", 1, "qzone module have crashed " + (i + 1) + " times,so clear qzone module crash count.moduleId:" + paramString);
-          LocalMultiProcConfig.putInt("Qz_setting", getSpKeyById(paramString), 0);
-          return;
-        }
-        LocalMultiProcConfig.putInt("Qz_setting", getSpKeyById(paramString), i + 1);
+        paramString = new StringBuilder();
+        paramString.append("qzone module have crashed ");
+        paramString.append(i + 1);
+        paramString.append(" times,so clear qzone module crash count.moduleId:");
+        paramString.append((String)localObject1);
+        QLog.e("QzoneModuleCrash", 1, paramString.toString());
+        LocalMultiProcConfig.putInt("Qz_setting", getSpKeyById((String)localObject1), 0);
         return;
-        paramString = null;
       }
-      break;
+      LocalMultiProcConfig.putInt("Qz_setting", getSpKeyById((String)localObject1), i + 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.networkedmodule.QzoneModuleConst
  * JD-Core Version:    0.7.0.1
  */

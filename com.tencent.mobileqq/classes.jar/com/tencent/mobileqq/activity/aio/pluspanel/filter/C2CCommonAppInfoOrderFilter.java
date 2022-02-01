@@ -32,7 +32,7 @@ public class C2CCommonAppInfoOrderFilter
     if (((paramPlusPanelAppLoader instanceof C2CPlusPanelAppLoader)) && (!((C2CPlusPanelAppLoader)paramPlusPanelAppLoader).a()))
     {
       paramPlusPanelAppLoader.b(1000000006);
-      if (!QQTheme.e()) {
+      if (!QQTheme.f()) {
         paramPlusPanelAppLoader.b(219);
       }
       paramQQAppInterface = paramPlusPanelAppLoader.a();
@@ -41,20 +41,19 @@ public class C2CCommonAppInfoOrderFilter
       {
         paramString = (PlusPanelAppInfo)paramQQAppInterface.get(paramInt);
         paramPlusPanelAppLoader.b(209);
-        if (paramQQAppInterface.size() >= 10) {
-          break label91;
+        if (paramQQAppInterface.size() < 10)
+        {
+          paramQQAppInterface.add(paramString);
+          return;
         }
-        paramQQAppInterface.add(paramString);
+        paramQQAppInterface.add(10, paramString);
       }
     }
-    return;
-    label91:
-    paramQQAppInterface.add(10, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.filter.C2CCommonAppInfoOrderFilter
  * JD-Core Version:    0.7.0.1
  */

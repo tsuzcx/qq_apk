@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_checked="false" android:state_pressed="true" android:drawable="@drawable/gsd" />
-    <item android:state_enabled="false" android:drawable="@drawable/gsc" />
-    <item android:state_enabled="true" android:state_checked="true" android:state_pressed="true" android:drawable="@drawable/gsb" />
-    <item android:state_checked="true" android:drawable="@drawable/gsa" />
-    <item android:drawable="@drawable/gsc" />
-</selector>
+    <solid android:color="#ff43c8ef" />
+    <corners android:radius="8.0dip" />
+</shape>

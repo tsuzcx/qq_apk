@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.app;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import androidx.fragment.app.FragmentManager;
 import com.dataline.activities.LiteActivity;
 import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -13,11 +12,13 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper;
 import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
 import com.tencent.mobileqq.activity.miniaio.MiniChatFragment;
-import com.tencent.mobileqq.activity.recent.msgbox.FilterMessageBoxFragment;
+import com.tencent.mobileqq.activity.recent.msgbox.FilterMsgBoxFragment;
 import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxFragment;
+import com.tencent.mobileqq.app.guard.GuardManager;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
@@ -51,23 +52,26 @@ public class ForegroundNotifyManager
   
   public static int b(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return -1;
-    case 0: 
-      return 1;
+      if (paramInt != 1) {
+        return -1;
+      }
+      return 2;
     }
-    return 2;
+    return 1;
   }
   
   private boolean i()
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof PublicFragmentActivity))
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof PublicFragmentActivity))
     {
-      boolean bool = TextUtils.equals(((PublicFragmentActivity)localBaseActivity).getIntent().getStringExtra("public_fragment_class"), FilterMessageBoxFragment.class.getName());
-      QLog.d("ForegroundNotifyManager", 1, "isFilterBox() " + bool);
+      boolean bool = TextUtils.equals(((PublicFragmentActivity)localObject).getIntent().getStringExtra("public_fragment_class"), FilterMsgBoxFragment.class.getName());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isFilterBox() ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("ForegroundNotifyManager", 1, ((StringBuilder)localObject).toString());
       return bool;
     }
     return false;
@@ -75,11 +79,14 @@ public class ForegroundNotifyManager
   
   private boolean j()
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof PublicFragmentActivity))
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof PublicFragmentActivity))
     {
-      boolean bool = TextUtils.equals(((PublicFragmentActivity)localBaseActivity).getIntent().getStringExtra("public_fragment_class"), TempMsgBoxFragment.class.getName());
-      QLog.d("ForegroundNotifyManager", 1, "isMsgBox() " + bool);
+      boolean bool = TextUtils.equals(((PublicFragmentActivity)localObject).getIntent().getStringExtra("public_fragment_class"), TempMsgBoxFragment.class.getName());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isMsgBox() ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("ForegroundNotifyManager", 1, ((StringBuilder)localObject).toString());
       return bool;
     }
     return false;
@@ -121,11 +128,11 @@ public class ForegroundNotifyManager
   }
   
   @Nullable
-  BaseChatPie a(FragmentActivity paramFragmentActivity)
+  BaseChatPie a(BaseActivity paramBaseActivity)
   {
-    paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-    if ((paramFragmentActivity instanceof ChatFragment)) {
-      return ((ChatFragment)paramFragmentActivity).a();
+    paramBaseActivity = paramBaseActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+    if ((paramBaseActivity instanceof ChatFragment)) {
+      return ((ChatFragment)paramBaseActivity).a();
     }
     return null;
   }
@@ -138,24 +145,24 @@ public class ForegroundNotifyManager
   public boolean a()
   {
     String str1 = GuardManager.a.a();
-    if ((str1 == null) || ("com.tencent.mobileqq".equals(str1))) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((str1 != null) && (!"com.tencent.mobileqq".equals(str1))) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    Object localObject = GuardManager.a.a();
+    if (bool)
     {
-      Object localObject = GuardManager.a.a();
-      if (!bool) {
-        break;
-      }
       localObject = ((Map)localObject).entrySet().iterator();
-      String str2;
-      do
+      while (((Iterator)localObject).hasNext())
       {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        str2 = (String)((Map.Entry)((Iterator)localObject).next()).getKey();
+        String str2 = (String)((Map.Entry)((Iterator)localObject).next()).getKey();
         QLog.d("ForegroundNotifyManager", 1, new Object[] { "[process] isSubProcessBackgroundStop: invoked. ", " process: ", str2 });
-      } while (str2.equals("com.tencent.mobileqq"));
-      return false;
+        if (!str2.equals("com.tencent.mobileqq")) {
+          return false;
+        }
+      }
     }
     if (QLog.isColorLevel()) {
       QLog.d("ForegroundNotifyManager", 2, new Object[] { "[process] isSubProcessBackgroundStop: invoked. ", " foregroundProcess: ", str1, " isSubProcessBackgroundStop: ", Boolean.valueOf(bool) });
@@ -165,24 +172,17 @@ public class ForegroundNotifyManager
   
   public boolean a(int paramInt)
   {
-    boolean bool2 = false;
     int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
     int j = arrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (arrayOfInt[i] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (arrayOfInt[i] == paramInt) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public boolean a(Message paramMessage)
@@ -192,45 +192,48 @@ public class ForegroundNotifyManager
     boolean bool4 = b();
     boolean bool5 = a(i);
     boolean bool6 = a(paramMessage);
-    for (;;)
+    boolean bool3 = false;
+    boolean bool1;
+    try
     {
-      try
-      {
-        bool1 = c();
-        if (bool1) {
-          continue;
-        }
-        bool1 = true;
-      }
-      catch (Throwable paramMessage)
-      {
-        QLog.e("ForegroundNotifyManager", 1, "functionOpen: failed. ", paramMessage);
-        boolean bool1 = false;
-        continue;
-        boolean bool2 = false;
-        continue;
-        boolean bool3 = false;
-        continue;
-      }
-      if (h()) {
-        continue;
-      }
-      bool2 = true;
-      if (FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-        continue;
-      }
-      bool3 = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ForegroundNotifyManager", 2, new Object[] { "functionOpen: invoked. ", " switchEnabled: ", Boolean.valueOf(bool4), " supportedUinType: ", Boolean.valueOf(bool5), " noNeedShield: ", Boolean.valueOf(bool1), " entranceShown: ", Boolean.valueOf(bool2), " canDisturb: ", Boolean.valueOf(bool3), " supportedUin: ", Boolean.valueOf(bool6) });
-      }
-      if ((!bool4) || (!bool5) || (!bool6) || (!bool1) || (!bool2) || (!bool3)) {
-        break label244;
-      }
-      return true;
+      bool1 = c();
+      bool1 ^= true;
+    }
+    catch (Throwable paramMessage)
+    {
+      QLog.e("ForegroundNotifyManager", 1, "functionOpen: failed. ", paramMessage);
       bool1 = false;
     }
-    label244:
-    return false;
+    boolean bool7 = h() ^ true;
+    boolean bool8 = FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()) ^ true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ForegroundNotifyManager", 2, new Object[] { "functionOpen: invoked. ", " switchEnabled: ", Boolean.valueOf(bool4), " supportedUinType: ", Boolean.valueOf(bool5), " noNeedShield: ", Boolean.valueOf(bool1), " entranceShown: ", Boolean.valueOf(bool7), " canDisturb: ", Boolean.valueOf(bool8), " supportedUin: ", Boolean.valueOf(bool6) });
+    }
+    boolean bool2 = bool3;
+    if (bool4)
+    {
+      bool2 = bool3;
+      if (bool5)
+      {
+        bool2 = bool3;
+        if (bool6)
+        {
+          bool2 = bool3;
+          if (bool1)
+          {
+            bool2 = bool3;
+            if (bool7)
+            {
+              bool2 = bool3;
+              if (bool8) {
+                bool2 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool2;
   }
   
   public boolean a(String paramString)
@@ -259,46 +262,54 @@ public class ForegroundNotifyManager
   
   public boolean c()
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundStop) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause))
+    if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundStop) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause))
     {
-      bool = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-      QLog.d("ForegroundNotifyManager", 1, new Object[] { "[process] isNeedShieldPushUi: invoked. main process background ", " subProcessBackgroundStop: ", Boolean.valueOf(bool) });
-    }
-    while (BaseActivity.sTopActivity == null) {
-      return bool;
-    }
-    bool = g();
-    if ((bool) && (e())) {
-      return false;
-    }
-    if ((bool) || (f()) || (d()) || (j()) || (i())) {}
-    for (bool = true;; bool = false)
-    {
+      if (BaseActivity.sTopActivity == null) {
+        return true;
+      }
+      bool = g();
+      if ((bool) && (e())) {
+        return false;
+      }
+      if ((!bool) && (!f()) && (!d()) && (!j()) && (!i())) {
+        bool = false;
+      } else {
+        bool = true;
+      }
       if (QLog.isColorLevel()) {
         QLog.d("ForegroundNotifyManager", 2, new Object[] { "[process] isNeedShieldPushUi: invoked. main process foreground ", " mainProcessNeedShield: ", Boolean.valueOf(bool) });
       }
       return bool;
     }
+    boolean bool = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
+    QLog.d("ForegroundNotifyManager", 1, new Object[] { "[process] isNeedShieldPushUi: invoked. main process background ", " subProcessBackgroundStop: ", Boolean.valueOf(bool) });
+    return bool;
   }
   
   public boolean d()
   {
-    if ((BaseActivity.sTopActivity instanceof SplashActivity)) {
-      return ((SplashActivity)BaseActivity.sTopActivity).getCurrentTab() == FrameControllerUtil.a;
+    boolean bool3 = BaseActivity.sTopActivity instanceof SplashActivity;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (((SplashActivity)BaseActivity.sTopActivity).getCurrentTab() == FrameControllerUtil.a) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   public boolean e()
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    if ((BaseActivity.sTopActivity instanceof BaseActivity))
     {
-      BaseChatPie localBaseChatPie = a((FragmentActivity)BaseActivity.sTopActivity);
+      BaseChatPie localBaseChatPie = a(BaseActivity.sTopActivity);
       if (localBaseChatPie == null) {
         return false;
       }
-      return localBaseChatPie.y();
+      return ((FullScreenInputHelper)localBaseChatPie.a(24)).c();
     }
     return false;
   }
@@ -310,17 +321,29 @@ public class ForegroundNotifyManager
   
   public boolean g()
   {
-    boolean bool1 = false;
-    if (((BaseActivity.sTopActivity instanceof SplashActivity)) && (2 == SplashActivity.currentFragment)) {}
-    for (int i = 1;; i = 0)
-    {
-      boolean bool3 = BaseActivity.sTopActivity instanceof ChatActivity;
-      boolean bool2 = BaseActivity.sTopActivity instanceof LiteActivity;
-      if ((i != 0) || (bool3) || (bool2)) {
-        bool1 = true;
-      }
-      return bool1;
+    boolean bool1 = BaseActivity.sTopActivity instanceof SplashActivity;
+    boolean bool2 = true;
+    int i;
+    if ((bool1) && (2 == SplashActivity.currentFragment)) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    boolean bool3 = BaseActivity.sTopActivity instanceof ChatActivity;
+    boolean bool4 = BaseActivity.sTopActivity instanceof LiteActivity;
+    bool1 = bool2;
+    if (i == 0)
+    {
+      bool1 = bool2;
+      if (!bool3)
+      {
+        if (bool4) {
+          return true;
+        }
+        bool1 = false;
+      }
+    }
+    return bool1;
   }
   
   public boolean h()
@@ -332,7 +355,7 @@ public class ForegroundNotifyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ForegroundNotifyManager
  * JD-Core Version:    0.7.0.1
  */

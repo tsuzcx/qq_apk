@@ -17,18 +17,19 @@ class PrinterSessionAdapter$3
   @SuppressLint({"NewApi"})
   public void onClick(View paramView)
   {
-    if (2131365645 == paramView.getId())
+    if (2131365489 == paramView.getId())
     {
       PrinterSessionAdapter.3.1 local1 = new PrinterSessionAdapter.3.1(this);
       PrinterSessionAdapter.3.2 local2 = new PrinterSessionAdapter.3.2(this);
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131693775), this.jdField_a_of_type_AndroidContentContext.getString(2131693753), 2131690800, 2131693794, local1, local2).show();
+      Context localContext = this.jdField_a_of_type_AndroidContentContext;
+      DialogUtil.a(localContext, 230, localContext.getString(2131693728), this.jdField_a_of_type_AndroidContentContext.getString(2131693706), 2131690728, 2131693747, local1, local2).show();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.PrinterSessionAdapter.3
  * JD-Core Version:    0.7.0.1
  */

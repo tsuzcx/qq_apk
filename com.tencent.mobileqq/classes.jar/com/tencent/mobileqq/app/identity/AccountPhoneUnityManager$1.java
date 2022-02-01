@@ -1,30 +1,20 @@
 package com.tencent.mobileqq.app.identity;
 
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
-final class AccountPhoneUnityManager$1
-  implements View.OnClickListener
+class AccountPhoneUnityManager$1
+  implements Runnable
 {
-  AccountPhoneUnityManager$1(Context paramContext, QQAppInterface paramQQAppInterface) {}
+  AccountPhoneUnityManager$1(AccountPhoneUnityManager paramAccountPhoneUnityManager, AppRuntime paramAppRuntime) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PhoneUnityBindInfoActivity.class);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B3EA", "0X800B3EA", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.this$0.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountPhoneUnityManager.1
  * JD-Core Version:    0.7.0.1
  */

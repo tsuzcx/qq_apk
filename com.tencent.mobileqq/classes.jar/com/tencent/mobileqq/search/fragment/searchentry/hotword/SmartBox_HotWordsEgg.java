@@ -39,12 +39,14 @@ public final class SmartBox_HotWordsEgg
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iId, 0);
-    if (this.sIcon != null) {
-      paramJceOutputStream.write(this.sIcon, 1);
+    String str = this.sIcon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.iExposureCount, 2);
-    if (this.sAppend != null) {
-      paramJceOutputStream.write(this.sAppend, 3);
+    str = this.sAppend;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.iEndTimeStamp, 4);
     paramJceOutputStream.write(this.iWordId, 5);
@@ -52,7 +54,7 @@ public final class SmartBox_HotWordsEgg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hotword.SmartBox_HotWordsEgg
  * JD-Core Version:    0.7.0.1
  */

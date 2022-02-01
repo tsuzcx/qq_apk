@@ -12,22 +12,27 @@ class GroupVideoManager$1
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start slientDownloadPlugin onResult:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("GroupVideoManager", 2, ((StringBuilder)localObject).toString());
     }
     GVideoGrayConfig.a().a();
     if (paramInt == 1)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("roomCodeType", 1);
-      localBundle.putLong("roomid", Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
-      GroupVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager, localBundle, 1001L);
+      localObject = new Bundle();
+      ((Bundle)localObject).putInt("roomCodeType", 1);
+      ((Bundle)localObject).putLong("roomid", Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
+      GroupVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager, (Bundle)localObject, 1001L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.1
  * JD-Core Version:    0.7.0.1
  */

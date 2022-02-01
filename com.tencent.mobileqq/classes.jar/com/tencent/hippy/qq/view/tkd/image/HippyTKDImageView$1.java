@@ -12,55 +12,67 @@ class HippyTKDImageView$1
   
   public void run()
   {
-    Bitmap localBitmap4 = HippyTKDImageView.access$000(this.this$0).getBitmap();
-    if ((localBitmap4 == null) || (localBitmap4.isRecycled()))
+    Bitmap localBitmap2 = HippyTKDImageView.access$000(this.this$0).getBitmap();
+    Bitmap localBitmap1;
+    if ((localBitmap2 != null) && (!localBitmap2.isRecycled()))
     {
-      QLog.e("HippyImageView", 1, "shouldSetContent BlurBitmap tempBitmap == null || tempBitmap.isRecycled()");
-      return;
+      localObject2 = localBitmap2;
+      localBitmap1 = localBitmap2;
     }
-    Bitmap localBitmap1 = localBitmap4;
-    Bitmap localBitmap2 = localBitmap4;
     try
     {
-      int i = localBitmap4.getWidth();
-      localBitmap1 = localBitmap4;
-      localBitmap2 = localBitmap4;
-      int j = localBitmap4.getHeight();
-      localBitmap1 = localBitmap4;
-      localBitmap2 = localBitmap4;
-      float f = HippyTKDImageView.access$100(this.this$0, i, j, this.this$0.mBlurRadius);
-      localBitmap1 = localBitmap4;
-      localBitmap2 = localBitmap4;
-      localBitmap4 = Bitmap.createScaledBitmap(localBitmap4, (int)(i / f), (int)(j / f), true);
-      localBitmap1 = localBitmap4;
-      localBitmap2 = localBitmap4;
-      StackBlur.a(localBitmap4, (int)(this.this$0.mBlurRadius / f));
-      localBitmap1 = localBitmap4;
-      localBitmap2 = localBitmap4;
-      if (QLog.isColorLevel())
+      try
       {
-        localBitmap1 = localBitmap4;
-        localBitmap2 = localBitmap4;
+        int i = localBitmap2.getWidth();
+        localObject2 = localBitmap2;
+        localBitmap1 = localBitmap2;
+        int j = localBitmap2.getHeight();
+        localObject2 = localBitmap2;
+        localBitmap1 = localBitmap2;
+        float f = HippyTKDImageView.access$100(this.this$0, i, j, this.this$0.mBlurRadius);
+        localObject2 = localBitmap2;
+        localBitmap1 = localBitmap2;
+        localBitmap2 = Bitmap.createScaledBitmap(localBitmap2, (int)(i / f), (int)(j / f), true);
+        localObject2 = localBitmap2;
+        localBitmap1 = localBitmap2;
+        StackBlur.a(localBitmap2, (int)(this.this$0.mBlurRadius / f));
+        localObject2 = localBitmap2;
+        localObject3 = localBitmap2;
+        localBitmap1 = localBitmap2;
+        if (!QLog.isColorLevel()) {
+          break label227;
+        }
+        localObject2 = localBitmap2;
+        localBitmap1 = localBitmap2;
         QLog.d("", 2, new Object[] { "mBlurRadius", Integer.valueOf(this.this$0.mBlurRadius), " blurRate:", Float.valueOf(f) });
+        localObject3 = localBitmap2;
       }
-      return;
+      finally
+      {
+        break label238;
+      }
     }
     catch (Throwable localThrowable)
     {
-      localBitmap3 = localBitmap1;
-      QLog.e("HippyImageView", 1, "shouldSetContent BlurBitmap oom");
-      return;
+      Object localObject3;
+      label211:
+      break label211;
     }
-    finally
-    {
-      Bitmap localBitmap3;
-      this.this$0.onGaussianBlurComplete(localBitmap3, null);
-    }
+    Object localObject2 = localObject1;
+    QLog.e("HippyImageView", 1, "shouldSetContent BlurBitmap oom");
+    localObject3 = localObject1;
+    label227:
+    this.this$0.onGaussianBlurComplete((Bitmap)localObject3, null);
+    return;
+    label238:
+    this.this$0.onGaussianBlurComplete((Bitmap)localObject2, null);
+    throw localObject1;
+    QLog.e("HippyImageView", 1, "shouldSetContent BlurBitmap tempBitmap == null || tempBitmap.isRecycled()");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.image.HippyTKDImageView.1
  * JD-Core Version:    0.7.0.1
  */

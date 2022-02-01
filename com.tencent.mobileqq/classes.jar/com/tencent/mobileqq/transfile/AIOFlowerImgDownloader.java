@@ -24,62 +24,58 @@ public class AIOFlowerImgDownloader
 {
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    Canvas localCanvas = null;
-    paramURLDrawableHandler = null;
     paramDownloadParams = new BitmapFactory.Options();
     paramDownloadParams.inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
     float f = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
     paramDownloadParams.inSampleSize = ((int)Math.min(paramDownloadParams.outWidth / (115.0F * f + 0.5F), paramDownloadParams.outHeight / (f * 105.0F + 0.5F)));
     paramDownloadParams.inJustDecodeBounds = false;
-    label234:
-    do
+    paramURLDrawableHandler = null;
+    try
     {
+      paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
+    }
+    catch (OutOfMemoryError paramFile)
+    {
+      label91:
       int i;
       int j;
-      try
-      {
-        paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
-        if (paramDownloadParams == null) {
-          return paramURLDrawableHandler;
-        }
-      }
-      catch (OutOfMemoryError paramFile)
-      {
-        for (;;)
-        {
-          paramDownloadParams = null;
-        }
-        i = paramDownloadParams.getWidth();
-        j = paramDownloadParams.getHeight();
-        paramFile = localCanvas;
-      }
-      try
-      {
-        paramURLDrawableHandler = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        paramFile = paramURLDrawableHandler;
-        paramURLDrawableHandler.setDensity(160);
-        paramFile = paramURLDrawableHandler;
-        localCanvas = new Canvas(paramURLDrawableHandler);
-        paramFile = paramURLDrawableHandler;
-        Paint localPaint = new Paint(1);
-        paramFile = paramURLDrawableHandler;
-        localPaint.setColor(-16777216);
-        paramFile = paramURLDrawableHandler;
-        BaseApplicationImpl.getApplication();
-        paramFile = paramURLDrawableHandler;
-        Rect localRect = new Rect(0, 0, i, j - (int)(5.0F * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density));
-        paramFile = paramURLDrawableHandler;
-        localCanvas.drawBitmap(paramDownloadParams, localRect, new RectF(localRect), localPaint);
-        paramFile = paramURLDrawableHandler;
-      }
-      catch (OutOfMemoryError paramURLDrawableHandler)
-      {
-        break label234;
-      }
-      paramURLDrawableHandler = paramFile;
-    } while (paramDownloadParams.isRecycled());
-    paramDownloadParams.recycle();
+      label229:
+      break label91;
+    }
+    paramDownloadParams = null;
+    if (paramDownloadParams == null) {
+      return null;
+    }
+    i = paramDownloadParams.getWidth();
+    j = paramDownloadParams.getHeight();
+    paramFile = paramURLDrawableHandler;
+    try
+    {
+      paramURLDrawableHandler = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      paramFile = paramURLDrawableHandler;
+      paramURLDrawableHandler.setDensity(160);
+      paramFile = paramURLDrawableHandler;
+      Canvas localCanvas = new Canvas(paramURLDrawableHandler);
+      paramFile = paramURLDrawableHandler;
+      Paint localPaint = new Paint(1);
+      paramFile = paramURLDrawableHandler;
+      localPaint.setColor(-16777216);
+      paramFile = paramURLDrawableHandler;
+      BaseApplicationImpl.getApplication();
+      paramFile = paramURLDrawableHandler;
+      Rect localRect = new Rect(0, 0, i, j - (int)(BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density * 5.0F));
+      paramFile = paramURLDrawableHandler;
+      localCanvas.drawBitmap(paramDownloadParams, localRect, new RectF(localRect), localPaint);
+      paramFile = paramURLDrawableHandler;
+    }
+    catch (OutOfMemoryError paramURLDrawableHandler)
+    {
+      break label229;
+    }
+    if (!paramDownloadParams.isRecycled()) {
+      paramDownloadParams.recycle();
+    }
     return paramFile;
   }
   
@@ -100,7 +96,7 @@ public class AIOFlowerImgDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AIOFlowerImgDownloader
  * JD-Core Version:    0.7.0.1
  */

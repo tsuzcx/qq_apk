@@ -20,15 +20,17 @@ public class TAVMovieVideoConfiguration
   public TAVMovieVideoConfiguration clone()
   {
     TAVMovieVideoConfiguration localTAVMovieVideoConfiguration = new TAVMovieVideoConfiguration();
-    if ((this.frame == null) || (this.frame == TAVVideoConfiguration.FIX_RENDER_SIZE) || (this.frame == TAVVideoConfiguration.SOURCE_SIZE)) {}
-    for (localTAVMovieVideoConfiguration.frame = this.frame;; localTAVMovieVideoConfiguration.frame = this.frame.clone())
-    {
-      localTAVMovieVideoConfiguration.contentMode = this.contentMode;
-      localTAVMovieVideoConfiguration.transform = new Matrix(this.transform);
-      localTAVMovieVideoConfiguration.effects = new ArrayList(this.effects);
-      localTAVMovieVideoConfiguration.preferRotation = this.preferRotation;
-      return localTAVMovieVideoConfiguration;
+    CGRect localCGRect = this.frame;
+    if ((localCGRect != null) && (localCGRect != TAVVideoConfiguration.FIX_RENDER_SIZE) && (this.frame != TAVVideoConfiguration.SOURCE_SIZE)) {
+      localTAVMovieVideoConfiguration.frame = this.frame.clone();
+    } else {
+      localTAVMovieVideoConfiguration.frame = this.frame;
     }
+    localTAVMovieVideoConfiguration.contentMode = this.contentMode;
+    localTAVMovieVideoConfiguration.transform = new Matrix(this.transform);
+    localTAVMovieVideoConfiguration.effects = new ArrayList(this.effects);
+    localTAVMovieVideoConfiguration.preferRotation = this.preferRotation;
+    return localTAVMovieVideoConfiguration;
   }
   
   public TAVVideoConfiguration convertToConfiguration()
@@ -89,7 +91,7 @@ public class TAVMovieVideoConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavmovie.base.TAVMovieVideoConfiguration
  * JD-Core Version:    0.7.0.1
  */

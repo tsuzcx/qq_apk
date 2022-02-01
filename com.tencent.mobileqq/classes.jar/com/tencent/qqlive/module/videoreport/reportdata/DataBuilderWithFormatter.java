@@ -16,6 +16,7 @@ import com.tencent.qqlive.module.videoreport.utils.IFormatter;
 import com.tencent.qqlive.module.videoreport.utils.ReusablePool;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -25,50 +26,66 @@ public class DataBuilderWithFormatter
 {
   private List<ReportData> addVirtualParentParams(DataEntity paramDataEntity)
   {
-    if (paramDataEntity == null) {}
-    do
-    {
+    ArrayList localArrayList = null;
+    if (paramDataEntity == null) {
       return null;
-      paramDataEntity = DataEntityOperator.getVirtualElementParentParams(paramDataEntity);
-    } while ((paramDataEntity == null) || (paramDataEntity.size() == 0));
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramDataEntity.size())
+    }
+    SparseArray localSparseArray = DataEntityOperator.getVirtualElementParentParams(paramDataEntity);
+    paramDataEntity = localArrayList;
+    if (localSparseArray != null)
     {
-      ElementDataEntity localElementDataEntity = (ElementDataEntity)paramDataEntity.valueAt(i);
-      if (localElementDataEntity == null) {}
+      if (localSparseArray.size() == 0) {
+        return null;
+      }
+      localArrayList = new ArrayList();
+      int i = 0;
       for (;;)
       {
+        paramDataEntity = localArrayList;
+        if (i >= localSparseArray.size()) {
+          break;
+        }
+        paramDataEntity = (ElementDataEntity)localSparseArray.valueAt(i);
+        if (paramDataEntity != null)
+        {
+          ReportData localReportData = (ReportData)ReusablePool.obtain(8);
+          localReportData.setId(paramDataEntity.elementId);
+          localReportData.setParams(paramDataEntity.elementParams);
+          localArrayList.add(localReportData);
+        }
         i += 1;
-        break;
-        ReportData localReportData = (ReportData)ReusablePool.obtain(8);
-        localReportData.setId(localElementDataEntity.elementId);
-        localReportData.setParams(localElementDataEntity.elementParams);
-        localArrayList.add(localReportData);
       }
     }
-    return localArrayList;
+    return paramDataEntity;
   }
   
   @NonNull
-  private ArrayList<ReportData> getElementsData(PathData paramPathData)
+  private ArrayList<ReportData> getElementsData(String paramString, PathData paramPathData)
   {
     ArrayList localArrayList = new ArrayList();
     paramPathData = paramPathData.iterator();
     while (paramPathData.hasNext())
     {
-      Object localObject = (DataEntity)paramPathData.next();
-      if (localObject != null)
+      Object localObject1 = (DataEntity)paramPathData.next();
+      if (localObject1 != null)
       {
-        String str = DataEntityOperator.getElementId((DataEntity)localObject);
-        Map localMap = DataEntityOperator.getElementParams((DataEntity)localObject);
+        Object localObject2 = DataEntityOperator.getElementId((DataEntity)localObject1);
+        HashMap localHashMap = new HashMap();
+        Map localMap = DataEntityOperator.getElementParams((DataEntity)localObject1);
         ReportData localReportData = (ReportData)ReusablePool.obtain(8);
-        localReportData.setId(str);
-        localReportData.setParams(localMap);
+        localReportData.setId((String)localObject2);
+        localObject2 = DataEntityOperator.getDynamicElementParams(paramString, (DataEntity)localObject1);
+        if (!BaseUtils.isEmpty(localMap)) {
+          localHashMap.putAll(localMap);
+        }
+        if (!BaseUtils.isEmpty((Map)localObject2)) {
+          localHashMap.putAll((Map)localObject2);
+        }
+        localReportData.setParams(localHashMap);
         localArrayList.add(localReportData);
-        localObject = addVirtualParentParams((DataEntity)localObject);
-        if (!BaseUtils.isEmpty((Collection)localObject)) {
-          localArrayList.addAll((Collection)localObject);
+        localObject1 = addVirtualParentParams((DataEntity)localObject1);
+        if (!BaseUtils.isEmpty((Collection)localObject1)) {
+          localArrayList.addAll((Collection)localObject1);
         }
       }
     }
@@ -80,7 +97,7 @@ public class DataBuilderWithFormatter
     return DataBuilderWithFormatter.InstanceHolder.INSTANCE;
   }
   
-  private ReportData getPageData(PathData paramPathData)
+  private ReportData getPageData(String paramString, PathData paramPathData)
   {
     ReportData localReportData = (ReportData)ReusablePool.obtain(8);
     Object localObject = paramPathData.getPage();
@@ -88,9 +105,9 @@ public class DataBuilderWithFormatter
       return null;
     }
     paramPathData = DataRWProxy.getPageId(localObject);
-    localObject = PageUtils.getPageInfo(localObject.hashCode());
+    paramString = PageUtils.getPageInfo(paramString, localObject, localObject.hashCode());
     localReportData.setId(paramPathData);
-    localReportData.setParams((Map)localObject);
+    localReportData.setParams(paramString);
     return localReportData;
   }
   
@@ -104,25 +121,25 @@ public class DataBuilderWithFormatter
   }
   
   @Nullable
-  public FinalData build(PathData paramPathData)
+  public FinalData build(String paramString, PathData paramPathData)
   {
     if (paramPathData == null) {
       return null;
     }
-    ArrayList localArrayList = getElementsData(paramPathData);
-    paramPathData = getPageData(paramPathData);
-    Map localMap = VideoReportInner.getInstance().getConfiguration().getFormatter().formatElementParams(localArrayList, paramPathData);
+    ArrayList localArrayList = getElementsData(paramString, paramPathData);
+    paramString = getPageData(paramString, paramPathData);
+    paramPathData = VideoReportInner.getInstance().getConfiguration().getFormatter().formatElementParams(localArrayList, paramString);
     FinalData localFinalData = (FinalData)ReusablePool.obtain(6);
-    if (localMap != null) {
-      localFinalData.eventParams = localMap;
+    if (paramPathData != null) {
+      localFinalData.eventParams = paramPathData;
     }
-    recycleObjects(localArrayList, paramPathData);
+    recycleObjects(localArrayList, paramString);
     return localFinalData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.reportdata.DataBuilderWithFormatter
  * JD-Core Version:    0.7.0.1
  */

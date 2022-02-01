@@ -23,7 +23,7 @@ class X5UpdateGuard$3
     if (X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard) == null) {
       X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard, new X5UpdateGuard.LoadingDialog(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getAttachedActivity()));
     }
-    X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard).a(HardCodeUtil.a(2131705913));
+    X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard).a(HardCodeUtil.a(2131705965));
     if (!X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard).isShowing()) {
       X5UpdateGuard.a(this.jdField_a_of_type_ComTencentQqminiProxyimplX5UpdateGuard).show();
     }
@@ -31,7 +31,7 @@ class X5UpdateGuard$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.X5UpdateGuard.3
  * JD-Core Version:    0.7.0.1
  */

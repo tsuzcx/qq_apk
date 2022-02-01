@@ -22,12 +22,12 @@ public class RemoteProxy$QIPCHandler
       this.jdField_a_of_type_JavaLangObject = paramClass.newInstance();
       return;
     }
-    catch (IllegalAccessException paramClass)
+    catch (InstantiationException paramClass)
     {
       paramClass.printStackTrace();
       return;
     }
-    catch (InstantiationException paramClass)
+    catch (IllegalAccessException paramClass)
     {
       paramClass.printStackTrace();
     }
@@ -35,22 +35,29 @@ public class RemoteProxy$QIPCHandler
   
   Object a(String paramString, Bundle paramBundle)
   {
-    paramString = RemoteProxy.a(this.jdField_a_of_type_JavaLangClass.getName() + "$" + paramString, paramBundle);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangClass.getName());
+    localStringBuilder.append("$");
+    localStringBuilder.append(paramString);
+    paramString = RemoteProxy.a(localStringBuilder.toString(), paramBundle);
     if ((paramString != null) && (paramString.data != null))
     {
       paramBundle = paramString.data.getString("resultType");
-      if (!paramBundle.endsWith("void")) {}
+      if (paramBundle.endsWith("void")) {
+        return null;
+      }
+      return RemoteProxy.a(paramString.data, paramBundle, "result");
     }
-    else
-    {
-      return null;
-    }
-    return RemoteProxy.a(paramString.data, paramBundle, "result");
+    return null;
   }
   
   void a(String paramString, Bundle paramBundle, EIPCResultCallback paramEIPCResultCallback)
   {
-    RemoteProxy.a(this.jdField_a_of_type_JavaLangClass.getName() + "$" + paramString, paramBundle, paramEIPCResultCallback);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangClass.getName());
+    localStringBuilder.append("$");
+    localStringBuilder.append(paramString);
+    RemoteProxy.a(localStringBuilder.toString(), paramBundle, paramEIPCResultCallback);
   }
   
   void a(Method paramMethod, Object[] paramArrayOfObject, Bundle paramBundle)
@@ -60,10 +67,14 @@ public class RemoteProxy$QIPCHandler
     int i = 0;
     while (i < paramMethod.length)
     {
-      String str1 = "__arg+" + i + "__";
-      String str2 = paramMethod[i].getName();
-      localArrayList.add(str2);
-      RemoteProxy.a(paramBundle, str2, str1, paramArrayOfObject[i]);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("__arg+");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("__");
+      localObject = ((StringBuilder)localObject).toString();
+      String str = paramMethod[i].getName();
+      localArrayList.add(str);
+      RemoteProxy.a(paramBundle, str, (String)localObject, paramArrayOfObject[i]);
       i += 1;
     }
     paramBundle.putStringArrayList("__parameterTypes__", localArrayList);
@@ -74,10 +85,14 @@ public class RemoteProxy$QIPCHandler
     paramObject = new Bundle();
     paramObject.setClassLoader(getClass().getClassLoader());
     a(paramMethod, paramArrayOfObject, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteProxy", 2, "invoke getReturnType:" + paramMethod.getReturnType());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("invoke getReturnType:");
+      localStringBuilder.append(paramMethod.getReturnType());
+      QLog.d("RemoteProxy", 2, localStringBuilder.toString());
     }
-    if ((paramMethod.getReturnType().getName().equals("void")) && ((paramArrayOfObject[(paramArrayOfObject.length - 1)] instanceof EIPCResultCallback)))
+    if ((paramMethod.getReturnType().getName().equals("void")) && (paramArrayOfObject != null) && ((paramArrayOfObject[(paramArrayOfObject.length - 1)] instanceof EIPCResultCallback)))
     {
       a(paramMethod.getName(), paramObject, (EIPCResultCallback)paramArrayOfObject[(paramArrayOfObject.length - 1)]);
       return null;
@@ -87,7 +102,7 @@ public class RemoteProxy$QIPCHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.RemoteProxy.QIPCHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package androidx.lifecycle;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-class ClassesInfoCache$MethodReference
+final class ClassesInfoCache$MethodReference
 {
   final int mCallType;
   final Method mMethod;
@@ -17,16 +17,14 @@ class ClassesInfoCache$MethodReference
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (MethodReference)paramObject;
-    } while ((this.mCallType == paramObject.mCallType) && (this.mMethod.getName().equals(paramObject.mMethod.getName())));
-    return false;
+    }
+    if (!(paramObject instanceof MethodReference)) {
+      return false;
+    }
+    paramObject = (MethodReference)paramObject;
+    return (this.mCallType == paramObject.mCallType) && (this.mMethod.getName().equals(paramObject.mMethod.getName()));
   }
   
   public int hashCode()
@@ -38,30 +36,36 @@ class ClassesInfoCache$MethodReference
   {
     try
     {
-      switch (this.mCallType)
+      int i = this.mCallType;
+      if (i != 0)
       {
-      case 0: 
-        this.mMethod.invoke(paramObject, new Object[0]);
+        if (i != 1)
+        {
+          if (i != 2) {
+            return;
+          }
+          this.mMethod.invoke(paramObject, new Object[] { paramLifecycleOwner, paramEvent });
+          return;
+        }
+        this.mMethod.invoke(paramObject, new Object[] { paramLifecycleOwner });
         return;
       }
-    }
-    catch (InvocationTargetException paramLifecycleOwner)
-    {
-      throw new RuntimeException("Failed to call observer method", paramLifecycleOwner.getCause());
-      this.mMethod.invoke(paramObject, new Object[] { paramLifecycleOwner });
+      this.mMethod.invoke(paramObject, new Object[0]);
       return;
     }
     catch (IllegalAccessException paramLifecycleOwner)
     {
       throw new RuntimeException(paramLifecycleOwner);
     }
-    this.mMethod.invoke(paramObject, new Object[] { paramLifecycleOwner, paramEvent });
-    return;
+    catch (InvocationTargetException paramLifecycleOwner)
+    {
+      throw new RuntimeException("Failed to call observer method", paramLifecycleOwner.getCause());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.ClassesInfoCache.MethodReference
  * JD-Core Version:    0.7.0.1
  */

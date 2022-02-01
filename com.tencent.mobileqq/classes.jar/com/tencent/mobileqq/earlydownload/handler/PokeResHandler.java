@@ -39,8 +39,12 @@ public class PokeResHandler
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doOnDownloadSuccess:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("PokeResHandler_0625", 2, ((StringBuilder)localObject).toString());
     }
     if (!new File(paramString).exists())
     {
@@ -49,11 +53,15 @@ public class PokeResHandler
       }
       return;
     }
-    String str = VFSAssistantUtils.getSDKPrivatePath(PokeItemHelper.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess imagePath=" + str);
+    Object localObject = VFSAssistantUtils.getSDKPrivatePath(PokeItemHelper.a());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doOnDownloadSuccess imagePath=");
+      localStringBuilder.append((String)localObject);
+      QLog.d("PokeResHandler_0625", 2, localStringBuilder.toString());
     }
-    ThreadManager.post(new PokeResHandler.1(this, str, paramString), 8, null, true);
+    ThreadManager.post(new PokeResHandler.1(this, (String)localObject, paramString), 8, null, true);
     super.a(paramString);
   }
   
@@ -88,7 +96,7 @@ public class PokeResHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PokeResHandler
  * JD-Core Version:    0.7.0.1
  */

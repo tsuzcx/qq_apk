@@ -4,15 +4,15 @@ public abstract interface FileBrowserModelBase$OnPreviewVideoOnlineListener
 {
   public abstract void a(String paramString1, String paramString2);
   
-  public abstract void au_();
+  public abstract void am_();
   
-  public abstract void av_();
+  public abstract void an_();
   
   public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnPreviewVideoOnlineListener
  * JD-Core Version:    0.7.0.1
  */

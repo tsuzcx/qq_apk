@@ -51,8 +51,9 @@ public class AudioSession
     if (this.mAudioEntity == null) {
       this.mAudioEntity = AudioDataManager.getInstance().getAudioInfo(this.mAudioPlayer);
     }
-    if (this.mAudioEntity != null) {
-      return this.mAudioEntity.getPageObject();
+    AudioEntity localAudioEntity = this.mAudioEntity;
+    if (localAudioEntity != null) {
+      return localAudioEntity.getPageObject();
     }
     return null;
   }
@@ -82,8 +83,9 @@ public class AudioSession
     if (this.mTimePinInterval < 5000L) {
       this.mTimePinInterval = 5000L;
     }
-    if (this.mTimePinInterval > this.mHeartBeatInterval) {
-      this.mHeartBeatInterval = this.mTimePinInterval;
+    long l = this.mTimePinInterval;
+    if (l > this.mHeartBeatInterval) {
+      this.mHeartBeatInterval = l;
     }
     this.mCurrentHeartBeatProcessor = new HeartBeatProcessor(isAudioInForeground(), this.mTimePinInterval);
     this.mCurrentHeartBeatProcessor.setHeartBeatCallback(new AudioSession.2(this));
@@ -241,7 +243,10 @@ public class AudioSession
       stop();
     }
     this.mProcessorState = 0;
-    this.mHeartBeatTaskKey = TimerTaskManager.getInstance().addUIThreadTimerTask(new AudioSession.1(this), this.mHeartBeatInterval, this.mHeartBeatInterval);
+    TimerTaskManager localTimerTaskManager = TimerTaskManager.getInstance();
+    AudioSession.1 local1 = new AudioSession.1(this);
+    long l = this.mHeartBeatInterval;
+    this.mHeartBeatTaskKey = localTimerTaskManager.addUIThreadTimerTask(local1, l, l);
     startHeartBeatProcessor();
     registerListener();
   }
@@ -260,7 +265,7 @@ public class AudioSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.time.audio.AudioSession
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.os.Vibrator;
-import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
@@ -45,48 +44,45 @@ public class MultiAIOStarter
   
   public static Bitmap a(Context paramContext)
   {
-    View localView;
-    int i;
-    int j;
-    if ((paramContext instanceof BaseActivity))
+    boolean bool = paramContext instanceof BaseActivity;
+    Object localObject1 = null;
+    Canvas localCanvas = null;
+    Object localObject2;
+    if (bool)
     {
-      localView = ((BaseActivity)paramContext).getWindow().getDecorView();
-      i = localView.getWidth();
-      j = localView.getHeight();
-    }
-    for (;;)
-    {
+      View localView = ((BaseActivity)paramContext).getWindow().getDecorView();
+      int i = localView.getWidth();
+      int j = localView.getHeight();
       try
       {
-        localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        Canvas localCanvas;
-        QLog.e("MultiAIOStarter", 1, "getDecorViewBitmap: ", localThrowable1);
-      }
-      catch (Throwable localThrowable1)
-      {
+        localObject1 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
         try
         {
-          localBitmap.setDensity(paramContext.getResources().getDisplayMetrics().densityDpi);
-          localCanvas = new Canvas(localBitmap);
+          ((Bitmap)localObject1).setDensity(paramContext.getResources().getDisplayMetrics().densityDpi);
+          localCanvas = new Canvas((Bitmap)localObject1);
           localView.draw(localCanvas);
           localCanvas.setBitmap(null);
-          if (QLog.isColorLevel()) {
-            QLog.d("MultiAIOStarter", 2, "getDecorViewBitmap() called with: context = [" + paramContext + "], bitmap = " + localBitmap);
-          }
-          return localBitmap;
         }
-        catch (Throwable localThrowable2)
-        {
-          break label123;
-        }
-        localThrowable1 = localThrowable1;
-        localBitmap = null;
+        catch (Throwable localThrowable1) {}
+        QLog.e("MultiAIOStarter", 1, "getDecorViewBitmap: ", (Throwable)localObject2);
       }
-      label123:
+      catch (Throwable localThrowable2)
+      {
+        localObject1 = localThrowable1;
+        localObject2 = localThrowable2;
+      }
       GC.a();
-      continue;
-      Bitmap localBitmap = null;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getDecorViewBitmap() called with: context = [");
+      ((StringBuilder)localObject2).append(paramContext);
+      ((StringBuilder)localObject2).append("], bitmap = ");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("MultiAIOStarter", 2, ((StringBuilder)localObject2).toString());
+    }
+    return localObject1;
   }
   
   public static void a(int paramInt)
@@ -110,8 +106,17 @@ public class MultiAIOStarter
   
   public static boolean a(Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOStarter", 2, "MultiAIOStarter start curType = " + paramInt + " from = " + paramString3 + ", hasOpened = " + a);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("MultiAIOStarter start curType = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" from = ");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append(", hasOpened = ");
+      ((StringBuilder)localObject).append(a);
+      QLog.d("MultiAIOStarter", 2, ((StringBuilder)localObject).toString());
     }
     if (!MultiAIOHelper.a())
     {
@@ -146,29 +151,30 @@ public class MultiAIOStarter
     }
     if (MultiAIOHelper.a(paramInt))
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("uin", paramString1);
-      localIntent.putExtra("uintype", paramInt);
-      localIntent.putExtra("uinname", paramString2);
-      localIntent.putExtra("conversation_tab_flag", paramString3);
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.putExtra("OPEN_MULTI_FROM_ACTIVITY", paramContext.getClass().getSimpleName());
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("uin", paramString1);
+      ((Intent)localObject).putExtra("uintype", paramInt);
+      ((Intent)localObject).putExtra("uinname", paramString2);
+      ((Intent)localObject).putExtra("conversation_tab_flag", paramString3);
+      ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
+      ((Intent)localObject).putExtra("OPEN_MULTI_FROM_ACTIVITY", paramContext.getClass().getSimpleName());
       MultiAIOHelper.a();
-      QQAppInterface localQQAppInterface = ((BaseActivity)paramContext).app;
+      BaseActivity localBaseActivity = (BaseActivity)paramContext;
+      QQAppInterface localQQAppInterface = localBaseActivity.app;
       MultiAioContext localMultiAioContext = MultiAioContext.a(localQQAppInterface);
       Bitmap localBitmap = a(paramContext);
       int i = a(paramContext);
       a = true;
       localMultiAioContext.a(localBitmap);
       localMultiAioContext.a(i);
-      a((BaseActivity)paramContext, localMultiAioContext);
-      localMultiAioContext.a((QQAppInterface)localQQAppInterface, (FragmentActivity)paramContext, paramString3, paramInt, paramString1, paramString2);
+      a(localBaseActivity, localMultiAioContext);
+      localMultiAioContext.a((QQAppInterface)localQQAppInterface, localBaseActivity, paramString3, paramInt, paramString1, paramString2);
       localMultiAioContext.a(new MultiAIOStarter.1(paramContext));
-      localIntent.putExtra("OPEN_MULTI_AIO_CONTEXT", localMultiAioContext.a());
+      ((Intent)localObject).putExtra("OPEN_MULTI_AIO_CONTEXT", localMultiAioContext.a());
       if ("open_from_aio".equals(paramString3)) {
-        localIntent.putExtra("OPEN_MULTI_AIO_LIST_VIEW_SPECIFY_BOTTOM", a(paramContext));
+        ((Intent)localObject).putExtra("OPEN_MULTI_AIO_LIST_VIEW_SPECIFY_BOTTOM", a(paramContext));
       }
-      PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicTransFragmentActivity.class, MultiAIOFragment.class);
+      PublicFragmentActivity.Launcher.a(paramContext, (Intent)localObject, PublicTransFragmentActivity.class, MultiAIOFragment.class);
       return true;
     }
     return false;
@@ -177,51 +183,44 @@ public class MultiAIOStarter
   private static int[] a(Context paramContext)
   {
     int[] arrayOfInt = new int[2];
-    int j;
-    int i;
-    View localView;
     if ((paramContext instanceof BaseActivity))
     {
-      paramContext = (ListView)((BaseActivity)paramContext).findViewById(2131370460);
+      paramContext = (ListView)((BaseActivity)paramContext).findViewById(2131370119);
       if (paramContext != null)
       {
-        j = paramContext.getBottom() - paramContext.getPaddingBottom();
-        i = paramContext.getChildCount();
-        if (i < 0) {
-          break label145;
+        int j = paramContext.getBottom() - paramContext.getPaddingBottom();
+        int i = paramContext.getChildCount();
+        View localView;
+        while (i >= 0)
+        {
+          localView = paramContext.getChildAt(i);
+          if ((localView != null) && (j > localView.getTop()) && (j <= localView.getBottom())) {
+            break label90;
+          }
+          i -= 1;
         }
-        localView = paramContext.getChildAt(i);
-        if ((localView == null) || (j <= localView.getTop()) || (j > localView.getBottom())) {
-          break label138;
+        i = -1;
+        label90:
+        j = i;
+        if (i == -1) {
+          j = paramContext.getChildCount() - 1;
+        }
+        if (j != -1)
+        {
+          arrayOfInt[0] = (paramContext.getFirstVisiblePosition() + j);
+          localView = paramContext.getChildAt(j);
+          if (localView != null) {
+            arrayOfInt[1] = (paramContext.getBottom() - paramContext.getPaddingBottom() - localView.getBottom());
+          }
         }
       }
     }
-    for (;;)
-    {
-      j = i;
-      if (i == -1) {
-        j = paramContext.getChildCount() - 1;
-      }
-      if (j != -1)
-      {
-        arrayOfInt[0] = (paramContext.getFirstVisiblePosition() + j);
-        localView = paramContext.getChildAt(j);
-        if (localView != null) {
-          arrayOfInt[1] = (paramContext.getBottom() - paramContext.getPaddingBottom() - localView.getBottom());
-        }
-      }
-      return arrayOfInt;
-      label138:
-      i -= 1;
-      break;
-      label145:
-      i = -1;
-    }
+    return arrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOStarter
  * JD-Core Version:    0.7.0.1
  */

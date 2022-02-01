@@ -20,9 +20,12 @@ class LivePusherJsPlugin$1
   
   public void run()
   {
-    Log.i("LivePusherJsPlugin", "insertLivePusher: " + this.val$jsonObject);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("insertLivePusher: ");
+    ((StringBuilder)localObject1).append(this.val$jsonObject);
+    Log.i("LivePusherJsPlugin", ((StringBuilder)localObject1).toString());
     Object localObject2 = CoverViewAction.obtain(LivePusherJsPlugin.access$000(this.this$0)).get(this.val$livePusherId);
-    Object localObject1 = localObject2;
+    localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new CoverPusherView(LivePusherJsPlugin.access$100(this.this$0));
@@ -63,7 +66,7 @@ class LivePusherJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.LivePusherJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

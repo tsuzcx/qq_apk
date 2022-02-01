@@ -1,13 +1,14 @@
-package com.tencent.biz.pubaccount.AccountDetail.adapter;
+package com.tencent.biz.pubaccount.accountdetail.adapter;
 
 import android.util.Pair;
-import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfo;
-import com.tencent.biz.pubaccount.AccountDetail.bean.MsgAttr;
-import com.tencent.biz.pubaccount.AccountDetail.bean.PictureAttr;
-import com.tencent.biz.pubaccount.AccountDetail.bean.VideoAttr;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
+import com.tencent.biz.pubaccount.accountdetail.bean.DynamicInfo;
+import com.tencent.biz.pubaccount.accountdetail.bean.MsgAttr;
+import com.tencent.biz.pubaccount.accountdetail.bean.PictureAttr;
+import com.tencent.biz.pubaccount.accountdetail.bean.VideoAttr;
+import com.tencent.mobileqq.kandian.base.image.ImageRequest;
+import com.tencent.mobileqq.kandian.base.image.api.IImageManager;
+import com.tencent.mobileqq.kandian.base.utils.api.IReadInJoyDisplayUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.Iterator;
@@ -21,97 +22,88 @@ class AccountDetailBaseAdapter$14
   
   public void run()
   {
-    if (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long) {}
-    label25:
-    LinkedList localLinkedList;
-    label38:
-    label80:
-    label232:
-    do
+    if (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long) {
+      return;
+    }
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    int i;
+    if (localObject1 == null) {
+      i = 0;
+    } else {
+      i = ((List)localObject1).size();
+    }
+    localObject1 = new LinkedList();
+    int j = this.jdField_a_of_type_Int;
+    while (j < this.jdField_a_of_type_Int + this.jdField_b_of_type_Int)
     {
-      do
+      if ((j < i) && (j >= 0))
       {
-        return;
-        int i;
-        int j;
-        if (this.jdField_a_of_type_JavaUtilList == null)
-        {
-          i = 0;
-          localLinkedList = new LinkedList();
-          j = this.jdField_a_of_type_Int;
-          if (j >= this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) {
-            continue;
-          }
-          if ((j < i) && (j >= 0)) {
-            break label80;
-          }
+        if (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long) {
+          return;
         }
-        for (;;)
+        try
         {
-          j += 1;
-          break label38;
-          i = this.jdField_a_of_type_JavaUtilList.size();
-          break label25;
-          if (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long) {
-            break;
-          }
-          try
-          {
-            DynamicInfo localDynamicInfo = (DynamicInfo)this.jdField_a_of_type_JavaUtilList.get(j);
-            if (localDynamicInfo == null) {
-              continue;
+          DynamicInfo localDynamicInfo = (DynamicInfo)this.jdField_a_of_type_JavaUtilList.get(j);
+          if (localDynamicInfo != null) {
+            if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanMsgAttr.jdField_a_of_type_Int == 2)
+            {
+              if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr != null) {
+                if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.e == 1) {
+                  ((List)localObject1).add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.d), ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getReadinjoyFeedsBigPictureSize()));
+                } else {
+                  ((List)localObject1).add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_a_of_type_JavaLangString), ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getReadinjoyFeedsSmallPictureSize()));
+                }
+              }
             }
-            if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanMsgAttr.jdField_a_of_type_Int != 2) {
-              break label232;
-            }
-            if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr == null) {
-              continue;
-            }
-            if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr.e != 1) {
-              break label201;
-            }
-            localLinkedList.add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr.d), ReadInJoyDisplayUtils.e()));
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-          if (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long)
-          {
-            return;
-            localLinkedList.add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr.jdField_a_of_type_JavaLangString), ReadInJoyDisplayUtils.a()));
-            continue;
-            if (localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr != null) {
-              if (localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr.jdField_a_of_type_Int == 1) {
-                localLinkedList.add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr.b), ReadInJoyDisplayUtils.e()));
+            else if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanPictureAttr != null) {
+              if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanPictureAttr.jdField_a_of_type_Int == 1) {
+                ((List)localObject1).add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanPictureAttr.b), ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getReadinjoyFeedsBigPictureSize()));
               } else {
-                localLinkedList.add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr.jdField_a_of_type_JavaLangString), ReadInJoyDisplayUtils.a()));
+                ((List)localObject1).add(AccountDetailBaseAdapter.PreloadImgInfo.a(new URL(localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanPictureAttr.jdField_a_of_type_JavaLangString), ((IReadInJoyDisplayUtils)QRoute.api(IReadInJoyDisplayUtils.class)).getReadinjoyFeedsSmallPictureSize()));
               }
             }
           }
         }
-      } while (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long);
-      Iterator localIterator = localLinkedList.iterator();
-      while (localIterator.hasNext())
-      {
-        AccountDetailBaseAdapter.PreloadImgInfo localPreloadImgInfo = (AccountDetailBaseAdapter.PreloadImgInfo)localIterator.next();
-        if ((localPreloadImgInfo != null) && (localPreloadImgInfo.jdField_a_of_type_JavaNetURL != null))
+        catch (Exception localException)
         {
-          ImageRequest localImageRequest = new ImageRequest();
-          localImageRequest.jdField_a_of_type_JavaNetURL = localPreloadImgInfo.jdField_a_of_type_JavaNetURL;
-          localImageRequest.jdField_a_of_type_Int = ((Integer)localPreloadImgInfo.jdField_a_of_type_AndroidUtilPair.first).intValue();
-          localImageRequest.jdField_b_of_type_Int = ((Integer)localPreloadImgInfo.jdField_a_of_type_AndroidUtilPair.second).intValue();
-          ImageManager.a().a(localImageRequest, null);
+          localException.printStackTrace();
+          if (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long) {
+            return;
+          }
         }
       }
-    } while (!QLog.isColorLevel());
-    label201:
-    QLog.d("AccountDetailBaseAdapter", 2, "preloadImg size:" + localLinkedList.size() + " cost:" + (System.currentTimeMillis() - this.jdField_b_of_type_Long));
+      j += 1;
+    }
+    if (AccountDetailBaseAdapter.a(this.this$0) != this.jdField_a_of_type_Long) {
+      return;
+    }
+    Object localObject2 = ((List)localObject1).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      AccountDetailBaseAdapter.PreloadImgInfo localPreloadImgInfo = (AccountDetailBaseAdapter.PreloadImgInfo)((Iterator)localObject2).next();
+      if ((localPreloadImgInfo != null) && (localPreloadImgInfo.jdField_a_of_type_JavaNetURL != null))
+      {
+        ImageRequest localImageRequest = new ImageRequest();
+        localImageRequest.jdField_a_of_type_JavaNetURL = localPreloadImgInfo.jdField_a_of_type_JavaNetURL;
+        localImageRequest.jdField_a_of_type_Int = ((Integer)localPreloadImgInfo.jdField_a_of_type_AndroidUtilPair.first).intValue();
+        localImageRequest.jdField_b_of_type_Int = ((Integer)localPreloadImgInfo.jdField_a_of_type_AndroidUtilPair.second).intValue();
+        ((IImageManager)QRoute.api(IImageManager.class)).loadImage(localImageRequest, null);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("preloadImg size:");
+      ((StringBuilder)localObject2).append(((List)localObject1).size());
+      ((StringBuilder)localObject2).append(" cost:");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis() - this.jdField_b_of_type_Long);
+      QLog.d("AccountDetailBaseAdapter", 2, ((StringBuilder)localObject2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.14
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.14
  * JD-Core Version:    0.7.0.1
  */

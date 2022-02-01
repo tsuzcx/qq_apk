@@ -30,22 +30,17 @@ public class ApolloDiyTextFragment$AndroidBug5497Workaround
   private void a()
   {
     int i = a();
-    int j;
-    int k;
     if (i != this.jdField_a_of_type_Int)
     {
-      j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
-      k = j - i;
-      if (k <= j / 4) {
-        break label58;
+      int j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      int k = j - i;
+      if (k > j / 4) {
+        this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k);
+      } else {
+        this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j;
       }
-    }
-    label58:
-    for (this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k);; this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j)
-    {
       this.jdField_a_of_type_AndroidViewView.requestLayout();
       this.jdField_a_of_type_Int = i;
-      return;
     }
   }
   
@@ -56,7 +51,7 @@ public class ApolloDiyTextFragment$AndroidBug5497Workaround
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloDiyTextFragment.AndroidBug5497Workaround
  * JD-Core Version:    0.7.0.1
  */

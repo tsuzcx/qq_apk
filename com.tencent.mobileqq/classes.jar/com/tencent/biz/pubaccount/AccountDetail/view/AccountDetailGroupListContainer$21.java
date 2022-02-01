@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,38 +12,35 @@ class AccountDetailGroupListContainer$21
 {
   AccountDetailGroupListContainer$21(AccountDetailGroupListContainer paramAccountDetailGroupListContainer) {}
   
-  public void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {}
-    label134:
-    for (;;)
-    {
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {
       return;
-      int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
-      int i = 0;
-      for (;;)
+    }
+    int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+      if (((((View)localObject).getTag() instanceof String)) && ((localObject instanceof ImageView)) && (((String)((View)localObject).getTag()).equals(paramString)))
       {
-        if (i >= j) {
-          break label134;
+        ((ImageView)localObject).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceDrawable(paramString));
+        if (!QLog.isColorLevel()) {
+          break;
         }
-        View localView = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-        if (((localView.getTag() instanceof String)) && ((localView instanceof ImageView)) && (((String)localView.getTag()).equals(paramString)))
-        {
-          ((ImageView)localView).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceDrawable(paramString));
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onUpdateTroopHead:" + paramString);
-          return;
-        }
-        i += 1;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onUpdateTroopHead:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, ((StringBuilder)localObject).toString());
+        return;
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer.21
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.21
  * JD-Core Version:    0.7.0.1
  */

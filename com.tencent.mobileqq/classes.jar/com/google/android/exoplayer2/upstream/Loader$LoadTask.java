@@ -68,36 +68,33 @@ final class Loader$LoadTask<T extends Loader.Loadable>
         sendEmptyMessage(1);
       }
     }
-    for (;;)
+    else
     {
-      if (paramBoolean)
-      {
-        finish();
-        long l = SystemClock.elapsedRealtime();
-        this.callback.onLoadCanceled(this.loadable, l, l - this.startTimeMs, true);
-      }
-      return;
       this.loadable.cancelLoad();
       if (this.executorThread != null) {
         this.executorThread.interrupt();
       }
     }
+    if (paramBoolean)
+    {
+      finish();
+      long l = SystemClock.elapsedRealtime();
+      this.callback.onLoadCanceled(this.loadable, l, l - this.startTimeMs, true);
+    }
   }
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.released) {}
-    do
-    {
+    if (this.released) {
       return;
-      if (paramMessage.what == 0)
-      {
-        execute();
-        return;
-      }
-      if (paramMessage.what == 4) {
-        throw ((Error)paramMessage.obj);
-      }
+    }
+    if (paramMessage.what == 0)
+    {
+      execute();
+      return;
+    }
+    if (paramMessage.what != 4)
+    {
       finish();
       long l1 = SystemClock.elapsedRealtime();
       long l2 = l1 - this.startTimeMs;
@@ -106,14 +103,32 @@ final class Loader$LoadTask<T extends Loader.Loadable>
         this.callback.onLoadCanceled(this.loadable, l1, l2, false);
         return;
       }
-      switch (paramMessage.what)
+      int j = paramMessage.what;
+      int i = 1;
+      if (j != 1)
       {
-      default: 
-        return;
-      case 1: 
-        this.callback.onLoadCanceled(this.loadable, l1, l2, false);
-        return;
-      case 2: 
+        if (j != 2)
+        {
+          if (j != 3) {
+            return;
+          }
+          this.currentError = ((IOException)paramMessage.obj);
+          j = this.callback.onLoadError(this.loadable, l1, l2, this.currentError);
+          if (j == 3)
+          {
+            Loader.access$102(this.this$0, this.currentError);
+            return;
+          }
+          if (j == 2) {
+            break label248;
+          }
+          if (j != 1) {
+            i = 1 + this.errorCount;
+          }
+          this.errorCount = i;
+          start(getRetryDelayMillis());
+          return;
+        }
         try
         {
           this.callback.onLoadCompleted(this.loadable, l1, l2);
@@ -126,27 +141,22 @@ final class Loader$LoadTask<T extends Loader.Loadable>
           return;
         }
       }
-      this.currentError = ((IOException)paramMessage.obj);
-      i = this.callback.onLoadError(this.loadable, l1, l2, this.currentError);
-      if (i == 3)
-      {
-        Loader.access$102(this.this$0, this.currentError);
-        return;
-      }
-    } while (i == 2);
-    if (i == 1) {}
-    for (int i = 1;; i = this.errorCount + 1)
-    {
-      this.errorCount = i;
-      start(getRetryDelayMillis());
+      this.callback.onLoadCanceled(this.loadable, l1, l2, false);
+      label248:
       return;
     }
+    throw ((Error)paramMessage.obj);
   }
   
   public void maybeThrowError(int paramInt)
   {
-    if ((this.currentError != null) && (this.errorCount > paramInt)) {
-      throw this.currentError;
+    IOException localIOException = this.currentError;
+    if (localIOException != null)
+    {
+      if (this.errorCount <= paramInt) {
+        return;
+      }
+      throw localIOException;
     }
   }
   
@@ -155,50 +165,32 @@ final class Loader$LoadTask<T extends Loader.Loadable>
     try
     {
       this.executorThread = Thread.currentThread();
-      if (!this.loadable.isLoadCanceled()) {
-        TraceUtil.beginSection("load:" + this.loadable.getClass().getSimpleName());
+      if (!this.loadable.isLoadCanceled())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("load:");
+        localStringBuilder.append(this.loadable.getClass().getSimpleName());
+        TraceUtil.beginSection(localStringBuilder.toString());
       }
       try
       {
         this.loadable.load();
         TraceUtil.endSection();
-        if (!this.released)
-        {
-          sendEmptyMessage(2);
-          return;
-        }
       }
       finally
       {
         TraceUtil.endSection();
       }
+      sendEmptyMessage(2);
       return;
     }
-    catch (IOException localIOException)
+    catch (Error localError)
     {
-      if (!this.released)
-      {
-        obtainMessage(3, localIOException).sendToTarget();
-        return;
+      Log.e("LoadTask", "Unexpected error loading stream", localError);
+      if (!this.released) {
+        obtainMessage(4, localError).sendToTarget();
       }
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      Assertions.checkState(this.loadable.isLoadCanceled());
-      if (!this.released)
-      {
-        sendEmptyMessage(2);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      Log.e("LoadTask", "Unexpected exception loading stream", localException);
-      if (!this.released)
-      {
-        obtainMessage(3, new Loader.UnexpectedLoaderException(localException)).sendToTarget();
-        return;
-      }
+      throw localError;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -209,26 +201,47 @@ final class Loader$LoadTask<T extends Loader.Loadable>
         return;
       }
     }
-    catch (Error localError)
+    catch (Exception localException)
     {
-      Log.e("LoadTask", "Unexpected error loading stream", localError);
-      if (!this.released) {
-        obtainMessage(4, localError).sendToTarget();
+      Log.e("LoadTask", "Unexpected exception loading stream", localException);
+      if (!this.released)
+      {
+        obtainMessage(3, new Loader.UnexpectedLoaderException(localException)).sendToTarget();
+        return;
+        Assertions.checkState(this.loadable.isLoadCanceled());
+        if (!this.released)
+        {
+          sendEmptyMessage(2);
+          return;
+        }
       }
-      throw localError;
+    }
+    catch (IOException localIOException)
+    {
+      if (!this.released) {
+        obtainMessage(3, localIOException).sendToTarget();
+      }
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      label187:
+      break label187;
     }
   }
   
   public void start(long paramLong)
   {
-    if (Loader.access$000(this.this$0) == null) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (Loader.access$000(this.this$0) == null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Assertions.checkState(bool);
+    Loader.access$002(this.this$0, this);
+    if (paramLong > 0L)
     {
-      Assertions.checkState(bool);
-      Loader.access$002(this.this$0, this);
-      if (paramLong <= 0L) {
-        break;
-      }
       sendEmptyMessageDelayed(0, paramLong);
       return;
     }
@@ -237,7 +250,7 @@ final class Loader$LoadTask<T extends Loader.Loadable>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.upstream.Loader.LoadTask
  * JD-Core Version:    0.7.0.1
  */

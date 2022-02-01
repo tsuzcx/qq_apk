@@ -9,6 +9,7 @@ import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -21,7 +22,6 @@ import com.tencent.av.AVLog;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.EffectFaceManager;
 import com.tencent.av.chatroom.ChatRoomUtil;
 import com.tencent.av.tips.TipsUtil;
 import com.tencent.av.ui.AVActivity;
@@ -74,16 +74,16 @@ public class VideoChatRoomContainer
   
   private void b(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2131559815, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131370057));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365312));
+    View localView = LayoutInflater.from(paramContext).inflate(2131559692, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369736));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365187));
     this.jdField_a_of_type_ComTencentAvUiChatroomChatRoomAdapter = new ChatRoomAdapter(paramContext);
     this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(16908298));
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentAvUiChatroomChatRoomAdapter);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131369144));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131368877));
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(40) });
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131366293));
-    this.c = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131366300));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131366181));
+    this.c = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131366188));
     setFitsSystemWindows(true);
   }
   
@@ -93,7 +93,7 @@ public class VideoChatRoomContainer
     paramContext = new LinearLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar = new SystemAndEmojiEmoticonPanelWithActionBar(getContext(), this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setBackgroundColor(-1);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setId(2131373790);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setId(2131373362);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setVisibility(0);
     this.c.addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar, paramContext);
     this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.a(this.c);
@@ -101,110 +101,92 @@ public class VideoChatRoomContainer
   
   public int a()
   {
-    int j = 0;
-    int i;
-    if (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.b()) {
-      i = this.c.getHeight();
+    boolean bool = this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.b();
+    int i = 0;
+    if (bool) {
+      return this.c.getHeight();
     }
-    do
+    if (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.c())
     {
-      do
-      {
-        return i;
-        i = j;
-      } while (!this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.c());
-      i = j;
-    } while (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.jdField_a_of_type_Boolean);
-    return ChatRoomUtil.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.jdField_a_of_type_Boolean) {
+        return 0;
+      }
+      i = ChatRoomUtil.jdField_a_of_type_Int;
+    }
+    return i;
   }
   
   public void a(int paramInt)
   {
+    boolean bool1 = this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.a();
+    boolean bool3 = this.jdField_a_of_type_Boolean;
     boolean bool2 = true;
     int n = 0;
-    boolean bool1 = this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.a();
-    int i;
-    int j;
-    label42:
-    AVActivity localAVActivity;
-    int k;
-    if (this.jdField_a_of_type_Boolean != bool1)
-    {
+    if (bool3 != bool1) {
       i = 1;
-      this.jdField_a_of_type_Boolean = bool1;
-      if (this.jdField_a_of_type_Int == paramInt) {
-        break label227;
-      }
+    } else {
+      i = 0;
+    }
+    this.jdField_a_of_type_Boolean = bool1;
+    int j;
+    if (this.jdField_a_of_type_Int != paramInt) {
       j = 1;
-      this.jdField_a_of_type_Int = paramInt;
-      localAVActivity = null;
-      Context localContext = getContext();
-      if (!(localContext instanceof AVActivity)) {
-        break label254;
-      }
+    } else {
+      j = 0;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    AVActivity localAVActivity = null;
+    Context localContext = getContext();
+    int k;
+    int m;
+    if ((localContext instanceof AVActivity))
+    {
       localAVActivity = (AVActivity)localContext;
       k = localAVActivity.c();
-      if (this.jdField_b_of_type_Int == k) {
-        break label232;
+      if (this.jdField_b_of_type_Int != k) {
+        paramInt = 1;
+      } else {
+        paramInt = 0;
       }
-      paramInt = 1;
-      label89:
       this.jdField_b_of_type_Int = k;
+      m = paramInt;
     }
-    for (int m = paramInt;; m = 0)
+    else
+    {
+      k = 1;
+      m = 0;
+    }
+    bool1 = bool2;
+    if (i == 0)
     {
       bool1 = bool2;
-      if (i == 0)
-      {
-        bool1 = bool2;
-        if (j == 0)
-        {
-          if (m == 0) {
-            break label237;
-          }
+      if (j == 0) {
+        if (m != 0) {
           bool1 = bool2;
+        } else {
+          bool1 = false;
         }
       }
-      label123:
-      paramInt = this.jdField_a_of_type_Int;
-      i = this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.a();
-      if ((i != 0) && (i != 7))
-      {
-        paramInt = n;
-        if (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.jdField_a_of_type_Boolean)
-        {
-          if (i != 4) {
-            break label243;
-          }
+    }
+    paramInt = this.jdField_a_of_type_Int;
+    int i = this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.a();
+    if ((i != 0) && (i != 7))
+    {
+      paramInt = n;
+      if (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.jdField_a_of_type_Boolean) {
+        if (i == 4) {
           paramInt = n;
+        } else {
+          paramInt = this.jdField_a_of_type_Int;
         }
       }
-      for (;;)
-      {
-        a(paramInt, bool1);
-        if ((localAVActivity != null) && (m != 0)) {
-          a(localAVActivity.jdField_a_of_type_ComTencentAvUiVideoLayerUI, k);
-        }
-        if ((bool1) && (localAVActivity != null) && (localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI != null)) {
-          localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.R();
-        }
-        return;
-        i = 0;
-        break;
-        label227:
-        j = 0;
-        break label42;
-        label232:
-        paramInt = 0;
-        break label89;
-        label237:
-        bool1 = false;
-        break label123;
-        label243:
-        paramInt = this.jdField_a_of_type_Int;
-      }
-      label254:
-      k = 1;
+    }
+    a(paramInt, bool1);
+    if ((localAVActivity != null) && (m != 0)) {
+      a(localAVActivity.jdField_a_of_type_ComTencentAvUiVideoLayerUI, k);
+    }
+    if ((bool1) && (localAVActivity != null) && (localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI != null)) {
+      localAVActivity.jdField_a_of_type_ComTencentAvUiVideoControlUI.R();
     }
   }
   
@@ -220,34 +202,49 @@ public class VideoChatRoomContainer
     }
     switch (paramInt)
     {
-    }
-    for (;;)
-    {
-      post(new VideoChatRoomContainer.1(this, paramInt, paramLong));
-      return;
+    default: 
+      break;
+    case 1: 
+    case 2: 
+    case 4: 
       a(0, false);
-      continue;
+      break;
+    case 0: 
+    case 7: 
       a(this.jdField_a_of_type_Int, false);
     }
+    post(new VideoChatRoomContainer.1(this, paramInt, paramLong));
   }
   
   protected void a(int paramInt, Object paramObject)
   {
-    AVLog.printColorLog("VideoChatRoomContainer", "notifyEvent :" + paramInt + "|" + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("notifyEvent :");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramObject);
+    AVLog.printColorLog("VideoChatRoomContainer", localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(paramInt), paramObject });
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    if (localMarginLayoutParams.bottomMargin != paramInt) {
-      localMarginLayoutParams.bottomMargin = paramInt;
+    Object localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    if (((ViewGroup.MarginLayoutParams)localObject).bottomMargin != paramInt) {
+      ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = paramInt;
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localMarginLayoutParams);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ChatRoomUtil", 4, "updateContextViewLayoutBottomMargin, bottomMargin[" + paramInt + "], forceRequestLayout[" + paramBoolean + "]");
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateContextViewLayoutBottomMargin, bottomMargin[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], forceRequestLayout[");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("ChatRoomUtil", 4, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -273,86 +270,61 @@ public class VideoChatRoomContainer
   public void a(VideoLayerUI paramVideoLayerUI, int paramInt)
   {
     int k = 1;
-    int j = 0;
-    int i;
-    label65:
-    label121:
-    int m;
-    if (paramInt == 1)
+    int m = 0;
+    if ((paramInt == 1) && (!b()))
     {
-      if (b())
+      if ((paramVideoLayerUI != null) && (paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length > 1) && (paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1] != null))
       {
-        paramInt = 0;
+        if (paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].a() == 0) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        paramInt = paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].b();
+      }
+      else
+      {
         i = 0;
-        paramVideoLayerUI = (ViewGroup.MarginLayoutParams)this.jdField_b_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-        if (paramVideoLayerUI.leftMargin != i)
-        {
-          paramVideoLayerUI.leftMargin = i;
-          j = 1;
-        }
-        if (paramVideoLayerUI.rightMargin == paramInt) {
-          break label243;
-        }
-        paramVideoLayerUI.rightMargin = paramInt;
-        paramInt = k;
-        if ((paramInt != 0) && (getVisibility() == 0)) {
-          this.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramVideoLayerUI);
-        }
-        return;
+        paramInt = 0;
       }
-      if ((paramVideoLayerUI == null) || (paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length <= 1) || (paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1] == null)) {
-        break label249;
-      }
-      if (paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].a() == 0)
+      if (i != 0)
       {
-        paramInt = 1;
-        m = paramVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[1].b();
-        i = paramInt;
+        i = paramVideoLayerUI.h();
+        if ((i != 1) && (i != 2)) {
+          if (i != 3)
+          {
+            if (i == 4)
+            {
+              i = 0;
+              j = paramInt;
+              break label129;
+            }
+          }
+          else {
+            break label124;
+          }
+        }
       }
     }
-    for (paramInt = m;; paramInt = 0)
+    paramInt = 0;
+    label124:
+    int j = 0;
+    int i = paramInt;
+    label129:
+    paramVideoLayerUI = (ViewGroup.MarginLayoutParams)this.jdField_b_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    paramInt = m;
+    if (paramVideoLayerUI.leftMargin != j)
     {
-      if (i != 0) {}
-      switch (paramVideoLayerUI.h())
-      {
-      default: 
-        paramInt = 0;
-        i = 0;
-      }
-      for (;;)
-      {
-        break;
-        paramInt = 0;
-        break label121;
-        paramInt = 0;
-        i = 0;
-        continue;
-        i = paramInt;
-        paramInt = 0;
-        continue;
-        i = 0;
-      }
-      if (paramInt == 3)
-      {
-        paramInt = 0;
-        i = 0;
-        break;
-      }
-      if (paramInt == 4)
-      {
-        paramInt = 0;
-        i = 0;
-        break;
-      }
-      if (paramInt == 2) {}
-      paramInt = 0;
-      i = 0;
-      break;
-      label243:
-      paramInt = j;
-      break label65;
-      label249:
-      i = 0;
+      paramVideoLayerUI.leftMargin = j;
+      paramInt = 1;
+    }
+    if (paramVideoLayerUI.rightMargin != i)
+    {
+      paramVideoLayerUI.rightMargin = i;
+      paramInt = k;
+    }
+    if ((paramInt != 0) && (getVisibility() == 0)) {
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramVideoLayerUI);
     }
   }
   
@@ -404,57 +376,69 @@ public class VideoChatRoomContainer
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)) && (((EffectFaceManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)).a() != null);
+    return false;
   }
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector != null) && (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.c());
+    EmotionInputDetector localEmotionInputDetector = this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector;
+    return (localEmotionInputDetector != null) && (localEmotionInputDetector.c());
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (((AVActivity)getContext()).findViewById(2131373805) != null) {}
-    for (int i = 1; i != 0; i = 0)
+    View localView = ((AVActivity)getContext()).findViewById(2131373377);
+    boolean bool1 = false;
+    int i;
+    if (localView != null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
       this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.a();
       if (QLog.isColorLevel()) {
         QLog.w("ChatRoomUtil", 2, "doodle hase show, so not accept dispatchEvent");
       }
-      return false;
     }
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().x)
+    else if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().w)
     {
       this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.a();
       a(119, Integer.valueOf(2));
-      return false;
     }
-    if (VideoController.a().a().B)
+    else
     {
-      TipsUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695738);
-      return false;
+      if (!VideoController.a().a().az) {
+        break label123;
+      }
+      TipsUtil.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695752);
     }
+    return false;
+    label123:
     boolean bool2 = super.dispatchTouchEvent(paramMotionEvent);
     if ((!bool2) && (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.c()))
     {
       paramMotionEvent = (InputMethodManager)getContext().getSystemService("input_method");
-      if (paramMotionEvent == null) {
-        break label234;
+      if (paramMotionEvent != null) {
+        bool1 = paramMotionEvent.isActive();
       }
-    }
-    label234:
-    for (boolean bool1 = paramMotionEvent.isActive();; bool1 = false)
-    {
       this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.c();
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatRoomUtil", 2, "dispatchTouchEvent, 拦截了touch消息, isSoftInputActive[" + bool1 + "]");
+      if (QLog.isColorLevel())
+      {
+        paramMotionEvent = new StringBuilder();
+        paramMotionEvent.append("dispatchTouchEvent, 拦截了touch消息, isSoftInputActive[");
+        paramMotionEvent.append(bool1);
+        paramMotionEvent.append("]");
+        QLog.w("ChatRoomUtil", 2, paramMotionEvent.toString());
+        return bool2;
       }
-      return bool2;
-      if ((!bool2) && (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.b())) {
-        this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.b();
-      }
-      return bool2;
     }
+    else if ((!bool2) && (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.b()))
+    {
+      this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.b();
+    }
+    return bool2;
   }
   
   public void onDetachedFromWindow()
@@ -462,7 +446,7 @@ public class VideoChatRoomContainer
     super.onDetachedFromWindow();
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
@@ -470,21 +454,24 @@ public class VideoChatRoomContainer
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if ((getVisibility() == 8) && (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector != null))
+    if (getVisibility() == 8)
     {
-      if (this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.b()) {
-        this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.b();
+      EmotionInputDetector localEmotionInputDetector = this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector;
+      if (localEmotionInputDetector != null)
+      {
+        if (localEmotionInputDetector.b())
+        {
+          this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.b();
+          return;
+        }
+        this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.c();
       }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvUiChatroomEmotionInputDetector.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.VideoChatRoomContainer
  * JD-Core Version:    0.7.0.1
  */

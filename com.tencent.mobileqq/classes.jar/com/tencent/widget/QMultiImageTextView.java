@@ -58,7 +58,11 @@ public class QMultiImageTextView
   
   public void append(SpanAdapter paramSpanAdapter)
   {
-    paramSpanAdapter.apendString = ("[" + this.mAppendedIcon.size() + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.mAppendedIcon.size());
+    localStringBuilder.append("]");
+    paramSpanAdapter.apendString = localStringBuilder.toString();
     paramSpanAdapter.start = this.mAppendSpanbleString.length();
     paramSpanAdapter.end = (paramSpanAdapter.start + paramSpanAdapter.apendString.length());
     this.mAppendSpanbleString.append(paramSpanAdapter.apendString);
@@ -84,7 +88,11 @@ public class QMultiImageTextView
     localFontStyle.fontColor = paramInt1;
     localFontStyle.fontSize = paramInt2;
     localFontStyle.fontBackgroundColor = paramInt3;
-    localFontStyle.apendString = ("[" + this.mAppendedIcon.size() + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.mAppendedIcon.size());
+    localStringBuilder.append("]");
+    localFontStyle.apendString = localStringBuilder.toString();
     localFontStyle.start = this.mAppendSpanbleString.length();
     localFontStyle.end = (localFontStyle.start + paramCharSequence.length());
     this.mAppendSpanbleString.append(paramCharSequence);
@@ -134,7 +142,11 @@ public class QMultiImageTextView
     QMultiImageTextView.LabelStyle localLabelStyle = new QMultiImageTextView.LabelStyle(getResources());
     localLabelStyle.labelColor = paramInt1;
     localLabelStyle.labelIcon = paramInt2;
-    localLabelStyle.apendString = ("[" + this.mAppendedIcon.size() + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.mAppendedIcon.size());
+    localStringBuilder.append("]");
+    localLabelStyle.apendString = localStringBuilder.toString();
     localLabelStyle.start = this.mAppendSpanbleString.length();
     localLabelStyle.end = (localLabelStyle.start + paramCharSequence.length());
     this.mAppendSpanbleString.append(paramCharSequence);
@@ -144,7 +156,7 @@ public class QMultiImageTextView
   
   public void appendMargin(float paramFloat)
   {
-    appendMargin((int)(getResources().getDisplayMetrics().density * paramFloat + 0.5F));
+    appendMargin((int)(paramFloat * getResources().getDisplayMetrics().density + 0.5F));
   }
   
   public void appendMargin(int paramInt)
@@ -158,22 +170,22 @@ public class QMultiImageTextView
   {
     if (!this.mIsAppend)
     {
-      if (this.mAppendedIcon != null) {
-        this.mAppendedIcon.clear();
+      ArrayList localArrayList = this.mAppendedIcon;
+      if (localArrayList != null) {
+        localArrayList.clear();
       }
       this.mAppendSpanbleString = new StringBuilder(paramCharSequence);
     }
-    for (;;)
+    else
     {
-      super.setText(paramCharSequence, paramBufferType);
-      return;
       this.mIsAppend = false;
     }
+    super.setText(paramCharSequence, paramBufferType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.QMultiImageTextView
  * JD-Core Version:    0.7.0.1
  */

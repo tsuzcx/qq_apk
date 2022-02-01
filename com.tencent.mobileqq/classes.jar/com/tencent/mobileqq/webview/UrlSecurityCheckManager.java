@@ -44,56 +44,67 @@ import tencent.im.oidb.oidb_0xbcb.ReqBody;
 public class UrlSecurityCheckManager
   implements Manager
 {
-  int jdField_a_of_type_Int = -1;
+  int jdField_a_of_type_Int;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   LruCache<String, UrlSecurityCheckManager.CheckResult> jdField_a_of_type_AndroidUtilLruCache = new LruCache(64);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private UrlSecurityCheckManager.OnCheckResult jdField_a_of_type_ComTencentMobileqqWebviewUrlSecurityCheckManager$OnCheckResult = new UrlSecurityCheckManager.1(this);
+  private UrlSecurityCheckManager.OnCheckResult jdField_a_of_type_ComTencentMobileqqWebviewUrlSecurityCheckManager$OnCheckResult;
   String jdField_a_of_type_JavaLangString;
   ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(64);
-  boolean jdField_a_of_type_Boolean = false;
+  boolean jdField_a_of_type_Boolean;
   String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
+  boolean jdField_b_of_type_Boolean;
+  boolean c;
   
   public UrlSecurityCheckManager(QQAppInterface paramQQAppInterface)
   {
+    boolean bool = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewUrlSecurityCheckManager$OnCheckResult = new UrlSecurityCheckManager.1(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (WebCgiWhiteListManager.a() != 0) {
       bool = true;
     }
     this.jdField_a_of_type_Boolean = bool;
-    QLog.i("UrlCheckLog", 1, "aio pre check enable=" + this.jdField_a_of_type_Boolean);
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("aio pre check enable=");
+    paramQQAppInterface.append(this.jdField_a_of_type_Boolean);
+    QLog.i("UrlCheckLog", 1, paramQQAppInterface.toString());
   }
   
   private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("urlSecMgr", 2, "apply async check " + Util.b(paramString, new String[0]));
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
+    if (QLog.isColorLevel())
     {
-      String str;
-      do
-      {
-        return;
-        str = paramString;
-        if (paramString.length() > 10240) {
-          str = paramString.substring(0, 10240);
-        }
-        paramString = (UrlSecurityCheckManager.CheckResult)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
-      } while ((paramString != null) && (paramString.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis()));
-      this.jdField_a_of_type_JavaUtilArrayList.add(str);
-      i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    } while (i <= 40);
-    this.jdField_a_of_type_JavaUtilArrayList.subList(0, i - 20).clear();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("apply async check ");
+      ((StringBuilder)localObject).append(Util.b(paramString, new String[0]));
+      QLog.d("urlSecMgr", 2, ((StringBuilder)localObject).toString());
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Object localObject = paramString;
+    if (paramString.length() > 10240) {
+      localObject = paramString.substring(0, 10240);
+    }
+    paramString = (UrlSecurityCheckManager.CheckResult)this.jdField_a_of_type_AndroidUtilLruCache.get(localObject);
+    if ((paramString != null) && (paramString.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    if (i > 40) {
+      this.jdField_a_of_type_JavaUtilArrayList.subList(0, i - 20).clear();
+    }
   }
   
   private void a(Collection<String> paramCollection, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, int paramInt3, String paramString5, boolean paramBoolean, ArrayList<String> paramArrayList, UrlSecurityCheckManager.OnCheckResult paramOnCheckResult)
   {
-    oidb_0xbcb.ReqBody localReqBody = new oidb_0xbcb.ReqBody();
+    localReqBody = new oidb_0xbcb.ReqBody();
     localReqBody.check_url_req.setHasFlag(true);
     if (paramCollection.size() > 20)
     {
@@ -121,78 +132,84 @@ public class UrlSecurityCheckManager
     }
     try
     {
-      long l = Long.parseLong(paramString1);
+      l = Long.parseLong(paramString1);
       localReqBody.check_url_req.send_uin.set(l);
-      label168:
-      if (!TextUtils.isEmpty(paramString2)) {}
-      try
-      {
-        l = Long.parseLong(paramString2);
-        localReqBody.check_url_req.msg_chatid.set(l);
-        label196:
-        if (!TextUtils.isEmpty(paramString5)) {}
-        for (boolean bool = true;; bool = false)
-        {
-          if (bool) {
-            localReqBody.check_url_req.ark_name.set(paramString5);
-          }
-          if (paramArrayList != null) {
-            localReqBody.check_url_req.src_urls.addAll(paramArrayList);
-          }
-          localReqBody.check_url_req.is_ark.set(bool);
-          localReqBody.check_url_req.is_finish.set(paramBoolean);
-          localReqBody.check_url_req.src_platform.set(1);
-          if (!TextUtils.isEmpty(AppSetting.e())) {
-            localReqBody.check_url_req.qua.set(AppSetting.e());
-          }
-          if (!QLog.isColorLevel()) {
-            break label413;
-          }
-          paramCollection = new StringBuilder("send 0xbcb_0 isArkMsg=").append(bool).append(" isPageFinish=").append(paramBoolean).append(" arkBusinessName=").append(paramString5).append(" preJumpUrls=");
-          if (paramArrayList == null) {
-            break;
-          }
-          paramInt1 = 0;
-          while (paramInt1 < paramArrayList.size())
-          {
-            paramCollection.append((String)paramArrayList.get(paramInt1)).append("\n");
-            paramInt1 += 1;
-          }
-        }
-        QLog.d("urlSecMgr", 2, paramCollection.toString());
-        label413:
-        localReqBody.check_url_req.qq_pf_to.set(paramString3);
-        paramString1 = localReqBody.check_url_req.req_type;
-        if (paramInt3 == 2) {
-          paramCollection = "aio";
-        }
-        for (;;)
-        {
-          paramString1.set(paramCollection);
-          if (!TextUtils.isEmpty(paramString4)) {
-            localReqBody.check_url_req.original_url.set(paramString4);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("urlSecMgr", 2, new Object[] { "send 0xbcb_0 url count=", String.valueOf(localReqBody.check_url_req.url.size()), " originUrl:", paramString4 });
-          }
-          ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new UrlSecurityCheckManager.5(this, paramOnCheckResult, paramInt3), localReqBody.toByteArray(), "OidbSvc.0xbcb_0", 3019, 0, null, paramLong);
-          return;
-          if (paramInt3 == 1) {
-            paramCollection = "webview";
-          } else {
-            paramCollection = "";
-          }
-        }
-      }
-      catch (NumberFormatException paramCollection)
-      {
-        break label196;
-      }
     }
     catch (NumberFormatException paramCollection)
     {
-      break label168;
+      try
+      {
+        long l = Long.parseLong(paramString2);
+        localReqBody.check_url_req.msg_chatid.set(l);
+        boolean bool = TextUtils.isEmpty(paramString5) ^ true;
+        if (!bool) {
+          break label226;
+        }
+        localReqBody.check_url_req.ark_name.set(paramString5);
+        if (paramArrayList == null) {
+          break label244;
+        }
+        localReqBody.check_url_req.src_urls.addAll(paramArrayList);
+        localReqBody.check_url_req.is_ark.set(bool);
+        localReqBody.check_url_req.is_finish.set(paramBoolean);
+        localReqBody.check_url_req.src_platform.set(1);
+        if (TextUtils.isEmpty(AppSetting.e())) {
+          break label305;
+        }
+        localReqBody.check_url_req.qua.set(AppSetting.e());
+        if (!QLog.isColorLevel()) {
+          break label422;
+        }
+        paramCollection = new StringBuilder("send 0xbcb_0 isArkMsg=");
+        paramCollection.append(bool);
+        paramCollection.append(" isPageFinish=");
+        paramCollection.append(paramBoolean);
+        paramCollection.append(" arkBusinessName=");
+        paramCollection.append(paramString5);
+        paramCollection.append(" preJumpUrls=");
+        if (paramArrayList == null) {
+          break label412;
+        }
+        paramInt1 = 0;
+        while (paramInt1 < paramArrayList.size())
+        {
+          paramCollection.append((String)paramArrayList.get(paramInt1));
+          paramCollection.append("\n");
+          paramInt1 += 1;
+        }
+        QLog.d("urlSecMgr", 2, paramCollection.toString());
+        localReqBody.check_url_req.qq_pf_to.set(paramString3);
+        paramString1 = localReqBody.check_url_req.req_type;
+        if (paramInt3 != 2) {
+          break label458;
+        }
+        paramCollection = "aio";
+        break label475;
+        if (paramInt3 != 1) {
+          break label471;
+        }
+        paramCollection = "webview";
+        break label475;
+        paramCollection = "";
+        paramString1.set(paramCollection);
+        if (TextUtils.isEmpty(paramString4)) {
+          break label502;
+        }
+        localReqBody.check_url_req.original_url.set(paramString4);
+        if (!QLog.isColorLevel()) {
+          break label552;
+        }
+        QLog.d("urlSecMgr", 2, new Object[] { "send 0xbcb_0 url count=", String.valueOf(localReqBody.check_url_req.url.size()), " originUrl:", paramString4 });
+        ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new UrlSecurityCheckManager.5(this, paramOnCheckResult, paramInt3), localReqBody.toByteArray(), "OidbSvc.0xbcb_0", 3019, 0, null, paramLong);
+        return;
+        paramCollection = paramCollection;
+      }
+      catch (NumberFormatException paramCollection)
+      {
+        break label199;
+      }
     }
+    if (TextUtils.isEmpty(paramString2)) {}
   }
   
   private boolean a(UrlSecurityCheckManager.CheckResult paramCheckResult, String paramString, boolean paramBoolean)
@@ -213,37 +230,43 @@ public class UrlSecurityCheckManager
   
   private void b()
   {
-    if (this.jdField_b_of_type_Boolean) {}
-    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+    if (this.jdField_b_of_type_Boolean) {
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
-    HashSet localHashSet = new HashSet(20);
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-    int i = 0;
-    String str;
-    if ((j >= 0) && (localHashSet.size() < 20))
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if (localHashSet.contains(str)) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(j);
-      }
-    }
-    for (;;)
-    {
-      j -= 1;
-      break;
-      i += str.length();
-      if (i > 10240)
+      this.jdField_b_of_type_Boolean = true;
+      HashSet localHashSet = new HashSet(20);
+      int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+      int j = 0;
+      while ((i >= 0) && (localHashSet.size() < 20))
       {
-        a(localHashSet, this.jdField_a_of_type_Int, 0, "", this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "", 0L, 2, null, false, null, this.jdField_a_of_type_ComTencentMobileqqWebviewUrlSecurityCheckManager$OnCheckResult);
-        return;
+        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if (localHashSet.contains(str))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        }
+        else
+        {
+          int k = j + str.length();
+          if (k > 10240) {
+            break;
+          }
+          this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+          localHashSet.add(str);
+          j = k;
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("pre check url=");
+            localStringBuilder.append(Util.b(str, new String[0]));
+            QLog.i("UrlCheckLog", 2, localStringBuilder.toString());
+            j = k;
+          }
+        }
+        i -= 1;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.remove(j);
-      localHashSet.add(str);
-      if (QLog.isColorLevel()) {
-        QLog.i("UrlCheckLog", 2, "pre check url=" + Util.b(str, new String[0]));
-      }
+      a(localHashSet, this.jdField_a_of_type_Int, 0, "", this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, "", 0L, 2, null, false, null, this.jdField_a_of_type_ComTencentMobileqqWebviewUrlSecurityCheckManager$OnCheckResult);
     }
   }
   
@@ -256,25 +279,18 @@ public class UrlSecurityCheckManager
     int k = paramListView.getHeaderViewsCount();
     i = Math.max(0, i - k);
     j = Math.min(j - k, paramChatAdapter1.getCount() - 1);
-    if (i <= j)
+    while (i <= j)
     {
       paramListView = (ChatMessage)paramChatAdapter1.getItem(i);
-      if (!paramListView.isSend())
-      {
-        if (!(paramListView instanceof MessageForStructing)) {
-          break label113;
+      if (!paramListView.isSend()) {
+        if ((paramListView instanceof MessageForStructing))
+        {
+          paramListView = ((MessageForStructing)paramListView).structingMsg;
+          if (WebAccelerator.a(paramListView)) {
+            a(paramListView.mMsgUrl);
+          }
         }
-        paramListView = ((MessageForStructing)paramListView).structingMsg;
-        if (WebAccelerator.a(paramListView)) {
-          a(paramListView.mMsgUrl);
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label113:
-        if ((paramListView instanceof MessageForText))
+        else if ((paramListView instanceof MessageForText))
         {
           paramListView = (MessageForText)paramListView;
           if (paramListView.msg != null)
@@ -286,10 +302,15 @@ public class UrlSecurityCheckManager
           }
         }
       }
+      i += 1;
     }
     b();
-    if (QLog.isColorLevel()) {
-      QLog.d("urlSecMgr", 2, "pre check cost=" + (System.currentTimeMillis() - l));
+    if (QLog.isColorLevel())
+    {
+      paramListView = new StringBuilder();
+      paramListView.append("pre check cost=");
+      paramListView.append(System.currentTimeMillis() - l);
+      QLog.d("urlSecMgr", 2, paramListView.toString());
     }
   }
   
@@ -307,26 +328,29 @@ public class UrlSecurityCheckManager
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      this.jdField_a_of_type_JavaLangString = "";
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_b_of_type_JavaLangString = "";
-      return;
-    case 0: 
-      this.jdField_a_of_type_JavaLangString = "mqq.c2c";
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_JavaLangString = paramString;
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 3000)
+        {
+          this.jdField_a_of_type_JavaLangString = "";
+          this.jdField_a_of_type_Int = -1;
+          this.jdField_b_of_type_JavaLangString = "";
+          return;
+        }
+        this.jdField_a_of_type_JavaLangString = "mqq.discussion";
+        this.jdField_a_of_type_Int = 3;
+        this.jdField_b_of_type_JavaLangString = paramString;
+        return;
+      }
       this.jdField_a_of_type_JavaLangString = "mqq.group";
       this.jdField_a_of_type_Int = 2;
       this.jdField_b_of_type_JavaLangString = paramString;
       return;
     }
-    this.jdField_a_of_type_JavaLangString = "mqq.discussion";
-    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_JavaLangString = "mqq.c2c";
+    this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_JavaLangString = paramString;
   }
   
@@ -383,19 +407,22 @@ public class UrlSecurityCheckManager
   
   public void a(ListView paramListView, ChatAdapter1 paramChatAdapter1)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    long l;
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      l = System.currentTimeMillis();
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramListView = new WeakReference(paramListView);
-      paramChatAdapter1 = new WeakReference(paramChatAdapter1);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new UrlSecurityCheckManager.2(this, paramListView, paramChatAdapter1), 500L);
-    } while (!QLog.isColorLevel());
-    QLog.d("urlSecMgr", 2, "new pre check task cost=" + (System.currentTimeMillis() - l));
+    }
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    paramListView = new WeakReference(paramListView);
+    paramChatAdapter1 = new WeakReference(paramChatAdapter1);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new UrlSecurityCheckManager.2(this, paramListView, paramChatAdapter1), 500L);
+    if (QLog.isColorLevel())
+    {
+      paramListView = new StringBuilder();
+      paramListView.append("new pre check task cost=");
+      paramListView.append(System.currentTimeMillis() - l);
+      QLog.d("urlSecMgr", 2, paramListView.toString());
+    }
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean, ArrayList<String> paramArrayList, UrlSecurityCheckManager.OnCheckResult paramOnCheckResult)
@@ -403,33 +430,32 @@ public class UrlSecurityCheckManager
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    String str = paramString1;
     if (paramString1.length() > 10240) {
-      str = paramString1.substring(0, 10240);
+      paramString1 = paramString1.substring(0, 10240);
     }
-    paramString1 = (UrlSecurityCheckManager.CheckResult)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
-    boolean bool = a(paramString1, paramString6, paramBoolean);
-    if ((paramString1 != null) && (paramString1.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis()) && (paramString1.jdField_a_of_type_Int == 0) && (!bool))
+    UrlSecurityCheckManager.CheckResult localCheckResult = (UrlSecurityCheckManager.CheckResult)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString1);
+    boolean bool = a(localCheckResult, paramString6, paramBoolean);
+    if ((localCheckResult != null) && (localCheckResult.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis()) && (localCheckResult.jdField_a_of_type_Int == 0) && (!bool))
     {
       if (QLog.isColorLevel()) {
         QLog.i("UrlCheckLog", 2, "cache hit");
       }
-      paramString2 = new Bundle();
-      paramString2.putInt("result", paramString1.jdField_a_of_type_Int);
-      paramString2.putInt("jumpResult", paramString1.jdField_b_of_type_Int);
-      paramString2.putString("jumpUrl", paramString1.jdField_a_of_type_JavaLangString);
-      paramString2.putInt("level", paramString1.c);
-      paramString2.putInt("subLevel", paramString1.d);
-      paramString2.putInt("umrType", paramString1.e);
-      paramString2.putInt("retFrom", paramString1.f);
-      paramString2.putLong("operationBit", paramString1.jdField_b_of_type_Long);
-      paramOnCheckResult.a(paramString2);
+      paramString1 = new Bundle();
+      paramString1.putInt("result", localCheckResult.jdField_a_of_type_Int);
+      paramString1.putInt("jumpResult", localCheckResult.jdField_b_of_type_Int);
+      paramString1.putString("jumpUrl", localCheckResult.jdField_a_of_type_JavaLangString);
+      paramString1.putInt("level", localCheckResult.c);
+      paramString1.putInt("subLevel", localCheckResult.d);
+      paramString1.putInt("umrType", localCheckResult.e);
+      paramString1.putInt("retFrom", localCheckResult.f);
+      paramString1.putLong("operationBit", localCheckResult.jdField_b_of_type_Long);
+      paramOnCheckResult.a(paramString1);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("UrlCheckLog", 2, "no cache");
     }
-    a(Collections.singletonList(str), paramInt1, paramInt2, paramString2, paramString3, paramString4, paramString5, 10000L, 1, paramString6, paramBoolean, paramArrayList, paramOnCheckResult);
+    a(Collections.singletonList(paramString1), paramInt1, paramInt2, paramString2, paramString3, paramString4, paramString5, 10000L, 1, paramString6, paramBoolean, paramArrayList, paramOnCheckResult);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, UrlSecurityCheckManager.OnCheckResult paramOnCheckResult)
@@ -462,7 +488,7 @@ public class UrlSecurityCheckManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.UrlSecurityCheckManager
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,15 @@ class QQMapActivity$10
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
+    if ((this.a.fetchDataFailed) && (!this.a.isRefreshPressed) && (!this.a.startWithPos)) {
       this.a.finish();
     }
-    this.a.m = false;
+    this.a.isRefreshPressed = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.10
  * JD-Core Version:    0.7.0.1
  */

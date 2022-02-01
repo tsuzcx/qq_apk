@@ -10,16 +10,20 @@ class VideoMsgBroadcastReceiver$2
   
   public void run()
   {
-    VideoController localVideoController = VideoController.a();
-    if (localVideoController != null) {
-      localVideoController.a.receiveSharpVideoOfflineMsg(this.a);
+    Object localObject = VideoController.a();
+    if (localObject != null) {
+      ((VideoController)localObject).a.receiveSharpVideoOfflineMsg(this.a);
     }
-    QLog.i("VideoMsgBroadcastReceiver", 1, "processSharpVideoOfflineMsg, data[" + this.a + "], async");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("processSharpVideoOfflineMsg, data[");
+    ((StringBuilder)localObject).append(this.a);
+    ((StringBuilder)localObject).append("], async");
+    QLog.i("VideoMsgBroadcastReceiver", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoMsgBroadcastReceiver.2
  * JD-Core Version:    0.7.0.1
  */

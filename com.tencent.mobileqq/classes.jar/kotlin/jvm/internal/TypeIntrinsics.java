@@ -173,8 +173,12 @@ public class TypeIntrinsics
   
   public static Object beforeCheckcastToFunctionOfArity(Object paramObject, int paramInt)
   {
-    if ((paramObject != null) && (!isFunctionOfArity(paramObject, paramInt))) {
-      throwCce(paramObject, "kotlin.jvm.functions.Function" + paramInt);
+    if ((paramObject != null) && (!isFunctionOfArity(paramObject, paramInt)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("kotlin.jvm.functions.Function");
+      localStringBuilder.append(paramInt);
+      throwCce(paramObject, localStringBuilder.toString());
     }
     return paramObject;
   }
@@ -425,12 +429,16 @@ public class TypeIntrinsics
   
   public static void throwCce(Object paramObject, String paramString)
   {
-    if (paramObject == null) {}
-    for (paramObject = "null";; paramObject = paramObject.getClass().getName())
-    {
-      throwCce(paramObject + " cannot be cast to " + paramString);
-      return;
+    if (paramObject == null) {
+      paramObject = "null";
+    } else {
+      paramObject = paramObject.getClass().getName();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramObject);
+    localStringBuilder.append(" cannot be cast to ");
+    localStringBuilder.append(paramString);
+    throwCce(localStringBuilder.toString());
   }
   
   public static void throwCce(String paramString)
@@ -440,7 +448,7 @@ public class TypeIntrinsics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.jvm.internal.TypeIntrinsics
  * JD-Core Version:    0.7.0.1
  */

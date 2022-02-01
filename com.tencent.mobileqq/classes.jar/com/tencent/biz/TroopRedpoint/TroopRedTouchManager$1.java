@@ -15,10 +15,12 @@ class TroopRedTouchManager$1
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("request_type", 0);
-    QLog.i(this.a.c, 2, "receive request" + paramIntent.getExtras());
-    switch (i)
-    {
-    default: 
+    paramContext = this.a.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("receive request");
+    localStringBuilder.append(paramIntent.getExtras());
+    QLog.i(paramContext, 2, localStringBuilder.toString());
+    if (i != 1) {
       return;
     }
     paramContext = new Intent();
@@ -30,7 +32,7 @@ class TroopRedTouchManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchManager.1
  * JD-Core Version:    0.7.0.1
  */

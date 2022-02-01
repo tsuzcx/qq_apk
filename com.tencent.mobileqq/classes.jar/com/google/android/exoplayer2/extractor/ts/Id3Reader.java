@@ -24,26 +24,30 @@ public final class Id3Reader
       return;
     }
     int i = paramParsableByteArray.bytesLeft();
-    if (this.sampleBytesRead < 10)
+    int j = this.sampleBytesRead;
+    if (j < 10)
     {
-      int j = Math.min(i, 10 - this.sampleBytesRead);
+      j = Math.min(i, 10 - j);
       System.arraycopy(paramParsableByteArray.data, paramParsableByteArray.getPosition(), this.id3Header.data, this.sampleBytesRead, j);
-      if (j + this.sampleBytesRead == 10)
+      if (this.sampleBytesRead + j == 10)
       {
         this.id3Header.setPosition(0);
-        if ((73 != this.id3Header.readUnsignedByte()) || (68 != this.id3Header.readUnsignedByte()) || (51 != this.id3Header.readUnsignedByte()))
+        if ((73 == this.id3Header.readUnsignedByte()) && (68 == this.id3Header.readUnsignedByte()) && (51 == this.id3Header.readUnsignedByte()))
+        {
+          this.id3Header.skipBytes(3);
+          this.sampleSize = (this.id3Header.readSynchSafeInt() + 10);
+        }
+        else
         {
           Log.w("Id3Reader", "Discarding invalid ID3 tag");
           this.writingSample = false;
           return;
         }
-        this.id3Header.skipBytes(3);
-        this.sampleSize = (this.id3Header.readSynchSafeInt() + 10);
       }
     }
     i = Math.min(i, this.sampleSize - this.sampleBytesRead);
     this.output.sampleData(paramParsableByteArray, i);
-    this.sampleBytesRead = (i + this.sampleBytesRead);
+    this.sampleBytesRead += i;
   }
   
   public void createTracks(ExtractorOutput paramExtractorOutput, TsPayloadReader.TrackIdGenerator paramTrackIdGenerator)
@@ -55,11 +59,18 @@ public final class Id3Reader
   
   public void packetFinished()
   {
-    if ((!this.writingSample) || (this.sampleSize == 0) || (this.sampleBytesRead != this.sampleSize)) {
-      return;
+    if (this.writingSample)
+    {
+      int i = this.sampleSize;
+      if (i != 0)
+      {
+        if (this.sampleBytesRead != i) {
+          return;
+        }
+        this.output.sampleMetadata(this.sampleTimeUs, 1, i, 0, null);
+        this.writingSample = false;
+      }
     }
-    this.output.sampleMetadata(this.sampleTimeUs, 1, this.sampleSize, 0, null);
-    this.writingSample = false;
   }
   
   public void packetStarted(long paramLong, boolean paramBoolean)
@@ -80,7 +91,7 @@ public final class Id3Reader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.Id3Reader
  * JD-Core Version:    0.7.0.1
  */

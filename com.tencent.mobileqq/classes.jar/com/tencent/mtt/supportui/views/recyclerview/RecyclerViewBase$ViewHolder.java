@@ -34,15 +34,17 @@ public abstract class RecyclerViewBase$ViewHolder
   public RecyclerViewBase$ViewHolder(View paramView, RecyclerViewBase paramRecyclerViewBase)
   {
     this.mParent = paramRecyclerViewBase;
-    if (paramView == null) {
-      throw new IllegalArgumentException("itemView may not be null");
+    if (paramView != null)
+    {
+      this.itemView = paramView;
+      return;
     }
-    this.itemView = paramView;
+    throw new IllegalArgumentException("itemView may not be null");
   }
   
   public void addFlags(int paramInt)
   {
-    this.mFlags |= paramInt;
+    this.mFlags = (paramInt | this.mFlags);
   }
   
   public boolean canChangeOrder()
@@ -72,10 +74,12 @@ public abstract class RecyclerViewBase$ViewHolder
   
   public int getPosition()
   {
-    if (this.mOldPosition == -2147483648) {
-      return this.mPosition;
+    int j = this.mOldPosition;
+    int i = j;
+    if (j == -2147483648) {
+      i = this.mPosition;
     }
-    return this.mOldPosition;
+    return i;
   }
   
   public abstract void inTraversals(int paramInt);
@@ -120,34 +124,32 @@ public abstract class RecyclerViewBase$ViewHolder
   
   void setFlags(int paramInt1, int paramInt2)
   {
-    this.mFlags = (this.mFlags & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+    this.mFlags = (paramInt1 & paramInt2 | this.mFlags & (paramInt2 ^ 0xFFFFFFFF));
   }
   
   public final void setIsRecyclable(boolean paramBoolean)
   {
-    int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = this.mIsRecyclableCount - 1;
-      this.mIsRecyclableCount = i;
-      if (this.mIsRecyclableCount >= 0) {
-        break label39;
-      }
-      this.mIsRecyclableCount = 0;
-    }
-    label39:
-    do
-    {
-      return;
+    } else {
       i = this.mIsRecyclableCount + 1;
-      break;
-      if ((!paramBoolean) && (this.mIsRecyclableCount == 1))
-      {
-        this.mFlags |= 0x10;
-        return;
+    }
+    this.mIsRecyclableCount = i;
+    int i = this.mIsRecyclableCount;
+    if (i < 0)
+    {
+      this.mIsRecyclableCount = 0;
+      return;
+    }
+    if ((!paramBoolean) && (i == 1)) {}
+    for (i = this.mFlags | 0x10;; i = this.mFlags & 0xFFFFFFEF)
+    {
+      this.mFlags = i;
+      return;
+      if ((!paramBoolean) || (this.mIsRecyclableCount != 0)) {
+        break;
       }
-    } while ((!paramBoolean) || (this.mIsRecyclableCount != 0));
-    this.mFlags &= 0xFFFFFFEF;
+    }
   }
   
   public final void setItemViewType(int paramInt)
@@ -162,25 +164,35 @@ public abstract class RecyclerViewBase$ViewHolder
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("ViewHolder{" + Integer.toHexString(hashCode()) + " position=" + this.mPosition + " id=" + this.mItemId);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("ViewHolder{");
+    localStringBuilder1.append(Integer.toHexString(hashCode()));
+    localStringBuilder1.append(" position=");
+    localStringBuilder1.append(this.mPosition);
+    localStringBuilder1.append(" id=");
+    localStringBuilder1.append(this.mItemId);
+    localStringBuilder1 = new StringBuilder(localStringBuilder1.toString());
     if (isScrap()) {
-      localStringBuilder.append(" scrap");
+      localStringBuilder1.append(" scrap");
     }
     if (isInvalid()) {
-      localStringBuilder.append(" invalid");
+      localStringBuilder1.append(" invalid");
     }
     if (!isBound()) {
-      localStringBuilder.append(" unbound");
+      localStringBuilder1.append(" unbound");
     }
     if (needsUpdate()) {
-      localStringBuilder.append(" updateStyle");
+      localStringBuilder1.append(" updateStyle");
     }
     if (isRemoved()) {
-      localStringBuilder.append(" removed");
+      localStringBuilder1.append(" removed");
     }
-    localStringBuilder.append(" type=" + this.mItemViewType);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(" type=");
+    localStringBuilder2.append(this.mItemViewType);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append("}");
+    return localStringBuilder1.toString();
   }
   
   void unScrap()
@@ -191,7 +203,7 @@ public abstract class RecyclerViewBase$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

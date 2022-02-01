@@ -24,17 +24,21 @@ final class AsyncTask$2
     {
       throw new RuntimeException("An error occured while executing doInBackground()", localExecutionException.getCause());
     }
-    catch (CancellationException localCancellationException)
+    catch (InterruptedException localInterruptedException)
     {
-      AsyncTask.b(this.a, null);
       return;
     }
-    catch (InterruptedException localInterruptedException) {}
+    catch (CancellationException localCancellationException)
+    {
+      label12:
+      break label12;
+    }
+    AsyncTask.b(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.lib.thread.AsyncTask.2
  * JD-Core Version:    0.7.0.1
  */

@@ -19,51 +19,50 @@ class ShareHelper$1
     if (this.a.a.getActionSheet().isShowing()) {
       this.a.a.getActionSheet().dismiss();
     }
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131720753;
-      }
-    }
-    for (;;)
+    if ((paramLong == 2L) || (paramLong == 3L))
     {
-      if (i != -1) {
-        QRUtils.a(1, i);
+      if (!WXShareHelper.a().a()) {
+        i = 2131720478;
+      } else if (!WXShareHelper.a().b()) {
+        i = 2131720479;
+      } else {
+        i = -1;
       }
-      for (;;)
+      if (i != -1)
       {
-        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-        return;
-        if (WXShareHelper.a().b()) {
-          break label175;
-        }
-        i = 2131720754;
-        break;
-        switch ((int)paramLong)
+        QRUtils.a(1, i);
+        break label165;
+      }
+    }
+    int i = (int)paramLong;
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
         {
-        default: 
-          break;
-        case 0: 
-          ShareHelper.a(this.a);
-          break;
-        case 1: 
-          ShareHelper.b(this.a);
-          break;
-        case 2: 
+          if (i == 3) {
+            ShareHelper.d(this.a);
+          }
+        }
+        else {
           ShareHelper.c(this.a);
-          break;
-        case 3: 
-          ShareHelper.d(this.a);
         }
       }
-      label175:
-      i = -1;
+      else {
+        ShareHelper.b(this.a);
+      }
     }
+    else {
+      ShareHelper.a(this.a);
+    }
+    label165:
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.ShareHelper.1
  * JD-Core Version:    0.7.0.1
  */

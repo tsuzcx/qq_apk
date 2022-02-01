@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import com.tencent.biz.pubaccount.weishi_new.IWSPresenter;
 import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerParam;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.widget.pull2refresh.BaseViewHolder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public abstract interface WSVerticalPageContract$Presenter
   extends IWSPresenter<WSVerticalPageContract.View>
@@ -18,13 +20,21 @@ public abstract interface WSVerticalPageContract$Presenter
   
   public abstract long a();
   
+  public abstract WSPlayerParam a();
+  
   public abstract List<WSVerticalItemData> a(ArrayList paramArrayList);
+  
+  public abstract Map<String, String> a();
   
   public abstract void a(Bundle paramBundle);
   
   public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
   
   public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
+  
+  public abstract void a(WSPlayerParam paramWSPlayerParam);
+  
+  public abstract void a(WSPlayerParam paramWSPlayerParam, boolean paramBoolean);
   
   public abstract void a(BaseViewHolder<WSVerticalItemData> paramBaseViewHolder, int paramInt);
   
@@ -36,6 +46,20 @@ public abstract interface WSVerticalPageContract$Presenter
   
   public abstract int b();
   
+  public abstract Map<String, String> b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract boolean c();
+  
+  public abstract void d();
+  
+  public abstract boolean d();
+  
   public abstract void e();
   
   public abstract void f();
@@ -45,10 +69,12 @@ public abstract interface WSVerticalPageContract$Presenter
   public abstract void h();
   
   public abstract void i();
+  
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.Presenter
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 class ChooseInterestTagActivity$11
@@ -16,63 +15,74 @@ class ChooseInterestTagActivity$11
   
   public void onClick(View paramView)
   {
-    Object localObject1;
-    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
+    if ((ChooseInterestTagActivity.access$000(this.a) != 3) && (ChooseInterestTagActivity.access$000(this.a) != 2) && (ChooseInterestTagActivity.access$000(this.a) != 1) && (ChooseInterestTagActivity.access$000(this.a) != 4))
     {
-      localObject1 = (InterestTagInfo)paramView.getTag();
-      if (localObject1 != null)
-      {
-        ChooseInterestTagActivity.a(this.a).remove(localObject1);
-        ChooseInterestTagActivity.a(this.a, (InterestTagInfo)localObject1);
-        ChooseInterestTagActivity.b(this.a, (InterestTagInfo)localObject1);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       try
       {
         int[] arrayOfInt = new int[2];
         paramView.getLocationInWindow(arrayOfInt);
-        if (arrayOfInt[0] <= 0) {
-          continue;
+        if (arrayOfInt[0] > 0)
+        {
+          InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
+          if (localInterestTagInfo == null) {
+            return;
+          }
+          Paint localPaint = new Paint();
+          float f1 = ChooseInterestTagActivity.access$3100(this.a);
+          double d1 = f1 * 14.0F;
+          Double.isNaN(d1);
+          f1 = (float)(d1 + 0.5D);
+          localPaint.setTextSize(f1);
+          localPaint.setColor(this.a.getResources().getColor(2131167116));
+          localPaint.setFakeBoldText(false);
+          localPaint.setAntiAlias(true);
+          Object localObject2 = localInterestTagInfo.tagName;
+          Object localObject1 = localObject2;
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            localObject1 = " ";
+          }
+          localObject2 = localObject1;
+          if (((String)localObject1).length() > 8)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(((String)localObject1).substring(0, 8));
+            ((StringBuilder)localObject2).append("...");
+            localObject2 = ((StringBuilder)localObject2).toString();
+          }
+          f1 = localPaint.measureText((String)localObject2);
+          float f2 = ChooseInterestTagActivity.access$3100(this.a);
+          d1 = f2 * 64.0F;
+          Double.isNaN(d1);
+          double d2 = f1;
+          Double.isNaN(d2);
+          int i = (int)(d1 + 0.5D + d2);
+          localObject1 = new ShowTagNamePopupWindow(this.a, arrayOfInt[0], i);
+          ((ShowTagNamePopupWindow)localObject1).a(ChooseInterestTagActivity.access$3600(this.a));
+          ((ShowTagNamePopupWindow)localObject1).a(localInterestTagInfo);
+          ((ShowTagNamePopupWindow)localObject1).showAsDropDown(paramView, -(int)((i - ChooseInterestTagActivity.access$3100(this.a) * 40.0F) / 2.0F), 10);
+          return;
         }
-        InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
-        if (localInterestTagInfo == null) {
-          continue;
-        }
-        Paint localPaint = new Paint();
-        localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
-        localPaint.setColor(this.a.getResources().getColor(2131167093));
-        localPaint.setFakeBoldText(false);
-        localPaint.setAntiAlias(true);
-        Object localObject2 = localInterestTagInfo.tagName;
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = " ";
-        }
-        localObject2 = localObject1;
-        if (((String)localObject1).length() > 8) {
-          localObject2 = ((String)localObject1).substring(0, 8) + "...";
-        }
-        float f = localPaint.measureText((String)localObject2);
-        int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
-        localObject1 = new ShowTagNamePopupWindow(this.a, arrayOfInt[0], i);
-        ((ShowTagNamePopupWindow)localObject1).a(ChooseInterestTagActivity.a(this.a));
-        ((ShowTagNamePopupWindow)localObject1).a(localInterestTagInfo);
-        ((ShowTagNamePopupWindow)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
       }
-      catch (Exception localException) {}
-      if (QLog.isDevelopLevel()) {
-        QLog.i("choose_interest_tag", 4, localException.getMessage());
+      catch (Exception paramView)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.i("choose_interest_tag", 4, paramView.getMessage());
+        }
       }
+      return;
+    }
+    paramView = (InterestTagInfo)paramView.getTag();
+    if (paramView != null)
+    {
+      ChooseInterestTagActivity.access$2200(this.a).remove(paramView);
+      ChooseInterestTagActivity.access$3400(this.a, paramView);
+      ChooseInterestTagActivity.access$3500(this.a, paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -25,9 +25,10 @@ public final class px
     setSurfaceTextureListener(this);
   }
   
-  public final boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
+  protected final boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.a != null) && (this.a.a(paramMotionEvent))) {
+    pn localpn = this.a;
+    if ((localpn != null) && (localpn.a(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
@@ -40,76 +41,87 @@ public final class px
   
   public final void onDestroy()
   {
-    if (this.a != null) {
-      this.a.onDestroy();
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((pn)localObject).onDestroy();
     }
-    if (this.c != null) {
-      this.c.c();
+    localObject = this.c;
+    if (localObject != null) {
+      ((pl)localObject).c();
     }
   }
   
   public final void onPause()
   {
-    if (this.a != null) {
-      this.a.onPause();
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((pn)localObject).onPause();
     }
-    if (this.c != null) {
-      this.c.a();
+    localObject = this.c;
+    if (localObject != null) {
+      ((pl)localObject).a();
     }
   }
   
   public final void onRedraw()
   {
-    if (this.c != null) {
-      synchronized (this.c)
+    pl localpl = this.c;
+    if (localpl != null) {
+      try
       {
         this.c.notify();
         return;
       }
+      finally {}
     }
   }
   
   public final void onResume()
   {
-    if (this.a != null) {
-      this.a.onResume();
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((pn)localObject).onResume();
     }
-    if (this.c != null) {
-      this.c.b();
+    localObject = this.c;
+    if (localObject != null) {
+      ((pl)localObject).b();
     }
   }
   
   public final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2);
+    pn localpn = this.a;
+    if (localpn != null) {
+      localpn.a(paramInt1, paramInt2);
     }
   }
   
   public final void onSurfaceChanged(Object paramObject, int paramInt1, int paramInt2)
   {
-    if (this.b == null) {
+    if (this.b == null)
+    {
       this.b = paramObject;
     }
-    for (;;)
+    else
     {
-      if (this.a != null)
-      {
-        this.a.a(null, null);
-        this.a.a(null, paramInt1, paramInt2);
-      }
-      if (this.c == null)
-      {
-        this.c = new pl(paramObject, this.a);
-        this.c.start();
-      }
-      return;
-      if (this.c != null)
+      localObject = this.c;
+      if (localObject != null)
       {
         this.b = paramObject;
-        this.c.a(paramObject);
+        ((pl)localObject).a(paramObject);
       }
+    }
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      ((pn)localObject).a(null, null);
+      this.a.a(null, paramInt1, paramInt2);
+    }
+    if (this.c == null)
+    {
+      this.c = new pl(paramObject, this.a);
+      this.c.start();
     }
   }
   
@@ -126,11 +138,13 @@ public final class px
   
   public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    if (this.a != null)
+    paramSurfaceTexture = this.a;
+    if (paramSurfaceTexture != null)
     {
-      this.a.a(null, paramInt1, paramInt2);
-      if (this.c != null) {
-        this.c.d();
+      paramSurfaceTexture.a(null, paramInt1, paramInt2);
+      paramSurfaceTexture = this.c;
+      if (paramSurfaceTexture != null) {
+        paramSurfaceTexture.d();
       }
     }
   }
@@ -139,8 +153,9 @@ public final class px
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      return this.a.onTouchEvent(paramMotionEvent);
+    pn localpn = this.a;
+    if (localpn != null) {
+      return localpn.onTouchEvent(paramMotionEvent);
     }
     return false;
   }
@@ -149,7 +164,7 @@ public final class px
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.px
  * JD-Core Version:    0.7.0.1
  */

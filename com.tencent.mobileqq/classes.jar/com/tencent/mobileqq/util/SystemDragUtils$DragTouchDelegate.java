@@ -27,51 +27,69 @@ public class SystemDragUtils$DragTouchDelegate
   
   public boolean onLongClick(View paramView)
   {
-    for (int i = 0;; i = 0) {
+    i = 0;
+    for (;;)
+    {
       try
       {
-        while (i < this.b.size())
-        {
-          ((View.OnLongClickListener)this.b.get(i)).onLongClick(paramView);
-          i += 1;
+        if (i >= this.b.size()) {
           continue;
-          while (i < this.c.size())
-          {
-            ((View.OnLongClickListener)this.c.get(i)).onLongClick(paramView);
-            i += 1;
-          }
-          return false;
         }
+        ((View.OnLongClickListener)this.b.get(i)).onLongClick(paramView);
+        i += 1;
+        continue;
       }
-      finally {}
+      finally
+      {
+        continue;
+        throw paramView;
+        continue;
+        i = 0;
+        continue;
+      }
+      if (i >= this.c.size()) {
+        continue;
+      }
+      ((View.OnLongClickListener)this.c.get(i)).onLongClick(paramView);
+      i += 1;
     }
+    return false;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    for (int i = 0;; i = 0) {
+    i = 0;
+    for (;;)
+    {
       try
       {
-        while (i < this.a.size())
-        {
-          ((View.OnTouchListener)this.a.get(i)).onTouch(paramView, paramMotionEvent);
-          i += 1;
+        if (i >= this.a.size()) {
           continue;
-          while (i < this.c.size())
-          {
-            ((OnLongClickAndTouchListener)this.c.get(i)).onTouch(paramView, paramMotionEvent);
-            i += 1;
-          }
-          return false;
         }
+        ((View.OnTouchListener)this.a.get(i)).onTouch(paramView, paramMotionEvent);
+        i += 1;
+        continue;
       }
-      finally {}
+      finally
+      {
+        continue;
+        throw paramView;
+        continue;
+        i = 0;
+        continue;
+      }
+      if (i >= this.c.size()) {
+        continue;
+      }
+      ((OnLongClickAndTouchListener)this.c.get(i)).onTouch(paramView, paramMotionEvent);
+      i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemDragUtils.DragTouchDelegate
  * JD-Core Version:    0.7.0.1
  */

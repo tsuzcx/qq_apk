@@ -15,18 +15,20 @@ class NewMyStorySegment$8
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(NewMyStorySegment.a(this.this$0, NewMyStorySegment.a(this.this$0), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - UIUtils.a(NewMyStorySegment.a(this.this$0), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    NewMyStorySegment localNewMyStorySegment = this.this$0;
+    localTextView.setText(NewMyStorySegment.a(localNewMyStorySegment, NewMyStorySegment.a(localNewMyStorySegment), this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_a_of_type_AndroidWidgetImageView.getWidth() - UIUtils.a(NewMyStorySegment.a(this.this$0), 70.0F), this.jdField_a_of_type_AndroidWidgetTextView.getPaint()));
     if (NewMyStorySegment.a(this.this$0).f > 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-65536);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(NewMyStorySegment.b(this.this$0).getResources().getColor(2131167127));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(NewMyStorySegment.b(this.this$0).getResources().getColor(2131167152));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.8
  * JD-Core Version:    0.7.0.1
  */

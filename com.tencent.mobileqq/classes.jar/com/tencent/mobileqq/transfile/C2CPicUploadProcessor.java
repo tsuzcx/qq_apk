@@ -4,18 +4,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.photo.AIOGallerySceneWithBusiness;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.aelight.camera.qqstory.api.IPeakIpcController;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.FlashPicHelper;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.MediaMessageObserver;
 import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForRichText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PicMessageExtraData;
 import com.tencent.mobileqq.highway.HwEngine;
@@ -27,6 +23,8 @@ import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.NewServiceTicket;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.PicInfoExt;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.PicRspExtInfo;
 import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
+import com.tencent.mobileqq.msg.api.IMessageHandler;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -35,49 +33,40 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pic.UpCallBack;
 import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgManager;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.pic.api.IPicBus;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.richmedia.ordersend.IOrderMediaMsgService;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemImage;
+import com.tencent.mobileqq.structmsg.api.IMsgStructing;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.transfile.api.IProtoReqManager;
-import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
-import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PicUpReq;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.C2CPicUpResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
-import dov.com.qq.im.editipc.PeakIpcController;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.ProxyIpManager;
 import mqq.manager.TicketManager;
 import tencent.im.msg.hummer.resv6.NotOnlineImageExtPb.ResvAttr;
 import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype3;
 import tencent.im.msg.im_msg_body.CommonElem;
 import tencent.im.msg.im_msg_body.Elem;
 import tencent.im.msg.im_msg_body.NotOnlineImage;
-import tencent.im.msg.im_msg_body.RichMsg;
 import tencent.im.msg.im_msg_body.RichText;
 import tencent.im.msg.im_msg_body.Text;
 
@@ -85,9 +74,8 @@ public class C2CPicUploadProcessor
   extends BasePicUploadProcessor
 {
   public static final String TAG = "C2CPicUploadProcessor";
-  protected QQAppInterface app;
   private boolean isStoryPhoto = false;
-  protected TransFileControllerImpl mController;
+  protected BaseTransFileController mController;
   protected byte[] mExtendInfo;
   protected boolean mIsOpenUpEnable;
   protected CSDataHighwayHead.LoginSigHead mLoginSigHead;
@@ -95,26 +83,23 @@ public class C2CPicUploadProcessor
   private int mPreSendDots;
   private byte[] mSessionKey;
   private byte[] mSigSession;
-  private BaseTransProcessor.StepInfo mStepTransLeft = new BaseTransProcessor.StepInfo();
-  private BaseTransProcessor.StepInfo mStepTransPre = new BaseTransProcessor.StepInfo();
-  MessageObserver messageObserver = new C2CPicUploadProcessor.6(this);
+  private StepInfo mStepTransLeft = new StepInfo();
+  private StepInfo mStepTransPre = new StepInfo();
+  MediaMessageObserver messageObserver = new C2CPicUploadProcessor.6(this);
   private MessageForPic picMsg;
-  public boolean uploadSuccess = false;
   
   public C2CPicUploadProcessor() {}
   
-  public C2CPicUploadProcessor(TransFileControllerImpl paramTransFileControllerImpl, TransferRequest paramTransferRequest)
+  public C2CPicUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
-    super(paramTransFileControllerImpl, paramTransferRequest);
-    this.mController = paramTransFileControllerImpl;
-    this.app = ((QQAppInterface)this.app);
+    super(paramBaseTransFileController, paramTransferRequest);
+    this.mController = paramBaseTransFileController;
     this.file.fileType = this.mUiRequest.mFileType;
     this.file.uniseq = this.mUiRequest.mUniseq;
     this.file.actionType = 0;
     this.file.friendUin = this.mUiRequest.mPeerUin;
     this.file.uinType = 0;
     this.file.processorDoReportSelf = true;
-    this.mProxyIpList = ((ProxyIpManager)this.app.getManager(3)).getProxyIp(3);
     this.mIsOpenUpEnable = OpenUpConfig.isOpenUpEnable;
     this.mPreSendDots = OpenUpConfig.getPreSendDots(BaseApplication.getContext());
     if ((this.mUiRequest.mRec != null) && ((this.mUiRequest.mRec instanceof MessageForPic)))
@@ -128,352 +113,209 @@ public class C2CPicUploadProcessor
   
   private im_msg_body.RichText constructRichText()
   {
-    label900:
-    label914:
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      im_msg_body.RichText localRichText;
-      for (;;)
+      Object localObject1;
+      try
       {
-        Object localObject3;
-        try
+        im_msg_body.RichText localRichText = new im_msg_body.RichText();
+        Object localObject3 = new im_msg_body.NotOnlineImage();
+        changeRichText();
+        ((im_msg_body.NotOnlineImage)localObject3).file_path.set(ByteStringMicro.copyFromUtf8(this.mFileName));
+        if (this.file.uuidPath != null) {
+          ((im_msg_body.NotOnlineImage)localObject3).download_path.set(ByteStringMicro.copyFromUtf8(this.file.uuidPath));
+        }
+        if (this.file.serverPath != null) {
+          ((im_msg_body.NotOnlineImage)localObject3).res_id.set(ByteStringMicro.copyFromUtf8(this.file.serverPath));
+        }
+        ((im_msg_body.NotOnlineImage)localObject3).file_len.set((int)this.mFileSize);
+        ((im_msg_body.NotOnlineImage)localObject3).pic_md5.set(ByteStringMicro.copyFrom(this.mLocalMd5));
+        ((im_msg_body.NotOnlineImage)localObject3).pic_height.set(this.mHeight);
+        ((im_msg_body.NotOnlineImage)localObject3).pic_width.set(this.mWidth);
+        localObject1 = ((im_msg_body.NotOnlineImage)localObject3).original;
+        if (!this.mIsRawPic) {
+          break label823;
+        }
+        i = 1;
+        ((PBUInt32Field)localObject1).set(i);
+        Object localObject4 = this.mUiRequest.mRec;
+        if (MessageForPic.class.isInstance(localObject4))
         {
-          localRichText = new im_msg_body.RichText();
-          Object localObject4 = new im_msg_body.NotOnlineImage();
-          changeRichText();
-          ((im_msg_body.NotOnlineImage)localObject4).file_path.set(ByteStringMicro.copyFromUtf8(this.mFileName));
-          if (this.file.uuidPath != null) {
-            ((im_msg_body.NotOnlineImage)localObject4).download_path.set(ByteStringMicro.copyFromUtf8(this.file.uuidPath));
-          }
-          if (this.file.serverPath != null) {
-            ((im_msg_body.NotOnlineImage)localObject4).res_id.set(ByteStringMicro.copyFromUtf8(this.file.serverPath));
-          }
-          ((im_msg_body.NotOnlineImage)localObject4).file_len.set((int)this.mFileSize);
-          ((im_msg_body.NotOnlineImage)localObject4).pic_md5.set(ByteStringMicro.copyFrom(this.mLocalMd5));
-          ((im_msg_body.NotOnlineImage)localObject4).pic_height.set(this.mHeight);
-          ((im_msg_body.NotOnlineImage)localObject4).pic_width.set(this.mWidth);
-          Object localObject1 = ((im_msg_body.NotOnlineImage)localObject4).original;
-          if (!this.mIsRawPic) {
-            break label914;
-          }
-          ((PBUInt32Field)localObject1).set(i);
-          Object localObject5 = this.mUiRequest.mRec;
-          Object localObject6;
-          if (MessageForPic.class.isInstance(localObject5))
+          MessageForPic localMessageForPic = (MessageForPic)localObject4;
+          ((im_msg_body.NotOnlineImage)localObject3).uint32_show_len.set(localMessageForPic.mShowLength);
+          ((im_msg_body.NotOnlineImage)localObject3).uint32_download_len.set(localMessageForPic.mDownloadLength);
+          ((im_msg_body.NotOnlineImage)localObject3).img_type.set(localMessageForPic.imageType);
+          localObject1 = localMessageForPic.picExtraData;
+          if (localObject1 != null)
           {
-            localObject6 = (MessageForPic)localObject5;
-            ((im_msg_body.NotOnlineImage)localObject4).uint32_show_len.set(((MessageForPic)localObject6).mShowLength);
-            ((im_msg_body.NotOnlineImage)localObject4).uint32_download_len.set(((MessageForPic)localObject6).mDownloadLength);
-            ((im_msg_body.NotOnlineImage)localObject4).img_type.set(((MessageForPic)localObject6).imageType);
-            if (((MessageForPic)localObject6).picExtraData != null)
+            localObject2 = localMessageForPic.picExtraData.getOfflineImageResvAttr();
+            localObject1 = localObject2;
+            if (QLog.isColorLevel())
             {
-              localObject3 = ((MessageForPic)localObject6).picExtraData.getOfflineImageResvAttr();
-              localObject1 = localObject3;
-              if (QLog.isColorLevel())
-              {
-                QLog.d("picExtra", 4, "imageBizType: " + ((MessageForPic)localObject6).picExtraData.imageBizType);
-                localObject1 = localObject3;
-              }
-              i = getPicSourceReport((MessageForPic)localObject6, this.mUiRequest.mPicSendSource);
-              if (QLog.isColorLevel()) {
-                QLog.d("picExtra", 4, "source: " + i);
-              }
-              ((NotOnlineImageExtPb.ResvAttr)localObject1).uint32_source.set(i);
-              ((im_msg_body.NotOnlineImage)localObject4).bytes_pb_reserve.set(ByteStringMicro.copyFrom(((NotOnlineImageExtPb.ResvAttr)((NotOnlineImageExtPb.ResvAttr)localObject1).get()).toByteArray()), true);
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("imageBizType: ");
+              ((StringBuilder)localObject1).append(localMessageForPic.picExtraData.imageBizType);
+              QLog.d("picExtra", 4, ((StringBuilder)localObject1).toString());
+              localObject1 = localObject2;
             }
           }
           else
           {
-            ((im_msg_body.NotOnlineImage)localObject4).biz_type.set(getReportBizType());
-            if (QLog.isColorLevel()) {
-              logRichMediaEvent("busiTypeStat", "uiBusiType:" + this.mUiRequest.mBusiType + " protoBusiType:" + ((im_msg_body.NotOnlineImage)localObject4).biz_type.get());
+            localObject2 = new NotOnlineImageExtPb.ResvAttr();
+            localObject1 = localObject2;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("picExtra", 4, "imageBizType: 0");
+              localObject1 = localObject2;
             }
-            localObject1 = new im_msg_body.Elem();
-            if (!FlashPicHelper.a((MessageRecord)localObject5)) {
-              break label871;
-            }
-            localObject3 = new im_msg_body.CommonElem();
-            ((im_msg_body.CommonElem)localObject3).uint32_service_type.set(3);
-            localObject5 = new hummer_commelem.MsgElemInfo_servtype3();
-            ((hummer_commelem.MsgElemInfo_servtype3)localObject5).flash_c2c_pic.set((MessageMicro)localObject4);
-            ((im_msg_body.CommonElem)localObject3).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype3)localObject5).toByteArray()));
-            ((im_msg_body.Elem)localObject1).common_elem.set((MessageMicro)localObject3);
-            localRichText.elems.add((MessageMicro)localObject1);
-            if (QLog.isColorLevel()) {
-              QLog.d("flash", 2, "C2CPicUploadProcessor constructPicRichText send flash");
-            }
-            localObject1 = new im_msg_body.Text();
-            ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131701372)));
-            localObject3 = new im_msg_body.Elem();
-            ((im_msg_body.Elem)localObject3).text.set((MessageMicro)localObject1);
-            localRichText.elems.add((MessageMicro)localObject3);
-            localObject5 = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
-            if (!(localObject5 instanceof MessageForStructing)) {
-              break;
-            }
-            localObject3 = (MessageForStructing)localObject5;
-            if ((((MessageForStructing)localObject3).structingMsg == null) || (!(((MessageForStructing)localObject3).structingMsg instanceof StructMsgForImageShare))) {
-              break;
-            }
-            localObject6 = (StructMsgForImageShare)((MessageForStructing)localObject3).structingMsg;
-            localObject4 = ((StructMsgForImageShare)localObject6).getFirstImageElement();
-            if (localObject4 == null) {
-              break;
-            }
-            ((StructMsgItemImage)localObject4).ae = this.mMd5Str;
-            if (this.mResid != null) {
-              break label892;
-            }
-            localObject1 = this.mUuid;
-            ((StructMsgItemImage)localObject4).ad = ((String)localObject1);
-            ((StructMsgItemImage)localObject4).d = this.mFileSize;
-            ((StructMsgItemImage)localObject4).e = ((MessageRecord)localObject5).time;
-            if (!AIOGallerySceneWithBusiness.b(((StructMsgForImageShare)localObject6).mMsgActionData)) {
-              break label900;
-            }
-            localObject5 = ((StructMsgItemImage)localObject4).ac;
-            ((StructMsgItemImage)localObject4).ac = "";
-            localObject1 = ((MessageForStructing)localObject3).structingMsg.getXmlBytes();
-            ((StructMsgItemImage)localObject4).ac = ((String)localObject5);
-            if ((TextUtils.isEmpty(((MessageForStructing)localObject3).frienduin)) || (localObject1 == null)) {
-              break;
-            }
-            localObject3 = new im_msg_body.RichMsg();
-            ((im_msg_body.RichMsg)localObject3).bytes_template_1.set(ByteStringMicro.copyFrom((byte[])localObject1));
-            localObject1 = new im_msg_body.Elem();
-            ((im_msg_body.Elem)localObject1).rich_msg.set((MessageMicro)localObject3);
-            localRichText.elems.add((MessageMicro)localObject1);
-            break;
           }
-          localObject3 = new NotOnlineImageExtPb.ResvAttr();
-          localObject1 = localObject3;
-          if (!QLog.isColorLevel()) {
-            continue;
+          i = getPicSourceReport(localMessageForPic, this.mUiRequest.mPicSendSource);
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("source: ");
+            ((StringBuilder)localObject2).append(i);
+            QLog.d("picExtra", 4, ((StringBuilder)localObject2).toString());
           }
-          QLog.d("picExtra", 4, "imageBizType: 0");
-          localObject1 = localObject3;
-          continue;
-          localException.not_online_image.set((MessageMicro)localObject4);
+          ((NotOnlineImageExtPb.ResvAttr)localObject1).uint32_source.set(i);
+          ((im_msg_body.NotOnlineImage)localObject3).bytes_pb_reserve.set(ByteStringMicro.copyFrom(((NotOnlineImageExtPb.ResvAttr)((NotOnlineImageExtPb.ResvAttr)localObject1).get()).toByteArray()), true);
         }
-        catch (Exception localException)
+        ((im_msg_body.NotOnlineImage)localObject3).biz_type.set(getReportBizType());
+        if (QLog.isColorLevel())
         {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("uiBusiType:");
+          ((StringBuilder)localObject1).append(this.mUiRequest.mBusiType);
+          ((StringBuilder)localObject1).append(" protoBusiType:");
+          ((StringBuilder)localObject1).append(((im_msg_body.NotOnlineImage)localObject3).biz_type.get());
+          logRichMediaEvent("busiTypeStat", ((StringBuilder)localObject1).toString());
+        }
+        localObject1 = new im_msg_body.Elem();
+        if (FlashPicHelper.a((MessageRecord)localObject4))
+        {
+          localObject2 = new im_msg_body.CommonElem();
+          ((im_msg_body.CommonElem)localObject2).uint32_service_type.set(3);
+          localObject4 = new hummer_commelem.MsgElemInfo_servtype3();
+          ((hummer_commelem.MsgElemInfo_servtype3)localObject4).flash_c2c_pic.set((MessageMicro)localObject3);
+          ((im_msg_body.CommonElem)localObject2).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype3)localObject4).toByteArray()));
+          ((im_msg_body.Elem)localObject1).common_elem.set((MessageMicro)localObject2);
+          localRichText.elems.add((MessageMicro)localObject1);
           if (QLog.isColorLevel()) {
-            QLog.e("C2CPicUploadProcessor", 2, "Construct richtext error", localException);
+            QLog.d("flash", 2, "C2CPicUploadProcessor constructPicRichText send flash");
           }
-          localException.printStackTrace();
-          return null;
+          localObject1 = new im_msg_body.Text();
+          ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131701512)));
+          localObject2 = new im_msg_body.Elem();
+          ((im_msg_body.Elem)localObject2).text.set((MessageMicro)localObject1);
+          localRichText.elems.add((MessageMicro)localObject2);
         }
-        label871:
-        localRichText.elems.add(localException);
-        continue;
-        label892:
-        Object localObject2 = this.mResid;
-        continue;
-        localObject2 = ((MessageForStructing)localObject3).structingMsg.getXmlBytes();
+        else
+        {
+          ((im_msg_body.Elem)localObject1).not_online_image.set((MessageMicro)localObject3);
+          localRichText.elems.add((MessageMicro)localObject1);
+        }
+        Object localObject2 = ((IMessageFacade)this.app.getRuntimeService(IMessageFacade.class, "")).getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
+        localObject1 = localRichText;
+        if (((IMsgStructing)QRoute.api(IMsgStructing.class)).isMessageForStructing((MessageRecord)localObject2))
+        {
+          localObject3 = (IMsgStructing)QRoute.api(IMsgStructing.class);
+          localObject4 = this.mMd5Str;
+          if (this.mResid == null) {
+            localObject1 = this.mUuid;
+          } else {
+            localObject1 = this.mResid;
+          }
+          ((IMsgStructing)localObject3).uploadPicConstructRichText((MessageRecord)localObject2, (String)localObject4, (String)localObject1, this.mFileSize, null, localRichText);
+          return localRichText;
+        }
       }
-      return localRichText;
-    }
-  }
-  
-  private void doDSReport(boolean paramBoolean, String paramString)
-  {
-    Object localObject1 = null;
-    if (this.mUiRequest.mRec != null) {
-      localObject1 = this.mUiRequest.mRec;
-    }
-    long l1;
-    if ((localObject1 != null) && ((localObject1 instanceof MessageForPic)))
-    {
-      l1 = ((MessageForPic)localObject1).DSKey;
-      if (l1 != 0L) {
-        break label53;
-      }
-    }
-    label53:
-    Object[] arrayOfObject;
-    do
-    {
-      return;
-      arrayOfObject = (Object[])this.app.getMsgCache().b.remove(Long.valueOf(l1));
-    } while (arrayOfObject == null);
-    String str2 = (String)arrayOfObject[0];
-    ((MessageForPic)localObject1).SpeedInfo = paramString;
-    Object localObject2 = paramString.split(";");
-    Object localObject3 = localObject2[0];
-    localObject1 = localObject2[1];
-    localObject2 = localObject2[2];
-    localObject3 = ((String)localObject3).split("_");
-    Object localObject5 = ((String)localObject1).split("_");
-    localObject1 = ((String)localObject2).split("_");
-    long l2 = Long.valueOf(localObject3[4]).longValue();
-    long l3 = Long.valueOf(localObject1[4]).longValue();
-    long l4 = Long.valueOf(localObject5[4]).longValue();
-    localObject2 = str2.split(";");
-    localObject3 = localObject2[0];
-    localObject1 = localObject2[1];
-    localObject2 = localObject2[2];
-    localObject3 = ((String)localObject3).split("_");
-    localObject1 = ((String)localObject1).split("_");
-    localObject2 = ((String)localObject2).split("_");
-    long l5 = Long.valueOf(localObject3[4]).longValue();
-    long l6 = Long.valueOf(localObject2[4]).longValue();
-    long l7 = Long.valueOf(localObject1[4]).longValue();
-    localObject2 = (String)this.mReportInfo.get("param_BdhTrans");
-    long l8 = Long.valueOf(localObject1[4]).longValue() - ((Integer)arrayOfObject[4]).intValue();
-    Object localObject4;
-    String str1;
-    int k;
-    int j;
-    if ((localObject2 != null) && (((String)localObject2).length() > 0))
-    {
-      localObject2 = ((String)localObject2).split(";");
-      localObject1 = localObject2[0];
-      localObject4 = localObject2[2].split(":")[1];
-      localObject1 = localObject2[3].split(":")[1];
-      str1 = localObject2[4].split(":")[1];
-      localObject3 = localObject2[5].split(":")[1];
-      localObject2 = localObject2[6].split(":")[1];
-      l1 = Long.valueOf(localObject5[4]).longValue() - Integer.valueOf((String)localObject1).intValue();
-      k = (int)((float)this.file.fileSize / ((float)l1 / 1000.0F) / 1000.0F);
-      j = (int)((float)this.file.fileSize / ((float)l8 / 1000.0F) / 1000.0F);
-      if ((localObject1 == null) || (l1 < l8)) {
-        break label1295;
-      }
-    }
-    label1287:
-    label1295:
-    for (int i = 0;; i = 1)
-    {
-      String str3 = (String)arrayOfObject[2];
-      int m = this.app.getMsgCache().a();
-      localObject5 = new SimpleDateFormat("MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()));
-      StringBuilder localStringBuilder = new StringBuilder(HardCodeUtil.a(2131701371)).append("发了第").append(m).append("张").append("\n");
-      localStringBuilder.append("时间:").append((String)localObject5).append("\n");
-      localStringBuilder.append("图片大小:").append(this.file.fileSize).append("bytes\n");
-      localObject5 = localStringBuilder.append("老通道传输:").append(l8).append("ms,").append("速度:");
-      if (l8 == 0L) {
-        j = 0;
-      }
-      ((StringBuilder)localObject5).append(j).append("kbps").append("\n");
-      localObject5 = localStringBuilder.append("新通道传输:").append(l1).append("ms,").append("速度:");
-      if (l1 == 0L)
+      catch (Exception localException)
       {
-        j = 0;
-        label727:
-        ((StringBuilder)localObject5).append(j).append("kbps").append("\n");
-        if (i == 0) {
-          break label1271;
+        localObject1 = null;
+        if (QLog.isColorLevel()) {
+          QLog.e("C2CPicUploadProcessor", 2, "Construct richtext error", localException);
         }
-        localObject5 = "结果:新通道传输较快\n";
-        label756:
-        localStringBuilder.append((String)localObject5);
-        localStringBuilder.append("老通道 Step:").append("申请").append(l5).append("ms_").append("传输").append(l7).append("ms_").append("消息").append(l6).append("ms").append("\n");
-        localStringBuilder.append("新通道 Step:").append("申请").append(l2).append("ms_").append("传输").append(l4).append("ms_").append("消息").append(l3).append("ms").append("\n");
-        localStringBuilder.append("群图Info:").append("接入:").append(arrayOfObject[3]).append("ms;").append("架平:").append(arrayOfObject[4]).append("ms").append("\n");
-        localObject4 = localStringBuilder.append("新通道info:").append("接入:").append((String)localObject4).append("ms;").append("架平:");
-        if (localObject1 == null) {
-          break label1279;
-        }
-        label987:
-        ((StringBuilder)localObject4).append((String)localObject1).append("ms").append("\n");
-        localObject4 = localStringBuilder.append("Channel:");
-        if (this.mChannelStatus != 1) {
-          break label1287;
-        }
+        localException.printStackTrace();
       }
-      for (localObject1 = "Tcp";; localObject1 = "Http")
-      {
-        ((StringBuilder)localObject4).append((String)localObject1).append("\n");
-        localStringBuilder.append("网络:").append(str1).append("\n");
-        localStringBuilder.append("Host:").append((String)localObject3).append("\n");
-        localStringBuilder.append("连接数:").append((String)localObject2).append("\n");
-        localObject1 = MessageRecordFactory.a(this.app, this.app.getCurrentAccountUin(), str3, str3, 1, (byte)1, (byte)0, (short)0, localStringBuilder.toString());
-        this.app.getMessageFacade().a((MessageRecord)localObject1, null);
-        localObject1 = new HashMap();
-        ((HashMap)localObject1).put("param_c2cSpeed", String.valueOf(l1));
-        ((HashMap)localObject1).put("param_grpSpeed", String.valueOf(l8));
-        ((HashMap)localObject1).put("param_c2cInfo", paramString);
-        ((HashMap)localObject1).put("param_grpInfo", str2);
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSFResult", paramBoolean, l1, this.mFileSize, (HashMap)localObject1, "");
-        return;
-        l1 = this.reportTimeTrans;
-        long l9 = this.reportTimePicCache;
-        localObject3 = null;
-        localObject1 = String.valueOf(l9);
-        localObject2 = null;
-        str1 = null;
-        localObject4 = null;
-        break;
-        j = k;
-        break label727;
-        label1271:
-        localObject5 = "结果:老通道传输较快\n";
-        break label756;
-        label1279:
-        localObject1 = "";
-        break label987;
-      }
+      return localObject1;
+      label823:
+      int i = 0;
     }
   }
   
   private void parseExtInfo(byte[] paramArrayOfByte)
   {
-    int i = 0;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    for (;;)
+    if (paramArrayOfByte != null)
     {
-      return;
-      Object localObject = new CSDataHighwayHead.PicRspExtInfo();
+      if (paramArrayOfByte.length == 0) {
+        return;
+      }
+      Object localObject1 = new CSDataHighwayHead.PicRspExtInfo();
       try
       {
-        ((CSDataHighwayHead.PicRspExtInfo)localObject).mergeFrom(paramArrayOfByte);
-        if (((CSDataHighwayHead.PicRspExtInfo)localObject).bytes_skey.has())
-        {
-          paramArrayOfByte = ((CSDataHighwayHead.PicRspExtInfo)localObject).bytes_skey.get().toByteArray();
-          localObject = new byte[paramArrayOfByte.length];
-          System.arraycopy(paramArrayOfByte, 0, localObject, 0, paramArrayOfByte.length);
-          if (QLog.isColorLevel()) {
-            QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> byte_skey.length:" + paramArrayOfByte.length);
-          }
-          Cryptor localCryptor = new Cryptor();
-          if (this.mSessionKey != null)
-          {
-            localObject = localCryptor.decrypt((byte[])localObject, 0, paramArrayOfByte.length, this.mSessionKey);
-            if ((localObject != null) && (localObject.length > 36))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> result.length:" + localObject.length);
-              }
-              paramArrayOfByte = new byte[localObject.length];
-              System.arraycopy(localObject, 0, paramArrayOfByte, 0, localObject.length);
-              int j = ByteBuffer.wrap(paramArrayOfByte).getShort(34);
-              localObject = new char[j];
-              while (i < j)
-              {
-                localObject[i] = ((char)paramArrayOfByte[(i + 36)]);
-                i += 1;
-              }
-            }
-          }
-        }
+        ((CSDataHighwayHead.PicRspExtInfo)localObject1).mergeFrom(paramArrayOfByte);
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.d("C2CPicUploadProcessor", 2, paramArrayOfByte.getMessage());
-          }
-        }
-        paramArrayOfByte = String.valueOf((char[])localObject);
+        paramArrayOfByte.printStackTrace();
         if (QLog.isColorLevel()) {
-          QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> fileIdStr:" + paramArrayOfByte);
+          QLog.d("C2CPicUploadProcessor", 2, paramArrayOfByte.getMessage());
         }
-        this.file.serverPath = paramArrayOfByte;
-        this.mResid = paramArrayOfByte;
-        this.file.uuidPath = paramArrayOfByte;
-        this.mUuid = paramArrayOfByte;
+      }
+      if (!((CSDataHighwayHead.PicRspExtInfo)localObject1).bytes_skey.has()) {
+        return;
+      }
+      paramArrayOfByte = ((CSDataHighwayHead.PicRspExtInfo)localObject1).bytes_skey.get().toByteArray();
+      localObject1 = new byte[paramArrayOfByte.length];
+      int j = paramArrayOfByte.length;
+      int i = 0;
+      System.arraycopy(paramArrayOfByte, 0, localObject1, 0, j);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("<BDH_LOG> byte_skey.length:");
+        ((StringBuilder)localObject2).append(paramArrayOfByte.length);
+        QLog.d("C2CPicUploadProcessor", 2, ((StringBuilder)localObject2).toString());
+      }
+      Object localObject2 = new Cryptor();
+      byte[] arrayOfByte = this.mSessionKey;
+      if (arrayOfByte != null)
+      {
+        paramArrayOfByte = ((Cryptor)localObject2).decrypt((byte[])localObject1, 0, paramArrayOfByte.length, arrayOfByte);
+        if (paramArrayOfByte != null)
+        {
+          if (paramArrayOfByte.length <= 36) {
+            return;
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("<BDH_LOG> result.length:");
+            ((StringBuilder)localObject1).append(paramArrayOfByte.length);
+            QLog.d("C2CPicUploadProcessor", 2, ((StringBuilder)localObject1).toString());
+          }
+          localObject1 = new byte[paramArrayOfByte.length];
+          System.arraycopy(paramArrayOfByte, 0, localObject1, 0, paramArrayOfByte.length);
+          j = ByteBuffer.wrap((byte[])localObject1).getShort(34);
+          paramArrayOfByte = new char[j];
+          while (i < j)
+          {
+            paramArrayOfByte[i] = ((char)localObject1[(i + 36)]);
+            i += 1;
+          }
+          paramArrayOfByte = String.valueOf(paramArrayOfByte);
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("<BDH_LOG> fileIdStr:");
+            ((StringBuilder)localObject1).append(paramArrayOfByte);
+            QLog.d("C2CPicUploadProcessor", 2, ((StringBuilder)localObject1).toString());
+          }
+          this.file.serverPath = paramArrayOfByte;
+          this.mResid = paramArrayOfByte;
+          this.file.uuidPath = paramArrayOfByte;
+          this.mUuid = paramArrayOfByte;
+        }
       }
     }
   }
@@ -484,10 +326,11 @@ public class C2CPicUploadProcessor
     this.file.stepUrl.reset();
     this.file.stepTrans.reset();
     this.file.stepNotify.reset();
+    ProcessorReport localProcessorReport = this.mProcessorReport;
     FileMsg localFileMsg = this.file;
     long l = System.nanoTime();
     localFileMsg.startTime = l;
-    this.mStartTime = l;
+    localProcessorReport.mStartTime = l;
     this.file.endTime = 0L;
   }
   
@@ -498,8 +341,8 @@ public class C2CPicUploadProcessor
   
   public int checkParam()
   {
-    Object localObject = getTransferRequest();
-    if ((localObject != null) && (((TransferRequest)localObject).mIsFastForward))
+    Object localObject1 = getTransferRequest();
+    if ((localObject1 != null) && (((TransferRequest)localObject1).mIsFastForward))
     {
       if ((this.mUiRequest.mExtraObj != null) && ((this.mUiRequest.mExtraObj instanceof TransferRequest.PicUpExtraInfo))) {
         this.mIsRawPic = ((TransferRequest.PicUpExtraInfo)this.mUiRequest.mExtraObj).mIsRaw;
@@ -507,50 +350,67 @@ public class C2CPicUploadProcessor
       return 0;
     }
     logRichMediaEvent("uiParam", this.mUiRequest.toString());
-    localObject = this.mUiRequest.mLocalPath;
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    localObject1 = this.mUiRequest.mLocalPath;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      setError(9302, getExpStackString(new Exception("filePath null")));
+      this.mProcessorReport.setError(9302, getExpStackString(new Exception("filePath null")), null, null);
       onError();
       return -1;
     }
-    File localFile = getFile((String)localObject);
-    if (!localFile.exists())
+    Object localObject2 = getFile((String)localObject1);
+    StringBuilder localStringBuilder;
+    if (!((File)localObject2).exists())
     {
-      setError(9042, getExpStackString(new Exception("sendFile not exist " + (String)localObject)));
+      localObject2 = this.mProcessorReport;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sendFile not exist ");
+      localStringBuilder.append((String)localObject1);
+      ((ProcessorReport)localObject2).setError(9042, getExpStackString(new Exception(localStringBuilder.toString())), null, null);
       onError();
       return -1;
     }
-    if (!localFile.canRead())
+    if (!((File)localObject2).canRead())
     {
-      setError(9070, getExpStackString(new Exception("sendFile not readable " + this.file.filePath)));
+      localObject1 = this.mProcessorReport;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("sendFile not readable ");
+      ((StringBuilder)localObject2).append(this.file.filePath);
+      ((ProcessorReport)localObject1).setError(9070, getExpStackString(new Exception(((StringBuilder)localObject2).toString())), null, null);
       onError();
       return -1;
     }
-    long l = localFile.length();
+    long l = ((File)localObject2).length();
     this.file.fileSize = l;
     this.mFileSize = l;
     if (l <= 0L)
     {
-      setError(9071, getExpStackString(new Exception("file size 0 " + (String)localObject)));
+      localObject2 = this.mProcessorReport;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file size 0 ");
+      localStringBuilder.append((String)localObject1);
+      ((ProcessorReport)localObject2).setError(9071, getExpStackString(new Exception(localStringBuilder.toString())), null, null);
       onError();
       return -1;
     }
-    localObject = FileUtils.b((String)localObject);
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      if ((((String)localObject).contains(FileUtils.jdField_a_of_type_JavaLangString)) || (!FileUtils.g((String)localObject)))
+    localObject1 = FileUtils.estimateFileType((String)localObject1);
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      if ((!((String)localObject1).contains(FileUtils.unKnownFileTypeMark)) && (FileUtils.isPicFileByExt((String)localObject1)))
       {
-        setError(9072, (String)localObject, getClientReason((String)localObject), null);
+        this.mExtName = ((String)localObject1);
+      }
+      else
+      {
+        localObject2 = this.mProcessorReport;
+        setError(9072, (String)localObject1, ProcessorReport.getClientReason((String)localObject1), null);
         onError();
         new Handler(Looper.getMainLooper()).post(new C2CPicUploadProcessor.1(this));
         return -1;
       }
-      this.mExtName = ((String)localObject);
     }
-    if (l >= PicUploadFileSizeLimit.getLimitC2C())
+    if (l >= ((IPicBus)QRoute.api(IPicBus.class)).getC2CPicSizeLimit())
     {
-      setError(9063, (String)localObject, getClientReason((String)localObject), null);
+      localObject2 = this.mProcessorReport;
+      setError(9063, (String)localObject1, ProcessorReport.getClientReason((String)localObject1), null);
       onError();
       return -1;
     }
@@ -567,149 +427,87 @@ public class C2CPicUploadProcessor
       collectChnlCostReport();
       if (this.mUiRequest.mIsPresend)
       {
-        long l = 0L;
+        long l;
         if (this.mEnterAioTime != 0L) {
           l = (paramLong2 - this.mEnterAioTime) / 1000000L;
+        } else {
+          l = 0L;
         }
         if (this.mUiRequest.myPresendInvalid) {
           l = paramLong1;
         }
-        double d = l / paramLong1;
-        StatisticConstants.a(l, this.mFileSize, this.mIsPicSecondTransfered, d);
-        if ((d >= 0.0D) && (d <= 1.0D)) {
-          this.mReportInfo.put("param_AIOPercent", d + "");
+        double d1 = l;
+        double d2 = paramLong1;
+        Double.isNaN(d1);
+        Double.isNaN(d2);
+        d1 /= d2;
+        reportActPSdoneAioDuration(l, this.mFileSize, this.mIsPicSecondTransfered, d1);
+        if ((d1 >= 0.0D) && (d1 <= 1.0D))
+        {
+          localObject1 = this.mProcessorReport.mReportInfo;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(d1);
+          ((StringBuilder)localObject2).append("");
+          ((HashMap)localObject1).put("param_AIOPercent", ((StringBuilder)localObject2).toString());
         }
-        this.mReportInfo.put("param_AIODuration", l + "");
-        if (QLog.isColorLevel()) {
-          QLog.d("C2CPicUploadProcessor", 2, "doReport ,mStartTime = " + this.mStartTime + ",mEnterAioTime = " + this.mEnterAioTime + ",finishTime  = " + paramLong2 + ", aioDuration = " + l + ", duration = " + paramLong1 + "processor:" + this + ",mUiRequest.myPresendInvalid = " + this.mUiRequest.myPresendInvalid + ",Percent = " + d);
+        localObject1 = this.mProcessorReport.mReportInfo;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(l);
+        ((StringBuilder)localObject2).append("");
+        ((HashMap)localObject1).put("param_AIODuration", ((StringBuilder)localObject2).toString());
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("doReport ,mStartTime = ");
+          ((StringBuilder)localObject1).append(this.mProcessorReport.mStartTime);
+          ((StringBuilder)localObject1).append(",mEnterAioTime = ");
+          ((StringBuilder)localObject1).append(this.mEnterAioTime);
+          ((StringBuilder)localObject1).append(",finishTime  = ");
+          ((StringBuilder)localObject1).append(paramLong2);
+          ((StringBuilder)localObject1).append(", aioDuration = ");
+          ((StringBuilder)localObject1).append(l);
+          ((StringBuilder)localObject1).append(", duration = ");
+          ((StringBuilder)localObject1).append(paramLong1);
+          ((StringBuilder)localObject1).append("processor:");
+          ((StringBuilder)localObject1).append(this);
+          ((StringBuilder)localObject1).append(",mUiRequest.myPresendInvalid = ");
+          ((StringBuilder)localObject1).append(this.mUiRequest.myPresendInvalid);
+          ((StringBuilder)localObject1).append(",Percent = ");
+          ((StringBuilder)localObject1).append(d1);
+          QLog.d("C2CPicUploadProcessor", 2, ((StringBuilder)localObject1).toString());
         }
       }
-      reportForIpv6(true, paramLong1);
-      HashMap localHashMap = new HashMap();
-      Iterator localIterator = this.mReportInfo.entrySet().iterator();
-      while (localIterator.hasNext())
+      this.mProcessorReport.reportForIpv6(true, paramLong1, true, getReportTAG());
+      Object localObject1 = new HashMap();
+      Object localObject2 = this.mProcessorReport.mReportInfo.entrySet().iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        localHashMap.put(localEntry.getKey(), localEntry.getValue());
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+        ((HashMap)localObject1).put(localEntry.getKey(), localEntry.getValue());
       }
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG(), true, paramLong1, this.mFileSize, localHashMap, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG(), true, paramLong1, this.mFileSize, (HashMap)localObject1, "");
     }
-    for (;;)
+    else
     {
-      setReportFlag();
-      super.doReport(paramBoolean);
-      return;
-      if (this.errCode != -9527) {
-        this.mReportInfo.remove("param_rspHeader");
+      if (this.mProcessorReport.errCode != -9527) {
+        this.mProcessorReport.mReportInfo.remove("param_rspHeader");
       }
-      this.mReportInfo.remove("param_url");
-      this.mReportInfo.put("param_FailCode", String.valueOf(this.errCode));
-      this.mReportInfo.put("param_errorDesc", this.errDesc);
-      this.mReportInfo.put("param_picSize", String.valueOf(this.mFileSize));
-      this.mReportInfo.put("param_uinType", String.valueOf(this.mUiRequest.mUinType));
-      this.mReportInfo.put("param_uniseq", String.valueOf(this.mUiRequest.mUniseq));
-      reportForIpv6(false, paramLong1);
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG(), false, paramLong1, this.mFileSize, this.mReportInfo, "");
+      this.mProcessorReport.mReportInfo.remove("param_url");
+      this.mProcessorReport.mReportInfo.put("param_FailCode", String.valueOf(this.mProcessorReport.errCode));
+      this.mProcessorReport.mReportInfo.put("param_errorDesc", this.mProcessorReport.errDesc);
+      this.mProcessorReport.mReportInfo.put("param_picSize", String.valueOf(this.mFileSize));
+      this.mProcessorReport.mReportInfo.put("param_uinType", String.valueOf(this.mUiRequest.mUinType));
+      this.mProcessorReport.mReportInfo.put("param_uniseq", String.valueOf(this.mUiRequest.mUniseq));
+      this.mProcessorReport.reportForIpv6(false, paramLong1, true, getReportTAG());
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, getReportTAG(), false, paramLong1, this.mFileSize, this.mProcessorReport.mReportInfo, "");
     }
+    setReportFlag();
+    super.doReport(paramBoolean);
   }
   
   protected void doReport(boolean paramBoolean)
   {
-    Object localObject1;
-    Object localObject2;
-    if (!paramBoolean)
-    {
-      localObject1 = "Q.richmedia." + TransFileUtil.getUinDesc(this.mUiRequest.mUinType) + "." + RichMediaUtil.getFileType(this.mUiRequest.mFileType);
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("id:" + this.mUiRequest.mUniseq + "  ");
-      ((StringBuilder)localObject2).append("errCode:" + this.errCode + "  ");
-      ((StringBuilder)localObject2).append("errDesc:" + this.errDesc);
-      QLog.d((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-    }
-    if ((!paramBoolean) && (this.shouldMsgReportSucc == 1))
-    {
-      this.mStepMsg.result = 1;
-      paramBoolean = true;
-    }
-    for (;;)
-    {
-      localObject1 = this.mStepUrl.getReportInfo(1) + ";" + this.mStepTrans.getReportInfo(2) + ";" + this.mStepMsg.getReportInfo(3);
-      localObject2 = this.mStepTransPre.getReportInfo(21) + ";" + this.mStepTransLeft.getReportInfo(22);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> stepParam: " + (String)localObject1);
-        QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> openUpSetpParam: " + (String)localObject2);
-        QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> mStepUrl: " + this.mStepUrl.toString() + ";mStepTrans: " + this.mStepTrans.toString() + ";mStepMsg: " + this.mStepMsg.toString() + ";mStepTransPre: " + this.mStepTransPre.toString() + ";mStepTransLeft: " + this.mStepTransLeft.toString() + ";");
-      }
-      String str;
-      if (!paramBoolean)
-      {
-        str = (String)this.mReportInfo.get("param_reason");
-        if (!"connError_unreachable".equalsIgnoreCase(str)) {
-          break label517;
-        }
-      }
-      label517:
-      do
-      {
-        this.mReportInfo.put("param_reason", "N_1");
-        while (this.mUiRequest.mBusiType == 1030)
-        {
-          return;
-          if ("connError_noroute".equalsIgnoreCase(str)) {
-            this.mReportInfo.put("param_reason", "N_2");
-          }
-        }
-      } while (((!paramBoolean) && (RichMediaStrategy.noReportByErrorCode(this.errCode))) || (this.mIsOldDbRec) || ((paramBoolean) && ((this.mReportedFlag & 0x2) > 0)) || ((!paramBoolean) && ((this.mReportedFlag & 0x1) > 0)));
-      int j = this.mReportedFlag;
-      long l1;
-      long l2;
-      if (paramBoolean)
-      {
-        i = 2;
-        this.mReportedFlag = (i | j);
-        this.mEndTime = System.currentTimeMillis();
-        l1 = System.nanoTime();
-        l2 = (l1 - this.mStartTime) / 1000000L;
-        Log.i("AutoMonitor", "SendC2CPic, cost=" + (this.mStepTrans.finishTime - this.mStepTrans.startTime) / 1000000L);
-        this.mReportInfo.put("param_step", localObject1);
-        this.mReportInfo.put("param_openUpStep", localObject2);
-        localObject2 = this.mReportInfo;
-        if (this.mResid != null) {
-          break label1064;
-        }
-        localObject1 = this.mUuid;
-        label725:
-        ((HashMap)localObject2).put("param_uuid", localObject1);
-        this.mReportInfo.put("param_toUin", this.mUiRequest.mPeerUin);
-        this.mReportInfo.put("param_picmd5", this.mFileName);
-        this.mReportInfo.put("param_isPresend", this.mUiRequest.mIsPresend + "");
-        this.mReportInfo.put("param_isSecondTrans", this.mIsPicSecondTransfered + "");
-        this.mReportInfo.put("param_PhoneType", StatisticConstants.a() + "");
-        this.mReportInfo.put("param_NetType", NetworkUtil.a(BaseApplication.getContext()) + "");
-        this.mReportInfo.put("param_IsRawPic", this.mIsRawPic + "");
-        this.mReportInfo.put("param_quickHttp", String.valueOf(this.mSendByQuickHttp));
-        this.mReportInfo.put("param_picType", String.valueOf(this.mPicType));
-        this.mReportInfo.put("param_busi", String.valueOf(this.mUiRequest.mBusiType));
-        this.mReportInfo.put("param_openUp", String.valueOf(this.mIsOpenUpEnable));
-        localObject1 = this.mReportInfo;
-        if (!this.mUiRequest.isQzonePic) {
-          break label1073;
-        }
-      }
-      label1064:
-      label1073:
-      for (int i = 1;; i = 0)
-      {
-        ((HashMap)localObject1).put("param_source_type", String.valueOf(i));
-        doRealReport(paramBoolean, l2, l1);
-        return;
-        i = 1;
-        break;
-        localObject1 = this.mResid;
-        break label725;
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   protected void doStart()
@@ -717,36 +515,51 @@ public class C2CPicUploadProcessor
     sendMessageToUpdate(1000);
     this.file.closeInputStream();
     sendMessageToUpdate(1001);
-    TransferRequest localTransferRequest = getTransferRequest();
-    if ((localTransferRequest != null) && (localTransferRequest.mIsFastForward))
+    Object localObject = getTransferRequest();
+    if ((localObject != null) && (((TransferRequest)localObject).mIsFastForward))
     {
-      this.mWidth = localTransferRequest.mFastForwardWidth;
-      this.mHeight = localTransferRequest.mFastForwardHeight;
-      this.mFileSize = localTransferRequest.mFastForwardFileSize;
-      this.mLocalMd5 = HexUtil.hexStr2Bytes(localTransferRequest.mMd5);
-      this.mFileName = localTransferRequest.mMd5;
+      this.mWidth = ((TransferRequest)localObject).mFastForwardWidth;
+      this.mHeight = ((TransferRequest)localObject).mFastForwardHeight;
+      this.mFileSize = ((TransferRequest)localObject).mFastForwardFileSize;
+      this.mLocalMd5 = HexUtil.hexStr2Bytes(((TransferRequest)localObject).mMd5);
+      this.mFileName = ((TransferRequest)localObject).mMd5;
       this.mMd5Str = this.mFileName;
       this.file.fileMd5 = this.mFileName;
-      this.mFileName = (this.mFileName + "." + this.mExtName);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mFileName);
+      ((StringBuilder)localObject).append(".");
+      ((StringBuilder)localObject).append(this.mExtName);
+      this.mFileName = ((StringBuilder)localObject).toString();
       this.app.getHwEngine().preConnect();
       sendRequest();
+      return;
     }
-    while (!checkFileStandard(true)) {
+    if (!checkFileStandard(true)) {
       return;
     }
     this.app.getHwEngine().preConnect();
     if (this.mIsOpenUpEnable)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> mIsOpenUpEnable: " + this.mIsOpenUpEnable);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("<BDH_LOG> mIsOpenUpEnable: ");
+        ((StringBuilder)localObject).append(this.mIsOpenUpEnable);
+        QLog.d("C2CPicUploadProcessor", 2, ((StringBuilder)localObject).toString());
       }
       this.mOpenUpTicket = makeOpenUpTicket();
       this.mLoginSigHead = makeLoginSigHead();
       this.mExtendInfo = makeExtendInfo();
       if ((this.mOpenUpTicket != null) && (this.mLoginSigHead != null))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> mOpenUpTicket: " + this.mOpenUpTicket + " mLoginSigHead:" + this.mLoginSigHead);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("<BDH_LOG> mOpenUpTicket: ");
+          ((StringBuilder)localObject).append(this.mOpenUpTicket);
+          ((StringBuilder)localObject).append(" mLoginSigHead:");
+          ((StringBuilder)localObject).append(this.mLoginSigHead);
+          QLog.d("C2CPicUploadProcessor", 2, ((StringBuilder)localObject).toString());
         }
         sendRequest();
         sendFileBDH();
@@ -780,171 +593,171 @@ public class C2CPicUploadProcessor
     if (this.mIsCancel) {
       return;
     }
-    if ((this.mResid != null) || (this.mUuid != null))
+    if ((this.mResid == null) && (this.mUuid == null))
     {
-      if (this.mTransferedSize >= this.mFileSize)
-      {
-        sendMsg();
-        return;
-      }
-      sendFileNotBlockCallThread();
+      start();
       return;
     }
-    start();
+    if (this.mTransferedSize >= this.mFileSize)
+    {
+      sendMsg();
+      return;
+    }
+    sendFileNotBlockCallThread();
   }
   
   protected byte[] makeExtendInfo()
   {
-    int j = 6;
-    int k = 3;
     CSDataHighwayHead.PicInfoExt localPicInfoExt = new CSDataHighwayHead.PicInfoExt();
-    localPicInfoExt.uint32_busi_type.set(1);
+    Object localObject = localPicInfoExt.uint32_busi_type;
+    int k = 1;
+    ((PBUInt32Field)localObject).set(1);
     localPicInfoExt.uint32_src_term.set(5);
     localPicInfoExt.uint32_plat_type.set(9);
-    int i = j;
-    switch (NetworkCenter.getInstance().getNetType())
+    int i = NetworkCenter.getInstance().getNetType();
+    if (i != 1)
     {
-    default: 
-      i = j;
-    case 2: 
-      Object localObject = NetworkCenter.getInstance().getApnType();
-      j = i;
-      if (localObject != null)
+      if (i != 2)
       {
-        j = i;
-        if (((String)localObject).contains("wap")) {
-          j = 5;
+        if (i == 3) {
+          break label82;
         }
+        if (i == 4) {}
       }
-      localPicInfoExt.uint32_net_type.set(j);
-      localObject = this.mUiRequest.mRec;
-      if (MessageForPic.class.isInstance(localObject)) {
-        localPicInfoExt.uint32_img_type.set(((MessageForPic)localObject).imageType);
+      else
+      {
+        i = 6;
+        break label90;
       }
-      localPicInfoExt.uint32_app_pic_type.set(1);
-      localPicInfoExt.uint32_pic_width.set(this.mWidth);
-      localPicInfoExt.uint32_pic_height.set(this.mHeight);
-      if (!this.mIsRawPic) {
-        break;
-      }
-    }
-    for (i = k;; i = 1)
-    {
-      localPicInfoExt.uint32_pic_flag.set(i);
-      return localPicInfoExt.toByteArray();
-      i = 3;
-      break;
-      i = 7;
-      break;
       i = 8;
-      break;
+      break label90;
+      label82:
+      i = 7;
     }
+    else
+    {
+      i = 3;
+    }
+    label90:
+    localObject = NetworkCenter.getInstance().getApnType();
+    int j = i;
+    if (localObject != null)
+    {
+      j = i;
+      if (((String)localObject).contains("wap")) {
+        j = 5;
+      }
+    }
+    localPicInfoExt.uint32_net_type.set(j);
+    localObject = this.mUiRequest.mRec;
+    if (MessageForPic.class.isInstance(localObject)) {
+      localPicInfoExt.uint32_img_type.set(((MessageForPic)localObject).imageType);
+    }
+    localPicInfoExt.uint32_app_pic_type.set(1);
+    localPicInfoExt.uint32_pic_width.set(this.mWidth);
+    localPicInfoExt.uint32_pic_height.set(this.mHeight);
+    i = k;
+    if (this.mIsRawPic) {
+      i = 3;
+    }
+    localPicInfoExt.uint32_pic_flag.set(i);
+    return localPicInfoExt.toByteArray();
   }
   
   protected CSDataHighwayHead.LoginSigHead makeLoginSigHead()
   {
     CSDataHighwayHead.LoginSigHead localLoginSigHead = new CSDataHighwayHead.LoginSigHead();
-    Object localObject1 = (TicketManager)this.app.getManager(2);
-    if ((localObject1 != null) && (!TextUtils.isEmpty(this.app.getAccount())))
+    Object localObject = (TicketManager)this.app.getManager(2);
+    if ((localObject != null) && (!TextUtils.isEmpty(this.app.getAccount())))
     {
-      localObject1 = ((TicketManager)localObject1).getA2(this.app.getAccount());
-      if (localObject1 == null) {
-        break label103;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject1 = ((String)localObject1).getBytes("utf-8");
-        if ((localObject1 == null) || (localObject1.length == 0)) {
+      localObject = ((TicketManager)localObject).getA2(this.app.getAccount());
+      byte[] arrayOfByte;
+      if (localObject != null) {
+        try
+        {
+          localObject = ((String)localObject).getBytes("utf-8");
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          localUnsupportedEncodingException.printStackTrace();
           return null;
         }
+      } else {
+        arrayOfByte = null;
       }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      if (arrayOfByte != null)
       {
-        localUnsupportedEncodingException.printStackTrace();
-        return null;
+        if (arrayOfByte.length == 0) {
+          return null;
+        }
+        localLoginSigHead.bytes_loginsig.set(ByteStringMicro.copyFrom(arrayOfByte));
+        localLoginSigHead.uint32_loginsig_type.set(8);
+        return localLoginSigHead;
       }
-      localLoginSigHead.bytes_loginsig.set(ByteStringMicro.copyFrom(localUnsupportedEncodingException));
-      localLoginSigHead.uint32_loginsig_type.set(8);
-      return localLoginSigHead;
-      label103:
-      Object localObject2 = null;
     }
+    return null;
   }
   
   protected byte[] makeOpenUpTicket()
   {
     this.mSessionKey = SessionInfo.getInstance(this.mUiRequest.mSelfUin).getSessionKey();
-    if ((this.mSessionKey == null) || (this.mSessionKey.length == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("C2CPicUploadProcessor", 2, "<BDH_LOG> sessionKey is null ");
-      }
-    }
-    byte[] arrayOfByte;
-    do
+    Object localObject1 = this.mSessionKey;
+    if ((localObject1 != null) && (localObject1.length != 0))
     {
-      long l1;
-      long l2;
-      int i;
-      int j;
-      for (;;)
-      {
-        return null;
-        this.mSigSession = SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session();
-        if ((this.mSigSession == null) || (this.mSigSession.length == 0))
+      this.mSigSession = SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session();
+      localObject1 = this.mSigSession;
+      if ((localObject1 != null) && (localObject1.length != 0)) {
+        try
         {
-          if (QLog.isColorLevel())
-          {
-            QLog.e("C2CPicUploadProcessor", 2, "<BDH_LOG> signature is null ");
-            return null;
+          long l1 = Long.valueOf(this.mUiRequest.mSelfUin).longValue();
+          Object localObject2 = this.mUiRequest.mPeerUin;
+          localObject1 = localObject2;
+          if (((String)localObject2).startsWith("+")) {
+            localObject1 = ((String)localObject2).substring(1);
           }
-        }
-        else {
-          try
+          long l2 = Long.valueOf((String)localObject1).longValue();
+          int i = (int)this.mFileSize;
+          int j = (int)(System.currentTimeMillis() / 1000L);
+          localObject1 = this.mLocalMd5;
+          if ((localObject1 != null) && (localObject1.length != 0))
           {
-            l1 = Long.valueOf(this.mUiRequest.mSelfUin).longValue();
-            localObject2 = this.mUiRequest.mPeerUin;
-            Object localObject1 = localObject2;
-            if (((String)localObject2).startsWith("+")) {
-              localObject1 = ((String)localObject2).substring(1);
-            }
-            l2 = Long.valueOf((String)localObject1).longValue();
-            i = (int)this.mFileSize;
-            j = (int)(System.currentTimeMillis() / 1000L);
-            localObject1 = this.mLocalMd5;
-            if ((localObject1 == null) || (localObject1.length == 0))
+            localObject2 = ByteBuffer.allocate(localObject1.length + 56 + 8);
+            ((ByteBuffer)localObject2).putInt(0, 1).putLong(4, l1).putLong(12, l2).putInt(20, i).putInt(24, j);
+            localObject2 = ((ByteBuffer)localObject2).array();
+            System.arraycopy(localObject1, 0, localObject2, 28, localObject1.length);
+            localObject1 = new Cryptor().encrypt((byte[])localObject2, this.mSessionKey);
+            if ((localObject1 != null) && (localObject1.length != 0))
             {
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.e("C2CPicUploadProcessor", 2, "md5 is null ");
-              return null;
+              localObject2 = new CSDataHighwayHead.NewServiceTicket();
+              ((CSDataHighwayHead.NewServiceTicket)localObject2).bytes_ukey.set(ByteStringMicro.copyFrom((byte[])localObject1));
+              ((CSDataHighwayHead.NewServiceTicket)localObject2).bytes_signature.set(ByteStringMicro.copyFrom(this.mSigSession));
+              return ((CSDataHighwayHead.NewServiceTicket)localObject2).toByteArray();
             }
-          }
-          catch (Exception localException)
-          {
-            QLog.e("C2CPicUploadProcessor", 2, "makeOpenUpTicket error", localException);
+            if (QLog.isColorLevel()) {
+              QLog.e("C2CPicUploadProcessor", 2, "ukey is null ");
+            }
             return null;
           }
+          if (QLog.isColorLevel()) {
+            QLog.e("C2CPicUploadProcessor", 2, "md5 is null ");
+          }
+          return null;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("C2CPicUploadProcessor", 2, "makeOpenUpTicket error", localException);
+          return null;
         }
       }
-      localObject2 = ByteBuffer.allocate(localException.length + 56 + 8);
-      ((ByteBuffer)localObject2).putInt(0, 1).putLong(4, l1).putLong(12, l2).putInt(20, i).putInt(24, j);
-      localObject2 = ((ByteBuffer)localObject2).array();
-      System.arraycopy(localException, 0, localObject2, 28, localException.length);
-      arrayOfByte = new Cryptor().encrypt((byte[])localObject2, this.mSessionKey);
-      if ((arrayOfByte != null) && (arrayOfByte.length != 0)) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.e("C2CPicUploadProcessor", 2, "<BDH_LOG> signature is null ");
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("C2CPicUploadProcessor", 2, "ukey is null ");
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("C2CPicUploadProcessor", 2, "<BDH_LOG> sessionKey is null ");
+    }
     return null;
-    Object localObject2 = new CSDataHighwayHead.NewServiceTicket();
-    ((CSDataHighwayHead.NewServiceTicket)localObject2).bytes_ukey.set(ByteStringMicro.copyFrom(arrayOfByte));
-    ((CSDataHighwayHead.NewServiceTicket)localObject2).bytes_signature.set(ByteStringMicro.copyFrom(this.mSigSession));
-    return ((CSDataHighwayHead.NewServiceTicket)localObject2).toByteArray();
   }
   
   public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
@@ -956,121 +769,126 @@ public class C2CPicUploadProcessor
   protected void onC2CBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
   {
     this.mRichProtoReq = null;
-    FileMsg localFileMsg;
-    String str;
     if (paramRichProtoResp != null)
     {
       int i = 0;
-      if (i < paramRichProtoResp.resps.size())
+      while (i < paramRichProtoResp.resps.size())
       {
         paramRichProtoReq = (RichProto.RichProtoResp.C2CPicUpResp)paramRichProtoResp.resps.get(i);
         if (QLog.isColorLevel()) {
           logRichMediaEvent("procUrl", paramRichProtoReq.toString());
         }
-        this.mSendByQuickHttp = paramRichProtoReq.isSendByQuickHttp;
-        copyRespCommon(this.mStepUrl, paramRichProtoReq);
-        if (paramRichProtoReq.result != 0) {
-          break label430;
-        }
-        reportQuickSend(paramRichProtoReq.isExist);
-        if (paramRichProtoReq.isExist)
+        this.mProcessorReport.mSendByQuickHttp = paramRichProtoReq.isSendByQuickHttp;
+        this.mProcessorReport.copyRespCommon(this.mProcessorReport.mStepUrl, paramRichProtoReq);
+        if (paramRichProtoReq.result == 0)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> onBusiProtoResp picUpResp.isExist.");
-          }
-          this.mIsPicSecondTransfered = true;
-          this.file.transferedSize = this.file.fileSize;
-          localFileMsg = this.file;
-          str = paramRichProtoReq.mResid;
-          localFileMsg.serverPath = str;
-          this.mResid = str;
-          localFileMsg = this.file;
-          paramRichProtoReq = paramRichProtoReq.mUuid;
-          localFileMsg.uuidPath = paramRichProtoReq;
-          this.mUuid = paramRichProtoReq;
-          if (this.mIsOpenUpEnable) {
-            if ((!this.mTrans.isFinish.get()) || (!this.mTrans.isSuccess.get()))
+          reportQuickSend(paramRichProtoReq.isExist);
+          FileMsg localFileMsg;
+          String str;
+          if (paramRichProtoReq.isExist)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> onBusiProtoResp picUpResp.isExist.");
+            }
+            this.mIsPicSecondTransfered = true;
+            this.file.transferedSize = this.file.fileSize;
+            localFileMsg = this.file;
+            str = paramRichProtoReq.mResid;
+            localFileMsg.serverPath = str;
+            this.mResid = str;
+            localFileMsg = this.file;
+            paramRichProtoReq = paramRichProtoReq.mUuid;
+            localFileMsg.uuidPath = paramRichProtoReq;
+            this.mUuid = paramRichProtoReq;
+            if (this.mIsOpenUpEnable)
             {
-              this.mTrans.cancelTransaction();
+              if ((!this.mTrans.isFinish.get()) || (!this.mTrans.isSuccess.get()))
+              {
+                this.mTrans.cancelTransaction();
+                sendMsg();
+              }
+            }
+            else {
               sendMsg();
             }
           }
-          for (;;)
+          else
           {
-            i += 1;
-            break;
-            sendMsg();
+            sendMessageToUpdate(1002);
+            if (!checkContinueSend()) {
+              return;
+            }
+            if ((this.mIsOpenUpEnable) && (this.mTrans.isFinish.get()) && (this.mTrans.isSuccess.get())) {
+              return;
+            }
+            if (!this.mIsOpenUpEnable)
+            {
+              localFileMsg = this.file;
+              str = paramRichProtoReq.mResid;
+              localFileMsg.serverPath = str;
+              this.mResid = str;
+              localFileMsg = this.file;
+              str = paramRichProtoReq.mUuid;
+              localFileMsg.uuidPath = str;
+              this.mUuid = str;
+            }
+            else
+            {
+              this.mProcessorReport.mStepTrans.startTime = 0L;
+              this.mProcessorReport.mStepTrans.logStartTime();
+            }
+            this.mUkey = paramRichProtoReq.mUkey;
+            this.mStartOffset = paramRichProtoReq.startOffset;
+            if (QLog.isColorLevel()) {
+              QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> About to submit Transaction , from onBusiProtoResp.");
+            }
+            this.mChannelStatus = 1;
+            if (this.mIsOpenUpEnable)
+            {
+              if (this.mTrans != null)
+              {
+                this.mTrans.continueTrans();
+                this.mStepTransLeft.logStartTime();
+              }
+            }
+            else {
+              sendFileBDH();
+            }
+          }
+          i += 1;
+        }
+        else
+        {
+          paramRichProtoResp = new StringBuilder();
+          paramRichProtoResp.append("<BDH_LOG> onBusiProtoResp() error : ");
+          paramRichProtoResp.append(paramRichProtoReq.result);
+          paramRichProtoResp.append(" ,select HTTP channel");
+          log(paramRichProtoResp.toString());
+          this.mChannelStatus = 2;
+          if ((!this.mIsOpenUpEnable) || (!this.mTrans.isFinish.get()) || (!this.mTrans.isSuccess.get()))
+          {
+            if ((this.mIsOpenUpEnable) && (this.mTrans != null)) {
+              this.app.getHwEngine().cancelTransactionTask(this.mTrans);
+            }
+            onError();
           }
         }
-        sendMessageToUpdate(1002);
-        if (checkContinueSend()) {
-          break label248;
-        }
       }
     }
-    label248:
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.mIsOpenUpEnable) && (this.mTrans.isFinish.get()) && (this.mTrans.isSuccess.get()));
-      if (!this.mIsOpenUpEnable)
-      {
-        localFileMsg = this.file;
-        str = paramRichProtoReq.mResid;
-        localFileMsg.serverPath = str;
-        this.mResid = str;
-        localFileMsg = this.file;
-        str = paramRichProtoReq.mUuid;
-        localFileMsg.uuidPath = str;
-        this.mUuid = str;
-      }
-      for (;;)
-      {
-        this.mUkey = paramRichProtoReq.mUkey;
-        this.mStartOffset = paramRichProtoReq.startOffset;
-        if (QLog.isColorLevel()) {
-          QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> About to submit Transaction , from onBusiProtoResp.");
-        }
-        this.mChannelStatus = 1;
-        if (!this.mIsOpenUpEnable) {
-          break label423;
-        }
-        if (this.mTrans == null) {
-          break;
-        }
-        this.mTrans.continueTrans();
-        this.mStepTransLeft.logStartTime();
-        break;
-        this.mStepTrans.startTime = 0L;
-        this.mStepTrans.logStartTime();
-      }
-      sendFileBDH();
-      break;
-      log("<BDH_LOG> onBusiProtoResp() error : " + paramRichProtoReq.result + " ,select HTTP channel");
-      this.mChannelStatus = 2;
-    } while ((this.mIsOpenUpEnable) && (this.mTrans.isFinish.get()) && (this.mTrans.isSuccess.get()));
-    label423:
-    label430:
-    if ((this.mIsOpenUpEnable) && (this.mTrans != null)) {
-      this.app.getHwEngine().cancelTransactionTask(this.mTrans);
-    }
-    onError();
   }
   
   void onError()
   {
     super.onError();
-    if (this.errCode != 9333) {
+    if (this.mProcessorReport.errCode != 9333) {
       sendMessageToUpdate(1005);
     }
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
       localSendResult.jdField_a_of_type_Int = -1;
-      localSendResult.b = this.errCode;
-      localSendResult.jdField_a_of_type_JavaLangString = this.errDesc;
+      localSendResult.b = this.mProcessorReport.errCode;
+      localSendResult.jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
   }
@@ -1078,35 +896,33 @@ public class C2CPicUploadProcessor
   void onSuccess()
   {
     super.onSuccess();
-    String str;
     if (this.mUiRequest.mUpCallBack != null)
     {
       UpCallBack.SendResult localSendResult = new UpCallBack.SendResult();
       localSendResult.jdField_a_of_type_Int = 0;
       localSendResult.jdField_a_of_type_Long = this.mFileSize;
       localSendResult.d = this.mMd5Str;
-      if (this.mResid == null)
-      {
+      String str;
+      if (this.mResid == null) {
         str = this.mUuid;
-        localSendResult.c = str;
-        if (this.mUiRequest.isShareImageByServer) {
-          localSendResult.jdField_a_of_type_JavaLangObject = getImageInfo();
-        }
-        this.mUiRequest.mUpCallBack.b(localSendResult);
+      } else {
+        str = this.mResid;
       }
+      localSendResult.c = str;
+      if (this.mUiRequest.isShareImageByServer) {
+        localSendResult.jdField_a_of_type_JavaLangObject = getImageInfo();
+      }
+      this.mUiRequest.mUpCallBack.b(localSendResult);
     }
-    for (;;)
+    else
     {
-      sendMessageToUpdate(1003);
-      if (this.mRichProtoReq != null)
-      {
-        RichProtoProc.cancelRichProtoReq(this.mRichProtoReq);
-        this.mRichProtoReq = null;
-      }
-      return;
-      str = this.mResid;
-      break;
       updateMessageDataBaseContent(true);
+    }
+    sendMessageToUpdate(1003);
+    if (this.mRichProtoReq != null)
+    {
+      RichProtoProc.cancelRichProtoReq(this.mRichProtoReq);
+      this.mRichProtoReq = null;
     }
   }
   
@@ -1125,30 +941,39 @@ public class C2CPicUploadProcessor
         RichProtoProc.cancelRichProtoReq(this.mRichProtoReq);
         this.mRichProtoReq = null;
       }
-    }
-    switch (this.mChannelStatus)
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
+      int i = this.mChannelStatus;
+      if (i != 0)
       {
-        return;
+        if (i != 1)
+        {
+          if (i != 2) {
+            return;
+          }
+          log("<BDH_LOG> pause() pause HTTP channel");
+          if (this.mNetReq != null)
+          {
+            this.mNetEngine.cancelReq(this.mNetReq);
+            this.mNetReq = null;
+          }
+        }
+        else
+        {
+          if (this.mTrans != null)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("<BDH_LOG> pause() pause BDH channel, transation id=");
+            localStringBuilder.append(this.mTrans.getTransationId());
+            log(localStringBuilder.toString());
+            this.app.getHwEngine().stopTransactionTask(this.mTrans);
+            return;
+          }
+          log("<BDH_LOG> pause() pause BDH channel, but trans == null");
+        }
+      }
+      else {
         log("<BDH_LOG> pause() BUT current status is INIT");
-        return;
-        log("<BDH_LOG> pause() pause HTTP channel");
-      } while (this.mNetReq == null);
-      this.mNetEngine.cancelReq(this.mNetReq);
-      this.mNetReq = null;
-      return;
+      }
     }
-    if (this.mTrans != null)
-    {
-      log("<BDH_LOG> pause() pause BDH channel, transation id=" + this.mTrans.getTransationId());
-      this.app.getHwEngine().stopTransactionTask(this.mTrans);
-      return;
-    }
-    log("<BDH_LOG> pause() pause BDH channel, but trans == null");
   }
   
   public int resume()
@@ -1168,8 +993,8 @@ public class C2CPicUploadProcessor
       }
       this.mUkey = null;
       this.mReqUrlCount = 0;
-      this.errCode = 0;
-      this.errDesc = "";
+      this.mProcessorReport.errCode = 0;
+      this.mProcessorReport.errDesc = "";
       this.sscmObject.a();
       resetStatictisInfo();
       this.mController.mHandler.post(new C2CPicUploadProcessor.5(this));
@@ -1179,34 +1004,56 @@ public class C2CPicUploadProcessor
   
   public void sendFileBDH()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> Transaction submit:sendFile:" + this.mTrans + "  this:" + this);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("<BDH_LOG> Transaction submit:sendFile:");
+      ((StringBuilder)localObject).append(this.mTrans);
+      ((StringBuilder)localObject).append("  this:");
+      ((StringBuilder)localObject).append(this);
+      QLog.d("C2CPicUploadProcessor", 2, ((StringBuilder)localObject).toString());
     }
     if (this.mIsOpenUpEnable) {
       this.mStepTransPre.logStartTime();
+    } else {
+      this.mProcessorReport.mStepTrans.logStartTime();
     }
-    while (this.mTrans != null)
-    {
+    if (this.mTrans != null) {
       return;
-      this.mStepTrans.logStartTime();
     }
     Object localObject = HexUtil.hexStr2Bytes(this.mUkey);
     C2CPicUploadProcessor.3 local3 = new C2CPicUploadProcessor.3(this, SystemClock.uptimeMillis());
-    if (this.mIsOpenUpEnable) {}
-    for (this.mTrans = new Transaction(this.app.getCurrentAccountUin(), 4, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mOpenUpTicket, this.mLocalMd5, local3, this.mPreSendDots, this.mExtendInfo, this.mLoginSigHead);; this.mTrans = new Transaction(this.app.getCurrentAccountUin(), 1, this.mUiRequest.mLocalPath, (int)this.mStartOffset, (byte[])localObject, this.mLocalMd5, local3))
+    if (this.mIsOpenUpEnable) {
+      this.mTrans = new Transaction(this.app.getCurrentAccountUin(), 4, this.mUiRequest.mLocalPath, (int)this.mStartOffset, this.mOpenUpTicket, this.mLocalMd5, local3, this.mPreSendDots, this.mExtendInfo, this.mLoginSigHead);
+    } else {
+      this.mTrans = new Transaction(this.app.getCurrentAccountUin(), 1, this.mUiRequest.mLocalPath, (int)this.mStartOffset, (byte[])localObject, this.mLocalMd5, local3);
+    }
+    localObject = new C2CPicUploadProcessor.4(this);
+    this.mTrans.cbForReport = ((ITransCallbackForReport)localObject);
+    int i = this.app.getHwEngine().submitTransactionTask(this.mTrans);
+    if (QLog.isColorLevel())
     {
-      localObject = new C2CPicUploadProcessor.4(this);
-      this.mTrans.cbForReport = ((ITransCallbackForReport)localObject);
-      int i = this.app.getHwEngine().submitTransactionTask(this.mTrans);
-      if (QLog.isColorLevel()) {
-        QLog.d("C2CPicUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + i + " T_ID:" + this.mTrans.getTransationId() + " UniSeq:" + this.mUiRequest.mUniseq + " MD5:" + this.mMd5Str + " uuid:" + this.mUuid + " Path:" + this.mTrans.filePath + " Cmd:" + 1);
-      }
-      if (i == 0) {
-        break;
-      }
-      setError(i, "SubmitError.", "", this.mStepTrans);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("<BDH_LOG> Transaction submit RetCode:");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" T_ID:");
+      ((StringBuilder)localObject).append(this.mTrans.getTransationId());
+      ((StringBuilder)localObject).append(" UniSeq:");
+      ((StringBuilder)localObject).append(this.mUiRequest.mUniseq);
+      ((StringBuilder)localObject).append(" MD5:");
+      ((StringBuilder)localObject).append(this.mMd5Str);
+      ((StringBuilder)localObject).append(" uuid:");
+      ((StringBuilder)localObject).append(this.mUuid);
+      ((StringBuilder)localObject).append(" Path:");
+      ((StringBuilder)localObject).append(this.mTrans.filePath);
+      ((StringBuilder)localObject).append(" Cmd:");
+      ((StringBuilder)localObject).append(1);
+      QLog.d("C2CPicUploadProcessor", 2, ((StringBuilder)localObject).toString());
+    }
+    if (i != 0)
+    {
+      setError(i, "SubmitError.", "", this.mProcessorReport.mStepTrans);
       onError();
-      return;
     }
   }
   
@@ -1214,7 +1061,7 @@ public class C2CPicUploadProcessor
   {
     super.sendMessageToUpdate(paramInt);
     if (this.isStoryPhoto) {
-      PeakIpcController.a(this.picMsg, paramInt, getProgress());
+      ((IPeakIpcController)QRoute.api(IPeakIpcController.class)).updatePeakVideoAndPicStatus(this.picMsg, paramInt, getProgress());
     }
   }
   
@@ -1222,7 +1069,10 @@ public class C2CPicUploadProcessor
   {
     if (!canDoNextStep())
     {
-      log("<BDH_LOG> sendMsg() do not send message, due to mIsCancel=true || mIsPause=true, current channel = " + this.mChannelStatus);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("<BDH_LOG> sendMsg() do not send message, due to mIsCancel=true || mIsPause=true, current channel = ");
+      ((StringBuilder)localObject1).append(this.mChannelStatus);
+      log(((StringBuilder)localObject1).toString());
       return;
     }
     Object localObject1 = this.mUiRequest.mRec;
@@ -1231,92 +1081,105 @@ public class C2CPicUploadProcessor
       onSuccess();
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CPicUploadProcessor", 2, "TestPicSend finish upload,currentTime = " + System.currentTimeMillis() + ",processor = " + this);
-    }
-    if ((!this.needSendMsg) || (this.mUiRequest.mIsPresend))
+    if (QLog.isColorLevel())
     {
-      if (this.mUiRequest.mIsPresend) {
-        ((MessageForPic)this.mUiRequest.mRec).mPresendTransferedSize = this.mTransferedSize;
-      }
-      localObject1 = constructRichText();
-      if (localObject1 == null)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("TestPicSend finish upload,currentTime = ");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      ((StringBuilder)localObject1).append(",processor = ");
+      ((StringBuilder)localObject1).append(this);
+      QLog.d("C2CPicUploadProcessor", 2, ((StringBuilder)localObject1).toString());
+    }
+    if ((this.needSendMsg) && (!this.mUiRequest.mIsPresend))
+    {
+      this.mProcessorReport.mStepMsg.logStartTime();
+      Object localObject2 = constructRichText();
+      if (localObject2 == null)
       {
-        setError(9368, "constructpberror", null, this.mStepMsg);
+        setError(9368, "constructpberror", null, this.mProcessorReport.mStepMsg);
         onError();
         return;
       }
       if (this.mUiRequest.mUpCallBack != null) {
-        this.mUiRequest.mUpCallBack.a((im_msg_body.RichText)localObject1);
-      }
-      if ((this.mUiRequest.mIsPresend) && (this.mIsPicSecondTransfered)) {
-        ((MessageForPic)this.mUiRequest.mRec).mPresendTransferedSize = 0L;
-      }
-      addInfoToMsg();
-      onSuccess();
-      return;
-    }
-    this.mStepMsg.logStartTime();
-    Object localObject2 = constructRichText();
-    if (localObject2 == null)
-    {
-      setError(9368, "constructpberror", null, this.mStepMsg);
-      onError();
-      return;
-    }
-    if (this.mUiRequest.mUpCallBack != null)
-    {
-      localObject1 = this.mUiRequest.mUpCallBack.a((im_msg_body.RichText)localObject2);
-      if ((localObject1 != null) && (((localObject1 instanceof MessageForPic)) || ((localObject1 instanceof MessageForStructing)))) {
-        break label468;
-      }
-      localObject2 = new StringBuilder().append("Mr_");
-      if (localObject1 != null) {
-        break label441;
-      }
-    }
-    label441:
-    for (localObject1 = "null";; localObject1 = "" + ((MessageRecord)localObject1).msgtype)
-    {
-      setError(9368, "msgtypeError", (String)localObject1, this.mStepMsg);
-      onError();
-      return;
-      if (this.mUiRequest.mRec != null)
-      {
+        localObject1 = this.mUiRequest.mUpCallBack.a((im_msg_body.RichText)localObject2);
+      } else if (this.mUiRequest.mRec != null) {
         localObject1 = this.mUiRequest.mRec;
-        break;
+      } else {
+        localObject1 = ((IMessageFacade)this.app.getRuntimeService(IMessageFacade.class, "")).getMsgItemByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
       }
-      localObject1 = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
-      break;
-    }
-    label468:
-    if ((localObject1 instanceof MessageForPic))
-    {
-      ((MessageForPic)localObject1).richText = ((im_msg_body.RichText)localObject2);
-      ((MessageForPic)localObject1).size = this.mFileSize;
-      if (((MessageForPic)localObject1).isBlessPic)
+      Object localObject3;
+      if (localObject1 != null)
       {
-        ((MessageForPic)localObject1).uuid = this.mResid;
-        this.app.getMsgHandler().notifyUI(999, true, ((MessageRecord)localObject1).frienduin);
-        return;
+        boolean bool = localObject1 instanceof MessageForPic;
+        if ((bool) || (((IMsgStructing)QRoute.api(IMsgStructing.class)).isMessageForStructing((MessageRecord)localObject1)))
+        {
+          if (bool)
+          {
+            localObject3 = (MessageForPic)localObject1;
+            ((MessageForPic)localObject3).richText = ((im_msg_body.RichText)localObject2);
+            ((MessageForPic)localObject3).size = this.mFileSize;
+            if (((MessageForPic)localObject3).isBlessPic)
+            {
+              ((MessageForPic)localObject3).uuid = this.mResid;
+              ((IMessageHandler)this.app.getRuntimeService(IMessageHandler.class, "")).notifyUI((BaseQQAppInterface)this.app, 999, true, ((MessageRecord)localObject1).frienduin);
+              return;
+            }
+          }
+          if (((IMsgStructing)QRoute.api(IMsgStructing.class)).isMessageForStructing((MessageRecord)localObject1)) {
+            ((MessageForRichText)localObject1).richText = ((im_msg_body.RichText)localObject2);
+          }
+          if (!isAppValid())
+          {
+            setError(9366, "illegal app", null, this.mProcessorReport.mStepMsg);
+            onError();
+            return;
+          }
+          addInfoToMsg();
+          ((IOrderMediaMsgService)this.app.getRuntimeService(IOrderMediaMsgService.class, "")).sendOrderMsg((MessageRecord)localObject1, this.messageObserver, this);
+          return;
+        }
       }
-    }
-    if ((localObject1 instanceof MessageForStructing)) {
-      ((MessageForStructing)localObject1).richText = ((im_msg_body.RichText)localObject2);
-    }
-    if (!isAppValid())
-    {
-      setError(9366, "illegal app", null, this.mStepMsg);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Mr_");
+      if (localObject1 == null)
+      {
+        localObject1 = "null";
+      }
+      else
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("");
+        ((StringBuilder)localObject3).append(((MessageRecord)localObject1).msgtype);
+        localObject1 = ((StringBuilder)localObject3).toString();
+      }
+      ((StringBuilder)localObject2).append((String)localObject1);
+      setError(9368, "msgtypeError", ((StringBuilder)localObject2).toString(), this.mProcessorReport.mStepMsg);
       onError();
       return;
+    }
+    if (this.mUiRequest.mIsPresend) {
+      ((MessageForPic)this.mUiRequest.mRec).mPresendTransferedSize = this.mTransferedSize;
+    }
+    localObject1 = constructRichText();
+    if (localObject1 == null)
+    {
+      setError(9368, "constructpberror", null, this.mProcessorReport.mStepMsg);
+      onError();
+      return;
+    }
+    if (this.mUiRequest.mUpCallBack != null) {
+      this.mUiRequest.mUpCallBack.a((im_msg_body.RichText)localObject1);
+    }
+    if ((this.mUiRequest.mIsPresend) && (this.mIsPicSecondTransfered)) {
+      ((MessageForPic)this.mUiRequest.mRec).mPresendTransferedSize = 0L;
     }
     addInfoToMsg();
-    ((OrderMediaMsgManager)this.app.getManager(QQManagerFactory.MEDIA_MSG_ORDER_SEND_MANAGER)).a((MessageRecord)localObject1, this.messageObserver, this);
+    onSuccess();
   }
   
   protected void sendRequest()
   {
-    this.mStepUrl.logStartTime();
+    this.mProcessorReport.mStepUrl.logStartTime();
     RichProto.RichProtoReq localRichProtoReq = new RichProto.RichProtoReq();
     RichProto.RichProtoReq.PicUpReq localPicUpReq = new RichProto.RichProtoReq.PicUpReq();
     localPicUpReq.selfUin = this.mUiRequest.mSelfUin;
@@ -1329,38 +1192,37 @@ public class C2CPicUploadProcessor
     localPicUpReq.width = this.mWidth;
     localPicUpReq.height = this.mHeight;
     boolean bool;
-    if (this.mUiRequest.mUinType == 1006)
-    {
+    if (this.mUiRequest.mUinType == 1006) {
       bool = true;
-      localPicUpReq.isContact = bool;
-      localPicUpReq.isRaw = this.mIsRawPic;
-      localRichProtoReq.callback = this;
-      localRichProtoReq.protoKey = "c2c_pic_up";
-      localRichProtoReq.reqs.add(localPicUpReq);
-      localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
-      changeRequest(localPicUpReq);
-      MessageRecord localMessageRecord = this.mUiRequest.mRec;
-      if (MessageForPic.class.isInstance(localMessageRecord))
-      {
-        localPicUpReq.picType = ((MessageForPic)localMessageRecord).imageType;
-        this.mPicType = ((MessageForPic)localMessageRecord).imageType;
-      }
-      if (isAppValid()) {
-        break label258;
-      }
-      setError(9366, "illegal app", null, this.mStepUrl);
-      onError();
-    }
-    label258:
-    do
-    {
-      return;
+    } else {
       bool = false;
-      break;
-      if (QLog.isColorLevel()) {
-        logRichMediaEvent("requestStart", localRichProtoReq.toString());
-      }
-    } while (!canDoNextStep());
+    }
+    localPicUpReq.isContact = bool;
+    localPicUpReq.isRaw = this.mIsRawPic;
+    localRichProtoReq.callback = this;
+    localRichProtoReq.protoKey = "c2c_pic_up";
+    localRichProtoReq.reqs.add(localPicUpReq);
+    localRichProtoReq.protoReqMgr = ((IProtoReqManager)this.app.getRuntimeService(IProtoReqManager.class, ""));
+    changeRequest(localPicUpReq);
+    Object localObject = this.mUiRequest.mRec;
+    if (MessageForPic.class.isInstance(localObject))
+    {
+      localObject = (MessageForPic)localObject;
+      localPicUpReq.picType = ((MessageForPic)localObject).imageType;
+      this.mPicType = ((MessageForPic)localObject).imageType;
+    }
+    if (!isAppValid())
+    {
+      setError(9366, "illegal app", null, this.mProcessorReport.mStepUrl);
+      onError();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      logRichMediaEvent("requestStart", localRichProtoReq.toString());
+    }
+    if (!canDoNextStep()) {
+      return;
+    }
     this.mRichProtoReq = localRichProtoReq;
     RichProtoProc.procRichProtoReq(localRichProtoReq);
   }
@@ -1371,69 +1233,41 @@ public class C2CPicUploadProcessor
     doStart();
   }
   
-  public void updateMessageDataBaseContent(boolean paramBoolean)
+  public void updateMessageData(MessageRecord paramMessageRecord)
   {
-    MessageRecord localMessageRecord;
-    if (this.mUiRequest.mRec != null)
-    {
-      localMessageRecord = this.mUiRequest.mRec;
-      if (localMessageRecord != null) {
-        break label78;
-      }
-      logRichMediaEvent("updateDb", "msg null");
-    }
-    label78:
     Object localObject;
-    StructMsgItemImage localStructMsgItemImage;
-    do
+    String str1;
+    if ((paramMessageRecord instanceof MessageForPic))
     {
-      do
-      {
-        do
-        {
-          return;
-          localMessageRecord = this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, this.mUiRequest.mUniseq);
-          logRichMediaEvent("updateDb", "findmsgbyMsgId,need fix");
-          break;
-          if (localMessageRecord.isMultiMsg)
-          {
-            logRichMediaEvent("updateDb", "is multiMsg");
-            return;
-          }
-          if ((localMessageRecord instanceof MessageForPic))
-          {
-            localObject = (MessageForPic)localMessageRecord;
-            ((MessageForPic)localObject).size = this.mFileSize;
-            if (this.mResid == null) {}
-            for (str = this.mUuid;; str = this.mResid)
-            {
-              ((MessageForPic)localObject).uuid = str;
-              ((MessageForPic)localObject).serial();
-              this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageRecord.uniseq, ((MessageForPic)localObject).msgData);
-              return;
-            }
-          }
-        } while (!(localMessageRecord instanceof MessageForStructing));
-        localObject = (MessageForStructing)localMessageRecord;
-      } while ((((MessageForStructing)localObject).structingMsg == null) || (!(((MessageForStructing)localObject).structingMsg instanceof StructMsgForImageShare)));
-      localStructMsgItemImage = ((StructMsgForImageShare)((MessageForStructing)localObject).structingMsg).getFirstImageElement();
-    } while (localStructMsgItemImage == null);
-    localStructMsgItemImage.ae = this.mMd5Str;
-    if (this.mResid == null) {}
-    for (String str = this.mUuid;; str = this.mResid)
-    {
-      localStructMsgItemImage.ad = str;
-      localStructMsgItemImage.d = this.mFileSize;
-      localStructMsgItemImage.e = localMessageRecord.time;
-      ((MessageForStructing)localObject).msgData = ((MessageForStructing)localObject).structingMsg.getBytes();
-      this.app.getMessageFacade().a(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, localMessageRecord.uniseq, ((MessageForStructing)localObject).msgData);
+      localObject = (MessageForPic)paramMessageRecord;
+      ((MessageForPic)localObject).size = this.mFileSize;
+      if (this.mResid == null) {
+        str1 = this.mUuid;
+      } else {
+        str1 = this.mResid;
+      }
+      ((MessageForPic)localObject).uuid = str1;
+      ((MessageForPic)localObject).serial();
+      ((IMessageFacade)this.app.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(this.mUiRequest.mPeerUin, this.mUiRequest.mUinType, paramMessageRecord.uniseq, ((MessageForPic)localObject).msgData);
       return;
+    }
+    if (((IMsgStructing)QRoute.api(IMsgStructing.class)).isMessageForStructing(paramMessageRecord))
+    {
+      localObject = (IMsgStructing)QRoute.api(IMsgStructing.class);
+      AppInterface localAppInterface = this.app;
+      String str2 = this.mMd5Str;
+      if (this.mResid == null) {
+        str1 = this.mUuid;
+      } else {
+        str1 = this.mResid;
+      }
+      ((IMsgStructing)localObject).updateMsgAfterUpload(localAppInterface, paramMessageRecord, str2, str1, this.mFileSize, null, this.mUiRequest.mPeerUin, this.mUiRequest.mUinType);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPicUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -36,29 +36,28 @@ class QQStoryShieldListActivity$1
       {
         this.jdField_a_of_type_JavaUtilList.addAll(paramList);
         paramList = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler;
-        if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Int == 2) {}
-        for (paramBoolean1 = true;; paramBoolean1 = false)
-        {
-          paramList.a(paramArrayOfByte, 10, paramBoolean1, QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity));
-          return;
+        if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Int == 2) {
+          paramBoolean1 = true;
+        } else {
+          paramBoolean1 = false;
         }
+        paramList.a(paramArrayOfByte, 10, paramBoolean1, QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity));
+        return;
       }
       this.jdField_a_of_type_JavaUtilList.addAll(paramList);
       this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a(this.jdField_a_of_type_JavaUtilList);
       paramList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
       if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Int == 2) {
         this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.jdField_b_of_type_JavaUtilList = paramList;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        paramArrayOfByte = paramList.iterator();
-        while (paramArrayOfByte.hasNext())
-        {
-          paramString = (QQStoryUserInfo)paramArrayOfByte.next();
-          this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString.uin, paramString);
-        }
+      } else {
         this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.jdField_a_of_type_JavaUtilList = paramList;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      paramArrayOfByte = paramList.iterator();
+      while (paramArrayOfByte.hasNext())
+      {
+        paramString = (QQStoryUserInfo)paramArrayOfByte.next();
+        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString.uin, paramString);
       }
       a(paramList);
       QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
@@ -78,12 +77,12 @@ class QQStoryShieldListActivity$1
       this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a(localList);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity, 2131694733, 0).b(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getTitleBarHeight());
+    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity, 2131694712, 0).b(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryShieldListActivity.1
  * JD-Core Version:    0.7.0.1
  */

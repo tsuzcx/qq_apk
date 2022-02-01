@@ -22,22 +22,20 @@ public class HandlerWrapper
       try
       {
         ???.wait();
-        return;
       }
       catch (InterruptedException paramRunnable)
       {
-        for (;;)
-        {
-          paramRunnable.printStackTrace();
-        }
+        paramRunnable.printStackTrace();
       }
+      return;
     }
   }
   
   public final void handleMessage(Message paramMessage)
   {
-    if (this.mh != null) {
-      this.mh.handleMessage(paramMessage);
+    HandlerWrapper.MessageHandler localMessageHandler = this.mh;
+    if (localMessageHandler != null) {
+      localMessageHandler.handleMessage(paramMessage);
     }
   }
   

@@ -76,7 +76,7 @@ public class MD5Utils
       paramArrayOfByte[i] = ((byte)(int)(paramArrayOfLong[j] & 0xFF));
       paramArrayOfByte[(i + 1)] = ((byte)(int)(paramArrayOfLong[j] >>> 8 & 0xFF));
       paramArrayOfByte[(i + 2)] = ((byte)(int)(paramArrayOfLong[j] >>> 16 & 0xFF));
-      paramArrayOfByte[(i + 3)] = ((byte)(int)(paramArrayOfLong[j] >>> 24 & 0xFF));
+      paramArrayOfByte[(i + 3)] = ((byte)(int)(0xFF & paramArrayOfLong[j] >>> 24));
       j += 1;
       i += 4;
     }
@@ -84,28 +84,26 @@ public class MD5Utils
   
   private long F(long paramLong1, long paramLong2, long paramLong3)
   {
-    return paramLong1 & paramLong2 | (0xFFFFFFFF ^ paramLong1) & paramLong3;
+    return (paramLong1 ^ 0xFFFFFFFF) & paramLong3 | paramLong2 & paramLong1;
   }
   
   private long FF(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    paramLong1 = F(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
-    int i = (int)paramLong1;
+    int i = (int)(F(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1);
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    return (i >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
   
   private long G(long paramLong1, long paramLong2, long paramLong3)
   {
-    return paramLong1 & paramLong3 | (0xFFFFFFFF ^ paramLong3) & paramLong2;
+    return paramLong1 & paramLong3 | paramLong2 & (paramLong3 ^ 0xFFFFFFFF);
   }
   
   private long GG(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    paramLong1 = G(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
-    int i = (int)paramLong1;
+    int i = (int)(G(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1);
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    return (i >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
   
   private long H(long paramLong1, long paramLong2, long paramLong3)
@@ -115,31 +113,30 @@ public class MD5Utils
   
   private long HH(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    paramLong1 = H(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
-    int i = (int)paramLong1;
+    int i = (int)(H(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1);
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    return (i >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
   
   private long I(long paramLong1, long paramLong2, long paramLong3)
   {
-    return (0xFFFFFFFF ^ paramLong3 | paramLong1) ^ paramLong2;
+    return (paramLong1 | paramLong3 ^ 0xFFFFFFFF) ^ paramLong2;
   }
   
   private long II(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    paramLong1 = I(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
-    int i = (int)paramLong1;
+    int i = (int)(I(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1);
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    return (i >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
   
   public static long b2iu(byte paramByte)
   {
+    int i = paramByte;
     if (paramByte < 0) {
-      return paramByte & 0xFF;
+      i = paramByte & 0xFF;
     }
-    return paramByte;
+    return i;
   }
   
   protected static byte[] encode(byte[] paramArrayOfByte)
@@ -151,7 +148,11 @@ public class MD5Utils
       paramArrayOfByte = localMessageDigest.digest();
       return paramArrayOfByte;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label18:
+      break label18;
+    }
     return null;
   }
   
@@ -161,7 +162,7 @@ public class MD5Utils
     // Byte code:
     //   0: ldc 146
     //   2: invokestatic 152	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   5: astore_3
+    //   5: astore_2
     //   6: new 169	java/io/File
     //   9: dup
     //   10: aload_0
@@ -179,105 +180,104 @@ public class MD5Utils
     //   32: aload_0
     //   33: invokespecial 183	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   36: invokespecial 186	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   39: astore_2
+    //   39: astore_0
     //   40: sipush 4096
     //   43: newarray byte
-    //   45: astore_0
-    //   46: aload_2
-    //   47: aload_0
+    //   45: astore_3
+    //   46: aload_0
+    //   47: aload_3
     //   48: invokevirtual 190	java/io/BufferedInputStream:read	([B)I
     //   51: istore_1
     //   52: iload_1
     //   53: iconst_m1
-    //   54: if_icmpeq +26 -> 80
-    //   57: aload_3
-    //   58: aload_0
+    //   54: if_icmpeq +13 -> 67
+    //   57: aload_2
+    //   58: aload_3
     //   59: iconst_0
     //   60: iload_1
     //   61: invokevirtual 193	java/security/MessageDigest:update	([BII)V
     //   64: goto -18 -> 46
-    //   67: astore_0
-    //   68: aload_0
-    //   69: invokevirtual 196	java/io/IOException:printStackTrace	()V
-    //   72: aload_2
-    //   73: invokevirtual 199	java/io/BufferedInputStream:close	()V
-    //   76: aconst_null
-    //   77: astore_0
-    //   78: aload_0
-    //   79: areturn
-    //   80: aload_3
-    //   81: invokevirtual 159	java/security/MessageDigest:digest	()[B
-    //   84: astore_0
-    //   85: aload_2
-    //   86: invokevirtual 199	java/io/BufferedInputStream:close	()V
-    //   89: goto -11 -> 78
-    //   92: astore_2
-    //   93: aload_2
-    //   94: invokevirtual 196	java/io/IOException:printStackTrace	()V
-    //   97: goto -19 -> 78
-    //   100: astore_0
-    //   101: aload_0
-    //   102: invokevirtual 200	java/io/FileNotFoundException:printStackTrace	()V
-    //   105: aconst_null
-    //   106: areturn
-    //   107: astore_0
+    //   67: aload_2
+    //   68: invokevirtual 159	java/security/MessageDigest:digest	()[B
+    //   71: astore_2
+    //   72: aload_0
+    //   73: invokevirtual 196	java/io/BufferedInputStream:close	()V
+    //   76: goto +8 -> 84
+    //   79: astore_0
+    //   80: aload_0
+    //   81: invokevirtual 199	java/io/IOException:printStackTrace	()V
+    //   84: aload_2
+    //   85: areturn
+    //   86: astore_2
+    //   87: goto +21 -> 108
+    //   90: astore_2
+    //   91: aload_2
+    //   92: invokevirtual 199	java/io/IOException:printStackTrace	()V
+    //   95: aload_0
+    //   96: invokevirtual 196	java/io/BufferedInputStream:close	()V
+    //   99: aconst_null
+    //   100: areturn
+    //   101: astore_0
+    //   102: aload_0
+    //   103: invokevirtual 199	java/io/IOException:printStackTrace	()V
+    //   106: aconst_null
+    //   107: areturn
     //   108: aload_0
-    //   109: invokevirtual 196	java/io/IOException:printStackTrace	()V
-    //   112: aconst_null
-    //   113: astore_0
-    //   114: goto -36 -> 78
-    //   117: astore_0
-    //   118: aload_2
-    //   119: invokevirtual 199	java/io/BufferedInputStream:close	()V
-    //   122: aload_0
-    //   123: athrow
-    //   124: astore_0
-    //   125: aload_0
-    //   126: invokevirtual 201	java/security/NoSuchAlgorithmException:printStackTrace	()V
-    //   129: aconst_null
-    //   130: areturn
-    //   131: astore_2
-    //   132: aload_2
-    //   133: invokevirtual 196	java/io/IOException:printStackTrace	()V
-    //   136: goto -14 -> 122
+    //   109: invokevirtual 196	java/io/BufferedInputStream:close	()V
+    //   112: goto +8 -> 120
+    //   115: astore_0
+    //   116: aload_0
+    //   117: invokevirtual 199	java/io/IOException:printStackTrace	()V
+    //   120: aload_2
+    //   121: athrow
+    //   122: astore_0
+    //   123: aload_0
+    //   124: invokevirtual 200	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   127: aconst_null
+    //   128: areturn
+    //   129: astore_0
+    //   130: aload_0
+    //   131: invokevirtual 201	java/io/FileNotFoundException:printStackTrace	()V
+    //   134: aconst_null
+    //   135: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	139	0	paramString	String
+    //   0	136	0	paramString	String
     //   51	10	1	i	int
-    //   39	47	2	localBufferedInputStream	java.io.BufferedInputStream
-    //   92	27	2	localIOException1	java.io.IOException
-    //   131	2	2	localIOException2	java.io.IOException
-    //   5	76	3	localMessageDigest	MessageDigest
+    //   5	80	2	localObject1	Object
+    //   86	1	2	localObject2	Object
+    //   90	31	2	localIOException	java.io.IOException
+    //   45	14	3	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   46	52	67	java/io/IOException
-    //   57	64	67	java/io/IOException
-    //   80	85	67	java/io/IOException
-    //   85	89	92	java/io/IOException
-    //   0	22	100	java/io/FileNotFoundException
-    //   24	46	100	java/io/FileNotFoundException
-    //   72	76	100	java/io/FileNotFoundException
-    //   85	89	100	java/io/FileNotFoundException
-    //   93	97	100	java/io/FileNotFoundException
-    //   108	112	100	java/io/FileNotFoundException
-    //   118	122	100	java/io/FileNotFoundException
-    //   122	124	100	java/io/FileNotFoundException
-    //   132	136	100	java/io/FileNotFoundException
-    //   72	76	107	java/io/IOException
-    //   46	52	117	finally
-    //   57	64	117	finally
-    //   68	72	117	finally
-    //   80	85	117	finally
-    //   0	22	124	java/security/NoSuchAlgorithmException
-    //   24	46	124	java/security/NoSuchAlgorithmException
-    //   72	76	124	java/security/NoSuchAlgorithmException
-    //   85	89	124	java/security/NoSuchAlgorithmException
-    //   93	97	124	java/security/NoSuchAlgorithmException
-    //   108	112	124	java/security/NoSuchAlgorithmException
-    //   118	122	124	java/security/NoSuchAlgorithmException
-    //   122	124	124	java/security/NoSuchAlgorithmException
-    //   132	136	124	java/security/NoSuchAlgorithmException
-    //   118	122	131	java/io/IOException
+    //   72	76	79	java/io/IOException
+    //   46	52	86	finally
+    //   57	64	86	finally
+    //   67	72	86	finally
+    //   91	95	86	finally
+    //   46	52	90	java/io/IOException
+    //   57	64	90	java/io/IOException
+    //   67	72	90	java/io/IOException
+    //   95	99	101	java/io/IOException
+    //   108	112	115	java/io/IOException
+    //   0	22	122	java/security/NoSuchAlgorithmException
+    //   24	46	122	java/security/NoSuchAlgorithmException
+    //   72	76	122	java/security/NoSuchAlgorithmException
+    //   80	84	122	java/security/NoSuchAlgorithmException
+    //   95	99	122	java/security/NoSuchAlgorithmException
+    //   102	106	122	java/security/NoSuchAlgorithmException
+    //   108	112	122	java/security/NoSuchAlgorithmException
+    //   116	120	122	java/security/NoSuchAlgorithmException
+    //   120	122	122	java/security/NoSuchAlgorithmException
+    //   0	22	129	java/io/FileNotFoundException
+    //   24	46	129	java/io/FileNotFoundException
+    //   72	76	129	java/io/FileNotFoundException
+    //   80	84	129	java/io/FileNotFoundException
+    //   95	99	129	java/io/FileNotFoundException
+    //   102	106	129	java/io/FileNotFoundException
+    //   108	112	129	java/io/FileNotFoundException
+    //   116	120	129	java/io/FileNotFoundException
+    //   120	122	129	java/io/FileNotFoundException
   }
   
   public static String encodeFileHexStr(String paramString)
@@ -302,6 +302,7 @@ public class MD5Utils
         Arrays.sort(paramString, fileComparator);
         int j = paramString.length;
         i = 0;
+        Iterator localIterator;
         if (i < j)
         {
           localIterator = paramString[i];
@@ -311,20 +312,25 @@ public class MD5Utils
             encodeFolder(localIterator.getAbsolutePath());
           }
         }
+        else
+        {
+          Collections.sort(md5List, strComparator);
+          paramString = new StringBuilder();
+          localIterator = md5List.iterator();
+          if (localIterator.hasNext())
+          {
+            paramString.append((String)localIterator.next());
+            continue;
+          }
+          md5List.clear();
+          paramString = encodeHexStr(paramString.toString());
+          return paramString;
+        }
       }
       catch (Exception paramString)
       {
         return "";
       }
-      Collections.sort(md5List, strComparator);
-      paramString = new StringBuilder();
-      Iterator localIterator = md5List.iterator();
-      while (localIterator.hasNext()) {
-        paramString.append((String)localIterator.next());
-      }
-      md5List.clear();
-      paramString = encodeHexStr(paramString.toString());
-      return paramString;
       i += 1;
     }
   }
@@ -353,24 +359,26 @@ public class MD5Utils
     byte[] arrayOfByte = new byte[8];
     Encode(arrayOfByte, this.count, 8);
     int i = (int)(this.count[0] >>> 3) & 0x3F;
-    if (i < 56) {}
-    for (i = 56 - i;; i = 120 - i)
-    {
-      md5Update(PADDING, i);
-      md5Update(arrayOfByte, 8);
-      Encode(this.digest, this.state, 16);
-      return;
+    if (i < 56) {
+      i = 56 - i;
+    } else {
+      i = 120 - i;
     }
+    md5Update(PADDING, i);
+    md5Update(arrayOfByte, 8);
+    Encode(this.digest, this.state, 16);
   }
   
   private void md5Init()
   {
-    this.count[0] = 0L;
-    this.count[1] = 0L;
-    this.state[0] = 1732584193L;
-    this.state[1] = 4023233417L;
-    this.state[2] = 2562383102L;
-    this.state[3] = 271733878L;
+    long[] arrayOfLong = this.count;
+    arrayOfLong[0] = 0L;
+    arrayOfLong[1] = 0L;
+    arrayOfLong = this.state;
+    arrayOfLong[0] = 1732584193L;
+    arrayOfLong[1] = 4023233417L;
+    arrayOfLong[2] = 2562383102L;
+    arrayOfLong[3] = 271733878L;
   }
   
   private void md5Memcpy(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3)
@@ -385,11 +393,12 @@ public class MD5Utils
   
   private void md5Transform(byte[] paramArrayOfByte)
   {
-    long l2 = this.state[0];
-    long l1 = this.state[1];
-    long l4 = this.state[2];
-    long l3 = this.state[3];
-    long[] arrayOfLong = new long[16];
+    long[] arrayOfLong = this.state;
+    long l2 = arrayOfLong[0];
+    long l1 = arrayOfLong[1];
+    long l4 = arrayOfLong[2];
+    long l3 = arrayOfLong[3];
+    arrayOfLong = new long[16];
     Decode(arrayOfLong, paramArrayOfByte, 64);
     l2 = FF(l2, l1, l4, l3, arrayOfLong[0], 7L, 3614090360L);
     l3 = FF(l3, l2, l1, l4, arrayOfLong[1], 12L, 3905402710L);
@@ -457,59 +466,55 @@ public class MD5Utils
     l1 = II(l1, l4, l3, l2, arrayOfLong[9], 21L, 3951481745L);
     paramArrayOfByte = this.state;
     paramArrayOfByte[0] += l2;
-    paramArrayOfByte = this.state;
-    paramArrayOfByte[1] = (l1 + paramArrayOfByte[1]);
-    paramArrayOfByte = this.state;
+    paramArrayOfByte[1] += l1;
     paramArrayOfByte[2] += l4;
-    paramArrayOfByte = this.state;
     paramArrayOfByte[3] += l3;
   }
   
   private void md5Update(byte[] paramArrayOfByte, int paramInt)
   {
-    int j = 0;
     byte[] arrayOfByte = new byte[64];
-    int k = (int)(this.count[0] >>> 3) & 0x3F;
     long[] arrayOfLong = this.count;
-    long l = arrayOfLong[0] + (paramInt << 3);
-    arrayOfLong[0] = l;
-    if (l < paramInt << 3)
-    {
-      arrayOfLong = this.count;
+    int j = (int)(arrayOfLong[0] >>> 3) & 0x3F;
+    long l2 = arrayOfLong[0];
+    long l1 = paramInt << 3;
+    l2 += l1;
+    arrayOfLong[0] = l2;
+    if (l2 < l1) {
       arrayOfLong[1] += 1L;
     }
     arrayOfLong = this.count;
     arrayOfLong[1] += (paramInt >>> 29);
-    int m = 64 - k;
-    int i = k;
-    if (paramInt >= m)
+    int i = 64 - j;
+    if (paramInt >= i)
     {
-      md5Memcpy(this.buffer, paramArrayOfByte, k, 0, m);
+      md5Memcpy(this.buffer, paramArrayOfByte, j, 0, i);
       md5Transform(this.buffer);
-      i = m;
       while (i + 63 < paramInt)
       {
         md5Memcpy(arrayOfByte, paramArrayOfByte, 0, i, 64);
         md5Transform(arrayOfByte);
         i += 64;
       }
-      k = 0;
-      j = i;
-      i = k;
+      j = 0;
     }
-    md5Memcpy(this.buffer, paramArrayOfByte, i, j, paramInt - j);
+    else
+    {
+      i = 0;
+    }
+    md5Memcpy(this.buffer, paramArrayOfByte, j, i, paramInt - i);
   }
   
   private boolean md5Update(InputStream paramInputStream, long paramLong)
   {
     byte[] arrayOfByte = new byte[64];
-    int j = (int)(this.count[0] >>> 3) & 0x3F;
     Object localObject = this.count;
-    long l = localObject[0] + (paramLong << 3);
-    localObject[0] = l;
-    if (l < paramLong << 3)
-    {
-      localObject = this.count;
+    int j = (int)(localObject[0] >>> 3) & 0x3F;
+    long l2 = localObject[0];
+    long l1 = paramLong << 3;
+    l2 += l1;
+    localObject[0] = l2;
+    if (l2 < l1) {
       localObject[1] += 1L;
     }
     localObject = this.count;
@@ -523,41 +528,41 @@ public class MD5Utils
         paramInputStream.read((byte[])localObject, 0, i);
         md5Memcpy(this.buffer, (byte[])localObject, j, 0, i);
         md5Transform(this.buffer);
+        while (i + 63 < paramLong) {
+          try
+          {
+            paramInputStream.read(arrayOfByte);
+            md5Transform(arrayOfByte);
+            i += 64;
+          }
+          catch (Exception paramInputStream)
+          {
+            paramInputStream.printStackTrace();
+            return false;
+          }
+        }
+        j = 0;
       }
       catch (Exception paramInputStream)
       {
-        try
-        {
-          paramInputStream.read(arrayOfByte);
-          md5Transform(arrayOfByte);
-          i += 64;
-        }
-        catch (Exception paramInputStream)
-        {
-          paramInputStream.printStackTrace();
-          return false;
-        }
-        paramInputStream = paramInputStream;
         paramInputStream.printStackTrace();
         return false;
       }
-      if (i + 63 < paramLong) {}
-      j = 0;
     }
-    for (;;)
+    else
     {
-      arrayOfByte = new byte[(int)(paramLong - i)];
-      try
-      {
-        paramInputStream.read(arrayOfByte);
-        md5Memcpy(this.buffer, arrayOfByte, j, 0, arrayOfByte.length);
-        return true;
-      }
-      catch (Exception paramInputStream)
-      {
-        paramInputStream.printStackTrace();
-      }
       i = 0;
+    }
+    arrayOfByte = new byte[(int)(paramLong - i)];
+    try
+    {
+      paramInputStream.read(arrayOfByte);
+      md5Memcpy(this.buffer, arrayOfByte, j, 0, arrayOfByte.length);
+      return true;
+    }
+    catch (Exception paramInputStream)
+    {
+      paramInputStream.printStackTrace();
     }
     return false;
   }
@@ -571,14 +576,12 @@ public class MD5Utils
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        Object localObject;
-        int i;
-        paramString = paramString.getBytes();
-      }
-      return localUnsupportedEncodingException.toString();
+      Object localObject;
+      label13:
+      int i;
+      break label13;
     }
+    paramString = paramString.getBytes();
     paramString = new MD5Utils().getMD5(paramString);
     localObject = new StringBuilder(32);
     i = 0;
@@ -588,6 +591,7 @@ public class MD5Utils
       ((StringBuilder)localObject).append(Digit[(paramString[i] & 0xF)]);
       i += 1;
     }
+    return ((StringBuilder)localObject).toString();
   }
   
   public byte[] getMD5(byte[] paramArrayOfByte)
@@ -600,7 +604,7 @@ public class MD5Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.MD5Utils
  * JD-Core Version:    0.7.0.1
  */

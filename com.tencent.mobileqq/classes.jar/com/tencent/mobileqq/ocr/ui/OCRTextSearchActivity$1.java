@@ -14,33 +14,41 @@ class OCRTextSearchActivity$1
   
   public void a(int paramInt, String paramString, OCRTextSearchInfo.SearchResult paramSearchResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, errorCode=" + paramInt + ", sessionID=" + paramString + ", mSessionId=" + this.a.c);
-    }
-    if ((paramString == null) || (this.a.c == null) || (!this.a.c.equals(paramString)))
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, session error");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetTextSearchResult, errorCode=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", sessionID=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", mSessionId=");
+      localStringBuilder.append(this.a.c);
+      QLog.d("Q.ocr.OCRTextSearchActivity", 2, localStringBuilder.toString());
+    }
+    if ((paramString != null) && (this.a.c != null) && (this.a.c.equals(paramString)))
+    {
+      this.a.a(false);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null) {
+        this.a.b(1);
       }
+      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), paramInt, paramSearchResult);
+      this.a.a(1);
+      if ((paramInt == 0) && (paramSearchResult.a != null) && (paramSearchResult.a.size() > 0))
+      {
+        ReportController.b(null, "dc00898", "", "", "0X80082E8", "0X80082E8", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(null, "dc00898", "", "", "0X80082E7", "0X80082E7", 0, 0, "", "", "", "");
       return;
     }
-    this.a.a(false);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null) {
-      this.a.b(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, session error");
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), paramInt, paramSearchResult);
-    this.a.a(1);
-    if ((paramInt == 0) && (paramSearchResult.a != null) && (paramSearchResult.a.size() > 0))
-    {
-      ReportController.b(null, "dc00898", "", "", "0X80082E8", "0X80082E8", 0, 0, "", "", "", "");
-      return;
-    }
-    ReportController.b(null, "dc00898", "", "", "0X80082E7", "0X80082E7", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity.1
  * JD-Core Version:    0.7.0.1
  */

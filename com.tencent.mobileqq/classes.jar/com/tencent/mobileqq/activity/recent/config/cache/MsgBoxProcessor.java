@@ -14,8 +14,11 @@ public class MsgBoxProcessor
 {
   public RecentUser a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
   {
-    if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
-      new RecentUserCacheHelper().a(paramRecentUser, paramBoolean, ((QQAppInterface)paramBaseQQAppInterface).getRecentUserProxy(), (QQAppInterface)paramBaseQQAppInterface);
+    if ((paramBaseQQAppInterface instanceof QQAppInterface))
+    {
+      RecentUserCacheHelper localRecentUserCacheHelper = new RecentUserCacheHelper();
+      paramBaseQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
+      localRecentUserCacheHelper.a(paramRecentUser, paramBoolean, paramBaseQQAppInterface.getRecentUserProxy(), paramBaseQQAppInterface);
     }
     return paramRecentUser;
   }
@@ -35,12 +38,15 @@ public class MsgBoxProcessor
   
   public boolean a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
   {
-    return ((!TextUtils.equals(paramRecentUser.uin, AppConstants.FILTER_MSG_UIN)) && (!TextUtils.equals(paramRecentUser.uin, AppConstants.TEMP_MSG_BOX_UIN))) || (!paramBoolean);
+    if ((!TextUtils.equals(paramRecentUser.uin, AppConstants.FILTER_MSG_UIN)) && (!TextUtils.equals(paramRecentUser.uin, AppConstants.TEMP_MSG_BOX_UIN))) {
+      return true;
+    }
+    return paramBoolean ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.MsgBoxProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -29,44 +29,44 @@ class DetailFeedAllInfoPuller$FeedItemPullSegment$1
       SLog.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull commentLikeFeedItem cancel on net respond");
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramGetFriendStoryFeedInfoResp == null))
+    if ((!paramErrorMessage.isFail()) && (paramGetFriendStoryFeedInfoResp != null))
     {
-      SLog.a("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
-      DetailFeedAllInfoPuller.FeedItemPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment, paramErrorMessage);
-      return;
-    }
-    paramBatchGetFriendStoryFeedInfoRequest = (FeedManager)SuperManager.a(11);
-    if (paramGetFriendStoryFeedInfoResp.a.size() < 1)
-    {
-      SLog.e("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
-      paramBatchGetFriendStoryFeedInfoRequest.a(DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a));
-      paramBatchGetFriendStoryFeedInfoRequest = new ErrorMessage(2222, "no feed data back.");
-      DetailFeedAllInfoPuller.FeedItemPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment, paramBatchGetFriendStoryFeedInfoRequest);
-      return;
-    }
-    paramGetFriendStoryFeedInfoResp = (CommentLikeHomeFeed)paramGetFriendStoryFeedInfoResp.a.get(0);
-    if ((paramGetFriendStoryFeedInfoResp instanceof VideoListHomeFeed))
-    {
-      paramErrorMessage = (VideoListHomeFeed)paramGetFriendStoryFeedInfoResp;
-      if ((DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a == null) || (DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoSeq != paramErrorMessage.a().mVideoSeq))
+      paramBatchGetFriendStoryFeedInfoRequest = (FeedManager)SuperManager.a(11);
+      if (paramGetFriendStoryFeedInfoResp.a.size() < 1)
+      {
+        SLog.e("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
+        paramBatchGetFriendStoryFeedInfoRequest.a(DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a));
+        paramBatchGetFriendStoryFeedInfoRequest = new ErrorMessage(2222, "no feed data back.");
+        DetailFeedAllInfoPuller.FeedItemPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment, paramBatchGetFriendStoryFeedInfoRequest);
+        return;
+      }
+      paramGetFriendStoryFeedInfoResp = (CommentLikeHomeFeed)paramGetFriendStoryFeedInfoResp.a.get(0);
+      if ((paramGetFriendStoryFeedInfoResp instanceof VideoListHomeFeed))
+      {
+        paramErrorMessage = (VideoListHomeFeed)paramGetFriendStoryFeedInfoResp;
+        if ((DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a == null) || (DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoSeq != paramErrorMessage.a().mVideoSeq))
+        {
+          DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a = paramGetFriendStoryFeedInfoResp.a();
+          DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a(paramBatchGetFriendStoryFeedInfoRequest.a(DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a), paramGetFriendStoryFeedInfoResp.a(), true), true);
+          ((FeedVideoManager)SuperManager.a(12)).a(2, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a.feedId, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoSeq, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a(), DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoNextCookie, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mIsVideoEnd, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoPullType, true);
+        }
+      }
+      else
       {
         DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a = paramGetFriendStoryFeedInfoResp.a();
-        DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a(paramBatchGetFriendStoryFeedInfoRequest.a(DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a), paramGetFriendStoryFeedInfoResp.a(), true), true);
-        ((FeedVideoManager)SuperManager.a(12)).a(2, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a.feedId, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoSeq, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a(), DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoNextCookie, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mIsVideoEnd, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a().mVideoPullType, true);
       }
-    }
-    for (;;)
-    {
       DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a = ((CommentLikeFeedItem)paramBatchGetFriendStoryFeedInfoRequest.a(DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a));
-      DetailFeedAllInfoPuller.FeedItemPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment, DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a));
+      paramBatchGetFriendStoryFeedInfoRequest = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment;
+      DetailFeedAllInfoPuller.FeedItemPullSegment.a(paramBatchGetFriendStoryFeedInfoRequest, DetailFeedAllInfoPuller.a(paramBatchGetFriendStoryFeedInfoRequest.a));
       return;
-      DetailFeedAllInfoPuller.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment.a).a = paramGetFriendStoryFeedInfoResp.a();
     }
+    SLog.a("Q.qqstory.detail.DetailFeedAllInfoPuller", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
+    DetailFeedAllInfoPuller.FeedItemPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$FeedItemPullSegment, paramErrorMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.FeedItemPullSegment.1
  * JD-Core Version:    0.7.0.1
  */

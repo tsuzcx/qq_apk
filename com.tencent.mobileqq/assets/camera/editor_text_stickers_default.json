@@ -1,0 +1,910 @@
+[
+  {
+    "dynamicFields": {},
+    "id": "100030",
+    "materials": [
+      {
+        "additionalFields": {
+          "topic": "汤圆活过来了"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "meiyoushou",
+        "packageMd5": "3f67e1d0970f6f19cc5438d47429e7f6",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0060bc78-767f-11eb-9804-a2ecb18294e0-meiyoushou.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f7cd7a74-767e-11eb-9d58-a2ecb18294e0-缂╃暐鍥_preview_tangyuan_05.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "topic": "汤圆活过来了"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "shizhi",
+        "packageMd5": "988787ebc9b1fd0dbcaf8a9eb179b856",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a67f6b96-767e-11eb-b7aa-a2ecb18294e0-shizhi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/812a04d6-77f6-11eb-ba54-a2ecb18294e0-缂╃暐鍥_preview_tangyuan_03.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "topic": "汤圆活过来了"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "quantou",
+        "packageMd5": "4a924a43dd43c84985f8e97652f0ff19",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c6b952be-767e-11eb-aaad-a2ecb18294e0-quantou.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/52696bf0-77f6-11eb-a089-a2ecb18294e0-缂╃暐鍥_preview_tangyuan_04.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "topic": "汤圆活过来了"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "shaozi",
+        "packageMd5": "93378c0183781a37468471cc1c254967",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e6c1c794-767e-11eb-bb15-a2ecb18294e0-shaozi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/35717394-77f6-11eb-9346-a2ecb18294e0-缂╃暐鍥_preview_tangyuan_02.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "topic": "汤圆活过来了"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "damuzhi",
+        "packageMd5": "d0564d554fdf3ed4574abbf0d6a1f91f",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2f9a79d4-74e5-11eb-b75c-a2ecb18294e0-damuzhi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/226a3628-74e5-11eb-9c58-a2ecb18294e0-preview_tangyuan_01.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "topic": "happy牛year"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "happyniuyear",
+        "packageMd5": "8e5014d6cc491eb3d81e98bbbbdcb0b5",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f1488198-68f1-11eb-96ee-7ac5100db047-happyniuyear.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e91f8200-68f1-11eb-93f1-7ac5100db047-happy牛year缩略图.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "好事花生诸事大桔"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "haoshihuasheng",
+        "packageMd5": "1bfb79f5b5075fe9d71f5b7a78242374",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b813e03e-68f1-11eb-a301-7ac5100db047-haoshihuasheng.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/af978e92-68f1-11eb-b76d-7ac5100db047-好事花生缩略图.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "好事花生诸事大桔"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "zhushidaju",
+        "packageMd5": "9a317917b6b12b2c80a469d0764cd196",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d59dfea0-68f1-11eb-a6a7-7ac5100db047-zhushidaju.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/cdc60ede-68f1-11eb-98c1-7ac5100db047-诸事大桔缩略图.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "心想事橙莓有烦恼"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "xinxiangshicheng",
+        "packageMd5": "06baf908605cc157c8eff9606e6f91a8",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/206c4b9a-68f1-11eb-8d71-7ac5100db047-xinxiangshicheng.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c89199c8-621c-11eb-993a-7ac5100db047-心想事橙300.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "心想事橙莓有烦恼"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "shishiruyi",
+        "packageMd5": "05b7e01eab548fb7cccc3c810155baba",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0cdf6346-68f1-11eb-9f96-7ac5100db047-shishiruyi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e2f38ace-621c-11eb-b96e-7ac5100db047-柿柿如意300.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "心想事橙莓有烦恼"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "meixinmeifei",
+        "packageMd5": "9f8578203cdf8d3db8bfe55520ef6443",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/43d26894-68f1-11eb-bcb0-7ac5100db047-meixinmeifei.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/415cf7c8-5c9e-11eb-b01c-7ac5100db047-莓心莓肺缩略图.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "摸鱼画画"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "moyuhuahua",
+        "packageMd5": "060bbc30d9f828b8412f5bbd916ae8a6",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/468af3be-66a1-11eb-8a7e-7ac5100db047-moyuhuahua.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4be3fc70-66a1-11eb-8a7e-7ac5100db047-画画摸鱼缩略图.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "21天学习打卡"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "xuexidaka",
+        "packageMd5": "755c8c81981eb3cf7371dfb8dfe6bd1a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/489c47a2-68f4-11eb-82a3-7ac5100db047-xuexidaka.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/649ec3f4-5caa-11eb-bd2a-7ac5100db047-slt_study.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "每日一歌"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "yinyuedaka",
+        "packageMd5": "061d77fcccbeec7567d372f15eccc9b2",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6270b4ba-68f4-11eb-badd-7ac5100db047-yinyuedaka.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/979cd9a6-5ca7-11eb-86b1-7ac5100db047-slt_music.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "21天早餐打卡"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "ganfandaka",
+        "packageMd5": "eb1068bf0176d5f3b2f1e4af1c3ce07a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7ce356bc-5fb8-11eb-9460-7ac5100db047-ganfandaka.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4096b564-5cac-11eb-90de-7ac5100db047-slt_food.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": ""
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "bobonaicha",
+        "packageMd5": "f0a5f31b8d69172aa5fb6b06e09a962e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8598856a-68f1-11eb-a0d3-7ac5100db047-bobonaicha.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5886571e-606d-11eb-a8ec-7ac5100db047-奶茶2缩略图.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "干饭人干饭魂"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "ganfanhun",
+        "packageMd5": "15557b298d8df5fa0ba3ee0043d37f5e",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6045feb4-68f1-11eb-a1f4-7ac5100db047-ganfanhun.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/dc76e4d2-5cab-11eb-934b-7ac5100db047-干饭魂缩略图.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "topic": "画画日签"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "huahuadaka",
+        "packageMd5": "112154be702be2bb4493a597dca4f316",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/7926a3b8-68f4-11eb-aeae-7ac5100db047-huahuadaka.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a40b5ae4-5c86-11eb-8855-7ac5100db047-slt_draw.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "yundongdaka",
+        "packageMd5": "1946d69ede2823190249e0a3e4949bc1",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/30d17b74-68f4-11eb-9014-7ac5100db047-yundongdaka.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5540f62e-5cab-11eb-9030-7ac5100db047-slt_sport.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "badgeURL": "https://wezone-theme.cdn-go.cn/url-resource/latest/defaultmode/855/editor_sticker_badge/editor_sticker_badge_interaction.png",
+          "fontID": "font_runyuan75w",
+          "backgroundColorAdjustable": "0",
+          "interactive": "1",
+          "topic": "新人报到处",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "qiukuolie2",
+        "packageMd5": "e1cfe3f8d11d35514e710bb7f848ed95",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/78fafa0a-5004-11eb-b506-8e5fdc9c958e-qiukuolie2.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/72604132-5004-11eb-b506-8e5fdc9c958e-slt_qiukuolie.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "badgeURL": "https://wezone-theme.cdn-go.cn/url-resource/latest/defaultmode/855/editor_sticker_badge/editor_sticker_badge_interaction.png",
+          "fontID": "font_miaowu",
+          "backgroundColorAdjustable": "0",
+          "interactive": "1",
+          "topic": "扩列吗",
+          "tag": "",
+          "preDownload": "1"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "qiukuolie",
+        "packageMd5": "a9b4f9153154ded3561408193a337749",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/13841d76-4ff2-11eb-96b0-8e5fdc9c958e-qiukuolie.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f7a0faf2-4ff1-11eb-8fde-8e5fdc9c958e-slt_qiukuolie.png",
+        "thumbWidth": 300
+      }
+    ],
+    "name": "推荐",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100035",
+    "materials": [
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_zhaopiantya_shootingstar",
+        "packageMd5": "6c624f7deb4ed0a80c02688057d01045",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/44e00882-7b15-11eb-a027-260ddf59845b-sticker_zhaopiantya_shootingstar.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/3dbb101a-7b15-11eb-af4b-260ddf59845b-流星.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_zhaopiantuya_niceday",
+        "packageMd5": "15933a815fea6703e5d75592c4df34b0",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/19bc6f42-7b15-11eb-b7a0-260ddf59845b-sticker_zhaopiantuya_niceday.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/13811164-7b15-11eb-9582-260ddf59845b-niceday.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_zhaopiantuya_aixinxingqiu",
+        "packageMd5": "4128bd34cf3adf6eb8890dd32b1ef364",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/0300d3d8-7b15-11eb-b3f2-260ddf59845b-sticker_zhaopiantuya_aixinxingqiu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fa554f0c-7b14-11eb-87d0-260ddf59845b-爱心星球.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_zhaopiantuya_quanquan",
+        "packageMd5": "c210eb69bda5a0b758ecc28c3502ec26",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/30a5d0a4-7b15-11eb-bfb0-260ddf59845b-sticker_zhaopiantuya_quanquan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2a689a96-7b15-11eb-a0ae-260ddf59845b-圈圈.png",
+        "thumbWidth": 128
+      }
+    ],
+    "name": "涂鸦",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100034",
+    "materials": [
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_xiaoshijiekaman_whitestar",
+        "packageMd5": "5da662c53eff31cd2c725493dd19add9",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1cfa07ee-7b03-11eb-b7ae-260ddf59845b-sticker_xiaoshijiekaman_whitestar.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/141af3a4-7b03-11eb-9223-260ddf59845b-白星.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_xiaoshijiekaman_speedline",
+        "packageMd5": "50e83f801690eaf72b1fe18f217f357c",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/01667b8e-7b03-11eb-82cd-260ddf59845b-sticker_xiaoshijiekaman_speedline.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fa4023fa-7b02-11eb-9e54-260ddf59845b-速度线.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_xiaoshijiekaman_slogan",
+        "packageMd5": "acdca03dcfbb37c857c10cd85cb81022",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e94a3dba-7b02-11eb-b99b-260ddf59845b-sticker_xiaoshijiekaman_slogan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e17767de-7b02-11eb-b0d8-260ddf59845b-slogan.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_xiaoshijiekaman_greensun",
+        "packageMd5": "8c82c552bd5f2bc4c94af2b860bfe1fd",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c93388b0-7b02-11eb-bad0-260ddf59845b-sticker_xiaoshijiekaman_greensun.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b1d64afe-7b02-11eb-b17b-260ddf59845b-绿日.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_xiaoshijiekaman_rocket",
+        "packageMd5": "7ff306e65ed13905c50de7fb1d2e32ef",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e5939bae-7b1a-11eb-be79-260ddf59845b-sticker_xiaoshijiekaman_rocket.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/dfd5631e-7b1a-11eb-85ad-260ddf59845b-火箭.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_xiaoshijiekaman_blueplanet",
+        "packageMd5": "f4d74302ab98fd1511e4f5b5922d5de1",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/cf6b9bf6-7b1a-11eb-8746-260ddf59845b-sticker_xiaoshijiekaman_blueplanet.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c839aff8-7b1a-11eb-b347-260ddf59845b-蓝星球.png",
+        "thumbWidth": 128
+      }
+    ],
+    "name": "宇宙",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100031",
+    "materials": [
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_pintiehua_nahan",
+        "packageMd5": "787941c88c1d002dfef6d3187cb19bd0",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/19a54d70-7788-11eb-bbee-a2ecb18294e0-sticker_pintiehua_nahan.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/1428c250-7788-11eb-bc86-a2ecb18294e0-preview_nahan.png",
+        "thumbWidth": 128
+      }
+    ],
+    "name": "简笔",
+    "subCategories": [],
+    "thumbUrl": ""
+  },
+  {
+    "dynamicFields": {},
+    "id": "100032",
+    "materials": [
+      {
+        "additionalFields": {
+          "fontID": "font_huakang_haibao",
+          "textStickerResourceType": "FancyFont"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_pintiehua_zhenzhu",
+        "packageMd5": "66345a9cb26ca1e9cfeca9534318af9a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/432e3b34-7788-11eb-b44d-a2ecb18294e0-sticker_pintiehua_zhenzhu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/3e96b09c-7788-11eb-a3db-a2ecb18294e0-preview_zhenzhu.png",
+        "thumbWidth": 128
+      },
+      {
+        "additionalFields": {
+          "backgroundColorAdjustable": "0",
+          "interactive": "0",
+          "preDownload": "0"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "jintian",
+        "packageMd5": "c837995404886a52f8ec41a3aec1a727",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/bd8eae48-4dd2-11eb-81cd-a630f0d1fd29-jintian0629.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 300,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/b864c038-4dd2-11eb-9f07-a630f0d1fd29-slt_jintian.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {},
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "sticker_pintiehua_qiubite",
+        "packageMd5": "281cd003770c5c3b59e63ae02980a90c",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2c3b6f8c-7788-11eb-a3cf-a2ecb18294e0-sticker_pintiehua_qiubite.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 128,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2656ea38-7788-11eb-b28b-a2ecb18294e0-preview_qiubite.png",
+        "thumbWidth": 128
+      }
+    ],
+    "name": "花字",
+    "subCategories": [],
+    "thumbUrl": ""
+  }
+]

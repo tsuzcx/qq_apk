@@ -17,19 +17,19 @@ class QfileLocalFileDocTabView$2
       this.this$0.c.put(localObject, new ArrayList());
     }
     localObject = (List)this.this$0.c.get(localObject);
-    if (((List)localObject).contains(this.a) == true) {}
-    do
-    {
+    if (((List)localObject).contains(this.a) == true) {
       return;
-      ((List)localObject).add(this.a);
-      this.this$0.i();
-    } while (this.this$0.a.size() != 1);
-    this.this$0.setSelect(0);
+    }
+    ((List)localObject).add(this.a);
+    this.this$0.i();
+    if (this.this$0.a.size() == 1) {
+      this.this$0.setSelect(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView.2
  * JD-Core Version:    0.7.0.1
  */

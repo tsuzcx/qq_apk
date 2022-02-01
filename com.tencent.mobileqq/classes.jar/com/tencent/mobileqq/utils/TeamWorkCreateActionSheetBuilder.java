@@ -24,10 +24,10 @@ public class TeamWorkCreateActionSheetBuilder
   
   protected View a()
   {
-    View localView1 = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560949, null);
-    View localView2 = localView1.findViewById(2131365465);
-    View localView3 = localView1.findViewById(2131365454);
-    View localView4 = localView1.findViewById(2131365452);
+    View localView1 = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560824, null);
+    View localView2 = localView1.findViewById(2131365328);
+    View localView3 = localView1.findViewById(2131365317);
+    View localView4 = localView1.findViewById(2131365315);
     localView2.setOnClickListener(this);
     localView3.setOnClickListener(this);
     localView4.setOnClickListener(this);
@@ -42,15 +42,21 @@ public class TeamWorkCreateActionSheetBuilder
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setActionContentView(this.jdField_a_of_type_AndroidViewView, null);
     try
     {
-      if (!a()) {
+      if (!a())
+      {
         this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("TeamWorkCreateActionSheetBuilder", 2, "actionSheet.show exception=" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("actionSheet.show exception=");
+        localStringBuilder.append(localException);
+        QLog.d("TeamWorkCreateActionSheetBuilder", 2, localStringBuilder.toString());
+      }
     }
   }
   
@@ -66,44 +72,43 @@ public class TeamWorkCreateActionSheetBuilder
   
   public void b()
   {
-    if (a()) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      this.jdField_a_of_type_AndroidViewView = null;
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.w("TeamWorkCreateActionSheetBuilder", 2, "Exception while dismiss", localRuntimeException);
+    if (a()) {
+      try
+      {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        this.jdField_a_of_type_AndroidViewView = null;
+        return;
+      }
+      catch (RuntimeException localRuntimeException)
+      {
+        QLog.w("TeamWorkCreateActionSheetBuilder", 2, "Exception while dismiss", localRuntimeException);
+      }
     }
   }
   
   public void onClick(View paramView)
   {
-    int j = 1;
-    int i = j;
-    switch (paramView.getId())
+    int j = paramView.getId();
+    int i = 1;
+    if (j != 2131365315)
     {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsTeamWorkCreateActionSheetBuilder$OnCreateItemClickListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsTeamWorkCreateActionSheetBuilder$OnCreateItemClickListener.a(i);
+      if (j == 2131365317) {
+        i = 2;
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 2;
-      continue;
+    }
+    else {
       i = 3;
     }
+    TeamWorkCreateActionSheetBuilder.OnCreateItemClickListener localOnCreateItemClickListener = this.jdField_a_of_type_ComTencentMobileqqUtilsTeamWorkCreateActionSheetBuilder$OnCreateItemClickListener;
+    if (localOnCreateItemClickListener != null) {
+      localOnCreateItemClickListener.a(i);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.TeamWorkCreateActionSheetBuilder
  * JD-Core Version:    0.7.0.1
  */

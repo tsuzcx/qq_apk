@@ -14,8 +14,9 @@ class GuideVideoView$1
     if (QLog.isColorLevel()) {
       QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "onVideoPrepared");
     }
-    this.this$0.a = true;
-    if (this.this$0.b)
+    GuideVideoView localGuideVideoView = this.this$0;
+    localGuideVideoView.a = true;
+    if (localGuideVideoView.b)
     {
       if (QLog.isColorLevel()) {
         QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "has triggered start, now start");
@@ -27,7 +28,7 @@ class GuideVideoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.1
  * JD-Core Version:    0.7.0.1
  */

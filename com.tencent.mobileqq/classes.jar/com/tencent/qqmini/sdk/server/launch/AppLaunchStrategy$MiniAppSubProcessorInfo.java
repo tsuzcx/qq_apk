@@ -72,28 +72,30 @@ public class AppLaunchStrategy$MiniAppSubProcessorInfo
   
   public void onEnterBackground()
   {
-    int i = 1;
+    int i = 0;
     this.isForeground = false;
     if (this.allMiniAppInfo.isEmpty()) {
       return;
     }
-    if (WnsConfig.getConfig("qqminiapp", "mini_app_screen_detect", 1) > 0) {}
-    while ((i != 0) && (!DeviceInfoUtil.isScreenOn(AppLaunchStrategy.access$200(this.this$0))))
+    if (WnsConfig.getConfig("qqminiapp", "mini_app_screen_detect", 1) > 0) {
+      i = 1;
+    }
+    if ((i != 0) && (!DeviceInfoUtil.isScreenOn(AppLaunchStrategy.access$200(this.this$0))))
     {
       QMLog.i("minisdk-start_LaunchManagerService", "onAppBackground isScreenOn=false");
       return;
-      i = 0;
     }
     this.enterBackgroundTimestamp = System.currentTimeMillis();
     this.mainHandler.removeCallbacks(this.processRecycleRunnable);
     Handler localHandler = this.mainHandler;
     Runnable localRunnable = this.processRecycleRunnable;
-    if ("preload_game".equals(this.preloadType)) {}
-    for (long l = this.this$0.gameProcessRecycleTime;; l = this.this$0.appProcessRecycleTime)
-    {
-      localHandler.postDelayed(localRunnable, l);
-      return;
+    long l;
+    if ("preload_game".equals(this.preloadType)) {
+      l = this.this$0.gameProcessRecycleTime;
+    } else {
+      l = this.this$0.appProcessRecycleTime;
     }
+    localHandler.postDelayed(localRunnable, l);
   }
   
   public void onEnterForeground()
@@ -111,31 +113,34 @@ public class AppLaunchStrategy$MiniAppSubProcessorInfo
     this.allMiniAppInfo.clear();
     if (paramMiniAppBaseInfo != null)
     {
+      int j = 0;
       Iterator localIterator = paramList.iterator();
       do
       {
+        i = j;
         if (!localIterator.hasNext()) {
           break;
         }
       } while (!AppLaunchStrategy.equalAppInfo(paramMiniAppBaseInfo, (MiniAppInfo)localIterator.next()));
-    }
-    for (int i = 1;; i = 0)
-    {
+      int i = 1;
       if (i == 0) {
         this.allMiniAppInfo.add(paramMiniAppBaseInfo);
       }
-      this.allMiniAppInfo.addAll(paramList);
-      return;
     }
+    this.allMiniAppInfo.addAll(paramList);
   }
   
   public boolean support(boolean paramBoolean, int paramInt)
   {
-    if ((paramBoolean) && (this.internalUIClass == null)) {}
-    while ((this.supportRuntimeType & paramInt) == 0) {
+    boolean bool = false;
+    if ((paramBoolean) && (this.internalUIClass == null)) {
       return false;
     }
-    return true;
+    paramBoolean = bool;
+    if ((this.supportRuntimeType & paramInt) != 0) {
+      paramBoolean = true;
+    }
+    return paramBoolean;
   }
   
   @NonNull
@@ -147,14 +152,28 @@ public class AppLaunchStrategy$MiniAppSubProcessorInfo
       localObject1 = ((String)localObject2).substring(((String)localObject2).indexOf(":"));
     }
     localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("pName:").append((String)localObject1).append(" pid:").append(this.pid).append(" reportType=").append(-1).append(" preloadType=").append(this.preloadType).append(" supportRuntimeType=").append(this.supportRuntimeType);
-    ((StringBuilder)localObject2).append(" currentApp=").append(this.currentAppInfo);
+    ((StringBuilder)localObject2).append("pName:");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(" pid:");
+    ((StringBuilder)localObject2).append(this.pid);
+    ((StringBuilder)localObject2).append(" reportType=");
+    ((StringBuilder)localObject2).append(-1);
+    ((StringBuilder)localObject2).append(" preloadType=");
+    ((StringBuilder)localObject2).append(this.preloadType);
+    ((StringBuilder)localObject2).append(" supportRuntimeType=");
+    ((StringBuilder)localObject2).append(this.supportRuntimeType);
+    ((StringBuilder)localObject2).append(" currentApp=");
+    ((StringBuilder)localObject2).append(this.currentAppInfo);
     ((StringBuilder)localObject2).append(" allApp=[");
     localObject1 = this.allMiniAppInfo.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       MiniAppBaseInfo localMiniAppBaseInfo = (MiniAppBaseInfo)((Iterator)localObject1).next();
-      ((StringBuilder)localObject2).append("(appid:").append(localMiniAppBaseInfo.appId).append(" name:").append(localMiniAppBaseInfo.name).append("), ");
+      ((StringBuilder)localObject2).append("(appid:");
+      ((StringBuilder)localObject2).append(localMiniAppBaseInfo.appId);
+      ((StringBuilder)localObject2).append(" name:");
+      ((StringBuilder)localObject2).append(localMiniAppBaseInfo.name);
+      ((StringBuilder)localObject2).append("), ");
     }
     ((StringBuilder)localObject2).setLength(((StringBuilder)localObject2).length() - 2);
     ((StringBuilder)localObject2).append("]");
@@ -163,7 +182,7 @@ public class AppLaunchStrategy$MiniAppSubProcessorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.launch.AppLaunchStrategy.MiniAppSubProcessorInfo
  * JD-Core Version:    0.7.0.1
  */

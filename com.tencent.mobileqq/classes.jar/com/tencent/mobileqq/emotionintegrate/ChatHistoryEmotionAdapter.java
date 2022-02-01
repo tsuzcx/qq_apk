@@ -3,6 +3,7 @@ package com.tencent.mobileqq.emotionintegrate;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -30,12 +31,14 @@ import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.magicface.drawable.PngFrameDrawable;
 import com.tencent.mobileqq.pic.DownCallBack;
-import com.tencent.mobileqq.pic.PicBusiManager;
 import com.tencent.mobileqq.pic.PicDownloadInfo;
 import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.pic.api.IPicBus;
+import com.tencent.mobileqq.pic.api.IPicHelper;
+import com.tencent.mobileqq.pic.api.IPicTransFile.IPicDownloadPro;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.transfile.BasePicDownloadProcessor;
 import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.mobileqq.transfile.api.impl.TransFileControllerImpl;
@@ -100,27 +103,25 @@ public class ChatHistoryEmotionAdapter
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentWidgetGridView = paramGridView;
     this.jdField_a_of_type_AndroidViewLayoutInflater = paramActivity.getLayoutInflater();
-    this.d = AIOUtils.a(40.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.d = AIOUtils.b(40.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
-  private BasePicDownloadProcessor a(MessageForPic paramMessageForPic)
+  private IPicTransFile.IPicDownloadPro a(MessageForPic paramMessageForPic)
   {
-    boolean bool = true;
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)))
     {
       PicDownloadInfo localPicDownloadInfo = new PicDownloadInfo();
       localPicDownloadInfo.e = paramMessageForPic.fileSizeFlag;
-      if (localPicDownloadInfo.e == 1) {}
-      for (;;)
-      {
-        int i = URLDrawableHelper.getFileSizeType("aiothumb", bool);
-        paramMessageForPic = ((ITransFileController)((QQAppInterface)localAppRuntime).getRuntimeService(ITransFileController.class)).findProcessor(TransFileControllerImpl.makeReceiveKey(paramMessageForPic.md5, paramMessageForPic.uuid, i));
-        if ((paramMessageForPic == null) || (!(paramMessageForPic instanceof BasePicDownloadProcessor))) {
-          break;
-        }
-        return (BasePicDownloadProcessor)paramMessageForPic;
+      int i = localPicDownloadInfo.e;
+      boolean bool = true;
+      if (i != 1) {
         bool = false;
+      }
+      i = ((IPicHelper)QRoute.api(IPicHelper.class)).getFileSizeType("aiothumb", bool);
+      paramMessageForPic = ((ITransFileController)((QQAppInterface)localAppRuntime).getRuntimeService(ITransFileController.class)).findProcessor(TransFileControllerImpl.makeReceiveKey(paramMessageForPic.md5, paramMessageForPic.uuid, i));
+      if ((paramMessageForPic != null) && ((paramMessageForPic instanceof IPicTransFile.IPicDownloadPro))) {
+        return (IPicTransFile.IPicDownloadPro)paramMessageForPic;
       }
     }
     return null;
@@ -128,41 +129,48 @@ public class ChatHistoryEmotionAdapter
   
   private void a(int paramInt1, View paramView, int paramInt2, Object paramObject)
   {
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    }
-    String str;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (paramView == null);
-          a(paramInt1, paramView);
-          return;
-        } while (!ChatHistoryEmotionAdapter.HeaderHolder.class.isInstance(paramObject));
-        paramObject = (ChatHistoryEmotionAdapter.HeaderHolder)paramObject;
-      } while (paramObject == null);
-      str = (String)getItem(paramInt1);
-      paramObject.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      if (AppSetting.d)
-      {
-        paramInt1 /= 4;
-        paramObject.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(HardCodeUtil.a(2131701725) + (paramInt1 + 1) + HardCodeUtil.a(2131701677) + str);
+      if (paramInt2 != 2) {
+        return;
       }
-    } while (!a());
-    ViewGroup localViewGroup = (ViewGroup)paramObject.jdField_a_of_type_AndroidWidgetCheckBox.getParent();
-    if (localViewGroup != null) {
-      localViewGroup.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839532));
+      if (!ChatHistoryEmotionAdapter.HeaderHolder.class.isInstance(paramObject)) {
+        return;
+      }
+      paramObject = (ChatHistoryEmotionAdapter.HeaderHolder)paramObject;
+      if (paramObject != null)
+      {
+        String str = (String)getItem(paramInt1);
+        paramObject.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+        Object localObject;
+        if (AppSetting.d)
+        {
+          paramInt1 /= 4;
+          localObject = paramObject.jdField_a_of_type_AndroidWidgetTextView;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(HardCodeUtil.a(2131701865));
+          localStringBuilder.append(paramInt1 + 1);
+          localStringBuilder.append(HardCodeUtil.a(2131701817));
+          localStringBuilder.append(str);
+          ((TextView)localObject).setContentDescription(localStringBuilder.toString());
+        }
+        if (a())
+        {
+          localObject = (ViewGroup)paramObject.jdField_a_of_type_AndroidWidgetCheckBox.getParent();
+          if (localObject != null) {
+            ((ViewGroup)localObject).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839388));
+          }
+          paramObject.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+          paramObject.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo.a(str));
+          paramObject.jdField_a_of_type_AndroidWidgetCheckBox.setClickable(false);
+          paramView.setOnClickListener(new ChatHistoryEmotionAdapter.1(this, str));
+        }
+      }
     }
-    paramObject.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-    paramObject.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo.a(str));
-    paramObject.jdField_a_of_type_AndroidWidgetCheckBox.setClickable(false);
-    paramView.setOnClickListener(new ChatHistoryEmotionAdapter.1(this, str));
+    else if (paramView != null)
+    {
+      a(paramInt1, paramView);
+    }
   }
   
   public int a()
@@ -178,7 +186,7 @@ public class ChatHistoryEmotionAdapter
   String a(Calendar paramCalendar, long paramLong)
   {
     Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(1000L * paramLong);
+    localCalendar.setTimeInMillis(paramLong * 1000L);
     int i = paramCalendar.get(1);
     int j = localCalendar.get(1);
     int k = localCalendar.get(2);
@@ -212,12 +220,18 @@ public class ChatHistoryEmotionAdapter
     Object localObject1 = paramView.getTag();
     if (!EmotionPreviewData.class.isInstance(localObject2))
     {
-      QLog.d("ChatHistoryEmotionAdapter", 2, "[updateView] is not AIORichMediaInfo, position:" + paramInt);
+      paramView = new StringBuilder();
+      paramView.append("[updateView] is not AIORichMediaInfo, position:");
+      paramView.append(paramInt);
+      QLog.d("ChatHistoryEmotionAdapter", 2, paramView.toString());
       return;
     }
     if (!(localObject1 instanceof ChatHistoryEmotionAdapter.ContentHolder))
     {
-      QLog.d("ChatHistoryEmotionAdapter", 2, "[updateView] is not ContentHolder, position:" + paramInt);
+      paramView = new StringBuilder();
+      paramView.append("[updateView] is not ContentHolder, position:");
+      paramView.append(paramInt);
+      QLog.d("ChatHistoryEmotionAdapter", 2, paramView.toString());
       return;
     }
     localObject1 = (ChatHistoryEmotionAdapter.ContentHolder)localObject1;
@@ -225,53 +239,56 @@ public class ChatHistoryEmotionAdapter
     Object localObject3 = ((ChatHistoryEmotionAdapter.ContentHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView;
     Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateEmotionDataManager;
     localObject4 = EmotionDataManager.a(this.jdField_a_of_type_AndroidContentContext, (EmotionPreviewData)localObject2);
-    if (((EmotionPreviewData)localObject2).jdField_b_of_type_Boolean)
-    {
+    if (((EmotionPreviewData)localObject2).jdField_b_of_type_Boolean) {
       if (((EmotionPreviewData)localObject2).jdField_c_of_type_Boolean) {
         ((URLImageView)localObject3).setURLDrawableDownListener(this);
+      } else if (AbsDownloader.getFile(URLDrawableHelper.getURL((MessageForPic)((EmotionPreviewData)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 65537).toString()) == null) {
+        a((MessageForPic)((EmotionPreviewData)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      }
+    }
+    if ((localObject4 instanceof PngFrameDrawable))
+    {
+      PngFrameDrawable localPngFrameDrawable = (PngFrameDrawable)localObject4;
+      if (localPngFrameDrawable.a() != null)
+      {
+        localObject4 = localPngFrameDrawable.a();
+        i = this.jdField_c_of_type_Int;
+        ((URLImageView)localObject3).setImageBitmap(EmotionAdapter.a((Bitmap)localObject4, i, i));
+        break label258;
+      }
+    }
+    ((URLImageView)localObject3).setImageDrawable((Drawable)localObject4);
+    label258:
+    localObject3 = ((ChatHistoryEmotionAdapter.ContentHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView;
+    localObject1 = ((ChatHistoryEmotionAdapter.ContentHolder)localObject1).b;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (((EmotionPreviewData)localObject2).jdField_a_of_type_Boolean)
+      {
+        ((ImageView)localObject3).setVisibility(0);
+        ((ImageView)localObject1).setImageResource(2130845866);
+        ((ImageView)localObject1).setVisibility(0);
+      }
+      else
+      {
+        ((ImageView)localObject3).setVisibility(4);
+        ((ImageView)localObject1).setImageResource(2130845863);
+        ((ImageView)localObject1).setVisibility(0);
       }
     }
     else
     {
-      if ((!(localObject4 instanceof PngFrameDrawable)) || (((PngFrameDrawable)localObject4).a() == null)) {
-        break label341;
-      }
-      ((URLImageView)localObject3).setImageBitmap(EmotionAdapter.a(((PngFrameDrawable)localObject4).a(), this.jdField_c_of_type_Int, this.jdField_c_of_type_Int));
-      label191:
-      localObject3 = ((ChatHistoryEmotionAdapter.ContentHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView;
-      localObject1 = ((ChatHistoryEmotionAdapter.ContentHolder)localObject1).b;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label374;
-      }
-      if (!((EmotionPreviewData)localObject2).jdField_a_of_type_Boolean) {
-        break label351;
-      }
-      ((ImageView)localObject3).setVisibility(0);
-      ((ImageView)localObject1).setImageResource(2130845991);
-      ((ImageView)localObject1).setVisibility(0);
-    }
-    for (;;)
-    {
-      int i = paramInt / 4;
-      paramView.setContentDescription(HardCodeUtil.a(2131701683) + (i + 1) + HardCodeUtil.a(2131701743) + (paramInt % 4 + 1) + HardCodeUtil.a(2131701724));
-      return;
-      if (AbsDownloader.getFile(URLDrawableHelper.getURL((MessageForPic)((EmotionPreviewData)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 65537).toString()) != null) {
-        break;
-      }
-      a((MessageForPic)((EmotionPreviewData)localObject2).jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      break;
-      label341:
-      ((URLImageView)localObject3).setImageDrawable((Drawable)localObject4);
-      break label191;
-      label351:
-      ((ImageView)localObject3).setVisibility(4);
-      ((ImageView)localObject1).setImageResource(2130845988);
-      ((ImageView)localObject1).setVisibility(0);
-      continue;
-      label374:
       ((ImageView)localObject3).setVisibility(4);
       ((ImageView)localObject1).setVisibility(4);
     }
+    int i = paramInt / 4;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701823));
+    ((StringBuilder)localObject1).append(i + 1);
+    ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701883));
+    ((StringBuilder)localObject1).append(paramInt % 4 + 1);
+    ((StringBuilder)localObject1).append(HardCodeUtil.a(2131701864));
+    paramView.setContentDescription(((StringBuilder)localObject1).toString());
   }
   
   public void a(int paramInt, MessageForPic paramMessageForPic) {}
@@ -283,18 +300,18 @@ public class ChatHistoryEmotionAdapter
       this.jdField_a_of_type_JavaUtilHashMap.put(paramMessageForPic, localEmotionDownGIFCallback);
     }
     Object localObject = a(paramMessageForPic);
-    if (localObject != null) {
-      ((BasePicDownloadProcessor)localObject).addDownCallback(localEmotionDownGIFCallback);
-    }
-    do
+    if (localObject != null)
     {
+      ((IPicTransFile.IPicDownloadPro)localObject).addDownCallback(localEmotionDownGIFCallback);
       return;
-      localObject = PicBusiManager.a(5, 1536, 1);
-      ((PicReq)localObject).a(paramMessageForPic, paramMessageForPic.getPicDownloadInfo());
-      ((PicReq)localObject).a(localEmotionDownGIFCallback);
-      paramMessageForPic = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((paramMessageForPic == null) || (!(paramMessageForPic instanceof QQAppInterface)));
-    PicBusiManager.a((PicReq)localObject);
+    }
+    localObject = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(5, 1536, 1);
+    ((PicReq)localObject).a(paramMessageForPic, paramMessageForPic.getPicDownloadInfo());
+    ((PicReq)localObject).a(localEmotionDownGIFCallback);
+    paramMessageForPic = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramMessageForPic != null) && ((paramMessageForPic instanceof QQAppInterface))) {
+      ((IPicBus)QRoute.api(IPicBus.class)).launch((PicReq)localObject);
+    }
   }
   
   public void a(List<MessageRecord> paramList)
@@ -318,27 +335,33 @@ public class ChatHistoryEmotionAdapter
   
   public void a(boolean paramBoolean, List<MessageRecord> paramList)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Int == 0) {
+    int i = this.jdField_a_of_type_Int;
+    if (i == 0) {
       return;
     }
-    int i;
     if (paramBoolean)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
       this.jdField_b_of_type_Int = -1;
       this.jdField_a_of_type_JavaLangString = null;
-      if (this.jdField_a_of_type_JavaUtilCalendar == null)
-      {
-        this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
-        this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(MessageCache.a() * 1000L);
-      }
-      i = paramList.size() - 1;
     }
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo.a(this.jdField_a_of_type_JavaUtilList, i);
+    }
+    if (this.jdField_a_of_type_JavaUtilCalendar == null)
+    {
+      this.jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
+      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(MessageCache.a() * 1000L);
+    }
+    i = paramList.size();
+    boolean bool2 = true;
+    i -= 1;
     for (;;)
     {
+      int k = 0;
       if (i < 0) {
-        break label292;
+        break;
       }
       Object localObject2 = (MessageRecord)paramList.get(i);
       localObject1 = new EmotionPreviewData((MessageRecord)localObject2);
@@ -346,28 +369,23 @@ public class ChatHistoryEmotionAdapter
       if (!((String)localObject2).equals(this.jdField_a_of_type_JavaLangString))
       {
         this.jdField_a_of_type_JavaLangString = ((String)localObject2);
-        if (this.jdField_b_of_type_Int != -1)
+        int j = this.jdField_b_of_type_Int;
+        if (j != -1)
         {
-          int k = this.jdField_b_of_type_Int % this.jdField_a_of_type_Int;
-          if (k > 0)
+          int m = j % this.jdField_a_of_type_Int;
+          if (m > 0)
           {
             j = 0;
-            for (;;)
+            while (j < this.jdField_a_of_type_Int - m)
             {
-              if (j < this.jdField_a_of_type_Int - k)
-              {
-                this.jdField_a_of_type_JavaUtilList.add(jdField_c_of_type_JavaLangObject);
-                j += 1;
-                continue;
-                this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int);
-                break;
-              }
+              this.jdField_a_of_type_JavaUtilList.add(jdField_c_of_type_JavaLangObject);
+              j += 1;
             }
           }
         }
         this.jdField_b_of_type_Int = 0;
         this.jdField_a_of_type_JavaUtilList.add(localObject2);
-        int j = 0;
+        j = k;
         while (j < this.jdField_a_of_type_Int - 1)
         {
           this.jdField_a_of_type_JavaUtilList.add(jdField_b_of_type_JavaLangObject);
@@ -378,18 +396,16 @@ public class ChatHistoryEmotionAdapter
       this.jdField_b_of_type_Int += 1;
       i -= 1;
     }
-    label292:
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichExpandInfo;
-    if (!paramBoolean)
-    {
-      paramBoolean = bool;
-      if (!paramList.isEmpty()) {}
+    boolean bool1 = bool2;
+    if (!paramBoolean) {
+      if (paramList.isEmpty()) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
     }
-    else
-    {
-      paramBoolean = true;
-    }
-    ((AIORichExpandInfo)localObject1).a(paramBoolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    ((AIORichExpandInfo)localObject1).a(bool1, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
   }
   
   public boolean a()
@@ -420,9 +436,9 @@ public class ChatHistoryEmotionAdapter
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        BasePicDownloadProcessor localBasePicDownloadProcessor = a((MessageForPic)localEntry.getKey());
-        if (localBasePicDownloadProcessor != null) {
-          localBasePicDownloadProcessor.removeDownCallBack((DownCallBack)localEntry.getValue());
+        IPicTransFile.IPicDownloadPro localIPicDownloadPro = a((MessageForPic)localEntry.getKey());
+        if (localIPicDownloadPro != null) {
+          localIPicDownloadPro.removeDownCallBack((DownCallBack)localEntry.getValue());
         }
       }
     }
@@ -474,144 +490,113 @@ public class ChatHistoryEmotionAdapter
   public int getItemViewType(int paramInt)
   {
     Object localObject = getItem(paramInt);
-    if ((localObject instanceof MessageRecord)) {}
-    do
-    {
+    boolean bool = localObject instanceof MessageRecord;
+    paramInt = 0;
+    if (bool) {
       return 0;
-      if (jdField_c_of_type_JavaLangObject.equals(localObject)) {
-        return 1;
-      }
-      if ((localObject instanceof String)) {
-        return 2;
-      }
-      if (jdField_b_of_type_JavaLangObject.equals(localObject)) {
-        return 3;
-      }
-    } while (!jdField_a_of_type_JavaLangObject.equals(localObject));
-    return 4;
+    }
+    if (jdField_c_of_type_JavaLangObject.equals(localObject)) {
+      return 1;
+    }
+    if ((localObject instanceof String)) {
+      return 2;
+    }
+    if (jdField_b_of_type_JavaLangObject.equals(localObject)) {
+      return 3;
+    }
+    if (jdField_a_of_type_JavaLangObject.equals(localObject)) {
+      paramInt = 4;
+    }
+    return paramInt;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int i = getItemViewType(paramInt);
     Object localObject1;
-    Object localObject2;
-    if (paramView == null)
-    {
+    if (paramView == null) {
       localObject1 = null;
-      switch (i)
-      {
-      default: 
-        localObject2 = localObject1;
-        localObject1 = paramView;
-        paramView = (View)localObject2;
-      }
-    }
-    for (;;)
-    {
-      a(paramInt, (View)localObject1, i, paramView);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
+    } else {
       localObject1 = paramView.getTag();
-      break;
-      if (ChatHistoryEmotionAdapter.ContentHolder.class.isInstance(localObject1))
+    }
+    Object localObject2;
+    int j;
+    if (i != 0)
+    {
+      if (i != 1)
       {
-        localObject2 = paramView;
-        paramView = (View)localObject1;
-        localObject1 = localObject2;
+        Object localObject3;
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if ((i == 4) && (!jdField_a_of_type_JavaLangObject.equals(localObject1)))
+            {
+              paramView = new ChatHistoryEmotionAdapter.FullWidthFixedViewLayout(this, this.jdField_a_of_type_AndroidContentContext);
+              localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561279, null);
+              localObject3 = new FrameLayout.LayoutParams(-2, -2);
+              ((FrameLayout.LayoutParams)localObject3).gravity = 17;
+              ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+              paramView.addView((View)localObject2);
+              paramView.setTag(jdField_a_of_type_JavaLangObject);
+            }
+          }
+          else if (!jdField_b_of_type_JavaLangObject.equals(localObject1))
+          {
+            paramView = new View(this.jdField_a_of_type_AndroidContentContext);
+            paramView.setMinimumHeight(this.d);
+            paramView.setVisibility(4);
+            paramView.setTag(jdField_b_of_type_JavaLangObject);
+          }
+        }
+        else if (!ChatHistoryEmotionAdapter.HeaderHolder.class.isInstance(localObject1))
+        {
+          localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561280, null);
+          localObject1 = new ChatHistoryEmotionAdapter.HeaderHolder(this);
+          ((ChatHistoryEmotionAdapter.HeaderHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131378615));
+          ((ChatHistoryEmotionAdapter.HeaderHolder)localObject1).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)((View)localObject2).findViewById(2131369353));
+          paramView = new ChatHistoryEmotionAdapter.FullWidthFixedViewLayout(this, this.jdField_a_of_type_AndroidContentContext);
+          localObject3 = ((View)localObject2).getLayoutParams();
+          if (localObject3 != null)
+          {
+            ((View)localObject2).setLayoutParams(new FrameLayout.LayoutParams(((ViewGroup.LayoutParams)localObject3).width, ((ViewGroup.LayoutParams)localObject3).height));
+            paramView.setLayoutParams(new AbsListView.LayoutParams(((ViewGroup.LayoutParams)localObject3).width, ((ViewGroup.LayoutParams)localObject3).height));
+          }
+          ((FrameLayout)paramView).addView((View)localObject2);
+          paramView.setTag(localObject1);
+        }
       }
-      else
+      else if (!jdField_c_of_type_JavaLangObject.equals(localObject1))
       {
-        if ((QLog.isColorLevel()) && (paramView != null))
-        {
-          paramView = (AbsListView.LayoutParams)paramView.getLayoutParams();
-          QLog.d("ChatHistoryEmotionAdapter", 2, "[getView] type 0 while convertView type " + paramView.viewType);
-        }
-        localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559198, null);
-        ((View)localObject2).setLayoutParams(new AbsListView.LayoutParams(this.jdField_c_of_type_Int, this.jdField_c_of_type_Int));
-        paramView = new ChatHistoryEmotionAdapter.ContentHolder(this);
-        paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)((View)localObject2).findViewById(2131373068));
-        paramView.jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject2).findViewById(2131373072));
-        paramView.b = ((ImageView)((View)localObject2).findViewById(2131373073));
-        ((View)localObject2).setTag(paramView);
-        paramView = (View)localObject1;
-        localObject1 = localObject2;
-        continue;
-        if (jdField_c_of_type_JavaLangObject.equals(localObject1))
-        {
-          localObject2 = paramView;
-          paramView = (View)localObject1;
-          localObject1 = localObject2;
-        }
-        else
-        {
-          localObject2 = new View(this.jdField_a_of_type_AndroidContentContext);
-          ((View)localObject2).setLayoutParams(new AbsListView.LayoutParams(this.jdField_c_of_type_Int, this.jdField_c_of_type_Int));
-          ((View)localObject2).setTag(jdField_c_of_type_JavaLangObject);
-          paramView = (View)localObject1;
-          localObject1 = localObject2;
-          continue;
-          if (ChatHistoryEmotionAdapter.HeaderHolder.class.isInstance(localObject1))
-          {
-            localObject2 = paramView;
-            paramView = (View)localObject1;
-            localObject1 = localObject2;
-          }
-          else
-          {
-            localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561440, null);
-            paramView = new ChatHistoryEmotionAdapter.HeaderHolder(this);
-            paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131379254));
-            paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)((View)localObject2).findViewById(2131369653));
-            localObject1 = new ChatHistoryEmotionAdapter.FullWidthFixedViewLayout(this, this.jdField_a_of_type_AndroidContentContext);
-            Object localObject3 = ((View)localObject2).getLayoutParams();
-            if (localObject3 != null)
-            {
-              ((View)localObject2).setLayoutParams(new FrameLayout.LayoutParams(((ViewGroup.LayoutParams)localObject3).width, ((ViewGroup.LayoutParams)localObject3).height));
-              ((View)localObject1).setLayoutParams(new AbsListView.LayoutParams(((ViewGroup.LayoutParams)localObject3).width, ((ViewGroup.LayoutParams)localObject3).height));
-            }
-            ((FrameLayout)localObject1).addView((View)localObject2);
-            ((View)localObject1).setTag(paramView);
-            continue;
-            if (jdField_b_of_type_JavaLangObject.equals(localObject1))
-            {
-              localObject2 = paramView;
-              paramView = (View)localObject1;
-              localObject1 = localObject2;
-            }
-            else
-            {
-              localObject2 = new View(this.jdField_a_of_type_AndroidContentContext);
-              ((View)localObject2).setMinimumHeight(this.d);
-              ((View)localObject2).setVisibility(4);
-              ((View)localObject2).setTag(jdField_b_of_type_JavaLangObject);
-              paramView = (View)localObject1;
-              localObject1 = localObject2;
-              continue;
-              if (jdField_a_of_type_JavaLangObject.equals(localObject1))
-              {
-                localObject2 = paramView;
-                paramView = (View)localObject1;
-                localObject1 = localObject2;
-              }
-              else
-              {
-                localObject2 = new ChatHistoryEmotionAdapter.FullWidthFixedViewLayout(this, this.jdField_a_of_type_AndroidContentContext);
-                paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561439, null);
-                localObject3 = new FrameLayout.LayoutParams(-2, -2);
-                ((FrameLayout.LayoutParams)localObject3).gravity = 17;
-                paramView.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-                ((ChatHistoryEmotionAdapter.FullWidthFixedViewLayout)localObject2).addView(paramView);
-                ((View)localObject2).setTag(jdField_a_of_type_JavaLangObject);
-                paramView = (View)localObject1;
-                localObject1 = localObject2;
-              }
-            }
-          }
-        }
+        paramView = new View(this.jdField_a_of_type_AndroidContentContext);
+        j = this.jdField_c_of_type_Int;
+        paramView.setLayoutParams(new AbsListView.LayoutParams(j, j));
+        paramView.setTag(jdField_c_of_type_JavaLangObject);
       }
     }
+    else if (!ChatHistoryEmotionAdapter.ContentHolder.class.isInstance(localObject1))
+    {
+      if ((QLog.isColorLevel()) && (paramView != null))
+      {
+        paramView = (AbsListView.LayoutParams)paramView.getLayoutParams();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[getView] type 0 while convertView type ");
+        ((StringBuilder)localObject2).append(paramView.viewType);
+        QLog.d("ChatHistoryEmotionAdapter", 2, ((StringBuilder)localObject2).toString());
+      }
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559084, null);
+      j = this.jdField_c_of_type_Int;
+      paramView.setLayoutParams(new AbsListView.LayoutParams(j, j));
+      localObject2 = new ChatHistoryEmotionAdapter.ContentHolder(this);
+      ((ChatHistoryEmotionAdapter.ContentHolder)localObject2).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131372648));
+      ((ChatHistoryEmotionAdapter.ContentHolder)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
+      ((ChatHistoryEmotionAdapter.ContentHolder)localObject2).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372652));
+      ((ChatHistoryEmotionAdapter.ContentHolder)localObject2).b = ((ImageView)paramView.findViewById(2131372653));
+      paramView.setTag(localObject2);
+    }
+    a(paramInt, paramView, i, localObject1);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public int getViewTypeCount()
@@ -629,22 +614,18 @@ public class ChatHistoryEmotionAdapter
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
+    int i;
     try
     {
       File localFile = paramURLDrawable.getFileInLocal();
-      if (localFile == null) {
-        break label64;
+      if (localFile != null) {
+        i = ImageUtil.d(localFile.getAbsolutePath());
       }
-      i = ImageUtil.d(localFile.getAbsolutePath());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        label64:
-        int i = 0;
-      }
+      localException.printStackTrace();
+      i = 0;
     }
     if (QLog.isColorLevel()) {
       QLog.d("ChatHistoryEmotionAdapter", 2, new Object[] { "onLoadSuccessed,orientation:", Integer.valueOf(i) });
@@ -654,7 +635,7 @@ public class ChatHistoryEmotionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.ChatHistoryEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

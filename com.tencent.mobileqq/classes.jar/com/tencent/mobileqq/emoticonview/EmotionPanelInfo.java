@@ -17,34 +17,48 @@ public class EmotionPanelInfo
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof EmotionPanelInfo)) {
-        return false;
+    }
+    if (!(paramObject instanceof EmotionPanelInfo)) {
+      return false;
+    }
+    paramObject = (EmotionPanelInfo)paramObject;
+    if ((this.type == paramObject.type) && (this.columnNum == paramObject.columnNum))
+    {
+      if ((this.emotionPkg == null) && (paramObject.emotionPkg == null)) {
+        return true;
       }
-      paramObject = (EmotionPanelInfo)paramObject;
-      if ((this.type != paramObject.type) || (this.columnNum != paramObject.columnNum)) {
-        break;
+      EmoticonPackage localEmoticonPackage = this.emotionPkg;
+      if ((localEmoticonPackage != null) && (paramObject.emotionPkg != null) && (localEmoticonPackage.epId != null) && (this.emotionPkg.epId.equals(paramObject.emotionPkg.epId))) {
+        return true;
       }
-    } while (((this.emotionPkg == null) && (paramObject.emotionPkg == null)) || ((this.emotionPkg != null) && (paramObject.emotionPkg != null) && (this.emotionPkg.epId != null) && (this.emotionPkg.epId.equals(paramObject.emotionPkg.epId))));
-    return false;
+    }
     return false;
   }
   
   public String toString()
   {
-    String str = "";
-    if (this.emotionPkg != null) {
-      str = this.emotionPkg.epId;
+    Object localObject = this.emotionPkg;
+    if (localObject != null) {
+      localObject = ((EmoticonPackage)localObject).epId;
+    } else {
+      localObject = "";
     }
-    return "EmotionPanelInfo [type=" + this.type + ", columnNum=" + this.columnNum + ", epid=" + str + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EmotionPanelInfo [type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", columnNum=");
+    localStringBuilder.append(this.columnNum);
+    localStringBuilder.append(", epid=");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelInfo
  * JD-Core Version:    0.7.0.1
  */

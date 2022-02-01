@@ -43,20 +43,22 @@ public final class ReportPayFailedReq
   {
     paramJceOutputStream.write(this.sAid, 0);
     paramJceOutputStream.write(this.uiUin, 1);
-    if (this.sQua != null) {
-      paramJceOutputStream.write(this.sQua, 2);
+    String str = this.sQua;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.iSrc, 3);
     paramJceOutputStream.write(this.iStep, 4);
     paramJceOutputStream.write(this.iErrorCode, 5);
-    if (this.sReason != null) {
-      paramJceOutputStream.write(this.sReason, 6);
+    str = this.sReason;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_VipReminderSvrProto.ReportPayFailedReq
  * JD-Core Version:    0.7.0.1
  */

@@ -71,79 +71,75 @@ public final class CollectRecordDataRunnable
   {
     Object localObject1 = new ResultObjectsTable(BaseInfo.userMeta.appId, AppInfo.Companion.obtainProcessName((Context)BaseInfo.app), BaseInfo.userMeta.version);
     Object localObject2 = BaseInfo.dbHelper;
+    Object localObject3 = null;
     if (localObject2 != null)
     {
       localObject2 = ((DBHelper)localObject2).getDbHandler();
       if (localObject2 != null)
       {
         localObject1 = ((DBHandler)localObject2).search((BaseTable)localObject1, (Function0)CollectRecordDataRunnable.collectDbDataAndDeleteFile.1.INSTANCE);
-        localObject2 = localObject1;
-        if (!(localObject1 instanceof ArrayList)) {
-          localObject2 = null;
-        }
-        this.resultObjects = ((ArrayList)localObject2);
-        DropFrameTable localDropFrameTable = new DropFrameTable(BaseInfo.userMeta.appId, AppInfo.Companion.obtainProcessName((Context)BaseInfo.app), BaseInfo.userMeta.version, 0L, 0L, 24, null);
-        localObject1 = BaseInfo.dbHelper;
-        if (localObject1 == null) {
-          break label303;
-        }
-        localObject1 = ((DBHelper)localObject1).getDbHandler();
-        if (localObject1 == null) {
-          break label303;
-        }
-        localObject1 = ((DBHandler)localObject1).search((BaseTable)localDropFrameTable, (Function0)CollectRecordDataRunnable.collectDbDataAndDeleteFile.dropFrameMap.1.INSTANCE);
-        label152:
-        localObject2 = localObject1;
-        if (!(localObject1 instanceof HashMap)) {
-          localObject2 = null;
-        }
-        localObject1 = (HashMap)localObject2;
-        if ((localObject1 != null) && (((HashMap)localObject1).size() > 0))
-        {
-          localObject2 = localDropFrameTable.buildDropFrameJson((HashMap)localObject1);
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("dropFrame", localObject2);
-          ((JSONObject)localObject1).put("plugin", PluginCombination.dropFramePlugin.plugin);
-          localObject2 = this.resultObjects;
-          if (localObject2 != null) {
-            ((ArrayList)localObject2).add(new ResultObject(0, "Dropframe target", true, 1L, 1L, (JSONObject)localObject1, false, true, BaseInfo.userMeta.uin));
-          }
-        }
-        localObject1 = this.resultObjects;
-        if (localObject1 == null) {
-          break label337;
-        }
-        if (!((ArrayList)localObject1).isEmpty()) {
-          break label308;
-        }
-        localObject1 = null;
+        break label71;
       }
     }
-    for (;;)
+    localObject1 = null;
+    label71:
+    localObject2 = localObject1;
+    if (!(localObject1 instanceof ArrayList)) {
+      localObject2 = null;
+    }
+    this.resultObjects = ((ArrayList)localObject2);
+    DropFrameTable localDropFrameTable = new DropFrameTable(BaseInfo.userMeta.appId, AppInfo.Companion.obtainProcessName((Context)BaseInfo.app), BaseInfo.userMeta.version, 0L, 0L, 24, null);
+    localObject1 = BaseInfo.dbHelper;
+    if (localObject1 != null)
     {
-      if (localObject1 == null)
+      localObject1 = ((DBHelper)localObject1).getDbHandler();
+      if (localObject1 != null)
       {
-        deleteFile();
+        localObject1 = ((DBHandler)localObject1).search((BaseTable)localDropFrameTable, (Function0)CollectRecordDataRunnable.collectDbDataAndDeleteFile.dropFrameMap.1.INSTANCE);
+        break label166;
+      }
+    }
+    localObject1 = null;
+    label166:
+    localObject2 = localObject1;
+    if (!(localObject1 instanceof HashMap)) {
+      localObject2 = null;
+    }
+    localObject1 = (HashMap)localObject2;
+    if ((localObject1 != null) && (((HashMap)localObject1).size() > 0))
+    {
+      localObject2 = localDropFrameTable.buildDropFrameJson((HashMap)localObject1);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("dropFrame", localObject2);
+      ((JSONObject)localObject1).put("plugin", PluginCombination.dropFramePlugin.plugin);
+      localObject2 = this.resultObjects;
+      if (localObject2 != null) {
+        ((ArrayList)localObject2).add(new ResultObject(0, "Dropframe target", true, 1L, 1L, (JSONObject)localObject1, false, true, BaseInfo.userMeta.uin));
+      }
+    }
+    localObject2 = this.resultObjects;
+    localObject1 = localObject3;
+    if (localObject2 != null) {
+      if (((ArrayList)localObject2).isEmpty())
+      {
+        localObject1 = localObject3;
+      }
+      else
+      {
         localObject1 = this.handler;
         if (localObject1 != null) {
-          ((Handler)localObject1).postDelayed((Runnable)this, 7200000L);
+          ((Handler)localObject1).postDelayed((Runnable)this, 500L);
         }
+        localObject1 = Boolean.valueOf(true);
       }
-      return;
-      localObject1 = null;
-      break;
-      label303:
-      localObject1 = null;
-      break label152;
-      label308:
+    }
+    if (localObject1 == null)
+    {
+      deleteFile();
       localObject1 = this.handler;
       if (localObject1 != null) {
-        ((Handler)localObject1).postDelayed((Runnable)this, 500L);
+        ((Handler)localObject1).postDelayed((Runnable)this, 7200000L);
       }
-      localObject1 = Boolean.valueOf(true);
-      continue;
-      label337:
-      localObject1 = null;
     }
   }
   
@@ -160,22 +156,22 @@ public final class CollectRecordDataRunnable
       }
     }
     localObject1 = ((Iterable)localObject1).iterator();
-    for (;;)
+    while (((Iterator)localObject1).hasNext())
     {
-      if (((Iterator)localObject1).hasNext())
+      localObject2 = (String)((Iterator)localObject1).next();
+      try
       {
-        localObject2 = (String)((Iterator)localObject1).next();
-        try
-        {
-          new File((String)localObject2).delete();
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            Logger.INSTANCE.e(new String[] { "QAPM_base_CollectRecordDataRunnable", localException + ": delete file: " + (String)localObject2 + " error." });
-          }
-        }
+        new File((String)localObject2).delete();
+      }
+      catch (Exception localException)
+      {
+        Logger localLogger = Logger.INSTANCE;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localException);
+        localStringBuilder.append(": delete file: ");
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append(" error.");
+        localLogger.e(new String[] { "QAPM_base_CollectRecordDataRunnable", localStringBuilder.toString() });
       }
     }
     this.fileQueue.clear();
@@ -194,24 +190,24 @@ public final class CollectRecordDataRunnable
     if (this.listIndex <= paramList.size())
     {
       paramList = (ResultObject)paramList.get(this.listIndex - 1);
-      switch (paramList.getParams().getInt("plugin"))
+      int i = paramList.getParams().getInt("plugin");
+      if (i != 105)
       {
-      default: 
-        this.reporterMachine.reportOnce(paramList, null);
-        paramList = this.handler;
-        if (paramList != null) {
-          paramList.postDelayed((Runnable)this, 500L);
+        if (i == 106) {
+          paramList.setEventName("IO single");
         }
-        break;
+      }
+      else {
+        paramList.setEventName("DB single");
+      }
+      this.reporterMachine.reportOnce(paramList, null);
+      paramList = this.handler;
+      if (paramList != null) {
+        paramList.postDelayed((Runnable)this, 500L);
       }
     }
-    do
+    else
     {
-      return;
-      paramList.setEventName("DB single");
-      break;
-      paramList.setEventName("IO single");
-      break;
       Object localObject = BaseInfo.dbHelper;
       if (localObject != null)
       {
@@ -225,74 +221,74 @@ public final class CollectRecordDataRunnable
       PluginCombination.Companion.each((Function1)CollectRecordDataRunnable.reportDbData.1.INSTANCE);
       BaseInfo.editor.apply();
       paramList = this.handler;
-    } while (paramList == null);
-    paramList.postDelayed((Runnable)this, 7200000L);
+      if (paramList != null) {
+        paramList.postDelayed((Runnable)this, 7200000L);
+      }
+    }
   }
   
   private final void scanFile()
   {
     Iterator localIterator = getSearchFileList().iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
+      Object localObject1 = (File)localIterator.next();
+      if (((File)localObject1).exists())
       {
-        Object localObject1 = (File)localIterator.next();
-        if (((File)localObject1).exists())
+        Intrinsics.checkExpressionValueIsNotNull(localObject1, "file");
+        if (((File)localObject1).isDirectory())
         {
-          Intrinsics.checkExpressionValueIsNotNull(localObject1, "file");
-          if (((File)localObject1).isDirectory())
+          localObject1 = ((File)localObject1).listFiles();
+          if (localObject1 != null)
           {
-            localObject1 = ((File)localObject1).listFiles();
-            if (localObject1 != null)
+            Object localObject2 = (Collection)new ArrayList();
+            int k = localObject1.length;
+            int i = 0;
+            Object localObject3;
+            Object localObject4;
+            while (i < k)
             {
-              Object localObject2 = (Collection)new ArrayList();
-              int k = localObject1.length;
-              int i = 0;
-              Object localObject3;
-              if (i < k)
+              localObject3 = localObject1[i];
+              Intrinsics.checkExpressionValueIsNotNull(localObject3, "it");
+              localObject4 = ((File)localObject3).getPath();
+              Intrinsics.checkExpressionValueIsNotNull(localObject4, "it.path");
+              if (!StringsKt.contains$default((CharSequence)localObject4, (CharSequence)".txt", false, 2, null))
               {
-                localObject3 = localObject1[i];
-                Intrinsics.checkExpressionValueIsNotNull(localObject3, "it");
-                String str = ((File)localObject3).getPath();
-                Intrinsics.checkExpressionValueIsNotNull(str, "it.path");
-                if (!StringsKt.contains$default((CharSequence)str, (CharSequence)".txt", false, 2, null))
+                localObject4 = ((File)localObject3).getPath();
+                Intrinsics.checkExpressionValueIsNotNull(localObject4, "it.path");
+                if (!StringsKt.contains$default((CharSequence)localObject4, (CharSequence)".zip", false, 2, null))
                 {
-                  str = ((File)localObject3).getPath();
-                  Intrinsics.checkExpressionValueIsNotNull(str, "it.path");
-                  if (!StringsKt.contains$default((CharSequence)str, (CharSequence)".zip", false, 2, null)) {
-                    break label197;
-                  }
-                }
-                label197:
-                for (int j = 1;; j = 0)
-                {
-                  if (j != 0) {
-                    ((Collection)localObject2).add(localObject3);
-                  }
-                  i += 1;
-                  break;
+                  j = 0;
+                  break label184;
                 }
               }
-              localObject1 = ((Iterable)localObject2).iterator();
-              while (((Iterator)localObject1).hasNext())
+              int j = 1;
+              label184:
+              if (j != 0) {
+                ((Collection)localObject2).add(localObject3);
+              }
+              i += 1;
+            }
+            localObject1 = ((Iterable)localObject2).iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject2 = (File)((Iterator)localObject1).next();
+              try
               {
-                localObject2 = (File)((Iterator)localObject1).next();
-                try
-                {
-                  localObject3 = this.fileQueue;
-                  Intrinsics.checkExpressionValueIsNotNull(localObject2, "it");
-                  ((Queue)localObject3).add(((File)localObject2).getPath());
-                }
-                catch (Exception localException)
-                {
-                  for (;;)
-                  {
-                    localObject3 = Logger.INSTANCE;
-                    StringBuilder localStringBuilder = new StringBuilder().append(localException).append(": add file path: ");
-                    Intrinsics.checkExpressionValueIsNotNull(localObject2, "it");
-                    ((Logger)localObject3).e(new String[] { "QAPM_base_CollectRecordDataRunnable", ((File)localObject2).getPath() + " error. " });
-                  }
-                }
+                localObject3 = this.fileQueue;
+                Intrinsics.checkExpressionValueIsNotNull(localObject2, "it");
+                ((Queue)localObject3).add(((File)localObject2).getPath());
+              }
+              catch (Exception localException)
+              {
+                localObject4 = Logger.INSTANCE;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(localException);
+                localStringBuilder.append(": add file path: ");
+                Intrinsics.checkExpressionValueIsNotNull(localObject2, "it");
+                localStringBuilder.append(((File)localObject2).getPath());
+                localStringBuilder.append(" error. ");
+                ((Logger)localObject4).e(new String[] { "QAPM_base_CollectRecordDataRunnable", localStringBuilder.toString() });
               }
             }
           }
@@ -307,8 +303,10 @@ public final class CollectRecordDataRunnable
     if (!this.hasScanFile) {
       scanFile();
     }
-    Object localObject;
-    if (PluginController.INSTANCE.getAusterityReportNum() > SDKConfig.Companion.getMAX_AUSTERITY_REPORT_NUM())
+    int i = PluginController.INSTANCE.getAusterityReportNum();
+    int j = SDKConfig.Companion.getMAX_AUSTERITY_REPORT_NUM();
+    Object localObject = null;
+    if (i > j)
     {
       localObject = BaseInfo.dbHelper;
       if (localObject != null)
@@ -319,53 +317,37 @@ public final class CollectRecordDataRunnable
         }
       }
       BaseInfo.editor.putInt("count_today_austerity_reported", PluginController.INSTANCE.getAusterityReportNum()).apply();
-    }
-    label155:
-    label160:
-    label163:
-    for (;;)
-    {
       return;
-      if (!NetworkWatcher.INSTANCE.isWifiAvailable())
-      {
-        localObject = this.handler;
-        if (localObject != null) {
-          ((Handler)localObject).postDelayed((Runnable)this, 7200000L);
-        }
+    }
+    if (!NetworkWatcher.INSTANCE.isWifiAvailable())
+    {
+      localObject = this.handler;
+      if (localObject != null) {
+        ((Handler)localObject).postDelayed((Runnable)this, 7200000L);
       }
-      else
+    }
+    else
+    {
+      ArrayList localArrayList = this.resultObjects;
+      if (localArrayList != null)
       {
-        localObject = this.resultObjects;
-        int i;
-        if (localObject != null)
+        if ((((Collection)localArrayList).isEmpty() ^ true))
         {
-          if (((Collection)localObject).isEmpty()) {
-            break label155;
-          }
-          i = 1;
-          if (i == 0) {
-            break label160;
-          }
-          reportDbData((List)localObject);
-        }
-        for (localObject = Unit.INSTANCE;; localObject = null)
-        {
-          if (localObject != null) {
-            break label163;
-          }
-          collectDbDataAndDeleteFile();
+          reportDbData((List)localArrayList);
           localObject = Unit.INSTANCE;
+        }
+        if (localObject != null) {
           return;
-          i = 0;
-          break;
         }
       }
+      collectDbDataAndDeleteFile();
+      localObject = Unit.INSTANCE;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.runnable.CollectRecordDataRunnable
  * JD-Core Version:    0.7.0.1
  */

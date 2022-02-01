@@ -48,25 +48,36 @@ public class DatalineFileColorNoteServiceInfo
     }
     ColorNote.Builder localBuilder = new ColorNote.Builder();
     localBuilder.a(17039360);
-    String str = QFileUtils.b(6, this.a.sessionid + "");
-    if (QLog.isColorLevel()) {
-      QLog.i("DatalineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.a.sessionid);
+    ((StringBuilder)localObject).append("");
+    localObject = QFileUtils.a(6, ((StringBuilder)localObject).toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getColorNote: file colorNote key [");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("]");
+      QLog.i("DatalineFileColorNoteServiceInfo", 2, localStringBuilder.toString());
     }
-    localBuilder.a(str);
+    localBuilder.a((String)localObject);
     localBuilder.b(this.a.filename);
     localBuilder.c(FileUtil.a(this.a.filesize));
     int i = FileManagerUtil.a(FileManagerUtil.a(this.a.filename));
-    localBuilder.d("resdrawable://" + i);
-    str = a();
-    if (!TextUtils.isEmpty(str)) {
-      localBuilder.a(str.getBytes());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("resdrawable://");
+    ((StringBuilder)localObject).append(i);
+    localBuilder.d(((StringBuilder)localObject).toString());
+    localObject = a();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localBuilder.a(((String)localObject).getBytes());
     }
     return localBuilder.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.colornote.DatalineFileColorNoteServiceInfo
  * JD-Core Version:    0.7.0.1
  */

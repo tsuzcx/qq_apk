@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.qassistant.command;
 
+import com.tencent.mobileqq.qassistant.api.IVoiceCommand;
 import com.tencent.mobileqq.qassistant.core.IBasePresenter;
 import com.tencent.mobileqq.qassistant.data.CommandInfo;
 
 public class SureSendCommand
-  implements ICommand
+  implements IVoiceCommand
 {
   private IBasePresenter a;
   
@@ -15,14 +16,15 @@ public class SureSendCommand
   
   public void a(CommandInfo paramCommandInfo)
   {
-    if (this.a != null) {
-      this.a.k(paramCommandInfo);
+    IBasePresenter localIBasePresenter = this.a;
+    if (localIBasePresenter != null) {
+      localIBasePresenter.k(paramCommandInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.command.SureSendCommand
  * JD-Core Version:    0.7.0.1
  */

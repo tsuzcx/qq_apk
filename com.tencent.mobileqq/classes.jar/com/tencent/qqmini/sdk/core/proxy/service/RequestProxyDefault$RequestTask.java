@@ -41,87 +41,82 @@ public class RequestProxyDefault$RequestTask
   
   public void run()
   {
-    Object localObject1;
-    Object localObject2;
-    int i;
-    for (;;)
+    try
     {
-      byte[] arrayOfByte;
-      int j;
-      try
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.mUrl).openConnection();
+      localHttpURLConnection.setConnectTimeout(this.mTimeout * 1000);
+      localHttpURLConnection.setRequestMethod(this.mMethod);
+      Object localObject1;
+      Object localObject2;
+      if (this.mHeader != null)
       {
-        HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.mUrl).openConnection();
-        localHttpURLConnection.setConnectTimeout(this.mTimeout * 1000);
-        localHttpURLConnection.setRequestMethod(this.mMethod);
-        if (this.mHeader != null)
+        localObject1 = this.mHeader.keySet().iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          localObject1 = this.mHeader.keySet().iterator();
-          if (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (String)((Iterator)localObject1).next();
-            localHttpURLConnection.setRequestProperty((String)localObject2, (String)this.mHeader.get(localObject2));
-            continue;
-          }
+          localObject2 = (String)((Iterator)localObject1).next();
+          localHttpURLConnection.setRequestProperty((String)localObject2, (String)this.mHeader.get(localObject2));
         }
-        this.this$0.taskMap.remove(this.mUrl);
       }
-      catch (MalformedURLException localMalformedURLException)
+      if ((this.mBodyData != null) && (this.mMethod.equalsIgnoreCase("POST")))
       {
-        localMalformedURLException.printStackTrace();
-        this.this$0.taskMap.remove(this.mUrl);
-        this.mListener.onRequestFailed(-1, localMalformedURLException.getMessage());
+        localHttpURLConnection.setDoOutput(true);
+        localObject1 = localHttpURLConnection.getOutputStream();
+        ((OutputStream)localObject1).write(this.mBodyData);
+        ((OutputStream)localObject1).close();
+      }
+      int i = localHttpURLConnection.getResponseCode();
+      if (this.mAbort) {
         return;
-        if ((this.mBodyData != null) && (this.mMethod.equalsIgnoreCase("POST")))
+      }
+      this.mListener.onRequestHeadersReceived(i, localHttpURLConnection.getHeaderFields());
+      if (i == 200)
+      {
+        localObject1 = localHttpURLConnection.getInputStream();
+        localObject2 = new ByteArrayOutputStream();
+        byte[] arrayOfByte = new byte[4096];
+        for (;;)
         {
-          localMalformedURLException.setDoOutput(true);
-          localObject1 = localMalformedURLException.getOutputStream();
-          ((OutputStream)localObject1).write(this.mBodyData);
-          ((OutputStream)localObject1).close();
-        }
-        i = localMalformedURLException.getResponseCode();
-        if (this.mAbort) {
-          continue;
-        }
-        this.mListener.onRequestHeadersReceived(i, localMalformedURLException.getHeaderFields());
-        if (i == 200)
-        {
-          localObject1 = localMalformedURLException.getInputStream();
-          localObject2 = new ByteArrayOutputStream();
-          arrayOfByte = new byte[4096];
-          j = ((InputStream)localObject1).read(arrayOfByte);
+          int j = ((InputStream)localObject1).read(arrayOfByte);
           if (j == -1) {
             break;
           }
-          if (!this.mAbort) {
-            break label338;
+          if (this.mAbort)
+          {
+            ((InputStream)localObject1).close();
+            ((ByteArrayOutputStream)localObject2).close();
+            return;
           }
-          ((InputStream)localObject1).close();
-          ((ByteArrayOutputStream)localObject2).close();
-          return;
+          ((ByteArrayOutputStream)localObject2).write(arrayOfByte, 0, j);
         }
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
+        ((InputStream)localObject1).close();
+        ((ByteArrayOutputStream)localObject2).close();
+        localHttpURLConnection.disconnect();
         this.this$0.taskMap.remove(this.mUrl);
-        this.mListener.onRequestFailed(-2, localIOException.getMessage());
+        this.mListener.onRequestSucceed(i, ((ByteArrayOutputStream)localObject2).toByteArray(), localHttpURLConnection.getHeaderFields());
         return;
       }
-      this.mListener.onRequestFailed(localIOException.getResponseCode(), "http error code");
+      this.this$0.taskMap.remove(this.mUrl);
+      this.mListener.onRequestFailed(localHttpURLConnection.getResponseCode(), "http error code");
       return;
-      label338:
-      ((ByteArrayOutputStream)localObject2).write(arrayOfByte, 0, j);
     }
-    ((InputStream)localObject1).close();
-    ((ByteArrayOutputStream)localObject2).close();
-    localIOException.disconnect();
-    this.this$0.taskMap.remove(this.mUrl);
-    this.mListener.onRequestSucceed(i, ((ByteArrayOutputStream)localObject2).toByteArray(), localIOException.getHeaderFields());
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+      this.this$0.taskMap.remove(this.mUrl);
+      this.mListener.onRequestFailed(-2, localIOException.getMessage());
+      return;
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      localMalformedURLException.printStackTrace();
+      this.this$0.taskMap.remove(this.mUrl);
+      this.mListener.onRequestFailed(-1, localMalformedURLException.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.RequestProxyDefault.RequestTask
  * JD-Core Version:    0.7.0.1
  */

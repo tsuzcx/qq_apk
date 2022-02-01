@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_0xe2e$App
   extends MessageMicro<App>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 56, 66, 72, 80, 88, 114, 120, 128, 136, 144, 152, 162, 170 }, new String[] { "appid", "type", "name", "icon", "url", "removable", "source", "desc", "added", "redpoint", "add_ts", "cmd_trace", "show_frame", "playing_num", "add_uin", "total_playing_num", "qq_friend_playing_num", "playing_users", "tags" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "", "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), null, null }, App.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field add_ts = PBField.initUInt64(0L);
   public final PBUInt64Field add_uin = PBField.initUInt64(0L);
   public final PBUInt32Field added = PBField.initUInt32(0);
@@ -32,10 +32,17 @@ public final class oidb_0xe2e$App
   public final PBUInt32Field total_playing_num = PBField.initUInt32(0);
   public final PBUInt64Field type = PBField.initUInt64(0L);
   public final PBStringField url = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 56, 66, 72, 80, 88, 114, 120, 128, 136, 144, 152, 162, 170 }, new String[] { "appid", "type", "name", "icon", "url", "removable", "source", "desc", "added", "redpoint", "add_ts", "cmd_trace", "show_frame", "playing_num", "add_uin", "total_playing_num", "qq_friend_playing_num", "playing_users", "tags" }, new Object[] { localLong, localLong, "", "", "", localInteger, localInteger, "", localInteger, localInteger, localLong, "", localInteger, localInteger, localLong, localInteger, localInteger, null, null }, App.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe2e.oidb_0xe2e.App
  * JD-Core Version:    0.7.0.1
  */

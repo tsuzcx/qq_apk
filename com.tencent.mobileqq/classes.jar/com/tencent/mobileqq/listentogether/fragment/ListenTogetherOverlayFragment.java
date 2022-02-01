@@ -3,7 +3,7 @@ package com.tencent.mobileqq.listentogether.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
@@ -19,7 +19,7 @@ public class ListenTogetherOverlayFragment
   extends PublicBaseFragment
 {
   private int jdField_a_of_type_Int = -1;
-  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
@@ -36,13 +36,13 @@ public class ListenTogetherOverlayFragment
       QLog.i("ListenTogetherOverlayFragment", 2, "showActionSheet in");
     }
     LyricsController localLyricsController = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.create(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     boolean bool = ListenTogetherUtils.a();
     if (bool) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131693718);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131693671);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131693693);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131693646);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new ListenTogetherOverlayFragment.1(this, localLyricsController));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnCancelListener(new ListenTogetherOverlayFragment.2(this, localLyricsController));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(new ListenTogetherOverlayFragment.3(this, bool, localLyricsController));
@@ -59,8 +59,8 @@ public class ListenTogetherOverlayFragment
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherOverlayFragment", 2, "showPermissionDialog in");
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(2131695854).setNegativeButton(2131690800, new ListenTogetherOverlayFragment.5(this)).setPositiveButton(2131695858, new ListenTogetherOverlayFragment.4(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131695856);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131695868).setNegativeButton(2131690728, new ListenTogetherOverlayFragment.5(this)).setPositiveButton(2131695870, new ListenTogetherOverlayFragment.4(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131695869);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -68,16 +68,18 @@ public class ListenTogetherOverlayFragment
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {}
-    while (this.jdField_b_of_type_Boolean) {
+    if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+      return;
+    }
+    if (this.jdField_b_of_type_Boolean) {
       return;
     }
     this.jdField_b_of_type_Boolean = false;
     ListenTogetherManager localListenTogetherManager = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.create(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131717086);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131693731, 3);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690800);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.create(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131716745);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131693684, 3);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(new ListenTogetherOverlayFragment.6(this, localListenTogetherManager));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new ListenTogetherOverlayFragment.7(this));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
@@ -93,8 +95,8 @@ public class ListenTogetherOverlayFragment
     }
     ListenTogetherManager localListenTogetherManager = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     LyricsController localLyricsController = localListenTogetherManager.a();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setNegativeButton(2131690800, new ListenTogetherOverlayFragment.9(this, localListenTogetherManager, localLyricsController)).setPositiveButton(2131693730, new ListenTogetherOverlayFragment.8(this, localListenTogetherManager, localLyricsController));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131693695);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setNegativeButton(2131690728, new ListenTogetherOverlayFragment.9(this, localListenTogetherManager, localLyricsController)).setPositiveButton(2131693683, new ListenTogetherOverlayFragment.8(this, localListenTogetherManager, localLyricsController));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131693648);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new ListenTogetherOverlayFragment.10(this, localListenTogetherManager, localLyricsController));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -109,40 +111,32 @@ public class ListenTogetherOverlayFragment
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherOverlayFragment", 2, "showExitDialog in");
     }
-    LyricsController localLyricsController;
-    QQCustomDialog localQQCustomDialog;
-    int j;
-    if (this.jdField_b_of_type_Int == 1)
-    {
+    int i;
+    if (this.jdField_b_of_type_Int == 1) {
       i = 1;
-      localLyricsController = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-      localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230);
-      if (i == 0) {
-        break label146;
-      }
-      j = 2131693697;
-      label62:
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = localQQCustomDialog.setMessage(j).setNegativeButton(2131720448, new ListenTogetherOverlayFragment.11(this));
-      localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-      if (i == 0) {
-        break label152;
-      }
-    }
-    label146:
-    label152:
-    for (int i = 2131693699;; i = 2131693698)
-    {
-      localQQCustomDialog.setTitle(i);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new ListenTogetherOverlayFragment.12(this, localLyricsController));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-      localLyricsController.b(true);
-      return;
+    } else {
       i = 0;
-      break;
-      j = 2131693696;
-      break label62;
     }
+    LyricsController localLyricsController = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230);
+    int j;
+    if (i != 0) {
+      j = 2131693650;
+    } else {
+      j = 2131693649;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = localQQCustomDialog.setMessage(j).setNegativeButton(2131720163, new ListenTogetherOverlayFragment.11(this));
+    localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (i != 0) {
+      i = 2131693652;
+    } else {
+      i = 2131693651;
+    }
+    localQQCustomDialog.setTitle(i);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new ListenTogetherOverlayFragment.12(this, localLyricsController));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    localLyricsController.b(true);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -164,9 +158,9 @@ public class ListenTogetherOverlayFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = getActivity();
-    paramBundle = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getBaseActivity().app;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getBaseActivity();
+    paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
     if (paramBundle != null)
     {
       this.jdField_a_of_type_Int = paramBundle.getIntExtra("type", 0);
@@ -185,11 +179,11 @@ public class ListenTogetherOverlayFragment
   public void onFinish()
   {
     super.onFinish();
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity == null) {
+    BaseActivity localBaseActivity = getBaseActivity();
+    if (localBaseActivity == null) {
       return;
     }
-    localFragmentActivity.overridePendingTransition(0, 0);
+    localBaseActivity.overridePendingTransition(0, 0);
   }
   
   public void onPause()
@@ -203,40 +197,49 @@ public class ListenTogetherOverlayFragment
   public void onResume()
   {
     super.onResume();
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherOverlayFragment", 2, "onResume mType: " + this.jdField_a_of_type_Int + " mHasGotoSetting:" + this.jdField_a_of_type_Boolean + " mUinType:" + this.jdField_b_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume mType: ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(" mHasGotoSetting:");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(" mUinType:");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      QLog.d("ListenTogetherOverlayFragment", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_Int == 1)
+    int i = this.jdField_a_of_type_Int;
+    if (i == 1)
     {
       a();
       return;
     }
-    if (this.jdField_a_of_type_Int == 2)
+    if (i == 2)
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
         return;
       }
       b();
       return;
     }
-    if (this.jdField_a_of_type_Int == 3)
+    if (i == 3)
     {
       c();
       return;
     }
-    if (this.jdField_a_of_type_Int == 4)
+    if (i == 4)
     {
       e();
       return;
     }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment
  * JD-Core Version:    0.7.0.1
  */

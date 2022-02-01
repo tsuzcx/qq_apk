@@ -1,7 +1,6 @@
 package com.tencent.qqmini.miniapp.widget;
 
 import android.net.Uri;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.qqmini.miniapp.R.string;
 import com.tencent.qqmini.miniapp.util.FileChooserHelper;
@@ -11,7 +10,6 @@ import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.widget.MiniCustomDialog;
 import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebChromeClient;
@@ -33,15 +31,6 @@ class InnerWebView$2
   {
     DialogUtil.createCustomDialog(InnerWebView.access$600(this.this$0).getAttachedActivity(), 230, "", paramString2, R.string.mini_sdk_cancel, R.string.mini_sdk_ok, new InnerWebView.2.1(this, paramJsResult), new InnerWebView.2.2(this, paramJsResult)).show();
     return true;
-  }
-  
-  @Override
-  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
-  {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
-      return true;
-    }
-    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
   }
   
   public void onProgressChanged(WebView paramWebView, int paramInt)
@@ -86,7 +75,7 @@ class InnerWebView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.InnerWebView.2
  * JD-Core Version:    0.7.0.1
  */

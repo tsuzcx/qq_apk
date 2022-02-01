@@ -17,7 +17,9 @@ public enum LocalAudioDataManager
   
   private int adjustDB(int paramInt)
   {
-    return (int)(0.65D * paramInt + 40.0D);
+    double d = paramInt;
+    Double.isNaN(d);
+    return (int)(d * 0.65D + 40.0D);
   }
   
   public static LocalAudioDataManager getInstance()
@@ -82,7 +84,7 @@ public enum LocalAudioDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.audio.LocalAudioDataManager
  * JD-Core Version:    0.7.0.1
  */

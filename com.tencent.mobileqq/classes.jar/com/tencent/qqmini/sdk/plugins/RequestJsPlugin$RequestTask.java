@@ -31,49 +31,45 @@ public class RequestJsPlugin$RequestTask
       return;
     }
     this.mUrl = paramJSONObject.optString("url", "");
-    if (paramJSONObject.has("origin_url")) {}
-    for (this.mOriginUrl = paramJSONObject.optString("origin_url");; this.mOriginUrl = this.mUrl)
-    {
-      this.mMethod = paramJSONObject.optString("method", this.mMethod);
-      this.mDataType = paramJSONObject.optString("dataType", this.mDataType);
-      this.mResponseType = paramJSONObject.optString("responseType", this.mResponseType);
-      RequestJsPlugin.access$1300(this.mHeaders, paramJSONObject);
-      this.mHeaders.put("Referer", RequestJsPlugin.access$1000(paramRequestJsPlugin));
-      this.mHeaders.put("User-Agent", QUAUtil.getRequestUA());
-      processBody(paramJSONObject);
-      return;
+    if (paramJSONObject.has("origin_url")) {
+      this.mOriginUrl = paramJSONObject.optString("origin_url");
+    } else {
+      this.mOriginUrl = this.mUrl;
     }
+    this.mMethod = paramJSONObject.optString("method", this.mMethod);
+    this.mDataType = paramJSONObject.optString("dataType", this.mDataType);
+    this.mResponseType = paramJSONObject.optString("responseType", this.mResponseType);
+    RequestJsPlugin.access$1300(this.mHeaders, paramJSONObject);
+    this.mHeaders.put("Referer", RequestJsPlugin.access$1000(paramRequestJsPlugin));
+    this.mHeaders.put("User-Agent", QUAUtil.getRequestUA());
+    processBody(paramJSONObject);
   }
   
   private void processBody(JSONObject paramJSONObject)
   {
-    Object localObject2 = null;
     Object localObject1 = NativeBuffer.unpackNativeBuffer(this.mJsService, paramJSONObject, "data");
-    if (localObject1 != null)
-    {
+    Object localObject2 = null;
+    if (localObject1 != null) {
       localObject1 = ((NativeBuffer)localObject1).buf;
-      this.mBody = ((byte[])localObject1);
-      if ((this.mBody == null) && (paramJSONObject.has("data")))
-      {
-        paramJSONObject = paramJSONObject.optString("data");
-        if (paramJSONObject != null) {
-          break label67;
-        }
-      }
-    }
-    label67:
-    for (paramJSONObject = localObject2;; paramJSONObject = paramJSONObject.getBytes())
-    {
-      this.mBody = paramJSONObject;
-      return;
+    } else {
       localObject1 = null;
-      break;
+    }
+    this.mBody = ((byte[])localObject1);
+    if ((this.mBody == null) && (paramJSONObject.has("data")))
+    {
+      paramJSONObject = paramJSONObject.optString("data");
+      if (paramJSONObject == null) {
+        paramJSONObject = localObject2;
+      } else {
+        paramJSONObject = paramJSONObject.getBytes();
+      }
+      this.mBody = paramJSONObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.RequestJsPlugin.RequestTask
  * JD-Core Version:    0.7.0.1
  */

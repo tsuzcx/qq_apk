@@ -19,44 +19,47 @@ public class g
   
   public g(String paramString, int paramInt)
   {
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (int i = l.c.a.a();; i = l.c.b.a())
-    {
-      this.b = i;
-      this.g = paramString;
-      this.a = paramInt;
-      this.e = System.currentTimeMillis();
-      return;
+    l.c localc;
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      localc = l.c.a;
+    } else {
+      localc = l.c.b;
     }
+    this.b = localc.a();
+    this.g = paramString;
+    this.a = paramInt;
+    this.e = System.currentTimeMillis();
   }
   
   public g(String paramString1, String paramString2, int paramInt)
   {
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (int i = l.c.a.a();; i = l.c.b.a())
-    {
-      this.b = i;
-      this.g = paramString1;
-      this.h = paramString2;
-      this.a = paramInt;
-      this.e = System.currentTimeMillis();
-      return;
+    l.c localc;
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      localc = l.c.a;
+    } else {
+      localc = l.c.b;
     }
+    this.b = localc.a();
+    this.g = paramString1;
+    this.h = paramString2;
+    this.a = paramInt;
+    this.e = System.currentTimeMillis();
   }
   
   public g(String paramString1, String paramString2, long paramLong1, long paramLong2, int paramInt)
   {
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (int i = l.c.a.a();; i = l.c.b.a())
-    {
-      this.b = i;
-      this.g = paramString1;
-      this.h = paramString2;
-      this.a = paramInt;
-      this.e = paramLong1;
-      this.f = paramLong2;
-      return;
+    l.c localc;
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      localc = l.c.a;
+    } else {
+      localc = l.c.b;
     }
+    this.b = localc.a();
+    this.g = paramString1;
+    this.h = paramString2;
+    this.a = paramInt;
+    this.e = paramLong1;
+    this.f = paramLong2;
   }
   
   public void a()
@@ -66,7 +69,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.g
  * JD-Core Version:    0.7.0.1
  */

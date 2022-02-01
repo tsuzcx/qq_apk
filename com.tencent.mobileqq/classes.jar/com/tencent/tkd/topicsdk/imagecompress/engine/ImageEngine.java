@@ -41,49 +41,47 @@ public class ImageEngine
   
   private final int a()
   {
-    if (this.jdField_a_of_type_Int % 2 == 1)
+    int j = this.jdField_a_of_type_Int;
+    int i = j;
+    if (j % 2 == 1) {
+      i = j + 1;
+    }
+    this.jdField_a_of_type_Int = i;
+    j = this.b;
+    i = j;
+    if (j % 2 == 1) {
+      i = j + 1;
+    }
+    this.b = i;
+    i = RangesKt.coerceAtLeast(this.jdField_a_of_type_Int, this.b);
+    float f = RangesKt.coerceAtMost(this.jdField_a_of_type_Int, this.b) / i;
+    if ((f <= 1) && (f > 0.5625D))
     {
-      i = this.jdField_a_of_type_Int + 1;
-      this.jdField_a_of_type_Int = i;
-      if (this.b % 2 != 1) {
-        break label105;
-      }
-    }
-    float f;
-    label105:
-    for (int i = this.b + 1;; i = this.b)
-    {
-      this.b = i;
-      i = RangesKt.coerceAtLeast(this.jdField_a_of_type_Int, this.b);
-      f = RangesKt.coerceAtMost(this.jdField_a_of_type_Int, this.b) / i;
-      if ((f > 1) || (f <= 0.5625D)) {
-        break label144;
-      }
-      if (i >= 1664) {
-        break label113;
-      }
-      return 1;
-      i = this.jdField_a_of_type_Int;
-      break;
-    }
-    label113:
-    if (i < 4990) {
-      return 2;
-    }
-    if (4991 > i) {}
-    while (10239 < i) {
-      return i / 1280;
-    }
-    return 4;
-    label144:
-    if ((f <= 0.5625D) && (f > 0.5D))
-    {
-      if (i / 1280 == 0) {
+      if (i < 1664) {
         return 1;
       }
+      if (i < 4990) {
+        return 2;
+      }
+      if ((4991 <= i) && (10239 >= i)) {
+        return 4;
+      }
       return i / 1280;
     }
-    return (int)Math.ceil(i / (1280.0D / f));
+    double d2 = f;
+    if ((d2 <= 0.5625D) && (d2 > 0.5D))
+    {
+      i /= 1280;
+      if (i == 0) {
+        return 1;
+      }
+      return i;
+    }
+    double d1 = i;
+    Double.isNaN(d2);
+    d2 = 1280.0D / d2;
+    Double.isNaN(d1);
+    return (int)Math.ceil(d1 / d2);
   }
   
   private final Bitmap a(Bitmap paramBitmap, int paramInt)
@@ -98,40 +96,36 @@ public class ImageEngine
   @NotNull
   public File a()
   {
-    Object localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inSampleSize = a();
-    localObject = BitmapFactory.decodeStream(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a(), null, (BitmapFactory.Options)localObject);
-    ByteArrayOutputStream localByteArrayOutputStream;
-    if (localObject != null)
+    Object localObject1 = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject1).inSampleSize = a();
+    Object localObject2 = BitmapFactory.decodeStream(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a(), null, (BitmapFactory.Options)localObject1);
+    if (localObject2 != null)
     {
-      localByteArrayOutputStream = new ByteArrayOutputStream();
-      if (!Checker.SINGLE.isJPG(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a())) {
-        break label170;
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      localObject1 = localObject2;
+      if (Checker.SINGLE.isJPG(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a())) {
+        localObject1 = a((Bitmap)localObject2, Checker.SINGLE.getOrientation(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a()));
       }
-      localObject = a((Bitmap)localObject, Checker.SINGLE.getOrientation(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a()));
-    }
-    label170:
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Boolean) {}
-      for (Bitmap.CompressFormat localCompressFormat = Bitmap.CompressFormat.PNG;; localCompressFormat = Bitmap.CompressFormat.JPEG)
-      {
-        ((Bitmap)localObject).compress(localCompressFormat, 60, (OutputStream)localByteArrayOutputStream);
-        ((Bitmap)localObject).recycle();
-        localObject = new FileOutputStream(this.jdField_a_of_type_JavaIoFile);
-        ((FileOutputStream)localObject).write(localByteArrayOutputStream.toByteArray());
-        ((FileOutputStream)localObject).flush();
-        ((FileOutputStream)localObject).close();
-        localByteArrayOutputStream.close();
-        return this.jdField_a_of_type_JavaIoFile;
-        return new File(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a());
+      if (this.jdField_a_of_type_Boolean) {
+        localObject2 = Bitmap.CompressFormat.PNG;
+      } else {
+        localObject2 = Bitmap.CompressFormat.JPEG;
       }
+      ((Bitmap)localObject1).compress((Bitmap.CompressFormat)localObject2, 60, (OutputStream)localByteArrayOutputStream);
+      ((Bitmap)localObject1).recycle();
+      localObject1 = new FileOutputStream(this.jdField_a_of_type_JavaIoFile);
+      ((FileOutputStream)localObject1).write(localByteArrayOutputStream.toByteArray());
+      ((FileOutputStream)localObject1).flush();
+      ((FileOutputStream)localObject1).close();
+      localByteArrayOutputStream.close();
+      return this.jdField_a_of_type_JavaIoFile;
     }
+    return new File(this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressInputStreamProvider.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.engine.ImageEngine
  * JD-Core Version:    0.7.0.1
  */

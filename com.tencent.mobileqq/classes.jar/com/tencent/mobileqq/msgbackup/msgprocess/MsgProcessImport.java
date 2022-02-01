@@ -55,13 +55,16 @@ public abstract class MsgProcessImport
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
-    a("import resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
-    localObject = b();
-    String str = a();
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("import resEntity:");
+    ((StringBuilder)localObject2).append(((MsgBackupResEntity)localObject1).toLogString());
+    a(((StringBuilder)localObject2).toString());
+    localObject1 = b();
+    localObject2 = a();
     try
     {
-      a(str, (String)localObject);
+      a((String)localObject2, (String)localObject1);
       return;
     }
     catch (Exception localException)
@@ -72,30 +75,38 @@ public abstract class MsgProcessImport
   
   protected void a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      a("importFile null error ");
-    }
-    int i;
-    do
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      return;
-      i = FileUtils.a(paramString1, paramString2);
-    } while (!QLog.isColorLevel());
-    File localFile = new File(paramString2);
-    paramString2 = new StringBuilder().append("restore,quickMove: ").append(paramString1).append(" to ").append(paramString2).append(" status:").append(i).append(" size:");
-    if ((localFile != null) && (localFile.exists())) {}
-    for (paramString1 = Long.valueOf(localFile.length());; paramString1 = "-1")
-    {
-      a(paramString1);
+      int i = FileUtils.quickMove(paramString1, paramString2);
+      if (QLog.isColorLevel())
+      {
+        File localFile = new File(paramString2);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("restore,quickMove: ");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(" to ");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(" status:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" size:");
+        if (localFile.exists()) {
+          paramString1 = Long.valueOf(localFile.length());
+        } else {
+          paramString1 = "-1";
+        }
+        localStringBuilder.append(paramString1);
+        a(localStringBuilder.toString());
+      }
       return;
     }
+    a("importFile null error ");
   }
   
   public abstract String b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessImport
  * JD-Core Version:    0.7.0.1
  */

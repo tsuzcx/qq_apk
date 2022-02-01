@@ -23,13 +23,8 @@ import mqq.app.Packet;
 public abstract class CertifiedAccountAbstractServlet
   extends MSFServlet
 {
-  private static String a;
+  private static String a = "com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet";
   protected int a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet";
-  }
   
   public static String a()
   {
@@ -38,7 +33,12 @@ public abstract class CertifiedAccountAbstractServlet
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
     Random localRandom = new Random();
     localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localSimpleDateFormat.format(new Date()));
+    localStringBuilder.append(System.currentTimeMillis() % 1000L);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localRandom.nextInt(90000) + 10000);
     return localStringBuilder.toString();
   }
   
@@ -53,14 +53,15 @@ public abstract class CertifiedAccountAbstractServlet
       localBundle.putLong("key_index", paramIntent.getLongExtra("key_index", -1L));
       if (paramFromServiceMsg != null)
       {
-        if (paramFromServiceMsg.isSuccess())
+        boolean bool = paramFromServiceMsg.isSuccess();
+        if (bool)
         {
-          PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-          localStQWebRsp.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
-          localBundle.putLong("key_index", localStQWebRsp.Seq.get());
-          localBundle.putLong("retCode", localStQWebRsp.retCode.get());
-          localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-          a(paramIntent, localBundle, localStQWebRsp.busiBuff.get().toByteArray());
+          localObject = new PROTOCAL.StQWebRsp();
+          ((PROTOCAL.StQWebRsp)localObject).mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
+          localBundle.putLong("key_index", ((PROTOCAL.StQWebRsp)localObject).Seq.get());
+          localBundle.putLong("retCode", ((PROTOCAL.StQWebRsp)localObject).retCode.get());
+          localBundle.putString("errMsg", ((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8());
+          a(paramIntent, localBundle, ((PROTOCAL.StQWebRsp)localObject).busiBuff.get().toByteArray());
           return;
         }
         localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
@@ -68,42 +69,51 @@ public abstract class CertifiedAccountAbstractServlet
         notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
         return;
       }
-    }
-    catch (Throwable paramFromServiceMsg)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, paramFromServiceMsg + "onReceive error");
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "onReceive. inform  resultcode fail.");
+      }
       notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onReceive. inform  resultcode fail.");
+    catch (Throwable paramFromServiceMsg)
+    {
+      Object localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramFromServiceMsg);
+      localStringBuilder.append("onReceive error");
+      QLog.e((String)localObject, 1, localStringBuilder.toString());
+      notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
     }
-    notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
   }
   
   @CallSuper
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     Object localObject = null;
-    if (paramPacket != null) {}
-    for (paramPacket = paramPacket.toMsg();; paramPacket = null)
+    if (paramPacket != null) {
+      paramPacket = paramPacket.toMsg();
+    } else {
+      paramPacket = null;
+    }
+    if (paramPacket != null)
     {
-      if (paramPacket != null)
-      {
-        String str = paramPacket.getServiceCmd();
-        paramPacket = localObject;
-        if (paramIntent != null) {
-          paramPacket = paramIntent.getStringExtra("traceid");
-        }
-        QLog.i("certified-account-cmd", 1, "send request cmd=" + str + " traceId=" + paramPacket);
+      String str = paramPacket.getServiceCmd();
+      paramPacket = localObject;
+      if (paramIntent != null) {
+        paramPacket = paramIntent.getStringExtra("traceid");
       }
-      return;
+      paramIntent = new StringBuilder();
+      paramIntent.append("send request cmd=");
+      paramIntent.append(str);
+      paramIntent.append(" traceId=");
+      paramIntent.append(paramPacket);
+      QLog.i("certified-account-cmd", 1, paramIntent.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.mobileqq.urldrawable;
 import android.graphics.Bitmap;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 
 final class URLDrawableDecodeHandler$16
@@ -12,33 +11,22 @@ final class URLDrawableDecodeHandler$16
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
-      paramDownloadParams = null;
+      return null;
     }
-    Object localObject;
-    do
+    paramDownloadParams = paramDownloadParams.tag;
+    if ((paramDownloadParams instanceof int[]))
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 2);
-    paramDownloadParams = (int[])localObject;
-    float f2 = DeviceInfoUtil.a();
-    float f1 = f2;
-    if (f2 < 0.01F) {
-      f1 = 1.0F;
+      paramDownloadParams = (int[])paramDownloadParams;
+      if (paramDownloadParams.length == 2) {
+        return ImageUtil.d(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+      }
     }
-    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-    return ImageUtil.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.16
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class GetPromoteTaskRequest
     return new GetPromoteTaskRequest.GetPromoteTaskResponse(paramArrayOfByte);
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     SLog.a("GetPromoteTaskRequest", "encode: %s", this);
     return super.a();
@@ -38,7 +38,7 @@ public class GetPromoteTaskRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.promotetask.GetPromoteTaskRequest
  * JD-Core Version:    0.7.0.1
  */

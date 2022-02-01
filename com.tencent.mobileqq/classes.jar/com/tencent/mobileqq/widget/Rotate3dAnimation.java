@@ -44,17 +44,14 @@ public class Rotate3dAnimation
     localCamera.save();
     if (this.jdField_a_of_type_Boolean) {
       localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
-    }
-    for (;;)
-    {
-      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f3, -f4);
-      paramTransformation.postTranslate(f3, f4);
-      return;
+    } else {
       localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
+    localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+    localCamera.getMatrix(paramTransformation);
+    localCamera.restore();
+    paramTransformation.preTranslate(-f3, -f4);
+    paramTransformation.postTranslate(f3, f4);
   }
   
   public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -70,7 +67,7 @@ public class Rotate3dAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.Rotate3dAnimation
  * JD-Core Version:    0.7.0.1
  */

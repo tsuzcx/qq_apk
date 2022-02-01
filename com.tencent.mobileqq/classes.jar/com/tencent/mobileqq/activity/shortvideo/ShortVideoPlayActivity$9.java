@@ -13,14 +13,14 @@ class ShortVideoPlayActivity$9
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.access$1100(this.a));
     this.a.startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.9
  * JD-Core Version:    0.7.0.1
  */

@@ -28,20 +28,22 @@ public class fg
       a[m] = String.format("\\u%04x", new Object[] { Integer.valueOf(m) });
       m += 1;
     }
-    a[34] = "\\\"";
-    a[92] = "\\\\";
-    a[9] = "\\t";
-    a[8] = "\\b";
-    a[10] = "\\n";
-    a[13] = "\\r";
-    a[12] = "\\f";
-    String[] arrayOfString = (String[])a.clone();
+    String[] arrayOfString = a;
+    arrayOfString[34] = "\\\"";
+    arrayOfString[92] = "\\\\";
+    arrayOfString[9] = "\\t";
+    arrayOfString[8] = "\\b";
+    arrayOfString[10] = "\\n";
+    arrayOfString[13] = "\\r";
+    arrayOfString[12] = "\\f";
+    arrayOfString = (String[])arrayOfString.clone();
     b = arrayOfString;
     arrayOfString[60] = "\\u003c";
-    b[62] = "\\u003e";
-    b[38] = "\\u0026";
-    b[61] = "\\u003d";
-    b[39] = "\\u0027";
+    arrayOfString = b;
+    arrayOfString[62] = "\\u003e";
+    arrayOfString[38] = "\\u0026";
+    arrayOfString[61] = "\\u003d";
+    arrayOfString[39] = "\\u0027";
   }
   
   public fg(Writer paramWriter)
@@ -49,10 +51,12 @@ public class fg
     a(6);
     this.i = ":";
     this.d = true;
-    if (paramWriter == null) {
-      throw new NullPointerException("out == null");
+    if (paramWriter != null)
+    {
+      this.e = paramWriter;
+      return;
     }
-    this.e = paramWriter;
+    throw new NullPointerException("out == null");
   }
   
   private fg a(int paramInt1, int paramInt2, String paramString)
@@ -61,15 +65,18 @@ public class fg
     if ((m != paramInt2) && (m != paramInt1)) {
       throw new IllegalStateException("Nesting problem.");
     }
-    if (this.k != null) {
-      throw new IllegalStateException("Dangling name: " + this.k);
+    if (this.k == null)
+    {
+      this.g -= 1;
+      if (m == paramInt2) {
+        h();
+      }
+      this.e.write(paramString);
+      return this;
     }
-    this.g -= 1;
-    if (m == paramInt2) {
-      h();
-    }
-    this.e.write(paramString);
-    return this;
+    paramString = new StringBuilder("Dangling name: ");
+    paramString.append(this.k);
+    throw new IllegalStateException(paramString.toString());
   }
   
   private fg a(int paramInt, String paramString)
@@ -82,16 +89,18 @@ public class fg
   
   private void a(int paramInt)
   {
-    if (this.g == this.f.length)
-    {
-      arrayOfInt = new int[this.g * 2];
-      System.arraycopy(this.f, 0, arrayOfInt, 0, this.g);
-      this.f = arrayOfInt;
-    }
-    int[] arrayOfInt = this.f;
     int m = this.g;
+    int[] arrayOfInt1 = this.f;
+    if (m == arrayOfInt1.length)
+    {
+      int[] arrayOfInt2 = new int[m * 2];
+      System.arraycopy(arrayOfInt1, 0, arrayOfInt2, 0, m);
+      this.f = arrayOfInt2;
+    }
+    arrayOfInt1 = this.f;
+    m = this.g;
     this.g = (m + 1);
-    arrayOfInt[m] = paramInt;
+    arrayOfInt1[m] = paramInt;
   }
   
   private void b(int paramInt)
@@ -101,83 +110,88 @@ public class fg
   
   private void b(boolean paramBoolean)
   {
-    switch (f())
+    int m = f();
+    if (m != 1)
     {
-    case 3: 
-    case 5: 
-    default: 
-      throw new IllegalStateException("Nesting problem.");
-    case 7: 
-      if (!this.c) {
-        throw new IllegalStateException("JSON must have only one top-level value.");
+      if (m != 2)
+      {
+        if (m != 4)
+        {
+          if (m != 6) {
+            if (m == 7)
+            {
+              if (!this.c) {
+                throw new IllegalStateException("JSON must have only one top-level value.");
+              }
+            }
+            else {
+              throw new IllegalStateException("Nesting problem.");
+            }
+          }
+          if ((!this.c) && (!paramBoolean)) {
+            throw new IllegalStateException("JSON must start with an array or an object.");
+          }
+          b(7);
+          return;
+        }
+        this.e.append(this.i);
+        b(5);
+        return;
       }
-    case 6: 
-      if ((!this.c) && (!paramBoolean)) {
-        throw new IllegalStateException("JSON must start with an array or an object.");
-      }
-      b(7);
-      return;
-    case 1: 
-      b(2);
-      h();
-      return;
-    case 2: 
       this.e.append(',');
       h();
       return;
     }
-    this.e.append(this.i);
-    b(5);
+    b(2);
+    h();
   }
   
   private void c(String paramString)
   {
-    int n = 0;
-    if (this.j) {}
-    int i2;
-    int m;
-    int i3;
+    String[] arrayOfString;
+    if (this.j) {
+      arrayOfString = b;
+    } else {
+      arrayOfString = a;
+    }
+    this.e.write("\"");
+    int i2 = paramString.length();
+    int m = 0;
     int i1;
-    for (String[] arrayOfString = b;; arrayOfString = a)
+    for (int n = 0; m < i2; n = i1)
     {
-      this.e.write("\"");
-      i2 = paramString.length();
-      m = 0;
-      for (;;)
+      int i3 = paramString.charAt(m);
+      String str1;
+      if (i3 < 128)
       {
-        if (m >= i2) {
-          break label153;
-        }
-        i3 = paramString.charAt(m);
-        if (i3 >= 128) {
-          break;
-        }
         String str2 = arrayOfString[i3];
         str1 = str2;
-        if (str2 != null) {
-          break label101;
+        if (str2 == null)
+        {
+          i1 = n;
+          break label143;
         }
-        i1 = n;
-        m += 1;
-        n = i1;
       }
-    }
-    if (i3 == 8232) {}
-    for (String str1 = "\\u2028";; str1 = "\\u2029")
-    {
-      label101:
+      else if (i3 == 8232)
+      {
+        str1 = "\\u2028";
+      }
+      else
+      {
+        i1 = n;
+        if (i3 != 8233) {
+          break label143;
+        }
+        str1 = "\\u2029";
+      }
       if (n < m) {
         this.e.write(paramString, n, m - n);
       }
       this.e.write(str1);
       i1 = m + 1;
-      break;
-      i1 = n;
-      if (i3 != 8233) {
-        break;
-      }
+      label143:
+      m += 1;
     }
-    label153:
     if (n < i2) {
       this.e.write(paramString, n, i2 - n);
     }
@@ -186,10 +200,11 @@ public class fg
   
   private int f()
   {
-    if (this.g == 0) {
-      throw new IllegalStateException("JsonWriter is closed.");
+    int m = this.g;
+    if (m != 0) {
+      return this.f[(m - 1)];
     }
-    return this.f[(this.g - 1)];
+    throw new IllegalStateException("JsonWriter is closed.");
   }
   
   private void g()
@@ -204,18 +219,16 @@ public class fg
   
   private void h()
   {
-    if (this.h == null) {}
-    for (;;)
-    {
+    if (this.h == null) {
       return;
-      this.e.write("\n");
-      int m = 1;
-      int n = this.g;
-      while (m < n)
-      {
-        this.e.write(this.h);
-        m += 1;
-      }
+    }
+    this.e.write("\n");
+    int n = this.g;
+    int m = 1;
+    while (m < n)
+    {
+      this.e.write(this.h);
+      m += 1;
     }
   }
   
@@ -224,13 +237,15 @@ public class fg
     int m = f();
     if (m == 5) {
       this.e.write(44);
+    } else {
+      if (m != 3) {
+        break label37;
+      }
     }
-    while (m == 3)
-    {
-      h();
-      b(4);
-      return;
-    }
+    h();
+    b(4);
+    return;
+    label37:
     throw new IllegalStateException("Nesting problem.");
   }
   
@@ -265,17 +280,20 @@ public class fg
   
   public fg a(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("name == null");
-    }
-    if (this.k != null) {
+    if (paramString != null)
+    {
+      if (this.k == null)
+      {
+        if (this.g != 0)
+        {
+          this.k = paramString;
+          return this;
+        }
+        throw new IllegalStateException("JsonWriter is closed.");
+      }
       throw new IllegalStateException();
     }
-    if (this.g == 0) {
-      throw new IllegalStateException("JsonWriter is closed.");
-    }
-    this.k = paramString;
-    return this;
+    throw new NullPointerException("name == null");
   }
   
   public fg a(boolean paramBoolean)
@@ -283,12 +301,14 @@ public class fg
     g();
     b(false);
     Writer localWriter = this.e;
-    if (paramBoolean) {}
-    for (String str = "true";; str = "false")
-    {
-      localWriter.write(str);
-      return this;
+    String str;
+    if (paramBoolean) {
+      str = "true";
+    } else {
+      str = "false";
     }
+    localWriter.write(str);
+    return this;
   }
   
   public fg b()
@@ -317,10 +337,12 @@ public class fg
   {
     this.e.close();
     int m = this.g;
-    if ((m > 1) || ((m == 1) && (this.f[(m - 1)] != 7))) {
-      throw new IOException("Incomplete document");
+    if ((m <= 1) && ((m != 1) || (this.f[(m - 1)] == 7)))
+    {
+      this.g = 0;
+      return;
     }
-    this.g = 0;
+    throw new IOException("Incomplete document");
   }
   
   public fg d()
@@ -330,33 +352,35 @@ public class fg
   
   public fg e()
   {
-    if (this.k != null)
-    {
-      if (this.d) {
+    if (this.k != null) {
+      if (this.d)
+      {
         g();
       }
+      else
+      {
+        this.k = null;
+        return this;
+      }
     }
-    else
-    {
-      b(false);
-      this.e.write("null");
-      return this;
-    }
-    this.k = null;
+    b(false);
+    this.e.write("null");
     return this;
   }
   
   public void flush()
   {
-    if (this.g == 0) {
-      throw new IllegalStateException("JsonWriter is closed.");
+    if (this.g != 0)
+    {
+      this.e.flush();
+      return;
     }
-    this.e.flush();
+    throw new IllegalStateException("JsonWriter is closed.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.fg
  * JD-Core Version:    0.7.0.1
  */

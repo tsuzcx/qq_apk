@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
 import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.editor.composite.CodecParam;
 import com.tencent.mobileqq.shortvideo.common.TCTimer;
 import com.tencent.mobileqq.shortvideo.error.ErrorCenter;
 
@@ -50,7 +51,7 @@ public class RecordManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.RecordManager
  * JD-Core Version:    0.7.0.1
  */

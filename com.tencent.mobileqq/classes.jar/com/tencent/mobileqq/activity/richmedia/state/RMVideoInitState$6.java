@@ -9,12 +9,12 @@ class RMVideoInitState$6
   
   public void run()
   {
-    RMVideoStateMgr.a().b(0, HardCodeUtil.a(2131713410), false);
+    RMVideoStateMgr.a().b(0, HardCodeUtil.a(2131713378), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.6
  * JD-Core Version:    0.7.0.1
  */

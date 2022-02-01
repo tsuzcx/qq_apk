@@ -13,13 +13,14 @@ class GuessSongGameRecordCtrl$3
     if (GuessSongGameRecordCtrl.a(this.this$0))
     {
       AVLog.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
-      this.this$0.a(GuessSongGameRecordCtrl.b(this.this$0));
+      GuessSongGameRecordCtrl localGuessSongGameRecordCtrl = this.this$0;
+      localGuessSongGameRecordCtrl.a(GuessSongGameRecordCtrl.b(localGuessSongGameRecordCtrl));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.videorecord.GuessSongGameRecordCtrl.3
  * JD-Core Version:    0.7.0.1
  */

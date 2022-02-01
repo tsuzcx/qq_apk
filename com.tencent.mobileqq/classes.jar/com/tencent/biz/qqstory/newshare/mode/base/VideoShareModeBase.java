@@ -47,24 +47,53 @@ public abstract class VideoShareModeBase
   
   protected String a()
   {
-    if (this.a.isPollVideo()) {
-      return this.jdField_c_of_type_JavaLangString + HardCodeUtil.a(2131716202);
+    if (this.a.isPollVideo())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131716116));
+      return ((StringBuilder)localObject).toString();
     }
-    if (this.a.isInteractVideo()) {
-      return this.jdField_c_of_type_JavaLangString + HardCodeUtil.a(2131716220);
+    if (this.a.isInteractVideo())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131716126));
+      return ((StringBuilder)localObject).toString();
     }
     if (this.a.isGameVideo())
     {
-      VideoGameInfo localVideoGameInfo = this.a.getVideoGameInfo();
-      if (localVideoGameInfo.a == 2) {
-        return HardCodeUtil.a(2131716204) + localVideoGameInfo.b + HardCodeUtil.a(2131716184);
+      localObject = this.a.getVideoGameInfo();
+      if (((VideoGameInfo)localObject).a == 2)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131716117));
+        localStringBuilder.append(((VideoGameInfo)localObject).b);
+        localStringBuilder.append(HardCodeUtil.a(2131716107));
+        return localStringBuilder.toString();
       }
-      if (this.b == 0) {
-        return HardCodeUtil.a(2131716185) + localVideoGameInfo.b + localVideoGameInfo.jdField_c_of_type_JavaLangString + HardCodeUtil.a(2131716219);
+      if (this.b == 0)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131716108));
+        localStringBuilder.append(((VideoGameInfo)localObject).b);
+        localStringBuilder.append(((VideoGameInfo)localObject).jdField_c_of_type_JavaLangString);
+        localStringBuilder.append(HardCodeUtil.a(2131716125));
+        return localStringBuilder.toString();
       }
-      return this.a.mOwnerName + HardCodeUtil.a(2131716194) + localVideoGameInfo.b + localVideoGameInfo.jdField_c_of_type_JavaLangString + HardCodeUtil.a(2131716190);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a.mOwnerName);
+      localStringBuilder.append(HardCodeUtil.a(2131716111));
+      localStringBuilder.append(((VideoGameInfo)localObject).b);
+      localStringBuilder.append(((VideoGameInfo)localObject).jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(HardCodeUtil.a(2131716110));
+      return localStringBuilder.toString();
     }
-    return this.jdField_c_of_type_JavaLangString + HardCodeUtil.a(2131716200) + QQStoryConstant.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131716114));
+    ((StringBuilder)localObject).append(QQStoryConstant.a);
+    return ((StringBuilder)localObject).toString();
   }
   
   public final void a(ShareCopyLinkData paramShareCopyLinkData)
@@ -85,11 +114,13 @@ public abstract class VideoShareModeBase
     paramShareQQData.jdField_e_of_type_JavaLangString = this.a.mVid;
     paramShareQQData.j = this.l;
     paramShareQQData.h = a(1);
-    if (this.jdField_c_of_type_Int != -1) {
-      paramShareQQData.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
+    int m = this.jdField_c_of_type_Int;
+    if (m != -1) {
+      paramShareQQData.jdField_d_of_type_Int = m;
     }
-    if (this.jdField_d_of_type_Int != -1) {
-      paramShareQQData.jdField_e_of_type_Int = this.jdField_d_of_type_Int;
+    m = this.jdField_d_of_type_Int;
+    if (m != -1) {
+      paramShareQQData.jdField_e_of_type_Int = m;
     }
     a(paramShareQQData);
   }
@@ -134,15 +165,10 @@ public abstract class VideoShareModeBase
     super.a_(paramShareData);
     if (this.a.isPollVideo()) {
       paramShareData.a("vote", "1");
+    } else if (this.a.isInteractVideo()) {
+      paramShareData.a("grade", "1");
     }
-    for (;;)
-    {
-      paramShareData.a = this.a;
-      return;
-      if (this.a.isInteractVideo()) {
-        paramShareData.a("grade", "1");
-      }
-    }
+    paramShareData.a = this.a;
   }
   
   protected String b()
@@ -152,18 +178,32 @@ public abstract class VideoShareModeBase
     if ((localObject1 != null) && (((StoryVideoItem.PollLayout)localObject1).a != null) && (((StoryVideoItem.PollLayout)localObject1).a.length > 0))
     {
       localObject2 = new SimpleDateFormat("M月d日").format(Long.valueOf(new Date().getTime()));
-      return (String)localObject2 + " · " + localObject1.a[0];
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append(" · ");
+      localStringBuilder.append(localObject1.a[0]);
+      return localStringBuilder.toString();
     }
     if ((localObject2 != null) && (((StoryVideoItem.InteractPasterLayout)localObject2).a != null) && (((StoryVideoItem.InteractPasterLayout)localObject2).a.length > 0))
     {
       localObject1 = new SimpleDateFormat("M月d日").format(Long.valueOf(new Date().getTime()));
-      return (String)localObject1 + " · " + localObject2.a[0];
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(" · ");
+      localStringBuilder.append(localObject2.a[0]);
+      return localStringBuilder.toString();
     }
     localObject2 = new SimpleDateFormat("M月d日").format(Long.valueOf(new Date().getTime()));
-    if (TextUtils.isEmpty(this.g)) {}
-    for (localObject1 = "1个小视频";; localObject1 = this.g) {
-      return (String)localObject2 + " · " + (String)localObject1;
+    if (TextUtils.isEmpty(this.g)) {
+      localObject1 = "1个小视频";
+    } else {
+      localObject1 = this.g;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append(" · ");
+    localStringBuilder.append((String)localObject1);
+    return localStringBuilder.toString();
   }
   
   public void b(ShareWeChatData paramShareWeChatData)
@@ -179,7 +219,7 @@ public abstract class VideoShareModeBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.VideoShareModeBase
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class QStarInfoRsp
   extends JceStruct
@@ -57,20 +58,23 @@ public final class QStarInfoRsp
     paramJceOutputStream.write(this.cmd, 2);
     paramJceOutputStream.write(this.ret, 3);
     paramJceOutputStream.write(this.follow_xylm, 4);
-    if (this.jumpurl != null) {
-      paramJceOutputStream.write(this.jumpurl, 5);
+    Object localObject = this.jumpurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.logourl != null) {
-      paramJceOutputStream.write(this.logourl, 6);
+    localObject = this.logourl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.followlist != null) {
-      paramJceOutputStream.write(this.followlist, 7);
+    localObject = this.followlist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mqq_qstar.QStarInfoRsp
  * JD-Core Version:    0.7.0.1
  */

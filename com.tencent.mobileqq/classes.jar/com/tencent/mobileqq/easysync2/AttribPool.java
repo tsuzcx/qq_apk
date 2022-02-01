@@ -33,7 +33,11 @@ public class AttribPool
   
   private static String b(String paramString1, String paramString2)
   {
-    return paramString1 + "," + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   public int a(Pair<String, String> paramPair)
@@ -105,7 +109,7 @@ public class AttribPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.AttribPool
  * JD-Core Version:    0.7.0.1
  */

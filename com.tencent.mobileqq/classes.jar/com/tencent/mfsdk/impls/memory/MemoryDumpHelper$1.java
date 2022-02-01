@@ -17,17 +17,27 @@ class MemoryDumpHelper$1
     {
       if (!MemoryDumpHelper.a(this.this$0))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QAPM_MemoryDumpHelper", 2, "ReportDump init dialog error!");
+        if (!QLog.isColorLevel()) {
+          return;
         }
+        QLog.d("QAPM_MemoryDumpHelper", 2, "ReportDump init dialog error!");
+        return;
       }
-      else if (!MemoryDumpHelper.a(this.this$0).isShowing())
+      if (!MemoryDumpHelper.a(this.this$0).isShowing())
       {
         MemoryDumpHelper.a(this.this$0).setMessage(this.jdField_a_of_type_JavaLangString);
-        MemoryDumpHelper.a(this.this$0).setPositiveButton(2131691594, new MemoryDumpHelper.1.1(this));
+        MemoryDumpHelper.a(this.this$0).setPositiveButton(2131691516, new MemoryDumpHelper.1.1(this));
         MemoryDumpHelper.a(this.this$0).show();
-        int i = MemoryDumpHelper.a(this.this$0).getInt("DumpCount" + AppSetting.a(), 0);
-        MemoryDumpHelper.a(this.this$0).edit().putInt("DumpCount" + AppSetting.a(), i + 1).putLong("DumpTime", System.currentTimeMillis()).commit();
+        Object localObject = MemoryDumpHelper.a(this.this$0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("DumpCount");
+        localStringBuilder.append(AppSetting.a());
+        int i = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
+        localObject = MemoryDumpHelper.a(this.this$0).edit();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("DumpCount");
+        localStringBuilder.append(AppSetting.a());
+        ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), i + 1).putLong("DumpTime", System.currentTimeMillis()).commit();
         if (QLog.isColorLevel())
         {
           QLog.d("QAPM_MemoryDumpHelper", 2, "ReportDump have show dump dialog");
@@ -41,11 +51,12 @@ class MemoryDumpHelper$1
         QLog.d("QAPM_MemoryDumpHelper", 2, "ReportDump startDumpingMemory Exception", localException);
       }
     }
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mfsdk.impls.memory.MemoryDumpHelper.1
  * JD-Core Version:    0.7.0.1
  */

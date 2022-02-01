@@ -31,13 +31,14 @@ public class ScreenBroadcastReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramContext)) {
+    if ("android.intent.action.SCREEN_ON".equals(paramContext))
+    {
       this.listener.onScreenOn();
-    }
-    while (!"android.intent.action.SCREEN_OFF".equals(paramContext)) {
       return;
     }
-    this.listener.onScreenOff();
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
+      this.listener.onScreenOff();
+    }
   }
   
   public void register()
@@ -71,7 +72,7 @@ public class ScreenBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.extra.tools.ScreenBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -14,28 +14,34 @@ class CloudAVEngineImpl$AVEngineHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      CloudAVEngineImpl.a(this.a, CloudAVEngineImpl.a(this.a, paramMessage.obj));
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return;
+          }
+          CloudAVEngineImpl.b(this.a, paramMessage.obj);
+          return;
+        }
+        CloudAVEngineImpl.a(this.a, paramMessage.obj);
+        return;
+      }
       CloudAVEngineImpl.a(this.a, true);
       CloudAVEngineImpl.a(this.a);
       CloudAVEngineImpl.a(this.a, false);
       return;
-    case 3: 
-      CloudAVEngineImpl.a(this.a, paramMessage.obj);
-      return;
     }
-    CloudAVEngineImpl.b(this.a, paramMessage.obj);
+    CloudAVEngineImpl localCloudAVEngineImpl = this.a;
+    CloudAVEngineImpl.a(localCloudAVEngineImpl, CloudAVEngineImpl.a(localCloudAVEngineImpl, paramMessage.obj));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.AVEngineHandler
  * JD-Core Version:    0.7.0.1
  */

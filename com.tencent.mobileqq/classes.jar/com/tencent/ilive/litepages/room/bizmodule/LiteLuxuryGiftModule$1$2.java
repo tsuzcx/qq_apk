@@ -11,12 +11,12 @@ class LiteLuxuryGiftModule$1$2
   
   public void onCompleted(GiftEffectResourceInfo paramGiftEffectResourceInfo)
   {
-    this.val$listener.onFetchH264Res(LiteLuxuryGiftModule.access$1300(this.this$1.this$0, paramGiftEffectResourceInfo));
+    this.val$listener.onFetchH264Res(LiteLuxuryGiftModule.access$1200(this.this$1.this$0, paramGiftEffectResourceInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule.1.2
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,10 @@ public class NetworkEngine
   public NetworkEngine(IConnectionCallback paramIConnectionCallback, String paramString)
   {
     this.mId = paramString;
-    this.TAG = ("NetworkEngine-" + this.mId);
+    paramString = new StringBuilder();
+    paramString.append("NetworkEngine-");
+    paramString.append(this.mId);
+    this.TAG = paramString.toString();
     int i = UploadConfiguration.getDoNotFragment();
     this.mCallback = paramIConnectionCallback;
     if (!ConnectionImpl.isLibraryPrepared())
@@ -56,6 +59,20 @@ public class NetworkEngine
     }
   }
   
+  public boolean disconnect()
+  {
+    ??? = this.mNativeConnection;
+    if (??? == null) {
+      return false;
+    }
+    boolean bool = ((ConnectionImpl)???).disconnect();
+    synchronized (this.mLock)
+    {
+      this.mParamMap.clear();
+      return bool;
+    }
+  }
+  
   public final String getConnectedIp()
   {
     return this.mConnectedIp;
@@ -63,94 +80,115 @@ public class NetworkEngine
   
   public int hashCode()
   {
-    if (this.mCallback != null) {
-      return this.mCallback.hashCode();
+    IConnectionCallback localIConnectionCallback = this.mCallback;
+    if (localIConnectionCallback != null) {
+      return localIConnectionCallback.hashCode();
     }
     return super.hashCode();
   }
   
   public boolean isRunning()
   {
-    if (this.mNativeConnection == null) {
+    ConnectionImpl localConnectionImpl = this.mNativeConnection;
+    if (localConnectionImpl == null) {
       return false;
     }
-    return this.mNativeConnection.isRunning();
+    return localConnectionImpl.isRunning();
   }
   
   public void onMsgCallback(IMsgCallback paramIMsgCallback, int paramInt1, Object arg3, int paramInt2)
   {
-    boolean bool = true;
     synchronized (this.mLock)
     {
       paramIMsgCallback = this.mParamMap.get(paramInt2);
       this.mParamMap.remove(paramInt2);
-      switch (paramInt1)
+      boolean bool2 = false;
+      boolean bool1 = false;
+      if (paramInt1 != 0)
       {
-      }
-    }
-    if ((this.mNativeConnection != null) && ((paramIMsgCallback instanceof NetworkEngine.ConnectParam)))
-    {
-      NetworkEngine.ConnectParam localConnectParam = (NetworkEngine.ConnectParam)paramIMsgCallback;
-      ??? = localConnectParam.ip;
-      paramInt1 = UploadConfiguration.getMaxSegmentSize(???);
-      paramIMsgCallback = ???;
-      if (!StringUtils.isIpv4String(localConnectParam.ip))
-      {
-        paramIMsgCallback = ???;
-        if (!StringUtils.isIpv6String(localConnectParam.ip))
+        if (paramInt1 != 1)
         {
-          paramIMsgCallback = new DomainNameParser.ParseResult();
-          DomainNameParser.parse(localConnectParam.ip, paramIMsgCallback);
-          ??? = paramIMsgCallback.parsedIp;
-          paramIMsgCallback.parsedIp = null;
-          paramIMsgCallback = ???;
-          if (??? == null)
+          if (paramInt1 != 2) {
+            return;
+          }
+          ??? = this.mNativeConnection;
+          if ((??? != null) && ((paramIMsgCallback instanceof NetworkEngine.SendParam)))
           {
-            if (this.mCallback == null) {
+            paramIMsgCallback = (NetworkEngine.SendParam)paramIMsgCallback;
+            ???.SendData(paramIMsgCallback.buf, paramIMsgCallback.sendSequence, paramIMsgCallback.sendTimeout, paramIMsgCallback.recvTimeout);
+            return;
+          }
+          ??? = this.TAG;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" OperationMsg.SEND, obj instanceof ConnectParam:");
+          ((StringBuilder)localObject).append(paramIMsgCallback instanceof NetworkEngine.SendParam);
+          ((StringBuilder)localObject).append("mNativeConnection != null:");
+          if (this.mNativeConnection != null) {
+            bool1 = true;
+          }
+          ((StringBuilder)localObject).append(bool1);
+          UploadLog.w(???, ((StringBuilder)localObject).toString());
+          return;
+        }
+        if (this.mNativeConnection != null)
+        {
+          UploadLog.w(this.TAG, " OperationMsg.DISCONNECT");
+          this.mNativeConnection.disconnect();
+          return;
+        }
+        UploadLog.w(this.TAG, " OperationMsg.DISCONNECT, mNativeConnection == null");
+        return;
+      }
+      if ((this.mNativeConnection != null) && ((paramIMsgCallback instanceof NetworkEngine.ConnectParam)))
+      {
+        ??? = (NetworkEngine.ConnectParam)paramIMsgCallback;
+        paramIMsgCallback = ???.ip;
+        paramInt1 = UploadConfiguration.getMaxSegmentSize(paramIMsgCallback);
+        if ((!StringUtils.isIpv4String(???.ip)) && (!StringUtils.isIpv6String(???.ip)))
+        {
+          localObject = new DomainNameParser.ParseResult();
+          DomainNameParser.parse(???.ip, (DomainNameParser.ParseResult)localObject);
+          paramIMsgCallback = ((DomainNameParser.ParseResult)localObject).parsedIp;
+          ((DomainNameParser.ParseResult)localObject).parsedIp = null;
+          if (paramIMsgCallback == null)
+          {
+            ??? = this.mCallback;
+            if (??? == null) {
               return;
             }
-            this.mCallback.onConnect(this.mCallback, false, Const.UploadRetCode.DNS_PARSER_ERROR.getCode(), ???);
+            ???.onConnect(???, false, Const.UploadRetCode.DNS_PARSER_ERROR.getCode(), paramIMsgCallback);
             return;
           }
         }
+        localObject = this.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" OperationMsg.CONNECT, parsedIp:");
+        localStringBuilder.append(paramIMsgCallback);
+        localStringBuilder.append(", port:");
+        localStringBuilder.append(???.port);
+        localStringBuilder.append(", proxyIp:");
+        localStringBuilder.append(???.proxyIp);
+        localStringBuilder.append(", proxyPort:");
+        localStringBuilder.append(???.proxyPort);
+        localStringBuilder.append(" timeout:");
+        localStringBuilder.append(???.timeout);
+        UploadLog.w((String)localObject, localStringBuilder.toString());
+        this.mConnectedIp = paramIMsgCallback;
+        this.mNativeConnection.connect(paramIMsgCallback, ???.port, ???.proxyIp, ???.proxyPort, ???.timeout, paramInt1);
+        return;
       }
-      UploadLog.w(this.TAG, " OperationMsg.CONNECT, parsedIp:" + paramIMsgCallback + ", port:" + localConnectParam.port + ", proxyIp:" + localConnectParam.proxyIp + ", proxyPort:" + localConnectParam.proxyPort + " timeout:" + localConnectParam.timeout);
-      this.mConnectedIp = paramIMsgCallback;
-      this.mNativeConnection.connect(paramIMsgCallback, localConnectParam.port, localConnectParam.proxyIp, localConnectParam.proxyPort, localConnectParam.timeout, paramInt1);
-    }
-    else
-    {
       ??? = this.TAG;
-      paramIMsgCallback = new StringBuilder().append(" OperationMsg.CONNECT, obj instanceof ConnectParam:").append(paramIMsgCallback instanceof NetworkEngine.ConnectParam).append(" mNativeConnection != null:");
-      if (this.mNativeConnection != null) {}
-      for (bool = true;; bool = false)
-      {
-        UploadLog.w(???, bool);
-        return;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" OperationMsg.CONNECT, obj instanceof ConnectParam:");
+      ((StringBuilder)localObject).append(paramIMsgCallback instanceof NetworkEngine.ConnectParam);
+      ((StringBuilder)localObject).append(" mNativeConnection != null:");
+      bool1 = bool2;
+      if (this.mNativeConnection != null) {
+        bool1 = true;
       }
-      if (this.mNativeConnection != null)
-      {
-        UploadLog.w(this.TAG, " OperationMsg.DISCONNECT");
-        this.mNativeConnection.disconnect();
-        return;
-      }
-      UploadLog.w(this.TAG, " OperationMsg.DISCONNECT, mNativeConnection == null");
+      ((StringBuilder)localObject).append(bool1);
+      UploadLog.w(???, ((StringBuilder)localObject).toString());
       return;
-      if ((this.mNativeConnection != null) && ((paramIMsgCallback instanceof NetworkEngine.SendParam)))
-      {
-        paramIMsgCallback = (NetworkEngine.SendParam)paramIMsgCallback;
-        this.mNativeConnection.SendData(paramIMsgCallback.buf, paramIMsgCallback.sendSequence, paramIMsgCallback.sendTimeout, paramIMsgCallback.recvTimeout);
-        return;
-      }
-      ??? = this.TAG;
-      paramIMsgCallback = new StringBuilder().append(" OperationMsg.SEND, obj instanceof ConnectParam:").append(paramIMsgCallback instanceof NetworkEngine.SendParam).append("mNativeConnection != null:");
-      if (this.mNativeConnection != null) {}
-      for (;;)
-      {
-        UploadLog.w(???, bool);
-        return;
-        bool = false;
-      }
     }
   }
   
@@ -170,10 +208,11 @@ public class NetworkEngine
   
   public boolean start()
   {
-    if (this.mNativeConnection == null) {
+    ConnectionImpl localConnectionImpl = this.mNativeConnection;
+    if (localConnectionImpl == null) {
       return false;
     }
-    if (this.mNativeConnection.isRunning())
+    if (localConnectionImpl.isRunning())
     {
       UploadLog.w(this.TAG, "start, is running, return false");
       return false;
@@ -183,10 +222,11 @@ public class NetworkEngine
   
   public boolean stop()
   {
-    if (this.mNativeConnection == null) {
+    ??? = this.mNativeConnection;
+    if (??? == null) {
       return false;
     }
-    this.mNativeConnection.removeAllSendData();
+    ((ConnectionImpl)???).removeAllSendData();
     boolean bool = this.mNativeConnection.stop();
     synchronized (this.mLock)
     {
@@ -197,15 +237,16 @@ public class NetworkEngine
   
   public void wakeUp()
   {
-    if (this.mNativeConnection == null) {
+    ConnectionImpl localConnectionImpl = this.mNativeConnection;
+    if (localConnectionImpl == null) {
       return;
     }
-    this.mNativeConnection.wakeUp();
+    localConnectionImpl.wakeUp();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.network.base.NetworkEngine
  * JD-Core Version:    0.7.0.1
  */

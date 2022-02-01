@@ -37,23 +37,27 @@ public final class QbossBanner
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.eJumpType, 0);
-    if (this.strPicUrl != null) {
-      paramJceOutputStream.write(this.strPicUrl, 1);
+    String str = this.strPicUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strSchema != null) {
-      paramJceOutputStream.write(this.strSchema, 2);
+    str = this.strSchema;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strH5JumpInfo != null) {
-      paramJceOutputStream.write(this.strH5JumpInfo, 3);
+    str = this.strH5JumpInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.strQbossTrace != null) {
-      paramJceOutputStream.write(this.strQbossTrace, 4);
+    str = this.strQbossTrace;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.QbossBanner
  * JD-Core Version:    0.7.0.1
  */

@@ -40,17 +40,14 @@ public class GetGameRaffleMaterialServlet
         paramArrayOfByte.putOpt("promotion_id", Integer.valueOf(localStGetGameRaffleMaterialRsp.promotion_id.get()));
         paramArrayOfByte.putOpt("active_id", Integer.valueOf(localStGetGameRaffleMaterialRsp.active_id.get()));
         paramArrayOfByte.putOpt("watchAdBtn", localStGetGameRaffleMaterialRsp.watchAdBtn.get());
-        paramBundle.putString("key_result_data", paramArrayOfByte.toString());
-        notifyObserver(paramIntent, 1089, true, paramBundle, MiniAppObserver.class);
-        return;
       }
       catch (Throwable localThrowable)
       {
-        for (;;)
-        {
-          QLog.i("GetGameRaffleMaterialServlet", 1, "onProcessData", localThrowable);
-        }
+        QLog.i("GetGameRaffleMaterialServlet", 1, "onProcessData", localThrowable);
       }
+      paramBundle.putString("key_result_data", paramArrayOfByte.toString());
+      notifyObserver(paramIntent, 1089, true, paramBundle, MiniAppObserver.class);
+      return;
     }
     notifyObserver(paramIntent, 1089, false, paramBundle, MiniAppObserver.class);
   }
@@ -73,7 +70,7 @@ public class GetGameRaffleMaterialServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetGameRaffleMaterialServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import java.util.TimerTask;
 
 public class c
 {
-  private static volatile c b = null;
+  private static volatile c b;
   private Timer a = null;
   private Context c = null;
   
@@ -20,15 +20,16 @@ public class c
   
   public static c a(Context paramContext)
   {
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new c(paramContext);
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new c(paramContext);
+        }
       }
-      return b;
+      finally {}
     }
-    finally {}
+    return b;
   }
   
   public void a()
@@ -36,8 +37,12 @@ public class c
     if (StatConfig.getStatSendStrategy() == StatReportStrategy.PERIOD)
     {
       long l = StatConfig.getSendPeriodMinutes() * 60 * 1000;
-      if (StatConfig.isDebugEnable()) {
-        StatCommonHelper.getLogger().i("setupPeriodTimer delay:" + l);
+      if (StatConfig.isDebugEnable())
+      {
+        StatLogger localStatLogger = StatCommonHelper.getLogger();
+        StringBuilder localStringBuilder = new StringBuilder("setupPeriodTimer delay:");
+        localStringBuilder.append(l);
+        localStatLogger.i(localStringBuilder.toString());
       }
       a(new d(this), l);
     }
@@ -47,15 +52,19 @@ public class c
   {
     if (this.a != null)
     {
-      if (StatConfig.isDebugEnable()) {
-        StatCommonHelper.getLogger().i("setupPeriodTimer schedule delay:" + paramLong);
+      if (StatConfig.isDebugEnable())
+      {
+        StatLogger localStatLogger = StatCommonHelper.getLogger();
+        StringBuilder localStringBuilder = new StringBuilder("setupPeriodTimer schedule delay:");
+        localStringBuilder.append(paramLong);
+        localStatLogger.i(localStringBuilder.toString());
       }
       this.a.schedule(paramTimerTask, paramLong);
-    }
-    while (!StatConfig.isDebugEnable()) {
       return;
     }
-    StatCommonHelper.getLogger().w("setupPeriodTimer schedule timer == null");
+    if (StatConfig.isDebugEnable()) {
+      StatCommonHelper.getLogger().w("setupPeriodTimer schedule timer == null");
+    }
   }
 }
 

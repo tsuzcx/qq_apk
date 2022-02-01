@@ -27,40 +27,45 @@ public final class HeartKick
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
+      if (i == 0) {
+        break;
       }
-      this.a = paramCodedInputByteBufferNano.readUInt32();
+      if (i != 8)
+      {
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+          return this;
+        }
+      }
+      else {
+        this.a = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.a;
     int i = j;
-    if (this.a != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.a);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
     return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.a != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.a);
+    int i = this.a;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.HeartKick
  * JD-Core Version:    0.7.0.1
  */

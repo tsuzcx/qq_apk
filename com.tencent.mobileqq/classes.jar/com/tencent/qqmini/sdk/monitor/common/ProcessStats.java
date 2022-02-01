@@ -4,13 +4,11 @@ import android.annotation.SuppressLint;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.os.Process;
-import android.os.SystemClock;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -56,97 +54,99 @@ public class ProcessStats
     if (paramString == null) {
       return -1L;
     }
-    long l = ((Long)paramString[1]).longValue();
-    return ((Long)paramString[2]).longValue() + l;
+    return ((Long)paramString[1]).longValue() + ((Long)paramString[2]).longValue();
   }
   
   private static void collectProcessStats(String paramString, ProcessStats.Stats paramStats, boolean paramBoolean)
   {
-    try
+    for (;;)
     {
-      Object[] arrayOfObject = collectProcessStats(paramString);
-      long l1;
-      if (arrayOfObject != null)
+      try
       {
-        paramString = (String)arrayOfObject[0];
-        l1 = ((Long)arrayOfObject[1]).longValue();
-      }
-      for (long l2 = ((Long)arrayOfObject[2]).longValue();; l2 = -100L)
-      {
-        if (paramBoolean)
-        {
-          paramStats.baseUtime = l1;
-          paramStats.baseStime = l2;
-          paramStats.name = paramString;
-          return;
-        }
-        if (paramStats.baseUtime == -100L)
-        {
-          paramStats.relUtime = -100L;
-          paramStats.relStime = -100L;
-          return;
-        }
-        paramStats.relUtime = (l1 - paramStats.baseUtime);
-        paramStats.relStime = (l2 - paramStats.baseStime);
-        return;
-        l1 = -100L;
+        Object[] arrayOfObject = collectProcessStats(paramString);
         paramString = null;
+        if (arrayOfObject != null)
+        {
+          paramString = (String)arrayOfObject[0];
+          l1 = ((Long)arrayOfObject[1]).longValue();
+          l2 = ((Long)arrayOfObject[2]).longValue();
+          if (paramBoolean)
+          {
+            paramStats.baseUtime = l1;
+            paramStats.baseStime = l2;
+            paramStats.name = paramString;
+            return;
+          }
+          if (paramStats.baseUtime == -100L)
+          {
+            paramStats.relUtime = -100L;
+            paramStats.relStime = -100L;
+            return;
+          }
+          paramStats.relUtime = (l1 - paramStats.baseUtime);
+          paramStats.relStime = (l2 - paramStats.baseStime);
+          return;
+        }
       }
-      return;
+      catch (Exception paramString)
+      {
+        return;
+      }
+      long l1 = -100L;
+      long l2 = l1;
     }
-    catch (Exception paramString) {}
   }
   
   /* Error */
   public static Object[] collectProcessStats(String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: aload_0
-    //   3: invokestatic 121	com/tencent/qqmini/sdk/monitor/common/ProcessStats:getReader	(Ljava/lang/String;)Ljava/io/RandomAccessFile;
-    //   6: astore 21
-    //   8: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
-    //   11: sipush 1024
-    //   14: invokevirtual 131	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getBuf	(I)[B
-    //   17: astore 22
-    //   19: aload 21
-    //   21: lconst_0
-    //   22: invokevirtual 137	java/io/RandomAccessFile:seek	(J)V
-    //   25: aload 21
-    //   27: aload 22
-    //   29: invokevirtual 141	java/io/RandomAccessFile:read	([B)I
-    //   32: istore 4
+    //   0: aload_0
+    //   1: invokestatic 121	com/tencent/qqmini/sdk/monitor/common/ProcessStats:getReader	(Ljava/lang/String;)Ljava/io/RandomAccessFile;
+    //   4: astore 21
+    //   6: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   9: sipush 1024
+    //   12: invokevirtual 131	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getBuf	(I)[B
+    //   15: astore 22
+    //   17: aload 21
+    //   19: lconst_0
+    //   20: invokevirtual 137	java/io/RandomAccessFile:seek	(J)V
+    //   23: aload 21
+    //   25: aload 22
+    //   27: invokevirtual 141	java/io/RandomAccessFile:read	([B)I
+    //   30: istore 4
+    //   32: iconst_0
+    //   33: istore_1
     //   34: iconst_0
     //   35: istore_3
-    //   36: goto +662 -> 698
+    //   36: goto +625 -> 661
     //   39: iload_2
     //   40: istore_1
     //   41: iload_2
     //   42: iload 4
-    //   44: if_icmpge +690 -> 734
+    //   44: if_icmpge +653 -> 697
     //   47: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
     //   50: iload_3
     //   51: iload_2
     //   52: iastore
     //   53: iload_2
     //   54: istore_1
-    //   55: goto +679 -> 734
+    //   55: goto +642 -> 697
     //   58: iload_1
     //   59: iload 4
-    //   61: if_icmpge +695 -> 756
+    //   61: if_icmpge +658 -> 719
     //   64: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
     //   67: iload_3
     //   68: iload_1
     //   69: iastore
-    //   70: goto +686 -> 756
+    //   70: goto +649 -> 719
     //   73: iload_3
     //   74: bipush 17
-    //   76: if_icmpne +557 -> 633
+    //   76: if_icmpne +530 -> 606
     //   79: ldc 14
     //   81: aload_0
     //   82: invokevirtual 145	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   85: ifne +236 -> 321
+    //   85: ifne +213 -> 298
     //   88: new 100	java/lang/String
     //   91: dup
     //   92: aload 22
@@ -230,328 +230,306 @@ public class ProcessStats
     //   243: invokespecial 148	java/lang/String:<init>	([BII)V
     //   246: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   249: lstore 11
-    //   251: aload 23
-    //   253: ifnull +50 -> 303
-    //   256: iconst_3
-    //   257: anewarray 4	java/lang/Object
-    //   260: astore_0
+    //   251: iconst_3
+    //   252: anewarray 4	java/lang/Object
+    //   255: astore_0
+    //   256: aload_0
+    //   257: iconst_0
+    //   258: aload 23
+    //   260: aastore
     //   261: aload_0
-    //   262: iconst_0
-    //   263: aload 23
-    //   265: aastore
-    //   266: aload_0
-    //   267: iconst_1
-    //   268: lload 5
-    //   270: lload 7
-    //   272: ladd
-    //   273: invokestatic 155	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   276: aastore
-    //   277: aload_0
-    //   278: iconst_2
-    //   279: lload 9
-    //   281: lload 11
-    //   283: ladd
-    //   284: invokestatic 155	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   287: aastore
-    //   288: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
-    //   291: aload 22
-    //   293: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
-    //   296: aload 21
-    //   298: invokevirtual 162	java/io/RandomAccessFile:close	()V
-    //   301: aload_0
-    //   302: areturn
-    //   303: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
-    //   306: aload 22
-    //   308: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
-    //   311: aload 21
-    //   313: invokevirtual 162	java/io/RandomAccessFile:close	()V
-    //   316: aconst_null
-    //   317: areturn
-    //   318: astore_0
-    //   319: aconst_null
-    //   320: areturn
-    //   321: new 100	java/lang/String
-    //   324: dup
-    //   325: aload 22
-    //   327: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   330: iconst_4
-    //   331: iaload
-    //   332: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
-    //   335: iconst_4
-    //   336: iaload
-    //   337: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   340: iconst_4
-    //   341: iaload
-    //   342: isub
-    //   343: invokespecial 148	java/lang/String:<init>	([BII)V
-    //   346: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   349: lstore 5
-    //   351: new 100	java/lang/String
-    //   354: dup
-    //   355: aload 22
-    //   357: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   360: iconst_1
-    //   361: iaload
-    //   362: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
-    //   365: iconst_1
-    //   366: iaload
-    //   367: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   370: iconst_1
-    //   371: iaload
-    //   372: isub
-    //   373: invokespecial 148	java/lang/String:<init>	([BII)V
-    //   376: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   379: lstore 7
-    //   381: new 100	java/lang/String
-    //   384: dup
-    //   385: aload 22
-    //   387: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   390: iconst_2
-    //   391: iaload
-    //   392: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
-    //   395: iconst_2
-    //   396: iaload
-    //   397: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   400: iconst_2
-    //   401: iaload
-    //   402: isub
-    //   403: invokespecial 148	java/lang/String:<init>	([BII)V
-    //   406: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   409: lstore 9
-    //   411: new 100	java/lang/String
-    //   414: dup
-    //   415: aload 22
-    //   417: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   420: iconst_3
-    //   421: iaload
-    //   422: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
-    //   425: iconst_3
-    //   426: iaload
-    //   427: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   430: iconst_3
-    //   431: iaload
-    //   432: isub
-    //   433: invokespecial 148	java/lang/String:<init>	([BII)V
-    //   436: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   439: lstore 11
-    //   441: new 100	java/lang/String
-    //   444: dup
-    //   445: aload 22
-    //   447: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   450: iconst_5
-    //   451: iaload
-    //   452: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
-    //   455: iconst_5
-    //   456: iaload
-    //   457: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   460: iconst_5
-    //   461: iaload
-    //   462: isub
-    //   463: invokespecial 148	java/lang/String:<init>	([BII)V
-    //   466: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   469: lstore 13
-    //   471: new 100	java/lang/String
-    //   474: dup
-    //   475: aload 22
-    //   477: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   480: bipush 6
-    //   482: iaload
-    //   483: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
-    //   486: bipush 6
-    //   488: iaload
-    //   489: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   492: bipush 6
-    //   494: iaload
-    //   495: isub
-    //   496: invokespecial 148	java/lang/String:<init>	([BII)V
-    //   499: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   502: lstore 15
-    //   504: new 100	java/lang/String
-    //   507: dup
-    //   508: aload 22
-    //   510: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   513: bipush 7
-    //   515: iaload
-    //   516: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
-    //   519: bipush 7
-    //   521: iaload
-    //   522: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   525: bipush 7
-    //   527: iaload
-    //   528: isub
-    //   529: invokespecial 148	java/lang/String:<init>	([BII)V
-    //   532: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   535: lstore 17
-    //   537: new 100	java/lang/String
-    //   540: dup
-    //   541: aload 22
-    //   543: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   546: bipush 8
-    //   548: iaload
-    //   549: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
-    //   552: bipush 8
-    //   554: iaload
-    //   555: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
-    //   558: bipush 8
-    //   560: iaload
-    //   561: isub
-    //   562: invokespecial 148	java/lang/String:<init>	([BII)V
-    //   565: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   568: lstore 19
-    //   570: iconst_3
-    //   571: anewarray 4	java/lang/Object
-    //   574: astore_0
-    //   575: aload_0
-    //   576: iconst_0
-    //   577: ldc 164
-    //   579: aastore
-    //   580: aload_0
-    //   581: iconst_1
-    //   582: lload 5
-    //   584: invokestatic 155	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   587: aastore
-    //   588: aload_0
-    //   589: iconst_2
-    //   590: lload 7
-    //   592: lload 9
-    //   594: ladd
-    //   595: lload 11
-    //   597: ladd
-    //   598: lload 13
-    //   600: ladd
-    //   601: lload 15
-    //   603: ladd
-    //   604: lload 17
-    //   606: ladd
-    //   607: lload 19
-    //   609: ladd
-    //   610: invokestatic 155	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   613: aastore
-    //   614: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
-    //   617: aload 22
-    //   619: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
-    //   622: aload 21
-    //   624: invokevirtual 162	java/io/RandomAccessFile:close	()V
-    //   627: aload_0
-    //   628: areturn
-    //   629: astore 21
-    //   631: aload_0
-    //   632: areturn
-    //   633: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
-    //   636: aload 22
-    //   638: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
-    //   641: aload 21
-    //   643: invokevirtual 162	java/io/RandomAccessFile:close	()V
-    //   646: aconst_null
+    //   262: iconst_1
+    //   263: lload 5
+    //   265: lload 7
+    //   267: ladd
+    //   268: invokestatic 155	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   271: aastore
+    //   272: aload_0
+    //   273: iconst_2
+    //   274: lload 9
+    //   276: lload 11
+    //   278: ladd
+    //   279: invokestatic 155	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   282: aastore
+    //   283: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   286: aload 22
+    //   288: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
+    //   291: aload 21
+    //   293: invokevirtual 162	java/io/RandomAccessFile:close	()V
+    //   296: aload_0
+    //   297: areturn
+    //   298: new 100	java/lang/String
+    //   301: dup
+    //   302: aload 22
+    //   304: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   307: iconst_4
+    //   308: iaload
+    //   309: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
+    //   312: iconst_4
+    //   313: iaload
+    //   314: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   317: iconst_4
+    //   318: iaload
+    //   319: isub
+    //   320: invokespecial 148	java/lang/String:<init>	([BII)V
+    //   323: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   326: lstore 5
+    //   328: new 100	java/lang/String
+    //   331: dup
+    //   332: aload 22
+    //   334: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   337: iconst_1
+    //   338: iaload
+    //   339: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
+    //   342: iconst_1
+    //   343: iaload
+    //   344: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   347: iconst_1
+    //   348: iaload
+    //   349: isub
+    //   350: invokespecial 148	java/lang/String:<init>	([BII)V
+    //   353: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   356: lstore 7
+    //   358: new 100	java/lang/String
+    //   361: dup
+    //   362: aload 22
+    //   364: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   367: iconst_2
+    //   368: iaload
+    //   369: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
+    //   372: iconst_2
+    //   373: iaload
+    //   374: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   377: iconst_2
+    //   378: iaload
+    //   379: isub
+    //   380: invokespecial 148	java/lang/String:<init>	([BII)V
+    //   383: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   386: lstore 9
+    //   388: new 100	java/lang/String
+    //   391: dup
+    //   392: aload 22
+    //   394: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   397: iconst_3
+    //   398: iaload
+    //   399: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
+    //   402: iconst_3
+    //   403: iaload
+    //   404: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   407: iconst_3
+    //   408: iaload
+    //   409: isub
+    //   410: invokespecial 148	java/lang/String:<init>	([BII)V
+    //   413: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   416: lstore 11
+    //   418: new 100	java/lang/String
+    //   421: dup
+    //   422: aload 22
+    //   424: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   427: iconst_5
+    //   428: iaload
+    //   429: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
+    //   432: iconst_5
+    //   433: iaload
+    //   434: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   437: iconst_5
+    //   438: iaload
+    //   439: isub
+    //   440: invokespecial 148	java/lang/String:<init>	([BII)V
+    //   443: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   446: lstore 13
+    //   448: new 100	java/lang/String
+    //   451: dup
+    //   452: aload 22
+    //   454: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   457: bipush 6
+    //   459: iaload
+    //   460: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
+    //   463: bipush 6
+    //   465: iaload
+    //   466: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   469: bipush 6
+    //   471: iaload
+    //   472: isub
+    //   473: invokespecial 148	java/lang/String:<init>	([BII)V
+    //   476: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   479: lstore 15
+    //   481: new 100	java/lang/String
+    //   484: dup
+    //   485: aload 22
+    //   487: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   490: bipush 7
+    //   492: iaload
+    //   493: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
+    //   496: bipush 7
+    //   498: iaload
+    //   499: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   502: bipush 7
+    //   504: iaload
+    //   505: isub
+    //   506: invokespecial 148	java/lang/String:<init>	([BII)V
+    //   509: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   512: lstore 17
+    //   514: new 100	java/lang/String
+    //   517: dup
+    //   518: aload 22
+    //   520: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   523: bipush 8
+    //   525: iaload
+    //   526: getstatic 67	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWhiteIndexs	[I
+    //   529: bipush 8
+    //   531: iaload
+    //   532: getstatic 65	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sWordIndexs	[I
+    //   535: bipush 8
+    //   537: iaload
+    //   538: isub
+    //   539: invokespecial 148	java/lang/String:<init>	([BII)V
+    //   542: invokestatic 151	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   545: lstore 19
+    //   547: iconst_3
+    //   548: anewarray 4	java/lang/Object
+    //   551: astore_0
+    //   552: aload_0
+    //   553: iconst_0
+    //   554: ldc 164
+    //   556: aastore
+    //   557: aload_0
+    //   558: iconst_1
+    //   559: lload 5
+    //   561: invokestatic 155	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   564: aastore
+    //   565: aload_0
+    //   566: iconst_2
+    //   567: lload 7
+    //   569: lload 9
+    //   571: ladd
+    //   572: lload 11
+    //   574: ladd
+    //   575: lload 13
+    //   577: ladd
+    //   578: lload 15
+    //   580: ladd
+    //   581: lload 17
+    //   583: ladd
+    //   584: lload 19
+    //   586: ladd
+    //   587: invokestatic 155	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   590: aastore
+    //   591: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   594: aload 22
+    //   596: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
+    //   599: aload 21
+    //   601: invokevirtual 162	java/io/RandomAccessFile:close	()V
+    //   604: aload_0
+    //   605: areturn
+    //   606: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   609: aload 22
+    //   611: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
+    //   614: aload 21
+    //   616: invokevirtual 162	java/io/RandomAccessFile:close	()V
+    //   619: goto +19 -> 638
+    //   622: astore_0
+    //   623: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   626: aload 22
+    //   628: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
+    //   631: aload 21
+    //   633: invokevirtual 162	java/io/RandomAccessFile:close	()V
+    //   636: aload_0
+    //   637: athrow
+    //   638: aconst_null
+    //   639: areturn
+    //   640: astore_0
+    //   641: goto -35 -> 606
+    //   644: astore 21
+    //   646: aload_0
     //   647: areturn
-    //   648: astore_0
-    //   649: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
-    //   652: aload 22
-    //   654: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
-    //   657: aload 21
-    //   659: invokevirtual 162	java/io/RandomAccessFile:close	()V
-    //   662: goto -16 -> 646
-    //   665: astore_0
-    //   666: goto -20 -> 646
-    //   669: astore_0
-    //   670: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
-    //   673: aload 22
-    //   675: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
-    //   678: aload 21
-    //   680: invokevirtual 162	java/io/RandomAccessFile:close	()V
-    //   683: aload_0
-    //   684: athrow
-    //   685: astore 21
-    //   687: aload_0
-    //   688: areturn
-    //   689: astore_0
-    //   690: goto -44 -> 646
-    //   693: astore 21
-    //   695: goto -12 -> 683
-    //   698: iload_1
-    //   699: iload 4
-    //   701: if_icmpge -628 -> 73
-    //   704: iload_3
-    //   705: bipush 17
-    //   707: if_icmpge -634 -> 73
-    //   710: iload_1
-    //   711: istore_2
-    //   712: iload_2
-    //   713: iload 4
-    //   715: if_icmpge -676 -> 39
-    //   718: aload 22
-    //   720: iload_2
-    //   721: baload
-    //   722: bipush 32
-    //   724: if_icmpne -685 -> 39
-    //   727: iload_2
-    //   728: iconst_1
-    //   729: iadd
-    //   730: istore_2
-    //   731: goto -19 -> 712
-    //   734: iload_1
-    //   735: iload 4
-    //   737: if_icmpge -679 -> 58
-    //   740: aload 22
-    //   742: iload_1
-    //   743: baload
-    //   744: bipush 32
-    //   746: if_icmpeq -688 -> 58
-    //   749: iload_1
-    //   750: iconst_1
-    //   751: iadd
-    //   752: istore_1
-    //   753: goto -19 -> 734
-    //   756: iload_3
-    //   757: iconst_1
-    //   758: iadd
-    //   759: istore_3
-    //   760: goto -62 -> 698
+    //   648: astore 21
+    //   650: aload_0
+    //   651: areturn
+    //   652: astore_0
+    //   653: goto -15 -> 638
+    //   656: astore 21
+    //   658: goto -22 -> 636
+    //   661: iload_1
+    //   662: iload 4
+    //   664: if_icmpge -591 -> 73
+    //   667: iload_3
+    //   668: bipush 17
+    //   670: if_icmpge -597 -> 73
+    //   673: iload_1
+    //   674: istore_2
+    //   675: iload_2
+    //   676: iload 4
+    //   678: if_icmpge -639 -> 39
+    //   681: aload 22
+    //   683: iload_2
+    //   684: baload
+    //   685: bipush 32
+    //   687: if_icmpne -648 -> 39
+    //   690: iload_2
+    //   691: iconst_1
+    //   692: iadd
+    //   693: istore_2
+    //   694: goto -19 -> 675
+    //   697: iload_1
+    //   698: iload 4
+    //   700: if_icmpge -642 -> 58
+    //   703: aload 22
+    //   705: iload_1
+    //   706: baload
+    //   707: bipush 32
+    //   709: if_icmpeq -651 -> 58
+    //   712: iload_1
+    //   713: iconst_1
+    //   714: iadd
+    //   715: istore_1
+    //   716: goto -19 -> 697
+    //   719: iload_3
+    //   720: iconst_1
+    //   721: iadd
+    //   722: istore_3
+    //   723: goto -62 -> 661
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	763	0	paramString	String
-    //   1	752	1	i	int
-    //   39	692	2	j	int
-    //   35	725	3	k	int
-    //   32	706	4	m	int
-    //   150	433	5	l1	long
-    //   183	408	7	l2	long
-    //   216	377	9	l3	long
-    //   249	347	11	l4	long
-    //   469	130	13	l5	long
-    //   502	100	15	l6	long
-    //   535	70	17	l7	long
-    //   568	40	19	l8	long
-    //   6	617	21	localRandomAccessFile	RandomAccessFile
-    //   629	50	21	localException1	Exception
-    //   685	1	21	localException2	Exception
-    //   693	1	21	localException3	Exception
-    //   17	724	22	arrayOfByte	byte[]
-    //   117	147	23	str	String
+    //   0	726	0	paramString	String
+    //   33	683	1	i	int
+    //   39	655	2	j	int
+    //   35	688	3	k	int
+    //   30	671	4	m	int
+    //   150	410	5	l1	long
+    //   183	385	7	l2	long
+    //   216	354	9	l3	long
+    //   249	324	11	l4	long
+    //   446	130	13	l5	long
+    //   479	100	15	l6	long
+    //   512	70	17	l7	long
+    //   545	40	19	l8	long
+    //   4	628	21	localRandomAccessFile	RandomAccessFile
+    //   644	1	21	localException1	Exception
+    //   648	1	21	localException2	Exception
+    //   656	1	21	localException3	Exception
+    //   15	689	22	arrayOfByte	byte[]
+    //   117	142	23	str	String
     // Exception table:
     //   from	to	target	type
-    //   311	316	318	java/lang/Exception
-    //   622	627	629	java/lang/Exception
-    //   19	34	648	java/lang/Exception
-    //   47	53	648	java/lang/Exception
-    //   64	70	648	java/lang/Exception
-    //   79	251	648	java/lang/Exception
-    //   256	261	648	java/lang/Exception
-    //   266	288	648	java/lang/Exception
-    //   321	575	648	java/lang/Exception
-    //   580	614	648	java/lang/Exception
-    //   657	662	665	java/lang/Exception
-    //   19	34	669	finally
-    //   47	53	669	finally
-    //   64	70	669	finally
-    //   79	251	669	finally
-    //   256	261	669	finally
-    //   266	288	669	finally
-    //   321	575	669	finally
-    //   580	614	669	finally
-    //   296	301	685	java/lang/Exception
-    //   641	646	689	java/lang/Exception
-    //   678	683	693	java/lang/Exception
+    //   17	32	622	finally
+    //   47	53	622	finally
+    //   64	70	622	finally
+    //   79	256	622	finally
+    //   261	283	622	finally
+    //   298	552	622	finally
+    //   557	591	622	finally
+    //   17	32	640	java/lang/Exception
+    //   47	53	640	java/lang/Exception
+    //   64	70	640	java/lang/Exception
+    //   79	256	640	java/lang/Exception
+    //   261	283	640	java/lang/Exception
+    //   298	552	640	java/lang/Exception
+    //   557	591	640	java/lang/Exception
+    //   291	296	644	java/lang/Exception
+    //   599	604	648	java/lang/Exception
+    //   614	619	652	java/lang/Exception
+    //   631	636	656	java/lang/Exception
   }
   
   /* Error */
@@ -564,238 +542,209 @@ public class ProcessStats
     //   5: bipush 110
     //   7: imul
     //   8: invokespecial 169	java/lang/StringBuilder:<init>	(I)V
-    //   11: astore_2
+    //   11: astore_1
     //   12: ldc 11
     //   14: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
     //   17: iconst_0
     //   18: invokestatic 171	com/tencent/qqmini/sdk/monitor/common/ProcessStats:collectProcessStats	(Ljava/lang/String;Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;Z)V
-    //   21: ldc 173
-    //   23: new 168	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 176
-    //   32: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
-    //   38: getfield 103	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseUtime	J
-    //   41: invokevirtual 183	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   44: ldc 185
-    //   46: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
-    //   52: getfield 106	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseStime	J
-    //   55: invokevirtual 183	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokestatic 195	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   21: new 168	java/lang/StringBuilder
+    //   24: dup
+    //   25: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   28: astore_2
+    //   29: aload_2
+    //   30: ldc 174
+    //   32: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: pop
+    //   36: aload_2
+    //   37: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   40: getfield 103	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseUtime	J
+    //   43: invokevirtual 181	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   46: pop
+    //   47: aload_2
+    //   48: ldc 183
+    //   50: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: aload_2
+    //   55: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   58: getfield 106	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseStime	J
+    //   61: invokevirtual 181	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   64: pop
-    //   65: new 197	java/io/BufferedReader
-    //   68: dup
-    //   69: new 199	java/io/InputStreamReader
-    //   72: dup
-    //   73: invokestatic 205	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   76: new 168	java/lang/StringBuilder
-    //   79: dup
-    //   80: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   83: ldc 207
-    //   85: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: iload_0
-    //   89: invokevirtual 210	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   92: ldc 212
-    //   94: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokevirtual 216	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   103: invokevirtual 222	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   106: invokespecial 225	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   109: invokespecial 228	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   112: astore_1
-    //   113: aload_1
-    //   114: invokevirtual 231	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   117: astore_3
-    //   118: aload_3
-    //   119: ifnull +46 -> 165
-    //   122: aload_2
-    //   123: aload_3
-    //   124: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: ldc 233
-    //   129: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: pop
-    //   133: goto -20 -> 113
-    //   136: astore_1
-    //   137: iconst_0
-    //   138: ifeq +11 -> 149
-    //   141: new 235	java/lang/NullPointerException
-    //   144: dup
-    //   145: invokespecial 236	java/lang/NullPointerException:<init>	()V
-    //   148: athrow
-    //   149: iconst_0
-    //   150: ifeq +11 -> 161
-    //   153: new 235	java/lang/NullPointerException
-    //   156: dup
-    //   157: invokespecial 236	java/lang/NullPointerException:<init>	()V
-    //   160: athrow
-    //   161: aconst_null
-    //   162: astore_2
-    //   163: aload_2
-    //   164: areturn
-    //   165: ldc 11
-    //   167: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
-    //   170: iconst_0
-    //   171: invokestatic 171	com/tencent/qqmini/sdk/monitor/common/ProcessStats:collectProcessStats	(Ljava/lang/String;Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;Z)V
-    //   174: ldc 173
-    //   176: new 168	java/lang/StringBuilder
-    //   179: dup
-    //   180: invokespecial 174	java/lang/StringBuilder:<init>	()V
-    //   183: ldc 176
-    //   185: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
-    //   191: getfield 103	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseUtime	J
-    //   194: invokevirtual 183	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   197: ldc 185
-    //   199: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
-    //   205: getfield 106	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseStime	J
-    //   208: invokevirtual 183	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   211: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   214: invokestatic 195	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   217: pop
-    //   218: aload_2
-    //   219: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   222: astore_1
-    //   223: iconst_0
-    //   224: ifeq +11 -> 235
-    //   227: new 235	java/lang/NullPointerException
-    //   230: dup
-    //   231: invokespecial 236	java/lang/NullPointerException:<init>	()V
-    //   234: athrow
-    //   235: aload_1
-    //   236: astore_2
-    //   237: iconst_0
-    //   238: ifeq -75 -> 163
-    //   241: new 235	java/lang/NullPointerException
-    //   244: dup
-    //   245: invokespecial 236	java/lang/NullPointerException:<init>	()V
-    //   248: athrow
-    //   249: astore_2
-    //   250: aload_1
-    //   251: areturn
-    //   252: astore_1
-    //   253: iconst_0
-    //   254: ifeq +11 -> 265
-    //   257: new 235	java/lang/NullPointerException
-    //   260: dup
-    //   261: invokespecial 236	java/lang/NullPointerException:<init>	()V
-    //   264: athrow
-    //   265: iconst_0
-    //   266: ifeq +11 -> 277
-    //   269: new 235	java/lang/NullPointerException
-    //   272: dup
-    //   273: invokespecial 236	java/lang/NullPointerException:<init>	()V
-    //   276: athrow
-    //   277: aload_1
-    //   278: athrow
-    //   279: astore_2
-    //   280: goto -45 -> 235
-    //   283: astore_1
-    //   284: goto -135 -> 149
-    //   287: astore_1
-    //   288: goto -127 -> 161
-    //   291: astore_2
-    //   292: goto -27 -> 265
-    //   295: astore_2
-    //   296: goto -19 -> 277
+    //   65: ldc 185
+    //   67: aload_2
+    //   68: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: invokestatic 195	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   74: pop
+    //   75: invokestatic 201	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   78: astore_2
+    //   79: new 168	java/lang/StringBuilder
+    //   82: dup
+    //   83: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   86: astore_3
+    //   87: aload_3
+    //   88: ldc 203
+    //   90: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: pop
+    //   94: aload_3
+    //   95: iload_0
+    //   96: invokevirtual 206	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   99: pop
+    //   100: aload_3
+    //   101: ldc 208
+    //   103: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: pop
+    //   107: new 210	java/io/BufferedReader
+    //   110: dup
+    //   111: new 212	java/io/InputStreamReader
+    //   114: dup
+    //   115: aload_2
+    //   116: aload_3
+    //   117: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokevirtual 216	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   123: invokevirtual 222	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   126: invokespecial 225	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   129: invokespecial 228	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   132: astore_2
+    //   133: aload_2
+    //   134: invokevirtual 231	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   137: astore_3
+    //   138: aload_3
+    //   139: ifnull +19 -> 158
+    //   142: aload_1
+    //   143: aload_3
+    //   144: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: pop
+    //   148: aload_1
+    //   149: ldc 233
+    //   151: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: pop
+    //   155: goto -22 -> 133
+    //   158: ldc 11
+    //   160: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   163: iconst_0
+    //   164: invokestatic 171	com/tencent/qqmini/sdk/monitor/common/ProcessStats:collectProcessStats	(Ljava/lang/String;Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;Z)V
+    //   167: new 168	java/lang/StringBuilder
+    //   170: dup
+    //   171: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   174: astore_2
+    //   175: aload_2
+    //   176: ldc 174
+    //   178: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: pop
+    //   182: aload_2
+    //   183: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   186: getfield 103	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseUtime	J
+    //   189: invokevirtual 181	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   192: pop
+    //   193: aload_2
+    //   194: ldc 183
+    //   196: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: pop
+    //   200: aload_2
+    //   201: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   204: getfield 106	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:baseStime	J
+    //   207: invokevirtual 181	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   210: pop
+    //   211: ldc 185
+    //   213: aload_2
+    //   214: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   217: invokestatic 195	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   220: pop
+    //   221: aload_1
+    //   222: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   225: astore_1
+    //   226: aload_1
+    //   227: areturn
+    //   228: astore_1
+    //   229: aload_1
+    //   230: athrow
+    //   231: aconst_null
+    //   232: areturn
+    //   233: astore_1
+    //   234: goto -3 -> 231
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	299	0	paramInt	int
-    //   112	2	1	localBufferedReader	java.io.BufferedReader
-    //   136	1	1	localException1	Exception
-    //   222	29	1	str1	String
-    //   252	26	1	localObject1	Object
-    //   283	1	1	localException2	Exception
-    //   287	1	1	localException3	Exception
-    //   11	226	2	localObject2	Object
-    //   249	1	2	localException4	Exception
-    //   279	1	2	localException5	Exception
-    //   291	1	2	localException6	Exception
-    //   295	1	2	localException7	Exception
-    //   117	7	3	str2	String
+    //   0	237	0	paramInt	int
+    //   11	216	1	localObject1	Object
+    //   228	2	1	localObject2	Object
+    //   233	1	1	localException	Exception
+    //   28	186	2	localObject3	Object
+    //   86	58	3	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   0	113	136	java/lang/Exception
-    //   113	118	136	java/lang/Exception
-    //   122	133	136	java/lang/Exception
-    //   165	223	136	java/lang/Exception
-    //   241	249	249	java/lang/Exception
-    //   0	113	252	finally
-    //   113	118	252	finally
-    //   122	133	252	finally
-    //   165	223	252	finally
-    //   227	235	279	java/lang/Exception
-    //   141	149	283	java/lang/Exception
-    //   153	161	287	java/lang/Exception
-    //   257	265	291	java/lang/Exception
-    //   269	277	295	java/lang/Exception
+    //   0	133	228	finally
+    //   133	138	228	finally
+    //   142	155	228	finally
+    //   158	226	228	finally
+    //   0	133	233	java/lang/Exception
+    //   133	138	233	java/lang/Exception
+    //   142	155	233	java/lang/Exception
+    //   158	226	233	java/lang/Exception
   }
   
   public static final List<String> dumpThreadStats(int paramInt, boolean paramBoolean)
   {
     Object localObject1 = new HashMap();
-    Object localObject2;
     int i;
-    Object localObject3;
     if (paramBoolean)
     {
       localObject1 = Thread.currentThread().getThreadGroup();
-      localObject2 = new Thread[((ThreadGroup)localObject1).activeCount()];
-      ((ThreadGroup)localObject1).enumerate((Thread[])localObject2);
-      localObject1 = new HashMap(localObject2.length);
-      int j = localObject2.length;
+      localObject3 = new Thread[((ThreadGroup)localObject1).activeCount()];
+      ((ThreadGroup)localObject1).enumerate((Thread[])localObject3);
+      localObject2 = new HashMap(localObject3.length);
+      int j = localObject3.length;
       i = 0;
-      while (i < j)
+      for (;;)
       {
-        localObject3 = localObject2[i];
-        if (localObject3 != null) {
-          ((Map)localObject1).put(((Thread)localObject3).getName(), localObject3);
+        localObject1 = localObject2;
+        if (i >= j) {
+          break;
+        }
+        localObject1 = localObject3[i];
+        if (localObject1 != null) {
+          ((Map)localObject2).put(((Thread)localObject1).getName(), localObject1);
         }
         i += 1;
       }
     }
-    for (;;)
+    Object localObject2 = new ArrayList(sThreadUsageMap.size() / 2);
+    Object localObject3 = sThreadUsageMap.keySet().iterator();
+    while (((Iterator)localObject3).hasNext())
     {
-      localObject2 = new ArrayList(sThreadUsageMap.size() / 2);
-      localObject3 = sThreadUsageMap.keySet().iterator();
-      while (((Iterator)localObject3).hasNext())
+      Object localObject4 = (String)((Iterator)localObject3).next();
+      ProcessStats.Stats localStats = (ProcessStats.Stats)sThreadUsageMap.get(localObject4);
+      if (localStats.cpuUsage >= paramInt)
       {
-        Object localObject4 = (String)((Iterator)localObject3).next();
-        ProcessStats.Stats localStats = (ProcessStats.Stats)sThreadUsageMap.get(localObject4);
-        if (localStats.cpuUsage >= paramInt)
+        if (paramBoolean) {
+          i = 300;
+        } else {
+          i = 50;
+        }
+        StringBuilder localStringBuilder = new StringBuilder(i);
+        localStringBuilder.append(localStats.name);
+        localStringBuilder.append("_");
+        localStringBuilder.append((String)localObject4);
+        localStringBuilder.append(":");
+        localStringBuilder.append(localStats.cpuUsage);
+        localStringBuilder.append("\r\n");
+        if (paramBoolean)
         {
-          if (paramBoolean) {}
-          StringBuilder localStringBuilder;
-          for (i = 300;; i = 50)
-          {
-            localStringBuilder = new StringBuilder(i);
-            localStringBuilder.append(localStats.name).append("_").append((String)localObject4).append(":").append(localStats.cpuUsage).append("\r\n");
-            if (!paramBoolean) {
-              break;
-            }
-            localObject4 = (Thread)((Map)localObject1).get(localStats.name);
-            if (localObject4 != null) {
-              localStringBuilder.append(Arrays.toString(((Thread)localObject4).getStackTrace()));
-            }
-            localObject4 = StringUtils.getStringValue(localStringBuilder);
-            if (localObject4 == null) {
-              break label308;
-            }
-            ((List)localObject2).add(StringUtils.newStringWithData((char[])localObject4));
-            break;
+          localObject4 = (Thread)((Map)localObject1).get(localStats.name);
+          if (localObject4 != null) {
+            localStringBuilder.append(Arrays.toString(((Thread)localObject4).getStackTrace()));
           }
-          label308:
-          ((List)localObject2).add(localStringBuilder.toString());
+          localObject4 = StringUtils.getStringValue(localStringBuilder);
+          if (localObject4 != null) {
+            ((List)localObject2).add(StringUtils.newStringWithData((char[])localObject4));
+          } else {
+            ((List)localObject2).add(localStringBuilder.toString());
+          }
         }
       }
-      if (paramBoolean) {
-        ((List)localObject2).add(Arrays.toString(Looper.getMainLooper().getThread().getStackTrace()));
-      }
-      return localObject2;
     }
+    if (paramBoolean) {
+      ((List)localObject2).add(Arrays.toString(Looper.getMainLooper().getThread().getStackTrace()));
+    }
+    return localObject2;
   }
   
   private static final int getNumCoresOldPhones()
@@ -805,7 +754,11 @@ public class ProcessStats
       int i = new File("/sys/devices/system/cpu/").listFiles(new ProcessStats.1CpuFilter()).length;
       return i;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label24:
+      break label24;
+    }
     return 1;
   }
   
@@ -813,37 +766,46 @@ public class ProcessStats
   public static final int getNumberOfCores()
   {
     if (sCpuCoreNum == -1) {
-      if (Build.VERSION.SDK_INT < 17) {
-        break label28;
+      if (Build.VERSION.SDK_INT >= 17) {
+        sCpuCoreNum = Runtime.getRuntime().availableProcessors();
+      } else {
+        sCpuCoreNum = getNumCoresOldPhones();
       }
     }
-    label28:
-    for (sCpuCoreNum = Runtime.getRuntime().availableProcessors();; sCpuCoreNum = getNumCoresOldPhones()) {
-      return sCpuCoreNum;
-    }
+    return sCpuCoreNum;
   }
   
   private static final RandomAccessFile getReader(String paramString)
   {
     try
     {
-      if (paramString.equals("-2")) {
+      boolean bool = paramString.equals("-2");
+      if (bool) {
         return new RandomAccessFile("/proc/stat", "r");
       }
-      if (paramString.equals("-1"))
+      bool = paramString.equals("-1");
+      if (bool)
       {
-        paramString = new RandomAccessFile("/proc/" + Process.myPid() + "/stat", "r");
-        return paramString;
+        paramString = new StringBuilder();
+        paramString.append("/proc/");
+        paramString.append(Process.myPid());
+        paramString.append("/stat");
+        return new RandomAccessFile(paramString.toString(), "r");
       }
-    }
-    catch (FileNotFoundException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-      paramString = new RandomAccessFile("/proc/" + Process.myPid() + "/task/" + paramString + "/stat", "r");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("/proc/");
+      localStringBuilder.append(Process.myPid());
+      localStringBuilder.append("/task/");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("/stat");
+      paramString = new RandomAccessFile(localStringBuilder.toString(), "r");
       return paramString;
     }
     catch (OutOfMemoryError paramString)
+    {
+      paramString.printStackTrace();
+    }
+    catch (FileNotFoundException paramString)
     {
       paramString.printStackTrace();
     }
@@ -852,9 +814,13 @@ public class ProcessStats
   
   private static final String[] getThreadPids(long paramLong)
   {
-    File localFile = new File("/proc/" + paramLong + "/task");
-    if ((localFile.exists()) && (localFile.isDirectory())) {
-      return localFile.list();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("/proc/");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("/task");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory())) {
+      return ((File)localObject).list();
     }
     return null;
   }
@@ -869,108 +835,284 @@ public class ProcessStats
     paramStats.recycle();
   }
   
+  /* Error */
   public static void traceEnd(boolean paramBoolean)
   {
-    byte[] arrayOfByte = ByteArrayPool.getGenericInstance().getBuf(1024);
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = collectProcessStats("-2");
-        if (localObject1 != null)
-        {
-          l1 = ((Long)localObject1[1]).longValue();
-          l2 = ((Long)localObject1[2]).longValue();
-          l1 = l1 + l2 - baseTotalCpu - baseTotalIdle;
-          collectProcessStats("-1", sAppSt, false);
-          if (paramBoolean)
-          {
-            localObject1 = sThreadUsageMap.keySet().iterator();
-            if (((Iterator)localObject1).hasNext())
-            {
-              String str = (String)((Iterator)localObject1).next();
-              ProcessStats.Stats localStats = (ProcessStats.Stats)sThreadUsageMap.get(str);
-              collectProcessStats(str, localStats, false);
-              localStats.cpuUsage = ((int)(100L * (localStats.relStime + localStats.relUtime) / l1));
-              continue;
-            }
-          }
-        }
-        long l1 = -1L;
-      }
-      catch (Exception localException)
-      {
-        return;
-        sTotalCpuUsage = (int)(100L * (l2 - baseTotalCpu) / l1);
-        sAppSt.cpuUsage = ((int)(100L * (sAppSt.relStime + sAppSt.relUtime) / l1));
-        sLastUpdateTime = SystemClock.uptimeMillis();
-        return;
-      }
-      finally
-      {
-        ByteArrayPool.getGenericInstance().returnBuf(arrayOfByte);
-      }
-      long l2 = -1L;
-    }
+    // Byte code:
+    //   0: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   3: sipush 1024
+    //   6: invokevirtual 131	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getBuf	(I)[B
+    //   9: astore 5
+    //   11: ldc 14
+    //   13: invokestatic 89	com/tencent/qqmini/sdk/monitor/common/ProcessStats:collectProcessStats	(Ljava/lang/String;)[Ljava/lang/Object;
+    //   16: astore 6
+    //   18: ldc2_w 17
+    //   21: lstore_1
+    //   22: aload 6
+    //   24: ifnull +216 -> 240
+    //   27: aload 6
+    //   29: iconst_1
+    //   30: aaload
+    //   31: checkcast 91	java/lang/Long
+    //   34: invokevirtual 95	java/lang/Long:longValue	()J
+    //   37: lstore_3
+    //   38: aload 6
+    //   40: iconst_2
+    //   41: aaload
+    //   42: checkcast 91	java/lang/Long
+    //   45: invokevirtual 95	java/lang/Long:longValue	()J
+    //   48: lstore_1
+    //   49: goto +3 -> 52
+    //   52: lload_3
+    //   53: lload_1
+    //   54: ladd
+    //   55: getstatic 80	com/tencent/qqmini/sdk/monitor/common/ProcessStats:baseTotalCpu	J
+    //   58: lsub
+    //   59: getstatic 78	com/tencent/qqmini/sdk/monitor/common/ProcessStats:baseTotalIdle	J
+    //   62: lsub
+    //   63: lstore_3
+    //   64: ldc 11
+    //   66: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   69: iconst_0
+    //   70: invokestatic 171	com/tencent/qqmini/sdk/monitor/common/ProcessStats:collectProcessStats	(Ljava/lang/String;Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;Z)V
+    //   73: iload_0
+    //   74: ifeq +89 -> 163
+    //   77: getstatic 74	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sThreadUsageMap	Ljava/util/Map;
+    //   80: invokeinterface 275 1 0
+    //   85: invokeinterface 281 1 0
+    //   90: astore 6
+    //   92: aload 6
+    //   94: invokeinterface 287 1 0
+    //   99: ifeq +64 -> 163
+    //   102: aload 6
+    //   104: invokeinterface 291 1 0
+    //   109: checkcast 100	java/lang/String
+    //   112: astore 7
+    //   114: getstatic 74	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sThreadUsageMap	Ljava/util/Map;
+    //   117: aload 7
+    //   119: invokeinterface 295 2 0
+    //   124: checkcast 45	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats
+    //   127: astore 8
+    //   129: aload 7
+    //   131: aload 8
+    //   133: iconst_0
+    //   134: invokestatic 171	com/tencent/qqmini/sdk/monitor/common/ProcessStats:collectProcessStats	(Ljava/lang/String;Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;Z)V
+    //   137: aload 8
+    //   139: aload 8
+    //   141: getfield 117	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:relStime	J
+    //   144: aload 8
+    //   146: getfield 114	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:relUtime	J
+    //   149: ladd
+    //   150: ldc2_w 419
+    //   153: lmul
+    //   154: lload_3
+    //   155: ldiv
+    //   156: l2i
+    //   157: putfield 298	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:cpuUsage	I
+    //   160: goto -68 -> 92
+    //   163: lload_1
+    //   164: getstatic 80	com/tencent/qqmini/sdk/monitor/common/ProcessStats:baseTotalCpu	J
+    //   167: lsub
+    //   168: ldc2_w 419
+    //   171: lmul
+    //   172: lload_3
+    //   173: ldiv
+    //   174: l2i
+    //   175: putstatic 55	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sTotalCpuUsage	I
+    //   178: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   181: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   184: getfield 117	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:relStime	J
+    //   187: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   190: getfield 114	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:relUtime	J
+    //   193: ladd
+    //   194: ldc2_w 419
+    //   197: lmul
+    //   198: lload_3
+    //   199: ldiv
+    //   200: l2i
+    //   201: putfield 298	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats:cpuUsage	I
+    //   204: invokestatic 425	android/os/SystemClock:uptimeMillis	()J
+    //   207: putstatic 53	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sLastUpdateTime	J
+    //   210: goto +16 -> 226
+    //   213: astore 6
+    //   215: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   218: aload 5
+    //   220: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
+    //   223: aload 6
+    //   225: athrow
+    //   226: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   229: aload 5
+    //   231: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
+    //   234: return
+    //   235: astore 6
+    //   237: goto -11 -> 226
+    //   240: ldc2_w 17
+    //   243: lstore_3
+    //   244: goto -192 -> 52
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	247	0	paramBoolean	boolean
+    //   21	143	1	l1	long
+    //   37	207	3	l2	long
+    //   9	221	5	arrayOfByte	byte[]
+    //   16	87	6	localObject1	Object
+    //   213	11	6	localObject2	Object
+    //   235	1	6	localException	Exception
+    //   112	18	7	str	String
+    //   127	18	8	localStats	ProcessStats.Stats
+    // Exception table:
+    //   from	to	target	type
+    //   11	18	213	finally
+    //   27	49	213	finally
+    //   52	73	213	finally
+    //   77	92	213	finally
+    //   92	160	213	finally
+    //   163	210	213	finally
+    //   11	18	235	java/lang/Exception
+    //   27	49	235	java/lang/Exception
+    //   52	73	235	java/lang/Exception
+    //   77	92	235	java/lang/Exception
+    //   92	160	235	java/lang/Exception
+    //   163	210	235	java/lang/Exception
   }
   
+  /* Error */
   public static void traceStart(boolean paramBoolean)
   {
-    byte[] arrayOfByte = ByteArrayPool.getGenericInstance().getBuf(1024);
-    try
-    {
-      localObject1 = collectProcessStats("-2");
-      if (localObject1 == null) {
-        break label117;
-      }
-      baseTotalIdle = ((Long)localObject1[1]).longValue();
-      baseTotalCpu = ((Long)localObject1[2]).longValue();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject1;
-        localException.printStackTrace();
-        return;
-        baseTotalIdle = -1L;
-        baseTotalCpu = -1L;
-      }
-    }
-    finally
-    {
-      ByteArrayPool.getGenericInstance().returnBuf(arrayOfByte);
-    }
-    collectProcessStats("-1", sAppSt, true);
-    if (paramBoolean)
-    {
-      localObject1 = sThreadUsageMap.values().iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        returnStats((ProcessStats.Stats)((Iterator)localObject1).next());
-      }
-      label117:
-      sThreadUsageMap.clear();
-      String[] arrayOfString = getThreadPids(Process.myPid());
-      if (arrayOfString != null)
-      {
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = arrayOfString[i];
-          ProcessStats.Stats localStats = obtainStats();
-          collectProcessStats(str, localStats, true);
-          sThreadUsageMap.put(str, localStats);
-          i += 1;
-        }
-      }
-    }
-    ByteArrayPool.getGenericInstance().returnBuf(arrayOfByte);
+    // Byte code:
+    //   0: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   3: sipush 1024
+    //   6: invokevirtual 131	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getBuf	(I)[B
+    //   9: astore_3
+    //   10: ldc 14
+    //   12: invokestatic 89	com/tencent/qqmini/sdk/monitor/common/ProcessStats:collectProcessStats	(Ljava/lang/String;)[Ljava/lang/Object;
+    //   15: astore 4
+    //   17: aload 4
+    //   19: ifnull +32 -> 51
+    //   22: aload 4
+    //   24: iconst_1
+    //   25: aaload
+    //   26: checkcast 91	java/lang/Long
+    //   29: invokevirtual 95	java/lang/Long:longValue	()J
+    //   32: putstatic 78	com/tencent/qqmini/sdk/monitor/common/ProcessStats:baseTotalIdle	J
+    //   35: aload 4
+    //   37: iconst_2
+    //   38: aaload
+    //   39: checkcast 91	java/lang/Long
+    //   42: invokevirtual 95	java/lang/Long:longValue	()J
+    //   45: putstatic 80	com/tencent/qqmini/sdk/monitor/common/ProcessStats:baseTotalCpu	J
+    //   48: goto +15 -> 63
+    //   51: ldc2_w 17
+    //   54: putstatic 78	com/tencent/qqmini/sdk/monitor/common/ProcessStats:baseTotalIdle	J
+    //   57: ldc2_w 17
+    //   60: putstatic 80	com/tencent/qqmini/sdk/monitor/common/ProcessStats:baseTotalCpu	J
+    //   63: ldc 11
+    //   65: getstatic 61	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sAppSt	Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   68: iconst_1
+    //   69: invokestatic 171	com/tencent/qqmini/sdk/monitor/common/ProcessStats:collectProcessStats	(Ljava/lang/String;Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;Z)V
+    //   72: iload_0
+    //   73: ifeq +128 -> 201
+    //   76: getstatic 74	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sThreadUsageMap	Ljava/util/Map;
+    //   79: invokeinterface 430 1 0
+    //   84: invokeinterface 433 1 0
+    //   89: astore 4
+    //   91: aload 4
+    //   93: invokeinterface 287 1 0
+    //   98: ifeq +19 -> 117
+    //   101: aload 4
+    //   103: invokeinterface 291 1 0
+    //   108: checkcast 45	com/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats
+    //   111: invokestatic 435	com/tencent/qqmini/sdk/monitor/common/ProcessStats:returnStats	(Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;)V
+    //   114: goto -23 -> 91
+    //   117: getstatic 74	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sThreadUsageMap	Ljava/util/Map;
+    //   120: invokeinterface 438 1 0
+    //   125: invokestatic 385	android/os/Process:myPid	()I
+    //   128: i2l
+    //   129: invokestatic 440	com/tencent/qqmini/sdk/monitor/common/ProcessStats:getThreadPids	(J)[Ljava/lang/String;
+    //   132: astore 4
+    //   134: aload 4
+    //   136: ifnull +65 -> 201
+    //   139: aload 4
+    //   141: arraylength
+    //   142: istore_2
+    //   143: iconst_0
+    //   144: istore_1
+    //   145: iload_1
+    //   146: iload_2
+    //   147: if_icmpge +54 -> 201
+    //   150: aload 4
+    //   152: iload_1
+    //   153: aaload
+    //   154: astore 5
+    //   156: invokestatic 59	com/tencent/qqmini/sdk/monitor/common/ProcessStats:obtainStats	()Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;
+    //   159: astore 6
+    //   161: aload 5
+    //   163: aload 6
+    //   165: iconst_1
+    //   166: invokestatic 171	com/tencent/qqmini/sdk/monitor/common/ProcessStats:collectProcessStats	(Ljava/lang/String;Lcom/tencent/qqmini/sdk/monitor/common/ProcessStats$Stats;Z)V
+    //   169: getstatic 74	com/tencent/qqmini/sdk/monitor/common/ProcessStats:sThreadUsageMap	Ljava/util/Map;
+    //   172: aload 5
+    //   174: aload 6
+    //   176: invokeinterface 265 3 0
+    //   181: pop
+    //   182: iload_1
+    //   183: iconst_1
+    //   184: iadd
+    //   185: istore_1
+    //   186: goto -41 -> 145
+    //   189: astore 4
+    //   191: goto +18 -> 209
+    //   194: astore 4
+    //   196: aload 4
+    //   198: invokevirtual 441	java/lang/Exception:printStackTrace	()V
+    //   201: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   204: aload_3
+    //   205: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
+    //   208: return
+    //   209: invokestatic 127	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:getGenericInstance	()Lcom/tencent/qqmini/sdk/monitor/common/ByteArrayPool;
+    //   212: aload_3
+    //   213: invokevirtual 159	com/tencent/qqmini/sdk/monitor/common/ByteArrayPool:returnBuf	([B)V
+    //   216: goto +6 -> 222
+    //   219: aload 4
+    //   221: athrow
+    //   222: goto -3 -> 219
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	225	0	paramBoolean	boolean
+    //   144	42	1	i	int
+    //   142	6	2	j	int
+    //   9	204	3	arrayOfByte	byte[]
+    //   15	136	4	localObject1	Object
+    //   189	1	4	localObject2	Object
+    //   194	26	4	localException	Exception
+    //   154	19	5	str	String
+    //   159	16	6	localStats	ProcessStats.Stats
+    // Exception table:
+    //   from	to	target	type
+    //   10	17	189	finally
+    //   22	48	189	finally
+    //   51	63	189	finally
+    //   63	72	189	finally
+    //   76	91	189	finally
+    //   91	114	189	finally
+    //   117	134	189	finally
+    //   139	143	189	finally
+    //   156	182	189	finally
+    //   196	201	189	finally
+    //   10	17	194	java/lang/Exception
+    //   22	48	194	java/lang/Exception
+    //   51	63	194	java/lang/Exception
+    //   63	72	194	java/lang/Exception
+    //   76	91	194	java/lang/Exception
+    //   91	114	194	java/lang/Exception
+    //   117	134	194	java/lang/Exception
+    //   139	143	194	java/lang/Exception
+    //   156	182	194	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.common.ProcessStats
  * JD-Core Version:    0.7.0.1
  */

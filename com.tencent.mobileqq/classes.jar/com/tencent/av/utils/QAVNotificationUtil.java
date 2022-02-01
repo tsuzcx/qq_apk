@@ -25,12 +25,13 @@ public class QAVNotificationUtil
   
   public static Intent a(Context paramContext, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      paramString = SessionMgr.a().c(paramString);
-    } while (paramString == null);
+    }
+    paramString = SessionMgr.a().c(paramString);
+    if (paramString == null) {
+      return null;
+    }
     try
     {
       paramContext = new Intent(paramContext, GaInviteLockActivity.class);
@@ -40,136 +41,151 @@ public class QAVNotificationUtil
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        QLog.i("QAVNotificationUtil", 1, "getGroupInviteIntent error", paramContext);
-        paramContext = null;
-      }
+      QLog.i("QAVNotificationUtil", 1, "getGroupInviteIntent error", paramContext);
     }
+    return null;
   }
   
   public static String a(VideoPackageUtils.VideoPacket paramVideoPacket)
   {
     long l = paramVideoPacket.jdField_d_of_type_Long;
-    switch (paramVideoPacket.e)
-    {
-    default: 
-      return String.valueOf(l);
+    int i = paramVideoPacket.e;
+    if ((i != 4) && (i != 5)) {
+      switch (i)
+      {
+      default: 
+        return String.valueOf(l);
+      }
     }
-    return paramVideoPacket.jdField_b_of_type_JavaLangString + paramVideoPacket.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramVideoPacket.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(paramVideoPacket.a);
+    return localStringBuilder.toString();
   }
   
   public static void a(Intent paramIntent, SessionInfo paramSessionInfo)
   {
-    long l1 = 0L;
+    long l;
     try
     {
-      long l2 = Long.parseLong(paramSessionInfo.s);
-      l1 = l2;
+      l = Long.parseLong(paramSessionInfo.r);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
+      l = 0L;
     }
-    paramIntent.putExtra("uinType", paramSessionInfo.j);
-    paramIntent.putExtra("peerUin", paramSessionInfo.s);
-    paramIntent.putExtra("friendUin", l1);
-    paramIntent.putExtra("relationType", paramSessionInfo.F);
-    paramIntent.putExtra("MultiAVType", paramSessionInfo.D);
-    paramIntent.putExtra("discussId", paramSessionInfo.g);
+    paramIntent.putExtra("uinType", paramSessionInfo.k);
+    paramIntent.putExtra("peerUin", paramSessionInfo.r);
+    paramIntent.putExtra("friendUin", l);
+    paramIntent.putExtra("relationType", paramSessionInfo.E);
+    paramIntent.putExtra("MultiAVType", paramSessionInfo.j);
+    paramIntent.putExtra("discussId", paramSessionInfo.f);
     paramIntent.putExtra("memberList", paramSessionInfo.a);
   }
   
   public static void a(String paramString1, String paramString2, VideoAppInterface paramVideoAppInterface, VideoPackageUtils.VideoPacket paramVideoPacket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CompatModeTag", 2, "showInviteNotification videoPacket[" + paramVideoPacket + "], session[" + paramString2 + "], from[" + paramString1 + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showInviteNotification videoPacket[");
+      ((StringBuilder)localObject).append(paramVideoPacket);
+      ((StringBuilder)localObject).append("], session[");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("], from[");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("CompatModeTag", 2, ((StringBuilder)localObject).toString());
     }
-    paramString1 = String.valueOf(paramVideoPacket.c);
-    int i = a(paramVideoAppInterface, paramVideoPacket.e, paramString1, 0);
+    Object localObject = String.valueOf(paramVideoPacket.c);
+    int i = a(paramVideoAppInterface, paramVideoPacket.e, (String)localObject, 0);
     String str = a(paramVideoPacket);
     boolean bool;
-    int j;
-    if (paramVideoPacket.jdField_d_of_type_Int == 1)
-    {
+    if (paramVideoPacket.jdField_d_of_type_Int == 1) {
       bool = true;
-      j = paramVideoPacket.jdField_b_of_type_Int;
+    } else {
+      bool = false;
     }
-    for (;;)
+    int j = paramVideoPacket.jdField_b_of_type_Int;
+    try
     {
-      try
+      if (!paramVideoAppInterface.a().a(i, (String)localObject, str, null, bool, null, 0, j))
       {
-        if (paramVideoAppInterface.a().a(i, paramString1, str, null, bool, null, 0, j)) {
-          break label145;
-        }
         QLog.w("CompatModeTag", 1, "showNotification() return ! isRequestVideo = false");
         return;
       }
-      catch (Exception paramString1)
+      QAVNotification localQAVNotification = QAVNotification.a(paramVideoAppInterface);
+      Bitmap localBitmap = paramVideoAppInterface.a(i, (String)localObject, str, true, true);
+      paramString1 = paramVideoAppInterface.a(i, (String)localObject, str);
+      if (AVUtil.b())
       {
-        QLog.w("CompatModeTag", 1, "showNotification() return ! Exception = ", paramString1);
-        return;
-      }
-      bool = false;
-      break;
-      label145:
-      Object localObject = QAVNotification.a(paramVideoAppInterface);
-      Bitmap localBitmap = paramVideoAppInterface.a(i, paramString1, str, true, true);
-      paramVideoAppInterface = paramVideoAppInterface.a(i, paramString1, str);
-      if (AVUtil.b()) {
         if (bool) {
-          ((QAVNotification)localObject).a(true, paramString2, paramVideoAppInterface, localBitmap, null, 45, i, 1, null);
-        }
-      }
-      while (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder(200);
-        ((StringBuilder)localObject).append("showNotification, isAudioMode=").append(bool).append(", sessionId=").append(paramString2).append(", uinType=").append(i).append(", peerUin=").append(paramString1).append(", extraUin=").append(str).append(", face=").append(localBitmap).append(", peerName=").append(paramVideoAppInterface).append(", videoPacket=").append(paramVideoPacket);
-        QLog.i("CompatModeTag", 2, ((StringBuilder)localObject).toString());
-        return;
-        ((QAVNotification)localObject).a(true, paramString2, paramVideoAppInterface, localBitmap, null, 40, i, 2, null);
-        continue;
-        if (bool) {
-          ((QAVNotification)localObject).a(false, paramString2, paramVideoAppInterface, localBitmap, null, 45, i, 1);
+          localQAVNotification.a(true, paramString2, paramString1, localBitmap, null, 45, i, 1, null);
         } else {
-          ((QAVNotification)localObject).a(false, paramString2, paramVideoAppInterface, localBitmap, null, 40, i, 2);
+          localQAVNotification.a(true, paramString2, paramString1, localBitmap, null, 40, i, 2, null);
         }
       }
+      else
+      {
+        j = i;
+        if (bool) {
+          localQAVNotification.a(false, paramString2, paramString1, localBitmap, null, 45, j, 1);
+        } else {
+          localQAVNotification.a(false, paramString2, paramString1, localBitmap, null, 40, j, 2);
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramVideoAppInterface = new StringBuilder(200);
+        paramVideoAppInterface.append("showNotification, isAudioMode=");
+        paramVideoAppInterface.append(bool);
+        paramVideoAppInterface.append(", sessionId=");
+        paramVideoAppInterface.append(paramString2);
+        paramVideoAppInterface.append(", uinType=");
+        paramVideoAppInterface.append(i);
+        paramVideoAppInterface.append(", peerUin=");
+        paramVideoAppInterface.append((String)localObject);
+        paramVideoAppInterface.append(", extraUin=");
+        paramVideoAppInterface.append(str);
+        paramVideoAppInterface.append(", face=");
+        paramVideoAppInterface.append(localBitmap);
+        paramVideoAppInterface.append(", peerName=");
+        paramVideoAppInterface.append(paramString1);
+        paramVideoAppInterface.append(", videoPacket=");
+        paramVideoAppInterface.append(paramVideoPacket);
+        QLog.i("CompatModeTag", 2, paramVideoAppInterface.toString());
+      }
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      QLog.w("CompatModeTag", 1, "showNotification() return ! Exception = ", paramString1);
     }
   }
   
   public static boolean a(Intent paramIntent)
   {
-    boolean bool2 = false;
-    String str = null;
     if (paramIntent != null) {
-      str = paramIntent.getStringExtra("Fromwhere");
+      paramIntent = paramIntent.getStringExtra("Fromwhere");
+    } else {
+      paramIntent = null;
     }
-    boolean bool1 = bool2;
-    if (str != null)
-    {
-      bool1 = bool2;
-      if (str.compareTo("AVNotification") == 0) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (paramIntent != null) && (paramIntent.compareTo("AVNotification") == 0);
   }
   
   public static Intent b(Context paramContext, String paramString)
   {
     paramContext = new Intent(paramContext, MultiIncomingCallsActivity.class);
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return paramContext;
-      paramString = SessionMgr.a().c(paramString);
-    } while (paramString == null);
+    }
+    paramString = SessionMgr.a().c(paramString);
+    if (paramString == null) {
+      return paramContext;
+    }
     paramContext.putExtra("sessionType", paramString.jdField_d_of_type_Int);
-    if (AVUtil.b(paramString.j))
+    if (AVUtil.b(paramString.k))
     {
       a(paramContext, paramString);
       return paramContext;
@@ -180,18 +196,18 @@ public class QAVNotificationUtil
   
   public static void b(Intent paramIntent, SessionInfo paramSessionInfo)
   {
-    paramIntent.putExtra("uinType", paramSessionInfo.j);
-    paramIntent.putExtra("relationType", UITools.b(paramSessionInfo.j));
-    paramIntent.putExtra("peerUin", paramSessionInfo.jdField_d_of_type_JavaLangString);
-    paramIntent.putExtra("extraUin", paramSessionInfo.f);
-    paramIntent.putExtra("isAudioMode", paramSessionInfo.S);
-    paramIntent.putExtra("isDoubleVideoMeeting", paramSessionInfo.J);
+    paramIntent.putExtra("uinType", paramSessionInfo.k);
+    paramIntent.putExtra("relationType", UITools.b(paramSessionInfo.k));
+    paramIntent.putExtra("peerUin", paramSessionInfo.c);
+    paramIntent.putExtra("extraUin", paramSessionInfo.e);
+    paramIntent.putExtra("isAudioMode", paramSessionInfo.H);
+    paramIntent.putExtra("isDoubleVideoMeeting", paramSessionInfo.y);
     paramIntent.putExtra("bindType", paramSessionInfo.A);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.QAVNotificationUtil
  * JD-Core Version:    0.7.0.1
  */

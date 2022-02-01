@@ -8,7 +8,7 @@ import com.tencent.ad.tangram.net.AdTime;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
 import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForAppPreOrder;
 import com.tencent.ad.tangram.protocol.msg_content;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
+import com.tencent.ad.tangram.settings.AdSettingsManager;
 
 @Keep
 public final class AdAppPreOrderTask
@@ -43,243 +43,294 @@ public final class AdAppPreOrderTask
   
   private static boolean canSetStatus(int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
-    boolean bool3 = true;
-    boolean bool4 = true;
-    boolean bool5 = true;
-    boolean bool6 = true;
-    boolean bool1 = true;
-    if (paramInt1 == paramInt2) {}
-    do
-    {
-      int i;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              return false;
-                              if (paramInt2 == -1) {
-                                return true;
-                              }
-                            } while (paramInt1 == 1);
-                            if (paramInt1 == 2)
-                            {
-                              if (paramInt2 == 4) {}
-                              for (;;)
-                              {
-                                return bool1;
-                                bool1 = false;
-                              }
-                            }
-                          } while (paramInt1 == 3);
-                          if (paramInt1 != 4) {
-                            break;
-                          }
-                        } while ((paramInt2 != 5) && (paramInt2 != 6));
-                        return true;
-                        if (paramInt1 == 5)
-                        {
-                          if (paramInt2 == 7) {}
-                          for (bool1 = bool2;; bool1 = false) {
-                            return bool1;
-                          }
-                        }
-                        if (paramInt1 == 6)
-                        {
-                          if (paramInt2 == 4) {}
-                          for (bool1 = bool3;; bool1 = false) {
-                            return bool1;
-                          }
-                        }
-                        if (paramInt1 != 7) {
-                          break;
-                        }
-                      } while ((paramInt2 != 8) && (paramInt2 != 9) && (paramInt2 != 10) && (paramInt2 != 11));
-                      return true;
-                      if (paramInt1 != 8) {
-                        break;
-                      }
-                    } while ((paramInt2 != 9) && (paramInt2 != 10) && (paramInt2 != 11));
-                    return true;
-                    if (paramInt1 != 9) {
-                      break;
-                    }
-                  } while ((paramInt2 != 8) && (paramInt2 != 10) && (paramInt2 != 11));
-                  return true;
-                  if (paramInt1 != 10) {
-                    break;
-                  }
-                } while ((paramInt2 != AdAppPreOrderTask.a.getStatus(0, 0)) && (paramInt2 != AdAppPreOrderTask.a.getStatus(3, 0)));
-                return true;
-                if (paramInt1 != 11) {
-                  break;
-                }
-              } while ((paramInt2 != 10) && (paramInt2 != 9) && (paramInt2 != 7) && (paramInt2 != 8));
-              return true;
-            } while ((paramInt1 < 12) || (paramInt1 > AdAppPreOrderTask.Status.QQREMINDER_END));
-            i = AdAppPreOrderTask.a.getIndex(paramInt1);
-            paramInt1 = AdAppPreOrderTask.a.getStage(paramInt1);
-            if (paramInt1 != 0) {
-              break;
-            }
-          } while ((paramInt2 != AdAppPreOrderTask.a.getStatus(1, i)) && (paramInt2 != AdAppPreOrderTask.a.getStatus(2, i)));
-          return true;
-          if (paramInt1 == 1)
-          {
-            if (paramInt2 == AdAppPreOrderTask.a.getStatus(0, i)) {}
-            for (bool1 = bool4;; bool1 = false) {
-              return bool1;
-            }
-          }
-          if (paramInt1 == 2)
-          {
-            if (paramInt2 == AdAppPreOrderTask.a.getStatus(3, i)) {}
-            for (bool1 = bool5;; bool1 = false) {
-              return bool1;
-            }
-          }
-          if (paramInt1 != 3) {
-            break;
-          }
-        } while ((paramInt2 != AdAppPreOrderTask.a.getStatus(0, i)) && (paramInt2 != AdAppPreOrderTask.a.getStatus(4, i)));
-        return true;
-        if (paramInt1 != 4) {
-          break;
-        }
-      } while ((paramInt2 != AdAppPreOrderTask.a.getStatus(5, i)) && (paramInt2 != AdAppPreOrderTask.a.getStatus(0, i + 1)) && (paramInt2 != AdAppPreOrderTask.a.getStatus(3, i + 1)));
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool4 = false;
+    boolean bool5 = false;
+    boolean bool6 = false;
+    boolean bool7 = false;
+    boolean bool8 = false;
+    boolean bool9 = false;
+    boolean bool10 = false;
+    boolean bool11 = false;
+    boolean bool12 = false;
+    boolean bool13 = false;
+    boolean bool14 = false;
+    boolean bool15 = false;
+    boolean bool1 = false;
+    if (paramInt1 == paramInt2) {
+      return false;
+    }
+    if (paramInt2 == -1) {
       return true;
+    }
+    if (paramInt1 == 1) {
+      return false;
+    }
+    if (paramInt1 == 2)
+    {
+      if (paramInt2 == 4) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if (paramInt1 == 3) {
+      return false;
+    }
+    if (paramInt1 == 4)
+    {
+      if (paramInt2 != 5)
+      {
+        bool1 = bool2;
+        if (paramInt2 != 6) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if (paramInt1 == 5)
+    {
+      bool1 = bool3;
+      if (paramInt2 == 7) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if (paramInt1 == 6)
+    {
+      bool1 = bool4;
+      if (paramInt2 == 4) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if (paramInt1 == 7)
+    {
+      if ((paramInt2 != 8) && (paramInt2 != 9) && (paramInt2 != 10))
+      {
+        bool1 = bool5;
+        if (paramInt2 != 11) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if (paramInt1 == 8)
+    {
+      if ((paramInt2 != 9) && (paramInt2 != 10))
+      {
+        bool1 = bool6;
+        if (paramInt2 != 11) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if (paramInt1 == 9)
+    {
+      if ((paramInt2 != 8) && (paramInt2 != 10))
+      {
+        bool1 = bool7;
+        if (paramInt2 != 11) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if (paramInt1 == 10)
+    {
+      if (paramInt2 != AdAppPreOrderTask.a.getStatus(0, 0))
+      {
+        bool1 = bool8;
+        if (paramInt2 != AdAppPreOrderTask.a.getStatus(3, 0)) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if (paramInt1 == 11)
+    {
+      if ((paramInt2 != 10) && (paramInt2 != 9) && (paramInt2 != 7))
+      {
+        bool1 = bool9;
+        if (paramInt2 != 8) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    if ((paramInt1 >= 12) && (paramInt1 <= AdAppPreOrderTask.Status.QQREMINDER_END))
+    {
+      int i = AdAppPreOrderTask.a.getIndex(paramInt1);
+      paramInt1 = AdAppPreOrderTask.a.getStage(paramInt1);
+      if (paramInt1 == 0)
+      {
+        if (paramInt2 != AdAppPreOrderTask.a.getStatus(1, i))
+        {
+          bool1 = bool10;
+          if (paramInt2 != AdAppPreOrderTask.a.getStatus(2, i)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      if (paramInt1 == 1)
+      {
+        bool1 = bool11;
+        if (paramInt2 == AdAppPreOrderTask.a.getStatus(0, i)) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      if (paramInt1 == 2)
+      {
+        bool1 = bool12;
+        if (paramInt2 == AdAppPreOrderTask.a.getStatus(3, i)) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      if (paramInt1 == 3)
+      {
+        if (paramInt2 != AdAppPreOrderTask.a.getStatus(0, i))
+        {
+          bool1 = bool13;
+          if (paramInt2 != AdAppPreOrderTask.a.getStatus(4, i)) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      if (paramInt1 == 4)
+      {
+        if (paramInt2 != AdAppPreOrderTask.a.getStatus(5, i))
+        {
+          paramInt1 = i + 1;
+          if (paramInt2 != AdAppPreOrderTask.a.getStatus(0, paramInt1))
+          {
+            bool1 = bool14;
+            if (paramInt2 != AdAppPreOrderTask.a.getStatus(3, paramInt1)) {
+              break label477;
+            }
+          }
+        }
+        bool1 = true;
+        label477:
+        return bool1;
+      }
       if (paramInt1 == 5)
       {
-        if (paramInt2 == AdAppPreOrderTask.a.getStatus(6, i)) {}
-        for (bool1 = bool6;; bool1 = false) {
-          return bool1;
+        bool1 = bool15;
+        if (paramInt2 == AdAppPreOrderTask.a.getStatus(6, i)) {
+          bool1 = true;
         }
+        return bool1;
       }
-    } while (paramInt1 != 6);
+      if (paramInt1 != 6) {}
+    }
     return false;
   }
   
   private static int getNewReportStage(int paramInt1, int paramInt2)
   {
-    int i;
     if (paramInt1 == -2147483648)
     {
-      i = paramInt1;
       if (paramInt2 == 1) {
-        i = 1;
+        return 1;
       }
     }
-    do
+    else if (paramInt1 == 1)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        return i;
-                        if (paramInt1 != 1) {
-                          break;
-                        }
-                        i = paramInt1;
-                      } while (paramInt2 != 2);
-                      return 2;
-                      if (paramInt1 != 2) {
-                        break;
-                      }
-                      i = paramInt1;
-                    } while (paramInt2 != 3);
-                    return 3;
-                    if (paramInt1 != 3) {
-                      break;
-                    }
-                    i = paramInt1;
-                  } while (paramInt2 != 7);
-                  return 4;
-                  if (paramInt1 != 4) {
-                    break;
-                  }
-                  i = paramInt1;
-                } while (paramInt2 != 10);
-                return 5;
-                if (paramInt1 != 5) {
-                  break;
-                }
-                i = paramInt1;
-              } while (AdAppPreOrderTask.a.getStage(paramInt2) != 3);
-              return 6;
-              if (paramInt1 != 6) {
-                break;
-              }
-              i = paramInt1;
-            } while (AdAppPreOrderTask.a.getStage(paramInt2) != 4);
-            return 7;
-            if (paramInt1 != 7) {
-              break;
-            }
-            i = paramInt1;
-          } while (AdAppPreOrderTask.a.getStage(paramInt2) != 5);
-          return 8;
-          if (paramInt1 != 8) {
-            break;
-          }
-          i = paramInt1;
-        } while (AdAppPreOrderTask.a.getStage(paramInt2) != 6);
+      if (paramInt2 == 2) {
+        return 2;
+      }
+    }
+    else if (paramInt1 == 2)
+    {
+      if (paramInt2 == 3) {
+        return 3;
+      }
+    }
+    else if (paramInt1 == 3)
+    {
+      if (paramInt2 == 7) {
+        return 4;
+      }
+    }
+    else if (paramInt1 == 4)
+    {
+      if (paramInt2 == 10) {
+        return 5;
+      }
+    }
+    else if (paramInt1 == 5)
+    {
+      if (AdAppPreOrderTask.a.getStage(paramInt2) == 3) {
+        return 6;
+      }
+    }
+    else if (paramInt1 == 6)
+    {
+      if (AdAppPreOrderTask.a.getStage(paramInt2) == 4) {
+        return 7;
+      }
+    }
+    else if (paramInt1 == 7)
+    {
+      if (AdAppPreOrderTask.a.getStage(paramInt2) == 5) {
+        return 8;
+      }
+    }
+    else if (paramInt1 == 8)
+    {
+      if (AdAppPreOrderTask.a.getStage(paramInt2) == 6) {
         return 9;
-        if (paramInt1 != 9) {
-          break;
-        }
-        i = paramInt1;
-      } while (paramInt2 != 33);
-      return 10;
-      i = paramInt1;
-    } while (paramInt1 != 10);
+      }
+    }
+    else if (paramInt1 == 9)
+    {
+      if (paramInt2 == 33) {
+        return 10;
+      }
+    }
+    else if (paramInt1 != 10) {}
     return paramInt1;
   }
   
   private boolean isExpired(Context paramContext)
   {
-    paramContext = AdSettingsUtil.INSTANCE.getSettingsCache(paramContext);
-    if (paramContext != null) {}
-    for (long l = paramContext.settingsForAppPreOrder.validMillis; this.taskCraetedTimeMillis == -2147483648L; l = 604800000L) {
+    paramContext = AdSettingsManager.INSTANCE.getCache();
+    long l1;
+    if (paramContext != null) {
+      l1 = paramContext.settingsForAppPreOrder.validMillis;
+    } else {
+      l1 = 604800000L;
+    }
+    long l2 = this.taskCraetedTimeMillis;
+    boolean bool = false;
+    if (l2 == -2147483648L) {
       return false;
     }
-    if (AdTime.INSTANCE.getServerTimeMillis() - this.taskCraetedTimeMillis >= l) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if (AdTime.INSTANCE.getServerTimeMillis() - this.taskCraetedTimeMillis >= l1) {
+      bool = true;
     }
+    return bool;
   }
   
   private boolean updateReportStage()
@@ -291,45 +342,46 @@ public final class AdAppPreOrderTask
   
   public AdAppPreOrderTask.a getQQReminder(int paramInt)
   {
-    if (this.reminders == null) {}
-    while ((paramInt < 0) || (paramInt > this.reminders.length - 1)) {
+    AdAppPreOrderTask.a[] arrayOfa = this.reminders;
+    if (arrayOfa == null) {
       return null;
     }
-    return this.reminders[paramInt];
+    if (paramInt >= 0)
+    {
+      if (paramInt > arrayOfa.length - 1) {
+        return null;
+      }
+      return arrayOfa[paramInt];
+    }
+    return null;
   }
   
   public int getQQReminderIndex(String paramString)
   {
-    int j;
-    if (this.reminders == null)
-    {
-      j = -2147483648;
-      return j;
+    if (this.reminders == null) {
+      return -2147483648;
     }
     int i = 0;
     for (;;)
     {
-      if (i >= this.reminders.length) {
-        break label65;
+      Object localObject = this.reminders;
+      if (i >= localObject.length) {
+        break;
       }
-      AdAppPreOrderTask.a locala = this.reminders[i];
-      if ((locala != null) && (locala.isValid()))
-      {
-        j = i;
-        if (TextUtils.equals(locala.id, paramString)) {
-          break;
-        }
+      localObject = localObject[i];
+      if ((localObject != null) && (((AdAppPreOrderTask.a)localObject).isValid()) && (TextUtils.equals(((AdAppPreOrderTask.a)localObject).id, paramString))) {
+        return i;
       }
       i += 1;
     }
-    label65:
     return -2147483648;
   }
   
   public int getQQRemindersSize()
   {
-    if (this.reminders != null) {
-      return this.reminders.length;
+    AdAppPreOrderTask.a[] arrayOfa = this.reminders;
+    if (arrayOfa != null) {
+      return arrayOfa.length;
     }
     return 0;
   }
@@ -346,96 +398,96 @@ public final class AdAppPreOrderTask
   
   public int setStatus(int paramInt)
   {
-    int i = 0;
     boolean bool2 = canSetStatus(this.status, paramInt);
-    if (bool2) {
-      this.status = paramInt;
-    }
-    for (boolean bool1 = updateReportStage();; bool1 = false)
+    boolean bool1;
+    if (bool2)
     {
-      AdLog.i("AdAppPreOrderTask", String.format("setStatus statusChanged:%b reportStageChanged:%b taskId:%s oldStatus:%d newStatus:%d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), this.taskId, Integer.valueOf(this.status), Integer.valueOf(paramInt) }));
-      if (bool1) {
-        paramInt = 1;
-      }
-      do
-      {
-        return paramInt;
-        paramInt = i;
-      } while (!bool2);
+      this.status = paramInt;
+      bool1 = updateReportStage();
+    }
+    else
+    {
+      bool1 = false;
+    }
+    AdLog.i("AdAppPreOrderTask", String.format("setStatus statusChanged:%b reportStageChanged:%b taskId:%s oldStatus:%d newStatus:%d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), this.taskId, Integer.valueOf(this.status), Integer.valueOf(paramInt) }));
+    if (bool1) {
       return 1;
     }
+    if (bool2) {
+      return 1;
+    }
+    return 0;
   }
   
   public int setStatus(int paramInt1, int paramInt2)
   {
-    int i = 0;
     boolean bool2 = canSetStatus(this.status, paramInt1);
+    boolean bool1;
     if (bool2)
     {
       this.status = paramInt1;
       this.errorCode = paramInt2;
+      bool1 = updateReportStage();
     }
-    for (boolean bool1 = updateReportStage();; bool1 = false)
+    else
     {
-      AdLog.i("AdAppPreOrderTask", String.format("setStatus statusChanged:%b reportStageChanged:%b taskId:%s oldStatus:%d newStatus:%d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), this.taskId, Integer.valueOf(this.status), Integer.valueOf(paramInt1) }));
-      if (bool1) {
-        paramInt1 = 1;
-      }
-      do
-      {
-        return paramInt1;
-        paramInt1 = i;
-      } while (!bool2);
+      bool1 = false;
+    }
+    AdLog.i("AdAppPreOrderTask", String.format("setStatus statusChanged:%b reportStageChanged:%b taskId:%s oldStatus:%d newStatus:%d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), this.taskId, Integer.valueOf(this.status), Integer.valueOf(paramInt1) }));
+    if (bool1) {
       return 1;
     }
+    if (bool2) {
+      return 1;
+    }
+    return 0;
   }
   
   public int setStatus(int paramInt, msg_content parammsg_content)
   {
-    int i = 0;
     boolean bool2 = canSetStatus(this.status, paramInt);
+    boolean bool1;
     if (bool2)
     {
       this.status = paramInt;
       this.content = parammsg_content;
+      bool1 = updateReportStage();
     }
-    for (boolean bool1 = updateReportStage();; bool1 = false)
+    else
     {
-      AdLog.i("AdAppPreOrderTask", String.format("setStatus statusChanged:%b reportStageChanged:%b taskId:%s oldStatus:%d newStatus:%d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), this.taskId, Integer.valueOf(this.status), Integer.valueOf(paramInt) }));
-      if (bool1) {
-        paramInt = 1;
-      }
-      do
-      {
-        return paramInt;
-        paramInt = i;
-      } while (!bool2);
+      bool1 = false;
+    }
+    AdLog.i("AdAppPreOrderTask", String.format("setStatus statusChanged:%b reportStageChanged:%b taskId:%s oldStatus:%d newStatus:%d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), this.taskId, Integer.valueOf(this.status), Integer.valueOf(paramInt) }));
+    if (bool1) {
       return 1;
     }
+    if (bool2) {
+      return 1;
+    }
+    return 0;
   }
   
   public int setStatus(int paramInt, boolean paramBoolean)
   {
-    int i = 0;
     boolean bool = canSetStatus(this.status, paramInt);
     if (bool)
     {
       this.status = paramInt;
       this.isDownloadLaunched = paramBoolean;
+      paramBoolean = updateReportStage();
     }
-    for (paramBoolean = updateReportStage();; paramBoolean = false)
+    else
     {
-      AdLog.i("AdAppPreOrderTask", String.format("setStatus statusChanged:%b reportStageChanged:%b taskId:%s oldStatus:%d newStatus:%d", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), this.taskId, Integer.valueOf(this.status), Integer.valueOf(paramInt) }));
-      if (paramBoolean) {
-        paramInt = 1;
-      }
-      do
-      {
-        return paramInt;
-        paramInt = i;
-      } while (!bool);
+      paramBoolean = false;
+    }
+    AdLog.i("AdAppPreOrderTask", String.format("setStatus statusChanged:%b reportStageChanged:%b taskId:%s oldStatus:%d newStatus:%d", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), this.taskId, Integer.valueOf(this.status), Integer.valueOf(paramInt) }));
+    if (paramBoolean) {
       return 1;
     }
+    if (bool) {
+      return 1;
+    }
+    return 0;
   }
 }
 

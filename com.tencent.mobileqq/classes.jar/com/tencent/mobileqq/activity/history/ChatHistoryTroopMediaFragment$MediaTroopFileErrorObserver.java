@@ -14,9 +14,9 @@ class ChatHistoryTroopMediaFragment$MediaTroopFileErrorObserver
     super(paramContext, paramTroopFileErrorFilter, paramQQAppInterface);
   }
   
-  public void onTroopFileReportSimpleError(Object paramObject)
+  protected void b(Object paramObject)
   {
-    super.onTroopFileReportSimpleError(paramObject);
+    super.b(paramObject);
     if (this.a.a != null) {
       this.a.a.sendEmptyMessage(102);
     }
@@ -24,7 +24,7 @@ class ChatHistoryTroopMediaFragment$MediaTroopFileErrorObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment.MediaTroopFileErrorObserver
  * JD-Core Version:    0.7.0.1
  */

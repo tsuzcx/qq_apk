@@ -20,7 +20,6 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUIUtil;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 @SuppressLint({"ClickableViewAccessibility"})
 public class WSMarqueeDirector
@@ -46,12 +45,12 @@ public class WSMarqueeDirector
   {
     super(paramView);
     this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)a(2131368581));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131370622));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371059));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371060));
-    this.c = ((TextView)a(2131371061));
-    this.d = ((TextView)a(2131371062));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)a(2131368322));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131370275));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131370693));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131370694));
+    this.c = ((TextView)a(2131370695));
+    this.d = ((TextView)a(2131370696));
     this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setOnTouchListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -129,40 +128,50 @@ public class WSMarqueeDirector
   public void c()
   {
     f();
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Boolean)
+    {
       this.jdField_b_of_type_Boolean = true;
-    }
-    int i;
-    do
-    {
       return;
-      this.jdField_b_of_type_Boolean = false;
-      i = this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.getWidth();
-      this.jdField_b_of_type_Int = 0;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText())) {
-        this.jdField_b_of_type_Int += this.jdField_a_of_type_AndroidWidgetTextView.getWidth();
-      }
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())) {
-        this.jdField_b_of_type_Int += this.jdField_b_of_type_AndroidWidgetTextView.getWidth();
-      }
-      if (this.jdField_b_of_type_Int - i < 1)
-      {
-        this.c.setVisibility(8);
-        this.d.setVisibility(8);
-        return;
-      }
-      WSLog.a("WSMarqueeDirector", "startAnim:  A text:" + this.jdField_a_of_type_AndroidWidgetTextView.getText() + ",B text:" + this.jdField_b_of_type_AndroidWidgetTextView.getText() + " , A width:" + this.jdField_a_of_type_AndroidWidgetTextView.getWidth() + " , B width:" + this.jdField_b_of_type_AndroidWidgetTextView.getWidth() + " , " + this.jdField_b_of_type_Int);
-    } while (!this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_AndroidWidgetTextView.isShown())
-    {
-      this.c.setVisibility(0);
-      if (!this.jdField_b_of_type_AndroidWidgetTextView.isShown()) {
-        break label361;
-      }
-      this.d.setVisibility(0);
     }
-    for (;;)
+    this.jdField_b_of_type_Boolean = false;
+    int i = this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.getWidth();
+    this.jdField_b_of_type_Int = 0;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText())) {
+      this.jdField_b_of_type_Int += this.jdField_a_of_type_AndroidWidgetTextView.getWidth();
+    }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())) {
+      this.jdField_b_of_type_Int += this.jdField_b_of_type_AndroidWidgetTextView.getWidth();
+    }
+    if (this.jdField_b_of_type_Int - i < 1)
     {
+      this.c.setVisibility(8);
+      this.d.setVisibility(8);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startAnim:  A text:");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+    localStringBuilder.append(",B text:");
+    localStringBuilder.append(this.jdField_b_of_type_AndroidWidgetTextView.getText());
+    localStringBuilder.append(" , A width:");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetTextView.getWidth());
+    localStringBuilder.append(" , B width:");
+    localStringBuilder.append(this.jdField_b_of_type_AndroidWidgetTextView.getWidth());
+    localStringBuilder.append(" , ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    WSLog.a("WSMarqueeDirector", localStringBuilder.toString());
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetTextView.isShown()) {
+        this.c.setVisibility(0);
+      } else {
+        this.c.setVisibility(8);
+      }
+      if (this.jdField_b_of_type_AndroidWidgetTextView.isShown()) {
+        this.d.setVisibility(0);
+      } else {
+        this.d.setVisibility(8);
+      }
       i = this.jdField_b_of_type_Int * 2;
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, i });
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(i * 1000 / jdField_a_of_type_Int + 1);
@@ -171,11 +180,6 @@ public class WSMarqueeDirector
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-      return;
-      this.c.setVisibility(8);
-      break;
-      label361:
-      this.d.setVisibility(8);
     }
   }
   
@@ -207,10 +211,11 @@ public class WSMarqueeDirector
   
   public void f()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null) {
+    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if (localValueAnimator == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    localValueAnimator.cancel();
     this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
   }
   
@@ -218,20 +223,22 @@ public class WSMarqueeDirector
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$OnTextContentListener != null)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$OnTextContentListener.a(paramView.getTag());
-        continue;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$OnTextContentListener != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$OnTextContentListener.b(paramView.getTag());
-        }
+    case 2131370694: 
+    case 2131370696: 
+      localOnTextContentListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$OnTextContentListener;
+      if (localOnTextContentListener == null) {
+        return;
       }
+      localOnTextContentListener.b(paramView.getTag());
+      return;
     }
+    WSMarqueeDirector.OnTextContentListener localOnTextContentListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSMarqueeDirector$OnTextContentListener;
+    if (localOnTextContentListener == null) {
+      return;
+    }
+    localOnTextContentListener.a(paramView.getTag());
   }
   
   public void onGlobalLayout()
@@ -253,7 +260,7 @@ public class WSMarqueeDirector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.WSMarqueeDirector
  * JD-Core Version:    0.7.0.1
  */

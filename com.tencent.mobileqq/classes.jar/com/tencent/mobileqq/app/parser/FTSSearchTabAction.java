@@ -5,6 +5,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
 import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -14,51 +15,53 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class FTSSearchTabAction
-  extends JumpActionBase
+  extends JumpAction
 {
   public FTSSearchTabAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super(paramQQAppInterface, paramContext);
   }
   
-  private boolean C()
+  private boolean c()
   {
+    boolean bool = NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication());
     int i = 0;
-    if (!NetworkUtil.g(BaseApplicationImpl.getApplication()))
+    if (!bool)
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694460, 1).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694425, 1).a();
       return false;
     }
+    String str;
     if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("params")) {
-      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("params");
+      str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("params");
+    } else {
+      str = "";
     }
     try
     {
-      String str2;
-      long[] arrayOfLong;
-      for (;;)
+      Object localObject2 = new JSONObject(new String(Base64Util.decode(str, 0)));
+      localObject1 = ((JSONObject)localObject2).optString("keyword");
+      JSONArray localJSONArray = ((JSONObject)localObject2).optJSONArray("groupmask");
+      long[] arrayOfLong = new long[localJSONArray.length()];
+      while (i < localJSONArray.length())
       {
-        localObject = new JSONObject(new String(Base64Util.decode(str1, 0)));
-        str2 = ((JSONObject)localObject).optString("keyword");
-        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("groupmask");
-        arrayOfLong = new long[localJSONArray.length()];
-        while (i < localJSONArray.length())
-        {
-          arrayOfLong[i] = localJSONArray.optLong(i);
-          i += 1;
-        }
-        str1 = "";
+        arrayOfLong[i] = localJSONArray.optLong(i);
+        i += 1;
       }
-      Object localObject = ((JSONObject)localObject).optString("groupname");
-      ActiveEntitySearchActivity.a(this.jdField_a_of_type_AndroidContentContext, str2, (String)localObject, arrayOfLong);
+      localObject2 = ((JSONObject)localObject2).optString("groupname");
+      ActiveEntitySearchActivity.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, (String)localObject2, arrayOfLong);
+      return true;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("FTSSearchTabActionQ.uniteSearch.", 2, "参数解析成json错误.  params=" + str1);
-      }
+      Object localObject1;
+      label158:
+      break label158;
     }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("参数解析成json错误.  params=");
+    ((StringBuilder)localObject1).append(str);
+    QLog.e("FTSSearchTabActionQ.uniteSearch.", 2, ((StringBuilder)localObject1).toString());
     return true;
   }
   
@@ -66,20 +69,23 @@ public class FTSSearchTabAction
   {
     try
     {
-      boolean bool = C();
+      boolean bool = c();
       return bool;
     }
     catch (Exception localException)
     {
-      QLog.e("FTSSearchTabAction", 1, "doAction error: " + localException.getMessage());
-      a("FTSSearchTabAction");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAction error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("FTSSearchTabAction", 1, localStringBuilder.toString());
+      b_("FTSSearchTabAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.FTSSearchTabAction
  * JD-Core Version:    0.7.0.1
  */

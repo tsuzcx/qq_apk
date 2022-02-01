@@ -15,15 +15,17 @@ class LebaSearchPluginManagerActivity$3
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      paramView = this.jdField_a_of_type_AndroidOsHandler;
+      paramView.sendMessageDelayed(paramView.obtainMessage(), 5L);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity.3
  * JD-Core Version:    0.7.0.1
  */

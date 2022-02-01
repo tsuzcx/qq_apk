@@ -17,9 +17,7 @@ class PanelInputDialogFragment$1
       this.this$0.changeState(1);
       return;
     }
-    switch (PanelInputDialogFragment.access$100(this.this$0))
-    {
-    default: 
+    if (PanelInputDialogFragment.access$100(this.this$0) != 1) {
       return;
     }
     this.this$0.changeState(0);
@@ -27,7 +25,7 @@ class PanelInputDialogFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.adapt.PanelInputDialogFragment.1
  * JD-Core Version:    0.7.0.1
  */

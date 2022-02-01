@@ -51,21 +51,18 @@ public class OOMHandler
     try
     {
       StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).collectPerformance(null, "report_resource_decode_OOM", false, 0L, 0L, paramOutOfMemoryError, "");
-      if (GlobalImageCache.a != null) {
-        GlobalImageCache.a.evictAll();
-      }
-      System.gc();
-      Thread.yield();
-      System.gc();
-      return true;
     }
     catch (Exception paramOutOfMemoryError)
     {
-      for (;;)
-      {
-        paramOutOfMemoryError.printStackTrace();
-      }
+      paramOutOfMemoryError.printStackTrace();
     }
+    if (GlobalImageCache.a != null) {
+      GlobalImageCache.a.evictAll();
+    }
+    System.gc();
+    Thread.yield();
+    System.gc();
+    return true;
   }
   
   public boolean onDecodeReturnNullBitmap(String paramString, boolean paramBoolean)
@@ -97,22 +94,19 @@ public class OOMHandler
     try
     {
       StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).collectPerformance(null, "report_resource_decode_OOM", false, 0L, 0L, paramString, "");
-      QLog.e("res-OOM", 1, localStringBuffer.toString());
-      if (GlobalImageCache.a != null) {
-        GlobalImageCache.a.evictAll();
-      }
-      System.gc();
-      Thread.yield();
-      System.gc();
-      return true;
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+    QLog.e("res-OOM", 1, localStringBuffer.toString());
+    if (GlobalImageCache.a != null) {
+      GlobalImageCache.a.evictAll();
+    }
+    System.gc();
+    Thread.yield();
+    System.gc();
+    return true;
   }
   
   public boolean onSecondDecodeOOM(OutOfMemoryError paramOutOfMemoryError, String paramString, boolean paramBoolean)
@@ -144,46 +138,47 @@ public class OOMHandler
     try
     {
       StatisticCollector.getInstance(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl).collectPerformance(null, "report_resource_decode_OOM", false, 0L, 0L, paramString, "");
-      QLog.e("res-OOM", 1, localStringBuffer.toString(), paramOutOfMemoryError);
-      if (GlobalImageCache.a != null) {
-        GlobalImageCache.a.evictAll();
-      }
-      System.gc();
-      Thread.yield();
-      System.gc();
-      return true;
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+    QLog.e("res-OOM", 1, localStringBuffer.toString(), paramOutOfMemoryError);
+    if (GlobalImageCache.a != null) {
+      GlobalImageCache.a.evictAll();
+    }
+    System.gc();
+    Thread.yield();
+    System.gc();
+    return true;
   }
   
   public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
   {
-    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
-    switch (paramInt1)
+    if ((1 == paramInt2) || (QLog.isColorLevel()))
     {
-    case 4: 
-    default: 
-      QLog.i(paramString1, paramInt2, paramString2, paramThrowable);
-      return;
-    case 5: 
-      QLog.w(paramString1, paramInt2, paramString2, paramThrowable);
-      return;
-    case 6: 
-      QLog.e(paramString1, paramInt2, paramString2, paramThrowable);
-      return;
+      if (paramInt1 != 3)
+      {
+        if (paramInt1 != 5)
+        {
+          if (paramInt1 != 6)
+          {
+            QLog.i(paramString1, paramInt2, paramString2, paramThrowable);
+            return;
+          }
+          QLog.e(paramString1, paramInt2, paramString2, paramThrowable);
+          return;
+        }
+        QLog.w(paramString1, paramInt2, paramString2, paramThrowable);
+        return;
+      }
+      QLog.d(paramString1, paramInt2, paramString2, paramThrowable);
     }
-    QLog.d(paramString1, paramInt2, paramString2, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.OOMHandler
  * JD-Core Version:    0.7.0.1
  */

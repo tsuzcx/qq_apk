@@ -18,8 +18,14 @@ public class VideoRenderCostTimeHelper
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (str != null) {
-        Logger.i("VideoRenderCostTimeHelper", "effectNode: " + str + ", cost time(us): " + paramMap.get(str));
+      if (str != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("effectNode: ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(", cost time(us): ");
+        localStringBuilder.append(paramMap.get(str));
+        Logger.i("VideoRenderCostTimeHelper", localStringBuilder.toString());
       }
     }
   }
@@ -33,7 +39,7 @@ public class VideoRenderCostTimeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.VideoRenderCostTimeHelper
  * JD-Core Version:    0.7.0.1
  */

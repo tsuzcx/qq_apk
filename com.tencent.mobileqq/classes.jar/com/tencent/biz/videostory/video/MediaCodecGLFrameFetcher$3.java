@@ -20,12 +20,13 @@ class MediaCodecGLFrameFetcher$3
     if ((MediaCodecGLFrameFetcher.a(this.this$0) != null) && (!MediaCodecGLFrameFetcher.a(this.this$0).isRecycled())) {
       MediaCodecGLFrameFetcher.a(this.this$0).recycle();
     }
-    MediaCodecGLFrameFetcher.a(this.this$0, GlUtil.a(MediaCodecGLFrameFetcher.c(this.this$0), MediaCodecGLFrameFetcher.a(this.this$0), MediaCodecGLFrameFetcher.b(this.this$0)));
+    MediaCodecGLFrameFetcher localMediaCodecGLFrameFetcher = this.this$0;
+    MediaCodecGLFrameFetcher.a(localMediaCodecGLFrameFetcher, GlUtil.a(MediaCodecGLFrameFetcher.c(localMediaCodecGLFrameFetcher), MediaCodecGLFrameFetcher.a(this.this$0), MediaCodecGLFrameFetcher.b(this.this$0)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.video.MediaCodecGLFrameFetcher.3
  * JD-Core Version:    0.7.0.1
  */

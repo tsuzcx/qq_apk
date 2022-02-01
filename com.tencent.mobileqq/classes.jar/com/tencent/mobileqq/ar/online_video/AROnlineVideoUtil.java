@@ -23,44 +23,61 @@ public class AROnlineVideoUtil
   
   public static Pair<Long, String> a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoUtil", 2, "parseFileSize, str=" + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    if (QLog.isColorLevel())
     {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseFileSize, str=");
+      localStringBuilder.append(paramString);
+      QLog.d("AROnlineVideoUtil", 2, localStringBuilder.toString());
+    }
+    boolean bool = TextUtils.isEmpty(paramString);
+    StringBuilder localStringBuilder = null;
+    if (bool) {
       return null;
-      paramString = paramString.split("\\|");
-      if ((paramString == null) || (paramString.length != 2)) {
-        continue;
+    }
+    String[] arrayOfString = paramString.split("\\|");
+    paramString = localStringBuilder;
+    if (arrayOfString != null)
+    {
+      if (arrayOfString.length != 2) {
+        return null;
       }
+      long l;
       try
       {
-        l = Long.parseLong(paramString[0]);
-        if (l == -1L) {
-          continue;
-        }
-        return new Pair(Long.valueOf(l), paramString[1]);
+        l = Long.parseLong(arrayOfString[0]);
       }
-      catch (Exception localException)
+      catch (Exception paramString)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            localException.printStackTrace();
-          }
-          long l = -1L;
+        if (QLog.isColorLevel()) {
+          paramString.printStackTrace();
         }
+        l = -1L;
       }
+      if (l == -1L) {
+        return null;
+      }
+      paramString = new Pair(Long.valueOf(l), arrayOfString[1]);
     }
+    return paramString;
   }
   
   private static String a()
   {
-    if (SystemUtil.a()) {
-      return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "iar" + File.separator);
+    if (SystemUtil.a())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(AppConstants.SDCARD_PATH);
+      localStringBuilder.append("iar");
+      localStringBuilder.append(File.separator);
+      return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
     }
-    return BaseApplicationImpl.getApplication().getFilesDir() + File.separator + "iar" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getFilesDir());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("iar");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   public static String a(String paramString)
@@ -68,7 +85,10 @@ public class AROnlineVideoUtil
     try
     {
       paramString = MD5Utils.toMD5(paramString);
-      paramString = a() + paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a());
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
       return paramString;
     }
     catch (Exception paramString)
@@ -93,53 +113,66 @@ public class AROnlineVideoUtil
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
+    int i = NetworkUtil.getNetworkType(BaseApplication.getContext());
     boolean bool = true;
-    if (NetworkUtil.b(BaseApplication.getContext()) == 1) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AROnlineVideoUtil", 2, "preload, isWifi=" + bool);
-      }
-      if (bool) {}
-      return;
+    if (i != 1) {
       bool = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("preload, isWifi=");
+      paramContext.append(bool);
+      QLog.d("AROnlineVideoUtil", 2, paramContext.toString());
     }
   }
   
   public static void a(Context paramContext, ArVideoResourceInfo paramArVideoResourceInfo)
   {
-    boolean bool = true;
-    if ((paramArVideoResourceInfo == null) || (TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString)) || (paramArVideoResourceInfo.jdField_d_of_type_Int != 4)) {
-      return;
-    }
-    if (NetworkUtil.b(BaseApplication.getContext()) == 1) {}
-    for (;;)
+    if ((paramArVideoResourceInfo != null) && (!TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AROnlineVideoUtil", 2, "preload for multi, isWifi=" + bool);
+      if (paramArVideoResourceInfo.jdField_d_of_type_Int != 4) {
+        return;
+      }
+      int i = NetworkUtil.getNetworkType(BaseApplication.getContext());
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("preload for multi, isWifi=");
+        paramContext.append(bool);
+        QLog.d("AROnlineVideoUtil", 2, paramContext.toString());
       }
       if (!bool) {
-        break;
+        return;
       }
       if (a == null) {
         a = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getApplication(), 108);
       }
-      if (TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString)) {
-        break;
+      if (!TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString))
+      {
+        paramContext = paramArVideoResourceInfo.jdField_d_of_type_JavaLangString;
+        String str = a(paramContext);
+        bool = a(str);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("preload for multi, url=");
+          localStringBuilder.append(paramContext);
+          localStringBuilder.append(", videoPath=");
+          localStringBuilder.append(str);
+          localStringBuilder.append(", isCached=");
+          localStringBuilder.append(bool);
+          QLog.d("AROnlineVideoUtil", 2, localStringBuilder.toString());
+        }
+        paramContext = SuperPlayerFactory.createVideoInfoForUrl(paramContext, 101, MD5Utils.toMD5(paramContext));
+        if (paramArVideoResourceInfo.a > 4L) {
+          a.startPreDownload(paramContext, paramArVideoResourceInfo.a / 4L);
+        }
       }
-      paramContext = paramArVideoResourceInfo.jdField_d_of_type_JavaLangString;
-      String str = a(paramContext);
-      bool = a(str);
-      if (QLog.isColorLevel()) {
-        QLog.d("AROnlineVideoUtil", 2, "preload for multi, url=" + paramContext + ", videoPath=" + str + ", isCached=" + bool);
-      }
-      paramContext = SuperPlayerFactory.createVideoInfoForUrl(paramContext, 101, MD5Utils.toMD5(paramContext));
-      if (paramArVideoResourceInfo.a <= 4L) {
-        break;
-      }
-      a.startPreDownload(paramContext, paramArVideoResourceInfo.a / 4L);
-      return;
-      bool = false;
     }
   }
   
@@ -151,7 +184,7 @@ public class AROnlineVideoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.online_video.AROnlineVideoUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -12,18 +12,20 @@ class ColorNoteSmallScreenRelativeLayout$4
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = (int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * (ColorNoteSmallScreenRelativeLayout.b(this.b) / 2));
-    int j = ColorNoteSmallScreenRelativeLayout.a(this.b, this.b.e());
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)(ColorNoteSmallScreenRelativeLayout.b(this.b) / 2 * f);
+    paramValueAnimator = this.b;
+    int j = ColorNoteSmallScreenRelativeLayout.a(paramValueAnimator, paramValueAnimator.e());
     int k = ColorNoteSmallScreenRelativeLayout.c(this.b);
     if (ColorNoteSmallScreenRelativeLayout.a(this.b) != null) {
-      ColorNoteSmallScreenRelativeLayout.a(this.b).a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, this.jdField_a_of_type_AndroidGraphicsPoint.x - i, this.jdField_a_of_type_AndroidGraphicsPoint.y, j + this.jdField_a_of_type_AndroidGraphicsPoint.x - i, k + this.jdField_a_of_type_AndroidGraphicsPoint.y);
+      ColorNoteSmallScreenRelativeLayout.a(this.b).a(this.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout, this.jdField_a_of_type_AndroidGraphicsPoint.x - i, this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x + j - i, this.jdField_a_of_type_AndroidGraphicsPoint.y + k);
     }
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = (this.jdField_a_of_type_Int + i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.4
  * JD-Core Version:    0.7.0.1
  */

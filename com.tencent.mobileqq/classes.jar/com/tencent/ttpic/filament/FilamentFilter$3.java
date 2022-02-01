@@ -21,34 +21,42 @@ class FilamentFilter$3
       while (localIterator.hasNext())
       {
         GLBItemJava localGLBItemJava = (GLBItemJava)localIterator.next();
-        String str = FileUtils.getPostfix(localGLBItemJava.path);
-        Object localObject = "";
-        if ((str.equals(".glb")) || (str.equals(".dat")))
+        Object localObject1 = FileUtils.getPostfix(localGLBItemJava.path);
+        boolean bool = ((String)localObject1).equals(".glb");
+        String str = ".datf";
+        if ((!bool) && (!((String)localObject1).equals(".dat")))
         {
-          str = ".glb";
-          localObject = ".dat";
-        }
-        for (;;)
-        {
-          Log.v(FilamentFilter.access$800(), "start loading file" + localGLBItemJava.path + str);
-          localObject = FilamentUtil.loadAndTryDecryptGlb(localGLBItemJava.path, str, (String)localObject);
-          if ((localObject == null) || (localObject.length <= 0)) {
-            break label222;
-          }
-          FilamentFilter.access$900(this.this$0).put(localGLBItemJava, localObject);
-          break;
-          if ((str.equals(".gltf")) || (str.equals(".datf")))
+          if ((!((String)localObject1).equals(".gltf")) && (!((String)localObject1).equals(".datf")))
           {
-            str = ".gltf";
-            localObject = ".datf";
+            str = FilamentFilter.access$800();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("run: Undefined RES_POSTFIX: ");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            Log.e(str, ((StringBuilder)localObject2).toString());
+            str = "";
           }
           else
           {
-            Log.e(FilamentFilter.access$800(), "run: Undefined RES_POSTFIX: " + str);
+            localObject1 = ".gltf";
           }
         }
-        label222:
-        Log.e(FilamentFilter.access$800(), "Fail to load glb file. May crash later");
+        else
+        {
+          localObject1 = ".glb";
+          str = ".dat";
+        }
+        Object localObject2 = FilamentFilter.access$800();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("start loading file");
+        localStringBuilder.append(localGLBItemJava.path);
+        localStringBuilder.append((String)localObject1);
+        Log.v((String)localObject2, localStringBuilder.toString());
+        localObject1 = FilamentUtil.loadAndTryDecryptGlb(localGLBItemJava.path, (String)localObject1, str);
+        if ((localObject1 != null) && (localObject1.length > 0)) {
+          FilamentFilter.access$900(this.this$0).put(localGLBItemJava, localObject1);
+        } else {
+          Log.e(FilamentFilter.access$800(), "Fail to load glb file. May crash later");
+        }
       }
     }
     FilamentFilter.access$1102(this.this$0, true);
@@ -57,7 +65,7 @@ class FilamentFilter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filament.FilamentFilter.3
  * JD-Core Version:    0.7.0.1
  */

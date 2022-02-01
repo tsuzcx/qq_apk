@@ -17,19 +17,22 @@ public class HippyRootViewParams$Builder
   
   public HippyRootViewParams build()
   {
-    if (this.mActivity == null) {
-      throw new IllegalArgumentException("HippyInstance must set activity!");
-    }
-    if (TextUtils.isEmpty(this.mName)) {
+    if (this.mActivity != null)
+    {
+      if (!TextUtils.isEmpty(this.mName))
+      {
+        if (this.mLaunchParams == null) {
+          this.mLaunchParams = new HippyMap();
+        }
+        HippyBundleLoader localHippyBundleLoader = this.mBundleLoader;
+        if (localHippyBundleLoader != null) {
+          this.mLaunchParams.pushString("sourcePath", localHippyBundleLoader.getPath());
+        }
+        return new HippyRootViewParams(this.mName, this.mBundleLoader, this.mActivity, this.mLaunchParams, this.mNativeParams, this.mHippyInstanceContext, null);
+      }
       throw new IllegalArgumentException("HippyInstance must set name!");
     }
-    if (this.mLaunchParams == null) {
-      this.mLaunchParams = new HippyMap();
-    }
-    if (this.mBundleLoader != null) {
-      this.mLaunchParams.pushString("sourcePath", this.mBundleLoader.getPath());
-    }
-    return new HippyRootViewParams(this.mName, this.mBundleLoader, this.mActivity, this.mLaunchParams, this.mNativeParams, this.mHippyInstanceContext, null);
+    throw new IllegalArgumentException("HippyInstance must set activity!");
   }
   
   public Builder setActivity(Activity paramActivity)
@@ -70,7 +73,7 @@ public class HippyRootViewParams$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyRootViewParams.Builder
  * JD-Core Version:    0.7.0.1
  */

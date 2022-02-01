@@ -50,12 +50,12 @@ public final class CacheDataSource
     this.blockOnCache = paramBoolean1;
     this.ignoreCacheOnError = paramBoolean2;
     this.upstreamDataSource = paramDataSource1;
-    if (paramDataSink != null) {}
-    for (this.cacheWriteDataSource = new TeeDataSource(paramDataSource1, paramDataSink);; this.cacheWriteDataSource = null)
-    {
-      this.eventListener = paramEventListener;
-      return;
+    if (paramDataSink != null) {
+      this.cacheWriteDataSource = new TeeDataSource(paramDataSource1, paramDataSink);
+    } else {
+      this.cacheWriteDataSource = null;
     }
+    this.eventListener = paramEventListener;
   }
   
   public CacheDataSource(Cache paramCache, DataSource paramDataSource, boolean paramBoolean1, boolean paramBoolean2)
@@ -70,43 +70,64 @@ public final class CacheDataSource
   
   private void closeCurrentSource()
   {
-    if (this.currentDataSource == null) {}
-    for (;;)
-    {
+    Object localObject1 = this.currentDataSource;
+    if (localObject1 == null) {
       return;
-      try
+    }
+    try
+    {
+      ((DataSource)localObject1).close();
+      this.currentDataSource = null;
+      localObject1 = this.lockedSpan;
+      if (localObject1 != null)
       {
-        this.currentDataSource.close();
-        this.currentDataSource = null;
-        return;
+        this.cache.releaseHoleSpan((CacheSpan)localObject1);
+        this.lockedSpan = null;
       }
-      finally
+      return;
+    }
+    finally
+    {
+      CacheSpan localCacheSpan = this.lockedSpan;
+      if (localCacheSpan != null)
       {
-        if (this.lockedSpan != null)
-        {
-          this.cache.releaseHoleSpan(this.lockedSpan);
-          this.lockedSpan = null;
-        }
+        this.cache.releaseHoleSpan(localCacheSpan);
+        this.lockedSpan = null;
       }
     }
   }
   
   private void handleBeforeThrow(IOException paramIOException)
   {
-    PlayerUtils.log(3, getLogTag(), "handleBeforeThrow " + paramIOException + ",ignoreCacheOnError=" + this.ignoreCacheOnError + ",currentDataSource=" + this.currentDataSource);
+    String str = getLogTag();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleBeforeThrow ");
+    localStringBuilder.append(paramIOException);
+    localStringBuilder.append(",ignoreCacheOnError=");
+    localStringBuilder.append(this.ignoreCacheOnError);
+    localStringBuilder.append(",currentDataSource=");
+    localStringBuilder.append(this.currentDataSource);
+    PlayerUtils.log(3, str, localStringBuilder.toString());
     if ((this.ignoreCacheOnError) && (this.currentDataSource == this.cacheReadDataSource))
     {
-      PlayerUtils.log(4, getLogTag(), "handleBeforeThrow currentDataSource=" + this.currentDataSource + ",exception=" + paramIOException);
+      str = getLogTag();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleBeforeThrow currentDataSource=");
+      localStringBuilder.append(this.currentDataSource);
+      localStringBuilder.append(",exception=");
+      localStringBuilder.append(paramIOException);
+      PlayerUtils.log(4, str, localStringBuilder.toString());
       this.ignoreCache = true;
     }
   }
   
   private void notifyBytesRead()
   {
-    if (this.eventListener != null)
+    CacheDataSource.EventListener localEventListener = this.eventListener;
+    if (localEventListener != null)
     {
       if (this.priority == 90) {
-        this.eventListener.downloadSizeAndDuration(this.uuid, this.totalUpstreamBytesRead, this.totalUpstreamReadCost, this.totalLength, this.totalCachedBytesRead);
+        localEventListener.downloadSizeAndDuration(this.uuid, this.totalUpstreamBytesRead, this.totalUpstreamReadCost, this.totalLength, this.totalCachedBytesRead);
       }
       this.totalUpstreamBytesRead = 0;
       this.totalUpstreamReadCost = 0L;
@@ -120,113 +141,112 @@ public final class CacheDataSource
   
   private long openNextSource()
   {
-    Object localObject;
-    long l1;
-    for (;;)
+    try
     {
-      try
+      if (this.ignoreCache) {
+        localObject1 = null;
+      } else if (this.blockOnCache) {
+        localObject1 = this.cache.startReadWrite(this.key, this.readPosition);
+      } else {
+        localObject1 = this.cache.startReadWriteNonBlocking(this.key, this.readPosition);
+      }
+      if (localObject1 == null)
       {
-        CacheSpan localCacheSpan;
-        if (this.ignoreCache)
-        {
-          localCacheSpan = null;
-          if (localCacheSpan == null)
-          {
-            this.currentDataSource = this.upstreamDataSource;
-            localObject = new DataSpec(this.uri, this.readPosition, this.readPosition, this.bytesRemaining, this.key, this.flags, this.uuid, this.priority);
-            l1 = this.currentDataSource.open((DataSpec)localObject);
-            if (((this.currentDataSource instanceof HttpDataSource)) && (this.currentDataSource.getTotalLength() != -1L) && (((DataSpec)localObject).position >= this.currentDataSource.getTotalLength() - 1L)) {
-              PlayerUtils.log(6, getLogTag(), "read position out of bound");
-            }
-            if ((this.bytesRemaining == -1L) && (this.currentDataSource.getTotalLength() != -1L))
-            {
-              this.bytesRemaining = (this.currentDataSource.getTotalLength() - this.readPosition);
-              PlayerUtils.log(4, getLogTag(), "init bytesRemaining " + this.bytesRemaining + ", readPosition=" + this.readPosition + ",totalLength=" + this.currentDataSource.getTotalLength());
-            }
-            this.bytesRemaining = Math.max(0L, Math.min(this.bytesRemaining, getTotalLength()));
-            this.dataSourceReadStart = false;
-            return l1;
-          }
-        }
-        else
-        {
-          if (this.blockOnCache)
-          {
-            localCacheSpan = this.cache.startReadWrite(this.key, this.readPosition);
-            continue;
-          }
-          localCacheSpan = this.cache.startReadWriteNonBlocking(this.key, this.readPosition);
-          continue;
-        }
-        if (!localCacheSpan.isCached) {
-          break;
-        }
-        localObject = Uri.fromFile(localCacheSpan.file);
-        l1 = this.readPosition - localCacheSpan.position;
+        this.currentDataSource = this.upstreamDataSource;
+        localObject1 = new DataSpec(this.uri, this.readPosition, this.readPosition, this.bytesRemaining, this.key, this.flags, this.uuid, this.priority);
+        break label509;
+      }
+      if (((CacheSpan)localObject1).isCached)
+      {
+        localObject3 = Uri.fromFile(((CacheSpan)localObject1).file);
+        l1 = this.readPosition - ((CacheSpan)localObject1).position;
         if (this.bytesRemaining == -1L)
         {
-          this.bytesRemaining = (localCacheSpan.totalLength - this.readPosition);
-          long l2 = Math.min(localCacheSpan.length - l1, this.bytesRemaining);
-          DataSpec localDataSpec = new DataSpec((Uri)localObject, this.readPosition, l1, l2, this.key, this.flags, this.uuid, this.priority);
-          this.currentDataSource = this.cacheReadDataSource;
-          localObject = localDataSpec;
-          if (this.eventListener == null) {
-            continue;
-          }
-          localObject = localDataSpec;
-          if (localCacheSpan.file == null) {
-            continue;
-          }
-          localObject = localDataSpec;
-          if (localCacheSpan.file.lastModified() >= 628358400L) {
-            continue;
-          }
-          this.eventListener.onCachedAttrRead(localCacheSpan.file.lastModified());
-          localObject = localDataSpec;
-          continue;
+          this.bytesRemaining = (((CacheSpan)localObject1).totalLength - this.readPosition);
         }
-        if (this.bytesRemaining <= localInterruptedException.totalLength - this.readPosition) {
-          continue;
+        else if (this.bytesRemaining > ((CacheSpan)localObject1).totalLength - this.readPosition)
+        {
+          String str = getLogTag();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("fix bytesRemaining. max=");
+          localStringBuilder.append(((CacheSpan)localObject1).totalLength - this.readPosition);
+          localStringBuilder.append(" current=");
+          localStringBuilder.append(this.bytesRemaining);
+          PlayerUtils.log(5, str, localStringBuilder.toString());
+          this.bytesRemaining = (((CacheSpan)localObject1).totalLength - this.readPosition);
         }
+        long l2 = Math.min(((CacheSpan)localObject1).length - l1, this.bytesRemaining);
+        localObject3 = new DataSpec((Uri)localObject3, this.readPosition, l1, l2, this.key, this.flags, this.uuid, this.priority);
+        this.currentDataSource = this.cacheReadDataSource;
+        if ((this.eventListener == null) || (((CacheSpan)localObject1).file == null) || (((CacheSpan)localObject1).file.lastModified() >= 628358400L)) {
+          break label760;
+        }
+        this.eventListener.onCachedAttrRead(((CacheSpan)localObject1).file.lastModified());
+        break label760;
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        throw new RuntimeException(localInterruptedException);
+      this.lockedSpan = ((CacheSpan)localObject1);
+      if (((CacheSpan)localObject1).isOpenEnded()) {
+        l1 = this.bytesRemaining;
+      } else if (this.bytesRemaining != -1L) {
+        l1 = Math.min(((CacheSpan)localObject1).length, this.bytesRemaining);
+      } else {
+        l1 = ((CacheSpan)localObject1).length;
       }
-      PlayerUtils.log(5, getLogTag(), "fix bytesRemaining. max=" + (localInterruptedException.totalLength - this.readPosition) + " current=" + this.bytesRemaining);
-      this.bytesRemaining = (localInterruptedException.totalLength - this.readPosition);
     }
-    this.lockedSpan = localInterruptedException;
-    if (localInterruptedException.isOpenEnded())
+    catch (InterruptedException localInterruptedException)
     {
-      l1 = this.bytesRemaining;
-      label606:
-      localObject = new DataSpec(this.uri, this.readPosition, this.readPosition, l1, this.key, this.flags, this.uuid, this.priority);
-      if (this.cacheWriteDataSource == null) {
-        break label702;
-      }
-    }
-    label702:
-    for (DataSource localDataSource = this.cacheWriteDataSource;; localDataSource = this.upstreamDataSource)
-    {
-      this.currentDataSource = localDataSource;
-      break;
-      if (this.bytesRemaining != -1L)
+      for (;;)
       {
-        l1 = Math.min(localDataSource.length, this.bytesRemaining);
-        break label606;
+        Object localObject1;
+        Object localObject3;
+        long l1;
+        label509:
+        Object localObject2 = new RuntimeException(localInterruptedException);
+        for (;;)
+        {
+          throw ((Throwable)localObject2);
+        }
+        label760:
+        localObject2 = localObject3;
       }
-      l1 = localDataSource.length;
-      break label606;
     }
+    localObject3 = new DataSpec(this.uri, this.readPosition, this.readPosition, l1, this.key, this.flags, this.uuid, this.priority);
+    if (this.cacheWriteDataSource != null) {
+      localObject1 = this.cacheWriteDataSource;
+    } else {
+      localObject1 = this.upstreamDataSource;
+    }
+    this.currentDataSource = ((DataSource)localObject1);
+    localObject1 = localObject3;
+    l1 = this.currentDataSource.open((DataSpec)localObject1);
+    if (((this.currentDataSource instanceof HttpDataSource)) && (this.currentDataSource.getTotalLength() != -1L) && (((DataSpec)localObject1).position >= this.currentDataSource.getTotalLength() - 1L)) {
+      PlayerUtils.log(6, getLogTag(), "read position out of bound");
+    }
+    if ((this.bytesRemaining == -1L) && (this.currentDataSource.getTotalLength() != -1L))
+    {
+      this.bytesRemaining = (this.currentDataSource.getTotalLength() - this.readPosition);
+      localObject1 = getLogTag();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("init bytesRemaining ");
+      ((StringBuilder)localObject3).append(this.bytesRemaining);
+      ((StringBuilder)localObject3).append(", readPosition=");
+      ((StringBuilder)localObject3).append(this.readPosition);
+      ((StringBuilder)localObject3).append(",totalLength=");
+      ((StringBuilder)localObject3).append(this.currentDataSource.getTotalLength());
+      PlayerUtils.log(4, (String)localObject1, ((StringBuilder)localObject3).toString());
+    }
+    this.bytesRemaining = Math.max(0L, Math.min(this.bytesRemaining, getTotalLength()));
+    this.dataSourceReadStart = false;
+    return l1;
   }
   
   public long available()
   {
-    if (this.currentDataSource == null) {
+    DataSource localDataSource = this.currentDataSource;
+    if (localDataSource == null) {
       return 0L;
     }
-    return this.currentDataSource.available();
+    return localDataSource.available();
   }
   
   public void close()
@@ -238,43 +258,65 @@ public final class CacheDataSource
     }
     catch (IOException localIOException)
     {
-      if (!(this.currentDataSource instanceof FileDataSource)) {
-        break label55;
+      String str;
+      StringBuilder localStringBuilder;
+      if ((this.currentDataSource instanceof FileDataSource))
+      {
+        str = getLogTag();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("close cache error ");
+        localStringBuilder.append(localIOException.toString());
+        PlayerUtils.log(6, str, localStringBuilder.toString());
       }
-    }
-    PlayerUtils.log(6, getLogTag(), "close cache error " + localIOException.toString());
-    for (;;)
-    {
+      else
+      {
+        str = getLogTag();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("close error ");
+        localStringBuilder.append(localIOException.toString());
+        PlayerUtils.log(6, str, localStringBuilder.toString());
+      }
       handleBeforeThrow(localIOException);
       throw localIOException;
-      label55:
-      PlayerUtils.log(6, getLogTag(), "close error " + localIOException.toString());
     }
   }
   
   public FileType getFileType()
   {
-    if (this.currentDataSource == null) {
+    Object localObject = this.currentDataSource;
+    if (localObject == null) {
       return FileType.UNKNOWN;
     }
-    if ((this.currentDataSource == this.cacheReadDataSource) && (this.cache != null)) {
-      return this.cache.getContentType(this.key);
+    if (localObject == this.cacheReadDataSource)
+    {
+      localObject = this.cache;
+      if (localObject != null) {
+        return ((Cache)localObject).getContentType(this.key);
+      }
     }
     return this.currentDataSource.getFileType();
   }
   
   public String getLogTag()
   {
-    return this.extraLogTag + "CacheDataSource";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.extraLogTag);
+    localStringBuilder.append("CacheDataSource");
+    return localStringBuilder.toString();
   }
   
   public long getTotalLength()
   {
-    if (this.currentDataSource == null) {
+    Object localObject = this.currentDataSource;
+    if (localObject == null) {
       return -1L;
     }
-    if ((this.currentDataSource == this.cacheReadDataSource) && (this.cache != null)) {
-      return this.cache.getTotalLength(this.key);
+    if (localObject == this.cacheReadDataSource)
+    {
+      localObject = this.cache;
+      if (localObject != null) {
+        return ((Cache)localObject).getTotalLength(this.key);
+      }
     }
     return this.currentDataSource.getTotalLength();
   }
@@ -286,8 +328,6 @@ public final class CacheDataSource
   
   public long open(DataSpec paramDataSpec)
   {
-    long l1;
-    long l2;
     try
     {
       this.uri = paramDataSpec.uri;
@@ -305,35 +345,45 @@ public final class CacheDataSource
     }
     catch (IOException paramDataSpec)
     {
-      if ((this.currentDataSource instanceof FileDataSource)) {
-        PlayerUtils.log(6, getLogTag(), "open cache error " + paramDataSpec.toString());
-      }
-      for (;;)
+      long l1;
+      long l2;
+      String str;
+      StringBuilder localStringBuilder;
+      if ((this.currentDataSource instanceof FileDataSource))
       {
-        handleBeforeThrow(paramDataSpec);
-        if (this.ignoreCache) {
-          break;
+        str = getLogTag();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("open cache error ");
+        localStringBuilder.append(paramDataSpec.toString());
+        PlayerUtils.log(6, str, localStringBuilder.toString());
+      }
+      else
+      {
+        str = getLogTag();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("open error ");
+        localStringBuilder.append(paramDataSpec.toString());
+        PlayerUtils.log(6, str, localStringBuilder.toString());
+      }
+      handleBeforeThrow(paramDataSpec);
+      if (this.ignoreCache)
+      {
+        try
+        {
+          closeCurrentSource();
         }
-        throw paramDataSpec;
-        PlayerUtils.log(6, getLogTag(), "open error " + paramDataSpec.toString());
+        catch (Exception paramDataSpec)
+        {
+          PlayerUtils.log(5, getLogTag(), "failed on closeCurrentSource, shouldn't be a problem", paramDataSpec);
+        }
+        PlayerUtils.log(6, getLogTag(), "open cache error try reopen without cache");
+        l1 = System.currentTimeMillis();
+        l2 = openNextSource();
+        this.totalLength = getTotalLength();
+        this.openCost = (System.currentTimeMillis() - l1);
+        return l2;
       }
-    }
-    try
-    {
-      closeCurrentSource();
-      PlayerUtils.log(6, getLogTag(), "open cache error try reopen without cache");
-      l1 = System.currentTimeMillis();
-      l2 = openNextSource();
-      this.totalLength = getTotalLength();
-      this.openCost = (System.currentTimeMillis() - l1);
-      return l2;
-    }
-    catch (Exception paramDataSpec)
-    {
-      for (;;)
-      {
-        PlayerUtils.log(5, getLogTag(), "failed on closeCurrentSource, shouldn't be a problem", paramDataSpec);
-      }
+      throw paramDataSpec;
     }
   }
   
@@ -341,57 +391,87 @@ public final class CacheDataSource
   {
     try
     {
-      if ((!this.dataSourceReadStart) && ((this.currentDataSource instanceof FileDataSource)) && (PlayerConfig.g().isDebugVersion())) {
-        PlayerUtils.log(4, getLogTag(), "read from cache " + ((FileDataSource)this.currentDataSource).getUri() + " filesize=" + ((FileDataSource)this.currentDataSource).available());
+      if ((!this.dataSourceReadStart) && ((this.currentDataSource instanceof FileDataSource)) && (PlayerConfig.g().isDebugVersion()))
+      {
+        str = getLogTag();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("read from cache ");
+        localStringBuilder.append(((FileDataSource)this.currentDataSource).getUri());
+        localStringBuilder.append(" filesize=");
+        localStringBuilder.append(((FileDataSource)this.currentDataSource).available());
+        PlayerUtils.log(4, str, localStringBuilder.toString());
       }
-      long l = System.currentTimeMillis();
-      int i = this.currentDataSource.read(paramArrayOfByte, paramInt1, paramInt2);
-      l = System.currentTimeMillis() - l;
+      long l1 = System.currentTimeMillis();
+      int j = this.currentDataSource.read(paramArrayOfByte, paramInt1, paramInt2);
+      l1 = System.currentTimeMillis() - l1;
       if (!this.dataSourceReadStart)
       {
         if ((this.currentDataSource != this.cacheReadDataSource) && (PlayerConfig.g().getVideoReporter() != null) && (this.priority == 90) && (URLUtil.isNetworkUrl(this.uri.toString())) && (this.eventListener != null)) {
-          this.eventListener.onHttpUpstreamServerCost(this.uuid, this.openCost, this.openCost, l);
+          this.eventListener.onHttpUpstreamServerCost(this.uuid, this.openCost, this.openCost, l1);
         }
         this.dataSourceReadStart = true;
       }
-      if (i >= 0)
+      int i;
+      if (j >= 0)
       {
-        if (this.currentDataSource == this.cacheReadDataSource) {
-          this.totalCachedBytesRead += i;
-        }
-        for (;;)
+        if (this.currentDataSource == this.cacheReadDataSource)
         {
-          this.readPosition += i;
-          if (this.bytesRemaining == -1L) {
-            break;
+          this.totalCachedBytesRead += j;
+        }
+        else
+        {
+          this.totalUpstreamBytesRead += j;
+          this.totalUpstreamReadCost += l1;
+        }
+        l1 = this.readPosition;
+        long l2 = j;
+        this.readPosition = (l1 + l2);
+        i = j;
+        if (this.bytesRemaining != -1L)
+        {
+          this.bytesRemaining -= l2;
+          return j;
+        }
+      }
+      else
+      {
+        notifyBytesRead();
+        closeCurrentSource();
+        i = j;
+        if (this.bytesRemaining > 0L)
+        {
+          i = j;
+          if (this.bytesRemaining != -1L)
+          {
+            openNextSource();
+            i = read(paramArrayOfByte, paramInt1, paramInt2);
           }
-          this.bytesRemaining -= i;
-          break;
-          this.totalUpstreamBytesRead += i;
-          this.totalUpstreamReadCost += l;
         }
       }
       return i;
     }
     catch (IOException paramArrayOfByte)
     {
-      if ((this.currentDataSource instanceof FileDataSource)) {
-        PlayerUtils.log(6, getLogTag(), "read cache error " + paramArrayOfByte.toString());
-      }
-      for (;;)
+      String str;
+      StringBuilder localStringBuilder;
+      if ((this.currentDataSource instanceof FileDataSource))
       {
-        handleBeforeThrow(paramArrayOfByte);
-        throw paramArrayOfByte;
-        notifyBytesRead();
-        closeCurrentSource();
-        if ((this.bytesRemaining <= 0L) || (this.bytesRemaining == -1L)) {
-          break;
-        }
-        openNextSource();
-        paramInt1 = read(paramArrayOfByte, paramInt1, paramInt2);
-        return paramInt1;
-        PlayerUtils.log(6, getLogTag(), "read error " + paramArrayOfByte.toString());
+        str = getLogTag();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("read cache error ");
+        localStringBuilder.append(paramArrayOfByte.toString());
+        PlayerUtils.log(6, str, localStringBuilder.toString());
       }
+      else
+      {
+        str = getLogTag();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("read error ");
+        localStringBuilder.append(paramArrayOfByte.toString());
+        PlayerUtils.log(6, str, localStringBuilder.toString());
+      }
+      handleBeforeThrow(paramArrayOfByte);
+      throw paramArrayOfByte;
     }
   }
   
@@ -402,7 +482,7 @@ public final class CacheDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.cache.CacheDataSource
  * JD-Core Version:    0.7.0.1
  */

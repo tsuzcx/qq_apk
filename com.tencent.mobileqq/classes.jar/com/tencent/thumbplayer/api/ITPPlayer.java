@@ -5,6 +5,7 @@ import android.os.ParcelFileDescriptor;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapSeekMode;
 import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapSwitchDefMode;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
@@ -12,6 +13,7 @@ import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.api.report.ITPBusinessReportManager;
 import com.tencent.thumbplayer.api.resourceloader.ITPAssetResourceLoaderListener;
+import com.tencent.thumbplayer.api.richmedia.ITPRichMediaSynchronizer;
 import com.tencent.thumbplayer.log.TPLoggerContext;
 import com.tencent.thumbplayer.tplayer.plugins.ITPPluginBase;
 import com.tencent.thumbplayer.tplayer.plugins.ITPPluginManager;
@@ -33,6 +35,8 @@ public abstract interface ITPPlayer
   public static final int TP_PLAYER_SEEK_MODE_NEXT_KFRAME = 2;
   @TPNativeKeyMap.MapSwitchDefMode(3)
   public static final int TP_PLAYER_SWITCH_DEF_AFTER_ALL_RESOURCE_CONSUME = 3;
+  @TPNativeKeyMap.MapSwitchDefMode(0)
+  public static final int TP_PLAYER_SWITCH_DEF_DEFAULT = 0;
   @TPNativeKeyMap.MapSwitchDefMode(2)
   public static final int TP_PLAYER_SWITCH_DEF_FAST_WITH_KEEP_NO_BUFFERING = 2;
   @TPNativeKeyMap.MapSwitchDefMode(1)
@@ -158,6 +162,8 @@ public abstract interface ITPPlayer
   
   public abstract void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam);
   
+  public abstract void setRichMediaSynchronizer(@Nullable ITPRichMediaSynchronizer paramITPRichMediaSynchronizer);
+  
   public abstract void setSurface(Surface paramSurface);
   
   public abstract void setSurfaceHolder(SurfaceHolder paramSurfaceHolder);
@@ -180,11 +186,15 @@ public abstract interface ITPPlayer
   
   public abstract void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt);
   
+  public abstract void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, Map<String, String> paramMap);
+  
+  public abstract void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, Map<String, String> paramMap, int paramInt);
+  
   public abstract void updateLoggerContext(TPLoggerContext paramTPLoggerContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.ITPPlayer
  * JD-Core Version:    0.7.0.1
  */

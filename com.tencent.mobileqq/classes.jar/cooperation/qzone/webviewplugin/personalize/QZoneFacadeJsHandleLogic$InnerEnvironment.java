@@ -14,36 +14,34 @@ class QZoneFacadeJsHandleLogic$InnerEnvironment
     try
     {
       String str = QZoneFilePath.ROOT_QZONE_PATH;
-      File localFile1 = new File(str);
-      boolean bool = localFile1.exists();
-      if (!bool) {
+      File localFile = new File(str);
+      boolean bool = localFile.exists();
+      if (!bool)
+      {
         try
         {
           new File(str, ".nomedia").createNewFile();
-          if (!localFile1.mkdirs())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("InnerEnvironment", 2, "Unable to create external cache directory");
-            }
-            return null;
-          }
         }
         catch (IOException localIOException)
         {
-          for (;;)
-          {
-            localIOException.printStackTrace();
+          localIOException.printStackTrace();
+        }
+        if (!localFile.mkdirs())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("InnerEnvironment", 2, "Unable to create external cache directory");
           }
+          return null;
         }
       }
+      return localFile;
     }
     finally {}
-    return localFile2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneFacadeJsHandleLogic.InnerEnvironment
  * JD-Core Version:    0.7.0.1
  */

@@ -23,29 +23,46 @@ public class PushReportController$PushReportItem
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.a).append("|");
-    localStringBuffer.append(this.b).append("|");
-    localStringBuffer.append(this.c).append("|");
-    localStringBuffer.append(this.d).append("|");
-    localStringBuffer.append(this.e).append("|");
-    localStringBuffer.append(this.f).append("|");
-    localStringBuffer.append(this.g).append("|");
-    localStringBuffer.append(this.h).append("|");
-    localStringBuffer.append(this.i).append("|");
-    localStringBuffer.append(this.j).append("|");
-    localStringBuffer.append(this.k).append("|");
-    localStringBuffer.append(this.l).append("|");
-    localStringBuffer.append(this.m).append("|");
-    localStringBuffer.append(this.n).append("|");
-    localStringBuffer.append(this.o).append("|");
-    localStringBuffer.append(this.p).append("|");
-    localStringBuffer.append(this.q).append("|");
+    localStringBuffer.append(this.a);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.e);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.f);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.g);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.h);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.i);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.j);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.k);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.l);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.m);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.n);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.o);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.p);
+    localStringBuffer.append("|");
+    localStringBuffer.append(this.q);
+    localStringBuffer.append("|");
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.PushReportController.PushReportItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,42 @@
 package com.tencent.biz.troop;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.HotchatSCHelper;
-import com.tencent.mobileqq.app.HotchatSCHelper.OnShowNoteListener;
-import com.tencent.mobileqq.app.HotchatSCMng;
-import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
+import com.tencent.mobileqq.hotchat.HotChatNote;
+import com.tencent.mobileqq.hotchat.api.IHotChatSCHelper;
+import com.tencent.mobileqq.hotchat.api.IHotChatSCHelper.OnShowNoteListener;
+import com.tencent.mobileqq.hotchat.api.IHotChatSCMng;
+import com.tencent.mobileqq.hotchat.helper.HotChatHelper;
 
 class TroopMemberApiService$IncomingHandler$7
-  implements HotchatSCHelper.OnShowNoteListener
+  implements IHotChatSCHelper.OnShowNoteListener
 {
   TroopMemberApiService$IncomingHandler$7(TroopMemberApiService.IncomingHandler paramIncomingHandler, Bundle paramBundle) {}
   
-  public boolean a(HotchatSCMng.HotchatNote paramHotchatNote)
+  public boolean a(HotChatNote paramHotChatNote)
   {
     Bundle localBundle = new Bundle();
-    HotchatSCMng.HotchatNote localHotchatNote = paramHotchatNote;
-    if (paramHotchatNote == null) {
-      localHotchatNote = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCMng.a(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a.jdField_a_of_type_JavaLangString, 1, HotchatSCHelper.a());
+    HotChatNote localHotChatNote = paramHotChatNote;
+    if (paramHotChatNote == null) {
+      localHotChatNote = this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a.getHotChatSCMng().getHotChatNote(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a.getActID(), 1, HotChatHelper.a());
     }
-    if (localHotchatNote != null)
+    if (localHotChatNote != null)
     {
-      localBundle.putString("url", localHotchatNote.b);
-      localBundle.putString("content", localHotchatNote.jdField_a_of_type_JavaLangString);
+      localBundle.putString("url", localHotChatNote.b);
+      localBundle.putString("content", localHotChatNote.a);
     }
-    for (;;)
+    else
     {
-      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(101, localBundle);
-      return false;
       localBundle.putString("url", "");
       localBundle.putString("content", "");
     }
+    localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(101, localBundle);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.7
  * JD-Core Version:    0.7.0.1
  */

@@ -12,46 +12,58 @@ class AddAccountActivity$7
   
   public void afterTextChanged(Editable paramEditable)
   {
-    AddAccountActivity.a(this.a, null);
+    AddAccountActivity.access$502(this.a, null);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    AddAccountActivity.a(this.a, paramCharSequence.toString());
+    AddAccountActivity.access$502(this.a, paramCharSequence.toString());
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    if (this.a.mCurrentAccount != null)
     {
       paramCharSequence = paramCharSequence.toString();
-      if ((paramCharSequence != null) && (AddAccountActivity.a(this.a) != null) && (AddAccountActivity.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
+      if ((paramCharSequence != null) && (AddAccountActivity.access$500(this.a) != null) && (AddAccountActivity.access$500(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
         BaseApplicationImpl.sApplication.refreAccountList();
       }
-      AddAccountActivity.a(this.a, null);
-      if ((AddAccountActivity.a(this.a) == null) || (AddAccountActivity.a(this.a).length() == 0)) {}
-      do
+      AddAccountActivity.access$600(this.a, null);
+      if (AddAccountActivity.access$500(this.a) != null)
       {
-        return;
-        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != AddAccountActivity.a(this.a).length() + 1))
-        {
-          BaseApplicationImpl.sApplication.refreAccountList();
+        if (AddAccountActivity.access$500(this.a).length() == 0) {
           return;
         }
-        if ((!paramCharSequence.substring(0, AddAccountActivity.a(this.a).length()).equals(AddAccountActivity.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText == null)) {
-          break;
+        if ((paramCharSequence != null) && (paramCharSequence.length() != 0) && (paramCharSequence.length() == AddAccountActivity.access$500(this.a).length() + 1))
+        {
+          if ((paramCharSequence.substring(0, AddAccountActivity.access$500(this.a).length()).equals(AddAccountActivity.access$500(this.a))) && (this.a.mPwdEdit != null))
+          {
+            paramCharSequence = paramCharSequence.substring(AddAccountActivity.access$500(this.a).length());
+            if (paramCharSequence != null)
+            {
+              if (paramCharSequence.length() != 1) {
+                return;
+              }
+              this.a.mPwdEdit.setText(paramCharSequence);
+              this.a.mPwdEdit.setSelection(1);
+            }
+          }
         }
-        paramCharSequence = paramCharSequence.substring(AddAccountActivity.a(this.a).length());
-      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText(paramCharSequence);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(1);
+        else {
+          BaseApplicationImpl.sApplication.refreAccountList();
+        }
+      }
+      else
+      {
+        return;
+      }
     }
-    AddAccountActivity.a(this.a, null);
+    AddAccountActivity.access$502(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity.7
  * JD-Core Version:    0.7.0.1
  */

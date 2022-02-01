@@ -16,22 +16,21 @@ class ADBaseAppDownloadManager$3$1
     {
       this.a.this$0.a(this.a.a, 5, 100);
       this.a.this$0.d(this.a.a);
-    }
-    do
-    {
       return;
-      if (this.a.a.a)
-      {
-        ADBaseAppDownloadManager.a(this.a.this$0, this.a.a);
-        return;
-      }
-    } while (!NetworkUtil.g(BaseApplicationImpl.getContext()));
-    this.a.this$0.a(this.a.a, 0);
+    }
+    if (this.a.a.a)
+    {
+      ADBaseAppDownloadManager.a(this.a.this$0, this.a.a);
+      return;
+    }
+    if (NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) {
+      this.a.this$0.a(this.a.a, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.3.1
  * JD-Core Version:    0.7.0.1
  */

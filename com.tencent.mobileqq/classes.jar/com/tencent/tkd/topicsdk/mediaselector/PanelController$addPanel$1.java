@@ -13,12 +13,13 @@ final class PanelController$addPanel$1
   
   public final void onClick(View paramView)
   {
-    PanelController.a(this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPanelController, this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPanelController.a().indexOf(this.jdField_a_of_type_AndroidViewView), this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPanelType, true);
+    paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPanelController;
+    PanelController.a(paramView, paramView.a().indexOf(this.jdField_a_of_type_AndroidViewView), this.jdField_a_of_type_ComTencentTkdTopicsdkMediaselectorPanelType, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.PanelController.addPanel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -37,81 +37,82 @@ public class MiniGamePublicAccountIPCModule
   @Nullable
   private JSONObject getArkModel(JSONObject paramJSONObject, String[] paramArrayOfString)
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return null;
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        JSONObject localJSONObject = paramJSONObject.optJSONObject(paramArrayOfString[i]);
-        if (localJSONObject != null) {
-          return localJSONObject;
-        }
-        i += 1;
-      }
     }
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      JSONObject localJSONObject = paramJSONObject.optJSONObject(paramArrayOfString[i]);
+      if (localJSONObject != null) {
+        return localJSONObject;
+      }
+      i += 1;
+    }
+    return null;
   }
   
   public static MiniGamePublicAccountIPCModule getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new MiniGamePublicAccountIPCModule("MiniGamePublicAccountIPCModule");
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new MiniGamePublicAccountIPCModule("MiniGamePublicAccountIPCModule");
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private void handleGetMiniGamePublicAccountMsg(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    try
+    for (;;)
     {
-      int j = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePublicAccountMsgListCount", 4);
-      List localList = paramQQAppInterface.getMessageFacade().a(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, 10);
-      ArrayList localArrayList = new ArrayList();
       int i;
-      if ((localList != null) && (localList.size() > 0)) {
-        i = localList.size() - 1;
-      }
-      for (;;)
+      try
       {
-        if (i >= 0)
+        int j = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePublicAccountMsgListCount", 4);
+        List localList = paramQQAppInterface.getMessageFacade().a(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, 10);
+        ArrayList localArrayList = new ArrayList();
+        if ((localList != null) && (localList.size() > 0))
         {
-          MessageRecord localMessageRecord = (MessageRecord)localList.get(i);
-          if (AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN.equals(localMessageRecord.frienduin))
+          i = localList.size() - 1;
+          if (i >= 0)
           {
-            String str = paramQQAppInterface.getAccount();
-            if ((localMessageRecord instanceof MessageForArkApp))
+            MessageRecord localMessageRecord = (MessageRecord)localList.get(i);
+            if (AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN.equals(localMessageRecord.frienduin))
             {
-              QQGameMsgInfo localQQGameMsgInfo = QQGameMsgInfo.parseMessageRecord(localMessageRecord);
-              if (localQQGameMsgInfo != null)
+              String str = paramQQAppInterface.getAccount();
+              if ((localMessageRecord instanceof MessageForArkApp))
               {
-                parseTianshuReportInfo(localMessageRecord, localQQGameMsgInfo, str, localArrayList.size());
-                localArrayList.add(localQQGameMsgInfo);
+                QQGameMsgInfo localQQGameMsgInfo = QQGameMsgInfo.parseMessageRecord(localMessageRecord);
+                if (localQQGameMsgInfo != null)
+                {
+                  parseTianshuReportInfo(localMessageRecord, localQQGameMsgInfo, str, localArrayList.size());
+                  localArrayList.add(localQQGameMsgInfo);
+                }
               }
             }
+            if (localArrayList.size() != j) {
+              break label194;
+            }
           }
-          if (localArrayList.size() != j) {}
         }
-        else
-        {
-          paramQQAppInterface = new Bundle();
-          paramQQAppInterface.putSerializable("key_msg_list", localArrayList);
-          callbackResult(paramInt, EIPCResult.createSuccessResult(paramQQAppInterface));
-          return;
-        }
-        i -= 1;
+        paramQQAppInterface = new Bundle();
+        paramQQAppInterface.putSerializable("key_msg_list", localArrayList);
+        callbackResult(paramInt, EIPCResult.createSuccessResult(paramQQAppInterface));
+        return;
       }
-      return;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      QLog.e("MiniGamePublicAccountIPCModule", 1, "handleGetMiniGamePublicAccountMsg error", paramQQAppInterface);
+      catch (Throwable paramQQAppInterface)
+      {
+        QLog.e("MiniGamePublicAccountIPCModule", 1, "handleGetMiniGamePublicAccountMsg error", paramQQAppInterface);
+        return;
+      }
+      label194:
+      i -= 1;
     }
   }
   
@@ -141,7 +142,11 @@ public class MiniGamePublicAccountIPCModule
             localObject2 = new JSONObject();
             ((JSONObject)localObject2).put("adId", paramQQGameMsgInfo.advId);
             ((JSONObject)localObject2).put("appid", "vab_push");
-            ((JSONObject)localObject2).put("traceId", paramString + "_" + System.currentTimeMillis() / 1000L);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramString);
+            localStringBuilder.append("_");
+            localStringBuilder.append(System.currentTimeMillis() / 1000L);
+            ((JSONObject)localObject2).put("traceId", localStringBuilder.toString());
             paramString = localBundle.getString("busi_info");
             if (!TextUtils.isEmpty(paramString)) {
               ((JSONObject)localObject2).put("traceInfo", paramString);
@@ -162,24 +167,24 @@ public class MiniGamePublicAccountIPCModule
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(paramBundle instanceof QQAppInterface)) {}
-    do
-    {
+    if (!(paramBundle instanceof QQAppInterface)) {
       return null;
-      QQAppInterface localQQAppInterface = (QQAppInterface)paramBundle;
-      if ("action_get_mini_game_public_account_msg".equals(paramString))
-      {
-        handleGetMiniGamePublicAccountMsg(localQQAppInterface, paramInt);
-        return null;
-      }
-    } while (!"action_do_on_resume".equals(paramString));
-    ((QQAppInterface)paramBundle).getMessageFacade().a(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, true, true);
+    }
+    paramBundle = (QQAppInterface)paramBundle;
+    if ("action_get_mini_game_public_account_msg".equals(paramString))
+    {
+      handleGetMiniGamePublicAccountMsg(paramBundle, paramInt);
+      return null;
+    }
+    if ("action_do_on_resume".equals(paramString)) {
+      paramBundle.getMessageFacade().a(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, true, true);
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountIPCModule
  * JD-Core Version:    0.7.0.1
  */

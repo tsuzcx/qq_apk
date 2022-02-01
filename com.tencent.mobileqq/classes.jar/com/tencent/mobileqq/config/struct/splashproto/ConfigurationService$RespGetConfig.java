@@ -25,14 +25,15 @@ public final class ConfigurationService$RespGetConfig
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 802, 808, 818 }, new String[] { "result", "config_list", "debug_msg_list", "next_req_types", "cookies", "min_req_interval_for_reconnect", "cookies_new" }, new Object[] { Integer.valueOf(0), null, "", Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2 }, RespGetConfig.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 802, 808, 818 }, new String[] { "result", "config_list", "debug_msg_list", "next_req_types", "cookies", "min_req_interval_for_reconnect", "cookies_new" }, new Object[] { localInteger, null, "", localInteger, localByteStringMicro1, localInteger, localByteStringMicro2 }, RespGetConfig.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespGetConfig
  * JD-Core Version:    0.7.0.1
  */

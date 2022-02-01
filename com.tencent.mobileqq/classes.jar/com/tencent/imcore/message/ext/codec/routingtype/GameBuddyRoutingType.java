@@ -1,5 +1,6 @@
 package com.tencent.imcore.message.ext.codec.routingtype;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.core.codec.RoutingType;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -12,7 +13,7 @@ import msf.msgsvc.msg_svc.CommTmp;
 import msf.msgsvc.msg_svc.RoutingHead;
 
 public class GameBuddyRoutingType
-  implements RoutingType
+  implements RoutingType<AppInterface>
 {
   public int a()
   {
@@ -24,14 +25,14 @@ public class GameBuddyRoutingType
     return true;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
     localCommTmp.c2c_type.set(1);
     localCommTmp.svr_type.set(168);
-    paramQQAppInterface = paramQQAppInterface.getMsgCache().e(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (paramQQAppInterface != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramQQAppInterface));
+    paramAppInterface = ((QQAppInterface)paramAppInterface).getMsgCache().d(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    if (paramAppInterface != null) {
+      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramAppInterface));
     }
     localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
     paramRoutingHead.comm_tmp.set(localCommTmp);
@@ -45,7 +46,7 @@ public class GameBuddyRoutingType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.GameBuddyRoutingType
  * JD-Core Version:    0.7.0.1
  */

@@ -23,13 +23,21 @@ public class NativeRelativeLayout
   
   public void addView(ViewBase paramViewBase)
   {
-    if (LogUtils.shouldLog()) {
-      LogUtils.d("NativeRelativeLayout", "[addView] for " + this.mName);
+    if (LogUtils.shouldLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[addView] for ");
+      localStringBuilder.append(this.mName);
+      LogUtils.d("NativeRelativeLayout", localStringBuilder.toString());
     }
     super.addView(paramViewBase);
     this.mNative.attachViews(paramViewBase);
-    if (LogUtils.shouldLog()) {
-      LogUtils.d("NativeRelativeLayout", "[addView] native child count: " + this.mNative.getChildCount());
+    if (LogUtils.shouldLog())
+    {
+      paramViewBase = new StringBuilder();
+      paramViewBase.append("[addView] native child count: ");
+      paramViewBase.append(this.mNative.getChildCount());
+      LogUtils.d("NativeRelativeLayout", paramViewBase.toString());
     }
   }
   
@@ -43,7 +51,7 @@ public class NativeRelativeLayout
     return this.mNative;
   }
   
-  public void onComDraw(Canvas paramCanvas)
+  protected void onComDraw(Canvas paramCanvas)
   {
     if (this.mGradientColorBg != null) {
       setBackgroundColor(this.mGradientColorBg);
@@ -75,7 +83,7 @@ public class NativeRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.helper.nativelayout.NativeRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

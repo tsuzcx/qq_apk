@@ -7,8 +7,8 @@ import java.util.Map;
 public final class f
   extends n
 {
-  static byte[] k;
-  static Map<String, String> l;
+  static byte[] k = null;
+  static Map<String, String> l = null;
   public short a = 0;
   public byte b = 0;
   public int c = 0;
@@ -20,32 +20,22 @@ public final class f
   public Map<String, String> i;
   public Map<String, String> j;
   
-  static
-  {
-    if (!f.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      m = bool;
-      k = null;
-      l = null;
-      return;
-    }
-  }
-  
   public final Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (m) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (m) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
@@ -66,7 +56,9 @@ public final class f
   public final boolean equals(Object paramObject)
   {
     paramObject = (f)paramObject;
-    return (o.a(1, paramObject.a)) && (o.a(1, paramObject.b)) && (o.a(1, paramObject.c)) && (o.a(1, paramObject.d)) && (o.a(Integer.valueOf(1), paramObject.e)) && (o.a(Integer.valueOf(1), paramObject.f)) && (o.a(Integer.valueOf(1), paramObject.g)) && (o.a(1, paramObject.h)) && (o.a(Integer.valueOf(1), paramObject.i)) && (o.a(Integer.valueOf(1), paramObject.j));
+    int n = paramObject.a;
+    Integer localInteger = Integer.valueOf(1);
+    return (o.a(1, n)) && (o.a(1, paramObject.b)) && (o.a(1, paramObject.c)) && (o.a(1, paramObject.d)) && (o.a(localInteger, paramObject.e)) && (o.a(localInteger, paramObject.f)) && (o.a(localInteger, paramObject.g)) && (o.a(1, paramObject.h)) && (o.a(localInteger, paramObject.i)) && (o.a(localInteger, paramObject.j));
   }
   
   public final void readFrom(k paramk)
@@ -84,19 +76,19 @@ public final class f
       }
       this.g = ((byte[])paramk.c(7, true));
       this.h = paramk.a(this.h, 8, true);
-      HashMap localHashMap;
-      if (l == null)
+      localObject = l;
+      if (localObject == null)
       {
-        localHashMap = new HashMap();
-        l = localHashMap;
-        localHashMap.put("", "");
+        localObject = new HashMap();
+        l = (Map)localObject;
+        ((Map)localObject).put("", "");
       }
       this.i = ((Map)paramk.a(l, 9, true));
       if (l == null)
       {
-        localHashMap = new HashMap();
-        l = localHashMap;
-        localHashMap.put("", "");
+        localObject = new HashMap();
+        l = (Map)localObject;
+        ((Map)localObject).put("", "");
       }
       this.j = ((Map)paramk.a(l, 10, true));
       return;
@@ -104,7 +96,10 @@ public final class f
     catch (Exception paramk)
     {
       paramk.printStackTrace();
-      System.out.println("RequestPacket decode error " + g.a(this.g));
+      Object localObject = System.out;
+      StringBuilder localStringBuilder = new StringBuilder("RequestPacket decode error ");
+      localStringBuilder.append(g.a(this.g));
+      ((PrintStream)localObject).println(localStringBuilder.toString());
       throw new RuntimeException(paramk);
     }
   }
@@ -125,7 +120,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.f
  * JD-Core Version:    0.7.0.1
  */

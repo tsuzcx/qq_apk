@@ -14,11 +14,6 @@ public class HotVideoDPC
   public int b = 1;
   public int c = 256;
   
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqHotpicHotVideoDPC = null;
-  }
-  
   public HotVideoDPC()
   {
     this.jdField_a_of_type_Int = 0;
@@ -36,24 +31,31 @@ public class HotVideoDPC
   
   public static int a(String paramString, int paramInt)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return paramInt;
-      try
+    }
+    try
+    {
+      int i = Integer.valueOf(paramString).intValue();
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
       {
-        int i = Integer.valueOf(paramString).intValue();
-        return i;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("StringToInt Exception! ");
+        localStringBuilder.append(paramString);
+        QLog.d("HotVideoDPC", 2, localStringBuilder.toString());
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("HotVideoDPC", 2, "StringToInt Exception! " + paramString);
+    }
     return paramInt;
   }
   
   public static HotVideoDPC a()
   {
-    if ((jdField_a_of_type_ComTencentMobileqqHotpicHotVideoDPC == null) || (jdField_a_of_type_ComTencentMobileqqHotpicHotVideoDPC.jdField_a_of_type_Boolean)) {
+    HotVideoDPC localHotVideoDPC = jdField_a_of_type_ComTencentMobileqqHotpicHotVideoDPC;
+    if ((localHotVideoDPC == null) || (localHotVideoDPC.jdField_a_of_type_Boolean)) {
       jdField_a_of_type_ComTencentMobileqqHotpicHotVideoDPC = b();
     }
     return jdField_a_of_type_ComTencentMobileqqHotpicHotVideoDPC;
@@ -67,152 +69,142 @@ public class HotVideoDPC
   
   public static HotVideoDPC b()
   {
-    int i1 = 256;
-    boolean bool = false;
     if (QLog.isColorLevel()) {
       QLog.d("HotVideoDPC", 2, "loadHotVideoDPC!");
     }
     String str = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.HotVCfg.name());
-    QLog.i("HotVideoDPC", 2, "loadHotVideoDPC dpcValue: " + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("loadHotVideoDPC dpcValue: ");
+    ((StringBuilder)localObject).append(str);
+    QLog.i("HotVideoDPC", 2, ((StringBuilder)localObject).toString());
+    boolean bool1 = TextUtils.isEmpty(str);
+    int i1 = 256;
+    boolean bool2 = true;
     int i;
-    int j;
-    int m;
-    int k;
-    label131:
-    int n;
-    if (!TextUtils.isEmpty(str))
-    {
+    if (!bool1) {
       try
       {
         localObject = str.split("\\|");
-        if ((localObject != null) && (localObject.length >= 3)) {
-          i = a(localObject[0], 0);
-        }
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
+        int m;
+        int n;
+        if ((localObject != null) && (localObject.length >= 3))
         {
+          i = a(localObject[0], 0);
+          k = i;
           try
           {
-            Object localObject;
-            i = a(localObject[1], 0);
+            j = a(localObject[1], 0);
+            try
+            {
+              k = a(localObject[2], 256);
+              m = i;
+              n = j;
+            }
+            catch (Exception localException1)
+            {
+              break label272;
+            }
+            if (localException2 == null) {
+              break label209;
+            }
           }
-          catch (Exception localException5)
+          catch (Exception localException2)
           {
-            i = 1;
-            j = k;
-            continue;
+            i = k;
           }
+        }
+        else if (localException2.length == 1)
+        {
+          i = a(localException2[0], 0);
+          try
+          {
+            QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 1");
+            j = i;
+            i = 1;
+            k = i1;
+          }
+          catch (Exception localException3)
+          {
+            j = 1;
+          }
+        }
+        for (;;)
+        {
+          break;
+          label209:
+          if ((localException3 == null) || (localException3.length != 2)) {
+            break label312;
+          }
+          j = a(localException3[0], 0);
+          k = j;
+          i = a(localException3[1], 0);
           try
           {
             QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 2");
-            j = i;
-            i = 256;
+            k = i1;
           }
-          catch (Exception localException6)
+          catch (Exception localException4)
           {
+            k = i;
+            i = j;
             j = k;
-            continue;
-          }
-          localException1 = localException1;
-          j = 0;
-          i = 1;
-          m = i;
-          n = i1;
-          k = j;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("HotVideoDPC", 2, "loadHotVideoDPC exception:", localException1);
-            m = i;
-            n = i1;
-            k = j;
           }
         }
-      }
-      try
-      {
-        j = a(localObject[1], 0);
-      }
-      catch (Exception localException2)
-      {
-        j = i;
+        label272:
         i = 1;
-        break label283;
       }
-      try
+      catch (Exception localException5)
       {
-        m = a(localObject[2], 256);
-        k = i;
-        i = m;
-      }
-      catch (Exception localException3)
-      {
-        k = i;
-        i = j;
-        j = k;
-        break label283;
-        break label131;
-      }
-      n = i;
-      m = j;
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        localObject = new HotVideoDPC();
-        ((HotVideoDPC)localObject).jdField_a_of_type_Int = k;
-        ((HotVideoDPC)localObject).b = m;
-        ((HotVideoDPC)localObject).c = n;
-        if ((str == null) || (str.isEmpty())) {
-          bool = true;
-        }
-        ((HotVideoDPC)localObject).jdField_a_of_type_Boolean = bool;
-        return localObject;
-        if ((localObject != null) && (localObject.length == 1)) {
-          j = a(localObject[0], 0);
-        }
-        try
+        i = 0;
+        j = 1;
+        k = i1;
+        m = i;
+        n = j;
+        if (QLog.isColorLevel())
         {
-          QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 1");
-          k = j;
-          i = 256;
-          j = 1;
+          QLog.e("HotVideoDPC", 2, "loadHotVideoDPC exception:", localException5);
+          n = j;
+          m = i;
+          k = i1;
         }
-        catch (Exception localException4)
-        {
-          for (;;)
-          {
-            label283:
-            i = 1;
-          }
-          i = 256;
-          k = 0;
-          j = 1;
-        }
+        i = n;
+        j = m;
       }
-      if ((localObject != null) && (localObject.length == 2)) {
-        k = a(localObject[0], 0);
-      }
-      m = 1;
-      k = 0;
-      n = i1;
     }
+    label312:
+    int j = 0;
+    int k = i1;
+    HotVideoDPC localHotVideoDPC = new HotVideoDPC();
+    localHotVideoDPC.jdField_a_of_type_Int = j;
+    localHotVideoDPC.b = i;
+    localHotVideoDPC.c = k;
+    bool1 = bool2;
+    if (str != null) {
+      if (str.isEmpty()) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
+    }
+    localHotVideoDPC.jdField_a_of_type_Boolean = bool1;
+    return localHotVideoDPC;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" hotVideoBlurSwitch: ").append(this.b);
-    localStringBuilder.append(" hotVideoBlurMemory: ").append(this.c);
+    localStringBuilder.append("hotVideoSwitch: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" hotVideoBlurSwitch: ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" hotVideoBlurMemory: ");
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoDPC
  * JD-Core Version:    0.7.0.1
  */

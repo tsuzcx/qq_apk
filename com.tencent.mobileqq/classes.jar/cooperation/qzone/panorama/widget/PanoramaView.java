@@ -37,28 +37,27 @@ public class PanoramaView
   
   public void changeRenderMode(int paramInt)
   {
-    if (this.builder == null) {}
-    for (;;)
-    {
+    PanoramaConfig.Builder localBuilder = this.builder;
+    if (localBuilder == null) {
       return;
-      this.builder.setRenderMode(paramInt);
-      setRenderMode(paramInt);
-      if (paramInt == 0) {
-        this.builder.setOpenGyroscopeSensor(false);
-      }
-      while ((this.gyroscopeSensorController != null) && (this.builder.isOpenGyroscopeSensor()))
-      {
-        this.gyroscopeSensorController.registerGyroscopeListener();
-        return;
-        this.builder.setOpenGyroscopeSensor(true);
-      }
+    }
+    localBuilder.setRenderMode(paramInt);
+    setRenderMode(paramInt);
+    if (paramInt == 0) {
+      this.builder.setOpenGyroscopeSensor(false);
+    } else {
+      this.builder.setOpenGyroscopeSensor(true);
+    }
+    if ((this.gyroscopeSensorController != null) && (this.builder.isOpenGyroscopeSensor())) {
+      this.gyroscopeSensorController.registerGyroscopeListener();
     }
   }
   
   public void changeRotate(float paramFloat1, float paramFloat2)
   {
-    if (this.panoramaRenderer != null) {
-      this.panoramaRenderer.setRotate(paramFloat1, paramFloat2);
+    PanoramaRenderer localPanoramaRenderer = this.panoramaRenderer;
+    if (localPanoramaRenderer != null) {
+      localPanoramaRenderer.setRotate(paramFloat1, paramFloat2);
     }
   }
   
@@ -83,23 +82,29 @@ public class PanoramaView
     if (this.panoramaRenderer != null)
     {
       super.onPause();
-      if (this.gyroscopeSensorController != null) {
-        this.gyroscopeSensorController.unregisterGyroscopeListener();
+      Object localObject = this.gyroscopeSensorController;
+      if (localObject != null) {
+        ((GyroscopeSensorController)localObject).unregisterGyroscopeListener();
       }
-      if (this.panoramaRenderer != null) {
-        this.panoramaRenderer.onRecycled();
+      localObject = this.panoramaRenderer;
+      if (localObject != null) {
+        ((PanoramaRenderer)localObject).onRecycled();
       }
     }
   }
   
   public void onResume()
   {
-    if ((this.panoramaRenderer != null) && (this.builder != null))
+    if (this.panoramaRenderer != null)
     {
-      this.builder.setTextureChange(true);
-      super.onResume();
-      if ((this.gyroscopeSensorController != null) && (this.builder.isOpenGyroscopeSensor())) {
-        this.gyroscopeSensorController.registerGyroscopeListener();
+      PanoramaConfig.Builder localBuilder = this.builder;
+      if (localBuilder != null)
+      {
+        localBuilder.setTextureChange(true);
+        super.onResume();
+        if ((this.gyroscopeSensorController != null) && (this.builder.isOpenGyroscopeSensor())) {
+          this.gyroscopeSensorController.registerGyroscopeListener();
+        }
       }
     }
   }
@@ -127,7 +132,7 @@ public class PanoramaView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,50 @@
+package com.tencent.aelight.camera.ae.camera.ui.panel;
+
+import android.view.ViewGroup;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.aelight.camera.ae.camera.ui.AECaptureController;
+import com.tencent.aelight.camera.ae.report.AEBaseReportParam;
+
+class AEBeautyProviderView$1
+  implements SeekBar.OnSeekBarChangeListener
+{
+  AEBeautyProviderView$1(AEBeautyProviderView paramAEBeautyProviderView) {}
+  
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  {
+    if (AEBeautyProviderView.a(this.a) != null)
+    {
+      AEBeautyProviderView.a(this.a).a(paramInt);
+      paramSeekBar = this.a.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("+");
+      localStringBuilder.append(String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
+      paramSeekBar.setText(localStringBuilder.toString());
+    }
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    paramSeekBar = this.a;
+    AEBeautyProviderView.a(paramSeekBar, AEBeautyProviderView.a(paramSeekBar), AEBeautyProviderView.b(this.a));
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
+      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
+    }
+    AEBeautyProviderView.a(this.a, paramSeekBar.getProgress());
+    AEBaseReportParam.a().f(paramSeekBar.getProgress());
+    paramSeekBar = this.a;
+    AEBeautyProviderView.b(paramSeekBar, AEBeautyProviderView.a(paramSeekBar), AEBeautyProviderView.b(this.a));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEBeautyProviderView.1
+ * JD-Core Version:    0.7.0.1
+ */

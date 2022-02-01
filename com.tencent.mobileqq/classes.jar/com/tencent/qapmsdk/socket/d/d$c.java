@@ -15,43 +15,43 @@ class d$c
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    do
-    {
+    if (paramObject == this) {
       return true;
-      if (!(paramObject instanceof c)) {
-        break;
-      }
+    }
+    if ((paramObject instanceof c))
+    {
       paramObject = (c)paramObject;
-    } while ((paramObject.a.equals(this.a)) && (Arrays.equals(paramObject.b, this.b)));
-    return false;
+      return (paramObject.a.equals(this.a)) && (Arrays.equals(paramObject.b, this.b));
+    }
     return false;
   }
   
   public int hashCode()
   {
-    int k = 0;
+    Class[] arrayOfClass = this.b;
     int j = 0;
-    int i = k;
-    if (this.b != null)
+    if ((arrayOfClass != null) && (arrayOfClass.length > 0))
     {
-      i = k;
-      if (this.b.length > 0)
+      int i = 0;
+      for (;;)
       {
-        i = 0;
-        while (j < this.b.length)
-        {
-          i += (j + 1) * this.b[j].hashCode() * this.b[j].getName().hashCode() * 11259375;
-          j += 1;
+        arrayOfClass = this.b;
+        k = i;
+        if (j >= arrayOfClass.length) {
+          break;
         }
+        k = j + 1;
+        i += arrayOfClass[j].hashCode() * k * this.b[j].getName().hashCode() * 11259375;
+        j = k;
       }
     }
-    return i + this.a.hashCode();
+    int k = 0;
+    return k + this.a.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.d.d.c
  * JD-Core Version:    0.7.0.1
  */

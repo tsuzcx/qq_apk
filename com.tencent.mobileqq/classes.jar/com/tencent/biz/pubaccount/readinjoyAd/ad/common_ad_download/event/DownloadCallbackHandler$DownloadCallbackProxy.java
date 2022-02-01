@@ -21,6 +21,42 @@ public class DownloadCallbackHandler$DownloadCallbackProxy<T extends DownloadLis
     this.a = new WeakReference(paramT);
   }
   
+  public void a(WadlResult paramWadlResult)
+  {
+    try
+    {
+      if ((this.a != null) && (this.a.get() != null)) {
+        ((WadlProxyServiceCallBackInterface)this.a.get()).a(paramWadlResult);
+      }
+      return;
+    }
+    catch (Throwable paramWadlResult) {}
+  }
+  
+  public void a(ArrayList<WadlResult> paramArrayList)
+  {
+    try
+    {
+      if ((this.a != null) && (this.a.get() != null)) {
+        ((WadlProxyServiceCallBackInterface)this.a.get()).a(paramArrayList);
+      }
+      return;
+    }
+    catch (Throwable paramArrayList) {}
+  }
+  
+  public void b(ArrayList<WadlResult> paramArrayList)
+  {
+    try
+    {
+      if ((this.a != null) && (this.a.get() != null)) {
+        ((WadlProxyServiceCallBackInterface)this.a.get()).b(paramArrayList);
+      }
+      return;
+    }
+    catch (Throwable paramArrayList) {}
+  }
+  
   public void installSucceed(String paramString1, String paramString2)
   {
     try
@@ -105,42 +141,6 @@ public class DownloadCallbackHandler$DownloadCallbackProxy<T extends DownloadLis
     catch (Throwable paramDownloadInfo) {}
   }
   
-  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
-  {
-    try
-    {
-      if ((this.a != null) && (this.a.get() != null)) {
-        ((WadlProxyServiceCallBackInterface)this.a.get()).onQueryCallback(paramArrayList);
-      }
-      return;
-    }
-    catch (Throwable paramArrayList) {}
-  }
-  
-  public void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList)
-  {
-    try
-    {
-      if ((this.a != null) && (this.a.get() != null)) {
-        ((WadlProxyServiceCallBackInterface)this.a.get()).onQueryCallbackVia(paramArrayList);
-      }
-      return;
-    }
-    catch (Throwable paramArrayList) {}
-  }
-  
-  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
-  {
-    try
-    {
-      if ((this.a != null) && (this.a.get() != null)) {
-        ((WadlProxyServiceCallBackInterface)this.a.get()).onWadlTaskStatusChanged(paramWadlResult);
-      }
-      return;
-    }
-    catch (Throwable paramWadlResult) {}
-  }
-  
   public void packageReplaced(String paramString1, String paramString2)
   {
     try
@@ -167,7 +167,7 @@ public class DownloadCallbackHandler$DownloadCallbackProxy<T extends DownloadLis
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.DownloadCallbackHandler.DownloadCallbackProxy
  * JD-Core Version:    0.7.0.1
  */

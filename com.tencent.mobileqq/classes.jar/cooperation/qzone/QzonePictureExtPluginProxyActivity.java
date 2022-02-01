@@ -7,7 +7,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class QzonePictureExtPluginProxyActivity
   extends QzonePluginProxyActivity
 {
-  public boolean compatibleAndroidOreo()
+  protected boolean compatibleAndroidOreo()
   {
     return true;
   }
@@ -30,7 +30,7 @@ public class QzonePictureExtPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QzonePictureExtPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

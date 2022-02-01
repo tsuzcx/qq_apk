@@ -20,10 +20,18 @@ class ApkgManager$5
   
   public void onDownloadFailed(int paramInt, String paramString)
   {
-    if (this.val$listener != null)
+    Object localObject = this.val$listener;
+    if (localObject != null)
     {
-      this.val$listener.onInitApkgInfo(2, this.val$apkgInfo, "下载失败");
-      QMLog.d("ApkgManager", "onDownloadFailed() called with: statusCode = [" + paramInt + "], errorMsg = [" + paramString + "] subRoot:" + this.val$subRoot);
+      ((ApkgManager.OnInitApkgListener)localObject).onInitApkgInfo(2, this.val$apkgInfo, "下载失败");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadFailed() called with: statusCode = [");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], errorMsg = [");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("] subRoot:");
+      ((StringBuilder)localObject).append(this.val$subRoot);
+      QMLog.d("ApkgManager", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -33,34 +41,61 @@ class ApkgManager$5
   
   public void onDownloadSucceed(int paramInt, String paramString, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult)
   {
-    QMLog.i("ApkgManager", "onDownloadSucceed subRoot=" + this.val$subRoot + " url=" + this.val$subPackDownloadUrl + " path=" + this.val$savePath);
+    paramString = new StringBuilder();
+    paramString.append("onDownloadSucceed subRoot=");
+    paramString.append(this.val$subRoot);
+    paramString.append(" url=");
+    paramString.append(this.val$subPackDownloadUrl);
+    paramString.append(" path=");
+    paramString.append(this.val$savePath);
+    QMLog.i("ApkgManager", paramString.toString());
     MiniReportManager.reportEventType(this.val$appConfig, 614, this.val$url, null, null, 0, "0", 0L, null);
     paramString = ApkgManager.getApkgFolderPath(this.val$appConfig);
     paramDownloadResult = new File(this.val$savePath);
-    FileUtils.delete(paramString + File.separator + this.val$subRoot, false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.val$subRoot);
+    FileUtils.delete(localStringBuilder.toString(), false);
     boolean bool2 = this.val$appConfig.launchParam.isFlutterMode;
-    boolean bool1 = false;
+    boolean bool1;
     if (bool2)
     {
       MiniReportManager.reportEventType(this.val$appConfig, 615, this.val$url, null, null, 0, "0", 0L, null);
       bool1 = WxapkgUnpacker.unpackSync(paramDownloadResult.getAbsolutePath(), paramString, this.val$subRoot);
-      QMLog.d("ApkgManager", "downloadSubPack | getResPath :hasUnpack=" + bool1 + "; folderPath=" + paramString + "; subRoot=" + this.val$subRoot);
+      paramDownloadResult = new StringBuilder();
+      paramDownloadResult.append("downloadSubPack | getResPath :hasUnpack=");
+      paramDownloadResult.append(bool1);
+      paramDownloadResult.append("; folderPath=");
+      paramDownloadResult.append(paramString);
+      paramDownloadResult.append("; subRoot=");
+      paramDownloadResult.append(this.val$subRoot);
+      QMLog.d("ApkgManager", paramDownloadResult.toString());
       MiniReportManager.reportEventType(this.val$appConfig, 1045, null, null, null, 0);
     }
-    if ((bool1) || (!bool2)) {
-      if (this.val$listener != null) {
-        this.val$listener.onInitApkgInfo(0, this.val$apkgInfo, null);
+    else
+    {
+      bool1 = false;
+    }
+    if ((!bool1) && (bool2))
+    {
+      paramString = this.val$listener;
+      if (paramString != null) {
+        paramString.onInitApkgInfo(3, this.val$apkgInfo, "解包失败");
       }
     }
-    while (this.val$listener == null) {
-      return;
+    else
+    {
+      paramString = this.val$listener;
+      if (paramString != null) {
+        paramString.onInitApkgInfo(0, this.val$apkgInfo, null);
+      }
     }
-    this.val$listener.onInitApkgInfo(3, this.val$apkgInfo, "解包失败");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.ApkgManager.5
  * JD-Core Version:    0.7.0.1
  */

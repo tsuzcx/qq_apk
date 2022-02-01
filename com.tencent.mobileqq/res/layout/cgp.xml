@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/ns5" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.HorizontalListView android:orientation="horizontal" android:id="@id/n4l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip" />
-</FrameLayout>
+    <com.tencent.avgame.widget.RoundedCornerImageViewNoPadding android:id="@id/ns4" android:layout_width="125.0dip" android:layout_height="125.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+</RelativeLayout>

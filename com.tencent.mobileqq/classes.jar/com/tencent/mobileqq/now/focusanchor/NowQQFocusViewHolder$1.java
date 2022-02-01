@@ -15,11 +15,8 @@ class NowQQFocusViewHolder$1
   
   public void onClick(View paramView)
   {
-    if (System.currentTimeMillis() < NowQQFocusViewHolder.a(this.a) + 1000L) {}
-    for (;;)
+    if (System.currentTimeMillis() >= NowQQFocusViewHolder.a(this.a) + 1000L)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       NowQQFocusViewHolder.a(this.a, System.currentTimeMillis());
       Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
       localIntent.putExtra("url", NowQQLiveConstant.a());
@@ -27,11 +24,12 @@ class NowQQFocusViewHolder$1
       localIntent.addFlags(536870912);
       paramView.getContext().startActivity(localIntent);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.NowQQFocusViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

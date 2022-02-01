@@ -1,29 +1,23 @@
 package com.tencent.mobileqq.emoticonview;
 
-import android.view.View;
 import android.widget.EditText;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.api.IEmoticonMainPanelService;
+import com.tencent.mobileqq.emoticonview.api.IEmoticonMainPanelService.PanelBuilder;
 
 public class EmoticonMainPanelUtils
 {
-  public static EmoticonMainPanel initEmojiPanel(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, EditText paramEditText, EmoticonCallback paramEmoticonCallback)
+  public static IEmoticonMainPanel initEmojiPanel(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, EditText paramEditText, EmoticonCallback paramEmoticonCallback)
   {
-    paramEditText = (EmoticonMainPanel)View.inflate(paramBaseActivity.getBaseContext(), 2131559200, null);
-    paramEditText.setCallBack(paramEmoticonCallback);
-    paramEditText.disableGuide = true;
-    paramEditText.disableMoreEmotionButton = true;
-    paramEditText.hasBigEmotion = false;
-    paramEditText.onlySysAndEmoji = true;
-    paramEditText.disableAutoDownload = true;
-    paramEditText.init(paramQQAppInterface, 100002, paramBaseActivity, paramBaseActivity.getTitleBarHeight(), null, null, false, new EmoticonMainPanelUtils.1());
-    paramEditText.mEmoticonTabs.setOverScrollMode(2);
-    return paramEditText;
+    paramQQAppInterface = ((IEmoticonMainPanelService)paramQQAppInterface.getRuntimeService(IEmoticonMainPanelService.class)).newBuilder(paramBaseActivity, 100002).setCallBack(paramEmoticonCallback).setDisableGuide(true).setDisableMoreEmotionButton(true).setHasBigEmotion(false).setOnlySysAndEmoji(true).setDisableAutoDownload(true).setEmoticonListProvider(new EmoticonMainPanelUtils.1()).create();
+    paramQQAppInterface.setTabListOverScrollMode(2);
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonMainPanelUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.HotSortVideoEntry;
 import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import java.util.List;
 
 public class ShareGroupsListAdapter$HotSortCollectionViewHolder
@@ -24,16 +24,16 @@ public class ShareGroupsListAdapter$HotSortCollectionViewHolder
   
   public ShareGroupsListAdapter$HotSortCollectionViewHolder(View paramView, ShareGroupsListAdapter paramShareGroupsListAdapter)
   {
-    View localView = paramView.findViewById(2131375016);
-    paramView = paramView.findViewById(2131375067);
+    View localView = paramView.findViewById(2131374547);
+    paramView = paramView.findViewById(2131374590);
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder = new ShareGroupsListAdapter.HotSortCardHolder(localView, paramShareGroupsListAdapter.jdField_a_of_type_AndroidContentContext);
     this.jdField_b_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder = new ShareGroupsListAdapter.HotSortCardHolder(paramView, paramShareGroupsListAdapter.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364458));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364458));
-    this.c = ((TextView)localView.findViewById(2131364437));
-    this.d = ((TextView)paramView.findViewById(2131364437));
-    this.e = ((TextView)localView.findViewById(2131364453));
-    this.f = ((TextView)paramView.findViewById(2131364453));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364348));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364348));
+    this.c = ((TextView)localView.findViewById(2131364327));
+    this.d = ((TextView)paramView.findViewById(2131364327));
+    this.e = ((TextView)localView.findViewById(2131364343));
+    this.f = ((TextView)paramView.findViewById(2131364343));
     QQStoryContext.a();
     if (ThemeUtil.isInNightMode(QQStoryContext.a()))
     {
@@ -53,25 +53,25 @@ public class ShareGroupsListAdapter$HotSortCollectionViewHolder
   
   public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
   {
-    if ((paramVideoCollectionItem == null) || (paramView == null))
+    if ((paramVideoCollectionItem != null) && (paramView != null))
     {
-      SLog.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "qqstory sharegroup hotsort erro. view  or data is null.");
+      paramView = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(0);
+      paramVideoCollectionItem = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(1);
+      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a(paramView);
+      if (paramVideoCollectionItem == null)
+      {
+        this.jdField_b_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a();
+        return;
+      }
+      this.jdField_b_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a(paramVideoCollectionItem);
       return;
     }
-    paramView = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(0);
-    paramVideoCollectionItem = (HotSortVideoEntry)paramVideoCollectionItem.hotSortVideoLIst.get(1);
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a(paramView);
-    if (paramVideoCollectionItem == null)
-    {
-      this.jdField_b_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a();
-      return;
-    }
-    this.jdField_b_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.a(paramVideoCollectionItem);
+    SLog.e("Q.qqstory.shareGroup.ShareGroupsListAdapter", "qqstory sharegroup hotsort erro. view  or data is null.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.HotSortCollectionViewHolder
  * JD-Core Version:    0.7.0.1
  */

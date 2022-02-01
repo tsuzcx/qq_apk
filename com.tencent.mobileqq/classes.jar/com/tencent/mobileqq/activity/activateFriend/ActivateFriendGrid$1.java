@@ -12,33 +12,24 @@ class ActivateFriendGrid$1
   public void onClick(View paramView)
   {
     ActivateFriendGridItem localActivateFriendGridItem = (ActivateFriendGridItem)paramView;
-    if (localActivateFriendGridItem.jdField_a_of_type_Boolean)
-    {
+    if (localActivateFriendGridItem.jdField_a_of_type_Boolean) {
       ActivateFriendGrid.a(this.a);
-      if (localActivateFriendGridItem.jdField_a_of_type_Boolean) {
-        break label108;
-      }
-    }
-    label108:
-    for (boolean bool = true;; bool = false)
-    {
-      localActivateFriendGridItem.setChecked(bool);
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
-      }
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(localActivateFriendGridItem.jdField_a_of_type_Int);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       ActivateFriendGrid.b(this.a);
-      break;
     }
+    localActivateFriendGridItem.setChecked(localActivateFriendGridItem.jdField_a_of_type_Boolean ^ true);
+    if (ActivateFriendGrid.a(this.a) != null) {
+      ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
+    }
+    if (ActivateFriendGrid.a(this.a) != null) {
+      ActivateFriendGrid.a(this.a).a(localActivateFriendGridItem.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.1
  * JD-Core Version:    0.7.0.1
  */

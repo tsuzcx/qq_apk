@@ -19,8 +19,6 @@ public abstract interface IArConfigManager
   
   public abstract void a(IArFaceCallback paramIArFaceCallback);
   
-  public abstract void a(IArMiniCallback paramIArMiniCallback);
-  
   public abstract void a(IArRemoteCallback paramIArRemoteCallback);
   
   public abstract void a(IArSoCallback paramIArSoCallback);
@@ -33,8 +31,6 @@ public abstract interface IArConfigManager
   
   public abstract void b(IArFaceCallback paramIArFaceCallback);
   
-  public abstract void b(IArMiniCallback paramIArMiniCallback);
-  
   public abstract void b(IArRemoteCallback paramIArRemoteCallback);
   
   public abstract void b(IArSoCallback paramIArSoCallback);
@@ -43,17 +39,13 @@ public abstract interface IArConfigManager
   
   public abstract void c();
   
-  public abstract void c(int paramInt);
-  
   public abstract boolean c();
   
   public abstract void d();
-  
-  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.IArConfigManager
  * JD-Core Version:    0.7.0.1
  */

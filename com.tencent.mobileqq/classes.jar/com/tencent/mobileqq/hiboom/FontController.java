@@ -6,8 +6,8 @@ import QC.ItemBase;
 import android.content.Context;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -32,46 +32,47 @@ public class FontController
   
   public List<FontBubble> a(QQAppInterface paramQQAppInterface, FontRecommendRsp paramFontRecommendRsp)
   {
-    int j = ((SVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b();
+    int j = ((ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).b();
     paramQQAppInterface = new ArrayList();
     if (paramFontRecommendRsp.vItems != null)
     {
       paramFontRecommendRsp = paramFontRecommendRsp.vItems.iterator();
-      if (paramFontRecommendRsp.hasNext())
+      while (paramFontRecommendRsp.hasNext())
       {
         FontInfo localFontInfo = (FontInfo)paramFontRecommendRsp.next();
         FontBubble localFontBubble = new FontBubble();
         localFontBubble.viewType = 1;
         localFontBubble.fontId = localFontInfo.item.itemId;
-        if (localFontInfo.linkBubbleID > 0) {}
-        for (int i = localFontInfo.linkBubbleID;; i = j)
-        {
-          localFontBubble.bubbleId = i;
-          localFontBubble.name = localFontInfo.name;
-          localFontBubble.engine = localFontInfo.engine;
-          localFontBubble.feeType = localFontInfo.feeType;
-          localFontBubble.payUrl = localFontInfo.payUrl;
-          localFontBubble.title = localFontInfo.title;
-          localFontBubble.msg = localFontInfo.msg;
-          localFontBubble.btn = localFontInfo.btn;
-          localFontBubble.picUrl = localFontInfo.strPicUrl;
-          localFontBubble.panelType = 3;
-          paramQQAppInterface.add(localFontBubble);
-          break;
+        int i;
+        if (localFontInfo.linkBubbleID > 0) {
+          i = localFontInfo.linkBubbleID;
+        } else {
+          i = j;
         }
+        localFontBubble.bubbleId = i;
+        localFontBubble.name = localFontInfo.name;
+        localFontBubble.engine = localFontInfo.engine;
+        localFontBubble.feeType = localFontInfo.feeType;
+        localFontBubble.payUrl = localFontInfo.payUrl;
+        localFontBubble.title = localFontInfo.title;
+        localFontBubble.msg = localFontInfo.msg;
+        localFontBubble.btn = localFontInfo.btn;
+        localFontBubble.picUrl = localFontInfo.strPicUrl;
+        localFontBubble.panelType = 3;
+        paramQQAppInterface.add(localFontBubble);
       }
     }
     return paramQQAppInterface;
   }
   
-  public void a(SVIPHandler paramSVIPHandler)
+  public void a(ISVIPHandler paramISVIPHandler)
   {
-    paramSVIPHandler.d();
+    paramISVIPHandler.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontController
  * JD-Core Version:    0.7.0.1
  */

@@ -29,12 +29,15 @@ class MemorySharePlayingListSync$1$1
       localPlayerVideoListEvent.jdField_a_of_type_Int = localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.size();
     }
     StoryDispatcher.a().dispatch(localPlayerVideoListEvent);
-    SLog.b("Q.qqstory.player.MemorySharePlayingListSync", "get video list return:" + localPlayerVideoListEvent);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("get video list return:");
+    localStringBuilder.append(localPlayerVideoListEvent);
+    SLog.b("Q.qqstory.player.MemorySharePlayingListSync", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.MemorySharePlayingListSync.1.1
  * JD-Core Version:    0.7.0.1
  */

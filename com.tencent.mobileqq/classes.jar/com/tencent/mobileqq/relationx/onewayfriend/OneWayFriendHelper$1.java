@@ -9,22 +9,21 @@ class OneWayFriendHelper$1
   
   public void a(boolean paramBoolean, OneWayFriendResult paramOneWayFriendResult)
   {
-    if (TextUtils.equals(OneWayFriendHelper.a(this.a), String.valueOf(paramOneWayFriendResult.jdField_a_of_type_Long))) {
-      if ((!paramBoolean) || (!paramOneWayFriendResult.jdField_a_of_type_Boolean)) {
-        break label49;
-      }
-    }
-    label49:
-    for (paramBoolean = true;; paramBoolean = false)
+    if (TextUtils.equals(OneWayFriendHelper.a(this.a), String.valueOf(paramOneWayFriendResult.jdField_a_of_type_Long)))
     {
-      OneWayFriendHelper.a(this.a, OneWayFriendHelper.a(this.a), paramBoolean);
-      return;
+      if ((paramBoolean) && (paramOneWayFriendResult.jdField_a_of_type_Boolean)) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
+      }
+      paramOneWayFriendResult = this.a;
+      OneWayFriendHelper.a(paramOneWayFriendResult, OneWayFriendHelper.a(paramOneWayFriendResult), paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendHelper.1
  * JD-Core Version:    0.7.0.1
  */

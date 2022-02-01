@@ -8,8 +8,6 @@ import java.lang.ref.WeakReference;
 final class QQSettingUtil$3
   implements URLDrawable.URLDrawableListener
 {
-  QQSettingUtil$3(WeakReference paramWeakReference) {}
-  
   public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
@@ -18,9 +16,10 @@ final class QQSettingUtil$3
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.a != null)
+    paramURLDrawable = this.a;
+    if (paramURLDrawable != null)
     {
-      paramURLDrawable = (View)this.a.get();
+      paramURLDrawable = (View)paramURLDrawable.get();
       if (paramURLDrawable != null) {
         paramURLDrawable.postInvalidate();
       }
@@ -29,7 +28,7 @@ final class QQSettingUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQSettingUtil.3
  * JD-Core Version:    0.7.0.1
  */

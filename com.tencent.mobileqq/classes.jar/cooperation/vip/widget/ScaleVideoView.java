@@ -25,7 +25,7 @@ public class ScaleVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt1 = getDefaultSize(this.d, paramInt1);
     paramInt2 = getDefaultSize(this.e, paramInt2);
@@ -41,7 +41,7 @@ public class ScaleVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.widget.ScaleVideoView
  * JD-Core Version:    0.7.0.1
  */

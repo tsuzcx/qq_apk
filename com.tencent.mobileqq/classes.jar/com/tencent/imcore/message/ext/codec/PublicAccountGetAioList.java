@@ -1,13 +1,14 @@
 package com.tencent.imcore.message.ext.codec;
 
 import com.tencent.imcore.message.GetAioListCallback;
-import com.tencent.mobileqq.activity.aio.item.PAWeatherItemBuilder;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.api.IArkConfig;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.weather.api.IWeatherCommApi;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
 import java.util.List;
@@ -25,37 +26,33 @@ public class PublicAccountGetAioList
     }
     catch (Exception paramList)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("PaiYiPaiGetAioList", 2, "Collections sort exception ! ", paramList);
+      if (QLog.isColorLevel()) {
+        QLog.w("PaiYiPaiGetAioList", 2, "Collections sort exception ! ", paramList);
+      }
     }
   }
   
   private void a(List<MessageRecord> paramList, MessageRecord paramMessageRecord)
   {
-    if (PAWeatherItemBuilder.a(paramMessageRecord.senderuin))
-    {
-      if (!(paramMessageRecord instanceof MessageForText)) {
-        break label111;
-      }
-      if (!((MessageForText)paramMessageRecord).msg.startsWith(" ")) {
-        paramList.remove(paramMessageRecord);
-      }
-    }
-    for (;;)
-    {
-      if ((paramMessageRecord.msgtype == -5008) && (ArkAppCenter.b())) {
-        paramList.remove(paramMessageRecord);
-      }
-      if ((paramMessageRecord.msgtype == -2011) && ((paramMessageRecord instanceof MessageForStructing)))
+    if (((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).isWeatherPA(paramMessageRecord.senderuin)) {
+      if ((paramMessageRecord instanceof MessageForText))
       {
-        AbsStructMsg localAbsStructMsg = ((MessageForStructing)paramMessageRecord).structingMsg;
-        if ((localAbsStructMsg != null) && (localAbsStructMsg.mMsgServiceID == 85)) {
+        if (!((MessageForText)paramMessageRecord).msg.startsWith(" ")) {
           paramList.remove(paramMessageRecord);
         }
       }
-      return;
-      label111:
-      if ((!(paramMessageRecord instanceof MessageForArkApp)) && (!(paramMessageRecord instanceof MessageForStructing))) {
+      else if ((!(paramMessageRecord instanceof MessageForArkApp)) && (!(paramMessageRecord instanceof MessageForStructing))) {
+        paramList.remove(paramMessageRecord);
+      }
+    }
+    Object localObject = (IArkConfig)QRoute.api(IArkConfig.class);
+    if ((paramMessageRecord.msgtype == -5008) && (((IArkConfig)localObject).isPANonShow())) {
+      paramList.remove(paramMessageRecord);
+    }
+    if ((paramMessageRecord.msgtype == -2011) && ((paramMessageRecord instanceof MessageForStructing)))
+    {
+      localObject = ((MessageForStructing)paramMessageRecord).structingMsg;
+      if ((localObject != null) && (((AbsStructMsg)localObject).mMsgServiceID == 85)) {
         paramList.remove(paramMessageRecord);
       }
     }
@@ -67,23 +64,20 @@ public class PublicAccountGetAioList
       return;
     }
     paramInt1 = paramList.size() - 1;
-    if (paramInt1 >= 0)
+    while (paramInt1 >= 0)
     {
       paramString = (MessageRecord)paramList.get(paramInt1);
-      if (paramString == null) {}
-      for (;;)
-      {
-        paramInt1 -= 1;
-        break;
+      if (paramString != null) {
         a(paramList, paramString);
       }
+      paramInt1 -= 1;
     }
     a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.PublicAccountGetAioList
  * JD-Core Version:    0.7.0.1
  */

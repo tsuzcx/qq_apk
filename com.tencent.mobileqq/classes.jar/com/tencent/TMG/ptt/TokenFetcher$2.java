@@ -16,62 +16,63 @@ class TokenFetcher$2
       return;
     }
     TokenFetcher.GetDownloadTokenListener localGetDownloadTokenListener = (TokenFetcher.GetDownloadTokenListener)paramObject;
-    paramObject = "";
-    if ((paramInt != 0) || (TextUtils.isEmpty(paramString)))
+    paramObject = null;
+    String str = "";
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)))
+    {
+      try
+      {
+        Object localObject1 = new JSONObject(paramString);
+        paramInt = ((JSONObject)localObject1).getInt("ErrorCode");
+        if (paramInt != 0)
+        {
+          localObject1 = ((JSONObject)localObject1).getString("ErrorInfo");
+          Log.e("TokenFetcher", String.format("mDownloadTokenListener|errCode=%d, errInfo=%s", new Object[] { Integer.valueOf(paramInt), localObject1 }));
+          if (paramInt == 70001) {
+            break label289;
+          }
+          if (paramInt != 70347) {
+            break label279;
+          }
+          break label289;
+        }
+        localObject2 = ((JSONObject)localObject1).getString("download_token");
+        localObject1 = new TokenFetcher.DownloadInfo(((JSONObject)localObject1).getString("voice_url"), (String)localObject2);
+        paramString = "";
+        paramObject = localObject1;
+      }
+      catch (JSONException localJSONException)
+      {
+        paramInt = 12295;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("mDownloadTokenListener|decode resp json fail. resp=");
+        ((StringBuilder)localObject2).append(paramString);
+        Log.e("TokenFetcher", ((StringBuilder)localObject2).toString());
+        localJSONException.printStackTrace();
+        paramString = "decode resp json fail.";
+      }
+    }
+    else
     {
       Log.e("TokenFetcher", String.format("mDownloadTokenListener|http error code=%d", new Object[] { Integer.valueOf(0) }));
       paramInt = 12293;
-      paramString = null;
-      if (paramString != null) {
-        break label254;
-      }
+      paramString = "";
     }
-    label254:
-    String str1;
-    for (Object localObject = "";; str1 = paramString.token)
+    for (;;)
     {
-      for (;;)
-      {
-        Log.d("TokenFetcher", String.format("mDownloadTokenListener|errCode=%d, errInfo=%s, token=%s", new Object[] { Integer.valueOf(paramInt), paramObject, localObject }));
-        localGetDownloadTokenListener.onCompleted(paramInt, paramObject, paramString);
-        return;
-        try
-        {
-          localObject = new JSONObject(paramString);
-          paramInt = ((JSONObject)localObject).getInt("ErrorCode");
-          if (paramInt != 0)
-          {
-            paramObject = ((JSONObject)localObject).getString("ErrorInfo");
-            Log.e("TokenFetcher", String.format("mDownloadTokenListener|errCode=%d, errInfo=%s", new Object[] { Integer.valueOf(paramInt), paramObject }));
-            if (paramInt == 70001) {
-              break label263;
-            }
-            if (paramInt != 70347) {
-              break label272;
-            }
-            break label263;
-          }
-          String str2 = ((JSONObject)localObject).getString("download_token");
-          localObject = new TokenFetcher.DownloadInfo(((JSONObject)localObject).getString("voice_url"), str2);
-          paramString = (String)localObject;
-        }
-        catch (JSONException localJSONException)
-        {
-          paramInt = 12295;
-          paramObject = "decode resp json fail.";
-          Log.e("TokenFetcher", "mDownloadTokenListener|decode resp json fail. resp=" + paramString);
-          localJSONException.printStackTrace();
-          paramString = null;
-        }
+      if (paramObject != null) {
+        str = paramObject.token;
       }
-      break;
-    }
-    label263:
-    label272:
-    for (paramInt = 12296;; paramInt = 12290)
-    {
-      paramString = null;
-      break;
+      Log.d("TokenFetcher", String.format("mDownloadTokenListener|errCode=%d, errInfo=%s, token=%s", new Object[] { Integer.valueOf(paramInt), paramString, str }));
+      localGetDownloadTokenListener.onCompleted(paramInt, paramString, paramObject);
+      return;
+      label279:
+      paramInt = 12290;
+      paramString = localJSONException;
+      continue;
+      label289:
+      paramInt = 12296;
+      paramString = localJSONException;
     }
   }
 }

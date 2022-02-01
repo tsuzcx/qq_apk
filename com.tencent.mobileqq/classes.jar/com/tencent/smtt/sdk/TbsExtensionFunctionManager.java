@@ -1,6 +1,8 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
 import com.tencent.smtt.export.external.DexLoader;
@@ -29,223 +31,162 @@ public class TbsExtensionFunctionManager
   
   public static TbsExtensionFunctionManager getInstance()
   {
-    if (b == null) {}
-    try
-    {
-      if (b == null) {
-        b = new TbsExtensionFunctionManager();
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new TbsExtensionFunctionManager();
+        }
       }
-      return b;
+      finally {}
     }
-    finally {}
+    return b;
   }
   
   /* Error */
   public boolean canUseFunction(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: new 56	java/io/File
-    //   8: dup
-    //   9: aload_1
-    //   10: invokevirtual 62	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   13: aload_2
-    //   14: invokespecial 65	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   17: astore_1
-    //   18: aload_1
-    //   19: ifnonnull +39 -> 58
-    //   22: ldc 67
-    //   24: new 69	java/lang/StringBuilder
-    //   27: dup
-    //   28: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   31: ldc 72
-    //   33: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload_2
-    //   37: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: ldc 78
-    //   42: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 88	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   51: iload 4
-    //   53: istore_3
-    //   54: aload_0
-    //   55: monitorexit
-    //   56: iload_3
-    //   57: ireturn
-    //   58: iload 4
-    //   60: istore_3
-    //   61: aload_1
-    //   62: invokevirtual 92	java/io/File:exists	()Z
-    //   65: ifeq -11 -> 54
-    //   68: aload_1
-    //   69: invokevirtual 95	java/io/File:isFile	()Z
-    //   72: istore 5
-    //   74: iload 4
-    //   76: istore_3
-    //   77: iload 5
-    //   79: ifeq -25 -> 54
-    //   82: iconst_1
-    //   83: istore_3
-    //   84: goto -30 -> 54
-    //   87: astore_1
-    //   88: aload_0
-    //   89: monitorexit
-    //   90: aload_1
-    //   91: athrow
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: new 56	java/io/File
+    //   5: dup
+    //   6: aload_1
+    //   7: invokevirtual 62	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   10: aload_2
+    //   11: invokespecial 65	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   14: astore_1
+    //   15: aload_1
+    //   16: invokevirtual 69	java/io/File:exists	()Z
+    //   19: ifeq +18 -> 37
+    //   22: aload_1
+    //   23: invokevirtual 72	java/io/File:isFile	()Z
+    //   26: istore_3
+    //   27: iload_3
+    //   28: ifeq +9 -> 37
+    //   31: iconst_1
+    //   32: istore_3
+    //   33: aload_0
+    //   34: monitorexit
+    //   35: iload_3
+    //   36: ireturn
+    //   37: iconst_0
+    //   38: istore_3
+    //   39: goto -6 -> 33
+    //   42: astore_1
+    //   43: aload_0
+    //   44: monitorexit
+    //   45: goto +5 -> 50
+    //   48: aload_1
+    //   49: athrow
+    //   50: goto -2 -> 48
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	92	0	this	TbsExtensionFunctionManager
-    //   0	92	1	paramContext	Context
-    //   0	92	2	paramString	String
-    //   53	31	3	bool1	boolean
-    //   1	74	4	bool2	boolean
-    //   72	6	5	bool3	boolean
+    //   0	53	0	this	TbsExtensionFunctionManager
+    //   0	53	1	paramContext	Context
+    //   0	53	2	paramString	String
+    //   26	13	3	bool	boolean
     // Exception table:
     //   from	to	target	type
-    //   5	18	87	finally
-    //   22	51	87	finally
-    //   61	74	87	finally
+    //   2	27	42	finally
   }
   
-  /* Error */
   public int getRomCookieDBVersion(Context paramContext)
   {
-    // Byte code:
-    //   0: iconst_m1
-    //   1: istore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: getstatic 102	android/os/Build$VERSION:SDK_INT	I
-    //   7: bipush 11
-    //   9: if_icmplt +19 -> 28
-    //   12: aload_1
-    //   13: ldc 26
-    //   15: iconst_4
-    //   16: invokevirtual 106	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   19: astore_1
-    //   20: aload_1
-    //   21: ifnonnull +18 -> 39
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: iload_2
-    //   27: ireturn
-    //   28: aload_1
-    //   29: ldc 26
-    //   31: iconst_0
-    //   32: invokevirtual 106	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   35: astore_1
-    //   36: goto -16 -> 20
-    //   39: aload_1
-    //   40: ldc 23
-    //   42: iconst_m1
-    //   43: invokeinterface 112 3 0
-    //   48: istore_2
-    //   49: goto -25 -> 24
-    //   52: astore_1
-    //   53: aload_0
-    //   54: monitorexit
-    //   55: aload_1
-    //   56: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	57	0	this	TbsExtensionFunctionManager
-    //   0	57	1	paramContext	Context
-    //   1	48	2	i	int
-    // Exception table:
-    //   from	to	target	type
-    //   4	20	52	finally
-    //   28	36	52	finally
-    //   39	49	52	finally
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 11) {
+        paramContext = paramContext.getSharedPreferences("cookie_compatiable", 4);
+      } else {
+        paramContext = paramContext.getSharedPreferences("cookie_compatiable", 0);
+      }
+      if (paramContext == null) {
+        return -1;
+      }
+      int i = paramContext.getInt("cookie_db_version", -1);
+      return i;
+    }
+    finally {}
   }
   
   public void initTbsBuglyIfNeed(Context paramContext)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        boolean bool = this.a;
-        if (bool) {
-          return;
-        }
-        if (!canUseFunction(paramContext, "bugly_switch.txt"))
-        {
-          TbsLog.i("TbsExtensionFunMana", "bugly is forbiden!!");
-          continue;
-        }
-        if (!TbsShareManager.isThirdPartyApp(paramContext)) {}
+      boolean bool = this.a;
+      if (bool) {
+        return;
       }
-      finally {}
-      for (Object localObject1 = TbsShareManager.c(paramContext);; localObject1 = ((File)localObject1).getAbsolutePath())
+      if (!canUseFunction(paramContext, "bugly_switch.txt"))
       {
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label130;
-        }
-        TbsLog.i("TbsExtensionFunMana", "bugly init ,corePath is null");
-        break;
+        TbsLog.i("TbsExtensionFunMana", "bugly is forbiden!!");
+        return;
+      }
+      Object localObject1;
+      if (TbsShareManager.isThirdPartyApp(paramContext))
+      {
+        localObject1 = TbsShareManager.c(paramContext);
+      }
+      else
+      {
         localObject1 = p.a().q(paramContext);
         if (localObject1 == null) {
           TbsLog.i("TbsExtensionFunMana", "getTbsCoreShareDir is null");
         }
-        if ((((File)localObject1).listFiles() == null) || (((File)localObject1).listFiles().length <= 0))
-        {
-          TbsLog.i("TbsExtensionFunMana", "getTbsCoreShareDir is empty!");
-          break;
+        if ((((File)localObject1).listFiles() == null) || (((File)localObject1).listFiles().length <= 0)) {
+          break label336;
         }
+        localObject1 = ((File)localObject1).getAbsolutePath();
       }
-      label130:
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        TbsLog.i("TbsExtensionFunMana", "bugly init ,corePath is null");
+        return;
+      }
       Object localObject4 = p.a().q(paramContext);
       if (localObject4 == null)
       {
         TbsLog.i("TbsExtensionFunMana", "bugly init ,optDir is null");
+        return;
       }
-      else
+      Object localObject3 = new File((String)localObject1, "tbs_bugly_dex.jar");
+      try
       {
-        Object localObject3 = new File((String)localObject1, "tbs_bugly_dex.jar");
-        try
-        {
-          Object localObject2 = ((File)localObject3).getParent();
-          localObject3 = ((File)localObject3).getAbsolutePath();
-          localObject4 = ((File)localObject4).getAbsolutePath();
-          Map localMap = QbSdk.getSettings();
-          localObject2 = new DexLoader((String)localObject2, paramContext, new String[] { localObject3 }, (String)localObject4, localMap).loadClass("com.tencent.smtt.tbs.bugly.TBSBuglyManager");
-          int i = WebView.getTbsSDKVersion(paramContext);
-          int j = WebView.getTbsCoreVersion(paramContext);
-          i.a((Class)localObject2, "initBugly", new Class[] { Context.class, String.class, String.class, String.class }, new Object[] { paramContext, localObject1, String.valueOf(i), String.valueOf(j) });
-          this.a = true;
-          TbsLog.i("TbsExtensionFunMana", "initTbsBuglyIfNeed success!");
-        }
-        catch (Throwable paramContext)
-        {
-          TbsLog.i("TbsExtensionFunMana", "bugly init ,try init bugly failed(need new core):" + Log.getStackTraceString(paramContext));
-        }
+        Object localObject2 = ((File)localObject3).getParent();
+        localObject3 = ((File)localObject3).getAbsolutePath();
+        localObject4 = ((File)localObject4).getAbsolutePath();
+        Map localMap = QbSdk.getSettings();
+        localObject2 = new DexLoader((String)localObject2, paramContext, new String[] { localObject3 }, (String)localObject4, localMap).loadClass("com.tencent.smtt.tbs.bugly.TBSBuglyManager");
+        int i = WebView.getTbsSDKVersion(paramContext);
+        int j = WebView.getTbsCoreVersion(paramContext);
+        i.a((Class)localObject2, "initBugly", new Class[] { Context.class, String.class, String.class, String.class }, new Object[] { paramContext, localObject1, String.valueOf(i), String.valueOf(j) });
+        this.a = true;
+        TbsLog.i("TbsExtensionFunMana", "initTbsBuglyIfNeed success!");
+        return;
       }
+      catch (Throwable paramContext)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("bugly init ,try init bugly failed(need new core):");
+        ((StringBuilder)localObject1).append(Log.getStackTraceString(paramContext));
+        TbsLog.i("TbsExtensionFunMana", ((StringBuilder)localObject1).toString());
+        return;
+      }
+      label336:
+      TbsLog.i("TbsExtensionFunMana", "getTbsCoreShareDir is empty!");
+      return;
     }
+    finally {}
   }
   
   public boolean setFunctionEnable(Context paramContext, String paramString, boolean paramBoolean)
   {
-    boolean bool = false;
     if (paramContext == null) {
-      paramBoolean = bool;
+      return false;
     }
-    for (;;)
+    try
     {
-      return paramBoolean;
-      try
-      {
-        paramContext = new File(paramContext.getFilesDir(), paramString);
-        if (paramContext == null)
-        {
-          TbsLog.e("TbsExtensionFunMana", "setFunctionEnable," + paramString + " is null!");
-          paramBoolean = bool;
-          continue;
-        }
-      }
-      finally {}
+      paramContext = new File(paramContext.getFilesDir(), paramString);
       if (paramBoolean)
       {
         paramBoolean = paramContext.exists();
@@ -254,37 +195,42 @@ public class TbsExtensionFunctionManager
           {
             paramBoolean = paramContext.createNewFile();
             if (!paramBoolean) {
-              break label184;
+              break label146;
             }
-            paramBoolean = true;
+            return true;
           }
           catch (IOException paramContext)
           {
-            TbsLog.e("TbsExtensionFunMana", "setFunctionEnable,createNewFile fail:" + paramString);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("setFunctionEnable,createNewFile fail:");
+            localStringBuilder.append(paramString);
+            TbsLog.e("TbsExtensionFunMana", localStringBuilder.toString());
             paramContext.printStackTrace();
-            paramBoolean = bool;
+            return false;
           }
         }
       }
       else if (paramContext.exists())
       {
-        if (paramContext.delete())
-        {
-          paramBoolean = true;
-          continue;
+        paramBoolean = paramContext.delete();
+        if (paramBoolean) {
+          return true;
         }
-        TbsLog.e("TbsExtensionFunMana", "setFunctionEnable,file.delete fail:" + paramString);
-        paramBoolean = bool;
-        continue;
+        paramContext = new StringBuilder();
+        paramContext.append("setFunctionEnable,file.delete fail:");
+        paramContext.append(paramString);
+        TbsLog.e("TbsExtensionFunMana", paramContext.toString());
+        return false;
       }
-      label184:
-      paramBoolean = true;
+      label146:
+      return true;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsExtensionFunctionManager
  * JD-Core Version:    0.7.0.1
  */

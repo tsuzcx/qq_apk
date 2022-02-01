@@ -4,11 +4,11 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/RoundProgressStyle$VideoSoftAd;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/RoundProgressStyle;", "btnResource", "", "getBtnResource", "()I", "setBtnResource", "(I)V", "btnTextColor", "", "getBtnTextColor", "()Ljava/lang/String;", "setBtnTextColor", "(Ljava/lang/String;)V", "btnTextLength", "getBtnTextLength", "setBtnTextLength", "btnTextSize", "", "getBtnTextSize", "()F", "setBtnTextSize", "(F)V", "imageIconHeight", "getImageIconHeight", "setImageIconHeight", "imageIconWidth", "getImageIconWidth", "setImageIconWidth", "pauseRectColor", "getPauseRectColor", "setPauseRectColor", "pauseRectWidth", "getPauseRectWidth", "setPauseRectWidth", "progressColorHighLight", "getProgressColorHighLight", "setProgressColorHighLight", "progressColorNormal", "getProgressColorNormal", "setProgressColorNormal", "progressHighLightWidth", "getProgressHighLightWidth", "setProgressHighLightWidth", "progressWidthNormal", "getProgressWidthNormal", "setProgressWidthNormal", "roundSize", "getRoundSize", "setRoundSize", "startAngle", "getStartAngle", "setStartAngle", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/RoundProgressStyle$VideoSoftAd;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/style/RoundProgressStyle;", "btnResource", "", "getBtnResource", "()I", "setBtnResource", "(I)V", "btnTextColor", "", "getBtnTextColor", "()Ljava/lang/String;", "setBtnTextColor", "(Ljava/lang/String;)V", "btnTextLength", "getBtnTextLength", "setBtnTextLength", "btnTextSize", "", "getBtnTextSize", "()F", "setBtnTextSize", "(F)V", "imageIconHeight", "getImageIconHeight", "setImageIconHeight", "imageIconWidth", "getImageIconWidth", "setImageIconWidth", "pauseRectColor", "getPauseRectColor", "setPauseRectColor", "pauseRectWidth", "getPauseRectWidth", "setPauseRectWidth", "progressColorHighLight", "getProgressColorHighLight", "setProgressColorHighLight", "progressColorNormal", "getProgressColorNormal", "setProgressColorNormal", "progressHighLightWidth", "getProgressHighLightWidth", "setProgressHighLightWidth", "progressWidthNormal", "getProgressWidthNormal", "setProgressWidthNormal", "roundSize", "getRoundSize", "setRoundSize", "startAngle", "getStartAngle", "setStartAngle", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 final class RoundProgressStyle$VideoSoftAd
   extends RoundProgressStyle
 {
-  private int btnResource = 2130841967;
+  private int btnResource = 2130841858;
   @NotNull
   private String btnTextColor = "#FFFFFF";
   private int btnTextLength = 2;
@@ -182,7 +182,7 @@ final class RoundProgressStyle$VideoSoftAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.style.RoundProgressStyle.VideoSoftAd
  * JD-Core Version:    0.7.0.1
  */

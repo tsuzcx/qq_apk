@@ -12,7 +12,7 @@ public abstract class AbsUI<T>
   implements Handler.Callback
 {
   protected int a;
-  public Context a;
+  protected Context a;
   protected Handler a;
   protected View a;
   protected int b = -1;
@@ -32,15 +32,16 @@ public abstract class AbsUI<T>
     return this.jdField_a_of_type_Int;
   }
   
-  public Context a()
+  protected Context a()
   {
     return this.jdField_a_of_type_AndroidContentContext;
   }
   
   protected Resources a()
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null) {
-      return this.jdField_a_of_type_AndroidContentContext.getResources();
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    if (localContext != null) {
+      return localContext.getResources();
     }
     return null;
   }
@@ -52,7 +53,7 @@ public abstract class AbsUI<T>
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public final void a(Runnable paramRunnable)
+  protected final void a(Runnable paramRunnable)
   {
     if (paramRunnable == null) {
       return;
@@ -79,9 +80,7 @@ public abstract class AbsUI<T>
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return false;
     }
     d();
@@ -90,7 +89,7 @@ public abstract class AbsUI<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.baseUI.AbsUI
  * JD-Core Version:    0.7.0.1
  */

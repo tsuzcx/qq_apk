@@ -24,10 +24,23 @@ public class PTSItemData
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if ((paramObject instanceof PTSItemData)) {
-      return (TextUtils.equals(this.itemId, ((PTSItemData)paramObject).getItemID())) && (TextUtils.equals(this.jsonData, ((PTSItemData)paramObject).getJSONData()));
+    boolean bool3 = paramObject instanceof PTSItemData;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      String str = this.itemId;
+      paramObject = (PTSItemData)paramObject;
+      bool1 = bool2;
+      if (TextUtils.equals(str, paramObject.getItemID()))
+      {
+        bool1 = bool2;
+        if (TextUtils.equals(this.jsonData, paramObject.getJSONData())) {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
   
   public String getFrameTreeJson()
@@ -66,7 +79,7 @@ public class PTSItemData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSItemData
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ public class LiveMomentItemBuilder$LiveViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.LiveMomentItemBuilder.LiveViewHolder
  * JD-Core Version:    0.7.0.1
  */

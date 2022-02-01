@@ -59,14 +59,15 @@ public abstract class ImageScene
   
   public void t()
   {
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a();
+    GalleryManager localGalleryManager = this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager;
+    if (localGalleryManager != null) {
+      localGalleryManager.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.ImageScene
  * JD-Core Version:    0.7.0.1
  */

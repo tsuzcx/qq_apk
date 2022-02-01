@@ -14,9 +14,10 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.dating.MsgBoxUtil;
 import com.tencent.mobileqq.message.newmsg.NewMsgNotificationManager;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.utils.api.ITroopUtilsApi;
 import com.tencent.mobileqq.util.NoDisturbUtil;
 import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.mobileqq.utils.RoamSettingController;
 import com.tencent.mobileqq.vas.troopkeyword.TroopKeywordManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -49,20 +50,27 @@ public class VibrateSoundHelper
     this.h = paramQQAppInterface.canPlaySound();
     this.i = paramQQAppInterface.canVibrator();
     this.g = paramQQAppInterface.isVideoChatting();
-    if (QLog.isColorLevel()) {
-      QLog.d("VibrateSoundHelper", 2, new Object[] { "isRingerSilent is:" + this.jdField_a_of_type_Boolean + ",canDisturb is:" + this.b, " isMute:", Boolean.valueOf(this.d), " newMsgNotificationEnabled: ", Boolean.valueOf(this.c), " isCallIdle: ", Boolean.valueOf(this.e), " notRecordingPtt: ", Boolean.valueOf(this.f), " canPlaySoundInGeneralSetting: ", Boolean.valueOf(this.h), " canVibratorInGeneralSetting: ", Boolean.valueOf(this.i) });
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("isRingerSilent is:");
+      paramQQAppInterface.append(this.jdField_a_of_type_Boolean);
+      paramQQAppInterface.append(",canDisturb is:");
+      paramQQAppInterface.append(this.b);
+      QLog.d("VibrateSoundHelper", 2, new Object[] { paramQQAppInterface.toString(), " isMute:", Boolean.valueOf(this.d), " newMsgNotificationEnabled: ", Boolean.valueOf(this.c), " isCallIdle: ", Boolean.valueOf(this.e), " notRecordingPtt: ", Boolean.valueOf(this.f), " canPlaySoundInGeneralSetting: ", Boolean.valueOf(this.h), " canVibratorInGeneralSetting: ", Boolean.valueOf(this.i) });
     }
   }
   
   private String a(MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord.istroop == 1000) || (paramMessageRecord.istroop == 1004)) {
-      return paramMessageRecord.frienduin;
+    if ((paramMessageRecord.istroop != 1000) && (paramMessageRecord.istroop != 1004))
+    {
+      if (UinTypeUtil.a(paramMessageRecord.istroop) == 1032) {
+        return AppConstants.CONFESS_UIN;
+      }
+      return paramMessageRecord.senderuin;
     }
-    if (UinTypeUtil.a(paramMessageRecord.istroop) == 1032) {
-      return AppConstants.CONFESS_UIN;
-    }
-    return paramMessageRecord.senderuin;
+    return paramMessageRecord.frienduin;
   }
   
   private void a(int paramInt)
@@ -79,126 +87,118 @@ public class VibrateSoundHelper
   private void a(MessageRecord paramMessageRecord)
   {
     MessageNotificationSettingManager localMessageNotificationSettingManager = MessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_sound_for_message_enableSeparateSound", new Object[0]);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    int j = 0;
+    ((QQAppInterface)localObject).unitTestLog("vibratorAndAudio_check_sound_for_message_enableSeparateSound", new Object[0]);
     int k = SettingCloneUtil.readValueForInt(BaseApplication.context, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
-    AudioManager localAudioManager;
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localAudioManager = (AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSystemService("audio");
-      localStringBuilder = new StringBuilder().append("StreamVolume=");
-      if (localAudioManager != null) {
-        break label131;
+      localObject = (AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSystemService("audio");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("StreamVolume=");
+      if (localObject != null) {
+        j = ((AudioManager)localObject).getStreamVolume(2);
       }
+      localStringBuilder.append(j);
+      localStringBuilder.append(",SoundRid=");
+      localStringBuilder.append(k);
+      QLog.d("VibrateSoundHelper", 2, localStringBuilder.toString());
     }
-    label131:
-    for (int j = 0;; j = localAudioManager.getStreamVolume(2))
+    if (localMessageNotificationSettingManager != null)
     {
-      QLog.d("VibrateSoundHelper", 2, j + ",SoundRid=" + k);
-      if (localMessageNotificationSettingManager != null)
+      if (MessageNotificationSettingManager.a(paramMessageRecord))
       {
-        if (!MessageNotificationSettingManager.a(paramMessageRecord)) {
-          break;
-        }
         localMessageNotificationSettingManager.b(paramMessageRecord);
+        return;
       }
-      return;
+      localMessageNotificationSettingManager.b();
     }
-    localMessageNotificationSettingManager.b();
   }
   
   static boolean a(int paramInt, Message paramMessage, boolean paramBoolean)
   {
-    boolean bool3 = true;
-    if ((paramInt == 0) && (paramBoolean)) {}
-    for (boolean bool2 = true;; bool2 = false)
+    if ((paramInt == 0) && (paramBoolean)) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    if (paramMessage.istroop != 1001)
     {
-      if (paramMessage.istroop != 1001)
+      bool1 = bool2;
+      if (paramMessage.istroop != 10002) {}
+    }
+    else
+    {
+      bool1 = bool2;
+      if (paramMessage.msgtype == -3001) {
+        bool1 = true;
+      }
+    }
+    boolean bool2 = bool1;
+    if (paramMessage.istroop == 1008) {
+      if ((paramMessage.extStr == null) || ((paramMessage.extLong & 0x1) != 0) || (!paramMessage.extStr.contains("lockDisplay")))
       {
-        bool1 = bool2;
-        if (paramMessage.istroop != 10002) {}
+        bool2 = bool1;
+        if (paramMessage.extStr != null)
+        {
+          bool2 = bool1;
+          if ((paramMessage.extLong & 0x1) == 1)
+          {
+            bool2 = bool1;
+            if (!paramMessage.getExtInfoFromExtStr("lockDisplay").equals("true")) {}
+          }
+        }
       }
       else
       {
-        bool1 = bool2;
-        if (paramMessage.msgtype == -3001) {
-          bool1 = true;
+        bool2 = bool1;
+        if (paramBoolean) {
+          bool2 = true;
         }
-      }
-      bool2 = bool1;
-      if (paramMessage.istroop == 1008) {
-        if ((paramMessage.extStr == null) || ((paramMessage.extLong & 0x1) != 0) || (!paramMessage.extStr.contains("lockDisplay")))
-        {
-          bool2 = bool1;
-          if (paramMessage.extStr != null)
-          {
-            bool2 = bool1;
-            if ((paramMessage.extLong & 0x1) == 1)
-            {
-              bool2 = bool1;
-              if (!paramMessage.getExtInfoFromExtStr("lockDisplay").equals("true")) {}
-            }
-          }
-        }
-        else
-        {
-          bool2 = bool1;
-          if (paramBoolean) {
-            bool2 = true;
-          }
-        }
-      }
-      paramBoolean = bool2;
-      if (paramMessage.istroop == 1008)
-      {
-        paramBoolean = bool2;
-        if (AppConstants.REMINDER_UIN.equals(paramMessage.senderuin)) {
-          paramBoolean = true;
-        }
-      }
-      if (paramMessage.istroop == 9002) {}
-      for (boolean bool1 = bool3;; bool1 = paramBoolean)
-      {
-        paramBoolean = bool1;
-        if (paramMessage.istroop == 1037)
-        {
-          paramBoolean = bool1;
-          if (SdkInfoUtil.isOreo()) {
-            paramBoolean = false;
-          }
-        }
-        bool1 = paramBoolean;
-        if (paramMessage.istroop == 1044)
-        {
-          bool1 = paramBoolean;
-          if (SdkInfoUtil.isOreo()) {
-            bool1 = false;
-          }
-        }
-        paramBoolean = bool1;
-        if (paramMessage.istroop == 1045)
-        {
-          paramBoolean = bool1;
-          if (SdkInfoUtil.isOreo()) {
-            paramBoolean = false;
-          }
-        }
-        return paramBoolean;
       }
     }
+    paramBoolean = bool2;
+    if (paramMessage.istroop == 1008)
+    {
+      paramBoolean = bool2;
+      if (AppConstants.REMINDER_UIN.equals(paramMessage.senderuin)) {
+        paramBoolean = true;
+      }
+    }
+    boolean bool1 = paramBoolean;
+    if (paramMessage.istroop == 9002) {
+      bool1 = true;
+    }
+    paramBoolean = bool1;
+    if (paramMessage.istroop == 1044)
+    {
+      paramBoolean = bool1;
+      if (SdkInfoUtil.isOreo()) {
+        paramBoolean = false;
+      }
+    }
+    bool1 = paramBoolean;
+    if (paramMessage.istroop == 1045)
+    {
+      bool1 = paramBoolean;
+      if (SdkInfoUtil.isOreo()) {
+        bool1 = false;
+      }
+    }
+    return bool1;
   }
   
   private void c(MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2)
   {
     MessageNotificationSettingManager localMessageNotificationSettingManager = MessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    boolean bool1;
     boolean bool2;
+    boolean bool1;
     if ((paramMessageRecord != null) && (localMessageNotificationSettingManager != null))
     {
       boolean bool3 = localMessageNotificationSettingManager.b(paramMessageRecord.frienduin, paramMessageRecord.istroop);
       boolean bool4 = localMessageNotificationSettingManager.a(paramMessageRecord.senderuin);
-      bool1 = bool4;
       bool2 = bool3;
+      bool1 = bool4;
       if (QLog.isColorLevel())
       {
         QLog.d("QQAppInterface", 2, new Object[] { "vibratorAndAudio: invoked. ", " message: ", paramMessageRecord, " message.senderuin: ", paramMessageRecord.senderuin, " message.frienduin: ", paramMessageRecord.frienduin, " message.istroop: ", Integer.valueOf(paramMessageRecord.istroop) });
@@ -206,18 +206,17 @@ public class VibrateSoundHelper
         bool1 = bool4;
       }
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQAppInterface", 2, new Object[] { "vibratorAndAudio: invoked. ", " enableSeparateSoundWhenGlobalOff: ", Boolean.valueOf(bool2), " spCareFriendRingEnable: ", Boolean.valueOf(bool1), " spCareFriendRingEnable: ", Boolean.valueOf(bool1) });
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_play_sound_for_sp_message", new Object[] { Boolean.valueOf(paramBoolean2) });
-      if (((paramBoolean1) && (bool2) && (bool1)) || ((TroopKeywordManager.a(paramMessageRecord)) && (localMessageNotificationSettingManager != null))) {
-        localMessageNotificationSettingManager.b(paramMessageRecord);
-      }
-      return;
-      bool1 = false;
       bool2 = false;
+      bool1 = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface", 2, new Object[] { "vibratorAndAudio: invoked. ", " enableSeparateSoundWhenGlobalOff: ", Boolean.valueOf(bool2), " spCareFriendRingEnable: ", Boolean.valueOf(bool1), " spCareFriendRingEnable: ", Boolean.valueOf(bool1) });
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_play_sound_for_sp_message", new Object[] { Boolean.valueOf(paramBoolean2) });
+    if (((paramBoolean1) && (bool2) && (bool1)) || ((TroopKeywordManager.a(paramMessageRecord)) && (localMessageNotificationSettingManager != null))) {
+      localMessageNotificationSettingManager.b(paramMessageRecord);
     }
   }
   
@@ -230,7 +229,7 @@ public class VibrateSoundHelper
     {
       bool1 = bool2;
       if (paramMessageRecord != null) {
-        bool1 = localMessageNotificationSettingManager.b(this.h, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+        bool1 = localMessageNotificationSettingManager.b(bool2, paramMessageRecord.frienduin, paramMessageRecord.istroop);
       }
     }
     if (QLog.isColorLevel()) {
@@ -238,169 +237,168 @@ public class VibrateSoundHelper
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_sound_for_message", new Object[0]);
     int j;
-    if ((this.h) && (!this.g) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerVibrate()) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingEqualsZero()) && (this.e) && (this.f))
-    {
+    if ((this.h) && (!this.g) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerVibrate()) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingEqualsZero()) && (this.e) && (this.f)) {
       j = 1;
-      if ((this.h) || (this.g) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerVibrate()) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingEqualsZero()) || (!this.e) || (!this.f)) {
-        break label356;
-      }
+    } else {
+      j = 0;
     }
-    label356:
-    for (int k = 1;; k = 0)
+    int k;
+    if ((!this.h) && (!this.g) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerVibrate()) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingEqualsZero()) && (this.e) && (this.f)) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    if ((j != 0) && (bool1))
     {
-      if ((j == 0) || (!bool1)) {
-        break label362;
-      }
       a(paramMessageRecord);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_play_sound_for_message", new Object[] { Boolean.valueOf(bool1) });
       return;
-      j = 0;
-      break;
     }
-    label362:
-    if (k != 0)
-    {
+    if (k != 0) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_play_sound_for_message", new Object[] { Boolean.valueOf(bool1) });
-      try
-      {
-        c(paramMessageRecord, paramBoolean, bool1);
-        return;
-      }
-      catch (Throwable paramMessageRecord)
-      {
-        return;
-      }
     }
+    try
+    {
+      c(paramMessageRecord, paramBoolean, bool1);
+      return;
+    }
+    catch (Throwable paramMessageRecord) {}
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_no_need_play_sound_for_message", new Object[] { "独立会话支持的会话类型，并且独立会话声音开关关闭，这种场景不用播放铃声（即使全局铃声开关打开）" });
+    return;
   }
   
   void a(MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int k = 1;
-    Object localObject = BaseApplication.getContext();
-    SharedPreferences localSharedPreferences = ((BaseApplication)localObject).getSharedPreferences("com.tencent.mobileqq_preferences", 0);
-    Vibrator localVibrator = (Vibrator)((BaseApplication)localObject).getSystemService("vibrator");
-    localObject = MessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject1 = BaseApplication.getContext();
+    SharedPreferences localSharedPreferences = ((BaseApplication)localObject1).getSharedPreferences("com.tencent.mobileqq_preferences", 0);
+    localObject1 = (Vibrator)((BaseApplication)localObject1).getSystemService("vibrator");
+    Object localObject2 = MessageNotificationSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     boolean bool2 = this.i;
     boolean bool1 = bool2;
-    if (localObject != null)
+    if (localObject2 != null)
     {
       bool1 = bool2;
       if (paramMessageRecord != null) {
-        bool1 = ((MessageNotificationSettingManager)localObject).a(this.i, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+        bool1 = ((MessageNotificationSettingManager)localObject2).a(bool2, paramMessageRecord.frienduin, paramMessageRecord.istroop);
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_enableSeparateVibrate", new Object[] { Boolean.valueOf(bool1) });
-    int j;
-    if ((this.i) && (paramBoolean2))
-    {
+    if ((this.i) && (paramBoolean2)) {
       paramBoolean2 = true;
-      this.i = paramBoolean2;
-      if ((!this.i) || (!this.e) || (this.g) || (!this.f) || (!bool1)) {
-        break label251;
-      }
+    } else {
+      paramBoolean2 = false;
+    }
+    this.i = paramBoolean2;
+    int j;
+    if ((this.i) && (this.e) && (!this.g) && (this.f) && (bool1)) {
       j = 1;
-      label160:
+    } else {
+      j = 0;
+    }
+    if (j != 0)
+    {
+      if ((paramMessageRecord != null) && (paramBoolean1) && (paramMessageRecord.msgtype == -2020) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineStauts() == 11L)) {
+        j = 1;
+      } else {
+        j = 0;
+      }
       if (j != 0)
       {
-        if ((paramMessageRecord == null) || (!paramBoolean1) || (paramMessageRecord.msgtype != -2020) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineStauts() != 11L)) {
-          break label257;
-        }
-        j = 1;
-        label200:
-        if (j == 0) {
-          break label263;
-        }
-        localVibrator.vibrate(QQAppInterface.VIBRATOR_PATTERN_SHAKE, -1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_shake_window_type", new Object[] { Integer.valueOf(2) });
+        ((Vibrator)localObject1).vibrate(QQAppInterface.VIBRATOR_PATTERN_SHAKE, -1);
         j = 2;
-      }
-    }
-    for (;;)
-    {
-      a(j);
-      return;
-      paramBoolean2 = false;
-      break;
-      label251:
-      j = 0;
-      break label160;
-      label257:
-      j = 0;
-      break label200;
-      label263:
-      localObject = "";
-      if (paramMessageRecord != null)
-      {
-        paramMessageRecord = a(paramMessageRecord);
-        localObject = "special_sound_type" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + paramMessageRecord;
-      }
-      if (localSharedPreferences.contains((String)localObject))
-      {
-        localVibrator.vibrate(1000L);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_message", new Object[] { Integer.valueOf(3) });
-        j = 3;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_shake_window_type", new Object[] { Integer.valueOf(2) });
       }
       else
       {
-        localVibrator.vibrate(QQAppInterface.VIBRATOR_PATTERN, -1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_message", new Object[] { Integer.valueOf(1) });
-        j = k;
+        if (paramMessageRecord != null)
+        {
+          paramMessageRecord = a(paramMessageRecord);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("special_sound_type");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          ((StringBuilder)localObject2).append(paramMessageRecord);
+          paramMessageRecord = ((StringBuilder)localObject2).toString();
+        }
+        else
+        {
+          paramMessageRecord = "";
+        }
+        if (localSharedPreferences.contains(paramMessageRecord))
+        {
+          ((Vibrator)localObject1).vibrate(1000L);
+          j = 3;
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_message", new Object[] { Integer.valueOf(3) });
+        }
+        else
+        {
+          ((Vibrator)localObject1).vibrate(QQAppInterface.VIBRATOR_PATTERN, -1);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_message", new Object[] { Integer.valueOf(1) });
+          j = 1;
+        }
       }
+      a(j);
     }
   }
   
   void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_public_account_start", new Object[0]);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_sound_vibrate", new Object[] { Boolean.valueOf(false), Boolean.valueOf(false) });
-    Uri localUri = RingtoneManager.getActualDefaultRingtoneUri(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject1 = Boolean.valueOf(false);
+    ((QQAppInterface)localObject2).unitTestLog("vibratorAndAudio_check_public_account_start", new Object[0]);
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject2 = Boolean.valueOf(true);
+    ((QQAppInterface)localObject3).unitTestLog("vibratorAndAudio_check_sound_vibrate", new Object[] { localObject1, localObject1 });
+    localObject3 = RingtoneManager.getActualDefaultRingtoneUri(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2);
     Vibrator localVibrator = (Vibrator)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSystemService("vibrator");
     int j;
-    boolean bool;
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerVibrate()) && (this.b) && (!this.d))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_sound_vibrate", new Object[] { Boolean.valueOf(false), Boolean.valueOf(true) });
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_sound_vibrate", new Object[] { localObject1, localObject2 });
       j = 1;
-      bool = false;
     }
-    for (;;)
+    else
     {
-      if ((j != 0) && (paramBoolean)) {}
-      for (paramBoolean = true;; paramBoolean = false)
+      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerNormal()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerNormalVibrate()) && (this.b) && (!this.d)) {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_sound_vibrate", new Object[] { localObject2, localObject2 });
+      }
+      for (j = 1;; j = 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQAppInterface", 2, "canVibrator: " + paramBoolean + " canPlaySound: " + bool + " uri: " + localUri);
-        }
-        if ((paramBoolean) && (localVibrator != null))
-        {
-          localVibrator.vibrate(QQAppInterface.VIBRATOR_PATTERN, -1);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_vibrate_invoked", new Object[0]);
-        }
-        if ((bool) && (localUri != null))
-        {
-          AudioUtil.a(localUri, false, false);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_sound_invoked", new Object[] { localUri });
-        }
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerNormal()) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerNormalVibrate()) && (this.b) && (!this.d))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_sound_vibrate", new Object[] { Boolean.valueOf(true), Boolean.valueOf(true) });
-          j = 1;
-          bool = true;
+        bool = true;
+        break label279;
+        if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerNormal()) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerNormalVibrate()) || (!this.b) || (this.d)) {
           break;
         }
-        if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerNormal()) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isRingerNormalVibrate()) || (!this.b) || (this.d)) {
-          break label411;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_sound_vibrate", new Object[] { Boolean.valueOf(true), Boolean.valueOf(false) });
-        j = 0;
-        bool = true;
-        break;
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_sound_vibrate", new Object[] { localObject2, localObject1 });
       }
-      label411:
       j = 0;
-      bool = false;
+    }
+    boolean bool = false;
+    label279:
+    if ((j != 0) && (paramBoolean)) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("canVibrator: ");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      ((StringBuilder)localObject1).append(" canPlaySound: ");
+      ((StringBuilder)localObject1).append(bool);
+      ((StringBuilder)localObject1).append(" uri: ");
+      ((StringBuilder)localObject1).append(localObject3);
+      QLog.d("QQAppInterface", 2, ((StringBuilder)localObject1).toString());
+    }
+    if ((paramBoolean) && (localVibrator != null))
+    {
+      localVibrator.vibrate(QQAppInterface.VIBRATOR_PATTERN, -1);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_vibrate_invoked", new Object[0]);
+    }
+    if ((bool) && (localObject3 != null))
+    {
+      AudioUtil.a((Uri)localObject3, false, false);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_sound_invoked", new Object[] { localObject3 });
     }
   }
   
@@ -411,48 +409,43 @@ public class VibrateSoundHelper
   
   boolean a(int paramInt)
   {
+    boolean bool;
     if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getALLGeneralSettingRing() == 1) {}
-      for (bool = true;; bool = false)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_canPlaySpecialFriendSound", new Object[] { Boolean.valueOf(bool) });
-        return bool;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getALLGeneralSettingRing() == 1) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    if (paramInt == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_canPlaySpecialFriendSound", new Object[] { Boolean.valueOf(bool) });
       return bool;
     }
+    if (paramInt == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_canPlaySpecialFriendSound", new Object[] { Boolean.valueOf(bool) });
+    return bool;
   }
   
   boolean a(MessageRecord paramMessageRecord)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramMessageRecord != null)
+    if ((paramMessageRecord != null) && (paramMessageRecord.istroop == 1001) && (!MsgBoxUtil.b(paramMessageRecord)) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause))
     {
-      bool1 = bool2;
-      if (paramMessageRecord.istroop == 1001)
+      if (QLog.isColorLevel())
       {
-        bool1 = bool2;
-        if (!MsgBoxUtil.b(paramMessageRecord))
-        {
-          bool1 = bool2;
-          if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("SpecialCare", 2, "message.istroop = " + paramMessageRecord.istroop + " MsgBoxUtil.shouldInMsgBox(message) = " + MsgBoxUtil.b(paramMessageRecord));
-            }
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_UIN_TYPE_LBS_FRIEND", new Object[0]);
-            bool1 = true;
-          }
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("message.istroop = ");
+        localStringBuilder.append(paramMessageRecord.istroop);
+        localStringBuilder.append(" MsgBoxUtil.shouldInMsgBox(message) = ");
+        localStringBuilder.append(MsgBoxUtil.b(paramMessageRecord));
+        QLog.e("SpecialCare", 2, localStringBuilder.toString());
       }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_UIN_TYPE_LBS_FRIEND", new Object[0]);
+      return true;
     }
-    return bool1;
+    return false;
   }
   
   void b(MessageRecord paramMessageRecord, boolean paramBoolean)
@@ -460,51 +453,65 @@ public class VibrateSoundHelper
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_invoked", new Object[0]);
     if (QLog.isColorLevel())
     {
-      str = null;
+      Object localObject = null;
       if (paramMessageRecord != null) {
-        if (paramMessageRecord.msgtype != -2020) {
-          break label79;
+        if (paramMessageRecord.msgtype == -2020)
+        {
+          localObject = paramMessageRecord.getBaseInfoString();
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("not shake msg,uinSeq is:");
+          ((StringBuilder)localObject).append(paramMessageRecord.uniseq);
+          localObject = ((StringBuilder)localObject).toString();
         }
       }
-    }
-    label79:
-    for (String str = paramMessageRecord.getBaseInfoString();; str = "not shake msg,uinSeq is:" + paramMessageRecord.uniseq)
-    {
-      QLog.d("VibrateSoundHelper", 2, "message is:" + str + ",isOnline is:" + paramBoolean);
-      return;
+      paramMessageRecord = new StringBuilder();
+      paramMessageRecord.append("message is:");
+      paramMessageRecord.append((String)localObject);
+      paramMessageRecord.append(",isOnline is:");
+      paramMessageRecord.append(paramBoolean);
+      QLog.d("VibrateSoundHelper", 2, paramMessageRecord.toString());
     }
   }
   
   void b(MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_check_silent_start", new Object[0]);
-    boolean bool2 = a(RoamSettingController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    boolean bool2 = a(((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getSpecialCareRingRoamingSetting(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
     if ((paramMessageRecord != null) && (paramMessageRecord.istroop == 1))
     {
-      if ((!this.h) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.troopCanPlaySound())) {
-        break label216;
+      boolean bool1;
+      if ((this.h) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.troopCanPlaySound())) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      bool1 = true;
       this.h = bool1;
-      if ((!this.i) || (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.troopCanVibrator())) {
-        break label222;
+      if ((this.i) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.troopCanVibrator())) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-    }
-    label216:
-    label222:
-    for (boolean bool1 = true;; bool1 = false)
-    {
       this.i = bool1;
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unitTestLog("vibratorAndAudio_troop_sound_vibrator", new Object[] { Boolean.valueOf(this.h), Boolean.valueOf(this.i) });
-      if (QLog.isColorLevel()) {
-        QLog.d("VibrateSoundHelper", 2, "canVibratorInGeneralSetting is:" + this.i + ",isVideoing is:" + this.g + ",isCallIdle is:" + this.e + ",notRecordingPtt is:" + this.f);
-      }
-      a(paramMessageRecord, paramBoolean1, paramBoolean2);
-      a(paramMessageRecord, bool2);
-      return;
-      bool1 = false;
-      break;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("canVibratorInGeneralSetting is:");
+      localStringBuilder.append(this.i);
+      localStringBuilder.append(",isVideoing is:");
+      localStringBuilder.append(this.g);
+      localStringBuilder.append(",isCallIdle is:");
+      localStringBuilder.append(this.e);
+      localStringBuilder.append(",notRecordingPtt is:");
+      localStringBuilder.append(this.f);
+      QLog.d("VibrateSoundHelper", 2, localStringBuilder.toString());
+    }
+    a(paramMessageRecord, paramBoolean1, paramBoolean2);
+    a(paramMessageRecord, bool2);
   }
   
   boolean b(MessageRecord paramMessageRecord)
@@ -523,7 +530,7 @@ public class VibrateSoundHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.VibrateSoundHelper
  * JD-Core Version:    0.7.0.1
  */

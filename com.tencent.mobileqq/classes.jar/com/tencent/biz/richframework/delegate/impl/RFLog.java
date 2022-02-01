@@ -58,19 +58,20 @@ public class RFLog
   
   private static ILogDelegate getLogDelegate()
   {
-    if (mLogImpl == null) {}
-    try
-    {
-      mLogImpl = (ILogDelegate)RFApplication.getDelegateImpl(ILogDelegate.class).newInstance();
-      return mLogImpl;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    if (mLogImpl == null) {
+      try
+      {
+        mLogImpl = (ILogDelegate)RFApplication.getDelegateImpl(ILogDelegate.class).newInstance();
+        DEV = mLogImpl.getDEVValue();
+        CLR = mLogImpl.getCLRValue();
+        USR = mLogImpl.getUSRValue();
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
+    return mLogImpl;
   }
   
   public static void i(String paramString1, int paramInt, String paramString2)
@@ -117,7 +118,7 @@ public class RFLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.delegate.impl.RFLog
  * JD-Core Version:    0.7.0.1
  */

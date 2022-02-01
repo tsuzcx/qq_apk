@@ -14,13 +14,18 @@ public class BufferEndTask
   
   public void doTask(Object paramObject, int paramInt, long paramLong1, long paramLong2)
   {
-    Log.i("BufferEndTask", "bufferEnd, ptr=" + paramObject + " ,playerState=" + this.playerState);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("bufferEnd, ptr=");
+    ((StringBuilder)localObject).append(paramObject);
+    ((StringBuilder)localObject).append(" ,playerState=");
+    ((StringBuilder)localObject).append(this.playerState);
+    Log.i("BufferEndTask", ((StringBuilder)localObject).toString());
     if (this.playerState == 2)
     {
       paramObject = VideoReportPlayerUtils.debugStart();
-      VideoSession localVideoSession = this.flowInfo.getVideoSession();
-      if (localVideoSession != null) {
-        localVideoSession.bufferEnd();
+      localObject = this.flowInfo.getVideoSession();
+      if (localObject != null) {
+        ((VideoSession)localObject).bufferEnd();
       }
       VideoReportPlayerUtils.debugEnd("bufferEnd", paramObject);
     }
@@ -34,7 +39,7 @@ public class BufferEndTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.logic.oninfo.BufferEndTask
  * JD-Core Version:    0.7.0.1
  */

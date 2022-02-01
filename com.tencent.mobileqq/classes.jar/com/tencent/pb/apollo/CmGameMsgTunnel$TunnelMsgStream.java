@@ -29,13 +29,15 @@ public final class CmGameMsgTunnel$TunnelMsgStream
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 56, 64, 74, 82, 88, 98 }, new String[] { "platform", "osver", "mqqver", "cmd", "seq", "distribute_ts", "src_uid", "dst_uid", "sign", "busi_buff", "ret", "msg" }, new Object[] { Long.valueOf(0L), "", "", "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", localByteStringMicro, Integer.valueOf(0), "" }, TunnelMsgStream.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 56, 64, 74, 82, 88, 98 }, new String[] { "platform", "osver", "mqqver", "cmd", "seq", "distribute_ts", "src_uid", "dst_uid", "sign", "busi_buff", "ret", "msg" }, new Object[] { localLong, "", "", "", localInteger, localLong, localLong, localLong, "", localByteStringMicro, localInteger, "" }, TunnelMsgStream.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.apollo.CmGameMsgTunnel.TunnelMsgStream
  * JD-Core Version:    0.7.0.1
  */

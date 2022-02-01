@@ -7,6 +7,9 @@ import com.tencent.falco.base.libapi.generalinfo.AppGeneralInfoService;
 import com.tencent.falco.base.libapi.http.HttpInterface;
 import com.tencent.falco.base.libapi.imageloader.ImageLoaderInterface;
 import com.tencent.falco.base.libapi.log.LogInterface;
+import com.tencent.falco.base.libapi.lottie.LottieAnimationViewInterface;
+import com.tencent.falco.base.libapi.lottie.LottieCompositionInterface;
+import com.tencent.falco.base.libapi.lottie.LottieViewInterface;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.LuxuryGiftInfo;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.OnFetchH264GiftInfoListener;
 import com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.OnFetchH264ResListener;
@@ -17,7 +20,7 @@ import org.json.JSONObject;
 
 public abstract interface LuxuryGiftAdapter
 {
-  public abstract LottieViewInterface createLottieView(Context paramContext, LuxuryGiftAdapter paramLuxuryGiftAdapter);
+  public abstract LottieAnimationViewInterface createLottieAnimationView(Context paramContext);
   
   public abstract void fetchGiftResByGiftInfo(LuxuryGiftInfo paramLuxuryGiftInfo, OnFetchH264ResListener paramOnFetchH264ResListener);
   
@@ -45,9 +48,13 @@ public abstract interface LuxuryGiftAdapter
   
   public abstract LogInterface getLogger();
   
+  public abstract LottieCompositionInterface getLottieComposition();
+  
   public abstract LuxuryGiftInfo getLuxuryGiftInfo(int paramInt, long paramLong, boolean paramBoolean);
   
   public abstract String getLuxuryGiftLogoUrl(String paramString, long paramLong);
+  
+  public abstract LottieViewInterface getLuxuryGiftLottieView(Context paramContext);
   
   public abstract JSONObject getWhiteListJson();
   
@@ -59,7 +66,7 @@ public abstract interface LuxuryGiftAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.LuxuryGiftAdapter
  * JD-Core Version:    0.7.0.1
  */

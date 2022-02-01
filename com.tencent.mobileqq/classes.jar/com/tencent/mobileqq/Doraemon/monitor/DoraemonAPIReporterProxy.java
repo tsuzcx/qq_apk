@@ -3,7 +3,6 @@ package com.tencent.mobileqq.Doraemon.monitor;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.Doraemon.DoraemonBridge;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -24,7 +23,7 @@ public class DoraemonAPIReporterProxy
           localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update");
           localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update_batch");
           DoraemonAPIReporterProxy.1 local1 = new DoraemonAPIReporterProxy.1(this);
-          BaseApplicationImpl.getContext().registerReceiver(local1, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          BaseApplication.getContext().registerReceiver(local1, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
           this.jdField_a_of_type_AndroidContentBroadcastReceiver = local1;
         }
         return;
@@ -61,7 +60,7 @@ public class DoraemonAPIReporterProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterProxy
  * JD-Core Version:    0.7.0.1
  */

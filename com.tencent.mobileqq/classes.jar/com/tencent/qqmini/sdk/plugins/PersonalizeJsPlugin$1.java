@@ -12,7 +12,10 @@ class PersonalizeJsPlugin$1
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.i("PersonalizeJsPlugin", "setPersonalizeInfo result:" + paramBoolean);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("setPersonalizeInfo result:");
+    paramJSONObject.append(paramBoolean);
+    QMLog.i("PersonalizeJsPlugin", paramJSONObject.toString());
     if (paramBoolean)
     {
       this.val$req.ok();
@@ -23,7 +26,7 @@ class PersonalizeJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PersonalizeJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

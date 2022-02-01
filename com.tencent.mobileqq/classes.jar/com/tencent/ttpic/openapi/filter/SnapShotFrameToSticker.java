@@ -23,8 +23,9 @@ public class SnapShotFrameToSticker
   
   public void clear()
   {
-    if (this.mCopyFilter != null) {
-      this.mCopyFilter.clearGLSL();
+    BaseFilter localBaseFilter = this.mCopyFilter;
+    if (localBaseFilter != null) {
+      localBaseFilter.clearGLSL();
     }
   }
   
@@ -55,16 +56,12 @@ public class SnapShotFrameToSticker
   public void updateTexture(List<RenderItem> paramList, Frame paramFrame, PTDetectInfo paramPTDetectInfo)
   {
     paramList = paramList.iterator();
-    for (;;)
+    while (paramList.hasNext())
     {
-      SnapShotFilter localSnapShotFilter;
-      if (paramList.hasNext())
+      paramPTDetectInfo = (RenderItem)paramList.next();
+      if ((paramPTDetectInfo.filter instanceof SnapShotFilter))
       {
-        paramPTDetectInfo = (RenderItem)paramList.next();
-        if (!(paramPTDetectInfo.filter instanceof SnapShotFilter)) {
-          continue;
-        }
-        localSnapShotFilter = (SnapShotFilter)paramPTDetectInfo.filter;
+        SnapShotFilter localSnapShotFilter = (SnapShotFilter)paramPTDetectInfo.filter;
         if (localSnapShotFilter.getStickerItem().stickerType == VideoFilterFactory.STICKER_TYPE.SNAP_SHOT.type)
         {
           if (!paramPTDetectInfo.triggerCtrlItem.isTriggered()) {
@@ -75,15 +72,12 @@ public class SnapShotFrameToSticker
             frameToSticker(localSnapShotFilter, paramFrame);
             localSnapShotFilter.setHasSnapShot(true);
             localSnapShotFilter.setAlpha();
+            return;
           }
         }
-      }
-      else
-      {
-        return;
-      }
-      if (localSnapShotFilter.getStickerItem().type == VideoFilterFactory.POSITION_TYPE.TRANSPARENT.type) {
-        frameToStickerTexture(localSnapShotFilter, paramFrame);
+        if (localSnapShotFilter.getStickerItem().type == VideoFilterFactory.POSITION_TYPE.TRANSPARENT.type) {
+          frameToStickerTexture(localSnapShotFilter, paramFrame);
+        }
       }
     }
   }
@@ -91,16 +85,12 @@ public class SnapShotFrameToSticker
   public void updateTextureWithSticker(List<RenderItem> paramList, Frame paramFrame, PTDetectInfo paramPTDetectInfo)
   {
     paramList = paramList.iterator();
-    for (;;)
+    while (paramList.hasNext())
     {
-      SnapShotFilter localSnapShotFilter;
-      if (paramList.hasNext())
+      paramPTDetectInfo = (RenderItem)paramList.next();
+      if ((paramPTDetectInfo.filter instanceof SnapShotFilter))
       {
-        paramPTDetectInfo = (RenderItem)paramList.next();
-        if (!(paramPTDetectInfo.filter instanceof SnapShotFilter)) {
-          continue;
-        }
-        localSnapShotFilter = (SnapShotFilter)paramPTDetectInfo.filter;
+        SnapShotFilter localSnapShotFilter = (SnapShotFilter)paramPTDetectInfo.filter;
         if (localSnapShotFilter.getStickerItem().stickerType == VideoFilterFactory.STICKER_TYPE.SNAP_SHOT.type)
         {
           if (!paramPTDetectInfo.triggerCtrlItem.isTriggered()) {
@@ -111,22 +101,19 @@ public class SnapShotFrameToSticker
             frameToSticker(localSnapShotFilter, paramFrame);
             localSnapShotFilter.setHasSnapShot(true);
             localSnapShotFilter.setAlpha();
+            return;
           }
         }
-      }
-      else
-      {
-        return;
-      }
-      if (localSnapShotFilter.getStickerItem().type == VideoFilterFactory.POSITION_TYPE.TRANSPARENT.type) {
-        frameToStickerTexture(localSnapShotFilter, paramFrame);
+        if (localSnapShotFilter.getStickerItem().type == VideoFilterFactory.POSITION_TYPE.TRANSPARENT.type) {
+          frameToStickerTexture(localSnapShotFilter, paramFrame);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.SnapShotFrameToSticker
  * JD-Core Version:    0.7.0.1
  */

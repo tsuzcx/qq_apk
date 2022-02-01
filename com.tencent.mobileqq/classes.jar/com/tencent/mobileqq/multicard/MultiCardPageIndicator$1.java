@@ -18,38 +18,41 @@ class MultiCardPageIndicator$1
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onClick() called with: view = [");
+      ((StringBuilder)localObject1).append(paramView);
+      ((StringBuilder)localObject1).append("]");
+      QLog.d("TabPageIndicator", 2, ((StringBuilder)localObject1).toString());
     }
     MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof MultiCardPageIndicator.MultiAIOHolder)) {}
-    for (localObject = (MultiCardPageIndicator.MultiAIOHolder)localObject;; localObject = null)
+    Object localObject2 = paramView.getTag();
+    Object localObject1 = null;
+    if ((localObject2 instanceof MultiCardPageIndicator.MultiAIOHolder)) {
+      localObject1 = (MultiCardPageIndicator.MultiAIOHolder)localObject2;
+    }
+    if (localObject1 != null)
     {
-      if (localObject == null) {}
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        int i = MultiCardPageIndicator.a(this.a).a();
-        int j = ((MultiCardPageIndicator.MultiAIOHolder)localObject).jdField_a_of_type_Int;
-        this.a.setCurrentItem(j);
-        ReportController.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
-        ((MultiCardPageIndicator.MultiAIOHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
-        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
-          MultiCardPageIndicator.a(this.a).a(j);
-        }
-        if (MultiCardPageIndicator.a(this.a) != null) {
-          MultiCardPageIndicator.a(this.a).a(j);
-        }
+      int i = MultiCardPageIndicator.a(this.a).a();
+      int j = ((MultiCardPageIndicator.MultiAIOHolder)localObject1).jdField_a_of_type_Int;
+      this.a.setCurrentItem(j);
+      ReportController.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
+      ((MultiCardPageIndicator.MultiAIOHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      MultiCardPageIndicator.a(this.a).setCurrentItem(j);
+      if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
+        MultiCardPageIndicator.a(this.a).a(j);
+      }
+      if (MultiCardPageIndicator.a(this.a) != null) {
+        MultiCardPageIndicator.a(this.a).a(j);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardPageIndicator.1
  * JD-Core Version:    0.7.0.1
  */

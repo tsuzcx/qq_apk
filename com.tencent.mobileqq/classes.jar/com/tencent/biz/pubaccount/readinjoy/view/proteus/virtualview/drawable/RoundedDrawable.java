@@ -83,23 +83,16 @@ public class RoundedDrawable
   
   private static boolean any(boolean[] paramArrayOfBoolean)
   {
-    boolean bool2 = false;
     int j = paramArrayOfBoolean.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramArrayOfBoolean[i] != 0) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramArrayOfBoolean[i] != 0) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public static Bitmap drawableToBitmap(Drawable paramDrawable)
@@ -140,15 +133,22 @@ public class RoundedDrawable
       if ((paramDrawable instanceof RoundedDrawable)) {
         return (RoundedDrawable)paramDrawable;
       }
-      if ((paramDrawable instanceof LayerDrawable)) {
+      if (!(paramDrawable instanceof LayerDrawable))
+      {
+        if (!(paramDrawable instanceof StateListDrawable))
+        {
+          paramDrawable = drawableToBitmap(paramDrawable);
+          if (paramDrawable != null) {
+            return new RoundedDrawable(paramDrawable);
+          }
+        }
+        else
+        {
+          throw new IllegalStateException("can not change StateListDrawable");
+        }
+      }
+      else {
         throw new IllegalStateException("can not change LayerDrawable");
-      }
-      if ((paramDrawable instanceof StateListDrawable)) {
-        throw new IllegalStateException("can not change StateListDrawable");
-      }
-      paramDrawable = drawableToBitmap(paramDrawable);
-      if (paramDrawable != null) {
-        return new RoundedDrawable(paramDrawable);
       }
     }
     return null;
@@ -158,11 +158,17 @@ public class RoundedDrawable
   {
     int j = paramArrayOfBoolean.length;
     int i = 0;
-    while (i < j)
+    for (;;)
     {
+      int k = 1;
+      if (i >= j) {
+        break;
+      }
       int m = paramArrayOfBoolean[i];
-      if (i == paramInt) {}
-      for (int k = 1; m != k; k = 0) {
+      if (i != paramInt) {
+        k = 0;
+      }
+      if (m != k) {
         return false;
       }
       i += 1;
@@ -172,155 +178,195 @@ public class RoundedDrawable
   
   private void redrawBitmapForSquareCorners(Canvas paramCanvas)
   {
-    if (all(this.mCornersRounded)) {}
-    float f1;
-    float f4;
-    float f5;
-    do
+    if (all(this.mCornersRounded)) {
+      return;
+    }
+    if (this.mCornerRadius == 0.0F) {
+      return;
+    }
+    float f1 = this.mDrawableRect.left;
+    float f2 = this.mDrawableRect.top;
+    float f3 = this.mDrawableRect.width() + f1;
+    float f4 = this.mDrawableRect.height() + f2;
+    float f5 = this.mCornerRadius;
+    if (this.mCornersRounded[0] == 0)
     {
-      do
-      {
-        return;
-      } while (this.mCornerRadius == 0.0F);
-      f1 = this.mDrawableRect.left;
-      float f2 = this.mDrawableRect.top;
-      float f3 = this.mDrawableRect.width() + f1;
-      f4 = this.mDrawableRect.height() + f2;
-      f5 = this.mCornerRadius;
-      if (this.mCornersRounded[0] == 0)
-      {
-        this.mSquareCornersRect.set(f1, f2, f1 + f5, f2 + f5);
-        paramCanvas.drawRect(this.mSquareCornersRect, this.mBitmapPaint);
-      }
-      if (this.mCornersRounded[1] == 0)
-      {
-        this.mSquareCornersRect.set(f3 - f5, f2, f3, f5);
-        paramCanvas.drawRect(this.mSquareCornersRect, this.mBitmapPaint);
-      }
-      if (this.mCornersRounded[2] == 0)
-      {
-        this.mSquareCornersRect.set(f3 - f5, f4 - f5, f3, f4);
-        paramCanvas.drawRect(this.mSquareCornersRect, this.mBitmapPaint);
-      }
-    } while (this.mCornersRounded[3] != 0);
-    this.mSquareCornersRect.set(f1, f4 - f5, f5 + f1, f4);
-    paramCanvas.drawRect(this.mSquareCornersRect, this.mBitmapPaint);
+      this.mSquareCornersRect.set(f1, f2, f1 + f5, f2 + f5);
+      paramCanvas.drawRect(this.mSquareCornersRect, this.mBitmapPaint);
+    }
+    if (this.mCornersRounded[1] == 0)
+    {
+      this.mSquareCornersRect.set(f3 - f5, f2, f3, f5);
+      paramCanvas.drawRect(this.mSquareCornersRect, this.mBitmapPaint);
+    }
+    if (this.mCornersRounded[2] == 0)
+    {
+      this.mSquareCornersRect.set(f3 - f5, f4 - f5, f3, f4);
+      paramCanvas.drawRect(this.mSquareCornersRect, this.mBitmapPaint);
+    }
+    if (this.mCornersRounded[3] == 0)
+    {
+      this.mSquareCornersRect.set(f1, f4 - f5, f5 + f1, f4);
+      paramCanvas.drawRect(this.mSquareCornersRect, this.mBitmapPaint);
+    }
   }
   
   private void redrawBorderForSquareCorners(Canvas paramCanvas)
   {
-    if (all(this.mCornersRounded)) {}
-    float f1;
-    float f4;
-    float f5;
-    float f6;
-    do
+    if (all(this.mCornersRounded)) {
+      return;
+    }
+    if (this.mCornerRadius == 0.0F) {
+      return;
+    }
+    float f1 = this.mDrawableRect.left;
+    float f2 = this.mDrawableRect.top;
+    float f3 = f1 + this.mDrawableRect.width();
+    float f4 = f2 + this.mDrawableRect.height();
+    float f5 = this.mCornerRadius;
+    float f6 = this.mBorderWidth / 2.0F;
+    if (this.mCornersRounded[0] == 0)
     {
-      do
-      {
-        return;
-      } while (this.mCornerRadius == 0.0F);
-      f1 = this.mDrawableRect.left;
-      float f2 = this.mDrawableRect.top;
-      float f3 = f1 + this.mDrawableRect.width();
-      f4 = f2 + this.mDrawableRect.height();
-      f5 = this.mCornerRadius;
-      f6 = this.mBorderWidth / 2.0F;
-      if (this.mCornersRounded[0] == 0)
-      {
-        paramCanvas.drawLine(f1 - f6, f2, f1 + f5, f2, this.mBorderPaint);
-        paramCanvas.drawLine(f1, f2 - f6, f1, f2 + f5, this.mBorderPaint);
-      }
-      if (this.mCornersRounded[1] == 0)
-      {
-        paramCanvas.drawLine(f3 - f5 - f6, f2, f3, f2, this.mBorderPaint);
-        paramCanvas.drawLine(f3, f2 - f6, f3, f2 + f5, this.mBorderPaint);
-      }
-      if (this.mCornersRounded[2] == 0)
-      {
-        paramCanvas.drawLine(f3 - f5 - f6, f4, f3 + f6, f4, this.mBorderPaint);
-        paramCanvas.drawLine(f3, f4 - f5, f3, f4, this.mBorderPaint);
-      }
-    } while (this.mCornersRounded[3] != 0);
-    paramCanvas.drawLine(f1 - f6, f4, f1 + f5, f4, this.mBorderPaint);
-    paramCanvas.drawLine(f1, f4 - f5, f1, f4, this.mBorderPaint);
+      paramCanvas.drawLine(f1 - f6, f2, f1 + f5, f2, this.mBorderPaint);
+      paramCanvas.drawLine(f1, f2 - f6, f1, f2 + f5, this.mBorderPaint);
+    }
+    if (this.mCornersRounded[1] == 0)
+    {
+      paramCanvas.drawLine(f3 - f5 - f6, f2, f3, f2, this.mBorderPaint);
+      paramCanvas.drawLine(f3, f2 - f6, f3, f2 + f5, this.mBorderPaint);
+    }
+    if (this.mCornersRounded[2] == 0)
+    {
+      paramCanvas.drawLine(f3 - f5 - f6, f4, f3 + f6, f4, this.mBorderPaint);
+      paramCanvas.drawLine(f3, f4 - f5, f3, f4, this.mBorderPaint);
+    }
+    if (this.mCornersRounded[3] == 0)
+    {
+      paramCanvas.drawLine(f1 - f6, f4, f1 + f5, f4, this.mBorderPaint);
+      paramCanvas.drawLine(f1, f4 - f5, f1, f4, this.mBorderPaint);
+    }
   }
   
   private void updateShaderMatrix()
   {
-    float f1 = 0.0F;
-    switch (RoundedDrawable.1.$SwitchMap$android$widget$ImageView$ScaleType[this.mScaleType.ordinal()])
+    int i = RoundedDrawable.1.$SwitchMap$android$widget$ImageView$ScaleType[this.mScaleType.ordinal()];
+    Object localObject;
+    float f1;
+    if (i != 1)
     {
-    case 4: 
-    default: 
-      this.mBorderRect.set(this.mBitmapRect);
-      this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBounds, Matrix.ScaleToFit.CENTER);
-      this.mShaderMatrix.mapRect(this.mBorderRect);
-      this.mBorderRect.inset(this.mBorderWidth / 2.0F, this.mBorderWidth / 2.0F);
-      this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
+      float f2;
+      float f3;
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 5)
+          {
+            if (i != 6)
+            {
+              if (i != 7)
+              {
+                this.mBorderRect.set(this.mBitmapRect);
+                this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBounds, Matrix.ScaleToFit.CENTER);
+                this.mShaderMatrix.mapRect(this.mBorderRect);
+                localObject = this.mBorderRect;
+                f1 = this.mBorderWidth;
+                ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+                this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
+              }
+              else
+              {
+                this.mBorderRect.set(this.mBounds);
+                localObject = this.mBorderRect;
+                f1 = this.mBorderWidth;
+                ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+                this.mShaderMatrix.reset();
+                this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
+              }
+            }
+            else
+            {
+              this.mBorderRect.set(this.mBitmapRect);
+              this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBounds, Matrix.ScaleToFit.START);
+              this.mShaderMatrix.mapRect(this.mBorderRect);
+              localObject = this.mBorderRect;
+              f1 = this.mBorderWidth;
+              ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+              this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
+            }
+          }
+          else
+          {
+            this.mBorderRect.set(this.mBitmapRect);
+            this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBounds, Matrix.ScaleToFit.END);
+            this.mShaderMatrix.mapRect(this.mBorderRect);
+            localObject = this.mBorderRect;
+            f1 = this.mBorderWidth;
+            ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+            this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
+          }
+        }
+        else
+        {
+          this.mShaderMatrix.reset();
+          if ((this.mBitmapWidth <= this.mBounds.width()) && (this.mBitmapHeight <= this.mBounds.height())) {
+            f1 = 1.0F;
+          } else {
+            f1 = Math.min(this.mBounds.width() / this.mBitmapWidth, this.mBounds.height() / this.mBitmapHeight);
+          }
+          f2 = (int)((this.mBounds.width() - this.mBitmapWidth * f1) * 0.5F + 0.5F);
+          f3 = (int)((this.mBounds.height() - this.mBitmapHeight * f1) * 0.5F + 0.5F);
+          this.mShaderMatrix.setScale(f1, f1);
+          this.mShaderMatrix.postTranslate(f2, f3);
+          this.mBorderRect.set(this.mBitmapRect);
+          this.mShaderMatrix.mapRect(this.mBorderRect);
+          localObject = this.mBorderRect;
+          f1 = this.mBorderWidth;
+          ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+          this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
+        }
+      }
+      else
+      {
+        this.mBorderRect.set(this.mBounds);
+        localObject = this.mBorderRect;
+        f1 = this.mBorderWidth;
+        ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
+        this.mShaderMatrix.reset();
+        f2 = this.mBitmapWidth;
+        f3 = this.mBorderRect.height();
+        float f4 = this.mBorderRect.width();
+        float f5 = this.mBitmapHeight;
+        f1 = 0.0F;
+        if (f2 * f3 > f4 * f5)
+        {
+          f2 = this.mBorderRect.height() / this.mBitmapHeight;
+          f3 = (this.mBorderRect.width() - this.mBitmapWidth * f2) * 0.5F;
+        }
+        else
+        {
+          f2 = this.mBorderRect.width() / this.mBitmapWidth;
+          f1 = (this.mBorderRect.height() - this.mBitmapHeight * f2) * 0.5F;
+          f3 = 0.0F;
+        }
+        this.mShaderMatrix.setScale(f2, f2);
+        localObject = this.mShaderMatrix;
+        f2 = (int)(f3 + 0.5F);
+        f3 = this.mBorderWidth;
+        ((Matrix)localObject).postTranslate(f2 + f3 / 2.0F, (int)(f1 + 0.5F) + f3 / 2.0F);
+      }
     }
-    for (;;)
+    else
     {
-      this.mDrawableRect.set(this.mBorderRect);
-      this.mRebuildShader = true;
-      return;
       this.mBorderRect.set(this.mBounds);
-      this.mBorderRect.inset(this.mBorderWidth / 2.0F, this.mBorderWidth / 2.0F);
+      localObject = this.mBorderRect;
+      f1 = this.mBorderWidth;
+      ((RectF)localObject).inset(f1 / 2.0F, f1 / 2.0F);
       this.mShaderMatrix.reset();
       this.mShaderMatrix.setTranslate((int)((this.mBorderRect.width() - this.mBitmapWidth) * 0.5F + 0.5F), (int)((this.mBorderRect.height() - this.mBitmapHeight) * 0.5F + 0.5F));
-      continue;
-      this.mBorderRect.set(this.mBounds);
-      this.mBorderRect.inset(this.mBorderWidth / 2.0F, this.mBorderWidth / 2.0F);
-      this.mShaderMatrix.reset();
-      float f3;
-      float f2;
-      if (this.mBitmapWidth * this.mBorderRect.height() > this.mBorderRect.width() * this.mBitmapHeight)
-      {
-        f3 = this.mBorderRect.height() / this.mBitmapHeight;
-        f2 = (this.mBorderRect.width() - this.mBitmapWidth * f3) * 0.5F;
-      }
-      for (;;)
-      {
-        this.mShaderMatrix.setScale(f3, f3);
-        this.mShaderMatrix.postTranslate((int)(f2 + 0.5F) + this.mBorderWidth / 2.0F, (int)(f1 + 0.5F) + this.mBorderWidth / 2.0F);
-        break;
-        f3 = this.mBorderRect.width() / this.mBitmapWidth;
-        f1 = this.mBorderRect.height();
-        float f4 = this.mBitmapHeight;
-        f2 = 0.0F;
-        f1 = (f1 - f4 * f3) * 0.5F;
-      }
-      this.mShaderMatrix.reset();
-      if ((this.mBitmapWidth <= this.mBounds.width()) && (this.mBitmapHeight <= this.mBounds.height())) {}
-      for (f1 = 1.0F;; f1 = Math.min(this.mBounds.width() / this.mBitmapWidth, this.mBounds.height() / this.mBitmapHeight))
-      {
-        f2 = (int)((this.mBounds.width() - this.mBitmapWidth * f1) * 0.5F + 0.5F);
-        f3 = (int)((this.mBounds.height() - this.mBitmapHeight * f1) * 0.5F + 0.5F);
-        this.mShaderMatrix.setScale(f1, f1);
-        this.mShaderMatrix.postTranslate(f2, f3);
-        this.mBorderRect.set(this.mBitmapRect);
-        this.mShaderMatrix.mapRect(this.mBorderRect);
-        this.mBorderRect.inset(this.mBorderWidth / 2.0F, this.mBorderWidth / 2.0F);
-        this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
-        break;
-      }
-      this.mBorderRect.set(this.mBitmapRect);
-      this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBounds, Matrix.ScaleToFit.END);
-      this.mShaderMatrix.mapRect(this.mBorderRect);
-      this.mBorderRect.inset(this.mBorderWidth / 2.0F, this.mBorderWidth / 2.0F);
-      this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
-      continue;
-      this.mBorderRect.set(this.mBitmapRect);
-      this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBounds, Matrix.ScaleToFit.START);
-      this.mShaderMatrix.mapRect(this.mBorderRect);
-      this.mBorderRect.inset(this.mBorderWidth / 2.0F, this.mBorderWidth / 2.0F);
-      this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
-      continue;
-      this.mBorderRect.set(this.mBounds);
-      this.mBorderRect.inset(this.mBorderWidth / 2.0F, this.mBorderWidth / 2.0F);
-      this.mShaderMatrix.reset();
-      this.mShaderMatrix.setRectToRect(this.mBitmapRect, this.mBorderRect, Matrix.ScaleToFit.FILL);
     }
+    this.mDrawableRect.set(this.mBorderRect);
+    this.mRebuildShader = true;
   }
   
   public void draw(@NonNull Canvas paramCanvas)
@@ -334,36 +380,36 @@ public class RoundedDrawable
       this.mBitmapPaint.setShader(localBitmapShader);
       this.mRebuildShader = false;
     }
-    if (this.mOval) {
+    if (this.mOval)
+    {
       if (this.mBorderWidth > 0.0F)
       {
         paramCanvas.drawOval(this.mDrawableRect, this.mBitmapPaint);
         paramCanvas.drawOval(this.mBorderRect, this.mBorderPaint);
-      }
-    }
-    do
-    {
-      return;
-      paramCanvas.drawOval(this.mDrawableRect, this.mBitmapPaint);
-      return;
-      if (any(this.mCornersRounded))
-      {
-        float f = this.mCornerRadius;
-        if (this.mBorderWidth > 0.0F)
-        {
-          paramCanvas.drawRoundRect(this.mDrawableRect, f, f, this.mBitmapPaint);
-          paramCanvas.drawRoundRect(this.mBorderRect, f, f, this.mBorderPaint);
-          redrawBitmapForSquareCorners(paramCanvas);
-          redrawBorderForSquareCorners(paramCanvas);
-          return;
-        }
-        paramCanvas.drawRoundRect(this.mDrawableRect, f, f, this.mBitmapPaint);
-        redrawBitmapForSquareCorners(paramCanvas);
         return;
       }
-      paramCanvas.drawRect(this.mDrawableRect, this.mBitmapPaint);
-    } while (this.mBorderWidth <= 0.0F);
-    paramCanvas.drawRect(this.mBorderRect, this.mBorderPaint);
+      paramCanvas.drawOval(this.mDrawableRect, this.mBitmapPaint);
+      return;
+    }
+    if (any(this.mCornersRounded))
+    {
+      float f = this.mCornerRadius;
+      if (this.mBorderWidth > 0.0F)
+      {
+        paramCanvas.drawRoundRect(this.mDrawableRect, f, f, this.mBitmapPaint);
+        paramCanvas.drawRoundRect(this.mBorderRect, f, f, this.mBorderPaint);
+        redrawBitmapForSquareCorners(paramCanvas);
+        redrawBorderForSquareCorners(paramCanvas);
+        return;
+      }
+      paramCanvas.drawRoundRect(this.mDrawableRect, f, f, this.mBitmapPaint);
+      redrawBitmapForSquareCorners(paramCanvas);
+      return;
+    }
+    paramCanvas.drawRect(this.mDrawableRect, this.mBitmapPaint);
+    if (this.mBorderWidth > 0.0F) {
+      paramCanvas.drawRect(this.mBorderRect, this.mBorderPaint);
+    }
   }
   
   public int getAlpha()
@@ -492,14 +538,12 @@ public class RoundedDrawable
   
   public RoundedDrawable setBorderColor(ColorStateList paramColorStateList)
   {
-    if (paramColorStateList != null) {}
-    for (;;)
-    {
-      this.mBorderColor = paramColorStateList;
-      this.mBorderPaint.setColor(this.mBorderColor.getColorForState(getState(), -16777216));
-      return this;
+    if (paramColorStateList == null) {
       paramColorStateList = ColorStateList.valueOf(0);
     }
+    this.mBorderColor = paramColorStateList;
+    this.mBorderPaint.setColor(this.mBorderColor.getColorForState(getState(), -16777216));
+    return this;
   }
   
   public RoundedDrawable setBorderWidth(float paramFloat)
@@ -523,72 +567,74 @@ public class RoundedDrawable
   
   public RoundedDrawable setCornerRadius(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    int j = 1;
     Object localObject = new HashSet(4);
     ((Set)localObject).add(Float.valueOf(paramFloat1));
     ((Set)localObject).add(Float.valueOf(paramFloat2));
     ((Set)localObject).add(Float.valueOf(paramFloat3));
     ((Set)localObject).add(Float.valueOf(paramFloat4));
     ((Set)localObject).remove(Float.valueOf(0.0F));
-    if (((Set)localObject).size() > 1) {
-      throw new IllegalArgumentException("Multiple nonzero corner radii not yet supported.");
-    }
-    if (!((Set)localObject).isEmpty())
+    if (((Set)localObject).size() <= 1)
     {
-      float f = ((Float)((Set)localObject).iterator().next()).floatValue();
-      if ((Float.isInfinite(f)) || (Float.isNaN(f)) || (f < 0.0F)) {
-        throw new IllegalArgumentException("Invalid radius value: " + f);
+      if (!((Set)localObject).isEmpty())
+      {
+        float f = ((Float)((Set)localObject).iterator().next()).floatValue();
+        if ((!Float.isInfinite(f)) && (!Float.isNaN(f)) && (f >= 0.0F))
+        {
+          this.mCornerRadius = f;
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Invalid radius value: ");
+          ((StringBuilder)localObject).append(f);
+          throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+        }
       }
-      this.mCornerRadius = f;
+      else
+      {
+        this.mCornerRadius = 0.0F;
+      }
       localObject = this.mCornersRounded;
-      if (paramFloat1 <= 0.0F) {
-        break label280;
+      int j = 0;
+      if (paramFloat1 > 0.0F) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      label199:
       localObject[0] = i;
       localObject = this.mCornersRounded;
-      if (paramFloat2 <= 0.0F) {
-        break label286;
+      if (paramFloat2 > 0.0F) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      label220:
       localObject[1] = i;
       localObject = this.mCornersRounded;
-      if (paramFloat3 <= 0.0F) {
-        break label292;
+      if (paramFloat3 > 0.0F) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      label241:
       localObject[2] = i;
       localObject = this.mCornersRounded;
-      if (paramFloat4 <= 0.0F) {
-        break label298;
+      int i = j;
+      if (paramFloat4 > 0.0F) {
+        i = 1;
       }
-    }
-    label280:
-    label286:
-    label292:
-    label298:
-    for (int i = j;; i = 0)
-    {
       localObject[3] = i;
       return this;
-      this.mCornerRadius = 0.0F;
-      break;
-      i = 0;
-      break label199;
-      i = 0;
-      break label220;
-      i = 0;
-      break label241;
     }
+    throw new IllegalArgumentException("Multiple nonzero corner radii not yet supported.");
   }
   
   public RoundedDrawable setCornerRadius(int paramInt, float paramFloat)
   {
-    if ((paramFloat != 0.0F) && (this.mCornerRadius != 0.0F) && (this.mCornerRadius != paramFloat)) {
-      throw new IllegalArgumentException("Multiple nonzero corner radii not yet supported.");
+    if (paramFloat != 0.0F)
+    {
+      float f = this.mCornerRadius;
+      if ((f != 0.0F) && (f != paramFloat)) {
+        throw new IllegalArgumentException("Multiple nonzero corner radii not yet supported.");
+      }
     }
     if (paramFloat == 0.0F)
     {
@@ -666,7 +712,7 @@ public class RoundedDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.drawable.RoundedDrawable
  * JD-Core Version:    0.7.0.1
  */

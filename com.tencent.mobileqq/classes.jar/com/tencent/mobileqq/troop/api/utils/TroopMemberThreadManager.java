@@ -6,7 +6,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 
 public class TroopMemberThreadManager
 {
-  private static Handler a = null;
+  private static Handler a;
   
   public static void a(Runnable paramRunnable)
   {
@@ -21,7 +21,7 @@ public class TroopMemberThreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.utils.TroopMemberThreadManager
  * JD-Core Version:    0.7.0.1
  */

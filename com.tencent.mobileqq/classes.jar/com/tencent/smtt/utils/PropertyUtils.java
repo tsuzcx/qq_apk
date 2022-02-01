@@ -24,17 +24,23 @@ public class PropertyUtils
   
   private static String a(String paramString1, String paramString2)
   {
-    if ((a == null) || (b == null)) {
-      return paramString2;
-    }
-    try
+    Class localClass = a;
+    if (localClass != null)
     {
-      paramString1 = (String)b.invoke(a, new Object[] { paramString1, paramString2 });
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
+      Method localMethod = b;
+      if (localMethod == null) {
+        return paramString2;
+      }
+      try
+      {
+        paramString1 = (String)localMethod.invoke(localClass, new Object[] { paramString1, paramString2 });
+        return paramString1;
+      }
+      catch (Throwable paramString1)
+      {
+        paramString1.printStackTrace();
+        return paramString2;
+      }
     }
     return paramString2;
   }
@@ -49,7 +55,7 @@ public class PropertyUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.PropertyUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -23,13 +23,15 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.rely.CountdownTimeTask;
+import com.tencent.mobileqq.rely.SingleLineHotwordTextView;
 import com.tencent.mobileqq.teamwork.OnItemLongClickListener;
 import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.mobileqq.troop.widget.CountdownTimeTask;
-import com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView;
+import com.tencent.mobileqq.teamwork.api.IGroupTeamWorkHandler;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkFacadeCreator;
 import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
@@ -45,8 +47,8 @@ public class TroopTeamWorkFileSearchDialog
   extends ReportDialog
   implements Handler.Callback, OnItemLongClickListener
 {
-  public static int d;
-  public static int e;
+  public static int d = 10;
+  public static int e = 16;
   protected int a;
   protected long a;
   protected Activity a;
@@ -58,12 +60,12 @@ public class TroopTeamWorkFileSearchDialog
   protected ImageButton a;
   protected RelativeLayout a;
   protected TextView a;
-  protected QQAppInterface a;
+  protected AppInterface a;
+  protected CountdownTimeTask a;
+  protected IGroupTeamWorkHandler a;
   public GroupTeamWordkMoreView a;
   protected GroupTeamWorkAdapter a;
-  protected GroupTeamWorkHandler a;
   protected GroupTeamWorkObserver a;
-  protected CountdownTimeTask a;
   protected XListView a;
   protected Object a;
   protected String a;
@@ -75,56 +77,108 @@ public class TroopTeamWorkFileSearchDialog
   protected boolean b;
   protected int c;
   protected boolean c = false;
-  protected boolean d;
-  protected boolean e;
+  protected boolean d = false;
+  protected boolean e = false;
   
-  static
+  public TroopTeamWorkFileSearchDialog(Activity paramActivity, View paramView, AppInterface paramAppInterface, long paramLong)
   {
-    jdField_d_of_type_Int = 10;
-    jdField_e_of_type_Int = 16;
-  }
-  
-  public TroopTeamWorkFileSearchDialog(Activity paramActivity, View paramView, QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    super(paramActivity, 2131755346);
+    super(paramActivity, 2131755540);
     this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
+    this.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask = null;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = 0;
-    this.jdField_e_of_type_Boolean = false;
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_JavaUtilList = null;
     this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkObserver = new TroopTeamWorkFileSearchDialog.9(this);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkHandler = ((GroupTeamWorkHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER));
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkApiIGroupTeamWorkHandler = ((IGroupTeamWorkHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getGroupTeamWorkHandlerName()));
     this.jdField_a_of_type_Long = paramLong;
     a(paramActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376997));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377642));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131370725));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370727));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380583));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364776);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368600));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376483));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377082));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131370362));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370364));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379865));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364664);
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368340));
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
     a();
     e();
-    a(paramActivity, paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkObserver);
+    a(paramActivity, paramAppInterface);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkObserver);
     a(paramView);
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    Object localObject1 = paramString1;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return paramString1;
+      }
+      if (paramString1.contains("#"))
+      {
+        Object localObject2 = paramString1.split("\\#");
+        localObject1 = localObject2[0];
+        int j = localObject2.length;
+        int i = 1;
+        paramString1 = "";
+        StringBuilder localStringBuilder;
+        while (i < j)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString1);
+          localStringBuilder.append("#");
+          localStringBuilder.append(localObject2[i]);
+          paramString1 = localStringBuilder.toString();
+          i += 1;
+        }
+        if (((String)localObject1).contains("?"))
+        {
+          localObject2 = new StringBuilder();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("?");
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append("&");
+          ((StringBuilder)localObject2).append(((String)localObject1).replace("?", localStringBuilder.toString()));
+          ((StringBuilder)localObject2).append(paramString1);
+          return ((StringBuilder)localObject2).toString();
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("?");
+        ((StringBuilder)localObject2).append(paramString2);
+        ((StringBuilder)localObject2).append(paramString1);
+        return ((StringBuilder)localObject2).toString();
+      }
+      if (paramString1.contains("?"))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("?");
+        ((StringBuilder)localObject1).append(paramString2);
+        ((StringBuilder)localObject1).append("&");
+        return paramString1.replace("?", ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append("?");
+      ((StringBuilder)localObject1).append(paramString2);
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    return localObject1;
   }
   
   private void e()
   {
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new TroopTeamWorkFileSearchDialog.7(this));
-    Button localButton = (Button)findViewById(2131363942);
+    Button localButton = (Button)findViewById(2131363868);
     localButton.setVisibility(0);
     localButton.setOnClickListener(new TroopTeamWorkFileSearchDialog.8(this));
   }
@@ -146,25 +200,32 @@ public class TroopTeamWorkFileSearchDialog
   protected String a(int paramInt)
   {
     if (paramInt > 1000) {
-      return this.jdField_a_of_type_AndroidAppActivity.getString(2131697343);
+      return this.jdField_a_of_type_AndroidAppActivity.getString(2131697362);
     }
-    return this.jdField_a_of_type_AndroidAppActivity.getString(2131697341, new Object[] { Integer.valueOf(paramInt) });
+    return this.jdField_a_of_type_AndroidAppActivity.getString(2131697360, new Object[] { Integer.valueOf(paramInt) });
   }
   
   protected String a(String paramString)
   {
     float f = a();
     TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetEditText.getPaint();
-    if ((TextUtils.isEmpty(paramString)) || (localTextPaint.measureText(paramString) <= f)) {
-      return paramString;
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (localTextPaint.measureText(paramString) <= f) {
+        return paramString;
+      }
+      paramString = new StringBuilder(paramString.substring(0, localTextPaint.breakText(paramString, true, f - localTextPaint.measureText("…"), null)));
+      paramString.append("…");
+      str = paramString.toString();
     }
-    return paramString.substring(0, localTextPaint.breakText(paramString, true, f - localTextPaint.measureText("…"), null)) + "…";
+    return str;
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366452));
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131718891));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366333));
+    this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131718606));
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(3);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new TroopTeamWorkFileSearchDialog.5(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new TroopTeamWorkFileSearchDialog.6(this));
@@ -174,30 +235,33 @@ public class TroopTeamWorkFileSearchDialog
   
   public final void a(long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    for (;;)
+    try
     {
-      try
+      int i = this.jdField_a_of_type_Int;
+      if (i > 0) {
+        return;
+      }
+      if (TextUtils.isEmpty(paramString))
       {
-        int i = this.jdField_a_of_type_Int;
-        if (i > 0) {
-          return;
-        }
-        if (TextUtils.isEmpty(paramString))
+        if (QLog.isColorLevel())
         {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("TroopTeamWorkFileSearchDialog", 4, "doReqTroopFileSearch err keyWord =" + paramString);
-          continue;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("doReqTroopFileSearch err keyWord =");
+          localStringBuilder.append(paramString);
+          QLog.i("TroopTeamWorkFileSearchDialog", 4, localStringBuilder.toString());
         }
+      }
+      else
+      {
         this.jdField_b_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_Int += 1;
+        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkApiIGroupTeamWorkHandler != null) {
+          this.jdField_a_of_type_ComTencentMobileqqTeamworkApiIGroupTeamWorkHandler.reqSearchGroupTeamWorkList(paramLong, paramString, paramInt1, paramInt2, paramInt3);
+        }
       }
-      finally {}
-      this.jdField_a_of_type_Int += 1;
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkHandler.a(paramLong, paramString, paramInt1, paramInt2, paramInt3);
-      }
+      return;
     }
+    finally {}
   }
   
   protected void a(Activity paramActivity)
@@ -206,42 +270,39 @@ public class TroopTeamWorkFileSearchDialog
     getWindow().setSoftInputMode(36);
     if (!VersionUtils.e()) {
       getWindow().setBackgroundDrawable(new ColorDrawable());
+    } else {
+      getWindow().setBackgroundDrawable(new ColorDrawable(paramActivity.getResources().getColor(2131165700)));
     }
-    for (;;)
+    setContentView(2131559905);
+    findViewById(2131370406).setOnClickListener(new TroopTeamWorkFileSearchDialog.1(this));
+    Object localObject = getWindow().getAttributes();
+    ((WindowManager.LayoutParams)localObject).x = 0;
+    ((WindowManager.LayoutParams)localObject).y = 0;
+    ((WindowManager.LayoutParams)localObject).width = -1;
+    ((WindowManager.LayoutParams)localObject).windowAnimations = 16973824;
+    ((WindowManager.LayoutParams)localObject).gravity = 51;
+    if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      setContentView(2131560033);
-      findViewById(2131370772).setOnClickListener(new TroopTeamWorkFileSearchDialog.1(this));
-      Object localObject = getWindow().getAttributes();
-      ((WindowManager.LayoutParams)localObject).x = 0;
-      ((WindowManager.LayoutParams)localObject).y = 0;
-      ((WindowManager.LayoutParams)localObject).width = -1;
-      ((WindowManager.LayoutParams)localObject).windowAnimations = 16973824;
-      ((WindowManager.LayoutParams)localObject).gravity = 51;
-      if (ImmersiveUtils.isSupporImmersive() == 1)
-      {
-        getWindow().addFlags(67108864);
-        int i = paramActivity.getResources().getColor(2131167091);
-        if (ImmersiveUtils.setStatusBarDarkMode(getWindow(), true)) {
-          i = paramActivity.getResources().getColor(2131167263);
-        }
-        new SystemBarCompact(this, true, i).init();
-        localObject = (LinearLayout)findViewById(2131370772);
-        ((LinearLayout)localObject).setFitsSystemWindows(true);
-        ((LinearLayout)localObject).setPadding(0, ImmersiveUtils.getStatusBarHeight(paramActivity), 0, 0);
+      getWindow().addFlags(67108864);
+      int i = paramActivity.getResources().getColor(2131167114);
+      if (ImmersiveUtils.setStatusBarDarkMode(getWindow(), true)) {
+        i = paramActivity.getResources().getColor(2131167295);
       }
-      return;
-      getWindow().setBackgroundDrawable(new ColorDrawable(paramActivity.getResources().getColor(2131165711)));
+      new SystemBarCompact(this, true, i).init();
+      localObject = (LinearLayout)findViewById(2131370406);
+      ((LinearLayout)localObject).setFitsSystemWindows(true);
+      ((LinearLayout)localObject).setPadding(0, ImmersiveUtils.getStatusBarHeight(paramActivity), 0, 0);
     }
   }
   
-  protected void a(Activity paramActivity, QQAppInterface paramQQAppInterface)
+  protected void a(Activity paramActivity, AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView = new GroupTeamWordkMoreView(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setBackgroundResource(2130838979);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setTextColor(paramActivity.getResources().getColor(2131167033));
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setBackgroundResource(2130838739);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setTextColor(paramActivity.getResources().getColor(2131167056));
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView);
     this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter = new GroupTeamWorkAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this, this.jdField_a_of_type_AndroidOsHandler);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter = new GroupTeamWorkAdapter(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidAppActivity, this, this.jdField_a_of_type_AndroidOsHandler);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new TroopTeamWorkFileSearchDialog.2(this));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new TroopTeamWorkFileSearchDialog.3(this));
@@ -250,66 +311,48 @@ public class TroopTeamWorkFileSearchDialog
   
   public void a(View paramView)
   {
-    Object localObject2 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTeamWorkFileSearchDialog", 2, "setBackgroundViewBlur, view :" + paramView.getHeight() + "," + paramView.getWidth());
-    }
-    if (paramView == null) {}
-    boolean bool;
     Object localObject1;
-    for (;;)
+    if (QLog.isColorLevel())
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("setBackgroundViewBlur, view :");
+      ((StringBuilder)localObject1).append(paramView.getHeight());
+      ((StringBuilder)localObject1).append(",");
+      ((StringBuilder)localObject1).append(paramView.getWidth());
+      QLog.d("TroopTeamWorkFileSearchDialog", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (paramView == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopTeamWorkFileSearchDialog", 2, "setBackgroundViewBlur, isDrawingCacheEnabled");
-      }
-      bool = paramView.isDrawingCacheEnabled();
-      if (!bool) {
-        paramView.setDrawingCacheEnabled(true);
-      }
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopTeamWorkFileSearchDialog", 2, "setBackgroundViewBlur, getDrawingCache");
-        }
-        localObject1 = paramView.getDrawingCache(true);
-        if (localObject1 == null)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("TroopTeamWorkFileSearchDialog", 2, "getDrawingCache is return null");
-        }
-      }
-      catch (Exception paramView)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopTeamWorkFileSearchDialog", 2, "getDrawingCache exception, " + paramView.getMessage());
-        }
-      }
-      finally
-      {
-        if (0 == 0)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("TroopTeamWorkFileSearchDialog", 2, "getDrawingCache is return null");
-        }
-      }
     }
     if (QLog.isColorLevel()) {
-      QLog.d("TroopTeamWorkFileSearchDialog", 2, "setBackgroundViewBlur, start thread");
+      QLog.d("TroopTeamWorkFileSearchDialog", 2, "setBackgroundViewBlur, isDrawingCacheEnabled");
+    }
+    boolean bool = paramView.isDrawingCacheEnabled();
+    if (!bool) {
+      paramView.setDrawingCacheEnabled(true);
     }
     try
     {
-      localObject1 = Bitmap.createBitmap((Bitmap)localObject1);
-      a(paramView, bool, (Bitmap)localObject1);
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopTeamWorkFileSearchDialog", 2, "setBackgroundViewBlur, getDrawingCache");
+      }
+      localObject1 = paramView.getDrawingCache(true);
+      if (localObject1 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopTeamWorkFileSearchDialog", 2, "getDrawingCache is return null");
+        }
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopTeamWorkFileSearchDialog", 2, "setBackgroundViewBlur, start thread");
+      }
+      Object localObject2 = null;
+      try
+      {
+        localObject1 = Bitmap.createBitmap((Bitmap)localObject1);
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
       {
         localObject1 = localObject2;
         if (QLog.isColorLevel())
@@ -318,6 +361,31 @@ public class TroopTeamWorkFileSearchDialog
           localObject1 = localObject2;
         }
       }
+      a(paramView, bool, (Bitmap)localObject1);
+      return;
+    }
+    catch (Exception paramView)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getDrawingCache exception, ");
+        ((StringBuilder)localObject1).append(paramView.getMessage());
+        QLog.d("TroopTeamWorkFileSearchDialog", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopTeamWorkFileSearchDialog", 2, "getDrawingCache is return null");
+      }
+      return;
+      label258:
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopTeamWorkFileSearchDialog", 2, "getDrawingCache is return null");
+      }
+      return;
+    }
+    finally
+    {
+      break label258;
     }
   }
   
@@ -328,79 +396,54 @@ public class TroopTeamWorkFileSearchDialog
   
   public void a(PadInfo paramPadInfo) {}
   
-  /* Error */
   protected void a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 65	com/tencent/mobileqq/teamworkforgroup/TroopTeamWorkFileSearchDialog:c	Z
-    //   6: istore_2
-    //   7: iload_2
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 51	com/tencent/mobileqq/teamworkforgroup/TroopTeamWorkFileSearchDialog:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   18: iconst_1
-    //   19: invokevirtual 551	android/os/Handler:sendEmptyMessage	(I)Z
-    //   22: pop
-    //   23: aload_0
-    //   24: aload_0
-    //   25: getfield 79	com/tencent/mobileqq/teamworkforgroup/TroopTeamWorkFileSearchDialog:jdField_a_of_type_Long	J
-    //   28: aload_1
-    //   29: iconst_0
-    //   30: bipush 50
-    //   32: iconst_0
-    //   33: invokevirtual 552	com/tencent/mobileqq/teamworkforgroup/TroopTeamWorkFileSearchDialog:a	(JLjava/lang/String;III)V
-    //   36: goto -25 -> 11
-    //   39: astore_1
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: aload_1
-    //   43: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	44	0	this	TroopTeamWorkFileSearchDialog
-    //   0	44	1	paramString	String
-    //   6	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	39	finally
-    //   14	36	39	finally
+    try
+    {
+      boolean bool = this.c;
+      if (bool) {
+        return;
+      }
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      a(this.jdField_a_of_type_Long, paramString, 0, 50, 0);
+      return;
+    }
+    finally {}
   }
   
   protected void a(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Int <= 0) {
+    if (this.jdField_b_of_type_Int <= 0)
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      return;
+    }
+    long l = System.currentTimeMillis();
+    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetEditText.getPaint();
+    float f = a() - localTextPaint.measureText(paramString);
+    if (f < 0.0F)
+    {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    for (;;)
+    else if (paramBoolean)
     {
-      return;
-      long l = System.currentTimeMillis();
-      TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetEditText.getPaint();
-      float f = a() - localTextPaint.measureText(paramString);
-      if (f < 0.0F) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.e("zivonchen", 2, "resetResultNumTextVisible compareWidth = " + f + ", time = " + (System.currentTimeMillis() - l));
-        return;
-        if (paramBoolean)
-        {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(a(this.jdField_b_of_type_Int));
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        }
-      }
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(a(this.jdField_b_of_type_Int));
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("resetResultNumTextVisible compareWidth = ");
+      paramString.append(f);
+      paramString.append(", time = ");
+      paramString.append(System.currentTimeMillis() - l);
+      QLog.e("zivonchen", 2, paramString.toString());
     }
   }
   
   public void a(boolean paramBoolean)
   {
+    Drawable localDrawable;
     if (paramBoolean)
     {
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
@@ -409,22 +452,24 @@ public class TroopTeamWorkFileSearchDialog
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130839545, 0, 0, 0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694890);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130839403, 0, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694879);
       localDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables()[0];
       if ((localDrawable instanceof Animatable)) {
         ((Animatable)localDrawable).start();
       }
-      return;
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables()[0];
-    if ((localDrawable instanceof Animatable)) {
-      ((Animatable)localDrawable).stop();
+    else
+    {
+      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+      localDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables()[0];
+      if ((localDrawable instanceof Animatable)) {
+        ((Animatable)localDrawable).stop();
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
   public void b()
@@ -435,7 +480,7 @@ public class TroopTeamWorkFileSearchDialog
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131694459));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131694424));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
   }
   
@@ -460,8 +505,8 @@ public class TroopTeamWorkFileSearchDialog
       this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131697338, new Object[] { this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130843972, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131697357, new Object[] { this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 2130843892, 0, 0);
       return;
     }
     this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
@@ -479,10 +524,11 @@ public class TroopTeamWorkFileSearchDialog
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.c = true;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask != null)
+    CountdownTimeTask localCountdownTimeTask = this.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask;
+    if (localCountdownTimeTask != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.b();
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
+      localCountdownTimeTask.b();
+      this.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask = null;
     }
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -500,12 +546,12 @@ public class TroopTeamWorkFileSearchDialog
     this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setVisibility(0);
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setText(2131719536);
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setText(2131719254);
       this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setText(2131694890);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setTextLeftDrawable(2130839545);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setText(2131694879);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWordkMoreView.setTextLeftDrawable(2130839403);
   }
   
   protected void d()
@@ -514,7 +560,7 @@ public class TroopTeamWorkFileSearchDialog
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(a(this.jdField_b_of_type_Int));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_d_of_type_Boolean = true;
+      this.d = true;
       String str = a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
       if (!TextUtils.isEmpty(str))
       {
@@ -529,25 +575,29 @@ public class TroopTeamWorkFileSearchDialog
     this.c = true;
     InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
     SingleLineHotwordTextView.a();
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      ((List)localObject).clear();
       this.jdField_a_of_type_JavaUtilList = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.b();
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
+      ((CountdownTimeTask)localObject).b();
+      this.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask = null;
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.a();
+      ((GroupTeamWorkAdapter)localObject).a();
       this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkObserver);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkObserver);
     try
     {
       super.dismiss();
@@ -564,61 +614,92 @@ public class TroopTeamWorkFileSearchDialog
     if (this.c) {
       return true;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return false;
+            }
+            a(false);
+            a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), true);
+            if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
+              this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+            }
+            if (this.jdField_b_of_type_Boolean) {
+              this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.a();
+            }
+            if (this.jdField_a_of_type_Boolean)
+            {
+              this.jdField_a_of_type_Boolean = false;
+              InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
+            }
+            c(this.e);
+            this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.b(this.jdField_a_of_type_JavaUtilList);
+            this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.notifyDataSetChanged();
+            if (this.jdField_b_of_type_Boolean) {
+              this.jdField_b_of_type_Boolean = false;
+            }
+            long l = System.currentTimeMillis() - this.jdField_b_of_type_Long;
+            paramMessage = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim().toLowerCase();
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("REFRESH_LIST text = ");
+              localStringBuilder.append(paramMessage);
+              localStringBuilder.append(", lastHotword = ");
+              localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+              localStringBuilder.append(", time = ");
+              localStringBuilder.append(l);
+              QLog.e("zivonchen", 2, localStringBuilder.toString());
+            }
+            if ((!paramMessage.equals(this.jdField_a_of_type_JavaLangString)) && (l >= 800L))
+            {
+              this.jdField_b_of_type_Boolean = true;
+              this.jdField_a_of_type_JavaLangString = paramMessage;
+              a(this.jdField_a_of_type_JavaLangString);
+              this.jdField_a_of_type_ComTencentMobileqqRelyCountdownTimeTask = null;
+              return false;
+            }
+          }
+          else
+          {
+            b(false);
+            return false;
+          }
+        }
+        else
+        {
+          b(true);
+          return false;
+        }
+      }
+      else
+      {
+        a(false);
+        return false;
+      }
     }
-    for (;;)
-    {
-      return false;
+    else {
       a(true);
-      continue;
-      a(false);
-      continue;
-      b(true);
-      continue;
-      b(false);
-      continue;
-      a(false);
-      a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), true);
-      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      }
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.a();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      }
-      c(this.jdField_e_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.notifyDataSetChanged();
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_b_of_type_Boolean = false;
-      }
-      long l = System.currentTimeMillis() - this.jdField_b_of_type_Long;
-      paramMessage = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim().toLowerCase();
-      if (QLog.isColorLevel()) {
-        QLog.e("zivonchen", 2, "REFRESH_LIST text = " + paramMessage + ", lastHotword = " + this.jdField_a_of_type_JavaLangString + ", time = " + l);
-      }
-      if ((!paramMessage.equals(this.jdField_a_of_type_JavaLangString)) && (l >= 800L))
-      {
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaLangString = paramMessage;
-        a(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
-      }
     }
+    return false;
   }
   
-  public void onStop()
+  protected void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
     }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
@@ -627,7 +708,7 @@ public class TroopTeamWorkFileSearchDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog
  * JD-Core Version:    0.7.0.1
  */

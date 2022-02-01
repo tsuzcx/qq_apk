@@ -18,15 +18,15 @@ public class AccountOnlineStatusFormSimpleItem
     super(paramContext, paramAttributeSet);
   }
   
-  protected void b()
+  protected void a()
   {
-    super.b();
-    this.a.setCompoundDrawablePadding(AIOUtils.a(12.0F, getResources()));
+    super.a();
+    this.a.setCompoundDrawablePadding(AIOUtils.b(12.0F, getResources()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AccountOnlineStatusFormSimpleItem
  * JD-Core Version:    0.7.0.1
  */

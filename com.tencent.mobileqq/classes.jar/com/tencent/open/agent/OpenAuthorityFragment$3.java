@@ -1,18 +1,31 @@
 package com.tencent.open.agent;
 
+import android.content.res.Resources;
+import com.tencent.open.agent.auth.INewAuthorityContract.Presenter;
+import com.tencent.open.agent.util.AuthUIUtil;
+import com.tencent.open.agent.util.SSOLog;
+
 class OpenAuthorityFragment$3
-  implements OpenCardContainer.UpdateStatusBarListener
+  implements Runnable
 {
   OpenAuthorityFragment$3(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public void a()
+  public void run()
   {
-    this.a.j();
+    if (OpenAuthorityFragment.a(this.this$0))
+    {
+      SSOLog.b("OpenAuthorityFragment", new Object[] { " activity is isInvalid" });
+      return;
+    }
+    OpenAuthorityFragment.a(this.this$0).d();
+    this.this$0.b();
+    this.this$0.a(true);
+    AuthUIUtil.a(this.this$0.getQBaseActivity(), this.this$0.getResources().getString(2131694647), new OpenAuthorityFragment.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.OpenAuthorityFragment.3
  * JD-Core Version:    0.7.0.1
  */

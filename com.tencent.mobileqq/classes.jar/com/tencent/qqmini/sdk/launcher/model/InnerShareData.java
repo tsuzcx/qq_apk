@@ -39,17 +39,14 @@ public class InnerShareData
     {
     default: 
       return 6;
-    case 0: 
-    case 2: 
-    case 5: 
-    case 6: 
-      return 0;
-    case 1: 
-      return 1;
+    case 4: 
+      return 4;
     case 3: 
       return 3;
+    case 1: 
+      return 1;
     }
-    return 4;
+    return 0;
   }
   
   public void shareAppMessage()
@@ -64,12 +61,44 @@ public class InnerShareData
   
   public String toString()
   {
-    return "InnerShareData{fromActivity=" + this.fromActivity + ", entryPath='" + this.entryPath + '\'' + ", webURL='" + this.webURL + '\'' + ", templateId='" + this.templateId + '\'' + ", templateData='" + this.templateData + '\'' + ", entryModel=" + this.entryModel + ", shareChatModel=" + this.shareChatModel + ", withShareTicket=" + this.withShareTicket + ", recvOpenId='" + this.recvOpenId + '\'' + ", event='" + this.event + '\'' + ", callbackId=" + this.callbackId + ", jsonObject=" + this.jsonObject + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InnerShareData{fromActivity=");
+    localStringBuilder.append(this.fromActivity);
+    localStringBuilder.append(", entryPath='");
+    localStringBuilder.append(this.entryPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", webURL='");
+    localStringBuilder.append(this.webURL);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", templateId='");
+    localStringBuilder.append(this.templateId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", templateData='");
+    localStringBuilder.append(this.templateData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", entryModel=");
+    localStringBuilder.append(this.entryModel);
+    localStringBuilder.append(", shareChatModel=");
+    localStringBuilder.append(this.shareChatModel);
+    localStringBuilder.append(", withShareTicket=");
+    localStringBuilder.append(this.withShareTicket);
+    localStringBuilder.append(", recvOpenId='");
+    localStringBuilder.append(this.recvOpenId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", event='");
+    localStringBuilder.append(this.event);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", callbackId=");
+    localStringBuilder.append(this.callbackId);
+    localStringBuilder.append(", jsonObject=");
+    localStringBuilder.append(this.jsonObject);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.InnerShareData
  * JD-Core Version:    0.7.0.1
  */

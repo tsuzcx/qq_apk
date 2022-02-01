@@ -19,15 +19,28 @@ public class d
   {
     if (b.d())
     {
-      this.a.a(new g("QAPM_APPLAUNCH", paramString1 + paramString2, l.a.a.a()));
+      locale = this.a;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(paramString2);
+      locale.a(new g("QAPM_APPLAUNCH", ((StringBuilder)localObject).toString(), l.a.a.a()));
       return;
     }
     if (b.e())
     {
-      this.a.a(new g(QAPMAppInstrumentation.activityTrace.f(), paramString1 + paramString2, l.a.a.a()));
+      locale = this.a;
+      localObject = QAPMAppInstrumentation.activityTrace.f();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(paramString2);
+      locale.a(new g((String)localObject, localStringBuilder.toString(), l.a.a.a()));
       return;
     }
-    this.a.a(new g(paramString1, paramString1 + paramString2, l.a.a.a()));
+    e locale = this.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(paramString2);
+    locale.a(new g(paramString1, ((StringBuilder)localObject).toString(), l.a.a.a()));
   }
   
   private boolean d()
@@ -84,7 +97,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.appstate.d
  * JD-Core Version:    0.7.0.1
  */

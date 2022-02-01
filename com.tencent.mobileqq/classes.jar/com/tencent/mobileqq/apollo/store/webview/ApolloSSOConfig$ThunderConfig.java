@@ -18,17 +18,22 @@ class ApolloSSOConfig$ThunderConfig
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("ThunderConfig{");
-    localStringBuffer.append("mPageId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mMd5='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mCmdConfigs=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuffer.append(", mCGIConfigs=").append(this.b);
+    localStringBuffer.append("mPageId=");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mMd5='");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", mCmdConfigs=");
+    localStringBuffer.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append(", mCGIConfigs=");
+    localStringBuffer.append(this.b);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig.ThunderConfig
  * JD-Core Version:    0.7.0.1
  */

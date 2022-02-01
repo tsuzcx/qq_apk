@@ -10,8 +10,9 @@ class FriendProfileImageActivity$14
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.f = false;
-    this.a.finish();
+    paramAnimation = this.a;
+    paramAnimation.f = false;
+    paramAnimation.finish();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +21,7 @@ class FriendProfileImageActivity$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageActivity.14
  * JD-Core Version:    0.7.0.1
  */

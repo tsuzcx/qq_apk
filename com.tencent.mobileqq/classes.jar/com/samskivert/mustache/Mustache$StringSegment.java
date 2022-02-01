@@ -9,20 +9,8 @@ public class Mustache$StringSegment
   protected final String _text;
   protected final int _trailBlank;
   
-  static
-  {
-    if (!Mustache.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public Mustache$StringSegment(String paramString, int paramInt1, int paramInt2)
   {
-    assert (paramInt1 >= -1);
-    assert (paramInt2 >= -1);
     this._text = paramString;
     this._leadBlank = paramInt1;
     this._trailBlank = paramInt2;
@@ -35,66 +23,48 @@ public class Mustache$StringSegment
   
   private static int blankPos(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int n = -1;
     int j = paramString.length();
+    int m = 0;
     int i;
-    label20:
-    int k;
-    label27:
-    char c;
-    label51:
-    int m;
-    if (paramBoolean1)
-    {
+    if (paramBoolean1) {
       i = 0;
-      if (!paramBoolean1) {
-        break label67;
-      }
-      if (!paramBoolean1) {
-        break label73;
-      }
-      k = 1;
-      if (i == j) {
-        break label109;
-      }
-      c = paramString.charAt(i);
-      if (c != '\n') {
-        break label88;
-      }
-      if (!paramBoolean1) {
-        break label79;
-      }
-      m = i;
+    } else {
+      i = j - 1;
     }
-    label67:
-    label73:
-    label79:
-    label88:
-    label109:
-    do
+    if (!paramBoolean1) {
+      j = -1;
+    }
+    int k;
+    if (paramBoolean1) {
+      k = 1;
+    } else {
+      k = -1;
+    }
+    while (i != j)
     {
-      do
+      char c = paramString.charAt(i);
+      if (c == '\n')
       {
-        do
-        {
-          return m;
-          i = j - 1;
-          break;
-          j = -1;
-          break label20;
-          k = -1;
-          break label27;
-          i += 1;
-          break label51;
-          m = n;
-        } while (!Character.isWhitespace(c));
-        i += k;
-        break label27;
-        m = n;
-      } while (paramBoolean1);
-      m = n;
-    } while (!paramBoolean2);
-    return 0;
+        if (paramBoolean1) {
+          return i;
+        }
+        return i + 1;
+      }
+      if (!Character.isWhitespace(c)) {
+        return -1;
+      }
+      i += k;
+    }
+    if (!paramBoolean1)
+    {
+      i = m;
+      if (paramBoolean2) {}
+    }
+    else
+    {
+      i = -1;
+    }
+    return i;
   }
   
   public void decompile(Mustache.Delims paramDelims, StringBuilder paramStringBuilder)
@@ -114,7 +84,14 @@ public class Mustache$StringSegment
   
   public String toString()
   {
-    return "Text(" + this._text.replace("\r", "\\r").replace("\n", "\\n") + ")" + this._leadBlank + "/" + this._trailBlank;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Text(");
+    localStringBuilder.append(this._text.replace("\r", "\\r").replace("\n", "\\n"));
+    localStringBuilder.append(")");
+    localStringBuilder.append(this._leadBlank);
+    localStringBuilder.append("/");
+    localStringBuilder.append(this._trailBlank);
+    return localStringBuilder.toString();
   }
   
   public boolean trailsBlank()
@@ -124,22 +101,27 @@ public class Mustache$StringSegment
   
   public StringSegment trimLeadBlank()
   {
-    if (this._leadBlank == -1) {
+    int i = this._leadBlank;
+    if (i == -1) {
       return this;
     }
-    int j = this._leadBlank + 1;
-    if (this._trailBlank == -1) {}
-    for (int i = -1;; i = this._trailBlank - j) {
-      return new StringSegment(this._text.substring(j), -1, i);
+    int j = i + 1;
+    i = this._trailBlank;
+    if (i == -1) {
+      i = -1;
+    } else {
+      i -= j;
     }
+    return new StringSegment(this._text.substring(j), -1, i);
   }
   
   public StringSegment trimTrailBlank()
   {
-    if (this._trailBlank == -1) {
+    int i = this._trailBlank;
+    if (i == -1) {
       return this;
     }
-    return new StringSegment(this._text.substring(0, this._trailBlank), this._leadBlank, -1);
+    return new StringSegment(this._text.substring(0, i), this._leadBlank, -1);
   }
   
   public void visit(Mustache.Visitor paramVisitor)

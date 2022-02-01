@@ -25,9 +25,17 @@ import javax.net.ssl.TrustManager;
 public class b
   extends SSLContextSpi
 {
-  private static final String b = d.a() + ".OpenSSLContextImpl";
+  private static final String b;
   private static final Map<Class<?>, Constructor<?>> c = new ConcurrentHashMap();
   SSLContextSpi a;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d.a());
+    localStringBuilder.append(".OpenSSLContextImpl");
+    b = localStringBuilder.toString();
+  }
   
   public b() {}
   
@@ -38,32 +46,39 @@ public class b
   
   private static Constructor<?> b(Class<?> paramClass, String[] paramArrayOfString)
   {
-    Constructor localConstructor = (Constructor)c.get(paramClass);
-    Object localObject = localConstructor;
-    int j;
-    int i;
-    if (localConstructor == null)
+    Object localObject = (Constructor)c.get(paramClass);
+    if (localObject == null)
     {
-      j = paramArrayOfString.length;
-      i = 0;
-    }
-    while (i < j)
-    {
-      localObject = paramArrayOfString[i];
-      try
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject = d.a(b + "$" + (String)localObject).a(new Class[0]);
-        c.put(paramClass, localObject);
-        return localObject;
-      }
-      catch (Exception localException)
-      {
+        localObject = paramArrayOfString[i];
+        try
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(b);
+          localStringBuilder.append("$");
+          localStringBuilder.append((String)localObject);
+          localObject = d.a(localStringBuilder.toString()).a(new Class[0]);
+          c.put(paramClass, localObject);
+          return localObject;
+        }
+        catch (Exception localException)
+        {
+          label100:
+          break label100;
+        }
         i += 1;
       }
+      paramArrayOfString = d.a(b).a(new Class[0]);
+      c.put(paramClass, paramArrayOfString);
+      return paramArrayOfString;
     }
-    paramArrayOfString = d.a(b).a(new Class[0]);
-    c.put(paramClass, paramArrayOfString);
-    return paramArrayOfString;
+    else
+    {
+      return localObject;
+    }
   }
   
   protected SSLEngine engineCreateSSLEngine()
@@ -76,12 +91,16 @@ public class b
     catch (Exception localException)
     {
       d.a(localException);
-      try
-      {
-        SSLEngine localSSLEngine2 = SSLContext.getDefault().createSSLEngine();
-        return localSSLEngine2;
-      }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException) {}
+    }
+    try
+    {
+      SSLEngine localSSLEngine2 = SSLContext.getDefault().createSSLEngine();
+      return localSSLEngine2;
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      label45:
+      break label45;
     }
     return null;
   }
@@ -96,12 +115,16 @@ public class b
     catch (Exception localException)
     {
       d.a(localException);
-      try
-      {
-        paramString = SSLContext.getDefault().createSSLEngine(paramString, paramInt);
-        return paramString;
-      }
-      catch (NoSuchAlgorithmException paramString) {}
+    }
+    try
+    {
+      paramString = SSLContext.getDefault().createSSLEngine(paramString, paramInt);
+      return paramString;
+    }
+    catch (NoSuchAlgorithmException paramString)
+    {
+      label69:
+      break label69;
     }
     return null;
   }
@@ -116,12 +139,16 @@ public class b
     catch (Exception localException)
     {
       d.a(localException);
-      try
-      {
-        SSLSessionContext localSSLSessionContext2 = SSLContext.getDefault().getClientSessionContext();
-        return localSSLSessionContext2;
-      }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException) {}
+    }
+    try
+    {
+      SSLSessionContext localSSLSessionContext2 = SSLContext.getDefault().getClientSessionContext();
+      return localSSLSessionContext2;
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      label45:
+      break label45;
     }
     return null;
   }
@@ -150,12 +177,16 @@ public class b
     catch (Exception localException)
     {
       d.a(localException);
-      try
-      {
-        SSLSessionContext localSSLSessionContext2 = SSLContext.getDefault().getServerSessionContext();
-        return localSSLSessionContext2;
-      }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException) {}
+    }
+    try
+    {
+      SSLSessionContext localSSLSessionContext2 = SSLContext.getDefault().getServerSessionContext();
+      return localSSLSessionContext2;
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      label45:
+      break label45;
     }
     return null;
   }
@@ -221,7 +252,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.ssl.b
  * JD-Core Version:    0.7.0.1
  */

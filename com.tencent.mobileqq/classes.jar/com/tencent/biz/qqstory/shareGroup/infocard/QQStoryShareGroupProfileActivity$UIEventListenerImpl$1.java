@@ -9,21 +9,21 @@ class QQStoryShareGroupProfileActivity$UIEventListenerImpl$1
 {
   QQStoryShareGroupProfileActivity$UIEventListenerImpl$1(QQStoryShareGroupProfileActivity.UIEventListenerImpl paramUIEventListenerImpl) {}
   
-  public void a()
+  public void b(int paramInt)
   {
-    super.a();
-    QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare = null;
+    super.b(paramInt);
+    StoryReportor.a("share_story", "day_suc", 0, paramInt, new String[] { QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
   
-  public void a(int paramInt)
+  public void d()
   {
-    super.a(paramInt);
-    StoryReportor.a("share_story", "day_suc", 0, paramInt, new String[] { QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    super.d();
+    QQStoryShareGroupProfileActivity.UIEventListenerImpl.a(this.a).jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.UIEventListenerImpl.1
  * JD-Core Version:    0.7.0.1
  */

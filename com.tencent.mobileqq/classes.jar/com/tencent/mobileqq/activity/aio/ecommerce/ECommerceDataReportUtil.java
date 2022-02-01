@@ -59,26 +59,28 @@ public class ECommerceDataReportUtil
     if (a(paramMessageRecord))
     {
       paramMessageRecord = a(paramMessageRecord);
-      if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportUtil", 2, "reportECommerceData  reportConfig -> " + jdField_a_of_type_JavaUtilHashMap);
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("reportECommerceData  reportConfig -> ");
+        ((StringBuilder)localObject).append(jdField_a_of_type_JavaUtilHashMap);
+        QLog.d("ECommerceDataReportUtil", 2, ((StringBuilder)localObject).toString());
       }
       if (!a(paramQQAppInterface))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ECommerceDataReportUtil", 2, "reportECommerceData load config from QConfigManager");
         }
-        WeakReference localWeakReference = new WeakReference(paramQQAppInterface);
-        ThreadManager.getFileThreadHandler().post(new ECommerceDataReportUtil.1(paramQQAppInterface, localWeakReference, paramMessageRecord, paramInt, paramString));
+        localObject = new WeakReference(paramQQAppInterface);
+        ThreadManager.getFileThreadHandler().post(new ECommerceDataReportUtil.1(paramQQAppInterface, (WeakReference)localObject, paramMessageRecord, paramInt, paramString));
+        return;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("ECommerceDataReportUtil", 2, "reportECommerceData hit cache");
+      }
+      b(paramQQAppInterface, paramMessageRecord, paramInt, paramString);
     }
-    else
-    {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ECommerceDataReportUtil", 2, "reportECommerceData hit cache");
-    }
-    b(paramQQAppInterface, paramMessageRecord, paramInt, paramString);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, List<ChatMessage> paramList, int paramInt)
@@ -94,19 +96,26 @@ public class ECommerceDataReportUtil
   
   private static boolean a(QQAppInterface paramQQAppInterface)
   {
-    return (jdField_a_of_type_JavaUtilHashMap != null) && (!jdField_a_of_type_JavaUtilHashMap.isEmpty()) && (paramQQAppInterface != null) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()));
+    HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
+    return (localHashMap != null) && (!localHashMap.isEmpty()) && (paramQQAppInterface != null) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()));
   }
   
   private static boolean a(MessageRecord paramMessageRecord)
   {
-    if (((paramMessageRecord instanceof MessageForText)) || ((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForReplyText))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportUtil", 2, "isMessageNeedReport : need -> " + bool);
-      }
-      return bool;
+    boolean bool;
+    if ((!(paramMessageRecord instanceof MessageForText)) && (!(paramMessageRecord instanceof MessageForMixedMsg)) && (!(paramMessageRecord instanceof MessageForReplyText))) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    if (QLog.isColorLevel())
+    {
+      paramMessageRecord = new StringBuilder();
+      paramMessageRecord.append("isMessageNeedReport : need -> ");
+      paramMessageRecord.append(bool);
+      QLog.d("ECommerceDataReportUtil", 2, paramMessageRecord.toString());
+    }
+    return bool;
   }
   
   private static void b(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
@@ -116,14 +125,28 @@ public class ECommerceDataReportUtil
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       String str = (String)localEntry.getKey();
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramString1)) && (paramString1.contains(str))) {
-        if ((paramInt != 5) || ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains(str))))
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramString1))) {
+        if (paramString1.contains(str))
         {
+          if ((paramInt == 5) && ((TextUtils.isEmpty(paramString2)) || (!paramString2.contains(str)))) {
+            break;
+          }
           paramString1 = (String)localEntry.getValue();
           ReportController.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", "", "");
-          if (QLog.isColorLevel()) {
-            QLog.d("ECommerceDataReportUtil", 2, "checkAndReport : doReport key -> " + str + ", type => " + paramInt + ", reportTag -> " + paramString1 + "， clickUrl -> " + paramString2);
+          if (!QLog.isColorLevel()) {
+            break;
           }
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("checkAndReport : doReport key -> ");
+          paramQQAppInterface.append(str);
+          paramQQAppInterface.append(", type => ");
+          paramQQAppInterface.append(paramInt);
+          paramQQAppInterface.append(", reportTag -> ");
+          paramQQAppInterface.append(paramString1);
+          paramQQAppInterface.append("， clickUrl -> ");
+          paramQQAppInterface.append(paramString2);
+          QLog.d("ECommerceDataReportUtil", 2, paramQQAppInterface.toString());
+          return;
         }
       }
     }
@@ -131,7 +154,7 @@ public class ECommerceDataReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportUtil
  * JD-Core Version:    0.7.0.1
  */

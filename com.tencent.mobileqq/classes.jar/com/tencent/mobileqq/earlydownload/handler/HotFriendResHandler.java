@@ -34,8 +34,13 @@ public class HotFriendResHandler
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doOnDownloadSuccess:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("HotFriendResHandler", 2, ((StringBuilder)localObject).toString());
     }
     if (!new File(paramString).exists())
     {
@@ -46,20 +51,21 @@ public class HotFriendResHandler
     }
     try
     {
-      String str = HotReactiveHelper.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
+      localObject = HotReactiveHelper.a();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("doOnDownloadSuccess imagePath=");
+        localStringBuilder.append((String)localObject);
+        QLog.d("HotFriendResHandler", 2, localStringBuilder.toString());
       }
-      if (!TextUtils.isEmpty(str)) {
-        FileUtils.a(paramString, str, false);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        FileUtils.uncompressZip(paramString, (String)localObject, false);
       }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
     super.a(paramString);
   }
@@ -76,7 +82,7 @@ public class HotFriendResHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.HotFriendResHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -7,35 +7,36 @@ import java.io.File;
 
 public class CacheHelper
 {
-  private static final String TAG = CacheHelper.class.getName();
-  private static String mAppCacheDir = null;
-  private static volatile Cache mFileCache = null;
-  private static String mPackgeName = null;
+  private static final String TAG = "com.tencent.biz.richframework.network.cache.CacheHelper";
+  private static String mAppCacheDir;
+  private static volatile Cache mFileCache;
+  private static String mPackgeName;
   
   public static Cache fileCache()
   {
-    if (mFileCache == null) {}
-    try
-    {
-      if (mFileCache == null)
+    if (mFileCache == null) {
+      try
       {
-        if (mPackgeName == null) {
-          mPackgeName = RFApplication.getApplication().getPackageName();
+        if (mFileCache == null)
+        {
+          if (mPackgeName == null) {
+            mPackgeName = RFApplication.getApplication().getPackageName();
+          }
+          if (mAppCacheDir == null) {
+            mAppCacheDir = RFApplication.getApplication().getCacheDir().getAbsolutePath();
+          }
+          mFileCache = new DiskCache(mPackgeName, mAppCacheDir);
         }
-        if (mAppCacheDir == null) {
-          mAppCacheDir = RFApplication.getApplication().getCacheDir().getAbsolutePath();
-        }
-        mFileCache = new DiskCache(mPackgeName, mAppCacheDir);
+        RFLog.d(TAG, RFLog.DEV, "init FileCache");
       }
-      RFLog.d(TAG, RFLog.DEV, "init FileCache");
-      return mFileCache;
+      finally {}
     }
-    finally {}
+    return mFileCache;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.cache.CacheHelper
  * JD-Core Version:    0.7.0.1
  */

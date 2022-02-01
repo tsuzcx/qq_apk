@@ -17,13 +17,16 @@ class ApolloUrlConnection$1
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("apollo_client_ApolloUrlConnection", 2, "disconnect error:" + localThrowable.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("disconnect error:");
+      localStringBuilder.append(localThrowable.getMessage());
+      QLog.e("[cmshow]apollo_client_ApolloUrlConnection", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloUrlConnection.1
  * JD-Core Version:    0.7.0.1
  */

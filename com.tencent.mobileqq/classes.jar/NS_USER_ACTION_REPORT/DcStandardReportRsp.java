@@ -27,14 +27,15 @@ public final class DcStandardReportRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret_code, 0);
-    if (this.ret_msg != null) {
-      paramJceOutputStream.write(this.ret_msg, 1);
+    String str = this.ret_msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_USER_ACTION_REPORT.DcStandardReportRsp
  * JD-Core Version:    0.7.0.1
  */

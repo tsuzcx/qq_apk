@@ -10,14 +10,18 @@ class ApolloJSContext$3
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloJSContext", 2, "[onReceiveValue] s " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onReceiveValue] s ");
+      localStringBuilder.append(paramString);
+      QLog.d("[cmshow]ApolloJSContext", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloJSContext.3
  * JD-Core Version:    0.7.0.1
  */

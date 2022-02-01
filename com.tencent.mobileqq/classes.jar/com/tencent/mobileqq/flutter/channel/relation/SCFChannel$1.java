@@ -6,7 +6,7 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import io.flutter.plugin.common.MethodChannel.Result;
@@ -35,18 +35,18 @@ class SCFChannel$1
   
   protected void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
   {
-    VasWebviewUtil.reportCommercialDrainage(this.a.b(), "Care", "PageView", "", 1, 0, 0, null, null, null);
+    VasWebviewUtil.a(this.a.b(), "Care", "PageView", "", 1, 0, 0, null, null, null);
   }
   
   protected void a(String paramString, Integer paramInteger, Boolean paramBoolean, MethodChannel.Result paramResult)
   {
     paramResult = this.a.b();
-    if (paramBoolean.booleanValue()) {}
-    for (paramString = "SwitchOn";; paramString = "SwitchOff")
-    {
-      VasWebviewUtil.reportCommercialDrainage(paramResult, "Care", paramString, Integer.toString(paramInteger.intValue()), 1, 0, 0, null, null, null);
-      return;
+    if (paramBoolean.booleanValue()) {
+      paramString = "SwitchOn";
+    } else {
+      paramString = "SwitchOff";
     }
+    VasWebviewUtil.a(paramResult, "Care", paramString, Integer.toString(paramInteger.intValue()), 1, 0, 0, null, null, null);
   }
   
   protected void b(String paramString, MethodChannel.Result paramResult)
@@ -67,7 +67,7 @@ class SCFChannel$1
   
   protected void b(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
   {
-    VasWebviewUtil.reportCommercialDrainage(this.a.b(), "bell", "care_show", "", 1, 0, 0, "", "", "");
+    VasWebviewUtil.a(this.a.b(), "bell", "care_show", "", 1, 0, 0, "", "", "");
   }
   
   protected void c(String paramString, MethodChannel.Result paramResult)
@@ -84,12 +84,12 @@ class SCFChannel$1
   protected void c(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
   {
     ReportController.b(null, "dc00898", "", "", "0X800A3C5", "0X800A3C5", 2, 0, "", "", "", "");
-    VasWebviewUtil.reportCommercialDrainage(this.a.b(), "bell", " care_click", "", 1, 0, 0, "", "", "");
+    VasWebviewUtil.a(this.a.b(), "bell", " care_click", "", 1, 0, 0, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1
  * JD-Core Version:    0.7.0.1
  */

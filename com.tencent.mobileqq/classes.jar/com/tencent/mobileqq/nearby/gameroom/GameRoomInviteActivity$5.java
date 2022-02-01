@@ -15,22 +15,21 @@ class GameRoomInviteActivity$5
   {
     if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      this.a.b = paramRspBody.string_invite_id.get().toStringUtf8();
-      GameRoomInviteActivity.a = this.a.b;
+      this.a.mInviteId = paramRspBody.string_invite_id.get().toStringUtf8();
+      GameRoomConstants.a = this.a.mInviteId;
     }
-    for (;;)
+    else
     {
-      this.a.a(true);
-      return;
       paramRspBody = this.a;
-      GameRoomInviteActivity.a = null;
-      paramRspBody.b = null;
+      GameRoomConstants.a = null;
+      paramRspBody.mInviteId = null;
     }
+    this.a.init(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.5
  * JD-Core Version:    0.7.0.1
  */

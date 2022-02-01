@@ -29,39 +29,44 @@ public class GameCenterUnissoObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 8272)
     {
-    default: 
-      return;
-    case 8224: 
-      b(paramObject);
-      return;
-    case 8225: 
-      f(paramObject);
-      return;
-    case 8227: 
-      a(paramObject);
-      return;
-    case 8226: 
-      c(paramObject);
-      return;
-    case 8228: 
-      g(paramObject);
-      return;
-    case 8261: 
-      d(paramObject);
-      return;
-    case 8262: 
-      i(paramObject);
-      return;
-    case 8263: 
+      switch (paramInt)
+      {
+      default: 
+        switch (paramInt)
+        {
+        default: 
+          return;
+        case 8265: 
+          b();
+          return;
+        case 8264: 
+          i(paramObject);
+          return;
+        case 8263: 
+          g(paramObject);
+          return;
+        case 8262: 
+          f(paramObject);
+          return;
+        }
+        e(paramObject);
+        return;
+      case 8228: 
+        d(paramObject);
+        return;
+      case 8227: 
+        a(paramObject);
+        return;
+      case 8226: 
+        c(paramObject);
+        return;
+      case 8225: 
+        b(paramObject);
+        return;
+      }
       h(paramObject);
-      return;
-    case 8264: 
-      e(paramObject);
-      return;
-    case 8265: 
-      b();
       return;
     }
     a();
@@ -69,7 +74,7 @@ public class GameCenterUnissoObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.protocol.GameCenterUnissoObserver
  * JD-Core Version:    0.7.0.1
  */

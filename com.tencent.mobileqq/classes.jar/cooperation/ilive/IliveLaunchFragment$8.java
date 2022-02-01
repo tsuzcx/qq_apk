@@ -5,6 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.tools.ProcessStats;
 import com.tencent.qqperf.tools.ProcessStats.Stats;
 import java.util.HashMap;
+import java.util.Map;
 
 final class IliveLaunchFragment$8
   implements Runnable
@@ -14,15 +15,23 @@ final class IliveLaunchFragment$8
   public void run()
   {
     ProcessStats.b(false);
-    QLog.i("IliveLaunchActivity", 1, "cpu use = " + ProcessStats.a.a + " cost = " + this.a);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpu", ProcessStats.a.a + "");
-    VasStatisticCollector.a("ilive_preload_monitor", localHashMap, this.a);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("cpu use = ");
+    ((StringBuilder)localObject).append(ProcessStats.a.a);
+    ((StringBuilder)localObject).append(" cost = ");
+    ((StringBuilder)localObject).append(this.a);
+    QLog.i("IliveLaunchActivity", 1, ((StringBuilder)localObject).toString());
+    localObject = new HashMap();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ProcessStats.a.a);
+    localStringBuilder.append("");
+    ((HashMap)localObject).put("cpu", localStringBuilder.toString());
+    VasStatisticCollector.a("ilive_preload_monitor", (Map)localObject, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.8
  * JD-Core Version:    0.7.0.1
  */

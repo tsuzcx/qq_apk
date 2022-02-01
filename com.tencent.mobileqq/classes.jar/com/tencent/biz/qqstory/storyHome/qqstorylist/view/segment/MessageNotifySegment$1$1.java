@@ -23,7 +23,18 @@ class MessageNotifySegment$1$1
       Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
       if ((localObject != null) && (((QQUserUIItem)localObject).isAvailable()))
       {
-        if ((((QQUserUIItem)localObject).isVipButNoFriend()) || ((MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.this$0) == 1000000L) && (!TextUtils.isEmpty(MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.this$0)))))
+        if ((!((QQUserUIItem)localObject).isVipButNoFriend()) && ((MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.this$0) != 1000000L) || (TextUtils.isEmpty(MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.this$0)))))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "set friend avatar.");
+          }
+          QQStoryContext.a();
+          localObject = FaceDrawable.getFaceDrawable(QQStoryContext.a(), 1, Long.toString(MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.this$0)), 3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          if (localObject != null) {
+            this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+          }
+        }
+        else
         {
           if (QLog.isColorLevel()) {
             QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "set bigV avatar from UserUIItem");
@@ -34,16 +45,6 @@ class MessageNotifySegment$1$1
           }
           PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.jdField_a_of_type_AndroidWidgetImageView, (String)localObject, true, (int)DisplayUtils.a(MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.this$0), 33.0F));
         }
-        do
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "set friend avatar.");
-          }
-          QQStoryContext.a();
-          localObject = FaceDrawable.getFaceDrawable(QQStoryContext.a(), 1, Long.toString(MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.this$0)), 3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        } while (localObject == null);
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment$1.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         return;
       }
     }
@@ -52,7 +53,7 @@ class MessageNotifySegment$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment.1.1
  * JD-Core Version:    0.7.0.1
  */

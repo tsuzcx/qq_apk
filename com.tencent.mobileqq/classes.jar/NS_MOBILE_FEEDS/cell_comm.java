@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,9 +70,10 @@ public final class cell_comm
   
   static
   {
-    cache_stMapABTest.put(Integer.valueOf(0), Integer.valueOf(0));
+    Object localObject = Integer.valueOf(0);
+    cache_stMapABTest.put(localObject, localObject);
     cache_custom_droplist = new ArrayList();
-    Object localObject = new s_droplist_option();
+    localObject = new s_droplist_option();
     cache_custom_droplist.add(localObject);
     cache_extendInfo = new HashMap();
     cache_extendInfo.put("", "");
@@ -195,50 +197,61 @@ public final class cell_comm
   {
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.subid, 1);
-    if (this.refer != null) {
-      paramJceOutputStream.write(this.refer, 2);
+    Object localObject = this.refer;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.time, 3);
     paramJceOutputStream.write(this.actiontype, 4);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 5);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.originaltype, 6);
     paramJceOutputStream.write(this.operatemask, 7);
-    if (this.feedskey != null) {
-      paramJceOutputStream.write(this.feedskey, 8);
+    localObject = this.feedskey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.orglikekey != null) {
-      paramJceOutputStream.write(this.orglikekey, 9);
+    localObject = this.orglikekey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.curlikekey != null) {
-      paramJceOutputStream.write(this.curlikekey, 10);
+    localObject = this.curlikekey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.feedstype, 11);
     paramJceOutputStream.write(this.feedsattr, 12);
-    if (this.ugckey != null) {
-      paramJceOutputStream.write(this.ugckey, 13);
+    localObject = this.ugckey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.clientkey != null) {
-      paramJceOutputStream.write(this.clientkey, 14);
+    localObject = this.clientkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
     paramJceOutputStream.write(this.show_mask, 15);
     paramJceOutputStream.write(this.uflag, 16);
     paramJceOutputStream.write(this.shield, 17);
-    if (this.ugcrightkey != null) {
-      paramJceOutputStream.write(this.ugcrightkey, 18);
+    localObject = this.ugcrightkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.interestkey != null) {
-      paramJceOutputStream.write(this.interestkey, 19);
+    localObject = this.interestkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
     paramJceOutputStream.write(this.recomtype, 20);
-    if (this.feedsid != null) {
-      paramJceOutputStream.write(this.feedsid, 21);
+    localObject = this.feedsid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
     paramJceOutputStream.write(this.adv_stytle, 22);
     paramJceOutputStream.write(this.adv_subtype, 23);
-    if (this.right_info != null) {
-      paramJceOutputStream.write(this.right_info, 24);
+    localObject = this.right_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 24);
     }
     paramJceOutputStream.write(this.recomlayout, 25);
     paramJceOutputStream.write(this.recomreportid, 26);
@@ -246,31 +259,37 @@ public final class cell_comm
     paramJceOutputStream.write(this.reportfeedsattr, 28);
     paramJceOutputStream.write(this.recom_show_type, 29);
     paramJceOutputStream.write(this.wup_feeds_type, 30);
-    if (this.stMapABTest != null) {
-      paramJceOutputStream.write(this.stMapABTest, 31);
+    localObject = this.stMapABTest;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 31);
     }
     paramJceOutputStream.write(this.is_stay, 32);
-    if (this.paykey != null) {
-      paramJceOutputStream.write(this.paykey, 33);
+    localObject = this.paykey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 33);
     }
     paramJceOutputStream.write(this.operatemask2, 34);
     paramJceOutputStream.write(this.positionmask, 35);
     paramJceOutputStream.write(this.positionmask2, 36);
     paramJceOutputStream.write(this.editmask, 37);
-    if (this.custom_droplist != null) {
-      paramJceOutputStream.write(this.custom_droplist, 38);
+    localObject = this.custom_droplist;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 38);
     }
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 39);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 39);
     }
     paramJceOutputStream.write(this.feedsattr2, 40);
     paramJceOutputStream.write(this.feedsDelTime, 41);
-    if (this.sqDynamicFeedsKey != null) {
-      paramJceOutputStream.write(this.sqDynamicFeedsKey, 42);
+    localObject = this.sqDynamicFeedsKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 42);
     }
     paramJceOutputStream.write(this.iClick_area, 43);
-    if (this.extendInfoData != null) {
-      paramJceOutputStream.write(this.extendInfoData, 44);
+    localObject = this.extendInfoData;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 44);
     }
     paramJceOutputStream.write(this.hot_score, 45);
     paramJceOutputStream.write(this.is_kuolie, 46);
@@ -281,7 +300,7 @@ public final class cell_comm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_comm
  * JD-Core Version:    0.7.0.1
  */

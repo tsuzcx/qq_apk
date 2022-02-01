@@ -13,13 +13,13 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
-import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import com.tencent.mtt.supportui.utils.CommonTool;
 
 public class ContentDrawable
-  extends Drawable
+  extends BaseDrawable
 {
   protected int mAlpha = 255;
   private Path mBorderPath;
@@ -37,12 +37,6 @@ public class ContentDrawable
   
   private void updatePath()
   {
-    int i;
-    int j;
-    int k;
-    int m;
-    float f2;
-    Object localObject;
     if ((this.mNeedUpdateBorderPath) && (this.mContentBitmap != null))
     {
       if (this.mBorderPath == null) {
@@ -52,246 +46,267 @@ public class ContentDrawable
       if (this.mTempRectForBorderRadius == null) {
         this.mTempRectForBorderRadius = new RectF();
       }
-      this.mTempRectForBorderRadius.set(getBounds());
-      i = this.mContentBitmap.getWidth();
-      j = this.mContentBitmap.getHeight();
-      k = getBounds().width();
-      m = getBounds().height();
-      f1 = k / i;
-      f2 = m / j;
-      switch (ContentDrawable.1.$SwitchMap$com$tencent$mtt$supportui$views$asyncimage$AsyncImageView$ScaleType[this.mScaleType.ordinal()])
-      {
-      case 1: 
-      case 2: 
-      default: 
-        localObject = this.mTempRectForBorderRadius;
-        ((RectF)localObject).top += this.mImagePositionY;
-        localObject = this.mTempRectForBorderRadius;
-        ((RectF)localObject).bottom += this.mImagePositionY;
-        localObject = this.mTempRectForBorderRadius;
-        ((RectF)localObject).left += this.mImagePositionX;
-        localObject = this.mTempRectForBorderRadius;
-        ((RectF)localObject).right += this.mImagePositionX;
-        if (this.mBorderWidthArray != null) {
-          break;
+      this.mTempRectForBorderRadius.set(this.mRect);
+      int i = this.mContentBitmap.getWidth();
+      int j = this.mContentBitmap.getHeight();
+      float f1 = this.mRect.width();
+      float f2 = this.mRect.height();
+      float f3 = i;
+      float f4 = f1 / f3;
+      float f5 = j;
+      float f6 = f2 / f5;
+      i = ContentDrawable.1.$SwitchMap$com$tencent$mtt$supportui$views$asyncimage$AsyncImageView$ScaleType[this.mScaleType.ordinal()];
+      if ((i != 1) && (i != 2)) {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i == 5) {
+              if (f4 > f6)
+              {
+                localObject = this.mTempRectForBorderRadius;
+                ((RectF)localObject).top = 0.0F;
+                ((RectF)localObject).bottom = f2;
+                f2 = f3 * f6;
+                ((RectF)localObject).left = ((int)((f1 - f2) / 2.0F));
+                ((RectF)localObject).right = ((int)((f1 + f2) / 2.0F));
+              }
+              else
+              {
+                localObject = this.mTempRectForBorderRadius;
+                f3 = f5 * f4;
+                ((RectF)localObject).top = ((int)((f2 - f3) / 2.0F));
+                ((RectF)localObject).bottom = ((int)((f2 + f3) / 2.0F));
+                ((RectF)localObject).left = 0.0F;
+                ((RectF)localObject).right = f1;
+              }
+            }
+          }
+          else
+          {
+            localObject = this.mTempRectForBorderRadius;
+            ((RectF)localObject).top = ((f2 - f5) / 2.0F);
+            ((RectF)localObject).bottom = ((f2 + f5) / 2.0F);
+            ((RectF)localObject).left = ((f1 - f3) / 2.0F);
+            ((RectF)localObject).right = ((f1 + f3) / 2.0F);
+          }
+        }
+        else
+        {
+          localObject = this.mTempRectForBorderRadius;
+          ((RectF)localObject).top = 0.0F;
+          ((RectF)localObject).bottom = f5;
+          ((RectF)localObject).left = 0.0F;
+          ((RectF)localObject).right = f3;
         }
       }
-    }
-    for (float f1 = 0.0F;; f1 = this.mBorderWidthArray[0])
-    {
-      if (f1 > 1.0F) {
-        this.mTempRectForBorderRadius.inset(f1 * 0.5F, f1 * 0.5F);
-      }
-      if (!CommonTool.hasPositiveItem(this.mBorderRadiusArray)) {
-        break label762;
-      }
-      f2 = this.mBorderRadiusArray[1];
-      f1 = f2;
-      if (f2 == 0.0F)
-      {
-        f1 = f2;
-        if (this.mBorderRadiusArray[0] > 0.0F) {
-          f1 = this.mBorderRadiusArray[0];
-        }
-      }
-      float f3 = this.mBorderRadiusArray[2];
-      f2 = f3;
-      if (f3 == 0.0F)
-      {
-        f2 = f3;
-        if (this.mBorderRadiusArray[0] > 0.0F) {
-          f2 = this.mBorderRadiusArray[0];
-        }
-      }
-      float f4 = this.mBorderRadiusArray[3];
-      f3 = f4;
-      if (f4 == 0.0F)
-      {
-        f3 = f4;
-        if (this.mBorderRadiusArray[0] > 0.0F) {
-          f3 = this.mBorderRadiusArray[0];
-        }
-      }
-      float f5 = this.mBorderRadiusArray[4];
-      f4 = f5;
-      if (f5 == 0.0F)
-      {
-        f4 = f5;
-        if (this.mBorderRadiusArray[0] > 0.0F) {
-          f4 = this.mBorderRadiusArray[0];
-        }
-      }
-      localObject = this.mBorderPath;
-      RectF localRectF = this.mTempRectForBorderRadius;
-      Path.Direction localDirection = Path.Direction.CW;
-      ((Path)localObject).addRoundRect(localRectF, new float[] { f1, f1, f2, f2, f3, f3, f4, f4 }, localDirection);
-      return;
-      this.mTempRectForBorderRadius.top = 0.0F;
-      this.mTempRectForBorderRadius.bottom = j;
-      this.mTempRectForBorderRadius.left = 0.0F;
-      this.mTempRectForBorderRadius.right = i;
-      break;
-      this.mTempRectForBorderRadius.top = ((m - j) / 2);
-      this.mTempRectForBorderRadius.bottom = ((j + m) / 2);
-      this.mTempRectForBorderRadius.left = ((k - i) / 2);
-      this.mTempRectForBorderRadius.right = ((i + k) / 2);
-      break;
-      if (f1 > f2)
-      {
-        this.mTempRectForBorderRadius.top = 0.0F;
-        this.mTempRectForBorderRadius.bottom = m;
-        this.mTempRectForBorderRadius.left = ((int)((k - i * f2) / 2.0F));
-        localObject = this.mTempRectForBorderRadius;
-        f1 = k;
-        ((RectF)localObject).right = ((int)((i * f2 + f1) / 2.0F));
-        break;
-      }
-      this.mTempRectForBorderRadius.top = ((int)((m - j * f1) / 2.0F));
+      Object localObject = this.mTempRectForBorderRadius;
+      ((RectF)localObject).top += this.mImagePositionY;
       localObject = this.mTempRectForBorderRadius;
-      f2 = m;
-      ((RectF)localObject).bottom = ((int)((j * f1 + f2) / 2.0F));
-      this.mTempRectForBorderRadius.left = 0.0F;
-      this.mTempRectForBorderRadius.right = k;
-      break;
+      ((RectF)localObject).bottom += this.mImagePositionY;
+      localObject = this.mTempRectForBorderRadius;
+      ((RectF)localObject).left += this.mImagePositionX;
+      localObject = this.mTempRectForBorderRadius;
+      ((RectF)localObject).right += this.mImagePositionX;
+      localObject = this.mBorderWidthArray;
+      if (localObject == null) {
+        f1 = 0.0F;
+      } else {
+        f1 = localObject[0];
+      }
+      if (f1 > 1.0F)
+      {
+        localObject = this.mTempRectForBorderRadius;
+        f1 *= 0.5F;
+        ((RectF)localObject).inset(f1, f1);
+      }
+      if (CommonTool.hasPositiveItem(this.mBorderRadiusArray))
+      {
+        localObject = this.mBorderRadiusArray;
+        f2 = localObject[1];
+        f1 = f2;
+        if (f2 == 0.0F)
+        {
+          f1 = f2;
+          if (localObject[0] > 0.0F) {
+            f1 = localObject[0];
+          }
+        }
+        localObject = this.mBorderRadiusArray;
+        f3 = localObject[2];
+        f2 = f3;
+        if (f3 == 0.0F)
+        {
+          f2 = f3;
+          if (localObject[0] > 0.0F) {
+            f2 = localObject[0];
+          }
+        }
+        localObject = this.mBorderRadiusArray;
+        f4 = localObject[3];
+        f3 = f4;
+        if (f4 == 0.0F)
+        {
+          f3 = f4;
+          if (localObject[0] > 0.0F) {
+            f3 = localObject[0];
+          }
+        }
+        localObject = this.mBorderRadiusArray;
+        f5 = localObject[4];
+        f4 = f5;
+        if (f5 == 0.0F)
+        {
+          f4 = f5;
+          if (localObject[0] > 0.0F) {
+            f4 = localObject[0];
+          }
+        }
+        localObject = this.mBorderPath;
+        RectF localRectF = this.mTempRectForBorderRadius;
+        Path.Direction localDirection = Path.Direction.CW;
+        ((Path)localObject).addRoundRect(localRectF, new float[] { f1, f1, f2, f2, f3, f3, f4, f4 }, localDirection);
+        return;
+      }
+      this.mBorderPath.addRect(this.mTempRectForBorderRadius, Path.Direction.CW);
     }
-    label762:
-    this.mBorderPath.addRect(this.mTempRectForBorderRadius, Path.Direction.CW);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if ((this.mContentBitmap == null) || (this.mContentBitmap.isRecycled())) {}
-    do
+    Object localObject = this.mContentBitmap;
+    if (localObject != null)
     {
-      return;
+      if (((Bitmap)localObject).isRecycled()) {
+        return;
+      }
       if (this.mPaint == null) {
         this.mPaint = new Paint(1);
       }
+      updateContentRegion();
       updatePath();
-    } while (this.mContentBitmap == null);
-    Matrix localMatrix = new Matrix();
-    localMatrix.reset();
-    RectF localRectF = new RectF(0.0F, 0.0F, getBounds().width(), getBounds().height());
-    float f1;
-    int i;
-    int j;
-    int k;
-    int m;
-    float f2;
-    if (this.mBorderWidthArray == null)
-    {
-      f1 = 0.0F;
-      if (f1 > 1.0F) {
-        localRectF.inset(f1 * 0.5F, f1 * 0.5F);
-      }
-      i = this.mContentBitmap.getWidth();
-      j = this.mContentBitmap.getHeight();
-      k = getBounds().width();
-      m = getBounds().height();
-      f1 = k / i;
-      f2 = m / j;
-    }
-    switch (ContentDrawable.1.$SwitchMap$com$tencent$mtt$supportui$views$asyncimage$AsyncImageView$ScaleType[this.mScaleType.ordinal()])
-    {
-    case 1: 
-    case 2: 
-    default: 
-    case 3: 
-    case 4: 
-    case 5: 
-      for (;;)
+      if (this.mContentBitmap != null)
       {
+        localObject = new Matrix();
+        ((Matrix)localObject).reset();
+        RectF localRectF = new RectF(this.mRect);
+        float[] arrayOfFloat = this.mBorderWidthArray;
+        if (arrayOfFloat == null) {
+          f1 = 0.0F;
+        } else {
+          f1 = arrayOfFloat[0];
+        }
+        if (f1 > 1.0F)
+        {
+          f1 *= 0.5F;
+          localRectF.inset(f1, f1);
+        }
+        int i = this.mContentBitmap.getWidth();
+        int j = this.mContentBitmap.getHeight();
+        float f2 = this.mRect.width();
+        float f5 = this.mRect.height();
+        float f3 = i;
+        float f1 = f2 / f3;
+        float f6 = j;
+        float f4 = f5 / f6;
+        switch (ContentDrawable.1.$SwitchMap$com$tencent$mtt$supportui$views$asyncimage$AsyncImageView$ScaleType[this.mScaleType.ordinal()])
+        {
+        default: 
+          break;
+        case 6: 
+          if (f1 <= f4) {
+            f1 = f4;
+          }
+          f4 = f6 * f1;
+          localRectF.top = ((int)((f5 - f4) / 2.0F));
+          localRectF.bottom = ((int)((f5 + f4) / 2.0F));
+          f1 = f3 * f1;
+          break;
+        case 5: 
+          if (f1 > f4)
+          {
+            localRectF.top = 0.0F;
+            localRectF.bottom = f5;
+            f1 = f3 * f4;
+            localRectF.left = ((int)((f2 - f1) / 2.0F));
+            f1 = (int)((f2 + f1) / 2.0F);
+          }
+          else
+          {
+            f1 = f6 * f1;
+            localRectF.top = ((int)((f5 - f1) / 2.0F));
+            localRectF.bottom = ((int)((f5 + f1) / 2.0F));
+            localRectF.left = 0.0F;
+            f1 = f2;
+          }
+          break;
+        case 4: 
+          localRectF.top = ((f5 - f6) / 2.0F);
+          localRectF.bottom = ((f5 + f6) / 2.0F);
+          localRectF.left = ((f2 - f3) / 2.0F);
+          f1 = (f2 + f3) / 2.0F;
+          localRectF.right = f1;
+          break;
+        case 3: 
+          localRectF.top = 0.0F;
+          localRectF.bottom = f6;
+          localRectF.left = 0.0F;
+          f1 = f3;
+          localRectF.right = f1;
+        }
         localRectF.top += this.mImagePositionY;
         localRectF.bottom += this.mImagePositionY;
         localRectF.left += this.mImagePositionX;
         localRectF.right += this.mImagePositionX;
-        localMatrix.setRectToRect(new RectF(0.0F, 0.0F, this.mContentBitmap.getWidth(), this.mContentBitmap.getHeight()), localRectF, Matrix.ScaleToFit.FILL);
+        ((Matrix)localObject).setRectToRect(new RectF(0.0F, 0.0F, this.mContentBitmap.getWidth(), this.mContentBitmap.getHeight()), localRectF, Matrix.ScaleToFit.FILL);
         this.mPaint.reset();
         this.mPaint.setAlpha(this.mAlpha);
-        if (this.mTintColor != 0) {
-          this.mPaint.setColorFilter(new PorterDuffColorFilter(this.mTintColor, PorterDuff.Mode.SRC_ATOP));
+        i = this.mTintColor;
+        if (i != 0) {
+          this.mPaint.setColorFilter(new PorterDuffColorFilter(i, PorterDuff.Mode.SRC_ATOP));
         }
-        drawBitmap(paramCanvas, localMatrix);
-        return;
-        f1 = this.mBorderWidthArray[0];
-        break;
-        localRectF.top = 0.0F;
-        localRectF.bottom = j;
-        localRectF.left = 0.0F;
-        localRectF.right = i;
-        continue;
-        localRectF.top = ((m - j) / 2);
-        localRectF.bottom = ((m + j) / 2);
-        localRectF.left = ((k - i) / 2);
-        localRectF.right = ((k + i) / 2);
-        continue;
-        if (f1 > f2)
-        {
-          localRectF.top = 0.0F;
-          localRectF.bottom = m;
-          localRectF.left = ((int)((k - i * f2) / 2.0F));
-          localRectF.right = ((int)((k + f2 * i) / 2.0F));
-        }
-        else
-        {
-          localRectF.top = ((int)((m - j * f1) / 2.0F));
-          f2 = m;
-          localRectF.bottom = ((int)((f1 * j + f2) / 2.0F));
-          localRectF.left = 0.0F;
-          localRectF.right = k;
-        }
+        drawBitmap(paramCanvas, (Matrix)localObject);
       }
-    }
-    if (f1 > f2) {}
-    for (;;)
-    {
-      localRectF.top = ((int)((m - j * f1) / 2.0F));
-      localRectF.bottom = ((int)((m + j * f1) / 2.0F));
-      localRectF.left = ((int)((k - i * f1) / 2.0F));
-      f2 = k;
-      localRectF.right = ((int)((f1 * i + f2) / 2.0F));
-      break;
-      f1 = f2;
     }
   }
   
   protected void drawBitmap(Canvas paramCanvas, Matrix paramMatrix)
   {
-    if (this.mSelfClipPath != null) {}
+    Object localObject = this.mSelfClipPath;
+    if (localObject != null) {}
     try
     {
-      paramCanvas.clipPath(this.mSelfClipPath);
-      label16:
-      if (this.mScaleType == AsyncImageView.ScaleType.REPEAT)
+      paramCanvas.clipPath((Path)localObject);
+    }
+    catch (Throwable localThrowable)
+    {
+      label18:
+      break label18;
+    }
+    if (this.mScaleType == AsyncImageView.ScaleType.REPEAT)
+    {
+      paramMatrix = new BitmapShader(this.mContentBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+      this.mPaint.setShader(paramMatrix);
+      if (this.mBorderPath != null)
       {
-        paramMatrix = new BitmapShader(this.mContentBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-        this.mPaint.setShader(paramMatrix);
-        if (this.mBorderPath != null)
-        {
-          this.mPaint.setAntiAlias(true);
-          paramCanvas.drawPath(this.mBorderPath, this.mPaint);
-        }
+        this.mPaint.setAntiAlias(true);
+        paramCanvas.drawPath(this.mBorderPath, this.mPaint);
       }
-      do
-      {
-        return;
-        if ((!CommonTool.hasPositiveItem(this.mBorderRadiusArray)) && (Build.VERSION.SDK_INT >= 23)) {
-          break;
-        }
-        BitmapShader localBitmapShader = new BitmapShader(this.mContentBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-        localBitmapShader.setLocalMatrix(paramMatrix);
-        this.mPaint.setShader(localBitmapShader);
-      } while (this.mBorderPath == null);
-      this.mPaint.setAntiAlias(true);
-      paramCanvas.drawPath(this.mBorderPath, this.mPaint);
       return;
+    }
+    if ((!CommonTool.hasPositiveItem(this.mBorderRadiusArray)) && (Build.VERSION.SDK_INT >= 23))
+    {
       this.mPaint.setFilterBitmap(true);
       paramCanvas.drawBitmap(this.mContentBitmap, paramMatrix, this.mPaint);
       return;
     }
-    catch (Throwable localThrowable)
+    localObject = new BitmapShader(this.mContentBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    ((BitmapShader)localObject).setLocalMatrix(paramMatrix);
+    this.mPaint.setShader((Shader)localObject);
+    if (this.mBorderPath != null)
     {
-      break label16;
+      this.mPaint.setAntiAlias(true);
+      paramCanvas.drawPath(this.mBorderPath, this.mPaint);
     }
   }
   
@@ -329,6 +344,12 @@ public class ContentDrawable
     this.mNeedUpdateBorderPath = true;
   }
   
+  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    updateContentRegion();
+  }
+  
   public void setColorFilter(ColorFilter paramColorFilter) {}
   
   public void setImagePositionX(int paramInt)
@@ -355,7 +376,7 @@ public class ContentDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.asyncimage.ContentDrawable
  * JD-Core Version:    0.7.0.1
  */

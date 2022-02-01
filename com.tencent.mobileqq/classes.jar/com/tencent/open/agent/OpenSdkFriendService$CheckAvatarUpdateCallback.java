@@ -18,7 +18,10 @@ public class OpenSdkFriendService$CheckAvatarUpdateCallback
   
   public void a(Exception paramException)
   {
-    LogUtility.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CheckAvatarUpdate Exception. ");
+    localStringBuilder.append(paramException.getMessage());
+    LogUtility.c("OpenSdkFriendService", localStringBuilder.toString(), paramException);
   }
   
   public void a(JSONObject paramJSONObject)
@@ -26,7 +29,7 @@ public class OpenSdkFriendService$CheckAvatarUpdateCallback
     try
     {
       int i = paramJSONObject.getInt("ret");
-      Object localObject = paramJSONObject.getString("msg");
+      localObject = paramJSONObject.getString("msg");
       if (i == 0)
       {
         localObject = paramJSONObject.getJSONArray("update_list");
@@ -43,19 +46,27 @@ public class OpenSdkFriendService$CheckAvatarUpdateCallback
       }
       else
       {
-        LogUtility.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("CheckAvatarUpdateCallback error. ret=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(", msg=");
+        paramJSONObject.append((String)localObject);
+        LogUtility.e("OpenSdkFriendService", paramJSONObject.toString());
         return;
       }
     }
     catch (JSONException paramJSONObject)
     {
-      LogUtility.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CheckAvatarUpdate Exception. ");
+      ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+      LogUtility.c("OpenSdkFriendService", ((StringBuilder)localObject).toString(), paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

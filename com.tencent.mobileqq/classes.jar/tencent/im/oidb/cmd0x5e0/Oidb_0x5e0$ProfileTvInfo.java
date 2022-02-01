@@ -19,13 +19,14 @@ public final class Oidb_0x5e0$ProfileTvInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_field_id", "uint32_field_type", "uint64_field_int_value", "bytes_field_str_value" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro }, ProfileTvInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_field_id", "uint32_field_type", "uint64_field_int_value", "bytes_field_str_value" }, new Object[] { localInteger, localInteger, Long.valueOf(0L), localByteStringMicro }, ProfileTvInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5e0.Oidb_0x5e0.ProfileTvInfo
  * JD-Core Version:    0.7.0.1
  */

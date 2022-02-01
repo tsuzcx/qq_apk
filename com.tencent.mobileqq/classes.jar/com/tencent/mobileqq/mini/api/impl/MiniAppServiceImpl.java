@@ -1,16 +1,20 @@
 package com.tencent.mobileqq.mini.api.impl;
 
 import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
+import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import NS_MINI_REPORT.REPORT.SingleDcData;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.os.ResultReceiver;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import androidx.annotation.NonNull;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
 import com.tencent.mobileqq.activity.home.Conversation;
@@ -39,7 +43,9 @@ import com.tencent.mobileqq.mini.entry.MiniAppDesktop;
 import com.tencent.mobileqq.mini.entry.MiniAppEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppEntryHandler;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.CommonExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppExposureData;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
 import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager;
 import com.tencent.mobileqq.mini.entry.MiniAppPrePullManager;
@@ -67,6 +73,7 @@ import com.tencent.mobileqq.mini.report.MiniAppBusiReport;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.mini.report.MiniProgramReporter;
+import com.tencent.mobileqq.mini.report.MiniReportManager;
 import com.tencent.mobileqq.mini.reuse.MiniAppBannerIPCModule;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -74,6 +81,7 @@ import com.tencent.mobileqq.mini.reuse.MiniAppTransferModule;
 import com.tencent.mobileqq.mini.sdk.EntryModel;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.mini.servlet.GetFriendPlayListV2Request;
 import com.tencent.mobileqq.mini.servlet.GetUserAppListRequest;
@@ -95,11 +103,15 @@ import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.profilecard.bussiness.miniapp.ProfileMiniAppInfo;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.module.IQRoutePlugin;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.proxyimpl.SharePlugin;
+import com.tencent.qqmini.proxyimpl.ShareQQArkHelper;
 import com.tencent.widget.ListView;
+import common.config.service.QzoneConfig;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -110,39 +122,101 @@ import mqq.manager.Manager;
 public class MiniAppServiceImpl
   implements IMiniAppService
 {
+  private static final String FAKE_APPID_FOR_REPORT = "0000000000";
+  private static final String MINI_APP_DF_SEARCH_FRAGMENT = "com.tencent.mobileqq.mini.entry.dfsearch.ui.MiniAppSearchFragment";
   private static final String TAG = "MiniAppServiceImpl";
   
   private MiniAppConfig convert(SimpleMiniAppConfig paramSimpleMiniAppConfig)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramSimpleMiniAppConfig != null)
+    if ((paramSimpleMiniAppConfig != null) && (paramSimpleMiniAppConfig.config != null))
     {
-      localObject1 = localObject2;
-      if (paramSimpleMiniAppConfig.config != null)
+      if (paramSimpleMiniAppConfig.config.stApiAppInfo != null)
       {
-        if (paramSimpleMiniAppConfig.config.stApiAppInfo == null) {
-          break label102;
-        }
-        localObject1 = com.tencent.mobileqq.mini.apkg.MiniAppInfo.from(paramSimpleMiniAppConfig.config.stApiAppInfo);
+        localObject = com.tencent.mobileqq.mini.apkg.MiniAppInfo.from(paramSimpleMiniAppConfig.config.stApiAppInfo);
+      }
+      else
+      {
+        localObject = new com.tencent.mobileqq.mini.apkg.MiniAppInfo();
+        ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).appId = paramSimpleMiniAppConfig.config.appId;
+        ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).name = paramSimpleMiniAppConfig.config.name;
+        ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).iconUrl = paramSimpleMiniAppConfig.config.iconUrl;
+        ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).verType = paramSimpleMiniAppConfig.config.verType;
+        ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).via = paramSimpleMiniAppConfig.config.via;
+      }
+      Object localObject = new MiniAppConfig((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject);
+      ((MiniAppConfig)localObject).launchParam = new LaunchParam();
+      ((MiniAppConfig)localObject).launchParam.scene = paramSimpleMiniAppConfig.launchParam.scene;
+      ((MiniAppConfig)localObject).launchParam.miniAppId = paramSimpleMiniAppConfig.launchParam.miniAppId;
+      ((MiniAppConfig)localObject).launchParam.reportData = paramSimpleMiniAppConfig.launchParam.reportData;
+      return localObject;
+    }
+    return null;
+  }
+  
+  private com.tencent.qqmini.sdk.launcher.model.MiniAppInfo getFakeMiniAppInfoForReport(String paramString1, String paramString2)
+  {
+    com.tencent.qqmini.sdk.launcher.model.MiniAppInfo localMiniAppInfo = new com.tencent.qqmini.sdk.launcher.model.MiniAppInfo();
+    localMiniAppInfo.appId = paramString1;
+    try
+    {
+      localMiniAppInfo.verType = Integer.parseInt(paramString2);
+      return localMiniAppInfo;
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("MiniAppServiceImpl", 2, "reportColorSignClickAndStartMiniApp parseInt err:", paramString1);
+    }
+    return localMiniAppInfo;
+  }
+  
+  private void reportColorSignClick(int paramInt, com.tencent.qqmini.sdk.launcher.model.MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramInt == 1132)
+    {
+      if (paramMiniAppInfo != null)
+      {
+        report4239AsyncBySdkMiniAppInfo(paramMiniAppInfo, "addRecentColorSign", "recentColorSign_enter", "click", null);
+        return;
+      }
+      report4239Async("addRecentColorSign", "recentColorSign_enter", "click", null, null, null);
+      return;
+    }
+    if (paramMiniAppInfo != null)
+    {
+      report4239AsyncBySdkMiniAppInfo(paramMiniAppInfo, "addColorSign", "colorSign_enter", "click", null);
+      return;
+    }
+    report4239Async("addColorSign", "colorSign_enter", "click", null, null, null);
+  }
+  
+  private void reportMiniSearchDFResult(boolean paramBoolean)
+  {
+    String str;
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      if (paramBoolean) {
+        str = "mmcl_suc";
+      } else {
+        str = "mmcl_fail";
       }
     }
-    for (;;)
-    {
-      localObject1 = new MiniAppConfig((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1);
-      ((MiniAppConfig)localObject1).launchParam = new LaunchParam();
-      ((MiniAppConfig)localObject1).launchParam.scene = paramSimpleMiniAppConfig.launchParam.scene;
-      ((MiniAppConfig)localObject1).launchParam.miniAppId = paramSimpleMiniAppConfig.launchParam.miniAppId;
-      ((MiniAppConfig)localObject1).launchParam.reportData = paramSimpleMiniAppConfig.launchParam.reportData;
-      return localObject1;
-      label102:
-      localObject1 = new com.tencent.mobileqq.mini.apkg.MiniAppInfo();
-      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1).appId = paramSimpleMiniAppConfig.config.appId;
-      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1).name = paramSimpleMiniAppConfig.config.name;
-      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1).iconUrl = paramSimpleMiniAppConfig.config.iconUrl;
-      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1).verType = paramSimpleMiniAppConfig.config.verType;
-      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1).via = paramSimpleMiniAppConfig.config.via;
+    else if (paramBoolean) {
+      str = "dex_suc";
+    } else {
+      str = "dex_fail";
     }
+    MiniReportManager.reportEventType(MiniReportManager.getFakeAppConfigForReport("0000000000"), 1061, "0", str, "", "", "");
+  }
+  
+  private void reportMiniSearchLaunchMode(String paramString)
+  {
+    MiniReportManager.reportEventType(MiniReportManager.getFakeAppConfigForReport("0000000000"), 1060, "0", paramString, "", "", "");
+  }
+  
+  private void triggerMiniSearchDFInstall(IQRoutePlugin paramIQRoutePlugin)
+  {
+    MiniReportManager.reportEventType(MiniReportManager.getFakeAppConfigForReport("0000000000"), 1062, "0");
+    paramIQRoutePlugin.install(new MiniAppServiceImpl.1(this));
   }
   
   public void addDesktopChangeListener(MiniAppPullInterface paramMiniAppPullInterface, DesktopChangeListener paramDesktopChangeListener)
@@ -157,6 +231,17 @@ public class MiniAppServiceImpl
     if ((paramObject instanceof REPORT.SingleDcData)) {
       MiniProgramReporter.getInstance().add((REPORT.SingleDcData)paramObject);
     }
+  }
+  
+  public void addSearchItemAndCheckReport(SimpleMiniAppConfig paramSimpleMiniAppConfig, String paramString1, String paramString2)
+  {
+    paramSimpleMiniAppConfig = convert(paramSimpleMiniAppConfig);
+    ((MiniAppExposureManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER)).addSearchItemAndCheckReport(new MiniAppExposureManager.MiniAppModuleExposureData(paramSimpleMiniAppConfig, "page_view", "expo"));
+  }
+  
+  public void addSearchItemAndCheckReport(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    ((MiniAppExposureManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER)).addSearchItemAndCheckReport(new MiniAppExposureManager.CommonExposureData(paramString1, paramString2, paramString3, paramString4, paramString5));
   }
   
   public boolean asyncShareMiniProgram(Object paramObject)
@@ -302,6 +387,11 @@ public class MiniAppServiceImpl
     return new GetUserAppListRequest(null, paramLong1, paramLong2).getBusiBuf();
   }
   
+  public void getHotSearchApps(COMM.StCommonExt paramStCommonExt, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    MiniAppCmdUtil.getInstance().getHotSearchApps(paramStCommonExt, paramMiniAppCmdInterface);
+  }
+  
   public Drawable getIcon(Context paramContext, String paramString, boolean paramBoolean)
   {
     return MiniAppUtils.getIcon(paramContext, paramString, paramBoolean);
@@ -368,6 +458,48 @@ public class MiniAppServiceImpl
   
   public Class getMiniAppSearchFragmentClass()
   {
+    int i;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_enable_search_dynamic_feature", 1) == 1) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i == 0)
+    {
+      QLog.d("MiniAppServiceImpl", 1, "getMiniAppSearchFragmentClass and enableMiniSearchDf is false");
+      reportMiniSearchLaunchMode("launch_normal");
+      return MiniAppSearchFragment.class;
+    }
+    Object localObject = QRoute.plugin("qqminisearch_feature.apk");
+    QLog.d("MiniAppServiceImpl", 1, "start install miniSearchPlugin!");
+    if (!((IQRoutePlugin)localObject).isInstalled())
+    {
+      QLog.d("MiniAppServiceImpl", 1, "getMiniAppSearchFragmentClass - miniSearchPlugin do not installed!");
+      triggerMiniSearchDFInstall((IQRoutePlugin)localObject);
+      reportMiniSearchLaunchMode("launch_normal");
+      return MiniAppSearchFragment.class;
+    }
+    QLog.d("MiniAppServiceImpl", 1, "getMiniAppSearchFragmentClass - miniSearchPlugin has been installed!");
+    try
+    {
+      ((IQRoutePlugin)localObject).loadPlugin();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[同步调用-获取dfFragment] classloader:");
+      ((StringBuilder)localObject).append(BaseApplicationImpl.sApplication.getClassLoader());
+      QLog.e("MiniAppServiceImpl", 1, ((StringBuilder)localObject).toString());
+      localObject = Class.forName("com.tencent.mobileqq.mini.entry.dfsearch.ui.MiniAppSearchFragment");
+      QLog.e("MiniAppServiceImpl", 1, "[同步调用-获取dfFragment成功!]");
+      reportMiniSearchLaunchMode("launch_df");
+      reportMiniSearchDFResult(true);
+      return localObject;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      QLog.e("MiniAppServiceImpl", 1, "ClassNotFoundException:", localClassNotFoundException);
+      QLog.e("MiniAppServiceImpl", 1, "[同步调用-获取dfFragment失败]");
+      reportMiniSearchLaunchMode("launch_normal");
+      reportMiniSearchDFResult(false);
+    }
     return MiniAppSearchFragment.class;
   }
   
@@ -399,6 +531,11 @@ public class MiniAppServiceImpl
   public String getTmpPathFromOut(String paramString1, String paramString2)
   {
     return MiniAppFileManager.getInstance().getTmpPathFromOut(paramString1, paramString2);
+  }
+  
+  public void guessYouLike(COMM.StCommonExt paramStCommonExt, int paramInt, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    MiniAppCmdUtil.getInstance().guessYouLike(paramStCommonExt, paramInt, paramMiniAppCmdInterface);
   }
   
   public void handleMiniAppMoreClick(Activity paramActivity)
@@ -443,11 +580,12 @@ public class MiniAppServiceImpl
   
   public void launchAppByMiniCode(Context paramContext, String paramString, int paramInt, MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    MiniAppServiceImpl.6 local6 = null;
     if (paramMiniAppLaunchListener != null) {
-      local6 = new MiniAppServiceImpl.6(this, paramMiniAppLaunchListener);
+      paramMiniAppLaunchListener = new MiniAppServiceImpl.7(this, paramMiniAppLaunchListener);
+    } else {
+      paramMiniAppLaunchListener = null;
     }
-    MiniAppLauncher.launchAppByMiniCode(paramContext, paramString, paramInt, local6);
+    MiniAppLauncher.launchAppByMiniCode(paramContext, paramString, paramInt, paramMiniAppLaunchListener);
   }
   
   public void launchMainPageFragment(Context paramContext, Parcelable paramParcelable, int paramInt)
@@ -457,7 +595,10 @@ public class MiniAppServiceImpl
       MainPageFragment.launch(paramContext, (MiniAppConfig)paramParcelable, paramInt);
       return;
     }
-    QLog.e("MiniAppServiceImpl", 1, "appConfig is invalid! appConfig=" + paramParcelable);
+    paramContext = new StringBuilder();
+    paramContext.append("appConfig is invalid! appConfig=");
+    paramContext.append(paramParcelable);
+    QLog.e("MiniAppServiceImpl", 1, paramContext.toString());
   }
   
   public void launchMainPageFragmentForMiniGame(Context paramContext, Parcelable paramParcelable, int paramInt, boolean paramBoolean)
@@ -467,30 +608,67 @@ public class MiniAppServiceImpl
       MainPageFragment.launchForMiniGame(paramContext, (MiniAppConfig)paramParcelable, paramInt, paramBoolean);
       return;
     }
-    QLog.e("MiniAppServiceImpl", 1, "appConfig is invalid! appConfig=" + paramParcelable);
+    paramContext = new StringBuilder();
+    paramContext.append("appConfig is invalid! appConfig=");
+    paramContext.append(paramParcelable);
+    QLog.e("MiniAppServiceImpl", 1, paramContext.toString());
+  }
+  
+  public void launchMiniAppByApiAppInfo(@NonNull Activity paramActivity, @NonNull INTERFACE.StApiAppInfo paramStApiAppInfo, int paramInt)
+  {
+    try
+    {
+      MiniAppController.launchMiniAppByAppInfo(paramActivity, com.tencent.mobileqq.mini.apkg.MiniAppInfo.from(paramStApiAppInfo), paramInt);
+      return;
+    }
+    catch (MiniAppException paramActivity)
+    {
+      QLog.e("MiniAppServiceImpl", 1, "launchMiniAppByApiAppInfo get an exception:", paramActivity);
+    }
+  }
+  
+  public void launchMiniAppByAppInfo(Activity paramActivity, INTERFACE.StUserAppInfo paramStUserAppInfo, int paramInt)
+  {
+    try
+    {
+      QLog.d("MiniAppServiceImpl", 2, "launchMiniAppByAppInfo");
+      MiniAppController.launchMiniAppByAppInfo(paramActivity, com.tencent.mobileqq.mini.apkg.MiniAppInfo.from(paramStUserAppInfo), paramInt);
+      return;
+    }
+    catch (MiniAppException paramActivity)
+    {
+      QLog.e("MiniAppServiceImpl", 1, "launchMiniAppByAppInfo get an exception:", paramActivity);
+    }
   }
   
   public void launchMiniAppById(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    MiniAppServiceImpl.4 local4 = null;
     if (paramMiniAppLaunchListener != null) {
-      local4 = new MiniAppServiceImpl.4(this, paramMiniAppLaunchListener);
+      paramMiniAppLaunchListener = new MiniAppServiceImpl.5(this, paramMiniAppLaunchListener);
+    } else {
+      paramMiniAppLaunchListener = null;
     }
-    MiniAppLauncher.launchMiniAppById(paramContext, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt, local4);
+    MiniAppLauncher.launchMiniAppById(paramContext, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt, paramMiniAppLaunchListener);
   }
   
   public boolean launchMiniAppByScheme(Context paramContext, HashMap<String, String> paramHashMap, int paramInt, EntryModel paramEntryModel, MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    MiniAppServiceImpl.5 local5 = null;
     if (paramMiniAppLaunchListener != null) {
-      local5 = new MiniAppServiceImpl.5(this, paramMiniAppLaunchListener);
+      paramMiniAppLaunchListener = new MiniAppServiceImpl.6(this, paramMiniAppLaunchListener);
+    } else {
+      paramMiniAppLaunchListener = null;
     }
-    return MiniAppLauncher.launchMiniAppByScheme(paramContext, paramHashMap, paramInt, paramEntryModel, local5);
+    return MiniAppLauncher.launchMiniAppByScheme(paramContext, paramHashMap, paramInt, paramEntryModel, paramMiniAppLaunchListener);
   }
   
   public void launchMiniGamePublicAccount(Context paramContext)
   {
-    MiniGamePublicAccountHelper.launchMiniGamePublicAccount(paramContext);
+    launchMiniGamePublicAccount(paramContext, "");
+  }
+  
+  public void launchMiniGamePublicAccount(Context paramContext, String paramString)
+  {
+    MiniGamePublicAccountHelper.launchMiniGamePublicAccount(paramContext, paramString);
   }
   
   public void launchPermissionSettingFragmentForResult(Activity paramActivity, String paramString1, String paramString2, int paramInt)
@@ -513,7 +691,7 @@ public class MiniAppServiceImpl
   
   public void onMiniGameCardShowMoreView(String paramString, int paramInt1, int paramInt2)
   {
-    MiniAppCmdUtil.getInstance().getAppInfoByLink(paramString, paramInt1, new MiniAppServiceImpl.7(this, paramInt2));
+    MiniAppCmdUtil.getInstance().getAppInfoByLink(paramString, paramInt1, new MiniAppServiceImpl.8(this, paramInt2));
   }
   
   public void performUploadArkShareImage(String paramString, IMiniCallback paramIMiniCallback)
@@ -540,8 +718,6 @@ public class MiniAppServiceImpl
     MiniAppPushControl.getInstance(paramString).processControlInfo(paramMiniAppControlInfo);
   }
   
-  public void registerMiniArkShareMessageProcessorAfterProcessRestart() {}
-  
   public void removeDesktopChangeListener(MiniAppPullInterface paramMiniAppPullInterface, DesktopChangeListener paramDesktopChangeListener)
   {
     if ((paramMiniAppPullInterface instanceof MiniAppDesktop)) {
@@ -551,36 +727,33 @@ public class MiniAppServiceImpl
   
   public void report4239Async(SimpleMiniAppConfig paramSimpleMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramSimpleMiniAppConfig != null)
+    if ((paramSimpleMiniAppConfig != null) && (paramSimpleMiniAppConfig.config != null))
     {
-      localObject1 = localObject2;
-      if (paramSimpleMiniAppConfig.config != null)
+      if (paramSimpleMiniAppConfig.config.stApiAppInfo != null)
       {
-        if (paramSimpleMiniAppConfig.config.stApiAppInfo == null) {
-          break label124;
-        }
-        localObject1 = com.tencent.mobileqq.mini.apkg.MiniAppInfo.from(paramSimpleMiniAppConfig.config.stApiAppInfo);
+        localObject = com.tencent.mobileqq.mini.apkg.MiniAppInfo.from(paramSimpleMiniAppConfig.config.stApiAppInfo);
       }
+      else
+      {
+        localObject = new com.tencent.mobileqq.mini.apkg.MiniAppInfo();
+        ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).appId = paramSimpleMiniAppConfig.config.appId;
+        ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).name = paramSimpleMiniAppConfig.config.name;
+        ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).iconUrl = paramSimpleMiniAppConfig.config.iconUrl;
+        ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).verType = paramSimpleMiniAppConfig.config.verType;
+        ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).via = paramSimpleMiniAppConfig.config.via;
+      }
+      Object localObject = new MiniAppConfig((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject);
+      ((MiniAppConfig)localObject).launchParam = new LaunchParam();
+      ((MiniAppConfig)localObject).launchParam.scene = paramSimpleMiniAppConfig.launchParam.scene;
+      ((MiniAppConfig)localObject).launchParam.miniAppId = paramSimpleMiniAppConfig.launchParam.miniAppId;
+      ((MiniAppConfig)localObject).launchParam.reportData = paramSimpleMiniAppConfig.launchParam.reportData;
+      paramSimpleMiniAppConfig = (SimpleMiniAppConfig)localObject;
     }
-    for (;;)
+    else
     {
-      localObject1 = new MiniAppConfig((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1);
-      ((MiniAppConfig)localObject1).launchParam = new LaunchParam();
-      ((MiniAppConfig)localObject1).launchParam.scene = paramSimpleMiniAppConfig.launchParam.scene;
-      ((MiniAppConfig)localObject1).launchParam.miniAppId = paramSimpleMiniAppConfig.launchParam.miniAppId;
-      ((MiniAppConfig)localObject1).launchParam.reportData = paramSimpleMiniAppConfig.launchParam.reportData;
-      MiniProgramLpReportDC04239.reportAsync((MiniAppConfig)localObject1, paramString1, paramString2, paramString3, paramString4);
-      return;
-      label124:
-      localObject1 = new com.tencent.mobileqq.mini.apkg.MiniAppInfo();
-      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1).appId = paramSimpleMiniAppConfig.config.appId;
-      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1).name = paramSimpleMiniAppConfig.config.name;
-      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1).iconUrl = paramSimpleMiniAppConfig.config.iconUrl;
-      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1).verType = paramSimpleMiniAppConfig.config.verType;
-      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject1).via = paramSimpleMiniAppConfig.config.via;
+      paramSimpleMiniAppConfig = null;
     }
+    MiniProgramLpReportDC04239.reportAsync(paramSimpleMiniAppConfig, paramString1, paramString2, paramString3, paramString4);
   }
   
   public void report4239Async(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
@@ -590,11 +763,12 @@ public class MiniAppServiceImpl
   
   public void report4239AsyncBySdkMiniAppInfo(Object paramObject, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    MiniAppConfig localMiniAppConfig = null;
     if ((paramObject instanceof com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)) {
-      localMiniAppConfig = new MiniAppConfig(MiniSdkLauncher.convert((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramObject));
+      paramObject = new MiniAppConfig(MiniSdkLauncher.convert((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramObject));
+    } else {
+      paramObject = null;
     }
-    MiniProgramLpReportDC04239.reportAsync(localMiniAppConfig, paramString1, paramString2, paramString3, paramString4);
+    MiniProgramLpReportDC04239.reportAsync(paramObject, paramString1, paramString2, paramString3, paramString4);
   }
   
   public void reportByQQ(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -610,6 +784,63 @@ public class MiniAppServiceImpl
   public void reportByQQqunInfo(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     MiniProgramLpReportDC04239.reportByQQqunInfo(paramString1, paramString2, paramString3, paramString4);
+  }
+  
+  public void reportColorNoteExpoForMiniApp(String paramString, boolean paramBoolean)
+  {
+    String str2;
+    String str1;
+    if (paramBoolean)
+    {
+      str2 = "addRecentColorSign";
+      str1 = "recentColorSign_enter";
+    }
+    else
+    {
+      str2 = "addColorSign";
+      str1 = "colorSign_enter";
+    }
+    if (paramString.contains("#@#"))
+    {
+      paramString = paramString.split("#@#");
+      if (paramString.length == 2) {
+        report4239AsyncBySdkMiniAppInfo(getFakeMiniAppInfoForReport(paramString[0], paramString[1]), str2, str1, "expo", null);
+      }
+    }
+    else
+    {
+      report4239Async(str2, str1, "expo", null, null, null);
+    }
+  }
+  
+  public void reportColorSignClickAndStartMiniApp(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    reportColorSignClick(paramInt, getFakeMiniAppInfoForReport(paramString1, paramString3));
+    paramString2 = SimpleMiniAppConfig.SimpleLaunchParam.standardEntryPath(paramString2);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).startAppByAppid(paramContext, paramString1, paramString2, paramString3, paramInt, null);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("startMiniApp, appId: ");
+      paramContext.append(paramString1);
+      paramContext.append(", entryPath: ");
+      paramContext.append(paramString2);
+      paramContext.append(", versionType: ");
+      paramContext.append(paramString3);
+      paramContext.append(", colorSignScene: ");
+      paramContext.append(paramInt);
+      QLog.d("MiniAppServiceImpl", 2, paramContext.toString());
+    }
+  }
+  
+  public void reportColorSignClickWithNoAppInfo(int paramInt)
+  {
+    if (paramInt == 1132)
+    {
+      report4239Async("addRecentColorSign", "recentColorSign_enter", "click", null, null, null);
+      return;
+    }
+    report4239Async("addColorSign", "colorSign_enter", "click", null, null, null);
   }
   
   public void reportEshopExpo(String paramString1, String paramString2)
@@ -639,6 +870,11 @@ public class MiniAppServiceImpl
     MiniAppReportShareUtil.getInstance().reportShare(paramString1, paramInt1, paramInt2, paramInt3, paramInt4, paramString2);
   }
   
+  public void searchApp(COMM.StCommonExt paramStCommonExt, String paramString, MiniAppCmdInterface paramMiniAppCmdInterface)
+  {
+    MiniAppCmdUtil.getInstance().searchApp(paramStCommonExt, paramString, paramMiniAppCmdInterface);
+  }
+  
   public void sendUserAppListRequest(Manager paramManager, long paramLong1, long paramLong2)
   {
     if ((paramManager instanceof MiniAppUserAppInfoListManager)) {
@@ -646,9 +882,9 @@ public class MiniAppServiceImpl
     }
   }
   
-  public void shareAsArkMessage(Activity paramActivity, MiniArkShareModel paramMiniArkShareModel, boolean paramBoolean, int paramInt, COMM.StCommonExt paramStCommonExt)
+  public void shareAsArkMessage(Activity paramActivity, MiniArkShareModel paramMiniArkShareModel)
   {
-    MiniProgramShareUtils.shareAsArkMessage(paramActivity, paramMiniArkShareModel, paramBoolean, paramInt, paramStCommonExt, null);
+    ShareQQArkHelper.a(paramActivity, paramMiniArkShareModel, null);
   }
   
   public void shareAsQzoneFeeds(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt4, String paramString8, String paramString9, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -668,47 +904,52 @@ public class MiniAppServiceImpl
   
   public void startApp(Activity paramActivity, SimpleMiniAppConfig paramSimpleMiniAppConfig, ResultReceiver paramResultReceiver)
   {
-    if ((paramSimpleMiniAppConfig == null) || (paramSimpleMiniAppConfig.config == null)) {
-      return;
-    }
-    Object localObject = new com.tencent.mobileqq.mini.apkg.MiniAppInfo();
-    ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).appId = paramSimpleMiniAppConfig.config.appId;
-    ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).name = paramSimpleMiniAppConfig.config.name;
-    ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).iconUrl = paramSimpleMiniAppConfig.config.iconUrl;
-    ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).setEngineType(paramSimpleMiniAppConfig.config.engineType);
-    ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).setReportType(paramSimpleMiniAppConfig.config.reportType);
-    ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).developerDesc = paramSimpleMiniAppConfig.config.developerDesc;
-    ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).verType = paramSimpleMiniAppConfig.config.verType;
-    localObject = new MiniAppConfig((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject);
-    ((MiniAppConfig)localObject).launchParam = new LaunchParam();
-    if (paramSimpleMiniAppConfig.launchParam != null)
+    if (paramSimpleMiniAppConfig != null)
     {
-      ((MiniAppConfig)localObject).launchParam.miniAppId = paramSimpleMiniAppConfig.launchParam.miniAppId;
-      ((MiniAppConfig)localObject).launchParam.scene = paramSimpleMiniAppConfig.launchParam.scene;
+      if (paramSimpleMiniAppConfig.config == null) {
+        return;
+      }
+      Object localObject = new com.tencent.mobileqq.mini.apkg.MiniAppInfo();
+      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).appId = paramSimpleMiniAppConfig.config.appId;
+      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).name = paramSimpleMiniAppConfig.config.name;
+      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).iconUrl = paramSimpleMiniAppConfig.config.iconUrl;
+      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).setEngineType(paramSimpleMiniAppConfig.config.engineType);
+      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).setReportType(paramSimpleMiniAppConfig.config.reportType);
+      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).developerDesc = paramSimpleMiniAppConfig.config.developerDesc;
+      ((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject).verType = paramSimpleMiniAppConfig.config.verType;
+      localObject = new MiniAppConfig((com.tencent.mobileqq.mini.apkg.MiniAppInfo)localObject);
+      ((MiniAppConfig)localObject).launchParam = new LaunchParam();
+      if (paramSimpleMiniAppConfig.launchParam != null)
+      {
+        ((MiniAppConfig)localObject).launchParam.miniAppId = paramSimpleMiniAppConfig.launchParam.miniAppId;
+        ((MiniAppConfig)localObject).launchParam.scene = paramSimpleMiniAppConfig.launchParam.scene;
+      }
+      MiniAppController.startApp(paramActivity, (MiniAppConfig)localObject, paramResultReceiver);
     }
-    MiniAppController.startApp(paramActivity, (MiniAppConfig)localObject, paramResultReceiver);
   }
   
   public void startAppByAppid(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    MiniAppServiceImpl.3 local3 = null;
     if (paramMiniAppLaunchListener != null) {
-      local3 = new MiniAppServiceImpl.3(this, paramMiniAppLaunchListener);
+      paramMiniAppLaunchListener = new MiniAppServiceImpl.4(this, paramMiniAppLaunchListener);
+    } else {
+      paramMiniAppLaunchListener = null;
     }
-    paramMiniAppLaunchListener = new LaunchParam();
-    paramMiniAppLaunchListener.scene = paramInt;
-    MiniAppController.startAppByAppid(paramContext, paramString1, paramString2, paramString3, paramMiniAppLaunchListener, local3);
+    LaunchParam localLaunchParam = new LaunchParam();
+    localLaunchParam.scene = paramInt;
+    MiniAppController.startAppByAppid(paramContext, paramString1, paramString2, paramString3, localLaunchParam, paramMiniAppLaunchListener);
   }
   
   public void startAppByLink(Context paramContext, String paramString, int paramInt1, int paramInt2, MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    MiniAppServiceImpl.2 local2 = null;
     if (paramMiniAppLaunchListener != null) {
-      local2 = new MiniAppServiceImpl.2(this, paramMiniAppLaunchListener);
+      paramMiniAppLaunchListener = new MiniAppServiceImpl.3(this, paramMiniAppLaunchListener);
+    } else {
+      paramMiniAppLaunchListener = null;
     }
-    paramMiniAppLaunchListener = new LaunchParam();
-    paramMiniAppLaunchListener.scene = paramInt2;
-    MiniAppController.startAppByLink(paramContext, paramString, paramInt1, paramMiniAppLaunchListener, local2);
+    LaunchParam localLaunchParam = new LaunchParam();
+    localLaunchParam.scene = paramInt2;
+    MiniAppController.startAppByLink(paramContext, paramString, paramInt1, localLaunchParam, paramMiniAppLaunchListener);
   }
   
   public boolean startMiniApp(Context paramContext, String paramString, int paramInt, MiniAppLaunchListener paramMiniAppLaunchListener)
@@ -718,11 +959,17 @@ public class MiniAppServiceImpl
   
   public boolean startMiniApp(Context paramContext, String paramString, int paramInt, EntryModel paramEntryModel, MiniAppLaunchListener paramMiniAppLaunchListener)
   {
-    MiniAppServiceImpl.1 local1 = null;
     if (paramMiniAppLaunchListener != null) {
-      local1 = new MiniAppServiceImpl.1(this, paramMiniAppLaunchListener);
+      paramMiniAppLaunchListener = new MiniAppServiceImpl.2(this, paramMiniAppLaunchListener);
+    } else {
+      paramMiniAppLaunchListener = null;
     }
-    return MiniAppLauncher.startMiniApp(paramContext, paramString, paramInt, paramEntryModel, local1);
+    return MiniAppLauncher.startMiniApp(paramContext, paramString, paramInt, paramEntryModel, paramMiniAppLaunchListener);
+  }
+  
+  public void submitSearchReportData()
+  {
+    ((MiniAppExposureManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER)).submitSearchReportData();
   }
   
   public void updateDataDbFromNetResultInLocalSearchManager(MiniAppLocalSearchEntity paramMiniAppLocalSearchEntity)
@@ -747,12 +994,12 @@ public class MiniAppServiceImpl
   
   public void updateMiniHBBanner(Object paramObject)
   {
-    if ((paramObject instanceof HBEntryBannerData)) {}
-    for (paramObject = (HBEntryBannerData)paramObject;; paramObject = null)
-    {
-      ((DesktopDataManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).updateMiniHBBanner(paramObject);
-      return;
+    if ((paramObject instanceof HBEntryBannerData)) {
+      paramObject = (HBEntryBannerData)paramObject;
+    } else {
+      paramObject = null;
     }
+    ((DesktopDataManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER)).updateMiniHBBanner(paramObject);
   }
   
   public Object validMoodInfo(Object paramObject)
@@ -776,7 +1023,7 @@ public class MiniAppServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.api.impl.MiniAppServiceImpl
  * JD-Core Version:    0.7.0.1
  */

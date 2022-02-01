@@ -16,7 +16,7 @@ class AudioCompositionDecoderTrack$DecoderThread
     super("AudioDecoderThread");
   }
   
-  public void doAction()
+  protected void doAction()
   {
     synchronized (this.nextFrameDecoderLock)
     {
@@ -37,7 +37,7 @@ class AudioCompositionDecoderTrack$DecoderThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AudioCompositionDecoderTrack.DecoderThread
  * JD-Core Version:    0.7.0.1
  */

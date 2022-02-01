@@ -27,24 +27,22 @@ class MiniPieBroadcastHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 13 };
+    return new int[] { 14 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if (paramInt != 14) {
       return;
-    } while (!this.a.f);
-    a();
+    }
+    if (this.a.f) {
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPieBroadcastHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -26,21 +26,21 @@ public class QQReminderAMSHelper$IPCListenerWrapper
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.code == 0)) {}
-    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = null)
-    {
-      boolean bool = false;
-      if (paramEIPCResult != null) {
-        bool = paramEIPCResult.getBoolean("allowed");
-      }
-      a(bool);
-      return;
+    if ((paramEIPCResult != null) && (paramEIPCResult.code == 0)) {
+      paramEIPCResult = paramEIPCResult.data;
+    } else {
+      paramEIPCResult = null;
     }
+    boolean bool = false;
+    if (paramEIPCResult != null) {
+      bool = paramEIPCResult.getBoolean("allowed");
+    }
+    a(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQReminderAMSHelper.IPCListenerWrapper
  * JD-Core Version:    0.7.0.1
  */

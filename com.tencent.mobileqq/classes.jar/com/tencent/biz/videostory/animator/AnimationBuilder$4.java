@@ -16,12 +16,19 @@ class AnimationBuilder$4
     float f2 = arrayOfFloat[1];
     ViewCompat.setX(paramView, f1);
     ViewCompat.setY(paramView, f2);
-    Log.d(null, "path: value=" + paramFloat + ", x=" + f1 + ", y=" + f2);
+    paramView = new StringBuilder();
+    paramView.append("path: value=");
+    paramView.append(paramFloat);
+    paramView.append(", x=");
+    paramView.append(f1);
+    paramView.append(", y=");
+    paramView.append(f2);
+    Log.d(null, paramView.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.animator.AnimationBuilder.4
  * JD-Core Version:    0.7.0.1
  */

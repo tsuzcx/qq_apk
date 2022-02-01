@@ -3,26 +3,22 @@ package com.tencent.biz.qcircleshadow.local;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.biz.qcircleshadow.delegateimpl.QCircleDaTongReportImpl;
 import com.tencent.biz.qcircleshadow.delegateimpl.QCircleLogImpl;
 import com.tencent.biz.qcircleshadow.delegateimpl.QCirclePluginInfoImpl;
 import com.tencent.biz.qcircleshadow.delegateimpl.QCircleToastImpl;
 import com.tencent.biz.qcircleshadow.lib.QCircleInitInject;
 import com.tencent.biz.qcircleshadow.libmanager.QCircleListenerProxyManager;
 import com.tencent.biz.qcircleshadow.remoteCheck.QCirclePluginManager;
-import com.tencent.mobileqq.qcircle.api.helper.HostUIHelper;
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
 import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.shadow.core.common.LoggerFactory;
 import com.tencent.shadow.dynamic.host.DynamicPluginManager;
-import com.tencent.shadow.dynamic.host.DynamicRuntime;
 import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
 import cooperation.qqcircle.report.QCirclePluginQualityReporter;
 import cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData;
+import cooperation.qzone.QUA;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -44,66 +40,37 @@ public class QCircleShadow
     c();
   }
   
-  /* Error */
   public static QCircleShadow a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 38	com/tencent/biz/qcircleshadow/local/QCircleShadow:jdField_a_of_type_ComTencentBizQcircleshadowLocalQCircleShadow	Lcom/tencent/biz/qcircleshadow/local/QCircleShadow;
-    //   6: ifnonnull +25 -> 31
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 38	com/tencent/biz/qcircleshadow/local/QCircleShadow:jdField_a_of_type_ComTencentBizQcircleshadowLocalQCircleShadow	Lcom/tencent/biz/qcircleshadow/local/QCircleShadow;
-    //   15: ifnonnull +13 -> 28
-    //   18: new 2	com/tencent/biz/qcircleshadow/local/QCircleShadow
-    //   21: dup
-    //   22: invokespecial 39	com/tencent/biz/qcircleshadow/local/QCircleShadow:<init>	()V
-    //   25: putstatic 38	com/tencent/biz/qcircleshadow/local/QCircleShadow:jdField_a_of_type_ComTencentBizQcircleshadowLocalQCircleShadow	Lcom/tencent/biz/qcircleshadow/local/QCircleShadow;
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: getstatic 38	com/tencent/biz/qcircleshadow/local/QCircleShadow:jdField_a_of_type_ComTencentBizQcircleshadowLocalQCircleShadow	Lcom/tencent/biz/qcircleshadow/local/QCircleShadow;
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: areturn
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   34	5	0	localQCircleShadow	QCircleShadow
-    //   40	5	0	localObject1	Object
-    //   46	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	28	40	finally
-    //   28	31	40	finally
-    //   41	44	40	finally
-    //   3	12	46	finally
-    //   31	35	46	finally
-    //   44	46	46	finally
+    try
+    {
+      if (jdField_a_of_type_ComTencentBizQcircleshadowLocalQCircleShadow == null) {
+        try
+        {
+          if (jdField_a_of_type_ComTencentBizQcircleshadowLocalQCircleShadow == null) {
+            jdField_a_of_type_ComTencentBizQcircleshadowLocalQCircleShadow = new QCircleShadow();
+          }
+        }
+        finally {}
+      }
+      QCircleShadow localQCircleShadow = jdField_a_of_type_ComTencentBizQcircleshadowLocalQCircleShadow;
+      return localQCircleShadow;
+    }
+    finally {}
   }
   
   private boolean b()
   {
-    boolean bool = true;
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    QLog.d("QCIRCLE_PLUGIN", 1, "currentTime:" + l1 + " lastLodeTime:" + this.jdField_a_of_type_Long + " interval:" + l2);
-    if (l2 > 60000L)
-    {
-      this.jdField_a_of_type_Long = l1;
+    boolean bool;
+    if ((f()) && (e()) && (!d()) && (c())) {
+      bool = true;
+    } else {
       bool = false;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("canPreload");
+    localStringBuilder.append(bool);
+    QLog.d("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
     return bool;
   }
   
@@ -114,41 +81,71 @@ public class QCircleShadow
   
   private boolean c()
   {
-    boolean bool = true;
-    if (MobileQQ.sProcessId == 1) {}
-    for (;;)
-    {
-      QLog.d("QCIRCLE_PLUGIN", 4, "isMain:" + bool);
-      return bool;
-      bool = false;
-    }
+    boolean bool = QCircleConfigHelper.a("qqcircle", "qqcircle_open_qcircle_preload", "1").equals("1");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WNS openPreload:");
+    localStringBuilder.append(bool);
+    QLog.d("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
+    return bool;
   }
   
   private void d()
   {
-    QCircleInitInject.g().injectLogDelegate(new QCircleLogImpl()).injectToastDelegate(new QCircleToastImpl()).injectPluginInfoDelegate(new QCirclePluginInfoImpl()).injectDaTongReportDelegate(new QCircleDaTongReportImpl());
+    QCircleInitInject.g().injectLogDelegate(new QCircleLogImpl()).injectToastDelegate(new QCircleToastImpl()).injectPluginInfoDelegate(new QCirclePluginInfoImpl());
   }
   
   private boolean d()
   {
-    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    return (localAppRuntime != null) && (localAppRuntime.isLogin());
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("currentTime:");
+    localStringBuilder.append(l1);
+    localStringBuilder.append(" lastLodeTime:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" interval:");
+    localStringBuilder.append(l2);
+    QLog.d("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
+    if (l2 > 60000L)
+    {
+      this.jdField_a_of_type_Long = l1;
+      return false;
+    }
+    return true;
   }
   
   private void e()
   {
-    if ((d()) && (c())) {
-      QCircleServiceImpl.getQQService().initSDKAsync(new QCircleShadow.2(this));
+    if ((f()) && (e())) {
+      QQVideoPlaySDKManager.a(MobileQQ.context, new QCircleShadow.2(this));
     }
+  }
+  
+  private boolean e()
+  {
+    int i = MobileQQ.sProcessId;
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isMain:");
+    localStringBuilder.append(bool);
+    QLog.d("QCIRCLE_PLUGIN", 4, localStringBuilder.toString());
+    return bool;
   }
   
   private void f()
   {
     g();
     a();
-    DynamicRuntime.recoveryRuntime(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication);
     QCirclePluginSelector.a().a();
-    HostUIHelper.init(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication);
+  }
+  
+  private boolean f()
+  {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    return (localAppRuntime != null) && (localAppRuntime.isLogin());
   }
   
   private void g() {}
@@ -162,8 +159,13 @@ public class QCircleShadow
       int i = 0;
       while (i < localList.size())
       {
-        if (!TextUtils.isEmpty((CharSequence)localList.get(i))) {
-          localStringBuilder.append("plugin").append(i + 1).append(":").append((String)localList.get(i)).append("\n");
+        if (!TextUtils.isEmpty((CharSequence)localList.get(i)))
+        {
+          localStringBuilder.append("plugin");
+          localStringBuilder.append(i + 1);
+          localStringBuilder.append(":");
+          localStringBuilder.append((String)localList.get(i));
+          localStringBuilder.append("\n");
         }
         i += 1;
       }
@@ -195,60 +197,81 @@ public class QCircleShadow
   
   public QCircleSampleInfo a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginEnterManger != null) {
-      return this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginEnterManger.getPluginInfo();
+    QCirclePluginEnterManger localQCirclePluginEnterManger = this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginEnterManger;
+    if (localQCirclePluginEnterManger != null) {
+      return localQCirclePluginEnterManger.getPluginInfo();
     }
     return null;
   }
   
   public String a()
   {
-    return QCircleServiceImpl.getQZoneService().getQUA3() + "_" + b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QUA.getQUA3());
+    localStringBuilder.append("_");
+    localStringBuilder.append(b());
+    return localStringBuilder.toString();
   }
   
   public void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    try
+    if (!this.jdField_a_of_type_Boolean)
     {
-      LoggerFactory.setILoggerFactory(QCircleServiceImpl.getQQService().getILoggerFactory());
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (RuntimeException localRuntimeException)
-    {
-      for (;;)
+      try
       {
-        QLog.d("QCIRCLE_PLUGIN", 1, "init plugin log exception:" + localRuntimeException);
+        LoggerFactory.setILoggerFactory(QCircleLoggerFactory.a());
       }
+      catch (RuntimeException localRuntimeException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("init plugin log exception:");
+        localStringBuilder.append(localRuntimeException);
+        QLog.d("QCIRCLE_PLUGIN", 1, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_Boolean = true;
     }
   }
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      if (paramString.toLowerCase().contains("qcircle"))
       {
-        if (paramString.toLowerCase().contains("qcircle"))
-        {
-          int i = this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginEnterManger.getPluginInfo().b();
-          SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("QCircle_crash_share", 0);
-          int j = localSharedPreferences.getInt("QCircle_crash_count_" + i, 0) + 1;
-          localSharedPreferences.edit().putInt("QCircle_crash_count_" + i, j).commit();
-          if (j >= QCircleConfigHelper.a()) {
-            QCirclePluginManager.a().a(i);
-          }
-          QLog.i("QCIRCLE_PLUGIN", 1, "crashCount: " + j + " crashVersion:" + i + "---------" + paramString);
-          return;
+        int i = this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginEnterManger.getPluginInfo().b();
+        localObject = MobileQQ.getContext().getSharedPreferences("QCircle_crash_share", 0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QCircle_crash_count_");
+        localStringBuilder.append(i);
+        int j = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0) + 1;
+        localObject = ((SharedPreferences)localObject).edit();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QCircle_crash_count_");
+        localStringBuilder.append(i);
+        ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), j).commit();
+        if (j >= QCircleConfigHelper.c()) {
+          QCirclePluginManager.a().a(i);
         }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("crashCount: ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(" crashVersion:");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("---------");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.i("QCIRCLE_PLUGIN", 1, ((StringBuilder)localObject).toString());
+        return;
       }
-      catch (Exception paramString)
-      {
-        QLog.i("QCIRCLE_PLUGIN", 1, "check stack exception:" + paramString);
-      }
+    }
+    catch (Exception paramString)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("check stack exception:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("QCIRCLE_PLUGIN", 1, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -264,22 +287,28 @@ public class QCircleShadow
   
   public String b()
   {
-    String str3 = "0";
-    String str4 = "U";
-    String str2 = str4;
-    String str1 = str3;
-    if (this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginEnterManger != null)
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginEnterManger;
+    if (localObject1 != null)
     {
-      QCircleSampleInfo localQCircleSampleInfo = this.jdField_a_of_type_ComTencentBizQcircleshadowLocalQCirclePluginEnterManger.getPluginInfo();
-      str2 = str4;
-      str1 = str3;
-      if (localQCircleSampleInfo != null)
+      localObject1 = ((QCirclePluginEnterManger)localObject1).getPluginInfo();
+      if (localObject1 != null)
       {
-        str1 = localQCircleSampleInfo.b() + "";
-        str2 = localQCircleSampleInfo.d();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(((QCircleSampleInfo)localObject1).b());
+        ((StringBuilder)localObject2).append("");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localObject1 = ((QCircleSampleInfo)localObject1).d();
+        break label64;
       }
     }
-    return str2 + "_" + str1;
+    Object localObject2 = "0";
+    localObject1 = "U";
+    label64:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("_");
+    localStringBuilder.append((String)localObject2);
+    return localStringBuilder.toString();
   }
   
   public void b()
@@ -289,7 +318,7 @@ public class QCircleShadow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCircleShadow
  * JD-Core Version:    0.7.0.1
  */

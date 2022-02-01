@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.face.FaceConstant.Nearby;
 
 public abstract interface NearbyConstants
@@ -24,9 +22,9 @@ public abstract interface NearbyConstants
   
   static
   {
-    jdField_a_of_type_JavaLangString = NearbyHandler.class.getName();
+    jdField_a_of_type_JavaLangString = QQNearbyManager.d().getName();
     jdField_b_of_type_JavaLangString = FaceConstant.Nearby.NEAR_BY_FACE_HANDLER;
-    jdField_a_of_type_Int = QQManagerFactory.COUNT_MANAGER;
+    jdField_a_of_type_Int = QQNearbyManager.a();
     jdField_b_of_type_Int = jdField_a_of_type_Int;
     jdField_c_of_type_Int = jdField_b_of_type_Int + 1;
     d = jdField_c_of_type_Int + 1;
@@ -37,12 +35,15 @@ public abstract interface NearbyConstants
     i = h + 1;
     j = i + 1;
     k = j + 1;
-    jdField_c_of_type_JavaLangString = AppConstants.SDCARD_PATH + ".nearby_hearanim";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append(".nearby_hearanim");
+    jdField_c_of_type_JavaLangString = localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyConstants
  * JD-Core Version:    0.7.0.1
  */

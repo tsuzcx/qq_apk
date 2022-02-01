@@ -1,55 +1,40 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.Friends;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
+import com.tencent.mobileqq.vas.updatesystem.callback.CallBacker;
 
 class MessengerService$IncomingHandler$8
-  implements Runnable
+  extends CallBacker
 {
-  MessengerService$IncomingHandler$8(MessengerService.IncomingHandler paramIncomingHandler, QQAppInterface paramQQAppInterface, ArrayList paramArrayList, Bundle paramBundle, MessengerService paramMessengerService) {}
+  MessengerService$IncomingHandler$8(MessengerService.IncomingHandler paramIncomingHandler, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    Bundle localBundle = new Bundle();
-    HashMap localHashMap = new HashMap();
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localFriendsManager != null)
+    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a != null)
       {
-        String str = (String)localIterator.next();
-        Friends localFriends = localFriendsManager.e(str);
-        if (localFriends != null)
-        {
-          if (!TextUtils.isEmpty(localFriends.remark)) {
-            localHashMap.put(str, localFriends.remark);
-          } else if (!TextUtils.isEmpty(localFriends.name)) {
-            localHashMap.put(str, localFriends.name);
-          } else {
-            localHashMap.put(str, "");
-          }
-        }
-        else {
-          localHashMap.put(str, "");
-        }
+        paramString1 = new Bundle();
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putString("cmd", "card_download_wzry_template");
+        paramString1.putInt("result", paramInt1);
+        paramString1.putString("message", paramString3);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putBundle("response", paramString1);
+        paramString1 = this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService;
+        paramString1.a(paramString1.a);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a = null;
+      }
+      paramString1 = (IVasQuickUpdateService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IVasQuickUpdateService.class, "");
+      if (paramString1 != null) {
+        paramString1.removeCallBacker(this);
       }
     }
-    localBundle.putSerializable("friendsMap", localHashMap);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.8
  * JD-Core Version:    0.7.0.1
  */

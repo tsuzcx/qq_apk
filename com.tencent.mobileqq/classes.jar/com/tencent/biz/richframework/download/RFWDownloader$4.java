@@ -16,7 +16,12 @@ class RFWDownloader$4
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    RFLog.d("RFWDownloader", RFLog.USR, "checkResource:" + this.val$url + " onFailure");
+    int i = RFLog.USR;
+    paramCall = new StringBuilder();
+    paramCall.append("checkResource:");
+    paramCall.append(this.val$url);
+    paramCall.append(" onFailure");
+    RFLog.d("RFWDownloader", i, paramCall.toString());
     this.val$checkResultListener.onCheckResult(false, this.val$isFileDownloaded, false, this.val$preMd5);
   }
   
@@ -26,14 +31,25 @@ class RFWDownloader$4
     {
       paramCall = paramResponse.headers().get("X-COS-META-MD5");
       paramResponse.body().contentLength();
-      if ((TextUtils.isEmpty(paramCall)) || (this.val$preMd5.equals(paramCall)))
+      boolean bool = TextUtils.isEmpty(paramCall);
+      if ((!bool) && (!this.val$preMd5.equals(paramCall)))
       {
-        RFLog.d("RFWDownloader", RFLog.USR, "checkResource:" + this.val$url + " is up to date");
-        this.val$checkResultListener.onCheckResult(true, this.val$isFileDownloaded, false, paramCall);
+        i = RFLog.USR;
+        paramResponse = new StringBuilder();
+        paramResponse.append("checkResource:");
+        paramResponse.append(this.val$url);
+        paramResponse.append(" need update");
+        RFLog.d("RFWDownloader", i, paramResponse.toString());
+        this.val$checkResultListener.onCheckResult(true, this.val$isFileDownloaded, true, paramCall);
         return;
       }
-      RFLog.d("RFWDownloader", RFLog.USR, "checkResource:" + this.val$url + " need update");
-      this.val$checkResultListener.onCheckResult(true, this.val$isFileDownloaded, true, paramCall);
+      int i = RFLog.USR;
+      paramResponse = new StringBuilder();
+      paramResponse.append("checkResource:");
+      paramResponse.append(this.val$url);
+      paramResponse.append(" is up to date");
+      RFLog.d("RFWDownloader", i, paramResponse.toString());
+      this.val$checkResultListener.onCheckResult(true, this.val$isFileDownloaded, false, paramCall);
       return;
     }
     catch (Throwable paramCall)
@@ -44,7 +60,7 @@ class RFWDownloader$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.download.RFWDownloader.4
  * JD-Core Version:    0.7.0.1
  */

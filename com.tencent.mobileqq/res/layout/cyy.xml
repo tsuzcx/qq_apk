@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/fys" android:background="@color/ap_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mobileqq.widget.SlideDownFrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="vertical" android:background="@color/apa" android:layout_width="fill_parent" android:layout_height="320.0dip">
-        <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/iez" android:layout_width="80.0dip" android:layout_height="50.0dip" />
-        <TextView android:textSize="16.0sp" android:layout_gravity="center" android:id="@id/byl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/yg_" />
+    <View android:id="@id/enp" android:background="#33000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b9w" android:background="@color/al3" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
+            <TextView android:textSize="18.0dip" android:textColor="@color/bp" android:id="@id/o2c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gr_" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:id="@id/az_" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/do6" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="17.0dip" android:textColor="@color/bp" android:id="@id/f4c" android:background="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/grz" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <View android:background="@color/aai" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <com.tencent.mobileqq.kandian.base.view.widget.NestedScrollView android:id="@id/atq" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
-</LinearLayout>
+    <ViewStub android:id="@id/hzq" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mobileqq.widget.SlideDownFrameLayout>

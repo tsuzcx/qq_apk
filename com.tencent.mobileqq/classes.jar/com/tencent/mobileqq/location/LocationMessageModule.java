@@ -41,30 +41,31 @@ public class LocationMessageModule
     if (QLog.isColorLevel()) {
       QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. ", " v: ", paramView, " messageForLocationShare: ", this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare });
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Boolean)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. disable click in chat history", " v: ", paramView });
       }
     }
-    for (;;)
+    else if (FastClickUtils.a("LocationMessageModule"))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (FastClickUtils.a("LocationMessageModule"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. 屏蔽消息双击事件", " v: ", paramView });
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationMessageModule", 2, new Object[] { "onClick: invoked. 屏蔽消息双击事件", " v: ", paramView });
       }
-      else if ((QBaseActivity.sTopActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare.isSharingLocation)) {
+    }
+    else if (QBaseActivity.sTopActivity != null)
+    {
+      MessageForLocationShare localMessageForLocationShare = this.jdField_a_of_type_ComTencentMobileqqDataMessageForLocationShare;
+      if ((localMessageForLocationShare != null) && (localMessageForLocationShare.isSharingLocation)) {
         a();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.LocationMessageModule
  * JD-Core Version:    0.7.0.1
  */

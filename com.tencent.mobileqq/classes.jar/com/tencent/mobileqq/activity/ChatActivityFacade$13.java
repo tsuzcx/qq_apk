@@ -23,21 +23,21 @@ final class ChatActivityFacade$13
       }
       if (this.b)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
         return;
       }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, null);
+      return;
     }
     catch (Exception localException)
     {
       QLog.e("ChatActivityFacade", 1, "life circle2:", localException);
-      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.13
  * JD-Core Version:    0.7.0.1
  */

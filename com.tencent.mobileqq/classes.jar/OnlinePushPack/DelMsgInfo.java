@@ -62,8 +62,9 @@ public final class DelMsgInfo
     paramJceOutputStream.write(this.lFromUin, 0);
     paramJceOutputStream.write(this.uMsgTime, 1);
     paramJceOutputStream.write(this.shMsgSeq, 2);
-    if (this.vMsgCookies != null) {
-      paramJceOutputStream.write(this.vMsgCookies, 3);
+    byte[] arrayOfByte = this.vMsgCookies;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
     paramJceOutputStream.write(this.wCmd, 4);
     paramJceOutputStream.write(this.uMsgType, 5);
@@ -76,7 +77,7 @@ public final class DelMsgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     OnlinePushPack.DelMsgInfo
  * JD-Core Version:    0.7.0.1
  */

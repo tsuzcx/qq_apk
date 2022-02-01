@@ -22,17 +22,32 @@ public class LebaRedDotUrlAppendRule
   public String a()
   {
     String str = String.format("&hasRedDot=%b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    Object localObject1 = str;
+    if (this.jdField_a_of_type_Boolean)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append((String)localIterator.next()).append("_");
+      Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+      localObject1 = str;
+      if (localObject2 != null)
+      {
+        localObject1 = str;
+        if (!((List)localObject2).isEmpty())
+        {
+          localObject1 = new StringBuilder();
+          localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next());
+            ((StringBuilder)localObject1).append("_");
+          }
+          ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(str);
+          ((StringBuilder)localObject2).append(String.format("&missions=%s", new Object[] { ((StringBuilder)localObject1).toString() }));
+          localObject1 = ((StringBuilder)localObject2).toString();
+        }
       }
-      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-      return str + String.format("&missions=%s", new Object[] { localStringBuilder.toString() });
     }
-    return str;
+    return localObject1;
   }
   
   public boolean a(String paramString)
@@ -42,7 +57,7 @@ public class LebaRedDotUrlAppendRule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.urlreport.LebaRedDotUrlAppendRule
  * JD-Core Version:    0.7.0.1
  */

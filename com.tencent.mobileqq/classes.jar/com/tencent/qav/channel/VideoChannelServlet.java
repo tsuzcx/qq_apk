@@ -115,7 +115,7 @@ public class VideoChannelServlet
     return new String[] { "SharpSvr.c2sack", "SharpSvr.s2c", "MultiVideo.c2sack", "MultiVideo.s2c" };
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.a = getAppRuntime();
@@ -123,51 +123,54 @@ public class VideoChannelServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramFromServiceMsg == null) {}
-    do
-    {
-      return;
-      paramIntent = paramFromServiceMsg.getServiceCmd();
-      AVLog.c("VideoChannelServlet", String.format("onReceive cmd=%s", new Object[] { paramIntent }));
-      if ("SharpSvr.s2c".equalsIgnoreCase(paramIntent))
-      {
-        a(paramFromServiceMsg.getWupBuffer());
-        return;
-      }
-      if ("SharpSvr.c2sack".equalsIgnoreCase(paramIntent))
-      {
-        b(paramFromServiceMsg.getWupBuffer());
-        return;
-      }
-      if ("MultiVideo.s2c".equalsIgnoreCase(paramIntent))
-      {
-        c(paramFromServiceMsg.getWupBuffer());
-        return;
-      }
-      if ("MultiVideo.c2sack".equalsIgnoreCase(paramIntent))
-      {
-        d(paramFromServiceMsg.getWupBuffer());
-        return;
-      }
-      if (!"cmd_getGatewayIp".equalsIgnoreCase(paramIntent)) {
-        break;
-      }
-      paramIntent = (String)paramFromServiceMsg.getAttribute("cmd_getGatewayIp");
-    } while (paramIntent == null);
-    AVLog.c("VideoChannelServlet", String.format(">>> ip=%s", new Object[] { paramIntent }));
-    a(paramIntent, 0);
-    return;
-    if ("VideoCCSvc.Adaptation".equalsIgnoreCase(paramIntent))
-    {
-      if (paramFromServiceMsg.isSuccess())
-      {
-        e(paramFromServiceMsg.getWupBuffer());
-        return;
-      }
-      AVLog.a("VideoChannelServlet", String.format("onReceive get config fail, resultCode=%s", new Object[] { Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
+    if (paramFromServiceMsg == null) {
       return;
     }
-    AVLog.b("VideoChannelServlet", "onReceive handle not process cmd.");
+    paramIntent = paramFromServiceMsg.getServiceCmd();
+    AVLog.c("VideoChannelServlet", String.format("onReceive cmd=%s", new Object[] { paramIntent }));
+    if ("SharpSvr.s2c".equalsIgnoreCase(paramIntent))
+    {
+      a(paramFromServiceMsg.getWupBuffer());
+      return;
+    }
+    if ("SharpSvr.c2sack".equalsIgnoreCase(paramIntent))
+    {
+      b(paramFromServiceMsg.getWupBuffer());
+      return;
+    }
+    if ("MultiVideo.s2c".equalsIgnoreCase(paramIntent))
+    {
+      c(paramFromServiceMsg.getWupBuffer());
+      return;
+    }
+    if ("MultiVideo.c2sack".equalsIgnoreCase(paramIntent))
+    {
+      d(paramFromServiceMsg.getWupBuffer());
+      return;
+    }
+    if ("cmd_getGatewayIp".equalsIgnoreCase(paramIntent))
+    {
+      paramIntent = (String)paramFromServiceMsg.getAttribute("cmd_getGatewayIp");
+      if (paramIntent != null)
+      {
+        AVLog.c("VideoChannelServlet", String.format(">>> ip=%s", new Object[] { paramIntent }));
+        a(paramIntent, 0);
+      }
+    }
+    else
+    {
+      if ("VideoCCSvc.Adaptation".equalsIgnoreCase(paramIntent))
+      {
+        if (paramFromServiceMsg.isSuccess())
+        {
+          e(paramFromServiceMsg.getWupBuffer());
+          return;
+        }
+        AVLog.a("VideoChannelServlet", String.format("onReceive get config fail, resultCode=%s", new Object[] { Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
+        return;
+      }
+      AVLog.b("VideoChannelServlet", "onReceive handle not process cmd.");
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -183,31 +186,31 @@ public class VideoChannelServlet
     default: 
       AVLog.b("VideoChannelServlet", "onSend handle not define reqType.");
       return;
-    case 1: 
-      a(paramIntent, paramPacket);
-      return;
-    case 2: 
-      b(paramIntent, paramPacket);
-      return;
-    case 3: 
-      c(paramIntent, paramPacket);
-      return;
-    case 4: 
-      d(paramIntent, paramPacket);
-      return;
-    case 5: 
-      e(paramIntent, paramPacket);
+    case 7: 
+      g(paramIntent, paramPacket);
       return;
     case 6: 
       f(paramIntent, paramPacket);
       return;
+    case 5: 
+      e(paramIntent, paramPacket);
+      return;
+    case 4: 
+      d(paramIntent, paramPacket);
+      return;
+    case 3: 
+      c(paramIntent, paramPacket);
+      return;
+    case 2: 
+      b(paramIntent, paramPacket);
+      return;
     }
-    g(paramIntent, paramPacket);
+    a(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qav.channel.VideoChannelServlet
  * JD-Core Version:    0.7.0.1
  */

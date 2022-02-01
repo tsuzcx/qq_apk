@@ -52,12 +52,13 @@ public class SlideInAndOutAnimator
     ViewPropertyAnimator localViewPropertyAnimator1 = localView.animate();
     this.e.add(paramViewHolder);
     ViewPropertyAnimator localViewPropertyAnimator2 = localViewPropertyAnimator1.setDuration(getMoveDuration());
-    if (paramInt1 != 0) {}
-    for (float f1 = 0.0F;; f1 = -paramViewHolder.itemView.getHeight())
-    {
-      localViewPropertyAnimator2.translationY(f1).setInterpolator(new DecelerateInterpolator()).setListener(new SlideInAndOutAnimator.3(this, paramViewHolder, paramInt1, localView, localViewPropertyAnimator1)).start();
-      return;
+    float f1;
+    if (paramInt1 != 0) {
+      f1 = 0.0F;
+    } else {
+      f1 = -paramViewHolder.itemView.getHeight();
     }
+    localViewPropertyAnimator2.translationY(f1).setInterpolator(new DecelerateInterpolator()).setListener(new SlideInAndOutAnimator.3(this, paramViewHolder, paramInt1, localView, localViewPropertyAnimator1)).start();
   }
   
   private void b(RecyclerView.ViewHolder paramViewHolder)
@@ -89,13 +90,15 @@ public class SlideInAndOutAnimator
     c(paramViewHolder);
     paramViewHolder.itemView.setAlpha(0.0F);
     View localView = paramViewHolder.itemView;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (float f1 = paramViewHolder.itemView.getWidth();; f1 = -paramViewHolder.itemView.getWidth())
-    {
-      localView.setTranslationX(f1);
-      this.c.add(paramViewHolder);
-      return true;
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      i = paramViewHolder.itemView.getWidth();
+    } else {
+      i = -paramViewHolder.itemView.getWidth();
     }
+    localView.setTranslationX(i);
+    this.c.add(paramViewHolder);
+    return true;
   }
   
   public boolean animateChange(RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -207,77 +210,56 @@ public class SlideInAndOutAnimator
   public void onAnimationFinished(RecyclerView.ViewHolder paramViewHolder)
   {
     super.onAnimationFinished(paramViewHolder);
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator$ItemAnimatorFinishedListener != null) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator$ItemAnimatorFinishedListener.onAnimationsFinished();
+    paramViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator$ItemAnimatorFinishedListener;
+    if (paramViewHolder != null) {
+      paramViewHolder.onAnimationsFinished();
     }
   }
   
   public void runPendingAnimations()
   {
-    int i;
-    int j;
-    label24:
-    int k;
-    if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-    {
-      i = 1;
-      if (this.b.isEmpty()) {
-        break label54;
-      }
-      j = 1;
-      if (this.c.isEmpty()) {
-        break label59;
-      }
-      k = 1;
-      label36:
-      if ((i != 0) || (j != 0) || (k != 0)) {
-        break label64;
-      }
-    }
-    label54:
-    label59:
-    label64:
-    do
-    {
+    boolean bool1 = this.jdField_a_of_type_JavaUtilArrayList.isEmpty() ^ true;
+    boolean bool2 = this.b.isEmpty() ^ true;
+    boolean bool3 = this.c.isEmpty() ^ true;
+    if ((!bool1) && (!bool2) && (!bool3)) {
       return;
-      i = 0;
-      break;
-      j = 0;
-      break label24;
-      k = 0;
-      break label36;
-      if (i != 0)
-      {
-        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          a((RecyclerView.ViewHolder)((Iterator)localObject).next());
-        }
-      }
-      if (j != 0)
-      {
-        localObject = new ArrayList(this.b);
-        this.b.clear();
-        localIterator = ((ArrayList)localObject).iterator();
-        while (localIterator.hasNext())
-        {
-          SlideInAndOutAnimator.MoveInfo localMoveInfo = (SlideInAndOutAnimator.MoveInfo)localIterator.next();
-          a(localMoveInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localMoveInfo.jdField_a_of_type_Int, localMoveInfo.b, localMoveInfo.c, localMoveInfo.d);
-        }
-        ((ArrayList)localObject).clear();
-      }
-    } while (k == 0);
-    Object localObject = new ArrayList(this.c);
-    this.c.clear();
-    Iterator localIterator = ((ArrayList)localObject).iterator();
-    while (localIterator.hasNext()) {
-      b((RecyclerView.ViewHolder)localIterator.next());
     }
-    ((ArrayList)localObject).clear();
+    Object localObject;
+    if (bool1)
+    {
+      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        a((RecyclerView.ViewHolder)((Iterator)localObject).next());
+      }
+    }
+    Iterator localIterator;
+    if (bool2)
+    {
+      localObject = new ArrayList(this.b);
+      this.b.clear();
+      localIterator = ((ArrayList)localObject).iterator();
+      while (localIterator.hasNext())
+      {
+        SlideInAndOutAnimator.MoveInfo localMoveInfo = (SlideInAndOutAnimator.MoveInfo)localIterator.next();
+        a(localMoveInfo.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localMoveInfo.jdField_a_of_type_Int, localMoveInfo.b, localMoveInfo.c, localMoveInfo.d);
+      }
+      ((ArrayList)localObject).clear();
+    }
+    if (bool3)
+    {
+      localObject = new ArrayList(this.c);
+      this.c.clear();
+      localIterator = ((ArrayList)localObject).iterator();
+      while (localIterator.hasNext()) {
+        b((RecyclerView.ViewHolder)localIterator.next());
+      }
+      ((ArrayList)localObject).clear();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.SlideInAndOutAnimator
  * JD-Core Version:    0.7.0.1
  */

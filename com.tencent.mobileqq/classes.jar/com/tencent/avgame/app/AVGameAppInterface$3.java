@@ -21,7 +21,7 @@ class AVGameAppInterface$3
     super(paramContext);
   }
   
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  protected ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
   {
     if ("fileassistantimage".equals(paramString)) {
       return new FileAssistantDownloader(BaseApplicationImpl.getApplication());
@@ -35,29 +35,29 @@ class AVGameAppInterface$3
     return this.jdField_a_of_type_ComTencentImageProtocolDownloader;
   }
   
-  public String doGetLocalFilePath(String paramString)
+  protected String doGetLocalFilePath(String paramString)
   {
     return null;
   }
   
-  public ApngSoLoader getApngSoLoader()
+  protected ApngSoLoader getApngSoLoader()
   {
     return VasApngIPCModule.a();
   }
   
-  public Drawable getDefaultLoadingDrawable()
+  protected Drawable getDefaultLoadingDrawable()
   {
     return null;
   }
   
-  public Drawable getDefualtFailedDrawable()
+  protected Drawable getDefualtFailedDrawable()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.app.AVGameAppInterface.3
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,11 @@ class Http2Connection$ReaderRunnable$1
     }
     catch (IOException localIOException1)
     {
-      Platform.get().log(4, "Http2Connection.Listener failure for " + this.this$1.this$0.hostname, localIOException1);
+      Platform localPlatform = Platform.get();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Http2Connection.Listener failure for ");
+      localStringBuilder.append(this.this$1.this$0.hostname);
+      localPlatform.log(4, localStringBuilder.toString(), localIOException1);
       try
       {
         this.val$newStream.close(ErrorCode.PROTOCOL_ERROR);
@@ -33,7 +37,7 @@ class Http2Connection$ReaderRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http2.Http2Connection.ReaderRunnable.1
  * JD-Core Version:    0.7.0.1
  */

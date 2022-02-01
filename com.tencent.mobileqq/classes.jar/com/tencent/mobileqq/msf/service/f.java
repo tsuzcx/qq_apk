@@ -41,18 +41,17 @@ public class f
   
   void c()
   {
-    if (this.d) {}
-    c localc;
-    do
-    {
+    if (this.d) {
       return;
-      localc = d();
-      if (localc != null) {
-        break;
+    }
+    c localc = d();
+    if (localc == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.S.IPCTransportManager", 2, "adjustTransPackageLenIfNeed, but appProcessInfo = null");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("MSF.S.IPCTransportManager", 2, "adjustTransPackageLenIfNeed, but appProcessInfo = null");
-    return;
+      return;
+    }
     FromServiceMsg localFromServiceMsg = new FromServiceMsg();
     localFromServiceMsg.setServiceCmd("test_ipc_package_length");
     localFromServiceMsg.setBusinessFail(-2);
@@ -61,25 +60,30 @@ public class f
     int i = 0;
     for (;;)
     {
-      int j;
-      if (i < b.length) {
-        j = b[i];
+      Object localObject = b;
+      if (i >= localObject.length) {
+        break;
       }
+      int j = localObject[i];
       try
       {
         localFromServiceMsg.putWupBuffer(new byte[j]);
         e.d.a(localMsfMessagePair, localc.c());
         this.c = j;
-        QLog.d("MSF.S.IPCTransportManager", 1, "adjustTransPackageLenIfNeed suc, len = " + this.c);
-        this.d = true;
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("adjustTransPackageLenIfNeed suc, len = ");
+        ((StringBuilder)localObject).append(this.c);
+        QLog.d("MSF.S.IPCTransportManager", 1, ((StringBuilder)localObject).toString());
       }
       catch (Throwable localThrowable)
       {
         if (i == b.length - 1)
         {
           this.c = j;
-          QLog.d("MSF.S.IPCTransportManager", 1, "adjustTransPackageLenIfNeed fail, last len = " + this.c);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("adjustTransPackageLenIfNeed fail, last len = ");
+          localStringBuilder.append(this.c);
+          QLog.d("MSF.S.IPCTransportManager", 1, localStringBuilder.toString());
         }
         if (QLog.isColorLevel()) {
           QLog.d("MSF.S.IPCTransportManager", 2, "adjustTransPackageLenIfNeed throw e: ", localThrowable);
@@ -87,11 +91,12 @@ public class f
         i += 1;
       }
     }
+    this.d = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.f
  * JD-Core Version:    0.7.0.1
  */

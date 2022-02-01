@@ -14,8 +14,9 @@ class VSliderView$1
   
   public void onPageSelected(int paramInt)
   {
-    this.this$0.mCurrentItemIndex = paramInt;
-    paramInt = VSliderView.access$000(this.this$0).getRealPosition(paramInt);
+    VSliderView localVSliderView = this.this$0;
+    localVSliderView.mCurrentItemIndex = paramInt;
+    paramInt = VSliderView.access$000(localVSliderView).getRealPosition(paramInt);
     if (VSliderView.access$100(this.this$0) != null) {
       VSliderView.access$100(this.this$0).change(paramInt);
     }
@@ -23,7 +24,7 @@ class VSliderView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.VSliderView.1
  * JD-Core Version:    0.7.0.1
  */

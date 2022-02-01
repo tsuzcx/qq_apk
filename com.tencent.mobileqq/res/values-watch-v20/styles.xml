@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="a0v" parent="@style/a1e">
+        <item name="android:windowIsFloating">false</item>
+    </style>
+    <style name="a12" parent="@style/a1g">
+        <item name="android:windowIsFloating">false</item>
+    </style>
+    <style name="a1a" parent="@style/a1h">
+        <item name="android:windowIsFloating">false</item>
+    </style>
+</resources>

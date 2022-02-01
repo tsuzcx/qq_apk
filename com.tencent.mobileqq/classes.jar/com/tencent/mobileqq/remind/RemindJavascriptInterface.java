@@ -3,7 +3,7 @@ package com.tencent.mobileqq.remind;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.MultiNameSpacePluginCompact;
@@ -19,45 +19,50 @@ public class RemindJavascriptInterface
   extends WebViewPlugin
   implements MultiNameSpacePluginCompact
 {
-  private static String a;
+  private static String a = "remind";
   protected Activity a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "remind";
-  }
   
   public void a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "remindSuccess : " + paramString);
+    String str;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      str = jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("remindSuccess : ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d(str, 2, ((StringBuilder)localObject).toString());
     }
     boolean bool1 = RemindHelper.a(RemindHelper.a(paramString, "isNew"));
     boolean bool2 = RemindHelper.a(RemindHelper.a(paramString, "isInsert"));
     RemindHelper.a(paramString, "title");
     RemindHelper.a(RemindHelper.a(paramString, "startDate")).longValue();
     RemindHelper.a(RemindHelper.a(paramString, "endDate")).longValue();
-    if (bool1)
-    {
+    if (bool1) {
       paramString = "0";
-      if (!bool2) {
-        break label180;
-      }
-    }
-    label180:
-    for (String str = "0";; str = "1")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "createAndAddReport  r2: " + str + " r3: " + paramString);
-      }
-      ReportController.b(null, "CliOper", "", "", "Time_reminder", "Updata_clock", 0, 0, str, paramString, "", "");
-      return;
+    } else {
       paramString = "1";
-      break;
     }
+    if (bool2) {
+      str = "0";
+    } else {
+      str = "1";
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createAndAddReport  r2: ");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" r3: ");
+      localStringBuilder.append(paramString);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    ReportController.b(null, "CliOper", "", "", "Time_reminder", "Updata_clock", 0, 0, str, paramString, "", "");
   }
   
   public void a(String paramString, JsBridgeListener paramJsBridgeListener)
@@ -68,137 +73,145 @@ public class RemindJavascriptInterface
   
   public void b(String paramString)
   {
-    Object localObject2 = this.mRuntime.a();
-    Object localObject1 = "";
-    String str3 = "";
-    Object localObject3 = new StringBuilder();
-    if (localObject2 != null) {
-      localObject1 = ((CustomWebView)localObject2).getUrl();
+    Object localObject1 = this.mRuntime.a();
+    Object localObject6 = new StringBuilder();
+    String str = "";
+    Object localObject3;
+    if (localObject1 != null) {
+      localObject3 = ((CustomWebView)localObject1).getUrl();
+    } else {
+      localObject3 = "";
     }
+    Object localObject4 = localObject3;
+    Object localObject5;
     try
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      boolean bool = TextUtils.isEmpty((CharSequence)localObject3);
+      localObject1 = localObject3;
+      if (!bool)
       {
-        localObject2 = URLEncoder.encode((String)localObject1, "utf-8");
-        localObject1 = localObject2;
+        localObject4 = localObject3;
+        localObject1 = URLEncoder.encode((String)localObject3, "utf-8");
       }
-      String str1;
-      long l1;
-      long l2;
-      long l3;
-      String str2;
-      int i;
-      label408:
-      for (;;)
+      localObject4 = localObject1;
+      localObject3 = str;
+      localObject5 = localObject1;
+      if (!TextUtils.isEmpty(paramString))
       {
-        str1 = str3;
-        localObject2 = localObject1;
+        localObject4 = localObject1;
+        localObject3 = URLEncoder.encode(paramString, "utf-8");
+        localObject5 = localObject1;
       }
     }
-    catch (Exception localException1)
+    catch (Exception localException)
     {
-      do
+      localObject3 = str;
+      localObject5 = localObject4;
+      if (QLog.isDevelopLevel())
       {
-        for (;;)
-        {
-          try
-          {
-            if (!TextUtils.isEmpty(paramString))
-            {
-              str1 = URLEncoder.encode(paramString, "utf-8");
-              localObject2 = localObject1;
-            }
-            ((StringBuilder)localObject3).append("p=").append(str1);
-            ((StringBuilder)localObject3).append("&j=").append((String)localObject2);
-            l1 = VACDReportUtil.a(null, "qqwallet", "insertCalendar", "invoke", ((StringBuilder)localObject3).toString(), 0, null);
-            if (!TextUtils.isEmpty(paramString)) {
-              continue;
-            }
-            VACDReportUtil.endReport(l1, "parseUrl", null, -1, "json is empty");
-            return;
-          }
-          catch (Exception localException2)
-          {
-            continue;
-          }
-          localException1 = localException1;
-          str1 = str3;
-          localObject2 = localObject1;
-          if (QLog.isDevelopLevel())
-          {
-            localException1.printStackTrace();
-            str1 = str3;
-            localObject2 = localObject1;
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "createCalendar : " + paramString);
-        }
-        localObject1 = null;
-        try
-        {
-          paramString = new JSONObject(paramString);
-          localObject2 = paramString.optString("title");
-          l2 = paramString.optLong("startDate");
-          l3 = paramString.optLong("endDate");
-          str1 = paramString.optString("remark");
-          str2 = paramString.optString("address");
-          str3 = paramString.optString("callback");
-          localObject3 = paramString.optJSONArray("reminds");
-          paramString = (String)localObject1;
-          if (localObject3 != null)
-          {
-            paramString = (String)localObject1;
-            if (((JSONArray)localObject3).length() > 0)
-            {
-              localObject1 = new int[((JSONArray)localObject3).length()];
-              i = 0;
-              for (;;)
-              {
-                paramString = (String)localObject1;
-                if (i >= ((JSONArray)localObject3).length()) {
-                  break;
-                }
-                localObject1[i] = ((JSONArray)localObject3).getInt(i);
-                i += 1;
-              }
-            }
-          }
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label408;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "JSONException " + paramString.getMessage());
-          }
-          VACDReportUtil.endReport(l1, "parseUrl", null, -1, "JsonException");
-          return;
-        }
-        if ((l2 < 1L) || (l3 < 1L))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "params error.");
-          }
-          VACDReportUtil.endReport(l1, "parseUrl", null, -1, "params error.");
-          return;
-        }
-        VACDReportUtil.a(l1, null, "parseUrl", null, 0, null);
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "startTime : " + TimeHelper.a(1000L * l2) + " endTime : " + TimeHelper.a(1000L * l3));
-        }
-        i = RemindHelper.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject2, 1000L * l2, 1000L * l3, str1, str2, paramString);
-        VACDReportUtil.endReport(l1, "insert", null, i, null);
-        if (!TextUtils.isEmpty(str3)) {
-          super.callJs(str3, new String[] { "{\"retCode\":" + i + "}" });
-        }
-      } while (i != 0);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "addByRecevierReport");
+        localException.printStackTrace();
+        localObject5 = localObject4;
+        localObject3 = str;
       }
-      ReportController.b(null, "CliOper", "", "", "Time_reminder", "Rec_ckl_add", 0, 0, "", "", "", "");
+    }
+    ((StringBuilder)localObject6).append("p=");
+    ((StringBuilder)localObject6).append((String)localObject3);
+    ((StringBuilder)localObject6).append("&j=");
+    ((StringBuilder)localObject6).append((String)localObject5);
+    long l1 = VACDReportUtil.a(null, "qqwallet", "insertCalendar", "invoke", ((StringBuilder)localObject6).toString(), 0, null);
+    if (TextUtils.isEmpty(paramString))
+    {
+      VACDReportUtil.endReport(l1, "parseUrl", null, -1, "json is empty");
       return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("createCalendar : ");
+      ((StringBuilder)localObject3).append(paramString);
+      QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+    }
+    Object localObject2 = null;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localObject4 = paramString.optString("title");
+      long l2 = paramString.optLong("startDate");
+      long l3 = paramString.optLong("endDate");
+      localObject5 = paramString.optString("remark");
+      str = paramString.optString("address");
+      localObject3 = paramString.optString("callback");
+      localObject6 = paramString.optJSONArray("reminds");
+      paramString = (String)localObject2;
+      int i;
+      if (localObject6 != null)
+      {
+        paramString = (String)localObject2;
+        if (((JSONArray)localObject6).length() > 0)
+        {
+          localObject2 = new int[((JSONArray)localObject6).length()];
+          i = 0;
+          for (;;)
+          {
+            paramString = (String)localObject2;
+            if (i >= ((JSONArray)localObject6).length()) {
+              break;
+            }
+            localObject2[i] = ((JSONArray)localObject6).getInt(i);
+            i += 1;
+          }
+        }
+      }
+      if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (l2 >= 1L) && (l3 >= 1L))
+      {
+        VACDReportUtil.a(l1, null, "parseUrl", null, 0, null);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = jdField_a_of_type_JavaLangString;
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append("startTime : ");
+          ((StringBuilder)localObject6).append(TimeHelper.a(l2 * 1000L));
+          ((StringBuilder)localObject6).append(" endTime : ");
+          ((StringBuilder)localObject6).append(TimeHelper.a(l3 * 1000L));
+          QLog.d((String)localObject2, 2, ((StringBuilder)localObject6).toString());
+        }
+        i = RemindHelper.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject4, l2 * 1000L, l3 * 1000L, (String)localObject5, str, paramString);
+        VACDReportUtil.endReport(l1, "insert", null, i, null);
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
+        {
+          paramString = new StringBuilder();
+          paramString.append("{\"retCode\":");
+          paramString.append(i);
+          paramString.append("}");
+          super.callJs((String)localObject3, new String[] { paramString.toString() });
+        }
+        if (i == 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "addByRecevierReport");
+          }
+          ReportController.b(null, "CliOper", "", "", "Time_reminder", "Rec_ckl_add", 0, 0, "", "", "", "");
+        }
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "params error.");
+      }
+      VACDReportUtil.endReport(l1, "parseUrl", null, -1, "params error.");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("JSONException ");
+        ((StringBuilder)localObject3).append(paramString.getMessage());
+        QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+      }
+      VACDReportUtil.endReport(l1, "parseUrl", null, -1, "JsonException");
     }
   }
   
@@ -207,7 +220,7 @@ public class RemindJavascriptInterface
     return new String[] { "REMIND", "calendar" };
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (("REMIND".equals(paramString2)) && ("createTimePicker".equals(paramString3)))
     {
@@ -234,8 +247,13 @@ public class RemindJavascriptInterface
     }
     if (("calendar".equals(paramString2)) && ("remindMsgReport".equals(paramString3)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "remindMsgReport : " + paramVarArgs[0]);
+      if (QLog.isColorLevel())
+      {
+        paramJsBridgeListener = jdField_a_of_type_JavaLangString;
+        paramString1 = new StringBuilder();
+        paramString1.append("remindMsgReport : ");
+        paramString1.append(paramVarArgs[0]);
+        QLog.d(paramJsBridgeListener, 2, paramString1.toString());
       }
       ReportController.b(null, "CliOper", "", "", "Time_reminder", "Obj_clock", 0, 0, RemindHelper.a(paramVarArgs[0], "entranceType"), RemindHelper.a(paramVarArgs[0], "role"), "", "");
       return true;
@@ -251,7 +269,7 @@ public class RemindJavascriptInterface
     return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
@@ -259,7 +277,7 @@ public class RemindJavascriptInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.remind.RemindJavascriptInterface
  * JD-Core Version:    0.7.0.1
  */

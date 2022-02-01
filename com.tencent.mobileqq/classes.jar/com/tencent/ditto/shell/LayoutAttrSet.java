@@ -74,31 +74,32 @@ public class LayoutAttrSet
   public static LayoutAttrSet createFrom(JSONObject paramJSONObject, LayoutAttrSet.ValueIndicator paramValueIndicator)
   {
     localLayoutAttrSet = new LayoutAttrSet();
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return localLayoutAttrSet;
-      try
+    }
+    try
+    {
+      Iterator localIterator = paramJSONObject.keys();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = paramJSONObject.keys();
-        while (localIterator.hasNext())
-        {
-          String str = localIterator.next() + "";
-          Object localObject = paramJSONObject.get(str);
-          boolean bool = false;
-          if (paramValueIndicator != null) {
-            bool = paramValueIndicator.onJsonField(str, paramJSONObject.get(str));
-          }
-          if (!bool) {
-            localLayoutAttrSet.addLayoutAttr(str, localObject);
-          }
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(localIterator.next());
+        ((StringBuilder)localObject1).append("");
+        localObject1 = ((StringBuilder)localObject1).toString();
+        Object localObject2 = paramJSONObject.get((String)localObject1);
+        boolean bool = false;
+        if (paramValueIndicator != null) {
+          bool = paramValueIndicator.onJsonField((String)localObject1, paramJSONObject.get((String)localObject1));
         }
-        return localLayoutAttrSet;
+        if (!bool) {
+          localLayoutAttrSet.addLayoutAttr((String)localObject1, localObject2);
+        }
       }
-      catch (Exception paramJSONObject)
-      {
-        DittoLog.e("DITTO_UI", "parse file err:", paramJSONObject);
-      }
+      return localLayoutAttrSet;
+    }
+    catch (Exception paramJSONObject)
+    {
+      DittoLog.e("DITTO_UI", "parse file err:", paramJSONObject);
     }
   }
   
@@ -106,13 +107,18 @@ public class LayoutAttrSet
   {
     if ((paramArrayOfChar[paramInt2] == 'd') && (paramArrayOfChar[(paramInt2 + 1)] == 'p'))
     {
-      attrValueCache.put(paramString, Integer.valueOf((int)(DittoUIEngine.g().getDensity() * paramFloat * paramInt1)));
-      return Integer.valueOf((int)(DittoUIEngine.g().getDensity() * paramFloat * paramInt1));
+      paramArrayOfChar = attrValueCache;
+      float f1 = DittoUIEngine.g().getDensity();
+      float f2 = paramInt1;
+      paramArrayOfChar.put(paramString, Integer.valueOf((int)(f1 * paramFloat * f2)));
+      return Integer.valueOf((int)(DittoUIEngine.g().getDensity() * paramFloat * f2));
     }
     if ((paramArrayOfChar[paramInt2] == 'p') && (paramArrayOfChar[(paramInt2 + 1)] == 'x'))
     {
-      attrValueCache.put(paramString, Integer.valueOf((int)paramFloat * paramInt1));
-      return Integer.valueOf((int)paramFloat * paramInt1);
+      paramArrayOfChar = attrValueCache;
+      paramInt1 = (int)paramFloat * paramInt1;
+      paramArrayOfChar.put(paramString, Integer.valueOf(paramInt1));
+      return Integer.valueOf(paramInt1);
     }
     return null;
   }
@@ -126,7 +132,11 @@ public class LayoutAttrSet
     }
     catch (Throwable localThrowable)
     {
-      DittoLog.e("DITTO_UI", "the text " + paramString + " can't be parsed as color string", localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("the text ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" can't be parsed as color string");
+      DittoLog.e("DITTO_UI", localStringBuilder.toString(), localThrowable);
     }
     return 0;
   }
@@ -283,75 +293,82 @@ public class LayoutAttrSet
   
   private void parseContentE(String paramString, Object paramObject)
   {
-    if ("border_radii4".equals(paramString)) {
-      parseRadii4(paramObject.toString());
-    }
-    do
+    if ("border_radii4".equals(paramString))
     {
+      parseRadii4(paramObject.toString());
       return;
-      if ("bgGradientDir".equals(paramString))
-      {
-        this.gradientDirection = paramObject.toString();
-        return;
-      }
-      if ("bgGradientStartColor".equals(paramString))
-      {
-        this.gradientStartColor = parseColor(paramObject.toString());
-        return;
-      }
-      if ("bgGradientEndColor".equals(paramString))
-      {
-        this.gradientEndColor = parseColor(paramObject.toString());
-        return;
-      }
-      if ("pressedAlpha".equals(paramString))
-      {
-        this.pressedAlpha = parseInteger(paramObject.toString());
-        return;
-      }
-    } while (!"weight".equals(paramString));
-    this.weight = ((Integer)paramObject).intValue();
+    }
+    if ("bgGradientDir".equals(paramString))
+    {
+      this.gradientDirection = paramObject.toString();
+      return;
+    }
+    if ("bgGradientStartColor".equals(paramString))
+    {
+      this.gradientStartColor = parseColor(paramObject.toString());
+      return;
+    }
+    if ("bgGradientEndColor".equals(paramString))
+    {
+      this.gradientEndColor = parseColor(paramObject.toString());
+      return;
+    }
+    if ("pressedAlpha".equals(paramString))
+    {
+      this.pressedAlpha = parseInteger(paramObject.toString());
+      return;
+    }
+    if ("weight".equals(paramString)) {
+      this.weight = ((Integer)paramObject).intValue();
+    }
   }
   
   private Integer parseIntegerNormal(String paramString)
   {
-    label48:
-    int i;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != 48)
     {
-    default: 
-      i = -1;
-    }
-    for (;;)
-    {
-      switch (i)
+      if (i != 1443)
       {
-      default: 
-        return null;
-        if (!paramString.equals("wrap_content")) {
-          break label48;
+        if (i != 343327108)
+        {
+          if ((i == 1386124388) && (paramString.equals("match_parent")))
+          {
+            i = 1;
+            break label97;
+          }
         }
-        i = 0;
-        continue;
-        if (!paramString.equals("match_parent")) {
-          break label48;
+        else if (paramString.equals("wrap_content"))
+        {
+          i = 0;
+          break label97;
         }
-        i = 1;
-        continue;
-        if (!paramString.equals("0")) {
-          break label48;
-        }
-        i = 2;
-        continue;
-        if (!paramString.equals("-0")) {
-          break label48;
-        }
+      }
+      else if (paramString.equals("-0"))
+      {
         i = 3;
+        break label97;
       }
     }
+    else if (paramString.equals("0"))
+    {
+      i = 2;
+      break label97;
+    }
+    i = -1;
+    label97:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if ((i != 2) && (i != 3)) {
+          return null;
+        }
+        return Integer.valueOf(0);
+      }
+      return Integer.valueOf(-1);
+    }
     return Integer.valueOf(-2);
-    return Integer.valueOf(-1);
-    return Integer.valueOf(0);
   }
   
   public void addLayoutAttr(String paramString, Object paramObject)
@@ -453,7 +470,11 @@ public class LayoutAttrSet
       paramString1 = (String)this.mAttrs.get(paramString1);
       return paramString1;
     }
-    catch (Exception paramString1) {}
+    catch (Exception paramString1)
+    {
+      label16:
+      break label16;
+    }
     return paramString2;
   }
   
@@ -472,41 +493,54 @@ public class LayoutAttrSet
   {
     try
     {
-      Object localObject = this.mAttrs.get(paramString);
-      paramString = paramT;
-      if (localObject != null)
+      paramString = this.mAttrs.get(paramString);
+      if (paramString != null)
       {
-        boolean bool = paramT.getClass().isInstance(localObject);
-        paramString = paramT;
+        boolean bool = paramT.getClass().isInstance(paramString);
         if (bool) {
-          paramString = localObject;
+          return paramString;
         }
       }
-      return paramString;
+      return paramT;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label32:
+      break label32;
+    }
     return null;
   }
   
   public int[] getIntArrayAttr(String paramString)
   {
-    if ((!this.mAttrs.containsKey(paramString)) || (!(this.mAttrs.get(paramString) instanceof JSONArray))) {
-      return new int[0];
+    int j;
+    int[] arrayOfInt;
+    int i;
+    if ((this.mAttrs.containsKey(paramString)) && ((this.mAttrs.get(paramString) instanceof JSONArray)))
+    {
+      paramString = (JSONArray)this.mAttrs.get(paramString);
+      j = paramString.length();
+      arrayOfInt = new int[j];
+      i = 0;
     }
-    paramString = (JSONArray)this.mAttrs.get(paramString);
-    int j = paramString.length();
-    int[] arrayOfInt = new int[j];
-    int i = 0;
     for (;;)
     {
-      if (i < j) {}
+      if (i >= j) {
+        break label83;
+      }
       try
       {
         arrayOfInt[i] = paramString.optInt(i);
         i += 1;
       }
-      catch (Exception paramString) {}
+      catch (Exception paramString)
+      {
+        label79:
+        break label79;
+      }
     }
+    return new int[0];
+    label83:
     return arrayOfInt;
     return new int[0];
   }
@@ -550,246 +584,229 @@ public class LayoutAttrSet
         this.width = parseInteger(paramObject.toString());
         return;
       }
+      if ("height".equals(paramString))
+      {
+        this.height = parseInteger(paramObject.toString());
+        return;
+      }
+      if ("orientation".equals(paramString))
+      {
+        this.orientation = LayoutAttrDefine.Orientation.parse(paramObject.toString());
+        return;
+      }
+      if ("layout_gravity".equals(paramString))
+      {
+        this.layout_gravity = LayoutAttrDefine.Gravity.parse(paramObject.toString());
+        return;
+      }
+      if ("gravity".equals(paramString))
+      {
+        this.gravity = LayoutAttrDefine.Gravity.parse(paramObject.toString());
+        return;
+      }
+      if ("margin".equals(paramString))
+      {
+        parseMargin(paramObject.toString());
+        return;
+      }
+      if ("padding".equals(paramString))
+      {
+        parsePadding(paramObject.toString());
+        return;
+      }
+      parseContentB(paramString, paramObject);
+      return;
     }
     catch (Exception localException)
     {
       DittoLog.e("DITTO_UI", String.format("parse attr err: %s : %s", new Object[] { paramString, paramObject.toString() }), localException);
-      return;
     }
-    if ("height".equals(paramString))
-    {
-      this.height = parseInteger(paramObject.toString());
-      return;
-    }
-    if ("orientation".equals(paramString))
-    {
-      this.orientation = LayoutAttrDefine.Orientation.parse(paramObject.toString());
-      return;
-    }
-    if ("layout_gravity".equals(paramString))
-    {
-      this.layout_gravity = LayoutAttrDefine.Gravity.parse(paramObject.toString());
-      return;
-    }
-    if ("gravity".equals(paramString))
-    {
-      this.gravity = LayoutAttrDefine.Gravity.parse(paramObject.toString());
-      return;
-    }
-    if ("margin".equals(paramString))
-    {
-      parseMargin(paramObject.toString());
-      return;
-    }
-    if ("padding".equals(paramString))
-    {
-      parsePadding(paramObject.toString());
-      return;
-    }
-    parseContentB(paramString, paramObject);
   }
   
   public int parseInteger(String paramString)
   {
-    int k = 0;
     if (attrValueCache.containsKey(paramString)) {
       return ((Integer)attrValueCache.get(paramString)).intValue();
     }
-    float f1 = 0.0F;
     Object localObject = parseIntegerNormal(paramString);
     if (localObject != null) {
       return ((Integer)localObject).intValue();
     }
     paramString = paramString.replaceAll(" ", "");
     localObject = paramString.toCharArray();
-    int j = 10;
-    int i = 0;
+    int j = 0;
+    float f = 0.0F;
     int m = 1;
-    float f2;
-    int n;
-    if (k < localObject.length) {
-      if ((localObject[k] >= '0') && (localObject[k] <= '9')) {
-        if (i != 0)
+    int k = 0;
+    int i = 10;
+    while (j < localObject.length)
+    {
+      if ((localObject[j] >= '0') && (localObject[j] <= '9'))
+      {
+        if (k != 0)
         {
-          f2 = Integer.parseInt(Character.valueOf(localObject[k]).toString()) / j;
-          n = j * 10;
-          f1 += f2;
-          j = i;
-          i = n;
+          f += Integer.parseInt(Character.valueOf(localObject[j]).toString()) / i;
+          i *= 10;
+        }
+        else
+        {
+          f = f * 10.0F + Integer.parseInt(Character.valueOf(localObject[j]).toString());
         }
       }
-    }
-    for (;;)
-    {
-      k += 1;
-      n = j;
-      j = i;
-      i = n;
-      break;
-      f2 = Integer.parseInt(Character.valueOf(localObject[k]).toString());
-      f1 = f2 + 10.0F * f1;
-      n = i;
-      i = j;
-      j = n;
-      continue;
-      if (localObject[k] == '.')
+      else if (localObject[j] == '.')
       {
-        i = j;
-        j = 1;
+        k = 1;
       }
-      else if (localObject[k] == '-')
+      else if (localObject[j] == '-')
       {
-        n = -1;
-        m = i;
-        i = j;
-        j = m;
-        m = n;
+        m = -1;
       }
       else
       {
-        Integer localInteger = isDpOrPxValue(paramString, f1, m, (char[])localObject, k);
-        if (localInteger != null)
-        {
+        Integer localInteger = isDpOrPxValue(paramString, f, m, (char[])localObject, j);
+        if (localInteger != null) {
           return localInteger.intValue();
-          attrValueCache.put(paramString, Integer.valueOf((int)f1 * m));
-          return (int)f1 * m;
         }
-        n = i;
-        i = j;
-        j = n;
       }
+      j += 1;
     }
+    localObject = attrValueCache;
+    i = (int)f * m;
+    ((Map)localObject).put(paramString, Integer.valueOf(i));
+    return i;
   }
   
   public void parseMargin(String paramString)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      paramString = paramString.split(",");
+      if (paramString != null)
       {
-        paramString = paramString.split(",");
-        if ((paramString != null) && (paramString.length >= 4))
-        {
-          int[] arrayOfInt = new int[4];
-          while (i < arrayOfInt.length)
-          {
-            arrayOfInt[i] = parseInteger(paramString[i].trim());
-            i += 1;
-          }
-          this.leftMargin = arrayOfInt[0];
-          this.topMargin = arrayOfInt[1];
-          this.rightMargin = arrayOfInt[2];
-          this.bottomMargin = arrayOfInt[3];
+        if (paramString.length < 4) {
           return;
         }
+        int[] arrayOfInt = new int[4];
+        int i = 0;
+        while (i < arrayOfInt.length)
+        {
+          arrayOfInt[i] = parseInteger(paramString[i].trim());
+          i += 1;
+        }
+        this.leftMargin = arrayOfInt[0];
+        this.topMargin = arrayOfInt[1];
+        this.rightMargin = arrayOfInt[2];
+        this.bottomMargin = arrayOfInt[3];
+        return;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
   public void parsePadding(String paramString)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      paramString = paramString.split(",");
+      if (paramString != null)
       {
-        paramString = paramString.split(",");
-        if ((paramString != null) && (paramString.length >= 4))
-        {
-          int[] arrayOfInt = new int[4];
-          while (i < arrayOfInt.length)
-          {
-            arrayOfInt[i] = parseInteger(paramString[i].trim());
-            i += 1;
-          }
-          this.leftPadding = arrayOfInt[0];
-          this.topPadding = arrayOfInt[1];
-          this.rightPadding = arrayOfInt[2];
-          this.bottomPadding = arrayOfInt[3];
+        if (paramString.length < 4) {
           return;
         }
+        int[] arrayOfInt = new int[4];
+        int i = 0;
+        while (i < arrayOfInt.length)
+        {
+          arrayOfInt[i] = parseInteger(paramString[i].trim());
+          i += 1;
+        }
+        this.leftPadding = arrayOfInt[0];
+        this.topPadding = arrayOfInt[1];
+        this.rightPadding = arrayOfInt[2];
+        this.bottomPadding = arrayOfInt[3];
       }
-      catch (Exception paramString) {}
+      return;
     }
+    catch (Exception paramString) {}
   }
   
   public void parseRadii4(String paramString)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      paramString = paramString.split(",");
+      if (paramString != null)
       {
-        paramString = paramString.split(",");
-        if ((paramString != null) && (paramString.length >= 4))
-        {
-          int[] arrayOfInt = new int[4];
-          while (i < arrayOfInt.length)
-          {
-            arrayOfInt[i] = parseInteger(paramString[i].trim());
-            i += 1;
-          }
-          this.topLeftRadius = arrayOfInt[0];
-          this.topRightRadius = arrayOfInt[1];
-          this.bottomRightRadius = arrayOfInt[2];
-          this.bottomLeftRadius = arrayOfInt[3];
+        if (paramString.length < 4) {
           return;
         }
+        int[] arrayOfInt = new int[4];
+        int i = 0;
+        while (i < arrayOfInt.length)
+        {
+          arrayOfInt[i] = parseInteger(paramString[i].trim());
+          i += 1;
+        }
+        this.topLeftRadius = arrayOfInt[0];
+        this.topRightRadius = arrayOfInt[1];
+        this.bottomRightRadius = arrayOfInt[2];
+        this.bottomLeftRadius = arrayOfInt[3];
       }
-      catch (Exception paramString) {}
+      return;
     }
+    catch (Exception paramString) {}
   }
   
   public void parseShadowSize(String paramString)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
-      {
-        String[] arrayOfString = paramString.split(",");
-        if (arrayOfString != null)
-        {
-          if (arrayOfString.length == 1)
-          {
-            i = parseInteger(paramString.trim());
-            this.bottomShadowSize = i;
-            this.topShadowSize = i;
-            this.rightShadowSize = i;
-            this.leftShadowSize = i;
-            return;
-          }
-          if (arrayOfString.length >= 4)
-          {
-            paramString = new int[4];
-            while (i < paramString.length)
-            {
-              paramString[i] = parseInteger(arrayOfString[i].trim());
-              i += 1;
-            }
-            this.leftShadowSize = paramString[0];
-            this.topShadowSize = paramString[1];
-            this.rightShadowSize = paramString[2];
-            this.bottomShadowSize = paramString[3];
-            return;
-          }
-        }
-      }
-      catch (Exception paramString) {}
     }
+    try
+    {
+      String[] arrayOfString = paramString.split(",");
+      if (arrayOfString == null) {
+        return;
+      }
+      if (arrayOfString.length == 1)
+      {
+        i = parseInteger(paramString.trim());
+        this.bottomShadowSize = i;
+        this.topShadowSize = i;
+        this.rightShadowSize = i;
+        this.leftShadowSize = i;
+        return;
+      }
+      if (arrayOfString.length < 4) {
+        return;
+      }
+      paramString = new int[4];
+      int i = 0;
+      while (i < paramString.length)
+      {
+        paramString[i] = parseInteger(arrayOfString[i].trim());
+        i += 1;
+      }
+      this.leftShadowSize = paramString[0];
+      this.topShadowSize = paramString[1];
+      this.rightShadowSize = paramString[2];
+      this.bottomShadowSize = paramString[3];
+      return;
+    }
+    catch (Exception paramString) {}
   }
   
   public void setBottomMargin(int paramInt)
@@ -842,7 +859,7 @@ public class LayoutAttrSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ditto.shell.LayoutAttrSet
  * JD-Core Version:    0.7.0.1
  */

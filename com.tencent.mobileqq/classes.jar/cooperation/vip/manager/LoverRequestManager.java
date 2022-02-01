@@ -28,15 +28,13 @@ public class LoverRequestManager
         }
       }
     }
-    do
+    else if (a() != null)
     {
-      do
-      {
-        return;
-      } while (a() == null);
       paramObject = (IntimateInfoHandler)a().getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER);
-    } while (paramObject == null);
-    paramObject.a(false, null, null, null);
+      if (paramObject != null) {
+        paramObject.a(false, null, null, null);
+      }
+    }
   }
   
   public QQAppInterface a()
@@ -61,9 +59,14 @@ public class LoverRequestManager
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
+    int i;
+    if (paramFromServiceMsg != null) {
+      i = paramFromServiceMsg.getResultCode();
+    } else {
+      i = -1;
+    }
     boolean bool = false;
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
+    if (i == 1000)
     {
       paramIntent = (sweet_comm_cfg_get_rsp)ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "GetCommCfg");
       if ((paramIntent != null) && (paramIntent.m_cfg_res != null))
@@ -74,14 +77,16 @@ public class LoverRequestManager
         }
         a(bool, paramIntent);
       }
-      return;
     }
-    a(false, null);
+    else
+    {
+      a(false, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.manager.LoverRequestManager
  * JD-Core Version:    0.7.0.1
  */

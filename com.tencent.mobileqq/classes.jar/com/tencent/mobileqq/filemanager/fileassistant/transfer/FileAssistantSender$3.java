@@ -1,20 +1,16 @@
 package com.tencent.mobileqq.filemanager.fileassistant.transfer;
 
 import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.DataLineObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.api.IQFileConfigManager;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.OfflineSendWorker;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileassistant.data.FileAssistantResultCallbak;
 import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
+import com.tencent.mobileqq.filemanager.uftwrapper.QFileC2CTransferWrapper;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
 
 class FileAssistantSender$3
@@ -22,85 +18,61 @@ class FileAssistantSender$3
 {
   FileAssistantSender$3(FileAssistantSender paramFileAssistantSender) {}
   
-  public void a(long paramLong, int paramInt1, int paramInt2)
+  protected void a(long paramLong, int paramInt1, int paramInt2)
   {
-    if (!FileAssistantSender.a(this.a).a(paramLong)) {}
-    do
-    {
+    if (!FileAssistantSender.a(this.a).a(paramLong)) {
       return;
-      FileAssistantSender.b(this.a);
-      QLog.i("FileAssistantSender<FileAssistant>", 1, "onWlanConnect:" + FileAssistantSender.a(this.a).nSessionId + ", channelType:" + paramInt1 + ", connStep:" + paramInt2);
-      if (FileAssistantSender.a(this.a) == null)
-      {
-        ThreadManager.getUIHandler().removeCallbacks(FileAssistantSender.b(this.a));
-        QLog.i("FileAssistantSender<FileAssistant>", 1, "onWlanConnect cancel timer:" + FileAssistantSender.a(this.a).nSessionId + "]");
-        return;
-      }
-      QLog.i("FileAssistantSender<FileAssistant>", 1, "onWlanConnect[" + FileAssistantSender.a(this.a).nSessionId + "] timer is started,tryCancel");
-    } while (!FileAssistantSender.a(this.a).f());
-    FileAssistantSender.a(this.a, false);
+    }
+    FileAssistantSender.b(this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onWlanConnect:");
+    localStringBuilder.append(FileAssistantSender.a(this.a).nSessionId);
+    localStringBuilder.append(", channelType:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", connStep:");
+    localStringBuilder.append(paramInt2);
+    QLog.i("FileAssistantSender<FileAssistant>", 1, localStringBuilder.toString());
+    if (!FileAssistantSender.a(this.a).getFileManagerEngine().a().b(FileAssistantSender.a(this.a).nSessionId))
+    {
+      ThreadManager.getUIHandler().removeCallbacks(FileAssistantSender.b(this.a));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onWlanConnect cancel timer:");
+      localStringBuilder.append(FileAssistantSender.a(this.a).nSessionId);
+      localStringBuilder.append("]");
+      QLog.i("FileAssistantSender<FileAssistant>", 1, localStringBuilder.toString());
+      return;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onWlanConnect[");
+    localStringBuilder.append(FileAssistantSender.a(this.a).nSessionId);
+    localStringBuilder.append("] timer is started,tryCancel");
+    QLog.i("FileAssistantSender<FileAssistant>", 1, localStringBuilder.toString());
+    if (FileAssistantSender.a(this.a).getFileManagerEngine().a().a(FileAssistantSender.a(this.a).nSessionId)) {
+      FileAssistantSender.a(this.a, false);
+    }
   }
   
-  public void a(Session paramSession, float paramFloat)
+  protected void a(Session paramSession, float paramFloat)
   {
     if (!FileAssistantSender.a(this.a).a(paramSession.uSessionID)) {
       return;
     }
-    QLog.i("FileAssistantSender<FileAssistant>", 1, "onServiceSessionProgress:" + FileAssistantSender.a(this.a).nSessionId + ", fProgress:" + paramFloat);
+    paramSession = new StringBuilder();
+    paramSession.append("onServiceSessionProgress:");
+    paramSession.append(FileAssistantSender.a(this.a).nSessionId);
+    paramSession.append(", fProgress:");
+    paramSession.append(paramFloat);
+    QLog.i("FileAssistantSender<FileAssistant>", 1, paramSession.toString());
     FileAssistantSender.a(this.a).fProgress = paramFloat;
     FileAssistantSender.a(this.a).getFileManagerNotifyCenter().a(FileAssistantSender.a(this.a).uniseq, FileAssistantSender.a(this.a).nSessionId, FileAssistantSender.a(this.a).peerUin, FileAssistantSender.a(this.a).peerType, 16, null, 0, null);
   }
   
-  public void a(Session paramSession, boolean paramBoolean)
+  protected void a(Session paramSession, boolean paramBoolean)
   {
-    if (!paramSession.isFileAssist) {
-      break label7;
-    }
-    label7:
-    while (paramSession.uSessionID != FileAssistantSender.a(this.a).nSessionId) {
-      return;
-    }
-    FileAssistantSender.c(this.a, false);
-    QLog.i("FileAssistantSender<FileAssistant>", 1, "onServiceSessionComplete:" + FileAssistantSender.a(this.a).nSessionId + ", isSucc:" + paramBoolean);
-    if (FileAssistantSender.c(this.a))
-    {
-      if (!paramBoolean)
-      {
-        QLog.i("FileAssistantSender<FileAssistant>", 1, "onServiceSessionComplete:" + FileAssistantSender.a(this.a).nSessionId + ", wanLan faild, offline is working continue!");
-        return;
-      }
-      if ((FileAssistantSender.a(this.a) != null) && (FileAssistantSender.a(this.a).f())) {
-        FileAssistantSender.a(this.a, false);
-      }
-    }
-    FileManagerEntity localFileManagerEntity;
-    if (FileAssistantSender.a(this.a).status != 1)
-    {
-      localFileManagerEntity = FileAssistantSender.a(this.a);
-      if (!paramBoolean) {
-        break label413;
-      }
-    }
-    label413:
-    for (int i = 1;; i = 0)
-    {
-      localFileManagerEntity.status = i;
-      FileAssistantSender.a(this.a).getFileManagerDataCenter().c(FileAssistantSender.a(this.a));
-      FileAssistantSender.a(this.a).getFileManagerNotifyCenter().a(FileAssistantSender.a(this.a).uniseq, FileAssistantSender.a(this.a).nSessionId, FileAssistantSender.a(this.a).peerUin, FileAssistantSender.a(this.a).peerType, 14, new Object[] { FileAssistantSender.a(this.a), Long.valueOf(FileAssistantSender.a(this.a).fileSize), Boolean.valueOf(true), "" }, 0, null);
-      ((DataLineHandler)FileAssistantSender.a(this.a).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(2, paramBoolean, new Object[] { Long.valueOf(0L), Long.valueOf(paramSession.uSessionID), FileAssistantSender.a(this.a).getFilePath() });
-      if (paramBoolean) {
-        FileAssistantSender.b(this.a);
-      }
-      paramSession = (FileAssistantResultCallbak)FileAssistantSender.a(this.a).get();
-      if (paramSession == null) {
-        break;
-      }
-      paramSession.a(this.a);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public void b(long paramLong)
+  protected void b(long paramLong)
   {
     if (!FileAssistantSender.a(this.a).a(paramLong)) {
       return;
@@ -108,15 +80,28 @@ class FileAssistantSender$3
     FileAssistantSender.c(this.a, true);
     if (FileAssistantSender.b(this.a))
     {
-      QLog.i("FileAssistantSender<FileAssistant>", 1, "onWlanStartRun:" + FileAssistantSender.a(this.a).nSessionId + ",config isNotEnoughtSpace[" + FileAssistantSender.b(this.a) + "] stop start offline!");
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("onWlanStartRun:");
+      ((StringBuilder)???).append(FileAssistantSender.a(this.a).nSessionId);
+      ((StringBuilder)???).append(",config isNotEnoughtSpace[");
+      ((StringBuilder)???).append(FileAssistantSender.b(this.a));
+      ((StringBuilder)???).append("] stop start offline!");
+      QLog.i("FileAssistantSender<FileAssistant>", 1, ((StringBuilder)???).toString());
       return;
     }
     if (((IQFileConfigManager)FileAssistantSender.a(this.a).getRuntimeService(IQFileConfigManager.class, "")).isWlanOnly())
     {
-      QLog.i("FileAssistantSender<FileAssistant>", 1, FileAssistantSender.a(this.a).nSessionId + ":run only wlan mode, waiting for connect!");
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append(FileAssistantSender.a(this.a).nSessionId);
+      ((StringBuilder)???).append(":run only wlan mode, waiting for connect!");
+      QLog.i("FileAssistantSender<FileAssistant>", 1, ((StringBuilder)???).toString());
       return;
     }
-    QLog.i("FileAssistantSender<FileAssistant>", 1, "onWlanStartRun:" + FileAssistantSender.a(this.a).nSessionId + ", start offline timer, wait 3s!");
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("onWlanStartRun:");
+    ((StringBuilder)???).append(FileAssistantSender.a(this.a).nSessionId);
+    ((StringBuilder)???).append(", start offline timer, wait 3s!");
+    QLog.i("FileAssistantSender<FileAssistant>", 1, ((StringBuilder)???).toString());
     synchronized (this.a)
     {
       FileAssistantSender.a(this.a, FileAssistantSender.a(this.a));
@@ -128,7 +113,7 @@ class FileAssistantSender$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.transfer.FileAssistantSender.3
  * JD-Core Version:    0.7.0.1
  */

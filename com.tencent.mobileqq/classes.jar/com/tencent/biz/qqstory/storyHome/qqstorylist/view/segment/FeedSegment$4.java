@@ -32,38 +32,54 @@ class FeedSegment$4
   
   public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (UIUtils.b()) {}
-    do
-    {
+    if (UIUtils.b()) {
       return;
-      switch (paramView.getId())
+    }
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131374621: 
+      paramView = ((StoryHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt)).a();
+      if ((paramView != null) && ((paramView instanceof TagFeedItem)))
       {
-      default: 
+        paramView = (TagFeedItem)paramView;
+        if (!TextUtils.isEmpty(paramView.schema))
+        {
+          paramObject = new Intent(FeedSegment.b(this.a), QQBrowserActivity.class);
+          paramObject.putExtra("url", paramView.schema);
+          FeedSegment.c(this.a).startActivity(paramObject);
+        }
+        else
+        {
+          SLog.e("Q.qqstory.home:FeedSegment", "tag schema is null.");
+        }
+        StoryReportor.a("home_page", "clk_more_tag", 0, 0, new String[] { "", String.valueOf(paramView.tagItem.a.a) });
         return;
-      case 2131374971: 
-        if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a() == null) || (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().size() <= paramInt) || (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt) == null)) {
-          break label378;
+      }
+      break;
+    case 2131374616: 
+      paramView = ((StoryHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt)).a();
+      if ((paramView != null) && ((paramView instanceof TagFeedItem)))
+      {
+        paramView = ((TagFeedItem)paramView).tagItem.a();
+        if (paramView != null)
+        {
+          paramObject = new Intent(FeedSegment.d(this.a), StoryTransitionActivity.class);
+          paramObject.putExtra("jump_action", 1);
+          paramObject.putExtra("video_tag", paramView);
+          FeedSegment.e(this.a).startActivity(paramObject);
+        }
+        else
+        {
+          SLog.e("Q.qqstory.home:FeedSegment", "click tag, tag is null");
         }
       }
-    } while (!(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt) instanceof VideoListHomeFeed));
-    paramView = (VideoListHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt);
-    paramObject = new ArrayList();
-    paramBaseViewHolder = paramView.a().iterator();
-    paramInt = 0;
-    label175:
-    if (paramBaseViewHolder.hasNext())
-    {
-      StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramBaseViewHolder.next();
-      if (!localStoryVideoItem.isUploadFail()) {
-        break label645;
-      }
-      paramObject.add(localStoryVideoItem);
-      paramInt += 1;
-    }
-    label645:
-    for (;;)
-    {
-      break label175;
+      StoryReportor.a("home_page", "tag_clk_join", 0, 0, new String[0]);
+      return;
+    case 2131374516: 
+      FeedSegment.a(this.a, paramInt);
+      return;
+    case 2131374505: 
       paramView = ((StoryHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt)).a();
       if ((paramView != null) && ((paramView instanceof TagFeedItem)))
       {
@@ -72,61 +88,43 @@ class FeedSegment$4
       }
       SLog.e("Q.qqstory.home:FeedSegment", "why tagFeedItem is null?");
       return;
-      if (paramObject.size() > 0) {
-        StoryVideoUploadManager.a(paramObject, FeedSegment.a(this.a));
-      }
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().size() <= 0) {
-        break;
-      }
-      StoryReportor.a("home_page", "clk_retry", StoryReportor.a(paramView.a()), 0, new String[] { "1", StoryReportor.a(this.a.jdField_a_of_type_Int), String.valueOf(paramInt), paramView.a().feedId });
-      return;
-      label378:
-      SLog.e("Q.qqstory.home:FeedSegment", "feed upload retry failed!!");
-      return;
-      paramView = ((StoryHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt)).a();
-      if ((paramView == null) || (!(paramView instanceof TagFeedItem))) {
-        break;
-      }
-      paramView = (TagFeedItem)paramView;
-      if (!TextUtils.isEmpty(paramView.schema))
+    case 2131374503: 
+      if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a() != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().size() > paramInt) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt) != null))
       {
-        paramObject = new Intent(FeedSegment.b(this.a), QQBrowserActivity.class);
-        paramObject.putExtra("url", paramView.schema);
-        FeedSegment.c(this.a).startActivity(paramObject);
-      }
-      for (;;)
-      {
-        StoryReportor.a("home_page", "clk_more_tag", 0, 0, new String[] { "", String.valueOf(paramView.tagItem.a.a) });
-        return;
-        SLog.e("Q.qqstory.home:FeedSegment", "tag schema is null.");
-      }
-      FeedSegment.a(this.a, paramInt);
-      return;
-      paramView = ((StoryHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt)).a();
-      if ((paramView != null) && ((paramView instanceof TagFeedItem)))
-      {
-        paramView = ((TagFeedItem)paramView).tagItem.a();
-        if (paramView == null) {
-          break label635;
+        if (!(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt) instanceof VideoListHomeFeed)) {
+          return;
         }
-        paramObject = new Intent(FeedSegment.d(this.a), StoryTransitionActivity.class);
-        paramObject.putExtra("jump_action", 1);
-        paramObject.putExtra("video_tag", paramView);
-        FeedSegment.e(this.a).startActivity(paramObject);
+        paramView = (VideoListHomeFeed)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt);
+        paramObject = new ArrayList();
+        paramBaseViewHolder = paramView.a().iterator();
+        paramInt = 0;
+        while (paramBaseViewHolder.hasNext())
+        {
+          StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramBaseViewHolder.next();
+          if (localStoryVideoItem.isUploadFail())
+          {
+            paramObject.add(localStoryVideoItem);
+            paramInt += 1;
+          }
+        }
+        if (paramObject.size() > 0) {
+          StoryVideoUploadManager.a(paramObject, FeedSegment.a(this.a));
+        }
+        if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().size() > 0) {
+          StoryReportor.a("home_page", "clk_retry", StoryReportor.a(paramView.a()), 0, new String[] { "1", StoryReportor.a(this.a.jdField_a_of_type_Int), String.valueOf(paramInt), paramView.a().feedId });
+        }
       }
-      for (;;)
+      else
       {
-        StoryReportor.a("home_page", "tag_clk_join", 0, 0, new String[0]);
-        return;
-        label635:
-        SLog.e("Q.qqstory.home:FeedSegment", "click tag, tag is null");
+        SLog.e("Q.qqstory.home:FeedSegment", "feed upload retry failed!!");
       }
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.4
  * JD-Core Version:    0.7.0.1
  */

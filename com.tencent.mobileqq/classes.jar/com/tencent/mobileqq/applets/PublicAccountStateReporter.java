@@ -21,8 +21,16 @@ public class PublicAccountStateReporter
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
     paramInt = a(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountStateReporter", 2, "onPublicAccountReceiveState state : " + paramInt + ", name: " + paramString2 + ", pUin: " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPublicAccountReceiveState state : ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", name: ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(", pUin: ");
+      localStringBuilder.append(paramString1);
+      QLog.i("PublicAccountStateReporter", 2, localStringBuilder.toString());
     }
     paramQQAppInterface = (AppletsHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
     if (paramQQAppInterface != null) {
@@ -50,13 +58,15 @@ public class PublicAccountStateReporter
     }
     catch (NumberFormatException paramQQAppInterface)
     {
-      QLog.d("PublicAccountStateReporter", 1, new Object[] { "NumberFormatException, puin=", paramString });
+      label15:
+      break label15;
     }
+    QLog.d("PublicAccountStateReporter", 1, new Object[] { "NumberFormatException, puin=", paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.applets.PublicAccountStateReporter
  * JD-Core Version:    0.7.0.1
  */

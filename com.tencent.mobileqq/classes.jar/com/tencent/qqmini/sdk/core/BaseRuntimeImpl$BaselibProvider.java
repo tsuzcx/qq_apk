@@ -11,7 +11,8 @@ public class BaseRuntimeImpl$BaselibProvider
   
   public String getBasePageFrameStr()
   {
-    if ((this.mBaselibContent != null) && (!TextUtils.isEmpty(this.mBaselibContent.pageFrameStr))) {
+    BaselibLoader.BaselibContent localBaselibContent = this.mBaselibContent;
+    if ((localBaselibContent != null) && (!TextUtils.isEmpty(localBaselibContent.pageFrameStr))) {
       return this.mBaselibContent.pageFrameStr;
     }
     return "<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"UTF-8\" /><meta name=\"viewport\" content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\" /><meta http-equiv=\"Content-Security-Policy\" content=\"script-src 'self' 'unsafe-inline' 'unsafe-eval'\"><link rel=\"icon\" href=\"data:image/ico;base64,aWNv\"><script></script></head><body><div></div></body></html>";
@@ -29,7 +30,7 @@ public class BaseRuntimeImpl$BaselibProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.BaseRuntimeImpl.BaselibProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -26,21 +26,18 @@ public class ScreenShareAskArkBottomUpDialog
   
   private void a(Context paramContext, String paramString, Object paramObject)
   {
-    paramContext = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131561572, null);
-    ((TextView)paramContext.findViewById(2131377527)).setText(paramString);
-    paramString = (VasAvatar)paramContext.findViewById(2131377526);
+    paramContext = (LinearLayout)LayoutInflater.from(paramContext).inflate(2131561413, null);
+    ((TextView)paramContext.findViewById(2131376971)).setText(paramString);
+    paramString = (VasAvatar)paramContext.findViewById(2131376970);
     if ((paramObject instanceof Drawable)) {
       paramString.setImageDrawable((Drawable)paramObject);
-    }
-    for (;;)
-    {
-      setContentView(paramContext);
-      ((ImageView)paramContext.findViewById(2131377524)).setOnClickListener(new ScreenShareAskArkBottomUpDialog.1(this));
-      setOnCancelListener(new ScreenShareAskArkBottomUpDialog.2(this));
-      ((Button)paramContext.findViewById(2131377525)).setOnClickListener(new ScreenShareAskArkBottomUpDialog.3(this));
-      return;
+    } else {
       paramString.setLoader(null, (VasAvatarLoader)paramObject);
     }
+    setContentView(paramContext);
+    ((ImageView)paramContext.findViewById(2131376968)).setOnClickListener(new ScreenShareAskArkBottomUpDialog.1(this));
+    setOnCancelListener(new ScreenShareAskArkBottomUpDialog.2(this));
+    ((Button)paramContext.findViewById(2131376969)).setOnClickListener(new ScreenShareAskArkBottomUpDialog.3(this));
   }
   
   public void a(ScreenShareAskArkBottomUpDialog.OnArrowClickListener paramOnArrowClickListener)
@@ -50,7 +47,7 @@ public class ScreenShareAskArkBottomUpDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ScreenShareAskArkBottomUpDialog
  * JD-Core Version:    0.7.0.1
  */

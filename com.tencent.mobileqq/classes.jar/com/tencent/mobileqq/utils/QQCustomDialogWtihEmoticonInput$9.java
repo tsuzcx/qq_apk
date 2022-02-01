@@ -10,8 +10,10 @@ class QQCustomDialogWtihEmoticonInput$9
   
   public void run()
   {
-    if (QQCustomDialogWtihEmoticonInput.a(this.this$0)) {}
-    while (this.this$0.c) {
+    if (QQCustomDialogWtihEmoticonInput.a(this.this$0)) {
+      return;
+    }
+    if (this.this$0.c) {
       return;
     }
     this.this$0.jdField_a_of_type_AndroidViewWindowManager.addView(this.a, this.this$0.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
@@ -21,7 +23,7 @@ class QQCustomDialogWtihEmoticonInput$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.9
  * JD-Core Version:    0.7.0.1
  */

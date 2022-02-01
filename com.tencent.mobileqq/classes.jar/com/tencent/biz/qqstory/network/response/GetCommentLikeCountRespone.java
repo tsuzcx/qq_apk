@@ -29,16 +29,17 @@ public class GetCommentLikeCountRespone
       localCommentLikeCount.jdField_a_of_type_JavaLangString = ((qqstory_group.CommentLikeCount)localObject).story_id.get().toStringUtf8();
       localCommentLikeCount.jdField_a_of_type_Int = ((qqstory_group.CommentLikeCount)localObject).like_count.get();
       localCommentLikeCount.b = ((qqstory_group.CommentLikeCount)localObject).comment_count.get();
-      if (((qqstory_group.CommentLikeCount)localObject).is_has_like.get() == 1) {}
-      for (boolean bool = true;; bool = false)
+      int i = ((qqstory_group.CommentLikeCount)localObject).is_has_like.get();
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
+      localCommentLikeCount.jdField_a_of_type_Boolean = bool;
+      localObject = ((qqstory_group.CommentLikeCount)localObject).newly_three_like.get().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localCommentLikeCount.jdField_a_of_type_Boolean = bool;
-        localObject = ((qqstory_group.CommentLikeCount)localObject).newly_three_like.get().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          qqstory_group.NewlyLikeInfo localNewlyLikeInfo = (qqstory_group.NewlyLikeInfo)((Iterator)localObject).next();
-          localCommentLikeCount.jdField_a_of_type_JavaUtilList.add(Long.valueOf(localNewlyLikeInfo.uin.get()));
-        }
+        qqstory_group.NewlyLikeInfo localNewlyLikeInfo = (qqstory_group.NewlyLikeInfo)((Iterator)localObject).next();
+        localCommentLikeCount.jdField_a_of_type_JavaUtilList.add(Long.valueOf(localNewlyLikeInfo.uin.get()));
       }
       this.a.add(localCommentLikeCount);
     }
@@ -46,7 +47,7 @@ public class GetCommentLikeCountRespone
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetCommentLikeCountRespone
  * JD-Core Version:    0.7.0.1
  */

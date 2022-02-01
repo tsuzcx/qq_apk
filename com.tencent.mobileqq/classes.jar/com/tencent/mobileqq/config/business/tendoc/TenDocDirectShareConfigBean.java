@@ -10,35 +10,36 @@ import org.json.JSONObject;
 
 public class TenDocDirectShareConfigBean
 {
-  private String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131714714);
+  private String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131714644);
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   private String b = "";
   
   public static TenDocDirectShareConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    int i = 0;
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      return null;
-    }
-    TenDocDirectShareConfigBean localTenDocDirectShareConfigBean = new TenDocDirectShareConfigBean();
-    try
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
-      JSONArray localJSONArray = paramArrayOfQConfItem.getJSONArray("suffix");
-      while (i < localJSONArray.length())
+      TenDocDirectShareConfigBean localTenDocDirectShareConfigBean = new TenDocDirectShareConfigBean();
+      int i = 0;
+      try
       {
-        localTenDocDirectShareConfigBean.jdField_a_of_type_JavaUtilList.add(localJSONArray.getString(i));
-        i += 1;
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        JSONArray localJSONArray = paramArrayOfQConfItem.getJSONArray("suffix");
+        while (i < localJSONArray.length())
+        {
+          localTenDocDirectShareConfigBean.jdField_a_of_type_JavaUtilList.add(localJSONArray.getString(i));
+          i += 1;
+        }
+        localTenDocDirectShareConfigBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.getString("title");
+        localTenDocDirectShareConfigBean.b = paramArrayOfQConfItem.getString("desc");
+        return localTenDocDirectShareConfigBean;
       }
-      localTenDocDirectShareConfigBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.getString("title");
-      localTenDocDirectShareConfigBean.b = paramArrayOfQConfItem.getString("desc");
-      return localTenDocDirectShareConfigBean;
+      catch (JSONException paramArrayOfQConfItem)
+      {
+        paramArrayOfQConfItem.printStackTrace();
+        return localTenDocDirectShareConfigBean;
+      }
     }
-    catch (JSONException paramArrayOfQConfItem)
-    {
-      paramArrayOfQConfItem.printStackTrace();
-    }
-    return localTenDocDirectShareConfigBean;
+    return null;
   }
   
   public List<String> a()
@@ -48,7 +49,7 @@ public class TenDocDirectShareConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TenDocDirectShareConfigBean
  * JD-Core Version:    0.7.0.1
  */

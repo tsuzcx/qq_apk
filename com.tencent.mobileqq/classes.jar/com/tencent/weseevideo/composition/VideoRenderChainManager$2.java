@@ -1,30 +1,29 @@
 package com.tencent.weseevideo.composition;
 
-import android.graphics.RectF;
-import com.tencent.weseevideo.composition.interfaces.OnNodeRenderListener;
-import com.tencent.weseevideo.model.template.light.LightTemplate;
-import java.util.HashMap;
-import org.light.MovieController;
+import com.tencent.tavsticker.core.ITAVRenderContextDataSource;
+import com.tencent.tavsticker.model.TAVSticker;
+import com.tencent.tavsticker.model.TAVStickerMode;
+import com.tencent.weseevideo.editor.sticker.WsPicStickerContext;
 
 class VideoRenderChainManager$2
-  implements OnNodeRenderListener
+  implements ITAVRenderContextDataSource
 {
   VideoRenderChainManager$2(VideoRenderChainManager paramVideoRenderChainManager) {}
   
-  public void a()
+  public boolean shouldRenderSticker(TAVSticker paramTAVSticker, long paramLong)
   {
-    if (VideoRenderChainManager.access$100(this.a) != null)
-    {
-      RectF localRectF = VideoRenderChainManager.access$100(this.a).getMovieController().getBoundsByKey("hongbao");
-      if (!localRectF.isEmpty()) {
-        VideoRenderChainManager.access$100(this.a).getBoundsRect().put("hongbao", localRectF);
-      }
+    if ((WsPicStickerContext.isBlurSticker(paramTAVSticker)) && (paramTAVSticker.getMode() != TAVStickerMode.ACTIVE)) {
+      return true;
     }
+    if (VideoRenderChainManager.access$000(this.a) != null) {
+      return VideoRenderChainManager.access$000(this.a).shouldRenderSticker(paramTAVSticker, paramLong);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.VideoRenderChainManager.2
  * JD-Core Version:    0.7.0.1
  */

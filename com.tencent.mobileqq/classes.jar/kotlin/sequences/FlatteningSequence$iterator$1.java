@@ -36,10 +36,8 @@ public final class FlatteningSequence$iterator$1
       }
       localObject = this.iterator.next();
       localObject = (Iterator)FlatteningSequence.access$getIterator$p(this.this$0).invoke(FlatteningSequence.access$getTransformer$p(this.this$0).invoke(localObject));
-      if (((Iterator)localObject).hasNext())
-      {
+      if (((Iterator)localObject).hasNext()) {
         this.itemIterator = ((Iterator)localObject);
-        return true;
       }
     }
     return true;
@@ -64,14 +62,15 @@ public final class FlatteningSequence$iterator$1
   
   public E next()
   {
-    if (!ensureItemIterator()) {
-      throw ((Throwable)new NoSuchElementException());
+    if (ensureItemIterator())
+    {
+      Iterator localIterator = this.itemIterator;
+      if (localIterator == null) {
+        Intrinsics.throwNpe();
+      }
+      return localIterator.next();
     }
-    Iterator localIterator = this.itemIterator;
-    if (localIterator == null) {
-      Intrinsics.throwNpe();
-    }
-    return localIterator.next();
+    throw ((Throwable)new NoSuchElementException());
   }
   
   public void remove()
@@ -86,7 +85,7 @@ public final class FlatteningSequence$iterator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.sequences.FlatteningSequence.iterator.1
  * JD-Core Version:    0.7.0.1
  */

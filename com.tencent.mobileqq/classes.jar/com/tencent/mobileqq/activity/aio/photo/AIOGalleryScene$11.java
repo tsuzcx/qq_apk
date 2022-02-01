@@ -12,13 +12,13 @@ class AIOGalleryScene$11
   public void onCallback(EIPCResult paramEIPCResult)
   {
     if (-102 == paramEIPCResult.code) {
-      AIOGalleryScene.r(this.a).finish();
+      AIOGalleryScene.q(this.a).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.11
  * JD-Core Version:    0.7.0.1
  */

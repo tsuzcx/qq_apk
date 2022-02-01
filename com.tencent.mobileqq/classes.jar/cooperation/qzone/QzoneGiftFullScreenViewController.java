@@ -35,14 +35,13 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 
 public class QzoneGiftFullScreenViewController
-  implements View.OnClickListener
+  implements View.OnClickListener, IQzoneGiftFullScreenViewController
 {
-  public static boolean IS_SUPPORT_MAGICFACE = true;
+  public static boolean IS_SUPPORT_MAGICFACE = false;
   public static final String TAG = "QzoneGiftFullScreenViewController";
   protected ActionGlobalData actionGlobalData;
   protected String epId;
@@ -65,13 +64,12 @@ public class QzoneGiftFullScreenViewController
     if (str != null)
     {
       str = str.toLowerCase();
-      if ((str.contains("marvell")) || (str.contains("armv5")) || (str.contains("armv6"))) {
-        IS_SUPPORT_MAGICFACE = false;
+      if ((!str.contains("marvell")) && (!str.contains("armv5")) && (!str.contains("armv6")))
+      {
+        IS_SUPPORT_MAGICFACE = true;
+        return;
       }
-    }
-    else
-    {
-      return;
+      IS_SUPPORT_MAGICFACE = false;
     }
   }
   
@@ -99,83 +97,82 @@ public class QzoneGiftFullScreenViewController
   
   private void initMagicfaceView()
   {
-    if (this.magicfaceReceiveContent == null) {
-      if (!this.isUseHardDecode) {
-        break label126;
-      }
-    }
-    label126:
-    for (View localView = View.inflate(BaseApplicationImpl.getContext(), 2131562099, null);; localView = View.inflate(BaseApplicationImpl.getContext(), 2131562101, null))
+    if (this.magicfaceReceiveContent == null)
     {
-      this.topbar = View.inflate(BaseApplicationImpl.getContext(), 2131562103, null);
-      this.topbarBgView = this.topbar.findViewById(2131370981);
-      this.magicfaceReceivePlay = ((IMagicFaceView)localView.findViewById(2131370974));
-      this.magicfaceReceiveContent = ((MagicfaceContainerView)localView.findViewById(2131370976));
-      this.magicfaceReceiveStop = ((Button)this.topbar.findViewById(2131370975));
+      View localView;
+      if (this.isUseHardDecode) {
+        localView = View.inflate(BaseApplicationImpl.getContext(), 2131561935, null);
+      } else {
+        localView = View.inflate(BaseApplicationImpl.getContext(), 2131561937, null);
+      }
+      this.topbar = View.inflate(BaseApplicationImpl.getContext(), 2131561939, null);
+      this.topbarBgView = this.topbar.findViewById(2131370615);
+      this.magicfaceReceivePlay = ((IMagicFaceView)localView.findViewById(2131370608));
+      this.magicfaceReceiveContent = ((MagicfaceContainerView)localView.findViewById(2131370610));
+      this.magicfaceReceiveStop = ((Button)this.topbar.findViewById(2131370609));
       this.magicfaceReceiveStop.setVisibility(8);
-      this.magicfaceTip = ((ImageView)this.topbar.findViewById(2131370979));
+      this.magicfaceTip = ((ImageView)this.topbar.findViewById(2131370613));
       this.magicfaceReceiveStop.setOnClickListener(this);
-      return;
     }
   }
   
   private void initTopbar(int paramInt)
   {
-    if (this.topbar == null) {}
-    for (;;)
-    {
+    if (this.topbar == null) {
       return;
-      Object localObject = BaseApplicationImpl.getApplication();
-      if (localObject != null)
-      {
-        if (Build.VERSION.SDK_INT >= 23) {
-          if (!Settings.canDrawOverlays((Context)localObject)) {
-            ((Context)localObject).startActivity(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION"));
-          }
-        }
-        for (int i = 0; i != 0; i = 1) {
-          for (;;)
-          {
-            localObject = new WindowManager.LayoutParams();
-            ((WindowManager.LayoutParams)localObject).type = 2002;
-            ((WindowManager.LayoutParams)localObject).flags = 131112;
-            ((WindowManager.LayoutParams)localObject).gravity = 51;
-            ((WindowManager.LayoutParams)localObject).x = 0;
-            ((WindowManager.LayoutParams)localObject).y = paramInt;
-            ((WindowManager.LayoutParams)localObject).width = -1;
-            ((WindowManager.LayoutParams)localObject).height = -2;
-            ((WindowManager.LayoutParams)localObject).format = 1;
-            this.mWindowManager = ((WindowManager)BaseApplicationImpl.getContext().getSystemService("window"));
-            if (this.topbar.getParent() != null) {}
-            try
-            {
-              this.mWindowManager.removeView(this.topbar);
-              try
-              {
-                this.mWindowManager.addView(this.topbar, (ViewGroup.LayoutParams)localObject);
-                return;
-              }
-              catch (Exception localException1)
-              {
-                QLog.e("QzoneGiftFullScreenViewController", 1, "initTopbar: ", localException1);
-                return;
-              }
-              if (localException1.checkSelfPermission("android.settings.action.MANAGE_WRITE_SETTINGS") != 0)
-              {
-                localException1.startActivity(new Intent("android.settings.action.MANAGE_WRITE_SETTINGS"));
-                i = 0;
-              }
-            }
-            catch (Exception localException2)
-            {
-              for (;;)
-              {
-                QLog.e("QzoneGiftFullScreenViewController", 1, "initTopbar: ", localException2);
-              }
-            }
-          }
-        }
+    }
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if (!Settings.canDrawOverlays((Context)localObject)) {
+        ((Context)localObject).startActivity(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION"));
       }
+      for (;;)
+      {
+        i = 0;
+        break label77;
+        if (((Context)localObject).checkSelfPermission("android.settings.action.MANAGE_WRITE_SETTINGS") == 0) {
+          break;
+        }
+        ((Context)localObject).startActivity(new Intent("android.settings.action.MANAGE_WRITE_SETTINGS"));
+      }
+    }
+    int i = 1;
+    label77:
+    if (i == 0) {
+      return;
+    }
+    localObject = new WindowManager.LayoutParams();
+    ((WindowManager.LayoutParams)localObject).type = 2002;
+    ((WindowManager.LayoutParams)localObject).flags = 131112;
+    ((WindowManager.LayoutParams)localObject).gravity = 51;
+    ((WindowManager.LayoutParams)localObject).x = 0;
+    ((WindowManager.LayoutParams)localObject).y = paramInt;
+    ((WindowManager.LayoutParams)localObject).width = -1;
+    ((WindowManager.LayoutParams)localObject).height = -2;
+    ((WindowManager.LayoutParams)localObject).format = 1;
+    this.mWindowManager = ((WindowManager)BaseApplicationImpl.getContext().getSystemService("window"));
+    if (this.topbar.getParent() != null) {
+      try
+      {
+        this.mWindowManager.removeView(this.topbar);
+      }
+      catch (Exception localException2)
+      {
+        QLog.e("QzoneGiftFullScreenViewController", 1, "initTopbar: ", localException2);
+      }
+    }
+    try
+    {
+      this.mWindowManager.addView(this.topbar, (ViewGroup.LayoutParams)localObject);
+      return;
+    }
+    catch (Exception localException1)
+    {
+      QLog.e("QzoneGiftFullScreenViewController", 1, "initTopbar: ", localException1);
     }
   }
   
@@ -241,23 +238,18 @@ public class QzoneGiftFullScreenViewController
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (paramView.getId() != 2131370609) {
       return;
-      magicfaceClose();
     }
+    magicfaceClose();
   }
   
-  public View playMaigcface(String paramString1, String paramString2, QzoneGiftFullScreenViewController.GiftFullScreenPlayListener paramGiftFullScreenPlayListener)
+  public View playMaigcface(String paramString1, String paramString2, IQzoneGiftFullScreenViewController.GiftFullScreenPlayListener paramGiftFullScreenPlayListener)
   {
     return playMaigcface(paramString1, paramString2, false, paramGiftFullScreenPlayListener);
   }
   
-  public View playMaigcface(String paramString1, String paramString2, boolean paramBoolean, QzoneGiftFullScreenViewController.GiftFullScreenPlayListener paramGiftFullScreenPlayListener)
+  public View playMaigcface(String paramString1, String paramString2, boolean paramBoolean, IQzoneGiftFullScreenViewController.GiftFullScreenPlayListener paramGiftFullScreenPlayListener)
   {
     if (Build.VERSION.SDK_INT <= 17) {
       return null;
@@ -334,17 +326,14 @@ public class QzoneGiftFullScreenViewController
     }
     catch (SecurityException paramString1)
     {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
+      paramString1.printStackTrace();
     }
     return this.magicfaceReceiveContent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QzoneGiftFullScreenViewController
  * JD-Core Version:    0.7.0.1
  */

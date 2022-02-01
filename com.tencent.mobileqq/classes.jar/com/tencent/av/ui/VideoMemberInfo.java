@@ -74,17 +74,27 @@ public class VideoMemberInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin:=").append(this.jdField_a_of_type_Long).append(',');
-    localStringBuilder.append("videoSrc:=").append(this.jdField_b_of_type_Int).append(',');
-    localStringBuilder.append("isVideoIn:=").append(this.f).append(',');
-    localStringBuilder.append("isAttened:=").append(this.jdField_a_of_type_Boolean).append(',');
-    localStringBuilder.append("isSpeaking:=").append(this.jdField_b_of_type_Boolean).append(',');
+    localStringBuilder.append("uin:=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(',');
+    localStringBuilder.append("videoSrc:=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(',');
+    localStringBuilder.append("isVideoIn:=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(',');
+    localStringBuilder.append("isAttened:=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(',');
+    localStringBuilder.append("isSpeaking:=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(',');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoMemberInfo
  * JD-Core Version:    0.7.0.1
  */

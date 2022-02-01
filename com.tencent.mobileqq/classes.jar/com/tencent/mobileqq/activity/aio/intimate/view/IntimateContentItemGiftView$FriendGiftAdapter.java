@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.aio.intimate.view;
 
+import android.graphics.drawable.Drawable;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -28,8 +29,12 @@ class IntimateContentItemGiftView$FriendGiftAdapter
     if (this.jdField_a_of_type_Int == 0)
     {
       this.jdField_a_of_type_Int = ((ViewUtils.a() - ViewUtils.a(40.0F) - 80) / ViewUtils.a(60.0F));
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "gif mark max count: " + this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("gif mark max count: ");
+        paramList.append(this.jdField_a_of_type_Int);
+        QLog.d("intimate_relationship", 2, paramList.toString());
       }
       if (this.jdField_a_of_type_Int <= 0) {
         this.jdField_a_of_type_Int = 5;
@@ -40,11 +45,14 @@ class IntimateContentItemGiftView$FriendGiftAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_Int;
+    int i = localList.size();
+    int j = this.jdField_a_of_type_Int;
+    if (i > j) {
+      return j;
     }
     return this.jdField_a_of_type_JavaUtilList.size();
   }
@@ -62,35 +70,34 @@ class IntimateContentItemGiftView$FriendGiftAdapter
   @RequiresApi(api=16)
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView = paramView;
     if (paramView == null) {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemGiftView.a).inflate(2131559394, null);
+      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemGiftView.a).inflate(2131559269, null);
     }
-    for (;;)
-    {
-      ImageView localImageView = (ImageView)paramView.findViewById(2131367580);
-      String str = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if (!TextUtils.isEmpty(str)) {}
+    ImageView localImageView = (ImageView)localView.findViewById(2131367338);
+    paramView = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (!TextUtils.isEmpty(paramView)) {
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(str, null);
-        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.z);
-        localImageView.setImageDrawable(localURLDrawable);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
+        localObject = URLDrawable.getDrawable(paramView, null);
+        ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.x);
+        localImageView.setImageDrawable((Drawable)localObject);
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 1, String.format("Url for friend gift:" + str, new Object[] { localException }));
-        }
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Url for friend gift:");
+        ((StringBuilder)localObject).append(paramView);
+        QLog.e("intimate_relationship", 1, String.format(((StringBuilder)localObject).toString(), new Object[] { localException }));
       }
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemGiftView.FriendGiftAdapter
  * JD-Core Version:    0.7.0.1
  */

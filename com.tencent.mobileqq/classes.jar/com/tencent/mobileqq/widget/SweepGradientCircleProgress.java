@@ -49,54 +49,69 @@ public final class SweepGradientCircleProgress
       if (localObject != null) {
         ((Matrix)localObject).reset();
       }
-      if (this.jdField_b_of_type_Float > 0) {}
-      for (float f = (float)(3.6D * this.jdField_b_of_type_Float + 270);; f = 270.0F)
+      float f;
+      if (this.jdField_b_of_type_Float > 0)
       {
-        localObject = this.jdField_a_of_type_AndroidGraphicsMatrix;
-        if (localObject != null) {
-          ((Matrix)localObject).setRotate(f, this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY());
-        }
-        localObject = this.jdField_a_of_type_AndroidGraphicsSweepGradient;
-        if (localObject != null) {
-          ((SweepGradient)localObject).setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-        }
-        return;
+        double d1 = this.jdField_b_of_type_Float;
+        Double.isNaN(d1);
+        double d2 = 270;
+        Double.isNaN(d2);
+        f = (float)(d1 * 3.6D + d2);
+      }
+      else
+      {
+        f = 270.0F;
+      }
+      localObject = this.jdField_a_of_type_AndroidGraphicsMatrix;
+      if (localObject != null) {
+        ((Matrix)localObject).setRotate(f, this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY());
+      }
+      localObject = this.jdField_a_of_type_AndroidGraphicsSweepGradient;
+      if (localObject != null) {
+        ((SweepGradient)localObject).setLocalMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
       }
     }
-    this.jdField_a_of_type_AndroidGraphicsSweepGradient = ((SweepGradient)null);
+    else
+    {
+      this.jdField_a_of_type_AndroidGraphicsSweepGradient = ((SweepGradient)null);
+    }
   }
   
   protected void a(@Nullable Canvas paramCanvas)
   {
-    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-    Intrinsics.checkExpressionValueIsNotNull(localPaint, "mPaint");
-    localPaint.setColor(this.jdField_b_of_type_Int);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mPaint");
+    ((Paint)localObject).setColor(this.jdField_b_of_type_Int);
     if (this.jdField_a_of_type_Boolean)
     {
-      localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-      Intrinsics.checkExpressionValueIsNotNull(localPaint, "mPaint");
-      localPaint.setAlpha(this.e * 255 / 100);
+      localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "mPaint");
+      ((Paint)localObject).setAlpha(this.e * 255 / 100);
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(this.d, 0.0F, 0.0F, this.jdField_c_of_type_Int);
     if (paramCanvas != null) {
       paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-    Intrinsics.checkExpressionValueIsNotNull(localPaint, "mPaint");
-    localPaint.setColor(this.f);
+    localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mPaint");
+    ((Paint)localObject).setColor(this.f);
     if (this.jdField_b_of_type_Boolean)
     {
-      localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-      Intrinsics.checkExpressionValueIsNotNull(localPaint, "mPaint");
-      localPaint.setAlpha(this.g * 255 / 100);
+      localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "mPaint");
+      ((Paint)localObject).setAlpha(this.g * 255 / 100);
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(this.d, 0.0F, 0.0F, this.jdField_c_of_type_Int);
     a();
-    localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-    Intrinsics.checkExpressionValueIsNotNull(localPaint, "mPaint");
-    localPaint.setShader((Shader)this.jdField_a_of_type_AndroidGraphicsSweepGradient);
-    if (paramCanvas != null) {
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, (float)(3.6D * this.jdField_b_of_type_Float), false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "mPaint");
+    ((Paint)localObject).setShader((Shader)this.jdField_a_of_type_AndroidGraphicsSweepGradient);
+    if (paramCanvas != null)
+    {
+      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+      double d = this.jdField_b_of_type_Float;
+      Double.isNaN(d);
+      paramCanvas.drawArc((RectF)localObject, -90.0F, (float)(d * 3.6D), false, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     paramCanvas = this.jdField_a_of_type_AndroidGraphicsPaint;
     Intrinsics.checkExpressionValueIsNotNull(paramCanvas, "mPaint");
@@ -141,7 +156,7 @@ public final class SweepGradientCircleProgress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SweepGradientCircleProgress
  * JD-Core Version:    0.7.0.1
  */

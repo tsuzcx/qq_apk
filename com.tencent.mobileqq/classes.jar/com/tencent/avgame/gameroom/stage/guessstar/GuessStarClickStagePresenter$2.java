@@ -3,19 +3,25 @@ package com.tencent.avgame.gameroom.stage.guessstar;
 import android.os.Handler;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.Game;
-import com.tencent.avgame.qav.AVGameMediaPlayerCtrl.PushDecodeMsg;
+import com.tencent.avgame.qav.IAVGameMediaPlayerCtrl.PushDecodeMsg;
 import com.tencent.avgame.ui.AVGameHandler;
 import com.tencent.qphone.base.util.QLog;
 
 class GuessStarClickStagePresenter$2
-  implements AVGameMediaPlayerCtrl.PushDecodeMsg
+  implements IAVGameMediaPlayerCtrl.PushDecodeMsg
 {
   GuessStarClickStagePresenter$2(GuessStarClickStagePresenter paramGuessStarClickStagePresenter, EngineData paramEngineData) {}
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GuessStarClickStagePresenter", 2, "onPushVideoFirstFrame run ,topicAnswerDuration = " + this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.s() + ",statusPassedTime = " + this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().d());
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("onPushVideoFirstFrame run ,topicAnswerDuration = ");
+      paramString.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.s());
+      paramString.append(",statusPassedTime = ");
+      paramString.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.a().d());
+      QLog.i("GuessStarClickStagePresenter", 2, paramString.toString());
     }
   }
   
@@ -32,7 +38,7 @@ class GuessStarClickStagePresenter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guessstar.GuessStarClickStagePresenter.2
  * JD-Core Version:    0.7.0.1
  */

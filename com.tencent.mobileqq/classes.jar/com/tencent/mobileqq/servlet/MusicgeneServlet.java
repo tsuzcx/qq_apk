@@ -22,153 +22,167 @@ public class MusicgeneServlet
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     paramIntent = paramIntent.getAction();
-    int i;
-    int n;
-    boolean bool;
     if (!TextUtils.isEmpty(paramIntent))
     {
-      if (!paramIntent.equals("OidbSvc.0x480_124")) {
-        break label452;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.settab.MusicgeneServlet", 2, "onReceive response. actionString=OidbSvc.0x480_124");
-      }
-      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
-        break label439;
-      }
-      paramIntent = new oidb_sso.OIDBSSOPkg();
-      try
+      int i;
+      if (paramIntent.equals("OidbSvc.0x480_124"))
       {
-        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramIntent.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
-        paramIntent = paramFromServiceMsg;
-      }
-      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-      {
-        for (;;)
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.settab.MusicgeneServlet", 2, "onReceive response. actionString=OidbSvc.0x480_124");
+        }
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
         {
-          int k;
-          paramFromServiceMsg.printStackTrace();
-          continue;
-          bool = true;
-        }
-        if (i2 != 21006) {
-          break label605;
-        }
-      }
-      if ((paramIntent == null) || (!paramIntent.uint32_result.has())) {
-        break label439;
-      }
-      i = paramIntent.uint32_result.get();
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.settab.MusicgeneServlet", 2, "onReceive response. getstate ret=" + i);
-      }
-      if ((i != 0) || (!paramIntent.bytes_bodybuffer.has()) || (paramIntent.bytes_bodybuffer.get() == null)) {
-        break label439;
-      }
-      paramIntent = paramIntent.bytes_bodybuffer.get().toByteArray();
-      n = paramIntent.length;
-      k = 0;
-      i = -1;
-      bool = false;
-      if (4 > n) {
-        break label611;
-      }
-    }
-    label279:
-    label439:
-    label452:
-    label605:
-    label608:
-    label611:
-    for (long l = PkgTools.getLongData(paramIntent, 0);; l = 0L)
-    {
-      if (5 <= n) {
-        j = paramIntent[4];
-      }
-      if (7 <= n) {
-        k = PkgTools.getShortData(paramIntent, 5);
-      }
-      int m = 0;
-      int j = 7;
-      int i2;
-      int i1;
-      if (m < k)
-      {
-        if (j + 4 > n) {
-          break label608;
-        }
-        i2 = PkgTools.getShortData(paramIntent, j);
-        i1 = j + 2;
-        j = PkgTools.getShortData(paramIntent, i1);
-        i1 += 2;
-        if (i2 == 27026) {
-          if (j == 0)
+          paramIntent = new oidb_sso.OIDBSSOPkg();
+          try
           {
-            bool = false;
-            j += i1;
+            paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramIntent.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
+            paramIntent = paramFromServiceMsg;
           }
-        }
-      }
-      for (;;)
-      {
-        m += 1;
-        break;
-        if ((j >= 6) && (i1 + 6 <= n))
-        {
-          i = PkgTools.getUnsignedByte(paramIntent[(i1 + 5)]) >> 6;
-          break label279;
-          if (i >= 0)
+          catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
           {
-            paramIntent = new Bundle();
-            paramIntent.putBoolean("music_get_exist", bool);
-            paramIntent.putInt("music_get_state", i);
-            paramIntent.putLong("music_get_uin", l);
-            notifyObserver(null, 10000, true, paramIntent, MusicGeneObserver.class);
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.settab.MusicgeneServlet", 2, "onReceive response.getstate.exist=" + bool + ",state=" + i);
-            }
+            paramFromServiceMsg.printStackTrace();
           }
-          do
+          if ((paramIntent != null) && (paramIntent.uint32_result.has()))
           {
-            return;
-            notifyObserver(null, 10000, false, null, MusicGeneObserver.class);
-            return;
-          } while (!paramIntent.equals("OidbSvc.0x493_223"));
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.settab.MusicgeneServlet", 2, "onReceive response. actionString=OidbSvc.0x493_223");
-          }
-          if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-          {
-            paramIntent = new oidb_sso.OIDBSSOPkg();
-            try
+            i = paramIntent.uint32_result.get();
+            if (QLog.isColorLevel())
             {
-              paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramIntent.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
-              paramIntent = paramFromServiceMsg;
+              paramFromServiceMsg = new StringBuilder();
+              paramFromServiceMsg.append("onReceive response. getstate ret=");
+              paramFromServiceMsg.append(i);
+              QLog.i("Q.settab.MusicgeneServlet", 2, paramFromServiceMsg.toString());
             }
-            catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+            if ((i == 0) && (paramIntent.bytes_bodybuffer.has()) && (paramIntent.bytes_bodybuffer.get() != null))
             {
-              for (;;)
-              {
-                paramFromServiceMsg.printStackTrace();
+              paramIntent = paramIntent.bytes_bodybuffer.get().toByteArray();
+              int i2 = paramIntent.length;
+              long l = 0L;
+              if (4 <= i2) {
+                l = PkgTools.getLongData(paramIntent, 0);
               }
-            }
-            if ((paramIntent != null) && (paramIntent.uint32_result.has()))
-            {
-              i = paramIntent.uint32_result.get();
-              if (QLog.isColorLevel()) {
-                QLog.i("Q.settab.MusicgeneServlet", 2, "onReceive response. setstate ret=" + i);
+              if (5 <= i2) {
+                i = paramIntent[4];
               }
-              if (i == 0)
+              int k;
+              if (7 <= i2) {
+                k = PkgTools.getShortData(paramIntent, 5);
+              } else {
+                k = 0;
+              }
+              int m = 0;
+              i = -1;
+              int j = 7;
+              boolean bool1;
+              for (boolean bool2 = false; m < k; bool2 = bool1)
               {
-                notifyObserver(null, 10001, true, null, MusicGeneObserver.class);
+                int i1 = i;
+                int n = j;
+                bool1 = bool2;
+                if (j + 4 <= i2)
+                {
+                  n = PkgTools.getShortData(paramIntent, j);
+                  j += 2;
+                  i1 = PkgTools.getShortData(paramIntent, j);
+                  int i3 = j + 2;
+                  if (n == 27026)
+                  {
+                    if (i1 == 0)
+                    {
+                      bool1 = false;
+                      j = i;
+                    }
+                    else
+                    {
+                      bool1 = true;
+                      j = i;
+                    }
+                  }
+                  else
+                  {
+                    j = i;
+                    bool1 = bool2;
+                    if (n == 21006)
+                    {
+                      j = i;
+                      bool1 = bool2;
+                      if (i1 >= 6)
+                      {
+                        j = i;
+                        bool1 = bool2;
+                        if (i3 + 6 <= i2)
+                        {
+                          j = PkgTools.getUnsignedByte(paramIntent[(i3 + 5)]) >> 6;
+                          bool1 = bool2;
+                        }
+                      }
+                    }
+                  }
+                  n = i3 + i1;
+                  i1 = j;
+                }
+                m += 1;
+                i = i1;
+                j = n;
+              }
+              if (i >= 0)
+              {
+                paramIntent = new Bundle();
+                paramIntent.putBoolean("music_get_exist", bool2);
+                paramIntent.putInt("music_get_state", i);
+                paramIntent.putLong("music_get_uin", l);
+                notifyObserver(null, 10000, true, paramIntent, MusicGeneObserver.class);
+                if (QLog.isColorLevel())
+                {
+                  paramIntent = new StringBuilder();
+                  paramIntent.append("onReceive response.getstate.exist=");
+                  paramIntent.append(bool2);
+                  paramIntent.append(",state=");
+                  paramIntent.append(i);
+                  QLog.i("Q.settab.MusicgeneServlet", 2, paramIntent.toString());
+                }
                 return;
               }
             }
           }
-          notifyObserver(null, 10001, false, null, MusicGeneObserver.class);
-          return;
         }
-        break label279;
+        notifyObserver(null, 10000, false, null, MusicGeneObserver.class);
+        return;
+      }
+      if (paramIntent.equals("OidbSvc.0x493_223"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.settab.MusicgeneServlet", 2, "onReceive response. actionString=OidbSvc.0x493_223");
+        }
+        if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+        {
+          paramIntent = new oidb_sso.OIDBSSOPkg();
+          try
+          {
+            paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramIntent.mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
+            paramIntent = paramFromServiceMsg;
+          }
+          catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+          {
+            paramFromServiceMsg.printStackTrace();
+          }
+          if ((paramIntent != null) && (paramIntent.uint32_result.has()))
+          {
+            i = paramIntent.uint32_result.get();
+            if (QLog.isColorLevel())
+            {
+              paramIntent = new StringBuilder();
+              paramIntent.append("onReceive response. setstate ret=");
+              paramIntent.append(i);
+              QLog.i("Q.settab.MusicgeneServlet", 2, paramIntent.toString());
+            }
+            if (i == 0)
+            {
+              notifyObserver(null, 10001, true, null, MusicGeneObserver.class);
+              return;
+            }
+          }
+        }
+        notifyObserver(null, 10001, false, null, MusicGeneObserver.class);
       }
     }
   }
@@ -176,65 +190,62 @@ public class MusicgeneServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     Object localObject = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.settab.MusicgeneServlet", 2, "onSend. actionString=" + (String)localObject);
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if (QLog.isColorLevel())
     {
-      if (!((String)localObject).equals("OidbSvc.0x480_124")) {
-        break label178;
-      }
-      paramIntent = paramIntent.getStringExtra("uin");
-      if (!TextUtils.isEmpty(paramIntent)) {
-        break label71;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSend. actionString=");
+      localStringBuilder.append((String)localObject);
+      QLog.i("Q.settab.MusicgeneServlet", 2, localStringBuilder.toString());
     }
-    label71:
-    do
-    {
-      return;
-      boolean bool;
-      try
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      if (((String)localObject).equals("OidbSvc.0x480_124"))
       {
-        long l = Long.parseLong(paramIntent);
-        paramIntent = new oidb_sso.OIDBSSOPkg();
-        paramIntent.uint32_command.set(1152);
-        paramIntent.uint32_service_type.set(124);
-        localObject = new byte[11];
-        PkgTools.DWord2Byte((byte[])localObject, 0, l);
-        localObject[4] = 0;
-        PkgTools.Word2Byte((byte[])localObject, 5, (short)2);
-        PkgTools.Word2Byte((byte[])localObject, 7, (short)27026);
-        PkgTools.Word2Byte((byte[])localObject, 9, (short)21006);
-        paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom((byte[])localObject));
-        paramPacket.setSSOCommand("OidbSvc.0x480_124");
-        paramPacket.putSendData(WupUtil.a(paramIntent.toByteArray()));
-        return;
+        paramIntent = paramIntent.getStringExtra("uin");
+        if (TextUtils.isEmpty(paramIntent)) {
+          return;
+        }
       }
-      catch (Exception paramIntent) {}
-    } while (!((String)localObject).equals("OidbSvc.0x493_223"));
-    label178:
-    bool = paramIntent.getBooleanExtra("ison", true);
-    paramIntent = new oidb_sso.OIDBSSOPkg();
-    paramIntent.uint32_command.set(1171);
-    paramIntent.uint32_service_type.set(223);
-    localObject = new byte[1];
-    if (bool) {
-      localObject[0] = 0;
     }
-    for (;;)
+    try
     {
+      long l = Long.parseLong(paramIntent);
+      paramIntent = new oidb_sso.OIDBSSOPkg();
+      paramIntent.uint32_command.set(1152);
+      paramIntent.uint32_service_type.set(124);
+      localObject = new byte[11];
+      PkgTools.dWord2Byte((byte[])localObject, 0, l);
+      localObject[4] = 0;
+      PkgTools.word2Byte((byte[])localObject, 5, (short)2);
+      PkgTools.word2Byte((byte[])localObject, 7, (short)27026);
+      PkgTools.word2Byte((byte[])localObject, 9, (short)21006);
+      paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom((byte[])localObject));
+      paramPacket.setSSOCommand("OidbSvc.0x480_124");
+      paramPacket.putSendData(WupUtil.a(paramIntent.toByteArray()));
+      return;
+    }
+    catch (Exception paramIntent) {}
+    if (((String)localObject).equals("OidbSvc.0x493_223"))
+    {
+      boolean bool = paramIntent.getBooleanExtra("ison", true);
+      paramIntent = new oidb_sso.OIDBSSOPkg();
+      paramIntent.uint32_command.set(1171);
+      paramIntent.uint32_service_type.set(223);
+      localObject = new byte[1];
+      if (bool) {
+        localObject[0] = 0;
+      } else {
+        localObject[0] = 2;
+      }
       paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom((byte[])localObject));
       paramPacket.setSSOCommand("OidbSvc.0x493_223");
       paramPacket.putSendData(WupUtil.a(paramIntent.toByteArray()));
-      return;
-      localObject[0] = 2;
     }
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.MusicgeneServlet
  * JD-Core Version:    0.7.0.1
  */

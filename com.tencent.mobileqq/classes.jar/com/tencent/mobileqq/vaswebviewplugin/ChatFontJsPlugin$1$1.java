@@ -12,30 +12,35 @@ class ChatFontJsPlugin$1$1
   
   public boolean accept(File paramFile, String paramString)
   {
-    if (paramString.endsWith(".ttf")) {
-      paramString = paramFile.getAbsolutePath() + File.separatorChar + paramString;
-    }
-    try
+    if (paramString.endsWith(".ttf"))
     {
-      if (new File(paramString).exists())
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramFile.getAbsolutePath());
+      localStringBuilder.append(File.separatorChar);
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
+      try
       {
-        paramFile = paramFile.getAbsolutePath().split(File.separator);
-        this.this$1.val$downloadedList.put(Integer.parseInt(paramFile[(paramFile.length - 1)]));
+        if (new File(paramString).exists())
+        {
+          paramFile = paramFile.getAbsolutePath().split(File.separator);
+          this.this$1.val$downloadedList.put(Integer.parseInt(paramFile[(paramFile.length - 1)]));
+        }
       }
-      return false;
-    }
-    catch (Exception paramFile)
-    {
-      for (;;)
+      catch (Exception paramFile)
       {
-        QLog.e("ChatFontJsPlugin", 1, "updateFontList listFile error: " + paramFile.getMessage());
+        paramString = new StringBuilder();
+        paramString.append("updateFontList listFile error: ");
+        paramString.append(paramFile.getMessage());
+        QLog.e("ChatFontJsPlugin", 1, paramString.toString());
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatFontJsPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

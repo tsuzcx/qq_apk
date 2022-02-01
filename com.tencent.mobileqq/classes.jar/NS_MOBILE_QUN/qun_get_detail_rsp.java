@@ -34,18 +34,20 @@ public final class qun_get_detail_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.detail_data != null) {
-      paramJceOutputStream.write(this.detail_data, 0);
+    Object localObject = this.detail_data;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.hasmore, 1);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 2);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.qun_get_detail_rsp
  * JD-Core Version:    0.7.0.1
  */

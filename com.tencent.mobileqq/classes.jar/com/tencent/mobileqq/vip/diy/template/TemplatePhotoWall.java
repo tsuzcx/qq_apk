@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vip.diy.template;
 import android.content.Context;
 import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.PhotoWallView;
+import com.tencent.mobileqq.profilecard.bussiness.photowall.view.PhotoWallView;
 
 public class TemplatePhotoWall
   extends PhotoWallView
@@ -11,17 +11,17 @@ public class TemplatePhotoWall
   public TemplatePhotoWall(Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
   {
     super(paramContext, paramQQAppInterface, paramString);
-    this.e.setAlpha(0.8F);
+    this.mEmptyBgView.setAlpha(0.8F);
   }
   
-  public int a()
+  protected int getLayout()
   {
-    return 2131562186;
+    return 2131562023;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.TemplatePhotoWall
  * JD-Core Version:    0.7.0.1
  */

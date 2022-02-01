@@ -29,18 +29,20 @@ public final class stSplitBlock
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 0);
+    String str = this.text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.tips != null) {
-      paramJceOutputStream.write(this.tips, 1);
+    str = this.tips;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.style, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSplitBlock
  * JD-Core Version:    0.7.0.1
  */

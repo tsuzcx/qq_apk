@@ -23,23 +23,23 @@ public class GalleryProgressView
   
   private void a(Activity paramActivity)
   {
-    Object localObject1 = null;
     try
     {
-      localObject2 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130848977);
-      localObject1 = localObject2;
+      localBitmap1 = BitmapFactory.decodeResource(paramActivity.getResources(), 2130848857);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      Object localObject2;
-      label14:
-      break label14;
+      Bitmap localBitmap1;
+      label13:
+      Bitmap localBitmap2;
+      break label13;
     }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = Bitmap.createBitmap(4, 4, Bitmap.Config.ARGB_8888);
+    localBitmap1 = null;
+    localBitmap2 = localBitmap1;
+    if (localBitmap1 == null) {
+      localBitmap2 = Bitmap.createBitmap(4, 4, Bitmap.Config.ARGB_8888);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable = new PhotoProgressDrawable((Bitmap)localObject2, (int)(paramActivity.getResources().getDisplayMetrics().density * 12.0F));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable = new PhotoProgressDrawable(localBitmap2, (int)(paramActivity.getResources().getDisplayMetrics().density * 12.0F));
     this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoProgressDrawable.setLevel(0);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
   }
@@ -90,7 +90,7 @@ public class GalleryProgressView
   
   public void a(Activity paramActivity, AbstractGalleryScene paramAbstractGalleryScene)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramAbstractGalleryScene.a()).findViewById(2131373583));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((RelativeLayout)paramAbstractGalleryScene.a()).findViewById(2131373163));
     a(paramActivity);
   }
   
@@ -132,7 +132,7 @@ public class GalleryProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.GalleryProgressView
  * JD-Core Version:    0.7.0.1
  */

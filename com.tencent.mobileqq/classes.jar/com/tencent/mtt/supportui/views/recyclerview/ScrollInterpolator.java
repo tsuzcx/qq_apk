@@ -15,7 +15,7 @@ public class ScrollInterpolator
     if (f2 < 0.0F) {
       f1 = -f2;
     }
-    return f1 * -paramFloat2 - paramFloat3 * paramFloat1;
+    return -paramFloat2 * f1 - paramFloat3 * paramFloat1;
   }
   
   public int getStep(int paramInt1, int paramInt2, int paramInt3)
@@ -24,12 +24,12 @@ public class ScrollInterpolator
       return 0;
     }
     float f1 = Spring(this.mVelocity, paramInt1, paramInt3, this.mSpringTightness, this.mSpringDampening);
-    float f2 = this.mVelocity;
-    this.mVelocity = (f1 * this.mPhysicsTimeStep + f2);
-    f2 = this.mVelocity / 50.0F;
+    this.mVelocity += f1 * this.mPhysicsTimeStep;
+    float f2 = this.mVelocity / 50.0F;
+    float f3 = this.mMinStep;
     f1 = f2;
-    if (f2 < this.mMinStep) {
-      f1 = this.mMinStep;
+    if (f2 < f3) {
+      f1 = f3;
     }
     return (int)f1;
   }
@@ -41,7 +41,7 @@ public class ScrollInterpolator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.ScrollInterpolator
  * JD-Core Version:    0.7.0.1
  */

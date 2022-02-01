@@ -43,24 +43,24 @@ public abstract class BaseGestureDetector
     int i = paramMotionEvent.getAction() & 0xFF;
     if (!this.mGestureInProgress) {
       handleStartProgressEvent(i, paramMotionEvent);
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       handleInProgressEvent(i, paramMotionEvent);
     }
+    return true;
   }
   
   protected void resetState()
   {
-    if (this.mPrevEvent != null)
+    MotionEvent localMotionEvent = this.mPrevEvent;
+    if (localMotionEvent != null)
     {
-      this.mPrevEvent.recycle();
+      localMotionEvent.recycle();
       this.mPrevEvent = null;
     }
-    if (this.mCurrEvent != null)
+    localMotionEvent = this.mCurrEvent;
+    if (localMotionEvent != null)
     {
-      this.mCurrEvent.recycle();
+      localMotionEvent.recycle();
       this.mCurrEvent = null;
     }
     this.mGestureInProgress = false;
@@ -68,16 +68,17 @@ public abstract class BaseGestureDetector
   
   protected void updateStateByEvent(MotionEvent paramMotionEvent)
   {
-    MotionEvent localMotionEvent = this.mPrevEvent;
-    if (this.mCurrEvent != null)
+    MotionEvent localMotionEvent1 = this.mPrevEvent;
+    MotionEvent localMotionEvent2 = this.mCurrEvent;
+    if (localMotionEvent2 != null)
     {
-      this.mCurrEvent.recycle();
+      localMotionEvent2.recycle();
       this.mCurrEvent = null;
     }
     this.mCurrEvent = MotionEvent.obtain(paramMotionEvent);
-    this.mTimeDelta = (paramMotionEvent.getEventTime() - localMotionEvent.getEventTime());
+    this.mTimeDelta = (paramMotionEvent.getEventTime() - localMotionEvent1.getEventTime());
     this.mCurrPressure = paramMotionEvent.getPressure(paramMotionEvent.getActionIndex());
-    this.mPrevPressure = localMotionEvent.getPressure(localMotionEvent.getActionIndex());
+    this.mPrevPressure = localMotionEvent1.getPressure(localMotionEvent1.getActionIndex());
   }
 }
 

@@ -25,14 +25,15 @@ public final class qqstory_struct$ShareGroupFeed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 26, 34, 42, 48, 56, 64, 74, 96, 106 }, new String[] { "date", "info", "video_list", "next_cookie", "is_end", "seq", "video_total", "des", "pull_type", "today_new_member" }, new Object[] { Integer.valueOf(0), null, null, localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), null }, ShareGroupFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 26, 34, 42, 48, 56, 64, 74, 96, 106 }, new String[] { "date", "info", "video_list", "next_cookie", "is_end", "seq", "video_total", "des", "pull_type", "today_new_member" }, new Object[] { localInteger, null, null, localByteStringMicro1, localInteger, localInteger, localInteger, localByteStringMicro2, localInteger, null }, ShareGroupFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed
  * JD-Core Version:    0.7.0.1
  */

@@ -29,156 +29,167 @@ public class BusinessReporter
   
   public static void a()
   {
-    if ((b != null) || (a != null)) {}
-    do
+    if (b == null)
     {
-      return;
-      b = new ArrayList();
-      a = new ArrayList();
-      localObject1 = new File(EcShopAssistantManager.f);
-    } while ((!((File)localObject1).exists()) || (!((File)localObject1).isFile()));
-    Object localObject1 = FileUtils.a((File)localObject1);
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localObject1 = new JSONArray((String)localObject1);
-        i = 0;
-        if (i >= ((JSONArray)localObject1).length()) {
-          break;
-        }
-        Object localObject2 = ((JSONArray)localObject1).getJSONObject(0);
-        if (((JSONObject)localObject2).getInt("repflag") != 0)
-        {
-          Object localObject3 = new ArrayList();
-          HashMap localHashMap = new HashMap();
-          JSONArray localJSONArray = ((JSONObject)localObject2).getJSONArray("entrance");
-          int j = 0;
-          if (j < localJSONArray.length())
-          {
-            ((List)localObject3).add(localJSONArray.getString(j));
-            j += 1;
-            continue;
-          }
-          a.add(localObject3);
-          localObject2 = ((JSONObject)localObject2).getJSONArray("report");
-          j = 0;
-          if (j < ((JSONArray)localObject2).length())
-          {
-            localObject3 = ((JSONArray)localObject2).getJSONObject(j);
-            localHashMap.put(((JSONObject)localObject3).getString("urlprefix"), Integer.valueOf(((JSONObject)localObject3).getInt("tvalue")));
-            j += 1;
-            continue;
-          }
-          b.add(localHashMap);
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("BusinessReporter", 1, "parse report json error:" + localException);
+      if (a != null) {
         return;
       }
-      i += 1;
+      b = new ArrayList();
+      a = new ArrayList();
+      Object localObject1 = new File(EcShopAssistantManager.f);
+      if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
+      {
+        localObject1 = FileUtils.readFileContent((File)localObject1);
+        try
+        {
+          localObject1 = new JSONArray((String)localObject1);
+          int i = 0;
+          Object localObject2;
+          while (i < ((JSONArray)localObject1).length())
+          {
+            Object localObject3 = ((JSONArray)localObject1).getJSONObject(0);
+            if (((JSONObject)localObject3).getInt("repflag") != 0)
+            {
+              Object localObject4 = new ArrayList();
+              localObject2 = new HashMap();
+              JSONArray localJSONArray = ((JSONObject)localObject3).getJSONArray("entrance");
+              int j = 0;
+              while (j < localJSONArray.length())
+              {
+                ((List)localObject4).add(localJSONArray.getString(j));
+                j += 1;
+              }
+              a.add(localObject4);
+              localObject3 = ((JSONObject)localObject3).getJSONArray("report");
+              j = 0;
+              while (j < ((JSONArray)localObject3).length())
+              {
+                localObject4 = ((JSONArray)localObject3).getJSONObject(j);
+                ((Map)localObject2).put(((JSONObject)localObject4).getString("urlprefix"), Integer.valueOf(((JSONObject)localObject4).getInt("tvalue")));
+                j += 1;
+              }
+              b.add(localObject2);
+            }
+            i += 1;
+          }
+          return;
+        }
+        catch (Exception localException)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("parse report json error:");
+          ((StringBuilder)localObject2).append(localException);
+          QLog.e("BusinessReporter", 1, ((StringBuilder)localObject2).toString());
+        }
+      }
     }
   }
   
   public static void a(CustomWebView paramCustomWebView)
   {
-    String str;
-    WebViewPlugin localWebViewPlugin;
     if ((paramCustomWebView != null) && (paramCustomWebView.getPluginEngine() != null))
     {
-      str = paramCustomWebView.getUrl();
+      String str = paramCustomWebView.getUrl();
       paramCustomWebView = paramCustomWebView.getPluginEngine();
-      localWebViewPlugin = paramCustomWebView.a("JD_REPORT");
-      if (localWebViewPlugin != null) {
-        break label75;
+      WebViewPlugin localWebViewPlugin = paramCustomWebView.a("JD_REPORT");
+      if (localWebViewPlugin == null)
+      {
+        if (!a())
+        {
+          ThreadManager.post(new BusinessReporter.1(str, paramCustomWebView), 5, null, true);
+          return;
+        }
+        if (a(str)) {
+          paramCustomWebView.a(new String[] { "JD_REPORT" });
+        }
       }
-      if (a()) {
-        break label54;
+      else
+      {
+        ((BusinessReportPlugin)localWebViewPlugin).b(str);
       }
-      ThreadManager.post(new BusinessReporter.1(str, paramCustomWebView), 5, null, true);
     }
-    label54:
-    while (!a(str)) {
-      return;
-    }
-    paramCustomWebView.a(new String[] { "JD_REPORT" });
-    return;
-    label75:
-    ((BusinessReportPlugin)localWebViewPlugin).b(str);
   }
   
   public static void a(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    if ((!(paramAppInterface instanceof BrowserAppInterface)) || (TextUtils.isEmpty(paramString1)) || (b == null)) {}
-    String str;
-    do
+    if (((paramAppInterface instanceof BrowserAppInterface)) && (!TextUtils.isEmpty(paramString1)))
     {
-      return;
-      str = Uri.parse(paramString2).getHost();
-    } while (TextUtils.isEmpty(str));
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    Object localObject1 = null;
-    Object localObject2 = localObject1;
-    if (i < a.size())
-    {
-      localObject2 = ((List)a.get(i)).iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        if (str.contains((String)((Iterator)localObject2).next())) {
-          localObject1 = (Map)b.get(i);
-        }
+      if (b == null) {
+        return;
       }
-    }
-    for (int j = 1;; j = 0)
-    {
-      if (j != 0)
-      {
-        localObject2 = localObject1;
-        if ((localObject2 == null) || (((Map)localObject2).isEmpty())) {
-          break;
-        }
-        localObject1 = ((Map)localObject2).entrySet().iterator();
+      String str = Uri.parse(paramString2).getHost();
+      if (TextUtils.isEmpty(str)) {
+        return;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject1 = null;
+      int i = 0;
+      Object localObject2;
       for (;;)
       {
-        if (!((Iterator)localObject1).hasNext()) {
-          break label350;
+        localObject2 = localObject1;
+        if (i >= a.size()) {
+          break;
         }
-        localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        str = (String)((Map.Entry)localObject2).getKey();
-        i = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
-        if (!TextUtils.isEmpty(str))
+        localObject2 = ((List)a.get(i)).iterator();
+        while (((Iterator)localObject2).hasNext()) {
+          if (str.contains((String)((Iterator)localObject2).next()))
+          {
+            localObject1 = (Map)b.get(i);
+            j = 1;
+            break label139;
+          }
+        }
+        int j = 0;
+        label139:
+        if (j != 0)
         {
-          if (paramString1.startsWith("https://" + str))
+          localObject2 = localObject1;
+          break;
+        }
+        i += 1;
+      }
+      if (localObject2 != null)
+      {
+        if (((Map)localObject2).isEmpty()) {
+          return;
+        }
+        localObject1 = ((Map)localObject2).entrySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (Map.Entry)((Iterator)localObject1).next();
+          str = (String)((Map.Entry)localObject2).getKey();
+          i = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
+          if (!TextUtils.isEmpty(str))
           {
-            localObject2 = (EcshopReportHandler)paramAppInterface.getBusinessHandler(BrowserAppInterface.a);
-            if (localObject2 == null) {
-              break label343;
-            }
-            ((EcshopReportHandler)localObject2).a(i, null, paramString2, null, null, 0L, false);
-            return;
-            i += 1;
-            break;
-          }
-          localStringBuilder.setLength(0);
-          if (paramString1.startsWith("https://" + str))
-          {
-            localObject2 = (EcshopReportHandler)paramAppInterface.getBusinessHandler(BrowserAppInterface.a);
-            if (localObject2 != null)
+            localStringBuilder.append("https://");
+            localStringBuilder.append(str);
+            if (paramString1.startsWith(localStringBuilder.toString()))
             {
-              ((EcshopReportHandler)localObject2).a(i, null, paramString2, null, null, 0L, false);
-              return;
+              localObject2 = (EcshopReportHandler)paramAppInterface.getBusinessHandler(BrowserAppInterface.a);
+              if (localObject2 != null) {
+                ((EcshopReportHandler)localObject2).a(i, null, paramString2, null, null, 0L, false);
+              }
             }
+            else
+            {
+              localStringBuilder.setLength(0);
+              localStringBuilder.append("https://");
+              localStringBuilder.append(str);
+              if (paramString1.startsWith(localStringBuilder.toString()))
+              {
+                localObject2 = (EcshopReportHandler)paramAppInterface.getBusinessHandler(BrowserAppInterface.a);
+                if (localObject2 != null)
+                {
+                  ((EcshopReportHandler)localObject2).a(i, null, paramString2, null, null, 0L, false);
+                  return;
+                }
+              }
+            }
+            localStringBuilder.setLength(0);
           }
-          label343:
-          localStringBuilder.setLength(0);
         }
       }
-      label350:
-      break;
     }
   }
   
@@ -189,32 +200,36 @@ public class BusinessReporter
   
   public static boolean a(String paramString)
   {
-    if ((a == null) || (a.isEmpty()) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    paramString = Uri.parse(paramString).getHost();
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Iterator localIterator2;
-    do
+    Object localObject = a;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      Iterator localIterator1 = a.iterator();
-      while (!localIterator2.hasNext())
-      {
-        if (!localIterator1.hasNext()) {
-          break;
-        }
-        localIterator2 = ((List)localIterator1.next()).iterator();
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
       }
-    } while (!paramString.contains((String)localIterator2.next()));
-    return true;
+      paramString = Uri.parse(paramString).getHost();
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      Iterator localIterator;
+      do
+      {
+        localObject = a.iterator();
+        while (!localIterator.hasNext())
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localIterator = ((List)((Iterator)localObject).next()).iterator();
+        }
+      } while (!paramString.contains((String)localIterator.next()));
+      return true;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.BusinessReporter
  * JD-Core Version:    0.7.0.1
  */

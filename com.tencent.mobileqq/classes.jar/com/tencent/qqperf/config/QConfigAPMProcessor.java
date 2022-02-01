@@ -50,15 +50,16 @@ public class QConfigAPMProcessor
   @Nullable
   public APMConfRoot onParsed(QConfItem[] paramArrayOfQConfItem)
   {
-    APMConfRoot localAPMConfRoot = null;
     if (paramArrayOfQConfItem.length > 0) {
-      localAPMConfRoot = (APMConfRoot)new Gson().fromJson(paramArrayOfQConfItem[0].a, APMConfRoot.class);
+      paramArrayOfQConfItem = (APMConfRoot)new Gson().fromJson(paramArrayOfQConfItem[0].a, APMConfRoot.class);
+    } else {
+      paramArrayOfQConfItem = null;
     }
-    paramArrayOfQConfItem = localAPMConfRoot;
-    if (localAPMConfRoot == null) {
-      paramArrayOfQConfItem = new APMConfRoot();
+    Object localObject = paramArrayOfQConfItem;
+    if (paramArrayOfQConfItem == null) {
+      localObject = new APMConfRoot();
     }
-    return paramArrayOfQConfItem;
+    return localObject;
   }
   
   public void onReqFailed(int paramInt) {}
@@ -72,7 +73,7 @@ public class QConfigAPMProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.config.QConfigAPMProcessor
  * JD-Core Version:    0.7.0.1
  */

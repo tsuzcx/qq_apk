@@ -45,13 +45,13 @@ public class QlinkServiceProxy
   public void a()
   {
     long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_Long == -1L) || (l - this.jdField_a_of_type_Long > 10000L))
+    if ((this.jdField_a_of_type_Long != -1L) && (l - this.jdField_a_of_type_Long <= 10000L))
     {
-      this.jdField_a_of_type_Long = l;
-      QlinkPluginProxyService.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
+      QLog.d("QlinkServiceProxy", 1, "wait start qlink service result, skiped...");
       return;
     }
-    QLog.d("QlinkServiceProxy", 1, "wait start qlink service result, skiped...");
+    this.jdField_a_of_type_Long = l;
+    QlinkPluginProxyService.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
   }
   
   /* Error */
@@ -69,69 +69,70 @@ public class QlinkServiceProxy
     //   14: aload_0
     //   15: aload_1
     //   16: invokespecial 55	cooperation/qlink/QlinkServiceProxy:c	(Lcooperation/qlink/SendMsg;)V
-    //   19: aload_2
-    //   20: monitorexit
-    //   21: return
+    //   19: goto +32 -> 51
     //   22: aload_0
     //   23: getfield 31	cooperation/qlink/QlinkServiceProxy:jdField_a_of_type_Boolean	Z
-    //   26: ifeq +23 -> 49
+    //   26: ifeq +11 -> 37
     //   29: aload_0
     //   30: aload_1
     //   31: invokespecial 110	cooperation/qlink/QlinkServiceProxy:b	(Lcooperation/qlink/SendMsg;)V
-    //   34: goto -15 -> 19
-    //   37: astore_3
-    //   38: aload_2
-    //   39: monitorexit
-    //   40: aload_3
-    //   41: athrow
-    //   42: astore_2
-    //   43: aload_0
-    //   44: aload_1
-    //   45: invokespecial 110	cooperation/qlink/QlinkServiceProxy:b	(Lcooperation/qlink/SendMsg;)V
-    //   48: return
-    //   49: aload_0
-    //   50: iconst_1
-    //   51: putfield 31	cooperation/qlink/QlinkServiceProxy:jdField_a_of_type_Boolean	Z
-    //   54: aload_0
-    //   55: aload_1
-    //   56: invokespecial 110	cooperation/qlink/QlinkServiceProxy:b	(Lcooperation/qlink/SendMsg;)V
-    //   59: aload_0
-    //   60: invokevirtual 112	cooperation/qlink/QlinkServiceProxy:a	()V
-    //   63: goto -44 -> 19
-    //   66: astore_2
+    //   34: goto +17 -> 51
+    //   37: aload_0
+    //   38: iconst_1
+    //   39: putfield 31	cooperation/qlink/QlinkServiceProxy:jdField_a_of_type_Boolean	Z
+    //   42: aload_0
+    //   43: aload_1
+    //   44: invokespecial 110	cooperation/qlink/QlinkServiceProxy:b	(Lcooperation/qlink/SendMsg;)V
+    //   47: aload_0
+    //   48: invokevirtual 112	cooperation/qlink/QlinkServiceProxy:a	()V
+    //   51: aload_2
+    //   52: monitorexit
+    //   53: return
+    //   54: astore_3
+    //   55: aload_2
+    //   56: monitorexit
+    //   57: aload_3
+    //   58: athrow
+    //   59: astore_2
+    //   60: aload_0
+    //   61: getfield 45	cooperation/qlink/QlinkServiceProxy:jdField_a_of_type_CooperationQlinkIQlinkService	Lcooperation/qlink/IQlinkService;
+    //   64: ifnonnull +9 -> 73
     //   67: aload_0
-    //   68: getfield 45	cooperation/qlink/QlinkServiceProxy:jdField_a_of_type_CooperationQlinkIQlinkService	Lcooperation/qlink/IQlinkService;
-    //   71: ifnonnull +9 -> 80
-    //   74: aload_0
-    //   75: aload_1
-    //   76: invokespecial 110	cooperation/qlink/QlinkServiceProxy:b	(Lcooperation/qlink/SendMsg;)V
-    //   79: return
-    //   80: aload_2
-    //   81: invokevirtual 115	java/lang/Exception:printStackTrace	()V
-    //   84: return
+    //   68: aload_1
+    //   69: invokespecial 110	cooperation/qlink/QlinkServiceProxy:b	(Lcooperation/qlink/SendMsg;)V
+    //   72: return
+    //   73: aload_2
+    //   74: invokevirtual 115	java/lang/Exception:printStackTrace	()V
+    //   77: return
+    //   78: aload_0
+    //   79: aload_1
+    //   80: invokespecial 110	cooperation/qlink/QlinkServiceProxy:b	(Lcooperation/qlink/SendMsg;)V
+    //   83: return
+    //   84: astore_2
+    //   85: goto -7 -> 78
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	85	0	this	QlinkServiceProxy
-    //   0	85	1	paramSendMsg	SendMsg
-    //   42	1	2	localDeadObjectException	android.os.DeadObjectException
-    //   66	15	2	localException	java.lang.Exception
-    //   37	4	3	localObject2	Object
+    //   0	88	0	this	QlinkServiceProxy
+    //   0	88	1	paramSendMsg	SendMsg
+    //   59	15	2	localException	java.lang.Exception
+    //   84	1	2	localDeadObjectException	android.os.DeadObjectException
+    //   54	4	3	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   7	19	37	finally
-    //   19	21	37	finally
-    //   22	34	37	finally
-    //   38	40	37	finally
-    //   49	63	37	finally
-    //   0	7	42	android/os/DeadObjectException
-    //   40	42	42	android/os/DeadObjectException
-    //   0	7	66	java/lang/Exception
-    //   40	42	66	java/lang/Exception
+    //   7	19	54	finally
+    //   22	34	54	finally
+    //   37	51	54	finally
+    //   51	53	54	finally
+    //   55	57	54	finally
+    //   0	7	59	java/lang/Exception
+    //   57	59	59	java/lang/Exception
+    //   0	7	84	android/os/DeadObjectException
+    //   57	59	84	android/os/DeadObjectException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.QlinkServiceProxy
  * JD-Core Version:    0.7.0.1
  */

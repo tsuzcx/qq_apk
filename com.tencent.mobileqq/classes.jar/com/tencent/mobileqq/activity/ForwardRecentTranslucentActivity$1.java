@@ -16,8 +16,16 @@ class ForwardRecentTranslucentActivity$1
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "] #this = " + Integer.toHexString(System.identityHashCode(this.a)));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceiveResult() called with: resultCode = [");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], resultData = [");
+      localStringBuilder.append(paramBundle);
+      localStringBuilder.append("] #this = ");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this.a)));
+      QLog.d("ForwardOption.ForwardEntranceActivity", 2, localStringBuilder.toString());
     }
     if (paramInt == 1) {
       this.a.finish();
@@ -26,7 +34,7 @@ class ForwardRecentTranslucentActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity.1
  * JD-Core Version:    0.7.0.1
  */

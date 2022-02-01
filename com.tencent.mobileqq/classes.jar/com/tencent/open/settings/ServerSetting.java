@@ -10,14 +10,8 @@ import java.net.URL;
 public class ServerSetting
 {
   protected static ServerSetting a;
-  protected static final String a;
+  protected static final String a = "com.tencent.open.settings.ServerSetting";
   protected volatile WeakReference<SharedPreferences> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = ServerSetting.class.getName();
-    jdField_a_of_type_ComTencentOpenSettingsServerSetting = null;
-  }
   
   public ServerSetting()
   {
@@ -48,60 +42,86 @@ public class ServerSetting
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(OpensdkPreference.a(CommonDataAdapter.a().a(), "OpenSettings"));
     }
     String str1 = paramString;
-    String str2;
-    SharedPreferences localSharedPreferences;
-    String str3;
     try
     {
-      str2 = new URL(paramString).getHost();
-      if (str2 == null)
+      Object localObject1 = new URL(paramString).getHost();
+      if (localObject1 == null)
       {
         str1 = paramString;
-        LogUtility.e(jdField_a_of_type_JavaLangString, "Get host error. url=" + paramString);
+        paramBundle = jdField_a_of_type_JavaLangString;
+        str1 = paramString;
+        localObject1 = new StringBuilder();
+        str1 = paramString;
+        ((StringBuilder)localObject1).append("Get host error. url=");
+        str1 = paramString;
+        ((StringBuilder)localObject1).append(paramString);
+        str1 = paramString;
+        LogUtility.e(paramBundle, ((StringBuilder)localObject1).toString());
         return paramString;
       }
       str1 = paramString;
-      localSharedPreferences = (SharedPreferences)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      str1 = paramString;
-      if (localSharedPreferences == null) {
-        return str1;
-      }
-      str1 = paramString;
-      str3 = localSharedPreferences.getString(str2, null);
-      if (str3 != null)
+      Object localObject2 = (SharedPreferences)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject2 != null)
       {
         str1 = paramString;
-        if (!str2.equals(str3)) {}
-      }
-      else
-      {
+        String str2 = ((SharedPreferences)localObject2).getString((String)localObject1, null);
+        if (str2 != null)
+        {
+          str1 = paramString;
+          if (!((String)localObject1).equals(str2))
+          {
+            if (paramBundle != null)
+            {
+              str1 = paramString;
+              paramBundle.putString("env", ((SharedPreferences)localObject2).getString("OpenEnvironment", "formal"));
+            }
+            str1 = paramString;
+            paramString = paramString.replace((CharSequence)localObject1, str2);
+            str1 = paramString;
+            paramBundle = jdField_a_of_type_JavaLangString;
+            str1 = paramString;
+            localObject1 = new StringBuilder();
+            str1 = paramString;
+            ((StringBuilder)localObject1).append("return environment url : ");
+            str1 = paramString;
+            ((StringBuilder)localObject1).append(paramString);
+            str1 = paramString;
+            LogUtility.c(paramBundle, ((StringBuilder)localObject1).toString());
+            return paramString;
+          }
+        }
         str1 = paramString;
-        LogUtility.c(jdField_a_of_type_JavaLangString, "host=" + str2 + ", envHost=" + str3);
-        return paramString;
+        paramBundle = jdField_a_of_type_JavaLangString;
+        str1 = paramString;
+        localObject2 = new StringBuilder();
+        str1 = paramString;
+        ((StringBuilder)localObject2).append("host=");
+        str1 = paramString;
+        ((StringBuilder)localObject2).append((String)localObject1);
+        str1 = paramString;
+        ((StringBuilder)localObject2).append(", envHost=");
+        str1 = paramString;
+        ((StringBuilder)localObject2).append(str2);
+        str1 = paramString;
+        LogUtility.c(paramBundle, ((StringBuilder)localObject2).toString());
       }
+      return paramString;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      LogUtility.e(jdField_a_of_type_JavaLangString, "getEnvUrl error. url=" + str1);
-      return str1;
+      paramString = jdField_a_of_type_JavaLangString;
+      paramBundle = new StringBuilder();
+      paramBundle.append("getEnvUrl error. url=");
+      paramBundle.append(str1);
+      LogUtility.e(paramString, paramBundle.toString());
     }
-    if (paramBundle != null)
-    {
-      str1 = paramString;
-      paramBundle.putString("env", localSharedPreferences.getString("OpenEnvironment", "formal"));
-    }
-    str1 = paramString;
-    paramString = paramString.replace(str2, str3);
-    str1 = paramString;
-    LogUtility.c(jdField_a_of_type_JavaLangString, "return environment url : " + paramString);
-    str1 = paramString;
     return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.settings.ServerSetting
  * JD-Core Version:    0.7.0.1
  */

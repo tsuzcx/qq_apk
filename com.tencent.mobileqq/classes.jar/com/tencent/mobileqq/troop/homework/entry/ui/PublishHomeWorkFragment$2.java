@@ -1,80 +1,84 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
 import com.tencent.mobileqq.troop.homework.HomeworkInfo;
+import com.tencent.mobileqq.troop.homework.observer.HomeworkObserver;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 class PublishHomeWorkFragment$2
-  extends TroopBusinessObserver
+  extends HomeworkObserver
 {
   PublishHomeWorkFragment$2(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onAssignHomework(boolean paramBoolean, long paramLong, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    super.onAssignHomework(paramBoolean, paramLong, paramInt);
-    this.a.o();
+    super.a(paramBoolean, paramLong, paramInt);
+    this.a.p();
     this.a.a(paramBoolean, paramInt);
   }
   
-  public void onGetHomeworkInfo(boolean paramBoolean, HomeworkInfo paramHomeworkInfo)
+  public void a(boolean paramBoolean, HomeworkInfo paramHomeworkInfo)
   {
-    super.onGetHomeworkInfo(paramBoolean, paramHomeworkInfo);
-    this.a.o();
-    StringBuilder localStringBuilder;
+    super.a(paramBoolean, paramHomeworkInfo);
+    this.a.p();
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("获取作业信息");
-      if (!paramBoolean) {
-        break label79;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("获取作业信息");
+      String str;
+      if (paramBoolean) {
+        str = "成功";
+      } else {
+        str = "失败";
       }
+      localStringBuilder.append(str);
+      QLog.d("PublishHomeWorkFragment", 2, localStringBuilder.toString());
     }
-    label79:
-    for (String str = "成功";; str = "失败")
+    if ((paramBoolean) && (paramHomeworkInfo != null) && (paramHomeworkInfo.b != null))
     {
-      QLog.d("PublishHomeWorkFragment", 2, str);
-      if ((!paramBoolean) || (paramHomeworkInfo == null) || (paramHomeworkInfo.b == null)) {
-        break;
-      }
       this.a.a(paramHomeworkInfo);
       return;
     }
     this.a.getActivity().finish();
   }
   
-  public void onGetHomeworkTroopIdentity(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    super.onGetHomeworkTroopIdentity(paramBoolean, paramString1, paramString2, paramInt, paramString3, paramString4);
-    if (QLog.isColorLevel()) {
-      QLog.d("PublishHomeWorkFragment", 2, "onGetHomeworkTroopIdentity: isSuccess:" + paramBoolean + ", identity:" + paramInt + ", course:" + paramString3);
+    super.a(paramBoolean, paramString1, paramString2, paramInt, paramString3, paramString4);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("onGetHomeworkTroopIdentity: isSuccess:");
+      paramString1.append(paramBoolean);
+      paramString1.append(", identity:");
+      paramString1.append(paramInt);
+      paramString1.append(", course:");
+      paramString1.append(paramString3);
+      QLog.d("PublishHomeWorkFragment", 2, paramString1.toString());
     }
     if (!this.a.j)
     {
-      if (!this.a.h) {
-        this.a.b(paramString3);
-      }
       this.a.a(paramInt, paramString3, paramString4);
-      if (!paramBoolean) {
-        break label142;
+      if (paramBoolean)
+      {
+        paramString1 = this.a;
+        paramString1.a = paramString3;
+        paramString1.c();
       }
-      this.a.a = paramString3;
-      this.a.b();
-    }
-    for (;;)
-    {
+      else
+      {
+        QQToast.a(this.a.getActivity(), HardCodeUtil.a(2131708818), 0).a();
+      }
       QLog.i("PublishHomeWorkFragment", 1, "init data success");
-      this.a.f();
-      return;
-      label142:
-      QQToast.a(this.a.getActivity(), HardCodeUtil.a(2131708812), 0).a();
+      this.a.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.2
  * JD-Core Version:    0.7.0.1
  */

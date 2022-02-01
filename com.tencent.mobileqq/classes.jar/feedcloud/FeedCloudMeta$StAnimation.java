@@ -19,13 +19,14 @@ public final class FeedCloudMeta$StAnimation
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "width", "height", "animationUrl", "busiData" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro }, StAnimation.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "width", "height", "animationUrl", "busiData" }, new Object[] { localInteger, localInteger, "", localByteStringMicro }, StAnimation.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StAnimation
  * JD-Core Version:    0.7.0.1
  */

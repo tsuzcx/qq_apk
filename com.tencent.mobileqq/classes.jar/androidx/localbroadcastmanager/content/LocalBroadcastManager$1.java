@@ -14,18 +14,17 @@ class LocalBroadcastManager$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what != 1)
     {
-    default: 
       super.handleMessage(paramMessage);
       return;
     }
-    this.a.a();
+    this.this$0.executePendingBroadcasts();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.localbroadcastmanager.content.LocalBroadcastManager.1
  * JD-Core Version:    0.7.0.1
  */

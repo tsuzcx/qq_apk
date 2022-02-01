@@ -13,43 +13,39 @@ final class DialogUtil$5
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365830) {}
-    for (;;)
+    if (paramView.getId() == 2131365667) {}
+    try
     {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-          this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
-        }
-        if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-          this.jdField_a_of_type_AndroidAppDialog.dismiss();
-        }
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
       }
-      catch (Exception localException2)
-      {
-        continue;
+      if (!this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+        break label96;
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == 2131365836)
-      {
-        if (this.b != null) {
-          this.b.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
-        }
-        try
-        {
-          if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-            this.jdField_a_of_type_AndroidAppDialog.dismiss();
-          }
-        }
-        catch (Exception localException1) {}
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    catch (Exception localException)
+    {
+      DialogInterface.OnClickListener localOnClickListener;
+      break label96;
+    }
+    if (paramView.getId() == 2131365673)
+    {
+      localOnClickListener = this.b;
+      if (localOnClickListener != null) {
+        localOnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
+      }
+      if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+        this.jdField_a_of_type_AndroidAppDialog.dismiss();
       }
     }
+    label96:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.DialogUtil.5
  * JD-Core Version:    0.7.0.1
  */

@@ -22,11 +22,6 @@ class ParticleSystem$Particle
   public float k;
   public float l;
   
-  static
-  {
-    jdField_a_of_type_Int = 0;
-  }
-  
   public ParticleSystem$Particle()
   {
     int m = jdField_a_of_type_Int;
@@ -41,7 +36,7 @@ class ParticleSystem$Particle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.ParticleSystem.Particle
  * JD-Core Version:    0.7.0.1
  */

@@ -37,22 +37,25 @@ public class FloatBaseLayout
   
   private void a(Context paramContext)
   {
-    this.e = AIOUtils.a(3.0F, getResources());
+    this.e = AIOUtils.b(3.0F, getResources());
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)getContext().getSystemService("window"));
     this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = -3;
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 808;
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2038;; this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2002)
-    {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.systemUiVisibility = 5892;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 85;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.setTitle("FloatBaseLayout");
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = 0;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = 0;
-      e();
-      return;
+    paramContext = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    paramContext.format = -3;
+    paramContext.flags = 808;
+    if (Build.VERSION.SDK_INT >= 26) {
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2038;
+    } else {
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2002;
     }
+    paramContext = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    paramContext.systemUiVisibility = 5892;
+    paramContext.gravity = 85;
+    paramContext.setTitle("FloatBaseLayout");
+    paramContext = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+    paramContext.x = 0;
+    paramContext.y = 0;
+    e();
   }
   
   private void e()
@@ -78,15 +81,19 @@ public class FloatBaseLayout
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("FloatBaseLayout", 1, "showOrUpdate updateViewLayout error: " + localThrowable.getMessage());
+    if (this.jdField_a_of_type_Boolean) {
+      try
+      {
+        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showOrUpdate updateViewLayout error: ");
+        localStringBuilder.append(localThrowable.getMessage());
+        QLog.e("FloatBaseLayout", 1, localStringBuilder.toString());
+      }
     }
   }
   
@@ -94,148 +101,76 @@ public class FloatBaseLayout
   {
     if ((paramInt1 != this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x) || (paramInt2 != this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y))
     {
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = paramInt1;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = paramInt2;
+      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+      localLayoutParams.x = paramInt1;
+      localLayoutParams.y = paramInt2;
     }
   }
   
-  /* Error */
   public boolean a()
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: invokestatic 174	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   5: ifeq +31 -> 36
-    //   8: ldc 90
-    //   10: iconst_2
-    //   11: new 150	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 176
-    //   20: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: aload_0
-    //   24: getfield 22	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_Boolean	Z
-    //   27: invokevirtual 179	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokestatic 181	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   36: aload_0
-    //   37: monitorenter
-    //   38: aload_0
-    //   39: getfield 22	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_Boolean	Z
-    //   42: ifne +103 -> 145
-    //   45: aload_0
-    //   46: getfield 24	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_c_of_type_Int	I
-    //   49: istore_1
-    //   50: iload_3
-    //   51: istore_2
-    //   52: iload_1
-    //   53: iconst_4
-    //   54: if_icmpge +29 -> 83
-    //   57: aload_0
-    //   58: getfield 61	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager	Landroid/view/WindowManager;
-    //   61: aload_0
-    //   62: aload_0
-    //   63: getfield 68	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager$LayoutParams	Landroid/view/WindowManager$LayoutParams;
-    //   66: invokeinterface 184 3 0
-    //   71: aload_0
-    //   72: iconst_1
-    //   73: putfield 22	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_Boolean	Z
-    //   76: aload_0
-    //   77: iconst_0
-    //   78: putfield 24	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_c_of_type_Int	I
-    //   81: iload_3
-    //   82: istore_2
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: iload_2
-    //   86: ireturn
-    //   87: astore 5
-    //   89: aload_0
-    //   90: aload_0
-    //   91: getfield 24	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_c_of_type_Int	I
-    //   94: iconst_1
-    //   95: iadd
-    //   96: putfield 24	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_c_of_type_Int	I
-    //   99: ldc 90
-    //   101: iconst_1
-    //   102: new 150	java/lang/StringBuilder
-    //   105: dup
-    //   106: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   109: ldc 186
-    //   111: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: aload_0
-    //   115: getfield 24	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_c_of_type_Int	I
-    //   118: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   121: ldc 191
-    //   123: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: aload 5
-    //   128: invokevirtual 161	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   131: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   137: invokestatic 169	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   140: iconst_0
-    //   141: istore_2
-    //   142: goto -59 -> 83
-    //   145: aload_0
-    //   146: getfield 22	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_Boolean	Z
-    //   149: istore 4
-    //   151: iload_3
-    //   152: istore_2
-    //   153: iload 4
-    //   155: ifeq -72 -> 83
-    //   158: aload_0
-    //   159: getfield 61	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager	Landroid/view/WindowManager;
-    //   162: aload_0
-    //   163: aload_0
-    //   164: getfield 68	com/tencent/mobileqq/listentogether/lyrics/FloatBaseLayout:jdField_a_of_type_AndroidViewWindowManager$LayoutParams	Landroid/view/WindowManager$LayoutParams;
-    //   167: invokeinterface 148 3 0
-    //   172: iload_3
-    //   173: istore_2
-    //   174: goto -91 -> 83
-    //   177: astore 5
-    //   179: ldc 90
-    //   181: iconst_1
-    //   182: new 150	java/lang/StringBuilder
-    //   185: dup
-    //   186: invokespecial 151	java/lang/StringBuilder:<init>	()V
-    //   189: ldc 153
-    //   191: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   194: aload 5
-    //   196: invokevirtual 161	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   199: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 169	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   208: iconst_0
-    //   209: istore_2
-    //   210: goto -127 -> 83
-    //   213: astore 5
-    //   215: aload_0
-    //   216: monitorexit
-    //   217: aload 5
-    //   219: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	220	0	this	FloatBaseLayout
-    //   49	6	1	i	int
-    //   51	159	2	bool1	boolean
-    //   1	172	3	bool2	boolean
-    //   149	5	4	bool3	boolean
-    //   87	40	5	localThrowable1	Throwable
-    //   177	18	5	localThrowable2	Throwable
-    //   213	5	5	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   57	81	87	java/lang/Throwable
-    //   158	172	177	java/lang/Throwable
-    //   38	50	213	finally
-    //   57	81	213	finally
-    //   83	85	213	finally
-    //   89	140	213	finally
-    //   145	151	213	finally
-    //   158	172	213	finally
-    //   179	208	213	finally
-    //   215	217	213	finally
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("showOrUpdate mAdded: ");
+      localStringBuilder1.append(this.jdField_a_of_type_Boolean);
+      QLog.d("FloatBaseLayout", 2, localStringBuilder1.toString());
+    }
+    for (;;)
+    {
+      try
+      {
+        boolean bool2 = this.jdField_a_of_type_Boolean;
+        bool1 = false;
+        StringBuilder localStringBuilder2;
+        if (!bool2)
+        {
+          int i = this.jdField_c_of_type_Int;
+          if (i >= 4) {
+            break label247;
+          }
+          try
+          {
+            this.jdField_a_of_type_AndroidViewWindowManager.addView(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+            this.jdField_a_of_type_Boolean = true;
+            this.jdField_c_of_type_Int = 0;
+          }
+          catch (Throwable localThrowable1)
+          {
+            this.jdField_c_of_type_Int += 1;
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("showOrUpdate addView mExceptionCount:");
+            localStringBuilder2.append(this.jdField_c_of_type_Int);
+            localStringBuilder2.append(" error:");
+            localStringBuilder2.append(localThrowable1.getMessage());
+            QLog.e("FloatBaseLayout", 1, localStringBuilder2.toString());
+            continue;
+          }
+        }
+        else
+        {
+          bool2 = this.jdField_a_of_type_Boolean;
+          if (!bool2) {
+            break label247;
+          }
+          try
+          {
+            this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+          }
+          catch (Throwable localThrowable2)
+          {
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("showOrUpdate updateViewLayout error: ");
+            localStringBuilder2.append(localThrowable2.getMessage());
+            QLog.e("FloatBaseLayout", 1, localStringBuilder2.toString());
+          }
+        }
+        return bool1;
+      }
+      finally {}
+      label247:
+      boolean bool1 = true;
+    }
   }
   
   public int b()
@@ -250,24 +185,24 @@ public class FloatBaseLayout
   
   public boolean b()
   {
-    boolean bool2 = true;
-    boolean bool1;
     try
     {
       boolean bool3 = this.jdField_a_of_type_Boolean;
-      bool1 = bool2;
-      if (bool3) {}
-      try
-      {
-        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this);
-        this.jdField_a_of_type_Boolean = false;
-        bool1 = bool2;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
+      boolean bool2 = true;
+      boolean bool1 = bool2;
+      if (bool3) {
+        try
         {
-          QLog.e("FloatBaseLayout", 1, "showOrUpdate addView error: " + localThrowable.getMessage());
+          this.jdField_a_of_type_AndroidViewWindowManager.removeView(this);
+          this.jdField_a_of_type_Boolean = false;
+          bool1 = bool2;
+        }
+        catch (Throwable localThrowable)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("showOrUpdate addView error: ");
+          localStringBuilder.append(localThrowable.getMessage());
+          QLog.e("FloatBaseLayout", 1, localStringBuilder.toString());
           bool1 = false;
         }
       }
@@ -298,52 +233,67 @@ public class FloatBaseLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    boolean bool = false;
+    if (i != 0)
     {
-    default: 
-      bool1 = false;
-    case 0: 
-    case 2: 
-      for (;;)
-      {
-        this.jdField_a_of_type_Float = f1;
-        this.jdField_b_of_type_Float = f2;
-        return bool1;
-        this.jdField_c_of_type_Float = f1;
-        this.d = f2;
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = true;
-        bool1 = super.dispatchTouchEvent(paramMotionEvent);
-        continue;
-        if ((Math.abs(f1 - this.jdField_c_of_type_Float) > this.e) && (Math.abs(f2 - this.d) > this.e) && (this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+      if (i != 1) {
+        if (i != 2)
         {
-          this.jdField_b_of_type_Boolean = true;
-          c();
+          if (i != 3) {
+            break label253;
+          }
         }
-        if ((this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatLayoutCallback != null) && (this.jdField_b_of_type_Boolean)) {
-          this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatLayoutCallback.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
-        }
-        if (!this.jdField_b_of_type_Boolean) {
-          bool1 = super.dispatchTouchEvent(paramMotionEvent);
+        else
+        {
+          if ((Math.abs(f1 - this.jdField_c_of_type_Float) > this.e) && (Math.abs(f2 - this.d) > this.e) && (this.jdField_c_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+          {
+            this.jdField_b_of_type_Boolean = true;
+            c();
+          }
+          localFloatLayoutCallback = this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatLayoutCallback;
+          if ((localFloatLayoutCallback != null) && (this.jdField_b_of_type_Boolean)) {
+            localFloatLayoutCallback.a((int)(f1 - this.jdField_a_of_type_Float), (int)(f2 - this.jdField_b_of_type_Float));
+          }
+          if (this.jdField_b_of_type_Boolean)
+          {
+            bool = true;
+            break label253;
+          }
+          bool = super.dispatchTouchEvent(paramMotionEvent);
+          break label253;
         }
       }
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatLayoutCallback != null) && (this.jdField_b_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatLayoutCallback.a();
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      d();
-    }
-    for (bool1 = bool2;; bool1 = super.dispatchTouchEvent(paramMotionEvent))
-    {
+      FloatLayoutCallback localFloatLayoutCallback = this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatLayoutCallback;
+      if ((localFloatLayoutCallback != null) && (this.jdField_b_of_type_Boolean)) {
+        localFloatLayoutCallback.a();
+      }
+      if (this.jdField_b_of_type_Boolean)
+      {
+        d();
+        bool = true;
+      }
+      else
+      {
+        bool = super.dispatchTouchEvent(paramMotionEvent);
+      }
       this.jdField_b_of_type_Boolean = false;
       this.jdField_c_of_type_Boolean = false;
-      break;
     }
+    else
+    {
+      this.jdField_c_of_type_Float = f1;
+      this.d = f2;
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_c_of_type_Boolean = true;
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+    }
+    label253:
+    this.jdField_a_of_type_Float = f1;
+    this.jdField_b_of_type_Float = f2;
+    return bool;
   }
   
   public int e()
@@ -368,7 +318,7 @@ public class FloatBaseLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.lyrics.FloatBaseLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -15,40 +15,59 @@ class UpgradeTipsDialog$1
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageFinished: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramWebView = new StringBuilder();
+      paramWebView.append("onPageFinished: ");
+      paramWebView.append(paramString);
+      QLog.d("UpgradeController", 2, paramWebView.toString());
     }
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     JsInjector.getInstance().onPageStarted(paramWebView);
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onPageStarted: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramWebView = new StringBuilder();
+      paramWebView.append("onPageStarted: ");
+      paramWebView.append(paramString);
+      QLog.d("UpgradeController", 2, paramWebView.toString());
     }
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeController", 2, "onReceivedError: " + paramInt + ", " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramWebView = new StringBuilder();
+      paramWebView.append("onReceivedError: ");
+      paramWebView.append(paramInt);
+      paramWebView.append(", ");
+      paramWebView.append(paramString1);
+      QLog.d("UpgradeController", 2, paramWebView.toString());
     }
     ReportController.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "Update_tips", "Upd_fail", 0, paramInt, "", "", "", "");
   }
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    while (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
-      return true;
+    if ((paramString != null) && (!"".equals(paramString)) && (!"about:blank;".equals(paramString)))
+    {
+      if ("about:blank".equals(paramString)) {
+        return true;
+      }
+      if (UpgradeTipsDialog.a(this.a).a(paramWebView, paramString)) {
+        return true;
+      }
+      this.a.a.loadUrl(paramString);
     }
-    this.a.a.loadUrl(paramString);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeTipsDialog.1
  * JD-Core Version:    0.7.0.1
  */

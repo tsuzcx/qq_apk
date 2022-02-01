@@ -8,6 +8,8 @@ public abstract interface AuthProvider
   
   public abstract Task<Token> getTokens();
   
+  public abstract Task<Token> getTokens(boolean paramBoolean);
+  
   public abstract String getUid();
   
   public abstract void removeTokenListener(OnTokenListener paramOnTokenListener);

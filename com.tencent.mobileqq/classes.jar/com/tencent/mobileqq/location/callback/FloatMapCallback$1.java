@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.location.callback;
 
+import android.app.Activity;
 import android.app.Dialog;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -21,23 +22,24 @@ class FloatMapCallback$1
   
   public boolean a()
   {
-    IFloatMapService localIFloatMapService = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundStop)) {
-      localIFloatMapService.showFloatTypeDialog(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey);
-    }
-    for (;;)
+    Object localObject = LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundStop))
     {
-      ReportController.b(null, "CliOper", "", "", "0X800A978", "0X800A978", 0, 0, "", "0", "0", "");
-      return true;
       if (!this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidAppDialog = localIFloatMapService.createFloatExitConfirmDialog(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
+        this.jdField_a_of_type_AndroidAppDialog = ((IFloatMapService)localObject).createFloatExitConfirmDialog(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a());
         this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_AndroidAppDialog != null) {
-          this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new FloatMapCallback.1.1(this));
+        localObject = this.jdField_a_of_type_AndroidAppDialog;
+        if (localObject != null) {
+          ((Dialog)localObject).setOnDismissListener(new FloatMapCallback.1.1(this));
         }
       }
     }
+    else {
+      ((IFloatMapService)localObject).showFloatTypeDialog(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey);
+    }
+    ReportController.b(null, "CliOper", "", "", "0X800A978", "0X800A978", 0, 0, "", "0", "0", "");
+    return true;
   }
   
   public boolean a(int paramInt1, int paramInt2)
@@ -45,15 +47,16 @@ class FloatMapCallback$1
     if (QLog.isColorLevel()) {
       QLog.d("FloatMapCallback", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
     }
-    QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
-    if (localQBaseActivity != null) {
-      LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).launchShareUi(localQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), 4);
+    Object localObject = QBaseActivity.sTopActivity;
+    if (localObject != null) {
+      LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).launchShareUi((Activity)localObject, this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.a(), 4);
     }
     FloatMapCallback.d();
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {}
+    localObject = this.jdField_a_of_type_AndroidAppDialog;
+    if (localObject != null) {}
     try
     {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      ((Dialog)localObject).dismiss();
       return false;
     }
     catch (Exception localException) {}
@@ -62,7 +65,7 @@ class FloatMapCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.callback.FloatMapCallback.1
  * JD-Core Version:    0.7.0.1
  */

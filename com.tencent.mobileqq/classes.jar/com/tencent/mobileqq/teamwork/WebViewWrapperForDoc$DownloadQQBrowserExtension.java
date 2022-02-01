@@ -39,11 +39,11 @@ final class WebViewWrapperForDoc$DownloadQQBrowserExtension
       this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("responseData", paramObject3);
       this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put("errorCode", paramObject4);
       localWebViewPluginEngine.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 64L, this.jdField_a_of_type_AndroidSupportV4UtilArrayMap);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.i("WebCoreDump", 2, "No JS plugin engine to web core dump");
+    if (QLog.isColorLevel()) {
+      QLog.i("WebCoreDump", 2, "No JS plugin engine to web core dump");
+    }
   }
   
   public void computeScroll(View paramView)
@@ -63,9 +63,13 @@ final class WebViewWrapperForDoc$DownloadQQBrowserExtension
   
   public Object onMiscCallBack(String paramString, Bundle paramBundle)
   {
-    QLog.d("WebLog_WebViewWrapper", 1, "onMiscCallBack for one args: " + paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.handlerMiscCallback(paramString, paramBundle);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onMiscCallBack for one args: ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.d("WebLog_WebViewWrapper", 1, ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback;
+    if (localObject != null) {
+      return ((WebViewCallback)localObject).handlerMiscCallback(paramString, paramBundle);
     }
     return null;
   }
@@ -85,13 +89,17 @@ final class WebViewWrapperForDoc$DownloadQQBrowserExtension
   
   public void onPrefetchResourceHit(boolean paramBoolean)
   {
-    QLog.i("WebLog_WebViewWrapper", 1, "now prefetchResource is hit: " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("now prefetchResource is hit: ");
+    localStringBuilder.append(paramBoolean);
+    QLog.i("WebLog_WebViewWrapper", 1, localStringBuilder.toString());
   }
   
   public void onPreloadCallback(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.handlePreloadCallback(paramInt, paramString);
+    WebViewCallback localWebViewCallback = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback;
+    if (localWebViewCallback != null) {
+      localWebViewCallback.handlePreloadCallback(paramInt, paramString);
     }
   }
   
@@ -112,9 +120,10 @@ final class WebViewWrapperForDoc$DownloadQQBrowserExtension
   
   public void onUrlChange(String paramString1, String paramString2)
   {
-    
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback.onUrlChange(paramString1, paramString2);
+    SwiftBrowserCookieMonster.d();
+    WebViewCallback localWebViewCallback = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewCallback;
+    if (localWebViewCallback != null) {
+      localWebViewCallback.onUrlChange(paramString1, paramString2);
     }
   }
   
@@ -125,7 +134,7 @@ final class WebViewWrapperForDoc$DownloadQQBrowserExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.WebViewWrapperForDoc.DownloadQQBrowserExtension
  * JD-Core Version:    0.7.0.1
  */

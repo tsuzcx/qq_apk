@@ -32,14 +32,14 @@ public class PublishConfigRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     return new qqstory_service.ReqGetPublishConfig().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.PublishConfigRequest
  * JD-Core Version:    0.7.0.1
  */

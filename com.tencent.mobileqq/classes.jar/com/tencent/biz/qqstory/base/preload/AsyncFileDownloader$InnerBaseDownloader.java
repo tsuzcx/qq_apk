@@ -1,10 +1,11 @@
 package com.tencent.biz.qqstory.base.preload;
 
+import com.tencent.aelight.camera.qqstory.api.IAECaptureContext;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
-import dov.com.qq.im.capture.QIMManager;
 
 class AsyncFileDownloader$InnerBaseDownloader
   implements AsyncFileDownloader.InnerDownloader
@@ -13,7 +14,7 @@ class AsyncFileDownloader$InnerBaseDownloader
   
   protected IHttpEngineService a()
   {
-    AppInterface localAppInterface = QIMManager.a();
+    AppInterface localAppInterface = ((IAECaptureContext)QRoute.api(IAECaptureContext.class)).getAppInterface();
     if (localAppInterface != null) {
       return (IHttpEngineService)localAppInterface.getRuntimeService(IHttpEngineService.class, "all");
     }
@@ -61,7 +62,7 @@ class AsyncFileDownloader$InnerBaseDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerBaseDownloader
  * JD-Core Version:    0.7.0.1
  */

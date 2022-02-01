@@ -39,17 +39,19 @@ public final class bmp4_get_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.retCode, 0);
-    if (this.errmsg != null) {
-      paramJceOutputStream.write(this.errmsg, 1);
+    Object localObject = this.errmsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.map_rsp != null) {
-      paramJceOutputStream.write(this.map_rsp, 2);
+    localObject = this.map_rsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_BITMAP_4TH.bmp4_get_rsp
  * JD-Core Version:    0.7.0.1
  */

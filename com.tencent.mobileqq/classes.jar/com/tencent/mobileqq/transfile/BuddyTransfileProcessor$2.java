@@ -4,6 +4,7 @@ import android.os.Bundle;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.streamtransfile.StreamDataManager;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 
 class BuddyTransfileProcessor$2
   implements Runnable
@@ -16,9 +17,9 @@ class BuddyTransfileProcessor$2
     if ((StreamDataManager.b(this.this$0.file.filePath) != 0) && (!this.this$0.setPttRecordFinishTime))
     {
       localFileMsg = this.this$0.file;
-      BuddyTransfileProcessor localBuddyTransfileProcessor = this.this$0;
+      ProcessorReport localProcessorReport = this.this$0.mProcessorReport;
       long l = System.nanoTime();
-      localBuddyTransfileProcessor.mStartTime = l;
+      localProcessorReport.mStartTime = l;
       localFileMsg.startTime = l;
       this.this$0.setPttRecordFinishTime = true;
     }
@@ -32,7 +33,7 @@ class BuddyTransfileProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BuddyTransfileProcessor.2
  * JD-Core Version:    0.7.0.1
  */

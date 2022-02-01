@@ -38,13 +38,13 @@ public class TextureRender
   private int createProgram(String paramString1, String paramString2)
   {
     int i = loadShader(35633, paramString1);
-    if (i == 0) {}
-    int j;
-    do
-    {
+    if (i == 0) {
       return 0;
-      j = loadShader(35632, paramString2);
-    } while (j == 0);
+    }
+    int j = loadShader(35632, paramString2);
+    if (j == 0) {
+      return 0;
+    }
     int k = GLES20.glCreateProgram();
     checkGlError("glCreateProgram");
     if (k == 0) {
@@ -69,18 +69,29 @@ public class TextureRender
   
   private int loadShader(int paramInt, String paramString)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    checkGlError("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
+    int j = GLES20.glCreateShader(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glCreateShader type=");
+    localStringBuilder.append(paramInt);
+    checkGlError(localStringBuilder.toString());
+    GLES20.glShaderSource(j, paramString);
+    GLES20.glCompileShader(j);
     paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    GLES20.glGetShaderiv(j, 35713, paramString, 0);
+    int i = j;
     if (paramString[0] == 0)
     {
-      Log.e("TextureRender", "Could not compile shader " + paramInt + ":");
-      Log.e("TextureRender", " " + GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
+      paramString = new StringBuilder();
+      paramString.append("Could not compile shader ");
+      paramString.append(paramInt);
+      paramString.append(":");
+      Log.e("TextureRender", paramString.toString());
+      paramString = new StringBuilder();
+      paramString.append(" ");
+      paramString.append(GLES20.glGetShaderInfoLog(j));
+      Log.e("TextureRender", paramString.toString());
+      GLES20.glDeleteShader(j);
+      i = 0;
     }
     return i;
   }
@@ -89,19 +100,28 @@ public class TextureRender
   {
     GLES20.glDeleteProgram(this.mProgram);
     this.mProgram = createProgram("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n  gl_Position = uMVPMatrix * aPosition;\n  vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", paramString);
-    if (this.mProgram == 0) {
-      throw new RuntimeException("failed creating program");
+    if (this.mProgram != 0) {
+      return;
     }
+    throw new RuntimeException("failed creating program");
   }
   
   public void checkGlError(String paramString)
   {
     int i = GLES20.glGetError();
-    if (i != 0)
-    {
-      Log.e("TextureRender", paramString + ": glError " + i);
-      throw new RuntimeException(paramString + ": glError " + i);
+    if (i == 0) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(": glError ");
+    localStringBuilder.append(i);
+    Log.e("TextureRender", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(": glError ");
+    localStringBuilder.append(i);
+    throw new RuntimeException(localStringBuilder.toString());
   }
   
   @TargetApi(11)
@@ -141,44 +161,51 @@ public class TextureRender
   public void surfaceCreated()
   {
     this.mProgram = createProgram("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n  gl_Position = uMVPMatrix * aPosition;\n  vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n  gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n");
-    if (this.mProgram == 0) {
-      throw new RuntimeException("failed creating program");
-    }
-    this.maPositionHandle = GLES20.glGetAttribLocation(this.mProgram, "aPosition");
-    checkGlError("glGetAttribLocation aPosition");
-    if (this.maPositionHandle == -1) {
+    int i = this.mProgram;
+    if (i != 0)
+    {
+      this.maPositionHandle = GLES20.glGetAttribLocation(i, "aPosition");
+      checkGlError("glGetAttribLocation aPosition");
+      if (this.maPositionHandle != -1)
+      {
+        this.maTextureHandle = GLES20.glGetAttribLocation(this.mProgram, "aTextureCoord");
+        checkGlError("glGetAttribLocation aTextureCoord");
+        if (this.maTextureHandle != -1)
+        {
+          this.muMVPMatrixHandle = GLES20.glGetUniformLocation(this.mProgram, "uMVPMatrix");
+          checkGlError("glGetUniformLocation uMVPMatrix");
+          if (this.muMVPMatrixHandle != -1)
+          {
+            this.muSTMatrixHandle = GLES20.glGetUniformLocation(this.mProgram, "uSTMatrix");
+            checkGlError("glGetUniformLocation uSTMatrix");
+            if (this.muSTMatrixHandle != -1)
+            {
+              int[] arrayOfInt = new int[1];
+              GLES20.glGenTextures(1, arrayOfInt, 0);
+              this.mTextureID = arrayOfInt[0];
+              GLES20.glBindTexture(36197, this.mTextureID);
+              checkGlError("glBindTexture mTextureID");
+              GLES20.glTexParameterf(36197, 10241, 9728.0F);
+              GLES20.glTexParameterf(36197, 10240, 9729.0F);
+              GLES20.glTexParameteri(36197, 10242, 33071);
+              GLES20.glTexParameteri(36197, 10243, 33071);
+              checkGlError("glTexParameter");
+              return;
+            }
+            throw new RuntimeException("Could not get attrib location for uSTMatrix");
+          }
+          throw new RuntimeException("Could not get attrib location for uMVPMatrix");
+        }
+        throw new RuntimeException("Could not get attrib location for aTextureCoord");
+      }
       throw new RuntimeException("Could not get attrib location for aPosition");
     }
-    this.maTextureHandle = GLES20.glGetAttribLocation(this.mProgram, "aTextureCoord");
-    checkGlError("glGetAttribLocation aTextureCoord");
-    if (this.maTextureHandle == -1) {
-      throw new RuntimeException("Could not get attrib location for aTextureCoord");
-    }
-    this.muMVPMatrixHandle = GLES20.glGetUniformLocation(this.mProgram, "uMVPMatrix");
-    checkGlError("glGetUniformLocation uMVPMatrix");
-    if (this.muMVPMatrixHandle == -1) {
-      throw new RuntimeException("Could not get attrib location for uMVPMatrix");
-    }
-    this.muSTMatrixHandle = GLES20.glGetUniformLocation(this.mProgram, "uSTMatrix");
-    checkGlError("glGetUniformLocation uSTMatrix");
-    if (this.muSTMatrixHandle == -1) {
-      throw new RuntimeException("Could not get attrib location for uSTMatrix");
-    }
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    this.mTextureID = arrayOfInt[0];
-    GLES20.glBindTexture(36197, this.mTextureID);
-    checkGlError("glBindTexture mTextureID");
-    GLES20.glTexParameterf(36197, 10241, 9728.0F);
-    GLES20.glTexParameterf(36197, 10240, 9729.0F);
-    GLES20.glTexParameteri(36197, 10242, 33071);
-    GLES20.glTexParameteri(36197, 10243, 33071);
-    checkGlError("glTexParameter");
+    throw new RuntimeException("failed creating program");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmediacodec.preload.glrender.TextureRender
  * JD-Core Version:    0.7.0.1
  */

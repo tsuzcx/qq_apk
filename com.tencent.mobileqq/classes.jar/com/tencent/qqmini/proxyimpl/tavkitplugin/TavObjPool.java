@@ -22,29 +22,44 @@ public class TavObjPool
   
   public String a(@NotNull Object paramObject)
   {
-    String str = "" + System.identityHashCode(paramObject);
-    if (this.a.containsKey(str)) {
-      return str;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(System.identityHashCode(paramObject));
+    localObject = ((StringBuilder)localObject).toString();
+    if (this.a.containsKey(localObject)) {
+      return localObject;
     }
-    Logger.d("TavObjPool", "put() called with: obj = [" + paramObject + "]");
-    this.a.put(str, paramObject);
-    return str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("put() called with: obj = [");
+    localStringBuilder.append(paramObject);
+    localStringBuilder.append("]");
+    Logger.d("TavObjPool", localStringBuilder.toString());
+    this.a.put(localObject, paramObject);
+    return localObject;
   }
   
   public void a(String paramString)
   {
-    Log.v("TavObjPool", "release() called with: identifier = [" + paramString + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("release() called with: identifier = [");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    Log.v("TavObjPool", localStringBuilder.toString());
     this.a.remove(paramString);
   }
   
   public String toString()
   {
-    return "ObjPool{objectMap.size=" + this.a.size() + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ObjPool{objectMap.size=");
+    localStringBuilder.append(this.a.size());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.TavObjPool
  * JD-Core Version:    0.7.0.1
  */
